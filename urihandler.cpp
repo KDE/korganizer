@@ -77,9 +77,7 @@ bool UriHandler::process( const QString &uri )
                                         replyTypeStr, replyData );
     if ( foundAbbrowser ) {
       //KAddressbook is already running, so just DCOP to it to bring up the contact editor
-#if KDE_IS_VERSION( 3, 2, 90 )
       kapp->updateRemoteUserTimestamp("kaddressbook");
-#endif
       DCOPRef kaddressbook( "kaddressbook", "KAddressBookIface" );
       kaddressbook.send( "showContactEditor", 
                          uri.mid( ::qstrlen( KDEPIMPROTOCOL_CONTACT ) ) );

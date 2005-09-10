@@ -456,11 +456,7 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
   mSplitterAgenda = new QSplitter(Vertical,this);
   topLayout->addWidget(mSplitterAgenda);
 
-#if KDE_IS_VERSION( 3, 1, 93 )
   mSplitterAgenda->setOpaqueResize( KGlobalSettings::opaqueResize() );
-#else
-  mSplitterAgenda->setOpaqueResize();
-#endif
 
   mAllDayFrame = new Q3HBox(mSplitterAgenda);
 

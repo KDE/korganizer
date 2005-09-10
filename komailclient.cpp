@@ -230,9 +230,7 @@ int KOMailClient::kMailOpenComposer(const QString& arg0,const QString& arg1,
   arg << arg4;
   arg << arg5;
   arg << arg6;
-#if KDE_IS_VERSION( 3, 2, 90 )
   kapp->updateRemoteUserTimestamp( "kmail" );
-#endif
   if (kapp->dcopClient()->call("kmail","KMailIface","openComposer(QString,QString,QString,QString,QString,int,KURL)", data, replyType, replyData ) ) {
     if ( replyType == "int" ) {
       QDataStream _reply_stream( replyData, QIODevice::ReadOnly );
@@ -281,9 +279,7 @@ int KOMailClient::kMailOpenComposer( const QString& arg0, const QString& arg1,
     arg << arg12;
     arg << arg13;
     arg << arg14;
-#if KDE_IS_VERSION( 3, 2, 90 )
     kapp->updateRemoteUserTimestamp("kmail");
-#endif
     if ( kapp->dcopClient()->call("kmail","KMailIface",
           "openComposer(QString,QString,QString,QString,QString,int,QString,QCString,QCString,QCString,QCString,QCString,QString,QCString,QCString)", data, replyType, replyData ) ) {
         if ( replyType == "int" ) {

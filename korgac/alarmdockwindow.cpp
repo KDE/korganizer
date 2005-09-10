@@ -87,17 +87,10 @@ AlarmDockWindow::AlarmDockWindow( const char *name )
   if ( !quit ) {
     kdDebug(5890) << "No Quit standard action." << endl;
   } else {
-#if KDE_IS_VERSION(3,3,90)
     quit->disconnect( SIGNAL( activated() ), this,
                       SLOT( maybeQuit() ) );
     connect( quit, SIGNAL( activated() ), SLOT( slotQuit() ) );
   }
-#else //FIXME: remove for KDE 4.0
-    quit->disconnect( SIGNAL( activated() ), qApp,
-                      SLOT( closeAllWindows() ) );
-  }
-  connect( this, SIGNAL( quitSelected() ), SLOT( slotQuit() ) );
-#endif
 
   QToolTip::add(this, mName );
 }
