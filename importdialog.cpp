@@ -45,7 +45,7 @@ ImportDialog::ImportDialog( const KURL &url, QWidget *parent )
                  0, true, true ),
     mUrl( url )
 {
-  Q3Frame *topFrame = plainPage();
+  QFrame *topFrame = plainPage();
   QVBoxLayout *topLayout = new QVBoxLayout( topFrame, 0, spacingHint() );
 
   QString txt = i18n("Import calendar at '%1' into KOrganizer.")

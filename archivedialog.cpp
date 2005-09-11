@@ -62,7 +62,7 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
 {
   mCalendar = cal;
 
-  Q3Frame *topFrame = plainPage();
+  QFrame *topFrame = plainPage();
   QVBoxLayout *topLayout = new QVBoxLayout(topFrame);
   topLayout->setSpacing(spacingHint());
 

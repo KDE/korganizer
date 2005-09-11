@@ -44,7 +44,7 @@ FreeBusyUrlDialog::FreeBusyUrlDialog( KCal::Attendee *attendee, QWidget *parent,
   : KDialogBase( Plain, i18n("Edit Free/Busy Location"), Ok|Cancel, Ok, parent,
                  name, true, false )
 {
-  Q3Frame *topFrame = plainPage();
+  QFrame *topFrame = plainPage();
 
   QBoxLayout *topLayout = new QVBoxLayout( topFrame, 0, spacingHint() );
 

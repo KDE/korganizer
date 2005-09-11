@@ -55,7 +55,7 @@ SearchDialog::SearchDialog(Calendar *calendar,QWidget *parent)
 {
   mCalendar = calendar;
 
-  Q3Frame *topFrame = plainPage();
+  QFrame *topFrame = plainPage();
   QVBoxLayout *layout = new QVBoxLayout(topFrame,0,spacingHint());
 
   // Search expression
