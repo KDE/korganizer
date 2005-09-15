@@ -397,13 +397,9 @@ void MonthViewCell::setHoliday( bool holiday )
   }
 }
 
-void MonthViewCell::setHoliday( const QString &holiday )
+void MonthViewCell::setHolidayString( const QString &holiday )
 {
   mHolidayString = holiday;
-
-  if ( !holiday.isEmpty() ) {
-    setHoliday( true );
-  }
 }
 
 void MonthViewCell::updateCell()
@@ -889,16 +885,13 @@ void KOMonthView::showDates( const QDate &start, const QDate & )
 
     mCells[i]->setPrimary( primary );
 
-    if ( calSys->dayOfWeek( date ) ==
-         calSys->weekDayOfPray() ) {
-      mCells[i]->setHoliday( true );
-    } else {
-      mCells[i]->setHoliday( false );
-    }
+    bool isHoliday = calSys->dayOfWeek( date ) == calSys->weekDayOfPray()
+                  || !KOGlobals::self()->isWorkDay( date );
+    mCells[i]->setHoliday( isHoliday );
 
     // add holiday, if present
     QString hstring( KOGlobals::self()->holiday( date ) );
-    mCells[i]->setHoliday( hstring );
+    mCells[i]->setHolidayString( hstring );
   }
 
   updateView();

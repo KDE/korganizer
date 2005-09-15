@@ -139,7 +139,7 @@ class MonthViewCell : public QWidget
 
     /** Make this cell show as a holiday */
     void setHoliday( bool );
-    void setHoliday( const QString & );
+    void setHolidayString( const QString & );
 
     void updateCell();
     /** Adds an incidence to the cell.
