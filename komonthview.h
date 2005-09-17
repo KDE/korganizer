@@ -135,11 +135,11 @@ class MonthViewCell : public QWidget
     QDate date() const;
 
     /**
-      Set/unset this cell as primary. A primary cell belongs to the current
-      month. A non-primary cell belongs to the month before or after the
-      current month.
+      Set this cell as primary if @p primary is true. A primary cell belongs
+      to the current month. A non-primary cell belongs to the month before or
+      after the current month.
     */
-    void setPrimary( bool );
+    void setPrimary( bool primary );
     /**
       @return True if this cell is primary, else false.
     */
@@ -148,10 +148,10 @@ class MonthViewCell : public QWidget
     /** Make this cell show as a holiday */
     void setHoliday( bool );
     /**
-      Sets the holiday name to this cell. This will not call
+      Sets the holiday @p name to this cell. This will not call
       setHoliday( true ).
     */
-    void setHolidayString( const QString & );
+    void setHolidayString( const QString &name );
 
     void updateCell();
     /** Adds an incidence to the cell.
@@ -177,10 +177,10 @@ class MonthViewCell : public QWidget
   signals:
     void defaultAction( Incidence * );
     /**
-      Notify the view manager that we want to create a new event, so an
-      editor will pop up.
+      Notify the view manager that we want to create a new event on the given
+      @p date, so an editor will pop up.
     */
-    void newEventSignal( const QDate & );
+    void newEventSignal( const QDate &date );
 
   public slots:
     void select();
