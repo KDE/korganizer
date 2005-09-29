@@ -262,7 +262,7 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
             "Editing it will bring your calendar out of sync "
             "with the organizers calendar. Do you really want "
             "to edit it?" );
-      rc = KMessageBox::warningContinueCancel( parent, txt, QString::null, KStdGuiItem::del() );
+      rc = KMessageBox::warningYesNo( parent, txt );
       return ( rc == KMessageBox::Continue );
     }
   } else {
