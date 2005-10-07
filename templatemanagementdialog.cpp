@@ -102,7 +102,7 @@ void TemplateManagementDialog::slotDeleteTemplate()
   m_templates.remove( item->text() );
   m_base->m_listBox->removeItem( m_base->m_listBox->currentItem() );
   m_changed = true;
-  m_base->m_listBox->setSelected(QMAX(current -1, 0), true);
+  m_base->m_listBox->setSelected(qMax(current -1, 0), true);
 }
 
 void TemplateManagementDialog::slotUpdateDeleteButton( Q3ListBoxItem *item )

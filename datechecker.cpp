@@ -87,7 +87,7 @@ void DateChecker::possiblyPastMidnight()
   if ( mUpdateTimer ) {
     QTime now = QTime::currentTime();
     QTime midnight = QTime( 23, 59, 59 );
-    int msecsWait = QMIN( 480000, now.msecsTo( midnight ) + 2000 );
+    int msecsWait = qMin( 480000, now.msecsTo( midnight ) + 2000 );
 
     mUpdateTimer->stop();
     mUpdateTimer->start( msecsWait, true );

@@ -209,7 +209,7 @@ void FilterEdit::bDeletePressed() {
   mFilters->remove( selected );
   current = 0L;
   updateFilterList();
-  mRulesList->setSelected(QMIN(mRulesList->count()-1, selected), true);
+  mRulesList->setSelected(qMin(mRulesList->count()-1, selected), true);
   emit filterChanged();
 }
 

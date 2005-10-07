@@ -778,10 +778,10 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
   int th = ww->boundingRect().height();
   delete ww;
 
-  int hlHeight = QMAX(fm.boundingRect(longH).height(),
-     QMAX(alarmPxmp->height(), QMAX(recurPxmp->height(),
-     QMAX(readonlyPxmp->height(), QMAX(replyPxmp->height(),
-     QMAX(groupPxmp->height(), organizerPxmp->height()))))));
+  int hlHeight = qMax(fm.boundingRect(longH).height(),
+     qMax(alarmPxmp->height(), qMax(recurPxmp->height(),
+     qMax(readonlyPxmp->height(), qMax(replyPxmp->height(),
+     qMax(groupPxmp->height(), organizerPxmp->height()))))));
 
   bool completelyRenderable = th < (height() - 2 * ft - 2 - hlHeight);
 

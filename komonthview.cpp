@@ -263,8 +263,8 @@ void MonthViewItem::paint( QPainter *p )
   }
   QFontMetrics fm = p->fontMetrics();
   int yPos;
-  int pmheight = QMAX( mRecurPixmap.height(),
-                       QMAX( mAlarmPixmap.height(), mReplyPixmap.height() ) );
+  int pmheight = qMax( mRecurPixmap.height(),
+                       qMax( mAlarmPixmap.height(), mReplyPixmap.height() ) );
   if( pmheight < fm.height() )
     yPos = fm.ascent() + fm.leading()/2;
   else
@@ -278,8 +278,8 @@ void MonthViewItem::paint( QPainter *p )
 
 int MonthViewItem::height( const Q3ListBox *lb ) const
 {
-  return QMAX( QMAX( mRecurPixmap.height(), mReplyPixmap.height() ),
-               QMAX( mAlarmPixmap.height(), lb->fontMetrics().lineSpacing()+1) );
+  return qMax( qMax( mRecurPixmap.height(), mReplyPixmap.height() ),
+               qMax( mAlarmPixmap.height(), lb->fontMetrics().lineSpacing()+1) );
 }
 
 int MonthViewItem::width( const Q3ListBox *lb ) const
