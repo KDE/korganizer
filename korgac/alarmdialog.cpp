@@ -48,6 +48,7 @@
 #include <klockfile.h>
 
 #include <libkcal/event.h>
+#include <ktoolinvocation.h>
 
 #include "koeventviewer.h"
 
@@ -151,7 +152,7 @@ void AlarmDialog::setTimer( int seconds )
 void AlarmDialog::slotUser2()
 {
   if ( !kapp->dcopClient()->isApplicationRegistered( "korganizer" ) ) {
-    if ( kapp->startServiceByDesktopName( "korganizer", QString::null ) )
+    if ( KToolInvocation::startServiceByDesktopName( "korganizer", QString::null ) )
       KMessageBox::error( 0, i18n("Could not start KOrganizer.") );
   }
 

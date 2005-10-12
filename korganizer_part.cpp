@@ -40,7 +40,7 @@
 #include <libkcal/calendarresources.h>
 #include <libkcal/resourcecalendar.h>
 
-#include <kpopupmenu.h>
+#include <kmenu.h>
 #include <kinstance.h>
 #include <klocale.h>
 #include <kaboutdata.h>
@@ -74,9 +74,9 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, const char *widgetName,
                                 const QStringList & ) :
   KParts::ReadOnlyPart(parent, name), mTopLevelWidget( parentWidget->topLevelWidget() )
 {
-  KGlobal::locale()->insertCatalogue( "libkcal" );
-  KGlobal::locale()->insertCatalogue( "libkdepim" );
-  KGlobal::locale()->insertCatalogue( "kdgantt" );
+  KGlobal::locale()->insertCatalog( "libkcal" );
+  KGlobal::locale()->insertCatalog( "libkdepim" );
+  KGlobal::locale()->insertCatalog( "kdgantt" );
 
   KOCore::self()->addXMLGUIClient( mTopLevelWidget, this );
 

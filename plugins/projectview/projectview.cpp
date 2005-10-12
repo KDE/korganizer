@@ -37,7 +37,7 @@ class ProjectViewFactory : public KOrg::PartFactory {
   public:
     KOrg::Part *create(KOrg::MainWindow *parent, const char *name)
     {
-      KGlobal::locale()->insertCatalogue( "kgantt" );
+      KGlobal::locale()->insertCatalog( "kgantt" );
       return new ProjectView(parent,name);
     }
 };

@@ -178,7 +178,7 @@ CalPrintDialog::CalPrintDialog( KOrg::PrintPlugin::List plugins, KPrinter *p,
   : KDialogBase( parent, name, /*modal*/true, i18n("Print"), Ok | Cancel ),
     mPrinter( p ), mPrintPlugins( plugins )
 {
-  Q3VBox *page = makeVBoxMainWidget();
+  KVBox *page = makeVBoxMainWidget();
 
   QSplitter *splitter = new QSplitter( page );
   splitter->setOrientation( Qt::Horizontal );

@@ -62,7 +62,7 @@
 
 #ifndef NODND
 #include <qcursor.h>
-#include <kpopupmenu.h>
+#include <kmenu.h>
 #include <X11/Xlib.h>
 #include <QX11Info>
 #undef KeyPress
@@ -471,7 +471,7 @@ void KODayMatrix::dropEvent( QDropEvent *e )
   } else if ( keybstate & ShiftMask ) {
     action = DRAG_MOVE;
   } else {
-    KPopupMenu *menu = new KPopupMenu( this );
+    KMenu *menu = new KMenu( this );
     if ( existingEvent || existingTodo ) {
       menu->insertItem( i18n("Move"), DRAG_MOVE, 0 );
       if (existingEvent)

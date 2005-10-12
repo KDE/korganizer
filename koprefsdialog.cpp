@@ -444,7 +444,7 @@ extern "C"
 {
   KCModule *create_korganizerconfigtime( QWidget *parent, const char * )
   {
-    KGlobal::locale()->insertCatalogue( "timezones" );
+    KGlobal::locale()->insertCatalog( "timezones" );
     return new KOPrefsDialogTime( parent, "kcmkorganizertime" );
   }
 }

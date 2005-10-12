@@ -34,7 +34,7 @@
 #include <kurl.h>
 #include <kstandarddirs.h>
 #include <dcopclient.h>
-#include <kpopupmenu.h>
+#include <kmenu.h>
 #include <kmessagebox.h>
 #include <kaction.h>
 #include <kstdaction.h>
@@ -45,6 +45,7 @@
 #include <QMouseEvent>
 
 #include <stdlib.h>
+#include <ktoolinvocation.h>
 
 AlarmDockWindow::AlarmDockWindow( const char *name )
   : KSystemTray( 0, name )
@@ -162,7 +163,7 @@ void AlarmDockWindow::enableAutostart( bool enable )
 void AlarmDockWindow::mousePressEvent( QMouseEvent *e )
 {
   if ( e->button() == Qt::LeftButton ) {
-    kapp->startServiceByDesktopName( "korganizer", QString::null );
+    KToolInvocation::startServiceByDesktopName( "korganizer", QString::null );
   } else {
     KSystemTray::mousePressEvent( e );
   }

@@ -44,6 +44,7 @@
 #include "komailclient.h"
 //Added by qt3to4:
 #include <Q3CString>
+#include <ktoolinvocation.h>
 
 KOMailClient::KOMailClient()
 {
@@ -185,7 +186,7 @@ bool KOMailClient::send(const QString &from,const QString &to,
     pclose(fd);
   } else {
     if (!kapp->dcopClient()->isApplicationRegistered("kmail")) {
-                        if (KApplication::startServiceByDesktopName("kmail")) {
+                        if (KToolInvocation::startServiceByDesktopName("kmail")) {
         KMessageBox::error(0,i18n("No running instance of KMail found."));
         return false;
                         }

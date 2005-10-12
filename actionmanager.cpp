@@ -55,7 +55,7 @@
 #include <kfiledialog.h>
 #include <kio/netaccess.h>
 #include <kkeydialog.h>
-#include <kpopupmenu.h>
+#include <kmenu.h>
 #include <kstandarddirs.h>
 #include <ktip.h>
 #include <ktempfile.h>

@@ -45,7 +45,7 @@
 #include <kmessagebox.h>
 #include <kmimetype.h>
 #include <kiconview.h>
-#include <kpopupmenu.h>
+#include <kmenu.h>
 #include <kprotocolinfo.h>
 #include <krecentdocument.h>
 #include <krun.h>
@@ -76,6 +76,7 @@
 #include <Q3ValueList>
 #include <QVBoxLayout>
 #include <QDragEnterEvent>
+#include <krandom.h>
 
 class AttachmentIconItem : public KIconViewItem
 {
@@ -374,12 +375,12 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent,
   buttonLayout->addWidget( button );
   connect( button, SIGNAL( clicked() ), SLOT( slotShow() ) );
   
-  mPopupMenu = new KPopupMenu( this );
+  mPopupMenu = new KMenu( this );
   mPopupMenu->insertItem( i18n( "&Open" ), this, SLOT( slotShow() ) );
   mPopupMenu->insertItem( i18n( "&Delete" ), this, SLOT( slotRemove() ) );
   mPopupMenu->insertItem( i18n( "&Properties..." ), this, SLOT( slotEdit() ) );
   
-  mPopupNew = new KPopupMenu( this );
+  mPopupNew = new KMenu( this );
   mPopupNew->insertItem( i18n( "&New..." ), this, SLOT( slotAdd() ) );
 
   setAcceptDrops( TRUE );
@@ -409,13 +410,13 @@ QString KOEditorAttachments::generateLocalAttachmentPath(
 {
   QString pathBegin = "korganizer/attachments/";
   if ( mUid.isEmpty() )
-    pathBegin += KApplication::randomString( 10 ); // arbitrary
+    pathBegin += KRandom::randomString( 10 ); // arbitrary
   else
     pathBegin += mUid;
   pathBegin += "/";
   
   if ( filename.isEmpty() )
-    filename = KApplication::randomString( 10 ) + 
+    filename = KRandom::randomString( 10 ) + 
                      QString( mimeType->patterns().first() ).replace( "*", "" );
   else {
     // we need to determine if there is a correct extension
@@ -437,7 +438,7 @@ QString KOEditorAttachments::generateLocalAttachmentPath(
   while ( QFile::exists( path ) )
     // no need to worry much about races here, I guess
     path = locateLocal( "data", 
-                       pathBegin + KApplication::randomString( 6 ) + filename );
+                       pathBegin + KRandom::randomString( 6 ) + filename );
   
   return path;
 }
@@ -471,7 +472,7 @@ void KOEditorAttachments::dropEvent( QDropEvent* event ) {
     probablyWeHaveUris = true;
   }
   
-  KPopupMenu menu( this );
+  KMenu menu( this );
   if ( probablyWeHaveUris ) {
     menu.insertItem( i18n( "&Link here" ), 1 );
     // we need to check if we can reasonably expect to copy the objects

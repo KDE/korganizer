@@ -48,7 +48,7 @@ class Q3IconViewItem;
 class QLabel;
 class QLineEdit;
 class KIconView;
-class KPopupMenu;
+class KMenu;
 class KURLRequester;
 
 namespace KIO {
@@ -129,7 +129,7 @@ class KOEditorAttachments : public QWidget
 
   private:
     KIconView *mAttachments;
-    KPopupMenu *mPopupMenu, *mPopupNew;
+    KMenu *mPopupMenu, *mPopupNew;
     QString mUid; // used only to generate attachments' filenames
     KURL::List mDeferredDelete;
     KURL::List mDeferredCopy;
