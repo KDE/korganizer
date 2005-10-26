@@ -42,6 +42,7 @@
 
 #include <kdebug.h>
 #include <koglobals.h>
+#include <ktoolinvocation.h>
 
 KOEventViewer::KOEventViewer( QWidget *parent, const char *name )
   : Q3TextBrowser( parent, name ), mDefaultText("")
@@ -154,7 +155,7 @@ void KOEventViewer::editIncidence()
   if ( mIncidence ) {
 #ifndef KORG_NODCOP
     // make sure korganizer is running or the part is shown
-    kapp->startServiceByDesktopPath("korganizer");
+    KToolInvocation::startServiceByDesktopPath("korganizer");
 
     KOrganizerIface_stub korganizerIface( "korganizer", "KOrganizerIface" );
     korganizerIface.editIncidence( mIncidence->uid() );
@@ -167,7 +168,7 @@ void KOEventViewer::showIncidenceContext()
 #ifndef KORG_NODCOP
   if ( mIncidence ) {
     // make sure korganizer is running or the part is shown
-    kapp->startServiceByDesktopPath("korganizer");
+    KToolInvocation::startServiceByDesktopPath("korganizer");
 
     KOrganizerIface_stub korganizerIface( "korganizer", "KOrganizerIface" );
     korganizerIface.showIncidenceContext( mIncidence->uid() );

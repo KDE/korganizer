@@ -28,6 +28,7 @@
 
 #include <dcopclient.h>
 #include <dcopref.h>
+#include <ktoolinvocation.h>
 
 AlarmClient::AlarmClient()
 {
@@ -48,7 +49,7 @@ void AlarmClient::startDaemon()
   }
   else {
     QString error;
-    if ( kapp->startServiceByDesktopPath( desktopFile, QStringList(), &error ) != 0 )
+    if ( KToolInvocation::startServiceByDesktopPath( desktopFile, QStringList(), &error ) != 0 )
       kdWarning() << "Failure starting korgac:" << error << endl;
   }
 }

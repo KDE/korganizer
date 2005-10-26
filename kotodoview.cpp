@@ -1015,8 +1015,8 @@ void KOTodoView::showIncidences( const Incidence::List &incidences )
       if ( !first ) first = static_cast<KOTodoViewItem *>( it.current() );
       last = static_cast<KOTodoViewItem *>( it.current() );
       uint pos = it.current()->itemPos();
-      begin = kMin( begin, pos );
-      end = kMax( end, pos + it.current()->height() );
+      begin = qMin( begin, pos );
+      end = qMax( end, pos + it.current()->height() );
     }
   
   if ( end < begin )

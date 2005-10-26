@@ -481,7 +481,7 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
     connect( mExpandButton, SIGNAL( clicked() ), SIGNAL( toggleExpand() ) );
   } else {
     QLabel *label = new QLabel( i18n("All Day"), mDummyAllDayLeft );
-    label->setAlignment( Qt::AlignRight | Qt::AlignVCenter | Qt::WordBreak );
+    label->setAlignment( Qt::AlignRight | Qt::AlignVCenter | Qt::TextWordWrap );
   }
 
   mAllDayAgenda = new KOAgenda(1,mAllDayFrame);
@@ -1248,8 +1248,8 @@ void KOAgendaView::showIncidences( const Incidence::List &incidences )
         it != incidences.constEnd(); ++it ) {
     if ( ( *it )->dtStart() < start )
       first = *it;
-    start = kMin( start, ( *it )->dtStart() );
-    end = kMax( start, ( *it )->dtEnd() );
+    start = qMin( start, ( *it )->dtStart() );
+    end = qMax( start, ( *it )->dtEnd() );
   }
   
   if ( start.date().daysTo( end.date() ) + 1 <= currentDateCount() )

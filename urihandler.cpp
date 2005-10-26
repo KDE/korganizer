@@ -44,6 +44,7 @@
 #include <kapplication.h>
 #include <kprocess.h>
 #include <kdebug.h>
+#include <ktoolinvocation.h>
 
 bool UriHandler::process( const QString &uri )
 {
@@ -52,7 +53,7 @@ bool UriHandler::process( const QString &uri )
 #ifndef KORG_NODCOP
   if ( uri.startsWith( KDEPIMPROTOCOL_EMAIL ) ) {
     // make sure kmail is running or the part is shown
-    kapp->startServiceByDesktopPath("kmail");
+    KToolInvocation::startServiceByDesktopPath("kmail");
 
     // parse string, show
     int colon = uri.find( ':' );
@@ -64,14 +65,14 @@ bool UriHandler::process( const QString &uri )
     kmailIface.showMail( serialNumberStr.toUInt(), QString() );
     return true;
   } else if ( uri.startsWith( "mailto:" ) ) {
-    KApplication::kApplication()->invokeMailer( uri.mid(7), QString::null );
+    KToolInvocation::invokeMailer( uri.mid(7), QString::null );
     return true;
   } else if ( uri.startsWith( KDEPIMPROTOCOL_CONTACT ) ) {
     DCOPClient *client = KApplication::kApplication()->dcopClient();
     const QByteArray noParamData;
     const QByteArray paramData;
     QByteArray replyData;
-    Q3CString replyTypeStr;
+    DCOPCString replyTypeStr;
     bool foundAbbrowser = client->call( "kaddressbook", "KAddressBookIface",
                                         "interfaces()",  noParamData,
                                         replyTypeStr, replyData );
@@ -97,7 +98,7 @@ bool UriHandler::process( const QString &uri )
     }
   } else if ( uri.startsWith( KDEPIMPROTOCOL_INCIDENCE ) ) {
     // make sure korganizer is running or the part is shown
-    kapp->startServiceByDesktopPath("korganizer");
+    KToolInvocation::startServiceByDesktopPath("korganizer");
 
     // we must work around KURL breakage (it doesn't know about URNs)
     QString uid = KURL::decode_string( uri ).mid( 11 );
@@ -105,12 +106,12 @@ bool UriHandler::process( const QString &uri )
     KOrganizerIface_stub korganizerIface( "korganizer", "KOrganizerIface" );
     return korganizerIface.showIncidence( uid );
   } else if ( uri.startsWith( KDEPIMPROTOCOL_NEWSARTICLE ) ) {
-    kapp->startServiceByDesktopPath( "knode" );
+    KToolInvocation::startServiceByDesktopPath( "knode" );
     
     KNodeIface_stub knodeIface( "knode", "KNodeIface" );
     knodeIface.openURL( uri );
   } else {  // no special URI, let KDE handle it
-    new KRun(KURL( uri ));
+    new KRun(KURL( uri ),0L);
   }
 #endif /* KORG_NODCOP */
   

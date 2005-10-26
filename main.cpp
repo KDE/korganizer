@@ -51,7 +51,7 @@ int main ( int argc, char **argv )
   KGlobal::locale()->insertCatalog( "libkdepim" );
   KGlobal::locale()->insertCatalog( "kdgantt" );
 
-  if ( app.isRestored() ) {
+  if ( app.isSessionRestored() ) {
     RESTORE( KOrganizer )
   }
 
