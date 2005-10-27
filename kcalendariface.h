@@ -32,6 +32,7 @@
 //Added by qt3to4:
 #include <Q3ValueList>
 #include <Q3CString>
+#include <QPair>
 // yes, this is this very header - but it tells dcopidl to include it
 // in _stub.cpp and _skel.cpp files, to get the definition of the structs.
 #include "kcalendariface.h"
