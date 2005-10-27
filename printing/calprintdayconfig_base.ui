@@ -51,7 +51,7 @@
                         <cstring>spacer1</cstring>
                     </property>
                     <property name="orientation">
-                        <enum>Horizontal</enum>
+                        <enum>Qt::Horizontal</enum>
                     </property>
                     <property name="sizeType">
                         <enum>Expanding</enum>
@@ -68,7 +68,7 @@
                         <cstring>spacer2</cstring>
                     </property>
                     <property name="orientation">
-                        <enum>Horizontal</enum>
+                        <enum>Qt::Horizontal</enum>
                     </property>
                     <property name="sizeType">
                         <enum>Expanding</enum>
@@ -120,7 +120,7 @@
                         </time>
                     </property>
                     <property name="display">
-                        <set>Minutes|Hours</set>
+                        <set>Q3TimeEdit::Minutes|Q3TimeEdit::Hours</set>
                     </property>
                     <property name="whatsThis" stdset="0">
                         <string>It's possible to print only those events which are inside a given timerange. With this time selection box you can define the end of this time range. The start time should be defined with the &lt;i&gt;Start time&lt;/i&gt; option. Note you can automatically modify these settings if you check &lt;i&gt;Extend time range to include all events&lt;/i&gt;.</string>
@@ -142,7 +142,7 @@
                         <cstring>mFromDate</cstring>
                     </property>
                     <property name="focusPolicy">
-                        <enum>StrongFocus</enum>
+                        <enum>Qt::StrongFocus</enum>
                     </property>
                     <property name="whatsThis" stdset="0">
                         <string>If you want to print more days at once, you can define a range of dates with this option and the &lt;i&gt;End date&lt;/i&gt; option. This option is used to define the start date.</string>
@@ -160,7 +160,7 @@
                         </time>
                     </property>
                     <property name="display">
-                        <set>Minutes|Hours</set>
+                        <set>Q3TimeEdit::Minutes|Q3TimeEdit::Hours</set>
                     </property>
                     <property name="whatsThis" stdset="0">
                         <string>It's possible to print only those events which are inside a given timerange. With this time selection box you can define the start of this time range. The end time should be defined with the &lt;i&gt;End time&lt;/i&gt; option. Note you can automatically modify these settings if you check &lt;i&gt;Extend time range to include all events&lt;/i&gt;.</string>
@@ -185,7 +185,7 @@
                         <cstring>mToDate</cstring>
                     </property>
                     <property name="focusPolicy">
-                        <enum>StrongFocus</enum>
+                        <enum>Qt::StrongFocus</enum>
                     </property>
                     <property name="whatsThis" stdset="0">
                         <string>If you want to print more days at once, you can define a range of dates with this option and the &lt;i&gt;Start date&lt;/i&gt; option. This option is used to define the end date.</string>
@@ -223,7 +223,7 @@
                 <cstring>spacer3</cstring>
             </property>
             <property name="orientation">
-                <enum>Vertical</enum>
+                <enum>Qt::Vertical</enum>
             </property>
             <property name="sizeType">
                 <enum>Expanding</enum>

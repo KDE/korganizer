@@ -26,7 +26,7 @@
                 <cstring>spacer3</cstring>
             </property>
             <property name="orientation">
-                <enum>Vertical</enum>
+                <enum>Qt::Vertical</enum>
             </property>
             <property name="sizeType">
                 <enum>Expanding</enum>
@@ -54,7 +54,7 @@
                         <cstring>spacer1</cstring>
                     </property>
                     <property name="orientation">
-                        <enum>Horizontal</enum>
+                        <enum>Qt::Horizontal</enum>
                     </property>
                     <property name="sizeType">
                         <enum>Expanding</enum>
@@ -85,7 +85,7 @@
                         <cstring>mFromDate</cstring>
                     </property>
                     <property name="focusPolicy">
-                        <enum>StrongFocus</enum>
+                        <enum>Qt::StrongFocus</enum>
                     </property>
                     <property name="whatsThis" stdset="0">
                         <string>Here you can choose which events should be printed based on their date. This check enables you to enter the start date of the date range. Use the &lt;i&gt;End date&lt;/i&gt; to enter the end date of the daterange.</string>
@@ -110,7 +110,7 @@
                         <cstring>spacer4</cstring>
                     </property>
                     <property name="orientation">
-                        <enum>Horizontal</enum>
+                        <enum>Qt::Horizontal</enum>
                     </property>
                     <property name="sizeType">
                         <enum>Expanding</enum>
@@ -134,7 +134,7 @@
                         </time>
                     </property>
                     <property name="display">
-                        <set>Minutes|Hours</set>
+                        <set>Q3TimeEdit::Minutes|Q3TimeEdit::Hours</set>
                     </property>
                     <property name="whatsThis" stdset="0">
                         <string>All events which start later than the given time will not be printed.</string>
@@ -166,7 +166,7 @@
                         </time>
                     </property>
                     <property name="display">
-                        <set>Minutes|Hours</set>
+                        <set>Q3TimeEdit::Minutes|Q3TimeEdit::Hours</set>
                     </property>
                     <property name="whatsThis" stdset="0">
                         <string>All events which start earlier than the given time will not be printed.</string>
@@ -177,7 +177,7 @@
                         <cstring>mToDate</cstring>
                     </property>
                     <property name="focusPolicy">
-                        <enum>StrongFocus</enum>
+                        <enum>Qt::StrongFocus</enum>
                     </property>
                     <property name="whatsThis" stdset="0">
                         <string>Here you can choose which events should be printed based on their date. This check enables you to enter the end date of the date range. Use the &lt;i&gt;Start date&lt;/i&gt; to enter the start date of the daterange.</string>

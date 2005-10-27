@@ -326,8 +326,8 @@ Event *CalPrintHelper::holiday( const QDate &dt )
   QString hstring( mCoreHelper->holidayString( dt ) );
   if ( !hstring.isEmpty() ) {
     Event*holiday=new Event();
-    holiday->setDtStart( dt );
-    holiday->setDtEnd( dt );
+    holiday->setDtStart( QDateTime(dt) );
+    holiday->setDtEnd( QDateTime(dt) );
     holiday->setFloats( true );
     holiday->setCategories( i18n("Holiday") );
     return holiday;
@@ -839,8 +839,7 @@ void CalPrintHelper::drawTodo( int &count, Todo *todo, QPainter &p,
           start = rct->mRect.bottom() + 1;
         else
           start = p.viewport().top();
-        p.moveTo( center, start );
-        p.lineTo( center, to );
+        p.drawLine( center, start, center, to );
         rct->mSamePage = false;
       }
     }
@@ -888,9 +887,8 @@ void CalPrintHelper::drawTodo( int &count, Todo *todo, QPainter &p,
       bottom = 0;
     int to( rect.top() + (rect.height()/2) );
     int endx( rect.left() );
-    p.moveTo( center, bottom );
-    p.lineTo( center, to );
-    p.lineTo( endx, to );
+    p.drawLine( center, bottom, center, to);
+    p.drawLine( center, to, endx, to );
   }
 
   // summary
@@ -919,8 +917,8 @@ void CalPrintHelper::drawTodo( int &count, Todo *todo, QPainter &p,
     int delta = p.fontMetrics().lineSpacing();
     int lines = ( rect.height() / delta ) + 1;
     for ( int i=0; i<lines; i++ ) {
-      p.moveTo( rect.left(),  rect.top() + ( delta/2 ) + ( i*delta ) );
-      p.lineTo( rect.right(), rect.top() + ( delta/2 ) + ( i*delta ) );
+      p.drawLine( rect.left(),  rect.top() + ( delta/2 ) + ( i*delta ),
+		  rect.right(), rect.top() + ( delta/2 ) + ( i*delta ) );
     }
   }
 
