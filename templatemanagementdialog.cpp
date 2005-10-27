@@ -98,7 +98,7 @@ void TemplateManagementDialog::slotDeleteTemplate()
 {
   Q3ListBoxItem *const item = m_base->m_listBox->selectedItem();
   if ( !item ) return; // can't happen (TM)
-  unsigned int current = m_base->m_listBox->index(item);
+  int current = m_base->m_listBox->index(item);
   m_templates.remove( item->text() );
   m_base->m_listBox->removeItem( m_base->m_listBox->currentItem() );
   m_changed = true;
