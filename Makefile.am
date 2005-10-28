@@ -98,7 +98,7 @@ libkorganizer_la_SOURCES = komessagebox.cpp \
 	navigatorbar.cpp kogroupware.cpp \
 	history.cpp \
 	koprefs_base.kcfgc \
-	koincidencetooltip.cpp aboutdata.cpp \
+	aboutdata.cpp \
 	importdialog.cpp \
 	korganizerifaceimpl.cpp \
 	freebusymanager.cpp freebusyurldialog.cpp \
@@ -152,7 +152,7 @@ noinst_HEADERS = komonthview.h \
 	koeventview.h statusdialog.h customlistviewitem.h \
 	alarmclient.h kohelper.h \
 	navigatorbar.h kogroupware.h \
-	koincidencetooltip.h korganizerifaceimpl.h \
+	korganizerifaceimpl.h \
 	exportwebdialog.h templatemanagementdialog.h
 
 tip_DATA = tips
