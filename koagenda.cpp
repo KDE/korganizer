@@ -234,7 +234,7 @@ void KOAgenda::init()
 
   // Grab key strokes for keyboard navigation of agenda. Seems to have no
   // effect. Has to be fixed.
-  setFocusPolicy( WheelFocus );
+  setFocusPolicy( Qt::WheelFocus );
 
   connect( &mScrollUpTimer, SIGNAL( timeout() ), SLOT( scrollUp() ) );
   connect( &mScrollDownTimer, SIGNAL( timeout() ), SLOT( scrollDown() ) );
@@ -268,8 +268,8 @@ void KOAgenda::init()
                   int( mGridSpacingY * mRows ) );
 
   viewport()->update();
-  viewport()->setBackgroundMode( NoBackground );
-  viewport()->setFocusPolicy( WheelFocus );
+  viewport()->setBackgroundMode( Qt::NoBackground );
+  viewport()->setFocusPolicy( Qt::WheelFocus );
 
   setMinimumSize( 30, int( mGridSpacingY + 1 ) );
 //  setMaximumHeight(mGridSpacingY * mRows + 5);
@@ -373,7 +373,7 @@ bool KOAgenda::eventFilter ( QObject *object, QEvent *event )
 
     case ( QEvent::Leave ):
       if ( !mActionItem )
-        setCursor( arrowCursor );
+        setCursor( Qt::arrowCursor );
       if ( object == viewport() )
         emit leaveAgenda();
       return true;
@@ -584,7 +584,7 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
     case QEvent::MouseButtonPress:
 //        kdDebug(5850) << "koagenda: filtered button press" << endl;
       if (object != viewport()) {
-        if (me->button() == RightButton) {
+        if (me->button() == Qt::RightButton) {
           mClickedItem = dynamic_cast<KOAgendaItem *>(object);
           if (mClickedItem) {
             selectItem(mClickedItem);
@@ -609,7 +609,7 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
           }
         }
       } else {
-        if (me->button() == RightButton)
+        if (me->button() == Qt::RightButton)
         {
           // if mouse pointer is not in selection, select the cell below the cursor
           QPoint gpos = contentsToGrid( viewportToContents( viewportPos ) );
@@ -630,7 +630,7 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
           if ( !ptInSelection( gpos ) ) {
             selectItem(0);
             mActionItem = 0;
-            setCursor(arrowCursor);
+            setCursor(Qt::arrowCursor);
             startSelectAction(viewportPos);
           }
         }
@@ -886,7 +886,7 @@ void KOAgenda::performItemAction(const QPoint& viewportPos)
       mActionItem->resetMove();
       placeSubCells( mActionItem );
       emit startDragSignal( mActionItem->incidence() );
-      setCursor( arrowCursor );
+      setCursor( Qt::arrowCursor );
       mActionItem = 0;
       mActionType = NOP;
       mItemMoved = false;
@@ -920,7 +920,7 @@ void KOAgenda::performItemAction(const QPoint& viewportPos)
         mScrollDownTimer.stop();
         mActionItem->resetMove();
         placeSubCells( mActionItem );
-        setCursor( arrowCursor );
+        setCursor( Qt::arrowCursor );
         mActionItem = 0;
         mActionType = NOP;
         mItemMoved = false;
@@ -1051,7 +1051,7 @@ void KOAgenda::endItemAction()
 //  kdDebug(5850) << "KOAgenda::endItemAction() " << endl;
   mScrollUpTimer.stop();
   mScrollDownTimer.stop();
-  setCursor( arrowCursor );
+  setCursor( Qt::arrowCursor );
   bool multiModify = false;
   // FIXME: do the cloning here...
 
@@ -1172,19 +1172,19 @@ void KOAgenda::setActionCursor( int actionType, bool acting )
 {
   switch ( actionType ) {
     case MOVE:
-      if (acting) setCursor( sizeAllCursor );
-      else setCursor( arrowCursor );
+      if (acting) setCursor( Qt::sizeAllCursor );
+      else setCursor( Qt::arrowCursor );
       break;
     case RESIZETOP:
     case RESIZEBOTTOM:
-      setCursor( sizeVerCursor );
+      setCursor( Qt::sizeVerCursor );
       break;
     case RESIZELEFT:
     case RESIZERIGHT:
-      setCursor( sizeHorCursor );
+      setCursor( Qt::sizeHorCursor );
       break;
     default:
-      setCursor( arrowCursor );
+      setCursor( Qt::arrowCursor );
   }
 }
 
@@ -1940,16 +1940,16 @@ void KOAgenda::selectItemByUID( const QString& uid )
 void KOAgenda::keyPressEvent( QKeyEvent *kev )
 {
   switch(kev->key()) {
-    case Key_PageDown:
+    case Qt::Key_PageDown:
       verticalScrollBar()->addPage();
       break;
-    case Key_PageUp:
+    case Qt::Key_PageUp:
       verticalScrollBar()->subtractPage();
       break;
-    case Key_Down:
+    case Qt::Key_Down:
       verticalScrollBar()->addLine();
       break;
-    case Key_Up:
+    case Qt::Key_Up:
       verticalScrollBar()->subtractLine();
       break;
     default:

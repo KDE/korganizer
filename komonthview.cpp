@@ -123,13 +123,13 @@ void KNoScrollListBox::setBackground( bool primary, bool workDay )
 void KNoScrollListBox::keyPressEvent( QKeyEvent *e )
 {
   switch( e->key() ) {
-    case Key_Right:
+    case Qt::Key_Right:
       scrollBy( 4, 0 );
       break;
-    case Key_Left:
+    case Qt::Key_Left:
       scrollBy( -4, 0 );
       break;
-    case Key_Up:
+    case Qt::Key_Up:
       if ( !count() ) break;
       setCurrentItem( ( currentItem() + count() - 1 ) % count() );
       if ( !itemVisible( currentItem() ) ) {
@@ -140,7 +140,7 @@ void KNoScrollListBox::keyPressEvent( QKeyEvent *e )
         }
       }
       break;
-    case Key_Down:
+    case Qt::Key_Down:
       if ( !count() ) break;
       setCurrentItem( ( currentItem() + 1 ) % count() );
       if( !itemVisible( currentItem() ) ) {
@@ -173,7 +173,7 @@ void KNoScrollListBox::mousePressEvent( QMouseEvent *e )
 {
   Q3ListBox::mousePressEvent( e );
 
-  if ( e->button() == RightButton ) {
+  if ( e->button() == Qt::RightButton ) {
     emit rightClick();
   }
 }
