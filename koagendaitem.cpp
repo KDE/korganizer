@@ -23,7 +23,6 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include <qtooltip.h>
 #include <q3dragobject.h>
 #include <qpainter.h>
 //Added by qt3to4:
@@ -39,6 +38,7 @@
 #include <kwordwrap.h>
 
 #include <libkcal/icaldrag.h>
+#include <libkcal/incidenceformatter.h>
 #include <libkcal/vcaldrag.h>
 #include <libkdepim/kvcarddrag.h>
 #ifndef KORG_NOKABC
@@ -49,13 +49,10 @@
 #include "koprefs.h"
 #include "koglobals.h"
 
-#include "koincidencetooltip.h"
 #include "koagendaitem.h"
 #include "koagendaitem.moc"
 
 //--------------------------------------------------------------------------
-
-QToolTipGroup *KOAgendaItem::mToolTipGroup = 0;
 
 QPixmap *KOAgendaItem::alarmPxmp = 0;
 QPixmap *KOAgendaItem::recurPxmp = 0;
@@ -87,7 +84,7 @@ KOAgendaItem::KOAgendaItem( Incidence *incidence, const QDate &qd, QWidget *pare
   mSelected = true;
   select( false );
 
-  KOIncidenceToolTip::add( this, incidence, toolTipGroup() );
+  setToolTip(IncidenceFormatter::toolTipString( incidence ));
   setAcceptDrops( true );
 }
 
@@ -530,12 +527,6 @@ void KOAgendaItem::expandRight(int dx)
   int newXRight = cellXRight() + dx;
   if ( newXRight < newXLeft ) newXRight = newXLeft;
   setCellX( newXLeft, newXRight );
-}
-
-QToolTipGroup *KOAgendaItem::toolTipGroup()
-{
-  if (!mToolTipGroup) mToolTipGroup = new QToolTipGroup(0);
-  return mToolTipGroup;
 }
 
 void KOAgendaItem::dragEnterEvent( QDragEnterEvent *e )

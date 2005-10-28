@@ -28,6 +28,7 @@
 #include "cellitem.h"
 
 #include <qdatetime.h>
+#include <qwidget.h>
 //Added by qt3to4:
 #include <QDragEnterEvent>
 #include <QPixmap>
@@ -35,7 +36,6 @@
 #include <QPaintEvent>
 #include <Q3PtrList>
 
-class QToolTipGroup;
 class QDragEnterEvent;
 class QDropEvent;
 
@@ -77,6 +77,7 @@ struct MultiItemInfo
   when the move started. The prev and next members of mStartMoveInfo are used
   for that longer sequence including all (shown and hidden) items.
 */
+
 class KOAgendaItem : public QWidget, public KOrg::CellItem
 {
     Q_OBJECT
@@ -134,8 +135,6 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
 
     void setText ( const QString & text ) { mLabelText = text; }
     QString text () { return mLabelText; }
-
-    static QToolTipGroup *toolTipGroup();
 
     Q3PtrList<KOAgendaItem> conflictItems();
     void setConflictItems(Q3PtrList<KOAgendaItem>);
@@ -195,7 +194,6 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     //Color of the resource
     QColor mResourceColor;
   private:
-    static QToolTipGroup *mToolTipGroup;
 
     bool mSelected;
     Q3PtrList<KOAgendaItem> mConflictItems;

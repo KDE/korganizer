@@ -64,6 +64,7 @@
 #include <libkcal/icaldrag.h>
 #include <libkcal/dndfactory.h>
 #include <libkcal/calfilter.h>
+#include <libkcal/incidenceformatter.h>
 
 #include <kcalendarsystem.h>
 
@@ -75,7 +76,6 @@
 #include "koagenda.h"
 #include "koagendaitem.h"
 
-#include "koincidencetooltip.h"
 #include "kogroupware.h"
 #include "kodialogmanager.h"
 #include "koeventpopupmenu.h"
@@ -100,7 +100,7 @@ TimeLabels::TimeLabels(int rows,QWidget *parent,const char *name,Qt::WFlags f) :
 
   resizeContents(50, int(mRows * mCellHeight) );
 
-  viewport()->setBackgroundMode( PaletteBackground );
+  viewport()->setBackgroundMode( Qt::PaletteBackground );
 
   mMousePos = new Q3Frame(this);
   mMousePos->setLineWidth(0);
@@ -369,7 +369,6 @@ void KOAlternateLabel::useExtensiveText()
   mTextTypeFixed = true;
   QLabel::setText( mExtensiveText );
   QToolTip::remove( this );
-  QToolTip::hide();
 }
 
 void KOAlternateLabel::useDefaultText()
@@ -389,7 +388,6 @@ void KOAlternateLabel::squeezeTextToLabel()
   if (longTextWidth <= labelWidth) {
     QLabel::setText( mExtensiveText );
     QToolTip::remove( this );
-    QToolTip::hide();
   } else if (textWidth <= labelWidth) {
     QLabel::setText( mLongText );
     QToolTip::remove( this );
@@ -453,7 +451,7 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
 
   // Create agenda splitter
 #ifndef KORG_NOSPLITTER
-  mSplitterAgenda = new QSplitter(Vertical,this);
+  mSplitterAgenda = new QSplitter(Qt::Vertical,this);
   topLayout->addWidget(mSplitterAgenda);
 
   mSplitterAgenda->setOpaqueResize( KGlobalSettings::opaqueResize() );
@@ -772,7 +770,7 @@ void KOAgendaView::createDayLabels()
     KOAlternateLabel *dayLabel = new KOAlternateLabel(shortstr,
       longstr, veryLongStr, mDayLabels);
     dayLabel->setMinimumWidth(1);
-    dayLabel->setAlignment(QLabel::AlignHCenter);
+    dayLabel->setAlignment(Qt::AlignHCenter);
     if (date == QDate::currentDate()) {
       QFont font = dayLabel->font();
       font.setBold(true);
@@ -787,7 +785,7 @@ void KOAgendaView::createDayLabels()
         // use a KOAlternateLabel so when the text doesn't fit any more a tooltip is used
         KOAlternateLabel*label = new KOAlternateLabel( text, text, QString::null, mDayLabels );
         label->setMinimumWidth(1);
-        label->setAlignment(AlignCenter);
+        label->setAlignment(Qt::AlignCenter);
         dayLayout->addWidget(label);
       }
     }
@@ -801,7 +799,7 @@ void KOAgendaView::createDayLabels()
         // use a KOAlternateLabel so when the text doesn't fit any more a tooltip is used
         KOAlternateLabel*label = new KOAlternateLabel( text, text, QString::null, mDayLabels );
         label->setMinimumWidth(1);
-        label->setAlignment(AlignCenter);
+        label->setAlignment(Qt::AlignCenter);
         dayLayout->addWidget(label);
       }
     }
@@ -932,9 +930,12 @@ void KOAgendaView::updateConfig()
 
   updateTimeBarWidth();
 
+#warning port me!
+#if 0
   // ToolTips displaying summary of events
   KOAgendaItem::toolTipGroup()->setEnabled(KOPrefs::instance()
                                            ->mEnableToolTips);
+#endif
 
   setHolidayMasks();
 
@@ -1011,7 +1012,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
   } else if ( incidence->type() == "Todo" ) {
     Todo *td = static_cast<Todo*>(incidence);
     startDt = td->hasStartDate() ? td->dtStart() : td->dtDue();
-    startDt = thisDate.addDays( td->dtDue().daysTo( startDt ) );
+    startDt = QDateTime( thisDate.addDays( td->dtDue().daysTo( startDt ) ));
     startDt.setTime( startTime );
     endDt.setDate( thisDate );
     endDt.setTime( endTime );
@@ -1025,8 +1026,8 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
   // functionality will also be available in other views!
   // TODO_Recurrence: This does not belong here, and I'm not really sure
   // how it's supposed to work anyway.
-  Recurrence *recur = incidence->recurrence();
-/*  if ( recur->doesRecur() && daysOffset != 0 ) {
+/* Recurrence *recur = incidence->recurrence();
+  if ( recur->doesRecur() && daysOffset != 0 ) {
     switch ( recur->recurrenceType() ) {
       case Recurrence::rYearlyPos: {
         int freq = recur->frequency();
@@ -1179,8 +1180,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
 
   item->setItemDate( startDt.date() );
 
-  KOIncidenceToolTip::remove( item );
-  KOIncidenceToolTip::add( item, incidence, KOAgendaItem::toolTipGroup() );
+  item->setToolTip( IncidenceFormatter::toolTipString( incidence ));
 
   // don't update the agenda as the item already has the correct coordinates.
   // an update would delete the current item and recreate it, but we are still
@@ -1464,9 +1464,9 @@ void KOAgendaView::fillAgenda()
     mMinY[curCol] = mAgenda->timeToY(QTime(23,59)) + 1;
     mMaxY[curCol] = mAgenda->timeToY(QTime(0,0)) - 1;
 
-    unsigned int numEvent;
+    int numEvent;
     for(numEvent=0;numEvent<dayEvents.count();++numEvent) {
-      Event *event = *dayEvents.at(numEvent);
+      Event *event = dayEvents.at(numEvent);
 //      kdDebug(5850) << " Event: " << event->summary() << endl;
       insertIncidence( event, currentDate, curCol );
       if( event->uid() == selectedAgendaUid && !selectedAgendaUid.isNull() ) {
@@ -1484,9 +1484,9 @@ void KOAgendaView::fillAgenda()
 
     // ---------- [display Todos --------------
     if ( KOPrefs::instance()->showAllDayTodo() ) {
-      unsigned int numTodo;
+      int numTodo;
       for (numTodo = 0; numTodo < todos.count(); ++numTodo) {
-        Todo *todo = *todos.at(numTodo);
+        Todo *todo = todos.at(numTodo);
 
         if ( ! todo->hasDueDate() ) continue;  // todo shall not be displayed if it has no date
 
@@ -1650,7 +1650,7 @@ void KOAgendaView::setHolidayMasks()
 {
   mHolidayMask.resize( mSelectedDates.count() + 1 );
 
-  for( uint i = 0; i < mSelectedDates.count(); ++i ) {
+  for( int i = 0; i < mSelectedDates.count(); ++i ) {
     mHolidayMask[i] = !KOGlobals::self()->isWorkDay( mSelectedDates[ i ] );
   }
 

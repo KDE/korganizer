@@ -27,13 +27,13 @@
 #include <qlayout.h>
 #include <qcheckbox.h>
 #include <q3groupbox.h>
-#include <qhbuttongroup.h>
 #include <qlabel.h>
 #include <qlineedit.h>
 //Added by qt3to4:
 #include <QVBoxLayout>
 #include <Q3Frame>
 #include <QHBoxLayout>
+#include <Q3HButtonGroup>
 
 #include <klocale.h>
 #include <kmessagebox.h>
@@ -80,7 +80,7 @@ SearchDialog::SearchDialog(Calendar *calendar,QWidget *parent)
   mTodosCheck->setChecked( true );
 
   // Date range
-  Q3GroupBox *rangeGroup = new Q3GroupBox( 1, Horizontal, i18n( "Date Range" ),
+  Q3GroupBox *rangeGroup = new Q3GroupBox( 1, Qt::Horizontal, i18n( "Date Range" ),
                                         topFrame );
   layout->addWidget( rangeGroup );
 
@@ -201,9 +201,9 @@ void SearchDialog::search( const QRegExp &re )
       for (it=alltodos.begin(); it!=alltodos.end(); ++it) {
         todo = *it;
         if ( (!todo->hasStartDate() && !todo->hasDueDate() ) || // undated
-             ( todo->hasStartDate() && (todo->dtStart()>=startDt) && (todo->dtStart()<=endDt) ) || // start dt in range
-             ( todo->hasDueDate() && (todo->dtDue().date()>=startDt) && (todo->dtDue()<=endDt) ) || // due dt in range
-             ( todo->hasCompletedDate() && (todo->completed().date()>=startDt) && (todo->completed()<=endDt) ) ) { // completed dt in range
+             ( todo->hasStartDate() && (todo->dtStart().date()>=startDt) && (todo->dtStart().date()<=endDt) ) || // start dt in range
+             ( todo->hasDueDate() && (todo->dtDue().date()>=startDt) && (todo->dtDue().date()<=endDt) ) || // due dt in range
+             ( todo->hasCompletedDate() && (todo->completed().date()>=startDt) && (todo->completed().date()<=endDt) ) ) { // completed dt in range
           todos.append( todo );
         }
       }

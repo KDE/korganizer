@@ -24,7 +24,7 @@
 
 #include <kmessagebox.h>
 #include <kdialogbase.h>
-#include <qpushbutton.h>
+#include <kpushbutton.h>
 
 #include "komessagebox.h"
 
