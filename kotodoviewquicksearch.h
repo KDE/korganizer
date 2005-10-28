@@ -29,7 +29,7 @@
 
 #include <klistviewsearchline.h>
 #include <ktoolbar.h>
-#include <qvaluevector.h>
+#include <qvector.h>
 
 class KActionCollection;
 class KAction;
@@ -48,9 +48,8 @@ class KOTodoListViewQuickSearchLine : public KListViewSearchLine
   Q_OBJECT
   Q_PROPERTY( QString category READ category WRITE setCategory )
   public:
-    KOTodoListViewQuickSearchLine( QWidget *parent=0, KListView *listView=0, 
-                                  const char *name=0 ) 
-        : KListViewSearchLine( parent, listView, name) { }
+    KOTodoListViewQuickSearchLine( QWidget *parent=0, KListView *listView ) 
+        : KListViewSearchLine( parent, listView) { }
     virtual ~KOTodoListViewQuickSearchLine() { }
     
     void setCategory( const QString &category ) { mCategory = category; }
@@ -93,7 +92,7 @@ class KOTodoListViewQuickSearch : public KToolBar
     /** Helper method for the filling of the category combo. */
     void insertCategory(QString which);
     QComboBox *mCategoryCombo;
-    QValueVector<QString> categoryList;
+    QVector<QString> categoryList;
     Calendar *mCalendar;
     KOTodoListViewQuickSearchLine *mQuickSearchLine;
     KListView *mListView;
@@ -108,8 +107,7 @@ class KOTodoListViewQuickSearchContainer : public QWidget
     KOTodoListViewQuickSearchContainer( QWidget *parent,
                                KListView *listView,
                                KActionCollection *actionCollection,
-                               Calendar *calendar,
-                               const char *name = 0 );
+                               Calendar *calendar);
     virtual ~KOTodoListViewQuickSearchContainer();
     
     QSize sizeHint() const;

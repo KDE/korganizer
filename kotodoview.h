@@ -51,6 +51,7 @@ class QDragMoveEvent;
 class QDragLeaveEvent;
 class QDropEvent;
 class Q3PopupMenu;
+class QSplitter;
 
 class KToolBar;
 
@@ -71,7 +72,8 @@ class Calendar;
 using namespace KCal;
 using namespace KOrg;
 
-class KOTodoListViewToolTip : public QToolTip
+#warning port QToolTip usage
+class KOTodoListViewToolTip 
 {
   public:
     KOTodoListViewToolTip( QWidget *parent, KOTodoListView *lv );
@@ -88,7 +90,7 @@ class KOTodoListView : public KListView
 {
     Q_OBJECT
   public:
-    KOTodoListView( QWidget *parent = 0, const char *name = 0 );
+    KOTodoListView( QWidget *parent );
     ~KOTodoListView();
 
     void setCalendar( Calendar * );
@@ -129,7 +131,7 @@ class KOTodoView : public KOrg::BaseView
 {
     Q_OBJECT
   public:
-    KOTodoView( Calendar *cal, QWidget *parent = 0, const char *name = 0 );
+    KOTodoView( Calendar *cal, QWidget *parent );
     ~KOTodoView();
 
     void setCalendar( Calendar * );

@@ -45,6 +45,8 @@
 #include <QVBoxLayout>
 #include <QDropEvent>
 #include <QDragEnterEvent>
+#include <QSplitter>
+#include <QApplication>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -73,7 +75,6 @@
 
 #include "docprefs.h"
 
-#include "koincidencetooltip.h"
 #include "kodialogmanager.h"
 #include "kotodoview.h"
 #include "koprefs.h"
@@ -88,7 +89,6 @@ using namespace KOrg;
 
 KOTodoListViewToolTip::KOTodoListViewToolTip (QWidget* parent,
                                               KOTodoListView* lv )
-  :QToolTip(parent)
 {
   todolist=lv;
 }
@@ -113,7 +113,8 @@ void KOTodoListViewToolTip::maybeTip( const QPoint & pos)
     /* Show the tip */
     QString tipText( IncidenceFormatter::toolTipString( i->todo() ) );;
     if ( !tipText.isEmpty() ) {
-      tip(r, tipText);
+#warning port QToolTip usage
+      // tip(r, tipText);
     }
   }
 
@@ -121,8 +122,8 @@ void KOTodoListViewToolTip::maybeTip( const QPoint & pos)
 
 
 
-KOTodoListView::KOTodoListView( QWidget *parent, const char *name )
-  : KListView( parent, name ), mCalendar( 0 ), mChanger( 0 )
+KOTodoListView::KOTodoListView( QWidget *parent )
+  : KListView( parent ), mCalendar( 0 ), mChanger( 0 )
 {
   mOldCurrent = 0;
   mMousePressed = false;
@@ -135,11 +136,11 @@ KOTodoListView::KOTodoListView( QWidget *parent, const char *name )
   addColumn( i18n("Summary") );
   addColumn( i18n("Recurs") );
   addColumn( i18n("Priority") );
-  setColumnAlignment( KOTodoView::ePriorityColumn, AlignHCenter );
+  setColumnAlignment( KOTodoView::ePriorityColumn, Qt::AlignHCenter );
   addColumn( i18n("Complete") );
-  setColumnAlignment( KOTodoView::ePercentColumn, AlignRight );
+  setColumnAlignment( KOTodoView::ePercentColumn, Qt::AlignRight );
   addColumn( i18n("Due Date/Time") );
-  setColumnAlignment( KOTodoView::eDueDateColumn, AlignLeft );
+  setColumnAlignment( KOTodoView::eDueDateColumn, Qt::AlignLeft );
   addColumn( i18n("Categories") );
 #if 0
   addColumn( i18n("Sort Id") );
@@ -417,8 +418,8 @@ void KOTodoListView::contentsMouseDoubleClickEvent(QMouseEvent *e)
 
 /////////////////////////////////////////////////////////////////////////////
 
-KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
-  : KOrg::BaseView( calendar, parent, name ),
+KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent)
+  : KOrg::BaseView( calendar, parent),
     mWidgetStack( 0 ),
     mSplitter( 0 ),
     mMyTodoListView( 0 ),
@@ -438,15 +439,15 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
   }
   
   setupListViews();
-  Q3ValueList<KListView *> list;
+  QList<KListView *> list;
   list.append( mMyTodoListView );
   list.append( mOneTodoListView );
   list.append( mYourTodoListView );
   list.append( mOtherTodoListView );
   KOTodoListViewQuickSearchContainer *container =
           new KOTodoListViewQuickSearchContainer( this, list, 
-                                                  collection, calendar,
-                                                  "todo quick search" );
+                                                  collection, calendar);
+  container->setObjectName("todo quick search");
   mSearchToolBar = container->quickSearch();
   
   if ( !KOPrefs::instance()->mEnableTodoQuickSearch ) container->hide();
@@ -536,7 +537,7 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
   mPopupMenu->insertItem(i18n("delete completed to-dos","&Purge Completed"),
                          this, SLOT(purgeCompleted()));
 
-  mDocPrefs = new DocPrefs( name );
+  mDocPrefs = new DocPrefs( objectName() );
   connect( mQuickAdd, SIGNAL( returnPressed () ),
            SLOT( addQuickTodo() ) );
 }
@@ -568,19 +569,23 @@ void KOTodoView::setupListViews()
 
   Q3VBox* myVBox = new Q3VBox( mSplitter );
   new QLabel( i18n( "<qt><b>Tasks I have to work on:</b></qt>" ), myVBox );
-  mMyTodoListView = new KOTodoListView( myVBox, "my todos" );
+  mMyTodoListView = new KOTodoListView( myVBox );
+  mMyTodoListView->setObjectName( "my todos" );
 
   Q3VBox* yourVBox = new Q3VBox( mSplitter );
   new QLabel( i18n( "<qt><b>Tasks I want others to work on:</b></qt>" ),
               yourVBox );
-  mYourTodoListView = new KOTodoListView( yourVBox, "your todos" );
+  mYourTodoListView = new KOTodoListView( yourVBox );
+  mYourTodoListView->setObjectName( "your todos" );
 
   Q3VBox* otherVBox = new Q3VBox( mSplitter );
   new QLabel( i18n( "<qt><b>Other tasks I am watching:</b></qt>" ), otherVBox );
-  mOtherTodoListView = new KOTodoListView( otherVBox, "other todos" );
+  mOtherTodoListView = new KOTodoListView( otherVBox );
+  mOtherTodoListView->setObjectName( "other todos" );
 
   /* Set up the single list view */
-  mOneTodoListView = new KOTodoListView( this, "all todos" );
+  mOneTodoListView = new KOTodoListView( this );
+  mOneTodoListView->setObjectName( "all todos" );
   mWidgetStack->addWidget( mOneTodoListView, eOneListView );
 
   /* Now show the right widget stack page depending on KOPrefs */
