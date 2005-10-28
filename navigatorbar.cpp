@@ -97,7 +97,7 @@ NavigatorBar::NavigatorBar( QWidget *parent, const char *name )
   // Create month name button
   mMonth = new ActiveLabel( this );
   mMonth->setFont( tfont );
-  mMonth->setAlignment( AlignCenter );
+  mMonth->setAlignment( Qt::AlignCenter );
   mMonth->setMinimumHeight( mPrevYear->sizeHint().height() );
   QToolTip::add( mMonth, i18n("Select a month") );
 

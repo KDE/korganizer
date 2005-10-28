@@ -87,7 +87,8 @@ MarcusBains::MarcusBains(KOAgenda *_agenda,const char *name)
   QPalette pal = mTimeBox->palette();
   pal.setColor(QColorGroup::Foreground, Qt::red);
   mTimeBox->setPalette(pal);
-  mTimeBox->setAutoMask(true);
+#warning "kde4: porting ?"
+  //mTimeBox->setAutoMask(true);
 
   agenda->addChild(mTimeBox);
 
@@ -156,7 +157,8 @@ void MarcusBains::updateLocation(bool recalculate)
   else x++;
   agenda->moveChild(mTimeBox,x,y);
   mTimeBox->raise();
-  mTimeBox->setAutoMask(true);
+#warning "kde4: porting ?"
+  //mTimeBox->setAutoMask(true);
 
   minutes->start(1000,true);
 }

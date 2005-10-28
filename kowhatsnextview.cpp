@@ -69,7 +69,7 @@ KOWhatsNextView::KOWhatsNextView(Calendar *calendar, QWidget *parent,
 //  QLabel *dateLabel =
 //      new QLabel(KGlobal::locale()->formatDate(QDate::currentDate()),this);
 //  dateLabel->setMargin(2);
-//  dateLabel->setAlignment(AlignCenter);
+//  dateLabel->setAlignment(Qt::AlignCenter);
 
   mView = new WhatsNextTextBrowser(this);
   connect(mView,SIGNAL(showIncidence(const QString &)),SLOT(showIncidence(const QString &)));

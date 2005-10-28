@@ -59,7 +59,6 @@
 
 #include "koprefs.h"
 #include "koglobals.h"
-#include "koincidencetooltip.h"
 #include "koeventpopupmenu.h"
 #include "kohelper.h"
 
@@ -308,7 +307,7 @@ MonthViewCell::MonthViewCell( KOMonthView *parent)
   mLabel = new QLabel( this );
   mLabel->setFrameStyle( Q3Frame::Panel | Q3Frame::Plain );
   mLabel->setLineWidth( 1 );
-  mLabel->setAlignment( AlignCenter );
+  mLabel->setAlignment( Qt::AlignCenter );
 
   mItemList = new KNoScrollListBox( this );
   mItemList->setMinimumSize( 10, 10 );
