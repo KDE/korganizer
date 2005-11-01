@@ -40,6 +40,7 @@
 #include <qpushbutton.h>
 //Added by qt3to4:
 #include <Q3ValueList>
+#include <kglobal.h>
 
 KOAlarmClient::KOAlarmClient( QObject *parent, const char *name )
   : DCOPObject( "ac" ), QObject( parent, name )
@@ -62,7 +63,7 @@ KOAlarmClient::KOAlarmClient( QObject *parent, const char *name )
 
   connect( &mCheckTimer, SIGNAL( timeout() ), SLOT( checkAlarms() ) );
 
-  KConfig *config = kapp->config();
+  KConfig *config = KGlobal::config();
   config->setGroup( "Alarms" );
   int interval = config->readNumEntry( "Interval", 60 );
   kdDebug(5890) << "KOAlarmClient check interval: " << interval << " seconds."
@@ -100,7 +101,7 @@ KOAlarmClient::~KOAlarmClient()
 
 void KOAlarmClient::checkAlarms()
 {
-  KConfig *cfg = kapp->config();
+  KConfig *cfg = KGlobal::config();
 
   cfg->setGroup( "General" );
   if ( !cfg->readBoolEntry( "Enabled", true ) ) return;
@@ -180,7 +181,7 @@ void KOAlarmClient::forceAlarmCheck()
 
 void KOAlarmClient::dumpDebug()
 {
-  KConfig *cfg = kapp->config();
+  KConfig *cfg = KGlobal::config();
 
   cfg->setGroup( "Alarms" );
   QDateTime lastChecked = cfg->readDateTimeEntry( "CalendarsLastChecked" );

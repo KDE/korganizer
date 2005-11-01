@@ -46,12 +46,13 @@
 
 #include <stdlib.h>
 #include <ktoolinvocation.h>
+#include <kglobal.h>
 
 AlarmDockWindow::AlarmDockWindow( const char *name )
   : KSystemTray( 0, name )
 {
   // Read the autostart status from the config file
-  KConfig *config = kapp->config();
+  KConfig *config = KGlobal::config();
   config->setGroup("General");
   bool autostart = config->readBoolEntry( "Autostart", true );
   bool alarmsEnabled = config->readBoolEntry( "Enabled", true );
@@ -122,7 +123,7 @@ void AlarmDockWindow::toggleAlarmsEnabled()
 {
   kdDebug(5890) << "AlarmDockWindow::toggleAlarmsEnabled()" << endl;
 
-  KConfig *config = kapp->config();
+  KConfig *config = KGlobal::config();
   config->setGroup( "General" );
 
   bool enabled = !contextMenu()->isItemChecked( mAlarmsEnabledId );
@@ -152,7 +153,7 @@ void AlarmDockWindow::slotDismissAll()
 
 void AlarmDockWindow::enableAutostart( bool enable )
 {
-  KConfig *config = kapp->config();
+  KConfig *config = KGlobal::config();
   config->setGroup( "General" );
   config->writeEntry( "Autostart", enable );
   config->sync();

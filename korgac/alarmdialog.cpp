@@ -49,6 +49,7 @@
 
 #include <libkcal/event.h>
 #include <ktoolinvocation.h>
+#include <kglobal.h>
 
 #include "koeventviewer.h"
 
@@ -229,7 +230,7 @@ void AlarmDialog::wakeUp()
 
 void AlarmDialog::slotSave()
 {
-  KConfig *config = kapp->config();
+  KConfig *config = KGlobal::config();
   KLockFile::Ptr lock = config->lockFile();
   if ( lock.data()->lock() != KLockFile::LockOK )
     return;

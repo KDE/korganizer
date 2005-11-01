@@ -209,7 +209,7 @@ mURLRequester( 0 )
                                                   item->label() );
   grid->addWidget( mLabelEdit, 0, 2 );
   
-  KSeparator* sep = new KSeparator( KSeparator::HLine, page );
+  KSeparator* sep = new KSeparator( Qt::Horizontal, page );
   grid->addMultiCellWidget(sep, 1, 1, 0, 2);
   
   QLabel *label = new QLabel( i18n( "Type:" ), page );

@@ -125,7 +125,7 @@ void KOProjectView::readSettings()
 {
   kdDebug(5850) << "KOProjectView::readSettings()" << endl;
 
-  //KConfig *config = kapp->config();
+  //KConfig *config = KGlobal::config();
   KConfig config( "korganizerrc", true, false); // Open read-only, no kdeglobals
   config.setGroup("Views");
 

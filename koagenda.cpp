@@ -375,7 +375,7 @@ bool KOAgenda::eventFilter ( QObject *object, QEvent *event )
 
     case ( QEvent::Leave ):
       if ( !mActionItem )
-        setCursor( Qt::arrowCursor );
+        setCursor( Qt::ArrowCursor );
       if ( object == viewport() )
         emit leaveAgenda();
       return true;
@@ -632,7 +632,7 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
           if ( !ptInSelection( gpos ) ) {
             selectItem(0);
             mActionItem = 0;
-            setCursor(Qt::arrowCursor);
+            setCursor(Qt::ArrowCursor);
             startSelectAction(viewportPos);
           }
         }
@@ -888,7 +888,7 @@ void KOAgenda::performItemAction(const QPoint& viewportPos)
       mActionItem->resetMove();
       placeSubCells( mActionItem );
       emit startDragSignal( mActionItem->incidence() );
-      setCursor( Qt::arrowCursor );
+      setCursor( Qt::ArrowCursor );
       mActionItem = 0;
       mActionType = NOP;
       mItemMoved = false;
@@ -922,7 +922,7 @@ void KOAgenda::performItemAction(const QPoint& viewportPos)
         mScrollDownTimer.stop();
         mActionItem->resetMove();
         placeSubCells( mActionItem );
-        setCursor( Qt::arrowCursor );
+        setCursor( Qt::ArrowCursor );
         mActionItem = 0;
         mActionType = NOP;
         mItemMoved = false;
@@ -1053,7 +1053,7 @@ void KOAgenda::endItemAction()
 //  kdDebug(5850) << "KOAgenda::endItemAction() " << endl;
   mScrollUpTimer.stop();
   mScrollDownTimer.stop();
-  setCursor( Qt::arrowCursor );
+  setCursor( Qt::ArrowCursor );
   bool multiModify = false;
   // FIXME: do the cloning here...
 
@@ -1174,19 +1174,19 @@ void KOAgenda::setActionCursor( int actionType, bool acting )
 {
   switch ( actionType ) {
     case MOVE:
-      if (acting) setCursor( Qt::sizeAllCursor );
-      else setCursor( Qt::arrowCursor );
+      if (acting) setCursor( Qt::SizeAllCursor );
+      else setCursor( Qt::ArrowCursor );
       break;
     case RESIZETOP:
     case RESIZEBOTTOM:
-      setCursor( Qt::sizeVerCursor );
+      setCursor( Qt::SizeHorCursor );
       break;
     case RESIZELEFT:
     case RESIZERIGHT:
-      setCursor( Qt::sizeHorCursor );
+      setCursor( Qt::SizeHorCursor );
       break;
     default:
-      setCursor( Qt::arrowCursor );
+      setCursor( Qt::ArrowCursor );
   }
 }
 
