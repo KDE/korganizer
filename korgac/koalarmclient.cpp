@@ -83,11 +83,12 @@ KOAlarmClient::KOAlarmClient( QObject *parent, const char *name )
     config->deleteGroup( group );
   }
   config->setGroup( "General" );
-  config->writeEntry( "Reminders", 0 );
-  config->sync();
+  if (numReminders) {
+     config->writeEntry( "Reminders", 0 );
+     config->sync();
+  }
 
   checkAlarms();
-  saveLastCheckTime();
   mCheckTimer.start( 1000 * interval );  // interval in seconds
 }
 
@@ -134,6 +135,7 @@ void KOAlarmClient::createReminder( KCal::Incidence *incidence, QDateTime dt )
   dialog->wakeUp();
   mReminders.append( dialog );
   emit reminderCount( mReminders.count() );
+  saveLastCheckTime(); 
 }
 
 void KOAlarmClient::slotQuit()
@@ -145,10 +147,9 @@ void KOAlarmClient::slotQuit()
 
 void KOAlarmClient::saveLastCheckTime()
 {
-  KConfig *cfg = kapp->config();
-  cfg->setGroup( "Alarms" );
-  cfg->writeEntry( "CalendarsLastChecked", mLastChecked );
-  cfg->sync();
+  KConfigGroup cg( KGlobal::config(), "Alarms");
+  cg.writeEntry( "CalendarsLastChecked", mLastChecked );
+  KGlobal::config()->sync();
 }
 
 void KOAlarmClient::quit()
@@ -174,6 +175,7 @@ bool KOAlarmClient::commitData( QSessionManager& )
 void KOAlarmClient::forceAlarmCheck()
 {
   checkAlarms();
+  saveLastCheckTime();
 }
 
 void KOAlarmClient::dumpDebug()
