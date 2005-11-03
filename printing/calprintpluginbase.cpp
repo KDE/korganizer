@@ -92,12 +92,12 @@ void CalPrintPluginBase::doPrint()
 void CalPrintPluginBase::doLoadConfig()
 {
   if ( mConfig ) {
-    KConfigGroupSaver saver( mConfig, description() );
+    KConfigGroup group( mConfig, description() );
     mConfig->sync();
     QDateTime currDate( QDate::currentDate() );
-    mFromDate = mConfig->readDateTimeEntry( "FromDate", &currDate ).date();
-    mToDate = mConfig->readDateTimeEntry( "ToDate" ).date();
-    mUseColors = mConfig->readBoolEntry( "UseColors", true );
+    mFromDate = group.readDateTimeEntry( "FromDate", &currDate ).date();
+    mToDate = group.readDateTimeEntry( "ToDate" ).date();
+    mUseColors = group.readBoolEntry( "UseColors", true );
     mHelper->setUseColors( mUseColors );
     loadConfig();
   } else {
@@ -108,11 +108,11 @@ void CalPrintPluginBase::doLoadConfig()
 void CalPrintPluginBase::doSaveConfig()
 {
   if ( mConfig ) {
-    KConfigGroupSaver saver( mConfig, description() );
+    KConfigGroup group( mConfig, description() );
     saveConfig();
-    mConfig->writeEntry( "FromDate", QDateTime( mFromDate ) );
-    mConfig->writeEntry( "ToDate", QDateTime( mToDate ) );
-    mConfig->writeEntry( "UseColors", mUseColors );
+    group.writeEntry( "FromDate", QDateTime( mFromDate ) );
+    group.writeEntry( "ToDate", QDateTime( mToDate ) );
+    group.writeEntry( "UseColors", mUseColors );
     mConfig->sync();
   } else {
     kdDebug(5850) << "No config available in saveConfig!!!!" << endl;
