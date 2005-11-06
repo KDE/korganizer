@@ -718,7 +718,7 @@ void ActionManager::file_icalimport()
   QString progPath;
   KTempFile tmpfn;
 
-  QString homeDir = QDir::homeDirPath() + QString::fromLatin1( "/.calendar" );
+  QString homeDir = QDir::homePath() + QString::fromLatin1( "/.calendar" );
 
   if ( !QFile::exists( homeDir ) ) {
     KMessageBox::error( dialogParent(),

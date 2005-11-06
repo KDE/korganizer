@@ -1380,7 +1380,7 @@ void KOTodoView::purgeCompleted()
 
 void KOTodoView::addQuickTodo()
 {
-  if ( ! mQuickAdd->text().stripWhiteSpace().isEmpty() ) {
+  if ( ! mQuickAdd->text().trimmed().isEmpty() ) {
     Todo *todo = new Todo();
     todo->setSummary( mQuickAdd->text() );
     todo->setOrganizer( Person( KOPrefs::instance()->fullName(),

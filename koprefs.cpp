@@ -78,7 +78,7 @@ KOPrefs::KOPrefs() :
   KConfigSkeleton::setCurrentGroup("General");
 
   addItemPath("Html Export File",mHtmlExportFile,
-      QDir::homeDirPath() + "/" + i18n("Default export file", "calendar.html"));
+      QDir::homePath() + "/" + i18n("Default export file", "calendar.html"));
 
   monthViewFontItem()->setDefaultValue( mDefaultMonthViewFont );
   eventColorItem()->setDefaultValue( mDefaultCategoryColor );

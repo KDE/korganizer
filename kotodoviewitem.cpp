@@ -155,7 +155,7 @@ void KOTodoViewItem::construct()
     setText( KOTodoView::eDescriptionColumn, "" );
   } else {
     QString str = mTodo->description().mid(pos+1);
-    str.stripWhiteSpace();
+    str.trimmed();
     setText( KOTodoView::eDescriptionColumn, str );
   }
 #endif
