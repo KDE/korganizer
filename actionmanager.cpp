@@ -407,7 +407,7 @@ void ActionManager::initActions()
   new KAction( i18n("Go to &Today"), "today", 0,
                     mCalendarView,SLOT( goToday() ),
                     mACollection, "go_today" );
-  bool isRTL = QApplication::reverseLayout();
+  bool isRTL = QApplication::isRightToLeft();
   action = new KAction( i18n("Go &Backward"), isRTL ? "forward" : "back", 0,
                         mCalendarView,SLOT( goPrevious() ),
                         mACollection, "go_previous" );

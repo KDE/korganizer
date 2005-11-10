@@ -67,7 +67,7 @@ KOTodoListViewQuickSearch::KOTodoListViewQuickSearch( QWidget *parent,
 {
   if ( !action ) {
     action = new KAction( i18n( "Reset To-do Quick Search" ),
-                          QApplication::reverseLayout() ? "clear_left" : 
+                          QApplication::isRightToLeft() ? "clear_left" : 
                           "locationbar_erase", 0, this, SLOT( reset() ), 
                           actionCollection, "reset_quicksearch" );
     action->setWhatsThis( i18n( "Reset Quick Search\n"

@@ -127,7 +127,7 @@ void KOGlobals::fitDialogToScreen( QWidget *wid, bool force )
 bool KOGlobals::reverseLayout()
 {
 #if QT_VERSION >= 0x030000
-  return QApplication::reverseLayout();
+  return QApplication::isRightToLeft();
 #else
   return false;
 #endif
