@@ -1245,6 +1245,7 @@ void KOAgendaView::insertIncidence( Incidence *incidence, const QDate &curDate,
     beginX = curDate.daysTo( incidence->dtStart().date() ) + curCol;
     endX = curDate.daysTo( event->dateEnd() ) + curCol;
   } else if ( todo ) {
+    if ( ! todo->hasDueDate() ) return;  // todo shall not be displayed if it has no date
     beginX = curDate.daysTo( todo->dtDue().date() ) + curCol;
     endX = beginX;
   } else {
