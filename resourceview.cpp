@@ -291,6 +291,7 @@ void ResourceView::updateView()
   for( it = manager->begin(); it != manager->end(); ++it ) {
     addResourceItem( *it );
   }
+  manager->writeConfig();
 }
 
 void ResourceView::emitResourcesChanged()
@@ -337,6 +338,7 @@ void ResourceView::addResource()
     delete resource;
     resource = 0;
   }
+  emit resourcesChanged();
 }
 
 void ResourceView::addResourceItem( ResourceCalendar *resource )
@@ -366,7 +368,7 @@ void ResourceView::addResourceItem( ResourceCalendar *resource )
            SLOT( closeResource( ResourceCalendar * ) ) );
 
   updateResourceList();
-  emitResourcesChanged();
+  emit resourcesChanged();
 }
 
 // Add a new entry
@@ -382,6 +384,7 @@ void ResourceView::slotSubresourceAdded( ResourceCalendar *calendar,
 
   ResourceItem *item = static_cast<ResourceItem *>( i );
   ( void )new ResourceItem( calendar, resource, label, this, item );
+  emit resourcesChanged();
 }
 
 // Remove an entry
@@ -390,7 +393,7 @@ void ResourceView::slotSubresourceRemoved( ResourceCalendar * /*calendar*/,
                                            const QString &resource )
 {
   delete findItemByIdentifier( resource );
-  emitResourcesChanged();
+  emit resourcesChanged();
 }
 
 void ResourceView::closeResource( ResourceCalendar *r )
@@ -442,7 +445,7 @@ void ResourceView::removeResource()
     delete item;
   }
   updateResourceList();
-  emitResourcesChanged();
+  emit resourcesChanged();
 }
 
 void ResourceView::editResource()
@@ -459,9 +462,10 @@ void ResourceView::editResource()
 
     mCalendar->resourceManager()->change( resource );
   }
+  emit resourcesChanged();
 }
 
-void ResourceView::currentChanged( QListViewItem *item)
+void ResourceView::currentChanged( QListViewItem *item )
 {
    ResourceItem *i = currentItem();
    if ( !item || i->isSubresource() ) {
@@ -471,6 +475,7 @@ void ResourceView::currentChanged( QListViewItem *item)
      mDeleteButton->setEnabled( true );
      mEditButton->setEnabled( true );
    }
+   mCalendar->resourceManager()->writeConfig();
 }
 
 ResourceItem *ResourceView::findItem( ResourceCalendar *r )
