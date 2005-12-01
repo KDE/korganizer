@@ -199,7 +199,7 @@ void KOPrefs::usrReadConfig()
   config()->setGroup( "Resources Colors" );
   QMap<QString, QString> map = config()->entryMap( "Resources Colors" );
 
-  QMapIterator<QString, QString> it3;
+  QMap<QString, QString>::Iterator it3;
   for( it3 = map.begin(); it3 != map.end(); ++it3 ) {
     kdDebug(5850)<< "KOPrefs::usrReadConfig: key: " << it3.key() << " value: "
       << it3.data()<<endl;

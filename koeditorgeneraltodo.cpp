@@ -27,7 +27,6 @@
 #include <qlayout.h>
 #include <q3vbox.h>
 #include <q3buttongroup.h>
-#include <qvgroupbox.h>
 #include <q3widgetstack.h>
 #include <qdatetime.h>
 #include <qcheckbox.h>

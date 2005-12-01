@@ -46,7 +46,6 @@
 #include <qlabel.h>
 #include <qcombobox.h>
 #include <qapplication.h>
-#include <qobjectlist.h>
 #include <qregexp.h>
 #include <qsizepolicy.h>
 #include <qtimer.h>
@@ -103,7 +102,7 @@ KOTodoListViewQuickSearch::~KOTodoListViewQuickSearch()
 {
 }
 
-bool KOTodoListViewQuickSearchLine::itemMatches(const QListViewItem *item, 
+bool KOTodoListViewQuickSearchLine::itemMatches(const Q3ListViewItem *item, 
                                                 const QString &s)
 const
 {
@@ -238,9 +237,8 @@ KOTodoListViewQuickSearchContainer::KOTodoListViewQuickSearchContainer(
                                QWidget *parent,
                                KListView *listView,
                                KActionCollection *actionCollection,
-                               Calendar *calendar,
-                               const char *name )
-     : QWidget( parent, name ), mQuickSearch( new KOTodoListViewQuickSearch(
+                               Calendar *calendar)
+     : QWidget( parent ), mQuickSearch( new KOTodoListViewQuickSearch(
          this, listView, actionCollection, calendar, "search toolbar" ) )
 {
   setSizePolicy( QSizePolicy( QSizePolicy::Expanding, QSizePolicy::Fixed ) );

@@ -55,7 +55,7 @@ class KOTodoListViewQuickSearchLine : public KListViewSearchLine
     void setCategory( const QString &category ) { mCategory = category; }
     const QString &category() const { return mCategory; }
   protected:
-    virtual bool itemMatches(const QListViewItem *item, const QString &s) const;
+    virtual bool itemMatches(const Q3ListViewItem *item, const QString &s) const;
   private:
     QString mCategory;
 };

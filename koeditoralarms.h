@@ -27,6 +27,8 @@
 #include <kdialogbase.h>
 #include <libkcal/alarm.h>
 
+class Q3ListViewItem;
+
 class KOEditorAlarms_base;
 
 class AlarmListViewItem;
