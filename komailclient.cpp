@@ -62,8 +62,8 @@ bool KOMailClient::mailAttendees(IncidenceBase *incidence,const QString &attachm
   const QString from = incidence->organizer().fullName();
   const QString organizerEmail = incidence->organizer().email();
   QStringList toList;
-  for(uint i=0; i<attendees.count();++i) {
-    const QString email = (*attendees.at(i))->email();
+  for(int i=0; i<attendees.count();++i) {
+    const QString email = attendees.at(i)->email();
     // In case we (as one of our identities) are the organizer we are sending this
     // mail. We could also have added ourselves as an attendee, in which case we 
     // don't want to send ourselves a notification mail.
@@ -222,8 +222,8 @@ int KOMailClient::kMailOpenComposer(const QString& arg0,const QString& arg1,
   int result = 0;
 
   QByteArray data, replyData;
-  Q3CString replyType;
-  QDataStream arg( data, QIODevice::WriteOnly );
+  DCOPCString replyType;
+  QDataStream arg( &data, QIODevice::WriteOnly );
   arg << arg0;
   arg << arg1;
   arg << arg2;
@@ -234,7 +234,7 @@ int KOMailClient::kMailOpenComposer(const QString& arg0,const QString& arg1,
   kapp->updateRemoteUserTimestamp( "kmail" );
   if (kapp->dcopClient()->call("kmail","KMailIface","openComposer(QString,QString,QString,QString,QString,int,KURL)", data, replyType, replyData ) ) {
     if ( replyType == "int" ) {
-      QDataStream _reply_stream( replyData, QIODevice::ReadOnly );
+      QDataStream _reply_stream( &replyData, QIODevice::ReadOnly );
       _reply_stream >> result;
     } else {
       kdDebug(5850) << "kMailOpenComposer() call failed." << endl;
@@ -263,8 +263,8 @@ int KOMailClient::kMailOpenComposer( const QString& arg0, const QString& arg1,
     int result = 0;
 
     QByteArray data, replyData;
-    Q3CString replyType;
-    QDataStream arg( data, QIODevice::WriteOnly );
+    DCOPCString replyType;
+    QDataStream arg( &data, QIODevice::WriteOnly );
     arg << arg0;
     arg << arg1;
     arg << arg2;
@@ -281,10 +281,11 @@ int KOMailClient::kMailOpenComposer( const QString& arg0, const QString& arg1,
     arg << arg13;
     arg << arg14;
     kapp->updateRemoteUserTimestamp("kmail");
+#warning Port me!
     if ( kapp->dcopClient()->call("kmail","KMailIface",
           "openComposer(QString,QString,QString,QString,QString,int,QString,QCString,QCString,QCString,QCString,QCString,QString,QCString,QCString)", data, replyType, replyData ) ) {
         if ( replyType == "int" ) {
-            QDataStream _reply_stream( replyData, QIODevice::ReadOnly );
+            QDataStream _reply_stream( &replyData, QIODevice::ReadOnly );
             _reply_stream >> result;
         } else {
             kdDebug(5850) << "kMailOpenComposer() call failed." << endl;

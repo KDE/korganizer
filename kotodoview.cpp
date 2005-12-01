@@ -55,7 +55,7 @@
 #include <kmessagebox.h>
 #include <kactioncollection.h>
 #ifndef KORG_NODND
-#include <kmultipledrag.h>
+#include <k3multipledrag.h>
 #endif
 #include <ktoolbar.h>
 

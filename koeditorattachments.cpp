@@ -52,7 +52,7 @@
 #include <kseparator.h>
 #include <kstandarddirs.h>
 #include <ktempfile.h>
-#include <kurldrag.h>
+#include <k3urldrag.h>
 #include <kurlrequester.h>
 
 #include <qcursor.h>
@@ -199,10 +199,10 @@ mURLRequester( 0 )
   
   mIcon = new QLabel( page );
   int bsize = 66 + 2 * 
-                  mIcon->style().pixelMetric( QStyle::PM_ButtonMargin );
+                  mIcon->style()->pixelMetric( QStyle::PM_ButtonMargin );
   mIcon->setFixedSize(bsize, bsize);
   mIcon->setPixmap( item->icon() );
-  grid->addWidget( mIcon, 0, 0, AlignLeft );
+  grid->addWidget( mIcon, 0, 0, Qt::AlignLeft );
   
   mLabelEdit = new KLineEdit( page );
   mLabelEdit->setText( item->label().isEmpty() ? item->uri() :
@@ -307,7 +307,7 @@ protected:
     hotspot.setY( pixmap.height() / 2 );
     QMap<QString, QString> metadata;
     metadata["labels"] = labels.join(":");
-    Q3DragObject* myDragObject = new KURLDrag( urls, metadata, this );
+    Q3DragObject* myDragObject = new K3URLDrag( urls, metadata, this );
     myDragObject->setPixmap( pixmap, hotspot );
     return myDragObject;
   }
@@ -402,7 +402,7 @@ bool KOEditorAttachments::hasAttachments()
 }
 
 void KOEditorAttachments::dragEnterEvent( QDragEnterEvent* event ) {
-  event->accept( KURLDrag::canDecode( event ) | Q3TextDrag::canDecode( event ) );
+  event->accept( K3URLDrag::canDecode( event ) | Q3TextDrag::canDecode( event ) );
 }
 
 QString KOEditorAttachments::generateLocalAttachmentPath( 
@@ -460,7 +460,7 @@ void KOEditorAttachments::dropEvent( QDropEvent* event ) {
       labels.append( QString::fromUtf8( ( *it ).realName().latin1() ) );
     }
     probablyWeHaveUris = true;
-  } else if ( KURLDrag::decode( event, urls, metadata ) ) {
+  } else if ( K3URLDrag::decode( event, urls, metadata ) ) {
     probablyWeHaveUris = true;
     labels = QStringList::split( ":", metadata["labels"] );
     for ( QStringList::Iterator it = labels.begin(); it != labels.end(); ++it )

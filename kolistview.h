@@ -40,6 +40,7 @@ typedef CustomListViewItem<Incidence *> KOListViewItem;
 
 class KOListView;
 
+#if 0
 class KOListViewToolTip : public QToolTip
 {
   public:
@@ -51,6 +52,7 @@ class KOListViewToolTip : public QToolTip
   private:
     KListView* eventlist;
 };
+#endif
 
 
 /**

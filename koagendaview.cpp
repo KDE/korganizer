@@ -50,7 +50,7 @@
 #include <kapplication.h>
 #include <kdebug.h>
 #ifndef KORG_NODND
-#include <kmultipledrag.h>
+#include <k3multipledrag.h>
 #endif
 #include <kstandarddirs.h>
 #include <kiconloader.h>

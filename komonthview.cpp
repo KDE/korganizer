@@ -67,6 +67,8 @@
 
 //--------------------------------------------------------------------------
 
+#warning Port me!
+#if 0
 KOMonthCellToolTip::KOMonthCellToolTip( QWidget *parent,
                                         KNoScrollListBox *lv )
   : QToolTip( parent )
@@ -90,6 +92,7 @@ void KOMonthCellToolTip::maybeTip( const QPoint & pos )
     }
   }
 }
+#endif
 
 KNoScrollListBox::KNoScrollListBox( QWidget *parent, const char *name )
   : Q3ListBox( parent, name ),
@@ -314,8 +317,11 @@ MonthViewCell::MonthViewCell( KOMonthView *parent)
   mItemList->setFrameStyle( Q3Frame::Panel | Q3Frame::Plain );
   mItemList->setLineWidth( 1 );
 
+#warning Port me!
+#if 0
   new KOMonthCellToolTip( mItemList->viewport(),
                           static_cast<KNoScrollListBox *>( mItemList ) );
+#endif
 
   topLayout->addWidget( mItemList );
 
@@ -378,11 +384,14 @@ void MonthViewCell::setPrimary( bool primary )
 {
   mPrimary = primary;
 
+#warning Port me!
+#if 0
   if ( mPrimary ) {
     mLabel->setBackgroundMode( PaletteBase );
   } else {
     mLabel->setBackgroundMode( PaletteBackground );
   }
+#endif
 
   mItemList->setBackground( mPrimary, KOGlobals::self()->isWorkDay( mDate ) );
 }
@@ -965,7 +974,7 @@ void KOMonthView::changeIncidenceDisplayAdded( Incidence *incidence )
        }
      }
   } else if ( event ) {
-      for ( QDateTime _date = date;
+      for ( QDateTime _date = QDateTime( date );
             _date <= event->dtEnd(); _date = _date.addDays( 1 ) ) {
         mvc = lookupCellByDate( _date.date() );
         if ( mvc ) mvc->addIncidence( event );

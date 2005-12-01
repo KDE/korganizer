@@ -43,13 +43,15 @@
 
 #include "koglobals.h"
 #include "koprefs.h"
-#include "koincidencetooltip.h"
+//#include "koincidencetooltip.h"
 #include "koeventpopupmenu.h"
 
 #include "kolistview.h"
 #include "kolistview.moc"
 
 
+#warning Port me!
+#if 0
 KOListViewToolTip::KOListViewToolTip( QWidget* parent,
                                       KListView* lv )
   :QToolTip(parent)
@@ -74,6 +76,7 @@ void KOListViewToolTip::maybeTip( const QPoint & pos)
   }
 
 }
+#endif
 
 /**
   This class provides the initialization of a KOListViewItem for calendar
@@ -209,15 +212,15 @@ KOListView::KOListView( Calendar *calendar, QWidget *parent,
   mListView->addColumn(i18n("Reminder")); // alarm set?
   mListView->addColumn(i18n("Recurs")); // recurs?
   mListView->addColumn(i18n("Start Date"));
-  mListView->setColumnAlignment(3,AlignHCenter);
+  mListView->setColumnAlignment(3,Qt::AlignHCenter);
   mListView->addColumn(i18n("Start Time"));
-  mListView->setColumnAlignment(4,AlignHCenter);
+  mListView->setColumnAlignment(4,Qt::AlignHCenter);
   mListView->addColumn(i18n("End Date"));
-  mListView->setColumnAlignment(5,AlignHCenter);
+  mListView->setColumnAlignment(5,Qt::AlignHCenter);
   mListView->addColumn(i18n("End Time"));
-  mListView->setColumnAlignment(6,AlignHCenter);
+  mListView->setColumnAlignment(6,Qt::AlignHCenter);
   mListView->addColumn(i18n("Categories"));
-  mListView->setColumnAlignment(7,AlignHCenter);
+  mListView->setColumnAlignment(7,Qt::AlignHCenter);
 
   QBoxLayout *layoutTop = new QVBoxLayout(this);
   layoutTop->addWidget(mListView);
@@ -245,7 +248,8 @@ KOListView::KOListView( Calendar *calendar, QWidget *parent,
 //  setMinimumSize(100,100);
   mListView->restoreLayout(KOGlobals::self()->config(),"KOListView Layout");
 
-  new KOListViewToolTip( mListView->viewport(), mListView );
+#warning Port me!
+//  new KOListViewToolTip( mListView->viewport(), mListView );
 
   mSelectedDates.append( QDate::currentDate() );
 }

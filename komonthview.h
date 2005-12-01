@@ -39,6 +39,7 @@
 
 class KNoScrollListBox;
 
+#if 0
 class KOMonthCellToolTip : public QToolTip
 {
   public:
@@ -50,6 +51,7 @@ class KOMonthCellToolTip : public QToolTip
   private:
     KNoScrollListBox* eventlist;
 };
+#endif
 
 
 class KNoScrollListBox: public Q3ListBox

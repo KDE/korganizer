@@ -29,7 +29,7 @@
 #include <qdatetime.h>
 #include <qcheckbox.h>
 #include <q3whatsthis.h>
-#include <qhgroupbox.h>
+#include <q3hbox.h>
 //Added by qt3to4:
 #include <QVBoxLayout>
 #include <Q3Frame>
@@ -135,7 +135,7 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
   fileLayout->addWidget(mArchiveFile);
   topLayout->addLayout(fileLayout);
   
-  QHGroupBox *typeBox = new QHGroupBox( i18n("Type of Items to Archive"), 
+  Q3GroupBox *typeBox = new Q3GroupBox( i18n("Type of Items to Archive"), 
                                         topFrame);
   mEvents = new QCheckBox( i18n("&Events"), typeBox );
   mTodos = new QCheckBox( i18n("&To-dos"), typeBox );

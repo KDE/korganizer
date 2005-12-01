@@ -334,8 +334,8 @@ void KOViewManager::showMonthView()
 void KOViewManager::showTodoView()
 {
   if ( !mTodoView ) {
-    mTodoView = new KOTodoView( mMainView->calendar(), mMainView->viewStack(),
-                                "KOViewManager::TodoView" );
+    mTodoView = new KOTodoView( mMainView->calendar(), mMainView->viewStack() );
+    mTodoView->setObjectName( "KOViewManager::TodoView" );
     mTodoView->setCalendar( mMainView->calendar() );
     addView( mTodoView );
     connectTodoView( mTodoView );

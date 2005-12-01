@@ -56,9 +56,6 @@
 
 #include <kparts/statusbarextension.h>
 
-#include <sidebarextension.h>
-#include <infoextension.h>
-
 #include <qapplication.h>
 #include <qfile.h>
 #include <qtimer.h>
@@ -72,7 +69,7 @@ K_EXPORT_COMPONENT_FACTORY( libkorganizerpart, KOrganizerFactory )
 KOrganizerPart::KOrganizerPart( QWidget *parentWidget, const char *widgetName,
                                 QObject *parent, const char *name,
                                 const QStringList & ) :
-  KParts::ReadOnlyPart(parent, name), mTopLevelWidget( parentWidget->topLevelWidget() )
+  KParts::ReadOnlyPart(parent), mTopLevelWidget( parentWidget->topLevelWidget() )
 {
   KGlobal::locale()->insertCatalog( "libkcal" );
   KGlobal::locale()->insertCatalog( "libkdepim" );
@@ -84,7 +81,7 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, const char *widgetName,
 
   // create a canvas to insert our widget
   QWidget *canvas = new QWidget( parentWidget, widgetName );
-  canvas->setFocusPolicy( QWidget::ClickFocus );
+  canvas->setFocusPolicy( Qt::ClickFocus );
   setWidget( canvas );
   mView = new CalendarView( canvas );
 
@@ -110,14 +107,8 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, const char *widgetName,
 
   KGlobal::iconLoader()->addAppDir( "korganizer" );
 
-  new KParts::SideBarExtension( mView->leftFrame(), this, "SBE" );
-
-  KParts::InfoExtension *ie = new KParts::InfoExtension( this,
-                                                         "KOrganizerInfo" );
   connect( mView, SIGNAL( incidenceSelected( Incidence * ) ),
            SLOT( slotChangeInfo( Incidence * ) ) );
-  connect( this, SIGNAL( textChanged( const QString & ) ),
-           ie, SIGNAL( textChanged( const QString & ) ) );
 
   mActionManager->init();
   mActionManager->readSettings();

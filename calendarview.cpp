@@ -157,7 +157,8 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
 
 //  mLeftSplitter->setResizeMode( mDateNavigator, QSplitter::Stretch );
   mLeftSplitter->setCollapsible( mDateNavigator, true );
-  mTodoList = new KOTodoView( CalendarNull::self(), mLeftSplitter, "todolist" );
+  mTodoList = new KOTodoView( CalendarNull::self(), mLeftSplitter );
+  mTodoList->setObjectName( "todolist" );
 
   mEventViewer = new KOEventViewer( mLeftSplitter,"EventViewer" );
 
@@ -732,7 +733,7 @@ void CalendarView::incidenceChanged( Incidence *oldIncidence,
           }
 
         } else { // journal list is not empty
-          journal = *(journals.at(0));
+          journal = journals.at(0);
           Journal *oldJournal = journal->clone();
           journal->setDescription( journal->description().append( "\n" + description ) );
 
