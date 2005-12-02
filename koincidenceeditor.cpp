@@ -67,7 +67,7 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
 {
   // Set this to be the group leader for all subdialogs - this means
   // modal subdialogs will only affect this dialog, not the other windows
-  setWFlags( getWFlags() | WGroupLeader );
+  setAttribute( Qt::WA_GroupLeader ); 
 
   mCalendar = calendar;
 
@@ -266,8 +266,8 @@ class KCalStorage : public KPIM::DesignerFields::Storage
     {
       QStringList keys;
 
-      QMap<Q3CString, QString> props = mIncidence->customProperties();
-      QMap<Q3CString, QString>::ConstIterator it;
+      QMap<QByteArray, QString> props = mIncidence->customProperties();
+      QMap<QByteArray, QString>::ConstIterator it;
       for( it = props.begin(); it != props.end(); ++it ) {
         QString customKey = it.key();
         QStringList parts = QStringList::split( "-", customKey );

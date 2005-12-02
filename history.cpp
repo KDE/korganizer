@@ -183,7 +183,7 @@ void History::EntryDelete::redo()
 
 QString History::EntryDelete::text()
 {
-  return i18n("Delete %1").arg(mIncidence->type());
+  return i18n("Delete %1").arg( QString::fromLatin1( mIncidence->type() ) );
 }
 
 
@@ -211,7 +211,7 @@ void History::EntryAdd::redo()
 
 QString History::EntryAdd::text()
 {
-  return i18n("Add %1").arg(mIncidence->type());
+  return i18n("Add %1").arg( QString::fromLatin1( mIncidence->type() ) );
 }
 
 
@@ -246,7 +246,7 @@ void History::EntryEdit::redo()
 
 QString History::EntryEdit::text()
 {
-  return i18n("Edit %1").arg(mNewIncidence->type());
+  return i18n("Edit %1").arg( QString::fromLatin1( mNewIncidence->type() ) );
 }
 
 History::MultiEntry::MultiEntry( Calendar *calendar, const QString &text )

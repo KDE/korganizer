@@ -53,7 +53,7 @@ ImportDialog::ImportDialog( const KURL &url, QWidget *parent )
 
   topLayout->addWidget( new QLabel( txt, topFrame ) );
 
-  Q3ButtonGroup *radioBox = new Q3ButtonGroup( 1, Horizontal, topFrame );
+  Q3ButtonGroup *radioBox = new Q3ButtonGroup( 1, Qt::Horizontal, topFrame );
   radioBox->setFlat( true );
   topLayout->addWidget( radioBox );
 

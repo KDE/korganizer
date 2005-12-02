@@ -40,7 +40,6 @@
 #include <qregexp.h>
 #include <qtooltip.h>
 #include <q3vbox.h>
-#include <qvgroupbox.h>
 #include <q3whatsthis.h>
 #include <q3widgetstack.h>
 //Added by qt3to4:
@@ -94,8 +93,8 @@ void CustomListViewItem<KCal::Attendee *>::updateItem()
     setPixmap(4,KOGlobals::self()->smallIcon("nomailappt"));
 }
 
-KOAttendeeListView::KOAttendeeListView ( QWidget *parent, const char *name )
-  : KListView(parent, name)
+KOAttendeeListView::KOAttendeeListView ( QWidget *parent )
+  : KListView(parent)
 {
   setAcceptDrops( true );
   setAllColumnsShowFocus( true );
@@ -184,9 +183,8 @@ void KOAttendeeListView::dropEvent( QDropEvent *e )
 }
 
 
-KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent,
-                                  const char *name )
-  : QWidget( parent, name), mDisableItemUpdate( false ), mFreeBusy( 0 )
+KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent )
+  : QWidget( parent ), mDisableItemUpdate( false ), mFreeBusy( 0 )
 {
   QGridLayout *topLayout = new QGridLayout( this );
   topLayout->setSpacing( spacing );
@@ -217,7 +215,8 @@ KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent,
   fillOrganizerCombo();
   mOrganizerHBox->setStretchFactor( mOrganizerCombo, 100 );
 
-  mListView = new KOAttendeeListView( this, "mListView" );
+  mListView = new KOAttendeeListView( this );
+  mListView->setObjectName( "mListView" );
   Q3WhatsThis::add( mListView,
 		   i18n("Displays information about current attendees. "
 		   	"To edit an attendee, select it in this list "

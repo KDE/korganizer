@@ -958,7 +958,7 @@ bool ActionManager::saveURL()
   if ( mURL.isLocalFile() ) {
     ext = mFile.right( 4 );
   } else {
-    ext = mURL.filename().right( 4 );
+    ext = mURL.fileName().right( 4 );
   }
 
   if ( ext == ".vcs" ) {
@@ -1023,8 +1023,8 @@ void ActionManager::exportHTML()
     qd2.addMonths( 1 );
   else
     qd2.addDays( 7 );
-  settings.setDateStart( qd1 );
-  settings.setDateEnd( qd2 );
+  settings.setDateStart( QDateTime( qd1 ) );
+  settings.setDateEnd( QDateTime( qd2 ) );
   exportHTML( &settings );
 }
 

@@ -55,6 +55,7 @@ class Calendar;
 using namespace KCal;
 
 
+#if 0
 /**
  *  small helper class to dynamically show tooltips inside the day matrix.
  *  This class asks the day matrix object for a appropriate label which
@@ -83,6 +84,7 @@ class DynamicTip : public QToolTip
     /** the parent control this tooltip is designed for. */
     KODayMatrix *mMatrix;
 };
+#endif
 
 /**
  *  Replacement for kdpdatebuton.cpp that used 42 widgets for the day matrix to be displayed.
@@ -296,7 +298,7 @@ class KODayMatrix: public Q3Frame
     int       mSelEnd;
 
     /** dynamic tooltip to handle mouse dependent tips for each day in the matrix. */
-    DynamicTip* mToolTip;
+//    DynamicTip* mToolTip;
 
     /** default width of the frame drawn around today if it is visible in the matrix. */
     int       mTodayMarginWidth;

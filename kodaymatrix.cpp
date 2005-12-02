@@ -74,6 +74,8 @@
 //  D Y N A M I C   T I P
 // ============================================================================
 
+#warning Port me!
+#if 0
 DynamicTip::DynamicTip( QWidget * parent )
     : QToolTip( parent )
 {
@@ -100,6 +102,7 @@ void DynamicTip::maybeTip( const QPoint &pos )
   if ( str.isEmpty() ) return;
   tip( rct, str );
 }
+#endif
 
 
 // ============================================================================
@@ -116,11 +119,12 @@ KODayMatrix::KODayMatrix( QWidget *parent, const char *name )
   mDays = new QDate[ NUMDAYS ];
   mDayLabels = new QString[ NUMDAYS ];
   mEvents = new int[ NUMDAYS ];
-  mToolTip = new DynamicTip( this );
+#warning Port me!
+//  mToolTip = new DynamicTip( this );
 
   mTodayMarginWidth = 2;
   mSelEnd = mSelStart = NOSELECTION;
-  setBackgroundMode( NoBackground );
+  setBackgroundMode( Qt::NoBackground );
   recalculateToday();
 }
 
@@ -152,7 +156,8 @@ KODayMatrix::~KODayMatrix()
   delete [] mDays;
   delete [] mDayLabels;
   delete [] mEvents;
-  delete mToolTip;
+#warning Port me!
+//  delete mToolTip;
 }
 
 void KODayMatrix::addSelectedDaysTo( DateList &selDays )
@@ -481,7 +486,8 @@ void KODayMatrix::dropEvent( QDropEvent *e )
     }
     menu->insertSeparator();
     menu->insertItem( KOGlobals::self()->smallIcon("cancel"), i18n("Cancel"), DRAG_CANCEL, 3 );
-    action = menu->exec( QCursor::pos(), 0 );
+#warning Port me!
+//    action = menu->exec( QCursor::pos(), 0 );
   }
 
   if ( action == DRAG_COPY  || action == DRAG_MOVE ) {

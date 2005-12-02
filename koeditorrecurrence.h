@@ -40,6 +40,7 @@ class QSpinBox;
 class QRadioButton;
 class Q3GroupBox;
 class QCheckBox;
+class Q3ListBox;
 
 class KDateEdit;
 namespace KCal {

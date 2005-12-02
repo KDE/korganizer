@@ -128,7 +128,7 @@ void KOEditorGeneralJournal::initDescription( QWidget *parent, QBoxLayout *topLa
   mDescriptionEdit->append("");
   mDescriptionEdit->setReadOnly( false );
   mDescriptionEdit->setOverwriteMode( false );
-  mDescriptionEdit->setWordWrap( KTextEdit::WidgetWidth );
+  mDescriptionEdit->setLineWrapMode( KTextEdit::WidgetWidth );
   mDescriptionEdit->setTabChangesFocus( true );
   topLayout->addWidget( mDescriptionEdit );
 }

@@ -26,7 +26,6 @@
 #include <qlayout.h>
 #include <q3vbox.h>
 #include <q3buttongroup.h>
-#include <qvgroupbox.h>
 #include <q3widgetstack.h>
 #include <qspinbox.h>
 #include <qdatetime.h>
@@ -147,7 +146,7 @@ void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
   if ( KOPrefs::instance()->mCompactDialogs ) {
     layoutTimeBox->addMultiCellWidget( mDurationLabel, 3, 3, 0, 3 );
   } else {
-    flagsBox->addWidget( mDurationLabel, 0, 2 );
+    flagsBox->addWidget( mDurationLabel, 0, Qt::AlignRight );
   }
 
   layoutTimeBox->addMultiCellLayout( flagsBox, 2, 2, 0, 3 );

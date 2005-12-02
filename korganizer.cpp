@@ -92,7 +92,7 @@ KOrganizer::KOrganizer( const char *name )
 {
   // Set this to be the group leader for all subdialogs - this means
   // modal subdialogs will only affect this dialog, not the other windows
-  setWFlags( getWFlags() | WGroupLeader );
+  setAttribute( Qt::WA_GroupLeader );
 
   kdDebug(5850) << "KOrganizer::KOrganizer()" << endl;
   KOCore::self()->addXMLGUIClient( this, this );
@@ -208,7 +208,7 @@ void KOrganizer::initActions()
   setStandardToolBarMenuEnabled( true );
   createStandardStatusBarAction();
 
-  KStdAction::keyBindings(guiFactory(), SLOT(configureShortcuts()), actionCollection());
+  KStdAction::keyBindings(this, SLOT(configureShortcuts()), actionCollection());
   KStdAction::configureToolbars(this, SLOT(configureToolbars() ), actionCollection());
   KStdAction::quit( this, SLOT( close() ), actionCollection() );
   setAutoSaveSettings();

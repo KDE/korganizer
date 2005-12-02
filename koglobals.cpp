@@ -25,6 +25,7 @@
 #include <qapplication.h>
 //Added by qt3to4:
 #include <QPixmap>
+#include <QIcon>
 
 #include <kdebug.h>
 #include <kglobal.h>
@@ -34,6 +35,7 @@
 #include <klocale.h>
 #include <kstaticdeleter.h>
 #include <kiconloader.h>
+#include <kinstance.h>
 
 #include <kcalendarsystem.h>
 #include <kholidays.h>

@@ -101,8 +101,8 @@ class JournalEntry : public QWidget {
     KTextEdit *mEditor;
     QCheckBox *mTimeCheck;
     KTimeEdit *mTimeEdit;
-    Q3Button *mDeleteButton;
-    Q3Button *mEditButton;
+    QToolButton *mDeleteButton;
+    QToolButton *mEditButton;
 
     QGridLayout *mLayout;
 

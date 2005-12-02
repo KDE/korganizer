@@ -26,6 +26,8 @@
 
 #include "version.h"
 
+#include <klocale.h>
+
 using namespace KOrg;
 
 AboutData *AboutData::mSelf = 0;

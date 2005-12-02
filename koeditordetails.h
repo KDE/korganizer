@@ -65,7 +65,7 @@ class KOAttendeeListView : public KListView
 {
 Q_OBJECT
 public:
-  KOAttendeeListView (QWidget *parent=0, const char *name=0);
+  KOAttendeeListView (QWidget *parent=0);
   virtual ~KOAttendeeListView();
   virtual void addAttendee( const QString& newAttendee );
 public slots:
@@ -83,7 +83,7 @@ class KOEditorDetails : public QWidget
 {
     Q_OBJECT
   public:
-    KOEditorDetails (int spacing = 8,QWidget* parent = 0, const char* name = 0);
+    KOEditorDetails (int spacing = 8,QWidget* parent = 0);
     virtual ~KOEditorDetails();
 
     /** Set widgets to default values */

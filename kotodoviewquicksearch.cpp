@@ -251,9 +251,9 @@ KOTodoListViewQuickSearchContainer::~KOTodoListViewQuickSearchContainer()
 QSize KOTodoListViewQuickSearchContainer::sizeHint() const
 {
   int width = KDialog::spacingHint();
-  for ( QObjectListIterator it( *mQuickSearch->children() ); it.current(); 
-        ++it ) {
-    QWidget *child = dynamic_cast<QWidget *>( it.current() );
+  QList<QObject*> list = mQuickSearch->children();
+  for ( QList<QObject*>::Iterator it = list.begin(); it != list.end(); ++it ) {
+    QWidget *child = dynamic_cast<QWidget *>( *it );
     if ( child ) {
       width += child->sizeHint().width() + KDialog::spacingHint();
     }

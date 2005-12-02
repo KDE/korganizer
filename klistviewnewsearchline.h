@@ -28,6 +28,7 @@
 
 class KListView;
 class Q3ListViewItem;
+class QContextMenuEvent;
 class QToolButton;
 
 /* FIXME push changes into kdelibs */
@@ -55,8 +56,7 @@ public:
      * If \a listView is null then the widget will be disabled until listviews
      * are set with setListView(), setListViews() or added with addListView().
      */
-    KListViewNewSearchLine(QWidget *parent = 0, KListView *listView = 0,
-                           const char *name = 0);
+    KListViewNewSearchLine(QWidget *parent = 0, KListView *listView = 0);
 
     /**
      * Constructs a KListViewNewSearchLine with \a listViews being the list of
@@ -68,15 +68,14 @@ public:
      * @since 4.0
      */
     KListViewNewSearchLine(QWidget *parent,
-                           const Q3ValueList<KListView *> &listViews,
-                           const char *name = 0);
+                           const QList<KListView *> &listViews);
 
     /**
      * Constructs a KListViewNewSearchLine without any KListView to filter. The
      * KListView objects have to be set later with setListView(), setListViews()
      * or added with addListView().
      */
-    KListViewNewSearchLine(QWidget *parent, const char *name);
+    KListViewNewSearchLine(QWidget *parent);
 
     /**
      * Destroys the KListViewNewSearchLine.
@@ -121,7 +120,7 @@ public:
      * @see setListViews(), addListView(), listView()
      * @since 4.0
      */
-    const Q3ValueList<KListView *> &listViews() const;
+    const QList<KListView *> &listViews() const;
 
 public slots:
     /**
@@ -196,7 +195,7 @@ public slots:
      * @see listViews(), addListView(), setListView()
      * @since 4.0
      */
-    void setListViews(const Q3ValueList<KListView *> &lv);
+    void setListViews(const QList<KListView *> &lv);
 
 
   protected:
@@ -213,7 +212,7 @@ public slots:
     *
     * See QLineEdit::mousePressEvent().
     */
-    virtual Q3PopupMenu *createPopupMenu();
+    virtual void contextMenuEvent( QContextMenuEvent *e );
 
     /**
      * Updates search to only make visible appropriate items in \a listView.  If

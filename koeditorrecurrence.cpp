@@ -27,7 +27,6 @@
 #include <qlayout.h>
 #include <q3vbox.h>
 #include <q3buttongroup.h>
-#include <qvgroupbox.h>
 #include <q3widgetstack.h>
 #include <qdatetime.h>
 #include <q3listbox.h>
@@ -188,7 +187,7 @@ RecurWeekly::RecurWeekly( QWidget *parent, const char *name ) :
   createFrequencySpinBar( this, topLayout, i18n("&Recur every"), i18n("week(s) on:") );
 
   Q3HBox *dayBox = new Q3HBox( this );
-  topLayout->addWidget( dayBox, 1, AlignVCenter );
+  topLayout->addWidget( dayBox, 1, Qt::AlignVCenter );
   // Respect start of week setting
   int weekStart=KGlobal::locale()->weekStartDay();
   for ( int i = 0; i < 7; ++i ) {
@@ -239,8 +238,9 @@ RecurMonthly::RecurMonthly( QWidget *parent, const char *name ) :
   createFrequencySpinBar( this, topLayout, i18n("&Recur every"), i18n("month(s)") );
 
   Q3ButtonGroup *buttonGroup = new Q3ButtonGroup( this );
-  buttonGroup->setFrameStyle( Q3Frame::NoFrame );
-  topLayout->addWidget( buttonGroup, 1, AlignVCenter );
+#warning Port me!
+//  buttonGroup->setFrameStyle( Q3Frame::NoFrame );
+  topLayout->addWidget( buttonGroup, 1, Qt::AlignVCenter );
 
   QGridLayout *buttonLayout = new QGridLayout( buttonGroup, 3, 2 );
   buttonLayout->setSpacing( KDialog::spacingHint() );
@@ -262,7 +262,7 @@ RecurMonthly::RecurMonthly( QWidget *parent, const char *name ) :
                            "should recur.");
   mByDayCombo = new QComboBox( buttonGroup );
   Q3WhatsThis::add( mByDayCombo, whatsThis );
-  mByDayCombo->setSizeLimit( 7 );
+  mByDayCombo->setMaxVisibleItems( 7 );
   mByDayCombo->insertItem( i18n("1st") );
   mByDayCombo->insertItem( i18n("2nd") );
   mByDayCombo->insertItem( i18n("3rd") );
@@ -413,8 +413,9 @@ RecurYearly::RecurYearly( QWidget *parent, const char *name ) :
 
 
   Q3ButtonGroup *buttonGroup = new Q3ButtonGroup( this );
-  buttonGroup->setFrameStyle( Q3Frame::NoFrame );
-  topLayout->addWidget( buttonGroup, 1, AlignVCenter );
+#warning Port me!
+//  buttonGroup->setFrameStyle( Q3Frame::NoFrame );
+  topLayout->addWidget( buttonGroup, 1, Qt::AlignVCenter );
 
   QBoxLayout *buttonLayout = new QVBoxLayout( buttonGroup );
 
@@ -585,7 +586,7 @@ ExceptionsWidget::ExceptionsWidget( QWidget *parent, const char *name ) :
 {
   QBoxLayout *topLayout = new QVBoxLayout( this );
 
-  Q3GroupBox *groupBox = new Q3GroupBox( 1, Horizontal, i18n("E&xceptions"),
+  Q3GroupBox *groupBox = new Q3GroupBox( 1, Qt::Horizontal, i18n("E&xceptions"),
                                        this );
   topLayout->addWidget( groupBox );
 
@@ -706,7 +707,7 @@ RecurrenceRangeWidget::RecurrenceRangeWidget( QWidget *parent,
 {
   QBoxLayout *topLayout = new QVBoxLayout( this );
 
-  mRangeGroupBox = new Q3GroupBox( 1, Horizontal, i18n("Recurrence Range"),
+  mRangeGroupBox = new Q3GroupBox( 1, Qt::Horizontal, i18n("Recurrence Range"),
                                   this );
   Q3WhatsThis::add( mRangeGroupBox,
        i18n("Sets a range for which these recurrence rules will "
@@ -897,8 +898,9 @@ RecurrenceChooser::RecurrenceChooser( QWidget *parent, const char *name ) :
   } else {
     mTypeCombo = 0;
 
-    Q3ButtonGroup *ruleButtonGroup = new Q3ButtonGroup( 1, Horizontal, this );
-    ruleButtonGroup->setFrameStyle( Q3Frame::NoFrame );
+    Q3ButtonGroup *ruleButtonGroup = new Q3ButtonGroup( 1, Qt::Horizontal, this );
+#warning Port me!
+//    ruleButtonGroup->setFrameStyle( Q3Frame::NoFrame );
     topLayout->addWidget( ruleButtonGroup );
 
     mDailyButton = new QRadioButton( i18n("&Daily"), ruleButtonGroup );
@@ -986,7 +988,7 @@ KOEditorRecurrence::KOEditorRecurrence( QWidget* parent, const char *name ) :
   topLayout->addMultiCellWidget( mEnabledCheck, 0, 0, 0, 1 );
 
 
-  mTimeGroupBox = new Q3GroupBox( 1, Horizontal, i18n("Appointment Time "),
+  mTimeGroupBox = new Q3GroupBox( 1, Qt::Horizontal, i18n("Appointment Time "),
                                  this );
   Q3WhatsThis::add( mTimeGroupBox,
                    i18n("Displays appointment time information.") );
@@ -1005,8 +1007,8 @@ KOEditorRecurrence::KOEditorRecurrence( QWidget* parent, const char *name ) :
 //  layoutTimeFrame->addWidget( mDateTimeLabel );
 
   Qt::Orientation orientation;
-  if ( KOPrefs::instance()->mCompactDialogs ) orientation = Horizontal;
-  else orientation = Vertical;
+  if ( KOPrefs::instance()->mCompactDialogs ) orientation = Qt::Horizontal;
+  else orientation = Qt::Vertical;
 
   mRuleBox = new Q3GroupBox( 1, orientation, i18n("Recurrence Rule"), this );
   Q3WhatsThis::add( mRuleBox,

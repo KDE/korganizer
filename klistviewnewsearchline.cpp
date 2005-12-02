@@ -35,6 +35,7 @@
 #include <q3header.h>
 //Added by qt3to4:
 #include <Q3ValueList>
+#include <QContextMenuEvent>
 
 #define KLISTVIEWSEARCHLINE_ALLVISIBLECOLUMNS_ID 2004
 
@@ -48,7 +49,7 @@ public:
         canChooseColumns(true),
         queuedSearches(0) {}
 
-    Q3ValueList<KListView *> listViews;
+    QList<KListView *> listViews;
     bool caseSensitive;
     bool activeSearch;
     bool keepParentsVisible;
@@ -62,8 +63,8 @@ public:
 // public methods
 ////////////////////////////////////////////////////////////////////////////////
 
-KListViewNewSearchLine::KListViewNewSearchLine(QWidget *parent, KListView *listView, const char *name) :
-    KLineEdit(parent, name)
+KListViewNewSearchLine::KListViewNewSearchLine(QWidget *parent, KListView *listView) :
+    KLineEdit(parent)
 {
     d = new KListViewNewSearchLinePrivate;
 
@@ -74,9 +75,8 @@ KListViewNewSearchLine::KListViewNewSearchLine(QWidget *parent, KListView *listV
 }
 
 KListViewNewSearchLine::KListViewNewSearchLine(QWidget *parent,
-                                       const Q3ValueList<KListView *> &listViews,
-                                       const char *name) :
-     KLineEdit(parent, name)
+                                       const QList<KListView *> &listViews) :
+     KLineEdit(parent)
 {
     d = new KListViewNewSearchLinePrivate;
 
@@ -87,8 +87,8 @@ KListViewNewSearchLine::KListViewNewSearchLine(QWidget *parent,
 }
 
 
-KListViewNewSearchLine::KListViewNewSearchLine(QWidget *parent, const char *name) :
-    KLineEdit(parent, name)
+KListViewNewSearchLine::KListViewNewSearchLine(QWidget *parent) :
+    KLineEdit(parent)
 {
     d = new KListViewNewSearchLinePrivate;
 
@@ -129,7 +129,7 @@ KListView *KListViewNewSearchLine::listView() const
         return 0;
 }
 
-const Q3ValueList<KListView *> &KListViewNewSearchLine::listViews() const
+const QList<KListView *> &KListViewNewSearchLine::listViews() const
 {
     return d->listViews;
 }
@@ -154,7 +154,7 @@ void KListViewNewSearchLine::addListView(KListView *lv)
 void KListViewNewSearchLine::removeListView(KListView *lv)
 {
     if (lv) {
-        Q3ValueList<KListView *>::Iterator it = d->listViews.find(lv);
+        QList<KListView *>::Iterator it = d->listViews.find(lv);
         
         if ( it != d->listViews.end() ) {
             d->listViews.remove( it );
@@ -171,7 +171,7 @@ void KListViewNewSearchLine::updateSearch(const QString &s)
 {
     d->search = s.isNull() ? text() : s;
 
-    for (Q3ValueList<KListView *>::Iterator it = d->listViews.begin();
+    for (QList<KListView *>::Iterator it = d->listViews.begin();
          it != d->listViews.end(); ++it)
         updateSearch( *it );
 }
@@ -238,15 +238,15 @@ void KListViewNewSearchLine::setListView(KListView *lv)
     addListView(lv);
 }
 
-void KListViewNewSearchLine::setListViews(const Q3ValueList<KListView *> &lv)
+void KListViewNewSearchLine::setListViews(const QList<KListView *> &lv)
 {
-    for (Q3ValueList<KListView *>::Iterator it = d->listViews.begin();
+    for (QList<KListView *>::Iterator it = d->listViews.begin();
          it != d->listViews.end(); ++it)
              disconnectListView(*it);
     
     d->listViews = lv;
 
-    for (Q3ValueList<KListView *>::Iterator it = d->listViews.begin();
+    for (QList<KListView *>::Iterator it = d->listViews.begin();
          it != d->listViews.end(); ++it)
         connectListView(*it);
 
@@ -286,12 +286,12 @@ bool KListViewNewSearchLine::itemMatches(const Q3ListViewItem *item, const QStri
     return false;
 }
 
-Q3PopupMenu *KListViewNewSearchLine::createPopupMenu()
+void KListViewNewSearchLine::contextMenuEvent( QContextMenuEvent *e )
 {
-    Q3PopupMenu *popup = KLineEdit::createPopupMenu();
+    QMenu *popup = KLineEdit::createStandardContextMenu();
 
     if (d->canChooseColumns) {
-        Q3PopupMenu *subMenu = new Q3PopupMenu(popup);
+        QMenu *subMenu = new QMenu(popup);
         connect(subMenu, SIGNAL(activated(int)), this, SLOT(searchColumnsMenuActivated(int)));
 
         popup->insertSeparator();
@@ -329,7 +329,8 @@ Q3PopupMenu *KListViewNewSearchLine::createPopupMenu()
             d->searchColumns.clear();
     }
     
-    return popup;   
+    popup->exec( e->globalPos() );
+    delete popup;   
 }    
 
 void KListViewNewSearchLine::connectListView(KListView *lv)
@@ -367,7 +368,7 @@ bool KListViewNewSearchLine::canChooseColumnsCheck()
     for (unsigned int i = 0; i < numcols; ++i)
         headers.append(first->columnText(i));
 
-    Q3ValueList<KListView *>::ConstIterator it = d->listViews.constBegin();
+    QList<KListView *>::ConstIterator it = d->listViews.constBegin();
     for (++it /* skip the first one */; it !=d->listViews.constEnd(); ++it) {
         // the listviews have different numbers of columns,
         if ((unsigned int) (*it)->columns() != numcols)
