@@ -40,6 +40,8 @@ class KLineEdit;
 class KTextEdit;
 class KTimeEdit;
 class Q3Button;
+class QToolButton;
+
 namespace KOrg {
 class IncidenceChangerBase;
 }

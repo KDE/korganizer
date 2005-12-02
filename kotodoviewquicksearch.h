@@ -16,7 +16,7 @@
 
     You should have received a copy of the GNU General Public License
     along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+    Foundation, Inc., 51 Franklin Street, Fifth Floor,
     Boston, MA 02110-1301, USA.
 
     As a special exception, permission is given to link this program
@@ -48,10 +48,10 @@ class KOTodoListViewQuickSearchLine : public KListViewSearchLine
   Q_OBJECT
   Q_PROPERTY( QString category READ category WRITE setCategory )
   public:
-    KOTodoListViewQuickSearchLine( QWidget *parent=0, KListView *listView ) 
-        : KListViewSearchLine( parent, listView) { }
+    KOTodoListViewQuickSearchLine( QWidget *parent=0, QList<KListView*> listViews )
+        : KListViewSearchLine( parent, listViews ) { }
     virtual ~KOTodoListViewQuickSearchLine() { }
-    
+
     void setCategory( const QString &category ) { mCategory = category; }
     const QString &category() const { return mCategory; }
   protected:
@@ -68,14 +68,14 @@ class KOTodoListViewQuickSearch : public KToolBar
   friend class KOTodoListViewQuickSearchContainer;
   public:
     KOTodoListViewQuickSearch( QWidget *parent,
-                               KListView *listView,
+                               QList<KListView*> listViews,
                                KActionCollection *actionCollection,
                                Calendar *calendar,
                                const char *name = 0 );
     virtual ~KOTodoListViewQuickSearch();
 
     void setCalendar( Calendar *calendar );
-    
+
   public slots:
     void reset();
     void fillCategories();
@@ -95,7 +95,6 @@ class KOTodoListViewQuickSearch : public KToolBar
     QVector<QString> categoryList;
     Calendar *mCalendar;
     KOTodoListViewQuickSearchLine *mQuickSearchLine;
-    KListView *mListView;
     QLabel *mCategoryLabel, *mSearchLabel;
     static KAction *action;
 };
@@ -105,19 +104,19 @@ class KOTodoListViewQuickSearchContainer : public QWidget
   Q_OBJECT
   public:
     KOTodoListViewQuickSearchContainer( QWidget *parent,
-                               KListView *listView,
+                               QList<KListView*> listViews,
                                KActionCollection *actionCollection,
                                Calendar *calendar);
     virtual ~KOTodoListViewQuickSearchContainer();
-    
+
     QSize sizeHint() const;
     QSize minimumSizeHint() const;
-    
+
     KOTodoListViewQuickSearch *quickSearch() const;
 
   protected:
     void resizeEvent ( QResizeEvent *e );
-    
+
   private:
     KOTodoListViewQuickSearch *mQuickSearch;
 };

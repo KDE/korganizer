@@ -75,6 +75,8 @@ class KDE_EXPORT KOGlobals
     */
     KHolidays *holidays() const;
 
+    KInstance* instance() const { return mOwnInstance; }
+
   protected:
     KOGlobals();
 

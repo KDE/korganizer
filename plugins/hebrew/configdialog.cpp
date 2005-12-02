@@ -18,6 +18,7 @@
 */
 #include "configdialog.h"
 #include "configdialog.moc"
+#include <QFrame>
 #include <klocale.h>
 #include <qlayout.h>
 #include <kapplication.h>

@@ -16,7 +16,7 @@
 
     You should have received a copy of the GNU General Public License
     along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+    Foundation, Inc., 51 Franklin Street, Fifth Floor,
     Boston, MA 02110-1301, USA.
 
     As a special exception, permission is given to link this program
@@ -56,36 +56,35 @@ using namespace KCal;
 KAction *KOTodoListViewQuickSearch::action = 0;
 
 KOTodoListViewQuickSearch::KOTodoListViewQuickSearch( QWidget *parent,
-                                            KListView *listView,
+                                            QList<KListView*> listViews,
                                             KActionCollection *actionCollection,
                                             Calendar *calendar,
                                             const char *name )
-  : KToolBar( parent, name ), mCategoryCombo( 0 ), mCalendar( calendar ), 
-    mQuickSearchLine( 0 ), 
-    mListView( listView )
+  : KToolBar( parent, name ), mCategoryCombo( 0 ), mCalendar( calendar ),
+    mQuickSearchLine( 0 )
 {
   if ( !action ) {
     action = new KAction( i18n( "Reset To-do Quick Search" ),
-                          QApplication::isRightToLeft() ? "clear_left" : 
-                          "locationbar_erase", 0, this, SLOT( reset() ), 
+                          QApplication::isRightToLeft() ? "clear_left" :
+                          "locationbar_erase", 0, this, SLOT( reset() ),
                           actionCollection, "reset_quicksearch" );
     action->setWhatsThis( i18n( "Reset Quick Search\n"
                                   "Resets the quick search so that "
                                   "all to-dos are shown again." ) );
   }
-  
+
   action->plug( this );
-  
+
   boxLayout()->setSpacing( KDialog::spacingHint() );
-  
-  mSearchLabel = new QLabel( i18n("Sea&rch:"), this, 
+
+  mSearchLabel = new QLabel( i18n("Sea&rch:"), this,
                               "kde toolbar widget" );
-  
-  mQuickSearchLine = new KOTodoListViewQuickSearchLine( this, mListView );
+
+  mQuickSearchLine = new KOTodoListViewQuickSearchLine( this, listViews );
   setStretchableWidget( mQuickSearchLine );
-  
+
   mSearchLabel->setBuddy( mQuickSearchLine );
-  
+
   mCategoryLabel = new QLabel( i18n("&Category:"), this, "kde toolbar widget" );
 
   mCategoryCombo = new QComboBox( this, "quick search category combo box" );
@@ -102,7 +101,7 @@ KOTodoListViewQuickSearch::~KOTodoListViewQuickSearch()
 {
 }
 
-bool KOTodoListViewQuickSearchLine::itemMatches(const Q3ListViewItem *item, 
+bool KOTodoListViewQuickSearchLine::itemMatches(const Q3ListViewItem *item,
                                                 const QString &s)
 const
 {
@@ -141,7 +140,7 @@ void KOTodoListViewQuickSearch::fillCategories()
   QString current = mCategoryCombo->currentItem() > 0 ?
     categoryList[mCategoryCombo->currentItem() - 1] : QString::null;
   QStringList categories;
-  
+
   CalFilter *filter = mCalendar->filter();
   if ( filter && ( filter->criteria() & CalFilter::ShowCategories ) ) {
     categories = filter->categoryList();
@@ -151,7 +150,7 @@ void KOTodoListViewQuickSearch::fillCategories()
     QStringList filterCategories = filter->categoryList();
     categories.sort();
     filterCategories.sort();
-    
+
     QStringList::Iterator it = categories.begin();
     QStringList::Iterator jt = filterCategories.begin();
     while ( it != categories.end() && jt != filterCategories.end() )
@@ -166,13 +165,13 @@ void KOTodoListViewQuickSearch::fillCategories()
       else if ( *it > *jt )
         jt++;
   }
-  
+
   CategoryHierarchyReaderQComboBox( mCategoryCombo ).read( categories );
   mCategoryCombo->insertItem( i18n( "Any category" ), 0 );
-  
+
   categoryList.resize( categories.count() );
   qCopy( categories.begin(), categories.end(), categoryList.begin() );
-  
+
   if ( current.isNull() ) {
     mCategoryCombo->setCurrentItem( 0 );
   } else {
@@ -182,7 +181,7 @@ void KOTodoListViewQuickSearch::fillCategories()
         break;
       }
   }
-  
+
 }
 
 void KOTodoListViewQuickSearch::setCalendar( Calendar *calendar )
@@ -193,11 +192,11 @@ void KOTodoListViewQuickSearch::setCalendar( Calendar *calendar )
 
 void KOTodoListViewQuickSearch::resizeEvent( QResizeEvent *e )
 {
-  int w = width() - mCategoryCombo->sizeHint().width() 
-                  - mCategoryLabel->sizeHint().width() 
+  int w = width() - mCategoryCombo->sizeHint().width()
+                  - mCategoryLabel->sizeHint().width()
                   - mSearchLabel->sizeHint().width();
   int halfw = width() / 2;
-  
+
   if ( w < halfw ) {
     w += mCategoryLabel->sizeHint().width();
     mCategoryLabel->hide();
@@ -215,31 +214,31 @@ void KOTodoListViewQuickSearch::resizeEvent( QResizeEvent *e )
     slotCategoryChanged( mCategoryCombo->currentItem() );
     mCategoryCombo->show();
   }
-  
+
   KToolBar::resizeEvent( e );
 }
 
 void KOTodoListViewQuickSearch::showEvent( QShowEvent *e )
 {
   connect( action, SIGNAL( activated() ), this, SLOT( reset() ) );
-  
+
   KToolBar::showEvent( e );
 }
 
 void KOTodoListViewQuickSearch::hideEvent( QHideEvent *e )
 {
   disconnect( action, SIGNAL( activated() ), this, SLOT( reset() ) );
-  
+
   KToolBar::hideEvent( e );
 }
 
-KOTodoListViewQuickSearchContainer::KOTodoListViewQuickSearchContainer( 
+KOTodoListViewQuickSearchContainer::KOTodoListViewQuickSearchContainer(
                                QWidget *parent,
-                               KListView *listView,
+                               QList<KListView*> listViews,
                                KActionCollection *actionCollection,
                                Calendar *calendar)
      : QWidget( parent ), mQuickSearch( new KOTodoListViewQuickSearch(
-         this, listView, actionCollection, calendar, "search toolbar" ) )
+         this, listViews, actionCollection, calendar, "search toolbar" ) )
 {
   setSizePolicy( QSizePolicy( QSizePolicy::Expanding, QSizePolicy::Fixed ) );
 }
@@ -247,7 +246,7 @@ KOTodoListViewQuickSearchContainer::KOTodoListViewQuickSearchContainer(
 KOTodoListViewQuickSearchContainer::~KOTodoListViewQuickSearchContainer()
 {
 }
-    
+
 QSize KOTodoListViewQuickSearchContainer::sizeHint() const
 {
   int width = KDialog::spacingHint();
@@ -258,19 +257,19 @@ QSize KOTodoListViewQuickSearchContainer::sizeHint() const
       width += child->sizeHint().width() + KDialog::spacingHint();
     }
   }
-  
+
   return QSize( width, mQuickSearch->sizeHint().height() );
 }
 
 QSize KOTodoListViewQuickSearchContainer::minimumSizeHint() const
 {
-  return QSize( mQuickSearch->iconSize() + 
+  return QSize( mQuickSearch->iconSize() +
                 mQuickSearch->mQuickSearchLine->minimumSizeHint().width() +
                 3 * KDialog::spacingHint(),
                 mQuickSearch->minimumSizeHint().height() );
 }
 
-KOTodoListViewQuickSearch *KOTodoListViewQuickSearchContainer::quickSearch() 
+KOTodoListViewQuickSearch *KOTodoListViewQuickSearchContainer::quickSearch()
                                                                           const
 {
   return mQuickSearch;

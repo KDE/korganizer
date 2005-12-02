@@ -489,7 +489,8 @@ void KOEditorAttachments::dropEvent( QDropEvent* event ) {
   menu.insertSeparator();
   menu.insertItem( i18n( "C&ancel" ), 4 );
   
-  int ret = menu.exec( QCursor::pos() );
+#warning Port me!
+  int ret /*= menu.exec( QCursor::pos() )*/;
   if ( 1 == ret ) {
     QStringList::ConstIterator jt = labels.constBegin();
     for ( KURL::List::ConstIterator it = urls.constBegin(); 
@@ -517,7 +518,8 @@ void KOEditorAttachments::dropEvent( QDropEvent* event ) {
       QString path = generateLocalAttachmentPath( QString::null, mimeType );
       QFile file( path );
       file.open( QIODevice::WriteOnly );
-      QDataStream( &file ) << event->encodedData( event->format() );
+      QDataStream stream( &file );
+      stream << event->encodedData( event->format() );
       file.close();
       addAttachment( path, mimeType->name(), mimeType->comment(), true );
       mDeferredCopy.append( path );

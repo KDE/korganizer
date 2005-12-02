@@ -46,6 +46,7 @@
 #include <kcombobox.h>
 #include <kwin.h>
 #include <klockfile.h>
+#include <kpushbutton.h>
 
 #include <libkcal/event.h>
 #include <ktoolinvocation.h>

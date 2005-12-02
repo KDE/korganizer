@@ -39,12 +39,13 @@ class KColorButton;
 class KPushButton;
 class QColor;
 class Q3ListView;
+class KInstance;
 
 class KDE_EXPORT KOPrefsDialogMain : public KPrefsModule
 {
     Q_OBJECT
   public:
-    KOPrefsDialogMain( QWidget *parent, const char *name );
+    KOPrefsDialogMain( KInstance *inst, QWidget *parent );
 
   protected slots:
     void toggleEmailSettings( bool on );
@@ -56,7 +57,7 @@ class KDE_EXPORT KOPrefsDialogColors : public KPrefsModule
 {
     Q_OBJECT
   public:
-    KOPrefsDialogColors( QWidget *parent, const char *name );
+    KOPrefsDialogColors( KInstance *inst, QWidget *parent );
 
   protected:
     void usrWriteConfig();
@@ -86,7 +87,7 @@ class KDE_EXPORT KOPrefsDialogGroupScheduling : public KPrefsModule
 {
     Q_OBJECT
   public:
-    KOPrefsDialogGroupScheduling( QWidget *parent, const char *name );
+    KOPrefsDialogGroupScheduling( KInstance *inst, QWidget *parent );
 
   protected:
     void usrReadConfig();
@@ -109,7 +110,7 @@ class KDE_EXPORT KOPrefsDialogGroupwareScheduling : public KPrefsModule
 {
     Q_OBJECT
   public:
-    KOPrefsDialogGroupwareScheduling( QWidget *parent, const char *name );
+    KOPrefsDialogGroupwareScheduling( KInstance *inst, QWidget *parent );
 
   protected:
     void usrReadConfig();
@@ -123,7 +124,7 @@ class KDE_EXPORT KOPrefsDialogPlugins : public KPrefsModule
 {
     Q_OBJECT
   public:
-    KOPrefsDialogPlugins( QWidget *parent, const char *name );
+    KOPrefsDialogPlugins( KInstance *inst, QWidget *parent );
 
   protected slots:
     void usrReadConfig();
@@ -141,7 +142,7 @@ class KDE_EXPORT KOPrefsDialogPlugins : public KPrefsModule
 class KDE_EXPORT KOPrefsDesignerFields : public KPIM::KCMDesignerFields
 {
   public:
-    KOPrefsDesignerFields( QWidget *parent = 0, const char *name = 0 );
+    KOPrefsDesignerFields( KInstance *inst, QWidget *parent = 0 );
 
   protected:
     QString localUiDir();

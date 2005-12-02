@@ -23,9 +23,6 @@
 */
 
 #include <qlayout.h>
-#include <qhgroupbox.h>
-#include <qvgroupbox.h>
-#include <qvbuttongroup.h>
 #include <qradiobutton.h>
 #include <qcheckbox.h>
 #include <qlineedit.h>
@@ -37,6 +34,7 @@
 #include <qlabel.h>
 //Added by qt3to4:
 #include <QVBoxLayout>
+#include <Q3ButtonGroup>
 
 #include <klocale.h>
 #include <kdebug.h>
@@ -141,12 +139,12 @@ void ExportWebDialog::setupGeneralPage()
   mGeneralPage = addPage( i18n("General") );
   QVBoxLayout *topLayout = new QVBoxLayout(mGeneralPage, 10);
 
-  Q3GroupBox *rangeGroup = new QHGroupBox( i18n("Date Range"), mGeneralPage );
+  Q3GroupBox *rangeGroup = new Q3GroupBox( i18n("Date Range"), mGeneralPage );
   topLayout->addWidget( rangeGroup );
   addWidDate( mSettings->dateStartItem(), rangeGroup );
   addWidDate( mSettings->dateEndItem(), rangeGroup );
 
-  Q3ButtonGroup *typeGroup = new Q3VButtonGroup( i18n("View Type"), mGeneralPage );
+  Q3ButtonGroup *typeGroup = new Q3ButtonGroup( i18n("View Type"), mGeneralPage );
   topLayout->addWidget( typeGroup );
 //  addWidBool( mSettings->weekViewItem(), typeGroup );
   addWidBool( mSettings->monthViewItem(), typeGroup );
@@ -157,7 +155,7 @@ void ExportWebDialog::setupGeneralPage()
   addWidBool( mSettings->excludePrivateItem(), typeGroup );
   addWidBool( mSettings->excludeConfidentialItem(), typeGroup );
 
-  Q3GroupBox *destGroup = new QVGroupBox(i18n("Destination"), mGeneralPage );
+  Q3GroupBox *destGroup = new Q3GroupBox(i18n("Destination"), mGeneralPage );
   topLayout->addWidget(destGroup);
   KPrefsWidPath *pathWid = addWidPath( mSettings->outputFileItem(), 
                                        destGroup, "text/html", KFile::File );
