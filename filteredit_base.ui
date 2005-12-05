@@ -1,320 +1,304 @@
-<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
-<class>FilterEdit_base</class>
-<widget class="QWidget">
-    <property name="name">
-        <cstring>FilterEdit_base</cstring>
-    </property>
-    <property name="geometry">
-        <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>504</width>
-            <height>436</height>
-        </rect>
-    </property>
-    <grid>
-        <property name="name">
-            <cstring>unnamed</cstring>
+<ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
+ <class>FilterEdit_base</class>
+ <widget class="QWidget" name="FilterEdit_base" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>504</width>
+    <height>436</height>
+   </rect>
+  </property>
+  <layout class="QGridLayout" >
+   <property name="margin" >
+    <number>11</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item row="0" column="0" colspan="2" >
+    <widget class="Q3ListBox" name="mRulesList" />
+   </item>
+   <item row="1" column="0" >
+    <widget class="QPushButton" name="mNewButton" >
+     <property name="text" >
+      <string>&amp;New</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1" >
+    <widget class="QPushButton" name="mDeleteButton" >
+     <property name="text" >
+      <string>&amp;Delete</string>
+     </property>
+    </widget>
+   </item>
+   <item rowspan="2" row="0" column="2" >
+    <widget class="Q3ButtonGroup" name="mDetailsFrame" >
+     <property name="title" >
+      <string>Filter Details</string>
+     </property>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>11</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item row="0" column="0" >
+       <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
         </property>
-        <widget class="QListBox" row="0" column="0" rowspan="1" colspan="2">
-            <property name="name">
-                <cstring>mRulesList</cstring>
-            </property>
-        </widget>
-        <widget class="QPushButton" row="1" column="0">
-            <property name="name">
-                <cstring>mNewButton</cstring>
-            </property>
-            <property name="text">
-                <string>&amp;New</string>
-            </property>
-        </widget>
-        <widget class="QPushButton" row="1" column="1">
-            <property name="name">
-                <cstring>mDeleteButton</cstring>
-            </property>
-            <property name="text">
-                <string>&amp;Delete</string>
-            </property>
-        </widget>
-        <widget class="QButtonGroup" row="0" column="2" rowspan="2" colspan="1">
-            <property name="name">
-                <cstring>mDetailsFrame</cstring>
-            </property>
-            <property name="title">
-                <string>Filter Details</string>
-            </property>
-            <grid>
-                <property name="name">
-                    <cstring>unnamed</cstring>
-                </property>
-                <widget class="QLayoutWidget" row="0" column="0">
-                    <property name="name">
-                        <cstring>layout3</cstring>
-                    </property>
-                    <hbox>
-                        <property name="name">
-                            <cstring>unnamed</cstring>
-                        </property>
-                        <widget class="QLabel">
-                            <property name="name">
-                                <cstring>textLabel1</cstring>
-                            </property>
-                            <property name="text">
-                                <string>Name:</string>
-                            </property>
-                        </widget>
-                        <widget class="QLineEdit">
-                            <property name="name">
-                                <cstring>mNameLineEdit</cstring>
-                            </property>
-                        </widget>
-                    </hbox>
-                </widget>
-                <widget class="QCheckBox" row="1" column="0">
-                    <property name="name">
-                        <cstring>mRecurringCheck</cstring>
-                    </property>
-                    <property name="text">
-                        <string>Hide &amp;recurring events and to-dos</string>
-                    </property>
-                    <property name="whatsThis" stdset="0">
-                        <string>Select this option if you do not want to show recurring events and to-dos in your views. Daily and weekly recurring items may take a lot of space, so it might be handy to hide them.</string>
-                    </property>
-                </widget>
-                <widget class="QCheckBox" row="2" column="0">
-                    <property name="name">
-                        <cstring>mCompletedCheck</cstring>
-                    </property>
-                    <property name="text">
-                        <string>Hide co&amp;mpleted to-dos</string>
-                    </property>
-                    <property name="whatsThis" stdset="0">
-                        <string>If this box is checked, the filter will hide all to-do items from the list, that have been completed. Optionally, only items that have been completed a given number of days are hidden.</string>
-                    </property>
-                </widget>
-                <widget class="QLayoutWidget" row="3" column="0">
-                    <property name="name">
-                        <cstring>layout1</cstring>
-                    </property>
-                    <hbox>
-                        <property name="name">
-                            <cstring>unnamed</cstring>
-                        </property>
-                        <spacer>
-                            <property name="name">
-                                <cstring>spacer2</cstring>
-                            </property>
-                            <property name="orientation">
-                                <enum>Horizontal</enum>
-                            </property>
-                            <property name="sizeType">
-                                <enum>Fixed</enum>
-                            </property>
-                            <property name="sizeHint">
-                                <size>
-                                    <width>15</width>
-                                    <height>20</height>
-                                </size>
-                            </property>
-                        </spacer>
-                        <widget class="QLabel">
-                            <property name="name">
-                                <cstring>mCompletedTimeSpanLabel</cstring>
-                            </property>
-                            <property name="enabled">
-                                <bool>false</bool>
-                            </property>
-                            <property name="text">
-                                <string>Days after completion:</string>
-                            </property>
-                            <property name="buddy" stdset="0">
-                                <cstring>mCompletedTimeSpan</cstring>
-                            </property>
-                            <property name="whatsThis" stdset="0">
-                                <string>This option will allow you to select which completed to-dos should be hidden. When you choose &lt;i&gt;Immediately&lt;/i&gt;, it will hide the to-do as soon as you check it. You can increase or decrease the number of days in the spinbox.</string>
-                            </property>
-                        </widget>
-                        <widget class="KIntNumInput">
-                            <property name="name">
-                                <cstring>mCompletedTimeSpan</cstring>
-                            </property>
-                            <property name="enabled">
-                                <bool>false</bool>
-                            </property>
-                            <property name="minValue">
-                                <number>0</number>
-                            </property>
-                            <property name="maxValue">
-                                <number>999</number>
-                            </property>
-                            <property name="specialValueText">
-                                <string>Immediately</string>
-                            </property>
-                            <property name="whatsThis" stdset="0">
-                                <string>Here you can give the number of days a to-do item has to be completed to be hidden from the to-do list. If you select "Immediately", all completed to-dos will be hidden. If you, for example, choose a value of 1, all to-do items will be hidden, that have been marked finished longer than 24 hours ago.</string>
-                            </property>
-                        </widget>
-                        <spacer>
-                            <property name="name">
-                                <cstring>spacer3</cstring>
-                            </property>
-                            <property name="orientation">
-                                <enum>Horizontal</enum>
-                            </property>
-                            <property name="sizeType">
-                                <enum>Expanding</enum>
-                            </property>
-                            <property name="sizeHint">
-                                <size>
-                                    <width>16</width>
-                                    <height>21</height>
-                                </size>
-                            </property>
-                        </spacer>
-                    </hbox>
-                </widget>
-                <widget class="QCheckBox" row="4" column="0">
-                    <property name="name">
-                        <cstring>mHideInactiveTodosCheck</cstring>
-                    </property>
-                    <property name="text">
-                        <string>Hide &amp;inactive to-dos</string>
-                    </property>
-                    <property name="whatsThis" stdset="0">
-                        <string>This option hides all to-dos from your list, where the start date has not been reached. (Note that the start date is not the due date of the to-do item.)</string>
-                    </property>
-                </widget>
-                <widget class="QButtonGroup" row="6" column="0">
-                    <property name="name">
-                        <cstring>mCategoriesButtonGroup</cstring>
-                    </property>
-                    <property name="title">
-                        <string>Categories</string>
-                    </property>
-                    <grid>
-                        <property name="name">
-                            <cstring>unnamed</cstring>
-                        </property>
-                        <property name="margin">
-                            <number>11</number>
-                        </property>
-                        <property name="spacing">
-                            <number>6</number>
-                        </property>
-                        <widget class="QListBox" row="2" column="0" rowspan="2" colspan="1">
-                            <property name="name">
-                                <cstring>mCatList</cstring>
-                            </property>
-                            <property name="selectionMode">
-                                <enum>NoSelection</enum>
-                            </property>
-                        </widget>
-                        <spacer row="3" column="1">
-                            <property name="name">
-                                <cstring>spacer4</cstring>
-                            </property>
-                            <property name="orientation">
-                                <enum>Vertical</enum>
-                            </property>
-                            <property name="sizeType">
-                                <enum>Expanding</enum>
-                            </property>
-                            <property name="sizeHint">
-                                <size>
-                                    <width>20</width>
-                                    <height>110</height>
-                                </size>
-                            </property>
-                        </spacer>
-                        <widget class="QRadioButton" row="1" column="0" rowspan="1" colspan="2">
-                            <property name="name">
-                                <cstring>mCatHideCheck</cstring>
-                            </property>
-                            <property name="text">
-                                <string>Show all except selected</string>
-                            </property>
-                            <property name="accel">
-                                <string></string>
-                            </property>
-                            <property name="buttonGroupId">
-                                <number>1</number>
-                            </property>
-                            <property name="whatsThis" stdset="0">
-                                <string>When this option is enabled, this filter will show all items which do &lt;i&gt;not&lt;/i&gt; contain the selected categories.</string>
-                            </property>
-                        </widget>
-                        <widget class="QRadioButton" row="0" column="0" rowspan="1" colspan="2">
-                            <property name="name">
-                                <cstring>mCatShowCheck</cstring>
-                            </property>
-                            <property name="text">
-                                <string>Show only selected</string>
-                            </property>
-                            <property name="accel">
-                                <string></string>
-                            </property>
-                            <property name="buttonGroupId">
-                                <number>0</number>
-                            </property>
-                            <property name="whatsThis" stdset="0">
-                                <string>When this option is enabled, this filter will show all items containing at least the selected items.</string>
-                            </property>
-                        </widget>
-                        <widget class="QPushButton" row="2" column="1">
-                            <property name="name">
-                                <cstring>mCatEditButton</cstring>
-                            </property>
-                            <property name="text">
-                                <string>Change...</string>
-                            </property>
-                            <property name="accel">
-                                <string></string>
-                            </property>
-                        </widget>
-                    </grid>
-                </widget>
-                <widget class="QCheckBox" row="5" column="0">
-                    <property name="name">
-                        <cstring>mHideTodosNotAssignedToMeCheck</cstring>
-                    </property>
-                    <property name="text">
-                        <string>Hide to-dos not assigned to me</string>
-                    </property>
-                    <property name="accel">
-                        <string></string>
-                    </property>
-                    <property name="whatsThis" stdset="0">
-                        <string>This option hides all to-dos from your list which are assigned to someone else.&lt;br&gt;
+        <property name="spacing" >
+         <number>6</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="textLabel1" >
+          <property name="text" >
+           <string>Name:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="mNameLineEdit" />
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="0" >
+       <widget class="QCheckBox" name="mRecurringCheck" >
+        <property name="whatsThis" >
+         <string>Select this option if you do not want to show recurring events and to-dos in your views. Daily and weekly recurring items may take a lot of space, so it might be handy to hide them.</string>
+        </property>
+        <property name="text" >
+         <string>Hide &amp;recurring events and to-dos</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" >
+       <widget class="QCheckBox" name="mCompletedCheck" >
+        <property name="whatsThis" >
+         <string>If this box is checked, the filter will hide all to-do items from the list, that have been completed. Optionally, only items that have been completed a given number of days are hidden.</string>
+        </property>
+        <property name="text" >
+         <string>Hide co&amp;mpleted to-dos</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0" >
+       <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
+        </property>
+        <property name="spacing" >
+         <number>6</number>
+        </property>
+        <item>
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType" >
+           <enum>QSizePolicy::Fixed</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>15</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QLabel" name="mCompletedTimeSpanLabel" >
+          <property name="enabled" >
+           <bool>false</bool>
+          </property>
+          <property name="whatsThis" >
+           <string>This option will allow you to select which completed to-dos should be hidden. When you choose &lt;i>Immediately&lt;/i>, it will hide the to-do as soon as you check it. You can increase or decrease the number of days in the spinbox.</string>
+          </property>
+          <property name="text" >
+           <string>Days after completion:</string>
+          </property>
+          <property name="buddy" >
+           <cstring>mCompletedTimeSpan</cstring>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="KIntNumInput" name="mCompletedTimeSpan" >
+          <property name="enabled" >
+           <bool>false</bool>
+          </property>
+          <property name="whatsThis" >
+           <string>Here you can give the number of days a to-do item has to be completed to be hidden from the to-do list. If you select "Immediately", all completed to-dos will be hidden. If you, for example, choose a value of 1, all to-do items will be hidden, that have been marked finished longer than 24 hours ago.</string>
+          </property>
+          <property name="minValue" >
+           <number>0</number>
+          </property>
+          <property name="maxValue" >
+           <number>999</number>
+          </property>
+          <property name="specialValueText" >
+           <string>Immediately</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType" >
+           <enum>QSizePolicy::Expanding</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>16</width>
+            <height>21</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item row="4" column="0" >
+       <widget class="QCheckBox" name="mHideInactiveTodosCheck" >
+        <property name="whatsThis" >
+         <string>This option hides all to-dos from your list, where the start date has not been reached. (Note that the start date is not the due date of the to-do item.)</string>
+        </property>
+        <property name="text" >
+         <string>Hide &amp;inactive to-dos</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0" >
+       <widget class="Q3ButtonGroup" name="mCategoriesButtonGroup" >
+        <property name="title" >
+         <string>Categories</string>
+        </property>
+        <property name="orientation" >
+         <enum>Qt::Vertical</enum>
+        </property>
+        <layout class="QGridLayout" >
+         <property name="margin" >
+          <number>11</number>
+         </property>
+         <property name="spacing" >
+          <number>6</number>
+         </property>
+         <item rowspan="2" row="2" column="0" >
+          <widget class="Q3ListBox" name="mCatList" >
+           <property name="selectionMode" >
+            <enum>Q3ListBox::NoSelection</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1" >
+          <spacer>
+           <property name="orientation" >
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeType" >
+            <enum>QSizePolicy::Expanding</enum>
+           </property>
+           <property name="sizeHint" >
+            <size>
+             <width>20</width>
+             <height>110</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="1" column="0" colspan="2" >
+          <widget class="QRadioButton" name="mCatHideCheck" >
+           <property name="whatsThis" >
+            <string>When this option is enabled, this filter will show all items which do &lt;i>not&lt;/i> contain the selected categories.</string>
+           </property>
+           <property name="text" >
+            <string>Show all except selected</string>
+           </property>
+           <property name="shortcut" >
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0" colspan="2" >
+          <widget class="QRadioButton" name="mCatShowCheck" >
+           <property name="whatsThis" >
+            <string>When this option is enabled, this filter will show all items containing at least the selected items.</string>
+           </property>
+           <property name="text" >
+            <string>Show only selected</string>
+           </property>
+           <property name="shortcut" >
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1" >
+          <widget class="QPushButton" name="mCatEditButton" >
+           <property name="text" >
+            <string>Change...</string>
+           </property>
+           <property name="shortcut" >
+            <string/>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="5" column="0" >
+       <widget class="QCheckBox" name="mHideTodosNotAssignedToMeCheck" >
+        <property name="whatsThis" >
+         <string>This option hides all to-dos from your list which are assigned to someone else.&lt;br>
 Only to-dos which have least one attendee will be checked.  If you are not in the list of attendees the to-do will be hidden.</string>
-                    </property>
-                </widget>
-            </grid>
-        </widget>
-    </grid>
-</widget>
-<customwidgets>
-</customwidgets>
-<connections>
-    <connection>
-        <sender>mCompletedCheck</sender>
-        <signal>toggled(bool)</signal>
-        <receiver>mCompletedTimeSpanLabel</receiver>
-        <slot>setEnabled(bool)</slot>
-    </connection>
-    <connection>
-        <sender>mCompletedCheck</sender>
-        <signal>toggled(bool)</signal>
-        <receiver>mCompletedTimeSpan</receiver>
-        <slot>setEnabled(bool)</slot>
-    </connection>
-</connections>
-<slots>
-    <slot>updateFilter()</slot>
-</slots>
-<layoutdefaults spacing="6" margin="11"/>
-<includehints>
-    <includehint>knuminput.h</includehint>
-    <includehint>knuminput.h</includehint>
-</includehints>
-</UI>
+        </property>
+        <property name="text" >
+         <string>Hide to-dos not assigned to me</string>
+        </property>
+        <property name="shortcut" >
+         <string/>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11" />
+ <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+ <customwidgets>
+  <customwidget>
+   <class>KIntNumInput</class>
+   <extends></extends>
+   <header>knuminput.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>Q3ListBox</class>
+   <extends></extends>
+   <header>q3listbox.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>Q3ButtonGroup</class>
+   <extends></extends>
+   <header>Qt3Support/Q3ButtonGroup</header>
+   <container>1</container>
+   <pixmap></pixmap>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

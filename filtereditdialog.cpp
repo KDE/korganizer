@@ -95,8 +95,9 @@ void FilterEditDialog::setDialogConsistent(bool consistent) {
 }
 
 FilterEdit::FilterEdit(Q3PtrList<CalFilter> *filters, QWidget *parent)
-  : FilterEdit_base( parent), current(0), mCategorySelectDialog( 0 )
+  : QWidget( parent ), current(0), mCategorySelectDialog( 0 )
 {
+  setupUi( this );
   mFilters = filters;
   Q3WhatsThis::add( mNewButton, i18n( "Press this button to define a new filter." ) );
   Q3WhatsThis::add( mDeleteButton, i18n( "Press this button to remove the currently active filter." ) );

@@ -27,9 +27,9 @@
 #include <kdialogbase.h>
 #include <libkcal/alarm.h>
 
-class Q3ListViewItem;
+#include "koeditoralarms_base.h"
 
-class KOEditorAlarms_base;
+class Q3ListViewItem;
 
 class AlarmListViewItem;
 
@@ -55,7 +55,7 @@ class KOEditorAlarms : public KDialogBase
     void writeAlarm( KCal::Alarm *alarm );
   private:
     KCal::Alarm::List *mAlarms;
-    KOEditorAlarms_base *mWidget;
+    Ui::KOEditorAlarms_base mWidget;
     bool mInitializing;
     AlarmListViewItem *mCurrentItem;
 };

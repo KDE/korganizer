@@ -68,7 +68,7 @@ class FilterEditDialog : public KDialogBase
     void slotOk();
 };
 
-class FilterEdit : public FilterEdit_base
+class FilterEdit : public QWidget, Ui::FilterEdit_base
 {
     Q_OBJECT
   public:
