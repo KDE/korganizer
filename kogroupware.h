@@ -4,7 +4,7 @@
   Requires the Qt and KDE widget libraries, available at no cost at
   http://www.trolltech.com and http://www.kde.org respectively
 
-  Copyright (c) 2002-2004 Klar‰lvdalens Datakonsult AB
+  Copyright (c) 2002-2004 Klar√§lvdalens Datakonsult AB
         <info@klaralvdalens-datakonsult.se>
 
   This program is free software; you can redistribute it and/or modify
