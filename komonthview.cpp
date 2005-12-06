@@ -437,7 +437,7 @@ class MonthViewCell::CreateItemVisitor :
       public IncidenceBase::Visitor
 {
   public:
-    CreateItemVisitor() : mItem(0) {}
+    CreateItemVisitor() : mItem(0) { emails = KOPrefs::instance()->allEmails(); }
 
     bool act( IncidenceBase *incidence, QDate date, QPalette stdPal )
     {
@@ -447,6 +447,7 @@ class MonthViewCell::CreateItemVisitor :
       return incidence->accept( *this );
     }
     MonthViewItem *item() const { return mItem; }
+    QStringList emails;
 
   protected:
     bool visit( Event *event ) {
@@ -487,7 +488,7 @@ class MonthViewCell::CreateItemVisitor :
         mItem->setPalette( mStandardPalette );
       }
 
-      Attendee *me = event->attendeeByMails( KOPrefs::instance()->allEmails() );
+      Attendee *me = event->attendeeByMails( emails );
       if ( me != 0 ) {
         mItem->setReply( me->status() == Attendee::NeedsAction && me->RSVP() );
       } else
@@ -524,10 +525,8 @@ class MonthViewCell::CreateItemVisitor :
 };
 
 
-void MonthViewCell::addIncidence( Incidence *incidence )
+void MonthViewCell::addIncidence( Incidence *incidence, CreateItemVisitor& v)
 {
-  CreateItemVisitor v;
-
   if ( v.act( incidence, mDate, mStandardPalette ) ) {
     MonthViewItem *item = v.item();
     if ( item ) {
@@ -933,7 +932,7 @@ class KOMonthView::GetDateVisitor : public IncidenceBase::Visitor
     QDate mDate;
 };
 
-void KOMonthView::changeIncidenceDisplayAdded( Incidence *incidence )
+void KOMonthView::changeIncidenceDisplayAdded( Incidence *incidence, MonthViewCell::CreateItemVisitor& v)
 {
   MonthViewCell *mvc;
   Event *event = 0;
@@ -955,31 +954,32 @@ void KOMonthView::changeIncidenceDisplayAdded( Incidence *incidence )
 // FIXME: This breaks with recurring multi-day events!
      for ( uint i = 0; i < mCells.count(); i++ ) {
        if ( incidence->recursOn( mCells[i]->date() ) ) {
-         mCells[i]->addIncidence( incidence );
+         mCells[i]->addIncidence( incidence, v );
        }
      }
   } else if ( event ) {
       for ( QDateTime _date = date;
             _date <= event->dtEnd(); _date = _date.addDays( 1 ) ) {
         mvc = lookupCellByDate( _date.date() );
-        if ( mvc ) mvc->addIncidence( event );
+        if ( mvc ) mvc->addIncidence( event, v );
       }
     } else if ( todo ) {
         mvc = lookupCellByDate( date );
-        if ( mvc ) mvc->addIncidence( todo );
+        if ( mvc ) mvc->addIncidence( todo, v );
       }
 }
 
 void KOMonthView::changeIncidenceDisplay( Incidence *incidence, int action )
 {
+  MonthViewCell::CreateItemVisitor v;
   switch ( action ) {
     case KOGlobals::INCIDENCEADDED:
-      changeIncidenceDisplayAdded( incidence );
+      changeIncidenceDisplayAdded( incidence, v );
       break;
     case KOGlobals::INCIDENCEEDITED:
       for( uint i = 0; i < mCells.count(); i++ )
         mCells[i]->removeIncidence( incidence );
-      changeIncidenceDisplayAdded( incidence );
+      changeIncidenceDisplayAdded( incidence, v );
       break;
     case KOGlobals::INCIDENCEDELETED:
       for( uint i = 0; i < mCells.count(); i++ )
@@ -999,8 +999,9 @@ void KOMonthView::updateView()
   Incidence::List incidences = calendar()->incidences();
   Incidence::List::ConstIterator it;
 
+  MonthViewCell::CreateItemVisitor v;
   for ( it = incidences.begin(); it != incidences.end(); ++it )
-    changeIncidenceDisplayAdded( *it );
+    changeIncidenceDisplayAdded( *it, v );
 
   processSelectionChange();
 }

@@ -127,6 +127,7 @@ class MonthViewCell : public QWidget
 {
     Q_OBJECT
   public:
+    class CreateItemVisitor;
     MonthViewCell( KOMonthView * );
 
     /** Sets the date of the cell */
@@ -160,7 +161,7 @@ class MonthViewCell : public QWidget
     /** Adds an incidence to the cell.
         Sets the right text and icons for this incidence.
     */
-    void addIncidence( Incidence * );
+    void addIncidence( Incidence *, MonthViewCell::CreateItemVisitor& );
     /** Removes an incidence from the cell.
         @return True if successful, false if deletion failed
        (e.g. when given incidence doesn't exist in the cell.
@@ -198,7 +199,6 @@ class MonthViewCell : public QWidget
     void contextMenu( QListBoxItem * );
 
   private:
-    class CreateItemVisitor;
     KOMonthView *mMonthView;
   // We need the calendar for paint the ResourceColor
     Calendar *mCalendar;
@@ -253,7 +253,7 @@ class KOMonthView: public KOEventView
     virtual void showIncidences( const Incidence::List &incidenceList );
 
     void changeIncidenceDisplay(Incidence *, int);
-    void changeIncidenceDisplayAdded(Incidence *);
+    void changeIncidenceDisplayAdded(Incidence *, MonthViewCell::CreateItemVisitor&);
 
     void clearSelection();
 
