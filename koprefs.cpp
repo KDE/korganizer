@@ -348,7 +348,7 @@ QStringList KOPrefs::fullEmails()
     fullEmails << QString("%1 <%2>").arg( fullName() ).arg( *it );
   }
   // Add emails from the user's kaddressbook entry
-  KABC::Addressee me = KABC::StdAddressBook::self( true )->whoAmI();
+  KABC::Addressee me = KABC::StdAddressBook::self()->whoAmI();
   lst = me.emails();
   for ( it = lst.begin(); it != lst.end(); ++it ) {
     fullEmails << me.fullEmail( *it );
@@ -366,7 +366,7 @@ bool KOPrefs::thatIsMe( const QString& _email )
   QString email = KPIM::getEmailAddress( _email );
   if ( mAdditionalMails.find( email ) != mAdditionalMails.end() )
     return true;
-  QStringList lst = KABC::StdAddressBook::self( true )->whoAmI().emails();
+  QStringList lst = KABC::StdAddressBook::self()->whoAmI().emails();
   if ( lst.find( email ) != lst.end() )
     return true;
   return false;
