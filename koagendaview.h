@@ -95,7 +95,7 @@ class EventIndicator : public Q3Frame
     Q_OBJECT
   public:
     enum Location { Top, Bottom };
-    EventIndicator( Location loc = Qt::DockTop, QWidget *parent = 0,
+    EventIndicator( Location loc = Top, QWidget *parent = 0,
                     const char *name = 0 );
     virtual ~EventIndicator();
 
