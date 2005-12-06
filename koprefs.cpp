@@ -320,7 +320,7 @@ QStringList KOPrefs::allEmails()
   // Add emails configured in korganizer
   lst += mAdditionalMails;
   // Add emails from the user's kaddressbook entry
-  lst += KABC::StdAddressBook::self( true )->whoAmI().emails();
+  lst += KABC::StdAddressBook::self()->whoAmI().emails();
   // Add the email entered as the userEmail here
   lst += email();
 
