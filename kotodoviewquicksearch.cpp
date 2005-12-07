@@ -175,7 +175,7 @@ void KOTodoListViewQuickSearch::fillCategories()
   if ( current.isNull() ) {
     mCategoryCombo->setCurrentItem( 0 );
   } else {
-    for ( unsigned int i = 0; i < categoryList.count(); ++i )
+    for ( int i = 0; i < categoryList.count(); ++i )
       if ( categoryList[i] == current ) {
         mCategoryCombo->setCurrentItem( i + 1 );
         break;

@@ -67,6 +67,7 @@ class CalendarViewExtension : public QWidget
     class Factory
     {
       public:
+		virtual ~Factory() {}
         virtual CalendarViewExtension *create( QWidget *parent ) = 0;
     };
 };

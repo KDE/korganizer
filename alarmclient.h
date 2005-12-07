@@ -29,7 +29,7 @@ class AlarmClient
 {
   public:
     AlarmClient();
-
+	virtual ~AlarmClient() {}
     /**
       Start alarm daemon.
     */

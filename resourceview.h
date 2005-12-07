@@ -46,6 +46,7 @@ class ResourceViewFactory : public CalendarViewExtension::Factory
     ResourceViewFactory( KCal::CalendarResources *calendar,
                          CalendarView *view );
 
+	virtual ~ResourceViewFactory(){}
     CalendarViewExtension *create( QWidget * );
 
     ResourceView *resourceView() const;

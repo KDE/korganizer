@@ -179,6 +179,7 @@ class RecurrenceChooser : public QWidget
 class ExceptionsBase
 {
   public:
+	virtual ~ExceptionsBase(){}
     virtual void setDates( const DateList & ) = 0;
     virtual DateList dates() = 0;
 };
@@ -218,6 +219,7 @@ class ExceptionsDialog : public KDialogBase, public ExceptionsBase
 class RecurrenceRangeBase
 {
   public:
+	virtual ~RecurrenceRangeBase() {}
     virtual void setDefaults( const QDateTime &from ) = 0;
 
     virtual void setDuration( int ) = 0;
