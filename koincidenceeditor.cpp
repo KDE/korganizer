@@ -31,7 +31,6 @@
 
 //Added by qt3to4:
 #include <QVBoxLayout>
-#include <Q3CString>
 #include <QBoxLayout>
 #include <Q3PtrList>
 
