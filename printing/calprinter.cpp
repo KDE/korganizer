@@ -23,7 +23,7 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include <q3widgetstack.h>
+#include <QStackedWidget>
 #include <Q3VButtonGroup>
 #include <qradiobutton.h>
 #include <qlayout.h>
@@ -194,7 +194,7 @@ CalPrintDialog::CalPrintDialog( KOrg::PrintPlugin::List plugins, KPrinter *p,
   splitterRightLayout->setMargin( marginHint() );
   splitterRightLayout->setSpacing( spacingHint() );
 
-  mConfigArea = new Q3WidgetStack( splitterRight, "configWidgetStack" );
+  mConfigArea = new QStackedWidget( splitterRight);
   splitterRightLayout->addMultiCellWidget( mConfigArea, 0,0, 0,1 );
 
   QLabel *orientationLabel = new QLabel( i18n("Page &orientation:"),
@@ -222,7 +222,7 @@ CalPrintDialog::CalPrintDialog( KOrg::PrintPlugin::List plugins, KPrinter *p,
     mTypeGroup->insert( radioButton, id );
     radioButton->setMinimumHeight( radioButton->sizeHint().height() - 5 );
 
-    mConfigArea->addWidget( (*it)->configWidget( mConfigArea ), id );
+    mConfigArea->insertWidget( id, (*it)->configWidget( mConfigArea ) );
     id++;
   }
 
@@ -244,7 +244,7 @@ void CalPrintDialog::setPrintType( int i )
   // FIXME: Make a safe correlation between type and the radio button
 
   mTypeGroup->setButton( i );
-  mConfigArea->raiseWidget( i );
+  mConfigArea->setCurrentIndex( i );
 }
 
 KOrg::PrintPlugin *CalPrintDialog::selectedPlugin()

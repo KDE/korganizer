@@ -96,7 +96,7 @@
 #include <qcursor.h>
 #include <q3multilineedit.h>
 #include <qtimer.h>
-#include <q3widgetstack.h>
+#include <QStackedWidget>
 #include <q3ptrlist.h>
 #include <qfile.h>
 #include <qlayout.h>
@@ -163,7 +163,7 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
 
   Q3VBox *rightBox = new Q3VBox( mPanner );
   mNavigatorBar = new NavigatorBar( rightBox );
-  mRightFrame = new Q3WidgetStack( rightBox );
+  mRightFrame = new QStackedWidget( rightBox );
   rightBox->setStretchFactor( mRightFrame, 1 );
 
   mLeftFrame = mLeftSplitter;
@@ -194,7 +194,7 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
   mNavigatorBar = new NavigatorBar( QDate::currentDate(), rightBox );
   rightLayout->addWidget( mNavigatorBar );
 
-  mRightFrame = new Q3WidgetStack( rightBox );
+  mRightFrame = new QStackedWidget( rightBox );
   rightLayout->addWidget( mRightFrame );
 
   mLeftFrame = leftFrame;

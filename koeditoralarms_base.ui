@@ -307,7 +307,7 @@
        </widget>
       </item>
       <item>
-       <widget class="Q3WidgetStack" name="mTypeStack" >
+       <widget class="QStackedWidget" name="mTypeStack" >
         <widget class="QWidget" name="WStackPage" >
          <property name="geometry" >
           <rect>
@@ -609,9 +609,9 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>Q3WidgetStack</class>
+   <class>QStackedWidget</class>
    <extends></extends>
-   <header>q3widgetstack.h</header>
+   <header>QStackedWidget</header>
    <container>1</container>
    <pixmap></pixmap>
   </customwidget>

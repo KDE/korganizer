@@ -196,14 +196,14 @@ void KOEditorGeneral::initAlarm(QWidget *parent,QBoxLayout *topLayout)
   alarmLayout->addWidget( mAlarmBell );
 
 
-  mAlarmStack = new Q3WidgetStack( parent );
+  mAlarmStack = new QStackedWidget( parent );
   alarmLayout->addWidget( mAlarmStack );
 
   mAlarmInfoLabel = new QLabel("XXX reminders configured", mAlarmStack );
-  mAlarmStack->addWidget( mAlarmInfoLabel, AdvancedAlarmLabel );
+  mAlarmStack->insertWidget( AdvancedAlarmLabel, mAlarmInfoLabel );
 
   Q3HBox *simpleAlarmBox = new Q3HBox( mAlarmStack );
-  mAlarmStack->addWidget( simpleAlarmBox, SimpleAlarmPage );
+  mAlarmStack->insertWidget( SimpleAlarmPage, simpleAlarmBox );
 
   mAlarmButton = new QCheckBox(i18n("&Reminder:"), simpleAlarmBox );
   Q3WhatsThis::add( mAlarmButton,
@@ -235,7 +235,7 @@ void KOEditorGeneral::initAlarm(QWidget *parent,QBoxLayout *topLayout)
 
 void KOEditorGeneral::editAlarms()
 {
-  if ( mAlarmStack->id( mAlarmStack->visibleWidget() ) == SimpleAlarmPage ) {
+  if ( mAlarmStack->indexOf( mAlarmStack->currentWidget() ) == SimpleAlarmPage ) {
     mAlarmList.clear();
     Alarm *al = alarmFromSimplePage();
     if ( al ) {
@@ -293,10 +293,10 @@ void KOEditorGeneral::updateDefaultAlarmTime()
 void KOEditorGeneral::updateAlarmWidgets()
 {
   if ( mAlarmList.isEmpty() ) {
-    mAlarmStack->raiseWidget( SimpleAlarmPage );
+    mAlarmStack->setCurrentIndex( SimpleAlarmPage );
     mAlarmButton->setChecked( false );
   } else if ( mAlarmList.count() > 1 ) {
-    mAlarmStack->raiseWidget( AdvancedAlarmLabel );
+    mAlarmStack->setCurrentIndex( AdvancedAlarmLabel );
     mAlarmInfoLabel->setText( i18n("1 reminder configured",
                                    "%n reminders configured",
                                    mAlarmList.count() ) );
@@ -308,7 +308,7 @@ void KOEditorGeneral::updateAlarmWidgets()
     if ( alarm->type() == Alarm::Display && alarm->text().isEmpty()
          && alarm->repeatCount() == 0 && !alarm->hasTime()
          && alarm->hasStartOffset() && alarm->startOffset().asSeconds() < 0 )  {
-      mAlarmStack->raiseWidget( SimpleAlarmPage );
+      mAlarmStack->setCurrentIndex( SimpleAlarmPage );
       mAlarmButton->setChecked( true );
       int offset = alarm->startOffset().asSeconds();
 
@@ -323,7 +323,7 @@ void KOEditorGeneral::updateAlarmWidgets()
       }
       mAlarmTimeEdit->setValue( useoffset );
     } else {
-      mAlarmStack->raiseWidget( AdvancedAlarmLabel );
+      mAlarmStack->setCurrentIndex( AdvancedAlarmLabel );
       mAlarmInfoLabel->setText( i18n("1 advanced reminder configured") );
     }
   }
@@ -388,7 +388,7 @@ void KOEditorGeneral::writeIncidence(Incidence *event)
 
   // alarm stuff
   event->clearAlarms();
-  if ( mAlarmStack->id( mAlarmStack->visibleWidget() ) == SimpleAlarmPage ) {
+  if ( mAlarmStack->indexOf( mAlarmStack->currentWidget() ) == SimpleAlarmPage ) {
     Alarm *al = alarmFromSimplePage();
     if ( al ) {
       al->setParent( event );

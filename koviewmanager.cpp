@@ -23,7 +23,7 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include <q3widgetstack.h>
+#include <QStackedWidget>
 
 #include <kconfig.h>
 #include <kglobal.h>
@@ -140,7 +140,7 @@ void KOViewManager::raiseCurrentView()
     mMainView->showLeftFrame( true );
     mMainView->navigatorBar()->hide();
   }
-  mMainView->viewStack()->raiseWidget(mCurrentView);
+  mMainView->viewStack()->setCurrentWidget(mCurrentView);
 }
 
 void KOViewManager::updateView()

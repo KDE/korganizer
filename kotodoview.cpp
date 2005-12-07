@@ -31,7 +31,7 @@
 #include <qlabel.h>
 #include <qtimer.h>
 #include <q3vbox.h>
-#include <q3widgetstack.h>
+#include <QStackedWidget>
 //Added by qt3to4:
 #include <QBoxLayout>
 #include <Q3PopupMenu>
@@ -553,7 +553,7 @@ KOTodoView::~KOTodoView()
 
 void KOTodoView::setupListViews()
 {
-  mWidgetStack = new Q3WidgetStack( this );
+  mWidgetStack = new QStackedWidget( this );
   mWidgetStack->setSizePolicy( QSizePolicy( QSizePolicy::Expanding,
                                QSizePolicy::Expanding ) );
 
@@ -564,7 +564,7 @@ void KOTodoView::setupListViews()
    * only do this if the "split listview" configuration option is on.
    */
   mSplitter = new QSplitter( Qt::Vertical, this );
-  mWidgetStack->addWidget( mSplitter, eSplitListViews );
+  mWidgetStack->insertWidget( eSplitListViews,mSplitter );
 
   Q3VBox* myVBox = new Q3VBox( mSplitter );
   new QLabel( i18n( "<qt><b>Tasks I have to work on:</b></qt>" ), myVBox );
@@ -585,13 +585,13 @@ void KOTodoView::setupListViews()
   /* Set up the single list view */
   mOneTodoListView = new KOTodoListView( this );
   mOneTodoListView->setObjectName( "all todos" );
-  mWidgetStack->addWidget( mOneTodoListView, eOneListView );
+  mWidgetStack->insertWidget( eOneListView, mOneTodoListView );
 
   /* Now show the right widget stack page depending on KOPrefs */
   if( KOPrefs::instance()->mUseSplitListViews )
-    mWidgetStack->raiseWidget( eSplitListViews );
+    mWidgetStack->setCurrentIndex( eSplitListViews );
   else
-    mWidgetStack->raiseWidget( eOneListView );
+    mWidgetStack->setCurrentIndex( eOneListView );
 
   // Double clicking conflicts with opening/closing the subtree
   connect( mMyTodoListView, SIGNAL( doubleClicked( Q3ListViewItem *,
@@ -876,9 +876,9 @@ void KOTodoView::updateConfig()
 {
   /* Now show the right widget stack page depending on KOPrefs */
   if( KOPrefs::instance()->mUseSplitListViews )
-    mWidgetStack->raiseWidget( eSplitListViews );
+    mWidgetStack->setCurrentIndex( eSplitListViews );
   else
-    mWidgetStack->raiseWidget( eOneListView );
+    mWidgetStack->setCurrentIndex( eOneListView );
 
   mMyTodoListView->repaintContents();
   mOneTodoListView->repaintContents();

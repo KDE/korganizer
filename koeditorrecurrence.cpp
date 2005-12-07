@@ -27,7 +27,7 @@
 #include <qlayout.h>
 #include <q3vbox.h>
 #include <q3buttongroup.h>
-#include <q3widgetstack.h>
+#include <QStackedWidget>
 #include <qdatetime.h>
 #include <q3listbox.h>
 #include <qspinbox.h>
@@ -1028,19 +1028,19 @@ KOEditorRecurrence::KOEditorRecurrence( QWidget* parent, const char *name ) :
     ruleSepFrame->setFrameStyle( Q3Frame::VLine | Q3Frame::Sunken );
   }
 
-  mRuleStack = new Q3WidgetStack( mRuleBox );
+  mRuleStack = new QStackedWidget( mRuleBox );
 
   mDaily = new RecurDaily( mRuleStack );
-  mRuleStack->addWidget( mDaily, 0 );
+  mRuleStack->insertWidget( 0,mDaily );
 
   mWeekly = new RecurWeekly( mRuleStack );
-  mRuleStack->addWidget( mWeekly, 0 );
+  mRuleStack->insertWidget( 0, mWeekly );
 
   mMonthly = new RecurMonthly( mRuleStack );
-  mRuleStack->addWidget( mMonthly, 0 );
+  mRuleStack->insertWidget( 0,mMonthly );
 
   mYearly = new RecurYearly( mRuleStack );
-  mRuleStack->addWidget( mYearly, 0 );
+  mRuleStack->insertWidget(0, mYearly );
 
   showCurrentRule( mRecurrenceChooser->type() );
 
@@ -1103,17 +1103,17 @@ void KOEditorRecurrence::showCurrentRule( int current )
 {
   switch ( current ) {
     case Daily:
-      mRuleStack->raiseWidget( mDaily );
+      mRuleStack->setCurrentWidget( mDaily );
       break;
     case Weekly:
-      mRuleStack->raiseWidget( mWeekly );
+      mRuleStack->setCurrentWidget( mWeekly );
       break;
     case Monthly:
-      mRuleStack->raiseWidget( mMonthly );
+      mRuleStack->setCurrentWidget( mMonthly );
       break;
     default:
     case Yearly:
-      mRuleStack->raiseWidget( mYearly );
+      mRuleStack->setCurrentWidget( mYearly );
       break;
   }
 }

@@ -35,7 +35,7 @@
 
 #include <libkcal/incidencebase.h>
 
-class Q3WidgetStack;
+class QStackedWidget;
 class QSpinBox;
 class QRadioButton;
 class Q3GroupBox;
@@ -323,7 +323,7 @@ class KOEditorRecurrence : public QWidget
     QLabel *mDateTimeLabel;
 
     Q3GroupBox *mRuleBox;
-    Q3WidgetStack *mRuleStack;
+    QStackedWidget *mRuleStack;
     RecurrenceChooser *mRecurrenceChooser;
 
     RecurDaily *mDaily;

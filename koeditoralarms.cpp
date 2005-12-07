@@ -254,7 +254,7 @@ void KOEditorAlarms::readAlarm( KCal::Alarm *alarm )
         break;
   }
 
-  mWidget.mTypeStack->raiseWidget( mWidget.mAlarmType->selectedId() );
+  mWidget.mTypeStack->setCurrentIndex( mWidget.mAlarmType->selectedId() );
 
   mInitializing = false;
 }

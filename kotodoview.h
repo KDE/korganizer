@@ -226,7 +226,7 @@ class KOTodoView : public KOrg::BaseView
     void saveListViewState( Q3ListView * );
     void setupListViews();
 
-    Q3WidgetStack   *mWidgetStack;
+    QStackedWidget   *mWidgetStack;
     QSplitter      *mSplitter;
     KOTodoListView *mMyTodoListView;
     KOTodoListView *mOneTodoListView;

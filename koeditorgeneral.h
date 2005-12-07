@@ -35,7 +35,7 @@ class QBoxLayout;
 class QLineEdit;
 class QLabel;
 class QCheckBox;
-class Q3WidgetStack;
+class QStackedWidget;
 class QSpinBox;
 class QPushButton;
 class QComboBox;
@@ -111,7 +111,7 @@ class KOEditorGeneral : public QObject
     QLineEdit               *mSummaryEdit;
     QLineEdit               *mLocationEdit;
     QLabel                  *mAlarmBell;
-    Q3WidgetStack            *mAlarmStack;
+    QStackedWidget            *mAlarmStack;
     QLabel                  *mAlarmInfoLabel;
     QCheckBox               *mAlarmButton;
     QSpinBox                *mAlarmTimeEdit;

@@ -41,7 +41,7 @@ class CoreHelper;
 using namespace KCal;
 
 class Q3VButtonGroup;
-class Q3WidgetStack;
+class QStackedWidget;
 class KPrinter;
 class CalPrintDialog;
 class KConfig;
@@ -132,7 +132,7 @@ class CalPrintDialog : public KDialogBase
   private:
     KPrinter *mPrinter;
     Q3VButtonGroup *mTypeGroup;
-    Q3WidgetStack *mConfigArea;
+    QStackedWidget *mConfigArea;
     KOrg::PrintPlugin::List mPrintPlugins;
     QString mPreviewText;
     QComboBox *mOrientationSelection;

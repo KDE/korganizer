@@ -38,7 +38,7 @@
 
 #include <korganizer/calendarviewbase.h>
 
-class Q3WidgetStack;
+class QStackedWidget;
 class QSplitter;
 
 class CalPrinter;
@@ -125,7 +125,7 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
     KOViewManager *viewManager() const { return mViewManager; }
     KODialogManager *dialogManager() const { return mDialogManager; }
 
-    Q3WidgetStack *viewStack() const { return mRightFrame; }
+    QStackedWidget *viewStack() const { return mRightFrame; }
     QWidget *leftFrame() const { return mLeftFrame; }
     NavigatorBar *navigatorBar() const { return mNavigatorBar; }
     DateNavigator *dateNavigator() const { return mNavigator; }
@@ -589,7 +589,7 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
     QSplitter    *mPanner;
     QSplitter    *mLeftSplitter;
     QWidget      *mLeftFrame;
-    Q3WidgetStack *mRightFrame;
+    QStackedWidget *mRightFrame;
 
     NavigatorBar *mNavigatorBar;
 
