@@ -376,8 +376,6 @@
     <entry type="Font" key="TimeBar Font">
       <label>Time bar</label>
       <whatsthis>Press this button to configure the time bar font. The time bar is the widget that shows the hours in the agenda view. This button will open the &quot;Select Font&quot; dialog, allowing you to choose the hour font for the time bar.</whatsthis>
-      <default code="true">QFont("FIXME!!", 16)</default>
-      <!-- FIXME: QString::null as a font name crashs, we need to put something useful there -->
     </entry>
     <entry type="Font" key="AgendaView Font">
       <label>Agenda view</label>
