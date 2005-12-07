@@ -88,7 +88,7 @@ class KDE_EXPORT KOPrefs : public KOPrefsBase
 
     void setResourceColor ( const QString &, const QColor & );
     QColor* resourceColor( const QString & );
-    
+
     QString mHtmlExportFile;
 
     // Groupware passwords
@@ -102,6 +102,7 @@ class KDE_EXPORT KOPrefs : public KOPrefsBase
     QDict<QColor> mResourceColors;
     QColor mDefaultResourceColor;
 
+    QFont mDefaultTimeBarFont;
     QFont mDefaultMonthViewFont;
 
   public: // Do not use - except in KOPrefsDialogMain

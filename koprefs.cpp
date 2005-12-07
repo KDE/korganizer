@@ -62,22 +62,28 @@ QColor getTextColor(const QColor &c)
 KOPrefs::KOPrefs() :
   KOPrefsBase()
 {
-  mCategoryColors.setAutoDelete(true);
-  mResourceColors.setAutoDelete(true);
+  mCategoryColors.setAutoDelete( true );
+  mResourceColors.setAutoDelete( true );
 
-  mDefaultCategoryColor = QColor(151, 235, 121);
+  mDefaultCategoryColor = QColor( 151, 235, 121 );
 
   mDefaultResourceColor = QColor();//Default is a color invalid
 
+  mDefaultTimeBarFont = KGlobalSettings::generalFont();
+  // make a large default time bar font, at least 16 points.
+  mDefaultTimeBarFont.setPointSize(
+    QMAX( mDefaultTimeBarFont.pointSize() + 4, 16 ) );
+
   mDefaultMonthViewFont = KGlobalSettings::generalFont();
   // make it a bit smaller
-  mDefaultMonthViewFont.setPointSize(mDefaultMonthViewFont.pointSize()-2);
+  mDefaultMonthViewFont.setPointSize( mDefaultMonthViewFont.pointSize() - 2 );
 
-  KConfigSkeleton::setCurrentGroup("General");
+  KConfigSkeleton::setCurrentGroup( "General" );
 
-  addItemPath("Html Export File",mHtmlExportFile,
-      QDir::homeDirPath() + "/" + i18n("Default export file", "calendar.html"));
+  addItemPath( "Html Export File", mHtmlExportFile,
+   QDir::homeDirPath() + "/" + i18n( "Default export file", "calendar.html" ) );
 
+  timeBarFontItem()->setDefaultValue( mDefaultTimeBarFont );
   monthViewFontItem()->setDefaultValue( mDefaultMonthViewFont );
   eventColorItem()->setDefaultValue( mDefaultCategoryColor );
 }
@@ -111,6 +117,7 @@ void KOPrefs::usrSetDefaults()
   if ( !tmp.isEmpty() ) setUserEmail( tmp );
   fillMailDefaults();
 
+  mTimeBarFont = mDefaultTimeBarFont;
   mMonthViewFont = mDefaultMonthViewFont;
 
   setTimeZoneIdDefault();
