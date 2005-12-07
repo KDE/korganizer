@@ -95,7 +95,7 @@ public:
      *
      * @see setSearchColumns
      */
-    Q3ValueList<int> searchColumns() const;
+    QList<int> searchColumns() const;
 
     /**
      * If this is true (the default) then the parents of matched items will also
@@ -176,7 +176,7 @@ public slots:
      *
      * @see searchColumns
      */
-    void setSearchColumns(const Q3ValueList<int> &columns);
+    void setSearchColumns(const QList<int> &columns);
 
     /**
      * Sets the KListView that is filtered by this search line, replacing any

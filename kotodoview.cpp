@@ -41,7 +41,6 @@
 #include <QDragMoveEvent>
 #include <Q3CString>
 #include <QDragLeaveEvent>
-#include <Q3ValueList>
 #include <QVBoxLayout>
 #include <QDropEvent>
 #include <QDragEnterEvent>
@@ -1325,7 +1324,7 @@ void KOTodoView::setNewPercentageDelayed( KOTodoViewItem *item, int percentage )
 
 void KOTodoView::processDelayedNewPercentage()
 {
-  Q3ValueList< QPair< KOTodoViewItem *, int> >::Iterator it;
+  QList< QPair< KOTodoViewItem *, int> >::Iterator it;
   for ( it = mPercentChangedMap.begin(); it != mPercentChangedMap.end(); ++it )
     setNewPercentage( (*it).first, (*it).second );
 

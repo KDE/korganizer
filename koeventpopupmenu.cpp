@@ -23,8 +23,6 @@
 */
 
 #include <qcursor.h>
-//Added by qt3to4:
-#include <Q3ValueList>
 
 #include <klocale.h>
 #include <kdebug.h>
@@ -70,7 +68,7 @@ void KOEventPopupMenu::showIncidencePopup( Incidence *incidence, const QDate &qd
 
   if (mCurrentIncidence) {
     // Enable/Disabled menu items only valid for editable events.
-    Q3ValueList<int>::Iterator it;
+    QList<int>::Iterator it;
     for( it = mEditOnlyItems.begin(); it != mEditOnlyItems.end(); ++it ) {
       setItemEnabled(*it,!mCurrentIncidence->isReadOnly());
     }

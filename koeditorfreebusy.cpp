@@ -32,7 +32,6 @@
 #include <Q3Frame>
 #include <QHBoxLayout>
 #include <QBoxLayout>
-#include <Q3ValueList>
 #include <QTimerEvent>
 #include <QVBoxLayout>
 
@@ -142,8 +141,8 @@ void FreeBusyItem::setFreeBusyPeriods( FreeBusy* fb )
       delete it;
 
     // Evaluate free/busy information
-    Q3ValueList<KCal::Period> busyPeriods = fb->busyPeriods();
-    for( Q3ValueList<KCal::Period>::Iterator it = busyPeriods.begin();
+    QList<KCal::Period> busyPeriods = fb->busyPeriods();
+    for( QList<KCal::Period>::Iterator it = busyPeriods.begin();
 	 it != busyPeriods.end(); ++it ) {
       KDGanttViewTaskItem* newSubItem = new KDGanttViewTaskItem( this );
       newSubItem->setStartTime( (*it).start() );
@@ -565,8 +564,8 @@ bool KOEditorFreeBusy::tryDate( FreeBusyItem *attendee,
   if( !fb )
     return true;
 
-  Q3ValueList<KCal::Period> busyPeriods = fb->busyPeriods();
-  for( Q3ValueList<KCal::Period>::Iterator it = busyPeriods.begin();
+  QList<KCal::Period> busyPeriods = fb->busyPeriods();
+  for( QList<KCal::Period>::Iterator it = busyPeriods.begin();
        it != busyPeriods.end(); ++it ) {
     if( (*it).end() <= tryFrom || // busy period ends before try period
 	(*it).start() >= tryTo )  // busy period starts after try period

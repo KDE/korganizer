@@ -43,7 +43,6 @@
 #include <Q3Frame>
 #include <QHBoxLayout>
 #include <QBoxLayout>
-#include <Q3ValueList>
 #include <QVBoxLayout>
 
 #include <kdialog.h>
@@ -1233,7 +1232,7 @@ void KOEditorRecurrence::readIncidence(Incidence *incidence)
       // more extended, this can be changed.
       recurrenceType = RecurrenceChooser::Monthly;
 
-      Q3ValueList<RecurrenceRule::WDayPos> rmp = r->monthPositions();
+      QList<RecurrenceRule::WDayPos> rmp = r->monthPositions();
       if ( !rmp.isEmpty() ) {
         mMonthly->setByPos( rmp.first().pos(), rmp.first().day() );
       }
@@ -1244,7 +1243,7 @@ void KOEditorRecurrence::readIncidence(Incidence *incidence)
     case Recurrence::rMonthlyDay: {
       recurrenceType = RecurrenceChooser::Monthly;
 
-      Q3ValueList<int> rmd = r->monthDays();
+      QList<int> rmd = r->monthDays();
       // check if we have any setting for which day (vcs import is broken and
       // does not set any day, thus we need to check)
       if ( rmd.isEmpty() ) {
@@ -1259,7 +1258,7 @@ void KOEditorRecurrence::readIncidence(Incidence *incidence)
       break; }
     case Recurrence::rYearlyMonth: {
       recurrenceType = RecurrenceChooser::Yearly;
-      Q3ValueList<int> rmd = r->yearDates();
+      QList<int> rmd = r->yearDates();
       if ( rmd.isEmpty() ) {
         day = incidence->dtStart().date().day();
       } else {
@@ -1275,14 +1274,14 @@ void KOEditorRecurrence::readIncidence(Incidence *incidence)
     case Recurrence::rYearlyPos: {
       recurrenceType = RecurrenceChooser::Yearly;
 
-      Q3ValueList<int> months = r->yearMonths();
+      QList<int> months = r->yearMonths();
       if ( months.isEmpty() ) {
         month = incidence->dtStart().date().month();
       } else {
         month = months.first();
       }
 
-      Q3ValueList<RecurrenceRule::WDayPos> pos = r->yearPositions();
+      QList<RecurrenceRule::WDayPos> pos = r->yearPositions();
 
       if ( pos.isEmpty() ) {
         // Use dtStart if nothing is given (shouldn't happen!)
@@ -1297,7 +1296,7 @@ void KOEditorRecurrence::readIncidence(Incidence *incidence)
       break; }
     case Recurrence::rYearlyDay: {
       recurrenceType = RecurrenceChooser::Yearly;
-      Q3ValueList<int> days = r->yearDays();
+      QList<int> days = r->yearDays();
       if ( days.isEmpty() ) {
         day = incidence->dtStart().date().dayOfYear();
       } else {

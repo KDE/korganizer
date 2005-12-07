@@ -108,7 +108,6 @@
 //Added by qt3to4:
 #include <Q3CString>
 #include <QBoxLayout>
-#include <Q3ValueList>
 #include <QVBoxLayout>
 
 #include <stdlib.h>
@@ -495,7 +494,7 @@ void CalendarView::readSettings()
 #ifndef KORG_NOSPLITTER
   config->setGroup( "KOrganizer Geometry" );
 
-  Q3ValueList<int> sizes = config->readIntListEntry( "Separator1" );
+  QList<int> sizes = config->readIntListEntry( "Separator1" );
   if ( sizes.count() != 2 ) {
     sizes << mDateNavigator->minimumSizeHint().width();
     sizes << 300;
@@ -530,7 +529,7 @@ void CalendarView::writeSettings()
 #ifndef KORG_NOSPLITTER
   config->setGroup( "KOrganizer Geometry" );
 
-  Q3ValueList<int> list = mPanner->sizes();
+  QList<int> list = mPanner->sizes();
   config->writeEntry( "Separator1", list );
 
   list = mLeftSplitter->sizes();

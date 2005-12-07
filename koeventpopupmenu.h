@@ -29,8 +29,6 @@
 
 #include <q3popupmenu.h>
 #include <qdatetime.h>
-//Added by qt3to4:
-#include <Q3ValueList>
 
 namespace KCal { 
 class Incidence; 
@@ -75,8 +73,8 @@ class KOEventPopupMenu : public Q3PopupMenu {
     QDate mCurrentDate;
     
     bool mHasAdditionalItems;
-    Q3ValueList<int> mEditOnlyItems;
-    Q3ValueList<int> mRecurrenceItems;
+    QList<int> mEditOnlyItems;
+    QList<int> mRecurrenceItems;
 };
 
 #endif

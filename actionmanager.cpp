@@ -69,8 +69,6 @@
 #include <qapplication.h>
 #include <qtimer.h>
 #include <qlabel.h>
-//Added by qt3to4:
-#include <Q3ValueList>
 #include <Q3CString>
 
 
@@ -1494,7 +1492,7 @@ void ActionManager::setTitle()
   mMainWindow->setTitle();
 }
 
-KCalendarIface::ResourceRequestReply ActionManager::resourceRequest( const Q3ValueList<QPair<QDateTime, QDateTime> >&,
+KCalendarIface::ResourceRequestReply ActionManager::resourceRequest( const QList<QPair<QDateTime, QDateTime> >&,
  const Q3CString& resource,
  const QString& vCalIn )
 {

@@ -34,8 +34,6 @@
 #include <q3buttongroup.h>
 #include <q3textedit.h>
 #include <q3widgetstack.h>
-//Added by qt3to4:
-#include <Q3ValueList>
 
 #include <kurlrequester.h>
 #include <klocale.h>
@@ -239,9 +237,9 @@ void KOEditorAlarms::readAlarm( KCal::Alarm *alarm )
         break;
     case KCal::Alarm::Email: {
         mWidget.mAlarmType->setButton( 3 );
-        Q3ValueList<KCal::Person> addresses = alarm->mailAddresses();
+        QList<KCal::Person> addresses = alarm->mailAddresses();
         QStringList add;
-        for ( Q3ValueList<KCal::Person>::ConstIterator it = addresses.begin();
+        for ( QList<KCal::Person>::ConstIterator it = addresses.begin();
               it != addresses.end(); ++it ) {
           add << (*it).fullName();
         }
@@ -299,7 +297,7 @@ void KOEditorAlarms::writeAlarm( KCal::Alarm *alarm )
         break;
     case 3: { // Email
         QStringList addresses = KPIM::splitEmailAddrList( mWidget.mEmailAddress->text() );
-        Q3ValueList<KCal::Person> add;
+        QList<KCal::Person> add;
         for ( QStringList::Iterator it = addresses.begin(); it != addresses.end();
               ++it ) {
           add << KCal::Person( *it );

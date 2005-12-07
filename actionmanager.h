@@ -30,7 +30,6 @@
 
 #include <qobject.h>
 //Added by qt3to4:
-#include <Q3ValueList>
 #include <Q3CString>
 #include <kurl.h>
 #include <korganizer/part.h>
@@ -169,7 +168,7 @@ class KDE_EXPORT ActionManager : public QObject, public KCalendarIface
     bool showIncidenceContext( const QString &uid );
     
     //// Implementation of the DCOP interface
-    virtual ResourceRequestReply resourceRequest( const Q3ValueList<QPair<QDateTime, QDateTime> >& busy,
+    virtual ResourceRequestReply resourceRequest( const QList<QPair<QDateTime, QDateTime> >& busy,
                                                   const Q3CString& resource,
                                                   const QString& vCalIn );
 

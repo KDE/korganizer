@@ -34,7 +34,6 @@
 #include <qlabel.h>
 #include <q3header.h>
 //Added by qt3to4:
-#include <Q3ValueList>
 #include <QContextMenuEvent>
 
 #define KLISTVIEWSEARCHLINE_ALLVISIBLECOLUMNS_ID 2004
@@ -56,7 +55,7 @@ public:
     bool canChooseColumns;
     QString search;
     int queuedSearches;
-    Q3ValueList<int> searchColumns;
+    QList<int> searchColumns;
 };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -108,12 +107,12 @@ bool KListViewNewSearchLine::caseSensitive() const
     return d->caseSensitive;
 }
 
-Q3ValueList<int> KListViewNewSearchLine::searchColumns() const
+QList<int> KListViewNewSearchLine::searchColumns() const
 {
     if (d->canChooseColumns)
         return d->searchColumns;
     else
-        return Q3ValueList<int>();
+        return QList<int>();
 }
 
 bool KListViewNewSearchLine::keepParentsVisible() const
@@ -226,7 +225,7 @@ void KListViewNewSearchLine::setKeepParentsVisible(bool v)
     d->keepParentsVisible = v;
 }
 
-void KListViewNewSearchLine::setSearchColumns(const Q3ValueList<int> &columns)
+void KListViewNewSearchLine::setSearchColumns(const QList<int> &columns)
 {
     if (d->canChooseColumns)
         d->searchColumns = columns;
@@ -234,7 +233,7 @@ void KListViewNewSearchLine::setSearchColumns(const Q3ValueList<int> &columns)
 
 void KListViewNewSearchLine::setListView(KListView *lv)
 {
-    setListViews(Q3ValueList<KListView *>());
+    setListViews(QList<KListView *>());
     addListView(lv);
 }
 
@@ -266,7 +265,7 @@ bool KListViewNewSearchLine::itemMatches(const Q3ListViewItem *item, const QStri
     // specifified.  If it is empty default to searching all of the columns.
 
     if(!d->searchColumns.isEmpty()) {
-        Q3ValueList<int>::ConstIterator it = d->searchColumns.begin();
+        QList<int>::ConstIterator it = d->searchColumns.begin();
         for(; it != d->searchColumns.end(); ++it) {
             if(*it < item->listView()->columns() &&
                item->text(*it).find(s, 0, d->caseSensitive) >= 0)

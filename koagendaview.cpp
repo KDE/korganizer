@@ -43,7 +43,6 @@
 #include <QGridLayout>
 #include <QBoxLayout>
 #include <QHBoxLayout>
-#include <Q3ValueList>
 #include <QResizeEvent>
 #include <QVBoxLayout>
 
@@ -1626,7 +1625,7 @@ void KOAgendaView::readSettings(KConfig *config)
   config->setGroup("Views");
 
 #ifndef KORG_NOSPLITTER
-  Q3ValueList<int> sizes = config->readIntListEntry("Separator AgendaView");
+  QList<int> sizes = config->readIntListEntry("Separator AgendaView");
   if (sizes.count() == 2) {
     mSplitterAgenda->setSizes(sizes);
   }
@@ -1642,7 +1641,7 @@ void KOAgendaView::writeSettings(KConfig *config)
   config->setGroup("Views");
 
 #ifndef KORG_NOSPLITTER
-  Q3ValueList<int> list = mSplitterAgenda->sizes();
+  QList<int> list = mSplitterAgenda->sizes();
   config->writeEntry("Separator AgendaView",list);
 #endif
 }

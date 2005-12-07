@@ -35,7 +35,6 @@
 #include <QDragMoveEvent>
 #include <QEvent>
 #include <QDropEvent>
-#include <Q3ValueList>
 #include <Q3PopupMenu>
 #include <QDragEnterEvent>
 #include <QMouseEvent>
@@ -252,7 +251,7 @@ class KOTodoView : public KOrg::BaseView
 
     QMap<Todo *,KOTodoViewItem *> mTodoMap;
     Q3PtrList<KOTodoViewItem> mItemsToDelete;
-    Q3ValueList< QPair<KOTodoViewItem *, int> > mPercentChangedMap;
+    QList< QPair<KOTodoViewItem *, int> > mPercentChangedMap;
 
     DocPrefs *mDocPrefs;
     QString mCurrentDoc;

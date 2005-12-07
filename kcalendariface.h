@@ -30,7 +30,6 @@
 #include <qdatastream.h>
 #include <qstringlist.h>
 //Added by qt3to4:
-#include <Q3ValueList>
 #include <Q3CString>
 #include <QPair>
 // yes, this is this very header - but it tells dcopidl to include it
@@ -58,7 +57,7 @@ class KCalendarIface : public DCOPObject
         QDateTime start; QDateTime end;
     };
     virtual KCalendarIface::ResourceRequestReply resourceRequest(
-                         const Q3ValueList< QDateTimePair >& busy,
+                         const QList< QDateTimePair >& busy,
                          const Q3CString& resource,
                          const QString& vCalIn ) = 0;
 

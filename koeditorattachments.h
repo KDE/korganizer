@@ -31,7 +31,6 @@
 //Added by qt3to4:
 #include <QDragEnterEvent>
 #include <QLabel>
-#include <Q3ValueList>
 #include <QDropEvent>
 #include <kdialogbase.h>
 #include <kmimetype.h>
@@ -118,7 +117,7 @@ class KOEditorAttachments : public QWidget
     void dropEvent( QDropEvent *event );
     void slotItemRenamed ( Q3IconViewItem * item, const QString & text );
     void showAttachmentContextMenu( Q3IconViewItem *item, const QPoint &pos );
-    void dropped ( QDropEvent * e, const Q3ValueList<Q3IconDragItem> & lst );
+    void dropped ( QDropEvent * e, const QList<Q3IconDragItem> & lst );
     void copyComplete( KIO::Job *job );
   protected:
     QString generateLocalAttachmentPath( QString filename, 

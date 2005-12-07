@@ -35,7 +35,6 @@
 #include <QPixmap>
 #include <QGridLayout>
 #include <QEvent>
-#include <Q3ValueList>
 
 #include <kdebug.h>
 #include <kdialog.h>
@@ -100,9 +99,9 @@ void JournalDateEntry::setDate(const QDate &date)
 
 void JournalDateEntry::clear()
 {
-  Q3ValueList<JournalEntry*> values( mEntries.values() );
+  QList<JournalEntry*> values( mEntries.values() );
 
-  Q3ValueList<JournalEntry*>::Iterator it = values.begin();
+  QList<JournalEntry*>::Iterator it = values.begin();
   for ( ; it != values.end(); ++it ) {
     delete (*it);
   }
@@ -135,9 +134,9 @@ void JournalDateEntry::addJournal( Journal *j )
 
 Journal::List JournalDateEntry::journals() const
 {
-  Q3ValueList<Journal*> jList( mEntries.keys() );
+  QList<Journal*> jList( mEntries.keys() );
   Journal::List l;
-  Q3ValueList<Journal*>::Iterator it = jList.begin();
+  QList<Journal*>::Iterator it = jList.begin();
   for ( ; it != jList.end(); ++it ) {
     l.append( *it );
   }

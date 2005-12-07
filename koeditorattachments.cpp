@@ -73,7 +73,6 @@
 #include <QBoxLayout>
 #include <QDropEvent>
 #include <QHBoxLayout>
-#include <Q3ValueList>
 #include <QVBoxLayout>
 #include <QDragEnterEvent>
 #include <krandom.h>
@@ -338,8 +337,8 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent,
            SLOT( showAttachmentContextMenu( Q3IconViewItem *, 
                                             const QPoint & ) ) );
   connect( mAttachments, SIGNAL( dropped( QDropEvent *, 
-                                          const Q3ValueList<Q3IconDragItem> & ) ),
-           SLOT( dropped( QDropEvent *, const Q3ValueList<Q3IconDragItem> & ) ) );
+                                          const QList<Q3IconDragItem> & ) ),
+           SLOT( dropped( QDropEvent *, const QList<Q3IconDragItem> & ) ) );
   
   // FIXME for some reason it doesn't work
   connect( mAttachments, SIGNAL( moved() ), SLOT( slotRemove() ) );
@@ -558,7 +557,7 @@ void KOEditorAttachments::copyComplete( KIO::Job *job )
 }
 
 void KOEditorAttachments::dropped ( QDropEvent * e, 
-                                    const Q3ValueList<Q3IconDragItem> & /*lst*/ )
+                                    const QList<Q3IconDragItem> & /*lst*/ )
 {
   dropEvent( e );
 }
@@ -622,7 +621,7 @@ void KOEditorAttachments::slotEdit()
 
 void KOEditorAttachments::slotRemove()
 {
-  Q3ValueList<Q3IconViewItem *> toDelete;
+  QList<Q3IconViewItem *> toDelete;
   for ( Q3IconViewItem *it = mAttachments->firstItem(); it; it = it->nextItem() )
     if ( it->isSelected() ) {
       AttachmentIconItem *item =
@@ -642,7 +641,7 @@ void KOEditorAttachments::slotRemove()
       }
     }
 
-  for ( Q3ValueList<Q3IconViewItem *>::ConstIterator it = toDelete.constBegin();
+  for ( QList<Q3IconViewItem *>::ConstIterator it = toDelete.constBegin();
         it != toDelete.constEnd(); ++it )
     delete *it;
 }
