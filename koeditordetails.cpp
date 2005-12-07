@@ -39,7 +39,7 @@
 #include <qradiobutton.h>
 #include <qregexp.h>
 #include <qtooltip.h>
-#include <q3vbox.h>
+
 
 #include <q3widgetstack.h>
 //Added by qt3to4:
@@ -66,6 +66,7 @@
 #include <libemailfunctions/email.h>
 
 #include <libkcal/incidence.h>
+#include <kvbox.h>
 
 #include "koprefs.h"
 #include "koglobals.h"
@@ -189,7 +190,7 @@ KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent )
   QGridLayout *topLayout = new QGridLayout( this );
   topLayout->setSpacing( spacing );
 
-  mOrganizerHBox = new Q3HBox( this );
+  mOrganizerHBox = new KHBox( this );
   // If creating a new event, then the user is the organizer -> show the
   // identity combo
   // readEvent will delete it and set another label text instead, if the user

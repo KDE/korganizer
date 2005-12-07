@@ -27,7 +27,7 @@
 
 #include <qlayout.h>
 #include <q3popupmenu.h>
-#include <q3vbox.h>
+
 #include <qlabel.h>
 #include <q3scrollview.h>
 //Added by qt3to4:
@@ -37,6 +37,7 @@
 #include <kdebug.h>
 
 #include <libkcal/calendar.h>
+#include <kvbox.h>
 
 #include "journalentry.h"
 
@@ -53,7 +54,7 @@ KOJournalView::KOJournalView(Calendar *calendar, QWidget *parent,
   mSV = new Q3ScrollView( this, "JournalScrollView" );
   topLayout = new QVBoxLayout( mSV->viewport() );
   topLayout->setAutoAdd(true);
-  mVBox = new Q3VBox( mSV->viewport() );
+  mVBox = new KVBox( mSV->viewport() );
   mSV->setVScrollBarMode( Q3ScrollView::Auto );
   mSV->setHScrollBarMode( Q3ScrollView::AlwaysOff );
 //  mVBox->setSpacing( 10 );

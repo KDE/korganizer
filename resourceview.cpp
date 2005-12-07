@@ -37,7 +37,7 @@
 #include <kinputdialog.h>
 #include <libkcal/calendarresources.h>
 
-#include <q3hbox.h>
+
 #include <qlayout.h>
 #include <qlabel.h>
 #include <qpainter.h>
@@ -48,6 +48,7 @@
 #include <QPixmap>
 #include <QBoxLayout>
 #include <QVBoxLayout>
+#include <kvbox.h>
 
 #include "koprefs.h"
 
@@ -238,7 +239,7 @@ ResourceView::ResourceView( KCal::CalendarResources *calendar,
   mListView->setResizeMode( Q3ListView::LastColumn );
   topLayout->addWidget( mListView );
 
-  Q3HBox *buttonBox = new Q3HBox( this );
+  KHBox *buttonBox = new KHBox( this );
   buttonBox->setSpacing( KDialog::spacingHint() );
   topLayout->addWidget( buttonBox );
 

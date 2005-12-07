@@ -25,7 +25,7 @@
 #include <qtooltip.h>
 #include <q3filedialog.h>
 #include <qlayout.h>
-#include <q3vbox.h>
+
 #include <q3buttongroup.h>
 #include <QStackedWidget>
 #include <qdatetime.h>
@@ -56,6 +56,7 @@
 
 #include <libkdepim/kdateedit.h>
 #include <libkcal/todo.h>
+#include <kvbox.h>
 
 #include "koprefs.h"
 #include "koglobals.h"
@@ -185,7 +186,7 @@ RecurWeekly::RecurWeekly( QWidget *parent, const char *name ) :
 
   createFrequencySpinBar( this, topLayout, i18n("&Recur every"), i18n("week(s) on:") );
 
-  Q3HBox *dayBox = new Q3HBox( this );
+  KHBox *dayBox = new KHBox( this );
   topLayout->addWidget( dayBox, 1, Qt::AlignVCenter );
   // Respect start of week setting
   int weekStart=KGlobal::locale()->weekStartDay();

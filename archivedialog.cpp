@@ -29,7 +29,7 @@
 #include <qdatetime.h>
 #include <qcheckbox.h>
 
-#include <q3hbox.h>
+
 //Added by qt3to4:
 #include <QVBoxLayout>
 #include <Q3Frame>
@@ -53,6 +53,7 @@
 #include <knuminput.h>
 #include <q3buttongroup.h>
 #include <qradiobutton.h>
+#include <kvbox.h>
 #include "archivedialog.moc"
 
 ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
@@ -95,7 +96,7 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
 
   // Checkbox, numinput and combo for auto-archiving
   // (similar to kmail's mExpireFolderCheckBox/mReadExpiryTimeNumInput in kmfolderdia.cpp)
-  Q3HBox* autoArchiveHBox = new Q3HBox(topFrame);
+  KHBox* autoArchiveHBox = new KHBox(topFrame);
   topLayout->addWidget(autoArchiveHBox);
   mAutoArchiveRB = new QRadioButton(i18n("Automaticall&y archive items older than:"), autoArchiveHBox);
   radioBG->insert(mAutoArchiveRB);

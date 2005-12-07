@@ -22,8 +22,8 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include <q3hbox.h>
-#include <q3vbox.h>
+
+
 #include <qlabel.h>
 #include <q3frame.h>
 #include <qlayout.h>
@@ -327,6 +327,7 @@ void EventIndicator::enableColumn(int column, bool enable)
 
 
 #include <libkcal/incidence.h>
+#include <kvbox.h>
 
 ////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////
@@ -445,7 +446,7 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
   QBoxLayout *topLayout = new QVBoxLayout(this);
 
   // Create day name labels for agenda columns
-  mDayLabelsFrame = new Q3HBox(this);
+  mDayLabelsFrame = new KHBox(this);
   topLayout->addWidget(mDayLabelsFrame);
 
   // Create agenda splitter
@@ -455,20 +456,20 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
 
   mSplitterAgenda->setOpaqueResize( KGlobalSettings::opaqueResize() );
 
-  mAllDayFrame = new Q3HBox(mSplitterAgenda);
+  mAllDayFrame = new KHBox(mSplitterAgenda);
 
   QWidget *agendaFrame = new QWidget(mSplitterAgenda);
 #else
-  Q3VBox *mainBox = new Q3VBox( this );
+  KVBox *mainBox = new KVBox( this );
   topLayout->addWidget( mainBox );
 
-  mAllDayFrame = new Q3HBox(mainBox);
+  mAllDayFrame = new KHBox(mainBox);
 
   QWidget *agendaFrame = new QWidget(mainBox);
 #endif
 
   // Create all-day agenda widget
-  mDummyAllDayLeft = new Q3VBox( mAllDayFrame );
+  mDummyAllDayLeft = new KVBox( mAllDayFrame );
 
   if ( KOPrefs::instance()->compactDialogs() ) {
     mExpandButton = new QPushButton(mDummyAllDayLeft);

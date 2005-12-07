@@ -31,8 +31,8 @@
 #include <qslider.h>
 #include <qfile.h>
 #include <qcombobox.h>
-#include <q3hbox.h>
-#include <q3vbox.h>
+
+
 #include <q3grid.h>
 #include <qspinbox.h>
 #include <qcheckbox.h>
@@ -79,6 +79,7 @@
 #include "koglobals.h"
 #include "stdcalendar.h"
 #include <kdepimmacros.h>
+#include <kvbox.h>
 
 
 KOPrefsDialogMain::KOPrefsDialogMain( KInstance *inst, QWidget *parent )
@@ -86,7 +87,7 @@ KOPrefsDialogMain::KOPrefsDialogMain( KInstance *inst, QWidget *parent )
 {
   QBoxLayout *topTopLayout = new QVBoxLayout( this );
 
-  Q3VBox *topFrame = new Q3VBox( this );
+  KVBox *topFrame = new KVBox( this );
   topTopLayout->addWidget( topFrame );
 
   topFrame->setSpacing( KDialog::spacingHint() );
@@ -108,7 +109,7 @@ KOPrefsDialogMain::KOPrefsDialogMain( KInstance *inst, QWidget *parent )
 
   KPrefsWidBool *autoSave = addWidBool( KOPrefs::instance()->autoSaveItem(), saveGroup );
 
-  Q3HBox *intervalBox = new Q3HBox( saveGroup );
+  KHBox *intervalBox = new KHBox( saveGroup );
   addWidInt( KOPrefs::instance()->autoSaveIntervalItem(), intervalBox );
   connect( autoSave->checkBox(), SIGNAL( toggled( bool ) ),
            intervalBox, SLOT( setEnabled( bool ) ) );
@@ -159,7 +160,7 @@ class KOPrefsDialogTime : public KPrefsModule
       QGridLayout *topLayout = new QGridLayout(topFrame,6,2);
       topLayout->setSpacing( KDialog::spacingHint() );
 
-      Q3HBox *timeZoneBox = new Q3HBox( topFrame );
+      KHBox *timeZoneBox = new KHBox( topFrame );
       topLayout->addMultiCellWidget( timeZoneBox, 0, 0, 0, 1 );
 
       QLabel *timeZoneLabel = new QLabel( i18n("Timezone:"), timeZoneBox );
@@ -253,7 +254,7 @@ class KOPrefsDialogTime : public KPrefsModule
       mTimeZoneCombo->setWhatsThis( whatsThis );
 
       // holiday region selection
-      Q3HBox *holidayRegBox = new Q3HBox( topFrame );
+      KHBox *holidayRegBox = new KHBox( topFrame );
       topLayout->addMultiCellWidget( holidayRegBox, 1, 1, 0, 1 );
 
       QLabel *holidayLabel = new QLabel( i18n( "Use holiday region:" ), holidayRegBox );
@@ -341,7 +342,7 @@ class KOPrefsDialogTime : public KPrefsModule
                                                    topFrame);
       topLayout->addMultiCellWidget( workingHoursGroup, 6, 6, 0, 1 );
 
-      Q3HBox *workDaysBox = new Q3HBox( workingHoursGroup );
+      KHBox *workDaysBox = new KHBox( workingHoursGroup );
       // Respect start of week setting
       int weekStart=KGlobal::locale()->weekStartDay();
       for ( int i = 0; i < 7; ++i ) {
@@ -363,10 +364,10 @@ class KOPrefsDialogTime : public KPrefsModule
                SLOT( slotWidChanged() ) );
       }
 
-      Q3HBox *workStartBox = new Q3HBox(workingHoursGroup);
+      KHBox *workStartBox = new KHBox(workingHoursGroup);
       addWidTime( KOPrefs::instance()->workingHoursStartItem(), workStartBox );
 
-      Q3HBox *workEndBox = new Q3HBox(workingHoursGroup);
+      KHBox *workEndBox = new KHBox(workingHoursGroup);
       addWidTime( KOPrefs::instance()->workingHoursEndItem(), workEndBox );
 
 
@@ -486,14 +487,14 @@ class KOPrefsDialogViews : public KPrefsModule
                                               i18n("Agenda View"),
                                               topFrame );
 
-      Q3HBox *hourSizeBox = new Q3HBox( agendaGroup );
+      KHBox *hourSizeBox = new KHBox( agendaGroup );
       KPrefsWidInt *hourSize =
           addWidInt( KOPrefs::instance()->hourSizeItem(), hourSizeBox );
       hourSize->spinBox()->setSuffix(i18n("suffix in the hour size spin box", " pixel"));
       // horizontal spacer:
       new QWidget( hourSizeBox );
 
-      Q3HBox *nextDaysBox = new Q3HBox( agendaGroup );
+      KHBox *nextDaysBox = new KHBox( agendaGroup );
       KPrefsWidInt *nextDays =
         addWidInt( KOPrefs::instance()->nextXDaysItem(), nextDaysBox );
       nextDays->spinBox()->setSuffix(i18n("suffix in the N days spin box", " days"));

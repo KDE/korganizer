@@ -26,8 +26,8 @@
 #include <qwidget.h>
 #include <qtooltip.h>
 #include <qlayout.h>
-#include <q3vbox.h>
-#include <q3hbox.h>
+
+
 #include <q3buttongroup.h>
 #include <q3widgetstack.h>
 #include <qdatetime.h>
@@ -60,6 +60,7 @@
 #include <libkcal/event.h>
 
 #include <libkdepim/kdateedit.h>
+#include <kvbox.h>
 
 #include "koprefs.h"
 #include "koglobals.h"
@@ -202,7 +203,7 @@ void KOEditorGeneral::initAlarm(QWidget *parent,QBoxLayout *topLayout)
   mAlarmInfoLabel = new QLabel("XXX reminders configured", mAlarmStack );
   mAlarmStack->insertWidget( AdvancedAlarmLabel, mAlarmInfoLabel );
 
-  Q3HBox *simpleAlarmBox = new Q3HBox( mAlarmStack );
+  KHBox *simpleAlarmBox = new KHBox( mAlarmStack );
   mAlarmStack->insertWidget( SimpleAlarmPage, simpleAlarmBox );
 
   mAlarmButton = new QCheckBox(i18n("&Reminder:"), simpleAlarmBox );

@@ -30,7 +30,7 @@
 #include <qcursor.h>
 #include <qlabel.h>
 #include <qtimer.h>
-#include <q3vbox.h>
+
 #include <QStackedWidget>
 //Added by qt3to4:
 #include <QBoxLayout>
@@ -82,6 +82,7 @@ using namespace KOrg;
 #include "kotodoviewitem.h"
 #include "kotodoviewquicksearch.h"
 #include <korganizer/mainwindow.h>
+#include <kvbox.h>
 
 #include "kotodoview.moc"
 
@@ -566,18 +567,18 @@ void KOTodoView::setupListViews()
   mSplitter = new QSplitter( Qt::Vertical, this );
   mWidgetStack->insertWidget( eSplitListViews,mSplitter );
 
-  Q3VBox* myVBox = new Q3VBox( mSplitter );
+  KVBox* myVBox = new KVBox( mSplitter );
   new QLabel( i18n( "<qt><b>Tasks I have to work on:</b></qt>" ), myVBox );
   mMyTodoListView = new KOTodoListView( myVBox );
   mMyTodoListView->setObjectName( "my todos" );
 
-  Q3VBox* yourVBox = new Q3VBox( mSplitter );
+  KVBox* yourVBox = new KVBox( mSplitter );
   new QLabel( i18n( "<qt><b>Tasks I want others to work on:</b></qt>" ),
               yourVBox );
   mYourTodoListView = new KOTodoListView( yourVBox );
   mYourTodoListView->setObjectName( "your todos" );
 
-  Q3VBox* otherVBox = new Q3VBox( mSplitter );
+  KVBox* otherVBox = new KVBox( mSplitter );
   new QLabel( i18n( "<qt><b>Other tasks I am watching:</b></qt>" ), otherVBox );
   mOtherTodoListView = new KOTodoListView( otherVBox );
   mOtherTodoListView->setObjectName( "other todos" );

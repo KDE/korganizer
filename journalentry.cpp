@@ -49,6 +49,7 @@
 
 #include <libkcal/journal.h>
 #include <libkcal/calendar.h>
+#include <kvbox.h>
 
 #include "kodialogmanager.h"
 #include "incidencechanger.h"
@@ -67,7 +68,7 @@ public:
 
 
 JournalDateEntry::JournalDateEntry( Calendar *calendar, QWidget *parent ) :
-  Q3VBox( parent ), mCalendar( calendar )
+  KVBox( parent ), mCalendar( calendar )
 {
 //kdDebug(5850)<<"JournalEntry::JournalEntry, parent="<<parent<<endl;
   mChanger = 0;

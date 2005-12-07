@@ -22,8 +22,8 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include <q3hbox.h>
-#include <q3vbox.h>
+
+
 #include <qlabel.h>
 #include <qfile.h>
 #include <qspinbox.h>
@@ -51,6 +51,7 @@
 #include <libkcal/event.h>
 #include <ktoolinvocation.h>
 #include <kglobal.h>
+#include <kvbox.h>
 
 #include "koeventviewer.h"
 
@@ -75,7 +76,7 @@ AlarmDialog::AlarmDialog( QWidget *parent, const char *name )
   mEventViewer = new KOEventViewer( topBox );
   topLayout->addWidget( mEventViewer );
 
-  Q3HBox *suspendBox = new Q3HBox( topBox );
+  KHBox *suspendBox = new KHBox( topBox );
   suspendBox->setSpacing( spacingHint() );
   topLayout->addWidget( suspendBox );
 

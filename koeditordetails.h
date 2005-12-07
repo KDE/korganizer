@@ -33,13 +33,14 @@
 #include <QEvent>
 #include <QDropEvent>
 #include <Q3PtrList>
+#include <kvbox.h>
 
 class QPushButton;
 class QCheckBox;
 class QLineEdit;
 class QLabel;
 class QComboBox;
-class Q3HBox;
+class KHBox;
 class KDateEdit;
 class KOEditorFreeBusy;
 
@@ -132,7 +133,7 @@ class KOEditorDetails : public QWidget
     QComboBox* mRoleCombo;
     QCheckBox* mRsvpButton;
     QComboBox* mStatusCombo;
-    Q3HBox* mOrganizerHBox;
+    KHBox* mOrganizerHBox;
     QComboBox *mOrganizerCombo; // either we organize it (combo shown)
     QLabel *mOrganizerLabel; // or someone else does (just a label is shown)
 

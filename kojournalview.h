@@ -29,7 +29,7 @@
 
 class JournalEntry;
 class Q3ScrollView;
-class Q3VBox;
+class KVBox;
 
 /**
  * This class provides a journal view.
@@ -74,7 +74,7 @@ class KOJournalView : public KOrg::BaseView
 
   private:
     Q3ScrollView *mSV;
-    Q3VBox *mVBox;
+    KVBox *mVBox;
     QMap<QDate, JournalDateEntry*> mEntries;
 //    DateList mSelectedDates;  // List of dates to be displayed
 };

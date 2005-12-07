@@ -26,8 +26,8 @@
 #include <qradiobutton.h>
 #include <qcheckbox.h>
 #include <qlineedit.h>
-#include <q3hbox.h>
-#include <q3vbox.h>
+
+
 #include <qpushbutton.h>
 #include <q3filedialog.h>
 #include <qtextstream.h>
@@ -56,6 +56,7 @@
 
 #include <libkdepim/kdateedit.h>
 #include <libkdepim/kdateedit.h>
+#include <kvbox.h>
 
 #include "koprefs.h"
 #include "kocore.h"
@@ -175,11 +176,11 @@ void ExportWebDialog::setupTodoPage()
   mTodoPage = addPage(i18n("To-dos"));
   QVBoxLayout *topLayout = new QVBoxLayout( mTodoPage, 10 );
   
-  Q3HBox *hbox = new Q3HBox( mTodoPage );
+  KHBox *hbox = new KHBox( mTodoPage );
   topLayout->addWidget( hbox );
   addWidString( mSettings->todoListTitleItem(), hbox );
 
-  Q3VBox *vbox = new Q3VBox( mTodoPage );
+  KVBox *vbox = new KVBox( mTodoPage );
   topLayout->addWidget( vbox );
   addWidBool( mSettings->taskDueDateItem(), vbox );
   addWidBool( mSettings->taskCategoriesItem(), vbox );
@@ -195,11 +196,11 @@ void ExportWebDialog::setupEventPage()
   mEventPage = addPage(i18n("Events"));
   QVBoxLayout *topLayout = new QVBoxLayout( mEventPage, 10 );
 
-  Q3HBox *hbox = new Q3HBox( mEventPage );
+  KHBox *hbox = new KHBox( mEventPage );
   topLayout->addWidget( hbox );
   addWidString( mSettings->eventTitleItem(), hbox );
 
-  Q3VBox *vbox = new Q3VBox( mEventPage );
+  KVBox *vbox = new KVBox( mEventPage );
   topLayout->addWidget( vbox );
   addWidBool( mSettings->eventCategoriesItem(), vbox );
   addWidBool( mSettings->eventAttendeesItem(), vbox );

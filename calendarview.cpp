@@ -103,7 +103,7 @@
 #ifndef KORG_NOSPLITTER
 #include <qsplitter.h>
 #endif
-#include <q3vbox.h>
+
 
 //Added by qt3to4:
 #include <Q3CString>
@@ -112,6 +112,7 @@
 
 #include <stdlib.h>
 #include <assert.h>
+#include <kvbox.h>
 
 using namespace KOrg;
 
@@ -161,7 +162,7 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
 
   mEventViewer = new KOEventViewer( mLeftSplitter,"EventViewer" );
 
-  Q3VBox *rightBox = new Q3VBox( mPanner );
+  KVBox *rightBox = new KVBox( mPanner );
   mNavigatorBar = new NavigatorBar( rightBox );
   mRightFrame = new QStackedWidget( rightBox );
   rightBox->setStretchFactor( mRightFrame, 1 );
@@ -172,11 +173,11 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
   QWidget *leftFrame;
 
   if ( KOPrefs::instance()->mVerticalScreen ) {
-    mainBox = new Q3VBox( this );
-    leftFrame = new Q3HBox( mainBox );
+    mainBox = new KVBox( this );
+    leftFrame = new KHBox( mainBox );
   } else {
-    mainBox = new Q3HBox( this );
-    leftFrame = new Q3VBox( mainBox );
+    mainBox = new KHBox( this );
+    leftFrame = new KVBox( mainBox );
   }
 
   topLayout->addWidget( mainBox );

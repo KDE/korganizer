@@ -26,11 +26,12 @@
 //
 // Widget showing one Journal entry
 
-#include <q3vbox.h>
+
 //Added by qt3to4:
 #include <QLabel>
 #include <QGridLayout>
 #include <QEvent>
+#include <kvbox.h>
 
 class QLabel;
 class KActiveLabel;
@@ -114,7 +115,7 @@ class JournalEntry : public QWidget {
 };
 
 
-class JournalDateEntry : public Q3VBox {
+class JournalDateEntry : public KVBox {
     Q_OBJECT
   public:
     typedef ListBase<JournalDateEntry> List;

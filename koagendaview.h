@@ -35,11 +35,12 @@
 #include <QBoxLayout>
 #include <QResizeEvent>
 #include <Q3PopupMenu>
+#include <kvbox.h>
 
 #include "calprinter.h"
 #include "koeventview.h"
 
-class Q3HBox;
+class KHBox;
 class QPushButton;
 
 class KOAgenda;
@@ -108,7 +109,7 @@ class EventIndicator : public Q3Frame
 
   private:
     int mColumns;
-    Q3HBox *mTopBox;
+    KHBox *mTopBox;
     QBoxLayout *mTopLayout;
     Location mLocation;
     QPixmap mPixmap;
@@ -271,9 +272,9 @@ class KOAgendaView : public KOEventView
   private:
     // view widgets
     Q3Frame *mDayLabels;
-    Q3HBox *mDayLabelsFrame;
+    KHBox *mDayLabelsFrame;
     QBoxLayout *mLayoutDayLabels;
-    Q3Frame *mAllDayFrame;
+    QFrame *mAllDayFrame;
     KOAgenda *mAllDayAgenda;
     KOAgenda *mAgenda;
     TimeLabels *mTimeLabels;
