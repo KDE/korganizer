@@ -28,7 +28,7 @@
 #include <qpixmap.h>
 #include <qlayout.h>
 #include <q3widgetstack.h>
-#include <q3whatsthis.h>
+
 //Added by qt3to4:
 #include <QVBoxLayout>
 #include <QHBoxLayout>
@@ -118,7 +118,7 @@ void KOEventEditor::setupGeneral()
 
   if( KOPrefs::instance()->mCompactDialogs ) {
     QFrame *topFrame = addPage(i18n("General"));
-    Q3WhatsThis::add( topFrame,
+    topFrame->setWhatsThis(
                      i18n("The General tab allows you to set the most common "
                           "options for the event.") );
 
@@ -144,7 +144,7 @@ void KOEventEditor::setupGeneral()
     mGeneral->initDescription(topFrame2,topLayout2);
   } else {
     QFrame *topFrame = addPage(i18n("&General"));
-    Q3WhatsThis::add( topFrame,
+    topFrame->setWhatsThis(
                      i18n("The General tab allows you to set the most common "
                           "options for the event.") );
 
@@ -177,7 +177,7 @@ void KOEventEditor::setupRecurrence()
 {
   QFrame *topFrame = addPage( i18n("Rec&urrence") );
 
-  Q3WhatsThis::add( topFrame,
+  topFrame->setWhatsThis(
         i18n("The Recurrence tab allows you to set options on "
        "how often this event recurs.") );
 
@@ -190,7 +190,7 @@ void KOEventEditor::setupRecurrence()
 void KOEventEditor::setupFreeBusy()
 {
   QFrame *freeBusyPage = addPage( i18n("&Free/Busy") );
-  Q3WhatsThis::add( freeBusyPage,
+  freeBusyPage->setWhatsThis(
         i18n("The Free/Busy tab allows you to see whether "
        "other attendees are free or busy during your event.") );
 

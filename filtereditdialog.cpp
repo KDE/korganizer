@@ -30,7 +30,7 @@
 #include <qlineedit.h>
 #include <qradiobutton.h>
 #include <q3listbox.h>
-#include <q3whatsthis.h>
+
 //Added by qt3to4:
 #include <Q3PtrList>
 
@@ -99,8 +99,8 @@ FilterEdit::FilterEdit(Q3PtrList<CalFilter> *filters, QWidget *parent)
 {
   setupUi( this );
   mFilters = filters;
-  Q3WhatsThis::add( mNewButton, i18n( "Press this button to define a new filter." ) );
-  Q3WhatsThis::add( mDeleteButton, i18n( "Press this button to remove the currently active filter." ) );
+  mNewButton->setWhatsThis( i18n( "Press this button to define a new filter." ) );
+  mDeleteButton->setWhatsThis( i18n( "Press this button to remove the currently active filter." ) );
 
   connect( mRulesList, SIGNAL(selectionChanged()), this, SLOT(filterSelected()) );
   connect( mNewButton, SIGNAL( clicked() ), SLOT( bNewPressed() ) );

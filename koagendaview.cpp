@@ -352,7 +352,7 @@ void KOAlternateLabel::useShortText()
   mTextTypeFixed = true;
   QLabel::setText( mShortText );
   QToolTip::remove( this );
-  QToolTip::add( this, mExtensiveText );
+  this->setToolTip( mExtensiveText );
 }
 
 void KOAlternateLabel::useLongText()
@@ -360,7 +360,7 @@ void KOAlternateLabel::useLongText()
   mTextTypeFixed = true;
   QLabel::setText( mLongText );
   QToolTip::remove( this );
-  QToolTip::add( this, mExtensiveText );
+  this->setToolTip( mExtensiveText );
 }
 
 void KOAlternateLabel::useExtensiveText()
@@ -390,11 +390,11 @@ void KOAlternateLabel::squeezeTextToLabel()
   } else if (textWidth <= labelWidth) {
     QLabel::setText( mLongText );
     QToolTip::remove( this );
-    QToolTip::add( this, mExtensiveText );
+    this->setToolTip( mExtensiveText );
   } else {
     QLabel::setText( mShortText );
     QToolTip::remove( this );
-    QToolTip::add( this, mExtensiveText );
+    this->setToolTip( mExtensiveText );
   }
 }
 

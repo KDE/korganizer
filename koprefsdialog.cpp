@@ -41,7 +41,7 @@
 #include <q3strlist.h>
 #include <q3listview.h>
 #include <qtabwidget.h>
-#include <q3whatsthis.h>
+
 //Added by qt3to4:
 #include <QGridLayout>
 #include <QBoxLayout>
@@ -168,7 +168,7 @@ class KOPrefsDialogTime : public KPrefsModule
                                 "is not listed, select one which shares the "
                                 "same timezone. KOrganizer will automatically "
                                 "adjust for daylight savings." );
-      Q3WhatsThis::add( timeZoneLabel, whatsThis );
+      timeZoneLabel->setWhatsThis( whatsThis );
       mTimeZoneCombo = new QComboBox( timeZoneBox );
 
       connect( mTimeZoneCombo, SIGNAL( activated( int ) ),
@@ -250,7 +250,7 @@ class KOPrefsDialogTime : public KPrefsModule
         }
 
       mTimeZoneCombo->setCurrentItem(nCurrentlySet);
-      Q3WhatsThis::add( mTimeZoneCombo, whatsThis );
+      mTimeZoneCombo->setWhatsThis( whatsThis );
 
       // holiday region selection
       Q3HBox *holidayRegBox = new Q3HBox( topFrame );
@@ -261,13 +261,13 @@ class KOPrefsDialogTime : public KPrefsModule
                         "holidays here. Defined holidays are shown as "
                         "non-working days in the date navigator, the "
                         "agenda view, etc." );
-      Q3WhatsThis::add( holidayLabel, whatsThis );
+      holidayLabel->setWhatsThis( whatsThis );
 
       mHolidayCombo = new QComboBox( holidayRegBox );
       connect( mHolidayCombo, SIGNAL( activated( int ) ),
                SLOT( slotWidChanged() ) );
 
-      Q3WhatsThis::add( mHolidayCombo, whatsThis );
+      mHolidayCombo->setWhatsThis( whatsThis );
 
       QString currentHolidayName;
       QStringList holidayList;
@@ -325,10 +325,10 @@ class KOPrefsDialogTime : public KPrefsModule
                 << i18n( "30 minutes" );
       QLabel *alarmLabel = new QLabel( i18n( "Default reminder time:" ), topFrame);
       topLayout->addWidget( alarmLabel, 5, 0 );
-      Q3WhatsThis::add( alarmLabel,
+      alarmLabel->setWhatsThis(
                        i18n( "Enter the default reminder time here." ) );
       mAlarmTimeCombo = new QComboBox( topFrame );
-      Q3WhatsThis::add( mAlarmTimeCombo,
+      mAlarmTimeCombo->setWhatsThis(
                        i18n( "Enter the default reminder time here." ) );
       connect( mAlarmTimeCombo, SIGNAL( activated( int ) ),
                SLOT( slotWidChanged() ) );
@@ -352,7 +352,7 @@ class KOPrefsDialogTime : public KPrefsModule
         }
         int index = ( i + weekStart + 6 ) % 7;
         mWorkDays[ index ] = new QCheckBox( weekDayName, workDaysBox );
-        Q3WhatsThis::add( mWorkDays[ index ],
+        mWorkDays[ index ]->setWhatsThis(
                          i18n( "Check this box to make KOrganizer mark the "
                                "working hours for this day of the week. "
                                "If this is a work day for you, check "
@@ -669,14 +669,14 @@ KOPrefsDialogColors::KOPrefsDialogColors( KInstance *inst, QWidget *parent )
 
   mCategoryCombo = new QComboBox(categoryGroup);
   mCategoryCombo->insertStringList(KOPrefs::instance()->mCustomCategories);
-  Q3WhatsThis::add( mCategoryCombo,
+  mCategoryCombo->setWhatsThis(
                    i18n( "Select here the event category you want to modify. "
                          "You can change the selected category color using "
                          "the button below." ) );
   connect(mCategoryCombo,SIGNAL(activated(int)),SLOT(updateCategoryColor()));
 
   mCategoryButton = new KColorButton(categoryGroup);
-  Q3WhatsThis::add( mCategoryButton,
+  mCategoryButton->setWhatsThis(
                    i18n( "Choose here the color of the event category selected "
                          "using the combo box above." ) );
   connect(mCategoryButton,SIGNAL(changed(const QColor &)),SLOT(setCategoryColor()));
@@ -688,14 +688,14 @@ KOPrefsDialogColors::KOPrefsDialogColors( KInstance *inst, QWidget *parent )
   topLayout->addMultiCellWidget(resourceGroup,8,8,0,1);
 
   mResourceCombo = new QComboBox(resourceGroup);
-  Q3WhatsThis::add( mResourceCombo,
+  mResourceCombo->setWhatsThis(
                    i18n( "Select here resource you want to modify. "
                          "You can change the selected resource color using "
                          "the button below." ) );
   connect(mResourceCombo,SIGNAL(activated(int)),SLOT(updateResourceColor()));
 
   mResourceButton = new KColorButton(resourceGroup);
-  Q3WhatsThis::add( mResourceButton,
+  mResourceButton->setWhatsThis(
                    i18n( "Choose here the color of the resource selected "
                          "using the combo box above." ) );
   connect(mResourceButton,SIGNAL(changed(const QColor &)),SLOT(setResourceColor()));
@@ -857,10 +857,10 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( KInstance *inst, QWi
                             "but use another email address there, you need to "
                             "list this address here so KOrganizer can "
                             "recognize it as yours." );
-  Q3WhatsThis::add( aMailsLabel, whatsThis );
+  aMailsLabel->setWhatsThis( whatsThis );
   topLayout->addMultiCellWidget(aMailsLabel,3,3,0,1);
   mAMails = new Q3ListView(topFrame);
-  Q3WhatsThis::add( mAMails, whatsThis );
+  mAMails->setWhatsThis( whatsThis );
 
   mAMails->addColumn(i18n("Email"),300);
   topLayout->addMultiCellWidget(mAMails,4,4,0,1);
@@ -871,10 +871,10 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( KInstance *inst, QWi
                     "or press the \"New\" button below. These email "
                     "addresses are the ones you have in addition to the "
                     "one set in personal preferences." );
-  Q3WhatsThis::add( aEmailsEditLabel, whatsThis );
+  aEmailsEditLabel->setWhatsThis( whatsThis );
   topLayout->addWidget(aEmailsEditLabel,5,0);
   aEmailsEdit = new QLineEdit(topFrame);
-  Q3WhatsThis::add( aEmailsEdit, whatsThis );
+  aEmailsEdit->setWhatsThis( whatsThis );
   aEmailsEdit->setEnabled(false);
   topLayout->addWidget(aEmailsEdit,5,1);
 
@@ -882,10 +882,10 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( KInstance *inst, QWi
   whatsThis = i18n( "Press this button to add a new entry to the "
                     "additional e-mail addresses list. Use the edit "
                     "box above to edit the new entry." );
-  Q3WhatsThis::add( add, whatsThis );
+  add->setWhatsThis( whatsThis );
   topLayout->addWidget(add,6,0);
   QPushButton *del = new QPushButton(i18n("Remove"),topFrame,"remove");
-  Q3WhatsThis::add( del, whatsThis );
+  del->setWhatsThis( whatsThis );
   topLayout->addWidget(del,6,1);
 
   //topLayout->setRowStretch(2,1);

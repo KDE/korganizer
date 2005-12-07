@@ -43,7 +43,7 @@
 #include <qpainter.h>
 #include <qpushbutton.h>
 #include <q3popupmenu.h>
-#include <q3whatsthis.h>
+
 //Added by qt3to4:
 #include <QPixmap>
 #include <QBoxLayout>
@@ -221,7 +221,7 @@ ResourceView::ResourceView( KCal::CalendarResources *calendar,
   QBoxLayout *topLayout = new QVBoxLayout( this, 0, KDialog::spacingHint() );
 
   mListView = new KListView( this );
-  Q3WhatsThis::add( mListView,
+  mListView->setWhatsThis(
                    i18n( "<qt><p>Select on this list the active KOrganizer "
                          "resources. Check the resource box to make it "
                          "active. Press the \"Add...\" button below to add new "
@@ -243,7 +243,7 @@ ResourceView::ResourceView( KCal::CalendarResources *calendar,
   topLayout->addWidget( buttonBox );
 
   mAddButton = new QPushButton( i18n("Add..."), buttonBox, "add" );
-  Q3WhatsThis::add( mAddButton,
+  mAddButton->setWhatsThis(
                    i18n( "<qt><p>Press this button to add a resource to "
                          "KOrganizer.</p>"
                          "<p>Events, journal entries and to-dos are retrieved "
@@ -255,11 +255,11 @@ ResourceView::ResourceView( KCal::CalendarResources *calendar,
                          "use the default resource or be prompted "
                          "to select the resource to use.</p></qt>" ) );
   mEditButton = new QPushButton( i18n("Edit..."), buttonBox, "edit" );
-  Q3WhatsThis::add( mEditButton,
+  mEditButton->setWhatsThis(
                    i18n( "Press this button to edit the resource currently "
                          "selected on the KOrganizer resources list above." ) );
   mDeleteButton = new QPushButton( i18n("Remove"), buttonBox, "del" );
-  Q3WhatsThis::add( mDeleteButton,
+  mDeleteButton->setWhatsThis(
                    i18n( "Press this button to delete the resource currently "
                          "selected on the KOrganizer resources list above." ) );
   mDeleteButton->setDisabled( true );

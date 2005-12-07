@@ -28,7 +28,7 @@
 #include <qlayout.h>
 #include <q3widgetstack.h>
 #include <qdatetime.h>
-#include <q3whatsthis.h>
+
 //Added by qt3to4:
 #include <QVBoxLayout>
 #include <Q3CString>
@@ -96,7 +96,7 @@ KOIncidenceEditor::~KOIncidenceEditor()
 void KOIncidenceEditor::setupAttendeesTab()
 {
   QFrame *topFrame = addPage( i18n("Atte&ndees") );
-  Q3WhatsThis::add( topFrame,
+  topFrame->setWhatsThis(
                    i18n("The Attendees tab allows you to Add or Remove "
                         "Attendees to/from this event or to-do.") );
 
@@ -109,7 +109,7 @@ void KOIncidenceEditor::setupAttendeesTab()
 void KOIncidenceEditor::setupAttachmentsTab()
 {
   QFrame *topFrame = addPage( i18n("Attach&ments") );
-  Q3WhatsThis::add( topFrame,
+  topFrame->setWhatsThis(
                    i18n("The Attachments tab allows you to add or remove "
                         "files, emails, contacts, and other items "
                         "associated with this event or to-do.") );

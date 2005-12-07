@@ -28,7 +28,7 @@
 #include <qlabel.h>
 #include <qlayout.h>
 #include <qcheckbox.h>
-#include <q3whatsthis.h>
+
 #include <qtooltip.h>
 #include <qtoolbutton.h>
 //Added by qt3to4:
@@ -196,8 +196,8 @@ JournalEntry::JournalEntry( Journal* j, QWidget *parent ) :
   mLayout->addWidget( mTitleEdit, 0, 1 );
   mTitleLabel->setBuddy( mTitleEdit );
 
-  Q3WhatsThis::add( mTitleLabel, whatsThis );
-  Q3WhatsThis::add( mTitleEdit, whatsThis );
+  mTitleLabel->setWhatsThis( whatsThis );
+  mTitleEdit->setWhatsThis( whatsThis );
 
   mTimeCheck = new QCheckBox( i18n("Ti&me: "), this );
   mLayout->addWidget( mTimeCheck, 0, 2 );
@@ -205,25 +205,25 @@ JournalEntry::JournalEntry( Journal* j, QWidget *parent ) :
   mLayout->addWidget( mTimeEdit, 0, 3 );
   connect( mTimeCheck, SIGNAL(toggled(bool)),
            this, SLOT(timeCheckBoxToggled(bool)) );
-  Q3WhatsThis::add( mTimeCheck, i18n("Determines whether this journal entry has "
+  mTimeCheck->setWhatsThis( i18n("Determines whether this journal entry has "
                                     "a time associated with it") );
-  Q3WhatsThis::add( mTimeEdit, i18n( "Sets the time associated with this journal "
+  mTimeEdit->setWhatsThis( i18n( "Sets the time associated with this journal "
                                     " entry" ) );
 
   mDeleteButton = new QToolButton( this, "deleteButton" );
   QPixmap pix = KOGlobals::self()->smallIcon( "editdelete" );
   mDeleteButton->setPixmap( pix );
   mDeleteButton->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
-  QToolTip::add( mDeleteButton, i18n("Delete this journal entry") );
-  Q3WhatsThis::add( mDeleteButton, i18n("Delete this journal entry") );
+  mDeleteButton->setToolTip( i18n("Delete this journal entry") );
+  mDeleteButton->setWhatsThis( i18n("Delete this journal entry") );
   mLayout->addWidget( mDeleteButton, 0, 4 );
   connect( mDeleteButton, SIGNAL(pressed()), this, SLOT(deleteItem()) );
 
   mEditButton = new QToolButton( this, "editButton" );
   mEditButton->setPixmap( KOGlobals::self()->smallIcon( "edit" ) );
   mEditButton->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
-  QToolTip::add( mEditButton, i18n("Edit this journal entry") );
-  Q3WhatsThis::add( mEditButton, i18n("Opens an editor dialog for this journal entry") );
+  mEditButton->setToolTip( i18n("Edit this journal entry") );
+  mEditButton->setWhatsThis( i18n("Opens an editor dialog for this journal entry") );
   mLayout->addWidget( mEditButton, 0, 5 );
   connect( mEditButton, SIGNAL(clicked()), this, SLOT( editItem() ) );
 

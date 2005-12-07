@@ -94,7 +94,7 @@ AlarmDockWindow::AlarmDockWindow( const char *name )
     connect( quit, SIGNAL( activated() ), SLOT( slotQuit() ) );
   }
 
-  QToolTip::add(this, mName );
+  this->setToolTip( mName );
 }
 
 AlarmDockWindow::~AlarmDockWindow()
@@ -106,14 +106,14 @@ void AlarmDockWindow::slotUpdate( int reminders )
   QToolTip::remove( this );
   if ( reminders > 0 )
   {
-    QToolTip::add( this, i18n( "There is 1 active reminder.",
+    this->setToolTip( i18n( "There is 1 active reminder.",
                    "There are %n active reminders.", reminders ) );
     contextMenu()->setItemEnabled( mSuspendAll, true );
     contextMenu()->setItemEnabled( mDismissAll, true );
   }
   else
   {
-    QToolTip::add( this, mName );
+    this->setToolTip( mName );
     contextMenu()->setItemEnabled( mSuspendAll, false );
     contextMenu()->setItemEnabled( mDismissAll, false );
   }

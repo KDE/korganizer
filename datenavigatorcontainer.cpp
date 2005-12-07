@@ -35,7 +35,7 @@
 
 #include "datenavigatorcontainer.h"
 
-#include <q3whatsthis.h>
+
 #include <qtimer.h>
 //Added by qt3to4:
 #include <Q3Frame>
@@ -50,7 +50,7 @@ DateNavigatorContainer::DateNavigatorContainer( QWidget *parent,
   setFrameStyle( Q3Frame::Sunken | Q3Frame::StyledPanel );
 
   mNavigatorView = new KDateNavigator( this, name );
-  Q3WhatsThis::add( mNavigatorView,
+  mNavigatorView->setWhatsThis(
                    i18n( "<qt><p>Select the dates you want to "
                          "display in KOrganizer's main view here. Hold the "
                          "mouse button to select more than one day.</p>"

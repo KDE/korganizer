@@ -40,7 +40,7 @@
 #include <qregexp.h>
 #include <qtooltip.h>
 #include <q3vbox.h>
-#include <q3whatsthis.h>
+
 #include <q3widgetstack.h>
 //Added by qt3to4:
 #include <QGridLayout>
@@ -210,14 +210,14 @@ KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent )
   mOrganizerLabel = new QLabel( i18n( "Identity as organizer:" ),
                                 mOrganizerHBox );
   mOrganizerCombo = new QComboBox( mOrganizerHBox );
-  Q3WhatsThis::add( mOrganizerLabel, whatsThis );
-  Q3WhatsThis::add( mOrganizerCombo, whatsThis );
+  mOrganizerLabel->setWhatsThis( whatsThis );
+  mOrganizerCombo->setWhatsThis( whatsThis );
   fillOrganizerCombo();
   mOrganizerHBox->setStretchFactor( mOrganizerCombo, 100 );
 
   mListView = new KOAttendeeListView( this );
   mListView->setObjectName( "mListView" );
-  Q3WhatsThis::add( mListView,
+  mListView->setWhatsThis(
 		   i18n("Displays information about current attendees. "
 		   	"To edit an attendee, select it in this list "
 			"and modify the values in the area below. "
@@ -246,11 +246,11 @@ KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent )
   		   "above, or adds a new attendee if there are no attendees"
 		   "in the list.");
   QLabel *attendeeLabel = new QLabel( this );
-  Q3WhatsThis::add( attendeeLabel, whatsThis );
+  attendeeLabel->setWhatsThis( whatsThis );
   attendeeLabel->setText( i18n("Na&me:") );
 
   mNameEdit = new KPIM::AddresseeLineEdit( this );
-  Q3WhatsThis::add( mNameEdit, whatsThis );
+  mNameEdit->setWhatsThis( whatsThis );
   mNameEdit->setClickMessage( i18n("Click to add a new attendee") );
   attendeeLabel->setBuddy( mNameEdit );
   mNameEdit->installEventFilter( this );
@@ -260,11 +260,11 @@ KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent )
   whatsThis = i18n("Edits the role of the attendee selected "
   		   "in the list above.");
   QLabel *attendeeRoleLabel = new QLabel( this );
-  Q3WhatsThis::add( attendeeRoleLabel, whatsThis );
+  attendeeRoleLabel->setWhatsThis( whatsThis );
   attendeeRoleLabel->setText( i18n("Ro&le:") );
 
   mRoleCombo = new QComboBox( false, this );
-  Q3WhatsThis::add( mRoleCombo, whatsThis );
+  mRoleCombo->setWhatsThis( whatsThis );
   mRoleCombo->insertStringList( Attendee::roleList() );
   attendeeRoleLabel->setBuddy( mRoleCombo );
   connect( mRoleCombo, SIGNAL( activated( int ) ),
@@ -273,18 +273,18 @@ KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent )
   whatsThis = i18n("Edits the current attendance status of the attendee "
   		   "selected in the list above.");
   QLabel *statusLabel = new QLabel( this );
-  Q3WhatsThis::add( statusLabel, whatsThis );
+  statusLabel->setWhatsThis( whatsThis );
   statusLabel->setText( i18n("Stat&us:") );
 
   mStatusCombo = new QComboBox( false, this );
-  Q3WhatsThis::add( mStatusCombo, whatsThis );
+  mStatusCombo->setWhatsThis( whatsThis );
   mStatusCombo->insertStringList( Attendee::statusList() );
   statusLabel->setBuddy( mStatusCombo );
   connect( mStatusCombo, SIGNAL( activated( int ) ),
            SLOT( updateAttendeeItem() ) );
 
   mRsvpButton = new QCheckBox( this );
-  Q3WhatsThis::add( mRsvpButton,
+  mRsvpButton->setWhatsThis(
 		   i18n("Edits whether to send an email to the attendee "
 			"selected in the list above to request "
 			"a response concerning attendance.") );
@@ -295,7 +295,7 @@ KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent )
   QVBoxLayout *buttonLayout = new QVBoxLayout( buttonBox );
 
   QPushButton *newButton = new QPushButton( i18n("&New"), buttonBox );
-  Q3WhatsThis::add( newButton,
+  newButton->setWhatsThis(
 		   i18n("Adds a new attendee to the list. Once the "
 		   	"attendee is added, you will be able to "
 			"edit the attendee's name, role, attendance "
@@ -307,7 +307,7 @@ KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent )
   connect( newButton, SIGNAL( clicked() ), SLOT( addNewAttendee() ) );
 
   mRemoveButton = new QPushButton( i18n("&Remove"), buttonBox );
-  Q3WhatsThis::add( mRemoveButton,
+  mRemoveButton->setWhatsThis(
 		   i18n("Removes the attendee selected in "
 		   	"the list above.") );
   buttonLayout->addWidget( mRemoveButton );
@@ -315,7 +315,7 @@ KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent )
 
   mAddressBookButton = new QPushButton( i18n("Select Addressee..."),
                                         buttonBox );
-  Q3WhatsThis::add( mAddressBookButton,
+  mAddressBookButton->setWhatsThis(
 		   i18n("Opens your address book, allowing you to select "
 			"new attendees from it.") );
   buttonLayout->addWidget( mAddressBookButton );

@@ -104,7 +104,7 @@
 #include <qsplitter.h>
 #endif
 #include <q3vbox.h>
-#include <q3whatsthis.h>
+
 //Added by qt3to4:
 #include <Q3CString>
 #include <QBoxLayout>
@@ -271,7 +271,7 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
            "here.</p>");
 
   mEventViewer->setDefaultText( s );
-  Q3WhatsThis::add( mEventViewer,
+  mEventViewer->setWhatsThis(
                    i18n( "View the details of events, journal entries or to-dos "
                          "selected in KOrganizer's main view here." ) );
   mEventViewer->setIncidence( 0 );

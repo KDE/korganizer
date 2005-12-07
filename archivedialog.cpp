@@ -28,7 +28,7 @@
 #include <qlayout.h>
 #include <qdatetime.h>
 #include <qcheckbox.h>
-#include <q3whatsthis.h>
+
 #include <q3hbox.h>
 //Added by qt3to4:
 #include <QVBoxLayout>
@@ -87,7 +87,7 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
   dateLayout->addWidget(mArchiveOnceRB);
   radioBG->insert(mArchiveOnceRB);
   mDateEdit = new KDateEdit(topFrame);
-  Q3WhatsThis::add(mDateEdit,
+  mDateEdit->setWhatsThis(
     i18n("The date before which items should be archived. All older events and to-dos will "
          "be saved and deleted, the newer (and events exactly on that date) will be kept."));
   dateLayout->addWidget(mDateEdit);
@@ -99,7 +99,7 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
   topLayout->addWidget(autoArchiveHBox);
   mAutoArchiveRB = new QRadioButton(i18n("Automaticall&y archive items older than:"), autoArchiveHBox);
   radioBG->insert(mAutoArchiveRB);
-  Q3WhatsThis::add(mAutoArchiveRB,
+  mAutoArchiveRB->setWhatsThis(
     i18n("If this feature is enabled, KOrganizer will regularly check if events and to-dos have to be archived; "
          "this means you will not need to use this dialog box again, except to change the settings."));
 
@@ -107,7 +107,7 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
   mExpiryTimeNumInput->setRange(1, 500, 1, false);
   mExpiryTimeNumInput->setEnabled(false);
   mExpiryTimeNumInput->setValue(7);
-  Q3WhatsThis::add(mExpiryTimeNumInput,
+  mExpiryTimeNumInput->setWhatsThis(
     i18n("The age of the events and to-dos to archive. All older items "
          "will be saved and deleted, the newer will be kept."));
 
@@ -125,7 +125,7 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
   mArchiveFile = new KURLRequester(KOPrefs::instance()->mArchiveFile,topFrame);
   mArchiveFile->setMode(KFile::File);
   mArchiveFile->setFilter(i18n("*.ics|iCalendar Files"));
-  Q3WhatsThis::add(mArchiveFile,
+  mArchiveFile->setWhatsThis(
     i18n("The path of the archive. The events and to-dos will be added to the "
          "archive file, so any events that are already in the file "
          "will not be modified or deleted. You can later load or merge the "
@@ -140,14 +140,14 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
   mEvents = new QCheckBox( i18n("&Events"), typeBox );
   mTodos = new QCheckBox( i18n("&To-dos"), typeBox );
   topLayout->addWidget( typeBox );
-  Q3WhatsThis::add( typeBox, i18n("Here you can select which items "
+  typeBox->setWhatsThis( i18n("Here you can select which items "
                    "should be archived. Events are archived if they "
                    "ended before the date given above; to-dos are archived if "
                    "they were finished before the date.") );
 
   mDeleteCb = new QCheckBox(i18n("&Delete only, do not save"),
                             topFrame);
-  Q3WhatsThis::add(mDeleteCb,
+  mDeleteCb->setWhatsThis(
     i18n("Select this option to delete old events and to-dos without saving them. "
          "It is not possible to recover the events later."));
   topLayout->addWidget(mDeleteCb);

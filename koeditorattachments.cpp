@@ -66,7 +66,7 @@
 #include <qregexp.h>
 #include <qstringlist.h>
 #include <qstyle.h>
-#include <q3whatsthis.h>
+
 //Added by qt3to4:
 #include <QPixmap>
 #include <QGridLayout>
@@ -320,7 +320,7 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent,
   topLayout->setSpacing( spacing );
 
   mAttachments = new AttachmentIconView( this );
-  Q3WhatsThis::add( mAttachments,
+  mAttachments->setWhatsThis(
                    i18n("Displays items (files, mail, etc.) "
                         "that have been associated with this event or to-do.") 
                         );
@@ -346,28 +346,28 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent,
   QBoxLayout *buttonLayout = new QHBoxLayout( topLayout );
 
   QPushButton *button = new QPushButton( i18n("&Add..."), this );
-  Q3WhatsThis::add( button,
+  button->setWhatsThis(
                    i18n("Shows a dialog used to select an attachment "
                         "to add to this event or to-do.") );
   buttonLayout->addWidget( button );
   connect( button, SIGNAL( clicked() ), SLOT( slotAdd() ) );
 
   button = new QPushButton( i18n("&Properties..."), this );
-  Q3WhatsThis::add( button,
+  button->setWhatsThis(
                    i18n("Shows a dialog used to edit the attachment "
                         "currently selected in the list above.") );
   buttonLayout->addWidget( button );
   connect( button, SIGNAL( clicked() ), SLOT( slotEdit() ) );
 
   button = new QPushButton( i18n("&Remove"), this );
-  Q3WhatsThis::add( button,
+  button->setWhatsThis(
                    i18n("Removes the attachment selected in the list above "
                         "from this event or to-do.") );
   buttonLayout->addWidget( button );
   connect( button, SIGNAL( clicked() ), SLOT( slotRemove() ) );
 
   button = new QPushButton( i18n("&Show"), this );
-  Q3WhatsThis::add( button,
+  button->setWhatsThis(
                    i18n("Opens the attachment selected in the list above "
                         "in the viewer that is associated with it in your "
                         "KDE preferences.") );

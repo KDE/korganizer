@@ -42,7 +42,7 @@
 #include <qcheckbox.h>
 #include <qlabel.h>
 #include <qlayout.h>
-#include <q3whatsthis.h>
+
 //Added by qt3to4:
 #include <QHBoxLayout>
 #include <QBoxLayout>
@@ -64,14 +64,14 @@ void KOEditorGeneralJournal::initTitle( QWidget *parent, QBoxLayout *topLayout )
   
   QString whatsThis = i18n("Sets the title of this journal.");
   QLabel *summaryLabel = new QLabel( i18n("T&itle:"), parent );
-  Q3WhatsThis::add( summaryLabel, whatsThis );
+  summaryLabel->setWhatsThis( whatsThis );
   QFont f = summaryLabel->font();
   f.setBold( true );
   summaryLabel->setFont( f );
   hbox->addWidget( summaryLabel );
 
   mSummaryEdit = new FocusLineEdit( parent );
-  Q3WhatsThis::add( mSummaryEdit, whatsThis );
+  mSummaryEdit->setWhatsThis( whatsThis );
   summaryLabel->setBuddy( mSummaryEdit );
   hbox->addWidget( mSummaryEdit );
 }

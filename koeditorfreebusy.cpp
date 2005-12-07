@@ -27,7 +27,7 @@
 #include <qlabel.h>
 #include <qcombobox.h>
 #include <qpushbutton.h>
-#include <q3whatsthis.h>
+
 //Added by qt3to4:
 #include <Q3Frame>
 #include <QHBoxLayout>
@@ -202,11 +202,11 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent,
 			   "while 'Automatic' selects the range most "
 			   "appropriate for the current event or to-do.");
   QLabel *label = new QLabel( i18n( "Scale: " ), this );
-  Q3WhatsThis::add( label, whatsThis );
+  label->setWhatsThis( whatsThis );
   controlLayout->addWidget( label );
 
   scaleCombo = new QComboBox( this ); 
-  Q3WhatsThis::add( scaleCombo, whatsThis );
+  scaleCombo->setWhatsThis( whatsThis );
   scaleCombo->insertItem( i18n( "Hour" ) );
   scaleCombo->insertItem( i18n( "Day" ) );
   scaleCombo->insertItem( i18n( "Week" ) );
@@ -218,14 +218,14 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent,
   controlLayout->addWidget( scaleCombo );
 
   QPushButton *button = new QPushButton( i18n( "Center on Start" ), this );
-  Q3WhatsThis::add( button,
+  button->setWhatsThis(
 		   i18n("Centers the Gantt chart on the start time "
 		        "and day of this event.") );
   connect( button, SIGNAL( clicked() ), SLOT( slotCenterOnStart() ) );
   controlLayout->addWidget( button );
 
   button = new QPushButton( i18n( "Zoom to Fit" ), this );
-  Q3WhatsThis::add( button,
+  button->setWhatsThis(
 		   i18n("Zooms the Gantt chart so that you can see the "
 			"entire duration of the event on it.") );
   connect( button, SIGNAL( clicked() ), SLOT( slotZoomToTime() ) );
@@ -234,7 +234,7 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent,
   controlLayout->addStretch( 1 );
 
   button = new QPushButton( i18n( "Pick Date" ), this );
-  Q3WhatsThis::add( button,
+  button->setWhatsThis(
 		   i18n("Moves the event to a date and time when all the "
 			"attendees are free.") );
   connect( button, SIGNAL( clicked() ), SLOT( slotPickDate() ) );
@@ -243,14 +243,14 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent,
   controlLayout->addStretch( 1 );
 
   button = new QPushButton( i18n("Reload"), this );
-  Q3WhatsThis::add( button,
+  button->setWhatsThis(
 		   i18n("Reloads Free/Busy data for all attendees from "
 		   	"the corresponding servers.") );
   controlLayout->addWidget( button );
   connect( button, SIGNAL( clicked() ), SLOT( reload() ) );
 
   mGanttView = new KDGanttView( this, "mGanttView" );
-  Q3WhatsThis::add( mGanttView,
+  mGanttView->setWhatsThis(
 		   i18n("Shows the free/busy status of all attendees. "
 		   	"Double-clicking on an attendees entry in the "
 			"list will allow you to enter the location of their "

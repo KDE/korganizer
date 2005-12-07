@@ -37,7 +37,7 @@
 #include <qpushbutton.h>
 #include <qcombobox.h>
 #include <qspinbox.h>
-#include <q3whatsthis.h>
+
 //Added by qt3to4:
 #include <QFocusEvent>
 #include <QGridLayout>
@@ -106,14 +106,14 @@ void KOEditorGeneral::initHeader(QWidget *parent,QBoxLayout *topLayout)
 
   QString whatsThis = i18n("Sets the Title of this event or to-do.");
   QLabel *summaryLabel = new QLabel(i18n("T&itle:"),parent);
-  Q3WhatsThis::add( summaryLabel, whatsThis );
+  summaryLabel->setWhatsThis( whatsThis );
   QFont f = summaryLabel->font();
   f.setBold( true );
   summaryLabel->setFont(f);
   headerLayout->addWidget(summaryLabel,1,0);
 
   mSummaryEdit = new FocusLineEdit(parent);
-  Q3WhatsThis::add( mSummaryEdit, whatsThis );
+  mSummaryEdit->setWhatsThis( whatsThis );
   connect( mSummaryEdit, SIGNAL( focusReceivedSignal() ),
            SIGNAL( focusReceivedSignal() ) );
   headerLayout->addWidget(mSummaryEdit,1,1);
@@ -121,11 +121,11 @@ void KOEditorGeneral::initHeader(QWidget *parent,QBoxLayout *topLayout)
 
   whatsThis = i18n("Sets where the event or to-do will take place.");
   QLabel *locationLabel = new QLabel(i18n("&Location:"),parent);
-  Q3WhatsThis::add( locationLabel, whatsThis );
+  locationLabel->setWhatsThis( whatsThis );
   headerLayout->addWidget(locationLabel,2,0);
 
   mLocationEdit = new QLineEdit(parent);
-  Q3WhatsThis::add( mLocationEdit, whatsThis );
+  mLocationEdit->setWhatsThis( whatsThis );
   headerLayout->addWidget(mLocationEdit,2,1);
   locationLabel->setBuddy( mLocationEdit );
 }
@@ -139,12 +139,12 @@ void KOEditorGeneral::initCategories(QWidget *parent, QBoxLayout *topLayout)
 
   mCategoriesButton = new QPushButton(parent);
   mCategoriesButton->setText(i18n("Select Cate&gories..."));
-  Q3WhatsThis::add( mCategoriesButton, whatsThis );
+  mCategoriesButton->setWhatsThis( whatsThis );
   connect(mCategoriesButton,SIGNAL(clicked()),SIGNAL(openCategoryDialog()));
   categoriesLayout->addWidget(mCategoriesButton);
 
   mCategoriesLabel = new KSqueezedTextLabel(parent);
-  Q3WhatsThis::add( mCategoriesLabel, whatsThis );
+  mCategoriesLabel->setWhatsThis( whatsThis );
   mCategoriesLabel->setFrameStyle(Q3Frame::Panel|Q3Frame::Sunken);
   categoriesLayout->addWidget(mCategoriesLabel,1);
 }
@@ -161,11 +161,11 @@ void KOEditorGeneral::initSecrecy(QWidget *parent, QBoxLayout *topLayout)
 			   "on the groupware server. This means that events "
 			   "or to-dos marked as private or confidential may "
 			   "be visible to others.");
-  Q3WhatsThis::add( secrecyLabel, whatsThis );
+  secrecyLabel->setWhatsThis( whatsThis );
   secrecyLayout->addWidget(secrecyLabel);
 
   mSecrecyCombo = new QComboBox(parent);
-  Q3WhatsThis::add( mSecrecyCombo, whatsThis );
+  mSecrecyCombo->setWhatsThis( whatsThis );
   mSecrecyCombo->insertStringList(Incidence::secrecyList());
   secrecyLayout->addWidget(mSecrecyCombo);
   secrecyLabel->setBuddy( mSecrecyCombo );
@@ -174,7 +174,7 @@ void KOEditorGeneral::initSecrecy(QWidget *parent, QBoxLayout *topLayout)
 void KOEditorGeneral::initDescription(QWidget *parent,QBoxLayout *topLayout)
 {
   mDescriptionEdit = new KTextEdit(parent);
-  Q3WhatsThis::add( mDescriptionEdit,
+  mDescriptionEdit->setWhatsThis(
 		   i18n("Sets the description for this event or to-do. This "
 			"will be displayed in a reminder if one is set, "
 			"as well as in a tooltip when you hover over the "
@@ -206,17 +206,17 @@ void KOEditorGeneral::initAlarm(QWidget *parent,QBoxLayout *topLayout)
   mAlarmStack->insertWidget( SimpleAlarmPage, simpleAlarmBox );
 
   mAlarmButton = new QCheckBox(i18n("&Reminder:"), simpleAlarmBox );
-  Q3WhatsThis::add( mAlarmButton,
+  mAlarmButton->setWhatsThis(
        i18n("Activates a reminder for this event or to-do.") );
 
   QString whatsThis = i18n("Sets how long before the event occurs "
                            "the reminder will be triggered.");
   mAlarmTimeEdit = new QSpinBox( 0, 99999, 1, simpleAlarmBox, "alarmTimeEdit" );
   mAlarmTimeEdit->setValue( 0 );
-  Q3WhatsThis::add( mAlarmTimeEdit, whatsThis );
+  mAlarmTimeEdit->setWhatsThis( whatsThis );
 
   mAlarmIncrCombo = new QComboBox( false, simpleAlarmBox );
-  Q3WhatsThis::add( mAlarmIncrCombo, whatsThis );
+  mAlarmIncrCombo->setWhatsThis( whatsThis );
   mAlarmIncrCombo->insertItem( i18n("minute(s)") );
   mAlarmIncrCombo->insertItem( i18n("hour(s)") );
   mAlarmIncrCombo->insertItem( i18n("day(s)") );
