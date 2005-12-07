@@ -25,7 +25,6 @@
 #include <qlayout.h>
 //Added by qt3to4:
 #include <QVBoxLayout>
-#include <Q3ValueList>
 #include <QBoxLayout>
 
 #include <kconfig.h>
@@ -62,7 +61,7 @@ void KOTimeSpanView::readSettings()
   KConfig config( "korganizerrc", true, false); // Open read-only, no kdeglobals
   config.setGroup("Views");
 
-  Q3ValueList<int> sizes = config.readIntListEntry("Separator TimeSpanView");
+  QList<int> sizes = config.readIntListEntry("Separator TimeSpanView");
   if (sizes.count() == 2) {
     mTimeSpanWidget->setSplitterSizes(sizes);
   }
@@ -74,7 +73,7 @@ void KOTimeSpanView::writeSettings(KConfig *config)
 
   config->setGroup("Views");
 
-  Q3ValueList<int> list = mTimeSpanWidget->splitterSizes();
+  QList<int> list = mTimeSpanWidget->splitterSizes();
   config->writeEntry("Separator TimeSpanView",list);
 }
 

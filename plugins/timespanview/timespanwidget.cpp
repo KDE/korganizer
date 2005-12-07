@@ -29,7 +29,6 @@
 #include <qpushbutton.h>
 //Added by qt3to4:
 #include <QVBoxLayout>
-#include <Q3ValueList>
 #include <QHBoxLayout>
 #include <QBoxLayout>
 
@@ -87,12 +86,12 @@ TimeSpanWidget::~TimeSpanWidget()
 {
 }
 
-Q3ValueList<int> TimeSpanWidget::splitterSizes()
+QList<int> TimeSpanWidget::splitterSizes()
 {
   return mSplitter->sizes();
 }
 
-void TimeSpanWidget::setSplitterSizes( Q3ValueList<int> sizes )
+void TimeSpanWidget::setSplitterSizes( QList<int> sizes )
 {
   mSplitter->setSizes( sizes );
 }

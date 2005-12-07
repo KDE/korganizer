@@ -38,8 +38,6 @@
 #include <kwin.h>
 
 #include <qpushbutton.h>
-//Added by qt3to4:
-#include <Q3ValueList>
 #include <kglobal.h>
 
 KOAlarmClient::KOAlarmClient( QObject *parent, const char *name )
@@ -111,9 +109,9 @@ void KOAlarmClient::checkAlarms()
 
   kdDebug(5891) << "Check: " << from.toString() << " - " << mLastChecked.toString() << endl;
 
-  Q3ValueList<Alarm *> alarms = mCalendar->alarms( from, mLastChecked );
+  QList<Alarm *> alarms = mCalendar->alarms( from, mLastChecked );
 
-  Q3ValueList<Alarm *>::ConstIterator it;
+  QList<Alarm *>::ConstIterator it;
   for( it = alarms.begin(); it != alarms.end(); ++it ) {
     kdDebug(5891) << "REMINDER: " << (*it)->parent()->summary() << endl;
     Incidence *incidence = mCalendar->incidence( (*it)->parent()->uid() );
@@ -200,8 +198,8 @@ QStringList KOAlarmClient::dumpAlarms()
   lst << QString("AlarmDeamon::dumpAlarms() from ") + start.toString()+ " to " +
          end.toString();
 
-  Q3ValueList<Alarm*> alarms = mCalendar->alarms( start, end );
-  Q3ValueList<Alarm*>::ConstIterator it;
+  QList<Alarm*> alarms = mCalendar->alarms( start, end );
+  QList<Alarm*>::ConstIterator it;
   for( it = alarms.begin(); it != alarms.end(); ++it ) {
     Alarm *a = *it;
     lst << QString("  ") + a->parent()->summary() + " ("

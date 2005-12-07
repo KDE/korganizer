@@ -32,7 +32,6 @@
 #include <Q3Frame>
 #include <QHBoxLayout>
 #include <QBoxLayout>
-#include <Q3ValueList>
 #include <QVBoxLayout>
 
 #include <kapplication.h>
@@ -129,7 +128,7 @@ void KOProjectView::readSettings()
   KConfig config( "korganizerrc", true, false); // Open read-only, no kdeglobals
   config.setGroup("Views");
 
-  Q3ValueList<int> sizes = config.readIntListEntry("Separator ProjectView");
+  QList<int> sizes = config.readIntListEntry("Separator ProjectView");
   if (sizes.count() == 2) {
     mGantt->splitter()->setSizes(sizes);
   }
@@ -141,7 +140,7 @@ void KOProjectView::writeSettings(KConfig *config)
 
   config->setGroup("Views");
 
-  Q3ValueList<int> list = mGantt->splitter()->sizes();
+  QList<int> list = mGantt->splitter()->sizes();
   config->writeEntry("Separator ProjectView",list);
 }
 
