@@ -456,7 +456,7 @@ void KOEditorAttachments::dropEvent( QDropEvent* event ) {
           it != addressees.constEnd(); ++it ) {
       urls.append( KDEPIMPROTOCOL_CONTACT + ( *it ).uid() );
       // there is some weirdness about realName(), hence fromUtf8
-      labels.append( QString::fromUtf8( ( *it ).realName().latin1() ) );
+      labels.append( QString::fromUtf8( ( *it ).realName().toLatin1() ) );
     }
     probablyWeHaveUris = true;
   } else if ( K3URLDrag::decode( event, urls, metadata ) ) {

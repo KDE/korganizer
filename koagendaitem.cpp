@@ -903,7 +903,7 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
   QString ws = ww->wrappedString();
   if ( ws.left( ws.length()-1 ).find( '\n' ) >= 0 )
     ww->drawText( &p, eventX, y,
-                  Qt::AlignAuto | KWordWrap::FadeOut );
+                  Qt::AlignLeft | KWordWrap::FadeOut );
   else
     ww->drawText( &p, eventX + (txtWidth-ww->boundingRect().width()-2*margin)/2,
                   y, Qt::AlignHCenter | KWordWrap::FadeOut );

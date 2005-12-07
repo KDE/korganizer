@@ -138,7 +138,7 @@ void KOJournalView::flushView()
 
 void KOJournalView::showDates(const QDate &start, const QDate &end)
 {
-//  kdDebug(5850) << "KOJournalView::showDates(): "<<start.toString().latin1()<<" - "<<end.toString().latin1() << endl;
+//  kdDebug(5850) << "KOJournalView::showDates(): "<<start.toString().toLatin1()<<" - "<<end.toString().toLatin1() << endl;
   clearEntries();
   if ( end<start ) return;
 

@@ -119,7 +119,7 @@ Q3PtrList<ScheduleMessage> MailScheduler::retrieveTransactions()
         t.setEncoding( QTextStream::Latin1 );
         QString messageString = t.read();
         messageString.replace( QRegExp( "\n[ \t]"), "" );
-        messageString = QString::fromUtf8( messageString.latin1() );
+        messageString = QString::fromUtf8( messageString.toLatin1() );
         ScheduleMessage *mess = mFormat->parseScheduleMessage( mCalendar,
                                                                messageString );
         if ( mess) {

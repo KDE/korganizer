@@ -106,7 +106,7 @@ KOrg::Plugin *KOCore::loadPlugin( KService::Ptr service )
   }
 
   KLibFactory *factory = KLibLoader::self()->factory(
-      service->library().latin1() );
+      service->library().toLatin1() );
 
   if ( !factory ) {
     kdDebug(5850) << "KOCore::loadPlugin(): Factory creation failed" << endl;
@@ -140,7 +140,7 @@ KOrg::CalendarDecoration *KOCore::loadCalendarDecoration(KService::Ptr service)
 {
   kdDebug(5850) << "loadCalendarDecoration: library: " << service->library() << endl;
 
-  KLibFactory *factory = KLibLoader::self()->factory(service->library().latin1());
+  KLibFactory *factory = KLibLoader::self()->factory(service->library().toLatin1());
 
   if (!factory) {
     kdDebug(5850) << "KOCore::loadCalendarDecoration(): Factory creation failed" << endl;
@@ -179,7 +179,7 @@ KOrg::Part *KOCore::loadPart( KService::Ptr service, KOrg::MainWindow *parent )
   }
 
   KLibFactory *factory = KLibLoader::self()->factory(
-      service->library().latin1() );
+      service->library().toLatin1() );
 
   if ( !factory ) {
     kdDebug(5850) << "KOCore::loadPart(): Factory creation failed" << endl;
@@ -206,7 +206,7 @@ KOrg::PrintPlugin *KOCore::loadPrintPlugin( KService::Ptr service )
   }
 
   KLibFactory *factory = KLibLoader::self()->factory(
-      service->library().latin1() );
+      service->library().toLatin1() );
 
   if ( !factory ) {
     kdDebug(5850) << "KOCore::loadPrintPlugin(): Factory creation failed" << endl;

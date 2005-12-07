@@ -200,7 +200,7 @@ bool KOMailClient::send(const QString &from,const QString &to,
       if (idx>=0) {
         idx = attachment.find(':',idx)+1;
         meth = attachment.mid(idx,attachment.find('\n',idx)-idx);
-        meth = meth.lower();
+        meth = meth.toLower();
       } else {
         meth = "publish";
       }
