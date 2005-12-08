@@ -188,7 +188,7 @@ void ResourceItem::setResourceColor(QColor& color)
     }
   } else {
     mResourceColor = color ;
-    setPixmap(0,0);
+    setPixmap( 0, QPixmap() );
   }
 }
 
