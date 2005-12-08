@@ -72,7 +72,7 @@ KOPrefs::KOPrefs() :
   mDefaultTimeBarFont = KGlobalSettings::generalFont();
   // make a large default time bar font, at least 16 points.
   mDefaultTimeBarFont.setPointSize(
-    QMAX( mDefaultTimeBarFont.pointSize() + 4, 16 ) );
+    qMax( mDefaultTimeBarFont.pointSize() + 4, 16 ) );
 
   mDefaultMonthViewFont = KGlobalSettings::generalFont();
   // make it a bit smaller
