@@ -48,7 +48,7 @@ class KOTodoListViewQuickSearchLine : public KListViewSearchLine
   Q_OBJECT
   Q_PROPERTY( QString category READ category WRITE setCategory )
   public:
-    KOTodoListViewQuickSearchLine( QWidget *parent=0, QList<KListView*> listViews )
+    KOTodoListViewQuickSearchLine( QWidget *parent, QList<KListView*> listViews )
         : KListViewSearchLine( parent, listViews ) { }
     virtual ~KOTodoListViewQuickSearchLine() { }
 
