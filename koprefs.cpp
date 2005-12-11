@@ -325,10 +325,8 @@ QStringList KOPrefs::allEmails()
   // Grab emails from the email identities
   kdDebug()<<" KOCore::self()->identityManager() :"<<KOCore::self()->identityManager()<<endl;
   QStringList lst = KOCore::self()->identityManager()->allEmails();
-  kdDebug()<<"lst !!!!!!!\n";
   // Add emails configured in korganizer
   lst += mAdditionalMails;
-  kdDebug()<<"11111111111111111111\n";
   // Add emails from the user's kaddressbook entry
   lst += KABC::StdAddressBook::self( true )->whoAmI().emails();
   // Add the email entered as the userEmail here
