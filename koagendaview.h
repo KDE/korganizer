@@ -31,7 +31,7 @@
 #include <QPixmap>
 #include <QPaintEvent>
 #include <Q3MemArray>
-#include <Q3Frame>
+#include <QFrame>
 #include <QBoxLayout>
 #include <QResizeEvent>
 #include <QMenu>
@@ -88,10 +88,10 @@ class TimeLabels : public Q3ScrollView
     int mMiniWidth;
     KOAgenda* mAgenda;
 
-    Q3Frame *mMousePos;  // shows a marker for the current mouse position in y direction
+    QFrame *mMousePos;  // shows a marker for the current mouse position in y direction
 };
 
-class EventIndicator : public Q3Frame
+class EventIndicator : public QFrame
 {
     Q_OBJECT
   public:
@@ -271,7 +271,7 @@ class KOAgendaView : public KOEventView
 
   private:
     // view widgets
-    Q3Frame *mDayLabels;
+    QFrame *mDayLabels;
     KHBox *mDayLabelsFrame;
     QBoxLayout *mLayoutDayLabels;
     QFrame *mAllDayFrame;

@@ -41,7 +41,7 @@
 //Added by qt3to4:
 #include <QFocusEvent>
 #include <QGridLayout>
-#include <Q3Frame>
+#include <QFrame>
 #include <QHBoxLayout>
 #include <QBoxLayout>
 
@@ -146,7 +146,7 @@ void KOEditorGeneral::initCategories(QWidget *parent, QBoxLayout *topLayout)
 
   mCategoriesLabel = new KSqueezedTextLabel(parent);
   mCategoriesLabel->setWhatsThis( whatsThis );
-  mCategoriesLabel->setFrameStyle(Q3Frame::Panel|Q3Frame::Sunken);
+  mCategoriesLabel->setFrameStyle(QFrame::Panel|Q3Frame::Sunken);
   categoriesLayout->addWidget(mCategoriesLabel,1);
 }
 

@@ -36,7 +36,7 @@
 
 //Added by qt3to4:
 #include <QGridLayout>
-#include <Q3Frame>
+#include <QFrame>
 #include <QHBoxLayout>
 #include <QBoxLayout>
 #include <QVBoxLayout>
@@ -106,7 +106,7 @@ void KOEditorGeneralTodo::initTime(QWidget *parent,QBoxLayout *topLayout)
                                           i18n("Date && Time"),parent);
   timeLayout->addWidget(timeGroupBox);
 
-  Q3Frame *timeBoxFrame = new Q3Frame(timeGroupBox);
+  QFrame *timeBoxFrame = new Q3Frame(timeGroupBox);
   timeBoxFrame->setWhatsThis(
                    i18n("Sets options for due and start dates and times "
                         "for this to-do.") );

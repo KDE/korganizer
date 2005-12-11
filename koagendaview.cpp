@@ -101,9 +101,9 @@ TimeLabels::TimeLabels(int rows,QWidget *parent,const char *name,Qt::WFlags f) :
 
   viewport()->setBackgroundMode( Qt::PaletteBackground );
 
-  mMousePos = new Q3Frame(this);
+  mMousePos = new QFrame(this);
   mMousePos->setLineWidth(0);
-  mMousePos->setMargin(0);
+//  mMousePos->setMargin(0);
   mMousePos->setBackgroundColor(Qt::red);
   mMousePos->setFixedSize(width(), 1);
   addChild(mMousePos, 0, 0);
@@ -277,7 +277,7 @@ void TimeLabels::paintEvent(QPaintEvent*)
 ////////////////////////////////////////////////////////////////////////////
 
 EventIndicator::EventIndicator(Location loc,QWidget *parent,const char *name)
-  : Q3Frame(parent,name)
+  : QFrame(parent,name)
 {
   mColumns = 1;
   mTopBox = 0;
@@ -747,7 +747,7 @@ void KOAgendaView::createDayLabels()
   // each updateView() call)
   delete mDayLabels;
 
-  mDayLabels = new Q3Frame (mDayLabelsFrame);
+  mDayLabels = new QFrame (mDayLabelsFrame);
   mLayoutDayLabels = new QHBoxLayout(mDayLabels);
   mLayoutDayLabels->addSpacing(mTimeLabels->width());
 

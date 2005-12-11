@@ -36,7 +36,7 @@
 
 //Added by qt3to4:
 #include <QGridLayout>
-#include <Q3Frame>
+#include <QFrame>
 #include <QHBoxLayout>
 #include <QBoxLayout>
 #include <QVBoxLayout>
@@ -109,7 +109,7 @@ void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
             "event or to-do.") );
   timeLayout->addWidget(timeGroupBox);
 
-  Q3Frame *timeBoxFrame = new Q3Frame(timeGroupBox);
+  QFrame *timeBoxFrame = new Q3Frame(timeGroupBox);
 
   QGridLayout *layoutTimeBox = new QGridLayout(timeBoxFrame,2,3);
   layoutTimeBox->setSpacing(topLayout->spacing());

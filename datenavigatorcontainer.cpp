@@ -38,16 +38,16 @@
 
 #include <qtimer.h>
 //Added by qt3to4:
-#include <Q3Frame>
+#include <QFrame>
 #include <QResizeEvent>
 
 DateNavigatorContainer::DateNavigatorContainer( QWidget *parent,
                                                 const char *name )
-  : Q3Frame( parent, name ), mCalendar( 0 ),
+  : QFrame( parent, name ), mCalendar( 0 ),
     mHorizontalCount( 1 ), mVerticalCount( 1 )
 {
   mExtraViews.setAutoDelete( true );
-  setFrameStyle( Q3Frame::Sunken | Q3Frame::StyledPanel );
+  setFrameStyle( QFrame::Sunken | Q3Frame::StyledPanel );
 
   mNavigatorView = new KDateNavigator( this, name );
   mNavigatorView->setWhatsThis(

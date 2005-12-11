@@ -40,7 +40,7 @@
 
 //Added by qt3to4:
 #include <QGridLayout>
-#include <Q3Frame>
+#include <QFrame>
 #include <QHBoxLayout>
 #include <QBoxLayout>
 #include <QVBoxLayout>
@@ -239,7 +239,7 @@ RecurMonthly::RecurMonthly( QWidget *parent, const char *name ) :
 
   Q3ButtonGroup *buttonGroup = new Q3ButtonGroup( this );
 #warning Port me!
-//  buttonGroup->setFrameStyle( Q3Frame::NoFrame );
+//  buttonGroup->setFrameStyle( QFrame::NoFrame );
   topLayout->addWidget( buttonGroup, 1, Qt::AlignVCenter );
 
   QGridLayout *buttonLayout = new QGridLayout( buttonGroup, 3, 2 );
@@ -414,7 +414,7 @@ RecurYearly::RecurYearly( QWidget *parent, const char *name ) :
 
   Q3ButtonGroup *buttonGroup = new Q3ButtonGroup( this );
 #warning Port me!
-//  buttonGroup->setFrameStyle( Q3Frame::NoFrame );
+//  buttonGroup->setFrameStyle( QFrame::NoFrame );
   topLayout->addWidget( buttonGroup, 1, Qt::AlignVCenter );
 
   QBoxLayout *buttonLayout = new QVBoxLayout( buttonGroup );
@@ -900,7 +900,7 @@ RecurrenceChooser::RecurrenceChooser( QWidget *parent, const char *name ) :
 
     Q3ButtonGroup *ruleButtonGroup = new Q3ButtonGroup( 1, Qt::Horizontal, this );
 #warning Port me!
-//    ruleButtonGroup->setFrameStyle( Q3Frame::NoFrame );
+//    ruleButtonGroup->setFrameStyle( QFrame::NoFrame );
     topLayout->addWidget( ruleButtonGroup );
 
     mDailyButton = new QRadioButton( i18n("&Daily"), ruleButtonGroup );
@@ -1025,8 +1025,8 @@ KOEditorRecurrence::KOEditorRecurrence( QWidget* parent, const char *name ) :
            SLOT( showCurrentRule( int ) ) );
 
   if ( !KOPrefs::instance()->mCompactDialogs ) {
-    Q3Frame *ruleSepFrame = new Q3Frame( mRuleBox );
-    ruleSepFrame->setFrameStyle( Q3Frame::VLine | Q3Frame::Sunken );
+    QFrame *ruleSepFrame = new Q3Frame( mRuleBox );
+    ruleSepFrame->setFrameStyle( QFrame::VLine | Q3Frame::Sunken );
   }
 
   mRuleStack = new QStackedWidget( mRuleBox );

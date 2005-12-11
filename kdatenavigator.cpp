@@ -50,7 +50,7 @@
 #include "kdatenavigator.h"
 
 KDateNavigator::KDateNavigator( QWidget *parent, const char *name )
-  : Q3Frame( parent, name ), mBaseDate( 1970, 1, 1 )
+  : QFrame( parent, name ), mBaseDate( 1970, 1, 1 )
 {
   QGridLayout* topLayout = new QGridLayout( this, 8, 8 );
 

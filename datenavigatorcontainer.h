@@ -32,7 +32,7 @@
 
 class KDateNavigator;
 
-class DateNavigatorContainer: public Q3Frame
+class DateNavigatorContainer: public QFrame
 {
     Q_OBJECT
   public:

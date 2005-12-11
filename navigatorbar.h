@@ -29,10 +29,10 @@
 #include <qlabel.h>
 //Added by qt3to4:
 #include <QMouseEvent>
-#include <Q3Frame>
+#include <QFrame>
 
 class QPushButton;
-class Q3Frame;
+class QFrame;
 
 class ActiveLabel : public QLabel
 {

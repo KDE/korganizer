@@ -34,7 +34,7 @@
 #include <QDragLeaveEvent>
 #include <QPaintEvent>
 #include <QDragMoveEvent>
-#include <Q3Frame>
+#include <QFrame>
 #include <QDropEvent>
 #include <QResizeEvent>
 #include <QDragEnterEvent>
@@ -113,7 +113,7 @@ const int KODayMatrix::NOSELECTION = -1000;
 const int KODayMatrix::NUMDAYS = 42;
 
 KODayMatrix::KODayMatrix( QWidget *parent, const char *name )
-  : Q3Frame( parent, name ), mCalendar( 0 ), mStartDate( 1970, 1, 1 )
+  : QFrame( parent, name ), mCalendar( 0 ), mStartDate( 1970, 1, 1 )
 {
   // initialize dynamic arrays
   mDays = new QDate[ NUMDAYS ];

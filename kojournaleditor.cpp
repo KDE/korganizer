@@ -42,7 +42,7 @@
 #include <qlayout.h>
 //Added by qt3to4:
 #include <QVBoxLayout>
-#include <Q3Frame>
+#include <QFrame>
 #include <QBoxLayout>
 
 using namespace KCal;

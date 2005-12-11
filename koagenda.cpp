@@ -40,7 +40,7 @@
 #include <Q3PtrList>
 #include <QEvent>
 #include <QKeyEvent>
-#include <Q3Frame>
+#include <QFrame>
 #include <QDropEvent>
 #include <QResizeEvent>
 #include <QMouseEvent>
@@ -73,10 +73,10 @@
 
 ////////////////////////////////////////////////////////////////////////////
 MarcusBains::MarcusBains(KOAgenda *_agenda,const char *name)
-    : Q3Frame(_agenda->viewport(),name), agenda(_agenda)
+    : QFrame(_agenda->viewport(),name), agenda(_agenda)
 {
   setLineWidth(0);
-  setMargin(0);
+//  setMargin(0);
   setBackgroundColor(Qt::red);
   minutes = new QTimer(this);
   connect(minutes, SIGNAL(timeout()), this, SLOT(updateLocation()));

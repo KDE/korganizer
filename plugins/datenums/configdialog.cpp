@@ -23,7 +23,7 @@
 #include <qradiobutton.h>
 //Added by qt3to4:
 #include <QVBoxLayout>
-#include <Q3Frame>
+#include <QFrame>
 #include <Q3VButtonGroup>
 
 #include <klocale.h>

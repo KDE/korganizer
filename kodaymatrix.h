@@ -111,7 +111,7 @@ class DynamicTip : public QToolTip
  *
  *  @author Eitzenberger Thomas
  */
-class KODayMatrix: public Q3Frame
+class KODayMatrix: public QFrame
 {
     Q_OBJECT
   public:

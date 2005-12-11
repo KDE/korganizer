@@ -33,7 +33,7 @@
 #include <Q3PtrList>
 #include <QEvent>
 #include <QKeyEvent>
-#include <Q3Frame>
+#include <QFrame>
 #include <QDropEvent>
 #include <QLabel>
 #include <QResizeEvent>
@@ -61,7 +61,7 @@ class Todo;
 class Calendar;
 }
 
-class MarcusBains : public Q3Frame {
+class MarcusBains : public QFrame {
     Q_OBJECT
   public:
     MarcusBains( KOAgenda *agenda = 0, const char *name = 0 );

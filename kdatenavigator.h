@@ -46,7 +46,7 @@ using namespace KCal;
 
 class KODayMatrix;
 
-class KDateNavigator: public Q3Frame
+class KDateNavigator: public QFrame
 {
     Q_OBJECT
   public:

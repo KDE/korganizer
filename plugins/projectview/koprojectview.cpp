@@ -29,7 +29,7 @@
 #include <q3listview.h>
 //Added by qt3to4:
 #include <Q3PtrList>
-#include <Q3Frame>
+#include <QFrame>
 #include <QHBoxLayout>
 #include <QBoxLayout>
 #include <QVBoxLayout>
@@ -80,7 +80,7 @@ KOProjectView::KOProjectView(Calendar *calendar,QWidget* parent,
   topLayout->addLayout(topBar);
 
   QLabel *title = new QLabel(i18n("Project View"),this);
-  title->setFrameStyle(Q3Frame::Panel|Q3Frame::Raised);
+  title->setFrameStyle(QFrame::Panel|Q3Frame::Raised);
   topBar->addWidget(title,1);
 
   QPushButton *zoomIn = new QPushButton(i18n("Zoom In"),this);

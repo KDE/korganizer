@@ -36,7 +36,7 @@
 #include <QBoxLayout>
 #include <Q3PopupMenu>
 #include <QMouseEvent>
-#include <Q3Frame>
+#include <QFrame>
 #include <QEvent>
 #include <QDragMoveEvent>
 #include <Q3CString>
@@ -454,7 +454,7 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent)
   topLayout->addWidget( container );
 
   QLabel *title = new QLabel( i18n("To-dos:"), this );
-  title->setFrameStyle( Q3Frame::Panel | Q3Frame::Raised );
+  title->setFrameStyle( QFrame::Panel | Q3Frame::Raised );
   topLayout->addWidget( title );
 
   mQuickAdd = new KPIM::ClickLineEdit( this, i18n( "Click to add a new to-do" ) );
