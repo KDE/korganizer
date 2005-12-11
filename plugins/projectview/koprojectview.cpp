@@ -248,7 +248,7 @@ KGanttItem *KOProjectView::createTask(KGanttItem *parent,Todo *todo)
   connect(task,SIGNAL(changed(KGanttItem*, KGanttItem::Change)),
           SLOT(taskChanged(KGanttItem*,KGanttItem::Change)));
   if (todo->relations().count() > 0) {
-    task->setBrush(QBrush(QColor(240,240,240), QBrush::Dense4Pattern));
+    task->setBrush(QBrush(QColor(240,240,240), Qt::Dense4Pattern));
   }
 
   return task;

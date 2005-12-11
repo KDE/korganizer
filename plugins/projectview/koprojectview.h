@@ -27,7 +27,6 @@
 //Added by qt3to4:
 #include <Q3StrList>
 #include <QLabel>
-#include <Q3PopupMenu>
 
 #include <libkcal/calendar.h>
 #include <libkcal/event.h>
@@ -39,7 +38,6 @@ class KGantt;
 class QLineEdit;
 class QFont;
 class QLabel;
-class Q3PopupMenu;
 class Q3ListBox;
 class Q3StrList;
 class Q3ListView;

@@ -46,7 +46,7 @@ K_EXPORT_COMPONENT_FACTORY( libkorg_projectview, ProjectViewFactory )
 
 
 ProjectView::ProjectView(KOrg::MainWindow *parent, const char *name) :
-  KOrg::Part(parent,name), mView(0)
+  KOrg::Part(parent), mView(0)
 {
   setInstance( new KInstance( "korganizer" ) );
 
