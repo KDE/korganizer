@@ -29,8 +29,6 @@
 #include <qlabel.h>
 #include <q3ptrlist.h>
 #include <q3intdict.h>
-//Added by qt3to4:
-#include <Q3ValueList>
 
 #include <kglobal.h>
 #include <klocale.h>
@@ -472,8 +470,8 @@ void CalPrintHelper::drawAgendaDayBox( QPainter &p, Event::List &events,
 
   Event::List::ConstIterator itEvents;
   for( itEvents = events.begin(); itEvents != events.end(); ++itEvents ) {
-    Q3ValueList<QDateTime> times = (*itEvents)->startDateTimesForDate( qd );
-    for ( Q3ValueList<QDateTime>::ConstIterator it = times.begin();
+    QList<QDateTime> times = (*itEvents)->startDateTimesForDate( qd );
+    for ( QList<QDateTime>::ConstIterator it = times.begin();
           it != times.end(); ++it ) {
       cells.append( new PrintCellItem( *itEvents, (*it), (*itEvents)->endDateForStart( *it ) ) );
     }
