@@ -498,10 +498,10 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent)
                              KDatePickerPopup::Words );
 
 
-  connect( mMovePopupMenu, SIGNAL( dateChanged( QDate )),
-           SLOT( setNewDate( QDate ) ) );
-  connect( mCopyPopupMenu, SIGNAL( dateChanged( QDate )),
-           SLOT( copyTodoToDate( QDate ) ) );
+  connect( mMovePopupMenu, SIGNAL( dateChanged( const QDate& )),
+           SLOT( setNewDate( const QDate& ) ) );
+  connect( mCopyPopupMenu, SIGNAL( dateChanged( const QDate& )),
+           SLOT( copyTodoToDate( const QDate& ) ) );
 
   mItemPopupMenu = new Q3PopupMenu(this);
   mItemPopupMenu->insertItem(i18n("&Show"), this,
@@ -1202,7 +1202,7 @@ void KOTodoView::setNewPercentage( int index )
   setNewPercentage( mActiveItem, mPercentage[index] );
 }
 
-void KOTodoView::setNewDate( QDate date )
+void KOTodoView::setNewDate( const QDate &date )
 {
   if ( !mActiveItem || !mChanger ) return;
   Todo *todo = mActiveItem->todo();
@@ -1232,7 +1232,7 @@ void KOTodoView::setNewDate( QDate date )
   }
 }
 
-void KOTodoView::copyTodoToDate( QDate date )
+void KOTodoView::copyTodoToDate( const QDate &date )
 {
   QDateTime dt;
   dt.setDate( date );

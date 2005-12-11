@@ -179,8 +179,8 @@ class KOTodoView : public KOrg::BaseView
 
     void setNewPriority( int );
     void setNewPercentage( int );
-    void setNewDate( QDate );
-    void copyTodoToDate( QDate );
+    void setNewDate( const QDate& );
+    void copyTodoToDate( const QDate& );
     void changedCategories( int );
 
     void purgeCompleted();
