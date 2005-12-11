@@ -116,6 +116,8 @@ class KOrganizer : public KPartsMainWindow, public KOrgMainWindow
 
     void newMainWindow( const KURL & );
 
+    void slotEditKeys();
+
   protected:
     void initActions();
 //    void initViews();

@@ -72,7 +72,7 @@
 #include <ktip.h>
 #include <kstdguiitem.h>
 #include <kstatusbar.h>
-
+#include <kkeydialog.h>
 #include <qcursor.h>
 #include <qtimer.h>
 #include <q3vbox.h>
@@ -208,12 +208,19 @@ void KOrganizer::initActions()
   setStandardToolBarMenuEnabled( true );
   createStandardStatusBarAction();
 
-  KStdAction::keyBindings(this, SLOT(configureShortcuts()), actionCollection());
+  KStdAction::keyBindings(this, SLOT(slotEditKeys()), actionCollection());
   KStdAction::configureToolbars(this, SLOT(configureToolbars() ), actionCollection());
   KStdAction::quit( this, SLOT( close() ), actionCollection() );
   setAutoSaveSettings();
 
   createGUI( 0 );
+}
+
+void KOrganizer::slotEditKeys()
+{
+  KKeyDialog::configure( actionCollection(),
+                         false /*don't allow one-letter shortcuts*/
+                         );
 }
 
 bool KOrganizer::queryClose()
