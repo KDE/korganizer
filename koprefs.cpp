@@ -331,10 +331,8 @@ QStringList KOPrefs::allEmails()
   kdDebug()<<"11111111111111111111\n";
   // Add emails from the user's kaddressbook entry
   lst += KABC::StdAddressBook::self( true )->whoAmI().emails();
-  kdDebug()<<"222222222222222222\n";
   // Add the email entered as the userEmail here
   lst += email();
-  kdDebug()<<"6666666666666666666666\n";
 
   // Warning, this list could contain duplicates.
   return lst;
