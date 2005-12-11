@@ -41,23 +41,23 @@ KOEventPopupMenu::KOEventPopupMenu()
   mCurrentDate = QDate();
   mHasAdditionalItems = false;
 
-  insertItem (i18n("&Show"),this,SLOT(popupShow()));
-  mEditOnlyItems.append(insertItem (i18n("&Edit..."),this,SLOT(popupEdit())));
-  mEditOnlyItems.append(insertSeparator());
-  mEditOnlyItems.append(insertItem (KOGlobals::self()->smallIcon("editcut"),i18n("&Cut"),
+  addAction(i18n("&Show"),this,SLOT(popupShow()));
+  mEditOnlyItems.append(addAction (i18n("&Edit..."),this,SLOT(popupEdit())));
+  mEditOnlyItems.append(addSeparator());
+  mEditOnlyItems.append(addAction (KOGlobals::self()->smallIcon("editcut"),i18n("&Cut"),
                                    this,SLOT(popupCut())));
-  mEditOnlyItems.append(insertItem (KOGlobals::self()->smallIcon("editcopy"),i18n("&Copy"),
+  mEditOnlyItems.append(addAction (KOGlobals::self()->smallIcon("editcopy"),i18n("&Copy"),
                                    this,SLOT(popupCopy())));
-  mEditOnlyItems.append(insertItem (KOGlobals::self()->smallIcon("editdelete"),i18n("&Delete"),
+  mEditOnlyItems.append(addAction (KOGlobals::self()->smallIcon("editdelete"),i18n("&Delete"),
                                    this,SLOT(popupDelete())));
-  mEditOnlyItems.append( insertSeparator() );
-  mEditOnlyItems.append( insertItem( QIcon( KOGlobals::self()->smallIcon("bell") ),
+  mEditOnlyItems.append( addSeparator() );
+  mEditOnlyItems.append( addAction( QIcon( KOGlobals::self()->smallIcon("bell") ),
                                      i18n("&Toggle Reminder"), this,
                                      SLOT( popupAlarm() ) ) );
-  mRecurrenceItems.append( insertSeparator() );
-  mRecurrenceItems.append( insertItem( i18n("&Dissociate This Occurrence"),
+  mRecurrenceItems.append( addSeparator() );
+  mRecurrenceItems.append( addAction( i18n("&Dissociate This Occurrence"),
                                        this, SLOT( dissociateOccurrence() ) ) );
-  mRecurrenceItems.append( insertItem( i18n("&Dissociate Future Occurrences"),
+  mRecurrenceItems.append( addAction( i18n("&Dissociate Future Occurrences"),
                                        this, SLOT( dissociateFutureOccurrence() ) ) );
 }
 
@@ -68,12 +68,12 @@ void KOEventPopupMenu::showIncidencePopup( Incidence *incidence, const QDate &qd
 
   if (mCurrentIncidence) {
     // Enable/Disabled menu items only valid for editable events.
-    QList<int>::Iterator it;
+    QList<QAction *>::Iterator it;
     for( it = mEditOnlyItems.begin(); it != mEditOnlyItems.end(); ++it ) {
-      setItemEnabled(*it,!mCurrentIncidence->isReadOnly());
+      (*it)->setEnabled(!mCurrentIncidence->isReadOnly());
     }
     for ( it = mRecurrenceItems.begin(); it != mRecurrenceItems.end(); ++it ) {
-      setItemVisible( *it, mCurrentIncidence->doesRecur() );
+      (*it)->setVisible( mCurrentIncidence->doesRecur() );
     }
     popup(QCursor::pos());
   } else {
@@ -89,7 +89,7 @@ void KOEventPopupMenu::addAdditionalItem(const QIcon &icon,const QString &text,
     mHasAdditionalItems = true;
     insertSeparator();
   }
-  int id = insertItem(icon,text,receiver,member);
+  QAction *id = addAction(icon,text,receiver,member);
   if (editOnly) mEditOnlyItems.append(id);
 }
 
@@ -135,3 +135,4 @@ void KOEventPopupMenu::dissociateFutureOccurrence()
   if ( mCurrentIncidence )
     emit dissociateFutureOccurrenceSignal( mCurrentIncidence, mCurrentDate );
 }
+

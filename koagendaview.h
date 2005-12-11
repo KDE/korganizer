@@ -34,7 +34,7 @@
 #include <Q3Frame>
 #include <QBoxLayout>
 #include <QResizeEvent>
-#include <Q3PopupMenu>
+#include <QMenu>
 #include <kvbox.h>
 
 #include "calprinter.h"
@@ -236,7 +236,7 @@ class KOAgendaView : public KOEventView
     /** Fill agenda using the current set value for the start date */
     void fillAgenda();
 
-    void connectAgenda( KOAgenda*agenda, Q3PopupMenu*popup, KOAgenda* otherAgenda );
+    void connectAgenda( KOAgenda*agenda, QMenu*popup, KOAgenda* otherAgenda );
 
     /** Create labels for the selected dates. */
     void createDayLabels();

@@ -27,7 +27,7 @@
 // Context menu for event views with standard event actions
 //
 
-#include <q3popupmenu.h>
+#include <QMenu>
 #include <qdatetime.h>
 
 namespace KCal { 
@@ -35,7 +35,7 @@ class Incidence;
 }
 using namespace KCal;
 
-class KOEventPopupMenu : public Q3PopupMenu {
+class KOEventPopupMenu : public QMenu {
     Q_OBJECT
   public:
     KOEventPopupMenu();
@@ -73,8 +73,8 @@ class KOEventPopupMenu : public Q3PopupMenu {
     QDate mCurrentDate;
     
     bool mHasAdditionalItems;
-    QList<int> mEditOnlyItems;
-    QList<int> mRecurrenceItems;
+    QList<QAction *> mEditOnlyItems;
+    QList<QAction *> mRecurrenceItems;
 };
 
 #endif

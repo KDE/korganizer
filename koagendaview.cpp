@@ -561,7 +561,7 @@ KOAgendaView::~KOAgendaView()
   delete mAllDayAgendaPopup;
 }
 
-void KOAgendaView::connectAgenda( KOAgenda *agenda, Q3PopupMenu *popup,
+void KOAgendaView::connectAgenda( KOAgenda *agenda, QMenu *popup,
                                   KOAgenda *otherAgenda )
 {
   connect( agenda, SIGNAL( showIncidencePopupSignal( Incidence *, const QDate & ) ),
