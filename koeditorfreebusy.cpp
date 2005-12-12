@@ -186,7 +186,7 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent,
   mIsOrganizer = false; // Will be set later. This is just valgrind silencing
   mStatusSummaryLabel = new QLabel( this );
   mStatusSummaryLabel->setPalette( QToolTip::palette() );
-  mStatusSummaryLabel->setFrameStyle( QFrame::Plain | Q3Frame::Box );
+  mStatusSummaryLabel->setFrameStyle( QFrame::Plain | QFrame::Box );
   mStatusSummaryLabel->setLineWidth( 1 );
   mStatusSummaryLabel->hide(); // Will be unhidden later if you are organizer
   topLayout->addWidget( mStatusSummaryLabel );

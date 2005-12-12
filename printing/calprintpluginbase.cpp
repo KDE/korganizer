@@ -50,7 +50,7 @@
 
 QWidget *CalPrintPluginBase::createConfigWidget( QWidget *w )
 {
-  QFrame *wdg = new Q3Frame( w );
+  QFrame *wdg = new QFrame( w );
   QVBoxLayout *layout = new QVBoxLayout( wdg );
 
   QLabel *title = new QLabel( description(), wdg );

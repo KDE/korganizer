@@ -146,7 +146,7 @@ void KOEditorGeneral::initCategories(QWidget *parent, QBoxLayout *topLayout)
 
   mCategoriesLabel = new KSqueezedTextLabel(parent);
   mCategoriesLabel->setWhatsThis( whatsThis );
-  mCategoriesLabel->setFrameStyle(QFrame::Panel|Q3Frame::Sunken);
+  mCategoriesLabel->setFrameStyle(QFrame::Panel|QFrame::Sunken);
   categoriesLayout->addWidget(mCategoriesLabel,1);
 }
 

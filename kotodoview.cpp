@@ -454,7 +454,7 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent)
   topLayout->addWidget( container );
 
   QLabel *title = new QLabel( i18n("To-dos:"), this );
-  title->setFrameStyle( QFrame::Panel | Q3Frame::Raised );
+  title->setFrameStyle( QFrame::Panel | QFrame::Raised );
   topLayout->addWidget( title );
 
   mQuickAdd = new KPIM::ClickLineEdit( this, i18n( "Click to add a new to-do" ) );

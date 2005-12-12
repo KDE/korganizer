@@ -109,7 +109,7 @@ void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
             "event or to-do.") );
   timeLayout->addWidget(timeGroupBox);
 
-  QFrame *timeBoxFrame = new Q3Frame(timeGroupBox);
+  QFrame *timeBoxFrame = new QFrame(timeGroupBox);
 
   QGridLayout *layoutTimeBox = new QGridLayout(timeBoxFrame,2,3);
   layoutTimeBox->setSpacing(topLayout->spacing());

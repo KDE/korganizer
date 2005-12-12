@@ -1025,8 +1025,8 @@ KOEditorRecurrence::KOEditorRecurrence( QWidget* parent, const char *name ) :
            SLOT( showCurrentRule( int ) ) );
 
   if ( !KOPrefs::instance()->mCompactDialogs ) {
-    QFrame *ruleSepFrame = new Q3Frame( mRuleBox );
-    ruleSepFrame->setFrameStyle( QFrame::VLine | Q3Frame::Sunken );
+    QFrame *ruleSepFrame = new QFrame( mRuleBox );
+    ruleSepFrame->setFrameStyle( QFrame::VLine | QFrame::Sunken );
   }
 
   mRuleStack = new QStackedWidget( mRuleBox );

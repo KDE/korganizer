@@ -80,7 +80,7 @@ KOProjectView::KOProjectView(Calendar *calendar,QWidget* parent,
   topLayout->addLayout(topBar);
 
   QLabel *title = new QLabel(i18n("Project View"),this);
-  title->setFrameStyle(QFrame::Panel|Q3Frame::Raised);
+  title->setFrameStyle(QFrame::Panel|QFrame::Raised);
   topBar->addWidget(title,1);
 
   QPushButton *zoomIn = new QPushButton(i18n("Zoom In"),this);

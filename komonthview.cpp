@@ -308,13 +308,13 @@ MonthViewCell::MonthViewCell( KOMonthView *parent)
   QVBoxLayout *topLayout = new QVBoxLayout( this );
 
   mLabel = new QLabel( this );
-  mLabel->setFrameStyle( QFrame::Panel | Q3Frame::Plain );
+  mLabel->setFrameStyle( QFrame::Panel | QFrame::Plain );
   mLabel->setLineWidth( 1 );
   mLabel->setAlignment( Qt::AlignCenter );
 
   mItemList = new KNoScrollListBox( this );
   mItemList->setMinimumSize( 10, 10 );
-  mItemList->setFrameStyle( QFrame::Panel | Q3Frame::Plain );
+  mItemList->setFrameStyle( QFrame::Panel | QFrame::Plain );
   mItemList->setLineWidth( 1 );
 
 #warning Port me!
@@ -673,7 +673,7 @@ void MonthViewCell::select()
 
   // don't mess up the cell when it represents today
   if( mDate != QDate::currentDate() ) {
-    mItemList->setFrameStyle( QFrame::Sunken | Q3Frame::Panel );
+    mItemList->setFrameStyle( QFrame::Sunken | QFrame::Panel );
     mItemList->setLineWidth( 3 );
   }
 }
@@ -681,7 +681,7 @@ void MonthViewCell::select()
 void MonthViewCell::deselect()
 {
   mItemList->clearSelection();
-  mItemList->setFrameStyle( QFrame::Plain | Q3Frame::Panel );
+  mItemList->setFrameStyle( QFrame::Plain | QFrame::Panel );
   setFrameWidth();
 
   enableScrollBars( false );
@@ -751,7 +751,7 @@ KOMonthView::KOMonthView( Calendar *calendar, QWidget *parent, const char *name 
   for( i = 0; i < mDaysPerWeek; i++ ) {
     QLabel *label = new QLabel( this );
     label->setFont( bfont );
-    label->setFrameStyle( QFrame::Panel | Q3Frame::Raised );
+    label->setFrameStyle( QFrame::Panel | QFrame::Raised );
     label->setLineWidth( 1 );
     label->setAlignment( Qt::AlignCenter );
 

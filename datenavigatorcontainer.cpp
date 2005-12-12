@@ -47,7 +47,7 @@ DateNavigatorContainer::DateNavigatorContainer( QWidget *parent,
     mHorizontalCount( 1 ), mVerticalCount( 1 )
 {
   mExtraViews.setAutoDelete( true );
-  setFrameStyle( QFrame::Sunken | Q3Frame::StyledPanel );
+  setFrameStyle( QFrame::Sunken | QFrame::StyledPanel );
 
   mNavigatorView = new KDateNavigator( this, name );
   mNavigatorView->setWhatsThis(
