@@ -64,9 +64,9 @@
 #include "exportwebdialog.moc"
 
 
-// FIXME: The basic structure of this dialog has been copied from KPrefsDialog, 
-//        because we want custom buttons, a Tabbed dialog, and a different 
-//        headline... Maybe we should try to achieve the same without code 
+// FIXME: The basic structure of this dialog has been copied from KPrefsDialog,
+//        because we want custom buttons, a Tabbed dialog, and a different
+//        headline... Maybe we should try to achieve the same without code
 //        duplication.
 ExportWebDialog::ExportWebDialog( HTMLExportSettings *settings, QWidget *parent,
                                   const char *name)
@@ -83,7 +83,7 @@ ExportWebDialog::ExportWebDialog( HTMLExportSettings *settings, QWidget *parent,
 
   connect( this, SIGNAL( user1Clicked() ), SLOT( slotOk() ) );
   connect( this, SIGNAL( cancelClicked() ), SLOT( reject() ) );
-  
+
   readConfig();
 }
 
@@ -157,9 +157,9 @@ void ExportWebDialog::setupGeneralPage()
 
   QGroupBox *destGroup = new QVGroupBox(i18n("Destination"), mGeneralPage );
   topLayout->addWidget(destGroup);
-  KPrefsWidPath *pathWid = addWidPath( mSettings->outputFileItem(), 
+  KPrefsWidPath *pathWid = addWidPath( mSettings->outputFileItem(),
                                        destGroup, "text/html", KFile::File );
-  connect( pathWid->urlRequester(), SIGNAL( textChanged( const QString & ) ), 
+  connect( pathWid->urlRequester(), SIGNAL( textChanged( const QString & ) ),
            SLOT( slotTextChanged( const QString & ) ) );
 
   topLayout->addStretch( 1 );
@@ -174,7 +174,7 @@ void ExportWebDialog::setupTodoPage()
 {
   mTodoPage = addPage(i18n("To-dos"));
   QVBoxLayout *topLayout = new QVBoxLayout( mTodoPage, 10 );
-  
+
   QHBox *hbox = new QHBox( mTodoPage );
   topLayout->addWidget( hbox );
   addWidString( mSettings->todoListTitleItem(), hbox );
@@ -182,6 +182,7 @@ void ExportWebDialog::setupTodoPage()
   QVBox *vbox = new QVBox( mTodoPage );
   topLayout->addWidget( vbox );
   addWidBool( mSettings->taskDueDateItem(), vbox );
+  addWidBool( mSettings->taskLocationItem(), vbox );
   addWidBool( mSettings->taskCategoriesItem(), vbox );
   addWidBool( mSettings->taskAttendeesItem(), vbox );
 //  addWidBool( mSettings->taskExcludePrivateItem(), vbox );
@@ -201,6 +202,7 @@ void ExportWebDialog::setupEventPage()
 
   QVBox *vbox = new QVBox( mEventPage );
   topLayout->addWidget( vbox );
+  addWidBool( mSettings->eventLocationItem(), vbox );
   addWidBool( mSettings->eventCategoriesItem(), vbox );
   addWidBool( mSettings->eventAttendeesItem(), vbox );
 //  addWidBool( mSettings->eventExcludePrivateItem(), vbox );
