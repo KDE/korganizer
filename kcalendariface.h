@@ -58,7 +58,7 @@ class KCalendarIface : public DCOPObject
     };
     virtual KCalendarIface::ResourceRequestReply resourceRequest(
                          const QList< QDateTimePair >& busy,
-                         const Q3CString& resource,
+                         const QByteArray& resource,
                          const QString& vCalIn ) = 0;
 
     virtual void openEventEditor( const QString& text ) = 0;

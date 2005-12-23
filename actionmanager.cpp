@@ -69,7 +69,6 @@
 #include <qapplication.h>
 #include <qtimer.h>
 #include <qlabel.h>
-#include <Q3CString>
 
 
 // FIXME: Several places in the file don't use KConfigXT yet!
@@ -1493,7 +1492,7 @@ void ActionManager::setTitle()
 }
 
 KCalendarIface::ResourceRequestReply ActionManager::resourceRequest( const QList<QPair<QDateTime, QDateTime> >&,
- const Q3CString& resource,
+ const QByteArray& resource,
  const QString& vCalIn )
 {
     kdDebug(5850) << k_funcinfo << "resource=" << resource << " vCalIn=" << vCalIn << endl;

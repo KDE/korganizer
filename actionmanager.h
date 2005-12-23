@@ -29,8 +29,6 @@
 #define KORG_ACTIONMANAGER_H
 
 #include <qobject.h>
-//Added by qt3to4:
-#include <Q3CString>
 #include <kurl.h>
 #include <korganizer/part.h>
 #include <kdepimmacros.h>
@@ -169,7 +167,7 @@ class KDE_EXPORT ActionManager : public QObject, public KCalendarIface
     
     //// Implementation of the DCOP interface
     virtual ResourceRequestReply resourceRequest( const QList<QPair<QDateTime, QDateTime> >& busy,
-                                                  const Q3CString& resource,
+                                                  const QByteArray& resource,
                                                   const QString& vCalIn );
 
     void openEventEditor( const QString& );
