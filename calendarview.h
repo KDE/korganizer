@@ -30,7 +30,7 @@
 #include <q3ptrlist.h>
 #include <qmap.h>
 //Added by qt3to4:
-#include <Q3CString>
+#include <QByteArray>
 #include <kfile.h>
 #include <korganizer/koeventviewer.h>
 #include <libkcal/scheduler.h>
@@ -229,7 +229,7 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
   public slots:
     /** options dialog made a changed to the configuration. we catch this
      *  and notify all widgets which need to update their configuration. */
-    void updateConfig( const Q3CString& );
+    void updateConfig( const QByteArray& );
     /** Calendar configuration was changed, so refresh categories list
     */
     void updateCategories();

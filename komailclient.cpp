@@ -43,7 +43,7 @@
 
 #include "komailclient.h"
 //Added by qt3to4:
-#include <Q3CString>
+#include <QByteArray>
 #include <ktoolinvocation.h>
 
 KOMailClient::KOMailClient()
@@ -248,10 +248,10 @@ int KOMailClient::kMailOpenComposer(const QString& arg0,const QString& arg1,
 int KOMailClient::kMailOpenComposer( const QString& arg0, const QString& arg1,
                                      const QString& arg2, const QString& arg3,
                                      const QString& arg4, int arg5, const QString& arg6,
-                                     const Q3CString& arg7, const Q3CString& arg8,
-                                     const Q3CString& arg9, const Q3CString& arg10,
-                                     const Q3CString& arg11, const QString& arg12,
-                                     const Q3CString& arg13, const Q3CString& arg14 )
+                                     const QByteArray& arg7, const QByteArray& arg8,
+                                     const QByteArray& arg9, const QByteArray& arg10,
+                                     const QByteArray& arg11, const QString& arg12,
+                                     const QByteArray& arg13, const QByteArray& arg14 )
 {
     //kdDebug(5850) << "KOMailClient::kMailOpenComposer( "
     //    << arg0 << " , " << arg1 << arg2 << " , " << arg3

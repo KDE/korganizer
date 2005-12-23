@@ -30,7 +30,7 @@
 #include <qdatastream.h>
 #include <qstringlist.h>
 //Added by qt3to4:
-#include <Q3CString>
+#include <QByteArray>
 #include <QPair>
 // yes, this is this very header - but it tells dcopidl to include it
 // in _stub.cpp and _skel.cpp files, to get the definition of the structs.

@@ -39,7 +39,7 @@
 #include <QFrame>
 #include <QEvent>
 #include <QDragMoveEvent>
-#include <Q3CString>
+#include <QByteArray>
 #include <QDragLeaveEvent>
 #include <QVBoxLayout>
 #include <QDropEvent>
@@ -758,7 +758,7 @@ void KOTodoView::restoreListViewState( Q3ListView *listView )
           = dynamic_cast<KOTodoViewItem *>( it.current() ) )
         todoItem->setOpen( mDocPrefs->readBoolEntry( todoItem->todo()->uid() ) );
     listView->setContentsPos( 0, mDocPrefs
-        ->readNumEntry( Q3CString( listView->name() ) + " pos" ) );
+        ->readNumEntry( QByteArray( listView->name() ) + " pos" ) );
     listView->blockSignals( false );
   } else
     kdError( 5850 ) << k_funcinfo << " mDocPrefs doesn't exist" << endl;
@@ -767,7 +767,7 @@ void KOTodoView::restoreListViewState( Q3ListView *listView )
 void KOTodoView::saveListViewState( Q3ListView *listView )
 {
   if ( mDocPrefs ) {
-    mDocPrefs->writeBoolEntry( Q3CString( listView->name() ) + " pos",
+    mDocPrefs->writeBoolEntry( QByteArray( listView->name() ) + " pos",
                            listView->contentsY() );
 
     for ( Q3ListViewItemIterator it( listView ); it.current(); ++it )

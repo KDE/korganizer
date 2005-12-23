@@ -106,7 +106,7 @@
 
 
 //Added by qt3to4:
-#include <Q3CString>
+#include <QByteArray>
 #include <QBoxLayout>
 #include <QVBoxLayout>
 
@@ -639,7 +639,7 @@ void CalendarView::goPrevious()
     mNavigator->selectPrevious();
 }
 
-void CalendarView::updateConfig( const Q3CString& receiver)
+void CalendarView::updateConfig( const QByteArray& receiver)
 {
   if ( receiver != "korganizer" ) return;
   kdDebug(5850) << "CalendarView::updateConfig()" << endl;

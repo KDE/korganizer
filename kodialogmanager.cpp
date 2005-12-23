@@ -46,7 +46,7 @@
 #include "kodialogmanager.h"
 #include "kodialogmanager.moc"
 //Added by qt3to4:
-#include <Q3CString>
+#include <QByteArray>
 #include <Q3PtrList>
 
 
@@ -124,7 +124,7 @@ void KODialogManager::showOptionsDialog()
 //    mOptionsDialog = new KConfigureDialog( KConfigureDialog::Configurable );
 //    mOptionsDialog = new KConfigureDialog( mMainView );
     connect( mOptionsDialog->dialog(),
-             SIGNAL( configCommitted( const Q3CString & ) ),
+             SIGNAL( configCommitted( const QByteArray & ) ),
              mMainView, SLOT( updateConfig() ) );
 #else
     mOptionsDialog = new KCMultiDialog( mMainView, "KorganizerPreferences" );

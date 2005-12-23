@@ -66,7 +66,7 @@
 //Added by qt3to4:
 #include <QTimerEvent>
 #include <QTextStream>
-#include <Q3CString>
+#include <QByteArray>
 
 using namespace KCal;
 
@@ -460,7 +460,7 @@ KURL FreeBusyManager::freeBusyUrl( const QString &email )
   return sourceURL;
 }
 
-KCal::FreeBusy *FreeBusyManager::iCalToFreeBusy( const Q3CString &data )
+KCal::FreeBusy *FreeBusyManager::iCalToFreeBusy( const QByteArray &data )
 {
   kdDebug(5850) << "FreeBusyManager::iCalToFreeBusy()" << endl;
   kdDebug(5850) << data << endl;
