@@ -183,6 +183,7 @@ void ExportWebDialog::setupTodoPage()
   KVBox *vbox = new KVBox( mTodoPage );
   topLayout->addWidget( vbox );
   addWidBool( mSettings->taskDueDateItem(), vbox );
+  addWidBool( mSettings->taskLocationItem(), vbox );
   addWidBool( mSettings->taskCategoriesItem(), vbox );
   addWidBool( mSettings->taskAttendeesItem(), vbox );
 //  addWidBool( mSettings->taskExcludePrivateItem(), vbox );
@@ -202,6 +203,7 @@ void ExportWebDialog::setupEventPage()
 
   KVBox *vbox = new KVBox( mEventPage );
   topLayout->addWidget( vbox );
+  addWidBool( mSettings->eventLocationItem(), vbox );
   addWidBool( mSettings->eventCategoriesItem(), vbox );
   addWidBool( mSettings->eventAttendeesItem(), vbox );
 //  addWidBool( mSettings->eventExcludePrivateItem(), vbox );
