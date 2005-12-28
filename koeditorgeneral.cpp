@@ -131,7 +131,7 @@ void KOEditorGeneral::initSecrecy(QWidget *parent, QBoxLayout *topLayout)
 {
   QBoxLayout *secrecyLayout = new QHBoxLayout( topLayout );
 
-  QLabel *secrecyLabel = new QLabel(i18n("Acc&ess:"),parent);
+  QLabel *secrecyLabel = new QLabel(i18n("S&ensitivity:"),parent);
   secrecyLayout->addWidget(secrecyLabel);
 
   mSecrecyCombo = new QComboBox(parent);
