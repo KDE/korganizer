@@ -519,7 +519,19 @@ void KOEditorDetails::writeEvent(Incidence *event)
   for (item = mListView->firstChild(); item;
        item = item->nextSibling()) {
     a = (AttendeeListItem *)item;
-    event->addAttendee(new Attendee(*(a->data())));
+    Attendee *attendee = a->data();
+    Q_ASSERT( attendee );
+    bool skip = false;
+    if ( attendee->email().endsWith( "example.net" ) ) {
+      if ( KMessageBox::warningYesNo( this, i18n("%1 does not look like a valid email address. "
+              "Are you sure you want to invite this participant?").arg( attendee->email() ),
+            i18n("Invalid email address") ) != KMessageBox::Yes ) {
+        skip = true;
+      }
+    }
+    if ( !skip ) {
+      event->addAttendee( new Attendee( *attendee ) );
+    }
   }
   if ( mOrganizerCombo ) {
     event->setOrganizer( mOrganizerCombo->currentText() );
