@@ -69,13 +69,13 @@
 #include "kocore.h"
 
 template <>
-CustomListViewItem<class Attendee *>::~CustomListViewItem()
+CustomListViewItem<KCal::Attendee *>::~CustomListViewItem()
 {
   delete mData;
 }
 
 template <>
-void CustomListViewItem<class Attendee *>::updateItem()
+void CustomListViewItem<KCal::Attendee *>::updateItem()
 {
   setText(0,mData->name());
   setText(1,mData->email());
@@ -463,7 +463,17 @@ void KOEditorDetails::writeEvent(Incidence *event)
         }
       }
     } else {
-      event->addAttendee( new Attendee( *attendee ) );
+      bool skip = false;
+      if ( attendee->email().endsWith( "example.net" ) ) {
+        if ( KMessageBox::warningYesNo( this, i18n("%1 does not look like a valid email address. "
+                "Are you sure you want to invite this participant?").arg( attendee->email() ),
+              i18n("Invalid email address") ) != KMessageBox::Yes ) {
+          skip = true;
+        }
+      }
+      if ( !skip ) {
+        event->addAttendee( new Attendee( *attendee ) );
+      }
     }
   }
   if ( mOrganizerCombo ) {
