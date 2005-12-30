@@ -705,7 +705,7 @@ void CalendarView::incidenceChanged( Incidence *oldIncidence,
       Todo *todo = static_cast<Todo *>(newIncidence);
       if ( todo->isCompleted() ) {
         QString timeStr = KGlobal::locale()->formatTime( QTime::currentTime() );
-        QString description = i18n( "Todo completed: %1 (%2)" ).arg(
+        QString description = i18n( "To-do completed: %1 (%2)" ).arg(
           newIncidence->summary() ).arg( timeStr );
 
         Journal::List journals = calendar()->journals( QDate::currentDate() );
@@ -2229,7 +2229,7 @@ void CalendarView::addIncidenceOn( Incidence *incadd, const QDate &dt )
 void CalendarView::moveIncidenceTo( Incidence *incmove, const QDate &dt )
 {
   if ( !incmove || !mChanger ) {
-    KMessageBox::sorry( this, i18n("Unable to move the item to  %1.")
+    KMessageBox::sorry( this, i18n("Unable to move the item to %1.")
                         .arg( dt.toString() ), i18n("Moving Failed") );
     return;
   }

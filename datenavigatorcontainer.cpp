@@ -49,7 +49,7 @@ DateNavigatorContainer::DateNavigatorContainer( QWidget *parent,
   mNavigatorView = new KDateNavigator( this, name );
   QWhatsThis::add( mNavigatorView,
                    i18n( "<qt><p>Select the dates you want to "
-                         "display in KOrganizer's main view here. Hold the "
+                         "display in KOrganizer's main view here. Hold down the "
                          "mouse button to select more than one day.</p>"
                          "<p>Press the top buttons to browse to the next "
                          "/ previous months or years.</p>"

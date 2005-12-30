@@ -204,7 +204,7 @@ JournalEntry::JournalEntry( Journal* j, QWidget *parent ) :
   QWhatsThis::add( mTimeCheck, i18n("Determines whether this journal entry has "
                                     "a time associated with it") );
   QWhatsThis::add( mTimeEdit, i18n( "Sets the time associated with this journal "
-                                    " entry" ) );
+                                    "entry" ) );
 
   mDeleteButton = new QToolButton( this, "deleteButton" );
   QPixmap pix = KOGlobals::self()->smallIcon( "editdelete" );

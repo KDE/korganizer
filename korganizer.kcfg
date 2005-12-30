@@ -82,7 +82,7 @@
       <choices>
         <choice name="standardDestination">
           <label>Be added to the standard resource</label>
-          <whatsthis>Select this option to always record a new events, to-dos and journal entries using the standard resource.</whatsthis>
+          <whatsthis>Select this option to always record new events, to-dos and journal entries using the standard resource.</whatsthis>
         </choice>
         <choice name="askDestination">
           <label>Be asked which resource to use</label>
@@ -106,7 +106,7 @@
     </entry>
     <entry type="String" key="user_name" name="UserName">
       <label>Full &amp;name</label>
-      <whatsthis>Enter here your full name. This name will be displayed as "Organizer" in to-dos and events you create.</whatsthis>
+      <whatsthis>Enter your full name here. This name will be displayed as "Organizer" in to-dos and events you create.</whatsthis>
       <default code="true">i18n(&quot;Anonymous&quot;)</default>
     </entry>
     <entry type="String" key="user_email" name="UserEmail">

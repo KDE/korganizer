@@ -490,7 +490,7 @@ void ActionManager::initActions()
   connect( mCalendarView,SIGNAL( groupEventsSelected( bool ) ),
            action,SLOT( setEnabled( bool ) ) );
 
-  action = new KAction( i18n("Send &Cancellation to Attendees"), 0,
+  action = new KAction( i18n("Send &Cancelation to Attendees"), 0,
                         mCalendarView, SLOT( schedule_cancel() ),
                         mACollection, "schedule_cancel" );
   action->setEnabled( false );
