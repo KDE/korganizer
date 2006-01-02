@@ -59,7 +59,7 @@
 #include "kocore.h"
 
 KOTodoEditor::KOTodoEditor( Calendar *calendar, QWidget *parent ) :
-  KOIncidenceEditor( QString::null, calendar, parent )
+  KOIncidenceEditor( QString(), calendar, parent )
 {
   mTodo = 0;
   mRelatedTodo = 0;

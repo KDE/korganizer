@@ -472,14 +472,14 @@ void KOEditorFreeBusy::slotPickDate()
   if( success ) {
     if ( start == mDtStart && end == mDtEnd ) {
       KMessageBox::information( this,
-          i18n( "The meeting already has suitable start/end times." ), QString::null, 
+          i18n( "The meeting already has suitable start/end times." ), QString(), 
           "MeetingTimeOKFreeBusy" );
     } else {
       emit dateTimesChanged( start, end );
       slotUpdateGanttView( start, end );
       KMessageBox::information( this,
           i18n( "The meeting has been moved to\nStart: %1\nEnd: %2." )
-          .arg( start.toString() ).arg( end.toString() ), QString::null,
+          .arg( start.toString() ).arg( end.toString() ), QString(),
           "MeetingMovedFreeBusy" );
     }
   } else

@@ -148,7 +148,7 @@ QIcon KOGlobals::smallIconSet( const QString& name, int size )
 QString KOGlobals::holiday( const QDate &date )
 {
   if ( mHolidays ) return mHolidays->shortText( date );
-  else return QString::null;
+  else return QString();
 }
 
 bool KOGlobals::isWorkDay( const QDate &date )

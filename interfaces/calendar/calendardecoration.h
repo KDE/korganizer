@@ -53,12 +53,12 @@ class CalendarDecoration : public Plugin
     /**
       Return a short text for a given date, ususally only a few words.
     */
-    virtual QString shortText( const QDate & ) { return QString::null; }
+    virtual QString shortText( const QDate & ) { return QString(); }
     /**
       Return along text for a given date. This text can be of any length, but
       usually it will have one or a few paragraphs.
     */
-    virtual QString longText( const QDate & ) { return QString::null; }
+    virtual QString longText( const QDate & ) { return QString(); }
 
     /**
       Return a small pixmap. The size should be something like 30x30 pixels.

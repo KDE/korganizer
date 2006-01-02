@@ -608,7 +608,7 @@ void CalendarView::writeFilterSettings( KConfig *config )
   if ( mCurrentFilter ) {
     config->writeEntry( "Current Filter", mCurrentFilter->name() );
   } else {
-    config->writeEntry( "Current Filter", QString::null );
+    config->writeEntry( "Current Filter", QString() );
   }
 }
 

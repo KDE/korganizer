@@ -63,7 +63,7 @@ bool UriHandler::process( const QString &uri )
     kmailIface.showMail( serialNumberStr.toUInt(), QString() );
     return true;
   } else if ( uri.startsWith( "mailto:" ) ) {
-    KToolInvocation::invokeMailer( uri.mid(7), QString::null );
+    KToolInvocation::invokeMailer( uri.mid(7), QString() );
     return true;
   } else if ( uri.startsWith( KDEPIMPROTOCOL_CONTACT ) ) {
     DCOPClient *client = KApplication::kApplication()->dcopClient();

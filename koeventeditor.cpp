@@ -59,7 +59,7 @@
 #include "koeventeditor.h"
 
 KOEventEditor::KOEventEditor( Calendar *calendar, QWidget *parent )
-  : KOIncidenceEditor( QString::null, calendar, parent ),
+  : KOIncidenceEditor( QString(), calendar, parent ),
     mEvent( 0 )
 {
 }

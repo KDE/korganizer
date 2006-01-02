@@ -48,7 +48,7 @@ int KOMessageBox::fourBtnMsgBox( QWidget *parent, QMessageBox::Icon type,
 
   bool checkboxResult = false;
   int result = KMessageBox::createKMessageBox(dialog, type, text, QStringList(),
-                     QString::null, &checkboxResult, options);
+                     QString(), &checkboxResult, options);
   switch (result) {
     case KDialogBase::Yes: result = KMessageBox::Yes; break;
     case KDialogBase::No: result = KMessageBox::No; break;

@@ -129,7 +129,7 @@ void KOTodoListViewQuickSearch::reset()
 void KOTodoListViewQuickSearch::slotCategoryChanged( int index )
 {
   if ( index == 0 )
-    mQuickSearchLine->setCategory( QString::null );
+    mQuickSearchLine->setCategory( QString() );
   else
     mQuickSearchLine->setCategory( categoryList[index - 1] );
   mQuickSearchLine->updateSearch();
@@ -138,7 +138,7 @@ void KOTodoListViewQuickSearch::slotCategoryChanged( int index )
 void KOTodoListViewQuickSearch::fillCategories()
 {
   QString current = mCategoryCombo->currentItem() > 0 ?
-    categoryList[mCategoryCombo->currentItem() - 1] : QString::null;
+    categoryList[mCategoryCombo->currentItem() - 1] : QString();
   QStringList categories;
 
   CalFilter *filter = mCalendar->filter();

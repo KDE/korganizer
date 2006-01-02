@@ -554,7 +554,7 @@ void KOAgendaItem::addAttendee( const QString &newAttendee )
   } else if (name.contains("@")) {
     mIncidence->addAttendee(new Attendee(name,name));
   } else {
-    mIncidence->addAttendee(new Attendee(name,QString::null));
+    mIncidence->addAttendee(new Attendee(name,QString()));
   }
 }
 

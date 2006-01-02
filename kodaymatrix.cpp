@@ -274,7 +274,7 @@ void KODayMatrix::updateView( const QDate &actdate )
       if ( holiStr.isNull() ) holiStr = "";
       mHolidays[ i ] = holiStr;
     } else {
-      mHolidays[ i ] = QString::null;
+      mHolidays[ i ].clear();
     }
   }
 }

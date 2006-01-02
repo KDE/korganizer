@@ -259,7 +259,7 @@ void KOAgenda::init()
   mItemMoved = false;
 
   mSelectedItem = 0;
-  mSelectedUid = QString::null;
+  mSelectedUid.clear();
 
   setAcceptDrops( true );
   installEventFilter( this );

@@ -164,7 +164,7 @@ void AlarmDockWindow::enableAutostart( bool enable )
 void AlarmDockWindow::mousePressEvent( QMouseEvent *e )
 {
   if ( e->button() == Qt::LeftButton ) {
-    KToolInvocation::startServiceByDesktopName( "korganizer", QString::null );
+    KToolInvocation::startServiceByDesktopName( "korganizer", QString() );
   } else {
     KSystemTray::mousePressEvent( e );
   }

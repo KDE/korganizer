@@ -783,7 +783,7 @@ void KOAgendaView::createDayLabels()
       QString text = KOGlobals::self()->holidays()->shortText( date );
       if ( !text.isEmpty() ) {
         // use a KOAlternateLabel so when the text doesn't fit any more a tooltip is used
-        KOAlternateLabel*label = new KOAlternateLabel( text, text, QString::null, mDayLabels );
+        KOAlternateLabel*label = new KOAlternateLabel( text, text, QString(), mDayLabels );
         label->setMinimumWidth(1);
         label->setAlignment(Qt::AlignCenter);
         dayLayout->addWidget(label);
@@ -797,7 +797,7 @@ void KOAgendaView::createDayLabels()
       QString text = it->shortText( date );
       if ( !text.isEmpty() ) {
         // use a KOAlternateLabel so when the text doesn't fit any more a tooltip is used
-        KOAlternateLabel*label = new KOAlternateLabel( text, text, QString::null, mDayLabels );
+        KOAlternateLabel*label = new KOAlternateLabel( text, text, QString(), mDayLabels );
         label->setMinimumWidth(1);
         label->setAlignment(Qt::AlignCenter);
         dayLayout->addWidget(label);

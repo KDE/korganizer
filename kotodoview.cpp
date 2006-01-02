@@ -1390,7 +1390,7 @@ void KOTodoView::addQuickTodo()
       delete todo;
       return;
     }
-    mQuickAdd->setText( QString::null );
+    mQuickAdd->setText( QString() );
   }
 }
 

@@ -40,16 +40,16 @@ class KOMailClient
     KOMailClient();
     virtual ~KOMailClient();
     
-    bool mailAttendees(IncidenceBase *,const QString &attachment=QString::null);
-    bool mailOrganizer(IncidenceBase *,const QString &attachment=QString::null);
-    bool mailTo(IncidenceBase *,const QString &recipients,const QString &attachment=QString::null);
+    bool mailAttendees(IncidenceBase *,const QString &attachment=QString());
+    bool mailOrganizer(IncidenceBase *,const QString &attachment=QString());
+    bool mailTo(IncidenceBase *,const QString &recipients,const QString &attachment=QString());
 
   protected:
     /** Send mail with specified from, to and subject field and body as text. If
      * bcc is set, send a blind carbon copy to the sender from */
     bool send(const QString &from,const QString &to,const QString &subject,
               const QString &body,bool bcc=false,
-              const QString &attachment=QString::null);
+              const QString &attachment=QString());
 
     int kMailOpenComposer(const QString& to, const QString& cc,
                           const QString& bcc, const QString& subject,

@@ -404,7 +404,7 @@ class KOPrefsDialogTime : public KPrefsModule
         KOPrefs::instance()->mTimeZoneId = mTimeZoneCombo->currentText();
 
       KOPrefs::instance()->mHolidays = ( mHolidayCombo->currentItem() == 0 ) ?  // (None)
-                                       QString::null :
+                                       QString() :
                                        mRegionMap[mHolidayCombo->currentText()];
 
       KOPrefs::instance()->mAlarmTime = mAlarmTimeCombo->currentItem();
@@ -1079,7 +1079,7 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins( KInstance *inst, QWidget *parent )
   QWidget *buttonRow = new QWidget( topFrame );
   QBoxLayout *buttonRowLayout = new QHBoxLayout( buttonRow );
   mConfigureButton = new KPushButton( KGuiItem( i18n("Configure &Plugin..."),
-      "configure", QString::null, i18n("This button allows you to configure"
+      "configure", QString(), i18n("This button allows you to configure"
       " the plugin that you have selected in the list above") ), buttonRow );
 
   buttonRowLayout->addWidget( mConfigureButton );
@@ -1150,7 +1150,7 @@ void KOPrefsDialogPlugins::selectionChanged( Q3ListViewItem *i )
   PluginItem *item = dynamic_cast<PluginItem*>( i );
   if ( !item ) {
     mConfigureButton->setEnabled( false );
-    mDescription->setText( QString::null );
+    mDescription->setText( QString() );
     return;
   }
 

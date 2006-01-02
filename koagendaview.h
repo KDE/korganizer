@@ -121,7 +121,7 @@ class KOAlternateLabel : public QLabel
     Q_OBJECT
   public:
     KOAlternateLabel( const QString &shortlabel, const QString &longlabel,
-                      const QString &extensivelabel = QString::null,
+                      const QString &extensivelabel = QString(),
                       QWidget *parent = 0, const char *name = 0 );
     ~KOAlternateLabel();
 

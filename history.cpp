@@ -59,7 +59,7 @@ void History::undo()
 
   entry = mUndoEntry.current();
   if ( entry ) emit undoAvailable( entry->text() );
-  else emit undoAvailable( QString::null );
+  else emit undoAvailable( QString() );
 }
 
 void History::redo()
@@ -78,7 +78,7 @@ void History::redo()
 
   entry = mRedoEntry.current();
   if ( entry ) emit redoAvailable( entry->text() );
-  else emit redoAvailable( QString::null );
+  else emit redoAvailable( QString() );
 }
 
 void History::truncate()
@@ -87,7 +87,7 @@ void History::truncate()
     mEntries.removeLast();
   }
   mRedoEntry = Q3PtrList<Entry>( mEntries );
-  emit redoAvailable( QString::null );
+  emit redoAvailable( QString() );
 }
 
 void History::recordDelete( Incidence *incidence )

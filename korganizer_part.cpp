@@ -147,7 +147,7 @@ void KOrganizerPart::slotChangeInfo( Incidence *incidence )
     emit textChanged( incidence->summary() + " / " +
                       incidence->dtStartTimeStr() );
   } else {
-    emit textChanged( QString::null );
+    emit textChanged( QString() );
   }
 }
 

@@ -155,7 +155,7 @@ void AlarmDialog::setTimer( int seconds )
 void AlarmDialog::slotUser2()
 {
   if ( !kapp->dcopClient()->isApplicationRegistered( "korganizer" ) ) {
-    if ( KToolInvocation::startServiceByDesktopName( "korganizer", QString::null ) )
+    if ( KToolInvocation::startServiceByDesktopName( "korganizer", QString() ) )
       KMessageBox::error( 0, i18n("Could not start KOrganizer.") );
   }
 

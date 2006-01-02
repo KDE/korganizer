@@ -94,7 +94,7 @@ ResourceItem::ResourceItem( ResourceCalendar *resource, ResourceView *view,
                             KListView *parent )
   : Q3CheckListItem( parent, resource->resourceName(), CheckBox ),
     mResource( resource ), mView( view ), mBlockStateChange( false ),
-    mIsSubresource( false ), mResourceIdentifier( QString::null ),
+    mIsSubresource( false ), mResourceIdentifier( QString() ),
     mSubItemsCreated( false ), mIsStandardResource( false )
 {
   mResourceColor = QColor();

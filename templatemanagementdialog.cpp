@@ -48,7 +48,7 @@
 TemplateManagementDialog::TemplateManagementDialog(QWidget *parent, const QStringList &templates )
     :KDialogBase( parent, "template_management_dialog", true,
                         i18n("Manage Templates"), Ok|Cancel, Ok, true , i18n("Apply Template")),
-      m_templates( templates ), m_newTemplate( QString::null ), m_changed( false )
+      m_templates( templates ), m_newTemplate( QString() ), m_changed( false )
 {
   m_base = new TemplateManagementDialog_base( this, "template_management_dialog_base" );
   setMainWidget( m_base );

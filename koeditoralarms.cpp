@@ -303,7 +303,7 @@ void KOEditorAlarms::writeAlarm( KCal::Alarm *alarm )
           add << KCal::Person( *it );
         }
         // TODO: Add a subject line and possibilities for attachments
-        alarm->setEmailAlarm( QString::null, mWidget.mEmailText->text(),
+        alarm->setEmailAlarm( QString(), mWidget.mEmailText->text(),
                               add );
         break; }
     case 0: // Display

@@ -86,13 +86,13 @@ class KOEditorAttachments : public QWidget
     ~KOEditorAttachments();
 
     void addAttachment( const QString &uri,
-                        const QString &mimeType = QString::null,
-                        const QString &label = QString::null,
+                        const QString &mimeType = QString(),
+                        const QString &label = QString(),
                         bool local = false );
     void addAttachment( KCal::Attachment *attachment );
     void addAttachment( const QByteArray &data, 
-                        const QString &mimeType = QString::null, 
-                        const QString &label = QString::null );
+                        const QString &mimeType = QString(), 
+                        const QString &label = QString() );
 
     /** Set widgets to default values */
     void setDefaults();

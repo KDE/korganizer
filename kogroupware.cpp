@@ -244,7 +244,7 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
     // Ask if the user wants to tell the organizer about the current status
     QString txt = i18n( "Do you want to send a status update to the "
                         "organizer of this task?");
-    rc = KMessageBox::questionYesNo( parent, txt, QString::null, i18n("Send Update"), i18n("Do Not Send") );
+    rc = KMessageBox::questionYesNo( parent, txt, QString(), i18n("Send Update"), i18n("Do Not Send") );
   } else if( incidence->type() == "Event" ) {
     QString txt;
     if ( statusChanged && method == Scheduler::Request ) {
@@ -252,7 +252,7 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
           "changed. Do you want to send a status update to the "
           "organizer of this event?" );
       method = Scheduler::Reply;
-      rc = KMessageBox::questionYesNo( parent, txt, QString::null, i18n("Send Update"), i18n("Do Not Send") );
+      rc = KMessageBox::questionYesNo( parent, txt, QString(), i18n("Send Update"), i18n("Do Not Send") );
     } else {
       if( isDeleting )
         txt = i18n( "You are not the organizer of this event. "

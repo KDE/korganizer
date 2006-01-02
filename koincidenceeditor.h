@@ -102,7 +102,7 @@ class KOIncidenceEditor : public KDialogBase
     virtual void slotTemplatesChanged( const QStringList& );
 
   protected:
-    virtual QString type() { return QString::null; }
+    virtual QString type() { return QString(); }
     virtual QStringList& templates() const = 0;
     virtual void loadTemplate( /*const*/ CalendarLocal& ) = 0;
 

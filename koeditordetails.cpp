@@ -568,7 +568,7 @@ void KOEditorDetails::updateAttendeeInput()
 void KOEditorDetails::clearAttendeeInput()
 {
   mNameEdit->setText("");
-  mUid = QString::null;
+  mUid.clear();
   mRoleCombo->setCurrentItem(0);
   mStatusCombo->setCurrentItem(0);
   mRsvpButton->setChecked(true);

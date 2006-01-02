@@ -86,7 +86,7 @@ class AttachmentIconItem : public KIconViewItem
       if ( att ) {
         mAttachment = new KCal::Attachment( *att );
       } else {
-        mAttachment = new KCal::Attachment( QString::null );
+        mAttachment = new KCal::Attachment( QString() );
       }
       readAttachment();
     }
@@ -494,8 +494,8 @@ void KOEditorAttachments::dropEvent( QDropEvent* event ) {
     QStringList::ConstIterator jt = labels.constBegin();
     for ( KURL::List::ConstIterator it = urls.constBegin(); 
           it != urls.constEnd(); ++it )
-      addAttachment( (*it).url(), QString::null, 
-                     ( jt == labels.constEnd() ? QString::null : *(jt++) ) );
+      addAttachment( (*it).url(), QString(), 
+                     ( jt == labels.constEnd() ? QString() : *(jt++) ) );
   } else if ( 0 == ret ) {
     if ( probablyWeHaveUris )
       for ( KURL::List::ConstIterator it = urls.constBegin();
@@ -514,7 +514,7 @@ void KOEditorAttachments::dropEvent( QDropEvent* event ) {
       }
     else { // we take anything
       KMimeType::Ptr mimeType = KMimeType::mimeType( event->format() );
-      QString path = generateLocalAttachmentPath( QString::null, mimeType );
+      QString path = generateLocalAttachmentPath( QString(), mimeType );
       QFile file( path );
       file.open( QIODevice::WriteOnly );
       QDataStream stream( &file );
@@ -537,7 +537,7 @@ void KOEditorAttachments::downloadComplete( KIO::Job *job )
     job->showErrorDialog( this );
   else
     addAttachment( static_cast<KIO::StoredTransferJob *>( job )->data(), 
-                   QString::null, 
+                   QString(), 
                    static_cast<KIO::SimpleJob *>( job )->url().fileName() );
 }
 #endif
@@ -548,7 +548,7 @@ void KOEditorAttachments::copyComplete( KIO::Job *job )
     job->showErrorDialog( this );
   else {
     addAttachment( static_cast<KIO::CopyJob *>( job )->destURL().url(), 
-                   QString::null, 
+                   QString(), 
                    static_cast<KIO::CopyJob *>( job )->
                                                    srcURLs().first().fileName(),
                    true );
@@ -574,7 +574,7 @@ void KOEditorAttachments::showAttachment( Q3IconViewItem *item )
     KMessageBox::sorry( this, i18n( "Binary attachment, not supported." ) );
 #if 0
     // read-only not to give the idea that it could be written to
-    KTempFile file( QString::null, QString( KMimeType::mimeType( att->mimeType()
+    KTempFile file( QString(), QString( KMimeType::mimeType( att->mimeType()
                                             )->patterns().first() )
                                    .replace( "*", "" ), 0400 );
     *file.dataStream() << att->decodedData();
