@@ -24,6 +24,7 @@
 
 #include <stdlib.h>
 
+#include <kglobal.h>
 #include <kdebug.h>
 #include <klocale.h>
 #include <kcmdlineargs.h>
@@ -79,6 +80,7 @@ int main( int argc, char **argv )
 
   MyApp app;
   app.disableSessionManagement();
+  KGlobal::locale()->insertCatalogue( "libkcal" );
 
   return app.exec();
 }
