@@ -99,7 +99,8 @@ TimeLabels::TimeLabels(int rows,QWidget *parent,const char *name,Qt::WFlags f) :
 
   resizeContents(50, int(mRows * mCellHeight) );
 
-  viewport()->setBackgroundMode( Qt::PaletteBackground );
+  viewport()->setBackgroundRole( QPalette::Background );
+  setBackgroundRole( QPalette::Background );
 
   mMousePos = new QFrame(this);
   mMousePos->setLineWidth(0);
@@ -135,15 +136,18 @@ void TimeLabels::setCellHeight(int height)
 */
 void TimeLabels::drawContents(QPainter *p,int cx, int cy, int cw, int ch)
 {
+  p->setBrush(palette().background());
+  p->drawRect(cx,cy,cw,ch);
+
   // bug:  the parameters cx and cw are the areas that need to be
   //       redrawn, not the area of the widget.  unfortunately, this
   //       code assumes the latter...
 
   // now, for a workaround...
   cx = contentsX() + frameWidth()*2;
-  cw = contentsWidth() ;
-  // end of workaround
+  cw = contentsWidth();
 
+  // end of workaround
   int cell = ((int)(cy/mCellHeight));
   double y = cell * mCellHeight;
   QFontMetrics fm = fontMetrics();
@@ -190,7 +194,6 @@ void TimeLabels::drawContents(QPainter *p,int cx, int cy, int cw, int ch)
       if (cell == 0) hour.setNum(12);
       if (cell > 12) hour.setNum(cell - 12);
     }
-
     // center and draw the time label
     int timeWidth = fm.width(hour);
     int offset = startW - timeWidth - tw2 -1 ;
