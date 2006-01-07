@@ -6,7 +6,7 @@ INCLUDES = \
   -I$(top_srcdir)/libkpimidentities \
   -I$(top_srcdir)/libkholidays \
   -I$(top_srcdir)/mimelib \
-  -I$(top_srcdir)/certmanager/lib \
+  -I$(top_srcdir)/kleopatra/lib \
   -I$(top_srcdir)/korganizer/printing \
   -I$(top_srcdir) \
   -I$(top_builddir) \
