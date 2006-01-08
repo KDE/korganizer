@@ -32,7 +32,7 @@
 #include <qcombobox.h>
 #include <qcheckbox.h>
 #include <q3buttongroup.h>
-#include <q3textedit.h>
+#include <QTextEdit>
 #include <q3widgetstack.h>
 
 #include <kurlrequester.h>

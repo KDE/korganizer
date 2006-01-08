@@ -326,7 +326,7 @@
            </widget>
           </item>
           <item>
-           <widget class="Q3TextEdit" name="mDisplayText" />
+           <widget class="QTextEdit" name="mDisplayText" />
           </item>
          </layout>
         </widget>
@@ -472,7 +472,7 @@
            </widget>
           </item>
           <item row="2" column="0" colspan="2" >
-           <widget class="Q3TextEdit" name="mEmailText" />
+           <widget class="QTextEdit" name="mEmailText" />
           </item>
           <item row="0" column="1" >
            <widget class="KPIM::AddresseeLineEdit" name="mEmailAddress" />
@@ -571,13 +571,6 @@
  <layoutdefault spacing="6" margin="11" />
  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
  <customwidgets>
-  <customwidget>
-   <class>Q3TextEdit</class>
-   <extends></extends>
-   <header>q3textedit.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
   <customwidget>
    <class>KPIM::AddresseeLineEdit</class>
    <extends></extends>
