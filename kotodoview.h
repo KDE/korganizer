@@ -30,9 +30,8 @@
 #include <qmap.h>
 #include <qtooltip.h>
 #include <QMenu>
-//Added by qt3to4:
 #include <QDragLeaveEvent>
-#include <Q3PtrList>
+#include <QList>
 #include <QDragMoveEvent>
 #include <QEvent>
 #include <QDropEvent>
@@ -251,7 +250,7 @@ class KOTodoView : public KOrg::BaseView
     KOTodoViewItem *mActiveItem;
 
     QMap<Todo *,KOTodoViewItem *> mTodoMap;
-    Q3PtrList<KOTodoViewItem> mItemsToDelete;
+    QList<KOTodoViewItem*> mItemsToDelete;
     QList< QPair<KOTodoViewItem *, int> > mPercentChangedMap;
 
     DocPrefs *mDocPrefs;

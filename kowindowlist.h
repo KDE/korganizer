@@ -25,8 +25,7 @@
 #define KOWINDOWLIST_H
 
 #include <qobject.h>
-//Added by qt3to4:
-#include <Q3PtrList>
+#include <QList>
 
 namespace KOrg {
 class MainWindow;
@@ -80,7 +79,7 @@ class KOWindowList : public QObject
     void removeWindow( KOrg::MainWindow * );
 
   private:
-    Q3PtrList<KOrg::MainWindow> mWindowList; // list of all existing KOrganizer instances
+    QList<KOrg::MainWindow*> mWindowList; // list of all existing KOrganizer instances
 
     KOrg::MainWindow *mDefaultWindow;
 };

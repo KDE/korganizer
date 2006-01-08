@@ -33,7 +33,6 @@
 
 #include <QStackedWidget>
 #include <QMenu>
-//Added by qt3to4:
 #include <QBoxLayout>
 #include <QMouseEvent>
 #include <QFrame>
@@ -872,8 +871,7 @@ QMap<Todo *,KOTodoViewItem *>::ConstIterator
 
 void KOTodoView::removeTodoItems()
 {
-  KOTodoViewItem *item;
-  for ( item = mItemsToDelete.first(); item; item = mItemsToDelete.next() ) {
+  foreach ( KOTodoViewItem *item, mItemsToDelete ) {
     Todo *todo = item->todo();
     if ( todo && mTodoMap.contains( todo ) ) {
       mTodoMap.remove( todo );

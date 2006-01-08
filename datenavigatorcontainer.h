@@ -28,7 +28,7 @@
 #include <q3frame.h>
 //Added by qt3to4:
 #include <QResizeEvent>
-#include <Q3PtrList>
+#include <QList>
 
 class KDateNavigator;
 
@@ -86,7 +86,7 @@ class DateNavigatorContainer: public QFrame
 
     KCal::Calendar *mCalendar;
 
-    Q3PtrList<KDateNavigator> mExtraViews;
+    QList<KDateNavigator*> mExtraViews;
 
     int mHorizontalCount;
     int mVerticalCount;

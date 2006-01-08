@@ -27,8 +27,7 @@
 
 #include <kdialogbase.h>
 #include <kurl.h>
-//Added by qt3to4:
-#include <Q3PtrList>
+#include <QList>
 
 class QDateTime;
 
@@ -138,10 +137,10 @@ class KOIncidenceEditor : public KDialogBase
     KOEditorAttachments *mAttachments;
     KOrg::IncidenceChangerBase *mChanger;
 
-    Q3PtrList<KPIM::DesignerFields> mDesignerFields;
+    QList<KPIM::DesignerFields*> mDesignerFields;
     QMap<QWidget*, KPIM::DesignerFields*> mDesignerFieldForWidget;
-    Q3PtrList<QWidget> mEmbeddedURLPages;
-    Q3PtrList<QWidget> mAttachedDesignerFields;
+    QList<QWidget*> mEmbeddedURLPages;
+    QList<QWidget*> mAttachedDesignerFields;
 };
 
 #endif

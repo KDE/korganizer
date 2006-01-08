@@ -337,19 +337,14 @@ KOrg::PrintPlugin::List KOCore::loadPrintPlugins()
 
 void KOCore::unloadPlugins()
 {
-  KOrg::CalendarDecoration *plugin;
-  for( plugin = mCalendarDecorations.first(); plugin;
-       plugin = mCalendarDecorations.next() ) {
-    delete plugin;
-  }
+  qDeleteAll( mCalendarDecorations );
   mCalendarDecorations.clear();
   mCalendarDecorationsLoaded = false;
 }
 
 void KOCore::unloadParts( KOrg::MainWindow *parent, KOrg::Part::List &parts )
 {
-  KOrg::Part *part;
-  for( part = parts.first(); part; part = parts.next() ) {
+  foreach ( KOrg::Part *part, parts ) {
     parent->mainGuiClient()->removeChildClient( part );
     delete part;
   }

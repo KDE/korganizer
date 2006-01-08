@@ -26,13 +26,12 @@
 
 #include <klistview.h>
 #include "customlistviewitem.h"
-//Added by qt3to4:
 #include <QDragEnterEvent>
 #include <QLabel>
 #include <QDragMoveEvent>
 #include <QEvent>
 #include <QDropEvent>
-#include <Q3PtrList>
+#include <QList>
 #include <kvbox.h>
 
 class QPushButton;
@@ -141,7 +140,7 @@ class KOEditorDetails : public QWidget
     QPushButton* mRemoveButton;
     QPushButton* mAddressBookButton;
 
-    Q3PtrList<Attendee> mdelAttendees;
+    QList<Attendee*> mdelAttendees;
 
     KOEditorFreeBusy *mFreeBusy;
 };

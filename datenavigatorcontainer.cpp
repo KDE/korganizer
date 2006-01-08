@@ -37,7 +37,6 @@
 
 
 #include <qtimer.h>
-//Added by qt3to4:
 #include <QFrame>
 #include <QResizeEvent>
 
@@ -46,7 +45,6 @@ DateNavigatorContainer::DateNavigatorContainer( QWidget *parent,
   : QFrame( parent, name ), mCalendar( 0 ),
     mHorizontalCount( 1 ), mVerticalCount( 1 )
 {
-  mExtraViews.setAutoDelete( true );
   setFrameStyle( QFrame::Sunken | QFrame::StyledPanel );
 
   mNavigatorView = new KDateNavigator( this, name );
@@ -66,6 +64,7 @@ DateNavigatorContainer::DateNavigatorContainer( QWidget *parent,
 
 DateNavigatorContainer::~DateNavigatorContainer()
 {
+  qDeleteAll( mExtraViews );
 }
 
 void DateNavigatorContainer::connectNavigatorView( KDateNavigator *v )
@@ -94,10 +93,7 @@ void DateNavigatorContainer::setCalendar( Calendar *cal )
 {
   mCalendar = cal;
   mNavigatorView->setCalendar( cal );
-  KDateNavigator *n;
-  for( n = mExtraViews.first(); n; n = mExtraViews.next() ) {
-    n->setCalendar( cal );
-  }
+  foreach( KDateNavigator *n, mExtraViews ) { if (n) n->setCalendar( cal ); }
 }
 
 // TODO_Recurrence: let the navigators update just once, and tell them that
@@ -106,37 +102,25 @@ void DateNavigatorContainer::setCalendar( Calendar *cal )
 void DateNavigatorContainer::updateDayMatrix()
 {
   mNavigatorView->updateDayMatrix();
-  KDateNavigator *n;
-  for( n = mExtraViews.first(); n; n = mExtraViews.next() ) {
-    n->updateDayMatrix();
-  }
+  foreach ( KDateNavigator *n, mExtraViews ) { if (n) n->updateDayMatrix(); }
 }
 
 void DateNavigatorContainer::updateToday()
 {
   mNavigatorView->updateToday();
-  KDateNavigator *n;
-  for( n = mExtraViews.first(); n; n = mExtraViews.next() ) {
-    n->updateToday();
-  }
+  foreach ( KDateNavigator *n, mExtraViews ) { if (n) n->updateToday(); }
 }
 
 void DateNavigatorContainer::updateView()
 {
   mNavigatorView->updateView();
-  KDateNavigator *n;
-  for( n = mExtraViews.first(); n; n = mExtraViews.next() ) {
-    n->updateView();
-  }
+  foreach ( KDateNavigator *n, mExtraViews ) { if (n) n->updateView(); }
 }
 
 void DateNavigatorContainer::updateConfig()
 {
   mNavigatorView->updateConfig();
-  KDateNavigator *n;
-  for( n = mExtraViews.first(); n; n = mExtraViews.next() ) {
-    n->updateConfig();
-  }
+  foreach ( KDateNavigator *n, mExtraViews ) { if (n) n->updateConfig(); }
 }
 
 void DateNavigatorContainer::selectDates( const DateList &dateList )
@@ -162,10 +146,8 @@ void DateNavigatorContainer::selectDates( const DateList &dateList )
     }
 
     mNavigatorView->selectDates( dateList );
-    KDateNavigator *n = mExtraViews.first();
-    while ( n ) {
-      n->selectDates( dateList );
-      n = mExtraViews.next();
+    foreach ( KDateNavigator *n, mExtraViews ) {
+      if (n) n->selectDates( dateList );
     }
   }
 }
@@ -174,7 +156,7 @@ void DateNavigatorContainer::setBaseDates( const QDate &start )
 {
   QDate baseDate = start;
   mNavigatorView->setBaseDate( baseDate );
-  for( KDateNavigator *n = mExtraViews.first(); n; n = mExtraViews.next() ) {
+  foreach ( KDateNavigator *n, mExtraViews ) {
     baseDate = KOGlobals::self()->calendarSystem()->addMonths( baseDate, 1 );
     n->setBaseDate( baseDate );
   }
@@ -204,7 +186,7 @@ void DateNavigatorContainer::resizeAllContents()
 
   if ( horizontalCount != mHorizontalCount ||
        verticalCount != mVerticalCount ) {
-    uint count = horizontalCount * verticalCount;
+    int count = horizontalCount * verticalCount;
     if ( count == 0 ) return;
 
     while ( count > ( mExtraViews.count() + 1 ) ) {
@@ -215,15 +197,14 @@ void DateNavigatorContainer::resizeAllContents()
     }
 
     while ( count < ( mExtraViews.count() + 1 ) ) {
+      delete ( mExtraViews.last() );
       mExtraViews.removeLast();
     }
 
     mHorizontalCount = horizontalCount;
     mVerticalCount = verticalCount;
     selectDates( mNavigatorView->selectedDates() );
-    for( KDateNavigator *n = mExtraViews.first(); n; n = mExtraViews.next() ) {
-      n->show();
-    }
+    foreach( KDateNavigator *n, mExtraViews ) { if ( n ) n->show(); }
   }
 
   int height = (size().height() - margin*2) / verticalCount;
@@ -236,7 +217,7 @@ void DateNavigatorContainer::resizeAllContents()
   mNavigatorView->setGeometry(
       ( ( (KOGlobals::self()->reverseLayout())?(horizontalCount-1):0) * width ) + margin,
         margin, width, height );
-  for( uint i = 0; i < mExtraViews.count(); ++i ) {
+  for( int i = 0; i < mExtraViews.count(); ++i ) {
     int x = ( i + 1 ) % horizontalCount;
     int y = ( i + 1 ) / horizontalCount;
 

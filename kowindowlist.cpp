@@ -47,7 +47,7 @@ void KOWindowList::addWindow( KOrg::MainWindow *korg )
 void KOWindowList::removeWindow( KOrg::MainWindow *korg )
 {
   if ( korg == mDefaultWindow ) mDefaultWindow = 0;
-  else mWindowList.removeRef( korg );
+  else mWindowList.removeAll( korg );
 }
 
 bool KOWindowList::lastInstance()
@@ -59,10 +59,9 @@ bool KOWindowList::lastInstance()
 
 KOrg::MainWindow *KOWindowList::findInstance( const KURL &url )
 {
-  KOrg::MainWindow *inst;
-  for( inst = mWindowList.first(); inst; inst = mWindowList.next() )
-    if ( inst->getCurrentURL() == url )
-      return inst;
+  foreach ( KOrg::MainWindow *inst, mWindowList ) {
+    if ( inst && inst->getCurrentURL() == url ) return inst;
+  }
   return 0;
 }
 

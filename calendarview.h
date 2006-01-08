@@ -27,10 +27,10 @@
 #define CALENDARVIEW_H
 
 #include <qwidget.h>
-#include <q3ptrlist.h>
 #include <qmap.h>
 //Added by qt3to4:
 #include <QByteArray>
+#include <QList>
 #include <kfile.h>
 #include <korganizer/koeventviewer.h>
 #include <libkcal/scheduler.h>
@@ -596,7 +596,7 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
     DateNavigatorContainer *mDateNavigator;
 
 
-    Q3PtrList<CalendarViewExtension> mExtensions;
+    QList<CalendarViewExtension*> mExtensions;
 
     Calendar *mCalendar;
 
@@ -608,7 +608,7 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
     KODialogManager *mDialogManager;
 
     // Calendar filters
-    Q3PtrList<CalFilter> mFilters;
+    QList<CalFilter*> mFilters;
     CalFilter *mCurrentFilter;
 
     // various housekeeping variables.

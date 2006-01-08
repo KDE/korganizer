@@ -32,7 +32,6 @@
 #include <qlabel.h>
 #include <qsplitter.h>
 #include <kvbox.h>
-//Added by qt3to4:
 #include <QGridLayout>
 
 #include <kprinter.h>
@@ -68,6 +67,7 @@ CalPrinter::~CalPrinter()
   for ( ; it != mPrintPlugins.end(); ++it ) {
     (*it)->doSaveConfig();
   }
+  qDeleteAll(mPrintPlugins);
   mPrintPlugins.clear();
 
   delete mConfig;
@@ -82,7 +82,6 @@ void CalPrinter::init( KPrinter *printer, Calendar *calendar )
   mPrinter = printer;
 
   mPrintPlugins.clear();
-  mPrintPlugins.setAutoDelete( true );
 
   mPrintPlugins = mCoreHelper->loadPrintPlugins();
   mPrintPlugins.prepend( new CalPrintTodos() );

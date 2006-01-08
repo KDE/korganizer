@@ -30,7 +30,7 @@
 //Added by qt3to4:
 #include <QWheelEvent>
 #include <Q3MemArray>
-#include <Q3PtrList>
+#include <QList>
 #include <QEvent>
 #include <QKeyEvent>
 #include <QFrame>
@@ -369,8 +369,8 @@ class KOAgenda : public Q3ScrollView
     bool mItemMoved;
 
     // List of all Items contained in agenda
-    Q3PtrList<KOAgendaItem> mItems;
-    Q3PtrList<KOAgendaItem> mItemsToDelete;
+    QList<KOAgendaItem*> mItems;
+    QList<KOAgendaItem*> mItemsToDelete;
 
     Q3PopupMenu *mItemPopup; // Right mouse button popup menu for KOAgendaItems
 
@@ -379,7 +379,7 @@ class KOAgenda : public Q3ScrollView
 
     bool mTypeAhead;
     QObject *mTypeAheadReceiver;
-    Q3PtrList<QEvent> mTypeAheadEvents;
+    QList<QEvent*> mTypeAheadEvents;
 
     bool mReturnPressed;
     KOrg::IncidenceChangerBase *mChanger;

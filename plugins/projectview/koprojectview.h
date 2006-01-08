@@ -20,12 +20,9 @@
 #define KOPROJECTVIEW_H
 /* $Id$ */
 
-#include <q3ptrlist.h>
 #include <qfontmetrics.h>
 
 #include <qmap.h>
-//Added by qt3to4:
-#include <Q3StrList>
 #include <QLabel>
 
 #include <libkcal/calendar.h>
@@ -39,7 +36,6 @@ class QLineEdit;
 class QFont;
 class QLabel;
 class Q3ListBox;
-class Q3StrList;
 class Q3ListView;
 
 /**

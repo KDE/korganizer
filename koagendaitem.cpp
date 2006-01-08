@@ -25,10 +25,9 @@
 
 #include <q3dragobject.h>
 #include <qpainter.h>
-//Added by qt3to4:
 #include <QPixmap>
 #include <QPaintEvent>
-#include <Q3PtrList>
+#include <QList>
 #include <QDropEvent>
 #include <QDragEnterEvent>
 
@@ -599,24 +598,23 @@ void KOAgendaItem::dropEvent( QDropEvent *e )
 }
 
 
-Q3PtrList<KOAgendaItem> KOAgendaItem::conflictItems()
+QList<KOAgendaItem*> &KOAgendaItem::conflictItems()
 {
   return mConflictItems;
 }
 
-void KOAgendaItem::setConflictItems( Q3PtrList<KOAgendaItem> ci )
+void KOAgendaItem::setConflictItems( QList<KOAgendaItem*> ci )
 {
   mConflictItems = ci;
-  KOAgendaItem *item;
-  for ( item = mConflictItems.first(); item != 0;
-        item = mConflictItems.next() ) {
-    item->addConflictItem( this );
+  QList<KOAgendaItem*>::iterator it;
+  for ( it = mConflictItems.begin(); it != mConflictItems.end(); ++it ) {
+    (*it)->addConflictItem( this );
   }
 }
 
 void KOAgendaItem::addConflictItem( KOAgendaItem *ci )
 {
-  if ( mConflictItems.find( ci ) < 0 ) mConflictItems.append( ci );
+  if ( mConflictItems.contains( ci ) ) mConflictItems.append( ci );
 }
 
 QString KOAgendaItem::label() const

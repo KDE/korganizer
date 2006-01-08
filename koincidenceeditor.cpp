@@ -29,10 +29,9 @@
 #include <q3widgetstack.h>
 #include <qdatetime.h>
 
-//Added by qt3to4:
 #include <QVBoxLayout>
 #include <QBoxLayout>
-#include <Q3PtrList>
+#include <QList>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -295,10 +294,9 @@ class KCalStorage : public KPIM::DesignerFields::Storage
 void KOIncidenceEditor::readDesignerFields( Incidence *i )
 {
   KCalStorage storage( i );
-  KPIM::DesignerFields *fields;
-  for( fields = mDesignerFields.first(); fields;
-       fields = mDesignerFields.next() ) {
-    fields->load( &storage );
+  foreach ( KPIM::DesignerFields *fields, mDesignerFields ) {
+    if ( fields )
+      fields->load( &storage );
   }
 }
 
@@ -307,11 +305,11 @@ void KOIncidenceEditor::writeDesignerFields( Incidence *i )
   kdDebug() << "KOIncidenceEditor::writeDesignerFields()" << endl;
 
   KCalStorage storage( i );
-  KPIM::DesignerFields *fields;
-  for( fields = mDesignerFields.first(); fields;
-       fields = mDesignerFields.next() ) {
-    kdDebug() << "Write Field " << fields->title() << endl;
-    fields->save( &storage );
+  foreach ( KPIM::DesignerFields *fields, mDesignerFields ) {
+    if ( fields ) {
+      kdDebug() << "Write Field " << fields->title() << endl;
+      fields->save( &storage );
+    }
   }
 }
 
@@ -341,20 +339,18 @@ void KOIncidenceEditor::createEmbeddedURLPages( Incidence *i )
   if ( !i ) return;
   if ( !mEmbeddedURLPages.isEmpty() ) {
 kdDebug() << "mEmbeddedURLPages are not empty, clearing it!" << endl;
-    mEmbeddedURLPages.setAutoDelete( true );
+    qDeleteAll( mEmbeddedURLPages );
     mEmbeddedURLPages.clear();
-    mEmbeddedURLPages.setAutoDelete( false );
   }
   if ( !mAttachedDesignerFields.isEmpty() ) {
-    for ( Q3PtrList<QWidget>::Iterator it = mAttachedDesignerFields.begin();
+    for ( QList<QWidget*>::Iterator it = mAttachedDesignerFields.begin();
           it != mAttachedDesignerFields.end(); ++it ) {
       if ( mDesignerFieldForWidget.contains( *it ) ) {
         mDesignerFields.remove( mDesignerFieldForWidget[ *it ] );
       }
     }
-    mAttachedDesignerFields.setAutoDelete( true );
+    qDeleteAll( mAttachedDesignerFields );
     mAttachedDesignerFields.clear();
-    mAttachedDesignerFields.setAutoDelete( false );
   }
 
   Attachment::List att = i->attachments();

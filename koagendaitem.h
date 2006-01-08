@@ -29,12 +29,11 @@
 
 #include <qdatetime.h>
 #include <qwidget.h>
-//Added by qt3to4:
 #include <QDragEnterEvent>
 #include <QPixmap>
 #include <QDropEvent>
 #include <QPaintEvent>
-#include <Q3PtrList>
+#include <QList>
 
 class QDragEnterEvent;
 class QDropEvent;
@@ -136,9 +135,9 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     void setText ( const QString & text ) { mLabelText = text; }
     QString text () { return mLabelText; }
 
-    Q3PtrList<KOAgendaItem> conflictItems();
-    void setConflictItems(Q3PtrList<KOAgendaItem>);
-    void addConflictItem(KOAgendaItem *ci);
+    QList<KOAgendaItem*> &conflictItems();
+    void setConflictItems( QList<KOAgendaItem*> );
+    void addConflictItem( KOAgendaItem *ci );
 
     QString label() const;
 
@@ -196,7 +195,7 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
   private:
 
     bool mSelected;
-    Q3PtrList<KOAgendaItem> mConflictItems;
+    QList<KOAgendaItem*> mConflictItems;
 
     static QPixmap *alarmPxmp;
     static QPixmap *recurPxmp;

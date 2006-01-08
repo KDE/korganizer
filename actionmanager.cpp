@@ -1474,9 +1474,8 @@ void ActionManager::keyBindings()
   if ( mMainWindow )
     dlg.insert( mMainWindow->getActionCollection() );
 
-  KOrg::Part *part;
-  for ( part = mParts.first(); part; part = mParts.next() ) {
-    dlg.insert( part->actionCollection(), part->shortInfo() );
+  foreach ( KOrg::Part *part, mParts ) {
+    if ( part ) dlg.insert( part->actionCollection(), part->shortInfo() );
   }
   dlg.configure();
 }

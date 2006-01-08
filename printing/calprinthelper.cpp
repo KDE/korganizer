@@ -27,7 +27,7 @@
 #include <qlayout.h>
 #include <q3frame.h>
 #include <qlabel.h>
-#include <q3ptrlist.h>
+#include <QList>
 #include <q3intdict.h>
 
 #include <kglobal.h>
@@ -465,8 +465,7 @@ void CalPrintHelper::drawAgendaDayBox( QPainter &p, Event::List &events,
   // Calculate horizontal positions and widths of events taking into account
   // overlapping events
 
-  Q3PtrList<KOrg::CellItem> cells;
-  cells.setAutoDelete( true );
+  QList<KOrg::CellItem*> cells;
 
   Event::List::ConstIterator itEvents;
   for( itEvents = events.begin(); itEvents != events.end(); ++itEvents ) {
@@ -477,12 +476,12 @@ void CalPrintHelper::drawAgendaDayBox( QPainter &p, Event::List &events,
     }
   }
 
-  Q3PtrListIterator<KOrg::CellItem> it1( cells );
-  for( it1.toFirst(); it1.current(); ++it1 ) {
-    KOrg::CellItem *placeItem = it1.current();
-
+  QList<KOrg::CellItem*>::iterator it;
+  for ( it = cells.begin(); it != cells.end(); ++it ) {
+    KOrg::CellItem *placeItem = (*it);
     KOrg::CellItem::placeItem( cells, placeItem );
   }
+  qDeleteAll( cells );
 
   QPen oldPen( p.pen() );
   QColor oldBgColor( p.backgroundColor() );
@@ -492,8 +491,9 @@ void CalPrintHelper::drawAgendaDayBox( QPainter &p, Event::List &events,
   p.setFont( QFont( "helvetica", 10 ) );
   p.setBrush( QBrush( Qt::Dense7Pattern ) );
 
-  for( it1.toFirst(); it1.current(); ++it1 ) {
-    PrintCellItem *placeItem = static_cast<PrintCellItem *>( it1.current() );
+  
+  for( it = cells.begin(); it != cells.end(); ++it ) {
+    PrintCellItem *placeItem = static_cast<PrintCellItem *>( *it );
 
     drawAgendaItem( placeItem, p, qd, startPrintDate, endPrintDate, minlen, x,
                     y, width );
@@ -803,7 +803,7 @@ void CalPrintHelper::drawTodo( int &count, Todo *todo, QPainter &p,
 
   // This list keeps all starting points of the parent to-dos so the connection
   // lines of the tree can easily be drawn (needed if a new page is started)
-  static Q3PtrList<TodoParentStart> startPoints;
+  static QList<TodoParentStart*> startPoints;
   if ( level < 1 ) {
     startPoints.clear();
   }
@@ -827,7 +827,9 @@ void CalPrintHelper::drawTodo( int &count, Todo *todo, QPainter &p,
     // first draw the connection lines from parent to-dos:
     if ( level > 0 && connectSubTodos ) {
       TodoParentStart *rct;
-      for ( rct = startPoints.first(); rct; rct = startPoints.next() ) {
+      QList<TodoParentStart*>::iterator it;
+      for ( it = startPoints.begin(); it != startPoints.end(); ++it  ) {
+        TodoParentStart* tct = *it;
         int start;
         int center = rct->mRect.left() + (rct->mRect.width()/2);
         int to = p.viewport().bottom();

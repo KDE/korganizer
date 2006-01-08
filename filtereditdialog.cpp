@@ -31,8 +31,7 @@
 #include <qradiobutton.h>
 #include <q3listbox.h>
 
-//Added by qt3to4:
-#include <Q3PtrList>
+#include <QList>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -48,7 +47,7 @@
 #include "filtereditdialog.h"
 #include "filtereditdialog.moc"
 
-FilterEditDialog::FilterEditDialog( Q3PtrList<CalFilter> *filters,
+FilterEditDialog::FilterEditDialog( QList<CalFilter*> *filters,
                                     QWidget *parent, const char *name)
   : KDialogBase( parent, name, false, i18n("Edit Calendar Filters"),
                  Ok | Apply | Cancel )
@@ -94,7 +93,7 @@ void FilterEditDialog::setDialogConsistent(bool consistent) {
     enableButtonApply( consistent );
 }
 
-FilterEdit::FilterEdit(Q3PtrList<CalFilter> *filters, QWidget *parent)
+FilterEdit::FilterEdit(QList<CalFilter*> *filters, QWidget *parent)
   : QWidget( parent ), current(0), mCategorySelectDialog( 0 )
 {
   setupUi( this );
@@ -117,25 +116,23 @@ void FilterEdit::updateFilterList()
 {
   mRulesList->clear();
 
-  CalFilter *filter = mFilters->first();
-
-  if ( !filter )
-    emit(dataConsistent(false));
+  if ( mFilters || mFilters->empty() )
+    emit( dataConsistent(false) );
   else {
-    while( filter ) {
-      mRulesList->insertItem( filter->name() );
-      filter = mFilters->next();
+    QList<CalFilter*>::iterator i;
+    for ( i = mFilters->begin(); i != mFilters->end(); ++i ) {
+      if ( *i ) { mRulesList->insertItem( (*i)->name() ); }
     }
 
     CalFilter *f = mFilters->at( mRulesList->currentItem() );
     if ( f ) filterSelected( f );
 
-    emit(dataConsistent(true));
+    emit( dataConsistent(true) );
   }
 
-  if(current == 0L && mFilters->count() > 0)
-    filterSelected(mFilters->at(0));
-  mDeleteButton->setEnabled( mFilters->count() > 1 );
+  if ( mFilters && current == 0L && mFilters->count() > 0 )
+    filterSelected( mFilters->at(0) );
+  mDeleteButton->setEnabled( !mFilters->isEmpty() );
 }
 
 void FilterEdit::saveChanges()
@@ -163,7 +160,7 @@ void FilterEdit::saveChanges()
 
 void FilterEdit::filterSelected()
 {
-  filterSelected(mFilters->at(mRulesList->currentItem()));
+  filterSelected( mFilters->at(mRulesList->currentItem()) );
 }
 
 void FilterEdit::filterSelected(CalFilter *filter)
@@ -202,7 +199,7 @@ void FilterEdit::bNewPressed() {
 
 void FilterEdit::bDeletePressed() {
   if ( mRulesList->currentItem() < 0 ) return; // nothing selected
-  if ( mFilters->count() <= 1 ) return; // We need at least a default filter object.
+  if ( mFilters->isEmpty() ) return; // We need at least a default filter object.
 
   int result = KMessageBox::warningContinueCancel( this,
      i18n("This item will be permanently deleted."), i18n("Delete Confirmation"), KGuiItem(i18n("Delete"),"editdelete") );
@@ -211,7 +208,9 @@ void FilterEdit::bDeletePressed() {
     return;
 
   unsigned int selected = mRulesList->currentItem();
-  mFilters->remove( selected );
+  CalFilter *filter = mFilters->at( selected );
+  mFilters->removeAll( filter );
+  delete filter;
   current = 0L;
   updateFilterList();
   mRulesList->setSelected(qMin(mRulesList->count()-1, selected), true);
@@ -223,12 +222,11 @@ void FilterEdit::updateSelectedName(const QString &newText) {
   mRulesList->changeItem(newText, mRulesList->currentItem());
   mRulesList->blockSignals( false );
   bool allOk = true;
-  CalFilter *filter = mFilters->first();
-  while( allOk && filter ) {
-    if(filter->name().isEmpty())
-     allOk = false;
-    filter = mFilters->next();
+
+  foreach ( CalFilter *i, *mFilters ) {
+    if ( i && i->name().isEmpty() ) allOk = false;
   }
+
   emit dataConsistent(allOk);
 }
 

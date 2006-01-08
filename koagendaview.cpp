@@ -795,9 +795,9 @@ void KOAgendaView::createDayLabels()
 
 #ifndef KORG_NOPLUGINS
     CalendarDecoration::List cds = KOCore::self()->calendarDecorations();
-    CalendarDecoration *it;
-    for(it = cds.first(); it; it = cds.next()) {
-      QString text = it->shortText( date );
+    CalendarDecoration::List::iterator it;
+    for ( it = cds.begin(); it!= cds.end(); ++it ) {
+      QString text = (*it)->shortText( date );
       if ( !text.isEmpty() ) {
         // use a KOAlternateLabel so when the text doesn't fit any more a tooltip is used
         KOAlternateLabel*label = new KOAlternateLabel( text, text, QString(), mDayLabels );
@@ -807,8 +807,8 @@ void KOAgendaView::createDayLabels()
       }
     }
 
-    for(it = cds.first(); it; it = cds.next()) {
-      QWidget *wid = it->smallWidget(mDayLabels,date);
+    for(it = cds.begin(); it != cds.end(); ++it ) {
+      QWidget *wid = (*it)->smallWidget( mDayLabels, date );
       if ( wid ) {
 //      wid->setHeight(20);
         dayLayout->addWidget(wid);

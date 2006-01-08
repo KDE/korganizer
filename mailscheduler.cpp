@@ -27,7 +27,7 @@
 #include <qregexp.h>
 //Added by qt3to4:
 #include <QTextStream>
-#include <Q3PtrList>
+#include <QList>
 
 #include <kstandarddirs.h>
 #include <kdebug.h>
@@ -88,13 +88,13 @@ bool MailScheduler::performTransaction( IncidenceBase *incidence,
   return status;
 }
 
-Q3PtrList<ScheduleMessage> MailScheduler::retrieveTransactions()
+QList<ScheduleMessage*> MailScheduler::retrieveTransactions()
 {
   QString incomingDirName = locateLocal( "data", "korganizer/income" );
   kdDebug(5850) << "MailScheduler::retrieveTransactions: dir: "
                 << incomingDirName << endl;
 
-  Q3PtrList<ScheduleMessage> messageList;
+  QList<ScheduleMessage*> messageList;
 
   QDir incomingDir( incomingDirName );
   QStringList incoming = incomingDir.entryList( QDir::Files );

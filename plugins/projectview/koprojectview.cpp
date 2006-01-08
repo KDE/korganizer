@@ -28,7 +28,7 @@
 #include <q3strlist.h>
 #include <q3listview.h>
 //Added by qt3to4:
-#include <Q3PtrList>
+#include <QList>
 #include <QFrame>
 #include <QHBoxLayout>
 #include <QBoxLayout>
@@ -150,13 +150,11 @@ void KOProjectView::updateView()
   kdDebug(5850) << "KOProjectView::updateView()" << endl;
 
   // Clear Gantt view
-  Q3PtrList<KGanttItem> subs = mMainTask->getSubItems();
-  KGanttItem *t=subs.first();
-  while(t) {
-    KGanttItem *nt=subs.next();
-    delete t;
-    t = nt;
-  }
+  QList<KGanttItem*> subs = mMainTask->getSubItems();
+  QList<KGanttItem*>::iterator it;
+  for ( it = subs.begin(); it != subs.end(); ++it ) {
+  while (!subs.isEmpty())
+    delete subs.takeFirst();
 
 #if 0
   KGanttItem* t1 = new KGanttItem(mGantt->getMainTask(), "task 1, no subtasks",

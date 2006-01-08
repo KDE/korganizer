@@ -45,9 +45,8 @@
 
 #include "kodialogmanager.h"
 #include "kodialogmanager.moc"
-//Added by qt3to4:
 #include <QByteArray>
-#include <Q3PtrList>
+#include <QList>
 
 
 // FIXME: Handle KOEventViewerDialogs in dialog manager. Pass
@@ -204,7 +203,7 @@ void KODialogManager::showArchiveDialog()
 #endif
 }
 
-void KODialogManager::showFilterEditDialog( Q3PtrList<CalFilter> *filters )
+void KODialogManager::showFilterEditDialog( QList<CalFilter*> *filters )
 {
   if ( !mFilterEditDialog ) {
     mFilterEditDialog = new FilterEditDialog( filters, mMainView );

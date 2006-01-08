@@ -97,7 +97,7 @@
 #include <q3multilineedit.h>
 #include <qtimer.h>
 #include <QStackedWidget>
-#include <q3ptrlist.h>
+#include <QList>
 #include <qfile.h>
 #include <qlayout.h>
 #ifndef KORG_NOSPLITTER
@@ -132,10 +132,6 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
   mSelectedIncidence = 0;
 
   mCalPrinter = 0;
-
-  mFilters.setAutoDelete( true );
-
-  mExtensions.setAutoDelete( true );
 
   mNavigator = new DateNavigator( this );
   mDateChecker = new DateChecker( this );
@@ -299,6 +295,8 @@ CalendarView::~CalendarView()
   kdDebug(5850) << "~CalendarView()" << endl;
 
   mCalendar->unregisterObserver( this );
+  qDeleteAll( mFilters );
+  qDeleteAll( mExtensions );
 
   delete mDialogManager;
   delete mViewManager;
@@ -554,6 +552,7 @@ void CalendarView::readFilterSettings( KConfig *config )
 {
 //  kdDebug(5850) << "CalendarView::readFilterSettings()" << endl;
 
+  qDeleteAll( mFilters );
   mFilters.clear();
 
   config->setGroup( "General" );
@@ -593,15 +592,13 @@ void CalendarView::writeFilterSettings( KConfig *config )
 
   QStringList filterList;
 
-  CalFilter *filter = mFilters.first();
-  while( filter ) {
+  foreach ( CalFilter *filter, mFilters ) {
 //    kdDebug(5850) << " fn: " << filter->name() << endl;
     filterList << filter->name();
     config->setGroup( "Filter_" + filter->name() );
     config->writeEntry( "Criteria", filter->criteria() );
     config->writeEntry( "CategoryList", filter->categoryList() );
     config->writeEntry( "HideTodoDays", filter->completedTimeSpan() );
-    filter = mFilters.next();
   }
   config->setGroup( "General" );
   config->writeEntry( "CalendarFilters", filterList );
@@ -1649,10 +1646,8 @@ void CalendarView::editFilters()
 {
   kdDebug(5850) << "CalendarView::editFilters()" << endl;
 
-  CalFilter *filter = mFilters.first();
-  while(filter) {
-    kdDebug(5850) << " Filter: " << filter->name() << endl;
-    filter = mFilters.next();
+  foreach ( CalFilter *filter, mFilters ) {
+    if ( filter ) kdDebug(5850) << " Filter: " << filter->name() << endl;
   }
 
   mDialogManager->showFilterEditDialog(&mFilters);
@@ -1665,14 +1660,14 @@ void CalendarView::updateFilter()
   QStringList filters;
   CalFilter *filter;
 
-  int pos = mFilters.find( mCurrentFilter );
+  int pos = mFilters.indexOf( mCurrentFilter );
   if ( pos < 0 ) {
     mCurrentFilter = 0;
   }
 
   filters << i18n("No filter");
-  for ( filter = mFilters.first(); filter; filter = mFilters.next() ) {
-    filters << filter->name();
+  foreach ( filter, mFilters ) {
+    if ( filter ) filters << filter->name();
   }
 
   emit newFilterListSignal( filters );

@@ -37,7 +37,7 @@
 #include <QWheelEvent>
 #include <QPixmap>
 #include <Q3MemArray>
-#include <Q3PtrList>
+#include <QList>
 #include <QEvent>
 #include <QKeyEvent>
 #include <QFrame>
@@ -263,8 +263,9 @@ void KOAgenda::init()
 
   setAcceptDrops( true );
   installEventFilter( this );
-  mItems.setAutoDelete( true );
-  mItemsToDelete.setAutoDelete( true );
+#warning "make sure we can really remove this"
+//   mItems.setAutoDelete( true );
+//   mItemsToDelete.setAutoDelete( true );
 
   resizeContents( int( mGridSpacingX * mColumns ),
                   int( mGridSpacingY * mRows ) );
@@ -307,10 +308,9 @@ void KOAgenda::clear()
 {
 //  kdDebug(5850) << "KOAgenda::clear()" << endl;
 
-  KOAgendaItem *item;
-  for ( item = mItems.first(); item != 0; item = mItems.next() ) {
-    removeChild( item );
-  }
+  foreach( KOAgendaItem *item, mItems ) { removeChild(item); }
+  qDeleteAll( mItems );
+  qDeleteAll( mItemsToDelete );
   mItems.clear();
   mItemsToDelete.clear();
 
@@ -529,12 +529,12 @@ void KOAgenda::finishTypeAhead()
 {
 //  kdDebug(5850) << "KOAgenda::finishTypeAhead()" << endl;
   if ( typeAheadReceiver() ) {
-    for( QEvent *e = mTypeAheadEvents.first(); e;
-         e = mTypeAheadEvents.next() ) {
+    foreach( QEvent *e, mTypeAheadEvents ) {
 //      kdDebug(5850) << "sendEvent() " << int( typeAheadReceiver() ) << endl;
       QApplication::sendEvent( typeAheadReceiver(), e );
     }
   }
+  qDeleteAll( mTypeAheadEvents );
   mTypeAheadEvents.clear();
   mTypeAhead = false;
 }
@@ -973,7 +973,7 @@ void KOAgenda::performItemAction(const QPoint& viewportPos)
             // erase current item (i.e. remove it from the multiItem list)
             firstItem = moveItem->nextMultiItem();
             moveItem->hide();
-            mItems.take( mItems.find( moveItem ) );
+            mItems.removeAll( moveItem );
             removeChild( moveItem );
             mActionItem->removeMoveItem(moveItem);
             moveItem=firstItem;
@@ -990,7 +990,7 @@ void KOAgenda::performItemAction(const QPoint& viewportPos)
             // erase current item
             lastItem = moveItem->prevMultiItem();
             moveItem->hide();
-            mItems.take( mItems.find(moveItem) );
+            mItems.removeAll( moveItem );
             removeChild( moveItem );
             moveItem->removeMoveItem( moveItem );
             moveItem = lastItem;
@@ -1143,11 +1143,10 @@ void KOAgenda::endItemAction()
 
       KOAgendaItem *modif = placeItem;
 
-      Q3PtrList<KOAgendaItem> oldconflictItems = placeItem->conflictItems();
-      KOAgendaItem *item;
-      for ( item = oldconflictItems.first(); item != 0;
-            item = oldconflictItems.next() ) {
-        placeSubCells( item );
+      QList<KOAgendaItem*> oldconflictItems = placeItem->conflictItems();
+      QList<KOAgendaItem*>::iterator it;
+      for ( it = oldconflictItems.begin(); it != oldconflictItems.end(); ++it ) {
+        placeSubCells( *it );
       }
       while ( placeItem ) {
         placeSubCells( placeItem );
@@ -1307,20 +1306,16 @@ void KOAgenda::placeSubCells( KOAgendaItem *placeItem )
   kdDebug(5850) << "KOAgenda::placeSubCells()..." << endl;
 #endif
 
-  Q3PtrList<KOrg::CellItem> cells;
-  KOAgendaItem *item;
-  for ( item = mItems.first(); item != 0; item = mItems.next() ) {
-    cells.append( item );
-  }
+  QList<KOrg::CellItem*> cells;
+  foreach( KOrg::CellItem* item, mItems ) { cells.append(item); }
 
-  Q3PtrList<KOrg::CellItem> items = KOrg::CellItem::placeItem( cells,
-                                                              placeItem );
+  QList<KOrg::CellItem*> items = KOrg::CellItem::placeItem( cells, placeItem );
 
-  placeItem->setConflictItems( Q3PtrList<KOAgendaItem>() );
+  placeItem->setConflictItems( QList<KOAgendaItem*>() );
   double newSubCellWidth = calcSubCellWidth( placeItem );
-  KOrg::CellItem *i;
-  for ( i = items.first(); i; i = items.next() ) {
-    item = static_cast<KOAgendaItem *>( i );
+  QList<KOrg::CellItem*>::iterator it;
+  for ( it = items.begin(); it != items.end(); ++it ) {
+    KOAgendaItem *item = static_cast<KOAgendaItem *>( *it );
     placeAgendaItem( item, newSubCellWidth );
     item->addConflictItem( placeItem );
     placeItem->addConflictItem( item );
@@ -1520,12 +1515,11 @@ Q3MemArray<int> KOAgenda::minContentsY()
 {
   Q3MemArray<int> minArray;
   minArray.fill( timeToY( QTime(23, 59) ), mSelectedDates.count() );
-  for ( KOAgendaItem *item = mItems.first();
-        item != 0; item = mItems.next() ) {
+  foreach( KOAgendaItem *item, mItems ) {
     int ymin = item->cellYTop();
     int index = item->cellXLeft();
     if ( index>=0 && index<(int)(mSelectedDates.count()) ) {
-      if ( ymin < minArray[index] && mItemsToDelete.findRef( item ) == -1 )
+      if ( ymin < minArray[index] && !mItemsToDelete.contains( item ) )
         minArray[index] = ymin;
     }
   }
@@ -1537,12 +1531,11 @@ Q3MemArray<int> KOAgenda::maxContentsY()
 {
   Q3MemArray<int> maxArray;
   maxArray.fill( timeToY( QTime(0, 0) ), mSelectedDates.count() );
-  for ( KOAgendaItem *item = mItems.first();
-        item != 0; item = mItems.next() ) {
+  foreach( KOAgendaItem *item, mItems ) {
     int ymax = item->cellYBottom();
     int index = item->cellXLeft();
     if ( index>=0 && index<(int)(mSelectedDates.count()) ) {
-      if ( ymax > maxArray[index] && mItemsToDelete.findRef( item ) == -1 )
+      if ( ymax > maxArray[index] && !mItemsToDelete.contains( item )  )
         maxArray[index] = ymax;
     }
   }
@@ -1665,7 +1658,7 @@ void KOAgenda::insertMultiItem (Event *event,const QDate &qd,int XBegin,int XEnd
   int width = XEnd - XBegin + 1;
   int count = 0;
   KOAgendaItem *current = 0;
-  Q3PtrList<KOAgendaItem> multiItems;
+  QList<KOAgendaItem*> multiItems;
   int visibleCount = mSelectedDates.first().daysTo(mSelectedDates.last());
   for ( cellX = XBegin; cellX <= XEnd; ++cellX ) {
     ++count;
@@ -1684,22 +1677,20 @@ void KOAgenda::insertMultiItem (Event *event,const QDate &qd,int XBegin,int XEnd
     }
   }
 
-  KOAgendaItem *next = 0;
-  KOAgendaItem *prev = 0;
-  KOAgendaItem *last = multiItems.last();
+  QList<KOAgendaItem*>::iterator it;
+  QList<KOAgendaItem*>::iterator b = multiItems.begin();
+  QList<KOAgendaItem*>::iterator e = multiItems.end();
   KOAgendaItem *first = multiItems.first();
-  KOAgendaItem *setFirst,*setLast;
-  current = first;
-  while (current) {
-    next = multiItems.next();
-    if (current == first) setFirst = 0;
-    else setFirst = first;
-    if (current == last) setLast = 0;
-    else setLast = last;
+  KOAgendaItem *last = multiItems.last();
+  KOAgendaItem *prev = 0, *next = 0;
 
-    current->setMultiItem(setFirst, prev, next, setLast);
-    prev=current;
-    current = next;
+  while ( it != e ) {
+    KOAgendaItem *item = *it;
+    ++it;
+    next = (it==e)?0:(*it);
+    if ( item )
+      item->setMultiItem( (item == first)?0:first, prev, next, (item==last)?0:last  );
+    prev = item;
   }
 
   marcus_bains();
@@ -1709,20 +1700,18 @@ void KOAgenda::removeIncidence( Incidence *incidence )
 {
   // First find all items to be deleted and store them
   // in its own list. Otherwise removeAgendaItem will reset
-  // the current position and mess this up.
-  Q3PtrList<KOAgendaItem> itemsToRemove;
+  // the current position in the iterator-loop and mess the logic up.
+  QList<KOAgendaItem*> itemsToRemove;
+  KOAgendaItem *item;
 
-  KOAgendaItem *item = mItems.first();
-  while ( item ) {
-    if ( item->incidence() == incidence ) {
+  foreach( item, mItems ) {
+    if ( item && item->incidence() == incidence ) {
       itemsToRemove.append( item );
     }
-    item = mItems.next();
   }
-  item = itemsToRemove.first();
-  while ( item ) {
+
+  foreach( item, itemsToRemove ) {
     removeAgendaItem( item );
-    item = itemsToRemove.next();
   }
 }
 
@@ -1731,7 +1720,7 @@ void KOAgenda::showAgendaItem( KOAgendaItem *agendaItem )
   if ( !agendaItem ) return;
   agendaItem->hide();
   addChild( agendaItem );
-  if ( !mItems.containsRef( agendaItem ) )
+  if ( !mItems.contains( agendaItem ) )
     mItems.append( agendaItem );
   placeSubCells( agendaItem );
 
@@ -1743,19 +1732,15 @@ bool KOAgenda::removeAgendaItem( KOAgendaItem *item )
   // we found the item. Let's remove it and update the conflicts
   bool taken = false;
   KOAgendaItem *thisItem = item;
-  Q3PtrList<KOAgendaItem> conflictItems = thisItem->conflictItems();
+  QList<KOAgendaItem*> conflictItems = thisItem->conflictItems();
   removeChild( thisItem );
-  int pos = mItems.find( thisItem );
-  if ( pos>=0 ) {
-    mItems.take( pos );
-    taken = true;
-  }
 
-  KOAgendaItem *confitem;
-  for ( confitem = conflictItems.first(); confitem != 0;
-        confitem = conflictItems.next() ) {
+  taken = ( mItems.removeAll( thisItem ) > 0 );
+
+  QList<KOAgendaItem*>::iterator it;
+  for ( it = conflictItems.begin(); it != conflictItems.end(); ++it ) {
     // the item itself is also in its own conflictItems list!
-    if ( confitem != thisItem ) placeSubCells(confitem);
+    if ( *it != thisItem ) placeSubCells( *it );
 
   }
   mItemsToDelete.append( thisItem );
@@ -1765,6 +1750,7 @@ bool KOAgenda::removeAgendaItem( KOAgendaItem *item )
 
 void KOAgenda::deleteItemsToDelete()
 {
+  qDeleteAll( mItemsToDelete );
   mItemsToDelete.clear();
 }
 
@@ -1811,12 +1797,12 @@ void KOAgenda::resizeAllContents()
   double subCellWidth;
   KOAgendaItem *item;
   if (mAllDayMode) {
-    for ( item=mItems.first(); item != 0; item=mItems.next() ) {
+    foreach( item, mItems ) {
       subCellWidth = calcSubCellWidth( item );
       placeAgendaItem( item, subCellWidth );
     }
   } else {
-    for ( item=mItems.first(); item != 0; item=mItems.next() ) {
+    foreach( item, mItems ) {
       subCellWidth = calcSubCellWidth( item );
       placeAgendaItem( item, subCellWidth );
     }
@@ -1930,7 +1916,7 @@ void KOAgenda::selectItem(KOAgendaItem *item)
 void KOAgenda::selectItemByUID( const QString& uid )
 {
   KOAgendaItem *item;
-  for ( item = mItems.first(); item != 0; item = mItems.next() ) {
+  foreach( item, mItems ) {
     if( item->incidence() && item->incidence()->uid() == uid ) {
       selectItem( item );
       break;

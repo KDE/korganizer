@@ -29,8 +29,7 @@
 
 #include <libkcal/resourcecalendar.h>
 #include <q3listview.h>
-//Added by qt3to4:
-#include <Q3PtrList>
+#include <QList>
 
 namespace KCal {
 class CalendarResources;
@@ -46,7 +45,7 @@ class ResourceViewFactory : public CalendarViewExtension::Factory
     ResourceViewFactory( KCal::CalendarResources *calendar,
                          CalendarView *view );
 
-	virtual ~ResourceViewFactory(){}
+    virtual ~ResourceViewFactory(){}
     CalendarViewExtension *create( QWidget * );
 
     ResourceView *resourceView() const;
@@ -158,7 +157,7 @@ class ResourceView : public CalendarViewExtension
     QPushButton *mAddButton;
     QPushButton *mDeleteButton;
     QPushButton *mEditButton;
-    Q3PtrList<ResourceCalendar> mResourcesToClose;
+    QList<ResourceCalendar*> mResourcesToClose;
 };
 
 #endif

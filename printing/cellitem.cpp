@@ -28,8 +28,7 @@
 #include <kdebug.h>
 
 #include <q3intdict.h>
-//Added by qt3to4:
-#include <Q3PtrList>
+#include <QList>
 
 using namespace KOrg;
 
@@ -38,19 +37,19 @@ QString CellItem::label() const
   return i18n("<undefined>");
 }
 
-Q3PtrList<CellItem> CellItem::placeItem( Q3PtrList<CellItem> cells,
+QList<CellItem*> CellItem::placeItem( QList<CellItem*> cells,
                                         CellItem *placeItem )
 {
   kdDebug(5855) << "Placing " << placeItem->label() << endl;
 
-  Q3PtrList<KOrg::CellItem> conflictItems;
+  QList<KOrg::CellItem*> conflictItems;
   int maxSubCells = 0;
   Q3IntDict<KOrg::CellItem> subCellDict;
 
   // Find all items which are in same cell
-  Q3PtrListIterator<KOrg::CellItem> it2( cells );
-  for( it2.toFirst(); it2.current(); ++it2 ) {
-    KOrg::CellItem *item = it2.current();
+  QList<KOrg::CellItem*>::iterator it;
+  for( it = cells.begin(); it != cells.end(); ++it ) {
+    KOrg::CellItem *item = *it;
     if ( item == placeItem ) continue;
 
     if ( item->overlaps( placeItem ) ) {
@@ -62,7 +61,7 @@ Q3PtrList<CellItem> CellItem::placeItem( Q3PtrList<CellItem> cells,
     }
   }
 
-  if ( conflictItems.count() > 0 ) {
+  if ( !conflictItems.empty() ) {
     // Look for unused sub cell and insert item
     int i;
     for( i = 0; i < maxSubCells; ++i ) {
@@ -85,9 +84,9 @@ Q3PtrList<CellItem> CellItem::placeItem( Q3PtrList<CellItem> cells,
     conflictItems.append( placeItem );
     placeItem->setSubCells( maxSubCells );
 
-    Q3PtrListIterator<KOrg::CellItem> it3( conflictItems );
-    for( it3.toFirst(); it3.current(); ++it3 ) {
-      (*it3)->setSubCells( maxSubCells );
+    QList<KOrg::CellItem*>::iterator it;
+    for ( it = conflictItems.begin(); it != conflictItems.end(); ++it ) {
+      (*it)->setSubCells( maxSubCells );
     }
     // Todo: Adapt subCells of items conflicting with conflicting items
   } else {

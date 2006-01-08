@@ -403,7 +403,7 @@ void ResourceView::slotSubresourceRemoved( ResourceCalendar * /*calendar*/,
 
 void ResourceView::closeResource( ResourceCalendar *r )
 {
-  if ( mResourcesToClose.find( r ) >= 0 ) {
+  if ( mResourcesToClose.contains( r ) ) {
     r->close();
     mResourcesToClose.remove( r );
   }

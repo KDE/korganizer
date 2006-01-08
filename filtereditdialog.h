@@ -27,11 +27,9 @@
 
 #include <kdialogbase.h>
 #include "filteredit_base.h"
-//Added by qt3to4:
-#include <Q3PtrList>
+#include <QList>
 
 class FilterEdit;
-template<class type> class Q3PtrList;
 
 namespace KPIM { class CategorySelectDialog; }
 namespace KCal { class CalFilter; }
@@ -48,7 +46,7 @@ class FilterEditDialog : public KDialogBase
 {
     Q_OBJECT
   public:
-    FilterEditDialog(Q3PtrList<CalFilter> *,QWidget *parent=0, const char *name=0);
+    FilterEditDialog(QList<CalFilter*> *,QWidget *parent=0, const char *name=0);
     virtual ~FilterEditDialog();
 
   signals:
@@ -72,7 +70,7 @@ class FilterEdit : public QWidget, Ui::FilterEdit_base
 {
     Q_OBJECT
   public:
-    FilterEdit(Q3PtrList<CalFilter> *filters, QWidget *parent);
+    FilterEdit( QList<CalFilter*> *filters, QWidget *parent);
     ~FilterEdit();
 
     void updateFilterList();
@@ -95,7 +93,7 @@ class FilterEdit : public QWidget, Ui::FilterEdit_base
   private:
     void filterSelected(CalFilter *f);
 
-    Q3PtrList<CalFilter> *mFilters;
+    QList<CalFilter*> *mFilters;
     CalFilter *current;
     KPIM::CategorySelectDialog *mCategorySelectDialog;
 };

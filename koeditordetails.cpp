@@ -541,8 +541,7 @@ void KOEditorDetails::writeEvent(Incidence *event)
 void KOEditorDetails::cancelAttendeeEvent(Incidence *event)
 {
   event->clearAttendees();
-  Attendee * att;
-  for (att=mdelAttendees.first();att;att=mdelAttendees.next()) {
+  foreach ( Attendee * att,  mdelAttendees ) {
     event->addAttendee(new Attendee(*att));
   }
   mdelAttendees.clear();

@@ -24,7 +24,7 @@
 #ifndef MAILSCHEDULER_H
 #define MAILSCHEDULER_H
 
-#include <q3ptrlist.h>
+#include <QList>
 #include <qmap.h>
 #include <qstring.h>
 
@@ -46,7 +46,7 @@ class MailScheduler : public IMIPScheduler
     bool performTransaction( IncidenceBase *incidence, Method method );
     bool performTransaction( IncidenceBase *incidence, Method method,
                              const QString &recipients );
-    Q3PtrList<ScheduleMessage> retrieveTransactions();
+    QList<ScheduleMessage*> retrieveTransactions();
 
     bool deleteTransaction( IncidenceBase *incidence );
 
