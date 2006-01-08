@@ -24,7 +24,7 @@
 */
 
 #include <QStackedWidget>
-#include <Q3VButtonGroup>
+#include <QButtonGroup>
 #include <qradiobutton.h>
 #include <qlayout.h>
 #include <qpushbutton.h>
@@ -33,6 +33,7 @@
 #include <qsplitter.h>
 #include <kvbox.h>
 #include <QGridLayout>
+#include <QGroupBox>
 
 #include <kprinter.h>
 #include <ksimpleconfig.h>
@@ -103,9 +104,8 @@ void CalPrinter::init( KPrinter *printer, Calendar *calendar )
 
 void CalPrinter::setDateRange( const QDate &fd, const QDate &td )
 {
-  KOrg::PrintPlugin::List::Iterator it = mPrintPlugins.begin();
-  for ( ; it != mPrintPlugins.end(); ++it ) {
-    (*it)->setDateRange( fd, td );
+  foreach( KOrg::PrintPlugin *plugin, mPrintPlugins ) {
+    plugin->setDateRange( fd, td );
   }
 }
 
@@ -182,7 +182,9 @@ CalPrintDialog::CalPrintDialog( KOrg::PrintPlugin::List plugins, KPrinter *p,
   QSplitter *splitter = new QSplitter( page );
   splitter->setOrientation( Qt::Horizontal );
 
-  mTypeGroup = new Q3VButtonGroup( i18n("Print Style"), splitter, "buttonGroup" );
+  QGroupBox *typeBox = new QGroupBox( i18n("Print Style"), splitter );
+  QBoxLayout *typeLayout = new QVBoxLayout( typeBox );
+  mTypeGroup = new QButtonGroup( typeBox );
   // use the minimal width possible = max width of the radio buttons, not extensible
 /*  mTypeGroup->setSizePolicy( QSizePolicy( (QSizePolicy::SizeType)4,
     (QSizePolicy::SizeType)5, 0, 0,
@@ -208,7 +210,7 @@ CalPrintDialog::CalPrintDialog( KOrg::PrintPlugin::List plugins, KPrinter *p,
   splitterRightLayout->addWidget( mOrientationSelection, 1, 1 );
 
   // signals and slots connections
-  connect( mTypeGroup, SIGNAL( clicked( int ) ), SLOT( setPrintType( int ) ) );
+  connect( mTypeGroup, SIGNAL( buttonClicked( int ) ), SLOT( setPrintType( int ) ) );
 
   // buddies
   orientationLabel->setBuddy( mOrientationSelection );
@@ -217,8 +219,9 @@ CalPrintDialog::CalPrintDialog( KOrg::PrintPlugin::List plugins, KPrinter *p,
   QRadioButton *radioButton;
   int id = 0;
   for ( ; it != mPrintPlugins.end(); ++it ) {
-    radioButton = new QRadioButton( (*it)->description(), mTypeGroup );
-    mTypeGroup->insert( radioButton, id );
+    radioButton = new QRadioButton( (*it)->description(), typeBox );
+    mTypeGroup->addButton( radioButton, id );
+    typeLayout->addWidget( radioButton );
     radioButton->setMinimumHeight( radioButton->sizeHint().height() - 5 );
 
     mConfigArea->insertWidget( id, (*it)->configWidget( mConfigArea ) );
@@ -242,13 +245,14 @@ void CalPrintDialog::setPrintType( int i )
 {
   // FIXME: Make a safe correlation between type and the radio button
 
-  mTypeGroup->setButton( i );
+  QAbstractButton *btn = mTypeGroup->button( i );
+  if ( btn ) btn->setChecked( true );
   mConfigArea->setCurrentIndex( i );
 }
 
 KOrg::PrintPlugin *CalPrintDialog::selectedPlugin()
 {
-  int pos = mTypeGroup->id( mTypeGroup->selected() );
+  int pos = mTypeGroup->checkedId();
   if ( pos < 0 ) return 0;
   KOrg::PrintPlugin *retval = mPrintPlugins.at( pos );
   return retval;

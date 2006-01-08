@@ -102,8 +102,7 @@ void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
 {
   QBoxLayout *timeLayout = new QVBoxLayout(topLayout);
 
-  Q3GroupBox *timeGroupBox = new Q3GroupBox(1,Qt::Horizontal,
-                                          i18n("Date && Time"),parent);
+  QGroupBox *timeGroupBox = new QGroupBox( i18n("Date && Time"), parent );
   timeGroupBox->setWhatsThis(
        i18n("Sets options related to the date and time of the "
             "event or to-do.") );

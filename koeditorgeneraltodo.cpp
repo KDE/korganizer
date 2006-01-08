@@ -102,8 +102,7 @@ void KOEditorGeneralTodo::initTime(QWidget *parent,QBoxLayout *topLayout)
 {
   QBoxLayout *timeLayout = new QVBoxLayout(topLayout);
 
-  Q3GroupBox *timeGroupBox = new Q3GroupBox(1,Qt::Horizontal,
-                                          i18n("Date && Time"),parent);
+  QGroupBox *timeGroupBox = new QGroupBox( i18n("Date && Time"), parent );
   timeLayout->addWidget(timeGroupBox);
 
   QFrame *timeBoxFrame = new QFrame(timeGroupBox);

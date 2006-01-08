@@ -25,7 +25,6 @@
 
 #include <qlayout.h>
 #include <qlabel.h>
-#include <q3groupbox.h>
 #include <q3buttongroup.h>
 #include <qlineedit.h>
 #include <qslider.h>
@@ -47,6 +46,7 @@
 #include <QBoxLayout>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
+#include <QGroupBox>
 
 #include <kcolorbutton.h>
 #include <kdebug.h>
@@ -102,8 +102,7 @@ KOPrefsDialogMain::KOPrefsDialogMain( KInstance *inst, QWidget *parent )
   addWidString( KOPrefs::instance()->userNameItem(), mUserEmailSettings );
   addWidString( KOPrefs::instance()->userEmailItem(), mUserEmailSettings );
 
-  Q3GroupBox *saveGroup = new Q3GroupBox(1,Qt::Horizontal,i18n("Saving Calendar"),
-                                           topFrame);
+  QGroupBox *saveGroup = new QGroupBox( i18n("Saving Calendar"), topFrame );
 
   addWidBool( KOPrefs::instance()->htmlWithSaveItem(), saveGroup );
 
@@ -337,9 +336,7 @@ class KOPrefsDialogTime : public KPrefsModule
       topLayout->addWidget( mAlarmTimeCombo, 5, 1 );
 
 
-      Q3GroupBox *workingHoursGroup = new Q3GroupBox(1,Qt::Horizontal,
-                                                   i18n("Working Hours"),
-                                                   topFrame);
+      QGroupBox *workingHoursGroup = new QGroupBox( i18n("Working Hours"), topFrame);
       topLayout->addMultiCellWidget( workingHoursGroup, 6, 6, 0, 1 );
 
       KHBox *workDaysBox = new KHBox( workingHoursGroup );
@@ -474,18 +471,14 @@ class KOPrefsDialogViews : public KPrefsModule
       topLayout->addWidget( showTodosAgenda->checkBox() );
 
       /*** Date Navigator Group ***/
-      Q3GroupBox *dateNavGroup = new Q3GroupBox( 1, Qt::Horizontal,
-                                               i18n("Date Navigator"),
-                                               topFrame );
+      QGroupBox *dateNavGroup = new QGroupBox( i18n("Date Navigator"), topFrame );
       addWidBool( KOPrefs::instance()->dailyRecurItem(), dateNavGroup );
       addWidBool( KOPrefs::instance()->weeklyRecurItem(), dateNavGroup );
       topLayout->addWidget( dateNavGroup );
 
 
       /*** Agenda View Group ***/
-      Q3GroupBox *agendaGroup = new Q3GroupBox( 1, Qt::Horizontal,
-                                              i18n("Agenda View"),
-                                              topFrame );
+      QGroupBox *agendaGroup = new QGroupBox( i18n("Agenda View"), topFrame );
 
       KHBox *hourSizeBox = new KHBox( agendaGroup );
       KPrefsWidInt *hourSize =
@@ -516,21 +509,16 @@ class KOPrefsDialogViews : public KPrefsModule
 
 
       /*** Month View Group ***/
-      Q3GroupBox *monthGroup = new Q3GroupBox( 1, Qt::Horizontal,
-                                             i18n("Month View"),
-                                             topFrame );
+      QGroupBox *monthGroup = new QGroupBox( i18n("Month View"), topFrame );
       addWidBool( KOPrefs::instance()->enableMonthScrollItem(), monthGroup );
       addWidBool( KOPrefs::instance()->fullViewMonthItem(), monthGroup );
-      addWidBool( KOPrefs::instance()->monthViewUsesCategoryColorItem(),
-                      monthGroup );
+      addWidBool( KOPrefs::instance()->monthViewUsesCategoryColorItem(), monthGroup );
       addWidBool( KOPrefs::instance()->monthViewUsesResourceColorItem(), monthGroup );
       topLayout->addWidget( monthGroup );
 
 
       /*** Todo View Group ***/
-      Q3GroupBox *todoGroup = new Q3GroupBox( 1, Qt::Horizontal,
-                                            i18n("To-do View"),
-                                            topFrame );
+      QGroupBox *todoGroup = new QGroupBox( i18n("To-do View"), topFrame );
       addWidBool( KOPrefs::instance()->fullViewTodoItem(), todoGroup );
       addWidBool( KOPrefs::instance()->useSplitListViewsItem(), todoGroup );
       addWidBool( KOPrefs::instance()->recordTodosInJournalsItem(), todoGroup );
@@ -664,8 +652,7 @@ KOPrefsDialogColors::KOPrefsDialogColors( KInstance *inst, QWidget *parent )
   topLayout->addWidget(todoOverdueColor->button(),6,1);
 
   // categories colors
-  Q3GroupBox *categoryGroup = new Q3GroupBox(1,Qt::Horizontal,i18n("Categories"),
-                                           topFrame);
+  QGroupBox *categoryGroup = new QGroupBox( i18n("Categories"), topFrame );
   topLayout->addMultiCellWidget(categoryGroup,7,7,0,1);
 
   mCategoryCombo = new QComboBox(categoryGroup);
@@ -684,8 +671,7 @@ KOPrefsDialogColors::KOPrefsDialogColors( KInstance *inst, QWidget *parent )
   updateCategoryColor();
 
   // resources colors
-  Q3GroupBox *resourceGroup = new Q3GroupBox(1,Qt::Horizontal,i18n("Resources"),
-                                           topFrame);
+  QGroupBox *resourceGroup = new QGroupBox( i18n("Resources"), topFrame );
   topLayout->addMultiCellWidget(resourceGroup,8,8,0,1);
 
   mResourceCombo = new QComboBox(resourceGroup);

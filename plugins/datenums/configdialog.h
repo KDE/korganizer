@@ -21,7 +21,7 @@
 
 #include <kdialogbase.h>
 
-class Q3ButtonGroup;
+class QButtonGroup;
 
 class ConfigDialog : public KDialogBase
 {
@@ -38,7 +38,7 @@ class ConfigDialog : public KDialogBase
     void slotOk();
 
   private:
-    Q3ButtonGroup *mDayNumGroup;
+    QButtonGroup *mDayNumGroup;
 };
 
 #endif

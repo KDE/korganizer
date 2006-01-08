@@ -140,7 +140,7 @@ void ExportWebDialog::setupGeneralPage()
   mGeneralPage = addPage( i18n("General") );
   QVBoxLayout *topLayout = new QVBoxLayout(mGeneralPage, 10);
 
-  Q3GroupBox *rangeGroup = new Q3GroupBox( i18n("Date Range"), mGeneralPage );
+  QGroupBox *rangeGroup = new QGroupBox( i18n("Date Range"), mGeneralPage );
   topLayout->addWidget( rangeGroup );
   addWidDate( mSettings->dateStartItem(), rangeGroup );
   addWidDate( mSettings->dateEndItem(), rangeGroup );
@@ -156,7 +156,7 @@ void ExportWebDialog::setupGeneralPage()
   addWidBool( mSettings->excludePrivateItem(), typeGroup );
   addWidBool( mSettings->excludeConfidentialItem(), typeGroup );
 
-  Q3GroupBox *destGroup = new Q3GroupBox(i18n("Destination"), mGeneralPage );
+  QGroupBox *destGroup = new QGroupBox(i18n("Destination"), mGeneralPage );
   topLayout->addWidget(destGroup);
   KPrefsWidPath *pathWid = addWidPath( mSettings->outputFileItem(), 
                                        destGroup, "text/html", KFile::File );

@@ -21,10 +21,10 @@
 #include <qlayout.h>
 #include <qlabel.h>
 #include <qradiobutton.h>
-//Added by qt3to4:
 #include <QVBoxLayout>
 #include <QFrame>
-#include <Q3VButtonGroup>
+#include <QGroupBox>
+#include <QButtonGroup>
 
 #include <klocale.h>
 #include <kmessagebox.h>
@@ -41,16 +41,23 @@ ConfigDialog::ConfigDialog(QWidget *parent)
   : KDialogBase(Plain,i18n("Configure Day Numbers"),Ok|Cancel,Ok,parent)
 {
   QFrame *topFrame = plainPage();
-  QVBoxLayout *topLayout = new QVBoxLayout(topFrame,0,spacingHint());
+  QVBoxLayout *topLayout = new QVBoxLayout( topFrame, 0, spacingHint() );
 
-//  QLabel *label = new QLabel(i18n("Show date numbers:"),topFrame);
-//  topLayout->addWidget(label);
-  mDayNumGroup = new Q3VButtonGroup( i18n("Show Date Number"), topFrame );
-	topLayout->addWidget( mDayNumGroup );
+  QGroupBox *dayNumBox = new QGroupBox( i18n("Show Date Number"), topFrame );
+  topLayout->addWidget( dayNumBox );
+  QVBoxLayout *groupLayout = new QVBoxLayout( dayNumBox );
 
-	new QRadioButton( i18n("Show day number"), mDayNumGroup );
-	new QRadioButton( i18n("Show days to end of year"), mDayNumGroup );
-	new QRadioButton( i18n("Show both"), mDayNumGroup );
+  QRadioButton *btn;
+  mDayNumGroup = new QButtonGroup( this );
+  btn = new QRadioButton( i18n("Show day number"), dayNumBox );
+  mDayNumGroup->addButton( btn );
+  groupLayout->addWidget( btn );
+  btn = new QRadioButton( i18n("Show days to end of year"), dayNumBox );
+  mDayNumGroup->addButton( btn );
+  groupLayout->addWidget( btn );
+  btn = new QRadioButton( i18n("Show both"), dayNumBox );
+  mDayNumGroup->addButton( btn );
+  groupLayout->addWidget( btn );
 
   load();
 }
@@ -63,15 +70,16 @@ void ConfigDialog::load()
 {
   KConfig config( "korganizerrc", true, false); // Open read-only, no kdeglobals
   config.setGroup("Calendar/DateNum Plugin");
-	int datenum = config.readNumEntry( "ShowDayNumbers", 0 );
-  mDayNumGroup->setButton( datenum );
+  int datenum = config.readNumEntry( "ShowDayNumbers", 0 );
+  QAbstractButton *btn = mDayNumGroup->button( datenum );
+  if (btn) btn->setChecked( true );
 }
 
 void ConfigDialog::save()
 {
   KConfig config( "korganizerrc", false, false); // Open read-write, no kdeglobals
   config.setGroup("Calendar/DateNum Plugin");
-  config.writeEntry("ShowDayNumbers", mDayNumGroup->selectedId() );
+  config.writeEntry("ShowDayNumbers", mDayNumGroup->checkedId() );
   config.sync();
 }
 

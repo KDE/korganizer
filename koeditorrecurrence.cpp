@@ -32,13 +32,13 @@
 #include <q3listbox.h>
 #include <qspinbox.h>
 #include <qcheckbox.h>
-#include <q3groupbox.h>
 #include <q3widgetstack.h>
 #include <qradiobutton.h>
 #include <qlabel.h>
 #include <qpushbutton.h>
 
 //Added by qt3to4:
+#include <QGroupBox>
 #include <QGridLayout>
 #include <QFrame>
 #include <QHBoxLayout>
@@ -585,8 +585,7 @@ ExceptionsWidget::ExceptionsWidget( QWidget *parent, const char *name ) :
 {
   QBoxLayout *topLayout = new QVBoxLayout( this );
 
-  Q3GroupBox *groupBox = new Q3GroupBox( 1, Qt::Horizontal, i18n("E&xceptions"),
-                                       this );
+  QGroupBox *groupBox = new QGroupBox( i18n("E&xceptions"), this );
   topLayout->addWidget( groupBox );
 
   QWidget *box = new QWidget( groupBox );
@@ -988,8 +987,7 @@ KOEditorRecurrence::KOEditorRecurrence( QWidget* parent, const char *name ) :
   topLayout->addMultiCellWidget( mEnabledCheck, 0, 0, 0, 1 );
 
 
-  mTimeGroupBox = new Q3GroupBox( 1, Qt::Horizontal, i18n("Appointment Time "),
-                                 this );
+  mTimeGroupBox = new QGroupBox( i18n("Appointment Time "), this );
   mTimeGroupBox->setWhatsThis(
                    i18n("Displays appointment time information.") );
   topLayout->addMultiCellWidget( mTimeGroupBox, 1, 1 , 0 , 1 );
@@ -1006,14 +1004,12 @@ KOEditorRecurrence::KOEditorRecurrence( QWidget* parent, const char *name ) :
 //  mDateTimeLabel = new QLabel( timeFrame );
 //  layoutTimeFrame->addWidget( mDateTimeLabel );
 
-  Qt::Orientation orientation;
-  if ( KOPrefs::instance()->mCompactDialogs ) orientation = Qt::Horizontal;
-  else orientation = Qt::Vertical;
-
-  mRuleBox = new Q3GroupBox( 1, orientation, i18n("Recurrence Rule"), this );
+  mRuleBox = new QGroupBox( i18n("Recurrence Rule"), this );
   mRuleBox->setWhatsThis(
                    i18n("Options concerning the type of recurrence this event "
                         "or to-do should have.") );
+  QBoxLayout *boxlayout = new QHBoxLayout( mRuleBox );
+
   if ( KOPrefs::instance()->mCompactDialogs ) {
     topLayout->addWidget( mRuleBox, 2, 0 );
   } else {
@@ -1023,13 +1019,16 @@ KOEditorRecurrence::KOEditorRecurrence( QWidget* parent, const char *name ) :
   mRecurrenceChooser = new RecurrenceChooser( mRuleBox );
   connect( mRecurrenceChooser, SIGNAL( chosen( int ) ),
            SLOT( showCurrentRule( int ) ) );
+  boxlayout->addWidget( mRecurrenceChooser );
 
   if ( !KOPrefs::instance()->mCompactDialogs ) {
     QFrame *ruleSepFrame = new QFrame( mRuleBox );
     ruleSepFrame->setFrameStyle( QFrame::VLine | QFrame::Sunken );
+    boxlayout->addWidget( ruleSepFrame );
   }
 
   mRuleStack = new QStackedWidget( mRuleBox );
+  boxlayout->addWidget( mRuleStack );
 
   mDaily = new RecurDaily( mRuleStack );
   mRuleStack->insertWidget( 0,mDaily );

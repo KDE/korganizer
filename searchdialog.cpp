@@ -26,14 +26,12 @@
 
 #include <qlayout.h>
 #include <qcheckbox.h>
-#include <q3groupbox.h>
 #include <qlabel.h>
 #include <qlineedit.h>
-//Added by qt3to4:
 #include <QVBoxLayout>
 #include <QFrame>
 #include <QHBoxLayout>
-#include <Q3HButtonGroup>
+#include <QGroupBox>
 
 #include <klocale.h>
 #include <kmessagebox.h>
@@ -71,17 +69,20 @@ SearchDialog::SearchDialog(Calendar *calendar,QWidget *parent)
            this, SLOT( searchTextChanged( const QString & ) ) );
 
 
-  Q3HButtonGroup *itemsGroup = new Q3HButtonGroup( i18n("Search For"), topFrame );
+  QGroupBox *itemsGroup = new QGroupBox( i18n("Search For"), topFrame );
+  QBoxLayout *searchLayout = new QHBoxLayout( itemsGroup );
   layout->addWidget( itemsGroup );
   mEventsCheck = new QCheckBox( i18n("&Events"), itemsGroup );
+  searchLayout->addWidget( mEventsCheck );
   mTodosCheck = new QCheckBox( i18n("To-&dos"), itemsGroup );
+  searchLayout->addWidget( mTodosCheck );
   mJournalsCheck = new QCheckBox( i18n("&Journal entries"), itemsGroup );
+  searchLayout->addWidget( mJournalsCheck );
   mEventsCheck->setChecked( true );
   mTodosCheck->setChecked( true );
 
   // Date range
-  Q3GroupBox *rangeGroup = new Q3GroupBox( 1, Qt::Horizontal, i18n( "Date Range" ),
-                                        topFrame );
+  QGroupBox *rangeGroup = new QGroupBox( i18n( "Date Range" ), topFrame );
   layout->addWidget( rangeGroup );
 
   QWidget *rangeWidget = new QWidget( rangeGroup );
@@ -103,13 +104,17 @@ SearchDialog::SearchDialog(Calendar *calendar,QWidget *parent)
   mIncludeUndatedTodos->setChecked( true );
 
   // Subjects to search
-  Q3HButtonGroup *subjectGroup = new Q3HButtonGroup( i18n("Search In"), topFrame );
+  QGroupBox *subjectGroup = new QGroupBox( i18n("Search In"), topFrame );
+  searchLayout = new QHBoxLayout( subjectGroup );
   layout->addWidget(subjectGroup);
 
   mSummaryCheck = new QCheckBox( i18n("Su&mmaries"), subjectGroup );
   mSummaryCheck->setChecked( true );
+  searchLayout->addWidget( mSummaryCheck );
   mDescriptionCheck = new QCheckBox( i18n("Desc&riptions"), subjectGroup );
+  searchLayout->addWidget( mDescriptionCheck  );
   mCategoryCheck = new QCheckBox( i18n("Cate&gories"), subjectGroup );
+  searchLayout->addWidget( mCategoryCheck );
 
 
   // Results list view

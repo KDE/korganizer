@@ -38,7 +38,6 @@
 class QStackedWidget;
 class QSpinBox;
 class QRadioButton;
-class Q3GroupBox;
 class QCheckBox;
 class Q3ListBox;
 class QGroupBox;
@@ -320,10 +319,10 @@ class KOEditorRecurrence : public QWidget
   private:
     QCheckBox *mEnabledCheck;
 
-    Q3GroupBox *mTimeGroupBox;
+    QGroupBox *mTimeGroupBox;
     QLabel *mDateTimeLabel;
 
-    Q3GroupBox *mRuleBox;
+    QGroupBox *mRuleBox;
     QStackedWidget *mRuleStack;
     RecurrenceChooser *mRecurrenceChooser;
 
