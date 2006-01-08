@@ -41,6 +41,7 @@ class QRadioButton;
 class Q3GroupBox;
 class QCheckBox;
 class Q3ListBox;
+class QGroupBox;
 
 class KDateEdit;
 namespace KCal {
@@ -253,7 +254,7 @@ class RecurrenceRangeWidget : public QWidget, public RecurrenceRangeBase
     void showCurrentRange();
 
   private:
-    Q3GroupBox *mRangeGroupBox;
+    QGroupBox *mRangeGroupBox;
     QLabel *mStartDateLabel;
     QRadioButton *mNoEndDateButton;
     QRadioButton *mEndDurationButton;

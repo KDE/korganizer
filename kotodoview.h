@@ -29,13 +29,13 @@
 
 #include <qmap.h>
 #include <qtooltip.h>
+#include <QMenu>
 //Added by qt3to4:
 #include <QDragLeaveEvent>
 #include <Q3PtrList>
 #include <QDragMoveEvent>
 #include <QEvent>
 #include <QDropEvent>
-#include <Q3PopupMenu>
 #include <QDragEnterEvent>
 #include <QMouseEvent>
 
@@ -49,7 +49,8 @@ class QDragEnterEvent;
 class QDragMoveEvent;
 class QDragLeaveEvent;
 class QDropEvent;
-class Q3PopupMenu;
+class QMenu;
+class QAction;
 class QSplitter;
 
 class KToolBar;
@@ -150,7 +151,7 @@ class KOTodoView : public KOrg::BaseView
     void saveLayout( KConfig *config, const QString &group ) const;
     void restoreLayout( KConfig *config, const QString &group );
     /** Create a popup menu to set categories */
-    Q3PopupMenu *getCategoryPopupMenu( KOTodoViewItem *todoItem );
+    QMenu *getCategoryPopupMenu( KOTodoViewItem *todoItem );
     void setIncidenceChanger( IncidenceChangerBase *changer );
 
   public slots:
@@ -177,11 +178,11 @@ class KOTodoView : public KOrg::BaseView
 
     void setNewPercentage( KOTodoViewItem *item, int percentage );
 
-    void setNewPriority( int );
-    void setNewPercentage( int );
+    void setNewPriority( QAction* );
+    void setNewPercentage( QAction* );
+    void changedCategories( QAction* );
     void setNewDate( const QDate& );
     void copyTodoToDate( const QDate& );
-    void changedCategories( int );
 
     void purgeCompleted();
 
@@ -220,7 +221,7 @@ class KOTodoView : public KOrg::BaseView
      */
     friend class KOTodoViewItem;
 
-    QMap<Todo *,KOTodoViewItem *>::ConstIterator insertTodoItem( Todo *todo );
+    QMap<Todo *, KOTodoViewItem *>::ConstIterator insertTodoItem( Todo *todo );
     bool scheduleRemoveTodoItem( KOTodoViewItem *todoItem );
     void restoreListViewState( Q3ListView * );
     void saveListViewState( Q3ListView * );
@@ -235,17 +236,17 @@ class KOTodoView : public KOrg::BaseView
 
     enum { eOneListView, eSplitListViews };
 
-    Q3PopupMenu *mItemPopupMenu;
-    Q3PopupMenu *mPopupMenu;
-    Q3PopupMenu *mPriorityPopupMenu;
-    Q3PopupMenu *mPercentageCompletedPopupMenu;
-    Q3PopupMenu *mCategoryPopupMenu;
+    QMenu *mItemPopupMenu;
+    QMenu *mPopupMenu;
+    QMenu *mPriorityPopupMenu;
+    QMenu *mPercentageCompletedPopupMenu;
+    QMenu *mCategoryPopupMenu;
     KDatePickerPopup *mMovePopupMenu;
     KDatePickerPopup *mCopyPopupMenu;
 
-    QMap<int, int> mPercentage;
-    QMap<int, int> mPriority;
-    QMap<int, QString> mCategory;
+    QMap<QAction*, int> mPercentage;
+    QMap<QAction*, int> mPriority;
+    QMap<QAction*, QString> mCategory;
 
     KOTodoViewItem *mActiveItem;
 
@@ -259,6 +260,10 @@ class KOTodoView : public KOrg::BaseView
     KOTodoListViewQuickSearch *mSearchToolBar;
 
     QStringList mAllEmailAddrs;
+    // List of all actions that should be disabled when no item is selected
+    QList<QAction*> mActionsOnSelection;
+    QAction *mMakeThisTodoIndependent;
+    QAction *mMakeChildTodosIndependent;
 
   public:
     enum {
@@ -270,14 +275,14 @@ class KOTodoView : public KOrg::BaseView
       eCategoriesColumn = 5,
       eDescriptionColumn = 6
     }; 
-    enum {
+/*    enum {
       ePopupEdit = 1300,
       ePopupDelete = 1301,
       ePopupMoveTo = 1302,
       ePopupCopyTo = 1303,
       ePopupUnSubTodo = 1304,
       ePopupUnAllSubTodo = 1305
-    };
+    };*/
   
 };
 

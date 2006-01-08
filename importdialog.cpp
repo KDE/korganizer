@@ -33,7 +33,8 @@
 #include <qlabel.h>
 #include <qlayout.h>
 #include <qradiobutton.h>
-#include <q3buttongroup.h>
+#include <QGroupBox>
+
 //Added by qt3to4:
 #include <QVBoxLayout>
 #include <QFrame>
@@ -53,16 +54,20 @@ ImportDialog::ImportDialog( const KURL &url, QWidget *parent )
 
   topLayout->addWidget( new QLabel( txt, topFrame ) );
 
-  Q3ButtonGroup *radioBox = new Q3ButtonGroup( 1, Qt::Horizontal, topFrame );
+  QGroupBox *radioBox = new QGroupBox( topFrame );
+  QBoxLayout *boxLayout = new QVBoxLayout( radioBox );
   radioBox->setFlat( true );
   topLayout->addWidget( radioBox );
 
   mAddButton = new QRadioButton( i18n("Add as new calendar"), radioBox );
+  boxLayout->addWidget( mAddButton );
 
   mMergeButton = new QRadioButton( i18n("Merge into existing calendar"),
                                    radioBox );
+  boxLayout->addWidget( mMergeButton );
 
   mOpenButton = new QRadioButton( i18n("Open in separate window"), radioBox );
+  boxLayout->addWidget( mOpenButton );
 
   mAddButton->setChecked( true );
 }

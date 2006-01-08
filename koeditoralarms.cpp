@@ -224,19 +224,22 @@ void KOEditorAlarms::readAlarm( KCal::Alarm *alarm )
     mWidget.mRepeatCount->setValue( alarm->repeatCount() );
     mWidget.mRepeatInterval->setValue( alarm->snoozeTime() );
   }
+  int id = 0;
 
   switch ( alarm->type() ) {
     case KCal::Alarm::Audio:
-        mWidget.mAlarmType->setButton( 1 );
+        mWidget.mTypeSoundRadio->setChecked( true );
         mWidget.mSoundFile->setURL( alarm->audioFile() );
+        id = 1;
         break;
     case KCal::Alarm::Procedure:
-        mWidget.mAlarmType->setButton( 2 );
+        mWidget.mTypeAppRadio->setChecked( true );
         mWidget.mApplication->setURL( alarm->programFile() );
         mWidget.mAppArguments->setText( alarm->programArguments() );
+        id = 2;
         break;
     case KCal::Alarm::Email: {
-        mWidget.mAlarmType->setButton( 3 );
+        mWidget.mTypeEmailRadio->setChecked( true );
         QList<KCal::Person> addresses = alarm->mailAddresses();
         QStringList add;
         for ( QList<KCal::Person>::ConstIterator it = addresses.begin();
@@ -245,16 +248,17 @@ void KOEditorAlarms::readAlarm( KCal::Alarm *alarm )
         }
         mWidget.mEmailAddress->setText( add.join(", ") );
         mWidget.mEmailText->setText( alarm->mailText() );
+        id = 3;
         break;}
     case KCal::Alarm::Display:
     case KCal::Alarm::Invalid:
     default:
-        mWidget.mAlarmType->setButton( 0 );
+        mWidget.mTypeDisplayRadio->setChecked( true );
         mWidget.mDisplayText->setText( alarm->text() );
         break;
   }
 
-  mWidget.mTypeStack->setCurrentIndex( mWidget.mAlarmType->selectedId() );
+  mWidget.mTypeStack->setCurrentIndex( id );
 
   mInitializing = false;
 }
@@ -288,28 +292,20 @@ void KOEditorAlarms::writeAlarm( KCal::Alarm *alarm )
     alarm->setRepeatCount( 0 );
   }
 
-  switch ( mWidget.mAlarmType->selectedId() ) {
-    case 1: // Audio
-        alarm->setAudioAlarm( mWidget.mSoundFile->url() );
-        break;
-    case 2: // Procedure
-        alarm->setProcedureAlarm( mWidget.mApplication->url(), mWidget.mAppArguments->text() );
-        break;
-    case 3: { // Email
-        QStringList addresses = KPIM::splitEmailAddrList( mWidget.mEmailAddress->text() );
-        QList<KCal::Person> add;
-        for ( QStringList::Iterator it = addresses.begin(); it != addresses.end();
-              ++it ) {
-          add << KCal::Person( *it );
-        }
-        // TODO: Add a subject line and possibilities for attachments
-        alarm->setEmailAlarm( QString(), mWidget.mEmailText->text(),
-                              add );
-        break; }
-    case 0: // Display
-    default:
-        alarm->setDisplayAlarm( mWidget.mDisplayText->text() );
-        break;
+  if ( mWidget.mTypeSoundRadio->isChecked() ) { // Audio
+    alarm->setAudioAlarm( mWidget.mSoundFile->url() );
+  } else if ( mWidget.mTypeAppRadio->isChecked() ) { // Procedure
+    alarm->setProcedureAlarm( mWidget.mApplication->url(), mWidget.mAppArguments->text() );
+  } else if ( mWidget.mTypeEmailRadio->isChecked() ) { // Email
+    QStringList addresses = KPIM::splitEmailAddrList( mWidget.mEmailAddress->text() );
+    QList<KCal::Person> add;
+    for ( QStringList::Iterator it = addresses.begin(); it != addresses.end(); ++it ) {
+      add << KCal::Person( *it );
+    }
+    // TODO: Add a subject line and possibilities for attachments
+    alarm->setEmailAlarm( QString(), mWidget.mEmailText->text(), add );
+  } else { // Display
+    alarm->setDisplayAlarm( mWidget.mDisplayText->text() );
   }
 }
 

@@ -37,12 +37,9 @@
     </widget>
    </item>
    <item rowspan="2" row="0" column="2" >
-    <widget class="Q3ButtonGroup" name="mDetailsFrame" >
+    <widget class="QGroupBox" name="mDetailsFrame" >
      <property name="title" >
       <string>Filter Details</string>
-     </property>
-     <property name="orientation" >
-      <enum>Qt::Vertical</enum>
      </property>
      <layout class="QGridLayout" >
       <property name="margin" >
@@ -179,12 +176,9 @@
        </widget>
       </item>
       <item row="6" column="0" >
-       <widget class="Q3ButtonGroup" name="mCategoriesButtonGroup" >
+       <widget class="QGroupBox" name="mCategoriesButtonGroup" >
         <property name="title" >
          <string>Categories</string>
-        </property>
-        <property name="orientation" >
-         <enum>Qt::Vertical</enum>
         </property>
         <layout class="QGridLayout" >
          <property name="margin" >
@@ -289,13 +283,6 @@ Only to-dos which have least one attendee will be checked.  If you are not in th
    <extends></extends>
    <header>q3listbox.h</header>
    <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>Q3ButtonGroup</class>
-   <extends></extends>
-   <header>Qt3Support/Q3ButtonGroup</header>
-   <container>1</container>
    <pixmap></pixmap>
   </customwidget>
  </customwidgets>

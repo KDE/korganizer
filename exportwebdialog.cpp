@@ -34,7 +34,7 @@
 #include <qlabel.h>
 //Added by qt3to4:
 #include <QVBoxLayout>
-#include <Q3ButtonGroup>
+#include <QGroupBox>
 
 #include <klocale.h>
 #include <kdebug.h>
@@ -145,7 +145,7 @@ void ExportWebDialog::setupGeneralPage()
   addWidDate( mSettings->dateStartItem(), rangeGroup );
   addWidDate( mSettings->dateEndItem(), rangeGroup );
 
-  Q3ButtonGroup *typeGroup = new Q3ButtonGroup( i18n("View Type"), mGeneralPage );
+  QGroupBox *typeGroup = new QGroupBox( i18n("View Type"), mGeneralPage );
   topLayout->addWidget( typeGroup );
 //  addWidBool( mSettings->weekViewItem(), typeGroup );
   addWidBool( mSettings->monthViewItem(), typeGroup );

@@ -34,6 +34,7 @@
 #include <QVBoxLayout>
 #include <QFrame>
 #include <QHBoxLayout>
+#include <QButtonGroup>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -51,7 +52,6 @@
 #include "archivedialog.h"
 #include "eventarchiver.h"
 #include <knuminput.h>
-#include <q3buttongroup.h>
 #include <qradiobutton.h>
 #include <kvbox.h>
 #include "archivedialog.moc"
@@ -79,14 +79,13 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
     topFrame);
   topLayout->addWidget(descLabel);
 
-  Q3ButtonGroup* radioBG = new Q3ButtonGroup( this );
-  radioBG->hide(); // just for the exclusive behavior
-  connect( radioBG, SIGNAL( clicked( int ) ), SLOT( slotActionChanged() ) );
+  QButtonGroup* radioBG = new QButtonGroup( this );
+  connect( radioBG, SIGNAL( buttonClicked( int ) ), SLOT( slotActionChanged() ) );
 
   QHBoxLayout *dateLayout = new QHBoxLayout(0);
   mArchiveOnceRB = new QRadioButton(i18n("Archive now items older than:"),topFrame);
   dateLayout->addWidget(mArchiveOnceRB);
-  radioBG->insert(mArchiveOnceRB);
+  radioBG->addButton(mArchiveOnceRB);
   mDateEdit = new KDateEdit(topFrame);
   mDateEdit->setWhatsThis(
     i18n("The date before which items should be archived. All older events and to-dos will "
@@ -99,7 +98,7 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
   KHBox* autoArchiveHBox = new KHBox(topFrame);
   topLayout->addWidget(autoArchiveHBox);
   mAutoArchiveRB = new QRadioButton(i18n("Automaticall&y archive items older than:"), autoArchiveHBox);
-  radioBG->insert(mAutoArchiveRB);
+  radioBG->addButton(mAutoArchiveRB);
   mAutoArchiveRB->setWhatsThis(
     i18n("If this feature is enabled, KOrganizer will regularly check if events and to-dos have to be archived; "
          "this means you will not need to use this dialog box again, except to change the settings."));
@@ -136,7 +135,7 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
   fileLayout->addWidget(mArchiveFile);
   topLayout->addLayout(fileLayout);
   
-  Q3GroupBox *typeBox = new Q3GroupBox( i18n("Type of Items to Archive"), 
+  QGroupBox *typeBox = new QGroupBox( i18n("Type of Items to Archive"),
                                         topFrame);
   mEvents = new QCheckBox( i18n("&Events"), typeBox );
   mTodos = new QCheckBox( i18n("&To-dos"), typeBox );

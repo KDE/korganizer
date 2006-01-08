@@ -183,7 +183,11 @@ void FilterEdit::filterSelected(CalFilter *filter)
   mHideInactiveTodosCheck->setChecked( current->criteria() & CalFilter::HideInactiveTodos );
   mHideTodosNotAssignedToMeCheck->setChecked( 
       current->criteria() & CalFilter::HideTodosWithoutAttendeeInEmailList );
-  mCategoriesButtonGroup->setButton( (current->criteria() & CalFilter::ShowCategories)?0:1 );
+  if ( current->criteria() & CalFilter::ShowCategories ) {
+    mCatShowCheck->setChecked( true );
+  } else { 
+    mCatHideCheck->setChecked( true );
+  }
   mCatList->clear();
   mCatList->insertStringList( current->categoryList() );
 }

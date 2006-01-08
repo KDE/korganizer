@@ -32,9 +32,9 @@
 #include <qtimer.h>
 
 #include <QStackedWidget>
+#include <QMenu>
 //Added by qt3to4:
 #include <QBoxLayout>
-#include <Q3PopupMenu>
 #include <QMouseEvent>
 #include <QFrame>
 #include <QEvent>
@@ -466,36 +466,39 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent)
 //  topLayout->addWidget( mTodoListView );
   topLayout->addWidget( mWidgetStack );
 
-  mPriorityPopupMenu = new Q3PopupMenu( this );
-  mPriority[ mPriorityPopupMenu->insertItem( i18n("Unspecified priority", "unspecified") ) ] = 0;
-  mPriority[ mPriorityPopupMenu->insertItem( i18n( "1 (highest)") ) ] = 1;
-  mPriority[ mPriorityPopupMenu->insertItem( i18n( "2" ) ) ] = 2;
-  mPriority[ mPriorityPopupMenu->insertItem( i18n( "3" ) ) ] = 3;
-  mPriority[ mPriorityPopupMenu->insertItem( i18n( "4" ) ) ] = 4;
-  mPriority[ mPriorityPopupMenu->insertItem( i18n( "5 (medium)" ) ) ] = 5;
-  mPriority[ mPriorityPopupMenu->insertItem( i18n( "6" ) ) ] = 6;
-  mPriority[ mPriorityPopupMenu->insertItem( i18n( "7" ) ) ] = 7;
-  mPriority[ mPriorityPopupMenu->insertItem( i18n( "8" ) ) ] = 8;
-  mPriority[ mPriorityPopupMenu->insertItem( i18n( "9 (lowest)" ) ) ] = 9;
-  connect( mPriorityPopupMenu, SIGNAL( activated( int ) ),
-           SLOT( setNewPriority( int ) ));
+#warning "Implement the popup menus as KSelectActions, once it's save enough to use that class!"
+  mPriorityPopupMenu = new QMenu( this );
+  mPriority[ mPriorityPopupMenu->addAction( i18n("Unspecified priority", "unspecified") ) ] = 0;
+  mPriority[ mPriorityPopupMenu->addAction( i18n( "1 (highest)") ) ] = 1;
+  mPriority[ mPriorityPopupMenu->addAction( i18n( "2" ) ) ] = 2;
+  mPriority[ mPriorityPopupMenu->addAction( i18n( "3" ) ) ] = 3;
+  mPriority[ mPriorityPopupMenu->addAction( i18n( "4" ) ) ] = 4;
+  mPriority[ mPriorityPopupMenu->addAction( i18n( "5 (medium)" ) ) ] = 5;
+  mPriority[ mPriorityPopupMenu->addAction( i18n( "6" ) ) ] = 6;
+  mPriority[ mPriorityPopupMenu->addAction( i18n( "7" ) ) ] = 7;
+  mPriority[ mPriorityPopupMenu->addAction( i18n( "8" ) ) ] = 8;
+  mPriority[ mPriorityPopupMenu->addAction( i18n( "9 (lowest)" ) ) ] = 9;
+  connect( mPriorityPopupMenu, SIGNAL( triggered( QAction* ) ),
+           SLOT( setNewPriority( QAction* ) ));
 
-  mPercentageCompletedPopupMenu = new Q3PopupMenu(this);
+  mPercentageCompletedPopupMenu = new QMenu(this);
   for (int i = 0; i <= 100; i+=10) {
     QString label = QString ("%1 %").arg (i);
-    mPercentage[mPercentageCompletedPopupMenu->insertItem (label)] = i;
+    mPercentage[ mPercentageCompletedPopupMenu->addAction(label) ] = i;
   }
-  connect( mPercentageCompletedPopupMenu, SIGNAL( activated( int ) ),
-           SLOT( setNewPercentage( int ) ) );
+  connect( mPercentageCompletedPopupMenu, SIGNAL( activated( QAction* ) ),
+           SLOT( setNewPercentage( QAction* ) ) );
 
   mMovePopupMenu = new KDatePickerPopup(
                              KDatePickerPopup::NoDate |
                              KDatePickerPopup::DatePicker |
                              KDatePickerPopup::Words );
+  mMovePopupMenu->setTitle( i18n("&Move To") );
   mCopyPopupMenu = new KDatePickerPopup(
                              KDatePickerPopup::NoDate |
                              KDatePickerPopup::DatePicker |
                              KDatePickerPopup::Words );
+  mCopyPopupMenu->setTitle( i18n("&Copy To") );
 
 
   connect( mMovePopupMenu, SIGNAL( dateChanged( const QDate& )),
@@ -503,27 +506,45 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent)
   connect( mCopyPopupMenu, SIGNAL( dateChanged( const QDate& )),
            SLOT( copyTodoToDate( const QDate& ) ) );
 
-  mItemPopupMenu = new Q3PopupMenu(this);
-  mItemPopupMenu->insertItem(i18n("&Show"), this,
+  mItemPopupMenu = new QMenu(this);
+  mItemPopupMenu->addAction(i18n("&Show"), this,
                              SLOT (showTodo()));
-  mItemPopupMenu->insertItem(i18n("&Edit..."), this,
-                             SLOT (editTodo()), 0, ePopupEdit );
-  mItemPopupMenu->insertItem(KOGlobals::self()->smallIconSet("editdelete"), i18n("&Delete"), this,
-                             SLOT (deleteTodo()), 0, ePopupDelete );
-  mItemPopupMenu->insertSeparator();
-  mItemPopupMenu->insertItem(KOGlobals::self()->smallIconSet("todo"), i18n("New &To-do..."), this,
+  QAction* action;
+  action = mItemPopupMenu->addAction(i18n("&Edit..."), this, SLOT (editTodo()) );
+  mActionsOnSelection.append( action );
+  action = mItemPopupMenu->addAction(KOGlobals::self()->smallIconSet("editdelete"), i18n("&Delete"), this,
+                             SLOT (deleteTodo()) );
+  mActionsOnSelection.append( action );
+
+  mItemPopupMenu->addSeparator();
+
+  mItemPopupMenu->addAction(KOGlobals::self()->smallIconSet("todo"), i18n("New &To-do..."), this,
                              SLOT (newTodo()));
-  mItemPopupMenu->insertItem(i18n("New Su&b-to-do..."), this,
-                             SLOT (newSubTodo()));
-  mItemPopupMenu->insertItem( i18n("&Make this To-do Independent"), this,
-      SIGNAL( unSubTodoSignal() ), 0, ePopupUnSubTodo );
-  mItemPopupMenu->insertItem( i18n("Make all Sub-to-dos &Independent"), this,
-      SIGNAL( unAllSubTodoSignal() ), 0, ePopupUnAllSubTodo );
-  mItemPopupMenu->insertSeparator();
-  mItemPopupMenu->insertItem( i18n("&Copy To"), mCopyPopupMenu, ePopupCopyTo );
-  mItemPopupMenu->insertItem(i18n("&Move To"), mMovePopupMenu, ePopupMoveTo );
-  mItemPopupMenu->insertSeparator();
-  mItemPopupMenu->insertItem(i18n("delete completed to-dos","Pur&ge Completed"),
+  action = mItemPopupMenu->addAction(i18n("New Su&b-to-do..."), this, SLOT (newSubTodo()));
+  mActionsOnSelection.append( action );
+
+  mMakeThisTodoIndependent = mItemPopupMenu->addAction( i18n("&Make this To-do Independent"), this,
+      SIGNAL( unSubTodoSignal() ) );
+  mActionsOnSelection.append( mMakeThisTodoIndependent );
+
+  mMakeChildTodosIndependent = mItemPopupMenu->addAction( i18n("Make all Sub-to-dos &Independent"), this,
+      SIGNAL( unAllSubTodoSignal() ) );
+  mActionsOnSelection.append( mMakeChildTodosIndependent );
+
+  mItemPopupMenu->addSeparator();
+
+#warning " FIXME QT4: Re-add the copy/move to date sub-menu that includes the date pickker widget!"
+// #if 0
+  // append the copy/move to date menus at the end:
+  action = mItemPopupMenu->insertMenu( 0, mCopyPopupMenu );
+  mActionsOnSelection.append( action );
+  action = mItemPopupMenu->insertMenu( 0, mMovePopupMenu );
+  mActionsOnSelection.append( action );
+
+  action = mItemPopupMenu->addSeparator();
+
+// #endif
+  mItemPopupMenu->addAction(i18n("delete completed to-dos","Pur&ge Completed"),
                              this, SLOT( purgeCompleted() ) );
 
   connect( mMovePopupMenu, SIGNAL( dateChanged( QDate ) ),
@@ -531,10 +552,10 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent)
   connect( mCopyPopupMenu, SIGNAL( dateChanged( QDate ) ),
            mItemPopupMenu, SLOT( hide() ) );
 
-  mPopupMenu = new Q3PopupMenu(this);
-  mPopupMenu->insertItem(KOGlobals::self()->smallIconSet("todo"), i18n("&New To-do..."), this,
+  mPopupMenu = new QMenu(this);
+  mPopupMenu->addAction(KOGlobals::self()->smallIconSet("todo"), i18n("&New To-do..."), this,
                          SLOT (newTodo()));
-  mPopupMenu->insertItem(i18n("delete completed to-dos","&Purge Completed"),
+  mPopupMenu->addAction(i18n("delete completed to-dos","&Purge Completed"),
                          this, SLOT(purgeCompleted()));
 
   mDocPrefs = new DocPrefs( objectName() );
@@ -1071,12 +1092,9 @@ void KOTodoView::popupMenu( Q3ListViewItem *item, const QPoint &, int column )
   if ( mActiveItem && mActiveItem->todo() &&
        !mActiveItem->todo()->isReadOnly() ) {
     bool editable = !mActiveItem->todo()->isReadOnly();
-    mItemPopupMenu->setItemEnabled( ePopupEdit, editable );
-    mItemPopupMenu->setItemEnabled( ePopupDelete, editable );
-    mItemPopupMenu->setItemEnabled( ePopupMoveTo, editable );
-    mItemPopupMenu->setItemEnabled( ePopupCopyTo, editable );
-    mItemPopupMenu->setItemEnabled( ePopupUnSubTodo, editable );
-    mItemPopupMenu->setItemEnabled( ePopupUnAllSubTodo, editable );
+    for ( int i = 0; i < mActionsOnSelection.size(); ++i ) {
+      mActionsOnSelection[i]->setEnabled( editable );
+    }
 
     if ( editable ) {
       QDate date = mActiveItem->todo()->dtDue().date();
@@ -1102,10 +1120,8 @@ void KOTodoView::popupMenu( Q3ListViewItem *item, const QPoint &, int column )
         default:
           mCopyPopupMenu->datePicker()->setDate( date );
           mCopyPopupMenu->datePicker()->setDate( QDate::currentDate() );
-          mItemPopupMenu->setItemEnabled( ePopupUnSubTodo,
-                                          mActiveItem->todo()->relatedTo() );
-          mItemPopupMenu->setItemEnabled( ePopupUnAllSubTodo,
-                                          !mActiveItem->todo()->relations().isEmpty() );
+          mMakeThisTodoIndependent->setEnabled( mActiveItem->todo()->relatedTo() );
+          mMakeChildTodosIndependent->setEnabled( !mActiveItem->todo()->relations().isEmpty() );
           mItemPopupMenu->popup( QCursor::pos() );
       }
     } else {
@@ -1143,14 +1159,14 @@ void KOTodoView::deleteTodo()
   }
 }
 
-void KOTodoView::setNewPriority(int index)
+void KOTodoView::setNewPriority( QAction*action )
 {
   if ( !mActiveItem || !mChanger ) return;
   Todo *todo = mActiveItem->todo();
   if ( !todo->isReadOnly () &&
        mChanger->beginChange( todo ) ) {
     Todo *oldTodo = todo->clone();
-    todo->setPriority(mPriority[index]);
+    todo->setPriority(mPriority[action]);
     mActiveItem->construct();
 
     mChanger->changeIncidence( oldTodo, todo, KOGlobals::PRIORITY_MODIFIED );
@@ -1197,9 +1213,9 @@ void KOTodoView::setNewPercentage( KOTodoViewItem *item, int percentage )
   }
 }
 
-void KOTodoView::setNewPercentage( int index )
+void KOTodoView::setNewPercentage( QAction* action )
 {
-  setNewPercentage( mActiveItem, mPercentage[index] );
+  setNewPercentage( mActiveItem, mPercentage[action] );
 }
 
 void KOTodoView::setNewDate( const QDate &date )
@@ -1254,9 +1270,9 @@ void KOTodoView::copyTodoToDate( const QDate &date )
  }
 }
 
-Q3PopupMenu *KOTodoView::getCategoryPopupMenu( KOTodoViewItem *todoItem )
+QMenu *KOTodoView::getCategoryPopupMenu( KOTodoViewItem *todoItem )
 {
-  Q3PopupMenu *tempMenu = new Q3PopupMenu( this );
+  QMenu *tempMenu = new QMenu( this );
   QStringList checkedCategories = todoItem->todo()->categories();
 
   tempMenu->setCheckable( true );
@@ -1264,18 +1280,18 @@ Q3PopupMenu *KOTodoView::getCategoryPopupMenu( KOTodoViewItem *todoItem )
   for ( it = KOPrefs::instance()->mCustomCategories.begin();
         it != KOPrefs::instance()->mCustomCategories.end();
         ++it ) {
-    int index = tempMenu->insertItem( *it );
-    mCategory[ index ] = *it;
+    QAction *action = tempMenu->addAction( *it );
+    mCategory[ action ] = *it;
     if ( checkedCategories.find( *it ) != checkedCategories.end() )
-      tempMenu->setItemChecked( index, true );
+      action->setChecked( true );
   }
 
-  connect ( tempMenu, SIGNAL( activated( int ) ),
-            SLOT( changedCategories( int ) ) );
+  connect ( tempMenu, SIGNAL( activated( QAction* ) ),
+            SLOT( changedCategories( QAction* ) ) );
   return tempMenu;
 }
 
-void KOTodoView::changedCategories(int index)
+void KOTodoView::changedCategories( QAction* action )
 {
   if ( !mActiveItem || !mChanger ) return;
   Todo *todo = mActiveItem->todo();
@@ -1285,10 +1301,10 @@ void KOTodoView::changedCategories(int index)
     Todo *oldTodo = todo->clone();
 
     QStringList categories = todo->categories ();
-    if ( categories.find( mCategory[index] ) != categories.end() )
-      categories.remove( mCategory[index] );
+    if ( categories.find( mCategory[action] ) != categories.end() )
+      categories.remove( mCategory[action] );
     else
-      categories.insert( categories.end(), mCategory[index] );
+      categories.insert( categories.end(), mCategory[action] );
     categories.sort();
     todo->setCategories( categories );
     mActiveItem->construct();
