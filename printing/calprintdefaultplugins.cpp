@@ -584,8 +584,8 @@ void CalPrintTodos::saveConfig()
     mConfig->writeEntry( "Include percentage completed", mIncludePercentComplete );
     mConfig->writeEntry( "Connect subtodos", mConnectSubTodos );
     mConfig->writeEntry( "Strike out completed summaries", mStrikeOutCompleted );
-    mConfig->writeEntry( "Sort field", mTodoSortField );
-    mConfig->writeEntry( "Sort direction", mTodoSortDirection );
+    mConfig->writeEntry( "Sort field", (int)mTodoSortField );
+    mConfig->writeEntry( "Sort direction", (int)mTodoSortDirection );
   }
 }
 

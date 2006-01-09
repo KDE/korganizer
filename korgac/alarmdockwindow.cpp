@@ -48,8 +48,8 @@
 #include <ktoolinvocation.h>
 #include <kglobal.h>
 
-AlarmDockWindow::AlarmDockWindow( const char *name )
-  : KSystemTray( 0, name )
+AlarmDockWindow::AlarmDockWindow()
+  : KSystemTray( 0 )
 {
   // Read the autostart status from the config file
   KConfig *config = KGlobal::config();

@@ -34,7 +34,7 @@ class AlarmDockWindow : public KSystemTray
 {
     Q_OBJECT
   public:
-    AlarmDockWindow( const char *name = 0 );
+    AlarmDockWindow();
     virtual ~AlarmDockWindow();
 
     void enableAutostart( bool enabled );
