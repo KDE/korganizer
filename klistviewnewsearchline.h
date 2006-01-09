@@ -21,9 +21,6 @@
 #define KLISTVIEWNEWSEARCHLINE_H
 
 #include <klineedit.h>
-#include <q3hbox.h>
-//Added by qt3to4:
-#include <Q3PopupMenu>
 
 class KListView;
 class Q3ListViewItem;
