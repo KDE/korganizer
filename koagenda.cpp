@@ -36,7 +36,7 @@
 //Added by qt3to4:
 #include <QWheelEvent>
 #include <QPixmap>
-#include <Q3MemArray>
+#include <QVector>
 #include <QList>
 #include <QEvent>
 #include <QKeyEvent>
@@ -1511,9 +1511,9 @@ QTime KOAgenda::gyToTime(int gy)
   return time;
 }
 
-Q3MemArray<int> KOAgenda::minContentsY()
+QVector<int> KOAgenda::minContentsY()
 {
-  Q3MemArray<int> minArray;
+  QVector<int> minArray;
   minArray.fill( timeToY( QTime(23, 59) ), mSelectedDates.count() );
   foreach( KOAgendaItem *item, mItems ) {
     int ymin = item->cellYTop();
@@ -1527,9 +1527,9 @@ Q3MemArray<int> KOAgenda::minContentsY()
   return minArray;
 }
 
-Q3MemArray<int> KOAgenda::maxContentsY()
+QVector<int> KOAgenda::maxContentsY()
 {
-  Q3MemArray<int> maxArray;
+  QVector<int> maxArray;
   maxArray.fill( timeToY( QTime(0, 0) ), mSelectedDates.count() );
   foreach( KOAgendaItem *item, mItems ) {
     int ymax = item->cellYBottom();
@@ -1971,7 +1971,7 @@ void KOAgenda::setDateList(const DateList &selectedDates)
     marcus_bains();
 }
 
-void KOAgenda::setHolidayMask(Q3MemArray<bool> *mask)
+void KOAgenda::setHolidayMask(QVector<bool> *mask)
 {
   mHolidayMask = mask;
 

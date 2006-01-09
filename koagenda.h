@@ -29,7 +29,7 @@
 #include <qpointer.h>
 //Added by qt3to4:
 #include <QWheelEvent>
-#include <Q3MemArray>
+#include <QVector>
 #include <QList>
 #include <QEvent>
 #include <QKeyEvent>
@@ -106,8 +106,8 @@ class KOAgenda : public Q3ScrollView
     int timeToY ( const QTime &time );
     QTime gyToTime ( int y );
 
-    Q3MemArray<int> minContentsY();
-    Q3MemArray<int> maxContentsY();
+    QVector<int> minContentsY();
+    QVector<int> maxContentsY();
 
     int visibleContentsYMin();
     int visibleContentsYMax();
@@ -146,7 +146,7 @@ class KOAgenda : public Q3ScrollView
 
     void checkScrollBoundaries();
 
-    void setHolidayMask( Q3MemArray<bool> * );
+    void setHolidayMask( QVector<bool> * );
 
     void setDateList( const DateList &selectedDates );
     DateList dateList() const;
@@ -335,7 +335,7 @@ class KOAgenda : public Q3ScrollView
 
     // Working Hour coordiantes
     bool mWorkingHoursEnable;
-    Q3MemArray<bool> *mHolidayMask;
+    QVector<bool> *mHolidayMask;
     int mWorkingHoursYTop;
     int mWorkingHoursYBottom;
 

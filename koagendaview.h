@@ -30,7 +30,7 @@
 //Added by qt3to4:
 #include <QPixmap>
 #include <QPaintEvent>
-#include <Q3MemArray>
+#include <QVector>
 #include <QFrame>
 #include <QBoxLayout>
 #include <QResizeEvent>
@@ -113,7 +113,7 @@ class EventIndicator : public QFrame
     QBoxLayout *mTopLayout;
     Location mLocation;
     QPixmap mPixmap;
-    Q3MemArray<bool> mEnabled;
+    QVector<bool> mEnabled;
 };
 
 class KOAlternateLabel : public QLabel
@@ -291,10 +291,10 @@ class KOAgendaView : public KOEventView
     EventIndicator *mEventIndicatorTop;
     EventIndicator *mEventIndicatorBottom;
 
-    Q3MemArray<int> mMinY;
-    Q3MemArray<int> mMaxY;
+    QVector<int> mMinY;
+    QVector<int> mMaxY;
 
-    Q3MemArray<bool> mHolidayMask;
+    QVector<bool> mHolidayMask;
 
     QPixmap mExpandedPixmap;
     QPixmap mNotExpandedPixmap;

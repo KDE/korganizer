@@ -546,7 +546,7 @@ void ActionManager::initActions()
   KConfig *config = KOGlobals::self()->config();
   config->setGroup( "Settings" );
   mDateNavigatorShowAction->setChecked(
-      config->readBoolEntry( "DateNavigatorVisible", true ) );
+      config->readEntry( "DateNavigatorVisible", true ).toBool() );
   // if we are a kpart, then let's not show the todo in the left pane by
   // default since there's also a Todo part and we'll assume they'll be
   // using that as well, so let's not duplicate it (by default) here
