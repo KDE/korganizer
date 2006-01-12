@@ -54,8 +54,8 @@ AlarmDockWindow::AlarmDockWindow()
   // Read the autostart status from the config file
   KConfig *config = KGlobal::config();
   config->setGroup("General");
-  bool autostart = config->readBoolEntry( "Autostart", true );
-  bool alarmsEnabled = config->readBoolEntry( "Enabled", true );
+  bool autostart = config->readEntry( "Autostart", true );
+  bool alarmsEnabled = config->readEntry( "Enabled", true );
 
   mName = i18n( "KOrganizer Reminder Daemon" );
   setCaption( mName );

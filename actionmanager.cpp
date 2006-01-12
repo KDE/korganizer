@@ -551,9 +551,9 @@ void ActionManager::initActions()
   // default since there's also a Todo part and we'll assume they'll be
   // using that as well, so let's not duplicate it (by default) here
   mTodoViewShowAction->setChecked(
-      config->readBoolEntry( "TodoViewVisible", mIsPart ? false : true ) );
+      config->readEntry( "TodoViewVisible", mIsPart ? false : true ) );
   mEventViewerShowAction->setChecked(
-      config->readBoolEntry( "EventViewerVisible", true ) );
+      config->readEntry( "EventViewerVisible", true ) );
   toggleDateNavigator();
   toggleTodoView();
   toggleEventViewer();
@@ -566,9 +566,9 @@ void ActionManager::initActions()
                         this, SLOT( toggleResourceButtons() ),
                         mACollection, "show_resourcebuttons" );
     mResourceViewShowAction->setChecked(
-        config->readBoolEntry( "ResourceViewVisible", true ) );
+        config->readEntry( "ResourceViewVisible", true ) );
     mResourceButtonsAction->setChecked(
-        config->readBoolEntry( "ResourceButtonsVisible", true ) );
+        config->readEntry( "ResourceButtonsVisible", true ) );
 
     toggleResourceView();
     toggleResourceButtons();
@@ -1183,7 +1183,7 @@ void ActionManager::readProperties( KConfig *config )
   kdDebug(5850) << "ActionManager::readProperties" << endl;
 
   bool isResourceCalendar(
-    config->readBoolEntry( "UseResourceCalendar", true ) );
+    config->readEntry( "UseResourceCalendar", true ) );
   QString calendarUrl = config->readPathEntry( "Calendar" );
 
   if ( !isResourceCalendar && !calendarUrl.isEmpty() ) {

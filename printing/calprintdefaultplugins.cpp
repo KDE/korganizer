@@ -115,8 +115,8 @@ void CalPrintDay::loadConfig()
     QDateTime endTm( dt, tm1.addSecs( 12 * 60 * 60 ) );
     mStartTime = mConfig->readDateTimeEntry( "Start time", &startTm ).time();
     mEndTime = mConfig->readDateTimeEntry( "End time", &endTm ).time();
-    mIncludeTodos = mConfig->readBoolEntry( "Include todos", false );
-    mIncludeAllEvents = mConfig->readBoolEntry( "Include all events", false );
+    mIncludeTodos = mConfig->readEntry( "Include todos", false );
+    mIncludeAllEvents = mConfig->readEntry( "Include all events", false );
   }
   setSettingsWidget();
 }
@@ -256,7 +256,7 @@ void CalPrintWeek::loadConfig()
     QDateTime endTm( dt, tm1.addSecs( 43200 ) );
     mStartTime = mConfig->readDateTimeEntry( "Start time", &startTm ).time();
     mEndTime = mConfig->readDateTimeEntry( "End time", &endTm ).time();
-    mIncludeTodos = mConfig->readBoolEntry( "Include todos", false );
+    mIncludeTodos = mConfig->readEntry( "Include todos", false );
     mWeekPrintType =(eWeekPrintType)( mConfig->readNumEntry( "Print type", (int)Filofax ) );
   }
   setSettingsWidget();
@@ -420,10 +420,10 @@ void CalPrintMonth::setSettingsWidget()
 void CalPrintMonth::loadConfig()
 {
   if ( mConfig ) {
-    mWeekNumbers = mConfig->readBoolEntry( "Print week numbers", true );
-    mRecurDaily = mConfig->readBoolEntry( "Print daily incidences", true );
-    mRecurWeekly = mConfig->readBoolEntry( "Print weekly incidences", true );
-    mIncludeTodos = mConfig->readBoolEntry( "Include todos", false );
+    mWeekNumbers = mConfig->readEntry( "Print week numbers", true );
+    mRecurDaily = mConfig->readEntry( "Print daily incidences", true );
+    mRecurWeekly = mConfig->readEntry( "Print weekly incidences", true );
+    mIncludeTodos = mConfig->readEntry( "Include todos", false );
   }
   setSettingsWidget();
 }
@@ -560,12 +560,12 @@ void CalPrintTodos::loadConfig()
   if ( mConfig ) {
     mPageTitle = mConfig->readEntry( "Page title", i18n("To-do list") );
     mTodoPrintType = (eTodoPrintType)mConfig->readNumEntry( "Print type", (int)TodosAll );
-    mIncludeDescription = mConfig->readBoolEntry( "Include description", true );
-    mIncludePriority = mConfig->readBoolEntry( "Include priority", true );
-    mIncludeDueDate = mConfig->readBoolEntry( "Include due date", true );
-    mIncludePercentComplete = mConfig->readBoolEntry( "Include percentage completed", true );
-    mConnectSubTodos = mConfig->readBoolEntry( "Connect subtodos", true );
-    mStrikeOutCompleted = mConfig->readBoolEntry( "Strike out completed summaries",  true );
+    mIncludeDescription = mConfig->readEntry( "Include description", true );
+    mIncludePriority = mConfig->readEntry( "Include priority", true );
+    mIncludeDueDate = mConfig->readEntry( "Include due date", true );
+    mIncludePercentComplete = mConfig->readEntry( "Include percentage completed", true );
+    mConnectSubTodos = mConfig->readEntry( "Connect subtodos", true );
+    mStrikeOutCompleted = mConfig->readEntry( "Strike out completed summaries",  true );
     mTodoSortField = (eTodoSortField)mConfig->readNumEntry( "Sort field", (int)TodoFieldSummary );
     mTodoSortDirection = (eTodoSortDirection)mConfig->readNumEntry( "Sort direction", (int)TodoDirectionAscending );
   }

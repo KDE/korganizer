@@ -63,12 +63,12 @@ void ConfigDialog::load()
 
   config.setGroup("Calendar/Hebrew Calendar Plugin");
   israel_box->setChecked(config.
-                         readBoolEntry("Israel",
+                         readEntry("Israel",
                                        (KGlobal::locale()->
                                         country() == ".il")));
-  parsha_box->setChecked(config.readBoolEntry("Parsha", true));
-  chol_box->setChecked(config.readBoolEntry("Chol_HaMoed", true));
-  omer_box->setChecked(config.readBoolEntry("Omer", true));
+  parsha_box->setChecked(config.readEntry("Parsha", true));
+  chol_box->setChecked(config.readEntry("Chol_HaMoed", true));
+  omer_box->setChecked(config.readEntry("Omer", true));
 
 }
 

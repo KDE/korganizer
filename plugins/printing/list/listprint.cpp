@@ -84,7 +84,7 @@ void CalPrintList::setSettingsWidget()
 void CalPrintList::loadConfig()
 {
   if ( mConfig ) {
-    mUseDateRange = mConfig->readBoolEntry( "ListsInRange", false );
+    mUseDateRange = mConfig->readEntry( "ListsInRange", false );
   }
   setSettingsWidget();
 }

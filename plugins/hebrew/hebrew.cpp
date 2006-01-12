@@ -50,11 +50,11 @@ QString Hebrew::shortText(const QDate & date)
 
   config.setGroup("Calendar/Hebrew Calendar Plugin");
   IsraelP =
-    config.readBoolEntry("Israel",
+    config.readEntry("Israel",
                          (KGlobal::locale()->country() == ".il"));
-  Holiday::ParshaP = config.readBoolEntry("Parsha", true);
-  Holiday::CholP = config.readBoolEntry("Chol_HaMoed", true);
-  Holiday::OmerP = config.readBoolEntry("Omer", true);
+  Holiday::ParshaP = config.readEntry("Parsha", true);
+  Holiday::CholP = config.readEntry("Chol_HaMoed", true);
+  Holiday::OmerP = config.readEntry("Omer", true);
   QString *label_text = new QString();
 
   int day = date.day();

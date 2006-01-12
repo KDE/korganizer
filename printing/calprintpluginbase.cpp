@@ -97,7 +97,7 @@ void CalPrintPluginBase::doLoadConfig()
     QDateTime currDate( QDate::currentDate() );
     mFromDate = group.readDateTimeEntry( "FromDate", &currDate ).date();
     mToDate = group.readDateTimeEntry( "ToDate" ).date();
-    mUseColors = group.readBoolEntry( "UseColors", true );
+    mUseColors = group.readEntry( "UseColors", true );
     mHelper->setUseColors( mUseColors );
     loadConfig();
   } else {

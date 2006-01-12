@@ -83,7 +83,7 @@ void CalPrintWhatsNext::setSettingsWidget()
 void CalPrintWhatsNext::loadConfig()
 {
   if ( mConfig ) {
-    mUseDateRange = mConfig->readBoolEntry( "WhatsNextsInRange", false );
+    mUseDateRange = mConfig->readEntry( "WhatsNextsInRange", false );
   }
   setSettingsWidget();
 }

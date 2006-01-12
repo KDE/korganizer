@@ -102,7 +102,7 @@ void KOAlarmClient::checkAlarms()
   KConfig *cfg = KGlobal::config();
 
   cfg->setGroup( "General" );
-  if ( !cfg->readBoolEntry( "Enabled", true ) ) return;
+  if ( !cfg->readEntry( "Enabled", true ) ) return;
 
   QDateTime from = mLastChecked.addSecs( 1 );
   mLastChecked = QDateTime::currentDateTime();

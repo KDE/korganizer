@@ -82,7 +82,7 @@ void CalPrintJournal::setSettingsWidget()
 void CalPrintJournal::loadConfig()
 {
   if ( mConfig ) {
-    mUseDateRange = mConfig->readBoolEntry( "JournalsInRange", false );
+    mUseDateRange = mConfig->readEntry( "JournalsInRange", false );
   }
   setSettingsWidget();
 }
