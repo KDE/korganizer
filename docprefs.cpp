@@ -56,7 +56,7 @@ QString DocPrefs::doc() const
 bool DocPrefs::readBoolEntry( const QString &id ) const
 {
     mConfig->setGroup( mDocId );
-    bool result = mConfig->readBoolEntry( id, false );
+    bool result = mConfig->readEntry( id, false );
     return result;
 }
 
