@@ -188,7 +188,7 @@ void KOPrefs::usrReadConfig()
   QList<QColor> oldCategoryColors;
   QStringList::Iterator it;
   for (it = mCustomCategories.begin();it != mCustomCategories.end();++it ) {
-    QColor c = config()->readColorEntry(*it, &mDefaultCategoryColor);
+    QColor c = config()->readEntry(*it, mDefaultCategoryColor);
     oldCategoryColors.append( (c == QColor(196,196,196)) ?
                               mDefaultCategoryColor : c);
   }
@@ -198,7 +198,7 @@ void KOPrefs::usrReadConfig()
   QList<QColor>::Iterator it2;
   for (it = mCustomCategories.begin(), it2 = oldCategoryColors.begin();
        it != mCustomCategories.end(); ++it, ++it2 ) {
-    setCategoryColor(*it,config()->readColorEntry(*it, &*it2));
+    setCategoryColor(*it,config()->readEntry(*it, *it2));
   }
 
   config()->setGroup( "Resources Colors" );
@@ -208,8 +208,8 @@ void KOPrefs::usrReadConfig()
   for( it3 = map.begin(); it3 != map.end(); ++it3 ) {
     kdDebug(5850)<< "KOPrefs::usrReadConfig: key: " << it3.key() << " value: "
       << it3.data()<<endl;
-    setResourceColor( it3.key(), config()->readColorEntry( it3.key(),
-      &mDefaultResourceColor ) );
+    setResourceColor( it3.key(), config()->readEntry( it3.key(),
+      mDefaultResourceColor ) );
   }
 
 
