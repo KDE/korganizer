@@ -238,7 +238,7 @@ void AlarmDialog::slotSave()
     return;
 
   config->setGroup( "General" );
-  int numReminders = config->readNumEntry("Reminders", 0);
+  int numReminders = config->readEntry("Reminders", 0);
   config->writeEntry( "Reminders", ++numReminders );
 
   config->setGroup( QString("Incidence-%1").arg(numReminders) );

@@ -37,7 +37,7 @@ Datenums::Datenums()
 {
   KConfig config( "korganizerrc", true, false); // Open read-only, no kdeglobals
   config.setGroup("Calendar/DateNum Plugin");
-  mDateNum = config.readNumEntry( "ShowDayNumbers", 0 );
+  mDateNum = config.readEntry( "ShowDayNumbers", 0 );
 }
 
 void Datenums::configure(QWidget *parent)

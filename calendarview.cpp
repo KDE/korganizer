@@ -512,7 +512,7 @@ void CalendarView::readSettings()
   readFilterSettings( config );
 
   config->setGroup( "Views" );
-  int dateCount = config->readNumEntry( "ShownDatesCount", 7 );
+  int dateCount = config->readEntry( "ShownDatesCount", 7 );
   if ( dateCount == 5 ) mNavigator->selectWorkWeek();
   else if ( dateCount == 7 ) mNavigator->selectWeek();
   else mNavigator->selectDates( dateCount );
@@ -567,11 +567,11 @@ void CalendarView::readFilterSettings( KConfig *config )
     CalFilter *filter;
     filter = new CalFilter( *it );
     config->setGroup( "Filter_" + (*it) );
-    filter->setCriteria( config->readNumEntry( "Criteria", 0 ) );
+    filter->setCriteria( config->readEntry( "Criteria", 0 ) );
     filter->setCategoryList( config->readListEntry( "CategoryList" ) );
     if ( filter->criteria() & KCal::CalFilter::HideTodosWithoutAttendeeInEmailList )
       filter->setEmailList( KOPrefs::instance()->allEmails() );
-    filter->setCompletedTimeSpan( config->readNumEntry( "HideTodoDays", 0 ) );
+    filter->setCompletedTimeSpan( config->readEntry( "HideTodoDays", 0 ) );
     mFilters.append( filter );
 
     ++it;

@@ -70,7 +70,7 @@ void ConfigDialog::load()
 {
   KConfig config( "korganizerrc", true, false); // Open read-only, no kdeglobals
   config.setGroup("Calendar/DateNum Plugin");
-  int datenum = config.readNumEntry( "ShowDayNumbers", 0 );
+  int datenum = config.readEntry( "ShowDayNumbers", 0 );
   QAbstractButton *btn = mDayNumGroup->button( datenum );
   if (btn) btn->setChecked( true );
 }

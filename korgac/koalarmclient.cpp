@@ -63,14 +63,14 @@ KOAlarmClient::KOAlarmClient( QObject *parent, const char *name )
 
   KConfig *config = KGlobal::config();
   config->setGroup( "Alarms" );
-  int interval = config->readNumEntry( "Interval", 60 );
+  int interval = config->readEntry( "Interval", 60 );
   kdDebug(5890) << "KOAlarmClient check interval: " << interval << " seconds."
                 << endl;
   mLastChecked = config->readDateTimeEntry( "CalendarsLastChecked" );
 
   // load reminders that were active when quitting
   config->setGroup( "General" );
-  int numReminders = config->readNumEntry( "Reminders", 0 );
+  int numReminders = config->readEntry( "Reminders", 0 );
   for ( int i=1; i<=numReminders; ++i )
   {
     QString group( QString( "Incidence-%1" ).arg( i ) );

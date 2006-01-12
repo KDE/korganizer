@@ -257,7 +257,7 @@ void CalPrintWeek::loadConfig()
     mStartTime = mConfig->readDateTimeEntry( "Start time", &startTm ).time();
     mEndTime = mConfig->readDateTimeEntry( "End time", &endTm ).time();
     mIncludeTodos = mConfig->readEntry( "Include todos", false );
-    mWeekPrintType =(eWeekPrintType)( mConfig->readNumEntry( "Print type", (int)Filofax ) );
+    mWeekPrintType =(eWeekPrintType)( mConfig->readEntry( "Print type", (int)Filofax ) );
   }
   setSettingsWidget();
 }
@@ -559,15 +559,15 @@ void CalPrintTodos::loadConfig()
 {
   if ( mConfig ) {
     mPageTitle = mConfig->readEntry( "Page title", i18n("To-do list") );
-    mTodoPrintType = (eTodoPrintType)mConfig->readNumEntry( "Print type", (int)TodosAll );
+    mTodoPrintType = (eTodoPrintType)mConfig->readEntry( "Print type", (int)TodosAll );
     mIncludeDescription = mConfig->readEntry( "Include description", true );
     mIncludePriority = mConfig->readEntry( "Include priority", true );
     mIncludeDueDate = mConfig->readEntry( "Include due date", true );
     mIncludePercentComplete = mConfig->readEntry( "Include percentage completed", true );
     mConnectSubTodos = mConfig->readEntry( "Connect subtodos", true );
     mStrikeOutCompleted = mConfig->readEntry( "Strike out completed summaries",  true );
-    mTodoSortField = (eTodoSortField)mConfig->readNumEntry( "Sort field", (int)TodoFieldSummary );
-    mTodoSortDirection = (eTodoSortDirection)mConfig->readNumEntry( "Sort direction", (int)TodoDirectionAscending );
+    mTodoSortField = (eTodoSortField)mConfig->readEntry( "Sort field", (int)TodoFieldSummary );
+    mTodoSortDirection = (eTodoSortDirection)mConfig->readEntry( "Sort direction", (int)TodoDirectionAscending );
   }
   setSettingsWidget();
 }

@@ -61,7 +61,7 @@ void KOEventViewer::readSettings( KConfig * config )
 // be good for?
 #if 0
     config->setGroup( QString("EventViewer-%1").arg( name() )  );
-    int zoomFactor = config->readNumEntry("ZoomFactor", pointSize() );
+    int zoomFactor = config->readEntry("ZoomFactor", pointSize() );
     zoomTo( zoomFactor/2 );
     kdDebug(5850) << " KOEventViewer: restoring the pointSize:  "<< pointSize() 
       << ", zoomFactor: " << zoomFactor << endl;
