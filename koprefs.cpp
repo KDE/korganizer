@@ -75,6 +75,9 @@ KOPrefs::KOPrefs() :
 
   monthViewFontItem()->setDefaultValue( mDefaultMonthViewFont );
   eventColorItem()->setDefaultValue( mDefaultCategoryColor );
+
+  // Load it now, not deep within some painting code
+  KABC::StdAddressBook::self();
 }
 
 
