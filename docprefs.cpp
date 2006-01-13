@@ -69,7 +69,7 @@ void DocPrefs::writeBoolEntry( const QString &id, bool value )
 int DocPrefs::readNumEntry( const QString &id ) const
 {
   mConfig->setGroup( mDocId );
-  int result = mConfig->readNumEntry( id, 0 );
+  int result = mConfig->readEntry( id, 0 );
   return result;
 }
 
