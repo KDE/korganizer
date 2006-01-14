@@ -116,7 +116,7 @@ void ResourceItem::createSubresourceItems()
     for ( it=subresources.begin(); it!=subresources.end(); ++it ) {
       ResourceItem *item = new ResourceItem( mResource, *it, mResource->labelForSubresource( *it ),
                                              mView, this );
-      QColor resourceColor = *KOPrefs::instance()->resourceColor( *it );
+      QColor resourceColor = KOPrefs::instance()->resourceColor( *it );
       item->setResourceColor( resourceColor );
     }
   }
@@ -353,7 +353,7 @@ void ResourceView::addResourceItem( ResourceCalendar *resource )
 
   QColor resourceColor;
 
-  resourceColor= *KOPrefs::instance()->resourceColor(resource->identifier());
+  resourceColor= KOPrefs::instance()->resourceColor(resource->identifier());
   item->setResourceColor(resourceColor);
 
   connect( resource, SIGNAL( signalSubresourceAdded( ResourceCalendar *,
@@ -561,7 +561,7 @@ void ResourceView::assignColor()
   if ( item->isSubresource() )
     identifier = item->resourceIdentifier();
 
-  QColor defaultColor =*KOPrefs::instance()->resourceColor( identifier );
+  QColor defaultColor = KOPrefs::instance()->resourceColor( identifier );
 
   int result = KColorDialog::getColor( myColor,defaultColor);
 

@@ -24,7 +24,7 @@
 #ifndef KOPREFS_H
 #define KOPREFS_H
 
-#include <q3dict.h>
+#include <QHash>
 
 #include <kdepimmacros.h>
 
@@ -84,10 +84,10 @@ class KDE_EXPORT KOPrefs : public KOPrefsBase
     bool thatIsMe( const QString& email );
 
     void setCategoryColor( const QString &cat, const QColor &color );
-    QColor *categoryColor( const QString &cat );
+    QColor categoryColor( const QString &cat );
 
     void setResourceColor ( const QString &, const QColor & );
-    QColor* resourceColor( const QString & );
+    QColor resourceColor( const QString & );
 
     QString mHtmlExportFile;
 
@@ -96,10 +96,10 @@ class KDE_EXPORT KOPrefs : public KOPrefsBase
     QString mRetrievePassword;
 
   private:
-    Q3Dict<QColor> mCategoryColors;
+    QHash<QString,QColor> mCategoryColors;
     QColor mDefaultCategoryColor;
 
-    Q3Dict<QColor> mResourceColors;
+    QHash<QString,QColor> mResourceColors;
     QColor mDefaultResourceColor;
 
     QFont mDefaultMonthViewFont;

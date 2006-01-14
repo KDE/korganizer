@@ -496,7 +496,7 @@ class MonthViewCell::CreateItemVisitor :
         if (cat.isEmpty()) {
           mItem->setPalette(QPalette(KOPrefs::instance()->mEventColor, KOPrefs::instance()->mEventColor));
         } else {
-          mItem->setPalette(QPalette(*(KOPrefs::instance()->categoryColor(cat)), *(KOPrefs::instance()->categoryColor(cat))));
+          mItem->setPalette( QPalette( KOPrefs::instance()->categoryColor(cat), KOPrefs::instance()->categoryColor(cat) ) );
         }
       } else {
         mItem->setPalette( mStandardPalette );

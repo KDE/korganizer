@@ -34,7 +34,7 @@ QColor KOCoreHelper::categoryColor( const QStringList &categories )
   if (cat.isEmpty())
     bgColor = defaultEventColor();
   else
-    bgColor = *( KOPrefs::instance()->categoryColor( cat ) );
+    bgColor = KOPrefs::instance()->categoryColor( cat );
   return bgColor;
 }
 

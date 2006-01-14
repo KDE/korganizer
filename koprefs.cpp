@@ -29,7 +29,7 @@
 #include <qdir.h>
 #include <qstring.h>
 #include <qfont.h>
-#include <qcolor.h>
+#include <QColor>
 #include <qmap.h>
 #include <qstringlist.h>
 
@@ -62,11 +62,7 @@ QColor getTextColor(const QColor &c)
 KOPrefs::KOPrefs() :
   KOPrefsBase()
 {
-  mCategoryColors.setAutoDelete( true );
-  mResourceColors.setAutoDelete( true );
-
   mDefaultCategoryColor = QColor( 151, 235, 121 );
-
   mDefaultResourceColor = QColor();//Default is a color invalid
 
   mDefaultTimeBarFont = KGlobalSettings::generalFont();
@@ -233,19 +229,19 @@ void KOPrefs::usrWriteConfig()
   config()->writeEntry("Custom Categories",mCustomCategories);
 
   config()->setGroup("Category Colors2");
-  Q3DictIterator<QColor> it(mCategoryColors);
-  while (it.current()) {
-    config()->writeEntry(it.currentKey(),*(it.current()));
-    ++it;
+  QHash<QString, QColor>::const_iterator i = mCategoryColors.constBegin();
+  while (i != mCategoryColors.constEnd()) {
+    config()->writeEntry(i.key(),i.value() );
+    ++i;
   }
-
+  
   config()->setGroup( "Resources Colors" );
-  Q3DictIterator<QColor> it2( mResourceColors );
-  while( it2.current() ) {
-    config()->writeEntry( it2.currentKey(), *( it2.current() ) );
-    ++it2;
+  i = mResourceColors.constBegin();
+  while (i != mResourceColors.constEnd()) {
+    config()->writeEntry(i.key(),i.value() );
+    ++i;
   }
-
+  
   if( !mFreeBusyPublishSavePassword ) {
     KConfigSkeleton::ItemPassword *i = freeBusyPublishPasswordItem();
     i->setValue( "" );
@@ -269,35 +265,33 @@ void KOPrefs::usrWriteConfig()
 
 void KOPrefs::setCategoryColor( const QString &cat, const QColor & color)
 {
-  mCategoryColors.replace( cat, new QColor( color ) );
+  mCategoryColors.insert( cat, color );
 }
 
-QColor *KOPrefs::categoryColor( const QString &cat )
+QColor KOPrefs::categoryColor( const QString &cat )
 {
-  QColor *color = 0;
+  QColor color;
 
-  if ( !cat.isEmpty() ) color = mCategoryColors[ cat ];
+  if ( !cat.isEmpty() ) color = mCategoryColors.value( cat );
 
-  if ( color ) return color;
-  else return &mDefaultCategoryColor;
+  if ( color.isValid() ) return color;
+  else return mDefaultCategoryColor;
 }
 
 void KOPrefs::setResourceColor ( const QString &cal, const QColor &color )
 {
   kdDebug(5850)<<"KOPrefs::setResourceColor: " << cal << " color: "<<
     color.name()<<endl;
-  mResourceColors.replace( cal, new QColor( color ) );
+  mResourceColors.insert( cal, color );
 }
 
-QColor* KOPrefs::resourceColor( const QString &cal )
+QColor KOPrefs::resourceColor( const QString &cal )
 {
-  QColor *color=0;
-  if( !cal.isEmpty() ) color = mResourceColors[cal];
+  QColor color;
+  if( !cal.isEmpty() ) color = mResourceColors.value( cal );
 
-  if (color && color->isValid() )
-    return color;
-  else
-    return &mDefaultResourceColor;
+  if ( color.isValid() ) return color;
+  else return mDefaultResourceColor;
 }
 
 QString KOPrefs::fullName()

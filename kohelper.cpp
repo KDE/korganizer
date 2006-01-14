@@ -45,13 +45,13 @@ QColor KOHelper::resourceColor( KCal::Calendar*calendar, KCal::Incidence*inciden
     KCal::ResourceCalendar *resourceCalendar = calendarResource->resource( incidence );
 
     QString identifier = resourceCalendar->identifier();
-    resourceColor = *KOPrefs::instance()->resourceColor( identifier );
+    resourceColor = KOPrefs::instance()->resourceColor( identifier );
 
     if ( !resourceCalendar->subresources().isEmpty() ) {
       identifier = resourceCalendar->subresourceIdentifier( incidence );
       if ( identifier.isEmpty() )
         identifier = resourceCalendar->identifier();
-      QColor subrescolor( *KOPrefs::instance()->resourceColor( identifier ) );
+      QColor subrescolor( KOPrefs::instance()->resourceColor( identifier ) );
       if ( subrescolor.isValid() )
         resourceColor = subrescolor;
     }

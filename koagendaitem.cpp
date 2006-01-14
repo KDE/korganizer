@@ -714,7 +714,7 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
     if (cat.isEmpty())
       bgColor = KOPrefs::instance()->mEventColor;
     else
-      bgColor = *(KOPrefs::instance()->categoryColor(cat));
+      bgColor = KOPrefs::instance()->categoryColor(cat);
   }
   QColor frameColor;
   if ( KOPrefs::instance()->agendaViewUsesResourceColor()

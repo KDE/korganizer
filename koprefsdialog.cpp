@@ -695,16 +695,16 @@ KOPrefsDialogColors::KOPrefsDialogColors( KInstance *inst, QWidget *parent )
 
 void KOPrefsDialogColors::usrWriteConfig()
 {
-  Q3DictIterator<QColor> itCat(mCategoryDict);
-  while (itCat.current()) {
-    KOPrefs::instance()->setCategoryColor(itCat.currentKey(),*itCat.current());
-    ++itCat;
+  QHash<QString, QColor>::const_iterator i = mCategoryDict.constBegin();
+  while (i != mCategoryDict.constEnd()) {
+    KOPrefs::instance()->setCategoryColor(i.key(), i.value() );
+    ++i;
   }
-
-  Q3DictIterator<QColor> itRes(mResourceDict);
-  while (itRes.current()) {
-    KOPrefs::instance()->setResourceColor(itRes.currentKey(),*itRes.current());
-    ++itRes;
+    
+  i = mResourceDict.constBegin();
+  while (i != mResourceDict.constEnd()) {
+    KOPrefs::instance()->setResourceColor(i.key(), i.value() );
+    ++i;
   }
 }
 
@@ -723,19 +723,19 @@ void KOPrefsDialogColors::updateCategories()
 
 void KOPrefsDialogColors::setCategoryColor()
 {
-  mCategoryDict.replace(mCategoryCombo->currentText(), new QColor(mCategoryButton->color()));
+  mCategoryDict.insert( mCategoryCombo->currentText(), mCategoryButton->color() );
   slotWidChanged();
 }
 
 void KOPrefsDialogColors::updateCategoryColor()
 {
   QString cat = mCategoryCombo->currentText();
-  QColor *color = mCategoryDict.find(cat);
-  if (!color) {
+  QColor color = mCategoryDict.value( cat  );
+  if ( !color.isValid() ) {
     color = KOPrefs::instance()->categoryColor(cat);
   }
-  if (color) {
-    mCategoryButton->setColor(*color);
+  if ( color.isValid() ) {
+    mCategoryButton->setColor(color);
   }
 }
 
@@ -772,8 +772,8 @@ void KOPrefsDialogColors::setResourceColor()
 {
   kdDebug( 5850) << "KOPrefsDialogColors::setResorceColor()" << endl;
 
-  mResourceDict.replace( mResourceIdentifier[mResourceCombo->currentItem()],
-    new QColor( mResourceButton->color() ) );
+  mResourceDict.insert( mResourceIdentifier[mResourceCombo->currentItem()],
+    mResourceButton->color() );
   slotWidChanged();
 }
 
@@ -781,12 +781,12 @@ void KOPrefsDialogColors::updateResourceColor()
 {
   kdDebug( 5850 ) << "KOPrefsDialogColors::updateResourceColor()" << endl;
   QString res= mResourceIdentifier[mResourceCombo->currentItem()];
-  QColor *color = mCategoryDict.find(res);
-  if( !color )  {
+  QColor color = mCategoryDict.value( res );
+  if( color.isValid() )  {
     color = KOPrefs::instance()->resourceColor( res );
   }
-  if( color ) {
-    mResourceButton->setColor(*color);
+  if( color.isValid() ) {
+    mResourceButton->setColor( color );
   }
 }
 extern "C"

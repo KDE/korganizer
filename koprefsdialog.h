@@ -27,8 +27,7 @@
 #include <libkdepim/kprefsdialog.h>
 #include <libkdepim/kcmdesignerfields.h>
 
-#include <q3dict.h>
-//Added by qt3to4:
+#include <QHash>
 #include <QLabel>
 
 class QLineEdit;
@@ -74,11 +73,11 @@ class KDE_EXPORT KOPrefsDialogColors : public KPrefsModule
   private:
     QComboBox     *mCategoryCombo;
     KColorButton  *mCategoryButton;
-    Q3Dict<QColor> mCategoryDict;
+    QHash<QString, QColor> mCategoryDict;
 
     QComboBox     *mResourceCombo;
     KColorButton  *mResourceButton;
-    Q3Dict<QColor> mResourceDict;
+    QHash<QString, QColor> mResourceDict;
     //For translation Identifier <->idx in Combo
     QStringList mResourceIdentifier;
 };
