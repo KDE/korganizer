@@ -725,8 +725,6 @@ KOMonthView::KOMonthView( Calendar *calendar, QWidget *parent, const char *name 
       mDaysPerWeek( 7 ), mNumWeeks( 6 ), mNumCells( mDaysPerWeek * mNumWeeks ),
       mShortDayLabels( false ), mWidthLongDayLabel( 0 ), mSelectedCell( 0 )
 {
-  mCells.setAutoDelete( true );
-
   QGridLayout *dayLayout = new QGridLayout( this );
 
   QFont bfont = font();
@@ -789,6 +787,8 @@ KOMonthView::KOMonthView( Calendar *calendar, QWidget *parent, const char *name 
 
 KOMonthView::~KOMonthView()
 {
+  qDeleteAll( mCells );
+  mCells.clear();
   delete mEventContextMenu;
 }
 
@@ -852,7 +852,7 @@ void KOMonthView::updateConfig()
 
   updateDayLabels();
 
-  for ( uint i = 0; i < mCells.count(); ++i ) {
+  for ( int i = 0; i < mCells.count(); ++i ) {
     mCells[i]->updateConfig();
   }
 }
@@ -887,7 +887,7 @@ void KOMonthView::showDates( const QDate &start, const QDate & )
                    .arg( calSys->year( start ) ) );
 
   bool primary = false;
-  uint i;
+  int i;
   for( i = 0; i < mCells.size(); ++i ) {
     QDate date = mStartDate.addDays( i );
     if ( calSys->day( date ) == 1 ) {
@@ -968,7 +968,7 @@ void KOMonthView::changeIncidenceDisplayAdded( Incidence *incidence )
 
   if ( incidence->doesRecur() ) {
 // FIXME: This breaks with recurring multi-day events!
-     for ( uint i = 0; i < mCells.count(); i++ ) {
+     for ( int i = 0; i < mCells.count(); i++ ) {
        if ( incidence->recursOn( mCells[i]->date() ) ) {
          mCells[i]->addIncidence( incidence );
        }
@@ -992,12 +992,12 @@ void KOMonthView::changeIncidenceDisplay( Incidence *incidence, int action )
       changeIncidenceDisplayAdded( incidence );
       break;
     case KOGlobals::INCIDENCEEDITED:
-      for( uint i = 0; i < mCells.count(); i++ )
+      for( int i = 0; i < mCells.count(); i++ )
         mCells[i]->removeIncidence( incidence );
       changeIncidenceDisplayAdded( incidence );
       break;
     case KOGlobals::INCIDENCEDELETED:
-      for( uint i = 0; i < mCells.count(); i++ )
+      for( int i = 0; i < mCells.count(); i++ )
         mCells[i]->removeIncidence( incidence );
       break;
     default:
@@ -1007,7 +1007,7 @@ void KOMonthView::changeIncidenceDisplay( Incidence *incidence, int action )
 
 void KOMonthView::updateView()
 {
-  for( uint i = 0; i < mCells.count(); ++i ) {
+  for( int i = 0; i < mCells.count(); ++i ) {
     mCells[i]->updateCell();
   }
 
@@ -1083,7 +1083,7 @@ void KOMonthView::clearSelection()
 
 MonthViewCell *KOMonthView::lookupCellByDate ( const QDate &date )
 {
-  for( uint i = 0; i < mCells.count(); i++ ) {
+  for( int i = 0; i < mCells.count(); i++ ) {
     if ( mCells[i]->date() == date )
       return mCells[i];
   }

@@ -290,8 +290,8 @@ class KOMonthView: public KOEventView
     int mNumCells;
     int mWeekStartDay;
 
-    Q3PtrVector<MonthViewCell> mCells;
-    Q3PtrVector<QLabel> mDayLabels;
+    QVector<MonthViewCell*> mCells;
+    QVector<QLabel*> mDayLabels;
 
     bool mShortDayLabels;
     int mWidthLongDayLabel;
