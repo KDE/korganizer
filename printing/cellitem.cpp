@@ -27,8 +27,8 @@
 #include <klocale.h>
 #include <kdebug.h>
 
-#include <q3intdict.h>
 #include <QList>
+#include <QMultiHash>
 
 using namespace KOrg;
 
@@ -44,7 +44,7 @@ QList<CellItem*> CellItem::placeItem( QList<CellItem*> cells,
 
   QList<KOrg::CellItem*> conflictItems;
   int maxSubCells = 0;
-  Q3IntDict<KOrg::CellItem> subCellDict;
+  QMultiHash<int,KOrg::CellItem*> subCellDict;
 
   // Find all items which are in same cell
   QList<KOrg::CellItem*>::iterator it;
