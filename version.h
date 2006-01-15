@@ -53,6 +53,6 @@
     3.2 alpha1
 */
 
-static const char korgVersion[] = "3.3 (proko2 branch after 2.0.5)";
+static const char korgVersion[] = "3.3 (proko2 branch after 2.0.6)";
 
 #endif
