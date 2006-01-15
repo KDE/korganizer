@@ -130,6 +130,8 @@ void FreeBusyItem::updateItem()
 void FreeBusyItem::setFreeBusyPeriods( FreeBusy* fb )
 {
   if( fb ) {
+    setStartTime( fb->dtStart() );
+    setEndTime( fb->dtEnd() );
     // Clean out the old entries
     for( KDGanttViewItem* it = firstChild(); it; it = firstChild() )
       delete it;
@@ -145,6 +147,7 @@ void FreeBusyItem::setFreeBusyPeriods( FreeBusy* fb )
     }
     setFreeBusy( fb );
     setShowNoInformation( false );
+    setShowNoInformationBeforeAndAfter( true );
   } else {
       // No free/busy information
       //debug only start
