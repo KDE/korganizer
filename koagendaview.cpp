@@ -1629,7 +1629,7 @@ void KOAgendaView::readSettings(KConfig *config)
   config->setGroup("Views");
 
 #ifndef KORG_NOSPLITTER
-  QList<int> sizes = config->readIntListEntry("Separator AgendaView");
+  QList<int> sizes = config->readEntry("Separator AgendaView",QList<int>());
   if (sizes.count() == 2) {
     mSplitterAgenda->setSizes(sizes);
   }

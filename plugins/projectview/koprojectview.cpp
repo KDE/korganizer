@@ -128,7 +128,7 @@ void KOProjectView::readSettings()
   KConfig config( "korganizerrc", true, false); // Open read-only, no kdeglobals
   config.setGroup("Views");
 
-  QList<int> sizes = config.readIntListEntry("Separator ProjectView");
+  QList<int> sizes = config.readEntry("Separator ProjectView",QList<int>());
   if (sizes.count() == 2) {
     mGantt->splitter()->setSizes(sizes);
   }

@@ -493,14 +493,14 @@ void CalendarView::readSettings()
 #ifndef KORG_NOSPLITTER
   config->setGroup( "KOrganizer Geometry" );
 
-  QList<int> sizes = config->readIntListEntry( "Separator1" );
+  QList<int> sizes = config->readEntry( "Separator1",QList<int>() );
   if ( sizes.count() != 2 ) {
     sizes << mDateNavigator->minimumSizeHint().width();
     sizes << 300;
   }
   mPanner->setSizes( sizes );
 
-  sizes = config->readIntListEntry( "Separator2" );
+  sizes = config->readEntry( "Separator2",QList<int>() );
   mLeftSplitter->setSizes( sizes );
 #endif
 

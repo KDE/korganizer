@@ -61,7 +61,7 @@ void KOTimeSpanView::readSettings()
   KConfig config( "korganizerrc", true, false); // Open read-only, no kdeglobals
   config.setGroup("Views");
 
-  QList<int> sizes = config.readIntListEntry("Separator TimeSpanView");
+  QList<int> sizes = config.readEntry("Separator TimeSpanView",QList<int>());
   if (sizes.count() == 2) {
     mTimeSpanWidget->setSplitterSizes(sizes);
   }
