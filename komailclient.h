@@ -64,7 +64,7 @@ class KOMailClient
                           const QByteArray& attachCharset);
     int kMailOpenComposer(const QString& arg0,const QString& arg1,
                           const QString& arg2,const QString& arg3,
-                          const QString& arg4,int arg5,const KURL& arg6);
+                          const QString& arg4,int arg5,const KUrl& arg6);
 };
 
 #endif

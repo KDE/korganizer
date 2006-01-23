@@ -573,7 +573,7 @@ void KOAgendaItem::dropEvent( QDropEvent *e )
   KABC::VCardConverter converter;
 
   KVCardDrag::decode( e, vcards );
-  KABC::Addressee::List list = converter.parseVCards( vcards );
+  KABC::Addressee::List list = converter.parseVCards( vcards.toAscii() );
   KABC::Addressee::List::Iterator it;
   for ( it = list.begin(); it != list.end(); ++it ) {
     QString em( (*it).fullEmail() );
