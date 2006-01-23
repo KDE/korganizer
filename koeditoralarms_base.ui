@@ -357,7 +357,7 @@
            </widget>
           </item>
           <item>
-           <widget class="KURLRequester" name="mSoundFile" >
+           <widget class="KUrlRequester" name="mSoundFile" >
             <property name="filter" >
              <string>*.wav|Wav Files;*.mp3|MP3 files;*.*|All files</string>
             </property>
@@ -408,7 +408,7 @@
            </widget>
           </item>
           <item>
-           <widget class="KURLRequester" name="mApplication" >
+           <widget class="KUrlRequester" name="mApplication" >
             <property name="filter" >
              <string>*.*|All files</string>
             </property>
@@ -593,7 +593,7 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>KURLRequester</class>
+   <class>KUrlRequester</class>
    <extends></extends>
    <header>kurlrequester.h</header>
    <container>0</container>

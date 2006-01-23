@@ -222,7 +222,7 @@ mURLRequester( 0 )
   if ( item->attachment()->isUri() && !item->isLocal() ) {
     label = new QLabel( i18n( "Location:" ), page );
     grid->addWidget( label, 3, 0 );
-    mURLRequester = new KURLRequester( item->uri(), page );
+    mURLRequester = new KUrlRequester( item->uri(), page );
     grid->addWidget( mURLRequester, 3, 2 );
     connect( mURLRequester, SIGNAL( urlSelected( const QString & ) ), 
               SLOT( urlChanged( const QString & ) ) );

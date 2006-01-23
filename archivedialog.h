@@ -29,7 +29,7 @@
 class QRadioButton;
 class QComboBox;
 class KIntNumInput;
-class KURLRequester;
+class KUrlRequester;
 class KDateEdit;
 class QCheckBox;
 
@@ -57,7 +57,7 @@ class ArchiveDialog : public KDialogBase
     void slotActionChanged();
 
   private:
-    KURLRequester *mArchiveFile;
+    KUrlRequester *mArchiveFile;
     KDateEdit *mDateEdit;
     QCheckBox *mDeleteCb;
     QRadioButton *mArchiveOnceRB;

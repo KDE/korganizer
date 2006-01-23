@@ -31,7 +31,7 @@ namespace KOrg {
 class MainWindow;
 }
 
-class KURL;
+class KUrl;
 
 /**
   This class manages a list of KOrganizer instances, each associated with a

@@ -28,7 +28,7 @@
 //Added by qt3to4:
 #include <QByteArray>
 
-class KURL;
+class KUrl;
 namespace KCal {
 class IncidenceBase;
 }

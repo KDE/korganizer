@@ -48,7 +48,7 @@ class QLabel;
 class QLineEdit;
 class KIconView;
 class KMenu;
-class KURLRequester;
+class KUrlRequester;
 
 namespace KIO {
 class Job;
@@ -73,7 +73,7 @@ class AttachmentEditDialog : public KDialogBase
     AttachmentIconItem *mItem;
     QLabel *mTypeLabel, *mIcon;
     QLineEdit *mLabelEdit;
-    KURLRequester *mURLRequester;
+    KUrlRequester *mURLRequester;
 };
 
 

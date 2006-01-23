@@ -122,7 +122,7 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
   fileLayout->setSpacing(spacingHint());
   QLabel *l = new QLabel(i18n("Archive &file:"),topFrame);
   fileLayout->addWidget(l);
-  mArchiveFile = new KURLRequester(KOPrefs::instance()->mArchiveFile,topFrame);
+  mArchiveFile = new KUrlRequester(KOPrefs::instance()->mArchiveFile,topFrame);
   mArchiveFile->setMode(KFile::File);
   mArchiveFile->setFilter(i18n("*.ics|iCalendar Files"));
   mArchiveFile->setWhatsThis(
