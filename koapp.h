@@ -45,7 +45,7 @@ class KOrganizerApp : public KUniqueApplication
       Process calendar from URL \arg url. If url is empty open the default
       calendar based on the resource framework.
     */
-    void processCalendar( const KURL &url );
+    void processCalendar( const KUrl &url );
 };
 
 #endif
