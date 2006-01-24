@@ -41,7 +41,7 @@
 
 using namespace KCal;
 
-ImportDialog::ImportDialog( const KURL &url, QWidget *parent )
+ImportDialog::ImportDialog( const KUrl &url, QWidget *parent )
   : KDialogBase( Plain, i18n("Import Calendar"), Ok | Cancel, Ok, parent,
                  0, true, true ),
     mUrl( url )

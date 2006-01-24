@@ -278,13 +278,13 @@ protected:
   virtual Q3DragObject * dragObject ()
   {
     // create a list of the URL:s that we want to drag
-    KURL::List urls;
+    KUrl::List urls;
     QStringList labels;
     for ( Q3IconViewItem *it = firstItem() ; it; it = it->nextItem() ) {
       if ( it->isSelected() ) {
         AttachmentIconItem *item = static_cast<AttachmentIconItem *>( it );
         urls.append( item->uri() );
-        labels.append( KURL::encode_string( item->label() ) );
+        labels.append( KUrl::encode_string( item->label() ) );
       }
     }
     if ( selectionMode() == Q3IconView::NoSelection ) {
@@ -292,7 +292,7 @@ protected:
                              static_cast<AttachmentIconItem *>( currentItem() );
       if ( item ) {
         urls.append( item->uri() );
-        labels.append( KURL::encode_string( item->label() ) );
+        labels.append( KUrl::encode_string( item->label() ) );
       }
     }
     QPixmap pixmap;
@@ -388,7 +388,7 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent,
 KOEditorAttachments::~KOEditorAttachments()
 {
   // delete any previously copied files that weren't accepted
-  for ( KURL::List::ConstIterator it = mDeferredCopy.constBegin();
+  for ( KUrl::List::ConstIterator it = mDeferredCopy.constBegin();
         it != mDeferredCopy.constEnd(); ++it ) {
     Q_ASSERT( ( *it ).isLocalFile() );
     QFile::remove( ( *it ).path() );
@@ -443,7 +443,7 @@ QString KOEditorAttachments::generateLocalAttachmentPath(
 }
 
 void KOEditorAttachments::dropEvent( QDropEvent* event ) {
-  KURL::List urls;
+  KUrl::List urls;
   QString text;
   bool probablyWeHaveUris = false;
   bool weCanCopy = true;
@@ -463,7 +463,7 @@ void KOEditorAttachments::dropEvent( QDropEvent* event ) {
     probablyWeHaveUris = true;
     labels = QStringList::split( ":", metadata["labels"] );
     for ( QStringList::Iterator it = labels.begin(); it != labels.end(); ++it )
-      *it = KURL::decode_string( *it );
+      *it = KUrl::decode_string( *it );
   } else if ( Q3TextDrag::decode( event, text ) ) {
     QStringList lst = QStringList::split( '\n', text );
     for ( QStringList::ConstIterator it = lst.begin(); it != lst.end(); ++it )
@@ -475,7 +475,7 @@ void KOEditorAttachments::dropEvent( QDropEvent* event ) {
   if ( probablyWeHaveUris ) {
     menu.insertItem( i18n( "&Link here" ), 1 );
     // we need to check if we can reasonably expect to copy the objects
-    for ( KURL::List::ConstIterator it = urls.constBegin(); 
+    for ( KUrl::List::ConstIterator it = urls.constBegin(); 
           it != urls.constEnd(); ++it )
       if ( !( weCanCopy = KProtocolInfo::supportsReading( *it ) ) )
         break; // either we can copy them all, or no copying at all
@@ -492,13 +492,13 @@ void KOEditorAttachments::dropEvent( QDropEvent* event ) {
   int ret /*= menu.exec( QCursor::pos() )*/;
   if ( 1 == ret ) {
     QStringList::ConstIterator jt = labels.constBegin();
-    for ( KURL::List::ConstIterator it = urls.constBegin(); 
+    for ( KUrl::List::ConstIterator it = urls.constBegin(); 
           it != urls.constEnd(); ++it )
       addAttachment( (*it).url(), QString(), 
                      ( jt == labels.constEnd() ? QString() : *(jt++) ) );
   } else if ( 0 == ret ) {
     if ( probablyWeHaveUris )
-      for ( KURL::List::ConstIterator it = urls.constBegin();
+      for ( KUrl::List::ConstIterator it = urls.constBegin();
             it != urls.constEnd(); ++it ) {
 #if 0 // binary attachments are unimplemented yet
         KIO::Job *job = KIO::storedGet( *it );
@@ -743,7 +743,7 @@ void KOEditorAttachments::showAttachmentContextMenu( Q3IconViewItem *item,
 
 void KOEditorAttachments::applyChanges()
 {
-  for ( KURL::List::ConstIterator it = mDeferredDelete.constBegin(); 
+  for ( KUrl::List::ConstIterator it = mDeferredDelete.constBegin(); 
         it != mDeferredDelete.constEnd(); ++it ) {
     Q_ASSERT( ( *it ).isLocalFile() );
     QFile::remove( ( *it ).path() );

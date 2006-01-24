@@ -102,7 +102,7 @@ int KOrganizerApp::newInstance()
     if ( !korg ) {
       kdError() << "Unable to find default calendar resources view." << endl;
     } else {
-      KURL url = KCmdLineArgs::makeURL( args->getOption( "import" ) );
+      KUrl url = KCmdLineArgs::makeURL( args->getOption( "import" ) );
       korg->actionManager()->importCalendar( url );
     }
   }
@@ -113,7 +113,7 @@ int KOrganizerApp::newInstance()
 }
 
 
-void KOrganizerApp::processCalendar( const KURL &url )
+void KOrganizerApp::processCalendar( const KUrl &url )
 {
   KOrg::MainWindow *korg = ActionManager::findInstance( url );
   if ( !korg ) {

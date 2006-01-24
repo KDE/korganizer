@@ -214,7 +214,7 @@ bool KOMailClient::send(const QString &from,const QString &to,
 
 int KOMailClient::kMailOpenComposer(const QString& arg0,const QString& arg1,
   const QString& arg2,const QString& arg3,const QString& arg4,int arg5,
-  const KURL& arg6)
+  const KUrl& arg6)
 {
   //kdDebug(5850) << "KOMailClient::kMailOpenComposer( "
   //  << arg0 << " , " << arg1 << arg2 << " , " << arg3

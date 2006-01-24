@@ -128,8 +128,8 @@ void KOrganizer::init( bool document )
   }
 
   mActionManager->init();
-  connect( mActionManager, SIGNAL( actionNew( const KURL & ) ),
-           SLOT( newMainWindow( const KURL & ) ) );
+  connect( mActionManager, SIGNAL( actionNew( const KUrl & ) ),
+           SLOT( newMainWindow( const KUrl & ) ) );
 
   mActionManager->loadParts();
 
@@ -159,7 +159,7 @@ void KOrganizer::init( bool document )
   kdDebug(5850) << "KOrganizer::KOrganizer() done" << endl;
 }
 
-void KOrganizer::newMainWindow( const KURL &url )
+void KOrganizer::newMainWindow( const KUrl &url )
 {
   KOrganizer *korg = new KOrganizer();
   if ( url.isValid() || url.isEmpty() ) {
@@ -253,7 +253,7 @@ void KOrganizer::showStatusMessage( const QString &message )
   statusBar()->message(message,2000);
 }
 
-bool KOrganizer::openURL( const KURL &url, bool merge )
+bool KOrganizer::openURL( const KUrl &url, bool merge )
 {
   return mActionManager->openURL( url, merge );
 }
@@ -263,12 +263,12 @@ bool KOrganizer::saveURL()
   return mActionManager->saveURL();
 }
 
-bool KOrganizer::saveAsURL( const KURL & kurl )
+bool KOrganizer::saveAsURL( const KUrl & kurl )
 {
   return mActionManager->saveAsURL( kurl )  ;
 }
 
-KURL KOrganizer::getCurrentURL() const
+KUrl KOrganizer::getCurrentURL() const
 {
   return mActionManager->url();
 }
@@ -296,7 +296,7 @@ void KOrganizer::setTitle()
   if ( !hasDocument() ) {
     title = i18n("Calendar");
   } else {
-    KURL url = mActionManager->url();
+    KUrl url = mActionManager->url();
 
     if ( !url.isEmpty() ) {
       if ( url.isLocalFile() ) title = url.fileName();

@@ -115,8 +115,8 @@ void KOIncidenceEditor::setupAttachmentsTab()
   QBoxLayout *topLayout = new QVBoxLayout( topFrame );
 
   mAttachments = new KOEditorAttachments( spacingHint(), topFrame );
-  connect( mAttachments, SIGNAL( openURL( const KURL & ) ) ,
-           this, SLOT( openURL( const KURL & ) ) );
+  connect( mAttachments, SIGNAL( openURL( const KUrl & ) ) ,
+           this, SLOT( openURL( const KUrl & ) ) );
   topLayout->addWidget( mAttachments );
 }
 
@@ -326,8 +326,8 @@ void KOIncidenceEditor::setupEmbeddedURLPage( const QString &label,
                                                           topFrame );
   topLayout->addWidget( wid );
   mEmbeddedURLPages.append( topFrame );
-  connect( wid, SIGNAL( openURL( const KURL & ) ) ,
-           this, SLOT( openURL( const KURL & ) ) );
+  connect( wid, SIGNAL( openURL( const KUrl & ) ) ,
+           this, SLOT( openURL( const KUrl & ) ) );
   // TODO: Call this method only when the tab is actually activated!
   wid->loadContents();
 }
@@ -376,7 +376,7 @@ kdDebug() << "mEmbeddedURLPages are not empty, clearing it!" << endl;
   }
 }
 
-void KOIncidenceEditor::openURL( const KURL &url )
+void KOIncidenceEditor::openURL( const KUrl &url )
 {
   QString uri = url.url();
   UriHandler::process( uri );

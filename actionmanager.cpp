@@ -223,7 +223,7 @@ void ActionManager::initActions()
     if ( mMainWindow->hasDocument() ) {
       KStdAction::openNew( this, SLOT(file_new()), mACollection, "korganizer_openNew" );
       KStdAction::open( this, SLOT( file_open() ), mACollection, "korganizer_open" );
-      mRecent = KStdAction::openRecent( this, SLOT( file_open( const KURL& ) ),
+      mRecent = KStdAction::openRecent( this, SLOT( file_open( const KUrl& ) ),
                                      mACollection, "korganizer_openRecent" );
       KStdAction::revert( this,SLOT( file_revert() ), mACollection, "korganizer_revert" );
       KStdAction::saveAs( this, SLOT( file_saveas() ), mACollection,
@@ -234,7 +234,7 @@ void ActionManager::initActions()
   } else {
     KStdAction::openNew( this, SLOT( file_new() ), mACollection );
     KStdAction::open( this, SLOT( file_open() ), mACollection );
-    mRecent = KStdAction::openRecent( this, SLOT( file_open( const KURL& ) ),
+    mRecent = KStdAction::openRecent( this, SLOT( file_open( const KUrl& ) ),
                                      mACollection );
     if ( mMainWindow->hasDocument() ) {
       KStdAction::revert( this,SLOT( file_revert() ), mACollection );
@@ -678,7 +678,7 @@ void ActionManager::file_new()
 
 void ActionManager::file_open()
 {
-  KURL url;
+  KUrl url;
   QString defaultPath = locateLocal( "data","korganizer/" );
   url = KFileDialog::getOpenURL( defaultPath,i18n("*.vcs *.ics|Calendar Files"),
                                 dialogParent() );
@@ -686,7 +686,7 @@ void ActionManager::file_open()
   file_open( url );
 }
 
-void ActionManager::file_open( const KURL &url )
+void ActionManager::file_open( const KUrl &url )
 {
   if ( url.isEmpty() ) return;
 
@@ -767,7 +767,7 @@ void ActionManager::file_icalimport()
 
 void ActionManager::file_merge()
 {
-  KURL url = KFileDialog::getOpenURL( locateLocal( "data","korganizer/" ),
+  KUrl url = KFileDialog::getOpenURL( locateLocal( "data","korganizer/" ),
                                      i18n("*.vcs *.ics|Calendar Files"),
                                      dialogParent() );
   if ( ! url.isEmpty() )  // isEmpty if user cancelled the dialog
@@ -786,7 +786,7 @@ void ActionManager::file_revert()
 
 void ActionManager::file_saveas()
 {
-  KURL url = getSaveURL();
+  KUrl url = getSaveURL();
 
   if ( url.isEmpty() ) return;
 
@@ -824,7 +824,7 @@ void ActionManager::file_close()
   setTitle();
 }
 
-bool ActionManager::openURL( const KURL &url,bool merge )
+bool ActionManager::openURL( const KUrl &url,bool merge )
 {
   kdDebug(5850) << "ActionManager::openURL()" << endl;
 
@@ -884,7 +884,7 @@ bool ActionManager::openURL( const KURL &url,bool merge )
   return true;
 }
 
-bool ActionManager::addResource( const KURL &mUrl )
+bool ActionManager::addResource( const KUrl &mUrl )
 {
   CalendarResources *cr = KOrg::StdCalendar::self();
 
@@ -930,7 +930,7 @@ bool ActionManager::addResource( const KURL &mUrl )
 }
 
 
-void ActionManager::showStatusMessageOpen( const KURL &url, bool merge )
+void ActionManager::showStatusMessageOpen( const KUrl &url, bool merge )
 {
   if ( merge ) {
     mMainWindow->showStatusMessage( i18n("Merged calendar '%1'.")
@@ -1045,7 +1045,7 @@ void ActionManager::exportHTML( HTMLExportSettings *settings )
     cdate = cdate.addDays( 1 );
   }
 
-  KURL dest( settings->outputFile() );
+  KUrl dest( settings->outputFile() );
   if ( dest.isLocalFile() ) {
     mExport.save( dest.path() );
   } else {
@@ -1061,7 +1061,7 @@ void ActionManager::exportHTML( HTMLExportSettings *settings )
   }
 }
 
-bool ActionManager::saveAsURL( const KURL &url )
+bool ActionManager::saveAsURL( const KUrl &url )
 {
   kdDebug(5850) << "ActionManager::saveAsURL() " << url.prettyURL() << endl;
 
@@ -1075,7 +1075,7 @@ bool ActionManager::saveAsURL( const KURL &url )
   }
 
   QString fileOrig = mFile;
-  KURL URLOrig = mURL;
+  KUrl URLOrig = mURL;
 
   KTempFile *tempFile = 0;
   if ( url.isLocalFile() ) {
@@ -1127,7 +1127,7 @@ bool ActionManager::saveModifiedURL()
     switch( result ) {
       case KMessageBox::Yes:
         if ( mURL.isEmpty() ) {
-          KURL url = getSaveURL();
+          KUrl url = getSaveURL();
           return saveAsURL( url );
         } else {
           return saveURL();
@@ -1145,9 +1145,9 @@ bool ActionManager::saveModifiedURL()
 }
 
 
-KURL ActionManager::getSaveURL()
+KUrl ActionManager::getSaveURL()
 {
-  KURL url = KFileDialog::getSaveURL( locateLocal( "data","korganizer/" ),
+  KUrl url = KFileDialog::getSaveURL( locateLocal( "data","korganizer/" ),
                                      i18n("*.vcs *.ics|Calendar Files"),
                                      dialogParent() );
 
@@ -1188,7 +1188,7 @@ void ActionManager::readProperties( KConfig *config )
 
   if ( !isResourceCalendar && !calendarUrl.isEmpty() ) {
     mMainWindow->init( true );
-    KURL u( calendarUrl );
+    KUrl u( calendarUrl );
     openURL( u );
   } else {
     mMainWindow->init( false );
@@ -1271,7 +1271,7 @@ void ActionManager::showTipOnStart()
   KTipDialog::showTip( dialogParent() );
 }
 
-KOrg::MainWindow *ActionManager::findInstance( const KURL &url )
+KOrg::MainWindow *ActionManager::findInstance( const KUrl &url )
 {
   if ( mWindowList ) {
     if ( url.isEmpty() ) return mWindowList->defaultInstance();
@@ -1696,7 +1696,7 @@ bool ActionManager::saveResourceCalendar()
   return true;
 }
 
-void ActionManager::importCalendar( const KURL &url )
+void ActionManager::importCalendar( const KUrl &url )
 {
   if ( !url.isValid() ) {
     KMessageBox::error( dialogParent(),
@@ -1708,12 +1708,12 @@ void ActionManager::importCalendar( const KURL &url )
   dialog = new ImportDialog( url, mMainWindow->topLevelWidget() );
   connect( dialog, SIGNAL( dialogFinished( ImportDialog * ) ),
            SLOT( slotImportDialogFinished( ImportDialog * ) ) );
-  connect( dialog, SIGNAL( openURL( const KURL &, bool ) ),
-           SLOT( openURL( const KURL &, bool ) ) );
-  connect( dialog, SIGNAL( newWindow( const KURL & ) ),
-           SIGNAL( actionNew( const KURL & ) ) );
-  connect( dialog, SIGNAL( addResource( const KURL & ) ),
-           SLOT( addResource( const KURL & ) ) );
+  connect( dialog, SIGNAL( openURL( const KUrl &, bool ) ),
+           SLOT( openURL( const KUrl &, bool ) ) );
+  connect( dialog, SIGNAL( newWindow( const KUrl & ) ),
+           SIGNAL( actionNew( const KUrl & ) ) );
+  connect( dialog, SIGNAL( addResource( const KUrl & ) ),
+           SLOT( addResource( const KUrl & ) ) );
 
   dialog->show();
 }

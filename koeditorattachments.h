@@ -124,14 +124,14 @@ class KOEditorAttachments : public QWidget
                                          const KMimeType::Ptr mimeType );
   
   signals:
-    void openURL( const KURL &url );
+    void openURL( const KUrl &url );
 
   private:
     KIconView *mAttachments;
     KMenu *mPopupMenu, *mPopupNew;
     QString mUid; // used only to generate attachments' filenames
-    KURL::List mDeferredDelete;
-    KURL::List mDeferredCopy;
+    KUrl::List mDeferredDelete;
+    KUrl::List mDeferredCopy;
 };
 
 #endif

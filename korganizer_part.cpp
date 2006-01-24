@@ -172,7 +172,7 @@ KOrg::CalendarViewBase *KOrganizerPart::view() const
   return mView;
 }
 
-bool KOrganizerPart::openURL( const KURL &url, bool merge )
+bool KOrganizerPart::openURL( const KUrl &url, bool merge )
 {
   return mActionManager->openURL( url, merge );
 }
@@ -182,12 +182,12 @@ bool KOrganizerPart::saveURL()
   return mActionManager->saveURL();
 }
 
-bool KOrganizerPart::saveAsURL( const KURL &kurl )
+bool KOrganizerPart::saveAsURL( const KUrl &kurl )
 {
   return mActionManager->saveAsURL( kurl );
 }
 
-KURL KOrganizerPart::getCurrentURL() const
+KUrl KOrganizerPart::getCurrentURL() const
 {
   return mActionManager->url();
 }
@@ -211,7 +211,7 @@ void KOrganizerPart::setTitle()
   if ( !hasDocument() ) {
     title = i18n("Calendar");
   } else {
-    KURL url = mActionManager->url();
+    KUrl url = mActionManager->url();
 
     if ( !url.isEmpty() ) {
       if ( url.isLocalFile() ) title = url.fileName();

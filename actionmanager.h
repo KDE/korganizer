@@ -109,16 +109,16 @@ class KDE_EXPORT ActionManager : public QObject, public KCalendarIface
 
   public slots:
     /** Add a new resource */
-    bool addResource( const KURL &mUrl );
+    bool addResource( const KUrl &mUrl );
     /**
       Open calendar file from URL. Merge into current calendar, if \a merge is
       true.
     */
-    bool openURL( const KURL &url, bool merge = false );
+    bool openURL( const KUrl &url, bool merge = false );
     /** Save calendar file to URL of current calendar */
     bool saveURL();
     /** Save calendar file to URL */
-    bool saveAsURL( const KURL &kurl );
+    bool saveAsURL( const KUrl &kurl );
     /** Save calendar if it is modified by the user. Ask user what to do. */
     bool saveModifiedURL();
 
@@ -126,10 +126,10 @@ class KDE_EXPORT ActionManager : public QObject, public KCalendarIface
     void exportHTML( HTMLExportSettings * );
   public:
     /** Get current URL */
-    KURL url() const { return mURL; }
+    KUrl url() const { return mURL; }
 
     /** Is there a instance with this URL? */
-    static KOrg::MainWindow* findInstance( const KURL &url );
+    static KOrg::MainWindow* findInstance( const KUrl &url );
     /** Open calendar file from URL */
     bool openURL( const QString &url );
     /** Open calendar file from URL */
@@ -211,7 +211,7 @@ class KDE_EXPORT ActionManager : public QObject, public KCalendarIface
     /**
       Emitted when the "New" action is activated.
     */
-    void actionNew( const KURL &url = KURL() );
+    void actionNew( const KUrl &url = KURL() );
 
     /**
       When change is made to options dialog, the topwidget will catch this
@@ -258,7 +258,7 @@ class KDE_EXPORT ActionManager : public QObject, public KCalendarIface
 
     void loadParts();
 
-    void importCalendar( const KURL &url );
+    void importCalendar( const KUrl &url );
 
   protected slots:
 
@@ -270,7 +270,7 @@ class KDE_EXPORT ActionManager : public QObject, public KCalendarIface
 
     /** open a file from the list of recent files. Also called from file_open()
         after the URL is obtained from the user. */
-    void file_open( const KURL &url );
+    void file_open( const KUrl &url );
 
     /** import a calendar from another program like ical. */
     void file_icalimport();
@@ -333,9 +333,9 @@ class KDE_EXPORT ActionManager : public QObject, public KCalendarIface
 
   protected:
     /** Get URL for saving. Opens FileDialog. */
-    KURL getSaveURL();
+    KUrl getSaveURL();
 
-    void showStatusMessageOpen( const KURL &url, bool merge );
+    void showStatusMessageOpen( const KUrl &url, bool merge );
 
     void initCalendar( Calendar *cal );
 
@@ -355,7 +355,7 @@ class KDE_EXPORT ActionManager : public QObject, public KCalendarIface
     void enableIncidenceActions( bool enable );
 
     KOrg::Part::List mParts; // List of parts loaded
-    KURL mURL;      // URL of calendar file
+    KUrl mURL;      // URL of calendar file
     QString mFile;  // Local name of calendar file
     QString mLastUrl;  // URL of last loaded calendar.
 

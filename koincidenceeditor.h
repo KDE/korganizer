@@ -92,7 +92,7 @@ class KOIncidenceEditor : public KDialogBase
     void slotApply();
     void slotOk();
     void slotCancel();
-    void openURL( const KURL &url );
+    void openURL( const KUrl &url );
 
     virtual void slotManageTemplates();
 

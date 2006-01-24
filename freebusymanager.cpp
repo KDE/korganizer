@@ -70,7 +70,7 @@
 
 using namespace KCal;
 
-FreeBusyDownloadJob::FreeBusyDownloadJob( const QString &email, const KURL &url,
+FreeBusyDownloadJob::FreeBusyDownloadJob( const QString &email, const KUrl &url,
                                           FreeBusyManager *manager,
                                           const char *name )
   : QObject( manager, name ), mManager( manager ), mEmail( email )
@@ -217,7 +217,7 @@ void FreeBusyManager::publishFreeBusy()
   // Already uploading? Skip this one then.
   if ( mUploadingFreeBusy )
     return;
-  KURL targetURL ( KOPrefs::instance()->freeBusyPublishUrl() );
+  KUrl targetURL ( KOPrefs::instance()->freeBusyPublishUrl() );
   if ( targetURL.isEmpty() )  {
     KMessageBox::sorry( 0,
       i18n( "<qt>No URL configured for uploading your free/busy list. Please "
@@ -263,7 +263,7 @@ void FreeBusyManager::publishFreeBusy()
     QString emailHost = defaultEmail.mid( defaultEmail.find( '@' ) + 1 );
 
     // Put target string together
-    KURL targetURL;
+    KUrl targetURL;
     if( KOPrefs::instance()->mPublishKolab ) {
       // we use Kolab
       QString server;
@@ -294,7 +294,7 @@ void FreeBusyManager::publishFreeBusy()
 #endif
 
 
-    KURL src;
+    KUrl src;
     src.setPath( tempFile.name() );
 
     kdDebug(5850) << "FreeBusyManager::publishFreeBusy(): " << targetURL << endl;
@@ -320,7 +320,7 @@ void FreeBusyManager::slotUploadFreeBusyResult(KIO::Job *_job)
                 "</qt>" ).arg( job->destURL().prettyURL() )
                          .arg( job->errorString() ) );
     // Delete temp file
-    KURL src = job->srcURL();
+    KUrl src = job->srcURL();
     Q_ASSERT( src.isLocalFile() );
     if( src.isLocalFile() )
         QFile::remove(src.path());
@@ -363,7 +363,7 @@ bool FreeBusyManager::processRetrieveQueue()
   QString email = mRetrieveQueue.first();
   mRetrieveQueue.pop_front();
 
-  KURL sourceURL = freeBusyUrl( email );
+  KUrl sourceURL = freeBusyUrl( email );
 
   kdDebug(5850) << "FreeBusyManager::retrieveFreeBusy(): url: " << sourceURL.url()
             << endl;
@@ -390,7 +390,7 @@ void FreeBusyManager::cancelRetrieval()
   mRetrieveQueue.clear();
 }
 
-KURL FreeBusyManager::freeBusyUrl( const QString &email )
+KUrl FreeBusyManager::freeBusyUrl( const QString &email )
 {
   kdDebug(5850) << "FreeBusyManager::freeBusyUrl(): " << email << endl;
 
@@ -436,7 +436,7 @@ KURL FreeBusyManager::freeBusyUrl( const QString &email )
   const QString emailHost = email.mid( emailpos + 1 );
 
   // Build the URL
-  KURL sourceURL;
+  KUrl sourceURL;
   sourceURL = KOPrefs::instance()->mFreeBusyRetrieveUrl;
 
   // Don't try to fetch free/busy data for users not on the specified servers

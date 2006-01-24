@@ -59,7 +59,7 @@ class FreeBusyDownloadJob : public QObject
 {
     Q_OBJECT
   public:
-    FreeBusyDownloadJob( const QString &email, const KURL &url,
+    FreeBusyDownloadJob( const QString &email, const KUrl &url,
                    FreeBusyManager *manager, const char *name = 0 );
 
     virtual ~FreeBusyDownloadJob();
@@ -116,7 +116,7 @@ class FreeBusyManager : public QObject, public KCal::FreeBusyCache
     /**
       Return URL of freeBusy information for given email address.
     */
-    KURL freeBusyUrl( const QString &email );
+    KUrl freeBusyUrl( const QString &email );
 
     /**
       Return directory used for stroing free/busy information.

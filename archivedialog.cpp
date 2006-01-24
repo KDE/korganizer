@@ -210,7 +210,7 @@ void ArchiveDialog::slotUser1()
     KOPrefs::instance()->mArchiveAction = KOPrefs::actionArchive;
 
     // Get destination URL
-    KURL destUrl( mArchiveFile->url() );
+    KUrl destUrl( mArchiveFile->url() );
     if ( !destUrl.isValid() ) {
       KMessageBox::sorry(this,i18n("The archive file name is not valid.\n"));
       return;

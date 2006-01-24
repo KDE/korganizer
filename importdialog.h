@@ -36,7 +36,7 @@ class ImportDialog : public KDialogBase
 {
     Q_OBJECT
   public:
-    ImportDialog( const KURL &url, QWidget *parent );
+    ImportDialog( const KUrl &url, QWidget *parent );
     ~ImportDialog();
 
   public slots:
@@ -44,12 +44,12 @@ class ImportDialog : public KDialogBase
 
   signals:
     void dialogFinished( ImportDialog * );
-    void openURL( const KURL &, bool );
-    void newWindow( const KURL & );
-    void addResource( const KURL & );
+    void openURL( const KUrl &, bool );
+    void newWindow( const KUrl & );
+    void addResource( const KUrl & );
  
   private:
-    KURL mUrl;
+    KUrl mUrl;
 
     QRadioButton *mAddButton;
     QRadioButton *mMergeButton;

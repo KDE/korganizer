@@ -59,7 +59,7 @@ StdCalendar::StdCalendar()
     QString resoruceType;
     KCal::ResourceCalendar *defaultResource = 0;
     if ( !fileName.isEmpty() ) {
-      KURL url( fileName );
+      KUrl url( fileName );
       if ( url.isLocalFile() ) {
         kdDebug(5850) << "Local resource at " << url << endl;
         defaultResource = manager->createResource( "file" );

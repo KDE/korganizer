@@ -98,8 +98,8 @@ bool UriHandler::process( const QString &uri )
     // make sure korganizer is running or the part is shown
     KToolInvocation::startServiceByDesktopPath("korganizer");
 
-    // we must work around KURL breakage (it doesn't know about URNs)
-    QString uid = KURL::decode_string( uri ).mid( 11 );
+    // we must work around KUrl breakage (it doesn't know about URNs)
+    QString uid = KUrl::decode_string( uri ).mid( 11 );
     
     KOrganizerIface_stub korganizerIface( "korganizer", "KOrganizerIface" );
     return korganizerIface.showIncidence( uid );

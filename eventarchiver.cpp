@@ -179,7 +179,7 @@ void EventArchiver::archiveIncidences( Calendar* calendar, const QDate& /*limitD
   }
 
   // Get or create the archive file
-  KURL archiveURL( KOPrefs::instance()->mArchiveFile );
+  KUrl archiveURL( KOPrefs::instance()->mArchiveFile );
   QString archiveFile;
 
   if ( KIO::NetAccess::exists( archiveURL, true, widget ) ) {
@@ -204,7 +204,7 @@ void EventArchiver::archiveIncidences( Calendar* calendar, const QDate& /*limitD
   }
 
   // Upload if necessary
-  KURL srcUrl;
+  KUrl srcUrl;
   srcUrl.setPath(archiveFile);
   if (srcUrl != archiveURL) {
     if ( !KIO::NetAccess::upload( archiveFile, archiveURL, widget ) ) {

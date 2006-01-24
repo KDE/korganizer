@@ -83,13 +83,13 @@ class KOrganizer : public KPartsMainWindow, public KOrgMainWindow
       Open calendar file from URL. Merge into current calendar, if \a merge is
       true.
     */
-    bool openURL( const KURL &url, bool merge = false );
+    bool openURL( const KUrl &url, bool merge = false );
     /** Save calendar file to URL of current calendar */
     bool saveURL();
     /** Save calendar file to URL */
-    bool saveAsURL( const KURL & kurl );
+    bool saveAsURL( const KUrl & kurl );
     /** Get current URL */
-    KURL getCurrentURL() const;
+    KUrl getCurrentURL() const;
 
     virtual KXMLGUIFactory *mainGuiFactory() { return factory(); }
     virtual KXMLGUIClient *mainGuiClient() { return this; }
@@ -114,7 +114,7 @@ class KOrganizer : public KPartsMainWindow, public KOrgMainWindow
     /** Sets title of window according to filename and modification state */
     void setTitle();
 
-    void newMainWindow( const KURL & );
+    void newMainWindow( const KUrl & );
 
     void slotEditKeys();
 

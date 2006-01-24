@@ -65,14 +65,14 @@ class KOrganizerPart: public KParts::ReadOnlyPart,
     virtual KOrg::CalendarViewBase *view() const;
 
     /** Load calendar file from URL. Merge into current calendar, if \a merge is true. */
-    virtual bool openURL( const KURL &url, bool merge = false );
+    virtual bool openURL( const KUrl &url, bool merge = false );
     /** Save calendar file to URL of current calendar */
     virtual bool saveURL();
     /** Save calendar file to URL */
-    virtual bool saveAsURL( const KURL &kurl );
+    virtual bool saveAsURL( const KUrl &kurl );
 
     /** Get current URL */
-    virtual KURL getCurrentURL() const;
+    virtual KUrl getCurrentURL() const;
 
     virtual KXMLGUIFactory *mainGuiFactory() { return factory(); }
     virtual KXMLGUIClient *mainGuiClient() { return this; }

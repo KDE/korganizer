@@ -60,7 +60,7 @@ class KOWindowList : public QObject
     /**
       Is there a instance with this URL?
     */
-    KOrg::MainWindow *findInstance( const KURL &url );
+    KOrg::MainWindow *findInstance( const KUrl &url );
 
     /**
       Return default instance. This is the main window for the resource based
