@@ -175,7 +175,7 @@ void KOPrefs::setCategoryDefaults()
 void KOPrefs::usrReadConfig()
 {
   config()->setGroup("General");
-  mCustomCategories = config()->readListEntry("Custom Categories");
+  mCustomCategories = config()->readEntry("Custom Categories", QStringList() );
   if (mCustomCategories.isEmpty()) setCategoryDefaults();
 
   // old category colors, ignore if they have the old default

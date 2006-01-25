@@ -557,7 +557,7 @@ void CalendarView::readFilterSettings( KConfig *config )
 
   config->setGroup( "General" );
   // FIXME: Move the filter loading and saving to the CalFilter class in libkcal
-  QStringList filterList = config->readListEntry ("CalendarFilters" );
+  QStringList filterList = config->readEntry ("CalendarFilters" , QStringList() );
   QString currentFilter = config->readEntry( "Current Filter" );
 
   QStringList::ConstIterator it = filterList.begin();
@@ -568,7 +568,7 @@ void CalendarView::readFilterSettings( KConfig *config )
     filter = new CalFilter( *it );
     config->setGroup( "Filter_" + (*it) );
     filter->setCriteria( config->readEntry( "Criteria", 0 ) );
-    filter->setCategoryList( config->readListEntry( "CategoryList" ) );
+    filter->setCategoryList( config->readEntry( "CategoryList" , QStringList() ) );
     if ( filter->criteria() & KCal::CalFilter::HideTodosWithoutAttendeeInEmailList )
       filter->setEmailList( KOPrefs::instance()->allEmails() );
     filter->setCompletedTimeSpan( config->readEntry( "HideTodoDays", 0 ) );
