@@ -25,6 +25,7 @@
 
 #include <kcmultidialog.h>
 #include <ksettings/dialog.h>
+#include <kwin.h>
 
 #include <libkdepim/categoryeditdialog.h>
 
@@ -89,6 +90,9 @@ KODialogManager::KODialogManager( CalendarView *mainView ) :
   mFilterEditDialog = 0;
 
   mCategoryEditDialog = new KPIM::CategoryEditDialog( KOPrefs::instance(), mMainView );
+  // don't set any specific parent for the dialog, as its kept around and reused
+  // in different cases where it should have different parents
+  KWin::setMainWindow( mCategoryEditDialog, 0 );
   connect( mainView, SIGNAL( categoriesChanged() ),
            mCategoryEditDialog, SLOT( reload() ) );
   KOGlobals::fitDialogToScreen( mCategoryEditDialog );
