@@ -66,7 +66,6 @@
 #include <libkcal/incidenceformatter.h>
 #include <libkcal/journal.h>
 
-#include <libkdepim/clicklineedit.h>
 #include <libkdepim/kdatepickerpopup.h>
 
 #include <libemailfunctions/email.h>
@@ -456,7 +455,8 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent)
   title->setFrameStyle( QFrame::Panel | QFrame::Raised );
   topLayout->addWidget( title );
 
-  mQuickAdd = new KPIM::ClickLineEdit( this, i18n( "Click to add a new to-do" ) );
+  mQuickAdd = new KLineEdit( this);
+  mQuickAdd->setClickMessage(i18n( "Click to add a new to-do" ));
   mQuickAdd->setAcceptDrops( false );
   topLayout->addWidget( mQuickAdd );
 

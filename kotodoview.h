@@ -52,6 +52,7 @@ class QMenu;
 class QAction;
 class QSplitter;
 
+class KLineEdit;
 class KToolBar;
 
 class KOTodoListView;
@@ -61,9 +62,6 @@ class KDatePickerPopup;
 
 class DocPrefs;
 
-namespace KPIM {
-  class ClickLineEdit;
-}
 namespace KCal {
 class Incidence;
 class Calendar;
@@ -255,7 +253,7 @@ class KOTodoView : public KOrg::BaseView
 
     DocPrefs *mDocPrefs;
     QString mCurrentDoc;
-    KPIM::ClickLineEdit *mQuickAdd;
+    KLineEdit *mQuickAdd;
     KOTodoListViewQuickSearch *mSearchToolBar;
 
     QStringList mAllEmailAddrs;
