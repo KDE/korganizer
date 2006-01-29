@@ -569,11 +569,9 @@ void KOAgendaItem::dropEvent( QDropEvent *e )
   }
 
 #ifndef KORG_NOKABC
-  QString vcards;
-  KABC::VCardConverter converter;
+  KABC::Addressee::List list;
 
-  KVCardDrag::decode( e, vcards );
-  KABC::Addressee::List list = converter.parseVCards( vcards.toAscii() );
+  KVCardDrag::decode( e, list );
   KABC::Addressee::List::Iterator it;
   for ( it = list.begin(); it != list.end(); ++it ) {
     QString em( (*it).fullEmail() );

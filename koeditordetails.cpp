@@ -56,7 +56,6 @@
 #include <kmessagebox.h>
 #ifndef KORG_NOKABC
 #include <kabc/addresseedialog.h>
-#include <kabc/vcardconverter.h>
 #include <libkdepim/addressesdialog.h>
 #include <libkdepim/addresseelineedit.h>
 #include <kabc/distributionlist.h>
@@ -156,13 +155,12 @@ void KOAttendeeListView::dropEvent( QDropEvent *e )
 {
 #ifndef KORG_NODND
   QString text;
-  QString vcards;
 
 #ifndef KORG_NOKABC
-  if ( KVCardDrag::decode( e, vcards ) ) {
-    KABC::VCardConverter converter;
+  if ( KVCardDrag::canDecode( e ) ) {
+    KABC::Addressee::List list;
+    KVCardDrag::decode( e, list );
 
-    KABC::Addressee::List list = converter.parseVCards( vcards.toAscii() );
     KABC::Addressee::List::Iterator it;
     for ( it = list.begin(); it != list.end(); ++it ) {
       QString em( (*it).fullEmail() );
