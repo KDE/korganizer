@@ -56,7 +56,7 @@ KOTimeSpanView::~KOTimeSpanView()
 
 void KOTimeSpanView::readSettings()
 {
-  kdDebug(5850) << "KOTimeSpanView::readSettings()" << endl;
+  kDebug(5850) << "KOTimeSpanView::readSettings()" << endl;
 
   KConfig config( "korganizerrc", true, false); // Open read-only, no kdeglobals
   config.setGroup("Views");
@@ -69,7 +69,7 @@ void KOTimeSpanView::readSettings()
 
 void KOTimeSpanView::writeSettings(KConfig *config)
 {
-//  kdDebug(5850) << "KOTimeSpanView::writeSettings()" << endl;
+//  kDebug(5850) << "KOTimeSpanView::writeSettings()" << endl;
 
   config->setGroup("Views");
 

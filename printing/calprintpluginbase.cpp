@@ -101,7 +101,7 @@ void CalPrintPluginBase::doLoadConfig()
     mHelper->setUseColors( mUseColors );
     loadConfig();
   } else {
-    kdDebug(5850) << "No config available in loadConfig!!!!" << endl;
+    kDebug(5850) << "No config available in loadConfig!!!!" << endl;
   }
 }
 
@@ -115,7 +115,7 @@ void CalPrintPluginBase::doSaveConfig()
     group.writeEntry( "UseColors", mUseColors );
     mConfig->sync();
   } else {
-    kdDebug(5850) << "No config available in saveConfig!!!!" << endl;
+    kDebug(5850) << "No config available in saveConfig!!!!" << endl;
   }
 }
 

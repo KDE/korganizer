@@ -32,7 +32,7 @@
 
 AlarmClient::AlarmClient()
 {
-  kdDebug(5850) << "AlarmClient::AlarmClient()" << endl;
+  kDebug(5850) << "AlarmClient::AlarmClient()" << endl;
 }
 
 void AlarmClient::startDaemon()
@@ -45,12 +45,12 @@ void AlarmClient::startDaemon()
   KGlobal::dirs()->addResourceType("autostart", "share/autostart");
   QString desktopFile = locate( "autostart", "korgac.desktop" );
   if ( desktopFile.isEmpty() ) {
-    kdWarning() << "Couldn't find autostart/korgac.desktop!" << endl;
+    kWarning() << "Couldn't find autostart/korgac.desktop!" << endl;
   }
   else {
     QString error;
     if ( KToolInvocation::startServiceByDesktopPath( desktopFile, QStringList(), &error ) != 0 )
-      kdWarning() << "Failure starting korgac:" << error << endl;
+      kWarning() << "Failure starting korgac:" << error << endl;
   }
 }
 

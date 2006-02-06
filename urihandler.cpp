@@ -46,7 +46,7 @@
 
 bool UriHandler::process( const QString &uri )
 {
-  kdDebug(5850) << "UriHandler::process(): " << uri << endl;
+  kDebug(5850) << "UriHandler::process(): " << uri << endl;
 
 #ifndef KORG_NODCOP
   if ( uri.startsWith( KDEPIMPROTOCOL_EMAIL ) ) {

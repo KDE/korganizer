@@ -123,7 +123,7 @@ void CalPrintDay::loadConfig()
 
 void CalPrintDay::saveConfig()
 {
-  kdDebug(5850) << "CalPrintDay::saveConfig()" << endl;
+  kDebug(5850) << "CalPrintDay::saveConfig()" << endl;
 
   readSettingsWidget();
   if ( mConfig ) {

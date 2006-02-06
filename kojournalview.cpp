@@ -111,7 +111,7 @@ Incidence::List KOJournalView::selectedIncidences()
 
 void KOJournalView::clearEntries()
 {
-//  kdDebug(5850)<<"KOJournalView::clearEntries()"<<endl;
+//  kDebug(5850)<<"KOJournalView::clearEntries()"<<endl;
   QMap<QDate, JournalDateEntry*>::Iterator it;
   for ( it = mEntries.begin(); it != mEntries.end(); ++it ) {
     delete (it.data());
@@ -133,13 +133,13 @@ void KOJournalView::updateView()
 
 void KOJournalView::flushView()
 {
-//  kdDebug(5850) << "KOJournalView::flushView(): "<< endl;
+//  kDebug(5850) << "KOJournalView::flushView(): "<< endl;
   emit flushEntries();
 }
 
 void KOJournalView::showDates(const QDate &start, const QDate &end)
 {
-//  kdDebug(5850) << "KOJournalView::showDates(): "<<start.toString().toLatin1()<<" - "<<end.toString().toLatin1() << endl;
+//  kDebug(5850) << "KOJournalView::showDates(): "<<start.toString().toLatin1()<<" - "<<end.toString().toLatin1() << endl;
   clearEntries();
   if ( end<start ) return;
 
@@ -160,7 +160,7 @@ void KOJournalView::showDates(const QDate &start, const QDate &end)
 
 void KOJournalView::showIncidences( const Incidence::List &incidences )
 {
-//  kdDebug(5850) << "KOJournalView::showIncidences(): "<< endl;
+//  kDebug(5850) << "KOJournalView::showIncidences(): "<< endl;
   clearEntries();
   Incidence::List::const_iterator it;
   for ( it=incidences.constBegin(); it!=incidences.constEnd(); ++it) {
@@ -173,7 +173,7 @@ void KOJournalView::showIncidences( const Incidence::List &incidences )
 
 void KOJournalView::changeIncidenceDisplay(Incidence *incidence, int action)
 {
-//  kdDebug(5850) << "KOJournalView::changeIncidenceDisplay(): "<< endl;
+//  kDebug(5850) << "KOJournalView::changeIncidenceDisplay(): "<< endl;
   Journal *journal = dynamic_cast<Journal*>(incidence);
   if (journal) {
     switch(action) {
@@ -187,7 +187,7 @@ void KOJournalView::changeIncidenceDisplay(Incidence *incidence, int action)
         emit journalDeleted( journal );
         break;
       default:
-        kdDebug(5850) << "KOListView::changeIncidenceDisplay(): Illegal action " << action << endl;
+        kDebug(5850) << "KOListView::changeIncidenceDisplay(): Illegal action " << action << endl;
     }
   }
 }

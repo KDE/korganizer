@@ -40,7 +40,7 @@ KONewStuff::KONewStuff( CalendarView *view ) :
 
 bool KONewStuff::install( const QString &fileName )
 {
-  kdDebug(5850) << "KONewStuff::install(): " << fileName << endl;
+  kDebug(5850) << "KONewStuff::install(): " << fileName << endl;
 
   CalendarLocal cal( KOPrefs::instance()->mTimeZoneId );
   FileStorage storage( &cal, fileName );

@@ -105,19 +105,19 @@ void KOEditorGeneralJournal::initDate( QWidget *parent, QBoxLayout *topLayout )
 
 void KOEditorGeneralJournal::setDate( const QDate &date )
 {
-//  kdDebug(5850) << "KOEditorGeneralJournal::setDate(): Date: " << date.toString() << endl;
+//  kDebug(5850) << "KOEditorGeneralJournal::setDate(): Date: " << date.toString() << endl;
 
   mDateEdit->setDate( date );
 }
 
 void KOEditorGeneralJournal::setTime( const QTime &time )
 {
-kdDebug()<<"KOEditorGeneralJournal::setTime, time="<<time.toString()<<endl;
+kDebug()<<"KOEditorGeneralJournal::setTime, time="<<time.toString()<<endl;
   bool validTime = time.isValid();
   mTimeCheckBox->setChecked( validTime );
   mTimeEdit->setEnabled( validTime );
   if ( validTime ) {
-kdDebug()<<"KOEditorGeneralJournal::setTime, time is valid"<<endl;
+kDebug()<<"KOEditorGeneralJournal::setTime, time is valid"<<endl;
     mTimeEdit->setTime( time );
   }
 }
@@ -144,10 +144,10 @@ void KOEditorGeneralJournal::readJournal( Journal *journal, bool tmpl )
   if ( !tmpl ) {
     setDate( journal->dtStart().date() );
     if ( !journal->doesFloat() ) {
-kdDebug()<<"KOEditorGeneralJournal::readJournal, does not float, time="<<(journal->dtStart().time().toString())<<endl;
+kDebug()<<"KOEditorGeneralJournal::readJournal, does not float, time="<<(journal->dtStart().time().toString())<<endl;
       setTime( journal->dtStart().time() );
     } else { 
-kdDebug()<<"KOEditorGeneralJournal::readJournal, does float"<<endl;
+kDebug()<<"KOEditorGeneralJournal::readJournal, does float"<<endl;
       setTime( QTime( -1, -1, -1 ) );
     } 
   }
@@ -156,7 +156,7 @@ kdDebug()<<"KOEditorGeneralJournal::readJournal, does float"<<endl;
 
 void KOEditorGeneralJournal::writeJournal( Journal *journal )
 {
-//  kdDebug(5850) << "KOEditorGeneralJournal::writeIncidence()" << endl;
+//  kDebug(5850) << "KOEditorGeneralJournal::writeIncidence()" << endl;
   journal->setSummary( mSummaryEdit->text() );
   journal->setDescription( mDescriptionEdit->text() );
   
@@ -168,7 +168,7 @@ void KOEditorGeneralJournal::writeJournal( Journal *journal )
   }
   journal->setDtStart(tmpDT);
 
-//  kdDebug(5850) << "KOEditorGeneralJournal::writeJournal() done" << endl;
+//  kDebug(5850) << "KOEditorGeneralJournal::writeJournal() done" << endl;
 }
 
 
@@ -193,7 +193,7 @@ void KOEditorGeneralJournal::finishSetup()
 
 bool KOEditorGeneralJournal::validateInput()
 {
-//  kdDebug(5850) << "KOEditorGeneralJournal::validateInput()" << endl;
+//  kDebug(5850) << "KOEditorGeneralJournal::validateInput()" << endl;
 
   if (!mDateEdit->date().isValid()) {
     KMessageBox::sorry( 0,

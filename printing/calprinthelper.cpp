@@ -83,12 +83,12 @@ class PrintCellItem : public KOrg::CellItem
       PrintCellItem *other = static_cast<PrintCellItem *>( o );
 
 #if 0
-      kdDebug(5850) << "PrintCellItem::overlaps() " << event()->summary()
+      kDebug(5850) << "PrintCellItem::overlaps() " << event()->summary()
                     << " <-> " << other->event()->summary() << endl;
-      kdDebug(5850) << "  start     : " << start.toString() << endl;
-      kdDebug(5850) << "  end       : " << end.toString() << endl;
-      kdDebug(5850) << "  otherStart: " << otherStart.toString() << endl;
-      kdDebug(5850) << "  otherEnd  : " << otherEnd.toString() << endl;
+      kDebug(5850) << "  start     : " << start.toString() << endl;
+      kDebug(5850) << "  end       : " << end.toString() << endl;
+      kDebug(5850) << "  otherStart: " << otherStart.toString() << endl;
+      kDebug(5850) << "  otherEnd  : " << otherEnd.toString() << endl;
 #endif
 
       return !( other->start() >= end() || other->end() <= start() );
@@ -631,7 +631,7 @@ void CalPrintHelper::drawDayBox( QPainter &p, const QDate &qd,
 
 void CalPrintHelper::drawIncidence( QPainter &p, QRect &dayBox, const QString &time, const QString &summary, int &textY )
 {
-  kdDebug(5850) << "summary = " << summary << endl;
+  kDebug(5850) << "summary = " << summary << endl;
 
   int flags = Qt::AlignLeft;
   QFontMetrics fm = p.fontMetrics();

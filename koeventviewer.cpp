@@ -63,7 +63,7 @@ void KOEventViewer::readSettings( KConfig * config )
     config->setGroup( QString("EventViewer-%1").arg( name() )  );
     int zoomFactor = config->readEntry("ZoomFactor", pointSize() );
     zoomTo( zoomFactor/2 );
-    kdDebug(5850) << " KOEventViewer: restoring the pointSize:  "<< pointSize() 
+    kDebug(5850) << " KOEventViewer: restoring the pointSize:  "<< pointSize() 
       << ", zoomFactor: " << zoomFactor << endl;
 #endif
   }
@@ -72,7 +72,7 @@ void KOEventViewer::readSettings( KConfig * config )
 void KOEventViewer::writeSettings( KConfig * config )
 {
   if ( config ) {
-    kdDebug(5850) << " KOEventViewer: saving the zoomFactor: "<< pointSize() << endl;
+    kDebug(5850) << " KOEventViewer: saving the zoomFactor: "<< pointSize() << endl;
     config->setGroup( QString("EventViewer-%1").arg( name() ) );
     config->writeEntry("ZoomFactor", pointSize() );
   }
@@ -97,7 +97,7 @@ bool KOEventViewer::appendIncidence( Incidence *incidence )
 {
   QString codeForIncidence = 
                         IncidenceFormatter::extensiveDisplayString( incidence );
-/*  kdDebug( 5850 ) << " KOEventViewer: appending incidence, HTML code:" << endl
+/*  kDebug( 5850 ) << " KOEventViewer: appending incidence, HTML code:" << endl
                   << "-------------------FROM HERE--------------------" << endl
                   << codeForIncidence << endl
                   << "--------------------TO HERE---------------------" << endl; */

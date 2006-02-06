@@ -78,7 +78,7 @@ ImportDialog::~ImportDialog()
 
 void ImportDialog::slotOk()
 {
-  kdDebug(5850) << "Adding resource for url '" << mUrl << "'" << endl;
+  kDebug(5850) << "Adding resource for url '" << mUrl << "'" << endl;
 
   if ( mAddButton->isChecked() ) {
     emit addResource( mUrl );
@@ -89,7 +89,7 @@ void ImportDialog::slotOk()
     // emit a signal to the action manager to open mUrl in a separate window
     emit newWindow( mUrl );
   } else {
-    kdError() << "ImportDialog: internal error." << endl;
+    kError() << "ImportDialog: internal error." << endl;
   }
 
   emit dialogFinished( this );

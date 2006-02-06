@@ -174,7 +174,7 @@ void KOTodoViewItem::stateChange( bool state )
     return;
   }
   
-  kdDebug(5850) << "State changed, modified " << state << endl;
+  kDebug(5850) << "State changed, modified " << state << endl;
   mTodoView->setNewPercentageDelayed( this, state ? 100 : 0 );
 }
 

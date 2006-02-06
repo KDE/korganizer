@@ -315,7 +315,7 @@ void KOListView::hideDates()
 
 void KOListView::updateView()
 {
-  kdDebug(5850) << "KOListView::updateView() does nothing" << endl;
+  kDebug(5850) << "KOListView::updateView() does nothing" << endl;
 }
 
 void KOListView::showDates(const QDate &start, const QDate &end)
@@ -397,7 +397,7 @@ void KOListView::changeIncidenceDisplay(Incidence *incidence, int action)
       break;
     }
     default:
-      kdDebug(5850) << "KOListView::changeIncidenceDisplay(): Illegal action " << action << endl;
+      kDebug(5850) << "KOListView::changeIncidenceDisplay(): Illegal action " << action << endl;
   }
 }
 
@@ -405,7 +405,7 @@ KOListViewItem *KOListView::getItemForIncidence(Incidence *incidence)
 {
   KOListViewItem *item = (KOListViewItem *)mListView->firstChild();
   while (item) {
-//    kdDebug(5850) << "Item " << item->text(0) << " found" << endl;
+//    kDebug(5850) << "Item " << item->text(0) << " found" << endl;
     if (item->data() == incidence) return item;
     item = (KOListViewItem *)item->nextSibling();
   }
@@ -444,7 +444,7 @@ void KOListView::writeSettings(KConfig *config)
 
 void KOListView::processSelectionChange()
 {
-  kdDebug(5850) << "KOListView::processSelectionChange()" << endl;
+  kDebug(5850) << "KOListView::processSelectionChange()" << endl;
 
   KOListViewItem *item =
     static_cast<KOListViewItem *>( mListView->selectedItem() );

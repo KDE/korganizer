@@ -52,12 +52,12 @@ void TimeLine::drawContents(QPainter* p, int cx, int cy, int cw, int ch)
   int offsetX = mDayOffset;
 
   // Draw vertical lines of grid
-//  kdDebug(5850) << "drawContents cx: " << cx << " cy: " << cy << " cw: " << cw << " ch: " << ch << endl;
+//  kDebug(5850) << "drawContents cx: " << cx << " cy: " << cy << " cw: " << cw << " ch: " << ch << endl;
   int cell = int( (cx - ( spacingX - offsetX ) ) / spacingX );
   int x = cell * spacingX + ( spacingX - offsetX );
-//  kdDebug(5850) << "  x: " << x << endl;
+//  kDebug(5850) << "  x: " << x << endl;
   while (x < cx + cw) {
-//    kdDebug(5850) << "    x: " << x << endl;
+//    kDebug(5850) << "    x: " << x << endl;
     p->drawLine(x,cy,x,cy+ch);
     p->drawText( x + 5, 15, QString::number( mStartDate.addDays( cell + 1 ).date().day() ) );
 
@@ -77,7 +77,7 @@ void TimeLine::setDateRange( const QDateTime &start, const QDateTime &end )
 
   mDayOffset = QDateTime( mStartDate.date() ).secsTo( mStartDate ) / mSecsPerPixel;
 
-  kdDebug(5850) << "TimeLines::setDateRange(): mDaySpacing: " << mDaySpacing << "  mDayOffset: "
+  kDebug(5850) << "TimeLines::setDateRange(): mDaySpacing: " << mDaySpacing << "  mDayOffset: "
             << mDayOffset << "  mSecsPerPixel: " << mSecsPerPixel << endl;
 }
 

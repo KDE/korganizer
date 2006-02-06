@@ -379,7 +379,7 @@ Alarm *KOEditorGeneral::alarmFromSimplePage() const
 }
 void KOEditorGeneral::writeIncidence(Incidence *event)
 {
-//  kdDebug(5850) << "KOEditorGeneral::writeEvent()" << endl;
+//  kDebug(5850) << "KOEditorGeneral::writeEvent()" << endl;
 
   event->setSummary(mSummaryEdit->text());
   event->setLocation(mLocationEdit->text());

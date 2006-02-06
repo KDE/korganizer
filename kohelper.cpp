@@ -57,7 +57,7 @@ QColor KOHelper::resourceColor( KCal::Calendar*calendar, KCal::Incidence*inciden
     }
 
 //   } else {
-//     kdDebug(5850) << "resourceColor: Calendar is not a CalendarResources" <<endl;
+//     kDebug(5850) << "resourceColor: Calendar is not a CalendarResources" <<endl;
   }
   return resourceColor;
 }

@@ -165,11 +165,11 @@ void DateNavigatorContainer::setBaseDates( const QDate &start )
 void DateNavigatorContainer::resizeEvent( QResizeEvent * )
 {
 #if 0
-  kdDebug(5850) << "DateNavigatorContainer::resizeEvent()" << endl;
-  kdDebug(5850) << "  CURRENT SIZE: " << size() << endl;
-  kdDebug(5850) << "  MINIMUM SIZEHINT: " << minimumSizeHint() << endl;
-  kdDebug(5850) << "  SIZEHINT: " << sizeHint() << endl;
-  kdDebug(5850) << "  MINIMUM SIZE: " << minimumSize() << endl;
+  kDebug(5850) << "DateNavigatorContainer::resizeEvent()" << endl;
+  kDebug(5850) << "  CURRENT SIZE: " << size() << endl;
+  kDebug(5850) << "  MINIMUM SIZEHINT: " << minimumSizeHint() << endl;
+  kDebug(5850) << "  SIZEHINT: " << sizeHint() << endl;
+  kDebug(5850) << "  MINIMUM SIZE: " << minimumSize() << endl;
 #endif
   QTimer::singleShot( 0, this, SLOT( resizeAllContents() ) );
 }
@@ -178,7 +178,7 @@ void DateNavigatorContainer::resizeAllContents()
 {
   QSize minSize = mNavigatorView->minimumSizeHint();
 
-//  kdDebug(5850) << "  NAVIGATORVIEW minimumSizeHint: " << minSize << endl;
+//  kDebug(5850) << "  NAVIGATORVIEW minimumSizeHint: " << minSize << endl;
 
   int margin = KDialog::spacingHint();
   int verticalCount = ( size().height() - margin*2 ) / minSize.height();

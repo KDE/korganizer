@@ -139,7 +139,7 @@ void KOAttendeeListView::dragEnterEvent( QDragEnterEvent *e )
 
 void KOAttendeeListView::addAttendee( const QString &newAttendee )
 {
-  kdDebug(5850) << " Email: " << newAttendee << endl;
+  kDebug(5850) << " Email: " << newAttendee << endl;
   QString name;
   QString email;
   KPIM::getNameAndMail( newAttendee, name, email );
@@ -172,7 +172,7 @@ void KOAttendeeListView::dropEvent( QDropEvent *e )
   } else
 #endif // KORG_NOKABC
   if (Q3TextDrag::decode(e,text)) {
-    kdDebug(5850) << "Dropped : " << text << endl;
+    kDebug(5850) << "Dropped : " << text << endl;
     QStringList emails = QStringList::split(",",text);
     for(QStringList::ConstIterator it = emails.begin();it!=emails.end();++it) {
       addAttendee(*it);

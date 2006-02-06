@@ -98,7 +98,7 @@ void EventArchiver::run( Calendar* calendar, const QDate& limitDate, QWidget* wi
   incidences = Calendar::mergeIncidenceList( events, todos, journals );
   
 
-  kdDebug(5850) << "EventArchiver: archiving incidences before " << limitDate << " -> " << incidences.count() << " incidences found." << endl;
+  kDebug(5850) << "EventArchiver: archiving incidences before " << limitDate << " -> " << incidences.count() << " incidences found." << endl;
   if ( incidences.isEmpty() ) {
     if ( withGUI && errorIfNone )
       KMessageBox::information( widget, i18n("There are no items before %1")
@@ -150,7 +150,7 @@ void EventArchiver::archiveIncidences( Calendar* calendar, const QDate& /*limitD
   tmpFile.setAutoDelete(true);
   storage.setFileName( tmpFile.name() );
   if ( !storage.save() ) {
-    kdDebug(5850) << "EventArchiver::archiveEvents(): Can't save calendar to temp file" << endl;
+    kDebug(5850) << "EventArchiver::archiveEvents(): Can't save calendar to temp file" << endl;
     return;
   }
 
@@ -160,7 +160,7 @@ void EventArchiver::archiveIncidences( Calendar* calendar, const QDate& /*limitD
   FileStorage archiveStore( &archiveCalendar );
   archiveStore.setFileName( tmpFile.name() );
   if (!archiveStore.load()) {
-    kdDebug(5850) << "EventArchiver::archiveEvents(): Can't load calendar from temp file" << endl;
+    kDebug(5850) << "EventArchiver::archiveEvents(): Can't load calendar from temp file" << endl;
     return;
   }
 
@@ -184,13 +184,13 @@ void EventArchiver::archiveIncidences( Calendar* calendar, const QDate& /*limitD
 
   if ( KIO::NetAccess::exists( archiveURL, true, widget ) ) {
     if( !KIO::NetAccess::download( archiveURL, archiveFile, widget ) ) {
-      kdDebug(5850) << "EventArchiver::archiveEvents(): Can't download archive file" << endl;
+      kDebug(5850) << "EventArchiver::archiveEvents(): Can't download archive file" << endl;
       return;
     }
     // Merge with events to be archived.
     archiveStore.setFileName( archiveFile );
     if ( !archiveStore.load() ) {
-      kdDebug(5850) << "EventArchiver::archiveEvents(): Can't merge with archive file" << endl;
+      kDebug(5850) << "EventArchiver::archiveEvents(): Can't merge with archive file" << endl;
       return;
     }
   } else {

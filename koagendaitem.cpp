@@ -544,7 +544,7 @@ void KOAgendaItem::dragEnterEvent( QDragEnterEvent *e )
 
 void KOAgendaItem::addAttendee( const QString &newAttendee )
 {
-  kdDebug(5850) << " Email: " << newAttendee << endl;
+  kDebug(5850) << " Email: " << newAttendee << endl;
   int pos = newAttendee.find("<");
   QString name = newAttendee.left(pos);
   QString email = newAttendee.mid(pos);
@@ -582,7 +582,7 @@ void KOAgendaItem::dropEvent( QDropEvent *e )
   }
 #else
   if( decoded ) {
-    kdDebug(5850) << "Dropped : " << text << endl;
+    kDebug(5850) << "Dropped : " << text << endl;
 
     QStringList emails = QStringList::split( ",", text );
     for( QStringList::ConstIterator it = emails.begin(); it != emails.end();
@@ -827,7 +827,7 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
                                 0,
                                 mLabelText );
 
-    //kdDebug() << "SIZES for " << mLabelText <<  ": " << width() << " :: " << txtWidth << endl;
+    //kDebug() << "SIZES for " << mLabelText <<  ": " << width() << " :: " << txtWidth << endl;
     ww->drawText( &p, x, margin, Qt::AlignHCenter | KWordWrap::FadeOut );
     delete ww;
     return;

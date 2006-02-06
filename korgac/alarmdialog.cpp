@@ -206,7 +206,7 @@ void AlarmDialog::eventNotification()
 // FIXME: Check whether this should be done for all multiple alarms
     if (alarm->type() == Alarm::Procedure) {
 // FIXME: Add a message box asking whether the procedure should really be executed
-      kdDebug(5890) << "Starting program: '" << alarm->programFile() << "'" << endl;
+      kDebug(5890) << "Starting program: '" << alarm->programFile() << "'" << endl;
       KProcess proc;
       proc << QFile::encodeName(alarm->programFile());
       proc.start(KProcess::DontCare);

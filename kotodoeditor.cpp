@@ -254,15 +254,15 @@ bool KOTodoEditor::processInput()
     Todo *oldTodo = mTodo->clone();
     Todo *todo = mTodo->clone();
 
-    kdDebug(5850) << "KOTodoEditor::processInput() write event." << endl;
+    kDebug(5850) << "KOTodoEditor::processInput() write event." << endl;
     writeTodo( todo );
-    kdDebug(5850) << "KOTodoEditor::processInput() event written." << endl;
+    kDebug(5850) << "KOTodoEditor::processInput() event written." << endl;
 
     if( *mTodo == *todo )
       // Don't do anything
-      kdDebug(5850) << "Todo not changed\n";
+      kDebug(5850) << "Todo not changed\n";
     else {
-      kdDebug(5850) << "Todo changed\n";
+      kDebug(5850) << "Todo changed\n";
       //IncidenceChanger::assignIncidence( mTodo, todo );
       writeTodo( mTodo );
       mChanger->changeIncidence( oldTodo, mTodo );
@@ -323,7 +323,7 @@ void KOTodoEditor::setDefaults( const QDateTime &due, Todo *relatedEvent, bool a
 
 void KOTodoEditor::readTodo( Todo *todo )
 {
-  kdDebug(5850)<<"read todo"<<endl;
+  kDebug(5850)<<"read todo"<<endl;
   mGeneral->readTodo( todo );
   mDetails->readEvent( todo );
 //  mAlarms->readIncidence( todo );

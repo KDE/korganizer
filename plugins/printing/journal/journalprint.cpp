@@ -89,7 +89,7 @@ void CalPrintJournal::loadConfig()
 
 void CalPrintJournal::saveConfig()
 {
-  kdDebug(5850) << "CalPrintJournal::saveConfig()" << endl;
+  kDebug(5850) << "CalPrintJournal::saveConfig()" << endl;
 
   readSettingsWidget();
   if ( mConfig ) {

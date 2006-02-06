@@ -87,7 +87,7 @@ KOPrefs::KOPrefs() :
 
 KOPrefs::~KOPrefs()
 {
-  kdDebug(5850) << "KOPrefs::~KOPrefs()" << endl;
+  kDebug(5850) << "KOPrefs::~KOPrefs()" << endl;
 }
 
 
@@ -150,7 +150,7 @@ void KOPrefs::setTimeZoneIdDefault()
     zone = tzname[0];
   }
 
-  kdDebug () << "----- time zone: " << zone << endl;
+  kDebug () << "----- time zone: " << zone << endl;
 
   mTimeZoneId = zone;
 }
@@ -202,7 +202,7 @@ void KOPrefs::usrReadConfig()
 
   QMap<QString, QString>::Iterator it3;
   for( it3 = map.begin(); it3 != map.end(); ++it3 ) {
-    kdDebug(5850)<< "KOPrefs::usrReadConfig: key: " << it3.key() << " value: "
+    kDebug(5850)<< "KOPrefs::usrReadConfig: key: " << it3.key() << " value: "
       << it3.data()<<endl;
     setResourceColor( it3.key(), config()->readEntry( it3.key(),
       mDefaultResourceColor ) );
@@ -280,7 +280,7 @@ QColor KOPrefs::categoryColor( const QString &cat )
 
 void KOPrefs::setResourceColor ( const QString &cal, const QColor &color )
 {
-  kdDebug(5850)<<"KOPrefs::setResourceColor: " << cal << " color: "<<
+  kDebug(5850)<<"KOPrefs::setResourceColor: " << cal << " color: "<<
     color.name()<<endl;
   mResourceColors.insert( cal, color );
 }
@@ -317,7 +317,7 @@ QString KOPrefs::email()
 QStringList KOPrefs::allEmails()
 {
   // Grab emails from the email identities
-  kdDebug()<<" KOCore::self()->identityManager() :"<<KOCore::self()->identityManager()<<endl;
+  kDebug()<<" KOCore::self()->identityManager() :"<<KOCore::self()->identityManager()<<endl;
   QStringList lst = KOCore::self()->identityManager()->allEmails();
   // Add emails configured in korganizer
   lst += mAdditionalMails;

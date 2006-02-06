@@ -427,7 +427,7 @@ void KOEditorFreeBusy::timerEvent( QTimerEvent* event )
 void KOEditorFreeBusy::slotInsertFreeBusy( KCal::FreeBusy *fb,
                                            const QString &email )
 {
-  kdDebug(5850) << "KOEditorFreeBusy::slotInsertFreeBusy() " << email << endl;
+  kDebug(5850) << "KOEditorFreeBusy::slotInsertFreeBusy() " << email << endl;
 
   if( fb )
     fb->sortList();
@@ -540,7 +540,7 @@ bool KOEditorFreeBusy::tryDate( QDateTime& tryFrom, QDateTime& tryTo )
   FreeBusyItem* currentItem = static_cast<FreeBusyItem*>( mGanttView->firstChild() );
   while( currentItem ) {
     if( !tryDate( currentItem, tryFrom, tryTo ) ) {
-      // kdDebug(5850) << "++++date is not OK, new suggestion: " << tryFrom.toString() << " to " << tryTo.toString() << endl;
+      // kDebug(5850) << "++++date is not OK, new suggestion: " << tryFrom.toString() << " to " << tryTo.toString() << endl;
       return false;
     }
 
@@ -642,7 +642,7 @@ void KOEditorFreeBusy::cancelReload()
 
 void KOEditorFreeBusy::reload()
 {
-  kdDebug(5850) << "KOEditorFreeBusy::reload()" << endl;
+  kDebug(5850) << "KOEditorFreeBusy::reload()" << endl;
 
   FreeBusyItem *item = static_cast<FreeBusyItem *>( mGanttView->firstChild() );
   while( item ) {

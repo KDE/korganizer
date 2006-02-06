@@ -418,7 +418,7 @@ void KListViewNewSearchLine::listViewDeleted(QObject *o)
 {
     KListView *lv = dynamic_cast<KListView *>(o);
     if (!lv) {
-        kdWarning() << k_funcinfo << "an object other than KListView passed"
+        kWarning() << k_funcinfo << "an object other than KListView passed"
                 << endl;
         return;
     }

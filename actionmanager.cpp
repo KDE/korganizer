@@ -107,7 +107,7 @@ ActionManager::~ActionManager()
 
   delete mCalendar;
 
-  kdDebug(5850) << "~ActionManager() done" << endl;
+  kDebug(5850) << "~ActionManager() done" << endl;
 }
 
 // see the Note: below for why this method is necessary
@@ -175,10 +175,10 @@ void ActionManager::createCalendarResources()
 
   CalendarResourceManager *manager = mCalendarResources->resourceManager();
 
-  kdDebug(5850) << "CalendarResources used by KOrganizer:" << endl;
+  kDebug(5850) << "CalendarResources used by KOrganizer:" << endl;
   CalendarResourceManager::Iterator it;
   for( it = manager->begin(); it != manager->end(); ++it ) {
-    kdDebug(5850) << "  " << (*it)->resourceName() << endl;
+    kDebug(5850) << "  " << (*it)->resourceName() << endl;
     (*it)->setResolveConflict( true );
 //    (*it)->dump();
   }
@@ -635,7 +635,7 @@ void ActionManager::readSettings()
 
 void ActionManager::writeSettings()
 {
-  kdDebug(5850) << "ActionManager::writeSettings" << endl;
+  kDebug(5850) << "ActionManager::writeSettings" << endl;
 
   KConfig *config = KOGlobals::self()->config();
   mCalendarView->writeSettings();
@@ -697,7 +697,7 @@ void ActionManager::file_open( const KUrl &url )
     return;
   }
 
-  kdDebug(5850) << "ActionManager::file_open(): " << url.prettyURL() << endl;
+  kDebug(5850) << "ActionManager::file_open(): " << url.prettyURL() << endl;
 
   // Open the calendar file in the same window only if we have an empty calendar window, and not the resource calendar
   if ( !mCalendarView->isModified() && mFile.isEmpty() && !mCalendarResources ) {
@@ -729,13 +729,13 @@ void ActionManager::file_icalimport()
   bool success = proc.start( KProcess::Block );
 
   if ( !success ) {
-    kdDebug(5850) << "Error starting ical2vcal." << endl;
+    kDebug(5850) << "Error starting ical2vcal." << endl;
     return;
   } else {
     retVal = proc.exitStatus();
   }
 
-  kdDebug(5850) << "ical2vcal return value: " << retVal << endl;
+  kDebug(5850) << "ical2vcal return value: " << retVal << endl;
 
   if ( retVal >= 0 && retVal <= 2 ) {
     // now we need to MERGE what is in the iCal to the current calendar.
@@ -826,14 +826,14 @@ void ActionManager::file_close()
 
 bool ActionManager::openURL( const KUrl &url,bool merge )
 {
-  kdDebug(5850) << "ActionManager::openURL()" << endl;
+  kDebug(5850) << "ActionManager::openURL()" << endl;
 
   if ( url.isEmpty() ) {
-    kdDebug(5850) << "ActionManager::openURL(): Error! Empty URL." << endl;
+    kDebug(5850) << "ActionManager::openURL(): Error! Empty URL." << endl;
     return false;
   }
   if ( !url.isValid() ) {
-    kdDebug(5850) << "ActionManager::openURL(): Error! URL is malformed." << endl;
+    kDebug(5850) << "ActionManager::openURL(): Error! URL is malformed." << endl;
     return false;
   }
 
@@ -854,7 +854,7 @@ bool ActionManager::openURL( const KUrl &url,bool merge )
   } else {
     QString tmpFile;
     if( KIO::NetAccess::download( url, tmpFile, view() ) ) {
-      kdDebug(5850) << "--- Downloaded to " << tmpFile << endl;
+      kDebug(5850) << "--- Downloaded to " << tmpFile << endl;
       bool success = mCalendarView->openCalendar( tmpFile, merge );
       if ( merge ) {
         KIO::NetAccess::removeTempFile( tmpFile );
@@ -868,7 +868,7 @@ bool ActionManager::openURL( const KUrl &url,bool merge )
           KConfig *config = KOGlobals::self()->config();
           config->setGroup( "General" );
           setTitle();
-          kdDebug(5850) << "-- Add recent URL: " << url.prettyURL() << endl;
+          kDebug(5850) << "-- Add recent URL: " << url.prettyURL() << endl;
           if ( mRecent ) mRecent->addURL( url );
           showStatusMessageOpen( url, merge );
         }
@@ -894,15 +894,15 @@ bool ActionManager::addResource( const KUrl &mUrl )
 
   QString name;
 
-  kdDebug(5850) << "URL: " << mUrl << endl;
+  kDebug(5850) << "URL: " << mUrl << endl;
   if ( mUrl.isLocalFile() ) {
-    kdDebug(5850) << "Local Resource" << endl;
+    kDebug(5850) << "Local Resource" << endl;
     resource = manager->createResource( "file" );
     if ( resource )
       resource->setValue( "File", mUrl.path() );
     name = mUrl.path();
   } else {
-    kdDebug(5850) << "Remote Resource" << endl;
+    kDebug(5850) << "Remote Resource" << endl;
     resource = manager->createResource( "remote" );
     if ( resource )
       resource->setValue( "DownloadURL", mUrl.url() );
@@ -943,7 +943,7 @@ void ActionManager::showStatusMessageOpen( const KUrl &url, bool merge )
 
 void ActionManager::closeURL()
 {
-  kdDebug(5850) << "ActionManager::closeURL()" << endl;
+  kDebug(5850) << "ActionManager::closeURL()" << endl;
 
   file_close();
 }
@@ -978,7 +978,7 @@ bool ActionManager::saveURL()
   }
 
   if ( !mCalendarView->saveCalendar( mFile ) ) {
-    kdDebug(5850) << "ActionManager::saveURL(): calendar view save failed."
+    kDebug(5850) << "ActionManager::saveURL(): calendar view save failed."
                   << endl;
     return false;
   } else {
@@ -1063,14 +1063,14 @@ void ActionManager::exportHTML( HTMLExportSettings *settings )
 
 bool ActionManager::saveAsURL( const KUrl &url )
 {
-  kdDebug(5850) << "ActionManager::saveAsURL() " << url.prettyURL() << endl;
+  kDebug(5850) << "ActionManager::saveAsURL() " << url.prettyURL() << endl;
 
   if ( url.isEmpty() ) {
-    kdDebug(5850) << "ActionManager::saveAsURL(): Empty URL." << endl;
+    kDebug(5850) << "ActionManager::saveAsURL(): Empty URL." << endl;
     return false;
   }
   if ( !url.isValid() ) {
-    kdDebug(5850) << "ActionManager::saveAsURL(): Malformed URL." << endl;
+    kDebug(5850) << "ActionManager::saveAsURL(): Malformed URL." << endl;
     return false;
   }
 
@@ -1097,7 +1097,7 @@ bool ActionManager::saveAsURL( const KUrl &url )
     if ( mRecent ) mRecent->addURL( mURL );
   } else {
     KMessageBox::sorry( dialogParent(), i18n("Unable to save calendar to the file %1.").arg( mFile ), i18n("Error") );
-    kdDebug(5850) << "ActionManager::saveAsURL() failed" << endl;
+    kDebug(5850) << "ActionManager::saveAsURL() failed" << endl;
     mURL = URLOrig;
     mFile = fileOrig;
     delete tempFile;
@@ -1109,7 +1109,7 @@ bool ActionManager::saveAsURL( const KUrl &url )
 
 bool ActionManager::saveModifiedURL()
 {
-  kdDebug(5850) << "ActionManager::saveModifiedURL()" << endl;
+  kDebug(5850) << "ActionManager::saveModifiedURL()" << endl;
 
   // If calendar isn't modified do nothing.
   if ( !mCalendarView->isModified() ) return true;
@@ -1163,14 +1163,14 @@ KUrl ActionManager::getSaveURL()
 
   url.setFileName( filename );
 
-  kdDebug(5850) << "ActionManager::getSaveURL(): url: " << url.url() << endl;
+  kDebug(5850) << "ActionManager::getSaveURL(): url: " << url.url() << endl;
 
   return url;
 }
 
 void ActionManager::saveProperties( KConfig *config )
 {
-  kdDebug(5850) << "ActionManager::saveProperties" << endl;
+  kDebug(5850) << "ActionManager::saveProperties" << endl;
 
   config->writeEntry( "UseResourceCalendar", !mMainWindow->hasDocument() );
   if ( mMainWindow->hasDocument() ) {
@@ -1180,7 +1180,7 @@ void ActionManager::saveProperties( KConfig *config )
 
 void ActionManager::readProperties( KConfig *config )
 {
-  kdDebug(5850) << "ActionManager::readProperties" << endl;
+  kDebug(5850) << "ActionManager::readProperties" << endl;
 
   bool isResourceCalendar(
     config->readEntry( "UseResourceCalendar", true ) );
@@ -1197,7 +1197,7 @@ void ActionManager::readProperties( KConfig *config )
 
 void ActionManager::checkAutoSave()
 {
-  kdDebug(5850) << "ActionManager::checkAutoSave()" << endl;
+  kDebug(5850) << "ActionManager::checkAutoSave()" << endl;
 
   // Don't save if auto save interval is zero
   if ( KOPrefs::instance()->mAutoSaveInterval == 0 ) return;
@@ -1214,7 +1214,7 @@ void ActionManager::checkAutoSave()
 // Configuration changed as a result of the options dialog.
 void ActionManager::updateConfig()
 {
-  kdDebug(5850) << "ActionManager::updateConfig()" << endl;
+  kDebug(5850) << "ActionManager::updateConfig()" << endl;
 
   if ( KOPrefs::instance()->mAutoSave && !mAutoSaveTimer->isActive() ) {
     checkAutoSave();
@@ -1283,7 +1283,7 @@ KOrg::MainWindow *ActionManager::findInstance( const KUrl &url )
 
 void ActionManager::dumpText( const QString &str )
 {
-  kdDebug(5850) << "ActionManager::dumpText(): " << str << endl;
+  kDebug(5850) << "ActionManager::dumpText(): " << str << endl;
 }
 
 void ActionManager::toggleDateNavigator()
@@ -1307,7 +1307,7 @@ void ActionManager::toggleEventViewer()
 void ActionManager::toggleResourceView()
 {
   bool visible = mResourceViewShowAction->isChecked();
-  kdDebug(5850) << "toggleResourceView: " << endl;
+  kDebug(5850) << "toggleResourceView: " << endl;
   if ( mResourceView ) {
     if ( visible ) mResourceView->show();
     else mResourceView->hide();
@@ -1318,7 +1318,7 @@ void ActionManager::toggleResourceButtons()
 {
   bool visible = mResourceButtonsAction->isChecked();
 
-  kdDebug(5850) << "RESOURCE VIEW " << long( mResourceView ) << endl;
+  kDebug(5850) << "RESOURCE VIEW " << long( mResourceView ) << endl;
 
   if ( mResourceView ) mResourceView->showButtons( visible );
 }
@@ -1375,7 +1375,7 @@ void ActionManager::configureDateTimeFinished( KProcess *proc )
 
 void ActionManager::downloadNewStuff()
 {
-  kdDebug(5850) << "ActionManager::downloadNewStuff()" << endl;
+  kDebug(5850) << "ActionManager::downloadNewStuff()" << endl;
 
   if ( !mNewStuff ) mNewStuff = new KONewStuff( mCalendarView );
   mNewStuff->download();
@@ -1433,7 +1433,7 @@ class ActionManager::ActionStringsVisitor : public IncidenceBase::Visitor
 
 void ActionManager::processIncidenceSelection( Incidence *incidence )
 {
-//  kdDebug(5850) << "ActionManager::processIncidenceSelection()" << endl;
+//  kDebug(5850) << "ActionManager::processIncidenceSelection()" << endl;
 
   if ( !incidence ) {
     enableIncidenceActions( false );
@@ -1494,7 +1494,7 @@ KCalendarIface::ResourceRequestReply ActionManager::resourceRequest( const QList
  const QByteArray& resource,
  const QString& vCalIn )
 {
-    kdDebug(5850) << k_funcinfo << "resource=" << resource << " vCalIn=" << vCalIn << endl;
+    kDebug(5850) << k_funcinfo << "resource=" << resource << " vCalIn=" << vCalIn << endl;
     KCalendarIface::ResourceRequestReply reply;
     reply.vCalOut = "VCalOut";
     return reply;
@@ -1615,7 +1615,7 @@ void ActionManager::updateRedoAction( const QString &text )
 
 bool ActionManager::queryClose()
 {
-  kdDebug(5850) << "ActionManager::queryClose()" << endl;
+  kDebug(5850) << "ActionManager::queryClose()" << endl;
 
   bool close = true;
 
@@ -1634,7 +1634,7 @@ bool ActionManager::queryClose()
     }
   } else if ( mCalendarResources ) {
     if ( !mIsClosing ) {
-      kdDebug(5850) << "!mIsClosing" << endl;
+      kDebug(5850) << "!mIsClosing" << endl;
       if ( !saveResourceCalendar() ) return false;
 
       // FIXME: Put main window into a state indicating final saving.
@@ -1644,12 +1644,12 @@ bool ActionManager::queryClose()
 //               mMainWindow, SLOT( close() ) );
     }
     if ( mCalendarResources->isSaving() ) {
-      kdDebug(5850) << "ActionManager::queryClose(): isSaving" << endl;
+      kDebug(5850) << "ActionManager::queryClose(): isSaving" << endl;
       close = false;
       KMessageBox::information( dialogParent(),
           i18n("Unable to exit. Saving still in progress.") );
     } else {
-      kdDebug(5850) << "ActionManager::queryClose(): close = true" << endl;
+      kDebug(5850) << "ActionManager::queryClose(): close = true" << endl;
       close = true;
     }
   } else {

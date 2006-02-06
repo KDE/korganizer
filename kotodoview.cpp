@@ -203,7 +203,7 @@ bool KOTodoListView::event(QEvent *e)
 void KOTodoListView::contentsDragEnterEvent(QDragEnterEvent *e)
 {
 #ifndef KORG_NODND
-//  kdDebug(5850) << "KOTodoListView::contentsDragEnterEvent" << endl;
+//  kDebug(5850) << "KOTodoListView::contentsDragEnterEvent" << endl;
   if ( !ICalDrag::canDecode( e ) && !VCalDrag::canDecode( e ) &&
        !Q3TextDrag::canDecode( e ) ) {
     e->ignore();
@@ -217,7 +217,7 @@ void KOTodoListView::contentsDragEnterEvent(QDragEnterEvent *e)
 void KOTodoListView::contentsDragMoveEvent(QDragMoveEvent *e)
 {
 #ifndef KORG_NODND
-//  kdDebug(5850) << "KOTodoListView::contentsDragMoveEvent" << endl;
+//  kDebug(5850) << "KOTodoListView::contentsDragMoveEvent" << endl;
 
   if ( !ICalDrag::canDecode( e ) && !VCalDrag::canDecode( e ) &&
        !Q3TextDrag::canDecode( e ) ) {
@@ -232,7 +232,7 @@ void KOTodoListView::contentsDragMoveEvent(QDragMoveEvent *e)
 void KOTodoListView::contentsDragLeaveEvent( QDragLeaveEvent * )
 {
 #ifndef KORG_NODND
-//  kdDebug(5850) << "KOTodoListView::contentsDragLeaveEvent" << endl;
+//  kDebug(5850) << "KOTodoListView::contentsDragLeaveEvent" << endl;
 
   setCurrentItem(mOldCurrent);
   setSelected(mOldCurrent,true);
@@ -242,7 +242,7 @@ void KOTodoListView::contentsDragLeaveEvent( QDragLeaveEvent * )
 void KOTodoListView::contentsDropEvent( QDropEvent *e )
 {
 #ifndef KORG_NODND
-  kdDebug(5850) << "KOTodoListView::contentsDropEvent" << endl;
+  kDebug(5850) << "KOTodoListView::contentsDropEvent" << endl;
 
   if ( !mCalendar || !mChanger ||
        ( !ICalDrag::canDecode( e ) && !VCalDrag::canDecode( e ) &&
@@ -265,7 +265,7 @@ void KOTodoListView::contentsDropEvent( QDropEvent *e )
     Todo *existingTodo = mCalendar->todo(todo->uid());
 
     if( existingTodo ) {
-       kdDebug(5850) << "Drop existing Todo " << existingTodo << " onto " << destinationEvent << endl;
+       kDebug(5850) << "Drop existing Todo " << existingTodo << " onto " << destinationEvent << endl;
       Incidence *to = destinationEvent;
       while(to) {
         if (to->uid() == todo->uid()) {
@@ -289,7 +289,7 @@ void KOTodoListView::contentsDropEvent( QDropEvent *e )
       delete oldTodo;
       delete todo;
     } else {
-//      kdDebug(5850) << "Drop new Todo" << endl;
+//      kDebug(5850) << "Drop new Todo" << endl;
       todo->setRelatedTo(destinationEvent);
       if ( !mChanger->addIncidence( todo ) ) {
         KODialogManager::errorSaveIncidence( this, todo );
@@ -304,12 +304,12 @@ void KOTodoListView::contentsDropEvent( QDropEvent *e )
     if ( ! todoi ) {
       // Not dropped on a todo item:
       e->ignore();
-      kdDebug( 5850 ) << "KOTodoListView::contentsDropEvent(): Not dropped on a todo item" << endl;
-      kdDebug( 5850 ) << "TODO: Create a new todo with the given data" << endl;
+      kDebug( 5850 ) << "KOTodoListView::contentsDropEvent(): Not dropped on a todo item" << endl;
+      kDebug( 5850 ) << "TODO: Create a new todo with the given data" << endl;
       // FIXME: Create a new todo with the given text/contact/whatever
     } else if ( Q3TextDrag::decode(e, text) ) {
       //QListViewItem *qlvi = itemAt( contentsToViewport(e->pos()) );
-      kdDebug(5850) << "Dropped : " << text << endl;
+      kDebug(5850) << "Dropped : " << text << endl;
       Todo*todo = todoi->todo();
       if( mChanger->beginChange( todo ) ) {
         Todo*oldtodo = todo->clone();
@@ -319,7 +319,7 @@ void KOTodoListView::contentsDropEvent( QDropEvent *e )
         } else {
           QStringList emails = KPIM::splitEmailAddrList( text );
           for(QStringList::ConstIterator it = emails.begin();it!=emails.end();++it) {
-            kdDebug(5850) << " Email: " << (*it) << endl;
+            kDebug(5850) << " Email: " << (*it) << endl;
             int pos = (*it).find("<");
             QString name = (*it).left(pos);
             QString email = (*it).mid(pos);
@@ -336,7 +336,7 @@ void KOTodoListView::contentsDropEvent( QDropEvent *e )
       }
     }
     else {
-      kdDebug(5850) << "KOTodoListView::contentsDropEvent(): Todo from drop not decodable" << endl;
+      kDebug(5850) << "KOTodoListView::contentsDropEvent(): Todo from drop not decodable" << endl;
       e->ignore();
     }
   }
@@ -366,19 +366,19 @@ void KOTodoListView::contentsMousePressEvent(QMouseEvent* e)
 void KOTodoListView::contentsMouseMoveEvent(QMouseEvent* e)
 {
 #ifndef KORG_NODND
-//  kdDebug(5850) << "KOTodoListView::contentsMouseMoveEvent()" << endl;
+//  kDebug(5850) << "KOTodoListView::contentsMouseMoveEvent()" << endl;
   Q3ListView::contentsMouseMoveEvent(e);
   if (mMousePressed && (mPressPos - e->pos()).manhattanLength() >
       QApplication::startDragDistance()) {
     mMousePressed = false;
     Q3ListViewItem *item = itemAt(contentsToViewport(mPressPos));
     if ( item && mCalendar ) {
-//      kdDebug(5850) << "Start Drag for item " << item->text(0) << endl;
+//      kDebug(5850) << "Start Drag for item " << item->text(0) << endl;
       DndFactory factory( mCalendar );
       Q3DragObject *vd = factory.createDrag(
                           ((KOTodoViewItem *)item)->todo(),viewport());
       if (vd->drag()) {
-        kdDebug(5850) << "KOTodoListView::contentsMouseMoveEvent(): Delete drag source" << endl;
+        kDebug(5850) << "KOTodoListView::contentsMouseMoveEvent(): Delete drag source" << endl;
       }
 /*
       QString source = fullPath(item);
@@ -751,7 +751,7 @@ void KOTodoView::updateView()
 
 void KOTodoView::fillViews()
 {
-//  kdDebug(5850) << "KOTodoView::updateView()" << endl;
+//  kDebug(5850) << "KOTodoView::updateView()" << endl;
   Todo::List todoList = calendar()->todos();
   
   // Put for each Event a KOTodoViewItem in the list view. Don't rely on a
@@ -781,7 +781,7 @@ void KOTodoView::restoreListViewState( Q3ListView *listView )
         ->readNumEntry( QByteArray( listView->name() ) + " pos" ) );
     listView->blockSignals( false );
   } else
-    kdError( 5850 ) << k_funcinfo << " mDocPrefs doesn't exist" << endl;
+    kError( 5850 ) << k_funcinfo << " mDocPrefs doesn't exist" << endl;
 }
 
 void KOTodoView::saveListViewState( Q3ListView *listView )
@@ -795,7 +795,7 @@ void KOTodoView::saveListViewState( Q3ListView *listView )
           = dynamic_cast<KOTodoViewItem *>( it.current() ) )
         mDocPrefs->writeNumEntry( todoItem->todo()->uid(), todoItem->isOpen() );
   } else
-    kdError( 5850 ) << k_funcinfo << " mDocPrefs doesn't exist" << endl;
+    kError( 5850 ) << k_funcinfo << " mDocPrefs doesn't exist" << endl;
 }
 
 // PENDING(kalle) Don't use split listview when in sidebar.
@@ -803,17 +803,17 @@ void KOTodoView::saveListViewState( Q3ListView *listView )
 QMap<Todo *,KOTodoViewItem *>::ConstIterator
   KOTodoView::insertTodoItem( Todo *todo)
 {
-//  kdDebug(5850) << "KOTodoView::insertTodoItem(): " << todo->getSummary() << endl;
+//  kDebug(5850) << "KOTodoView::insertTodoItem(): " << todo->getSummary() << endl;
   Incidence *incidence = todo->relatedTo();
   if (incidence && incidence->type() == "Todo") {
     // Use dynamic_cast, because in the future the related item might also be an event
     Todo *relatedTodo = dynamic_cast<Todo *>(incidence);
 
-//    kdDebug(5850) << "  has Related" << endl;
+//    kDebug(5850) << "  has Related" << endl;
     QMap<Todo *,KOTodoViewItem *>::ConstIterator itemIterator;
     itemIterator = mTodoMap.find(relatedTodo);
     if (itemIterator == mTodoMap.end()) {
-//      kdDebug(5850) << "    related not yet in list" << endl;
+//      kDebug(5850) << "    related not yet in list" << endl;
       itemIterator = insertTodoItem (relatedTodo);
     }
     // isn't this pretty stupid? We give one Todo  to the KOTodoViewItem
@@ -821,7 +821,7 @@ QMap<Todo *,KOTodoViewItem *>::ConstIterator
     KOTodoViewItem *todoItem = new KOTodoViewItem(*itemIterator,todo,this);
     return mTodoMap.insert(todo,todoItem);
   } else {
-//    kdDebug(5850) << "  no Related" << endl;
+//    kDebug(5850) << "  no Related" << endl;
       // see above -zecke
 
     // This is where all the logic is about which item goes into which
@@ -1175,7 +1175,7 @@ void KOTodoView::setNewPriority( QAction*action )
 
 void KOTodoView::setNewPercentage( KOTodoViewItem *item, int percentage )
 {
-  kdDebug(5850) << "KOTodoView::setNewPercentage( " << percentage << "), item = " << item << endl;
+  kDebug(5850) << "KOTodoView::setNewPercentage( " << percentage << "), item = " << item << endl;
   if ( !item || !mChanger  ) return;
   Todo *todo = item->todo();
   if ( !todo ) return;
@@ -1207,7 +1207,7 @@ void KOTodoView::setNewPercentage( KOTodoViewItem *item, int percentage )
     delete oldTodo;
   } else {
     item->construct();
-    kdDebug(5850) << "No active item, active item is read-only, or locking failed" << endl;
+    kDebug(5850) << "No active item, active item is read-only, or locking failed" << endl;
   }
 }
 
@@ -1242,7 +1242,7 @@ void KOTodoView::setNewDate( const QDate &date )
     mChanger->endChange( todo );
     delete oldTodo;
   } else {
-    kdDebug(5850) << "No active item, active item is read-only, or locking failed" << endl;
+    kDebug(5850) << "No active item, active item is read-only, or locking failed" << endl;
   }
 }
 
@@ -1310,13 +1310,13 @@ void KOTodoView::changedCategories( QAction* action )
     mChanger->endChange( todo );
     delete oldTodo;
   } else {
-    kdDebug(5850) << "No active item, active item is read-only, or locking failed" << endl;
+    kDebug(5850) << "No active item, active item is read-only, or locking failed" << endl;
   }
 }
 
 void KOTodoView::setDocumentId( const QString &id )
 {
-  kdDebug(5850) << "KOTodoView::setDocumentId()" << endl;
+  kDebug(5850) << "KOTodoView::setDocumentId()" << endl;
 
   mDocPrefs->setDoc( id );
 }
@@ -1327,7 +1327,7 @@ void KOTodoView::itemStateChanged( Q3ListViewItem *item )
 
   KOTodoViewItem *todoItem = (KOTodoViewItem *)item;
 
-//  kdDebug(5850) << "KOTodoView::itemStateChanged(): " << todoItem->todo()->summary() << endl;
+//  kDebug(5850) << "KOTodoView::itemStateChanged(): " << todoItem->todo()->summary() << endl;
 }
 
 void KOTodoView::setNewPercentageDelayed( KOTodoViewItem *item, int percentage )
@@ -1364,7 +1364,7 @@ void KOTodoView::restoreLayout(KConfig *config, const QString &group)
 
 void KOTodoView::processSelectionChange()
 {
-//  kdDebug(5850) << "KOTodoView::processSelectionChange()" << endl;
+//  kDebug(5850) << "KOTodoView::processSelectionChange()" << endl;
 
   // PENDING(kalle) This is definitely wrong. We need to think about
   // whose selection is changing here.

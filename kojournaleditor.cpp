@@ -66,7 +66,7 @@ void KOJournalEditor::init()
 
 void KOJournalEditor::reload()
 {
-  kdDebug(5851)<<"reloading Journal"<<endl;
+  kDebug(5851)<<"reloading Journal"<<endl;
   if ( mJournal ) readJournal( mJournal );
 }
 
@@ -183,7 +183,7 @@ bool KOJournalEditor::processInput()
 
 void KOJournalEditor::deleteJournal()
 {
-  kdDebug(5850) << "Delete journal" << endl;
+  kDebug(5850) << "Delete journal" << endl;
 
   if ( mJournal )
     emit deleteIncidenceSignal( mJournal );
@@ -199,7 +199,7 @@ void KOJournalEditor::setDefaults( const QDate &date )
 
 void KOJournalEditor::readJournal( Journal *journal )
 {
-  kdDebug(5851)<<"read Journal"<<endl;
+  kDebug(5851)<<"read Journal"<<endl;
   mGeneral->readJournal( journal );
   mDetails->readEvent( journal );
 }

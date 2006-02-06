@@ -94,7 +94,7 @@ void DynamicTip::maybeTip( const QPoint &pos )
 
   QRect rct( col * dwidth, row * dheight, dwidth, dheight );
 
-//  kdDebug(5850) << "DynamicTip::maybeTip matrix cell index [" <<
+//  kDebug(5850) << "DynamicTip::maybeTip matrix cell index [" <<
 //                col << "][" << row << "] => " <<(col+row*7) << endl;
 
   //show holiday names only
@@ -162,7 +162,7 @@ KODayMatrix::~KODayMatrix()
 
 void KODayMatrix::addSelectedDaysTo( DateList &selDays )
 {
-  kdDebug(5850) << "KODayMatrix::addSelectedDaysTo() - " << "mSelStart:" << mSelStart << endl;
+  kDebug(5850) << "KODayMatrix::addSelectedDaysTo() - " << "mSelStart:" << mSelStart << endl;
 
   if ( mSelStart == NOSELECTION ) {
     return;
@@ -228,7 +228,7 @@ void KODayMatrix::recalculateToday()
 
 void KODayMatrix::updateView( const QDate &actdate )
 {
-//  kdDebug(5850) << "KODayMatrix::updateView() " << actdate.toString() << endl;
+//  kDebug(5850) << "KODayMatrix::updateView() " << actdate.toString() << endl;
 
   //flag to indicate if the starting day of the matrix has changed by this call
   bool daychanged = false;
@@ -239,7 +239,7 @@ void KODayMatrix::updateView( const QDate &actdate )
     // reset index of selection according to shift of starting date from startdate to actdate
     if ( mSelStart != NOSELECTION ) {
       int tmp = actdate.daysTo( mStartDate );
-      //kdDebug(5850) << "Shift of Selection1: " << mSelStart << " - " << mSelEnd << " -> " << tmp << "(" << offset << ")" << endl;
+      //kDebug(5850) << "Shift of Selection1: " << mSelStart << " - " << mSelEnd << " -> " << tmp << "(" << offset << ")" << endl;
       // shift selection if new one would be visible at least partly !
 
       if ( mSelStart + tmp < NUMDAYS && mSelEnd + tmp >= 0 ) {
@@ -305,7 +305,7 @@ void KODayMatrix::updateEvents()
 const QDate& KODayMatrix::getDate( int offset )
 {
   if ( offset < 0 || offset > NUMDAYS - 1 ) {
-    kdDebug(5850) << "Wrong offset (" << offset << ") in KODayMatrix::getDate(int)" << endl;
+    kDebug(5850) << "Wrong offset (" << offset << ") in KODayMatrix::getDate(int)" << endl;
     return mDays[ 0 ];
   }
   return mDays[ offset ];
@@ -314,7 +314,7 @@ const QDate& KODayMatrix::getDate( int offset )
 QString KODayMatrix::getHolidayLabel( int offset )
 {
   if ( offset < 0 || offset > NUMDAYS - 1 ) {
-    kdDebug(5850) << "Wrong offset (" << offset << ") in KODayMatrix::getHolidayLabel(int)" << endl;
+    kDebug(5850) << "Wrong offset (" << offset << ") in KODayMatrix::getHolidayLabel(int)" << endl;
     return 0;
   }
   return mHolidays[ offset ];
@@ -440,7 +440,7 @@ void KODayMatrix::dragLeaveEvent( QDragLeaveEvent * /*dl*/ )
 void KODayMatrix::dropEvent( QDropEvent *e )
 {
 #ifndef KORG_NODND
-  kdDebug(5850) << "KODayMatrix::dropEvent(e) begin" << endl;
+  kDebug(5850) << "KODayMatrix::dropEvent(e) begin" << endl;
 
   if ( !mCalendar ||
        ( !ICalDrag::canDecode( e ) && !VCalDrag::canDecode( e ) ) ) {
@@ -513,7 +513,7 @@ void KODayMatrix::dropEvent( QDropEvent *e )
 
 void KODayMatrix::paintEvent( QPaintEvent * )
 {
-// kdDebug(5850) << "KODayMatrix::paintEvent() BEGIN" << endl;
+// kDebug(5850) << "KODayMatrix::paintEvent() BEGIN" << endl;
 
   QPainter p;
   QRect sz = frameRect();
