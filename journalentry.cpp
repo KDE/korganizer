@@ -61,7 +61,7 @@
 class JournalTitleLable : public KActiveLabel
 {
 public:
-  JournalTitleLable( QWidget *parent, const char *name=0 ) : KActiveLabel( parent, name ) {}
+  JournalTitleLable( QWidget *parent, const char *name=0 ) : KActiveLabel( parent ) {}
 
   void openLink( const QString &/*link*/ ) {}
 };
@@ -74,7 +74,8 @@ JournalDateEntry::JournalDateEntry( Calendar *calendar, QWidget *parent ) :
   mChanger = 0;
 
   mTitle = new JournalTitleLable( this );
-  mTitle->setMargin(2);
+#warning "kde4: porting"  
+  //mTitle->setMargin(2);
   mTitle->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Fixed );
   connect( mTitle, SIGNAL( linkClicked( const QString & ) ),
            this, SLOT( emitNewJournal() ) );

@@ -136,10 +136,10 @@
           <property name="whatsThis" >
            <string>Here you can give the number of days a to-do item has to be completed to be hidden from the to-do list. If you select "Immediately", all completed to-dos will be hidden. If you, for example, choose a value of 1, all to-do items will be hidden, that have been marked finished longer than 24 hours ago.</string>
           </property>
-          <property name="minValue" >
+          <property name="minimum" >
            <number>0</number>
           </property>
-          <property name="maxValue" >
+          <property name="maximum" >
            <number>999</number>
           </property>
           <property name="specialValueText" >
