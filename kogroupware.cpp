@@ -195,7 +195,7 @@ void KOGroupware::incomingDirChanged( const QString& path )
     scheduler.acceptTransaction( incidence, method, status, receiver );
   } else if ( action.startsWith( "cancel" ) )
     // Delete the old incidence, if one is present
-    mCalendar->deleteIncidence( incidence );
+    scheduler.acceptTransaction( incidence, KCal::Scheduler::Cancel, status );
   else if ( action.startsWith( "reply" ) )
     scheduler.acceptTransaction( incidence, method, status );
   else
