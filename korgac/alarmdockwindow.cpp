@@ -103,7 +103,6 @@ AlarmDockWindow::~AlarmDockWindow()
 
 void AlarmDockWindow::slotUpdate( int reminders )
 {
-  QToolTip::remove( this );
   if ( reminders > 0 )
   {
     this->setToolTip( i18n( "There is 1 active reminder.",
