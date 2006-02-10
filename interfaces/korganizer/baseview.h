@@ -23,7 +23,6 @@
 #define KORG_BASEVIEW_H
 
 #include <qwidget.h>
-#include <q3ptrlist.h>
 
 #include <klocale.h>
 #include <kdebug.h>
