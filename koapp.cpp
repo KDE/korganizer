@@ -69,7 +69,7 @@ int KOrganizerApp::newInstance()
   kDebug(5850) << "KOApp::newInstance()" << endl;
   static bool first = true;
   if ( isSessionRestored() && first ) {
-     KOrg::MainWindow *korg = ActionManager::findInstance( KURL() );
+     KOrg::MainWindow *korg = ActionManager::findInstance( KUrl() );
      if ( korg ) {
        KOrg::StdCalendar::self()->load();
        korg->view()->updateCategories();
@@ -91,14 +91,14 @@ int KOrganizerApp::newInstance()
       processCalendar( args->url( i ) );
     }
     if ( args->isSet( "import" ) ) {
-      processCalendar( KURL() );
+      processCalendar( KUrl() );
     }
   } else {
-    processCalendar( KURL() );
+    processCalendar( KUrl() );
   }
 
   if ( args->isSet( "import" ) ) {
-    KOrg::MainWindow *korg = ActionManager::findInstance( KURL() );
+    KOrg::MainWindow *korg = ActionManager::findInstance( KUrl() );
     if ( !korg ) {
       kError() << "Unable to find default calendar resources view." << endl;
     } else {

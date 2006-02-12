@@ -193,7 +193,7 @@ bool KOMailClient::send(const QString &from,const QString &to,
     }
 
     if (attachment.isEmpty()) {
-      if (!kMailOpenComposer(to,"",bcc ? from : "",subject,body,0,KURL())) return false;
+      if (!kMailOpenComposer(to,"",bcc ? from : "",subject,body,0,KUrl())) return false;
     } else {
       QString meth;
       int idx = attachment.find("METHOD");

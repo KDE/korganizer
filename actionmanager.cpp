@@ -1325,17 +1325,17 @@ void ActionManager::toggleResourceButtons()
 
 bool ActionManager::openURL( const QString &url )
 {
-  return openURL( KURL( url ) );
+  return openURL( KUrl( url ) );
 }
 
 bool ActionManager::mergeURL( const QString &url )
 {
-  return openURL( KURL( url ),true );
+  return openURL( KUrl( url ),true );
 }
 
 bool ActionManager::saveAsURL( const QString &url )
 {
-  return saveAsURL( KURL( url ) );
+  return saveAsURL( KUrl( url ) );
 }
 
 QString ActionManager::getCurrentURLasString() const

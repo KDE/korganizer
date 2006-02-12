@@ -229,7 +229,7 @@ mURLRequester( 0 )
   } else {
     if ( item->isLocal() ) {
       grid->addWidget( new QLabel( i18n( "Size:" ), page ), 3, 0 );
-      uint size = QFileInfo( KURL( item->uri() ).path() ).size();
+      uint size = QFileInfo( KUrl( item->uri() ).path() ).size();
       grid->addWidget( new QLabel( QString::fromLatin1( "%1 (%2)" )
                          .arg( KIO::convertSize( size ) ) 
                          .arg( KGlobal::locale()->formatNumber( 

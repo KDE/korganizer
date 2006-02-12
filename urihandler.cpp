@@ -109,7 +109,7 @@ bool UriHandler::process( const QString &uri )
     KNodeIface_stub knodeIface( "knode", "KNodeIface" );
     knodeIface.openURL( uri );
   } else {  // no special URI, let KDE handle it
-    new KRun(KURL( uri ),0L);
+    new KRun(KUrl( uri ),0L);
   }
 #endif /* KORG_NODCOP */
   

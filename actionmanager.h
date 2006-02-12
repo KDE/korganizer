@@ -211,7 +211,7 @@ class KDE_EXPORT ActionManager : public QObject, public KCalendarIface
     /**
       Emitted when the "New" action is activated.
     */
-    void actionNew( const KUrl &url = KURL() );
+    void actionNew( const KUrl &url = KUrl() );
 
     /**
       When change is made to options dialog, the topwidget will catch this

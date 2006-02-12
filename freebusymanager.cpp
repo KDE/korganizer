@@ -401,7 +401,7 @@ KUrl FreeBusyManager::freeBusyUrl( const QString &email )
   cfg.setGroup( email );
   QString url = cfg.readEntry( "url" );
   if ( !url.isEmpty() ) {
-    return KURL( url );
+    return KUrl( url );
   }
   // Try with the url configurated by preferred email in kaddressbook
   KABC::Addressee::List list= KABC::StdAddressBook::self( true )->findByEmail( email );
@@ -417,19 +417,19 @@ KUrl FreeBusyManager::freeBusyUrl( const QString &email )
       if ( !url.isEmpty() )
         kDebug( 5850 ) << "FreeBusyManager::freeBusyUrl():" <<
           "Taken url from preferred email:" << url << endl;
-        return KURL( url );
+        return KUrl( url );
     }
   }
   // None found. Check if we do automatic FB retrieving then
   if ( !KOPrefs::instance()->mFreeBusyRetrieveAuto )
     // No, so no FB list here
-    return KURL();
+    return KUrl();
 
   // Sanity check: Don't download if it's not a correct email
   // address (this also avoids downloading for "(empty email)").
   int emailpos = email.find( '@' );
   if( emailpos == -1 )
-    return KURL();
+    return KUrl();
 
   // Cut off everything left of the @ sign to get the user name.
   const QString emailName = email.left( emailpos );
@@ -447,7 +447,7 @@ KUrl FreeBusyManager::freeBusyUrl( const QString &email )
     // Host names do not match
     kDebug(5850) << "Host '" << sourceURL.host() << "' doesn't match email '"
       << email << "'" << endl; 
-    return KURL();
+    return KUrl();
 }
 
   if ( KOPrefs::instance()->mFreeBusyFullDomainRetrieval )
