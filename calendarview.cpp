@@ -7,10 +7,9 @@
     Ian Dawes (iadawes@globalserve.net)
     Laszlo Boloni (boloni@cs.purdue.edu)
 
-    Copyright (c) 2000, 2001, 2002, 2003, 2004
-    Cornelius Schumacher <schumacher@kde.org>
+    Copyright (C) 2000-2004 Cornelius Schumacher <schumacher@kde.org>
     Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
-    Copyright (c) 2005 Rafal Rzepecki <divide@users.sourceforge.net>
+    Copyright (C) 2005 Rafal Rzepecki <divide@users.sourceforge.net>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -698,7 +697,7 @@ void CalendarView::incidenceChanged( Incidence *oldIncidence,
   }
   setModified( true );
   history()->recordEdit( oldIncidence, newIncidence );
-  
+
   // Record completed todos in journals, if enabled. we should to this here in
   // favour of the todolist. users can mark a task as completed in an editor
   // as well.
@@ -714,11 +713,11 @@ void CalendarView::incidenceChanged( Incidence *oldIncidence,
 
         Journal::List journals = calendar()->journals( QDate::currentDate() );
         Journal *journal;
-        
+
         if ( journals.isEmpty() ) {
           journal = new Journal();
           journal->setDtStart( QDateTime::currentDateTime() );
-          
+
           QString dateStr = KGlobal::locale()->formatDate( QDate::currentDate() );
           journal->setSummary( i18n("Journal of %1").arg( dateStr ) );
           journal->setDescription( description );
@@ -742,7 +741,7 @@ void CalendarView::incidenceChanged( Incidence *oldIncidence,
         }
       }
   }
-  
+
   changeIncidenceDisplay( newIncidence, KOGlobals::INCIDENCEEDITED );
   updateUnmanagedViews();
   checkForFilteredChange( newIncidence );

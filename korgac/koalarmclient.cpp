@@ -3,7 +3,7 @@
 
     This file is part of KOrganizer.
 
-    Copyright (c) 2002,2003 Cornelius Schumacher
+    Copyright (c) 2002,2003 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -134,7 +134,7 @@ void KOAlarmClient::createReminder( KCal::Incidence *incidence, QDateTime dt )
   dialog->wakeUp();
   mReminders.append( dialog );
   emit reminderCount( mReminders.count() );
-  saveLastCheckTime(); 
+  saveLastCheckTime();
 }
 
 void KOAlarmClient::slotQuit()
