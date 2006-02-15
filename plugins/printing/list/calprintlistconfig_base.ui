@@ -14,7 +14,7 @@
             <height>171</height>
         </rect>
     </property>
-    <property name="caption">
+    <property name="windowTitle">
         <string>CalPrintList_Base</string>
     </property>
     <vbox>

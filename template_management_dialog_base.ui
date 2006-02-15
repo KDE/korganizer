@@ -12,7 +12,7 @@
             <height>272</height>
         </rect>
     </property>
-    <property name="caption">
+    <property name="windowTitle">
         <string>Template Management</string>
     </property>
     <grid>
