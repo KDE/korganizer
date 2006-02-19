@@ -13,8 +13,11 @@ X-KDE-ParentComponents=korganizer,kontact_korganizerplugin
 X-KDE-CfgDlgHierarchy=KOrganizer
 
 Name=Free/Busy
+Name[fr]=Disponibilité
 Name[x-test]=xxFree/Busyxx
 Comment=KOrganizer Free/Busy Configuration
+Comment[fr]=Configuration de la disponibilité pour KOrganizer
 Comment[x-test]=xxKOrganizer Free/Busy Configurationxx
 Keywords=korganizer,freebusy,scheduling
+Keywords[fr]=KOrganizer,disponibilité, planification
 Keywords[x-test]=xxkorganizer,freebusy,schedulingxx

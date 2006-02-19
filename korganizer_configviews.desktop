@@ -13,8 +13,11 @@ X-KDE-ParentComponents=korganizer,kontact_korganizerplugin
 X-KDE-CfgDlgHierarchy=KOrganizer
 
 Name=Views
+Name[fr]=Vues
 Name[x-test]=xxViewsxx
 Comment=KOrganizer View Configuration
+Comment[fr]=Configuration des vues de KOrganizer
 Comment[x-test]=xxKOrganizer View Configurationxx
 Keywords=korganizer,view
+Keywords[fr]=KOrganizer,vues
 Keywords[x-test]=xxkorganizer,viewxx

@@ -2,8 +2,10 @@
 Encoding=UTF-8
 X-KDE-Library=libkorg_listprint
 Name=List Print Style
+Name[fr]=Impression en liste
 Name[x-test]=xxList Print Stylexx
 Comment=This plugin allows you to print out events and to-dos in list form.
+Comment[fr]=Ce module vous permet d'imprimer les évènements et les tâches sous forme de liste
 Comment[x-test]=xxThis plugin allows you to print out events and to-dos in list form.xx
 Type=Service
 ServiceTypes=Calendar/Plugin,KOrganizer/PrintPlugin

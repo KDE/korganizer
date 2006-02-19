@@ -2,8 +2,10 @@
 Encoding=UTF-8
 X-KDE-Library=libkorg_projectview
 Name=Project View Plugin for KOrganizer
+Name[fr]=Module afficheur de projet pour KOrganizer
 Name[x-test]=xxProject View Plugin for KOrganizerxx
 Comment=This plugin provides a project planning view for KOrganizer (like the to-do or month views). If you enable this plugin, you can switch to the project view and view your to-do list like in a project planner.
+Comment[fr]=Ce module propose une vue en projet pour KOrganizer. Si vous activez ce module, vous pourrez visualiser vos tâches sous la forme d'un planning projet.
 Comment[x-test]=xxThis plugin provides a project planning view for KOrganizer (like the to-do or month views). If you enable this plugin, you can switch to the project view and view your to-do list like in a project planner.xx
 Type=Service
 ServiceTypes=KOrganizer/Part

@@ -13,8 +13,11 @@ X-KDE-ParentComponents=korganizer,kontact_korganizerplugin
 X-KDE-CfgDlgHierarchy=KOrganizer
 
 Name=Group Scheduling
+Name[fr]=Planification des tâches
 Name[x-test]=xxGroup Schedulingxx
 Comment=KOrganizer Group Scheduling Configuration
+Comment[fr]=Configuration de la planification des groupes de KOrganizer
 Comment[x-test]=xxKOrganizer Group Scheduling Configurationxx
 Keywords=korganizer,group,scheduling
+Keywords[fr]=KOrganizer,groupes,planification
 Keywords[x-test]=xxkorganizer,group,schedulingxx

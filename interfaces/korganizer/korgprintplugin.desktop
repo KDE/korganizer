@@ -3,6 +3,7 @@ Encoding=UTF-8
 Type=ServiceType
 X-KDE-ServiceType=KOrganizer/PrintPlugin
 Comment=KOrganizer Part
+Comment[fr]=Composant KOrganizer
 Comment[x-test]=xxKOrganizer Partxx
 
 [PropertyDef::X-KDE-KOrganizer-HasSettings]

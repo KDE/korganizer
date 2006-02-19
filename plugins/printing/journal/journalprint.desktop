@@ -2,8 +2,10 @@
 Encoding=UTF-8
 X-KDE-Library=libkorg_journalprint
 Name=Journal Print Style
+Name[fr]=Impression en journal
 Name[x-test]=xxJournal Print Stylexx
 Comment=This plugin allows you to print out journal entries (diary entries).
+Comment[fr]=Ce module vous permet d'imprimer l'ensemble de vos journaux personnels
 Comment[x-test]=xxThis plugin allows you to print out journal entries (diary entries).xx
 Type=Service
 ServiceTypes=Calendar/Plugin,KOrganizer/PrintPlugin

@@ -13,8 +13,11 @@ X-KDE-ParentComponents=korganizer,kontact_korganizerplugin
 X-KDE-CfgDlgHierarchy=KOrganizer
 
 Name=Time & Date
+Name[fr]=Date et heure
 Name[x-test]=xxTime & Datexx
 Comment=KOrganizer Time Configuration
+Comment[fr]=Configuration de l'heure de KOrganizer
 Comment[x-test]=xxKOrganizer Time Configurationxx
 Keywords=korganizer,time
+Keywords[fr]=KOrganizer,date
 Keywords[x-test]=xxkorganizer,timexx

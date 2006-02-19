@@ -3,4 +3,5 @@ Encoding=UTF-8
 Type=ServiceType
 X-KDE-ServiceType=Calendar/Decoration
 Comment=Calendar Decoration Plugin
+Comment[fr]=Module de décoration d'agenda
 Comment[x-test]=xxCalendar Decoration Pluginxx

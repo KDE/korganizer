@@ -2,8 +2,10 @@
 Encoding=UTF-8
 X-KDE-Library=libkorg_hebrew
 Name=Jewish Calendar Plugin
+Name[fr]=Module de prise en charge du calendrier juif
 Name[x-test]=xxJewish Calendar Pluginxx
 Comment=Shows all dates in korganizer also in the Jewish calendar system.
+Comment[fr]=Affiche toutes les dates de KOrganizer selon le calendrier Juif
 Comment[x-test]=xxShows all dates in korganizer also in the Jewish calendar system.xx
 Type=Service
 ServiceTypes=Calendar/Plugin,Calendar/Decoration

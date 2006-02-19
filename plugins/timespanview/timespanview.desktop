@@ -2,8 +2,10 @@
 Encoding=UTF-8
 X-KDE-Library=libkorg_timespanview
 Name=Timespan View Plugin for KOrganizer
+Name[fr]=Module d'affichage de planification pour KOrganizer
 Name[x-test]=xxTimespan View Plugin for KOrganizerxx
 Comment=This plugin provides a timespan view for korganizer (like the to-do or month views). If you enable this plugin, you can switch to the timespan view and view your events like in a Gantt diagram.
+Comment[fr]=Ce module vous permet d'avoir une vue de KOrganizer qui affiche les évènements selon l'axe temporel. Si vous activez cette vue, vous verrez vos évènements comme un diagramme de Gantt.
 Comment[x-test]=xxThis plugin provides a timespan view for korganizer (like the to-do or month views). If you enable this plugin, you can switch to the timespan view and view your events like in a Gantt diagram.xx
 Type=Service
 ServiceTypes=KOrganizer/Part

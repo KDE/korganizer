@@ -13,8 +13,11 @@ X-KDE-ParentComponents=korganizer,kontact_korganizerplugin
 X-KDE-CfgDlgHierarchy=KOrganizer
 
 Name=Fonts
+Name[fr]=Polices
 Name[x-test]=xxFontsxx
 Comment=KOrganizer Fonts Configuration
+Comment[fr]=Configuration des polices de KOrganizer
 Comment[x-test]=xxKOrganizer Fonts Configurationxx
 Keywords=korganizer,fonts
+Keywords[fr]=KOrganizer,polices
 Keywords[x-test]=xxkorganizer,fontsxx

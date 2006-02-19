@@ -2,8 +2,10 @@
 Encoding=UTF-8
 X-KDE-Library=libkorg_whatsnextprint
 Name=What's Next Print Style
+Name[fr]=Impression de la suite du programme
 Name[x-test]=xxWhat's Next Print Stylexx
 Comment=This plugin allows you to print out a list of all upcoming events and to-dos.
+Comment[fr]=Ce module vous permet d'imprimer la liste des prochaines évènements et des prochaines tâches.
 Comment[x-test]=xxThis plugin allows you to print out a list of all upcoming events and to-dos.xx
 Type=Service
 ServiceTypes=Calendar/Plugin,KOrganizer/PrintPlugin

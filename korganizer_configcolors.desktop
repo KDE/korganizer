@@ -13,8 +13,11 @@ X-KDE-ParentComponents=korganizer,kontact_korganizerplugin
 X-KDE-CfgDlgHierarchy=KOrganizer
 
 Name=Colors
+Name[fr]=Couleurs
 Name[x-test]=xxColorsxx
 Comment=KOrganizer Colors Configuration
+Comment[fr]=Configuration des couleurs de KOrganizer
 Comment[x-test]=xxKOrganizer Colors Configurationxx
 Keywords=korganizer,colors
+Keywords[fr]=KOrganizer,couleurs
 Keywords[x-test]=xxkorganizer,colorsxx

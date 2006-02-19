@@ -3,4 +3,5 @@ Encoding=UTF-8
 Type=ServiceType
 X-KDE-ServiceType=DCOP/Organizer
 Comment=Organizer with a DCOP interface
+Comment[fr]=Organiseur avec une interface DCOP
 Comment[x-test]=xxOrganizer with a DCOP interfacexx

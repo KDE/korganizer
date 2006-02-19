@@ -2,6 +2,7 @@
 Encoding=UTF-8
 MimeType=text/calendar;text/x-vcalendar;
 Comment=Calendar and Scheduling Program
+Comment[fr]=Calendrier et agenda personnel
 Comment[x-test]=xxCalendar and Scheduling Programxx
 Exec=korganizer %u
 Icon=korganizer
@@ -12,6 +13,7 @@ Terminal=false
 Name=KOrganizer
 Name[x-test]=xxKOrganizerxx
 GenericName=Personal Organizer
+GenericName[fr]=Organiseur personnel
 GenericName[x-test]=xxPersonal Organizerxx
 ServiceTypes=Browser/View,DCOP/Organizer
 X-KDE-Library=libkorganizerpart

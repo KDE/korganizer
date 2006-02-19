@@ -8,6 +8,7 @@ DocPath=korganizer/index.html
 Type=Application
 Terminal=false
 Name=Import Calendar
+Name[fr]=Importer un calendrier
 Name[x-test]=xxImport Calendarxx
 ServiceTypes=Browser/View,DCOP/Organizer
 X-KDE-Library=libkorganizerpart

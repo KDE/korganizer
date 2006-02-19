@@ -2,8 +2,10 @@
 Encoding=UTF-8
 X-KDE-Library=libkorg_datenums
 Name=Date Numbers Plugin for Calendars
+Name[fr]=Module de numérotation des jours
 Name[x-test]=xxDate Numbers Plugin for Calendarsxx
 Comment=For each day this plugin shows its daynumber of the year at the top of the agenda view. For example, February 1 is day 32 of the year.
+Comment[fr]=Pour chaque jour, ce module montre le numéro du jour en haut de la vue agenda. Par exemple, le 1er février est le 32ème jour de l'année.
 Comment[x-test]=xxFor each day this plugin shows its daynumber of the year at the top of the agenda view. For example, February 1 is day 32 of the year.xx
 Type=Service
 ServiceTypes=Calendar/Plugin,Calendar/Decoration
