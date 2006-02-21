@@ -61,7 +61,7 @@
 #include <ktempfile.h>
 #include <kxmlguiclient.h>
 #include <kwin.h>
-#include <knotifyclient.h>
+#include <knotification.h>
 #include <kstdguiitem.h>
 #include <kdeversion.h>
 #include <kactionclasses.h>
@@ -409,20 +409,20 @@ void ActionManager::initActions()
                         mCalendarView,SLOT( goPrevious() ),
                         mACollection, "go_previous" );
 
-  // Changing the action text by setText makes the toolbar button disappear.   
-  // This has to be fixed first, before the connects below can be reenabled.   
+  // Changing the action text by setText makes the toolbar button disappear.
+  // This has to be fixed first, before the connects below can be reenabled.
   /*
-  connect( mCalendarView, SIGNAL( changeNavStringPrev( const QString & ) ),   
-           action, SLOT( setText( const QString & ) ) );   
-  connect( mCalendarView, SIGNAL( changeNavStringPrev( const QString & ) ),   
+  connect( mCalendarView, SIGNAL( changeNavStringPrev( const QString & ) ),
+           action, SLOT( setText( const QString & ) ) );
+  connect( mCalendarView, SIGNAL( changeNavStringPrev( const QString & ) ),
            this, SLOT( dumpText( const QString & ) ) );*/
 
   action = new KAction( i18n("Go &Forward"), isRTL ? "back" : "forward", 0,
                         mCalendarView,SLOT( goNext() ),
                         mACollection, "go_next" );
   /*
-  connect( mCalendarView,SIGNAL( changeNavStringNext( const QString & ) ),   
-           action,SLOT( setText( const QString & ) ) );   
+  connect( mCalendarView,SIGNAL( changeNavStringNext( const QString & ) ),
+           action,SLOT( setText( const QString & ) ) );
   */
 
 
@@ -693,7 +693,7 @@ void ActionManager::file_open( const KUrl &url )
   // is that URL already opened somewhere else? Activate that window
   KOrg::MainWindow *korg=ActionManager::findInstance( url );
   if ( ( 0 != korg )&&( korg != mMainWindow ) ) {
-    KWin::setActiveWindow( korg->topLevelWidget()->winId() );
+    KWin::activateWindow( korg->topLevelWidget()->winId() );
     return;
   }
 
@@ -960,11 +960,11 @@ bool ActionManager::saveURL()
 
   if ( ext == ".vcs" ) {
     int result = KMessageBox::warningContinueCancel(
-        dialogParent(),
-        i18n( "Your calendar will be saved in iCalendar format. Use "
-              "'Export vCalendar' to save in vCalendar format." ),
-        i18n("Format Conversion"), i18n("Proceed"), "dontaskFormatConversion",
-        true );
+      dialogParent(),
+      i18n( "Your calendar will be saved in iCalendar format. Use "
+            "'Export vCalendar' to save in vCalendar format." ),
+      i18n("Format Conversion"), i18n("Proceed"),
+      QString( "dontaskFormatConversion" ), KMessageBox::Notify );
     if ( result != KMessageBox::Continue ) return false;
 
     QString filename = mURL.fileName();
@@ -1054,8 +1054,8 @@ void ActionManager::exportHTML( HTMLExportSettings *settings )
     tf.close();
     mExport.save( tfile );
     if ( !KIO::NetAccess::upload( tfile, dest, view() ) ) {
-      KNotifyClient::event ( view()->winId(),
-                            i18n("Could not upload file.") );
+      KNotification::event ( KNotification::Error,
+                             i18n("Could not upload file.") );
     }
     tf.unlink();
   }

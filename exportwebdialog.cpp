@@ -47,7 +47,6 @@
 #include "koglobals.h"
 #include <kurlrequester.h>
 #include <kio/netaccess.h>
-#include <knotifyclient.h>
 #include <ktempfile.h>
 #include <kmessagebox.h>
 
@@ -65,9 +64,9 @@
 #include "exportwebdialog.moc"
 
 
-// FIXME: The basic structure of this dialog has been copied from KPrefsDialog, 
-//        because we want custom buttons, a Tabbed dialog, and a different 
-//        headline... Maybe we should try to achieve the same without code 
+// FIXME: The basic structure of this dialog has been copied from KPrefsDialog,
+//        because we want custom buttons, a Tabbed dialog, and a different
+//        headline... Maybe we should try to achieve the same without code
 //        duplication.
 ExportWebDialog::ExportWebDialog( HTMLExportSettings *settings, QWidget *parent,
                                   const char *name)
@@ -84,7 +83,7 @@ ExportWebDialog::ExportWebDialog( HTMLExportSettings *settings, QWidget *parent,
 
   connect( this, SIGNAL( user1Clicked() ), SLOT( slotOk() ) );
   connect( this, SIGNAL( cancelClicked() ), SLOT( reject() ) );
-  
+
   readConfig();
 }
 
@@ -158,9 +157,9 @@ void ExportWebDialog::setupGeneralPage()
 
   QGroupBox *destGroup = new QGroupBox(i18n("Destination"), mGeneralPage );
   topLayout->addWidget(destGroup);
-  KPrefsWidPath *pathWid = addWidPath( mSettings->outputFileItem(), 
+  KPrefsWidPath *pathWid = addWidPath( mSettings->outputFileItem(),
                                        destGroup, "text/html", KFile::File );
-  connect( pathWid->urlRequester(), SIGNAL( textChanged( const QString & ) ), 
+  connect( pathWid->urlRequester(), SIGNAL( textChanged( const QString & ) ),
            SLOT( slotTextChanged( const QString & ) ) );
 
   topLayout->addStretch( 1 );
@@ -175,7 +174,7 @@ void ExportWebDialog::setupTodoPage()
 {
   mTodoPage = addPage(i18n("To-dos"));
   QVBoxLayout *topLayout = new QVBoxLayout( mTodoPage, 10 );
-  
+
   KHBox *hbox = new KHBox( mTodoPage );
   topLayout->addWidget( hbox );
   addWidString( mSettings->todoListTitleItem(), hbox );

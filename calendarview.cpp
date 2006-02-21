@@ -85,7 +85,7 @@
 #include <kstandarddirs.h>
 #include <kfiledialog.h>
 #include <kmessagebox.h>
-#include <knotifyclient.h>
+#include <knotification.h>
 #include <kconfig.h>
 #include <krun.h>
 #include <kdirwatch.h>
@@ -829,9 +829,13 @@ void CalendarView::updateUnmanagedViews()
 
 int CalendarView::msgItemDelete( Incidence *incidence )
 {
-  return KMessageBox::warningContinueCancel(this,
-      i18n("The item \"%1\" will be permanently deleted.").arg( incidence->summary() ),
-      i18n("KOrganizer Confirmation"), KGuiItem(i18n("&Delete"),"editdelete"));
+  return KMessageBox::warningContinueCancel(
+    this,
+    i18n("The item \"%1\" will be permanently deleted.").arg( incidence->summary() ),
+    i18n("KOrganizer Confirmation"),
+    KGuiItem( i18n("&Delete"),"editdelete" ),
+    QString(),
+    KMessageBox::Notify );
 }
 
 
@@ -840,7 +844,7 @@ void CalendarView::edit_cut()
   Incidence *incidence = selectedIncidence();
 
   if ( !incidence || !mChanger ) {
-    KNotifyClient::beep();
+    KNotification::beep();
     return;
   }
   mChanger->cutIncidence( incidence );
@@ -851,12 +855,12 @@ void CalendarView::edit_copy()
   Incidence *incidence = selectedIncidence();
 
   if (!incidence) {
-    KNotifyClient::beep();
+    KNotification::beep();
     return;
   }
   DndFactory factory( mCalendar );
   if ( !factory.copyIncidence( incidence ) ) {
-    KNotifyClient::beep();
+    KNotification::beep();
   }
 }
 
@@ -1137,7 +1141,7 @@ void CalendarView::appointment_show()
   if (incidence)
     showIncidence( incidence );
   else
-    KNotifyClient::beep();
+    KNotification::beep();
 }
 
 void CalendarView::appointment_edit()
@@ -1146,7 +1150,7 @@ void CalendarView::appointment_edit()
   if (incidence)
     editIncidence( incidence );
   else
-    KNotifyClient::beep();
+    KNotification::beep();
 }
 
 void CalendarView::appointment_delete()
@@ -1155,7 +1159,7 @@ void CalendarView::appointment_delete()
   if (incidence)
     deleteIncidence( incidence );
   else
-    KNotifyClient::beep();
+    KNotification::beep();
 }
 
 void CalendarView::todo_unsub()
@@ -1536,10 +1540,13 @@ void CalendarView::exportICalendar()
 void CalendarView::exportVCalendar()
 {
   if (mCalendar->journals().count() > 0) {
-    int result = KMessageBox::warningContinueCancel(this,
-        i18n("The journal entries can not be exported to a vCalendar file."),
-        i18n("Data Loss Warning"),i18n("Proceed"),"dontaskVCalExport",
-        true);
+    int result = KMessageBox::warningContinueCancel(
+      this,
+      i18n("The journal entries can not be exported to a vCalendar file."),
+      i18n("Data Loss Warning"),
+      i18n("Proceed"),
+      QString( "dontaskVCalExport" ),
+      KMessageBox::Notify );
     if (result != KMessageBox::Continue) return;
   }
 
@@ -1917,7 +1924,7 @@ bool CalendarView::editIncidence( Incidence *incidence )
   kDebug(5850) << "CalendarView::editEvent()" << endl;
 
   if ( !incidence || !mChanger ) {
-    KNotifyClient::beep();
+    KNotification::beep();
     return false;
   }
   KOIncidenceEditor *tmp = editorDialog( incidence );
@@ -2015,7 +2022,7 @@ void CalendarView::deleteIncidence(Incidence *incidence, bool force)
 {
   if ( !incidence || !mChanger ) {
     if ( !force ) {
-      KNotifyClient::beep();
+      KNotification::beep();
     }
     return;
   }
@@ -2051,21 +2058,26 @@ void CalendarView::deleteIncidence(Incidence *incidence, bool force)
     if ( !force ) {
       if ( !itemDate.isValid() ) {
         kDebug(5850) << "Date Not Valid" << endl;
-        km = KMessageBox::warningContinueCancel(this,
+        km = KMessageBox::warningContinueCancel(
+          this,
           i18n("The calendar item \"%1\" recurs over multiple dates; "
                "are you sure you want to delete it "
                "and all its recurrences?").arg( incidence->summary() ),
-               i18n("KOrganizer Confirmation"), i18n("Delete All") );
+          i18n("KOrganizer Confirmation"),
+          i18n("Delete All") );
       } else {
-        km = KOMessageBox::fourBtnMsgBox( this, QMessageBox::Warning,
+        km = KOMessageBox::fourBtnMsgBox(
+          this,
+          QMessageBox::Warning,
           i18n("The calendar item \"%1\" recurs over multiple dates. "
                "Do you want to delete only the current one on %2, only all "
-               "future recurrences, or all its recurrences?" )
-               .arg( incidence->summary() )
-               .arg( KGlobal::locale()->formatDate(itemDate)),
-               i18n("KOrganizer Confirmation"), i18n("Delete C&urrent"),
-               i18n("Delete &Future"),
-               i18n("Delete &All"));
+               "future recurrences, or all its recurrences?")
+          .arg( incidence->summary() )
+          .arg( KGlobal::locale()->formatDate( itemDate ) ),
+          i18n("KOrganizer Confirmation"),
+          i18n("Delete C&urrent"),
+          i18n("Delete &Future"),
+          i18n("Delete &All") );
       }
     }
     switch(km) {
@@ -2146,8 +2158,11 @@ bool CalendarView::purgeCompletedSubTodos( Todo* todo, bool &allPurged )
 
 void CalendarView::purgeCompleted()
 {
-  int result = KMessageBox::warningContinueCancel(this,
-      i18n("Delete all completed to-dos?"),i18n("Purge To-dos"),i18n("Purge"));
+  int result = KMessageBox::warningContinueCancel(
+    this,
+    i18n("Delete all completed to-dos?"),
+    i18n("Purge To-dos"),
+    i18n("Purge") );
 
   if (result == KMessageBox::Continue) {
     bool allDeleted = true;

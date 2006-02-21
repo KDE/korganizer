@@ -33,11 +33,13 @@
 class KOMessageBox
 {
   public:
-    static int fourBtnMsgBox( QWidget *parent, QMessageBox::Icon type, 
-            const QString &text, const QString &caption = QString(), 
-            const KGuiItem &button1 = KStdGuiItem::yes(), const KGuiItem &button2 = KStdGuiItem::no(), 
-            const KGuiItem &button3 = KStdGuiItem::cont(), 
-            int options = 0 );
+    static int fourBtnMsgBox( QWidget *parent, QMessageBox::Icon type,
+                              const QString &text,
+                              const QString &caption = QString(),
+                              const KGuiItem &button1 = KStdGuiItem::yes(),
+                              const KGuiItem &button2 = KStdGuiItem::no(),
+                              const KGuiItem &button3 = KStdGuiItem::cont(),
+                              KMessageBox::Options options = KMessageBox::Notify );
 };
 
 #endif
