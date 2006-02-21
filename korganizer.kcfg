@@ -13,7 +13,7 @@
       <default>true</default>
     </entry>
     <entry type="Int" key="Auto Save Interval">
-      <label>Save &amp;interval in minutes:</label>
+      <label>Save &amp;interval in minutes</label>
       <whatsthis>Set the interval between automatic saving of calendar events in minutes here. This setting only applies to files that are opened manually. The standard KDE-wide calendar is automatically saved after each change.</whatsthis>
       <default>10</default>
       <min>1</min>
