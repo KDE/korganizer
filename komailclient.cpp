@@ -205,7 +205,7 @@ bool KOMailClient::send(const QString &from,const QString &to,
         meth = "publish";
       }
       if (!kMailOpenComposer(to,"",bcc ? from : "",subject,body,0,"cal.ics","7bit",
-                             attachment.utf8(),"text","calendar","method",meth,
+                             attachment.toUtf8(),"text","calendar","method",meth,
                              "attachment","utf-8")) return false;
     }
   }

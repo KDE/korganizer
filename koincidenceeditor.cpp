@@ -279,12 +279,12 @@ class KCalStorage : public KPIM::DesignerFields::Storage
 
     QString read( const QString &key )
     {
-      return mIncidence->customProperty( "KORGANIZER", key.utf8() );
+      return mIncidence->customProperty( "KORGANIZER", key.toUtf8() );
     }
 
     void write( const QString &key, const QString &value )
     {
-      mIncidence->setCustomProperty( "KORGANIZER", key.utf8(), value );
+      mIncidence->setCustomProperty( "KORGANIZER", key.toUtf8(), value );
     }
 
   private:

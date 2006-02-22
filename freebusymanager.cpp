@@ -502,7 +502,7 @@ FreeBusy *FreeBusyManager::loadFreeBusy( const QString &email )
   QTextStream ts( &f );
   QString str = ts.read();
 
-  return iCalToFreeBusy( str.utf8() );
+  return iCalToFreeBusy( str.toUtf8() );
 }
 
 bool FreeBusyManager::saveFreeBusy( FreeBusy *freebusy, const Person &person )

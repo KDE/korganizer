@@ -380,7 +380,7 @@ class KOPrefsDialogTime : public KPrefsModule
     void usrReadConfig()
     {
       setCombo( mTimeZoneCombo,
-                i18n( KOPrefs::instance()->mTimeZoneId.utf8() ) );
+                i18n( KOPrefs::instance()->mTimeZoneId.toUtf8() ) );
 
       mAlarmTimeCombo->setCurrentItem( KOPrefs::instance()->mAlarmTime );
       for ( int i = 0; i < 7; ++i ) {
@@ -393,7 +393,7 @@ class KOPrefsDialogTime : public KPrefsModule
       // Find untranslated selected zone
       QStringList::Iterator tz;
       for ( tz = tzonenames.begin(); tz != tzonenames.end(); ++tz )
-        if (mTimeZoneCombo->currentText() == i18n((*tz).utf8()))
+        if (mTimeZoneCombo->currentText() == i18n((*tz).toUtf8()))
           break;
       if (tz != tzonenames.end())
         KOPrefs::instance()->mTimeZoneId = (*tz);
