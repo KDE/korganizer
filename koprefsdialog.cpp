@@ -417,7 +417,7 @@ class KOPrefsDialogTime : public KPrefsModule
                    const QStringList *tags = 0 )
     {
       if (tags) {
-        int i = tags->findIndex(text);
+        int i = tags->indexOf(text);
         if (i > 0) combo->setCurrentItem(i);
       } else {
         for(int i=0;i<combo->count();++i) {

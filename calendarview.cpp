@@ -577,7 +577,7 @@ void CalendarView::readFilterSettings( KConfig *config )
   }
 
   config->setGroup( "General" );
-  int pos = filterList.findIndex( currentFilter );
+  int pos = filterList.indexOf( currentFilter );
   mCurrentFilter = 0;
   if ( pos>=0 ) {
     mCurrentFilter = mFilters.at( pos );

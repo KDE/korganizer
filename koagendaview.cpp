@@ -1267,7 +1267,7 @@ void KOAgendaView::insertIncidence( Incidence *incidence, const QDate &curDate,
   Todo  *todo  = dynamic_cast<Todo  *>( incidence );
 
   if ( curCol < 0 ) {
-    curCol = mSelectedDates.findIndex( curDate );
+    curCol = mSelectedDates.indexOf( curDate );
   }
   // The date for the event is not displayed, just ignore it
   if ( curCol < 0 || curCol > int( mSelectedDates.size() ) )
