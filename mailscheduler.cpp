@@ -106,7 +106,7 @@ QList<ScheduleMessage*> MailScheduler::retrieveTransactions()
     bool inserted = false;
     QMap<IncidenceBase*, QString>::Iterator iter;
     for ( iter = mEventMap.begin(); iter != mEventMap.end(); ++iter ) {
-      if ( iter.data() == incomingDirName + "/" + (*it) )
+      if ( iter.value() == incomingDirName + "/" + (*it) )
         inserted = true;
     }
     if ( !inserted ) {

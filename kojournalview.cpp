@@ -114,7 +114,7 @@ void KOJournalView::clearEntries()
 //  kDebug(5850)<<"KOJournalView::clearEntries()"<<endl;
   QMap<QDate, JournalDateEntry*>::Iterator it;
   for ( it = mEntries.begin(); it != mEntries.end(); ++it ) {
-    delete (it.data());
+    delete (it.value());
   }
   mEntries.clear();
 }
@@ -122,11 +122,11 @@ void KOJournalView::updateView()
 {
   QMap<QDate, JournalDateEntry*>::Iterator it;
   for ( it = mEntries.begin(); it != mEntries.end(); ++it ) {
-    it.data()->clear();
+    it.value()->clear();
     Journal::List journals = calendar()->journals( it.key() );
     Journal::List::Iterator it1;
     for ( it1 = journals.begin(); it1 != journals.end(); ++it1 ) {
-      it.data()->addJournal( *it1 );
+      it.value()->addJournal( *it1 );
     }
   }
 }

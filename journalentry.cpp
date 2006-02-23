@@ -161,7 +161,7 @@ void JournalDateEntry::journalEdited( Journal *journal )
   QMap<Journal*,JournalEntry*>::Iterator pos = mEntries.find( journal );
   if ( pos == mEntries.end() ) return;
 
-  pos.data()->setJournal( journal );
+  pos.value()->setJournal( journal );
 
 }
 
@@ -170,7 +170,7 @@ void JournalDateEntry::journalDeleted( Journal *journal )
   QMap<Journal*,JournalEntry*>::Iterator pos = mEntries.find( journal );
   if ( pos == mEntries.end() ) return;
 
-  delete pos.data();
+  delete pos.value();
 }
 
 
