@@ -215,7 +215,7 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent,
   scaleCombo->insertItem( i18n( "Week" ) );
   scaleCombo->insertItem( i18n( "Month" ) );
   scaleCombo->insertItem( i18n( "Automatic" ) );
-  scaleCombo->setCurrentItem( 0 ); // start with "hour"
+  scaleCombo->setCurrentIndex( 0 ); // start with "hour"
   connect( scaleCombo, SIGNAL( activated( int ) ),
            SLOT( slotScaleChanged( int ) ) );
   controlLayout->addWidget( scaleCombo );

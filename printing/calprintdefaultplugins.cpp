@@ -547,11 +547,11 @@ void CalPrintTodos::setSettingsWidget()
     cfg->mSortField->insertItem( i18n("Due Date") );
     cfg->mSortField->insertItem( i18n("Priority") );
     cfg->mSortField->insertItem( i18n("Percent Complete") );
-    cfg->mSortField->setCurrentItem( mTodoSortField );
+    cfg->mSortField->setCurrentIndex( mTodoSortField );
 
     cfg->mSortDirection->insertItem( i18n( "Ascending" ) );
     cfg->mSortDirection->insertItem( i18n( "Descending" ) );
-    cfg->mSortDirection->setCurrentItem( mTodoSortDirection );
+    cfg->mSortDirection->setCurrentIndex( mTodoSortDirection );
   }
 }
 

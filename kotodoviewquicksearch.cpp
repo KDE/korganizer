@@ -90,7 +90,7 @@ KOTodoListViewQuickSearch::KOTodoListViewQuickSearch( QWidget *parent,
   mCategoryCombo = new QComboBox( this, "quick search category combo box" );
   fillCategories();
 
-  mCategoryCombo->setCurrentItem( 0 );
+  mCategoryCombo->setCurrentIndex( 0 );
   connect( mCategoryCombo, SIGNAL ( activated( int ) ),
            this, SLOT( slotCategoryChanged( int ) ) );
 
@@ -122,7 +122,7 @@ const
 void KOTodoListViewQuickSearch::reset()
 {
   mQuickSearchLine->clear();
-  mCategoryCombo->setCurrentItem( 0 );
+  mCategoryCombo->setCurrentIndex( 0 );
   slotCategoryChanged( 0 );
 }
 
@@ -173,11 +173,11 @@ void KOTodoListViewQuickSearch::fillCategories()
   qCopy( categories.begin(), categories.end(), categoryList.begin() );
 
   if ( current.isNull() ) {
-    mCategoryCombo->setCurrentItem( 0 );
+    mCategoryCombo->setCurrentIndex( 0 );
   } else {
     for ( int i = 0; i < categoryList.count(); ++i )
       if ( categoryList[i] == current ) {
-        mCategoryCombo->setCurrentItem( i + 1 );
+        mCategoryCombo->setCurrentIndex( i + 1 );
         break;
       }
   }

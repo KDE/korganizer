@@ -249,7 +249,7 @@ class KOPrefsDialogTime : public KPrefsModule
             }
         }
 
-      mTimeZoneCombo->setCurrentItem(nCurrentlySet);
+      mTimeZoneCombo->setCurrentIndex(nCurrentlySet);
       mTimeZoneCombo->setWhatsThis( whatsThis );
 
       // holiday region selection
@@ -299,7 +299,7 @@ class KOPrefsDialogTime : public KPrefsModule
 
       for (int i=0; i < mHolidayCombo->count(); ++i) {
         if ( mHolidayCombo->text(i) == currentHolidayName ) {
-          mHolidayCombo->setCurrentItem(i);
+          mHolidayCombo->setCurrentIndex(i);
           break;
         }
       }
@@ -382,7 +382,7 @@ class KOPrefsDialogTime : public KPrefsModule
       setCombo( mTimeZoneCombo,
                 i18n( KOPrefs::instance()->mTimeZoneId.toUtf8() ) );
 
-      mAlarmTimeCombo->setCurrentItem( KOPrefs::instance()->mAlarmTime );
+      mAlarmTimeCombo->setCurrentIndex( KOPrefs::instance()->mAlarmTime );
       for ( int i = 0; i < 7; ++i ) {
         mWorkDays[i]->setChecked( (1<<i) & (KOPrefs::instance()->mWorkWeekMask) );
       }
@@ -418,11 +418,11 @@ class KOPrefsDialogTime : public KPrefsModule
     {
       if (tags) {
         int i = tags->indexOf(text);
-        if (i > 0) combo->setCurrentItem(i);
+        if (i > 0) combo->setCurrentIndex(i);
       } else {
         for(int i=0;i<combo->count();++i) {
           if (combo->text(i) == text) {
-            combo->setCurrentItem(i);
+            combo->setCurrentIndex(i);
             break;
           }
         }

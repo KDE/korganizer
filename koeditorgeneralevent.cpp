@@ -301,10 +301,10 @@ void KOEditorGeneralEvent::readEvent( Event *event, bool tmpl )
 
   switch( event->transparency() ) {
   case Event::Transparent:
-    mFreeTimeCombo->setCurrentItem(1);
+    mFreeTimeCombo->setCurrentIndex(1);
     break;
   case Event::Opaque:
-    mFreeTimeCombo->setCurrentItem(0);
+    mFreeTimeCombo->setCurrentIndex(0);
     break;
   }
 

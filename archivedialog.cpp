@@ -158,7 +158,7 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
 
   // Load settings from KOPrefs
   mExpiryTimeNumInput->setValue( KOPrefs::instance()->mExpiryTime );
-  mExpiryUnitsComboBox->setCurrentItem( KOPrefs::instance()->mExpiryUnit );
+  mExpiryUnitsComboBox->setCurrentIndex( KOPrefs::instance()->mExpiryUnit );
   mDeleteCb->setChecked( KOPrefs::instance()->mArchiveAction == KOPrefs::actionDelete );
   mEvents->setChecked( KOPrefs::instance()->mArchiveEvents );
   mTodos->setChecked( KOPrefs::instance()->mArchiveTodos );

@@ -489,13 +489,13 @@ void KOEditorDetails::readEvent( Incidence *event )
     for ( int i = 0 ; i < mOrganizerCombo->count(); ++i ) {
       if ( mOrganizerCombo->text( i ) == fullOrganizer ) {
         found = i;
-        mOrganizerCombo->setCurrentItem( i );
+        mOrganizerCombo->setCurrentIndex( i );
         break;
       }
     }
     if ( found < 0 ) {
       mOrganizerCombo->insertItem( fullOrganizer, 0 );
-      mOrganizerCombo->setCurrentItem( 0 );
+      mOrganizerCombo->setCurrentIndex( 0 );
     }
   } else { // someone else is the organizer
     if ( mOrganizerCombo ) {
@@ -566,8 +566,8 @@ void KOEditorDetails::clearAttendeeInput()
 {
   mNameEdit->setText("");
   mUid.clear();
-  mRoleCombo->setCurrentItem(0);
-  mStatusCombo->setCurrentItem(0);
+  mRoleCombo->setCurrentIndex(0);
+  mStatusCombo->setCurrentIndex(0);
   mRsvpButton->setChecked(true);
   setEnableAttendeeInput( false );
 }
@@ -583,8 +583,8 @@ void KOEditorDetails::fillAttendeeInput( AttendeeListItem *aItem )
   }
   mNameEdit->setText(name);
   mUid = a->uid();
-  mRoleCombo->setCurrentItem(a->role());
-  mStatusCombo->setCurrentItem(a->status());
+  mRoleCombo->setCurrentIndex(a->role());
+  mStatusCombo->setCurrentIndex(a->status());
   mRsvpButton->setChecked(a->RSVP());
 
   mDisableItemUpdate = false;
@@ -624,12 +624,12 @@ void KOEditorDetails::updateAttendeeItem()
     bool wasMyself = 
       KPIM::compareEmail( a->email(), mOrganizerCombo->currentText(), false );
     if ( myself ) {
-      mStatusCombo->setCurrentItem( KCal::Attendee::Accepted );
+      mStatusCombo->setCurrentIndex( KCal::Attendee::Accepted );
       mRsvpButton->setChecked( false );
       mRsvpButton->setEnabled( false );
     } else if ( wasMyself ) {
       // this was me, but is no longer, reset
-      mStatusCombo->setCurrentItem( KCal::Attendee::NeedsAction );
+      mStatusCombo->setCurrentIndex( KCal::Attendee::NeedsAction );
       mRsvpButton->setChecked( true );
       mRsvpButton->setEnabled( true );
     }

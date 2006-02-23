@@ -255,9 +255,9 @@ void KOEditorGeneralTodo::setDefaults( const QDateTime &due, bool allDay )
   mStartTimeEdit->setTime(QTime::currentTime());
   mStartDateModified = false;
 
-  mPriorityCombo->setCurrentItem(5);
+  mPriorityCombo->setCurrentIndex(5);
 
-  mCompletedCombo->setCurrentItem(0);
+  mCompletedCombo->setCurrentIndex(0);
 }
 
 void KOEditorGeneralTodo::readTodo(Todo *todo)
@@ -296,14 +296,14 @@ void KOEditorGeneralTodo::readTodo(Todo *todo)
   mTimeButton->setChecked( !todo->doesFloat() );
 
   mAlreadyComplete = false;
-  mCompletedCombo->setCurrentItem(todo->percentComplete() / 10);
+  mCompletedCombo->setCurrentIndex(todo->percentComplete() / 10);
   if (todo->isCompleted() && todo->hasCompletedDate()) {
     mCompleted = todo->completed();
     mAlreadyComplete = true;
   }
   setCompletedDate();
 
-  mPriorityCombo->setCurrentItem( todo->priority() );
+  mPriorityCombo->setCurrentIndex( todo->priority() );
   mStartDateModified = false;
 }
 
@@ -544,10 +544,10 @@ void KOEditorGeneralTodo::modified (Todo* todo, int modification)
 {
   switch (modification) {
   case KOGlobals::PRIORITY_MODIFIED:
-    mPriorityCombo->setCurrentItem( todo->priority() );
+    mPriorityCombo->setCurrentIndex( todo->priority() );
     break;
   case KOGlobals::COMPLETION_MODIFIED:
-    mCompletedCombo->setCurrentItem(todo->percentComplete() / 10);
+    mCompletedCombo->setCurrentIndex(todo->percentComplete() / 10);
     if (todo->isCompleted() && todo->hasCompletedDate()) {
       mCompleted = todo->completed();
     }

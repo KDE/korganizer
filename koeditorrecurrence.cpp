@@ -352,20 +352,20 @@ void RecurMonthly::setByDay( int day )
   // Days from the end are after the ones from the begin, so correct for the
   // negative sign and add 30 (index starting at 0)
   if ( day > 0 & day <= 31 )
-    mByDayCombo->setCurrentItem( day-1 );
+    mByDayCombo->setCurrentIndex( day-1 );
   else if ( day < 0 )
-    mByDayCombo->setCurrentItem( 31 - 1 - day );
+    mByDayCombo->setCurrentIndex( 31 - 1 - day );
 }
 
 void RecurMonthly::setByPos( int count, int weekday )
 {
   mByPosRadio->setChecked( true );
   if (count>0)
-    mByPosCountCombo->setCurrentItem( count - 1 );
+    mByPosCountCombo->setCurrentIndex( count - 1 );
   else
     // negative weeks means counted from the end of month
-    mByPosCountCombo->setCurrentItem( -count + 4 );
-  mByPosWeekdayCombo->setCurrentItem( weekday - 1 );
+    mByPosCountCombo->setCurrentIndex( -count + 4 );
+  mByPosWeekdayCombo->setCurrentIndex( weekday - 1 );
 }
 
 bool RecurMonthly::byDay()
@@ -522,18 +522,18 @@ void RecurYearly::setByPos( int count, int weekday, int month )
 {
   mByPosRadio->setChecked( true );
   if ( count > 0 )
-    mByPosDayCombo->setCurrentItem( count - 1 );
+    mByPosDayCombo->setCurrentIndex( count - 1 );
   else
-    mByPosDayCombo->setCurrentItem( -count + 4 );
-  mByPosWeekdayCombo->setCurrentItem( weekday - 1 );
-  mByPosMonthCombo->setCurrentItem( month-1 );
+    mByPosDayCombo->setCurrentIndex( -count + 4 );
+  mByPosWeekdayCombo->setCurrentIndex( weekday - 1 );
+  mByPosMonthCombo->setCurrentIndex( month-1 );
 }
 
 void RecurYearly::setByMonth( int day, int month )
 {
   mByMonthRadio->setChecked( true );
   mByMonthSpin->setValue( day );
-  mByMonthCombo->setCurrentItem( month - 1 );
+  mByMonthCombo->setCurrentIndex( month - 1 );
 }
 
 RecurYearly::YearlyType RecurYearly::getType()
@@ -945,7 +945,7 @@ int RecurrenceChooser::type()
 void RecurrenceChooser::setType( int type )
 {
   if ( mTypeCombo ) {
-    mTypeCombo->setCurrentItem( type );
+    mTypeCombo->setCurrentIndex( type );
   } else {
     switch ( type ) {
       case Daily:

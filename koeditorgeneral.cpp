@@ -273,7 +273,7 @@ void KOEditorGeneral::setDefaults(bool /*allDay*/)
   updateDefaultAlarmTime();
   updateAlarmWidgets();
 
-  mSecrecyCombo->setCurrentItem(Incidence::SecrecyPublic);
+  mSecrecyCombo->setCurrentIndex(Incidence::SecrecyPublic);
 }
 
 void KOEditorGeneral::updateDefaultAlarmTime()
@@ -317,10 +317,10 @@ void KOEditorGeneral::updateAlarmWidgets()
       int useoffset = offset;
       if (offset % (24*60) == 0) { // divides evenly into days?
         useoffset = offset / (24*60);
-        mAlarmIncrCombo->setCurrentItem(2);
+        mAlarmIncrCombo->setCurrentIndex(2);
       } else if (offset % 60 == 0) { // divides evenly into hours?
         useoffset = offset / 60;
-        mAlarmIncrCombo->setCurrentItem(1);
+        mAlarmIncrCombo->setCurrentIndex(1);
       }
       mAlarmTimeEdit->setValue( useoffset );
     } else {
@@ -342,7 +342,7 @@ void KOEditorGeneral::readIncidence(Incidence *event)
   mOwnerLabel->setText(i18n("Owner: ") + event->organizer().fullName() );
 #endif
 
-  mSecrecyCombo->setCurrentItem(event->secrecy());
+  mSecrecyCombo->setCurrentIndex(event->secrecy());
 
   // set up alarm stuff
   mAlarmList.clear();
