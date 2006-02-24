@@ -142,7 +142,7 @@ QColor KODayMatrix::getShadedColor( const QColor &color )
   int h = 0;
   int s = 0;
   int v = 0;
-  color.hsv( &h, &s, &v );
+  color.getHsv( &h, &s, &v );
   s = s / 4;
   v = 192 + v / 4;
   shaded.setHsv( h, s, v );
