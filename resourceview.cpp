@@ -180,7 +180,6 @@ ResourceView::ResourceView( KCal::CalendarResources *calendar,
   mAddButton = new QPushButton( i18n("Add..."), buttonBox, "add" );
   mEditButton = new QPushButton( i18n("Edit..."), buttonBox, "edit" );
   mDeleteButton = new QPushButton( i18n("Remove"), buttonBox, "del" );
-  mDeleteButton->setDisabled( true );
   mEditButton->setDisabled( true );
 
   connect( mListView, SIGNAL( clicked( QListViewItem * ) ),
@@ -221,11 +220,25 @@ void ResourceView::emitResourcesChanged()
 
 void ResourceView::addResource()
 {
+  bool ok = false;
   KCal::CalendarResourceManager *manager = mCalendar->resourceManager();
-
+  ResourceItem *i = static_cast<ResourceItem*>( mListView->selectedItem() );
+  if ( i && ( i->isSubresource() || i->resource()->canHaveSubresources() ) ) {
+    const QString folderName = KInputDialog::getText( i18n( "Add Subresource" ),
+            i18n( "Please enter a name for the new subresource" ), QString::null,
+            &ok, this );
+    if ( !ok )
+      return;
+    const QString parentId = i->isSubresource() ? i->resourceIdentifier() : QString:: null;
+    if ( !i->resource()->addSubresource( folderName, parentId ) ) {
+      KMessageBox::error( this, i18n("<qt>Unable to create subresource <b>%1</b>.</qt>")
+                                .arg( folderName ) );
+    }
+    return;
+  }
+  
   QStringList types = manager->resourceTypeNames();
   QStringList descs = manager->resourceTypeDescriptions();
-  bool ok = false;
   QString desc = KInputDialog::getItem( i18n( "Resource Configuration" ),
       i18n( "Please select type of the new resource:" ), descs, 0, false, &ok,
             this );
@@ -351,9 +364,13 @@ void ResourceView::removeResource()
   ResourceItem *item = currentItem();
   if ( !item ) return;
 
-  int km = KMessageBox::warningContinueCancel( this,
-        i18n("<qt>Do you really want to remove the resource <b>%1</b>?</qt>")
-        .arg( item->text( 0 ) ), "",
+  const QString warningMsg = item->isSubresource() ?
+        i18n("<qt>Do you really want to remove the subresource <b>%1</b>? "
+              "Note that its contents will be completely deleted. This "
+              "operation cannot be undone. </qt>").arg( item->text( 0 ) ) :
+        i18n("<qt>Do you really want to remove the resource <b>%1</b>?</qt>").arg( item->text( 0 ) );
+
+  int km = KMessageBox::warningContinueCancel( this, warningMsg, "",
         KGuiItem( i18n("&Remove" ), "editdelete") );
   if ( km == KMessageBox::Cancel ) return;
 
@@ -366,12 +383,18 @@ void ResourceView::removeResource()
   }
 #endif
   if ( item->isSubresource() ) {
-    // TODO delete the folder in KMail
+    if ( !item->resource()->removeSubresource( item->resourceIdentifier() ) )
+      KMessageBox::sorry( this,
+              i18n ("<qt>Failed to remove the subresource <b>%1</b>. The "
+                  "reason could be that it is a built-in one which cannot "
+                  "be removed, or that the removal of the underlying storage "
+                  "folder failed.</qt>").arg( item->resource()->name() ) );
+      return;
   } else {
     mCalendar->resourceManager()->remove( item->resource() );
-    mListView->takeItem( item );
-    delete item;
   }
+  mListView->takeItem( item );
+  delete item;
   emitResourcesChanged();
 }
 
@@ -395,10 +418,8 @@ void ResourceView::currentChanged( QListViewItem *item)
 {
    ResourceItem *i = currentItem();
    if ( !item || i->isSubresource() ) {
-     mDeleteButton->setEnabled( false );
      mEditButton->setEnabled( false );
    } else {
-     mDeleteButton->setEnabled( true );
      mEditButton->setEnabled( true );
    }
 }
