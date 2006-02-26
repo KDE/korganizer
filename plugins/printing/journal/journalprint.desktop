@@ -2,6 +2,7 @@
 Encoding=UTF-8
 X-KDE-Library=libkorg_journalprint
 Name=Journal Print Style
+Name[ca]=Estil d'impressió del diari
 Name[cs]=Tiskový styl deníku
 Name[da]=Journal udskriftsstil
 Name[de]=Journal Druckstil
@@ -33,6 +34,7 @@ Name[uk]=Стиль друку журналом
 Name[zh_CN]=日记打印样式
 Comment=This plugin allows you to print out journal entries (diary entries).
 Comment[bg]=Приставката служи за печат на дневника.
+Comment[ca]=Aquest endollable us permet imprimir entrades del diari.
 Comment[cs]=tento modul umožňuje tisk položek deníku.
 Comment[da]=Dette plugin gør at du kan udskrive journalindgange (dagbogsindgange).
 Comment[de]=Mit diesem Modul können Journaleinträge (Tagebucheinträge) gedruckt werden.
