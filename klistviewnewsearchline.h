@@ -35,8 +35,6 @@ class QToolButton;
  *
  * No changes to the application other than instantiating this class with
  * appropriate KListViews should be needed.
- *
- * @since 3.3
  */
 
 class KDEUI_EXPORT KListViewNewSearchLine : public KLineEdit
@@ -60,8 +58,6 @@ public:
      *
      * If \a listViews is empty then the widget will be disabled until listviews
      * are set with setListView(), setListViews() or added with addListView().
-     *
-     * @since 4.0
      */
     KListViewNewSearchLine(QWidget *parent,
                            const QList<KListView *> &listViews);
@@ -114,7 +110,6 @@ public:
      * the search.
      *
      * @see setListViews(), addListView(), listView()
-     * @since 4.0
      */
     const QList<KListView *> &listViews() const;
 
@@ -124,7 +119,6 @@ public slots:
      * If \a lv is null then the widget will be disabled.
      *
      * @see listView(), setListViews(), removeListView()
-     * @since 4.0
      */
     void addListView(KListView *lv);
 
@@ -134,7 +128,6 @@ public slots:
      * line.
      *
      * @see listVew(), setListViews(), addListView()
-     * @since 4.0
      */
     void removeListView(KListView *lv);
 
@@ -189,7 +182,6 @@ public slots:
      * be disabled.
      *
      * @see listViews(), addListView(), setListView()
-     * @since 4.0
      */
     void setListViews(const QList<KListView *> &lv);
 
@@ -219,14 +211,10 @@ public slots:
     /**
      * Connects signals of this listview to the appropriate slots of the search
      * line.
-     *
-     * @since 4.0
      */
     virtual void connectListView(KListView *);
     /**
      * Disconnects signals of a listviews from the search line.
-     *
-     * @since 4.0
      */
     virtual void disconnectListView(KListView *);
 
@@ -243,7 +231,6 @@ public slots:
      * Otherwise it returns true.
      *
      * @see setSearchColumns()
-     * @since 4.0
      */
     virtual bool canChooseColumnsCheck();
 
@@ -280,10 +267,9 @@ private:
      * doesn't make sense, it forces filtering over all columns.
      *
      * @see canChooseColumnsCheck()
-     * @since 4.0
      */
     void checkColumns();
-    
+
     /**
      * This is used in case parent items of matching items shouldn't be
      * visible.  It hides all items that don't match the search string.
