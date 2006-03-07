@@ -160,7 +160,7 @@ bool KOMailClient::send(const QString &from,const QString &to,
       needHeaders = false;
     }
 
-    FILE * fd = popen(command.local8Bit(),"w");
+    FILE * fd = popen(command.toLocal8Bit(),"w");
     if (!fd)
     {
       kError() << "Unable to open a pipe to " << command << endl;
@@ -181,7 +181,7 @@ bool KOMailClient::send(const QString &from,const QString &to,
     textComplete += '\n';
     textComplete += attachment;
 
-    fwrite(textComplete.local8Bit(),textComplete.length(),1,fd);
+    fwrite(textComplete.toLocal8Bit(),textComplete.length(),1,fd);
 
     pclose(fd);
   } else {
