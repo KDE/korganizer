@@ -1116,7 +1116,7 @@ void CalPrintHelper::drawSplitHeaderRight( QPainter &p, const QDate &fd,
   p.drawLine(300, lineSpacing * 1, width, lineSpacing * 1);
   p.setPen( oldPen );
 
-  p.setFont(QFont("Times", 20, QFont::Bold, TRUE));
+  p.setFont(QFont("Times", 20, QFont::Bold, true));
   int newlineSpacing = p.fontMetrics().lineSpacing();
   title += QString::number(fd.year());
   p.drawText( 0, lineSpacing * 1 + 4, width, newlineSpacing,

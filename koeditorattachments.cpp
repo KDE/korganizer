@@ -382,7 +382,7 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent,
   mPopupNew = new KMenu( this );
   mPopupNew->insertItem( i18n( "&New..." ), this, SLOT( slotAdd() ) );
 
-  setAcceptDrops( TRUE );
+  setAcceptDrops( true );
 }
 
 KOEditorAttachments::~KOEditorAttachments()
