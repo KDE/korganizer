@@ -18,7 +18,7 @@ kde4_add_plugin(korg_hebrew WITH_PREFIX ${korg_hebrew_PART_SRCS})
 
 kde4_install_libtool_file( ${PLUGIN_INSTALL_DIR} korg_hebrew )
 
-target_link_libraries(korg_hebrew  ${QT_AND_KDECORE_LIBS} kdeui )
+target_link_libraries(korg_hebrew  ${LIB_KDEUI} )
 
 install_targets(${LIB_INSTALL_DIR}/kde4 korg_hebrew )
 

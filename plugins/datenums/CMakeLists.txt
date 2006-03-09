@@ -13,7 +13,7 @@ kde4_add_plugin(korg_datenums WITH_PREFIX ${korg_datenums_PART_SRCS})
 
 kde4_install_libtool_file( ${PLUGIN_INSTALL_DIR} korg_datenums )
 
-target_link_libraries(korg_datenums  ${QT_AND_KDECORE_LIBS} kdeui korganizer )
+target_link_libraries(korg_datenums  ${LIB_KDEUI} korganizer )
 
 install_targets(${LIB_INSTALL_DIR}/kde4 korg_datenums )
 

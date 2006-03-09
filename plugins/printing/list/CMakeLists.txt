@@ -9,7 +9,7 @@ set(korg_listprint_PART_SRCS listprint.cpp )
 
 kde4_automoc(${korg_listprint_PART_SRCS})
 
-kde4_add_ui_files(korg_listprint_PART_SRCS calprintlistconfig_base.ui )
+kde4_add_ui3_files(korg_listprint_PART_SRCS calprintlistconfig_base.ui )
 
 kde4_add_plugin(korg_listprint WITH_PREFIX ${korg_listprint_PART_SRCS})
 

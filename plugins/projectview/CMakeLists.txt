@@ -13,7 +13,7 @@ kde4_add_plugin(korg_projectview WITH_PREFIX ${korg_projectview_PART_SRCS})
 
 kde4_install_libtool_file( ${PLUGIN_INSTALL_DIR} korg_projectview )
 
-target_link_libraries(korg_projectview  ${QT_AND_KDECORE_LIBS} kgantt korganizer kparts )
+target_link_libraries(korg_projectview  ${LIB_KPARTS} kgantt korganizer  )
 
 install_targets(${LIB_INSTALL_DIR}/kde4 korg_projectview )
 
