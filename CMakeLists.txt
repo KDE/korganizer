@@ -87,12 +87,12 @@ set(korganizer_SRCS
 
 kde4_automoc(${korganizer_SRCS})
 
-kde4_add_ui_files(korganizer_SRCS 
-   koeditoralarms_base.ui 
+kde4_add_ui3_files(korganizer_SRCS 
    kogroupwareprefspage.ui 
    publishdialog_base.ui 
-   filteredit_base.ui 
    template_management_dialog_base.ui )
+
+kde4_add_ui_files(korganizer_SRCS filteredit_base.ui koeditoralarms_base.ui)
 
 kde4_add_dcop_skels(korganizer_SRCS korganizeriface.h kcalendariface.h )
 
