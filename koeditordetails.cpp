@@ -173,7 +173,7 @@ void KOAttendeeListView::dropEvent( QDropEvent *e )
 #endif // KORG_NOKABC
   if (Q3TextDrag::decode(e,text)) {
     kDebug(5850) << "Dropped : " << text << endl;
-    QStringList emails = QStringList::split(",",text);
+    QStringList emails = text.split(",", QString::SkipEmptyParts);
     for(QStringList::ConstIterator it = emails.begin();it!=emails.end();++it) {
       addAttendee(*it);
     }

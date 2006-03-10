@@ -584,7 +584,7 @@ void KOAgendaItem::dropEvent( QDropEvent *e )
   if( decoded ) {
     kDebug(5850) << "Dropped : " << text << endl;
 
-    QStringList emails = QStringList::split( ",", text );
+    QStringList emails = text.split( ",", QString::SkipEmptyParts  );
     for( QStringList::ConstIterator it = emails.begin(); it != emails.end();
         ++it ) {
         addAttendee( *it );

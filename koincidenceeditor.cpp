@@ -268,7 +268,7 @@ class KCalStorage : public KPIM::DesignerFields::Storage
       QMap<QByteArray, QString>::ConstIterator it;
       for( it = props.begin(); it != props.end(); ++it ) {
         QString customKey = it.key();
-        QStringList parts = QStringList::split( "-", customKey );
+        QStringList parts = customKey.split( "-", QString::SkipEmptyParts );
         if ( parts.count() != 4 ) continue;
         if ( parts[ 2 ] != "KORGANIZER" ) continue;
         keys.append( parts[ 3 ] );

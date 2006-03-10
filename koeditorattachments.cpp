@@ -64,6 +64,7 @@
 #include <qpushbutton.h>
 #include <q3dragobject.h>
 #include <qregexp.h>
+#include <qstring.h>
 #include <qstringlist.h>
 #include <qstyle.h>
 
@@ -461,11 +462,11 @@ void KOEditorAttachments::dropEvent( QDropEvent* event ) {
     probablyWeHaveUris = true;
   } else if ( K3URLDrag::decode( event, urls, metadata ) ) {
     probablyWeHaveUris = true;
-    labels = QStringList::split( ":", metadata["labels"] );
+    labels = metadata["labels"].split( ":", QString::SkipEmptyParts );
     for ( QStringList::Iterator it = labels.begin(); it != labels.end(); ++it )
       *it = KUrl::decode_string( *it );
   } else if ( Q3TextDrag::decode( event, text ) ) {
-    QStringList lst = QStringList::split( '\n', text );
+    QStringList lst = text.split( '\n', QString::SkipEmptyParts );
     for ( QStringList::ConstIterator it = lst.begin(); it != lst.end(); ++it )
       urls.append( *it );
     probablyWeHaveUris = true;
