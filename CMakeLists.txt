@@ -169,7 +169,7 @@ set(korganizer_eventviewer_LIB_SRCS koeventviewer.cpp urihandler.cpp koeventview
 
 kde4_automoc(${korganizer_eventviewer_LIB_SRCS})
 
-kde4_add_dcop_stubs(korganizer_eventviewer_LIB_SRCS kmailIface.h korganizeriface.h knodeiface.h )
+kde4_add_dcop_stubs(korganizer_eventviewer_LIB_SRCS ${CMAKE_SOURCE_DIR}/kmail/kmailIface.h korganizeriface.h ${CMAKE_SOURCE_DIR}/knode/knodeiface.h )
 
 kde4_add_library(korganizer_eventviewer SHARED ${korganizer_eventviewer_LIB_SRCS})
 
