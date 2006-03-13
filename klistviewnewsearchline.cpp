@@ -21,7 +21,7 @@
 
 #include "klistviewnewsearchline.h"
 
-#include <klistview.h>
+#include <k3listview.h>
 #include <kiconloader.h>
 #include <ktoolbar.h>
 #include <ktoolbarbutton.h>
@@ -48,7 +48,7 @@ public:
         canChooseColumns(true),
         queuedSearches(0) {}
 
-    QList<KListView *> listViews;
+    QList<K3ListView *> listViews;
     bool caseSensitive;
     bool activeSearch;
     bool keepParentsVisible;
@@ -62,7 +62,7 @@ public:
 // public methods
 ////////////////////////////////////////////////////////////////////////////////
 
-KListViewNewSearchLine::KListViewNewSearchLine(QWidget *parent, KListView *listView) :
+KListViewNewSearchLine::KListViewNewSearchLine(QWidget *parent, K3ListView *listView) :
     KLineEdit(parent)
 {
     d = new KListViewNewSearchLinePrivate;
@@ -74,7 +74,7 @@ KListViewNewSearchLine::KListViewNewSearchLine(QWidget *parent, KListView *listV
 }
 
 KListViewNewSearchLine::KListViewNewSearchLine(QWidget *parent,
-                                       const QList<KListView *> &listViews) :
+                                       const QList<K3ListView *> &listViews) :
      KLineEdit(parent)
 {
     d = new KListViewNewSearchLinePrivate;
@@ -120,7 +120,7 @@ bool KListViewNewSearchLine::keepParentsVisible() const
     return d->keepParentsVisible;
 }
 
-KListView *KListViewNewSearchLine::listView() const
+K3ListView *KListViewNewSearchLine::listView() const
 {
     if ( d->listViews.count() == 1 )
         return d->listViews.first();
@@ -128,7 +128,7 @@ KListView *KListViewNewSearchLine::listView() const
         return 0;
 }
 
-const QList<KListView *> &KListViewNewSearchLine::listViews() const
+const QList<K3ListView *> &KListViewNewSearchLine::listViews() const
 {
     return d->listViews;
 }
@@ -138,7 +138,7 @@ const QList<KListView *> &KListViewNewSearchLine::listViews() const
 // public slots
 ////////////////////////////////////////////////////////////////////////////////
 
-void KListViewNewSearchLine::addListView(KListView *lv)
+void KListViewNewSearchLine::addListView(K3ListView *lv)
 {
     if (lv) {
         connectListView(lv);
@@ -150,10 +150,10 @@ void KListViewNewSearchLine::addListView(KListView *lv)
     }
 }
 
-void KListViewNewSearchLine::removeListView(KListView *lv)
+void KListViewNewSearchLine::removeListView(K3ListView *lv)
 {
     if (lv) {
-        QList<KListView *>::Iterator it = d->listViews.find(lv);
+        QList<K3ListView *>::Iterator it = d->listViews.find(lv);
         
         if ( it != d->listViews.end() ) {
             d->listViews.remove( it );
@@ -170,12 +170,12 @@ void KListViewNewSearchLine::updateSearch(const QString &s)
 {
     d->search = s.isNull() ? text() : s;
 
-    for (QList<KListView *>::Iterator it = d->listViews.begin();
+    for (QList<K3ListView *>::Iterator it = d->listViews.begin();
          it != d->listViews.end(); ++it)
         updateSearch( *it );
 }
 
-void KListViewNewSearchLine::updateSearch(KListView *listView)
+void KListViewNewSearchLine::updateSearch(K3ListView *listView)
 {
     if(!listView)
         return;
@@ -188,9 +188,9 @@ void KListViewNewSearchLine::updateSearch(KListView *listView)
 
     switch(listView->selectionMode())
     {
-    case KListView::NoSelection:
+    case K3ListView::NoSelection:
         break;
-    case KListView::Single:
+    case K3ListView::Single:
         currentItem = listView->selectedItem();
         break;
     default:
@@ -231,21 +231,21 @@ void KListViewNewSearchLine::setSearchColumns(const QList<int> &columns)
         d->searchColumns = columns;
 }
 
-void KListViewNewSearchLine::setListView(KListView *lv)
+void KListViewNewSearchLine::setListView(K3ListView *lv)
 {
-    setListViews(QList<KListView *>());
+    setListViews(QList<K3ListView *>());
     addListView(lv);
 }
 
-void KListViewNewSearchLine::setListViews(const QList<KListView *> &lv)
+void KListViewNewSearchLine::setListViews(const QList<K3ListView *> &lv)
 {
-    for (QList<KListView *>::Iterator it = d->listViews.begin();
+    for (QList<K3ListView *>::Iterator it = d->listViews.begin();
          it != d->listViews.end(); ++it)
              disconnectListView(*it);
     
     d->listViews = lv;
 
-    for (QList<KListView *>::Iterator it = d->listViews.begin();
+    for (QList<K3ListView *>::Iterator it = d->listViews.begin();
          it != d->listViews.end(); ++it)
         connectListView(*it);
 
@@ -332,7 +332,7 @@ void KListViewNewSearchLine::contextMenuEvent( QContextMenuEvent *e )
   delete popup;
 }
 
-void KListViewNewSearchLine::connectListView(KListView *lv)
+void KListViewNewSearchLine::connectListView(K3ListView *lv)
 {
     connect(lv, SIGNAL(destroyed( QObject * )),
             this, SLOT(listViewDeleted( QObject *)));
@@ -340,7 +340,7 @@ void KListViewNewSearchLine::connectListView(KListView *lv)
             this, SLOT(itemAdded(Q3ListViewItem *)));
 }
 
-void KListViewNewSearchLine::disconnectListView(KListView *lv)
+void KListViewNewSearchLine::disconnectListView(K3ListView *lv)
 {
     disconnect(lv, SIGNAL(destroyed( QObject * )),
             this, SLOT(listViewDeleted( QObject *)));
@@ -356,7 +356,7 @@ bool KListViewNewSearchLine::canChooseColumnsCheck()
     if (d->listViews.isEmpty())
         return false;
 
-    const KListView *first = d->listViews.first();
+    const K3ListView *first = d->listViews.first();
     
     const unsigned int numcols = first->columns();
     // the listviews have only one column,
@@ -367,7 +367,7 @@ bool KListViewNewSearchLine::canChooseColumnsCheck()
     for (unsigned int i = 0; i < numcols; ++i)
         headers.append(first->columnText(i));
 
-    QList<KListView *>::ConstIterator it = d->listViews.constBegin();
+    QList<K3ListView *>::ConstIterator it = d->listViews.constBegin();
     for (++it /* skip the first one */; it !=d->listViews.constEnd(); ++it) {
         // the listviews have different numbers of columns,
         if ((unsigned int) (*it)->columns() != numcols)
@@ -416,9 +416,9 @@ void KListViewNewSearchLine::itemAdded(Q3ListViewItem *item) const
 
 void KListViewNewSearchLine::listViewDeleted(QObject *o)
 {
-    KListView *lv = dynamic_cast<KListView *>(o);
+    K3ListView *lv = dynamic_cast<K3ListView *>(o);
     if (!lv) {
-        kWarning() << k_funcinfo << "an object other than KListView passed"
+        kWarning() << k_funcinfo << "an object other than K3ListView passed"
                 << endl;
         return;
     }
@@ -461,7 +461,7 @@ void KListViewNewSearchLine::checkColumns()
     d->canChooseColumns = canChooseColumnsCheck();
 }
 
-void KListViewNewSearchLine::checkItemParentsNotVisible(KListView *listView)
+void KListViewNewSearchLine::checkItemParentsNotVisible(K3ListView *listView)
 {
     Q3ListViewItemIterator it(listView);
     for(; it.current(); ++it)
@@ -533,12 +533,12 @@ class KListViewSearchLineWidget::KListViewSearchLineWidgetPrivate
 {
 public:
     KListViewSearchLineWidgetPrivate() : listView(0), searchLine(0), clearButton(0) {}
-    KListView *listView;
-    KListViewSearchLine *searchLine;
+    K3ListView *listView;
+    K3ListViewSearchLine *searchLine;
     QToolButton *clearButton;
 };
 
-KListViewSearchLineWidget::KListViewSearchLineWidget(KListView *listView,
+KListViewSearchLineWidget::KListViewSearchLineWidget(K3ListView *listView,
                                                      QWidget *parent,
                                                      const char *name) :
     KHBox(parent, name)
@@ -556,10 +556,10 @@ KListViewSearchLineWidget::~KListViewSearchLineWidget()
     delete d;
 }
 
-KListViewSearchLine *KListViewSearchLineWidget::createSearchLine(KListView *listView)
+K3ListViewSearchLine *KListViewSearchLineWidget::createSearchLine(K3ListView *listView)
 {
     if(!d->searchLine)
-        d->searchLine = new KListViewSearchLine(this, listView);
+        d->searchLine = new K3ListViewSearchLine(this, listView);
     return d->searchLine;
 }
 
@@ -586,7 +586,7 @@ void KListViewSearchLineWidget::createWidgets()
     connect(d->clearButton, SIGNAL(clicked()), d->searchLine, SLOT(clear()));
 }
 
-KListViewSearchLine *KListViewSearchLineWidget::searchLine() const
+K3ListViewSearchLine *KListViewSearchLineWidget::searchLine() const
 {
     return d->searchLine;
 }

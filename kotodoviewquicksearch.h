@@ -27,13 +27,13 @@
 #ifndef KOTODOVIEWQUICKSEARCH_H
 #define KOTODOVIEWQUICKSEARCH_H
 
-#include <klistviewsearchline.h>
+#include <k3listviewsearchline.h>
 #include <ktoolbar.h>
 #include <qvector.h>
 
 class KActionCollection;
 class KAction;
-class KListView;
+class K3ListView;
 class QComboBox;
 class QListViewItem;
 class QResizeEvent;
@@ -43,13 +43,13 @@ namespace KCal { class Calendar; }
 
 using namespace KCal;
 
-class KOTodoListViewQuickSearchLine : public KListViewSearchLine
+class KOTodoListViewQuickSearchLine : public K3ListViewSearchLine
 {
   Q_OBJECT
   Q_PROPERTY( QString category READ category WRITE setCategory )
   public:
-    KOTodoListViewQuickSearchLine( QWidget *parent, QList<KListView*> listViews )
-        : KListViewSearchLine( parent, listViews ) { }
+    KOTodoListViewQuickSearchLine( QWidget *parent, QList<K3ListView*> listViews )
+        : K3ListViewSearchLine( parent, listViews ) { }
     virtual ~KOTodoListViewQuickSearchLine() { }
 
     void setCategory( const QString &category ) { mCategory = category; }
@@ -68,7 +68,7 @@ class KOTodoListViewQuickSearch : public KToolBar
   friend class KOTodoListViewQuickSearchContainer;
   public:
     KOTodoListViewQuickSearch( QWidget *parent,
-                               QList<KListView*> listViews,
+                               QList<K3ListView*> listViews,
                                KActionCollection *actionCollection,
                                Calendar *calendar,
                                const char *name = 0 );
@@ -104,7 +104,7 @@ class KOTodoListViewQuickSearchContainer : public QWidget
   Q_OBJECT
   public:
     KOTodoListViewQuickSearchContainer( QWidget *parent,
-                               QList<KListView*> listViews,
+                               QList<K3ListView*> listViews,
                                KActionCollection *actionCollection,
                                Calendar *calendar);
     virtual ~KOTodoListViewQuickSearchContainer();

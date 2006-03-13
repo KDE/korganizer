@@ -27,7 +27,7 @@
 
 #include <kcolordialog.h>
 #include <kdialog.h>
-#include <klistview.h>
+#include <k3listview.h>
 #include <klocale.h>
 #include <kdebug.h>
 #include <kglobal.h>
@@ -91,7 +91,7 @@ ResourceView *ResourceViewFactory::resourceView() const
 }
 
 ResourceItem::ResourceItem( ResourceCalendar *resource, ResourceView *view,
-                            KListView *parent )
+                            K3ListView *parent )
   : Q3CheckListItem( parent, resource->resourceName(), CheckBox ),
     mResource( resource ), mView( view ), mBlockStateChange( false ),
     mIsSubresource( false ), mResourceIdentifier( QString() ),
@@ -221,7 +221,7 @@ ResourceView::ResourceView( KCal::CalendarResources *calendar,
 {
   QBoxLayout *topLayout = new QVBoxLayout( this, 0, KDialog::spacingHint() );
 
-  mListView = new KListView( this );
+  mListView = new K3ListView( this );
   mListView->setWhatsThis(
                    i18n( "<qt><p>Select on this list the active KOrganizer "
                          "resources. Check the resource box to make it "

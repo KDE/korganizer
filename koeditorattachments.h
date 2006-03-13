@@ -45,7 +45,7 @@ class Q3IconDragItem;
 class Q3IconViewItem;
 class QLabel;
 class QLineEdit;
-class KIconView;
+class K3IconView;
 class KMenu;
 class KUrlRequester;
 
@@ -126,7 +126,7 @@ class KOEditorAttachments : public QWidget
     void openURL( const KUrl &url );
 
   private:
-    KIconView *mAttachments;
+    K3IconView *mAttachments;
     KMenu *mPopupMenu, *mPopupNew;
     QString mUid; // used only to generate attachments' filenames
     KUrl::List mDeferredDelete;

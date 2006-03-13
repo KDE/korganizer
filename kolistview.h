@@ -44,13 +44,13 @@ class KOListView;
 class KOListViewToolTip : public QToolTip
 {
   public:
-    KOListViewToolTip (QWidget* parent, KListView* lv );
+    KOListViewToolTip (QWidget* parent, K3ListView* lv );
 
   protected:
     void maybeTip( const QPoint & pos);
 
   private:
-    KListView* eventlist;
+    K3ListView* eventlist;
 };
 #endif
 
@@ -110,7 +110,7 @@ class KOListView : public KOEventView
 
   private:
     class ListItemVisitor;
-    KListView *mListView;
+    K3ListView *mListView;
     KOEventPopupMenu *mPopupMenu;
     KOListViewItem *mActiveItem;
     Q3Dict<Incidence> mUidDict;

@@ -53,7 +53,7 @@
 #warning Port me!
 #if 0
 KOListViewToolTip::KOListViewToolTip( QWidget* parent,
-                                      KListView* lv )
+                                      K3ListView* lv )
   :QToolTip(parent)
 {
   eventlist=lv;
@@ -207,7 +207,7 @@ KOListView::KOListView( Calendar *calendar, QWidget *parent,
 {
   mActiveItem = 0;
 
-  mListView = new KListView(this);
+  mListView = new K3ListView(this);
   mListView->addColumn(i18n("Summary"));
   mListView->addColumn(i18n("Reminder")); // alarm set?
   mListView->addColumn(i18n("Recurs")); // recurs?

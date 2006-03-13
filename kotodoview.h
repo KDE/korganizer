@@ -38,7 +38,7 @@
 #include <QDragEnterEvent>
 #include <QMouseEvent>
 
-#include <klistview.h>
+#include <k3listview.h>
 
 #include <libkcal/todo.h>
 #include <korganizer/baseview.h>
@@ -83,7 +83,7 @@ class KOTodoListViewToolTip
 };
 
 
-class KOTodoListView : public KListView
+class KOTodoListView : public K3ListView
 {
     Q_OBJECT
   public:

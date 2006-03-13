@@ -24,7 +24,7 @@
 #ifndef _KOEDITORDETAILS_H
 #define _KOEDITORDETAILS_H
 
-#include <klistview.h>
+#include <k3listview.h>
 #include "customlistviewitem.h"
 #include <QDragEnterEvent>
 #include <QLabel>
@@ -56,12 +56,12 @@ class AddresseeLineEdit;
 typedef CustomListViewItem<KCal::Attendee *> AttendeeListItem;
 
 
-/** KOAttendeeListView is a child class of KListView  which supports
+/** KOAttendeeListView is a child class of K3ListView  which supports
  *  dropping of attendees (e.g. from kaddressbook) onto it. If an attendeee
  *  was dropped, the signal dropped(Attendee*)  is emitted. Valid drop classes
  *   are KVCardDrag and QTextDrag.
  */
-class KOAttendeeListView : public KListView
+class KOAttendeeListView : public K3ListView
 {
 Q_OBJECT
 public:
@@ -128,7 +128,7 @@ class KOEditorDetails : public QWidget
 
     KPIM::AddresseeLineEdit *mNameEdit;
     QString mUid;
-    KListView *mListView;
+    K3ListView *mListView;
     QComboBox* mRoleCombo;
     QCheckBox* mRsvpButton;
     QComboBox* mStatusCombo;

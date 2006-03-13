@@ -39,7 +39,7 @@
 #include "koprefs.h"
 
 #include <kaction.h>
-#include <klistviewsearchline.h>
+#include <k3listviewsearchline.h>
 #include <ktoolbar.h>
 
 #include <qlayout.h>
@@ -56,7 +56,7 @@ using namespace KCal;
 KAction *KOTodoListViewQuickSearch::action = 0;
 
 KOTodoListViewQuickSearch::KOTodoListViewQuickSearch( QWidget *parent,
-                                            QList<KListView*> listViews,
+                                            QList<K3ListView*> listViews,
                                             KActionCollection *actionCollection,
                                             Calendar *calendar,
                                             const char *name )
@@ -110,7 +110,7 @@ const
     if ( ( mCategory.isNull() ||
            !todo->categories().grep( QRegExp( QString( "^" ) +
            QRegExp::escape( mCategory ) ) ).isEmpty() ) &&
-           KListViewSearchLine::itemMatches(item, s) )
+           K3ListViewSearchLine::itemMatches(item, s) )
       return true;
     else
       item = item->parent(); // children of passed items also pass
@@ -234,7 +234,7 @@ void KOTodoListViewQuickSearch::hideEvent( QHideEvent *e )
 
 KOTodoListViewQuickSearchContainer::KOTodoListViewQuickSearchContainer(
                                QWidget *parent,
-                               QList<KListView*> listViews,
+                               QList<K3ListView*> listViews,
                                KActionCollection *actionCollection,
                                Calendar *calendar)
      : QWidget( parent ), mQuickSearch( new KOTodoListViewQuickSearch(

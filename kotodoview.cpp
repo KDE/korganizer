@@ -121,7 +121,7 @@ void KOTodoListViewToolTip::maybeTip( const QPoint & pos)
 
 
 KOTodoListView::KOTodoListView( QWidget *parent )
-  : KListView( parent ), mCalendar( 0 ), mChanger( 0 )
+  : K3ListView( parent ), mCalendar( 0 ), mChanger( 0 )
 {
   mOldCurrent = 0;
   mMousePressed = false;
@@ -185,7 +185,7 @@ bool KOTodoListView::event(QEvent *e)
   if(e->type()==QEvent::ApplicationPaletteChange)
   {
 
-    KListView::event(e);
+    K3ListView::event(e);
     i=(KOTodoViewItem *)itemAtIndex(tmp);
 
     while(i!=0)
@@ -197,7 +197,7 @@ bool KOTodoListView::event(QEvent *e)
 
   }
 
-  return (KListView::event(e) || e->type()==QEvent::ApplicationPaletteChange);
+  return (K3ListView::event(e) || e->type()==QEvent::ApplicationPaletteChange);
 }
 
 void KOTodoListView::contentsDragEnterEvent(QDragEnterEvent *e)
@@ -437,7 +437,7 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent)
   }
   
   setupListViews();
-  QList<KListView *> list;
+  QList<K3ListView *> list;
   list.append( mMyTodoListView );
   list.append( mOneTodoListView );
   list.append( mYourTodoListView );

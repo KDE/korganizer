@@ -26,16 +26,16 @@
 
 #include <qmap.h>
 #include <qstring.h>
-#include <klistview.h>
+#include <k3listview.h>
 
 template<class T>
-class CustomListViewItem : public KListViewItem
+class CustomListViewItem : public K3ListViewItem
 {
   public:
-    CustomListViewItem( T data, KListView *parent ) :
-      KListViewItem( parent ), mData( data ) { updateItem(); };
-    CustomListViewItem( T data, KListView *parent, KListViewItem* after ) :
-      KListViewItem( parent, after ), mData( data ) { updateItem(); };
+    CustomListViewItem( T data, K3ListView *parent ) :
+      K3ListViewItem( parent ), mData( data ) { updateItem(); };
+    CustomListViewItem( T data, K3ListView *parent, K3ListViewItem* after ) :
+      K3ListViewItem( parent, after ), mData( data ) { updateItem(); };
     ~CustomListViewItem() {};
     
     void updateItem() {};

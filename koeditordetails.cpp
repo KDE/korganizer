@@ -94,14 +94,14 @@ void CustomListViewItem<KCal::Attendee *>::updateItem()
 }
 
 KOAttendeeListView::KOAttendeeListView ( QWidget *parent )
-  : KListView(parent)
+  : K3ListView(parent)
 {
   setAcceptDrops( true );
   setAllColumnsShowFocus( true );
   setSorting( -1 );
 }
 
-/** KOAttendeeListView is a child class of KListView  which supports
+/** KOAttendeeListView is a child class of K3ListView  which supports
  *  dropping of attendees (e.g. from kaddressbook) onto it. If an attendeee
  *  was dropped, the signal dropped(Attendee*)  is emitted. Valid drop classes
  *   are KVCardDrag and QTextDrag.
@@ -448,7 +448,7 @@ void KOEditorDetails::insertAttendee( Attendee *a, bool goodEmailAddress )
 {
   // lastItem() is O(n), but for n very small that should be fine
   AttendeeListItem *item = new AttendeeListItem( a, mListView,
-      static_cast<KListViewItem*>( mListView->lastItem() ) );
+      static_cast<K3ListViewItem*>( mListView->lastItem() ) );
   mListView->setSelected( item, true );
   if( mFreeBusy ) mFreeBusy->insertAttendee( a, goodEmailAddress );
 }

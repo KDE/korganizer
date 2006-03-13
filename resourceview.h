@@ -35,7 +35,7 @@ namespace KCal {
 class CalendarResources;
 }
 using namespace KCal;
-class KListView;
+class K3ListView;
 class ResourceView;
 class QPushButton;
 
@@ -61,7 +61,7 @@ class ResourceItem : public Q3CheckListItem
 {
   public:
     ResourceItem( KCal::ResourceCalendar *resource, ResourceView *view,
-                  KListView *parent );
+                  K3ListView *parent );
     ResourceItem( KCal::ResourceCalendar *resource, const QString& sub,
                   const QString& label, ResourceView *view,
                   ResourceItem* parent );
@@ -152,7 +152,7 @@ class ResourceView : public CalendarViewExtension
     void updateResourceList();
 
   private:
-    KListView *mListView;
+    K3ListView *mListView;
     KCal::CalendarResources *mCalendar;
     QPushButton *mAddButton;
     QPushButton *mDeleteButton;

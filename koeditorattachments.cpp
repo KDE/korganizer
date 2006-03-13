@@ -40,11 +40,11 @@
 #include <kdialogbase.h>
 #include <kglobal.h>
 #include <kiconloader.h>
-#include <kiconview.h>
+#include <k3iconview.h>
 #include <klineedit.h>
 #include <kmessagebox.h>
 #include <kmimetype.h>
-#include <kiconview.h>
+#include <k3iconview.h>
 #include <kmenu.h>
 #include <kprotocolinfo.h>
 #include <krecentdocument.h>
@@ -78,11 +78,11 @@
 #include <QDragEnterEvent>
 #include <krandom.h>
 
-class AttachmentIconItem : public KIconViewItem
+class AttachmentIconItem : public K3IconViewItem
 {
   public:
     AttachmentIconItem( KCal::Attachment*att, Q3IconView *parent ) :
-        KIconViewItem( parent )
+        K3IconViewItem( parent )
     {
       if ( att ) {
         mAttachment = new KCal::Attachment( *att );
@@ -270,10 +270,10 @@ void AttachmentEditDialog::urlChanged( const QString &url )
   mIcon->setPixmap( AttachmentIconItem::icon( mMimeType, url ) );
 }
 
-class AttachmentIconView : public KIconView
+class AttachmentIconView : public K3IconView
 {
 public:
-  AttachmentIconView( QWidget *parent ) : KIconView( parent ) {}
+  AttachmentIconView( QWidget *parent ) : K3IconView( parent ) {}
   
 protected:
   virtual Q3DragObject * dragObject ()
