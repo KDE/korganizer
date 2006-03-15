@@ -678,6 +678,8 @@ void KOAgendaItem::paintIcons( QPainter *p, int &x, int ft )
 
 void KOAgendaItem::paintEvent( QPaintEvent * )
 {
+  if ( !mIncidence )return;
+
   QPainter p( this );
   const int ft = 2; // frame thickness for layout, see paintFrame()
   const int margin = 1 + ft; // frame + space between frame and content
