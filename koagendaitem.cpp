@@ -685,6 +685,14 @@ void KOAgendaItem::paintIcons( QPainter *p, int &x, int ft )
 
 void KOAgendaItem::paintEvent( QPaintEvent * )
 {
+  //HACK
+  // to reproduce a crash:
+  // 1. start Kontact with the Calendar as the initial module
+  // 2. immediately select the summary (which must include appt and to-do)
+  // causes a crash for me every time in this method unless we make
+  // the following check
+  if ( !mIncidence )return;
+
   QPainter p( this );
   const int ft = 2; // frame thickness for layout, see paintFrame()
   const int margin = 1 + ft; // frame + space between frame and content
