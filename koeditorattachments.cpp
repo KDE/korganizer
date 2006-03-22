@@ -144,10 +144,10 @@ class AttachmentIconItem : public K3IconViewItem
                          bool local = false )
     {
       QString iconStr = mimeType->icon( uri, false );
-      return KGlobal::iconLoader()->loadIcon( iconStr, KIcon::Desktop, 0, 
-                                              KIcon::DefaultState | ( 
+      return KGlobal::iconLoader()->loadIcon( iconStr, K3Icon::Desktop, 0, 
+                                              K3Icon::DefaultState | ( 
                                                 ( uri.isNull() || local ) ? 0 : 
-                                                  KIcon::LinkOverlay) );
+                                                  K3Icon::LinkOverlay) );
     }
 
     void readAttachment()
@@ -298,7 +298,7 @@ protected:
     }
     QPixmap pixmap;
     if( urls.count() > 1 )
-        pixmap = KGlobal::iconLoader()->loadIcon( "kmultiple", KIcon::Desktop );
+        pixmap = KGlobal::iconLoader()->loadIcon( "kmultiple", K3Icon::Desktop );
     if( pixmap.isNull() )
         pixmap = static_cast<AttachmentIconItem *>( currentItem() )->icon();
     
