@@ -24,7 +24,7 @@
 #include <k3listview.h>
 #include <kiconloader.h>
 #include <ktoolbar.h>
-#include <ktoolbarbutton.h>
+
 #include <kdebug.h>
 #include <klocale.h>
 
