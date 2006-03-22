@@ -11,7 +11,7 @@ kde4_automoc(${kocorehelper_LIB_SRCS})
 
 kde4_add_library(kocorehelper SHARED ${kocorehelper_LIB_SRCS})
 
-target_link_libraries(kocorehelper  ${KDE4_KDEUI_LIBRARIES} )
+target_link_libraries(kocorehelper  ${KDE4_KDEUI_LIBS} )
 
 set_target_properties(kocorehelper PROPERTIES VERSION 1.0.0 SOVERSION 1 )
 install_targets(${LIB_INSTALL_DIR} kocorehelper )
@@ -35,7 +35,7 @@ kde4_add_ui3_files(korg_stdprinting_LIB_SRCS
 
 kde4_add_library(korg_stdprinting SHARED ${korg_stdprinting_LIB_SRCS})
 
-target_link_libraries(korg_stdprinting  ${KDE4_KDEUI_LIBRARIES} kocorehelper kdepim kcal kdeprint )
+target_link_libraries(korg_stdprinting  ${KDE4_KDEUI_LIBS} kocorehelper kdepim kcal kdeprint )
 
 set_target_properties(korg_stdprinting PROPERTIES VERSION 1.0.0 SOVERSION 1 )
 install_targets(${LIB_INSTALL_DIR} korg_stdprinting )
