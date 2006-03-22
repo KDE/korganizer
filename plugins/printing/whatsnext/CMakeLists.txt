@@ -15,7 +15,7 @@ kde4_add_plugin(korg_whatsnextprint WITH_PREFIX ${korg_whatsnextprint_PART_SRCS}
 
 kde4_install_libtool_file( ${PLUGIN_INSTALL_DIR} korg_whatsnextprint )
 
-target_link_libraries(korg_whatsnextprint  ${LIB_KDEUI}  korg_stdprinting )
+target_link_libraries(korg_whatsnextprint  ${KDE4_KDEUI_LIBRARIES}  korg_stdprinting )
 
 install_targets(${LIB_INSTALL_DIR}/kde4 korg_whatsnextprint )
 
