@@ -75,13 +75,13 @@ KOTodoListViewQuickSearch::KOTodoListViewQuickSearch( QWidget *parent,
 
   action->plug( this );
 
-  boxLayout()->setSpacing( KDialog::spacingHint() );
+  layout()->setSpacing( KDialog::spacingHint() );
 
   mSearchLabel = new QLabel( i18n("Sea&rch:"), this,
                               "kde toolbar widget" );
 
   mQuickSearchLine = new KOTodoListViewQuickSearchLine( this, listViews );
-  setStretchableWidget( mQuickSearchLine );
+  addWidget( mQuickSearchLine );
 
   mSearchLabel->setBuddy( mQuickSearchLine );
 
@@ -263,7 +263,7 @@ QSize KOTodoListViewQuickSearchContainer::sizeHint() const
 
 QSize KOTodoListViewQuickSearchContainer::minimumSizeHint() const
 {
-  return QSize( mQuickSearch->iconSize() +
+  return QSize( mQuickSearch->iconSize().width() + 
                 mQuickSearch->mQuickSearchLine->minimumSizeHint().width() +
                 3 * KDialog::spacingHint(),
                 mQuickSearch->minimumSizeHint().height() );

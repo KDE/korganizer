@@ -368,7 +368,7 @@ void ActionManager::initActions()
 //                     mCalendarView, SLOT( toggleHideCompleted() ),
 //                     mACollection, "hide_completed_todos" );
 
-  mFilterAction = new KSelectAction( i18n("F&ilter"), 0,
+  mFilterAction = new KSelectAction( i18n("F&ilter"),
                   mACollection, "filter_select" );
   mFilterAction->setEditable( false );
   connect( mFilterAction, SIGNAL( activated(int) ),
@@ -869,7 +869,7 @@ bool ActionManager::openURL( const KUrl &url,bool merge )
           config->setGroup( "General" );
           setTitle();
           kDebug(5850) << "-- Add recent URL: " << url.prettyURL() << endl;
-          if ( mRecent ) mRecent->addURL( url );
+          if ( mRecent ) mRecent->addUrl( url );
           showStatusMessageOpen( url, merge );
         }
       }
@@ -974,7 +974,7 @@ bool ActionManager::saveURL()
       mFile = mURL.path();
     }
     setTitle();
-    if ( mRecent ) mRecent->addURL( mURL );
+    if ( mRecent ) mRecent->addUrl( mURL );
   }
 
   if ( !mCalendarView->saveCalendar( mFile ) ) {
@@ -1094,7 +1094,7 @@ bool ActionManager::saveAsURL( const KUrl &url )
     KConfig *config = KOGlobals::self()->config();
     config->setGroup( "General" );
     setTitle();
-    if ( mRecent ) mRecent->addURL( mURL );
+    if ( mRecent ) mRecent->addUrl( mURL );
   } else {
     KMessageBox::sorry( dialogParent(), i18n("Unable to save calendar to the file %1.").arg( mFile ), i18n("Error") );
     kDebug(5850) << "ActionManager::saveAsURL() failed" << endl;
