@@ -15,7 +15,7 @@ kde4_add_plugin(korg_listprint WITH_PREFIX ${korg_listprint_PART_SRCS})
 
 kde4_install_libtool_file( ${PLUGIN_INSTALL_DIR} korg_listprint )
 
-target_link_libraries(korg_listprint  ${KDE4_KDECORE_LIBS} kdeui korg_stdprinting )
+target_link_libraries(korg_listprint  ${KDE4_KDEUI_LIBS} korg_stdprinting )
 
 install_targets(${LIB_INSTALL_DIR}/kde4 korg_listprint )
 

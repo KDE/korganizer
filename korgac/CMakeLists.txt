@@ -19,7 +19,7 @@ kde4_add_dcop_skels(korgac_SRCS alarmclientiface.h )
 
 kde4_add_executable(korgac ${korgac_SRCS})
 
-target_link_libraries(korgac  ${KDE4_KDECORE_LIBS} kdeui korganizer_eventviewer )
+target_link_libraries(korgac  ${KDE4_KDEUI_LIBS} korganizer_eventviewer )
 
 install_targets(/bin korgac )
 
@@ -34,7 +34,7 @@ if(KDE4_BUILD_TESTS)
 
 kde4_add_executable(testalarmdlg ${testalarmdlg_SRCS})
 
-target_link_libraries(testalarmdlg  ${KDE4_KDECORE_LIBS} kdeui kcal korganizer_eventviewer )
+target_link_libraries(testalarmdlg  ${KDE4_KDEUI_LIBS} kcal korganizer_eventviewer )
 
 endif(KDE4_BUILD_TESTS)
 

@@ -173,7 +173,7 @@ kde4_add_dcop_stubs(korganizer_eventviewer_LIB_SRCS ${CMAKE_SOURCE_DIR}/kmail/km
 
 kde4_add_library(korganizer_eventviewer SHARED ${korganizer_eventviewer_LIB_SRCS})
 
-target_link_libraries(korganizer_eventviewer  ${KDE4_KDECORE_LIBS} kparts kcal )
+target_link_libraries(korganizer_eventviewer  ${KDE4_KPARTS_LIBS} kcal )
 
 set_target_properties(korganizer_eventviewer PROPERTIES VERSION 1.0.0 SOVERSION 1 )
 install_targets(${LIB_INSTALL_DIR} korganizer_eventviewer )
@@ -187,7 +187,7 @@ kde4_automoc(${korganizer_calendar_LIB_SRCS})
 
 kde4_add_library(korganizer_calendar SHARED ${korganizer_calendar_LIB_SRCS})
 
-target_link_libraries(korganizer_calendar  ${KDE4_KDECORE_LIBS} kparts kdepim kcal )
+target_link_libraries(korganizer_calendar  ${KDE4_KPARTS_LIBS} kdepim kcal )
 
 set_target_properties(korganizer_calendar PROPERTIES VERSION 1.0.0 SOVERSION 1 )
 install_targets(${LIB_INSTALL_DIR} korganizer_calendar )
