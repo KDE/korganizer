@@ -502,7 +502,7 @@ void KOEditorDetails::readEvent( Incidence *event )
       delete mOrganizerCombo;
       mOrganizerCombo = 0;
     }
-    mOrganizerLabel->setText( i18n( "Organizer: %1" ).arg( event->organizer().fullName() ) );
+    mOrganizerLabel->setText( i18n( "Organizer: %1", event->organizer().fullName() ) );
   }
 
   // Reinstate free/busy view updates
@@ -522,7 +522,7 @@ void KOEditorDetails::writeEvent(Incidence *event)
     bool skip = false;
     if ( attendee->email().endsWith( "example.net" ) ) {
       if ( KMessageBox::warningYesNo( this, i18n("%1 does not look like a valid email address. "
-              "Are you sure you want to invite this participant?").arg( attendee->email() ),
+              "Are you sure you want to invite this participant?", attendee->email() ),
             i18n("Invalid email address") ) != KMessageBox::Yes ) {
         skip = true;
       }

@@ -434,7 +434,7 @@ bool CalendarView::openCalendar(const QString& filename, bool merge)
     // have become partially populated.  Clear it out.
     if ( !merge ) mCalendar->close();
 
-    KMessageBox::error(this,i18n("Could not load calendar '%1'.").arg(filename));
+    KMessageBox::error(this,i18n("Could not load calendar '%1'.", filename));
 
     return false;
   }
@@ -708,8 +708,8 @@ void CalendarView::incidenceChanged( Incidence *oldIncidence,
       Todo *todo = static_cast<Todo *>(newIncidence);
       if ( todo->isCompleted() ) {
         QString timeStr = KGlobal::locale()->formatTime( QTime::currentTime() );
-        QString description = i18n( "Todo completed: %1 (%2)" ).arg(
-          newIncidence->summary() ).arg( timeStr );
+        QString description = i18n( "Todo completed: %1 (%2)" , 
+          newIncidence->summary(), timeStr );
 
         Journal::List journals = calendar()->journals( QDate::currentDate() );
         Journal *journal;
@@ -719,7 +719,7 @@ void CalendarView::incidenceChanged( Incidence *oldIncidence,
           journal->setDtStart( QDateTime::currentDateTime() );
 
           QString dateStr = KGlobal::locale()->formatDate( QDate::currentDate() );
-          journal->setSummary( i18n("Journal of %1").arg( dateStr ) );
+          journal->setSummary( i18n("Journal of %1", dateStr ) );
           journal->setDescription( description );
 
           if ( !mChanger->addIncidence( journal ) ) {
@@ -774,7 +774,7 @@ void CalendarView::checkForFilteredChange( Incidence *incidence )
     // user so that he isn't surprised if his new event doesn't show up
     KMessageBox::information( this, i18n("The item \"%1\" is filtered by "
                  "your current filter rules, so it will be hidden and not "
-                 "appear in the view.").arg( incidence->summary() ),
+                 "appear in the view.", incidence->summary() ),
                  i18n("Filter Applied"), "ChangedIncidenceFiltered" );
   }
 }
@@ -831,7 +831,7 @@ int CalendarView::msgItemDelete( Incidence *incidence )
 {
   return KMessageBox::warningContinueCancel(
     this,
-    i18n("The item \"%1\" will be permanently deleted.").arg( incidence->summary() ),
+    i18n("The item \"%1\" will be permanently deleted.", incidence->summary() ),
     i18n("KOrganizer Confirmation"),
     KGuiItem( i18n("&Delete"),"editdelete" ),
     QString(),
@@ -1352,7 +1352,7 @@ void CalendarView::schedule_publish(Incidence *incidence)
       KMessageBox::information( this, i18n("The item information was successfully sent."),
                                 i18n("Publishing"), "IncidencePublishSuccess" );
     } else {
-      KMessageBox::error( this, i18n("Unable to publish the item '%1'").arg( incidence->summary() ) );
+      KMessageBox::error( this, i18n("Unable to publish the item '%1'", incidence->summary() ) );
     }
   }
   delete publishdlg;
@@ -1452,17 +1452,17 @@ void CalendarView::schedule(Scheduler::Method method, Incidence *incidence)
   KCal::MailScheduler scheduler( mCalendar );
   if ( !scheduler.performTransaction( incidence, method ) ) {
     KMessageBox::information( this, i18n("The groupware message for item '%1'"
-                                "was successfully sent.\nMethod: %2")
-                                .arg( incidence->summary() )
-                                .arg( Scheduler::methodName( method ) ),
+                                "was successfully sent.\nMethod: %2",
+                                  incidence->summary() ,
+                                  Scheduler::methodName( method ) ),
                               i18n("Sending Free/Busy"),
                               "FreeBusyPublishSuccess" );
   } else {
-    KMessageBox::error( this, i18n("Groupware message sending failed. "
+    KMessageBox::error( this, i18nc("Groupware message sending failed. "
                         "%2 is request/reply/add/cancel/counter/etc.",
-                        "Unable to send the item '%1'.\nMethod: %2")
-                        .arg( incidence->summary() )
-                        .arg( Scheduler::methodName( method ) ) );
+                        "Unable to send the item '%1'.\nMethod: %2",
+                          incidence->summary() ,
+                          Scheduler::methodName( method ) ) );
   }
 }
 
@@ -1999,7 +1999,7 @@ void CalendarView::deleteTodoIncidence ( Todo *todo, bool force )
                                      "Do you want to delete just this item and "
                                      "make all its sub-to-dos independent, or "
                                      "delete the to-do with all its sub-to-dos?"
-                                ).arg( todo->summary() ),
+                               , todo->summary() ),
                                 i18n("KOrganizer Confirmation"),
                                 i18n("Delete Only This"),
                                 i18n("Delete All"));
@@ -2030,8 +2030,8 @@ void CalendarView::deleteIncidence(Incidence *incidence, bool force)
     if ( !force ) {
       KMessageBox::information( this, i18n("The item \"%1\" is marked read-only "
                                 "and cannot be deleted; it probably belongs to "
-                                "a read-only calendar resource.")
-                                .arg(incidence->summary()),
+                                "a read-only calendar resource.",
+                                 incidence->summary()),
                                 i18n("Removing not possible"),
                                 "deleteReadOnlyIncidence" );
     }
@@ -2062,7 +2062,7 @@ void CalendarView::deleteIncidence(Incidence *incidence, bool force)
           this,
           i18n("The calendar item \"%1\" recurs over multiple dates; "
                "are you sure you want to delete it "
-               "and all its recurrences?").arg( incidence->summary() ),
+               "and all its recurrences?", incidence->summary() ),
           i18n("KOrganizer Confirmation"),
           i18n("Delete All") );
       } else {
@@ -2071,9 +2071,9 @@ void CalendarView::deleteIncidence(Incidence *incidence, bool force)
           QMessageBox::Warning,
           i18n("The calendar item \"%1\" recurs over multiple dates. "
                "Do you want to delete only the current one on %2, only all "
-               "future recurrences, or all its recurrences?")
-          .arg( incidence->summary() )
-          .arg( KGlobal::locale()->formatDate( itemDate ) ),
+               "future recurrences, or all its recurrences?",
+            incidence->summary() ,
+            KGlobal::locale()->formatDate( itemDate ) ),
           i18n("KOrganizer Confirmation"),
           i18n("Delete C&urrent"),
           i18n("Delete &Future"),
@@ -2241,8 +2241,8 @@ void CalendarView::updateCategories()
 void CalendarView::addIncidenceOn( Incidence *incadd, const QDate &dt )
 {
   if ( !incadd || !mChanger ) {
-    KMessageBox::sorry(this, i18n("Unable to copy the item to %1.")
-                       .arg( dt.toString() ), i18n("Copying Failed") );
+    KMessageBox::sorry(this, i18n("Unable to copy the item to %1.",
+                         dt.toString() ), i18n("Copying Failed") );
     return;
   }
   Incidence *incidence = mCalendar->incidence( incadd->uid() );
@@ -2283,8 +2283,8 @@ void CalendarView::addIncidenceOn( Incidence *incadd, const QDate &dt )
 void CalendarView::moveIncidenceTo( Incidence *incmove, const QDate &dt )
 {
   if ( !incmove || !mChanger ) {
-    KMessageBox::sorry( this, i18n("Unable to move the item to  %1.")
-                        .arg( dt.toString() ), i18n("Moving Failed") );
+    KMessageBox::sorry( this, i18n("Unable to move the item to  %1.",
+                          dt.toString() ), i18n("Moving Failed") );
     return;
   }
   Incidence *incidence = mCalendar->incidence( incmove->uid() );

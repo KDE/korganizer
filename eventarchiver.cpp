@@ -101,8 +101,8 @@ void EventArchiver::run( Calendar* calendar, const QDate& limitDate, QWidget* wi
   kDebug(5850) << "EventArchiver: archiving incidences before " << limitDate << " -> " << incidences.count() << " incidences found." << endl;
   if ( incidences.isEmpty() ) {
     if ( withGUI && errorIfNone )
-      KMessageBox::information( widget, i18n("There are no items before %1")
-                          .arg(KGlobal::locale()->formatDate(limitDate)),
+      KMessageBox::information( widget, i18n("There are no items before %1",
+                           KGlobal::locale()->formatDate(limitDate)),
                           "ArchiverNoIncidences" );
     return;
   }
@@ -129,8 +129,8 @@ void EventArchiver::deleteIncidences( Calendar* calendar, const QDate& limitDate
   if ( withGUI ) {
     int result = KMessageBox::warningContinueCancelList(
       widget, i18n("Delete all items before %1 without saving?\n"
-                 "The following items will be deleted:")
-      .arg(KGlobal::locale()->formatDate(limitDate)), incidenceStrs,
+                 "The following items will be deleted:",
+       KGlobal::locale()->formatDate(limitDate)), incidenceStrs,
 		 i18n("Delete Old Items"),KStdGuiItem::del());
     if (result != KMessageBox::Continue)
       return;
@@ -199,7 +199,7 @@ void EventArchiver::archiveIncidences( Calendar* calendar, const QDate& /*limitD
 
   // Save archive calendar
   if ( !archiveStore.save() ) {
-    KMessageBox::error(widget,i18n("Cannot write archive file %1.").arg( archiveStore.fileName() ));
+    KMessageBox::error(widget,i18n("Cannot write archive file %1.", archiveStore.fileName() ));
     return;
   }
 

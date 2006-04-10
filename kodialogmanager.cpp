@@ -112,9 +112,9 @@ KODialogManager::~KODialogManager()
 
 void KODialogManager::errorSaveIncidence( QWidget *parent, Incidence *incidence )
 {
-  KMessageBox::sorry( parent, i18n("Unable to save %1 \"%2\".")
-                      .arg( i18n( incidence->type() ) )
-                      .arg( incidence->summary() ) );
+  KMessageBox::sorry( parent, i18n("Unable to save %1 \"%2\".",
+                        i18n( incidence->type() ) ,
+                        incidence->summary() ) );
 }
 
 void KODialogManager::showOptionsDialog()

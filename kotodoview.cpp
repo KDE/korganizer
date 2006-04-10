@@ -467,7 +467,7 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent)
 
 #warning "Implement the popup menus as KSelectActions, once it's save enough to use that class!"
   mPriorityPopupMenu = new QMenu( this );
-  mPriority[ mPriorityPopupMenu->addAction( i18n("Unspecified priority", "unspecified") ) ] = 0;
+  mPriority[ mPriorityPopupMenu->addAction( i18nc("Unspecified priority", "unspecified") ) ] = 0;
   mPriority[ mPriorityPopupMenu->addAction( i18n( "1 (highest)") ) ] = 1;
   mPriority[ mPriorityPopupMenu->addAction( i18n( "2" ) ) ] = 2;
   mPriority[ mPriorityPopupMenu->addAction( i18n( "3" ) ) ] = 3;
@@ -543,7 +543,7 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent)
   action = mItemPopupMenu->addSeparator();
 
 // #endif
-  mItemPopupMenu->addAction(i18n("delete completed to-dos","Pur&ge Completed"),
+  mItemPopupMenu->addAction(i18nc("delete completed to-dos","Pur&ge Completed"),
                              this, SLOT( purgeCompleted() ) );
 
   connect( mMovePopupMenu, SIGNAL( dateChanged( QDate ) ),
@@ -554,7 +554,7 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent)
   mPopupMenu = new QMenu(this);
   mPopupMenu->addAction(KOGlobals::self()->smallIconSet("todo"), i18n("&New To-do..."), this,
                          SLOT (newTodo()));
-  mPopupMenu->addAction(i18n("delete completed to-dos","&Purge Completed"),
+  mPopupMenu->addAction(i18nc("delete completed to-dos","&Purge Completed"),
                          this, SLOT(purgeCompleted()));
 
   mDocPrefs = new DocPrefs( objectName() );

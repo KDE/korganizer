@@ -190,7 +190,7 @@ void FilterEdit::filterSelected(CalFilter *filter)
 }
 
 void FilterEdit::bNewPressed() {
-  CalFilter *newFilter = new CalFilter( i18n("New Filter %1").arg(mFilters->count()) );
+  CalFilter *newFilter = new CalFilter( i18n("New Filter %1", mFilters->count()) );
   mFilters->append( newFilter );
   updateFilterList();
   mRulesList->setSelected(mRulesList->count()-1, true);

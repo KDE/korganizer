@@ -374,7 +374,7 @@ void KOEditorGeneralEvent::setDuration()
     if (!mTimeAssociateButton->isChecked()) {
       int daydiff = mCurrStartDateTime.date().daysTo(mCurrEndDateTime.date()) + 1;
       tmpStr = i18n("Duration: ");
-      tmpStr.append(i18n("1 Day","%n Days",daydiff));
+      tmpStr.append(i18np("1 Day","%n Days",daydiff));
     } else {
       hourdiff = mCurrStartDateTime.date().daysTo(mCurrEndDateTime.date()) * 24;
       hourdiff += mCurrEndDateTime.time().hour() -
@@ -389,14 +389,14 @@ void KOEditorGeneralEvent::setDuration()
       if (hourdiff || minutediff){
         tmpStr = i18n("Duration: ");
         if (hourdiff){
-          catStr = i18n("1 hour","%n hours",hourdiff);
+          catStr = i18np("1 hour","%n hours",hourdiff);
           tmpStr.append(catStr);
         }
         if (hourdiff && minutediff){
           tmpStr += i18n(", ");
         }
         if (minutediff){
-          catStr = i18n("1 minute","%n minutes",minutediff);
+          catStr = i18np("1 minute","%n minutes",minutediff);
           tmpStr += catStr;
         }
       } else tmpStr = "";
@@ -421,8 +421,8 @@ void KOEditorGeneralEvent::emitDateTimeStr()
     to = l->formatDateTime(mCurrEndDateTime);
   }
 
-  QString str = i18n("From: %1   To: %2   %3").arg(from).arg(to)
-                .arg(mDurationLabel->text());
+  QString str = i18n("From: %1   To: %2   %3", from, to,
+                 mDurationLabel->text());
 
   emit dateTimeStrChanged(str);
 }
@@ -434,30 +434,30 @@ bool KOEditorGeneralEvent::validateInput()
   if (mTimeAssociateButton->isChecked()) {
     if (!mStartTimeEdit->inputIsValid()) {
       KMessageBox::sorry( 0,
-          i18n("Please specify a valid start time, for example '%1'.")
-          .arg( KGlobal::locale()->formatTime( QTime::currentTime() ) ) );
+          i18n("Please specify a valid start time, for example '%1'.",
+            KGlobal::locale()->formatTime( QTime::currentTime() ) ) );
       return false;
     }
 
     if (!mEndTimeEdit->inputIsValid()) {
       KMessageBox::sorry( 0,
-          i18n("Please specify a valid end time, for example '%1'.")
-          .arg( KGlobal::locale()->formatTime( QTime::currentTime() ) ) );
+          i18n("Please specify a valid end time, for example '%1'.",
+            KGlobal::locale()->formatTime( QTime::currentTime() ) ) );
       return false;
     }
   }
 
   if (!mStartDateEdit->date().isValid()) {
     KMessageBox::sorry( 0,
-        i18n("Please specify a valid start date, for example '%1'.")
-        .arg( KGlobal::locale()->formatDate( QDate::currentDate() ) ) );
+        i18n("Please specify a valid start date, for example '%1'.",
+          KGlobal::locale()->formatDate( QDate::currentDate() ) ) );
     return false;
   }
 
   if (!mEndDateEdit->date().isValid()) {
     KMessageBox::sorry( 0,
-        i18n("Please specify a valid end date, for example '%1'.")
-        .arg( KGlobal::locale()->formatDate( QDate::currentDate() ) ) );
+        i18n("Please specify a valid end date, for example '%1'.",
+          KGlobal::locale()->formatDate( QDate::currentDate() ) ) );
     return false;
   }
 

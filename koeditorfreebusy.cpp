@@ -481,8 +481,8 @@ void KOEditorFreeBusy::slotPickDate()
       emit dateTimesChanged( start, end );
       slotUpdateGanttView( start, end );
       KMessageBox::information( this,
-          i18n( "The meeting has been moved to\nStart: %1\nEnd: %2." )
-          .arg( start.toString() ).arg( end.toString() ), QString(),
+          i18n( "The meeting has been moved to\nStart: %1\nEnd: %2." ,
+            start.toString(), end.toString() ), QString(),
           "MeetingMovedFreeBusy" );
     }
   } else
@@ -622,8 +622,8 @@ void KOEditorFreeBusy::updateStatusSummary()
     mStatusSummaryLabel->show();
     mStatusSummaryLabel->setText(
         i18n( "Of the %1 participants, %2 have accepted, %3"
-              " have tentatively accepted, and %4 have declined.")
-        .arg( total ).arg( accepted ).arg( tentative ).arg( declined ) );
+              " have tentatively accepted, and %4 have declined.",
+          total, accepted, tentative, declined ) );
   } else {
     mStatusSummaryLabel->hide();
   }

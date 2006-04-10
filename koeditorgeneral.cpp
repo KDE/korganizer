@@ -298,7 +298,7 @@ void KOEditorGeneral::updateAlarmWidgets()
     mAlarmButton->setChecked( false );
   } else if ( mAlarmList.count() > 1 ) {
     mAlarmStack->setCurrentIndex( AdvancedAlarmLabel );
-    mAlarmInfoLabel->setText( i18n("1 reminder configured",
+    mAlarmInfoLabel->setText( i18np("1 reminder configured",
                                    "%n reminders configured",
                                    mAlarmList.count() ) );
   } else {

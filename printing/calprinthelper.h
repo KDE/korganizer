@@ -34,6 +34,8 @@
 #include <libkcal/todo.h>
 #include <kdepimmacros.h>
 
+class KLocalizedString;
+
 class PrintCellItem;
 
 namespace KCal {
@@ -302,7 +304,7 @@ class KDE_EXPORT CalPrintHelper
     */
     void drawJournal( Journal * journal, QPainter &p, int x, int &y,
                       int width, int pageHeight );
-    void drawJournalField( QPainter &p, QString field, QString text,
+    void drawJournalField( QPainter &p, KLocalizedString field, QString text,
                            int x, int &y, int width, int pageHeight );
 
     void drawSplitHeaderRight( QPainter &p, const QDate &fd, const QDate &td,

@@ -483,14 +483,14 @@ class KOPrefsDialogViews : public KPrefsModule
       KHBox *hourSizeBox = new KHBox( agendaGroup );
       KPrefsWidInt *hourSize =
           addWidInt( KOPrefs::instance()->hourSizeItem(), hourSizeBox );
-      hourSize->spinBox()->setSuffix(i18n("suffix in the hour size spin box", " pixel"));
+      hourSize->spinBox()->setSuffix(i18nc("suffix in the hour size spin box", " pixel"));
       // horizontal spacer:
       new QWidget( hourSizeBox );
 
       KHBox *nextDaysBox = new KHBox( agendaGroup );
       KPrefsWidInt *nextDays =
         addWidInt( KOPrefs::instance()->nextXDaysItem(), nextDaysBox );
-      nextDays->spinBox()->setSuffix(i18n("suffix in the N days spin box", " days"));
+      nextDays->spinBox()->setSuffix(i18nc("suffix in the N days spin box", " days"));
       new QWidget( nextDaysBox );
 
       KPrefsWidBool *marcusBainsEnabled =

@@ -56,8 +56,8 @@ QString Datenums::shortText(const QDate &date)
         return QString::number( KOGlobals::self()->calendarSystem()->daysInYear(date) - doy );
         break;
     case 2: // both day of year and days till end of year
-        return i18n("dayOfYear / daysTillEndOfYear", "%1 / %2").arg( doy )
-               .arg(KOGlobals::self()->calendarSystem()->daysInYear(date) - doy);
+        return i18nc("dayOfYear / daysTillEndOfYear", "%1 / %2", doy ,
+                KOGlobals::self()->calendarSystem()->daysInYear(date) - doy);
         break;
     case 0: // only day of year
     default:

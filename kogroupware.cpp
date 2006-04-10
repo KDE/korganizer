@@ -140,7 +140,7 @@ void KOGroupware::incomingDirChanged( const QString& path )
   if ( !message ) {
     QString errorMessage;
     if (mFormat.exception())
-      errorMessage = i18n( "Error message: %1" ).arg( mFormat.exception()->message() );
+      errorMessage = i18n( "Error message: %1", mFormat.exception()->message() );
     kDebug(5850) << "MailScheduler::retrieveTransactions() Error parsing "
                   << errorMessage << endl;
     KMessageBox::detailedError( mView,
@@ -229,8 +229,8 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
       else if( incidence->type() == "Journal" ) type = i18n("journal entry");
       else type = incidence->type();
       QString txt = i18n( "This %1 includes other people. "
-          "Should email be sent out to the attendees?" )
-        .arg( type );
+          "Should email be sent out to the attendees?" ,
+          type );
       rc = KMessageBox::questionYesNoCancel( parent, txt,
           i18n("Group Scheduling Email"), i18n("Send Email"), i18n("Do Not Send") );
     } else {

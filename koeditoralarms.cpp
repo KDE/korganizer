@@ -91,23 +91,23 @@ void AlarmListViewItem::construct()
     setText( ColAlarmType, type );
 
     // Alarm offset:
-    QString offsetstr;
+    KLocalizedString offsetstr;
     int offset = 0;
     if ( mAlarm->hasStartOffset() ) {
       offset = mAlarm->startOffset().asSeconds();
       if ( offset < 0 ) {
-        offsetstr = i18n("N days/hours/minutes before/after the start/end", "%1 before the start");
+        offsetstr = ki18nc("N days/hours/minutes before/after the start/end", "%1 before the start");
         offset = -offset;
       } else {
-        offsetstr = i18n("N days/hours/minutes before/after the start/end", "%1 after the start");
+        offsetstr = ki18nc("N days/hours/minutes before/after the start/end", "%1 after the start");
       }
     } else if ( mAlarm->hasEndOffset() ) {
       offset = mAlarm->endOffset().asSeconds();
       if ( offset < 0 ) {
-        offsetstr = i18n("N days/hours/minutes before/after the start/end", "%1 before the end");
+        offsetstr = ki18nc("N days/hours/minutes before/after the start/end", "%1 before the end");
         offset = -offset;
       } else {
-        offsetstr = i18n("N days/hours/minutes before/after the start/end", "%1 after the end");
+        offsetstr = ki18nc("N days/hours/minutes before/after the start/end", "%1 after the end");
       }
     }
 
@@ -116,15 +116,15 @@ void AlarmListViewItem::construct()
 
     if ( offset % (24*60) == 0 && offset>0 ) { // divides evenly into days?
       useoffset = offset / (24*60);
-      offsetstr = offsetstr.arg( i18n("1 day", "%n days", useoffset ) );
+      offsetstr = offsetstr.subs( i18np("1 day", "%n days", useoffset ) );
     } else if (offset % 60 == 0 && offset>0 ) { // divides evenly into hours?
       useoffset = offset / 60;
-      offsetstr = offsetstr.arg( i18n("1 hour", "%n hours", useoffset ) );
+      offsetstr = offsetstr.subs( i18np("1 hour", "%n hours", useoffset ) );
     } else {
       useoffset = offset;
-      offsetstr = offsetstr.arg( i18n("1 minute", "%n minutes", useoffset ) );
+      offsetstr = offsetstr.subs( i18np("1 minute", "%n minutes", useoffset ) );
     }
-    setText( ColAlarmOffset, offsetstr );
+    setText( ColAlarmOffset, offsetstr.toString() );
 
     // Alarm repeat
     if ( mAlarm->repeatCount()>0 ) {

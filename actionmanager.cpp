@@ -271,7 +271,7 @@ void ActionManager::initActions()
 
   new KAction( i18n("Archive O&ld Entries..."), 0, this, SLOT( file_archive() ),
                     mACollection, "file_archive" );
-  new KAction( i18n("delete completed to-dos", "Pur&ge Completed To-dos"), 0,
+  new KAction( i18nc("delete completed to-dos", "Pur&ge Completed To-dos"), 0,
                mCalendarView, SLOT( purgeCompleted() ), mACollection,
                "purge_completed" );
 
@@ -337,7 +337,7 @@ void ActionManager::initActions()
                     mACollection, "view_day" );
   mNextXDays = new KAction( "", "xdays", 0, mCalendarView->viewManager(),
                     SLOT( showNextXView() ), mACollection, "view_nextx" );
-  mNextXDays->setText( i18n( "&Next Day", "Ne&xt %n Days",
+  mNextXDays->setText( i18np( "&Next Day", "Ne&xt %n Days",
                              KOPrefs::instance()->mNextXDays ) );
   new KAction( i18n("W&ork Week"), "5days", 0,
                     mCalendarView->viewManager(), SLOT( showWorkWeekView() ),
@@ -505,7 +505,7 @@ void ActionManager::initActions()
   connect( mCalendarView,SIGNAL( groupEventsSelected( bool ) ),
            action,SLOT( setEnabled( bool ) ) );
 
-  action = new KAction( i18n("counter proposal","Request Chan&ge"),0,
+  action = new KAction( i18nc("counter proposal","Request Chan&ge"),0,
                         mCalendarView,SLOT( schedule_counter() ),
                         mACollection, "schedule_counter" );
   action->setEnabled( false );
@@ -841,8 +841,8 @@ bool ActionManager::openURL( const KUrl &url,bool merge )
     mURL = url;
     mFile = url.path();
     if ( !KStandardDirs::exists( mFile ) ) {
-      mMainWindow->showStatusMessage( i18n("New calendar '%1'.")
-                                      .arg( url.prettyURL() ) );
+      mMainWindow->showStatusMessage( i18n("New calendar '%1'.",
+                                        url.prettyURL() ) );
       mCalendarView->setModified();
     } else {
       bool success = mCalendarView->openCalendar( mFile, merge );
@@ -876,7 +876,7 @@ bool ActionManager::openURL( const KUrl &url,bool merge )
       return success;
     } else {
       QString msg;
-      msg = i18n("Cannot download calendar from '%1'.").arg( url.prettyURL() );
+      msg = i18n("Cannot download calendar from '%1'.", url.prettyURL() );
       KMessageBox::error( dialogParent(), msg );
       return false;
     }
@@ -914,16 +914,16 @@ bool ActionManager::addResource( const KUrl &mUrl )
     resource->setTimeZoneId( KOPrefs::instance()->mTimeZoneId );
     resource->setResourceName( name );
     manager->add( resource );
-    mMainWindow->showStatusMessage( i18n( "Added calendar resource for URL '%1'." )
-               .arg( name ) );
+    mMainWindow->showStatusMessage( i18n( "Added calendar resource for URL '%1'." ,
+                 name ) );
     // we have to call resourceAdded manually, because for in-process changes
     // the dcop signals are not connected, so the resource's signals would not
     // be connected otherwise
     if ( mCalendarResources )
       mCalendarResources->resourceAdded( resource );
   } else {
-    QString msg = i18n("Unable to create calendar resource '%1'.")
-                      .arg( name );
+    QString msg = i18n("Unable to create calendar resource '%1'.",
+                        name );
     KMessageBox::error( dialogParent(), msg );
   }
   return true;
@@ -933,11 +933,11 @@ bool ActionManager::addResource( const KUrl &mUrl )
 void ActionManager::showStatusMessageOpen( const KUrl &url, bool merge )
 {
   if ( merge ) {
-    mMainWindow->showStatusMessage( i18n("Merged calendar '%1'.")
-                                    .arg( url.prettyURL() ) );
+    mMainWindow->showStatusMessage( i18n("Merged calendar '%1'.",
+                                      url.prettyURL() ) );
   } else {
-    mMainWindow->showStatusMessage( i18n("Opened calendar '%1'.")
-                                    .arg( url.prettyURL() ) );
+    mMainWindow->showStatusMessage( i18n("Opened calendar '%1'.",
+                                      url.prettyURL() ) );
   }
 }
 
@@ -987,8 +987,8 @@ bool ActionManager::saveURL()
 
   if ( !mURL.isLocalFile() ) {
     if ( !KIO::NetAccess::upload( mFile, mURL, view() ) ) {
-      QString msg = i18n("Cannot upload calendar to '%1'")
-                    .arg( mURL.prettyURL() );
+      QString msg = i18n("Cannot upload calendar to '%1'",
+                      mURL.prettyURL() );
       KMessageBox::error( dialogParent() ,msg );
       return false;
     }
@@ -1000,7 +1000,7 @@ bool ActionManager::saveURL()
     mAutoSaveTimer->start( 1000*60*KOPrefs::instance()->mAutoSaveInterval );
   }
 
-  mMainWindow->showStatusMessage( i18n("Saved calendar '%1'.").arg( mURL.prettyURL() ) );
+  mMainWindow->showStatusMessage( i18n("Saved calendar '%1'.", mURL.prettyURL() ) );
 
   return true;
 }
@@ -1096,7 +1096,7 @@ bool ActionManager::saveAsURL( const KUrl &url )
     setTitle();
     if ( mRecent ) mRecent->addUrl( mURL );
   } else {
-    KMessageBox::sorry( dialogParent(), i18n("Unable to save calendar to the file %1.").arg( mFile ), i18n("Error") );
+    KMessageBox::sorry( dialogParent(), i18n("Unable to save calendar to the file %1.", mFile ), i18n("Error") );
     kDebug(5850) << "ActionManager::saveAsURL() failed" << endl;
     mURL = URLOrig;
     mFile = fileOrig;
@@ -1224,7 +1224,7 @@ void ActionManager::updateConfig()
     }
   }
   if ( !KOPrefs::instance()->mAutoSave ) mAutoSaveTimer->stop();
-  mNextXDays->setText( i18n( "&Next Day", "&Next %n Days",
+  mNextXDays->setText( i18np( "&Next Day", "&Next %n Days",
                              KOPrefs::instance()->mNextXDays ) );
 
   KOCore::self()->reloadPlugins();
@@ -1597,7 +1597,7 @@ void ActionManager::updateUndoAction( const QString &text )
   } else {
     mUndoAction->setEnabled( true );
     if ( text.isEmpty() ) mUndoAction->setText( i18n("Undo") );
-    else mUndoAction->setText( i18n("Undo (%1)").arg( text ) );
+    else mUndoAction->setText( i18n("Undo (%1)", text ) );
   }
 }
 
@@ -1609,7 +1609,7 @@ void ActionManager::updateRedoAction( const QString &text )
   } else {
     mRedoAction->setEnabled( true );
     if ( text.isEmpty() ) mRedoAction->setText( i18n("Redo") );
-    else mRedoAction->setText( i18n( "Redo (%1)" ).arg( text ) );
+    else mRedoAction->setText( i18n( "Redo (%1)", text ) );
   }
 }
 
@@ -1688,7 +1688,7 @@ bool ActionManager::saveResourceCalendar()
       int result = KMessageBox::warningContinueCancel( view(),
         i18n( "Saving of '%1' failed. Check that the resource is "
              "properly configured.\nIgnore problem and continue without "
-             "saving or cancel save?" ).arg( (*it)->resourceName() ),
+             "saving or cancel save?", (*it)->resourceName() ),
         i18n("Save Error"), KStdGuiItem::dontSave() );
       if ( result == KMessageBox::Cancel ) return false;
     }
@@ -1700,7 +1700,7 @@ void ActionManager::importCalendar( const KUrl &url )
 {
   if ( !url.isValid() ) {
     KMessageBox::error( dialogParent(),
-                        i18n("URL '%1' is invalid.").arg( url.prettyURL() ) );
+                        i18n("URL '%1' is invalid.", url.prettyURL() ) );
     return;
   }
 

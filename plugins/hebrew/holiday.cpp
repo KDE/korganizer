@@ -58,7 +58,7 @@ QStringList
             case 1:
               if (shabbat_p)
                 holidays <<
-                  i18n
+                  i18nc
                   ("These are Jewish holidays and mostly do not have translations. They may have different spellings in your language; otherwise, just translate the sound to your characters",
                    "Sh. HaHodesh");
               break;

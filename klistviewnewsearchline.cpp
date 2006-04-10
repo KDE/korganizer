@@ -311,7 +311,7 @@ void KListViewNewSearchLine::contextMenuEvent( QContextMenuEvent *e )
           for(int j = 0; j < header->mapToIndex(i); j++)
             if(d->listViews.first()->columnWidth(header->mapToSection(j))>0)
               visiblePosition++;
-          columnText = i18n("Column number %1","Column No. %1").arg(visiblePosition);
+          columnText = i18nc("Column number %1","Column No. %1", visiblePosition);
         }
         subMenu->insertItem(columnText, visibleColumns);
         if(d->searchColumns.isEmpty() || d->searchColumns.find(i) != d->searchColumns.end())

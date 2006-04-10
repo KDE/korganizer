@@ -202,13 +202,13 @@ void KOIncidenceEditor::slotLoadTemplate( const QString& templateName )
       templateName );
 
   if ( fileName.isEmpty() ) {
-    KMessageBox::error( this, i18n("Unable to find template '%1'.")
-        .arg( fileName ) );
+    KMessageBox::error( this, i18n("Unable to find template '%1'.",
+          fileName ) );
   } else {
     ICalFormat format;
     if ( !format.load( &cal, fileName ) ) {
-      KMessageBox::error( this, i18n("Error loading template file '%1'.")
-          .arg( fileName ) );
+      KMessageBox::error( this, i18n("Error loading template file '%1'.",
+            fileName ) );
       return;
     }
   }

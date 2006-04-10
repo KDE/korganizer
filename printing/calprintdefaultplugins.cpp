@@ -325,10 +325,10 @@ void CalPrintWeek::print( QPainter &p, int width, int height )
         QString line1( local->formatDate( curWeek.addDays( -6 ) ) );
         QString line2( local->formatDate( curWeek ) );
         int hh = int(mHelper->mHeaderHeight * 2./3.);
-        mHelper->drawHeader( p, i18n("date from - to", "%1 - %2\nWeek %3")
-                             .arg( line1 )
-                             .arg( line2 )
-                             .arg( curWeek.weekNumber() ),
+        mHelper->drawHeader( p, i18nc("date from - to", "%1 - %2\nWeek %3",
+                               line1 ,
+                               line2 ,
+                               curWeek.weekNumber() ),
                              curWeek, QDate(), 0, 0, width, hh );
         mHelper->drawTimeTable( p, fromWeek, curWeek,
                        mStartTime, mEndTime, 0, hh + 5,
@@ -460,9 +460,8 @@ void CalPrintMonth::print( QPainter &p, int width, int height )
   curMonth = fromMonth;
   const KCalendarSystem *calSys = mHelper->calendarSystem();
   do {
-    QString title( i18n("monthname year", "%1 %2") );
-    title = title.arg( calSys->monthName( curMonth ) )
-                 .arg( curMonth.year() );
+    QString title = i18nc("monthname year", "%1 %2",
+                          calSys->monthName( curMonth ), curMonth.year() );
     QDate tmp( fromMonth );
     int weekdayCol = mHelper->weekdayColumn( tmp.dayOfWeek() );
     tmp = tmp.addDays( -weekdayCol );

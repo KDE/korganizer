@@ -181,7 +181,7 @@ AttachmentEditDialog::AttachmentEditDialog( AttachmentIconItem *item,
                                             QWidget *parent, const char *name,
                                             bool modal )
   : KDialogBase ( KDialogBase::Plain,
-                  i18n( "Properties for %1" ).arg( item->label().isEmpty()
+                  i18n( "Properties for %1", item->label().isEmpty()
                       ? item->uri() : item->label() ),
                   KDialogBase::Ok | KDialogBase::Cancel | KDialogBase::Apply,
                   KDialogBase::Ok, parent, name, modal ), mItem( item ),
@@ -631,8 +631,8 @@ void KOEditorAttachments::slotRemove()
       if ( !item ) continue;
     
       if ( KMessageBox::warningContinueCancel(this,
-           i18n("The item labeled \"%1\" will be permanently deleted.")
-               .arg( item->label() ),
+           i18n("The item labeled \"%1\" will be permanently deleted.",
+                 item->label() ),
            i18n("KOrganizer Confirmation"),
            KStdGuiItem::del()) == KMessageBox::Continue )
       {

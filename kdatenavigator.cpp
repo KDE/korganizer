@@ -189,8 +189,8 @@ void KDateNavigator::updateDates()
     QString weeknum;
 
     if ( weeknumstart != weeknumend ) {
-      weeknum = i18n("start/end week number of line in date picker", "%1/%2")
-                .arg( weeknumstart ).arg( weeknumend );
+      weeknum = i18nc("start/end week number of line in date picker", "%1/%2",
+                  weeknumstart, weeknumend );
     } else {
       weeknum.setNum( weeknumstart );
     }

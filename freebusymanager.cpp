@@ -317,8 +317,8 @@ void FreeBusyManager::slotUploadFreeBusyResult(KIO::Job *_job)
                 "URL '%1'. There might be a problem with the access rights, or "
                 "you specified an incorrect URL. The system said: <em>%2</em>."
                 "<br>Please check the URL or contact your system administrator."
-                "</qt>" ).arg( job->destURL().prettyURL() )
-                         .arg( job->errorString() ) );
+                "</qt>", job->destURL().prettyURL() ,
+                           job->errorString() ) );
     // Delete temp file
     KUrl src = job->srcURL();
     Q_ASSERT( src.isLocalFile() );

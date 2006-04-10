@@ -299,9 +299,9 @@ kDebug(5850)<<"IncidenceChanger::addIncidence for incidence \""<<incidence->summ
     }
   }
   if ( !mCalendar->addIncidence( incidence ) ) {
-    KMessageBox::sorry( 0, i18n("Unable to save %1 \"%2\".")
-                        .arg( i18n( incidence->type() ) )
-                        .arg( incidence->summary() ) );
+    KMessageBox::sorry( 0, i18n("Unable to save %1 \"%2\".",
+                          i18n( incidence->type() ) ,
+                          incidence->summary() ) );
     return false;
   }
   emit incidenceAdded( incidence );

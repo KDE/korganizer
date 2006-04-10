@@ -28,7 +28,7 @@ QString
 {
 // The names of the Parshiot.
   parshiot_names <<
-    i18n
+    i18nc
     ("These are weekly readings and do not have translations. They may have different spellings in your language; otherwise, just translate the sound to your characters",
      "Bereshit") << i18n("Noach") << i18n("Lech L'cha") <<
     i18n("Vayera") << i18n("Chaye Sarah") << i18n("Toldot") <<

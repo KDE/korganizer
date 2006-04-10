@@ -352,9 +352,9 @@ void MonthViewCell::setDate( const QDate &date )
 
   QString text;
   if ( KOGlobals::self()->calendarSystem()->day( date ) == 1 ) {
-    text = i18n("'Month day' for month view cells", "%1 %2")
-        .arg( KOGlobals::self()->calendarSystem()->monthName( date, true ) )
-        .arg( KOGlobals::self()->calendarSystem()->day(mDate) );
+    text = i18nc("'Month day' for month view cells", "%1 %2",
+          KOGlobals::self()->calendarSystem()->monthName( date, true ) ,
+          KOGlobals::self()->calendarSystem()->day(mDate) );
     QFontMetrics fm( mLabel->font() );
     mLabel->resize( mLabelSize + QSize( fm.width( text ), 0 ) );
   } else {
@@ -882,9 +882,9 @@ void KOMonthView::showDates( const QDate &start, const QDate & )
   int weekdayCol=( mStartDate.dayOfWeek() + 7 - mWeekStartDay ) % 7;
   mStartDate = mStartDate.addDays( -weekdayCol );
 
-  mLabel->setText( i18n( "monthname year", "%1 %2" )
-                   .arg( calSys->monthName( start ) )
-                   .arg( calSys->year( start ) ) );
+  mLabel->setText( i18nc( "monthname year", "%1 %2" ,
+                     calSys->monthName( start ) ,
+                     calSys->year( start ) ) );
 
   bool primary = false;
   int i;

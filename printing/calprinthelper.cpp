@@ -557,10 +557,10 @@ void CalPrintHelper::drawDayBox( QPainter &p, const QDate &qd,
   // This has to be localized
   if ( fullDate && mCalSys ) {
 
-    dayNumStr = i18n("weekday month date", "%1 %2 %3")
-        .arg( mCalSys->weekDayName( qd ) )
-        .arg( mCalSys->monthName( qd ) )
-        .arg( qd.day() );
+    dayNumStr = i18nc("weekday month date", "%1 %2 %3",
+          mCalSys->weekDayName( qd ) ,
+          mCalSys->monthName( qd ) ,
+          qd.day() );
 //    dayNumStr = local->formatDate(qd);
   } else {
     dayNumStr = QString::number( qd.day() );
@@ -622,7 +622,7 @@ void CalPrintHelper::drawDayBox( QPainter &p, const QDate &qd,
         text += KGlobal::locale()->formatTime(todo->dtDue().time()) + " ";
       else
         text = "";
-      drawIncidence( p, dayBox, text, i18n("To-do: %1").arg(todo->summary()), textY );
+      drawIncidence( p, dayBox, text, i18n("To-do: %1", todo->summary()), textY );
     }
   }
 
@@ -946,7 +946,7 @@ void CalPrintHelper::drawTodo( int &count, Todo *todo, QPainter &p,
     }
 
     //now, write the percentage
-    outStr = i18n( "%1%" ).arg( todo->percentComplete() );
+    outStr = i18n( "%1%", todo->percentComplete() );
     rect = p.boundingRect( posPercentComplete+lwidth+3, y, x + width, -1,
                            Qt::AlignTop | Qt::AlignLeft, outStr );
     p.drawText( rect, Qt::AlignTop | Qt::AlignLeft, outStr );
@@ -1022,7 +1022,7 @@ void CalPrintHelper::drawJournalField( QPainter &p, QString field, QString text,
 {
   if ( text.isEmpty() ) return;
 
-  QString entry( field.arg( text ) );
+  QString entry( field.subs( text ).toString() );
 
   QRect rect( p.boundingRect( x, y, width, -1, Qt::TextWordWrap, entry) );
   if ( rect.bottom() > pageHeight) {
@@ -1050,9 +1050,9 @@ void CalPrintHelper::drawJournal( Journal * journal, QPainter &p, int x, int &y,
   if ( journal->summary().isEmpty() ) {
     headerText = dateText;
   } else {
-    headerText = i18n("Description - date", "%1 - %2")
-                     .arg( journal->summary() )
-                     .arg( dateText );
+    headerText = i18nc("Description - date", "%1 - %2",
+                       journal->summary() ,
+                       dateText );
   }
 
   QRect rect( p.boundingRect( x, y, width, -1, Qt::TextWordWrap, headerText) );
@@ -1071,8 +1071,8 @@ void CalPrintHelper::drawJournal( Journal * journal, QPainter &p, int x, int &y,
   p.drawLine( x + 3, y, x + width - 6, y );
   y += 5;
 
-  drawJournalField( p, i18n("Person: %1"), journal->organizer().fullName(), x, y, width, pageHeight );
-  drawJournalField( p, i18n("%1"), journal->description(), x, y, width, pageHeight );
+  drawJournalField( p, ki18n("Person: %1"), journal->organizer().fullName(), x, y, width, pageHeight );
+  drawJournalField( p, ki18n("%1"), journal->description(), x, y, width, pageHeight );
   y += 10;
 }
 
@@ -1090,16 +1090,16 @@ void CalPrintHelper::drawSplitHeaderRight( QPainter &p, const QDate &fd,
   QString title;
   if ( mCalSys ) {
     if ( fd.month() == td.month() ) {
-      title = i18n("Date range: Month dayStart - dayEnd", "%1 %2 - %3")
-        .arg( mCalSys->monthName( fd.month(), false ) )
-        .arg( mCalSys->dayString( fd, false ) )
-        .arg( mCalSys->dayString( td, false ) );
+      title = i18nc("Date range: Month dayStart - dayEnd", "%1 %2 - %3",
+          mCalSys->monthName( fd.month(), false ) ,
+          mCalSys->dayString( fd, false ) ,
+          mCalSys->dayString( td, false ) );
     } else {
-      title = i18n("Date range: monthStart dayStart - monthEnd dayEnd", "%1 %2 - %3 %4")
-        .arg( mCalSys->monthName( fd.month(), false ) )
-        .arg( mCalSys->dayString( fd, false ) )
-        .arg( mCalSys->monthName( td.month(), false ) )
-        .arg( mCalSys->dayString( td, false ) );
+      title = i18nc("Date range: monthStart dayStart - monthEnd dayEnd", "%1 %2 - %3 %4",
+          mCalSys->monthName( fd.month(), false ) ,
+          mCalSys->dayString( fd, false ) ,
+          mCalSys->monthName( td.month(), false ) ,
+          mCalSys->dayString( td, false ) );
     }
   }
 

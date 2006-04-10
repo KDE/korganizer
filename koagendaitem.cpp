@@ -748,8 +748,8 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
   if ( !isMultiItem() ) {
     shortH = KGlobal::locale()->formatTime(mIncidence->dtStart().time());
     if (mIncidence->type() != "Todo")
-      longH = i18n("%1 - %2").arg(shortH)
-               .arg(KGlobal::locale()->formatTime(mIncidence->dtEnd().time()));
+      longH = i18n("%1 - %2", shortH,
+                KGlobal::locale()->formatTime(mIncidence->dtEnd().time()));
     else
       longH = shortH;
   } else if ( !mMultiItemInfo->mFirstMultiItem ) {
@@ -757,7 +757,7 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
     longH = shortH;
   } else {
     shortH = KGlobal::locale()->formatTime(mIncidence->dtEnd().time());
-    longH = i18n("- %1").arg(shortH);
+    longH = i18n("- %1", shortH);
   }
 
   KWordWrap *ww = KWordWrap::formatText( fm,
@@ -849,9 +849,9 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
     if ( (mIncidence->type() != "Todo") &&
          (mIncidence->dtStart() != mIncidence->dtEnd()) ) { // multi days
       shortH = longH =
-        i18n("%1 - %2")
-             .arg(KGlobal::locale()->formatDate(mIncidence->dtStart().date()))
-             .arg(KGlobal::locale()->formatDate(mIncidence->dtEnd().date()));
+        i18n("%1 - %2",
+              KGlobal::locale()->formatDate(mIncidence->dtStart().date()),
+              KGlobal::locale()->formatDate(mIncidence->dtEnd().date()));
 
       // paint headline
       p.fillRect( 0, 0, width(), (ft/2) + margin + hlHeight,

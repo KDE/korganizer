@@ -107,9 +107,9 @@ void KOWhatsNextView::updateView()
   if ( mStartDate.daysTo( mEndDate ) < 1 ) {
     mText += KGlobal::locale()->formatDate( mStartDate );
   } else {
-    mText += i18n("Date from - to", "%1 - %2")
-            .arg( KGlobal::locale()->formatDate( mStartDate ) )
-            .arg( KGlobal::locale()->formatDate( mEndDate ) );
+    mText += i18nc("Date from - to", "%1 - %2",
+              KGlobal::locale()->formatDate( mStartDate ) ,
+              KGlobal::locale()->formatDate( mEndDate ) );
   }
   mText+="</h2>\n";
 
@@ -281,15 +281,15 @@ void KOWhatsNextView::appendEvent( Incidence *ev, const QDateTime &start,
                   event->dtStart().secsTo( event->dtEnd() ) );
       
       if ( starttime.date().daysTo( endtime.date() ) >= 1 ) {
-        mText += i18n("date from - to", "%1 - %2")
-              .arg( KGlobal::locale()->formatDateTime( starttime ) )
-              .arg( KGlobal::locale()->formatDateTime( endtime ) );
+        mText += i18nc("date from - to", "%1 - %2",
+                KGlobal::locale()->formatDateTime( starttime ) ,
+                KGlobal::locale()->formatDateTime( endtime ) );
       } else {
         /*if (reply) */
-        mText += i18n("date, from - to", "%1, %2 - %3")
-            .arg( KGlobal::locale()->formatDate( starttime.date(), true ) )
-            .arg( KGlobal::locale()->formatTime( starttime.time() ) )
-            .arg( KGlobal::locale()->formatTime( endtime.time() ) );
+        mText += i18nc("date, from - to", "%1, %2 - %3",
+              KGlobal::locale()->formatDate( starttime.date(), true ) ,
+              KGlobal::locale()->formatTime( starttime.time() ) ,
+              KGlobal::locale()->formatTime( endtime.time() ) );
       }
     }
 //  }
@@ -314,8 +314,8 @@ void KOWhatsNextView::appendTodo( Incidence *ev )
   if ( ev->type()=="Todo" ) {
     Todo *todo = static_cast<Todo*>(ev);
     if ( todo->hasDueDate() ) {
-      mText += i18n("  (Due: %1)")
-         .arg( (todo->doesFloat())?(todo->dtDueDateStr()):(todo->dtDueStr()) );
+      mText += i18n("  (Due: %1)",
+           (todo->doesFloat())?(todo->dtDueDateStr()):(todo->dtDueStr()) );
     }
   }
   mText += "</li>\n";

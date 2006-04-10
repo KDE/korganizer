@@ -422,7 +422,7 @@ RecurYearly::RecurYearly( QWidget *parent, const char *name ) :
   /* YearlyMonth (day n of Month Y) */
   QBoxLayout *monthLayout = new QHBoxLayout( buttonLayout );
   QString recurInMonthText(
-      i18n("part before XXX of 'Recur on day XXX of month YYY'",
+      i18nc("part before XXX of 'Recur on day XXX of month YYY'",
       "&Recur on day "));
   if ( KOPrefs::instance()->mCompactDialogs ) {
     recurInMonthText = i18n("&Day ");
@@ -438,7 +438,7 @@ RecurYearly::RecurYearly( QWidget *parent, const char *name ) :
       "should recur.") );
   monthLayout->addWidget( mByMonthSpin );
   QLabel *ofLabel = new QLabel(
-      i18n("part between XXX and YYY of 'Recur on day XXX of month YYY'", " &of "),
+      i18nc("part between XXX and YYY of 'Recur on day XXX of month YYY'", " &of "),
       buttonGroup );
   //What do I do here? I'm not sure if this label should have What's This in it... - Antonio
   monthLayout->addWidget( ofLabel );
@@ -452,9 +452,9 @@ RecurYearly::RecurYearly( QWidget *parent, const char *name ) :
 
   /* YearlyPos (weekday X of week N of month Y) */
   QBoxLayout *posLayout = new QHBoxLayout( buttonLayout );
-  QString recurOnPosText( i18n("Part before XXX in 'Recur on NNN. WEEKDAY of MONTH', short version", "&On" ) );
+  QString recurOnPosText( i18nc("Part before XXX in 'Recur on NNN. WEEKDAY of MONTH', short version", "&On" ) );
   if ( !KOPrefs::instance()->mCompactDialogs ) {
-    recurOnPosText = i18n("Part before XXX in 'Recur on NNN. WEEKDAY of MONTH'", "&On the" );
+    recurOnPosText = i18nc("Part before XXX in 'Recur on NNN. WEEKDAY of MONTH'", "&On the" );
   }
   mByPosRadio = new QRadioButton( recurOnPosText, buttonGroup );
   mByPosRadio->setWhatsThis(
@@ -469,7 +469,7 @@ RecurYearly::RecurYearly( QWidget *parent, const char *name ) :
   posLayout->addWidget( mByPosWeekdayCombo );
 
   ofLabel = new QLabel(
-      i18n("part between WEEKDAY and MONTH in 'Recur on NNN. WEEKDAY of MONTH'", " o&f "),
+      i18nc("part between WEEKDAY and MONTH in 'Recur on NNN. WEEKDAY of MONTH'", " o&f "),
       buttonGroup );
   posLayout->addWidget( ofLabel );
 
@@ -499,9 +499,9 @@ RecurYearly::RecurYearly( QWidget *parent, const char *name ) :
   
   dayLayout->addWidget( mByDaySpin );
 
-  QString ofTheYear( i18n("part after NNN of 'Recur on day #NNN of the year'", " of the &year"));
+  QString ofTheYear( i18nc("part after NNN of 'Recur on day #NNN of the year'", " of the &year"));
   if ( KOPrefs::instance()->mCompactDialogs ) {
-    ofTheYear = i18n("part after NNN of 'Recur on day #NNN of the year', short version",
+    ofTheYear = i18nc("part after NNN of 'Recur on day #NNN of the year', short version",
         " of the year");
   }
   ofLabel = new QLabel( ofTheYear, buttonGroup );
@@ -827,8 +827,8 @@ void RecurrenceRangeWidget::showCurrentRange()
 void RecurrenceRangeWidget::setDateTimes( const QDateTime &start,
                                           const QDateTime & )
 {
-  mStartDateLabel->setText( i18n("Begins on: %1")
-      .arg( KGlobal::locale()->formatDate( start.date() ) ) );
+  mStartDateLabel->setText( i18n("Begins on: %1",
+        KGlobal::locale()->formatDate( start.date() ) ) );
 }
 
 ///////////////////////// RecurrenceRangeDialog ///////////////////////////
@@ -1400,9 +1400,9 @@ bool KOEditorRecurrence::validateInput()
   if ( mEnabledCheck->isChecked() && (mRecurrenceRange->duration()==0) &&
        mEventStartDt.isValid() && ((mRecurrenceRange->endDate())<mEventStartDt.date()) ) {
     KMessageBox::sorry( 0,
-      i18n("The end date '%1' of the recurrence must be after the start date '%2' of the event.")
-      .arg( KGlobal::locale()->formatDate( mRecurrenceRange->endDate() ) )
-      .arg( KGlobal::locale()->formatDate( mEventStartDt.date() ) ) );
+      i18n("The end date '%1' of the recurrence must be after the start date '%2' of the event.",
+        KGlobal::locale()->formatDate( mRecurrenceRange->endDate() ) ,
+        KGlobal::locale()->formatDate( mEventStartDt.date() ) ) );
     return false;
   }
   int recurrenceType = mRecurrenceChooser->type();

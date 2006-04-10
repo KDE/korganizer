@@ -322,12 +322,12 @@ void ResourceView::addResource()
   // Create new resource
   ResourceCalendar *resource = manager->createResource( type );
   if( !resource ) {
-    KMessageBox::error( this, i18n("<qt>Unable to create resource of type <b>%1</b>.</qt>")
-                              .arg( type ) );
+    KMessageBox::error( this, i18n("<qt>Unable to create resource of type <b>%1</b>.</qt>",
+                                type ) );
     return;
   }
 
-  resource->setResourceName( i18n("%1 resource").arg( type ) );
+  resource->setResourceName( i18n("%1 resource", type ) );
 
   KRES::ConfigDialog dlg( this, QString("calendar"), resource,
                           "KRES::ConfigDialog" );
@@ -430,8 +430,8 @@ void ResourceView::removeResource()
   if ( !item ) return;
 
   int km = KMessageBox::warningContinueCancel( this,
-        i18n("<qt>Do you really want to delete the resource <b>%1</b>?</qt>")
-        .arg( item->text( 0 ) ), "", KStdGuiItem::del() );
+        i18n("<qt>Do you really want to delete the resource <b>%1</b>?</qt>",
+          item->text( 0 ) ), "", KStdGuiItem::del() );
   if ( km == KMessageBox::Cancel ) return;
 
 // Don't be so restricitve

@@ -174,7 +174,7 @@ void KOEditorGeneralTodo::initCompletion(QWidget *parent, QBoxLayout *topLayout)
   mCompletedCombo->setWhatsThis( whatsThis );
   for (int i = 0; i <= 100; i+=10) {
     // xgettext:no-c-format
-    QString label = i18n("Percent complete", "%1 %").arg (i);
+    QString label = i18nc("Percent complete", "%1 %", i);
     mCompletedCombo->insertItem(label);
   }
   connect(mCompletedCombo,SIGNAL(activated(int)),SLOT(completedChanged(int)));
@@ -498,7 +498,7 @@ void KOEditorGeneralTodo::dateChanged()
   QString dateTimeStr = "";
 
   if ( mStartCheck->isChecked() ) {
-    dateTimeStr += i18n("Start: %1").arg(
+    dateTimeStr += i18n("Start: %1", 
                                      l->formatDate( mStartDateEdit->date() ) );
     if ( mTimeButton->isChecked() )
       dateTimeStr += QString(" %1").arg(
@@ -506,7 +506,7 @@ void KOEditorGeneralTodo::dateChanged()
   }
 
   if ( mDueCheck->isChecked() ) {
-    dateTimeStr += i18n("   Due: %1").arg(
+    dateTimeStr += i18n("   Due: %1", 
                                       l->formatDate( mDueDateEdit->date() ) );
     if ( mTimeButton->isChecked() )
       dateTimeStr += QString(" %1").arg(

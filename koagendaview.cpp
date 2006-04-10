@@ -761,9 +761,9 @@ void KOAgendaView::createDayLabels()
 
     int dW = calsys->dayOfWeek(date);
     QString veryLongStr = KGlobal::locale()->formatDate( date );
-    QString longstr = i18n( "short_weekday date (e.g. Mon 13)","%1 %2" )
-        .arg( calsys->weekDayName( dW, true ) )
-        .arg( calsys->day(date) );
+    QString longstr = i18nc( "short_weekday date (e.g. Mon 13)","%1 %2" ,
+          calsys->weekDayName( dW, true ) ,
+          calsys->day(date) );
     QString shortstr = QString::number(calsys->day(date));
 
     KOAlternateLabel *dayLabel = new KOAlternateLabel(shortstr,

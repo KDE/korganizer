@@ -105,7 +105,7 @@ void AlarmDockWindow::slotUpdate( int reminders )
 {
   if ( reminders > 0 )
   {
-    this->setToolTip( i18n( "There is 1 active reminder.",
+    this->setToolTip( i18np( "There is 1 active reminder.",
                    "There are %n active reminders.", reminders ) );
     contextMenu()->setItemEnabled( mSuspendAll, true );
     contextMenu()->setItemEnabled( mDismissAll, true );
