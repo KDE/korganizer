@@ -7,7 +7,7 @@ add_subdirectory( sounds )
 add_subdirectory( plugins ) 
 add_subdirectory( interfaces ) 
 
-include_directories( ${CMAKE_SOURCE_DIR}/libemailfunctions ${CMAKE_SOURCE_DIR}/libkpimidentities ${CMAKE_SOURCE_DIR}/libkholidays ${CMAKE_SOURCE_DIR}/mimelib ${CMAKE_SOURCE_DIR}/libkleo ${CMAKE_SOURCE_DIR}/korganizer/printing ${KDE4_INCLUDE_DIR} ${QT_INCLUDES} ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR}  )
+include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/interfaces ${CMAKE_SOURCE_DIR}/libemailfunctions ${CMAKE_SOURCE_DIR}/libkpimidentities ${CMAKE_SOURCE_DIR}/libkholidays ${CMAKE_SOURCE_DIR}/mimelib ${CMAKE_SOURCE_DIR}/libkleo ${CMAKE_SOURCE_DIR}/korganizer/printing ${KDE4_INCLUDES} )
 
 
 ########### next target ###############
