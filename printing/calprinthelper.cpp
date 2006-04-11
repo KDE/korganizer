@@ -1017,7 +1017,7 @@ int CalPrintHelper::weekdayColumn( int weekday )
   return ( weekday + 7 - KGlobal::locale()->weekStartDay() ) % 7;
 }
 
-void CalPrintHelper::drawJournalField( QPainter &p, QString field, QString text,
+void CalPrintHelper::drawJournalField( QPainter &p, KLocalizedString field, QString text,
                                        int x, int &y, int width, int pageHeight )
 {
   if ( text.isEmpty() ) return;

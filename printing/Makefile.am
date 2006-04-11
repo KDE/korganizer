@@ -12,7 +12,7 @@ lib_LTLIBRARIES = libkocorehelper.la libkorg_stdprinting.la
 
 libkocorehelper_la_LDFLAGS = $(all_libraries) $(KDE_RPATH) \
                              -no-undefined -version-info 1:0
-libkocorehelper_la_LIBADD  = $(LIB_KDEUI)
+libkocorehelper_la_LIBADD  = $(LIB_KDEUI) $(LIB_KDECORE) $(LIB_QTCORE)
 libkocorehelper_la_SOURCES = cellitem.cpp
 
 libkorg_stdprinting_la_SOURCES = calprinter.cpp calprinthelper.cpp calprintpluginbase.cpp \
