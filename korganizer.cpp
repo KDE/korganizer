@@ -219,8 +219,7 @@ void KOrganizer::initActions()
 void KOrganizer::slotEditKeys()
 {
   KKeyDialog::configure( actionCollection(),
-                         false /*don't allow one-letter shortcuts*/
-                         );
+    KKeyChooser::LetterShortcutsDisallowed );
 }
 
 bool KOrganizer::queryClose()

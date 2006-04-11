@@ -1470,7 +1470,8 @@ void ActionManager::enableIncidenceActions( bool enabled )
 
 void ActionManager::keyBindings()
 {
-  KKeyDialog dlg( false, view() );
+  KKeyDialog dlg( KKeyChooser::AllActions,
+    KKeyChooser::LetterShortcutsDisallowed, view() );
   if ( mMainWindow )
     dlg.insert( mMainWindow->getActionCollection() );
 
