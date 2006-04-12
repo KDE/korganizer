@@ -85,6 +85,9 @@ set(korganizer_SRCS
    incidencechanger.cpp 
    templatemanagementdialog.cpp )
 
+
+SET_SOURCE_FILES_PROPERTIES(koeventview.cpp incidencechanger.cpp PROPERTIES SKIP_AUTOMOC true)
+
 kde4_automoc(${korganizer_SRCS})
 
 kde4_add_ui3_files(korganizer_SRCS 
