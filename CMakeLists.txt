@@ -1,6 +1,6 @@
 kde4_header()
 
-include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/korganizer ${CMAKE_CURRENT_SOURCE_DIR}/interfaces ${CMAKE_SOURCE_DIR}/libemailfunctions ${CMAKE_SOURCE_DIR}/libkpimidentities ${CMAKE_SOURCE_DIR}/libkholidays ${CMAKE_SOURCE_DIR}/mimelib ${CMAKE_SOURCE_DIR}/libkleo ${CMAKE_SOURCE_DIR}/korganizer/printing ${KDE4_INCLUDES} )
+include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/korganizer ${CMAKE_CURRENT_SOURCE_DIR}/interfaces ${CMAKE_SOURCE_DIR}/libemailfunctions ${CMAKE_SOURCE_DIR}/libkpimidentities ${CMAKE_SOURCE_DIR}/libkholidays ${CMAKE_SOURCE_DIR}/mimelib ${CMAKE_SOURCE_DIR}/libkleo ${CMAKE_SOURCE_DIR}/korganizer/printing ${CMAKE_SOURCE_DIR}/kdgantt ${KDE4_INCLUDES} )
 
 
 add_subdirectory( printing ) 
@@ -13,7 +13,9 @@ add_subdirectory( interfaces )
 
 ########### next target ###############
 
-set(korganizer_SRCS 
+set(korganizer_SRCS
+   ${libemailfunctions_SRCS}
+   ${libkdgantt_SRCS}
    main.cpp 
    korganizer.cpp 
    koapp.cpp 
@@ -104,7 +106,7 @@ kde4_add_kcfg_files(korganizer_SRCS koprefs_base.kcfgc )
 
 kde4_add_executable(korganizer ${korganizer_SRCS})
 
-target_link_libraries(korganizer  ${KDE4_KDECORE_LIBS} korganizer kparts knewstuff kdeprint kabc kutils kcal kpimidentities kdepim korganizer_eventviewer korganizer_calendar kocorehelper korg_stdprinting kdgantt emailfunctions kholidays )
+target_link_libraries(korganizer  ${KDE4_KDECORE_LIBS} korganizer kparts knewstuff kdeprint kabc kutils kcal kpimidentities kdepim korganizer_eventviewer korganizer_calendar kocorehelper korg_stdprinting kholidays )
 
 install_targets(/bin korganizer )
 
@@ -174,6 +176,7 @@ set(korganizer_eventviewer_LIB_SRCS koeventviewer.cpp urihandler.cpp koeventview
 kde4_automoc(${korganizer_eventviewer_LIB_SRCS})
 
 kde4_add_dcop_skels(korganizer_eventviewer_LIB_SRCS ${CMAKE_SOURCE_DIR}/kmail/kmailIface.h korganizeriface.h ${CMAKE_SOURCE_DIR}/knode/knodeiface.h )
+kde4_add_dcop_stubs(korganizer_eventviewer_LIB_SRCS ${CMAKE_SOURCE_DIR}/kmail/kmailIface.h korganizeriface.h ${CMAKE_SOURCE_DIR}/knode/knodeiface.h )
 
 kde4_add_library(korganizer_eventviewer SHARED ${korganizer_eventviewer_LIB_SRCS})
 

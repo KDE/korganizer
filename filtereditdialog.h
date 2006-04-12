@@ -26,7 +26,7 @@
 #define _FILTEREDITDIALOG_H
 
 #include <kdialogbase.h>
-#include "filteredit_base.h"
+#include "ui_filteredit_base.h"
 #include <QList>
 
 class FilterEdit;

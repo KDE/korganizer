@@ -27,7 +27,7 @@
 #include <kdialogbase.h>
 #include <libkcal/alarm.h>
 
-#include "koeditoralarms_base.h"
+#include "ui_koeditoralarms_base.h"
 
 class Q3ListViewItem;
 

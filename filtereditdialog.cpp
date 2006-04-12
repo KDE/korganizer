@@ -42,7 +42,7 @@
 #include <libkdepim/categoryselectdialog.h>
 
 #include "koprefs.h"
-#include "filteredit_base.h"
+#include "ui_filteredit_base.h"
 
 #include "filtereditdialog.h"
 #include "filtereditdialog.moc"
