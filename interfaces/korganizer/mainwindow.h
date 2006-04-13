@@ -26,6 +26,7 @@
 
 class KActionCollection;
 class KAction;
+class KUrl;
 
 class ActionManager;
 
@@ -40,10 +41,10 @@ class CalendarViewBase;
 class MainWindow
 {
   public:
-    MainWindow() : mDocument( true ) {}
-    virtual ~MainWindow() {}
+    MainWindow();
+    virtual ~MainWindow();
 
-    virtual void init( bool hasDocument ) { Q_UNUSED( hasDocument ); }
+    virtual void init( bool hasDocument );
 
     virtual CalendarViewBase *view() const = 0;
 
@@ -87,8 +88,8 @@ class MainWindow
     */
     virtual void setTitle() = 0;
 
-    void setHasDocument( bool d ) { mDocument = d; } 
-    bool hasDocument() const { return mDocument; }
+    void setHasDocument( bool d );
+    bool hasDocument() const;
 
   private:
     bool mDocument;

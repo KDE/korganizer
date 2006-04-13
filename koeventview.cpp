@@ -40,7 +40,6 @@
 #include "koeventpopupmenu.h"
 
 using namespace KOrg;
-#include "koeventview.moc"
 
 //---------------------------------------------------------------------------
 
@@ -163,5 +162,5 @@ void KOEventView::defaultAction( Incidence *incidence )
 
 //---------------------------------------------------------------------------
 
-#include "baseview.moc"
+#include "koeventview.moc"
 

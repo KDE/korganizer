@@ -309,4 +309,3 @@ kDebug(5850)<<"IncidenceChanger::addIncidence for incidence \""<<incidence->summ
 }
 
 #include "incidencechanger.moc"
-#include "incidencechangerbase.moc"

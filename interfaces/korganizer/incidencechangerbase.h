@@ -36,9 +36,9 @@ class IncidenceChangerBase : public QObject
 {
 Q_OBJECT
 public:
-  IncidenceChangerBase( Calendar*cal, QObject *parent = 0 ) : 
-        QObject( parent ), mCalendar( cal ) {}
-  virtual ~IncidenceChangerBase() {}
+  IncidenceChangerBase( Calendar*cal, QObject *parent = 0 );
+
+  virtual ~IncidenceChangerBase();
 
   virtual bool sendGroupwareMessage( Incidence *incidence, 
           KCal::Scheduler::Method method, bool deleting = false ) = 0;

@@ -73,19 +73,18 @@ class KDE_EXPORT BaseView : public QWidget
       @param name   name of this widget.
     */
     BaseView( Calendar *cal, QWidget *parent = 0,
-              const char *name = 0 )
-      : QWidget( parent, name ), mCalendar( cal ), mChanger( 0 ) {}
+              const char *name = 0 );
 
     /**
       Destructor.  Views will do view-specific cleanups here.
     */
-    virtual ~BaseView() {}
+    virtual ~BaseView();
 
-    virtual void setCalendar( Calendar *cal ) { mCalendar = cal; }
+    virtual void setCalendar( Calendar *cal );
     /**
       Return calendar object of this view.
     */
-    virtual Calendar *calendar() { return mCalendar; }
+    virtual Calendar *calendar();
 
     /**
       @return a list of selected events.  Most views can probably only
@@ -101,10 +100,7 @@ class KDE_EXPORT BaseView : public QWidget
     */
     virtual DateList selectedDates() = 0;
 
-    virtual CalPrinterBase::PrintType printType()
-    {
-      return CalPrinterBase::Month;
-    }
+    virtual CalPrinterBase::PrintType printType();
 
     /**
       Return number of currently shown dates. A return value of 0 means no idea.
@@ -112,7 +108,7 @@ class KDE_EXPORT BaseView : public QWidget
     virtual int currentDateCount() = 0;
 
     /** Return if this view is a view for displaying events. */
-    virtual bool isEventView() { return false; }
+    virtual bool isEventView();
 
   public slots:
     /**
@@ -138,17 +134,17 @@ class KDE_EXPORT BaseView : public QWidget
       in the calendar since the last display refresh.
     */
     virtual void updateView() = 0;
-    virtual void dayPassed( const QDate & ) { updateView(); }
+    virtual void dayPassed( const QDate & );
 
     /**
       Assign a new incidence change helper object.
      */
-    virtual void setIncidenceChanger( IncidenceChangerBase *changer ) { mChanger = changer; }
+    virtual void setIncidenceChanger( IncidenceChangerBase *changer );
 
     /**
       Write all unsaved data back to calendar store.
     */
-    virtual void flushView() {}
+    virtual void flushView();
 
     /**
       Updates the current display to reflect the changes to one particular incidence.
@@ -159,17 +155,17 @@ class KDE_EXPORT BaseView : public QWidget
       Re-reads the KOrganizer configuration and picks up relevant
       changes which are applicable to the view.
     */
-    virtual void updateConfig() {}
+    virtual void updateConfig();
 
     /**
       Clear selection. The incidenceSelected signal is not emitted.
     */
-    virtual void clearSelection() {}
+    virtual void clearSelection();
 
     /**
       Set the default start/end date/time for new events. Return true if anything was changed
     */
-    virtual bool eventDurationHint(QDateTime &/*startDt*/, QDateTime &/*endDt*/, bool &/*allDay*/) { return false; }
+    virtual bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay);
 
   signals:
     void incidenceSelected( Incidence * );

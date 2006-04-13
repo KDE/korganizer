@@ -2,7 +2,23 @@ kde4_header()
 
 include_directories( ${KDE4_INCLUDE_DIR} ${QT_INCLUDES} ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR}  )
 
-kde4_automoc(baseview.h incidencechanger.h)
+########### next target ###############
+
+set(korganizer_interfaces_LIB_SRCS
+  baseview.cpp
+  incidencechangerbase.cpp
+  mainwindow.cpp
+)
+
+kde4_automoc(${korganizer_interfaces_LIB_SRCS})
+
+kde4_add_library(korganizer_interfaces SHARED ${korganizer_interfaces_LIB_SRCS})
+
+target_link_libraries(korganizer_interfaces  ${KDE4_KIO_LIBS}  )
+
+set_target_properties(korganizer_interfaces PROPERTIES VERSION 1.0.0 SOVERSION 1 )
+install_targets(${LIB_INSTALL_DIR} korganizer_interfaces )
+
 
 ########### install files ###############
 
