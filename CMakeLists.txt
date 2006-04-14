@@ -15,6 +15,9 @@ add_subdirectory( sounds )
 add_subdirectory( plugins ) 
 add_subdirectory( interfaces ) 
 
+set( PERL ${PERL_EXECUTABLE} )
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/ical2vcal.in ${CMAKE_CURRENT_BINARY_DIR}/ical2vcal @ONLY)
+
 
 ########### next target ###############
 
