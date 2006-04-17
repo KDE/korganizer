@@ -20,7 +20,7 @@ kde4_install_libtool_file( ${PLUGIN_INSTALL_DIR} korg_timespanview )
 
 target_link_libraries(korg_timespanview  ${KDE4_KDECORE_LIBS} korganizer kparts )
 
-install_targets(${LIB_INSTALL_DIR}/kde4 korg_timespanview )
+install_targets(${PLUGIN_INSTALL_DIR} korg_timespanview )
 
 
 ########### install files ###############

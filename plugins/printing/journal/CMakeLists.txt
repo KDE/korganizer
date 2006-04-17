@@ -17,7 +17,7 @@ kde4_install_libtool_file( ${PLUGIN_INSTALL_DIR} korg_journalprint )
 
 target_link_libraries(korg_journalprint  ${KDE4_KDEUI_LIBS} korg_stdprinting )
 
-install_targets(${LIB_INSTALL_DIR}/kde4 korg_journalprint )
+install_targets(${PLUGIN_INSTALL_DIR} korg_journalprint )
 
 
 ########### install files ###############

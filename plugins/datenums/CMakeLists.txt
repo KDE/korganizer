@@ -15,7 +15,7 @@ kde4_install_libtool_file( ${PLUGIN_INSTALL_DIR} korg_datenums )
 
 target_link_libraries(korg_datenums  ${KDE4_KDEUI_LIBS} korganizer )
 
-install_targets(${LIB_INSTALL_DIR}/kde4 korg_datenums )
+install_targets(${PLUGIN_INSTALL_DIR} korg_datenums )
 
 
 ########### install files ###############

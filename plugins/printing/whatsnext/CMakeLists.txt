@@ -17,7 +17,7 @@ kde4_install_libtool_file( ${PLUGIN_INSTALL_DIR} korg_whatsnextprint )
 
 target_link_libraries(korg_whatsnextprint  ${KDE4_KDEUI_LIBS}  korg_stdprinting )
 
-install_targets(${LIB_INSTALL_DIR}/kde4 korg_whatsnextprint )
+install_targets(${PLUGIN_INSTALL_DIR} korg_whatsnextprint )
 
 
 ########### install files ###############

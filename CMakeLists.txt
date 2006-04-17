@@ -53,7 +53,7 @@ target_link_libraries(kcm_korganizer ${KDE4_KDECORE_LIBS} korganizer kdepim khol
 
 kde4_add_kcfg_files(kcm_korganizer_SRCS koprefs_base.kcfgc )
 
-install_targets(${LIB_INSTALL_DIR}/kde4 kcm_korganizer )
+install_targets(${PLUGIN_INSTALL_DIR} kcm_korganizer )
 
 
 ########### next target ###############
@@ -68,7 +68,7 @@ kde4_install_libtool_file( ${PLUGIN_INSTALL_DIR} korganizerpart )
 
 target_link_libraries(korganizerpart  ${KDE4_KDECORE_LIBS} korganizer )
 
-install_targets(${LIB_INSTALL_DIR}/kde4 korganizerpart )
+install_targets(${PLUGIN_INSTALL_DIR} korganizerpart )
 
 
 ########### next target ###############
