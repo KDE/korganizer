@@ -478,7 +478,8 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
     connect( mExpandButton, SIGNAL( clicked() ), SIGNAL( toggleExpand() ) );
   } else {
     QLabel *label = new QLabel( i18n("All Day"), mDummyAllDayLeft );
-    label->setAlignment( Qt::AlignRight | Qt::AlignVCenter | Qt::TextWordWrap );
+    label->setAlignment( Qt::AlignRight | Qt::AlignVCenter  );
+    label->setWordWrap( true );
   }
 
   mAllDayAgenda = new KOAgenda(1,mAllDayFrame);

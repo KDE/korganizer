@@ -1052,7 +1052,8 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins( KInstance *inst, QWidget *parent )
   topLayout->addWidget( mListView );
 
   mDescription = new QLabel( topFrame );
-  mDescription->setAlignment( Qt::TextHideMnemonic | Qt::TextWordWrap | Qt::AlignVCenter );
+  mDescription->setAlignment( Qt::TextHideMnemonic | Qt::AlignVCenter );
+  mDescription->setWordWrap( true );
   mDescription->setFrameShape( QLabel::Panel );
   mDescription->setFrameShadow( QLabel::Sunken );
   mDescription->setMinimumSize( QSize( 0, 55 ) );
