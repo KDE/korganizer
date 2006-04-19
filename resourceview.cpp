@@ -242,7 +242,8 @@ ResourceView::ResourceView( KCal::CalendarResources *calendar, QWidget *parent )
   buttonBox->setSpacing( KDialog::spacingHint() );
   topLayout->addWidget( buttonBox );
 
-  mAddButton = new QPushButton( i18n("Add..."), buttonBox, "add" );
+  mAddButton = new QPushButton( i18n("Add..."), buttonBox );
+  mAddButton->setObjectName( "add" );
   mAddButton->setWhatsThis(
                    i18n( "<qt><p>Press this button to add a resource to "
                          "KOrganizer.</p>"
@@ -254,11 +255,13 @@ ResourceView::ResourceView( KCal::CalendarResources *calendar, QWidget *parent )
                          "when creating incidents you will either automatically "
                          "use the default resource or be prompted "
                          "to select the resource to use.</p></qt>" ) );
-  mEditButton = new QPushButton( i18n("Edit..."), buttonBox, "edit" );
+  mEditButton = new QPushButton( i18n("Edit..."), buttonBox );
+  mEditButton->setObjectName( "edit" );
   mEditButton->setWhatsThis(
                    i18n( "Press this button to edit the resource currently "
                          "selected on the KOrganizer resources list above." ) );
-  mDeleteButton = new QPushButton( i18n("Remove"), buttonBox, "del" );
+  mDeleteButton = new QPushButton( i18n("Remove"), buttonBox );
+  mDeleteButton->setObjectName( "del" );
   mDeleteButton->setWhatsThis(
                    i18n( "Press this button to delete the resource currently "
                          "selected on the KOrganizer resources list above." ) );
@@ -342,7 +345,7 @@ void ResourceView::addResource()
     delete resource;
     resource = 0;
   }
-	if ( dlg ) delete dlg;
+  if ( dlg ) delete dlg;
   emitResourcesChanged();
 }
 
@@ -405,7 +408,7 @@ void ResourceView::closeResource( ResourceCalendar *r )
 {
   if ( mResourcesToClose.contains( r ) ) {
     r->close();
-    mResourcesToClose.remove( r );
+    mResourcesToClose.removeAll( r );
   }
 }
 
