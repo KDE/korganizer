@@ -345,7 +345,7 @@ void RecurMonthly::setByDay( int day )
   mByDayRadio->setChecked( true );
   // Days from the end are after the ones from the begin, so correct for the
   // negative sign and add 30 (index starting at 0)
-  if ( day > 0 & day <= 31 )
+  if ( day > 0 && day <= 31 )
     mByDayCombo->setCurrentItem( day-1 );
   else if ( day < 0 )
     mByDayCombo->setCurrentItem( 31 - 1 - day );

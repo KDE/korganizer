@@ -189,12 +189,14 @@ void CalPrintHelper::drawSmallMonth(QPainter &p, const QDate &qd,
   monthDate2 = monthDate.addDays( -weekdayCol );
 
   // draw days of week
-  for (int col = 0; col < 7; ++col) {
-    // tmpStr.sprintf("%c",(const char*)monthDate2.dayName(monthDate2.dayOfWeek()));
-    tmpStr=mCalSys->weekDayName( monthDate2 )[0].upper();
-    p.drawText( x + col*cellWidth, y + height/4, cellWidth, cellHeight,
-               Qt::AlignCenter, tmpStr );
-    monthDate2 = monthDate2.addDays( 1 );
+  if ( mCalSys ) {
+    for (int col = 0; col < 7; ++col) {
+      // tmpStr.sprintf("%c",(const char*)monthDate2.dayName(monthDate2.dayOfWeek()));
+      tmpStr=mCalSys->weekDayName( monthDate2 )[0].upper();
+      p.drawText( x + col*cellWidth, y + height/4, cellWidth, cellHeight,
+                 Qt::AlignCenter, tmpStr );
+      monthDate2 = monthDate2.addDays( 1 );
+    }
   }
 
   // draw separator line

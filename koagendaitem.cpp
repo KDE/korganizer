@@ -87,6 +87,7 @@ KOAgendaItem::KOAgendaItem( Incidence *incidence, const QDate &qd, QWidget *pare
 
 void KOAgendaItem::updateIcons()
 {
+  if ( !mIncidence ) return;
   mIconReadonly = mIncidence->isReadOnly();
   mIconRecur = mIncidence->doesRecur();
   mIconAlarm = mIncidence->isAlarmEnabled();
@@ -549,6 +550,7 @@ void KOAgendaItem::dragEnterEvent( QDragEnterEvent *e )
 void KOAgendaItem::addAttendee( const QString &newAttendee )
 {
   kdDebug(5850) << " Email: " << newAttendee << endl;
+  // TODO: Use proper email parsing instead of simply grepping for "<" and "@"
   int pos = newAttendee.find("<");
   QString name = newAttendee.left(pos);
   QString email = newAttendee.mid(pos);
@@ -662,6 +664,7 @@ static void conditionalPaint( QPainter *p, bool cond, int &x, int ft,
 
 void KOAgendaItem::paintTodoIcon( QPainter *p, int &x, int ft )
 {
+  if ( !mIncidence ) return;
   static const QPixmap todoPxmp = KOGlobals::self()->smallIcon("todo");
   static const QPixmap completedPxmp = KOGlobals::self()->smallIcon("checkedbox");
   if ( mIncidence->type() != "Todo" )
