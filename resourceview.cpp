@@ -328,10 +328,10 @@ void ResourceView::addResource()
 
   resource->setResourceName( i18n("%1 resource", type ) );
 
-  KRES::ConfigDialog dlg( this, QString("calendar"), resource,
+  KRES::ConfigDialog *dlg = new KRES::ConfigDialog( this, QString("calendar"), resource,
                           "KRES::ConfigDialog" );
 
-  if ( dlg.exec() ) {
+  if ( dlg && dlg->exec() ) {
     resource->setTimeZoneId( KOPrefs::instance()->mTimeZoneId );
     manager->add( resource );
     // we have to call resourceAdded manually, because for in-process changes
@@ -342,6 +342,7 @@ void ResourceView::addResource()
     delete resource;
     resource = 0;
   }
+	if ( dlg ) delete dlg;
   emitResourcesChanged();
 }
 
