@@ -80,7 +80,8 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, const char *widgetName,
   QString pname( name );
 
   // create a canvas to insert our widget
-  QWidget *canvas = new QWidget( parentWidget, widgetName );
+  QWidget *canvas = new QWidget( parentWidget );
+  canvas->setObjectName( widgetName );
   canvas->setFocusPolicy( Qt::ClickFocus );
   setWidget( canvas );
   mView = new CalendarView( canvas );
@@ -164,7 +165,7 @@ ActionManager *KOrganizerPart::actionManager()
 void KOrganizerPart::showStatusMessage( const QString &message )
 {
   KStatusBar *statusBar = mStatusBarExtension->statusBar();
-  if ( statusBar ) statusBar->message( message );
+  if ( statusBar ) statusBar->showMessage( message );
 }
 
 KOrg::CalendarViewBase *KOrganizerPart::view() const

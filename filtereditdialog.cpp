@@ -47,9 +47,9 @@
 #include "filtereditdialog.h"
 #include "filtereditdialog.moc"
 
-FilterEditDialog::FilterEditDialog( QList<CalFilter*> *filters,
-                                    QWidget *parent, const char *name)
-  : KDialogBase( parent, name, false, i18n("Edit Calendar Filters"),
+FilterEditDialog::FilterEditDialog( QList<CalFilter*> *filters, QWidget *parent )
+// TODO_QT4: Use constructor without *name=0 param
+  : KDialogBase( parent, /*name*/0, false, i18n("Edit Calendar Filters"),
                  Ok | Apply | Cancel )
 {
   setMainWidget( mFilterEdit = new FilterEdit(filters, this));
@@ -121,10 +121,10 @@ void FilterEdit::updateFilterList()
   else {
     QList<CalFilter*>::iterator i;
     for ( i = mFilters->begin(); i != mFilters->end(); ++i ) {
-      if ( *i ) { mRulesList->insertItem( (*i)->name() ); }
+      if ( *i ) { mRulesList->addItem( (*i)->name() ); }
     }
 
-    CalFilter *f = mFilters->at( mRulesList->currentItem() );
+    CalFilter *f = mFilters->at( mRulesList->currentRow() );
     if ( f ) filterSelected( f );
 
     emit( dataConsistent(true) );
@@ -152,15 +152,17 @@ void FilterEdit::saveChanges()
   current->setCompletedTimeSpan( mCompletedTimeSpan->value() );
 
   QStringList categoryList;
-  for( uint i = 0; i < mCatList->count(); ++i )
-      categoryList.append( mCatList->text( i ) );
+  for( int i = 0; i < mCatList->count(); ++i ) {
+    QListWidgetItem *item = mCatList->item(i);
+    if ( item ) categoryList.append( item->text() );
+  }
   current->setCategoryList( categoryList );
   emit filterChanged();
 }
 
 void FilterEdit::filterSelected()
 {
-  filterSelected( mFilters->at(mRulesList->currentItem()) );
+  filterSelected( mFilters->at(mRulesList->currentRow()) );
 }
 
 void FilterEdit::filterSelected(CalFilter *filter)
@@ -186,14 +188,14 @@ void FilterEdit::filterSelected(CalFilter *filter)
     mCatHideCheck->setChecked( true );
   }
   mCatList->clear();
-  mCatList->insertStringList( current->categoryList() );
+  mCatList->addItems( current->categoryList() );
 }
 
 void FilterEdit::bNewPressed() {
   CalFilter *newFilter = new CalFilter( i18n("New Filter %1", mFilters->count()) );
   mFilters->append( newFilter );
   updateFilterList();
-  mRulesList->setSelected(mRulesList->count()-1, true);
+  mRulesList->setCurrentRow( mRulesList->count()-1 );
   emit filterChanged();
 }
 
@@ -207,19 +209,20 @@ void FilterEdit::bDeletePressed() {
   if ( result != KMessageBox::Continue )
     return;
 
-  unsigned int selected = mRulesList->currentItem();
+  int selected = mRulesList->currentRow();
   CalFilter *filter = mFilters->at( selected );
   mFilters->removeAll( filter );
   delete filter;
   current = 0L;
   updateFilterList();
-  mRulesList->setSelected(qMin(mRulesList->count()-1, selected), true);
+  mRulesList->setCurrentRow( qMin(mRulesList->count()-1, selected) );
   emit filterChanged();
 }
 
 void FilterEdit::updateSelectedName(const QString &newText) {
   mRulesList->blockSignals( true );
-  mRulesList->changeItem(newText, mRulesList->currentItem());
+  QListWidgetItem *item = mRulesList->currentItem();
+  if ( item ) item->setText( newText );
   mRulesList->blockSignals( false );
   bool allOk = true;
 
@@ -254,7 +257,7 @@ void FilterEdit::editCategorySelection()
 void FilterEdit::updateCategorySelection( const QStringList &categories )
 {
   mCatList->clear();
-  mCatList->insertStringList(categories);
+  mCatList->addItems( categories );
   current->setCategoryList(categories);
 }
 

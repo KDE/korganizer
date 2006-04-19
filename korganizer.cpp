@@ -86,9 +86,7 @@ using namespace KParts;
 #include "korganizer.moc"
 using namespace KOrg;
 
-KOrganizer::KOrganizer( const char *name )
-  : KParts::MainWindow( 0, name ),
-    KOrg::MainWindow()
+KOrganizer::KOrganizer( const char *name ) : KParts::MainWindow( name ), KOrg::MainWindow()
 {
   // Set this to be the group leader for all subdialogs - this means
   // modal subdialogs will only affect this dialog, not the other windows
@@ -98,7 +96,8 @@ KOrganizer::KOrganizer( const char *name )
   KOCore::self()->addXMLGUIClient( this, this );
 //  setMinimumSize(600,400);  // make sure we don't get resized too small...
 
-  mCalendarView = new CalendarView( this, "KOrganizer::CalendarView" );
+  mCalendarView = new CalendarView( this );
+  mCalendarView->setObjectName( "KOrganizer::CalendarView" );
   setCentralWidget(mCalendarView);
 
   mActionManager = new ActionManager( this, mCalendarView, this, this, false );
@@ -148,7 +147,7 @@ void KOrganizer::init( bool document )
   progressWidget = new KPIM::StatusbarProgressWidget( progressDialog, bar );
   progressWidget->show();
 
-  bar->addWidget( progressWidget, 0, true );
+  bar->addPermanentWidget( progressWidget );
 
   connect( mActionManager->view(), SIGNAL( statusMessage( const QString & ) ),
            SLOT( showStatusMessage( const QString & ) ) );
@@ -249,7 +248,7 @@ void KOrganizer::statusBarPressed( int /*id*/ )
 
 void KOrganizer::showStatusMessage( const QString &message )
 {
-  statusBar()->message(message,2000);
+  statusBar()->showMessage( message, 2000 );
 }
 
 bool KOrganizer::openURL( const KUrl &url, bool merge )

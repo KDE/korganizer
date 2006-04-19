@@ -121,7 +121,7 @@ class KODayMatrix: public QFrame
      *  Normally this should be a KDateNavigator
      *  @param name name of the widget
      */
-    KODayMatrix( QWidget *parent, const char *name );
+    KODayMatrix( QWidget *parent );
 
     /** destructor that deallocates all dynamically allocated private members.
      */

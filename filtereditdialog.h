@@ -46,7 +46,7 @@ class FilterEditDialog : public KDialogBase
 {
     Q_OBJECT
   public:
-    FilterEditDialog(QList<CalFilter*> *,QWidget *parent=0, const char *name=0);
+    FilterEditDialog( QList<CalFilter*> *, QWidget *parent=0 );
     virtual ~FilterEditDialog();
 
   signals:

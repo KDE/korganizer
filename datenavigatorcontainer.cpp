@@ -40,14 +40,13 @@
 #include <QFrame>
 #include <QResizeEvent>
 
-DateNavigatorContainer::DateNavigatorContainer( QWidget *parent,
-                                                const char *name )
-  : QFrame( parent, name ), mCalendar( 0 ),
+DateNavigatorContainer::DateNavigatorContainer( QWidget *parent )
+  : QFrame( parent ), mCalendar( 0 ),
     mHorizontalCount( 1 ), mVerticalCount( 1 )
 {
   setFrameStyle( QFrame::Sunken | QFrame::StyledPanel );
 
-  mNavigatorView = new KDateNavigator( this, name );
+  mNavigatorView = new KDateNavigator( this );
   mNavigatorView->setWhatsThis(
                    i18n( "<qt><p>Select the dates you want to "
                          "display in KOrganizer's main view here. Hold the "

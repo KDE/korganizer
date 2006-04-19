@@ -46,8 +46,7 @@ class KOEditorFreeBusy : public QWidget
 {
     Q_OBJECT
   public:
-    KOEditorFreeBusy( int spacing = 8, QWidget *parent = 0,
-                      const char *name = 0 );
+    KOEditorFreeBusy( int spacing = 8, QWidget *parent = 0 );
     virtual ~KOEditorFreeBusy();
 
     void setUpdateEnabled( bool enabled );

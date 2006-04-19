@@ -40,8 +40,7 @@ class ExportWebDialog : public KDialogBase, public KPrefsWidManager
 {
     Q_OBJECT
   public:
-    ExportWebDialog( HTMLExportSettings *settings, QWidget *parent = 0,
-                     const char *name = 0 );
+    ExportWebDialog( HTMLExportSettings *settings, QWidget *parent = 0 );
     virtual ~ExportWebDialog();
 
   public slots:

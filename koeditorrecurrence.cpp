@@ -29,7 +29,7 @@
 #include <QGroupBox>
 #include <QStackedWidget>
 #include <qdatetime.h>
-#include <q3listbox.h>
+#include <QListWidget>
 #include <qspinbox.h>
 #include <qcheckbox.h>
 #include <q3widgetstack.h>
@@ -67,10 +67,10 @@
 
 /////////////////////////// RecurBase ///////////////////////////////
 
-RecurBase::RecurBase( QWidget *parent, const char *name ) :
-  QWidget( parent, name )
+RecurBase::RecurBase( QWidget *parent ) : QWidget( parent )
 {
-  mFrequencyEdit = new QSpinBox( 1, 9999, 1, this );
+  mFrequencyEdit = new QSpinBox( this );
+  mFrequencyEdit->setRange( 1, 9999 );
   mFrequencyEdit->setValue( 1 );
 }
 
@@ -91,44 +91,44 @@ int RecurBase::frequency()
   return mFrequencyEdit->value();
 }
 
-QComboBox *RecurBase::createWeekCountCombo( QWidget *parent, const char *name )
+QComboBox *RecurBase::createWeekCountCombo( QWidget *parent )
 {
-  QComboBox *combo = new QComboBox( parent, name );
+  QComboBox *combo = new QComboBox( parent );
   combo->setWhatsThis(
                    i18n("The number of the week from the beginning "
                         "of the month on which this event or to-do "
                         "should recur.") );
   if ( !combo ) return 0;
-  combo->insertItem( i18n("1st") );
-  combo->insertItem( i18n("2nd") );
-  combo->insertItem( i18n("3rd") );
-  combo->insertItem( i18n("4th") );
-  combo->insertItem( i18n("5th") );
-  combo->insertItem( i18n("Last") );
-  combo->insertItem( i18n("2nd Last") );
-  combo->insertItem( i18n("3rd Last") );
-  combo->insertItem( i18n("4th Last") );
-  combo->insertItem( i18n("5th Last") );
+  combo->addItem( i18n("1st") );
+  combo->addItem( i18n("2nd") );
+  combo->addItem( i18n("3rd") );
+  combo->addItem( i18n("4th") );
+  combo->addItem( i18n("5th") );
+  combo->addItem( i18n("Last") );
+  combo->addItem( i18n("2nd Last") );
+  combo->addItem( i18n("3rd Last") );
+  combo->addItem( i18n("4th Last") );
+  combo->addItem( i18n("5th Last") );
   return combo;
 }
 
-QComboBox *RecurBase::createWeekdayCombo( QWidget *parent, const char *name )
+QComboBox *RecurBase::createWeekdayCombo( QWidget *parent )
 {
-  QComboBox *combo = new QComboBox( parent, name );
+  QComboBox *combo = new QComboBox( parent );
   combo->setWhatsThis(
                    i18n("The weekday on which this event or to-do "
                         "should recur.") );
   if ( !combo ) return 0;
   const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
   for( int i = 1; i <= 7; ++i ) {
-    combo->insertItem( calSys->weekDayName( i ) );
+    combo->addItem( calSys->weekDayName( i ) );
   }
   return combo;
 }
 
-QComboBox *RecurBase::createMonthNameCombo( QWidget *parent, const char *name )
+QComboBox *RecurBase::createMonthNameCombo( QWidget *parent )
 {
-  QComboBox *combo = new QComboBox( parent, name );
+  QComboBox *combo = new QComboBox( parent );
   combo->setWhatsThis(
                    i18n("The month during which this event or to-do "
                         "should recur.") );
@@ -137,7 +137,7 @@ QComboBox *RecurBase::createMonthNameCombo( QWidget *parent, const char *name )
   for( int i = 1; i <= 12; ++i ) {
     // use an arbitrary year, we just need the month name...
     QDate dt( 2005, i, 1 );
-    combo->insertItem( calSys->monthName( dt ) );
+    combo->addItem( calSys->monthName( dt ) );
   }
   return combo;
 }
@@ -165,8 +165,7 @@ QBoxLayout *RecurBase::createFrequencySpinBar( QWidget *parent, QLayout *layout,
 
 /////////////////////////// RecurDaily ///////////////////////////////
 
-RecurDaily::RecurDaily( QWidget *parent, const char *name ) :
-  RecurBase( parent, name )
+RecurDaily::RecurDaily( QWidget *parent ) : RecurBase( parent )
 {
   QBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->setSpacing( KDialog::spacingHint() );
@@ -177,8 +176,7 @@ RecurDaily::RecurDaily( QWidget *parent, const char *name ) :
 
 /////////////////////////// RecurWeekly ///////////////////////////////
 
-RecurWeekly::RecurWeekly( QWidget *parent, const char *name ) :
-  RecurBase( parent, name )
+RecurWeekly::RecurWeekly( QWidget *parent ) : RecurBase( parent )
 {
   QBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->setSpacing( KDialog::spacingHint() );
@@ -208,6 +206,7 @@ RecurWeekly::RecurWeekly( QWidget *parent, const char *name ) :
   }
 
   topLayout->addStretch( 1 );
+  topLayout->addStretch( 1 );
 }
 
 void RecurWeekly::setDays( const QBitArray &days )
@@ -230,15 +229,15 @@ QBitArray RecurWeekly::days()
 
 /////////////////////////// RecurMonthly ///////////////////////////////
 
-RecurMonthly::RecurMonthly( QWidget *parent, const char *name ) :
-  RecurBase( parent, name )
+RecurMonthly::RecurMonthly( QWidget *parent ) : RecurBase( parent )
 {
   QBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->setSpacing( KDialog::spacingHint() );
 
   createFrequencySpinBar( this, topLayout, i18n("&Recur every"), i18n("month(s)") );
 
-  QGroupBox *buttonGroup = new QGroupBox( this );
+  QFrame *buttonGroup = new QFrame( this );
+//   buttonGroup->setFlat( true );
 #warning Port me!
 //  buttonGroup->setFrameStyle( QFrame::NoFrame );
   topLayout->addWidget( buttonGroup, 1, Qt::AlignVCenter );
@@ -264,68 +263,68 @@ RecurMonthly::RecurMonthly( QWidget *parent, const char *name ) :
   mByDayCombo = new QComboBox( buttonGroup );
   mByDayCombo->setWhatsThis( whatsThis );
   mByDayCombo->setMaxVisibleItems( 7 );
-  mByDayCombo->insertItem( i18n("1st") );
-  mByDayCombo->insertItem( i18n("2nd") );
-  mByDayCombo->insertItem( i18n("3rd") );
-  mByDayCombo->insertItem( i18n("4th") );
-  mByDayCombo->insertItem( i18n("5th") );
-  mByDayCombo->insertItem( i18n("6th") );
-  mByDayCombo->insertItem( i18n("7th") );
-  mByDayCombo->insertItem( i18n("8th") );
-  mByDayCombo->insertItem( i18n("9th") );
-  mByDayCombo->insertItem( i18n("10th") );
-  mByDayCombo->insertItem( i18n("11th") );
-  mByDayCombo->insertItem( i18n("12th") );
-  mByDayCombo->insertItem( i18n("13th") );
-  mByDayCombo->insertItem( i18n("14th") );
-  mByDayCombo->insertItem( i18n("15th") );
-  mByDayCombo->insertItem( i18n("16th") );
-  mByDayCombo->insertItem( i18n("17th") );
-  mByDayCombo->insertItem( i18n("18th") );
-  mByDayCombo->insertItem( i18n("19th") );
-  mByDayCombo->insertItem( i18n("20th") );
-  mByDayCombo->insertItem( i18n("21st") );
-  mByDayCombo->insertItem( i18n("22nd") );
-  mByDayCombo->insertItem( i18n("23rd") );
-  mByDayCombo->insertItem( i18n("24th") );
-  mByDayCombo->insertItem( i18n("25th") );
-  mByDayCombo->insertItem( i18n("26th") );
-  mByDayCombo->insertItem( i18n("27th") );
-  mByDayCombo->insertItem( i18n("28th") );
-  mByDayCombo->insertItem( i18n("29th") );
-  mByDayCombo->insertItem( i18n("30th") );
-  mByDayCombo->insertItem( i18n("31st") );
-  mByDayCombo->insertItem( i18n("Last") );
-  mByDayCombo->insertItem( i18n("2nd Last") );
-  mByDayCombo->insertItem( i18n("3rd Last") );
-  mByDayCombo->insertItem( i18n("4th Last") );
-  mByDayCombo->insertItem( i18n("5th Last") );
-  mByDayCombo->insertItem( i18n("6th Last") );
-  mByDayCombo->insertItem( i18n("7th Last") );
-  mByDayCombo->insertItem( i18n("8th Last") );
-  mByDayCombo->insertItem( i18n("9th Last") );
-  mByDayCombo->insertItem( i18n("10th Last") );
-  mByDayCombo->insertItem( i18n("11th Last") );
-  mByDayCombo->insertItem( i18n("12th Last") );
-  mByDayCombo->insertItem( i18n("13th Last") );
-  mByDayCombo->insertItem( i18n("14th Last") );
-  mByDayCombo->insertItem( i18n("15th Last") );
-  mByDayCombo->insertItem( i18n("16th Last") );
-  mByDayCombo->insertItem( i18n("17th Last") );
-  mByDayCombo->insertItem( i18n("18th Last") );
-  mByDayCombo->insertItem( i18n("19th Last") );
-  mByDayCombo->insertItem( i18n("20th Last") );
-  mByDayCombo->insertItem( i18n("21st Last") );
-  mByDayCombo->insertItem( i18n("22nd Last") );
-  mByDayCombo->insertItem( i18n("23rd Last") );
-  mByDayCombo->insertItem( i18n("24th Last") );
-  mByDayCombo->insertItem( i18n("25th Last") );
-  mByDayCombo->insertItem( i18n("26th Last") );
-  mByDayCombo->insertItem( i18n("27th Last") );
-  mByDayCombo->insertItem( i18n("28th Last") );
-  mByDayCombo->insertItem( i18n("29th Last") );
-  mByDayCombo->insertItem( i18n("30th Last") );
-  mByDayCombo->insertItem( i18n("31st Last") );
+  mByDayCombo->addItem( i18n("1st") );
+  mByDayCombo->addItem( i18n("2nd") );
+  mByDayCombo->addItem( i18n("3rd") );
+  mByDayCombo->addItem( i18n("4th") );
+  mByDayCombo->addItem( i18n("5th") );
+  mByDayCombo->addItem( i18n("6th") );
+  mByDayCombo->addItem( i18n("7th") );
+  mByDayCombo->addItem( i18n("8th") );
+  mByDayCombo->addItem( i18n("9th") );
+  mByDayCombo->addItem( i18n("10th") );
+  mByDayCombo->addItem( i18n("11th") );
+  mByDayCombo->addItem( i18n("12th") );
+  mByDayCombo->addItem( i18n("13th") );
+  mByDayCombo->addItem( i18n("14th") );
+  mByDayCombo->addItem( i18n("15th") );
+  mByDayCombo->addItem( i18n("16th") );
+  mByDayCombo->addItem( i18n("17th") );
+  mByDayCombo->addItem( i18n("18th") );
+  mByDayCombo->addItem( i18n("19th") );
+  mByDayCombo->addItem( i18n("20th") );
+  mByDayCombo->addItem( i18n("21st") );
+  mByDayCombo->addItem( i18n("22nd") );
+  mByDayCombo->addItem( i18n("23rd") );
+  mByDayCombo->addItem( i18n("24th") );
+  mByDayCombo->addItem( i18n("25th") );
+  mByDayCombo->addItem( i18n("26th") );
+  mByDayCombo->addItem( i18n("27th") );
+  mByDayCombo->addItem( i18n("28th") );
+  mByDayCombo->addItem( i18n("29th") );
+  mByDayCombo->addItem( i18n("30th") );
+  mByDayCombo->addItem( i18n("31st") );
+  mByDayCombo->addItem( i18n("Last") );
+  mByDayCombo->addItem( i18n("2nd Last") );
+  mByDayCombo->addItem( i18n("3rd Last") );
+  mByDayCombo->addItem( i18n("4th Last") );
+  mByDayCombo->addItem( i18n("5th Last") );
+  mByDayCombo->addItem( i18n("6th Last") );
+  mByDayCombo->addItem( i18n("7th Last") );
+  mByDayCombo->addItem( i18n("8th Last") );
+  mByDayCombo->addItem( i18n("9th Last") );
+  mByDayCombo->addItem( i18n("10th Last") );
+  mByDayCombo->addItem( i18n("11th Last") );
+  mByDayCombo->addItem( i18n("12th Last") );
+  mByDayCombo->addItem( i18n("13th Last") );
+  mByDayCombo->addItem( i18n("14th Last") );
+  mByDayCombo->addItem( i18n("15th Last") );
+  mByDayCombo->addItem( i18n("16th Last") );
+  mByDayCombo->addItem( i18n("17th Last") );
+  mByDayCombo->addItem( i18n("18th Last") );
+  mByDayCombo->addItem( i18n("19th Last") );
+  mByDayCombo->addItem( i18n("20th Last") );
+  mByDayCombo->addItem( i18n("21st Last") );
+  mByDayCombo->addItem( i18n("22nd Last") );
+  mByDayCombo->addItem( i18n("23rd Last") );
+  mByDayCombo->addItem( i18n("24th Last") );
+  mByDayCombo->addItem( i18n("25th Last") );
+  mByDayCombo->addItem( i18n("26th Last") );
+  mByDayCombo->addItem( i18n("27th Last") );
+  mByDayCombo->addItem( i18n("28th Last") );
+  mByDayCombo->addItem( i18n("29th Last") );
+  mByDayCombo->addItem( i18n("30th Last") );
+  mByDayCombo->addItem( i18n("31st Last") );
   buttonLayout->addWidget( mByDayCombo, 0, 1 );
 
   QLabel *byDayLabel = new QLabel( i18n("day"), buttonGroup );
@@ -344,6 +343,8 @@ RecurMonthly::RecurMonthly( QWidget *parent, const char *name ) :
 
   mByPosWeekdayCombo = createWeekdayCombo( buttonGroup );
   buttonLayout->addWidget( mByPosWeekdayCombo, 1, 2 );
+
+  topLayout->addStretch( 1 );
 }
 
 void RecurMonthly::setByDay( int day )
@@ -380,7 +381,7 @@ bool RecurMonthly::byPos()
 
 int RecurMonthly::day()
 {
-  int day = mByDayCombo->currentItem();
+  int day = mByDayCombo->currentIndex();
   if ( day >= 31 ) day = 31-day-1;
   else ++day;
   return day;
@@ -388,7 +389,7 @@ int RecurMonthly::day()
 
 int RecurMonthly::count()
 {
-  int pos=mByPosCountCombo->currentItem();
+  int pos=mByPosCountCombo->currentIndex();
   if (pos<=4) // positive  count
     return pos+1;
   else
@@ -397,13 +398,12 @@ int RecurMonthly::count()
 
 int RecurMonthly::weekday()
 {
-  return mByPosWeekdayCombo->currentItem() + 1;
+  return mByPosWeekdayCombo->currentIndex() + 1;
 }
 
 /////////////////////////// RecurYearly ///////////////////////////////
 
-RecurYearly::RecurYearly( QWidget *parent, const char *name ) :
-  RecurBase( parent, name )
+RecurYearly::RecurYearly( QWidget *parent ) : RecurBase( parent )
 {
   QBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->setSpacing( KDialog::spacingHint() );
@@ -411,7 +411,7 @@ RecurYearly::RecurYearly( QWidget *parent, const char *name ) :
   createFrequencySpinBar( this, topLayout, i18n("&Recur every"), i18n("year(s)") );
 
 
-  QGroupBox *buttonGroup = new QGroupBox( this );
+  QFrame *buttonGroup = new QFrame( this );
 #warning Port me!
 //  buttonGroup->setFrameStyle( QFrame::NoFrame );
   topLayout->addWidget( buttonGroup, 1, Qt::AlignVCenter );
@@ -432,7 +432,8 @@ RecurYearly::RecurYearly( QWidget *parent, const char *name ) :
        i18n("Sets a specific day in a specific month on which "
       "this event or to-do should recur.") );
   monthLayout->addWidget( mByMonthRadio );
-  mByMonthSpin = new QSpinBox( 1, 31, 1, buttonGroup );
+  mByMonthSpin = new QSpinBox( buttonGroup );
+  mByMonthSpin->setRange( 1, 31 );
   mByMonthSpin->setWhatsThis(
        i18n("The day of the month on which this event or to-do "
       "should recur.") );
@@ -494,7 +495,8 @@ RecurYearly::RecurYearly( QWidget *parent, const char *name ) :
   mByDayRadio->setWhatsThis( whatsThis );
   dayLayout->addWidget( mByDayRadio );
 
-  mByDaySpin = new QSpinBox( 1, 366, 1, buttonGroup );
+  mByDaySpin = new QSpinBox( buttonGroup );
+  mByDaySpin->setRange( 1, 366 );
   mByDaySpin->setWhatsThis( whatsThis );
   
   dayLayout->addWidget( mByDaySpin );
@@ -510,6 +512,9 @@ RecurYearly::RecurYearly( QWidget *parent, const char *name ) :
   ofLabel->setBuddy( mByDaySpin );
 
   dayLayout->addStretch( 1 );
+
+
+  topLayout->addStretch( 1 );
 }
 
 void RecurYearly::setByDay( int day )
@@ -551,12 +556,12 @@ int RecurYearly::monthDay()
 
 int RecurYearly::month()
 {
-  return mByMonthCombo->currentItem() + 1;
+  return mByMonthCombo->currentIndex() + 1;
 }
 
 int RecurYearly::posCount()
 {
-  int pos = mByPosDayCombo->currentItem();
+  int pos = mByPosDayCombo->currentIndex();
   if ( pos <= 4 ) // positive  count
     return pos + 1;
   else
@@ -565,12 +570,12 @@ int RecurYearly::posCount()
 
 int RecurYearly::posWeekday()
 {
-  return mByPosWeekdayCombo->currentItem() + 1;
+  return mByPosWeekdayCombo->currentIndex() + 1;
 }
 
 int RecurYearly::posMonth()
 {
-  return mByPosMonthCombo->currentItem() + 1;
+  return mByPosMonthCombo->currentIndex() + 1;
 }
 
 int RecurYearly::day()
@@ -580,8 +585,7 @@ int RecurYearly::day()
 
 //////////////////////////// ExceptionsWidget //////////////////////////
 
-ExceptionsWidget::ExceptionsWidget( QWidget *parent, const char *name ) :
-  QWidget( parent, name )
+ExceptionsWidget::ExceptionsWidget( QWidget *parent ) : QWidget( parent )
 {
   QBoxLayout *topLayout = new QVBoxLayout( this );
 
@@ -615,15 +619,15 @@ ExceptionsWidget::ExceptionsWidget( QWidget *parent, const char *name ) :
             "for this event or to-do.") );
   boxLayout->addWidget( deleteExceptionButton, 3, 0 );
 
-  mExceptionList = new Q3ListBox( box );
+  mExceptionList = new QListWidget( box );
   mExceptionList->setWhatsThis(
        i18n("Displays current dates that are being considered "
       "exceptions to the recurrence rules for this event "
       "or to-do.") );
-  boxLayout->addMultiCellWidget( mExceptionList, 0, 3, 1, 1 );
+  boxLayout->addWidget( mExceptionList, 0, 1, 4, 1 );
 
   boxLayout->setRowStretch( 4, 1 );
-  boxLayout->setColStretch( 1, 3 );
+  boxLayout->setColumnStretch( 1, 3 );
 
   connect( addExceptionButton, SIGNAL( clicked() ),
            SLOT( addException() ) );
@@ -637,29 +641,30 @@ void ExceptionsWidget::addException()
 {
   QDate date = mExceptionDateEdit->date();
   QString dateStr = KGlobal::locale()->formatDate( date );
-  if( !mExceptionList->findItem( dateStr ) ) {
+  if( !mExceptionList->findItems( dateStr, Qt::MatchExactly ).isEmpty() ) {
     mExceptionDates.append( date );
-    mExceptionList->insertItem( dateStr );
+    mExceptionList->addItem( dateStr );
   }
 }
 
 void ExceptionsWidget::changeException()
 {
-  int pos = mExceptionList->currentItem();
+  int pos = mExceptionList->currentRow();
   if ( pos < 0 ) return;
 
   QDate date = mExceptionDateEdit->date();
   mExceptionDates[ pos ] = date;
-  mExceptionList->changeItem( KGlobal::locale()->formatDate( date ), pos );
+  QListWidgetItem *item = mExceptionList->item( pos );
+  item->setText( KGlobal::locale()->formatDate( date ) );
 }
 
 void ExceptionsWidget::deleteException()
 {
-  int pos = mExceptionList->currentItem();
+  int pos = mExceptionList->currentRow();
   if ( pos < 0 ) return;
 
-  mExceptionDates.remove( mExceptionDates.at( pos ) );
-  mExceptionList->removeItem( pos );
+  mExceptionDates.removeAt( pos );
+  delete( mExceptionList->takeItem( pos ) );
 }
 
 void ExceptionsWidget::setDates( const DateList &dates )
@@ -668,7 +673,7 @@ void ExceptionsWidget::setDates( const DateList &dates )
   mExceptionDates.clear();
   DateList::ConstIterator dit;
   for ( dit = dates.begin(); dit != dates.end(); ++dit ) {
-    mExceptionList->insertItem( KGlobal::locale()->formatDate(* dit ) );
+    mExceptionList->addItem( KGlobal::locale()->formatDate(* dit ) );
     mExceptionDates.append( *dit );
   }
 }
@@ -680,8 +685,9 @@ DateList ExceptionsWidget::dates()
 
 ///////////////////////// ExceptionsDialog ///////////////////////////
 
-ExceptionsDialog::ExceptionsDialog( QWidget *parent, const char *name ) :
-  KDialogBase( parent, name, true, i18n("Edit Exceptions"), Ok|Cancel )
+ExceptionsDialog::ExceptionsDialog( QWidget *parent ) :
+// TODO: find the constructor without *name=0 param
+  KDialogBase( parent, 0, true, i18n("Edit Exceptions"), Ok|Cancel )
 {
   mExceptions = new ExceptionsWidget( this );
   setMainWidget( mExceptions );
@@ -701,9 +707,7 @@ DateList ExceptionsDialog::dates()
 
 
 
-RecurrenceRangeWidget::RecurrenceRangeWidget( QWidget *parent,
-                                              const char *name )
-  : QWidget( parent, name )
+RecurrenceRangeWidget::RecurrenceRangeWidget( QWidget *parent ) : QWidget( parent )
 {
   QBoxLayout *topLayout = new QVBoxLayout( this );
 //   topLayout->setSpacing( KDialog::spacingHint() );
@@ -729,7 +733,7 @@ RecurrenceRangeWidget::RecurrenceRangeWidget( QWidget *parent,
 
   mNoEndDateButton = new QRadioButton( i18n("&No ending date"), mRangeGroupBox );
   mNoEndDateButton->setWhatsThis( i18n("Sets the event or to-do to recur forever.") );
-  rangeButtonGroup->insert( mNoEndDateButton );
+  rangeButtonGroup->addButton( mNoEndDateButton );
   rangeLayout->addWidget( mNoEndDateButton );
 
   // The "After N occurences" is a widget with a horizontal layout
@@ -740,10 +744,11 @@ RecurrenceRangeWidget::RecurrenceRangeWidget( QWidget *parent,
       "certain number of occurrences.");
   mEndDurationButton = new QRadioButton( i18n("End &after"), mRangeGroupBox );
   mEndDurationButton->setWhatsThis( whatsthis );
-  rangeButtonGroup->insert( mEndDurationButton );
+  rangeButtonGroup->addButton( mEndDurationButton );
   durationLayout->addWidget( mEndDurationButton );
 
-  mEndDurationEdit = new QSpinBox( 1, 9999, 1, mRangeGroupBox );
+  mEndDurationEdit = new QSpinBox( mRangeGroupBox );
+  mEndDurationEdit->setRange( 1, 9999 );
   durationLayout->addWidget( mEndDurationEdit );
 
   QLabel *endDurationLabel = new QLabel( i18n("&occurrence(s)"), mRangeGroupBox );
@@ -758,7 +763,7 @@ RecurrenceRangeWidget::RecurrenceRangeWidget( QWidget *parent,
 //   endDateLayout->setSpacing( KDialog::spacingHint() );
 
   mEndDateButton = new QRadioButton( i18n("End &on:"), mRangeGroupBox );
-  rangeButtonGroup->insert( mEndDateButton );
+  rangeButtonGroup->addButton( mEndDateButton );
   endDateLayout->addWidget( mEndDateButton );
 
   mEndDateEdit = new KDateEdit( mRangeGroupBox );
@@ -833,9 +838,9 @@ void RecurrenceRangeWidget::setDateTimes( const QDateTime &start,
 
 ///////////////////////// RecurrenceRangeDialog ///////////////////////////
 
-RecurrenceRangeDialog::RecurrenceRangeDialog( QWidget *parent,
-                                              const char *name ) :
-  KDialogBase( parent, name, true, i18n("Edit Recurrence Range"), Ok|Cancel )
+RecurrenceRangeDialog::RecurrenceRangeDialog( QWidget *parent ) :
+// TODO: use constructor without *name=0
+  KDialogBase( parent, 0, true, i18n("Edit Recurrence Range"), Ok|Cancel )
 {
   mRecurrenceRangeWidget = new RecurrenceRangeWidget( this );
   setMainWidget( mRecurrenceRangeWidget );
@@ -874,8 +879,7 @@ void RecurrenceRangeDialog::setDateTimes( const QDateTime &start,
 
 //////////////////////////// RecurrenceChooser ////////////////////////
 
-RecurrenceChooser::RecurrenceChooser( QWidget *parent, const char *name ) :
-  QWidget( parent, name )
+RecurrenceChooser::RecurrenceChooser( QWidget *parent ) : QWidget( parent )
 {
   QBoxLayout *topLayout = new QVBoxLayout( this );
 
@@ -884,10 +888,10 @@ RecurrenceChooser::RecurrenceChooser( QWidget *parent, const char *name ) :
     mTypeCombo->setWhatsThis(
                      i18n("Sets the type of recurrence this event or to-do "
                           "should have.") );
-    mTypeCombo->insertItem( i18n("Daily") );
-    mTypeCombo->insertItem( i18n("Weekly") );
-    mTypeCombo->insertItem( i18n("Monthly") );
-    mTypeCombo->insertItem( i18n("Yearly") );
+    mTypeCombo->addItem( i18n("Daily") );
+    mTypeCombo->addItem( i18n("Weekly") );
+    mTypeCombo->addItem( i18n("Monthly") );
+    mTypeCombo->addItem( i18n("Yearly") );
 
     topLayout->addWidget( mTypeCombo );
 
@@ -933,7 +937,7 @@ RecurrenceChooser::RecurrenceChooser( QWidget *parent, const char *name ) :
 int RecurrenceChooser::type()
 {
   if ( mTypeCombo ) {
-    return mTypeCombo->currentItem();
+    return mTypeCombo->currentIndex();
   } else {
     if ( mDailyButton->isChecked() ) return Daily;
     else if ( mWeeklyButton->isChecked() ) return Weekly;
@@ -972,8 +976,7 @@ void RecurrenceChooser::emitChoice()
 
 /////////////////////////////// Main Widget /////////////////////////////
 
-KOEditorRecurrence::KOEditorRecurrence( QWidget* parent, const char *name ) :
-  QWidget( parent, name )
+KOEditorRecurrence::KOEditorRecurrence( QWidget* parent ) : QWidget( parent )
 {
   QGridLayout *topLayout = new QGridLayout( this );
   topLayout->setSpacing( KDialog::spacingHint() );
@@ -984,13 +987,13 @@ KOEditorRecurrence::KOEditorRecurrence( QWidget* parent, const char *name ) :
                         "to the specified rules.") );
   connect( mEnabledCheck, SIGNAL( toggled( bool ) ),
            SLOT( setRecurrenceEnabled( bool ) ) );
-  topLayout->addMultiCellWidget( mEnabledCheck, 0, 0, 0, 1 );
+  topLayout->addWidget( mEnabledCheck, 0, 0, 1, 2 );
 
 
   mTimeGroupBox = new QGroupBox( i18n("Appointment Time "), this );
   mTimeGroupBox->setWhatsThis(
                    i18n("Displays appointment time information.") );
-  topLayout->addMultiCellWidget( mTimeGroupBox, 1, 1 , 0 , 1 );
+  topLayout->addWidget( mTimeGroupBox, 1, 0, 1, 2 );
 
   if ( KOPrefs::instance()->mCompactDialogs ) {
     mTimeGroupBox->hide();
@@ -1013,7 +1016,7 @@ KOEditorRecurrence::KOEditorRecurrence( QWidget* parent, const char *name ) :
   if ( KOPrefs::instance()->mCompactDialogs ) {
     topLayout->addWidget( mRuleBox, 2, 0 );
   } else {
-    topLayout->addMultiCellWidget( mRuleBox, 2, 2, 0, 1 );
+    topLayout->addWidget( mRuleBox, 2, 0, 1, 2 );
   }
 
   mRecurrenceChooser = new RecurrenceChooser( mRuleBox );

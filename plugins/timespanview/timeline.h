@@ -31,7 +31,7 @@ class TimeLine : public Q3ScrollView
 {
     Q_OBJECT
   public:
-    TimeLine( QWidget *parent = 0, const char *name = 0 );
+    TimeLine( QWidget *parent = 0 );
     virtual ~TimeLine();
 
     void setDateRange( const QDateTime &start, const QDateTime &end );

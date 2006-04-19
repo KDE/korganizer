@@ -84,8 +84,9 @@
 
 using namespace KOrg;
 
-TimeLabels::TimeLabels(int rows,QWidget *parent,const char *name,Qt::WFlags f) :
-  Q3ScrollView(parent,name,f)
+TimeLabels::TimeLabels(int rows,QWidget *parent, Qt::WFlags f) :
+// TODO_QT4: Use constructor without *name=0 param
+  Q3ScrollView(parent,/*name*/0,f)
 {
   mRows = rows;
   mMiniWidth = 0;
@@ -279,8 +280,7 @@ void TimeLabels::paintEvent(QPaintEvent*)
 
 ////////////////////////////////////////////////////////////////////////////
 
-EventIndicator::EventIndicator(Location loc,QWidget *parent,const char *name)
-  : QFrame(parent,name)
+EventIndicator::EventIndicator( Location loc, QWidget *parent ) : QFrame( parent )
 {
   mColumns = 1;
   mTopBox = 0;
@@ -338,9 +338,9 @@ void EventIndicator::enableColumn(int column, bool enable)
 
 
 KOAlternateLabel::KOAlternateLabel(const QString &shortlabel, const QString &longlabel,
-    const QString &extensivelabel, QWidget *parent, const char *name )
-  : QLabel(parent, name), mTextTypeFixed(false), mShortText(shortlabel),
-    mLongText(longlabel), mExtensiveText(extensivelabel)
+    const QString &extensivelabel, QWidget *parent )
+  : QLabel( parent ), mTextTypeFixed( false ), mShortText( shortlabel ),
+    mLongText( longlabel ), mExtensiveText( extensivelabel )
 {
   setSizePolicy(QSizePolicy( QSizePolicy::Expanding, QSizePolicy::Fixed ));
   if (mExtensiveText.isEmpty()) mExtensiveText = mLongText;
@@ -420,8 +420,8 @@ void KOAlternateLabel::setText( const QString &text ) {
 ////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////
 
-KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
-  KOEventView (cal,parent,name), mExpandButton( 0 ), mAllowAgendaUpdate( true ),
+KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
+  KOEventView ( cal, parent ), mExpandButton( 0 ), mAllowAgendaUpdate( true ),
   mUpdateItem( 0 )
 {
   mSelectedDates.append(QDate::currentDate());
@@ -504,7 +504,7 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
 
   // Create agenda
   mAgenda = new KOAgenda(1,96,KOPrefs::instance()->mHourSize,agendaFrame);
-  agendaLayout->addMultiCellWidget(mAgenda,1,1,1,2);
+  agendaLayout->addWidget( mAgenda, 1, 1, 1, 2 );
   agendaLayout->setColStretch(1,1);
 
   // Create event context menu for agenda

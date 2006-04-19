@@ -34,8 +34,7 @@
 
 using namespace KCal;
 
-DateNavigator::DateNavigator( QObject *parent, const char *name )
-  : QObject( parent, name )
+DateNavigator::DateNavigator( QObject *parent ) : QObject( parent )
 {
   mSelectedDates.append( QDate::currentDate() );
 }

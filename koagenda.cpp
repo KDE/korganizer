@@ -72,8 +72,8 @@
 #include <math.h>
 
 ////////////////////////////////////////////////////////////////////////////
-MarcusBains::MarcusBains(KOAgenda *_agenda,const char *name)
-    : QFrame(_agenda->viewport(),name), agenda(_agenda)
+MarcusBains::MarcusBains( KOAgenda *_agenda )
+    : QFrame( _agenda->viewport() ), agenda( _agenda )
 {
   setLineWidth(0);
 //  setMargin(0);
@@ -171,8 +171,9 @@ void MarcusBains::updateLocation(bool recalculate)
   Create an agenda widget with rows rows and columns columns.
 */
 KOAgenda::KOAgenda( int columns, int rows, int rowSize, QWidget *parent,
-                    const char *name, Qt::WFlags f )
-  : Q3ScrollView( parent, name, f ), mChanger( 0 )
+                    Qt::WFlags f )
+// TODO_QT4: Use constructor without *name=0 param
+  : Q3ScrollView( parent, /*name*/0, f ), mChanger( 0 )
 {
   mColumns = columns;
   mRows = rows;
@@ -188,8 +189,9 @@ KOAgenda::KOAgenda( int columns, int rows, int rowSize, QWidget *parent,
   Create an agenda widget with columns columns and one row. This is used for
   all-day events.
 */
-KOAgenda::KOAgenda( int columns, QWidget *parent, const char *name, Qt::WFlags f )
-  : Q3ScrollView( parent, name, f )
+KOAgenda::KOAgenda( int columns, QWidget *parent, Qt::WFlags f )
+// TODO_QT4: Use constructor without *name=0 param
+  : Q3ScrollView( parent, /*name*/0, f )
 {
   mColumns = columns;
   mRows = 1;

@@ -31,7 +31,7 @@ class LineView : public Q3ScrollView
 {
     Q_OBJECT
   public:
-    LineView( QWidget *parent = 0, const char *name = 0 );
+    LineView( QWidget *parent = 0 );
     virtual ~LineView();
 
     int pixelWidth();

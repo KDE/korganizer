@@ -160,7 +160,7 @@ class KOPrefsDialogTime : public KPrefsModule
       topLayout->setSpacing( KDialog::spacingHint() );
 
       KHBox *timeZoneBox = new KHBox( topFrame );
-      topLayout->addMultiCellWidget( timeZoneBox, 0, 0, 0, 1 );
+      topLayout->addWidget( timeZoneBox, 0, 0, 1, 2 );
 
       QLabel *timeZoneLabel = new QLabel( i18n("Timezone:"), timeZoneBox );
       QString whatsThis = i18n( "Select your timezone from the list of "
@@ -237,7 +237,7 @@ class KOPrefsDialogTime : public KPrefsModule
     #endif // !USE_SOLARIS
       list.sort();
 
-      mTimeZoneCombo->insertStringList(list);
+      mTimeZoneCombo->addItems( list );
 
         // find the currently set time zone and select it
       for ( int i = 0; i < mTimeZoneCombo->count(); ++i )
@@ -254,7 +254,7 @@ class KOPrefsDialogTime : public KPrefsModule
 
       // holiday region selection
       KHBox *holidayRegBox = new KHBox( topFrame );
-      topLayout->addMultiCellWidget( holidayRegBox, 1, 1, 0, 1 );
+      topLayout->addWidget( holidayRegBox, 1, 0, 1, 2 );
 
       QLabel *holidayLabel = new QLabel( i18n( "Use holiday region:" ), holidayRegBox );
       whatsThis = i18n( "Select from which region you want to use the "
@@ -295,7 +295,7 @@ class KOPrefsDialogTime : public KPrefsModule
       holidayList.sort();
       holidayList.push_front( i18n("(None)") );  //be able to disable holidays
 
-      mHolidayCombo->insertStringList(holidayList);
+      mHolidayCombo->addItems( holidayList );
 
       for (int i=0; i < mHolidayCombo->count(); ++i) {
         if ( mHolidayCombo->text(i) == currentHolidayName ) {
@@ -332,12 +332,12 @@ class KOPrefsDialogTime : public KPrefsModule
                        i18n( "Enter the default reminder time here." ) );
       connect( mAlarmTimeCombo, SIGNAL( activated( int ) ),
                SLOT( slotWidChanged() ) );
-      mAlarmTimeCombo->insertStringList( alarmList );
+      mAlarmTimeCombo->addItems( alarmList );
       topLayout->addWidget( mAlarmTimeCombo, 5, 1 );
 
 
       QGroupBox *workingHoursGroup = new QGroupBox( i18n("Working Hours"), topFrame);
-      topLayout->addMultiCellWidget( workingHoursGroup, 6, 6, 0, 1 );
+      topLayout->addWidget( workingHoursGroup, 6, 0, 1, 2 );
 
       KHBox *workDaysBox = new KHBox( workingHoursGroup );
       // Respect start of week setting
@@ -653,10 +653,10 @@ KOPrefsDialogColors::KOPrefsDialogColors( KInstance *inst, QWidget *parent )
 
   // categories colors
   QGroupBox *categoryGroup = new QGroupBox( i18n("Categories"), topFrame );
-  topLayout->addMultiCellWidget(categoryGroup,7,7,0,1);
+  topLayout->addWidget( categoryGroup, 7, 0, 1, 2 );
 
   mCategoryCombo = new QComboBox(categoryGroup);
-  mCategoryCombo->insertStringList(KOPrefs::instance()->mCustomCategories);
+  mCategoryCombo->addItems( KOPrefs::instance()->mCustomCategories );
   mCategoryCombo->setWhatsThis(
                    i18n( "Select here the event category you want to modify. "
                          "You can change the selected category color using "
@@ -672,7 +672,7 @@ KOPrefsDialogColors::KOPrefsDialogColors( KInstance *inst, QWidget *parent )
 
   // resources colors
   QGroupBox *resourceGroup = new QGroupBox( i18n("Resources"), topFrame );
-  topLayout->addMultiCellWidget(resourceGroup,8,8,0,1);
+  topLayout->addWidget( resourceGroup, 8, 0, 1, 2 );
 
   mResourceCombo = new QComboBox(resourceGroup);
   mResourceCombo->setWhatsThis(
@@ -717,7 +717,7 @@ void KOPrefsDialogColors::usrReadConfig()
 void KOPrefsDialogColors::updateCategories()
 {
   mCategoryCombo->clear();
-  mCategoryCombo->insertStringList(KOPrefs::instance()->mCustomCategories);
+  mCategoryCombo->addItems( KOPrefs::instance()->mCustomCategories );
   updateCategoryColor();
 }
 
@@ -812,18 +812,18 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( KInstance *inst, QWi
   KPrefsWidBool *useGroupwareBool =
       addWidBool( KOPrefs::instance()->useGroupwareCommunicationItem(),
       topFrame );
-  topLayout->addMultiCellWidget(useGroupwareBool->checkBox(),0,0,0,1);
+  topLayout->addWidget( useGroupwareBool->checkBox(), 0, 0, 1, 2 );
   // FIXME: This radio button should only be available when KMail is chosen
 //   connect(thekmailradiobuttonupthere,SIGNAL(toggled(bool)),
 //           useGroupwareBool->checkBox(), SLOT(enabled(bool)));
 
   KPrefsWidBool *bcc =
       addWidBool( KOPrefs::instance()->bccItem(), topFrame );
-  topLayout->addMultiCellWidget(bcc->checkBox(),1,1,0,1);
+  topLayout->addWidget( bcc->checkBox(), 1,0, 1, 2 );
 
   KPrefsWidRadios *mailClientGroup =
       addWidRadios( KOPrefs::instance()->mailClientItem(), topFrame );
-  topLayout->addMultiCellWidget(mailClientGroup->groupBox(),2,2,0,1);
+  topLayout->addWidget( mailClientGroup->groupBox(), 2, 0, 1, 2 );
 
 
 #if 0
@@ -833,7 +833,7 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( KInstance *inst, QWi
   schedulerGroup->addRadio("Dummy"); // Only for debugging
   schedulerGroup->addRadio(i18n("Mail client"));
 
-  topLayout->addMultiCellWidget(schedulerGroup->groupBox(),0,0,0,1);
+  topLayout->addWidget( schedulerGroup->groupBox(), 0, 0, 1, 2 );
 #endif
 
   QLabel *aMailsLabel = new QLabel(i18n("Additional email addresses:"),topFrame);
@@ -845,12 +845,12 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( KInstance *inst, QWi
                             "list this address here so KOrganizer can "
                             "recognize it as yours." );
   aMailsLabel->setWhatsThis( whatsThis );
-  topLayout->addMultiCellWidget(aMailsLabel,3,3,0,1);
+  topLayout->addWidget( aMailsLabel, 3, 0, 1, 2 );
   mAMails = new Q3ListView(topFrame);
   mAMails->setWhatsThis( whatsThis );
 
   mAMails->addColumn(i18n("Email"),300);
-  topLayout->addMultiCellWidget(mAMails,4,4,0,1);
+  topLayout->addWidget( mAMails, 4, 0, 1, 2 );
 
   QLabel *aEmailsEditLabel = new QLabel(i18n("Additional email address:"),topFrame);
   whatsThis = i18n( "Edit additional e-mails addresses here. To edit an "

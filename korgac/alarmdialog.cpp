@@ -57,10 +57,11 @@
 #include "alarmdialog.h"
 #include "alarmdialog.moc"
 
-AlarmDialog::AlarmDialog( QWidget *parent, const char *name )
+AlarmDialog::AlarmDialog( QWidget *parent )
+// TODO_QT4: Use constructor without *name=0 param
   : KDialogBase( Plain, Qt::WType_TopLevel | Qt::WStyle_Customize | Qt::WStyle_StaysOnTop |
                  Qt::WStyle_DialogBorder,
-                 parent, name, false, i18n("Reminder"), Ok | User1 | User2/* | User3*/, User1/*3*/,
+                 parent, /*name*/0, false, i18n("Reminder"), Ok | User1 | User2/* | User3*/, User1/*3*/,
                  false, i18n("Suspend"), i18n("Edit...") ),
                  mSuspendTimer(this)
 {
@@ -80,14 +81,15 @@ AlarmDialog::AlarmDialog( QWidget *parent, const char *name )
   topLayout->addWidget( suspendBox );
 
   new QLabel( i18n("Suspend duration:"), suspendBox );
-  mSuspendSpin = new QSpinBox( 1, 9999, 1, suspendBox );
+  mSuspendSpin = new QSpinBox( suspendBox );
+  mSuspendSpin->setRange( 1, 9999 );
   mSuspendSpin->setValue( 5 );  // default suspend duration
 
   mSuspendUnit = new KComboBox( suspendBox );
-  mSuspendUnit->insertItem( i18n("minute(s)") );
-  mSuspendUnit->insertItem( i18n("hour(s)") );
-  mSuspendUnit->insertItem( i18n("day(s)") );
-  mSuspendUnit->insertItem( i18n("week(s)") );
+  mSuspendUnit->addItem( i18n("minute(s)") );
+  mSuspendUnit->addItem( i18n("hour(s)") );
+  mSuspendUnit->addItem( i18n("day(s)") );
+  mSuspendUnit->addItem( i18n("week(s)") );
 
   connect( mSuspendSpin, SIGNAL( valueChanged(int) ), actionButton(User1), SLOT( setFocus() ) );
   connect( mSuspendUnit, SIGNAL( activated(int) ), actionButton(User1), SLOT( setFocus() ) );
@@ -126,7 +128,7 @@ void AlarmDialog::slotUser1()
     return;
 
   int unit=1;
-  switch (mSuspendUnit->currentItem()) {
+  switch ( mSuspendUnit->currentIndex() ) {
     case 3: // weeks
       unit *=  7;
     case 2: // days
@@ -146,7 +148,8 @@ void AlarmDialog::slotUser1()
 void AlarmDialog::setTimer( int seconds )
 {
   connect( &mSuspendTimer, SIGNAL( timeout() ), SLOT( show() ) );
-  mSuspendTimer.start( 1000 * seconds, true );
+  mSuspendTimer.setSingleShot( true );
+  mSuspendTimer.start( 1000 * seconds );
   mRemindAt = QDateTime::currentDateTime();
   mRemindAt = mRemindAt.addSecs( seconds );
 }

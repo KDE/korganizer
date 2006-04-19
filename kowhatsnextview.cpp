@@ -62,9 +62,8 @@ void WhatsNextTextBrowser::setSource(const QString& n)
   }
 }
 
-KOWhatsNextView::KOWhatsNextView(Calendar *calendar, QWidget *parent,
-                                 const char *name)
-  : KOrg::BaseView(calendar, parent, name)
+KOWhatsNextView::KOWhatsNextView(Calendar *calendar, QWidget *parent )
+  : KOrg::BaseView(calendar, parent )
 {
 //  QLabel *dateLabel =
 //      new QLabel(KGlobal::locale()->formatDate(QDate::currentDate()),this);

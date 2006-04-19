@@ -43,8 +43,8 @@ using namespace KOrg;
 
 //---------------------------------------------------------------------------
 
-KOEventView::KOEventView(Calendar *cal,QWidget *parent,const char *name)
-  : KOrg::BaseView(cal,parent,name)
+KOEventView::KOEventView(Calendar *cal,QWidget *parent )
+  : KOrg::BaseView( cal, parent )
 {
 }
 

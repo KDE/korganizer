@@ -71,9 +71,8 @@
 using namespace KCal;
 
 FreeBusyDownloadJob::FreeBusyDownloadJob( const QString &email, const KUrl &url,
-                                          FreeBusyManager *manager,
-                                          const char *name )
-  : QObject( manager, name ), mManager( manager ), mEmail( email )
+                                          FreeBusyManager *manager )
+  : QObject( manager ), mManager( manager ), mEmail( email )
 {
   KIO::Job *job = KIO::get( url, false, false );
   connect( job, SIGNAL( result( KIO::Job * ) ),
@@ -116,8 +115,7 @@ void FreeBusyDownloadJob::slotResult( KIO::Job *job )
 }
 
 
-FreeBusyManager::FreeBusyManager( QObject *parent, const char *name )
-  : QObject( parent, name ),
+FreeBusyManager::FreeBusyManager( QObject *parent ) : QObject( parent ),
     mCalendar( 0 ), mTimerID( 0 ), mUploadingFreeBusy( false )
 {
 }
@@ -373,8 +371,8 @@ bool FreeBusyManager::processRetrieveQueue()
     return false;
   }
 
-  FreeBusyDownloadJob *job = new FreeBusyDownloadJob( email, sourceURL, this,
-                                                      "freebusy_download_job" );
+  FreeBusyDownloadJob *job = new FreeBusyDownloadJob( email, sourceURL, this );
+  job->setObjectName ( "freebusy_download_job" );
   connect( job, SIGNAL( freeBusyDownloaded( KCal::FreeBusy *,
                                             const QString & ) ),
 	   SIGNAL( freeBusyRetrieved( KCal::FreeBusy *, const QString & ) ) );

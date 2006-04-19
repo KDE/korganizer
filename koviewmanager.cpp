@@ -260,8 +260,8 @@ void KOViewManager::addView(KOrg::BaseView *view)
 void KOViewManager::showWhatsNextView()
 {
   if (!mWhatsNextView) {
-    mWhatsNextView = new KOWhatsNextView(mMainView->calendar(),mMainView->viewStack(),
-                                         "KOViewManager::WhatsNextView");
+    mWhatsNextView = new KOWhatsNextView(mMainView->calendar(),mMainView->viewStack() );
+    mWhatsNextView->setObjectName( "KOViewManager::WhatsNextView" );
     addView(mWhatsNextView);
   }
   showView(mWhatsNextView);
@@ -270,7 +270,8 @@ void KOViewManager::showWhatsNextView()
 void KOViewManager::showListView()
 {
   if (!mListView) {
-    mListView = new KOListView(mMainView->calendar(), mMainView->viewStack(), "KOViewManager::ListView");
+    mListView = new KOListView(mMainView->calendar(), mMainView->viewStack() );
+    mListView->setObjectName( "KOViewManager::ListView"  );
     addView(mListView);
   }
   showView(mListView);
@@ -279,7 +280,8 @@ void KOViewManager::showListView()
 void KOViewManager::showAgendaView()
 {
   if (!mAgendaView) {
-    mAgendaView = new KOAgendaView(mMainView->calendar(), mMainView->viewStack(), "KOViewManager::AgendaView");
+    mAgendaView = new KOAgendaView(mMainView->calendar(), mMainView->viewStack() );;
+    mAgendaView->setObjectName( "KOViewManager::AgendaView" );
 
     addView(mAgendaView);
 
@@ -324,7 +326,8 @@ void KOViewManager::showNextXView()
 void KOViewManager::showMonthView()
 {
   if (!mMonthView) {
-    mMonthView = new KOMonthView(mMainView->calendar(), mMainView->viewStack(), "KOViewManager::MonthView");
+    mMonthView = new KOMonthView(mMainView->calendar(), mMainView->viewStack() );
+    mMonthView->setObjectName( "KOViewManager::MonthView" );
     addView(mMonthView);
   }
 
@@ -350,8 +353,8 @@ void KOViewManager::showTodoView()
 void KOViewManager::showJournalView()
 {
   if (!mJournalView) {
-    mJournalView = new KOJournalView(mMainView->calendar(),mMainView->viewStack(),
-                                     "KOViewManager::JournalView");
+    mJournalView = new KOJournalView(mMainView->calendar(),mMainView->viewStack() );
+    mJournalView->setObjectName( "KOViewManager::JournalView" );
     addView(mJournalView);
   }
 

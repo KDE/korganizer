@@ -51,8 +51,7 @@ class TimeLabels : public Q3ScrollView
 {
     Q_OBJECT
   public:
-    TimeLabels( int rows, QWidget *parent = 0, const char *name = 0,
-                Qt::WFlags f = 0 );
+    TimeLabels( int rows, QWidget *parent = 0, Qt::WFlags f = 0 );
 
     void setCellHeight( int height );
 
@@ -96,8 +95,7 @@ class EventIndicator : public QFrame
     Q_OBJECT
   public:
     enum Location { Top, Bottom };
-    EventIndicator( Location loc = Top, QWidget *parent = 0,
-                    const char *name = 0 );
+    EventIndicator( Location loc = Top, QWidget *parent = 0 );
     virtual ~EventIndicator();
 
     void changeColumns( int columns );
@@ -122,7 +120,7 @@ class KOAlternateLabel : public QLabel
   public:
     KOAlternateLabel( const QString &shortlabel, const QString &longlabel,
                       const QString &extensivelabel = QString(),
-                      QWidget *parent = 0, const char *name = 0 );
+                      QWidget *parent = 0 );
     ~KOAlternateLabel();
 
     virtual QSize minimumSizeHint() const;
@@ -149,7 +147,7 @@ class KOAgendaView : public KOEventView
 {
     Q_OBJECT
   public:
-    KOAgendaView( Calendar *cal, QWidget *parent = 0, const char *name = 0 );
+    KOAgendaView( Calendar *cal, QWidget *parent = 0 );
     virtual ~KOAgendaView();
 
 

@@ -177,9 +177,8 @@ void FreeBusyItem::setFreeBusyPeriods( FreeBusy* fb )
 }
 
 
-KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent,
-                                    const char *name )
-  : QWidget( parent, name )
+KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent )
+  : QWidget( parent )
 {
   QVBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->setSpacing( spacing );

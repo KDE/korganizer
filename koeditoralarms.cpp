@@ -134,9 +134,9 @@ void AlarmListViewItem::construct()
 }
 
 
-KOEditorAlarms::KOEditorAlarms( KCal::Alarm::List *alarms, QWidget *parent,
-                                const char *name )
-  : KDialogBase( parent, name, true, i18n("Edit Reminders"), Ok | Apply | Cancel ), mAlarms( alarms )
+KOEditorAlarms::KOEditorAlarms( KCal::Alarm::List *alarms, QWidget *parent )
+// TODO_QT4: Use constructor without *name=0 param
+  : KDialogBase( parent, /*name*/0, true, i18n("Edit Reminders"), Ok | Apply | Cancel ), mAlarms( alarms )
 {
 #warning Port me?
 //   setMainWidget( mWidget = new Ui::KOEditorAlarms_base( this ) );

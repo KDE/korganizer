@@ -39,7 +39,7 @@ class QStackedWidget;
 class QSpinBox;
 class QRadioButton;
 class QCheckBox;
-class Q3ListBox;
+class QListWidget;
 class QGroupBox;
 
 class KDateEdit;
@@ -51,7 +51,7 @@ using namespace KCal;
 class RecurBase : public QWidget
 {
   public:
-    RecurBase( QWidget *parent = 0, const char *name = 0 );
+    RecurBase( QWidget *parent = 0 );
 
     void setFrequency( int );
     int frequency();
@@ -62,9 +62,9 @@ class RecurBase : public QWidget
     QWidget *frequencyEdit();
 
   protected:
-    static QComboBox *createWeekCountCombo( QWidget *parent=0, const char *name=0 );
-    static QComboBox *createWeekdayCombo( QWidget *parent=0, const char *name=0 );
-    static QComboBox *createMonthNameCombo( QWidget *parent=0, const char *name=0 );
+    static QComboBox *createWeekCountCombo( QWidget *parent=0 );
+    static QComboBox *createWeekdayCombo( QWidget *parent=0 );
+    static QComboBox *createMonthNameCombo( QWidget *parent=0 );
     QBoxLayout *createFrequencySpinBar( QWidget *parent, QLayout *layout,
     QString everyText, QString unitText );
 
@@ -75,13 +75,13 @@ class RecurBase : public QWidget
 class RecurDaily : public RecurBase
 {
   public:
-    RecurDaily( QWidget *parent = 0, const char *name = 0 );
+    RecurDaily( QWidget *parent = 0 );
 };
 
 class RecurWeekly : public RecurBase
 {
   public:
-    RecurWeekly( QWidget *parent = 0, const char *name = 0 );
+    RecurWeekly( QWidget *parent = 0 );
 
     void setDays( const QBitArray & );
     QBitArray days();
@@ -93,7 +93,7 @@ class RecurWeekly : public RecurBase
 class RecurMonthly : public RecurBase
 {
   public:
-    RecurMonthly( QWidget *parent = 0, const char *name = 0 );
+    RecurMonthly( QWidget *parent = 0 );
 
     void setByDay( int day );
     void setByPos( int count, int weekday );
@@ -120,7 +120,7 @@ class RecurYearly : public RecurBase
   public:
     enum YearlyType { byDay, byPos, byMonth };
 
-    RecurYearly( QWidget *parent = 0, const char *name = 0 );
+    RecurYearly( QWidget *parent = 0 );
 
     void setByDay( int day );
     void setByPos( int count, int weekday, int month );
@@ -154,7 +154,7 @@ class RecurrenceChooser : public QWidget
 {
     Q_OBJECT
   public:
-    RecurrenceChooser( QWidget *parent = 0, const char *name = 0 );
+    RecurrenceChooser( QWidget *parent = 0 );
 
     enum { Daily, Weekly, Monthly, Yearly };
 
@@ -188,7 +188,7 @@ class ExceptionsWidget : public QWidget, public ExceptionsBase
 {
     Q_OBJECT
   public:
-    ExceptionsWidget( QWidget *parent = 0, const char *name = 0 );
+    ExceptionsWidget( QWidget *parent = 0 );
 
     void setDates( const DateList & );
     DateList dates();
@@ -200,14 +200,14 @@ class ExceptionsWidget : public QWidget, public ExceptionsBase
 
   private:
     KDateEdit *mExceptionDateEdit;
-    Q3ListBox *mExceptionList;
+    QListWidget *mExceptionList;
     DateList mExceptionDates;
 };
 
 class ExceptionsDialog : public KDialogBase, public ExceptionsBase
 {
   public:
-    ExceptionsDialog( QWidget *parent, const char *name = 0 );
+    ExceptionsDialog( QWidget *parent );
 
     void setDates( const DateList & );
     DateList dates();
@@ -236,7 +236,7 @@ class RecurrenceRangeWidget : public QWidget, public RecurrenceRangeBase
 {
     Q_OBJECT
   public:
-    RecurrenceRangeWidget( QWidget *parent = 0, const char *name = 0 );
+    RecurrenceRangeWidget( QWidget *parent = 0 );
 
     void setDefaults( const QDateTime &from );
 
@@ -265,7 +265,7 @@ class RecurrenceRangeWidget : public QWidget, public RecurrenceRangeBase
 class RecurrenceRangeDialog : public KDialogBase, public RecurrenceRangeBase
 {
   public:
-    RecurrenceRangeDialog( QWidget *parent = 0, const char *name = 0 );
+    RecurrenceRangeDialog( QWidget *parent = 0 );
 
     void setDefaults( const QDateTime &from );
 
@@ -286,7 +286,7 @@ class KOEditorRecurrence : public QWidget
 {
     Q_OBJECT
   public:
-    KOEditorRecurrence ( QWidget *parent = 0, const char *name = 0 );
+    KOEditorRecurrence ( QWidget *parent = 0 );
     virtual ~KOEditorRecurrence();
 
     enum { Daily, Weekly, Monthly, Yearly };

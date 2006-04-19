@@ -60,7 +60,7 @@ class FreeBusyDownloadJob : public QObject
     Q_OBJECT
   public:
     FreeBusyDownloadJob( const QString &email, const KUrl &url,
-                   FreeBusyManager *manager, const char *name = 0 );
+                   FreeBusyManager *manager );
 
     virtual ~FreeBusyDownloadJob();
 
@@ -82,7 +82,7 @@ class FreeBusyManager : public QObject, public KCal::FreeBusyCache
 {
     Q_OBJECT
   public:
-    FreeBusyManager( QObject *parent, const char *name );
+    FreeBusyManager( QObject *parent );
 
     void setCalendar( KCal::Calendar * );
 

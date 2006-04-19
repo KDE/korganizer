@@ -40,7 +40,7 @@ class TimeSpanWidget : public QWidget
 {
     Q_OBJECT
   public:
-    TimeSpanWidget( QWidget *parent=0, const char *name=0 );
+    TimeSpanWidget( QWidget *parent=0 );
     virtual ~TimeSpanWidget();
     
     void addItem( KCal::Event * );

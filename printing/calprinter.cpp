@@ -51,8 +51,9 @@
 #include "calprintdefaultplugins.h"
 
 CalPrinter::CalPrinter( QWidget *parent, Calendar *calendar, KOrg::CoreHelper *helper )
-  : QObject( parent, "CalPrinter" ), mHelper( 0 )
+  : QObject( parent ), mHelper( 0 )
 {
+  setObjectName( "CalPrinter" );
   mParent = parent;
   mConfig = new KSimpleConfig( "korganizer_printing.rc" );
   mCoreHelper = helper;
@@ -173,8 +174,9 @@ void CalPrinter::updateConfig()
 /****************************************************************************/
 
 CalPrintDialog::CalPrintDialog( KOrg::PrintPlugin::List plugins, KPrinter *p,
-                                QWidget *parent, const char *name )
-  : KDialogBase( parent, name, /*modal*/true, i18n("Print"), Ok | Cancel ),
+                                QWidget *parent )
+// TODO_QT4: Use constructor without *name=0 param
+  : KDialogBase( parent, /*name*/0, /*modal*/true, i18n("Print"), Ok | Cancel ),
     mPrinter( p ), mPrintPlugins( plugins )
 {
   KVBox *page = makeVBoxMainWidget();
@@ -190,23 +192,25 @@ CalPrintDialog::CalPrintDialog( KOrg::PrintPlugin::List plugins, KPrinter *p,
     (QSizePolicy::SizeType)5, 0, 0,
       mTypeGroup->sizePolicy().hasHeightForWidth() ) );*/
 
-  QWidget *splitterRight = new QWidget( splitter, "splitterRight" );
+  QWidget *splitterRight = new QWidget( splitter );
+  splitterRight->setObjectName( "splitterRight" );
   QGridLayout *splitterRightLayout = new QGridLayout( splitterRight );
   splitterRightLayout->setMargin( marginHint() );
   splitterRightLayout->setSpacing( spacingHint() );
 
   mConfigArea = new QStackedWidget( splitterRight);
-  splitterRightLayout->addMultiCellWidget( mConfigArea, 0,0, 0,1 );
+  splitterRightLayout->addWidget( mConfigArea, 0, 0, 1, 2);
 
-  QLabel *orientationLabel = new QLabel( i18n("Page &orientation:"),
-                                         splitterRight, "orientationLabel" );
+  QLabel *orientationLabel = new QLabel( i18n("Page &orientation:"), splitterRight );
+  orientationLabel->setObjectName( "orientationLabel" );
   splitterRightLayout->addWidget( orientationLabel, 1, 0 );
 
-  mOrientationSelection = new QComboBox( splitterRight, "orientationCombo" );
-  mOrientationSelection->insertItem( i18n("Use Default Orientation of Selected Style") );
-  mOrientationSelection->insertItem( i18n("Use Printer Default") );
-  mOrientationSelection->insertItem( i18n("Portrait") );
-  mOrientationSelection->insertItem( i18n("Landscape") );
+  mOrientationSelection = new QComboBox( splitterRight );
+  mOrientationSelection->setObjectName( "orientationCombo" );
+  mOrientationSelection->addItem( i18n("Use Default Orientation of Selected Style") );
+  mOrientationSelection->addItem( i18n("Use Printer Default") );
+  mOrientationSelection->addItem( i18n("Portrait") );
+  mOrientationSelection->addItem( i18n("Landscape") );
   splitterRightLayout->addWidget( mOrientationSelection, 1, 1 );
 
   // signals and slots connections
@@ -260,7 +264,7 @@ KOrg::PrintPlugin *CalPrintDialog::selectedPlugin()
 
 void CalPrintDialog::slotOk()
 {
-  mOrientation = (CalPrinter::ePrintOrientation)mOrientationSelection->currentItem();
+  mOrientation = (CalPrinter::ePrintOrientation)mOrientationSelection->currentIndex();
 
   KOrg::PrintPlugin::List::Iterator it = mPrintPlugins.begin();
   for ( ; it != mPrintPlugins.end(); ++it ) {

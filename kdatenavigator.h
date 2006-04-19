@@ -50,7 +50,7 @@ class KDateNavigator: public QFrame
 {
     Q_OBJECT
   public:
-    KDateNavigator( QWidget *parent = 0, const char *name = 0 );
+    KDateNavigator( QWidget *parent = 0 );
     ~KDateNavigator();
 
     /**

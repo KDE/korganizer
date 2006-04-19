@@ -29,7 +29,6 @@
 #include <qlayout.h>
 #include <q3widgetstack.h>
 
-//Added by qt3to4:
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QBoxLayout>
@@ -234,7 +233,7 @@ void KOEventEditor::newEvent( const QString &text )
 
   mGeneral->setDescription( text );
 
-  int pos = text.find( "\n" );
+  int pos = text.indexOf( '\n' );
   if ( pos > 0 ) {
     mGeneral->setSummary( text.left( pos ) );
     mGeneral->setDescription( text );

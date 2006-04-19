@@ -68,9 +68,9 @@
 //        because we want custom buttons, a Tabbed dialog, and a different
 //        headline... Maybe we should try to achieve the same without code
 //        duplication.
-ExportWebDialog::ExportWebDialog( HTMLExportSettings *settings, QWidget *parent,
-                                  const char *name)
-  : KDialogBase( Tabbed,i18n("Export Calendar as Web Page"),Help|Default|User1|Cancel, User1, parent, name, false, false, i18n("Export") ),
+ExportWebDialog::ExportWebDialog( HTMLExportSettings *settings, QWidget *parent)
+// TODO_QT4: Use constructor without *name=0 param
+  : KDialogBase( Tabbed,i18n("Export Calendar as Web Page"),Help|Default|User1|Cancel, User1, parent, 0, false, false, i18n("Export") ),
     KPrefsWidManager( settings ), mSettings( settings )
 {
   setupGeneralPage();

@@ -64,7 +64,7 @@ class Calendar;
 class MarcusBains : public QFrame {
     Q_OBJECT
   public:
-    MarcusBains( KOAgenda *agenda = 0, const char *name = 0 );
+    MarcusBains( KOAgenda *agenda = 0 );
     virtual ~MarcusBains();
 
   public slots:
@@ -85,9 +85,8 @@ class KOAgenda : public Q3ScrollView
     Q_OBJECT
   public:
     KOAgenda ( int columns, int rows, int columnSize, QWidget *parent=0,
-               const char *name = 0, Qt::WFlags f = 0 );
-    KOAgenda ( int columns, QWidget *parent = 0,
-               const char *name = 0, Qt::WFlags f = 0 );
+               Qt::WFlags f = 0 );
+    KOAgenda ( int columns, QWidget *parent = 0, Qt::WFlags f = 0 );
     virtual ~KOAgenda();
 
     Incidence *selectedIncidence() const;

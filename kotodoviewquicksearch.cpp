@@ -58,9 +58,8 @@ KAction *KOTodoListViewQuickSearch::action = 0;
 KOTodoListViewQuickSearch::KOTodoListViewQuickSearch( QWidget *parent,
                                             QList<K3ListView*> listViews,
                                             KActionCollection *actionCollection,
-                                            Calendar *calendar,
-                                            const char *name )
-  : KToolBar( parent, name ), mCategoryCombo( 0 ), mCalendar( calendar ),
+                                            Calendar *calendar )
+  : KToolBar( parent ), mCategoryCombo( 0 ), mCalendar( calendar ),
     mQuickSearchLine( 0 )
 {
   if ( !action ) {
@@ -77,17 +76,19 @@ KOTodoListViewQuickSearch::KOTodoListViewQuickSearch( QWidget *parent,
 
   layout()->setSpacing( KDialog::spacingHint() );
 
-  mSearchLabel = new QLabel( i18n("Sea&rch:"), this,
-                              "kde toolbar widget" );
+  mSearchLabel = new QLabel( i18n("Sea&rch:"), this );
+  mSearchLabel->setObjectName( "kde toolbar widget" );
 
   mQuickSearchLine = new KOTodoListViewQuickSearchLine( this, listViews );
   addWidget( mQuickSearchLine );
 
   mSearchLabel->setBuddy( mQuickSearchLine );
 
-  mCategoryLabel = new QLabel( i18n("&Category:"), this, "kde toolbar widget" );
+  mCategoryLabel = new QLabel( i18n("&Category:"), this );
+  mCategoryLabel->setObjectName( "kde toolbar widget" );
 
-  mCategoryCombo = new QComboBox( this, "quick search category combo box" );
+  mCategoryCombo = new QComboBox( this );
+  mCategoryCombo->setObjectName( "quick search category combo box" );
   fillCategories();
 
   mCategoryCombo->setCurrentIndex( 0 );
@@ -108,8 +109,8 @@ const
   while ( item ) {
     const Todo *todo = static_cast<const KOTodoViewItem *>( item )->todo();
     if ( ( mCategory.isNull() ||
-           !todo->categories().grep( QRegExp( QString( "^" ) +
-           QRegExp::escape( mCategory ) ) ).isEmpty() ) &&
+           todo->categories().indexOf( QRegExp( QString( "^" ) +
+           QRegExp::escape( mCategory ) ) ) >= 0 ) &&
            K3ListViewSearchLine::itemMatches(item, s) )
       return true;
     else
@@ -137,8 +138,8 @@ void KOTodoListViewQuickSearch::slotCategoryChanged( int index )
 
 void KOTodoListViewQuickSearch::fillCategories()
 {
-  QString current = mCategoryCombo->currentItem() > 0 ?
-    categoryList[mCategoryCombo->currentItem() - 1] : QString();
+  QString current = mCategoryCombo->currentIndex() > 0 ?
+    categoryList[mCategoryCombo->currentIndex() - 1] : QString();
   QStringList categories;
 
   CalFilter *filter = mCalendar->filter();
@@ -155,11 +156,8 @@ void KOTodoListViewQuickSearch::fillCategories()
     QStringList::Iterator jt = filterCategories.begin();
     while ( it != categories.end() && jt != filterCategories.end() )
       if ( *it == *jt ) {
-        QStringList::Iterator next = it;
-        next++;
-        categories.remove( it );
+        it = categories.erase( it );
         jt++;
-        it = next;
       } else if ( *it < *jt )
         it++;
       else if ( *it > *jt )
@@ -167,7 +165,7 @@ void KOTodoListViewQuickSearch::fillCategories()
   }
 
   CategoryHierarchyReaderQComboBox( mCategoryCombo ).read( categories );
-  mCategoryCombo->insertItem( i18n( "Any category" ), 0 );
+  mCategoryCombo->insertItem( 0, i18n( "Any category" ) );
 
   categoryList.resize( categories.count() );
   qCopy( categories.begin(), categories.end(), categoryList.begin() );
@@ -211,7 +209,7 @@ void KOTodoListViewQuickSearch::resizeEvent( QResizeEvent *e )
     slotCategoryChanged( 0 );
     mCategoryCombo->hide();
   } else {
-    slotCategoryChanged( mCategoryCombo->currentItem() );
+    slotCategoryChanged( mCategoryCombo->currentIndex() );
     mCategoryCombo->show();
   }
 
@@ -238,9 +236,10 @@ KOTodoListViewQuickSearchContainer::KOTodoListViewQuickSearchContainer(
                                KActionCollection *actionCollection,
                                Calendar *calendar)
      : QWidget( parent ), mQuickSearch( new KOTodoListViewQuickSearch(
-         this, listViews, actionCollection, calendar, "search toolbar" ) )
+         this, listViews, actionCollection, calendar ) )
 {
   setSizePolicy( QSizePolicy( QSizePolicy::Expanding, QSizePolicy::Fixed ) );
+  mQuickSearch->setObjectName( "search toolbar" );
 }
 
 KOTodoListViewQuickSearchContainer::~KOTodoListViewQuickSearchContainer()

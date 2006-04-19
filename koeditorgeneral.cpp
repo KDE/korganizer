@@ -102,7 +102,7 @@ void KOEditorGeneral::initHeader(QWidget *parent,QBoxLayout *topLayout)
 
 #if 0
   mOwnerLabel = new QLabel(i18n("Owner:"),parent);
-  headerLayout->addMultiCellWidget(mOwnerLabel,0,0,0,1);
+  headerLayout->addWidget( mOwnerLabel, 0, 0, 1, 2 );
 #endif
 
   QString whatsThis = i18n("Sets the Title of this event or to-do.");
@@ -167,7 +167,7 @@ void KOEditorGeneral::initSecrecy(QWidget *parent, QBoxLayout *topLayout)
 
   mSecrecyCombo = new QComboBox(parent);
   mSecrecyCombo->setWhatsThis( whatsThis );
-  mSecrecyCombo->insertStringList(Incidence::secrecyList());
+  mSecrecyCombo->addItems( Incidence::secrecyList() );
   secrecyLayout->addWidget(mSecrecyCombo);
   secrecyLabel->setBuddy( mSecrecyCombo );
 }
@@ -218,9 +218,9 @@ void KOEditorGeneral::initAlarm(QWidget *parent,QBoxLayout *topLayout)
 
   mAlarmIncrCombo = new QComboBox( false, simpleAlarmBox );
   mAlarmIncrCombo->setWhatsThis( whatsThis );
-  mAlarmIncrCombo->insertItem( i18n("minute(s)") );
-  mAlarmIncrCombo->insertItem( i18n("hour(s)") );
-  mAlarmIncrCombo->insertItem( i18n("day(s)") );
+  mAlarmIncrCombo->addItem( i18n("minute(s)") );
+  mAlarmIncrCombo->addItem( i18n("hour(s)") );
+  mAlarmIncrCombo->addItem( i18n("day(s)") );
 //  mAlarmIncrCombo->setMinimumHeight(20);
   connect(mAlarmButton, SIGNAL(toggled(bool)), mAlarmTimeEdit, SLOT(setEnabled(bool)));
   connect(mAlarmButton, SIGNAL(toggled(bool)), mAlarmIncrCombo, SLOT(setEnabled(bool)));

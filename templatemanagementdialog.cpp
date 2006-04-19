@@ -72,7 +72,7 @@ void TemplateManagementDialog::slotAddTemplate()
                                        i18n("Please enter a name for the new template:"),
                                        i18n("New Template"), &ok );
   if ( newTemplate.isEmpty() || !ok ) return;
-  if ( m_templates.find( newTemplate) != m_templates.end() ) {
+  if ( m_templates.contains( newTemplate ) ) {
     int rc = KMessageBox::warningContinueCancel( this, i18n("A template with that name already exists, do you want to overwrite it?."), i18n("Duplicate Template Name"), i18n("Overwrite"));
     if ( rc == KMessageBox::Cancel ) {
       QTimer::singleShot(0, this, SLOT( slotAddTemplate() ) );
@@ -99,7 +99,7 @@ void TemplateManagementDialog::slotDeleteTemplate()
   Q3ListBoxItem *const item = m_base->m_listBox->selectedItem();
   if ( !item ) return; // can't happen (TM)
   int current = m_base->m_listBox->index(item);
-  m_templates.remove( item->text() );
+  m_templates.removeAll( item->text() );
   m_base->m_listBox->removeItem( m_base->m_listBox->currentItem() );
   m_changed = true;
   m_base->m_listBox->setSelected(qMax(current -1, 0), true);

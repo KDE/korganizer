@@ -264,7 +264,7 @@ KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent )
 
   mRoleCombo = new QComboBox( false, this );
   mRoleCombo->setWhatsThis( whatsThis );
-  mRoleCombo->insertStringList( Attendee::roleList() );
+  mRoleCombo->addItems( Attendee::roleList() );
   attendeeRoleLabel->setBuddy( mRoleCombo );
   connect( mRoleCombo, SIGNAL( activated( int ) ),
            SLOT( updateAttendeeItem() ) );
@@ -277,7 +277,7 @@ KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent )
 
   mStatusCombo = new QComboBox( false, this );
   mStatusCombo->setWhatsThis( whatsThis );
-  mStatusCombo->insertStringList( Attendee::statusList() );
+  mStatusCombo->addItems( Attendee::statusList() );
   statusLabel->setBuddy( mStatusCombo );
   connect( mStatusCombo, SIGNAL( activated( int ) ),
            SLOT( updateAttendeeItem() ) );
@@ -320,10 +320,10 @@ KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent )
   buttonLayout->addWidget( mAddressBookButton );
   connect( mAddressBookButton, SIGNAL( clicked() ), SLOT( openAddressBook() ) );
 
-  topLayout->addMultiCellWidget( mOrganizerHBox, 0, 0, 0, 5 );
-  topLayout->addMultiCellWidget( mListView, 1, 1, 0, 5 );
+  topLayout->addWidget( mOrganizerHBox, 0, 0, 1, 6 );
+  topLayout->addWidget( mListView, 1, 0, 1, 6 );
   topLayout->addWidget( attendeeLabel, 2, 0 );
-  topLayout->addMultiCellWidget( mNameEdit, 2, 2, 1, 1 );
+  topLayout->addWidget( mNameEdit, 2, 1 );
 //  topLayout->addWidget( emailLabel, 3, 0 );
   topLayout->addWidget( attendeeRoleLabel, 3, 0 );
   topLayout->addWidget( mRoleCombo, 3, 1 );
@@ -335,8 +335,8 @@ KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent )
   topLayout->addWidget( statusLabel, 4, 0 );
   topLayout->addWidget( mStatusCombo, 4, 1 );
 #endif
-  topLayout->addMultiCellWidget( mRsvpButton, 5, 5, 0, 1 );
-  topLayout->addMultiCellWidget( buttonBox, 2, 4, 5, 5 );
+  topLayout->addWidget( mRsvpButton, 5, 0, 1, 2 );
+  topLayout->addWidget( buttonBox, 2, 5, 3, 1 );
 
 #ifdef KORG_NOKABC
   mAddressBookButton->hide();
@@ -657,10 +657,10 @@ void KOEditorDetails::fillOrganizerCombo()
   const QStringList lst = KOPrefs::instance()->fullEmails();
   QStringList uniqueList;
   for( QStringList::ConstIterator it = lst.begin(); it != lst.end(); ++it ) {
-    if ( uniqueList.find( *it ) == uniqueList.end() )
+    if ( !uniqueList.contains( *it ) )
       uniqueList << *it;
   }
-  mOrganizerCombo->insertStringList( uniqueList );
+  mOrganizerCombo->addItems( uniqueList );
 }
 
 #include "koeditordetails.moc"

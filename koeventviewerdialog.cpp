@@ -29,9 +29,9 @@
 
 #include <klocale.h>
 
-KOEventViewerDialog::KOEventViewerDialog( QWidget *parent, const char *name,
-                                          bool compact )
-  : KDialogBase( parent, name, false, i18n("Event Viewer"), Ok | User1 | User2, 
+KOEventViewerDialog::KOEventViewerDialog( QWidget *parent, bool compact )
+// TODO_QT4: Use constructor without *name=0 param
+  : KDialogBase( parent, 0, false, i18n("Event Viewer"), Ok | User1 | User2,
                  Ok, false, i18n("Edit"), i18n("Show in context") )
 {
   mEventViewer = new KOEventViewer( this );

@@ -55,7 +55,7 @@ StatusDialog::StatusDialog(QWidget* parent, const char* name) :
   statusLayout->addWidget( text );
 
   mStatus = new QComboBox(false,this);
-  mStatus->insertStringList(Attendee::statusList());
+  mStatus->addItems( Attendee::statusList() );
   statusLayout->addWidget( mStatus );
 
   QBoxLayout *buttonLayout = new QHBoxLayout( topLayout );
@@ -75,5 +75,5 @@ StatusDialog::~StatusDialog()
 
 Attendee::PartStat StatusDialog::status()
 {
-  return Attendee::PartStat( mStatus->currentItem() ) ;
+  return Attendee::PartStat( mStatus->currentIndex() ) ;
 }

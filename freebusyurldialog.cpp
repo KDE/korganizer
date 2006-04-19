@@ -39,10 +39,10 @@
 #include <QFrame>
 #include <QBoxLayout>
 
-FreeBusyUrlDialog::FreeBusyUrlDialog( KCal::Attendee *attendee, QWidget *parent,
-                                      const char *name )
+FreeBusyUrlDialog::FreeBusyUrlDialog( KCal::Attendee *attendee, QWidget *parent )
+// TODO_QT4: Use constructor without *name=0 param
   : KDialogBase( Plain, i18n("Edit Free/Busy Location"), Ok|Cancel, Ok, parent,
-                 name, true, false )
+                 /*name*/0, true, false )
 {
   QFrame *topFrame = plainPage();
 
@@ -61,9 +61,8 @@ void FreeBusyUrlDialog::slotOk()
 }
 
 
-FreeBusyUrlWidget::FreeBusyUrlWidget( KCal::Attendee *attendee, QWidget *parent,
-                                      const char *name )
-  : QWidget( parent, name ), mAttendee( attendee )
+FreeBusyUrlWidget::FreeBusyUrlWidget( KCal::Attendee *attendee, QWidget *parent )
+  : QWidget( parent ), mAttendee( attendee )
 {
   QBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->setSpacing( KDialog::spacingHint() );

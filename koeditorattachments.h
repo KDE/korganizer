@@ -58,8 +58,7 @@ class AttachmentEditDialog : public KDialogBase
     Q_OBJECT
   public:
     AttachmentEditDialog( AttachmentIconItem *item, 
-                          QWidget *parent, const char *name = 0, 
-                          bool modal=true );
+                          QWidget *parent, bool modal=true );
     
     void accept();
   
@@ -80,8 +79,7 @@ class KOEditorAttachments : public QWidget
 {
     Q_OBJECT
   public:
-    KOEditorAttachments( int spacing = 8, QWidget *parent = 0,
-                         const char *name = 0 );
+    KOEditorAttachments( int spacing = 8, QWidget *parent = 0 );
     ~KOEditorAttachments();
 
     void addAttachment( const QString &uri,

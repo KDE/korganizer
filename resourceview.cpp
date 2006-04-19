@@ -215,9 +215,8 @@ void ResourceItem::paintCell(QPainter *p, const QColorGroup &cg,
 }
 
 
-ResourceView::ResourceView( KCal::CalendarResources *calendar,
-                            QWidget *parent, const char *name )
-  : CalendarViewExtension( parent, name ), mCalendar( calendar )
+ResourceView::ResourceView( KCal::CalendarResources *calendar, QWidget *parent )
+  : CalendarViewExtension( parent ), mCalendar( calendar )
 {
   QBoxLayout *topLayout = new QVBoxLayout( this, 0, KDialog::spacingHint() );
 

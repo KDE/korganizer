@@ -42,8 +42,7 @@ class KOJournalView : public KOrg::BaseView
 {
     Q_OBJECT
   public:
-    KOJournalView( Calendar *calendar, QWidget *parent = 0,
-                   const char *name = 0);
+    KOJournalView( Calendar *calendar, QWidget *parent = 0 );
     ~KOJournalView();
 
     virtual int currentDateCount();

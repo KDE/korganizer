@@ -100,55 +100,53 @@ void KOEditorGeneralEvent::finishSetup()
 
 void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
 {
-  QBoxLayout *timeLayout = new QVBoxLayout(topLayout);
+  QBoxLayout *timeLayout = new QVBoxLayout( topLayout );
 
   QGroupBox *timeGroupBox = new QGroupBox( i18n("Date && Time"), parent );
   timeGroupBox->setWhatsThis(
        i18n("Sets options related to the date and time of the "
             "event or to-do.") );
-  timeLayout->addWidget(timeGroupBox);
+  timeLayout->addWidget( timeGroupBox );
 
-  QFrame *timeBoxFrame = new QFrame(timeGroupBox);
-
-  QGridLayout *layoutTimeBox = new QGridLayout(timeBoxFrame,2,3);
-  layoutTimeBox->setSpacing(topLayout->spacing());
+  QGridLayout *layoutTimeBox = new QGridLayout( timeGroupBox/*, 2, 3*/ );
+  layoutTimeBox->setSpacing( KDialog::spacingHint() );
 
 
-  mStartDateLabel = new QLabel(i18n("&Start:"),timeBoxFrame);
-  layoutTimeBox->addWidget(mStartDateLabel,0,0);
+  mStartDateLabel = new QLabel( i18n("&Start:"), timeGroupBox );
+  layoutTimeBox->addWidget( mStartDateLabel, 0, 0 );
 
-  mStartDateEdit = new KDateEdit(timeBoxFrame);
+  mStartDateEdit = new KDateEdit( timeGroupBox );
   layoutTimeBox->addWidget(mStartDateEdit,0,1);
   mStartDateLabel->setBuddy( mStartDateEdit );
 
-  mStartTimeEdit = new KTimeEdit(timeBoxFrame);
+  mStartTimeEdit = new KTimeEdit( timeGroupBox );
   layoutTimeBox->addWidget(mStartTimeEdit,0,2);
 
 
-  mEndDateLabel = new QLabel(i18n("&End:"),timeBoxFrame);
-  layoutTimeBox->addWidget(mEndDateLabel,1,0);
+  mEndDateLabel = new QLabel( i18n("&End:"), timeGroupBox );
+  layoutTimeBox->addWidget( mEndDateLabel, 1, 0 );
 
-  mEndDateEdit = new KDateEdit(timeBoxFrame);
+  mEndDateEdit = new KDateEdit( timeGroupBox );
   layoutTimeBox->addWidget(mEndDateEdit,1,1);
   mEndDateLabel->setBuddy( mEndDateEdit );
 
-  mEndTimeEdit = new KTimeEdit(timeBoxFrame);
-  layoutTimeBox->addWidget(mEndTimeEdit,1,2);
+  mEndTimeEdit = new KTimeEdit( timeGroupBox );
+  layoutTimeBox->addWidget( mEndTimeEdit, 1, 2 );
 
   QHBoxLayout *flagsBox = new QHBoxLayout();
 
-  mTimeAssociateButton = new QCheckBox(i18n("T&ime associated"),timeBoxFrame);
+  mTimeAssociateButton = new QCheckBox(i18n("T&ime associated"), timeGroupBox );
   flagsBox->addWidget(mTimeAssociateButton);
   connect(mTimeAssociateButton, SIGNAL(toggled(bool)),SLOT(associateTime(bool)));
 
-  mDurationLabel = new QLabel( timeBoxFrame );
+  mDurationLabel = new QLabel( timeGroupBox );
   if ( KOPrefs::instance()->mCompactDialogs ) {
-    layoutTimeBox->addMultiCellWidget( mDurationLabel, 3, 3, 0, 3 );
+    layoutTimeBox->addWidget( mDurationLabel, 3, 0, 1, 4 );
   } else {
     flagsBox->addWidget( mDurationLabel, 0, Qt::AlignRight );
   }
 
-  layoutTimeBox->addMultiCellLayout( flagsBox, 2, 2, 0, 3 );
+  layoutTimeBox->addLayout( flagsBox, 2, 0, 1, 4 );
 
   // time widgets are checked if they contain a valid time
   connect(mStartTimeEdit, SIGNAL(timeChanged(QTime)),
@@ -165,7 +163,7 @@ void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
 
 void KOEditorGeneralEvent::initClass(QWidget *parent,QBoxLayout *topLayout)
 {
-  QBoxLayout *classLayout = new QHBoxLayout(topLayout);
+  QBoxLayout *classLayout = new QHBoxLayout( topLayout );
 
   QLabel *freeTimeLabel = new QLabel(i18n("S&how time as:"),parent);
   QString whatsThis = i18n("Sets how this time will appear on your Free/Busy "
@@ -173,10 +171,11 @@ void KOEditorGeneralEvent::initClass(QWidget *parent,QBoxLayout *topLayout)
   freeTimeLabel->setWhatsThis( whatsThis );
   classLayout->addWidget(freeTimeLabel);
 
-  mFreeTimeCombo = new QComboBox(false, parent);
+  mFreeTimeCombo = new QComboBox( parent );
+  mFreeTimeCombo->setEditable( false );
   mFreeTimeCombo->setWhatsThis( whatsThis );
-  mFreeTimeCombo->insertItem(i18n("Busy"));
-  mFreeTimeCombo->insertItem(i18n("Free"));
+  mFreeTimeCombo->addItem( i18n("Busy") );
+  mFreeTimeCombo->addItem( i18n("Free") );
   classLayout->addWidget(mFreeTimeCombo);
   freeTimeLabel->setBuddy( mFreeTimeCombo );
 }
@@ -356,7 +355,7 @@ void KOEditorGeneralEvent::writeEvent(Event *event)
     event->setDtStart(tmpDT);
   } // check for float
 
-  event->setTransparency(mFreeTimeCombo->currentItem() > 0
+  event->setTransparency( mFreeTimeCombo->currentIndex() > 0
                          ? KCal::Event::Transparent
                          : KCal::Event::Opaque);
 

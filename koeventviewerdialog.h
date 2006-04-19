@@ -42,8 +42,7 @@ class KDE_EXPORT KOEventViewerDialog : public KDialogBase
 {
     Q_OBJECT
   public:
-    KOEventViewerDialog( QWidget *parent = 0, const char *name = 0,
-                         bool compact = false );
+    KOEventViewerDialog( QWidget *parent = 0, bool compact = false );
     virtual ~KOEventViewerDialog();
 
     void setIncidence( Incidence *incidence ) { mEventViewer->setIncidence( incidence ); }

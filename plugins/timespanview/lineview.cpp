@@ -31,8 +31,7 @@
 #include "lineview.h"
 #include "lineview.moc"
 
-LineView::LineView( QWidget *parent, const char *name ) :
-  Q3ScrollView( parent, name )
+LineView::LineView( QWidget *parent ) : Q3ScrollView( parent )
 {
   mPixelWidth = 1000;
 

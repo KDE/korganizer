@@ -196,10 +196,10 @@ bool KOMailClient::send(const QString &from,const QString &to,
       if (!kMailOpenComposer(to,"",bcc ? from : "",subject,body,0,KUrl())) return false;
     } else {
       QString meth;
-      int idx = attachment.find("METHOD");
+      int idx = attachment.indexOf( "METHOD" );
       if (idx>=0) {
-        idx = attachment.find(':',idx)+1;
-        meth = attachment.mid(idx,attachment.find('\n',idx)-idx);
+        idx = attachment.indexOf( ':', idx )+1;
+        meth = attachment.mid( idx, attachment.indexOf( '\n', idx ) - idx );
         meth = meth.toLower();
       } else {
         meth = "publish";

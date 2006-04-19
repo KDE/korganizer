@@ -43,8 +43,7 @@
 #include "timespanwidget.h"
 #include "timespanwidget.moc"
 
-TimeSpanWidget::TimeSpanWidget( QWidget *parent, const char *name ) :
-  QWidget( parent, name )
+TimeSpanWidget::TimeSpanWidget( QWidget *parent ) : QWidget( parent )
 {
   QBoxLayout *topLayout = new QVBoxLayout( this );
 

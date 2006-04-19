@@ -37,10 +37,9 @@ namespace KOrg {
 class CalendarViewBase : public QWidget
 {
   public:
-    CalendarViewBase( QWidget *parent, const char *name )
-      : QWidget( parent, name ) {}
+    CalendarViewBase( QWidget *parent ) : QWidget( parent ) {}
     virtual ~CalendarViewBase() {}
-  
+
     virtual KCal::Calendar *calendar() = 0;
 
     virtual QDate startDate() = 0;

@@ -61,7 +61,7 @@
 class JournalTitleLable : public KActiveLabel
 {
 public:
-  JournalTitleLable( QWidget *parent, const char *name=0 ) : KActiveLabel( parent ) {}
+  JournalTitleLable( QWidget *parent ) : KActiveLabel( parent ) {}
 
   void openLink( const QString &/*link*/ ) {}
 };
@@ -231,7 +231,7 @@ JournalEntry::JournalEntry( Journal* j, QWidget *parent ) :
 
 
   mEditor = new KTextEdit(this);
-  mLayout->addMultiCellWidget( mEditor, 1, 2, 0, 5 );
+  mLayout->addWidget( mEditor, 1, 0, 2, 6 );
 
   connect( mTitleEdit, SIGNAL(textChanged( const QString& )), SLOT(setDirty()) );
   connect( mTimeCheck, SIGNAL(toggled(bool)), SLOT(setDirty()) );

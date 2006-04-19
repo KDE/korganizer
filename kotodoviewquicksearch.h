@@ -70,8 +70,7 @@ class KOTodoListViewQuickSearch : public KToolBar
     KOTodoListViewQuickSearch( QWidget *parent,
                                QList<K3ListView*> listViews,
                                KActionCollection *actionCollection,
-                               Calendar *calendar,
-                               const char *name = 0 );
+                               Calendar *calendar );
     virtual ~KOTodoListViewQuickSearch();
 
     void setCalendar( Calendar *calendar );

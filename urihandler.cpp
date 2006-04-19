@@ -54,10 +54,10 @@ bool UriHandler::process( const QString &uri )
     KToolInvocation::startServiceByDesktopPath("kmail");
 
     // parse string, show
-    int colon = uri.find( ':' );
+    int colon = uri.indexOf( ':' );
     // extract 'number' from 'kmail:<number>/<id>'
     QString serialNumberStr = uri.mid( colon + 1 );
-    serialNumberStr = serialNumberStr.left( serialNumberStr.find( '/' ) );
+    serialNumberStr = serialNumberStr.left( serialNumberStr.indexOf( '/' ) );
 
     KMailIface_stub kmailIface( "kmail", "KMailIface" );
     kmailIface.showMail( serialNumberStr.toUInt(), QString() );

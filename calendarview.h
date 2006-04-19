@@ -61,13 +61,12 @@ using namespace KCal;
 class CalendarViewExtension : public QWidget
 {
   public:
-    CalendarViewExtension( QWidget *parent, const char *name = 0 )
-      : QWidget( parent, name ) {}
+    CalendarViewExtension( QWidget *parent ) : QWidget( parent ) {}
 
     class Factory
     {
       public:
-		virtual ~Factory() {}
+        virtual ~Factory() {}
         virtual CalendarViewExtension *create( QWidget *parent ) = 0;
     };
 };
@@ -91,7 +90,7 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
       @param parent   parent window
       @param name     Qt internal widget object name
     */
-    CalendarView( QWidget *parent = 0, const char *name = 0 );
+    CalendarView( QWidget *parent = 0 );
     virtual ~CalendarView();
 
 

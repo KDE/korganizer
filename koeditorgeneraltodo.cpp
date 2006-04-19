@@ -156,7 +156,7 @@ void KOEditorGeneralTodo::initTime(QWidget *parent,QBoxLayout *topLayout)
   mTimeButton->setWhatsThis(
                    i18n("Sets whether or not this to-do's start and due dates "
                         "have times associated with them.") );
-  layoutTimeBox->addMultiCellWidget(mTimeButton,2,2,0,2);
+  layoutTimeBox->addWidget( mTimeButton, 2, 0, 1, 3 );
 
   connect(mTimeButton,SIGNAL(toggled(bool)),SLOT(enableTimeEdits(bool)));
   connect(mTimeButton,SIGNAL(toggled(bool)),SLOT(dateChanged()));
@@ -175,7 +175,7 @@ void KOEditorGeneralTodo::initCompletion(QWidget *parent, QBoxLayout *topLayout)
   for (int i = 0; i <= 100; i+=10) {
     // xgettext:no-c-format
     QString label = i18nc("Percent complete", "%1 %", i);
-    mCompletedCombo->insertItem(label);
+    mCompletedCombo->addItem( label );
   }
   connect(mCompletedCombo,SIGNAL(activated(int)),SLOT(completedChanged(int)));
   topLayout->addWidget(mCompletedCombo);
@@ -201,16 +201,16 @@ void KOEditorGeneralTodo::initPriority(QWidget *parent, QBoxLayout *topLayout)
   topLayout->addWidget(priorityLabel);
 
   mPriorityCombo = new QComboBox(parent);
-  mPriorityCombo->insertItem(i18n("unspecified"));
-  mPriorityCombo->insertItem(i18n("1 (highest)"));
-  mPriorityCombo->insertItem(i18n("2"));
-  mPriorityCombo->insertItem(i18n("3"));
-  mPriorityCombo->insertItem(i18n("4"));
-  mPriorityCombo->insertItem(i18n("5 (medium)"));
-  mPriorityCombo->insertItem(i18n("6"));
-  mPriorityCombo->insertItem(i18n("7"));
-  mPriorityCombo->insertItem(i18n("8"));
-  mPriorityCombo->insertItem(i18n("9 (lowest)"));
+  mPriorityCombo->addItem( i18n("unspecified") );
+  mPriorityCombo->addItem( i18n("1 (highest)") );
+  mPriorityCombo->addItem( i18n("2") );
+  mPriorityCombo->addItem( i18n("3") );
+  mPriorityCombo->addItem( i18n("4") );
+  mPriorityCombo->addItem( i18n("5 (medium)") );
+  mPriorityCombo->addItem( i18n("6") );
+  mPriorityCombo->addItem( i18n("7") );
+  mPriorityCombo->addItem( i18n("8") );
+  mPriorityCombo->addItem( i18n("9 (lowest)") );
   topLayout->addWidget(mPriorityCombo);
   priorityLabel->setBuddy( mPriorityCombo );
 }

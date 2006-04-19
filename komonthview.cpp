@@ -94,9 +94,8 @@ void KOMonthCellToolTip::maybeTip( const QPoint & pos )
 }
 #endif
 
-KNoScrollListBox::KNoScrollListBox( QWidget *parent, const char *name )
-  : Q3ListBox( parent, name ),
-    mSqueezing( false )
+KNoScrollListBox::KNoScrollListBox( QWidget *parent )
+  : Q3ListBox( parent ), mSqueezing( false )
 {
   QPalette pal = palette();
   pal.setColor( QColorGroup::Foreground, KOPrefs::instance()->agendaBgColor().dark( 150 ) );
@@ -720,8 +719,8 @@ void MonthViewCell::contextMenu( Q3ListBoxItem *item )
 }
 
 
-KOMonthView::KOMonthView( Calendar *calendar, QWidget *parent, const char *name )
-    : KOEventView( calendar, parent, name ),
+KOMonthView::KOMonthView( Calendar *calendar, QWidget *parent )
+    : KOEventView( calendar, parent ),
       mDaysPerWeek( 7 ), mNumWeeks( 6 ), mNumCells( mDaysPerWeek * mNumWeeks ),
       mShortDayLabels( false ), mWidthLongDayLabel( 0 ), mSelectedCell( 0 )
 {
@@ -740,7 +739,7 @@ KOMonthView::KOMonthView( Calendar *calendar, QWidget *parent, const char *name 
   mLabel->setLineWidth( 0 );
   mLabel->setFrameStyle( QFrame::Plain );
 
-  dayLayout->addMultiCellWidget( mLabel, 0, 0, 0, mDaysPerWeek );
+  dayLayout->addWidget( mLabel, 0, 0, 1, mDaysPerWeek );
 
   // create the day of the week labels (Sun, Mon, etc) and add them to
   // the layout.

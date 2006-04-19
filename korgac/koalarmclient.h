@@ -45,7 +45,7 @@ class KOAlarmClient : public QObject, virtual public AlarmClientIface, public KS
 {
     Q_OBJECT
   public:
-    KOAlarmClient( QObject *parent = 0, const char *name = 0 );
+    KOAlarmClient( QObject *parent = 0 );
     ~KOAlarmClient();
 
     bool commitData( QSessionManager & );

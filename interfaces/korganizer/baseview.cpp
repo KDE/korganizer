@@ -2,7 +2,7 @@
     This file is part of the KOrganizer interfaces.
 
     Copyright (c) 1999,2001,2003 Cornelius Schumacher <schumacher@kde.org>
-		Copyright (C) 2004           Reinhold Kainhofer   <reinhold@kainhofer.com>
+    Copyright (C) 2004           Reinhold Kainhofer   <reinhold@kainhofer.com>
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Library General Public
@@ -24,8 +24,8 @@
 
 namespace KOrg {
 
-BaseView::BaseView( Calendar *cal, QWidget *parent, const char *name)
-      : QWidget( parent, name ), mCalendar( cal ), mChanger( 0 )
+BaseView::BaseView( Calendar *cal, QWidget *parent )
+      : QWidget( parent ), mCalendar( cal ), mChanger( 0 )
 {}
 
 BaseView::~BaseView()

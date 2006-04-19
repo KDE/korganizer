@@ -69,8 +69,7 @@ class KOListView : public KOEventView
 {
     Q_OBJECT
   public:
-    KOListView(Calendar *calendar, QWidget *parent = 0,
-               const char *name = 0);
+    KOListView(Calendar *calendar, QWidget *parent = 0 );
     ~KOListView();
 
     virtual int maxDatesHint();

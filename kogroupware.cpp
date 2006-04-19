@@ -94,7 +94,8 @@ KOGroupware *KOGroupware::instance()
 FreeBusyManager *KOGroupware::freeBusyManager()
 {
   if ( !mFreeBusyManager ) {
-    mFreeBusyManager = new FreeBusyManager( this, "freebusymanager" );
+    mFreeBusyManager = new FreeBusyManager( this );
+    mFreeBusyManager->setObjectName( "freebusymanager" );
     mFreeBusyManager->setCalendar( mCalendar );
     connect( mCalendar, SIGNAL( calendarChanged() ),
              mFreeBusyManager, SLOT( slotPerhapsUploadFB() ) );

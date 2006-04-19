@@ -56,9 +56,10 @@
 #include <kvbox.h>
 #include "archivedialog.moc"
 
-ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
+ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent)
+// TODO_QT4: Use constructor without *name=0 param
   : KDialogBase (Plain,i18n("Archive/Delete Past Events and To-dos"),
-                 User1|Cancel,User1,parent,name,false,true,
+                 User1|Cancel,User1,parent,0,false,true,
                  i18n("&Archive"))
 {
   mCalendar = cal;
@@ -113,10 +114,10 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
 
   mExpiryUnitsComboBox = new QComboBox(autoArchiveHBox);
   // Those items must match the "Expiry Unit" enum in the kcfg file!
-  mExpiryUnitsComboBox->insertItem(i18n("Day(s)"));
-  mExpiryUnitsComboBox->insertItem(i18n("Week(s)"));
-  mExpiryUnitsComboBox->insertItem(i18n("Month(s)"));
-  mExpiryUnitsComboBox->setEnabled(false);
+  mExpiryUnitsComboBox->addItem( i18n("Day(s)") );
+  mExpiryUnitsComboBox->addItem( i18n("Week(s)") );
+  mExpiryUnitsComboBox->addItem( i18n("Month(s)") );
+  mExpiryUnitsComboBox->setEnabled( false );
 
   QHBoxLayout *fileLayout = new QHBoxLayout(0);
   fileLayout->setSpacing(spacingHint());
@@ -202,7 +203,7 @@ void ArchiveDialog::slotUser1()
 
   KOPrefs::instance()->mAutoArchive = mAutoArchiveRB->isChecked();
   KOPrefs::instance()->mExpiryTime = mExpiryTimeNumInput->value();
-  KOPrefs::instance()->mExpiryUnit = mExpiryUnitsComboBox->currentItem();
+  KOPrefs::instance()->mExpiryUnit = mExpiryUnitsComboBox->currentIndex();
 
   if (mDeleteCb->isChecked()) {
     KOPrefs::instance()->mArchiveAction = KOPrefs::actionDelete;

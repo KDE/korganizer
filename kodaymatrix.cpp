@@ -111,8 +111,8 @@ void DynamicTip::maybeTip( const QPoint &pos )
 const int KODayMatrix::NOSELECTION = -1000;
 const int KODayMatrix::NUMDAYS = 42;
 
-KODayMatrix::KODayMatrix( QWidget *parent, const char *name )
-  : QFrame( parent, name ), mCalendar( 0 ), mStartDate( 1970, 1, 1 )
+KODayMatrix::KODayMatrix( QWidget *parent )
+  : QFrame( parent ), mCalendar( 0 ), mStartDate( 1970, 1, 1 )
 {
   // initialize dynamic arrays
   mDays = new QDate[ NUMDAYS ];

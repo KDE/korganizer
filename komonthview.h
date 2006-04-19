@@ -58,7 +58,7 @@ class KNoScrollListBox: public Q3ListBox
 {
     Q_OBJECT
   public:
-    KNoScrollListBox(QWidget *parent=0, const char *name=0);
+    KNoScrollListBox( QWidget *parent=0 );
     ~KNoScrollListBox() {}
 
     void setBackground( bool primary, bool workday );
@@ -237,7 +237,7 @@ class KOMonthView: public KOEventView
 {
     Q_OBJECT
   public:
-    KOMonthView(Calendar *cal, QWidget *parent = 0, const char *name = 0 );
+    KOMonthView(Calendar *cal, QWidget *parent = 0 );
     ~KOMonthView();
 
     /** Returns maximum number of days supported by the komonthview */

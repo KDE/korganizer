@@ -28,8 +28,8 @@
 #include "kowindowlist.h"
 #include "kowindowlist.moc"
 
-KOWindowList::KOWindowList( const char *name )
-  : QObject( 0, name ), mDefaultWindow( 0 )
+KOWindowList::KOWindowList()
+  : QObject( 0), mDefaultWindow( 0 )
 {
 //  kDebug(5850) << "KOWindowList::KOWindowList()" << endl;
 }

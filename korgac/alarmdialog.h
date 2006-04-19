@@ -42,7 +42,7 @@ class KComboBox;
 class AlarmDialog : public KDialogBase {
     Q_OBJECT
   public:
-    AlarmDialog( QWidget *parent = 0, const char *name = 0 );
+    AlarmDialog( QWidget *parent = 0 );
     virtual ~AlarmDialog();
 
     void setIncidence( Incidence *incidence );

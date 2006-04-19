@@ -38,7 +38,7 @@ class DateChecker: public QObject
 {
     Q_OBJECT
   public:
-    DateChecker( QObject *parent = 0, const char *name = 0 );
+    DateChecker( QObject *parent = 0 );
     ~DateChecker();
 
     /**

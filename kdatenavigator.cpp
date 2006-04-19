@@ -49,13 +49,13 @@
 
 #include "kdatenavigator.h"
 
-KDateNavigator::KDateNavigator( QWidget *parent, const char *name )
-  : QFrame( parent, name ), mBaseDate( 1970, 1, 1 )
+KDateNavigator::KDateNavigator( QWidget *parent )
+  : QFrame( parent ), mBaseDate( 1970, 1, 1 )
 {
   QGridLayout* topLayout = new QGridLayout( this, 8, 8 );
 
   mNavigatorBar = new NavigatorBar( this );
-  topLayout->addMultiCellWidget( mNavigatorBar, 0, 0, 0, 7 );
+  topLayout->addWidget( mNavigatorBar, 0, 0, 1, 8 );
 
   connect( mNavigatorBar, SIGNAL( goPrevYear() ), SIGNAL( goPrevYear() ) );
   connect( mNavigatorBar, SIGNAL( goPrevMonth() ), SIGNAL( goPrevMonth() ) );
@@ -85,7 +85,8 @@ KDateNavigator::KDateNavigator( QWidget *parent, const char *name )
     topLayout->addWidget( weeknos[i], i + 2, 0 );
   }
 
-  mDayMatrix = new KODayMatrix( this, "KDateNavigator::dayMatrix" );
+  mDayMatrix = new KODayMatrix( this );
+  mDayMatrix->setObjectName( "KDateNavigator::dayMatrix" );
 
   connect( mDayMatrix, SIGNAL( selected( const KCal::DateList & ) ),
            SIGNAL( datesSelected( const KCal::DateList & ) ) );
@@ -96,7 +97,7 @@ KDateNavigator::KDateNavigator( QWidget *parent, const char *name )
            SIGNAL( incidenceDroppedMove( Incidence *, const QDate & ) ) );
 
 
-  topLayout->addMultiCellWidget( mDayMatrix, 2, 7, 1, 7 );
+  topLayout->addWidget( mDayMatrix, 2, 1, 6, 7 );
 
   // read settings from configuration file.
   updateConfig();

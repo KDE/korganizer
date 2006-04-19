@@ -45,9 +45,8 @@
 #include "koglobals.h"
 using namespace KOrg;
 
-KOJournalView::KOJournalView(Calendar *calendar, QWidget *parent,
-                       const char *name)
-  : KOrg::BaseView(calendar, parent, name)
+KOJournalView::KOJournalView(Calendar *calendar, QWidget *parent )
+  : KOrg::BaseView( calendar, parent )
 {
   QVBoxLayout*topLayout = new QVBoxLayout( this );
   topLayout->setAutoAdd(true);

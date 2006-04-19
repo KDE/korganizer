@@ -517,8 +517,8 @@ void CalPrintTodos::readSettingsWidget()
     mConnectSubTodos = cfg->mConnectSubTodos->isChecked();
     mStrikeOutCompleted = cfg->mStrikeOutCompleted->isChecked();
 
-    mTodoSortField = (eTodoSortField)cfg->mSortField->currentItem();
-    mTodoSortDirection = (eTodoSortDirection)cfg->mSortDirection->currentItem();
+    mTodoSortField = (eTodoSortField)cfg->mSortField->currentIndex();
+    mTodoSortDirection = (eTodoSortDirection)cfg->mSortDirection->currentIndex();
   }
 }
 
@@ -541,15 +541,15 @@ void CalPrintTodos::setSettingsWidget()
     cfg->mConnectSubTodos->setChecked( mConnectSubTodos );
     cfg->mStrikeOutCompleted->setChecked( mStrikeOutCompleted );
 
-    cfg->mSortField->insertItem( i18n("Summary") );
-    cfg->mSortField->insertItem( i18n("Start Date") );
-    cfg->mSortField->insertItem( i18n("Due Date") );
-    cfg->mSortField->insertItem( i18n("Priority") );
-    cfg->mSortField->insertItem( i18n("Percent Complete") );
+    cfg->mSortField->addItem( i18n("Summary") );
+    cfg->mSortField->addItem( i18n("Start Date") );
+    cfg->mSortField->addItem( i18n("Due Date") );
+    cfg->mSortField->addItem( i18n("Priority") );
+    cfg->mSortField->addItem( i18n("Percent Complete") );
     cfg->mSortField->setCurrentIndex( mTodoSortField );
 
-    cfg->mSortDirection->insertItem( i18n( "Ascending" ) );
-    cfg->mSortDirection->insertItem( i18n( "Descending" ) );
+    cfg->mSortDirection->addItem( i18n( "Ascending" ) );
+    cfg->mSortDirection->addItem( i18n( "Descending" ) );
     cfg->mSortDirection->setCurrentIndex( mTodoSortDirection );
   }
 }

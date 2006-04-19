@@ -44,7 +44,7 @@ class KDE_EXPORT KOEventViewer : public Q3TextBrowser
 {
     Q_OBJECT
   public:
-    KOEventViewer( QWidget *parent = 0, const char *name = 0 );
+    KOEventViewer( QWidget *parent = 0 );
     virtual ~KOEventViewer();
 
     /**

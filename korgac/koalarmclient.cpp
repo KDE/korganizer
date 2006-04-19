@@ -40,8 +40,8 @@
 #include <qpushbutton.h>
 #include <kglobal.h>
 
-KOAlarmClient::KOAlarmClient( QObject *parent, const char *name )
-  : DCOPObject( "ac" ), QObject( parent, name )
+KOAlarmClient::KOAlarmClient( QObject *parent )
+  : DCOPObject( "ac" ), QObject( parent )
 {
   kDebug(5890) << "KOAlarmClient::KOAlarmClient()" << endl;
 
@@ -159,7 +159,7 @@ void KOAlarmClient::quit()
 
 void KOAlarmClient::slotRemove( AlarmDialog *d )
 {
-  mReminders.remove( d );
+  mReminders.removeAll( d );
   delete d;
   emit reminderCount( mReminders.count() );
 }

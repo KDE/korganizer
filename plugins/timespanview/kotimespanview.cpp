@@ -38,9 +38,8 @@
 #include "kotimespanview.h"
 #include "kotimespanview.moc"
 
-KOTimeSpanView::KOTimeSpanView(Calendar *calendar, QWidget *parent, 
-               const char *name) :
-  KOEventView( calendar, parent, name )
+KOTimeSpanView::KOTimeSpanView(Calendar *calendar, QWidget *parent) :
+  KOEventView( calendar, parent )
 {
   QBoxLayout *topLayout = new QVBoxLayout( this );
   

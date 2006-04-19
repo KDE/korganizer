@@ -49,7 +49,7 @@ class KOWindowList : public QObject
       Constructs a new list of KOrganizer windows. There should only be one
       instance of this class. The ActionManager class takes care of this.
     */
-    KOWindowList( const char *name = 0 );
+    KOWindowList();
     virtual ~KOWindowList();
 
     /**

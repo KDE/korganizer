@@ -79,7 +79,7 @@ public:
      *
      * @see setCaseSensitive()
      */
-    bool caseSensitive() const;
+    Qt::CaseSensitivity caseSensitive() const;
 
     /**
      * Returns the current list of columns that will be searched.  If the
@@ -142,7 +142,7 @@ public slots:
      *
      * @see caseSenstive()
      */
-    void setCaseSensitive(bool cs);
+    void setCaseSensitive(Qt::CaseSensitivity cs);
 
     /**
      * When a search is active on a list that's organized into a tree view if

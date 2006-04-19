@@ -63,10 +63,10 @@ class AlarmDockWindow : public KSystemTray
     QPixmap mPixmapDisabled;
     QString mName;
 
-    int mAlarmsEnabledId;
-    int mAutostartId;
-    int mSuspendAll;
-    int mDismissAll;
+    QAction *mAlarmsEnabled;
+    QAction *mAutostart;
+    QAction *mSuspendAll;
+    QAction *mDismissAll;
 };
 
 #endif

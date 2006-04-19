@@ -37,8 +37,7 @@ class FreeBusyUrlDialog : public KDialogBase
 {
     Q_OBJECT
   public:
-    FreeBusyUrlDialog( KCal::Attendee *, QWidget *parent = 0,
-                       const char *name = 0 );
+    FreeBusyUrlDialog( KCal::Attendee *, QWidget *parent = 0 );
 
   public slots:
     void slotOk();
@@ -51,8 +50,7 @@ class FreeBusyUrlWidget : public QWidget
 {
     Q_OBJECT
   public:
-    FreeBusyUrlWidget( KCal::Attendee *, QWidget *parent = 0,
-                       const char *name = 0 );
+    FreeBusyUrlWidget( KCal::Attendee *, QWidget *parent = 0 );
     ~FreeBusyUrlWidget();
 
     void loadConfig();

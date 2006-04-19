@@ -29,8 +29,7 @@
 #include "timeline.h"
 #include "timeline.moc"
 
-TimeLine::TimeLine( QWidget *parent, const char *name ) :
-  Q3ScrollView( parent, name )
+TimeLine::TimeLine( QWidget *parent ) : Q3ScrollView( parent )
 {
   mPixelWidth = 1000;
   

@@ -42,14 +42,14 @@ class KListViewNewSearchLine::KListViewNewSearchLinePrivate
 {
 public:
     KListViewNewSearchLinePrivate() :
-        caseSensitive(false),
+        caseSensitive(Qt::CaseInsensitive),
         activeSearch(false),
         keepParentsVisible(true),
         canChooseColumns(true),
         queuedSearches(0) {}
 
     QList<K3ListView *> listViews;
-    bool caseSensitive;
+    Qt::CaseSensitivity caseSensitive;
     bool activeSearch;
     bool keepParentsVisible;
     bool canChooseColumns;
@@ -102,7 +102,7 @@ KListViewNewSearchLine::~KListViewNewSearchLine()
     delete d;
 }
 
-bool KListViewNewSearchLine::caseSensitive() const
+Qt::CaseSensitivity KListViewNewSearchLine::caseSensitive() const
 {
     return d->caseSensitive;
 }
@@ -152,18 +152,12 @@ void KListViewNewSearchLine::addListView(K3ListView *lv)
 
 void KListViewNewSearchLine::removeListView(K3ListView *lv)
 {
-    if (lv) {
-        QList<K3ListView *>::Iterator it = d->listViews.find(lv);
-        
-        if ( it != d->listViews.end() ) {
-            d->listViews.remove( it );
-            checkColumns();
-
-            disconnectListView(lv);
-            
-            setEnabled(!d->listViews.isEmpty());
-        }
-    }
+  if ( lv && d->listViews.contains( lv ) ) {
+    d->listViews.removeAll( lv );
+    checkColumns();
+    disconnectListView(lv);
+    setEnabled(!d->listViews.isEmpty());
+  }
 }
 
 void KListViewNewSearchLine::updateSearch(const QString &s)
@@ -215,7 +209,7 @@ void KListViewNewSearchLine::updateSearch(K3ListView *listView)
         listView->ensureItemVisible(currentItem);
 }
 
-void KListViewNewSearchLine::setCaseSensitive(bool cs)
+void KListViewNewSearchLine::setCaseSensitive( Qt::CaseSensitivity cs)
 {
     d->caseSensitive = cs;
 }
@@ -268,14 +262,14 @@ bool KListViewNewSearchLine::itemMatches(const Q3ListViewItem *item, const QStri
         QList<int>::ConstIterator it = d->searchColumns.begin();
         for(; it != d->searchColumns.end(); ++it) {
             if(*it < item->listView()->columns() &&
-               item->text(*it).find(s, 0, d->caseSensitive) >= 0)
+               item->text(*it).indexOf(s, 0, d->caseSensitive) >= 0)
                 return true;
         }
     }
     else {
         for(int i = 0; i < item->listView()->columns(); i++) {
             if(item->listView()->columnWidth(i) > 0 &&
-               item->text(i).find(s, 0, d->caseSensitive) >= 0)
+               item->text(i).indexOf( s, 0, d->caseSensitive) >= 0)
             {
                 return true;
             }
@@ -290,14 +284,14 @@ void KListViewNewSearchLine::contextMenuEvent( QContextMenuEvent *e )
   QMenu *popup = KLineEdit::createStandardContextMenu();
 
   if (d->canChooseColumns) {
-    QMenu *subMenu = new QMenu(popup);
-    connect(subMenu, SIGNAL(activated(int)), this, SLOT(searchColumnsMenuActivated(int)));
 
-    popup->insertSeparator();
-    popup->insertItem(i18n("Search Columns"), subMenu);
-    
-    subMenu->insertItem(i18n("All Visible Columns"), KLISTVIEWSEARCHLINE_ALLVISIBLECOLUMNS_ID);
-    subMenu->insertSeparator();
+    popup->addSeparator();
+    QMenu *subMenu = popup->addMenu( i18n("Search Columns") );
+    connect( subMenu, SIGNAL(activated(int)), this, SLOT(searchColumnsMenuActivated(int)) );
+
+    // TODO_QT4: Use QAction-based calls instead
+    subMenu->insertItem( i18n("All Visible Columns"), KLISTVIEWSEARCHLINE_ALLVISIBLECOLUMNS_ID );
+    subMenu->addSeparator();
     
     bool allColumnsAreSearchColumns = true;
     // TODO Make the entry order match the actual column order
@@ -313,8 +307,8 @@ void KListViewNewSearchLine::contextMenuEvent( QContextMenuEvent *e )
               visiblePosition++;
           columnText = i18nc("Column number %1","Column No. %1", visiblePosition);
         }
-        subMenu->insertItem(columnText, visibleColumns);
-        if(d->searchColumns.isEmpty() || d->searchColumns.find(i) != d->searchColumns.end())
+        subMenu->insertItem( columnText, visibleColumns );
+        if ( d->searchColumns.isEmpty() || d->searchColumns.contains(i) )
           subMenu->setItemChecked(visibleColumns, true);
         else
           allColumnsAreSearchColumns = false;
@@ -423,7 +417,7 @@ void KListViewNewSearchLine::listViewDeleted(QObject *o)
         return;
     }
     
-    d->listViews.remove(lv);
+    d->listViews.removeAll(lv);
     setEnabled(d->listViews.isEmpty());
 }
 
@@ -436,8 +430,8 @@ void KListViewNewSearchLine::searchColumnsMenuActivated(int id)
             d->searchColumns.clear();
     }
     else {
-        if(d->searchColumns.find(id) != d->searchColumns.end())
-            d->searchColumns.remove(id);
+        if( d->searchColumns.contains(id) )
+            d->searchColumns.removeAll(id);
         else {
             if(d->searchColumns.isEmpty()) {
                 for(int i = 0; i < d->listViews.first()->columns(); i++) {
@@ -539,9 +533,8 @@ public:
 };
 
 KListViewSearchLineWidget::KListViewSearchLineWidget(K3ListView *listView,
-                                                     QWidget *parent,
-                                                     const char *name) :
-    KHBox(parent, name)
+                                                     QWidget *parent) :
+    KHBox( parent )
 {
     d = new KListViewSearchLineWidgetPrivate;
     d->listView = listView;

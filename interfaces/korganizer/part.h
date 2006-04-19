@@ -57,7 +57,7 @@ class Part : public KParts::Part
 class PartFactory : public KLibFactory
 {
   public:
-    virtual Part *create( MainWindow *parent, const char *name = 0 ) = 0;
+    virtual Part *create( MainWindow *parent ) = 0;
 
   protected:
     virtual QObject *createObject( QObject *, const char *,const char *,

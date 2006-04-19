@@ -31,8 +31,7 @@
 
 #include "datechecker.h"
 
-DateChecker::DateChecker( QObject *parent, const char *name )
-  : QObject( parent, name ), mUpdateTimer( 0 )
+DateChecker::DateChecker( QObject *parent ) : QObject( parent ), mUpdateTimer( 0 )
 {
   enableRollover( FollowMonth );
 }

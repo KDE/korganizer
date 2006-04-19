@@ -115,8 +115,8 @@
 
 using namespace KOrg;
 
-CalendarView::CalendarView( QWidget *parent, const char *name )
-  : CalendarViewBase( parent, name ),
+CalendarView::CalendarView( QWidget *parent )
+  : CalendarViewBase( parent ),
     mHistory( 0 ),
     mCalendar( CalendarNull::self() ),
     mChanger( 0 )
@@ -147,15 +147,16 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
                                  "CalendarView::LeftFrame" );
 //  mPanner->setResizeMode( mLeftSplitter, QSplitter::Stretch );
 
-  mDateNavigator = new DateNavigatorContainer( mLeftSplitter,
-                                               "CalendarView::DateNavigator" );
+  mDateNavigator = new DateNavigatorContainer( mLeftSplitter );
+  mDateNavigator->setObjectName( "CalendarView::DateNavigator" );
 
 //  mLeftSplitter->setResizeMode( mDateNavigator, QSplitter::Stretch );
   mLeftSplitter->setCollapsible( mDateNavigator, true );
   mTodoList = new KOTodoView( CalendarNull::self(), mLeftSplitter );
   mTodoList->setObjectName( "todolist" );
 
-  mEventViewer = new KOEventViewer( mLeftSplitter,"EventViewer" );
+  mEventViewer = new KOEventViewer( mLeftSplitter );
+  mEventViewer->setObjectName( "EventViewer" );
 
   KVBox *rightBox = new KVBox( mPanner );
   mNavigatorBar = new NavigatorBar( rightBox );

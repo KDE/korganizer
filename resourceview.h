@@ -102,8 +102,7 @@ class ResourceView : public CalendarViewExtension
 {
     Q_OBJECT
   public:
-    ResourceView( KCal::CalendarResources *calendar, QWidget *parent = 0,
-                  const char *name = 0 );
+    ResourceView( KCal::CalendarResources *calendar, QWidget *parent = 0 );
     ~ResourceView();
 
     KCal::CalendarResources *calendar() const { return mCalendar; }

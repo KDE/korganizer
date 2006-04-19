@@ -35,17 +35,16 @@ using namespace KOrg;
 
 class TimespanViewFactory : public KOrg::PartFactory {
   public:
-    KOrg::Part *create( KOrg::MainWindow *parent, const char *name )
+    KOrg::Part *create( KOrg::MainWindow *parent )
     {
-      return new TimespanView( parent, name );
+      return new TimespanView( parent );
     }
 };
 
 K_EXPORT_COMPONENT_FACTORY( libkorg_timespanview, TimespanViewFactory )
 
 
-TimespanView::TimespanView(KOrg::MainWindow *parent, const char *name) :
-  KOrg::Part(parent,name), mView(0)
+TimespanView::TimespanView(KOrg::MainWindow *parent ) : KOrg::Part(parent), mView(0)
 {
   setInstance( new KInstance( "korganizer" ) );
 

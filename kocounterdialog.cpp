@@ -32,8 +32,9 @@
 #include "kocounterdialog.h"
 #include "kocounterdialog.moc"
 
-KOCounterDialog::KOCounterDialog( QWidget *parent, const char *name )
-  : KDialogBase( parent, name, false, i18n("Counter-Event Viewer"),
+KOCounterDialog::KOCounterDialog( QWidget *parent )
+// TODO_QT4: Use constructor without *name=0 param
+  : KDialogBase( parent, /*name*/0, false, i18n("Counter-Event Viewer"),
                  User1 | User2, User1, false, i18n("Decline"), i18n("Accept") )
 {
   mEventViewer = new KOEventViewer( this );

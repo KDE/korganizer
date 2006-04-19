@@ -64,8 +64,9 @@ QPixmap *KOAgendaItem::organizerPxmp = 0;
 //--------------------------------------------------------------------------
 
 KOAgendaItem::KOAgendaItem( Incidence *incidence, const QDate &qd, QWidget *parent,
-                            const char *name, Qt::WFlags f ) :
-  QWidget( parent, name, f ), mIncidence( incidence ), mDate( qd ),
+                             Qt::WFlags f ) :
+  // TODO_QT4: Use constructor without *name=0 param
+  QWidget( parent, /*name*/0, f ), mIncidence( incidence ), mDate( qd ),
   mLabelText( mIncidence->summary() ), mIconAlarm( false ),
   mIconRecur( false ), mIconReadonly( false ), mIconReply( false ),
   mIconGroup( false ), mIconGroupTentative( false ), mIconOrganizer( false ),

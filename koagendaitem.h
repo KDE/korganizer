@@ -81,7 +81,7 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
 {
     Q_OBJECT
   public:
-    KOAgendaItem(Incidence *incidence, const QDate &qd, QWidget *parent, const char *name=0,
+    KOAgendaItem(Incidence *incidence, const QDate &qd, QWidget *parent,
                  Qt::WFlags f=0 );
 
     int cellXLeft() const { return mCellXLeft; }

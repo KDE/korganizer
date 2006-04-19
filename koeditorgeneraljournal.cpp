@@ -48,9 +48,7 @@
 #include <QBoxLayout>
 
 
-KOEditorGeneralJournal::KOEditorGeneralJournal( QObject *parent,
-                                                const char *name )
-  : QObject( parent, name )
+KOEditorGeneralJournal::KOEditorGeneralJournal( QObject *parent ) : QObject( parent )
 {
 }
 
@@ -158,7 +156,7 @@ void KOEditorGeneralJournal::writeJournal( Journal *journal )
 {
 //  kDebug(5850) << "KOEditorGeneralJournal::writeIncidence()" << endl;
   journal->setSummary( mSummaryEdit->text() );
-  journal->setDescription( mDescriptionEdit->text() );
+  journal->setDescription( mDescriptionEdit->toPlainText() );
   
   QDateTime tmpDT( mDateEdit->date(), QTime(0,0,0) );
   bool hasTime = mTimeCheckBox->isChecked();
@@ -174,7 +172,7 @@ void KOEditorGeneralJournal::writeJournal( Journal *journal )
 
 void KOEditorGeneralJournal::setDescription( const QString &text )
 {
-  mDescriptionEdit->setText( text );
+  mDescriptionEdit->setPlainText( text );
 }
 
 void KOEditorGeneralJournal::setSummary( const QString &text )

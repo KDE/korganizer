@@ -72,8 +72,7 @@ class KDE_EXPORT BaseView : public QWidget
       @param parent parent widget.
       @param name   name of this widget.
     */
-    BaseView( Calendar *cal, QWidget *parent = 0,
-              const char *name = 0 );
+    BaseView( Calendar *cal, QWidget *parent = 0 );
 
     /**
       Destructor.  Views will do view-specific cleanups here.

@@ -47,8 +47,7 @@
 
 #include "navigatorbar.h"
 
-ActiveLabel::ActiveLabel( QWidget *parent, const char *name )
-  : QLabel( parent, name )
+ActiveLabel::ActiveLabel( QWidget *parent ) : QLabel( parent )
 {
 }
 
@@ -58,8 +57,8 @@ void ActiveLabel::mouseReleaseEvent( QMouseEvent * )
 }
 
 
-NavigatorBar::NavigatorBar( QWidget *parent, const char *name )
-  : QWidget( parent, name ), mHasMinWidth( false )
+NavigatorBar::NavigatorBar( QWidget *parent )
+  : QWidget( parent ), mHasMinWidth( false )
 {
   QFont tfont = font();
   tfont.setPointSize( 10 );

@@ -20,7 +20,7 @@
     <number>6</number>
    </property>
    <item row="0" column="0" colspan="2" >
-    <widget class="Q3ListBox" name="mRulesList" />
+    <widget class="QListWidget" name="mRulesList" />
    </item>
    <item row="1" column="0" >
     <widget class="QPushButton" name="mNewButton" >
@@ -136,15 +136,6 @@
           <property name="whatsThis" >
            <string>Here you can give the number of days a to-do item has to be completed to be hidden from the to-do list. If you select "Immediately", all completed to-dos will be hidden. If you, for example, choose a value of 1, all to-do items will be hidden, that have been marked finished longer than 24 hours ago.</string>
           </property>
-          <property name="minimum" >
-           <number>0</number>
-          </property>
-          <property name="maximum" >
-           <number>999</number>
-          </property>
-          <property name="specialValueText" >
-           <string>Immediately</string>
-          </property>
          </widget>
         </item>
         <item>
@@ -188,9 +179,9 @@
           <number>6</number>
          </property>
          <item rowspan="2" row="2" column="0" >
-          <widget class="Q3ListBox" name="mCatList" >
+          <widget class="QListWidget" name="mCatList" >
            <property name="selectionMode" >
-            <enum>Q3ListBox::NoSelection</enum>
+            <enum>QAbstractItemView::NoSelection</enum>
            </property>
           </widget>
          </item>
@@ -275,13 +266,6 @@ Only to-dos which have least one attendee will be checked.  If you are not in th
    <class>KIntNumInput</class>
    <extends></extends>
    <header>knuminput.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>Q3ListBox</class>
-   <extends></extends>
-   <header>q3listbox.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>

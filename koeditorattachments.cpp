@@ -178,13 +178,13 @@ class AttachmentIconItem : public K3IconViewItem
 };
 
 AttachmentEditDialog::AttachmentEditDialog( AttachmentIconItem *item,
-                                            QWidget *parent, const char *name,
-                                            bool modal )
+                                            QWidget *parent, bool modal )
+// TODO_QT4: Use constructor without *name=0 param
   : KDialogBase ( KDialogBase::Plain,
                   i18n( "Properties for %1", item->label().isEmpty()
                       ? item->uri() : item->label() ),
                   KDialogBase::Ok | KDialogBase::Cancel | KDialogBase::Apply,
-                  KDialogBase::Ok, parent, name, modal ), mItem( item ),
+                  KDialogBase::Ok, parent, /*name*/0, modal ), mItem( item ),
 mURLRequester( 0 )
 {
   // based loosely on KPropertiesDialog code
@@ -210,7 +210,7 @@ mURLRequester( 0 )
   grid->addWidget( mLabelEdit, 0, 2 );
   
   KSeparator* sep = new KSeparator( Qt::Horizontal, page );
-  grid->addMultiCellWidget(sep, 1, 1, 0, 2);
+  grid->addWidget(sep, 1, 0, 1, 3 );
   
   QLabel *label = new QLabel( i18n( "Type:" ), page );
   grid->addWidget( label, 2, 0 );
@@ -236,8 +236,8 @@ mURLRequester( 0 )
                          .arg( KGlobal::locale()->formatNumber( 
                                                     size, 0 ) ), page ), 3, 2 );
     } else {
-      grid->addMultiCellWidget( new QLabel( i18n( 
-                    "Binary attachment, not supported." ), page ), 3, 3, 0, 2 );
+      grid->addWidget( new QLabel(
+              i18n( "Binary attachment, not supported." ), page ), 3, 0, 1, 3 );
     }
 #if 0
     grid->addWidget( new QLabel( QString::fromLatin1( "%1 (%2)" )
@@ -313,9 +313,8 @@ protected:
   }
 };
 
-KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent,
-                                          const char *name )
-  : QWidget( parent, name )
+KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent )
+  : QWidget( parent )
 {
   QBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->setSpacing( spacing );

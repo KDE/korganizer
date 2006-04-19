@@ -44,8 +44,8 @@
 #include <koglobals.h>
 #include <ktoolinvocation.h>
 
-KOEventViewer::KOEventViewer( QWidget *parent, const char *name )
-  : Q3TextBrowser( parent, name ), mDefaultText("")
+KOEventViewer::KOEventViewer( QWidget *parent )
+  : Q3TextBrowser( parent ), mDefaultText("")
 {
   mIncidence = 0;
 }
@@ -73,7 +73,7 @@ void KOEventViewer::writeSettings( KConfig * config )
 {
   if ( config ) {
     kDebug(5850) << " KOEventViewer: saving the zoomFactor: "<< pointSize() << endl;
-    config->setGroup( QString("EventViewer-%1").arg( name() ) );
+    config->setGroup( QString("EventViewer-%1").arg( objectName() ) );
     config->writeEntry("ZoomFactor", pointSize() );
   }
 }

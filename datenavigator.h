@@ -37,7 +37,7 @@ class DateNavigator : public QObject
 {
     Q_OBJECT
   public:
-    DateNavigator( QObject *parent = 0, const char *name = 0 );
+    DateNavigator( QObject *parent = 0 );
     ~DateNavigator();
 
     KCal::DateList selectedDates();

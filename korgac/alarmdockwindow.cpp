@@ -68,18 +68,18 @@ AlarmDockWindow::AlarmDockWindow()
   setPixmap( alarmsEnabled ? mPixmapEnabled : mPixmapDisabled );
 
   // Set up the context menu
-  mSuspendAll = contextMenu()->insertItem( i18n("Suspend All"), this, SLOT( slotSuspendAll() ) );
-  mDismissAll = contextMenu()->insertItem( i18n("Dismiss All"), this, SLOT( slotDismissAll() ) );
-  contextMenu()->setItemEnabled( mSuspendAll, false );
-  contextMenu()->setItemEnabled( mDismissAll, false );
+  mSuspendAll = contextMenu()->addAction( i18n("Suspend All"), this, SLOT( slotSuspendAll() ) );
+  mDismissAll = contextMenu()->addAction( i18n("Dismiss All"), this, SLOT( slotDismissAll() ) );
+  mSuspendAll->setEnabled( false );
+  mDismissAll->setEnabled( false );
 
-  contextMenu()->insertSeparator();
-  mAlarmsEnabledId = contextMenu()->insertItem( i18n("Reminders Enabled"), this,
+  contextMenu()->addSeparator();
+  mAlarmsEnabled = contextMenu()->addAction( i18n("Reminders Enabled"), this,
                                                 SLOT( toggleAlarmsEnabled() ) );
-  mAutostartId = contextMenu()->insertItem( i18n("Start Reminder Daemon at Login"), this,
+  mAutostart = contextMenu()->addAction( i18n("Start Reminder Daemon at Login"), this,
                                                 SLOT( toggleAutostart() ) );
-  contextMenu()->setItemChecked( mAutostartId, autostart );
-  contextMenu()->setItemChecked( mAlarmsEnabledId, alarmsEnabled );
+  mAutostart->setEnabled( autostart );
+  mAlarmsEnabled->setEnabled( alarmsEnabled );
 
   // Disable standard quit behaviour. We have to intercept the quit even, if the
   // main window is hidden.
@@ -103,18 +103,14 @@ AlarmDockWindow::~AlarmDockWindow()
 
 void AlarmDockWindow::slotUpdate( int reminders )
 {
+  mSuspendAll->setEnabled( reminders > 0 );
+  mDismissAll->setEnabled( reminders > 0 );
   if ( reminders > 0 )
   {
     this->setToolTip( i18np( "There is 1 active reminder.",
                    "There are %n active reminders.", reminders ) );
-    contextMenu()->setItemEnabled( mSuspendAll, true );
-    contextMenu()->setItemEnabled( mDismissAll, true );
-  }
-  else
-  {
+  } else {
     this->setToolTip( mName );
-    contextMenu()->setItemEnabled( mSuspendAll, false );
-    contextMenu()->setItemEnabled( mDismissAll, false );
   }
 }
 
@@ -125,8 +121,8 @@ void AlarmDockWindow::toggleAlarmsEnabled()
   KConfig *config = KGlobal::config();
   config->setGroup( "General" );
 
-  bool enabled = !contextMenu()->isItemChecked( mAlarmsEnabledId );
-  contextMenu()->setItemChecked( mAlarmsEnabledId, enabled );
+  bool enabled = !mAlarmsEnabled->isChecked();
+  mAlarmsEnabled->setChecked( enabled );
   setPixmap( enabled ? mPixmapEnabled : mPixmapDisabled );
 
   config->writeEntry( "Enabled", enabled );
@@ -135,8 +131,7 @@ void AlarmDockWindow::toggleAlarmsEnabled()
 
 void AlarmDockWindow::toggleAutostart()
 {
-  bool autostart = !contextMenu()->isItemChecked( mAutostartId );
-
+  bool autostart = !mAutostart->isChecked();
   enableAutostart( autostart );
 }
 
@@ -157,7 +152,7 @@ void AlarmDockWindow::enableAutostart( bool enable )
   config->writeEntry( "Autostart", enable );
   config->sync();
 
-  contextMenu()->setItemChecked( mAutostartId, enable );
+  mAutostart->setChecked( enable );
 }
 
 void AlarmDockWindow::mousePressEvent( QMouseEvent *e )
