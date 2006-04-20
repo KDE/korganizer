@@ -212,7 +212,9 @@ void KOEditorGeneral::initAlarm(QWidget *parent,QBoxLayout *topLayout)
 
   QString whatsThis = i18n("Sets how long before the event occurs "
                            "the reminder will be triggered.");
-  mAlarmTimeEdit = new QSpinBox( 0, 99999, 1, simpleAlarmBox, "alarmTimeEdit" );
+  mAlarmTimeEdit = new QSpinBox( simpleAlarmBox );
+  mAlarmTimeEdit->setRange( 0, 99999 );
+  mAlarmTimeEdit->setObjectName( "alarmTimeEdit" );
   mAlarmTimeEdit->setValue( 0 );
   mAlarmTimeEdit->setWhatsThis( whatsThis );
 
