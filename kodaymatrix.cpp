@@ -28,8 +28,8 @@
 
 #include <qevent.h>
 #include <qpainter.h>
-//Added by qt3to4:
 #include <QPixmap>
+#include <QApplication>
 #include <QDragLeaveEvent>
 #include <QPaintEvent>
 #include <QDragMoveEvent>
@@ -62,11 +62,6 @@
 #ifndef NODND
 #include <qcursor.h>
 #include <kmenu.h>
-#include <X11/Xlib.h>
-#include <QX11Info>
-#undef KeyPress
-#undef None
-#undef Status
 #endif
 
 // ============================================================================
@@ -464,15 +459,11 @@ void KODayMatrix::dropEvent( QDropEvent *e )
 
   int action = DRAG_CANCEL;
 
-  int root_x, root_y, win_x, win_y;
-  uint keybstate;
-  Window rootw, childw;
-  XQueryPointer( QX11Info::display(), QX11Info::appRootWindow(), &rootw, &childw,
-                 &root_x, &root_y, &win_x, &win_y, &keybstate );
+  Qt::KeyboardModifiers keyboardModifiers = QApplication::keyboardModifiers();
 
-  if ( keybstate & ControlMask ) {
+  if ( keyboardModifiers & Qt::ControlModifier ) {
     action = DRAG_COPY;
-  } else if ( keybstate & ShiftMask ) {
+  } else if ( keyboardModifiers & Qt::ShiftModifier ) {
     action = DRAG_MOVE;
   } else {
     KMenu *menu = new KMenu( this );
