@@ -472,7 +472,7 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
 
   if ( KOPrefs::instance()->compactDialogs() ) {
     mExpandButton = new QPushButton(mDummyAllDayLeft);
-    mExpandButton->setPixmap( mNotExpandedPixmap );
+    mExpandButton->setIcon( QIcon(mNotExpandedPixmap) );
     mExpandButton->setSizePolicy( QSizePolicy( QSizePolicy::Fixed,
                                   QSizePolicy::Fixed ) );
     connect( mExpandButton, SIGNAL( clicked() ), SIGNAL( toggleExpand() ) );
@@ -1674,9 +1674,9 @@ void KOAgendaView::setExpandedButton( bool expanded )
   if ( !mExpandButton ) return;
 
   if ( expanded ) {
-    mExpandButton->setPixmap( mExpandedPixmap );
+    mExpandButton->setIcon( QIcon(mExpandedPixmap) );
   } else {
-    mExpandButton->setPixmap( mNotExpandedPixmap );
+    mExpandButton->setIcon( QIcon(mNotExpandedPixmap) );
   }
 }
 
