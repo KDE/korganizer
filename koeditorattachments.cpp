@@ -194,7 +194,7 @@ mURLRequester( 0 )
   grid->setColumnStretch(0, 0);
   grid->setColumnStretch(1, 0);
   grid->setColumnStretch(2, 1);
-  grid->addColSpacing(1, KDialog::spacingHint());
+  grid->addItem( new QSpacerItem( KDialog::spacingHint(), 0 ), 0, 1 );
   vbl->addLayout(grid);
   
   mIcon = new QLabel( page );
