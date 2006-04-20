@@ -583,7 +583,7 @@ class KOPrefsDialogFonts : public KPrefsModule
       topLayout->addWidget(marcusBainsFont->preview(),3,1);
       topLayout->addWidget(marcusBainsFont->button(),3,2);
 
-      topLayout->setColStretch(1,1);
+      topLayout->setColumnStretch(1,1);
       topLayout->setRowStretch(4,1);
 
       load();

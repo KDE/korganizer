@@ -328,7 +328,7 @@ KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent )
   topLayout->addWidget( attendeeRoleLabel, 3, 0 );
   topLayout->addWidget( mRoleCombo, 3, 1 );
 #if 0
-  topLayout->setColStretch( 2, 1 );
+  topLayout->setColumnStretch( 2, 1 );
   topLayout->addWidget( statusLabel, 3, 3 );
   topLayout->addWidget( mStatusCombo, 3, 4 );
 #else

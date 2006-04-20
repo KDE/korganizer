@@ -505,7 +505,7 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
   // Create agenda
   mAgenda = new KOAgenda(1,96,KOPrefs::instance()->mHourSize,agendaFrame);
   agendaLayout->addWidget( mAgenda, 1, 1, 1, 2 );
-  agendaLayout->setColStretch(1,1);
+  agendaLayout->setColumnStretch(1,1);
 
   // Create event context menu for agenda
   mAgendaPopup = eventPopup();

@@ -162,7 +162,7 @@ void KOEditorGeneralTodo::initTime(QWidget *parent,QBoxLayout *topLayout)
   connect(mTimeButton,SIGNAL(toggled(bool)),SLOT(dateChanged()));
 
   // some more layouting
-  layoutTimeBox->setColStretch(3,1);
+  layoutTimeBox->setColumnStretch(3,1);
 }
 
 

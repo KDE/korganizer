@@ -191,9 +191,9 @@ mURLRequester( 0 )
   QWidget *page = plainPage();
   QVBoxLayout *vbl = new QVBoxLayout( page, 0, KDialog::spacingHint() );
   QGridLayout *grid = new QGridLayout(0, 3);
-  grid->setColStretch(0, 0);
-  grid->setColStretch(1, 0);
-  grid->setColStretch(2, 1);
+  grid->setColumnStretch(0, 0);
+  grid->setColumnStretch(1, 0);
+  grid->setColumnStretch(2, 1);
   grid->addColSpacing(1, KDialog::spacingHint());
   vbl->addLayout(grid);
   
