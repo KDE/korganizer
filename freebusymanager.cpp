@@ -514,7 +514,7 @@ bool FreeBusyManager::saveFreeBusy( FreeBusy *freebusy, const Person &person )
     kDebug(5850) << "Directory " << fbd << " does not exist!" << endl;
     kDebug(5850) << "Creating directory: " << fbd << endl;
 
-    if( !freeBusyDirectory.mkdir( fbd, true ) ) {
+    if( !freeBusyDirectory.mkpath( fbd ) ) {
       kDebug(5850) << "Could not create directory: " << fbd << endl;
       return false;
     }
