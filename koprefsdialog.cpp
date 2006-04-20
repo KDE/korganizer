@@ -865,13 +865,15 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( KInstance *inst, QWi
   aEmailsEdit->setEnabled(false);
   topLayout->addWidget(aEmailsEdit,5,1);
 
-  QPushButton *add = new QPushButton(i18n("New"),topFrame,"new");
+  QPushButton *add = new QPushButton( i18n("New"), topFrame );
+  add->setObjectName( "new" );
   whatsThis = i18n( "Press this button to add a new entry to the "
                     "additional e-mail addresses list. Use the edit "
                     "box above to edit the new entry." );
   add->setWhatsThis( whatsThis );
   topLayout->addWidget(add,6,0);
-  QPushButton *del = new QPushButton(i18n("Remove"),topFrame,"remove");
+  QPushButton *del = new QPushButton( i18n("Remove"), topFrame );
+  del->setObjectName( "remove" );
   del->setWhatsThis( whatsThis );
   topLayout->addWidget(del,6,1);
 
