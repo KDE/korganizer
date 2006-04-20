@@ -139,12 +139,12 @@ CalendarView::CalendarView( QWidget *parent )
 
 #ifndef KORG_NOSPLITTER
   // create the main layout frames.
-  mPanner = new QSplitter( Qt::Horizontal, this,
-                           "CalendarView::Panner" );
+  mPanner = new QSplitter( Qt::Horizontal, this );
+  mPanner->setObjectName( "CalendarView::Panner" );
   topLayout->addWidget( mPanner );
 
-  mLeftSplitter = new QSplitter( Qt::Vertical, mPanner,
-                                 "CalendarView::LeftFrame" );
+  mLeftSplitter = new QSplitter( Qt::Vertical, mPanner );
+  mLeftSplitter->setObjectName( "CalendarView::LeftFrame" );
 //  mPanner->setResizeMode( mLeftSplitter, QSplitter::Stretch );
 
   mDateNavigator = new DateNavigatorContainer( mLeftSplitter );
