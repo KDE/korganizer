@@ -486,14 +486,14 @@ FreeBusy *FreeBusyManager::loadFreeBusy( const QString &email )
 
   QFile f( fbd + "/" + email + ".ifb" );
   if ( !f.exists() ) {
-    kDebug(5850) << "FreeBusyManager::loadFreeBusy() " << f.name()
+    kDebug(5850) << "FreeBusyManager::loadFreeBusy() " << f.fileName()
               << " doesn't exist." << endl;
     return 0;
   }
 
   if ( !f.open( QIODevice::ReadOnly ) ) {
     kDebug(5850) << "FreeBusyManager::loadFreeBusy() Unable to open file "
-              << f.name() << endl;
+              << f.fileName() << endl;
     return 0;
   }
 
