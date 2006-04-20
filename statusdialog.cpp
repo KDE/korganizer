@@ -54,7 +54,8 @@ StatusDialog::StatusDialog(QWidget* parent, const char* name) :
   QLabel *text = new QLabel(i18n("Set your status"),this);
   statusLayout->addWidget( text );
 
-  mStatus = new QComboBox(false,this);
+  mStatus = new QComboBox( this );
+  mStatus->setEditable( false );
   mStatus->addItems( Attendee::statusList() );
   statusLayout->addWidget( mStatus );
 

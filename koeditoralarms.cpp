@@ -200,20 +200,20 @@ void KOEditorAlarms::readAlarm( KCal::Alarm *alarm )
   } else {
     ++beforeafterpos;
   }
-  mWidget.mBeforeAfter->setCurrentItem( beforeafterpos );
+  mWidget.mBeforeAfter->setCurrentIndex( beforeafterpos );
 
   offset = offset / 60; // make minutes
   int useoffset = offset;
 
   if ( offset % (24*60) == 0 && offset>0 ) { // divides evenly into days?
     useoffset = offset / (24*60);
-    mWidget.mOffsetUnit->setCurrentItem( 2 );
+    mWidget.mOffsetUnit->setCurrentIndex( 2 );
   } else if (offset % 60 == 0 && offset>0 ) { // divides evenly into hours?
     useoffset = offset / 60;
-    mWidget.mOffsetUnit->setCurrentItem( 1 );
+    mWidget.mOffsetUnit->setCurrentIndex( 1 );
   } else {
     useoffset = offset;
-    mWidget.mOffsetUnit->setCurrentItem( 0 );
+    mWidget.mOffsetUnit->setCurrentIndex( 0 );
   }
   mWidget.mAlarmOffset->setValue( useoffset );
 
@@ -267,12 +267,12 @@ void KOEditorAlarms::writeAlarm( KCal::Alarm *alarm )
 {
   // Offsets
   int offset = mWidget.mAlarmOffset->value()*60; // minutes
-  int offsetunit = mWidget.mOffsetUnit->currentItem();
+  int offsetunit = mWidget.mOffsetUnit->currentIndex();
   if ( offsetunit >= 1 ) offset *= 60; // hours
   if ( offsetunit >= 2 ) offset *= 24; // days
   if ( offsetunit >= 3 ) offset *= 7; // weeks
 
-  int beforeafterpos = mWidget.mBeforeAfter->currentItem();
+  int beforeafterpos = mWidget.mBeforeAfter->currentIndex();
   if ( beforeafterpos % 2 == 0 ) { // before -> negative
     offset = -offset;
   }

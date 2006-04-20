@@ -209,11 +209,11 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent )
 
   scaleCombo = new QComboBox( this ); 
   scaleCombo->setWhatsThis( whatsThis );
-  scaleCombo->insertItem( i18n( "Hour" ) );
-  scaleCombo->insertItem( i18n( "Day" ) );
-  scaleCombo->insertItem( i18n( "Week" ) );
-  scaleCombo->insertItem( i18n( "Month" ) );
-  scaleCombo->insertItem( i18n( "Automatic" ) );
+  scaleCombo->addItem( i18n( "Hour" ) );
+  scaleCombo->addItem( i18n( "Day" ) );
+  scaleCombo->addItem( i18n( "Week" ) );
+  scaleCombo->addItem( i18n( "Month" ) );
+  scaleCombo->addItem( i18n( "Automatic" ) );
   scaleCombo->setCurrentIndex( 0 ); // start with "hour"
   connect( scaleCombo, SIGNAL( activated( int ) ),
            SLOT( slotScaleChanged( int ) ) );

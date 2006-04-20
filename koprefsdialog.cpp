@@ -207,7 +207,7 @@ class KOPrefsDialogTime : public KPrefsModule
       }
     #endif // !USE_SOLARIS
 
-      mTimeZoneCombo->insertItem(i18n("[No selection]"));
+      mTimeZoneCombo->addItem(i18n("[No selection]"));
 
       // Read all system time zones
     #if defined(USE_SOLARIS)       // MARCO
@@ -242,7 +242,7 @@ class KOPrefsDialogTime : public KPrefsModule
         // find the currently set time zone and select it
       for ( int i = 0; i < mTimeZoneCombo->count(); ++i )
         {
-          if (mTimeZoneCombo->text(i) == sCurrentlySet)
+          if (mTimeZoneCombo->itemText(i) == sCurrentlySet)
             {
              nCurrentlySet = i;
              break;
@@ -298,7 +298,7 @@ class KOPrefsDialogTime : public KPrefsModule
       mHolidayCombo->addItems( holidayList );
 
       for (int i=0; i < mHolidayCombo->count(); ++i) {
-        if ( mHolidayCombo->text(i) == currentHolidayName ) {
+        if ( mHolidayCombo->itemText(i) == currentHolidayName ) {
           mHolidayCombo->setCurrentIndex(i);
           break;
         }
@@ -400,11 +400,11 @@ class KOPrefsDialogTime : public KPrefsModule
       else
         KOPrefs::instance()->mTimeZoneId = mTimeZoneCombo->currentText();
 
-      KOPrefs::instance()->mHolidays = ( mHolidayCombo->currentItem() == 0 ) ?  // (None)
+      KOPrefs::instance()->mHolidays = ( mHolidayCombo->currentIndex() == 0 ) ?  // (None)
                                        QString() :
                                        mRegionMap[mHolidayCombo->currentText()];
 
-      KOPrefs::instance()->mAlarmTime = mAlarmTimeCombo->currentItem();
+      KOPrefs::instance()->mAlarmTime = mAlarmTimeCombo->currentIndex();
       int mask = 0;
       for ( int i = 0; i < 7; ++i ) {
         if (mWorkDays[i]->isChecked()) mask = mask | (1<<i);
@@ -421,7 +421,7 @@ class KOPrefsDialogTime : public KPrefsModule
         if (i > 0) combo->setCurrentIndex(i);
       } else {
         for(int i=0;i<combo->count();++i) {
-          if (combo->text(i) == text) {
+          if (combo->itemText(i) == text) {
             combo->setCurrentIndex(i);
             break;
           }
@@ -755,13 +755,13 @@ void KOPrefsDialogColors::updateResources()
       for ( int i = 0; i < subresources.count(); ++i ) {
         QString resource = subresources[ i ];
         if ( (*it)->subresourceActive( resource ) ) {
-          mResourceCombo->insertItem( (*it)->labelForSubresource( resource ) );
+          mResourceCombo->addItem( (*it)->labelForSubresource( resource ) );
           mResourceIdentifier.append( resource );
         }
       }
     }
 
-    mResourceCombo->insertItem( (*it)->resourceName() );
+    mResourceCombo->addItem( (*it)->resourceName() );
     mResourceIdentifier.append( (*it)->identifier() );
   }
 
@@ -772,7 +772,7 @@ void KOPrefsDialogColors::setResourceColor()
 {
   kDebug( 5850) << "KOPrefsDialogColors::setResorceColor()" << endl;
 
-  mResourceDict.insert( mResourceIdentifier[mResourceCombo->currentItem()],
+  mResourceDict.insert( mResourceIdentifier[mResourceCombo->currentIndex()],
     mResourceButton->color() );
   slotWidChanged();
 }
@@ -780,7 +780,7 @@ void KOPrefsDialogColors::setResourceColor()
 void KOPrefsDialogColors::updateResourceColor()
 {
   kDebug( 5850 ) << "KOPrefsDialogColors::updateResourceColor()" << endl;
-  QString res= mResourceIdentifier[mResourceCombo->currentItem()];
+  QString res= mResourceIdentifier[mResourceCombo->currentIndex()];
   QColor color = mCategoryDict.value( res );
   if( color.isValid() )  {
     color = KOPrefs::instance()->resourceColor( res );

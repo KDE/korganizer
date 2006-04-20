@@ -365,12 +365,12 @@ void KOEditorGeneralTodo::writeTodo(Todo *todo)
       todo->setDtRecurrence( tmpDueDT );
   }
 
-  todo->setPriority( mPriorityCombo->currentItem() );
+  todo->setPriority( mPriorityCombo->currentIndex() );
 
   // set completion state
-  todo->setPercentComplete(mCompletedCombo->currentItem() * 10);
+  todo->setPercentComplete(mCompletedCombo->currentIndex() * 10);
 
-  if (mCompletedCombo->currentItem() == 10 && mCompleted.isValid()) {
+  if (mCompletedCombo->currentIndex() == 10 && mCompleted.isValid()) {
     QDateTime completed( mCompletionDateEdit->date(),
                          mCompletionTimeEdit->getTime() );
     int difference = mCompleted.secsTo( completed );
@@ -526,7 +526,7 @@ void KOEditorGeneralTodo::startDateModified()
 
 void KOEditorGeneralTodo::setCompletedDate()
 {
-  if (mCompletedCombo->currentItem() == 10 && mCompleted.isValid()) {
+  if (mCompletedCombo->currentIndex() == 10 && mCompleted.isValid()) {
     mCompletedLabel->setText(i18n("co&mpleted on"));
 //        .arg(KGlobal::locale()->formatDateTime(mCompleted)));
     mCompletionDateEdit->show();

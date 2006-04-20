@@ -218,7 +218,7 @@ void KOEditorGeneral::initAlarm(QWidget *parent,QBoxLayout *topLayout)
   mAlarmTimeEdit->setValue( 0 );
   mAlarmTimeEdit->setWhatsThis( whatsThis );
 
-  mAlarmIncrCombo = new QComboBox( false, simpleAlarmBox );
+  mAlarmIncrCombo = new QComboBox( simpleAlarmBox );
   mAlarmIncrCombo->setWhatsThis( whatsThis );
   mAlarmIncrCombo->addItem( i18n("minute(s)") );
   mAlarmIncrCombo->addItem( i18n("hour(s)") );
@@ -369,9 +369,9 @@ Alarm *KOEditorGeneral::alarmFromSimplePage() const
     alarm->setEnabled(true);
     QString tmpStr = mAlarmTimeEdit->text();
     int j = mAlarmTimeEdit->value() * -60;
-    if (mAlarmIncrCombo->currentItem() == 1)
+    if (mAlarmIncrCombo->currentIndex() == 1)
       j = j * 60;
-    else if (mAlarmIncrCombo->currentItem() == 2)
+    else if (mAlarmIncrCombo->currentIndex() == 2)
       j = j * (60 * 24);
     alarm->setStartOffset( j );
     return alarm;
@@ -387,7 +387,7 @@ void KOEditorGeneral::writeIncidence(Incidence *event)
   event->setLocation(mLocationEdit->text());
   event->setDescription(mDescriptionEdit->text());
   event->setCategories(mCategories);
-  event->setSecrecy(mSecrecyCombo->currentItem());
+  event->setSecrecy(mSecrecyCombo->currentIndex());
 
   // alarm stuff
   event->clearAlarms();

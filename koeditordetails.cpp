@@ -262,7 +262,7 @@ KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent )
   attendeeRoleLabel->setWhatsThis( whatsThis );
   attendeeRoleLabel->setText( i18n("Ro&le:") );
 
-  mRoleCombo = new QComboBox( false, this );
+  mRoleCombo = new QComboBox( this );
   mRoleCombo->setWhatsThis( whatsThis );
   mRoleCombo->addItems( Attendee::roleList() );
   attendeeRoleLabel->setBuddy( mRoleCombo );
@@ -275,7 +275,7 @@ KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent )
   statusLabel->setWhatsThis( whatsThis );
   statusLabel->setText( i18n("Stat&us:") );
 
-  mStatusCombo = new QComboBox( false, this );
+  mStatusCombo = new QComboBox( this );
   mStatusCombo->setWhatsThis( whatsThis );
   mStatusCombo->addItems( Attendee::statusList() );
   statusLabel->setBuddy( mStatusCombo );
@@ -488,14 +488,14 @@ void KOEditorDetails::readEvent( Incidence *event )
     int found = -1;
     QString fullOrganizer = event->organizer().fullName();
     for ( int i = 0 ; i < mOrganizerCombo->count(); ++i ) {
-      if ( mOrganizerCombo->text( i ) == fullOrganizer ) {
+      if ( mOrganizerCombo->itemText( i ) == fullOrganizer ) {
         found = i;
         mOrganizerCombo->setCurrentIndex( i );
         break;
       }
     }
     if ( found < 0 ) {
-      mOrganizerCombo->insertItem( fullOrganizer, 0 );
+      mOrganizerCombo->addItem( fullOrganizer, 0 );
       mOrganizerCombo->setCurrentIndex( 0 );
     }
   } else { // someone else is the organizer
@@ -638,8 +638,8 @@ void KOEditorDetails::updateAttendeeItem()
   a->setName( name );
   a->setUid( mUid );
   a->setEmail( email );
-  a->setRole( Attendee::Role( mRoleCombo->currentItem() ) );
-  a->setStatus( Attendee::PartStat( mStatusCombo->currentItem() ) );
+  a->setRole( Attendee::Role( mRoleCombo->currentIndex() ) );
+  a->setStatus( Attendee::PartStat( mStatusCombo->currentIndex() ) );
   a->setRSVP( mRsvpButton->isChecked() );
   aItem->updateItem();
   if ( mFreeBusy ) mFreeBusy->updateAttendee( a );
