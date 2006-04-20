@@ -485,7 +485,7 @@ void KOEditorAttachments::dropEvent( QDropEvent* event ) {
     menu.insertItem( i18n( "&Copy here" ), 0 );
   }
   
-  menu.insertSeparator();
+  menu.addSeparator();
   menu.insertItem( i18n( "C&ancel" ), 4 );
   
 #warning Port me!

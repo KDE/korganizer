@@ -524,7 +524,7 @@ void ResourceView::contextMenuRequested ( Q3ListViewItem *i,
     int saveId = menu->insertItem( i18n("&Save"), this,
                                    SLOT( saveResource() ) );
     menu->setItemEnabled( saveId, item->resource()->isActive() );
-    menu->insertSeparator();
+    menu->addSeparator();
 
     menu->insertItem( i18n("Show &Info"), this, SLOT( showInfo() ) );
     //FIXME: This is better on the resource dialog
@@ -539,12 +539,12 @@ void ResourceView::contextMenuRequested ( Q3ListViewItem *i,
     menu->insertItem( i18n("&Edit..."), this, SLOT( editResource() ) );
     menu->insertItem( i18n("&Remove"), this, SLOT( removeResource() ) );
     if ( item->resource() != manager->standardResource() ) {
-      menu->insertSeparator();
+      menu->addSeparator();
       menu->insertItem( i18n("Use as &Default Calendar"), this,
                         SLOT( setStandard() ) );
     }
 
-    menu->insertSeparator();
+    menu->addSeparator();
  }
   menu->insertItem( i18n("&Add..."), this, SLOT( addResource() ) );
 

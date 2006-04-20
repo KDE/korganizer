@@ -483,7 +483,7 @@ void KODayMatrix::dropEvent( QDropEvent *e )
     } else {
       menu->insertItem( i18n("Add"), DRAG_MOVE, 0 );
     }
-    menu->insertSeparator();
+    menu->addSeparator();
     menu->insertItem( KOGlobals::self()->smallIcon("cancel"), i18n("Cancel"), DRAG_CANCEL, 3 );
 #warning Port me!
 //    action = menu->exec( QCursor::pos(), 0 );

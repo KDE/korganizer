@@ -226,7 +226,7 @@ KOListView::KOListView( Calendar *calendar, QWidget *parent)
 
   mPopupMenu = eventPopup();
 /*
-  mPopupMenu->insertSeparator();
+  mPopupMenu->addSeparator();
   mPopupMenu->insertItem(i18n("Show Dates"), this,
                       SLOT(showDates()));
   mPopupMenu->insertItem(i18n("Hide Dates"), this,

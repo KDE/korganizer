@@ -87,7 +87,7 @@ void KOEventPopupMenu::addAdditionalItem(const QIcon &icon,const QString &text,
 {
   if (!mHasAdditionalItems) {
     mHasAdditionalItems = true;
-    insertSeparator();
+    addSeparator();
   }
   QAction *id = addAction(icon,text,receiver,member);
   if (editOnly) mEditOnlyItems.append(id);
