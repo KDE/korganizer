@@ -385,7 +385,8 @@ void KOEditorDetails::removeAttendee()
 void KOEditorDetails::openAddressBook()
 {
 #ifndef KORG_NOKABC
-  KPIM::AddressesDialog *dia = new KPIM::AddressesDialog( this, "adddialog" );
+  KPIM::AddressesDialog *dia = new KPIM::AddressesDialog( this );
+  dia->setObjectName( "adddialog" );
   dia->setShowCC( false );
   dia->setShowBCC( false );
   if ( dia->exec() ) {
