@@ -212,17 +212,19 @@ JournalEntry::JournalEntry( Journal* j, QWidget *parent ) :
   mTimeEdit->setWhatsThis( i18n( "Sets the time associated with this journal "
                                     " entry" ) );
 
-  mDeleteButton = new QToolButton( this, "deleteButton" );
+  mDeleteButton = new QToolButton( this );
+  mDeleteButton->setObjectName( "deleteButton" );
   QPixmap pix = KOGlobals::self()->smallIcon( "editdelete" );
-  mDeleteButton->setPixmap( pix );
+  mDeleteButton->setIcon( pix );
   mDeleteButton->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
   mDeleteButton->setToolTip( i18n("Delete this journal entry") );
   mDeleteButton->setWhatsThis( i18n("Delete this journal entry") );
   mLayout->addWidget( mDeleteButton, 0, 4 );
   connect( mDeleteButton, SIGNAL(pressed()), this, SLOT(deleteItem()) );
 
-  mEditButton = new QToolButton( this, "editButton" );
-  mEditButton->setPixmap( KOGlobals::self()->smallIcon( "edit" ) );
+  mEditButton = new QToolButton( this );
+  mEditButton->setObjectName( "editButton" );
+  mEditButton->setIcon( KOGlobals::self()->smallIcon( "edit" ) );
   mEditButton->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
   mEditButton->setToolTip( i18n("Edit this journal entry") );
   mEditButton->setWhatsThis( i18n("Opens an editor dialog for this journal entry") );
