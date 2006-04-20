@@ -1931,16 +1931,16 @@ void KOAgenda::keyPressEvent( QKeyEvent *kev )
 {
   switch(kev->key()) {
     case Qt::Key_PageDown:
-      verticalScrollBar()->addPage();
+      verticalScrollBar()->triggerAction(QAbstractSlider::SliderPageStepAdd);
       break;
     case Qt::Key_PageUp:
-      verticalScrollBar()->subtractPage();
+      verticalScrollBar()->triggerAction(QAbstractSlider::SliderPageStepSub);
       break;
     case Qt::Key_Down:
-      verticalScrollBar()->addLine();
+      verticalScrollBar()->triggerAction(QAbstractSlider::SliderSingleStepAdd);
       break;
     case Qt::Key_Up:
-      verticalScrollBar()->subtractLine();
+      verticalScrollBar()->triggerAction(QAbstractSlider::SliderSingleStepSub);
       break;
     default:
       ;
