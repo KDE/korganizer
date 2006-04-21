@@ -78,6 +78,7 @@ KOPrefs::KOPrefs() :
 
   // Load it now, not deep within some painting code
   KABC::StdAddressBook::self();
+  KABC::Addressee mMe = KABC::StdAddressBook::self()->whoAmI();
 }
 
 
@@ -298,7 +299,7 @@ QStringList KOPrefs::allEmails()
   // Add emails configured in korganizer
   lst += mAdditionalMails;
   // Add emails from the user's kaddressbook entry
-  lst += KABC::StdAddressBook::self()->whoAmI().emails();
+  lst += mMe.emails();
 
   // Warning, this list could contain duplicates.
   return lst;
@@ -324,10 +325,9 @@ QStringList KOPrefs::fullEmails()
     fullEmails << QString("%1 <%2>").arg( fullName() ).arg( *it );
   }
   // Add emails from the user's kaddressbook entry
-  KABC::Addressee me = KABC::StdAddressBook::self()->whoAmI();
-  lst = me.emails();
+  lst = mMe.emails();
   for ( it = lst.begin(); it != lst.end(); ++it ) {
-    fullEmails << me.fullEmail( *it );
+    fullEmails << mMe.fullEmail( *it );
   }
 
   // Warning, this list could contain duplicates.
@@ -342,7 +342,7 @@ bool KOPrefs::thatIsMe( const QString& _email )
   QString email = KPIM::getEmailAddr( _email );
   if ( mAdditionalMails.find( email ) != mAdditionalMails.end() )
     return true;
-  QStringList lst = KABC::StdAddressBook::self()->whoAmI().emails();
+  QStringList lst = mMe.emails();
   if ( lst.find( email ) != lst.end() )
     return true;
   return false;

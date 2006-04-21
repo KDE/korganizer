@@ -27,6 +27,7 @@
 #include <qdict.h>
 
 #include "koprefs_base.h"
+#include "kabc/stdaddressbook.h"
 
 class KConfig;
 class QFont;
@@ -95,6 +96,7 @@ class KOPrefs : public KOPrefsBase
     QColor mDefaultCategoryColor;
 
     QFont mDefaultMonthViewFont;
+    KABC::Addressee mMe;
 
   public: // Do not use - except in KOPrefsDialogMain
     QString mName;
