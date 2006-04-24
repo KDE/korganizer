@@ -143,7 +143,7 @@ class AttachmentIconItem : public K3IconViewItem
     static QPixmap icon( KMimeType::Ptr mimeType, const QString &uri, 
                          bool local = false )
     {
-      QString iconStr = mimeType->icon( uri, false );
+      QString iconStr = mimeType->icon( uri );
       return KGlobal::iconLoader()->loadIcon( iconStr, K3Icon::Desktop, 0, 
                                               K3Icon::DefaultState | ( 
                                                 ( uri.isNull() || local ) ? 0 : 
