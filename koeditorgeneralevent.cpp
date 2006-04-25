@@ -108,7 +108,7 @@ void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
             "event or to-do.") );
   timeLayout->addWidget( timeGroupBox );
 
-  QGridLayout *layoutTimeBox = new QGridLayout( timeGroupBox/*, 2, 3*/ );
+  QGridLayout *layoutTimeBox = new QGridLayout( timeGroupBox );
   layoutTimeBox->setSpacing( KDialog::spacingHint() );
 
 
