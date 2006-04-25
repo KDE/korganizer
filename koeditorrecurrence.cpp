@@ -242,7 +242,7 @@ RecurMonthly::RecurMonthly( QWidget *parent ) : RecurBase( parent )
 //  buttonGroup->setFrameStyle( QFrame::NoFrame );
   topLayout->addWidget( buttonGroup, 1, Qt::AlignVCenter );
 
-  QGridLayout *buttonLayout = new QGridLayout( buttonGroup, 3, 2 );
+  QGridLayout *buttonLayout = new QGridLayout( buttonGroup );
   buttonLayout->setSpacing( KDialog::spacingHint() );
 
 

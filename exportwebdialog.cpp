@@ -137,7 +137,8 @@ void ExportWebDialog::slotDefault()
 void ExportWebDialog::setupGeneralPage()
 {
   mGeneralPage = addPage( i18n("General") );
-  QVBoxLayout *topLayout = new QVBoxLayout(mGeneralPage, 10);
+  QVBoxLayout *topLayout = new QVBoxLayout(mGeneralPage);
+  topLayout->setSpacing(10);
 
   QGroupBox *rangeGroup = new QGroupBox( i18n("Date Range"), mGeneralPage );
   topLayout->addWidget( rangeGroup );
@@ -173,7 +174,8 @@ void ExportWebDialog::slotTextChanged( const QString & _text)
 void ExportWebDialog::setupTodoPage()
 {
   mTodoPage = addPage(i18n("To-dos"));
-  QVBoxLayout *topLayout = new QVBoxLayout( mTodoPage, 10 );
+  QVBoxLayout *topLayout = new QVBoxLayout( mTodoPage );
+  topLayout->setSpacing( 10 );
 
   KHBox *hbox = new KHBox( mTodoPage );
   topLayout->addWidget( hbox );
@@ -194,7 +196,8 @@ void ExportWebDialog::setupTodoPage()
 void ExportWebDialog::setupEventPage()
 {
   mEventPage = addPage(i18n("Events"));
-  QVBoxLayout *topLayout = new QVBoxLayout( mEventPage, 10 );
+  QVBoxLayout *topLayout = new QVBoxLayout( mEventPage );
+  topLayout->setSpacing( 10 );
 
   KHBox *hbox = new KHBox( mEventPage );
   topLayout->addWidget( hbox );
@@ -214,7 +217,8 @@ void ExportWebDialog::setupEventPage()
 void ExportWebDialog::setupJournalPage()
 {
   mJournalPage = addPage(i18n("Journal"));
-  QVBoxLayout *topLayout = new QVBoxLayout( mJournalPage, 10 );
+  QVBoxLayout *topLayout = new QVBoxLayout( mJournalPage );
+  topLayout->setSpacing( 10 );
 
   QHBox *hbox = new QHBox( mJournalPage );
   topLayout->addWidget( hbox );
@@ -230,7 +234,8 @@ void ExportWebDialog::setupJournalPage()
 void ExportWebDialog::setupFreeBusyPage()
 {
   mFreeBusyPage = addPage(i18n("Free/Busy"));
-  QVBoxLayout *topLayout = new QVBoxLayout( mFreeBusyPage, 10 );
+  QVBoxLayout *topLayout = new QVBoxLayout( mFreeBusyPage );
+  topLayout->setSpacing( 10 );
 
   QHBox *hbox = new QHBox( mFreeBusyPage );
   topLayout->addWidget( hbox );
@@ -246,7 +251,8 @@ void ExportWebDialog::setupFreeBusyPage()
 void ExportWebDialog::setupAdvancedPage()
 {
   mAdvancedPage = addPage(i18n("Advanced"));
-  QVBoxLayout *topLayout = new QVBoxLayout( mAdvancedPage, 10 );
+  QVBoxLayout *topLayout = new QVBoxLayout( mAdvancedPage );
+  topLayout->setSpacing( 10 );
 
   QVBox *vbox = new QVBox( mAdvancedPage );
   topLayout->addWidget( vbox );

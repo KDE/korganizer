@@ -156,7 +156,7 @@ class KOPrefsDialogTime : public KPrefsModule
       QWidget *topFrame = new QWidget( this );
       topTopLayout->addWidget( topFrame );
 
-      QGridLayout *topLayout = new QGridLayout(topFrame,6,2);
+      QGridLayout *topLayout = new QGridLayout(topFrame);
       topLayout->setSpacing( KDialog::spacingHint() );
 
       KHBox *timeZoneBox = new KHBox( topFrame );
@@ -550,7 +550,7 @@ class KOPrefsDialogFonts : public KPrefsModule
       QWidget *topFrame = new QWidget( this );
       topTopLayout->addWidget( topFrame );
 
-      QGridLayout *topLayout = new QGridLayout(topFrame,5,3);
+      QGridLayout *topLayout = new QGridLayout(topFrame);
       topLayout->setSpacing( KDialog::spacingHint() );
 
       KPrefsWidFont *timeBarFont =
@@ -607,7 +607,7 @@ KOPrefsDialogColors::KOPrefsDialogColors( KInstance *inst, QWidget *parent )
   QWidget *topFrame = new QWidget( this );
   topTopLayout->addWidget( topFrame );
 
-  QGridLayout *topLayout = new QGridLayout(topFrame,7,2);
+  QGridLayout *topLayout = new QGridLayout(topFrame);
   topLayout->setSpacing( KDialog::spacingHint() );
 
   // Holiday Color
@@ -806,7 +806,7 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( KInstance *inst, QWi
   QWidget *topFrame = new QWidget( this );
   topTopLayout->addWidget( topFrame );
 
-  QGridLayout *topLayout = new QGridLayout(topFrame,6,2);
+  QGridLayout *topLayout = new QGridLayout(topFrame);
   topLayout->setSpacing( KDialog::spacingHint() );
 
   KPrefsWidBool *useGroupwareBool =

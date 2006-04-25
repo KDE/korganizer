@@ -189,8 +189,10 @@ mURLRequester( 0 )
 {
   // based loosely on KPropertiesDialog code
   QWidget *page = plainPage();
-  QVBoxLayout *vbl = new QVBoxLayout( page, 0, KDialog::spacingHint() );
-  QGridLayout *grid = new QGridLayout(0, 3);
+  QVBoxLayout *vbl = new QVBoxLayout( page );
+  vbl->setSpacing( KDialog::spacingHint() );
+  vbl->setMargin( 0 );
+  QGridLayout *grid = new QGridLayout();
   grid->setColumnStretch(0, 0);
   grid->setColumnStretch(1, 0);
   grid->setColumnStretch(2, 1);

@@ -46,7 +46,9 @@ FreeBusyUrlDialog::FreeBusyUrlDialog( KCal::Attendee *attendee, QWidget *parent 
 {
   QFrame *topFrame = plainPage();
 
-  QBoxLayout *topLayout = new QVBoxLayout( topFrame, 0, spacingHint() );
+  QBoxLayout *topLayout = new QVBoxLayout( topFrame );
+  topLayout->setSpacing( spacingHint() );
+  topLayout->setMargin( 0 );
 
   mWidget = new FreeBusyUrlWidget( attendee, topFrame );
   topLayout->addWidget( mWidget );

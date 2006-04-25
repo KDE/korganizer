@@ -101,7 +101,9 @@ NavigatorBar::NavigatorBar( QWidget *parent )
   mMonth->setToolTip( i18n("Select a month") );
 
   // set up control frame layout
-  QBoxLayout *ctrlLayout = new QHBoxLayout( this, 0, 4 );
+  QBoxLayout *ctrlLayout = new QHBoxLayout( this );
+  ctrlLayout->setSpacing( 4 );
+  ctrlLayout->setMargin( 0 );
   ctrlLayout->addWidget( mPrevYear, 3 );
   ctrlLayout->addWidget( mPrevMonth, 3 );
   ctrlLayout->addWidget( mMonth, 3 );

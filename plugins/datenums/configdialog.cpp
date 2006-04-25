@@ -41,7 +41,9 @@ ConfigDialog::ConfigDialog(QWidget *parent)
   : KDialogBase(Plain,i18n("Configure Day Numbers"),Ok|Cancel,Ok,parent)
 {
   QFrame *topFrame = plainPage();
-  QVBoxLayout *topLayout = new QVBoxLayout( topFrame, 0, spacingHint() );
+  QVBoxLayout *topLayout = new QVBoxLayout( topFrame );
+  topLayout->setSpacing( spacingHint() );
+  topLayout->setMargin( 0 );
 
   QGroupBox *dayNumBox = new QGroupBox( i18n("Show Date Number"), topFrame );
   topLayout->addWidget( dayNumBox );

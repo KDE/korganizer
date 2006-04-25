@@ -110,7 +110,7 @@ void KOEditorGeneralTodo::initTime(QWidget *parent,QBoxLayout *topLayout)
                    i18n("Sets options for due and start dates and times "
                         "for this to-do.") );
 
-  QGridLayout *layoutTimeBox = new QGridLayout(timeBoxFrame,1,1);
+  QGridLayout *layoutTimeBox = new QGridLayout(timeBoxFrame);
   layoutTimeBox->setSpacing(topLayout->spacing());
 
 

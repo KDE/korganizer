@@ -486,7 +486,7 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
   QWidget *dummyAllDayRight = new QWidget(mAllDayFrame);
 
   // Create agenda frame
-  QGridLayout *agendaLayout = new QGridLayout(agendaFrame,3,3);
+  QGridLayout *agendaLayout = new QGridLayout(agendaFrame);
 //  QHBox *agendaFrame = new QHBox(splitterAgenda);
 
   // create event indicator bars

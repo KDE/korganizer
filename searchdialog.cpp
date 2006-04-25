@@ -54,7 +54,9 @@ SearchDialog::SearchDialog(Calendar *calendar,QWidget *parent)
   mCalendar = calendar;
 
   QFrame *topFrame = plainPage();
-  QVBoxLayout *layout = new QVBoxLayout(topFrame,0,spacingHint());
+  QVBoxLayout *layout = new QVBoxLayout(topFrame);
+  layout->setSpacing(spacingHint());
+  layout->setMargin(0);
 
   // Search expression
   QHBoxLayout *subLayout = new QHBoxLayout();
@@ -86,7 +88,9 @@ SearchDialog::SearchDialog(Calendar *calendar,QWidget *parent)
   layout->addWidget( rangeGroup );
 
   QWidget *rangeWidget = new QWidget( rangeGroup );
-  QHBoxLayout *rangeLayout = new QHBoxLayout( rangeWidget, 0, spacingHint() );
+  QHBoxLayout *rangeLayout = new QHBoxLayout( rangeWidget );
+  rangeLayout->setSpacing( spacingHint() );
+  rangeLayout->setMargin( 0 );
 
   mStartDate = new KDateEdit( rangeWidget );
   rangeLayout->addWidget( new QLabel( mStartDate, i18n("Fr&om:"), rangeWidget ) );
