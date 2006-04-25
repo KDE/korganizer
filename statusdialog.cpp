@@ -49,7 +49,8 @@ StatusDialog::StatusDialog(QWidget* parent, const char* name) :
   topLayout->setSpacing( spacingHint() );
   topLayout->setMargin( marginHint() );
 
-  QBoxLayout *statusLayout = new QHBoxLayout( topLayout );
+  QBoxLayout *statusLayout = new QHBoxLayout();
+  topLayout->addItem( statusLayout );
 
   QLabel *text = new QLabel(i18n("Set your status"),this);
   statusLayout->addWidget( text );
@@ -59,7 +60,8 @@ StatusDialog::StatusDialog(QWidget* parent, const char* name) :
   mStatus->addItems( Attendee::statusList() );
   statusLayout->addWidget( mStatus );
 
-  QBoxLayout *buttonLayout = new QHBoxLayout( topLayout );
+  QBoxLayout *buttonLayout = new QHBoxLayout();
+  topLayout->addItem( buttonLayout );
 
   QPushButton *ok = new KPushButton(KStdGuiItem::ok(), this);
   connect ( ok,SIGNAL(clicked()), this,SLOT(accept()) );

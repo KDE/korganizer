@@ -756,7 +756,8 @@ void KOAgendaView::createDayLabels()
   DateList::ConstIterator dit;
   for( dit = mSelectedDates.begin(); dit != mSelectedDates.end(); ++dit ) {
     QDate date = *dit;
-    QBoxLayout *dayLayout = new QVBoxLayout(mLayoutDayLabels);
+    QBoxLayout *dayLayout = new QVBoxLayout();
+    mLayoutDayLabels->addItem(dayLayout);
     mLayoutDayLabels->setStretchFactor(dayLayout, 1);
 //    dayLayout->setMinimumWidth(1);
 

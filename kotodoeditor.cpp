@@ -106,7 +106,8 @@ void KOTodoEditor::setupGeneral()
 
     mGeneral->initHeader(topFrame,topLayout);
     mGeneral->initTime(topFrame,topLayout);
-    QHBoxLayout *priorityLayout = new QHBoxLayout( topLayout );
+    QHBoxLayout *priorityLayout = new QHBoxLayout();
+    topLayout->addItem( priorityLayout );
     mGeneral->initPriority(topFrame,priorityLayout);
     mGeneral->initCategories( topFrame, topLayout );
     topLayout->addStretch(1);
@@ -117,7 +118,8 @@ void KOTodoEditor::setupGeneral()
     topLayout2->setMargin(marginHint());
     topLayout2->setSpacing(spacingHint());
 
-    QHBoxLayout *completionLayout = new QHBoxLayout( topLayout2 );
+    QHBoxLayout *completionLayout = new QHBoxLayout();
+    topLayout2->addItem( completionLayout );
     mGeneral->initCompletion(topFrame2,completionLayout);
 
     mGeneral->initAlarm(topFrame,topLayout);
@@ -134,11 +136,13 @@ void KOTodoEditor::setupGeneral()
     mGeneral->initHeader(topFrame,topLayout);
     mGeneral->initTime(topFrame,topLayout);
     mGeneral->initStatus(topFrame,topLayout);
-    QBoxLayout *alarmLineLayout = new QHBoxLayout(topLayout);
+    QBoxLayout *alarmLineLayout = new QHBoxLayout();
+    topLayout->addItem(alarmLineLayout);
     mGeneral->initAlarm(topFrame,alarmLineLayout);
     alarmLineLayout->addStretch( 1 );
     mGeneral->initDescription(topFrame,topLayout);
-    QBoxLayout *detailsLayout = new QHBoxLayout(topLayout);
+    QBoxLayout *detailsLayout = new QHBoxLayout();
+    topLayout->addItem(detailsLayout);
     mGeneral->initCategories( topFrame, detailsLayout );
     mGeneral->initSecrecy( topFrame, detailsLayout );
   }

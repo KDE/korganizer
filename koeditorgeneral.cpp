@@ -98,7 +98,8 @@ void FocusLineEdit::focusInEvent ( QFocusEvent *e )
 
 void KOEditorGeneral::initHeader(QWidget *parent,QBoxLayout *topLayout)
 {
-  QGridLayout *headerLayout = new QGridLayout(topLayout);
+  QGridLayout *headerLayout = new QGridLayout();
+  topLayout->addItem(headerLayout);
 
 #if 0
   mOwnerLabel = new QLabel(i18n("Owner:"),parent);
@@ -133,7 +134,8 @@ void KOEditorGeneral::initHeader(QWidget *parent,QBoxLayout *topLayout)
 
 void KOEditorGeneral::initCategories(QWidget *parent, QBoxLayout *topLayout)
 {
-  QBoxLayout *categoriesLayout = new QHBoxLayout( topLayout );
+  QBoxLayout *categoriesLayout = new QHBoxLayout();
+  topLayout->addItem( categoriesLayout );
 
   QString whatsThis = i18n("Allows you to select the categories that this "
 		  	   "event or to-do belongs to.");
@@ -152,7 +154,8 @@ void KOEditorGeneral::initCategories(QWidget *parent, QBoxLayout *topLayout)
 
 void KOEditorGeneral::initSecrecy(QWidget *parent, QBoxLayout *topLayout)
 {
-  QBoxLayout *secrecyLayout = new QHBoxLayout( topLayout );
+  QBoxLayout *secrecyLayout = new QHBoxLayout();
+  topLayout->addItem( secrecyLayout );
 
   QLabel *secrecyLabel = new QLabel(i18n("Acc&ess:"),parent);
   QString whatsThis = i18n("Sets whether the access to this event or to-do "
@@ -190,7 +193,8 @@ void KOEditorGeneral::initDescription(QWidget *parent,QBoxLayout *topLayout)
 
 void KOEditorGeneral::initAlarm(QWidget *parent,QBoxLayout *topLayout)
 {
-  QBoxLayout *alarmLayout = new QHBoxLayout(topLayout);
+  QBoxLayout *alarmLayout = new QHBoxLayout();
+  topLayout->addItem(alarmLayout);
 
   mAlarmBell = new QLabel(parent);
   mAlarmBell->setPixmap(KOGlobals::self()->smallIcon("bell"));

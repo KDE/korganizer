@@ -345,7 +345,8 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent )
   // FIXME for some reason it doesn't work
   connect( mAttachments, SIGNAL( moved() ), SLOT( slotRemove() ) );
 
-  QBoxLayout *buttonLayout = new QHBoxLayout( topLayout );
+  QBoxLayout *buttonLayout = new QHBoxLayout();
+  topLayout->addItem( buttonLayout );
 
   QPushButton *button = new QPushButton( i18n("&Add..."), this );
   button->setWhatsThis(

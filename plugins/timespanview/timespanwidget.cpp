@@ -63,7 +63,8 @@ TimeSpanWidget::TimeSpanWidget( QWidget *parent ) : QWidget( parent )
   mLineView = new LineView( rightPane );
   rightPaneLayout->addWidget( mLineView );
 
-  QBoxLayout *buttonLayout = new QHBoxLayout( rightPaneLayout );
+  QBoxLayout *buttonLayout = new QHBoxLayout();
+  rightPaneLayout->addItem( buttonLayout );
   
   QPushButton *zoomInButton = new QPushButton( i18n("Zoom In"), rightPane );
   connect( zoomInButton, SIGNAL( clicked() ), SLOT( zoomIn() ) );

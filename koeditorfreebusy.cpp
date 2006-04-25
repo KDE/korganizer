@@ -194,7 +194,8 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent )
   topLayout->addWidget( mStatusSummaryLabel );
 
   // The control panel for the gantt widget
-  QBoxLayout *controlLayout = new QHBoxLayout( topLayout );
+  QBoxLayout *controlLayout = new QHBoxLayout();
+  topLayout->addItem( controlLayout );
 
   QString whatsThis = i18n("Sets the zoom level on the Gantt chart. "
   			   "'Hour' shows a range of several hours, "

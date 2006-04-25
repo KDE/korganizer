@@ -100,7 +100,8 @@ void KOEditorGeneralEvent::finishSetup()
 
 void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
 {
-  QBoxLayout *timeLayout = new QVBoxLayout( topLayout );
+  QBoxLayout *timeLayout = new QVBoxLayout();
+  topLayout->addItem( timeLayout );
 
   QGroupBox *timeGroupBox = new QGroupBox( i18n("Date && Time"), parent );
   timeGroupBox->setWhatsThis(
@@ -163,7 +164,8 @@ void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
 
 void KOEditorGeneralEvent::initClass(QWidget *parent,QBoxLayout *topLayout)
 {
-  QBoxLayout *classLayout = new QHBoxLayout( topLayout );
+  QBoxLayout *classLayout = new QHBoxLayout();
+  topLayout->addItem( classLayout );
 
   QLabel *freeTimeLabel = new QLabel(i18n("S&how time as:"),parent);
   QString whatsThis = i18n("Sets how this time will appear on your Free/Busy "

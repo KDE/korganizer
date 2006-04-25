@@ -100,7 +100,8 @@ void KOEditorGeneralTodo::finishSetup()
 
 void KOEditorGeneralTodo::initTime(QWidget *parent,QBoxLayout *topLayout)
 {
-  QBoxLayout *timeLayout = new QVBoxLayout(topLayout);
+  QBoxLayout *timeLayout = new QVBoxLayout();
+  topLayout->addItem(timeLayout);
 
   QGroupBox *timeGroupBox = new QGroupBox( i18n("Date && Time"), parent );
   timeLayout->addWidget(timeGroupBox);
@@ -217,7 +218,8 @@ void KOEditorGeneralTodo::initPriority(QWidget *parent, QBoxLayout *topLayout)
 
 void KOEditorGeneralTodo::initStatus(QWidget *parent,QBoxLayout *topLayout)
 {
-  QBoxLayout *statusLayout = new QHBoxLayout(topLayout);
+  QBoxLayout *statusLayout = new QHBoxLayout();
+  topLayout->addItem(statusLayout);
 
   initCompletion( parent, statusLayout );
 

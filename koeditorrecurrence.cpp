@@ -145,7 +145,8 @@ QComboBox *RecurBase::createMonthNameCombo( QWidget *parent )
 QBoxLayout *RecurBase::createFrequencySpinBar( QWidget *parent, QLayout *layout,
     QString everyText, QString unitText )
 {
-  QBoxLayout *freqLayout = new QHBoxLayout( layout );
+  QBoxLayout *freqLayout = new QHBoxLayout();
+  layout->addItem( freqLayout );
 
   QString whatsThis = i18n("Sets how often this event or to-do should recur.");
   QLabel *preLabel = new QLabel( everyText, parent );
@@ -420,7 +421,8 @@ RecurYearly::RecurYearly( QWidget *parent ) : RecurBase( parent )
 
 
   /* YearlyMonth (day n of Month Y) */
-  QBoxLayout *monthLayout = new QHBoxLayout( buttonLayout );
+  QBoxLayout *monthLayout = new QHBoxLayout();
+  buttonLayout->addItem( monthLayout );
   QString recurInMonthText(
       i18nc("part before XXX of 'Recur on day XXX of month YYY'",
       "&Recur on day "));
@@ -452,7 +454,8 @@ RecurYearly::RecurYearly( QWidget *parent ) : RecurBase( parent )
 
 
   /* YearlyPos (weekday X of week N of month Y) */
-  QBoxLayout *posLayout = new QHBoxLayout( buttonLayout );
+  QBoxLayout *posLayout = new QHBoxLayout();
+  buttonLayout->addItem( posLayout );
   QString recurOnPosText( i18nc("Part before XXX in 'Recur on NNN. WEEKDAY of MONTH', short version", "&On" ) );
   if ( !KOPrefs::instance()->mCompactDialogs ) {
     recurOnPosText = i18nc("Part before XXX in 'Recur on NNN. WEEKDAY of MONTH'", "&On the" );
@@ -482,7 +485,8 @@ RecurYearly::RecurYearly( QWidget *parent ) : RecurBase( parent )
 
 
   /* YearlyDay (day N of the year) */
-  QBoxLayout *dayLayout = new QHBoxLayout( buttonLayout );
+  QBoxLayout *dayLayout = new QHBoxLayout();
+  buttonLayout->addItem( dayLayout );
   QString recurOnDayText;
   if ( KOPrefs::instance()->mCompactDialogs ) {
     recurOnDayText = i18n("Day #");
@@ -737,7 +741,8 @@ RecurrenceRangeWidget::RecurrenceRangeWidget( QWidget *parent ) : QWidget( paren
   rangeLayout->addWidget( mNoEndDateButton );
 
   // The "After N occurences" is a widget with a horizontal layout
-  QBoxLayout *durationLayout = new QHBoxLayout( rangeLayout );
+  QBoxLayout *durationLayout = new QHBoxLayout();
+  rangeLayout->addItem( durationLayout );
   durationLayout->setSpacing( KDialog::spacingHint() );
 
   QString whatsthis = i18n("Sets the event or to-do to stop recurring after a "
@@ -758,7 +763,8 @@ RecurrenceRangeWidget::RecurrenceRangeWidget( QWidget *parent ) : QWidget( paren
 
 
   // The "End on" is a widget with a horizontal layout
-  QBoxLayout *endDateLayout = new QHBoxLayout( rangeLayout );
+  QBoxLayout *endDateLayout = new QHBoxLayout();
+  rangeLayout->addItem( endDateLayout );
   whatsthis = i18n("Sets the event or to-do to stop recurring on a certain date.");
 //   endDateLayout->setSpacing( KDialog::spacingHint() );
 

@@ -58,7 +58,8 @@ KOEditorGeneralJournal::~KOEditorGeneralJournal()
 
 void KOEditorGeneralJournal::initTitle( QWidget *parent, QBoxLayout *topLayout )
 {
-  QHBoxLayout *hbox = new QHBoxLayout( topLayout );
+  QHBoxLayout *hbox = new QHBoxLayout();
+  topLayout->addItem( hbox );
   
   QString whatsThis = i18n("Sets the title of this journal.");
   QLabel *summaryLabel = new QLabel( i18n("T&itle:"), parent );
@@ -77,8 +78,8 @@ void KOEditorGeneralJournal::initTitle( QWidget *parent, QBoxLayout *topLayout )
 
 void KOEditorGeneralJournal::initDate( QWidget *parent, QBoxLayout *topLayout )
 {
-//  QBoxLayout *dateLayout = new QVBoxLayout(topLayout);
-  QBoxLayout *dateLayout = new QHBoxLayout( topLayout );
+  QBoxLayout *dateLayout = new QHBoxLayout();
+  topLayout->addItem( dateLayout );
   
   mDateLabel = new QLabel( i18n("&Date:"), parent);
   dateLayout->addWidget( mDateLabel );
