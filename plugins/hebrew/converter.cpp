@@ -245,9 +245,10 @@ long Converter::hebrew_elapsed_days(int year)
   for (i = 0; i < MEMORY; ++i)
     if (year == saved_year[i])
       return saved_value[i];
-  for (i = 0; i < MEMORY; ++i)
-    saved_year[i] = saved_year[1 + i], saved_value[i] =
-      saved_value[1 + i];
+  for (i = 0; i < MEMORY-1; ++i) {
+    saved_year[i] = saved_year[1 + i];
+    saved_value[i] = saved_value[1 + i];
+  }
   saved_year[MEMORY - 1] = year;
   saved_value[MEMORY - 1] = hebrew_elapsed_days2(year);
   return saved_value[MEMORY - 1];
