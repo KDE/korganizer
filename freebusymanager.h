@@ -51,7 +51,7 @@ class Calendar;
 class FreeBusy;
 }
 class FreeBusyManager;
-
+class KJob;
 /**
  * Class for downloading FreeBusy Lists
  */
@@ -65,7 +65,7 @@ class FreeBusyDownloadJob : public QObject
     virtual ~FreeBusyDownloadJob();
 
   protected slots:
-    void slotResult( KIO::Job * );
+    void slotResult( KJob * );
     void slotData(  KIO::Job *, const QByteArray &data );
 
   signals:
@@ -155,7 +155,7 @@ class FreeBusyManager : public QObject, public KCal::FreeBusyCache
     bool processRetrieveQueue();
 
   private slots:
-    void slotUploadFreeBusyResult( KIO::Job * );
+    void slotUploadFreeBusyResult( KJob * );
 
   private:
     KCal::Calendar *mCalendar;

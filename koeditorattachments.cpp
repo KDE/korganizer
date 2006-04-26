@@ -512,8 +512,8 @@ void KOEditorAttachments::dropEvent( QDropEvent* event ) {
                                                    ( *it ).fileName(), 
                                                    KMimeType::findByURL( *it ) )
                                  );
-        connect( job, SIGNAL( result( KIO::Job * ) ), 
-                 SLOT( copyComplete( KIO::Job * ) ) );
+        connect( job, SIGNAL( result( KJob * ) ), 
+                 SLOT( copyComplete( KJob * ) ) );
       }
     else { // we take anything
       KMimeType::Ptr mimeType = KMimeType::mimeType( event->format() );
@@ -545,10 +545,10 @@ void KOEditorAttachments::downloadComplete( KIO::Job *job )
 }
 #endif
 
-void KOEditorAttachments::copyComplete( KIO::Job *job )
+void KOEditorAttachments::copyComplete( KJob *job )
 {
   if ( job->error() )
-    job->showErrorDialog( this );
+    static_cast<KIO::Job*>(job)->showErrorDialog( this );
   else {
     addAttachment( static_cast<KIO::CopyJob *>( job )->destURL().url(), 
                    QString(), 

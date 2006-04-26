@@ -40,6 +40,7 @@ class Incidence;
 class Attachment;
 }
 
+class KJob;
 class AttachmentIconItem;
 class Q3IconDragItem;
 class Q3IconViewItem;
@@ -115,7 +116,7 @@ class KOEditorAttachments : public QWidget
     void slotItemRenamed ( Q3IconViewItem * item, const QString & text );
     void showAttachmentContextMenu( Q3IconViewItem *item, const QPoint &pos );
     void dropped ( QDropEvent * e, const QList<Q3IconDragItem> & lst );
-    void copyComplete( KIO::Job *job );
+    void copyComplete( KJob *job );
   protected:
     QString generateLocalAttachmentPath( QString filename, 
                                          const KMimeType::Ptr mimeType );

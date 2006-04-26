@@ -75,8 +75,8 @@ FreeBusyDownloadJob::FreeBusyDownloadJob( const QString &email, const KUrl &url,
   : QObject( manager ), mManager( manager ), mEmail( email )
 {
   KIO::Job *job = KIO::get( url, false, false );
-  connect( job, SIGNAL( result( KIO::Job * ) ),
-           SLOT( slotResult( KIO::Job * ) ) );
+  connect( job, SIGNAL( result( KJob * ) ),
+           SLOT( slotResult( KJob * ) ) );
   connect( job, SIGNAL( data( KIO::Job *, const QByteArray & ) ),
            SLOT( slotData( KIO::Job *, const QByteArray & ) ) );
 }
@@ -94,7 +94,7 @@ void FreeBusyDownloadJob::slotData( KIO::Job *, const QByteArray &data )
   mFreeBusyData += tmp;
 }
 
-void FreeBusyDownloadJob::slotResult( KIO::Job *job )
+void FreeBusyDownloadJob::slotResult( KJob *job )
 {
   kDebug(5850) << "FreeBusyDownloadJob::slotResult() " << mEmail << endl;
 
@@ -301,12 +301,12 @@ void FreeBusyManager::publishFreeBusy()
                                      true /*overwrite*/,
                                      false /*don't resume*/,
                                      false /*don't show progress info*/ );
-    connect( job, SIGNAL( result( KIO::Job * ) ),
-             SLOT( slotUploadFreeBusyResult( KIO::Job * ) ) );
+    connect( job, SIGNAL( result( KJob * ) ),
+             SLOT( slotUploadFreeBusyResult( KJob * ) ) );
   }
 }
 
-void FreeBusyManager::slotUploadFreeBusyResult(KIO::Job *_job)
+void FreeBusyManager::slotUploadFreeBusyResult(KJob *_job)
 {
     KIO::FileCopyJob* job = static_cast<KIO::FileCopyJob *>(_job);
     if ( job->error() )
