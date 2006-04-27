@@ -179,6 +179,7 @@ void KOGroupware::incomingDirChanged( const QString& path )
   else
     kError(5850) << "Unknown incoming action " << action << endl;
   mView->updateView();
+  delete message;
 }
 
 class KOInvitationFormatterHelper : public InvitationFormatterHelper
