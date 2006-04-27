@@ -1324,9 +1324,9 @@ void KOEditorRecurrence::readIncidence(Incidence *incidence)
 
   mRecurrenceRange->setDateTimes( incidence->recurrence()->startDateTime() );
 
-  if ( incidence->doesRecur() ) {
+  if ( incidence->doesRecur() && r ) {
     mRecurrenceRange->setDuration( r->duration() );
-    if ( r && r->duration() == 0 ) mRecurrenceRange->setEndDate( r->endDate() );
+    if ( r->duration() == 0 ) mRecurrenceRange->setEndDate( r->endDate() );
   }
 
   mExceptions->setDates( incidence->recurrence()->exDates() );
