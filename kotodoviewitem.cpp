@@ -150,7 +150,7 @@ void KOTodoViewItem::construct()
   // Find sort id in description. It's the text behind the last '#' character
   // found in the description. White spaces are removed from beginning and end
   // of sort id.
-  int pos = mTodo->description().findRev('#');
+  int pos = mTodo->description().lastIndexOf('#');
   if (pos < 0) {
     setText( KOTodoView::eDescriptionColumn, "" );
   } else {

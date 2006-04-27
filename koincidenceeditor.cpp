@@ -227,7 +227,7 @@ void KOIncidenceEditor::setupDesignerTabs( const QString &type )
   QStringList list = KGlobal::dirs()->findAllResources( "data",
     "korganizer/designer/" + type + "/*.ui", true, true );
   for ( QStringList::iterator it = list.begin(); it != list.end(); ++it ) {
-    const QString &fn = (*it).mid( (*it).findRev('/') + 1 );
+    const QString &fn = (*it).mid( (*it).lastIndexOf('/') + 1 );
     if ( activePages.find( fn ) != activePages.end() ) {
       addDesignerTab( *it );
     }
