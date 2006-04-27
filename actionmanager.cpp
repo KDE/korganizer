@@ -904,10 +904,11 @@ bool ActionManager::addResource( const KUrl &mUrl )
   } else {
     kDebug(5850) << "Remote Resource" << endl;
     resource = manager->createResource( "remote" );
-    if ( resource )
+    if ( resource ) {
       resource->setValue( "DownloadURL", mUrl.url() );
+      resource->setReadOnly( true );
+    }
     name = mUrl.prettyURL();
-    resource->setReadOnly( true );
   }
 
   if ( resource ) {
