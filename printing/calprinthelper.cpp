@@ -828,10 +828,9 @@ void CalPrintHelper::drawTodo( int &count, Todo *todo, QPainter &p,
   if ( rect.bottom() > pageHeight ) {
     // first draw the connection lines from parent to-dos:
     if ( level > 0 && connectSubTodos ) {
-      TodoParentStart *rct;
       QList<TodoParentStart*>::iterator it;
       for ( it = startPoints.begin(); it != startPoints.end(); ++it  ) {
-        TodoParentStart* tct = *it;
+        TodoParentStart* rct = *it;
         int start;
         int center = rct->mRect.left() + (rct->mRect.width()/2);
         int to = p.viewport().bottom();
