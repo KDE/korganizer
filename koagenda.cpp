@@ -986,7 +986,7 @@ void KOAgenda::performItemAction(const QPoint& viewportPos)
           }
           changed=true;
         }
-        if ( !moveItem->lastMultiItem() && !mAllDayMode ) { // is the last item
+        if ( moveItem && !moveItem->lastMultiItem() && !mAllDayMode ) { // is the last item
           int newY = deltapos.y()+moveItem->cellYBottom();
           if (newY<0) {
             // erase current item
