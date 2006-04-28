@@ -475,8 +475,9 @@ void KOEditorAttachments::dropEvent( QDropEvent* event ) {
   }
   
   KMenu menu( this );
+  QAction* linkAction = 0, *cancelAction;
   if ( probablyWeHaveUris ) {
-    menu.insertItem( i18n( "&Link here" ), 1 );
+    linkAction = menu.addAction( i18n( "&Link here" ) );
     // we need to check if we can reasonably expect to copy the objects
     for ( KUrl::List::ConstIterator it = urls.constBegin(); 
           it != urls.constEnd(); ++it )
@@ -489,17 +490,16 @@ void KOEditorAttachments::dropEvent( QDropEvent* event ) {
   }
   
   menu.addSeparator();
-  menu.insertItem( i18n( "C&ancel" ), 4 );
+  cancelAction = menu.addAction( i18n( "C&ancel" ) );
   
-#warning Port me!
-  int ret /*= menu.exec( QCursor::pos() )*/;
-  if ( 1 == ret ) {
+  QAction* ret = menu.exec( QCursor::pos() );
+  if ( linkAction == ret ) {
     QStringList::ConstIterator jt = labels.constBegin();
     for ( KUrl::List::ConstIterator it = urls.constBegin(); 
           it != urls.constEnd(); ++it )
       addAttachment( (*it).url(), QString(), 
                      ( jt == labels.constEnd() ? QString() : *(jt++) ) );
-  } else if ( 0 == ret ) {
+  } else if ( cancelAction != ret ) {
     if ( probablyWeHaveUris )
       for ( KUrl::List::ConstIterator it = urls.constBegin();
             it != urls.constEnd(); ++it ) {
