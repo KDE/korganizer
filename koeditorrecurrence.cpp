@@ -132,7 +132,6 @@ QComboBox *RecurBase::createMonthNameCombo( QWidget *parent )
   combo->setWhatsThis(
                    i18n("The month during which this event or to-do "
                         "should recur.") );
-  if ( !combo ) return 0;
   const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
   for( int i = 1; i <= 12; ++i ) {
     // use an arbitrary year, we just need the month name...
