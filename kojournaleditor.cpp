@@ -128,7 +128,7 @@ void KOJournalEditor::newJournal( const QString &text )
 
   mGeneral->setDescription( text );
 
-  int pos = text.find( "\n" );
+  int pos = text.indexOf( "\n" );
   if ( pos > 0 ) {
     mGeneral->setSummary( text.left( pos ) );
     mGeneral->setDescription( text );

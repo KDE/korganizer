@@ -302,7 +302,7 @@ void KOWhatsNextView::appendEvent( Incidence *ev, const QDateTime &start,
 
 void KOWhatsNextView::appendTodo( Incidence *ev )
 {
-  if ( mTodos.find( ev ) != mTodos.end() ) return;
+  if ( mTodos.contains( ev )  ) return;
 
   mTodos.append( ev );
 

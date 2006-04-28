@@ -1097,8 +1097,7 @@ void KOPrefsDialogPlugins::usrReadConfig()
   KTrader::OfferList::ConstIterator it;
   for( it = plugins.begin(); it != plugins.end(); ++it ) {
     Q3CheckListItem *item = new PluginItem( mListView, *it );
-    if ( selectedPlugins.find( (*it)->desktopEntryName() ) !=
-                               selectedPlugins.end() ) {
+    if ( selectedPlugins.contains( (*it)->desktopEntryName() ) ) {
       item->setOn( true );
     }
   }

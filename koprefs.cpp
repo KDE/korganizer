@@ -144,7 +144,7 @@ void KOPrefs::setTimeZoneIdDefault()
   if (len > 0 && len < 100) {
     zonefilebuf[len] = '\0';
     zone = zonefilebuf;
-    zone = zone.mid(zone.find("zoneinfo/") + 9);
+    zone = zone.mid(zone.indexOf("zoneinfo/") + 9);
   } else {
     tzset();
     zone = tzname[0];
@@ -366,10 +366,10 @@ bool KOPrefs::thatIsMe( const QString& _email )
     return true;
   // in case email contains a full name, strip it out
   QString email = KPIM::getEmailAddress( _email );
-  if ( mAdditionalMails.find( email ) != mAdditionalMails.end() )
+  if ( mAdditionalMails.contains( email )  )
     return true;
   QStringList lst = KABC::StdAddressBook::self( true )->whoAmI().emails();
-  if ( lst.find( email ) != lst.end() )
+  if ( lst.contains( email )  )
     return true;
   return false;
 }

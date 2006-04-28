@@ -548,7 +548,7 @@ void KOAgendaItem::addAttendee( const QString &newAttendee )
 {
   kDebug(5850) << " Email: " << newAttendee << endl;
   // TODO: Use proper email parsing instead of simply grepping for "<" and "@"
-  int pos = newAttendee.find("<");
+  int pos = newAttendee.indexOf("<");
   QString name = newAttendee.left(pos);
   QString email = newAttendee.mid(pos);
   if (!email.isEmpty()) {
@@ -903,7 +903,7 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
   p.setBackgroundColor( bgColor );
   p.setPen( textColor );
   QString ws = ww->wrappedString();
-  if ( ws.left( ws.length()-1 ).find( '\n' ) >= 0 )
+  if ( ws.left( ws.length()-1 ).indexOf( '\n' ) >= 0 )
     ww->drawText( &p, eventX, y,
                   Qt::AlignLeft | KWordWrap::FadeOut );
   else
