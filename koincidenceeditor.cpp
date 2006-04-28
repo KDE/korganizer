@@ -358,7 +358,7 @@ kDebug() << "mEmbeddedURLPages are not empty, clearing it!" << endl;
     Attachment *a = (*it);
     kDebug() << "Iterating over the attachments " << endl;
     kDebug() << "label=" << a->label() << ", url=" << a->uri() << ", mimetype=" << a->mimeType() << endl;
-    if ( a && a->showInline() && a->isUri() ) {
+    if ( a->showInline() && a->isUri() ) {
       // TODO: Allow more mime-types, but add security checks!
 /*      if ( a->mimeType() == "application/x-designer" ) {
         QString tmpFile;
