@@ -94,11 +94,11 @@ int RecurBase::frequency()
 QComboBox *RecurBase::createWeekCountCombo( QWidget *parent )
 {
   QComboBox *combo = new QComboBox( parent );
+  if ( !combo ) return 0;
   combo->setWhatsThis(
                    i18n("The number of the week from the beginning "
                         "of the month on which this event or to-do "
                         "should recur.") );
-  if ( !combo ) return 0;
   combo->addItem( i18n("1st") );
   combo->addItem( i18n("2nd") );
   combo->addItem( i18n("3rd") );
@@ -115,10 +115,10 @@ QComboBox *RecurBase::createWeekCountCombo( QWidget *parent )
 QComboBox *RecurBase::createWeekdayCombo( QWidget *parent )
 {
   QComboBox *combo = new QComboBox( parent );
+  if ( !combo ) return 0;
   combo->setWhatsThis(
                    i18n("The weekday on which this event or to-do "
                         "should recur.") );
-  if ( !combo ) return 0;
   const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
   for( int i = 1; i <= 7; ++i ) {
     combo->addItem( calSys->weekDayName( i ) );
