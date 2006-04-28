@@ -74,8 +74,9 @@ KOGroupware *KOGroupware::instance()
 
 
  KOGroupware::KOGroupware( CalendarView* view, KCal::CalendarResources* cal )
-   : QObject( 0, "kmgroupware_instance" ), mView( view ), mCalendar( cal )
+   : QObject( 0 ), mView( view ), mCalendar( cal )
 {
+  setObjectName( "kmgroupware_instance" );
   // Set up the dir watch of the three incoming dirs
   KDirWatch* watcher = KDirWatch::self();
   watcher->addDir( locateLocal( "data", "korganizer/income.accepted/" ) );

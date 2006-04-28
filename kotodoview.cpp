@@ -777,8 +777,7 @@ void KOTodoView::restoreListViewState( Q3ListView *listView )
       if ( KOTodoViewItem *todoItem
           = dynamic_cast<KOTodoViewItem *>( it.current() ) )
         todoItem->setOpen( mDocPrefs->readBoolEntry( todoItem->todo()->uid() ) );
-    listView->setContentsPos( 0, mDocPrefs
-        ->readNumEntry( QByteArray( listView->name() ) + " pos" ) );
+    listView->setContentsPos( 0, mDocPrefs->readNumEntry( listView->objectName() + " pos" ) );
     listView->blockSignals( false );
   } else
     kError( 5850 ) << k_funcinfo << " mDocPrefs doesn't exist" << endl;
@@ -787,7 +786,7 @@ void KOTodoView::restoreListViewState( Q3ListView *listView )
 void KOTodoView::saveListViewState( Q3ListView *listView )
 {
   if ( mDocPrefs ) {
-    mDocPrefs->writeBoolEntry( QByteArray( listView->name() ) + " pos",
+    mDocPrefs->writeBoolEntry( listView->objectName() + " pos",
                            listView->contentsY() );
 
     for ( Q3ListViewItemIterator it( listView ); it.current(); ++it )

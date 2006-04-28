@@ -37,8 +37,9 @@
 #include "koprefs.h"
 
 EventArchiver::EventArchiver( QObject* parent, const char* name )
- : QObject( parent, name )
+ : QObject( parent )
 {
+  setObjectName( name );
 }
 
 EventArchiver::~EventArchiver()

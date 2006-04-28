@@ -37,9 +37,10 @@
 
 KOrganizerIfaceImpl::KOrganizerIfaceImpl( ActionManager* actionManager,
                                           QObject* parent, const char* name )
-  : DCOPObject( "KOrganizerIface" ), QObject( parent, name ),
+  : DCOPObject( "KOrganizerIface" ), QObject( parent ),
     mActionManager( actionManager )
 {
+  setObjectName( name );
 }
 
 KOrganizerIfaceImpl::~KOrganizerIfaceImpl()

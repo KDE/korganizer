@@ -70,8 +70,9 @@
 #include "koeditorgeneral.moc"
 
 KOEditorGeneral::KOEditorGeneral(QObject* parent, const char* name) :
-  QObject( parent, name)
+  QObject( parent )
 {
+  setObjectName( name );
   mAlarmList.setAutoDelete( true );
 }
 
