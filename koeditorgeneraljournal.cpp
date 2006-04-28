@@ -81,7 +81,7 @@ void KOEditorGeneralJournal::initDate( QWidget *parent, QBoxLayout *topLayout )
   QBoxLayout *dateLayout = new QHBoxLayout();
   topLayout->addItem( dateLayout );
   
-  mDateLabel = new QLabel( i18n("&Date:"), parent);
+  mDateLabel = new QLabel( i18n("&Date:"), parent );
   dateLayout->addWidget( mDateLabel );
 
   mDateEdit = new KDateEdit( parent );

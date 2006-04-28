@@ -568,7 +568,8 @@ void KListViewSearchLineWidget::createWidgets()
 
     d->clearButton->show();
 
-    QLabel *label = new QLabel(i18n("S&earch:"), this, "kde toolbar widget");
+    QLabel *label = new QLabel(i18n("S&earch:"),this);
+    label->setObjectName("kde toolbar widget");
 
     d->searchLine = createSearchLine(d->listView);
     d->searchLine->show();

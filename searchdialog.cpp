@@ -63,7 +63,8 @@ SearchDialog::SearchDialog(Calendar *calendar,QWidget *parent)
   layout->addLayout(subLayout);
 
   searchEdit = new QLineEdit( "*", topFrame ); // Find all events by default
-  searchLabel = new QLabel( searchEdit, i18n("&Search for:"), topFrame );
+  searchLabel = new QLabel( i18n("&Search for:"), topFrame );
+  searchLabel->setBuddy( searchEdit );
   subLayout->addWidget( searchLabel );
   subLayout->addWidget( searchEdit );
   searchEdit->setFocus();
