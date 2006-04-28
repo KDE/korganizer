@@ -320,7 +320,7 @@ void KOTodoListView::contentsDropEvent( QDropEvent *e )
           QStringList emails = KPIM::splitEmailAddrList( text );
           for(QStringList::ConstIterator it = emails.begin();it!=emails.end();++it) {
             kDebug(5850) << " Email: " << (*it) << endl;
-            int pos = (*it).find("<");
+            int pos = (*it).indexOf("<");
             QString name = (*it).left(pos);
             QString email = (*it).mid(pos);
             if (!email.isEmpty() && todoi) {
@@ -837,7 +837,7 @@ QMap<Todo *,KOTodoViewItem *>::ConstIterator
       if ( !todo->attendees().isEmpty() ) {
         for( Attendee::List::ConstIterator it = attendees.begin();
              it != attendees.end(); ++it ) {
-          if ( mAllEmailAddrs.find( (*it)->email() ) != mAllEmailAddrs.end() ) {
+          if ( mAllEmailAddrs.contains( (*it)->email() )  ) {
             iAmOneOfTheAttendees = true;
             break;
           }
@@ -1280,7 +1280,7 @@ QMenu *KOTodoView::getCategoryPopupMenu( KOTodoViewItem *todoItem )
         ++it ) {
     QAction *action = tempMenu->addAction( *it );
     mCategory[ action ] = *it;
-    if ( checkedCategories.find( *it ) != checkedCategories.end() )
+    if ( checkedCategories.contains( *it )  )
       action->setChecked( true );
   }
 
@@ -1299,7 +1299,7 @@ void KOTodoView::changedCategories( QAction* action )
     Todo *oldTodo = todo->clone();
 
     QStringList categories = todo->categories ();
-    if ( categories.find( mCategory[action] ) != categories.end() )
+    if ( categories.contains( mCategory[action] )  )
       categories.remove( mCategory[action] );
     else
       categories.insert( categories.end(), mCategory[action] );

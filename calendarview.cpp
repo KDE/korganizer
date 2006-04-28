@@ -355,7 +355,7 @@ Calendar *CalendarView::calendar()
 
 KOIncidenceEditor *CalendarView::editorDialog( Incidence *incidence ) const
 {
-  if (mDialogList.find(incidence) != mDialogList.end ())
+  if (mDialogList.contains(incidence) )
     return mDialogList[incidence];
   else return 0;
 }
@@ -2229,7 +2229,7 @@ void CalendarView::updateCategories()
   allCats.sort();
   QStringList categories( KOPrefs::instance()->mCustomCategories );
   for ( QStringList::ConstIterator si = allCats.constBegin(); si != allCats.constEnd(); ++si ) {
-    if ( categories.find( *si ) == categories.end() ) {
+    if ( !categories.contains( *si )  ) {
       categories.append( *si );
     }
   }

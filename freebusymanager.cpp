@@ -258,7 +258,7 @@ void FreeBusyManager::publishFreeBusy()
 
 #if 0
     QString defaultEmail = KOCore()::self()->email();
-    QString emailHost = defaultEmail.mid( defaultEmail.find( '@' ) + 1 );
+    QString emailHost = defaultEmail.mid( defaultEmail.indexOf( '@' ) + 1 );
 
     // Put target string together
     KUrl targetURL;
@@ -275,7 +275,7 @@ void FreeBusyManager::publishFreeBusy()
       targetURL.setHost( server );
 
       QString fbname = KOPrefs::instance()->mPublishUserName;
-      int at = fbname.find('@');
+      int at = fbname.indexOf('@');
       if( at > 1 && fbname.length() > (uint)at ) {
 	fbname = fbname.left(at);
       }
@@ -425,7 +425,7 @@ KUrl FreeBusyManager::freeBusyUrl( const QString &email )
 
   // Sanity check: Don't download if it's not a correct email
   // address (this also avoids downloading for "(empty email)").
-  int emailpos = email.find( '@' );
+  int emailpos = email.indexOf( '@' );
   if( emailpos == -1 )
     return KUrl();
 
