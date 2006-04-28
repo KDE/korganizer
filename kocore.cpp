@@ -279,7 +279,7 @@ KOrg::CalendarDecoration::List KOCore::calendarDecorations()
     for( it = plugins.begin(); it != plugins.end(); ++it ) {
       if ( (*it)->hasServiceType("Calendar/Decoration") ) {
         QString name = (*it)->desktopEntryName();
-        if ( selectedPlugins.find( name ) != selectedPlugins.end() ) {
+        if ( selectedPlugins.contains( name )  ) {
           KOrg::CalendarDecoration *d = loadCalendarDecoration(*it);
           mCalendarDecorations.append( d );
         }
@@ -300,8 +300,7 @@ KOrg::Part::List KOCore::loadParts( KOrg::MainWindow *parent )
   KTrader::OfferList plugins = availableParts();
   KTrader::OfferList::ConstIterator it;
   for( it = plugins.begin(); it != plugins.end(); ++it ) {
-    if ( selectedPlugins.find( (*it)->desktopEntryName() ) !=
-                               selectedPlugins.end() ) {
+    if ( selectedPlugins.contains( (*it)->desktopEntryName() )  ) {
       KOrg::Part *part = loadPart( *it, parent );
       if ( part ) {
         if ( !parent->mainGuiClient() ) {
@@ -326,8 +325,7 @@ KOrg::PrintPlugin::List KOCore::loadPrintPlugins()
   KTrader::OfferList plugins = availablePrintPlugins();
   KTrader::OfferList::ConstIterator it;
   for( it = plugins.begin(); it != plugins.end(); ++it ) {
-    if ( selectedPlugins.find( (*it)->desktopEntryName() ) !=
-                               selectedPlugins.end() ) {
+    if ( selectedPlugins.contains( (*it)->desktopEntryName() ) ) {
       KOrg::PrintPlugin *part = loadPrintPlugin( *it );
       if ( part ) loadedPlugins.append( part );
     }
