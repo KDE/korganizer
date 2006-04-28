@@ -1300,7 +1300,7 @@ void KOTodoView::changedCategories( QAction* action )
 
     QStringList categories = todo->categories ();
     if ( categories.contains( mCategory[action] )  )
-      categories.remove( mCategory[action] );
+      categories.removeAll( mCategory[action] );
     else
       categories.insert( categories.end(), mCategory[action] );
     categories.sort();

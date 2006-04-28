@@ -346,7 +346,7 @@ kDebug() << "mEmbeddedURLPages are not empty, clearing it!" << endl;
     for ( QList<QWidget*>::Iterator it = mAttachedDesignerFields.begin();
           it != mAttachedDesignerFields.end(); ++it ) {
       if ( mDesignerFieldForWidget.contains( *it ) ) {
-        mDesignerFields.remove( mDesignerFieldForWidget[ *it ] );
+        mDesignerFields.removeAll( mDesignerFieldForWidget[ *it ] );
       }
     }
     qDeleteAll( mAttachedDesignerFields );

@@ -388,7 +388,7 @@ void CalPrintHelper::drawAllDayBox(QPainter &p, Event::List &eventList,
         if ( !multiDayStr.isEmpty() ) multiDayStr += ", ";
         multiDayStr += currEvent->summary() + "\n";
       }
-      eventList.remove( itold );
+      eventList.erase( itold );
     }
   }
 
@@ -1010,7 +1010,7 @@ void CalPrintHelper::drawTodo( int &count, Todo *todo, QPainter &p,
               desc, posPriority, posSummary, posDueDt, posPercentComplete,
               level+1, x, y, width, pageHeight, todoList, &startpt );
   }
-  startPoints.remove( &startpt );
+  startPoints.removeAll( &startpt );
 }
 
 int CalPrintHelper::weekdayColumn( int weekday )
