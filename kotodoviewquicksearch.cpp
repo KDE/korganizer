@@ -143,7 +143,7 @@ void KOTodoListViewQuickSearch::fillCategories()
   QStringList categories;
 
   CalFilter *filter = mCalendar->filter();
-  if ( filter && ( filter->criteria() & CalFilter::ShowCategories ) ) {
+  if ( filter->criteria() & CalFilter::ShowCategories ) {
     categories = filter->categoryList();
     categories.sort();
   } else {
