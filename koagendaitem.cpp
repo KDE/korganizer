@@ -66,13 +66,13 @@ QPixmap *KOAgendaItem::organizerPxmp = 0;
 KOAgendaItem::KOAgendaItem( Incidence *incidence, const QDate &qd, QWidget *parent,
                              Qt::WFlags f ) :
   // TODO_QT4: Use constructor without *name=0 param
-  QWidget( parent, /*name*/0, f ), mIncidence( incidence ), mDate( qd ),
+  QWidget( parent, f ), mIncidence( incidence ), mDate( qd ),
   mLabelText( mIncidence->summary() ), mIconAlarm( false ),
   mIconRecur( false ), mIconReadonly( false ), mIconReply( false ),
   mIconGroup( false ), mIconGroupTentative( false ), mIconOrganizer( false ),
   mMultiItemInfo( 0 ), mStartMoveInfo( 0 )
 {
-  setBackgroundMode( Qt::NoBackground );
+  setAttribute(Qt::WA_NoSystemBackground, true);
 
   setCellXY( 0, 0, 1 );
   setCellXRight( 0 );
