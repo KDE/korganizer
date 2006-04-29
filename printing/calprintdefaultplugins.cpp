@@ -113,8 +113,8 @@ void CalPrintDay::loadConfig()
     QTime tm1( mCoreHelper->dayStart() );
     QDateTime startTm( dt, tm1 );
     QDateTime endTm( dt, tm1.addSecs( 12 * 60 * 60 ) );
-    mStartTime = mConfig->readDateTimeEntry( "Start time", &startTm ).time();
-    mEndTime = mConfig->readDateTimeEntry( "End time", &endTm ).time();
+    mStartTime = mConfig->readEntry( "Start time", startTm ).time();
+    mEndTime = mConfig->readEntry( "End time", endTm ).time();
     mIncludeTodos = mConfig->readEntry( "Include todos", false );
     mIncludeAllEvents = mConfig->readEntry( "Include all events", false );
   }
@@ -254,8 +254,8 @@ void CalPrintWeek::loadConfig()
     QTime tm1( mCoreHelper->dayStart() );
     QDateTime startTm( dt, tm1  );
     QDateTime endTm( dt, tm1.addSecs( 43200 ) );
-    mStartTime = mConfig->readDateTimeEntry( "Start time", &startTm ).time();
-    mEndTime = mConfig->readDateTimeEntry( "End time", &endTm ).time();
+    mStartTime = mConfig->readEntry( "Start time", startTm ).time();
+    mEndTime = mConfig->readEntry( "End time", endTm ).time();
     mIncludeTodos = mConfig->readEntry( "Include todos", false );
     mWeekPrintType =(eWeekPrintType)( mConfig->readEntry( "Print type", (int)Filofax ) );
   }
@@ -647,7 +647,7 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
   Todo::List::ConstIterator it;
 
   // Convert sort options to the corresponding enums
-  TodoSortField sortField;
+  TodoSortField sortField =  TodoSortSummary;
   switch( mTodoSortField ) {
   case TodoFieldSummary:
     sortField = TodoSortSummary; break;
@@ -661,7 +661,7 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
     sortField = TodoSortPercentComplete; break;
   }
 
-  SortDirection sortDirection;
+  SortDirection sortDirection = SortDirectionAscending;
   switch( mTodoSortDirection ) {
   case TodoDirectionAscending:
     sortDirection = SortDirectionAscending; break;

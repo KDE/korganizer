@@ -66,7 +66,7 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
   int interval = config->readEntry( "Interval", 60 );
   kDebug(5890) << "KOAlarmClient check interval: " << interval << " seconds."
                 << endl;
-  mLastChecked = config->readDateTimeEntry( "CalendarsLastChecked" );
+  mLastChecked = config->readEntry( "CalendarsLastChecked", QDateTime() );
 
   // load reminders that were active when quitting
   config->setGroup( "General" );
@@ -76,7 +76,7 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
     QString group( QString( "Incidence-%1" ).arg( i ) );
     config->setGroup( group );
     QString uid = config->readEntry( "UID" );
-    QDateTime dt = config->readDateTimeEntry( "RemindAt" );
+    QDateTime dt = config->readEntry( "RemindAt", QDateTime() );
     if ( !uid.isEmpty() )
       createReminder( mCalendar->incidence( uid ), dt );
     config->deleteGroup( group );
@@ -182,7 +182,7 @@ void KOAlarmClient::dumpDebug()
   KConfig *cfg = KGlobal::config();
 
   cfg->setGroup( "Alarms" );
-  QDateTime lastChecked = cfg->readDateTimeEntry( "CalendarsLastChecked" );
+  QDateTime lastChecked = cfg->readEntry( "CalendarsLastChecked", QDateTime() );
 
   kDebug(5890) << "Last Check: " << lastChecked << endl;
 }
