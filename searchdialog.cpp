@@ -155,8 +155,8 @@ void SearchDialog::doSearch()
 {
   QRegExp re;
 
-  re.setWildcard( true ); // most people understand these better.
-  re.setCaseSensitive( false );
+  re.setPatternSyntax( QRegExp::Wildcard ); // most people understand these better.
+  re.setCaseSensitivity( Qt::CaseInsensitive );
   re.setPattern( searchEdit->text() );
   if ( !re.isValid() ) {
     KMessageBox::sorry( this,
@@ -181,8 +181,8 @@ void SearchDialog::doSearch()
 void SearchDialog::updateView()
 {
   QRegExp re;
-  re.setWildcard( true ); // most people understand these better.
-  re.setCaseSensitive( false );
+  re.setPatternSyntax( QRegExp::Wildcard ); // most people understand these better.
+  re.setCaseSensitivity( Qt::CaseInsensitive );
   re.setPattern( searchEdit->text() );
   if ( re.isValid() ) {
     search( re );
@@ -243,7 +243,7 @@ void SearchDialog::search( const QRegExp &re )
     Incidence *ev = *it;
     if ( mSummaryCheck->isChecked() ) {
 #if QT_VERSION >= 300
-      if ( re.search( ev->summary() ) != -1 ) {
+      if ( re.indexIn( ev->summary() ) != -1 ) {
 #else
       if ( re.match( ev->summary() ) != -1 ) {
 #endif
@@ -253,7 +253,7 @@ void SearchDialog::search( const QRegExp &re )
     }
     if ( mDescriptionCheck->isChecked() ) {
 #if QT_VERSION >= 300
-      if ( re.search( ev->description() ) != -1 ) {
+      if ( re.indexIn( ev->description() ) != -1 ) {
 #else
       if ( re.match( ev->description() ) != -1 ) {
 #endif
@@ -263,7 +263,7 @@ void SearchDialog::search( const QRegExp &re )
     }
     if ( mCategoryCheck->isChecked() ) {
 #if QT_VERSION >= 300
-      if ( re.search( ev->categoriesStr() ) != -1 ) {
+      if ( re.indexIn( ev->categoriesStr() ) != -1 ) {
 #else
       if ( re.match( ev->categoriesStr() ) != -1 ) {
 #endif

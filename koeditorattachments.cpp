@@ -416,7 +416,7 @@ QString KOEditorAttachments::generateLocalAttachmentPath(
   else
     pathBegin += mUid;
   pathBegin += "/";
-  
+
   if ( filename.isEmpty() )
     filename = KRandom::randomString( 10 ) + 
                      QString( mimeType->patterns().first() ).replace( "*", "" );
@@ -426,7 +426,7 @@ QString KOEditorAttachments::generateLocalAttachmentPath(
     for ( QStringList::ConstIterator it = mimeType->patterns().constBegin();
           it != mimeType->patterns().constEnd(); ++it ) {
       QRegExp re( *it );
-      re.setWildcard( true );
+      re.setPatternSyntax( QRegExp::Wildcard );
       if ( ( correctExtension = re.exactMatch( filename ) ) )
         break;
     }
@@ -434,14 +434,14 @@ QString KOEditorAttachments::generateLocalAttachmentPath(
       // we take the first one
       filename += QString( mimeType->patterns().first() ).replace( "*", "" );
   }
-  
+
   QString path = locateLocal( "data", pathBegin + filename );
-  
+
   while ( QFile::exists( path ) )
     // no need to worry much about races here, I guess
     path = locateLocal( "data", 
                        pathBegin + KRandom::randomString( 6 ) + filename );
-  
+
   return path;
 }
 
