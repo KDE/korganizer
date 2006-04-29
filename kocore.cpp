@@ -239,7 +239,7 @@ KXMLGUIClient* KOCore::xmlguiClient( QWidget *wdg ) const
   QWidget *topLevel = wdg->topLevelWidget();
   QMap<QWidget*, KXMLGUIClient*>::ConstIterator it = mXMLGUIClients.find( topLevel );
   if ( it != mXMLGUIClients.end() )
-    return it.data();
+    return it.value();
 
   return 0;
 }
