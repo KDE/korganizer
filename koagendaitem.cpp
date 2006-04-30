@@ -789,7 +789,7 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
   }
 
   // Used for multi-day events to make sure the summary is on screen
-  QRect visRect=visibleRect();
+  QRect visRect=visibleRegion().boundingRect();
 
   // case 2: draw a single line when no more space
   if ( (2 * singleLineHeight) > (height() - 2 * margin) ) {

@@ -106,7 +106,9 @@ TimeLabels::TimeLabels(int rows,QWidget *parent, Qt::WFlags f) :
   mMousePos = new QFrame(this);
   mMousePos->setLineWidth(0);
 //  mMousePos->setMargin(0);
-  mMousePos->setBackgroundColor(Qt::red);
+  QPalette pal;
+  pal.setColor( mMousePos->backgroundRole(), Qt::red );
+  mMousePos->setPalette( pal );
   mMousePos->setFixedSize(width(), 1);
   addChild(mMousePos, 0, 0);
 }

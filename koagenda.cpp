@@ -77,16 +77,18 @@ MarcusBains::MarcusBains( KOAgenda *_agenda )
 {
   setLineWidth(0);
 //  setMargin(0);
-  setBackgroundColor(Qt::red);
+  QPalette pal;
+  pal.setColor( backgroundRole(), Qt::red );
+  setPalette( pal );
   minutes = new QTimer(this);
   connect(minutes, SIGNAL(timeout()), this, SLOT(updateLocation()));
   minutes->start(0, true);
 
   mTimeBox = new QLabel(this);
   mTimeBox->setAlignment(Qt::AlignRight | Qt::AlignBottom);
-  QPalette pal = mTimeBox->palette();
-  pal.setColor(QColorGroup::Foreground, Qt::red);
-  mTimeBox->setPalette(pal);
+  QPalette pal1 = mTimeBox->palette();
+  pal1.setColor(QColorGroup::Foreground, Qt::red);
+  mTimeBox->setPalette(pal1);
 #warning "kde4: porting ?"
   //mTimeBox->setAutoMask(true);
 

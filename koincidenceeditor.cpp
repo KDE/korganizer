@@ -245,7 +245,7 @@ QWidget *KOIncidenceEditor::addDesignerTab( const QString &uifile )
 
   QBoxLayout *topLayout = new QVBoxLayout( topFrame );
 
-  wid->reparent( topFrame, 0, QPoint() );
+  wid->setParent( topFrame );
   topLayout->addWidget( wid );
   mDesignerFieldForWidget[ topFrame ] = wid;
 

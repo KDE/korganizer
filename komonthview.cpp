@@ -606,7 +606,9 @@ void MonthViewCell::updateConfig()
       bg = bg.dark( 125 );
     }
   }
-  setPaletteBackgroundColor( bg );
+  QPalette pal;
+  pal.setColor( backgroundRole(), bg );
+  setPalette( pal );
 //  mStandardPalette.setColor( QColorGroup::Background, bg);*/
 
   mHolidayPalette = mStandardPalette;
