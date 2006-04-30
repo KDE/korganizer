@@ -118,7 +118,8 @@ KODayMatrix::KODayMatrix( QWidget *parent )
 
   mTodayMarginWidth = 2;
   mSelEnd = mSelStart = NOSELECTION;
-  setBackgroundMode( Qt::NoBackground );
+  setAttribute(Qt::WA_NoSystemBackground, true);
+
   recalculateToday();
 }
 

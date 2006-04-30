@@ -275,7 +275,7 @@ void KOAgenda::init()
                   int( mGridSpacingY * mRows ) );
 
   viewport()->update();
-  viewport()->setBackgroundMode( Qt::NoBackground );
+  viewport()->setAttribute(Qt::WA_NoSystemBackground, true);
   viewport()->setFocusPolicy( Qt::WheelFocus );
 
   setMinimumSize( 30, int( mGridSpacingY + 1 ) );
