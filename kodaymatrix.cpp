@@ -514,13 +514,13 @@ void KODayMatrix::paintEvent( QPaintEvent * )
   int selw, selh;
   bool isRTL = KOGlobals::self()->reverseLayout();
 
-  QColorGroup cg = palette().active();
+  QPalette pal = palette();
 
   p.begin(  &pm, this );
-  pm.fill( cg.base() );
+  pm.fill( pal.color( QPalette::Base ) );
 
   // draw topleft frame
-  p.setPen( cg.mid() );
+  p.setPen( pal.color( QPalette::Mid ) );
   p.drawRect(0, 0, sz.width()-1, sz.height()-1);
   // don't paint over borders
   p.translate(1,1);
@@ -558,7 +558,7 @@ void KODayMatrix::paintEvent( QPaintEvent * )
   }
 
   // iterate over all days in the matrix and draw the day label in appropriate colors
-  QColor textColor = cg.text();
+  QColor textColor = pal.color( QPalette::Text );
   QColor textColorShaded = getShadedColor( textColor );
   QColor actcol = textColorShaded;
   p.setPen(actcol);

@@ -229,17 +229,17 @@ void KOTodoViewItem::paintCell(QPainter *p, const QColorGroup &cg, int column, i
   if ( !mTodo ) return;
 #ifndef KORG_NOLVALTERNATION
   if (isAlternate())
-        _cg.setColor(QColorGroup::Base, static_cast< KOTodoListView* >(listView())->alternateBackground());
+        _cg.setColor(QPalette::Base, static_cast< KOTodoListView* >(listView())->alternateBackground());
   if (mTodo->hasDueDate()) {
     if (mTodo->dtDue().date()==QDate::currentDate() &&
         !mTodo->isCompleted()) {
-      _cg.setColor(QColorGroup::Base, KOPrefs::instance()->mTodoDueTodayColor);
-      _cg.setColor(QColorGroup::Text, getTextColor(KOPrefs::instance()->mTodoDueTodayColor));
+      _cg.setColor(QPalette::Base, KOPrefs::instance()->mTodoDueTodayColor);
+      _cg.setColor(QPalette::Text, getTextColor(KOPrefs::instance()->mTodoDueTodayColor));
     }
     if (mTodo->dtDue().date() < QDate::currentDate() &&
         !mTodo->isCompleted()) {
-      _cg.setColor(QColorGroup::Base, KOPrefs::instance()->mTodoOverdueColor);
-      _cg.setColor(QColorGroup::Text, getTextColor(KOPrefs::instance()->mTodoOverdueColor));
+      _cg.setColor(QPalette::Base, KOPrefs::instance()->mTodoOverdueColor);
+      _cg.setColor(QPalette::Text, getTextColor(KOPrefs::instance()->mTodoOverdueColor));
     }
   }
 #endif
@@ -249,7 +249,7 @@ void KOTodoViewItem::paintCell(QPainter *p, const QColorGroup &cg, int column, i
     p->save();
     int progress = (int)(( (width-6)*mTodo->percentComplete())/100.0 + 0.5);
 
-    p->fillRect( 0, 0, width, height(), _cg.base() ); // background
+    p->fillRect( 0, 0, width, height(), _cg.color( QPalette::Base ) ); // background
     p->setPen( KGlobalSettings::textColor() );  //border
     p->setBrush( KGlobalSettings::baseColor() );  //filling
     p->drawRect( 2, 2, width-4, height()-4);
