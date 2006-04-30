@@ -94,11 +94,15 @@ SearchDialog::SearchDialog(Calendar *calendar,QWidget *parent)
   rangeLayout->setMargin( 0 );
 
   mStartDate = new KDateEdit( rangeWidget );
-  rangeLayout->addWidget( new QLabel( mStartDate, i18n("Fr&om:"), rangeWidget ) );
+  QLabel *label = new QLabel( i18n("Fr&om:"), rangeWidget );
+  label->setBuddy( mStartDate );
+  rangeLayout->addWidget( label );
   rangeLayout->addWidget( mStartDate );
 
   mEndDate = new KDateEdit( rangeWidget );
-  rangeLayout->addWidget( new QLabel( mEndDate, i18n("&To:"), rangeWidget ) );
+  label = new QLabel( i18n("&To:"), rangeWidget );
+  label->setBuddy( mEndDate );
+  rangeLayout->addWidget( label );
   mEndDate->setDate( QDate::currentDate().addDays( 365 ) );
   rangeLayout->addWidget( mEndDate );
 
