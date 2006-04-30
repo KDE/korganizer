@@ -83,7 +83,8 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent)
   QButtonGroup* radioBG = new QButtonGroup( this );
   connect( radioBG, SIGNAL( buttonClicked( int ) ), SLOT( slotActionChanged() ) );
 
-  QHBoxLayout *dateLayout = new QHBoxLayout(0);
+  QHBoxLayout *dateLayout = new QHBoxLayout();
+  dateLayout->setMargin( 0 );
   mArchiveOnceRB = new QRadioButton(i18n("Archive now items older than:"),topFrame);
   dateLayout->addWidget(mArchiveOnceRB);
   radioBG->addButton(mArchiveOnceRB);
@@ -119,7 +120,8 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent)
   mExpiryUnitsComboBox->addItem( i18n("Month(s)") );
   mExpiryUnitsComboBox->setEnabled( false );
 
-  QHBoxLayout *fileLayout = new QHBoxLayout(0);
+  QHBoxLayout *fileLayout = new QHBoxLayout();
+  fileLayout->setMargin( 0 );
   fileLayout->setSpacing(spacingHint());
   QLabel *l = new QLabel(i18n("Archive &file:"),topFrame);
   fileLayout->addWidget(l);

@@ -31,8 +31,9 @@ ConfigDialog::ConfigDialog(QWidget * parent):KDialogBase(Plain, i18n("Configure 
             parent)
 {
   QFrame *topFrame = plainPage();
-  QVBoxLayout *topLayout =
-    new QVBoxLayout(topFrame, 0, spacingHint());
+  QVBoxLayout *topLayout = new QVBoxLayout(topFrame);
+  topLayout->setMargin( 0 );
+  topLayout->setSpacing( spacingHint() );
 
   israel_box = new QCheckBox(topFrame);
   israel_box->setText(i18n("Use Israeli holidays"));
