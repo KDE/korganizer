@@ -56,8 +56,8 @@
 #include <kconfig.h>
 #include <klocale.h>
 #include <kstandarddirs.h>
-#include <kabc/stdaddressbook.h> 
-#include <kabc/addressee.h> 
+#include <kabc/stdaddressbook.h>
+#include <kabc/addressee.h>
 
 #include <qfile.h>
 #include <qbuffer.h>
@@ -227,7 +227,7 @@ void FreeBusyManager::publishFreeBusy()
   }
   targetURL.setUser( KOPrefs::instance()->mFreeBusyPublishUser );
   targetURL.setPass( KOPrefs::instance()->mFreeBusyPublishPassword );
-  
+
   mUploadingFreeBusy = true;
 
   // If we have a timer running, it should be stopped now
@@ -444,7 +444,7 @@ KUrl FreeBusyManager::freeBusyUrl( const QString &email )
        && !emailHost.endsWith( '.' + hostDomain ) ) {
     // Host names do not match
     kDebug(5850) << "Host '" << sourceURL.host() << "' doesn't match email '"
-      << email << "'" << endl; 
+      << email << "'" << endl;
     return KUrl();
 }
 
@@ -469,7 +469,7 @@ KCal::FreeBusy *FreeBusyManager::iCalToFreeBusy( const QByteArray &data )
     kDebug(5850) << "FreeBusyManager::iCalToFreeBusy(): Error parsing free/busy"
               << endl;
     kDebug(5850) << freeBusyVCal << endl;
-  } 
+  }
   return fb;
 }
 
@@ -498,7 +498,7 @@ FreeBusy *FreeBusyManager::loadFreeBusy( const QString &email )
   }
 
   QTextStream ts( &f );
-  QString str = ts.read();
+  QString str = ts.readAll();
 
   return iCalToFreeBusy( str.toUtf8() );
 }

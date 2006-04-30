@@ -116,8 +116,8 @@ QList<ScheduleMessage*> MailScheduler::retrieveTransactions()
           << (*it) << "'" << endl;
       } else {
         QTextStream t( &f );
-        t.setEncoding( QTextStream::Latin1 );
-        QString messageString = t.read();
+        t.setCodec( "ISO 8859-1" );
+        QString messageString = t.readAll();
         messageString.replace( QRegExp( "\n[ \t]"), "" );
         messageString = QString::fromUtf8( messageString.toLatin1() );
         ScheduleMessage *mess = mFormat->parseScheduleMessage( mCalendar,

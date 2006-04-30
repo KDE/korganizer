@@ -132,9 +132,9 @@ void KOGroupware::incomingDirChanged( const QString& path )
     return;
   }
   QTextStream t(&f);
-  t.setEncoding( QTextStream::UnicodeUTF8 );
+  t.setCodec( "UTF-8" );
   QString receiver = KPIM::getFirstEmailAddress( t.readLine() );
-  QString iCal = t.read();
+  QString iCal = t.readAll();
 
   f.remove();
 
