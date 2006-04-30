@@ -342,7 +342,8 @@ void KOEditorGeneral::readIncidence(Incidence *event)
   mSummaryEdit->setText(event->summary());
   mLocationEdit->setText(event->location());
 
-  mDescriptionEdit->setText(event->description());
+  // TODO: Implement description as rich text, too.
+  mDescriptionEdit->setPlainText(event->description());
 
 #if 0
   // organizer information
@@ -390,7 +391,7 @@ void KOEditorGeneral::writeIncidence(Incidence *event)
 
   event->setSummary(mSummaryEdit->text());
   event->setLocation(mLocationEdit->text());
-  event->setDescription(mDescriptionEdit->text());
+  event->setDescription(mDescriptionEdit->toPlainText());
   event->setCategories(mCategories);
   event->setSecrecy(mSecrecyCombo->currentIndex());
 
@@ -421,7 +422,7 @@ void KOEditorGeneral::setSummary( const QString &text )
 
 void KOEditorGeneral::setDescription( const QString &text )
 {
-  mDescriptionEdit->setText( text );
+  mDescriptionEdit->setPlainText( text );
 }
 
 QObject *KOEditorGeneral::typeAheadReceiver() const

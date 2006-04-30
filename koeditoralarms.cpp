@@ -247,14 +247,14 @@ void KOEditorAlarms::readAlarm( KCal::Alarm *alarm )
           add << (*it).fullName();
         }
         mWidget.mEmailAddress->setText( add.join(", ") );
-        mWidget.mEmailText->setText( alarm->mailText() );
+        mWidget.mEmailText->setPlainText( alarm->mailText() );
         id = 3;
         break;}
     case KCal::Alarm::Display:
     case KCal::Alarm::Invalid:
     default:
         mWidget.mTypeDisplayRadio->setChecked( true );
-        mWidget.mDisplayText->setText( alarm->text() );
+        mWidget.mDisplayText->setPlainText( alarm->text() );
         break;
   }
 
@@ -303,9 +303,9 @@ void KOEditorAlarms::writeAlarm( KCal::Alarm *alarm )
       add << KCal::Person( *it );
     }
     // TODO: Add a subject line and possibilities for attachments
-    alarm->setEmailAlarm( QString(), mWidget.mEmailText->text(), add );
+    alarm->setEmailAlarm( QString(), mWidget.mEmailText->toPlainText(), add );
   } else { // Display
-    alarm->setDisplayAlarm( mWidget.mDisplayText->text() );
+    alarm->setDisplayAlarm( mWidget.mDisplayText->toPlainText() );
   }
 }
 

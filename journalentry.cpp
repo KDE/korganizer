@@ -94,7 +94,7 @@ void JournalDateEntry::setDate(const QDate &date)
               i18n("[Add Journal Entry]") +
               "</a></font></center></qt>";
 
-  mTitle->setText( dtstring );
+  mTitle->setHtml( dtstring );
   mDate = date;
   emit setDateSignal( date );
 }
@@ -328,7 +328,8 @@ void JournalEntry::readJournal( Journal *j )
   if ( hasTime ) {
     mTimeEdit->setTime( mJournal->dtStart().time() );
   }
-  mEditor->setText( mJournal->description() );
+  //TODO: Allow rich text
+  mEditor->setPlainText( mJournal->description() );
   setReadOnly( mJournal->isReadOnly() );
 }
 
@@ -339,7 +340,7 @@ void JournalEntry::writeJournalPrivate( Journal *j )
   QTime tm( mTimeEdit->getTime() );
   j->setDtStart( QDateTime( mDate, hasTime?tm:QTime(0,0,0) ) );
   j->setFloats( !hasTime );
-  j->setDescription( mEditor->text() );
+  j->setDescription( mEditor->toPlainText() );
 }
 
 void JournalEntry::writeJournal()
