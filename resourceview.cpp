@@ -211,7 +211,7 @@ void ResourceItem::paintCell(QPainter *p, const QColorGroup &cg,
   p->setFont( oldFont );
 /*  QColorGroup _cg = cg;
   if(!mResource) return;
-  _cg.setColor(QColorGroup::Base, getTextColor(mResourceColor));*/
+  _cg.setColor(QPalette::Base, getTextColor(mResourceColor));*/
 }
 
 

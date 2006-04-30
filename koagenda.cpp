@@ -87,7 +87,7 @@ MarcusBains::MarcusBains( KOAgenda *_agenda )
   mTimeBox = new QLabel(this);
   mTimeBox->setAlignment(Qt::AlignRight | Qt::AlignBottom);
   QPalette pal1 = mTimeBox->palette();
-  pal1.setColor(QColorGroup::Foreground, Qt::red);
+  pal1.setColor(QPalette::Foreground, Qt::red);
   mTimeBox->setPalette(pal1);
 #warning "kde4: porting ?"
   //mTimeBox->setAutoMask(true);

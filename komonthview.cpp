@@ -98,8 +98,8 @@ KNoScrollListBox::KNoScrollListBox( QWidget *parent )
   : Q3ListBox( parent ), mSqueezing( false )
 {
   QPalette pal = palette();
-  pal.setColor( QColorGroup::Foreground, KOPrefs::instance()->agendaBgColor().dark( 150 ) );
-  pal.setColor( QColorGroup::Base, KOPrefs::instance()->agendaBgColor() );
+  pal.setColor( QPalette::Foreground, KOPrefs::instance()->agendaBgColor().dark( 150 ) );
+  pal.setColor( QPalette::Base, KOPrefs::instance()->agendaBgColor() );
   setPalette( pal );
 }
 
@@ -114,9 +114,9 @@ void KNoScrollListBox::setBackground( bool primary, bool workDay )
 
   QPalette pal = palette();
   if ( primary ) {
-    pal.setColor( QColorGroup::Base, color );
+    pal.setColor( QPalette::Base, color );
   } else {
-    pal.setColor( QColorGroup::Base, color.dark( 115 ) );
+    pal.setColor( QPalette::Base, color.dark( 115 ) );
   }
   setPalette( pal );
 }
@@ -229,7 +229,7 @@ void MonthViewItem::paint( QPainter *p )
 #endif
 
   QColor bgColor = palette().color( QPalette::Normal,
-            sel ? QColorGroup::Highlight : QColorGroup::Background );
+            sel ? QPalette::Highlight : QPalette::Background );
   int offset=0;
   if ( KOPrefs::instance()->monthViewUsesResourceColor() &&
     mResourceColor.isValid() ) {
@@ -271,7 +271,7 @@ void MonthViewItem::paint( QPainter *p )
   else
     yPos = pmheight/2 - fm.height()/2  + fm.ascent();
   QColor textColor = palette().color( QPalette::Normal, sel ? \
-          QColorGroup::HighlightedText : QColorGroup::Text );
+          QPalette::HighlightedText : QPalette::Text );
   p->setPen( textColor );
 
   KWordWrap::drawFadeoutText( p, x, yPos, listBox()->width() - x, text() );
@@ -424,7 +424,7 @@ void MonthViewCell::updateCell()
     setPalette( mTodayPalette );
 
     QPalette pal = mItemList->palette();
-    pal.setColor( QColorGroup::Foreground, KOPrefs::instance()->highlightColor() );
+    pal.setColor( QPalette::Foreground, KOPrefs::instance()->highlightColor() );
     mItemList->setPalette( pal );
   }
   else {
@@ -434,7 +434,7 @@ void MonthViewCell::updateCell()
       setPalette( mStandardPalette );
 
     QPalette pal = mItemList->palette();
-    pal.setColor( QColorGroup::Foreground, KOPrefs::instance()->agendaBgColor().dark( 150 ) );
+    pal.setColor( QPalette::Foreground, KOPrefs::instance()->agendaBgColor().dark( 150 ) );
     mItemList->setPalette( pal );
   }
 
@@ -596,7 +596,7 @@ void MonthViewCell::updateConfig()
                QSize( mLabel->frameWidth() * 2, mLabel->frameWidth() * 2 ) +
                QSize( 2, 2 );
 //  mStandardPalette = mOriginalPalette;
-  QColor bg = mStandardPalette.color( QPalette::Active, QColorGroup::Background );
+  QColor bg = mStandardPalette.color( QPalette::Active, QPalette::Background );
   int h,s,v;
   bg.getHsv( &h, &s, &v );
   if ( date().month() %2 == 0 ) {
@@ -609,17 +609,17 @@ void MonthViewCell::updateConfig()
   QPalette pal;
   pal.setColor( backgroundRole(), bg );
   setPalette( pal );
-//  mStandardPalette.setColor( QColorGroup::Background, bg);*/
+//  mStandardPalette.setColor( QPalette::Background, bg);*/
 
   mHolidayPalette = mStandardPalette;
-  mHolidayPalette.setColor( QColorGroup::Foreground,
+  mHolidayPalette.setColor( QPalette::Foreground,
                             KOPrefs::instance()->holidayColor() );
-  mHolidayPalette.setColor( QColorGroup::Text,
+  mHolidayPalette.setColor( QPalette::Text,
                             KOPrefs::instance()->holidayColor() );
   mTodayPalette = mStandardPalette;
-  mTodayPalette.setColor( QColorGroup::Foreground,
+  mTodayPalette.setColor( QPalette::Foreground,
                           KOPrefs::instance()->highlightColor() );
-  mTodayPalette.setColor( QColorGroup::Text,
+  mTodayPalette.setColor( QPalette::Text,
                           KOPrefs::instance()->highlightColor() );
   updateCell();
 
