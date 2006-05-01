@@ -241,8 +241,6 @@ install_files( /bin FILES ical2vcal )
 
 kde4_install_icons( ${ICON_INSTALL_DIR}  hicolor )
 
-kde4_create_doxygen_docs( REFERENCES libkcal kdeui  )
-
 kde4_footer()
 
 
