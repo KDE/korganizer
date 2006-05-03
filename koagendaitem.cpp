@@ -735,7 +735,7 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
   }
   QColor textColor = getTextColor(bgColor);
   p.setPen( textColor );
-  p.setBackgroundColor( bgColor );
+  p.setBackground( QBrush( bgColor ) );
   p.setFont(KOPrefs::instance()->mAgendaViewFont);
   QFontMetrics fm = p.fontMetrics();
 
@@ -890,7 +890,7 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
     headline = longH;
     x += (hTxtWidth - hw) / 2;
   }
-  p.setBackgroundColor( frameColor );
+  p.setBackground( QBrush( frameColor ) );
   p.setPen( getTextColor( frameColor ) );
   KWordWrap::drawFadeoutText( &p, x, ft + fm.ascent(), hTxtWidth, headline );
 
@@ -900,7 +900,7 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
                               0,
                               mLabelText );
 
-  p.setBackgroundColor( bgColor );
+  p.setBackground( QBrush( bgColor ) );
   p.setPen( textColor );
   QString ws = ww->wrappedString();
   if ( ws.left( ws.length()-1 ).indexOf( '\n' ) >= 0 )

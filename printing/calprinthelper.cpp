@@ -353,7 +353,7 @@ void CalPrintHelper::drawAllDayBox(QPainter &p, Event::List &eventList,
   int offset=y;
 
   QPen oldPen( p.pen() );
-  QColor oldBgColor( p.backgroundColor() );
+  QBrush oldBgColor( p.background() );
   QBrush oldBrush( p.brush() );
   QString multiDayStr;
 
@@ -381,7 +381,7 @@ void CalPrintHelper::drawAllDayBox(QPainter &p, Event::List &eventList,
         // reset the colors
         p.setBrush( oldBrush );
         p.setPen( oldPen );
-        p.setBackgroundColor( oldBgColor );
+        p.setBackground( oldBgColor );
 
         offset += height;
       } else {
@@ -486,7 +486,7 @@ void CalPrintHelper::drawAgendaDayBox( QPainter &p, Event::List &events,
   qDeleteAll( cells );
 
   QPen oldPen( p.pen() );
-  QColor oldBgColor( p.backgroundColor() );
+  QBrush oldBgColor( p.background() );
   QBrush oldBrush( p.brush() );
   QFont oldFont( p.font() );
 
@@ -502,7 +502,7 @@ void CalPrintHelper::drawAgendaDayBox( QPainter &p, Event::List &events,
 
     p.setBrush( oldBrush );
     p.setPen( oldPen );
-    p.setBackgroundColor( oldBgColor );
+    p.setBackground( oldBgColor );
   }
   p.setFont( oldFont );
 //  p.setBrush( QBrush( NoBrush ) );
@@ -766,19 +766,19 @@ void CalPrintHelper::drawMonth(QPainter &p, const QDate &qd, bool weeknumbers,
                   y, width - xoffset, mSubHeaderHeight );
   int cellWidth = ( width - xoffset ) / 7;
 
-  QColor back = p.backgroundColor();
+  QBrush back = p.background();
   bool darkbg = false;
   for ( int row = 0; row < rows; ++row ) {
     for ( int col = 0; col < 7; ++col ) {
       // show days from previous/next month with a grayed background
       if ( (monthDate < monthFirst) || (monthDate > monthLast) ) {
-        p.setBackgroundColor( back.dark( 120 ) );
+        p.setBackground( QBrush( back.color().dark( 120 ) ) );
         darkbg = true;
       }
       drawDayBox(p, monthDate, x+xoffset+col*cellWidth, y+yoffset+row*cellHeight,
                  cellWidth, cellHeight, false,  recurDaily, recurWeekly );
       if ( darkbg ) {
-        p.setBackgroundColor( back );
+        p.setBackground( back );
         darkbg = false;
       }
       monthDate = monthDate.addDays(1);
@@ -905,12 +905,12 @@ void CalPrintHelper::drawTodo( int &count, Todo *todo, QPainter &p,
     f.setStrikeOut( true );
     p.setFont( f );
   }
-  p.drawText( rect, Qt::TextWordWrap, outStr, -1, &newrect );
+  p.drawText( rect, Qt::TextWordWrap, outStr, &newrect );
   f.setStrikeOut( false );
   p.setFont( f );
 #endif
   //TODO: Remove this section when the code above is fixed
-  p.drawText( rect, Qt::TextWordWrap, outStr, -1, &newrect );
+  p.drawText( rect, Qt::TextWordWrap, outStr, &newrect );
   if ( todo->isCompleted() && strikeoutCompleted ) {
     // strike out the summary text if to-do is complete
     // Note: we tried to use a strike-out font and for unknown reasons the
@@ -959,7 +959,7 @@ void CalPrintHelper::drawTodo( int &count, Todo *todo, QPainter &p,
     outStr = todo->description();
     rect = p.boundingRect( left+20, y, x+width-(left+10), -1,
                            Qt::TextWordWrap, outStr );
-    p.drawText( rect, Qt::TextWordWrap, outStr, -1, &newrect );
+    p.drawText( rect, Qt::TextWordWrap, outStr, &newrect );
   }
 
   // Set the new line position
@@ -1035,7 +1035,7 @@ void CalPrintHelper::drawJournalField( QPainter &p, KLocalizedString field, QStr
     rect = p.boundingRect( x, y, width, -1, Qt::TextWordWrap, entry);
   }
   QRect newrect;
-  p.drawText( rect, Qt::TextWordWrap, entry, -1, &newrect );
+  p.drawText( rect, Qt::TextWordWrap, entry, &newrect );
   y = newrect.bottom() + 7;
 }
 
@@ -1064,7 +1064,7 @@ void CalPrintHelper::drawJournal( Journal * journal, QPainter &p, int x, int &y,
     rect = p.boundingRect( x, y, width, -1, Qt::TextWordWrap, headerText );
   }
   QRect newrect;
-  p.drawText( rect, Qt::TextWordWrap, headerText, -1, &newrect );
+  p.drawText( rect, Qt::TextWordWrap, headerText, &newrect );
   p.setFont( oldFont );
 
   y = newrect.bottom() + 4;

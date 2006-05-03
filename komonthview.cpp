@@ -233,12 +233,12 @@ void MonthViewItem::paint( QPainter *p )
   int offset=0;
   if ( KOPrefs::instance()->monthViewUsesResourceColor() &&
     mResourceColor.isValid() ) {
-    p->setBackgroundColor( mResourceColor );
+    p->setBackground( QBrush( mResourceColor ) );
     p->eraseRect( 0, 0, listBox()->maxItemWidth(), height( listBox() ) );
     offset=2;
   }
   if ( KOPrefs::instance()->monthViewUsesCategoryColor() ) {
-    p->setBackgroundColor( bgColor );
+    p->setBackground( QBrush( bgColor ) );
     p->eraseRect( offset, offset, listBox()->maxItemWidth()-2*offset, height( listBox() )-2*offset );
   }
   int x = 3;
