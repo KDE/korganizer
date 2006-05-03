@@ -58,7 +58,7 @@ AlarmDockWindow::AlarmDockWindow()
   bool alarmsEnabled = config->readEntry( "Enabled", true );
 
   mName = i18n( "KOrganizer Reminder Daemon" );
-  setCaption( mName );
+  setWindowTitle( mName );
 
   // Set up icons
   KGlobal::iconLoader()->addAppDir( "korgac" );
