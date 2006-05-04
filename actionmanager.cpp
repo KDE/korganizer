@@ -246,10 +246,10 @@ void ActionManager::initActions()
 
 
   //~~~~~~~~~~~~~~~~~~~~~~~~ IMPORT / EXPORT ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  new KAction( i18n("Import &Calendar..."), 0, this, SLOT( file_merge() ),
-               mACollection, "import_icalendar" );
-  new KAction( i18n("&Import From UNIX Ical tool"), 0, this, SLOT( file_icalimport() ),
-               mACollection, "import_ical" );
+  action = new KAction( i18n("Import &Calendar..."), mACollection, "import_icalendar" );
+  connect(action, SIGNAL(triggered(bool) ), SLOT( file_merge() ));
+  action = new KAction( i18n("&Import From UNIX Ical tool"), mACollection, "import_ical" );
+  connect(action, SIGNAL(triggered(bool) ), SLOT( file_icalimport() ));
   new KAction( i18n("Get &Hot New Stuff..."), 0, this,
                SLOT( downloadNewStuff() ), mACollection,
                "downloadnewstuff" );
@@ -269,8 +269,8 @@ void ActionManager::initActions()
 
 
 
-  new KAction( i18n("Archive O&ld Entries..."), 0, this, SLOT( file_archive() ),
-                    mACollection, "file_archive" );
+  action = new KAction( i18n("Archive O&ld Entries..."), mACollection, "file_archive" );
+  connect(action, SIGNAL(triggered(bool) ), SLOT( file_archive() ));
   new KAction( i18nc("delete completed to-dos", "Pur&ge Completed To-dos"), 0,
                mCalendarView, SLOT( purgeCompleted() ), mACollection,
                "purge_completed" );
