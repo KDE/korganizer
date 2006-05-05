@@ -257,8 +257,8 @@ void ActionManager::initActions()
   connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( exportWeb() ));
   action = new KAction( i18n("&iCalendar..."), mACollection, "export_icalendar" );
   connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( exportICalendar() ));
-  new KAction( i18n("&vCalendar..."), 0,
-               mCalendarView, SLOT( exportVCalendar() ), mACollection, "export_vcalendar" );
+  KAction *action = new KAction( i18n("&vCalendar..."), mACollection, "export_vcalendar" );
+  connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( exportVCalendar() ));
   action = new KAction( i18n("Upload &Hot New Stuff..."), mACollection, "uploadnewstuff" );
   connect(action, SIGNAL(triggered(bool) ), SLOT( uploadNewStuff() ));
 
@@ -345,8 +345,8 @@ void ActionManager::initActions()
 
 
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~ FILTERS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  new KAction( i18n("&Refresh"), 0,
-                    mCalendarView, SLOT( updateView() ), mACollection, "update" );
+  KAction *action = new KAction( i18n("&Refresh"), mACollection, "update" );
+  connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( updateView() ));
 // TODO:
 //   new KAction( i18n("Hide &Completed To-dos"), 0,
 //                     mCalendarView, SLOT( toggleHideCompleted() ),
@@ -408,24 +408,24 @@ void ActionManager::initActions()
   connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( newEvent() ));
   action = new KAction(KIcon("newtodo"),  i18n("New &To-do..."), mACollection, "new_todo" );
   connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( newTodo() ));
-  action = new KAction( i18n("New Su&b-to-do..."), 0,
-                        mCalendarView,SLOT( newSubTodo() ), mACollection, "new_subtodo" );
+  action = new KAction( i18n("New Su&b-to-do..."), mACollection, "new_subtodo" );
+  connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( newSubTodo() ));
   action->setEnabled( false );
   connect( mCalendarView,SIGNAL( todoSelected( bool ) ),
            action,SLOT( setEnabled( bool ) ) );
   action = new KAction( i18n("New &Journal..."), mACollection, "new_journal" );
   connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( newJournal() ));
 
-  mShowIncidenceAction = new KAction( i18n("&Show"), 0,
-                                      mCalendarView,SLOT( showIncidence() ), mACollection, "show_incidence" );
-  mEditIncidenceAction = new KAction( i18n("&Edit..."), 0,
-                                      mCalendarView,SLOT( editIncidence() ), mACollection, "edit_incidence" );
+  mShowIncidenceAction = new KAction( i18n("&Show"), mACollection, "show_incidence" );
+  connect(mShowIncidenceAction, SIGNAL(triggered(bool) ), mCalendarView, SLOT( showIncidence() ));
+  mEditIncidenceAction = new KAction( i18n("&Edit..."), mACollection, "edit_incidence" );
+  connect(mEditIncidenceAction, SIGNAL(triggered(bool) ), mCalendarView, SLOT( editIncidence() ));
   mDeleteIncidenceAction = new KAction( i18n("&Delete"), mACollection, "delete_incidence" );
   connect(mDeleteIncidenceAction, SIGNAL(triggered(bool) ), mCalendarView, SLOT( deleteIncidence()));
   mDeleteIncidenceAction->setShortcut(Qt::Key_Delete);
 
-  action = new KAction( i18n("&Make Sub-to-do Independent"), 0,
-                        mCalendarView,SLOT( todo_unsub() ), mACollection, "unsub_todo" );
+  action = new KAction( i18n("&Make Sub-to-do Independent"), mACollection, "unsub_todo" );
+  connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( todo_unsub() ));
   action->setEnabled( false );
   connect( mCalendarView,SIGNAL( subtodoSelected( bool ) ),
            action,SLOT( setEnabled( bool ) ) );
@@ -452,14 +452,14 @@ void ActionManager::initActions()
   connect( mCalendarView, SIGNAL( organizerEventsSelected( bool ) ),
            action, SLOT( setEnabled( bool ) ) );
 
-  action = new KAction( i18n("Re&quest Update"), 0,
-                        mCalendarView, SLOT( schedule_refresh() ), mACollection, "schedule_refresh" );
+  action = new KAction( i18n("Re&quest Update"), mACollection, "schedule_refresh" );
+  connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( schedule_refresh() ));
   action->setEnabled( false );
   connect( mCalendarView,SIGNAL( groupEventsSelected( bool ) ),
            action,SLOT( setEnabled( bool ) ) );
 
-  action = new KAction( i18n("Send &Cancellation to Attendees"), 0,
-                        mCalendarView, SLOT( schedule_cancel() ), mACollection, "schedule_cancel" );
+  action = new KAction( i18n("Send &Cancellation to Attendees"), mACollection, "schedule_cancel" );
+  connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( schedule_cancel() ));
   action->setEnabled( false );
   connect( mCalendarView,SIGNAL( organizerEventsSelected( bool ) ),
            action,SLOT( setEnabled( bool ) ) );
@@ -476,12 +476,12 @@ void ActionManager::initActions()
   connect( mCalendarView,SIGNAL( groupEventsSelected( bool ) ),
            action,SLOT( setEnabled( bool ) ) );
 
-  action = new KAction( i18n("&Mail Free Busy Information..."), 0,
-                        mCalendarView, SLOT( mailFreeBusy() ), mACollection, "mail_freebusy" );
+  action = new KAction( i18n("&Mail Free Busy Information..."), mACollection, "mail_freebusy" );
+  connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( mailFreeBusy() ));
   action->setEnabled( true );
 
-  action = new KAction( i18n("&Upload Free Busy Information"), 0,
-                        mCalendarView, SLOT( uploadFreeBusy() ), mACollection, "upload_freebusy" );
+  action = new KAction( i18n("&Upload Free Busy Information"), mACollection, "upload_freebusy" );
+  connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( uploadFreeBusy() ));
   action->setEnabled( true );
 
   if ( !mIsPart ) {
@@ -538,16 +538,16 @@ void ActionManager::initActions()
 
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SIDEBAR ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  new KAction( i18n("Configure &Date && Time..."), 0,
-                    this, SLOT( configureDateTime() ), mACollection, "conf_datetime" );
+  KAction *action = new KAction( i18n("Configure &Date && Time..."), mACollection, "conf_datetime" );
+  connect(action, SIGNAL(triggered(bool) ), SLOT( configureDateTime() ));
 // TODO: Add an item to show the resource management dlg
 //   new KAction( i18n("Manage &Resources..."), 0,
 //                     this, SLOT( manageResources() ),
 //                     mACollection, "conf_resources" );
   action = new KAction(KIcon("configure"),  i18n("Manage View &Filters..."), mACollection, "edit_filters" );
   connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( editFilters() ));
-  new KAction( i18n("Manage C&ategories..."), 0,
-               mCalendarView->dialogManager(), SLOT( showCategoryEditDialog() ), mACollection, "edit_categories" );
+  KAction *action = new KAction( i18n("Manage C&ategories..."), mACollection, "edit_categories" );
+  connect(action, SIGNAL(triggered(bool) ), mCalendarView->dialogManager(), SLOT( showCategoryEditDialog() ));
   if ( mIsPart ) {
     KAction *action = new KAction(KIcon("configure"),  i18n("&Configure Calendar..."), mACollection, "korganizer_configure" );
     connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( edit_options() ));
