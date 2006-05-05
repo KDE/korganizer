@@ -250,30 +250,25 @@ void ActionManager::initActions()
   connect(action, SIGNAL(triggered(bool) ), SLOT( file_merge() ));
   action = new KAction( i18n("&Import From UNIX Ical tool"), mACollection, "import_ical" );
   connect(action, SIGNAL(triggered(bool) ), SLOT( file_icalimport() ));
-  new KAction( i18n("Get &Hot New Stuff..."), 0, this,
-               SLOT( downloadNewStuff() ), mACollection,
-               "downloadnewstuff" );
+  KAction *action = new KAction( i18n("Get &Hot New Stuff..."), mACollection, "downloadnewstuff" );
+  connect(action, SIGNAL(triggered(bool) ), SLOT( downloadNewStuff() ));
 
   new KAction( i18n("Export &Web Page..."), "webexport", 0,
                mCalendarView, SLOT( exportWeb() ),
                mACollection, "export_web" );
   new KAction( i18n("&iCalendar..."), 0,
-               mCalendarView, SLOT( exportICalendar() ),
-               mACollection, "export_icalendar" );
+               mCalendarView, SLOT( exportICalendar() ), mACollection, "export_icalendar" );
   new KAction( i18n("&vCalendar..."), 0,
-               mCalendarView, SLOT( exportVCalendar() ),
-               mACollection, "export_vcalendar" );
-  new KAction( i18n("Upload &Hot New Stuff..."), 0, this,
-               SLOT( uploadNewStuff() ), mACollection,
-               "uploadnewstuff" );
+               mCalendarView, SLOT( exportVCalendar() ), mACollection, "export_vcalendar" );
+  KAction *action = new KAction( i18n("Upload &Hot New Stuff..."), mACollection, "uploadnewstuff" );
+  connect(action, SIGNAL(triggered(bool) ), SLOT( uploadNewStuff() ));
 
 
 
   action = new KAction( i18n("Archive O&ld Entries..."), mACollection, "file_archive" );
   connect(action, SIGNAL(triggered(bool) ), SLOT( file_archive() ));
   new KAction( i18nc("delete completed to-dos", "Pur&ge Completed To-dos"), 0,
-               mCalendarView, SLOT( purgeCompleted() ), mACollection,
-               "purge_completed" );
+               mCalendarView, SLOT( purgeCompleted() ), mACollection, "purge_completed" );
 
 
 
@@ -361,8 +356,7 @@ void ActionManager::initActions()
 
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~ FILTERS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   new KAction( i18n("&Refresh"), 0,
-                    mCalendarView, SLOT( updateView() ),
-                    mACollection, "update" );
+                    mCalendarView, SLOT( updateView() ), mACollection, "update" );
 // TODO:
 //   new KAction( i18n("Hide &Completed To-dos"), 0,
 //                     mCalendarView, SLOT( toggleHideCompleted() ),
@@ -434,28 +428,23 @@ void ActionManager::initActions()
                mCalendarView,SLOT( newTodo() ),
                mACollection, "new_todo" );
   action = new KAction( i18n("New Su&b-to-do..."), 0,
-                        mCalendarView,SLOT( newSubTodo() ),
-                        mACollection, "new_subtodo" );
+                        mCalendarView,SLOT( newSubTodo() ), mACollection, "new_subtodo" );
   action->setEnabled( false );
   connect( mCalendarView,SIGNAL( todoSelected( bool ) ),
            action,SLOT( setEnabled( bool ) ) );
   new KAction( i18n("New &Journal..."), 0,
-               mCalendarView,SLOT( newJournal() ),
-               mACollection, "new_journal" );
+               mCalendarView,SLOT( newJournal() ), mACollection, "new_journal" );
 
   mShowIncidenceAction = new KAction( i18n("&Show"), 0,
-                                      mCalendarView,SLOT( showIncidence() ),
-                                      mACollection, "show_incidence" );
+                                      mCalendarView,SLOT( showIncidence() ), mACollection, "show_incidence" );
   mEditIncidenceAction = new KAction( i18n("&Edit..."), 0,
-                                      mCalendarView,SLOT( editIncidence() ),
-                                      mACollection, "edit_incidence" );
-  mDeleteIncidenceAction = new KAction( i18n("&Delete"), Qt::Key_Delete,
-                                        mCalendarView,SLOT( deleteIncidence()),
-                                        mACollection, "delete_incidence" );
+                                      mCalendarView,SLOT( editIncidence() ), mACollection, "edit_incidence" );
+  mDeleteIncidenceAction = new KAction( i18n("&Delete"), mACollection, "delete_incidence" );
+  connect(mDeleteIncidenceAction, SIGNAL(triggered(bool) ), mCalendarView, SLOT( deleteIncidence()));
+  mDeleteIncidenceAction->setShortcut(Qt::Key_Delete);
 
   action = new KAction( i18n("&Make Sub-to-do Independent"), 0,
-                        mCalendarView,SLOT( todo_unsub() ),
-                        mACollection, "unsub_todo" );
+                        mCalendarView,SLOT( todo_unsub() ), mACollection, "unsub_todo" );
   action->setEnabled( false );
   connect( mCalendarView,SIGNAL( subtodoSelected( bool ) ),
            action,SLOT( setEnabled( bool ) ) );
@@ -485,15 +474,13 @@ void ActionManager::initActions()
            action, SLOT( setEnabled( bool ) ) );
 
   action = new KAction( i18n("Re&quest Update"), 0,
-                        mCalendarView, SLOT( schedule_refresh() ),
-                        mACollection, "schedule_refresh" );
+                        mCalendarView, SLOT( schedule_refresh() ), mACollection, "schedule_refresh" );
   action->setEnabled( false );
   connect( mCalendarView,SIGNAL( groupEventsSelected( bool ) ),
            action,SLOT( setEnabled( bool ) ) );
 
   action = new KAction( i18n("Send &Cancellation to Attendees"), 0,
-                        mCalendarView, SLOT( schedule_cancel() ),
-                        mACollection, "schedule_cancel" );
+                        mCalendarView, SLOT( schedule_cancel() ), mACollection, "schedule_cancel" );
   action->setEnabled( false );
   connect( mCalendarView,SIGNAL( organizerEventsSelected( bool ) ),
            action,SLOT( setEnabled( bool ) ) );
@@ -506,20 +493,17 @@ void ActionManager::initActions()
            action,SLOT( setEnabled( bool ) ) );
 
   action = new KAction( i18nc("counter proposal","Request Chan&ge"),0,
-                        mCalendarView,SLOT( schedule_counter() ),
-                        mACollection, "schedule_counter" );
+                        mCalendarView,SLOT( schedule_counter() ), mACollection, "schedule_counter" );
   action->setEnabled( false );
   connect( mCalendarView,SIGNAL( groupEventsSelected( bool ) ),
            action,SLOT( setEnabled( bool ) ) );
 
   action = new KAction( i18n("&Mail Free Busy Information..."), 0,
-                        mCalendarView, SLOT( mailFreeBusy() ),
-                        mACollection, "mail_freebusy" );
+                        mCalendarView, SLOT( mailFreeBusy() ), mACollection, "mail_freebusy" );
   action->setEnabled( true );
 
   action = new KAction( i18n("&Upload Free Busy Information"), 0,
-                        mCalendarView, SLOT( uploadFreeBusy() ),
-                        mACollection, "upload_freebusy" );
+                        mCalendarView, SLOT( uploadFreeBusy() ), mACollection, "upload_freebusy" );
   action->setEnabled( true );
 
   if ( !mIsPart ) {
@@ -578,8 +562,7 @@ void ActionManager::initActions()
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SIDEBAR ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   new KAction( i18n("Configure &Date && Time..."), 0,
-                    this, SLOT( configureDateTime() ),
-                    mACollection, "conf_datetime" );
+                    this, SLOT( configureDateTime() ), mACollection, "conf_datetime" );
 // TODO: Add an item to show the resource management dlg
 //   new KAction( i18n("Manage &Resources..."), 0,
 //                     this, SLOT( manageResources() ),
@@ -588,8 +571,7 @@ void ActionManager::initActions()
                mCalendarView, SLOT( editFilters() ),
                mACollection, "edit_filters" );
   new KAction( i18n("Manage C&ategories..."), 0,
-               mCalendarView->dialogManager(), SLOT( showCategoryEditDialog() ),
-               mACollection, "edit_categories" );
+               mCalendarView->dialogManager(), SLOT( showCategoryEditDialog() ), mACollection, "edit_categories" );
   if ( mIsPart ) {
     new KAction( i18n("&Configure Calendar..."), "configure", 0,
                  mCalendarView, SLOT( edit_options() ),
