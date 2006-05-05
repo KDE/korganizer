@@ -253,9 +253,8 @@ void ActionManager::initActions()
   action = new KAction( i18n("Get &Hot New Stuff..."), mACollection, "downloadnewstuff" );
   connect(action, SIGNAL(triggered(bool) ), SLOT( downloadNewStuff() ));
 
-  new KAction( i18n("Export &Web Page..."), "webexport", 0,
-               mCalendarView, SLOT( exportWeb() ),
-               mACollection, "export_web" );
+  action = new KAction(KIcon("webexport"),  i18n("Export &Web Page..."), mACollection, "export_web" );
+  connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( exportWeb() ));
   action = new KAction( i18n("&iCalendar..."), mACollection, "export_icalendar" );
   connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( exportICalendar() ));
   new KAction( i18n("&vCalendar..."), 0,
@@ -298,9 +297,8 @@ void ActionManager::initActions()
     mUndoAction = KStdAction::undo( h, SLOT( undo() ), mACollection );
     mRedoAction = KStdAction::redo( h, SLOT( redo() ), mACollection );
   }
-  mDeleteAction = new KAction( i18n("&Delete"), "editdelete", 0,
-                               mCalendarView, SLOT( appointment_delete() ),
-                               mACollection, "edit_delete" );
+  mDeleteAction = new KAction(KIcon("editdelete"),  i18n("&Delete"), mACollection, "edit_delete" );
+  connect(mDeleteAction, SIGNAL(triggered(bool) ), mCalendarView, SLOT( appointment_delete() ));
   if ( mIsPart ) {
     KStdAction::find( mCalendarView->dialogManager(), SLOT( showSearchDialog() ),
                      mACollection, "korganizer_find" );
@@ -324,34 +322,26 @@ void ActionManager::initActions()
   //************************** VIEW MENU *********************************
 
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~~ VIEWS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  new KAction( i18n("What's &Next"), "whatsnext", 0,
-                    mCalendarView->viewManager(), SLOT( showWhatsNextView() ),
-                    mACollection, "view_whatsnext" );
-  new KAction( i18n("&Day"), "1day", 0,
-                    mCalendarView->viewManager(), SLOT( showDayView() ),
-                    mACollection, "view_day" );
+  action = new KAction(KIcon("whatsnext"),  i18n("What's &Next"), mACollection, "view_whatsnext" );
+  connect(action, SIGNAL(triggered(bool) ), mCalendarView->viewManager(), SLOT( showWhatsNextView() ));
+  action = new KAction(KIcon("1day"),  i18n("&Day"), mACollection, "view_day" );
+  connect(action, SIGNAL(triggered(bool) ), mCalendarView->viewManager(), SLOT( showDayView() ));
   mNextXDays = new KAction(KIcon("xdays"),  QString(), mACollection, "view_nextx" );
   connect(mNextXDays, SIGNAL(triggered(bool)), mCalendarView->viewManager(), SLOT( showNextXView() ));
   mNextXDays->setText( i18np( "&Next Day", "Ne&xt %n Days",
                              KOPrefs::instance()->mNextXDays ) );
-  new KAction( i18n("W&ork Week"), "5days", 0,
-                    mCalendarView->viewManager(), SLOT( showWorkWeekView() ),
-                    mACollection, "view_workweek" );
-  new KAction( i18n("&Week"), "7days", 0,
-                    mCalendarView->viewManager(), SLOT( showWeekView() ),
-                    mACollection, "view_week" );
-  new KAction( i18n("&Month"), "month", 0,
-                    mCalendarView->viewManager(), SLOT( showMonthView() ),
-                    mACollection, "view_month" );
-  new KAction( i18n("&List"), "list", 0,
-                    mCalendarView->viewManager(), SLOT( showListView() ),
-                    mACollection, "view_list" );
-  new KAction( i18n("&To-do List"), "todo", 0,
-                    mCalendarView->viewManager(), SLOT( showTodoView() ),
-                    mACollection, "view_todo" );
-  new KAction( i18n("&Journal"), "journal", 0,
-                    mCalendarView->viewManager(), SLOT( showJournalView() ),
-                    mACollection, "view_journal" );
+  action = new KAction(KIcon("5days"),  i18n("W&ork Week"), mACollection, "view_workweek" );
+  connect(action, SIGNAL(triggered(bool) ), mCalendarView->viewManager(), SLOT( showWorkWeekView() ));
+  action = new KAction(KIcon("7days"),  i18n("&Week"), mACollection, "view_week" );
+  connect(action, SIGNAL(triggered(bool) ), mCalendarView->viewManager(), SLOT( showWeekView() ));
+  action = new KAction(KIcon("month"),  i18n("&Month"), mACollection, "view_month" );
+  connect(action, SIGNAL(triggered(bool) ), mCalendarView->viewManager(), SLOT( showMonthView() ));
+  action = new KAction(KIcon("list"),  i18n("&List"), mACollection, "view_list" );
+  connect(action, SIGNAL(triggered(bool) ), mCalendarView->viewManager(), SLOT( showListView() ));
+  action = new KAction(KIcon("todo"),  i18n("&To-do List"), mACollection, "view_todo" );
+  connect(action, SIGNAL(triggered(bool) ), mCalendarView->viewManager(), SLOT( showTodoView() ));
+  action = new KAction(KIcon("journal"),  i18n("&Journal"), mACollection, "view_journal" );
+  connect(action, SIGNAL(triggered(bool) ), mCalendarView->viewManager(), SLOT( showJournalView() ));
 
 
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~ FILTERS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -377,31 +367,25 @@ void ActionManager::initActions()
 
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ZOOM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   // TODO: try to find / create better icons for the following 4 actions
-  new KAction( i18n( "Zoom In Horizontally" ), "viewmag+", 0,
-                    mCalendarView->viewManager(), SLOT( zoomInHorizontally() ),
-                    mACollection, "zoom_in_horizontally" );
-  new KAction( i18n( "Zoom Out Horizontally" ), "viewmag-", 0,
-                    mCalendarView->viewManager(), SLOT( zoomOutHorizontally() ),
-                    mACollection, "zoom_out_horizontally" );
-  new KAction( i18n( "Zoom In Vertically" ), "viewmag+", 0,
-                    mCalendarView->viewManager(), SLOT( zoomInVertically() ),
-                    mACollection, "zoom_in_vertically" );
-  new KAction( i18n( "Zoom Out Vertically" ), "viewmag-", 0,
-                    mCalendarView->viewManager(), SLOT( zoomOutVertically() ),
-                    mACollection, "zoom_out_vertically" );
+  action = new KAction(KIcon("viewmag+"),  i18n( "Zoom In Horizontally" ), mACollection, "zoom_in_horizontally" );
+  connect(action, SIGNAL(triggered(bool) ), mCalendarView->viewManager(), SLOT( zoomInHorizontally() ));
+  action = new KAction(KIcon("viewmag-"),  i18n( "Zoom Out Horizontally" ), mACollection, "zoom_out_horizontally" );
+  connect(action, SIGNAL(triggered(bool) ), mCalendarView->viewManager(), SLOT( zoomOutHorizontally() ));
+  action = new KAction(KIcon("viewmag+"),  i18n( "Zoom In Vertically" ), mACollection, "zoom_in_vertically" );
+  connect(action, SIGNAL(triggered(bool) ), mCalendarView->viewManager(), SLOT( zoomInVertically() ));
+  action = new KAction(KIcon("viewmag-"),  i18n( "Zoom Out Vertically" ), mACollection, "zoom_out_vertically" );
+  connect(action, SIGNAL(triggered(bool) ), mCalendarView->viewManager(), SLOT( zoomOutVertically() ));
 
 
 
 
   //************************** Actions MENU *********************************
 
-  new KAction( i18n("Go to &Today"), "today", 0,
-                    mCalendarView,SLOT( goToday() ),
-                    mACollection, "go_today" );
+  action = new KAction(KIcon("today"),  i18n("Go to &Today"), mACollection, "go_today" );
+  connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( goToday() ));
   bool isRTL = QApplication::isRightToLeft();
-  action = new KAction( i18n("Go &Backward"), isRTL ? "forward" : "back", 0,
-                        mCalendarView,SLOT( goPrevious() ),
-                        mACollection, "go_previous" );
+  action = new KAction(KIcon(isRTL ? "forward" : "back"),  i18n("Go &Backward"), mACollection, "go_previous" );
+  connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( goPrevious() ));
 
   // Changing the action text by setText makes the toolbar button disappear.
   // This has to be fixed first, before the connects below can be reenabled.
@@ -411,9 +395,8 @@ void ActionManager::initActions()
   connect( mCalendarView, SIGNAL( changeNavStringPrev( const QString & ) ),
            this, SLOT( dumpText( const QString & ) ) );*/
 
-  action = new KAction( i18n("Go &Forward"), isRTL ? "back" : "forward", 0,
-                        mCalendarView,SLOT( goNext() ),
-                        mACollection, "go_next" );
+  action = new KAction(KIcon(isRTL ? "back" : "forward"),  i18n("Go &Forward"), mACollection, "go_next" );
+  connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( goNext() ));
   /*
   connect( mCalendarView,SIGNAL( changeNavStringNext( const QString & ) ),
            action,SLOT( setText( const QString & ) ) );
@@ -421,12 +404,10 @@ void ActionManager::initActions()
 
 
   //************************** Actions MENU *********************************
-  new KAction( i18n("New E&vent..."), "appointment", 0,
-               mCalendarView,SLOT( newEvent() ),
-               mACollection, "new_event" );
-  new KAction( i18n("New &To-do..."), "newtodo", 0,
-               mCalendarView,SLOT( newTodo() ),
-               mACollection, "new_todo" );
+  action = new KAction(KIcon("appointment"),  i18n("New E&vent..."), mACollection, "new_event" );
+  connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( newEvent() ));
+  action = new KAction(KIcon("newtodo"),  i18n("New &To-do..."), mACollection, "new_todo" );
+  connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( newTodo() ));
   action = new KAction( i18n("New Su&b-to-do..."), 0,
                         mCalendarView,SLOT( newSubTodo() ), mACollection, "new_subtodo" );
   action->setEnabled( false );
@@ -461,14 +442,12 @@ void ActionManager::initActions()
 
 
   //************************** SCHEDULE MENU ********************************
-  mPublishEvent = new KAction( i18n("&Publish Item Information..."), "mail_send", 0,
-                               mCalendarView, SLOT( schedule_publish() ),
-                               mACollection, "schedule_publish" );
+  mPublishEvent = new KAction(KIcon("mail_send"),  i18n("&Publish Item Information..."), mACollection, "schedule_publish" );
+  connect(mPublishEvent, SIGNAL(triggered(bool) ), mCalendarView, SLOT( schedule_publish() ));
   mPublishEvent->setEnabled( false );
 
-  action = new KAction( i18n("Send &Invitation to Attendees"),"mail_generic",0,
-                        mCalendarView,SLOT( schedule_request() ),
-                        mACollection,"schedule_request" );
+  action = new KAction(KIcon("mail_generic"),  i18n("Send &Invitation to Attendees"), mACollection, "schedule_request" );
+  connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( schedule_request() ));
   action->setEnabled( false );
   connect( mCalendarView, SIGNAL( organizerEventsSelected( bool ) ),
            action, SLOT( setEnabled( bool ) ) );
@@ -485,9 +464,8 @@ void ActionManager::initActions()
   connect( mCalendarView,SIGNAL( organizerEventsSelected( bool ) ),
            action,SLOT( setEnabled( bool ) ) );
 
-  action = new KAction( i18n("Send Status &Update"),"mail_reply",0,
-                        mCalendarView,SLOT( schedule_reply() ),
-                        mACollection,"schedule_reply" );
+  action = new KAction(KIcon("mail_reply"),  i18n("Send Status &Update"), mACollection, "schedule_reply" );
+  connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( schedule_reply() ));
   action->setEnabled( false );
   connect( mCalendarView,SIGNAL( groupEventsSelected( bool ) ),
            action,SLOT( setEnabled( bool ) ) );
@@ -507,9 +485,8 @@ void ActionManager::initActions()
   action->setEnabled( true );
 
   if ( !mIsPart ) {
-      action = new KAction( i18n("&Addressbook"),"contents",0,
-                            mCalendarView,SLOT( openAddressbook() ),
-                            mACollection,"addressbook" );
+      action = new KAction(KIcon("contents"),  i18n("&Addressbook"), mACollection, "addressbook" );
+      connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( openAddressbook() ));
   }
 
 
@@ -567,15 +544,13 @@ void ActionManager::initActions()
 //   new KAction( i18n("Manage &Resources..."), 0,
 //                     this, SLOT( manageResources() ),
 //                     mACollection, "conf_resources" );
-  new KAction( i18n("Manage View &Filters..."), "configure", 0,
-               mCalendarView, SLOT( editFilters() ),
-               mACollection, "edit_filters" );
+  action = new KAction(KIcon("configure"),  i18n("Manage View &Filters..."), mACollection, "edit_filters" );
+  connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( editFilters() ));
   new KAction( i18n("Manage C&ategories..."), 0,
                mCalendarView->dialogManager(), SLOT( showCategoryEditDialog() ), mACollection, "edit_categories" );
   if ( mIsPart ) {
-    new KAction( i18n("&Configure Calendar..."), "configure", 0,
-                 mCalendarView, SLOT( edit_options() ),
-                 mACollection, "korganizer_configure" );
+    KAction *action = new KAction(KIcon("configure"),  i18n("&Configure Calendar..."), mACollection, "korganizer_configure" );
+    connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( edit_options() ));
     KStdAction::keyBindings( this, SLOT( keyBindings() ),
                              mACollection, "korganizer_configure_shortcuts" );
   } else {
