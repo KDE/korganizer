@@ -335,8 +335,8 @@ void ActionManager::initActions()
   new KAction( i18n("&Day"), "1day", 0,
                     mCalendarView->viewManager(), SLOT( showDayView() ),
                     mACollection, "view_day" );
-  mNextXDays = new KAction( "", "xdays", 0, mCalendarView->viewManager(),
-                    SLOT( showNextXView() ), mACollection, "view_nextx" );
+  mNextXDays = new KAction(KIcon("xdays"),  QString(), mACollection, "view_nextx" );
+  connect(mNextXDays, SIGNAL(triggered(bool)), mCalendarView->viewManager(), SLOT( showNextXView() ));
   mNextXDays->setText( i18np( "&Next Day", "Ne&xt %n Days",
                              KOPrefs::instance()->mNextXDays ) );
   new KAction( i18n("W&ork Week"), "5days", 0,
