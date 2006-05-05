@@ -250,17 +250,17 @@ void ActionManager::initActions()
   connect(action, SIGNAL(triggered(bool) ), SLOT( file_merge() ));
   action = new KAction( i18n("&Import From UNIX Ical tool"), mACollection, "import_ical" );
   connect(action, SIGNAL(triggered(bool) ), SLOT( file_icalimport() ));
-  KAction *action = new KAction( i18n("Get &Hot New Stuff..."), mACollection, "downloadnewstuff" );
+  action = new KAction( i18n("Get &Hot New Stuff..."), mACollection, "downloadnewstuff" );
   connect(action, SIGNAL(triggered(bool) ), SLOT( downloadNewStuff() ));
 
   new KAction( i18n("Export &Web Page..."), "webexport", 0,
                mCalendarView, SLOT( exportWeb() ),
                mACollection, "export_web" );
-  KAction *action = new KAction( i18n("&iCalendar..."), mACollection, "export_icalendar" );
+  action = new KAction( i18n("&iCalendar..."), mACollection, "export_icalendar" );
   connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( exportICalendar() ));
   new KAction( i18n("&vCalendar..."), 0,
                mCalendarView, SLOT( exportVCalendar() ), mACollection, "export_vcalendar" );
-  KAction *action = new KAction( i18n("Upload &Hot New Stuff..."), mACollection, "uploadnewstuff" );
+  action = new KAction( i18n("Upload &Hot New Stuff..."), mACollection, "uploadnewstuff" );
   connect(action, SIGNAL(triggered(bool) ), SLOT( uploadNewStuff() ));
 
 
@@ -432,7 +432,7 @@ void ActionManager::initActions()
   action->setEnabled( false );
   connect( mCalendarView,SIGNAL( todoSelected( bool ) ),
            action,SLOT( setEnabled( bool ) ) );
-  KAction *action = new KAction( i18n("New &Journal..."), mACollection, "new_journal" );
+  action = new KAction( i18n("New &Journal..."), mACollection, "new_journal" );
   connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( newJournal() ));
 
   mShowIncidenceAction = new KAction( i18n("&Show"), 0,
