@@ -256,8 +256,8 @@ void ActionManager::initActions()
   new KAction( i18n("Export &Web Page..."), "webexport", 0,
                mCalendarView, SLOT( exportWeb() ),
                mACollection, "export_web" );
-  new KAction( i18n("&iCalendar..."), 0,
-               mCalendarView, SLOT( exportICalendar() ), mACollection, "export_icalendar" );
+  KAction *action = new KAction( i18n("&iCalendar..."), mACollection, "export_icalendar" );
+  connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( exportICalendar() ));
   new KAction( i18n("&vCalendar..."), 0,
                mCalendarView, SLOT( exportVCalendar() ), mACollection, "export_vcalendar" );
   KAction *action = new KAction( i18n("Upload &Hot New Stuff..."), mACollection, "uploadnewstuff" );
@@ -432,8 +432,8 @@ void ActionManager::initActions()
   action->setEnabled( false );
   connect( mCalendarView,SIGNAL( todoSelected( bool ) ),
            action,SLOT( setEnabled( bool ) ) );
-  new KAction( i18n("New &Journal..."), 0,
-               mCalendarView,SLOT( newJournal() ), mACollection, "new_journal" );
+  KAction *action = new KAction( i18n("New &Journal..."), mACollection, "new_journal" );
+  connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( newJournal() ));
 
   mShowIncidenceAction = new KAction( i18n("&Show"), 0,
                                       mCalendarView,SLOT( showIncidence() ), mACollection, "show_incidence" );
