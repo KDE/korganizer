@@ -72,7 +72,7 @@ KOTodoListViewQuickSearch::KOTodoListViewQuickSearch( QWidget *parent,
                                   "all to-dos are shown again." ) );
   }
 
-  action->plug( this );
+  addAction( action );
 
   layout()->setSpacing( KDialog::spacingHint() );
 
