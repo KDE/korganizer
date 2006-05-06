@@ -233,7 +233,7 @@ int KOMailClient::kMailOpenComposer(const QString& arg0,const QString& arg1,
   arg << arg6;
   kapp->updateRemoteUserTimestamp( "kmail" );
   if (kapp->dcopClient()->call("kmail","KMailIface","openComposer(QString,QString,QString,QString,QString,int,KUrl)", data, replyType, replyData ) ) {
-    if ( replyType == "int" ) {
+    if ( replyType == QLatin1String("int") ) {
       QDataStream _reply_stream( &replyData, QIODevice::ReadOnly );
       _reply_stream >> result;
     } else {
@@ -284,7 +284,7 @@ int KOMailClient::kMailOpenComposer( const QString& arg0, const QString& arg1,
 #warning Port me!
     if ( kapp->dcopClient()->call("kmail","KMailIface",
           "openComposer(QString,QString,QString,QString,QString,int,QString,QCString,QCString,QCString,QCString,QCString,QString,QCString,QCString)", data, replyType, replyData ) ) {
-        if ( replyType == "int" ) {
+        if ( replyType == QLatin1String("int") ) {
             QDataStream _reply_stream( &replyData, QIODevice::ReadOnly );
             _reply_stream >> result;
         } else {

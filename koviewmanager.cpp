@@ -73,11 +73,11 @@ void KOViewManager::readSettings(KConfig *config)
   config->setGroup("General");
   QString view = config->readEntry("Current View");
 
-  if (view == "WhatsNext") showWhatsNextView();
-  else if (view == "Month") showMonthView();
-  else if (view == "List") showListView();
-  else if (view == "Journal") showJournalView();
-  else if (view == "Todo") showTodoView();
+  if (view == QLatin1String("WhatsNext")) showWhatsNextView();
+  else if (view == QLatin1String("Month")) showMonthView();
+  else if (view == QLatin1String("List")) showListView();
+  else if (view == QLatin1String("Journal")) showJournalView();
+  else if (view == QLatin1String("Todo")) showTodoView();
   else showAgendaView();
 }
 

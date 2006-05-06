@@ -357,7 +357,7 @@ void KOAlternateLabel::useShortText()
 {
   mTextTypeFixed = true;
   QLabel::setText( mShortText );
-  this->setToolTip( mExtensiveText );
+  setToolTip( mExtensiveText );
 }
 
 void KOAlternateLabel::useLongText()
@@ -999,7 +999,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
 
 //  kDebug(5850) << "KOAgendaView::updateEventDates(): now setting dates" << endl;
   // FIXME: use a visitor here
-  if ( incidence->type() == "Event" ) {
+  if ( incidence->type() == QLatin1String("Event") ) {
     startDt = incidence->dtStart();
     startDt = startDt.addDays( daysOffset );
     startDt.setTime( startTime );
@@ -1012,7 +1012,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
     }
     incidence->setDtStart( startDt );
     ev->setDtEnd( endDt );
-  } else if ( incidence->type() == "Todo" ) {
+  } else if ( incidence->type() == QLatin1String("Todo") ) {
     Todo *td = static_cast<Todo*>(incidence);
     startDt = td->hasStartDate() ? td->dtStart() : td->dtDue();
     startDt = QDateTime( thisDate.addDays( td->dtDue().daysTo( startDt ) ));
@@ -1171,10 +1171,10 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
   }*/
 
   // FIXME: use a visitor here
-  if ( incidence->type() == "Event" ) {
+  if ( incidence->type() == QLatin1String("Event") ) {
     incidence->setDtStart( startDt );
     (static_cast<Event*>( incidence ) )->setDtEnd( endDt );
-  } else if ( incidence->type() == "Todo" ) {
+  } else if ( incidence->type() == QLatin1String("Todo") ) {
     Todo *td = static_cast<Todo*>( incidence );
     if ( td->hasStartDate() )
       td->setDtStart( startDt );
@@ -1367,7 +1367,7 @@ void KOAgendaView::changeIncidenceDisplayAdded( Incidence *incidence )
   }
 
   QDate endDt;
-  if ( incidence->type() == "Event" )
+  if ( incidence->type() == QLatin1String("Event") )
     endDt = (static_cast<Event *>(incidence))->dateEnd();
   if ( todo ) {
     endDt = todo->isOverdue() ? QDate::currentDate()

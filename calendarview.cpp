@@ -702,7 +702,7 @@ void CalendarView::incidenceChanged( Incidence *oldIncidence,
   // Record completed todos in journals, if enabled. we should to this here in
   // favor of the todolist. users can mark a task as completed in an editor
   // as well.
-  if ( newIncidence->type() == "Todo"
+  if ( newIncidence->type() == QLatin1String("Todo")
     && KOPrefs::instance()->recordTodosInJournals()
     && what == KOGlobals::COMPLETION_MODIFIED ) {
 
@@ -900,7 +900,7 @@ void CalendarView::edit_paste()
   if ( !pastedIncidence ) return;
 
   // FIXME: use a visitor here
-  if (pastedIncidence->type() == "Event" ) {
+  if (pastedIncidence->type() == QLatin1String("Event") ) {
 
     Event* pastedEvent = static_cast<Event*>(pastedIncidence);
     // only use selected area if event is of the same type (all-day or non-all-day
@@ -913,7 +913,7 @@ void CalendarView::edit_paste()
     }
     mChanger->addIncidence( pastedEvent );
 
-  } else if ( pastedIncidence->type() == "Todo" ) {
+  } else if ( pastedIncidence->type() == QLatin1String("Todo") ) {
     Todo* pastedTodo = static_cast<Todo*>(pastedIncidence);
     Todo* _selectedTodo = selectedTodo();
     if ( _selectedTodo )
@@ -1217,7 +1217,7 @@ bool CalendarView::makeSubTodosIndependents ( Todo *todo )
 
   for ( it= subTodos.begin(); it != subTodos.end(); ++it ) {
     aIncidence = *it;
-    if( aIncidence && aIncidence->type() == "Todo" ) {
+    if( aIncidence && aIncidence->type() == QLatin1String("Todo") ) {
       aTodo = static_cast<Todo*>( aIncidence );
       todo_unsub ( aTodo );
     }
@@ -1613,7 +1613,7 @@ void CalendarView::processIncidenceSelection( Incidence *incidence )
     organizerEvents = KOPrefs::instance()->thatIsMe( incidence->organizer().email() );
     groupEvents = incidence->attendeeByMails( KOPrefs::instance()->allEmails() );
 
-    if ( incidence && incidence->type() == "Todo" ) {
+    if ( incidence && incidence->type() == QLatin1String("Todo") ) {
       todo = true;
       subtodo = ( incidence->relatedTo() != 0 );
     }
@@ -1807,14 +1807,14 @@ void CalendarView::calendarModified( bool modified, Calendar * )
 Todo *CalendarView::selectedTodo()
 {
   Incidence *incidence = currentSelection();
-  if ( incidence && incidence->type() == "Todo" ) {
+  if ( incidence && incidence->type() == QLatin1String("Todo") ) {
     return static_cast<Todo *>( incidence );
   }
   incidence = 0;
 
   Incidence::List selectedIncidences = mTodoList->selectedIncidences();
   if ( !selectedIncidences.isEmpty() ) incidence = selectedIncidences.first();
-  if ( incidence && incidence->type() == "Todo" ) {
+  if ( incidence && incidence->type() == QLatin1String("Todo") ) {
     return static_cast<Todo *>( incidence );
   }
 
@@ -1969,7 +1969,7 @@ void CalendarView::deleteSubTodosIncidence ( Todo *todo )
 
   for ( it= subTodos.begin(); it != subTodos.end(); ++it ) {
     aIncidence = *it;
-    if( aIncidence && aIncidence->type() == "Todo" ) {
+    if( aIncidence && aIncidence->type() == QLatin1String("Todo") ) {
       aTodo = static_cast<Todo*>( aIncidence );
       deleteSubTodosIncidence ( aTodo );
     }
@@ -2047,7 +2047,7 @@ void CalendarView::deleteIncidence(Incidence *incidence, bool force)
     return;
   //If it is a todo, there are specific delete function
 
-  if ( incidence && incidence->type()=="Todo" ) {
+  if ( incidence && incidence->type()==QLatin1String("Todo") ) {
     deleteTodoIncidence( static_cast<Todo*>(incidence), force );
     return;
   }
@@ -2136,7 +2136,7 @@ bool CalendarView::purgeCompletedSubTodos( Todo* todo, bool &allPurged )
   Incidence::List::Iterator it;
   for ( it = subTodos.begin(); it != subTodos.end(); ++it ) {
     aIncidence = *it;
-    if ( aIncidence && aIncidence->type()=="Todo" ) {
+    if ( aIncidence && aIncidence->type()==QLatin1String("Todo") ) {
       aTodo = static_cast<Todo*>( aIncidence );
       deleteThisTodo &= purgeCompletedSubTodos( aTodo, allPurged );
     }
@@ -2252,7 +2252,7 @@ void CalendarView::addIncidenceOn( Incidence *incadd, const QDate &dt )
   incidence = incidence->clone();
   incidence->recreate();
 
-  if ( incidence->type() == "Event" ) {
+  if ( incidence->type() == QLatin1String("Event") ) {
     Event *event = static_cast<Event*>(incidence);
 
     // Adjust date
@@ -2266,7 +2266,7 @@ void CalendarView::addIncidenceOn( Incidence *incadd, const QDate &dt )
     event->setDtStart( start );
     event->setDtEnd( end );
 
-  } else if ( incidence->type() == "Todo" ) {
+  } else if ( incidence->type() == QLatin1String("Todo") ) {
     Todo *todo = static_cast<Todo*>(incidence);
     QDateTime due = todo->dtDue();
     due.setDate( dt );
@@ -2299,7 +2299,7 @@ void CalendarView::moveIncidenceTo( Incidence *incmove, const QDate &dt )
     return;
   }
 
-  if ( incidence->type() == "Event" ) {
+  if ( incidence->type() == QLatin1String("Event") ) {
     Event *event = static_cast<Event*>(incidence);
 
     // Adjust date
@@ -2313,7 +2313,7 @@ void CalendarView::moveIncidenceTo( Incidence *incmove, const QDate &dt )
     event->setDtStart( start );
     event->setDtEnd( end );
 
-  } else if ( incidence->type() == "Todo" ) {
+  } else if ( incidence->type() == QLatin1String("Todo") ) {
     Todo *todo = static_cast<Todo*>(incidence);
     QDateTime due = todo->dtDue();
     due.setDate( dt );

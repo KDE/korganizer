@@ -360,7 +360,7 @@ kDebug() << "mEmbeddedURLPages are not empty, clearing it!" << endl;
     kDebug() << "label=" << a->label() << ", url=" << a->uri() << ", mimetype=" << a->mimeType() << endl;
     if ( a->showInline() && a->isUri() ) {
       // TODO: Allow more mime-types, but add security checks!
-/*      if ( a->mimeType() == "application/x-designer" ) {
+/*      if ( a->mimeType() == QLatin1String("application/x-designer") ) {
         QString tmpFile;
         if ( KIO::NetAccess::download( a->uri(), tmpFile, this ) ) {
           mAttachedDesignerFields.append( addDesignerTab( tmpFile ) );
@@ -368,7 +368,7 @@ kDebug() << "mEmbeddedURLPages are not empty, clearing it!" << endl;
         }
       } else*/
       // TODO: Enable that check again!
-      if ( a->mimeType() == "text/html" )
+      if ( a->mimeType() == QLatin1String("text/html") )
       {
         setupEmbeddedURLPage( a->label(), a->uri(), a->mimeType() );
       }

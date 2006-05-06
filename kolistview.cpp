@@ -368,7 +368,7 @@ void KOListView::changeIncidenceDisplay(Incidence *incidence, int action)
   QDate l = mSelectedDates.last();
 
   QDate date;
-  if ( incidence->type() == "Todo" )
+  if ( incidence->type() == QLatin1String("Todo") )
     date = static_cast<Todo *>(incidence)->dtDue().date();
   else
     date = incidence->dtStart().date();

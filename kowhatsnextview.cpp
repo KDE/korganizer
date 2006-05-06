@@ -269,7 +269,7 @@ void KOWhatsNextView::appendEvent( Incidence *ev, const QDateTime &start,
 
   mText += "<tr><td><b>";
 //  if (!ev->doesFloat()) {
-    if (ev->type()=="Event") {
+    if ( ev->type() == QLatin1String("Event") ) {
       Event *event = static_cast<Event *>(ev);
       QDateTime starttime( start );
       if ( !starttime.isValid() ) 
@@ -293,8 +293,8 @@ void KOWhatsNextView::appendEvent( Incidence *ev, const QDateTime &start,
     }
 //  }
   mText += "</b></td><td><a ";
-  if (ev->type()=="Event") mText += "href=\"event:";
-  if (ev->type()=="Todo") mText += "href=\"todo:";
+  if (ev->type()==QLatin1String("Event")) mText += "href=\"event:";
+  if (ev->type()==QLatin1String("Todo")) mText += "href=\"todo:";
   mText += ev->uid() + "\">";
   mText += ev->summary();
   mText += "</a></td></tr>\n";
@@ -310,7 +310,7 @@ void KOWhatsNextView::appendTodo( Incidence *ev )
   mText += ev->summary();
   mText += "</a>";
   
-  if ( ev->type()=="Todo" ) {
+  if ( ev->type() == QLatin1String("Todo") ) {
     Todo *todo = static_cast<Todo*>(ev);
     if ( todo->hasDueDate() ) {
       mText += i18n("  (Due: %1)",

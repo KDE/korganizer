@@ -89,7 +89,7 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, const char *widgetName,
   mActionManager = new ActionManager( this, mView, this, this, true );
   (void)new KOrganizerIfaceImpl( mActionManager, this, "IfaceImpl" );
 
-  if ( pname == "kontact" ) {
+  if ( pname == QLatin1String("kontact") ) {
     mActionManager->createCalendarResources();
     setHasDocument( false );
     KOrg::StdCalendar::self()->load();

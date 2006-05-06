@@ -915,7 +915,7 @@ bool ActionManager::saveURL()
     ext = mURL.fileName().right( 4 );
   }
 
-  if ( ext == ".vcs" ) {
+  if ( ext == QLatin1String(".vcs") ) {
     int result = KMessageBox::warningContinueCancel(
       dialogParent(),
       i18n( "Your calendar will be saved in iCalendar format. Use "
@@ -1113,7 +1113,7 @@ KUrl ActionManager::getSaveURL()
   QString filename = url.fileName( false );
 
   QString e = filename.right( 4 );
-  if ( e != ".vcs" && e != ".ics" ) {
+  if ( e != QLatin1String(".vcs") && e != QLatin1String(".ics") ) {
     // Default save format is iCalendar
     filename += ".ics";
   }

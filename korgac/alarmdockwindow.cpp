@@ -94,7 +94,7 @@ AlarmDockWindow::AlarmDockWindow()
     connect( quit, SIGNAL( activated() ), SLOT( slotQuit() ) );
   }
 
-  this->setToolTip( mName );
+  setToolTip( mName );
 }
 
 AlarmDockWindow::~AlarmDockWindow()
@@ -107,10 +107,10 @@ void AlarmDockWindow::slotUpdate( int reminders )
   mDismissAll->setEnabled( reminders > 0 );
   if ( reminders > 0 )
   {
-    this->setToolTip( i18np( "There is 1 active reminder.",
+    setToolTip( i18np( "There is 1 active reminder.",
                    "There are %n active reminders.", reminders ) );
   } else {
-    this->setToolTip( mName );
+    setToolTip( mName );
   }
 }
 

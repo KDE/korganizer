@@ -265,7 +265,7 @@ void FreeBusyManager::publishFreeBusy()
     if( KOPrefs::instance()->mPublishKolab ) {
       // we use Kolab
       QString server;
-      if( KOPrefs::instance()->mPublishKolabServer == "%SERVER%" ||
+      if( KOPrefs::instance()->mPublishKolabServer == QLatin1String("%SERVER%") ||
 	  KOPrefs::instance()->mPublishKolabServer.isEmpty() )
 	server = emailHost;
       else

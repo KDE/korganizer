@@ -1200,7 +1200,7 @@ void KOEditorRecurrence::readIncidence(Incidence *incidence)
   int count = 0;
   int month = 0;
 
-  if ( incidence->type() == "Todo" ) {
+  if ( incidence->type() == QLatin1String("Todo") ) {
     Todo *todo = static_cast<Todo *>(incidence);
     setDefaults( todo->dtStart(true), todo->dtDue(), todo->doesFloat() );
   } else {

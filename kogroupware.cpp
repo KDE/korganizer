@@ -227,9 +227,9 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
     if ( incidence->attendees().count() > 1
         || incidence->attendees().first()->email() != incidence->organizer().email() ) {
       QString type;
-      if( incidence->type() == "Event") type = i18n("event");
-      else if( incidence->type() == "Todo" ) type = i18n("task");
-      else if( incidence->type() == "Journal" ) type = i18n("journal entry");
+      if( incidence->type() == QLatin1String("Event")) type = i18n("event");
+      else if( incidence->type() == QLatin1String("Todo") ) type = i18n("task");
+      else if( incidence->type() == QLatin1String("Journal") ) type = i18n("journal entry");
       else type = incidence->type();
       QString txt = i18n( "This %1 includes other people. "
           "Should email be sent out to the attendees?" ,
@@ -239,7 +239,7 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
     } else {
       return true;
     }
-  } else if( incidence->type() == "Todo" ) {
+  } else if( incidence->type() == QLatin1String("Todo") ) {
     if( method == Scheduler::Request )
       // This is an update to be sent to the organizer
       method = Scheduler::Reply;
@@ -248,7 +248,7 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
     QString txt = i18n( "Do you want to send a status update to the "
                         "organizer of this task?");
     rc = KMessageBox::questionYesNo( parent, txt, QString(), i18n("Send Update"), i18n("Do Not Send") );
-  } else if( incidence->type() == "Event" ) {
+  } else if( incidence->type() == QLatin1String("Event") ) {
     QString txt;
     if ( statusChanged && method == Scheduler::Request ) {
       txt = i18n( "Your status as an attendee of this event "

@@ -957,11 +957,11 @@ void KOMonthView::changeIncidenceDisplayAdded( Incidence *incidence )
   QDate date;
 
   // FIXME: use a visitor here
-  if ( incidence->type() == "Event" ) {
+  if ( incidence->type() == QLatin1String("Event") ) {
     event = static_cast<Event *>( incidence );
     date = event->dtStart().date();
   }
-  if ( incidence->type() == "Todo" ) {
+  if ( incidence->type() == QLatin1String("Todo") ) {
     todo = static_cast<Todo *>( incidence );
     if ( !todo->hasDueDate() ) return;
     date = todo->dtDue().date();

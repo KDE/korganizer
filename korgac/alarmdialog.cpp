@@ -174,7 +174,7 @@ void AlarmDialog::slotUser2()
                             "getWinID()", 0, replyType, replyData, true, -1 ) ) {
   }
 
-  if ( replyType == "int" ) {
+  if ( replyType == QLatin1String("int") ) {
     int desktop, window;
     QDataStream ds( &replyData, QIODevice::ReadOnly );
     ds >> window;

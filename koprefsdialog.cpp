@@ -753,7 +753,7 @@ void KOPrefsDialogColors::updateResources()
     if ( !(*it)->subresources().isEmpty() ) {
       QStringList subresources = (*it)->subresources();
       for ( int i = 0; i < subresources.count(); ++i ) {
-        QString resource = subresources[ i ];
+        QString resource = subresources.at( i );
         if ( (*it)->subresourceActive( resource ) ) {
           mResourceCombo->addItem( (*it)->labelForSubresource( resource ) );
           mResourceIdentifier.append( resource );

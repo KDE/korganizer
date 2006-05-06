@@ -321,7 +321,7 @@ void ResourceView::addResource()
   if ( !ok )
     return;
 
-  QString type = types[ descs.indexOf( desc ) ];
+  QString type = types.at( descs.indexOf( desc ) );
 
   // Create new resource
   ResourceCalendar *resource = manager->createResource( type );

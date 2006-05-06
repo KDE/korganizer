@@ -804,7 +804,7 @@ QMap<Todo *,KOTodoViewItem *>::ConstIterator
 {
 //  kDebug(5850) << "KOTodoView::insertTodoItem(): " << todo->getSummary() << endl;
   Incidence *incidence = todo->relatedTo();
-  if (incidence && incidence->type() == "Todo") {
+  if (incidence && incidence->type() == QLatin1String("Todo")) {
     // Use dynamic_cast, because in the future the related item might also be an event
     Todo *relatedTodo = dynamic_cast<Todo *>(incidence);
 
