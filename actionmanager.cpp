@@ -257,7 +257,7 @@ void ActionManager::initActions()
   connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( exportWeb() ));
   action = new KAction( i18n("&iCalendar..."), mACollection, "export_icalendar" );
   connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( exportICalendar() ));
-  KAction *action = new KAction( i18n("&vCalendar..."), mACollection, "export_vcalendar" );
+  action = new KAction( i18n("&vCalendar..."), mACollection, "export_vcalendar" );
   connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( exportVCalendar() ));
   action = new KAction( i18n("Upload &Hot New Stuff..."), mACollection, "uploadnewstuff" );
   connect(action, SIGNAL(triggered(bool) ), SLOT( uploadNewStuff() ));
@@ -266,10 +266,9 @@ void ActionManager::initActions()
 
   action = new KAction( i18n("Archive O&ld Entries..."), mACollection, "file_archive" );
   connect(action, SIGNAL(triggered(bool) ), SLOT( file_archive() ));
-  new KAction( i18nc("delete completed to-dos", "Pur&ge Completed To-dos"), 0,
-               mCalendarView, SLOT( purgeCompleted() ), mACollection, "purge_completed" );
-
-
+  action = new KAction( i18nc("delete completed to-dos", "Pur&ge Completed To-dos"),
+                        mACollection, "purge_completed" );
+  connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( purgeCompleted() ));
 
 
   //************************** EDIT MENU *********************************
@@ -345,7 +344,7 @@ void ActionManager::initActions()
 
 
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~ FILTERS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  KAction *action = new KAction( i18n("&Refresh"), mACollection, "update" );
+  action = new KAction( i18n("&Refresh"), mACollection, "update" );
   connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( updateView() ));
 // TODO:
 //   new KAction( i18n("Hide &Completed To-dos"), 0,
@@ -538,7 +537,7 @@ void ActionManager::initActions()
 
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SIDEBAR ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  KAction *action = new KAction( i18n("Configure &Date && Time..."), mACollection, "conf_datetime" );
+  action = new KAction( i18n("Configure &Date && Time..."), mACollection, "conf_datetime" );
   connect(action, SIGNAL(triggered(bool) ), SLOT( configureDateTime() ));
 // TODO: Add an item to show the resource management dlg
 //   new KAction( i18n("Manage &Resources..."), 0,
@@ -546,10 +545,10 @@ void ActionManager::initActions()
 //                     mACollection, "conf_resources" );
   action = new KAction(KIcon("configure"),  i18n("Manage View &Filters..."), mACollection, "edit_filters" );
   connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( editFilters() ));
-  KAction *action = new KAction( i18n("Manage C&ategories..."), mACollection, "edit_categories" );
+  action = new KAction( i18n("Manage C&ategories..."), mACollection, "edit_categories" );
   connect(action, SIGNAL(triggered(bool) ), mCalendarView->dialogManager(), SLOT( showCategoryEditDialog() ));
   if ( mIsPart ) {
-    KAction *action = new KAction(KIcon("configure"),  i18n("&Configure Calendar..."), mACollection, "korganizer_configure" );
+    action = new KAction(KIcon("configure"),  i18n("&Configure Calendar..."), mACollection, "korganizer_configure" );
     connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( edit_options() ));
     KStdAction::keyBindings( this, SLOT( keyBindings() ),
                              mACollection, "korganizer_configure_shortcuts" );
