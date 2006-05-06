@@ -580,7 +580,7 @@ void KOEditorDetails::fillAttendeeInput( AttendeeListItem *aItem )
   QString name = a->name();
   if (!a->email().isEmpty()) {
     name = KPIM::quoteNameIfNecessary( name );
-    name += " <" + a->email() + ">";
+    name += " <" + a->email() + '>';
   }
   mNameEdit->setText(name);
   mUid = a->uid();

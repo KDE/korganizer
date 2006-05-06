@@ -1,6 +1,6 @@
 /*
     This file is part of KOrganizer.
-    Copyright (c) 1998 Barry D Benowitz
+    Copyright (c) 1998 Barry D Benowitz <b.benowitz@telesciences.com>
     Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify

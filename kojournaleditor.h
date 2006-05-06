@@ -65,6 +65,8 @@ class KOJournalEditor : public KOIncidenceEditor
 
     /**
       Edit new Journal. Set summary and description from given text.
+        @param text The contents of the new journal. The summary will be the
+                    first line.
     */
     void newJournal( const QString &text );
     /**

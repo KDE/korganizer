@@ -126,7 +126,7 @@ void KOGroupware::incomingDirChanged( const QString& path )
     return;
 
   // Read the file and remove it
-  QFile f( path + "/" + files[0] );
+  QFile f( path + '/' + files[0] );
   if (!f.open(QIODevice::ReadOnly)) {
     kError(5850) << "Can't open file '" << files[0] << "'" << endl;
     return;

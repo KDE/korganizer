@@ -222,7 +222,7 @@ void KOrganizerPart::setTitle()
     }
 
     if ( mView->isReadOnly() ) {
-      title += " [" + i18n("read-only") + "]";
+      title += " [" + i18n("read-only") + ']';
     }
   }
 

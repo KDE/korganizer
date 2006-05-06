@@ -2,10 +2,10 @@
     This file is part of KOrganizer.
 
     Copyright (c) 1997, 1998, 1999
-    Preston Brown (preston.brown@yale.edu)
-    Fester Zigterman (F.J.F.ZigtermanRustenburg@student.utwente.nl)
-    Ian Dawes (iadawes@globalserve.net)
-    Laszlo Boloni (boloni@cs.purdue.edu)
+    Preston Brown <preston.brown@yale.edu>
+    Fester Zigterman <F.J.F.ZigtermanRustenburg@student.utwente.nl>
+    Ian Dawes <iadawes@globalserve.net>
+    Laszlo Boloni <boloni@cs.purdue.edu>
 
     Copyright (c) 2000-2003 Cornelius Schumacher <schumacher@kde.org>
     Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
@@ -304,7 +304,7 @@ void KOrganizer::setTitle()
     }
 
     if ( mCalendarView->isReadOnly() ) {
-      title += " [" + i18n("read-only") + "]";
+      title += " [" + i18n("read-only") + ']';
     }
   }
 

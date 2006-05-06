@@ -621,7 +621,7 @@ void CalPrintHelper::drawDayBox( QPainter &p, const QDate &qd,
            ( !printRecurWeekly && todo->recurrenceType() == Recurrence::rWeekly ) )
         continue;
       if ( todo->hasDueDate() && !todo->doesFloat() )
-        text += KGlobal::locale()->formatTime(todo->dtDue().time()) + " ";
+        text += KGlobal::locale()->formatTime(todo->dtDue().time()) + ' ';
       else
         text = "";
       drawIncidence( p, dayBox, text, i18n("To-do: %1", todo->summary()), textY );

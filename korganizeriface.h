@@ -44,13 +44,18 @@ class KOrganizerIface : virtual public DCOPObject
     virtual bool deleteIncidence(const QString &uid, bool force) = 0;
     /**
       Add an incidence to the active calendar.
-      @param ical A calendar in iCalendar format containing the incidence. The
+      @param iCal A calendar in iCalendar format containing the incidence. The
                   calendar must consist of a VCALENDAR component which contains
                   the incidence (VEVENT, VTODO, VJOURNAL or VFREEBUSY) and
                   optionally a VTIMEZONE component. If there is more than one
                   incidence, only the first is added to KOrganizer's calendar.
     */
     virtual bool addIncidence(const QString &iCal) = 0;
+    /**
+      Show a HTML representation of the incidence (the "View.." dialog).
+      If no incidence with the given uid exists, nothing happens.
+      @param uid The UID of the incidence to be shown.
+    */
     virtual bool showIncidence( const QString& uid ) = 0;
     /**
       Show an incidence in context. This means showing the todo, agenda or 

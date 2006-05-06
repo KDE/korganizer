@@ -102,17 +102,24 @@ class KDE_EXPORT ActionManager : public QObject, public KCalendarIface
     void saveCalendar();
 
     /**
-      Save the resource based calendar. Return false if an error occured and the
-      user decidec to not ignore the error. Otherwise it returns true.
+      Save the resource based calendar. Return false if an error occurred and the
+      user decides to not ignore the error. Otherwise it returns true.
     */
     bool saveResourceCalendar();
 
   public slots:
-    /** Add a new resource */
+    /** Add a new resource
+        @param mUrl The url for the new resource. Either a local or a remote
+                    resource will be added, depending on the type of the url.
+    */
     bool addResource( const KUrl &mUrl );
     /**
       Open calendar file from URL. Merge into current calendar, if \a merge is
       true.
+        @param url The URL to open
+        @param merge If true, the items from the url will be inserted into the
+                     current calendar (default resource). Otherwise a new
+                     resource is added for the given url.
     */
     bool openURL( const KUrl &url, bool merge = false );
     /** Save calendar file to URL of current calendar */
@@ -269,7 +276,9 @@ class KDE_EXPORT ActionManager : public QObject, public KCalendarIface
     void file_open();
 
     /** open a file from the list of recent files. Also called from file_open()
-        after the URL is obtained from the user. */
+        after the URL is obtained from the user.
+        @param url the URL to open
+    */
     void file_open( const KUrl &url );
 
     /** import a calendar from another program like ical. */

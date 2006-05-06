@@ -2,10 +2,10 @@
     This file is part of KOrganizer.
 
     Copyright (c) 1997, 1998, 1999
-    Preston Brown (preston.brown@yale.edu)
-    Fester Zigterman (F.J.F.ZigtermanRustenburg@student.utwente.nl)
-    Ian Dawes (iadawes@globalserve.net)
-    Laszlo Boloni (boloni@cs.purdue.edu)
+    Preston Brown <preston.brown@yale.edu>
+    Fester Zigterman <F.J.F.ZigtermanRustenburg@student.utwente.nl>
+    Ian Dawes <iadawes@globalserve.net>
+    Laszlo Boloni <boloni@cs.purdue.edu>
 
     Copyright (C) 2000-2004 Cornelius Schumacher <schumacher@kde.org>
     Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
@@ -700,7 +700,7 @@ void CalendarView::incidenceChanged( Incidence *oldIncidence,
   history()->recordEdit( oldIncidence, newIncidence );
 
   // Record completed todos in journals, if enabled. we should to this here in
-  // favour of the todolist. users can mark a task as completed in an editor
+  // favor of the todolist. users can mark a task as completed in an editor
   // as well.
   if ( newIncidence->type() == "Todo"
     && KOPrefs::instance()->recordTodosInJournals()

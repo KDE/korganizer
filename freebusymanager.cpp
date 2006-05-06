@@ -484,7 +484,7 @@ FreeBusy *FreeBusyManager::loadFreeBusy( const QString &email )
 
   QString fbd = freeBusyDir();
 
-  QFile f( fbd + "/" + email + ".ifb" );
+  QFile f( fbd + '/' + email + ".ifb" );
   if ( !f.exists() ) {
     kDebug(5850) << "FreeBusyManager::loadFreeBusy() " << f.fileName()
               << " doesn't exist." << endl;

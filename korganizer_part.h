@@ -64,7 +64,11 @@ class KOrganizerPart: public KParts::ReadOnlyPart,
 
     virtual KOrg::CalendarViewBase *view() const;
 
-    /** Load calendar file from URL. Merge into current calendar, if \a merge is true. */
+    /** Load calendar file from URL. Merge into current calendar, if \a merge is true.
+      @param url The URL to open
+      @param merge Whether the URL should be imported into the current calendar or added as a new calendar resource.
+      @return true on success, false if an error occurred
+    */
     virtual bool openURL( const KUrl &url, bool merge = false );
     /** Save calendar file to URL of current calendar */
     virtual bool saveURL();

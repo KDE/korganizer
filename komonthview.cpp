@@ -484,7 +484,7 @@ class MonthViewCell::CreateItemVisitor :
         else {
           text = KGlobal::locale()->formatTime(event->dtStart().time());
           dt.setTime( event->dtStart().time() );
-          text += " " + event->summary();
+          text += ' ' + event->summary();
         }
       }
 

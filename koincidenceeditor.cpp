@@ -150,7 +150,7 @@ void KOIncidenceEditor::cancelRemovedAttendees( Incidence *incidence )
   if ( !incidence ) return;
 
   // cancelAttendeeEvent removes all attendees from the incidence,
-  // and then only adds those that need to be cancelled (i.e. a mail needs to be sent to them).
+  // and then only adds those that need to be canceled (i.e. a mail needs to be sent to them).
   if ( KOPrefs::instance()->thatIsMe( incidence->organizer().email() ) ) {
     Incidence *ev = incidence->clone();
     ev->registerObserver( 0 );
@@ -186,7 +186,7 @@ void KOIncidenceEditor::saveAsTemplate( Incidence *incidence,
   if ( !incidence || templateName.isEmpty() ) return;
 
   QString fileName = "templates/" + incidence->type();
-  fileName.append( "/" + templateName );
+  fileName.append( '/' + templateName );
   fileName = locateLocal( "data", "korganizer/" + fileName );
 
   CalendarLocal cal( KOPrefs::instance()->mTimeZoneId );
@@ -198,7 +198,7 @@ void KOIncidenceEditor::saveAsTemplate( Incidence *incidence,
 void KOIncidenceEditor::slotLoadTemplate( const QString& templateName )
 {
   CalendarLocal cal( KOPrefs::instance()->mTimeZoneId );
-  QString fileName = locateLocal( "data", "korganizer/templates/" + type() + "/" +
+  QString fileName = locateLocal( "data", "korganizer/templates/" + type() + '/' +
       templateName );
 
   if ( fileName.isEmpty() ) {

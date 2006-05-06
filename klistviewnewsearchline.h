@@ -49,6 +49,8 @@ public:
      *
      * If \a listView is null then the widget will be disabled until listviews
      * are set with setListView(), setListViews() or added with addListView().
+     * @param parent The parent widget
+     * @param listView The list view that is filtered by this line
      */
     KListViewNewSearchLine(QWidget *parent = 0, K3ListView *listView = 0);
 
@@ -58,6 +60,8 @@ public:
      *
      * If \a listViews is empty then the widget will be disabled until listviews
      * are set with setListView(), setListViews() or added with addListView().
+     * @param parent The parent widget
+     * @param listViews List of ListViews that are filtered by this line
      */
     KListViewNewSearchLine(QWidget *parent,
                            const QList<K3ListView *> &listViews);
@@ -66,6 +70,7 @@ public:
      * Constructs a KListViewNewSearchLine without any K3ListView to filter. The
      * K3ListView objects have to be set later with setListView(), setListViews()
      * or added with addListView().
+     * @param parent The parent widget
      */
     KListViewNewSearchLine(QWidget *parent);
 
@@ -118,6 +123,7 @@ public slots:
      * Adds a K3ListView to the list of listviews filtered by this search line.
      * If \a lv is null then the widget will be disabled.
      *
+     * @param lv The list view to be added to the views that are filtered
      * @see listView(), setListViews(), removeListView()
      */
     void addListView(K3ListView *lv);
@@ -127,6 +133,7 @@ public slots:
      * line. Does nothing if \a lv is 0 or is not filtered by the quick search
      * line.
      *
+     * @param lv The list view on which this line should no longer act
      * @see listVew(), setListViews(), addListView()
      */
     void removeListView(K3ListView *lv);
@@ -134,12 +141,15 @@ public slots:
     /**
      * Updates search to only make visible the items that match \a s.  If
      * \a s is null then the line edit's text will be used.
+     *
+     * @param s The new search text
      */
     virtual void updateSearch(const QString &s = QString());
 
     /**
      * Make the search case sensitive or case insensitive.
      *
+     * @param cs Whether to use case sensitive of insensitive comparisons
      * @see caseSenstive()
      */
     void setCaseSensitive(Qt::CaseSensitivity cs);
@@ -152,6 +162,9 @@ public slots:
      * If this is set to true (the default) then the parents of matching items
      * will be shown.
      *
+     * @param v If true, parents of unfiltered items will also be unfiltered.
+                If false, only the unfiltered child will be visible when the
+                parent is filtered out.
      * @see keepParentsVisible
      */
     void setKeepParentsVisible(bool v);
@@ -163,6 +176,7 @@ public slots:
      * If listviews to be filtered have different numbers or labels of columns
      * this method has no effect.
      *
+     * @param columns The list of columns which should be used for matching
      * @see searchColumns
      */
     void setSearchColumns(const QList<int> &columns);
@@ -172,6 +186,7 @@ public slots:
      * previously filtered listviews.  If \a lv is null then the widget will be
      * disabled.
      *
+     * @param lv The list vieww on which this line should act
      * @see listView(), setListViews()
      */
     void setListView(K3ListView *lv);
@@ -181,6 +196,7 @@ public slots:
      * previously filtered listviews.  If \a lvs is empty then the widget will
      * be disabled.
      *
+     * @param lv The list of listviews on which this line should act
      * @see listViews(), addListView(), setListView()
      */
     void setListViews(const QList<K3ListView *> &lv);
@@ -192,6 +208,8 @@ public slots:
      * Returns true if \a item matches the search \a s.  This will be evaluated
      * based on the value of caseSensitive().  This can be overridden in
      * subclasses to implement more complicated matching schemes.
+     *  @param item The item to be compared to the string
+     *  @param s The pattern to which the item is compared
      */
     virtual bool itemMatches(const Q3ListViewItem *item, const QString &s) const;
 
@@ -199,12 +217,14 @@ public slots:
     * Re-implemented for internal reasons.  API not affected.
     *
     * See QLineEdit::mousePressEvent().
+    * @param e the context menu event
     */
     virtual void contextMenuEvent( QContextMenuEvent *e );
 
     /**
      * Updates search to only make visible appropriate items in \a listView.  If
      * \a listView is null then nothing is done.
+     *   @param listView the List view that should be updated.
      */
     virtual void updateSearch(K3ListView *listView);
 

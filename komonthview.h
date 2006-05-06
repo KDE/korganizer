@@ -149,20 +149,22 @@ class MonthViewCell : public QWidget
       @param primary If true, the cell will be set as primary. Else it will be
       set as non-primary.
      */
-    void setPrimary( bool );
+    void setPrimary( bool primary );
     /**
        @return True if this cell is primary, else false.
     */
     bool isPrimary() const;
 
-    /** Make this cell show as a holiday */
-    void setHoliday( bool );
+    /** Make this cell show as a holiday
+      @param isHoliday Whether this day is a holiday or not
+    */
+    void setHoliday( bool isHoliday );
     /**
       Sets the holiday name to this cell. This will not call
       setHoliday( true ).
       @param name The name of the holiday.
     */
-    void setHolidayString( const QString & );
+    void setHolidayString( const QString &name );
 
     void updateCell();
     /** Adds an incidence to the cell.
@@ -189,8 +191,7 @@ class MonthViewCell : public QWidget
     void defaultAction( Incidence * );
     /**
       Notify the view manager that we want to create a new event, so an editor
-      will pop up.
-      @param date The date of the event we want create.
+      will pop up. Pass the date for the new event as parameter.
     */
     void newEventSignal( const QDate & );
 

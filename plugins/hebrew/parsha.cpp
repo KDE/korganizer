@@ -265,7 +265,7 @@ QString
   else
       {                                // Create a double parsha
         buffer =
-          parshiot_names[index - 100] + "-" + parshiot_names[index -
+          parshiot_names[index - 100] + '-' + parshiot_names[index -
                                                              99];
         return buffer;
 

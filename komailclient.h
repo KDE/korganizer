@@ -1,6 +1,6 @@
 /*
     This file is part of KOrganizer.
-    Copyright (c) 1998 Barry D Benowitz
+    Copyright (c) 1998 Barry D Benowitz <b.benowitz@telesciences.com>
     Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
@@ -46,7 +46,15 @@ class KOMailClient
 
   protected:
     /** Send mail with specified from, to and subject field and body as text. If
-     * bcc is set, send a blind carbon copy to the sender from */
+     * bcc is set, send a blind carbon copy to the sender from
+         @param from sender of the mail invitation
+         @param to receiver of the invitation
+         @param subject subject of the invitation (not relevant for
+                        scheduling purposes)
+         @param body Body of the message
+         @param bcc optional bcc for the message
+         @param attachment optional attachment (raw data)
+     */
     bool send(const QString &from,const QString &to,const QString &subject,
               const QString &body,bool bcc=false,
               const QString &attachment=QString());

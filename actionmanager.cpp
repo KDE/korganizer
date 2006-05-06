@@ -726,7 +726,7 @@ void ActionManager::file_merge()
   KUrl url = KFileDialog::getOpenURL( locateLocal( "data","korganizer/" ),
                                      i18n("*.vcs *.ics|Calendar Files"),
                                      dialogParent() );
-  if ( ! url.isEmpty() )  // isEmpty if user cancelled the dialog
+  if ( ! url.isEmpty() )  // isEmpty if user canceled the dialog
     importCalendar( url );
 }
 

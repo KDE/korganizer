@@ -2,10 +2,10 @@
     This file is part of KOrganizer.
 
     Copyright (c) 1997, 1998, 1999
-    Preston Brown (preston.brown@yale.edu)
-    Fester Zigterman (F.J.F.ZigtermanRustenburg@student.utwente.nl)
-    Ian Dawes (iadawes@globalserve.net)
-    Laszlo Boloni (boloni@cs.purdue.edu)
+    Preston Brown <preston.brown@yale.edu>
+    Fester Zigterman <F.J.F.ZigtermanRustenburg@student.utwente.nl>
+    Ian Dawes <iadawes@globalserve.net>
+    Laszlo Boloni <boloni@cs.purdue.edu>
 
     Copyright (c) 2000-2003 Cornelius Schumacher <schumacher@kde.org>
     Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
@@ -82,6 +82,11 @@ class KOrganizer : public KPartsMainWindow, public KOrgMainWindow
     /**
       Open calendar file from URL. Merge into current calendar, if \a merge is
       true.
+        @param url The URL to open
+        @param merge true if the incidences in URL should be imported into the
+                     current calendar (default resource or calendar file),
+                     false if the URL should be added as a new resource.
+        @return true on success, false if an error occurred
     */
     bool openURL( const KUrl &url, bool merge = false );
     /** Save calendar file to URL of current calendar */

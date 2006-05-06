@@ -268,7 +268,7 @@ class KDE_EXPORT CalPrintHelper
     /**
       Draws single to-do and its (intented) sub-to-dos, optionally connects them by a tree-like line, and optionally shows due date, summary, description and priority.
       \param count The number of the currently printed to-do (count will be incremented for each to-do drawn)
-      \param to-do The to-do to be printed. It's sub-to-dos are recursively drawn, so drawTodo should only be called on the to-dos of the highest level.
+      \param todo The to-do to be printed. It's sub-to-dos are recursively drawn, so drawTodo should only be called on the to-dos of the highest level.
       \param p QPainter of the printout
       \param connectSubTodos Whether sub-to-dos shall be connected with their parent by a line (tree-like).
       \param strikeoutCompleted. Whether completed to-dos should be printed with strike-out summaries.
@@ -282,6 +282,7 @@ class KDE_EXPORT CalPrintHelper
       \param y y-coordinate of the upper left coordinate of the first to-do
       \param width width of the whole to-do list
       \param pageHeight Total height allowed for the to-do list on a page. If an to-do would be below that line, a new page is started.
+      \param todoList The list of to-dos to be printed
       \param r Internal (used when printing sub-to-dos to give information about its parent)
     */
     void drawTodo( int &count, Todo *todo, QPainter &p,
@@ -294,7 +295,7 @@ class KDE_EXPORT CalPrintHelper
 
     /**
       Draws single journal item.
-      \param item The item to be printed.
+      \param journal The item to be printed.
       \param p QPainter of the printout
       \param x x-coordinate of the upper left coordinate of the first item
       \param y y-coordinate of the upper left coordinate of the first item

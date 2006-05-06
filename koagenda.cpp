@@ -4,7 +4,7 @@
     Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
 
     Marcus Bains line.
-    Copyright (c) 2001 Ali Rahimi
+    Copyright (c) 2001 Ali Rahimi <ali@mit.edu>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -1761,10 +1761,10 @@ void KOAgenda::deleteItemsToDelete()
 /*QSizePolicy KOAgenda::sizePolicy() const
 {
   // Thought this would make the all-day event agenda minimum size and the
-  // normal agenda take the remaining space. But it doesnt work. The QSplitter
-  // dont seem to think that an Expanding widget needs more space than a
+  // normal agenda take the remaining space. But it doesn't work. The QSplitter
+  // don't seem to think that an Expanding widget needs more space than a
   // Preferred one.
-  // But it doesnt hurt, so it stays.
+  // But it doesn't hurt, so it stays.
   if (mAllDayMode) {
     return QSizePolicy(QSizePolicy::Expanding,QSizePolicy::Preferred);
   } else {

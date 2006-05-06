@@ -31,7 +31,9 @@ class KDE_EXPORT UriHandler
 {
   public:
     /**
-      Process URI. Return true if handler handled the URI, otherwise false.
+      Process URI (e.g. open mailer, open browser, open incidence viewer etc.).
+        @return true if handler handled the URI, otherwise false.
+        @param uri The URI of the link that should be handled.
     */
     static bool process( const QString &uri );
 };

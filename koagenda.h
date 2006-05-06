@@ -123,7 +123,9 @@ class KOAgenda : public Q3ScrollView
     /** remove an event and all its multi-items from the agenda.
      *  This function removes the items from the view, but doesn't delete them immediately.
      *  Instead, they are queued in mItemsToDelete and later deleted by
-     *  the slot deleteItemsToDelete() (called by QTimer::singleShot ) */
+     *  the slot deleteItemsToDelete() (called by QTimer::singleShot )
+     *    @param incidence The pointer to the incidence that should be removed.
+     */
     void removeIncidence( Incidence *incidence );
 
     void changeColumns( int columns );
@@ -176,6 +178,8 @@ class KOAgenda : public Q3ScrollView
     void selectItem( KOAgendaItem * );
     /**
       Select the item associated with a given uid. Linear search, use carefully.
+        @param uid the UID of the item that should be selected. If no such
+                   item exists, the selection is not changed.
     */
     void selectItemByUID( const QString& uid );
     bool removeAgendaItem( KOAgendaItem *item );
@@ -236,6 +240,9 @@ class KOAgenda : public Q3ScrollView
       If --reverse is used, RESIZELEFT still means resizing the beginning of
       the event, although that means moving to the right!
       horizontal is the same as mAllDayAgenda.
+        @param horizontal Whether horizontal resizing is  possible
+        @param pos The current mouse position
+        @param item The affected item
     */
     MouseActionType isInResizeArea( bool horizontal, const QPoint &pos, KOAgendaItem *item );
     /** Return whether the cell specified by the grid point belongs to the current select
@@ -263,10 +270,12 @@ class KOAgenda : public Q3ScrollView
 
     /** Set cursor, when no item action is in progress */
     void setNoActionCursor( KOAgendaItem *moveItem, const QPoint &viewportPos );
-    /** Sets the cursor according to the given action type. If acting==true,
-      the corresponding action is running (i.e. the item is really moved). If
-      acting==false the cursor should just indicate that the corresponding action
-      is possible */
+    /** Sets the cursor according to the given action type.
+          @param actionType The type of action for which the cursor should be set.
+          @param acting If true, the corresponding action is running (e.g. the
+                        item is currently being moved by the user). If false the
+                        cursor should just indicate that the corresponding
+                        action is possible */
     void setActionCursor( int actionType, bool acting=false );
 
     /** calculate the width of the column subcells of the given item */

@@ -86,9 +86,7 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
   public:
     /**
       Constructs a new calendar view widget.
-
       @param parent   parent window
-      @param name     Qt internal widget object name
     */
     CalendarView( QWidget *parent = 0 );
     virtual ~CalendarView();
@@ -238,12 +236,17 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
       Load calendar from file \a filename. If \a merge is true, load
       calendar into existing one, if it is false, clear calendar, before
       loading. Return true, if calendar could be successfully loaded.
+        @param filename the file name to load the calendar from
+        @param merge If true, the items from the file are inserted into the
+                     current calendar (default resource or calendar file). If
+                     false, the file is added as a new calendar resource.
     */
     bool openCalendar( const QString &filename, bool merge = false );
 
     /**
       Save calendar data to file. Return true if calendar could be
       successfully saved.
+        @param filename The file name to save the calendar to
     */
     bool saveCalendar( const QString &filename );
 
@@ -472,12 +475,16 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
 
     /** query whether or not the calendar is "dirty". */
     bool isModified();
-    /** set the state of calendar. Modified means "dirty", i.e. needing a save. */
+    /** set the state of calendar. Modified means "dirty", i.e. needing a save.
+        @param modified Whether the calendar has been modified
+    */
     void setModified( bool modified = true );
 
     /** query if the calendar is read-only. */
     bool isReadOnly();
-    /** set state of calendar to read-only */
+    /** set state of calendar to read-only
+        @param readOnly whether the calendar view should be set read-only or not
+    */
     void setReadOnly( bool readOnly = true );
 
     void eventUpdated( Incidence * );

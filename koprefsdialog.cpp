@@ -562,7 +562,7 @@ class KOPrefsDialogFonts : public KPrefsModule
 
       KPrefsWidFont *monthViewFont =
           addWidFont( KOPrefs::instance()->monthViewFontItem(), topFrame,
-                      KGlobal::locale()->formatTime(QTime(12,34)) + " " +
+                      KGlobal::locale()->formatTime(QTime(12,34)) + ' ' +
                       i18n("Event text") );
 
       topLayout->addWidget(monthViewFont->label(),1,0);

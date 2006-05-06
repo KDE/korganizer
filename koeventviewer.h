@@ -55,8 +55,9 @@ class KDE_EXPORT KOEventViewer : public Q3TextBrowser
     virtual bool appendIncidence( Incidence * );
     
     /**
-      Clear viewer. If \a now is set to true delete view immediately. If set to
-      false delete it with next call to appendIncidence().
+      Clear viewer.
+        @param now If set to true delete view immediately. If set to
+                   false delete it with next call to appendIncidence().
     */
     void clearEvents( bool now = false );
 

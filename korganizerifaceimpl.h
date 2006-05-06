@@ -54,18 +54,30 @@ public:
   QString getCurrentURLasString() const;
 
   bool editIncidence( const QString &uid );
-  /** @reimp from KOrganizerIface::deleteIncidence() */
+  /** @reimp from KOrganizerIface::deleteIncidence()
+      @param uid the UID of the item to delete. if no such item exists, nothing happens
+      @return true if the item could be deleted, false otherwise
+  */
   bool deleteIncidence( const QString &uid )  { return deleteIncidence( uid, false ); }
-  /** @reimp from KOrganizerIface::deleteIncidence() */
+  /** @reimp from KOrganizerIface::deleteIncidence()
+      @param uid the uid of the item to delete
+      @param force if true, then no confirmation dialog will be shown, even if the GUI is configured to show one.
+  */
   bool deleteIncidence( const QString &uid, bool force );
 
-  /** @reimp from KOrganizerIface::addIncidence() */
+  /** @reimp from KOrganizerIface::addIncidence()
+      @param iCal Add all incidences given in the iCalendar string
+  */
   bool addIncidence( const QString &iCal );
   
-  /** @reimp from KOrganizerIface::showIncidence() */
+  /** @reimp from KOrganizerIface::showIncidence()
+      @param uid The UID of the item to show. If no such item exists, nothing happens.
+  */
   bool showIncidence( const QString& uid );
 
-  /** @reimp from KOrganizerIface::showIncidence() */
+  /** @reimp from KOrganizerIface::showIncidence()
+      @param uid The UID of the item to show
+      */
   bool showIncidenceContext( const QString& uid );
 
 private:

@@ -119,7 +119,6 @@ class KODayMatrix: public QFrame
      *
      *  @param parent widget that is the parent of the day matrix.
      *  Normally this should be a KDateNavigator
-     *  @param name name of the widget
      */
     KODayMatrix( QWidget *parent );
 
@@ -166,6 +165,8 @@ class KODayMatrix: public QFrame
     /** sets the actual to be displayed selection in the day matrix starting from
      *  start and ending with end. Theview must be manually updated by calling
      *  repaint. (?)
+     *    @param start start of the new selection
+     *    @param end end date of the new selection
      */
     void setSelectedDaysFrom( const QDate &start, const QDate &end );
 

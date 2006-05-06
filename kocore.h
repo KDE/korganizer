@@ -69,6 +69,8 @@ class KDE_EXPORT KOCore
     /**
       Unload the parts in &p parts for this main window. Clears
       parts.
+        @param parent the parent main window for all parts
+        @param parts the list of parts to be undloaded
     */
     void unloadParts( KOrg::MainWindow *parent, KOrg::Part::List &parts );
     void unloadPlugins();
@@ -78,6 +80,8 @@ class KDE_EXPORT KOCore
     /**
       Unloads the parts from the main window. Loads the parts that
       are listed in KOPrefs and returns a list of these parts.
+        @param parent the parent main window for all parts
+        @param parts the list of parts to be reloaded
     */
     KOrg::Part::List reloadParts( KOrg::MainWindow *parent,
                                   KOrg::Part::List &parts );

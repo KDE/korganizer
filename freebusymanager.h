@@ -94,8 +94,9 @@ class FreeBusyManager : public QObject, public KCal::FreeBusyCache
       The call is asynchronous, and upon download, the
       receivers slot specified by member will be called.
       The slot should be of type "member(const QString&, KCal::FreeBusy*)"
-
-      Return true if a download is initiated, and false otherwise
+        @param email Adress of the person for which the F/B list should be
+                     retrieved.
+        @return true if a download is initiated, and false otherwise
     */
     bool retrieveFreeBusy( const QString &email );
 

@@ -739,7 +739,7 @@ RecurrenceRangeWidget::RecurrenceRangeWidget( QWidget *parent ) : QWidget( paren
   rangeButtonGroup->addButton( mNoEndDateButton );
   rangeLayout->addWidget( mNoEndDateButton );
 
-  // The "After N occurences" is a widget with a horizontal layout
+  // The "After N occurrences" is a widget with a horizontal layout
   QBoxLayout *durationLayout = new QHBoxLayout();
   rangeLayout->addItem( durationLayout );
   durationLayout->setSpacing( KDialog::spacingHint() );

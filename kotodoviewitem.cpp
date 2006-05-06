@@ -131,7 +131,7 @@ void KOTodoViewItem::construct()
   if (mTodo->hasDueDate()) {
     QString dtStr = mTodo->dtDueDateStr();
     if (!mTodo->doesFloat()) {
-      dtStr += " " + mTodo->dtDueTimeStr();
+      dtStr += ' ' + mTodo->dtDueTimeStr();
     }
     setText( KOTodoView::eDueDateColumn, dtStr );
     mEffectiveDueDate = mTodo->dtDue();
@@ -244,7 +244,7 @@ void KOTodoViewItem::paintCell(QPainter *p, const QColorGroup &cg, int column, i
   }
 #endif
 
-  // show the progess by a horizontal bar
+  // show the progress by a horizontal bar
   if ( column == KOTodoView::ePercentColumn ) {
     p->save();
     int progress = (int)(( (width-6)*mTodo->percentComplete())/100.0 + 0.5);

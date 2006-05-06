@@ -70,7 +70,6 @@ class KDE_EXPORT BaseView : public QWidget
       @param cal    Pointer to the calendar object from which events
                     will be retrieved for display.
       @param parent parent widget.
-      @param name   name of this widget.
     */
     BaseView( Calendar *cal, QWidget *parent = 0 );
 
@@ -163,6 +162,9 @@ class KDE_EXPORT BaseView : public QWidget
 
     /**
       Set the default start/end date/time for new events. Return true if anything was changed
+         @param startDt The start date for new events (calculated from the selection)
+         @param endDt The end date for new events (calculated from the selection)
+         @param allDay Whether the new event should be an all-day item or not.
     */
     virtual bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay);
 

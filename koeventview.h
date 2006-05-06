@@ -65,7 +65,6 @@ class KOEventView : public KOrg::BaseView
      * @param cal is a pointer to the calendar object from which events
      *        will be retrieved for display.
      * @param parent is the parent QWidget.
-     * @param name is the view name.
      */
     KOEventView( Calendar *cal, QWidget *parent=0 );
 
@@ -108,8 +107,9 @@ class KOEventView : public KOrg::BaseView
      * the KDateNavigator object so that it changes appropriately,
      * and any other objects that need to be aware that the list of
      * selected dates has changed.
+     *   @param datelist the new list of selected dates
      */
-    void datesSelected(const DateList);
+    void datesSelected(const DateList datelist);
 
     //ET CVS MERGE !
     /**

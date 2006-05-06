@@ -57,10 +57,13 @@ class KOEditorGeneralEvent : public KOEditorGeneral
     /** Set widgets to default values */
     void setDefaults( const QDateTime &from, const QDateTime &to, bool allDay );
     /**
-      Read event object and setup widgets accordingly. If templ is true, the
-      event is read as template, i.e. the time and date information isn't set.
+      Read event object and setup widgets accordingly.
+        @param event the event where the new data comes from
+        @param templ If true, the event is read as template, i.e. the time and
+                     date information isn't set and the currently entered time/date
+                     in the editor dialog is preserved.
     */
-    void readEvent( Event *, bool tmpl = false );
+    void readEvent( Event *event, bool tmpl = false );
     /** Write event settings to event object */
     void writeEvent( Event * );
 

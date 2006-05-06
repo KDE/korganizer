@@ -40,6 +40,9 @@ class KDE_EXPORT KOHelper
       view.
       @return The resource color for the incidence. If the incidence belongs
       to a subresource, the color for the subresource is returned (if set).
+      @param calendar the calendar for which the resource color should be obtained
+      @param incidence the incidence for which the color is needed (to
+                       determine which  subresource needs to be used)
     */
     static QColor resourceColor( KCal::Calendar*calendar, KCal::Incidence*incidence );
 

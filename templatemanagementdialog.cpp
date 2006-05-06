@@ -2,8 +2,7 @@
 **
 ** Filename   : templatemanagementdialog.cpp
 ** Created on : 05 June, 2005
-** Copyright  : (c) 2005 Till Adam
-** Email      : <adam@kde.org>
+** Copyright  : (c) 2005 Till Adam <adam@kde.org>
 **
 *******************************************************************************/
 

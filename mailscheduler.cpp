@@ -102,11 +102,11 @@ QList<ScheduleMessage*> MailScheduler::retrieveTransactions()
   for( it = incoming.begin(); it != incoming.end(); ++it ) {
     kDebug(5850) << "-- File: " << (*it) << endl;
 
-    QFile f( incomingDirName + "/" + (*it) );
+    QFile f( incomingDirName + '/' + (*it) );
     bool inserted = false;
     QMap<IncidenceBase*, QString>::Iterator iter;
     for ( iter = mEventMap.begin(); iter != mEventMap.end(); ++iter ) {
-      if ( iter.value() == incomingDirName + "/" + (*it) )
+      if ( iter.value() == incomingDirName + '/' + (*it) )
         inserted = true;
     }
     if ( !inserted ) {
@@ -127,7 +127,7 @@ QList<ScheduleMessage*> MailScheduler::retrieveTransactions()
             << "MailScheduler::retrieveTransactions: got message '"
             << (*it) << "'" << endl;
           messageList.append( mess );
-          mEventMap[ mess->event() ] = incomingDirName + "/" + (*it);
+          mEventMap[ mess->event() ] = incomingDirName + '/' + (*it);
         } else {
           QString errorMessage;
           if ( mFormat->exception() ) {

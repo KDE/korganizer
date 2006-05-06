@@ -203,7 +203,7 @@ QStringList KOAlarmClient::dumpAlarms()
   for( it = alarms.begin(); it != alarms.end(); ++it ) {
     Alarm *a = *it;
     lst << QString("  ") + a->parent()->summary() + " ("
-              + a->time().toString() + ")";
+              + a->time().toString() + ')';
   }
 
   return lst;

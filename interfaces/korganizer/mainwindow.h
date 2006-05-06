@@ -48,7 +48,12 @@ class MainWindow
 
     virtual CalendarViewBase *view() const = 0;
 
-    /** Load calendar file from URL. Merge into current calendar, if \a merge is true. */
+    /** Load calendar file from URL. Merge into current calendar, if \a merge is true.
+         @param url The URL of the calendar to open
+         @param merge If true, the items from the url are inserted into the
+                      current calendar (default resource). Otherwise the URL
+                      is added as a new resource.
+    */
     virtual bool openURL( const KUrl &url, bool merge = false ) = 0;
     /** Save calendar file to URL of current calendar */
     virtual bool saveURL() = 0;
