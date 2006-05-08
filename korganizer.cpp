@@ -79,7 +79,7 @@
 #include <qfile.h>
 #include <qlabel.h>
 #include <qlayout.h>
-
+#include <krecentfilesaction.h>
 #include <stdlib.h>
 
 using namespace KParts;

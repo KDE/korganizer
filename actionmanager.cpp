@@ -65,7 +65,7 @@
 #include <kstdguiitem.h>
 #include <kdeversion.h>
 #include <kactionclasses.h>
-
+#include <krecentfilesaction.h>
 #include <qapplication.h>
 #include <qtimer.h>
 #include <qlabel.h>
