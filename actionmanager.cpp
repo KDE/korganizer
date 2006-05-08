@@ -66,6 +66,8 @@
 #include <kdeversion.h>
 #include <kactionclasses.h>
 #include <krecentfilesaction.h>
+#include <kstdaction.h>
+#include <k3widgetaction.h>
 #include <qapplication.h>
 #include <qtimer.h>
 #include <qlabel.h>
@@ -574,7 +576,7 @@ void ActionManager::initActions()
   //************************* TOOLBAR ACTIONS *******************************
   QLabel *filterLabel = new QLabel( i18n("Filter: "), mCalendarView );
   filterLabel->hide();
-  new KWidgetAction( filterLabel, i18n("Filter: "), 0, 0, 0,
+  new K3WidgetAction( filterLabel, i18n("Filter: "), 0, 0, 0,
                      mACollection, "filter_label" );
 
 }

@@ -23,6 +23,7 @@
 
 #include <libkcal/scheduler.h>
 #include <qobject.h>
+#include <kdepim_export.h>
 
 namespace KCal {
 class Calendar;
@@ -32,7 +33,7 @@ using namespace KCal;
 
 namespace KOrg {
 
-class IncidenceChangerBase : public QObject
+class KDE_EXPORT IncidenceChangerBase : public QObject
 {
 Q_OBJECT
 public:

@@ -66,8 +66,7 @@
 typedef KParts::GenericFactory< KOrganizerPart > KOrganizerFactory;
 K_EXPORT_COMPONENT_FACTORY( libkorganizerpart, KOrganizerFactory )
 
-KOrganizerPart::KOrganizerPart( QWidget *parentWidget, const char *widgetName,
-                                QObject *parent, const char *name,
+KOrganizerPart::KOrganizerPart( QWidget *parentWidget, QObject *parent,
                                 const QStringList & ) :
   KParts::ReadOnlyPart(parent), mTopLevelWidget( parentWidget->topLevelWidget() )
 {
@@ -77,11 +76,11 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, const char *widgetName,
 
   KOCore::self()->addXMLGUIClient( mTopLevelWidget, this );
 
-  QString pname( name );
+#warning Port me!
+//  QString pname( name );
 
   // create a canvas to insert our widget
   QWidget *canvas = new QWidget( parentWidget );
-  canvas->setObjectName( widgetName );
   canvas->setFocusPolicy( Qt::ClickFocus );
   setWidget( canvas );
   mView = new CalendarView( canvas );
@@ -89,15 +88,16 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, const char *widgetName,
   mActionManager = new ActionManager( this, mView, this, this, true );
   (void)new KOrganizerIfaceImpl( mActionManager, this, "IfaceImpl" );
 
-  if ( pname == QLatin1String("kontact") ) {
+#warning Port me!
+//  if ( pname == QLatin1String("kontact") ) {
     mActionManager->createCalendarResources();
     setHasDocument( false );
     KOrg::StdCalendar::self()->load();
     mView->updateCategories();
-  } else {
-    mActionManager->createCalendarLocal();
-    setHasDocument( true );
-  }
+//  } else {
+//    mActionManager->createCalendarLocal();
+//    setHasDocument( true );
+//  }
 
   mStatusBarExtension = new KParts::StatusBarExtension( this );
 

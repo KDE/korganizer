@@ -26,6 +26,7 @@
 #include "koalarmclient.h"
 
 #include <kapplication.h>
+#include <kactioncollection.h>
 #include <kdebug.h>
 #include <kdeversion.h>
 #include <klocale.h>

@@ -56,8 +56,7 @@ class KOrganizerPart: public KParts::ReadOnlyPart,
 {
     Q_OBJECT
   public:
-    KOrganizerPart( QWidget *parentWidget, const char *widgetName,
-                    QObject *parent, const char *name, const QStringList & );
+    KOrganizerPart( QWidget *parentWidget, QObject *parent, const QStringList & );
     virtual ~KOrganizerPart();
 
     static KAboutData *createAboutData();

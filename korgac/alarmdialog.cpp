@@ -38,7 +38,6 @@
 #include <dcopclient.h>
 #include <klocale.h>
 #include <kprocess.h>
-#include <kaudioplayer.h>
 #include <kdebug.h>
 #include <kmessagebox.h>
 #include <knotifyclient.h>
@@ -46,6 +45,7 @@
 #include <kwin.h>
 #include <klockfile.h>
 #include <kpushbutton.h>
+#include <phonon/simpleplayer.h>
 
 #include <libkcal/event.h>
 #include <ktoolinvocation.h>
@@ -215,7 +215,8 @@ void AlarmDialog::eventNotification()
     }
     else if (alarm->type() == Alarm::Audio) {
       beeped = true;
-      KAudioPlayer::play(QFile::encodeName(alarm->audioFile()));
+      Phonon::SimplePlayer* player = new Phonon::SimplePlayer( this );
+      player->play( KUrl( QFile::encodeName(alarm->audioFile() ) ) );
     }
   }
 

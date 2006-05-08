@@ -38,7 +38,7 @@ class CalendarViewBase;
   @short interface for korganizer main window
   @author Cornelius Schumacher
 */
-class MainWindow
+class KDE_EXPORT MainWindow
 {
   public:
     MainWindow();
