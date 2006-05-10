@@ -92,11 +92,11 @@ class PrintPlugin : public KOrg::Plugin
     /**
       Load complete config.
     */
-    void doLoadConfig() {}
+    virtual void doLoadConfig() {};
     /**
       Save complete config.
     */
-    void doSaveConfig() {}
+    virtual void doSaveConfig() {};
 
 
   public:

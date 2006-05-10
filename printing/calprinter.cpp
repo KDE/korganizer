@@ -78,6 +78,7 @@ void CalPrinter::init( KPrinter *printer, Calendar *calendar )
 {
   mCalendar = calendar;
   mPrinter = printer;
+  mHelper = new CalPrintHelper( mPrinter, mCalendar, mConfig, mCoreHelper );
 
   mPrintPlugins.clear();
   mPrintPlugins.setAutoDelete( true );
@@ -95,6 +96,8 @@ void CalPrinter::init( KPrinter *printer, Calendar *calendar )
     (*it)->setConfig( mConfig );
     (*it)->setCalendar( calendar );
     (*it)->setPrinter( printer );
+    (*it)->setKOrgCoreHelper( mCoreHelper );
+    (*it)->setCalPrintHelper( mHelper );
 
     (*it)->doLoadConfig();
   }
