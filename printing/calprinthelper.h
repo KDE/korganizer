@@ -56,7 +56,8 @@ class KDE_EXPORT CalPrintHelper
 
       \param pr KPrinter object used to print.
       \param cal Calendar to be printed.
-      \param cfg KConfig object for reading/writing printing configuration
+      \param cfg KConfig object for reading/writing printing configuration.
+      \param corehelper KOrganizer core helper, useful for all helper classes.
     */
     CalPrintHelper( KPrinter *pr, Calendar *cal, KConfig *cfg, KOrg::CoreHelper *corehelper );
     virtual ~CalPrintHelper();
@@ -108,8 +109,8 @@ class KDE_EXPORT CalPrintHelper
                     it that is invalid as well).
       \param x x-coordinate of the upper left coordinate of the title bar
       \param y y-coordinate of the upper left coordinate of the title bar
-      \param width width of the title bar
-      \param height height of the title bar
+      \param width Width of the title bar
+      \param height Height of the title bar
     */
     void drawHeader( QPainter &p, QString title,
                      const QDate &month1, const QDate &month2,
@@ -121,8 +122,8 @@ class KDE_EXPORT CalPrintHelper
       \param qd Arbitrary Date within the month to be printed.
       \param x x-coordinate of the upper left coordinate of the small calendar
       \param y y-coordinate of the upper left coordinate of the small calendar
-      \param width width of the small calendar
-      \param height height of the small calendar
+      \param width Width of the small calendar
+      \param height Height of the small calendar
     */
     void drawSmallMonth( QPainter &p, const QDate &qd,
                          int x, int y, int width, int height );
@@ -134,6 +135,10 @@ class KDE_EXPORT CalPrintHelper
       \param p QPainter of the printout
       \param fromDate First date of the printed dates
       \param toDate Last date of the printed dates
+      \param x x-coordinate of the upper left coordinate of the first day
+      \param y y-coordinate of the upper left coordinate of the first day
+      \param width Width of all the days of the week
+      \param height Height of all the days of the week
     */
     void drawDaysOfWeek( QPainter &p,
                          const QDate &fromDate, const QDate &toDate,
@@ -143,6 +148,10 @@ class KDE_EXPORT CalPrintHelper
       This is called in a loop by drawDaysOfWeek.
       \param p QPainter of the printout
       \param qd Date of the printed day
+      \param x x-coordinate of the upper left coordinate of the weekbox
+      \param y y-coordinate of the upper left coordinate of the weekbox
+      \param width Width of the weekbox
+      \param height Height of the weekbox
     */
     void drawDaysOfWeekBox( QPainter &p, const QDate &qd,
                             int x, int y, int width, int height );
@@ -154,6 +163,10 @@ class KDE_EXPORT CalPrintHelper
       \param p QPainter of the printout
       \param fromTime Start time of the time range to display
       \param toTime End time of the time range to display
+      \param x x-coordinate of the upper left coordinate of the timeline
+      \param y y-coordinate of the upper left coordinate of the timeline
+      \param width Width of the timeline
+      \param height Height of the timeline
     */
     void drawTimeLine( QPainter &p,
                        const QTime &fromTime, const QTime &toTime,
@@ -173,6 +186,10 @@ class KDE_EXPORT CalPrintHelper
              needed for all of them. If false, height specifies the total height
              allowed for all events, and the events are displayed in one cell,
              with their summaries concatenated by ", ".
+      \param x x-coordinate of the upper left coordinate of the all day box.
+      \param y y-coordinate of the upper left coordinate of the all day box.
+      \param width Width of the all day box.
+      \param height Height of the all day box.
     */
     void drawAllDayBox( QPainter &p, Event::List &eventList,
                         const QDate &qd, bool expandable,
@@ -194,6 +211,10 @@ class KDE_EXPORT CalPrintHelper
                       to include all events if expandable==true
       \param toTime End of the time range to be printed. Might be adjusted
                    to include all events if expandable==true
+      \param x x-coordinate of the upper left coordinate of the agenda day box.
+      \param y y-coordinate of the upper left coordinate of the agenda day box.
+      \param width Width of the agenda day box.
+      \param height Height of the agenda day box.
     */
     void drawAgendaDayBox( QPainter &p, Event::List &eventList,
                            const QDate &qd, bool expandable,
@@ -210,6 +231,10 @@ class KDE_EXPORT CalPrintHelper
       \param p QPainter of the printout
       \param qd The date of the currently printed day. All events of the calendar
                 that appear on that day will be printed.
+      \param x x-coordinate of the upper left coordinate of the day box.
+      \param y y-coordinate of the upper left coordinate of the day box.
+      \param width Width of the day box.
+      \param height Height of the day box.
       \param fullDate Whether the title bar of the box should contain the full
                       date string or just a short.
       \param printRecurDaily Whether daily recurring incidences should be printed.
@@ -217,7 +242,7 @@ class KDE_EXPORT CalPrintHelper
     */
     void drawDayBox( QPainter &p, const QDate &qd,
                      int x, int y, int width, int height,
-                     bool fullDate = false, bool printRecurWeekly = true,
+                     bool fullDate = false, bool printRecurDaily = true,
                      bool printRecurWeekly = true );
     /**
       Draw the week (filofax) table of the week containing the date qd. The first
@@ -226,6 +251,10 @@ class KDE_EXPORT CalPrintHelper
       (typically Saturday and Sunday) only get half the height of the other day boxes.
       \param p QPainter of the printout
       \param qd Arbitrary date within the week to be printed.
+      \param x x-coordinate of the upper left coordinate of the week.
+      \param y y-coordinate of the upper left coordinate of the week.
+      \param width Width of the week.
+      \param height Height of the week.
     */
     void drawWeek( QPainter &p, const QDate &qd,
                    int x, int y, int width, int height );
@@ -242,6 +271,10 @@ class KDE_EXPORT CalPrintHelper
       \param toDate Last day to be included in the page
       \param fromTime Start time of the displayed time range
       \param toTime End time of the displayed time range
+      \param x x-coordinate of the upper left coordinate of the time table.
+      \param y y-coordinate of the upper left coordinate of the time table.
+      \param width Width of the time table.
+      \param height Height of the time table.
     */
     void drawTimeTable( QPainter &p, const QDate &fromDate, const QDate &toDate,
                         QTime &fromTime, QTime &toTime,
@@ -258,6 +291,10 @@ class KDE_EXPORT CalPrintHelper
       \param recurDaily Whether daily recurring incidences should be printed.
       \param recurWeekly Whether weekly recurring incidences should be printed.
       \param weeknumbers Whether the week numbers are printed left of each row of the matrix
+      \param x x-coordinate of the upper left coordinate of the month.
+      \param y y-coordinate of the upper left coordinate of the month.
+      \param width Width of the month.
+      \param height Height of the month.
     */
     void drawMonth( QPainter &p, const QDate &qd, bool weeknumbers,
                     bool recurDaily, bool recurWeekly,
@@ -266,20 +303,23 @@ class KDE_EXPORT CalPrintHelper
     /**
       Draws single to-do and its (intented) sub-to-dos, optionally connects them by a tree-like line, and optionally shows due date, summary, description and priority.
       \param count The number of the currently printed to-do (count will be incremented for each to-do drawn)
-      \param to-do The to-do to be printed. It's sub-to-dos are recursively drawn, so drawTodo should only be called on the to-dos of the highest level.
+      \param todo The to-do to be printed. It's sub-to-dos are recursively drawn, so drawTodo should only be called on the to-dos of the highest level.
       \param p QPainter of the printout
+      \param sortField Specifies on which attribute of the todo you want to sort.
+      \param sortDir Specifies if you want to sort ascending or descending.
       \param connectSubTodos Whether sub-to-dos shall be connected with their parent by a line (tree-like).
-      \param strikeoutCompleted. Whether completed to-dos should be printed with strike-out summaries.
+      \param strikeoutCompleted Whether completed to-dos should be printed with strike-out summaries.
       \param desc Whether to print the whole description of the to-do (the summary is always printed).
       \param posPriority x-coordinate where the priority is supposed to be printed. If <0, no priority will be printed.
       \param posSummary x-coordinate where the summary of the to-do is supposed to be printed.
       \param posDueDt x-coordinate where the due date is supposed to the be printed. If <0, no due date will be printed.
       \param posPercentComplete x-coordinate where the percentage complete is supposed to be printed. If <0, percentage complete will not be printed.
       \param level Level of the current to-do in the to-do hierarchy (0 means highest level of printed to-dos, 1 are their sub-to-dos, etc.)
-      \param x x-coordinate of the upper left coordinate of the first to-do
-      \param y y-coordinate of the upper left coordinate of the first to-do
-      \param width width of the whole to-do list
+      \param x x-coordinate of the upper left coordinate of the first to-do.
+      \param y y-coordinate of the upper left coordinate of the first to-do.
+      \param width width of the whole to-do list.
       \param pageHeight Total height allowed for the to-do list on a page. If an to-do would be below that line, a new page is started.
+      \param todoList Contains a list of sub-todos for the specified @p todo .
       \param r Internal (used when printing sub-to-dos to give information about its parent)
     */
     void drawTodo( int &count, Todo *todo, QPainter &p,
@@ -292,7 +332,7 @@ class KDE_EXPORT CalPrintHelper
 
     /**
       Draws single journal item.
-      \param item The item to be printed.
+      \param journal The item to be printed.
       \param p QPainter of the printout
       \param x x-coordinate of the upper left coordinate of the first item
       \param y y-coordinate of the upper left coordinate of the first item

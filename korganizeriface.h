@@ -37,13 +37,14 @@ class KOrganizerIface : virtual public DCOPObject
     virtual bool deleteIncidence(const QString &uid) = 0;
     /**
       Delete the incidence with the given unique ID from the active calendar.
+      @param uid The incidence's unique ID.
       @param force If true, all recurrences and sub-todos (if applicable) will
                    be deleted without prompting for confirmation.
     */
     virtual bool deleteIncidence(const QString &uid, bool force) = 0;
     /**
       Add an incidence to the active calendar.
-      @param ical A calendar in iCalendar format containing the incidence. The
+      @param iCal A calendar in iCalendar format containing the incidence. The
                   calendar must consist of a VCALENDAR component which contains
                   the incidence (VEVENT, VTODO, VJOURNAL or VFREEBUSY) and
                   optionally a VTIMEZONE component. If there is more than one
