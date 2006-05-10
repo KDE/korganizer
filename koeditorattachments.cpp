@@ -56,15 +56,15 @@
 #include <kurlrequester.h>
 
 #include <qcursor.h>
-#include <qfile.h>
+#include <QFile>
 #include <qfileinfo.h>
-#include <qlabel.h>
-#include <qlayout.h>
-#include <qlineedit.h>
-#include <qpushbutton.h>
+#include <QLabel>
+#include <QLayout>
+#include <QLineEdit>
+#include <QPushButton>
 #include <q3dragobject.h>
-#include <qregexp.h>
-#include <qstring.h>
+#include <QRegExp>
+#include <QString>
 #include <qstringlist.h>
 #include <qstyle.h>
 

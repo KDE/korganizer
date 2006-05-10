@@ -22,10 +22,10 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include <qlabel.h>
+#include <QLabel>
 #include <qstringlist.h>
-#include <qlayout.h>
-#include <qcombobox.h>
+#include <QLayout>
+#include <QComboBox>
 //Added by qt3to4:
 #include <QVBoxLayout>
 #include <QHBoxLayout>

@@ -24,10 +24,10 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include <qpushbutton.h>
-#include <qcheckbox.h>
+#include <QPushButton>
+#include <QCheckBox>
 #include <q3buttongroup.h>
-#include <qlineedit.h>
+#include <QLineEdit>
 #include <qradiobutton.h>
 #include <q3listbox.h>
 

@@ -39,7 +39,7 @@
 #include <klocale.h>
 #include <kdebug.h>
 
-#include <qlayout.h>
+#include <QLayout>
 //Added by qt3to4:
 #include <QVBoxLayout>
 #include <QFrame>

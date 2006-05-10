@@ -24,10 +24,10 @@
 
 // ArchiveDialog -- archive/delete past events.
 
-#include <qlabel.h>
-#include <qlayout.h>
+#include <QLabel>
+#include <QLayout>
 #include <qdatetime.h>
-#include <qcheckbox.h>
+#include <QCheckBox>
 
 
 //Added by qt3to4:

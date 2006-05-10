@@ -22,9 +22,9 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include <qdir.h>
-#include <qfile.h>
-#include <qregexp.h>
+#include <QDir>
+#include <QFile>
+#include <QRegExp>
 //Added by qt3to4:
 #include <QTextStream>
 #include <QList>

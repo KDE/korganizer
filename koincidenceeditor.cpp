@@ -22,10 +22,10 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include <qtooltip.h>
+#include <QToolTip>
 #include <q3frame.h>
 #include <qpixmap.h>
-#include <qlayout.h>
+#include <QLayout>
 #include <q3widgetstack.h>
 #include <qdatetime.h>
 

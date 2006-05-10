@@ -11,7 +11,7 @@
 #ifndef PARSHA_H
 #define PARSHA_H
 
-#include <qstring.h>
+#include <QString>
 #include <qstringlist.h>
 
 /**

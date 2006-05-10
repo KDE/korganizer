@@ -29,8 +29,8 @@
 #include <qpainter.h>
 #include <q3datetimeedit.h>
 #include <qdatetime.h>
-#include <qcheckbox.h>
-#include <qlineedit.h>
+#include <QCheckBox>
+#include <QLineEdit>
 #include <q3buttongroup.h>
 
 #include <kglobal.h>

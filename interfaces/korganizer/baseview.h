@@ -22,7 +22,7 @@
 #ifndef KORG_BASEVIEW_H
 #define KORG_BASEVIEW_H
 
-#include <qwidget.h>
+#include <QWidget>
 
 #include <klocale.h>
 #include <kdebug.h>

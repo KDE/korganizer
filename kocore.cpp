@@ -39,7 +39,7 @@
 #include <kstandarddirs.h>
 #include <klocale.h>
 
-#include <qwidget.h>
+#include <QWidget>
 
 KOCore *KOCore::mSelf = 0;
 

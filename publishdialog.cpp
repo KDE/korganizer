@@ -21,8 +21,8 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include <qlineedit.h>
-#include <qpushbutton.h>
+#include <QLineEdit>
+#include <QPushButton>
 #include <kdebug.h>
 #include <q3listview.h>
 

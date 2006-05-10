@@ -26,8 +26,8 @@
 #ifndef CALENDARVIEW_H
 #define CALENDARVIEW_H
 
-#include <qwidget.h>
-#include <qmap.h>
+#include <QWidget>
+#include <QMap>
 //Added by qt3to4:
 #include <QByteArray>
 #include <QList>

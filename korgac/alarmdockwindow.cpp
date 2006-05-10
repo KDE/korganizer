@@ -40,8 +40,8 @@
 #include <kaction.h>
 #include <kstdaction.h>
 
-#include <qtooltip.h>
-#include <qfile.h>
+#include <QToolTip>
+#include <QFile>
 //Added by qt3to4:
 #include <QMouseEvent>
 

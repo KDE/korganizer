@@ -26,19 +26,19 @@
 #include "koeditordetails.h"
 
 #include <q3buttongroup.h>
-#include <qcheckbox.h>
-#include <qcombobox.h>
+#include <QCheckBox>
+#include <QComboBox>
 #include <qdatetime.h>
 #include <q3dragobject.h>
 #include <q3filedialog.h>
 #include <q3groupbox.h>
-#include <qlabel.h>
-#include <qlayout.h>
-#include <qlineedit.h>
-#include <qpushbutton.h>
+#include <QLabel>
+#include <QLayout>
+#include <QLineEdit>
+#include <QPushButton>
 #include <qradiobutton.h>
-#include <qregexp.h>
-#include <qtooltip.h>
+#include <QRegExp>
+#include <QToolTip>
 
 
 #include <q3widgetstack.h>

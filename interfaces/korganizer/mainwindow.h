@@ -22,7 +22,7 @@
 
 #include <kxmlguiclient.h>
 
-#include <qwidget.h>
+#include <QWidget>
 
 class KActionCollection;
 class KAction;

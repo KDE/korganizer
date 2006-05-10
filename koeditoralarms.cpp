@@ -25,12 +25,12 @@
 
 #include "koeditoralarms.h"
 
-#include <qlayout.h>
+#include <QLayout>
 #include <q3listview.h>
-#include <qpushbutton.h>
-#include <qspinbox.h>
-#include <qcombobox.h>
-#include <qcheckbox.h>
+#include <QPushButton>
+#include <QSpinBox>
+#include <QComboBox>
+#include <QCheckBox>
 #include <q3buttongroup.h>
 #include <QTextEdit>
 #include <q3widgetstack.h>

@@ -37,7 +37,7 @@
 #include <kapplication.h>
 #include <kwin.h>
 
-#include <qpushbutton.h>
+#include <QPushButton>
 #include <kglobal.h>
 
 KOAlarmClient::KOAlarmClient( QObject *parent )

@@ -29,9 +29,9 @@
 #include <libkcal/incidencebase.h>
 
 #include <q3frame.h>
-#include <qcolor.h>
-#include <qtooltip.h>
-#include <qmap.h>
+#include <QColor>
+#include <QToolTip>
+#include <QMap>
 //Added by qt3to4:
 #include <QDragEnterEvent>
 #include <QMouseEvent>

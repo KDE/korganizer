@@ -27,7 +27,7 @@
 
 #include <dcopobject.h>
 #include <qdatetime.h>
-#include <qdatastream.h>
+#include <QDataStream>
 #include <qstringlist.h>
 //Added by qt3to4:
 #include <QByteArray>

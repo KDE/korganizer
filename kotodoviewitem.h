@@ -26,7 +26,7 @@
 #ifndef KOTODOVIEWITEM_H
 #define KOTODOVIEWITEM_H
 
-#include <qmap.h>
+#include <QMap>
 #include <q3listview.h>
 #include <qpalette.h>
 #include <qdatetime.h>

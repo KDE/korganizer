@@ -22,7 +22,7 @@
 #ifndef KORG_CALENDARVIEWBASE_H
 #define KORG_CALENDARVIEWBASE_H
 
-#include <qwidget.h>
+#include <QWidget>
 
 #include <libkcal/calendar.h>
 

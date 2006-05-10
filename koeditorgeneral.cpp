@@ -23,20 +23,20 @@
 */
 
 
-#include <qwidget.h>
-#include <qtooltip.h>
-#include <qlayout.h>
+#include <QWidget>
+#include <QToolTip>
+#include <QLayout>
 
 
 #include <q3buttongroup.h>
 #include <q3widgetstack.h>
 #include <qdatetime.h>
-#include <qlineedit.h>
-#include <qlabel.h>
-#include <qcheckbox.h>
-#include <qpushbutton.h>
-#include <qcombobox.h>
-#include <qspinbox.h>
+#include <QLineEdit>
+#include <QLabel>
+#include <QCheckBox>
+#include <QPushButton>
+#include <QComboBox>
+#include <QSpinBox>
 
 //Added by qt3to4:
 #include <QFocusEvent>

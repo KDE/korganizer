@@ -11,7 +11,7 @@
 #ifndef CONVERTER_H
 #define CONVERTER_H
 
-#include <qstring.h>
+#include <QString>
 #include <qstringlist.h>
 
 struct DateResult

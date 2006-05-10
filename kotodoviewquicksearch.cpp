@@ -42,11 +42,11 @@
 #include <k3listviewsearchline.h>
 #include <ktoolbar.h>
 
-#include <qlayout.h>
-#include <qlabel.h>
-#include <qcombobox.h>
+#include <QLayout>
+#include <QLabel>
+#include <QComboBox>
 #include <qapplication.h>
-#include <qregexp.h>
+#include <QRegExp>
 #include <qsizepolicy.h>
 #include <qtimer.h>
 

@@ -97,8 +97,8 @@
 #include <qtimer.h>
 #include <QStackedWidget>
 #include <QList>
-#include <qfile.h>
-#include <qlayout.h>
+#include <QFile>
+#include <QLayout>
 #ifndef KORG_NOSPLITTER
 #include <qsplitter.h>
 #endif

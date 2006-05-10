@@ -22,20 +22,20 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include <qtooltip.h>
+#include <QToolTip>
 #include <q3filedialog.h>
-#include <qlayout.h>
+#include <QLayout>
 
 #include <QGroupBox>
 #include <QStackedWidget>
 #include <qdatetime.h>
 #include <QListWidget>
-#include <qspinbox.h>
-#include <qcheckbox.h>
+#include <QSpinBox>
+#include <QCheckBox>
 #include <q3widgetstack.h>
 #include <qradiobutton.h>
-#include <qlabel.h>
-#include <qpushbutton.h>
+#include <QLabel>
+#include <QPushButton>
 
 //Added by qt3to4:
 #include <QGroupBox>

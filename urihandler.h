@@ -24,7 +24,7 @@
 #ifndef URIHANDLER_H
 #define URIHANDLER_H
 
-#include <qstring.h>
+#include <QString>
 #include <kdepimmacros.h>
 
 class KDE_EXPORT UriHandler

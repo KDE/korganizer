@@ -38,10 +38,10 @@
 #include <libkcal/calendarresources.h>
 
 
-#include <qlayout.h>
-#include <qlabel.h>
+#include <QLayout>
+#include <QLabel>
 #include <qpainter.h>
-#include <qpushbutton.h>
+#include <QPushButton>
 #include <q3popupmenu.h>
 
 //Added by qt3to4:

@@ -26,7 +26,7 @@
 #ifndef KOEDITORATTACHMENTS_H
 #define KOEDITORATTACHMENTS_H
 
-#include <qwidget.h>
+#include <QWidget>
 //Added by qt3to4:
 #include <QDragEnterEvent>
 #include <QLabel>

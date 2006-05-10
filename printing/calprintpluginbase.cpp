@@ -24,9 +24,9 @@
 */
 
 #include <qpainter.h>
-#include <qlayout.h>
+#include <QLayout>
 #include <q3frame.h>
-#include <qlabel.h>
+#include <QLabel>
 #include <q3intdict.h>
 //Added by qt3to4:
 #include <QVBoxLayout>

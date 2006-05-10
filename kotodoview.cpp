@@ -25,10 +25,10 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include <qlayout.h>
+#include <QLayout>
 #include <q3header.h>
 #include <qcursor.h>
-#include <qlabel.h>
+#include <QLabel>
 #include <qtimer.h>
 
 #include <QStackedWidget>

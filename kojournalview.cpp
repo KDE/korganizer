@@ -25,10 +25,10 @@
 //
 // View of Journal entries
 
-#include <qlayout.h>
+#include <QLayout>
 #include <q3popupmenu.h>
 
-#include <qlabel.h>
+#include <QLabel>
 #include <q3scrollview.h>
 //Added by qt3to4:
 #include <QVBoxLayout>

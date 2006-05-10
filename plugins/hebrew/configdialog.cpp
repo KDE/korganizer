@@ -20,7 +20,7 @@
 #include "configdialog.moc"
 #include <QFrame>
 #include <klocale.h>
-#include <qlayout.h>
+#include <QLayout>
 #include <kapplication.h>
 #include <kglobal.h>
 #include <kconfig.h>

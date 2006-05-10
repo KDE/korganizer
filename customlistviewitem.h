@@ -24,8 +24,8 @@
 #ifndef CUSTOMLISTVIEWITEM_H
 #define CUSTOMLISTVIEWITEM_H
 
-#include <qmap.h>
-#include <qstring.h>
+#include <QMap>
+#include <QString>
 #include <k3listview.h>
 
 template<class T>

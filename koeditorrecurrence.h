@@ -25,7 +25,7 @@
 #define _KOEDITORRECURRENCE_H
 
 #include <qdatetime.h>
-#include <qwidget.h>
+#include <QWidget>
 #include <qbitarray.h>
 //Added by qt3to4:
 #include <QBoxLayout>

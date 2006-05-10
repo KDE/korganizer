@@ -25,11 +25,11 @@
 //
 // Journal Entry
 
-#include <qlabel.h>
-#include <qlayout.h>
-#include <qcheckbox.h>
+#include <QLabel>
+#include <QLayout>
+#include <QCheckBox>
 
-#include <qtooltip.h>
+#include <QToolTip>
 #include <qtoolbutton.h>
 //Added by qt3to4:
 #include <QPixmap>

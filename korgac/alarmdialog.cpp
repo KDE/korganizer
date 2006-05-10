@@ -24,12 +24,12 @@
 
 
 
-#include <qlabel.h>
-#include <qfile.h>
-#include <qspinbox.h>
-#include <qlayout.h>
-#include <qpushbutton.h>
-#include <qdatastream.h>
+#include <QLabel>
+#include <QFile>
+#include <QSpinBox>
+#include <QLayout>
+#include <QPushButton>
+#include <QDataStream>
 //Added by qt3to4:
 #include <QVBoxLayout>
 #include <QBoxLayout>

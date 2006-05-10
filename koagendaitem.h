@@ -28,7 +28,7 @@
 #include "cellitem.h"
 
 #include <qdatetime.h>
-#include <qwidget.h>
+#include <QWidget>
 #include <QDragEnterEvent>
 #include <QPixmap>
 #include <QDropEvent>

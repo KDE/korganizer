@@ -21,7 +21,7 @@
 #ifndef KORG_PART_H
 #define KORG_PART_H
 
-#include <qstring.h>
+#include <QString>
 #include <QList>
 
 #include <klibloader.h>

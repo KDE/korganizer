@@ -47,9 +47,9 @@
 #include <kmessagebox.h>
 #include <kstandarddirs.h>
 #include <kdirwatch.h>
-#include <qfile.h>
-#include <qregexp.h>
-#include <qdir.h>
+#include <QFile>
+#include <QRegExp>
+#include <QDir>
 //Added by qt3to4:
 #include <QTextStream>
 

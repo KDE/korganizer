@@ -23,12 +23,12 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include <qstring.h>
+#include <QString>
 #include <qnamespace.h>
-#include <qlayout.h>
+#include <QLayout>
 #include <qtimer.h>
 #include <q3frame.h>
-#include <qlabel.h>
+#include <QLabel>
 //Added by qt3to4:
 #include <QWheelEvent>
 #include <QGridLayout>

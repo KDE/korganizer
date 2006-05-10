@@ -23,7 +23,7 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include <qregexp.h>
+#include <QRegExp>
 
 #include <libkdepim/kdepimprotocols.h>
 

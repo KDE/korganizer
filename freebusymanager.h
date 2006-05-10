@@ -39,7 +39,7 @@
 #include <kurl.h>
 #include <libkcal/icalformat.h>
 #include <libkcal/freebusycache.h>
-#include <qstring.h>
+#include <QString>
 #include <qobject.h>
 //Added by qt3to4:
 #include <QTimerEvent>

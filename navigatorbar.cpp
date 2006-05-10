@@ -22,13 +22,13 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include <qstring.h>
-#include <qtooltip.h>
-#include <qpushbutton.h>
-#include <qlayout.h>
+#include <QString>
+#include <QToolTip>
+#include <QPushButton>
+#include <QLayout>
 #include <q3frame.h>
 #include <q3popupmenu.h>
-#include <qlabel.h>
+#include <QLabel>
 //Added by qt3to4:
 #include <QMouseEvent>
 #include <QPixmap>

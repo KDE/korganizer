@@ -24,9 +24,9 @@
 
 #include <qsplitter.h>
 #include <q3listview.h>
-#include <qlayout.h>
+#include <QLayout>
 #include <q3header.h>
-#include <qpushbutton.h>
+#include <QPushButton>
 //Added by qt3to4:
 #include <QVBoxLayout>
 #include <QHBoxLayout>

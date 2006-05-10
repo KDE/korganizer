@@ -11,7 +11,7 @@
 #ifndef HOLIDAY_H
 #define HOLIDAY_H
 
-#include <qstring.h>
+#include <QString>
 #include <qstringlist.h>
 #include <parsha.h>
 /**

@@ -19,7 +19,7 @@
 #ifndef KORG_HEBREW_H
 #define KORG_HEBREW_H
 
-#include <qstring.h>
+#include <QString>
 #include <qstringlist.h>
 #include <calendar/calendardecoration.h>
 

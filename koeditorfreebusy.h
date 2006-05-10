@@ -24,7 +24,7 @@
 #ifndef KOEDITORFREEBUSY_H
 #define KOEDITORFREEBUSY_H
 
-#include <qwidget.h>
+#include <QWidget>
 #include <qdatetime.h>
 #include <qtimer.h>
 //Added by qt3to4:

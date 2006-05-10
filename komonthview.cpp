@@ -24,18 +24,18 @@
 */
 
 #include <q3popupmenu.h>
-#include <qfont.h>
+#include <QFont>
 #include <qfontmetrics.h>
 #include <qnamespace.h>
 #include <q3hbox.h>
 #include <q3vbox.h>
-#include <qpushbutton.h>
-#include <qtooltip.h>
+#include <QPushButton>
+#include <QToolTip>
 #include <qpainter.h>
 #include <qcursor.h>
 #include <q3listbox.h>
-#include <qlayout.h>
-#include <qlabel.h>
+#include <QLayout>
+#include <QLabel>
 //Added by qt3to4:
 #include <QGridLayout>
 #include <QKeyEvent>

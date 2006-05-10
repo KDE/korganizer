@@ -70,7 +70,7 @@
 #include <k3widgetaction.h>
 #include <qapplication.h>
 #include <qtimer.h>
-#include <qlabel.h>
+#include <QLabel>
 
 
 // FIXME: Several places in the file don't use KConfigXT yet!

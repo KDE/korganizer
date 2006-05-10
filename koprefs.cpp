@@ -26,11 +26,11 @@
 #include <time.h>
 #include <unistd.h>
 
-#include <qdir.h>
-#include <qstring.h>
-#include <qfont.h>
+#include <QDir>
+#include <QString>
+#include <QFont>
 #include <QColor>
-#include <qmap.h>
+#include <QMap>
 #include <qstringlist.h>
 
 #include <kglobalsettings.h>

@@ -24,10 +24,10 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include <qlayout.h>
-#include <qcheckbox.h>
-#include <qlabel.h>
-#include <qlineedit.h>
+#include <QLayout>
+#include <QCheckBox>
+#include <QLabel>
+#include <QLineEdit>
 #include <QVBoxLayout>
 #include <QFrame>
 #include <QHBoxLayout>

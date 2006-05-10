@@ -23,9 +23,9 @@
 #ifndef KORG_COREHELPER_H
 #define KORG_COREHELPER_H
 
-#include <qstring.h>
+#include <QString>
 #include <qdatetime.h>
-#include <qcolor.h>
+#include <QColor>
 #include "printplugin.h"
 
 class KCalendarSytstem;

@@ -27,8 +27,8 @@
 #ifndef KOTODOVIEW_H
 #define KOTODOVIEW_H
 
-#include <qmap.h>
-#include <qtooltip.h>
+#include <QMap>
+#include <QToolTip>
 #include <QMenu>
 #include <QDragLeaveEvent>
 #include <QList>

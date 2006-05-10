@@ -32,8 +32,8 @@
 #include <kdebug.h>
 #include <kstandarddirs.h>
 
-#include <qlayout.h>
-#include <qlabel.h>
+#include <QLayout>
+#include <QLabel>
 //Added by qt3to4:
 #include <QVBoxLayout>
 #include <QFrame>

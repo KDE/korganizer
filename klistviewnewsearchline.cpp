@@ -31,7 +31,7 @@
 #include <qapplication.h>
 #include <qtimer.h>
 #include <q3popupmenu.h>
-#include <qlabel.h>
+#include <QLabel>
 #include <q3header.h>
 //Added by qt3to4:
 #include <QContextMenuEvent>

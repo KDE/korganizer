@@ -40,7 +40,7 @@
 #include <libkcal/calendarresources.h>
 #include <libkcal/icalformat.h>
 #include <libkcal/scheduler.h>
-#include <qstring.h>
+#include <QString>
 
 #include <kio/job.h>
 

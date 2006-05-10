@@ -25,8 +25,8 @@
 #define MAILSCHEDULER_H
 
 #include <QList>
-#include <qmap.h>
-#include <qstring.h>
+#include <QMap>
+#include <QString>
 
 #include <libkcal/imipscheduler.h>
 

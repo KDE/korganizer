@@ -24,7 +24,7 @@
 #define KOEDITORGENERAL_H
 
 #include <libkcal/alarm.h>
-#include <qlineedit.h>
+#include <QLineEdit>
 //Added by qt3to4:
 #include <QLabel>
 #include <QFocusEvent>

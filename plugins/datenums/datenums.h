@@ -19,7 +19,7 @@
 #ifndef KORG_DATENUMS_H
 #define KORG_DATENUMS_H
 
-#include <qstring.h>
+#include <QString>
 
 #include <calendar/calendardecoration.h>
 

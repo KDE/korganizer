@@ -25,7 +25,7 @@
 */
 
 #include <q3listview.h>
-#include <qlayout.h>
+#include <QLayout>
 #include <q3popupmenu.h>
 #include <qcursor.h>
 //Added by qt3to4:

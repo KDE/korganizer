@@ -59,10 +59,10 @@
 #include <kabc/stdaddressbook.h>
 #include <kabc/addressee.h>
 
-#include <qfile.h>
+#include <QFile>
 #include <qbuffer.h>
-#include <qregexp.h>
-#include <qdir.h>
+#include <QRegExp>
+#include <QDir>
 //Added by qt3to4:
 #include <QTimerEvent>
 #include <QTextStream>

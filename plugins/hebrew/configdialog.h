@@ -20,7 +20,7 @@
 #define CONFIGDIALOG_H
 
 #include <kdialogbase.h>
-#include <qcheckbox.h>
+#include <QCheckBox>
 
 /**
 @author Jonathan Singer

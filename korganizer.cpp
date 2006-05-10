@@ -76,9 +76,9 @@
 #include <qcursor.h>
 #include <qtimer.h>
 #include <q3vbox.h>
-#include <qfile.h>
-#include <qlabel.h>
-#include <qlayout.h>
+#include <QFile>
+#include <QLabel>
+#include <QLayout>
 #include <krecentfilesaction.h>
 #include <stdlib.h>
 

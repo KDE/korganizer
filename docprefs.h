@@ -25,7 +25,7 @@
 #ifndef DOCPREFS_H
 #define DOCPREFS_H
 
-#include <qstring.h>
+#include <QString>
 
 class KSimpleConfig;
 

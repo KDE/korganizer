@@ -24,18 +24,18 @@
 
 
 
-#include <qlabel.h>
+#include <QLabel>
 #include <q3frame.h>
-#include <qlayout.h>
+#include <QLayout>
 #ifndef KORG_NOSPLITTER
 #include <qsplitter.h>
 #endif
-#include <qfont.h>
+#include <QFont>
 #include <qfontmetrics.h>
 #include <q3popupmenu.h>
-#include <qtooltip.h>
+#include <QToolTip>
 #include <qpainter.h>
-#include <qpushbutton.h>
+#include <QPushButton>
 #include <qcursor.h>
 #include <qbitarray.h>
 //Added by qt3to4:

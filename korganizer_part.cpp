@@ -57,9 +57,9 @@
 #include <kparts/statusbarextension.h>
 
 #include <qapplication.h>
-#include <qfile.h>
+#include <QFile>
 #include <qtimer.h>
-#include <qlayout.h>
+#include <QLayout>
 //Added by qt3to4:
 #include <QVBoxLayout>
 

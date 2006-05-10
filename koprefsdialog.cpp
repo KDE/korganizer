@@ -23,20 +23,20 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include <qlayout.h>
-#include <qlabel.h>
+#include <QLayout>
+#include <QLabel>
 #include <q3buttongroup.h>
-#include <qlineedit.h>
+#include <QLineEdit>
 #include <qslider.h>
-#include <qfile.h>
-#include <qcombobox.h>
+#include <QFile>
+#include <QComboBox>
 
 
 #include <q3grid.h>
-#include <qspinbox.h>
-#include <qcheckbox.h>
+#include <QSpinBox>
+#include <QCheckBox>
 #include <qradiobutton.h>
-#include <qpushbutton.h>
+#include <QPushButton>
 #include <q3strlist.h>
 #include <q3listview.h>
 #include <qtabwidget.h>

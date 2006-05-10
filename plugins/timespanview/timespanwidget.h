@@ -24,7 +24,7 @@
 #ifndef TimeSpanWidget_H
 #define TimeSpanWidget_H
 
-#include <qwidget.h>
+#include <QWidget>
 //Added by qt3to4:
 
 namespace KCal {

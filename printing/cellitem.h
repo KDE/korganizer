@@ -24,7 +24,7 @@
 #ifndef KORG_CELLITEM_H
 #define KORG_CELLITEM_H
 
-#include <qstring.h>
+#include <QString>
 #include <QList>
 
 #include <kdepimmacros.h>

@@ -32,7 +32,7 @@
 #include <q3popupmenu.h>
 #include <qcursor.h>
 #include <qpainter.h>
-#include <qlabel.h>
+#include <QLabel>
 //Added by qt3to4:
 #include <QWheelEvent>
 #include <QPixmap>
