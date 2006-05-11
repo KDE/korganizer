@@ -359,7 +359,7 @@
           <item>
            <widget class="KUrlRequester" name="mSoundFile" >
             <property name="filter" >
-             <string>*.wav|Wav Files;*.mp3|MP3 files;*.*|All files</string>
+             <string>*.wav|Wav Files\n*.mp3|MP3 files\n*.*|All files</string>
             </property>
            </widget>
           </item>
