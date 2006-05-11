@@ -110,9 +110,9 @@ void KOWhatsNextView::updateView()
   }
   mText+="</h2>\n";
 
-  Event::List unsortedevents = calendar()->events( mStartDate, mEndDate, false );
-  Event::List events = Calendar::sortEvents( &unsortedevents, 
-                     EventSortStartDate, SortDirectionAscending );
+  Event::List events;
+  for ( QDate date = mStartDate; date <= mEndDate; date = date.addDays( 1 ) )
+    events += calendar()->events(date, EventSortStartDate, SortDirectionAscending);
 
   if (events.count() > 0) {
     mText += "<p></p>";
@@ -129,11 +129,11 @@ void KOWhatsNextView::updateView()
         appendEvent(ev);
       } else {
         // FIXME: This should actually be cleaned up. Libkcal should
-        // provide a method to return a list of all recurrences in a 
+        // provide a method to return a list of all recurrences in a
         // given time span.
         Recurrence *recur = ev->recurrence();
         int duration = ev->dtStart().secsTo( ev->dtEnd() );
-        QDateTime start = recur->getPreviousDateTime( 
+        QDateTime start = recur->getPreviousDateTime(
                                 QDateTime( mStartDate, QTime() ) );
         QDateTime end = start.addSecs( duration );
         if ( end.date() >= mStartDate ) {
@@ -270,13 +270,13 @@ void KOWhatsNextView::appendEvent( Incidence *ev, const QDateTime &start,
     if (ev->type()=="Event") {
       Event *event = static_cast<Event *>(ev);
       QDateTime starttime( start );
-      if ( !starttime.isValid() ) 
+      if ( !starttime.isValid() )
         starttime = event->dtStart();
       QDateTime endtime( end );
-      if ( !endtime.isValid() ) 
-        endtime = starttime.addSecs( 
+      if ( !endtime.isValid() )
+        endtime = starttime.addSecs(
                   event->dtStart().secsTo( event->dtEnd() ) );
-      
+
       if ( starttime.date().daysTo( endtime.date() ) >= 1 ) {
         mText += i18n("date from - to", "%1 - %2")
               .arg( KGlobal::locale()->formatDateTime( starttime ) )
@@ -307,7 +307,7 @@ void KOWhatsNextView::appendTodo( Incidence *ev )
   mText += "<li><a href=\"todo:" + ev->uid() + "\">";
   mText += ev->summary();
   mText += "</a>";
-  
+
   if ( ev->type()=="Todo" ) {
     Todo *todo = static_cast<Todo*>(ev);
     if ( todo->hasDueDate() ) {
