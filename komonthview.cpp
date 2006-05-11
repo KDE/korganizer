@@ -471,7 +471,7 @@ class MonthViewCell::CreateItemVisitor :
         else {
           text = KGlobal::locale()->formatTime(event->dtStart().time());
           dt.setTime( event->dtStart().time() );
-          text += " " + event->summary();
+          text += ' ' + event->summary();
         }
       }
 
@@ -502,7 +502,7 @@ class MonthViewCell::CreateItemVisitor :
       QDateTime dt( mDate );
       if ( todo->hasDueDate() && !todo->doesFloat() ) {
         text += KGlobal::locale()->formatTime( todo->dtDue().time() );
-        text += " ";
+        text += ' ';
         dt.setTime( todo->dtDue().time() );
       }
       text += todo->summary();
