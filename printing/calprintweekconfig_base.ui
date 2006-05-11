@@ -14,6 +14,9 @@
             <height>262</height>
         </rect>
     </property>
+    <property name="caption">
+        <string>CalPrintWeek_Base</string>
+    </property>
     <grid>
         <property name="name">
             <cstring>unnamed</cstring>
@@ -128,7 +131,7 @@
                     </property>
                     <property name="time">
                         <time>
-                            <hour>16</hour>
+                            <hour>18</hour>
                             <minute>0</minute>
                             <second>0</second>
                         </time>
@@ -275,6 +278,8 @@
         </widget>
     </grid>
 </widget>
+<customwidgets>
+</customwidgets>
 <tabstops>
     <tabstop>mFromDate</tabstop>
     <tabstop>mFromTime</tabstop>
