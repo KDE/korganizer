@@ -37,10 +37,9 @@
 #include "publishdialog.h"
 
 PublishDialog::PublishDialog( QWidget* parent, bool modal )
-#warning use proper KDE 4 constructor without name
-  : KDialogBase( parent, /* name*/"", modal,
-    i18n("Select Addresses"), Ok|Cancel|Help, Ok, true )
+  : KDialog( parent, i18n("Select Addresses"), Ok|Cancel|Help )
 {
+  setDefaultButton( Ok );
   QWidget *widget = new QWidget( this );
   widget->setObjectName( "PublishFreeBusy" );
   mUI.setupUi( widget );

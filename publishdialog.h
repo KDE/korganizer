@@ -33,7 +33,7 @@ using namespace KCal;
 
 class PublishDialog_base;
 
-class PublishDialog : public KDialogBase
+class PublishDialog : public KDialog
 {
     Q_OBJECT
   public:
