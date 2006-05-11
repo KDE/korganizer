@@ -31,9 +31,7 @@
 #include <QSpinBox>
 #include <QComboBox>
 #include <QCheckBox>
-#include <q3buttongroup.h>
 #include <QTextEdit>
-#include <q3widgetstack.h>
 
 #include <kurlrequester.h>
 #include <klocale.h>

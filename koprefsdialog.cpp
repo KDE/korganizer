@@ -25,7 +25,6 @@
 
 #include <QLayout>
 #include <QLabel>
-#include <q3buttongroup.h>
 #include <QLineEdit>
 #include <qslider.h>
 #include <QFile>
@@ -37,9 +36,9 @@
 #include <QCheckBox>
 #include <qradiobutton.h>
 #include <QPushButton>
-#include <q3strlist.h>
 #include <q3listview.h>
 #include <qtabwidget.h>
+#include <q3buttongroup.h>
 
 //Added by qt3to4:
 #include <QGridLayout>
@@ -73,8 +72,8 @@
 
 #include "koprefs.h"
 
+#include "ui_kogroupwareprefspage.h"
 #include "koprefsdialog.h"
-#include "kogroupwareprefspage.h"
 #include "ktimeedit.h"
 #include "koglobals.h"
 #include "stdcalendar.h"
@@ -968,11 +967,35 @@ extern "C"
 KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling( KInstance *inst, QWidget *parent )
   : KPrefsModule( KOPrefs::instance(), inst, parent )
 {
-  mGroupwarePage = new KOGroupwarePrefsPage( this );
-  connect( mGroupwarePage, SIGNAL( changed() ), SLOT( slotWidChanged() ) );
-  ( new QVBoxLayout( this ) )->addWidget( mGroupwarePage );
+  mGroupwarePage = new Ui::KOGroupwarePrefsPage();
+  QWidget *widget = new QWidget( this );
+  widget->setObjectName( "KOGrouparePrefsPage" );
+  
+  mGroupwarePage->setupUi( widget );
+  
+      // signals and slots connections
+  connect(mGroupwarePage->publishDays, SIGNAL(valueChanged(int)), SLOT(slotWidChanged()));
+  connect(mGroupwarePage->publishUrl, SIGNAL(textChanged(const QString&)), SLOT(slotWidChanged()));
+  connect(mGroupwarePage->publishUser, SIGNAL(textChanged(const QString&)), SLOT(slotWidChanged()));
+  connect(mGroupwarePage->publishPassword, SIGNAL(textChanged(const QString&)), SLOT(slotWidChanged()));
+  connect(mGroupwarePage->publishSavePassword, SIGNAL(toggled(bool)), SLOT(slotWidChanged()));
+  connect(mGroupwarePage->retrieveEnable, SIGNAL(toggled(bool)), SLOT(slotWidChanged()));
+  connect(mGroupwarePage->retrieveUser, SIGNAL(textChanged(const QString&)), SLOT(slotWidChanged()));
+  connect(mGroupwarePage->retrievePassword, SIGNAL(textChanged(const QString&)), SLOT(slotWidChanged()));
+  connect(mGroupwarePage->retrieveSavePassword, SIGNAL(toggled(bool)), SLOT(slotWidChanged()));
+  connect(mGroupwarePage->retrieveUrl, SIGNAL(textChanged(const QString&)), SLOT(slotWidChanged()));
+  connect(mGroupwarePage->publishDelay, SIGNAL(valueChanged(int)), SLOT(slotWidChanged()));
+  connect(mGroupwarePage->fullDomainRetrieval, SIGNAL(toggled(bool)), SLOT(slotWidChanged()));
+  connect(mGroupwarePage->publishEnable, SIGNAL(toggled(bool)), SLOT(slotWidChanged()));
+
+  ( new QVBoxLayout( this ) )->addWidget( widget );
 
   load();
+}
+
+KOPrefsDialogGroupwareScheduling::~KOPrefsDialogGroupwareScheduling() 
+{
+  delete mGroupwarePage;
 }
 
 void KOPrefsDialogGroupwareScheduling::usrReadConfig()

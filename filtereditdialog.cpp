@@ -26,10 +26,8 @@
 
 #include <QPushButton>
 #include <QCheckBox>
-#include <q3buttongroup.h>
 #include <QLineEdit>
-#include <qradiobutton.h>
-#include <q3listbox.h>
+#include <QRadioButton>
 
 #include <QList>
 

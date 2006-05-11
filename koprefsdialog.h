@@ -40,6 +40,10 @@ class QColor;
 class Q3ListView;
 class KInstance;
 
+namespace Ui {
+  class KOGroupwarePrefsPage;
+}
+
 class KDE_EXPORT KOPrefsDialogMain : public KPrefsModule
 {
     Q_OBJECT
@@ -110,13 +114,14 @@ class KDE_EXPORT KOPrefsDialogGroupwareScheduling : public KPrefsModule
     Q_OBJECT
   public:
     KOPrefsDialogGroupwareScheduling( KInstance *inst, QWidget *parent );
+    ~KOPrefsDialogGroupwareScheduling();
 
   protected:
     void usrReadConfig();
     void usrWriteConfig();
 
   private:
-    KOGroupwarePrefsPage* mGroupwarePage;
+    Ui::KOGroupwarePrefsPage *mGroupwarePage;
 };
 
 class KDE_EXPORT KOPrefsDialogPlugins : public KPrefsModule

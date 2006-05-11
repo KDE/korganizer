@@ -24,15 +24,13 @@
 
 #include <QToolTip>
 #include <QLayout>
-#include <q3vbox.h>
-#include <q3buttongroup.h>
-#include <q3widgetstack.h>
 #include <QSpinBox>
-#include <qdatetime.h>
+#include <QDateTime>
 #include <QLabel>
 #include <QCheckBox>
 #include <QComboBox>
 #include <QPushButton>
+#include <QGroupBox>
 
 //Added by qt3to4:
 #include <QGridLayout>
