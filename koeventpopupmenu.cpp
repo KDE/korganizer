@@ -22,7 +22,7 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include <qcursor.h>
+#include <QCursor>
 
 #include <klocale.h>
 #include <kdebug.h>

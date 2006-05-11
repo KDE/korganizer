@@ -23,14 +23,14 @@
 */
 
 #include <QLayout>
-#include <qradiobutton.h>
+#include <QRadioButton>
 #include <QCheckBox>
 #include <QLineEdit>
 
 
 #include <QPushButton>
 #include <q3filedialog.h>
-#include <qtextstream.h>
+#include <QTextStream>
 #include <QLabel>
 //Added by qt3to4:
 #include <QVBoxLayout>

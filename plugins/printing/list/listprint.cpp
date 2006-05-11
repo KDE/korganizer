@@ -35,7 +35,7 @@
 #include <kconfig.h> 
 #include <kdebug.h>
 
-#include <qbuttongroup.h>
+#include <QButtonGroup>
 
 #include "calprintlistconfig_base.h"
 

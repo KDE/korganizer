@@ -30,7 +30,7 @@
 #include <QCheckBox>
 
 #include <QToolTip>
-#include <qtoolbutton.h>
+#include <QToolButton>
 //Added by qt3to4:
 #include <QPixmap>
 #include <QGridLayout>

@@ -36,8 +36,8 @@
 *******************************************************************************/
 #include "templatemanagementdialog.h"
 
-#include <qstringlist.h>
-#include <qtimer.h>
+#include <QStringList>
+#include <QTimer>
 
 #include <kpushbutton.h>
 #include <kinputdialog.h>

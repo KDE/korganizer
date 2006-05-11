@@ -22,7 +22,7 @@
 #define ALARMCLIENTIFACE_H
 
 #include <dcopobject.h>
-#include <qstringlist.h>
+#include <QStringList>
 
 class AlarmClientIface : virtual public DCOPObject
 {

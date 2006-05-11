@@ -32,7 +32,7 @@
 
 #include <QLabel>
 #include <QLayout>
-#include <qradiobutton.h>
+#include <QRadioButton>
 #include <QGroupBox>
 
 //Added by qt3to4:

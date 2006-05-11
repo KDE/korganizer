@@ -26,7 +26,7 @@
 
 #include <libkcal/incidencebase.h>
 
-#include <qobject.h>
+#include <QObject>
 
 /**
   This class controls date navigation. All requests to move the views to another

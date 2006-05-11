@@ -25,7 +25,7 @@
 #ifndef KOVIEWMANAGER_H
 #define KOVIEWMANAGER_H
 
-#include <qobject.h>
+#include <QObject>
 
 class CalendarView;
 

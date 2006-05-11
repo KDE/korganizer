@@ -25,14 +25,14 @@
 
 #include <q3popupmenu.h>
 #include <QFont>
-#include <qfontmetrics.h>
+#include <QFontMetrics>
 #include <qnamespace.h>
 #include <q3hbox.h>
 #include <q3vbox.h>
 #include <QPushButton>
 #include <QToolTip>
-#include <qpainter.h>
-#include <qcursor.h>
+#include <QPainter>
+#include <QCursor>
 #include <q3listbox.h>
 #include <QLayout>
 #include <QLabel>

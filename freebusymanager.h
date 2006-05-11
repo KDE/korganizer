@@ -40,7 +40,7 @@
 #include <libkcal/icalformat.h>
 #include <libkcal/freebusycache.h>
 #include <QString>
-#include <qobject.h>
+#include <QObject>
 //Added by qt3to4:
 #include <QTimerEvent>
 #include <QByteArray>

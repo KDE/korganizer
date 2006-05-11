@@ -25,8 +25,8 @@
 #ifndef EVENTARCHIVER_H
 #define EVENTARCHIVER_H
 
-#include <qobject.h>
-#include <qdatetime.h>
+#include <QObject>
+#include <QDateTime>
 #include <libkcal/event.h>
 
 namespace KCal {

@@ -27,11 +27,11 @@
 #include <assert.h>
 
 #include <q3intdict.h>
-#include <qdatetime.h>
-#include <qapplication.h>
+#include <QDateTime>
+#include <QApplication>
 #include <q3popupmenu.h>
-#include <qcursor.h>
-#include <qpainter.h>
+#include <QCursor>
+#include <QPainter>
 #include <QLabel>
 //Added by qt3to4:
 #include <QWheelEvent>

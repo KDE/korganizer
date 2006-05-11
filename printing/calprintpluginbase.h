@@ -28,7 +28,7 @@
 
 #ifndef KORG_NOPRINTER
 
-#include <qdatetime.h>
+#include <QDateTime>
 #include <kprinter.h>
 #include <kdepimmacros.h>
 #include <libkcal/event.h>

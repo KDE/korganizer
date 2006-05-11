@@ -26,9 +26,9 @@
 
 #include <QToolTip>
 #include <q3frame.h>
-#include <qpixmap.h>
+#include <QPixmap>
 #include <QLayout>
-#include <qdatetime.h>
+#include <QDateTime>
 //Added by qt3to4:
 #include <QVBoxLayout>
 #include <QHBoxLayout>

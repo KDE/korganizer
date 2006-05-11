@@ -29,7 +29,7 @@
 
 #include <k3listviewsearchline.h>
 #include <ktoolbar.h>
-#include <qvector.h>
+#include <QVector>
 
 class KActionCollection;
 class KAction;

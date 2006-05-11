@@ -26,7 +26,7 @@
 #include <kguiitem.h>
 #include <kstdguiitem.h>
 #include <kmessagebox.h>
-#include <qmessagebox.h>
+#include <QMessageBox>
 #include <QString>
 
 

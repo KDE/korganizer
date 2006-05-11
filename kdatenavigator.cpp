@@ -26,7 +26,7 @@
 #include <QString>
 #include <qnamespace.h>
 #include <QLayout>
-#include <qtimer.h>
+#include <QTimer>
 #include <q3frame.h>
 #include <QLabel>
 //Added by qt3to4:

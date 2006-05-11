@@ -73,8 +73,8 @@
 #include <kstdguiitem.h>
 #include <kstatusbar.h>
 #include <kkeydialog.h>
-#include <qcursor.h>
-#include <qtimer.h>
+#include <QCursor>
+#include <QTimer>
 #include <q3vbox.h>
 #include <QFile>
 #include <QLabel>

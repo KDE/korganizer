@@ -36,7 +36,7 @@
 #include "datenavigatorcontainer.h"
 
 
-#include <qtimer.h>
+#include <QTimer>
 #include <QFrame>
 #include <QResizeEvent>
 

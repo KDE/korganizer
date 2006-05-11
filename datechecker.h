@@ -25,8 +25,8 @@
 #ifndef DATECHECKER_H
 #define DATECHECKER_H
 
-#include <qobject.h>
-#include <qdatetime.h>
+#include <QObject>
+#include <QDateTime>
 
 class QTimer;
 

@@ -24,9 +24,9 @@
 #ifndef _KOEDITORRECURRENCE_H
 #define _KOEDITORRECURRENCE_H
 
-#include <qdatetime.h>
+#include <QDateTime>
 #include <QWidget>
-#include <qbitarray.h>
+#include <QBitArray>
 //Added by qt3to4:
 #include <QBoxLayout>
 #include <QLabel>

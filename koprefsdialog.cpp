@@ -26,7 +26,7 @@
 #include <QLayout>
 #include <QLabel>
 #include <QLineEdit>
-#include <qslider.h>
+#include <QSlider>
 #include <QFile>
 #include <QComboBox>
 
@@ -34,10 +34,10 @@
 #include <q3grid.h>
 #include <QSpinBox>
 #include <QCheckBox>
-#include <qradiobutton.h>
+#include <QRadioButton>
 #include <QPushButton>
 #include <q3listview.h>
-#include <qtabwidget.h>
+#include <QTabWidget>
 #include <q3buttongroup.h>
 
 //Added by qt3to4:

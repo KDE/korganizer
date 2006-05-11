@@ -23,7 +23,7 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include <qtimer.h>
+#include <QTimer>
 
 #include <kdebug.h>
 #include <klocale.h>

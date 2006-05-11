@@ -25,8 +25,8 @@
 #ifndef KOEDITORGENERALJOURNAL_H
 #define KOEDITORGENERALJOURNAL_H
 
-#include <qobject.h>
-#include <qdatetime.h>
+#include <QObject>
+#include <QDateTime>
 //Added by qt3to4:
 #include <QLabel>
 #include <QBoxLayout>

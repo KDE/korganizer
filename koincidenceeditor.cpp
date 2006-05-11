@@ -24,10 +24,10 @@
 
 #include <QToolTip>
 #include <q3frame.h>
-#include <qpixmap.h>
+#include <QPixmap>
 #include <QLayout>
 #include <q3widgetstack.h>
-#include <qdatetime.h>
+#include <QDateTime>
 
 #include <QVBoxLayout>
 #include <QBoxLayout>

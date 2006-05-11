@@ -60,7 +60,7 @@
 #include <kabc/addressee.h>
 
 #include <QFile>
-#include <qbuffer.h>
+#include <QBuffer>
 #include <QRegExp>
 #include <QDir>
 //Added by qt3to4:

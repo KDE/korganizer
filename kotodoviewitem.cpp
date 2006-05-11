@@ -24,12 +24,12 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include <qpainter.h>
+#include <QPainter>
 
 #include <klocale.h>
 #include <kdebug.h>
-#include <qpainter.h>
-#include <qpixmap.h>
+#include <QPainter>
+#include <QPixmap>
 
 #include "kotodoviewitem.h"
 #include "kotodoview.h"

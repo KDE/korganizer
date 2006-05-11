@@ -90,17 +90,17 @@
 #include <krun.h>
 #include <kdirwatch.h>
 
-#include <qapplication.h>
-#include <qclipboard.h>
-#include <qcursor.h>
+#include <QApplication>
+#include <QClipboard>
+#include <QCursor>
 #include <q3multilineedit.h>
-#include <qtimer.h>
+#include <QTimer>
 #include <QStackedWidget>
 #include <QList>
 #include <QFile>
 #include <QLayout>
 #ifndef KORG_NOSPLITTER
-#include <qsplitter.h>
+#include <QSplitter>
 #endif
 
 

@@ -24,7 +24,7 @@
 #ifndef KORG_HISTORY_H
 #define KORG_HISTORY_H
 
-#include <qobject.h>
+#include <QObject>
 #include <QStack>
 #include <QList>
 

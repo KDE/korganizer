@@ -28,8 +28,8 @@
 
 #include <QMap>
 #include <q3listview.h>
-#include <qpalette.h>
-#include <qdatetime.h>
+#include <QPalette>
+#include <QDateTime>
 
 namespace KCal {
 class Todo;

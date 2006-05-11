@@ -24,7 +24,7 @@
 #ifndef KOWINDOWLIST_H
 #define KOWINDOWLIST_H
 
-#include <qobject.h>
+#include <QObject>
 #include <QList>
 
 namespace KOrg {

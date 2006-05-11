@@ -25,8 +25,8 @@
 #define KOEDITORFREEBUSY_H
 
 #include <QWidget>
-#include <qdatetime.h>
-#include <qtimer.h>
+#include <QDateTime>
+#include <QTimer>
 //Added by qt3to4:
 #include <QLabel>
 #include <QTimerEvent>

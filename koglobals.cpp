@@ -22,7 +22,7 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include <qapplication.h>
+#include <QApplication>
 //Added by qt3to4:
 #include <QPixmap>
 #include <QIcon>

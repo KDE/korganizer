@@ -26,7 +26,7 @@
 
 #include <QLabel>
 #include <QLayout>
-#include <qdatetime.h>
+#include <QDateTime>
 #include <QCheckBox>
 
 
@@ -52,7 +52,7 @@
 #include "archivedialog.h"
 #include "eventarchiver.h"
 #include <knuminput.h>
-#include <qradiobutton.h>
+#include <QRadioButton>
 #include <kvbox.h>
 #include "archivedialog.moc"
 

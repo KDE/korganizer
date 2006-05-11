@@ -23,7 +23,7 @@
 */
 
 #include <QMenu>
-#include <qcursor.h>
+#include <QCursor>
 
 #include <klocale.h>
 #include <kdebug.h>

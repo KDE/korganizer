@@ -23,7 +23,7 @@
 
 #ifndef KORG_NOPRINTER
 
-#include <qdatetime.h>
+#include <QDateTime>
 #include <QList>
 #include <kprinter.h>
 #include <calendar/plugin.h>

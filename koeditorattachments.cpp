@@ -55,9 +55,9 @@
 #include <k3urldrag.h>
 #include <kurlrequester.h>
 
-#include <qcursor.h>
+#include <QCursor>
 #include <QFile>
-#include <qfileinfo.h>
+#include <QFileInfo>
 #include <QLabel>
 #include <QLayout>
 #include <QLineEdit>
@@ -65,8 +65,8 @@
 #include <q3dragobject.h>
 #include <QRegExp>
 #include <QString>
-#include <qstringlist.h>
-#include <qstyle.h>
+#include <QStringList>
+#include <QStyle>
 
 //Added by qt3to4:
 #include <QPixmap>

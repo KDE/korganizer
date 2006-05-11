@@ -28,7 +28,7 @@
 
 #include "koincidenceeditor.h"
 
-#include <qdatetime.h>
+#include <QDateTime>
 
 class QDateTime;
 namespace KCal {

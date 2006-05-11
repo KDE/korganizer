@@ -28,12 +28,12 @@
 
 #include <QGroupBox>
 #include <QStackedWidget>
-#include <qdatetime.h>
+#include <QDateTime>
 #include <QListWidget>
 #include <QSpinBox>
 #include <QCheckBox>
 #include <q3widgetstack.h>
-#include <qradiobutton.h>
+#include <QRadioButton>
 #include <QLabel>
 #include <QPushButton>
 

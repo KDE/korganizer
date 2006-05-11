@@ -25,7 +25,7 @@
 #define TIMELINE_H
 
 #include <q3scrollview.h>
-#include <qdatetime.h>
+#include <QDateTime>
 
 class TimeLine : public Q3ScrollView
 {

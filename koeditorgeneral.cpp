@@ -30,7 +30,7 @@
 
 #include <q3buttongroup.h>
 #include <q3widgetstack.h>
-#include <qdatetime.h>
+#include <QDateTime>
 #include <QLineEdit>
 #include <QLabel>
 #include <QCheckBox>

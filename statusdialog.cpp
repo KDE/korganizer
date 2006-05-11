@@ -23,7 +23,7 @@
 */
 
 #include <QLabel>
-#include <qstringlist.h>
+#include <QStringList>
 #include <QLayout>
 #include <QComboBox>
 //Added by qt3to4:

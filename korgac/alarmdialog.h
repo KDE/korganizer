@@ -25,8 +25,8 @@
 //
 // Alarm dialog.
 //
-#include <qtimer.h>
-#include <qdatetime.h>
+#include <QTimer>
+#include <QDateTime>
 
 #include <kdialogbase.h>
 

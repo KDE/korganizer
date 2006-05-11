@@ -45,10 +45,10 @@
 #include <QLayout>
 #include <QLabel>
 #include <QComboBox>
-#include <qapplication.h>
+#include <QApplication>
 #include <QRegExp>
-#include <qsizepolicy.h>
-#include <qtimer.h>
+#include <QSizePolicy>
+#include <QTimer>
 
 using namespace KPIM;
 using namespace KCal;

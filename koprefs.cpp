@@ -31,7 +31,7 @@
 #include <QFont>
 #include <QColor>
 #include <QMap>
-#include <qstringlist.h>
+#include <QStringList>
 
 #include <kglobalsettings.h>
 #include <kglobal.h>

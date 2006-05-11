@@ -26,8 +26,8 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include <qevent.h>
-#include <qpainter.h>
+#include <QEvent>
+#include <QPainter>
 #include <QPixmap>
 #include <QApplication>
 #include <QDragLeaveEvent>
@@ -60,7 +60,7 @@
 #include "kodaymatrix.moc"
 
 #ifndef NODND
-#include <qcursor.h>
+#include <QCursor>
 #include <kmenu.h>
 #endif
 

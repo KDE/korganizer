@@ -37,7 +37,7 @@
 #ifndef TEMPLATEMANAGEMENTDIALOG_H
 #define TEMPLATEMANAGEMENTDIALOG_H
 
-#include <qstringlist.h>
+#include <QStringList>
 
 #include "ui_template_management_dialog_base.h"
 

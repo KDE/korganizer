@@ -27,7 +27,7 @@
 #include <q3listview.h>
 #include <QLayout>
 #include <q3popupmenu.h>
-#include <qcursor.h>
+#include <QCursor>
 //Added by qt3to4:
 #include <QPixmap>
 #include <QVBoxLayout>

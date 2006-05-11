@@ -38,7 +38,7 @@
 #include <kdebug.h>
 
 #include <q3groupbox.h>
-#include <qdatetime.h>
+#include <QDateTime>
 #include <QCheckBox>
 #include <QLabel>
 #include <QLayout>

@@ -28,7 +28,7 @@
 //
 
 #include <QMenu>
-#include <qdatetime.h>
+#include <QDateTime>
 
 namespace KCal { 
 class Incidence; 

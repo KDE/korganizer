@@ -40,7 +40,7 @@
 
 #include <QLayout>
 #include <QLabel>
-#include <qpainter.h>
+#include <QPainter>
 #include <QPushButton>
 #include <q3popupmenu.h>
 

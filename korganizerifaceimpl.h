@@ -34,7 +34,7 @@
 
 #include "korganizeriface.h"
 
-#include <qobject.h>
+#include <QObject>
 #include <kdepimmacros.h>
 
 class ActionManager;

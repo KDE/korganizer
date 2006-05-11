@@ -23,7 +23,7 @@
 */
 #include <time.h>
 
-#include <qdatetime.h>
+#include <QDateTime>
 
 #include <kaboutdata.h>
 #include <kapplication.h>

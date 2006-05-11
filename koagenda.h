@@ -25,8 +25,8 @@
 #define KOAGENDA_H
 
 #include <q3scrollview.h>
-#include <qtimer.h>
-#include <qpointer.h>
+#include <QTimer>
+#include <QPointer>
 //Added by qt3to4:
 #include <QWheelEvent>
 #include <QVector>

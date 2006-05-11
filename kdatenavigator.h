@@ -26,7 +26,7 @@
 #define KDATENAVIGATOR_H
 
 #include <q3frame.h>
-#include <qdatetime.h>
+#include <QDateTime>
 //Added by qt3to4:
 #include <QLabel>
 #include <QWheelEvent>

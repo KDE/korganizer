@@ -68,8 +68,8 @@
 #include <krecentfilesaction.h>
 #include <kstdaction.h>
 #include <k3widgetaction.h>
-#include <qapplication.h>
-#include <qtimer.h>
+#include <QApplication>
+#include <QTimer>
 #include <QLabel>
 
 

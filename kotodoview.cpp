@@ -27,9 +27,9 @@
 
 #include <QLayout>
 #include <q3header.h>
-#include <qcursor.h>
+#include <QCursor>
 #include <QLabel>
-#include <qtimer.h>
+#include <QTimer>
 
 #include <QStackedWidget>
 #include <QMenu>

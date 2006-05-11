@@ -28,7 +28,7 @@
 #ifndef KORG_ACTIONMANAGER_H
 #define KORG_ACTIONMANAGER_H
 
-#include <qobject.h>
+#include <QObject>
 #include <kurl.h>
 #include <korganizer/part.h>
 #include <kdepimmacros.h>

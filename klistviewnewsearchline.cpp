@@ -28,8 +28,8 @@
 #include <kdebug.h>
 #include <klocale.h>
 
-#include <qapplication.h>
-#include <qtimer.h>
+#include <QApplication>
+#include <QTimer>
 #include <q3popupmenu.h>
 #include <QLabel>
 #include <q3header.h>

@@ -25,7 +25,7 @@
 #ifndef KODIALOGMANAGER_H
 #define KODIALOGMANAGER_H
 
-#include <qobject.h>
+#include <QObject>
 #include <QList>
 
 namespace KCal{class CalFilter; }

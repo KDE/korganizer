@@ -28,16 +28,16 @@
 #include <q3frame.h>
 #include <QLayout>
 #ifndef KORG_NOSPLITTER
-#include <qsplitter.h>
+#include <QSplitter>
 #endif
 #include <QFont>
-#include <qfontmetrics.h>
+#include <QFontMetrics>
 #include <q3popupmenu.h>
 #include <QToolTip>
-#include <qpainter.h>
+#include <QPainter>
 #include <QPushButton>
-#include <qcursor.h>
-#include <qbitarray.h>
+#include <QCursor>
+#include <QBitArray>
 //Added by qt3to4:
 #include <QPaintEvent>
 #include <QGridLayout>

@@ -24,7 +24,7 @@
 */
 
 #include <q3dragobject.h>
-#include <qpainter.h>
+#include <QPainter>
 #include <QPixmap>
 #include <QPaintEvent>
 #include <QList>
