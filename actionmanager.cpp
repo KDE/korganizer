@@ -497,15 +497,12 @@ void ActionManager::initActions()
   //************************** SETTINGS MENU ********************************
 
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SIDEBAR ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  mDateNavigatorShowAction = new KToggleAction( i18n("Show Date Navigator"), 0,
-                      this, SLOT( toggleDateNavigator() ),
-                      mACollection, "show_datenavigator" );
-  mTodoViewShowAction = new KToggleAction ( i18n("Show To-do View"), 0,
-                      this, SLOT( toggleTodoView() ),
-                      mACollection, "show_todoview" );
-  mEventViewerShowAction = new KToggleAction ( i18n("Show Item Viewer"), 0,
-                      this, SLOT( toggleEventViewer() ),
-                      mACollection, "show_eventviewer" );
+  mDateNavigatorShowAction = new KToggleAction( i18n("Show Date Navigator"), mACollection, "show_datenavigator" );
+  connect(mDateNavigatorShowAction, SIGNAL(triggered(bool) ), SLOT( toggleDateNavigator() ));
+  mTodoViewShowAction = new KToggleAction( i18n("Show To-do View"), mACollection, "show_todoview" );
+  connect(mTodoViewShowAction, SIGNAL(triggered(bool) ), SLOT( toggleTodoView() ));
+  mEventViewerShowAction = new KToggleAction( i18n("Show Item Viewer"), mACollection, "show_eventviewer" );
+  connect(mEventViewerShowAction, SIGNAL(triggered(bool) ), SLOT( toggleEventViewer() ));
   KConfig *config = KOGlobals::self()->config();
   config->setGroup( "Settings" );
   mDateNavigatorShowAction->setChecked(
@@ -522,12 +519,10 @@ void ActionManager::initActions()
   toggleEventViewer();
 
   if ( !mMainWindow->hasDocument() ) {
-    mResourceViewShowAction = new KToggleAction ( i18n("Show Resource View"), 0,
-                        this, SLOT( toggleResourceView() ),
-                        mACollection, "show_resourceview" );
-    mResourceButtonsAction = new KToggleAction( i18n("Show &Resource Buttons"), 0,
-                        this, SLOT( toggleResourceButtons() ),
-                        mACollection, "show_resourcebuttons" );
+    mResourceViewShowAction = new KToggleAction( i18n("Show Resource View"), mACollection, "show_resourceview" );
+    connect(mResourceViewShowAction, SIGNAL(triggered(bool) ), SLOT( toggleResourceView() ));
+    mResourceButtonsAction = new KToggleAction( i18n("Show &Resource Buttons"), mACollection, "show_resourcebuttons" );
+    connect(mResourceButtonsAction, SIGNAL(triggered(bool) ), SLOT( toggleResourceButtons() ));
     mResourceViewShowAction->setChecked(
         config->readEntry( "ResourceViewVisible", true ) );
     mResourceButtonsAction->setChecked(
