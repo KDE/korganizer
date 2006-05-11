@@ -38,8 +38,9 @@ class KOrganizerIface : virtual public DCOPObject
     virtual bool deleteIncidence(const QString &uid) = 0;
     /**
       Delete the incidence with the given unique ID from the active calendar.
+      @param uid The incidence's unique ID.
       @param force If true, all recurrences and sub-todos (if applicable) will
-                   be deleted without prompting for confirmation.
+      be deleted without prompting for confirmation.
     */
     virtual bool deleteIncidence(const QString &uid, bool force) = 0;
     /**
@@ -58,7 +59,7 @@ class KOrganizerIface : virtual public DCOPObject
     */
     virtual bool showIncidence( const QString& uid ) = 0;
     /**
-      Show an incidence in context. This means showing the todo, agenda or 
+      Show an incidence in context. This means showing the todo, agenda or
       journal view (as appropriate) and scrolling it to show the incidence.
       @param uid Unique ID of the incidence to show.
     */
