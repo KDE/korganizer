@@ -26,6 +26,7 @@
 
 #include <klocale.h>
 #include "calprintpluginbase.h"
+#include "ui_calprintwhatsnextconfig_base.h"
 
 #ifndef KORG_NOPRINTER
 namespace KCal {
@@ -53,6 +54,14 @@ class CalPrintWhatsNext : public CalPrintPluginBase
 
   protected:
     bool mUseDateRange;
+};
+
+class CalPrintWhatsNextConfig : public QWidget, public Ui::CalPrintWhatsNextConfig_Base
+{
+public:
+  CalPrintWhatsNextConfig( QWidget *parent ) : QWidget( parent ) {
+    setupUi( this );
+  }
 };
 
 

@@ -1,455 +1,492 @@
-<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
-<class>CalPrintTodoConfig_Base</class>
-<comment>Configuration page for the print day mode.</comment>
-<author>Reinhold Kainhofer &lt;reinhold@kainhofer.com&gt;</author>
-<widget class="QWidget">
-    <property name="name">
-        <cstring>CalPrintTodoConfig_Base</cstring>
-    </property>
-    <property name="geometry">
-        <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>410</width>
-            <height>459</height>
-        </rect>
-    </property>
-    <grid>
-        <property name="name">
-            <cstring>unnamed</cstring>
+<ui version="4.0" >
+ <author>Reinhold Kainhofer &lt;reinhold@kainhofer.com></author>
+ <comment>Configuration page for the print day mode.</comment>
+ <exportmacro></exportmacro>
+ <class>CalPrintTodoConfig_Base</class>
+ <widget class="QWidget" name="CalPrintTodoConfig_Base" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>419</width>
+    <height>477</height>
+   </rect>
+  </property>
+  <layout class="QGridLayout" >
+   <property name="margin" >
+    <number>9</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item row="1" column="0" colspan="2" >
+    <widget class="Q3ButtonGroup" name="mPrintType" >
+     <property name="title" >
+      <string>To-dos to Print</string>
+     </property>
+     <layout class="QVBoxLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item>
+       <widget class="QRadioButton" name="mPrintAll" >
+        <property name="text" >
+         <string>Print &amp;all to-dos</string>
         </property>
-        <property name="margin">
-            <number>0</number>
+        <property name="checked" >
+         <bool>true</bool>
         </property>
-        <widget class="QLabel" row="0" column="0">
-            <property name="name">
-                <cstring>mTitleLabel</cstring>
-            </property>
-            <property name="text">
-                <string>&amp;Title:</string>
-            </property>
-            <property name="buddy" stdset="0">
-                <cstring>mTitle</cstring>
-            </property>
-        </widget>
-        <widget class="QLineEdit" row="0" column="1">
-            <property name="name">
-                <cstring>mTitle</cstring>
-            </property>
-            <property name="text">
-                <string>To-do List</string>
-            </property>
-        </widget>
-        <widget class="QButtonGroup" row="1" column="0" rowspan="1" colspan="2">
-            <property name="name">
-                <cstring>mPrintType</cstring>
-            </property>
-            <property name="title">
-                <string>To-dos to Print</string>
-            </property>
-            <vbox>
-                <property name="name">
-                    <cstring>unnamed</cstring>
-                </property>
-                <widget class="QRadioButton">
-                    <property name="name">
-                        <cstring>mPrintAll</cstring>
-                    </property>
-                    <property name="text">
-                        <string>Print &amp;all to-dos</string>
-                    </property>
-                    <property name="checked">
-                        <bool>true</bool>
-                    </property>
-                </widget>
-                <widget class="QRadioButton">
-                    <property name="name">
-                        <cstring>mPrintUnfinished</cstring>
-                    </property>
-                    <property name="enabled">
-                        <bool>true</bool>
-                    </property>
-                    <property name="text">
-                        <string>Print &amp;unfinished to-dos only</string>
-                    </property>
-                </widget>
-                <widget class="QRadioButton">
-                    <property name="name">
-                        <cstring>mPrintDueRange</cstring>
-                    </property>
-                    <property name="enabled">
-                        <bool>true</bool>
-                    </property>
-                    <property name="text">
-                        <string>Print only to-dos due in the &amp;range:</string>
-                    </property>
-                </widget>
-                <widget class="QLayoutWidget">
-                    <property name="name">
-                        <cstring>layout2</cstring>
-                    </property>
-                    <hbox>
-                        <property name="name">
-                            <cstring>unnamed</cstring>
-                        </property>
-                        <spacer>
-                            <property name="name">
-                                <cstring>spacer2</cstring>
-                            </property>
-                            <property name="orientation">
-                                <enum>Horizontal</enum>
-                            </property>
-                            <property name="sizeType">
-                                <enum>Fixed</enum>
-                            </property>
-                            <property name="sizeHint">
-                                <size>
-                                    <width>16</width>
-                                    <height>20</height>
-                                </size>
-                            </property>
-                        </spacer>
-                        <widget class="QLabel">
-                            <property name="name">
-                                <cstring>mFromDateLabel</cstring>
-                            </property>
-                            <property name="enabled">
-                                <bool>false</bool>
-                            </property>
-                            <property name="sizePolicy">
-                                <sizepolicy>
-                                    <hsizetype>4</hsizetype>
-                                    <vsizetype>5</vsizetype>
-                                    <horstretch>0</horstretch>
-                                    <verstretch>0</verstretch>
-                                </sizepolicy>
-                            </property>
-                            <property name="text">
-                                <string>&amp;Start date:</string>
-                            </property>
-                            <property name="buddy" stdset="0">
-                                <cstring>mFromDate</cstring>
-                            </property>
-                        </widget>
-                        <widget class="KDateEdit">
-                            <property name="name">
-                                <cstring>mFromDate</cstring>
-                            </property>
-                            <property name="enabled">
-                                <bool>false</bool>
-                            </property>
-                            <property name="focusPolicy">
-                                <enum>StrongFocus</enum>
-                            </property>
-                            <property name="whatsThis" stdset="0">
-                                <string>If you want to print more days at once, you can define a range of dates with this option and the &lt;i&gt;End date&lt;/i&gt; option. This option is used to define the start date.</string>
-                            </property>
-                        </widget>
-                        <widget class="QLabel">
-                            <property name="name">
-                                <cstring>mToDateLabel</cstring>
-                            </property>
-                            <property name="enabled">
-                                <bool>false</bool>
-                            </property>
-                            <property name="sizePolicy">
-                                <sizepolicy>
-                                    <hsizetype>4</hsizetype>
-                                    <vsizetype>5</vsizetype>
-                                    <horstretch>0</horstretch>
-                                    <verstretch>0</verstretch>
-                                </sizepolicy>
-                            </property>
-                            <property name="text">
-                                <string>&amp;End date:</string>
-                            </property>
-                            <property name="buddy" stdset="0">
-                                <cstring>mToDate</cstring>
-                            </property>
-                        </widget>
-                        <widget class="KDateEdit">
-                            <property name="name">
-                                <cstring>mToDate</cstring>
-                            </property>
-                            <property name="enabled">
-                                <bool>false</bool>
-                            </property>
-                            <property name="focusPolicy">
-                                <enum>StrongFocus</enum>
-                            </property>
-                            <property name="whatsThis" stdset="0">
-                                <string>If you want to print more days at once, you can define a range of dates with this option and the &lt;i&gt;Start date&lt;/i&gt; option. This option is used to define the end date.</string>
-                            </property>
-                        </widget>
-                        <spacer>
-                            <property name="name">
-                                <cstring>spacer1</cstring>
-                            </property>
-                            <property name="orientation">
-                                <enum>Horizontal</enum>
-                            </property>
-                            <property name="sizeType">
-                                <enum>Expanding</enum>
-                            </property>
-                            <property name="sizeHint">
-                                <size>
-                                    <width>16</width>
-                                    <height>21</height>
-                                </size>
-                            </property>
-                        </spacer>
-                    </hbox>
-                </widget>
-            </vbox>
-        </widget>
-        <widget class="QButtonGroup" row="2" column="0" rowspan="1" colspan="2">
-            <property name="name">
-                <cstring>includeInfoBox</cstring>
-            </property>
-            <property name="title">
-                <string>Include Information</string>
-            </property>
-            <property name="checkable">
-                <bool>false</bool>
-            </property>
-            <grid>
-                <property name="name">
-                    <cstring>unnamed</cstring>
-                </property>
-                <widget class="QCheckBox" row="1" column="0">
-                    <property name="name">
-                        <cstring>mPriority</cstring>
-                    </property>
-                    <property name="text">
-                        <string>&amp;Priority</string>
-                    </property>
-                    <property name="checked">
-                        <bool>true</bool>
-                    </property>
-                </widget>
-                <widget class="QCheckBox" row="0" column="0">
-                    <property name="name">
-                        <cstring>mDescription</cstring>
-                    </property>
-                    <property name="text">
-                        <string>&amp;Description</string>
-                    </property>
-                    <property name="checked">
-                        <bool>true</bool>
-                    </property>
-                </widget>
-                <widget class="QCheckBox" row="0" column="1">
-                    <property name="name">
-                        <cstring>mDueDate</cstring>
-                    </property>
-                    <property name="text">
-                        <string>Due date</string>
-                    </property>
-                    <property name="accel">
-                        <string></string>
-                    </property>
-                    <property name="checked">
-                        <bool>true</bool>
-                    </property>
-                </widget>
-                <widget class="QCheckBox" row="1" column="1">
-                    <property name="name">
-                        <cstring>mPercentComplete</cstring>
-                    </property>
-                    <property name="text">
-                        <string>Per&amp;centage completed</string>
-                    </property>
-                    <property name="checked">
-                        <bool>true</bool>
-                    </property>
-                </widget>
-            </grid>
-        </widget>
-        <spacer row="5" column="1">
-            <property name="name">
-                <cstring>spacer3</cstring>
-            </property>
-            <property name="orientation">
-                <enum>Vertical</enum>
-            </property>
-            <property name="sizeType">
-                <enum>Expanding</enum>
-            </property>
-            <property name="sizeHint">
-                <size>
-                    <width>20</width>
-                    <height>16</height>
-                </size>
-            </property>
-        </spacer>
-        <widget class="QGroupBox" row="3" column="0" rowspan="1" colspan="2">
-            <property name="name">
-                <cstring>sortingOptionsBox</cstring>
-            </property>
-            <property name="title">
-                <string>Sorting Options</string>
-            </property>
-            <grid>
-                <property name="name">
-                    <cstring>unnamed</cstring>
-                </property>
-                <widget class="QLabel" row="0" column="0">
-                    <property name="name">
-                        <cstring>sortFieldLabel</cstring>
-                    </property>
-                    <property name="enabled">
-                        <bool>true</bool>
-                    </property>
-                    <property name="text">
-                        <string>Sort field:</string>
-                    </property>
-                </widget>
-                <widget class="QComboBox" row="0" column="1">
-                    <property name="name">
-                        <cstring>mSortField</cstring>
-                    </property>
-                    <property name="enabled">
-                        <bool>true</bool>
-                    </property>
-                </widget>
-                <widget class="QLabel" row="1" column="0">
-                    <property name="name">
-                        <cstring>sortDirectionLabel</cstring>
-                    </property>
-                    <property name="enabled">
-                        <bool>true</bool>
-                    </property>
-                    <property name="text">
-                        <string>Sort direction:</string>
-                    </property>
-                </widget>
-                <widget class="QComboBox" row="1" column="1">
-                    <property name="name">
-                        <cstring>mSortDirection</cstring>
-                    </property>
-                    <property name="enabled">
-                        <bool>true</bool>
-                    </property>
-                </widget>
-                <spacer row="0" column="2">
-                    <property name="name">
-                        <cstring>spacer4</cstring>
-                    </property>
-                    <property name="orientation">
-                        <enum>Horizontal</enum>
-                    </property>
-                    <property name="sizeType">
-                        <enum>Expanding</enum>
-                    </property>
-                    <property name="sizeHint">
-                        <size>
-                            <width>121</width>
-                            <height>20</height>
-                        </size>
-                    </property>
-                </spacer>
-                <spacer row="1" column="2">
-                    <property name="name">
-                        <cstring>spacer5</cstring>
-                    </property>
-                    <property name="orientation">
-                        <enum>Horizontal</enum>
-                    </property>
-                    <property name="sizeType">
-                        <enum>Expanding</enum>
-                    </property>
-                    <property name="sizeHint">
-                        <size>
-                            <width>121</width>
-                            <height>20</height>
-                        </size>
-                    </property>
-                </spacer>
-            </grid>
-        </widget>
-        <widget class="QButtonGroup" row="4" column="0" rowspan="1" colspan="2">
-            <property name="name">
-                <cstring>otherOptionsBox</cstring>
-            </property>
-            <property name="title">
-                <string>Other Options</string>
-            </property>
-            <vbox>
-                <property name="name">
-                    <cstring>unnamed</cstring>
-                </property>
-                <widget class="QCheckBox">
-                    <property name="name">
-                        <cstring>mConnectSubTodos</cstring>
-                    </property>
-                    <property name="text">
-                        <string>Co&amp;nnect sub-to-dos with its parent</string>
-                    </property>
-                    <property name="checked">
-                        <bool>true</bool>
-                    </property>
-                </widget>
-                <widget class="QCheckBox">
-                    <property name="name">
-                        <cstring>mStrikeOutCompleted</cstring>
-                    </property>
-                    <property name="text">
-                        <string>Strike &amp;out completed to-do summaries</string>
-                    </property>
-                    <property name="checked">
-                        <bool>true</bool>
-                    </property>
-                </widget>
-            </vbox>
-        </widget>
-    </grid>
-</widget>
-<connections>
-    <connection>
-        <sender>mPrintDueRange</sender>
-        <signal>toggled(bool)</signal>
-        <receiver>mFromDateLabel</receiver>
-        <slot>setEnabled(bool)</slot>
-    </connection>
-    <connection>
-        <sender>mPrintDueRange</sender>
-        <signal>toggled(bool)</signal>
-        <receiver>mFromDate</receiver>
-        <slot>setEnabled(bool)</slot>
-    </connection>
-    <connection>
-        <sender>mPrintDueRange</sender>
-        <signal>toggled(bool)</signal>
-        <receiver>mToDate</receiver>
-        <slot>setEnabled(bool)</slot>
-    </connection>
-    <connection>
-        <sender>mPrintDueRange</sender>
-        <signal>toggled(bool)</signal>
-        <receiver>mToDateLabel</receiver>
-        <slot>setEnabled(bool)</slot>
-    </connection>
-</connections>
-<tabstops>
-    <tabstop>mTitle</tabstop>
-    <tabstop>mPrintAll</tabstop>
-    <tabstop>mFromDate</tabstop>
-    <tabstop>mToDate</tabstop>
-    <tabstop>mDescription</tabstop>
-    <tabstop>mDueDate</tabstop>
-    <tabstop>mPriority</tabstop>
-    <tabstop>mPercentComplete</tabstop>
-    <tabstop>mSortField</tabstop>
-    <tabstop>mSortDirection</tabstop>
-    <tabstop>mConnectSubTodos</tabstop>
-    <tabstop>mStrikeOutCompleted</tabstop>
-</tabstops>
-<includes>
-    <include location="global" impldecl="in declaration">kdateedit.h</include>
-</includes>
-<layoutdefaults spacing="6" margin="11"/>
-<includehints>
-    <includehint>libkdepim/kdateedit.h</includehint>
-    <includehint>libkdepim/kdateedit.h</includehint>
-</includehints>
-</UI>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="mPrintUnfinished" >
+        <property name="enabled" >
+         <bool>true</bool>
+        </property>
+        <property name="text" >
+         <string>Print &amp;unfinished to-dos only</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="mPrintDueRange" >
+        <property name="enabled" >
+         <bool>true</bool>
+        </property>
+        <property name="text" >
+         <string>Print only to-dos due in the &amp;range:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
+        </property>
+        <property name="spacing" >
+         <number>6</number>
+        </property>
+        <item>
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType" >
+           <enum>QSizePolicy::Fixed</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>16</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QLabel" name="mFromDateLabel" >
+          <property name="enabled" >
+           <bool>false</bool>
+          </property>
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>4</hsizetype>
+            <vsizetype>5</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text" >
+           <string>&amp;Start date:</string>
+          </property>
+          <property name="buddy" >
+           <cstring>mFromDate</cstring>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="KDateEdit" name="mFromDate" >
+          <property name="enabled" >
+           <bool>false</bool>
+          </property>
+          <property name="font" >
+           <font>
+            <family>Sans Serif</family>
+            <pointsize>9</pointsize>
+            <weight>50</weight>
+            <italic>false</italic>
+            <bold>false</bold>
+            <underline>false</underline>
+            <strikeout>false</strikeout>
+           </font>
+          </property>
+          <property name="focusPolicy" >
+           <enum>Qt::StrongFocus</enum>
+          </property>
+          <property name="whatsThis" >
+           <string>If you want to print more days at once, you can define a range of dates with this option and the &lt;i>End date&lt;/i> option. This option is used to define the start date.</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="mToDateLabel" >
+          <property name="enabled" >
+           <bool>false</bool>
+          </property>
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>4</hsizetype>
+            <vsizetype>5</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text" >
+           <string>&amp;End date:</string>
+          </property>
+          <property name="buddy" >
+           <cstring>mToDate</cstring>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="KDateEdit" name="mToDate" >
+          <property name="enabled" >
+           <bool>false</bool>
+          </property>
+          <property name="focusPolicy" >
+           <enum>Qt::StrongFocus</enum>
+          </property>
+          <property name="whatsThis" >
+           <string>If you want to print more days at once, you can define a range of dates with this option and the &lt;i>Start date&lt;/i> option. This option is used to define the end date.</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType" >
+           <enum>QSizePolicy::Expanding</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>128</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="4" column="0" colspan="2" >
+    <widget class="QGroupBox" name="otherOptionsBox" >
+     <property name="title" >
+      <string>Other Options</string>
+     </property>
+     <layout class="QVBoxLayout" >
+      <property name="margin" >
+       <number>11</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item>
+       <widget class="QCheckBox" name="mConnectSubTodos" >
+        <property name="text" >
+         <string>Co&amp;nnect sub-to-dos with its parent</string>
+        </property>
+        <property name="checked" >
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="mStrikeOutCompleted" >
+        <property name="text" >
+         <string>Strike &amp;out completed to-do summaries</string>
+        </property>
+        <property name="checked" >
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="2" >
+    <widget class="QGroupBox" name="sortingOptionsBox" >
+     <property name="title" >
+      <string>Sorting Options</string>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>11</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item row="0" column="0" >
+       <widget class="QLabel" name="sortFieldLabel" >
+        <property name="enabled" >
+         <bool>true</bool>
+        </property>
+        <property name="text" >
+         <string>Sort field:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" >
+       <widget class="QComboBox" name="mSortField" >
+        <property name="enabled" >
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" >
+       <widget class="QLabel" name="sortDirectionLabel" >
+        <property name="enabled" >
+         <bool>true</bool>
+        </property>
+        <property name="text" >
+         <string>Sort direction:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1" >
+       <widget class="QComboBox" name="mSortDirection" >
+        <property name="enabled" >
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2" >
+       <spacer>
+        <property name="orientation" >
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType" >
+         <enum>QSizePolicy::Expanding</enum>
+        </property>
+        <property name="sizeHint" >
+         <size>
+          <width>121</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="1" column="2" >
+       <spacer>
+        <property name="orientation" >
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType" >
+         <enum>QSizePolicy::Expanding</enum>
+        </property>
+        <property name="sizeHint" >
+         <size>
+          <width>121</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="5" column="1" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>20</width>
+       <height>16</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="2" column="0" colspan="2" >
+    <widget class="QGroupBox" name="includeInfoBox" >
+     <property name="title" >
+      <string>Include Information</string>
+     </property>
+     <property name="checkable" >
+      <bool>false</bool>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>11</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item row="1" column="0" >
+       <widget class="QCheckBox" name="mPriority" >
+        <property name="text" >
+         <string>&amp;Priority</string>
+        </property>
+        <property name="checked" >
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" >
+       <widget class="QCheckBox" name="mDescription" >
+        <property name="text" >
+         <string>&amp;Description</string>
+        </property>
+        <property name="checked" >
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" >
+       <widget class="QCheckBox" name="mDueDate" >
+        <property name="text" >
+         <string>Due date</string>
+        </property>
+        <property name="shortcut" >
+         <string/>
+        </property>
+        <property name="checked" >
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1" >
+       <widget class="QCheckBox" name="mPercentComplete" >
+        <property name="text" >
+         <string>Per&amp;centage completed</string>
+        </property>
+        <property name="checked" >
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="0" column="1" >
+    <widget class="QLineEdit" name="mTitle" >
+     <property name="text" >
+      <string>To-do List</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" >
+    <widget class="QLabel" name="mTitleLabel" >
+     <property name="text" >
+      <string>&amp;Title:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>mTitle</cstring>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11" />
+ <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+ <customwidgets>
+  <customwidget>
+   <class>KDateEdit</class>
+   <extends>QComboBox</extends>
+   <header>kdateedit.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>mTitle</tabstop>
+  <tabstop>mPrintAll</tabstop>
+  <tabstop>mFromDate</tabstop>
+  <tabstop>mToDate</tabstop>
+  <tabstop>mDescription</tabstop>
+  <tabstop>mDueDate</tabstop>
+  <tabstop>mPriority</tabstop>
+  <tabstop>mPercentComplete</tabstop>
+  <tabstop>mSortField</tabstop>
+  <tabstop>mSortDirection</tabstop>
+  <tabstop>mConnectSubTodos</tabstop>
+  <tabstop>mStrikeOutCompleted</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>mPrintDueRange</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>mFromDateLabel</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>209</x>
+     <y>132</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>76</x>
+     <y>159</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>mPrintDueRange</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>mToDate</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>143</x>
+     <y>136</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>279</x>
+     <y>156</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>mPrintDueRange</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>mToDateLabel</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>231</x>
+     <y>134</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>229</x>
+     <y>166</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>mPrintDueRange</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>mFromDate</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>173</x>
+     <y>136</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>151</x>
+     <y>168</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

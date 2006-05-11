@@ -1,198 +1,184 @@
-<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
-<class>CalPrintMonthConfig_Base</class>
-<comment>Configuration page for the print day mode.</comment>
-<author>Reinhold Kainhofer &lt;reinhold@kainhofer.com&gt;</author>
-<widget class="QWidget">
-    <property name="name">
-        <cstring>CalPrintMonth_Base</cstring>
-    </property>
-    <property name="geometry">
-        <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>401</width>
-            <height>173</height>
-        </rect>
-    </property>
-    <grid>
-        <property name="name">
-            <cstring>unnamed</cstring>
+<ui version="4.0" >
+ <author>Reinhold Kainhofer &lt;reinhold@kainhofer.com></author>
+ <comment>Configuration page for the print day mode.</comment>
+ <exportmacro></exportmacro>
+ <class>CalPrintMonthConfig_Base</class>
+ <widget class="QWidget" name="CalPrintMonthConfig_Base" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>419</width>
+    <height>200</height>
+   </rect>
+  </property>
+  <layout class="QVBoxLayout" >
+   <property name="margin" >
+    <number>9</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item>
+    <widget class="QGroupBox" name="mDateRangeGroup" >
+     <property name="title" >
+      <string>Date &amp;&amp; Time Range</string>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item row="0" column="1" >
+       <widget class="KDateEdit" name="mFromDate" >
+        <property name="minimumSize" >
+         <size>
+          <width>50</width>
+          <height>0</height>
+         </size>
         </property>
-        <property name="margin">
-            <number>0</number>
+        <property name="focusPolicy" >
+         <enum>Qt::StrongFocus</enum>
         </property>
-        <spacer row="5" column="0">
-            <property name="name">
-                <cstring>spacer2</cstring>
-            </property>
-            <property name="orientation">
-                <enum>Vertical</enum>
-            </property>
-            <property name="sizeType">
-                <enum>Expanding</enum>
-            </property>
-            <property name="sizeHint">
-                <size>
-                    <width>21</width>
-                    <height>20</height>
-                </size>
-            </property>
-        </spacer>
-        <widget class="QGroupBox" row="0" column="0">
-            <property name="name">
-                <cstring>mDateRangeGroup</cstring>
-            </property>
-            <property name="title">
-                <string>Date &amp;&amp; Time Range</string>
-            </property>
-            <grid>
-                <property name="name">
-                    <cstring>unnamed</cstring>
-                </property>
-                <spacer row="0" column="4">
-                    <property name="name">
-                        <cstring>spacer1</cstring>
-                    </property>
-                    <property name="orientation">
-                        <enum>Horizontal</enum>
-                    </property>
-                    <property name="sizeType">
-                        <enum>Expanding</enum>
-                    </property>
-                    <property name="sizeHint">
-                        <size>
-                            <width>17</width>
-                            <height>21</height>
-                        </size>
-                    </property>
-                </spacer>
-                <widget class="QLabel" row="0" column="2">
-                    <property name="name">
-                        <cstring>mToDateLabel</cstring>
-                    </property>
-                    <property name="text">
-                        <string>&amp;End month:</string>
-                    </property>
-                    <property name="buddy" stdset="0">
-                        <cstring>mToDate</cstring>
-                    </property>
-                    <property name="whatsThis" stdset="0">
-                        <string>When you want to print more months at once, you can define a month range. This option defines the last month to be printed. Use the option &lt;i&gt;Start month&lt;/i&gt; to define the first month in this range.</string>
-                    </property>
-                </widget>
-                <widget class="QLabel" row="0" column="0">
-                    <property name="name">
-                        <cstring>mFromDateLabel</cstring>
-                    </property>
-                    <property name="text">
-                        <string>&amp;Start month:</string>
-                    </property>
-                    <property name="buddy" stdset="0">
-                        <cstring>mFromDate</cstring>
-                    </property>
-                    <property name="whatsThis" stdset="0">
-                        <string>When you want to print more months at once, you can define a month range. This option defines the first month to be printed. Use the option &lt;i&gt;End month&lt;/i&gt; to define the last month in this range.</string>
-                    </property>
-                </widget>
-                <widget class="KDateEdit" row="0" column="3">
-                    <property name="name">
-                        <cstring>mToDate</cstring>
-                    </property>
-                    <property name="minimumSize">
-                        <size>
-                            <width>50</width>
-                            <height>0</height>
-                        </size>
-                    </property>
-                    <property name="focusPolicy">
-                        <enum>StrongFocus</enum>
-                    </property>
-                    <property name="whatsThis" stdset="0">
-                        <string>When you want to print more months at once, you can define a month range. This option defines the last month to be printed. Use the option &lt;i&gt;Start month&lt;/i&gt; to define the first month in this range.</string>
-                    </property>
-                </widget>
-                <widget class="KDateEdit" row="0" column="1">
-                    <property name="name">
-                        <cstring>mFromDate</cstring>
-                    </property>
-                    <property name="minimumSize">
-                        <size>
-                            <width>50</width>
-                            <height>0</height>
-                        </size>
-                    </property>
-                    <property name="focusPolicy">
-                        <enum>StrongFocus</enum>
-                    </property>
-                    <property name="whatsThis" stdset="0">
-                        <string>When you want to print more months at once, you can define a month range. This option defines the first month to be printed.</string>
-                    </property>
-                </widget>
-            </grid>
-        </widget>
-        <widget class="QCheckBox" row="4" column="0">
-            <property name="name">
-                <cstring>mIncludeTodos</cstring>
-            </property>
-            <property name="enabled">
-                <bool>false</bool>
-            </property>
-            <property name="text">
-                <string>Include to-&amp;dos that are due on the printed day(s)</string>
-            </property>
-            <property name="whatsThis" stdset="0">
-                <string>Check this option if you want to have to-dos on the print, placed by their due date.</string>
-            </property>
-        </widget>
-        <widget class="QCheckBox" row="1" column="0">
-            <property name="name">
-                <cstring>mWeekNumbers</cstring>
-            </property>
-            <property name="text">
-                <string>Print week &amp;numbers</string>
-            </property>
-            <property name="whatsThis" stdset="0">
-                <string>Enable this to print week numbers at the left of each row.</string>
-            </property>
-        </widget>
-        <widget class="QCheckBox" row="2" column="0">
-            <property name="name">
-                <cstring>mRecurDaily</cstring>
-            </property>
-            <property name="text">
-                <string>Print daily re&amp;curring to-dos and events</string>
-            </property>
-            <property name="whatsThis" stdset="0">
-                <string>With this option it is possible to leave out the daily recurring to-dos and events in the print. They take a lot of space and make the month view needlessly complicated.</string>
-            </property>
-        </widget>
-        <widget class="QCheckBox" row="3" column="0">
-            <property name="name">
-                <cstring>mRecurWeekly</cstring>
-            </property>
-            <property name="text">
-                <string>Print weekl&amp;y recurring to-dos and events</string>
-            </property>
-            <property name="whatsThis" stdset="0">
-                <string>Similar to "Print daily recurring to-dos and events". Weekly to-dos and events will be omitted when making a print of the selected month.</string>
-            </property>
-        </widget>
-    </grid>
-</widget>
-<tabstops>
-    <tabstop>mFromDate</tabstop>
-    <tabstop>mToDate</tabstop>
-    <tabstop>mWeekNumbers</tabstop>
-    <tabstop>mRecurDaily</tabstop>
-    <tabstop>mRecurWeekly</tabstop>
-    <tabstop>mIncludeTodos</tabstop>
-</tabstops>
-<includes>
-    <include location="global" impldecl="in declaration">kdateedit.h</include>
-</includes>
-<layoutdefaults spacing="6" margin="11"/>
-<includehints>
-    <includehint>libkdepim/kdateedit.h</includehint>
-    <includehint>libkdepim/kdateedit.h</includehint>
-</includehints>
-</UI>
+        <property name="whatsThis" >
+         <string>When you want to print more months at once, you can define a month range. This option defines the first month to be printed.</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3" >
+       <widget class="KDateEdit" name="mToDate" >
+        <property name="minimumSize" >
+         <size>
+          <width>50</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="focusPolicy" >
+         <enum>Qt::StrongFocus</enum>
+        </property>
+        <property name="whatsThis" >
+         <string>When you want to print more months at once, you can define a month range. This option defines the last month to be printed. Use the option &lt;i>Start month&lt;/i> to define the first month in this range.</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" >
+       <widget class="QLabel" name="mFromDateLabel" >
+        <property name="whatsThis" >
+         <string>When you want to print more months at once, you can define a month range. This option defines the first month to be printed. Use the option &lt;i>End month&lt;/i> to define the last month in this range.</string>
+        </property>
+        <property name="text" >
+         <string>&amp;Start month:</string>
+        </property>
+        <property name="buddy" >
+         <cstring>mFromDate</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2" >
+       <widget class="QLabel" name="mToDateLabel" >
+        <property name="whatsThis" >
+         <string>When you want to print more months at once, you can define a month range. This option defines the last month to be printed. Use the option &lt;i>Start month&lt;/i> to define the first month in this range.</string>
+        </property>
+        <property name="text" >
+         <string>&amp;End month:</string>
+        </property>
+        <property name="buddy" >
+         <cstring>mToDate</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="4" >
+       <spacer>
+        <property name="orientation" >
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="mWeekNumbers" >
+     <property name="whatsThis" >
+      <string>Enable this to print week numbers at the left of each row.</string>
+     </property>
+     <property name="text" >
+      <string>Print week &amp;numbers</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="mRecurDaily" >
+     <property name="whatsThis" >
+      <string>With this option it is possible to leave out the daily recurring to-dos and events in the print. They take a lot of space and make the month view needlessly complicated.</string>
+     </property>
+     <property name="text" >
+      <string>Print daily re&amp;curring to-dos and events</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="mRecurWeekly" >
+     <property name="whatsThis" >
+      <string>Similar to "Print daily recurring to-dos and events". Weekly to-dos and events will be omitted when making a print of the selected month.</string>
+     </property>
+     <property name="text" >
+      <string>Print weekl&amp;y recurring to-dos and events</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="mIncludeTodos" >
+     <property name="enabled" >
+      <bool>false</bool>
+     </property>
+     <property name="whatsThis" >
+      <string>Check this option if you want to have to-dos on the print, placed by their due date.</string>
+     </property>
+     <property name="text" >
+      <string>Include to-&amp;dos that are due on the printed day(s)</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>401</width>
+       <height>16</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11" />
+ <pixmapfunction></pixmapfunction>
+ <customwidgets>
+  <customwidget>
+   <class>KDateEdit</class>
+   <extends>QComboBox</extends>
+   <header>kdateedit.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>mFromDate</tabstop>
+  <tabstop>mToDate</tabstop>
+  <tabstop>mWeekNumbers</tabstop>
+  <tabstop>mRecurDaily</tabstop>
+  <tabstop>mRecurWeekly</tabstop>
+  <tabstop>mIncludeTodos</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

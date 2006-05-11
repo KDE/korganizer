@@ -27,7 +27,7 @@ set(korg_stdprinting_LIB_SRCS
 
 kde4_automoc(${korg_stdprinting_LIB_SRCS})
 
-kde4_add_ui3_files(korg_stdprinting_LIB_SRCS 
+kde4_add_ui_files(korg_stdprinting_LIB_SRCS 
    calprintdayconfig_base.ui 
    calprintmonthconfig_base.ui 
    calprinttodoconfig_base.ui 

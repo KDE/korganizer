@@ -29,6 +29,11 @@
 #include <klocale.h>
 #include "calprintpluginbase.h"
 
+#include "ui_calprintdayconfig_base.h"
+#include "ui_calprintweekconfig_base.h"
+#include "ui_calprintmonthconfig_base.h"
+#include "ui_calprinttodoconfig_base.h"
+
 #ifndef KORG_NOPRINTER
 namespace KCal {
 class Calendar;
@@ -150,6 +155,40 @@ class CalPrintTodos : public CalPrintPluginBase
     bool mSortField;
     bool mSortDirection;
 };
+
+
+class CalPrintDayConfig : public QWidget, public Ui::CalPrintDayConfig_Base
+{
+public:
+  CalPrintDayConfig( QWidget *parent ) : QWidget( parent ) {
+    setupUi( this );
+  }
+};
+
+class CalPrintWeekConfig : public QWidget, public Ui::CalPrintWeekConfig_Base
+{
+public:
+  CalPrintWeekConfig( QWidget *parent ) : QWidget( parent ) {
+    setupUi( this );
+  }
+};
+
+class CalPrintMonthConfig : public QWidget, public Ui::CalPrintMonthConfig_Base
+{
+public:
+  CalPrintMonthConfig( QWidget *parent ) : QWidget( parent ) {
+    setupUi( this );
+  }
+};
+
+class CalPrintTodoConfig : public QWidget, public Ui::CalPrintTodoConfig_Base
+{
+public:
+  CalPrintTodoConfig( QWidget *parent ) : QWidget( parent ) {
+    setupUi( this );
+  }
+};
+
 
 #endif
 #endif

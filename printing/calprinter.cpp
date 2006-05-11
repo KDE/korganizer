@@ -178,11 +178,12 @@ void CalPrinter::updateConfig()
 
 CalPrintDialog::CalPrintDialog( KOrg::PrintPlugin::List plugins, KPrinter *p,
                                 QWidget *parent )
-// TODO_QT4: Use constructor without *name=0 param
-  : KDialogBase( parent, /*name*/0, /*modal*/true, i18n("Print"), Ok | Cancel ),
+  : KDialog( parent, i18n("Print"), Ok | Cancel ),
     mPrinter( p ), mPrintPlugins( plugins )
 {
-  KVBox *page = makeVBoxMainWidget();
+  KVBox *page = new KVBox( this );
+  page->setSpacing( spacingHint() );
+  setMainWidget( page );
 
   QSplitter *splitter = new QSplitter( page );
   splitter->setOrientation( Qt::Horizontal );
@@ -218,6 +219,7 @@ CalPrintDialog::CalPrintDialog( KOrg::PrintPlugin::List plugins, KPrinter *p,
 
   // signals and slots connections
   connect( mTypeGroup, SIGNAL( buttonClicked( int ) ), SLOT( setPrintType( int ) ) );
+  connect( this, SIGNAL( okClicked() ), SLOT( slotOk() ) );
 
   // buddies
   orientationLabel->setBuddy( mOrientationSelection );
@@ -245,7 +247,7 @@ CalPrintDialog::~CalPrintDialog()
 
 void CalPrintDialog::setPreview(bool preview)
 {
-  setButtonOK( preview ? i18n("&Preview") : KStdGuiItem::print() );
+  setButtonGuiItem( KDialog::Ok, preview ? i18n("&Preview") : KStdGuiItem::print() );
 }
 
 void CalPrintDialog::setPrintType( int i )
@@ -273,8 +275,6 @@ void CalPrintDialog::slotOk()
   for ( ; it != mPrintPlugins.end(); ++it ) {
     (*it)->readSettingsWidget();
   }
-
-  KDialogBase::slotOk();
 }
 
 #endif

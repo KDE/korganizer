@@ -36,7 +36,6 @@
 
 #include <QButtonGroup>
 
-#include "calprintjournalconfig_base.h"
 
 
 class JournalPrintFactory : public KOrg::PrintPluginFactory {
@@ -53,13 +52,13 @@ K_EXPORT_COMPONENT_FACTORY( libkorg_journalprint, JournalPrintFactory )
 
 QWidget *CalPrintJournal::createConfigWidget( QWidget *w )
 {
-  return new CalPrintJournalConfig_Base( w );
+  return new CalPrintJournalConfig( w );
 }
 
 void CalPrintJournal::readSettingsWidget()
 {
-  CalPrintJournalConfig_Base *cfg =
-      dynamic_cast<CalPrintJournalConfig_Base*>( mConfigWidget );
+  CalPrintJournalConfig *cfg =
+      dynamic_cast<CalPrintJournalConfig*>( mConfigWidget );
   if ( cfg ) {
     mFromDate = cfg->mFromDate->date();
     mToDate = cfg->mToDate->date();
@@ -69,8 +68,8 @@ void CalPrintJournal::readSettingsWidget()
 
 void CalPrintJournal::setSettingsWidget()
 {
-  CalPrintJournalConfig_Base *cfg =
-      dynamic_cast<CalPrintJournalConfig_Base*>( mConfigWidget );
+  CalPrintJournalConfig *cfg =
+      dynamic_cast<CalPrintJournalConfig*>( mConfigWidget );
   if ( cfg ) {
     cfg->mFromDate->setDate( mFromDate );
     cfg->mToDate->setDate( mToDate );
@@ -100,8 +99,8 @@ void CalPrintJournal::saveConfig()
 void CalPrintJournal::setDateRange( const QDate& from, const QDate& to )
 {
   CalPrintPluginBase::setDateRange( from, to );
-  CalPrintJournalConfig_Base *cfg =
-      dynamic_cast<CalPrintJournalConfig_Base*>( mConfigWidget );
+  CalPrintJournalConfig *cfg =
+      dynamic_cast<CalPrintJournalConfig*>( mConfigWidget );
   if ( cfg ) {
     cfg->mFromDate->setDate( from );
     cfg->mToDate->setDate( to );

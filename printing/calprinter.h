@@ -109,7 +109,7 @@ class KDE_EXPORT CalPrinter : public QObject, public KOrg::CalPrinterBase
     CalPrintDialog *mPrintDialog;
 };
 
-class CalPrintDialog : public KDialogBase
+class CalPrintDialog : public KDialog
 {
     Q_OBJECT
   public:

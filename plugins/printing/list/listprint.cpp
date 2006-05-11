@@ -37,7 +37,6 @@
 
 #include <QButtonGroup>
 
-#include "calprintlistconfig_base.h"
 
 
 class ListPrintFactory : public KOrg::PrintPluginFactory {
@@ -55,13 +54,13 @@ K_EXPORT_COMPONENT_FACTORY( libkorg_listprint, ListPrintFactory )
 
 QWidget *CalPrintList::createConfigWidget( QWidget *w )
 {
-  return new CalPrintListConfig_Base( w );
+  return new CalPrintListConfig( w );
 }
 
 void CalPrintList::readSettingsWidget()
 {
-  CalPrintListConfig_Base *cfg =
-      dynamic_cast<CalPrintListConfig_Base*>( mConfigWidget );
+  CalPrintListConfig *cfg =
+      dynamic_cast<CalPrintListConfig*>( mConfigWidget );
   if ( cfg ) {
     mFromDate = cfg->mFromDate->date();
     mToDate = cfg->mToDate->date();
@@ -71,8 +70,8 @@ void CalPrintList::readSettingsWidget()
 
 void CalPrintList::setSettingsWidget()
 {
-  CalPrintListConfig_Base *cfg =
-      dynamic_cast<CalPrintListConfig_Base*>( mConfigWidget );
+  CalPrintListConfig *cfg =
+      dynamic_cast<CalPrintListConfig*>( mConfigWidget );
   if ( cfg ) {
     cfg->mFromDate->setDate( mFromDate );
     cfg->mToDate->setDate( mToDate );
@@ -102,8 +101,8 @@ void CalPrintList::saveConfig()
 void CalPrintList::setDateRange( const QDate& from, const QDate& to )
 {
   CalPrintPluginBase::setDateRange( from, to );
-  CalPrintListConfig_Base *cfg =
-      dynamic_cast<CalPrintListConfig_Base*>( mConfigWidget );
+  CalPrintListConfig *cfg =
+      dynamic_cast<CalPrintListConfig*>( mConfigWidget );
   if ( cfg ) {
     cfg->mFromDate->setDate( from );
     cfg->mToDate->setDate( to );

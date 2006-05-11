@@ -26,6 +26,7 @@
 
 #include <klocale.h>
 #include "calprintpluginbase.h"
+#include "ui_calprintjournalconfig_base.h"
 
 #ifndef KORG_NOPRINTER
 namespace KCal {
@@ -53,6 +54,14 @@ class CalPrintJournal : public CalPrintPluginBase
 
   protected:
     bool mUseDateRange;
+};
+
+class CalPrintJournalConfig : public QWidget, public Ui::CalPrintJournalConfig_Base
+{
+public:
+  CalPrintJournalConfig( QWidget *parent ) : QWidget( parent ) {
+    setupUi( this );
+  }
 };
 
 
