@@ -35,28 +35,29 @@
 
 #include "koprefs.h"
 #include "publishdialog.h"
-#include "publishdialog_base.h"
 
-PublishDialog::PublishDialog( QWidget* parent, const char* name,
-                              bool modal )
-  : KDialogBase( parent, name, modal,
+PublishDialog::PublishDialog( QWidget* parent, bool modal )
+#warning use proper KDE 4 constructor without name
+  : KDialogBase( parent, /* name*/"", modal,
     i18n("Select Addresses"), Ok|Cancel|Help, Ok, true )
 {
-  mWidget = new PublishDialog_base( this, "PublishFreeBusy" );
-  setMainWidget( mWidget );
-  mWidget->mNameLineEdit->setEnabled( false );
-  mWidget->mEmailLineEdit->setEnabled( false );
-  connect( mWidget->mAddressListView, SIGNAL( selectionChanged(Q3ListViewItem *) ),
+  QWidget *widget = new QWidget( this );
+  widget->setObjectName( "PublishFreeBusy" );
+  mUI.setupUi( widget );
+  setMainWidget( widget );
+  mUI.mNameLineEdit->setEnabled( false );
+  mUI.mEmailLineEdit->setEnabled( false );
+  connect( mUI.mAddressListView, SIGNAL( selectionChanged(Q3ListViewItem *) ),
            SLOT(updateInput()));
-  connect( mWidget->mNew, SIGNAL( clicked() ),
+  connect( mUI.mNew, SIGNAL( clicked() ),
            SLOT( addItem() ) );
-  connect( mWidget->mRemove, SIGNAL( clicked() ),
+  connect( mUI.mRemove, SIGNAL( clicked() ),
            SLOT( removeItem() ) );
-  connect( mWidget->mSelectAddressee, SIGNAL( clicked() ),
+  connect( mUI.mSelectAddressee, SIGNAL( clicked() ),
            SLOT( openAddressbook() ) );
-  connect( mWidget->mNameLineEdit, SIGNAL( textChanged(const QString&) ),
+  connect( mUI.mNameLineEdit, SIGNAL( textChanged(const QString&) ),
            SLOT( updateItem() ) );
-  connect( mWidget->mEmailLineEdit, SIGNAL( textChanged(const QString&) ),
+  connect( mUI.mEmailLineEdit, SIGNAL( textChanged(const QString&) ),
            SLOT( updateItem() ) );
 }
 
@@ -66,12 +67,12 @@ PublishDialog::~PublishDialog()
 
 void PublishDialog::addAttendee( Attendee *attendee )
 {
-  mWidget->mNameLineEdit->setEnabled( true );
-  mWidget->mEmailLineEdit->setEnabled( true );
-  Q3ListViewItem *item = new Q3ListViewItem( mWidget->mAddressListView );
+  mUI.mNameLineEdit->setEnabled( true );
+  mUI.mEmailLineEdit->setEnabled( true );
+  Q3ListViewItem *item = new Q3ListViewItem( mUI.mAddressListView );
   item->setText( 0, attendee->name() );
   item->setText( 1, attendee->email() );
-  mWidget->mAddressListView->insertItem( item );
+  mUI.mAddressListView->insertItem( item );
 }
 
 QString PublishDialog::addresses()
@@ -79,10 +80,10 @@ QString PublishDialog::addresses()
   QString to = "";
   Q3ListViewItem *item;
   int i, count;
-  count = mWidget->mAddressListView->childCount();
+  count = mUI.mAddressListView->childCount();
   for ( i=0; i<count; i++ ) {
-    item = mWidget->mAddressListView->firstChild();
-    mWidget->mAddressListView->takeItem( item );
+    item = mUI.mAddressListView->firstChild();
+    mUI.mAddressListView->takeItem( item );
     to += item->text( 1 );
     if ( i < count-1 ) {
       to += ", ";
@@ -93,31 +94,31 @@ QString PublishDialog::addresses()
 
 void PublishDialog::addItem()
 {
-  mWidget->mNameLineEdit->setEnabled( true );
-  mWidget->mEmailLineEdit->setEnabled( true );
-  Q3ListViewItem *item = new Q3ListViewItem( mWidget->mAddressListView );
-  mWidget->mAddressListView->insertItem( item );
-  mWidget->mAddressListView->setSelected( item, true );
-  mWidget->mNameLineEdit->setText( i18n("(EmptyName)") );
-  mWidget->mEmailLineEdit->setText( i18n("(EmptyEmail)") );
+  mUI.mNameLineEdit->setEnabled( true );
+  mUI.mEmailLineEdit->setEnabled( true );
+  Q3ListViewItem *item = new Q3ListViewItem( mUI.mAddressListView );
+  mUI.mAddressListView->insertItem( item );
+  mUI.mAddressListView->setSelected( item, true );
+  mUI.mNameLineEdit->setText( i18n("(EmptyName)") );
+  mUI.mEmailLineEdit->setText( i18n("(EmptyEmail)") );
 }
 
 void PublishDialog::removeItem()
 {
   Q3ListViewItem *item;
-  item = mWidget->mAddressListView->selectedItem();
+  item = mUI.mAddressListView->selectedItem();
   if (!item) return;
-  mWidget->mAddressListView->takeItem( item );
-  item = mWidget->mAddressListView->selectedItem();
+  mUI.mAddressListView->takeItem( item );
+  item = mUI.mAddressListView->selectedItem();
   if ( !item ) {
-    mWidget->mNameLineEdit->setText( "" );
-    mWidget->mEmailLineEdit->setText( "" );
-    mWidget->mNameLineEdit->setEnabled( false );
-    mWidget->mEmailLineEdit->setEnabled( false );
+    mUI.mNameLineEdit->setText( "" );
+    mUI.mEmailLineEdit->setText( "" );
+    mUI.mNameLineEdit->setEnabled( false );
+    mUI.mEmailLineEdit->setEnabled( false );
   }
-  if ( mWidget->mAddressListView->childCount() == 0 ) {
-    mWidget->mNameLineEdit->setEnabled( false );
-    mWidget->mEmailLineEdit->setEnabled( false );
+  if ( mUI.mAddressListView->childCount() == 0 ) {
+    mUI.mNameLineEdit->setEnabled( false );
+    mUI.mEmailLineEdit->setEnabled( false );
   }
 }
 
@@ -132,13 +133,13 @@ void PublishDialog::openAddressbook()
     int i;
     for ( i=0; i<addressList.size(); i++ ) {
       a = addressList[i];
-      mWidget->mNameLineEdit->setEnabled( true );
-      mWidget->mEmailLineEdit->setEnabled( true );
-      Q3ListViewItem *item = new Q3ListViewItem( mWidget->mAddressListView );
-      mWidget->mAddressListView->setSelected( item, true );
-      mWidget->mNameLineEdit->setText( a.realName() );
-      mWidget->mEmailLineEdit->setText( a.preferredEmail() );
-      mWidget->mAddressListView->insertItem( item );
+      mUI.mNameLineEdit->setEnabled( true );
+      mUI.mEmailLineEdit->setEnabled( true );
+      Q3ListViewItem *item = new Q3ListViewItem( mUI.mAddressListView );
+      mUI.mAddressListView->setSelected( item, true );
+      mUI.mNameLineEdit->setText( a.realName() );
+      mUI.mEmailLineEdit->setText( a.preferredEmail() );
+      mUI.mAddressListView->insertItem( item );
     }
   }
 #endif
@@ -147,22 +148,22 @@ void PublishDialog::openAddressbook()
 void PublishDialog::updateItem()
 {
   Q3ListViewItem *item;
-  item = mWidget->mAddressListView->selectedItem();
+  item = mUI.mAddressListView->selectedItem();
   if (!item) return;
-  item->setText( 0, mWidget->mNameLineEdit->text() );
-  item->setText( 1, mWidget->mEmailLineEdit->text() );
+  item->setText( 0, mUI.mNameLineEdit->text() );
+  item->setText( 1, mUI.mEmailLineEdit->text() );
 } 
 
 void PublishDialog::updateInput()
 {
   Q3ListViewItem *item;
-  item = mWidget->mAddressListView->selectedItem();
+  item = mUI.mAddressListView->selectedItem();
   if (!item) return;
-  mWidget->mNameLineEdit->setEnabled( true );
-  mWidget->mEmailLineEdit->setEnabled( true );
+  mUI.mNameLineEdit->setEnabled( true );
+  mUI.mEmailLineEdit->setEnabled( true );
   QString mail = item->text( 1 );
-  mWidget->mNameLineEdit->setText( item->text( 0 ) );
-  mWidget->mEmailLineEdit->setText( mail );
+  mUI.mNameLineEdit->setText( item->text( 0 ) );
+  mUI.mEmailLineEdit->setText( mail );
 }
 
 #include "publishdialog.moc"

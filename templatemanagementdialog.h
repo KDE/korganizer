@@ -39,7 +39,7 @@
 
 #include <qstringlist.h>
 
-#include "template_management_dialog_base.h"
+#include "ui_template_management_dialog_base.h"
 
 #include <kdialogbase.h>
 
@@ -67,7 +67,7 @@ Q_OBJECT
     void slotOk();
     
   private:
-    TemplateManagementDialog_base *m_base;
+    Ui::TemplateManagementDialog_base m_base;
     QStringList m_templates;
     QString m_newTemplate;
     bool m_changed;

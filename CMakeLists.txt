@@ -204,15 +204,13 @@ set(korganizer_LIB_SRCS
    templatemanagementdialog.cpp )
 
 kde4_add_ui3_files(korganizer_LIB_SRCS 
-   kogroupwareprefspage.ui 
-   publishdialog_base.ui 
-   template_management_dialog_base.ui )
+   kogroupwareprefspage.ui )
 
 kde4_automoc(${korganizer_LIB_SRCS})
 
 kde4_add_kcfg_files(korganizer_LIB_SRCS koprefs_base.kcfgc )
 
-kde4_add_ui_files(korganizer_LIB_SRCS filteredit_base.ui koeditoralarms_base.ui)
+kde4_add_ui_files(korganizer_LIB_SRCS filteredit_base.ui koeditoralarms_base.ui publishdialog_base.ui template_management_dialog_base.ui )
 
 kde4_add_dcop_skels(korganizer_LIB_SRCS korganizeriface.h kcalendariface.h )
 

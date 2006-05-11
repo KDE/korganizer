@@ -49,16 +49,18 @@ TemplateManagementDialog::TemplateManagementDialog(QWidget *parent, const QStrin
                         i18n("Manage Templates"), Ok|Cancel, Ok, true , i18n("Apply Template")),
       m_templates( templates ), m_newTemplate( QString() ), m_changed( false )
 {
-  m_base = new TemplateManagementDialog_base( this, "template_management_dialog_base" );
-  setMainWidget( m_base );
-  connect( m_base->m_buttonAdd, SIGNAL( clicked() ),
+  QWidget *widget = new QWidget( this );
+  widget->setObjectName( "template_management_dialog_base" );
+  m_base.setupUi( widget );
+  setMainWidget( widget );
+  connect( m_base.m_buttonAdd, SIGNAL( clicked() ),
            SLOT( slotAddTemplate() ) );
-  connect( m_base->m_buttonDelete, SIGNAL( clicked() ),
+  connect( m_base.m_buttonDelete, SIGNAL( clicked() ),
            SLOT( slotDeleteTemplate() ) );
-  m_base->m_listBox->insertStringList( m_templates );
-  connect( m_base->m_listBox, SIGNAL( selectionChanged( Q3ListBoxItem * ) ),
+  m_base.m_listBox->insertStringList( m_templates );
+  connect( m_base.m_listBox, SIGNAL( selectionChanged( Q3ListBoxItem * ) ),
            SLOT( slotUpdateDeleteButton( Q3ListBoxItem * ) ) );
-  connect( m_base->m_buttonApply, SIGNAL( clicked() ),
+  connect( m_base.m_buttonApply, SIGNAL( clicked() ),
            SLOT( slotApplyTemplate() ) );
 
 }
@@ -81,39 +83,39 @@ void TemplateManagementDialog::slotAddTemplate()
   }
   if ( !duplicate ) {
     m_templates.append( newTemplate );
-    m_base->m_listBox->clear();
-    m_base->m_listBox->insertStringList( m_templates );
+    m_base.m_listBox->clear();
+    m_base.m_listBox->insertStringList( m_templates );
   }
   m_newTemplate = newTemplate;
   m_changed = true;
   // From this point on we need to keep the original event around until the user has
   // closed the dialog, applying a template would make little sense
-  m_base->m_buttonApply->setEnabled( false );
+  m_base.m_buttonApply->setEnabled( false );
   // neither does adding it again
-  m_base->m_buttonAdd->setEnabled( false );
+  m_base.m_buttonAdd->setEnabled( false );
 }
 
 void TemplateManagementDialog::slotDeleteTemplate()
 {
-  Q3ListBoxItem *const item = m_base->m_listBox->selectedItem();
+  Q3ListBoxItem *const item = m_base.m_listBox->selectedItem();
   if ( !item ) return; // can't happen (TM)
-  int current = m_base->m_listBox->index(item);
+  int current = m_base.m_listBox->index(item);
   m_templates.removeAll( item->text() );
-  m_base->m_listBox->removeItem( m_base->m_listBox->currentItem() );
+  m_base.m_listBox->removeItem( m_base.m_listBox->currentItem() );
   m_changed = true;
-  m_base->m_listBox->setSelected(qMax(current -1, 0), true);
+  m_base.m_listBox->setSelected(qMax(current -1, 0), true);
 }
 
 void TemplateManagementDialog::slotUpdateDeleteButton( Q3ListBoxItem *item )
 {
-  m_base->m_buttonDelete->setEnabled( item != 0 );
+  m_base.m_buttonDelete->setEnabled( item != 0 );
 }
 
 void TemplateManagementDialog::slotApplyTemplate()
 {
   // Once the user has applied the current template to the event, it makes no sense to add it again
-  m_base->m_buttonAdd->setEnabled( false );
-  const QString &cur = m_base->m_listBox->currentText();
+  m_base.m_buttonAdd->setEnabled( false );
+  const QString &cur = m_base.m_listBox->currentText();
   if ( !cur.isEmpty() && cur != m_newTemplate )
     emit loadTemplate( cur );
 }
