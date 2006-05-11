@@ -52,8 +52,8 @@ class KDE_EXPORT CellItem
     /**
       Place item \arg placeItem into stripe containing items \arg cells in a
       way that items don't overlap.
-        @param cells The list of other cell items to be layed out parallel to the placeItem.
-        @param placeItem The item to be layed out.
+        @param cells The list of other cell items to be laid out parallel to the placeItem.
+        @param placeItem The item to be laid out.
       
       \return Placed items
     */

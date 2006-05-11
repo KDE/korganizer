@@ -81,8 +81,9 @@ MarcusBains::MarcusBains( KOAgenda *_agenda )
   pal.setColor( backgroundRole(), Qt::red );
   setPalette( pal );
   minutes = new QTimer(this);
+  minutes->setSingleShot( true );
   connect(minutes, SIGNAL(timeout()), this, SLOT(updateLocation()));
-  minutes->start(0, true);
+  minutes->start( 0 );
 
   mTimeBox = new QLabel(this);
   mTimeBox->setAlignment(Qt::AlignRight | Qt::AlignBottom);
@@ -162,7 +163,7 @@ void MarcusBains::updateLocation(bool recalculate)
 #warning "kde4: porting ?"
   //mTimeBox->setAutoMask(true);
 
-  minutes->start(1000,true);
+  minutes->start( 1000 );
 }
 
 

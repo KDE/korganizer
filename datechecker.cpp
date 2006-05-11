@@ -57,7 +57,8 @@ void DateChecker::enableRollover( RolloverType r )
         connect( mUpdateTimer, SIGNAL( timeout() ),
                  SLOT( possiblyPastMidnight() ) );
       }
-      mUpdateTimer->start( 0, true );
+      mUpdateTimer->setSingleShot( true );
+      mUpdateTimer->start( 0 );
       mLastDayChecked = QDate::currentDate();
   }
   mUpdateRollover = r;
@@ -89,7 +90,7 @@ void DateChecker::possiblyPastMidnight()
     int msecsWait = qMin( 480000, now.msecsTo( midnight ) + 2000 );
 
     mUpdateTimer->stop();
-    mUpdateTimer->start( msecsWait, true );
+    mUpdateTimer->start( msecsWait );
   }
 }
 

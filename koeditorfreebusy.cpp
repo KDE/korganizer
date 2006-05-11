@@ -300,6 +300,7 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent )
            SLOT( slotInsertFreeBusy( KCal::FreeBusy *, const QString & ) ) );
 
   connect( &mReloadTimer, SIGNAL( timeout() ), SLOT( reload() ) );
+  mReloadTimer.setSingleShot( true );
 }
 
 KOEditorFreeBusy::~KOEditorFreeBusy()
@@ -632,7 +633,7 @@ void KOEditorFreeBusy::updateStatusSummary()
 
 void KOEditorFreeBusy::triggerReload()
 {
-  mReloadTimer.start( 1000, true );
+  mReloadTimer.start( 1000 );
 }
 
 void KOEditorFreeBusy::cancelReload()

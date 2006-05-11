@@ -141,10 +141,11 @@ void ActionManager::init()
   }
 
   mAutoArchiveTimer = new QTimer( this );
+  mAutoArchiveTimer->setSingleShot( true );
   connect( mAutoArchiveTimer, SIGNAL( timeout() ), SLOT( slotAutoArchive() ) );
   // First auto-archive should be in 5 minutes (like in kmail).
   if ( KOPrefs::instance()->mAutoArchive )
-    mAutoArchiveTimer->start( 5 * 60 * 1000, true ); // singleshot
+    mAutoArchiveTimer->start( 5 * 60 * 1000 ); // singleshot
 
   setTitle();
 
@@ -1687,7 +1688,7 @@ void ActionManager::slotImportDialogFinished( ImportDialog *dlg )
 void ActionManager::slotAutoArchivingSettingsModified()
 {
   if ( KOPrefs::instance()->mAutoArchive )
-    mAutoArchiveTimer->start( 4 * 60 * 60 * 1000, true ); // check again in 4 hours
+    mAutoArchiveTimer->start( 4 * 60 * 60 * 1000 ); // check again in 4 hours
   else
     mAutoArchiveTimer->stop();
 }

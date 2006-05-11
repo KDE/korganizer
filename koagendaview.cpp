@@ -721,7 +721,8 @@ void KOAgendaView::zoomView( const int delta, const QPoint &pos,
       if ( !t.isActive() ) {
         zoomDate= mSelectedDates[pos.x()];
       }
-      t.start ( 1000,true );
+      t.setSingleShot( true );
+      t.start ( 1000 );
     }
     if ( delta > 0 )
       zoomOutHorizontally( zoomDate );
@@ -1555,7 +1556,7 @@ CalPrinter::PrintType KOAgendaView::printType()
 
 void KOAgendaView::updateEventIndicatorTop( int newY )
 {
-  uint i;
+  int i;
   for( i = 0; i < mMinY.size(); ++i ) {
     mEventIndicatorTop->enableColumn( i, newY >= mMinY[i] );
   }
@@ -1564,7 +1565,7 @@ void KOAgendaView::updateEventIndicatorTop( int newY )
 
 void KOAgendaView::updateEventIndicatorBottom( int newY )
 {
-  uint i;
+  int i;
   for( i = 0; i < mMaxY.size(); ++i ) {
     mEventIndicatorBottom->enableColumn( i, newY <= mMaxY[i] );
   }

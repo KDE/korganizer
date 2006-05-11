@@ -36,31 +36,27 @@ int KOMessageBox::fourBtnMsgBox( QWidget *parent, QMessageBox::Icon type,
                                  const KGuiItem &button3,
                                  KMessageBox::Options options)
 {
-  KDialogBase *dialog= new KDialogBase( parent, "KOMessageBox", true,
-                     caption.isEmpty() ? "" : caption,
-                     KDialogBase::Yes | KDialogBase::No | KDialogBase::Ok | KDialogBase::Cancel,
-                     KDialogBase::Yes,
-                     true/*, button1, button2, button3*/);
-  dialog->setButtonOK( button3 );
-  dialog->setButtonText( KDialogBase::Yes, button1.text() );
-  dialog->setButtonText( KDialogBase::No, button2.text() );
-  QObject::connect( dialog->actionButton( KDialogBase::Yes ), SIGNAL( clicked() ), dialog, SLOT(slotYes()));
-  QObject::connect( dialog->actionButton( KDialogBase::No ), SIGNAL( clicked() ), dialog, SLOT(slotNo()));
-//  QObject::connect( dialog, SIGNAL( noClicked() ), dialog, SLOT(slotNo()));
+  KDialog *dialog= new KDialog( parent, caption,
+            KDialog::Yes | KDialog::No | KDialog::Ok | KDialog::Cancel );
+  dialog->setObjectName( "KOMessageBox" );
+  dialog->setDefaultButton( KDialog::Yes );
+  dialog->setButtonGuiItem( KDialog::Ok, button3 );
+  dialog->setButtonGuiItem( KDialog::Yes, button1 );
+  dialog->setButtonGuiItem( KDialog::No, button2 );
+  QObject::connect( dialog, SIGNAL( yesClicked() ), dialog, SLOT(slotYes()));
+  QObject::connect( dialog, SIGNAL( noClicked() ), dialog, SLOT(slotNo()));
 
 
   bool checkboxResult = false;
   int result = KMessageBox::createKMessageBox(dialog, type, text, QStringList(),
                      QString(), &checkboxResult, options);
   switch (result) {
-    case KDialogBase::Yes: result = KMessageBox::Yes; break;
-    case KDialogBase::No: result = KMessageBox::No; break;
-    case KDialogBase::Ok: result = KMessageBox::Continue; break;
-    case KDialogBase::Cancel: result = KMessageBox::Cancel; break;
+    case KDialog::Yes: result = KMessageBox::Yes; break;
+    case KDialog::No: result = KMessageBox::No; break;
+    case KDialog::Ok: result = KMessageBox::Continue; break;
+    case KDialog::Cancel: result = KMessageBox::Cancel; break;
     default: break;
   }
 
   return result;
 }
-
-

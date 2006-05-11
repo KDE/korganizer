@@ -1,8 +1,7 @@
 /*
     This file is part of KOrganizer.
 
-    Copyright (c) 1997, 1998, 1999
-    Preston Brown <preston.brown@yale.edu>
+    Copyright (c) 1997, 1998, 1999 Preston Brown <preston.brown@yale.edu>
     Fester Zigterman <F.J.F.ZigtermanRustenburg@student.utwente.nl>
     Ian Dawes <iadawes@globalserve.net>
     Laszlo Boloni <boloni@cs.purdue.edu>

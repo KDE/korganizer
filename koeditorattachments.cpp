@@ -415,7 +415,7 @@ QString KOEditorAttachments::generateLocalAttachmentPath(
     pathBegin += KRandom::randomString( 10 ); // arbitrary
   else
     pathBegin += mUid;
-  pathBegin += "/";
+  pathBegin += '/';
 
   if ( filename.isEmpty() )
     filename = KRandom::randomString( 10 ) + 
