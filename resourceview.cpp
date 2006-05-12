@@ -24,6 +24,8 @@
 
 #include "resourceview.h"
 
+#include <kcolordialog.h>
+#include <kdialog.h>
 #include <klistview.h>
 #include <klocale.h>
 #include <kdebug.h>
@@ -40,6 +42,7 @@
 #include <qlabel.h>
 #include <qpushbutton.h>
 #include <qpopupmenu.h>
+#include <qpainter.h>
 
 #include "koprefs.h"
 
@@ -88,6 +91,7 @@ ResourceItem::ResourceItem( ResourceCalendar *resource, ResourceView *view,
     mIsSubresource( false ), mResourceIdentifier(),
     mSubItemsCreated( false )
 {
+  mResourceColor = QColor();
   setGuiState();
 
   if ( mResource->isActive() ) {
@@ -103,8 +107,10 @@ void ResourceItem::createSubresourceItems() {
     // This resource has subresources
     QStringList::ConstIterator it;
     for ( it=subresources.begin(); it!=subresources.end(); ++it ) {
-      ( void )new ResourceItem( mResource, *it, mResource->labelForSubresource( *it ),
-                                mView, this );
+      ResourceItem *item = new ResourceItem( mResource, *it, mResource->labelForSubresource( *it ),
+                                             mView, this );
+      QColor resourceColor = *KOPrefs::instance()->resourceColor( *it );
+      item->setResourceColor( resourceColor );
     }
   }
   mSubItemsCreated = true;
@@ -118,6 +124,7 @@ ResourceItem::ResourceItem( KCal::ResourceCalendar *resource,
     mView( view ), mBlockStateChange( false ), mIsSubresource( true ),
     mSubItemsCreated( false )
 {
+  mResourceColor = QColor();
   mResourceIdentifier = sub;
   setGuiState();
 }
@@ -162,6 +169,36 @@ void ResourceItem::update()
 {
   setGuiState();
 }
+
+void ResourceItem::setResourceColor(QColor& color)
+{
+  if ( color.isValid() ) {
+    if ( mResourceColor != color ) {
+      QPixmap px(height()-4,height()-4);
+      mResourceColor = color;
+      px.fill(color);
+      setPixmap(0,px);
+    }
+  } else {
+    mResourceColor = color ;
+    setPixmap(0,0);
+  }
+}
+
+void ResourceItem::paintCell(QPainter *p, const QColorGroup &cg,
+      int column, int width, int alignment)
+{
+  QFont oldFont = p->font();
+  QFont newFont = oldFont;
+  p->setFont( newFont );
+  QCheckListItem::paintCell( p, cg, column, width, alignment );
+  p->setFont( oldFont );
+/*  QColorGroup _cg = cg;
+  if(!mResource) return;
+  _cg.setColor(QColorGroup::Base, getTextColor(mResourceColor));*/
+}
+
+
 
 ResourceView::ResourceView( KCal::CalendarResources *calendar,
                             QWidget *parent, const char *name )
@@ -276,7 +313,13 @@ void ResourceView::addResource()
 
 void ResourceView::addResourceItem( ResourceCalendar *resource )
 {
-  new ResourceItem( resource, this, mListView );
+
+  ResourceItem *item=new ResourceItem( resource, this, mListView );
+
+  QColor resourceColor;
+
+  resourceColor= *KOPrefs::instance()->resourceColor(resource->identifier());
+  item->setResourceColor(resourceColor);
 
   connect( resource, SIGNAL( signalSubresourceAdded( ResourceCalendar *,
                                                      const QString &,
@@ -463,11 +506,20 @@ void ResourceView::contextMenuRequested ( QListViewItem *i,
                                    SLOT( saveResource() ) );
     menu->setItemEnabled( saveId, item->resource()->isActive() );
     menu->insertSeparator();
-    menu->insertItem( i18n("Show Info"), this, SLOT( showInfo() ) );
-    if ( !item->isSubresource() ) {
-      menu->insertItem( i18n("Edit..."), this, SLOT( editResource() ) );
-      menu->insertItem( i18n("Remove"), this, SLOT( removeResource() ) );
+
+    menu->insertItem( i18n("Show &Info"), this, SLOT( showInfo() ) );
+    //FIXME: This is better on the resource dialog
+    if ( KOPrefs::instance()->agendaViewUsesResourceColor() ) {
+      QPopupMenu *assignMenu= new QPopupMenu( menu );
+      assignMenu->insertItem( i18n( "&Assign Color" ), this, SLOT( assignColor() ) );
+      if ( item->resourceColor().isValid() )
+        assignMenu->insertItem( i18n( "&Disable Color" ), this, SLOT( disableColor() ) );
+      menu->insertItem( i18n( "Resources Colors" ), assignMenu );
     }
+
+    menu->insertItem( i18n("&Edit..."), this, SLOT( editResource() ) );
+    menu->insertItem( i18n("&Remove"), this, SLOT( removeResource() ) );
+
     menu->insertSeparator();
  }
   menu->insertItem( i18n("Add..."), this, SLOT( addResource() ) );
@@ -475,6 +527,46 @@ void ResourceView::contextMenuRequested ( QListViewItem *i,
   menu->popup( pos );
 }
 
+void ResourceView::assignColor()
+{
+  ResourceItem *item = currentItem();
+  if ( !item )
+    return;
+  // A color without initialized is a color invalid
+  QColor myColor;
+  KCal::ResourceCalendar *cal = item->resource();
+
+  QString identifier = cal->identifier();
+  if ( item->isSubresource() )
+    identifier = item->resourceIdentifier();
+
+  QColor defaultColor =*KOPrefs::instance()->resourceColor( identifier );
+
+  int result = KColorDialog::getColor( myColor,defaultColor);
+
+  if ( result == KColorDialog::Accepted ) {
+    KOPrefs::instance()->setResourceColor( identifier, myColor );
+    item->setResourceColor( myColor );
+    item->update();
+    emitResourcesChanged();
+  }
+}
+
+void ResourceView::disableColor()
+{
+  ResourceItem *item = currentItem();
+  if ( !item )
+    return;
+  QColor colorInvalid;
+  KCal::ResourceCalendar *cal = item->resource();
+  QString identifier = cal->identifier();
+  if ( item->isSubresource() )
+    identifier = item->resourceIdentifier();
+  KOPrefs::instance()->setResourceColor( identifier, colorInvalid );
+  item->setResourceColor( colorInvalid );
+  item->update();
+  emitResourcesChanged();
+}
 void ResourceView::showInfo()
 {
   ResourceItem *item = currentItem();

@@ -113,7 +113,8 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
 	korganizerifaceimpl.cpp \
 	freebusymanager.cpp freebusyurldialog.cpp \
 	eventarchiver.cpp koidentitymanager.cpp \
-  template_management_dialog_base.ui templatemanagementdialog.cpp
+  template_management_dialog_base.ui templatemanagementdialog.cpp \
+  kohelper.cpp
 
 
 libkorganizer_eventviewer_la_LDFLAGS = $(all_libraries) $(KDE_RPATH) \
@@ -157,7 +158,7 @@ noinst_HEADERS = komonthview.h \
 	alarmclient.h \
 	navigatorbar.h kogroupware.h \
 	koincidencetooltip.h korganizerifaceimpl.h \
-  templatemanagementdialog.h
+  templatemanagementdialog.h kohelper.h
 
 tip_DATA = tips
 tipdir = $(kde_datadir)/korganizer

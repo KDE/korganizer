@@ -165,6 +165,12 @@
       <whatsthis>If selected, a red line will appear in the day or week view indicating the current time.</whatsthis>
       <default>false</default>
     </entry>
+    <entry type="Bool" key="Agenda View Uses Resource Color">
+      <label>Agenda view uses resource colors</label>
+      <whatsthis>Check this box to make the agenda view use the resource colors of an item.</whatsthis>
+      <default>true</default>
+    </entry>
+
 
     <entry type="DateTime" name="DayBegins">
       <label>Day begins at</label>
@@ -191,6 +197,13 @@
       <label>Month view uses category colors</label>
       <whatsthis>Check this option to make the month view use the category colors of an incidence.</whatsthis>
       <default>false</default>
+    </entry>
+
+    <entry type="Bool" key="Month View Uses Resource Color">
+      <label>Month view uses resource colors</label>
+      <whatsthis>Check this box to make the month view use the resource colors of an item.</whatsthis>
+      <default>true</default>
+
     </entry>
 
     <entry type="Bool" key="Full View Month">

@@ -62,6 +62,7 @@ class ResourceItem : public QCheckListItem
     ResourceItem( KCal::ResourceCalendar *resource, const QString& sub,
                   const QString& label, ResourceView *view, 
                   ResourceItem* parent );
+    virtual ~ResourceItem() {}
 
     KCal::ResourceCalendar *resource() { return mResource; }
     const QString& resourceIdentifier() { return mResourceIdentifier; }
@@ -70,10 +71,16 @@ class ResourceItem : public QCheckListItem
 
     void update();
 
+    virtual void paintCell(QPainter *p, const QColorGroup &cg,
+      int column, int width, int alignment);
+
+    void setResourceColor(QColor& color);
+    QColor &resourceColor() {return mResourceColor;}
   protected:
     void stateChange( bool active );
 
     void setGuiState();
+    QColor mResourceColor;
 
   private:
     KCal::ResourceCalendar *mResource;
@@ -134,6 +141,8 @@ class ResourceView : public CalendarViewExtension
 
     void contextMenuRequested ( QListViewItem *i, const QPoint &pos, int );
 
+    void assignColor();
+    void disableColor();
     void showInfo();
   
     void reloadResource();

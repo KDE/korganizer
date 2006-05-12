@@ -136,6 +136,8 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
 
     bool overlaps( KOrg::CellItem * ) const;
 
+    void setResourceColor( const QColor& color ) { mResourceColor = color; }
+    QColor resourceColor() {return mResourceColor;}
   signals:
     void removeAgendaItem( KOAgendaItem* );
     void showAgendaItem( KOAgendaItem* );
@@ -176,7 +178,8 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
   protected:
     // Variables to remember start position
     MultiItemInfo* mStartMoveInfo;
-
+    //Color of the resource
+    QColor mResourceColor;
   private:
     static QToolTipGroup *mToolTipGroup;
 

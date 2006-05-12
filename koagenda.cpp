@@ -42,6 +42,8 @@
 #include "koagendaitem.h"
 #include "koprefs.h"
 #include "koglobals.h"
+#include "kohelper.h"
+
 
 #include "koagenda.h"
 #include "koagenda.moc"
@@ -1463,7 +1465,7 @@ KOAgendaItem *KOAgenda::insertItem( Incidence *incidence, QDate qd, int X,
                       int( ( YBottom + 1 ) * mGridSpacingY ) );
   agendaItem->setCellXY( X, YTop, YBottom );
   agendaItem->setCellXRight( X );
-
+  agendaItem->setResourceColor( KOHelper::resourceColor( mCalendar, incidence ) );
   agendaItem->installEventFilter( this );
 
   addChild( agendaItem, int( X * mGridSpacingX ), int( YTop * mGridSpacingY ) );
@@ -1506,7 +1508,7 @@ KOAgendaItem *KOAgenda::insertAllDayItem( Incidence *event, QDate qd,
   agendaItem->resize( int( endIt ) - int( startIt ), int( mGridSpacingY ) );
 
   agendaItem->installEventFilter( this );
-
+  agendaItem->setResourceColor( KOHelper::resourceColor( mCalendar, event ) );
   addChild( agendaItem, int( XBegin * mGridSpacingX ), 0 );
   mItems.append( agendaItem );
 

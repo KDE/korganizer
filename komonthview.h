@@ -88,11 +88,15 @@ class MonthViewItem: public QListBoxItem
     Incidence *incidence() const { return mIncidence; }
     QDate incidenceDate() { return mDate; }
 
+    void setResourceColor( QColor& color ) { mResourceColor = color; }
+    QColor &resourceColor() { return mResourceColor; }
+    
   protected:
     virtual void paint(QPainter *);
     virtual int height(const QListBox *) const;
     virtual int width(const QListBox *) const;
-
+    //Color of the resource
+    QColor mResourceColor;
   private:
     bool mTodo;
     bool mTodoDone;
@@ -156,6 +160,7 @@ class MonthViewCell : public QWidget
     QDate selectedIncidenceDate();
 
     void deselect();
+    void setCalendar( Calendar*cal ) { mCalendar = cal; }
 
   signals:
     void defaultAction( Incidence * );
@@ -172,6 +177,7 @@ class MonthViewCell : public QWidget
 
   private:
     KOMonthView *mMonthView;
+    Calendar *mCalendar;
 
     QDate mDate;
     bool mPrimary;

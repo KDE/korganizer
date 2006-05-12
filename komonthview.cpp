@@ -54,6 +54,7 @@
 #include "kocore.h"
 #endif
 #include "koglobals.h"
+#include "kohelper.h"
 #include "koincidencetooltip.h"
 #include "koeventpopupmenu.h"
 
@@ -223,6 +224,13 @@ void MonthViewItem::paint( QPainter *p )
 
   QColor bgColor = palette().color( QPalette::Normal,
             sel ? QColorGroup::Highlight : QColorGroup::Background );
+  int offset=0;
+  if ( KOPrefs::instance()->monthViewUsesResourceColor() &&
+    mResourceColor.isValid() ) {
+    p->setBackgroundColor( mResourceColor );
+    p->eraseRect( 0, 0, listBox()->maxItemWidth(), height( listBox() ) );
+    offset=2;
+  }
   if ( KOPrefs::instance()->monthViewUsesCategoryColor() ) {
     p->setBackgroundColor( bgColor );
     p->eraseRect( 0, 0, listBox()->maxItemWidth(), height( listBox() ) );
@@ -483,6 +491,10 @@ void MonthViewCell::addIncidence( Incidence *incidence )
     item->setAlarm( incidence->isAlarmEnabled() );
     item->setRecur( incidence->doesRecur() );
     mItemList->insertItem( item );
+    QColor resourceColor = KOHelper::resourceColor( mCalendar, incidence );
+    if ( !resourceColor.isValid() )
+      resourceColor = KOPrefs::instance()->mEventColor;
+    item->setResourceColor( resourceColor );
   }
 }
 
@@ -658,6 +670,7 @@ KOMonthView::KOMonthView( Calendar *calendar, QWidget *parent, const char *name 
   for( row = 0; row < mNumWeeks; ++row ) {
     for( col = 0; col < mDaysPerWeek; ++col ) {
       MonthViewCell *cell = new MonthViewCell( this );
+      cell->setCalendar(calendar);
       mCells.insert( row * mDaysPerWeek + col, cell );
       dayLayout->addWidget( cell, row + 1, col );
 

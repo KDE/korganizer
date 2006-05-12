@@ -85,6 +85,9 @@ class KOPrefs : public KOPrefsBase
     void setCategoryColor( QString cat, const QColor &color );
     QColor *categoryColor( QString cat );
 
+    void setResourceColor ( const QString &, const QColor & );
+    QColor* resourceColor( const QString & );
+
     QString mHtmlExportFile;
 
     // Groupware passwords
@@ -94,6 +97,9 @@ class KOPrefs : public KOPrefsBase
   private:
     QDict<QColor> mCategoryColors;
     QColor mDefaultCategoryColor;
+
+    QDict<QColor> mResourceColors;
+    QColor mDefaultResourceColor;
 
     QFont mDefaultMonthViewFont;
     KABC::Addressee mMe;
