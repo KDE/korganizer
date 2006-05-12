@@ -46,9 +46,7 @@
 #include "filtereditdialog.moc"
 
 FilterEditDialog::FilterEditDialog( QList<CalFilter*> *filters, QWidget *parent )
-// TODO_QT4: Use constructor without *name=0 param
-  : KDialogBase( parent, /*name*/0, false, i18n("Edit Calendar Filters"),
-                 Ok | Apply | Cancel )
+  : KDialog( parent, i18n("Edit Calendar Filters"), Ok | Apply | Cancel )
 {
   setMainWidget( mFilterEdit = new FilterEdit(filters, this));
 

@@ -41,9 +41,9 @@
 
 #include "ui_template_management_dialog_base.h"
 
-#include <kdialogbase.h>
+#include <kdialog.h>
 
-class TemplateManagementDialog: public KDialogBase {
+class TemplateManagementDialog: public KDialog {
 Q_OBJECT
   public:
     TemplateManagementDialog( QWidget *parent, const QStringList& templates );

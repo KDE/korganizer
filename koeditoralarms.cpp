@@ -26,7 +26,7 @@
 #include "koeditoralarms.h"
 
 #include <QLayout>
-#include <q3listview.h>
+#include <Q3ListView>
 #include <QPushButton>
 #include <QSpinBox>
 #include <QComboBox>
@@ -133,11 +133,8 @@ void AlarmListViewItem::construct()
 
 
 KOEditorAlarms::KOEditorAlarms( KCal::Alarm::List *alarms, QWidget *parent )
-// TODO_QT4: Use constructor without *name=0 param
-  : KDialogBase( parent, /*name*/0, true, i18n("Edit Reminders"), Ok | Apply | Cancel ), mAlarms( alarms )
+  : KDialog( parent, i18n("Edit Reminders"), Ok | Apply | Cancel ), mAlarms( alarms )
 {
-#warning Port me?
-//   setMainWidget( mWidget = new Ui::KOEditorAlarms_base( this ) );
   mWidget.setupUi( this );
   mWidget.mAlarmList->setColumnWidthMode( 0, Q3ListView::Maximum );
   mWidget.mAlarmList->setColumnWidthMode( 1, Q3ListView::Maximum );

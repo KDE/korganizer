@@ -24,7 +24,7 @@
 #ifndef KOEDITORALARMS_H
 #define KOEDITORALARMS_H
 
-#include <kdialogbase.h>
+#include <kdialog.h>
 #include <libkcal/alarm.h>
 
 #include "ui_koeditoralarms_base.h"
@@ -33,7 +33,7 @@ class Q3ListViewItem;
 
 class AlarmListViewItem;
 
-class KOEditorAlarms : public KDialogBase
+class KOEditorAlarms : public KDialog
 {
     Q_OBJECT
   public:

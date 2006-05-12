@@ -175,7 +175,6 @@ set(korganizer_LIB_SRCS
    koeventview.cpp 
    filtereditdialog.cpp 
    kowhatsnextview.cpp 
-   kocounterdialog.cpp 
    kojournalview.cpp 
    journalentry.cpp 
    kocore.cpp 

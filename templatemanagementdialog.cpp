@@ -45,10 +45,11 @@
 #include <kmessagebox.h>
 
 TemplateManagementDialog::TemplateManagementDialog(QWidget *parent, const QStringList &templates )
-    :KDialogBase( parent, "template_management_dialog", true,
-                        i18n("Manage Templates"), Ok|Cancel, Ok, true , i18n("Apply Template")),
+    :KDialog( parent, i18n("Manage Templates"), Ok|Cancel ),
       m_templates( templates ), m_newTemplate( QString() ), m_changed( false )
 {
+  setObjectName( "template_management_dialog" );
+  setDefaultButton( Ok );
   QWidget *widget = new QWidget( this );
   widget->setObjectName( "template_management_dialog_base" );
   m_base.setupUi( widget );
@@ -62,6 +63,7 @@ TemplateManagementDialog::TemplateManagementDialog(QWidget *parent, const QStrin
            SLOT( slotUpdateDeleteButton( Q3ListBoxItem * ) ) );
   connect( m_base.m_buttonApply, SIGNAL( clicked() ),
            SLOT( slotApplyTemplate() ) );
+  connect( this, SIGNAL( okClicked() ), SLOT( slotOk() ) );
 
 }
 
@@ -127,7 +129,6 @@ void TemplateManagementDialog::slotOk()
     emit saveTemplate( m_newTemplate );
   if ( m_changed )
     emit templatesChanged( m_templates );
-  KDialogBase::slotOk();
 }
 
 

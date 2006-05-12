@@ -27,11 +27,10 @@
 #include <QDateTime>
 #include <QWidget>
 #include <QBitArray>
-//Added by qt3to4:
 #include <QBoxLayout>
 #include <QLabel>
 
-#include <kdialogbase.h>
+#include <kdialog.h>
 
 #include <libkcal/incidencebase.h>
 
@@ -204,7 +203,7 @@ class ExceptionsWidget : public QWidget, public ExceptionsBase
     DateList mExceptionDates;
 };
 
-class ExceptionsDialog : public KDialogBase, public ExceptionsBase
+class ExceptionsDialog : public KDialog, public ExceptionsBase
 {
   public:
     ExceptionsDialog( QWidget *parent );
@@ -262,7 +261,7 @@ class RecurrenceRangeWidget : public QWidget, public RecurrenceRangeBase
     KDateEdit *mEndDateEdit;
 };
 
-class RecurrenceRangeDialog : public KDialogBase, public RecurrenceRangeBase
+class RecurrenceRangeDialog : public KDialog, public RecurrenceRangeBase
 {
   public:
     RecurrenceRangeDialog( QWidget *parent = 0 );

@@ -689,8 +689,7 @@ DateList ExceptionsWidget::dates()
 ///////////////////////// ExceptionsDialog ///////////////////////////
 
 ExceptionsDialog::ExceptionsDialog( QWidget *parent ) :
-// TODO: find the constructor without *name=0 param
-  KDialogBase( parent, 0, true, i18n("Edit Exceptions"), Ok|Cancel )
+  KDialog( parent, i18n("Edit Exceptions"), Ok|Cancel )
 {
   mExceptions = new ExceptionsWidget( this );
   setMainWidget( mExceptions );
@@ -844,8 +843,7 @@ void RecurrenceRangeWidget::setDateTimes( const QDateTime &start,
 ///////////////////////// RecurrenceRangeDialog ///////////////////////////
 
 RecurrenceRangeDialog::RecurrenceRangeDialog( QWidget *parent ) :
-// TODO: use constructor without *name=0
-  KDialogBase( parent, 0, true, i18n("Edit Recurrence Range"), Ok|Cancel )
+  KDialog( parent, i18n("Edit Recurrence Range"), Ok|Cancel )
 {
   mRecurrenceRangeWidget = new RecurrenceRangeWidget( this );
   setMainWidget( mRecurrenceRangeWidget );

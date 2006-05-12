@@ -25,7 +25,7 @@
 #ifndef _FILTEREDITDIALOG_H
 #define _FILTEREDITDIALOG_H
 
-#include <kdialogbase.h>
+#include <kdialog.h>
 #include "ui_filteredit_base.h"
 #include <QList>
 
@@ -42,7 +42,7 @@ using namespace KCal;
   @short Creates a dialog box to create/edit a calendar filter
   @author Cornelius Schumacher, Thomas Zander
 */
-class FilterEditDialog : public KDialogBase
+class FilterEditDialog : public KDialog
 {
     Q_OBJECT
   public:

@@ -24,7 +24,8 @@
 #ifndef KOCOUNTERDIALOG_H
 #define KOCOUNTERDIALOG_H
 
-#include <kdialogbase.h>
+// DEAD_CODE: This is DEAD CODE and not used anywhere!
+#include <kdialog.h>
 
 namespace KCal {
 class Event;
@@ -37,7 +38,7 @@ class KOEventViewer;
 /**
   Viewer dialog for counter events.
 */
-class KOCounterDialog : public KDialogBase
+class KOCounterDialog : public KDialog
 {
     Q_OBJECT
   public:

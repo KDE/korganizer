@@ -252,7 +252,7 @@ void KOEditorGeneral::editAlarms()
   }
 
   KOEditorAlarms *dlg = new KOEditorAlarms( &mAlarmList, mAlarmEditButton );
-  if ( dlg->exec() != KDialogBase::Cancel ) {
+  if ( dlg->exec() != KDialog::Cancel ) {
     updateAlarmWidgets();
   }
 }

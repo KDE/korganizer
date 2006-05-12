@@ -24,7 +24,7 @@
 #ifndef KOEVENTVIEWERDIALOG_H
 #define KOEVENTVIEWERDIALOG_H
 
-#include <kdialogbase.h>
+#include <kdialog.h>
 #include <kdepimmacros.h>
 #include "koeventviewer.h"
 
@@ -38,7 +38,7 @@ class KOEventViewer;
 /**
   Viewer dialog for events.
 */
-class KDE_EXPORT KOEventViewerDialog : public KDialogBase
+class KDE_EXPORT KOEventViewerDialog : public KDialog
 {
     Q_OBJECT
   public:
