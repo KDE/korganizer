@@ -521,7 +521,7 @@ bool FreeBusyManager::saveFreeBusy( FreeBusy *freebusy, const Person &person )
   }
 
   QString filename( fbd );
-  filename += "/";
+  filename += '/';
   filename += person.email();
   filename += ".ifb";
   QFile f( filename );

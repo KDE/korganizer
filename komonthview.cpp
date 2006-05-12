@@ -515,7 +515,7 @@ class MonthViewCell::CreateItemVisitor :
       QDateTime dt( mDate );
       if ( todo->hasDueDate() && !todo->doesFloat() ) {
         text += KGlobal::locale()->formatTime( todo->dtDue().time() );
-        text += " ";
+        text += ' ';
         dt.setTime( todo->dtDue().time() );
       }
       text += todo->summary();
