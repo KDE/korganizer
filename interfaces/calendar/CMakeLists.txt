@@ -1,4 +1,3 @@
-kde4_header()
 
 
 
@@ -8,7 +7,6 @@ kde4_header()
 install_files( ${SERVICETYPES_INSTALL_DIR} FILES calendarplugin.desktop calendardecoration.desktop )
 install_files( /include/calendar FILES plugin.h calendardecoration.h )
 
-kde4_footer()
 
 
 

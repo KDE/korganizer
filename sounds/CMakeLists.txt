@@ -1,4 +1,3 @@
-kde4_header()
 
 
 
@@ -7,7 +6,6 @@ kde4_header()
 
 install_files( ${DATA_INSTALL_DIR}/korganizer/sounds FILES alert.wav icemag.wav lightmag.wav onscreen.wav  	spinout.wav )
 
-kde4_footer()
 
 
 

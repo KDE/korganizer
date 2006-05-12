@@ -1,4 +1,3 @@
-kde4_header()
 
 add_subdirectory( pixmaps ) 
 
@@ -42,7 +41,6 @@ endif(KDE4_BUILD_TESTS)
 
 install_files( /share/autostart FILES korgac.desktop )
 
-kde4_footer()
 
 
 

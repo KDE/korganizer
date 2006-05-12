@@ -1,4 +1,3 @@
-kde4_header()
 
 include_directories( ${CMAKE_SOURCE_DIR}/korganizer/interfaces  )
 
@@ -27,7 +26,6 @@ install_targets(${PLUGIN_INSTALL_DIR} korg_hebrew )
 
 install_files( ${SERVICES_INSTALL_DIR}/korganizer FILES hebrew.desktop )
 
-kde4_footer()
 
 
 

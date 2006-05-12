@@ -1,4 +1,3 @@
-kde4_header()
 
 include_directories( ${CMAKE_SOURCE_DIR}/korganizer/interfaces ${CMAKE_SOURCE_DIR}/korganizer/printing  )
 
@@ -24,7 +23,6 @@ install_targets(${PLUGIN_INSTALL_DIR} korg_whatsnextprint )
 
 install_files( ${SERVICES_INSTALL_DIR}/korganizer FILES whatsnextprint.desktop )
 
-kde4_footer()
 
 
 

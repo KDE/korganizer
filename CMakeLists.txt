@@ -1,4 +1,3 @@
-kde4_header()
 
 include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/interfaces 
                      ${CMAKE_SOURCE_DIR}/libemailfunctions ${CMAKE_SOURCE_DIR}/libkpimidentities 
@@ -235,7 +234,6 @@ install_files( /bin FILES ical2vcal )
 
 kde4_install_icons( ${ICON_INSTALL_DIR}  hicolor )
 
-kde4_footer()
 
 
 

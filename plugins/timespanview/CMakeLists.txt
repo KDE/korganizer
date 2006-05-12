@@ -1,4 +1,3 @@
-kde4_header()
 
 include_directories( ${CMAKE_SOURCE_DIR}/korganizer/interfaces ${CMAKE_SOURCE_DIR}/korganizer  )
 
@@ -28,7 +27,6 @@ install_targets(${PLUGIN_INSTALL_DIR} korg_timespanview )
 install_files( ${SERVICES_INSTALL_DIR}/korganizer FILES timespanview.desktop )
 install_files( ${DATA_INSTALL_DIR}/korganizer/plugins FILES timespanviewui.rc )
 
-kde4_footer()
 
 
 

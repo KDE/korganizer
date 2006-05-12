@@ -1,4 +1,3 @@
-kde4_header()
 
 
 
@@ -25,7 +24,6 @@ install_targets(${LIB_INSTALL_DIR} korganizer_interfaces )
 install_files( ${SERVICETYPES_INSTALL_DIR} FILES korganizerpart.desktop korgprintplugin.desktop )
 install_files( /include/korganizer FILES part.h baseview.h calendarviewbase.h mainwindow.h corehelper.h printplugin.h )
 
-kde4_footer()
 
 
 

@@ -1,4 +1,3 @@
-kde4_header()
 
 include_directories( ${CMAKE_SOURCE_DIR}/korganizer/interfaces ${CMAKE_SOURCE_DIR}/korganizer  )
 
@@ -45,7 +44,6 @@ install_targets(${LIB_INSTALL_DIR} korg_stdprinting )
 
 install_files( /include/korganizer FILES  )
 
-kde4_footer()
 
 
 

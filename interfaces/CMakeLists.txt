@@ -1,4 +1,3 @@
-kde4_header()
 
 add_subdirectory( calendar ) 
 add_subdirectory( korganizer ) 
@@ -9,7 +8,6 @@ add_subdirectory( korganizer )
 ########### install files ###############
 
 
-kde4_footer()
 
 
 

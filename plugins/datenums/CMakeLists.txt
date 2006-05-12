@@ -1,4 +1,3 @@
-kde4_header()
 
 include_directories( ${CMAKE_SOURCE_DIR}/korganizer/interfaces ${CMAKE_SOURCE_DIR}/korganizer  )
 
@@ -22,7 +21,6 @@ install_targets(${PLUGIN_INSTALL_DIR} korg_datenums )
 
 install_files( ${SERVICES_INSTALL_DIR}/korganizer FILES datenums.desktop )
 
-kde4_footer()
 
 
 
