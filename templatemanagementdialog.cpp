@@ -49,7 +49,6 @@ TemplateManagementDialog::TemplateManagementDialog(QWidget *parent, const QStrin
       m_templates( templates ), m_newTemplate( QString() ), m_changed( false )
 {
   setObjectName( "template_management_dialog" );
-  setDefaultButton( Ok );
   QWidget *widget = new QWidget( this );
   widget->setObjectName( "template_management_dialog_base" );
   m_base.setupUi( widget );

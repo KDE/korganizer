@@ -33,7 +33,6 @@ KOEventViewerDialog::KOEventViewerDialog( QWidget *parent, bool compact )
   : KDialog( parent, i18n("Event Viewer"), Ok | User1 | User2 )
 {
   setModal( false );
-  setDefaultButton( Ok );
   setButtonGuiItem( User1, i18n("Edit") );
   setButtonGuiItem( User2, i18n("Show in context") );
   mEventViewer = new KOEventViewer( this );

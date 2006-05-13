@@ -39,7 +39,6 @@
 PublishDialog::PublishDialog( QWidget* parent, bool modal )
   : KDialog( parent, i18n("Select Addresses"), Ok|Cancel|Help )
 {
-  setDefaultButton( Ok );
   QWidget *widget = new QWidget( this );
   widget->setObjectName( "PublishFreeBusy" );
   mUI.setupUi( widget );
