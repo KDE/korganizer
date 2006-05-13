@@ -512,7 +512,7 @@ bool KOAgenda::eventFilter_key( QObject *, QKeyEvent *ke )
         break;
       default:
         mTypeAheadEvents.append( new QKeyEvent( ke->type(), ke->key(),
-                                                ke->ascii(), ke->state(),
+                                                ke->modifiers(),
                                                 ke->text(), ke->isAutoRepeat(),
                                                 ke->count() ) );
         if ( !mTypeAhead ) {
@@ -548,7 +548,7 @@ bool KOAgenda::eventFilter_wheel ( QObject *object, QWheelEvent *e )
 {
   QPoint viewportPos;
   bool accepted=false;
-  if  ( ( e->state() & Qt::ShiftModifier) == Qt::ShiftModifier ) {
+  if  ( ( e->modifiers() & Qt::ShiftModifier) == Qt::ShiftModifier ) {
     if ( object != viewport() ) {
       viewportPos = ( (QWidget *) object )->mapToParent( e->pos() );
     } else {
@@ -562,7 +562,7 @@ bool KOAgenda::eventFilter_wheel ( QObject *object, QWheelEvent *e )
     accepted=true;
   }
 
-  if  ( ( e->state() & Qt::ControlModifier ) == Qt::ControlModifier ){
+  if  ( ( e->modifiers() & Qt::ControlModifier ) == Qt::ControlModifier ){
     if ( object != viewport() ) {
       viewportPos = ( (QWidget *)object )->mapToParent( e->pos() );
     } else {

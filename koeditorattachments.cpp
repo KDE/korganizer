@@ -404,7 +404,7 @@ bool KOEditorAttachments::hasAttachments()
 }
 
 void KOEditorAttachments::dragEnterEvent( QDragEnterEvent* event ) {
-  event->accept( K3URLDrag::canDecode( event ) | Q3TextDrag::canDecode( event ) );
+  event->setAccepted( K3URLDrag::canDecode( event ) | Q3TextDrag::canDecode( event ) );
 }
 
 QString KOEditorAttachments::generateLocalAttachmentPath( 
