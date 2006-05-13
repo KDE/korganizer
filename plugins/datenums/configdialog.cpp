@@ -20,7 +20,7 @@
 
 #include <QLayout>
 #include <QLabel>
-#include <qradiobutton.h>
+#include <QRadioButton>
 #include <QVBoxLayout>
 #include <QFrame>
 #include <QGroupBox>

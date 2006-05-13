@@ -12,7 +12,7 @@
 #define HOLIDAY_H
 
 #include <QString>
-#include <qstringlist.h>
+#include <QStringList>
 #include <parsha.h>
 /**
 @author Jonathan Singer

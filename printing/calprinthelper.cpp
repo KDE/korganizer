@@ -23,7 +23,7 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include <qpainter.h>
+#include <QPainter>
 #include <QLayout>
 #include <q3frame.h>
 #include <QLabel>

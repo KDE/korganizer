@@ -12,7 +12,7 @@
 #define PARSHA_H
 
 #include <QString>
-#include <qstringlist.h>
+#include <QStringList>
 
 /**
 @author Jonathan Singer

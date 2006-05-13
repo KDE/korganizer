@@ -25,12 +25,12 @@
 
 #include <QStackedWidget>
 #include <QButtonGroup>
-#include <qradiobutton.h>
+#include <QRadioButton>
 #include <QLayout>
 #include <QPushButton>
 #include <QComboBox>
 #include <QLabel>
-#include <qsplitter.h>
+#include <QSplitter>
 #include <kvbox.h>
 #include <QGridLayout>
 #include <QGroupBox>

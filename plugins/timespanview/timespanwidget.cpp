@@ -22,7 +22,7 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include <qsplitter.h>
+#include <QSplitter>
 #include <q3listview.h>
 #include <QLayout>
 #include <q3header.h>

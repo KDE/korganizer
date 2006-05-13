@@ -20,7 +20,7 @@
 #define KORG_HEBREW_H
 
 #include <QString>
-#include <qstringlist.h>
+#include <QStringList>
 #include <calendar/calendardecoration.h>
 
 using namespace KOrg;

@@ -24,7 +24,7 @@
 #define KORG_COREHELPER_H
 
 #include <QString>
-#include <qdatetime.h>
+#include <QDateTime>
 #include <QColor>
 #include "printplugin.h"
 

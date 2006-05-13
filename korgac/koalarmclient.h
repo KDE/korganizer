@@ -30,8 +30,8 @@
 
 #include <kapplication.h>
 
-#include <qtimer.h>
-#include <qdatetime.h>
+#include <QTimer>
+#include <QDateTime>
 
 class AlarmDialog;
 class AlarmDockWindow;

@@ -22,8 +22,8 @@
 #define KORG_CALENDARDECORATION_H
 
 #include <QString>
-#include <qdatetime.h>
-#include <qpixmap.h>
+#include <QDateTime>
+#include <QPixmap>
 #include <QList>
 
 #include <klibloader.h>

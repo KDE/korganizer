@@ -12,7 +12,7 @@
 #define CONVERTER_H
 
 #include <QString>
-#include <qstringlist.h>
+#include <QStringList>
 
 struct DateResult
 {
