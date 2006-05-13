@@ -860,6 +860,8 @@ void KOMonthView::showDates( const QDate &start, const QDate & )
 
   const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
 
+  mDateToCell.clear();
+
   // show first day of month on top for readability issues
   mStartDate = start.addDays( -start.day() + 1 );
   // correct begin of week
@@ -879,6 +881,7 @@ void KOMonthView::showDates( const QDate &start, const QDate & )
     }
 
     mCells[i]->setDate( date );
+    mDateToCell[ date ] = mCells[ i ];
     if( date == start )
       mCells[i]->select();
 
@@ -910,63 +913,58 @@ class KOMonthView::GetDateVisitor : public IncidenceBase::Visitor
     {
       return incidence->accept( *this );
     }
-    QDate date() const { return mDate; }
+    QDateTime startDate() const { return mStartDate; }
+    QDateTime endDate() const { return mEndDate; }
 
   protected:
     bool visit( Event *event ) {
-      mDate = event->dtStart().date();
+      mStartDate = event->dtStart();
+      mEndDate = event->dtEnd();
       return true;
     }
     bool visit( Todo *todo ) {
       if ( todo->hasDueDate() ) {
-        mDate = todo->dtDue().date();
+        mStartDate = todo->dtDue();
+        mEndDate = todo->dtDue();
         return true;
       } else
         return false;
     }
     bool visit( Journal *journal ) {
-      mDate = journal->dtStart().date();
+      mStartDate = journal->dtStart();
+      mEndDate = journal->dtStart();
       return true;
     }
   protected:
-    QDate mDate;
+    QDateTime mStartDate;
+    QDateTime mEndDate;
 };
 
 void KOMonthView::changeIncidenceDisplayAdded( Incidence *incidence, MonthViewCell::CreateItemVisitor& v)
 {
-  MonthViewCell *mvc;
-  Event *event = 0;
-  Todo *todo = 0;
-  QDate date;
-
-  // FIXME: use a visitor here
-  if ( incidence->type() == "Event" ) {
-    event = static_cast<Event *>( incidence );
-    date = event->dtStart().date();
-  }
-  if ( incidence->type() == "Todo" ) {
-    todo = static_cast<Todo *>( incidence );
-    if ( !todo->hasDueDate() ) return;
-    date = todo->dtDue().date();
+  GetDateVisitor gdv;
+  if ( !gdv.act( incidence ) )
+  {
+    kdDebug(5850) << "Visiting GetDateVisitor failed." << endl;
+    return;
   }
 
-  if ( incidence->doesRecur() ) {
-// FIXME: This breaks with recurring multi-day events!
-     for ( uint i = 0; i < mCells.count(); i++ ) {
-       if ( incidence->recursOn( mCells[i]->date() ) ) {
-         mCells[i]->addIncidence( incidence, v );
-       }
-     }
-  } else if ( event ) {
-      for ( QDateTime _date = date;
-            _date <= event->dtEnd(); _date = _date.addDays( 1 ) ) {
-        mvc = lookupCellByDate( _date.date() );
-        if ( mvc ) mvc->addIncidence( event, v );
+  if ( incidence->doesRecur() )
+  {
+    // FIXME: This breaks with recurring multi-day events!
+    for ( uint i = 0; i < mCells.count(); i++ ) {
+      if ( incidence->recursOn( mCells[i]->date() ) ) {
+        mCells[i]->addIncidence( incidence, v );
       }
-    } else if ( todo ) {
-        mvc = lookupCellByDate( date );
-        if ( mvc ) mvc->addIncidence( todo, v );
-      }
+    }
+  } else {
+    // addSecs(-1) is added to handle 0:00 cases (because it's non-inclusive according to rfc)
+    for ( QDate date = gdv.startDate().date(); date <= gdv.endDate().addSecs(-1).date(); date = date.addDays( 1 ) )
+    {
+      MonthViewCell *mvc = mDateToCell[ date ];
+      if ( mvc ) mvc->addIncidence( incidence, v );
+    }
+  }
 }
 
 void KOMonthView::changeIncidenceDisplay( Incidence *incidence, int action )
@@ -1065,13 +1063,4 @@ void KOMonthView::clearSelection()
     mSelectedCell->deselect();
     mSelectedCell = 0;
   }
-}
-
-MonthViewCell *KOMonthView::lookupCellByDate ( const QDate &date )
-{
-  for( uint i = 0; i < mCells.count(); i++ ) {
-    if ( mCells[i]->date() == date )
-      return mCells[i];
-  }
-  return 0;
 }
