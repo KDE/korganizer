@@ -202,6 +202,7 @@ void DateNavigatorContainer::resizeAllContents()
 
     mHorizontalCount = horizontalCount;
     mVerticalCount = verticalCount;
+    setBaseDates( mNavigatorView->selectedDates().first() );
     selectDates( mNavigatorView->selectedDates() );
     foreach( KDateNavigator *n, mExtraViews ) { if ( n ) n->show(); }
   }
