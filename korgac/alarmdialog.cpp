@@ -40,7 +40,7 @@
 #include <kprocess.h>
 #include <kdebug.h>
 #include <kmessagebox.h>
-#include <knotifyclient.h>
+#include <knotification.h>
 #include <kcombobox.h>
 #include <kwin.h>
 #include <klockfile.h>
@@ -221,7 +221,7 @@ void AlarmDialog::eventNotification()
   }
 
   if ( !beeped ) {
-    KNotifyClient::beep();
+    KNotification::beep();
   }
 }
 

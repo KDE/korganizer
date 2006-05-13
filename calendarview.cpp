@@ -150,7 +150,8 @@ CalendarView::CalendarView( QWidget *parent )
   mDateNavigator->setObjectName( "CalendarView::DateNavigator" );
 
 //  mLeftSplitter->setResizeMode( mDateNavigator, QSplitter::Stretch );
-  mLeftSplitter->setCollapsible( mDateNavigator, true );
+  mLeftSplitter->setCollapsible( mLeftSplitter->indexOf(mDateNavigator), true );
+
   mTodoList = new KOTodoView( CalendarNull::self(), mLeftSplitter );
   mTodoList->setObjectName( "todolist" );
 
