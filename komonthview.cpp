@@ -270,8 +270,7 @@ void MonthViewItem::paint( QPainter *p )
     yPos = fm.ascent() + fm.leading()/2;
   else
     yPos = pmheight/2 - fm.height()/2  + fm.ascent();
-  QColor textColor = palette().color( QPalette::Normal, sel ? \
-          QPalette::HighlightedText : QPalette::Text );
+  QColor textColor = getTextColor( bgColor );
   p->setPen( textColor );
 
   KWordWrap::drawFadeoutText( p, x, yPos, listBox()->width() - x, text() );
@@ -453,11 +452,12 @@ class MonthViewCell::CreateItemVisitor :
   public:
     CreateItemVisitor() : mItem(0) {}
 
-    bool act( IncidenceBase *incidence, QDate date, QPalette stdPal )
+    bool act( IncidenceBase *incidence, QDate date, QPalette stdPal, int multiDay )
     {
       mItem = 0;
       mDate = date;
       mStandardPalette = stdPal;
+      mMultiDay = multiDay;
       return incidence->accept( *this );
     }
     MonthViewItem *item() const { return mItem; }
@@ -466,13 +466,19 @@ class MonthViewCell::CreateItemVisitor :
     bool visit( Event *event ) {
       QString text;
       QDateTime dt( mDate );
+      // take the time 0:00 into account, which is non-inclusive
+      QDate dtEnd = event->dtEnd().addSecs( event->doesFloat() ? 0 : -1).date();
+      int length = event->dtStart().date().daysTo( dtEnd );
       if ( event->isMultiDay() ) {
-        if (mDate == event->dtStart().date()) {
+        if ( mDate == event->dtStart().date() ||
+           ( mMultiDay == 0 && event->recursOn( mDate ) ) ) {
           text = "(-- " + event->summary();
           dt = event->dtStart();
-        } else if (mDate == event->dtEnd().date()) {
+        } else if ( !event->doesRecur() && mDate == dtEnd ||
+                    // last day of a recurring multi-day event?
+                  ( mMultiDay == length && event->recursOn( mDate.addDays( -length ) ) ) ) {
           text = event->summary() + " --)";
-        } else if (!(event->dtStart().date().daysTo(mDate) % 7)) {
+        } else if (!(event->dtStart().date().daysTo(mDate) % 7) && length > 7 ) {
           text = "-- " + event->summary() + " --";
         } else {
           text = "----------------";
@@ -521,7 +527,6 @@ class MonthViewCell::CreateItemVisitor :
       text += todo->summary();
 
       mItem = new MonthViewItem( todo, dt, text );
-// FIXME: This breaks with recurring multi-day events!
       if ( todo->doesRecur() ) {
         mDate < todo->dtDue().date() ?
         mItem->setTodoDone( true ) : mItem->setTodo( true );
@@ -535,14 +540,15 @@ class MonthViewCell::CreateItemVisitor :
     MonthViewItem *mItem;
     QDate mDate;
     QPalette mStandardPalette;
+    int mMultiDay;
 };
 
 
-void MonthViewCell::addIncidence( Incidence *incidence )
+void MonthViewCell::addIncidence( Incidence *incidence, int multiDay )
 {
   CreateItemVisitor v;
 
-  if ( v.act( incidence, mDate, mStandardPalette ) ) {
+  if ( v.act( incidence, mDate, mStandardPalette, multiDay ) ) {
     MonthViewItem *item = v.item();
     if ( item ) {
       item->setAlarm( incidence->isAlarmEnabled() );
@@ -573,18 +579,16 @@ void MonthViewCell::addIncidence( Incidence *incidence )
   }
 }
 
-bool MonthViewCell::removeIncidence( Incidence *incidence )
+void MonthViewCell::removeIncidence( Incidence *incidence )
 {
-  for ( uint i = 0; i < mItemList->count(); i++ ) {
+  for ( uint i = 0; i < mItemList->count(); ++i ) {
     MonthViewItem *item = static_cast<MonthViewItem *>(mItemList->item( i ) );
     if ( item && item->incidence() &&
          item->incidence()->uid() == incidence->uid() ) {
       mItemList->removeItem( i );
-      return true;
+      --i;
     }
   }
-
-  return false;
 }
 
 void MonthViewCell::updateConfig()
@@ -962,24 +966,29 @@ class KOMonthView::GetDateVisitor : public IncidenceBase::Visitor
 void KOMonthView::changeIncidenceDisplayAdded( Incidence *incidence )
 {
   GetDateVisitor gdv;
-  if ( !gdv.act( incidence ) )
-  {
+
+  if ( !gdv.act( incidence ) ) {
     kDebug(5850) << "Visiting GetDateVisitor failed." << endl;
     return;
   }
 
-  if ( incidence->doesRecur() )
-  {
-    // FIXME: This breaks with recurring multi-day events!
+  bool floats = incidence->doesFloat();
+
+  if ( incidence->doesRecur() ) {
     for ( int i = 0; i < mCells.count(); ++i ) {
       if ( incidence->recursOn( mCells[i]->date() ) ) {
-        mCells[i]->addIncidence( incidence );
+
+        // handle multiday events
+        int length = gdv.startDate().date().daysTo( gdv.endDate().addSecs( floats ? 0 : -1 ).date() );
+        for ( int j = 0; j <= length && i+j < mCells.count(); ++j ) {
+          mCells[i+j]->addIncidence( incidence, j );
+        }
       }
     }
   } else {
     // addSecs(-1) is added to handle 0:00 cases (because it's non-inclusive according to rfc)
-    for ( QDate date = gdv.startDate().date(); date <= gdv.endDate().addSecs(-1).date(); date = date.addDays( 1 ) )
-    {
+    QDate endDate = gdv.endDate().addSecs( floats ? 0 : -1).date();
+    for ( QDate date = gdv.startDate().date(); date <= endDate; date = date.addDays( 1 ) ) {
       MonthViewCell *mvc = mDateToCell[ date ];
       if ( mvc ) mvc->addIncidence( incidence );
     }

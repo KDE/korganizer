@@ -169,13 +169,16 @@ class MonthViewCell : public QWidget
     void updateCell();
     /** Adds an incidence to the cell.
         Sets the right text and icons for this incidence.
+        @param incidence The incidence to be added.
+        @param multiDay Specifies which day of a multi-day event is added to the
+        cell. The first day is 0 (default).
     */
-    void addIncidence( Incidence * );
+    void addIncidence( Incidence *, int multDay=0 );
     /** Removes an incidence from the cell.
         @return True if successful, false if deletion failed
        (e.g. when given incidence doesn't exist in the cell.
     */
-    bool removeIncidence( Incidence * );
+    void removeIncidence( Incidence * );
 
     void updateConfig();
 
