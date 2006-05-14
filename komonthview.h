@@ -280,10 +280,6 @@ class KOMonthView: public KOEventView
     void viewChanged();
     void updateDayLabels();
 
-    /** @param date The date of the cell which should be returned.
-    @return Pointer of monthcell with given date, otherwise 0 */
-    MonthViewCell *lookupCellByDate( const QDate &date );
-
   private:
     class GetDateVisitor;
     int mDaysPerWeek;
@@ -292,6 +288,7 @@ class KOMonthView: public KOEventView
     int mWeekStartDay;
 
     QVector<MonthViewCell*> mCells;
+    QMap<QDate, MonthViewCell *>mDateToCell;
     QVector<QLabel*> mDayLabels;
 
     bool mShortDayLabels;
