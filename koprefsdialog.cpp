@@ -439,7 +439,7 @@ class KOPrefsDialogTime : public KPrefsModule
 
 extern "C"
 {
-  KCModule *create_korganizerconfigtime( QWidget *parent, const char * )
+  KDE_EXPORT KCModule *create_korganizerconfigtime( QWidget *parent, const char * )
   {
     KGlobal::locale()->insertCatalog( "timezones" );
     return new KOPrefsDialogTime( KOGlobals::self()->instance(), parent /*, "kcmkorganizertime"*/ );
@@ -531,7 +531,7 @@ class KOPrefsDialogViews : public KPrefsModule
 
 extern "C"
 {
-  KCModule *create_korganizerconfigviews( QWidget *parent, const char * )
+  KDE_EXPORT KCModule *create_korganizerconfigviews( QWidget *parent, const char * )
   {
     return new KOPrefsDialogViews( KOGlobals::self()->instance(), parent /*, "kcmkorganizerviews"*/ );
   }
@@ -591,7 +591,7 @@ class KOPrefsDialogFonts : public KPrefsModule
 
 extern "C"
 {
-  KCModule *create_korganizerconfigfonts( QWidget *parent, const char * )
+  KDE_EXPORT KCModule *create_korganizerconfigfonts( QWidget *parent, const char * )
   {
     return new KOPrefsDialogFonts( KOGlobals::self()->instance(), parent /*, "kcmkorganizerfonts"*/ );
   }
@@ -790,7 +790,7 @@ void KOPrefsDialogColors::updateResourceColor()
 }
 extern "C"
 {
-  KCModule *create_korganizerconfigcolors( QWidget *parent, const char * )
+  KDE_EXPORT KCModule *create_korganizerconfigcolors( QWidget *parent, const char * )
   {
     return new KOPrefsDialogColors( KOGlobals::self()->instance(), parent /*, "kcmkorganizercolors"*/ );
   }
@@ -955,7 +955,7 @@ void KOPrefsDialogGroupScheduling::updateInput()
 
 extern "C"
 {
-  KCModule *create_korganizerconfiggroupscheduling( QWidget *parent,
+  KDE_EXPORT KCModule *create_korganizerconfiggroupscheduling( QWidget *parent,
                                                      const char * )
   {
     return new KOPrefsDialogGroupScheduling( KOGlobals::self()->instance(), parent /*,
@@ -1038,7 +1038,7 @@ void KOPrefsDialogGroupwareScheduling::usrWriteConfig()
 
 extern "C"
 {
-  KCModule *create_korganizerconfigfreebusy( QWidget *parent, const char * )
+  KDE_EXPORT KCModule *create_korganizerconfigfreebusy( QWidget *parent, const char * )
   {
     return new KOPrefsDialogGroupwareScheduling( KOGlobals::self()->instance(), parent /*,
                                                  "kcmkorganizerfreebusy"*/ );
@@ -1179,7 +1179,7 @@ void KOPrefsDialogPlugins::selectionChanged( Q3ListViewItem *i )
 
 extern "C"
 {
-  KCModule *create_korganizerconfigplugins( QWidget *parent, const char * )
+  KDE_EXPORT KCModule *create_korganizerconfigplugins( QWidget *parent, const char * )
   {
     return new KOPrefsDialogPlugins( KOGlobals::self()->instance(), parent /*,
                                      "kcmkorganizerplugins"*/ );
@@ -1189,7 +1189,7 @@ extern "C"
 
 extern "C"
 {
-  KCModule *create_korgdesignerfields( QWidget *parent, const char * ) {
+  KDE_EXPORT KCModule *create_korgdesignerfields( QWidget *parent, const char * ) {
     return new KOPrefsDesignerFields( KOGlobals::self()->instance(), parent /*, "kcmkorgdesignerfields"*/ );
   }
 }
