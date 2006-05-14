@@ -670,7 +670,7 @@ QDate MonthViewCell::selectedIncidenceDate()
 
 void MonthViewCell::select()
 {
-  // setSelectedCall will deselect currently selected cells
+  // setSelectedCell will deselect currently selected cells
   mMonthView->setSelectedCell( this );
 
   if( KOPrefs::instance()->enableMonthScroll() )
@@ -1061,9 +1061,8 @@ void KOMonthView::showGeneralContextMenu()
 
 void KOMonthView::setSelectedCell( MonthViewCell *cell )
 {
-  if ( cell == mSelectedCell ) return;
-
-  if ( mSelectedCell ) mSelectedCell->deselect();
+  if ( mSelectedCell && cell != mSelectedCell )
+    mSelectedCell->deselect();
 
   mSelectedCell = cell;
 
