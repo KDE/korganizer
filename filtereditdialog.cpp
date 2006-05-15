@@ -169,7 +169,7 @@ void FilterEdit::filterSelected(CalFilter *filter)
 
   current = filter;
   mNameLineEdit->blockSignals(true);
-  mNameLineEdit->setText(current->name());
+  mNameLineEdit->setText(current ? current->name() : QString::null);
   mNameLineEdit->blockSignals(false);
   mDetailsFrame->setEnabled(current != 0L);
   mCompletedCheck->setChecked( current->criteria() & CalFilter::HideCompleted );
