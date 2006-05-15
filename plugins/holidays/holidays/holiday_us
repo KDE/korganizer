@@ -1,0 +1,54 @@
+:
+: US holiday file. Copy to ~/.holiday
+: Use this as a starting point, some holidays are missing, and some listed
+: here are largely irrelevant.
+:
+: Author: Ron Harichandran <harichan@cee.msu.edu>
+:
+small "New Year" weekend on 1/1
+small "M.L.King B'day" weekend on third monday in january
+small "President's Day" weekend on third monday in february
+small "Easter" weekend on easter
+small "Memorial Day" weekend on last monday in may
+small "Independence Day" weekend on july 4
+small "Labor Day" weekend on first monday in september
+small "Columbus Day" weekend on second monday in october
+small "Veteran's Day" weekend on november 11
+small "Thanksgiving" weekend on fourth thursday in november
+small "Christmas" weekend on december 25
+
+:
+: more holidays from Jeff Buhrt <jeff@amesbvap.ci.in.ameritech.com>
+:
+small "Groundhog Day" on february 2
+small "Lincoln's Birthday" on february 12
+small "St. Valentine's Day" on february 14
+small "Susan B. Anthony's Day" on february 15
+small "St. Patrick's Day" on march 17
+small "Arbor Day" on last friday in april
+small "Loyalty Day" on may 1
+small "Mother's Day" on second sunday in may
+small "Armed Forces Day" on third saturday in may
+: small "Victoria Day" on monday in may and 18 thru 24
+small "Memorial Day" weekend on last monday in may
+small "Father's Day" on third sunday in june
+small "Citizenship Day" on september 17
+small "Child Health Day" on first monday in september
+small "World Poetry Day" on october 15
+small "United Nations' Day" on october 24
+small "Halloween" on october 31
+small "Bill of Rights' Day" on december 15
+small "Wright Brothers' Day" on december 17
+
+: Easter related
+small "Ash Wednesday" on easter minus 46 days
+small "Pentecost" weekend on easter plus 49 days
+small "Ascension" on easter plus 40 days
+small "Trinity" on easter plus 46 day
+small "Corpus Christi" on easter plus 53 days
+
+: Seasons (are these really hardcoded or calculated?)
+"Spring Begins" on march 22
+"Summer Begins" on june 22
+"Fall Begins" on september 22
+"Winter Begins" on december 22

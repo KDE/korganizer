@@ -1,0 +1,38 @@
+: Estonian holiday file. Copy to ~/.holiday
+:
+: Author: Hasso Tepper <hasso@estpak.ee>
+
+: Rahvuslik püha
+red "Iseseisvuspäev" on 24 february
+
+: Riigipühad
+red "Uusaasta" on 1 january
+red "Kevadpüha" on 1 may
+red "Võidupüha" on 23 june
+red "Jaanipäev" on 24 june
+red "Taasiseseisvumispäev" on 20 august
+red "Esimene jõulupüha" on 25 december
+red "Teine jõulupüha" on 26 december
+
+red "Suur reede" on easter minus 2 days
+red "Ülestõusmispühade 1. püha" on easter
+red "Nelipühade 1. püha" on easter plus 49 days
+
+: Riiklikud tähtpäevad
+blue "Kolmekuningapäev" on 6 january
+blue "Tartu rahulepingu aastapäev" on 2 february
+blue "Emakeelepäev" on 14 march
+blue "Emadepäev" on second sunday in may
+blue "Leinapäev" on 14 june
+blue "Hingedepäev" on 2 november
+blue "Isadepäev" on second sunday in november
+blue "Taassünnipäev" on 16 november
+
+: Muud tähtpäevad
+blue "Naistepäev" on 8 march
+
+red "1. advent" on sunday before 24 december minus 21 days
+red "2. advent" on sunday before 24 december minus 14 days
+red "3. advent" on sunday before 24 december minus 7 days
+red "4. advent" on sunday before 24 december
+

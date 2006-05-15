@@ -1,0 +1,27 @@
+:
+: Archivo holiday_colombia. Cópialo a  ~/.holiday
+: Modifica este archivo borrando y añadiendo lo que te parezca.
+:
+: Festivos 
+: 
+red "Año nuevo" red on january 1
+red "Reyes magos" red on monday after january 6
+red "San José" red on march 24
+red "Día del Trabajo" red on may 1
+red "Dia de la ascención" red on june 2
+red "Día del Corpus" red on monday after june 23
+red "San Pedro y San Pablo" red on monday after june 30
+red "Sagrado Corazón" red on monday after june 30
+red "Día de la Independencia" red on july 20
+red "Fiesta de la Batalla de Boyaca" red on august 7
+red "Asunción" red on monday after august 18
+red "Día de la Raza" red on october 13
+red "Todos los Santos" red on monday after november 3
+red "Independencia de Cartagena" red on november 17
+red "La Inmaculada" red on december 8
+red "Día de Navidad" red on december  25
+:
+: Relacionados con la pascua
+:
+small "Jueves Santo" weekend on easter minus 3 days
+small "Viernes Santo" weekend on easter minus 2 days

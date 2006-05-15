@@ -1,0 +1,68 @@
+:
+: Australian holiday file. Copy to ~/.holiday
+:
+: Author: Peter Turnbull (peter@cbr.atr.com.au)
+:
+: Note that some standard holidays vary widely depending on which state you
+: are in.  It is recommended that you either remove the weekend keyword from
+: the states that aren't applicable to you, or just remove them.
+:
+: TODO: correct the holidays as noted below. I'm not sure how to do that.
+
+: If Christmas or Boxing Day fall on a weekend then the holidays are
+: moved to the following Monday and Tuesday.
+
+small "Christmas" weekend on december 25
+small "Boxing Day" weekend on december 26
+
+: If new years day falls on a weekend then the Monday is a holiday.
+small "New Year's Day" weekend on january 1
+
+small "Australia Day" on january 26
+
+small "Anzac Day" on april 25
+small "Easter Sunday" weekend on easter
+small "Good Friday" weekend on easter minus 2
+small "Easter Monday" weekend on easter plus 1
+
+: About the 2nd weekend in June.  The holiday is always a Monday.
+small "Queen's Birthday" weekend on second monday in june
+small "Melbourne Cup" weekend on first tuesday in november
+
+: Labour day for ACT, NSW, SA
+small "Labour Day" weekend on first monday in october
+
+: Specific holidays for the ACT 
+small "Canberra Day" weekend on march 21
+small "ACT - Bank holiday" weekend on first monday in august
+
+: Specific holidays for Victoria
+small "VIC - Labour Day" weekend on second monday in march
+
+: Show day is always a Thursday.  I think the last in Spetember but not sure.
+small "Melbourne Show Day" weekend on september 22
+
+: Specific holidays for SA
+small "Adelaide Cup Day" weekend on may 16
+small "SA - Proclamation Day" weekend on december 28
+
+: Specific holidays for Tasmania
+small "TAS - Eight Hours Day" weekend on march 7
+small "TAS - Bank Holiday" weekend on april 5
+small "TAS - Recreation Day" weekend on november 7
+ 
+: Specific holidays for WA
+small "WA - Labour Day" weekend on first monday in march
+small "WA - Foundation Day" weekend first monday in june
+small "WA - Queen's Birthday" weekend on september 26
+
+: Specific holidays for NT
+small "NT - May Day" on weekend first monday in may
+small "Alice Springs Show Day" weekend on first friday in july
+small "Tennant Creek Show Day" weekend on second friday in july
+small "Katherine Show Day" weekend on third friday in july
+small "Darwin Show Day" weekend on last friday in july
+small "NT - Picnic Day" weekend on first monday in august
+
+: Specific holidays for QLD
+small "QLD - Labour Day"  weekend on first monday in may

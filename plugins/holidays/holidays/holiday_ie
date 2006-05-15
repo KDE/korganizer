@@ -1,0 +1,16 @@
+:
+: Holiday file for Ireland.
+:
+: Author: CP Hennessy <CP.Hennessy@iname.com>
+:
+"New Years Day" red on 1/1
+"St Patricks Day (religious)" red on 3/17
+"Easter Sunday" red on easter
+"Good Friday" red on easter minus 2
+"Easter Monday" red on easter plus 1
+"May Day" red on first monday in may
+"Spring Bank Holiday" red on first monday in june
+"Summer Bank Holiday" red on first monday in august
+"October Bank Holiday" red on last monday in october
+"Christmas Day" red on 12/25
+"St Stephens Day" red on 12/26

@@ -1,0 +1,29 @@
+:
+: French holiday file. Copy to ~/.holiday
+:
+: en vert les saisons
+: en bleu (texte) et rouge (jour) les jours ferie's
+: en cyan d'autres fetes non ferie'es ou dimanche
+: Je suis pas sur pour les fetes des peres et des meres
+:
+: Author: Jean-Claude Giese <giese@loria.fr>
+:
+blue "Jour de l'An" weekend on 1.1.
+cyan "Epiphanie" on first sunday in january
+green "Printemps" on 20.3.
+blue "Pâques" weekend on easter length 2 days
+blue "Pentecôte" weekend on easter plus 49 days length 2 days
+blue "Ascension" weekend on easter plus 39 days
+blue "Fête du travail" weekend on 1.5.
+blue "Armistice 1945" weekend on 8.5.
+green "Eté" on 21.6.
+blue "Fête Nationale" weekend on 14.7.
+blue "Assomption" weekend on 15.8.
+cyan "Fête des mères" on last sunday in may
+cyan "Fête des pères" on third sunday in june
+green "Automne" on 23.9.
+blue "Toussaint" weekend on 1.11.
+blue "Armistice 1918" weekend on 11.11.
+green "Hiver" on 21.12.
+blue "Noël" weekend on 25.12. 
+cyan "St Sylvestre" on 31.12.
