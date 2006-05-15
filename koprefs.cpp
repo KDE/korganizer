@@ -365,7 +365,7 @@ bool KOPrefs::thatIsMe( const QString& _email )
   if ( KOCore::self()->identityManager()->thatIsMe( _email ) )
     return true;
   // in case email contains a full name, strip it out
-  QString email = KPIM::getEmailAddress( _email );
+  QString email = EmailAddressTools::extractEmailAddress( _email );
   if ( mAdditionalMails.contains( email )  )
     return true;
   QStringList lst = KABC::StdAddressBook::self( true )->whoAmI().emails();

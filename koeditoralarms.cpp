@@ -292,7 +292,7 @@ void KOEditorAlarms::writeAlarm( KCal::Alarm *alarm )
   } else if ( mWidget.mTypeAppRadio->isChecked() ) { // Procedure
     alarm->setProcedureAlarm( mWidget.mApplication->url(), mWidget.mAppArguments->text() );
   } else if ( mWidget.mTypeEmailRadio->isChecked() ) { // Email
-    QStringList addresses = KPIM::splitEmailAddrList( mWidget.mEmailAddress->text() );
+    QStringList addresses = EmailAddressTools::splitAddressList( mWidget.mEmailAddress->text() );
     QList<KCal::Person> add;
     for ( QStringList::Iterator it = addresses.begin(); it != addresses.end(); ++it ) {
       add << KCal::Person( *it );

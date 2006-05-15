@@ -317,7 +317,7 @@ void KOTodoListView::contentsDropEvent( QDropEvent *e )
         if( text.startsWith( "file:" ) ) {
           todo->addAttachment( new Attachment( text ) );
         } else {
-          QStringList emails = KPIM::splitEmailAddrList( text );
+          QStringList emails = EmailAddressTools::splitAddressList( text );
           for(QStringList::ConstIterator it = emails.begin();it!=emails.end();++it) {
             kDebug(5850) << " Email: " << (*it) << endl;
             int pos = (*it).indexOf("<");

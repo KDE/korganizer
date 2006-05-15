@@ -137,7 +137,7 @@ void KOAttendeeListView::addAttendee( const QString &newAttendee )
   kDebug(5850) << " Email: " << newAttendee << endl;
   QString name;
   QString email;
-  KPIM::getNameAndMail( newAttendee, name, email );
+  EmailAddressTools::extractEmailAddressAndName( newAttendee, email, name );
   emit dropped( new Attendee( name, email, true ) );
 }
 
@@ -391,7 +391,7 @@ void KOEditorDetails::openAddressBook()
       KABC::Addressee a = (*itr);
       bool myself = KOPrefs::instance()->thatIsMe( a.preferredEmail() );
       bool sameAsOrganizer = mOrganizerCombo && 
-        KPIM::compareEmail( a.preferredEmail(), mOrganizerCombo->currentText(), false );
+        EmailAddressTools::compareEmail( a.preferredEmail(), mOrganizerCombo->currentText(), false );
       KCal::Attendee::PartStat partStat;
       if ( myself && sameAsOrganizer ) 
         partStat = KCal::Attendee::Accepted;
@@ -574,7 +574,7 @@ void KOEditorDetails::fillAttendeeInput( AttendeeListItem *aItem )
   mDisableItemUpdate = true;
   QString name = a->name();
   if (!a->email().isEmpty()) {
-    name = KPIM::quoteNameIfNecessary( name );
+    name = EmailAddressTools::quoteNameIfNecessary( name );
     name += " <" + a->email() + '>';
   }
   mNameEdit->setText(name);
@@ -610,15 +610,15 @@ void KOEditorDetails::updateAttendeeItem()
 
   QString name;
   QString email;
-  KPIM::getNameAndMail(mNameEdit->text(), name, email);
+  EmailAddressTools::extractEmailAddressAndName(mNameEdit->text(), email, name);
 
   bool iAmTheOrganizer = mOrganizerCombo &&
     KOPrefs::instance()->thatIsMe( mOrganizerCombo->currentText() );
   if ( iAmTheOrganizer ) {
     bool myself =
-      KPIM::compareEmail( email, mOrganizerCombo->currentText(), false );
+      EmailAddressTools::compareEmail( email, mOrganizerCombo->currentText(), false );
     bool wasMyself = 
-      KPIM::compareEmail( a->email(), mOrganizerCombo->currentText(), false );
+      EmailAddressTools::compareEmail( a->email(), mOrganizerCombo->currentText(), false );
     if ( myself ) {
       mStatusCombo->setCurrentIndex( KCal::Attendee::Accepted );
       mRsvpButton->setChecked( false );
