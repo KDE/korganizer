@@ -115,9 +115,7 @@ bool KOListView::ListItemVisitor::visit( Event *e )
   if (e->doesFloat()) mItem->setText(4, "---"); else mItem->setText( 4, e->dtStartTimeStr() );
   mItem->setText( 5,e->dtEndDateStr());
   if (e->doesFloat()) mItem->setText(6, "---"); else mItem->setText( 6, e->dtEndTimeStr() );
-  mItem->setText( 7, "---" );
-  mItem->setText( 8, "---" );
-  mItem->setText( 9,e->categoriesStr());
+  mItem->setText( 7,e->categoriesStr());
 
   QString key = e->dtStart().toString(Qt::ISODate);
   mItem->setSortKey(3,key);
@@ -213,7 +211,6 @@ KOListView::KOListView( Calendar *calendar, QWidget *parent,
   mListView->addColumn(i18n("End Time"));
   mListView->setColumnAlignment(6,AlignHCenter);
   mListView->addColumn(i18n("Categories"));
-  mListView->setColumnAlignment(7,AlignHCenter);
 
   QBoxLayout *layoutTop = new QVBoxLayout(this);
   layoutTop->addWidget(mListView);
