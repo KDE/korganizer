@@ -114,7 +114,7 @@ void TimeLabels::hideMousePos()
   mMousePos->hide();
 }
 
-void TimeLabels::setCellHeight(int height)
+void TimeLabels::setCellHeight(double height)
 {
   mCellHeight = height;
 }
@@ -251,6 +251,7 @@ void TimeLabels::setAgenda(KOAgenda* agenda)
   connect(mAgenda, SIGNAL(mousePosSignal(const QPoint &)), this, SLOT(mousePosChanged(const QPoint &)));
   connect(mAgenda, SIGNAL(enterAgenda()), this, SLOT(showMousePos()));
   connect(mAgenda, SIGNAL(leaveAgenda()), this, SLOT(hideMousePos()));
+  connect(mAgenda, SIGNAL(gridSpacingYChanged( double ) ), this, SLOT( setCellHeight( double ) ) );
 }
 
 

@@ -199,6 +199,8 @@ class KOAgenda : public QScrollView
     void enterAgenda();
     void leaveAgenda();
 
+    void gridSpacingYChanged( double );
+
   private:
     enum MouseActionType { NOP, MOVE, SELECT,
                            RESIZETOP, RESIZEBOTTOM, RESIZELEFT, RESIZERIGHT };
