@@ -127,11 +127,8 @@ void TimeSpanWidget::clear()
 
 void TimeSpanWidget::updateView()
 {
-#if QT_VERSION >= 300
   mLineView->updateContents();
   mTimeLine->updateContents();
-#else
-#endif
 }
 
 void TimeSpanWidget::setDateRange( const QDateTime &start, const QDateTime &end )

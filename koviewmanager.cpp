@@ -250,11 +250,7 @@ void KOViewManager::zoomOutVertically()
 void KOViewManager::addView(KOrg::BaseView *view)
 {
   connectView( view );
-#if QT_VERSION >= 300
   mMainView->viewStack()->addWidget( view );
-#else
-  mMainView->viewStack()->addWidget( view, 1 );
-#endif
 }
 
 void KOViewManager::showWhatsNextView()

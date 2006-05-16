@@ -69,10 +69,7 @@ class KOTodoViewItem : public Q3CheckListItem
       int column, int width, int alignment);
 
   protected:
-#if QT_VERSION >= 300
     void paintBranches(QPainter *p,const QColorGroup & cg,int w,int y,int h);
-#else
-#endif
   virtual void stateChange(bool);
 
   private:

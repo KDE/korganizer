@@ -101,14 +101,11 @@ int KOTodoViewItem::compare( Q3ListViewItem *it, int col, bool ascending ) const
   }
 }
 
-#if QT_VERSION >= 300
 void KOTodoViewItem::paintBranches(QPainter *p,const QColorGroup & cg,int w,
                                    int y,int h)
 {
   Q3ListViewItem::paintBranches(p,cg,w,y,h);
 }
-#else
-#endif
 
 void KOTodoViewItem::construct()
 {

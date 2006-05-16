@@ -222,11 +222,7 @@ MonthViewItem::MonthViewItem( Incidence *incidence, const QDateTime &qd,
 
 void MonthViewItem::paint( QPainter *p )
 {
-#if QT_VERSION >= 0x030000
   bool sel = isSelected();
-#else
-  bool sel = selected();
-#endif
 
   QColor bgColor = palette().color( QPalette::Normal,
             sel ? QPalette::Highlight : QPalette::Background );
