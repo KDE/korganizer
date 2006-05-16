@@ -1794,6 +1794,7 @@ void KOAgenda::resizeEvent ( QResizeEvent *ev )
   }
   calculateWorkingHours();
   QTimer::singleShot( 0, this, SLOT( resizeAllContents() ) );
+  emit gridSpacingYChanged( mGridSpacingY * 4 );
   Q3ScrollView::resizeEvent(ev);
 }
 

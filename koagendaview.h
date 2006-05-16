@@ -53,8 +53,6 @@ class TimeLabels : public Q3ScrollView
   public:
     TimeLabels( int rows, QWidget *parent = 0, Qt::WFlags f = 0 );
 
-    void setCellHeight( int height );
-
     /** Calculates the minimum width */
     virtual int minimumWidth() const;
 
@@ -80,6 +78,8 @@ class TimeLabels : public Q3ScrollView
 
     void showMousePos();
     void hideMousePos();
+
+    void setCellHeight( double height );
 
   private:
     int mRows;

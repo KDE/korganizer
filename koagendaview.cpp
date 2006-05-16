@@ -128,7 +128,7 @@ void TimeLabels::hideMousePos()
   mMousePos->hide();
 }
 
-void TimeLabels::setCellHeight(int height)
+void TimeLabels::setCellHeight(double height)
 {
   mCellHeight = height;
 }
@@ -267,6 +267,7 @@ void TimeLabels::setAgenda(KOAgenda* agenda)
   connect(mAgenda, SIGNAL(mousePosSignal(const QPoint &)), this, SLOT(mousePosChanged(const QPoint &)));
   connect(mAgenda, SIGNAL(enterAgenda()), this, SLOT(showMousePos()));
   connect(mAgenda, SIGNAL(leaveAgenda()), this, SLOT(hideMousePos()));
+  connect(mAgenda, SIGNAL(gridSpacingYChanged( double ) ), this, SLOT( setCellHeight( double ) ) );
 }
 
 
@@ -1241,11 +1242,11 @@ void KOAgendaView::showIncidences( const Incidence::List &incidences )
         it != incidences.constEnd(); ++it )
       if ( !( wehaveall = filter->filterIncidence( *it ) ) )
         break;
-  
+
   if ( !wehaveall )
     calendar()->setFilter( 0 );
-  
-  QDateTime start = incidences.first()->dtStart(), 
+
+  QDateTime start = incidences.first()->dtStart(),
             end = incidences.first()->dtEnd();
   Incidence *first = incidences.first();
   for ( Incidence::List::ConstIterator it = incidences.constBegin();
@@ -1255,12 +1256,12 @@ void KOAgendaView::showIncidences( const Incidence::List &incidences )
     start = qMin( start, ( *it )->dtStart() );
     end = qMax( start, ( *it )->dtEnd() );
   }
-  
+
   if ( start.date().daysTo( end.date() ) + 1 <= currentDateCount() )
     showDates( start.date(), end.date() );
   else
     showDates( start.date(), start.date().addDays( currentDateCount() - 1 ) );
-  
+
   mAgenda->selectItemByUID( first->uid() );
 }
 
