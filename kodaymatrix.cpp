@@ -530,6 +530,8 @@ void KODayMatrix::paintEvent( QPaintEvent * )
   if (mSelStart != NOSELECTION) {
 
     row = mSelStart/7;
+    // fix larger selections starting in the previous month
+    if ( row < 0 && mSelEnd > 0 ) row = 0;
     col = mSelStart -row*7;
     QColor selcol = KOPrefs::instance()->mHighlightColor;
 
