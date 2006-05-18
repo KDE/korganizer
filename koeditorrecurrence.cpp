@@ -1165,7 +1165,7 @@ void KOEditorRecurrence::setDefaults( const QDateTime &from, const QDateTime &to
   mWeekly->setDays( days );
 
   mMonthly->setFrequency( 1 );
-  mMonthly->setByPos( ( from.date().day() - 1 ) / 7 + 1, from.date().dayOfWeek() - 1 );
+  mMonthly->setByPos( ( from.date().day() - 1 ) / 7 + 1, from.date().dayOfWeek() );
   mMonthly->setByDay( from.date().day() );
 
   mYearly->setFrequency( 1 );
