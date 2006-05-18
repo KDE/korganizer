@@ -255,7 +255,7 @@ RecurMonthly::RecurMonthly( QWidget *parent ) : RecurBase( parent )
   mByDayRadio->setWhatsThis(
                    i18n("Sets a specific day of the month on which "
                         "this event or to-do should recur.") );
-  
+
   buttonLayout->addWidget( mByDayRadio, 0, 0 );
 
   QString whatsThis = i18n("The day of the month on which this event or to-do "
@@ -501,7 +501,7 @@ RecurYearly::RecurYearly( QWidget *parent ) : RecurBase( parent )
   mByDaySpin = new QSpinBox( buttonGroup );
   mByDaySpin->setRange( 1, 366 );
   mByDaySpin->setWhatsThis( whatsThis );
-  
+
   dayLayout->addWidget( mByDaySpin );
 
   QString ofTheYear( i18nc("part after NNN of 'Recur on day #NNN of the year'", " of the &year"));
@@ -1134,17 +1134,17 @@ void KOEditorRecurrence::setDateTimes( const QDateTime &start, const QDateTime &
   mWeekly->setDateTimes( start, end );
   mMonthly->setDateTimes( start, end );
   mYearly->setDateTimes( start, end );
-  
+
   // Now set the defaults for all unused types, use the start time for it
   bool enabled = mEnabledCheck->isChecked();
   int type = mRecurrenceChooser->type();
-  
+
   if ( !enabled || type != RecurrenceChooser::Weekly ) {
     QBitArray days( 7 );
     days.fill( 0 );
     days.setBit( (start.date().dayOfWeek()+6) % 7 );
     mWeekly->setDays( days );
-  } 
+  }
   if ( !enabled || type != RecurrenceChooser::Monthly ) {
     mMonthly->setByPos( ( start.date().day() - 1 ) / 7 + 1, start.date().dayOfWeek() - 1 );
     mMonthly->setByDay( start.date().day() );
@@ -1179,7 +1179,7 @@ void KOEditorRecurrence::setDefaults( const QDateTime &from, const QDateTime &to
   mWeekly->setDays( days );
 
   mMonthly->setFrequency( 1 );
-  mMonthly->setByPos( ( from.date().day() - 1 ) / 7 + 1, from.date().dayOfWeek() - 1 );
+  mMonthly->setByPos( ( from.date().day() - 1 ) / 7 + 1, from.date().dayOfWeek() );
   mMonthly->setByDay( from.date().day() );
 
   mYearly->setFrequency( 1 );
@@ -1354,7 +1354,7 @@ void KOEditorRecurrence::writeIncidence( Incidence *incidence )
     r->setWeekly( mWeekly->frequency(), mWeekly->days() );
   } else if ( recurrenceType == RecurrenceChooser::Monthly ) {
     r->setMonthly( mMonthly->frequency() );
-    
+
     if ( mMonthly->byPos() ) {
       int pos = mMonthly->count();
 
@@ -1387,7 +1387,7 @@ void KOEditorRecurrence::writeIncidence( Incidence *incidence )
     }
   } // end "Yearly"
 
-  if ( duration > 0 ) 
+  if ( duration > 0 )
     r->setDuration( duration );
   else if ( duration == 0 )
     r->setEndDate( endDate );
