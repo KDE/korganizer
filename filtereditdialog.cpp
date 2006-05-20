@@ -171,7 +171,7 @@ void FilterEdit::filterSelected(CalFilter *filter)
   mNameLineEdit->blockSignals(true);
   mNameLineEdit->setText(current ? current->name() : QString::null);
   mNameLineEdit->blockSignals(false);
-  mDetailsFrame->setEnabled(current != 0L);
+  mDetailsFrame->setEnabled(true);
   mCompletedCheck->setChecked( current->criteria() & CalFilter::HideCompleted );
   mCompletedTimeSpan->setValue( current->completedTimeSpan() );
   mRecurringCheck->setChecked( current->criteria() & CalFilter::HideRecurring );
