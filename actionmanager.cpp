@@ -651,7 +651,7 @@ void ActionManager::file_open( const KUrl &url )
     return;
   }
 
-  kDebug(5850) << "ActionManager::file_open(): " << url.prettyURL() << endl;
+  kDebug(5850) << "ActionManager::file_open(): " << url.prettyUrl() << endl;
 
   // Open the calendar file in the same window only if we have an empty calendar window, and not the resource calendar
   if ( !mCalendarView->isModified() && mFile.isEmpty() && !mCalendarResources ) {
@@ -796,7 +796,7 @@ bool ActionManager::openURL( const KUrl &url,bool merge )
     mFile = url.path();
     if ( !KStandardDirs::exists( mFile ) ) {
       mMainWindow->showStatusMessage( i18n("New calendar '%1'.",
-                                        url.prettyURL() ) );
+                                        url.prettyUrl() ) );
       mCalendarView->setModified();
     } else {
       bool success = mCalendarView->openCalendar( mFile, merge );
@@ -822,7 +822,7 @@ bool ActionManager::openURL( const KUrl &url,bool merge )
           KConfig *config = KOGlobals::self()->config();
           config->setGroup( "General" );
           setTitle();
-          kDebug(5850) << "-- Add recent URL: " << url.prettyURL() << endl;
+          kDebug(5850) << "-- Add recent URL: " << url.prettyUrl() << endl;
           if ( mRecent ) mRecent->addUrl( url );
           showStatusMessageOpen( url, merge );
         }
@@ -830,7 +830,7 @@ bool ActionManager::openURL( const KUrl &url,bool merge )
       return success;
     } else {
       QString msg;
-      msg = i18n("Cannot download calendar from '%1'.", url.prettyURL() );
+      msg = i18n("Cannot download calendar from '%1'.", url.prettyUrl() );
       KMessageBox::error( dialogParent(), msg );
       return false;
     }
@@ -862,7 +862,7 @@ bool ActionManager::addResource( const KUrl &mUrl )
       resource->setValue( "DownloadURL", mUrl.url() );
       resource->setReadOnly( true );
     }
-    name = mUrl.prettyURL();
+    name = mUrl.prettyUrl();
   }
 
   if ( resource ) {
@@ -889,10 +889,10 @@ void ActionManager::showStatusMessageOpen( const KUrl &url, bool merge )
 {
   if ( merge ) {
     mMainWindow->showStatusMessage( i18n("Merged calendar '%1'.",
-                                      url.prettyURL() ) );
+                                      url.prettyUrl() ) );
   } else {
     mMainWindow->showStatusMessage( i18n("Opened calendar '%1'.",
-                                      url.prettyURL() ) );
+                                      url.prettyUrl() ) );
   }
 }
 
@@ -943,7 +943,7 @@ bool ActionManager::saveURL()
   if ( !mURL.isLocalFile() ) {
     if ( !KIO::NetAccess::upload( mFile, mURL, view() ) ) {
       QString msg = i18n("Cannot upload calendar to '%1'",
-                      mURL.prettyURL() );
+                      mURL.prettyUrl() );
       KMessageBox::error( dialogParent() ,msg );
       return false;
     }
@@ -955,7 +955,7 @@ bool ActionManager::saveURL()
     mAutoSaveTimer->start( 1000*60*KOPrefs::instance()->mAutoSaveInterval );
   }
 
-  mMainWindow->showStatusMessage( i18n("Saved calendar '%1'.", mURL.prettyURL() ) );
+  mMainWindow->showStatusMessage( i18n("Saved calendar '%1'.", mURL.prettyUrl() ) );
 
   return true;
 }
@@ -1018,7 +1018,7 @@ void ActionManager::exportHTML( HTMLExportSettings *settings )
 
 bool ActionManager::saveAsURL( const KUrl &url )
 {
-  kDebug(5850) << "ActionManager::saveAsURL() " << url.prettyURL() << endl;
+  kDebug(5850) << "ActionManager::saveAsURL() " << url.prettyUrl() << endl;
 
   if ( url.isEmpty() ) {
     kDebug(5850) << "ActionManager::saveAsURL(): Empty URL." << endl;
@@ -1656,7 +1656,7 @@ void ActionManager::importCalendar( const KUrl &url )
 {
   if ( !url.isValid() ) {
     KMessageBox::error( dialogParent(),
-                        i18n("URL '%1' is invalid.", url.prettyURL() ) );
+                        i18n("URL '%1' is invalid.", url.prettyUrl() ) );
     return;
   }
 

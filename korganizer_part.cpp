@@ -216,7 +216,7 @@ void KOrganizerPart::setTitle()
 
     if ( !url.isEmpty() ) {
       if ( url.isLocalFile() ) title = url.fileName();
-      else title = url.prettyURL();
+      else title = url.prettyUrl();
     } else {
       title = i18n("New Calendar");
     }

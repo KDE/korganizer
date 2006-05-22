@@ -52,7 +52,7 @@ ImportDialog::ImportDialog( const KUrl &url, QWidget *parent )
   topLayout->setMargin( 0 );
 
   QString txt = i18n("Import calendar at '%1' into KOrganizer.",
-                  mUrl.prettyURL() );
+                  mUrl.prettyUrl() );
 
   topLayout->addWidget( new QLabel( txt, topFrame ) );
 
