@@ -1081,9 +1081,11 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins( KInstance *inst, QWidget *parent )
   mDescription->setFrameShape( QLabel::Panel );
   mDescription->setFrameShadow( QLabel::Sunken );
   mDescription->setMinimumSize( QSize( 0, 55 ) );
-  mDescription->setSizePolicy(
-         QSizePolicy( (QSizePolicy::SizeType)5, (QSizePolicy::SizeType)0,
-                      0, 0, mDescription->sizePolicy().hasHeightForWidth() ) );
+  QSizePolicy policy( (QSizePolicy::SizeType)5, (QSizePolicy::SizeType)0 );
+  policy.setHorizontalStretch( 0 );
+  policy.setVerticalStretch( 0 );
+  policy.setHeightForWidth( mDescription->sizePolicy().hasHeightForWidth() );
+  mDescription->setSizePolicy( policy );
   topLayout->addWidget( mDescription );
 
 

@@ -48,7 +48,6 @@
 #include "calprinthelper.h"
 #include "calprintpluginbase.h"
 #include "calprintdefaultplugins.h"
-#include "calprintdefaultplugins.moc"
 
 
 

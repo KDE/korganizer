@@ -98,7 +98,7 @@ bool UriHandler::process( const QString &uri )
     KToolInvocation::startServiceByDesktopPath("korganizer");
 
     // we must work around KUrl breakage (it doesn't know about URNs)
-    QString uid = KUrl::decode_string( uri ).mid( 11 );
+    QString uid = KUrl::fromPercentEncoding( uri.toLatin1() ).mid( 11 );
     
     KOrganizerIface_stub korganizerIface( "korganizer", "KOrganizerIface" );
     return korganizerIface.showIncidence( uid );

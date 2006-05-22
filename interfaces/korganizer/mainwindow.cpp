@@ -45,4 +45,3 @@ bool MainWindow::hasDocument() const
 
 } // namespace KOrg
 
-#include "mainwindow.moc"

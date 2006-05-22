@@ -256,7 +256,7 @@ void AttachmentEditDialog::slotApply()
   mItem->setLabel( mLabelEdit->text() );
   mItem->setMimeType( mMimeType->name() );
   if ( mURLRequester )
-    mItem->setUri( mURLRequester->url() );
+    mItem->setUri( mURLRequester->url().toString() );
 }
 
 void AttachmentEditDialog::accept()
@@ -287,7 +287,7 @@ protected:
       if ( it->isSelected() ) {
         AttachmentIconItem *item = static_cast<AttachmentIconItem *>( it );
         urls.append( item->uri() );
-        labels.append( KUrl::encode_string( item->label() ) );
+        labels.append( KUrl::toPercentEncoding( item->label() ) );
       }
     }
     if ( selectionMode() == Q3IconView::NoSelection ) {
@@ -295,7 +295,7 @@ protected:
                              static_cast<AttachmentIconItem *>( currentItem() );
       if ( item ) {
         urls.append( item->uri() );
-        labels.append( KUrl::encode_string( item->label() ) );
+        labels.append( KUrl::toPercentEncoding( item->label() ) );
       }
     }
     QPixmap pixmap;
@@ -378,12 +378,12 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent )
   connect( button, SIGNAL( clicked() ), SLOT( slotShow() ) );
   
   mPopupMenu = new KMenu( this );
-  mPopupMenu->insertItem( i18n( "&Open" ), this, SLOT( slotShow() ) );
-  mPopupMenu->insertItem( i18n( "&Delete" ), this, SLOT( slotRemove() ) );
-  mPopupMenu->insertItem( i18n( "&Properties..." ), this, SLOT( slotEdit() ) );
+  mPopupMenu->addAction( i18n( "&Open" ), this, SLOT( slotShow() ) );
+  mPopupMenu->addAction( i18n( "&Delete" ), this, SLOT( slotRemove() ) );
+  mPopupMenu->addAction( i18n( "&Properties..." ), this, SLOT( slotEdit() ) );
   
   mPopupNew = new KMenu( this );
-  mPopupNew->insertItem( i18n( "&New..." ), this, SLOT( slotAdd() ) );
+  mPopupNew->addAction( i18n( "&New..." ), this, SLOT( slotAdd() ) );
 
   setAcceptDrops( true );
 }
@@ -466,7 +466,7 @@ void KOEditorAttachments::dropEvent( QDropEvent* event ) {
     probablyWeHaveUris = true;
     labels = metadata["labels"].split( ":", QString::SkipEmptyParts );
     for ( QStringList::Iterator it = labels.begin(); it != labels.end(); ++it )
-      *it = KUrl::decode_string( *it );
+      *it = KUrl::fromPercentEncoding( (*it).toLatin1() );
   } else if ( Q3TextDrag::decode( event, text ) ) {
     QStringList lst = text.split( '\n', QString::SkipEmptyParts );
     for ( QStringList::ConstIterator it = lst.begin(); it != lst.end(); ++it )
