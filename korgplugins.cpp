@@ -39,8 +39,8 @@ int main(int argc,char **argv)
 
   KApplication app;
   
-  KTrader::OfferList plugins = KOCore::self()->availablePlugins();
-  KTrader::OfferList::ConstIterator it;
+  KService::List plugins = KOCore::self()->availablePlugins();
+  KService::List::ConstIterator it;
   for(it = plugins.begin(); it != plugins.end(); ++it) {
     kDebug(5850) << "Plugin: " << (*it)->desktopEntryName() << " ("
               << (*it)->name() << ")" << endl;

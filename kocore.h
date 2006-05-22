@@ -30,7 +30,7 @@
 #include <korganizer/printplugin.h>
 
 #include <kdepimmacros.h>
-#include <ktrader.h>
+#include <kservice.h>
 
 namespace KPIM { class IdentityManager; }
 
@@ -41,10 +41,10 @@ class KDE_EXPORT KOCore
 
     static KOCore *self();
 
-    KTrader::OfferList availablePlugins();
-    KTrader::OfferList availableCalendarDecorations();
-    KTrader::OfferList availableParts();
-    KTrader::OfferList availablePrintPlugins();
+    KService::List availablePlugins();
+    KService::List availableCalendarDecorations();
+    KService::List availableParts();
+    KService::List availablePrintPlugins();
 
     KOrg::Plugin *loadPlugin( KService::Ptr service );
     KOrg::Plugin *loadPlugin( const QString & );
@@ -91,7 +91,7 @@ class KDE_EXPORT KOCore
   protected:
     KOCore();
 
-    KTrader::OfferList availablePlugins( const QString &type,
+    KService::List availablePlugins( const QString &type,
                                          int pluginInterfaceVersion = -1 );
 
   private:

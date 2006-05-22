@@ -224,12 +224,12 @@ void KOEditorAlarms::readAlarm( KCal::Alarm *alarm )
   switch ( alarm->type() ) {
     case KCal::Alarm::Audio:
         mWidget.mTypeSoundRadio->setChecked( true );
-        mWidget.mSoundFile->setURL( alarm->audioFile() );
+        mWidget.mSoundFile->setUrl( alarm->audioFile() );
         id = 1;
         break;
     case KCal::Alarm::Procedure:
         mWidget.mTypeAppRadio->setChecked( true );
-        mWidget.mApplication->setURL( alarm->programFile() );
+        mWidget.mApplication->setUrl( alarm->programFile() );
         mWidget.mAppArguments->setText( alarm->programArguments() );
         id = 2;
         break;

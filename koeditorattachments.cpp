@@ -46,7 +46,7 @@
 #include <kmimetype.h>
 #include <k3iconview.h>
 #include <kmenu.h>
-#include <kprotocolinfo.h>
+#include <kprotocolmanager.h>
 #include <krecentdocument.h>
 #include <krun.h>
 #include <kseparator.h>
@@ -481,7 +481,7 @@ void KOEditorAttachments::dropEvent( QDropEvent* event ) {
     // we need to check if we can reasonably expect to copy the objects
     for ( KUrl::List::ConstIterator it = urls.constBegin(); 
           it != urls.constEnd(); ++it )
-      if ( !( weCanCopy = KProtocolInfo::supportsReading( *it ) ) )
+      if ( !( weCanCopy = KProtocolManager::supportsReading( *it ) ) )
         break; // either we can copy them all, or no copying at all
     if ( weCanCopy )
       menu.insertItem( i18n( "&Copy here" ), 0 );

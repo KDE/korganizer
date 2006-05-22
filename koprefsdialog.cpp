@@ -55,7 +55,6 @@
 #include <kiconloader.h>
 #include <kemailsettings.h>
 #include <kcalendarsystem.h>
-#include <ktrader.h>
 #include <kpushbutton.h>
 #include <kocore.h>
 #include <libkcal/calendarresources.h>
@@ -1112,12 +1111,12 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins( KInstance *inst, QWidget *parent )
 void KOPrefsDialogPlugins::usrReadConfig()
 {
   mListView->clear();
-  KTrader::OfferList plugins = KOCore::self()->availablePlugins();
+  KService::List plugins = KOCore::self()->availablePlugins();
   plugins += KOCore::self()->availableParts();
 
   QStringList selectedPlugins = KOPrefs::instance()->mSelectedPlugins;
 
-  KTrader::OfferList::ConstIterator it;
+  KService::List::ConstIterator it;
   for( it = plugins.begin(); it != plugins.end(); ++it ) {
     Q3CheckListItem *item = new PluginItem( mListView, *it );
     if ( selectedPlugins.contains( (*it)->desktopEntryName() ) ) {

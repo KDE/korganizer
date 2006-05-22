@@ -38,6 +38,7 @@
 #include <kxmlguifactory.h>
 #include <kstandarddirs.h>
 #include <klocale.h>
+#include <kservicetypetrader.h>
 
 #include <QWidget>
 
@@ -62,7 +63,7 @@ KOCore::~KOCore()
   mSelf = 0;
 }
 
-KTrader::OfferList KOCore::availablePlugins( const QString &type, int version )
+KService::List KOCore::availablePlugins( const QString &type, int version )
 {
   QString constraint;
   if ( version >= 0 ) {
@@ -70,28 +71,28 @@ KTrader::OfferList KOCore::availablePlugins( const QString &type, int version )
                  .arg( QString::number( version ) );
   }
 
-  return KTrader::self()->query( type, constraint );
+  return KServiceTypeTrader::self()->query( type, constraint );
 }
 
-KTrader::OfferList KOCore::availablePlugins()
+KService::List KOCore::availablePlugins()
 {
   return availablePlugins( KOrg::Plugin::serviceType(),
                            KOrg::Plugin::interfaceVersion() );
 }
 
-KTrader::OfferList KOCore::availableCalendarDecorations()
+KService::List KOCore::availableCalendarDecorations()
 {
   return availablePlugins( KOrg::CalendarDecoration::serviceType(),
                            KOrg::CalendarDecoration::interfaceVersion() );
 }
 
-KTrader::OfferList KOCore::availableParts()
+KService::List KOCore::availableParts()
 {
   return availablePlugins( KOrg::Part::serviceType(),
                            KOrg::Part::interfaceVersion() );
 }
 
-KTrader::OfferList KOCore::availablePrintPlugins()
+KService::List KOCore::availablePrintPlugins()
 {
   return availablePlugins( KOrg::PrintPlugin::serviceType(),
                            KOrg::PrintPlugin::interfaceVersion() );
@@ -126,8 +127,8 @@ KOrg::Plugin *KOCore::loadPlugin( KService::Ptr service )
 
 KOrg::Plugin *KOCore::loadPlugin( const QString &name )
 {
-  KTrader::OfferList list = availablePlugins();
-  KTrader::OfferList::ConstIterator it;
+  KService::List list = availablePlugins();
+  KService::List::ConstIterator it;
   for( it = list.begin(); it != list.end(); ++it ) {
     if ( (*it)->desktopEntryName() == name ) {
       return loadPlugin( *it );
@@ -160,8 +161,8 @@ KOrg::CalendarDecoration *KOCore::loadCalendarDecoration(KService::Ptr service)
 
 KOrg::CalendarDecoration *KOCore::loadCalendarDecoration( const QString &name )
 {
-  KTrader::OfferList list = availableCalendarDecorations();
-  KTrader::OfferList::ConstIterator it;
+  KService::List list = availableCalendarDecorations();
+  KService::List::ConstIterator it;
   for( it = list.begin(); it != list.end(); ++it ) {
     if ( (*it)->desktopEntryName() == name ) {
       return loadCalendarDecoration( *it );
@@ -246,8 +247,8 @@ KXMLGUIClient* KOCore::xmlguiClient( QWidget *wdg ) const
 
 KOrg::Part *KOCore::loadPart( const QString &name, KOrg::MainWindow *parent )
 {
-  KTrader::OfferList list = availableParts();
-  KTrader::OfferList::ConstIterator it;
+  KService::List list = availableParts();
+  KService::List::ConstIterator it;
   for( it = list.begin(); it != list.end(); ++it ) {
     if ( (*it)->desktopEntryName() == name ) {
       return loadPart( *it, parent );
@@ -258,8 +259,8 @@ KOrg::Part *KOCore::loadPart( const QString &name, KOrg::MainWindow *parent )
 
 KOrg::PrintPlugin *KOCore::loadPrintPlugin( const QString &name )
 {
-  KTrader::OfferList list = availablePrintPlugins();
-  KTrader::OfferList::ConstIterator it;
+  KService::List list = availablePrintPlugins();
+  KService::List::ConstIterator it;
   for( it = list.begin(); it != list.end(); ++it ) {
     if ( (*it)->desktopEntryName() == name ) {
       return loadPrintPlugin( *it );
@@ -274,8 +275,8 @@ KOrg::CalendarDecoration::List KOCore::calendarDecorations()
     QStringList selectedPlugins = KOPrefs::instance()->mSelectedPlugins;
 
     mCalendarDecorations.clear();
-    KTrader::OfferList plugins = availableCalendarDecorations();
-    KTrader::OfferList::ConstIterator it;
+    KService::List plugins = availableCalendarDecorations();
+    KService::List::ConstIterator it;
     for( it = plugins.begin(); it != plugins.end(); ++it ) {
       if ( (*it)->hasServiceType("Calendar/Decoration") ) {
         QString name = (*it)->desktopEntryName();
@@ -297,8 +298,8 @@ KOrg::Part::List KOCore::loadParts( KOrg::MainWindow *parent )
 
   QStringList selectedPlugins = KOPrefs::instance()->mSelectedPlugins;
 
-  KTrader::OfferList plugins = availableParts();
-  KTrader::OfferList::ConstIterator it;
+  KService::List plugins = availableParts();
+  KService::List::ConstIterator it;
   for( it = plugins.begin(); it != plugins.end(); ++it ) {
     if ( selectedPlugins.contains( (*it)->desktopEntryName() )  ) {
       KOrg::Part *part = loadPart( *it, parent );
@@ -322,8 +323,8 @@ KOrg::PrintPlugin::List KOCore::loadPrintPlugins()
 
   QStringList selectedPlugins = KOPrefs::instance()->mSelectedPlugins;
 
-  KTrader::OfferList plugins = availablePrintPlugins();
-  KTrader::OfferList::ConstIterator it;
+  KService::List plugins = availablePrintPlugins();
+  KService::List::ConstIterator it;
   for( it = plugins.begin(); it != plugins.end(); ++it ) {
     if ( selectedPlugins.contains( (*it)->desktopEntryName() ) ) {
       KOrg::PrintPlugin *part = loadPrintPlugin( *it );
