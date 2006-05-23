@@ -288,9 +288,10 @@ void KOEditorAlarms::writeAlarm( KCal::Alarm *alarm )
   }
 
   if ( mWidget.mTypeSoundRadio->isChecked() ) { // Audio
-    alarm->setAudioAlarm( mWidget.mSoundFile->url() );
+    alarm->setAudioAlarm( mWidget.mSoundFile->url().toString() );
   } else if ( mWidget.mTypeAppRadio->isChecked() ) { // Procedure
-    alarm->setProcedureAlarm( mWidget.mApplication->url(), mWidget.mAppArguments->text() );
+    alarm->setProcedureAlarm( mWidget.mApplication->url().toString(),
+                              mWidget.mAppArguments->text() );
   } else if ( mWidget.mTypeEmailRadio->isChecked() ) { // Email
     QStringList addresses = EmailAddressTools::splitAddressList( mWidget.mEmailAddress->text() );
     QList<KCal::Person> add;
