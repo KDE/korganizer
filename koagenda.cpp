@@ -1026,7 +1026,8 @@ void KOAgenda::performItemAction(const QPoint& viewportPos)
         if (changed) {
           adjustItemPosition( moveItem );
         }
-        moveItem = moveItem->nextMultiItem();
+	if (moveItem)
+          moveItem = moveItem->nextMultiItem();
       }
     } else if (mActionType == RESIZETOP) {
       if (mEndCell.y() <= mActionItem->cellYBottom()) {
