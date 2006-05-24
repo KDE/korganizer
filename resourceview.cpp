@@ -111,6 +111,7 @@ void ResourceItem::createSubresourceItems() {
                                              mView, this );
       QColor resourceColor = *KOPrefs::instance()->resourceColor( *it );
       item->setResourceColor( resourceColor );
+      item->update();
     }
   }
   mSubItemsCreated = true;
@@ -320,6 +321,7 @@ void ResourceView::addResourceItem( ResourceCalendar *resource )
 
   resourceColor= *KOPrefs::instance()->resourceColor(resource->identifier());
   item->setResourceColor(resourceColor);
+  item->update();
 
   connect( resource, SIGNAL( signalSubresourceAdded( ResourceCalendar *,
                                                      const QString &,
@@ -366,8 +368,12 @@ void ResourceView::slotSubresourceAdded( ResourceCalendar *calendar,
     // Not found
     return;
 
+  if ( findItemByIdentifier( resource ) ) return;
+
   ResourceItem *item = static_cast<ResourceItem *>( i );
-  ( void )new ResourceItem( calendar, resource, label, this, item );
+  ResourceItem *newItem = new ResourceItem( calendar, resource, label, this, item );
+  QColor resourceColor = *KOPrefs::instance()->resourceColor( resource );
+  newItem->setResourceColor( resourceColor );
 }
 
 // Remove an entry
