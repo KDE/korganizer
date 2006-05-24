@@ -1190,8 +1190,6 @@ void ActionManager::toggleResourceButtons()
 {
   bool visible = mResourceButtonsAction->isChecked();
 
-  kdDebug() << "RESOURCE VIEW " << int( mResourceView ) << endl;
-
   if ( mResourceView ) mResourceView->showButtons( visible );
 }
 
