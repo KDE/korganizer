@@ -359,8 +359,12 @@ void ActionManager::initActions()
   mFilterAction->setEditable( false );
   connect( mFilterAction, SIGNAL( activated(int) ),
            mCalendarView, SLOT( filterActivated( int ) ) );
+#if 0  
   connect( mCalendarView, SIGNAL( newFilterListSignal( const QStringList & ) ),
            mFilterAction, SLOT( setItems( const QStringList & ) ) );
+#endif
+  connect( mCalendarView, SIGNAL( newFilterListSignal( const QStringList & ) ),
+	    this, SLOT( setItems( const QStringList & ) ) );  
   connect( mCalendarView, SIGNAL( selectFilterSignal( int ) ),
            mFilterAction, SLOT( setCurrentItem( int ) ) );
   connect( mCalendarView, SIGNAL( filterChanged() ),
@@ -575,6 +579,11 @@ void ActionManager::initActions()
   new K3WidgetAction( filterLabel, i18n("Filter: "), 0, 0, 0,
                      mACollection, "filter_label" );
 
+}
+
+void ActionManager::setItems( const QStringList & lst)
+{
+  	mFilterAction->setItems( lst);  
 }
 
 void ActionManager::readSettings()

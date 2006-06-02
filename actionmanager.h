@@ -268,7 +268,7 @@ class KDE_EXPORT ActionManager : public QObject, public KCalendarIface
     void importCalendar( const KUrl &url );
 
   protected slots:
-
+     void setItems( const QStringList & );
     /** open new window */
     void file_new();
 
