@@ -263,7 +263,7 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
             "with the organizers calendar. Do you really want "
             "to edit it?" );
       rc = KMessageBox::warningYesNo( parent, txt );
-      return ( rc == KMessageBox::Continue );
+      return ( rc == KMessageBox::Yes );
     }
   } else {
     kdWarning(5850) << "Groupware messages for Journals are not implemented yet!" << endl;
