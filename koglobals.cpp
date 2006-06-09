@@ -141,10 +141,17 @@ QIconSet KOGlobals::smallIconSet( const QString& name, int size )
   return SmallIconSet( name, size, mOwnInstance );
 }
 
-QString KOGlobals::holiday( const QDate &date )
+QStringList KOGlobals::holiday( const QDate &date )
 {
-  if ( mHolidays ) return mHolidays->shortText( date );
-  else return QString::null;
+  QStringList hdays;
+
+  if ( !mHolidays ) return hdays;
+  QValueList<KHoliday> list = mHolidays->getHolidays( date );
+  QValueList<KHoliday>::ConstIterator it = list.begin();
+  for ( ; it != list.end(); ++it ) {
+    hdays.append( (*it).text );
+  }
+  return hdays;
 }
 
 bool KOGlobals::isWorkDay( const QDate &date )
@@ -152,12 +159,14 @@ bool KOGlobals::isWorkDay( const QDate &date )
   int mask( ~( KOPrefs::instance()->mWorkWeekMask ) );
 
   bool nonWorkDay = ( mask & ( 1 << ( date.dayOfWeek() - 1 ) ) );
-
-  nonWorkDay = nonWorkDay
-               || ( KOPrefs::instance()->mExcludeHolidays
-                    && ( mHolidays
-                         && ( mHolidays->category( date ) == KHolidays::HOLIDAY ) ) );
-
+  if ( KOPrefs::instance()->mExcludeHolidays && mHolidays ) {
+    QValueList<KHoliday> list = mHolidays->getHolidays( date );
+    QValueList<KHoliday>::ConstIterator it = list.begin();
+    for ( ; it != list.end(); ++it ) {
+      nonWorkDay = nonWorkDay
+               || ( (*it).Category == KHolidays::HOLIDAY );
+    }
+  }
   return !nonWorkDay;
 }
 

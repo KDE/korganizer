@@ -775,15 +775,14 @@ void KOAgendaView::createDayLabels()
     dayLayout->addWidget(dayLabel);
 
     // if a holiday region is selected, show the holiday name
-    if ( KOGlobals::self()->holidays() ) {
-      QString text = KOGlobals::self()->holidays()->shortText( date );
-      if ( !text.isEmpty() ) {
-        // use a KOAlternateLabel so when the text doesn't fit any more a tooltip is used
-        KOAlternateLabel*label = new KOAlternateLabel( text, text, QString::null, mDayLabels );
-        label->setMinimumWidth(1);
-        label->setAlignment(AlignCenter);
-        dayLayout->addWidget(label);
-      }
+    QStringList texts = KOGlobals::self()->holiday( date );
+    QStringList::ConstIterator textit = texts.begin();
+    for ( ; textit != texts.end(); ++textit ) {
+      // use a KOAlternateLabel so when the text doesn't fit any more a tooltip is used
+      KOAlternateLabel*label = new KOAlternateLabel( (*textit), (*textit), QString::null, mDayLabels );
+      label->setMinimumWidth(1);
+      label->setAlignment(AlignCenter);
+      dayLayout->addWidget(label);
     }
 
 #ifndef KORG_NOPLUGINS

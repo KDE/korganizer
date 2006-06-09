@@ -99,7 +99,7 @@ const int KODayMatrix::NOSELECTION = -1000;
 const int KODayMatrix::NUMDAYS = 42;
 
 KODayMatrix::KODayMatrix( QWidget *parent, const char *name )
-  : QFrame( parent, name ), mCalendar( 0 ), mStartDate( 1970, 1, 1 )
+  : QFrame( parent, name ), mCalendar( 0 ), mStartDate()
 {
   // initialize dynamic arrays
   mDays = new QDate[ NUMDAYS ];
@@ -179,8 +179,10 @@ void KODayMatrix::addSelectedDaysTo( DateList &selDays )
 
 void KODayMatrix::setSelectedDaysFrom( const QDate &start, const QDate &end )
 {
-  mSelStart = mStartDate.daysTo( start );
-  mSelEnd = mStartDate.daysTo( end );
+  if ( mStartDate.isValid() ) {
+    mSelStart = mStartDate.daysTo( start );
+    mSelEnd = mStartDate.daysTo( end );
+  }
 }
 
 void KODayMatrix::clearSelection()
@@ -190,6 +192,7 @@ void KODayMatrix::clearSelection()
 
 void KODayMatrix::recalculateToday()
 {
+  if ( !mStartDate.isValid() ) return;
   mToday = -1;
   for ( int i = 0; i < NUMDAYS; i++ ) {
     mDays[ i ] = mStartDate.addDays( i );
@@ -212,7 +215,8 @@ void KODayMatrix::recalculateToday()
 
 void KODayMatrix::updateView( const QDate &actdate )
 {
-//  kdDebug(5850) << "KODayMatrix::updateView() " << actdate.toString() << endl;
+ kdDebug(5850) << "KODayMatrix::updateView() " << actdate << ", day start="<<mStartDate<< endl;
+ if ( !actdate.isValid() ) return;
 
   //flag to indicate if the starting day of the matrix has changed by this call
   bool daychanged = false;
@@ -250,16 +254,16 @@ void KODayMatrix::updateView( const QDate &actdate )
   updateEvents();
   for( int i = 0; i < NUMDAYS; i++ ) {
     //if it is a holy day then draw it red. Sundays are consider holidays, too
-    QString holiStr = KOGlobals::self()->holiday( mDays[ i ] );
+    QStringList holidays = KOGlobals::self()->holiday( mDays[ i ] );
+    QString holiStr = QString::null;
 
     if ( ( KOGlobals::self()->calendarSystem()->dayOfWeek( mDays[ i ] ) ==
            KOGlobals::self()->calendarSystem()->weekDayOfPray() ) ||
-         !holiStr.isEmpty() ) {
+         !holidays.isEmpty() ) {
+      if ( !holidays.isEmpty() ) holiStr = holidays.join( i18n("delimiter for joining holiday names", ", " ) );
       if ( holiStr.isNull() ) holiStr = "";
-      mHolidays[ i ] = holiStr;
-    } else {
-      mHolidays[ i ] = QString::null;
     }
+    mHolidays[ i ] = holiStr;
   }
 }
 
