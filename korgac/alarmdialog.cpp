@@ -91,9 +91,9 @@ AlarmDialog::AlarmDialog( QWidget *parent )
   mSuspendUnit->addItem( i18n("day(s)") );
   mSuspendUnit->addItem( i18n("week(s)") );
 
-  connect( mSuspendSpin, SIGNAL( valueChanged(int) ), actionButton(User1), SLOT( setFocus() ) );
-  connect( mSuspendUnit, SIGNAL( activated(int) ), actionButton(User1), SLOT( setFocus() ) );
-  connect( mSuspendUnit, SIGNAL( activated(int) ), actionButton(User2), SLOT( setFocus() ) );
+  connect( mSuspendSpin, SIGNAL( valueChanged(int) ), this, SLOT( suspendValueChanged() );
+  connect( mSuspendUnit, SIGNAL( activated(int) ), this, SLOT( suspendUnitChanged() );
+  connect( mSuspendUnit, SIGNAL( activated(int) ), this, SLOT( suspendUnitChanged() ) );
 
   // showButton( User2/*3*/, false );
 
@@ -196,6 +196,17 @@ void AlarmDialog::show()
   KWin::setState( winId(), NET::KeepAbove );
   KWin::setOnAllDesktops( winId(), true );
   eventNotification();
+}
+
+void AlarmDialog::suspendValueChanged()
+{
+  setButtonFocus( User1 );
+}
+
+void AlarmDialog::suspendUnitChanged()
+{
+  setButtonFocus( User1 );
+  setButtonFocus( User2 );
 }
 
 void AlarmDialog::eventNotification()

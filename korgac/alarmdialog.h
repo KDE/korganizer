@@ -60,6 +60,10 @@ class AlarmDialog : public KDialogBase {
   signals:
     void finishedSignal( AlarmDialog* );
 
+  private Q_SLOTS:
+    void suspendValueChanged();
+    void suspendUnitChanged();
+
   private:
     bool startKOrganizer();
     void setTimer( int seconds );
