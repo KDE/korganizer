@@ -94,6 +94,7 @@ Comment[ta]=இந்த சொருகுப்பொருள் KOrganizer-�
 Comment[tr]=Bu eklenti, KOrganizer için bir proje planı görünümü sağlar (yapılacaklar ve aylık görünüm gibi). Eğer bu eklentiyi aktif hale getirirseniz, proje görünümüne geçebilir ve yapılacaklar listenizi proje planlayıcısı şeklinde görüntüleyebilirsiniz.
 Comment[uk]=Цей втулок показує вигляд планування проектів у KOrganizer (подібно до виглядів завдань або місячного). Якщо увімкнути цей втулок, то можна переглядати ваш список завдань у вигляді плановика проектів.
 Comment[zh_CN]=此插件为 KOrganizer 提供了项目规划视图(类似于待办或月视图)。如果您启用了此插件，您可以像项目规划程序那样切换到项目视图并查看您的待办清单。
+Comment[zh_TW]=此外掛程式提供 KOrganizer 專案計畫檢視。如果您開啟此外掛程式，您可以切換專案檢視與待辦事項清單。
 Type=Service
 ServiceTypes=KOrganizer/Part
 X-KDE-KOrganizer-HasSettings=false

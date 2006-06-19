@@ -48,6 +48,7 @@ Name[ta]=இறக்கும் நாட்காட்டி
 Name[tr]=Takvim Aktar
 Name[uk]=Імпорт календаря
 Name[zh_CN]=导入日历
+Name[zh_TW]=匯入行事曆
 ServiceTypes=Browser/View,DCOP/Organizer
 X-KDE-Library=libkorganizerpart
 X-KDE-StartupNotify=true
