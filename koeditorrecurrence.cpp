@@ -1152,7 +1152,7 @@ void KOEditorRecurrence::setDateTimes( const QDateTime &start, const QDateTime &
   if ( !enabled || type != RecurrenceChooser::Yearly ) {
     mYearly->setByDay( start.date().dayOfYear() );
     mYearly->setByPos( ( start.date().day() - 1 ) / 7 + 1,
-        start.date().dayOfWeek() - 1, start.date().month() );
+        start.date().dayOfWeek(), start.date().month() );
     mYearly->setByMonth( start.date().day(), start.date().month() );
   }
 }
