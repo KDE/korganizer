@@ -386,7 +386,7 @@ void CalPrintHelper::drawAllDayBox(QPainter &p, Event::List &eventList,
         offset += height;
       } else {
         if ( !multiDayStr.isEmpty() ) multiDayStr += ", ";
-        multiDayStr += currEvent->summary() + "\n";
+        multiDayStr += currEvent->summary() + '\n';
       }
       eventList.erase( itold );
     }
@@ -493,7 +493,7 @@ void CalPrintHelper::drawAgendaDayBox( QPainter &p, Event::List &events,
   p.setFont( QFont( "helvetica", 10 ) );
   p.setBrush( QBrush( Qt::Dense7Pattern ) );
 
-  
+
   for( it = cells.begin(); it != cells.end(); ++it ) {
     PrintCellItem *placeItem = static_cast<PrintCellItem *>( *it );
 

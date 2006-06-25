@@ -305,7 +305,7 @@ void CalPrintWeek::print( QPainter &p, int width, int height )
       do {
         QString line1( local->formatDate( curWeek.addDays( -6 ) ) );
         QString line2( local->formatDate( curWeek ) );
-        mHelper->drawHeader( p, line1 + "\n" + line2, curWeek.addDays( -6 ), QDate(),
+        mHelper->drawHeader( p, line1 + '\n' + line2, curWeek.addDays( -6 ), QDate(),
                     0, 0, width, mHelper->mHeaderHeight );
         int top = mHelper->mHeaderHeight + 10;
         mHelper->drawWeek( p, curWeek, 0, top, width, height - top );

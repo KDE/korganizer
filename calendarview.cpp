@@ -709,7 +709,7 @@ void CalendarView::incidenceChanged( Incidence *oldIncidence,
       Todo *todo = static_cast<Todo *>(newIncidence);
       if ( todo->isCompleted() ) {
         QString timeStr = KGlobal::locale()->formatTime( QTime::currentTime() );
-        QString description = i18n( "Todo completed: %1 (%2)" , 
+        QString description = i18n( "Todo completed: %1 (%2)" ,
           newIncidence->summary(), timeStr );
 
         Journal::List journals = calendar()->journals( QDate::currentDate() );
@@ -732,7 +732,7 @@ void CalendarView::incidenceChanged( Incidence *oldIncidence,
         } else { // journal list is not empty
           journal = journals.at(0);
           Journal *oldJournal = journal->clone();
-          journal->setDescription( journal->description().append( "\n" + description ) );
+          journal->setDescription( journal->description().append( '\n' + description ) );
 
           if ( !mChanger->changeIncidence( oldJournal, journal ) ) {
             KODialogManager::errorSaveIncidence( this, journal );
