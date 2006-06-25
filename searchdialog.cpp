@@ -48,12 +48,18 @@
 #include "searchdialog.moc"
 
 SearchDialog::SearchDialog(Calendar *calendar,QWidget *parent)
-  : KDialogBase(Plain,i18n("Find Events"),User1|Close,User1,parent,0,false,false,
-                KGuiItem( i18n("&Find"), "find") )
+  : KDialog( parent )
 {
+  setCaption( i18n("Find Events") );
+  setButtons( User1|Close );
+  setDefaultButton( User1 );
+  setModal( false );
+  enableButtonSeparator( false );
+  setButtonGuiItem( User1, KGuiItem( i18n("&Find"), "find") );
   mCalendar = calendar;
 
-  QFrame *topFrame = plainPage();
+  QFrame *topFrame = new QFrame( this );
+  setMainWidget( topFrame );
   QVBoxLayout *layout = new QVBoxLayout(topFrame);
   layout->setSpacing(spacingHint());
   layout->setMargin(0);
@@ -152,7 +158,7 @@ SearchDialog::~SearchDialog()
 
 void SearchDialog::searchTextChanged( const QString &_text )
 {
-  enableButton( KDialogBase::User1, !_text.isEmpty() );
+  enableButton( KDialog::User1, !_text.isEmpty() );
 }
 
 void SearchDialog::doSearch()

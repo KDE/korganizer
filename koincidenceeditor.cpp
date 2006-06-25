@@ -59,10 +59,16 @@
 
 KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
                                       Calendar *calendar, QWidget *parent )
-  : KDialogBase( Tabbed, caption, Ok | Apply | Cancel | Default, Ok,
-                 parent, 0, false, false ),
+  : KPageDialog( parent ),
     mDetails( 0 ), mAttachments( 0 )
 {
+  setFaceType( Tabbed );
+  setCaption( caption );
+  setButtons( Ok | Apply | Cancel | Default );
+  setDefaultButton( Ok );
+  setModal( false );
+  enableButtonSeparator( false );
+
   // Set this to be the group leader for all subdialogs - this means
   // modal subdialogs will only affect this dialog, not the other windows
   setAttribute( Qt::WA_GroupLeader ); 
@@ -93,7 +99,8 @@ KOIncidenceEditor::~KOIncidenceEditor()
 
 void KOIncidenceEditor::setupAttendeesTab()
 {
-  QFrame *topFrame = addPage( i18n("Atte&ndees") );
+  QFrame *topFrame = new QFrame( this );
+  addPage( topFrame, i18n("Atte&ndees") );
   topFrame->setWhatsThis(
                    i18n("The Attendees tab allows you to Add or Remove "
                         "Attendees to/from this event or to-do.") );
@@ -106,7 +113,8 @@ void KOIncidenceEditor::setupAttendeesTab()
 
 void KOIncidenceEditor::setupAttachmentsTab()
 {
-  QFrame *topFrame = addPage( i18n("Attach&ments") );
+  QFrame *topFrame = new QFrame( this );
+  addPage( topFrame, i18n("Attach&ments") );
   topFrame->setWhatsThis(
                    i18n("The Attachments tab allows you to add or remove "
                         "files, emails, contacts, and other items "

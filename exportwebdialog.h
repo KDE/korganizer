@@ -25,6 +25,7 @@
 #define _EXPORTWEBDIALOG_H
 
 #include <libkdepim/kprefsdialog.h>
+#include <kpagedialog.h>
 
 class QFrame;
 
@@ -36,7 +37,7 @@ using namespace KCal;
   ExportWebDialog is a class that provides the dialog and functions to export a
   calendar as web page.
 */
-class ExportWebDialog : public KDialogBase, public KPrefsWidManager
+class ExportWebDialog : public KPageDialog, public KPrefsWidManager
 {
     Q_OBJECT
   public:

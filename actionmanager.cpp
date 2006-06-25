@@ -27,6 +27,7 @@
 */
 
 #include "actionmanager.h"
+#include "calendaradaptor.h"
 
 #include "alarmclient.h"
 #include "calendarview.h"
@@ -50,7 +51,6 @@
 #include <libkcal/htmlexport.h>
 #include <libkcal/htmlexportsettings.h>
 
-#include <dcopclient.h>
 #include <kaction.h>
 #include <kfiledialog.h>
 #include <kio/netaccess.h>

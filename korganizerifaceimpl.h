@@ -32,20 +32,20 @@
 #ifndef KORGANIZER_SHARED_H
 #define KORGANIZER_SHARED_H
 
-#include "korganizeriface.h"
-
 #include <QObject>
 #include <kdepimmacros.h>
 
 class ActionManager;
 
 
-class KDE_EXPORT KOrganizerIfaceImpl : public QObject, virtual public KOrganizerIface {
+class KDE_EXPORT KOrganizerIfaceImpl : public QObject {
+Q_OBJECT
 public:
   KOrganizerIfaceImpl( ActionManager* mActionManager,
                        QObject* parent=0, const char* name=0 );
   ~KOrganizerIfaceImpl();
 
+public slots:
   bool openURL( const QString &url );
   bool mergeURL( const QString &url );
   void closeURL();

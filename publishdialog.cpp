@@ -37,8 +37,10 @@
 #include "publishdialog.h"
 
 PublishDialog::PublishDialog( QWidget* parent, bool modal )
-  : KDialog( parent, i18n("Select Addresses"), Ok|Cancel|Help )
+  : KDialog( parent )
 {
+  setCaption( i18n("Select Addresses") );
+  setButtons( Ok|Cancel|Help );
   QWidget *widget = new QWidget( this );
   widget->setObjectName( "PublishFreeBusy" );
   mUI.setupUi( widget );

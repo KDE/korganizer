@@ -34,13 +34,17 @@
 #include "korganizerifaceimpl.h"
 #include "actionmanager.h"
 
+#include "korganizeradaptor.h"
+#include <dbus/qdbus.h>
 
 KOrganizerIfaceImpl::KOrganizerIfaceImpl( ActionManager* actionManager,
                                           QObject* parent, const char* name )
-  : DCOPObject( "KOrganizerIface" ), QObject( parent ),
+  : QObject( parent ),
     mActionManager( actionManager )
 {
   setObjectName( name );
+  new KorganizerAdaptor( this );
+  QDBus::sessionBus().registerObject( "/", this, QDBusConnection::ExportAdaptors );
 }
 
 KOrganizerIfaceImpl::~KOrganizerIfaceImpl()
@@ -101,3 +105,5 @@ bool KOrganizerIfaceImpl::showIncidenceContext( const QString &uid )
 {
   return mActionManager->showIncidenceContext( uid );
 }
+
+#include "korganizerifaceimpl.moc"

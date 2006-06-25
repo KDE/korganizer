@@ -23,7 +23,7 @@
 #ifndef PUBLISHDIALOG_H
 #define PUBLISHDIALOG_H
 
-#include <kdialogbase.h>
+#include <kdialog.h>
 #include "ui_publishdialog_base.h"
 
 namespace KCal {

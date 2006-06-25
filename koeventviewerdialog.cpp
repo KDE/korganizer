@@ -30,8 +30,10 @@
 #include <klocale.h>
 
 KOEventViewerDialog::KOEventViewerDialog( QWidget *parent, bool compact )
-  : KDialog( parent, i18n("Event Viewer"), Ok | User1 | User2 )
+  : KDialog( parent )
 {
+  setCaption( i18n("Event Viewer") );
+  setButtons( Ok | User1 | User2 );
   setModal( false );
   setButtonGuiItem( User1, i18n("Edit") );
   setButtonGuiItem( User2, i18n("Show in context") );

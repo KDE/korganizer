@@ -178,9 +178,11 @@ void CalPrinter::updateConfig()
 
 CalPrintDialog::CalPrintDialog( KOrg::PrintPlugin::List plugins, KPrinter *p,
                                 QWidget *parent )
-  : KDialog( parent, i18n("Print"), Ok | Cancel ),
+  : KDialog( parent ),
     mPrinter( p ), mPrintPlugins( plugins )
 {
+  setCaption( i18n("Print") );
+  setButtons( Ok | Cancel );
   KVBox *page = new KVBox( this );
   page->setSpacing( spacingHint() );
   setMainWidget( page );

@@ -104,8 +104,8 @@ set(korganizer_eventviewer_LIB_SRCS koeventviewer.cpp urihandler.cpp koeventview
 
 kde4_automoc(${korganizer_eventviewer_LIB_SRCS})
 
-kde4_add_dcop_skels(korganizer_eventviewer_LIB_SRCS ${CMAKE_SOURCE_DIR}/kmail/kmailIface.h korganizeriface.h ${CMAKE_SOURCE_DIR}/knode/knodeiface.h )
-kde4_add_dcop_stubs(korganizer_eventviewer_LIB_SRCS ${CMAKE_SOURCE_DIR}/kmail/kmailIface.h korganizeriface.h ${CMAKE_SOURCE_DIR}/knode/knodeiface.h )
+#kde4_add_dcop_skels(korganizer_eventviewer_LIB_SRCS ${CMAKE_SOURCE_DIR}/kmail/kmailIface.h korganizeriface.h ${CMAKE_SOURCE_DIR}/knode/knodeiface.h )
+#kde4_add_dcop_stubs(korganizer_eventviewer_LIB_SRCS ${CMAKE_SOURCE_DIR}/kmail/kmailIface.h korganizeriface.h ${CMAKE_SOURCE_DIR}/knode/knodeiface.h )
 
 kde4_add_library(korganizer_eventviewer SHARED ${korganizer_eventviewer_LIB_SRCS})
 
@@ -206,7 +206,8 @@ kde4_add_kcfg_files(korganizer_LIB_SRCS koprefs_base.kcfgc )
 
 kde4_add_ui_files(korganizer_LIB_SRCS filteredit_base.ui koeditoralarms_base.ui publishdialog_base.ui template_management_dialog_base.ui kogroupwareprefspage.ui )
 
-kde4_add_dcop_skels(korganizer_LIB_SRCS korganizeriface.h kcalendariface.h )
+#kde4_add_dcop_skels(korganizer_LIB_SRCS korganizeriface.h kcalendariface.h )
+qdbus_add_adaptors(korganizer_LIB_SRCS org.kde.korganizer.Korganizer.xml org.kde.Korganizer.Calendar.xml)
 
 kde4_add_library(korganizer SHARED ${korganizer_LIB_SRCS})
 

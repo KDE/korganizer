@@ -25,7 +25,7 @@
 #ifndef KOINCIDENCEEDITOR_H
 #define KOINCIDENCEEDITOR_H
 
-#include <kdialogbase.h>
+#include <kpagedialog.h>
 #include <kurl.h>
 #include <QList>
 
@@ -53,7 +53,7 @@ using namespace KOrg;
 /**
   This is the base class for the calendar component editors.
 */
-class KOIncidenceEditor : public KDialogBase
+class KOIncidenceEditor : public KPageDialog
 {
     Q_OBJECT
   public:

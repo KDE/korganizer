@@ -30,7 +30,7 @@
 //Added by qt3to4:
 #include <QLabel>
 
-#include <kdialogbase.h>
+#include <kdialog.h>
 
 #include <libkcal/incidence.h>
 
@@ -45,7 +45,7 @@ class KOListView;
 
 using namespace KCal;
 
-class SearchDialog : public KDialogBase
+class SearchDialog : public KDialog
 {
     Q_OBJECT
   public:

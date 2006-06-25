@@ -23,7 +23,7 @@
 */
 
 #include <kmessagebox.h>
-#include <kdialogbase.h>
+#include <kdialog.h>
 #include <kpushbutton.h>
 #include <kpushbutton.h>
 #include "komessagebox.h"
@@ -36,8 +36,9 @@ int KOMessageBox::fourBtnMsgBox( QWidget *parent, QMessageBox::Icon type,
                                  const KGuiItem &button3,
                                  KMessageBox::Options options)
 {
-  KDialog *dialog= new KDialog( parent, caption,
-            KDialog::Yes | KDialog::No | KDialog::Ok | KDialog::Cancel );
+  KDialog *dialog= new KDialog( parent );
+  dialog->setCaption( caption );
+  dialog->setButtons( KDialog::Yes | KDialog::No | KDialog::Ok | KDialog::Cancel );
   dialog->setObjectName( "KOMessageBox" );
   dialog->setDefaultButton( KDialog::Yes );
   dialog->setButtonGuiItem( KDialog::Ok, button3 );

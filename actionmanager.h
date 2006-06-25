@@ -33,8 +33,6 @@
 #include <korganizer/part.h>
 #include <kdepimmacros.h>
 
-#include "kcalendariface.h"
-
 namespace KCal
 {
   class Calendar;
@@ -72,7 +70,7 @@ using namespace KCal;
   actions are in one location.
   It also provides DCOP interface[s].
 */
-class KDE_EXPORT ActionManager : public QObject, public KCalendarIface
+class KDE_EXPORT ActionManager : public QObject
 {
     Q_OBJECT
   public:
@@ -173,6 +171,14 @@ class KDE_EXPORT ActionManager : public QObject, public KCalendarIface
     bool showIncidenceContext( const QString &uid );
     
     //// Implementation of the DCOP interface
+    struct ResourceRequestReply {
+        bool vCalInOK;
+        QString vCalOut;
+        bool vCalOutOK; bool isFree;
+        QDateTime start; QDateTime end;
+    };
+
+  public slots:
     virtual ResourceRequestReply resourceRequest( const QList<QPair<QDateTime, QDateTime> >& busy,
                                                   const QByteArray& resource,
                                                   const QString& vCalIn );
@@ -210,6 +216,7 @@ class KDE_EXPORT ActionManager : public QObject, public KCalendarIface
     void goDate( const QDate& );
     void goDate( const QString& );
 
+  public:
     QString localFileName();
 
     bool queryClose();

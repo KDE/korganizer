@@ -29,6 +29,8 @@
 
 #include "urihandler.h"
 
+#warning Port me to DBus!
+#define KORG_NODCOP
 #ifndef KORG_NODCOP
 #include <dcopclient.h>
 #include "kmailIface_stub.h"

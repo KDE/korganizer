@@ -34,6 +34,8 @@
 #include <libkcal/incidence.h>
 #include <libkcal/incidenceformatter.h>
 
+#warning Port me to DBus!
+#define KORG_NODCOP
 #ifndef KORG_NODCOP
 #include <dcopclient.h>
 #include <kapplication.h>

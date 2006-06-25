@@ -70,9 +70,17 @@
 //        duplication.
 ExportWebDialog::ExportWebDialog( HTMLExportSettings *settings, QWidget *parent)
 // TODO_QT4: Use constructor without *name=0 param
-  : KDialogBase( Tabbed,i18n("Export Calendar as Web Page"),Help|Default|User1|Cancel, User1, parent, 0, false, false, i18n("Export") ),
+  : KPageDialog( parent ),
     KPrefsWidManager( settings ), mSettings( settings )
 {
+  setFaceType( Tabbed );
+  setCaption( i18n("Export Calendar as Web Page") );
+  setButtons( Help|Default|User1|Cancel );
+  setDefaultButton( User1 );
+  setModal( false );
+  enableButtonSeparator( false );
+  setButtonText( User1, i18n("Export") );
+
   setupGeneralPage();
   setupEventPage();
   setupTodoPage();
@@ -136,7 +144,8 @@ void ExportWebDialog::slotDefault()
 
 void ExportWebDialog::setupGeneralPage()
 {
-  mGeneralPage = addPage( i18n("General") );
+  mGeneralPage = new QFrame( this );
+  addPage( mGeneralPage, i18n("General") );
   QVBoxLayout *topLayout = new QVBoxLayout(mGeneralPage);
   topLayout->setSpacing(10);
 
@@ -173,7 +182,8 @@ void ExportWebDialog::slotTextChanged( const QString & _text)
 
 void ExportWebDialog::setupTodoPage()
 {
-  mTodoPage = addPage(i18n("To-dos"));
+  mTodoPage = new QFrame( this );
+  addPage( mTodoPage, i18n("To-dos") );
   QVBoxLayout *topLayout = new QVBoxLayout( mTodoPage );
   topLayout->setSpacing( 10 );
 
@@ -195,7 +205,8 @@ void ExportWebDialog::setupTodoPage()
 
 void ExportWebDialog::setupEventPage()
 {
-  mEventPage = addPage(i18n("Events"));
+  mEventPage = new QFrame( this );
+  addPage( mEventPage, i18n("Events") );
   QVBoxLayout *topLayout = new QVBoxLayout( mEventPage );
   topLayout->setSpacing( 10 );
 
