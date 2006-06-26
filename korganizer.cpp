@@ -65,7 +65,6 @@
 #include <ktempfile.h>
 #include <kio/netaccess.h>
 #include <kmessagebox.h>
-#include <dcopclient.h>
 #include <kprocess.h>
 #include <kwin.h>
 #include <ktip.h>
@@ -85,7 +84,7 @@ using namespace KParts;
 #include "korganizer.moc"
 using namespace KOrg;
 
-KOrganizer::KOrganizer( const char *name ) : KParts::MainWindow( name ), KOrg::MainWindow()
+KOrganizer::KOrganizer( const char *name ) : KParts::MainWindow(  ), KOrg::MainWindow()
 {
   // Set this to be the group leader for all subdialogs - this means
   // modal subdialogs will only affect this dialog, not the other windows

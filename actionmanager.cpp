@@ -72,6 +72,8 @@
 #include <QTimer>
 #include <QLabel>
 
+#include "calendaradaptor.h"
+#include <dbus/qdbus.h>
 
 // FIXME: Several places in the file don't use KConfigXT yet!
 KOWindowList *ActionManager::mWindowList = 0;
@@ -79,10 +81,13 @@ KOWindowList *ActionManager::mWindowList = 0;
 ActionManager::ActionManager( KXMLGUIClient *client, CalendarView *widget,
                               QObject *parent, KOrg::MainWindow *mainWindow,
                               bool isPart )
-  : QObject( parent ), KCalendarIface(), mRecent( 0 ),
+  : QObject( parent ), mRecent( 0 ),
     mResourceButtonsAction( 0 ), mResourceViewShowAction( 0 ), mCalendar( 0 ),
     mCalendarResources( 0 ), mResourceView( 0 ), mIsClosing( false )
 {
+  new CalendarAdaptor( this );
+  QDBus::sessionBus().registerObject("/Calendar", this);
+
   mGUIClient = client;
   mACollection = mGUIClient->actionCollection();
   mCalendarView = widget;
@@ -359,12 +364,12 @@ void ActionManager::initActions()
   mFilterAction->setEditable( false );
   connect( mFilterAction, SIGNAL( activated(int) ),
            mCalendarView, SLOT( filterActivated( int ) ) );
-#if 0  
+#if 0
   connect( mCalendarView, SIGNAL( newFilterListSignal( const QStringList & ) ),
            mFilterAction, SLOT( setItems( const QStringList & ) ) );
 #endif
   connect( mCalendarView, SIGNAL( newFilterListSignal( const QStringList & ) ),
-	    this, SLOT( setItems( const QStringList & ) ) );  
+	    this, SLOT( setItems( const QStringList & ) ) );
   connect( mCalendarView, SIGNAL( selectFilterSignal( int ) ),
            mFilterAction, SLOT( setCurrentItem( int ) ) );
   connect( mCalendarView, SIGNAL( filterChanged() ),
@@ -583,7 +588,7 @@ void ActionManager::initActions()
 
 void ActionManager::setItems( const QStringList & lst)
 {
-  	mFilterAction->setItems( lst);  
+  	mFilterAction->setItems( lst);
 }
 
 void ActionManager::readSettings()
@@ -1454,13 +1459,12 @@ void ActionManager::setTitle()
 {
   mMainWindow->setTitle();
 }
-
-KCalendarIface::ResourceRequestReply ActionManager::resourceRequest( const QList<QPair<QDateTime, QDateTime> >&,
+ActionManager::ResourceRequestReply ActionManager::resourceRequest( const QList<QPair<QDateTime, QDateTime> >&,
  const QByteArray& resource,
  const QString& vCalIn )
 {
     kDebug(5850) << k_funcinfo << "resource=" << resource << " vCalIn=" << vCalIn << endl;
-    KCalendarIface::ResourceRequestReply reply;
+    ActionManager::ResourceRequestReply reply;
     reply.vCalOut = "VCalOut";
     return reply;
 }
