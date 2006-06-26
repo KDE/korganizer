@@ -31,7 +31,6 @@
 #include <kmessagebox.h>
 #include <kurl.h>
 #include <kapplication.h>
-#include <dcopclient.h>
 #include <kprocess.h>
 
 #include <libkcal/event.h>
@@ -45,6 +44,7 @@
 //Added by qt3to4:
 #include <QByteArray>
 #include <ktoolinvocation.h>
+#include <dbus/qdbus.h>
 
 KOMailClient::KOMailClient()
 {
@@ -65,7 +65,7 @@ bool KOMailClient::mailAttendees(IncidenceBase *incidence,const QString &attachm
   for(int i=0; i<attendees.count();++i) {
     const QString email = attendees.at(i)->email();
     // In case we (as one of our identities) are the organizer we are sending this
-    // mail. We could also have added ourselves as an attendee, in which case we 
+    // mail. We could also have added ourselves as an attendee, in which case we
     // don't want to send ourselves a notification mail.
     if( organizerEmail !=  email )
       toList << email;
@@ -185,11 +185,11 @@ bool KOMailClient::send(const QString &from,const QString &to,
 
     pclose(fd);
   } else {
-    if (!kapp->dcopClient()->isApplicationRegistered("kmail")) {
-                        if (KToolInvocation::startServiceByDesktopName("kmail")) {
+    if (!QDBus::sessionBus().busService()->nameHasOwner("kmail")) {
+      if (KToolInvocation::startServiceByDesktopName("kmail")) {
         KMessageBox::error(0,i18n("No running instance of KMail found."));
         return false;
-                        }
+      }
     }
 
     if (attachment.isEmpty()) {
@@ -220,26 +220,15 @@ int KOMailClient::kMailOpenComposer(const QString& arg0,const QString& arg1,
   //  << arg0 << " , " << arg1 << arg2 << " , " << arg3
   //  << arg4 << " , " << arg5 << " , " << arg6 << " )" << endl;
   int result = 0;
-
-  QByteArray data, replyData;
-  DCOPCString replyType;
-  QDataStream arg( &data, QIODevice::WriteOnly );
-  arg << arg0;
-  arg << arg1;
-  arg << arg2;
-  arg << arg3;
-  arg << arg4;
-  arg << arg5;
-  arg << arg6;
   kapp->updateRemoteUserTimestamp( "kmail" );
-  if (kapp->dcopClient()->call("kmail","KMailIface","openComposer(QString,QString,QString,QString,QString,int,KUrl)", data, replyType, replyData ) ) {
-    if ( replyType == QLatin1String("int") ) {
-      QDataStream _reply_stream( &replyData, QIODevice::ReadOnly );
-      _reply_stream >> result;
-    } else {
-      kDebug(5850) << "kMailOpenComposer() call failed." << endl;
-    }
-  } else {
+
+  QDBusInterfacePtr kmail("org.kde.kmail", "/KMail", "org.kde.kmail.KMail");
+  QDBusReply<int> reply = kmail->call("openComposer", arg0, arg1, arg2, arg3, arg4, arg5, arg6.url());
+  if (reply.isSuccess() ) {
+      result=reply;
+  }
+  else
+  {
     kDebug(5850) << "kMailOpenComposer() call failed." << endl;
   }
   return result;
@@ -262,36 +251,14 @@ int KOMailClient::kMailOpenComposer( const QString& arg0, const QString& arg1,
 
     int result = 0;
 
-    QByteArray data, replyData;
-    DCOPCString replyType;
-    QDataStream arg( &data, QIODevice::WriteOnly );
-    arg << arg0;
-    arg << arg1;
-    arg << arg2;
-    arg << arg3;
-    arg << arg4;
-    arg << arg5;
-    arg << arg6;
-    arg << arg7;
-    arg << arg8;
-    arg << arg9;
-    arg << arg10;
-    arg << arg11;
-    arg << arg12;
-    arg << arg13;
-    arg << arg14;
     kapp->updateRemoteUserTimestamp("kmail");
-#warning Port me!
-    if ( kapp->dcopClient()->call("kmail","KMailIface",
-          "openComposer(QString,QString,QString,QString,QString,int,QString,QCString,QCString,QCString,QCString,QCString,QString,QCString,QCString)", data, replyType, replyData ) ) {
-        if ( replyType == QLatin1String("int") ) {
-            QDataStream _reply_stream( &replyData, QIODevice::ReadOnly );
-            _reply_stream >> result;
-        } else {
-            kDebug(5850) << "kMailOpenComposer() call failed." << endl;
-        }
+    QDBusInterfacePtr kmail("org.kde.kmail", "/KMail", "org.kde.kmail.KMail");
+    QDBusReply<int> reply = kmail->call("openComposer", arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14);
+
+    if (reply.isSuccess()) {
+            result=reply;
     } else {
-        kDebug(5850) << "kMailOpenComposer() call failed." << endl;
+      kDebug(5850) << "kMailOpenComposer() call failed." << endl;
     }
     return result;
 }

@@ -68,7 +68,7 @@ class KODialogManager::DialogManagerVisitor : public IncidenceBase::Visitor
     KODialogManager *mDialogManager;
 };
 
-class KODialogManager::EditorDialogVisitor : 
+class KODialogManager::EditorDialogVisitor :
       public KODialogManager::DialogManagerVisitor
 {
   public:
@@ -128,7 +128,7 @@ void KODialogManager::showOptionsDialog()
              SIGNAL( configCommitted( const QByteArray & ) ),
              mMainView, SLOT( updateConfig() ) );
 #else
-    mOptionsDialog = new KCMultiDialog( mMainView, "KorganizerPreferences" );
+    mOptionsDialog = new KCMultiDialog( mMainView );
     connect( mOptionsDialog, SIGNAL( configCommitted( const QByteArray & ) ),
              mMainView, SLOT( updateConfig( const QByteArray& ) ) );
 #if 0
