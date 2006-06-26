@@ -34,7 +34,6 @@
 #include <kconfig.h>
 #include <kurl.h>
 #include <kstandarddirs.h>
-#include <dcopclient.h>
 #include <kmenu.h>
 #include <kmessagebox.h>
 #include <kaction.h>

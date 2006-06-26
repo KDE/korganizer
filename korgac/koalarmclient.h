@@ -26,7 +26,6 @@
 #ifndef KOALARMCLIENT_H
 #define KOALARMCLIENT_H
 
-#include "alarmclientiface.h"
 
 #include <kapplication.h>
 
@@ -41,7 +40,7 @@ class CalendarResources;
 class Incidence;
 }
 
-class KOAlarmClient : public QObject, virtual public AlarmClientIface, public KSessionManaged
+class KOAlarmClient : public QObject, public KSessionManaged
 {
     Q_OBJECT
   public:

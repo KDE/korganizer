@@ -33,9 +33,8 @@
 //Added by qt3to4:
 #include <QVBoxLayout>
 #include <QBoxLayout>
-
+#include <dbus/qdbus.h>
 #include <kapplication.h>
-#include <dcopclient.h>
 #include <klocale.h>
 #include <kprocess.h>
 #include <kdebug.h>
@@ -94,8 +93,8 @@ AlarmDialog::AlarmDialog( QWidget *parent )
   mSuspendUnit->addItem( i18n("day(s)") );
   mSuspendUnit->addItem( i18n("week(s)") );
 
-  connect( mSuspendSpin, SIGNAL( valueChanged(int) ), this, SLOT( suspendValueChanged() );
-  connect( mSuspendUnit, SIGNAL( activated(int) ), this, SLOT( suspendUnitChanged() );
+  connect( mSuspendSpin, SIGNAL( valueChanged(int) ), this, SLOT( suspendValueChanged() ) );
+  connect( mSuspendUnit, SIGNAL( activated(int) ), this, SLOT( suspendUnitChanged() ) );
   connect( mSuspendUnit, SIGNAL( activated(int) ), this, SLOT( suspendUnitChanged() ) );
 
   // showButton( User2/*3*/, false );
@@ -159,29 +158,21 @@ void AlarmDialog::setTimer( int seconds )
 
 void AlarmDialog::slotUser2()
 {
-  if ( !kapp->dcopClient()->isApplicationRegistered( "korganizer" ) ) {
+  if ( !QDBus::sessionBus().busService()->nameHasOwner( "korganizer" ) ) {
     if ( KToolInvocation::startServiceByDesktopName( "korganizer", QString() ) )
       KMessageBox::error( 0, i18n("Could not start KOrganizer.") );
   }
-
-  kapp->dcopClient()->send( "korganizer", "KOrganizerIface",
-                            "editIncidence(QString)",
-                             mIncidence->uid() );
+  QDBusInterfacePtr korganizer("org.kde.korganizer", "/KOrganizer", "org.kde.korganizer.KOrganizer");
+  korganizer->call( "editIncidence",mIncidence->uid() );
 
   // get desktop # where korganizer (or kontact) runs
-  QByteArray replyData;
-  DCOPCString object, replyType;
-  object = kapp->dcopClient()->isApplicationRegistered( "kontact" ) ?
-           "kontact-mainwindow#1" : "KOrganizer MainWindow";
-  if (!kapp->dcopClient()->call( "korganizer", object,
-                            "getWinID()", 0, replyType, replyData, true, -1 ) ) {
-  }
-
-  if ( replyType == QLatin1String("int") ) {
-    int desktop, window;
-    QDataStream ds( &replyData, QIODevice::ReadOnly );
-    ds >> window;
-    desktop = KWin::windowInfo( window ).desktop();
+  QString object = QDBus::sessionBus().busService()->nameHasOwner( "kontact" ) ?
+           "kontact-mainwindow_1" : "KOrganizer MainWindow";
+  QDBusInterfacePtr korganizerObj("org.kde.korganizer", "/"+object);
+  QDBusReply<int> reply = korganizerObj->call( "getWinID" );
+  if ( reply.isSuccess() ) {
+    int window = reply;
+    int desktop = KWin::windowInfo( window ).desktop();
 
     if ( KWin::currentDesktop() == desktop ) {
       KWin::iconifyWindow( winId(), false );
@@ -229,7 +220,7 @@ void AlarmDialog::eventNotification()
     }
     else if (alarm->type() == Alarm::Audio) {
       beeped = true;
-      Phonon::SimplePlayer* player = new Phonon::SimplePlayer( this );
+      Phonon::SimplePlayer* player = new Phonon::SimplePlayer( Phonon::NotificationCategory, this );
       player->play( KUrl( QFile::encodeName(alarm->audioFile() ) ) );
     }
   }

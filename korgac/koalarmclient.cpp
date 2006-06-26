@@ -39,10 +39,14 @@
 
 #include <QPushButton>
 #include <kglobal.h>
+#include "korgacadaptor.h"
+#include <dbus/qdbus.h>
 
 KOAlarmClient::KOAlarmClient( QObject *parent )
-  : DCOPObject( "ac" ), QObject( parent )
+  : QObject( parent )
 {
+  new KOrgacAdaptor(this);
+  QDBus::sessionBus().registerObject("/ac", this);
   kDebug(5890) << "KOAlarmClient::KOAlarmClient()" << endl;
 
   mDocker = new AlarmDockWindow;
