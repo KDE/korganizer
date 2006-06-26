@@ -40,7 +40,7 @@
 #include "statusdialog.moc"
 
 StatusDialog::StatusDialog(QWidget* parent, const char* name) :
-  KDialog(parent,name)
+  KDialog(parent)
 {
   setModal( true );
   setCaption(i18n("Set Your Status"));

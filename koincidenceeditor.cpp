@@ -71,7 +71,7 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
 
   // Set this to be the group leader for all subdialogs - this means
   // modal subdialogs will only affect this dialog, not the other windows
-  setAttribute( Qt::WA_GroupLeader ); 
+  setAttribute( Qt::WA_GroupLeader );
 
   mCalendar = calendar;
 
@@ -249,7 +249,8 @@ QWidget *KOIncidenceEditor::addDesignerTab( const QString &uifile )
   KPIM::DesignerFields *wid = new KPIM::DesignerFields( uifile, 0 );
   mDesignerFields.append( wid );
 
-  QFrame *topFrame = addPage( wid->title() );
+  QFrame *topFrame = new QFrame();
+  addPage( topFrame, wid->title() );
 
   QBoxLayout *topLayout = new QVBoxLayout( topFrame );
 
@@ -327,7 +328,8 @@ void KOIncidenceEditor::setupEmbeddedURLPage( const QString &label,
 {
   kDebug() << "KOIncidenceEditor::setupEmbeddedURLPage()" << endl;
   kDebug() << "label=" << label << ", url=" << url << ", mimetype=" << mimetype << endl;
-  QFrame *topFrame = addPage( label );
+  QFrame *topFrame = new QFrame();
+  addPage( topFrame, label );
   QBoxLayout *topLayout = new QVBoxLayout( topFrame );
 
   KPIM::EmbeddedURLPage *wid = new KPIM::EmbeddedURLPage( url, mimetype,

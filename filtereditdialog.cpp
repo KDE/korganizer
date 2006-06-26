@@ -46,8 +46,10 @@
 #include "filtereditdialog.moc"
 
 FilterEditDialog::FilterEditDialog( QList<CalFilter*> *filters, QWidget *parent )
-  : KDialog( parent, i18n("Edit Calendar Filters"), Ok | Apply | Cancel )
+  : KDialog( parent)
 {
+  setCaption( i18n("Edit Calendar Filters") );
+  setButtons( Ok | Apply | Cancel );
   setMainWidget( mFilterEdit = new FilterEdit(filters, this));
 
   connect(mFilterEdit, SIGNAL(dataConsistent(bool)),
@@ -85,7 +87,7 @@ void FilterEditDialog::slotOk()
 }
 
 void FilterEditDialog::setDialogConsistent(bool consistent) {
-    enableButtonOK( consistent );
+    enableButton( Ok, consistent );
     enableButtonApply( consistent );
 }
 
@@ -135,14 +137,14 @@ void FilterEdit::saveChanges()
 {
   if(current == 0L)
     return;
-  
+
   current->setName(mNameLineEdit->text());
   int criteria = 0;
   if ( mCompletedCheck->isChecked() ) criteria |= CalFilter::HideCompleted;
   if ( mRecurringCheck->isChecked() ) criteria |= CalFilter::HideRecurring;
   if ( mCatShowCheck->isChecked() ) criteria |= CalFilter::ShowCategories;
   if ( mHideInactiveTodosCheck->isChecked() ) criteria |= CalFilter::HideInactiveTodos;
-  if ( mHideTodosNotAssignedToMeCheck->isChecked() ) 
+  if ( mHideTodosNotAssignedToMeCheck->isChecked() )
     criteria |= CalFilter::HideTodosWithoutAttendeeInEmailList;
   current->setCriteria( criteria );
   current->setCompletedTimeSpan( mCompletedTimeSpan->value() );
@@ -176,11 +178,11 @@ void FilterEdit::filterSelected(CalFilter *filter)
   mCompletedTimeSpan->setValue( current->completedTimeSpan() );
   mRecurringCheck->setChecked( current->criteria() & CalFilter::HideRecurring );
   mHideInactiveTodosCheck->setChecked( current->criteria() & CalFilter::HideInactiveTodos );
-  mHideTodosNotAssignedToMeCheck->setChecked( 
+  mHideTodosNotAssignedToMeCheck->setChecked(
       current->criteria() & CalFilter::HideTodosWithoutAttendeeInEmailList );
   if ( current->criteria() & CalFilter::ShowCategories ) {
     mCatShowCheck->setChecked( true );
-  } else { 
+  } else {
     mCatHideCheck->setChecked( true );
   }
   mCatList->clear();

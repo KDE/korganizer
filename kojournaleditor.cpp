@@ -75,7 +75,8 @@ void KOJournalEditor::setupGeneral()
   mGeneral = new KOEditorGeneralJournal(this);
 
   if (KOPrefs::instance()->mCompactDialogs) {
-    QFrame *topFrame = addPage(i18n("General"));
+    QFrame *topFrame = new QFrame();
+    addPage(topFrame, i18n("General"));
 
     QBoxLayout *topLayout = new QVBoxLayout( topFrame );
     topLayout->setMargin( marginHint() );
@@ -85,7 +86,8 @@ void KOJournalEditor::setupGeneral()
     mGeneral->initDate( topFrame, topLayout );
     mGeneral->initDescription( topFrame, topLayout );
   } else {
-    QFrame *topFrame = addPage(i18n("&General"));
+    QFrame *topFrame = new QFrame();
+    addPage(topFrame, i18n("&General"));
 
     QBoxLayout *topLayout = new QVBoxLayout(topFrame);
     topLayout->setSpacing(spacingHint());

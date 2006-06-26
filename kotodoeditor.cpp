@@ -98,7 +98,8 @@ void KOTodoEditor::setupGeneral()
           mGeneral,SLOT(setCategories(const QString &)));
 
   if (KOPrefs::instance()->mCompactDialogs) {
-    QFrame *topFrame = addPage(i18n("General"));
+    QFrame *topFrame = new QFrame();
+    addPage(topFrame, i18n("General"));
 
     QBoxLayout *topLayout = new QVBoxLayout(topFrame);
     topLayout->setMargin(marginHint());
@@ -112,7 +113,8 @@ void KOTodoEditor::setupGeneral()
     mGeneral->initCategories( topFrame, topLayout );
     topLayout->addStretch(1);
 
-    QFrame *topFrame2 = addPage(i18n("Details"));
+    QFrame *topFrame2 = new QFrame();
+    addPage(topFrame2, i18n("Details"));
 
     QBoxLayout *topLayout2 = new QVBoxLayout(topFrame2);
     topLayout2->setMargin(marginHint());
@@ -128,7 +130,8 @@ void KOTodoEditor::setupGeneral()
     mGeneral->initSecrecy( topFrame2, topLayout2 );
     mGeneral->initDescription(topFrame2,topLayout2);
   } else {
-    QFrame *topFrame = addPage(i18n("&General"));
+    QFrame *topFrame = new QFrame();
+    addPage( topFrame, i18n("&General"));
 
     QBoxLayout *topLayout = new QVBoxLayout(topFrame);
     topLayout->setSpacing(spacingHint());
@@ -152,7 +155,8 @@ void KOTodoEditor::setupGeneral()
 
 void KOTodoEditor::setupRecurrence()
 {
-  QFrame *topFrame = addPage( i18n("Rec&urrence") );
+  QFrame *topFrame = new QFrame();
+  addPage( topFrame, i18n("Rec&urrence") );
 
   QBoxLayout *topLayout = new QVBoxLayout( topFrame );
 

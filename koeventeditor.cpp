@@ -116,7 +116,8 @@ void KOEventEditor::setupGeneral()
   mGeneral = new KOEditorGeneralEvent( this );
 
   if( KOPrefs::instance()->mCompactDialogs ) {
-    QFrame *topFrame = addPage(i18n("General"));
+    QFrame *topFrame = new QFrame();
+    addPage(topFrame, i18n( "General"));
     topFrame->setWhatsThis(
                      i18n("The General tab allows you to set the most common "
                           "options for the event.") );
@@ -132,7 +133,8 @@ void KOEventEditor::setupGeneral()
 
     topLayout->addStretch( 1 );
 
-    QFrame *topFrame2 = addPage(i18n("Details"));
+    QFrame *topFrame2 = new QFrame();
+    addPage(topFrame2, i18n("Details"));
 
     QBoxLayout *topLayout2 = new QVBoxLayout(topFrame2);
     topLayout2->setSpacing(spacingHint());
@@ -141,7 +143,8 @@ void KOEventEditor::setupGeneral()
     mGeneral->initSecrecy( topFrame2, topLayout2 );
     mGeneral->initDescription(topFrame2,topLayout2);
   } else {
-    QFrame *topFrame = addPage(i18n("&General"));
+    QFrame *topFrame = new QFrame();
+    addPage(topFrame, i18n("&General"));
     topFrame->setWhatsThis(
                      i18n("The General tab allows you to set the most common "
                           "options for the event.") );
@@ -175,7 +178,8 @@ void KOEventEditor::modified (int /*modification*/)
 
 void KOEventEditor::setupRecurrence()
 {
-  QFrame *topFrame = addPage( i18n("Rec&urrence") );
+  QFrame *topFrame = new QFrame();
+  addPage(topFrame, i18n("Rec&urrence") );
 
   topFrame->setWhatsThis(
         i18n("The Recurrence tab allows you to set options on "
@@ -189,7 +193,8 @@ void KOEventEditor::setupRecurrence()
 
 void KOEventEditor::setupFreeBusy()
 {
-  QFrame *freeBusyPage = addPage( i18n("&Free/Busy") );
+  QFrame *freeBusyPage = new QFrame();
+  addPage(freeBusyPage, i18n("&Free/Busy") );
   freeBusyPage->setWhatsThis(
         i18n("The Free/Busy tab allows you to see whether "
        "other attendees are free or busy during your event.") );

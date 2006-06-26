@@ -689,8 +689,10 @@ DateList ExceptionsWidget::dates()
 ///////////////////////// ExceptionsDialog ///////////////////////////
 
 ExceptionsDialog::ExceptionsDialog( QWidget *parent ) :
-  KDialog( parent, i18n("Edit Exceptions"), Ok|Cancel )
+  KDialog( parent )
 {
+  setCaption( i18n("Edit Exceptions") );
+  setButtons( Ok|Cancel );
   mExceptions = new ExceptionsWidget( this );
   setMainWidget( mExceptions );
 }
@@ -843,8 +845,10 @@ void RecurrenceRangeWidget::setDateTimes( const QDateTime &start,
 ///////////////////////// RecurrenceRangeDialog ///////////////////////////
 
 RecurrenceRangeDialog::RecurrenceRangeDialog( QWidget *parent ) :
-  KDialog( parent, i18n("Edit Recurrence Range"), Ok|Cancel )
+  KDialog( parent )
 {
+  setCaption(  i18n("Edit Recurrence Range") );
+  setButtons( Ok|Cancel );
   mRecurrenceRangeWidget = new RecurrenceRangeWidget( this );
   setMainWidget( mRecurrenceRangeWidget );
 }
