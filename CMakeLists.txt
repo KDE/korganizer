@@ -1,6 +1,6 @@
 
 include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/interfaces 
-                     ${CMAKE_SOURCE_DIR}/libemailfunctions ${CMAKE_SOURCE_DIR}/libkpimidentities 
+                     ${CMAKE_SOURCE_DIR}/libkpimidentities 
                      ${CMAKE_SOURCE_DIR}/libkholidays 
                      ${CMAKE_SOURCE_DIR}/mimelib ${CMAKE_SOURCE_DIR}/libkleo ${CMAKE_SOURCE_DIR}/korganizer/printing 
                      ${CMAKE_SOURCE_DIR}/kdgantt  
@@ -21,7 +21,6 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/ical2vcal.in ${CMAKE_CURRENT_BINARY_D
 ########### next target ###############
 
 set(korganizer_bin_SRCS
-   ${libemailfunctions_SRCS}
    main.cpp 
    korganizer.cpp 
    koapp.cpp 
