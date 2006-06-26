@@ -37,7 +37,7 @@
 #include <kapplication.h>
 #include <klocale.h>
 #include <kdebug.h>
-#include <kdialogbase.h>
+#include <kdialog.h>
 #include <kglobal.h>
 #include <kiconloader.h>
 #include <k3iconview.h>
@@ -137,16 +137,16 @@ class AttachmentIconItem : public K3IconViewItem
     }
     QPixmap icon() const
     {
-      return icon( KMimeType::mimeType( mAttachment->mimeType() ), 
+      return icon( KMimeType::mimeType( mAttachment->mimeType() ),
                    mAttachment->uri(), mAttachment->isLocal() );
     }
-    static QPixmap icon( KMimeType::Ptr mimeType, const QString &uri, 
+    static QPixmap icon( KMimeType::Ptr mimeType, const QString &uri,
                          bool local = false )
     {
       QString iconStr = mimeType->icon( uri );
-      return KGlobal::iconLoader()->loadIcon( iconStr, K3Icon::Desktop, 0, 
-                                              K3Icon::DefaultState | ( 
-                                                ( uri.isNull() || local ) ? 0 : 
+      return KGlobal::iconLoader()->loadIcon( iconStr, K3Icon::Desktop, 0,
+                                              K3Icon::DefaultState | (
+                                                ( uri.isNull() || local ) ? 0 :
                                                   K3Icon::LinkOverlay) );
     }
 
@@ -156,9 +156,9 @@ class AttachmentIconItem : public K3IconViewItem
         setText( mAttachment->uri() );
       else
         setText( mAttachment->label() );
-      
+
       setRenameEnabled( true );
-      
+
       KMimeType::Ptr mimeType;
       if ( !mAttachment->mimeType().isEmpty() )
         mimeType = KMimeType::mimeType( mAttachment->mimeType() );
@@ -169,26 +169,26 @@ class AttachmentIconItem : public K3IconViewItem
           mimeType = KMimeType::findByContent( mAttachment->decodedData() );
         mAttachment->setMimeType( mimeType->name() );
       }
-      
+
       setPixmap( icon() );
     }
-    
+
   private:
     KCal::Attachment *mAttachment;
 };
 
 AttachmentEditDialog::AttachmentEditDialog( AttachmentIconItem *item,
                                             QWidget *parent, bool modal )
-// TODO_QT4: Use constructor without *name=0 param
-  : KDialogBase ( KDialogBase::Plain,
-                  i18n( "Properties for %1", item->label().isEmpty()
-                      ? item->uri() : item->label() ),
-                  KDialogBase::Ok | KDialogBase::Cancel | KDialogBase::Apply,
-                  KDialogBase::Ok, parent, /*name*/0, modal ), mItem( item ),
-mURLRequester( 0 )
+  : KDialog ( parent ), mItem( item ),mURLRequester( 0 )
 {
   // based loosely on KPropertiesDialog code
-  QWidget *page = plainPage();
+  QWidget *page = new QWidget(this);
+  setMainWidget( page );
+  setCaption( i18n( "Properties for %1", item->label().isEmpty()
+                    ? item->uri() : item->label() ) );
+  setButtons( KDialog::Ok | KDialog::Cancel | KDialog::Apply );
+  setDefaultButton(KDialog::Ok );
+  setModal( modal );
   QVBoxLayout *vbl = new QVBoxLayout( page );
   vbl->setSpacing( KDialog::spacingHint() );
   vbl->setMargin( 0 );
@@ -198,44 +198,44 @@ mURLRequester( 0 )
   grid->setColumnStretch(2, 1);
   grid->addItem( new QSpacerItem( KDialog::spacingHint(), 0 ), 0, 1 );
   vbl->addLayout(grid);
-  
+
   mIcon = new QLabel( page );
-  int bsize = 66 + 2 * 
+  int bsize = 66 + 2 *
                   mIcon->style()->pixelMetric( QStyle::PM_ButtonMargin );
   mIcon->setFixedSize(bsize, bsize);
   mIcon->setPixmap( item->icon() );
   grid->addWidget( mIcon, 0, 0, Qt::AlignLeft );
-  
+
   mLabelEdit = new KLineEdit( page );
   mLabelEdit->setText( item->label().isEmpty() ? item->uri() :
                                                   item->label() );
   grid->addWidget( mLabelEdit, 0, 2 );
-  
+
   KSeparator* sep = new KSeparator( Qt::Horizontal, page );
   grid->addWidget(sep, 1, 0, 1, 3 );
-  
+
   QLabel *label = new QLabel( i18n( "Type:" ), page );
   grid->addWidget( label, 2, 0 );
-  QString typecomment = item->mimeType().isEmpty() ? i18n( "Unknown" ) : 
+  QString typecomment = item->mimeType().isEmpty() ? i18n( "Unknown" ) :
                              KMimeType::mimeType( item->mimeType() )->comment();
   mTypeLabel = new QLabel( typecomment, page );
   grid->addWidget( mTypeLabel, 2, 2 );
   mMimeType = KMimeType::mimeType( item->mimeType() );
-  
+
   if ( item->attachment()->isUri() && !item->isLocal() ) {
     label = new QLabel( i18n( "Location:" ), page );
     grid->addWidget( label, 3, 0 );
     mURLRequester = new KUrlRequester( item->uri(), page );
     grid->addWidget( mURLRequester, 3, 2 );
-    connect( mURLRequester, SIGNAL( urlSelected( const QString & ) ), 
+    connect( mURLRequester, SIGNAL( urlSelected( const QString & ) ),
               SLOT( urlChanged( const QString & ) ) );
   } else {
     if ( item->isLocal() ) {
       grid->addWidget( new QLabel( i18n( "Size:" ), page ), 3, 0 );
       uint size = QFileInfo( KUrl( item->uri() ).path() ).size();
       grid->addWidget( new QLabel( QString::fromLatin1( "%1 (%2)" )
-                         .arg( KIO::convertSize( size ) ) 
-                         .arg( KGlobal::locale()->formatNumber( 
+                         .arg( KIO::convertSize( size ) )
+                         .arg( KGlobal::locale()->formatNumber(
                                                     size, 0 ) ), page ), 3, 2 );
     } else {
       grid->addWidget( new QLabel(
@@ -243,14 +243,14 @@ mURLRequester( 0 )
     }
 #if 0
     grid->addWidget( new QLabel( QString::fromLatin1( "%1 (%2)" )
-                         .arg( KIO::convertSize( item->attachment()->size() ) ) 
-                         .arg( KGlobal::locale()->formatNumber( 
+                         .arg( KIO::convertSize( item->attachment()->size() ) )
+                         .arg( KGlobal::locale()->formatNumber(
                               item->attachment()->size(), 0 ) ), page ), 3, 2 );
 #endif
   }
   vbl->addStretch( 10 );
 }
-    
+
 void AttachmentEditDialog::slotApply()
 {
   mItem->setLabel( mLabelEdit->text() );
@@ -262,9 +262,9 @@ void AttachmentEditDialog::slotApply()
 void AttachmentEditDialog::accept()
 {
   slotApply();
-  KDialogBase::accept();
+  KDialog::accept();
 }
-  
+
 void AttachmentEditDialog::urlChanged( const QString &url )
 {
   mMimeType = KMimeType::findByURL( url );
@@ -276,7 +276,7 @@ class AttachmentIconView : public K3IconView
 {
 public:
   AttachmentIconView( QWidget *parent ) : K3IconView( parent ) {}
-  
+
 protected:
   virtual Q3DragObject * dragObject ()
   {
@@ -303,7 +303,7 @@ protected:
         pixmap = KGlobal::iconLoader()->loadIcon( "kmultiple", K3Icon::Desktop );
     if( pixmap.isNull() )
         pixmap = static_cast<AttachmentIconItem *>( currentItem() )->icon();
-    
+
     QPoint hotspot;
     hotspot.setX( pixmap.width() / 2 );
     hotspot.setY( pixmap.height() / 2 );
@@ -324,24 +324,24 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent )
   mAttachments = new AttachmentIconView( this );
   mAttachments->setWhatsThis(
                    i18n("Displays items (files, mail, etc.) "
-                        "that have been associated with this event or to-do.") 
+                        "that have been associated with this event or to-do.")
                         );
   mAttachments->setItemsMovable( false );
   mAttachments->setSelectionMode( Q3IconView::Extended );
   topLayout->addWidget( mAttachments );
   connect( mAttachments, SIGNAL( executed( Q3IconViewItem * ) ),
            SLOT( showAttachment( Q3IconViewItem * ) ) );
-  connect( mAttachments, SIGNAL( itemRenamed( Q3IconViewItem *, 
+  connect( mAttachments, SIGNAL( itemRenamed( Q3IconViewItem *,
                                 const QString & ) ),
            SLOT( slotItemRenamed( Q3IconViewItem *, const QString & ) ) );
-  connect( mAttachments, SIGNAL( contextMenuRequested( Q3IconViewItem *, 
+  connect( mAttachments, SIGNAL( contextMenuRequested( Q3IconViewItem *,
                                                        const QPoint & ) ),
-           SLOT( showAttachmentContextMenu( Q3IconViewItem *, 
+           SLOT( showAttachmentContextMenu( Q3IconViewItem *,
                                             const QPoint & ) ) );
-  connect( mAttachments, SIGNAL( dropped( QDropEvent *, 
+  connect( mAttachments, SIGNAL( dropped( QDropEvent *,
                                           const QList<Q3IconDragItem> & ) ),
            SLOT( dropped( QDropEvent *, const QList<Q3IconDragItem> & ) ) );
-  
+
   // FIXME for some reason it doesn't work
   connect( mAttachments, SIGNAL( moved() ), SLOT( slotRemove() ) );
 
@@ -376,12 +376,12 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent )
                         "KDE preferences.") );
   buttonLayout->addWidget( button );
   connect( button, SIGNAL( clicked() ), SLOT( slotShow() ) );
-  
+
   mPopupMenu = new KMenu( this );
   mPopupMenu->addAction( i18n( "&Open" ), this, SLOT( slotShow() ) );
   mPopupMenu->addAction( i18n( "&Delete" ), this, SLOT( slotRemove() ) );
   mPopupMenu->addAction( i18n( "&Properties..." ), this, SLOT( slotEdit() ) );
-  
+
   mPopupNew = new KMenu( this );
   mPopupNew->addAction( i18n( "&New..." ), this, SLOT( slotAdd() ) );
 
@@ -407,7 +407,7 @@ void KOEditorAttachments::dragEnterEvent( QDragEnterEvent* event ) {
   event->setAccepted( K3URLDrag::canDecode( event ) | Q3TextDrag::canDecode( event ) );
 }
 
-QString KOEditorAttachments::generateLocalAttachmentPath( 
+QString KOEditorAttachments::generateLocalAttachmentPath(
                               QString filename, const KMimeType::Ptr mimeType )
 {
   QString pathBegin = "korganizer/attachments/";
@@ -418,7 +418,7 @@ QString KOEditorAttachments::generateLocalAttachmentPath(
   pathBegin += '/';
 
   if ( filename.isEmpty() )
-    filename = KRandom::randomString( 10 ) + 
+    filename = KRandom::randomString( 10 ) +
                      QString( mimeType->patterns().first() ).replace( "*", "" );
   else {
     // we need to determine if there is a correct extension
@@ -439,7 +439,7 @@ QString KOEditorAttachments::generateLocalAttachmentPath(
 
   while ( QFile::exists( path ) )
     // no need to worry much about races here, I guess
-    path = locateLocal( "data", 
+    path = locateLocal( "data",
                        pathBegin + KRandom::randomString( 6 ) + filename );
 
   return path;
@@ -473,13 +473,13 @@ void KOEditorAttachments::dropEvent( QDropEvent* event ) {
       urls.append( *it );
     probablyWeHaveUris = true;
   }
-  
+
   KMenu menu( this );
   QAction* linkAction = 0, *cancelAction;
   if ( probablyWeHaveUris ) {
     linkAction = menu.addAction( i18n( "&Link here" ) );
     // we need to check if we can reasonably expect to copy the objects
-    for ( KUrl::List::ConstIterator it = urls.constBegin(); 
+    for ( KUrl::List::ConstIterator it = urls.constBegin();
           it != urls.constEnd(); ++it )
       if ( !( weCanCopy = KProtocolManager::supportsReading( *it ) ) )
         break; // either we can copy them all, or no copying at all
@@ -488,16 +488,16 @@ void KOEditorAttachments::dropEvent( QDropEvent* event ) {
   } else {
     menu.insertItem( i18n( "&Copy here" ), 0 );
   }
-  
+
   menu.addSeparator();
   cancelAction = menu.addAction( i18n( "C&ancel" ) );
-  
+
   QAction* ret = menu.exec( QCursor::pos() );
   if ( linkAction == ret ) {
     QStringList::ConstIterator jt = labels.constBegin();
-    for ( KUrl::List::ConstIterator it = urls.constBegin(); 
+    for ( KUrl::List::ConstIterator it = urls.constBegin();
           it != urls.constEnd(); ++it )
-      addAttachment( (*it).url(), QString(), 
+      addAttachment( (*it).url(), QString(),
                      ( jt == labels.constEnd() ? QString() : *(jt++) ) );
   } else if ( cancelAction != ret ) {
     if ( probablyWeHaveUris )
@@ -505,14 +505,14 @@ void KOEditorAttachments::dropEvent( QDropEvent* event ) {
             it != urls.constEnd(); ++it ) {
 #if 0 // binary attachments are unimplemented yet
         KIO::Job *job = KIO::storedGet( *it );
-        connect( job, SIGNAL( result( KIO::Job * ) ), 
+        connect( job, SIGNAL( result( KIO::Job * ) ),
                 SLOT( downloadComplete( KIO::Job * ) ) );
 #endif
-        KIO::Job *job = KIO::copy( *it, generateLocalAttachmentPath( 
-                                                   ( *it ).fileName(), 
+        KIO::Job *job = KIO::copy( *it, generateLocalAttachmentPath(
+                                                   ( *it ).fileName(),
                                                    KMimeType::findByURL( *it ) )
                                  );
-        connect( job, SIGNAL( result( KJob * ) ), 
+        connect( job, SIGNAL( result( KJob * ) ),
                  SLOT( copyComplete( KJob * ) ) );
       }
     else { // we take anything
@@ -527,7 +527,7 @@ void KOEditorAttachments::dropEvent( QDropEvent* event ) {
       mDeferredCopy.append( path );
     }
 #if 0 // binary attachments are unimplemented yet
-      addAttachment( event->encodedData( event->format() ), event->format(), 
+      addAttachment( event->encodedData( event->format() ), event->format(),
                      KMimeType::mimeType( event->format() )->name() );
 #endif
   }
@@ -539,8 +539,8 @@ void KOEditorAttachments::downloadComplete( KIO::Job *job )
   if ( job->error() )
     job->showErrorDialog( this );
   else
-    addAttachment( static_cast<KIO::StoredTransferJob *>( job )->data(), 
-                   QString(), 
+    addAttachment( static_cast<KIO::StoredTransferJob *>( job )->data(),
+                   QString(),
                    static_cast<KIO::SimpleJob *>( job )->url().fileName() );
 }
 #endif
@@ -550,8 +550,8 @@ void KOEditorAttachments::copyComplete( KJob *job )
   if ( job->error() )
     static_cast<KIO::Job*>(job)->showErrorDialog( this );
   else {
-    addAttachment( static_cast<KIO::CopyJob *>( job )->destURL().url(), 
-                   QString(), 
+    addAttachment( static_cast<KIO::CopyJob *>( job )->destURL().url(),
+                   QString(),
                    static_cast<KIO::CopyJob *>( job )->
                                                    srcURLs().first().fileName(),
                    true );
@@ -559,7 +559,7 @@ void KOEditorAttachments::copyComplete( KJob *job )
   }
 }
 
-void KOEditorAttachments::dropped ( QDropEvent * e, 
+void KOEditorAttachments::dropped ( QDropEvent * e,
                                     const QList<Q3IconDragItem> & /*lst*/ )
 {
   dropEvent( e );
@@ -598,7 +598,7 @@ void KOEditorAttachments::slotAdd()
   dlg->setCaption( i18n( "Add Attachment" ) );
 
   dlg->exec();
-  
+
   if ( dlg->result() == KDialog::Rejected ) {
     delete dlg; // delete it first, as it hold item
     delete item;
@@ -612,7 +612,7 @@ void KOEditorAttachments::slotEdit()
     if ( item->isSelected() ) {
       AttachmentIconItem *attitem = static_cast<AttachmentIconItem*>(item);
       if ( !attitem || !attitem->attachment() ) return;
-    
+
       AttachmentEditDialog *dialog = new AttachmentEditDialog( attitem,
           mAttachments, false );
       dialog->setModal( false );
@@ -629,9 +629,9 @@ void KOEditorAttachments::slotRemove()
     if ( it->isSelected() ) {
       AttachmentIconItem *item =
           static_cast<AttachmentIconItem *>( it );
-      
+
       if ( !item ) continue;
-    
+
       if ( KMessageBox::warningContinueCancel(this,
            i18n("The item labeled \"%1\" will be permanently deleted.",
                  item->label() ),
@@ -686,8 +686,8 @@ void KOEditorAttachments::addAttachment( const QString &uri,
   item->setLocal( local );
 }
 
-void KOEditorAttachments::addAttachment( const QByteArray &data, 
-                                         const QString &mimeType, 
+void KOEditorAttachments::addAttachment( const QByteArray &data,
+                                         const QString &mimeType,
                                          const QString &label )
 {
   AttachmentIconItem *item = new AttachmentIconItem( 0, mAttachments );
@@ -729,13 +729,13 @@ void KOEditorAttachments::writeIncidence( KCal::Incidence *i )
   }
 }
 
-void KOEditorAttachments::slotItemRenamed ( Q3IconViewItem * item, 
+void KOEditorAttachments::slotItemRenamed ( Q3IconViewItem * item,
                                             const QString & text )
 {
   static_cast<AttachmentIconItem *>( item )->setLabel( text );
 }
 
-void KOEditorAttachments::showAttachmentContextMenu( Q3IconViewItem *item, 
+void KOEditorAttachments::showAttachmentContextMenu( Q3IconViewItem *item,
                                                      const QPoint &pos )
 {
   if ( item )
@@ -746,13 +746,13 @@ void KOEditorAttachments::showAttachmentContextMenu( Q3IconViewItem *item,
 
 void KOEditorAttachments::applyChanges()
 {
-  for ( KUrl::List::ConstIterator it = mDeferredDelete.constBegin(); 
+  for ( KUrl::List::ConstIterator it = mDeferredDelete.constBegin();
         it != mDeferredDelete.constEnd(); ++it ) {
     Q_ASSERT( ( *it ).isLocalFile() );
     QFile::remove( ( *it ).path() );
   }
   mDeferredDelete.clear();
-  
+
   mDeferredCopy.clear(); // files are already copied
 }
 

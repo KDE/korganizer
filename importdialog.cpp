@@ -42,11 +42,16 @@
 using namespace KCal;
 
 ImportDialog::ImportDialog( const KUrl &url, QWidget *parent )
-  : KDialogBase( Plain, i18n("Import Calendar"), Ok | Cancel, Ok, parent,
-                 0, true, true ),
+  : KDialog( parent),
     mUrl( url )
 {
-  QFrame *topFrame = plainPage();
+  setCaption( i18n("Import Calendar") );
+  setButtons( Ok | Cancel );
+  setDefaultButton( Ok );
+  setModal( true );
+  enableButtonSeparator( true );
+  QFrame *topFrame = new QFrame(this );
+  setMainWidget( topFrame );
   QVBoxLayout *topLayout = new QVBoxLayout( topFrame );
   topLayout->setSpacing( spacingHint() );
   topLayout->setMargin( 0 );

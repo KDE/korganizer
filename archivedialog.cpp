@@ -58,13 +58,18 @@
 
 ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent)
 // TODO_QT4: Use constructor without *name=0 param
-  : KDialogBase (Plain,i18n("Archive/Delete Past Events and To-dos"),
-                 User1|Cancel,User1,parent,0,false,true,
-                 i18n("&Archive"))
+  : KDialog (parent)
 {
+  setCaption( i18n("Archive/Delete Past Events and To-dos") );
+  setButtons( User1|Cancel );
+  setDefaultButton( User1 );
+  setModal( false );
+  enableButtonSeparator( true );
+  setButtonText( User1, i18n("&Archive") );
   mCalendar = cal;
 
-  QFrame *topFrame = plainPage();
+  QFrame *topFrame = new QFrame( this );
+  setMainWidget( topFrame );
   QVBoxLayout *topLayout = new QVBoxLayout(topFrame);
   topLayout->setSpacing(spacingHint());
 
@@ -137,7 +142,7 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent)
   l->setBuddy(mArchiveFile->lineEdit());
   fileLayout->addWidget(mArchiveFile);
   topLayout->addLayout(fileLayout);
-  
+
   QGroupBox *typeBox = new QGroupBox( i18n("Type of Items to Archive"),
                                         topFrame);
   mEvents = new QCheckBox( i18n("&Events"), typeBox );
@@ -187,7 +192,7 @@ void ArchiveDialog::slotEnableUser1()
 {
   bool state = ( mDeleteCb->isChecked() ||
                  !mArchiveFile->lineEdit()->text().isEmpty() );
-  enableButton(KDialogBase::User1,state);
+  enableButton(KDialog::User1,state);
 }
 
 void ArchiveDialog::slotActionChanged()

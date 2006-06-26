@@ -50,10 +50,10 @@ KOEventViewerDialog::KOEventViewerDialog( QWidget *parent, bool compact )
   }
   connect( this, SIGNAL(finished()), this, SLOT(delayedDestruct()) );
 #ifdef KORG_NODCOP
-  showButton( KDialogBase::User1, false );
-  showButton( KDialogBase::User2, false );
+  showButton( KDialog::User1, false );
+  showButton( KDialog::User2, false );
 #else
-  connect( this, SIGNAL( user1Clicked() ), mEventViewer, 
+  connect( this, SIGNAL( user1Clicked() ), mEventViewer,
            SLOT( editIncidence() ) );
   connect( this, SIGNAL( user2Clicked() ), mEventViewer,
            SLOT( showIncidenceContext() ) );

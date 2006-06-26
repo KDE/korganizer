@@ -24,7 +24,7 @@
 #ifndef FREEBUSYURLCONFIG_H
 #define FREEBUSYURLCONFIG_H
 
-#include <kdialogbase.h>
+#include <kdialog.h>
 
 class FreeBusyUrlWidget;
 class KLineEdit;
@@ -33,7 +33,7 @@ namespace KCal {
 class Attendee;
 }
 
-class FreeBusyUrlDialog : public KDialogBase
+class FreeBusyUrlDialog : public KDialog
 {
     Q_OBJECT
   public:

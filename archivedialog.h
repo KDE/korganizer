@@ -24,7 +24,7 @@
 #ifndef _ARCHIVE_DLG
 #define _ARCHIVE_DLG
 
-#include <kdialogbase.h>
+#include <kdialog.h>
 
 class QRadioButton;
 class QComboBox;
@@ -38,7 +38,7 @@ class Calendar;
 }
 using namespace KCal;
 
-class ArchiveDialog : public KDialogBase
+class ArchiveDialog : public KDialog
 {
     Q_OBJECT
   public:

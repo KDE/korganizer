@@ -40,11 +40,14 @@
 #include <QBoxLayout>
 
 FreeBusyUrlDialog::FreeBusyUrlDialog( KCal::Attendee *attendee, QWidget *parent )
-// TODO_QT4: Use constructor without *name=0 param
-  : KDialogBase( Plain, i18n("Edit Free/Busy Location"), Ok|Cancel, Ok, parent,
-                 /*name*/0, true, false )
+  : KDialog( parent )
 {
-  QFrame *topFrame = plainPage();
+  QFrame *topFrame = new QFrame(this);
+  setMainWidget( topFrame );
+  setModal( true );
+  setCaption( i18n("Edit Free/Busy Location") );
+  setButtons( Ok|Cancel );
+  setDefaultButton( Ok );
 
   QBoxLayout *topLayout = new QVBoxLayout( topFrame );
   topLayout->setSpacing( spacingHint() );
@@ -68,7 +71,7 @@ FreeBusyUrlWidget::FreeBusyUrlWidget( KCal::Attendee *attendee, QWidget *parent 
 {
   QBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->setSpacing( KDialog::spacingHint() );
-  
+
   QLabel *label = new QLabel(
       i18n("Location of Free/Busy information for %1 <%2>:",
         mAttendee->name(), mAttendee->email() ), this );
@@ -96,7 +99,7 @@ void FreeBusyUrlWidget::saveConfig()
   kDebug(5850) << "FreeBusyUrlWidget::saveConfig()" << endl;
 
   QString url = mUrlEdit->text();
-  
+
   KCal::FreeBusyUrlStore::self()->writeUrl( mAttendee->email(), url );
 
   KCal::FreeBusyUrlStore::self()->sync();

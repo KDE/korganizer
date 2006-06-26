@@ -31,7 +31,7 @@
 #include <QDragEnterEvent>
 #include <QLabel>
 #include <QDropEvent>
-#include <kdialogbase.h>
+#include <kdialog.h>
 #include <kmimetype.h>
 #include <kurl.h>
 
@@ -54,7 +54,7 @@ namespace KIO {
 class Job;
 }
 
-class AttachmentEditDialog : public KDialogBase
+class AttachmentEditDialog : public KDialog
 {
     Q_OBJECT
   public:

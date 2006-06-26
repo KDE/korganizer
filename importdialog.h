@@ -25,14 +25,14 @@
 #ifndef IMPORTDIALOG_H
 #define IMPORTDIALOG_H
 
-#include <kdialogbase.h>
+#include <kdialog.h>
 
 #include <kurl.h>
 
 
 class QRadioButton;
 
-class ImportDialog : public KDialogBase
+class ImportDialog : public KDialog
 {
     Q_OBJECT
   public:
