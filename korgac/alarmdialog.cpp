@@ -58,14 +58,17 @@
 #include "alarmdialog.moc"
 
 AlarmDialog::AlarmDialog( QWidget *parent )
-// TODO_QT4: Use constructor without *name=0 param
-  : KDialogBase( Plain, Qt::WType_TopLevel | Qt::WStyle_Customize | Qt::WStyle_StaysOnTop |
-                 Qt::WStyle_DialogBorder,
-                 parent, /*name*/0, false, i18n("Reminder"), Ok | User1 | User2/* | User3*/, User1/*3*/,
-                 false, i18n("Suspend"), i18n("Edit...") ),
+  : KDialog( parent/*, Qt::WType_TopLevel | Qt::WStyle_Customize | Qt::WStyle_StaysOnTop |
+                     Qt::WStyle_DialogBorder,*/ ),
                  mSuspendTimer(this)
 {
-  QWidget *topBox = plainPage();
+  QWidget *topBox = new QWidget( this);
+  setMainWidget( topBox );
+  setCaption( i18n("Reminder") );
+  setButtons( Ok | User1 | User2 );
+  setDefaultButton( User1 );
+  setButtonText( User1, i18n("Suspend") );
+  setButtonText( User2, i18n("Edit...") );
   QBoxLayout *topLayout = new QVBoxLayout( topBox );
   topLayout->setSpacing( spacingHint() );
 
@@ -192,7 +195,7 @@ void AlarmDialog::slotUser2()
 
 void AlarmDialog::show()
 {
-  KDialogBase::show();
+  KDialog::show();
   KWin::setState( winId(), NET::KeepAbove );
   KWin::setOnAllDesktops( winId(), true );
   eventNotification();

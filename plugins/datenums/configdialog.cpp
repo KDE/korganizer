@@ -38,9 +38,14 @@
 #include "configdialog.moc"
 
 ConfigDialog::ConfigDialog(QWidget *parent)
-  : KDialogBase(Plain,i18n("Configure Day Numbers"),Ok|Cancel,Ok,parent)
+  : KDialog(parent)
 {
-  QFrame *topFrame = plainPage();
+  setCaption( i18n("Configure Day Numbers") );
+  setButtons( Ok|Cancel );
+  setDefaultButton(  Ok );
+  setModal( true );
+  QFrame *topFrame = new QFrame( this );
+  setMainWidget( topFrame );
   QVBoxLayout *topLayout = new QVBoxLayout( topFrame );
   topLayout->setSpacing( spacingHint() );
   topLayout->setMargin( 0 );

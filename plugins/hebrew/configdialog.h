@@ -19,13 +19,13 @@
 #ifndef CONFIGDIALOG_H
 #define CONFIGDIALOG_H
 
-#include <kdialogbase.h>
+#include <kdialog.h>
 #include <QCheckBox>
 
 /**
 @author Jonathan Singer
 */
-class ConfigDialog:public KDialogBase
+class ConfigDialog:public KDialog
 {
 Q_OBJECT public:
 

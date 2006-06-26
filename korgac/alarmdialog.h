@@ -28,7 +28,7 @@
 #include <QTimer>
 #include <QDateTime>
 
-#include <kdialogbase.h>
+#include <kdialog.h>
 
 #include <libkcal/event.h>
 #include <libkcal/calendarlocal.h>
@@ -39,7 +39,7 @@ class KOEventViewer;
 class QSpinBox;
 class KComboBox;
 
-class AlarmDialog : public KDialogBase {
+class AlarmDialog : public KDialog {
     Q_OBJECT
   public:
     AlarmDialog( QWidget *parent = 0 );

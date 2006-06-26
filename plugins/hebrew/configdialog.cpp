@@ -27,10 +27,15 @@
 #include <kstandarddirs.h>
 #include <ksimpleconfig.h>
 
-ConfigDialog::ConfigDialog(QWidget * parent):KDialogBase(Plain, i18n("Configure Holidays"), Ok, Ok,
-            parent)
+ConfigDialog::ConfigDialog(QWidget * parent)
+  :KDialog( parent)
 {
-  QFrame *topFrame = plainPage();
+  QFrame *topFrame = new QFrame(this);
+  setMainWidget( topFrame );
+  setCaption( i18n("Configure Holidays") );
+  setButtons( Ok );
+  setDefaultButton( Ok );
+  setModal( true );
   QVBoxLayout *topLayout = new QVBoxLayout(topFrame);
   topLayout->setMargin( 0 );
   topLayout->setSpacing( spacingHint() );
