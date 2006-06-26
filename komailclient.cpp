@@ -253,7 +253,24 @@ int KOMailClient::kMailOpenComposer( const QString& arg0, const QString& arg1,
 
     kapp->updateRemoteUserTimestamp("kmail");
     QDBusInterfacePtr kmail("org.kde.kmail", "/KMail", "org.kde.kmail.KMail");
-    QDBusReply<int> reply = kmail->call("openComposer", arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14);
+    QList<QVariant> argList;
+    argList << arg0;
+    argList << arg1;
+    argList << arg2;
+    argList << arg3;
+    argList << arg4;
+    argList << arg5;
+    argList << arg6;
+    argList << arg7;
+    argList << arg8;
+    argList << arg9;
+    argList << arg10;
+    argList << arg11;
+    argList << arg12;
+    argList << arg13;
+    argList << arg14;
+
+    QDBusReply<int> reply = kmail->callWithArgs("openComposer",argList);
 
     if (reply.isSuccess()) {
             result=reply;
