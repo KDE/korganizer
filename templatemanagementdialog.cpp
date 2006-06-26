@@ -45,9 +45,11 @@
 #include <kmessagebox.h>
 
 TemplateManagementDialog::TemplateManagementDialog(QWidget *parent, const QStringList &templates )
-    :KDialog( parent, i18n("Manage Templates"), Ok|Cancel ),
+    :KDialog( parent),
       m_templates( templates ), m_newTemplate( QString() ), m_changed( false )
 {
+  setCaption( i18n("Manage Templates") );
+  setButtons(  Ok|Cancel );
   setObjectName( "template_management_dialog" );
   QWidget *widget = new QWidget( this );
   widget->setObjectName( "template_management_dialog_base" );
