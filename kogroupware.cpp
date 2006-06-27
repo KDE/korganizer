@@ -39,7 +39,7 @@
 #include "calendarview.h"
 #include "mailscheduler.h"
 #include "koprefs.h"
-#include <libemailfunctions/email.h>
+#include <emailfunctions/email.h>
 #include <libkcal/attendee.h>
 #include <libkcal/journal.h>
 #include <libkcal/incidenceformatter.h>

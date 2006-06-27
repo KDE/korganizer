@@ -57,7 +57,7 @@
 #include <kabc/stdaddressbook.h>
 #endif
 #include <libkdepim/kvcarddrag.h>
-#include <libemailfunctions/email.h>
+#include <emailfunctions/email.h>
 
 #include <libkcal/incidence.h>
 #include <kvbox.h>
@@ -390,12 +390,12 @@ void KOEditorDetails::openAddressBook()
           itr != aList.end(); ++itr ) {
       KABC::Addressee a = (*itr);
       bool myself = KOPrefs::instance()->thatIsMe( a.preferredEmail() );
-      bool sameAsOrganizer = mOrganizerCombo && 
+      bool sameAsOrganizer = mOrganizerCombo &&
         EmailAddressTools::compareEmail( a.preferredEmail(), mOrganizerCombo->currentText(), false );
       KCal::Attendee::PartStat partStat;
-      if ( myself && sameAsOrganizer ) 
+      if ( myself && sameAsOrganizer )
         partStat = KCal::Attendee::Accepted;
-      else 
+      else
         partStat = KCal::Attendee::NeedsAction;
       insertAttendee( new Attendee( a.realName(), a.preferredEmail(),
                                     !myself, partStat,
@@ -617,7 +617,7 @@ void KOEditorDetails::updateAttendeeItem()
   if ( iAmTheOrganizer ) {
     bool myself =
       EmailAddressTools::compareEmail( email, mOrganizerCombo->currentText(), false );
-    bool wasMyself = 
+    bool wasMyself =
       EmailAddressTools::compareEmail( a->email(), mOrganizerCombo->currentText(), false );
     if ( myself ) {
       mStatusCombo->setCurrentIndex( KCal::Attendee::Accepted );

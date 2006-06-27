@@ -40,7 +40,7 @@
 #include <libkcal/alarm.h>
 #include <libkcal/incidence.h>
 
-#include <libemailfunctions/email.h>
+#include <emailfunctions/email.h>
 
 class AlarmListViewItem : public Q3ListViewItem
 {

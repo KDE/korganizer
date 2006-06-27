@@ -17,7 +17,7 @@
 
     You should have received a copy of the GNU General Public License
     along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+    Foundation, Inc., 51 Franklin Street, Fifth Floor,
     Boston, MA 02110-1301, USA.
 
     As a special exception, permission is given to link this program
@@ -68,7 +68,7 @@
 
 #include <libkdepim/kdatepickerpopup.h>
 
-#include <libemailfunctions/email.h>
+#include <emailfunctions/email.h>
 
 #include "docprefs.h"
 
@@ -429,13 +429,13 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent)
 
   // find the main window (for the action collection)
   KActionCollection *collection = 0;
-  for ( QWidget *curWidget = parentWidget(); curWidget; 
+  for ( QWidget *curWidget = parentWidget(); curWidget;
         curWidget = curWidget->parentWidget() ) {
     KOrg::MainWindow *mainWidget = dynamic_cast<KOrg::MainWindow *>( curWidget );
     if ( mainWidget )
       collection = mainWidget->getActionCollection();
   }
-  
+
   setupListViews();
   QList<K3ListView *> list;
   list.append( mMyTodoListView );
@@ -443,11 +443,11 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent)
   list.append( mYourTodoListView );
   list.append( mOtherTodoListView );
   KOTodoListViewQuickSearchContainer *container =
-          new KOTodoListViewQuickSearchContainer( this, list, 
+          new KOTodoListViewQuickSearchContainer( this, list,
                                                   collection, calendar);
   container->setObjectName("todo quick search");
   mSearchToolBar = container->quickSearch();
-  
+
   if ( !KOPrefs::instance()->mEnableTodoQuickSearch ) container->hide();
   topLayout->addWidget( container );
 
@@ -745,7 +745,7 @@ void KOTodoView::updateView()
   restoreListViewState( mYourTodoListView );
   restoreListViewState( mOtherTodoListView );
 
-  processSelectionChange();  
+  processSelectionChange();
 }
 
 
@@ -753,7 +753,7 @@ void KOTodoView::fillViews()
 {
 //  kDebug(5850) << "KOTodoView::updateView()" << endl;
   Todo::List todoList = calendar()->todos();
-  
+
   // Put for each Event a KOTodoViewItem in the list view. Don't rely on a
   // specific order of events. That means that we have to generate parent items
   // recursively for proper hierarchical display of Todos.
@@ -1016,7 +1016,7 @@ void KOTodoView::showDates(const QDate &, const QDate &)
 void KOTodoView::showIncidences( const Incidence::List &incidences )
 {
 // FIXME after merging Kalle's branch with qsearch
-#if 0 
+#if 0
   // we must check if they are not filtered; if they are, remove the filter
   CalFilter *filter = calendar()->filter();
   bool wehaveall = true;
@@ -1025,15 +1025,15 @@ void KOTodoView::showIncidences( const Incidence::List &incidences )
         it != incidences.constEnd(); ++it )
       if ( !( wehaveall = filter->filterIncidence( *it ) ) )
         break;
-  
+
   if ( !wehaveall )
     calendar()->setFilter( 0 );
-  
+
   // calculate the rectangle we must have
   uint begin = mTodoListView->contentsHeight(), end = 0;
   KOTodoViewItem *first = 0, *last;
   for ( Q3ListViewItemIterator it( mTodoListView ); it.current(); ++it )
-    if ( incidences.contains( static_cast<KOTodoViewItem *>( it.current() 
+    if ( incidences.contains( static_cast<KOTodoViewItem *>( it.current()
                                                            )->todo() ) ) {
       if ( !first ) first = static_cast<KOTodoViewItem *>( it.current() );
       last = static_cast<KOTodoViewItem *>( it.current() );
@@ -1041,7 +1041,7 @@ void KOTodoView::showIncidences( const Incidence::List &incidences )
       begin = qMin( begin, pos );
       end = qMax( end, pos + it.current()->height() );
     }
-  
+
   if ( end < begin )
     // nothing to do
     return;
@@ -1050,7 +1050,7 @@ void KOTodoView::showIncidences( const Incidence::List &incidences )
     mTodoListView->setContentsPos( 0, first->itemPos() );
   else  // center it
     mTodoListView->center( 0, (begin + end) / 2 );
-  
+
   // the final touch (make the user notice)
   first->setSelected( true );
 #endif

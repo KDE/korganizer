@@ -45,7 +45,7 @@
 #include "koprefs.h"
 #include <libkpimidentities/identitymanager.h>
 #include <libkpimidentities/identity.h>
-#include <libemailfunctions/email.h>
+#include <emailfunctions/email.h>
 #include <kabc/stdaddressbook.h>
 #include "kocore.h"
 
@@ -234,14 +234,14 @@ void KOPrefs::usrWriteConfig()
     config()->writeEntry(i.key(),i.value() );
     ++i;
   }
-  
+
   config()->setGroup( "Resources Colors" );
   i = mResourceColors.constBegin();
   while (i != mResourceColors.constEnd()) {
     config()->writeEntry(i.key(),i.value() );
     ++i;
   }
-  
+
   if( !mFreeBusyPublishSavePassword ) {
     KConfigSkeleton::ItemPassword *i = freeBusyPublishPasswordItem();
     i->setValue( "" );
