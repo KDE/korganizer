@@ -133,7 +133,7 @@ void AlarmListViewItem::construct()
 
 
 KOEditorAlarms::KOEditorAlarms( KCal::Alarm::List *alarms, QWidget *parent )
-  : KDialog( parent), mAlarms( alarms )
+  : KDialog( parent), mAlarms( alarms ),mCurrentItem(0L)
 {
   setCaption( i18n("Edit Reminders") );
   setButtons( Ok | Apply | Cancel );
