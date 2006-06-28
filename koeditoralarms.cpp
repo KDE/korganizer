@@ -137,7 +137,7 @@ void AlarmListViewItem::construct()
 
 KOEditorAlarms::KOEditorAlarms( KCal::Alarm::List *alarms, QWidget *parent,
                                 const char *name )
-  : KDialogBase( parent, name, true, i18n("Edit Reminders"), Ok | Apply | Cancel ), mAlarms( alarms )
+  : KDialogBase( parent, name, true, i18n("Edit Reminders"), Ok | Apply | Cancel ), mAlarms( alarms ),mCurrentItem(0L)
 {
   setMainWidget( mWidget = new KOEditorAlarms_base( this ) );
   mWidget->mAlarmList->setColumnWidthMode( 0, QListView::Maximum );
