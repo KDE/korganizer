@@ -205,8 +205,7 @@ kde4_add_kcfg_files(korganizer_LIB_SRCS koprefs_base.kcfgc )
 
 kde4_add_ui_files(korganizer_LIB_SRCS filteredit_base.ui koeditoralarms_base.ui publishdialog_base.ui template_management_dialog_base.ui kogroupwareprefspage.ui )
 
-#kde4_add_dcop_skels(korganizer_LIB_SRCS korganizeriface.h kcalendariface.h )
-qdbus_add_adaptors(korganizer_LIB_SRCS org.kde.korganizer.Korganizer.xml org.kde.Korganizer.Calendar.xml)
+qt4_add_dbus_adaptors(korganizer_LIB_SRCS org.kde.korganizer.Korganizer.xml org.kde.Korganizer.Calendar.xml)
 
 kde4_add_library(korganizer SHARED ${korganizer_LIB_SRCS})
 
