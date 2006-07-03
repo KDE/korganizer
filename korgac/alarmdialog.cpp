@@ -162,14 +162,14 @@ void AlarmDialog::slotUser2()
     if ( KToolInvocation::startServiceByDesktopName( "korganizer", QString() ) )
       KMessageBox::error( 0, i18n("Could not start KOrganizer.") );
   }
-  QDBusInterfacePtr korganizer("org.kde.korganizer", "/KOrganizer", "org.kde.korganizer.KOrganizer");
-  korganizer->call( "editIncidence",mIncidence->uid() );
+  QDBusInterface korganizer("org.kde.korganizer", "/KOrganizer", "org.kde.korganizer.KOrganizer");
+  korganizer.call( "editIncidence",mIncidence->uid() );
 
   // get desktop # where korganizer (or kontact) runs
   QString object = QDBus::sessionBus().busService()->nameHasOwner( "kontact" ) ?
            "kontact-mainwindow_1" : "KOrganizer MainWindow";
-  QDBusInterfacePtr korganizerObj("org.kde.korganizer", "/"+object);
-  QDBusReply<int> reply = korganizerObj->call( "getWinID" );
+  QDBusInterface korganizerObj("org.kde.korganizer", "/"+object);
+  QDBusReply<int> reply = korganizerObj.call( "getWinID" );
   if ( reply.isSuccess() ) {
     int window = reply;
     int desktop = KWin::windowInfo( window ).desktop();
