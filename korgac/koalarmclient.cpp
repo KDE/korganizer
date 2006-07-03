@@ -40,7 +40,7 @@
 #include <QPushButton>
 #include <kglobal.h>
 #include "korgacadaptor.h"
-#include <dbus/qdbus.h>
+#include <QtDBus>
 
 KOAlarmClient::KOAlarmClient( QObject *parent )
   : QObject( parent )

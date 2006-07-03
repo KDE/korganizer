@@ -33,7 +33,7 @@
 //Added by qt3to4:
 #include <QVBoxLayout>
 #include <QBoxLayout>
-#include <dbus/qdbus.h>
+#include <QtDBus>
 #include <kapplication.h>
 #include <klocale.h>
 #include <kprocess.h>
