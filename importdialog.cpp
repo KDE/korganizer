@@ -49,7 +49,7 @@ ImportDialog::ImportDialog( const KUrl &url, QWidget *parent )
   setButtons( Ok | Cancel );
   setDefaultButton( Ok );
   setModal( true );
-  enableButtonSeparator( true );
+  showButtonSeparator( true );
   QFrame *topFrame = new QFrame(this );
   setMainWidget( topFrame );
   QVBoxLayout *topLayout = new QVBoxLayout( topFrame );

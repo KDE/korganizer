@@ -67,7 +67,7 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
   setButtons( Ok | Apply | Cancel | Default );
   setDefaultButton( Ok );
   setModal( false );
-  enableButtonSeparator( false );
+  showButtonSeparator( false );
 
   // Set this to be the group leader for all subdialogs - this means
   // modal subdialogs will only affect this dialog, not the other windows

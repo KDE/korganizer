@@ -78,7 +78,7 @@ ExportWebDialog::ExportWebDialog( HTMLExportSettings *settings, QWidget *parent)
   setButtons( Help|Default|User1|Cancel );
   setDefaultButton( User1 );
   setModal( false );
-  enableButtonSeparator( false );
+  showButtonSeparator( false );
   setButtonText( User1, i18n("Export") );
 
   setupGeneralPage();

@@ -54,7 +54,7 @@ SearchDialog::SearchDialog(Calendar *calendar,QWidget *parent)
   setButtons( User1|Close );
   setDefaultButton( User1 );
   setModal( false );
-  enableButtonSeparator( false );
+  showButtonSeparator( false );
   setButtonGuiItem( User1, KGuiItem( i18n("&Find"), "find") );
   mCalendar = calendar;
 

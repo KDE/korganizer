@@ -73,7 +73,7 @@
 #include <QLabel>
 
 #include "calendaradaptor.h"
-#include <dbus/qdbus.h>
+#include <QtDBus>
 
 // FIXME: Several places in the file don't use KConfigXT yet!
 KOWindowList *ActionManager::mWindowList = 0;

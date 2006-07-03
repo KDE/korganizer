@@ -44,7 +44,7 @@
 //Added by qt3to4:
 #include <QByteArray>
 #include <ktoolinvocation.h>
-#include <dbus/qdbus.h>
+#include <QtDBus>
 
 KOMailClient::KOMailClient()
 {

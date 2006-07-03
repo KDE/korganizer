@@ -35,7 +35,7 @@
 #include "actionmanager.h"
 
 #include "korganizeradaptor.h"
-#include <dbus/qdbus.h>
+#include <QtDBus>
 
 KOrganizerIfaceImpl::KOrganizerIfaceImpl( ActionManager* actionManager,
                                           QObject* parent, const char* name )

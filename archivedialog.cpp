@@ -64,7 +64,7 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent)
   setButtons( User1|Cancel );
   setDefaultButton( User1 );
   setModal( false );
-  enableButtonSeparator( true );
+  showButtonSeparator( true );
   setButtonText( User1, i18n("&Archive") );
   mCalendar = cal;
 
