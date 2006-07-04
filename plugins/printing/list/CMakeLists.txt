@@ -16,12 +16,12 @@ kde4_install_libtool_file( ${PLUGIN_INSTALL_DIR} korg_listprint )
 
 target_link_libraries(korg_listprint  ${KDE4_KDEUI_LIBS} korg_stdprinting )
 
-install_targets(${PLUGIN_INSTALL_DIR} korg_listprint )
+install(TARGETS korg_listprint  DESTINATION ${PLUGIN_INSTALL_DIR})
 
 
 ########### install files ###############
 
-install_files( ${SERVICES_INSTALL_DIR}/korganizer FILES listprint.desktop )
+install( FILES listprint.desktop  DESTINATION ${SERVICES_INSTALL_DIR}/korganizer)
 
 
 

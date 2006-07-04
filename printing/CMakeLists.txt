@@ -13,7 +13,7 @@ kde4_add_library(kocorehelper SHARED ${kocorehelper_LIB_SRCS})
 target_link_libraries(kocorehelper  ${KDE4_KDEUI_LIBS} )
 
 set_target_properties(kocorehelper PROPERTIES VERSION 1.0.0 SOVERSION 1 )
-install_targets(${LIB_INSTALL_DIR} kocorehelper )
+install(TARGETS kocorehelper  DESTINATION ${LIB_INSTALL_DIR})
 
 
 ########### next target ###############
@@ -37,12 +37,12 @@ kde4_add_library(korg_stdprinting SHARED ${korg_stdprinting_LIB_SRCS})
 target_link_libraries(korg_stdprinting  ${KDE4_KDEUI_LIBS} kocorehelper kdepim kcal kdeprint )
 
 set_target_properties(korg_stdprinting PROPERTIES VERSION 1.0.0 SOVERSION 1 )
-install_targets(${LIB_INSTALL_DIR} korg_stdprinting )
+install(TARGETS korg_stdprinting  DESTINATION ${LIB_INSTALL_DIR})
 
 
 ########### install files ###############
 
-install_files( /include/korganizer FILES  )
+#install( FILES   DESTINATION /include/korganizer)
 
 
 

@@ -4,7 +4,7 @@
 
 ########### install files ###############
 
-install_files( ${DATA_INSTALL_DIR}/korganizer/sounds FILES alert.wav icemag.wav lightmag.wav onscreen.wav  	spinout.wav )
+install( FILES alert.wav icemag.wav lightmag.wav onscreen.wav  	spinout.wav  DESTINATION ${DATA_INSTALL_DIR}/korganizer/sounds)
 
 
 

@@ -21,7 +21,7 @@ kde4_add_executable(korgac ${korgac_SRCS})
 
 target_link_libraries(korgac  ${KDE4_KDEUI_LIBS} korganizer_eventviewer phononcore)
 
-install_targets(/bin korgac )
+install(TARGETS korgac  DESTINATION ${BIN_INSTALL_DIR} )
 
 
 ########### next target ###############
@@ -40,7 +40,7 @@ endif(KDE4_BUILD_TESTS)
 
 ########### install files ###############
 
-install_files( /share/autostart FILES korgac.desktop )
+install( FILES korgac.desktop  DESTINATION /share/autostart)
 
 
 

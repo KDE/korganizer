@@ -34,7 +34,7 @@ set_target_properties(korganizer_bin  PROPERTIES OUTPUT_NAME korganizer)
 
 target_link_libraries(korganizer_bin ${KDE4_KDECORE_LIBS} korganizer)
 
-install_targets(/bin korganizer_bin )
+install(TARGETS korganizer_bin  DESTINATION ${BIN_INSTALL_DIR} )
 
 
 ########### next target ###############
@@ -51,7 +51,7 @@ target_link_libraries(kcm_korganizer ${KDE4_KDECORE_LIBS} korganizer kdepim khol
 
 kde4_add_kcfg_files(kcm_korganizer_SRCS koprefs_base.kcfgc )
 
-install_targets(${PLUGIN_INSTALL_DIR} kcm_korganizer )
+install(TARGETS kcm_korganizer  DESTINATION ${PLUGIN_INSTALL_DIR})
 
 
 ########### next target ###############
@@ -66,7 +66,7 @@ kde4_install_libtool_file( ${PLUGIN_INSTALL_DIR} korganizerpart )
 
 target_link_libraries(korganizerpart  ${KDE4_KDECORE_LIBS} korganizer )
 
-install_targets(${PLUGIN_INSTALL_DIR} korganizerpart )
+install(TARGETS korganizerpart  DESTINATION ${PLUGIN_INSTALL_DIR})
 
 
 ########### next target ###############
@@ -112,7 +112,7 @@ kde4_add_library(korganizer_eventviewer SHARED ${korganizer_eventviewer_LIB_SRCS
 target_link_libraries(korganizer_eventviewer  ${KDE4_KPARTS_LIBS} kcal )
 
 set_target_properties(korganizer_eventviewer PROPERTIES VERSION 1.0.0 SOVERSION 1 )
-install_targets(${LIB_INSTALL_DIR} korganizer_eventviewer )
+install(TARGETS korganizer_eventviewer  DESTINATION ${LIB_INSTALL_DIR})
 
 
 ########### next target ###############
@@ -126,7 +126,7 @@ kde4_add_library(korganizer_calendar SHARED ${korganizer_calendar_LIB_SRCS})
 target_link_libraries(korganizer_calendar  ${KDE4_KPARTS_LIBS} kdepim kcal )
 
 set_target_properties(korganizer_calendar PROPERTIES VERSION 1.0.0 SOVERSION 1 )
-install_targets(${LIB_INSTALL_DIR} korganizer_calendar )
+install(TARGETS korganizer_calendar  DESTINATION ${LIB_INSTALL_DIR})
 
 
 ########### next target ###############
@@ -218,19 +218,19 @@ target_link_libraries(korganizer ${KDE4_KDECORE_LIBS} kparts knewstuff kdeprint 
 
 set_target_properties(korganizer PROPERTIES VERSION 1.0.0 SOVERSION 1 )
 
-install_targets(${LIB_INSTALL_DIR} korganizer )
+install(TARGETS korganizer  DESTINATION ${LIB_INSTALL_DIR})
 
 
 ########### install files ###############
 
-install_files( ${XDG_APPS_DIR} FILES korganizer.desktop )
-install_files( ${KCFG_INSTALL_DIR} FILES korganizer.kcfg )
-install_files( ${DATA_INSTALL_DIR}/korganizer FILES korganizer_part.rc )
-install_files( ${SERVICETYPES_INSTALL_DIR} FILES dcopcalendar.desktop )
-install_files( ${DATA_INSTALL_DIR}/korganizer FILES tips )
-install_files( ${SERVICES_INSTALL_DIR} FILES korganizer_configmain.desktop                      korganizer_configtime.desktop                      korganizer_configviews.desktop                      korganizer_configcolors.desktop                      korganizer_configfonts.desktop                      korganizer_configplugins.desktop                      korganizer_configgroupscheduling.desktop                      korganizer_configfreebusy.desktop                      korganizer_configdesignerfields.desktop                      webcal.protocol )
-install_files( ${DATA_INSTALL_DIR}/korganizer FILES korganizerui.rc )
-install_files( ${KCONF_UPDATE_INSTALL_DIR} FILES korganizer.upd )
+install( FILES korganizer.desktop  DESTINATION ${XDG_APPS_DIR})
+install( FILES korganizer.kcfg  DESTINATION ${KCFG_INSTALL_DIR})
+install( FILES korganizer_part.rc  DESTINATION ${DATA_INSTALL_DIR}/korganizer)
+install( FILES dcopcalendar.desktop  DESTINATION ${SERVICETYPES_INSTALL_DIR})
+install( FILES tips  DESTINATION ${DATA_INSTALL_DIR}/korganizer)
+install( FILES korganizer_configmain.desktop                      korganizer_configtime.desktop                      korganizer_configviews.desktop                      korganizer_configcolors.desktop                      korganizer_configfonts.desktop                      korganizer_configplugins.desktop                      korganizer_configgroupscheduling.desktop                      korganizer_configfreebusy.desktop                      korganizer_configdesignerfields.desktop                      webcal.protocol  DESTINATION ${SERVICES_INSTALL_DIR})
+install( FILES korganizerui.rc  DESTINATION ${DATA_INSTALL_DIR}/korganizer)
+install( FILES korganizer.upd  DESTINATION ${KCONF_UPDATE_INSTALL_DIR})
 install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/ical2vcal DESTINATION bin)
 
 

@@ -4,8 +4,8 @@
 
 ########### install files ###############
 
-install_files( ${SERVICETYPES_INSTALL_DIR} FILES calendarplugin.desktop calendardecoration.desktop )
-install_files( /include/calendar FILES plugin.h calendardecoration.h )
+install( FILES calendarplugin.desktop calendardecoration.desktop  DESTINATION ${SERVICETYPES_INSTALL_DIR})
+install( FILES plugin.h calendardecoration.h  DESTINATION ${INCLUDE_INSTALL_DIR}/calendar)
 
 
 
