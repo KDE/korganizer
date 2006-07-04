@@ -49,7 +49,7 @@ class KOAlarmClient : public QObject, public KSessionManaged
 
     bool commitData( QSessionManager & );
 
-    // DCOP interface
+    // DBUS interface
     void quit();
     void forceAlarmCheck();
     void dumpDebug();

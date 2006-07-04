@@ -14,7 +14,7 @@ set(korgac_SRCS
 
 kde4_automoc(${korgac_SRCS})
 
-qt4_add_dbus_adaptors(korgac_SRCS org.kde.korganizer.KOrgac.xml)
+qt4_add_dbus_adaptor(korgac_SRCS org.kde.korganizer.KOrgac.xml koalarmclient.h KOAlarmClient )
 
 
 kde4_add_executable(korgac ${korgac_SRCS})
