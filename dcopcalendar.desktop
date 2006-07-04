@@ -1,7 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
 Type=ServiceType
-X-KDE-ServiceType=DCOP/Organizer
-Comment=Organizer with a DCOP interface
-Comment[fr]=Organiseur avec une interface DCOP
-Comment[x-test]=xxOrganizer with a DCOP interfacexx
+X-KDE-ServiceType=DBUS/Organizer
+Comment=Organizer with a D-BUS interface
+Comment[fr]=Organiseur avec une interface D-BUS
+Comment[x-test]=xxOrganizer with a D-BUS interfacexx
