@@ -49,7 +49,7 @@ KOEventViewerDialog::KOEventViewerDialog( QWidget *parent, bool compact )
     resize( 320, 300 );
   }
   connect( this, SIGNAL(finished()), this, SLOT(delayedDestruct()) );
-#ifdef KORG_NODCOP
+#ifdef KORG_NODBUS
   showButton( KDialog::User1, false );
   showButton( KDialog::User2, false );
 #else

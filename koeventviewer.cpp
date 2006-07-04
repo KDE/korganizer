@@ -34,12 +34,11 @@
 #include <libkcal/incidence.h>
 #include <libkcal/incidenceformatter.h>
 
-#warning Port me to DBus!
-#define KORG_NODCOP
-#ifndef KORG_NODCOP
-#include <dcopclient.h>
+#define KORG_NODBUS
+#ifndef KORG_NODBUS
+#include <dbusclient.h>
 #include <kapplication.h>
-#include "korganizeriface_stub.h"
+#include "korganizerinterface.h"
 #endif
 
 #include <kdebug.h>
@@ -155,11 +154,11 @@ void KOEventViewer::changeIncidenceDisplay( Incidence *incidence, int action )
 void KOEventViewer::editIncidence()
 {
   if ( mIncidence ) {
-#ifndef KORG_NODCOP
+#ifndef KORG_NODBUS
     // make sure korganizer is running or the part is shown
     KToolInvocation::startServiceByDesktopPath("korganizer");
 
-    KOrganizerIface_stub korganizerIface( "korganizer", "KOrganizerIface" );
+    OrgKdeKorganizerKorganizerInterface korganizerIface("org.kde.korganizer.Korganizer", "/", QDBus::sessionBus() );
     korganizerIface.editIncidence( mIncidence->uid() );
 #endif
   }
@@ -167,12 +166,12 @@ void KOEventViewer::editIncidence()
 
 void KOEventViewer::showIncidenceContext()
 {
-#ifndef KORG_NODCOP
+#ifndef KORG_NODBUS
   if ( mIncidence ) {
     // make sure korganizer is running or the part is shown
     KToolInvocation::startServiceByDesktopPath("korganizer");
 
-    KOrganizerIface_stub korganizerIface( "korganizer", "KOrganizerIface" );
+    OrgKdeKorganizerKorganizerInterface korganizerIface("org.kde.korganizer.Korganizer", "/", QDBus::sessionBus() );
     korganizerIface.showIncidenceContext( mIncidence->uid() );
   }
 #endif

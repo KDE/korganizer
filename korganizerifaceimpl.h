@@ -59,25 +59,36 @@ public slots:
       @return true if the item could be deleted, false otherwise
   */
   bool deleteIncidence( const QString &uid )  { return deleteIncidence( uid, false ); }
-  /** @reimp from KOrganizerIface::deleteIncidence()
-      @param uid the uid of the item to delete
-      @param force if true, then no confirmation dialog will be shown, even if the GUI is configured to show one.
-  */
+    /**
+      Delete the incidence with the given unique ID from the active calendar.
+      @param uid The incidence's unique ID.
+      @param force If true, all recurrences and sub-todos (if applicable) will
+      be deleted without prompting for confirmation.
+    */
   bool deleteIncidence( const QString &uid, bool force );
 
-  /** @reimp from KOrganizerIface::addIncidence()
-      @param iCal Add all incidences given in the iCalendar string
-  */
+    /**
+      Add an incidence to the active calendar.
+      @param iCal A calendar in iCalendar format containing the incidence. The
+                  calendar must consist of a VCALENDAR component which contains
+                  the incidence (VEVENT, VTODO, VJOURNAL or VFREEBUSY) and
+                  optionally a VTIMEZONE component. If there is more than one
+                  incidence, only the first is added to KOrganizer's calendar.
+    */
   bool addIncidence( const QString &iCal );
   
-  /** @reimp from KOrganizerIface::showIncidence()
-      @param uid The UID of the item to show. If no such item exists, nothing happens.
-  */
+    /**
+      Show a HTML representation of the incidence (the "View.." dialog).
+      If no incidence with the given uid exists, nothing happens.
+      @param uid The UID of the incidence to be shown.
+    */
   bool showIncidence( const QString& uid );
 
-  /** @reimp from KOrganizerIface::showIncidence()
-      @param uid The UID of the item to show
-      */
+    /**
+      Show an incidence in context. This means showing the todo, agenda or
+      journal view (as appropriate) and scrolling it to show the incidence.
+      @param uid Unique ID of the incidence to show.
+    */
   bool showIncidenceContext( const QString& uid );
 
 private:

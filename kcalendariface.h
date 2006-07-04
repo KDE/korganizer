@@ -21,7 +21,7 @@
 #define KCALENDARIFACE_H
 
 /** @file
-* This file is a generic DCOP interface, shared between KDE applications.
+* This file is a generic DBUS interface, shared between KDE applications.
 * It handles Calendar requests.
 */
 

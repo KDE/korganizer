@@ -30,12 +30,12 @@
 #include "urihandler.h"
 
 #warning Port me to DBus!
-#define KORG_NODCOP
-#ifndef KORG_NODCOP
+#define KORG_NODBUS
+#ifndef KORG_NODBUS
 #include <dcopclient.h>
 #include "kmailIface_stub.h"
 #include "knodeiface_stub.h"
-#include "korganizeriface_stub.h"
+#include "korganizerinterface.h"
 #endif
 
 #include <kiconloader.h>
@@ -49,7 +49,7 @@ bool UriHandler::process( const QString &uri )
 {
   kDebug(5850) << "UriHandler::process(): " << uri << endl;
 
-#ifndef KORG_NODCOP
+#ifndef KORG_NODBUS
   if ( uri.startsWith( KDEPIMPROTOCOL_EMAIL ) ) {
     // make sure kmail is running or the part is shown
     KToolInvocation::startServiceByDesktopPath("kmail");
@@ -101,8 +101,8 @@ bool UriHandler::process( const QString &uri )
 
     // we must work around KUrl breakage (it doesn't know about URNs)
     QString uid = KUrl::fromPercentEncoding( uri.toLatin1() ).mid( 11 );
+    OrgKdeKorganizerKorganizerInterface korganizerIface("org.kde.korganizer.Korganizer", "/", QDBus::sessionBus() );
     
-    KOrganizerIface_stub korganizerIface( "korganizer", "KOrganizerIface" );
     return korganizerIface.showIncidence( uid );
   } else if ( uri.startsWith( KDEPIMPROTOCOL_NEWSARTICLE ) ) {
     KToolInvocation::startServiceByDesktopPath( "knode" );
@@ -112,7 +112,7 @@ bool UriHandler::process( const QString &uri )
   } else {  // no special URI, let KDE handle it
     new KRun(KUrl( uri ),0L);
   }
-#endif /* KORG_NODCOP */
+#endif /* KORG_NODBUS */
   
   return false;
 }
