@@ -393,7 +393,7 @@ KUrl FreeBusyManager::freeBusyUrl( const QString &email )
   kDebug(5850) << "FreeBusyManager::freeBusyUrl(): " << email << endl;
 
   // First check if there is a specific FB url for this email
-  QString configFile = locateLocal( "data", "korganizer/freebusyurls" );
+  QString configFile = KStandardDirs::locateLocal( "data", "korganizer/freebusyurls" );
   KConfig cfg( configFile );
 
   cfg.setGroup( email );
@@ -475,7 +475,7 @@ KCal::FreeBusy *FreeBusyManager::iCalToFreeBusy( const QByteArray &data )
 
 QString FreeBusyManager::freeBusyDir()
 {
-  return locateLocal( "data", "korganizer/freebusy" );
+  return KStandardDirs::locateLocal( "data", "korganizer/freebusy" );
 }
 
 FreeBusy *FreeBusyManager::loadFreeBusy( const QString &email )

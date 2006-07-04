@@ -435,11 +435,11 @@ QString KOEditorAttachments::generateLocalAttachmentPath(
       filename += QString( mimeType->patterns().first() ).replace( "*", "" );
   }
 
-  QString path = locateLocal( "data", pathBegin + filename );
+  QString path = KStandardDirs::locateLocal( "data", pathBegin + filename );
 
   while ( QFile::exists( path ) )
     // no need to worry much about races here, I guess
-    path = locateLocal( "data",
+    path = KStandardDirs::locateLocal( "data",
                        pathBegin + KRandom::randomString( 6 ) + filename );
 
   return path;

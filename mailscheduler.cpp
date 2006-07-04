@@ -90,7 +90,7 @@ bool MailScheduler::performTransaction( IncidenceBase *incidence,
 
 QList<ScheduleMessage*> MailScheduler::retrieveTransactions()
 {
-  QString incomingDirName = locateLocal( "data", "korganizer/income" );
+  QString incomingDirName = KStandardDirs::locateLocal( "data", "korganizer/income" );
   kDebug(5850) << "MailScheduler::retrieveTransactions: dir: "
                 << incomingDirName << endl;
 
@@ -159,5 +159,5 @@ bool MailScheduler::deleteTransaction( IncidenceBase *incidence )
 
 QString MailScheduler::freeBusyDir()
 {
-  return locateLocal( "data", "korganizer/freebusy" );
+  return KStandardDirs::locateLocal( "data", "korganizer/freebusy" );
 }

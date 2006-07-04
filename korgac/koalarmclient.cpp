@@ -54,7 +54,7 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
   connect( this, SIGNAL( reminderCount( int ) ), mDocker, SLOT( slotUpdate( int ) ) );
   connect( mDocker, SIGNAL( quitSignal() ), SLOT( slotQuit() ) );
 
-  KConfig c( locate( "config", "korganizerrc" ) );
+  KConfig c( KStandardDirs::locate( "config", "korganizerrc" ) );
   c.setGroup( "Time & Date" );
   QString tz = c.readEntry( "TimeZoneId" );
   kDebug(5890) << "TimeZone: " << tz << endl;

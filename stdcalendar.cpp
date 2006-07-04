@@ -75,7 +75,7 @@ StdCalendar::StdCalendar()
     }
     // No resource created, i.e. no path found in config => use default path
     if ( !defaultResource ) {
-      fileName = locateLocal( "data", "korganizer/std.ics" );
+      fileName = KStandardDirs::locateLocal( "data", "korganizer/std.ics" );
       kDebug(5850) << "Creating new default local resource at " << fileName << endl;
       defaultResource = manager->createResource( "file" );
       if ( defaultResource )

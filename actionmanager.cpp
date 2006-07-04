@@ -647,7 +647,7 @@ void ActionManager::file_new()
 void ActionManager::file_open()
 {
   KUrl url;
-  QString defaultPath = locateLocal( "data","korganizer/" );
+  QString defaultPath = KStandardDirs::locateLocal( "data","korganizer/" );
   url = KFileDialog::getOpenURL( defaultPath,i18n("*.vcs *.ics|Calendar Files"),
                                 dialogParent() );
 
@@ -735,7 +735,7 @@ void ActionManager::file_icalimport()
 
 void ActionManager::file_merge()
 {
-  KUrl url = KFileDialog::getOpenURL( locateLocal( "data","korganizer/" ),
+  KUrl url = KFileDialog::getOpenURL( KStandardDirs::locateLocal( "data","korganizer/" ),
                                      i18n("*.vcs *.ics|Calendar Files"),
                                      dialogParent() );
   if ( ! url.isEmpty() )  // isEmpty if user canceled the dialog
@@ -1116,7 +1116,7 @@ bool ActionManager::saveModifiedURL()
 
 KUrl ActionManager::getSaveURL()
 {
-  KUrl url = KFileDialog::getSaveURL( locateLocal( "data","korganizer/" ),
+  KUrl url = KFileDialog::getSaveURL( KStandardDirs::locateLocal( "data","korganizer/" ),
                                      i18n("*.vcs *.ics|Calendar Files"),
                                      dialogParent() );
 
@@ -1635,7 +1635,7 @@ void ActionManager::saveCalendar()
       if ( !url().isEmpty() ) {
         saveURL();
       } else {
-        QString location = locateLocal( "data", "korganizer/kontact.ics" );
+        QString location = KStandardDirs::locateLocal( "data", "korganizer/kontact.ics" );
         saveAsURL( location );
       }
     }

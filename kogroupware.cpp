@@ -79,17 +79,17 @@ KOGroupware *KOGroupware::instance()
   setObjectName( "kmgroupware_instance" );
   // Set up the dir watch of the three incoming dirs
   KDirWatch* watcher = KDirWatch::self();
-  watcher->addDir( locateLocal( "data", "korganizer/income.accepted/" ) );
-  watcher->addDir( locateLocal( "data", "korganizer/income.tentative/" ) );
-  watcher->addDir( locateLocal( "data", "korganizer/income.cancel/" ) );
-  watcher->addDir( locateLocal( "data", "korganizer/income.reply/" ) );
+  watcher->addDir( KStandardDirs::locateLocal( "data", "korganizer/income.accepted/" ) );
+  watcher->addDir( KStandardDirs::locateLocal( "data", "korganizer/income.tentative/" ) );
+  watcher->addDir( KStandardDirs::locateLocal( "data", "korganizer/income.cancel/" ) );
+  watcher->addDir( KStandardDirs::locateLocal( "data", "korganizer/income.reply/" ) );
   connect( watcher, SIGNAL( dirty( const QString& ) ),
            this, SLOT( incomingDirChanged( const QString& ) ) );
   // Now set the ball rolling
-  incomingDirChanged( locateLocal( "data", "korganizer/income.accepted/" ) );
-  incomingDirChanged( locateLocal( "data", "korganizer/income.tentative/" ) );
-  incomingDirChanged( locateLocal( "data", "korganizer/income.cancel/" ) );
-  incomingDirChanged( locateLocal( "data", "korganizer/income.reply/" ) );
+  incomingDirChanged( KStandardDirs::locateLocal( "data", "korganizer/income.accepted/" ) );
+  incomingDirChanged( KStandardDirs::locateLocal( "data", "korganizer/income.tentative/" ) );
+  incomingDirChanged( KStandardDirs::locateLocal( "data", "korganizer/income.cancel/" ) );
+  incomingDirChanged( KStandardDirs::locateLocal( "data", "korganizer/income.reply/" ) );
 }
 
 FreeBusyManager *KOGroupware::freeBusyManager()
@@ -107,7 +107,7 @@ FreeBusyManager *KOGroupware::freeBusyManager()
 
 void KOGroupware::incomingDirChanged( const QString& path )
 {
-  const QString incomingDirName = locateLocal( "data","korganizer/" )
+  const QString incomingDirName = KStandardDirs::locateLocal( "data","korganizer/" )
                                   + "income.";
   if ( !path.startsWith( incomingDirName ) ) {
     kDebug(5850) << "incomingDirChanged: Wrong dir " << path << endl;

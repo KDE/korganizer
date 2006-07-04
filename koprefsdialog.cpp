@@ -273,7 +273,7 @@ class KOPrefsDialogTime : public KPrefsModule
       QStringList::ConstIterator it;
 
       for ( it = countryList.begin(); it != countryList.end(); ++it ) {
-        QString countryFile = locate( "locale",
+        QString countryFile = KStandardDirs::locate( "locale",
                                       "l10n/" + (*it) + "/entry.desktop" );
         QString regionName;
         if ( !countryFile.isEmpty() ) {
@@ -1202,7 +1202,7 @@ KOPrefsDesignerFields::KOPrefsDesignerFields( KInstance *inst, QWidget *parent )
 
 QString KOPrefsDesignerFields::localUiDir()
 {
-  QString dir = locateLocal( "data", "korganizer/designer/event/");
+  QString dir = KStandardDirs::locateLocal( "data", "korganizer/designer/event/");
   kDebug() << "KOPrefsDesignerFields::localUiDir(): " << dir << endl;
   return dir;
 }
