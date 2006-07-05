@@ -3,5 +3,3 @@ Encoding=UTF-8
 Type=ServiceType
 X-KDE-ServiceType=DBUS/Organizer
 Comment=Organizer with a D-BUS interface
-Comment[fr]=Organiseur avec une interface D-BUS
-Comment[x-test]=xxOrganizer with a D-BUS interfacexx
