@@ -1009,8 +1009,13 @@ void ActionManager::exportHTML( HTMLExportSettings *settings )
   QDate cdate = settings->dateStart().date();
   QDate qd2 = settings->dateEnd().date();
   while ( cdate <= qd2 ) {
-    if ( !KOGlobals::self()->holiday( cdate ).isEmpty() )
-      mExport.addHoliday( cdate, KOGlobals::self()->holiday( cdate ) );
+    QStringList holidays = KOGlobals::self()->holiday( cdate );
+    if ( !holidays.isEmpty() ) {
+      QStringList::ConstIterator it = holidays.begin();
+      for ( ; it != holidays.end(); ++it ) {
+        mExport.addHoliday( cdate, *it );
+      }
+    }
     cdate = cdate.addDays( 1 );
   }
 

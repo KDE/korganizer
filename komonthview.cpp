@@ -909,8 +909,8 @@ void KOMonthView::showDates( const QDate &start, const QDate & )
     mCells[i]->setHoliday( isHoliday );
 
     // add holiday, if present
-    QString hstring( KOGlobals::self()->holiday( date ) );
-    mCells[i]->setHolidayString( hstring );
+    QStringList holidays( KOGlobals::self()->holiday( date ) );
+    mCells[i]->setHolidayString( holidays.join( i18n("delimiter for joining holiday names", ", " ) ) );
   }
 
   updateView();

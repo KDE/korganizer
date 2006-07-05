@@ -61,7 +61,7 @@ class KDE_EXPORT KOGlobals
     QPixmap smallIcon( const QString& name );
     QIcon smallIconSet( const QString& name, int size = 0 );
 
-    QString holiday( const QDate & );
+    QStringList holiday( const QDate & );
     bool isWorkDay( const QDate & );
 
     /**
