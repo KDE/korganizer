@@ -64,10 +64,9 @@
 #include <knotification.h>
 #include <kstdguiitem.h>
 #include <kdeversion.h>
-
+#include <ktoggleaction.h>
 #include <krecentfilesaction.h>
 #include <kstdaction.h>
-#include <k3widgetaction.h>
 #include <QApplication>
 #include <QTimer>
 #include <QLabel>
@@ -581,9 +580,8 @@ void ActionManager::initActions()
   //************************* TOOLBAR ACTIONS *******************************
   QLabel *filterLabel = new QLabel( i18n("Filter: "), mCalendarView );
   filterLabel->hide();
-  new K3WidgetAction( filterLabel, i18n("Filter: "), 0, 0, 0,
-                     mACollection, "filter_label" );
-
+  KAction * act = new KAction(i18n("Filter: "),mACollection,"filter_label" );
+  act->setDefaultWidget( filterLabel );
 }
 
 void ActionManager::setItems( const QStringList & lst)
@@ -648,7 +646,7 @@ void ActionManager::file_open()
 {
   KUrl url;
   QString defaultPath = KStandardDirs::locateLocal( "data","korganizer/" );
-  url = KFileDialog::getOpenURL( defaultPath,i18n("*.vcs *.ics|Calendar Files"),
+  url = KFileDialog::getOpenUrl( defaultPath,i18n("*.vcs *.ics|Calendar Files"),
                                 dialogParent() );
 
   file_open( url );
@@ -735,7 +733,7 @@ void ActionManager::file_icalimport()
 
 void ActionManager::file_merge()
 {
-  KUrl url = KFileDialog::getOpenURL( KStandardDirs::locateLocal( "data","korganizer/" ),
+  KUrl url = KFileDialog::getOpenUrl( KStandardDirs::locateLocal( "data","korganizer/" ),
                                      i18n("*.vcs *.ics|Calendar Files"),
                                      dialogParent() );
   if ( ! url.isEmpty() )  // isEmpty if user canceled the dialog
@@ -1121,7 +1119,7 @@ bool ActionManager::saveModifiedURL()
 
 KUrl ActionManager::getSaveURL()
 {
-  KUrl url = KFileDialog::getSaveURL( KStandardDirs::locateLocal( "data","korganizer/" ),
+  KUrl url = KFileDialog::getSaveUrl( KStandardDirs::locateLocal( "data","korganizer/" ),
                                      i18n("*.vcs *.ics|Calendar Files"),
                                      dialogParent() );
 

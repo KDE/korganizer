@@ -44,7 +44,7 @@
 #include <kwin.h>
 #include <klockfile.h>
 #include <kpushbutton.h>
-#include <phonon/simpleplayer.h>
+#include <phonon/audioplayer.h>
 
 #include <libkcal/event.h>
 #include <ktoolinvocation.h>
@@ -158,7 +158,7 @@ void AlarmDialog::setTimer( int seconds )
 
 void AlarmDialog::slotUser2()
 {
-  if ( !QDBus::sessionBus().busService()->nameHasOwner( "korganizer" ) ) {
+  if ( !QDBus::sessionBus().interface()->isServiceRegistered( "korganizer" ) ) {
     if ( KToolInvocation::startServiceByDesktopName( "korganizer", QString() ) )
       KMessageBox::error( 0, i18n("Could not start KOrganizer.") );
   }
@@ -166,11 +166,11 @@ void AlarmDialog::slotUser2()
   korganizer.call( "editIncidence",mIncidence->uid() );
 
   // get desktop # where korganizer (or kontact) runs
-  QString object = QDBus::sessionBus().busService()->nameHasOwner( "kontact" ) ?
+  QString object = QDBus::sessionBus().interface()->isServiceRegistered( "kontact" ) ?
            "kontact-mainwindow_1" : "KOrganizer MainWindow";
   QDBusInterface korganizerObj("org.kde.korganizer", "/"+object);
   QDBusReply<int> reply = korganizerObj.call( "getWinID" );
-  if ( reply.isSuccess() ) {
+  if ( reply.isValid() ) {
     int window = reply;
     int desktop = KWin::windowInfo( window ).desktop();
 
@@ -220,7 +220,7 @@ void AlarmDialog::eventNotification()
     }
     else if (alarm->type() == Alarm::Audio) {
       beeped = true;
-      Phonon::SimplePlayer* player = new Phonon::SimplePlayer( Phonon::NotificationCategory, this );
+      Phonon::AudioPlayer* player = new Phonon::AudioPlayer( Phonon::NotificationCategory, this );
       player->play( KUrl( QFile::encodeName(alarm->audioFile() ) ) );
     }
   }

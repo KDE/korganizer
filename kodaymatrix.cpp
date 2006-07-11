@@ -271,7 +271,12 @@ void KODayMatrix::updateView( const QDate &actdate )
     if ( ( KOGlobals::self()->calendarSystem()->dayOfWeek( mDays[ i ] ) ==
            KOGlobals::self()->calendarSystem()->weekDayOfPray() ) ||
          !holidays.isEmpty() ) {
-      if ( !holidays.isEmpty() ) holiStr = holidays.join( i18n("delimiter for joining holiday names"), ", " );
+      if ( !holidays.isEmpty() )
+	  {
+			  holidays << i18n("delimiter for joining holiday names");
+
+			  holiStr = holidays.join( "," );
+	  }
       if ( holiStr.isNull() ) holiStr = "";
     }
     mHolidays[ i ] = holiStr;

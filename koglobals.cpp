@@ -45,6 +45,7 @@
 #include "koglobals.h"
 #include "koprefs.h"
 #include "korganizer_part.h"
+#include <Q3ValueList>
 
 #if 0 // unused
 class NopAlarmClient : public AlarmClient
@@ -146,8 +147,8 @@ QStringList KOGlobals::holiday( const QDate &date )
   QStringList hdays;
 
   if ( !mHolidays ) return hdays;
-  QValueList<KHoliday> list = mHolidays->getHolidays( date );
-  QValueList<KHoliday>::ConstIterator it = list.begin();
+  Q3ValueList<KHoliday> list = mHolidays->getHolidays( date );
+  Q3ValueList<KHoliday>::ConstIterator it = list.begin();
   for ( ; it != list.end(); ++it ) {
     hdays.append( (*it).text );
   }
@@ -160,8 +161,8 @@ bool KOGlobals::isWorkDay( const QDate &date )
 
   bool nonWorkDay = ( mask & ( 1 << ( date.dayOfWeek() - 1 ) ) );
   if ( KOPrefs::instance()->mExcludeHolidays && mHolidays ) {
-    QValueList<KHoliday> list = mHolidays->getHolidays( date );
-    QValueList<KHoliday>::ConstIterator it = list.begin();
+    Q3ValueList<KHoliday> list = mHolidays->getHolidays( date );
+    Q3ValueList<KHoliday>::ConstIterator it = list.begin();
     for ( ; it != list.end(); ++it ) {
       nonWorkDay = nonWorkDay
                || ( (*it).Category == KHolidays::HOLIDAY );

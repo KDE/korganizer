@@ -40,5 +40,7 @@ QColor KOCoreHelper::categoryColor( const QStringList &categories )
 
 QString KOCoreHelper::holidayString( const QDate &dt )
 {
-  return KOGlobals::self()->holiday( dt ).join( i18n("delimiter for joining holiday names"), ", " );
+  QStringList lst(KOGlobals::self()->holiday( dt ));
+  lst<<i18n("delimiter for joining holiday names");
+  return lst.join( "," );
 }

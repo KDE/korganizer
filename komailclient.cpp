@@ -270,7 +270,7 @@ int KOMailClient::kMailOpenComposer( const QString& arg0, const QString& arg1,
     argList << arg13;
     argList << arg14;
 
-    QDBusReply<int> reply = kmail.callWithArgs("openComposer",argList);
+    QDBusReply<int> reply = kmail.callWithArgumentList(QDBus::Block,"openComposer",argList);
 
     if (reply.isValid()) {
             result=reply;
