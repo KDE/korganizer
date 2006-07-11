@@ -64,7 +64,7 @@
 #include <knotification.h>
 #include <kstdguiitem.h>
 #include <kdeversion.h>
-#include <kactionclasses.h>
+
 #include <krecentfilesaction.h>
 #include <kstdaction.h>
 #include <k3widgetaction.h>
