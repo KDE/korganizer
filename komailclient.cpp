@@ -185,7 +185,7 @@ bool KOMailClient::send(const QString &from,const QString &to,
 
     pclose(fd);
   } else {
-    if (!QDBus::sessionBus().busService()->nameHasOwner("kmail")) {
+    if (!QDBus::sessionBus().interface()->isServiceRegistered("kmail")) {
       if (KToolInvocation::startServiceByDesktopName("kmail")) {
         KMessageBox::error(0,i18n("No running instance of KMail found."));
         return false;
@@ -222,9 +222,9 @@ int KOMailClient::kMailOpenComposer(const QString& arg0,const QString& arg1,
   int result = 0;
   kapp->updateRemoteUserTimestamp( "kmail" );
 
-  QDBusInterfacePtr kmail("org.kde.kmail", "/KMail", "org.kde.kmail.KMail");
-  QDBusReply<int> reply = kmail->call("openComposer", arg0, arg1, arg2, arg3, arg4, arg5, arg6.url());
-  if (reply.isSuccess() ) {
+  QDBusInterface kmail("org.kde.kmail", "/KMail", "org.kde.kmail.KMail");
+  QDBusReply<int> reply = kmail.call("openComposer", arg0, arg1, arg2, arg3, arg4, arg5, arg6.url());
+  if (reply.isValid() ) {
       result=reply;
   }
   else
@@ -252,7 +252,7 @@ int KOMailClient::kMailOpenComposer( const QString& arg0, const QString& arg1,
     int result = 0;
 
     kapp->updateRemoteUserTimestamp("kmail");
-    QDBusInterfacePtr kmail("org.kde.kmail", "/KMail", "org.kde.kmail.KMail");
+    QDBusInterface kmail("org.kde.kmail", "/KMail", "org.kde.kmail.KMail");
     QList<QVariant> argList;
     argList << arg0;
     argList << arg1;
@@ -270,9 +270,9 @@ int KOMailClient::kMailOpenComposer( const QString& arg0, const QString& arg1,
     argList << arg13;
     argList << arg14;
 
-    QDBusReply<int> reply = kmail->callWithArgs("openComposer",argList);
+    QDBusReply<int> reply = kmail.callWithArgs("openComposer",argList);
 
-    if (reply.isSuccess()) {
+    if (reply.isValid()) {
             result=reply;
     } else {
       kDebug(5850) << "kMailOpenComposer() call failed." << endl;

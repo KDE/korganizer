@@ -1529,7 +1529,7 @@ void CalendarView::exportWeb()
 
 void CalendarView::exportICalendar()
 {
-  QString filename = KFileDialog::getSaveFileName("icalout.ics",i18n("*.ics|ICalendars"),this);
+  QString filename = KFileDialog::getSaveFileName(KUrl("icalout.ics"),i18n("*.ics|ICalendars"),this);
 
   // Force correct extension
   if (filename.right(4) != ".ics") filename += ".ics";
@@ -1551,7 +1551,7 @@ void CalendarView::exportVCalendar()
     if (result != KMessageBox::Continue) return;
   }
 
-  QString filename = KFileDialog::getSaveFileName("vcalout.vcs",i18n("*.vcs|vCalendars"),this);
+  QString filename = KFileDialog::getSaveFileName(KUrl("vcalout.vcs"),i18n("*.vcs|vCalendars"),this);
 
 	// TODO: I don't like forcing extensions:
   // Force correct extension

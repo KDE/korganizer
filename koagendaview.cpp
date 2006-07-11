@@ -790,7 +790,7 @@ void KOAgendaView::createDayLabels()
       // use a KOAlternateLabel so when the text doesn't fit any more a tooltip is used
       KOAlternateLabel*label = new KOAlternateLabel( (*textit), (*textit), QString::null, mDayLabels );
       label->setMinimumWidth(1);
-      label->setAlignment(AlignCenter);
+      label->setAlignment(Qt::AlignCenter);
       dayLayout->addWidget(label);
     }
 
