@@ -36,9 +36,9 @@
 #include <klocale.h>
 #include <kwordwrap.h>
 
-#include <libkcal/icaldrag.h>
-#include <libkcal/incidenceformatter.h>
-#include <libkcal/vcaldrag.h>
+#include <kcal/icaldrag.h>
+#include <kcal/incidenceformatter.h>
+#include <kcal/vcaldrag.h>
 #include <libkdepim/kvcarddrag.h>
 #ifndef KORG_NOKABC
 #include <kabc/addressee.h>

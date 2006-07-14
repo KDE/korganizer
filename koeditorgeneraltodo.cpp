@@ -46,7 +46,7 @@
 #include <kfiledialog.h>
 #include <ktextedit.h>
 
-#include <libkcal/todo.h>
+#include <kcal/todo.h>
 
 #include <libkdepim/kdateedit.h>
 

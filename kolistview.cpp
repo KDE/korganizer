@@ -38,8 +38,8 @@
 #include <kiconloader.h>
 #include <kglobal.h>
 
-#include <libkcal/calendar.h>
-#include <libkcal/incidenceformatter.h>
+#include <kcal/calendar.h>
+#include <kcal/incidenceformatter.h>
 
 #include "koglobals.h"
 #include "koprefs.h"

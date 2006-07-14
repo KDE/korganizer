@@ -26,10 +26,10 @@
 
 #include <kdebug.h>
 
-#include <libkcal/incidence.h>
-#include <libkcal/calendar.h>
-#include <libkcal/calendarresources.h>
-#include <libkcal/resourcecalendar.h>
+#include <kcal/incidence.h>
+#include <kcal/calendar.h>
+#include <kcal/calendarresources.h>
+#include <kcal/resourcecalendar.h>
 
 #include "koprefs.h"
 #include "kohelper.h"

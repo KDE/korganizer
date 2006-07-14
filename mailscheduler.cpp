@@ -32,8 +32,8 @@
 #include <kstandarddirs.h>
 #include <kdebug.h>
 
-#include <libkcal/event.h>
-#include <libkcal/icalformat.h>
+#include <kcal/event.h>
+#include <kcal/icalformat.h>
 
 #include "komailclient.h"
 

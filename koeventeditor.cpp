@@ -38,11 +38,11 @@
 #include <kdebug.h>
 #include <klocale.h>
 #include <kmessagebox.h>
-#include <libkcal/calendarresources.h>
-#include <libkcal/resourcecalendar.h>
+#include <kcal/calendarresources.h>
+#include <kcal/resourcecalendar.h>
 
 #include <libkdepim/categoryselectdialog.h>
-#include <libkcal/calendarlocal.h>
+#include <kcal/calendarlocal.h>
 
 #include "koprefs.h"
 #include "koeditorgeneralevent.h"

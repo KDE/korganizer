@@ -32,7 +32,7 @@
 
 #include <kdialog.h>
 
-#include <libkcal/incidencebase.h>
+#include <kcal/incidencebase.h>
 
 class QStackedWidget;
 class QSpinBox;

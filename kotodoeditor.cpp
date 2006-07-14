@@ -40,9 +40,9 @@
 #include <kmessagebox.h>
 
 #include <libkdepim/categoryselectdialog.h>
-#include <libkcal/calendarlocal.h>
-#include <libkcal/calendarresources.h>
-#include <libkcal/resourcecalendar.h>
+#include <kcal/calendarlocal.h>
+#include <kcal/calendarresources.h>
+#include <kcal/resourcecalendar.h>
 
 #include "koprefs.h"
 #include "koeditorattachments.h"

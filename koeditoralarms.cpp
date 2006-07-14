@@ -37,8 +37,8 @@
 #include <klocale.h>
 #include <kdebug.h>
 
-#include <libkcal/alarm.h>
-#include <libkcal/incidence.h>
+#include <kcal/alarm.h>
+#include <kcal/incidence.h>
 
 #include <emailfunctions/email.h>
 

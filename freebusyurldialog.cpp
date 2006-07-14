@@ -24,8 +24,8 @@
 
 #include "freebusyurldialog.h"
 
-#include <libkcal/attendee.h>
-#include <libkcal/freebusyurlstore.h>
+#include <kcal/attendee.h>
+#include <kcal/freebusyurlstore.h>
 
 #include <klineedit.h>
 #include <klocale.h>

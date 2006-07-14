@@ -38,9 +38,9 @@
 #include <kprinter.h>
 #include <kwordwrap.h>
 
-#include <libkcal/calendar.h>
-#include <libkcal/todo.h>
-#include <libkcal/event.h>
+#include <kcal/calendar.h>
+#include <kcal/todo.h>
+#include <kcal/event.h>
 
 #include "korganizer/corehelper.h"
 #include "cellitem.h"

@@ -24,7 +24,7 @@
 #ifndef DATENAVIGATOR_H
 #define DATENAVIGATOR_H
 
-#include <libkcal/incidencebase.h>
+#include <kcal/incidencebase.h>
 
 #include <QObject>
 

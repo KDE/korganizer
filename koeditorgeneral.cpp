@@ -56,8 +56,8 @@
 #include <ktextedit.h>
 #include <krestrictedline.h>
 
-#include <libkcal/todo.h>
-#include <libkcal/event.h>
+#include <kcal/todo.h>
+#include <kcal/event.h>
 
 #include <libkdepim/kdateedit.h>
 #include <kvbox.h>

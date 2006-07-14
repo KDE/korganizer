@@ -32,7 +32,7 @@
 #include <QWheelEvent>
 #include <QEvent>
 
-#include <libkcal/incidencebase.h>
+#include <kcal/incidencebase.h>
 
 class QPushButton;
 class QLabel;

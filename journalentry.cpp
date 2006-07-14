@@ -47,8 +47,8 @@
 #include <kstdguiitem.h>
 #include <kmessagebox.h>
 
-#include <libkcal/journal.h>
-#include <libkcal/calendar.h>
+#include <kcal/journal.h>
+#include <kcal/calendar.h>
 #include <kvbox.h>
 
 #include "kodialogmanager.h"

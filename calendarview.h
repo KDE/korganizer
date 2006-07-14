@@ -33,7 +33,7 @@
 #include <QList>
 #include <kfile.h>
 #include <korganizer/koeventviewer.h>
-#include <libkcal/scheduler.h>
+#include <kcal/scheduler.h>
 #include <kdepimmacros.h>
 
 #include <korganizer/calendarviewbase.h>

@@ -30,7 +30,7 @@
 #include <kdepimmacros.h>
 #include "korganizer/incidencechangerbase.h"
 
-#include <libkcal/event.h>
+#include <kcal/event.h>
 
 using namespace KCal;
 

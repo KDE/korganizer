@@ -48,7 +48,7 @@
 #include <kstandarddirs.h>
 #include <ktextedit.h>
 
-#include <libkcal/event.h>
+#include <kcal/event.h>
 
 #include "ktimeedit.h"
 #include <libkdepim/kdateedit.h>

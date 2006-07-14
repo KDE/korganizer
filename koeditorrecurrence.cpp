@@ -56,7 +56,7 @@
 #include <kmessagebox.h>
 
 #include <libkdepim/kdateedit.h>
-#include <libkcal/todo.h>
+#include <kcal/todo.h>
 #include <kvbox.h>
 
 #include "koprefs.h"

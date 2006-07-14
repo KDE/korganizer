@@ -40,9 +40,9 @@
 #include "mailscheduler.h"
 #include "koprefs.h"
 #include <emailfunctions/email.h>
-#include <libkcal/attendee.h>
-#include <libkcal/journal.h>
-#include <libkcal/incidenceformatter.h>
+#include <kcal/attendee.h>
+#include <kcal/journal.h>
+#include <kcal/incidenceformatter.h>
 #include <kdebug.h>
 #include <kmessagebox.h>
 #include <kstandarddirs.h>

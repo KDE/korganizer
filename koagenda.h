@@ -39,7 +39,7 @@
 #include <QResizeEvent>
 #include <Q3PopupMenu>
 #include <QMouseEvent>
-#include <libkcal/incidencebase.h>
+#include <kcal/incidencebase.h>
 
 
 class Q3PopupMenu;

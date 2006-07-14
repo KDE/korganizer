@@ -40,8 +40,8 @@
 #include <kiconloader.h>
 #include <kmessagebox.h>
 
-#include <libkcal/event.h>
-#include <libkcal/freebusy.h>
+#include <kcal/event.h>
+#include <kcal/freebusy.h>
 
 #include <kdgantt/KDGanttView.h>
 #include <kdgantt/KDGanttViewTaskItem.h>

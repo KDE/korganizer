@@ -52,10 +52,10 @@
 #include <kwordwrap.h>
 
 #include <kcalendarsystem.h>
-#include <libkcal/calfilter.h>
-#include <libkcal/calendar.h>
-#include <libkcal/incidenceformatter.h>
-#include <libkcal/calendarresources.h>
+#include <kcal/calfilter.h>
+#include <kcal/calendar.h>
+#include <kcal/incidenceformatter.h>
+#include <kcal/calendarresources.h>
 
 #include "koprefs.h"
 #include "koglobals.h"

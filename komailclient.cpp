@@ -33,9 +33,9 @@
 #include <kapplication.h>
 #include <kprocess.h>
 
-#include <libkcal/event.h>
-#include <libkcal/todo.h>
-#include <libkcal/incidenceformatter.h>
+#include <kcal/event.h>
+#include <kcal/todo.h>
+#include <kcal/incidenceformatter.h>
 
 #include "version.h"
 #include "koprefs.h"

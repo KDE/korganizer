@@ -37,9 +37,9 @@
 #ifndef KOGROUPWARE_H
 #define KOGROUPWARE_H
 
-#include <libkcal/calendarresources.h>
-#include <libkcal/icalformat.h>
-#include <libkcal/scheduler.h>
+#include <kcal/calendarresources.h>
+#include <kcal/icalformat.h>
+#include <kcal/scheduler.h>
 #include <QString>
 
 #include <kio/job.h>

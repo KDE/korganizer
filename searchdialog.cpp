@@ -36,7 +36,7 @@
 #include <klocale.h>
 #include <kmessagebox.h>
 
-#include <libkcal/calendar.h>
+#include <kcal/calendar.h>
 
 #include <libkdepim/kdateedit.h>
 

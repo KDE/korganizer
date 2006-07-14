@@ -28,8 +28,8 @@
 
 #include "calprintpluginbase.h"
 #include "calprinthelper.h"
-#include <libkcal/journal.h>
-#include <libkcal/calendar.h>
+#include <kcal/journal.h>
+#include <kcal/calendar.h>
 #include <libkdepim/kdateedit.h>
 #include <kconfig.h> 
 #include <kdebug.h>

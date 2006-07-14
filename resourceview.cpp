@@ -35,7 +35,7 @@
 #include <kresources/resource.h>
 #include <kresources/configdialog.h>
 #include <kinputdialog.h>
-#include <libkcal/calendarresources.h>
+#include <kcal/calendarresources.h>
 
 
 #include <QLayout>

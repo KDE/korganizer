@@ -21,7 +21,7 @@
 
 #include <kdialog.h>
 
-#include <libkcal/attendee.h>
+#include <kcal/attendee.h>
 using namespace KCal;
 
 class QComboBox;

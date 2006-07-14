@@ -29,9 +29,9 @@
 #include <ktempfile.h>
 #include <kio/netaccess.h>
 #include <kglobal.h>
-#include <libkcal/filestorage.h>
-#include <libkcal/calendarlocal.h>
-#include <libkcal/calendar.h>
+#include <kcal/filestorage.h>
+#include <kcal/calendarlocal.h>
+#include <kcal/calendar.h>
 #include <kmessagebox.h>
 #include <kdebug.h>
 #include "koprefs.h"

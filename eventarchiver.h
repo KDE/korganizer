@@ -27,7 +27,7 @@
 
 #include <QObject>
 #include <QDateTime>
-#include <libkcal/event.h>
+#include <kcal/event.h>
 
 namespace KCal {
 class Calendar;

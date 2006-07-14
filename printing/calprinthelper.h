@@ -29,9 +29,9 @@
 
 #include <QDateTime>
 #include <kprinter.h>
-#include <libkcal/calendar.h>
-#include <libkcal/event.h>
-#include <libkcal/todo.h>
+#include <kcal/calendar.h>
+#include <kcal/event.h>
+#include <kcal/todo.h>
 #include <kdepimmacros.h>
 
 class KLocalizedString;

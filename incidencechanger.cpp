@@ -27,8 +27,8 @@
 #include "kogroupware.h"
 #include "mailscheduler.h"
 
-#include <libkcal/freebusy.h>
-#include <libkcal/dndfactory.h>
+#include <kcal/freebusy.h>
+#include <kcal/dndfactory.h>
 #include <kdebug.h>
 #include <kmessagebox.h>
 #include <klocale.h>

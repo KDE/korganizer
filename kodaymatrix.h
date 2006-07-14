@@ -26,7 +26,7 @@
 #ifndef KODAYMATRIX_H
 #define KODAYMATRIX_H
 
-#include <libkcal/incidencebase.h>
+#include <kcal/incidencebase.h>
 
 #include <q3frame.h>
 #include <QColor>

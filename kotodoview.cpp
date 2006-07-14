@@ -57,14 +57,14 @@
 #endif
 #include <ktoolbar.h>
 
-#include <libkcal/icaldrag.h>
-#include <libkcal/vcaldrag.h>
-#include <libkcal/dndfactory.h>
-#include <libkcal/calendarresources.h>
-#include <libkcal/resourcecalendar.h>
-#include <libkcal/calfilter.h>
-#include <libkcal/incidenceformatter.h>
-#include <libkcal/journal.h>
+#include <kcal/icaldrag.h>
+#include <kcal/vcaldrag.h>
+#include <kcal/dndfactory.h>
+#include <kcal/calendarresources.h>
+#include <kcal/resourcecalendar.h>
+#include <kcal/calfilter.h>
+#include <kcal/incidenceformatter.h>
+#include <kcal/journal.h>
 
 #include <libkdepim/kdatepickerpopup.h>
 

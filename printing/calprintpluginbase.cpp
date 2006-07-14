@@ -38,9 +38,9 @@
 #include <kcalendarsystem.h>
 #include <kprinter.h>
 
-#include <libkcal/todo.h>
-#include <libkcal/event.h>
-#include <libkcal/calendar.h>
+#include <kcal/todo.h>
+#include <kcal/event.h>
+#include <kcal/calendar.h>
 
 #include "calprinthelper.h"
 #include "calprintpluginbase.h"

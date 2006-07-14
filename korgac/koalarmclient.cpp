@@ -29,7 +29,7 @@
 #include "alarmdockwindow.h"
 #include "alarmdialog.h"
 
-#include <libkcal/calendarresources.h>
+#include <kcal/calendarresources.h>
 
 #include <kstandarddirs.h>
 #include <kdebug.h>

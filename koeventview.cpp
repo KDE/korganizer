@@ -32,7 +32,7 @@
 #include <kxmlguiclient.h>
 #include <kxmlguifactory.h>
 
-#include <libkcal/calendar.h>
+#include <kcal/calendar.h>
 
 
 #include "kocore.h"

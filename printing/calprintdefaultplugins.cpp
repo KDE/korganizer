@@ -40,8 +40,8 @@
 #include <kconfig.h>
 #include <kcalendarsystem.h>
 
-#include <libkcal/todo.h>
-#include <libkcal/calendar.h>
+#include <kcal/todo.h>
+#include <kcal/calendar.h>
 
 #include <libkdepim/kdateedit.h>
 

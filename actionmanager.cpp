@@ -46,10 +46,10 @@
 #include "eventarchiver.h"
 #include "stdcalendar.h"
 
-#include <libkcal/calendarlocal.h>
-#include <libkcal/calendarresources.h>
-#include <libkcal/htmlexport.h>
-#include <libkcal/htmlexportsettings.h>
+#include <kcal/calendarlocal.h>
+#include <kcal/calendarresources.h>
+#include <kcal/htmlexport.h>
+#include <kcal/htmlexportsettings.h>
 
 #include <kaction.h>
 #include <kfiledialog.h>

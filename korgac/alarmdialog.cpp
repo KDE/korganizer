@@ -46,7 +46,7 @@
 #include <kpushbutton.h>
 #include <phonon/audioplayer.h>
 
-#include <libkcal/event.h>
+#include <kcal/event.h>
 #include <ktoolinvocation.h>
 #include <kglobal.h>
 #include <kvbox.h>

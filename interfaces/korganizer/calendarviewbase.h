@@ -24,7 +24,7 @@
 
 #include <QWidget>
 
-#include <libkcal/calendar.h>
+#include <kcal/calendar.h>
 
 #include <korganizer/baseview.h>
 

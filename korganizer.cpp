@@ -49,9 +49,9 @@
 #include <libkdepim/statusbarprogresswidget.h>
 #include <libkdepim/progressdialog.h>
 
-#include <libkcal/calendarlocal.h>
-#include <libkcal/calendarresources.h>
-#include <libkcal/resourcecalendar.h>
+#include <kcal/calendarlocal.h>
+#include <kcal/calendarresources.h>
+#include <kcal/resourcecalendar.h>
 
 #include <kglobal.h>
 #include <kdebug.h>

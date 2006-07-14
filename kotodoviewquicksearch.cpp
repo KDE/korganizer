@@ -30,8 +30,8 @@
 #include "kotodoviewitem.h"
 #include "kotodoview.h"
 
-#include <libkcal/calendar.h>
-#include <libkcal/calfilter.h>
+#include <kcal/calendar.h>
+#include <kcal/calfilter.h>
 #include <libkdepim/categoryhierarchyreader.h>
 
 #include <korganizer/mainwindow.h>

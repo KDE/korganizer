@@ -28,7 +28,7 @@
 #include <kdebug.h>
 #include <kiconloader.h>
 
-#include <libkcal/event.h>
+#include <kcal/event.h>
 
 #include "koglobals.h"
 

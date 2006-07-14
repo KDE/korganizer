@@ -27,7 +27,7 @@
 #include "koeditorgeneraljournal.h"
 #include "koeditorgeneral.h"
 
-#include <libkcal/journal.h>
+#include <kcal/journal.h>
 
 #include <ktextedit.h>
 #include <kdateedit.h>

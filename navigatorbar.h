@@ -24,7 +24,7 @@
 #ifndef NAVIGATORBAR_H
 #define NAVIGATORBAR_H
 
-#include <libkcal/incidencebase.h>
+#include <kcal/incidencebase.h>
 
 #include <QLabel>
 //Added by qt3to4:

@@ -44,9 +44,9 @@
 #include <libkdepim/designerfields.h>
 #include <libkdepim/embeddedurlpage.h>
 
-#include <libkcal/calendarlocal.h>
-#include <libkcal/incidence.h>
-#include <libkcal/icalformat.h>
+#include <kcal/calendarlocal.h>
+#include <kcal/incidence.h>
+#include <kcal/icalformat.h>
 
 #include "koprefs.h"
 #include "koglobals.h"

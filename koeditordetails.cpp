@@ -59,7 +59,7 @@
 #include <libkdepim/kvcarddrag.h>
 #include <emailfunctions/email.h>
 
-#include <libkcal/incidence.h>
+#include <kcal/incidence.h>
 #include <kvbox.h>
 
 #include "koprefs.h"

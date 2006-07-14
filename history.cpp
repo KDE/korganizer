@@ -25,8 +25,8 @@
 
 #include "history.h"
 
-#include <libkcal/calendar.h>
-#include <libkcal/incidence.h>
+#include <kcal/calendar.h>
+#include <kcal/incidence.h>
 
 #include <klocale.h>
 #include <kdebug.h>

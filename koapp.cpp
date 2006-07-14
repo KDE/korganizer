@@ -35,8 +35,8 @@
 #include <kwin.h>
 #include <kurl.h>
 
-#include <libkcal/calformat.h>
-#include <libkcal/calendarresources.h>
+#include <kcal/calformat.h>
+#include <kcal/calendarresources.h>
 
 #include "korganizer.h"
 #include "koprefs.h"

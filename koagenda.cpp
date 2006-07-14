@@ -62,13 +62,13 @@
 #include "koagenda.moc"
 #include <korganizer/baseview.h>
 
-#include <libkcal/event.h>
-#include <libkcal/todo.h>
-#include <libkcal/dndfactory.h>
-#include <libkcal/icaldrag.h>
-#include <libkcal/vcaldrag.h>
-#include <libkcal/calendar.h>
-#include <libkcal/calendarresources.h>
+#include <kcal/event.h>
+#include <kcal/todo.h>
+#include <kcal/dndfactory.h>
+#include <kcal/icaldrag.h>
+#include <kcal/vcaldrag.h>
+#include <kcal/calendar.h>
+#include <kcal/calendarresources.h>
 #include <math.h>
 
 ////////////////////////////////////////////////////////////////////////////

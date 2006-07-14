@@ -50,8 +50,8 @@
 #include <ktempfile.h>
 #include <kmessagebox.h>
 
-#include <libkcal/calendar.h>
-#include <libkcal/htmlexportsettings.h>
+#include <kcal/calendar.h>
+#include <kcal/htmlexportsettings.h>
 
 #include <libkdepim/kdateedit.h>
 #include <libkdepim/kdateedit.h>

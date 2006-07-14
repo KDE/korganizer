@@ -26,7 +26,7 @@
 
 #include "koeditorattachments.h"
 
-#include <libkcal/incidence.h>
+#include <kcal/incidence.h>
 #include <libkdepim/kdepimprotocols.h>
 #include <libkdepim/kpimurlrequesterdlg.h>
 #include <libkdepim/kvcarddrag.h>

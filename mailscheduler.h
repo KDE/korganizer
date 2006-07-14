@@ -28,7 +28,7 @@
 #include <QMap>
 #include <QString>
 
-#include <libkcal/imipscheduler.h>
+#include <kcal/imipscheduler.h>
 
 namespace KCal {
 

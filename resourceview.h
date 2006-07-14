@@ -27,7 +27,7 @@
 
 #include "calendarview.h"
 
-#include <libkcal/resourcecalendar.h>
+#include <kcal/resourcecalendar.h>
 #include <q3listview.h>
 #include <QList>
 

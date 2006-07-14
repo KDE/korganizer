@@ -29,7 +29,7 @@
 #include <q3dict.h>
 #include <QToolTip>
 
-#include <libkcal/incidence.h>
+#include <kcal/incidence.h>
 
 #include "koeventview.h"
 #include "customlistviewitem.h"

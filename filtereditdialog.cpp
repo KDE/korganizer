@@ -36,7 +36,7 @@
 #include <kmessagebox.h>
 #include <knuminput.h>
 
-#include <libkcal/calfilter.h>
+#include <kcal/calfilter.h>
 #include <libkdepim/categoryselectdialog.h>
 
 #include "koprefs.h"

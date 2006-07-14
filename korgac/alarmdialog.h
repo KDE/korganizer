@@ -30,8 +30,8 @@
 
 #include <kdialog.h>
 
-#include <libkcal/event.h>
-#include <libkcal/calendarlocal.h>
+#include <kcal/event.h>
+#include <kcal/calendarlocal.h>
 
 using namespace KCal;
 

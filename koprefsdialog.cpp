@@ -57,7 +57,7 @@
 #include <kcalendarsystem.h>
 #include <kpushbutton.h>
 #include <kocore.h>
-#include <libkcal/calendarresources.h>
+#include <kcal/calendarresources.h>
 #include <kstandarddirs.h>
 #include <ksimpleconfig.h>
 #include <kholidays.h>

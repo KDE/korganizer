@@ -40,12 +40,12 @@
 #include "koprefs.h"
 #include "mailscheduler.h"
 
-#include <libkcal/incidencebase.h>
-#include <libkcal/attendee.h>
-#include <libkcal/freebusy.h>
-#include <libkcal/journal.h>
-#include <libkcal/calendarlocal.h>
-#include <libkcal/icalformat.h>
+#include <kcal/incidencebase.h>
+#include <kcal/attendee.h>
+#include <kcal/freebusy.h>
+#include <kcal/journal.h>
+#include <kcal/calendarlocal.h>
+#include <kcal/icalformat.h>
 
 #include <kio/job.h>
 #include <kdebug.h>

@@ -44,11 +44,11 @@
 #include <klocale.h>
 #include <kiconloader.h>
 
-#include <libkcal/vcaldrag.h>
-#include <libkcal/icaldrag.h>
-#include <libkcal/dndfactory.h>
-#include <libkcal/calendarresources.h>
-#include <libkcal/resourcecalendar.h>
+#include <kcal/vcaldrag.h>
+#include <kcal/icaldrag.h>
+#include <kcal/dndfactory.h>
+#include <kcal/calendarresources.h>
+#include <kcal/resourcecalendar.h>
 
 #include <kcalendarsystem.h>
 

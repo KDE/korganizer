@@ -23,7 +23,7 @@
 #ifndef KOEDITORGENERAL_H
 #define KOEDITORGENERAL_H
 
-#include <libkcal/alarm.h>
+#include <kcal/alarm.h>
 #include <QLineEdit>
 //Added by qt3to4:
 #include <QLabel>

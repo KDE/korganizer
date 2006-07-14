@@ -25,8 +25,8 @@
 
 #include <klocale.h>
 
-#include <libkcal/event.h>
-#include <libkcal/todo.h>
+#include <kcal/event.h>
+#include <kcal/todo.h>
 #include "koeventviewer.h"
 
 #include "kocounterdialog.h"

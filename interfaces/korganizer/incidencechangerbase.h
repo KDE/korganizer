@@ -21,7 +21,7 @@
 #ifndef KORG_INCIDENCECHANGERBASE_H
 #define KORG_INCIDENCECHANGERBASE_H
 
-#include <libkcal/scheduler.h>
+#include <kcal/scheduler.h>
 #include <QObject>
 #include <kdepim_export.h>
 

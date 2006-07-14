@@ -36,9 +36,9 @@
 #include "stdcalendar.h"
 #include "alarmclient.h"
 
-#include <libkcal/calendarlocal.h>
-#include <libkcal/calendarresources.h>
-#include <libkcal/resourcecalendar.h>
+#include <kcal/calendarlocal.h>
+#include <kcal/calendarresources.h>
+#include <kcal/resourcecalendar.h>
 
 #include <kmenu.h>
 #include <kinstance.h>

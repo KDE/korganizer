@@ -25,7 +25,7 @@
 #define KOEDITORALARMS_H
 
 #include <kdialog.h>
-#include <libkcal/alarm.h>
+#include <kcal/alarm.h>
 
 #include "ui_koeditoralarms_base.h"
 

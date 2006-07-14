@@ -31,8 +31,8 @@
 
 #include "urihandler.h"
 
-#include <libkcal/incidence.h>
-#include <libkcal/incidenceformatter.h>
+#include <kcal/incidence.h>
+#include <kcal/incidenceformatter.h>
 
 #define KORG_NODBUS
 #ifndef KORG_NODBUS

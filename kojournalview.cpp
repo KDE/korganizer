@@ -36,7 +36,7 @@
 #include <klocale.h>
 #include <kdebug.h>
 
-#include <libkcal/calendar.h>
+#include <kcal/calendar.h>
 #include <kvbox.h>
 
 #include "journalentry.h"

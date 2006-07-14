@@ -37,7 +37,7 @@
 #include <kiconloader.h>
 #include <kmessagebox.h>
 
-#include <libkcal/calendar.h>
+#include <kcal/calendar.h>
 
 #include "koglobals.h"
 #include "koprefs.h"

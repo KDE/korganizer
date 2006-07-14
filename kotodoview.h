@@ -40,7 +40,7 @@
 
 #include <k3listview.h>
 
-#include <libkcal/todo.h>
+#include <kcal/todo.h>
 #include <korganizer/baseview.h>
 #include "calprinter.h"
 

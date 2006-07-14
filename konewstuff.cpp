@@ -24,8 +24,8 @@
 #include <kapplication.h>
 #include <kdebug.h>
 
-#include <libkcal/calendarlocal.h>
-#include <libkcal/filestorage.h>
+#include <kcal/calendarlocal.h>
+#include <kcal/filestorage.h>
 
 #include "koprefs.h"
 #include "calendarview.h"

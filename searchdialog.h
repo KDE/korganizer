@@ -32,7 +32,7 @@
 
 #include <kdialog.h>
 
-#include <libkcal/incidence.h>
+#include <kcal/incidence.h>
 
 namespace KCal {
 class Calendar;

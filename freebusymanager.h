@@ -37,8 +37,8 @@
 #define FREEBUSYMANAGER_H
 
 #include <kurl.h>
-#include <libkcal/icalformat.h>
-#include <libkcal/freebusycache.h>
+#include <kcal/icalformat.h>
+#include <kcal/freebusycache.h>
 #include <QString>
 #include <QObject>
 //Added by qt3to4:

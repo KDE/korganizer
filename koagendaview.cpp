@@ -59,11 +59,11 @@
 #include <kglobalsettings.h>
 #include <kholidays.h>
 
-#include <libkcal/calendar.h>
-#include <libkcal/icaldrag.h>
-#include <libkcal/dndfactory.h>
-#include <libkcal/calfilter.h>
-#include <libkcal/incidenceformatter.h>
+#include <kcal/calendar.h>
+#include <kcal/icaldrag.h>
+#include <kcal/dndfactory.h>
+#include <kcal/calfilter.h>
+#include <kcal/incidenceformatter.h>
 
 #include <kcalendarsystem.h>
 
@@ -332,7 +332,7 @@ void EventIndicator::enableColumn(int column, bool enable)
 }
 
 
-#include <libkcal/incidence.h>
+#include <kcal/incidence.h>
 #include <kvbox.h>
 
 ////////////////////////////////////////////////////////////////////////////

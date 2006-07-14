@@ -25,7 +25,7 @@
 #ifndef _KOEVENTVIEW_H
 #define _KOEVENTVIEW_H
 
-#include <libkcal/incidencebase.h>
+#include <kcal/incidencebase.h>
 
 #include <korganizer/baseview.h>
 //Added by qt3to4:

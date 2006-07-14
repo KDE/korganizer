@@ -31,7 +31,7 @@
 #ifndef KORG_NOKABC
 #include <kabc/addresseedialog.h>
 #endif
-#include <libkcal/attendee.h>
+#include <kcal/attendee.h>
 
 #include "koprefs.h"
 #include "publishdialog.h"

@@ -21,7 +21,7 @@
 #ifndef KORG_STDCALENDAR_H
 #define KORG_STDCALENDAR_H
 
-#include <libkcal/calendarresources.h>
+#include <kcal/calendarresources.h>
 
 namespace KOrg {
 

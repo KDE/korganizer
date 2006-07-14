@@ -31,8 +31,8 @@
 #include "kodialogmanager.h"
 #include "koprefs.h"
 
-#include <libkcal/journal.h>
-#include <libkcal/calendarlocal.h>
+#include <kcal/journal.h>
+#include <kcal/calendarlocal.h>
 #include <korganizer/baseview.h>
 
 #include <kmessagebox.h>

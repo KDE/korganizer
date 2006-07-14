@@ -30,7 +30,7 @@
 #include <kconfig.h>
 #include <kstandarddirs.h>
 #include <kconfig.h>
-#include <libkcal/calendar.h>
+#include <kcal/calendar.h>
 
 #include "timespanwidget.h"
 #include "koglobals.h"
