@@ -66,7 +66,7 @@ QList<CellItem*> CellItem::placeItem( QList<CellItem*> cells,
     int i;
     for( i = 0; i < maxSubCells; ++i ) {
       kDebug(5855) << "  Trying subcell " << i << endl;
-      if ( !subCellDict.find( i ) ) {
+      if ( !subCellDict.contains( i ) ) {
         kDebug(5855) << "  Use subcell " << i << endl;
         placeItem->setSubCell( i );
         break;
