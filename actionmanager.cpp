@@ -480,8 +480,8 @@ void ActionManager::initActions()
   connect( mCalendarView,SIGNAL( groupEventsSelected( bool ) ),
            action,SLOT( setEnabled( bool ) ) );
 
-  action = new KAction( i18nc("counter proposal","Request Chan&ge"),0,
-                        mCalendarView,SLOT( schedule_counter() ), mACollection, "schedule_counter" );
+  action = new KAction( i18nc("counter proposal", "Request Chan&ge"), mACollection, "schedule_counter" );
+  connect(action, SIGNAL(triggered(bool)), mCalendarView, SLOT( schedule_counter() ));
   action->setEnabled( false );
   connect( mCalendarView,SIGNAL( groupEventsSelected( bool ) ),
            action,SLOT( setEnabled( bool ) ) );
