@@ -42,9 +42,7 @@ install(TARGETS korg_stdprinting  DESTINATION ${LIB_INSTALL_DIR})
 
 ########### install files ###############
 
-#install( FILES   DESTINATION /include/korganizer)
-
-
+install( FILES calprinthelper.h calprintpluginbase.h calprinter.h  DESTINATION ${INCLUDE_INSTALL_DIR}/korganizer)
 
 
 #original Makefile.am contents follow:
