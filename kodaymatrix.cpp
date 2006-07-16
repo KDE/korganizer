@@ -266,17 +266,15 @@ void KODayMatrix::updateView( const QDate &actdate )
   for( int i = 0; i < NUMDAYS; i++ ) {
     //if it is a holy day then draw it red. Sundays are consider holidays, too
     QStringList holidays = KOGlobals::self()->holiday( mDays[ i ] );
-    QString holiStr = QString::null;
+    QString holiStr;
 
     if ( ( KOGlobals::self()->calendarSystem()->dayOfWeek( mDays[ i ] ) ==
            KOGlobals::self()->calendarSystem()->weekDayOfPray() ) ||
          !holidays.isEmpty() ) {
-      if ( !holidays.isEmpty() )
-	  {
-			  holidays << i18n("delimiter for joining holiday names");
-
-			  holiStr = holidays.join( "," );
-	  }
+      if ( !holidays.isEmpty() ) {
+        holidays << i18n("delimiter for joining holiday names");
+        holiStr = holidays.join( "," );
+      }
       if ( holiStr.isNull() ) holiStr = "";
     }
     mHolidays[ i ] = holiStr;
