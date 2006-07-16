@@ -168,7 +168,7 @@ void AlarmDialog::slotUser2()
   // get desktop # where korganizer (or kontact) runs
   QString object = QDBus::sessionBus().interface()->isServiceRegistered( "kontact" ) ?
            "kontact-mainwindow_1" : "KOrganizer MainWindow";
-  QDBusInterface korganizerObj("org.kde.korganizer", "/"+object);
+  QDBusInterface korganizerObj("org.kde.korganizer", '/'+object);
   QDBusReply<int> reply = korganizerObj.call( "getWinID" );
   if ( reply.isValid() ) {
     int window = reply;
