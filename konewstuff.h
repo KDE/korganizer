@@ -23,7 +23,7 @@
 #ifndef KONEWSTUFF_H
 #define KONEWSTUFF_H
 
-#include "knewstuff/knewstuff.h"
+#include <knewstuff/knewstuff.h>
 
 class KOrganizer;
 class CalendarView;
@@ -32,7 +32,7 @@ class KONewStuff : public KNewStuff
 {
   public:
     KONewStuff( CalendarView * );
-    
+
     bool install( const QString &fileName );
     bool createUploadFile( const QString &fileName );
 
