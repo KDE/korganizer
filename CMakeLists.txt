@@ -1,3 +1,4 @@
+project(korganizer)
 
 include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/interfaces 
                      ${CMAKE_SOURCE_DIR}/libkpimidentities 
@@ -71,11 +72,11 @@ install(TARGETS korganizerpart  DESTINATION ${PLUGIN_INSTALL_DIR})
 
 ########### next target ###############
 
+if(KDE4_BUILD_TESTS)
 set(korgplugins_SRCS korgplugins.cpp )
 
 kde4_automoc(${korgplugins_SRCS})
 
-if(KDE4_BUILD_TESTS)
 
 kde4_add_executable(korgplugins ${korgplugins_SRCS})
 
@@ -85,11 +86,11 @@ endif(KDE4_BUILD_TESTS)
 
 ########### next target ###############
 
+if(KDE4_BUILD_TESTS)
 set(timezone_SRCS timezone.cpp )
 
 kde4_automoc(${timezone_SRCS})
 
-if(KDE4_BUILD_TESTS)
 
 kde4_add_executable(timezone ${timezone_SRCS})
 
