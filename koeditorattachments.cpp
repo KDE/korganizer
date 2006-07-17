@@ -33,7 +33,7 @@
 
 #include <kio/job.h>
 #include <kio/jobclasses.h>
-
+#include <kio/jobuidelegate.h>
 #include <kapplication.h>
 #include <klocale.h>
 #include <kdebug.h>
@@ -548,7 +548,10 @@ void KOEditorAttachments::downloadComplete( KIO::Job *job )
 void KOEditorAttachments::copyComplete( KJob *job )
 {
   if ( job->error() )
-    static_cast<KIO::Job*>(job)->showErrorDialog( this );
+  {
+    static_cast<KIO::Job*>(job)->ui()->setWindow( this );
+	static_cast<KIO::Job*>(job)->ui()->showErrorMessage();
+  }
   else {
     addAttachment( static_cast<KIO::CopyJob *>( job )->destURL().url(),
                    QString(),
