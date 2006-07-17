@@ -110,7 +110,7 @@ kde4_automoc(${korganizer_eventviewer_LIB_SRCS})
 
 kde4_add_library(korganizer_eventviewer SHARED ${korganizer_eventviewer_LIB_SRCS})
 
-target_link_libraries(korganizer_eventviewer  ${KDE4_KPARTS_LIBS} kcal )
+target_link_libraries(korganizer_eventviewer  ${KDE4_KPARTS_LIBS} ${KDE4_KCAL_LIBS} )
 
 set_target_properties(korganizer_eventviewer PROPERTIES VERSION 1.0.0 SOVERSION 1 )
 install(TARGETS korganizer_eventviewer  DESTINATION ${LIB_INSTALL_DIR})
@@ -124,7 +124,7 @@ kde4_automoc(${korganizer_calendar_LIB_SRCS})
 
 kde4_add_library(korganizer_calendar SHARED ${korganizer_calendar_LIB_SRCS})
 
-target_link_libraries(korganizer_calendar  ${KDE4_KPARTS_LIBS} kdepim kcal )
+target_link_libraries(korganizer_calendar  ${KDE4_KPARTS_LIBS} kdepim ${KDE4_KCAL_LIBS} )
 
 set_target_properties(korganizer_calendar PROPERTIES VERSION 1.0.0 SOVERSION 1 )
 install(TARGETS korganizer_calendar  DESTINATION ${LIB_INSTALL_DIR})
@@ -213,7 +213,7 @@ qt4_add_dbus_interfaces(korganizer_LIB_SRCS org.kde.korganizer.Korganizer.xml )
 
 kde4_add_library(korganizer SHARED ${korganizer_LIB_SRCS})
 
-target_link_libraries(korganizer ${KDE4_KDECORE_LIBS} kparts knewstuff kdeprint kabc kutils kcal kpimidentities
+target_link_libraries(korganizer ${KDE4_KDECORE_LIBS} kparts knewstuff kdeprint kabc kutils ${KDE4_KCAL_LIBS} kpimidentities
                                                       kdepim korganizer_eventviewer korganizer_calendar kocorehelper 
                                                       korg_stdprinting kholidays korganizer_interfaces )
 

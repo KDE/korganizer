@@ -34,7 +34,7 @@ if(KDE4_BUILD_TESTS)
 
 kde4_add_executable(testalarmdlg ${testalarmdlg_SRCS})
 
-target_link_libraries(testalarmdlg  ${KDE4_KDEUI_LIBS} kcal korganizer_eventviewer phononcore)
+target_link_libraries(testalarmdlg  ${KDE4_KDEUI_LIBS} ${KDE4_KCAL_LIBS} korganizer_eventviewer phononcore)
 
 endif(KDE4_BUILD_TESTS)
 
