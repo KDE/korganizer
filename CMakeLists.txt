@@ -232,7 +232,7 @@ install( FILES tips  DESTINATION ${DATA_INSTALL_DIR}/korganizer)
 install( FILES korganizer_configmain.desktop                      korganizer_configtime.desktop                      korganizer_configviews.desktop                      korganizer_configcolors.desktop                      korganizer_configfonts.desktop                      korganizer_configplugins.desktop                      korganizer_configgroupscheduling.desktop                      korganizer_configfreebusy.desktop                      korganizer_configdesignerfields.desktop                      webcal.protocol  DESTINATION ${SERVICES_INSTALL_DIR})
 install( FILES korganizerui.rc  DESTINATION ${DATA_INSTALL_DIR}/korganizer)
 install( FILES korganizer.upd  DESTINATION ${KCONF_UPDATE_INSTALL_DIR})
-install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/ical2vcal DESTINATION bin)
+install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/ical2vcal DESTINATION ${BIN_INSTALL_DIR})
 
 
 kde4_install_icons( ${ICON_INSTALL_DIR}  hicolor )
