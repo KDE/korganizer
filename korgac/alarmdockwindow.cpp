@@ -49,7 +49,7 @@
 #include <kglobal.h>
 
 AlarmDockWindow::AlarmDockWindow()
-  : KSystemTray( 0 )
+  : KSystemTrayIcon( 0 )
 {
   // Read the autostart status from the config file
   KConfig *config = KGlobal::config();
@@ -58,14 +58,14 @@ AlarmDockWindow::AlarmDockWindow()
   bool alarmsEnabled = config->readEntry( "Enabled", true );
 
   mName = i18n( "KOrganizer Reminder Daemon" );
-  setWindowTitle( mName );
+  setToolTip( mName );
 
   // Set up icons
   KGlobal::iconLoader()->addAppDir( "korgac" );
-  mPixmapEnabled  = loadIcon( "korgac" );
-  mPixmapDisabled = loadIcon( "korgac_disabled" );
+  mIconEnabled  = loadIcon( "korgac" );
+  mIconDisabled = loadIcon( "korgac_disabled" );
 
-  setPixmap( alarmsEnabled ? mPixmapEnabled : mPixmapDisabled );
+  setIcon( alarmsEnabled ? mIconEnabled : mIconDisabled );
 
   // Set up the context menu
   mSuspendAll = contextMenu()->addAction( i18n("Suspend All"), this, SLOT( slotSuspendAll() ) );
@@ -93,6 +93,9 @@ AlarmDockWindow::AlarmDockWindow()
                       SLOT( maybeQuit() ) );
     connect( quit, SIGNAL( activated() ), SLOT( slotQuit() ) );
   }
+
+  connect(this, SIGNAL(activated( QSystemTrayIcon::ActivationReason )),
+                SLOT(slotActivated( QSystemTrayIcon::ActivationReason )));
 
   setToolTip( mName );
 }
@@ -123,7 +126,7 @@ void AlarmDockWindow::toggleAlarmsEnabled()
 
   bool enabled = !mAlarmsEnabled->isChecked();
   mAlarmsEnabled->setChecked( enabled );
-  setPixmap( enabled ? mPixmapEnabled : mPixmapDisabled );
+  setIcon( enabled ? mIconEnabled : mIconDisabled );
 
   config->writeEntry( "Enabled", enabled );
   config->sync();
@@ -155,19 +158,17 @@ void AlarmDockWindow::enableAutostart( bool enable )
   mAutostart->setChecked( enable );
 }
 
-void AlarmDockWindow::mousePressEvent( QMouseEvent *e )
+void AlarmDockWindow::slotActivated( QSystemTrayIcon::ActivationReason reason )
 {
-  if ( e->button() == Qt::LeftButton ) {
+  if ( reason == QSystemTrayIcon::Trigger) {
     KToolInvocation::startServiceByDesktopName( "korganizer", QString() );
-  } else {
-    KSystemTray::mousePressEvent( e );
   }
 }
 
 //void AlarmDockWindow::closeEvent( QCloseEvent * )
 void AlarmDockWindow::slotQuit()
 {
-  int result = KMessageBox::questionYesNoCancel( this,
+  int result = KMessageBox::questionYesNoCancel( parentWidget(),
       i18n("Do you want to start the KOrganizer reminder daemon at login "
            "(note that you will not get reminders whilst the daemon is not running)?"),
       i18n("Close KOrganizer Reminder Daemon"),

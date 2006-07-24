@@ -24,13 +24,13 @@
 #ifndef ALARMDOCKWINDOW_H
 #define ALARMDOCKWINDOW_H
 
-#include <ksystemtray.h>
+#include <ksystemtrayicon.h>
 
-#include <QPixmap>
+#include <QIcon>
 //Added by qt3to4:
 #include <QMouseEvent>
 
-class AlarmDockWindow : public KSystemTray
+class AlarmDockWindow : public KSystemTrayIcon
 {
     Q_OBJECT
   public:
@@ -50,17 +50,17 @@ class AlarmDockWindow : public KSystemTray
     void dismissAllSignal();
 
   protected:
-    void mousePressEvent( QMouseEvent * );
 //    void closeEvent( QCloseEvent * );
 
   protected slots:
+    void slotActivated( QSystemTrayIcon::ActivationReason reason );
     void slotQuit();
     void slotSuspendAll();
     void slotDismissAll();
 
   private:
-    QPixmap mPixmapEnabled;
-    QPixmap mPixmapDisabled;
+    QIcon mIconEnabled;
+    QIcon mIconDisabled;
     QString mName;
 
     QAction *mAlarmsEnabled;
