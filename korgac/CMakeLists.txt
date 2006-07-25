@@ -40,7 +40,7 @@ endif(KDE4_BUILD_TESTS)
 
 ########### install files ###############
 
-install( FILES korgac.desktop  DESTINATION ${CMAKE_INSTALL_PREFIX}/share/autostart)
+install( FILES korgac.desktop  DESTINATION ${AUTOSTART_INSTALL_DIR} )
 
 
 
