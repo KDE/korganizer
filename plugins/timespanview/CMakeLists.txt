@@ -17,7 +17,7 @@ kde4_add_plugin(korg_timespanview WITH_PREFIX ${korg_timespanview_PART_SRCS})
 
 kde4_install_libtool_file( ${PLUGIN_INSTALL_DIR} korg_timespanview )
 
-target_link_libraries(korg_timespanview  ${KDE4_KDECORE_LIBS} korganizer kparts )
+target_link_libraries(korg_timespanview ${KDE4_KDECORE_LIBS} ${KDE4_KPARTS_LIBS} korganizer)
 
 install(TARGETS korg_timespanview  DESTINATION ${PLUGIN_INSTALL_DIR})
 
