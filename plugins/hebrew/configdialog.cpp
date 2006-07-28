@@ -33,7 +33,7 @@ ConfigDialog::ConfigDialog(QWidget * parent)
   QFrame *topFrame = new QFrame(this);
   setMainWidget( topFrame );
   setCaption( i18n("Configure Holidays") );
-  setButtons( Ok );
+  setButtons( Ok|Cancel );
   setDefaultButton( Ok );
   setModal( true );
   QVBoxLayout *topLayout = new QVBoxLayout(topFrame);
@@ -55,7 +55,7 @@ ConfigDialog::ConfigDialog(QWidget * parent)
   chol_box = new QCheckBox(topFrame);
   chol_box->setText(i18n("Show Chol HaMoed"));
   topLayout->addWidget(chol_box);
-
+  connect( this, SIGNAL( okClicked() ),this,SLOT( slotOk() ) );
   load();
 }
 
