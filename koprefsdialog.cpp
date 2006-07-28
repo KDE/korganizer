@@ -39,7 +39,7 @@
 #include <q3listview.h>
 #include <QTabWidget>
 #include <q3buttongroup.h>
-
+#include <QTextStream>
 //Added by qt3to4:
 #include <QGridLayout>
 #include <QBoxLayout>
@@ -203,6 +203,28 @@ class KOPrefsDialogTime : public KPrefsModule
         sCurrentlySet = QString(tempstring);
         fclose(f);
       }
+    else {
+    QFile file( "/etc/sysconfig/clock" );
+    if( file.exists())
+    {
+        QString line;
+        if ( file.open( IO_ReadOnly ) ) {
+            QTextStream stream( &file );
+            while ( !stream.atEnd() )
+            {
+                line = stream.readLine(); // line of text excluding '\n'
+                if( line.contains("ZONE")!=0)
+                {
+                    line = line.remove("ZONE=");
+                    break;
+                }
+            }
+            file.close();
+        }
+        if(!line.isEmpty())
+            sCurrentlySet = line;
+      }
+    }
     #endif // !USE_SOLARIS
 
       mTimeZoneCombo->addItem(i18n("[No selection]"));
