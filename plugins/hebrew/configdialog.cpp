@@ -26,7 +26,7 @@
 #include <kstandarddirs.h>
 #include <ksimpleconfig.h>
 
-ConfigDialog::ConfigDialog(QWidget * parent):KDialogBase(Plain, i18n("Configure Holidays"), Ok, Ok,
+ConfigDialog::ConfigDialog(QWidget * parent):KDialogBase(Plain, i18n("Configure Holidays"), Ok|Cancel, Ok,
             parent)
 {
   QFrame *topFrame = plainPage();
