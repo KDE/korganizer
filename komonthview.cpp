@@ -448,7 +448,7 @@ class MonthViewCell::CreateItemVisitor :
   public:
     CreateItemVisitor() : mItem(0) {}
 
-    bool act( IncidenceBase *incidence, QDate date, QPalette stdPal, int multiDay )
+    bool act( IncidenceBase *incidence, const QDate &date, QPalette stdPal, int multiDay )
     {
       mItem = 0;
       mDate = date;

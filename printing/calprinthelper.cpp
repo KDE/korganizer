@@ -129,7 +129,7 @@ void CalPrintHelper::setCategoryColors( QPainter &p, Incidence *incidence )
 
 ///////////////////////////////////////////////////////////////////////////////
 
-void CalPrintHelper::drawHeader( QPainter &p, QString title,
+void CalPrintHelper::drawHeader( QPainter &p, const QString &title,
     const QDate &month1, const QDate &month2,
     int x, int y, int width, int height )
 {
@@ -1018,8 +1018,10 @@ int CalPrintHelper::weekdayColumn( int weekday )
   return ( weekday + 7 - KGlobal::locale()->weekStartDay() ) % 7;
 }
 
-void CalPrintHelper::drawJournalField( QPainter &p, KLocalizedString field, QString text,
-                                       int x, int &y, int width, int pageHeight )
+void CalPrintHelper::drawJournalField( QPainter &p, KLocalizedString field,
+                                       const QString &text,
+                                       int x, int &y,
+                                       int width, int pageHeight )
 {
   if ( text.isEmpty() ) return;
 

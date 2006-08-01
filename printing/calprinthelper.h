@@ -114,7 +114,7 @@ class KDE_EXPORT CalPrintHelper
       \param width Width of the title bar
       \param height Height of the title bar
     */
-    void drawHeader( QPainter &p, QString title,
+    void drawHeader( QPainter &p, const QString &title,
                      const QDate &month1, const QDate &month2,
                      int x, int y, int width, int height );
     /**
@@ -344,7 +344,8 @@ class KDE_EXPORT CalPrintHelper
     */
     void drawJournal( Journal * journal, QPainter &p, int x, int &y,
                       int width, int pageHeight );
-    void drawJournalField( QPainter &p, KLocalizedString field, QString text,
+    void drawJournalField( QPainter &p, KLocalizedString field,
+                           const QString &text,
                            int x, int &y, int width, int pageHeight );
 
     void drawSplitHeaderRight( QPainter &p, const QDate &fd, const QDate &td,

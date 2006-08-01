@@ -142,7 +142,7 @@ QComboBox *RecurBase::createMonthNameCombo( QWidget *parent )
 }
 
 QBoxLayout *RecurBase::createFrequencySpinBar( QWidget *parent, QLayout *layout,
-    QString everyText, QString unitText )
+    const QString &everyText, const QString &unitText )
 {
   QBoxLayout *freqLayout = new QHBoxLayout();
   layout->addItem( freqLayout );

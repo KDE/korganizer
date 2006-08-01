@@ -123,7 +123,8 @@ void KOAlarmClient::checkAlarms()
   }
 }
 
-void KOAlarmClient::createReminder( KCal::Incidence *incidence, QDateTime dt )
+void KOAlarmClient::createReminder( KCal::Incidence *incidence,
+                                    const QDateTime &dt )
 {
   if ( !incidence )
     return;

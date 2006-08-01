@@ -113,7 +113,7 @@ void AlarmDialog::setIncidence( Incidence *incidence )
   mEventViewer->appendIncidence( mIncidence );
 }
 
-void AlarmDialog::setRemindAt( QDateTime dt )
+void AlarmDialog::setRemindAt( const QDateTime &dt )
 {
   mRemindAt = dt;
 }

@@ -58,11 +58,11 @@ class AttachmentEditDialog : public KDialog
 {
     Q_OBJECT
   public:
-    AttachmentEditDialog( AttachmentIconItem *item, 
+    AttachmentEditDialog( AttachmentIconItem *item,
                           QWidget *parent, bool modal=true );
-    
+
     void accept();
-  
+
   protected slots:
     void urlChanged( const QString &url );
     virtual void slotApply();
@@ -88,8 +88,8 @@ class KOEditorAttachments : public QWidget
                         const QString &label = QString(),
                         bool local = false );
     void addAttachment( KCal::Attachment *attachment );
-    void addAttachment( const QByteArray &data, 
-                        const QString &mimeType = QString(), 
+    void addAttachment( const QByteArray &data,
+                        const QString &mimeType = QString(),
                         const QString &label = QString() );
 
     /** Set widgets to default values */
@@ -100,7 +100,7 @@ class KOEditorAttachments : public QWidget
     void writeIncidence( KCal::Incidence * );
 
     bool hasAttachments();
-    
+
   public slots:
     /** Applies all deferred delete and copy operations */
     void applyChanges();
@@ -118,9 +118,9 @@ class KOEditorAttachments : public QWidget
     void dropped ( QDropEvent * e, const QList<Q3IconDragItem> & lst );
     void copyComplete( KJob *job );
   protected:
-    QString generateLocalAttachmentPath( QString filename, 
+    QString generateLocalAttachmentPath( const QString &filename,
                                          const KMimeType::Ptr mimeType );
-  
+
   signals:
     void openURL( const KUrl &url );
 

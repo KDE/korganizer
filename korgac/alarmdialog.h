@@ -46,7 +46,7 @@ class AlarmDialog : public KDialog {
     virtual ~AlarmDialog();
 
     void setIncidence( Incidence *incidence );
-    void setRemindAt( QDateTime dt );
+    void setRemindAt( const QDateTime &dt );
     void eventNotification();
     void wakeUp();
 

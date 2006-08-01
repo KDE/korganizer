@@ -69,7 +69,7 @@ class KOAlarmClient : public QObject, public KSessionManaged
     void saveAllSignal();
 
   private:
-    void createReminder( KCal::Incidence *incidence, QDateTime dt );
+    void createReminder( KCal::Incidence *incidence, const QDateTime &dt );
     void saveLastCheckTime();
 
     AlarmDockWindow *mDocker;  // the panel icon

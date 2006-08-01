@@ -408,7 +408,7 @@ void KOEditorAttachments::dragEnterEvent( QDragEnterEvent* event ) {
 }
 
 QString KOEditorAttachments::generateLocalAttachmentPath(
-                              QString filename, const KMimeType::Ptr mimeType )
+  const QString &filename, const KMimeType::Ptr mimeType )
 {
   QString pathBegin = "korganizer/attachments/";
   if ( mUid.isEmpty() )
@@ -417,9 +417,10 @@ QString KOEditorAttachments::generateLocalAttachmentPath(
     pathBegin += mUid;
   pathBegin += '/';
 
-  if ( filename.isEmpty() )
-    filename = KRandom::randomString( 10 ) +
-                     QString( mimeType->patterns().first() ).replace( "*", "" );
+  QString fname = filename;
+  if ( fname.isEmpty() )
+    fname = KRandom::randomString( 10 ) +
+            QString( mimeType->patterns().first() ).replace( "*", "" );
   else {
     // we need to determine if there is a correct extension
     bool correctExtension = false;
@@ -427,20 +428,20 @@ QString KOEditorAttachments::generateLocalAttachmentPath(
           it != mimeType->patterns().constEnd(); ++it ) {
       QRegExp re( *it );
       re.setPatternSyntax( QRegExp::Wildcard );
-      if ( ( correctExtension = re.exactMatch( filename ) ) )
+      if ( ( correctExtension = re.exactMatch( fname ) ) )
         break;
     }
     if ( !correctExtension )
       // we take the first one
-      filename += QString( mimeType->patterns().first() ).replace( "*", "" );
+      fname += QString( mimeType->patterns().first() ).replace( "*", "" );
   }
 
-  QString path = KStandardDirs::locateLocal( "data", pathBegin + filename );
+  QString path = KStandardDirs::locateLocal( "data", pathBegin + fname );
 
   while ( QFile::exists( path ) )
     // no need to worry much about races here, I guess
     path = KStandardDirs::locateLocal( "data",
-                       pathBegin + KRandom::randomString( 6 ) + filename );
+                       pathBegin + KRandom::randomString( 6 ) + fname );
 
   return path;
 }

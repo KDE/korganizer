@@ -65,7 +65,7 @@ class RecurBase : public QWidget
     static QComboBox *createWeekdayCombo( QWidget *parent=0 );
     static QComboBox *createMonthNameCombo( QWidget *parent=0 );
     QBoxLayout *createFrequencySpinBar( QWidget *parent, QLayout *layout,
-    QString everyText, QString unitText );
+    const QString &everyText, const QString &unitText );
 
   private:
     QSpinBox *mFrequencyEdit;
