@@ -55,6 +55,7 @@
 #include "koprefs.h"
 #include "koglobals.h"
 using namespace KOrg;
+#include "kohelper.h"
 #include "kotodoviewitem.h"
 #include "kotodoview.moc"
 
@@ -241,7 +242,7 @@ void KOTodoListView::contentsDropEvent( QDropEvent *e )
   else {
     QString text;
     KOTodoViewItem *todoi = dynamic_cast<KOTodoViewItem *>(itemAt( contentsToViewport(e->pos()) ));
-    if ( ! todoi ) { 
+    if ( ! todoi ) {
       // Not dropped on a todo item:
       e->ignore();
       kdDebug( 5850 ) << "KOTodoListView::contentsDropEvent(): Not dropped on a todo item" << endl;
@@ -586,11 +587,13 @@ QMap<Todo *,KOTodoViewItem *>::ConstIterator
     // isn't this pretty stupid? We give one Todo  to the KOTodoViewItem
     // and one into the map. Sure finding is more easy but why? -zecke
     KOTodoViewItem *todoItem = new KOTodoViewItem(*itemIterator,todo,this);
+    todoItem->setResourceColor( KOHelper::resourceColor( mTodoListView->calendar(), incidence ) );
     return mTodoMap.insert(todo,todoItem);
   } else {
 //    kdDebug(5850) << "  no Related" << endl;
       // see above -zecke
     KOTodoViewItem *todoItem = new KOTodoViewItem(mTodoListView,todo,this);
+    todoItem->setResourceColor( KOHelper::resourceColor( mTodoListView->calendar(), todo ) );
     return mTodoMap.insert(todo,todoItem);
   }
 }
@@ -615,7 +618,7 @@ bool KOTodoView::scheduleRemoveTodoItem( KOTodoViewItem *todoItem )
     mItemsToDelete.append( todoItem );
     QTimer::singleShot( 0, this, SLOT( removeTodoItems() ) );
     return true;
-  } else 
+  } else
     return false;
 }
 
@@ -649,7 +652,7 @@ Todo::List KOTodoView::selectedTodos()
 void KOTodoView::changeIncidenceDisplay(Incidence *incidence, int action)
 {
   // The todo view only displays todos, so exit on all other incidences
-  if ( incidence->type() != "Todo" ) 
+  if ( incidence->type() != "Todo" )
     return;
   bool isFiltered = !calendar()->filter()->filterIncidence( incidence );
   Todo *todo = static_cast<Todo *>(incidence);
@@ -662,7 +665,7 @@ void KOTodoView::changeIncidenceDisplay(Incidence *incidence, int action)
       case KOGlobals::INCIDENCEADDED:
       case KOGlobals::INCIDENCEEDITED:
         // If it's already there, edit it, otherwise just add
-        if ( todoItem ) { 
+        if ( todoItem ) {
           if ( isFiltered ) {
             scheduleRemoveTodoItem( todoItem );
           } else {
@@ -991,7 +994,7 @@ void KOTodoView::addQuickTodo()
   if ( ! mQuickAdd->text().stripWhiteSpace().isEmpty() ) {
     Todo *todo = new Todo();
     todo->setSummary( mQuickAdd->text() );
-    todo->setOrganizer( Person( KOPrefs::instance()->fullName(), 
+    todo->setOrganizer( Person( KOPrefs::instance()->fullName(),
                         KOPrefs::instance()->email() ) );
     if ( !calendar()->addTodo( todo ) ) {
       KODialogManager::errorSaveTodo( this );

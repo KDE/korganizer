@@ -37,12 +37,14 @@
 KOTodoViewItem::KOTodoViewItem( QListView *parent, Todo *todo, KOTodoView *kotodo)
   : QCheckListItem( parent , "", CheckBox ), mTodo( todo ), mTodoView( kotodo )
 {
+  mResourceColor = QColor();
   construct();
 }
 
 KOTodoViewItem::KOTodoViewItem( KOTodoViewItem *parent, Todo *todo, KOTodoView *kotodo )
   : QCheckListItem( parent, "", CheckBox ), mTodo( todo ), mTodoView( kotodo )
 {
+  mResourceColor = QColor();
   construct();
 }
 
@@ -91,6 +93,21 @@ void KOTodoViewItem::paintBranches(QPainter *p,const QColorGroup & cg,int w,
 }
 #else
 #endif
+
+void KOTodoViewItem::setResourceColor(QColor color)
+{
+  if ( color.isValid() ) {
+    if ( mResourceColor != color ) {
+      QPixmap px(height()-4,height()-4);
+      mResourceColor = color;
+      px.fill(color);
+      setPixmap(0,px);
+    }
+  } else {
+    mResourceColor = color ;
+    setPixmap(0,0);
+  }
+}
 
 void KOTodoViewItem::construct()
 {

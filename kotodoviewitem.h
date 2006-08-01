@@ -38,7 +38,7 @@ class KOTodoView;
 /**
   This class provides a way of displaying a single Event of Todo-Type in a
   KTodoView.
-  
+
   @author Cornelius Schumacher <schumacher@kde.org>
   @see KOTodoView
 */
@@ -62,11 +62,15 @@ class KOTodoViewItem : public QCheckListItem
     QString key(int, bool) const;
 
     void setSortKey(int column,const QString &key);
-    
+
     bool isAlternate();
     int compare( QListViewItem *i, int col, bool ascending ) const;
     virtual void paintCell(QPainter *p, const QColorGroup &cg,
       int column, int width, int alignment);
+
+
+    void setResourceColor(QColor color);
+    QColor &resourceColor() {return mResourceColor;}
 
   protected:
 #if QT_VERSION >= 300
@@ -83,7 +87,8 @@ class KOTodoViewItem : public QCheckListItem
     eCategoriesColumn=5,
     eDescriptionColumn=6
   };
-    
+    QColor mResourceColor;
+
 
   private:
     Todo *mTodo;

@@ -75,7 +75,8 @@ class KOTodoListView : public KListView
     ~KOTodoListView();
 
     void setCalendar( Calendar * );
-    
+    Calendar * calendar() const { return mCalendar; }
+
   signals:
     void incidenceAdded( Incidence* );
     void incidenceChanged( Incidence*, Incidence* );
