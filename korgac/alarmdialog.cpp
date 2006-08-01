@@ -172,7 +172,7 @@ void AlarmDialog::slotUser2()
   QDBusReply<int> reply = korganizerObj.call( "getWinID" );
   if ( reply.isValid() ) {
     int window = reply;
-    int desktop = KWin::windowInfo( window ).desktop();
+    int desktop = KWin::windowInfo( window, NET::WMDesktop ).desktop();
 
     if ( KWin::currentDesktop() == desktop ) {
       KWin::iconifyWindow( winId(), false );
