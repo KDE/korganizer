@@ -104,6 +104,7 @@ set(korganizer_eventviewer_LIB_SRCS koeventviewer.cpp urihandler.cpp koeventview
 
 kde4_automoc(${korganizer_eventviewer_LIB_SRCS})
 
+qt4_add_dbus_interfaces(korganizer_eventviewer_LIB_SRCS org.kde.korganizer.Korganizer.xml)
 # FIXME: Un-comment this once kmail's and knode's dbus interface exists
 #qt4_add_dbus_interfaces(korganizer_eventviewer_LIB_SRCS ${CMAKE_SOURCE_DIR}/kmail/org.kde.KMail.Iface.xml)
 #qt4_add_dbus_interfaces(korganizer_eventviewer_LIB_SRCS ${CMAKE_SOURCE_DIR}/knode/org.kde.KNode.Iface.xml)

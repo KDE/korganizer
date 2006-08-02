@@ -34,10 +34,9 @@
 #include <kcal/incidence.h>
 #include <kcal/incidenceformatter.h>
 
-#define KORG_NODBUS
 #ifndef KORG_NODBUS
-#include <dbusclient.h>
 #include <kapplication.h>
+#include <ktoolinvocation.h>
 #include "korganizerinterface.h"
 #endif
 
