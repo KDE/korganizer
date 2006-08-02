@@ -70,7 +70,7 @@ class KOTodoViewItem : public QCheckListItem
 
 
     void setResourceColor(QColor color);
-    QColor &resourceColor() {return mResourceColor;}
+    QColor &resourceColor() const { return mResourceColor; }
 
   protected:
 #if QT_VERSION >= 300
