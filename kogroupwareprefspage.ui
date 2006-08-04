@@ -67,7 +67,7 @@ Note: If KOrganizer is acting as a KDE Kolab client, this is not required, as th
          <property name="whatsThis" >
           <string>Configure minimum the interval of time in minutes between each upload here. This configuration is only effective in case you choose to publish your information automatically.</string>
          </property>
-         <property name="minValue">
+         <property name="minimum">
           <number>1</number>
          </property>
         </widget>
