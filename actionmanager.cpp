@@ -70,7 +70,7 @@
 #include <QApplication>
 #include <QTimer>
 #include <QLabel>
-
+#include <kicon.h>
 #include "calendaradaptor.h"
 #include <QtDBus>
 
