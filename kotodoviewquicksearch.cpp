@@ -40,8 +40,7 @@
 
 #include <kaction.h>
 #include <k3listviewsearchline.h>
-#include <ktoolbar.h>
-
+#include <ktoolbar.h> 
 #include <QLayout>
 #include <QLabel>
 #include <QComboBox>
@@ -49,7 +48,7 @@
 #include <QRegExp>
 #include <QSizePolicy>
 #include <QTimer>
-
+#include <kicon.h>
 using namespace KPIM;
 using namespace KCal;
 
