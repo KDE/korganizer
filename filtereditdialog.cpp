@@ -99,7 +99,7 @@ FilterEdit::FilterEdit(QList<CalFilter*> *filters, QWidget *parent)
   mNewButton->setWhatsThis( i18n( "Press this button to define a new filter." ) );
   mDeleteButton->setWhatsThis( i18n( "Press this button to remove the currently active filter." ) );
 
-  connect( mRulesList, SIGNAL(selectionChanged()), this, SLOT(filterSelected()) );
+  connect( mRulesList, SIGNAL(itemSelectionChanged()), this, SLOT(filterSelected()) );
   connect( mNewButton, SIGNAL( clicked() ), SLOT( bNewPressed() ) );
   connect( mDeleteButton, SIGNAL( clicked() ), SLOT( bDeletePressed() ) );
   connect( mNameLineEdit, SIGNAL( textChanged(const QString &) ), SLOT( updateSelectedName(const QString &) ) );
