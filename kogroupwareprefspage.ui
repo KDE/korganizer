@@ -594,6 +594,22 @@ For security reasons, it is not recommended to store your password in the config
         <slot>slotChanged()</slot>
     </connection>
 </connections>
+<tabstops>
+    <tabstop>groupwareTab</tabstop>
+    <tabstop>publishEnable</tabstop>
+    <tabstop>publishDelay</tabstop>
+    <tabstop>publishDays</tabstop>
+    <tabstop>publishUrl</tabstop>
+    <tabstop>publishUser</tabstop>
+    <tabstop>publishPassword</tabstop>
+    <tabstop>publishSavePassword</tabstop>
+    <tabstop>retrieveEnable</tabstop>
+    <tabstop>fullDomainRetrieval</tabstop>
+    <tabstop>retrieveUrl</tabstop>
+    <tabstop>retrieveUser</tabstop>
+    <tabstop>retrievePassword</tabstop>
+    <tabstop>retrieveSavePassword</tabstop>
+</tabstops>
 <includes>
     <include location="global" impldecl="in declaration">kdepimmacros.h</include>
     <include location="local" impldecl="in implementation">kogroupwareprefspage.ui.h</include>
