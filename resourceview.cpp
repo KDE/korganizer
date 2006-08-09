@@ -452,7 +452,7 @@ void ResourceView::removeResource()
 void ResourceView::editResource()
 {
   ResourceItem *item = currentItem();
-
+  if (!item) return;
   ResourceCalendar *resource = item->resource();
 
   KRES::ConfigDialog dlg( this, QString("calendar"), resource,
