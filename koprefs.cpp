@@ -41,6 +41,7 @@
 #include <kemailsettings.h>
 #include <kstaticdeleter.h>
 #include <kstringhandler.h>
+#include <ktimezones.h>
 
 #include "koprefs.h"
 #include <libkpimidentities/identitymanager.h>
@@ -137,19 +138,7 @@ void KOPrefs::fillMailDefaults()
 
 void KOPrefs::setTimeZoneIdDefault()
 {
-  QString zone;
-
-  char zonefilebuf[100];
-  int len = readlink("/etc/localtime",zonefilebuf,100);
-  if (len > 0 && len < 100) {
-    zonefilebuf[len] = '\0';
-    zone = zonefilebuf;
-    zone = zone.mid(zone.indexOf("zoneinfo/") + 9);
-  } else {
-    tzset();
-    zone = tzname[0];
-  }
-
+  QString zone = KSystemTimeZones().local()->name();
   kDebug () << "----- time zone: " << zone << endl;
 
   mTimeZoneId = zone;
