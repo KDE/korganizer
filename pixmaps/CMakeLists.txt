@@ -1,5 +1,5 @@
 
 ########### install files ###############
 
-kde4_install_icons( ${DATA_INSTALL_DIR}/korganizer/icons crystalsvg )
+kde4_install_icons( ${DATA_INSTALL_DIR}/korganizer/icons  )
 
