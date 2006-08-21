@@ -85,7 +85,7 @@ ActionManager::ActionManager( KXMLGUIClient *client, CalendarView *widget,
     mCalendarResources( 0 ), mResourceView( 0 ), mIsClosing( false )
 {
   new CalendarAdaptor( this );
-  QDBus::sessionBus().registerObject("/Calendar", this);
+  QDBusConnection::sessionBus().registerObject("/Calendar", this);
 
   mGUIClient = client;
   mACollection = mGUIClient->actionCollection();

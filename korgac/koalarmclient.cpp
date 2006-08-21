@@ -46,7 +46,7 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
   : QObject( parent )
 {
   new KOrgacAdaptor(this);
-  QDBus::sessionBus().registerObject("/ac", this);
+  QDBusConnection::sessionBus().registerObject("/ac", this);
   kDebug(5890) << "KOAlarmClient::KOAlarmClient()" << endl;
 
   mDocker = new AlarmDockWindow;

@@ -185,7 +185,7 @@ bool KOMailClient::send(const QString &from,const QString &to,
 
     pclose(fd);
   } else {
-    if (!QDBus::sessionBus().interface()->isServiceRegistered("kmail")) {
+    if (!QDBusConnection::sessionBus().interface()->isServiceRegistered("kmail")) {
       if (KToolInvocation::startServiceByDesktopName("kmail")) {
         KMessageBox::error(0,i18n("No running instance of KMail found."));
         return false;

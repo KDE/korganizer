@@ -44,7 +44,7 @@ KOrganizerIfaceImpl::KOrganizerIfaceImpl( ActionManager* actionManager,
 {
   setObjectName( name );
   new KorganizerAdaptor( this );
-  QDBus::sessionBus().registerObject( "/", this, QDBusConnection::ExportAdaptors );
+  QDBusConnection::sessionBus().registerObject( "/", this, QDBusConnection::ExportAdaptors );
 }
 
 KOrganizerIfaceImpl::~KOrganizerIfaceImpl()
