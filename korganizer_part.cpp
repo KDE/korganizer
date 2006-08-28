@@ -127,7 +127,7 @@ KOrganizerPart::~KOrganizerPart()
   delete mActionManager;
   mActionManager = 0;
 
-  closeURL();
+  closeUrl();
 
   KOCore::self()->removeXMLGUIClient( mTopLevelWidget );
 }

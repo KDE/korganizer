@@ -315,10 +315,10 @@ void FreeBusyManager::slotUploadFreeBusyResult(KJob *_job)
                 "URL '%1'. There might be a problem with the access rights, or "
                 "you specified an incorrect URL. The system said: <em>%2</em>."
                 "<br>Please check the URL or contact your system administrator."
-                "</qt>", job->destURL().prettyUrl() ,
+                "</qt>", job->destUrl().prettyUrl() ,
                            job->errorString() ) );
     // Delete temp file
-    KUrl src = job->srcURL();
+    KUrl src = job->srcUrl();
     Q_ASSERT( src.isLocalFile() );
     if( src.isLocalFile() )
         QFile::remove(src.path());

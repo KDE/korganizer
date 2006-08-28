@@ -143,7 +143,7 @@ class AttachmentIconItem : public K3IconViewItem
     static QPixmap icon( KMimeType::Ptr mimeType, const QString &uri,
                          bool local = false )
     {
-      QString iconStr = mimeType->icon( uri );
+      QString iconStr = mimeType->iconName( uri );
       return KGlobal::iconLoader()->loadIcon( iconStr, K3Icon::Desktop, 0,
                                               K3Icon::DefaultState | (
                                                 ( uri.isNull() || local ) ? 0 :
@@ -164,7 +164,7 @@ class AttachmentIconItem : public K3IconViewItem
         mimeType = KMimeType::mimeType( mAttachment->mimeType() );
       else {
         if ( mAttachment->isUri() )
-          mimeType = KMimeType::findByURL( mAttachment->uri() );
+          mimeType = KMimeType::findByUrl( mAttachment->uri() );
         else
           mimeType = KMimeType::findByContent( mAttachment->decodedData() );
         mAttachment->setMimeType( mimeType->name() );
@@ -267,7 +267,7 @@ void AttachmentEditDialog::accept()
 
 void AttachmentEditDialog::urlChanged( const QString &url )
 {
-  mMimeType = KMimeType::findByURL( url );
+  mMimeType = KMimeType::findByUrl( url );
   mTypeLabel->setText( mMimeType->comment() );
   mIcon->setPixmap( AttachmentIconItem::icon( mMimeType, url ) );
 }
@@ -511,7 +511,7 @@ void KOEditorAttachments::dropEvent( QDropEvent* event ) {
 #endif
         KIO::Job *job = KIO::copy( *it, generateLocalAttachmentPath(
                                                    ( *it ).fileName(),
-                                                   KMimeType::findByURL( *it ) )
+                                                   KMimeType::findByUrl( *it ) )
                                  );
         connect( job, SIGNAL( result( KJob * ) ),
                  SLOT( copyComplete( KJob * ) ) );
@@ -554,12 +554,12 @@ void KOEditorAttachments::copyComplete( KJob *job )
 	static_cast<KIO::Job*>(job)->ui()->showErrorMessage();
   }
   else {
-    addAttachment( static_cast<KIO::CopyJob *>( job )->destURL().url(),
+    addAttachment( static_cast<KIO::CopyJob *>( job )->destUrl().url(),
                    QString(),
                    static_cast<KIO::CopyJob *>( job )->
-                                                   srcURLs().first().fileName(),
+                                                   srcUrls().first().fileName(),
                    true );
-    mDeferredCopy.append( static_cast<KIO::CopyJob *>( job )->destURL() );
+    mDeferredCopy.append( static_cast<KIO::CopyJob *>( job )->destUrl() );
   }
 }
 
@@ -684,7 +684,7 @@ void KOEditorAttachments::addAttachment( const QString &uri,
     else if ( uri.startsWith( KDEPIMPROTOCOL_NEWSARTICLE ) )
       item->setMimeType( "message/news" );
     else
-      item->setMimeType( KMimeType::findByURL( uri )->name() );
+      item->setMimeType( KMimeType::findByUrl( uri )->name() );
   } else
     item->setMimeType( mimeType );
   item->setLocal( local );
