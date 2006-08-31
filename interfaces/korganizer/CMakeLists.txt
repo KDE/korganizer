@@ -24,14 +24,3 @@ install(TARGETS korganizer_interfaces  DESTINATION ${LIB_INSTALL_DIR})
 install( FILES korganizerpart.desktop korgprintplugin.desktop  DESTINATION ${SERVICETYPES_INSTALL_DIR})
 install( FILES part.h baseview.h calendarviewbase.h mainwindow.h corehelper.h printplugin.h  DESTINATION ${INCLUDE_INSTALL_DIR}/korganizer)
 
-
-
-
-#original Makefile.am contents follow:
-
-#
-#korginclude_HEADERS = part.h baseview.h calendarviewbase.h mainwindow.h corehelper.h printplugin.h
-#korgincludedir = $(includedir)/korganizer
-#
-#servicetypedir = $(kde_servicetypesdir)
-#servicetype_DATA = korganizerpart.desktop korgprintplugin.desktop

@@ -82,11 +82,9 @@ kde4_add_executable(korgplugins ${korgplugins_SRCS})
 
 target_link_libraries(korgplugins  ${KDE4_KDECORE_LIBS} korganizer ${KDE4_KIO_LIBS} )
 
-endif(KDE4_BUILD_TESTS)
 
 ########### next target ###############
 
-if(KDE4_BUILD_TESTS)
 set(timezone_SRCS timezone.cpp )
 
 kde4_automoc(${timezone_SRCS})
