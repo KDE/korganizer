@@ -256,7 +256,7 @@ void AttachmentEditDialog::slotApply()
   mItem->setLabel( mLabelEdit->text() );
   mItem->setMimeType( mMimeType->name() );
   if ( mURLRequester )
-    mItem->setUri( mURLRequester->url().toString() );
+    mItem->setUri( mURLRequester->url().path() );
 }
 
 void AttachmentEditDialog::accept()
