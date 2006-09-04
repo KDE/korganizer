@@ -48,7 +48,7 @@ public:
 public slots:
   bool openURL( const QString &url );
   bool mergeURL( const QString &url );
-  void closeURL();
+  void closeUrl();
   bool saveURL();
   bool saveAsURL( const QString &url );
   QString getCurrentURLasString() const;

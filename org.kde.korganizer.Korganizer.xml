@@ -10,7 +10,7 @@
       <arg name="url" type="s" direction="in"/>
       <arg type="b" direction="out"/>
     </method>
-    <method name="closeURL"/>
+    <method name="closeUrl"/>
     <method name="saveURL">
       <arg type="b" direction="out"/>
     </method>

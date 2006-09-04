@@ -142,7 +142,7 @@ class KDE_EXPORT ActionManager : public QObject
     /** Save calendar file to URL */
     bool saveAsURL( const QString &url );
     /** Close calendar file opened from URL */
-    void closeURL();
+    void closeUrl();
     /** Get current URL as QString */
     QString getCurrentURLasString() const;
     /**

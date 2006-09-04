@@ -908,9 +908,9 @@ void ActionManager::showStatusMessageOpen( const KUrl &url, bool merge )
   }
 }
 
-void ActionManager::closeURL()
+void ActionManager::closeUrl()
 {
-  kDebug(5850) << "ActionManager::closeURL()" << endl;
+  kDebug(5850) << "ActionManager::closeUrl()" << endl;
 
   file_close();
 }

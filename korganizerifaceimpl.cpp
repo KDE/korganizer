@@ -61,9 +61,9 @@ bool KOrganizerIfaceImpl::mergeURL( const QString &url )
   return mActionManager->mergeURL( url );
 }
 
-void KOrganizerIfaceImpl::closeURL()
+void KOrganizerIfaceImpl::closeUrl()
 {
-  return mActionManager->closeURL();
+  return mActionManager->closeUrl();
 }
 
 bool KOrganizerIfaceImpl::saveURL()
