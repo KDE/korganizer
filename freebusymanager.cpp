@@ -51,7 +51,9 @@
 #include <kdebug.h>
 #include <kmessagebox.h>
 #include <ktempfile.h>
+#include <kio/jobclasses.h>
 #include <kio/netaccess.h>
+#include <kio/scheduler.h>
 #include <kapplication.h>
 #include <kconfig.h>
 #include <klocale.h>
@@ -71,11 +73,12 @@ FreeBusyDownloadJob::FreeBusyDownloadJob( const QString &email, const KURL &url,
                                           const char *name )
   : QObject( manager, name ), mManager( manager ), mEmail( email )
 {
-  KIO::Job *job = KIO::get( url, false, false );
+  KIO::TransferJob *job = KIO::get( url, false, false );
   connect( job, SIGNAL( result( KIO::Job * ) ),
            SLOT( slotResult( KIO::Job * ) ) );
   connect( job, SIGNAL( data( KIO::Job *, const QByteArray & ) ),
            SLOT( slotData( KIO::Job *, const QByteArray & ) ) );
+  KIO::Scheduler::scheduleJob( job );
 }
 
 FreeBusyDownloadJob::~FreeBusyDownloadJob()
@@ -361,7 +364,7 @@ bool FreeBusyManager::processRetrieveQueue()
 
   KURL sourceURL = freeBusyUrl( email );
 
-  kdDebug(5850) << "FreeBusyManager::retrieveFreeBusy(): url: " << sourceURL.url()
+  kdDebug(5850) << "FreeBusyManager::processRetrieveQueue(): url: " << sourceURL.url()
             << endl;
 
   if ( !sourceURL.isValid() ) {
@@ -397,6 +400,7 @@ KURL FreeBusyManager::freeBusyUrl( const QString &email )
   cfg.setGroup( email );
   QString url = cfg.readEntry( "url" );
   if ( !url.isEmpty() ) {
+    kdDebug(5850) << "found cached url: " << url << endl; 
     return KURL( url );
   }
   // Try with the url configurated by preferred email in kaddressbook
@@ -445,7 +449,7 @@ KURL FreeBusyManager::freeBusyUrl( const QString &email )
       << email << '\'' << endl;
     return KURL();
 }
-
+  kdDebug(5850) << "Server FreeBusy url: " << sourceURL.url() << endl;
   if ( KOPrefs::instance()->mFreeBusyFullDomainRetrieval )
     sourceURL.setFileName( email + ".ifb" );
   else
@@ -453,6 +457,7 @@ KURL FreeBusyManager::freeBusyUrl( const QString &email )
   sourceURL.setUser( KOPrefs::instance()->mFreeBusyRetrieveUser );
   sourceURL.setPass( KOPrefs::instance()->mFreeBusyRetrievePassword );
 
+  kdDebug(5850) << "Results in generated: " << sourceURL.url() << endl;
   return sourceURL;
 }
 
