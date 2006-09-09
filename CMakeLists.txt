@@ -80,7 +80,7 @@ kde4_automoc(${korgplugins_SRCS})
 
 kde4_add_executable(korgplugins ${korgplugins_SRCS})
 
-target_link_libraries(korgplugins  ${KDE4_KDECORE_LIBS} korganizer ${KDE4_KIO_LIBS} )
+target_link_libraries(korgplugins  korganizer ${KDE4_KIO_LIBS} )
 
 
 ########### next target ###############
@@ -92,7 +92,7 @@ kde4_automoc(${timezone_SRCS})
 
 kde4_add_executable(timezone ${timezone_SRCS})
 
-target_link_libraries(timezone  ${KDE4_KDECORE_LIBS} korganizer ${KDE4_KIO_LIBS} )
+target_link_libraries(timezone  korganizer ${KDE4_KIO_LIBS} )
 
 endif(KDE4_BUILD_TESTS)
 
@@ -212,7 +212,7 @@ qt4_add_dbus_interfaces(korganizer_LIB_SRCS org.kde.korganizer.Korganizer.xml )
 
 kde4_add_library(korganizer SHARED ${korganizer_LIB_SRCS})
 
-target_link_libraries(korganizer ${KDE4_KPARTS_LIBS} knewstuff ${KDE4_KDEPRINT_LIBS} ${KDE4_KABC_LIBS} ${KDE4_KUTILS_LIBS} ${KDE4_KCAL_LIBS} kpimidentities
+target_link_libraries(korganizer ${KDE4_KPARTS_LIBS} ${KDE4_KNEWSTUFF_LIBS} ${KDE4_KDEPRINT_LIBS} ${KDE4_KABC_LIBS} ${KDE4_KUTILS_LIBS} ${KDE4_KCAL_LIBS} kpimidentities
                                                       kdepim korganizer_eventviewer korganizer_calendar kocorehelper 
                                                       korg_stdprinting kholidays korganizer_interfaces )
 
