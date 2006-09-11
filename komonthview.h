@@ -83,7 +83,7 @@ class KNoScrollListBox: public Q3ListBox
 class MonthViewItem: public Q3ListBoxItem
 {
   public:
-    MonthViewItem( Incidence *, const QDateTime &qd, const QString & title );
+    MonthViewItem( Incidence *, const KDateTime &dt, const QString & title );
 
     void setTodo(bool on)  { mTodo  = on; }
     void setTodoDone(bool on) { mTodoDone = on; }
@@ -95,7 +95,7 @@ class MonthViewItem: public Q3ListBoxItem
     QPalette palette() const { return mPalette; }
 
     Incidence *incidence() const { return mIncidence; }
-    QDateTime incidenceDateTime() { return mDateTime; }
+    KDateTime incidenceDateTime() { return mDateTime; }
 
     void setResourceColor( QColor& color ) { mResourceColor = color; }
     QColor &resourceColor() { return mResourceColor; }
@@ -119,7 +119,7 @@ class MonthViewItem: public Q3ListBoxItem
     QPixmap mReplyPixmap;
 
     QPalette mPalette;
-    QDateTime mDateTime;
+    KDateTime mDateTime;
 
     Incidence *mIncidence;
 };

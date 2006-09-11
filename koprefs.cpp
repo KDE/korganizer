@@ -117,7 +117,7 @@ void KOPrefs::usrSetDefaults()
   mTimeBarFont = mDefaultTimeBarFont;
   mMonthViewFont = mDefaultMonthViewFont;
 
-  setTimeZoneIdDefault();
+  setTimeZoneDefault();
 
   KPimPrefs::usrSetDefaults();
 }
@@ -136,12 +136,26 @@ void KOPrefs::fillMailDefaults()
   }
 }
 
-void KOPrefs::setTimeZoneIdDefault()
+void KOPrefs::setTimeZoneDefault()
 {
-  QString zone = KSystemTimeZones().local()->name();
-  kDebug () << "----- time zone: " << zone << endl;
+  const KTimeZone *zone = KSystemTimeZones().local();
+  kDebug () << "----- time zone: " << zone->name() << endl;
 
-  mTimeZoneId = zone;
+  mTimeSpec = zone;
+}
+
+KDateTime::Spec KOPrefs::timeSpec()
+{
+  if (!mTimeSpec.isValid()) {
+    // Read time zone from config file
+    mTimeSpec = KPimPrefs::timeSpec();
+  }
+  return mTimeSpec;
+}
+
+void KOPrefs::setTimeSpec(const KDateTime::Spec &spec)
+{
+  mTimeSpec = spec;
 }
 
 void KOPrefs::setCategoryDefaults()
@@ -198,8 +212,8 @@ void KOPrefs::usrReadConfig()
   }
 
 
-  if (mTimeZoneId.isEmpty()) {
-    setTimeZoneIdDefault();
+  if (!mTimeSpec.isValid()) {
+    setTimeZoneDefault();
   }
 
 #if 0

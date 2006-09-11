@@ -45,7 +45,7 @@ StdCalendar *StdCalendar::self()
 }
 
 StdCalendar::StdCalendar()
-  : CalendarResources( KPimPrefs::timezone() )
+  : CalendarResources( KPimPrefs::timeSpec() )
 {
   readConfig();
 
@@ -84,7 +84,7 @@ StdCalendar::StdCalendar()
     }
 
     if ( defaultResource ) {
-      defaultResource->setTimeZoneId( KPimPrefs::timezone() );
+      defaultResource->setTimeSpec( KPimPrefs::timeSpec() );
       defaultResource->setResourceName( resourceName );
       manager->add( defaultResource );
       manager->setStandardResource( defaultResource );
@@ -94,7 +94,7 @@ StdCalendar::StdCalendar()
     KCal::ResourceCalendar *bdayResource = manager->createResource( "birthdays" );
     if ( bdayResource ) {
       kDebug(5850) << "Adding Birthdays resource" << endl;
-      bdayResource->setTimeZoneId( KPimPrefs::timezone() );
+      bdayResource->setTimeSpec( KPimPrefs::timeSpec() );
       bdayResource->setResourceName( i18n("Birthdays") );
       manager->add( bdayResource );
     } else {

@@ -964,7 +964,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
 {
   kDebug(5850) << "KOAgendaView::updateEventDates(): " << item->text() << endl;
 
-  QDateTime startDt,endDt;
+  KDateTime startDt,endDt;
 
   // Start date of this incidence, calculate the offset from it (so recurring and
   // non-recurring items can be treated exactly the same, we never need to check
@@ -1016,10 +1016,9 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
   } else if ( incidence->type() == QLatin1String("Todo") ) {
     Todo *td = static_cast<Todo*>(incidence);
     startDt = td->hasStartDate() ? td->dtStart() : td->dtDue();
-    startDt = QDateTime( thisDate.addDays( td->dtDue().daysTo( startDt ) ));
-    startDt.setTime( startTime );
-    endDt.setDate( thisDate );
-    endDt.setTime( endTime );
+    startDt = KDateTime( thisDate.addDays( td->dtDue().daysTo( startDt ) ),
+                         startTime, startDt.timeSpec());
+    endDt = KDateTime( thisDate, endTime, startDt.timeSpec());
 
     if( td->dtDue() == endDt ) {
       // No change
@@ -1245,7 +1244,7 @@ void KOAgendaView::showIncidences( const Incidence::List &incidences )
   if ( !wehaveall )
     calendar()->setFilter( 0 );
 
-  QDateTime start = incidences.first()->dtStart(),
+  KDateTime start = incidences.first()->dtStart(),
             end = incidences.first()->dtEnd();
   Incidence *first = incidences.first();
   for ( Incidence::List::ConstIterator it = incidences.constBegin();
@@ -1256,6 +1255,7 @@ void KOAgendaView::showIncidences( const Incidence::List &incidences )
     end = qMax( start, ( *it )->dtEnd() );
   }
 
+  end.toTimeSpec( start );    // allow direct comparison of dates
   if ( start.date().daysTo( end.date() ) + 1 <= currentDateCount() )
     showDates( start.date(), end.date() );
   else
@@ -1577,7 +1577,8 @@ void KOAgendaView::slotTodoDropped( Todo *todo, const QPoint &gpos, bool allDay 
   if ( gpos.x()<0 || gpos.y()<0 ) return;
   QDate day = mSelectedDates[gpos.x()];
   QTime time = mAgenda->gyToTime( gpos.y() );
-  QDateTime newTime( day, time );
+  KDateTime newTime( day, time, KOPrefs::instance()->timeSpec() );
+  newTime.setDateOnly( allDay );
 
   if ( todo ) {
     Todo *existingTodo = calendar()->todo( todo->uid() );

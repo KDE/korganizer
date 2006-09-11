@@ -160,11 +160,11 @@ class KOPrefsDialogTime : public KPrefsModule
       KHBox *timeZoneBox = new KHBox( topFrame );
       topLayout->addWidget( timeZoneBox, 0, 0, 1, 2 );
 
-      QLabel *timeZoneLabel = new QLabel( i18n("Timezone:"), timeZoneBox );
-      QString whatsThis = i18n( "Select your timezone from the list of "
+      QLabel *timeZoneLabel = new QLabel( i18n("Time zone:"), timeZoneBox );
+      QString whatsThis = i18n( "Select your time zone from the list of "
                                 "locations on this drop down box. If your city "
                                 "is not listed, select one which shares the "
-                                "same timezone. KOrganizer will automatically "
+                                "same time zone. KOrganizer will automatically "
                                 "adjust for daylight savings." );
       timeZoneLabel->setWhatsThis( whatsThis );
       mTimeZoneCombo = new QComboBox( timeZoneBox );
@@ -172,94 +172,24 @@ class KOPrefsDialogTime : public KPrefsModule
       connect( mTimeZoneCombo, SIGNAL( activated( int ) ),
                SLOT( slotWidChanged() ) );
 
-      FILE *f;
-      char tempstring[101] = "Unknown";
       QString sCurrentlySet(i18n("Unknown"));
-      int nCurrentlySet = 0;
-      QStringList list;
-
-      // read the currently set time zone
-    #if defined(USE_SOLARIS)       // MARCO
-        char buf[MAXPATHLEN];
-
-        snprintf(buf, MAXPATHLEN,
-                "/bin/fgrep 'TZ=' %s | /bin/head -n 1 | /bin/cut -b 4-",
-                INITFILE);
-
-        if (f = popen(buf, "r"))
-          {
-           if (fgets(buf, MAXPATHLEN - 1, f) != NULL)
-             {
-               buf[strlen(buf) - 1] = '\0';
-               sCurrentlySet = QString(buf);
-             }
-           pclose(f);
-          }
-    #else
-      if((f = fopen("/etc/timezone", "r")) != NULL) {
-        // get the currently set timezone
-        fgets(tempstring, 100, f);
-        tempstring[strlen(tempstring) - 1] = '\0';
-        sCurrentlySet = QString(tempstring);
-        fclose(f);
-      }
-    else {
-    QFile file( "/etc/sysconfig/clock" );
-    if( file.exists())
-    {
-        QString line;
-        if ( file.open( IO_ReadOnly ) ) {
-            QTextStream stream( &file );
-            while ( !stream.atEnd() )
-            {
-                line = stream.readLine(); // line of text excluding '\n'
-                if( line.contains("ZONE")!=0)
-                {
-                    line = line.remove("ZONE=");
-                    break;
-                }
-            }
-            file.close();
-        }
-        if(!line.isEmpty())
-            sCurrentlySet = line;
-      }
-    }
-    #endif // !USE_SOLARIS
-
-      mTimeZoneCombo->addItem(i18n("[No selection]"));
-
+      const KTimeZone *zone = KSystemTimeZones::local();
+      if (zone)
+        sCurrentlySet = zone->name();
       // Read all system time zones
-    #if defined(USE_SOLARIS)       // MARCO
-        snprintf(buf, MAXPATHLEN,
-               "/bin/find %s \\( -name src -prune \\) -o -type f -print | /bin/cut -b %d-",
-               ZONEINFODIR, strlen(ZONEINFODIR) + 2);
-
-        if (f = popen(buf, "r"))
-          {
-           while(fgets(buf, MAXPATHLEN - 1, f) != NULL)
-             {
-               buf[strlen(buf) - 1] = '\0';
-               list.append(buf);
-             }
-           pclose(f);
-          }
-
-    #else
-      f = popen("grep -e  ^[^#] /usr/share/zoneinfo/zone.tab | cut -f 3","r");
-      if (!f) return;
-      while(fgets(tempstring, 100, f) != NULL) {
-        tempstring[strlen(tempstring)-1] = '\0';
-        list.append(i18n(tempstring));
-        tzonenames << tempstring;
+      QStringList list;
+      const KTimeZones::ZoneMap timezones = KSystemTimeZones::zones();
+      for (KTimeZones::ZoneMap::ConstIterator it = timezones.begin();  it != timezones.end();  ++it) {
+        list.append(i18n(it.key().toUtf8()));
+        tzonenames << it.key();
       }
-      pclose(f);
-    #endif // !USE_SOLARIS
       list.sort();
-
+      mTimeZoneCombo->addItem(i18n("[No selection]"));
       mTimeZoneCombo->addItems( list );
 
-        // find the currently set time zone and select it
+
+      // find the currently set time zone and select it
+      int nCurrentlySet = 0;
       for ( int i = 0; i < mTimeZoneCombo->count(); ++i )
         {
           if (mTimeZoneCombo->itemText(i) == sCurrentlySet)
@@ -268,7 +198,6 @@ class KOPrefsDialogTime : public KPrefsModule
              break;
             }
         }
-
       mTimeZoneCombo->setCurrentIndex(nCurrentlySet);
       mTimeZoneCombo->setWhatsThis( whatsThis );
 
@@ -399,8 +328,9 @@ class KOPrefsDialogTime : public KPrefsModule
   protected:
     void usrReadConfig()
     {
-      setCombo( mTimeZoneCombo,
-                i18n( KOPrefs::instance()->mTimeZoneId.toUtf8() ) );
+      const KTimeZone *tz = KOPrefs::instance()->timeSpec().timeZone();
+      if (tz)
+        setCombo( mTimeZoneCombo, i18n( tz->name().toUtf8() ) );
 
       mAlarmTimeCombo->setCurrentIndex( KOPrefs::instance()->mAlarmTime );
       for ( int i = 0; i < 7; ++i ) {
@@ -411,14 +341,16 @@ class KOPrefsDialogTime : public KPrefsModule
     void usrWriteConfig()
     {
       // Find untranslated selected zone
+      QString selectedZone = mTimeZoneCombo->currentText();
       QStringList::Iterator tz;
       for ( tz = tzonenames.begin(); tz != tzonenames.end(); ++tz )
-        if (mTimeZoneCombo->currentText() == i18n((*tz).toUtf8()))
+        if (selectedZone == i18n((*tz).toUtf8())) {
+          selectedZone = *tz;
           break;
-      if (tz != tzonenames.end())
-        KOPrefs::instance()->mTimeZoneId = (*tz);
-      else
-        KOPrefs::instance()->mTimeZoneId = mTimeZoneCombo->currentText();
+        }
+      const KTimeZone* zone = KSystemTimeZones::zone(selectedZone);
+      if (zone)
+        KOPrefs::instance()->setTimeSpec(zone);
 
       KOPrefs::instance()->mHolidays = ( mHolidayCombo->currentIndex() == 0 ) ?  // (None)
                                        QString() :

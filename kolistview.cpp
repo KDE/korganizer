@@ -124,10 +124,10 @@ bool KOListView::ListItemVisitor::visit( Event *e )
   if (e->doesFloat()) mItem->setText(6, "---"); else mItem->setText( 6, e->dtEndTimeStr() );
   mItem->setText( 7,e->categoriesStr());
 
-  QString key = e->dtStart().toString(Qt::ISODate);
+  QString key = e->dtStart().dateTime().toString(Qt::ISODate);
   mItem->setSortKey(3,key);
 
-  key = e->dtEnd().toString(Qt::ISODate);
+  key = e->dtEnd().dateTime().toString(Qt::ISODate);
   mItem->setSortKey(5,key);
 
   return true;
@@ -157,7 +157,7 @@ bool KOListView::ListItemVisitor::visit(Todo *t)
 
   if (t->hasStartDate()) {
     mItem->setText(3,t->dtStartDateStr());
-    mItem->setSortKey(3,t->dtStart().toString(Qt::ISODate));
+    mItem->setSortKey(3,t->dtStart().dateTime().toString(Qt::ISODate));
     if (t->doesFloat()) {
       mItem->setText(4,"---");
     } else {
@@ -181,7 +181,7 @@ bool KOListView::ListItemVisitor::visit(Todo *t)
   }
   mItem->setText(7,t->categoriesStr());
 
-  mItem->setSortKey(5,t->dtDue().toString(Qt::ISODate));
+  mItem->setSortKey(5,t->dtDue().dateTime().toString(Qt::ISODate));
 
   return true;
 }
@@ -194,7 +194,7 @@ bool KOListView::ListItemVisitor::visit(Journal *t)
   mItem->setText( 0, t->description().section( "\n", 0, 0 ) );
   mItem->setText( 3, t->dtStartDateStr() );
 
-  mItem->setSortKey( 3, t->dtStart().toString(Qt::ISODate) );
+  mItem->setSortKey( 3, t->dtStart().dateTime().toString(Qt::ISODate) );
 
   return true;
 }

@@ -1191,7 +1191,7 @@ void KOTodoView::setNewPercentage( KOTodoViewItem *item, int percentage )
       myChild = myChild->nextSibling();
     }*/
     if ( percentage == 100 ) {
-      todo->setCompleted( QDateTime::currentDateTime() );
+      todo->setCompleted( KDateTime::currentUtcDateTime() );
       // If the todo does recur, it doesn't get set as completed. However, the
       // item is still checked. Uncheck it again.
       if ( !todo->isCompleted() ) item->setState( Q3CheckListItem::Off );
@@ -1224,11 +1224,13 @@ void KOTodoView::setNewDate( const QDate &date )
   if ( !todo->isReadOnly() && mChanger->beginChange( todo ) ) {
     Todo *oldTodo = todo->clone();
 
-    QDateTime dt;
-    dt.setDate( date );
-
-    if ( !todo->doesFloat() )
-      dt.setTime( todo->dtDue().time() );
+    KDateTime dt;
+    if ( !todo->doesFloat() ) {
+      dt = todo->dtDue();
+      dt.setDate( date );
+    } else {
+      dt = KDateTime( date, KOPrefs::instance()->timeSpec() );
+    }
 
     if ( date.isNull() )
       todo->setHasDueDate( false );
@@ -1247,8 +1249,7 @@ void KOTodoView::setNewDate( const QDate &date )
 
 void KOTodoView::copyTodoToDate( const QDate &date )
 {
-  QDateTime dt;
-  dt.setDate( date );
+  KDateTime dt( date, QTime(0,0,0), KOPrefs::instance()->timeSpec() );;
 
   if ( mActiveItem && mChanger ) {
     Todo *newTodo = mActiveItem->todo()->clone();

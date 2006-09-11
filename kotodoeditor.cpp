@@ -308,13 +308,14 @@ void KOTodoEditor::deleteTodo()
 void KOTodoEditor::setDefaults( const QDateTime &due, Todo *relatedEvent, bool allDay )
 {
   mRelatedTodo = relatedEvent;
+  KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
 
   // inherit some properties from parent todo
   if ( mRelatedTodo ) {
     mGeneral->setCategories( mRelatedTodo->categoriesStr() );
     mCategoryDialog->setSelected( mRelatedTodo->categories() );
     if ( mRelatedTodo->hasDueDate() )
-      mGeneral->setDefaults( mRelatedTodo->dtDue(), allDay );
+      mGeneral->setDefaults( mRelatedTodo->dtDue().toTimeSpec( timeSpec ).dateTime(), allDay );
     else
       mGeneral->setDefaults( due, allDay );
   }
@@ -323,9 +324,9 @@ void KOTodoEditor::setDefaults( const QDateTime &due, Todo *relatedEvent, bool a
 
   mDetails->setDefaults();
   if ( mTodo )
-    mRecurrence->setDefaults( mTodo->dtStart(), due, false );
+    mRecurrence->setDefaults( mTodo->dtStart().toTimeSpec( timeSpec ).dateTime(), due, false );
   else
-    mRecurrence->setDefaults( QDateTime::currentDateTime(), due, false );
+    mRecurrence->setDefaults( KDateTime::currentUtcDateTime().toTimeSpec( timeSpec ).dateTime(), due, false );
   mAttachments->setDefaults();
 }
 

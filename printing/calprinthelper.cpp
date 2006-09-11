@@ -42,6 +42,7 @@
 #include <kcal/todo.h>
 #include <kcal/event.h>
 
+//#include "koprefs.h"
 #include "korganizer/corehelper.h"
 #include "cellitem.h"
 
@@ -64,7 +65,7 @@ class CalPrintHelper::TodoParentStart
 class PrintCellItem : public KOrg::CellItem
 {
   public:
-    PrintCellItem( Event *event, const QDateTime &start, const QDateTime &end )
+    PrintCellItem( Event *event, const KDateTime &start, const KDateTime &end )
       : mEvent( event ), mStart( start), mEnd( end )
     {
     }
@@ -73,8 +74,8 @@ class PrintCellItem : public KOrg::CellItem
 
     QString label() const { return mEvent->summary(); }
 
-    QDateTime start() const { return mStart; }
-    QDateTime end() const { return mEnd; }
+    KDateTime start() const { return mStart; }
+    KDateTime end() const { return mEnd; }
 
     /** Calculate the start and end date/time of the recurrence that
         happens on the given day */
@@ -96,7 +97,7 @@ class PrintCellItem : public KOrg::CellItem
 
   private:
     Event *mEvent;
-    QDateTime mStart, mEnd;
+    KDateTime mStart, mEnd;
 };
 
 CalPrintHelper::CalPrintHelper( KPrinter *pr, Calendar *cal, KConfig *cfg,
@@ -325,9 +326,12 @@ Event *CalPrintHelper::holiday( const QDate &dt )
   if ( !mCoreHelper ) return 0;
   QString hstring( mCoreHelper->holidayString( dt ) );
   if ( !hstring.isEmpty() ) {
+#warning Use KOPrefs for time zone
+//    KDateTime::Spec spec = KOPrefs::instance()->timeSpec();
+KDateTime::Spec spec = KSystemTimeZones::local();
     Event*holiday=new Event();
-    holiday->setDtStart( QDateTime(dt) );
-    holiday->setDtEnd( QDateTime(dt) );
+    holiday->setDtStart( KDateTime(dt, spec) );
+    holiday->setDtEnd( KDateTime(dt, spec) );
     holiday->setFloats( true );
     holiday->setCategories( i18n("Holiday") );
     return holiday;
@@ -461,8 +465,11 @@ void CalPrintHelper::drawAgendaDayBox( QPainter &p, Event::List &events,
     currY += cellHeight / 2;
   }
 
-  QDateTime startPrintDate = QDateTime( qd, fromTime );
-  QDateTime endPrintDate = QDateTime( qd, toTime );
+#warning Use KOPrefs for time zone
+//    KDateTime::Spec spec = KOPrefs::instance()->timeSpec();
+KDateTime::Spec spec = KSystemTimeZones::local();
+  KDateTime startPrintDate = KDateTime( qd, fromTime, spec );
+  KDateTime endPrintDate = KDateTime( qd, toTime, spec );
 
   // Calculate horizontal positions and widths of events taking into account
   // overlapping events
@@ -471,8 +478,8 @@ void CalPrintHelper::drawAgendaDayBox( QPainter &p, Event::List &events,
 
   Event::List::ConstIterator itEvents;
   for( itEvents = events.begin(); itEvents != events.end(); ++itEvents ) {
-    QList<QDateTime> times = (*itEvents)->startDateTimesForDate( qd );
-    for ( QList<QDateTime>::ConstIterator it = times.begin();
+    QList<KDateTime> times = (*itEvents)->startDateTimesForDate( qd );
+    for ( QList<KDateTime>::ConstIterator it = times.begin();
           it != times.end(); ++it ) {
       cells.append( new PrintCellItem( *itEvents, (*it), (*itEvents)->endDateForStart( *it ) ) );
     }
@@ -511,8 +518,8 @@ void CalPrintHelper::drawAgendaDayBox( QPainter &p, Event::List &events,
 
 void CalPrintHelper::drawAgendaItem( PrintCellItem *item, QPainter &p,
                                    const QDate &qd,
-                                   const QDateTime &startPrintDate,
-                                   const QDateTime &endPrintDate,
+                                   const KDateTime &startPrintDate,
+                                   const KDateTime &endPrintDate,
                                    float minlen, int x, int y, int width )
 {
   Event *event = item->event();
@@ -521,8 +528,8 @@ void CalPrintHelper::drawAgendaItem( PrintCellItem *item, QPainter &p,
   if ( mUseColors ) setCategoryColors( p, event );
 
   // start/end of print area for event
-  QDateTime startTime = item->start();
-  QDateTime endTime = item->end();
+  KDateTime startTime = item->start();
+  KDateTime endTime = item->end();
   if ( ( startTime < endPrintDate && endTime > startPrintDate ) ||
        ( endTime > startPrintDate && startTime < endPrintDate ) ) {
     if ( startTime < startPrintDate ) startTime = startPrintDate;

@@ -27,13 +27,15 @@
 
 #ifndef KORG_NOPRINTER
 
-#include <QDateTime>
 #include <kprinter.h>
 #include <kcal/calendar.h>
 #include <kcal/event.h>
 #include <kcal/todo.h>
 #include <kdepimmacros.h>
 
+class QDate;
+class QTime;
+class KDateTime;
 class KLocalizedString;
 
 class PrintCellItem;
@@ -224,8 +226,8 @@ class KDE_EXPORT CalPrintHelper
                            int x, int y, int width, int height);
 
     void drawAgendaItem( PrintCellItem *item, QPainter &p, const QDate &,
-                         const QDateTime &startPrintDate,
-                         const QDateTime &endPrintDate,
+                         const KDateTime &startPrintDate,
+                         const KDateTime &endPrintDate,
                          float minlen, int x, int y, int width );
     /**
       Draw the box containing a list of all events of the given day (with their times,

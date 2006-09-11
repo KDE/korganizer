@@ -87,10 +87,10 @@ class KOEditorFreeBusy : public QWidget
   private:
     void updateFreeBusyData( FreeBusyItem * );
 
-    bool findFreeSlot( QDateTime &dtFrom, QDateTime &dtTo );
-    bool tryDate( QDateTime &tryFrom, QDateTime &tryTo );
+    bool findFreeSlot( KDateTime &dtFrom, KDateTime &dtTo );
+    bool tryDate( KDateTime &tryFrom, KDateTime &tryTo );
     bool tryDate( FreeBusyItem *attendee,
-                  QDateTime &tryFrom, QDateTime &tryTo );
+                  KDateTime &tryFrom, KDateTime &tryTo );
     void updateStatusSummary();
 
     KDGanttView *mGanttView;

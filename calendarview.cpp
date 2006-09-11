@@ -644,26 +644,26 @@ void CalendarView::updateConfig( const QByteArray& receiver)
   KOGlobals::self()->
     setHolidays( new KHolidays( KOPrefs::instance()->mHolidays ) );
 
-  QString tz(  mCalendar->timeZoneId() );
   // Only set a new time zone if it changed. This prevents the window
   // from being modified on start
-  if ( tz != KOPrefs::instance()->mTimeZoneId ) {
+  KDateTime::Spec newTimeSpec = KOPrefs::instance()->timeSpec();
+  if ( mCalendar->viewTimeSpec() != newTimeSpec ) {
 
-    const QString question( i18n("The timezone setting was changed. Do you want to keep the absolute time of "
+    const QString question( i18n("The time zone setting was changed. Do you want to keep the absolute time of "
                                 "the items in your calendar, which will show them to be at a different time than "
-                                "before, or move them to be at the old time also in the new timezone?") );
+                                "before, or move them to be at the old time also in the new time zone?") );
     int rc = KMessageBox::questionYesNo( this, question,
                               i18n("Keep Absolute Times?"),
                               KGuiItem(i18n("Keep Times")),
                               KGuiItem(i18n("Move Times")),
                               "calendarKeepAbsoluteTimes");
     if ( rc == KMessageBox::Yes ) {
-      // user wants us to shift
-      mCalendar->setTimeZoneIdViewOnly( KOPrefs::instance()->mTimeZoneId );
+      // keep the absolute time - note the new viewing time zone in the calendar
+      mCalendar->setViewTimeSpec( newTimeSpec );
     } else {
       // only set the new timezone, wihtout shifting events, they will be
       // interpreted as being in the new timezone now
-      mCalendar->setTimeZoneId( KOPrefs::instance()->mTimeZoneId );
+      mCalendar->shiftTimes( mCalendar->viewTimeSpec(), newTimeSpec );
     }
   }
   emit configChanged();
@@ -908,7 +908,7 @@ void CalendarView::edit_paste()
     if ( aView && endDT.isValid() && useEndTime ) {
       if ( (pastedEvent->doesFloat() && aView->selectedIsAllDay()) ||
            (!pastedEvent->doesFloat() && ! aView->selectedIsAllDay()) ) {
-        pastedEvent->setDtEnd(endDT);
+        pastedEvent->setDtEnd(KDateTime( endDT, KOPrefs::instance()->timeSpec() ));
       }
     }
     mChanger->addIncidence( pastedEvent );
@@ -1126,7 +1126,7 @@ bool CalendarView::addIncidence( const QString &ical )
 {
   kDebug(5850) << "CalendarView::addIncidence:\n" << ical << endl;
   ICalFormat format;
-  format.setTimeZone( mCalendar->timeZoneId(), true );
+  format.setTimeSpec( mCalendar->timeSpec() );
   Incidence *incidence = format.fromString( ical );
   if ( !incidence ) return false;
   if ( !mChanger->addIncidence( incidence ) ) {
@@ -1396,8 +1396,8 @@ void CalendarView::schedule_declinecounter(Incidence *incidence)
 
 void CalendarView::mailFreeBusy( int daysToPublish )
 {
-  QDateTime start = QDateTime::currentDateTime();
-  QDateTime end = start.addDays(daysToPublish);
+  KDateTime start = KDateTime::currentUtcDateTime().toTimeSpec(mCalendar->timeSpec());
+  KDateTime end = start.addDays(daysToPublish);
 
   FreeBusy *freebusy = new FreeBusy(mCalendar, start, end);
   freebusy->setOrganizer( Person( KOPrefs::instance()->fullName(),
@@ -2256,8 +2256,8 @@ void CalendarView::addIncidenceOn( Incidence *incadd, const QDate &dt )
     Event *event = static_cast<Event*>(incidence);
 
     // Adjust date
-    QDateTime start = event->dtStart();
-    QDateTime end = event->dtEnd();
+    KDateTime start = event->dtStart();
+    KDateTime end = event->dtEnd();
 
     int duration = start.daysTo( end );
     start.setDate( dt );
@@ -2268,7 +2268,7 @@ void CalendarView::addIncidenceOn( Incidence *incadd, const QDate &dt )
 
   } else if ( incidence->type() == QLatin1String("Todo") ) {
     Todo *todo = static_cast<Todo*>(incidence);
-    QDateTime due = todo->dtDue();
+    KDateTime due = todo->dtDue();
     due.setDate( dt );
 
     todo->setDtDue( due );
@@ -2303,8 +2303,8 @@ void CalendarView::moveIncidenceTo( Incidence *incmove, const QDate &dt )
     Event *event = static_cast<Event*>(incidence);
 
     // Adjust date
-    QDateTime start = event->dtStart();
-    QDateTime end = event->dtEnd();
+    KDateTime start = event->dtStart();
+    KDateTime end = event->dtEnd();
 
     int duration = start.daysTo( end );
     start.setDate( dt );
@@ -2315,7 +2315,7 @@ void CalendarView::moveIncidenceTo( Incidence *incmove, const QDate &dt )
 
   } else if ( incidence->type() == QLatin1String("Todo") ) {
     Todo *todo = static_cast<Todo*>(incidence);
-    QDateTime due = todo->dtDue();
+    KDateTime due = todo->dtDue();
     due.setDate( dt );
 
     todo->setDtDue( due );

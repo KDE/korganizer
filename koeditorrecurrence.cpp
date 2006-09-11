@@ -1202,11 +1202,14 @@ void KOEditorRecurrence::readIncidence(Incidence *incidence)
   int count = 0;
   int month = 0;
 
+  KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
   if ( incidence->type() == QLatin1String("Todo") ) {
     Todo *todo = static_cast<Todo *>(incidence);
-    setDefaults( todo->dtStart(true), todo->dtDue(), todo->doesFloat() );
+    setDefaults( todo->dtStart(true).toTimeSpec(timeSpec).dateTime(),
+                 todo->dtDue().toTimeSpec(timeSpec).dateTime(), todo->doesFloat() );
   } else {
-    setDefaults( incidence->dtStart(), incidence->dtEnd(), incidence->doesFloat() );
+    setDefaults( incidence->dtStart().toTimeSpec(timeSpec).dateTime(),
+                 incidence->dtEnd().toTimeSpec(timeSpec).dateTime(), incidence->doesFloat() );
   }
 
   uint recurs = incidence->recurrenceType();
@@ -1323,7 +1326,7 @@ void KOEditorRecurrence::readIncidence(Incidence *incidence)
   mRecurrenceChooser->setType( recurrenceType );
   showCurrentRule( recurrenceType );
 
-  mRecurrenceRange->setDateTimes( incidence->recurrence()->startDateTime() );
+  mRecurrenceRange->setDateTimes( incidence->recurrence()->startDateTime().toTimeSpec( timeSpec ).dateTime() );
 
   if ( incidence->doesRecur() && r ) {
     mRecurrenceRange->setDuration( r->duration() );

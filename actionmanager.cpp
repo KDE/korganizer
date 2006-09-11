@@ -169,7 +169,7 @@ void ActionManager::init()
 
 void ActionManager::createCalendarLocal()
 {
-  mCalendar = new CalendarLocal( KOPrefs::instance()->mTimeZoneId );
+  mCalendar = new CalendarLocal( KOPrefs::instance()->timeSpec() );
   mCalendarView->setCalendar( mCalendar );
   mCalendarView->readSettings();
 
@@ -878,7 +878,7 @@ bool ActionManager::addResource( const KUrl &mUrl )
   }
 
   if ( resource ) {
-    resource->setTimeZoneId( KOPrefs::instance()->mTimeZoneId );
+    resource->setTimeSpec( KOPrefs::instance()->timeSpec() );
     resource->setResourceName( name );
     manager->add( resource );
     mMainWindow->showStatusMessage( i18n( "Added calendar resource for URL '%1'." ,

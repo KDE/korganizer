@@ -264,11 +264,12 @@ void KOEditorGeneralTodo::readTodo(Todo *todo)
 
   QDateTime dueDT;
 
+  KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
   if (todo->hasDueDate()) {
     enableAlarm( true );
-    dueDT = todo->dtDue();
-    mDueDateEdit->setDate(todo->dtDue().date());
-    mDueTimeEdit->setTime(todo->dtDue().time());
+    dueDT = todo->dtDue().toTimeSpec(timeSpec).dateTime();
+    mDueDateEdit->setDate(dueDT.date());
+    mDueTimeEdit->setTime(dueDT.time());
     mDueCheck->setChecked(true);
   } else {
     enableAlarm( false );
@@ -280,8 +281,9 @@ void KOEditorGeneralTodo::readTodo(Todo *todo)
   }
 
   if (todo->hasStartDate()) {
-    mStartDateEdit->setDate(todo->dtStart().date());
-    mStartTimeEdit->setTime(todo->dtStart().time());
+    QDateTime start = todo->dtStart().toTimeSpec(timeSpec).dateTime();
+    mStartDateEdit->setDate(start.date());
+    mStartTimeEdit->setTime(start.time());
     mStartCheck->setChecked(true);
   } else {
     mStartDateEdit->setEnabled(false);
@@ -296,7 +298,7 @@ void KOEditorGeneralTodo::readTodo(Todo *todo)
   mAlreadyComplete = false;
   mCompletedCombo->setCurrentIndex(todo->percentComplete() / 10);
   if (todo->isCompleted() && todo->hasCompletedDate()) {
-    mCompleted = todo->completed();
+    mCompleted = todo->completed().toTimeSpec(timeSpec).dateTime();
     mAlreadyComplete = true;
   }
   setCompletedDate();
@@ -355,12 +357,13 @@ void KOEditorGeneralTodo::writeTodo(Todo *todo)
     }
   }
 
+  KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
   if ( todo->doesRecur() && !mStartDateModified ) {
-    todo->setDtDue( tmpDueDT );
+    todo->setDtDue( KDateTime(tmpDueDT, timeSpec) );
   } else {
-      todo->setDtDue( tmpDueDT, true );
-      todo->setDtStart( tmpStartDT );
-      todo->setDtRecurrence( tmpDueDT );
+      todo->setDtDue( KDateTime(tmpDueDT, timeSpec), true );
+      todo->setDtStart( KDateTime(tmpStartDT, timeSpec) );
+      todo->setDtRecurrence( KDateTime(tmpDueDT, timeSpec) );
   }
 
   todo->setPriority( mPriorityCombo->currentIndex() );
@@ -378,7 +381,7 @@ void KOEditorGeneralTodo::writeTodo(Todo *todo)
       // truncated, but that's an effect done by KTimeEdit automatically).
       completed = mCompleted;
     }
-    todo->setCompleted( completed );
+    todo->setCompleted( KDateTime(completed, timeSpec) );
   }
 }
 
@@ -547,7 +550,7 @@ void KOEditorGeneralTodo::modified (Todo* todo, int modification)
   case KOGlobals::COMPLETION_MODIFIED:
     mCompletedCombo->setCurrentIndex(todo->percentComplete() / 10);
     if (todo->isCompleted() && todo->hasCompletedDate()) {
-      mCompleted = todo->completed();
+      mCompleted = todo->completed().toTimeSpec(KOPrefs::instance()->timeSpec()).dateTime();
     }
     setCompletedDate();
     break;

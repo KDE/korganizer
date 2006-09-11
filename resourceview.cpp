@@ -337,7 +337,7 @@ void ResourceView::addResource()
                           "KRES::ConfigDialog" );
 
   if ( dlg && dlg->exec() ) {
-    resource->setTimeZoneId( KOPrefs::instance()->mTimeZoneId );
+    resource->setTimeSpec( KOPrefs::instance()->timeSpec() );
     manager->add( resource );
     // we have to call resourceAdded manually, because for in-process changes
     // the dcop signals are not connected, so the resource's signals would not

@@ -197,7 +197,7 @@ void KOIncidenceEditor::saveAsTemplate( Incidence *incidence,
   fileName.append( '/' + templateName );
   fileName = KStandardDirs::locateLocal( "data", "korganizer/" + fileName );
 
-  CalendarLocal cal( KOPrefs::instance()->mTimeZoneId );
+  CalendarLocal cal( KOPrefs::instance()->timeSpec() );
   cal.addIncidence( incidence );
   ICalFormat format;
   format.save( &cal, fileName );
@@ -205,7 +205,7 @@ void KOIncidenceEditor::saveAsTemplate( Incidence *incidence,
 
 void KOIncidenceEditor::slotLoadTemplate( const QString& templateName )
 {
-  CalendarLocal cal( KOPrefs::instance()->mTimeZoneId );
+  CalendarLocal cal( KOPrefs::instance()->timeSpec() );
   QString fileName = KStandardDirs::locateLocal( "data", "korganizer/templates/" + type() + '/' +
       templateName );
 

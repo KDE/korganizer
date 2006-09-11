@@ -29,7 +29,8 @@
 #include <QMap>
 #include <q3listview.h>
 #include <QPalette>
-#include <QDateTime>
+
+#include <kdatetime.h>
 
 namespace KCal {
 class Todo;
@@ -75,7 +76,7 @@ class KOTodoViewItem : public Q3CheckListItem
   private:
     Todo *mTodo;
     KOTodoView *mTodoView;
-    QDateTime mEffectiveDueDate;
+    KDateTime mEffectiveDueDate;
     int compareDueDates( const KOTodoViewItem *b ) const;
 
     uint m_odd : 1;

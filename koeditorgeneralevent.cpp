@@ -295,7 +295,9 @@ void KOEditorGeneralEvent::readEvent( Event *event, bool tmpl )
 
   if ( !tmpl ) {
     // the rest is for the events only
-    setDateTimes(event->dtStart(),event->dtEnd());
+    KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
+    setDateTimes(event->dtStart().toTimeSpec(timeSpec).dateTime(),
+                 event->dtEnd().toTimeSpec(timeSpec).dateTime());
   }
 
   switch( event->transparency() ) {
@@ -334,9 +336,7 @@ void KOEditorGeneralEvent::writeEvent(Event *event)
 
     tmpDate = mEndDateEdit->date();
     tmpTime.setHMS(0,0,0);
-    tmpDT.setDate(tmpDate);
-    tmpDT.setTime(tmpTime);
-    event->setDtEnd(tmpDT);
+    event->setDtEnd(KDateTime(tmpDate, tmpTime, KOPrefs::instance()->timeSpec()));
   } else {
     event->setFloats(false);
 
@@ -350,9 +350,7 @@ void KOEditorGeneralEvent::writeEvent(Event *event)
     // set date/time start
     tmpDate = mStartDateEdit->date();
     tmpTime = mStartTimeEdit->getTime();
-    tmpDT.setDate(tmpDate);
-    tmpDT.setTime(tmpTime);
-    event->setDtStart(tmpDT);
+    event->setDtStart(KDateTime(tmpDate, tmpTime, KOPrefs::instance()->timeSpec()));
   } // check for float
 
   event->setTransparency( mFreeTimeCombo->currentIndex() > 0

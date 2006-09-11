@@ -34,6 +34,7 @@
 #include <kstandarddirs.h>
 #include <kdebug.h>
 #include <klocale.h>
+#include <kdatetime.h>
 #include <kapplication.h>
 #include <kwin.h>
 
@@ -113,7 +114,7 @@ void KOAlarmClient::checkAlarms()
 
   kDebug(5891) << "Check: " << from.toString() << " - " << mLastChecked.toString() << endl;
 
-  QList<Alarm *> alarms = mCalendar->alarms( from, mLastChecked );
+  QList<Alarm *> alarms = mCalendar->alarms( KDateTime( from, KDateTime::LocalZone ), KDateTime( mLastChecked, KDateTime::LocalZone ) );
 
   QList<Alarm *>::ConstIterator it;
   for( it = alarms.begin(); it != alarms.end(); ++it ) {
@@ -194,9 +195,9 @@ void KOAlarmClient::dumpDebug()
 
 QStringList KOAlarmClient::dumpAlarms()
 {
-  QDateTime start = QDateTime( QDateTime::currentDateTime().date(),
-                               QTime( 0, 0 ) );
-  QDateTime end = start.addDays( 1 ).addSecs( -1 );
+  KDateTime start = KDateTime( QDateTime::currentDateTime().date(),
+                               QTime( 0, 0 ), KDateTime::LocalZone );
+  KDateTime end = start.addDays( 1 ).addSecs( -1 );
 
   QStringList lst;
   // Don't translate, this is for debugging purposes.

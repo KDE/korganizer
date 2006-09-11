@@ -136,8 +136,9 @@ void FreeBusyItem::updateItem()
 void FreeBusyItem::setFreeBusyPeriods( FreeBusy* fb )
 {
   if( fb ) {
-    setStartTime( fb->dtStart() );
-    setEndTime( fb->dtEnd() );
+    KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
+    setStartTime( fb->dtStart().toTimeSpec( timeSpec ).dateTime() );
+    setEndTime( fb->dtEnd().toTimeSpec( timeSpec ).dateTime() );
     // Clean out the old entries
     for( KDGanttViewItem* it = firstChild(); it; it = firstChild() )
       delete it;
@@ -147,8 +148,8 @@ void FreeBusyItem::setFreeBusyPeriods( FreeBusy* fb )
     for( QList<KCal::Period>::Iterator it = busyPeriods.begin();
 	 it != busyPeriods.end(); ++it ) {
       KDGanttViewTaskItem* newSubItem = new KDGanttViewTaskItem( this );
-      newSubItem->setStartTime( (*it).start() );
-      newSubItem->setEndTime( (*it).end() );
+      newSubItem->setStartTime( (*it).start().toTimeSpec( timeSpec ).dateTime() );
+      newSubItem->setEndTime( (*it).end().toTimeSpec( timeSpec ).dateTime() );
       newSubItem->setColors( Qt::red, Qt::red, Qt::red );
     }
     setFreeBusy( fb );
@@ -365,7 +366,9 @@ bool KOEditorFreeBusy::updateEnabled() const
 
 void KOEditorFreeBusy::readEvent( Event *event )
 {
-  setDateTimes( event->dtStart(), event->dtEnd() );
+  KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
+  setDateTimes( event->dtStart().toTimeSpec( timeSpec ).dateTime(),
+                event->dtEnd().toTimeSpec( timeSpec ).dateTime() );
   mIsOrganizer = KOPrefs::instance()->thatIsMe( event->organizer().email() );
   updateStatusSummary();
 }
@@ -469,21 +472,24 @@ void KOEditorFreeBusy::slotUpdateGanttView( const QDateTime &dtFrom, const QDate
 */
 void KOEditorFreeBusy::slotPickDate()
 {
-  QDateTime start = mDtStart;
-  QDateTime end = mDtEnd;
+  KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
+  KDateTime dtStart( mDtStart, timeSpec );
+  KDateTime dtEnd( mDtEnd, timeSpec );
+  KDateTime start = dtStart;
+  KDateTime end = dtEnd;
   bool success = findFreeSlot( start, end );
 
   if( success ) {
-    if ( start == mDtStart && end == mDtEnd ) {
+    if ( start == dtStart && end == dtEnd ) {
       KMessageBox::information( this,
           i18n( "The meeting already has suitable start/end times." ), QString(), 
           "MeetingTimeOKFreeBusy" );
     } else {
-      emit dateTimesChanged( start, end );
-      slotUpdateGanttView( start, end );
+      emit dateTimesChanged( start.dateTime(), end.dateTime() );
+      slotUpdateGanttView( start.dateTime(), end.dateTime() );
       KMessageBox::information( this,
           i18n( "The meeting has been moved to\nStart: %1\nEnd: %2." ,
-            start.toString(), end.toString() ), QString(),
+            start.dateTime().toString(), end.dateTime().toString() ), QString(),
           "MeetingMovedFreeBusy" );
     }
   } else
@@ -495,21 +501,22 @@ void KOEditorFreeBusy::slotPickDate()
   Finds a free slot in the future which has at least the same size as
   the initial slot.
 */
-bool KOEditorFreeBusy::findFreeSlot( QDateTime &dtFrom, QDateTime &dtTo )
+bool KOEditorFreeBusy::findFreeSlot( KDateTime &dtFrom, KDateTime &dtTo )
 {
   if( tryDate( dtFrom, dtTo ) )
     // Current time is acceptable
     return true;
 
-  QDateTime tryFrom = dtFrom;
-  QDateTime tryTo = dtTo;
+  KDateTime tryFrom = dtFrom;
+  KDateTime tryTo = dtTo;
 
   // Make sure that we never suggest a date in the past, even if the
   // user originally scheduled the meeting to be in the past.
-  if( tryFrom < QDateTime::currentDateTime() ) {
+  KDateTime now = KDateTime::currentUtcDateTime();
+  if( tryFrom < now ) {
     // The slot to look for is at least partially in the past.
     int secs = tryFrom.secsTo( tryTo );
-    tryFrom = QDateTime::currentDateTime();
+    tryFrom = now;
     tryTo = tryFrom.addSecs( secs );
   }
 
@@ -536,7 +543,7 @@ bool KOEditorFreeBusy::findFreeSlot( QDateTime &dtFrom, QDateTime &dtTo )
   that participant. In other words, the returned slot does not have to
   be free for everybody else.
 */
-bool KOEditorFreeBusy::tryDate( QDateTime& tryFrom, QDateTime& tryTo )
+bool KOEditorFreeBusy::tryDate( KDateTime& tryFrom, KDateTime& tryTo )
 {
   FreeBusyItem* currentItem = static_cast<FreeBusyItem*>( mGanttView->firstChild() );
   while( currentItem ) {
@@ -559,7 +566,7 @@ bool KOEditorFreeBusy::tryDate( QDateTime& tryFrom, QDateTime& tryTo )
   available for all participants).
 */
 bool KOEditorFreeBusy::tryDate( FreeBusyItem *attendee,
-                                QDateTime &tryFrom, QDateTime &tryTo )
+                                KDateTime &tryFrom, KDateTime &tryTo )
 {
   // If we don't have any free/busy information, assume the
   // participant is free. Otherwise a participant without available

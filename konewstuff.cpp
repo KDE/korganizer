@@ -42,7 +42,7 @@ bool KONewStuff::install( const QString &fileName )
 {
   kDebug(5850) << "KONewStuff::install(): " << fileName << endl;
 
-  CalendarLocal cal( KOPrefs::instance()->mTimeZoneId );
+  CalendarLocal cal( KOPrefs::instance()->timeSpec() );
   FileStorage storage( &cal, fileName );
   if ( !storage.load() ) {
     KMessageBox::error( mView, i18n("Could not load calendar.") );

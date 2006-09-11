@@ -131,21 +131,25 @@ void KOWhatsNextView::updateView()
       if ( !ev->doesRecur() ){
         appendEvent(ev);
       } else {
-        // FIXME: This should actually be cleaned up. Libkcal should
-        // provide a method to return a list of all recurrences in a
-        // given time span.
         Recurrence *recur = ev->recurrence();
         int duration = ev->dtStart().secsTo( ev->dtEnd() );
-        QDateTime start = recur->getPreviousDateTime(
-                                QDateTime( mStartDate, QTime() ) );
-        QDateTime end = start.addSecs( duration );
+	KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
+        KDateTime start = recur->getPreviousDateTime(
+                                KDateTime( mStartDate, QTime(), timeSpec ) );
+        KDateTime end = start.addSecs( duration );
+        KDateTime endDate( mEndDate, QTime(23,59,59), timeSpec );
         if ( end.date() >= mStartDate ) {
-          appendEvent( ev, start, end );
+          appendEvent( ev, start.dateTime(), end.dateTime() );
         }
-        start = recur->getNextDateTime( start );
-        while ( start.isValid() && start.date() <= mEndDate ) {
-          appendEvent( ev, start );
-          start = recur->getNextDateTime( start );
+        DateTimeList times = recur->timesInInterval( start, endDate );
+        int count = times.count();
+        if ( count > 0 ) {
+          int i = 0;
+          if ( times[0] == start ) ++i;  // start has already been appended
+          if ( !times[count - 1].isValid() ) --count;  // list overflow
+	  for ( ;  i < count && times[i].date() <= mEndDate;  ++i ) {
+            appendEvent( ev, times[i].dateTime() );
+          }
         }
       }
     }
@@ -272,10 +276,11 @@ void KOWhatsNextView::appendEvent( Incidence *ev, const QDateTime &start,
 //  if (!ev->doesFloat()) {
     if ( ev->type() == QLatin1String("Event") ) {
       Event *event = static_cast<Event *>(ev);
-      QDateTime starttime( start );
+      KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
+      KDateTime starttime( start, timeSpec );
       if ( !starttime.isValid() )
         starttime = event->dtStart();
-      QDateTime endtime( end );
+      KDateTime endtime( end, timeSpec );
       if ( !endtime.isValid() )
         endtime = starttime.addSecs(
                   event->dtStart().secsTo( event->dtEnd() ) );

@@ -124,14 +124,14 @@ void FreeBusyManager::setCalendar( KCal::Calendar *c )
 {
   mCalendar = c;
   if ( mCalendar ) {
-    mFormat.setTimeZone( mCalendar->timeZoneId(), true );
+    mFormat.setTimeSpec( mCalendar->timeSpec() );
   }
 }
 
 KCal::FreeBusy *FreeBusyManager::ownerFreeBusy()
 {
-  QDateTime start = QDateTime::currentDateTime();
-  QDateTime end = start.addDays( KOPrefs::instance()->mFreeBusyPublishDays );
+  KDateTime start = KDateTime::currentUtcDateTime();
+  KDateTime end = start.addDays( KOPrefs::instance()->mFreeBusyPublishDays );
 
   FreeBusy *freebusy = new FreeBusy( mCalendar, start, end );
   freebusy->setOrganizer( Person( KOPrefs::instance()->fullName(),

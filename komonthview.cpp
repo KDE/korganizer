@@ -198,13 +198,13 @@ void KNoScrollListBox::resizeEvent( QResizeEvent *e )
   Q3ListBox::resizeEvent( e );
 }
 
-MonthViewItem::MonthViewItem( Incidence *incidence, const QDateTime &qd,
+MonthViewItem::MonthViewItem( Incidence *incidence, const KDateTime &dt,
                               const QString & s ) : Q3ListBoxItem()
 {
   setText( s );
 
   mIncidence = incidence;
-  mDateTime = qd;
+  mDateTime = dt;
 
   mTodoPixmap      = KOGlobals::self()->smallIcon("todo");
   mTodoDonePixmap  = KOGlobals::self()->smallIcon("checkedbox");
@@ -436,7 +436,7 @@ void MonthViewCell::updateCell()
   mItemList->clear();
 
   if ( !mHolidayString.isEmpty() ) {
-    MonthViewItem *item = new MonthViewItem( 0, QDateTime( mDate ), mHolidayString );
+    MonthViewItem *item = new MonthViewItem( 0, KDateTime( mDate, KOPrefs::instance()->timeSpec() ), mHolidayString );
     item->setPalette( mHolidayPalette );
     mItemList->insertItem( item );
   }
@@ -461,31 +461,33 @@ class MonthViewCell::CreateItemVisitor :
   protected:
     bool visit( Event *event ) {
       QString text;
-      QDateTime dt( mDate );
+      KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
+      KDateTime dt( mDate, timeSpec );
       // take the time 0:00 into account, which is non-inclusive
-      QDate dtEnd = event->dtEnd().addSecs( event->doesFloat() ? 0 : -1).date();
-      int length = event->dtStart().date().daysTo( dtEnd );
+      QDate dtEnd = event->dtEnd().toTimeSpec( timeSpec ).addSecs( event->doesFloat() ? 0 : -1).date();
+      KDateTime dtStart = event->dtStart().toTimeSpec( timeSpec );
+      int length = dtStart.date().daysTo( dtEnd );
       if ( event->isMultiDay() ) {
-        if ( mDate == event->dtStart().date() ||
-           ( mMultiDay == 0 && event->recursOn( mDate ) ) ) {
+        if ( mDate == dtStart.date() ||
+           ( mMultiDay == 0 && event->recursOn( mDate, timeSpec ) ) ) {
           text = "(-- " + event->summary();
           dt = event->dtStart();
         } else if ( !event->doesRecur() && mDate == dtEnd ||
                     // last day of a recurring multi-day event?
-                  ( mMultiDay == length && event->recursOn( mDate.addDays( -length ) ) ) ) {
+                  ( mMultiDay == length && event->recursOn( mDate.addDays( -length ), timeSpec ) ) ) {
           text = event->summary() + " --)";
         } else if (!(event->dtStart().date().daysTo(mDate) % 7) && length > 7 ) {
           text = "-- " + event->summary() + " --";
         } else {
           text = "----------------";
-          dt = QDateTime( mDate );
         }
       } else {
         if (event->doesFloat())
           text = event->summary();
         else {
-          text = KGlobal::locale()->formatTime(event->dtStart().time());
-          dt.setTime( event->dtStart().time() );
+	  QTime startTime = event->dtStart().toTimeSpec( timeSpec ).time();
+          text = KGlobal::locale()->formatTime(startTime);
+          dt.setTime( startTime );
           text += ' ' + event->summary();
         }
       }
@@ -514,11 +516,12 @@ class MonthViewCell::CreateItemVisitor :
       QString text;
       if ( !KOPrefs::instance()->showAllDayTodo() )
         return false;
-      QDateTime dt( mDate );
+      KDateTime dt( mDate, KOPrefs::instance()->timeSpec() );
       if ( todo->hasDueDate() && !todo->doesFloat() ) {
-        text += KGlobal::locale()->formatTime( todo->dtDue().time() );
+        QTime dueTime = todo->dtDue().toTimeSpec( KOPrefs::instance()->timeSpec() ).time();
+        text += KGlobal::locale()->formatTime( dueTime );
         text += ' ';
-        dt.setTime( todo->dtDue().time() );
+        dt.setTime( dueTime );
       }
       text += todo->summary();
 
@@ -560,7 +563,7 @@ void MonthViewCell::addIncidence( Incidence *incidence, int multiDay )
       //        chronologically sorted.
       uint i = 0;
       int pos = -1;
-      QDateTime dt( item->incidenceDateTime() );
+      KDateTime dt( item->incidenceDateTime() );
 
       while ( i < mItemList->count() && pos<0 ) {
         Q3ListBoxItem *item = mItemList->item( i );
@@ -930,8 +933,8 @@ class KOMonthView::GetDateVisitor : public IncidenceBase::Visitor
     {
       return incidence->accept( *this );
     }
-    QDateTime startDate() const { return mStartDate; }
-    QDateTime endDate() const { return mEndDate; }
+    KDateTime startDate() const { return mStartDate; }
+    KDateTime endDate() const { return mEndDate; }
 
   protected:
     bool visit( Event *event ) {
@@ -955,8 +958,8 @@ class KOMonthView::GetDateVisitor : public IncidenceBase::Visitor
       return true;
     }
   protected:
-    QDateTime mStartDate;
-    QDateTime mEndDate;
+    KDateTime mStartDate;
+    KDateTime mEndDate;
 };
 
 void KOMonthView::changeIncidenceDisplayAdded( Incidence *incidence )
@@ -970,9 +973,10 @@ void KOMonthView::changeIncidenceDisplayAdded( Incidence *incidence )
 
   bool floats = incidence->doesFloat();
 
+  KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
   if ( incidence->doesRecur() ) {
     for ( int i = 0; i < mCells.count(); ++i ) {
-      if ( incidence->recursOn( mCells[i]->date() ) ) {
+      if ( incidence->recursOn( mCells[i]->date(), timeSpec ) ) {
 
         // handle multiday events
         int length = gdv.startDate().date().daysTo( gdv.endDate().addSecs( floats ? 0 : -1 ).date() );

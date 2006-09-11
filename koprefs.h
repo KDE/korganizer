@@ -25,6 +25,7 @@
 #define KOPREFS_H
 
 #include <QHash>
+#include <kdatetime.h>
 
 #include <kdepimmacros.h>
 
@@ -58,7 +59,7 @@ class KDE_EXPORT KOPrefs : public KOPrefsBase
 
   protected:
     void setCategoryDefaults();
-    void setTimeZoneIdDefault();
+    void setTimeZoneDefault();
 
     /** Fill empty mail fields with default values. */
     void fillMailDefaults();
@@ -89,6 +90,9 @@ class KDE_EXPORT KOPrefs : public KOPrefsBase
     void setResourceColor ( const QString &, const QColor & );
     QColor resourceColor( const QString & );
 
+    void setTimeSpec(const KDateTime::Spec &spec);
+    KDateTime::Spec timeSpec();
+
     QString mHtmlExportFile;
 
     // Groupware passwords
@@ -104,6 +108,8 @@ class KDE_EXPORT KOPrefs : public KOPrefsBase
 
     QFont mDefaultMonthViewFont;
     QFont mDefaultTimeBarFont;
+
+    KDateTime::Spec mTimeSpec;
 
   public: // Do not use - except in KOPrefsDialogMain
     QString mName;
