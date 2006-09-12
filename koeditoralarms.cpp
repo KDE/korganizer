@@ -81,7 +81,7 @@ void AlarmListViewItem::construct()
     switch ( mAlarm->type() ) {
       case KCal::Alarm::Display: type = i18n("Reminder Dialog");
         break;
-      case KCal::Alarm::Procedure: type = i18n("Application/Script");
+      case KCal::Alarm::Procedure: type = i18n("Program");
         break;
       case KCal::Alarm::Email: type = i18n("Email");
         break;

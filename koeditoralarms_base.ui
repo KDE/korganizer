@@ -27,7 +27,7 @@
                 <cstring>mTimeGroup</cstring>
             </property>
             <property name="title">
-                <string>Time</string>
+                <string>Time Offset</string>
             </property>
             <vbox>
                 <property name="name">
@@ -57,17 +57,17 @@
                         <widget class="QComboBox">
                             <item>
                                 <property name="text">
-                                    <string>Minutes</string>
+                                    <string>minute(s)</string>
                                 </property>
                             </item>
                             <item>
                                 <property name="text">
-                                    <string>Hours</string>
+                                    <string>hour(s)</string>
                                 </property>
                             </item>
                             <item>
                                 <property name="text">
-                                    <string>Days</string>
+                                    <string>day(s)</string>
                                 </property>
                             </item>
                             <property name="name">
@@ -77,22 +77,22 @@
                         <widget class="QComboBox">
                             <item>
                                 <property name="text">
-                                    <string>Before the Start</string>
+                                    <string>before the start</string>
                                 </property>
                             </item>
                             <item>
                                 <property name="text">
-                                    <string>After the Start</string>
+                                    <string>after the start</string>
                                 </property>
                             </item>
                             <item>
                                 <property name="text">
-                                    <string>Before the End</string>
+                                    <string>before the end</string>
                                 </property>
                             </item>
                             <item>
                                 <property name="text">
-                                    <string>After the End</string>
+                                    <string>after the end</string>
                                 </property>
                             </item>
                             <property name="name">
@@ -175,7 +175,7 @@
                                 </sizepolicy>
                             </property>
                             <property name="text">
-                                <string>&amp;Repeating:</string>
+                                <string>&amp;Repeat:</string>
                             </property>
                         </widget>
                         <widget class="QSpinBox" row="1" column="2">
@@ -189,7 +189,7 @@
                                 <string>every </string>
                             </property>
                             <property name="suffix">
-                                <string> Minute(s)</string>
+                                <string> minute(s)</string>
                             </property>
                             <property name="maxValue">
                                 <number>999</number>
@@ -249,7 +249,7 @@
                                 <cstring>mTypeDisplayRadio</cstring>
                             </property>
                             <property name="text">
-                                <string>&amp;Display reminder</string>
+                                <string>&amp;Reminder Dialog</string>
                             </property>
                             <property name="checked">
                                 <bool>true</bool>
@@ -260,7 +260,7 @@
                                 <cstring>mTypeSoundRadio</cstring>
                             </property>
                             <property name="text">
-                                <string>&amp;Sound</string>
+                                <string>A&amp;udio</string>
                             </property>
                         </widget>
                         <widget class="QRadioButton">
@@ -268,7 +268,7 @@
                                 <cstring>mTypeAppRadio</cstring>
                             </property>
                             <property name="text">
-                                <string>Application / script</string>
+                                <string>Program</string>
                             </property>
                         </widget>
                         <widget class="QRadioButton">
@@ -279,7 +279,7 @@
                                 <bool>false</bool>
                             </property>
                             <property name="text">
-                                <string>Send Email</string>
+                                <string>Email</string>
                             </property>
                         </widget>
                         <spacer>
@@ -338,7 +338,7 @@
                                     <cstring>mDisplayTextLabel</cstring>
                                 </property>
                                 <property name="text">
-                                    <string>Reminder &amp;text:</string>
+                                    <string>Reminder Dialog &amp;text:</string>
                                 </property>
                                 <property name="buddy" stdset="0">
                                     <cstring>mDisplayText</cstring>
@@ -370,7 +370,7 @@
                                     <cstring>mSoundFileLabel</cstring>
                                 </property>
                                 <property name="text">
-                                    <string>Sound &amp;file:</string>
+                                    <string>Audio &amp;file:</string>
                                 </property>
                                 <property name="buddy" stdset="0">
                                     <cstring>mSoundFile</cstring>
@@ -422,7 +422,7 @@
                                     <cstring>mApplicationLabel</cstring>
                                 </property>
                                 <property name="text">
-                                    <string>&amp;Application / Script:</string>
+                                    <string>&amp;Program file:</string>
                                 </property>
                                 <property name="buddy" stdset="0">
                                     <cstring>mApplication</cstring>
@@ -441,7 +441,7 @@
                                     <cstring>mAppArgumentsLabel</cstring>
                                 </property>
                                 <property name="text">
-                                    <string>Ar&amp;guments:</string>
+                                    <string>Program ar&amp;guments:</string>
                                 </property>
                                 <property name="buddy" stdset="0">
                                     <cstring>mAppArguments</cstring>
@@ -490,7 +490,7 @@
                                     <cstring>mEmailTextLabel</cstring>
                                 </property>
                                 <property name="text">
-                                    <string>&amp;Text of the message:</string>
+                                    <string>Email &amp;message text:</string>
                                 </property>
                                 <property name="buddy" stdset="0">
                                     <cstring>mEmailText</cstring>
@@ -511,7 +511,7 @@
                                     <cstring>mEmailToLabel</cstring>
                                 </property>
                                 <property name="text">
-                                    <string>&amp;To:</string>
+                                    <string>Email &amp;address(es):</string>
                                 </property>
                                 <property name="buddy" stdset="0">
                                     <cstring>unnamed</cstring>
@@ -585,7 +585,7 @@
                     </column>
                     <column>
                         <property name="text">
-                            <string>Offset</string>
+                            <string>Time Offset</string>
                         </property>
                         <property name="clickable">
                             <bool>true</bool>
