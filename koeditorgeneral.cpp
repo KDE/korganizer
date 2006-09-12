@@ -294,9 +294,10 @@ void KOEditorGeneral::updateAlarmWidgets()
     mAlarmButton->setChecked( false );
   } else if ( mAlarmList.count() > 1 ) {
     mAlarmStack->raiseWidget( AdvancedAlarmLabel );
-    mAlarmInfoLabel->setText( i18n("1 reminder configured",
-                                   "%n reminders configured",
+    mAlarmInfoLabel->setText( i18n("1 advanced reminder configured",
+                                   "%n advanced reminders configured",
                                    mAlarmList.count() ) );
+    mAlarmEditButton->setEnabled( true );
   } else {
     Alarm *alarm = mAlarmList.first();
     // Check if its the trivial type of alarm, which can be
@@ -322,6 +323,7 @@ void KOEditorGeneral::updateAlarmWidgets()
     } else {
       mAlarmStack->raiseWidget( AdvancedAlarmLabel );
       mAlarmInfoLabel->setText( i18n("1 advanced reminder configured") );
+      mAlarmEditButton->setEnabled( true );
     }
   }
 }
