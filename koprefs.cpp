@@ -47,6 +47,7 @@
 #include <libkpimidentities/identity.h>
 #include <libemailfunctions/email.h>
 #include <kabc/stdaddressbook.h>
+#include <ktimezones.h>
 #include "kocore.h"
 
 KOPrefs *KOPrefs::mInstance = 0;
@@ -146,18 +147,9 @@ void KOPrefs::setTimeZoneIdDefault()
 {
   QString zone;
 
-  char zonefilebuf[100];
-  int len = readlink("/etc/localtime",zonefilebuf,100);
-  if (len > 0 && len < 100) {
-    zonefilebuf[len] = '\0';
-    zone = zonefilebuf;
-    zone = zone.mid(zone.find("zoneinfo/") + 9);
-  } else {
-    tzset();
-    zone = tzname[0];
-  }
+  zone = KTimezones().local()->name();
 
-  kdDebug () << "----- time zone: " << zone << endl;
+  kdDebug() << "----- time zone: " << zone << endl;
 
   mTimeZoneId = zone;
 }
