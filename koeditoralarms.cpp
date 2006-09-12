@@ -145,7 +145,7 @@ void AlarmListViewItem::construct()
 
 KOEditorAlarms::KOEditorAlarms( KCal::Alarm::List *alarms, QWidget *parent,
                                 const char *name )
-  : KDialogBase( parent, name, true, i18n("Edit Reminders"), Ok | Apply | Cancel ), mAlarms( alarms ),mCurrentItem(0L)
+  : KDialogBase( parent, name, true, i18n("Edit Reminders"), Ok | Cancel ), mAlarms( alarms ),mCurrentItem(0L)
 {
   setMainWidget( mWidget = new KOEditorAlarms_base( this ) );
   mWidget->mAlarmList->setColumnWidthMode( 0, QListView::Maximum );
@@ -331,7 +331,7 @@ void KOEditorAlarms::selectionChanged( QListViewItem *listviewitem )
   }
 }
 
-void KOEditorAlarms::slotApply()
+void KOEditorAlarms::slotOk()
 {
   // copy the mAlarms list
   if ( mAlarms ) {
@@ -345,11 +345,6 @@ void KOEditorAlarms::slotApply()
       ++it;
     }
   }
-}
-
-void KOEditorAlarms::slotOk()
-{
-  slotApply();
   accept();
 }
 

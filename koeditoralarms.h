@@ -40,7 +40,6 @@ class KOEditorAlarms : public KDialogBase
     ~KOEditorAlarms();
 
   protected slots:
-    void slotApply();
     void slotOk();
     void slotAdd();
     void slotDuplicate();
