@@ -292,6 +292,7 @@ void KOEditorGeneral::updateAlarmWidgets()
   if ( mAlarmList.isEmpty() ) {
     mAlarmStack->raiseWidget( SimpleAlarmPage );
     mAlarmButton->setChecked( false );
+    mAlarmEditButton->setEnabled( false );
   } else if ( mAlarmList.count() > 1 ) {
     mAlarmStack->raiseWidget( AdvancedAlarmLabel );
     mAlarmInfoLabel->setText( i18n("1 advanced reminder configured",
