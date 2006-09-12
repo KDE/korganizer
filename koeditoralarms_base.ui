@@ -573,22 +573,22 @@
                 </spacer>
                 <widget class="QListView" row="0" column="0" rowspan="4" colspan="1">
                     <column>
-                      <property name="text">
-                        <string>Type</string>
-                      </property>
-                      <property name="clickable">
-                        <bool>true</bool>
-                      </property>
-                      <property name="resizable">
-                        <bool>true</bool>
-                      </property>
+                        <property name="text">
+                            <string>Type</string>
+                        </property>
+                        <property name="clickable">
+                            <bool>false</bool>
+                        </property>
+                        <property name="resizable">
+                            <bool>true</bool>
+                        </property>
                     </column>
                     <column>
                         <property name="text">
                             <string>Time Offset</string>
                         </property>
                         <property name="clickable">
-                            <bool>true</bool>
+                            <bool>false</bool>
                         </property>
                         <property name="resizable">
                             <bool>true</bool>
@@ -599,7 +599,7 @@
                             <string>Repeat</string>
                         </property>
                         <property name="clickable">
-                            <bool>true</bool>
+                            <bool>false</bool>
                         </property>
                         <property name="resizable">
                             <bool>true</bool>

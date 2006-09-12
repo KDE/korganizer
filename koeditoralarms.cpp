@@ -77,17 +77,23 @@ void AlarmListViewItem::construct()
 {
   if ( mAlarm ) {
     // Alarm type:
-    QString type( i18n("Unknown") );
+    QString type;
     switch ( mAlarm->type() ) {
-      case KCal::Alarm::Display: type = i18n("Reminder Dialog");
+      case KCal::Alarm::Display:
+        type = i18n("Reminder Dialog");
         break;
-      case KCal::Alarm::Procedure: type = i18n("Program");
+      case KCal::Alarm::Procedure:
+        type = i18n("Program");
         break;
-      case KCal::Alarm::Email: type = i18n("Email");
+      case KCal::Alarm::Email:
+        type = i18n("Email");
         break;
-      case KCal::Alarm::Audio: type = i18n("Audio");
+      case KCal::Alarm::Audio:
+        type = i18n("Audio");
         break;
-      default: break;
+      default:
+        type = i18n("Unknown");
+        break;
     }
     setText( ColAlarmType, type );
 
@@ -130,6 +136,8 @@ void AlarmListViewItem::construct()
     // Alarm repeat
     if ( mAlarm->repeatCount()>0 ) {
       setText( ColAlarmRepeat, i18n("Yes") );
+    } else {
+      setText( ColAlarmRepeat, i18n("No") );
     }
   }
 }
