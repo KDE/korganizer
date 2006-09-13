@@ -207,6 +207,18 @@ void KDateNavigator::updateDayMatrix()
 void KDateNavigator::updateView()
 {
 //   kdDebug(5850) << "KDateNavigator::updateView(), view " << this << endl;
+
+  // compute the label at the top of the navigator, if not in full view month
+  if ( !KOPrefs::instance()->fullViewMonth() ) {
+    const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
+    QDate date = mSelectedDates.first();
+    mNavigatorBar->setLabel( i18n( "monthname year", "%1 %2" )
+                             .arg( calSys->monthName( date ) )
+                             .arg( calSys->year( date ) ) );
+  } else {
+    mNavigatorBar->setLabel();
+  }
+
   updateDayMatrix();
   repaint();
 }
