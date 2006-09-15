@@ -1360,7 +1360,7 @@ void KOAgendaView::changeIncidenceDisplayAdded( Incidence *incidence )
     for( dit = mSelectedDates.begin(); dit != mSelectedDates.end(); ++dit ) {
       curDate = *dit;
 // FIXME: This breaks with recurring multi-day events!
-      if ( incidence->recursOn( curDate ) ) {
+      if ( incidence->recursOn( curDate, KOPrefs::instance()->timeSpec() ) ) {
         insertIncidence( incidence, curDate );
       }
     }
@@ -1501,7 +1501,7 @@ void KOAgendaView::fillAgenda()
 
         if ( (( todo->dtDue().date() == currentDate) && !overdue) ||
              (( currentDate == today) && overdue) ||
-             ( todo->recursOn( currentDate ) ) ) {
+             ( todo->recursOn( currentDate, KOPrefs::instance()->timeSpec() ) ) ) {
           if ( todo->doesFloat() || overdue ) {  // Todo has no due-time set or is already overdue
             //kDebug(5850) << "todo without time:" << todo->dtDueDateStr() << ";" << todo->summary() << endl;
 
