@@ -156,15 +156,11 @@ void NavigatorBar::selectDates( const KCal::DateList &dateList )
 
       mHasMinWidth = true;
     }
-  }
-}
 
-void NavigatorBar::setLabel( const QString &label )
-{
-  if ( !label.isEmpty() ) {
-    mMonth->setText( label );
-  } else {
-    mMonth->clear();
+    // compute the label at the top of the navigator
+    mMonth->setText( i18n( "monthname year", "%1 %2" )
+                     .arg( calSys->monthName( mDate ) )
+                     .arg( calSys->year( mDate ) ) );
   }
 }
 

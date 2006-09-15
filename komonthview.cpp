@@ -875,6 +875,11 @@ void KOMonthView::showDates( const QDate &start, const QDate & )
   mLabel->setText( i18n( "monthname year", "%1 %2" )
                    .arg( calSys->monthName( start ) )
                    .arg( calSys->year( start ) ) );
+  if ( !KOPrefs::instance()->fullViewMonth() ) {
+    mLabel->show();
+  } else {
+    mLabel->hide();
+  }
 
   bool primary = false;
   uint i;

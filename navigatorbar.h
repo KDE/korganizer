@@ -53,7 +53,6 @@ class NavigatorBar: public QWidget
     ~NavigatorBar();
 
     void showButtons( bool left, bool right );
-    void setLabel( const QString &label = QString::null );
 
   public slots:
     void selectDates( const KCal::DateList & );
