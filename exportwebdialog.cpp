@@ -137,7 +137,7 @@ void ExportWebDialog::slotDefault()
   if (KMessageBox::warningContinueCancel(this,
       i18n("You are about to set all preferences to default values. All "
       "custom modifications will be lost."),i18n("Setting Default Preferences"),
-      i18n("Reset to Defaults"))
+      KGuiItem(i18n("Reset to Defaults")))
     == KMessageBox::Continue) setDefaults();
 }
 

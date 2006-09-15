@@ -249,7 +249,7 @@ CalPrintDialog::~CalPrintDialog()
 
 void CalPrintDialog::setPreview(bool preview)
 {
-  setButtonGuiItem( KDialog::Ok, preview ? i18n("&Preview") : KStdGuiItem::print() );
+  setButtonGuiItem( KDialog::Ok, preview ? KGuiItem(i18n("&Preview")) : KStdGuiItem::print() );
 }
 
 void CalPrintDialog::setPrintType( int i )

@@ -1071,7 +1071,7 @@ void KOAgenda::endItemAction()
                "be applied only to this single occurrence, only to the future items, "
                "or to all items in the recurrence?"),
           i18n("Changing Recurring Item"),
-          i18n("Only &This Item"), i18n("Only &Future Items"), i18n("&All Occurrences") );
+          KGuiItem(i18n("Only &This Item")), KGuiItem(i18n("Only &Future Items")), KGuiItem(i18n("&All Occurrences")) );
       switch ( res ) {
         case KMessageBox::Ok: // All occurrences
             // Moving the whole sequene of events is handled by the itemModified below.

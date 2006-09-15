@@ -930,7 +930,7 @@ bool ActionManager::saveURL()
       dialogParent(),
       i18n( "Your calendar will be saved in iCalendar format. Use "
             "'Export vCalendar' to save in vCalendar format." ),
-      i18n("Format Conversion"), i18n("Proceed"),
+      i18n("Format Conversion"), KGuiItem(i18n("Proceed")),
       QString( "dontaskFormatConversion" ), KMessageBox::Notify );
     if ( result != KMessageBox::Continue ) return false;
 

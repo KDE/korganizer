@@ -1545,7 +1545,7 @@ void CalendarView::exportVCalendar()
       this,
       i18n("The journal entries can not be exported to a vCalendar file."),
       i18n("Data Loss Warning"),
-      i18n("Proceed"),
+      KGuiItem(i18n("Proceed")),
       QString( "dontaskVCalExport" ),
       KMessageBox::Notify );
     if (result != KMessageBox::Continue) return;
@@ -2002,8 +2002,8 @@ void CalendarView::deleteTodoIncidence ( Todo *todo, bool force )
                                      "delete the to-do with all its sub-to-dos?"
                                , todo->summary() ),
                                 i18n("KOrganizer Confirmation"),
-                                i18n("Delete Only This"),
-                                i18n("Delete All"));
+                                KGuiItem(i18n("Delete Only This")),
+                                KGuiItem(i18n("Delete All")));
   }
   startMultiModify( i18n("Deleting sub-to-dos" ) );
   // Delete only the father
@@ -2065,7 +2065,7 @@ void CalendarView::deleteIncidence(Incidence *incidence, bool force)
                "are you sure you want to delete it "
                "and all its recurrences?", incidence->summary() ),
           i18n("KOrganizer Confirmation"),
-          i18n("Delete All") );
+          KGuiItem(i18n("Delete All")) );
       } else {
         km = KOMessageBox::fourBtnMsgBox(
           this,
@@ -2076,9 +2076,9 @@ void CalendarView::deleteIncidence(Incidence *incidence, bool force)
             incidence->summary() ,
             KGlobal::locale()->formatDate( itemDate ) ),
           i18n("KOrganizer Confirmation"),
-          i18n("Delete C&urrent"),
-          i18n("Delete &Future"),
-          i18n("Delete &All") );
+          KGuiItem(i18n("Delete C&urrent")),
+          KGuiItem(i18n("Delete &Future")),
+          KGuiItem(i18n("Delete &All")) );
       }
     }
     switch(km) {
@@ -2163,7 +2163,7 @@ void CalendarView::purgeCompleted()
     this,
     i18n("Delete all completed to-dos?"),
     i18n("Purge To-dos"),
-    i18n("Purge") );
+    KGuiItem(i18n("Purge")) );
 
   if (result == KMessageBox::Continue) {
     bool allDeleted = true;
