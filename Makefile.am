@@ -1,4 +1,4 @@
-SUBDIRS = printing . korgac pixmaps sounds plugins interfaces
+SUBDIRS = printing . korgac sounds plugins interfaces
 
 INCLUDES = \
   -I$(srcdir)/interfaces \
@@ -160,8 +160,6 @@ partdir   = $(kde_datadir)/korganizer
 part_DATA = korganizer_part.rc
 
 kde_servicetypes_DATA = dcopcalendar.desktop
-
-KDE_ICON = AUTO
 
 META_INCLUDES = $(srcdir)/interfaces/korganizer
 
