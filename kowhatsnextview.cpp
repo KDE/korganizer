@@ -87,9 +87,9 @@ int KOWhatsNextView::currentDateCount()
 
 void KOWhatsNextView::updateView()
 {
-  KIconLoader kil("korganizer");
+  KIconLoader kil("kdepim");
   QString *ipath = new QString();
-  kil.loadIcon("korganizer",KIcon::NoGroup,32,KIcon::DefaultState,ipath);
+  kil.loadIcon("kdepim",KIcon::NoGroup,32,KIcon::DefaultState,ipath);
 
   mText = "<table width=\"100%\">\n";
   mText += "<tr bgcolor=\"#3679AD\"><td><h1>";

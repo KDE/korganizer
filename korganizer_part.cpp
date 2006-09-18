@@ -106,7 +106,7 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, const char *widgetName,
   QVBoxLayout *topLayout = new QVBoxLayout( canvas );
   topLayout->addWidget( mView );
 
-  KGlobal::iconLoader()->addAppDir( "korganizer" );
+  KGlobal::iconLoader()->addAppDir( "kdepim" );
 
   new KParts::SideBarExtension( mView->leftFrame(), this, "SBE" );
 
