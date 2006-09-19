@@ -198,6 +198,7 @@ MonthViewItem::MonthViewItem( Incidence *incidence, const QDateTime &qd,
   mIncidence = incidence;
   mDateTime = qd;
 
+  mEventPixmap     = KOGlobals::self()->smallIcon( "appointment" );
   mTodoPixmap      = KOGlobals::self()->smallIcon( "todo" );
   mTodoDonePixmap  = KOGlobals::self()->smallIcon( "checkedbox" );
   mAlarmPixmap     = KOGlobals::self()->smallIcon( "bell" );
@@ -205,6 +206,7 @@ MonthViewItem::MonthViewItem( Incidence *incidence, const QDateTime &qd,
   mReplyPixmap     = KOGlobals::self()->smallIcon( "mail_reply" );
 
   mResourceColor = QColor();
+  mEvent     = false;
   mTodo      = false;
   mTodoDone  = false;
   mRecur     = false;
@@ -234,6 +236,10 @@ void MonthViewItem::paint( QPainter *p )
     p->eraseRect( offset, offset, listBox()->maxItemWidth()-2*offset, height( listBox() )-2*offset );
   }
   int x = 3;
+  if ( mEvent ) {
+    p->drawPixmap( x, 0, mEventPixmap );
+    x += mEventPixmap.width() + 2;
+  }
   if ( mTodo ) {
     p->drawPixmap( x, 0, mTodoPixmap );
     x += mTodoPixmap.width() + 2;
@@ -482,6 +488,7 @@ class MonthViewCell::CreateItemVisitor :
       }
 
       mItem = new MonthViewItem( event, dt, text );
+      mItem->setEvent( true );
       if (KOPrefs::instance()->monthViewUsesCategoryColor()) {
         QStringList categories = event->categories();
         QString cat = categories.first();

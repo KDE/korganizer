@@ -662,6 +662,16 @@ static void conditionalPaint( QPainter *p, bool cond, int &x, int ft,
   x += pxmp.width() + ft;
 }
 
+void KOAgendaItem::paintEventIcon( QPainter *p, int &x, int ft )
+{
+  if ( !mIncidence ) return;
+  static const QPixmap eventPxmp =
+    KOGlobals::self()->smallIcon( "appointment" );
+  if ( mIncidence->type() != "Event" )
+    return;
+  conditionalPaint( p, true, x, ft, eventPxmp );
+}
+
 void KOAgendaItem::paintTodoIcon( QPainter *p, int &x, int ft )
 {
   if ( !mIncidence ) return;
@@ -678,6 +688,7 @@ void KOAgendaItem::paintTodoIcon( QPainter *p, int &x, int ft )
 
 void KOAgendaItem::paintIcons( QPainter *p, int &x, int ft )
 {
+  paintEventIcon( p, x, ft );
   paintTodoIcon( p, x, ft );
   conditionalPaint( p, mIconAlarm,          x, ft, *alarmPxmp );
   conditionalPaint( p, mIconRecur,          x, ft, *recurPxmp );

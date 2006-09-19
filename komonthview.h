@@ -77,6 +77,7 @@ class MonthViewItem: public QListBoxItem
   public:
     MonthViewItem( Incidence *, const QDateTime &qd, const QString & title );
 
+    void setEvent(bool on) { mEvent = on; }
     void setTodo(bool on)  { mTodo  = on; }
     void setTodoDone(bool on) { mTodoDone = on; }
     void setRecur(bool on) { mRecur = on; }
@@ -98,12 +99,14 @@ class MonthViewItem: public QListBoxItem
     //Color of the resource
     QColor mResourceColor;
   private:
+    bool mEvent;
     bool mTodo;
     bool mTodoDone;
     bool mRecur;
     bool mAlarm;
     bool mReply;
 
+    QPixmap mEventPixmap;
     QPixmap mTodoPixmap;
     QPixmap mTodoDonePixmap;
     QPixmap mAlarmPixmap;
