@@ -437,7 +437,7 @@ void ActionManager::initActions()
 
   //************************** Actions MENU *********************************
   new KAction( i18n("New E&vent..."),
-               KOGlobals::self()->smallIcon( "appointment" ), 0,
+               KOGlobals::self()->smallIcon( "newappointment" ), 0,
                mCalendarView, SLOT( newEvent() ),
                mACollection, "new_event" );
   new KAction( i18n("New &To-do..."),
@@ -451,7 +451,7 @@ void ActionManager::initActions()
   connect( mCalendarView,SIGNAL( todoSelected( bool ) ),
            action,SLOT( setEnabled( bool ) ) );
   new KAction( i18n("New &Journal..."),
-               KOGlobals::self()->smallIcon( "journal" ), 0,
+               KOGlobals::self()->smallIcon( "newjournal" ), 0,
                mCalendarView, SLOT( newJournal() ),
                mACollection, "new_journal" );
 
