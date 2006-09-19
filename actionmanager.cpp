@@ -328,35 +328,45 @@ void ActionManager::initActions()
   //************************** VIEW MENU *********************************
 
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~~ VIEWS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  new KAction( i18n("What's &Next"), "whatsnext", 0,
-                    mCalendarView->viewManager(), SLOT( showWhatsNextView() ),
-                    mACollection, "view_whatsnext" );
-  new KAction( i18n("&Day"), "1day", 0,
-                    mCalendarView->viewManager(), SLOT( showDayView() ),
-                    mACollection, "view_day" );
-  mNextXDays = new KAction( "", "xdays", 0, mCalendarView->viewManager(),
-                    SLOT( showNextXView() ), mACollection, "view_nextx" );
+  new KAction( i18n("What's &Next"),
+               KOGlobals::self()->smallIcon( "whatsnext" ), 0,
+               mCalendarView->viewManager(), SLOT( showWhatsNextView() ),
+               mACollection, "view_whatsnext" );
+  new KAction( i18n("&Day"),
+               KOGlobals::self()->smallIcon( "1day" ), 0,
+               mCalendarView->viewManager(), SLOT( showDayView() ),
+               mACollection, "view_day" );
+  mNextXDays = new KAction( "",
+                            KOGlobals::self()->smallIcon( "xdays" ), 0,
+                            mCalendarView->viewManager(),
+                            SLOT( showNextXView() ),
+                            mACollection, "view_nextx" );
   mNextXDays->setText( i18n( "&Next Day", "Ne&xt %n Days",
                              KOPrefs::instance()->mNextXDays ) );
-  new KAction( i18n("W&ork Week"), "5days", 0,
-                    mCalendarView->viewManager(), SLOT( showWorkWeekView() ),
-                    mACollection, "view_workweek" );
-  new KAction( i18n("&Week"), "7days", 0,
-                    mCalendarView->viewManager(), SLOT( showWeekView() ),
-                    mACollection, "view_week" );
-  new KAction( i18n("&Month"), "month", 0,
-                    mCalendarView->viewManager(), SLOT( showMonthView() ),
-                    mACollection, "view_month" );
-  new KAction( i18n("&List"), "list", 0,
-                    mCalendarView->viewManager(), SLOT( showListView() ),
-                    mACollection, "view_list" );
-  new KAction( i18n("&To-do List"), "todo", 0,
-                    mCalendarView->viewManager(), SLOT( showTodoView() ),
-                    mACollection, "view_todo" );
-  new KAction( i18n("&Journal"), "journal", 0,
-                    mCalendarView->viewManager(), SLOT( showJournalView() ),
-                    mACollection, "view_journal" );
-
+  new KAction( i18n("W&ork Week"),
+               KOGlobals::self()->smallIcon( "5days" ), 0,
+               mCalendarView->viewManager(), SLOT( showWorkWeekView() ),
+               mACollection, "view_workweek" );
+  new KAction( i18n("&Week"),
+               KOGlobals::self()->smallIcon( "7days" ), 0,
+               mCalendarView->viewManager(), SLOT( showWeekView() ),
+               mACollection, "view_week" );
+  new KAction( i18n("&Month"),
+               KOGlobals::self()->smallIcon( "month" ), 0,
+               mCalendarView->viewManager(), SLOT( showMonthView() ),
+               mACollection, "view_month" );
+  new KAction( i18n("&List"),
+               KOGlobals::self()->smallIcon( "list" ), 0,
+               mCalendarView->viewManager(), SLOT( showListView() ),
+               mACollection, "view_list" );
+  new KAction( i18n("&To-do List"),
+               KOGlobals::self()->smallIcon( "todo" ), 0,
+               mCalendarView->viewManager(), SLOT( showTodoView() ),
+               mACollection, "view_todo" );
+  new KAction( i18n("&Journal"),
+               KOGlobals::self()->smallIcon( "journal" ), 0,
+               mCalendarView->viewManager(), SLOT( showJournalView() ),
+               mACollection, "view_journal" );
 
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~ FILTERS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   new KAction( i18n("&Refresh"), 0,
@@ -408,29 +418,31 @@ void ActionManager::initActions()
                         mCalendarView,SLOT( goPrevious() ),
                         mACollection, "go_previous" );
 
-  // Changing the action text by setText makes the toolbar button disappear.   
-  // This has to be fixed first, before the connects below can be reenabled.   
+  // Changing the action text by setText makes the toolbar button disappear.
+  // This has to be fixed first, before the connects below can be reenabled.
   /*
-  connect( mCalendarView, SIGNAL( changeNavStringPrev( const QString & ) ),   
-           action, SLOT( setText( const QString & ) ) );   
-  connect( mCalendarView, SIGNAL( changeNavStringPrev( const QString & ) ),   
+  connect( mCalendarView, SIGNAL( changeNavStringPrev( const QString & ) ),
+           action, SLOT( setText( const QString & ) ) );
+  connect( mCalendarView, SIGNAL( changeNavStringPrev( const QString & ) ),
            this, SLOT( dumpText( const QString & ) ) );*/
 
   action = new KAction( i18n("Go &Forward"), isRTL ? "back" : "forward", 0,
                         mCalendarView,SLOT( goNext() ),
                         mACollection, "go_next" );
   /*
-  connect( mCalendarView,SIGNAL( changeNavStringNext( const QString & ) ),   
-           action,SLOT( setText( const QString & ) ) );   
+  connect( mCalendarView,SIGNAL( changeNavStringNext( const QString & ) ),
+           action,SLOT( setText( const QString & ) ) );
   */
 
 
   //************************** Actions MENU *********************************
-  new KAction( i18n("New E&vent..."), "appointment", 0,
-               mCalendarView,SLOT( newEvent() ),
+  new KAction( i18n("New E&vent..."),
+               KOGlobals::self()->smallIcon( "appointment" ), 0,
+               mCalendarView, SLOT( newEvent() ),
                mACollection, "new_event" );
-  new KAction( i18n("New &To-do..."), "newtodo", 0,
-               mCalendarView,SLOT( newTodo() ),
+  new KAction( i18n("New &To-do..."),
+               KOGlobals::self()->smallIcon( "newtodo" ), 0,
+               mCalendarView, SLOT( newTodo() ),
                mACollection, "new_todo" );
   action = new KAction( i18n("New Su&b-to-do..."), 0,
                         mCalendarView,SLOT( newSubTodo() ),
@@ -438,8 +450,9 @@ void ActionManager::initActions()
   action->setEnabled( false );
   connect( mCalendarView,SIGNAL( todoSelected( bool ) ),
            action,SLOT( setEnabled( bool ) ) );
-  new KAction( i18n("New &Journal..."), 0,
-               mCalendarView,SLOT( newJournal() ),
+  new KAction( i18n("New &Journal..."),
+               KOGlobals::self()->smallIcon( "journal" ), 0,
+               mCalendarView, SLOT( newJournal() ),
                mACollection, "new_journal" );
 
   mShowIncidenceAction = new KAction( i18n("&Show"), 0,
