@@ -93,8 +93,7 @@ bool KOListView::ListItemVisitor::visit( Event *e )
 {
   mItem->setText(0,e->summary());
   if ( e->isAlarmEnabled() ) {
-    static const QPixmap alarmPxmp =
-      KGlobal::iconLoader()->iconPath( "bell", KIcon::Small );
+    static const QPixmap alarmPxmp = KOGlobals::self()->smallIcon( "bell" );
     mItem->setPixmap(1,alarmPxmp);
     mItem->setSortKey(1,"1");
   }
@@ -102,16 +101,14 @@ bool KOListView::ListItemVisitor::visit( Event *e )
     mItem->setSortKey(1,"0");
 
   if ( e->doesRecur() ) {
-    static const QPixmap recurPxmp =
-      KGlobal::iconLoader()->iconPath( "recur", KIcon::Small );
+    static const QPixmap recurPxmp = KOGlobals::self()->smallIcon( "recur" );
     mItem->setPixmap(2,recurPxmp);
     mItem->setSortKey(2,"1");
   }
   else
     mItem->setSortKey(2,"0");
 
-  static const QPixmap eventPxmp =
-    KGlobal::iconLoader()->iconPath( "appointment", KIcon::Small );
+  static const QPixmap eventPxmp = KOGlobals::self()->smallIcon( "appointment" );
   mItem->setPixmap(0, eventPxmp);
 
   mItem->setText( 3,e->dtStartDateStr());
@@ -131,15 +128,12 @@ bool KOListView::ListItemVisitor::visit( Event *e )
 
 bool KOListView::ListItemVisitor::visit(Todo *t)
 {
-  static const QPixmap todoPxmp =
-    KGlobal::iconLoader()->iconPath( "todo", KIcon::Small );
-  static const QPixmap todoDonePxmp =
-    KGlobal::iconLoader()->iconPath( "checkedbox", KIcon::Small );
+  static const QPixmap todoPxmp = KOGlobals::self()->smallIcon( "todo" );
+  static const QPixmap todoDonePxmp = KOGlobals::self()->smallIcon( "checkedbox" );
   mItem->setPixmap(0, t->isCompleted() ? todoDonePxmp : todoPxmp );
   mItem->setText(0,t->summary());
   if ( t->isAlarmEnabled() ) {
-    static const QPixmap alarmPxmp =
-      KGlobal::iconLoader()->iconPath( "bell", KIcon::Small );
+    static const QPixmap alarmPxmp = KOGlobals::self()->smallIcon( "bell" );
     mItem->setPixmap(1,alarmPxmp);
     mItem->setSortKey(1, "1");
   }
@@ -147,8 +141,7 @@ bool KOListView::ListItemVisitor::visit(Todo *t)
     mItem->setSortKey(1, "0");
 
   if ( t->doesRecur() ) {
-    static const QPixmap recurPxmp =
-      KGlobal::iconLoader()->iconPath( "recur", KIcon::Small );
+    static const QPixmap recurPxmp = KOGlobals::self()->smallIcon( "recur" );
     mItem->setPixmap(2,recurPxmp);
     mItem->setSortKey(2, "1");
   }
@@ -188,8 +181,7 @@ bool KOListView::ListItemVisitor::visit(Todo *t)
 
 bool KOListView::ListItemVisitor::visit(Journal *t)
 {
-  static const QPixmap jrnalPxmp =
-    KGlobal::iconLoader()->iconPath( "journal", KIcon::Small );
+  static const QPixmap jrnalPxmp = KOGlobals::self()->smallIcon( "journal" );
   mItem->setPixmap(0,jrnalPxmp);
   // Just use the first line
   mItem->setText( 0, t->description().section( "\n", 0, 0 ) );

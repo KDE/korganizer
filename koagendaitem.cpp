@@ -666,9 +666,9 @@ void KOAgendaItem::paintTodoIcon( QPainter *p, int &x, int ft )
 {
   if ( !mIncidence ) return;
   static const QPixmap todoPxmp =
-    KGlobal::iconLoader()->iconPath( "todo", KIcon::Small );
+    KOGlobals::self()->smallIcon( "todo" );
   static const QPixmap completedPxmp =
-    KGlobal::iconLoader()->iconPath( "checkedbox", KIcon::Small );
+    KOGlobals::self()->smallIcon( "checkedbox" );
   if ( mIncidence->type() != "Todo" )
     return;
   bool b = ( static_cast<Todo *>( mIncidence ) )->isCompleted();

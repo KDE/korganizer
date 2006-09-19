@@ -525,6 +525,8 @@ void CalPrintTodos::readSettingsWidget()
 
 void CalPrintTodos::setSettingsWidget()
 {
+  kdDebug() << "CalPrintTodos::setSettingsWidget" << endl;
+
   CalPrintTodoConfig_Base *cfg =
       dynamic_cast<CalPrintTodoConfig_Base *>( mConfigWidget );
   if ( cfg ) {

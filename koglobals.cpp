@@ -71,6 +71,7 @@ KOGlobals::KOGlobals()
   // in case we are a KPart
   mOwnInstance = new KInstance( "korganizer" );
   mOwnInstance->config()->setGroup( "General" );
+  mOwnInstance->iconLoader()->addAppDir( "kdepim" );
 
   mAlarmClient = new AlarmClient;
 }

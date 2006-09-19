@@ -198,11 +198,11 @@ MonthViewItem::MonthViewItem( Incidence *incidence, const QDateTime &qd,
   mIncidence = incidence;
   mDateTime = qd;
 
-  mTodoPixmap      = KOGlobals::self()->smallIcon("todo");
-  mTodoDonePixmap  = KOGlobals::self()->smallIcon("checkedbox");
-  mAlarmPixmap     = KOGlobals::self()->smallIcon("bell");
-  mRecurPixmap     = KOGlobals::self()->smallIcon("recur");
-  mReplyPixmap     = KOGlobals::self()->smallIcon("mail_reply");
+  mTodoPixmap      = KOGlobals::self()->smallIcon( "todo" );
+  mTodoDonePixmap  = KOGlobals::self()->smallIcon( "checkedbox" );
+  mAlarmPixmap     = KOGlobals::self()->smallIcon( "bell" );
+  mRecurPixmap     = KOGlobals::self()->smallIcon( "recur" );
+  mReplyPixmap     = KOGlobals::self()->smallIcon( "mail_reply" );
 
   mResourceColor = QColor();
   mTodo      = false;
