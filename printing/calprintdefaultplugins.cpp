@@ -544,15 +544,22 @@ void CalPrintTodos::setSettingsWidget()
     cfg->mConnectSubTodos->setChecked( mConnectSubTodos );
     cfg->mStrikeOutCompleted->setChecked( mStrikeOutCompleted );
 
-    cfg->mSortField->insertItem( i18n("Summary") );
-    cfg->mSortField->insertItem( i18n("Start Date") );
-    cfg->mSortField->insertItem( i18n("Due Date") );
-    cfg->mSortField->insertItem( i18n("Priority") );
-    cfg->mSortField->insertItem( i18n("Percent Complete") );
+    if ( !cfg->mSortField->count() ) {
+      // do not insert if already done so.
+      cfg->mSortField->insertItem( i18n("Summary") );
+      cfg->mSortField->insertItem( i18n("Start Date") );
+      cfg->mSortField->insertItem( i18n("Due Date") );
+      cfg->mSortField->insertItem( i18n("Priority") );
+      cfg->mSortField->insertItem( i18n("Percent Complete") );
+    }
     cfg->mSortField->setCurrentItem( mTodoSortField );
 
-    cfg->mSortDirection->insertItem( i18n( "Ascending" ) );
-    cfg->mSortDirection->insertItem( i18n( "Descending" ) );
+    if ( !cfg->mSortDirection->count() ) {
+      // do not insert if already done so.
+      cfg->mSortDirection->setDuplicatesEnabled( false );
+      cfg->mSortDirection->insertItem( i18n( "Ascending" ) );
+      cfg->mSortDirection->insertItem( i18n( "Descending" ) );
+    }
     cfg->mSortDirection->setCurrentItem( mTodoSortDirection );
   }
 }
