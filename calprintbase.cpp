@@ -36,6 +36,7 @@
 #include <kconfig.h>
 #include <kcalendarsystem.h>
 #include <kprinter.h>
+#include <kstringhandler.h>
 
 #include <libkcal/todo.h>
 #include <libkcal/event.h>
@@ -690,6 +691,8 @@ void CalPrintBase::drawDayBox(QPainter &p, const QDate &qd,
       outStr += " (" + currEvent->location() + ")";
 
     } // doesFloat
+
+    outStr = KStringHandler::cPixelSqueeze( outStr, p.fontMetrics(), width-10 );
 
     p.drawText(x+5, y+textY, width-10, lineSpacing,
                AlignLeft|AlignBottom, outStr);
