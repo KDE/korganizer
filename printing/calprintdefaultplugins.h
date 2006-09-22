@@ -118,7 +118,7 @@ class CalPrintTodos : public CalPrintPluginBase
     virtual QWidget *createConfigWidget(QWidget*);
 
   public:
-    void print(QPainter &p, int width, int height);
+    void print( QPainter &p, int width, int height );
     virtual void readSettingsWidget();
     virtual void setSettingsWidget();
     virtual void loadConfig();
@@ -134,11 +134,13 @@ class CalPrintTodos : public CalPrintPluginBase
     enum eTodoSortField {
       TodoFieldSummary=0,
       TodoFieldStartDate, TodoFieldDueDate,
-      TodoFieldPriority, TodoFieldPercentComplete
+      TodoFieldPriority, TodoFieldPercentComplete,
+      TodoFieldUnset
     } mTodoSortField;
 
     enum eTodoSortDirection {
-      TodoDirectionAscending=0, TodoDirectionDescending
+      TodoDirectionAscending=0, TodoDirectionDescending,
+      TodoDirectionUnset
     } mTodoSortDirection;
 
     bool mIncludeDescription;

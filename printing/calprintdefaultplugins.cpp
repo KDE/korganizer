@@ -123,8 +123,6 @@ void CalPrintDay::loadConfig()
 
 void CalPrintDay::saveConfig()
 {
-  kdDebug(5850) << "CalPrintDay::saveConfig()" << endl;
-
   readSettingsWidget();
   if ( mConfig ) {
     mConfig->writeEntry( "Start time", QDateTime( QDate(), mStartTime ) );
@@ -487,6 +485,8 @@ void CalPrintMonth::print( QPainter &p, int width, int height )
 
 CalPrintTodos::CalPrintTodos() : CalPrintPluginBase()
 {
+  mTodoSortField = TodoFieldUnset;
+  mTodoSortDirection = TodoDirectionUnset;
 }
 
 CalPrintTodos::~CalPrintTodos()
@@ -544,23 +544,22 @@ void CalPrintTodos::setSettingsWidget()
     cfg->mConnectSubTodos->setChecked( mConnectSubTodos );
     cfg->mStrikeOutCompleted->setChecked( mStrikeOutCompleted );
 
-    if ( !cfg->mSortField->count() ) {
+    if ( mTodoSortField != TodoFieldUnset ) {
       // do not insert if already done so.
       cfg->mSortField->insertItem( i18n("Summary") );
       cfg->mSortField->insertItem( i18n("Start Date") );
       cfg->mSortField->insertItem( i18n("Due Date") );
       cfg->mSortField->insertItem( i18n("Priority") );
       cfg->mSortField->insertItem( i18n("Percent Complete") );
+      cfg->mSortField->setCurrentItem( (int)mTodoSortField );
     }
-    cfg->mSortField->setCurrentItem( mTodoSortField );
 
-    if ( !cfg->mSortDirection->count() ) {
+    if ( mTodoSortDirection != TodoDirectionUnset ) {
       // do not insert if already done so.
-      cfg->mSortDirection->setDuplicatesEnabled( false );
-      cfg->mSortDirection->insertItem( i18n( "Ascending" ) );
-      cfg->mSortDirection->insertItem( i18n( "Descending" ) );
+      cfg->mSortDirection->insertItem( i18n("Ascending") );
+      cfg->mSortDirection->insertItem( i18n("Descending") );
+      cfg->mSortDirection->setCurrentItem( (int)mTodoSortDirection );
     }
-    cfg->mSortDirection->setCurrentItem( mTodoSortDirection );
   }
 }
 
@@ -669,6 +668,8 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
     sortField = TodoSortPriority; break;
   case TodoFieldPercentComplete:
     sortField = TodoSortPercentComplete; break;
+  case TodoFieldUnset:
+    break;
   }
 
   SortDirection sortDirection;
@@ -677,11 +678,12 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
     sortDirection = SortDirectionAscending; break;
   case TodoDirectionDescending:
     sortDirection = SortDirectionDescending; break;
+  case TodoDirectionUnset:
+    break;
   }
 
   // Create list of to-dos which will be printed
-  // Also sort toplevel by summaries.
-  todoList = mCalendar->todos( TodoSortSummary,  sortDirection );
+  todoList = mCalendar->todos( sortField,  sortDirection );
   switch( mTodoPrintType ) {
   case TodosAll:
     break;
