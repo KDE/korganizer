@@ -29,6 +29,7 @@
 #include <qlabel.h>
 #include <qptrlist.h>
 #include <qintdict.h>
+#include <qsimplerichtext.h>
 
 #include <kglobal.h>
 #include <klocale.h>
@@ -692,11 +693,11 @@ void CalPrintBase::drawDayBox(QPainter &p, const QDate &qd,
 
     } // doesFloat
 
-    outStr = KStringHandler::cPixelSqueeze( outStr, p.fontMetrics(), width-10 );
-
-    p.drawText(x+5, y+textY, width-10, lineSpacing,
-               AlignLeft|AlignBottom, outStr);
-    textY+=lineSpacing;
+    QSimpleRichText rt( outStr, p.font() );
+    rt.setWidth( &p, width-10 );
+    QRect clipRect( x+5, y+textY, rt.width(), rt.height() );
+    rt.draw( &p, x+5, y+textY, clipRect, QColorGroup() );
+    textY+=rt.height();
   }
 
   if ( textY<height ) {
