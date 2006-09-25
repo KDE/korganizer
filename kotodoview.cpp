@@ -1225,7 +1225,7 @@ void KOTodoView::setNewDate( const QDate &date )
     Todo *oldTodo = todo->clone();
 
     KDateTime dt;
-    if ( !todo->doesFloat() ) {
+    if ( !todo->floats() ) {
       dt = todo->dtDue();
       dt.setDate( date );
     } else {

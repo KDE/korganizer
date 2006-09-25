@@ -273,7 +273,7 @@ void KOWhatsNextView::appendEvent( Incidence *ev, const QDateTime &start,
   kDebug(5850) << "KOWhatsNextView::appendEvent(): " << ev->uid() << endl;
 
   mText += "<tr><td><b>";
-//  if (!ev->doesFloat()) {
+//  if (!ev->floats()) {
     if ( ev->type() == QLatin1String("Event") ) {
       Event *event = static_cast<Event *>(ev);
       KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
@@ -320,7 +320,7 @@ void KOWhatsNextView::appendTodo( Incidence *ev )
     Todo *todo = static_cast<Todo*>(ev);
     if ( todo->hasDueDate() ) {
       mText += i18n("  (Due: %1)",
-           (todo->doesFloat())?(todo->dtDueDateStr()):(todo->dtDueStr()) );
+           (todo->floats())?(todo->dtDueDateStr()):(todo->dtDueStr()) );
     }
   }
   mText += "</li>\n";

@@ -986,7 +986,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
   if ( !incidence ) return;
 
   QTime startTime(0,0,0), endTime(0,0,0);
-  if ( incidence->doesFloat() ) {
+  if ( incidence->floats() ) {
     daysLength = item->cellWidth() - 1;
   } else {
     startTime = mAgenda->gyToTime( item->cellYTop() );
@@ -1293,7 +1293,7 @@ void KOAgendaView::insertIncidence( Incidence *incidence, const QDate &curDate,
 
   if ( todo && todo->isOverdue() ) {
     mAllDayAgenda->insertAllDayItem( incidence, curDate, curCol, curCol );
-  } else if ( incidence->doesFloat() ) {
+  } else if ( incidence->floats() ) {
 // FIXME: This breaks with recurring multi-day events!
     if ( incidence->recurrence()->doesRecur() ) {
       mAllDayAgenda->insertAllDayItem( incidence, curDate, curCol, curCol );
@@ -1502,7 +1502,7 @@ void KOAgendaView::fillAgenda()
         if ( (( todo->dtDue().date() == currentDate) && !overdue) ||
              (( currentDate == today) && overdue) ||
              ( todo->recursOn( currentDate, KOPrefs::instance()->timeSpec() ) ) ) {
-          if ( todo->doesFloat() || overdue ) {  // Todo has no due-time set or is already overdue
+          if ( todo->floats() || overdue ) {  // Todo has no due-time set or is already overdue
             //kDebug(5850) << "todo without time:" << todo->dtDueDateStr() << ";" << todo->summary() << endl;
 
             mAllDayAgenda->insertAllDayItem(todo, currentDate, curCol, curCol);

@@ -1206,10 +1206,10 @@ void KOEditorRecurrence::readIncidence(Incidence *incidence)
   if ( incidence->type() == QLatin1String("Todo") ) {
     Todo *todo = static_cast<Todo *>(incidence);
     setDefaults( todo->dtStart(true).toTimeSpec(timeSpec).dateTime(),
-                 todo->dtDue().toTimeSpec(timeSpec).dateTime(), todo->doesFloat() );
+                 todo->dtDue().toTimeSpec(timeSpec).dateTime(), todo->floats() );
   } else {
     setDefaults( incidence->dtStart().toTimeSpec(timeSpec).dateTime(),
-                 incidence->dtEnd().toTimeSpec(timeSpec).dateTime(), incidence->doesFloat() );
+                 incidence->dtEnd().toTimeSpec(timeSpec).dateTime(), incidence->floats() );
   }
 
   uint recurs = incidence->recurrenceType();

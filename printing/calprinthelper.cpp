@@ -371,7 +371,7 @@ void CalPrintHelper::drawAllDayBox(QPainter &p, Event::List &eventList,
     currEvent=*it;
     itold=it;
     ++it;
-    if ( currEvent->doesFloat() ) {
+    if ( currEvent->floats() ) {
       // set the colors according to the categories
       if ( expandable ) {
         if ( mUseColors )
@@ -611,7 +611,7 @@ void CalPrintHelper::drawDayBox( QPainter &p, const QDate &qd,
     if ( ( !printRecurDaily  && currEvent->recurrenceType() == Recurrence::rDaily  ) ||
          ( !printRecurWeekly && currEvent->recurrenceType() == Recurrence::rWeekly ) ) {
       continue; }
-    if ( currEvent->doesFloat() || currEvent->isMultiDay() )
+    if ( currEvent->floats() || currEvent->isMultiDay() )
       text = "";
     else
       text = local->formatTime( currEvent->dtStart().time() );
@@ -627,7 +627,7 @@ void CalPrintHelper::drawDayBox( QPainter &p, const QDate &qd,
       if ( ( !printRecurDaily  && todo->recurrenceType() == Recurrence::rDaily  ) ||
            ( !printRecurWeekly && todo->recurrenceType() == Recurrence::rWeekly ) )
         continue;
-      if ( todo->hasDueDate() && !todo->doesFloat() )
+      if ( todo->hasDueDate() && !todo->floats() )
         text += KGlobal::locale()->formatTime(todo->dtDue().time()) + ' ';
       else
         text = "";

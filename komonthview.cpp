@@ -464,7 +464,7 @@ class MonthViewCell::CreateItemVisitor :
       KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
       KDateTime dt( mDate, timeSpec );
       // take the time 0:00 into account, which is non-inclusive
-      QDate dtEnd = event->dtEnd().toTimeSpec( timeSpec ).addSecs( event->doesFloat() ? 0 : -1).date();
+      QDate dtEnd = event->dtEnd().toTimeSpec( timeSpec ).addSecs( event->floats() ? 0 : -1).date();
       KDateTime dtStart = event->dtStart().toTimeSpec( timeSpec );
       int length = dtStart.date().daysTo( dtEnd );
       if ( event->isMultiDay() ) {
@@ -482,7 +482,7 @@ class MonthViewCell::CreateItemVisitor :
           text = "----------------";
         }
       } else {
-        if (event->doesFloat())
+        if (event->floats())
           text = event->summary();
         else {
 	  QTime startTime = event->dtStart().toTimeSpec( timeSpec ).time();
@@ -517,7 +517,7 @@ class MonthViewCell::CreateItemVisitor :
       if ( !KOPrefs::instance()->showAllDayTodo() )
         return false;
       KDateTime dt( mDate, KOPrefs::instance()->timeSpec() );
-      if ( todo->hasDueDate() && !todo->doesFloat() ) {
+      if ( todo->hasDueDate() && !todo->floats() ) {
         QTime dueTime = todo->dtDue().toTimeSpec( KOPrefs::instance()->timeSpec() ).time();
         text += KGlobal::locale()->formatTime( dueTime );
         text += ' ';
@@ -971,7 +971,7 @@ void KOMonthView::changeIncidenceDisplayAdded( Incidence *incidence )
     return;
   }
 
-  bool floats = incidence->doesFloat();
+  bool floats = incidence->floats();
 
   KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
   if ( incidence->doesRecur() ) {

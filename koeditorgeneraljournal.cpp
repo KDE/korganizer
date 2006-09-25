@@ -60,7 +60,7 @@ void KOEditorGeneralJournal::initTitle( QWidget *parent, QBoxLayout *topLayout )
 {
   QHBoxLayout *hbox = new QHBoxLayout();
   topLayout->addItem( hbox );
-  
+
   QString whatsThis = i18n("Sets the title of this journal.");
   QLabel *summaryLabel = new QLabel( i18n("T&itle:"), parent );
   summaryLabel->setWhatsThis( whatsThis );
@@ -80,19 +80,19 @@ void KOEditorGeneralJournal::initDate( QWidget *parent, QBoxLayout *topLayout )
 {
   QBoxLayout *dateLayout = new QHBoxLayout();
   topLayout->addItem( dateLayout );
-  
+
   mDateLabel = new QLabel( i18n("&Date:"), parent );
   dateLayout->addWidget( mDateLabel );
 
   mDateEdit = new KDateEdit( parent );
   dateLayout->addWidget( mDateEdit );
   mDateLabel->setBuddy( mDateEdit );
-  
+
   dateLayout->addStretch();
-  
+
   mTimeCheckBox = new QCheckBox( i18n("&Time: "), parent );
   dateLayout->addWidget( mTimeCheckBox );
-  
+
   mTimeEdit = new KTimeEdit( parent );
   dateLayout->addWidget( mTimeEdit );
   connect( mTimeCheckBox, SIGNAL(toggled(bool)),
@@ -142,13 +142,13 @@ void KOEditorGeneralJournal::readJournal( Journal *journal, bool tmpl )
   setSummary( journal->summary() );
   if ( !tmpl ) {
     setDate( journal->dtStart().date() );
-    if ( !journal->doesFloat() ) {
+    if ( !journal->floats() ) {
 kDebug()<<"KOEditorGeneralJournal::readJournal, does not float, time="<<(journal->dtStart().time().toString())<<endl;
       setTime( journal->dtStart().time() );
-    } else { 
+    } else {
 kDebug()<<"KOEditorGeneralJournal::readJournal, does float"<<endl;
       setTime( QTime( -1, -1, -1 ) );
-    } 
+    }
   }
   setDescription( journal->description() );
 }
@@ -158,7 +158,7 @@ void KOEditorGeneralJournal::writeJournal( Journal *journal )
 //  kDebug(5850) << "KOEditorGeneralJournal::writeIncidence()" << endl;
   journal->setSummary( mSummaryEdit->text() );
   journal->setDescription( mDescriptionEdit->toPlainText() );
-  
+
   QDateTime tmpDT( mDateEdit->date(), QTime(0,0,0) );
   bool hasTime = mTimeCheckBox->isChecked();
   journal->setFloats( !hasTime );

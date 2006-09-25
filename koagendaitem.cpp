@@ -795,7 +795,7 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
   if ( (2 * singleLineHeight) > (height() - 2 * margin) ) {
     int x = margin, txtWidth;
 
-    if ( mIncidence->doesFloat() ) {
+    if ( mIncidence->floats() ) {
       x += visRect.left();
       paintIcons( &p, x, ft );
       txtWidth = visRect.right() - margin - x;
@@ -817,7 +817,7 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
        (isMultiItem() && mMultiItemInfo->mNextMultiItem && mMultiItemInfo->mFirstMultiItem) ) {
     int x = margin, txtWidth;
 
-    if ( mIncidence->doesFloat() ) {
+    if ( mIncidence->floats() ) {
       x += visRect.left();
       paintIcons( &p, x, ft );
       txtWidth = visRect.right() - margin - x;
@@ -847,7 +847,7 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
 
   int x = margin, txtWidth, hTxtWidth, eventX;
 
-  if ( mIncidence->doesFloat() ) {
+  if ( mIncidence->floats() ) {
     shortH = longH = "";
 
     if ( (mIncidence->type() != "Todo") &&

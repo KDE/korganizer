@@ -119,9 +119,9 @@ bool KOListView::ListItemVisitor::visit( Event *e )
   mItem->setPixmap(0, eventPxmp);
 
   mItem->setText( 3,e->dtStartDateStr());
-  if (e->doesFloat()) mItem->setText(4, "---"); else mItem->setText( 4, e->dtStartTimeStr() );
+  if (e->floats()) mItem->setText(4, "---"); else mItem->setText( 4, e->dtStartTimeStr() );
   mItem->setText( 5,e->dtEndDateStr());
-  if (e->doesFloat()) mItem->setText(6, "---"); else mItem->setText( 6, e->dtEndTimeStr() );
+  if (e->floats()) mItem->setText(6, "---"); else mItem->setText( 6, e->dtEndTimeStr() );
   mItem->setText( 7,e->categoriesStr());
 
   QString key = e->dtStart().dateTime().toString(Qt::ISODate);
@@ -158,7 +158,7 @@ bool KOListView::ListItemVisitor::visit(Todo *t)
   if (t->hasStartDate()) {
     mItem->setText(3,t->dtStartDateStr());
     mItem->setSortKey(3,t->dtStart().dateTime().toString(Qt::ISODate));
-    if (t->doesFloat()) {
+    if (t->floats()) {
       mItem->setText(4,"---");
     } else {
       mItem->setText(4,t->dtStartTimeStr());
@@ -170,7 +170,7 @@ bool KOListView::ListItemVisitor::visit(Todo *t)
 
   if (t->hasDueDate()) {
     mItem->setText(5,t->dtDueDateStr());
-    if (t->doesFloat()) {
+    if (t->floats()) {
       mItem->setText(6,"---");
     } else {
       mItem->setText(6,t->dtDueTimeStr());

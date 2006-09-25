@@ -74,7 +74,7 @@ JournalDateEntry::JournalDateEntry( Calendar *calendar, QWidget *parent ) :
   mChanger = 0;
 
   mTitle = new JournalTitleLable( this );
-#warning "kde4: porting"  
+#warning "kde4: porting"
   //mTitle->setMargin(2);
   mTitle->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Fixed );
   connect( mTitle, SIGNAL( linkClicked( const QString & ) ),
@@ -322,7 +322,7 @@ void JournalEntry::readJournal( Journal *j )
 {
   mJournal = j;
   mTitleEdit->setText( mJournal->summary() );
-  bool hasTime = !mJournal->doesFloat();
+  bool hasTime = !mJournal->floats();
   mTimeCheck->setChecked( hasTime );
   mTimeEdit->setEnabled( hasTime );
   if ( hasTime ) {

@@ -50,7 +50,7 @@ KOTodoViewItem::KOTodoViewItem( KOTodoViewItem *parent, Todo *todo, KOTodoView *
 
 inline int KOTodoViewItem::compareDueDates( const KOTodoViewItem *b ) const
 {
-  if ( mEffectiveDueDate.isValid() && 
+  if ( mEffectiveDueDate.isValid() &&
        !b->mEffectiveDueDate.isValid() )
     return -1;
   else if ( !mEffectiveDueDate.isValid() &&
@@ -65,13 +65,13 @@ int KOTodoViewItem::compare( Q3ListViewItem *it, int col, bool ascending ) const
   KOTodoViewItem *i = dynamic_cast<KOTodoViewItem *>( it );
   if ( !i )
     return Q3ListViewItem::compare( it, col, ascending );
-  
+
   // throw completed todos to the bottom
   if ( mTodo->isCompleted() && !i->todo()->isCompleted() )
     return ascending ? 1 : -1;
   else if ( !mTodo->isCompleted() && i->todo()->isCompleted() )
     return ascending ? -1 : 1;
-  
+
   int c;
   switch ( col ) {
     case ( KOTodoView::eSummaryColumn ):
@@ -91,7 +91,7 @@ int KOTodoViewItem::compare( Q3ListViewItem *it, int col, bool ascending ) const
         return c;
       return mTodo->priority() - i->todo()->priority();
     case ( KOTodoView::eCategoriesColumn ):
-      return mTodo->categoriesStr().localeAwareCompare( 
+      return mTodo->categoriesStr().localeAwareCompare(
                                                   i->todo()->categoriesStr() );
     case ( KOTodoView::eDescriptionColumn ):
       return mTodo->description().localeAwareCompare( i->todo()->description() );
@@ -117,17 +117,17 @@ void KOTodoViewItem::construct()
   static const QPixmap recurPxmp = KOGlobals::self()->smallIcon("recur");
   if ( mTodo->doesRecur() )
     setPixmap( KOTodoView::eRecurColumn, recurPxmp );
-  
+
   if ( mTodo->priority()==0 ) {
     setText( KOTodoView::ePriorityColumn, i18n("--") );
   } else {
     setText( KOTodoView::ePriorityColumn, QString::number(mTodo->priority()) );
   }
   setText( KOTodoView::ePercentColumn, QString::number(mTodo->percentComplete()) );
-  
+
   if (mTodo->hasDueDate()) {
     QString dtStr = mTodo->dtDueDateStr();
-    if (!mTodo->doesFloat()) {
+    if (!mTodo->floats()) {
       dtStr += ' ' + mTodo->dtDueTimeStr();
     }
     setText( KOTodoView::eDueDateColumn, dtStr );
@@ -140,7 +140,7 @@ void KOTodoViewItem::construct()
       }
   } else
     setText( KOTodoView::eDueDateColumn, "" );
-  
+
   setText( KOTodoView::eCategoriesColumn, mTodo->categoriesStr() );
 
 #if 0
@@ -170,7 +170,7 @@ void KOTodoViewItem::stateChange( bool state )
     setOn( mTodo->isCompleted() );
     return;
   }
-  
+
   kDebug(5850) << "State changed, modified " << state << endl;
   mTodoView->setNewPercentageDelayed( this, state ? 100 : 0 );
 }

@@ -290,8 +290,8 @@ void KOEditorGeneralEvent::readEvent( Event *event, bool tmpl )
 {
   QString tmpStr;
 
-  mTimeAssociateButton->setChecked(!event->doesFloat());
-  timeStuffDisable(event->doesFloat());
+  mTimeAssociateButton->setChecked(!event->floats());
+  timeStuffDisable(event->floats());
 
   if ( !tmpl ) {
     // the rest is for the events only

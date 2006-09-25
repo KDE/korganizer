@@ -293,7 +293,7 @@ void KOEditorGeneralTodo::readTodo(Todo *todo)
     mStartCheck->setChecked(false);
   }
 
-  mTimeButton->setChecked( !todo->doesFloat() );
+  mTimeButton->setChecked( !todo->floats() );
 
   mAlreadyComplete = false;
   mCompletedCombo->setCurrentIndex(todo->percentComplete() / 10);
@@ -499,7 +499,7 @@ void KOEditorGeneralTodo::dateChanged()
   QString dateTimeStr = "";
 
   if ( mStartCheck->isChecked() ) {
-    dateTimeStr += i18n("Start: %1", 
+    dateTimeStr += i18n("Start: %1",
                                      l->formatDate( mStartDateEdit->date() ) );
     if ( mTimeButton->isChecked() )
       dateTimeStr += QString(" %1").arg(
@@ -507,7 +507,7 @@ void KOEditorGeneralTodo::dateChanged()
   }
 
   if ( mDueCheck->isChecked() ) {
-    dateTimeStr += i18n("   Due: %1", 
+    dateTimeStr += i18n("   Due: %1",
                                       l->formatDate( mDueDateEdit->date() ) );
     if ( mTimeButton->isChecked() )
       dateTimeStr += QString(" %1").arg(
