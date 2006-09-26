@@ -466,25 +466,32 @@ void KODayMatrix::dropEvent( QDropEvent *e )
 
   int action = DRAG_CANCEL;
 
-  Qt::KeyboardModifiers keyboardModifiers = QApplication::keyboardModifiers();
+  Qt::KeyboardModifiers keyboardModifiers = e->keyboardModifiers();
 
   if ( keyboardModifiers & Qt::ControlModifier ) {
     action = DRAG_COPY;
   } else if ( keyboardModifiers & Qt::ShiftModifier ) {
     action = DRAG_MOVE;
   } else {
+    QAction *copy = 0, *move = 0, *cancel = 0;
     KMenu *menu = new KMenu( this );
     if ( existingEvent || existingTodo ) {
-      menu->insertItem( i18n("Move"), DRAG_MOVE, 0 );
+      move = menu->addAction( i18n("&Move") );
       if (existingEvent)
-        menu->insertItem( KOGlobals::self()->smallIcon("editcopy"), i18n("Copy"), DRAG_COPY, 1 );
+        #warning Use a standard action for copy
+        copy = menu->addAction( KOGlobals::self()->smallIcon("editcopy"), i18n("&Copy") );
     } else {
-      menu->insertItem( i18n("Add"), DRAG_MOVE, 0 );
+      move = menu->addAction( i18n("&Add") );
     }
     menu->addSeparator();
-    menu->insertItem( KOGlobals::self()->smallIcon("cancel"), i18n("Cancel"), DRAG_CANCEL, 3 );
-#warning Port me!
-//    action = menu->exec( QCursor::pos(), 0 );
+        #warning Use a standard action for cancel
+    cancel = menu->addAction( KOGlobals::self()->smallIcon("cancel"), i18n("&Cancel") );
+    QAction *a = menu->exec( QCursor::pos() );
+    if ( a == copy ) {
+      action = DRAG_COPY;
+    } else if ( a == move ) { 
+      action = DRAG_MOVE; 
+    }
   }
 
   if ( action == DRAG_COPY  || action == DRAG_MOVE ) {

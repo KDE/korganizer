@@ -517,38 +517,37 @@ void ResourceView::contextMenuRequested ( Q3ListViewItem *i,
   KCal::CalendarResourceManager *manager = mCalendar->resourceManager();
   ResourceItem *item = static_cast<ResourceItem *>( i );
 
-  Q3PopupMenu *menu = new Q3PopupMenu( this );
+  QMenu *menu = new QMenu( this );
   connect( menu, SIGNAL( aboutToHide() ), menu, SLOT( deleteLater() ) );
   if ( item ) {
-    int reloadId = menu->insertItem( i18n("Re&load"), this,
-                                     SLOT( reloadResource() ) );
-    menu->setItemEnabled( reloadId, item->resource()->isActive() );
-    int saveId = menu->insertItem( i18n("&Save"), this,
-                                   SLOT( saveResource() ) );
-    menu->setItemEnabled( saveId, item->resource()->isActive() );
+    QAction *reloadAction = menu->addAction( i18n("Re&load"), this,
+                                             SLOT( reloadResource() ) );
+    reloadAction->setEnabled( item->resource()->isActive() );
+    QAction *saveAction = menu->addAction( i18n("&Save"), this,
+                                           SLOT( saveResource() ) );
+    saveAction->setEnabled( item->resource()->isActive() );
     menu->addSeparator();
 
-    menu->insertItem( i18n("Show &Info"), this, SLOT( showInfo() ) );
+    menu->addAction( i18n("Show &Info"), this, SLOT( showInfo() ) );
     //FIXME: This is better on the resource dialog
     if ( KOPrefs::instance()->agendaViewUsesResourceColor() ) {
-      Q3PopupMenu *assignMenu= new Q3PopupMenu( menu );
-      assignMenu->insertItem( i18n( "&Assign Color" ), this, SLOT( assignColor() ) );
+      QMenu *assignMenu= menu->addMenu( i18n("Resource Colors") );
+      assignMenu->addAction( i18n( "&Assign Color" ), this, SLOT( assignColor() ) );
       if ( item->resourceColor().isValid() )
-        assignMenu->insertItem( i18n( "&Disable Color" ), this, SLOT( disableColor() ) );
-      menu->insertItem( i18n( "Resources Colors" ), assignMenu );
+        assignMenu->addAction( i18n( "&Disable Color" ), this, SLOT( disableColor() ) );
     }
 
-    menu->insertItem( i18n("&Edit..."), this, SLOT( editResource() ) );
-    menu->insertItem( i18n("&Remove"), this, SLOT( removeResource() ) );
+    menu->addAction( i18n("&Edit..."), this, SLOT( editResource() ) );
+    menu->addAction( i18n("&Remove"), this, SLOT( removeResource() ) );
     if ( item->resource() != manager->standardResource() ) {
       menu->addSeparator();
-      menu->insertItem( i18n("Use as &Default Calendar"), this,
+      menu->addAction( i18n("Use as &Default Calendar"), this,
                         SLOT( setStandard() ) );
     }
 
     menu->addSeparator();
  }
-  menu->insertItem( i18n("&Add..."), this, SLOT( addResource() ) );
+  menu->addAction( i18n("&Add..."), this, SLOT( addResource() ) );
 
   menu->popup( pos );
 }
