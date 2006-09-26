@@ -980,10 +980,13 @@ void KOMonthView::changeIncidenceDisplayAdded( Incidence *incidence, MonthViewCe
     }
   } else {
     // addSecs(-1) is added to handle 0:00 cases (because it's non-inclusive according to rfc)
-    QDate endDate = gdv.endDate().addSecs( floats ? 0 : -1).date();
-    for ( QDate date = gdv.startDate().date(); date <= endDate; date = date.addDays( 1 ) ) {
-      MonthViewCell *mvc = mDateToCell[ date ];
-      if ( mvc ) mvc->addIncidence( incidence, v );
+    if ( gdv.endDate().isValid() ) {
+      QDate endDate = gdv.endDate().addSecs( floats ? 0 : -1).date();
+      for ( QDate date = gdv.startDate().date();
+            date <= endDate; date = date.addDays( 1 ) ) {
+        MonthViewCell *mvc = mDateToCell[ date ];
+        if ( mvc ) mvc->addIncidence( incidence, v );
+      }
     }
   }
 }
