@@ -992,7 +992,7 @@ void KOMonthView::changeIncidenceDisplayAdded( Incidence *incidence )
       for ( QDate date = gdv.startDate().date();
             date <= endDate; date = date.addDays( 1 ) ) {
         MonthViewCell *mvc = mDateToCell[ date ];
-        if ( mvc ) mvc->addIncidence( incidence, v );
+        if ( mvc ) mvc->addIncidence( incidence );
       }
     }
   }
