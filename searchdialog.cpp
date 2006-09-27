@@ -24,14 +24,14 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include <QLayout>
-#include <QCheckBox>
-#include <QLabel>
-#include <QLineEdit>
-#include <QVBoxLayout>
-#include <QFrame>
-#include <QHBoxLayout>
-#include <QGroupBox>
+// #include <QLayout>
+// #include <QCheckBox>
+// #include <QLabel>
+// #include <QLineEdit>
+// #include <QVBoxLayout>
+// #include <QFrame>
+// #include <QHBoxLayout>
+// #include <QGroupBox>
 
 #include <klocale.h>
 #include <kmessagebox.h>
@@ -58,84 +58,19 @@ SearchDialog::SearchDialog(Calendar *calendar,QWidget *parent)
   setButtonGuiItem( User1, KGuiItem( i18n("&Find"), "find") );
   mCalendar = calendar;
 
-  QFrame *topFrame = new QFrame( this );
-  setMainWidget( topFrame );
-  QVBoxLayout *layout = new QVBoxLayout(topFrame);
-  layout->setSpacing(spacingHint());
-  layout->setMargin(0);
+  QWidget *mainwidget = new QWidget( this );
+  setupUi( mainwidget );
+  setMainWidget( mainwidget );
 
-  // Search expression
-  QHBoxLayout *subLayout = new QHBoxLayout();
-  layout->addLayout(subLayout);
-
-  searchEdit = new QLineEdit( "*", topFrame ); // Find all events by default
-  searchLabel = new QLabel( i18n("&Search for:"), topFrame );
-  searchLabel->setBuddy( searchEdit );
-  subLayout->addWidget( searchLabel );
-  subLayout->addWidget( searchEdit );
-  searchEdit->setFocus();
-  connect( searchEdit, SIGNAL( textChanged( const QString & ) ),
+  connect( mSearchEdit, SIGNAL( textChanged( const QString & ) ),
            this, SLOT( searchTextChanged( const QString & ) ) );
 
-
-  QGroupBox *itemsGroup = new QGroupBox( i18n("Search For"), topFrame );
-  QBoxLayout *searchLayout = new QHBoxLayout( itemsGroup );
-  layout->addWidget( itemsGroup );
-  mEventsCheck = new QCheckBox( i18n("&Events"), itemsGroup );
-  searchLayout->addWidget( mEventsCheck );
-  mTodosCheck = new QCheckBox( i18n("To-&dos"), itemsGroup );
-  searchLayout->addWidget( mTodosCheck );
-  mJournalsCheck = new QCheckBox( i18n("&Journal entries"), itemsGroup );
-  searchLayout->addWidget( mJournalsCheck );
-  mEventsCheck->setChecked( true );
-  mTodosCheck->setChecked( true );
-
-  // Date range
-  QGroupBox *rangeGroup = new QGroupBox( i18n( "Date Range" ), topFrame );
-  layout->addWidget( rangeGroup );
-
-  QWidget *rangeWidget = new QWidget( rangeGroup );
-  QHBoxLayout *rangeLayout = new QHBoxLayout( rangeWidget );
-  rangeLayout->setSpacing( spacingHint() );
-  rangeLayout->setMargin( 0 );
-
-  mStartDate = new KDateEdit( rangeWidget );
-  QLabel *label = new QLabel( i18n("Fr&om:"), rangeWidget );
-  label->setBuddy( mStartDate );
-  rangeLayout->addWidget( label );
-  rangeLayout->addWidget( mStartDate );
-
-  mEndDate = new KDateEdit( rangeWidget );
-  label = new QLabel( i18n("&To:"), rangeWidget );
-  label->setBuddy( mEndDate );
-  rangeLayout->addWidget( label );
-  mEndDate->setDate( QDate::currentDate().addDays( 365 ) );
-  rangeLayout->addWidget( mEndDate );
-
-  mInclusiveCheck = new QCheckBox( i18n("E&vents have to be completely included"),
-                                  rangeGroup );
-  mInclusiveCheck->setChecked( false );
-  mIncludeUndatedTodos = new QCheckBox( i18n("Include to-dos &without due date"), rangeGroup );
-  mIncludeUndatedTodos->setChecked( true );
-
-  // Subjects to search
-  QGroupBox *subjectGroup = new QGroupBox( i18n("Search In"), topFrame );
-  searchLayout = new QHBoxLayout( subjectGroup );
-  layout->addWidget(subjectGroup);
-
-  mSummaryCheck = new QCheckBox( i18n("Su&mmaries"), subjectGroup );
-  mSummaryCheck->setChecked( true );
-  searchLayout->addWidget( mSummaryCheck );
-  mDescriptionCheck = new QCheckBox( i18n("Desc&riptions"), subjectGroup );
-  searchLayout->addWidget( mDescriptionCheck  );
-  mCategoryCheck = new QCheckBox( i18n("Cate&gories"), subjectGroup );
-  searchLayout->addWidget( mCategoryCheck );
-
-
   // Results list view
-  listView = new KOListView( mCalendar, topFrame );
+  QVBoxLayout *layout = new QVBoxLayout; 
+  listView = new KOListView( mCalendar );
   listView->showDates();
   layout->addWidget( listView );
+  mListViewParent->setLayout( layout );
 
   if ( KOPrefs::instance()->mCompactDialogs ) {
     KOGlobals::fitDialogToScreen( this, true );
@@ -167,7 +102,7 @@ void SearchDialog::doSearch()
 
   re.setPatternSyntax( QRegExp::Wildcard ); // most people understand these better.
   re.setCaseSensitivity( Qt::CaseInsensitive );
-  re.setPattern( searchEdit->text() );
+  re.setPattern( mSearchEdit->text() );
   if ( !re.isValid() ) {
     KMessageBox::sorry( this,
                         i18n("Invalid search expression, cannot perform "
@@ -193,7 +128,7 @@ void SearchDialog::updateView()
   QRegExp re;
   re.setPatternSyntax( QRegExp::Wildcard ); // most people understand these better.
   re.setCaseSensitivity( Qt::CaseInsensitive );
-  re.setPattern( searchEdit->text() );
+  re.setPattern( mSearchEdit->text() );
   if ( re.isValid() ) {
     search( re );
   } else {

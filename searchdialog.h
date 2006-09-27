@@ -27,25 +27,20 @@
 #define SEARCHDIALOG_H
 
 #include <QRegExp>
-//Added by qt3to4:
-#include <QLabel>
 
 #include <kdialog.h>
 
 #include <kcal/incidence.h>
+#include "ui_searchdialog_base.h"
 
 namespace KCal {
 class Calendar;
 }
-class KDateEdit;
-class QCheckBox;
-class QLineEdit;
-class QLabel;
 class KOListView;
 
 using namespace KCal;
 
-class SearchDialog : public KDialog
+class SearchDialog : public KDialog, private Ui::SearchDialog
 {
     Q_OBJECT
   public:
@@ -73,23 +68,7 @@ class SearchDialog : public KDialog
 
     Incidence::List mMatchedEvents;
 
-    QLabel *searchLabel;
-    QLineEdit *searchEdit;
     KOListView *listView;
-
-    QCheckBox *mEventsCheck;
-    QCheckBox *mTodosCheck;
-    QCheckBox *mJournalsCheck;
-
-    KDateEdit *mStartDate;
-    KDateEdit *mEndDate;
-
-    QCheckBox *mInclusiveCheck;
-    QCheckBox *mIncludeUndatedTodos;
-
-    QCheckBox *mSummaryCheck;
-    QCheckBox *mDescriptionCheck;
-    QCheckBox *mCategoryCheck;
 };
 
 #endif
