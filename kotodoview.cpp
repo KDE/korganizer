@@ -255,7 +255,7 @@ void KOTodoListView::contentsDropEvent( QDropEvent *e )
   Todo *todo = factory.createDropTodo(e);
 
   if ( todo ) {
-    e->acceptAction();
+    e->setDropAction( Qt::MoveAction );
 
     KOTodoViewItem *destination =
         (KOTodoViewItem *)itemAt(contentsToViewport(e->pos()));
@@ -1273,7 +1273,6 @@ QMenu *KOTodoView::getCategoryPopupMenu( KOTodoViewItem *todoItem )
   QMenu *tempMenu = new QMenu( this );
   QStringList checkedCategories = todoItem->todo()->categories();
 
-  tempMenu->setCheckable( true );
   QStringList::Iterator it;
   for ( it = KOPrefs::instance()->mCustomCategories.begin();
         it != KOPrefs::instance()->mCustomCategories.end();

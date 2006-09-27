@@ -442,7 +442,7 @@ bool KOAgenda::eventFilter_drag( QObject *object, QDropEvent *de )
         Todo *todo = factory.createDropTodo( de );
 
         if ( todo ) {
-          de->acceptAction();
+          de->setDropAction( Qt::MoveAction );
           QPoint pos;
           // FIXME: This is a bad hack, as the viewportToContents seems to be off by
           // 2000 (which is the left upper corner of the viewport). It works correctly
