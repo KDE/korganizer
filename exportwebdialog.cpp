@@ -69,7 +69,6 @@
 //        headline... Maybe we should try to achieve the same without code
 //        duplication.
 ExportWebDialog::ExportWebDialog( HTMLExportSettings *settings, QWidget *parent)
-// TODO_QT4: Use constructor without *name=0 param
   : KPageDialog( parent ),
     KPrefsWidManager( settings ), mSettings( settings )
 {
