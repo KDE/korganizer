@@ -446,6 +446,7 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
   }
 
   QBoxLayout *topLayout = new QVBoxLayout(this);
+  topLayout->setMargin(0);
 
   // Create day name labels for agenda columns
   mDayLabelsFrame = new KHBox(this);
@@ -490,6 +491,7 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
 
   // Create agenda frame
   QGridLayout *agendaLayout = new QGridLayout(agendaFrame);
+  agendaLayout->setMargin(0);
 //  QHBox *agendaFrame = new QHBox(splitterAgenda);
 
   // create event indicator bars
@@ -753,6 +755,7 @@ void KOAgendaView::createDayLabels()
 
   mDayLabels = new QFrame (mDayLabelsFrame);
   mLayoutDayLabels = new QHBoxLayout(mDayLabels);
+  mLayoutDayLabels->setMargin(0);
   mLayoutDayLabels->addSpacing(mTimeLabels->width());
 
   const KCalendarSystem*calsys=KOGlobals::self()->calendarSystem();
@@ -761,6 +764,7 @@ void KOAgendaView::createDayLabels()
   for( dit = mSelectedDates.begin(); dit != mSelectedDates.end(); ++dit ) {
     QDate date = *dit;
     QBoxLayout *dayLayout = new QVBoxLayout();
+    dayLayout->setMargin(0);
     mLayoutDayLabels->addItem(dayLayout);
     mLayoutDayLabels->setStretchFactor(dayLayout, 1);
 //    dayLayout->setMinimumWidth(1);

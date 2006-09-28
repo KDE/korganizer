@@ -24,15 +24,6 @@
     without including the source code for Qt in the source distribution.
 */
 
-// #include <QLayout>
-// #include <QCheckBox>
-// #include <QLabel>
-// #include <QLineEdit>
-// #include <QVBoxLayout>
-// #include <QFrame>
-// #include <QHBoxLayout>
-// #include <QGroupBox>
-
 #include <klocale.h>
 #include <kmessagebox.h>
 
@@ -67,6 +58,7 @@ SearchDialog::SearchDialog(Calendar *calendar,QWidget *parent)
 
   // Results list view
   QVBoxLayout *layout = new QVBoxLayout; 
+  layout->setMargin( 0 );
   listView = new KOListView( mCalendar );
   listView->showDates();
   layout->addWidget( listView );

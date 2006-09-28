@@ -135,6 +135,7 @@ CalendarView::CalendarView( QWidget *parent )
   mDateChecker = new DateChecker( this );
 
   QBoxLayout *topLayout = new QVBoxLayout( this );
+  topLayout->setMargin(0);
 
 #ifndef KORG_NOSPLITTER
   // create the main layout frames.
@@ -187,6 +188,7 @@ CalendarView::CalendarView( QWidget *parent )
 
   QWidget *rightBox = new QWidget( mainBox );
   QBoxLayout *rightLayout = new QVBoxLayout( rightBox );
+  rightLayout->setMargin();
 
   mNavigatorBar = new NavigatorBar( QDate::currentDate(), rightBox );
   rightLayout->addWidget( mNavigatorBar );

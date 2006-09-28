@@ -219,6 +219,7 @@ KOListView::KOListView( Calendar *calendar, QWidget *parent)
   mListView->addColumn(i18n("Categories"));
 
   QBoxLayout *layoutTop = new QVBoxLayout(this);
+  layoutTop->setMargin(0);
   layoutTop->addWidget(mListView);
 
   mPopupMenu = eventPopup();

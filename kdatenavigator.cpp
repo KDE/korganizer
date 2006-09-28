@@ -53,6 +53,8 @@ KDateNavigator::KDateNavigator( QWidget *parent )
   : QFrame( parent ), mBaseDate( 1970, 1, 1 )
 {
   QGridLayout* topLayout = new QGridLayout( this );
+  topLayout->setMargin(0);
+  topLayout->setSpacing(0);
 
   mNavigatorBar = new NavigatorBar( this );
   topLayout->addWidget( mNavigatorBar, 0, 0, 1, 8 );

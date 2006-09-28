@@ -16,10 +16,10 @@
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>0</number>
+    <number>11</number>
    </property>
    <property name="spacing" >
-    <number>0</number>
+    <number>6</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
@@ -58,7 +58,7 @@
      </property>
      <layout class="QGridLayout" >
       <property name="margin" >
-       <number>0</number>
+       <number>11</number>
       </property>
       <property name="spacing" >
        <number>6</number>
@@ -100,7 +100,7 @@
      </property>
      <layout class="QGridLayout" >
       <property name="margin" >
-       <number>0</number>
+       <number>11</number>
       </property>
       <property name="spacing" >
        <number>6</number>
@@ -116,7 +116,7 @@
        <widget class="KDateEdit" name="mStartDate" >
         <item>
          <property name="text" >
-          <string>2006-09-27</string>
+          <string>2006-09-28</string>
          </property>
         </item>
        </widget>
@@ -138,7 +138,7 @@
        <widget class="KDateEdit" name="mEndDate" >
         <item>
          <property name="text" >
-          <string>2006-09-27</string>
+          <string>2006-09-28</string>
          </property>
         </item>
        </widget>
@@ -176,7 +176,7 @@
      </property>
      <layout class="QHBoxLayout" >
       <property name="margin" >
-       <number>0</number>
+       <number>11</number>
       </property>
       <property name="spacing" >
        <number>6</number>
