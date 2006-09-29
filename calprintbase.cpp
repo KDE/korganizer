@@ -689,7 +689,8 @@ void CalPrintBase::drawDayBox(QPainter &p, const QDate &qd,
 
       outStr = local->formatTime(t1);
       outStr += " " + currEvent->summary();
-      outStr += " (" + currEvent->location() + ")";
+      if ( !currEvent->location().isEmpty() )
+        outStr += " (" + currEvent->location() + ")";
 
     } // doesFloat
 
