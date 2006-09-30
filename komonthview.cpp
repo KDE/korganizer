@@ -236,10 +236,11 @@ void MonthViewItem::paint( QPainter *p )
     p->eraseRect( offset, offset, listBox()->maxItemWidth()-2*offset, height( listBox() )-2*offset );
   }
   int x = 3;
-  if ( mEvent ) {
-    p->drawPixmap( x, 0, mEventPixmap );
-    x += mEventPixmap.width() + 2;
-  }
+// Do NOT put on the event pixmap because it takes up too much space
+//  if ( mEvent ) {
+//    p->drawPixmap( x, 0, mEventPixmap );
+//    x += mEventPixmap.width() + 2;
+//  }
   if ( mTodo ) {
     p->drawPixmap( x, 0, mTodoPixmap );
     x += mTodoPixmap.width() + 2;
