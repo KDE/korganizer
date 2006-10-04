@@ -81,8 +81,8 @@ void KOMonthCellToolTip::maybeTip( const QPoint & pos )
     r=eventlist->itemRect( it );
     /* Show the tip */
     QString tipText;
-    ToolTipVisitor v;
-    if ( v.act( i->incidence(), &tipText, true ) ) {
+    ToolTipVisitor<MonthViewItem> v;
+    if ( v.act( i, &tipText, true ) ) {
       tip( r, tipText );
     }
   }
@@ -584,7 +584,7 @@ QDate MonthViewCell::selectedIncidenceDate()
 
   if ( !item ) return qd;
 
-  return item->incidenceDate();
+  return item->itemDate();
 }
 
 void MonthViewCell::deselect()

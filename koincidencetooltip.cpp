@@ -29,23 +29,34 @@
 
 #include <klocale.h>
 #include "koincidencetooltip.h"
+#include "koagendaitem.h"
+#include "kolistview.h"
+#include "komonthview.h"
+#include "kotodoviewitem.h"
+
+// explicit instantiations
+template class KOIncidenceToolTip<KOAgendaItem>;
+template class ToolTipVisitor<KOAgendaItem>;
+template class ToolTipVisitor<KOListViewItem>;
+template class ToolTipVisitor<MonthViewItem>;
+template class ToolTipVisitor<KOTodoViewItem>;
 
 /**
 @author Reinhold Kainhofer
 some improvements by Mikolaj Machowski
 */
 
-void KOIncidenceToolTip::add ( QWidget * widget, Incidence *incidence,
+/*
+ template<class T>
+void KOIncidenceToolTip<T>::add ( T* item,
         QToolTipGroup * group, const QString & longText )
 {
-  if ( !widget || !incidence ) return;
-  QString tipText;
-  ToolTipVisitor v;
-  v.act( incidence, &tipText, true );
-  QToolTip::add(widget, tipText, group, longText);
 }
 
-QString ToolTipVisitor::dateRangeText( Event*event )
+*/
+
+template<class T>
+QString ToolTipVisitor<T>::dateRangeText( Event*event )
 {
   QString ret;
   QString tmp;
@@ -64,9 +75,12 @@ QString ToolTipVisitor::dateRangeText( Event*event )
       ret += tmp.arg( event->dtEndStr().replace(" ", "&nbsp;") );
 
   } else {
-
-    ret += "<br>"+i18n("<i>Date:</i>&nbsp;%1").
-        arg( event->dtStartDateStr().replace(" ", "&nbsp;") );
+    ret += "<br>"+i18n("<i>Date:</i>&nbsp;");
+    if ( event->doesRecur() ) {
+      ret += KGlobal::locale()->formatDate( mItem->itemDate(), true );
+    } else {
+      ret += event->dtStartDateStr().replace(" ", "&nbsp;");
+    }
     if ( !event->doesFloat() ) {
       tmp = "<br>" + i18n("time range for event, &nbsp; to prevent ugly line breaks",
         "<i>Time:</i>&nbsp;%1&nbsp;-&nbsp;%2").
@@ -79,7 +93,8 @@ QString ToolTipVisitor::dateRangeText( Event*event )
   return ret;
 }
 
-QString ToolTipVisitor::dateRangeText( Todo*todo )
+template<class T>
+QString ToolTipVisitor<T>::dateRangeText( Todo*todo )
 {
   QString ret;
   bool floats( todo->doesFloat() );
@@ -104,7 +119,8 @@ QString ToolTipVisitor::dateRangeText( Todo*todo )
   return ret;
 }
 
-QString ToolTipVisitor::dateRangeText( Journal*journal )
+template<class T>
+QString ToolTipVisitor<T>::dateRangeText( Journal*journal )
 {
   QString ret;
   if (journal->dtStart().isValid() ) {
@@ -114,25 +130,29 @@ QString ToolTipVisitor::dateRangeText( Journal*journal )
 }
 
 
-bool ToolTipVisitor::visit( Event *event )
+template<class T>
+bool ToolTipVisitor<T>::visit( Event *event )
 {
   QString dtRangeText( dateRangeText( event ) );
   return generateToolTip( event, dtRangeText  );
 }
 
-bool ToolTipVisitor::visit( Todo *todo )
+template<class T>
+bool ToolTipVisitor<T>::visit( Todo *todo )
 {
   QString dtRangeText( dateRangeText( todo ) );
   return generateToolTip( todo, dtRangeText  );
 }
 
-bool ToolTipVisitor::visit( Journal *journal )
+template<class T>
+bool ToolTipVisitor<T>::visit( Journal *journal )
 {
   QString dtRangeText( dateRangeText( journal ) );
   return generateToolTip( journal, dtRangeText  );
 }
 
-bool ToolTipVisitor::generateToolTip( Incidence* incidence, QString dtRangeText )
+template<class T>
+bool ToolTipVisitor<T>::generateToolTip( Incidence* incidence, QString dtRangeText )
 {
   QString tipText = "<qt><b>"+ incidence->summary().replace("\n", "<br>")+"</b>";
 

@@ -25,6 +25,7 @@
 #define KOINCIDENCETOOLTIP_H
 
 #include <qtooltip.h>
+#include "koagendaitem.h"
 
 namespace KCal
 {
@@ -34,31 +35,47 @@ class Todo;
 class Journal;
 }
 using namespace KCal;
-
+template<class T> class ToolTipVisitor;
 /**
 @author Reinhold Kainhofer
 */
+template<class T>
 class KOIncidenceToolTip : public QToolTip
 {
   public:
-    KOIncidenceToolTip(QWidget * widget, QToolTipGroup * group = 0 ):QToolTip (widget, group) {}
+    KOIncidenceToolTip(T* widget, QToolTipGroup * group = 0 ):QToolTip (widget, group) {}
 /*    ~KOIncidenceToolTip();*/
 
   public:
-    static void add ( QWidget * widget, Incidence *incidence,
-        QToolTipGroup * group = 0, const QString & longText = "" );
+    static void add ( T* item,
+                      QToolTipGroup * group = 0,
+                      const QString & longText = "" )
+    {
+        if ( !item || !item->incidence() ) return;
+        QString tipText;
+        ToolTipVisitor<T> v;
+        v.act( item, &tipText, true );
+        QToolTip::add(item, tipText, group, longText);
+    }
+
 };
 
+template<class T>
 class ToolTipVisitor : public Incidence::Visitor
 {
   public:
-    ToolTipVisitor() : mRichText( true ),mTipText(0) {}
+    ToolTipVisitor()
+        : mRichText( true ),
+          mTipText(0),
+          mItem(0)
+    {}
 
-    bool act( Incidence *incidence, QString* tipText, bool richText=true)
+    bool act( T* item, QString* tipText, bool richText=true)
     {
       mTipText = tipText;
       mRichText = richText;
-      return incidence ? incidence->accept( *this ) : false;
+      mItem = item;
+      return item->incidence() ? item->incidence()->accept( *this ) : false;
     }
 
   protected:
@@ -75,6 +92,7 @@ class ToolTipVisitor : public Incidence::Visitor
   protected:
     bool mRichText;
     QString *mTipText;
+    T *mItem;
 };
 
 

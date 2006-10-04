@@ -950,8 +950,8 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
     incidence->setRevision( i->revision() );
     item->setItemDate( startDt.date() );
 
-    KOIncidenceToolTip::remove( item );
-    KOIncidenceToolTip::add( item, incidence, KOAgendaItem::toolTipGroup() );
+    KOIncidenceToolTip<KOAgendaItem>::remove( item );
+    KOIncidenceToolTip<KOAgendaItem>::add( item, KOAgendaItem::toolTipGroup() );
 
     // don't update the agenda as the item already has the correct coordinates.
     // an update would delete the current item and recreate it, but we are still

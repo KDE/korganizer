@@ -64,8 +64,8 @@ void KOListViewToolTip::maybeTip( const QPoint & pos)
     r=eventlist->itemRect( it );
     /* Show the tip */
     QString tipText;
-    ToolTipVisitor v;
-    if (v.act(i->data(), &tipText, true)) {
+    ToolTipVisitor<KOListViewItem> v;
+    if (v.act(i, &tipText, true)) {
       tip(r, tipText);
     }
   }

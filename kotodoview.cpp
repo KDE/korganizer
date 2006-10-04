@@ -87,8 +87,8 @@ void KOTodoListViewToolTip::maybeTip( const QPoint & pos)
 
     /* Show the tip */
     QString tipText;
-    ToolTipVisitor v;
-    if (v.act(i->todo(), &tipText, true)) {
+    ToolTipVisitor<KOTodoViewItem> v;
+    if (v.act(i, &tipText, true)) {
       tip(r, tipText);
     }
   }

@@ -34,7 +34,19 @@
 
 using namespace KCal;
 
-typedef CustomListViewItem<Incidence *> KOListViewItem;
+
+class KOListViewItem : public CustomListViewItem<Incidence*>
+{
+  public:
+      KOListViewItem ( Incidence* data, KListView *parent)
+          :CustomListViewItem<Incidence*>( data, parent )
+      {
+      }
+      Incidence * incidence() {
+          return data();
+      }
+      QDate itemDate() { return QDate(); }
+};
 
 class KOListView;
 

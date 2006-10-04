@@ -31,6 +31,7 @@
 #include "koeventview.h"
 
 class KNoScrollListBox;
+class QLabel;
 
 class KOMonthCellToolTip : public QToolTip
 {
@@ -86,7 +87,7 @@ class MonthViewItem: public QListBoxItem
     QPalette palette() const { return mPalette; }
 
     Incidence *incidence() const { return mIncidence; }
-    QDate incidenceDate() { return mDate; }
+    QDate itemDate() { return mDate; }
 
     void setResourceColor( QColor& color ) { mResourceColor = color; }
     QColor &resourceColor() { return mResourceColor; }

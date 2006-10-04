@@ -28,9 +28,9 @@
 #include <qlistview.h>
 #include <qpalette.h>
 
-namespace KCal {
-class Todo;
-}
+#include <libkcal/todo.h>
+#include <libkcal/incidence.h>
+
 using namespace KCal;
 
 class KOTodoView;
@@ -58,6 +58,8 @@ class KOTodoViewItem : public QCheckListItem
     void construct();
 
     Todo *todo() { return mTodo; }
+    Incidence *incidence() { return mTodo; }
+    QDate itemDate() { return QDate(); }
 
     QString key(int, bool) const;
 

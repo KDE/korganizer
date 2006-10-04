@@ -72,7 +72,7 @@ KOAgendaItem::KOAgendaItem( Incidence *incidence, QDate qd, QWidget *parent,
   mSelected = true;
   select( false );
 
-  KOIncidenceToolTip::add( this, incidence, toolTipGroup() );
+  KOIncidenceToolTip<KOAgendaItem>::add( this, toolTipGroup() );
   setAcceptDrops( true );
 }
 
