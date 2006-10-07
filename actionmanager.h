@@ -52,7 +52,7 @@ class KSelectAction;
 class KToggleAction;
 class KConfig;
 class KProcess;
-class KTempFile;
+class KTemporaryFile;
 class KXMLGUIClient;
 class CalendarView;
 class KOrganizer;
@@ -375,7 +375,7 @@ class KDE_EXPORT ActionManager : public QObject
     QString mFile;  // Local name of calendar file
     QString mLastUrl;  // URL of last loaded calendar.
 
-    KTempFile *mTempFile;
+    KTemporaryFile *mTempFile;
     QTimer *mAutoSaveTimer;   // used if calendar is to be autosaved
     QTimer *mAutoArchiveTimer; // used for the auto-archiving feature
 

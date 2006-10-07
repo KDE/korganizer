@@ -51,7 +51,7 @@
 #include <krun.h>
 #include <kseparator.h>
 #include <kstandarddirs.h>
-#include <ktempfile.h>
+#include <ktemporaryfile.h>
 #include <k3urldrag.h>
 #include <kurlrequester.h>
 
@@ -581,12 +581,17 @@ void KOEditorAttachments::showAttachment( Q3IconViewItem *item )
     KMessageBox::sorry( this, i18n( "Binary attachment, not supported." ) );
 #if 0
     // read-only not to give the idea that it could be written to
-    KTempFile file( QString(), QString( KMimeType::mimeType( att->mimeType()
-                                            )->patterns().first() )
-                                   .replace( "*", "" ), 0400 );
-    *file.dataStream() << att->decodedData();
-    file.close();
-    KRun::runURL( file.name(), att->mimeType(), true );
+    KTemporaryFile file;
+    file.setSuffix(QString( KMimeType::mimeType( att->mimeType()
+                           )->patterns().first() )
+                           .replace( "*", "" ));
+    file.setAutoRemove(false);
+    file.open();
+    file.setPermissions(QFile::ReadUser);
+    QDataStream str ( &file );
+    str << att->decodedData();
+    file.flush();
+    KRun::runURL( file.fileName(), att->mimeType(), true );
 #endif
   }
 }

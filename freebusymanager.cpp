@@ -50,7 +50,7 @@
 #include <kio/job.h>
 #include <kdebug.h>
 #include <kmessagebox.h>
-#include <ktempfile.h>
+#include <ktemporaryfile.h>
 #include <kio/netaccess.h>
 #include <kapplication.h>
 #include <kconfig.h>
@@ -250,11 +250,12 @@ void FreeBusyManager::publishFreeBusy()
                                      "ORGANIZER:" );
 
   // Create a local temp file and save the message to it
-  KTempFile tempFile;
-  QTextStream *textStream = tempFile.textStream();
-  if( textStream ) {
-    *textStream << messageText;
-    tempFile.close();
+  KTemporaryFile tempFile;
+  tempFile.setAutoRemove(false);
+  if( tempFile.open() ) {
+    QTextStream textStream ( &tempFile );
+    textStream << messageText;
+    textStream.flush();
 
 #if 0
     QString defaultEmail = KOCore()::self()->email();
@@ -293,7 +294,7 @@ void FreeBusyManager::publishFreeBusy()
 
 
     KUrl src;
-    src.setPath( tempFile.name() );
+    src.setPath( tempFile.fileName() );
 
     kDebug(5850) << "FreeBusyManager::publishFreeBusy(): " << targetURL << endl;
 

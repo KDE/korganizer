@@ -58,7 +58,7 @@
 #include <kmenu.h>
 #include <kstandarddirs.h>
 #include <ktip.h>
-#include <ktempfile.h>
+#include <ktemporaryfile.h>
 #include <kxmlguiclient.h>
 #include <kwin.h>
 #include <knotification.h>
@@ -679,7 +679,8 @@ void ActionManager::file_icalimport()
   // for now, hard-coded to ical file, $HOME/.calendar.
   int retVal = -1;
   QString progPath;
-  KTempFile tmpfn;
+  KTemporaryFile tmpfn;
+  tmpfn.open();
 
   QString homeDir = QDir::homePath() + QString::fromLatin1( "/.calendar" );
 
@@ -691,7 +692,7 @@ void ActionManager::file_icalimport()
   }
 
   KProcess proc;
-  proc << "ical2vcal" << tmpfn.name();
+  proc << "ical2vcal" << tmpfn.fileName();
   bool success = proc.start( KProcess::Block );
 
   if ( !success ) {
@@ -705,7 +706,7 @@ void ActionManager::file_icalimport()
 
   if ( retVal >= 0 && retVal <= 2 ) {
     // now we need to MERGE what is in the iCal to the current calendar.
-    mCalendarView->openCalendar( tmpfn.name(),1 );
+    mCalendarView->openCalendar( tmpfn.fileName(),1 );
     if ( !retVal )
       KMessageBox::information( dialogParent(),
                                i18n( "KOrganizer successfully imported and "
@@ -728,7 +729,6 @@ void ActionManager::file_icalimport()
                          i18n( "KOrganizer does not think that your .calendar "
                               "file is a valid ical calendar; import has failed." ) );
   }
-  tmpfn.unlink();
 }
 
 void ActionManager::file_merge()
@@ -1021,15 +1021,14 @@ void ActionManager::exportHTML( HTMLExportSettings *settings )
   if ( dest.isLocalFile() ) {
     mExport.save( dest.path() );
   } else {
-    KTempFile tf;
-    QString tfile = tf.name();
-    tf.close();
+    KTemporaryFile tf;
+    tf.open();
+    QString tfile = tf.fileName();
     mExport.save( tfile );
     if ( !KIO::NetAccess::upload( tfile, dest, view() ) ) {
       KNotification::event ( KNotification::Error,
                              i18n("Could not upload file.") );
     }
-    tf.unlink();
   }
 }
 
@@ -1049,12 +1048,14 @@ bool ActionManager::saveAsURL( const KUrl &url )
   QString fileOrig = mFile;
   KUrl URLOrig = mURL;
 
-  KTempFile *tempFile = 0;
+  KTemporaryFile *tempFile = 0;
   if ( url.isLocalFile() ) {
     mFile = url.path();
   } else {
-    tempFile = new KTempFile;
-    mFile = tempFile->name();
+    tempFile = new KTemporaryFile;
+    tempFile->setAutoRemove(false);
+    tempFile->open();
+    mFile = tempFile->fileName();
   }
   mURL = url;
 

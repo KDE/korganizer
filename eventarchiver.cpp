@@ -26,7 +26,7 @@
 #include "eventarchiver.h"
 #include <kglobal.h>
 #include <klocale.h>
-#include <ktempfile.h>
+#include <ktemporaryfile.h>
 #include <kio/netaccess.h>
 #include <kglobal.h>
 #include <kcal/filestorage.h>
@@ -147,9 +147,9 @@ void EventArchiver::archiveIncidences( Calendar* calendar, const QDate& /*limitD
   FileStorage storage( calendar );
 
   // Save current calendar to disk
-  KTempFile tmpFile;
-  tmpFile.setAutoDelete(true);
-  storage.setFileName( tmpFile.name() );
+  KTemporaryFile tmpFile;
+  tmpFile.open();
+  storage.setFileName( tmpFile.fileName() );
   if ( !storage.save() ) {
     kDebug(5850) << "EventArchiver::archiveEvents(): Can't save calendar to temp file" << endl;
     return;
@@ -160,7 +160,7 @@ void EventArchiver::archiveIncidences( Calendar* calendar, const QDate& /*limitD
   CalendarLocal archiveCalendar( KOPrefs::instance()->timeSpec() );
 
   FileStorage archiveStore( &archiveCalendar );
-  archiveStore.setFileName( tmpFile.name() );
+  archiveStore.setFileName( tmpFile.fileName() );
   if (!archiveStore.load()) {
     kDebug(5850) << "EventArchiver::archiveEvents(): Can't load calendar from temp file" << endl;
     return;
@@ -196,7 +196,7 @@ void EventArchiver::archiveIncidences( Calendar* calendar, const QDate& /*limitD
       return;
     }
   } else {
-    archiveFile = tmpFile.name();
+    archiveFile = tmpFile.fileName();
   }
 
   // Save archive calendar

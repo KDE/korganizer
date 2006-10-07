@@ -36,7 +36,7 @@
 #include <korganizer/part.h>
 #include <kparts/mainwindow.h>
 
-class KTempFile;
+class KTemporaryFile;
 class KRecentFilesAction;
 class KOWindowList;
 class KToggleAction;
