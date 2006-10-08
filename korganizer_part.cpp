@@ -50,7 +50,7 @@
 #include <kstandarddirs.h>
 #include <kconfig.h>
 #include <kprocess.h>
-#include <ktempfile.h>
+#include <ktemporaryfile.h>
 #include <kstatusbar.h>
 #include <kparts/genericfactory.h>
 

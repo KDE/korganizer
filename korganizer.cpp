@@ -62,7 +62,7 @@
 #include <kaction.h>
 #include <kstdaction.h>
 #include <kedittoolbar.h>
-#include <ktempfile.h>
+#include <ktemporaryfile.h>
 #include <kio/netaccess.h>
 #include <kmessagebox.h>
 #include <kprocess.h>

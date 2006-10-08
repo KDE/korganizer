@@ -47,7 +47,7 @@
 #include "koglobals.h"
 #include <kurlrequester.h>
 #include <kio/netaccess.h>
-#include <ktempfile.h>
+#include <ktemporaryfile.h>
 #include <kmessagebox.h>
 
 #include <kcal/calendar.h>
