@@ -50,7 +50,7 @@ kde4_install_libtool_file( ${PLUGIN_INSTALL_DIR} kcm_korganizer )
 
 target_link_libraries(kcm_korganizer ${KDE4_KDECORE_LIBS} korganizer kdepim kholidays)
 
-kde4_add_kcfg_files(kcm_korganizer_SRCS koprefs_base.kcfgc )
+kde4_add_kcfg_files(kcm_korganizer kcm_korganizer_SRCS koprefs_base.kcfgc )
 
 install(TARGETS kcm_korganizer  DESTINATION ${PLUGIN_INSTALL_DIR})
 
@@ -202,7 +202,7 @@ set(korganizer_LIB_SRCS
 
 kde4_automoc(korganizer ${korganizer_LIB_SRCS})
 
-kde4_add_kcfg_files(korganizer_LIB_SRCS koprefs_base.kcfgc )
+kde4_add_kcfg_files(korganizer korganizer_LIB_SRCS koprefs_base.kcfgc )
 
 kde4_add_ui_files(korganizer_LIB_SRCS filteredit_base.ui koeditoralarms_base.ui publishdialog_base.ui template_management_dialog_base.ui kogroupwareprefspage.ui searchdialog_base.ui)
 
