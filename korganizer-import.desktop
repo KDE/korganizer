@@ -135,4 +135,3 @@ X-KDE-Library=libkorganizerpart
 X-KDE-StartupNotify=true
 X-DCOP-ServiceType=Unique
 X-DCOP-ServiceName=korganizer
-Categories=Qt;KDE;Office;
