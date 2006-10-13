@@ -224,6 +224,7 @@ install(TARGETS korganizer  DESTINATION ${LIB_INSTALL_DIR})
 ########### install files ###############
 
 install( FILES korganizer.desktop  DESTINATION ${XDG_APPS_DIR})
+install( FILES korganizer-import.desktop  DESTINATION ${XDG_APPS_DIR})
 install( FILES korganizer.kcfg  DESTINATION ${KCFG_INSTALL_DIR})
 install( FILES korganizer_part.rc  DESTINATION ${DATA_INSTALL_DIR}/korganizer)
 install( FILES dbuscalendar.desktop  DESTINATION ${SERVICETYPES_INSTALL_DIR})
