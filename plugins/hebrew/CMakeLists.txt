@@ -11,7 +11,7 @@ set(korg_hebrew_PART_SRCS
    parsha.cpp 
    converter.cpp )
 
-kde4_automoc(${korg_hebrew_PART_SRCS})
+kde4_automoc(korg_hebrew ${korg_hebrew_PART_SRCS})
 
 kde4_add_plugin(korg_hebrew WITH_PREFIX ${korg_hebrew_PART_SRCS})
 

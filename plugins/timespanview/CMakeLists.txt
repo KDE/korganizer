@@ -11,7 +11,7 @@ set(korg_timespanview_PART_SRCS
    timespanwidget.cpp 
    kotimespanview.cpp )
 
-kde4_automoc(${korg_timespanview_PART_SRCS})
+kde4_automoc(korg_timespanview ${korg_timespanview_PART_SRCS})
 
 kde4_add_plugin(korg_timespanview WITH_PREFIX ${korg_timespanview_PART_SRCS})
 

@@ -6,7 +6,7 @@ include_directories( ${CMAKE_SOURCE_DIR}/korganizer/interfaces ${CMAKE_SOURCE_DI
 
 set(korg_whatsnextprint_PART_SRCS whatsnextprint.cpp )
 
-kde4_automoc(${korg_whatsnextprint_PART_SRCS})
+kde4_automoc(korg_whatsnextprint ${korg_whatsnextprint_PART_SRCS})
 
 kde4_add_ui3_files(korg_whatsnextprint_PART_SRCS calprintwhatsnextconfig_base.ui )
 

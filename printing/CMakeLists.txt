@@ -6,7 +6,7 @@ include_directories( ${CMAKE_SOURCE_DIR}/korganizer/interfaces ${CMAKE_SOURCE_DI
 
 set(kocorehelper_LIB_SRCS cellitem.cpp )
 
-kde4_automoc(${kocorehelper_LIB_SRCS})
+kde4_automoc(kocorehelper ${kocorehelper_LIB_SRCS})
 
 kde4_add_library(kocorehelper SHARED ${kocorehelper_LIB_SRCS})
 
@@ -24,7 +24,7 @@ set(korg_stdprinting_LIB_SRCS
    calprintpluginbase.cpp 
    calprintdefaultplugins.cpp )
 
-kde4_automoc(${korg_stdprinting_LIB_SRCS})
+kde4_automoc(korg_stdprinting ${korg_stdprinting_LIB_SRCS})
 
 kde4_add_ui_files(korg_stdprinting_LIB_SRCS 
    calprintdayconfig_base.ui 

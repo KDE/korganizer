@@ -6,7 +6,7 @@ include_directories( ${CMAKE_SOURCE_DIR}/korganizer/interfaces ${CMAKE_SOURCE_DI
 
 set(korg_datenums_PART_SRCS configdialog.cpp datenums.cpp )
 
-kde4_automoc(${korg_datenums_PART_SRCS})
+kde4_automoc(korg_datenums ${korg_datenums_PART_SRCS})
 
 kde4_add_plugin(korg_datenums WITH_PREFIX ${korg_datenums_PART_SRCS})
 
