@@ -316,7 +316,7 @@ QString KOPrefs::fullName()
 {
   if (mEmailControlCenter) {
     KEMailSettings settings;
-    return settings.getSetting(KEMailSettings::RealName);
+    return KPIM::quotedName( settings.getSetting(KEMailSettings::RealName) );
   } else {
     return mName;
   }
