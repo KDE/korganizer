@@ -53,7 +53,7 @@ bool UriHandler::process( const QString &uri )
       kmailIface.showMail( serialNumber, messageId );
       return true;
     }
-  } else if ( uri.upper().startsWith( "MAILTO:" ) ) {
+  } else if ( uri.lower().startsWith( "mailto:" ) ) {
     KApplication::kApplication()->invokeMailer( uri.mid(7), QString::null );
     return true;
   } else if ( uri.startsWith( "uid:" ) ) {
