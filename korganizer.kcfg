@@ -158,7 +158,7 @@
   <group name="Views">
     <entry type="Int" key="Hour Size">
       <label>Hour size</label>
-      <whatsthis>Select on this spin box the the height of the hour rows in the schedule view.</whatsthis>
+      <whatsthis>Select on this spin box the height of the hour rows in the schedule view.</whatsthis>
       <default>10</default>
       <min>4</min>
       <max>30</max>
@@ -282,7 +282,7 @@
 
     <entry type="Int" key="Next X Days">
       <label>Next x days</label>
-      <whatsthis>Select on this spin box the number of &quot;x&quot; days to be displayed in the next days view. To access the  the next &quot;x&quot; days view, choose the the &quot;Next X Days&quot; menu item from the &quot;View&quot; menu.</whatsthis>
+      <whatsthis>Select on this spin box the number of &quot;x&quot; days to be displayed in the next days view. To access the  the next &quot;x&quot; days view, choose the &quot;Next X Days&quot; menu item from the &quot;View&quot; menu.</whatsthis>
       <default>3</default>
     </entry>
 
@@ -325,7 +325,7 @@
     </entry>
     <entry type="Bool" key="Use Groupware Communication">
       <label>Use Groupware communication</label>
-      <whatsthis>Check this box to enable automatic generation of mails when creating, updating or deleting events (or to-dos) involving other attendees. You should check this box if you you want to use the groupware functionality (e.g. Configuring Kontact as a KDE Kolab client).</whatsthis>
+      <whatsthis>Check this box to enable automatic generation of mails when creating, updating or deleting events (or to-dos) involving other attendees. You should check this box if you want to use the groupware functionality (e.g. Configuring Kontact as a KDE Kolab client).</whatsthis>
       <default>true</default>
     </entry>
 
