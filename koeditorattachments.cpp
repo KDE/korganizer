@@ -227,8 +227,8 @@ AttachmentEditDialog::AttachmentEditDialog( AttachmentIconItem *item,
     grid->addWidget( label, 3, 0 );
     mURLRequester = new KUrlRequester( item->uri(), page );
     grid->addWidget( mURLRequester, 3, 2 );
-    connect( mURLRequester, SIGNAL( urlSelected( const QString & ) ),
-              SLOT( urlChanged( const QString & ) ) );
+    connect( mURLRequester, SIGNAL( urlSelected( const KUrl & ) ),
+              SLOT( urlChanged( const KUrl & ) ) );
   } else {
     if ( item->isLocal() ) {
       grid->addWidget( new QLabel( i18n( "Size:" ), page ), 3, 0 );
@@ -265,11 +265,11 @@ void AttachmentEditDialog::accept()
   KDialog::accept();
 }
 
-void AttachmentEditDialog::urlChanged( const QString &url )
+void AttachmentEditDialog::urlChanged( const KUrl &url )
 {
   mMimeType = KMimeType::findByUrl( url );
   mTypeLabel->setText( mMimeType->comment() );
-  mIcon->setPixmap( AttachmentIconItem::icon( mMimeType, url ) );
+  mIcon->setPixmap( AttachmentIconItem::icon( mMimeType, url.path() ) );
 }
 
 class AttachmentIconView : public K3IconView

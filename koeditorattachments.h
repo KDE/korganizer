@@ -64,7 +64,7 @@ class AttachmentEditDialog : public KDialog
     void accept();
 
   protected slots:
-    void urlChanged( const QString &url );
+    void urlChanged( const KUrl &url );
     virtual void slotApply();
 
   private:
