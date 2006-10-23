@@ -12,7 +12,7 @@ set(korgac_SRCS
    alarmdockwindow.cpp 
    koalarmclient.cpp )
 
-kde4_automoc(korgac ${korgac_SRCS})
+kde4_automoc(${korgac_SRCS})
 
 qt4_add_dbus_adaptor(korgac_SRCS org.kde.korganizer.KOrgac.xml koalarmclient.h KOAlarmClient )
 
@@ -28,7 +28,7 @@ install(TARGETS korgac  DESTINATION ${BIN_INSTALL_DIR} )
 if(KDE4_BUILD_TESTS)
 set(testalarmdlg_SRCS testalarmdlg.cpp alarmdialog.cpp )
 
-kde4_automoc(testalarmdlg ${testalarmdlg_SRCS})
+kde4_automoc(${testalarmdlg_SRCS})
 
 kde4_add_executable(testalarmdlg ${testalarmdlg_SRCS})
 
