@@ -95,7 +95,7 @@ class KOTodoEditor : public KOIncidenceEditor
   protected:
     void loadTemplate( /*const*/ CalendarLocal& );
     QStringList& templates() const;
-    QString type() { return "ToDo"; }
+    QString type() { return "Todo"; }
     void setupGeneral();
     void setupRecurrence();
     int msgItemDelete();
