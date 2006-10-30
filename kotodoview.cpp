@@ -931,10 +931,7 @@ void KOTodoView::copyTodoToDate( QDate date )
     Todo *newTodo = mActiveItem->todo()->clone();
     newTodo->recreate();
 
-   if ( date.isNull() )
-     newTodo->setHasDueDate( false );
-
-   newTodo->setHasDueDate( true );
+   newTodo->setHasDueDate( !date.isNull() );
    newTodo->setDtDue( dt );
    newTodo->setPercentComplete( 0 );
 
