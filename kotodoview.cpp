@@ -1255,17 +1255,16 @@ void KOTodoView::copyTodoToDate( const QDate &date )
     Todo *newTodo = mActiveItem->todo()->clone();
     newTodo->recreate();
 
-   if ( date.isNull() )
-     newTodo->setHasDueDate( false );
-   newTodo->setDtDue( dt );
-   newTodo->setPercentComplete( 0 );
+    newTodo->setHasDueDate( !date.isNull() );
+    newTodo->setDtDue( dt );
+    newTodo->setPercentComplete( 0 );
 
-   // avoid forking
-   if ( newTodo->doesRecur() )
-     newTodo->recurrence()->unsetRecurs();
+    // avoid forking
+    if ( newTodo->doesRecur() )
+      newTodo->recurrence()->unsetRecurs();
 
-   mChanger->addIncidence( newTodo );
- }
+    mChanger->addIncidence( newTodo );
+  }
 }
 
 QMenu *KOTodoView::getCategoryPopupMenu( KOTodoViewItem *todoItem )
