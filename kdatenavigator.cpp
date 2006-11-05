@@ -64,21 +64,21 @@ KDateNavigator::KDateNavigator( QWidget *parent, const char *name )
 
   // Set up the heading fields.
   for( i = 0; i < 7; i++ ) {
-    headings[i] = new QLabel( this );
-    headings[i]->setFont( QFont( generalFont, 10, QFont::Bold ) );
-    headings[i]->setAlignment( AlignCenter );
+    mHeadings[i] = new QLabel( this );
+    mHeadings[i]->setFont( QFont( generalFont, 10, QFont::Bold ) );
+    mHeadings[i]->setAlignment( AlignCenter );
 
-    topLayout->addWidget( headings[i], 1, i + 1 );
+    topLayout->addWidget( mHeadings[i], 1, i + 1 );
   }
 
   // Create the weeknumber labels
   for( i = 0; i < 6; i++ ) {
-    weeknos[i] = new QLabel( this );
-    weeknos[i]->setAlignment( AlignCenter );
-    weeknos[i]->setFont( QFont( generalFont, 10 ) );
-    weeknos[i]->installEventFilter( this );
+    mWeeknos[i] = new QLabel( this );
+    mWeeknos[i]->setAlignment( AlignCenter );
+    mWeeknos[i]->setFont( QFont( generalFont, 10 ) );
+    mWeeknos[i]->installEventFilter( this );
 
-    topLayout->addWidget( weeknos[i], i + 2, 0 );
+    topLayout->addWidget( mWeeknos[i], i + 2, 0 );
   }
 
   mDayMatrix = new KODayMatrix( this, "KDateNavigator::dayMatrix" );
@@ -147,15 +147,14 @@ QDate KDateNavigator::startDate() const
 
   const KCalendarSystem *calsys = KOGlobals::self()->calendarSystem();
   int m_fstDayOfWkCalsys = calsys->dayOfWeek( dayone );
+  int weekstart = KGlobal::locale()->weekStartDay();
 
   // If month begins on Monday and Monday is first day of week,
   // month should begin on second line. Sunday doesn't have this problem.
-  int nextLine = ( ( m_fstDayOfWkCalsys == 1) &&
-                   ( KGlobal::locale()->weekStartDay() == 1 ) ) ? 7 : 0;
+  int nextLine = m_fstDayOfWkCalsys <= weekstart ? 7 : 0;
 
   // update the matrix dates
-  int index = ( KGlobal::locale()->weekStartDay() == 1 ? 1 : 0 ) -
-              m_fstDayOfWkCalsys - nextLine;
+  int index = weekstart - m_fstDayOfWkCalsys - nextLine;
 
   dayone = dayone.addDays( index );
 
@@ -190,7 +189,7 @@ void KDateNavigator::updateDates()
     } else {
       weeknum.setNum( weeknumstart );
     }
-    weeknos[i]->setText( weeknum );
+    mWeeknos[i]->setText( weeknum );
   }
 
 // each updateDates is followed by an updateView -> repaint is issued there !
@@ -215,18 +214,13 @@ void KDateNavigator::updateView()
 void KDateNavigator::updateConfig()
 {
   int day;
+  int weekstart = KGlobal::locale()->weekStartDay();
   for( int i = 0; i < 7; i++ ) {
-    // take the first letter of the day name to be the abbreviation
-    if ( KGlobal::locale()->weekStartDay() == 1 ) {
-      day = i + 1;
-    } else {
-      if ( i == 0 ) day = 7;
-      else day = i;
-    }
+    day = weekstart + i <= 7 ? weekstart + i : ( weekstart + i ) % 7;
     QString dayName = KOGlobals::self()->calendarSystem()->weekDayName( day,
                                                                         true );
     if ( KOPrefs::instance()->mCompactDialogs ) dayName = dayName.left( 1 );
-    headings[i]->setText( dayName );
+    mHeadings[i]->setText( dayName );
   }
 
   // FIXME: Use actual config setting here
@@ -237,9 +231,9 @@ void KDateNavigator::setShowWeekNums( bool enabled )
 {
   for( int i = 0; i < 6; i++ ) {
     if( enabled )
-      weeknos[i]->show();
+      mWeeknos[i]->show();
     else
-      weeknos[i]->hide();
+      mWeeknos[i]->hide();
   }
 }
 
@@ -270,7 +264,7 @@ bool KDateNavigator::eventFilter ( QObject *o, QEvent *e )
   if ( e->type() == QEvent::MouseButtonPress ) {
     int i;
     for( i = 0; i < 6; ++i ) {
-      if ( o == weeknos[ i ] ) {
+      if ( o == mWeeknos[ i ] ) {
         QDate weekstart = mDayMatrix->getDate( i * 7 );
         emit weekClicked( weekstart );
         break;

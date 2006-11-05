@@ -99,15 +99,13 @@ class KDateNavigator: public QFrame
   private:
     NavigatorBar *mNavigatorBar;
 
-    QLabel *headings[ 7 ];
-    QLabel *weeknos[ 7 ];
+    QLabel *mHeadings[ 7 ];
+    QLabel *mWeeknos[ 7 ];
 
     KODayMatrix *mDayMatrix;
 
     KCal::DateList mSelectedDates;
     QDate mBaseDate;
-
-    const QString *curHeaders;
 
     // Disabling copy constructor and assignment operator
     KDateNavigator( const KDateNavigator & );
