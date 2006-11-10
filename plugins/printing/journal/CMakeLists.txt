@@ -12,7 +12,7 @@ kde4_add_ui_files(korg_journalprint_PART_SRCS calprintjournalconfig_base.ui )
 
 kde4_add_plugin(korg_journalprint WITH_PREFIX ${korg_journalprint_PART_SRCS})
 
-kde4_install_libtool_file( ${PLUGIN_INSTALL_DIR} korg_journalprint )
+
 
 target_link_libraries(korg_journalprint  ${KDE4_KDEUI_LIBS} korg_stdprinting )
 

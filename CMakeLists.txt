@@ -46,7 +46,7 @@ kde4_automoc(${kcm_korganizer_PART_SRCS})
 
 kde4_add_plugin(kcm_korganizer ${kcm_korganizer_PART_SRCS})
 
-kde4_install_libtool_file( ${PLUGIN_INSTALL_DIR} kcm_korganizer )
+
 
 target_link_libraries(kcm_korganizer ${KDE4_KDECORE_LIBS} korganizer kdepim kholidays)
 
@@ -63,7 +63,7 @@ kde4_automoc(${korganizerpart_PART_SRCS})
 
 kde4_add_plugin(korganizerpart WITH_PREFIX ${korganizerpart_PART_SRCS})
 
-kde4_install_libtool_file( ${PLUGIN_INSTALL_DIR} korganizerpart )
+
 
 target_link_libraries(korganizerpart  ${KDE4_KDECORE_LIBS} korganizer )
 

@@ -12,7 +12,7 @@ kde4_add_ui3_files(korg_listprint_PART_SRCS calprintlistconfig_base.ui )
 
 kde4_add_plugin(korg_listprint WITH_PREFIX ${korg_listprint_PART_SRCS})
 
-kde4_install_libtool_file( ${PLUGIN_INSTALL_DIR} korg_listprint )
+
 
 target_link_libraries(korg_listprint  ${KDE4_KDEUI_LIBS} korg_stdprinting )
 

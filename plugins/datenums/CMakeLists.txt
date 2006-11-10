@@ -10,7 +10,7 @@ kde4_automoc(${korg_datenums_PART_SRCS})
 
 kde4_add_plugin(korg_datenums WITH_PREFIX ${korg_datenums_PART_SRCS})
 
-kde4_install_libtool_file( ${PLUGIN_INSTALL_DIR} korg_datenums )
+
 
 target_link_libraries(korg_datenums  ${KDE4_KDEUI_LIBS} korganizer )
 
