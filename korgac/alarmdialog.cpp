@@ -73,19 +73,16 @@ AlarmDialog::AlarmDialog( QWidget *parent, const char *name )
   suspendBox->setSpacing( spacingHint() );
   topLayout->addWidget( suspendBox );
 
-  new QLabel( i18n("Suspend duration:"), suspendBox );
+  QLabel *l = new QLabel( i18n("Suspend &duration:"), suspendBox );
   mSuspendSpin = new QSpinBox( 1, 9999, 1, suspendBox );
   mSuspendSpin->setValue( 5 );  // default suspend duration
+  l->setBuddy( mSuspendSpin );
 
   mSuspendUnit = new KComboBox( suspendBox );
   mSuspendUnit->insertItem( i18n("minute(s)") );
   mSuspendUnit->insertItem( i18n("hour(s)") );
   mSuspendUnit->insertItem( i18n("day(s)") );
   mSuspendUnit->insertItem( i18n("week(s)") );
-
-  connect( mSuspendSpin, SIGNAL( valueChanged(int) ), actionButton(User1), SLOT( setFocus() ) );
-  connect( mSuspendUnit, SIGNAL( activated(int) ), actionButton(User1), SLOT( setFocus() ) );
-  connect( mSuspendUnit, SIGNAL( activated(int) ), actionButton(User2), SLOT( setFocus() ) );
 
   // showButton( User2/*3*/, false );
 
