@@ -17,6 +17,6 @@ GenericName[x-test]=xxPersonal Organizerxx
 ServiceTypes=Browser/View,DCOP/Organizer
 X-KDE-Library=libkorganizerpart
 X-KDE-StartupNotify=true
-X-DCOP-ServiceType=Unique
+X-DBUS-StartupType=Unique
 X-DCOP-ServiceName=korganizer
 Categories=Qt;KDE;Office;
