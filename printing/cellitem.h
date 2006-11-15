@@ -27,7 +27,7 @@
 #include <QString>
 #include <QList>
 
-#include <kdepimmacros.h>
+#include <kdemacros.h>
 
 namespace KOrg {
 

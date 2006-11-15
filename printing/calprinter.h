@@ -30,7 +30,7 @@
 #include <kdialog.h>
 #include <korganizer/baseview.h>
 #include <korganizer/printplugin.h>
-#include <kdepimmacros.h>
+#include <kdemacros.h>
 
 namespace KOrg {
 class CoreHelper;

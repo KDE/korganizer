@@ -31,7 +31,7 @@
 #include <QObject>
 #include <kurl.h>
 #include <korganizer/part.h>
-#include <kdepimmacros.h>
+#include <kdemacros.h>
 #include <QDateTime>
 namespace KCal
 {

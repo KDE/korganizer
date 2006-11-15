@@ -23,7 +23,7 @@
 #ifndef KORG_GLOBALS_H
 #define KORG_GLOBALS_H
 
-#include <kdepimmacros.h>
+#include <kdemacros.h>
 //Added by qt3to4:
 #include <QPixmap>
 

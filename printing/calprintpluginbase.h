@@ -30,7 +30,7 @@
 
 #include <QDateTime>
 #include <kprinter.h>
-#include <kdepimmacros.h>
+#include <kdemacros.h>
 #include <kcal/event.h>
 #include "korganizer/printplugin.h"
 #include "korganizer/corehelper.h"

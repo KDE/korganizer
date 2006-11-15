@@ -29,7 +29,7 @@
 #include <korganizer/part.h>
 #include <korganizer/printplugin.h>
 
-#include <kdepimmacros.h>
+#include <kdemacros.h>
 #include <kservice.h>
 
 namespace KPIM { class IdentityManager; }

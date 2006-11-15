@@ -76,7 +76,7 @@
 #include "ktimeedit.h"
 #include "koglobals.h"
 #include "stdcalendar.h"
-#include <kdepimmacros.h>
+#include <kdemacros.h>
 #include <kvbox.h>
 
 

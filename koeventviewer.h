@@ -26,7 +26,7 @@
 #define KOEVENTVIEWER_H
 
 #include <q3textbrowser.h>
-#include <kdepimmacros.h>
+#include <kdemacros.h>
 
 #include <kconfig.h>
 namespace KCal {

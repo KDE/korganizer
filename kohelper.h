@@ -25,7 +25,7 @@
 #ifndef KOHELPER_H
 #define KOHELPER_H
 
-#include <kdepimmacros.h>
+#include <kdemacros.h>
 
 namespace KCal {
   class Calendar;

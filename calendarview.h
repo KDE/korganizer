@@ -34,7 +34,7 @@
 #include <kfile.h>
 #include <korganizer/koeventviewer.h>
 #include <kcal/scheduler.h>
-#include <kdepimmacros.h>
+#include <kdemacros.h>
 
 #include <korganizer/calendarviewbase.h>
 

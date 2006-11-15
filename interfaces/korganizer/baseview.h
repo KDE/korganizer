@@ -27,7 +27,7 @@
 #include <klocale.h>
 #include <kdebug.h>
 #include <kmessagebox.h>
-#include <kdepimmacros.h>
+#include <kdemacros.h>
 #include "korganizer/incidencechangerbase.h"
 
 #include <kcal/event.h>

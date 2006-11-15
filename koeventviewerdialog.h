@@ -25,7 +25,7 @@
 #define KOEVENTVIEWERDIALOG_H
 
 #include <kdialog.h>
-#include <kdepimmacros.h>
+#include <kdemacros.h>
 #include "koeventviewer.h"
 
 namespace KCal {

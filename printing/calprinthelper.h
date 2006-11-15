@@ -31,7 +31,7 @@
 #include <kcal/calendar.h>
 #include <kcal/event.h>
 #include <kcal/todo.h>
-#include <kdepimmacros.h>
+#include <kdemacros.h>
 
 class QDate;
 class QTime;

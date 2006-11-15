@@ -25,7 +25,7 @@
 #define KORG_ABOUTDATA_H
 
 #include <kaboutdata.h>
-#include <kdepimmacros.h>
+#include <kdemacros.h>
 
 namespace KOrg {
 

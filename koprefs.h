@@ -27,7 +27,7 @@
 #include <QHash>
 #include <kdatetime.h>
 
-#include <kdepimmacros.h>
+#include <kdemacros.h>
 
 #include "koprefs_base.h"
 

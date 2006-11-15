@@ -33,7 +33,7 @@
 #define KORGANIZER_SHARED_H
 
 #include <QObject>
-#include <kdepimmacros.h>
+#include <kdemacros.h>
 
 class ActionManager;
 
