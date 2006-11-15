@@ -34,28 +34,34 @@
 #include "koprefs.h"
 #include "kohelper.h"
 
-QColor KOHelper::resourceColor( KCal::Calendar*calendar, KCal::Incidence*incidence )
+QColor KOHelper::resourceColor( KCal::Calendar *calendar,
+                                KCal::Incidence *incidence )
 {
   QColor resourceColor = QColor(); //Default invalid color
-  //FIXME: dynamic_cast are dirty, Better We implements interface to get the color
-  // from the calendar
-  KCal::CalendarResources *calendarResource = dynamic_cast<KCal::CalendarResources*>( calendar );
+  //FIXME: dynamic_cast are dirty, Better We implements interface to get
+  // the color from the calendar
+  KCal::CalendarResources *calendarResource =
+    dynamic_cast<KCal::CalendarResources*>( calendar );
 
   if ( calendarResource ) {
-    KCal::ResourceCalendar *resourceCalendar = calendarResource->resource( incidence );
+    KCal::ResourceCalendar *resourceCalendar =
+      calendarResource->resource( incidence );
 
-    QString identifier = resourceCalendar->identifier();
-    resourceColor = KOPrefs::instance()->resourceColor( identifier );
+    if ( resourceCalendar ) {
+      QString identifier = resourceCalendar->identifier();
+      resourceColor = KOPrefs::instance()->resourceColor( identifier );
 
-    if ( !resourceCalendar->subresources().isEmpty() ) {
-      identifier = resourceCalendar->subresourceIdentifier( incidence );
-      if ( identifier.isEmpty() )
-        identifier = resourceCalendar->identifier();
-      QColor subrescolor( KOPrefs::instance()->resourceColor( identifier ) );
-      if ( subrescolor.isValid() )
-        resourceColor = subrescolor;
+      if ( !resourceCalendar->subresources().isEmpty() ) {
+        identifier = resourceCalendar->subresourceIdentifier( incidence );
+        if ( identifier.isEmpty() ) {
+          identifier = resourceCalendar->identifier();
+        }
+        QColor subrescolor( KOPrefs::instance()->resourceColor( identifier ) );
+        if ( subrescolor.isValid() ) {
+          resourceColor = subrescolor;
+        }
+      }
     }
-
 //   } else {
 //     kDebug(5850) << "resourceColor: Calendar is not a CalendarResources" <<endl;
   }
