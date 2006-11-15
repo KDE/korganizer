@@ -162,6 +162,7 @@ void AlarmDialog::slotUser2()
   QDBusInterface korganizer("org.kde.korganizer", "/KOrganizer", "org.kde.korganizer.KOrganizer");
   korganizer.call( "editIncidence",mIncidence->uid() );
 
+#ifdef Q_OS_UNIX
   // get desktop # where korganizer (or kontact) runs
   QString object = QDBusConnection::sessionBus().interface()->isServiceRegistered( "kontact" ) ?
            "kontact-mainwindow_1" : "KOrganizer MainWindow";
@@ -179,13 +180,16 @@ void AlarmDialog::slotUser2()
 
     KWin::activateWindow( KWin::transientFor( window ) );
   }
+#endif  
 }
 
 void AlarmDialog::show()
 {
   KDialog::show();
+#ifdef Q_OS_UNIX  
   KWin::setState( winId(), NET::KeepAbove );
   KWin::setOnAllDesktops( winId(), true );
+#endif  
   eventNotification();
 }
 

@@ -659,7 +659,9 @@ void ActionManager::file_open( const KUrl &url )
   // is that URL already opened somewhere else? Activate that window
   KOrg::MainWindow *korg=ActionManager::findInstance( url );
   if ( ( 0 != korg )&&( korg != mMainWindow ) ) {
+#ifdef Q_OS_UNIX	  
     KWin::activateWindow( korg->topLevelWidget()->winId() );
+#endif    
     return;
   }
 
