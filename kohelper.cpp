@@ -44,18 +44,20 @@ QColor KOHelper::resourceColor( KCal::Calendar*calendar, KCal::Incidence*inciden
   if ( calendarResource ) {
     KCal::ResourceCalendar *resourceCalendar = calendarResource->resource( incidence );
 
-    QString identifier = resourceCalendar->identifier();
-    resourceColor = *KOPrefs::instance()->resourceColor( identifier );
+    if( resourceCalendar )
+    {
+      QString identifier = resourceCalendar->identifier();
+      resourceColor = *KOPrefs::instance()->resourceColor( identifier );
 
-    if ( !resourceCalendar->subresources().isEmpty() ) {
-      identifier = resourceCalendar->subresourceIdentifier( incidence );
-      if ( identifier.isEmpty() )
+      if ( !resourceCalendar->subresources().isEmpty() ) {
+       identifier = resourceCalendar->subresourceIdentifier( incidence );
+       if ( identifier.isEmpty() )
         identifier = resourceCalendar->identifier();
-      QColor subrescolor( *KOPrefs::instance()->resourceColor( identifier ) );
-      if ( subrescolor.isValid() )
-        resourceColor = subrescolor;
+        QColor subrescolor( *KOPrefs::instance()->resourceColor( identifier ) );
+        if ( subrescolor.isValid() )
+         resourceColor = subrescolor;
+      }
     }
-
 //   } else {
 //     kdDebug(5850) << "resourceColor: Calendar is not a CalendarResources" <<endl;
   }
