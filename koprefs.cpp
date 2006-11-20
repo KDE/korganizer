@@ -41,7 +41,7 @@
 #include <kemailsettings.h>
 #include <kstaticdeleter.h>
 #include <kstringhandler.h>
-#include <ktimezones.h>
+#include <ksystemtimezone.h>
 
 #include "koprefs.h"
 #include <libkpimidentities/identitymanager.h>

@@ -55,6 +55,7 @@
 #include <kiconloader.h>
 #include <kemailsettings.h>
 #include <kcalendarsystem.h>
+#include <ksystemtimezone.h>
 #include <kpushbutton.h>
 #include <kocore.h>
 #include <kcal/calendarresources.h>

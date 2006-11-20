@@ -35,6 +35,7 @@
 #include <kdebug.h>
 #include <kconfig.h>
 #include <kcalendarsystem.h>
+#include <ksystemtimezone.h>
 #include <kprinter.h>
 #include <kwordwrap.h>
 
