@@ -540,7 +540,7 @@ void KOAgendaItem::dragEnterEvent( QDragEnterEvent *e )
     e->ignore();
     return;
   }
-  if ( KVCardDrag::canDecode( e ) || md->hasText() )
+  if ( KVCardDrag::canDecode( md ) || md->hasText() )
     e->accept();
   else
     e->ignore();
@@ -566,9 +566,10 @@ void KOAgendaItem::addAttendee( const QString &newAttendee )
 void KOAgendaItem::dropEvent( QDropEvent *e )
 {
 #ifndef KORG_NODND
-  QString text;
+  const QMimeData *md = e->mimeData();
 
-  bool decoded = Q3TextDrag::decode( e, text );
+  bool decoded = md->hasText();
+  QString text = md->text();
   if( decoded && text.startsWith( "file:" ) ) {
     mIncidence->addAttachment( new Attachment( text ) );
     return;
@@ -577,14 +578,15 @@ void KOAgendaItem::dropEvent( QDropEvent *e )
 #ifndef KORG_NOKABC
   KABC::Addressee::List list;
 
-  KVCardDrag::decode( e, list );
-  KABC::Addressee::List::Iterator it;
-  for ( it = list.begin(); it != list.end(); ++it ) {
-    QString em( (*it).fullEmail() );
-    if (em.isEmpty()) {
-      em=(*it).realName();
+  if ( KVCardDrag::fromMimeData( md, list ) ) {
+    KABC::Addressee::List::Iterator it;
+    for ( it = list.begin(); it != list.end(); ++it ) {
+      QString em( (*it).fullEmail() );
+      if (em.isEmpty()) {
+        em=(*it).realName();
+      }
+      addAttendee( em );
     }
-    addAttendee( em );
   }
 #else
   if( decoded ) {

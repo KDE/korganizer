@@ -58,8 +58,7 @@ typedef CustomListViewItem<KCal::Attendee *> AttendeeListItem;
 
 /** KOAttendeeListView is a child class of K3ListView  which supports
  *  dropping of attendees (e.g. from kaddressbook) onto it. If an attendeee
- *  was dropped, the signal dropped(Attendee*)  is emitted. Valid drop classes
- *   are KVCardDrag and QTextDrag.
+ *  was dropped, the signal dropped(Attendee*)  is emitted.
  */
 class KOAttendeeListView : public K3ListView
 {

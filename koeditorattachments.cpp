@@ -448,14 +448,14 @@ QString KOEditorAttachments::generateLocalAttachmentPath(
 
 void KOEditorAttachments::dropEvent( QDropEvent* event ) {
   KUrl::List urls;
-  QString text;
   bool probablyWeHaveUris = false;
   bool weCanCopy = true;
-  KABC::Addressee::List addressees;
+  const QMimeData *md = event->mimeData();
   QStringList labels;
-  QMap<QString,QString> metadata;
-  if ( KVCardDrag::canDecode( event ) ) {
-    KVCardDrag::decode( event, addressees );
+  
+  if ( KVCardDrag::canDecode( md ) ) {
+    KABC::Addressee::List addressees;
+    KVCardDrag::fromMimeData( md, addressees );
     for ( KABC::Addressee::List::ConstIterator it = addressees.constBegin();
           it != addressees.constEnd(); ++it ) {
       urls.append( KDEPIMPROTOCOL_CONTACT + ( *it ).uid() );
@@ -463,12 +463,16 @@ void KOEditorAttachments::dropEvent( QDropEvent* event ) {
       labels.append( QString::fromUtf8( ( *it ).realName().toLatin1() ) );
     }
     probablyWeHaveUris = true;
-  } else if ( K3URLDrag::decode( event, urls, metadata ) ) {
+  } else if ( KUrl::List::canDecode( md ) ) {
+    QMap<QString,QString> metadata;
+
+    KUrl::List urls = KUrl::List::fromMimeData( md, &metadata );
     probablyWeHaveUris = true;
     labels = metadata["labels"].split( ":", QString::SkipEmptyParts );
     for ( QStringList::Iterator it = labels.begin(); it != labels.end(); ++it )
       *it = KUrl::fromPercentEncoding( (*it).toLatin1() );
-  } else if ( Q3TextDrag::decode( event, text ) ) {
+  } else if ( md->hasText() ) {
+    QString text = md->text();
     QStringList lst = text.split( '\n', QString::SkipEmptyParts );
     for ( QStringList::ConstIterator it = lst.begin(); it != lst.end(); ++it )
       urls.append( *it );
@@ -501,7 +505,7 @@ void KOEditorAttachments::dropEvent( QDropEvent* event ) {
       addAttachment( (*it).url(), QString(),
                      ( jt == labels.constEnd() ? QString() : *(jt++) ) );
   } else if ( cancelAction != ret ) {
-    if ( probablyWeHaveUris )
+    if ( probablyWeHaveUris ) {
       for ( KUrl::List::ConstIterator it = urls.constBegin();
             it != urls.constEnd(); ++it ) {
 #if 0 // binary attachments are unimplemented yet
@@ -516,7 +520,8 @@ void KOEditorAttachments::dropEvent( QDropEvent* event ) {
         connect( job, SIGNAL( result( KJob * ) ),
                  SLOT( copyComplete( KJob * ) ) );
       }
-    else { // we take anything
+    } else { // we take anything
+#warning Port to QMimeData from QMimeSource
       KMimeType::Ptr mimeType = KMimeType::mimeType( event->format() );
       QString path = generateLocalAttachmentPath( QString(), mimeType );
       QFile file( path );

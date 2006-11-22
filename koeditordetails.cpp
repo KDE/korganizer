@@ -98,8 +98,7 @@ KOAttendeeListView::KOAttendeeListView ( QWidget *parent )
 
 /** KOAttendeeListView is a child class of K3ListView  which supports
  *  dropping of attendees (e.g. from kaddressbook) onto it. If an attendeee
- *  was dropped, the signal dropped(Attendee*)  is emitted. Valid drop classes
- *   are KVCardDrag and QTextDrag.
+ *  was dropped, the signal dropped(Attendee*)  is emitted.
  */
 KOAttendeeListView::~KOAttendeeListView()
 {
@@ -113,7 +112,8 @@ void KOAttendeeListView::contentsDragEnterEvent( QDragEnterEvent *e )
 void KOAttendeeListView::contentsDragMoveEvent( QDragMoveEvent *e )
 {
 #ifndef KORG_NODND
-  if ( KVCardDrag::canDecode( e ) || Q3TextDrag::canDecode( e ) ) {
+  const QMimeData *md = e->mimeData();
+  if ( KVCardDrag::canDecode( md ) || md->hasText() ) {
     e->accept();
   } else {
     e->ignore();
@@ -124,7 +124,8 @@ void KOAttendeeListView::contentsDragMoveEvent( QDragMoveEvent *e )
 void KOAttendeeListView::dragEnterEvent( QDragEnterEvent *e )
 {
 #ifndef KORG_NODND
-  if ( KVCardDrag::canDecode( e ) || Q3TextDrag::canDecode( e ) ) {
+  const QMimeData *md = e->mimeData();
+  if ( KVCardDrag::canDecode( md ) || md->hasText() ) {
     e->accept();
   } else {
     e->ignore();
@@ -149,12 +150,12 @@ void KOAttendeeListView::contentsDropEvent( QDropEvent *e )
 void KOAttendeeListView::dropEvent( QDropEvent *e )
 {
 #ifndef KORG_NODND
-  QString text;
+  const QMimeData *md = e->mimeData();
 
 #ifndef KORG_NOKABC
-  if ( KVCardDrag::canDecode( e ) ) {
+  if ( KVCardDrag::canDecode( md ) ) {
     KABC::Addressee::List list;
-    KVCardDrag::decode( e, list );
+    KVCardDrag::fromMimeData( md, list );
 
     KABC::Addressee::List::Iterator it;
     for ( it = list.begin(); it != list.end(); ++it ) {
@@ -166,7 +167,8 @@ void KOAttendeeListView::dropEvent( QDropEvent *e )
     }
   } else
 #endif // KORG_NOKABC
-  if (Q3TextDrag::decode(e,text)) {
+  if ( md->hasText() ) {
+    QString text = md->text();
     kDebug(5850) << "Dropped : " << text << endl;
     QStringList emails = text.split(",", QString::SkipEmptyParts);
     for(QStringList::ConstIterator it = emails.begin();it!=emails.end();++it) {
