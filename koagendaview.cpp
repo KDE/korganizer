@@ -1616,8 +1616,8 @@ void KOAgendaView::startDrag( Incidence *incidence )
 {
 #ifndef KORG_NODND
   DndFactory factory( calendar() );
-  Q3DragObject *vd = factory.createDrag( incidence, this );
-  if ( vd->drag() ) {
+  QDrag *drag = factory.createDrag( incidence, this );
+  if ( drag->start() ) {
     kDebug(5850) << "KOAgendaView::startDrag(): Delete drag source" << endl;
   }
 #endif

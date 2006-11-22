@@ -406,17 +406,19 @@ bool KOAgenda::eventFilter ( QObject *object, QEvent *event )
 bool KOAgenda::eventFilter_drag( QObject *object, QDropEvent *de )
 {
 #ifndef KORG_NODND
+  // FIXME: Implement dropping of events!
   QPoint viewportPos;
   if ( object != viewport() && object != this ) {
     viewportPos = static_cast<QWidget *>( object )->mapToParent( de->pos() );
   } else {
     viewportPos = de->pos();
   }
+  const QMimeData *md = de->mimeData();
 
   switch ( de->type() ) {
     case QEvent::DragEnter:
     case QEvent::DragMove:
-      if ( ICalDrag::canDecode( de ) || VCalDrag::canDecode( de ) ) {
+      if ( ICalDrag::canDecode( md ) || VCalDrag::canDecode( md ) ) {
 
         DndFactory factory( mCalendar );
         Todo *todo = factory.createDropTodo( de );
@@ -434,7 +436,7 @@ bool KOAgenda::eventFilter_drag( QObject *object, QDropEvent *de )
       break;
     case QEvent::Drop:
       {
-        if ( !ICalDrag::canDecode( de ) && !VCalDrag::canDecode( de ) ) {
+        if ( !ICalDrag::canDecode( md ) && !VCalDrag::canDecode( md ) ) {
           return false;
         }
 

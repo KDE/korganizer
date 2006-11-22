@@ -101,7 +101,8 @@ KOPrefsDialogMain::KOPrefsDialogMain( KInstance *inst, QWidget *parent )
   addWidString( KOPrefs::instance()->userNameItem(), mUserEmailSettings );
   addWidString( KOPrefs::instance()->userEmailItem(), mUserEmailSettings );
 
-  QGroupBox *saveGroup = new QGroupBox( i18n("Saving Calendar"), topFrame );
+  QGroupBox *saveGroupBox = new QGroupBox( i18n("Saving Calendar"), topFrame );
+  KVBox *saveGroup = new KVBox( saveGroupBox );
 
   addWidBool( KOPrefs::instance()->htmlWithSaveItem(), saveGroup );
 
@@ -112,7 +113,7 @@ KOPrefsDialogMain::KOPrefsDialogMain( KInstance *inst, QWidget *parent )
   connect( autoSave->checkBox(), SIGNAL( toggled( bool ) ),
            intervalBox, SLOT( setEnabled( bool ) ) );
   intervalBox->setSpacing( KDialog::spacingHint() );
-  new QWidget( intervalBox );
+//   new QWidget( intervalBox );
 
   addWidBool( KOPrefs::instance()->confirmItem(), topFrame );
   addWidRadios( KOPrefs::instance()->destinationItem(), topFrame);
@@ -286,8 +287,10 @@ class KOPrefsDialogTime : public KPrefsModule
       topLayout->addWidget( mAlarmTimeCombo, 5, 1 );
 
 
-      QGroupBox *workingHoursGroup = new QGroupBox( i18n("Working Hours"), topFrame);
-      topLayout->addWidget( workingHoursGroup, 6, 0, 1, 2 );
+      QGroupBox *workingHoursGroupBox = new QGroupBox( i18n("Working Hours"), topFrame);
+      QLayout *ly = new QVBoxLayout( workingHoursGroupBox );
+      topLayout->addWidget( workingHoursGroupBox, 6, 0, 1, 2 );
+      KVBox *workingHoursGroup = new KVBox( workingHoursGroupBox );
 
       KHBox *workDaysBox = new KHBox( workingHoursGroup );
       // Respect start of week setting

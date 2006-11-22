@@ -23,7 +23,6 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include <q3dragobject.h>
 #include <QPainter>
 #include <QPixmap>
 #include <QPaintEvent>
@@ -37,6 +36,8 @@
 #include <kwordwrap.h>
 
 #include <kcal/icaldrag.h>
+#include <kcal/incidence.h>
+#include <kcal/todo.h>
 #include <kcal/incidenceformatter.h>
 #include <kcal/vcaldrag.h>
 #include <libkdepim/kvcarddrag.h>
@@ -533,11 +534,13 @@ void KOAgendaItem::expandRight(int dx)
 void KOAgendaItem::dragEnterEvent( QDragEnterEvent *e )
 {
 #ifndef KORG_NODND
-  if ( ICalDrag::canDecode( e ) || VCalDrag::canDecode( e ) ) {
+  const QMimeData *md = e->mimeData();
+  if ( ICalDrag::canDecode( md ) || VCalDrag::canDecode( md ) ) {
+    // TODO: Allow dragging events/todos onto other events to create a relation
     e->ignore();
     return;
   }
-  if ( KVCardDrag::canDecode( e ) || Q3TextDrag::canDecode( e ) )
+  if ( KVCardDrag::canDecode( e ) || md->hasText() )
     e->accept();
   else
     e->ignore();

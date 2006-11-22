@@ -406,7 +406,8 @@ enum {
 void KODayMatrix::dragEnterEvent( QDragEnterEvent *e )
 {
 #ifndef KORG_NODND
-  if ( !ICalDrag::canDecode( e ) && !VCalDrag::canDecode( e ) ) {
+  const QMimeData *md = e->mimeData();
+  if ( !ICalDrag::canDecode( md ) && !VCalDrag::canDecode( md ) ) {
     e->ignore();
     return;
   }
@@ -421,7 +422,8 @@ void KODayMatrix::dragEnterEvent( QDragEnterEvent *e )
 void KODayMatrix::dragMoveEvent( QDragMoveEvent *e )
 {
 #ifndef KORG_NODND
-  if ( !ICalDrag::canDecode( e ) && !VCalDrag::canDecode( e ) ) {
+  const QMimeData *md = e->mimeData();
+  if ( !ICalDrag::canDecode( md ) && !VCalDrag::canDecode( md ) ) {
     e->ignore();
     return;
   }
@@ -443,14 +445,13 @@ void KODayMatrix::dropEvent( QDropEvent *e )
 #ifndef KORG_NODND
   kDebug(5850) << "KODayMatrix::dropEvent(e) begin" << endl;
 
-  if ( !mCalendar ||
-       ( !ICalDrag::canDecode( e ) && !VCalDrag::canDecode( e ) ) ) {
+  if ( !mCalendar ) {
     e->ignore();
     return;
   }
 
   DndFactory factory( mCalendar );
-  Event *event = factory.createDrop( e );
+  Event *event = factory.createDropEvent( e );
   Todo *todo = factory.createDropTodo( e );
   if ( !event && !todo ) {
     e->ignore();

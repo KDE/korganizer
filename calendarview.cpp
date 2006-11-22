@@ -1630,7 +1630,7 @@ void CalendarView::processIncidenceSelection( Incidence *incidence )
 void CalendarView::checkClipboard()
 {
 #ifndef KORG_NODND
-  if (ICalDrag::canDecode(QApplication::clipboard()->data())) {
+  if (ICalDrag::canDecode(QApplication::clipboard()->mimeData())) {
     kDebug(5850) << "CalendarView::checkClipboard() true" << endl;
     emit pasteEnabled(true);
   } else {

@@ -45,6 +45,7 @@
 #include <QDragEnterEvent>
 #include <QSplitter>
 #include <QApplication>
+#include <QMimeData>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -52,9 +53,6 @@
 #include <kiconloader.h>
 #include <kmessagebox.h>
 #include <kactioncollection.h>
-#ifndef KORG_NODND
-#include <k3multipledrag.h>
-#endif
 #include <ktoolbar.h>
 
 #include <kcal/icaldrag.h>
@@ -204,8 +202,9 @@ void KOTodoListView::contentsDragEnterEvent(QDragEnterEvent *e)
 {
 #ifndef KORG_NODND
 //  kDebug(5850) << "KOTodoListView::contentsDragEnterEvent" << endl;
-  if ( !ICalDrag::canDecode( e ) && !VCalDrag::canDecode( e ) &&
-       !Q3TextDrag::canDecode( e ) ) {
+  const QMimeData *md = e->mimeData();
+  if ( !ICalDrag::canDecode( md ) && !VCalDrag::canDecode( md ) &&
+       !md->hasText() ) {
     e->ignore();
     return;
   }
@@ -219,8 +218,9 @@ void KOTodoListView::contentsDragMoveEvent(QDragMoveEvent *e)
 #ifndef KORG_NODND
 //  kDebug(5850) << "KOTodoListView::contentsDragMoveEvent" << endl;
 
-  if ( !ICalDrag::canDecode( e ) && !VCalDrag::canDecode( e ) &&
-       !Q3TextDrag::canDecode( e ) ) {
+  const QMimeData *md = e->mimeData();
+  if ( !ICalDrag::canDecode( md ) && !VCalDrag::canDecode( md ) &&
+       !md->hasText() ) {
     e->ignore();
     return;
   }
@@ -244,15 +244,17 @@ void KOTodoListView::contentsDropEvent( QDropEvent *e )
 #ifndef KORG_NODND
   kDebug(5850) << "KOTodoListView::contentsDropEvent" << endl;
 
+  const QMimeData *md = e->mimeData();
   if ( !mCalendar || !mChanger ||
-       ( !ICalDrag::canDecode( e ) && !VCalDrag::canDecode( e ) &&
-         !Q3TextDrag::canDecode( e ) ) ) {
+       ( !ICalDrag::canDecode( md ) && !VCalDrag::canDecode( md ) &&
+         !md->hasText() ) ) {
     e->ignore();
     return;
   }
 
   DndFactory factory( mCalendar );
-  Todo *todo = factory.createDropTodo(e);
+  Todo *todo = factory.createDropTodo( e );
+  Event *event = factory.createDropEvent( e );
 
   if ( todo ) {
     e->setDropAction( Qt::MoveAction );
@@ -297,9 +299,9 @@ void KOTodoListView::contentsDropEvent( QDropEvent *e )
         return;
       }
     }
-  }
-  else {
-    QString text;
+  } else if ( event ) {
+    // TODO: Implement dropping an event onto a to-do: Generate a relationship to the event!
+  } else {
     KOTodoViewItem *todoi = dynamic_cast<KOTodoViewItem *>(itemAt( contentsToViewport(e->pos()) ));
     if ( ! todoi ) {
       // Not dropped on a todo item:
@@ -307,8 +309,9 @@ void KOTodoListView::contentsDropEvent( QDropEvent *e )
       kDebug( 5850 ) << "KOTodoListView::contentsDropEvent(): Not dropped on a todo item" << endl;
       kDebug( 5850 ) << "TODO: Create a new todo with the given data" << endl;
       // FIXME: Create a new todo with the given text/contact/whatever
-    } else if ( Q3TextDrag::decode(e, text) ) {
+    } else if ( md->hasText() ) {
       //QListViewItem *qlvi = itemAt( contentsToViewport(e->pos()) );
+      QString text = md->text();
       kDebug(5850) << "Dropped : " << text << endl;
       Todo*todo = todoi->todo();
       if( mChanger->beginChange( todo ) ) {
@@ -375,9 +378,9 @@ void KOTodoListView::contentsMouseMoveEvent(QMouseEvent* e)
     if ( item && mCalendar ) {
 //      kDebug(5850) << "Start Drag for item " << item->text(0) << endl;
       DndFactory factory( mCalendar );
-      Q3DragObject *vd = factory.createDrag(
+      QDrag *vd = factory.createDrag(
                           ((KOTodoViewItem *)item)->todo(),viewport());
-      if (vd->drag()) {
+      if (vd->start()) {
         kDebug(5850) << "KOTodoListView::contentsMouseMoveEvent(): Delete drag source" << endl;
       }
 /*
