@@ -52,7 +52,6 @@
 #include <kseparator.h>
 #include <kstandarddirs.h>
 #include <ktemporaryfile.h>
-#include <k3urldrag.h>
 #include <kurlrequester.h>
 
 #include <QCursor>
@@ -62,7 +61,6 @@
 #include <QLayout>
 #include <QLineEdit>
 #include <QPushButton>
-#include <q3dragobject.h>
 #include <QRegExp>
 #include <QString>
 #include <QStringList>
@@ -278,6 +276,8 @@ public:
   AttachmentIconView( QWidget *parent ) : K3IconView( parent ) {}
 
 protected:
+#warning Port this to QDrag instead of Q3DragObject once we have proted the view from K3IconView to some Qt4 class
+#if 0
   virtual Q3DragObject * dragObject ()
   {
     // create a list of the URL:s that we want to drag
@@ -304,15 +304,21 @@ protected:
     if( pixmap.isNull() )
         pixmap = static_cast<AttachmentIconItem *>( currentItem() )->icon();
 
-    QPoint hotspot;
-    hotspot.setX( pixmap.width() / 2 );
-    hotspot.setY( pixmap.height() / 2 );
+    QPoint hotspot( pixmap.width() / 2, pixmap.height() / 2 );
     QMap<QString, QString> metadata;
     metadata["labels"] = labels.join(":");
-    Q3DragObject* myDragObject = new K3URLDrag( urls, metadata, this );
-    myDragObject->setPixmap( pixmap, hotspot );
-    return myDragObject;
+
+    QDrag *drag = new QDrag( this );
+    QMimeData *mimeData = new QMimeData;
+    drag->setMimeData( mimeData );
+    urls.populateMimeData( mimeData, metadata );
+
+    drag->setPixmap( pixmap );
+    drag->setHotSpot( hotspot );
+    return drag;
   }
+#endif
+
 };
 
 KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent )
@@ -404,7 +410,8 @@ bool KOEditorAttachments::hasAttachments()
 }
 
 void KOEditorAttachments::dragEnterEvent( QDragEnterEvent* event ) {
-  event->setAccepted( K3URLDrag::canDecode( event ) | Q3TextDrag::canDecode( event ) );
+  const QMimeData *md = event->mimeData();
+  event->setAccepted( KUrl::List::canDecode( md ) || md->hasText() );
 }
 
 QString KOEditorAttachments::generateLocalAttachmentPath(

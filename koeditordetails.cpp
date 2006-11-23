@@ -28,7 +28,6 @@
 #include <QCheckBox>
 #include <QComboBox>
 #include <QDateTime>
-#include <q3dragobject.h>
 #include <QLabel>
 #include <QLayout>
 #include <QLineEdit>
