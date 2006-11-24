@@ -432,7 +432,7 @@ void ActionManager::initActions()
   connect(mEditIncidenceAction, SIGNAL(triggered(bool) ), mCalendarView, SLOT( editIncidence() ));
   mDeleteIncidenceAction = new KAction( i18n("&Delete"), mACollection, "delete_incidence" );
   connect(mDeleteIncidenceAction, SIGNAL(triggered(bool) ), mCalendarView, SLOT( deleteIncidence()));
-  mDeleteIncidenceAction->setShortcut(Qt::Key_Delete);
+  mDeleteIncidenceAction->setShortcut(QKeySequence(Qt::Key_Delete));
 
   action = new KAction( i18n("&Make Sub-to-do Independent"), mACollection, "unsub_todo" );
   connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( todo_unsub() ));
