@@ -29,9 +29,7 @@
 
 #include <QDateTime>
 #include <QWidget>
-#include <QDragEnterEvent>
 #include <QPixmap>
-#include <QDropEvent>
 #include <QPaintEvent>
 #include <QList>
 

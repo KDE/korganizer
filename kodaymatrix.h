@@ -32,19 +32,14 @@
 #include <QColor>
 #include <QToolTip>
 #include <QMap>
-//Added by qt3to4:
-#include <QDragEnterEvent>
-#include <QMouseEvent>
-#include <QDragLeaveEvent>
-#include <QDragMoveEvent>
-#include <QResizeEvent>
-#include <QDropEvent>
-#include <QPaintEvent>
 
 class QDragEnterEvent;
 class QDragMoveEvent;
 class QDragLeaveEvent;
 class QDropEvent;
+class QMouseEvent;
+class QResizeEvent;
+class QPaintEvent;
 
 class KODayMatrix;
 

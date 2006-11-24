@@ -30,13 +30,8 @@
 #include <QMap>
 #include <QToolTip>
 #include <QMenu>
-#include <QDragLeaveEvent>
 #include <QList>
-#include <QDragMoveEvent>
 #include <QEvent>
-#include <QDropEvent>
-#include <QDragEnterEvent>
-#include <QMouseEvent>
 
 #include <k3listview.h>
 
@@ -51,6 +46,7 @@ class QDropEvent;
 class QMenu;
 class QAction;
 class QSplitter;
+class QMouseEvent;
 
 class KLineEdit;
 class KToolBar;
