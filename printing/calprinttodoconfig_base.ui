@@ -1,7 +1,6 @@
 <ui version="4.0" >
  <author>Reinhold Kainhofer &lt;reinhold@kainhofer.com></author>
  <comment>Configuration page for the print day mode.</comment>
- <exportmacro></exportmacro>
  <class>CalPrintTodoConfig_Base</class>
  <widget class="QWidget" name="CalPrintTodoConfig_Base" >
   <property name="geometry" >
@@ -9,7 +8,7 @@
     <x>0</x>
     <y>0</y>
     <width>419</width>
-    <height>477</height>
+    <height>544</height>
    </rect>
   </property>
   <layout class="QGridLayout" >
@@ -20,17 +19,11 @@
     <number>6</number>
    </property>
    <item row="1" column="0" colspan="2" >
-    <widget class="Q3ButtonGroup" name="mPrintType" >
+    <widget class="QGroupBox" name="mPrintType" >
      <property name="title" >
       <string>To-dos to Print</string>
      </property>
      <layout class="QVBoxLayout" >
-      <property name="margin" >
-       <number>9</number>
-      </property>
-      <property name="spacing" >
-       <number>6</number>
-      </property>
       <item>
        <widget class="QRadioButton" name="mPrintAll" >
         <property name="text" >
@@ -404,8 +397,6 @@
    <class>KDateEdit</class>
    <extends>QComboBox</extends>
    <header>kdateedit.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
  </customwidgets>
  <tabstops>
@@ -429,64 +420,24 @@
    <signal>toggled(bool)</signal>
    <receiver>mFromDateLabel</receiver>
    <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>209</x>
-     <y>132</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>76</x>
-     <y>159</y>
-    </hint>
-   </hints>
   </connection>
   <connection>
    <sender>mPrintDueRange</sender>
    <signal>toggled(bool)</signal>
    <receiver>mToDate</receiver>
    <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>143</x>
-     <y>136</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>279</x>
-     <y>156</y>
-    </hint>
-   </hints>
   </connection>
   <connection>
    <sender>mPrintDueRange</sender>
    <signal>toggled(bool)</signal>
    <receiver>mToDateLabel</receiver>
    <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>231</x>
-     <y>134</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>229</x>
-     <y>166</y>
-    </hint>
-   </hints>
   </connection>
   <connection>
    <sender>mPrintDueRange</sender>
    <signal>toggled(bool)</signal>
    <receiver>mFromDate</receiver>
    <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>173</x>
-     <y>136</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>151</x>
-     <y>168</y>
-    </hint>
-   </hints>
   </connection>
  </connections>
 </ui>

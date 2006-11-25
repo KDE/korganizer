@@ -214,8 +214,15 @@ void CalPrintWeek::readSettingsWidget()
     mFromDate = cfg->mFromDate->date();
     mToDate = cfg->mToDate->date();
 
-    mWeekPrintType = (eWeekPrintType)( cfg->mPrintType->id(
-      cfg->mPrintType->selected() ) );
+    if ( cfg->mPrintTypeFilofax->isChecked() ) {
+      mWeekPrintType = Filofax;
+    } else if ( cfg->mPrintTypeTimetable->isChecked() ) {
+      mWeekPrintType = Timetable;
+    } else if ( cfg->mPrintTypeSplitWeek->isChecked() ) {
+      mWeekPrintType = SplitWeek;
+    } else {
+      mWeekPrintType = Timetable;
+    }
 
     mStartTime = cfg->mFromTime->time();
     mEndTime = cfg->mToTime->time();
@@ -233,7 +240,9 @@ void CalPrintWeek::setSettingsWidget()
     cfg->mFromDate->setDate( mFromDate );
     cfg->mToDate->setDate( mToDate );
 
-    cfg->mPrintType->setButton( mWeekPrintType );
+    cfg->mPrintTypeFilofax->setChecked( mWeekPrintType == Filofax );
+    cfg->mPrintTypeTimetable->setChecked( mWeekPrintType == Timetable );
+    cfg->mPrintTypeSplitWeek->setChecked( mWeekPrintType == SplitWeek );
 
     cfg->mFromTime->setTime( mStartTime );
     cfg->mToTime->setTime( mEndTime );
@@ -502,8 +511,15 @@ void CalPrintTodos::readSettingsWidget()
   if ( cfg ) {
     mPageTitle = cfg->mTitle->text();
 
-    mTodoPrintType = (eTodoPrintType)( cfg->mPrintType->id(
-      cfg->mPrintType->selected() ) );
+    if ( cfg->mPrintAll->isChecked() ) {
+      mTodoPrintType = TodosAll;
+    } else if ( cfg->mPrintUnfinished->isChecked() ) {
+      mTodoPrintType = TodosUnfinished;
+    } else if ( cfg->mPrintDueRange->isChecked() ) {
+      mTodoPrintType = TodosDueRange;
+    } else {
+      mTodoPrintType = TodosAll;
+    }
 
     mFromDate = cfg->mFromDate->date();
     mToDate = cfg->mToDate->date();
@@ -527,7 +543,9 @@ void CalPrintTodos::setSettingsWidget()
   if ( cfg ) {
     cfg->mTitle->setText( mPageTitle );
 
-    cfg->mPrintType->setButton( mTodoPrintType );
+    cfg->mPrintAll->setChecked( mTodoPrintType == TodosAll );
+    cfg->mPrintUnfinished->setChecked( mTodoPrintType == TodosUnfinished );
+    cfg->mPrintDueRange->setChecked( mTodoPrintType == TodosDueRange );
 
     cfg->mFromDate->setDate( mFromDate );
     cfg->mToDate->setDate( mToDate );

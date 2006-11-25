@@ -518,7 +518,7 @@ KDateTime::Spec spec = KSystemTimeZones::local();
 
 
 void CalPrintHelper::drawAgendaItem( PrintCellItem *item, QPainter &p,
-                                   const QDate &qd,
+                                   const QDate &,
                                    const KDateTime &startPrintDate,
                                    const KDateTime &endPrintDate,
                                    float minlen, int x, int y, int width )

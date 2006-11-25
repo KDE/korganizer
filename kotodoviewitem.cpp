@@ -187,9 +187,7 @@ bool KOTodoViewItem::isAlternate()
     if (m_known)
     {
        m_odd = above ? !above->m_odd : false;
-    }
-    else
-    {
+    } else {
        KOTodoViewItem *item;
        bool previous = true;
        if (Q3ListViewItem::parent())
@@ -206,7 +204,8 @@ bool KOTodoViewItem::isAlternate()
 
        while(item)
        {
-          item->m_odd = previous = !previous;
+          previous = (!previous);
+          item->m_odd = previous;
           item->m_known = true;
           item = dynamic_cast<KOTodoViewItem *>(item->nextSibling());
        }

@@ -1,7 +1,6 @@
 <ui version="4.0" >
  <author>Reinhold Kainhofer &lt;reinhold@kainhofer.com></author>
  <comment>Configuration page for the print week mode.</comment>
- <exportmacro></exportmacro>
  <class>CalPrintWeekConfig_Base</class>
  <widget class="QWidget" name="CalPrintWeekConfig_Base" >
   <property name="geometry" >
@@ -173,12 +172,9 @@
     </widget>
    </item>
    <item>
-    <widget class="Q3ButtonGroup" name="mPrintType" >
+    <widget class="QGroupBox" name="mPrintType" >
      <property name="title" >
       <string>Print Layout</string>
-     </property>
-     <property name="orientation" >
-      <enum>Qt::Vertical</enum>
      </property>
      <layout class="QVBoxLayout" >
       <property name="margin" >
@@ -188,7 +184,7 @@
        <number>6</number>
       </property>
       <item>
-       <widget class="QRadioButton" name="mPrintTypeButton1" >
+       <widget class="QRadioButton" name="mPrintTypeFilofax" >
         <property name="whatsThis" >
          <string>The Filofax view prints one week per page, so all days have a large surface.</string>
         </property>
@@ -201,7 +197,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QRadioButton" name="mPrintTypeButton2" >
+       <widget class="QRadioButton" name="mPrintTypeTimetable" >
         <property name="whatsThis" >
          <string>This view is similar to the weekview in KOrganizer. The week is printed in landscape layout. You can even use the same colors for the items if you check &lt;i>Use Colors&lt;/i>.</string>
         </property>
@@ -211,7 +207,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QRadioButton" name="mPrintTypeButton3" >
+       <widget class="QRadioButton" name="mPrintTypeSplitWeek" >
         <property name="whatsThis" >
          <string>This view is similar to the week view in KOrganizer. The only difference with the timetable view is the page layout. Timetables are printed in landscape, the split week view in portrait.</string>
         </property>
@@ -268,18 +264,9 @@
  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>Q3ButtonGroup</class>
-   <extends></extends>
-   <header>Qt3Support/Q3ButtonGroup</header>
-   <container>1</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
    <class>KDateEdit</class>
    <extends>QComboBox</extends>
    <header>kdateedit.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
  </customwidgets>
  <tabstops>
@@ -287,7 +274,7 @@
   <tabstop>mFromTime</tabstop>
   <tabstop>mToDate</tabstop>
   <tabstop>mToTime</tabstop>
-  <tabstop>mPrintTypeButton1</tabstop>
+  <tabstop>mPrintTypeFilofax</tabstop>
   <tabstop>mIncludeTodos</tabstop>
   <tabstop>mColors</tabstop>
  </tabstops>

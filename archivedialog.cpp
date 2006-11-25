@@ -43,7 +43,6 @@
 #include <kfiledialog.h>
 #include <kurl.h>
 #include <klineedit.h>
-#include <kactivelabel.h>
 
 #include <libkdepim/kdateedit.h>
 
@@ -57,7 +56,6 @@
 #include "archivedialog.moc"
 
 ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent)
-// TODO_QT4: Use constructor without *name=0 param
   : KDialog (parent)
 {
   setCaption( i18n("Archive/Delete Past Events and To-dos") );
@@ -73,7 +71,7 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent)
   QVBoxLayout *topLayout = new QVBoxLayout(topFrame);
   topLayout->setSpacing(spacingHint());
 
-  KActiveLabel *descLabel = new KActiveLabel(
+  QLabel *descLabel = new QLabel(
     i18n("Archiving saves old items into the given file and "
          "then deletes them in the current calendar. If the archive file "
          "already exists they will be added. "
@@ -83,6 +81,8 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent)
          "other calendar. It is not saved in a special format, but as "
          "vCalendar.\">How to restore</a>)"),
     topFrame);
+  descLabel->setTextInteractionFlags(Qt::TextSelectableByMouse|Qt::TextSelectableByKeyboard | Qt::LinksAccessibleByMouse | Qt::LinksAccessibleByKeyboard );
+  descLabel->setWordWrap( true );
   topLayout->addWidget(descLabel);
 
   QButtonGroup* radioBG = new QButtonGroup( this );

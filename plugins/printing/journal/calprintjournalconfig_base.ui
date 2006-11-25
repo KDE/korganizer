@@ -23,23 +23,11 @@
     <number>6</number>
    </property>
    <item>
-    <widget class="Q3ButtonGroup" name="mDateRangeGroup" >
+    <widget class="QGroupBox" name="mDateRangeGroup" >
      <property name="title" >
       <string>Date &amp;&amp; Time Range</string>
      </property>
-     <property name="orientation" >
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="selectedId" stdset="0" >
-      <number>-1</number>
-     </property>
      <layout class="QVBoxLayout" >
-      <property name="margin" >
-       <number>0</number>
-      </property>
-      <property name="spacing" >
-       <number>0</number>
-      </property>
       <item>
        <widget class="QRadioButton" name="mAllJournals" >
         <property name="text" >
@@ -162,13 +150,6 @@
    <extends>QComboBox</extends>
    <header>kdateedit.h</header>
    <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>Q3ButtonGroup</class>
-   <extends></extends>
-   <header>Qt3Support/Q3ButtonGroup</header>
-   <container>1</container>
    <pixmap></pixmap>
   </customwidget>
  </customwidgets>

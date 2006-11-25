@@ -62,7 +62,7 @@ void CalPrintJournal::readSettingsWidget()
   if ( cfg ) {
     mFromDate = cfg->mFromDate->date();
     mToDate = cfg->mToDate->date();
-    mUseDateRange = (cfg->mDateRangeGroup->selectedId() == 1);
+    mUseDateRange = cfg->mRangeJournals->isChecked();
   }
 }
 
@@ -74,7 +74,11 @@ void CalPrintJournal::setSettingsWidget()
     cfg->mFromDate->setDate( mFromDate );
     cfg->mToDate->setDate( mToDate );
     
-    cfg->mDateRangeGroup->setButton( (mUseDateRange)?1:0 );
+    if ( mUseDateRange ) {
+      cfg->mRangeJournals->setChecked( true );
+    } else {
+      cfg->mAllJournals->setChecked( true );
+    }
   }
 }
 
