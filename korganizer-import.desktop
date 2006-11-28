@@ -20,4 +20,3 @@ ServiceTypes=Browser/View,DCOP/Organizer
 X-KDE-Library=libkorganizerpart
 X-KDE-StartupNotify=true
 X-DBUS-StartupType=Unique
-X-DCOP-ServiceName=korganizer
