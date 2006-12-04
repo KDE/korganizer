@@ -182,6 +182,7 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent)
     mArchiveOnceRB->setFocus();
   }
   slotActionChanged();
+  connect(this,SIGNAL(user1Clicked()),this,SLOT(slotUser1()));
 }
 
 ArchiveDialog::~ArchiveDialog()
