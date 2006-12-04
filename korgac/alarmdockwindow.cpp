@@ -85,7 +85,7 @@ AlarmDockWindow::AlarmDockWindow()
   // main window is hidden.
   KActionCollection *ac = actionCollection();
   const char *quitName = KStdAction::name( KStdAction::Quit );
-  KAction *quit = ac->action( quitName );
+  QAction *quit = ac->action( quitName );
   if ( !quit ) {
     kDebug(5890) << "No Quit standard action." << endl;
   } else {
