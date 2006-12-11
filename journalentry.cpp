@@ -61,7 +61,7 @@
 class JournalTitleLable : public K3ActiveLabel
 {
 public:
-  JournalTitleLable( QWidget *parent ) : KActiveLabel( parent ) {}
+  JournalTitleLable( QWidget *parent ) : K3ActiveLabel( parent ) {}
 
   void openLink( const QString &/*link*/ ) {}
 };
