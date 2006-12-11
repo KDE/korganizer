@@ -34,7 +34,7 @@
 #include <kvbox.h>
 
 class QLabel;
-class KActiveLabel;
+class K3ActiveLabel;
 class QCheckBox;
 class QGridLayout;
 class KLineEdit;
@@ -150,7 +150,7 @@ class JournalDateEntry : public KVBox {
     QDate mDate;
     QMap<Journal*,JournalEntry*> mEntries;
 
-    KActiveLabel *mTitle;
+    K3ActiveLabel *mTitle;
     QWidget *mAddBar;
     IncidenceChangerBase *mChanger;
 };

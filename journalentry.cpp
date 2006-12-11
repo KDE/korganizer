@@ -43,7 +43,7 @@
 #include <ktextedit.h>
 #include <ktimeedit.h>
 #include <klineedit.h>
-#include <kactivelabel.h>
+#include <k3activelabel.h>
 #include <kstdguiitem.h>
 #include <kmessagebox.h>
 
@@ -58,7 +58,7 @@
 #include "journalentry.h"
 #include "journalentry.moc"
 
-class JournalTitleLable : public KActiveLabel
+class JournalTitleLable : public K3ActiveLabel
 {
 public:
   JournalTitleLable( QWidget *parent ) : KActiveLabel( parent ) {}
