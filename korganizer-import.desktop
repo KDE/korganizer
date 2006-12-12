@@ -1,11 +1,10 @@
 [Desktop Entry]
 Encoding=UTF-8
 NoDisplay=true
-MimeType=text/calendar;text/x-vcalendar;
 Comment=Calendar and Scheduling Program
 Comment[fr]=Calendrier et agenda personnel
 Comment[x-test]=xxCalendar and Scheduling Programxx
-Exec=korganizer --import %u
+Exec=korganizer --import %U
 Icon=korganizer
 Path=
 DocPath=korganizer/index.html

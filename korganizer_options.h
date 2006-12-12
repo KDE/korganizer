@@ -32,9 +32,12 @@
 static const KCmdLineOptions korganizer_options[] =
 {
   { "i", 0, 0 },
-  { "import <url>", I18N_NOOP("Import calendar at <url> into default calendar"),
-    0 },
-  { "+[calendar]", I18N_NOOP("A calendar file to load"), 0 },
+  { "import", I18N_NOOP("Import the given calendars as new resources into the default calendar"), 0 },
+  { "m", 0, 0 },
+  { "merge", I18N_NOOP("Merge the given calendars into the standard calendar (i.e. copy the events)"), 0 },
+  { "o", 0, 0 },
+  { "open", I18N_NOOP("Open the given calendars in a new window"), 0 },
+  { "+[calendars]", I18N_NOOP("Calendar files or urls. Unless -i, -o or -m is explicitly specified, the user will be asked whether to import, merge or open in a separate window."), 0 },
   KCmdLineLastOption
 };
 
