@@ -84,26 +84,38 @@ int KOrganizerApp::newInstance()
 
   KOGlobals::self()->alarmClient()->startDaemon();
 
-  // If filenames was given as argument load this as calendars, one per window.
-  if ( args->count() > 0 ) {
-    int i;
-    for( i = 0; i < args->count(); ++i ) {
+  // No filenames given => all other args are meaningless, show main Window
+  if ( args->count() <= 0 ) {
+    processCalendar( KURL() );
+    return 0;
+  }
+  
+  // If filenames wer given as arguments, load them as calendars, one per window.
+  if ( args->isSet( "open" ) ) {
+    for( int i = 0; i < args->count(); ++i ) {
       processCalendar( args->url( i ) );
     }
-    if ( args->isSet( "import" ) ) {
-      processCalendar( KURL() );
-    }
   } else {
+    // Import, merge, or ask => we need the resource calendar window anyway.
     processCalendar( KURL() );
-  }
-
-  if ( args->isSet( "import" ) ) {
     KOrg::MainWindow *korg = ActionManager::findInstance( KURL() );
     if ( !korg ) {
       kdError() << "Unable to find default calendar resources view." << endl;
+      return -1;
+    }
+    // Check for import, merge or ask
+    if ( args->isSet( "import" ) ) {
+      for( int i = 0; i < args->count(); ++i ) {
+        korg->actionManager()->addResource( args->url( i ) );
+      }
+    } else if ( args->isSet( "merge" ) ) {
+      for( int i = 0; i < args->count(); ++i ) {
+        korg->actionManager()->mergeURL( args->url( i ).url() );
+      }
     } else {
-      KURL url = KCmdLineArgs::makeURL( args->getOption( "import" ) );
-      korg->actionManager()->importCalendar( url );
+      for( int i = 0; i < args->count(); ++i ) {
+        korg->actionManager()->importCalendar( args->url( i ) );
+      }
     }
   }
 
