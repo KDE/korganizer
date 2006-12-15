@@ -172,9 +172,14 @@ void CalPrintHelper::drawSmallMonth(QPainter &p, const QDate &qd,
   QDate monthDate2;
   int month = monthDate.month();
 
-  // draw the title
   QFont oldFont( p.font() );
-  p.setFont(QFont("helvetica", 8, QFont::Bold));
+  if ( height < 50 ) {
+    p.setFont(QFont("helvetica", 6, QFont::Bold));
+  } else {
+    p.setFont(QFont("helvetica", 8, QFont::Bold));
+  }
+
+  // draw the title
   //  int lineSpacing = p.fontMetrics().lineSpacing();
   if ( mCalSys )
     p.drawText(x, y, width, height/4, Qt::AlignCenter,
@@ -289,9 +294,9 @@ void CalPrintHelper::drawTimeLine(QPainter &p,
     QString numStr;
     if (newY < y+height) {
       QFont oldFont( p.font() );
-      p.drawLine(x+width/2, (int)newY, x+width, (int)newY);
       // draw the time:
       if ( !KGlobal::locale()->use12Clock() ) {
+        p.drawLine(x+width/2, (int)newY, x+width, (int)newY);
         numStr.setNum(curTime.hour());
         if (cellHeight > 30) {
           p.setFont(QFont("helvetica", 16, QFont::Bold));
@@ -304,14 +309,19 @@ void CalPrintHelper::drawTimeLine(QPainter &p,
         p.drawText(x+width/2, (int)currY+2, width/2+2, (int)(cellHeight/2)-3,
                   Qt::AlignTop | Qt::AlignLeft, "00");
       } else {
+        p.drawLine(x, (int)newY, x+width, (int)newY);
         QTime time( curTime.hour(), 0 );
         numStr = KGlobal::locale()->formatTime( time );
-        p.setFont(QFont("helvetica", 14, QFont::Bold));
+        if ( width < 60 ) {
+          p.setFont(QFont("helvetica", 8, QFont::Bold)); // for weekprint
+        } else {
+          p.setFont(QFont("helvetica", 12, QFont::Bold)); // for dayprint
+        }
         p.drawText(x+2, (int)currY+2, width-4, (int)cellHeight/2-3,
                   Qt::AlignTop|Qt::AlignLeft, numStr);
       }
       currY+=cellHeight;
-    p.setFont( oldFont );
+      p.setFont( oldFont );
     } // enough space for half-hour line and time
     if (curTime.secsTo(endTime)>3600)
       curTime=curTime.addSecs(3600);
@@ -497,7 +507,7 @@ void CalPrintHelper::drawAgendaDayBox( QPainter &p, Event::List &events,
   for( it1.toFirst(); it1.current(); ++it1 ) {
     PrintCellItem *placeItem = static_cast<PrintCellItem *>( it1.current() );
 
-    drawAgendaItem( placeItem, p, qd, startPrintDate, endPrintDate, minlen, x,
+    drawAgendaItem( placeItem, p, startPrintDate, endPrintDate, minlen, x,
                     y, width );
 
     p.setBrush( oldBrush );
@@ -510,7 +520,6 @@ void CalPrintHelper::drawAgendaDayBox( QPainter &p, Event::List &events,
 
 
 void CalPrintHelper::drawAgendaItem( PrintCellItem *item, QPainter &p,
-                                   const QDate &qd,
                                    const QDateTime &startPrintDate,
                                    const QDateTime &endPrintDate,
                                    float minlen, int x, int y, int width )

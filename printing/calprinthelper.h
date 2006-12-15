@@ -221,7 +221,7 @@ class KDE_EXPORT CalPrintHelper
                            QTime &fromTime, QTime &toTime,
                            int x, int y, int width, int height);
 
-    void drawAgendaItem( PrintCellItem *item, QPainter &p, const QDate &,
+    void drawAgendaItem( PrintCellItem *item, QPainter &p,
                          const QDateTime &startPrintDate,
                          const QDateTime &endPrintDate,
                          float minlen, int x, int y, int width );
