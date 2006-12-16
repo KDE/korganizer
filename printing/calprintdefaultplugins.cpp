@@ -124,14 +124,14 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
   p.setFont( textFont );
   int lineHeight = p.fontMetrics().lineSpacing();
 
-  
+
   Incidence::List::ConstIterator it;
   for ( it=mSelectedIncidences.begin(); it!=mSelectedIncidences.end(); ++it ) {
     // don't do anything on a 0-pointer!
     if ( !(*it) ) continue;
     if ( it != mSelectedIncidences.begin() ) mPrinter->newPage();
-    
-    
+
+
     // PAGE Layout:
     //  +-----------------------------------+
     //  | Header:  Summary                  |
@@ -168,7 +168,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
     // Draw summary as header, no small calendars in title bar, expand height if needed
     int titleBottom = drawHeader( p, (*it)->summary(), QDate(), QDate(), titleBox, true );
     titleBox.setBottom( titleBottom );
-    
+
     QRect timesBox( titleBox );
     timesBox.setTop( titleBox.bottom() + padding() );
     // TODO: Good default height of the times box
@@ -194,7 +194,11 @@ temp += i18n("Repeats: ");
 if ( (*it)->alarms().count()==1 ) {
   temp += i18n("Reminder: ");
 }
-temp += i18n("No reminders", "%n reminders: ", (*it)->alarms().count() );
+
+if ( (*it)->alarms().count() == 0 )
+  temp += i18n("No reminders");
+else
+  temp += i18n("1 reminder: ", "%n reminders: ", (*it)->alarms().count() );
 temp += i18n("Organizer: ");
 temp += i18n("%1 %2 before start");
 temp += i18n("%1 %2 before end");
@@ -205,14 +209,14 @@ temp += i18n("%1 %2 after due time");
 
 
 
-    
+
     QRect locationBox( timesBox );
     locationBox.setTop( timesBox.bottom() + padding() );
     locationBox.setHeight( 0 );
     int locationBottom = drawBoxWithCaption( p, locationBox, i18n("Location: "),
          (*it)->location(), /*sameLine=*/true, /*expand=*/true );
     locationBox.setBottom( locationBottom );
-    
+
     // Now start constructing the boxes from the bottom:
     QRect categoriesBox( locationBox );
     categoriesBox.setBottom( box.bottom() );
@@ -223,14 +227,14 @@ temp += i18n("%1 %2 after due time");
     QRect optionsBox( attachmentsBox.right() + padding(), attachmentsBox.top(), 0, 0 );
     optionsBox.setRight( box.right() );
     optionsBox.setBottom( attendeesBox.bottom() );
-    
+
     QRect notesBox( optionsBox.left(), locationBox.bottom() + padding(), optionsBox.width(), 0 );
     notesBox.setBottom( optionsBox.top() - padding() );
-    
+
     QRect descriptionBox( notesBox );
     descriptionBox.setLeft( box.left() );
     descriptionBox.setRight( attachmentsBox.right() );
-    
+
     drawBoxWithCaption( p, descriptionBox, i18n("Description:"), (*it)->description(), /*sameLine=*/false );
     QString subitemCaption = i18n("Subitems:");
     if ( (*it)->relations().isEmpty() ) {
@@ -240,12 +244,16 @@ temp += i18n("%1 %2 after due time");
       int subitemsStart = drawBoxWithCaption( p, notesBox, i18n("Subitems:"), (*it)->description(), /*sameLine=*/false );
       // TODO: Draw subitems
     }
-    
+
     int attachStart = drawBoxWithCaption( p, attachmentsBox, i18n("Attachments:"), QString::null );
     // TODO: Print out the attachments somehow
-    
+
     Attendee::List attendees = (*it)->attendees();
-    QString attendeeCaption = i18n("No Attendees", "%1 Attendees:", attendees.count() );
+    QString attendeeCaption;
+    if ( attendees.count() == 0 )
+      attendeeCaption = i18n("No Attendees");
+    else
+      attendeeCaption = i18n("1 Attendee:", "%n Attendees:", attendees.count() );
     QString attendeeString;
     for ( Attendee::List::ConstIterator ait = attendees.begin(); ait != attendees.end(); ++ait ) {
       if ( !attendeeString.isEmpty() ) attendeeString += "\n";
@@ -268,7 +276,7 @@ temp += i18n("%1 %2 after due time");
       Event *e = static_cast<Event*>(*it);
       if ( e->transparency() == Event::Opaque ) {
         optionsString += i18n("Show as: Busy");
-      } else { 
+      } else {
         optionsString += i18n("Show as: Free");
       }
       optionsString += "\n";
@@ -281,13 +289,13 @@ temp += i18n("%1 %2 after due time");
     } else if ( (*it)->type() == "Journal" ) {
       //TODO: Anything Journal-specific?
     }
-    
-    drawBoxWithCaption( p, optionsBox, i18n("Settings: "), 
+
+    drawBoxWithCaption( p, optionsBox, i18n("Settings: "),
            optionsString, /*sameLine=*/false );
-    drawBoxWithCaption( p, categoriesBox, i18n("Categories: "), 
+    drawBoxWithCaption( p, categoriesBox, i18n("Categories: "),
            (*it)->categories().join( i18n("Spacer for the joined list of categories", ", ") ),
            /*sameLine=*/true, /*expand=*/false );
-    
+
   }
   p.setFont( oldFont );
 }
