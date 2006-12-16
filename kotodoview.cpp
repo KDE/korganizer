@@ -590,6 +590,9 @@ QMap<Todo *,KOTodoViewItem *>::ConstIterator
     // Use dynamic_cast, because in the future the related item might also be an event
     Todo *relatedTodo = dynamic_cast<Todo *>(incidence);
 
+    // just make sure we know we have this item already to avoid endless recursion (Bug 101696)
+    mTodoMap.insert(todo,0);
+
 //    kdDebug(5850) << "  has Related" << endl;
     QMap<Todo *,KOTodoViewItem *>::ConstIterator itemIterator;
     itemIterator = mTodoMap.find(relatedTodo);
@@ -599,7 +602,17 @@ QMap<Todo *,KOTodoViewItem *>::ConstIterator
     }
     // isn't this pretty stupid? We give one Todo  to the KOTodoViewItem
     // and one into the map. Sure finding is more easy but why? -zecke
-    KOTodoViewItem *todoItem = new KOTodoViewItem(*itemIterator,todo,this);
+    KOTodoViewItem *todoItem;
+
+    // in case we found a related parent, which has no KOTodoViewItem yet, this must
+    // be the case where 2 items refer to each other, therefore simply create item as root item
+    if ( *itemIterator == 0 ) {
+      todo->setRelatedTo(0);  // break the recursion, else we will have troubles later
+      todoItem = new KOTodoViewItem(mTodoListView,todo,this);
+    }
+    else
+      todoItem = new KOTodoViewItem(*itemIterator,todo,this);
+
     return mTodoMap.insert(todo,todoItem);
   } else {
 //    kdDebug(5850) << "  no Related" << endl;
