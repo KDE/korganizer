@@ -191,14 +191,10 @@ temp += i18n("No due date");
 temp += i18n("Repeats: ");
 
 
-if ( (*it)->alarms().count()==1 ) {
-  temp += i18n("Reminder: ");
-}
-
 if ( (*it)->alarms().count() == 0 )
   temp += i18n("No reminders");
 else
-  temp += i18n("1 reminder: ", "%n reminders: ", (*it)->alarms().count() );
+  temp += i18n("Reminder: ", "%n reminders: ", (*it)->alarms().count() );
 temp += i18n("Organizer: ");
 temp += i18n("%1 %2 before start");
 temp += i18n("%1 %2 before end");
