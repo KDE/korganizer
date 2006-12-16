@@ -42,9 +42,6 @@
                     <property name="text">
                         <string>Detai&amp;ls (visiblility, secrecy, etc.)</string>
                     </property>
-                    <property name="accel">
-                        <string>Alt+L</string>
-                    </property>
                 </widget>
                 <widget class="QCheckBox">
                     <property name="name">
@@ -53,9 +50,6 @@
                     <property name="text">
                         <string>&amp;Notes, Subitems</string>
                     </property>
-                    <property name="accel">
-                        <string>Alt+N</string>
-                    </property>
                 </widget>
                 <widget class="QCheckBox">
                     <property name="name">
@@ -63,9 +57,6 @@
                     </property>
                     <property name="text">
                         <string>&amp;Attendees</string>
-                    </property>
-                    <property name="accel">
-                        <string>Alt+A</string>
                     </property>
                 </widget>
                 <widget class="QCheckBox">
@@ -84,9 +75,6 @@
             </property>
             <property name="text">
                 <string>&amp;Use colors</string>
-            </property>
-            <property name="accel">
-                <string>Alt+U</string>
             </property>
             <property name="whatsThis" stdset="0">
                 <string>If you want to use colors to distinguish certain categories on the print, check this option.</string>
