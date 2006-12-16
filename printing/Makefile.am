@@ -15,10 +15,11 @@ libkocorehelper_la_LDFLAGS = $(all_libraries) $(KDE_RPATH) \
 libkocorehelper_la_LIBADD  = $(LIB_KDEUI)
 libkocorehelper_la_SOURCES = cellitem.cpp
 
-libkorg_stdprinting_la_SOURCES = calprinter.cpp calprinthelper.cpp calprintpluginbase.cpp \
+libkorg_stdprinting_la_SOURCES = calprinter.cpp calprintpluginbase.cpp \
         calprintdefaultplugins.cpp \
         calprintdayconfig_base.ui calprintmonthconfig_base.ui \
-        calprinttodoconfig_base.ui calprintweekconfig_base.ui
+        calprinttodoconfig_base.ui calprintweekconfig_base.ui \
+        calprintincidenceconfig_base.ui
 libkorg_stdprinting_la_LDFLAGS = $(KDE_RPATH) $(all_libraries) \
                                  -no-undefined -version-info 1:0
 libkorg_stdprinting_la_LIBADD = $(LIB_KDEUI) libkocorehelper.la \
@@ -28,6 +29,6 @@ libkorg_stdprinting_la_LIBADD = $(LIB_KDEUI) libkocorehelper.la \
 
 
 calprintdir = $(includedir)/korganizer
-calprint_HEADERS = calprinthelper.h calprintpluginbase.h calprinter.h
+calprint_HEADERS = calprintpluginbase.h calprinter.h
 noinst_HEADERS = cellitem.h
 

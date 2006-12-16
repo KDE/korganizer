@@ -41,6 +41,7 @@ class CalPrintWhatsNext : public CalPrintPluginBase
     virtual ~CalPrintWhatsNext() {}
     virtual QString description() { return i18n("Print What's Next"); }
     virtual QString info() { return i18n("Prints a list of all upcoming events and todos."); }
+    virtual int sortID() { return 50; }
     virtual QWidget *createConfigWidget( QWidget* );
 
   public:

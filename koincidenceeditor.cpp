@@ -160,8 +160,6 @@ void KOIncidenceEditor::slotManageTemplates()
 {
   kdDebug(5850) << "KOIncidenceEditor::manageTemplates()" << endl;
 
-  QString tp = type();
-
   TemplateManagementDialog * const d = new TemplateManagementDialog( this, templates() );
   connect( d, SIGNAL( loadTemplate( const QString& ) ),
            this, SLOT( slotLoadTemplate( const QString& ) ) );

@@ -1510,10 +1510,10 @@ void KOAgendaView::clearView()
   mAgenda->clear();
 }
 
-CalPrinter::PrintType KOAgendaView::printType()
+CalPrinterBase::PrintType KOAgendaView::printType()
 {
-  if ( currentDateCount() == 1 ) return CalPrinter::Day;
-  else return CalPrinter::Week;
+  if ( currentDateCount() == 1 ) return CalPrinterBase::Day;
+  else return CalPrinterBase::Week;
 }
 
 void KOAgendaView::updateEventIndicatorTop( int newY )

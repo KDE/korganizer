@@ -30,8 +30,8 @@
 #include <qpopupmenu.h>
 #include <qdatetime.h>
 
-namespace KCal { 
-class Incidence; 
+namespace KCal {
+class Incidence;
 }
 using namespace KCal;
 
@@ -39,7 +39,7 @@ class KOEventPopupMenu : public QPopupMenu {
     Q_OBJECT
   public:
     KOEventPopupMenu();
-  
+
     void addAdditionalItem(const QIconSet &icon,const QString &text,
                            const QObject *receiver, const char *member,
                            bool editOnly=false);
@@ -51,6 +51,7 @@ class KOEventPopupMenu : public QPopupMenu {
   protected slots:
     void popupShow();
     void popupEdit();
+    void print();
     void popupDelete();
     void popupCut();
     void popupCopy();
@@ -67,11 +68,11 @@ class KOEventPopupMenu : public QPopupMenu {
     void toggleAlarmSignal(Incidence *);
     void dissociateOccurrenceSignal( Incidence *, const QDate & );
     void dissociateFutureOccurrenceSignal( Incidence *, const QDate & );
-    
+
   private:
     Incidence *mCurrentIncidence;
     QDate mCurrentDate;
-    
+
     bool mHasAdditionalItems;
     QValueList<int> mEditOnlyItems;
     QValueList<int> mRecurrenceItems;

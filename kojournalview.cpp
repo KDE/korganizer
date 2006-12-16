@@ -78,7 +78,7 @@ void KOJournalView::appendJournal( Journal*journal, const QDate &dt)
              entry, SLOT( journalEdited( Journal* ) ) );
     connect( this, SIGNAL( journalDeleted( Journal* ) ),
              entry, SLOT( journalDeleted( Journal* ) ) );
-    
+
     connect( entry, SIGNAL( editIncidence( Incidence* ) ),
              this, SIGNAL( editIncidenceSignal( Incidence* ) ) );
     connect( entry, SIGNAL( deleteIncidence( Incidence* ) ),
@@ -87,7 +87,7 @@ void KOJournalView::appendJournal( Journal*journal, const QDate &dt)
              this, SIGNAL( newJournalSignal( const QDate & ) ) );
     mEntries.insert( dt, entry );
   }
-  
+
   if ( entry && journal ) {
     entry->addJournal( journal );
   }
@@ -166,6 +166,11 @@ void KOJournalView::showIncidences( const Incidence::List &incidences )
       if ( j ) appendJournal( j, j->dtStart().date() );
     }
   }
+}
+
+CalPrinterBase::PrintType KOJournalView::printType()
+{
+  return CalPrinterBase::Journallist;
 }
 
 void KOJournalView::changeIncidenceDisplay(Incidence *incidence, int action)

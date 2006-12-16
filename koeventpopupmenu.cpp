@@ -32,8 +32,13 @@
 
 #include "koglobals.h"
 
+#include <korganizer/baseview.h>
 #include "koeventpopupmenu.h"
 #include "koeventpopupmenu.moc"
+#include "kocorehelper.h"
+#ifndef KORG_NOPRINTER
+#include "calprinter.h"
+#endif
 
 KOEventPopupMenu::KOEventPopupMenu()
 {
@@ -41,24 +46,37 @@ KOEventPopupMenu::KOEventPopupMenu()
   mCurrentDate = QDate();
   mHasAdditionalItems = false;
 
-  insertItem (i18n("&Show"),this,SLOT(popupShow()));
-  mEditOnlyItems.append(insertItem (i18n("&Edit..."),this,SLOT(popupEdit())));
-  mEditOnlyItems.append(insertSeparator());
-  mEditOnlyItems.append(insertItem (KOGlobals::self()->smallIcon("editcut"),i18n("&Cut"),
-                                   this,SLOT(popupCut())));
-  mEditOnlyItems.append(insertItem (KOGlobals::self()->smallIcon("editcopy"),i18n("&Copy"),
-                                   this,SLOT(popupCopy())));
-  mEditOnlyItems.append(insertItem (KOGlobals::self()->smallIcon("editdelete"),i18n("&Delete"),
-                                   this,SLOT(popupDelete())));
+  insertItem( i18n("&Show"), this, SLOT( popupShow() ) );
+  mEditOnlyItems.append(
+    insertItem(i18n("&Edit..."), this, SLOT( popupEdit() ) ) );
+#ifndef KORG_NOPRINTER
+  insertItem( KOGlobals::self()->smallIcon("printer"), i18n("&Print..."),
+              this, SLOT( print() ) );
+#endif
+  //------------------------------------------------------------------------
   mEditOnlyItems.append( insertSeparator() );
-  mEditOnlyItems.append( insertItem( QIconSet( KOGlobals::self()->smallIcon("bell") ),
-                                     i18n("&Toggle Reminder"), this,
-                                     SLOT( popupAlarm() ) ) );
+  mEditOnlyItems.append(
+    insertItem( KOGlobals::self()->smallIcon("editcut"), i18n("&Cut"),
+                this, SLOT( popupCut() ) ) );
+  mEditOnlyItems.append(
+    insertItem( KOGlobals::self()->smallIcon("editcopy"), i18n("&Copy"),
+                this, SLOT( popupCopy() ) ) );
+  mEditOnlyItems.append(
+    insertItem( KOGlobals::self()->smallIcon("editdelete"), i18n("&Delete"),
+                this, SLOT( popupDelete() ) ) );
+  //------------------------------------------------------------------------
+  mEditOnlyItems.append( insertSeparator() );
+  mEditOnlyItems.append(
+    insertItem( KOGlobals::self()->smallIcon("bell"), i18n("&Toggle Reminder"),
+                this, SLOT( popupAlarm() ) ) );
+  //------------------------------------------------------------------------
   mRecurrenceItems.append( insertSeparator() );
-  mRecurrenceItems.append( insertItem( i18n("&Dissociate This Occurrence"),
-                                       this, SLOT( dissociateOccurrence() ) ) );
-  mRecurrenceItems.append( insertItem( i18n("&Dissociate Future Occurrences"),
-                                       this, SLOT( dissociateFutureOccurrence() ) ) );
+  mRecurrenceItems.append(
+    insertItem( i18n("&Dissociate This Occurrence"),
+                this, SLOT( dissociateOccurrence() ) ) );
+  mRecurrenceItems.append(
+    insertItem( i18n("&Dissociate Future Occurrences"),
+                this, SLOT( dissociateFutureOccurrence() ) ) );
 }
 
 void KOEventPopupMenu::showIncidencePopup( Incidence *incidence, const QDate &qd )
@@ -101,6 +119,22 @@ void KOEventPopupMenu::popupShow()
 void KOEventPopupMenu::popupEdit()
 {
   if (mCurrentIncidence) emit editIncidenceSignal(mCurrentIncidence);
+}
+
+void KOEventPopupMenu::print()
+{
+#ifndef KORG_NOPRINTER
+  Calendar *cal;
+  KOCoreHelper helper;
+  CalPrinter printer( this, cal, &helper );
+  connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
+
+  Incidence::List selectedIncidences;
+  selectedIncidences.append( mCurrentIncidence );
+
+  printer.print( KOrg::CalPrinterBase::Incidence,
+                 mCurrentDate, mCurrentDate, selectedIncidences );
+#endif
 }
 
 void KOEventPopupMenu::popupDelete()

@@ -36,7 +36,6 @@ class Incidence;
 using namespace KCal;
 
 class KOEventPopupMenu;
-class CalPrinter;
 class QPopupMenu;
 
 /**

@@ -27,11 +27,10 @@
 #include "journalprint.h"
 
 #include "calprintpluginbase.h"
-#include "calprinthelper.h"
 #include <libkcal/journal.h>
 #include <libkcal/calendar.h>
 #include <libkdepim/kdateedit.h>
-#include <kconfig.h> 
+#include <kconfig.h>
 #include <kdebug.h>
 
 #include <qbuttongroup.h>
@@ -74,7 +73,7 @@ void CalPrintJournal::setSettingsWidget()
   if ( cfg ) {
     cfg->mFromDate->setDate( mFromDate );
     cfg->mToDate->setDate( mToDate );
-    
+
     cfg->mDateRangeGroup->setButton( (mUseDateRange)?1:0 );
   }
 }
@@ -123,13 +122,13 @@ void CalPrintJournal::print( QPainter &p, int width, int height )
       }
     }
   }
-  
-  mHelper->drawHeader( p, i18n("Journal entries"), QDate(), QDate(), 0, 0, width, mHelper->mHeaderHeight/2 );
-  y = mHelper->mHeaderHeight/2 + 15;
+
+  drawHeader( p, i18n("Journal entries"), QDate(), QDate(), QRect( 0, 0, width, headerHeight() ) );
+  y = headerHeight() + 15;
 
   Journal::List::Iterator it = journals.begin();
   for ( ; it != journals.end(); ++it ) {
-    mHelper->drawJournal( *it, p, x, y, width, height );
+    drawJournal( *it, p, x, y, width, height );
   }
 }
 

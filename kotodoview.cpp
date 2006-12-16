@@ -729,9 +729,9 @@ void KOTodoView::showIncidences( const Incidence::List & )
   kdDebug(5850) << "KOTodoView::showIncidences( const Incidence::List & ): not yet implemented" << endl;
 }
 
-CalPrinter::PrintType KOTodoView::printType()
+CalPrinterBase::PrintType KOTodoView::printType()
 {
-  return CalPrinter::Todolist;
+  return CalPrinterBase::Todolist;
 }
 
 void KOTodoView::editItem( QListViewItem *item )

@@ -38,7 +38,6 @@
 class QWidgetStack;
 class QSplitter;
 
-class CalPrinter;
 class KOViewManager;
 class KODialogManager;
 class KOTodoView;
@@ -554,8 +553,6 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
   private:
     void init();
 
-    void createPrinter();
-
     void calendarModified( bool, Calendar * );
     // Helper function for purgeCompleted that recursively purges a todo and
     // its subitems. If it cannot delete a completed todo (because it has
@@ -563,8 +560,6 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
     bool purgeCompletedSubTodos( Todo* todo, bool &notAllPurged );
 
     KOrg::History *mHistory;
-
-    CalPrinter *mCalPrinter;
 
     QSplitter    *mPanner;
     QSplitter    *mLeftSplitter;

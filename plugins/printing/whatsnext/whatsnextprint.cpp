@@ -27,7 +27,6 @@
 #include "whatsnextprint.h"
 
 #include "calprintpluginbase.h"
-#include "calprinthelper.h"
 #include <libkcal/event.h>
 #include <libkcal/todo.h>
 #include <libkcal/calendar.h>

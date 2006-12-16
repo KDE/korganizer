@@ -32,7 +32,6 @@
 
 #include <libkcal/todo.h>
 #include <korganizer/baseview.h>
-#include "calprinter.h"
 
 class QDragEnterEvent;
 class QDragMoveEvent;
@@ -127,7 +126,7 @@ class KOTodoView : public KOrg::BaseView
     /** Return number of shown dates. TodoView does not show dates, */
     int currentDateCount() { return 0; }
 
-    CalPrinter::PrintType printType();
+    CalPrinterBase::PrintType printType();
 
     void setDocumentId( const QString & );
 

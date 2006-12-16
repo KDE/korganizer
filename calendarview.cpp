@@ -125,8 +125,6 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
   mReadOnly = false;
   mSelectedIncidence = 0;
 
-  mCalPrinter = 0;
-
   mFilters.setAutoDelete( true );
 
   mExtensions.setAutoDelete( true );
@@ -367,17 +365,6 @@ QDate CalendarView::endDate()
   DateList dates = mNavigator->selectedDates();
 
   return dates.last();
-}
-
-
-void CalendarView::createPrinter()
-{
-#ifndef KORG_NOPRINTER
-  if (!mCalPrinter) {
-    mCalPrinter = new CalPrinter( this, mCalendar, new KOCoreHelper() );
-    connect(this, SIGNAL(configChanged()), mCalPrinter, SLOT(updateConfig()));
-  }
-#endif
 }
 
 
@@ -694,7 +681,7 @@ void CalendarView::incidenceChanged( Incidence *oldIncidence,
   }
   setModified( true );
   history()->recordEdit( oldIncidence, newIncidence );
-  
+
   // Record completed todos in journals, if enabled. we should to this here in
   // favour of the todolist. users can mark a task as completed in an editor
   // as well.
@@ -710,11 +697,11 @@ void CalendarView::incidenceChanged( Incidence *oldIncidence,
 
         Journal::List journals = calendar()->journals( QDate::currentDate() );
         Journal *journal;
-        
+
         if ( journals.isEmpty() ) {
           journal = new Journal();
           journal->setDtStart( QDateTime::currentDateTime() );
-          
+
           QString dateStr = KGlobal::locale()->formatDate( QDate::currentDate() );
           journal->setSummary( i18n("Journal of %1").arg( dateStr ) );
           journal->setDescription( description );
@@ -738,7 +725,7 @@ void CalendarView::incidenceChanged( Incidence *oldIncidence,
         }
       }
   }
-  
+
   changeIncidenceDisplay( newIncidence, KOGlobals::INCIDENCEEDITED );
   updateUnmanagedViews();
   checkForFilteredChange( newIncidence );
@@ -1493,16 +1480,21 @@ bool CalendarView::isModified()
 void CalendarView::print()
 {
 #ifndef KORG_NOPRINTER
-  createPrinter();
+  KOCoreHelper helper;
+  CalPrinter printer( this, mCalendar, &helper );
+  connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
 
   KOrg::BaseView *currentView = mViewManager->currentView();
 
-  CalPrinter::PrintType printType = CalPrinter::Month;
-
+  CalPrinterBase::PrintType printType = CalPrinterBase::Month;
   if ( currentView ) printType = currentView->printType();
 
   DateList tmpDateList = mNavigator->selectedDates();
-  mCalPrinter->print( printType, tmpDateList.first(), tmpDateList.last() );
+  Incidence::List selectedIncidences;
+  if ( mViewManager->currentView() ) {
+    selectedIncidences = mViewManager->currentView()->selectedIncidences();
+  }
+  printer.print( printType, tmpDateList.first(), tmpDateList.last(), selectedIncidences );
 #endif
 }
 

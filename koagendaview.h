@@ -28,11 +28,11 @@
 #include <qscrollview.h>
 #include <qlabel.h>
 
-#include "calprinter.h"
 #include "koeventview.h"
 
 class QHBox;
 class QPushButton;
+class QBoxLayout;
 
 class KOAgenda;
 class KOAgendaItem;
@@ -163,7 +163,7 @@ class KOAgendaView : public KOEventView
     /** Remove all events from view */
     void clearView();
 
-    CalPrinter::PrintType printType();
+    CalPrinterBase::PrintType printType();
 
     /** start-datetime of selection */
     QDateTime selectionStart() { return mTimeSpanBegin; }

@@ -40,8 +40,6 @@
 
 #include "korganizer/corehelper.h"
 
-#include "calprinthelper.h"
-
 #include "calprinter.h"
 #ifndef KORG_NOPRINTER
 #include "calprinter.moc"
@@ -49,36 +47,27 @@
 #include "calprintdefaultplugins.h"
 
 CalPrinter::CalPrinter( QWidget *parent, Calendar *calendar, KOrg::CoreHelper *helper )
-  : QObject( parent, "CalPrinter" ), mHelper( 0 )
+  : QObject( parent, "CalPrinter" )
 {
   mParent = parent;
   mConfig = new KSimpleConfig( "korganizer_printing.rc" );
   mCoreHelper = helper;
 
-  init( new KPrinter, calendar );
+  init( calendar );
 }
 
 CalPrinter::~CalPrinter()
 {
   kdDebug(5850) << "~CalPrinter()" << endl;
 
-  KOrg::PrintPlugin::List::Iterator it = mPrintPlugins.begin();
-  for ( ; it != mPrintPlugins.end(); ++it ) {
-    (*it)->doSaveConfig();
-  }
   mPrintPlugins.clear();
 
   delete mConfig;
-  delete mPrintDialog;
-  delete mPrinter;
-  if ( mHelper ) delete mHelper;
 }
 
-void CalPrinter::init( KPrinter *printer, Calendar *calendar )
+void CalPrinter::init( Calendar *calendar )
 {
   mCalendar = calendar;
-  mPrinter = printer;
-  mHelper = new CalPrintHelper( mPrinter, mCalendar, mConfig, mCoreHelper );
 
   mPrintPlugins.clear();
   mPrintPlugins.setAutoDelete( true );
@@ -88,18 +77,16 @@ void CalPrinter::init( KPrinter *printer, Calendar *calendar )
   mPrintPlugins.prepend( new CalPrintMonth() );
   mPrintPlugins.prepend( new CalPrintWeek() );
   mPrintPlugins.prepend( new CalPrintDay() );
-
-  mPrintDialog = new CalPrintDialog( mPrintPlugins, mPrinter, mParent );
+  mPrintPlugins.prepend( new CalPrintIncidence() );
 
   KOrg::PrintPlugin::List::Iterator it = mPrintPlugins.begin();
   for ( ; it != mPrintPlugins.end(); ++it ) {
-    (*it)->setConfig( mConfig );
-    (*it)->setCalendar( calendar );
-    (*it)->setPrinter( printer );
-    (*it)->setKOrgCoreHelper( mCoreHelper );
-    (*it)->setCalPrintHelper( mHelper );
-
-    (*it)->doLoadConfig();
+    if ( *it ) {
+      (*it)->setConfig( mConfig );
+      (*it)->setCalendar( mCalendar );
+      (*it)->setKOrgCoreHelper( mCoreHelper );
+      (*it)->doLoadConfig();
+    }
   }
 }
 
@@ -111,57 +98,63 @@ void CalPrinter::setDateRange( const QDate &fd, const QDate &td )
   }
 }
 
-void CalPrinter::preview( PrintType type, const QDate &fd, const QDate &td )
+void CalPrinter::print( int type, const QDate &fd, const QDate &td,
+                        Incidence::List selectedIncidences, bool preview )
 {
-  mPrintDialog->setPreview( true );
-  mPrintDialog->setPrintType( int( type ) );
+  KOrg::PrintPlugin::List::Iterator it = mPrintPlugins.begin();
+  for ( it = mPrintPlugins.begin(); it != mPrintPlugins.end(); ++it ) {
+    (*it)->setSelectedIncidences( selectedIncidences );
+  }
+  CalPrintDialog printDialog( mPrintPlugins, mParent );
+  printDialog.setOrientation( CalPrinter::ePrintOrientation( mConfig->readNumEntry("Orientation", 1 ) ) );
+  printDialog.setPreview( preview );
+  printDialog.setPrintType( type );
   setDateRange( fd, td );
 
-  if ( mPrintDialog->exec() == QDialog::Accepted ) {
-    doPrint( mPrintDialog->selectedPlugin(), true );
+  if ( printDialog.exec() == QDialog::Accepted ) {
+    mConfig->writeEntry( "Orientation", printDialog.orientation() );
+
+    // Save all changes in the dialog
+    for ( it = mPrintPlugins.begin(); it != mPrintPlugins.end(); ++it ) {
+      (*it)->doSaveConfig();
+    }
+    doPrint( printDialog.selectedPlugin(), printDialog.orientation(), preview );
+  }
+  for ( it = mPrintPlugins.begin(); it != mPrintPlugins.end(); ++it ) {
+    (*it)->setSelectedIncidences( Incidence::List() );
   }
 }
 
-void CalPrinter::print( PrintType type, const QDate &fd, const QDate &td )
+void CalPrinter::doPrint( KOrg::PrintPlugin *selectedStyle,
+                          CalPrinter::ePrintOrientation dlgorientation, bool preview )
 {
-  mPrintDialog->setPreview( false );
-  mPrintDialog->setPrintType( int( type ) );
-  setDateRange( fd, td );
-
-  if ( mPrintDialog->exec() == QDialog::Accepted ) {
-    doPrint( mPrintDialog->selectedPlugin(), false );
+  if ( !selectedStyle ) {
+    KMessageBox::error( mParent,
+                 i18n("Unable to print, no valid print style was returned."),
+                 i18n("Printing error") );
+    return;
   }
-}
+  KPrinter printer;
 
-void CalPrinter::doPrint( KOrg::PrintPlugin *selectedStyle, bool preview )
-{
-  if ( mHelper ) delete mHelper;
-  KPrinter::Orientation printerOrientation = mPrinter->orientation();
-
-  mHelper = new CalPrintHelper( mPrinter, mCalendar, mConfig, mCoreHelper );
-  if ( preview ) mPrinter->setPreviewOnly( true );
-  switch ( mPrintDialog->orientation() ) {
+  printer.setPreviewOnly( preview );
+  switch ( dlgorientation ) {
     case eOrientPlugin:
-      mPrinter->setOrientation( selectedStyle->orientation() );
+      printer.setOrientation( selectedStyle->defaultOrientation() );
       break;
     case eOrientPortrait:
-      mPrinter->setOrientation( KPrinter::Portrait );
+      printer.setOrientation( KPrinter::Portrait );
       break;
     case eOrientLandscape:
-      mPrinter->setOrientation( KPrinter::Landscape );
+      printer.setOrientation( KPrinter::Landscape );
       break;
     case eOrientPrinter:
     default:
       break;
   }
 
-  if ( preview || mPrinter->setup( mParent, i18n("Print Calendar") ) ) {
-  selectedStyle->setKOrgCoreHelper( mCoreHelper );
-  selectedStyle->setCalPrintHelper( mHelper );
-    selectedStyle->doPrint();
+  if ( preview || printer.setup( mParent, i18n("Print Calendar") ) ) {
+    selectedStyle->doPrint( &printer );
   }
-  mPrinter->setPreviewOnly( false );
-  mPrinter->setOrientation( printerOrientation );
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -174,10 +167,9 @@ void CalPrinter::updateConfig()
 
 /****************************************************************************/
 
-CalPrintDialog::CalPrintDialog( KOrg::PrintPlugin::List plugins, KPrinter *p,
+CalPrintDialog::CalPrintDialog( KOrg::PrintPlugin::List plugins,
                                 QWidget *parent, const char *name )
-  : KDialogBase( parent, name, /*modal*/true, i18n("Print"), Ok | Cancel ),
-    mPrinter( p ), mPrintPlugins( plugins )
+  : KDialogBase( parent, name, /*modal*/true, i18n("Print"), Ok | Cancel )
 {
   QVBox *page = makeVBoxMainWidget();
 
@@ -211,20 +203,25 @@ CalPrintDialog::CalPrintDialog( KOrg::PrintPlugin::List plugins, KPrinter *p,
 
   // signals and slots connections
   connect( mTypeGroup, SIGNAL( clicked( int ) ), SLOT( setPrintType( int ) ) );
-
-  // buddies
   orientationLabel->setBuddy( mOrientationSelection );
 
-  KOrg::PrintPlugin::List::Iterator it = mPrintPlugins.begin();
-  QRadioButton *radioButton;
-  int id = 0;
-  for ( ; it != mPrintPlugins.end(); ++it ) {
-    radioButton = new QRadioButton( (*it)->description(), mTypeGroup );
-    mTypeGroup->insert( radioButton, id );
-    radioButton->setMinimumHeight( radioButton->sizeHint().height() - 5 );
-
-    mConfigArea->addWidget( (*it)->configWidget( mConfigArea ), id );
-    id++;
+  // First insert the config widgets into the widget stack. This possibly assigns
+  // proper ids (when two plugins have the same sortID), so store them in a map
+  // and use these new IDs to later sort the plugins for the type selection.
+  for ( KOrg::PrintPlugin::List::Iterator it = plugins.begin();
+        it != plugins.end(); ++it ) {
+    int newid = mConfigArea->addWidget( (*it)->configWidget( mConfigArea ), (*it)->sortID() );
+    mPluginIDs[newid] = (*it);
+  }
+  // Insert all plugins with in sorted order; plugins with clashing IDs will be first...
+  QMap<int, KOrg::PrintPlugin*>::ConstIterator mapit;
+  for ( mapit = mPluginIDs.begin(); mapit != mPluginIDs.end(); ++mapit ) {
+    KOrg::PrintPlugin *p = mapit.data();
+    QRadioButton *radioButton = new QRadioButton( p->description(), mTypeGroup );
+    radioButton->setEnabled( p->enabled() );
+    kdDebug() << p->description() << " is " << p->enabled() << endl;
+    mTypeGroup->insert( radioButton, mapit.key() );
+//     radioButton->setMinimumHeight( radioButton->sizeHint().height() - 5 );
   }
 
   setMinimumSize( minimumSizeHint() );
@@ -246,27 +243,34 @@ void CalPrintDialog::setPreview(bool preview)
 
 void CalPrintDialog::setPrintType( int i )
 {
-  // FIXME: Make a safe correlation between type and the radio button
-
   mTypeGroup->setButton( i );
   mConfigArea->raiseWidget( i );
 }
 
+void CalPrintDialog::setOrientation( CalPrinter::ePrintOrientation orientation )
+{
+  mOrientation = orientation;
+  mOrientationSelection->setCurrentItem( mOrientation );
+}
+
 KOrg::PrintPlugin *CalPrintDialog::selectedPlugin()
 {
-  int pos = mTypeGroup->id( mTypeGroup->selected() );
-  if ( pos < 0 ) return 0;
-  KOrg::PrintPlugin *retval = mPrintPlugins.at( pos );
-  return retval;
+  int id = mTypeGroup->selectedId();
+  if ( mPluginIDs.contains( id ) ) {
+    return mPluginIDs[id];
+  } else {
+    return 0;
+  }
 }
 
 void CalPrintDialog::slotOk()
 {
   mOrientation = (CalPrinter::ePrintOrientation)mOrientationSelection->currentItem();
 
-  KOrg::PrintPlugin::List::Iterator it = mPrintPlugins.begin();
-  for ( ; it != mPrintPlugins.end(); ++it ) {
-    (*it)->readSettingsWidget();
+  QMap<int, KOrg::PrintPlugin*>::Iterator it = mPluginIDs.begin();
+  for ( ; it != mPluginIDs.end(); ++it ) {
+    if ( it.data() )
+      it.data()->readSettingsWidget();
   }
 
   KDialogBase::slotOk();

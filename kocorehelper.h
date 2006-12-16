@@ -47,6 +47,7 @@ class KOCoreHelper : public KOrg::CoreHelper
     virtual QTime dayStart() { return KOPrefs::instance()->mDayBegins.time(); }
     virtual const KCalendarSystem *calendarSystem() { return KOGlobals::self()->calendarSystem(); }
     virtual KOrg::PrintPlugin::List loadPrintPlugins() { return KOCore::self()->loadPrintPlugins(); }
+    virtual bool isWorkingDay( const QDate &dt ) { return KOGlobals::self()->isWorkDay( dt ); }
 };
 
 #endif

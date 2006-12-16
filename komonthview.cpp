@@ -943,9 +943,9 @@ class KOMonthView::GetDateVisitor : public IncidenceBase::Visitor
       if ( todo->hasDueDate() ) {
         mStartDate = todo->dtDue();
         mEndDate = todo->dtDue();
-        return true;
-      } else
-        return false;
+      }// else
+//         return false;
+      return true;
     }
     bool visit( Journal *journal ) {
       mStartDate = journal->dtStart();

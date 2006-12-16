@@ -32,23 +32,15 @@
 #include <kdepimmacros.h>
 #include "korganizer/incidencechangerbase.h"
 
+#include "printplugin.h"
+
 #include <libkcal/event.h>
 
 using namespace KCal;
 
 namespace KCal { class Calendar; }
-class CalPrinter;
 
 namespace KOrg {
-
-/**
-  Base class of KOrganizer printer class.
-*/
-class CalPrinterBase
-{
-  public:
-    enum PrintType { Day, Week, Month, Todolist };
-};
 
 
 /**

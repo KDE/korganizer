@@ -26,15 +26,23 @@
 #include <qdatetime.h>
 #include <kprinter.h>
 #include <calendar/plugin.h>
+#include <libkcal/incidence.h>
 
 namespace KCal {
 class Calendar;
 }
-class CalPrintHelper;
 
 namespace KOrg {
-
 class CoreHelper;
+
+/**
+  Base class of KOrganizer printer class.
+*/
+class CalPrinterBase
+{
+  public:
+    enum PrintType { Incidence = 100, Day=200, Week=300, Month=400, Todolist=1000, Journallist=2000 };
+};
 
 /**
   Base class for KOrganizer printing classes. Each sub class represents one
@@ -43,19 +51,20 @@ class CoreHelper;
 class PrintPlugin : public KOrg::Plugin
 {
   public:
-    PrintPlugin() : KOrg::Plugin(), mCoreHelper(0), mPrinter(0),
-         mCalendar(0), mConfig(0), mHelper(0) {}
+    PrintPlugin() : KOrg::Plugin(), mConfigWidget(0), mCoreHelper(0), mPrinter(0),
+         mCalendar(0), mConfig(0) {}
     virtual ~PrintPlugin() {}
 
     typedef QPtrList<PrintPlugin> List;
     static int interfaceVersion() { return 2; }
     static QString serviceType() { return "KOrganizer/PrintPlugin"; }
 
-    virtual void setCalPrintHelper( CalPrintHelper *helper ) { mHelper = helper; }
     virtual void setKOrgCoreHelper( KOrg::CoreHelper*helper ) { mCoreHelper = helper; }
     virtual void setConfig( KConfig *cfg ) { mConfig = cfg; }
     virtual void setCalendar( KCal::Calendar *cal ) { mCalendar = cal; }
-    virtual void setPrinter( KPrinter *pr ) { mPrinter = pr; }
+    virtual void setSelectedIncidences( KCal::Incidence::List inc ) { mSelectedIncidences = inc; }
+    virtual KCal::Incidence::List selectedIncidences() const { return mSelectedIncidences; }
+
 
     /**
       Returns short description of print format.
@@ -66,10 +75,27 @@ class PrintPlugin : public KOrg::Plugin
     */
     virtual QString info() = 0;
 
+    /**
+      Returns the sort ID of the plugin. This value will be used to identify
+      the config widget in the widget stack, and to sort the plugin name in the
+      print style selection list.
+      If another plugin uses the same ID or a value of -1 is returned, a unique
+      (negative) ID will be automatically generated and thus the position of
+      the plugin in the selection list is undefined.
+    */
+    virtual int sortID() { return -1; }
+
+    /**
+      Returns true if the plugin should be enabled; false otherwise.
+    */
+    virtual bool enabled() { return false; }
+
     QWidget *configWidget( QWidget *w )
     {
-      mConfigWidget = createConfigWidget( w );
-      setSettingsWidget();
+      if ( !mConfigWidget ) {
+        mConfigWidget = createConfigWidget( w );
+        setSettingsWidget();
+      }
       return mConfigWidget;
     }
     /* Create the config widget. setSettingsWidget will be automatically
@@ -79,7 +105,7 @@ class PrintPlugin : public KOrg::Plugin
     /**
       Actually do the printing.
     */
-    virtual void doPrint() = 0;
+    virtual void doPrint( KPrinter *printer ) = 0;
 
     /**
       Orientation of printout. Default is Portrait. If your plugin wants
@@ -87,7 +113,7 @@ class PrintPlugin : public KOrg::Plugin
       config settings), implement this function in your subclass and
       return the desired orientation.
     */
-    virtual KPrinter::Orientation orientation() { return KPrinter::Portrait; }
+    virtual KPrinter::Orientation defaultOrientation() { return KPrinter::Portrait; }
 
     /**
       Load complete config.
@@ -125,12 +151,13 @@ class PrintPlugin : public KOrg::Plugin
   protected:
     QWidget *mConfigWidget;
     KOrg::CoreHelper *mCoreHelper;
+    /** The printer object. This will only be available in the doPrint method
+        of the selected plugin */
     KPrinter *mPrinter;
     KCal::Calendar *mCalendar;
+    KCal::Incidence::List mSelectedIncidences;
     KConfig *mConfig;
-    CalPrintHelper *mHelper;
 };
-
 
 class PrintPluginFactory : public PluginFactory
 {

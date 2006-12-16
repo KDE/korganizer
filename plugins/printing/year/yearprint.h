@@ -1,5 +1,6 @@
 /*
     This file is part of KOrganizer.
+
     Copyright (c) 2004 Reinhold Kainhofer <reinhold@kainhofer.com>
 
     This program is free software; you can redistribute it and/or modify
@@ -20,33 +21,45 @@
     with any edition of Qt, and distribute the resulting executable,
     without including the source code for Qt in the source distribution.
 */
-#ifndef KORG_COREHELPER_H
-#define KORG_COREHELPER_H
+#ifndef YEARPRINT_H
+#define YEARPRINT_H
 
-#include <qstring.h>
-#include <qdatetime.h>
-#include <qcolor.h>
-#include "printplugin.h"
+#include <klocale.h>
+#include "calprintpluginbase.h"
 
-class KCalendarSytstem;
+#ifndef KORG_NOPRINTER
+namespace KCal {
+class Calendar;
+}
 
-namespace KOrg {
+using namespace KCal;
 
-class CoreHelper
+class CalPrintYear : public CalPrintPluginBase
 {
   public:
-    CoreHelper() {}
-    virtual ~CoreHelper() {}
-    
-    virtual QColor defaultEventColor() = 0;
-    virtual QColor textColor( const QColor &bgColor ) = 0;
-    virtual QColor categoryColor( const QStringList &cats ) = 0;
-    virtual QString holidayString( const QDate &dt ) = 0;
-    virtual QTime dayStart() = 0;
-    virtual const KCalendarSystem *calendarSystem() = 0;
-    virtual KOrg::PrintPlugin::List loadPrintPlugins() = 0;
-    virtual bool isWorkingDay( const QDate &dt ) = 0;
+    CalPrintYear():CalPrintPluginBase() {}
+    virtual ~CalPrintYear() {}
+    virtual QString description() { return i18n("Print &Year"); }
+    virtual QString info() { return i18n("Prints a calendar for an entire year"); }
+    virtual int sortID() { return 900; }
+    virtual bool enabled() { return true; }
+    virtual QWidget *createConfigWidget( QWidget* );
+    virtual KPrinter::Orientation defaultOrientation();
+
+  public:
+    virtual void print(QPainter &p, int width, int height);
+    virtual void readSettingsWidget();
+    virtual void setSettingsWidget();
+    virtual void loadConfig();
+    virtual void saveConfig();
+    virtual void setDateRange( const QDate& from, const QDate& to );
+
+  protected:
+    int mYear;
+    int mPages;
+    int mSubDaysEvents, mHolidaysEvents;
 };
 
-}
+
+#endif
 #endif

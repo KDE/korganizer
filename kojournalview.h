@@ -51,6 +51,8 @@ class KOJournalView : public KOrg::BaseView
     DateList selectedDates() { return DateList(); }
     void appendJournal( Journal*journal, const QDate &dt);
 
+    CalPrinterBase::PrintType printType();
+
   public slots:
     // Don't update the view when midnight passed, otherwise we'll have data loss (bug 79145)
     virtual void dayPassed( const QDate & ) {}

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+X-KDE-Library=libkorg_yearlyprint
+Name=Yearly Print Style
+Name[de]=Jahresdruckstil
+Comment=This plugin allows you to print out a yearly calendar.
+Comment[de]=Mit diesem Modul können Jahreskalender gedruckt werden.
+Type=Service
+ServiceTypes=Calendar/Plugin,KOrganizer/PrintPlugin
+X-KDE-KOrganizer-HasSettings=false
+X-KDE-PluginInterfaceVersion=2
