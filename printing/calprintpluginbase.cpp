@@ -253,7 +253,7 @@ QColor CalPrintPluginBase::categoryBgColor( Incidence *incidence )
 
 QColor CalPrintPluginBase::textColor( const QColor &color )
 {
-  return (mCoreHelper)?(mCoreHelper->textColor( color )):(QColor());
+  return (mCoreHelper)?(mCoreHelper->textColor( color )):QColor();
 }
 
 bool CalPrintPluginBase::isWorkingDay( const QDate &dt )
