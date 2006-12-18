@@ -33,6 +33,7 @@
 #include <kdateedit.h>
 #include <ktimeedit.h>
 //#include <klineedit.h>
+#include <kglobal.h>
 #include <klocale.h>
 #include <kmessagebox.h>
 #include <kdebug.h>
