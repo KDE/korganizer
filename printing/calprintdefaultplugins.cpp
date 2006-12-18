@@ -112,6 +112,95 @@ void CalPrintIncidence::saveConfig()
   }
 }
 
+
+class TimePrintStringsVisitor : public IncidenceBase::Visitor
+{
+  public:
+    TimePrintStringsVisitor() {}
+
+    bool act( IncidenceBase *incidence )
+    {
+      return incidence->accept( *this );
+    }
+    QString mStartCaption, mStartString;
+    QString mEndCaption, mEndString;
+    QString mDurationCaption, mDurationString;
+
+  protected:
+    bool visit( Event *event ) {
+      if ( event->dtStart().isValid() ) {
+        mStartCaption =  i18n("Start date: ");
+        // Show date/time or only date, depending on whether it's an all-day event
+// TODO: Add shortfmt param to dtStartStr, dtEndStr and dtDueStr!!!
+        mStartString = (event->doesFloat()) ? (event->dtStartDateStr(false)) : (event->dtStartStr());
+      } else {
+        mStartCaption = i18n("No start date");
+        mStartString = QString::null;
+      }
+    
+      if ( event->hasEndDate() ) {
+        mEndCaption = i18n("End date: ");
+        mEndString = (event->doesFloat()) ? (event->dtEndDateStr(false)) : (event->dtEndStr());
+      } else if ( event->hasDuration() ) {
+        mEndCaption = i18n("Duration: ");
+        int mins = event->duration() / 60;
+        if ( mins >= 60 ) {
+          mEndString += i18n( "1 hour ", "%n hours ", mins/60 );
+        }
+        if ( mins%60 > 0 ) {
+          mEndString += i18n( "1 minute ", "%n minutes ",  mins%60 );
+        }
+      } else {
+        mEndCaption = i18n("No end date");
+        mEndString = QString::null;
+      }
+      return true;
+    }
+    bool visit( Todo *todo ) {
+      if ( todo->hasStartDate() ) {
+        mStartCaption =  i18n("Start date: ");
+        // Show date/time or only date, depending on whether it's an all-day event
+// TODO: Add shortfmt param to dtStartStr, dtEndStr and dtDueStr!!!
+        mStartString = (todo->doesFloat()) ? (todo->dtStartDateStr(false)) : (todo->dtStartStr());
+      } else {
+        mStartCaption = i18n("No start date");
+        mStartString = QString::null;
+      }
+    
+      if ( todo->hasDueDate() ) {
+        mEndCaption = i18n("Due date: ");
+        mEndString = (todo->doesFloat()) ? (todo->dtDueDateStr(false)) : (todo->dtDueStr());
+      } else {
+        mEndCaption = i18n("No due date");
+        mEndString = QString::null;
+      }
+      return true;
+    }
+    bool visit( Journal *journal ) {
+      // TODO: What shall we print for Journals???
+      return true;
+    }
+};
+
+int CalPrintIncidence::printCaptionAndText( QPainter &p, const QRect &box, const QString &caption, const QString &text, QFont captionFont, QFont textFont )
+{
+  QFontMetrics captionFM( captionFont );
+  int textWd = captionFM.width( caption );
+  QRect textRect( box );
+
+  QFont oldFont( p.font() );
+  p.setFont( captionFont );
+  p.drawText( box, Qt::AlignLeft|Qt::AlignTop|Qt::SingleLine, caption );
+
+  if ( !text.isEmpty() ) {
+    textRect.setLeft( textRect.left() + textWd );
+    p.setFont( textFont );
+    p.drawText( textRect, Qt::AlignLeft|Qt::AlignTop|Qt::SingleLine, text );
+  }
+  p.setFont( oldFont );
+  return textRect.bottom();
+}
+
 void CalPrintIncidence::print( QPainter &p, int width, int height )
 {
   KLocale *local = KGlobal::locale();
@@ -120,7 +209,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
 //   QFont textFont( "helvetica", 12, QFont::Normal );
 //   QFont captionFont( "helvetica", 12, QFont::Normal );
   QFont textFont( "Tahoma", 11, QFont::Normal );
-  QFont captionFont( "Tahoma", 11, QFont::Normal );
+  QFont captionFont( "Tahoma", 11, QFont::Bold );
   p.setFont( textFont );
   int lineHeight = p.fontMetrics().lineSpacing();
 
@@ -174,19 +263,28 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
     // TODO: Good default height of the times box
     timesBox.setHeight( height / 8 );
     drawBox( p, BOX_BORDER_WIDTH, timesBox );
+    
+    QFontMetrics captionFM( captionFont );
+    int lineSp = captionFM.lineSpacing();
+    QFontMetrics textFM( textFont );
+    
+    TimePrintStringsVisitor stringVis;
+    int h = timesBox.top();
+    if ( stringVis.act(*it) ) {
+      QRect textRect( timesBox.left()+padding(), timesBox.top()+padding(), 0, lineSp );
+      textRect.setRight( timesBox.center().x() );
+      h = printCaptionAndText( p, textRect, stringVis.mStartCaption, stringVis.mStartString, captionFont, textFont );
+
+      textRect.setLeft( textRect.right() );
+      textRect.setRight( timesBox.right() - padding() );
+      h = QMAX( printCaptionAndText( p, textRect, stringVis.mEndCaption, stringVis.mEndString, captionFont, textFont ), h );
+    }
+    
+    
+    
     // TODO: Contents of the times box
 
-QString temp = i18n("Start date: ");
-temp += i18n("End date: " );
-temp += i18n("Due date: " );
-
-temp += i18n("Start time: ");
-temp += i18n("End time: " );
-temp += i18n("Due time: " );
-
-temp += i18n("No start date");
-temp += i18n("No end date");
-temp += i18n("No due date");
+QString temp;
 
 temp += i18n("Repeats: ");
 
@@ -266,8 +364,6 @@ temp += i18n("%1 %2 after due time");
     optionsString += "\n";
     optionsString += i18n("Secrecy: %1").arg( (*it)->secrecyStr() );
     optionsString += "\n";
-//     optionsString += i18n("Privacy: %1").arg( (*it)->secrecy() );
-//     optionsString += "\n";
     if ( (*it)->type() == "Event" ) {
       Event *e = static_cast<Event*>(*it);
       if ( e->transparency() == Event::Opaque ) {

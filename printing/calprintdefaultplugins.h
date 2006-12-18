@@ -64,6 +64,10 @@ class CalPrintIncidence : public CalPrintPluginBase
     virtual void setSettingsWidget();
     virtual void loadConfig();
     virtual void saveConfig();
+  protected:
+    int printCaptionAndText( QPainter &p, const QRect &box, const QString &caption, 
+           const QString &text, QFont captionFont, QFont textFont );
+  
 
   protected:
     bool mShowOptions;
