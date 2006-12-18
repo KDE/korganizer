@@ -155,17 +155,19 @@ void AlarmDialog::setTimer( int seconds )
 
 void AlarmDialog::slotUser2()
 {
-  if ( !QDBusConnection::sessionBus().interface()->isServiceRegistered( "korganizer" ) ) {
+  if ( !QDBusConnection::sessionBus().interface()->isServiceRegistered( "org.kde.korganizer" ) ) {
     if ( KToolInvocation::startServiceByDesktopName( "korganizer", QString() ) )
       KMessageBox::error( 0, i18n("Could not start KOrganizer.") );
   }
-  QDBusInterface korganizer("org.kde.korganizer", "/KOrganizer", "org.kde.korganizer.KOrganizer");
+#warning "kde4: korganizer dbus call not ported";  
+  QDBusInterface korganizer("org.kde.korganizer", "/korganizer", "org.kde.korganizer.KOrganizer");
   korganizer.call( "editIncidence",mIncidence->uid() );
 
 #ifdef Q_OS_UNIX
+#warning "kde4: verify it when kontact will not crash"  
   // get desktop # where korganizer (or kontact) runs
-  QString object = QDBusConnection::sessionBus().interface()->isServiceRegistered( "kontact" ) ?
-           "kontact-mainwindow_1" : "KOrganizer MainWindow";
+  QString object = QDBusConnection::sessionBus().interface()->isServiceRegistered( "org.kde.kontact" ) ?
+           "kontact-mainwindow_1" : "korganizer/MainWindow_1";
   QDBusInterface korganizerObj("org.kde.korganizer", '/'+object);
   QDBusReply<int> reply = korganizerObj.call( "getWinID" );
   if ( reply.isValid() ) {

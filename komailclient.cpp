@@ -185,7 +185,7 @@ bool KOMailClient::send(const QString &from,const QString &to,
 
     pclose(fd);
   } else {
-    if (!QDBusConnection::sessionBus().interface()->isServiceRegistered("kmail")) {
+    if (!QDBusConnection::sessionBus().interface()->isServiceRegistered("org.kde.kmail")) {
       if (KToolInvocation::startServiceByDesktopName("kmail")) {
         KMessageBox::error(0,i18n("No running instance of KMail found."));
         return false;
@@ -221,7 +221,7 @@ int KOMailClient::kMailOpenComposer(const QString& arg0,const QString& arg1,
   //  << arg4 << " , " << arg5 << " , " << arg6 << " )" << endl;
   int result = 0;
   kapp->updateRemoteUserTimestamp( "kmail" );
-
+#warning "kde4: verify it when kmail call was ported to dbus";
   QDBusInterface kmail("org.kde.kmail", "/KMail", "org.kde.kmail.KMail");
   QDBusReply<int> reply = kmail.call("openComposer", arg0, arg1, arg2, arg3, arg4, arg5, arg6.url());
   if (reply.isValid() ) {
