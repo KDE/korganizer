@@ -13,7 +13,7 @@ X-KDE-ParentComponents=korganizer,kontact_korganizerplugin
 X-KDE-CfgDlgHierarchy=KOrganizer
 
 Name=Fonts
-Name[ar]=الخطوط
+Name[ar]=المحارف
 Name[az]=Yazı növləri
 Name[be]=Шрыфты
 Name[bg]=Шрифтове
@@ -72,7 +72,7 @@ Name[xh]=Ubungakanani bamagama
 Name[zh_CN]=字体
 Name[zh_TW]=字型
 Comment=KOrganizer Fonts Configuration
-Comment[ar]=إعداد خطوط KOrganizer
+Comment[ar]=إعداد المحارف لِــ KOrganizer
 Comment[be]=Канфігурацыя шрыфтоў "K Арганізатара"
 Comment[bg]=Настройки на шрифтовете за KOrganizer
 Comment[bs]=KOrganizer podešavanje fontova
