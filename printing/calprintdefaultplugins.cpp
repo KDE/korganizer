@@ -201,15 +201,14 @@ int CalPrintIncidence::printCaptionAndText( QPainter &p, const QRect &box, const
   return textRect.bottom();
 }
 
+#include <qfontdatabase.h>
 void CalPrintIncidence::print( QPainter &p, int width, int height )
 {
   KLocale *local = KGlobal::locale();
 
   QFont oldFont(p.font());
-//   QFont textFont( "helvetica", 12, QFont::Normal );
-//   QFont captionFont( "helvetica", 12, QFont::Normal );
-  QFont textFont( "Tahoma", 11, QFont::Normal );
-  QFont captionFont( "Tahoma", 11, QFont::Bold );
+  QFont textFont( "sans-serif", 11, QFont::Normal );
+  QFont captionFont( "sans-serif", 11, QFont::Bold );
   p.setFont( textFont );
   int lineHeight = p.fontMetrics().lineSpacing();
 
@@ -308,7 +307,7 @@ temp += i18n("%1 %2 after due time");
     locationBox.setTop( timesBox.bottom() + padding() );
     locationBox.setHeight( 0 );
     int locationBottom = drawBoxWithCaption( p, locationBox, i18n("Location: "),
-         (*it)->location(), /*sameLine=*/true, /*expand=*/true );
+         (*it)->location(), /*sameLine=*/true, /*expand=*/true, captionFont, textFont );
     locationBox.setBottom( locationBottom );
 
     // Now start constructing the boxes from the bottom:
@@ -329,17 +328,17 @@ temp += i18n("%1 %2 after due time");
     descriptionBox.setLeft( box.left() );
     descriptionBox.setRight( attachmentsBox.right() );
 
-    drawBoxWithCaption( p, descriptionBox, i18n("Description:"), (*it)->description(), /*sameLine=*/false );
+    drawBoxWithCaption( p, descriptionBox, i18n("Description:"), (*it)->description(), /*sameLine=*/false, /*expand=*/false, captionFont, textFont );
     QString subitemCaption = i18n("Subitems:");
     if ( (*it)->relations().isEmpty() ) {
-      int notesStart = drawBoxWithCaption( p, notesBox, i18n("Notes:"), QString::null, /*sameLine=*/false );
+      int notesStart = drawBoxWithCaption( p, notesBox, i18n("Notes:"), QString::null, /*sameLine=*/false, /*expand=*/false, captionFont, textFont );
       // TODO: Draw lines for writing notes
     } else {
-      int subitemsStart = drawBoxWithCaption( p, notesBox, i18n("Subitems:"), (*it)->description(), /*sameLine=*/false );
+      int subitemsStart = drawBoxWithCaption( p, notesBox, i18n("Subitems:"), (*it)->description(), /*sameLine=*/false, /*expand=*/false, captionFont, textFont );
       // TODO: Draw subitems
     }
 
-    int attachStart = drawBoxWithCaption( p, attachmentsBox, i18n("Attachments:"), QString::null );
+    int attachStart = drawBoxWithCaption( p, attachmentsBox, i18n("Attachments:"), QString::null, /*sameLine=*/false, /*expand=*/false, captionFont, textFont );
     // TODO: Print out the attachments somehow
 
     Attendee::List attendees = (*it)->attendees();
@@ -358,7 +357,7 @@ temp += i18n("%1 %2 after due time");
                      .arg( (*ait)->fullName() )
                      .arg( (*ait)->roleStr() ).arg( (*ait)->statusStr() );
     }
-    int attendeesStart = drawBoxWithCaption( p, attendeesBox, i18n("Attendees:"), attendeeString, /*sameLine=*/false );
+    int attendeesStart = drawBoxWithCaption( p, attendeesBox, i18n("Attendees:"), attendeeString, /*sameLine=*/false, /*expand=*/false, captionFont, textFont );
 
     QString optionsString = i18n("Status: %1").arg( (*it)->statusStr() );
     optionsString += "\n";
@@ -383,11 +382,10 @@ temp += i18n("%1 %2 after due time");
     }
 
     drawBoxWithCaption( p, optionsBox, i18n("Settings: "),
-           optionsString, /*sameLine=*/false );
+           optionsString, /*sameLine=*/false, /*expand=*/false, captionFont, textFont );
     drawBoxWithCaption( p, categoriesBox, i18n("Categories: "),
            (*it)->categories().join( i18n("Spacer for the joined list of categories", ", ") ),
-           /*sameLine=*/true, /*expand=*/false );
-
+           /*sameLine=*/true, /*expand=*/false, captionFont, textFont );
   }
   p.setFont( oldFont );
 }
@@ -504,7 +502,7 @@ void CalPrintDay::print( QPainter &p, int width, int height )
                                                EventSortStartDate,
                                                SortDirectionAscending );
 
-    p.setFont( QFont( "helvetica", 12 ) );
+    p.setFont( QFont( "sans-serif", 12 ) );
 
     // TODO: Find a good way to determine the height of the all-day box
     QRect allDayBox( TIMELINE_WIDTH + padding(), headerBox.bottom() + padding(),
@@ -973,7 +971,7 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
   QString outStr;
   QFont oldFont( p.font() );
 
-  p.setFont( QFont( "helvetica", 10, QFont::Bold ) );
+  p.setFont( QFont( "sans-serif", 10, QFont::Bold ) );
   lineSpacing = p.fontMetrics().lineSpacing();
   mCurrentLinePos += lineSpacing;
   if ( mIncludePriority ) {
@@ -1006,7 +1004,7 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
     posdue = -1;
   }
 
-  p.setFont( QFont( "helvetica", 10 ) );
+  p.setFont( QFont( "sans-serif", 10 ) );
   fontHeight = p.fontMetrics().height();
 
   Todo::List todoList;

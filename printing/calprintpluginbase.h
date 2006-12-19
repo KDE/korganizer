@@ -234,8 +234,8 @@ class KDE_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
               custom contents in that case.
     */
     int drawBoxWithCaption( QPainter &p, const QRect &box, const QString &caption,
-                            const QString &contents = QString::null, 
-                            bool sameLine = false, bool expand = false);
+                            const QString &contents, 
+                            bool sameLine, bool expand, const QFont &captionFont, const QFont &textFont );
 
     /**
       Draw the gray header bar of the printout to the QPainter.

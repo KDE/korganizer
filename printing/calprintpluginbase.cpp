@@ -396,7 +396,7 @@ void CalPrintPluginBase::drawSubHeaderBox(QPainter &p, const QString &str,
 {
   drawShadedBox( p, BOX_BORDER_WIDTH, QColor( 232, 232, 232 ), box );
   QFont oldfont( p.font() );
-  p.setFont( QFont( "helvetica", 10, QFont::Bold ) );
+  p.setFont( QFont( "sans-serif", 10, QFont::Bold ) );
   p.drawText( box, Qt::AlignCenter | Qt::AlignVCenter, str );
   p.setFont( oldfont );
 }
@@ -418,13 +418,13 @@ void CalPrintPluginBase::drawVerticalBox( QPainter &p, const QRect &box, const Q
 // of the printed contents inside the box.
 
 int CalPrintPluginBase::drawBoxWithCaption( QPainter &p, const QRect &allbox, 
-        const QString &caption, const QString &contents, bool sameLine, bool expand )
+        const QString &caption, const QString &contents, bool sameLine, bool expand, const QFont &captionFont, const QFont &textFont )
 {
   QFont oldFont( p.font() );
-//   QFont captionFont( "helvetica", 12, QFont::Bold );
-//   QFont textFont( "helvetica", 12, QFont::Normal );
-  QFont captionFont( "Tahoma", 11, QFont::Bold );
-  QFont textFont( "Tahoma", 11, QFont::Normal );
+//   QFont captionFont( "sans-serif", 11, QFont::Bold );
+//   QFont textFont( "sans-serif", 11, QFont::Normal );
+//   QFont captionFont( "Tahoma", 11, QFont::Bold );
+//   QFont textFont( "Tahoma", 11, QFont::Normal );
 
 
   QRect box( allbox );
@@ -497,7 +497,7 @@ int CalPrintPluginBase::drawHeader( QPainter &p, QString title,
   
   
   QFont oldFont( p.font() );
-  QFont newFont("helvetica", (textRect.height()<60)?16:18, QFont::Bold);
+  QFont newFont("sans-serif", (textRect.height()<60)?16:18, QFont::Bold);
   if ( expand ) {
     p.setFont( newFont );
     QRect boundingR = p.boundingRect( textRect, Qt::AlignLeft | Qt::AlignVCenter | Qt::WordBreak, title );
@@ -545,7 +545,7 @@ void CalPrintPluginBase::drawSmallMonth(QPainter &p, const QDate &qd,
   // 3 Pixel after month name, 2 after day names, 1 after the calendar
   double cellHeight = (box.height() - 5) / rownr;
   QFont oldFont( p.font() );
-  p.setFont(QFont("helvetica", int(cellHeight-1), QFont::Normal));
+  p.setFont(QFont("sans-serif", int(cellHeight-1), QFont::Normal));
 
   // draw the title
   if ( mCalSys ) {
@@ -659,13 +659,13 @@ void CalPrintPluginBase::drawTimeLine(QPainter &p,
         p.drawLine( xcenter, (int)newY, box.right(), (int)newY);
         numStr.setNum(curTime.hour());
         if (cellHeight > 30) {
-          p.setFont(QFont("helvetica", 16, QFont::Bold));
+          p.setFont(QFont("sans-serif", 16, QFont::Bold));
         } else {
-          p.setFont(QFont("helvetica", 12, QFont::Bold));
+          p.setFont(QFont("sans-serif", 12, QFont::Bold));
         }
         p.drawText( box.left()+2, (int)currY+2, box.width()/2-2, (int)cellHeight,
                   Qt::AlignTop | Qt::AlignRight, numStr);
-        p.setFont(QFont("helvetica", 10, QFont::Normal));
+        p.setFont(QFont("sans-serif", 10, QFont::Normal));
         p.drawText( xcenter, (int)currY+2, box.width()/2+2, (int)(cellHeight/2)-3,
                   Qt::AlignTop | Qt::AlignLeft, "00");
       } else {
@@ -673,9 +673,9 @@ void CalPrintPluginBase::drawTimeLine(QPainter &p,
         QTime time( curTime.hour(), 0 );
         numStr = KGlobal::locale()->formatTime( time );
         if ( box.width() < 60 ) {
-          p.setFont(QFont("helvetica", 8, QFont::Bold)); // for weekprint
+          p.setFont(QFont("sans-serif", 8, QFont::Bold)); // for weekprint
         } else {
-          p.setFont(QFont("helvetica", 12, QFont::Bold)); // for dayprint
+          p.setFont(QFont("sans-serif", 12, QFont::Bold)); // for dayprint
         }
         p.drawText(box.left()+2, (int)currY+2, box.width()-4, (int)cellHeight/2-3,
                   Qt::AlignTop|Qt::AlignLeft, numStr);
@@ -835,7 +835,7 @@ void CalPrintPluginBase::drawAgendaDayBox( QPainter &p, Event::List &events,
     KOrg::CellItem::placeItem( cells, placeItem );
   }
 
-//   p.setFont( QFont( "helvetica", 10 ) );
+//   p.setFont( QFont( "sans-serif", 10 ) );
 
   for( it1.toFirst(); it1.current(); ++it1 ) {
     PrintCellItem *placeItem = static_cast<PrintCellItem *>( it1.current() );
@@ -905,18 +905,18 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
   headerTextBox.setLeft( subHeaderBox.left()+5 );
   headerTextBox.setRight( subHeaderBox.right()-5 );
   if (!hstring.isEmpty()) {
-    p.setFont( QFont( "helvetica", 8, QFont::Bold, true ) );
+    p.setFont( QFont( "sans-serif", 8, QFont::Bold, true ) );
 
     p.drawText( headerTextBox, Qt::AlignLeft | Qt::AlignVCenter, hstring );
   }
-  p.setFont(QFont("helvetica", 10, QFont::Bold));
+  p.setFont(QFont("sans-serif", 10, QFont::Bold));
   p.drawText( headerTextBox, Qt::AlignRight | Qt::AlignVCenter, dayNumStr);
 
   Event::List eventList = mCalendar->events( qd,
                                              EventSortStartDate,
                                              SortDirectionAscending );
   QString text;
-  p.setFont( QFont( "helvetica", 8 ) );
+  p.setFont( QFont( "sans-serif", 8 ) );
 
   int textY=mSubHeaderHeight+3; // gives the relative y-coord of the next printed entry
   Event::List::ConstIterator it;
@@ -1227,7 +1227,7 @@ void CalPrintPluginBase::drawMonth( QPainter &p, const QDate &dt, const QRect &b
   int newxstartcont = xstartcont;
   
   QFont oldfont( p.font() );
-  p.setFont( QFont( "Helvetica", 7 ) );
+  p.setFont( QFont( "sans-serif", 7 ) );
   for( it1.toFirst(); it1.current(); ++it1 ) {
     PrintCellItem *placeItem = static_cast<PrintCellItem *>( it1.current() );
     int minsToStart = starttime.secsTo( placeItem->start() )/60;
@@ -1588,7 +1588,7 @@ void CalPrintPluginBase::drawJournal( Journal * journal, QPainter &p, int x, int
                                   int width, int pageHeight )
 {
   QFont oldFont( p.font() );
-  p.setFont( QFont( "helvetica", 15 ) );
+  p.setFont( QFont( "sans-serif", 15 ) );
   QString headerText;
   QString dateText( KGlobal::locale()->
         formatDate( journal->dtStart().date(), false ) );
