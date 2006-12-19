@@ -60,7 +60,7 @@
 #include <kstdaccel.h>
 #include <kfiledialog.h>
 #include <kaction.h>
-#include <kstdaction.h>
+#include <kstandardaction.h>
 #include <kedittoolbar.h>
 #include <ktemporaryfile.h>
 #include <kio/netaccess.h>
@@ -205,9 +205,9 @@ void KOrganizer::initActions()
   setStandardToolBarMenuEnabled( true );
   createStandardStatusBarAction();
 
-  KStdAction::keyBindings(this, SLOT(slotEditKeys()), actionCollection());
-  KStdAction::configureToolbars(this, SLOT(configureToolbars() ), actionCollection());
-  KStdAction::quit( this, SLOT( close() ), actionCollection() );
+  KStandardAction::keyBindings(this, SLOT(slotEditKeys()), actionCollection());
+  KStandardAction::configureToolbars(this, SLOT(configureToolbars() ), actionCollection());
+  KStandardAction::quit( this, SLOT( close() ), actionCollection() );
   setAutoSaveSettings();
 
   createGUI( 0 );

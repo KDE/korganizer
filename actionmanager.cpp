@@ -66,7 +66,7 @@
 #include <kdeversion.h>
 #include <ktoggleaction.h>
 #include <krecentfilesaction.h>
-#include <kstdaction.h>
+#include <kstandardaction.h>
 #include <QApplication>
 #include <QTimer>
 #include <QLabel>
@@ -228,27 +228,27 @@ void ActionManager::initActions()
   //~~~~~~~~~~~~~~~~~~~~~~~ LOADING / SAVING ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   if ( mIsPart ) {
     if ( mMainWindow->hasDocument() ) {
-      KStdAction::openNew( this, SLOT(file_new()), mACollection, "korganizer_openNew" );
-      KStdAction::open( this, SLOT( file_open() ), mACollection, "korganizer_open" );
-      mRecent = KStdAction::openRecent( this, SLOT( file_open( const KUrl& ) ),
+      KStandardAction::openNew( this, SLOT(file_new()), mACollection, "korganizer_openNew" );
+      KStandardAction::open( this, SLOT( file_open() ), mACollection, "korganizer_open" );
+      mRecent = KStandardAction::openRecent( this, SLOT( file_open( const KUrl& ) ),
                                      mACollection, "korganizer_openRecent" );
-      KStdAction::revert( this,SLOT( file_revert() ), mACollection, "korganizer_revert" );
-      KStdAction::saveAs( this, SLOT( file_saveas() ), mACollection,
+      KStandardAction::revert( this,SLOT( file_revert() ), mACollection, "korganizer_revert" );
+      KStandardAction::saveAs( this, SLOT( file_saveas() ), mACollection,
                    "korganizer_saveAs" );
-      KStdAction::save( this, SLOT( file_save() ), mACollection, "korganizer_save" );
+      KStandardAction::save( this, SLOT( file_save() ), mACollection, "korganizer_save" );
     }
-    KStdAction::print( mCalendarView, SLOT( print() ), mACollection, "korganizer_print" );
+    KStandardAction::print( mCalendarView, SLOT( print() ), mACollection, "korganizer_print" );
   } else {
-    KStdAction::openNew( this, SLOT( file_new() ), mACollection );
-    KStdAction::open( this, SLOT( file_open() ), mACollection );
-    mRecent = KStdAction::openRecent( this, SLOT( file_open( const KUrl& ) ),
+    KStandardAction::openNew( this, SLOT( file_new() ), mACollection );
+    KStandardAction::open( this, SLOT( file_open() ), mACollection );
+    mRecent = KStandardAction::openRecent( this, SLOT( file_open( const KUrl& ) ),
                                      mACollection );
     if ( mMainWindow->hasDocument() ) {
-      KStdAction::revert( this,SLOT( file_revert() ), mACollection );
-      KStdAction::save( this, SLOT( file_save() ), mACollection );
-      KStdAction::saveAs( this, SLOT( file_saveas() ), mACollection );
+      KStandardAction::revert( this,SLOT( file_revert() ), mACollection );
+      KStandardAction::save( this, SLOT( file_save() ), mACollection );
+      KStandardAction::saveAs( this, SLOT( file_saveas() ), mACollection );
     }
-    KStdAction::print( mCalendarView, SLOT( print() ), mACollection );
+    KStandardAction::print( mCalendarView, SLOT( print() ), mACollection );
   }
 
 
@@ -283,33 +283,33 @@ void ActionManager::initActions()
   KOrg::History *h = mCalendarView->history();
   if ( mIsPart ) {
     // edit menu
-    mCutAction = KStdAction::cut( mCalendarView, SLOT( edit_cut() ),
+    mCutAction = KStandardAction::cut( mCalendarView, SLOT( edit_cut() ),
                                   mACollection, "korganizer_cut" );
-    mCopyAction = KStdAction::copy( mCalendarView, SLOT( edit_copy() ),
+    mCopyAction = KStandardAction::copy( mCalendarView, SLOT( edit_copy() ),
                                     mACollection, "korganizer_copy" );
-    pasteAction = KStdAction::paste( mCalendarView, SLOT( edit_paste() ),
+    pasteAction = KStandardAction::paste( mCalendarView, SLOT( edit_paste() ),
                                      mACollection, "korganizer_paste" );
-    mUndoAction = KStdAction::undo( h, SLOT( undo() ),
+    mUndoAction = KStandardAction::undo( h, SLOT( undo() ),
                                     mACollection, "korganizer_undo" );
-    mRedoAction = KStdAction::redo( h, SLOT( redo() ),
+    mRedoAction = KStandardAction::redo( h, SLOT( redo() ),
                                     mACollection, "korganizer_redo" );
   } else {
-    mCutAction = KStdAction::cut( mCalendarView,SLOT( edit_cut() ),
+    mCutAction = KStandardAction::cut( mCalendarView,SLOT( edit_cut() ),
                                   mACollection );
-    mCopyAction = KStdAction::copy( mCalendarView,SLOT( edit_copy() ),
+    mCopyAction = KStandardAction::copy( mCalendarView,SLOT( edit_copy() ),
                                     mACollection );
-    pasteAction = KStdAction::paste( mCalendarView,SLOT( edit_paste() ),
+    pasteAction = KStandardAction::paste( mCalendarView,SLOT( edit_paste() ),
                                      mACollection );
-    mUndoAction = KStdAction::undo( h, SLOT( undo() ), mACollection );
-    mRedoAction = KStdAction::redo( h, SLOT( redo() ), mACollection );
+    mUndoAction = KStandardAction::undo( h, SLOT( undo() ), mACollection );
+    mRedoAction = KStandardAction::redo( h, SLOT( redo() ), mACollection );
   }
   mDeleteAction = new KAction(KIcon("editdelete"),  i18n("&Delete"), mACollection, "edit_delete" );
   connect(mDeleteAction, SIGNAL(triggered(bool) ), mCalendarView, SLOT( appointment_delete() ));
   if ( mIsPart ) {
-    KStdAction::find( mCalendarView->dialogManager(), SLOT( showSearchDialog() ),
+    KStandardAction::find( mCalendarView->dialogManager(), SLOT( showSearchDialog() ),
                      mACollection, "korganizer_find" );
   } else {
-    KStdAction::find( mCalendarView->dialogManager(), SLOT( showSearchDialog() ),
+    KStandardAction::find( mCalendarView->dialogManager(), SLOT( showSearchDialog() ),
                      mACollection );
   }
   pasteAction->setEnabled( false );
@@ -556,19 +556,19 @@ void ActionManager::initActions()
   if ( mIsPart ) {
     action = new KAction(KIcon("configure"),  i18n("&Configure Calendar..."), mACollection, "korganizer_configure" );
     connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( edit_options() ));
-    KStdAction::keyBindings( this, SLOT( keyBindings() ),
+    KStandardAction::keyBindings( this, SLOT( keyBindings() ),
                              mACollection, "korganizer_configure_shortcuts" );
   } else {
-    KStdAction::preferences( mCalendarView, SLOT( edit_options() ),
+    KStandardAction::preferences( mCalendarView, SLOT( edit_options() ),
                             mACollection );
-    KStdAction::keyBindings( this, SLOT( keyBindings() ), mACollection );
+    KStandardAction::keyBindings( this, SLOT( keyBindings() ), mACollection );
   }
 
 
 
 
   //**************************** HELP MENU **********************************
-  KStdAction::tipOfDay( this, SLOT( showTip() ), mACollection,
+  KStandardAction::tipOfDay( this, SLOT( showTip() ), mACollection,
                         "help_tipofday" );
 //   new KAction( i18n("Show Intro Page"), 0,
 //                     mCalendarView,SLOT( showIntro() ),

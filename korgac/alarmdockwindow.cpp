@@ -37,7 +37,7 @@
 #include <kmenu.h>
 #include <kmessagebox.h>
 #include <kaction.h>
-#include <kstdaction.h>
+#include <kstandardaction.h>
 
 #include <QToolTip>
 #include <QFile>
@@ -84,7 +84,7 @@ AlarmDockWindow::AlarmDockWindow()
   // Disable standard quit behaviour. We have to intercept the quit even, if the
   // main window is hidden.
   KActionCollection *ac = actionCollection();
-  const char *quitName = KStdAction::name( KStdAction::Quit );
+  const char *quitName = KStandardAction::name( KStandardAction::Quit );
   QAction *quit = ac->action( quitName );
   if ( !quit ) {
     kDebug(5890) << "No Quit standard action." << endl;
