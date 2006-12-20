@@ -211,6 +211,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
   QFont captionFont( "sans-serif", 11, QFont::Bold );
   p.setFont( textFont );
   int lineHeight = p.fontMetrics().lineSpacing();
+  QString cap, txt;
 
 
   Incidence::List::ConstIterator it;
@@ -220,7 +221,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
     if ( it != mSelectedIncidences.begin() ) mPrinter->newPage();
 
 
-    // PAGE Layout:
+    // PAGE Layout (same for landscape and portrait! astonishingly, it looks good with both!):
     //  +-----------------------------------+
     //  | Header:  Summary                  |
     //  +===================================+
@@ -243,10 +244,10 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
     //  +------------------------+----------+
     //  | Attachments:           | Settings |
     //  |                        |          |
-    //  +------------------------+          |
-    //  | Attendees:             |          |
-    //  |                        |          |
     //  +------------------------+----------+
+    //  | Attendees:                        |
+    //  |                                   |
+    //  +-----------------------------------+
     //  | Categories: _____________________ |
     //  +-----------------------------------+
 
@@ -259,18 +260,12 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
 
     QRect timesBox( titleBox );
     timesBox.setTop( titleBox.bottom() + padding() );
-    // TODO: Good default height of the times box
     timesBox.setHeight( height / 8 );
-    drawBox( p, BOX_BORDER_WIDTH, timesBox );
-    
-    QFontMetrics captionFM( captionFont );
-    int lineSp = captionFM.lineSpacing();
-    QFontMetrics textFM( textFont );
     
     TimePrintStringsVisitor stringVis;
     int h = timesBox.top();
     if ( stringVis.act(*it) ) {
-      QRect textRect( timesBox.left()+padding(), timesBox.top()+padding(), 0, lineSp );
+      QRect textRect( timesBox.left()+padding(), timesBox.top()+padding(), 0, lineHeight );
       textRect.setRight( timesBox.center().x() );
       h = printCaptionAndText( p, textRect, stringVis.mStartCaption, stringVis.mStartString, captionFont, textFont );
 
@@ -280,27 +275,37 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
     }
     
     
+    if ( (*it)->doesRecur() ) {
+      QRect recurBox( timesBox.left()+padding(), h+padding(), timesBox.right()-padding(), lineHeight );
+      // TODO: Convert the recurrence to a string and print it out!
+      h = QMAX( printCaptionAndText( p, recurBox, i18n("Repeats: "), "TODO: Convert Repeat to String!", captionFont, textFont ), h );
+    }
     
-    // TODO: Contents of the times box
-
+    QRect alarmBox( timesBox.left()+padding(), h+padding(), timesBox.right()-padding(), lineHeight );
+    if ( (*it)->alarms().count() == 0 ) {
+      cap = i18n("No reminders");
+      txt = QString::null;
+    } else {
+      cap = i18n("Reminder: ", "%n reminders: ", (*it)->alarms().count() );
+      // TODO: Convert reminder to String!
+      txt = "TODO: Convert reminder to String!";
 QString temp;
-
-temp += i18n("Repeats: ");
-
-
-if ( (*it)->alarms().count() == 0 )
-  temp += i18n("No reminders");
-else
-  temp += i18n("Reminder: ", "%n reminders: ", (*it)->alarms().count() );
-temp += i18n("Organizer: ");
 temp += i18n("%1 %2 before start");
 temp += i18n("%1 %2 before end");
 temp += i18n("%1 %2 before due time");
 temp += i18n("%1 %2 after start");
 temp += i18n("%1 %2 after end");
 temp += i18n("%1 %2 after due time");
+    }
+    h = QMAX( printCaptionAndText( p, alarmBox, cap, txt, captionFont, textFont ), h );
 
 
+    QRect organizerBox( timesBox.left()+padding(), h+padding(), timesBox.right()-padding(), lineHeight );
+    h = QMAX( printCaptionAndText( p, organizerBox, i18n("Organizer: "), (*it)->organizer().fullName(), captionFont, textFont ), h );
+    
+    // Finally, draw the frame around the time information...
+    timesBox.setBottom( QMAX( timesBox.bottom(), h+padding() ) );
+    drawBox( p, BOX_BORDER_WIDTH, timesBox );
 
 
     QRect locationBox( timesBox );
@@ -310,16 +315,19 @@ temp += i18n("%1 %2 after due time");
          (*it)->location(), /*sameLine=*/true, /*expand=*/true, captionFont, textFont );
     locationBox.setBottom( locationBottom );
 
+
     // Now start constructing the boxes from the bottom:
     QRect categoriesBox( locationBox );
     categoriesBox.setBottom( box.bottom() );
     categoriesBox.setTop( categoriesBox.bottom() - lineHeight - 2*padding() );
 
-    QRect attendeesBox( box.left(), categoriesBox.top()-padding()-box.height()/9, box.width()*3/4 - padding(), box.height()/9 );
+
+    QRect attendeesBox( box.left(), categoriesBox.top()-padding()-box.height()/9, box.width(), box.height()/9 );
     QRect attachmentsBox( box.left(), attendeesBox.top()-padding()-box.height()/9, box.width()*3/4 - padding(), box.height()/9 );
     QRect optionsBox( attachmentsBox.right() + padding(), attachmentsBox.top(), 0, 0 );
     optionsBox.setRight( box.right() );
-    optionsBox.setBottom( attendeesBox.bottom() );
+    optionsBox.setBottom( attachmentsBox.bottom() );
+
 
     QRect notesBox( optionsBox.left(), locationBox.bottom() + padding(), optionsBox.width(), 0 );
     notesBox.setBottom( optionsBox.top() - padding() );
