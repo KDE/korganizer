@@ -677,9 +677,9 @@ void CalPrintWeek::print( QPainter &p, int width, int height )
         line1 = local->formatDate( curWeek.addDays( -6 ) );
         line2 = local->formatDate( curWeek );
         if ( orientation() == KPrinter::Landscape ) {
-          title = i18n("date from - to (Week %1)", "%1 - %2 (Week %3)");
+          title = i18n("date from - to (week number)", "%1 - %2 (Week %3)");
         } else {
-          title = i18n("date from -\nto (Week %1)", "%1 -\n%2 (Week %3)");
+          title = i18n("date from -\nto (week number)", "%1 -\n%2 (Week %3)");
         }
         title = title.arg( line1 ).arg( line2 ).arg( curWeek.weekNumber() );
         drawHeader( p, title, curWeek, QDate(), headerBox );
