@@ -29,24 +29,16 @@
 #include <kmessagebox.h>
 #include <kdemacros.h>
 #include "korganizer/incidencechangerbase.h"
+#include "printplugin.h"
 
 #include <kcal/event.h>
+
 
 using namespace KCal;
 
 namespace KCal { class Calendar; }
-class CalPrinter;
 
 namespace KOrg {
-
-/**
-  Base class of KOrganizer printer class.
-*/
-class CalPrinterBase
-{
-  public:
-    enum PrintType { Day, Week, Month, Todolist };
-};
 
 
 /**
@@ -162,11 +154,8 @@ class KDE_EXPORT BaseView : public QWidget
 
     /**
       Set the default start/end date/time for new events. Return true if anything was changed
-         @param startDt The start date for new events (calculated from the selection)
-         @param endDt The end date for new events (calculated from the selection)
-         @param allDay Whether the new event should be an all-day item or not.
     */
-    virtual bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay);
+    virtual bool eventDurationHint(QDateTime &/*startDt*/, QDateTime &/*endDt*/, bool &/*allDay*/);
 
   signals:
     void incidenceSelected( Incidence * );

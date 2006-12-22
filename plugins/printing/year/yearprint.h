@@ -21,12 +21,12 @@
     with any edition of Qt, and distribute the resulting executable,
     without including the source code for Qt in the source distribution.
 */
-#ifndef JOURNALPRINT_H
-#define JOURNALPRINT_H
+#ifndef YEARPRINT_H
+#define YEARPRINT_H
 
 #include <klocale.h>
 #include "calprintpluginbase.h"
-#include "ui_calprintjournalconfig_base.h"
+#include "ui_calprintyearconfig_base.h"
 
 #ifndef KORG_NOPRINTER
 namespace KCal {
@@ -36,16 +36,17 @@ class Calendar;
 using namespace KCal;
 using namespace KOrg;
 
-class CalPrintJournal : public CalPrintPluginBase
+class CalPrintYear : public CalPrintPluginBase
 {
   public:
-    CalPrintJournal():CalPrintPluginBase() {}
-    virtual ~CalPrintJournal() {}
-    virtual QString description() { return i18n("Print &journal"); }
-    virtual QString info() { return i18n("Prints all journals for a given date range"); }
-    virtual QWidget *createConfigWidget( QWidget* );
-    virtual int sortID() { return CalPrinterBase::Journallist; }
+    CalPrintYear():CalPrintPluginBase() {}
+    virtual ~CalPrintYear() {}
+    virtual QString description() { return i18n("Print &Year"); }
+    virtual QString info() { return i18n("Prints a calendar for an entire year"); }
+    virtual int sortID() { return 900; }
     virtual bool enabled() { return true; }
+    virtual QWidget *createConfigWidget( QWidget* );
+    virtual KPrinter::Orientation defaultOrientation();
 
   public:
     virtual void print(QPainter &p, int width, int height);
@@ -56,17 +57,18 @@ class CalPrintJournal : public CalPrintPluginBase
     virtual void setDateRange( const QDate& from, const QDate& to );
 
   protected:
-    bool mUseDateRange;
+    int mYear;
+    int mPages;
+    int mSubDaysEvents, mHolidaysEvents;
 };
 
-class CalPrintJournalConfig : public QWidget, public Ui::CalPrintJournalConfig_Base
+class CalPrintYearConfig : public QWidget, public Ui::CalPrintYearConfig_Base
 {
 public:
-  CalPrintJournalConfig( QWidget *parent ) : QWidget( parent ) {
+  CalPrintYearConfig( QWidget *parent ) : QWidget( parent ) {
     setupUi( this );
   }
 };
-
 
 #endif
 #endif

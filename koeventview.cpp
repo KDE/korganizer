@@ -59,7 +59,7 @@ KOEventView::~KOEventView()
 KOEventPopupMenu *KOEventView::eventPopup()
 {
   KOEventPopupMenu *eventPopup = new KOEventPopupMenu;
-  
+
   connect(eventPopup,SIGNAL(editIncidenceSignal(Incidence *)),
                      SIGNAL(editIncidenceSignal(Incidence *)));
   connect(eventPopup,SIGNAL(showIncidenceSignal(Incidence *)),

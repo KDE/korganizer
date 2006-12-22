@@ -1,5 +1,5 @@
 
-include_directories( ${CMAKE_SOURCE_DIR}/korganizer/interfaces ${CMAKE_SOURCE_DIR}/korganizer  )
+include_directories( ${CMAKE_SOURCE_DIR}/korganizer/interfaces ${CMAKE_SOURCE_DIR}/korganizer )
 
 
 ########### next target ###############
@@ -20,13 +20,13 @@ install(TARGETS kocorehelper  DESTINATION ${LIB_INSTALL_DIR})
 
 set(korg_stdprinting_LIB_SRCS 
    calprinter.cpp 
-   calprinthelper.cpp 
    calprintpluginbase.cpp 
    calprintdefaultplugins.cpp )
 
 kde4_automoc(${korg_stdprinting_LIB_SRCS})
 
 kde4_add_ui_files(korg_stdprinting_LIB_SRCS 
+   calprintincidenceconfig_base.ui
    calprintdayconfig_base.ui 
    calprintmonthconfig_base.ui 
    calprinttodoconfig_base.ui 
@@ -42,5 +42,5 @@ install(TARGETS korg_stdprinting  DESTINATION ${LIB_INSTALL_DIR})
 
 ########### install files ###############
 
-install( FILES calprinthelper.h calprintpluginbase.h calprinter.h  DESTINATION ${INCLUDE_INSTALL_DIR}/korganizer)
+install( FILES calprintpluginbase.h calprinter.h  DESTINATION ${INCLUDE_INSTALL_DIR}/korganizer)
 

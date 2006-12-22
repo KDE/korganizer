@@ -29,6 +29,7 @@
 #include <klocale.h>
 #include "calprintpluginbase.h"
 
+#include "ui_calprintincidenceconfig_base.h"
 #include "ui_calprintdayconfig_base.h"
 #include "ui_calprintweekconfig_base.h"
 #include "ui_calprintmonthconfig_base.h"
@@ -40,6 +41,46 @@ class Calendar;
 }
 
 using namespace KCal;
+using namespace KOrg;
+
+class CalPrintIncidence : public CalPrintPluginBase
+{
+  public:
+    CalPrintIncidence();
+    virtual ~CalPrintIncidence();
+    virtual QString description() { return i18n("Print &incidence"); }
+    virtual QString info() { return i18n("Prints an incidence on one page"); }
+    virtual int sortID() { return CalPrinterBase::Incidence; }
+    // Enable the Print Incidence option only if there are selected incidences.
+    virtual bool enabled()
+      {
+        if ( mSelectedIncidences.count() > 0 ) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    virtual QWidget *createConfigWidget(QWidget*);
+    virtual KPrinter::Orientation defaultOrientation()
+      { return KPrinter::Portrait; }
+
+  public:
+    void print( QPainter &p, int width, int height );
+    virtual void readSettingsWidget();
+    virtual void setSettingsWidget();
+    virtual void loadConfig();
+    virtual void saveConfig();
+
+  protected:
+    int printCaptionAndText( QPainter &p, const QRect &box, const QString &caption,
+           const QString &text, QFont captionFont, QFont textFont );
+
+    bool mShowOptions;
+    bool mShowSubitemsNotes;
+    bool mShowAttendees;
+    bool mShowAttachments;
+};
+
 
 class CalPrintDay : public CalPrintPluginBase
 {
@@ -48,6 +89,8 @@ class CalPrintDay : public CalPrintPluginBase
     virtual ~CalPrintDay();
     virtual QString description() { return i18n("Print da&y"); }
     virtual QString info() { return i18n("Prints all events of a single day on one page"); }
+    virtual int sortID() { return CalPrinterBase::Day; }
+    virtual bool enabled() { return true; }
     virtual QWidget *createConfigWidget( QWidget* );
 
   public:
@@ -71,8 +114,13 @@ class CalPrintWeek : public CalPrintPluginBase
     virtual ~CalPrintWeek();
     virtual QString description() { return i18n("Print &week"); }
     virtual QString info() { return i18n("Prints all events of one week on one page"); }
+    virtual int sortID() { return CalPrinterBase::Week; }
+    virtual bool enabled() { return true; }
     virtual QWidget *createConfigWidget(QWidget*);
-    virtual KPrinter::Orientation orientation();
+    /**
+      Returns the default orientation for the eWeekPrintType.
+    */
+    virtual KPrinter::Orientation defaultOrientation();
 
   public:
     void print(QPainter &p, int width, int height);
@@ -95,8 +143,10 @@ class CalPrintMonth : public CalPrintPluginBase
     virtual ~CalPrintMonth();
     virtual QString description() { return i18n("Print mont&h"); }
     virtual QString info() { return i18n("Prints all events of one month on one page"); }
+    virtual int sortID() { return CalPrinterBase::Month; }
+    virtual bool enabled() { return true; }
     virtual QWidget *createConfigWidget(QWidget*);
-    virtual KPrinter::Orientation orientation() { return KPrinter::Landscape; }
+    virtual KPrinter::Orientation defaultOrientation() { return KPrinter::Landscape; }
 
   public:
     void print(QPainter &p, int width, int height);
@@ -120,10 +170,12 @@ class CalPrintTodos : public CalPrintPluginBase
     virtual ~CalPrintTodos();
     virtual QString description() { return i18n("Print to-&dos"); }
     virtual QString info() { return i18n("Prints all to-dos in a (tree-like) list"); }
+    virtual int sortID() { return CalPrinterBase::Todolist; }
+    virtual bool enabled() { return true; }
     virtual QWidget *createConfigWidget(QWidget*);
 
   public:
-    void print(QPainter &p, int width, int height);
+    void print( QPainter &p, int width, int height );
     virtual void readSettingsWidget();
     virtual void setSettingsWidget();
     virtual void loadConfig();
@@ -139,11 +191,13 @@ class CalPrintTodos : public CalPrintPluginBase
     enum eTodoSortField {
       TodoFieldSummary=0,
       TodoFieldStartDate, TodoFieldDueDate,
-      TodoFieldPriority, TodoFieldPercentComplete
+      TodoFieldPriority, TodoFieldPercentComplete,
+      TodoFieldUnset
     } mTodoSortField;
 
     enum eTodoSortDirection {
-      TodoDirectionAscending=0, TodoDirectionDescending
+      TodoDirectionAscending=0, TodoDirectionDescending,
+      TodoDirectionUnset
     } mTodoSortDirection;
 
     bool mIncludeDescription;
@@ -156,6 +210,13 @@ class CalPrintTodos : public CalPrintPluginBase
     bool mSortDirection;
 };
 
+class CalPrintIncidenceConfig : public QWidget, public Ui::CalPrintIncidenceConfig_Base
+{
+public:
+  CalPrintIncidenceConfig( QWidget *parent ) : QWidget( parent ) {
+    setupUi( this );
+  }
+};
 
 class CalPrintDayConfig : public QWidget, public Ui::CalPrintDayConfig_Base
 {
@@ -188,7 +249,6 @@ public:
     setupUi( this );
   }
 };
-
 
 #endif
 #endif
