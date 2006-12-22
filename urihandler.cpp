@@ -101,7 +101,7 @@ bool UriHandler::process( const QString &uri )
 
     // we must work around KUrl breakage (it doesn't know about URNs)
     QString uid = KUrl::fromPercentEncoding( uri.toLatin1() ).mid( 11 );
-    OrgKdeKorganizerKorganizerInterface korganizerIface("org.kde.korganizer.Korganizer", "/", QDBus::sessionBus() );
+    OrgKdeKorganizerKorganizerInterface korganizerIface("org.kde.korganizer.Korganizer", "/Korganizer", QDBus::sessionBus() );
     
     return korganizerIface.showIncidence( uid );
   } else if ( uri.startsWith( KDEPIMPROTOCOL_NEWSARTICLE ) ) {

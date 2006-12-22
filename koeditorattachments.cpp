@@ -247,6 +247,7 @@ AttachmentEditDialog::AttachmentEditDialog( AttachmentIconItem *item,
 #endif
   }
   vbl->addStretch( 10 );
+  connect(this,SIGNAL(applyClicked()), this, SLOT(slotApply()));
 }
 
 void AttachmentEditDialog::slotApply()

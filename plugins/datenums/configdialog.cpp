@@ -65,7 +65,7 @@ ConfigDialog::ConfigDialog(QWidget *parent)
   btn = new QRadioButton( i18n("Show both"), dayNumBox );
   mDayNumGroup->addButton( btn );
   groupLayout->addWidget( btn );
-
+  connect(this, SIGNAL(okClicked()), this, SLOT(slotOk()));
   load();
 }
 

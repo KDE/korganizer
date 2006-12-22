@@ -90,7 +90,8 @@ ExportWebDialog::ExportWebDialog( HTMLExportSettings *settings, QWidget *parent)
 
   connect( this, SIGNAL( user1Clicked() ), SLOT( slotOk() ) );
   connect( this, SIGNAL( cancelClicked() ), SLOT( reject() ) );
-
+  connect( this, SIGNAL( defaultClicked()) , this, SLOT(slotDefault()));
+  
   readConfig();
 }
 

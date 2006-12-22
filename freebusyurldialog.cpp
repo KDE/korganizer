@@ -57,6 +57,7 @@ FreeBusyUrlDialog::FreeBusyUrlDialog( KCal::Attendee *attendee, QWidget *parent 
   topLayout->addWidget( mWidget );
 
   mWidget->loadConfig();
+  connect(this, SIGNAL(okClicked()), this, SLOT(slotOk()));
 }
 
 void FreeBusyUrlDialog::slotOk()

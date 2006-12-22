@@ -57,6 +57,8 @@ FilterEditDialog::FilterEditDialog( QList<CalFilter*> *filters, QWidget *parent 
     updateFilterList();
     connect( mFilterEdit, SIGNAL( editCategories() ), SIGNAL( editCategories() ) );
     connect( mFilterEdit, SIGNAL( filterChanged() ), SIGNAL( filterChanged() ) );
+    connect( this, SIGNAL(okClicked()), this, SLOT(slotOk()));
+    connect( this, SIGNAL(applyClicked()), this, SLOT(slotApply()));
 }
 
 FilterEditDialog::~FilterEditDialog()
