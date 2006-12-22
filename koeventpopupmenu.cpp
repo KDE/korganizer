@@ -50,7 +50,7 @@ KOEventPopupMenu::KOEventPopupMenu()
   mEditOnlyItems.append(
     insertItem(i18n("&Edit..."), this, SLOT( popupEdit() ) ) );
 #ifndef KORG_NOPRINTER
-  insertItem( KOGlobals::self()->smallIcon("printer"), i18n("&Print..."),
+  insertItem( KOGlobals::self()->smallIcon("printer1"), i18n("&Print..."),
               this, SLOT( print() ) );
 #endif
   //------------------------------------------------------------------------
