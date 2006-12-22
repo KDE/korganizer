@@ -98,6 +98,9 @@ AlarmDialog::AlarmDialog( QWidget *parent )
   // showButton( User2/*3*/, false );
 
   setMinimumSize( 300, 200 );
+  connect(this,SIGNAL(okClicked()),this, SLOT(slotOk()));
+  connect(this,SIGNAL(user1Clicked()),this,SLOT(slotUser1()));
+  connect(this,SIGNAL(user2Clicked()),this,SLOT(slotUser2()));
 }
 
 AlarmDialog::~AlarmDialog()
