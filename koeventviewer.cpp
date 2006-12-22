@@ -157,7 +157,7 @@ void KOEventViewer::editIncidence()
     // make sure korganizer is running or the part is shown
     KToolInvocation::startServiceByDesktopPath("korganizer");
 
-    OrgKdeKorganizerKorganizerInterface korganizerIface("org.kde.korganizer.Korganizer", "/", QDBusConnection::sessionBus() );
+    OrgKdeKorganizerKorganizerInterface korganizerIface("org.kde.korganizer.Korganizer", "/Korganizer", QDBusConnection::sessionBus() );
     korganizerIface.editIncidence( mIncidence->uid() );
 #endif
   }
@@ -170,7 +170,7 @@ void KOEventViewer::showIncidenceContext()
     // make sure korganizer is running or the part is shown
     KToolInvocation::startServiceByDesktopPath("korganizer");
 
-    OrgKdeKorganizerKorganizerInterface korganizerIface("org.kde.korganizer.Korganizer", "/", QDBusConnection::sessionBus() );
+    OrgKdeKorganizerKorganizerInterface korganizerIface("org.kde.korganizer.Korganizer", "/Korganizer", QDBusConnection::sessionBus() );
     korganizerIface.showIncidenceContext( mIncidence->uid() );
   }
 #endif
