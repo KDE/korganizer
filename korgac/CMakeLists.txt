@@ -12,6 +12,10 @@ set(korgac_SRCS
    alarmdockwindow.cpp 
    koalarmclient.cpp )
 
+set(korganizer_xml  ${CMAKE_SOURCE_DIR}/korganizer/org.kde.korganizer.Korganizer.xml)
+QT4_ADD_DBUS_INTERFACE( korgac_SRCS ${korganizer_xml} korganizer_interface )
+
+
 kde4_automoc(${korgac_SRCS})
 
 qt4_add_dbus_adaptor(korgac_SRCS org.kde.korganizer.KOrgac.xml koalarmclient.h KOAlarmClient )

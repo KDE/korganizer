@@ -55,6 +55,7 @@
 
 #include "alarmdialog.h"
 #include "alarmdialog.moc"
+#include <korganizer_interface.h>
 
 AlarmDialog::AlarmDialog( QWidget *parent )
   : KDialog( parent/*, Qt::WType_TopLevel | Qt::WStyle_Customize | Qt::WStyle_StaysOnTop |
@@ -159,9 +160,8 @@ void AlarmDialog::slotUser2()
     if ( KToolInvocation::startServiceByDesktopName( "korganizer", QString() ) )
       KMessageBox::error( 0, i18n("Could not start KOrganizer.") );
   }
-#warning "kde4: korganizer dbus call not ported";  
-  QDBusInterface korganizer("org.kde.korganizer", "/korganizer", "org.kde.korganizer.KOrganizer");
-  korganizer.call( "editIncidence",mIncidence->uid() );
+  org::kde::korganizer::Korganizer korganizer("org.kde.korganizer", "/Korganizer", QDBusConnection::sessionBus());
+  korganizer.editIncidence(mIncidence->uid());
 
 #ifdef Q_OS_UNIX
 #warning "kde4: verify it when kontact will not crash"  
