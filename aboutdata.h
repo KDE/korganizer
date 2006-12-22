@@ -33,11 +33,6 @@ class KDE_EXPORT AboutData : public KAboutData
 {
   public:
     AboutData();
-    
-    static AboutData *self();
-    
-  private:
-    static AboutData *mSelf;
 };
 
 }

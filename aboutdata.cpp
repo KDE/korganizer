@@ -30,8 +30,6 @@
 
 using namespace KOrg;
 
-AboutData *AboutData::mSelf = 0;
-
 AboutData::AboutData()
   : KAboutData( "korganizer", I18N_NOOP("KOrganizer"), korgVersion,
                 I18N_NOOP("A Personal Organizer for KDE"),
@@ -79,10 +77,4 @@ AboutData::AboutData()
   addCredit("Larry Wright");
   addCredit("Thomas Zander");
   addCredit("Fester Zigterman");
-}
-
-AboutData *AboutData::self()
-{
-  if ( !mSelf ) mSelf = new AboutData;
-  return mSelf;
 }
