@@ -43,7 +43,6 @@
 #include <kpopupmenu.h>
 #include <kinstance.h>
 #include <klocale.h>
-#include <kaboutdata.h>
 #include <kiconloader.h>
 #include <kaction.h>
 #include <kdebug.h>
@@ -140,7 +139,7 @@ KOrganizerPart::~KOrganizerPart()
 
 KAboutData *KOrganizerPart::createAboutData()
 {
-  return KOrg::AboutData::self();
+  return new KOrg::AboutData;
 }
 
 void KOrganizerPart::startCompleted( KProcess *process )
