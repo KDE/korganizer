@@ -43,7 +43,7 @@ class KDE_EXPORT KOGlobals
     enum { PRIORITY_MODIFIED, COMPLETION_MODIFIED, CATEGORY_MODIFIED,
            DATE_MODIFIED, RELATION_MODIFIED, ALARM_MODIFIED,
            DESCRIPTION_MODIFIED, SUMMARY_MODIFIED,
-           UNKNOWN_MODIFIED };
+           COMPLETION_MODIFIED_WITH_RECURRENCE, UNKNOWN_MODIFIED };
 
     static void fitDialogToScreen( QWidget *widget, bool force=false );
     KConfig *config() const;
