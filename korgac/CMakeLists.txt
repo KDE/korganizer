@@ -31,6 +31,7 @@ install(TARGETS korgac  DESTINATION ${BIN_INSTALL_DIR} )
 ########### next target ###############
 if(KDE4_BUILD_TESTS)
 set(testalarmdlg_SRCS testalarmdlg.cpp alarmdialog.cpp )
+QT4_ADD_DBUS_INTERFACE( testalarmdlg_SRCS ${korganizer_xml} korganizer_interface )
 
 kde4_automoc(${testalarmdlg_SRCS})
 
