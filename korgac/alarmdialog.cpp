@@ -33,6 +33,7 @@
 #include <qdatastream.h>
 
 #include <kapplication.h>
+#include <kiconloader.h>
 #include <dcopclient.h>
 #include <klocale.h>
 #include <kprocess.h>
@@ -58,6 +59,8 @@ AlarmDialog::AlarmDialog( QWidget *parent, const char *name )
                  false, i18n("Suspend"), i18n("Edit...") ),
                  mSuspendTimer(this)
 {
+  KGlobal::iconLoader()->addAppDir( "kdepim" );
+
   QWidget *topBox = plainPage();
   QBoxLayout *topLayout = new QVBoxLayout( topBox );
   topLayout->setSpacing( spacingHint() );
