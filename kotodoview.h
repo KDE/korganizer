@@ -156,6 +156,7 @@ class KOTodoView : public KOrg::BaseView
     void newSubTodo();
     void showTodo();
     void editTodo();
+    void printTodo();
     void deleteTodo();
 
     void setNewPercentage( KOTodoViewItem *item, int percentage );
@@ -176,7 +177,7 @@ class KOTodoView : public KOrg::BaseView
   signals:
     void unSubTodoSignal();
     void unAllSubTodoSignal();
-    
+
     void todoCompleted( Todo * );
 
     void purgeCompletedSignal();
@@ -234,7 +235,7 @@ class KOTodoView : public KOrg::BaseView
       eDueDateColumn = 4,
       eCategoriesColumn = 5,
       eDescriptionColumn = 6
-    }; 
+    };
     enum {
       ePopupEdit = 1300,
       ePopupDelete = 1301,
@@ -243,7 +244,7 @@ class KOTodoView : public KOrg::BaseView
       ePopupUnSubTodo = 1304,
       ePopupUnAllSubTodo = 1305
     };
-  
+
 };
 
 #endif

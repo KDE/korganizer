@@ -58,7 +58,10 @@
 using namespace KOrg;
 #include "kotodoviewitem.h"
 #include "kotodoview.moc"
-
+#ifndef KORG_NOPRINTER
+#include "kocorehelper.h"
+#include "calprinter.h"
+#endif
 
 KOTodoListViewToolTip::KOTodoListViewToolTip (QWidget* parent,
                                               KOTodoListView* lv )
@@ -451,6 +454,9 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
                              SLOT (showTodo()));
   mItemPopupMenu->insertItem(i18n("&Edit..."), this,
                              SLOT (editTodo()), 0, ePopupEdit );
+#ifndef KORG_NOPRINTER
+  mItemPopupMenu->insertItem(KOGlobals::self()->smallIcon("printer1"), i18n("&Print..."), this, SLOT( printTodo() ) );
+#endif
   mItemPopupMenu->insertItem(KOGlobals::self()->smallIconSet("editdelete"), i18n("&Delete"), this,
                              SLOT (deleteTodo()), 0, ePopupDelete );
   mItemPopupMenu->insertSeparator();
@@ -743,7 +749,11 @@ void KOTodoView::showIncidences( const Incidence::List & )
 
 CalPrinterBase::PrintType KOTodoView::printType()
 {
-  return CalPrinterBase::Todolist;
+  if ( mTodoListView->selectedItem() ) {
+    return CalPrinterBase::Incidence;
+  } else {
+    return CalPrinterBase::Todolist;
+  }
 }
 
 void KOTodoView::editItem( QListViewItem *item )
@@ -837,6 +847,22 @@ void KOTodoView::editTodo()
 void KOTodoView::showTodo()
 {
   showItem( mActiveItem );
+}
+
+void KOTodoView::printTodo()
+{
+#ifndef KORG_NOPRINTER
+  Calendar *cal;
+  KOCoreHelper helper;
+  CalPrinter printer( this, cal, &helper );
+  connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
+
+  Incidence::List selectedIncidences;
+  selectedIncidences.append( mActiveItem->todo() );
+
+  printer.print( KOrg::CalPrinterBase::Incidence,
+                 QDate(), QDate(), selectedIncidences );
+#endif
 }
 
 void KOTodoView::deleteTodo()
