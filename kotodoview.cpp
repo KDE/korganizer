@@ -81,6 +81,10 @@ using namespace KOrg;
 #include <kvbox.h>
 
 #include "kotodoview.moc"
+#ifndef KORG_NOPRINTER
+#include "kocorehelper.h"
+#include "calprinter.h"
+#endif
 
 
 KOTodoListViewToolTip::KOTodoListViewToolTip (QWidget* parent,
@@ -514,6 +518,10 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent)
   QAction* action;
   action = mItemPopupMenu->addAction(i18n("&Edit..."), this, SLOT (editTodo()) );
   mActionsOnSelection.append( action );
+#ifndef KORG_NOPRINTER
+  action = mItemPopupMenu->addAction(KOGlobals::self()->smallIcon("printer1"), i18n("&Print..."), this, SLOT( printTodo() ) );
+  mActionsOnSelection.append( action );
+#endif
   action = mItemPopupMenu->addAction(KOGlobals::self()->smallIconSet("editdelete"), i18n("&Delete"), this,
                              SLOT (deleteTodo()) );
   mActionsOnSelection.append( action );
@@ -1061,7 +1069,29 @@ void KOTodoView::showIncidences( const Incidence::List &incidences )
 
 CalPrinter::PrintType KOTodoView::printType()
 {
-  return CalPrinter::Todolist;
+  KOTodoViewItem *item =
+    static_cast<KOTodoViewItem *>( mOneTodoListView->selectedItem() );
+  if ( item ) {
+    return CalPrinterBase::Incidence;
+  } else {
+    return CalPrinterBase::Todolist;
+  }
+}
+
+void KOTodoView::printTodo()
+{
+#ifndef KORG_NOPRINTER
+  Calendar *cal;
+  KOCoreHelper helper;
+  CalPrinter printer( this, cal, &helper );
+  connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
+
+  Incidence::List selectedIncidences;
+  selectedIncidences.append( mActiveItem->todo() );
+
+  printer.print( KOrg::CalPrinterBase::Incidence,
+                 QDate(), QDate(), selectedIncidences );
+#endif
 }
 
 void KOTodoView::editItem( Q3ListViewItem *item )

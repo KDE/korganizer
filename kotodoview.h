@@ -17,7 +17,7 @@
 
     You should have received a copy of the GNU General Public License
     along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+    Foundation, Inc., 51 Franklin Street, Fifth Floor,
     Boston, MA 02110-1301, USA.
 
     As a special exception, permission is given to link this program
@@ -66,7 +66,7 @@ using namespace KCal;
 using namespace KOrg;
 
 #warning port QToolTip usage
-class KOTodoListViewToolTip 
+class KOTodoListViewToolTip
 {
   public:
     KOTodoListViewToolTip( QWidget *parent, KOTodoListView *lv );
@@ -167,6 +167,7 @@ class KOTodoView : public KOrg::BaseView
     void newSubTodo();
     void showTodo();
     void editTodo();
+    void printTodo();
     void deleteTodo();
 
     void setNewPercentage( KOTodoViewItem *item, int percentage );
@@ -183,13 +184,13 @@ class KOTodoView : public KOrg::BaseView
 
     void setNewPercentageDelayed( KOTodoViewItem *item, int percentage );
     void processDelayedNewPercentage();
-    
+
     void updateCategories();
 
   signals:
     void unSubTodoSignal();
     void unAllSubTodoSignal();
-    
+
     void todoCompleted( Todo * );
 
     void purgeCompletedSignal();
@@ -267,7 +268,7 @@ class KOTodoView : public KOrg::BaseView
       eDueDateColumn = 4,
       eCategoriesColumn = 5,
       eDescriptionColumn = 6
-    }; 
+    };
 /*    enum {
       ePopupEdit = 1300,
       ePopupDelete = 1301,
@@ -276,7 +277,7 @@ class KOTodoView : public KOrg::BaseView
       ePopupUnSubTodo = 1304,
       ePopupUnAllSubTodo = 1305
     };*/
-  
+
 };
 
 #endif
