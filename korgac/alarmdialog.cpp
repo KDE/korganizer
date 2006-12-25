@@ -35,6 +35,7 @@
 #include <QBoxLayout>
 #include <QtDBus>
 #include <kapplication.h>
+#include <kiconloader.h>
 #include <klocale.h>
 #include <kprocess.h>
 #include <kdebug.h>
@@ -62,6 +63,8 @@ AlarmDialog::AlarmDialog( QWidget *parent )
                      Qt::WStyle_DialogBorder,*/ ),
                  mSuspendTimer(this)
 {
+  KGlobal::iconLoader()->addAppDir( "kdepim" );
+
   QWidget *topBox = new QWidget( this);
   setMainWidget( topBox );
   setCaption( i18n("Reminder") );
@@ -167,7 +170,7 @@ void AlarmDialog::slotUser2()
   korganizer.editIncidence(mIncidence->uid());
 
 #ifdef Q_OS_UNIX
-#warning "kde4: verify it when kontact will not crash"  
+#warning "kde4: verify it when kontact will not crash"
   // get desktop # where korganizer (or kontact) runs
   QString object = QDBusConnection::sessionBus().interface()->isServiceRegistered( "org.kde.kontact" ) ?
            "kontact-mainwindow_1" : "korganizer/MainWindow_1";
@@ -185,16 +188,16 @@ void AlarmDialog::slotUser2()
 
     KWin::activateWindow( KWin::transientFor( window ) );
   }
-#endif  
+#endif
 }
 
 void AlarmDialog::show()
 {
   KDialog::show();
-#ifdef Q_OS_UNIX  
+#ifdef Q_OS_UNIX
   KWin::setState( winId(), NET::KeepAbove );
   KWin::setOnAllDesktops( winId(), true );
-#endif  
+#endif
   eventNotification();
 }
 
