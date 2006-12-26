@@ -235,5 +235,6 @@ install( FILES korganizerui.rc  DESTINATION ${DATA_INSTALL_DIR}/korganizer)
 install( FILES korganizer.upd  DESTINATION ${KCONF_UPDATE_INSTALL_DIR})
 install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/ical2vcal DESTINATION ${BIN_INSTALL_DIR})
 
+install( FILES org.kde.Korganizer.Calendar.xml org.kde.korganizer.Korganizer.xml DESTINATION ${DBUS_INTERFACES_DIR})
 
 kde4_install_icons( ${ICON_INSTALL_DIR}   )

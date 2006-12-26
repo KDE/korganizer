@@ -44,4 +44,4 @@ endif(KDE4_BUILD_TESTS)
 ########### install files ###############
 
 install( FILES korgac.desktop  DESTINATION ${AUTOSTART_INSTALL_DIR} )
-
+install( FILES org.kde.korganizer.KOrgac.xml DESTINATION ${DBUS_INTERFACES_DIR} )
