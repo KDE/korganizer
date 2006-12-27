@@ -40,7 +40,7 @@
 #include <ksimpleconfig.h>
 #include <kdebug.h>
 #include <kdeversion.h>
-#include <kstdguiitem.h>
+#include <kstandardguiitem.h>
 
 #include "korganizer/corehelper.h"
 
@@ -246,7 +246,7 @@ void CalPrintDialog::setPreview(bool preview)
   if ( preview ) {
     setButtonText( Ok, i18n("&Preview") );
   } else {
-    setButtonText( Ok, KStdGuiItem::print().text() );
+    setButtonText( Ok, KStandardGuiItem::print().text() );
   }
 }
 
