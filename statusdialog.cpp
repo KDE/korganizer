@@ -34,7 +34,7 @@
 #include <kdebug.h>
 #include <klocale.h>
 #include <kpushbutton.h>
-#include <kstdguiitem.h>
+#include <KStandardGuiItem>
 
 #include "statusdialog.h"
 #include "statusdialog.moc"
@@ -63,11 +63,11 @@ StatusDialog::StatusDialog(QWidget* parent, const char* name) :
   QBoxLayout *buttonLayout = new QHBoxLayout();
   topLayout->addItem( buttonLayout );
 
-  QPushButton *ok = new KPushButton(KStdGuiItem::ok(), this);
+  QPushButton *ok = new KPushButton(KStandardGuiItem::ok(), this);
   connect ( ok,SIGNAL(clicked()), this,SLOT(accept()) );
   buttonLayout->addWidget( ok );
 
-  QPushButton *cancel = new KPushButton(KStdGuiItem::cancel(), this);
+  QPushButton *cancel = new KPushButton(KStandardGuiItem::cancel(), this);
   connect ( cancel,SIGNAL(clicked()), this,SLOT(reject()) );
   buttonLayout->addWidget( cancel );
 }

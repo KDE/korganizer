@@ -132,7 +132,7 @@ void EventArchiver::deleteIncidences( Calendar* calendar, const QDate& limitDate
       widget, i18n("Delete all items before %1 without saving?\n"
                  "The following items will be deleted:",
        KGlobal::locale()->formatDate(limitDate)), incidenceStrs,
-		 i18n("Delete Old Items"),KStdGuiItem::del());
+		 i18n("Delete Old Items"),KStandardGuiItem::del());
     if (result != KMessageBox::Continue)
       return;
   }

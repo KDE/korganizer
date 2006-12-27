@@ -62,7 +62,7 @@
 #include <kxmlguiclient.h>
 #include <kwin.h>
 #include <knotification.h>
-#include <kstdguiitem.h>
+#include <KStandardGuiItem>
 #include <kdeversion.h>
 #include <ktoggleaction.h>
 #include <krecentfilesaction.h>
@@ -1098,7 +1098,7 @@ bool ActionManager::saveModifiedURL()
         dialogParent(),
         i18n("The calendar has been modified.\nDo you want to save it?"),
         QString(),
-        KStdGuiItem::save(), KStdGuiItem::discard() );
+        KStandardGuiItem::save(), KStandardGuiItem::discard() );
     switch( result ) {
       case KMessageBox::Yes:
         if ( mURL.isEmpty() ) {
@@ -1596,12 +1596,12 @@ bool ActionManager::queryClose()
 
   if ( mCalendar && mCalendar->isModified() ) {
     int res = KMessageBox::questionYesNoCancel( dialogParent(),
-      i18n("The calendar contains unsaved changes. Do you want to save them before exiting?"), QString(), KStdGuiItem::save(), KStdGuiItem::discard() );
+      i18n("The calendar contains unsaved changes. Do you want to save them before exiting?"), QString(), KStandardGuiItem::save(), KStandardGuiItem::discard() );
     // Exit on yes and no, don't exit on cancel. If saving fails, ask for exiting.
     if ( res == KMessageBox::Yes ) {
       close = saveModifiedURL();
       if ( !close ) {
-        int res1 = KMessageBox::questionYesNo( dialogParent(), i18n("Unable to save the calendar. Do you still want to close this window?"), QString(), KStdGuiItem::close(), KStdGuiItem::cancel() );
+        int res1 = KMessageBox::questionYesNo( dialogParent(), i18n("Unable to save the calendar. Do you still want to close this window?"), QString(), KStandardGuiItem::close(), KStandardGuiItem::cancel() );
         close = ( res1 == KMessageBox::Yes );
       }
     } else {
@@ -1664,7 +1664,7 @@ bool ActionManager::saveResourceCalendar()
         i18n( "Saving of '%1' failed. Check that the resource is "
              "properly configured.\nIgnore problem and continue without "
              "saving or cancel save?", (*it)->resourceName() ),
-        i18n("Save Error"), KStdGuiItem::dontSave() );
+        i18n("Save Error"), KStandardGuiItem::dontSave() );
       if ( result == KMessageBox::Cancel ) return false;
     }
   }

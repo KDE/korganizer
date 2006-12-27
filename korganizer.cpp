@@ -57,7 +57,7 @@
 #include <kdebug.h>
 #include <kiconloader.h>
 #include <kstandarddirs.h>
-#include <kstdaccel.h>
+#include <kstandardshortcut.h>
 #include <kfiledialog.h>
 #include <kaction.h>
 #include <kstandardaction.h>
@@ -68,7 +68,7 @@
 #include <kprocess.h>
 #include <kwin.h>
 #include <ktip.h>
-#include <kstdguiitem.h>
+#include <KStandardGuiItem>
 #include <kstatusbar.h>
 #include <kkeydialog.h>
 #include <QCursor>

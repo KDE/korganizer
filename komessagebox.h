@@ -24,7 +24,7 @@
 #define KOMESSAGEBOX_H
 
 #include <kguiitem.h>
-#include <kstdguiitem.h>
+#include <KStandardGuiItem>
 #include <kmessagebox.h>
 #include <QMessageBox>
 #include <QString>
@@ -36,9 +36,9 @@ class KOMessageBox
     static int fourBtnMsgBox( QWidget *parent, QMessageBox::Icon type,
                               const QString &text,
                               const QString &caption = QString(),
-                              const KGuiItem &button1 = KStdGuiItem::yes(),
-                              const KGuiItem &button2 = KStdGuiItem::no(),
-                              const KGuiItem &button3 = KStdGuiItem::cont(),
+                              const KGuiItem &button1 = KStandardGuiItem::yes(),
+                              const KGuiItem &button2 = KStandardGuiItem::no(),
+                              const KGuiItem &button3 = KStandardGuiItem::cont(),
                               KMessageBox::Options options = KMessageBox::Notify );
 };
 

@@ -44,7 +44,7 @@
 #include <ktimeedit.h>
 #include <klineedit.h>
 #include <k3activelabel.h>
-#include <kstdguiitem.h>
+#include <KStandardGuiItem>
 #include <kmessagebox.h>
 
 #include <kcal/journal.h>
@@ -257,7 +257,7 @@ void JournalEntry::deleteItem()
       i18n("The journal \"%1\" on %2 will be permanently deleted.")
                .arg( mJournal->summary() )
                .arg( mJournal->dtStartStr() ),
-  i18n("KOrganizer Confirmation"), KStdGuiItem::del() );
+  i18n("KOrganizer Confirmation"), KStandardGuiItem::del() );
   if ( code == KMessageBox::Yes ) {*/
     if ( mJournal )
       emit deleteIncidence( mJournal );

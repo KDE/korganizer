@@ -658,7 +658,7 @@ void KOEditorAttachments::slotRemove()
            i18n("The item labeled \"%1\" will be permanently deleted.",
                  item->label() ),
            i18n("KOrganizer Confirmation"),
-           KStdGuiItem::del()) == KMessageBox::Continue )
+           KStandardGuiItem::del()) == KMessageBox::Continue )
       {
         if ( item->isLocal() )
           mDeferredDelete.append( item->uri() );

@@ -436,7 +436,7 @@ void ResourceView::removeResource()
 
   int km = KMessageBox::warningContinueCancel( this,
         i18n("<qt>Do you really want to delete the resource <b>%1</b>?</qt>",
-          item->text( 0 ) ), "", KStdGuiItem::del() );
+          item->text( 0 ) ), "", KStandardGuiItem::del() );
   if ( km == KMessageBox::Cancel ) return;
 
 // Don't be so restricitve
