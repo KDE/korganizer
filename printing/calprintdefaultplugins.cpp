@@ -178,7 +178,11 @@ class TimePrintStringsVisitor : public IncidenceBase::Visitor
       return true;
     }
     bool visit( Journal *journal ) {
-      // TODO: What shall we print for Journals???
+      mStartCaption = i18n("Start date: ");
+// TODO: Add shortfmt param to dtStartStr, dtEndStr and dtDueStr!!!
+      mStartString = (journal->floats()) ? (journal->dtStartDateStr(false)) : (journal->dtStartStr());
+      mEndCaption.clear();
+      mEndString.clear();
       return true;
     }
 };
@@ -278,24 +282,61 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
     if ( (*it)->doesRecur() ) {
       QRect recurBox( timesBox.left()+padding(), h+padding(), timesBox.right()-padding(), lineHeight );
       // TODO: Convert the recurrence to a string and print it out!
-      h = QMAX( printCaptionAndText( p, recurBox, i18n("Repeats: "), "TODO: Convert Repeat to String!", captionFont, textFont ), h );
+      QString recurString( "TODO: Convert Repeat to String!" );
+      h = QMAX( printCaptionAndText( p, recurBox, i18n("Repeats: "), recurString, captionFont, textFont ), h );
     }
 
     QRect alarmBox( timesBox.left()+padding(), h+padding(), timesBox.right()-padding(), lineHeight );
-    if ( (*it)->alarms().count() == 0 ) {
+    Alarm::List alarms = (*it)->alarms();
+    if ( alarms.count() == 0 ) {
       cap = i18n("No reminders");
-      txt = QString::null;
+      txt.clear();
     } else {
-      cap = i18np("Reminder: ", "%n reminders: ", (*it)->alarms().count() );
-      // TODO: Convert reminder to String!
-      txt = "TODO: Convert reminder to String!";
-QString temp;
-temp += i18n("%1 %2 before start");
-temp += i18n("%1 %2 before end");
-temp += i18n("%1 %2 before due time");
-temp += i18n("%1 %2 after start");
-temp += i18n("%1 %2 after end");
-temp += i18n("%1 %2 after due time");
+      cap = i18nc("Reminder: ", "%n reminders: ", alarms.count() );
+
+      QStringList alarmStrings;
+      KCal::Alarm::List::ConstIterator it;
+      for ( it = alarms.begin(); it != alarms.end(); ++it ) {
+        Alarm *alarm = *it;
+
+        // Alarm offset, copied from koeditoralarms.cpp:
+        QString offsetstr;
+        int offset = 0;
+        if ( alarm->hasStartOffset() ) {
+          offset = alarm->startOffset().asSeconds();
+          if ( offset < 0 ) {
+            offsetstr = i18nc("N days/hours/minutes before/after the start/end", "%1 before the start");
+            offset = -offset;
+          } else {
+            offsetstr = i18nc("N days/hours/minutes before/after the start/end", "%1 after the start");
+          }
+        } else if ( alarm->hasEndOffset() ) {
+          offset = alarm->endOffset().asSeconds();
+          if ( offset < 0 ) {
+            offsetstr = i18nc("N days/hours/minutes before/after the start/end", "%1 before the end");
+            offset = -offset;
+          } else {
+            offsetstr = i18nc("N days/hours/minutes before/after the start/end", "%1 after the end");
+          }
+        }
+
+        offset = offset / 60; // make minutes
+        int useoffset = offset;
+
+        if ( offset % (24*60) == 0 && offset>0 ) { // divides evenly into days?
+          useoffset = offset / (24*60);
+          offsetstr = offsetstr.arg( i18nc("1 day", "%n days", useoffset ) );
+        } else if (offset % 60 == 0 && offset>0 ) { // divides evenly into hours?
+          useoffset = offset / 60;
+          offsetstr = offsetstr.arg( i18nc("1 hour", "%n hours", useoffset ) );
+        } else {
+          useoffset = offset;
+          offsetstr = offsetstr.arg( i18nc("1 minute", "%n minutes", useoffset ) );
+        }
+        alarmStrings << offsetstr;
+      }
+      txt = alarmStrings.join( i18nc("Spacer for the joined list of categories", ", ") );
+
     }
     h = QMAX( printCaptionAndText( p, alarmBox, cap, txt, captionFont, textFont ), h );
 
@@ -323,74 +364,104 @@ temp += i18n("%1 %2 after due time");
 
 
     QRect attendeesBox( box.left(), categoriesBox.top()-padding()-box.height()/9, box.width(), box.height()/9 );
+    if ( !mShowAttendees ) {
+      attendeesBox.setTop( categoriesBox.top() );
+    }
     QRect attachmentsBox( box.left(), attendeesBox.top()-padding()-box.height()/9, box.width()*3/4 - padding(), box.height()/9 );
     QRect optionsBox( attachmentsBox.right() + padding(), attachmentsBox.top(), 0, 0 );
     optionsBox.setRight( box.right() );
     optionsBox.setBottom( attachmentsBox.bottom() );
-
-
     QRect notesBox( optionsBox.left(), locationBox.bottom() + padding(), optionsBox.width(), 0 );
     notesBox.setBottom( optionsBox.top() - padding() );
 
+    // TODO: Adjust boxes depending on the show options...
+//     if ( !mShowOptions ) {
+//       optionsBox.left()
+//     bool mShowOptions;
+// //     bool mShowSubitemsNotes;
+//     bool mShowAttendees;
+//     bool mShowAttachments;
+
+
     QRect descriptionBox( notesBox );
     descriptionBox.setLeft( box.left() );
-    descriptionBox.setRight( attachmentsBox.right() );
+    descriptionBox.setRight( mShowOptions?(attachmentsBox.right()):(box.right()) );
+    drawBoxWithCaption( p, descriptionBox, i18n("Description:"),
+                        (*it)->description(), /*sameLine=*/false,
+                        /*expand=*/false, captionFont, textFont );
 
-    drawBoxWithCaption( p, descriptionBox, i18n("Description:"), (*it)->description(), /*sameLine=*/false, /*expand=*/false, captionFont, textFont );
-    QString subitemCaption = i18n("Subitems:");
-    if ( (*it)->relations().isEmpty() ) {
-      int notesStart = drawBoxWithCaption( p, notesBox, i18n("Notes:"), QString::null, /*sameLine=*/false, /*expand=*/false, captionFont, textFont );
-      // TODO: Draw lines for writing notes
-    } else {
-      int subitemsStart = drawBoxWithCaption( p, notesBox, i18n("Subitems:"), (*it)->description(), /*sameLine=*/false, /*expand=*/false, captionFont, textFont );
-      // TODO: Draw subitems
-    }
-
-    int attachStart = drawBoxWithCaption( p, attachmentsBox, i18n("Attachments:"), QString::null, /*sameLine=*/false, /*expand=*/false, captionFont, textFont );
-    // TODO: Print out the attachments somehow
-
-    Attendee::List attendees = (*it)->attendees();
-    QString attendeeCaption;
-    if ( attendees.count() == 0 )
-      attendeeCaption = i18n("No Attendees");
-    else
-      attendeeCaption = i18np("1 Attendee:", "%n Attendees:", attendees.count() );
-    QString attendeeString;
-    for ( Attendee::List::ConstIterator ait = attendees.begin(); ait != attendees.end(); ++ait ) {
-      if ( !attendeeString.isEmpty() ) attendeeString += "\n";
-      attendeeString += i18nc("Formatting of an attendee: "
-             "'Name (Role): Status', e.g. 'Reinhold Kainhofer "
-             "<reinhold@kainhofer.com> (Participant): Awaiting Response'",
-             "%1 (%2): %3")
-                     .arg( (*ait)->fullName() )
-                     .arg( (*ait)->roleStr() ).arg( (*ait)->statusStr() );
-    }
-    int attendeesStart = drawBoxWithCaption( p, attendeesBox, i18n("Attendees:"), attendeeString, /*sameLine=*/false, /*expand=*/false, captionFont, textFont );
-
-    QString optionsString = i18n("Status: %1").arg( (*it)->statusStr() );
-    optionsString += "\n";
-    optionsString += i18n("Secrecy: %1").arg( (*it)->secrecyStr() );
-    optionsString += "\n";
-    if ( (*it)->type() == "Event" ) {
-      Event *e = static_cast<Event*>(*it);
-      if ( e->transparency() == Event::Opaque ) {
-        optionsString += i18n("Show as: Busy");
+    if ( mShowSubitemsNotes ) {
+      if ( (*it)->relations().isEmpty() || (*it)->type() != "Todo" ) {
+        int notesPosition = drawBoxWithCaption( p, notesBox, i18n("Notes:"),
+                         QString::null, /*sameLine=*/false, /*expand=*/false,
+                         captionFont, textFont );
+        QPen oldPen( p.pen() );
+        p.setPen( Qt::DotLine );
+        while ( (notesPosition += int(1.5*lineHeight)) < notesBox.bottom() ) {
+          p.drawLine( notesBox.left()+padding(), notesPosition, notesBox.right()-padding(), notesPosition );
+        }
+        p.setPen( oldPen );
       } else {
-        optionsString += i18n("Show as: Free");
+        int subitemsStart = drawBoxWithCaption( p, notesBox, i18n("Subitems:"),
+                            (*it)->description(), /*sameLine=*/false,
+                            /*expand=*/false, captionFont, textFont );
+        // TODO: Draw subitems
       }
-      optionsString += "\n";
-    } else if ( (*it)->type() == "Todo" ) {
-      Todo *t = static_cast<Todo*>(*it);
-      if ( t->isOverdue() ) {
-        optionsString += i18n("This task is overdue!");
-        optionsString += "\n";
-      }
-    } else if ( (*it)->type() == "Journal" ) {
-      //TODO: Anything Journal-specific?
     }
 
-    drawBoxWithCaption( p, optionsBox, i18n("Settings: "),
-           optionsString, /*sameLine=*/false, /*expand=*/false, captionFont, textFont );
+    if ( mShowAttachments ) {
+      int attachStart = drawBoxWithCaption( p, attachmentsBox,
+                        i18n("Attachments:"), QString::null, /*sameLine=*/false,
+                        /*expand=*/false, captionFont, textFont );
+      // TODO: Print out the attachments somehow
+    }
+    if ( mShowAttendees ) {
+      Attendee::List attendees = (*it)->attendees();
+      QString attendeeCaption;
+      if ( attendees.count() == 0 )
+        attendeeCaption = i18n("No Attendees");
+      else
+        attendeeCaption = i18nc("1 Attendee:", "%n Attendees:", attendees.count() );
+      QString attendeeString;
+      for ( Attendee::List::ConstIterator ait = attendees.begin(); ait != attendees.end(); ++ait ) {
+        if ( !attendeeString.isEmpty() ) attendeeString += "\n";
+        attendeeString += i18nc("Formatting of an attendee: "
+               "'Name (Role): Status', e.g. 'Reinhold Kainhofer "
+               "<reinhold@kainhofer.com> (Participant): Awaiting Response'",
+               "%1 (%2): %3")
+                       .arg( (*ait)->fullName() )
+                       .arg( (*ait)->roleStr() ).arg( (*ait)->statusStr() );
+      }
+      drawBoxWithCaption( p, attendeesBox, i18n("Attendees:"), attendeeString,
+               /*sameLine=*/false, /*expand=*/false, captionFont, textFont );
+    }
+
+    if ( mShowOptions ) {
+      QString optionsString = i18n("Status: %1").arg( (*it)->statusStr() );
+      optionsString += "\n";
+      optionsString += i18n("Secrecy: %1").arg( (*it)->secrecyStr() );
+      optionsString += "\n";
+      if ( (*it)->type() == "Event" ) {
+        Event *e = static_cast<Event*>(*it);
+        if ( e->transparency() == Event::Opaque ) {
+          optionsString += i18n("Show as: Busy");
+        } else {
+          optionsString += i18n("Show as: Free");
+        }
+        optionsString += "\n";
+      } else if ( (*it)->type() == "Todo" ) {
+        Todo *t = static_cast<Todo*>(*it);
+        if ( t->isOverdue() ) {
+          optionsString += i18n("This task is overdue!");
+          optionsString += "\n";
+        }
+      } else if ( (*it)->type() == "Journal" ) {
+        //TODO: Anything Journal-specific?
+      }
+      drawBoxWithCaption( p, optionsBox, i18n("Settings: "),
+             optionsString, /*sameLine=*/false, /*expand=*/false, captionFont, textFont );
+    }
+
     drawBoxWithCaption( p, categoriesBox, i18n("Categories: "),
            (*it)->categories().join( i18nc("Spacer for the joined list of categories", ", ") ),
            /*sameLine=*/true, /*expand=*/false, captionFont, textFont );
