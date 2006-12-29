@@ -706,10 +706,12 @@ void CalendarView::incidenceChanged( Incidence *oldIncidence,
   // as well.
   if ( newIncidence->type() == QLatin1String("Todo")
     && KOPrefs::instance()->recordTodosInJournals()
-    && what == KOGlobals::COMPLETION_MODIFIED ) {
+    &&  ( what == KOGlobals::COMPLETION_MODIFIED
+    || what == KOGlobals::COMPLETION_MODIFIED_WITH_RECURRENCE ) ) {
 
       Todo *todo = static_cast<Todo *>(newIncidence);
-      if ( todo->isCompleted() ) {
+      if ( todo->isCompleted()
+      || what == KOGlobals::COMPLETION_MODIFIED_WITH_RECURRENCE ) {
         QString timeStr = KGlobal::locale()->formatTime( QTime::currentTime() );
         QString description = i18n( "Todo completed: %1 (%2)" ,
           newIncidence->summary(), timeStr );

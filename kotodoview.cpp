@@ -62,7 +62,6 @@
 #include <kcal/resourcecalendar.h>
 #include <kcal/calfilter.h>
 #include <kcal/incidenceformatter.h>
-#include <kcal/journal.h>
 
 #include <libkdepim/kdatepickerpopup.h>
 
@@ -1234,7 +1233,10 @@ void KOTodoView::setNewPercentage( KOTodoViewItem *item, int percentage )
       todo->setPercentComplete( percentage );
     }
     item->construct();
-    mChanger->changeIncidence( oldTodo, todo, KOGlobals::COMPLETION_MODIFIED );
+    if ( todo->doesRecur() && percentage == 100 )
+      mChanger->changeIncidence( oldTodo, todo, KOGlobals::COMPLETION_MODIFIED_WITH_RECURRENCE );
+    else
+      mChanger->changeIncidence( oldTodo, todo, KOGlobals::COMPLETION_MODIFIED );
     mChanger->endChange( todo );
     delete oldTodo;
   } else {
