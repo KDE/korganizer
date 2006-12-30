@@ -89,6 +89,7 @@ bool UriHandler::process( const QString &uri )
       */
       KIconLoader *iconLoader = new KIconLoader();
       QString iconPath = iconLoader->iconPath( "go", K3Icon::Small );
+      delete iconLoader;
       QString tmpStr = "kaddressbook --editor-only --uid ";
       tmpStr += KProcess::quote( uri.mid( ::qstrlen( KDEPIMPROTOCOL_CONTACT ) ) 
       );
