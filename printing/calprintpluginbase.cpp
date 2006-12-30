@@ -947,7 +947,7 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
            ( !printRecurWeekly && todo->recurrenceType() == Recurrence::rWeekly ) )
         continue;
       if ( todo->hasDueDate() && !todo->floats() )
-        text += KGlobal::locale()->formatTime(todo->dtDue().time()) + " ";
+        text += KGlobal::locale()->formatTime(todo->dtDue().time()) + ' ';
       else
         text = "";
       drawIncidence( p, box, text, i18n("To-do: %1").arg(todo->summary()), textY );
@@ -1243,7 +1243,7 @@ void CalPrintPluginBase::drawMonth( QPainter &p, const QDate &dt, const QRect &b
            14, 0 );
     eventBox.setBottom( daysBox.top() + round( double( minsToEnd*daysBox.height()) / double(maxdays*24*60) ) );
     drawVerticalBox( p, eventBox, placeItem->event()->summary() );
-    newxstartcont = QMAX( newxstartcont, eventBox.right() );
+    newxstartcont = qMax( newxstartcont, eventBox.right() );
   }
   xstartcont = newxstartcont;
 
@@ -1664,7 +1664,7 @@ void CalPrintPluginBase::drawSplitHeaderRight( QPainter &p, const QDate &fd,
   p.drawLine(300, lineSpacing * 1, width, lineSpacing * 1);
   p.setPen( oldPen );
 
-  p.setFont(QFont("Times", 20, QFont::Bold, TRUE));
+  p.setFont(QFont("Times", 20, QFont::Bold, true));
   int newlineSpacing = p.fontMetrics().lineSpacing();
   title += QString::number(fd.year());
   p.drawText( 0, lineSpacing * 1 + 4, width, newlineSpacing,

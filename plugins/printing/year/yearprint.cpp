@@ -153,7 +153,7 @@ kDebug()<<"headerBox: "<<headerBox<<endl;
   int months = calsys->monthsInYear( start );
   int maxdays = 1;
   for ( int i = 1; i< months; ++i ) {
-    maxdays = QMAX( maxdays, temp.daysInMonth() );
+    maxdays = qMax( maxdays, temp.daysInMonth() );
     temp = calsys->addMonths( temp, 1 );
   }
 

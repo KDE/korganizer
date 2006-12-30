@@ -136,7 +136,7 @@ class TimePrintStringsVisitor : public IncidenceBase::Visitor
         mStartString = (event->floats()) ? (event->dtStartDateStr(false)) : (event->dtStartStr());
       } else {
         mStartCaption = i18n("No start date");
-        mStartString = QString::null;
+        mStartString.clear();
       }
 
       if ( event->hasEndDate() ) {
@@ -153,7 +153,7 @@ class TimePrintStringsVisitor : public IncidenceBase::Visitor
         }
       } else {
         mEndCaption = i18n("No end date");
-        mEndString = QString::null;
+        mEndString.clear();
       }
       return true;
     }
@@ -165,7 +165,7 @@ class TimePrintStringsVisitor : public IncidenceBase::Visitor
         mStartString = (todo->floats()) ? (todo->dtStartDateStr(false)) : (todo->dtStartStr());
       } else {
         mStartCaption = i18n("No start date");
-        mStartString = QString::null;
+        mStartString.clear();
       }
 
       if ( todo->hasDueDate() ) {
@@ -173,7 +173,7 @@ class TimePrintStringsVisitor : public IncidenceBase::Visitor
         mEndString = (todo->floats()) ? (todo->dtDueDateStr(false)) : (todo->dtDueStr());
       } else {
         mEndCaption = i18n("No due date");
-        mEndString = QString::null;
+        mEndString.clear();
       }
       return true;
     }
@@ -275,7 +275,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
 
       textRect.setLeft( textRect.right() );
       textRect.setRight( timesBox.right() - padding() );
-      h = QMAX( printCaptionAndText( p, textRect, stringVis.mEndCaption, stringVis.mEndString, captionFont, textFont ), h );
+      h = qMax( printCaptionAndText( p, textRect, stringVis.mEndCaption, stringVis.mEndString, captionFont, textFont ), h );
     }
 
 
@@ -283,7 +283,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
       QRect recurBox( timesBox.left()+padding(), h+padding(), timesBox.right()-padding(), lineHeight );
       // TODO: Convert the recurrence to a string and print it out!
       QString recurString( "TODO: Convert Repeat to String!" );
-      h = QMAX( printCaptionAndText( p, recurBox, i18n("Repeats: "), recurString, captionFont, textFont ), h );
+      h = qMax( printCaptionAndText( p, recurBox, i18n("Repeats: "), recurString, captionFont, textFont ), h );
     }
 
     QRect alarmBox( timesBox.left()+padding(), h+padding(), timesBox.right()-padding(), lineHeight );
@@ -338,14 +338,14 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
       txt = alarmStrings.join( i18nc("Spacer for the joined list of categories", ", ") );
 
     }
-    h = QMAX( printCaptionAndText( p, alarmBox, cap, txt, captionFont, textFont ), h );
+    h = qMax( printCaptionAndText( p, alarmBox, cap, txt, captionFont, textFont ), h );
 
 
     QRect organizerBox( timesBox.left()+padding(), h+padding(), timesBox.right()-padding(), lineHeight );
-    h = QMAX( printCaptionAndText( p, organizerBox, i18n("Organizer: "), (*it)->organizer().fullName(), captionFont, textFont ), h );
+    h = qMax( printCaptionAndText( p, organizerBox, i18n("Organizer: "), (*it)->organizer().fullName(), captionFont, textFont ), h );
 
     // Finally, draw the frame around the time information...
-    timesBox.setBottom( QMAX( timesBox.bottom(), h+padding() ) );
+    timesBox.setBottom( qMax( timesBox.bottom(), h+padding() ) );
     drawBox( p, BOX_BORDER_WIDTH, timesBox );
 
 
@@ -424,7 +424,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
         attendeeCaption = i18nc("1 Attendee:", "%n Attendees:", attendees.count() );
       QString attendeeString;
       for ( Attendee::List::ConstIterator ait = attendees.begin(); ait != attendees.end(); ++ait ) {
-        if ( !attendeeString.isEmpty() ) attendeeString += "\n";
+        if ( !attendeeString.isEmpty() ) attendeeString += '\n';
         attendeeString += i18nc("Formatting of an attendee: "
                "'Name (Role): Status', e.g. 'Reinhold Kainhofer "
                "<reinhold@kainhofer.com> (Participant): Awaiting Response'",
@@ -438,9 +438,9 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
 
     if ( mShowOptions ) {
       QString optionsString = i18n("Status: %1").arg( (*it)->statusStr() );
-      optionsString += "\n";
+      optionsString += '\n';
       optionsString += i18n("Secrecy: %1").arg( (*it)->secrecyStr() );
-      optionsString += "\n";
+      optionsString += '\n';
       if ( (*it)->type() == "Event" ) {
         Event *e = static_cast<Event*>(*it);
         if ( e->transparency() == Event::Opaque ) {
@@ -448,12 +448,12 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
         } else {
           optionsString += i18n("Show as: Free");
         }
-        optionsString += "\n";
+        optionsString += '\n';
       } else if ( (*it)->type() == "Todo" ) {
         Todo *t = static_cast<Todo*>(*it);
         if ( t->isOverdue() ) {
           optionsString += i18n("This task is overdue!");
-          optionsString += "\n";
+          optionsString += '\n';
         }
       } else if ( (*it)->type() == "Journal" ) {
         //TODO: Anything Journal-specific?
