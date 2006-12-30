@@ -29,13 +29,11 @@
 
 #include "urihandler.h"
 
-#warning Port me to DBus!
-#define KORG_NODBUS
 #ifndef KORG_NODBUS
-#include <dcopclient.h>
-#include "kmailIface_stub.h"
-#include "knodeiface_stub.h"
-#include "korganizerinterface.h"
+#include <knodeinterface.h>
+#include <kmailinterface.h>
+#include <korganizerinterface.h>
+#include <coreinterface.h>
 #endif
 
 #include <kiconloader.h>
@@ -60,27 +58,17 @@ bool UriHandler::process( const QString &uri )
     QString serialNumberStr = uri.mid( colon + 1 );
     serialNumberStr = serialNumberStr.left( serialNumberStr.indexOf( '/' ) );
 
-    KMailIface_stub kmailIface( "kmail", "KMailIface" );
-    kmailIface.showMail( serialNumberStr.toUInt(), QString() );
+    org::kde::kmail::kmail kmail("org.kde.kmail", "/KMail", QDBusConnection::sessionBus());
+    kmail.showMail( serialNumberStr.toUInt(), QString() );
     return true;
   } else if ( uri.startsWith( "mailto:" ) ) {
     KToolInvocation::invokeMailer( uri.mid(7), QString() );
     return true;
   } else if ( uri.startsWith( KDEPIMPROTOCOL_CONTACT ) ) {
-    DCOPClient *client = KApplication::kApplication()->dcopClient();
-    const QByteArray noParamData;
-    const QByteArray paramData;
-    QByteArray replyData;
-    DCOPCString replyTypeStr;
-    bool foundAbbrowser = client->call( "kaddressbook", "KAddressBookIface",
-                                        "interfaces()",  noParamData,
-                                        replyTypeStr, replyData );
-    if ( foundAbbrowser ) {
-      //KAddressbook is already running, so just DCOP to it to bring up the contact editor
+    if (QDBusConnection::sessionBus().interface()->isServiceRegistered("org.kde.kaddressbook") ) {
       kapp->updateRemoteUserTimestamp("kaddressbook");
-      DCOPRef kaddressbook( "kaddressbook", "KAddressBookIface" );
-      kaddressbook.send( "showContactEditor", 
-                         uri.mid( ::qstrlen( KDEPIMPROTOCOL_CONTACT ) ) );
+      org::kde::KAddressbook::Core kaddressbook("org.kde.kaddressbook", "/KAddressBook", QDBusConnection::sessionBus());
+      kaddressbook.showContactEditor(uri.mid( ::qstrlen( KDEPIMPROTOCOL_CONTACT ) ) );
       return true;
     } else {
       /*
@@ -102,14 +90,13 @@ bool UriHandler::process( const QString &uri )
 
     // we must work around KUrl breakage (it doesn't know about URNs)
     QString uid = KUrl::fromPercentEncoding( uri.toLatin1() ).mid( 11 );
-    OrgKdeKorganizerKorganizerInterface korganizerIface("org.kde.korganizer.Korganizer", "/Korganizer", QDBus::sessionBus() );
+    OrgKdeKorganizerKorganizerInterface korganizerIface("org.kde.korganizer", "/Korganizer", QDBusConnection::sessionBus() );
     
     return korganizerIface.showIncidence( uid );
   } else if ( uri.startsWith( KDEPIMPROTOCOL_NEWSARTICLE ) ) {
     KToolInvocation::startServiceByDesktopPath( "knode" );
-    
-    KNodeIface_stub knodeIface( "knode", "KNodeIface" );
-    knodeIface.openURL( uri );
+    org::kde::knode knode("org.kde.knode", "/KNode", QDBusConnection::sessionBus());
+    knode.openURL(uri);
   } else {  // no special URI, let KDE handle it
     new KRun(KUrl( uri ),0L);
   }
