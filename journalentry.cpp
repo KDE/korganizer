@@ -57,6 +57,10 @@
 
 #include "journalentry.h"
 #include "journalentry.moc"
+#ifndef KORG_NOPRINTER
+#include "kocorehelper.h"
+#include "calprinter.h"
+#endif
 
 class JournalTitleLable : public K3ActiveLabel
 {
@@ -231,9 +235,18 @@ JournalEntry::JournalEntry( Journal* j, QWidget *parent ) :
   mLayout->addWidget( mEditButton, 0, 5 );
   connect( mEditButton, SIGNAL(clicked()), this, SLOT( editItem() ) );
 
-
+#ifndef KORG_NOPRINTER
+  mPrintButton = new QToolButton( this );
+  mPrintButton->setObjectName( "printButton" );
+  mPrintButton->setIcon( KOGlobals::self()->smallIcon( "printer1" ) );
+  mPrintButton->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
+  mPrintButton->setToolTip( i18n("Print this journal entry") );
+  mPrintButton->setWhatsThis( i18n("Opens a print dialog for this journal entry") );
+  mLayout->addWidget( mPrintButton, 0, 6 );
+  connect( mPrintButton, SIGNAL(clicked()), this, SLOT( printItem() ) );
+#endif
   mEditor = new KTextEdit(this);
-  mLayout->addWidget( mEditor, 1, 0, 2, 6 );
+  mLayout->addWidget( mEditor, 1, 0, 2, 7 );
 
   connect( mTitleEdit, SIGNAL(textChanged( const QString& )), SLOT(setDirty()) );
   connect( mTimeCheck, SIGNAL(toggled(bool)), SLOT(setDirty()) );
@@ -269,6 +282,25 @@ void JournalEntry::editItem()
   writeJournal();
   if ( mJournal )
     emit editIncidence( mJournal );
+}
+
+void JournalEntry::printItem()
+{
+#ifndef KORG_NOPRINTER
+  writeJournal();
+  if ( mJournal ) {
+    Calendar *cal;
+    KOCoreHelper helper;
+    CalPrinter printer( this, cal, &helper );
+    connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
+
+    Incidence::List selectedIncidences;
+    selectedIncidences.append( mJournal );
+
+    printer.print( KOrg::CalPrinterBase::Incidence,
+                 QDate(), QDate(), selectedIncidences );
+  }
+#endif
 }
 
 void JournalEntry::setReadOnly( bool readonly )
