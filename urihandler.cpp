@@ -80,6 +80,7 @@ bool UriHandler::process( const QString &uri )
       */
       KIconLoader *iconLoader = new KIconLoader();
       QString iconPath = iconLoader->iconPath( "go", KIcon::Small );
+      delete iconLoader;
       QString tmpStr = "kaddressbook --editor-only --uid ";
       tmpStr += KProcess::quote( uri.mid( 6 ) );
       KRun::runCommand( tmpStr, "KAddressBook", iconPath );
