@@ -69,6 +69,7 @@ class JournalEntry : public QWidget {
     void setDirty();
     void deleteItem();
     void editItem();
+    void printItem();
     void timeCheckBoxToggled(bool on);
   public slots:
     void setIncidenceChanger( IncidenceChangerBase *changer ) { mChanger = changer; }
@@ -99,6 +100,7 @@ class JournalEntry : public QWidget {
     KTimeEdit *mTimeEdit;
     QButton *mDeleteButton;
     QButton *mEditButton;
+    QButton *mPrintButton;
 
     QGridLayout *mLayout;
 

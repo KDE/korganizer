@@ -52,6 +52,10 @@
 
 #include "journalentry.h"
 #include "journalentry.moc"
+#ifndef KORG_NOPRINTER
+#include "kocorehelper.h"
+#include "calprinter.h"
+#endif
 
 class JournalTitleLable : public KActiveLabel
 {
@@ -223,9 +227,18 @@ JournalEntry::JournalEntry( Journal* j, QWidget *parent ) :
   mLayout->addWidget( mEditButton, 0, 5 );
   connect( mEditButton, SIGNAL(clicked()), this, SLOT( editItem() ) );
 
-
+#ifndef KORG_NOPRINTER
+  mPrintButton = new QToolButton( this, "printButton" );
+  mPrintButton->setPixmap( KOGlobals::self()->smallIcon( "printer1" ) );
+  mPrintButton->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
+  //FIXME: uncomment the next two lines after the string freeze is lifted
+//  QToolTip::add( mPrintButton, i18n("Print this journal entry") );
+//  QWhatsThis::add( mPrintButton, i18n("Opens a the print dialog for this journal entry") );
+  mLayout->addWidget( mPrintButton, 0, 6 );
+  connect( mPrintButton, SIGNAL(clicked()), this, SLOT( printItem() ) );
+#endif
   mEditor = new KTextEdit(this);
-  mLayout->addMultiCellWidget( mEditor, 1, 2, 0, 5 );
+  mLayout->addMultiCellWidget( mEditor, 1, 2, 0, 6 );
 
   connect( mTitleEdit, SIGNAL(textChanged( const QString& )), SLOT(setDirty()) );
   connect( mTimeCheck, SIGNAL(toggled(bool)), SLOT(setDirty()) );
@@ -261,6 +274,25 @@ void JournalEntry::editItem()
   writeJournal();
   if ( mJournal )
     emit editIncidence( mJournal );
+}
+
+void JournalEntry::printItem()
+{
+#ifndef KORG_NOPRINTER
+  writeJournal();
+  if ( mJournal ) {
+    Calendar *cal;
+    KOCoreHelper helper;
+    CalPrinter printer( this, cal, &helper );
+    connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
+
+    Incidence::List selectedIncidences;
+    selectedIncidences.append( mJournal );
+
+    printer.print( KOrg::CalPrinterBase::Incidence,
+                 QDate(), QDate(), selectedIncidences );
+  }
+#endif
 }
 
 void JournalEntry::setReadOnly( bool readonly )
