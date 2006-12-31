@@ -78,9 +78,7 @@ bool UriHandler::process( const QString &uri )
         KaddressBook is not already running.  Pass it the UID of the contact via the command line while starting it - its neater.
         We start it without its main interface
       */
-      KIconLoader *iconLoader = new KIconLoader();
-      QString iconPath = iconLoader->iconPath( "go", KIcon::Small );
-      delete iconLoader;
+      QString iconPath = KGlobal::iconLoader()->iconPath( "go", KIcon::Small );
       QString tmpStr = "kaddressbook --editor-only --uid ";
       tmpStr += KProcess::quote( uri.mid( 6 ) );
       KRun::runCommand( tmpStr, "KAddressBook", iconPath );
@@ -91,6 +89,6 @@ bool UriHandler::process( const QString &uri )
     new KRun(KURL( uri ));
   }
 #endif
-  
+
   return false;
 }
