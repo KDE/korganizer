@@ -10,7 +10,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>431</width>
+            <width>463</width>
             <height>161</height>
         </rect>
     </property>
@@ -71,8 +71,7 @@
                         <cstring>mFromMonth</cstring>
                     </property>
                     <property name="whatsThis" stdset="0">
-                        <string>When you want to print more months at once, you can define a month range. This option defines the fi
-rst month to be printed. Use the option &amp;lt;i&amp;gt;End month&amp;lt;/i&amp;gt; to define the last month in this range.</string>
+                        <string>When you want to print more months at once, you can define a month range. This option defines the first month to be printed. Use the on &lt;i&gt;End month&lt;/i&gt; to define the last month in this range.</string>
                     </property>
                 </widget>
                 <widget class="KIntSpinBox">
@@ -86,8 +85,7 @@ rst month to be printed. Use the option &amp;lt;i&amp;gt;End month&amp;lt;/i&amp
                         <number>2007</number>
                     </property>
                     <property name="whatsThis" stdset="0">
-                        <string>When you want to print more months at once, you can define a month range. This option defines the fi
-rst month to be printed. Use the option &amp;lt;i&amp;gt;End month&amp;lt;/i&amp;gt; to define the last month in this range.</string>
+                        <string>When you want to print more months at once, you can define a month range. This option defines the first month to be printed. Use the on &lt;i&gt;End month&lt;/i&gt; to define the last month in this range.</string>
                     </property>
                 </widget>
                 <widget class="QLabel">
@@ -109,8 +107,7 @@ rst month to be printed. Use the option &amp;lt;i&amp;gt;End month&amp;lt;/i&amp
                         <cstring>mToMonth</cstring>
                     </property>
                     <property name="whatsThis" stdset="0">
-                        <string>When you want to print more months at once, you can define a month range. This option defines the la
-st month to be printed. Use the option &amp;lt;i&amp;gt;Start month&amp;lt;/i&amp;gt; to define the first month in this range.</string>
+                        <string>When you want to print more months at once, you can define a month range. This option defines the last month to be printed. Use the option &lt;i&gt;Start month&lt;/i&gt; to define the first month in this range.</string>
                     </property>
                 </widget>
                 <widget class="KIntSpinBox">
@@ -124,8 +121,7 @@ st month to be printed. Use the option &amp;lt;i&amp;gt;Start month&amp;lt;/i&am
                         <number>2007</number>
                     </property>
                     <property name="whatsThis" stdset="0">
-                        <string>When you want to print more months at once, you can define a month range. This option defines the la
-st month to be printed. Use the option &amp;lt;i&amp;gt;Start month&amp;lt;/i&amp;gt; to define the first month in this range.</string>
+                        <string>When you want to print more months at once, you can define a month range. This option defines the last month to be printed. Use the option &lt;i&gt;Start month&lt;/i&gt; to define the first month in this range.</string>
                     </property>
                 </widget>
                 <spacer>
