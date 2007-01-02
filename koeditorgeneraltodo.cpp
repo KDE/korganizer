@@ -69,13 +69,13 @@ KOEditorGeneralTodo::~KOEditorGeneralTodo()
 void KOEditorGeneralTodo::finishSetup()
 {
   QWidget::setTabOrder( mSummaryEdit, mLocationEdit );
-  QWidget::setTabOrder( mLocationEdit, mDueCheck );
-  QWidget::setTabOrder( mDueCheck, mDueDateEdit );
-  QWidget::setTabOrder( mDueDateEdit, mDueTimeEdit );
-  QWidget::setTabOrder( mDueTimeEdit, mStartCheck );
+  QWidget::setTabOrder( mLocationEdit, mStartCheck );
   QWidget::setTabOrder( mStartCheck, mStartDateEdit );
   QWidget::setTabOrder( mStartDateEdit, mStartTimeEdit );
-  QWidget::setTabOrder( mStartTimeEdit, mTimeButton );
+  QWidget::setTabOrder( mStartTimeEdit, mDueCheck );
+  QWidget::setTabOrder( mDueCheck, mDueDateEdit );
+  QWidget::setTabOrder( mDueDateEdit, mDueTimeEdit );
+  QWidget::setTabOrder( mDueTimeEdit, mTimeButton );
   QWidget::setTabOrder( mTimeButton, mCompletedCombo );
   QWidget::setTabOrder( mCompletedCombo, mPriorityCombo );
   QWidget::setTabOrder( mPriorityCombo, mAlarmButton );
@@ -110,10 +110,28 @@ void KOEditorGeneralTodo::initTime(QWidget *parent,QBoxLayout *topLayout)
   layoutTimeBox->setSpacing(topLayout->spacing());
 
 
-  QString whatsThis = i18n("Sets the due date for this to-do.");
+  QString whatsThis = i18n("Sets the start date for this to-do");
+  mStartCheck = new QCheckBox(i18n("Sta&rt:"),timeBoxFrame);
+  QWhatsThis::add( mStartCheck, whatsThis );
+  layoutTimeBox->addWidget(mStartCheck,0,0);
+  connect(mStartCheck,SIGNAL(toggled(bool)),SLOT(enableStartEdit(bool)));
+  connect(mStartCheck,SIGNAL(toggled(bool)),SLOT(startDateModified()));
+
+  mStartDateEdit = new KDateEdit(timeBoxFrame);
+  QWhatsThis::add( mStartDateEdit, whatsThis );
+  layoutTimeBox->addWidget(mStartDateEdit,0,1);
+  connect(mStartDateEdit,SIGNAL(dateChanged(const QDate&)),SLOT(startDateModified()));
+
+  mStartTimeEdit = new KTimeEdit(timeBoxFrame);
+  QWhatsThis::add( mStartTimeEdit,
+                   i18n("Sets the start time for this to-do.") );
+  layoutTimeBox->addWidget(mStartTimeEdit,0,2);
+  connect(mStartTimeEdit,SIGNAL(timeChanged(QTime)),SLOT(startDateModified()));
+
+  whatsThis = i18n("Sets the due date for this to-do.");
   mDueCheck = new QCheckBox(i18n("&Due:"),timeBoxFrame);
   QWhatsThis::add( mDueCheck, whatsThis );
-  layoutTimeBox->addWidget(mDueCheck,0,0);
+  layoutTimeBox->addWidget(mDueCheck,1,0);
   connect(mDueCheck,SIGNAL(toggled(bool)),SLOT(enableDueEdit(bool)));
   connect(mDueCheck,SIGNAL(toggled(bool)),SLOT(showAlarm()));
   connect(mDueCheck,SIGNAL(toggled(bool)),SIGNAL(dueDateEditToggle(bool)));
@@ -121,32 +139,14 @@ void KOEditorGeneralTodo::initTime(QWidget *parent,QBoxLayout *topLayout)
 
   mDueDateEdit = new KDateEdit(timeBoxFrame);
   QWhatsThis::add( mDueDateEdit, whatsThis );
-  layoutTimeBox->addWidget(mDueDateEdit,0,1);
+  layoutTimeBox->addWidget(mDueDateEdit,1,1);
   connect(mDueDateEdit,SIGNAL(dateChanged(const QDate&)),SLOT(dateChanged()));
 
   mDueTimeEdit = new KTimeEdit(timeBoxFrame);
   QWhatsThis::add( mDueTimeEdit,
                    i18n("Sets the due time for this to-do.") );
-  layoutTimeBox->addWidget(mDueTimeEdit,0,2);
+  layoutTimeBox->addWidget(mDueTimeEdit,1,2);
   connect(mDueTimeEdit,SIGNAL(timeChanged( QTime )),SLOT(dateChanged()));
-
-  whatsThis = i18n("Sets the start date for this to-do");
-  mStartCheck = new QCheckBox(i18n("Sta&rt:"),timeBoxFrame);
-  QWhatsThis::add( mStartCheck, whatsThis );
-  layoutTimeBox->addWidget(mStartCheck,1,0);
-  connect(mStartCheck,SIGNAL(toggled(bool)),SLOT(enableStartEdit(bool)));
-  connect(mStartCheck,SIGNAL(toggled(bool)),SLOT(startDateModified()));
-
-  mStartDateEdit = new KDateEdit(timeBoxFrame);
-  QWhatsThis::add( mStartDateEdit, whatsThis );
-  layoutTimeBox->addWidget(mStartDateEdit,1,1);
-  connect(mStartDateEdit,SIGNAL(dateChanged(const QDate&)),SLOT(startDateModified()));
-
-  mStartTimeEdit = new KTimeEdit(timeBoxFrame);
-  QWhatsThis::add( mStartTimeEdit,
-                   i18n("Sets the start time for this to-do.") );
-  layoutTimeBox->addWidget(mStartTimeEdit,1,2);
-  connect(mStartTimeEdit,SIGNAL(timeChanged(QTime)),SLOT(startDateModified()));
 
   mTimeButton = new QCheckBox(i18n("Ti&me associated"),timeBoxFrame);
   QWhatsThis::add( mTimeButton,
@@ -353,6 +353,7 @@ void KOEditorGeneralTodo::writeTodo(Todo *todo)
     }
   }
 
+  // TODO: Don't use the due date for the recurrence, but the start date (cf. rfc 2445)
   if ( todo->doesRecur() && !mStartDateModified ) {
     todo->setDtDue( tmpDueDT );
   } else {
