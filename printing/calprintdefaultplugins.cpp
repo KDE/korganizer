@@ -39,6 +39,8 @@
 #include <kprinter.h>
 #include <kconfig.h>
 #include <kcalendarsystem.h>
+#include <knuminput.h>
+#include <kcombobox.h>
 
 #include <kcal/todo.h>
 #include <kcal/calendar.h>
@@ -827,8 +829,8 @@ void CalPrintMonth::readSettingsWidget()
   CalPrintMonthConfig *cfg =
       dynamic_cast<CalPrintMonthConfig *>( mConfigWidget );
   if ( cfg ) {
-    mFromDate = cfg->mFromDate->date();
-    mToDate = cfg->mToDate->date();
+    mFromDate = QDate( cfg->mFromYear->value(), cfg->mFromMonth->currentItem()+1, 1 );
+    mToDate = QDate( cfg->mToYear->value(), cfg->mToMonth->currentItem()+1, 1 );
 
     mWeekNumbers =  cfg->mWeekNumbers->isChecked();
     mRecurDaily = cfg->mRecurDaily->isChecked();
@@ -843,8 +845,7 @@ void CalPrintMonth::setSettingsWidget()
   CalPrintMonthConfig *cfg =
       dynamic_cast<CalPrintMonthConfig *>( mConfigWidget );
   if ( cfg ) {
-    cfg->mFromDate->setDate( mFromDate );
-    cfg->mToDate->setDate( mToDate );
+    setDateRange( mFromDate, mToDate );
 
     cfg->mWeekNumbers->setChecked( mWeekNumbers );
     cfg->mRecurDaily->setChecked( mRecurDaily );
@@ -881,9 +882,22 @@ void CalPrintMonth::setDateRange( const QDate &from, const QDate &to )
   CalPrintPluginBase::setDateRange( from, to );
   CalPrintMonthConfig *cfg =
       dynamic_cast<CalPrintMonthConfig *>( mConfigWidget );
+  const KCalendarSystem *calSys = calendarSystem();
+  if ( cfg && calSys ) {
+    cfg->mFromMonth->clear();
+    for ( int i=0; i<calSys->monthsInYear( mFromDate ); ++i ) {
+      cfg->mFromMonth->insertItem( calSys->monthName( i+1, mFromDate.year() ) );
+    }
+    cfg->mToMonth->clear();
+    for ( int i=0; i<calSys->monthsInYear( mToDate ); ++i ) {
+      cfg->mToMonth->insertItem( calSys->monthName( i+1, mToDate.year() ) );
+    }
+  }
   if ( cfg ) {
-    cfg->mFromDate->setDate( from );
-    cfg->mToDate->setDate( to );
+    cfg->mFromMonth->setCurrentItem( from.month()-1 );
+    cfg->mFromYear->setValue( to.year() );
+    cfg->mToMonth->setCurrentItem( mToDate.month()-1 );
+    cfg->mToYear->setValue( mToDate.year() );
   }
 }
 
