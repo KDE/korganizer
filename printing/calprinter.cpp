@@ -230,7 +230,6 @@ CalPrintDialog::CalPrintDialog( KOrg::PrintPlugin::List plugins,
 //     radioButton->setMinimumHeight( radioButton->sizeHint().height() - 5 );
     mTypeGroup->addButton( radioButton, mapit.key() );
     typeLayout->addWidget( radioButton );
-    kDebug() << p->description() << " is " << p->enabled() << endl;
   }
 
   setMinimumSize( minimumSizeHint() );
