@@ -35,6 +35,8 @@
 #include <kdebug.h>
 #include <kconfig.h>
 #include <kcalendarsystem.h>
+#include <knuminput.h>
+#include <kcombobox.h>
 
 #include "calprintdefaultplugins.h"
 
@@ -820,8 +822,8 @@ void CalPrintMonth::readSettingsWidget()
   CalPrintMonthConfig_Base *cfg =
       dynamic_cast<CalPrintMonthConfig_Base *>( mConfigWidget );
   if ( cfg ) {
-    mFromDate = cfg->mFromDate->date();
-    mToDate = cfg->mToDate->date();
+    mFromDate = QDate( cfg->mFromYear->value(), cfg->mFromMonth->currentItem()+1, 1 );
+    mToDate = QDate( cfg->mToYear->value(), cfg->mToMonth->currentItem()+1, 1 );
 
     mWeekNumbers =  cfg->mWeekNumbers->isChecked();
     mRecurDaily = cfg->mRecurDaily->isChecked();
@@ -835,10 +837,8 @@ void CalPrintMonth::setSettingsWidget()
 {
   CalPrintMonthConfig_Base *cfg =
       dynamic_cast<CalPrintMonthConfig_Base *>( mConfigWidget );
+  setDateRange( mFromDate, mToDate );
   if ( cfg ) {
-    cfg->mFromDate->setDate( mFromDate );
-    cfg->mToDate->setDate( mToDate );
-
     cfg->mWeekNumbers->setChecked( mWeekNumbers );
     cfg->mRecurDaily->setChecked( mRecurDaily );
     cfg->mRecurWeekly->setChecked( mRecurWeekly );
@@ -874,9 +874,23 @@ void CalPrintMonth::setDateRange( const QDate &from, const QDate &to )
   CalPrintPluginBase::setDateRange( from, to );
   CalPrintMonthConfig_Base *cfg =
       dynamic_cast<CalPrintMonthConfig_Base *>( mConfigWidget );
+  const KCalendarSystem *calSys = calendarSystem();
+  if ( cfg && calSys ) {
+    cfg->mFromMonth->clear();
+    for ( int i=0; i<calSys->monthsInYear( mFromDate ); ++i ) {
+      cfg->mFromMonth->insertItem( calSys->monthName( i+1, mFromDate.year() ) );
+    }
+    cfg->mToMonth->clear();
+    for ( int i=0; i<calSys->monthsInYear( mToDate ); ++i ) {
+      cfg->mToMonth->insertItem( calSys->monthName( i+1, mToDate.year() ) );
+    }
+  }
+kdDebug()<<"vor SetSettingsWidget()"<<endl;
   if ( cfg ) {
-    cfg->mFromDate->setDate( from );
-    cfg->mToDate->setDate( to );
+    cfg->mFromMonth->setCurrentItem( from.month()-1 );
+    cfg->mFromYear->setValue( to.year() );
+    cfg->mToMonth->setCurrentItem( mToDate.month()-1 );
+    cfg->mToYear->setValue( mToDate.year() );
   }
 }
 
