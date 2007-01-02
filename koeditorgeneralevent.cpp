@@ -260,13 +260,6 @@ void KOEditorGeneralEvent::endDateChanged( const QDate &newdate )
     return;
 
   QDateTime newdt(newdate, mCurrEndDateTime.time());
-
-  if(newdt < mCurrStartDateTime) {
-    // oops, we can't let that happen.
-    newdt = mCurrStartDateTime;
-    mEndDateEdit->setDate(newdt.date());
-    mEndTimeEdit->setTime(newdt.time());
-  }
   mCurrEndDateTime = newdt;
 
   emit dateTimesChanged(mCurrStartDateTime,mCurrEndDateTime);
