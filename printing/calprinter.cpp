@@ -219,7 +219,6 @@ CalPrintDialog::CalPrintDialog( KOrg::PrintPlugin::List plugins,
     KOrg::PrintPlugin *p = mapit.data();
     QRadioButton *radioButton = new QRadioButton( p->description(), mTypeGroup );
     radioButton->setEnabled( p->enabled() );
-    kdDebug() << p->description() << " is " << p->enabled() << endl;
     mTypeGroup->insert( radioButton, mapit.key() );
 //     radioButton->setMinimumHeight( radioButton->sizeHint().height() - 5 );
   }

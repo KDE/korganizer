@@ -885,7 +885,6 @@ void CalPrintMonth::setDateRange( const QDate &from, const QDate &to )
       cfg->mToMonth->insertItem( calSys->monthName( i+1, mToDate.year() ) );
     }
   }
-kdDebug()<<"vor SetSettingsWidget()"<<endl;
   if ( cfg ) {
     cfg->mFromMonth->setCurrentItem( from.month()-1 );
     cfg->mFromYear->setValue( to.year() );
@@ -975,7 +974,7 @@ void CalPrintTodos::readSettingsWidget()
 
 void CalPrintTodos::setSettingsWidget()
 {
-  kdDebug() << "CalPrintTodos::setSettingsWidget" << endl;
+//   kdDebug(5850) << "CalPrintTodos::setSettingsWidget" << endl;
 
   CalPrintTodoConfig_Base *cfg =
       dynamic_cast<CalPrintTodoConfig_Base *>( mConfigWidget );
