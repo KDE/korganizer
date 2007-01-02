@@ -972,6 +972,8 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
 
   Incidence *incidence = item->incidence();
   if ( !incidence ) return;
+  if ( !mChanger || !mChanger->beginChange(incidence) ) return;
+  Incidence *oldIncidence = incidence->clone();
 
   QTime startTime(0,0,0), endTime(0,0,0);
   if ( incidence->doesFloat() ) {
@@ -997,6 +999,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
     Event*ev = static_cast<Event*>(incidence);
     if( incidence->dtStart() == startDt && ev->dtEnd() == endDt ) {
       // No change
+      delete oldIncidence;
       return;
     }
     incidence->setDtStart( startDt );
@@ -1011,6 +1014,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
 
     if( td->dtDue() == endDt ) {
       // No change
+      delete oldIncidence;
       return;
     }
   }
@@ -1169,6 +1173,10 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
       td->setDtStart( startDt );
     td->setDtDue( endDt );
   }
+
+  mChanger->changeIncidence( oldIncidence, incidence );
+  mChanger->endChange(incidence);
+  delete oldIncidence;
 
   item->setItemDate( startDt.date() );
 

@@ -1038,6 +1038,7 @@ void KOAgenda::performItemAction(const QPoint& viewportPos)
 void KOAgenda::endItemAction()
 {
 //  kdDebug(5850) << "KOAgenda::endItemAction() " << endl;
+  mActionType = NOP;
   mScrollUpTimer.stop();
   mScrollDownTimer.stop();
   setCursor( arrowCursor );
@@ -1123,7 +1124,6 @@ void KOAgenda::endItemAction()
     if ( modify ) {
       mActionItem->endMove();
       KOAgendaItem *placeItem = mActionItem->firstMultiItem();
-      // FIXME: A mChanger->changeIncidence is missing here!
       if  ( !placeItem ) {
         placeItem = mActionItem;
       }
@@ -1141,7 +1141,8 @@ void KOAgenda::endItemAction()
         placeItem = placeItem->nextMultiItem();
       }
 
-      // Notify about change, so that agenda view can update the event data
+      // Notify about change
+      // the agenda view will apply the changes to the actual Incidence*!
       emit itemModified( modif );
     }
     // FIXME: If the change failed, we need to update the view!
@@ -1149,7 +1150,6 @@ void KOAgenda::endItemAction()
   }
 
   mActionItem = 0;
-  mActionType = NOP;
   mItemMoved = false;
 
   if ( multiModify ) emit endMultiModify();
