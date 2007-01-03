@@ -30,7 +30,6 @@
 #include <qwidgetstack.h>
 #include <qwhatsthis.h>
 
-#include <kabc/addressee.h>
 #include <kiconloader.h>
 #include <kdebug.h>
 #include <klocale.h>
@@ -38,7 +37,6 @@
 #include <libkcal/calendarresources.h>
 #include <libkcal/resourcecalendar.h>
 
-#include <libkdepim/categoryselectdialog.h>
 #include <libkcal/calendarlocal.h>
 
 #include "koprefs.h"
@@ -56,7 +54,7 @@
 
 KOEventEditor::KOEventEditor( Calendar *calendar, QWidget *parent )
   : KOIncidenceEditor( QString::null, calendar, parent ),
-    mEvent( 0 )
+    mEvent( 0 ), mGeneral( 0 ), mRecurrence( 0 ), mFreeBusy( 0 )
 {
 }
 
@@ -90,12 +88,6 @@ void KOEventEditor::init()
            mFreeBusy, SLOT( slotUpdateGanttView( const QDateTime &, const QDateTime & ) ) );
   connect( mFreeBusy, SIGNAL( dateTimesChanged( const QDateTime &, const QDateTime & ) ),
            mGeneral, SLOT( setDateTimes( const QDateTime &, const QDateTime & ) ) );
-
-  // Category dialog
-  connect( mGeneral, SIGNAL( openCategoryDialog() ),
-           mCategoryDialog, SLOT( show() ) );
-  connect( mCategoryDialog, SIGNAL( categoriesSelected( const QString & ) ),
-           mGeneral, SLOT( setCategories( const QString & ) ) );
 
   connect( mGeneral, SIGNAL( focusReceivedSignal() ),
            SIGNAL( focusReceivedSignal() ) );
@@ -209,70 +201,37 @@ void KOEventEditor::editIncidence( Incidence *incidence )
   setCaption( i18n("Edit Event") );
 }
 
-void KOEventEditor::newEvent( const QDateTime &from, const QDateTime &to,
-                              bool allDay )
+void KOEventEditor::newEvent()
 {
   init();
-
   mEvent = 0;
-  setDefaults(from,to,allDay);
-
+  loadDefaults();
   setCaption( i18n("New Event") );
 }
 
-void KOEventEditor::newEvent( const QString &text )
+void KOEventEditor::setDates( const QDateTime &from, const QDateTime &to, bool allDay )
 {
-  init();
+  mGeneral->setDefaults( from, to, allDay );
+  mDetails->setDefaults();
+  mAttachments->setDefaults();
+  mRecurrence->setDefaults( from, to, allDay );
+  if( mFreeBusy ) {
+    if ( allDay )
+      mFreeBusy->setDateTimes( from, to.addDays( 1 ) );
+    else
+      mFreeBusy->setDateTimes( from, to );
+  }
+}
 
-  mEvent = 0;
-
-  loadDefaults();
-
-  mGeneral->setDescription( text );
-
-  int pos = text.find( "\n" );
-  if ( pos > 0 ) {
-    mGeneral->setSummary( text.left( pos ) );
-    mGeneral->setDescription( text );
+void KOEventEditor::setTexts( const QString &summary, const QString &description )
+{
+  if ( description.isEmpty() && summary.contains("\n") ) {
+    mGeneral->setDescription( summary );
+    int pos = summary.find( "\n" );
+    mGeneral->setSummary( summary.left( pos ) );
   } else {
-    mGeneral->setSummary( text );
-  }
-
-  setCaption( i18n("New Event") );
-}
-
-void KOEventEditor::newEvent( const QString &summary,
-                              const QString &description,
-                              const QString &attachment )
-{
-  init();
-
-  mEvent = 0;
-
-  loadDefaults();
-
-  mGeneral->setSummary( summary );
-  mGeneral->setDescription( description );
-
-  if ( !attachment.isEmpty() ) {
-    mAttachments->addAttachment( attachment );
-  }
-
-  setCaption( i18n("New Event") );
-}
-
-void KOEventEditor::newEvent( const QString &summary,
-                              const QString &description,
-                              const QString &attachment,
-                              const QStringList &attendees )
-{
-  newEvent( summary, description, attachment );
-
-  QStringList::ConstIterator it;
-  for ( it = attendees.begin(); it != attendees.end(); ++it ) {
-    QString name, email;
-    KABC::Addressee::parseEmailAddress( *it, name, email );
-    mDetails->insertAttendee( new Attendee( name, email ) );
+    mGeneral->setSummary( summary );
+    mGeneral->setDescription( description );
   }
 }
 
@@ -283,7 +242,7 @@ void KOEventEditor::loadDefaults()
                 ( KOPrefs::instance()->mDefaultDuration.time().minute()*60 );
   QDateTime to( from.addSecs( addSecs ) );
 
-  setDefaults( from, to, false );
+  setDates( from, to, false );
 }
 
 bool KOEventEditor::processInput()
@@ -347,20 +306,6 @@ void KOEventEditor::deleteEvent()
   reject();
 }
 
-void KOEventEditor::setDefaults( const QDateTime &from, const QDateTime &to, bool allDay )
-{
-  mGeneral->setDefaults( from, to, allDay );
-  mDetails->setDefaults();
-  mAttachments->setDefaults();
-  mRecurrence->setDefaults( from, to, allDay );
-  if( mFreeBusy ) {
-    if ( allDay )
-      mFreeBusy->setDateTimes( from, to.addDays( 1 ) );
-    else
-      mFreeBusy->setDateTimes( from, to );
-   }
-}
-
 void KOEventEditor::readEvent( Event *event, bool tmpl )
 {
   mGeneral->readEvent( event, tmpl );
@@ -372,9 +317,6 @@ void KOEventEditor::readEvent( Event *event, bool tmpl )
     mFreeBusy->readEvent( event );
     mFreeBusy->triggerReload();
   }
-
-  // categories
-  mCategoryDialog->setSelected( event->categories() );
 
   createEmbeddedURLPages( event );
   readDesignerFields( event );

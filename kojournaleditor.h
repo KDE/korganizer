@@ -58,27 +58,21 @@ class KOJournalEditor : public KOIncidenceEditor
     void reload();
 
     /**
-      Clear editor for new Journal, and preset the dates and times with hint.
+      Clear editor for new Journal
     */
-    void newJournal( const QDate &date );
-    void newJournal( const QString &text, const QDate &date );
+    void newJournal();
 
     /**
-      Edit new Journal. Set summary and description from given text.
+      Sets the given summary and description. If description is empty and the 
+      summary contains multiple lines, the summary will be used as description 
+      and only the first line of summary will be used as the summary.
     */
-    void newJournal( const QString &text );
-    /**
-      Edit new Journal.
-    */
-    //TODO:
-    // void newJournal( const QString &summary, const QString &description,
-    //               const QString &attachment );
-
+    void setTexts( const QString &summary, const QString &description = QString::null );
     /** Edit an existing Journal. */
     void editIncidence(Incidence *);
 
     /** Set widgets to default values */
-    void setDefaults( const QDate &date );
+    void setDate( const QDate &date );
     /** Read event object and setup widgets accordingly */
     void readJournal( Journal * );
     /** Write event settings to event object */

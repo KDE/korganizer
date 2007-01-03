@@ -60,32 +60,25 @@ class KOEventEditor : public KOIncidenceEditor
     void reload();
 
     /**
-      Clear eventwin for new event, and preset the dates and times with hint
+      Clear event win for new event
     */
-    void newEvent( const QDateTime &from, const QDateTime &to, bool allDay = false );
+    void newEvent();
+    
     /**
-      Edit new event. Set summary and description from given text.
+      Sets the given summary and description. If description is empty and the 
+      summary contains multiple lines, the summary will be used as description 
+      and only the first line of summary will be used as the summary.
     */
-    void newEvent( const QString & );
-    /**
-      Edit new event.
-    */
-    void newEvent( const QString &summary, const QString &description,
-                   const QString &attachment );
-    /**
-      Edit new event.
-    */
-    void newEvent( const QString &summary, const QString &description,
-                   const QString &attachment, const QStringList &attendees );
+    void setTexts( const QString &summary, const QString &description = QString::null );
     /**
       Edit an existing event.
     */
     void editIncidence( Incidence * );
 
     /**
-      Set widgets to default values
+      Set widgets to the given date/time values
     */
-    void setDefaults( const QDateTime &from, const QDateTime &to, bool allDay );
+    void setDates( const QDateTime &from, const QDateTime &to, bool allDay );
 
     /**
       Read event object and setup widgets accordingly. If tmpl is true, the

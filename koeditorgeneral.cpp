@@ -55,6 +55,7 @@
 #include <libkcal/event.h>
 
 #include <libkdepim/kdateedit.h>
+#include <libkdepim/categoryselectdialog.h>
 
 #include "koprefs.h"
 #include "koglobals.h"
@@ -64,7 +65,7 @@
 #include "koeditorgeneral.moc"
 
 KOEditorGeneral::KOEditorGeneral(QObject* parent, const char* name) :
-  QObject( parent, name)
+  QObject( parent, name )
 {
   mAlarmList.setAutoDelete( true );
 }
@@ -135,7 +136,7 @@ void KOEditorGeneral::initCategories(QWidget *parent, QBoxLayout *topLayout)
   mCategoriesButton = new QPushButton(parent);
   mCategoriesButton->setText(i18n("Select Cate&gories..."));
   QWhatsThis::add( mCategoriesButton, whatsThis );
-  connect(mCategoriesButton,SIGNAL(clicked()),SIGNAL(openCategoryDialog()));
+  connect(mCategoriesButton,SIGNAL(clicked()),SLOT(selectCategories()));
   categoriesLayout->addWidget(mCategoriesButton);
 
   mCategoriesLabel = new KSqueezedTextLabel(parent);
@@ -230,6 +231,18 @@ void KOEditorGeneral::initAlarm(QWidget *parent,QBoxLayout *topLayout)
 
 }
 
+void KOEditorGeneral::selectCategories()
+{
+  KPIM::CategorySelectDialog *categoryDialog = new KPIM::CategorySelectDialog( KOPrefs::instance(), mCategoriesButton	 );
+  KOGlobals::fitDialogToScreen( categoryDialog );
+  categoryDialog->setSelected( mCategories );
+  if ( categoryDialog->exec() ) {
+    setCategories( categoryDialog->selectedCategories() );
+  }
+  delete categoryDialog;
+}
+
+
 void KOEditorGeneral::editAlarms()
 {
   if ( mAlarmStack->id( mAlarmStack->visibleWidget() ) == SimpleAlarmPage ) {
@@ -253,10 +266,10 @@ void KOEditorGeneral::enableAlarm( bool enable )
   mAlarmEditButton->setEnabled( enable );
 }
 
-void KOEditorGeneral::setCategories(const QString &str)
+void KOEditorGeneral::setCategories( const QStringList &categories )
 {
-  mCategoriesLabel->setText(str);
-  mCategories = str;
+  mCategoriesLabel->setText( categories.join(",") );
+  mCategories = categories;
 }
 
 void KOEditorGeneral::setDefaults(bool /*allDay*/)
@@ -355,7 +368,7 @@ void KOEditorGeneral::readIncidence(Incidence *event)
   updateDefaultAlarmTime();
   updateAlarmWidgets();
 
-  setCategories(event->categoriesStr());
+  setCategories(event->categories());
 }
 
 Alarm *KOEditorGeneral::alarmFromSimplePage() const
