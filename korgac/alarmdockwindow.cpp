@@ -61,7 +61,7 @@ AlarmDockWindow::AlarmDockWindow()
   setToolTip( mName );
 
   // Set up icons
-  KGlobal::iconLoader()->addAppDir( "korgac" );
+  kapp->iconLoader()->addAppDir( "korgac" );
   mIconEnabled  = loadIcon( "korgac" );
   mIconDisabled = loadIcon( "korgac_disabled" );
 

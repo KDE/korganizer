@@ -63,7 +63,7 @@ AlarmDialog::AlarmDialog( QWidget *parent )
                      Qt::WStyle_DialogBorder,*/ ),
                  mSuspendTimer(this)
 {
-  KGlobal::iconLoader()->addAppDir( "kdepim" );
+  kapp->iconLoader()->addAppDir( "kdepim" );
 
   QWidget *topBox = new QWidget( this);
   setMainWidget( topBox );
