@@ -47,7 +47,7 @@ class KOViewManager : public QObject
 {
     Q_OBJECT
   public:
-    KOViewManager( CalendarView * );
+    explicit KOViewManager( CalendarView * );
     virtual ~KOViewManager();
 
     /** changes the view to be the currently selected view */

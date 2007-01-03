@@ -37,7 +37,7 @@ class KOEditorAlarms : public KDialog
 {
     Q_OBJECT
   public:
-    KOEditorAlarms( KCal::Alarm::List *alarms, QWidget *parent = 0 );
+    explicit KOEditorAlarms( KCal::Alarm::List *alarms, QWidget *parent = 0 );
     ~KOEditorAlarms();
 
   protected slots:

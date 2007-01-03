@@ -31,7 +31,7 @@ class CalendarView;
 class KONewStuff : public KNewStuff
 {
   public:
-    KONewStuff( CalendarView * );
+    explicit KONewStuff( CalendarView * );
 
     bool install( const QString &fileName );
     bool createUploadFile( const QString &fileName );

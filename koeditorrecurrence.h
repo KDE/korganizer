@@ -50,7 +50,7 @@ using namespace KCal;
 class RecurBase : public QWidget
 {
   public:
-    RecurBase( QWidget *parent = 0 );
+    explicit RecurBase( QWidget *parent = 0 );
 
     void setFrequency( int );
     int frequency();
@@ -74,13 +74,13 @@ class RecurBase : public QWidget
 class RecurDaily : public RecurBase
 {
   public:
-    RecurDaily( QWidget *parent = 0 );
+    explicit RecurDaily( QWidget *parent = 0 );
 };
 
 class RecurWeekly : public RecurBase
 {
   public:
-    RecurWeekly( QWidget *parent = 0 );
+    explicit RecurWeekly( QWidget *parent = 0 );
 
     void setDays( const QBitArray & );
     QBitArray days();
@@ -92,7 +92,7 @@ class RecurWeekly : public RecurBase
 class RecurMonthly : public RecurBase
 {
   public:
-    RecurMonthly( QWidget *parent = 0 );
+    explicit RecurMonthly( QWidget *parent = 0 );
 
     void setByDay( int day );
     void setByPos( int count, int weekday );
@@ -119,7 +119,7 @@ class RecurYearly : public RecurBase
   public:
     enum YearlyType { byDay, byPos, byMonth };
 
-    RecurYearly( QWidget *parent = 0 );
+    explicit RecurYearly( QWidget *parent = 0 );
 
     void setByDay( int day );
     void setByPos( int count, int weekday, int month );
@@ -153,7 +153,7 @@ class RecurrenceChooser : public QWidget
 {
     Q_OBJECT
   public:
-    RecurrenceChooser( QWidget *parent = 0 );
+    explicit RecurrenceChooser( QWidget *parent = 0 );
 
     enum { Daily, Weekly, Monthly, Yearly };
 
@@ -187,7 +187,7 @@ class ExceptionsWidget : public QWidget, public ExceptionsBase
 {
     Q_OBJECT
   public:
-    ExceptionsWidget( QWidget *parent = 0 );
+    explicit ExceptionsWidget( QWidget *parent = 0 );
 
     void setDates( const DateList & );
     DateList dates();
@@ -206,7 +206,7 @@ class ExceptionsWidget : public QWidget, public ExceptionsBase
 class ExceptionsDialog : public KDialog, public ExceptionsBase
 {
   public:
-    ExceptionsDialog( QWidget *parent );
+    explicit ExceptionsDialog( QWidget *parent );
 
     void setDates( const DateList & );
     DateList dates();
@@ -235,7 +235,7 @@ class RecurrenceRangeWidget : public QWidget, public RecurrenceRangeBase
 {
     Q_OBJECT
   public:
-    RecurrenceRangeWidget( QWidget *parent = 0 );
+    explicit RecurrenceRangeWidget( QWidget *parent = 0 );
 
     void setDefaults( const QDateTime &from );
 
@@ -264,7 +264,7 @@ class RecurrenceRangeWidget : public QWidget, public RecurrenceRangeBase
 class RecurrenceRangeDialog : public KDialog, public RecurrenceRangeBase
 {
   public:
-    RecurrenceRangeDialog( QWidget *parent = 0 );
+    explicit RecurrenceRangeDialog( QWidget *parent = 0 );
 
     void setDefaults( const QDateTime &from );
 
@@ -285,7 +285,7 @@ class KOEditorRecurrence : public QWidget
 {
     Q_OBJECT
   public:
-    KOEditorRecurrence ( QWidget *parent = 0 );
+    explicit KOEditorRecurrence ( QWidget *parent = 0 );
     virtual ~KOEditorRecurrence();
 
     enum { Daily, Weekly, Monthly, Yearly };

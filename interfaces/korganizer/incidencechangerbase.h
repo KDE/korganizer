@@ -37,18 +37,18 @@ class KDE_EXPORT IncidenceChangerBase : public QObject
 {
 Q_OBJECT
 public:
-  IncidenceChangerBase( Calendar*cal, QObject *parent = 0 );
+  explicit IncidenceChangerBase( Calendar*cal, QObject *parent = 0 );
 
   virtual ~IncidenceChangerBase();
 
-  virtual bool sendGroupwareMessage( Incidence *incidence, 
+  virtual bool sendGroupwareMessage( Incidence *incidence,
           KCal::Scheduler::Method method, bool deleting = false ) = 0;
 
   virtual bool beginChange( Incidence * incidence ) = 0;
   virtual bool endChange( Incidence *incidence ) = 0;
 
   virtual bool addIncidence( Incidence *incidence ) = 0;
-  virtual bool changeIncidence( Incidence *newinc, Incidence *oldinc, 
+  virtual bool changeIncidence( Incidence *newinc, Incidence *oldinc,
                                 int action = -1 ) = 0;
   virtual bool deleteIncidence( Incidence *incidence ) = 0;
   virtual bool cutIncidence( Incidence *incidence ) = 0;
@@ -63,7 +63,7 @@ signals:
   void incidenceChanged( Incidence *oldInc, Incidence *newInc );
   void incidenceToBeDeleted( Incidence * );
   void incidenceDeleted( Incidence * );
-  
+
   void schedule( Scheduler::Method method, Incidence *incidence );
 protected:
   Calendar *mCalendar;

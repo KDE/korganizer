@@ -44,7 +44,7 @@ class SearchDialog : public KDialog, private Ui::SearchDialog
 {
     Q_OBJECT
   public:
-    SearchDialog(Calendar *calendar,QWidget *parent=0);
+    explicit SearchDialog( Calendar *calendar,QWidget *parent =0 );
     virtual ~SearchDialog();
 
     void updateView();

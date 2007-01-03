@@ -213,7 +213,7 @@ class CalPrintTodos : public CalPrintPluginBase
 class CalPrintIncidenceConfig : public QWidget, public Ui::CalPrintIncidenceConfig_Base
 {
 public:
-  CalPrintIncidenceConfig( QWidget *parent ) : QWidget( parent ) {
+  explicit CalPrintIncidenceConfig( QWidget *parent ) : QWidget( parent ) {
     setupUi( this );
   }
 };
@@ -221,7 +221,7 @@ public:
 class CalPrintDayConfig : public QWidget, public Ui::CalPrintDayConfig_Base
 {
 public:
-  CalPrintDayConfig( QWidget *parent ) : QWidget( parent ) {
+  explicit CalPrintDayConfig( QWidget *parent ) : QWidget( parent ) {
     setupUi( this );
   }
 };
@@ -229,7 +229,7 @@ public:
 class CalPrintWeekConfig : public QWidget, public Ui::CalPrintWeekConfig_Base
 {
 public:
-  CalPrintWeekConfig( QWidget *parent ) : QWidget( parent ) {
+  explicit CalPrintWeekConfig( QWidget *parent ) : QWidget( parent ) {
     setupUi( this );
   }
 };
@@ -237,7 +237,7 @@ public:
 class CalPrintMonthConfig : public QWidget, public Ui::CalPrintMonthConfig_Base
 {
 public:
-  CalPrintMonthConfig( QWidget *parent ) : QWidget( parent ) {
+  explicit CalPrintMonthConfig( QWidget *parent ) : QWidget( parent ) {
     setupUi( this );
   }
 };
@@ -245,7 +245,7 @@ public:
 class CalPrintTodoConfig : public QWidget, public Ui::CalPrintTodoConfig_Base
 {
 public:
-  CalPrintTodoConfig( QWidget *parent ) : QWidget( parent ) {
+  explicit CalPrintTodoConfig( QWidget *parent ) : QWidget( parent ) {
     setupUi( this );
   }
 };

@@ -61,7 +61,7 @@ using namespace KCal;
 class CalendarViewExtension : public QWidget
 {
   public:
-    CalendarViewExtension( QWidget *parent ) : QWidget( parent ) {}
+    explicit CalendarViewExtension( QWidget *parent ) : QWidget( parent ) {}
 
     class Factory
     {
@@ -88,7 +88,7 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
       Constructs a new calendar view widget.
       @param parent   parent window
     */
-    CalendarView( QWidget *parent = 0 );
+    explicit CalendarView( QWidget *parent = 0 );
     virtual ~CalendarView();
 
 
@@ -222,7 +222,7 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
     void newFilterListSignal( const QStringList & );
     void selectFilterSignal( int );
     void filterChanged();
-    
+
   public slots:
     /** options dialog made a changed to the configuration. we catch this
      *  and notify all widgets which need to update their configuration. */
@@ -264,7 +264,7 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
     bool editIncidence( const QString& uid );
     bool showIncidence( const QString& uid );
     /**
-      Show an incidence in context. This means showing the todo, agenda or 
+      Show an incidence in context. This means showing the todo, agenda or
       journal view (as appropriate) and scrolling it to show the incidence.
       @param uid Unique ID of the incidence to show.
     */
@@ -304,7 +304,7 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
     /** Create a read-only viewer dialog for the supplied incidence. It calls the correct showXXX method*/
     void showIncidence( Incidence * );
     /**
-      Show an incidence in context. This means showing the todo, agenda or 
+      Show an incidence in context. This means showing the todo, agenda or
       journal view (as appropriate) and scrolling it to show the incidence.
       @param incidence The incidence to show.
     */
@@ -374,7 +374,7 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
     void dissociateOccurrence( Incidence *, const QDate & );
     void dissociateFutureOccurrence( Incidence *, const QDate & );
 
-        
+
     /**
       Check if clipboard contains vCalendar event. The signal pasteEnabled() is
       emitted as result.
@@ -508,7 +508,7 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
     void updateFilter();
 
     void showIntro();
-    
+
     void showDateNavigator( bool );
     void showTodoView( bool );
     void showEventViewer( bool );
@@ -608,7 +608,7 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
 
     DateNavigator *mNavigator;
     DateChecker *mDateChecker;
-    
+
     KOEventViewer *mEventViewer;
     KOViewManager *mViewManager;
     KODialogManager *mDialogManager;

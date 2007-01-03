@@ -485,7 +485,7 @@ int CalPrintPluginBase::drawBoxWithCaption( QPainter &p, const QRect &allbox,
 
 ///////////////////////////////////////////////////////////////////////////////
 
-int CalPrintPluginBase::drawHeader( QPainter &p, QString title,
+int CalPrintPluginBase::drawHeader( QPainter &p, const QString &title,
     const QDate &month1, const QDate &month2, const QRect &allbox, bool expand )
 {
   // print previous month for month view, print current for to-do, day and week
@@ -1566,7 +1566,7 @@ int CalPrintPluginBase::weekdayColumn( int weekday )
   return ( weekday + 7 - KGlobal::locale()->weekStartDay() ) % 7;
 }
 
-void CalPrintPluginBase::drawJournalField( QPainter &p, QString field, QString text,
+void CalPrintPluginBase::drawJournalField( QPainter &p, const QString &field, const QString &text,
                                        int x, int &y, int width, int pageHeight )
 {
   if ( text.isEmpty() ) return;

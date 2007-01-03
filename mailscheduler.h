@@ -39,7 +39,7 @@ namespace KCal {
 class MailScheduler : public IMIPScheduler
 {
   public:
-    MailScheduler( Calendar * );
+    explicit MailScheduler( Calendar * );
     virtual ~MailScheduler();
 
     bool publish ( IncidenceBase *incidence, const QString &recipients );
@@ -52,7 +52,7 @@ class MailScheduler : public IMIPScheduler
 
     /** Returns the directory where the free-busy information is stored */
     virtual QString freeBusyDir();
-  
+
   private:
     QMap<IncidenceBase *, QString> mEventMap;
 };

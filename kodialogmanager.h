@@ -52,7 +52,7 @@ class KODialogManager : public QObject
 {
     Q_OBJECT
   public:
-    KODialogManager( CalendarView * );
+    explicit KODialogManager( CalendarView * );
     virtual ~KODialogManager();
 
     /** Get the appropriate editor for the given incidence */
@@ -81,7 +81,7 @@ class KODialogManager : public QObject
   private:
     class DialogManagerVisitor;
     class EditorDialogVisitor;
-    
+
     CalendarView *mMainView;
 
     KCMultiDialog *mOptionsDialog;

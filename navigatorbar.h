@@ -38,7 +38,7 @@ class ActiveLabel : public QLabel
 {
     Q_OBJECT
   public:
-    ActiveLabel( QWidget *parent );
+    explicit ActiveLabel( QWidget *parent );
 
   signals:
     void clicked();
@@ -52,7 +52,7 @@ class NavigatorBar: public QWidget
 {
     Q_OBJECT
   public:
-    NavigatorBar( QWidget *parent = 0 );
+    explicit NavigatorBar( QWidget *parent = 0 );
     ~NavigatorBar();
 
     void showButtons( bool left, bool right );

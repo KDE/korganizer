@@ -46,7 +46,7 @@ class FilterEditDialog : public KDialog
 {
     Q_OBJECT
   public:
-    FilterEditDialog( QList<CalFilter*> *, QWidget *parent=0 );
+    explicit FilterEditDialog( QList<CalFilter*> *, QWidget *parent=0 );
     virtual ~FilterEditDialog();
 
   signals:
@@ -70,7 +70,7 @@ class FilterEdit : public QWidget, Ui::FilterEdit_base
 {
     Q_OBJECT
   public:
-    FilterEdit( QList<CalFilter*> *filters, QWidget *parent);
+    explicit FilterEdit( QList<CalFilter*> *filters, QWidget *parent);
     ~FilterEdit();
 
     void updateFilterList();

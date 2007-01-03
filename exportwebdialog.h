@@ -41,7 +41,7 @@ class ExportWebDialog : public KPageDialog, public KPrefsWidManager
 {
     Q_OBJECT
   public:
-    ExportWebDialog( HTMLExportSettings *settings, QWidget *parent = 0 );
+    explicit ExportWebDialog( HTMLExportSettings *settings, QWidget *parent = 0 );
     virtual ~ExportWebDialog();
 
   public slots:
@@ -72,7 +72,7 @@ class ExportWebDialog : public KPageDialog, public KPrefsWidManager
   protected:
     virtual void usrReadConfig() {}
     virtual void usrWriteConfig() {}
-    
+
   private:
     HTMLExportSettings* mSettings;
     QFrame *mGeneralPage;

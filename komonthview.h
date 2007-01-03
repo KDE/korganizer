@@ -58,7 +58,7 @@ class KNoScrollListBox: public Q3ListBox
 {
     Q_OBJECT
   public:
-    KNoScrollListBox( QWidget *parent=0 );
+    explicit KNoScrollListBox( QWidget *parent=0 );
     ~KNoScrollListBox() {}
 
     void setBackground( bool primary, bool workday );
@@ -135,7 +135,7 @@ class MonthViewCell : public QWidget
 {
     Q_OBJECT
   public:
-    MonthViewCell( KOMonthView * );
+    explicit MonthViewCell( KOMonthView * );
 
     /** Sets the date of the cell */
     void setDate( const QDate & );
@@ -241,7 +241,7 @@ class KOMonthView: public KOEventView
 {
     Q_OBJECT
   public:
-    KOMonthView(Calendar *cal, QWidget *parent = 0 );
+    explicit KOMonthView(Calendar *cal, QWidget *parent = 0 );
     ~KOMonthView();
 
     /** Returns maximum number of days supported by the komonthview */

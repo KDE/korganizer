@@ -51,7 +51,7 @@ class TimeLabels : public Q3ScrollView
 {
     Q_OBJECT
   public:
-    TimeLabels( int rows, QWidget *parent = 0, Qt::WFlags f = 0 );
+    explicit TimeLabels( int rows, QWidget *parent = 0, Qt::WFlags f = 0 );
 
     /** Calculates the minimum width */
     virtual int minimumWidth() const;
@@ -147,7 +147,7 @@ class KOAgendaView : public KOEventView
 {
     Q_OBJECT
   public:
-    KOAgendaView( Calendar *cal, QWidget *parent = 0 );
+    explicit KOAgendaView( Calendar *cal, QWidget *parent = 0 );
     virtual ~KOAgendaView();
 
 

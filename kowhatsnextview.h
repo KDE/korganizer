@@ -35,7 +35,7 @@ class KOEventViewerDialog;
 class WhatsNextTextBrowser : public Q3TextBrowser {
     Q_OBJECT
   public:
-    WhatsNextTextBrowser(QWidget *parent) : Q3TextBrowser(parent) {}
+    explicit WhatsNextTextBrowser(QWidget *parent) : Q3TextBrowser(parent) {}
 
     void setSource(const QString &);
 
@@ -51,7 +51,7 @@ class KOWhatsNextView : public KOrg::BaseView
 {
     Q_OBJECT
   public:
-    KOWhatsNextView(Calendar *calendar, QWidget *parent = 0 );
+    explicit KOWhatsNextView(Calendar *calendar, QWidget *parent = 0 );
     ~KOWhatsNextView();
 
     virtual int currentDateCount();
@@ -66,7 +66,7 @@ class KOWhatsNextView : public KOrg::BaseView
     void changeIncidenceDisplay(Incidence *, int);
 
   protected:
-    void appendEvent( Incidence *, const QDateTime &start = QDateTime(), 
+    void appendEvent( Incidence *, const QDateTime &start = QDateTime(),
                       const QDateTime &end = QDateTime() );
     void appendTodo( Incidence * );
 

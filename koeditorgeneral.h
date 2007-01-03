@@ -51,7 +51,7 @@ class FocusLineEdit : public QLineEdit
 {
     Q_OBJECT
   public:
-    FocusLineEdit( QWidget *parent );
+    explicit FocusLineEdit( QWidget *parent );
 
   signals:
     void focusReceivedSignal();
@@ -67,7 +67,7 @@ class KOEditorGeneral : public QObject
 {
     Q_OBJECT
   public:
-    KOEditorGeneral (QObject* parent=0,const char* name=0);
+    explicit KOEditorGeneral (QObject* parent=0,const char* name=0);
     virtual ~KOEditorGeneral();
 
     void initHeader(QWidget *,QBoxLayout *);

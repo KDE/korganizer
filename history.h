@@ -41,7 +41,7 @@ class History : public QObject
 {
     Q_OBJECT
   public:
-    History( KCal::Calendar * );
+    explicit History( KCal::Calendar * );
 
     void recordDelete( KCal::Incidence * );
     void recordAdd( KCal::Incidence * );
@@ -69,13 +69,13 @@ class History : public QObject
     void addEntry( Entry* entry );
 
   private:
-  
+
     class Entry
     {
       public:
-        Entry( KCal::Calendar * );
+        explicit Entry( KCal::Calendar * );
         virtual ~Entry();
-    
+
         virtual void undo() = 0;
         virtual void redo() = 0;
 
@@ -90,12 +90,12 @@ class History : public QObject
       public:
         EntryDelete( KCal::Calendar *, KCal::Incidence * );
         ~EntryDelete();
-        
+
         void undo();
         void redo();
-    
+
         QString text();
-    
+
       private:
         KCal::Incidence *mIncidence;
     };
@@ -105,7 +105,7 @@ class History : public QObject
       public:
         EntryAdd( KCal::Calendar *, KCal::Incidence * );
         ~EntryAdd();
-        
+
         void undo();
         void redo();
 
@@ -114,19 +114,19 @@ class History : public QObject
       private:
         KCal::Incidence *mIncidence;
     };
-    
+
     class EntryEdit : public Entry
     {
       public:
         EntryEdit( KCal::Calendar *calendar, KCal::Incidence *oldIncidence,
                    KCal::Incidence *newIncidence );
         ~EntryEdit();
-        
+
         void undo();
         void redo();
-      
+
         QString text();
-      
+
       private:
         KCal::Incidence *mOldIncidence;
         KCal::Incidence *mNewIncidence;
@@ -137,13 +137,13 @@ class History : public QObject
       public:
         MultiEntry( KCal::Calendar *calendar, const QString &text );
         ~MultiEntry();
-        
+
         void appendEntry( Entry* entry );
         void undo();
         void redo();
-      
+
         QString text();
-      
+
       private:
         QList<Entry*> mEntries;
         QString mText;

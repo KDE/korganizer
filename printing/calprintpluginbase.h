@@ -265,7 +265,7 @@ class KDE_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
               is box.bottom, otherwise it is larger than box.bottom
               and matches the y-coordinate of the surrounding rectangle.
     */
-    int drawHeader( QPainter &p, QString title,
+    int drawHeader( QPainter &p, const QString &title,
                      const QDate &month1, const QDate &month2,
                      const QRect &box, bool expand = false );
     /**
@@ -487,7 +487,7 @@ class KDE_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
     */
     void drawJournal( Journal * journal, QPainter &p, int x, int &y,
                       int width, int pageHeight );
-    void drawJournalField( QPainter &p, QString field, QString text,
+    void drawJournalField( QPainter &p, const QString &field, const QString &text,
                            int x, int &y, int width, int pageHeight );
 
     void drawSplitHeaderRight( QPainter &p, const QDate &fd, const QDate &td,

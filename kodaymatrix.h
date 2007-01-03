@@ -115,7 +115,7 @@ class KODayMatrix: public QFrame
      *  @param parent widget that is the parent of the day matrix.
      *  Normally this should be a KDateNavigator
      */
-    KODayMatrix( QWidget *parent );
+    explicit KODayMatrix( QWidget *parent );
 
     /** destructor that deallocates all dynamically allocated private members.
      */

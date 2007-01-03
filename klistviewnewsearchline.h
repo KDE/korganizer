@@ -52,7 +52,7 @@ public:
      * @param parent The parent widget
      * @param listView The list view that is filtered by this line
      */
-    KListViewNewSearchLine(QWidget *parent = 0, K3ListView *listView = 0);
+    explicit KListViewNewSearchLine(QWidget *parent = 0, K3ListView *listView = 0);
 
     /**
      * Constructs a KListViewNewSearchLine with \a listViews being the list of

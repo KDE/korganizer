@@ -42,7 +42,7 @@ class ArchiveDialog : public KDialog
 {
     Q_OBJECT
   public:
-    ArchiveDialog( Calendar *calendar, QWidget *parent=0 );
+    explicit ArchiveDialog( Calendar *calendar, QWidget *parent=0 );
     virtual ~ArchiveDialog();
 
   signals:
