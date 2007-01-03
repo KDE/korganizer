@@ -76,7 +76,7 @@ bool UriHandler::process( const QString &uri )
         We start it without its main interface
       */
       KIconLoader *iconLoader = new KIconLoader();
-      QString iconPath = KGlobal::iconLoader()->iconPath( "go", K3Icon::Small );
+      QString iconPath = kapp->iconLoader()->iconPath( "go", K3Icon::Small );
       QString tmpStr = "kaddressbook --editor-only --uid ";
       tmpStr += KProcess::quote( uri.mid( ::qstrlen( KDEPIMPROTOCOL_CONTACT ) ) 
       );

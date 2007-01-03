@@ -26,6 +26,7 @@
 
 #include <QPainter>
 
+#include <kglobalsettings.h>
 #include <klocale.h>
 #include <kdebug.h>
 #include <QPainter>

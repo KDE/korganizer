@@ -142,7 +142,7 @@ class AttachmentIconItem : public K3IconViewItem
                          bool local = false )
     {
       QString iconStr = mimeType->iconName( uri );
-      return KGlobal::iconLoader()->loadIcon( iconStr, K3Icon::Desktop, 0,
+      return kapp->iconLoader()->loadIcon( iconStr, K3Icon::Desktop, 0,
                                               K3Icon::DefaultState | (
                                                 ( uri.isNull() || local ) ? 0 :
                                                   K3Icon::LinkOverlay) );

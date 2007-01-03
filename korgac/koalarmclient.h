@@ -28,6 +28,7 @@
 
 
 #include <kapplication.h>
+#include <ksessionmanager.h>
 
 #include <QTimer>
 #include <QDateTime>
@@ -40,7 +41,7 @@ class CalendarResources;
 class Incidence;
 }
 
-class KOAlarmClient : public QObject, public KSessionManaged
+class KOAlarmClient : public QObject, public KSessionManager
 {
     Q_OBJECT
   public:

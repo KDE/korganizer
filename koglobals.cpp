@@ -134,12 +134,12 @@ bool KOGlobals::reverseLayout()
 
 QPixmap KOGlobals::smallIcon( const QString& name )
 {
-  return SmallIcon( name, mOwnInstance );
+  return SmallIcon( name );
 }
 
 QIcon KOGlobals::smallIconSet( const QString& name, int size )
 {
-  return SmallIconSet( name, size, mOwnInstance );
+  return SmallIconSet( name, size );
 }
 
 QStringList KOGlobals::holiday( const QDate &date )
