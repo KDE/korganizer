@@ -39,8 +39,8 @@
 #include <kmessagebox.h>
 #include <kinputdialog.h>
 #include <kio/netaccess.h>
+#include <kabc/addressee.h>
 
-#include <libkdepim/categoryselectdialog.h>
 #include <libkdepim/designerfields.h>
 #include <libkdepim/embeddedurlpage.h>
 
@@ -82,19 +82,12 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
     setButtonText( Default, i18n("&Templates...") );
   }
 
-  mCategoryDialog = new KPIM::CategorySelectDialog( KOPrefs::instance(), this );
-  KOGlobals::fitDialogToScreen( mCategoryDialog );
-
-  connect( mCategoryDialog, SIGNAL( editCategories() ),
-           SIGNAL( editCategories() ) );
-
   connect( this, SIGNAL( defaultClicked() ), SLOT( slotManageTemplates() ) );
   connect( this, SIGNAL( finished() ), SLOT( delayedDestruct() ) );
 }
 
 KOIncidenceEditor::~KOIncidenceEditor()
 {
-  delete mCategoryDialog;
 }
 
 void KOIncidenceEditor::setupAttendeesTab()
@@ -144,7 +137,6 @@ void KOIncidenceEditor::slotOk()
 
 void KOIncidenceEditor::updateCategoryConfig()
 {
-  mCategoryDialog->updateCategoryConfig();
 }
 
 void KOIncidenceEditor::slotCancel()
@@ -391,5 +383,25 @@ void KOIncidenceEditor::openURL( const KUrl &url )
   QString uri = url.url();
   UriHandler::process( uri );
 }
+
+void KOIncidenceEditor::addAttachments( const QStringList &attachments )
+{
+  QStringList::ConstIterator it;
+  for ( it = attachments.begin(); it != attachments.end(); ++it ) {
+    mAttachments->addAttachment( *it );
+  }
+}
+
+void KOIncidenceEditor::addAttendees( const QStringList &attendees )
+{
+  QStringList::ConstIterator it;
+  for ( it = attendees.begin(); it != attendees.end(); ++it ) {
+    QString name, email;
+    KABC::Addressee::parseEmailAddress( *it, name, email );
+    mDetails->insertAttendee( new Attendee( name, email ) );
+  }
+}
+
+
 
 #include "koincidenceeditor.moc"

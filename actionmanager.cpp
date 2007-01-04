@@ -1482,17 +1482,17 @@ void ActionManager::openEventEditor( const QString& text )
 
 void ActionManager::openEventEditor( const QString& summary,
                                      const QString& description,
-                                     const QString& attachment )
+                                     const QStringList& attachments )
 {
-  mCalendarView->newEvent( summary, description, attachment );
+  mCalendarView->newEvent( summary, description, attachments );
 }
 
 void ActionManager::openEventEditor( const QString& summary,
                                      const QString& description,
-                                     const QString& attachment,
+                                     const QStringList& attachments,
                                      const QStringList& attendees )
 {
-  mCalendarView->newEvent( summary, description, attachment, attendees );
+  mCalendarView->newEvent( summary, description, attachments, attendees );
 }
 
 void ActionManager::openTodoEditor( const QString& text )
@@ -1502,17 +1502,17 @@ void ActionManager::openTodoEditor( const QString& text )
 
 void ActionManager::openTodoEditor( const QString& summary,
                                     const QString& description,
-                                    const QString& attachment )
+                                    const QStringList& attachments )
 {
-  mCalendarView->newTodo( summary, description, attachment );
+  mCalendarView->newTodo( summary, description, attachments );
 }
 
 void ActionManager::openTodoEditor( const QString& summary,
                                     const QString& description,
-                                    const QString& attachment,
+                                    const QStringList& attachments,
                                     const QStringList& attendees )
 {
-  mCalendarView->newTodo( summary, description, attachment, attendees );
+  mCalendarView->newTodo( summary, description, attachments, attendees );
 }
 
 void ActionManager::openJournalEditor( const QDate& date )
@@ -1533,9 +1533,9 @@ void ActionManager::openJournalEditor( const QString& text )
 //TODO:
 // void ActionManager::openJournalEditor( const QString& summary,
 //                                        const QString& description,
-//                                        const QString& attachment )
+//                                        const QStringList& attachments )
 // {
-//   mCalendarView->newJournal( summary, description, attachment );
+//   mCalendarView->newJournal( summary, description, attachments );
 // }
 
 

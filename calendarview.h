@@ -45,6 +45,7 @@ class CalPrinter;
 class KOViewManager;
 class KODialogManager;
 class KOTodoView;
+class KOEventEditor;
 class DateNavigatorContainer;
 class DateNavigator;
 class KOIncidenceEditor;
@@ -283,22 +284,20 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
 
     void connectIncidenceEditor( KOIncidenceEditor * );
 
-    /** create an editeventwin with supplied date/time, and if bool is true,
-     * make the event take all day. */
-    void newEvent( const QDateTime &, const QDateTime &, bool allDay = false );
-    void newEvent( const QDateTime &fh );
-    void newEvent( const QDate &dt );
     /** create new event without having a date hint. Takes current date as
      default hint. */
     void newEvent();
+    /** create an editeventwin with supplied date/time, and if bool is true,
+     * make the event take all day. */
+    void newEvent( const QDate &startDt );
+    void newEvent( const QDateTime &startDt );
+    void newEvent( const QDateTime &startDt, const QDateTime &EndDt, bool allDay = false );
     /**
-      Create new Event from given string.
+      Create new Event from given summary, description, attachment list and 
+      attendees list
     */
-    void newEvent( const QString & );
-    void newEvent( const QString &summary, const QString &description,
-                   const QString &attachment );
-    void newEvent( const QString &summary, const QString &description,
-                   const QString &attachment, const QStringList &attendees );
+    void newEvent( const QString &summary, const QString &description = QString::null,
+                   const QStringList &attachment = QStringList(), const QStringList &attendees = QStringList() );
     void newFloatingEvent();
 
     /** Create a read-only viewer dialog for the supplied incidence. It calls the correct showXXX method*/
@@ -356,19 +355,12 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
     /** create new todo with a parent todo */
     void newSubTodo( Todo * );
 
-    void newTodo( const QString & );
-    void newTodo( const QString &summary, const QString &description,
-                  const QString &attachment );
-    void newTodo( const QString &summary, const QString &description,
-                  const QString &attachment, const QStringList &attendees );
+    void newTodo( const QString &summary, const QString &description = QString::null,
+                  const QStringList &attachments = QStringList(), const QStringList &attendees = QStringList() );
 
     void newJournal();
     void newJournal( const QDate &date );
-    void newJournal( const QString &text, const QDate &date );
-    void newJournal( const QString &text );
-    //TODO:
-    // void newJournal( const QString &summary,  const QString &description,
-    //                  const QString &attachment );
+    void newJournal( const QString &text, const QDate &date = QDate() );
 
     void toggleAlarm( Incidence * );
     void dissociateOccurrence( Incidence *, const QDate & );
@@ -576,6 +568,12 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
 
     void warningChangeFailed( Incidence * );
     void checkForFilteredChange( Incidence *incidence );
+    /** Adjust the given date/times by valid defaults (selection or configured 
+        defaults, if invalid values are given) and allow the view to adjust the 
+        type. */
+    void dateTimesForNewEvent( QDateTime &startDt, QDateTime &endDt, bool &allDay );
+    KOEventEditor *newEventEditor( const QDateTime &startDtParam = QDateTime(), 
+         const QDateTime &endDtParam = QDateTime() , bool allDayParam = false );
 
   private:
     void init();

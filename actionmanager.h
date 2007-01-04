@@ -186,19 +186,19 @@ class KDE_EXPORT ActionManager : public QObject
     void openEventEditor( const QString& );
     void openEventEditor( const QString& summary,
                           const QString& description,
-                          const QString& attachment );
+                          const QStringList& attachments );
     void openEventEditor( const QString& summary,
                           const QString& description,
-                          const QString& attachment,
+                          const QStringList& attachments,
                           const QStringList& attendees );
 
     void openTodoEditor( const QString& );
     void openTodoEditor( const QString& summary,
                          const QString& description,
-                         const QString& attachment );
+                         const QStringList& attachments );
     void openTodoEditor( const QString& summary,
                          const QString& description,
-                         const QString& attachment,
+                         const QStringList& attachments,
                          const QStringList& attendees );
 
     void openJournalEditor( const QDate& date );
@@ -207,7 +207,7 @@ class KDE_EXPORT ActionManager : public QObject
    //TODO:
    // void openJournalEditor( const QString& summary,
    //                         const QString& description,
-   //                         const QString& attachment );
+   //                         const QStringList& attachments );
 
     void showJournalView();
     void showTodoView();

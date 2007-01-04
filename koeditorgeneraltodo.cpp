@@ -226,6 +226,7 @@ void KOEditorGeneralTodo::initStatus(QWidget *parent,QBoxLayout *topLayout)
 
 void KOEditorGeneralTodo::setDefaults( const QDateTime &due, bool allDay )
 {
+kdDebug()<<"KOEditorGeneralTodo::setDefaults: " << due <<endl;
   KOEditorGeneral::setDefaults(allDay);
 
   mTimeButton->setChecked( !allDay );
@@ -238,8 +239,8 @@ void KOEditorGeneralTodo::setDefaults( const QDateTime &due, bool allDay )
 
   enableTimeEdits( !allDay );
 
-  mDueCheck->setChecked(false);
-  enableDueEdit(false);
+  mDueCheck->setChecked( due.isValid() );
+  enableDueEdit( due.isValid() );
 
   enableAlarm(false);
 
@@ -556,7 +557,7 @@ void KOEditorGeneralTodo::modified (Todo* todo, int modification)
     setCompletedDate();
     break;
   case KOGlobals::CATEGORY_MODIFIED:
-    setCategories (todo->categoriesStr ());
+    setCategories( todo->categories() );
     break;
   case KOGlobals::UNKNOWN_MODIFIED: // fall through
   default:

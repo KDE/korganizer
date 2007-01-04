@@ -94,7 +94,8 @@ class KOEditorGeneral : public QObject
     QObject *typeAheadReceiver() const;
 
   public slots:
-    void setCategories(const QString &);
+    void setCategories(const QStringList &categories);
+    void selectCategories();
 
   protected slots:
     void editAlarms();
@@ -126,7 +127,7 @@ class KOEditorGeneral : public QObject
     enum AlarmStackPages { SimpleAlarmPage, AdvancedAlarmLabel };
 
   private:
-    QString mCategories;
+    QStringList mCategories;
     KCal::Alarm::List mAlarmList;
 };
 

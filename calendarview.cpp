@@ -932,105 +932,92 @@ void CalendarView::edit_options()
 }
 
 
-void CalendarView::newEvent()
+void CalendarView::dateTimesForNewEvent( QDateTime &startDt, QDateTime &endDt, bool &allDay )
 {
-  kDebug(5850) << "CalendarView::newEvent()" << endl;
-  QDate date = mNavigator->selectedDates().first();
-  QTime startTime = KOPrefs::instance()->mStartTime.time();
-  QDateTime startDt( date, startTime );
-  int addSecs = ( KOPrefs::instance()->mDefaultDuration.time().hour()*3600 ) +
-                ( KOPrefs::instance()->mDefaultDuration.time().minute()*60 );
-  QDateTime endDt = ( startDt.addSecs( addSecs ) );
-  bool allDay = false;
-
-  // let the current view change the default start/end datetime
-  mViewManager->currentView()->eventDurationHint( startDt, endDt, allDay );
-
-  if ( allDay ) {
-    newEvent( startDt, endDt, true );
-  } else {
-    newEvent( startDt, endDt );
+  if ( !startDt.isValid() ) {
+    // Default start is the first selected date with the preferred time as set 
+    // in the config dlg.
+    if ( !startDt.date().isValid() ) {
+      startDt.setDate( mNavigator->selectedDates().first() );
+    }
+    if ( !startDt.time().isValid() ) {
+      startDt.setTime( KOPrefs::instance()->mStartTime.time() );
+    }
   }
+  if ( !endDt.isValid() ) {
+    int addSecs = ( KOPrefs::instance()->mDefaultDuration.time().hour()*3600 ) +
+                  ( KOPrefs::instance()->mDefaultDuration.time().minute()*60 );
+    endDt = startDt.addSecs( addSecs );
+  }
+  mViewManager->currentView()->eventDurationHint( startDt, endDt, allDay );
 }
 
-void CalendarView::newEvent( const QDateTime &fh )
+KOEventEditor *CalendarView::newEventEditor( const QDateTime &startDtParam, 
+     const QDateTime &endDtParam, bool allDayParam)
 {
-  int addSecs = ( KOPrefs::instance()->mDefaultDuration.time().hour()*3600 ) +
-                ( KOPrefs::instance()->mDefaultDuration.time().minute()*60 );
-  QDateTime endTime ( fh.addSecs( addSecs ) );
-  newEvent( fh, endTime );
+  // let the current view change the default start/end datetime
+  bool allDay = allDayParam;
+  QDateTime startDt( startDtParam ), endDt( endDtParam );
+  // Adjust the start/end date times (i.e. replace invalid values by defaults, 
+  // and let the view adjust the type.
+  dateTimesForNewEvent( startDt, endDt, allDay );
+
+  KOEventEditor *eventEditor = mDialogManager->getEventEditor();
+  eventEditor->newEvent();
+  connectIncidenceEditor( eventEditor );
+  eventEditor->setDates( startDt, endDt, allDay );
+  mDialogManager->connectTypeAhead( eventEditor, viewManager()->agendaView() );
+  return eventEditor;
+}
+
+
+
+
+void CalendarView::newEvent()
+{
+  kdDebug(5850) << "CalendarView::newEvent()" << endl;
+  newEvent( QDateTime(), QDateTime() );
 }
 
 void CalendarView::newEvent( const QDate &dt )
 {
-  QTime startTime = KOPrefs::instance()->mStartTime.time();
-  int addSecs = ( KOPrefs::instance()->mDefaultDuration.time().hour()*3600 ) +
-                ( KOPrefs::instance()->mDefaultDuration.time().minute()*60 );
-  QTime endTime ( startTime.addSecs( addSecs ) );
-  newEvent(QDateTime(dt, startTime),
-           QDateTime(dt, endTime), true);
+  QDateTime startDt( dt, KOPrefs::instance()->mStartTime.time() );
+  return newEvent( QDateTime( dt ), QDateTime() );
 }
 
-void CalendarView::newEvent( const QString &text )
+void CalendarView::newEvent( const QDateTime &startDt )
 {
-  KOEventEditor *eventEditor = mDialogManager->getEventEditor();
-  connectIncidenceEditor( eventEditor );
-  eventEditor->newEvent( text );
-  mDialogManager->connectTypeAhead( eventEditor, viewManager()->agendaView() );
+  return newEvent( startDt, QDateTime() );
+}
+
+void CalendarView::newEvent( const QDateTime &startDt, const QDateTime &endDt,
+                             bool allDay )
+{
+  KOEventEditor *eventEditor = newEventEditor( startDt, endDt, allDay );
   eventEditor->show();
 }
 
 void CalendarView::newEvent( const QString &summary, const QString &description,
-                             const QString &attachment )
+                             const QStringList &attachments, const QStringList &attendees )
 {
-  KOEventEditor *eventEditor = mDialogManager->getEventEditor();
-  connectIncidenceEditor( eventEditor );
-  eventEditor->newEvent( summary, description, attachment );
+  KOEventEditor *eventEditor = newEventEditor();
+  eventEditor->setTexts( summary, description );
+  // if attach or attendee list is empty, these methods don't do anything, so
+  // it's save to call them in every case
+  eventEditor->addAttachments( attachments );
+  eventEditor->addAttendees( attendees );
   eventEditor->show();
-}
-
-void CalendarView::newEvent( const QString &summary, const QString &description,
-                             const QString &attachment, const QStringList &attendees )
-{
-  KOEventEditor *eventEditor = mDialogManager->getEventEditor();
-  connectIncidenceEditor( eventEditor );
-  eventEditor->newEvent( summary, description, attachment, attendees );
-  eventEditor->show();
-}
-
-void CalendarView::newEvent( const QDateTime &fromHint, const QDateTime &toHint,
-                             bool allDay)
-{
-  KOEventEditor *eventEditor = mDialogManager->getEventEditor();
-  connectIncidenceEditor( eventEditor );
-  eventEditor->newEvent(fromHint,toHint,allDay);
-  mDialogManager->connectTypeAhead( eventEditor, viewManager()->agendaView() );
-  eventEditor->show();
-}
-
-void CalendarView::newTodo( const QString &text )
-{
-  KOTodoEditor *todoEditor = mDialogManager->getTodoEditor();
-  connectIncidenceEditor( todoEditor );
-  todoEditor->newTodo( text );
-  todoEditor->show();
 }
 
 void CalendarView::newTodo( const QString &summary, const QString &description,
-                             const QString &attachment )
+                            const QStringList &attachments, const QStringList &attendees )
 {
   KOTodoEditor *todoEditor = mDialogManager->getTodoEditor();
   connectIncidenceEditor( todoEditor );
-  todoEditor->newTodo( summary, description, attachment );
-  todoEditor->show();
-}
-
-void CalendarView::newTodo( const QString &summary, const QString &description,
-                            const QString &attachment, const QStringList &attendees )
-{
-  KOTodoEditor *todoEditor = mDialogManager->getTodoEditor();
-  connectIncidenceEditor( todoEditor );
-  todoEditor->newTodo( summary, description, attachment, attendees );
+  todoEditor->newTodo();
+  todoEditor->setTexts( summary, description );
+  todoEditor->addAttachments( attachments );
+  todoEditor->addAttendees( attendees );
   todoEditor->show();
 }
 
@@ -1041,15 +1028,14 @@ void CalendarView::newTodo()
   bool allday = true;
   KOTodoEditor *todoEditor = mDialogManager->getTodoEditor();
   connectIncidenceEditor( todoEditor );
+  todoEditor->newTodo();
   if ( mViewManager->currentView()->isEventView() ) {
     dtDue.setDate( mNavigator->selectedDates().first() );
     QDateTime dtDummy = QDateTime::currentDateTime();
     mViewManager->currentView()->
-      eventDurationHint( dtDue , dtDummy , allday );
+      eventDurationHint( dtDue, dtDummy, allday );
+    todoEditor->setDates( dtDue, allday );
   }
-  else
-    dtDue = QDateTime::currentDateTime().addDays( 7 );
-  todoEditor->newTodo(dtDue,0,allday);
   todoEditor->show();
 }
 
@@ -1057,51 +1043,35 @@ void CalendarView::newTodo( const QDate &date )
 {
   KOTodoEditor *todoEditor = mDialogManager->getTodoEditor();
   connectIncidenceEditor( todoEditor );
-  todoEditor->newTodo( QDateTime( date, QTime::currentTime() ), 0, true );
+  todoEditor->newTodo();
+  todoEditor->setDates( QDateTime( date, QTime::currentTime() ), true );
   todoEditor->show();
 }
 
 void CalendarView::newJournal()
 {
   kDebug(5850) << "CalendarView::newJournal()" << endl;
-  QDate date = mNavigator->selectedDates().first();
-  newJournal( date );
+  newJournal( QString::null, QDate() );
 }
 
 void CalendarView::newJournal( const QDate &date )
 {
-  KOJournalEditor *journalEditor = mDialogManager->getJournalEditor();
-  connectIncidenceEditor( journalEditor );
-  journalEditor->newJournal( date );
-  journalEditor->show();
+  newJournal( QString::null, date );
 }
 
 void CalendarView::newJournal( const QString &text, const QDate &date )
 {
   KOJournalEditor *journalEditor = mDialogManager->getJournalEditor();
   connectIncidenceEditor( journalEditor );
-  journalEditor->newJournal( text, date );
+  journalEditor->newJournal();
+  journalEditor->setTexts( text );
+  if ( !date.isValid() ) {
+    journalEditor->setDate( mNavigator->selectedDates().first() );
+  } else {
+    journalEditor->setDate( date );
+  }
   journalEditor->show();
 }
-
-void CalendarView::newJournal( const QString &text )
-{
-  KOJournalEditor *journalEditor = mDialogManager->getJournalEditor();
-  connectIncidenceEditor( journalEditor );
-  journalEditor->newJournal( text );
-  journalEditor->show();
-}
-
-//TODO:
-// void CalendarView::newJournal( const QString &summary,
-//                                const QString &description,
-//                                const QString &attachment )
-// {
-//   KOJournalEditor *journalEditor = mDialogManager->getJournalEditor();
-//   connectIncidenceEditor( journalEditor );
-//   journalEditor->newJournal( summary, description, attachment );
-//   journalEditor->show();
-// }
 
 void CalendarView::newSubTodo()
 {
@@ -1113,7 +1083,8 @@ void CalendarView::newSubTodo(Todo *parentEvent)
 {
   KOTodoEditor *todoEditor = mDialogManager->getTodoEditor();
   connectIncidenceEditor( todoEditor );
-  todoEditor->newTodo(QDateTime::currentDateTime().addDays(7),parentEvent,true);
+  todoEditor->newTodo();
+  todoEditor->setDates( QDateTime(), false, parentEvent );
   todoEditor->show();
 }
 

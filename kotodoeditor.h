@@ -49,30 +49,21 @@ class KOTodoEditor : public KOIncidenceEditor
     void reload();
 
     /**
-      Clear editor for new todo, and preset the dates and times with hint.
+      Edit new todo. Use the set* methods to set appropriate default values if needed
     */
-    void newTodo( const QDateTime &due, Todo *relatedTodo=0, bool allDay=false);
+    void newTodo();
 
     /**
-      Edit new todo. Set summary and description from given text.
+      Sets the given summary and description. If description is empty and the 
+      summary contains multiple lines, the summary will be used as description 
+      and only the first line of summary will be used as the summary.
     */
-    void newTodo( const QString & );
-    /**
-      Edit new todo.
-    */
-    void newTodo( const QString &summary, const QString &description,
-                  const QString &attachment );
-    /**
-      Edit new todo.
-    */
-    void newTodo( const QString &summary, const QString &description,
-                  const QString &attachment, const QStringList &attendees );
-
+    void setTexts( const QString &summary, const QString &description = QString::null );
     /** Edit an existing todo. */
     void editIncidence(Incidence *);
 
     /** Set widgets to default values */
-    void setDefaults( const QDateTime &due, Todo *relatedTodo, bool allDay );
+    void setDates( const QDateTime &due, bool allDay = true, Todo *relatedTodo = 0 );
     /** Read event object and setup widgets accordingly */
     void readTodo(Todo *);
     /** Write event settings to event object */

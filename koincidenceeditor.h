@@ -64,8 +64,6 @@ class KOIncidenceEditor : public KPageDialog
                        QWidget *parent );
     virtual ~KOIncidenceEditor();
 
-    /** Initialize editor. This function creates the tab widgets. */
-    virtual void init() = 0;
     /** This incidence has been modified externally */
     virtual void modified (int /*change*/=0) {}
 
@@ -77,6 +75,16 @@ class KOIncidenceEditor : public KPageDialog
     virtual void editIncidence(Incidence *) = 0;
     virtual void setIncidenceChanger( IncidenceChangerBase *changer ) {
         mChanger = changer; }
+    /** Initialize editor. This function creates the tab widgets. */
+    virtual void init() = 0;
+    /**
+      Adds attachments to the editor
+    */
+    void addAttachments( const QStringList &attachments );
+    /**
+      Adds attendees to the editor
+    */
+    void addAttendees( const QStringList &attendees );
 
 
   signals:
@@ -130,8 +138,6 @@ class KOIncidenceEditor : public KPageDialog
     void cancelRemovedAttendees( Incidence *incidence );
 
     Calendar *mCalendar;
-
-    KPIM::CategorySelectDialog *mCategoryDialog;
 
     KOEditorDetails *mDetails;
     KOEditorAttachments *mAttachments;

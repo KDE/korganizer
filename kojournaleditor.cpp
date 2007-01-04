@@ -112,48 +112,28 @@ void KOJournalEditor::editIncidence( Incidence *incidence )
   }
 }
 
-void KOJournalEditor::newJournal( const QDate &date )
+void KOJournalEditor::newJournal()
 {
   init();
-
   mJournal = 0;
-  setDefaults( date );
+  loadDefaults();
 }
 
-void KOJournalEditor::newJournal( const QString &text )
+void KOJournalEditor::setTexts( const QString &summary, const QString &description )
 {
-  init();
-
-  mJournal = 0;
-
-  loadDefaults();
-
-  mGeneral->setDescription( text );
-
-  int pos = text.indexOf( "\n" );
-  if ( pos > 0 ) {
-    mGeneral->setSummary( text.left( pos ) );
-    mGeneral->setDescription( text );
+  if ( description.isEmpty() && summary.contains("\n") ) {
+    mGeneral->setDescription( summary );
+    int pos = summary.find( "\n" );
+    mGeneral->setSummary( summary.left( pos ) );
   } else {
-    mGeneral->setSummary( text );
+    mGeneral->setSummary( summary );
+    mGeneral->setDescription( description );
   }
-}
-
-void KOJournalEditor::newJournal( const QString &text, const QDate &date )
-{
-  init();
-
-  mJournal = 0;
-
-  loadDefaults();
-
-  mGeneral->setDescription( text );
-  mGeneral->setDate( date );
 }
 
 void KOJournalEditor::loadDefaults()
 {
-  setDefaults( QDate::currentDate() );
+  setDate( QDate::currentDate() );
 }
 
 bool KOJournalEditor::processInput()
@@ -193,7 +173,7 @@ void KOJournalEditor::deleteJournal()
   reject();
 }
 
-void KOJournalEditor::setDefaults( const QDate &date )
+void KOJournalEditor::setDate( const QDate &date )
 {
   mGeneral->setDefaults( date );
   mDetails->setDefaults();

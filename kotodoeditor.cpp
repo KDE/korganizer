@@ -34,12 +34,10 @@
 #include <QHBoxLayout>
 #include <QBoxLayout>
 
-#include <kabc/addressee.h>
 #include <kiconloader.h>
 #include <klocale.h>
 #include <kmessagebox.h>
 
-#include <libkdepim/categoryselectdialog.h>
 #include <kcal/calendarlocal.h>
 #include <kcal/calendarresources.h>
 #include <kcal/resourcecalendar.h>
@@ -92,10 +90,6 @@ void KOTodoEditor::reload()
 void KOTodoEditor::setupGeneral()
 {
   mGeneral = new KOEditorGeneralTodo(this);
-
-  connect(mGeneral,SIGNAL(openCategoryDialog()),mCategoryDialog,SLOT(show()));
-  connect(mCategoryDialog, SIGNAL(categoriesSelected(const QString &)),
-          mGeneral,SLOT(setCategories(const QString &)));
 
   if (KOPrefs::instance()->mCompactDialogs) {
     QFrame *topFrame = new QFrame();
@@ -182,75 +176,30 @@ void KOTodoEditor::editIncidence(Incidence *incidence)
   setCaption( i18n("Edit To-do") );
 }
 
-void KOTodoEditor::newTodo( const QDateTime &due, Todo *relatedTodo, bool allDay)
+void KOTodoEditor::newTodo()
 {
   init();
-
   mTodo = 0;
-  setDefaults(due,relatedTodo,allDay);
-
   setCaption( i18n("New To-do") );
 }
 
-void KOTodoEditor::newTodo( const QString &text )
+void KOTodoEditor::setTexts( const QString &summary, const QString &description )
 {
-  init();
-
-  mTodo = 0;
-
-  loadDefaults();
-
-  mGeneral->setDescription( text );
-
-  int pos = text.indexOf( "\n" );
-  if ( pos > 0 ) {
-    mGeneral->setSummary( text.left( pos ) );
-    mGeneral->setDescription( text );
+  if ( description.isEmpty() && summary.contains("\n") ) {
+    mGeneral->setDescription( summary );
+    int pos = summary.find( "\n" );
+    mGeneral->setSummary( summary.left( pos ) );
   } else {
-    mGeneral->setSummary( text );
-  }
-
-  setCaption( i18n("New To-do") );
-}
-
-void KOTodoEditor::newTodo( const QString &summary,
-                            const QString &description,
-                            const QString &attachment )
-{
-  init();
-
-  mTodo = 0;
-
-  loadDefaults();
-
-  mGeneral->setSummary( summary );
-  mGeneral->setDescription( description );
-
-  if ( !attachment.isEmpty() ) {
-    mAttachments->addAttachment( attachment );
-  }
-
-  setCaption( i18n("New To-do") );
-}
-
-void KOTodoEditor::newTodo( const QString &summary,
-                            const QString &description,
-                            const QString &attachment,
-                            const QStringList &attendees )
-{
-  newTodo( summary, description, attachment );
-
-  QStringList::ConstIterator it;
-  for ( it = attendees.begin(); it != attendees.end(); ++it ) {
-    QString name, email;
-    KABC::Addressee::parseEmailAddress( *it, name, email );
-    mDetails->insertAttendee( new Attendee( name, email ) );
+    mGeneral->setSummary( summary );
+    mGeneral->setDescription( description );
   }
 }
+
+
 
 void KOTodoEditor::loadDefaults()
 {
-  setDefaults(QDateTime::currentDateTime().addDays(7),0,false);
+  setDates( QDateTime::currentDateTime().addDays(7), true, 0 );
 }
 
 bool KOTodoEditor::processInput()
@@ -305,22 +254,20 @@ void KOTodoEditor::deleteTodo()
   reject();
 }
 
-void KOTodoEditor::setDefaults( const QDateTime &due, Todo *relatedEvent, bool allDay )
+void KOTodoEditor::setDates( const QDateTime &due, bool allDay, Todo *relatedEvent )
 {
   mRelatedTodo = relatedEvent;
   KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
 
   // inherit some properties from parent todo
   if ( mRelatedTodo ) {
-    mGeneral->setCategories( mRelatedTodo->categoriesStr() );
-    mCategoryDialog->setSelected( mRelatedTodo->categories() );
-    if ( mRelatedTodo->hasDueDate() )
-      mGeneral->setDefaults( mRelatedTodo->dtDue().toTimeSpec( timeSpec ).dateTime(), allDay );
-    else
-      mGeneral->setDefaults( due, allDay );
+    mGeneral->setCategories( mRelatedTodo->categories() );
   }
-  else
+  if ( !due.isValid() && mRelatedTodo && mRelatedTodo->hasDueDate() ) {
+    mGeneral->setDefaults( mRelatedTodo->dtDue().toTimeSpec( timeSpec ).dateTime(), allDay );
+  } else {
     mGeneral->setDefaults( due, allDay );
+  }
 
   mDetails->setDefaults();
   if ( mTodo )
@@ -332,6 +279,7 @@ void KOTodoEditor::setDefaults( const QDateTime &due, Todo *relatedEvent, bool a
 
 void KOTodoEditor::readTodo( Todo *todo )
 {
+  if ( !todo ) return;
   kDebug(5850)<<"read todo"<<endl;
   mGeneral->readTodo( todo );
   mDetails->readEvent( todo );
@@ -339,8 +287,6 @@ void KOTodoEditor::readTodo( Todo *todo )
   mRecurrence->readIncidence( todo );
   mAttachments->readIncidence( todo );
 
-  // categories
-  mCategoryDialog->setSelected( todo->categories() );
   createEmbeddedURLPages( todo );
   readDesignerFields( todo );
 }
@@ -361,7 +307,7 @@ void KOTodoEditor::writeTodo( Todo *todo )
   }
   writeDesignerFields( todo );
 
-  // set related event, i.e. parent to-do in this case.
+  // set related incidence, i.e. parent to-do in this case.
   if ( mRelatedTodo ) {
     todo->setRelatedTo( mRelatedTodo );
   }
