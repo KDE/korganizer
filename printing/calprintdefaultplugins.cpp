@@ -134,8 +134,7 @@ class TimePrintStringsVisitor : public IncidenceBase::Visitor
       if ( event->dtStart().isValid() ) {
         mStartCaption =  i18n("Start date: ");
         // Show date/time or only date, depending on whether it's an all-day event
-// TODO: Add shortfmt param to dtStartStr, dtEndStr and dtDueStr!!!
-        mStartString = (event->floats()) ? (event->dtStartDateStr(false)) : (event->dtStartStr());
+        mStartString = (event->floats()) ? (event->dtStartDateStr(false)) : (event->dtStartStr(false));
       } else {
         mStartCaption = i18n("No start date");
         mStartString.clear();
@@ -143,7 +142,7 @@ class TimePrintStringsVisitor : public IncidenceBase::Visitor
 
       if ( event->hasEndDate() ) {
         mEndCaption = i18n("End date: ");
-        mEndString = (event->floats()) ? (event->dtEndDateStr(false)) : (event->dtEndStr());
+        mEndString = (event->floats()) ? (event->dtEndDateStr(false)) : (event->dtEndStr(false));
       } else if ( event->hasDuration() ) {
         mEndCaption = i18n("Duration: ");
         int mins = event->duration() / 60;
@@ -163,8 +162,7 @@ class TimePrintStringsVisitor : public IncidenceBase::Visitor
       if ( todo->hasStartDate() ) {
         mStartCaption =  i18n("Start date: ");
         // Show date/time or only date, depending on whether it's an all-day event
-// TODO: Add shortfmt param to dtStartStr, dtEndStr and dtDueStr!!!
-        mStartString = (todo->floats()) ? (todo->dtStartDateStr(false)) : (todo->dtStartStr());
+        mStartString = (todo->floats()) ? (todo->dtStartDateStr(false)) : (todo->dtStartStr(false));
       } else {
         mStartCaption = i18n("No start date");
         mStartString.clear();
@@ -172,7 +170,7 @@ class TimePrintStringsVisitor : public IncidenceBase::Visitor
 
       if ( todo->hasDueDate() ) {
         mEndCaption = i18n("Due date: ");
-        mEndString = (todo->floats()) ? (todo->dtDueDateStr(false)) : (todo->dtDueStr());
+        mEndString = (todo->floats()) ? (todo->dtDueDateStr(false)) : (todo->dtDueStr(false));
       } else {
         mEndCaption = i18n("No due date");
         mEndString.clear();
@@ -181,8 +179,7 @@ class TimePrintStringsVisitor : public IncidenceBase::Visitor
     }
     bool visit( Journal *journal ) {
       mStartCaption = i18n("Start date: ");
-// TODO: Add shortfmt param to dtStartStr, dtEndStr and dtDueStr!!!
-      mStartString = (journal->floats()) ? (journal->dtStartDateStr(false)) : (journal->dtStartStr());
+      mStartString = (journal->floats()) ? (journal->dtStartDateStr(false)) : (journal->dtStartStr(false));
       mEndCaption.clear();
       mEndString.clear();
       return true;
