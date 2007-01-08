@@ -25,7 +25,6 @@
 #include "alarmdockwindow.h"
 #include "koalarmclient.h"
 
-#include <kapplication.h>
 #include <kactioncollection.h>
 #include <kdebug.h>
 #include <kdeversion.h>
@@ -61,7 +60,7 @@ AlarmDockWindow::AlarmDockWindow()
   setToolTip( mName );
 
   // Set up icons
-  kapp->iconLoader()->addAppDir( "korgac" );
+  KIconLoader::global()->addAppDir( "korgac" );
   mIconEnabled  = loadIcon( "korgac" );
   mIconDisabled = loadIcon( "korgac_disabled" );
 

@@ -34,7 +34,6 @@
 #include <kio/job.h>
 #include <kio/jobclasses.h>
 #include <kio/jobuidelegate.h>
-#include <kapplication.h>
 #include <klocale.h>
 #include <kdebug.h>
 #include <kdialog.h>
@@ -142,7 +141,7 @@ class AttachmentIconItem : public K3IconViewItem
                          bool local = false )
     {
       QString iconStr = mimeType->iconName( uri );
-      return kapp->iconLoader()->loadIcon( iconStr, K3Icon::Desktop, 0,
+      return KIconLoader::global()->loadIcon( iconStr, K3Icon::Desktop, 0,
                                               K3Icon::DefaultState | (
                                                 ( uri.isNull() || local ) ? 0 :
                                                   K3Icon::LinkOverlay) );

@@ -52,7 +52,6 @@
 #include <ktemporaryfile.h>
 #include <kstatusbar.h>
 #include <kparts/genericfactory.h>
-#include <kapplication.h>
 
 #include <kparts/statusbarextension.h>
 
@@ -105,7 +104,7 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, QObject *parent,
   QVBoxLayout *topLayout = new QVBoxLayout( canvas );
   topLayout->addWidget( mView );
 
-  kapp->iconLoader()->addAppDir( "korganizer" );
+  KIconLoader::global()->addAppDir( "korganizer" );
 
   connect( mView, SIGNAL( incidenceSelected( Incidence * ) ),
            SLOT( slotChangeInfo( Incidence * ) ) );

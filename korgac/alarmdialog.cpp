@@ -34,7 +34,6 @@
 #include <QVBoxLayout>
 #include <QBoxLayout>
 #include <QtDBus>
-#include <kapplication.h>
 #include <kiconloader.h>
 #include <klocale.h>
 #include <kprocess.h>
@@ -63,7 +62,7 @@ AlarmDialog::AlarmDialog( QWidget *parent )
                      Qt::WStyle_DialogBorder,*/ ),
                  mSuspendTimer(this)
 {
-  kapp->iconLoader()->addAppDir( "kdepim" );
+  KIconLoader::global()->addAppDir( "kdepim" );
 
   QWidget *topBox = new QWidget( this);
   setMainWidget( topBox );
