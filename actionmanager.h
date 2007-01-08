@@ -392,19 +392,19 @@ class KDE_EXPORT ActionManager : public QObject
     KToggleAction *mEventViewerShowAction;
 //     KToggleAction *mToggleAlarmAction;
 
-    KAction *mShowIncidenceAction;
-    KAction *mEditIncidenceAction;
-    KAction *mDeleteIncidenceAction;
+    QAction *mShowIncidenceAction;
+    QAction *mEditIncidenceAction;
+    QAction *mDeleteIncidenceAction;
 //     KAction *mAssignResourceAction;
 
-    KAction *mCutAction;
-    KAction *mCopyAction;
-    KAction *mDeleteAction;
-    KAction *mNextXDays;
-    KAction *mPublishEvent;
+    QAction *mCutAction;
+    QAction *mCopyAction;
+    QAction *mDeleteAction;
+    QAction *mNextXDays;
+    QAction *mPublishEvent;
 
-    KAction *mUndoAction;
-    KAction *mRedoAction;
+    QAction *mUndoAction;
+    QAction *mRedoAction;
 
     KSelectAction *mFilterAction;
 

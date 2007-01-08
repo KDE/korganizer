@@ -60,6 +60,7 @@
 #include <kstandardshortcut.h>
 #include <kfiledialog.h>
 #include <kaction.h>
+#include <kactioncollection.h>
 #include <kstandardaction.h>
 #include <kedittoolbar.h>
 #include <ktemporaryfile.h>

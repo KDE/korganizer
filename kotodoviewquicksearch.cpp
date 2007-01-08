@@ -39,6 +39,7 @@
 #include "koprefs.h"
 
 #include <kaction.h>
+#include <kactioncollection.h>
 #include <k3listviewsearchline.h>
 #include <ktoolbar.h> 
 #include <QLayout>
@@ -52,7 +53,7 @@
 using namespace KPIM;
 using namespace KCal;
 
-KAction *KOTodoListViewQuickSearch::action = 0;
+QAction *KOTodoListViewQuickSearch::action = 0;
 
 KOTodoListViewQuickSearch::KOTodoListViewQuickSearch( QWidget *parent,
                                             QList<K3ListView*> listViews,
@@ -62,7 +63,8 @@ KOTodoListViewQuickSearch::KOTodoListViewQuickSearch( QWidget *parent,
     mQuickSearchLine( 0 )
 {
   if ( !action ) {
-    action = new KAction(KIcon(QApplication::isRightToLeft() ? "clear_left" : "locationbar_erase"),  i18n( "Reset" ), actionCollection, "reset_quicksearch" );
+  action  = new KAction(KIcon(QApplication::isRightToLeft() ? "clear_left" : "locationbar_erase"), i18n("Reset"), this);
+  actionCollection->addAction("reset_quicksearch", action );
     connect(action, SIGNAL(triggered(bool) ), SLOT( reset() ));
     action->setWhatsThis( i18n( "Reset Quick Search\n"
                                   "Resets the quick search so that "
