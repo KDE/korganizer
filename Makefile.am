@@ -171,7 +171,7 @@ messages: rc.cpp
 	$(XGETTEXT) `find . -name "*.cpp" -o -name "*.h"` -o $(podir)/korganizer.pot
 	rm -f tips.cpp
 
-xdg_apps_DATA = korganizer.desktop korganizer-import.desktop
+xdg_apps_DATA = korganizer.desktop 
 
 kde_kcfg_DATA = korganizer.kcfg
 
