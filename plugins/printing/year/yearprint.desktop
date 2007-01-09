@@ -2,6 +2,7 @@
 Encoding=UTF-8
 X-KDE-Library=libkorg_yearlyprint
 Name=Yearly Print Style
+Name[af]=Druk styl: Jaarliks
 Name[ca]=Estil d'impressió anual
 Name[cs]=Roční tiskový styl
 Name[da]=Yearly udskriftsstil
@@ -26,6 +27,7 @@ Name[sv]=Årlig utskriftsstil
 Name[uk]=Стиль друку щорічником
 Name[zh_TW]=年度列印風格
 Comment=This plugin allows you to print out a yearly calendar.
+Comment[af]=Hierdie inprop module maak dit moontlik om 'n kalender vir 'n hele jaar te druk.
 Comment[ca]=Aquest endollable us permet imprimir un calenadri anual.
 Comment[cs]=Tento modul umožňuje tisk ročního kalendáře.
 Comment[da]=Dette plugin gør at du kan udskrive en årlig kalender

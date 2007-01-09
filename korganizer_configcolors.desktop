@@ -13,6 +13,7 @@ X-KDE-ParentComponents=korganizer,kontact_korganizerplugin
 X-KDE-CfgDlgHierarchy=KOrganizer
 
 Name=Colors
+Name[af]=Kleure
 Name[ar]=ألوان
 Name[az]=Rənglər
 Name[be]=Колеры
@@ -76,6 +77,7 @@ Name[zh_CN]=颜色
 Name[zh_TW]=顏色
 Name[zu]=Imibala
 Comment=KOrganizer Colors Configuration
+Comment[af]=KOrganizer kleure opstelling
 Comment[ar]=إعداد ألوان KOrganizer
 Comment[be]=Канфігурацыя колераў "K Арганізатара"
 Comment[bg]=Настройки на цветовете за KOrganizer

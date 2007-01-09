@@ -2,6 +2,7 @@
 [Desktop Entry]
 Encoding=UTF-8
 Name=KOrganizer Reminder Client
+Name[af]=KOrganizer herhinner kliënt
 Name[bg]=Клиент за аларма на KOrganizer
 Name[ca]=Client de l'alarma de KOrganizer
 Name[cs]=Klient upomínek KOrganizeru
@@ -41,6 +42,7 @@ Exec=korgac --miniicon korganizer
 Icon=korganizer
 Type=Application
 GenericName=KOrganizer Reminder Daemon Client
+GenericName[af]=Korganizer herhinner bediener kliënt
 GenericName[bg]=Клиент за демон за аларма на KOrganizer
 GenericName[ca]=Client del dimoni d'alarma de KOrganizer
 GenericName[cs]=Klient démona přípomínek KOrganizeru

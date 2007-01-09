@@ -13,6 +13,7 @@ X-KDE-ParentComponents=korganizer,kontact_korganizerplugin
 X-KDE-CfgDlgHierarchy=KOrganizer
 
 Name=Personal
+Name[af]=Persoonlik
 Name[ar]=الشخصي
 Name[be]=Пэрсанальныя
 Name[bg]=Персоналност
@@ -61,6 +62,7 @@ Name[uz]=Шахсий
 Name[zh_CN]=个人
 Name[zh_TW]=個人 
 Comment=KOrganizer Main Configuration
+Comment[af]=KOrganizer hoof opstelling
 Comment[bg]=Главни настройки за KOrganizer
 Comment[br]=Kefluniadur kentañ KOrganizer
 Comment[bs]=KOrganizer glavno podešavanje

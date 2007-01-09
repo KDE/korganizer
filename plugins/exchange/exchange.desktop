@@ -2,6 +2,7 @@
 Encoding=UTF-8
 X-KDE-Library=libkorg_exchange
 Name=Microsoft Exchange 2000 Plugin for KOrganizer
+Name[af]=Microsoft Exchange 2000 inprop module vir KOrganizer
 Name[be]=Дапаўненьне K Арганізатара "Microsoft Exchange 2000"
 Name[bg]=Приставка на организатора за връзка с Microsoft Exchange 2000
 Name[bs]=Microsoft Exchange 2000 dodatak za KOrganizer
@@ -45,6 +46,7 @@ Name[uk]=Втулок Microsoft Exchange 2000 для KOrganizer
 Name[zh_CN]=KOrganizer 的 Microsoft Exchange 2000 插件
 Name[zh_TW]=KOrganizer 的 Microsoft Exchange 2000 外掛程式
 Comment=This plugin allows korganizer users to work with Microsoft Exchange 2000 groupware servers.
+Comment[af]=Hierdie inprop module maak dit vir korganizer gebruikers moontlik om met Microsoft Exchange 2000 bedieners te praat.
 Comment[bg]=Приставката служи за връзка на Korganizer със сървъра Microsoft Exchange 2000 groupware.
 Comment[ca]=Aquest endollable permet els usuaris de korganizer treballar amb servidors groupware Microsoft Exchange 2000.
 Comment[cs]=tento modul umožňuje pracovat uživatelům korganizeru s Microsoft Exchange 2000 groupware servery.

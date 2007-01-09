@@ -13,6 +13,7 @@ X-KDE-ParentComponents=korganizer,kontact_korganizerplugin
 X-KDE-CfgDlgHierarchy=KOrganizer
 
 Name=Group Scheduling
+Name[af]=Groep Skedulering
 Name[ar]=جدولة المجموعة
 Name[bg]=Разписание
 Name[bs]=Raspoređivanje grupe
@@ -59,6 +60,7 @@ Name[uk]=Розклад груп
 Name[zh_CN]=组日程安排
 Name[zh_TW]=群組排程
 Comment=KOrganizer Group Scheduling Configuration
+Comment[af]=KOrganizer groep skedulering opstelling
 Comment[ar]=إعداد جدولة مجموعة KOrganizer
 Comment[bg]=Настройки на разписание за KOrganizer
 Comment[bs]=KOrganizer podešavanje raspoređivanja grupe
