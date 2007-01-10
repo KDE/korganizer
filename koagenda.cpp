@@ -1078,7 +1078,7 @@ void KOAgenda::endItemAction()
               emit enableAgendaUpdate( false );
               mActionItem->dissociateFromMultiItem();
               mActionItem->setIncidence( newInc );
-              mChanger->addIncidence( newInc );
+              mChanger->addIncidence( newInc, this );
               emit enableAgendaUpdate( true );
               mChanger->changeIncidence( oldIncSaved, oldInc );
             } else {
@@ -1105,7 +1105,7 @@ void KOAgenda::endItemAction()
               emit enableAgendaUpdate( false );
               mActionItem->dissociateFromMultiItem();
               mActionItem->setIncidence( newInc );
-              mChanger->addIncidence( newInc );
+              mChanger->addIncidence( newInc, this );
               emit enableAgendaUpdate( true );
               mChanger->changeIncidence( oldIncSaved, oldInc );
             } else {

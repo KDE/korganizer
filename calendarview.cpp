@@ -708,7 +708,7 @@ void CalendarView::incidenceChanged( Incidence *oldIncidence,
           journal->setSummary( i18n("Journal of %1").arg( dateStr ) );
           journal->setDescription( description );
 
-          if ( !mChanger->addIncidence( journal ) ) {
+          if ( !mChanger->addIncidence( journal, this ) ) {
             KODialogManager::errorSaveIncidence( this, journal );
             delete journal;
             return;
@@ -892,14 +892,14 @@ void CalendarView::edit_paste()
         pastedEvent->setDtEnd(endDT);
       }
     }
-    mChanger->addIncidence( pastedEvent );
+    mChanger->addIncidence( pastedEvent, this );
 
   } else if ( pastedIncidence->type() == "Todo" ) {
     Todo* pastedTodo = static_cast<Todo*>(pastedIncidence);
     Todo* _selectedTodo = selectedTodo();
     if ( _selectedTodo )
       pastedTodo->setRelatedTo( _selectedTodo );
-    mChanger->addIncidence( pastedTodo );
+    mChanger->addIncidence( pastedTodo, this );
   }
 }
 
@@ -1080,7 +1080,7 @@ bool CalendarView::addIncidence( const QString &ical )
   format.setTimeZone( mCalendar->timeZoneId(), true );
   Incidence *incidence = format.fromString( ical );
   if ( !incidence ) return false;
-  if ( !mChanger->addIncidence( incidence ) ) {
+  if ( !mChanger->addIncidence( incidence, this ) ) {
     delete incidence;
     return false;
   }
@@ -1233,8 +1233,9 @@ void CalendarView::dissociateOccurrence( Incidence *incidence, const QDate &date
   Incidence* newInc = mCalendar->dissociateOccurrence( incidence, date, true );
 
   if ( newInc ) {
+    // TODO: Use the same resource instead of asking again!
     mChanger->changeIncidence( oldincidence, incidence );
-    mChanger->addIncidence( newInc );
+    mChanger->addIncidence( newInc, this );
   } else {
     KMessageBox::sorry( this, i18n("Dissociating the occurrence failed."),
       i18n("Dissociating Failed") );
@@ -1259,8 +1260,9 @@ void CalendarView::dissociateFutureOccurrence( Incidence *incidence, const QDate
 
   Incidence* newInc = mCalendar->dissociateOccurrence( incidence, date, true );
   if ( newInc ) {
+    // TODO: Use the same resource instead of asking again!
     mChanger->changeIncidence( oldincidence, incidence );
-    mChanger->addIncidence( newInc );
+    mChanger->addIncidence( newInc, this );
   } else {
     KMessageBox::sorry( this, i18n("Dissociating the future occurrences failed."),
       i18n("Dissociating Failed") );
@@ -2184,7 +2186,7 @@ void CalendarView::addIncidenceOn( Incidence *incadd, const QDate &dt )
     todo->setHasDueDate( true );
   }
 
-  if ( !mChanger->addIncidence( incidence ) ) {
+  if ( !mChanger->addIncidence( incidence, this ) ) {
     KODialogManager::errorSaveIncidence( this, incidence );
     delete incidence;
   }
