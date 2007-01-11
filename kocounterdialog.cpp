@@ -34,7 +34,9 @@
 
 KOCounterDialog::KOCounterDialog( QWidget *parent )
   : KDialog( parent, i18n("Counter-Event Viewer"), User1 | User2 )
+#ifdef __GNUC__
 #warning: Use non-modal! modal=false
+#endif
 {
   setDefaultButton( User1 );
   setGuiItem( User1, i18n("Decline") );

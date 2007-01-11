@@ -221,7 +221,9 @@ int KOMailClient::kMailOpenComposer(const QString& arg0,const QString& arg1,
   //  << arg4 << " , " << arg5 << " , " << arg6 << " )" << endl;
   int result = 0;
   kapp->updateRemoteUserTimestamp( "kmail" );
+#ifdef __GNUC__
 #warning "kde4: verify it when kmail call was ported to dbus";
+#endif
   QDBusInterface kmail("org.kde.kmail", "/KMail", "org.kde.kmail.KMail");
   QDBusReply<int> reply = kmail.call("openComposer", arg0, arg1, arg2, arg3, arg4, arg5, arg6.url());
   if (reply.isValid() ) {

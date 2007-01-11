@@ -74,7 +74,9 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, QObject *parent,
 
   KOCore::self()->addXMLGUIClient( mTopLevelWidget, this );
 
+#ifdef __GNUC__
 #warning Port me!
+#endif
 //  QString pname( name );
 
   // create a canvas to insert our widget
@@ -86,7 +88,9 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, QObject *parent,
   mActionManager = new ActionManager( this, mView, this, this, true );
   (void)new KOrganizerIfaceImpl( mActionManager, this, "IfaceImpl" );
 
+#ifdef __GNUC__
 #warning Port me!
+#endif
 //  if ( pname == QLatin1String("kontact") ) {
     mActionManager->createCalendarResources();
     setHasDocument( false );

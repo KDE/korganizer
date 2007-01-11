@@ -65,7 +65,9 @@ class Calendar;
 using namespace KCal;
 using namespace KOrg;
 
+#ifdef __GNUC__
 #warning port QToolTip usage
+#endif
 class KOTodoListViewToolTip
 {
   public:

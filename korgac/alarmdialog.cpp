@@ -169,7 +169,9 @@ void AlarmDialog::slotUser2()
   korganizer.editIncidence(mIncidence->uid());
 
 #ifdef Q_OS_UNIX
+#ifdef __GNUC__
 #warning "kde4: verify it when kontact will not crash"
+#endif
   // get desktop # where korganizer (or kontact) runs
   QString object = QDBusConnection::sessionBus().interface()->isServiceRegistered( "org.kde.kontact" ) ?
            "kontact-mainwindow_1" : "korganizer/MainWindow_1";

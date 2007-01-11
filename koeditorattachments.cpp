@@ -276,7 +276,9 @@ public:
   AttachmentIconView( QWidget *parent ) : K3IconView( parent ) {}
 
 protected:
+#ifdef __GNUC__
 #warning Port this to QDrag instead of Q3DragObject once we have proted the view from K3IconView to some Qt4 class
+#endif
 #if 0
   virtual Q3DragObject * dragObject ()
   {
@@ -528,7 +530,9 @@ void KOEditorAttachments::dropEvent( QDropEvent* event ) {
                  SLOT( copyComplete( KJob * ) ) );
       }
     } else { // we take anything
+#ifdef __GNUC__
 #warning Port to QMimeData from QMimeSource
+#endif
       KMimeType::Ptr mimeType = KMimeType::mimeType( event->format() );
       QString path = generateLocalAttachmentPath( QString(), mimeType );
       QFile file( path );

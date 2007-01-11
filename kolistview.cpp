@@ -50,7 +50,9 @@
 #include "kolistview.moc"
 
 
+#ifdef __GNUC__
 #warning Port me!
+#endif
 #if 0
 KOListViewToolTip::KOListViewToolTip( QWidget* parent,
                                       K3ListView* lv )
@@ -245,7 +247,9 @@ KOListView::KOListView( Calendar *calendar, QWidget *parent)
 //  setMinimumSize(100,100);
   mListView->restoreLayout(KOGlobals::self()->config(),"KOListView Layout");
 
+#ifdef __GNUC__
 #warning Port me!
+#endif
 //  new KOListViewToolTip( mListView->viewport(), mListView );
 
   mSelectedDates.append( QDate::currentDate() );

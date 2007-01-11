@@ -112,7 +112,9 @@ void KOTodoListViewToolTip::maybeTip( const QPoint & pos)
     /* Show the tip */
     QString tipText( IncidenceFormatter::toolTipString( i->todo() ) );;
     if ( !tipText.isEmpty() ) {
+#ifdef __GNUC__
 #warning port QToolTip usage
+#endif
       // tip(r, tipText);
     }
   }
@@ -471,7 +473,9 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent)
 //  topLayout->addWidget( mTodoListView );
   topLayout->addWidget( mWidgetStack );
 
+#ifdef __GNUC__
 #warning "Implement the popup menus as KSelectActions, once it's save enough to use that class!"
+#endif
   mPriorityPopupMenu = new QMenu( this );
   mPriority[ mPriorityPopupMenu->addAction( i18nc("Unspecified priority", "unspecified") ) ] = 0;
   mPriority[ mPriorityPopupMenu->addAction( i18n( "1 (highest)") ) ] = 1;
@@ -542,7 +546,9 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent)
 
   mItemPopupMenu->addSeparator();
 
+#ifdef __GNUC__
 #warning " FIXME QT4: Re-add the copy/move to date sub-menu that includes the date pickker widget!"
+#endif
 // #if 0
   // append the copy/move to date menus at the end:
   action = mItemPopupMenu->insertMenu( 0, mCopyPopupMenu );

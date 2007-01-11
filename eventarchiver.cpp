@@ -156,7 +156,9 @@ void EventArchiver::archiveIncidences( Calendar* calendar, const QDate& /*limitD
   }
 
   // Duplicate current calendar by loading in new calendar object
+#ifdef __GNUC__
 #warning Does the time zone specification serve any purpose?
+#endif
   CalendarLocal archiveCalendar( KOPrefs::instance()->timeSpec() );
 
   FileStorage archiveStore( &archiveCalendar );

@@ -90,7 +90,9 @@ MarcusBains::MarcusBains( KOAgenda *_agenda )
   QPalette pal1 = mTimeBox->palette();
   pal1.setColor(QPalette::Foreground, Qt::red);
   mTimeBox->setPalette(pal1);
+#ifdef __GNUC__
 #warning "kde4: porting ?"
+#endif
   //mTimeBox->setAutoMask(true);
 
   agenda->addChild(mTimeBox);
@@ -160,7 +162,9 @@ void MarcusBains::updateLocation(bool recalculate)
   else x++;
   agenda->moveChild(mTimeBox,x,y);
   mTimeBox->raise();
+#ifdef __GNUC__
 #warning "kde4: porting ?"
+#endif
   //mTimeBox->setAutoMask(true);
 
   minutes->start( 1000 );
@@ -268,7 +272,9 @@ void KOAgenda::init()
 
   setAcceptDrops( true );
   installEventFilter( this );
+#ifdef __GNUC__
 #warning "make sure we can really remove this"
+#endif
 //   mItems.setAutoDelete( true );
 //   mItemsToDelete.setAutoDelete( true );
 

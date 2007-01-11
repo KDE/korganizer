@@ -78,7 +78,9 @@ JournalDateEntry::JournalDateEntry( Calendar *calendar, QWidget *parent ) :
   mChanger = 0;
 
   mTitle = new JournalTitleLable( this );
+#ifdef __GNUC__
 #warning "kde4: porting"
+#endif
   //mTitle->setMargin(2);
   mTitle->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Fixed );
   connect( mTitle, SIGNAL( linkClicked( const QString & ) ),

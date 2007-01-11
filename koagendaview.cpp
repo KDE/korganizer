@@ -935,7 +935,9 @@ void KOAgendaView::updateConfig()
 
   updateTimeBarWidth();
 
+#ifdef __GNUC__
 #warning port me!
+#endif
 #if 0
   // ToolTips displaying summary of events
   KOAgendaItem::toolTipGroup()->setEnabled(KOPrefs::instance()

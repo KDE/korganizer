@@ -67,7 +67,9 @@
 
 //--------------------------------------------------------------------------
 
+#ifdef __GNUC__
 #warning Port me!
+#endif
 #if 0
 KOMonthCellToolTip::KOMonthCellToolTip( QWidget *parent,
                                         KNoScrollListBox *lv )
@@ -311,7 +313,9 @@ MonthViewCell::MonthViewCell( KOMonthView *parent)
   mItemList->setFrameStyle( QFrame::Panel | QFrame::Plain );
   mItemList->setLineWidth( 1 );
 
+#ifdef __GNUC__
 #warning Port me!
+#endif
 #if 0
   new KOMonthCellToolTip( mItemList->viewport(),
                           static_cast<KNoScrollListBox *>( mItemList ) );
@@ -378,7 +382,9 @@ void MonthViewCell::setPrimary( bool primary )
 {
   mPrimary = primary;
 
+#ifdef __GNUC__
 #warning Port me!
+#endif
 #if 0
   if ( mPrimary ) {
     mLabel->setBackgroundMode( PaletteBase );

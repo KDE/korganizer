@@ -238,7 +238,9 @@ RecurMonthly::RecurMonthly( QWidget *parent ) : RecurBase( parent )
 
   QFrame *buttonGroup = new QFrame( this );
 //   buttonGroup->setFlat( true );
+#ifdef __GNUC__
 #warning Port me!
+#endif
 //  buttonGroup->setFrameStyle( QFrame::NoFrame );
   topLayout->addWidget( buttonGroup, 1, Qt::AlignVCenter );
 
@@ -412,7 +414,9 @@ RecurYearly::RecurYearly( QWidget *parent ) : RecurBase( parent )
 
 
   QFrame *buttonGroup = new QFrame( this );
+#ifdef __GNUC__
 #warning Port me!
+#endif
 //  buttonGroup->setFrameStyle( QFrame::NoFrame );
   topLayout->addWidget( buttonGroup, 1, Qt::AlignVCenter );
 
@@ -908,7 +912,9 @@ RecurrenceChooser::RecurrenceChooser( QWidget *parent ) : QWidget( parent )
 
     QGroupBox *ruleButtonGroup = new QGroupBox( i18n("Recurrency Types"), this );
     QBoxLayout *buttonLayout = new QVBoxLayout( ruleButtonGroup );
+#ifdef __GNUC__
 #warning Port me!
+#endif
 //    ruleButtonGroup->setFrameStyle( QFrame::NoFrame );
     ruleButtonGroup->setFlat( true );
     topLayout->addWidget( ruleButtonGroup );

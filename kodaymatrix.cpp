@@ -68,7 +68,9 @@
 //  D Y N A M I C   T I P
 // ============================================================================
 
+#ifdef __GNUC__
 #warning Port me!
+#endif
 #if 0
 DynamicTip::DynamicTip( QWidget * parent )
     : QToolTip( parent )
@@ -113,7 +115,9 @@ KODayMatrix::KODayMatrix( QWidget *parent )
   mDays = new QDate[ NUMDAYS ];
   mDayLabels = new QString[ NUMDAYS ];
   mEvents = new int[ NUMDAYS ];
+#ifdef __GNUC__
 #warning Port me!
+#endif
 //  mToolTip = new DynamicTip( this );
 
   mTodayMarginWidth = 2;
@@ -151,7 +155,9 @@ KODayMatrix::~KODayMatrix()
   delete [] mDays;
   delete [] mDayLabels;
   delete [] mEvents;
+#ifdef __GNUC__
 #warning Port me!
+#endif
 //  delete mToolTip;
 }
 
@@ -479,13 +485,17 @@ void KODayMatrix::dropEvent( QDropEvent *e )
     if ( existingEvent || existingTodo ) {
       move = menu->addAction( i18n("&Move") );
       if (existingEvent)
+#ifdef __GNUC__
         #warning Use a standard action for copy
+#endif
         copy = menu->addAction( KOGlobals::self()->smallIcon("editcopy"), i18n("&Copy") );
     } else {
       move = menu->addAction( i18n("&Add") );
     }
     menu->addSeparator();
+#ifdef __GNUC__
         #warning Use a standard action for cancel
+#endif
     cancel = menu->addAction( KOGlobals::self()->smallIcon("cancel"), i18n("&Cancel") );
     QAction *a = menu->exec( QCursor::pos() );
     if ( a == copy ) {
