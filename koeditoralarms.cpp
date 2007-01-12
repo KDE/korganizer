@@ -160,7 +160,8 @@ KOEditorAlarms::KOEditorAlarms( KCal::Alarm::List *alarms, QWidget *parent )
   connect( mWidget.mAppArguments, SIGNAL( textChanged( const QString & ) ), SLOT( changed() ) );
   connect( mWidget.mEmailAddress, SIGNAL( textChanged( const QString & ) ), SLOT( changed() ) );
   connect( mWidget.mEmailText, SIGNAL( textChanged() ), SLOT( changed() ) );
-
+  connect( this,SIGNAL(okClicked()),SLOT(slotOk()));
+  connect( this,SIGNAL(applyClicked()),SLOT(slotApply()));
   init();
 }
 

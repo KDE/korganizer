@@ -84,6 +84,10 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
 
   connect( this, SIGNAL( defaultClicked() ), SLOT( slotManageTemplates() ) );
   connect( this, SIGNAL( finished() ), SLOT( delayedDestruct() ) );
+  connect( this, SIGNAL( okClicked()), SLOT(slotOk()));
+  connect( this, SIGNAL( cancelClicked()), SLOT(slotCancel()));
+  connect( this, SIGNAL( applyClicked()),SLOT(slotApply()));
+
 }
 
 KOIncidenceEditor::~KOIncidenceEditor()

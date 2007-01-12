@@ -77,6 +77,7 @@ ImportDialog::ImportDialog( const KUrl &url, QWidget *parent )
   boxLayout->addWidget( mOpenButton );
 
   mAddButton->setChecked( true );
+  connect(this,SIGNAL(okClicked()),SLOT(slotOk()));
 }
 
 ImportDialog::~ImportDialog()

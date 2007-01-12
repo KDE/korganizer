@@ -231,7 +231,7 @@ CalPrintDialog::CalPrintDialog( KOrg::PrintPlugin::List plugins,
     mTypeGroup->addButton( radioButton, mapit.key() );
     typeLayout->addWidget( radioButton );
   }
-
+  connect(this,SIGNAL(okClicked()),SLOT(slotOk()));
   setMinimumSize( minimumSizeHint() );
   resize( minimumSizeHint() );
 }
