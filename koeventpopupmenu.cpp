@@ -124,7 +124,7 @@ void KOEventPopupMenu::popupEdit()
 void KOEventPopupMenu::print()
 {
 #ifndef KORG_NOPRINTER
-  Calendar *cal;
+  Calendar *cal = 0;
   KOCoreHelper helper;
   CalPrinter printer( this, cal, &helper );
   connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
