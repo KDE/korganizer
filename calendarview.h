@@ -89,7 +89,7 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
       Constructs a new calendar view widget.
       @param parent   parent window
     */
-    explicit CalendarView( QWidget *parent = 0 );
+    CalendarView( QWidget *parent = 0 );
     virtual ~CalendarView();
 
 
@@ -293,7 +293,7 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
     void newEvent( const QDateTime &startDt );
     void newEvent( const QDateTime &startDt, const QDateTime &EndDt, bool allDay = false );
     /**
-      Create new Event from given summary, description, attachment list and 
+      Create new Event from given summary, description, attachment list and
       attendees list
     */
     void newEvent( const QString &summary, const QString &description = QString::null,
@@ -533,10 +533,6 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
 
     void slotAutoArchivingSettingsModified() { emit autoArchivingSettingsModified(); }
 
-    void importQtopia( const QString &categoriesFile,
-                       const QString &datebookFile,
-                       const QString &tasklistFile );
-
     void showErrorMessage( const QString & );
     void schedule( Scheduler::Method, Incidence *incidence );
     void addIncidenceOn( Incidence *, const QDate & );
@@ -568,11 +564,11 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
 
     void warningChangeFailed( Incidence * );
     void checkForFilteredChange( Incidence *incidence );
-    /** Adjust the given date/times by valid defaults (selection or configured 
-        defaults, if invalid values are given) and allow the view to adjust the 
+    /** Adjust the given date/times by valid defaults (selection or configured
+        defaults, if invalid values are given) and allow the view to adjust the
         type. */
     void dateTimesForNewEvent( QDateTime &startDt, QDateTime &endDt, bool &allDay );
-    KOEventEditor *newEventEditor( const QDateTime &startDtParam = QDateTime(), 
+    KOEventEditor *newEventEditor( const QDateTime &startDtParam = QDateTime(),
          const QDateTime &endDtParam = QDateTime() , bool allDayParam = false );
 
   private:

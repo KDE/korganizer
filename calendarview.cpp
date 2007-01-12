@@ -935,7 +935,7 @@ void CalendarView::edit_options()
 void CalendarView::dateTimesForNewEvent( QDateTime &startDt, QDateTime &endDt, bool &allDay )
 {
   if ( !startDt.isValid() ) {
-    // Default start is the first selected date with the preferred time as set 
+    // Default start is the first selected date with the preferred time as set
     // in the config dlg.
     if ( !startDt.date().isValid() ) {
       startDt.setDate( mNavigator->selectedDates().first() );
@@ -952,13 +952,13 @@ void CalendarView::dateTimesForNewEvent( QDateTime &startDt, QDateTime &endDt, b
   mViewManager->currentView()->eventDurationHint( startDt, endDt, allDay );
 }
 
-KOEventEditor *CalendarView::newEventEditor( const QDateTime &startDtParam, 
+KOEventEditor *CalendarView::newEventEditor( const QDateTime &startDtParam,
      const QDateTime &endDtParam, bool allDayParam)
 {
   // let the current view change the default start/end datetime
   bool allDay = allDayParam;
   QDateTime startDt( startDtParam ), endDt( endDtParam );
-  // Adjust the start/end date times (i.e. replace invalid values by defaults, 
+  // Adjust the start/end date times (i.e. replace invalid values by defaults,
   // and let the view adjust the type.
   dateTimesForNewEvent( startDt, endDt, allDay );
 
@@ -2168,17 +2168,6 @@ void CalendarView::slotCalendarChanged()
 {
   kDebug(5850) << "CalendarView::slotCalendarChanged()" << endl;
 
-  updateView();
-}
-
-void CalendarView::importQtopia( const QString &categories,
-                                 const QString &datebook,
-                                 const QString &todolist )
-{
-  QtopiaFormat qtopiaFormat;
-  if ( !categories.isEmpty() ) qtopiaFormat.load( mCalendar, categories );
-  if ( !datebook.isEmpty() ) qtopiaFormat.load( mCalendar, datebook );
-  if ( !todolist.isEmpty() ) qtopiaFormat.load( mCalendar, todolist );
   updateView();
 }
 
