@@ -75,7 +75,6 @@
 #include <kcal/freebusy.h>
 #include <kcal/filestorage.h>
 #include <kcal/calendarresources.h>
-#include <kcal/qtopiaformat.h>
 #include <kcal/calendarnull.h>
 #include <kcal/htmlexportsettings.h>
 
