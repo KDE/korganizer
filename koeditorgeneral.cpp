@@ -195,7 +195,7 @@ void KOEditorGeneral::initAlarm(QWidget *parent,QBoxLayout *topLayout)
   mAlarmStack = new QWidgetStack( parent );
   alarmLayout->addWidget( mAlarmStack );
 
-  mAlarmInfoLabel = new QLabel("XXX reminders configured", mAlarmStack );
+  mAlarmInfoLabel = new QLabel( i18n("No reminders configured"), mAlarmStack );
   mAlarmStack->addWidget( mAlarmInfoLabel, AdvancedAlarmLabel );
 
   QHBox *simpleAlarmBox = new QHBox( mAlarmStack );
