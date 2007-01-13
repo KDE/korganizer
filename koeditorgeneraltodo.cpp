@@ -248,8 +248,13 @@ kdDebug()<<"KOEditorGeneralTodo::setDefaults: " << due <<endl;
   mDueDateEdit->setDate(due.date());
   mDueTimeEdit->setTime(due.time());
 
-  mStartDateEdit->setDate(QDate::currentDate());
-  mStartTimeEdit->setTime(QTime::currentTime());
+  if ( QDateTime::currentDateTime() < due ) {
+    mStartDateEdit->setDate( QDate::currentDate() );
+    mStartTimeEdit->setTime( QTime::currentTime() );
+  } else {
+    mStartDateEdit->setDate( due.date().addDays( -1 ) );
+    mStartTimeEdit->setTime( due.time() );
+  }
   mStartDateModified = false;
 
   mPriorityCombo->setCurrentItem(5);
