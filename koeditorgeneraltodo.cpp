@@ -393,10 +393,8 @@ void KOEditorGeneralTodo::enableDueEdit(bool enable)
 
   if(mDueCheck->isChecked() || mStartCheck->isChecked()) {
     mTimeButton->setEnabled(true);
-  }
-  else {
+  } else {
     mTimeButton->setEnabled(false);
-    mTimeButton->setChecked(false);
   }
 
   if (enable) {
