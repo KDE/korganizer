@@ -240,8 +240,6 @@ kdDebug()<<"KOEditorGeneralTodo::setDefaults: " << due <<endl;
   mDueCheck->setChecked( due.isValid() );
   enableDueEdit( due.isValid() );
 
-  enableAlarm(false);
-
   mStartCheck->setChecked(false);
   enableStartEdit(false);
 
