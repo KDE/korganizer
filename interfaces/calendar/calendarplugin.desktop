@@ -3,6 +3,7 @@ Encoding=UTF-8
 Type=ServiceType
 X-KDE-ServiceType=Calendar/Plugin
 Comment=Calendar Plugin
+Comment[el]=Πρόσθετο ημερολογίου
 Comment[fr]=Module d'agenda
 Comment[x-test]=xxCalendar Pluginxx
 

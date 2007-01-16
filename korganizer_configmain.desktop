@@ -13,11 +13,14 @@ X-KDE-ParentComponents=korganizer,kontact_korganizerplugin
 X-KDE-CfgDlgHierarchy=KOrganizer
 
 Name=Personal
+Name[el]=Προσωπικό
 Name[fr]=Personnel
 Name[x-test]=xxPersonalxx
 Comment=KOrganizer Main Configuration
+Comment[el]=Κύρια ρύθμιση του KOrganizer
 Comment[fr]=Configuration principale de KOrganizer
 Comment[x-test]=xxKOrganizer Main Configurationxx
 Keywords=korganizer,main,personal
+Keywords[el]=korganizer,κύρια,προσωπικό
 Keywords[fr]=KOrganizer,principal,personnel
 Keywords[x-test]=xxkorganizer,main,personalxx

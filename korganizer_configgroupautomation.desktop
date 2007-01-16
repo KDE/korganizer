@@ -13,11 +13,14 @@ X-KDE-ParentComponents=korganizer,kontact_korganizerplugin
 X-KDE-CfgDlgHierarchy=KOrganizer
 
 Name=Group Automation
+Name[el]=Αυτοματισμός ομάδας
 Name[fr]=Automatisation des groupes
 Name[x-test]=xxGroup Automationxx
 Comment=KOrganizer Group Automation Configuration
+Comment[el]=Ρύθμιση αυτοματισμού ομάδας του KOrganizer
 Comment[fr]=Configuration de l'automatisation des groupes de KOrganizer
 Comment[x-test]=xxKOrganizer Group Automation Configurationxx
 Keywords=korganizer,group,automation
+Keywords[el]=korganizer,ομάδα,αυτοματοποίηση
 Keywords[fr]=KOrganizer,groupes,automatisation
 Keywords[x-test]=xxkorganizer,group,automationxx

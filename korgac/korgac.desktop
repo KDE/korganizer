@@ -2,12 +2,14 @@
 [Desktop Entry]
 Encoding=UTF-8
 Name=KOrganizer Reminder Client
+Name[el]=Πελάτης υπενθύμισης του KOrganizer
 Name[fr]=Client d'alarme de KOrganizer
 Name[x-test]=xxKOrganizer Reminder Clientxx
 Exec=korgac %i
 Icon=korganizer
 Type=Application
 GenericName=KOrganizer Reminder Daemon Client
+GenericName[el]=Δαίμονας πελάτη υπενθύμισης του KOrganizer
 GenericName[fr]=Client pour le démon d'alarme de KOrganizer
 GenericName[x-test]=xxKOrganizer Reminder Daemon Clientxx
 Terminal=false

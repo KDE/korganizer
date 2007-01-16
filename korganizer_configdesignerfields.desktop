@@ -13,11 +13,14 @@ X-KDE-ParentComponents=korganizer,kontact_korganizerplugin
 X-KDE-CfgDlgHierarchy=KOrganizer
 
 Name=Custom Pages
+Name[el]=Προσαρμοσμένες σελίδες
 Name[fr]=Pages personnalisées
 Name[x-test]=xxCustom Pagesxx
 Comment=Configure the Custom Pages
+Comment[el]=Ρύθμιση των προσαρμοσμένων σελίδων
 Comment[fr]=Configurer les pages personnalisées
 Comment[x-test]=xxConfigure the Custom Pagesxx
 Keywords=korganizer, configure, settings, custom fields
+Keywords[el]=korganizer, ρύθμιση, ρυθμίσεις, προσαρμοσμένα πεδία
 Keywords[fr]=KOrganizer, configuration, configurer, champs personnalisés
 Keywords[x-test]=xxkorganizer, configure, settings, custom fieldsxx
