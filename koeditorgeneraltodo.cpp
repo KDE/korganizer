@@ -206,8 +206,10 @@ void KOEditorGeneralTodo::setDefaults(QDateTime due,bool allDay)
   mStartCheck->setChecked(false);
   enableStartEdit(false);
 
-  mDueDateEdit->setDate(due.date());
-  mDueTimeEdit->setTime(due.time());
+  if ( due.isValid() ) {
+    mDueDateEdit->setDate(due.date());
+    mDueTimeEdit->setTime(due.time());
+  }
 
   mStartDateEdit->setDate(QDate::currentDate());
   mStartTimeEdit->setTime(QTime::currentTime());
