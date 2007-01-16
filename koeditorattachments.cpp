@@ -519,8 +519,8 @@ void KOEditorAttachments::dropEvent( QDropEvent* event ) {
             it != urls.constEnd(); ++it ) {
 #if 0 // binary attachments are unimplemented yet
         KIO::Job *job = KIO::storedGet( *it );
-        connect( job, SIGNAL( result( KIO::Job * ) ),
-                SLOT( downloadComplete( KIO::Job * ) ) );
+        connect( job, SIGNAL( result( KJob * ) ),
+                SLOT( downloadComplete( KJob * ) ) );
 #endif
         KIO::Job *job = KIO::copy( *it, generateLocalAttachmentPath(
                                                    ( *it ).fileName(),
@@ -551,7 +551,7 @@ void KOEditorAttachments::dropEvent( QDropEvent* event ) {
 }
 
 #if 0 // binary attachments are unimplemented yet
-void KOEditorAttachments::downloadComplete( KIO::Job *job )
+void KOEditorAttachments::downloadComplete( KJob *job )
 {
   if ( job->error() )
     job->showErrorDialog( this );
