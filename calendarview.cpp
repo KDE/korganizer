@@ -993,6 +993,7 @@ void CalendarView::newTodo( const QString &summary, const QString &description,
   todoEditor->setTexts( summary, description );
   todoEditor->addAttachments( attachments );
   todoEditor->addAttendees( attendees );
+  todoEditor->setDates( QDateTime(), false );
   todoEditor->show();
 }
 
