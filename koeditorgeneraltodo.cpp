@@ -247,8 +247,10 @@ kdDebug()<<"KOEditorGeneralTodo::setDefaults: " << due <<endl;
   mStartCheck->setChecked(false);
   enableStartEdit(false);
 
-  mDueDateEdit->setDate(due.date());
-  mDueTimeEdit->setTime(due.time());
+  if ( due.isValid() ) {
+    mDueDateEdit->setDate( due.date() );
+    mDueTimeEdit->setTime( due.time() );
+  }
 
   if ( QDateTime::currentDateTime() < due ) {
     mStartDateEdit->setDate( QDate::currentDate() );
