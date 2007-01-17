@@ -43,7 +43,6 @@
 #include <kmenu.h>
 #include <kinstance.h>
 #include <klocale.h>
-#include <kiconloader.h>
 #include <kaction.h>
 #include <kdebug.h>
 #include <kstandarddirs.h>
@@ -107,8 +106,6 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, QObject *parent,
 
   QVBoxLayout *topLayout = new QVBoxLayout( canvas );
   topLayout->addWidget( mView );
-
-  KIconLoader::global()->addAppDir( "korganizer" );
 
   connect( mView, SIGNAL( incidenceSelected( Incidence * ) ),
            SLOT( slotChangeInfo( Incidence * ) ) );
