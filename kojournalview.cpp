@@ -49,11 +49,11 @@ KOJournalView::KOJournalView(Calendar *calendar, QWidget *parent,
   QVBoxLayout*topLayout = new QVBoxLayout( this );
   topLayout->setAutoAdd(true);
   mSV = new QScrollView( this, "JournalScrollView" );
-  topLayout = new QVBoxLayout( mSV->viewport() );
-  topLayout->setAutoAdd(true);
   mVBox = new QVBox( mSV->viewport() );
   mSV->setVScrollBarMode( QScrollView::Auto );
   mSV->setHScrollBarMode( QScrollView::AlwaysOff );
+  mSV->setResizePolicy( QScrollView::AutoOneFit );
+  mSV->addChild( mVBox );
 //  mVBox->setSpacing( 10 );
 }
 
