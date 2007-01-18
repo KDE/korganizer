@@ -14,7 +14,7 @@ X-KDE-CfgDlgHierarchy=KOrganizer
 
 Name=Time & Date
 Name[af]=Datum & Tyd
-Name[ar]=الوقت والتاريخ
+Name[ar]=الوقت و التاريخ
 Name[be]=Час і дата
 Name[bg]=Дата и час
 Name[br]=Deiziad hag eur
@@ -66,7 +66,7 @@ Name[zh_CN]=时间和日期
 Name[zh_TW]=時間與日期
 Comment=KOrganizer Time Configuration
 Comment[af]=KOrganizer tyd opstelling
-Comment[ar]=إعداد وقت KOrganizer
+Comment[ar]=إعداد الوقت لِــ KOrganizer
 Comment[be]=Канфігурацыя часу "K Арганізатара"
 Comment[bg]=Настройки на дата и час за KOrganizer
 Comment[bs]=KOrganizer podešavanje vremena
