@@ -3,6 +3,7 @@ Encoding=UTF-8
 Type=ServiceType
 X-KDE-ServiceType=DCOP/Organizer
 Comment=Organizer with a DCOP interface
+Comment[af]=Organiseerder met 'n DCOP koppelvlak
 Comment[be]=Арганізатар з DCOP інтэрфэйсам
 Comment[bg]=Организатор с поддръжка на интерфейс DCOP
 Comment[br]=Deiziater gant un etrefas DCOP

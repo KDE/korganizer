@@ -13,6 +13,8 @@ X-KDE-ParentComponents=korganizer,kontact_korganizerplugin
 X-KDE-CfgDlgHierarchy=KOrganizer
 
 Name=Views
+Name[af]=Aansigte
+Name[ar]=العروض
 Name[be]=Выгляды
 Name[bg]=Изгледи
 Name[br]=Gweloù
@@ -63,6 +65,7 @@ Name[uz]=Кўринишлар
 Name[zh_CN]=视图
 Name[zh_TW]=檢視
 Comment=KOrganizer View Configuration
+Comment[af]=KOrganizer aansig opstelling
 Comment[be]=Канфігурацыя выгляду "K Арганізатара"
 Comment[bg]=Настройки на изгледи за KOrganizer
 Comment[bs]=KOrganizer podešavanje pogleda

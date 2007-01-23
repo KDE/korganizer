@@ -59,6 +59,7 @@ Name[zh_CN]=KOrganizer 的项目查看插件
 Name[zh_TW]=KOrganizer 專案檢視外掛程式
 Name[zu]=Project Khombisa Iplagi ye KUmgqugquzeli
 Comment=This plugin provides a project planning view for KOrganizer (like the to-do or month views). If you enable this plugin, you can switch to the project view and view your to-do list like in a project planner.
+Comment[af]=Hierdie inprop module verskaf 'n projek beplanning aansig vir KOrganizer. Dit lyk baie soos die te-doen of maand aansig. As hierdie inprop module geaktiveer is, kan jy na die projek aansig wissel en na jou te-doen in projek beplanner formaat kyk.
 Comment[bg]=Приставката служи за планиране и управление на проекти.
 Comment[ca]=Aquest endollable proporciona una vista de planificació de projectes per a KOrganizer (com ara les vistes de pendents o mensual). Si habiliteu aquest endollable, podeu canviar a la vista de projecte i veure la llista de tasques pendents com en un planificador de projectes.
 Comment[cs]=Tento modul poskytuje projektový pohled pro KOrganizer (podobnějako úkoly nebo měsíční pohled). Pokud jej povolíte, může přepnout do projektového pohledu a prohlížet si úkoly jako v projektovém plánovači.

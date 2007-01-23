@@ -76,7 +76,6 @@
 #include <libkcal/freebusy.h>
 #include <libkcal/filestorage.h>
 #include <libkcal/calendarresources.h>
-#include <libkcal/qtopiaformat.h>
 #include <libkcal/calendarnull.h>
 #include <libkcal/htmlexportsettings.h>
 
@@ -708,7 +707,7 @@ void CalendarView::incidenceChanged( Incidence *oldIncidence,
           journal->setSummary( i18n("Journal of %1").arg( dateStr ) );
           journal->setDescription( description );
 
-          if ( !mChanger->addIncidence( journal ) ) {
+          if ( !mChanger->addIncidence( journal, this ) ) {
             KODialogManager::errorSaveIncidence( this, journal );
             delete journal;
             return;
@@ -892,14 +891,14 @@ void CalendarView::edit_paste()
         pastedEvent->setDtEnd(endDT);
       }
     }
-    mChanger->addIncidence( pastedEvent );
+    mChanger->addIncidence( pastedEvent, this );
 
   } else if ( pastedIncidence->type() == "Todo" ) {
     Todo* pastedTodo = static_cast<Todo*>(pastedIncidence);
     Todo* _selectedTodo = selectedTodo();
     if ( _selectedTodo )
       pastedTodo->setRelatedTo( _selectedTodo );
-    mChanger->addIncidence( pastedTodo );
+    mChanger->addIncidence( pastedTodo, this );
   }
 }
 
@@ -911,7 +910,7 @@ void CalendarView::edit_options()
 void CalendarView::dateTimesForNewEvent( QDateTime &startDt, QDateTime &endDt, bool &allDay )
 {
   if ( !startDt.isValid() ) {
-    // Default start is the first selected date with the preferred time as set 
+    // Default start is the first selected date with the preferred time as set
     // in the config dlg.
     if ( !startDt.date().isValid() ) {
       startDt.setDate( mNavigator->selectedDates().first() );
@@ -928,13 +927,13 @@ void CalendarView::dateTimesForNewEvent( QDateTime &startDt, QDateTime &endDt, b
   mViewManager->currentView()->eventDurationHint( startDt, endDt, allDay );
 }
 
-KOEventEditor *CalendarView::newEventEditor( const QDateTime &startDtParam, 
+KOEventEditor *CalendarView::newEventEditor( const QDateTime &startDtParam,
      const QDateTime &endDtParam, bool allDayParam)
 {
   // let the current view change the default start/end datetime
   bool allDay = allDayParam;
   QDateTime startDt( startDtParam ), endDt( endDtParam );
-  // Adjust the start/end date times (i.e. replace invalid values by defaults, 
+  // Adjust the start/end date times (i.e. replace invalid values by defaults,
   // and let the view adjust the type.
   dateTimesForNewEvent( startDt, endDt, allDay );
 
@@ -994,6 +993,7 @@ void CalendarView::newTodo( const QString &summary, const QString &description,
   todoEditor->setTexts( summary, description );
   todoEditor->addAttachments( attachments );
   todoEditor->addAttendees( attendees );
+  todoEditor->setDates( QDateTime(), false );
   todoEditor->show();
 }
 
@@ -1080,7 +1080,7 @@ bool CalendarView::addIncidence( const QString &ical )
   format.setTimeZone( mCalendar->timeZoneId(), true );
   Incidence *incidence = format.fromString( ical );
   if ( !incidence ) return false;
-  if ( !mChanger->addIncidence( incidence ) ) {
+  if ( !mChanger->addIncidence( incidence, this ) ) {
     delete incidence;
     return false;
   }
@@ -1233,8 +1233,9 @@ void CalendarView::dissociateOccurrence( Incidence *incidence, const QDate &date
   Incidence* newInc = mCalendar->dissociateOccurrence( incidence, date, true );
 
   if ( newInc ) {
+    // TODO: Use the same resource instead of asking again!
     mChanger->changeIncidence( oldincidence, incidence );
-    mChanger->addIncidence( newInc );
+    mChanger->addIncidence( newInc, this );
   } else {
     KMessageBox::sorry( this, i18n("Dissociating the occurrence failed."),
       i18n("Dissociating Failed") );
@@ -1259,8 +1260,9 @@ void CalendarView::dissociateFutureOccurrence( Incidence *incidence, const QDate
 
   Incidence* newInc = mCalendar->dissociateOccurrence( incidence, date, true );
   if ( newInc ) {
+    // TODO: Use the same resource instead of asking again!
     mChanger->changeIncidence( oldincidence, incidence );
-    mChanger->addIncidence( newInc );
+    mChanger->addIncidence( newInc, this );
   } else {
     KMessageBox::sorry( this, i18n("Dissociating the future occurrences failed."),
       i18n("Dissociating Failed") );
@@ -2105,17 +2107,6 @@ void CalendarView::slotCalendarChanged()
   updateView();
 }
 
-void CalendarView::importQtopia( const QString &categories,
-                                 const QString &datebook,
-                                 const QString &todolist )
-{
-  QtopiaFormat qtopiaFormat;
-  if ( !categories.isEmpty() ) qtopiaFormat.load( mCalendar, categories );
-  if ( !datebook.isEmpty() ) qtopiaFormat.load( mCalendar, datebook );
-  if ( !todolist.isEmpty() ) qtopiaFormat.load( mCalendar, todolist );
-  updateView();
-}
-
 void CalendarView::warningChangeFailed( Incidence * )
 {
   KMessageBox::sorry( this, i18n("Unable to edit item: "
@@ -2184,7 +2175,7 @@ void CalendarView::addIncidenceOn( Incidence *incadd, const QDate &dt )
     todo->setHasDueDate( true );
   }
 
-  if ( !mChanger->addIncidence( incidence ) ) {
+  if ( !mChanger->addIncidence( incidence, this ) ) {
     KODialogManager::errorSaveIncidence( this, incidence );
     delete incidence;
   }

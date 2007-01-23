@@ -13,6 +13,8 @@ X-KDE-ParentComponents=korganizer,kontact_korganizerplugin
 X-KDE-CfgDlgHierarchy=KOrganizer
 
 Name=Plugins
+Name[af]=Inprop modules
+Name[ar]=القوابس
 Name[be]=Дапаўненьні
 Name[bg]=Приставки
 Name[br]=Lugantoù
@@ -57,6 +59,7 @@ Name[uz]=Плагинлар
 Name[zh_CN]=插件
 Name[zh_TW]=外掛程式
 Comment=KOrganizer Plugin Configuration
+Comment[af]=Korganizer inprop module opstelling
 Comment[be]=Канфігурацыя дапаўненьняў "K Арганізатара"
 Comment[bg]=Настройки на приставките за KOrganizer
 Comment[br]=Kefluniadur al lugent KOrganizer

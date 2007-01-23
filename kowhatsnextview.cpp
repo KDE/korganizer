@@ -180,12 +180,13 @@ void KOWhatsNextView::updateView()
     mText += "</ul>\n";
   }
 
+  QStringList myEmails( KOPrefs::instance()->allEmails() );
   int replies = 0;
   events = calendar()->events( QDate::currentDate(), QDate(2975,12,6) );
   Event::List::ConstIterator it2;
   for( it2 = events.begin(); it2 != events.end(); ++it2 ) {
     Event *ev = *it2;
-    Attendee *me = ev->attendeeByMails( KOPrefs::instance()->allEmails() );
+    Attendee *me = ev->attendeeByMails( myEmails );
     if (me!=0) {
       if (me->status()==Attendee::NeedsAction && me->RSVP()) {
         if (replies == 0) {
@@ -206,7 +207,7 @@ void KOWhatsNextView::updateView()
   Todo::List::ConstIterator it3;
   for( it3 = todos.begin(); it3 != todos.end(); ++it3 ) {
     Todo *to = *it3;
-    Attendee *me = to->attendeeByMails( KOPrefs::instance()->allEmails() );
+    Attendee *me = to->attendeeByMails( myEmails );
     if (me!=0) {
       if (me->status()==Attendee::NeedsAction && me->RSVP()) {
         if (replies == 0) {

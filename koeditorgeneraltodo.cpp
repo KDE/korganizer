@@ -240,16 +240,21 @@ kdDebug()<<"KOEditorGeneralTodo::setDefaults: " << due <<endl;
   mDueCheck->setChecked( due.isValid() );
   enableDueEdit( due.isValid() );
 
-  enableAlarm(false);
-
   mStartCheck->setChecked(false);
   enableStartEdit(false);
 
-  mDueDateEdit->setDate(due.date());
-  mDueTimeEdit->setTime(due.time());
+  if ( due.isValid() ) {
+    mDueDateEdit->setDate( due.date() );
+    mDueTimeEdit->setTime( due.time() );
+  }
 
-  mStartDateEdit->setDate(QDate::currentDate());
-  mStartTimeEdit->setTime(QTime::currentTime());
+  if ( QDateTime::currentDateTime() < due ) {
+    mStartDateEdit->setDate( QDate::currentDate() );
+    mStartTimeEdit->setTime( QTime::currentTime() );
+  } else {
+    mStartDateEdit->setDate( due.date().addDays( -1 ) );
+    mStartTimeEdit->setTime( due.time() );
+  }
   mStartDateModified = false;
 
   mPriorityCombo->setCurrentItem(5);
@@ -388,10 +393,8 @@ void KOEditorGeneralTodo::enableDueEdit(bool enable)
 
   if(mDueCheck->isChecked() || mStartCheck->isChecked()) {
     mTimeButton->setEnabled(true);
-  }
-  else {
+  } else {
     mTimeButton->setEnabled(false);
-    mTimeButton->setChecked(false);
   }
 
   if (enable) {

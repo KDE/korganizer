@@ -218,7 +218,7 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
     void newFilterListSignal( const QStringList & );
     void selectFilterSignal( int );
     void filterChanged();
-    
+
   public slots:
     /** options dialog made a changed to the configuration. we catch this
      *  and notify all widgets which need to update their configuration. */
@@ -276,7 +276,7 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
     void newEvent( const QDateTime &startDt );
     void newEvent( const QDateTime &startDt, const QDateTime &EndDt, bool allDay = false );
     /**
-      Create new Event from given summary, description, attachment list and 
+      Create new Event from given summary, description, attachment list and
       attendees list
     */
     void newEvent( const QString &summary, const QString &description = QString::null,
@@ -343,7 +343,7 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
     void dissociateOccurrence( Incidence *, const QDate & );
     void dissociateFutureOccurrence( Incidence *, const QDate & );
 
-        
+
     /**
       Check if clipboard contains vCalendar event. The signal pasteEnabled() is
       emitted as result.
@@ -473,7 +473,7 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
     void updateFilter();
 
     void showIntro();
-    
+
     void showDateNavigator( bool );
     void showTodoView( bool );
     void showEventViewer( bool );
@@ -506,10 +506,6 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
 
     void slotAutoArchivingSettingsModified() { emit autoArchivingSettingsModified(); }
 
-    void importQtopia( const QString &categoriesFile,
-                       const QString &datebookFile,
-                       const QString &tasklistFile );
-
     void showErrorMessage( const QString & );
     void schedule( Scheduler::Method, Incidence *incidence );
     void addIncidenceOn( Incidence *, const QDate & );
@@ -541,11 +537,11 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
 
     void warningChangeFailed( Incidence * );
     void checkForFilteredChange( Incidence *incidence );
-    /** Adjust the given date/times by valid defaults (selection or configured 
-        defaults, if invalid values are given) and allow the view to adjust the 
+    /** Adjust the given date/times by valid defaults (selection or configured
+        defaults, if invalid values are given) and allow the view to adjust the
         type. */
     void dateTimesForNewEvent( QDateTime &startDt, QDateTime &endDt, bool &allDay );
-    KOEventEditor *newEventEditor( const QDateTime &startDtParam = QDateTime(), 
+    KOEventEditor *newEventEditor( const QDateTime &startDtParam = QDateTime(),
          const QDateTime &endDtParam = QDateTime() , bool allDayParam = false );
 
   private:
@@ -575,7 +571,7 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
 
     DateNavigator *mNavigator;
     DateChecker *mDateChecker;
-    
+
     KOEventViewer *mEventViewer;
     KOViewManager *mViewManager;
     KODialogManager *mDialogManager;
