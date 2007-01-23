@@ -291,7 +291,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
       cap = i18n("No reminders");
       txt.clear();
     } else {
-      cap = i18nc("Reminder: ", "%n reminders: ", alarms.count() );
+      cap = i18np("Reminder: ", "%n reminders: ", alarms.count() );
 
       QStringList alarmStrings;
       KCal::Alarm::List::ConstIterator it;
@@ -324,13 +324,13 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
 
         if ( offset % (24*60) == 0 && offset>0 ) { // divides evenly into days?
           useoffset = offset / (24*60);
-          offsetstr = offsetstr.arg( i18nc("1 day", "%n days", useoffset ) );
+          offsetstr = offsetstr.arg( i18np("1 day", "%n days", useoffset ) );
         } else if (offset % 60 == 0 && offset>0 ) { // divides evenly into hours?
           useoffset = offset / 60;
-          offsetstr = offsetstr.arg( i18nc("1 hour", "%n hours", useoffset ) );
+          offsetstr = offsetstr.arg( i18np("1 hour", "%n hours", useoffset ) );
         } else {
           useoffset = offset;
-          offsetstr = offsetstr.arg( i18nc("1 minute", "%n minutes", useoffset ) );
+          offsetstr = offsetstr.arg( i18np("1 minute", "%n minutes", useoffset ) );
         }
         alarmStrings << offsetstr;
       }
@@ -420,7 +420,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
       if ( attendees.count() == 0 )
         attendeeCaption = i18n("No Attendees");
       else
-        attendeeCaption = i18nc("1 Attendee:", "%n Attendees:", attendees.count() );
+        attendeeCaption = i18np("1 Attendee:", "%n Attendees:", attendees.count() );
       QString attendeeString;
       for ( Attendee::List::ConstIterator ait = attendees.begin(); ait != attendees.end(); ++ait ) {
         if ( !attendeeString.isEmpty() ) attendeeString += '\n';
