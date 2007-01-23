@@ -341,7 +341,7 @@ void ActionManager::initActions()
                             mCalendarView->viewManager(),
                             SLOT( showNextXView() ),
                             mACollection, "view_nextx" );
-  mNextXDays->setText( i18n( "&Next Day", "Ne&xt %n Days",
+  mNextXDays->setText( i18n( "&Next Day", "&Next %n Days",
                              KOPrefs::instance()->mNextXDays ) );
   new KAction( i18n("W&ork Week"),
                KOGlobals::self()->smallIcon( "5days" ), 0,
