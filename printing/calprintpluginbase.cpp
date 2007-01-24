@@ -1379,7 +1379,7 @@ void CalPrintPluginBase::drawTodo( int &count, Todo *todo, QPainter &p,
     // first draw the connection lines from parent to-dos:
     if ( level > 0 && connectSubTodos ) {
       TodoParentStart *rct;
-      for ( int i; i < startPoints.size(); ++i ) {
+      for ( int i = 0; i < startPoints.size(); ++i ) {
         rct = startPoints.at( i );
         int start;
         int center = rct->mRect.left() + (rct->mRect.width()/2);
