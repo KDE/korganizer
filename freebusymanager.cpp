@@ -125,7 +125,7 @@ KCal::FreeBusy *FreeBusyManager::ownerFreeBusy()
   QDateTime end = start.addDays( KOPrefs::instance()->mFreeBusyPublishDays );
 
   FreeBusy *freebusy = new FreeBusy( mCalendar, start, end );
-  freebusy->setOrganizer( Person( KOPrefs::instance()->fullName(), 
+  freebusy->setOrganizer( Person( KOPrefs::instance()->fullName(),
                           KOPrefs::instance()->email() ) );
 
   return freebusy;
@@ -223,7 +223,7 @@ void FreeBusyManager::publishFreeBusy()
 
   // We need to massage the list a bit so that Outlook understands
   // it.
-  messageText = messageText.replace( QRegExp( "ORGANIZER\\s*:MAILTO:" ),
+  messageText = messageText.replace( QRegExp( "ORGANIZER\\s*:mailto:" ),
                                      "ORGANIZER:" );
 
   // Create a local temp file and save the message to it
