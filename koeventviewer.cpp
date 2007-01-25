@@ -114,11 +114,14 @@ void KOEventViewer::appendEvent( Event *event )
   formatCategories( event );
 
   if ( event->doesRecur() ) {
-    QDateTime dt = event->recurrence()->getNextDateTime(
-                                          QDateTime::currentDateTime() );
-    addTag( "p", "<em>" +
-      i18n("This is a recurring event. The next occurrence will be on %1.").arg(
-      KGlobal::locale()->formatDateTime( dt, true ) ) + "</em>" );
+    QDateTime dt = event->recurrence()->getNextDateTime( event->dtStart() );
+ 
+    if (dt.isValid())
+    {
+      addTag( "p", "<em>" +
+        i18n("This is a recurring event. The next occurrence will be on %1.").arg(
+        KGlobal::locale()->formatDateTime( dt, true ) ) + "</em>" );
+    }
   }
 
   formatReadOnly( event );
