@@ -38,7 +38,7 @@ class KColorButton;
 class KPushButton;
 class QColor;
 class Q3ListView;
-class KInstance;
+class KComponentData;
 
 namespace Ui {
   class KOGroupwarePrefsPage;
@@ -48,7 +48,7 @@ class KDE_EXPORT KOPrefsDialogMain : public KPrefsModule
 {
     Q_OBJECT
   public:
-    KOPrefsDialogMain( KInstance *inst, QWidget *parent );
+    KOPrefsDialogMain( const KComponentData &inst, QWidget *parent );
 
   protected slots:
     void toggleEmailSettings( bool on );
@@ -60,7 +60,7 @@ class KDE_EXPORT KOPrefsDialogColors : public KPrefsModule
 {
     Q_OBJECT
   public:
-    KOPrefsDialogColors( KInstance *inst, QWidget *parent );
+    KOPrefsDialogColors( const KComponentData &inst, QWidget *parent );
 
   protected:
     void usrWriteConfig();
@@ -90,7 +90,7 @@ class KDE_EXPORT KOPrefsDialogGroupScheduling : public KPrefsModule
 {
     Q_OBJECT
   public:
-    KOPrefsDialogGroupScheduling( KInstance *inst, QWidget *parent );
+    KOPrefsDialogGroupScheduling( const KComponentData &inst, QWidget *parent );
 
   protected:
     void usrReadConfig();
@@ -113,7 +113,7 @@ class KDE_EXPORT KOPrefsDialogGroupwareScheduling : public KPrefsModule
 {
     Q_OBJECT
   public:
-    KOPrefsDialogGroupwareScheduling( KInstance *inst, QWidget *parent );
+    KOPrefsDialogGroupwareScheduling( const KComponentData &inst, QWidget *parent );
     ~KOPrefsDialogGroupwareScheduling();
 
   protected:
@@ -128,7 +128,7 @@ class KDE_EXPORT KOPrefsDialogPlugins : public KPrefsModule
 {
     Q_OBJECT
   public:
-    KOPrefsDialogPlugins( KInstance *inst, QWidget *parent );
+    KOPrefsDialogPlugins( const KComponentData &inst, QWidget *parent );
 
   protected slots:
     void usrReadConfig();
@@ -146,7 +146,7 @@ class KDE_EXPORT KOPrefsDialogPlugins : public KPrefsModule
 class KDE_EXPORT KOPrefsDesignerFields : public KPIM::KCMDesignerFields
 {
   public:
-    KOPrefsDesignerFields( KInstance *inst, QWidget *parent = 0 );
+    KOPrefsDesignerFields( const KComponentData &inst, QWidget *parent = 0 );
 
   protected:
     QString localUiDir();

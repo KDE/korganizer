@@ -81,7 +81,7 @@
 #include <kvbox.h>
 
 
-KOPrefsDialogMain::KOPrefsDialogMain( KInstance *inst, QWidget *parent )
+KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *parent )
   : KPrefsModule( KOPrefs::instance(), inst, parent )
 {
   QBoxLayout *topTopLayout = new QVBoxLayout( this );
@@ -140,7 +140,7 @@ extern "C"
 {
   KDE_EXPORT KCModule *create_korganizerconfigmain( QWidget *parent, const char * )
   {
-    return new KOPrefsDialogMain( KOGlobals::self()->instance(), parent /*, "kcmkorganizermain"*/ );
+    return new KOPrefsDialogMain( KOGlobals::self()->componentData(), parent /*, "kcmkorganizermain"*/ );
   }
 }
 
@@ -148,7 +148,7 @@ extern "C"
 class KOPrefsDialogTime : public KPrefsModule
 {
   public:
-    KOPrefsDialogTime( KInstance *inst, QWidget *parent )
+    KOPrefsDialogTime( const KComponentData &inst, QWidget *parent )
       : KPrefsModule( KOPrefs::instance(), inst, parent )
     {
       QBoxLayout *topTopLayout = new QVBoxLayout( this );
@@ -399,7 +399,7 @@ extern "C"
   KDE_EXPORT KCModule *create_korganizerconfigtime( QWidget *parent, const char * )
   {
     KGlobal::locale()->insertCatalog( "timezones" );
-    return new KOPrefsDialogTime( KOGlobals::self()->instance(), parent /*, "kcmkorganizertime"*/ );
+    return new KOPrefsDialogTime( KOGlobals::self()->componentData(), parent /*, "kcmkorganizertime"*/ );
   }
 }
 
@@ -407,7 +407,7 @@ extern "C"
 class KOPrefsDialogViews : public KPrefsModule
 {
   public:
-    KOPrefsDialogViews( KInstance *inst, QWidget *parent )
+    KOPrefsDialogViews( const KComponentData &inst, QWidget *parent )
       : KPrefsModule( KOPrefs::instance(), inst, parent )
     {
       QBoxLayout *topTopLayout = new QVBoxLayout( this );
@@ -490,7 +490,7 @@ extern "C"
 {
   KDE_EXPORT KCModule *create_korganizerconfigviews( QWidget *parent, const char * )
   {
-    return new KOPrefsDialogViews( KOGlobals::self()->instance(), parent /*, "kcmkorganizerviews"*/ );
+    return new KOPrefsDialogViews( KOGlobals::self()->componentData(), parent /*, "kcmkorganizerviews"*/ );
   }
 }
 
@@ -498,7 +498,7 @@ extern "C"
 class KOPrefsDialogFonts : public KPrefsModule
 {
   public:
-    KOPrefsDialogFonts( KInstance *inst, QWidget *parent )
+    KOPrefsDialogFonts( const KComponentData &inst, QWidget *parent )
       : KPrefsModule( KOPrefs::instance(), inst, parent )
     {
       QBoxLayout *topTopLayout = new QVBoxLayout( this );
@@ -550,12 +550,12 @@ extern "C"
 {
   KDE_EXPORT KCModule *create_korganizerconfigfonts( QWidget *parent, const char * )
   {
-    return new KOPrefsDialogFonts( KOGlobals::self()->instance(), parent /*, "kcmkorganizerfonts"*/ );
+    return new KOPrefsDialogFonts( KOGlobals::self()->componentData(), parent /*, "kcmkorganizerfonts"*/ );
   }
 }
 
 
-KOPrefsDialogColors::KOPrefsDialogColors( KInstance *inst, QWidget *parent )
+KOPrefsDialogColors::KOPrefsDialogColors( const KComponentData &inst, QWidget *parent )
       : KPrefsModule( KOPrefs::instance(), inst, parent )
 {
   QBoxLayout *topTopLayout = new QVBoxLayout( this );
@@ -749,12 +749,12 @@ extern "C"
 {
   KDE_EXPORT KCModule *create_korganizerconfigcolors( QWidget *parent, const char * )
   {
-    return new KOPrefsDialogColors( KOGlobals::self()->instance(), parent /*, "kcmkorganizercolors"*/ );
+    return new KOPrefsDialogColors( KOGlobals::self()->componentData(), parent /*, "kcmkorganizercolors"*/ );
   }
 }
 
 
-KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( KInstance *inst, QWidget *parent )
+KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( const KComponentData &inst, QWidget *parent )
   : KPrefsModule( KOPrefs::instance(), inst, parent )
 {
   QBoxLayout *topTopLayout = new QVBoxLayout( this );
@@ -915,13 +915,13 @@ extern "C"
   KDE_EXPORT KCModule *create_korganizerconfiggroupscheduling( QWidget *parent,
                                                      const char * )
   {
-    return new KOPrefsDialogGroupScheduling( KOGlobals::self()->instance(), parent /*,
+    return new KOPrefsDialogGroupScheduling( KOGlobals::self()->componentData(), parent /*,
                                              "kcmkorganizergroupscheduling"*/ );
   }
 }
 
 
-KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling( KInstance *inst, QWidget *parent )
+KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling( const KComponentData &inst, QWidget *parent )
   : KPrefsModule( KOPrefs::instance(), inst, parent )
 {
   mGroupwarePage = new Ui::KOGroupwarePrefsPage();
@@ -997,7 +997,7 @@ extern "C"
 {
   KDE_EXPORT KCModule *create_korganizerconfigfreebusy( QWidget *parent, const char * )
   {
-    return new KOPrefsDialogGroupwareScheduling( KOGlobals::self()->instance(), parent /*,
+    return new KOPrefsDialogGroupwareScheduling( KOGlobals::self()->componentData(), parent /*,
                                                  "kcmkorganizerfreebusy"*/ );
   }
 }
@@ -1018,7 +1018,7 @@ class PluginItem : public Q3CheckListItem {
 /**
   Dialog for selecting and configuring KOrganizer plugins
 */
-KOPrefsDialogPlugins::KOPrefsDialogPlugins( KInstance *inst, QWidget *parent )
+KOPrefsDialogPlugins::KOPrefsDialogPlugins( const KComponentData &inst, QWidget *parent )
   : KPrefsModule( KOPrefs::instance(), inst, parent )
 {
   QBoxLayout *topTopLayout = new QVBoxLayout( this );
@@ -1140,7 +1140,7 @@ extern "C"
 {
   KDE_EXPORT KCModule *create_korganizerconfigplugins( QWidget *parent, const char * )
   {
-    return new KOPrefsDialogPlugins( KOGlobals::self()->instance(), parent /*,
+    return new KOPrefsDialogPlugins( KOGlobals::self()->componentData(), parent /*,
                                      "kcmkorganizerplugins"*/ );
   }
 }
@@ -1149,11 +1149,11 @@ extern "C"
 extern "C"
 {
   KDE_EXPORT KCModule *create_korgdesignerfields( QWidget *parent, const char * ) {
-    return new KOPrefsDesignerFields( KOGlobals::self()->instance(), parent /*, "kcmkorgdesignerfields"*/ );
+    return new KOPrefsDesignerFields( KOGlobals::self()->componentData(), parent /*, "kcmkorgdesignerfields"*/ );
   }
 }
 
-KOPrefsDesignerFields::KOPrefsDesignerFields( KInstance *inst, QWidget *parent )
+KOPrefsDesignerFields::KOPrefsDesignerFields( const KComponentData &inst, QWidget *parent )
   : KCMDesignerFields( inst, parent )
 {
 }

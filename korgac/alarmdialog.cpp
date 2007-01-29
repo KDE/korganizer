@@ -250,7 +250,7 @@ void AlarmDialog::wakeUp()
 
 void AlarmDialog::slotSave()
 {
-  KConfig *config = KGlobal::config();
+  KSharedConfig::Ptr config = KGlobal::config();
   KLockFile::Ptr lock = config->lockFile();
   if ( lock.data()->lock() != KLockFile::LockOK )
     return;

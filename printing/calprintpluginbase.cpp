@@ -33,6 +33,7 @@
 #include <kconfig.h>
 #include <kcalendarsystem.h>
 #include <kwordwrap.h>
+#include <kconfiggroup.h>
 
 #include <libkdepim/kpimprefs.h>
 

@@ -200,7 +200,7 @@ void KOrganizer::writeSettings()
 void KOrganizer::initActions()
 {
 
-  setInstance( KGlobal::instance() );
+  setComponentData( KGlobal::mainComponent() );
 
   setXMLFile( "korganizerui.rc" );
   setStandardToolBarMenuEnabled( true );

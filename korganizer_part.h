@@ -31,7 +31,7 @@
 #include <korganizer/mainwindow.h>
 
 
-class KInstance;
+class KComponentData;
 class KAboutData;
 class KProcess;
 

@@ -51,7 +51,7 @@ AlarmDockWindow::AlarmDockWindow()
   : KSystemTrayIcon( 0 )
 {
   // Read the autostart status from the config file
-  KConfig *config = KGlobal::config();
+  KSharedConfig::Ptr config = KGlobal::config();
   config->setGroup("General");
   bool autostart = config->readEntry( "Autostart", true );
   bool alarmsEnabled = config->readEntry( "Enabled", true );
@@ -120,7 +120,7 @@ void AlarmDockWindow::toggleAlarmsEnabled()
 {
   kDebug(5890) << "AlarmDockWindow::toggleAlarmsEnabled()" << endl;
 
-  KConfig *config = KGlobal::config();
+  KSharedConfig::Ptr config = KGlobal::config();
   config->setGroup( "General" );
 
   bool enabled = !mAlarmsEnabled->isChecked();
@@ -149,7 +149,7 @@ void AlarmDockWindow::slotDismissAll()
 
 void AlarmDockWindow::enableAutostart( bool enable )
 {
-  KConfig *config = KGlobal::config();
+  KSharedConfig::Ptr config = KGlobal::config();
   config->setGroup( "General" );
   config->writeEntry( "Autostart", enable );
   config->sync();

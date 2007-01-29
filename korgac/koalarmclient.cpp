@@ -37,6 +37,7 @@
 #include <kdatetime.h>
 #include <kapplication.h>
 #include <kwin.h>
+#include <kconfiggroup.h>
 
 #include <QPushButton>
 #include <kglobal.h>
@@ -66,7 +67,7 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
 
   connect( &mCheckTimer, SIGNAL( timeout() ), SLOT( checkAlarms() ) );
 
-  KConfig *config = KGlobal::config();
+  KSharedConfig::Ptr config = KGlobal::config();
   config->setGroup( "Alarms" );
   int interval = config->readEntry( "Interval", 60 );
   kDebug(5890) << "KOAlarmClient check interval: " << interval << " seconds."
@@ -104,7 +105,7 @@ KOAlarmClient::~KOAlarmClient()
 
 void KOAlarmClient::checkAlarms()
 {
-  KConfig *cfg = KGlobal::config();
+  KSharedConfig::Ptr cfg = KGlobal::config();
 
   cfg->setGroup( "General" );
   if ( !cfg->readEntry( "Enabled", true ) ) return;
@@ -185,7 +186,7 @@ void KOAlarmClient::forceAlarmCheck()
 
 void KOAlarmClient::dumpDebug()
 {
-  KConfig *cfg = KGlobal::config();
+  KSharedConfig::Ptr cfg = KGlobal::config();
 
   cfg->setGroup( "Alarms" );
   QDateTime lastChecked = cfg->readEntry( "CalendarsLastChecked", QDateTime() );

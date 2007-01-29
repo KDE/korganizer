@@ -41,7 +41,7 @@
 #include <kcal/resourcecalendar.h>
 
 #include <kmenu.h>
-#include <kinstance.h>
+#include <kcomponentdata.h>
 #include <klocale.h>
 #include <kaction.h>
 #include <kdebug.h>
@@ -102,7 +102,7 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, QObject *parent,
 
   mStatusBarExtension = new KParts::StatusBarExtension( this );
 
-  setInstance( KOrganizerFactory::instance() );
+  setComponentData( KOrganizerFactory::componentData() );
 
   QVBoxLayout *topLayout = new QVBoxLayout( canvas );
   topLayout->addWidget( mView );

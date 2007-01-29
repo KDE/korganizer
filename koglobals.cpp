@@ -35,7 +35,7 @@
 #include <klocale.h>
 #include <kstaticdeleter.h>
 #include <kiconloader.h>
-#include <kinstance.h>
+#include <kcomponentdata.h>
 
 #include <kcalendarsystem.h>
 #include <kholidays.h>
@@ -70,12 +70,14 @@ KOGlobals *KOGlobals::self()
 }
 
 KOGlobals::KOGlobals()
-  : mHolidays(0)
+  : mOwnInstance( "korganizer" ),
+  mHolidays(0)
 {
-  // Needed to distinguish from global KInstance
+  // Needed to distinguish from global KComponentData
   // in case we are a KPart
-  mOwnInstance = new KInstance( "korganizer" );
-  mOwnInstance->config()->setGroup( "General" );
+  // why do you set the group and then don't do anything with the config object?
+  KSharedConfig::Ptr c = mOwnInstance.config();
+  c->setGroup( "General" );
 
   KIconLoader::global()->addAppDir( "kdepim" );
 
@@ -84,13 +86,13 @@ KOGlobals::KOGlobals()
 
 KConfig* KOGlobals::config() const
 {
-  return mOwnInstance->config();
+  KSharedConfig::Ptr c = mOwnInstance.config();
+  return c.data();
 }
 
 KOGlobals::~KOGlobals()
 {
   delete mAlarmClient;
-  delete mOwnInstance;
   delete mHolidays;
 }
 

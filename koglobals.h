@@ -26,6 +26,7 @@
 #include <kdemacros.h>
 //Added by qt3to4:
 #include <QPixmap>
+#include <kcomponentdata.h>
 
 class QPixmap;
 class QIcon;
@@ -33,7 +34,6 @@ class KCalendarSystem;
 class AlarmClient;
 
 class KConfig;
-class KInstance;
 class KHolidays;
 
 class KDE_EXPORT KOGlobals
@@ -75,7 +75,7 @@ class KDE_EXPORT KOGlobals
     */
     KHolidays *holidays() const;
 
-    KInstance* instance() const { return mOwnInstance; }
+    const KComponentData &componentData() const { return mOwnInstance; }
 
   protected:
     KOGlobals();
@@ -83,7 +83,7 @@ class KDE_EXPORT KOGlobals
   private:
     static KOGlobals *mSelf;
 
-    KInstance *mOwnInstance;
+    KComponentData mOwnInstance;
 
     AlarmClient *mAlarmClient;
 
