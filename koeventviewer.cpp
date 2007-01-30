@@ -89,8 +89,6 @@ void KOEventViewer::appendEvent( Event *event )
     mText.append( event->location() + "<br>" );
   }
 
-  QDateTime start = event->doesRecur() ? event->recurrence()->getNextDateTime(QDateTime::currentDateTime()) : event->dtStart();
-
   // for recurring events, display the datetimes for the next occurrence from now on. 
   // fixes the case when the view is dialog is called for an alarm.
 
@@ -114,7 +112,7 @@ void KOEventViewer::appendEvent( Event *event )
                     .arg( tmp.dtStartDateStr() )
                     .arg( tmp.dtEndDateStr() ) );
     } else {
-      mText.append( i18n("<b>On:</b> %1").arg( event->dtStartDateStr() ) );
+      mText.append( i18n("<b>On:</b> %1").arg( tmp.dtStartDateStr() ) );
     }
   } else {
     if ( event->isMultiDay() ) {
