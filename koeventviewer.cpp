@@ -96,7 +96,8 @@ void KOEventViewer::appendEvent( Event *event )
 
   if ( event->doesRecur() )
   {
-     tmp.setDtStart( event->recurrence()->getNextDateTime(QDateTime::currentDateTime()) );
+     tmp.setDtStart( event->recurrence()->getNextDateTime( event->doesFloat() ? 
+       QDate::currentDate().addDays(-1) : QDateTime::currentDateTime()) );
      const int diff = event->dtStart().secsTo( tmp.dtStart() );
      tmp.setDtEnd( event->dtEnd().addSecs(diff) );
   }
