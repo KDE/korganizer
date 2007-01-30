@@ -88,24 +88,44 @@ void KOEventViewer::appendEvent( Event *event )
     addTag( "b", i18n("Location: ") );
     mText.append( event->location() + "<br>" );
   }
+
+  QDateTime start = event->doesRecur() ? event->recurrence()->getNextDateTime(QDateTime::currentDateTime()) : event->dtStart();
+
+  // for recurring events, display the datetimes for the next occurrence from now on. 
+  // fixes the case when the view is dialog is called for an alarm.
+
+  Event tmp;
+
+  if ( event->doesRecur() )
+  {
+     tmp.setDtStart( event->recurrence()->getNextDateTime(QDateTime::currentDateTime()) );
+     const int diff = event->dtStart().secsTo( tmp.dtStart() );
+     tmp.setDtEnd( event->dtEnd().addSecs(diff) );
+  }
+  else
+  {
+     tmp.setDtStart( event->dtStart() );
+     tmp.setDtEnd( event->dtEnd() );
+  }  
+
   if ( event->doesFloat() ) {
     if ( event->isMultiDay() ) {
       mText.append( i18n("<b>From:</b> %1 <b>To:</b> %2")
-                    .arg( event->dtStartDateStr() )
-                    .arg( event->dtEndDateStr() ) );
+                    .arg( tmp.dtStartDateStr() )
+                    .arg( tmp.dtEndDateStr() ) );
     } else {
       mText.append( i18n("<b>On:</b> %1").arg( event->dtStartDateStr() ) );
     }
   } else {
     if ( event->isMultiDay() ) {
       mText.append( i18n("<b>From:</b> %1 <b>To:</b> %2")
-                    .arg( event->dtStartStr() )
-                    .arg( event->dtEndStr() ) );
+                    .arg( tmp.dtStartStr() )
+                    .arg( tmp.dtEndStr() ) );
     } else {
       mText.append( i18n("<b>On:</b> %1 <b>From:</b> %2 <b>To:</b> %3")
-                    .arg( event->dtStartDateStr() )
-                    .arg( event->dtStartTimeStr() )
-                    .arg( event->dtEndTimeStr() ) );
+                    .arg( tmp.dtStartDateStr() )
+                    .arg( tmp.dtStartTimeStr() )
+                    .arg( tmp.dtEndTimeStr() ) );
     }
   }
 
