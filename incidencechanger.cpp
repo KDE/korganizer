@@ -173,6 +173,8 @@ class IncidenceChanger::ComparisonVisitor : public IncidenceBase::Visitor
     IncidenceBase *mIncidence2;
 };
 
+// FIXME: this doesn't work since incidences don't have proper assignment operators
+#if 0
 class IncidenceChanger::AssignmentVisitor : public IncidenceBase::Visitor
 {
   public:
@@ -230,6 +232,7 @@ class IncidenceChanger::AssignmentVisitor : public IncidenceBase::Visitor
   protected:
     IncidenceBase *mIncidence2;
 };
+#endif
 
 bool IncidenceChanger::incidencesEqual( Incidence *inc1, Incidence *inc2 )
 {
