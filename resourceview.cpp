@@ -347,7 +347,7 @@ void ResourceView::addResource()
     delete resource;
     resource = 0;
   }
-  if ( dlg ) delete dlg;
+  delete dlg;
   emitResourcesChanged();
 }
 
