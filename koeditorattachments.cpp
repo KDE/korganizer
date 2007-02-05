@@ -32,6 +32,7 @@
 #include <libkdepim/kvcarddrag.h>
 
 #include <kio/job.h>
+#include <kio/copyjob.h>
 #include <kio/jobclasses.h>
 #include <kio/jobuidelegate.h>
 #include <klocale.h>
