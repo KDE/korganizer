@@ -200,7 +200,7 @@ void FilterEdit::bNewPressed() {
 }
 
 void FilterEdit::bDeletePressed() {
-  if ( mRulesList->currentItem() < 0 ) return; // nothing selected
+  if ( !mRulesList->currentItem() ) return; // nothing selected
   if ( mFilters->isEmpty() ) return; // We need at least a default filter object.
 
   int result = KMessageBox::warningContinueCancel( this,
