@@ -487,7 +487,7 @@ class KDE_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
     */
     void drawJournal( Journal * journal, QPainter &p, int x, int &y,
                       int width, int pageHeight );
-    void drawJournalField( QPainter &p, const QString &field, const QString &text,
+    void drawJournalField( QPainter &p, const QString &entry,
                            int x, int &y, int width, int pageHeight );
 
     void drawSplitHeaderRight( QPainter &p, const QDate &fd, const QDate &td,

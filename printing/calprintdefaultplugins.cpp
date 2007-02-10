@@ -299,23 +299,23 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
         Alarm *alarm = *it;
 
         // Alarm offset, copied from koeditoralarms.cpp:
-        QString offsetstr;
+        KLocalizedString offsetstr;
         int offset = 0;
         if ( alarm->hasStartOffset() ) {
           offset = alarm->startOffset().asSeconds();
           if ( offset < 0 ) {
-            offsetstr = i18nc("N days/hours/minutes before/after the start/end", "%1 before the start");
+            offsetstr = ki18nc("N days/hours/minutes before/after the start/end", "%1 before the start");
             offset = -offset;
           } else {
-            offsetstr = i18nc("N days/hours/minutes before/after the start/end", "%1 after the start");
+            offsetstr = ki18nc("N days/hours/minutes before/after the start/end", "%1 after the start");
           }
         } else if ( alarm->hasEndOffset() ) {
           offset = alarm->endOffset().asSeconds();
           if ( offset < 0 ) {
-            offsetstr = i18nc("N days/hours/minutes before/after the start/end", "%1 before the end");
+            offsetstr = ki18nc("N days/hours/minutes before/after the start/end", "%1 before the end");
             offset = -offset;
           } else {
-            offsetstr = i18nc("N days/hours/minutes before/after the start/end", "%1 after the end");
+            offsetstr = ki18nc("N days/hours/minutes before/after the start/end", "%1 after the end");
           }
         }
 
@@ -324,15 +324,15 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
 
         if ( offset % (24*60) == 0 && offset>0 ) { // divides evenly into days?
           useoffset = offset / (24*60);
-          offsetstr = offsetstr.arg( i18np("1 day", "%n days", useoffset ) );
+          offsetstr = offsetstr.subs( i18np("1 day", "%n days", useoffset ) );
         } else if (offset % 60 == 0 && offset>0 ) { // divides evenly into hours?
           useoffset = offset / 60;
-          offsetstr = offsetstr.arg( i18np("1 hour", "%n hours", useoffset ) );
+          offsetstr = offsetstr.subs( i18np("1 hour", "%n hours", useoffset ) );
         } else {
           useoffset = offset;
-          offsetstr = offsetstr.arg( i18np("1 minute", "%n minutes", useoffset ) );
+          offsetstr = offsetstr.subs( i18np("1 minute", "%n minutes", useoffset ) );
         }
-        alarmStrings << offsetstr;
+        alarmStrings << offsetstr.toString();
       }
       txt = alarmStrings.join( i18nc("Spacer for the joined list of categories", ", ") );
 
@@ -427,18 +427,17 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
         attendeeString += i18nc("Formatting of an attendee: "
                "'Name (Role): Status', e.g. 'Reinhold Kainhofer "
                "<reinhold@kainhofer.com> (Participant): Awaiting Response'",
-               "%1 (%2): %3")
-                       .arg( (*ait)->fullName() )
-                       .arg( (*ait)->roleStr() ).arg( (*ait)->statusStr() );
+               "%1 (%2): %3",
+               (*ait)->fullName(), (*ait)->roleStr(), (*ait)->statusStr() );
       }
       drawBoxWithCaption( p, attendeesBox, i18n("Attendees:"), attendeeString,
                /*sameLine=*/false, /*expand=*/false, captionFont, textFont );
     }
 
     if ( mShowOptions ) {
-      QString optionsString = i18n("Status: %1").arg( (*it)->statusStr() );
+      QString optionsString = i18n("Status: %1", (*it)->statusStr() );
       optionsString += '\n';
-      optionsString += i18n("Secrecy: %1").arg( (*it)->secrecyStr() );
+      optionsString += i18n("Secrecy: %1", (*it)->secrecyStr() );
       optionsString += '\n';
       if ( (*it)->type() == "Event" ) {
         Event *e = static_cast<Event*>(*it);
@@ -737,11 +736,10 @@ void CalPrintWeek::print( QPainter &p, int width, int height )
         line1 = local->formatDate( curWeek.addDays( -6 ) );
         line2 = local->formatDate( curWeek );
         if ( orientation() == KPrinter::Landscape ) {
-          title = i18nc("date from-to", "%1 - %2");
+          title = i18nc("date from-to", "%1 - %2", line1, line2 );
         } else {
-          title = i18nc("date from-\nto", "%1 -\n%2");;
+          title = i18nc("date from-\nto", "%1 -\n%2", line1, line2 );
         }
-        title = title.arg( line1 ).arg( line2 );
         drawHeader( p, title, curWeek.addDays( -6 ), QDate(), headerBox );
         drawWeek( p, curWeek, weekBox );
         curWeek = curWeek.addDays( 7 );
@@ -756,11 +754,12 @@ void CalPrintWeek::print( QPainter &p, int width, int height )
         line1 = local->formatDate( curWeek.addDays( -6 ) );
         line2 = local->formatDate( curWeek );
         if ( orientation() == KPrinter::Landscape ) {
-          title = i18nc("date from - to (week number)", "%1 - %2 (Week %3)");
+          title = i18nc("date from - to (week number)", "%1 - %2 (Week %3)",
+                        line1, line2, curWeek.weekNumber());
         } else {
-          title = i18nc("date from -\nto (week number)", "%1 -\n%2 (Week %3)");
+          title = i18nc("date from -\nto (week number)", "%1 -\n%2 (Week %3)",
+                        line1, line2, curWeek.weekNumber());
         }
-        title = title.arg( line1 ).arg( line2 ).arg( curWeek.weekNumber() );
 
         drawHeader( p, title, curWeek, QDate(), headerBox );
         QRect weekBox( headerBox );
@@ -914,9 +913,9 @@ void CalPrintMonth::print( QPainter &p, int width, int height )
   monthBox.setTop( headerBox.bottom() + padding() );
 
   do {
-    QString title( i18nc("monthname year", "%1 %2") );
-    title = title.arg( calSys->monthName( curMonth ) )
-                 .arg( curMonth.year() );
+    QString title( i18nc("monthname year", "%1 %2",
+                          calSys->monthName( curMonth ),
+                          curMonth.year() ) );
     QDate tmp( fromMonth );
     int weekdayCol = weekdayColumn( tmp.dayOfWeek() );
     tmp = tmp.addDays( -weekdayCol );

@@ -951,7 +951,7 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
         text += KGlobal::locale()->formatTime(todo->dtDue().time()) + ' ';
       else
         text = "";
-      drawIncidence( p, box, text, i18n("To-do: %1").arg(todo->summary()), textY );
+      drawIncidence( p, box, text, i18n("To-do: %1", todo->summary()), textY );
     }
   }
 
@@ -1498,7 +1498,7 @@ void CalPrintPluginBase::drawTodo( int &count, Todo *todo, QPainter &p,
     }
 
     //now, write the percentage
-    outStr = i18n( "%1%" ).arg( todo->percentComplete() );
+    outStr = i18n( "%1%", todo->percentComplete() );
     rect = p.boundingRect( posPercentComplete+lwidth+3, y, x + width, -1,
                            Qt::AlignTop | Qt::AlignLeft, outStr );
     p.drawText( rect, Qt::AlignTop | Qt::AlignLeft, outStr );
@@ -1569,13 +1569,9 @@ int CalPrintPluginBase::weekdayColumn( int weekday )
   return ( weekday + 7 - KGlobal::locale()->weekStartDay() ) % 7;
 }
 
-void CalPrintPluginBase::drawJournalField( QPainter &p, const QString &field, const QString &text,
+void CalPrintPluginBase::drawJournalField( QPainter &p, const QString &entry,
                                        int x, int &y, int width, int pageHeight )
 {
-  if ( text.isEmpty() ) return;
-
-  QString entry( field.arg( text ) );
-
   QRect rect( p.boundingRect( x, y, width, -1, Qt::WordBreak, entry) );
   if ( rect.bottom() > pageHeight) {
     // Start new page...
@@ -1622,8 +1618,10 @@ void CalPrintPluginBase::drawJournal( Journal * journal, QPainter &p, int x, int
   p.drawLine( x + 3, y, x + width - 6, y );
   y += 5;
 
-  drawJournalField( p, i18n("Person: %1"), journal->organizer().fullName(), x, y, width, pageHeight );
-  drawJournalField( p, i18n("%1"), journal->description(), x, y, width, pageHeight );
+  if ( !(journal->organizer().fullName().isEmpty()) )
+    drawJournalField( p, i18n("Person: %1", journal->organizer().fullName() ), x, y, width, pageHeight );
+  if ( !(journal->description().isEmpty()) )
+    drawJournalField( p, journal->description(), x, y, width, pageHeight );
   y += 10;
 }
 

@@ -169,15 +169,15 @@ kDebug()<<"headerBox: "<<headerBox<<endl;
     }
     QDate end( calsys->addMonths( start, monthsPerPage ) );
     end = calsys->addDays( end, -1 );
+    QString stdate = locale->formatDate( start );
+    QString endate = locale->formatDate( end );
     QString title;
     if ( orientation() == KPrinter::Landscape ) {
-      title = i18nc("date from - to", "%1 - %2");
+      title = i18nc("date from - to", "%1 - %2", stdate, endate);
     } else {
-      title = i18nc("date from -\nto", "%1 -\n%2");
+      title = i18nc("date from -\nto", "%1 -\n%2", stdate, endate);
     }
-    drawHeader( p, title
-        .arg( locale->formatDate( start ) )
-        .arg( locale->formatDate( end ) ),
+    drawHeader( p, title,
       calsys->addMonths( start, -1), calsys->addMonths( start, monthsPerPage ),
       headerBox );
 
