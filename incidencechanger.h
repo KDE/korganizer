@@ -38,7 +38,7 @@ public:
   bool sendGroupwareMessage( Incidence *incidence, KCal::Scheduler::Method method, bool deleting = false );
   bool endChange( Incidence *incidence );
 
-  bool addIncidence( Incidence *incidence );
+  bool addIncidence( Incidence *incidence, QWidget *parent = 0 );
   bool changeIncidence( Incidence *oldinc, Incidence *newinc, int action = -1 );
   bool deleteIncidence( Incidence *incidence );
 

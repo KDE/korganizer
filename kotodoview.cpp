@@ -298,7 +298,7 @@ void KOTodoListView::contentsDropEvent( QDropEvent *e )
     } else {
 //      kDebug(5850) << "Drop new Todo" << endl;
       todo->setRelatedTo(destinationEvent);
-      if ( !mChanger->addIncidence( todo ) ) {
+      if ( !mChanger->addIncidence( todo, this ) ) {
         KODialogManager::errorSaveIncidence( this, todo );
         delete todo;
         return;
@@ -1304,7 +1304,7 @@ void KOTodoView::copyTodoToDate( const QDate &date )
     if ( newTodo->doesRecur() )
       newTodo->recurrence()->unsetRecurs();
 
-    mChanger->addIncidence( newTodo );
+    mChanger->addIncidence( newTodo, this );
   }
 }
 
@@ -1438,7 +1438,7 @@ void KOTodoView::addQuickTodo()
     todo->setSummary( mQuickAdd->text() );
     todo->setOrganizer( Person( KOPrefs::instance()->fullName(),
                         KOPrefs::instance()->email() ) );
-    if ( !mChanger->addIncidence( todo ) ) {
+    if ( !mChanger->addIncidence( todo, this ) ) {
       KODialogManager::errorSaveIncidence( this, todo );
       delete todo;
       return;

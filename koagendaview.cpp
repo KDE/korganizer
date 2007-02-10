@@ -1612,7 +1612,7 @@ void KOAgendaView::slotTodoDropped( Todo *todo, const QPoint &gpos, bool allDay 
       todo->setDtDue( newTime );
       todo->setFloats( allDay );
       todo->setHasDueDate( true );
-      if ( !mChanger->addIncidence( todo ) ) {
+      if ( !mChanger->addIncidence( todo, this ) ) {
         KODialogManager::errorSaveIncidence( this, todo );
       }
     }

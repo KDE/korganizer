@@ -291,18 +291,34 @@ kDebug(5850)<<"IncidenceChanger::changeIncidence for incidence \""<<newinc->summ
   return true;
 }
 
-bool IncidenceChanger::addIncidence( Incidence *incidence )
+bool IncidenceChanger::addIncidence( Incidence *incidence, QWidget *parent )
 {
 kDebug(5850)<<"IncidenceChanger::addIncidence for incidence \""<<incidence->summary()<<"\""<<endl;
   if ( KOPrefs::instance()->mUseGroupwareCommunication ) {
-    if ( !KOGroupware::instance()->sendICalMessage( 0,
+    if ( !KOGroupware::instance()->sendICalMessage( parent,
                                                     KCal::Scheduler::Request,
                                                     incidence ) ) {
       kError() << "sendIcalMessage failed." << endl;
     }
   }
-  if ( !mCalendar->addIncidence( incidence ) ) {
-    KMessageBox::sorry( 0, i18n("Unable to save %1 \"%2\".",
+  // FIXME: This is a nasty hack, since we need to set a parent for the 
+  //        resource selection dialog. However, we don't have any UI methods
+  //        in the calendar, only in the CalendarResources::DestinationPolicy
+  //        So we need to type-cast it and extract it from the CalendarResources
+  CalendarResources *stdcal = dynamic_cast<CalendarResources*>(mCalendar);
+  QWidget *tmpparent = 0;
+  if ( stdcal ) {
+    tmpparent = stdcal->dialogParentWidget();
+    stdcal->setDialogParentWidget( parent );
+  }
+  bool success = mCalendar->addIncidence( incidence );
+  if ( stdcal ) {
+    // Reset the parent widget, otherwise we'll end up with pointers to deleted 
+    // widgets sooner or later
+    stdcal->setDialogParentWidget( tmpparent );
+  }
+  if ( !success ) {
+    KMessageBox::sorry( parent, i18n("Unable to save %1 \"%2\".",
                           i18n( incidence->type() ) ,
                           incidence->summary() ) );
     return false;

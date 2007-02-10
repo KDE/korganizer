@@ -286,7 +286,7 @@ bool KOEventEditor::processInput()
     mEvent->setOrganizer( Person( KOPrefs::instance()->fullName(),
                           KOPrefs::instance()->email() ) );
     writeEvent( mEvent );
-    if ( !mChanger->addIncidence( mEvent ) ) {
+    if ( !mChanger->addIncidence( mEvent, this ) ) {
       delete mEvent;
       mEvent = 0;
       return false;

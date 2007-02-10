@@ -152,7 +152,7 @@ bool KOJournalEditor::processInput()
 
     writeJournal( mJournal );
 
-    if ( !mChanger->addIncidence( mJournal ) ) {
+    if ( !mChanger->addIncidence( mJournal, this ) ) {
       KODialogManager::errorSaveIncidence( this, mJournal );
       delete mJournal;
       mJournal = 0;

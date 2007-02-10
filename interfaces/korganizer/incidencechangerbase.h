@@ -25,6 +25,7 @@
 #include <QObject>
 #include <kdepim_export.h>
 
+class QWidget;
 namespace KCal {
 class Calendar;
 class Incidence;
@@ -47,7 +48,7 @@ public:
   virtual bool beginChange( Incidence * incidence ) = 0;
   virtual bool endChange( Incidence *incidence ) = 0;
 
-  virtual bool addIncidence( Incidence *incidence ) = 0;
+  virtual bool addIncidence( Incidence *incidence, QWidget *parent = 0 ) = 0;
   virtual bool changeIncidence( Incidence *newinc, Incidence *oldinc,
                                 int action = -1 ) = 0;
   virtual bool deleteIncidence( Incidence *incidence ) = 0;

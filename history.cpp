@@ -154,6 +154,7 @@ History::EntryDelete::~EntryDelete()
 
 void History::EntryDelete::undo()
 {
+  // TODO: Use the proper resource instead of asking!
   mCalendar->addIncidence( mIncidence->clone() );
 }
 
@@ -188,6 +189,7 @@ void History::EntryAdd::undo()
 
 void History::EntryAdd::redo()
 {
+  // TODO: User the proper resource instead of asking again
   mCalendar->addIncidence( mIncidence->clone() );
 }
 
@@ -215,6 +217,7 @@ void History::EntryEdit::undo()
   Incidence *incidence = mCalendar->incidence( mNewIncidence->uid() );
   if ( incidence )
       mCalendar->deleteIncidence( incidence );
+  // TODO: Use the proper resource instead of asking again
   mCalendar->addIncidence( mOldIncidence->clone() );
 }
 
@@ -223,6 +226,7 @@ void History::EntryEdit::redo()
   Incidence *incidence = mCalendar->incidence( mOldIncidence->uid() );
   if ( incidence )
       mCalendar->deleteIncidence( incidence );
+  // TODO: Use the proper resource instead of asking again
   mCalendar->addIncidence( mNewIncidence->clone() );
 }
 

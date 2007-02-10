@@ -121,16 +121,18 @@ bool KOListView::ListItemVisitor::visit( Event *e )
   mItem->setPixmap(0, eventPxmp);
 
   mItem->setText( 3,e->dtStartDateStr());
-  if (e->floats()) mItem->setText(4, "---"); else mItem->setText( 4, e->dtStartTimeStr() );
+  mItem->setSortKey( 3, e->dtStart().toString(KDateTime::ISODate));
+  if (e->floats()) mItem->setText(4, "---"); else {
+    mItem->setText( 4, e->dtStartTimeStr() );
+    mItem->setSortKey( 4,e->dtStart().time().toString(Qt::ISODate));
+  }
   mItem->setText( 5,e->dtEndDateStr());
-  if (e->floats()) mItem->setText(6, "---"); else mItem->setText( 6, e->dtEndTimeStr() );
+  mItem->setSortKey( 5, e->dtEnd().toString(KDateTime::ISODate));
+  if (e->floats()) mItem->setText(6, "---"); else {
+    mItem->setText( 6, e->dtEndTimeStr() );
+    mItem->setSortKey( 6, e->dtEnd().time().toString(Qt::ISODate));
+  }
   mItem->setText( 7,e->categoriesStr());
-
-  QString key = e->dtStart().dateTime().toString(Qt::ISODate);
-  mItem->setSortKey(3,key);
-
-  key = e->dtEnd().dateTime().toString(Qt::ISODate);
-  mItem->setSortKey(5,key);
 
   return true;
 }
@@ -159,11 +161,12 @@ bool KOListView::ListItemVisitor::visit(Todo *t)
 
   if (t->hasStartDate()) {
     mItem->setText(3,t->dtStartDateStr());
-    mItem->setSortKey(3,t->dtStart().dateTime().toString(Qt::ISODate));
+    mItem->setSortKey(3,t->dtStart().toString(KDateTime::ISODate));
     if (t->floats()) {
       mItem->setText(4,"---");
     } else {
       mItem->setText(4,t->dtStartTimeStr());
+      mItem->setSortKey( 4, t->dtStart().time().toString(Qt::ISODate) );
     }
   } else {
     mItem->setText(3,"---");
@@ -172,18 +175,18 @@ bool KOListView::ListItemVisitor::visit(Todo *t)
 
   if (t->hasDueDate()) {
     mItem->setText(5,t->dtDueDateStr());
+    mItem->setSortKey( 5, t->dtDue().toString(KDateTime::ISODate) );
     if (t->floats()) {
       mItem->setText(6,"---");
     } else {
       mItem->setText(6,t->dtDueTimeStr());
+      mItem->setSortKey( 6, t->dtDue().time().toString(Qt::ISODate) );
     }
   } else {
     mItem->setText(5,"---");
     mItem->setText(6,"---");
   }
   mItem->setText(7,t->categoriesStr());
-
-  mItem->setSortKey(5,t->dtDue().dateTime().toString(Qt::ISODate));
 
   return true;
 }
@@ -198,8 +201,7 @@ bool KOListView::ListItemVisitor::visit( Journal *t )
     mItem->setText( 0, t->summary() );
   }
   mItem->setText( 3, t->dtStartDateStr() );
-
-  mItem->setSortKey( 3, t->dtStart().dateTime().toString( Qt::ISODate ) );
+  mItem->setSortKey( 3, t->dtStart().toString( KDateTime::ISODate ) );
 
   return true;
 }

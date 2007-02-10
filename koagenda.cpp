@@ -1106,7 +1106,7 @@ void KOAgenda::endItemAction()
               mChanger->changeIncidence( oldIncSaved, oldInc );
               mActionItem->setIncidence( newInc );
               mActionItem->dissociateFromMultiItem();
-              mChanger->addIncidence( newInc );
+              mChanger->addIncidence( newInc, this );
               emit enableAgendaUpdate( true );
             } else {
               KMessageBox::sorry( this, i18n("Unable to add the exception item to the "
@@ -1132,7 +1132,7 @@ void KOAgenda::endItemAction()
               emit enableAgendaUpdate( false );
               mActionItem->dissociateFromMultiItem();
               mActionItem->setIncidence( newInc );
-              mChanger->addIncidence( newInc );
+              mChanger->addIncidence( newInc, this );
               emit enableAgendaUpdate( true );
               mChanger->changeIncidence( oldIncSaved, oldInc );
             } else {

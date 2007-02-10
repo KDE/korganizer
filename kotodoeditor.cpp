@@ -235,7 +235,7 @@ bool KOTodoEditor::processInput()
 
     writeTodo( mTodo );
 
-    if ( !mChanger->addIncidence( mTodo ) ) {
+    if ( !mChanger->addIncidence( mTodo, this ) ) {
       delete mTodo;
       mTodo = 0;
       return false;
