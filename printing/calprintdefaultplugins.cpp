@@ -435,10 +435,15 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
     }
 
     if ( mShowOptions ) {
-      QString optionsString = i18n("Status: %1", (*it)->statusStr() );
-      optionsString += '\n';
-      optionsString += i18n("Secrecy: %1", (*it)->secrecyStr() );
-      optionsString += '\n';
+      QString optionsString;
+      if ( !(*it)->statusStr().isEmpty() ) {
+        optionsString += i18n("Status: %1").arg( (*it)->statusStr() );
+        optionsString += "\n";
+      }
+      if ( !(*it)->secrecyStr().isEmpty() ) {
+        optionsString += i18n("Secrecy: %1").arg( (*it)->secrecyStr() );
+        optionsString += "\n";
+      }
       if ( (*it)->type() == "Event" ) {
         Event *e = static_cast<Event*>(*it);
         if ( e->transparency() == Event::Opaque ) {
