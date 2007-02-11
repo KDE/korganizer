@@ -557,9 +557,6 @@ void KOAgendaItem::addAttendee( const QString &newAttendee )
   if ( !( name.isEmpty() && email.isEmpty() ) ) {
     mIncidence->addAttendee(new Attendee(name,email));
     KMessageBox::information( this, i18n("Attendee \"%1\" added to the calendar item \"%2\"").arg(KPIM::normalizedAddress(name, email, QString())).arg(text()), i18n("Attendee added"), "AttendeeDroppedAdded" );
-  } else { 
-    kdDebug(5850) << "getNameAndMail returned false"<<endl;
-    kdDebug(5850) << "name: "<<name<< ", email: "<<email<<endl;
   } 
  
 }
