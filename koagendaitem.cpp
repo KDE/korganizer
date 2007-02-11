@@ -34,6 +34,7 @@
 #include <kdebug.h>
 #include <klocale.h>
 #include <kwordwrap.h>
+#include <kmessagebox.h>
 
 #include <kcal/icaldrag.h>
 #include <kcal/incidence.h>
@@ -41,6 +42,7 @@
 #include <kcal/incidenceformatter.h>
 #include <kcal/vcaldrag.h>
 #include <libkdepim/kvcarddrag.h>
+#include <emailfunctions/email.h>
 #ifndef KORG_NOKABC
 #include <kabc/addressee.h>
 #include <kabc/vcardconverter.h>
@@ -550,21 +552,18 @@ void KOAgendaItem::dragEnterEvent( QDragEnterEvent *e )
 void KOAgendaItem::addAttendee( const QString &newAttendee )
 {
   kDebug(5850) << " Email: " << newAttendee << endl;
-  // TODO: Use proper email parsing instead of simply grepping for "<" and "@"
-  int pos = newAttendee.indexOf("<");
-  QString name = newAttendee.left(pos);
-  QString email = newAttendee.mid(pos);
-  if (!email.isEmpty()) {
-    mIncidence->addAttendee(new Attendee(name,email));
-  } else if (name.contains("@")) {
-    mIncidence->addAttendee(new Attendee(name,name));
-  } else {
-    mIncidence->addAttendee(new Attendee(name,QString()));
+  QString name, email;
+  EmailAddressTools::extractEmailAddressAndName( newAttendee, name, email );
+  if ( !( name.isEmpty() && email.isEmpty() ) ) {
+      mIncidence->addAttendee(new Attendee(name,email));
+    KMessageBox::information( this, i18n("Attendee \"%1\" added to the calendar item \"%2\"").arg(EmailAddressTools::normalizedAddress(name, email, QString())).arg(text()), i18n("Attendee added"), "AttendeeDroppedAdded" );
   }
+  
 }
 
 void KOAgendaItem::dropEvent( QDropEvent *e )
 {
+  // TODO: Organize this better: First check for attachment (not only file, also any other url!), then if it's a vcard, otherwise check for attendees, then if the data is binary, add a binary attachment. 
 #ifndef KORG_NODND
   const QMimeData *md = e->mimeData();
 
