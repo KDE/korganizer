@@ -1463,23 +1463,9 @@ void KOAgendaView::fillAgenda()
       for (numTodo = 0; numTodo < todos.count(); ++numTodo) {
         Todo *todo = *todos.at(numTodo);
 
-        // Do not display the todo if it has no due date
-        if ( ! todo->hasDueDate() ) continue;
+        if ( ! todo->hasDueDate() ) continue;  // todo shall not be displayed if it has no date
 
-#if 0
-        // Show floating to-dos from start to due date
-        if ( todo->doesFloat() && todo->hasStartDate() ) {
-          if ( ( todo->dtStart().date() <= currentDate ) &&
-               ( todo->dtStart().date() < todo->dtDue().date() ) &&
-               ( todo->dtDue().date() > currentDate ) ) {
-                 mAllDayAgenda->insertAllDayItem( todo, currentDate,
-                                                  curCol, curCol );
-                 continue;
-               }
-        }
-#endif
-        // ToDo items shall be displayed for the day they are due,
-        // but only showed today if they are already overdue.
+        // ToDo items shall be displayed for the day they are due, but only showed today if they are already overdue.
         // Already completed items can be displayed on their original due date
         bool overdue = todo->isOverdue();
 
