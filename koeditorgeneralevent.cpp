@@ -364,7 +364,7 @@ void KOEditorGeneralEvent::setDuration()
     if (!mTimeAssociateButton->isChecked()) {
       int daydiff = mCurrStartDateTime.date().daysTo(mCurrEndDateTime.date()) + 1;
       tmpStr = i18n("Duration: ");
-      tmpStr.append(i18np("1 Day","%n Days",daydiff));
+      tmpStr.append(i18np("1 Day","%1 Days",daydiff));
     } else {
       hourdiff = mCurrStartDateTime.date().daysTo(mCurrEndDateTime.date()) * 24;
       hourdiff += mCurrEndDateTime.time().hour() -
@@ -379,14 +379,14 @@ void KOEditorGeneralEvent::setDuration()
       if (hourdiff || minutediff){
         tmpStr = i18n("Duration: ");
         if (hourdiff){
-          catStr = i18np("1 hour","%n hours",hourdiff);
+          catStr = i18np("1 hour","%1 hours",hourdiff);
           tmpStr.append(catStr);
         }
         if (hourdiff && minutediff){
           tmpStr += i18n(", ");
         }
         if (minutediff){
-          catStr = i18np("1 minute","%n minutes",minutediff);
+          catStr = i18np("1 minute","%1 minutes",minutediff);
           tmpStr += catStr;
         }
       } else tmpStr = "";

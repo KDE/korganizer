@@ -110,7 +110,7 @@ void AlarmDockWindow::slotUpdate( int reminders )
   if ( reminders > 0 )
   {
     setToolTip( i18np( "There is 1 active reminder.",
-                   "There are %n active reminders.", reminders ) );
+                   "There are %1 active reminders.", reminders ) );
   } else {
     setToolTip( mName );
   }

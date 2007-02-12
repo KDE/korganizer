@@ -114,13 +114,13 @@ void AlarmListViewItem::construct()
 
     if ( offset % (24*60) == 0 && offset>0 ) { // divides evenly into days?
       useoffset = offset / (24*60);
-      offsetstr = offsetstr.subs( i18np("1 day", "%n days", useoffset ) );
+      offsetstr = offsetstr.subs( i18np("1 day", "%1 days", useoffset ) );
     } else if (offset % 60 == 0 && offset>0 ) { // divides evenly into hours?
       useoffset = offset / 60;
-      offsetstr = offsetstr.subs( i18np("1 hour", "%n hours", useoffset ) );
+      offsetstr = offsetstr.subs( i18np("1 hour", "%1 hours", useoffset ) );
     } else {
       useoffset = offset;
-      offsetstr = offsetstr.subs( i18np("1 minute", "%n minutes", useoffset ) );
+      offsetstr = offsetstr.subs( i18np("1 minute", "%1 minutes", useoffset ) );
     }
     setText( ColAlarmOffset, offsetstr.toString() );
 

@@ -319,7 +319,7 @@ void KOEditorGeneral::updateAlarmWidgets()
   } else if ( mAlarmList.count() > 1 ) {
     mAlarmStack->setCurrentIndex( AdvancedAlarmLabel );
     mAlarmInfoLabel->setText( i18np("1 reminder configured",
-                                   "%n reminders configured",
+                                   "%1 reminders configured",
                                    mAlarmList.count() ) );
   } else {
     Alarm *alarm = mAlarmList.first();

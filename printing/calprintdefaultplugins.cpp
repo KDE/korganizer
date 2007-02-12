@@ -147,10 +147,10 @@ class TimePrintStringsVisitor : public IncidenceBase::Visitor
         mEndCaption = i18n("Duration: ");
         int mins = event->duration() / 60;
         if ( mins >= 60 ) {
-          mEndString += i18np( "1 hour ", "%n hours ", mins/60 );
+          mEndString += i18np( "1 hour ", "%1 hours ", mins/60 );
         }
         if ( mins%60 > 0 ) {
-          mEndString += i18np( "1 minute ", "%n minutes ",  mins%60 );
+          mEndString += i18np( "1 minute ", "%1 minutes ",  mins%60 );
         }
       } else {
         mEndCaption = i18n("No end date");
@@ -291,7 +291,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
       cap = i18n("No reminders");
       txt.clear();
     } else {
-      cap = i18np("Reminder: ", "%n reminders: ", alarms.count() );
+      cap = i18np("Reminder: ", "%1 reminders: ", alarms.count() );
 
       QStringList alarmStrings;
       KCal::Alarm::List::ConstIterator it;
@@ -324,13 +324,13 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
 
         if ( offset % (24*60) == 0 && offset>0 ) { // divides evenly into days?
           useoffset = offset / (24*60);
-          offsetstr = offsetstr.subs( i18np("1 day", "%n days", useoffset ) );
+          offsetstr = offsetstr.subs( i18np("1 day", "%1 days", useoffset ) );
         } else if (offset % 60 == 0 && offset>0 ) { // divides evenly into hours?
           useoffset = offset / 60;
-          offsetstr = offsetstr.subs( i18np("1 hour", "%n hours", useoffset ) );
+          offsetstr = offsetstr.subs( i18np("1 hour", "%1 hours", useoffset ) );
         } else {
           useoffset = offset;
-          offsetstr = offsetstr.subs( i18np("1 minute", "%n minutes", useoffset ) );
+          offsetstr = offsetstr.subs( i18np("1 minute", "%1 minutes", useoffset ) );
         }
         alarmStrings << offsetstr.toString();
       }
@@ -420,7 +420,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
       if ( attendees.count() == 0 )
         attendeeCaption = i18n("No Attendees");
       else
-        attendeeCaption = i18np("1 Attendee:", "%n Attendees:", attendees.count() );
+        attendeeCaption = i18np("1 Attendee:", "%1 Attendees:", attendees.count() );
       QString attendeeString;
       for ( Attendee::List::ConstIterator ait = attendees.begin(); ait != attendees.end(); ++ait ) {
         if ( !attendeeString.isEmpty() ) attendeeString += '\n';
@@ -437,11 +437,11 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
     if ( mShowOptions ) {
       QString optionsString;
       if ( !(*it)->statusStr().isEmpty() ) {
-        optionsString += i18n("Status: %1").arg( (*it)->statusStr() );
+        optionsString += i18n("Status: %1", (*it)->statusStr() );
         optionsString += "\n";
       }
       if ( !(*it)->secrecyStr().isEmpty() ) {
-        optionsString += i18n("Secrecy: %1").arg( (*it)->secrecyStr() );
+        optionsString += i18n("Secrecy: %1", (*it)->secrecyStr() );
         optionsString += "\n";
       }
       if ( (*it)->type() == "Event" ) {
