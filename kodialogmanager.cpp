@@ -66,7 +66,7 @@ class KODialogManager::DialogManagerVisitor : public IncidenceBase::Visitor
     KODialogManager *mDialogManager;
 };
 
-class KODialogManager::EditorDialogVisitor : 
+class KODialogManager::EditorDialogVisitor :
       public KODialogManager::DialogManagerVisitor
 {
   public:
@@ -268,6 +268,7 @@ void KODialogManager::connectEditor( KOIncidenceEditor*editor )
 
 KOTodoEditor *KODialogManager::getTodoEditor()
 {
+  kdDebug(5850) << k_funcinfo << endl;
   KOTodoEditor *todoEditor = new KOTodoEditor( mMainView->calendar(), mMainView );
   connectEditor( todoEditor );
   return todoEditor;
