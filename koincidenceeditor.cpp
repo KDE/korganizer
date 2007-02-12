@@ -229,7 +229,8 @@ void KOIncidenceEditor::setupDesignerTabs( const QString &type )
   QStringList activePages = KOPrefs::instance()->activeDesignerFields();
 
   QStringList list = KGlobal::dirs()->findAllResources( "data",
-    "korganizer/designer/" + type + "/*.ui", true, true );
+    "korganizer/designer/" + type + "/*.ui",  KStandardDirs::Recursive |KStandardDirs::NoDuplicates);
+
   for ( QStringList::iterator it = list.begin(); it != list.end(); ++it ) {
     const QString &fn = (*it).mid( (*it).lastIndexOf('/') + 1 );
     if ( activePages.contains( fn )  ) {
