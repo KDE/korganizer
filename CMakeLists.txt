@@ -112,7 +112,7 @@ kde4_add_library(korganizer_eventviewer SHARED ${korganizer_eventviewer_LIB_SRCS
 
 target_link_libraries(korganizer_eventviewer ${KDE4_KPARTS_LIBS} ${KDE4_KCAL_LIBS})
 
-set_target_properties(korganizer_eventviewer PROPERTIES VERSION 1.0.0 SOVERSION 1 )
+set_target_properties(korganizer_eventviewer PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
 install(TARGETS korganizer_eventviewer  DESTINATION ${LIB_INSTALL_DIR})
 
 
@@ -126,7 +126,7 @@ kde4_add_library(korganizer_calendar SHARED ${korganizer_calendar_LIB_SRCS})
 
 target_link_libraries(korganizer_calendar ${KDE4_KPARTS_LIBS} kdepim ${KDE4_KCAL_LIBS})
 
-set_target_properties(korganizer_calendar PROPERTIES VERSION 1.0.0 SOVERSION 1 )
+set_target_properties(korganizer_calendar PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
 install(TARGETS korganizer_calendar  DESTINATION ${LIB_INSTALL_DIR})
 
 
@@ -217,7 +217,7 @@ target_link_libraries(korganizer ${KDE4_KPARTS_LIBS} ${KDE4_KNEWSTUFF_LIBS} ${KD
                                                       kdepim korganizer_eventviewer korganizer_calendar kocorehelper 
                                                       korg_stdprinting kholidays korganizer_interfaces )
 
-set_target_properties(korganizer PROPERTIES VERSION 1.0.0 SOVERSION 1 )
+set_target_properties(korganizer PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
 
 install(TARGETS korganizer  DESTINATION ${LIB_INSTALL_DIR})
 
