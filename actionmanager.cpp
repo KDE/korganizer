@@ -1189,23 +1189,23 @@ KUrl ActionManager::getSaveURL()
   return url;
 }
 
-void ActionManager::saveProperties( KConfig *config )
+void ActionManager::saveProperties( KConfigGroup &config )
 {
   kDebug(5850) << "ActionManager::saveProperties" << endl;
 
-  config->writeEntry( "UseResourceCalendar", !mMainWindow->hasDocument() );
+  config.writeEntry( "UseResourceCalendar", !mMainWindow->hasDocument() );
   if ( mMainWindow->hasDocument() ) {
-    config->writePathEntry( "Calendar",mURL.url() );
+    config.writePathEntry( "Calendar",mURL.url() );
   }
 }
 
-void ActionManager::readProperties( KConfig *config )
+void ActionManager::readProperties( KConfigGroup &config )
 {
   kDebug(5850) << "ActionManager::readProperties" << endl;
 
   bool isResourceCalendar(
-    config->readEntry( "UseResourceCalendar", true ) );
-  QString calendarUrl = config->readPathEntry( "Calendar" );
+    config.readEntry( "UseResourceCalendar", true ) );
+  QString calendarUrl = config.readPathEntry( "Calendar" );
 
   if ( !isResourceCalendar && !calendarUrl.isEmpty() ) {
     mMainWindow->init( true );

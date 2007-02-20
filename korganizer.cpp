@@ -270,12 +270,12 @@ KUrl KOrganizer::getCurrentURL() const
   return mActionManager->url();
 }
 
-void KOrganizer::saveProperties( KConfig *config )
+void KOrganizer::saveProperties( KConfigGroup &config )
 {
   return mActionManager->saveProperties( config );
 }
 
-void KOrganizer::readProperties( KConfig *config )
+void KOrganizer::readProperties( KConfigGroup &config )
 {
   return mActionManager->readProperties( config );
 }

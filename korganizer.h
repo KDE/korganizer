@@ -131,8 +131,8 @@ class KOrganizer : public KPartsMainWindow, public KOrgMainWindow
     bool queryExit();
 
     /* Session management */
-    void saveProperties( KConfig * );
-    void readProperties( KConfig * );
+    void saveProperties( KConfigGroup& );
+    void readProperties( KConfigGroup& );
 
   private:
     CalendarView *mCalendarView;  // Main view widget

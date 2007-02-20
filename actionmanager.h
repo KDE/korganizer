@@ -267,8 +267,8 @@ class KDE_EXPORT ActionManager : public QObject
     void writeSettings();
 
     /* Session management */
-    void saveProperties( KConfig * );
-    void readProperties( KConfig * );
+    void saveProperties( KConfigGroup& );
+    void readProperties( KConfigGroup& );
 
     void loadParts();
 
