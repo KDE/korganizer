@@ -50,7 +50,7 @@ class KActionCollection;
 class KRecentFilesAction;
 class KSelectAction;
 class KToggleAction;
-class KConfig;
+class KConfigGroup;
 class KProcess;
 class KTemporaryFile;
 class KXMLGUIClient;

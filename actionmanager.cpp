@@ -642,7 +642,7 @@ void ActionManager::readSettings()
   // defaults where none are to be found
 
   KConfig *config = KOGlobals::self()->config();
-  if ( mRecent ) mRecent->loadEntries( config->group( QString() ) );
+  if ( mRecent ) mRecent->loadEntries( config->group( "RecentFiles" ) );
   mCalendarView->readSettings();
 }
 
@@ -650,34 +650,33 @@ void ActionManager::writeSettings()
 {
   kDebug(5850) << "ActionManager::writeSettings" << endl;
 
-  KConfig *config = KOGlobals::self()->config();
+  KConfigGroup config = KOGlobals::self()->config()->group("Settings");
   mCalendarView->writeSettings();
 
-  config->setGroup( "Settings" );
   if ( mResourceButtonsAction ) {
-    config->writeEntry( "ResourceButtonsVisible",
-                        mResourceButtonsAction->isChecked() );
+    config.writeEntry( "ResourceButtonsVisible",
+                       mResourceButtonsAction->isChecked() );
   }
   if ( mDateNavigatorShowAction ) {
-    config->writeEntry( "DateNavigatorVisible",
-                        mDateNavigatorShowAction->isChecked() );
+    config.writeEntry( "DateNavigatorVisible",
+                       mDateNavigatorShowAction->isChecked() );
   }
   if ( mTodoViewShowAction ) {
-    config->writeEntry( "TodoViewVisible",
-                        mTodoViewShowAction->isChecked() );
+    config.writeEntry( "TodoViewVisible",
+                       mTodoViewShowAction->isChecked() );
   }
   if ( mResourceViewShowAction ) {
-    config->writeEntry( "ResourceViewVisible",
-                        mResourceViewShowAction->isChecked() );
+    config.writeEntry( "ResourceViewVisible",
+                       mResourceViewShowAction->isChecked() );
   }
   if ( mEventViewerShowAction ) {
-    config->writeEntry( "EventViewerVisible",
-                        mEventViewerShowAction->isChecked() );
+    config.writeEntry( "EventViewerVisible",
+                       mEventViewerShowAction->isChecked() );
   }
 
-  if ( mRecent ) mRecent->saveEntries( config->group( QString() ) );
+  if ( mRecent ) mRecent->saveEntries( KOGlobals::self()->config()->group("RecentFiles") );
 
-  config->sync();
+  config.sync();
 
   if ( mCalendarResources ) {
     mCalendarResources->resourceManager()->writeConfig();
@@ -880,7 +879,6 @@ bool ActionManager::openURL( const KUrl &url,bool merge )
           KIO::NetAccess::removeTempFile( mFile );
           mURL = url;
           mFile = tmpFile;
-          KConfigGroup config(KOGlobals::self()->config(), "General" );
           setTitle();
           kDebug(5850) << "-- Add recent URL: " << url.prettyUrl() << endl;
           if ( mRecent ) mRecent->addUrl( url );
@@ -1112,8 +1110,6 @@ bool ActionManager::saveAsURL( const KUrl &url )
     delete mTempFile;
     mTempFile = tempFile;
     KIO::NetAccess::removeTempFile( fileOrig );
-    KConfig *config = KOGlobals::self()->config();
-    config->setGroup( "General" );
     setTitle();
     if ( mRecent ) mRecent->addUrl( mURL );
   } else {
