@@ -32,7 +32,6 @@
 #include <kglobal.h>
 #include <kconfig.h>
 #include <kstandarddirs.h>
-#include <ksimpleconfig.h>
 
 #include "configdialog.h"
 #include "configdialog.moc"
@@ -75,8 +74,8 @@ ConfigDialog::~ConfigDialog()
 
 void ConfigDialog::load()
 {
-  KConfig config( "korganizerrc", true, false); // Open read-only, no kdeglobals
-  config.setGroup("Calendar/DateNum Plugin");
+  KConfig _config( "korganizerrc", KConfig::NoGlobals  );
+  KConfigGroup config(&_config, "Calendar/DateNum Plugin");
   int datenum = config.readEntry( "ShowDayNumbers", 0 );
   QAbstractButton *btn = mDayNumGroup->button( datenum );
   if (btn) btn->setChecked( true );
@@ -84,8 +83,8 @@ void ConfigDialog::load()
 
 void ConfigDialog::save()
 {
-  KConfig config( "korganizerrc", false, false); // Open read-write, no kdeglobals
-  config.setGroup("Calendar/DateNum Plugin");
+  KConfig _config( "korganizerrc", KConfig::NoGlobals  );
+  KConfigGroup config(&_config, "Calendar/DateNum Plugin");
   config.writeEntry("ShowDayNumbers", mDayNumGroup->checkedId() );
   config.sync();
 }

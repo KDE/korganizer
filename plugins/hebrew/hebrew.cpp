@@ -20,7 +20,6 @@
 #include <kglobal.h>
 #include <kconfig.h>
 #include <kstandarddirs.h>
-#include <ksimpleconfig.h>
 #include <kcalendarsystem.h>
 #include <kcalendarsystemfactory.h>
 #include "hebrew.h"
@@ -46,7 +45,7 @@ K_EXPORT_COMPONENT_FACTORY( libkorg_hebrew, HebrewFactory )
 QString Hebrew::shortText(const QDate & date)
 {
 
-  KConfig config("korganizerrc", true, false); // Open read-only, no kdeglobals
+  KConfig config("korganizerrc", KConfig::NoGlobals );
 
   config.setGroup("Calendar/Hebrew Calendar Plugin");
   IsraelP =

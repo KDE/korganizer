@@ -67,30 +67,29 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
 
   connect( &mCheckTimer, SIGNAL( timeout() ), SLOT( checkAlarms() ) );
 
-  KSharedConfig::Ptr config = KGlobal::config();
-  config->setGroup( "Alarms" );
-  int interval = config->readEntry( "Interval", 60 );
+  KConfigGroup config(KGlobal::config(), "Alarms");
+  int interval = config.readEntry( "Interval", 60 );
   kDebug(5890) << "KOAlarmClient check interval: " << interval << " seconds."
                 << endl;
-  mLastChecked = config->readEntry( "CalendarsLastChecked", QDateTime() );
+  mLastChecked = config.readEntry( "CalendarsLastChecked", QDateTime() );
 
   // load reminders that were active when quitting
-  config->setGroup( "General" );
-  int numReminders = config->readEntry( "Reminders", 0 );
+  config.changeGroup( "General" );
+  int numReminders = config.readEntry( "Reminders", 0 );
   for ( int i=1; i<=numReminders; ++i )
   {
     QString group( QString( "Incidence-%1" ).arg( i ) );
-    config->setGroup( group );
-    QString uid = config->readEntry( "UID" );
-    QDateTime dt = config->readEntry( "RemindAt", QDateTime() );
+    config.changeGroup( group );
+    QString uid = config.readEntry( "UID" );
+    QDateTime dt = config.readEntry( "RemindAt", QDateTime() );
     if ( !uid.isEmpty() )
       createReminder( mCalendar->incidence( uid ), dt );
-    config->deleteGroup( group );
+    config.deleteGroup();
   }
-  config->setGroup( "General" );
+  config.changeGroup( "General" );
   if (numReminders) {
-     config->writeEntry( "Reminders", 0 );
-     config->sync();
+     config.writeEntry( "Reminders", 0 );
+     config.sync();
   }
 
   checkAlarms();

@@ -27,7 +27,7 @@
 
 #include <QString>
 
-class KSimpleConfig;
+class KConfig;
 
 class DocPrefs
 {
@@ -44,7 +44,7 @@ class DocPrefs
     void writeNumEntry( const QString &identifier, int value );
 
   private:
-    static KSimpleConfig *mConfig;
+    static KConfig *mConfig;
 
     QString mDocId;
 };

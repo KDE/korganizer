@@ -553,17 +553,16 @@ void ActionManager::initActions()
   mEventViewerShowAction  = new KToggleAction(i18n("Show Item Viewer"), this);
   mACollection->addAction("show_eventviewer", mEventViewerShowAction );
   connect(mEventViewerShowAction, SIGNAL(triggered(bool) ), SLOT( toggleEventViewer() ));
-  KConfig *config = KOGlobals::self()->config();
-  config->setGroup( "Settings" );
+  KConfigGroup config(KOGlobals::self()->config(), "Settings" );
   mDateNavigatorShowAction->setChecked(
-      config->readEntry( "DateNavigatorVisible", true ) );
+    config.readEntry( "DateNavigatorVisible", true ) );
   // if we are a kpart, then let's not show the todo in the left pane by
   // default since there's also a Todo part and we'll assume they'll be
   // using that as well, so let's not duplicate it (by default) here
   mTodoViewShowAction->setChecked(
-      config->readEntry( "TodoViewVisible", mIsPart ? false : true ) );
+      config.readEntry( "TodoViewVisible", mIsPart ? false : true ) );
   mEventViewerShowAction->setChecked(
-      config->readEntry( "EventViewerVisible", true ) );
+      config.readEntry( "EventViewerVisible", true ) );
   toggleDateNavigator();
   toggleTodoView();
   toggleEventViewer();
@@ -576,9 +575,9 @@ void ActionManager::initActions()
   mACollection->addAction("show_resourcebuttons", mResourceButtonsAction );
     connect(mResourceButtonsAction, SIGNAL(triggered(bool) ), SLOT( toggleResourceButtons() ));
     mResourceViewShowAction->setChecked(
-        config->readEntry( "ResourceViewVisible", true ) );
+        config.readEntry( "ResourceViewVisible", true ) );
     mResourceButtonsAction->setChecked(
-        config->readEntry( "ResourceButtonsVisible", true ) );
+        config.readEntry( "ResourceButtonsVisible", true ) );
 
     toggleResourceView();
     toggleResourceButtons();
@@ -643,7 +642,7 @@ void ActionManager::readSettings()
   // defaults where none are to be found
 
   KConfig *config = KOGlobals::self()->config();
-  if ( mRecent ) mRecent->loadEntries( config );
+  if ( mRecent ) mRecent->loadEntries( config->group( QString() ) );
   mCalendarView->readSettings();
 }
 
@@ -676,7 +675,7 @@ void ActionManager::writeSettings()
                         mEventViewerShowAction->isChecked() );
   }
 
-  if ( mRecent ) mRecent->saveEntries( config );
+  if ( mRecent ) mRecent->saveEntries( config->group( QString() ) );
 
   config->sync();
 
@@ -707,9 +706,9 @@ void ActionManager::file_open( const KUrl &url )
   // is that URL already opened somewhere else? Activate that window
   KOrg::MainWindow *korg=ActionManager::findInstance( url );
   if ( ( 0 != korg )&&( korg != mMainWindow ) ) {
-#ifdef Q_OS_UNIX	  
+#ifdef Q_OS_UNIX
     KWin::activateWindow( korg->topLevelWidget()->winId() );
-#endif    
+#endif
     return;
   }
 
@@ -881,8 +880,7 @@ bool ActionManager::openURL( const KUrl &url,bool merge )
           KIO::NetAccess::removeTempFile( mFile );
           mURL = url;
           mFile = tmpFile;
-          KConfig *config = KOGlobals::self()->config();
-          config->setGroup( "General" );
+          KConfigGroup config(KOGlobals::self()->config(), "General" );
           setTitle();
           kDebug(5850) << "-- Add recent URL: " << url.prettyUrl() << endl;
           if ( mRecent ) mRecent->addUrl( url );

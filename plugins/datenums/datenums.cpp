@@ -35,8 +35,8 @@ K_EXPORT_COMPONENT_FACTORY( libkorg_datenums, DatenumsFactory )
 
 Datenums::Datenums()
 {
-  KConfig config( "korganizerrc", true, false); // Open read-only, no kdeglobals
-  config.setGroup("Calendar/DateNum Plugin");
+  KConfig _config( "korganizerrc", KConfig::NoGlobals );
+  KConfigGroup config(&_config, "Calendar/DateNum Plugin");
   mDateNum = config.readEntry( "ShowDayNumbers", 0 );
 }
 

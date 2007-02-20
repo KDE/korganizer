@@ -23,18 +23,18 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include <ksimpleconfig.h>
+#include <kconfig.h>
 #include <kstandarddirs.h>
 #include <kdebug.h>
 
 #include "docprefs.h"
 
-KSimpleConfig *DocPrefs::mConfig = 0;
+KConfig *DocPrefs::mConfig = 0;
 
 DocPrefs::DocPrefs( const QString &type )
 {
     if ( !mConfig ) {
-        mConfig = new KSimpleConfig( KStandardDirs::locateLocal( "data", "korganizer/docprefs." + type + ".kconfig" ) );
+        mConfig = new KConfig( KStandardDirs::locateLocal( "data", "korganizer/docprefs." + type + ".kconfig" ) );
     }
 }
 

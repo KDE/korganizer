@@ -60,7 +60,7 @@
 #include <kocore.h>
 #include <kcal/calendarresources.h>
 #include <kstandarddirs.h>
-#include <ksimpleconfig.h>
+#include <kconfig.h>
 #include <kholidays.h>
 
 #if defined(USE_SOLARIS)
@@ -230,8 +230,8 @@ class KOPrefsDialogTime : public KPrefsModule
                                       "l10n/" + (*it) + "/entry.desktop" );
         QString regionName;
         if ( !countryFile.isEmpty() ) {
-          KSimpleConfig cfg( countryFile );
-          cfg.setGroup( "KCM Locale" );
+          KConfig _cfg( countryFile, KConfig::OnlyLocal );
+          KConfigGroup cfg(&_cfg, "KCM Locale" );
           regionName = cfg.readEntry( "Name" );
         }
         if (regionName.isEmpty()) regionName = (*it);

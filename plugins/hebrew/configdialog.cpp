@@ -25,7 +25,6 @@
 #include <kglobal.h>
 #include <kconfig.h>
 #include <kstandarddirs.h>
-#include <ksimpleconfig.h>
 
 ConfigDialog::ConfigDialog(QWidget * parent)
   :KDialog( parent)
@@ -65,7 +64,7 @@ ConfigDialog::~ConfigDialog()
 
 void ConfigDialog::load()
 {
-  KConfig config("korganizerrc", true, false); // Open read-only, no kdeglobals
+  KConfig config("korganizerrc", KConfig::NoGlobals );
 
   config.setGroup("Calendar/Hebrew Calendar Plugin");
   israel_box->setChecked(config.
@@ -80,7 +79,7 @@ void ConfigDialog::load()
 
 void ConfigDialog::save()
 {
-  KConfig config("korganizerrc", false, false); // Open read-write, no kdeglobals
+  KConfig config("korganizerrc", KConfig::NoGlobals); // Open read-write, no kdeglobals
 
   config.setGroup("Calendar/Hebrew Calendar Plugin");
   config.writeEntry("Israel", israel_box->isChecked());

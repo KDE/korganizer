@@ -51,10 +51,9 @@ AlarmDockWindow::AlarmDockWindow()
   : KSystemTrayIcon( 0 )
 {
   // Read the autostart status from the config file
-  KSharedConfig::Ptr config = KGlobal::config();
-  config->setGroup("General");
-  bool autostart = config->readEntry( "Autostart", true );
-  bool alarmsEnabled = config->readEntry( "Enabled", true );
+  KConfigGroup config(KGlobal::config(), "General");
+  bool autostart = config.readEntry( "Autostart", true );
+  bool alarmsEnabled = config.readEntry( "Enabled", true );
 
   mName = i18n( "KOrganizer Reminder Daemon" );
   setToolTip( mName );
@@ -120,15 +119,14 @@ void AlarmDockWindow::toggleAlarmsEnabled()
 {
   kDebug(5890) << "AlarmDockWindow::toggleAlarmsEnabled()" << endl;
 
-  KSharedConfig::Ptr config = KGlobal::config();
-  config->setGroup( "General" );
+  KConfigGroup config(KGlobal::config(), "General" );
 
   bool enabled = !mAlarmsEnabled->isChecked();
   mAlarmsEnabled->setChecked( enabled );
   setIcon( enabled ? mIconEnabled : mIconDisabled );
 
-  config->writeEntry( "Enabled", enabled );
-  config->sync();
+  config.writeEntry( "Enabled", enabled );
+  config.sync();
 }
 
 void AlarmDockWindow::toggleAutostart()
@@ -149,10 +147,9 @@ void AlarmDockWindow::slotDismissAll()
 
 void AlarmDockWindow::enableAutostart( bool enable )
 {
-  KSharedConfig::Ptr config = KGlobal::config();
-  config->setGroup( "General" );
-  config->writeEntry( "Autostart", enable );
-  config->sync();
+  KConfigGroup config(KGlobal::config(), "General" );
+  config.writeEntry( "Autostart", enable );
+  config.sync();
 
   mAutostart->setChecked( enable );
 }

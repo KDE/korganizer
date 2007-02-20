@@ -37,7 +37,7 @@
 
 #include <kvbox.h>
 #include <kprinter.h>
-#include <ksimpleconfig.h>
+#include <kconfig.h>
 #include <kdebug.h>
 #include <kdeversion.h>
 #include <kstandardguiitem.h>
@@ -54,7 +54,7 @@ CalPrinter::CalPrinter( QWidget *parent, Calendar *calendar, KOrg::CoreHelper *h
   : QObject( parent )
 {
   mParent = parent;
-  mConfig = new KSimpleConfig( "korganizer_printing.rc" );
+  mConfig = new KConfig( "korganizer_printing.rc", KConfig::OnlyLocal);
   mCoreHelper = helper;
 
   init( calendar );
