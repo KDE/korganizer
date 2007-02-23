@@ -1195,7 +1195,7 @@ void ActionManager::saveProperties( KConfigGroup &config )
   }
 }
 
-void ActionManager::readProperties( KConfigGroup &config )
+void ActionManager::readProperties( const KConfigGroup &config )
 {
   kDebug(5850) << "ActionManager::readProperties" << endl;
 

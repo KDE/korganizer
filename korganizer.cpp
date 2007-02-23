@@ -275,7 +275,7 @@ void KOrganizer::saveProperties( KConfigGroup &config )
   return mActionManager->saveProperties( config );
 }
 
-void KOrganizer::readProperties( KConfigGroup &config )
+void KOrganizer::readProperties( const KConfigGroup &config )
 {
   return mActionManager->readProperties( config );
 }

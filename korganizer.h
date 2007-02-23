@@ -132,7 +132,7 @@ class KOrganizer : public KPartsMainWindow, public KOrgMainWindow
 
     /* Session management */
     void saveProperties( KConfigGroup& );
-    void readProperties( KConfigGroup& );
+    void readProperties( const KConfigGroup& );
 
   private:
     CalendarView *mCalendarView;  // Main view widget
