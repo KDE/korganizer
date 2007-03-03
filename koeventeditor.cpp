@@ -91,6 +91,9 @@ void KOEventEditor::init()
 
   connect( mGeneral, SIGNAL( focusReceivedSignal() ),
            SIGNAL( focusReceivedSignal() ) );
+
+  connect( mGeneral, SIGNAL( openCategoryDialog() ),
+           SIGNAL( editCategories() ) );
 }
 
 void KOEventEditor::reload()
