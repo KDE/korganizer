@@ -247,6 +247,9 @@ void KOEditorGeneral::selectCategories()
   KPIM::CategorySelectDialog *categoryDialog = new KPIM::CategorySelectDialog( KOPrefs::instance(), mCategoriesButton	 );
   KOGlobals::fitDialogToScreen( categoryDialog );
   categoryDialog->setSelected( mCategories );
+
+  connect(categoryDialog, SIGNAL(editCategories()), this, SIGNAL(openCategoryDialog()));
+
   if ( categoryDialog->exec() ) {
     setCategories( categoryDialog->selectedCategories() );
   }

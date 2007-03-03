@@ -80,6 +80,9 @@ void KOTodoEditor::init()
            mRecurrence, SLOT( setDateTimeStr( const QString & ) ) );
   connect( mGeneral, SIGNAL( signalDateTimeChanged( const QDateTime &, const QDateTime & ) ),
            mRecurrence, SLOT( setDateTimes( const QDateTime &, const QDateTime & ) ) );
+
+  connect( mGeneral, SIGNAL( openCategoryDialog() ),
+           SIGNAL( editCategories() ) );
 }
 
 void KOTodoEditor::reload()
