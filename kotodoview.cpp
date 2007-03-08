@@ -525,7 +525,7 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent)
   action = mItemPopupMenu->addAction(KOGlobals::self()->smallIcon("printer1"), i18n("&Print..."), this, SLOT( printTodo() ) );
   mActionsOnSelection.append( action );
 #endif
-  action = mItemPopupMenu->addAction(KOGlobals::self()->smallIconSet("editdelete"), i18n("&Delete"), this,
+  action = mItemPopupMenu->addAction(KOGlobals::self()->smallIconSet("edit-delete"), i18n("&Delete"), this,
                              SLOT (deleteTodo()) );
   mActionsOnSelection.append( action );
 

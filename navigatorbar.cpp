@@ -69,25 +69,25 @@ NavigatorBar::NavigatorBar( QWidget *parent )
   QIcon pix;
   // Create backward navigation buttons
   mPrevYear = new QPushButton( this );
-  pix = KOGlobals::self()->smallIconSet( isRTL ? "2rightarrow" : "2leftarrow" );
+  pix = KOGlobals::self()->smallIconSet( isRTL ? "arrow-right-double" : "arrow-left-double" );
   mPrevYear->setIcon( pix );
   mPrevYear->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
   mPrevYear->setToolTip( i18n("Previous year") );
 
-  pix = KOGlobals::self()->smallIconSet( isRTL ? "1rightarrow" : "1leftarrow");
+  pix = KOGlobals::self()->smallIconSet( isRTL ? "arrow-right" : "arrow-left");
   mPrevMonth = new QPushButton( this );
   mPrevMonth->setIcon( pix );
   mPrevMonth->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
   mPrevMonth->setToolTip( i18n("Previous month") );
 
   // Create forward navigation buttons
-  pix = KOGlobals::self()->smallIconSet( isRTL ? "1leftarrow" : "1rightarrow");
+  pix = KOGlobals::self()->smallIconSet( isRTL ? "arrow-left" : "arrow-right");
   mNextMonth = new QPushButton( this );
   mNextMonth->setIcon( pix );
   mNextMonth->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
   mNextMonth->setToolTip( i18n("Next month") );
 
-  pix = KOGlobals::self()->smallIconSet( isRTL ? "2leftarrow" : "2rightarrow");
+  pix = KOGlobals::self()->smallIconSet( isRTL ? "arrow-left-double" : "arrow-right-double");
   mNextYear = new QPushButton( this );
   mNextYear->setIcon( pix );
   mNextYear->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );

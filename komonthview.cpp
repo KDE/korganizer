@@ -212,7 +212,7 @@ MonthViewItem::MonthViewItem( Incidence *incidence, const KDateTime &dt,
   mTodoDonePixmap  = KOGlobals::self()->smallIcon("checkedbox");
   mAlarmPixmap     = KOGlobals::self()->smallIcon("bell");
   mRecurPixmap     = KOGlobals::self()->smallIcon("recur");
-  mReplyPixmap     = KOGlobals::self()->smallIcon("mail_reply");
+  mReplyPixmap     = KOGlobals::self()->smallIcon("mail-reply-sender");
 
   mResourceColor = QColor();
   mTodo      = false;

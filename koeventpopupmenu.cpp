@@ -56,13 +56,13 @@ KOEventPopupMenu::KOEventPopupMenu()
   //------------------------------------------------------------------------
   mEditOnlyItems.append( addSeparator() );
   mEditOnlyItems.append(
-    addAction( KOGlobals::self()->smallIcon("editcut"), i18n("&Cut"),
+    addAction( KOGlobals::self()->smallIcon("edit-cut"), i18n("&Cut"),
                this, SLOT( popupCut() ) ) );
   mEditOnlyItems.append(
-    addAction( KOGlobals::self()->smallIcon("editcopy"), i18n("&Copy"),
+    addAction( KOGlobals::self()->smallIcon("edit-copy"), i18n("&Copy"),
                this, SLOT( popupCopy() ) ) );
   mEditOnlyItems.append(
-    addAction( KOGlobals::self()->smallIcon("editdelete"), i18n("&Delete"),
+    addAction( KOGlobals::self()->smallIcon("edit-delete"), i18n("&Delete"),
                this, SLOT( popupDelete() ) ) );
   //------------------------------------------------------------------------
   mEditOnlyItems.append( addSeparator() );

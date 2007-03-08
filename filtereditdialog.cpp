@@ -204,7 +204,7 @@ void FilterEdit::bDeletePressed() {
   if ( mFilters->isEmpty() ) return; // We need at least a default filter object.
 
   int result = KMessageBox::warningContinueCancel( this,
-     i18n("This item will be permanently deleted."), i18n("Delete Confirmation"), KGuiItem(i18n("Delete"),"editdelete") );
+     i18n("This item will be permanently deleted."), i18n("Delete Confirmation"), KGuiItem(i18n("Delete"),"edit-delete") );
 
   if ( result != KMessageBox::Continue )
     return;

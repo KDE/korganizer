@@ -701,7 +701,7 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
     alarmPxmp          = new QPixmap( KOGlobals::self()->smallIcon("bell") );
     recurPxmp          = new QPixmap( KOGlobals::self()->smallIcon("recur") );
     readonlyPxmp       = new QPixmap( KOGlobals::self()->smallIcon("readonlyevent") );
-    replyPxmp          = new QPixmap( KOGlobals::self()->smallIcon("mail_reply") );
+    replyPxmp          = new QPixmap( KOGlobals::self()->smallIcon("mail-reply-sender") );
     groupPxmp          = new QPixmap( KOGlobals::self()->smallIcon("groupevent") );
     groupPxmpTentative = new QPixmap( KOGlobals::self()->smallIcon("groupeventtentative") );
     organizerPxmp      = new QPixmap( KOGlobals::self()->smallIcon("organizer") );

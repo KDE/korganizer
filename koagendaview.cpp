@@ -434,11 +434,11 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
 
   if ( KOPrefs::instance()->compactDialogs() ) {
     if ( KOPrefs::instance()->mVerticalScreen ) {
-      mExpandedPixmap = KOGlobals::self()->smallIcon( "1downarrow" );
-      mNotExpandedPixmap = KOGlobals::self()->smallIcon( "1uparrow" );
+      mExpandedPixmap = KOGlobals::self()->smallIcon( "arrow-down" );
+      mNotExpandedPixmap = KOGlobals::self()->smallIcon( "arrow-up" );
     } else {
-      mExpandedPixmap = KOGlobals::self()->smallIcon( isRTL ? "1leftarrow" : "1rightarrow" );
-      mNotExpandedPixmap = KOGlobals::self()->smallIcon( isRTL ? "1rightarrow" : "1leftarrow" );
+      mExpandedPixmap = KOGlobals::self()->smallIcon( isRTL ? "arrow-left" : "arrow-right" );
+      mNotExpandedPixmap = KOGlobals::self()->smallIcon( isRTL ? "arrow-right" : "arrow-left" );
     }
   }
 

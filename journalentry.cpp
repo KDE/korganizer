@@ -220,7 +220,7 @@ JournalEntry::JournalEntry( Journal* j, QWidget *parent ) :
 
   mDeleteButton = new QToolButton( this );
   mDeleteButton->setObjectName( "deleteButton" );
-  QPixmap pix = KOGlobals::self()->smallIcon( "editdelete" );
+  QPixmap pix = KOGlobals::self()->smallIcon( "edit-delete" );
   mDeleteButton->setIcon( pix );
   mDeleteButton->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
   mDeleteButton->setToolTip( i18n("Delete this journal entry") );

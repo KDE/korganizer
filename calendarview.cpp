@@ -837,7 +837,7 @@ int CalendarView::msgItemDelete( Incidence *incidence )
     this,
     i18n("The item \"%1\" will be permanently deleted.", incidence->summary() ),
     i18n("KOrganizer Confirmation"),
-    KGuiItem( i18n("&Delete"),"editdelete" ),
+    KGuiItem( i18n("&Delete"),"edit-delete" ),
     QString(),
     KMessageBox::Notify );
 }

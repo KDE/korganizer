@@ -488,7 +488,7 @@ void KODayMatrix::dropEvent( QDropEvent *e )
 #ifdef __GNUC__
         #warning Use a standard action for copy
 #endif
-        copy = menu->addAction( KOGlobals::self()->smallIcon("editcopy"), i18n("&Copy") );
+        copy = menu->addAction( KOGlobals::self()->smallIcon("edit-copy"), i18n("&Copy") );
     } else {
       move = menu->addAction( i18n("&Add") );
     }

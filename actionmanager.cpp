@@ -308,7 +308,7 @@ void ActionManager::initActions()
     mUndoAction = KStandardAction::undo( h, SLOT( undo() ), mACollection );
     mRedoAction = KStandardAction::redo( h, SLOT( redo() ), mACollection );
   }
-  mDeleteAction  = new KAction(KIcon("editdelete"), i18n("&Delete"), this);
+  mDeleteAction  = new KAction(KIcon("edit-delete"), i18n("&Delete"), this);
   mACollection->addAction("edit_delete", mDeleteAction );
   connect(mDeleteAction, SIGNAL(triggered(bool) ), mCalendarView, SLOT( appointment_delete() ));
   if ( mIsPart ) {
@@ -392,16 +392,16 @@ void ActionManager::initActions()
 
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ZOOM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   // TODO: try to find / create better icons for the following 4 actions
-  action  = new KAction(KIcon("viewmag+"), i18n("Zoom In Horizontally"), this);
+  action  = new KAction(KIcon("zoom-in"), i18n("Zoom In Horizontally"), this);
   mACollection->addAction("zoom_in_horizontally", action );
   connect(action, SIGNAL(triggered(bool) ), mCalendarView->viewManager(), SLOT( zoomInHorizontally() ));
-  action  = new KAction(KIcon("viewmag-"), i18n("Zoom Out Horizontally"), this);
+  action  = new KAction(KIcon("zoom-out"), i18n("Zoom Out Horizontally"), this);
   mACollection->addAction("zoom_out_horizontally", action );
   connect(action, SIGNAL(triggered(bool) ), mCalendarView->viewManager(), SLOT( zoomOutHorizontally() ));
-  action  = new KAction(KIcon("viewmag+"), i18n("Zoom In Vertically"), this);
+  action  = new KAction(KIcon("zoom-in"), i18n("Zoom In Vertically"), this);
   mACollection->addAction("zoom_in_vertically", action );
   connect(action, SIGNAL(triggered(bool) ), mCalendarView->viewManager(), SLOT( zoomInVertically() ));
-  action  = new KAction(KIcon("viewmag-"), i18n("Zoom Out Vertically"), this);
+  action  = new KAction(KIcon("zoom-out"), i18n("Zoom Out Vertically"), this);
   mACollection->addAction("zoom_out_vertically", action );
   connect(action, SIGNAL(triggered(bool) ), mCalendarView->viewManager(), SLOT( zoomOutVertically() ));
 
@@ -410,11 +410,11 @@ void ActionManager::initActions()
 
   //************************** Actions MENU *********************************
 
-  action  = new KAction(KIcon("today"), i18n("Go to &Today"), this);
+  action  = new KAction(KIcon("calendar-today"), i18n("Go to &Today"), this);
   mACollection->addAction("go_today", action );
   connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( goToday() ));
   bool isRTL = QApplication::isRightToLeft();
-  action  = new KAction(KIcon(isRTL ? "forward" : "back"), i18n("Go &Backward"), this);
+  action  = new KAction(KIcon(isRTL ? "go-next" : "go-previous"), i18n("Go &Backward"), this);
   mACollection->addAction("go_previous", action );
   connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( goPrevious() ));
 
@@ -426,7 +426,7 @@ void ActionManager::initActions()
   connect( mCalendarView, SIGNAL( changeNavStringPrev( const QString & ) ),
            this, SLOT( dumpText( const QString & ) ) );*/
 
-  action  = new KAction(KIcon(isRTL ? "back" : "forward"), i18n("Go &Forward"), this);
+  action  = new KAction(KIcon(isRTL ? "go-previous" : "go-next"), i18n("Go &Forward"), this);
   mACollection->addAction("go_next", action );
   connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( goNext() ));
   /*
@@ -482,12 +482,12 @@ void ActionManager::initActions()
 
 
   //************************** SCHEDULE MENU ********************************
-  mPublishEvent  = new KAction(KIcon("mail_send"), i18n("&Publish Item Information..."), this);
+  mPublishEvent  = new KAction(KIcon("mail-send"), i18n("&Publish Item Information..."), this);
   mACollection->addAction("schedule_publish", mPublishEvent );
   connect(mPublishEvent, SIGNAL(triggered(bool) ), mCalendarView, SLOT( schedule_publish() ));
   mPublishEvent->setEnabled( false );
 
-  action  = new KAction(KIcon("mail_generic"), i18n("Send &Invitation to Attendees"), this);
+  action  = new KAction(KIcon("mail"), i18n("Send &Invitation to Attendees"), this);
   mACollection->addAction("schedule_request", action );
   connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( schedule_request() ));
   action->setEnabled( false );
@@ -508,7 +508,7 @@ void ActionManager::initActions()
   connect( mCalendarView,SIGNAL( organizerEventsSelected( bool ) ),
            action,SLOT( setEnabled( bool ) ) );
 
-  action  = new KAction(KIcon("mail_reply"), i18n("Send Status &Update"), this);
+  action  = new KAction(KIcon("mail-reply-sender"), i18n("Send Status &Update"), this);
   mACollection->addAction("schedule_reply", action );
   connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( schedule_reply() ));
   action->setEnabled( false );
@@ -533,7 +533,7 @@ void ActionManager::initActions()
   action->setEnabled( true );
 
   if ( !mIsPart ) {
-  action  = new KAction(KIcon("contents"), i18n("&Addressbook"), this);
+  action  = new KAction(KIcon("help-contents"), i18n("&Addressbook"), this);
   mACollection->addAction("addressbook", action );
       connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( openAddressbook() ));
   }
