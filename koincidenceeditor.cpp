@@ -62,7 +62,7 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
   : KPageDialog( parent ),
     mDetails( 0 ), mAttachments( 0 )
 {
-  setFaceType( Tabbed );
+  setFaceType( KPageDialog::Tabbed );
   setCaption( caption );
   setButtons( Ok | Apply | Cancel | Default );
   setDefaultButton( Ok );

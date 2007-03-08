@@ -41,7 +41,6 @@
 #include <kaction.h>
 #include <kactioncollection.h>
 #include <k3listviewsearchline.h>
-#include <ktoolbar.h> 
 #include <QLayout>
 #include <QLabel>
 #include <QComboBox>
@@ -59,10 +58,10 @@ KOTodoListViewQuickSearch::KOTodoListViewQuickSearch( QWidget *parent,
                                             QList<K3ListView*> listViews,
                                             KActionCollection *actionCollection,
                                             Calendar *calendar )
-  : KToolBar( parent ), mCategoryCombo( 0 ), mCalendar( calendar ),
+  : QToolBar( parent ), mCategoryCombo( 0 ), mCalendar( calendar ),
     mQuickSearchLine( 0 )
 {
-  if ( !action ) {
+  /*if ( !action ) {
   action  = new KAction(KIcon(QApplication::isRightToLeft() ? "clear_left" : "locationbar_erase"), i18n("Reset"), this);
   actionCollection->addAction("reset_quicksearch", action );
     connect(action, SIGNAL(triggered(bool) ), SLOT( reset() ));
@@ -71,24 +70,22 @@ KOTodoListViewQuickSearch::KOTodoListViewQuickSearch( QWidget *parent,
                                   "all to-dos are shown again." ) );
   }
 
-  addAction( action );
+  addAction( action );*/
 
   layout()->setSpacing( KDialog::spacingHint() );
 
-  mSearchLabel = new QLabel( i18n("Sea&rch:"), this );
-  mSearchLabel->setObjectName( "kde toolbar widget" );
-
   mQuickSearchLine = new KOTodoListViewQuickSearchLine( this, listViews );
+  mQuickSearchLine->setClickMessage( i18n("Search") );
   addWidget( mQuickSearchLine );
-
-  mSearchLabel->setBuddy( mQuickSearchLine );
 
   mCategoryLabel = new QLabel( i18n("&Category:"), this );
   mCategoryLabel->setObjectName( "kde toolbar widget" );
+  addWidget( mCategoryLabel );
 
   mCategoryCombo = new QComboBox( this );
   mCategoryCombo->setObjectName( "quick search category combo box" );
   fillCategories();
+  addWidget( mCategoryCombo );
 
   mCategoryCombo->setCurrentIndex( 0 );
   connect( mCategoryCombo, SIGNAL ( activated( int ) ),
@@ -190,8 +187,7 @@ void KOTodoListViewQuickSearch::setCalendar( Calendar *calendar )
 void KOTodoListViewQuickSearch::resizeEvent( QResizeEvent *e )
 {
   int w = width() - mCategoryCombo->sizeHint().width()
-                  - mCategoryLabel->sizeHint().width()
-                  - mSearchLabel->sizeHint().width();
+                  - mCategoryLabel->sizeHint().width();
   int halfw = width() / 2;
 
   if ( w < halfw ) {
@@ -200,11 +196,6 @@ void KOTodoListViewQuickSearch::resizeEvent( QResizeEvent *e )
   } else
     mCategoryLabel->show();
   if ( w < halfw ) {
-    w += mSearchLabel->sizeHint().width();
-    mSearchLabel->hide();
-  } else
-    mSearchLabel->show();
-  if ( w < halfw ) {
     slotCategoryChanged( 0 );
     mCategoryCombo->hide();
   } else {
@@ -212,21 +203,21 @@ void KOTodoListViewQuickSearch::resizeEvent( QResizeEvent *e )
     mCategoryCombo->show();
   }
 
-  KToolBar::resizeEvent( e );
+  QToolBar::resizeEvent( e );
 }
 
 void KOTodoListViewQuickSearch::showEvent( QShowEvent *e )
 {
   connect( action, SIGNAL( activated() ), this, SLOT( reset() ) );
 
-  KToolBar::showEvent( e );
+  QToolBar::showEvent( e );
 }
 
 void KOTodoListViewQuickSearch::hideEvent( QHideEvent *e )
 {
   disconnect( action, SIGNAL( activated() ), this, SLOT( reset() ) );
 
-  KToolBar::hideEvent( e );
+  QToolBar::hideEvent( e );
 }
 
 KOTodoListViewQuickSearchContainer::KOTodoListViewQuickSearchContainer(

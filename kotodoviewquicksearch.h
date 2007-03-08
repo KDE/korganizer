@@ -28,8 +28,9 @@
 #define KOTODOVIEWQUICKSEARCH_H
 
 #include <k3listviewsearchline.h>
-#include <ktoolbar.h>
+#include <QToolBar>
 #include <QVector>
+
 
 class KActionCollection;
 class KAction;
@@ -62,7 +63,7 @@ class KOTodoListViewQuickSearchLine : public K3ListViewSearchLine
 
 class KOTodoListViewQuickSearchContainer;
 
-class KOTodoListViewQuickSearch : public KToolBar
+class KOTodoListViewQuickSearch : public QToolBar
 {
   Q_OBJECT
   friend class KOTodoListViewQuickSearchContainer;
@@ -94,7 +95,7 @@ class KOTodoListViewQuickSearch : public KToolBar
     QVector<QString> categoryList;
     Calendar *mCalendar;
     KOTodoListViewQuickSearchLine *mQuickSearchLine;
-    QLabel *mCategoryLabel, *mSearchLabel;
+    QLabel *mCategoryLabel;
     static QAction *action;
 };
 
