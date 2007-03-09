@@ -43,6 +43,7 @@ Name[x-test]=xxJournal Print Stylexx
 Name[zh_TW]=日誌列印風格
 Comment=This plugin allows you to print out journal entries (diary entries).
 Comment[af]=Hierdie inprop module maak dit moontlik om joernaal inskrywings (dagboek inskrywings) te druk.
+Comment[bg]=Приставката служи за печат на дневника.
 Comment[ca]=Aquest endollable us permet imprimir entrades del diari.
 Comment[cs]=tento modul umožňuje tisk položek deníku.
 Comment[da]=Dette plugin gør at du kan udskrive journalindgange (dagbogsindgange).
