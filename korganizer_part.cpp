@@ -194,7 +194,7 @@ KUrl KOrganizerPart::getCurrentURL() const
 
 bool KOrganizerPart::openFile()
 {
-  mView->openCalendar( m_file );
+  mView->openCalendar( localFilePath() );
   mView->show();
   return true;
 }
