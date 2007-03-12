@@ -1,7 +1,4 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>KOEditorAlarms_base</class>
  <widget class="QWidget" name="KOEditorAlarms_base" >
   <property name="geometry" >
@@ -51,6 +48,9 @@
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
+          </property>
+          <property name="maximum" >
+           <number>999999999</number>
           </property>
          </widget>
         </item>
@@ -300,14 +300,6 @@
       <item>
        <widget class="QStackedWidget" name="mTypeStack" >
         <widget class="QWidget" name="WStackPage" >
-         <property name="geometry" >
-          <rect>
-           <x>0</x>
-           <y>0</y>
-           <width>295</width>
-           <height>134</height>
-          </rect>
-         </property>
          <layout class="QVBoxLayout" >
           <property name="margin" >
            <number>0</number>
@@ -331,14 +323,6 @@
          </layout>
         </widget>
         <widget class="QWidget" name="WStackPage" >
-         <property name="geometry" >
-          <rect>
-           <x>0</x>
-           <y>0</y>
-           <width>295</width>
-           <height>134</height>
-          </rect>
-         </property>
          <layout class="QVBoxLayout" >
           <property name="margin" >
            <number>0</number>
@@ -382,14 +366,6 @@
          </layout>
         </widget>
         <widget class="QWidget" name="WStackPage" >
-         <property name="geometry" >
-          <rect>
-           <x>0</x>
-           <y>0</y>
-           <width>295</width>
-           <height>134</height>
-          </rect>
-         </property>
          <layout class="QVBoxLayout" >
           <property name="margin" >
            <number>0</number>
@@ -446,14 +422,6 @@
          </layout>
         </widget>
         <widget class="QWidget" name="WStackPage" >
-         <property name="geometry" >
-          <rect>
-           <x>0</x>
-           <y>0</y>
-           <width>295</width>
-           <height>134</height>
-          </rect>
-         </property>
          <layout class="QGridLayout" >
           <property name="margin" >
            <number>0</number>
@@ -572,32 +540,19 @@
  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>KPIM::AddresseeLineEdit</class>
-   <extends></extends>
-   <header>libkdepim/addresseelineedit.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
    <class>Q3ListView</class>
-   <extends></extends>
+   <extends>Q3Frame</extends>
    <header>q3listview.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>QStackedWidget</class>
-   <extends></extends>
-   <header>QStackedWidget</header>
-   <container>1</container>
-   <pixmap></pixmap>
+   <class>KPIM::AddresseeLineEdit</class>
+   <extends>KLineEdit</extends>
+   <header>libkdepim/addresseelineedit.h</header>
   </customwidget>
   <customwidget>
    <class>KUrlRequester</class>
-   <extends></extends>
+   <extends>QFrame</extends>
    <header>kurlrequester.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
  </customwidgets>
  <includes>
