@@ -47,13 +47,13 @@ QString Hebrew::shortText(const QDate & date)
 
   KConfig config("korganizerrc", KConfig::NoGlobals );
 
-  config.setGroup("Calendar/Hebrew Calendar Plugin");
+  KConfigGroup group(&config,"Calendar/Hebrew Calendar Plugin");
   IsraelP =
-    config.readEntry("Israel",
+    group.readEntry("Israel",
                          (KGlobal::locale()->country() == QLatin1String(".il")));
-  Holiday::ParshaP = config.readEntry("Parsha", true);
-  Holiday::CholP = config.readEntry("Chol_HaMoed", true);
-  Holiday::OmerP = config.readEntry("Omer", true);
+  Holiday::ParshaP = group.readEntry("Parsha", true);
+  Holiday::CholP = group.readEntry("Chol_HaMoed", true);
+  Holiday::OmerP = group.readEntry("Omer", true);
   QString label_text;
 
   int day = date.day();

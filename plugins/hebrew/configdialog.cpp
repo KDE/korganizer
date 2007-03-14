@@ -66,27 +66,26 @@ void ConfigDialog::load()
 {
   KConfig config("korganizerrc", KConfig::NoGlobals );
 
-  config.setGroup("Calendar/Hebrew Calendar Plugin");
-  israel_box->setChecked(config.
+  KConfigGroup group(&config, "Calendar/Hebrew Calendar Plugin");
+  israel_box->setChecked(group.
                          readEntry("Israel",
                                        (KGlobal::locale()->
                                         country() == QLatin1String(".il"))));
-  parsha_box->setChecked(config.readEntry("Parsha", true));
-  chol_box->setChecked(config.readEntry("Chol_HaMoed", true));
-  omer_box->setChecked(config.readEntry("Omer", true));
+  parsha_box->setChecked(group.readEntry("Parsha", true));
+  chol_box->setChecked(group.readEntry("Chol_HaMoed", true));
+  omer_box->setChecked(group.readEntry("Omer", true));
 
 }
 
 void ConfigDialog::save()
 {
   KConfig config("korganizerrc", KConfig::NoGlobals); // Open read-write, no kdeglobals
-
-  config.setGroup("Calendar/Hebrew Calendar Plugin");
-  config.writeEntry("Israel", israel_box->isChecked());
-  config.writeEntry("Parsha", parsha_box->isChecked());
-  config.writeEntry("Chol_HaMoed", chol_box->isChecked());
-  config.writeEntry("Omer", omer_box->isChecked());
-  config.sync();
+  KConfigGroup group(&config,"Calendar/Hebrew Calendar Plugin");
+  group.writeEntry("Israel", israel_box->isChecked());
+  group.writeEntry("Parsha", parsha_box->isChecked());
+  group.writeEntry("Chol_HaMoed", chol_box->isChecked());
+  group.writeEntry("Omer", omer_box->isChecked());
+  group.sync();
 }
 
 void ConfigDialog::slotOk()
