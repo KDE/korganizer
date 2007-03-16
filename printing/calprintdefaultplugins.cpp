@@ -1139,7 +1139,7 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
     break;
   }
 
-  SortDirection sortDirection;
+  SortDirection sortDirection = SortDirectionAscending;
   switch( mTodoSortDirection ) {
   case TodoDirectionAscending:
     sortDirection = SortDirectionAscending; break;
