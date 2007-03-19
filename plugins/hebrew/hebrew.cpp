@@ -21,7 +21,6 @@
 #include <kconfig.h>
 #include <kstandarddirs.h>
 #include <kcalendarsystem.h>
-#include <kcalendarsystemfactory.h>
 #include "hebrew.h"
 #include "configdialog.h"
 #include "parsha.h"
@@ -79,7 +78,7 @@ QString Hebrew::shortText(const QDate & date)
                          hebrew_leap_year_p, IsraelP,
                          hebrew_day_number, hebrew_year);
 
-  KCalendarSystem *cal = KCalendarSystemFactory::create("hebrew");
+  KCalendarSystem *cal = KCalendarSystem::create("hebrew");
   label_text = QString("%1 %2").arg(cal->dayString(date, false))
                                 .arg(cal->monthName(date));
 
