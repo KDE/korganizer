@@ -59,7 +59,7 @@ class PrintPlugin : public KOrg::Plugin
 
     typedef QList<PrintPlugin*> List;
     static int interfaceVersion() { return 2; }
-    static QString serviceType() { return "KOrganizer/PrintPlugin"; }
+    static QString serviceType() { return QLatin1String( "KOrganizer/PrintPlugin" ); }
 
     virtual void setKOrgCoreHelper( KOrg::CoreHelper*helper ) { mCoreHelper = helper; }
     virtual void setConfig( KConfig *cfg ) { mConfig = cfg; }
