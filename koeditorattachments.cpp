@@ -698,7 +698,7 @@ void KOEditorAttachments::addAttachment( const QString &uri,
   item->setLabel( label );
   if ( mimeType.isEmpty() ) {
     if ( uri.startsWith( KDEPIMPROTOCOL_CONTACT ) )
-      item->setMimeType( "text/x-vcard" );
+      item->setMimeType( "text/directory" );
     else if ( uri.startsWith( KDEPIMPROTOCOL_EMAIL ) )
       item->setMimeType( "message/rfc822" );
     else if ( uri.startsWith( KDEPIMPROTOCOL_INCIDENCE ) )
