@@ -396,9 +396,8 @@ KUrl FreeBusyManager::freeBusyUrl( const QString &email )
   // First check if there is a specific FB url for this email
   QString configFile = KStandardDirs::locateLocal( "data", "korganizer/freebusyurls" );
   KConfig cfg( configFile );
-
-  cfg.setGroup( email );
-  QString url = cfg.readEntry( "url" );
+  KConfigGroup group = cfg.group(email);
+  QString url = group.readEntry( "url" );
   if ( !url.isEmpty() ) {
     return KUrl( url );
   }
@@ -411,8 +410,8 @@ KUrl FreeBusyManager::freeBusyUrl( const QString &email )
     if ( !pref.isEmpty() && pref != email ) {
       kDebug( 5850 ) << "FreeBusyManager::freeBusyUrl():" <<
         "Preferred email of " << email << " is " << pref << endl;
-      cfg.setGroup( pref );
-      url = cfg.readEntry ( "url" );
+      group = cfg.group(pref);
+      url = group.readEntry ( "url" );
       if ( !url.isEmpty() )
         kDebug( 5850 ) << "FreeBusyManager::freeBusyUrl():" <<
           "Taken url from preferred email:" << url << endl;
