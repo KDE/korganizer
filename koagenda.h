@@ -37,12 +37,10 @@
 #include <QDropEvent>
 #include <QLabel>
 #include <QResizeEvent>
-#include <Q3PopupMenu>
 #include <QMouseEvent>
 #include <kcal/incidencebase.h>
 
 
-class Q3PopupMenu;
 class QTime;
 class QLabel;
 class KConfig;
@@ -381,8 +379,6 @@ class KOAgenda : public Q3ScrollView
     // List of all Items contained in agenda
     QList<KOAgendaItem*> mItems;
     QList<KOAgendaItem*> mItemsToDelete;
-
-    Q3PopupMenu *mItemPopup; // Right mouse button popup menu for KOAgendaItems
 
     int mOldLowerScrollValue;
     int mOldUpperScrollValue;

@@ -1639,10 +1639,10 @@ void KOAgendaView::readSettings(KConfig *config)
 {
 //  kDebug(5850) << "KOAgendaView::readSettings()" << endl;
 
-  config->setGroup("Views");
+  KConfigGroup group = config->group("Views");
 
 #ifndef KORG_NOSPLITTER
-  QList<int> sizes = config->readEntry("Separator AgendaView",QList<int>());
+  QList<int> sizes = group.readEntry("Separator AgendaView",QList<int>());
   if (sizes.count() == 2) {
     mSplitterAgenda->setSizes(sizes);
   }
@@ -1655,11 +1655,11 @@ void KOAgendaView::writeSettings(KConfig *config)
 {
 //  kDebug(5850) << "KOAgendaView::writeSettings()" << endl;
 
-  config->setGroup("Views");
+  KConfigGroup group = config->group("Views");
 
 #ifndef KORG_NOSPLITTER
   QList<int> list = mSplitterAgenda->sizes();
-  config->writeEntry("Separator AgendaView",list);
+  group.writeEntry("Separator AgendaView",list);
 #endif
 }
 
