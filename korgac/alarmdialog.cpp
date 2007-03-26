@@ -36,7 +36,7 @@
 #include <QtDBus>
 #include <kiconloader.h>
 #include <klocale.h>
-#include <kprocess.h>
+#include <k3process.h>
 #include <kdebug.h>
 #include <kmessagebox.h>
 #include <knotification.h>
@@ -224,9 +224,9 @@ void AlarmDialog::eventNotification()
     if (alarm->type() == Alarm::Procedure) {
 // FIXME: Add a message box asking whether the procedure should really be executed
       kDebug(5890) << "Starting program: '" << alarm->programFile() << "'" << endl;
-      KProcess proc;
+      K3Process proc;
       proc << QFile::encodeName(alarm->programFile());
-      proc.start(KProcess::DontCare);
+      proc.start(K3Process::DontCare);
     }
     else if (alarm->type() == Alarm::Audio) {
       beeped = true;

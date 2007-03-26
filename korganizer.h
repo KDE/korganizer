@@ -40,7 +40,7 @@ class KTemporaryFile;
 class KRecentFilesAction;
 class KOWindowList;
 class KToggleAction;
-class KProcess;
+class K3Process;
 class KONewStuff;
 class ActionManager;
 class CalendarView;

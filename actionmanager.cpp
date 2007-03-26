@@ -37,7 +37,7 @@
 #include "koprefs.h"
 #include "koviewmanager.h"
 #include "kowindowlist.h"
-#include "kprocess.h"
+#include "k3process.h"
 #include "konewstuff.h"
 #include "history.h"
 #include "kogroupware.h"
@@ -739,9 +739,9 @@ void ActionManager::file_icalimport()
     return;
   }
 
-  KProcess proc;
+  K3Process proc;
   proc << "ical2vcal" << tmpfn.fileName();
-  bool success = proc.start( KProcess::Block );
+  bool success = proc.start( K3Process::Block );
 
   if ( !success ) {
     kDebug(5850) << "Error starting ical2vcal." << endl;
@@ -1265,11 +1265,11 @@ void ActionManager::setDestinationPolicy()
 
 void ActionManager::configureDateTime()
 {
-  KProcess *proc = new KProcess;
+  K3Process *proc = new K3Process;
   *proc << "kcmshell" << "language";
 
-  connect( proc,SIGNAL( processExited( KProcess * ) ),
-          SLOT( configureDateTimeFinished( KProcess * ) ) );
+  connect( proc,SIGNAL( processExited( K3Process * ) ),
+          SLOT( configureDateTimeFinished( K3Process * ) ) );
 
   if ( !proc->start() ) {
       KMessageBox::sorry( dialogParent(),
@@ -1385,7 +1385,7 @@ bool ActionManager::addIncidence( const QString& ical )
   return mCalendarView->addIncidence( ical );
 }
 
-void ActionManager::configureDateTimeFinished( KProcess *proc )
+void ActionManager::configureDateTimeFinished( K3Process *proc )
 {
   delete proc;
 }

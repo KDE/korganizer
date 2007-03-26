@@ -33,7 +33,7 @@
 
 class KComponentData;
 class KAboutData;
-class KProcess;
+class K3Process;
 
 class CalendarView;
 class ActionManager;
@@ -93,7 +93,7 @@ class KOrganizerPart: public KParts::ReadOnlyPart,
     virtual bool openFile();
 
   protected slots:
-    void startCompleted( KProcess * );
+    void startCompleted( K3Process * );
 
   private:
     CalendarView *mView;

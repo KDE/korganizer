@@ -47,7 +47,7 @@
 #include <kdebug.h>
 #include <kstandarddirs.h>
 #include <kconfig.h>
-#include <kprocess.h>
+#include <k3process.h>
 #include <ktemporaryfile.h>
 #include <kstatusbar.h>
 #include <kparts/genericfactory.h>
@@ -136,7 +136,7 @@ KAboutData *KOrganizerPart::createAboutData()
   return new KOrg::AboutData;
 }
 
-void KOrganizerPart::startCompleted( KProcess *process )
+void KOrganizerPart::startCompleted( K3Process *process )
 {
   delete process;
 }

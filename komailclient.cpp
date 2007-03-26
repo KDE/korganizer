@@ -31,7 +31,7 @@
 #include <kmessagebox.h>
 #include <kurl.h>
 #include <kapplication.h>
-#include <kprocess.h>
+#include <k3process.h>
 
 #include <kcal/event.h>
 #include <kcal/todo.h>
@@ -147,15 +147,15 @@ bool KOMailClient::send(const QString &from,const QString &to,
       if (command.isNull()) return false; // give up
 
       command.append(QString::fromLatin1(" -s "));
-      command.append(KProcess::quote(subject));
+      command.append(K3Process::quote(subject));
 
       if (bcc) {
         command.append(QString::fromLatin1(" -b "));
-        command.append(KProcess::quote(from));
+        command.append(K3Process::quote(from));
       }
 
       command.append(" ");
-      command.append(KProcess::quote(to));
+      command.append(K3Process::quote(to));
 
       needHeaders = false;
     }
