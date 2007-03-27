@@ -1209,7 +1209,7 @@ void KOEditorRecurrence::readIncidence(Incidence *incidence)
   int month = 0;
 
   KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
-  if ( incidence->type() == QLatin1String("Todo") ) {
+  if ( incidence->type() == "Todo" ) {
     Todo *todo = static_cast<Todo *>(incidence);
     setDefaults( todo->dtStart(true).toTimeSpec(timeSpec).dateTime(),
                  todo->dtDue().toTimeSpec(timeSpec).dateTime(), todo->floats() );

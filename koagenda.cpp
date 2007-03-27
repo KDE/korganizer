@@ -865,7 +865,7 @@ void KOAgenda::startItemAction(const QPoint& viewportPos)
   mStartCell = contentsToGrid( pos );
   mEndCell = mStartCell;
 
-  bool noResize = ( mActionItem->incidence()->type() == QLatin1String("Todo"));
+  bool noResize = ( mActionItem->incidence()->type() == "Todo");
 
   mActionType = MOVE;
   if ( !noResize ) {
@@ -1213,7 +1213,7 @@ void KOAgenda::setNoActionCursor( KOAgendaItem *moveItem, const QPoint& viewport
 
   QPoint pos = viewportToContents( viewportPos );
   bool noResize = (moveItem && moveItem->incidence() &&
-      moveItem->incidence()->type() == QLatin1String("Todo"));
+      moveItem->incidence()->type() == "Todo");
 
   KOAgenda::MouseActionType resizeType = MOVE;
   if ( !noResize ) resizeType = isInResizeArea( mAllDayMode, pos , moveItem);

@@ -708,7 +708,7 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
   }
 
   QColor bgColor;
-  if ( mIncidence->type() == QLatin1String("Todo") ) {
+  if ( mIncidence->type() == "Todo" ) {
     if ( static_cast<Todo*>(mIncidence)->isOverdue() )
       bgColor = KOPrefs::instance()->todoOverdueColor();
     else if ( static_cast<Todo*>(mIncidence)->dtDue().date() ==

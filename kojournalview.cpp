@@ -163,7 +163,7 @@ void KOJournalView::showIncidences( const Incidence::List &incidences )
   clearEntries();
   Incidence::List::const_iterator it;
   for ( it=incidences.constBegin(); it!=incidences.constEnd(); ++it) {
-    if ((*it) && ( (*it)->type() == QLatin1String("Journal") ) ) {
+    if ((*it) && ( (*it)->type() == "Journal" ) ) {
       Journal*j = static_cast<Journal*>(*it);
       if ( j ) appendJournal( j, j->dtStart().date() );
     }
