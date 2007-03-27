@@ -42,7 +42,7 @@
 #include <kcal/incidenceformatter.h>
 #include <kcal/vcaldrag.h>
 #include <libkdepim/kvcarddrag.h>
-#include <emailfunctions/email.h>
+#include <kpimutils/email.h>
 #ifndef KORG_NOKABC
 #include <kabc/addressee.h>
 #include <kabc/vcardconverter.h>
@@ -553,10 +553,10 @@ void KOAgendaItem::addAttendee( const QString &newAttendee )
 {
   kDebug(5850) << " Email: " << newAttendee << endl;
   QString name, email;
-  EmailAddressTools::extractEmailAddressAndName( newAttendee, name, email );
+  KPIMUtils::extractEmailAddressAndName( newAttendee, name, email );
   if ( !( name.isEmpty() && email.isEmpty() ) ) {
       mIncidence->addAttendee(new Attendee(name,email));
-    KMessageBox::information( this, i18n("Attendee \"%1\" added to the calendar item \"%2\"", EmailAddressTools::normalizedAddress(name, email, QString()), text()), i18n("Attendee added"), "AttendeeDroppedAdded" );
+    KMessageBox::information( this, i18n("Attendee \"%1\" added to the calendar item \"%2\"", KPIMUtils::normalizedAddress(name, email, QString()), text()), i18n("Attendee added"), "AttendeeDroppedAdded" );
   }
   
 }

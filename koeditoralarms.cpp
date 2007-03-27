@@ -40,7 +40,7 @@
 #include <kcal/alarm.h>
 #include <kcal/incidence.h>
 
-#include <emailfunctions/email.h>
+#include <kpimutils/email.h>
 
 class AlarmListViewItem : public Q3ListViewItem
 {
@@ -297,7 +297,7 @@ void KOEditorAlarms::writeAlarm( KCal::Alarm *alarm )
     alarm->setProcedureAlarm( mWidget.mApplication->url().path(),
                               mWidget.mAppArguments->text() );
   } else if ( mWidget.mTypeEmailRadio->isChecked() ) { // Email
-    QStringList addresses = EmailAddressTools::splitAddressList( mWidget.mEmailAddress->text() );
+    QStringList addresses = KPIMUtils::splitAddressList( mWidget.mEmailAddress->text() );
     QList<KCal::Person> add;
     for ( QStringList::Iterator it = addresses.begin(); it != addresses.end(); ++it ) {
       add << KCal::Person( *it );

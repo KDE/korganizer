@@ -46,7 +46,7 @@
 #include "koprefs.h"
 #include <libkpimidentities/identitymanager.h>
 #include <libkpimidentities/identity.h>
-#include <emailfunctions/email.h>
+#include <kpimutils/email.h>
 #include <kabc/stdaddressbook.h>
 #include "kocore.h"
 
@@ -368,7 +368,7 @@ bool KOPrefs::thatIsMe( const QString& _email )
   if ( KOCore::self()->identityManager()->thatIsMe( _email ) )
     return true;
   // in case email contains a full name, strip it out
-  QString email = EmailAddressTools::extractEmailAddress( _email );
+  QString email = KPIMUtils::extractEmailAddress( _email );
   if ( mAdditionalMails.contains( email )  )
     return true;
   QStringList lst = KABC::StdAddressBook::self( true )->whoAmI().emails();

@@ -39,7 +39,7 @@
 #include "calendarview.h"
 #include "mailscheduler.h"
 #include "koprefs.h"
-#include <emailfunctions/email.h>
+#include <kpimutils/email.h>
 #include <kcal/attendee.h>
 #include <kcal/journal.h>
 #include <kcal/incidenceformatter.h>
@@ -133,7 +133,7 @@ void KOGroupware::incomingDirChanged( const QString& path )
   }
   QTextStream t(&f);
   t.setCodec( "UTF-8" );
-  QString receiver = EmailAddressTools::firstEmailAddress( t.readLine() );
+  QString receiver = KPIMUtils::firstEmailAddress( t.readLine() );
   QString iCal = t.readAll();
 
   f.remove();

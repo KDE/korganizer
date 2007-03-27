@@ -56,7 +56,7 @@
 #include <kabc/stdaddressbook.h>
 #endif
 #include <libkdepim/kvcarddrag.h>
-#include <emailfunctions/email.h>
+#include <kpimutils/email.h>
 
 #include <kcal/incidence.h>
 #include <kvbox.h>
@@ -137,7 +137,7 @@ void KOAttendeeListView::addAttendee( const QString &newAttendee )
   kDebug(5850) << " Email: " << newAttendee << endl;
   QString name;
   QString email;
-  EmailAddressTools::extractEmailAddressAndName( newAttendee, email, name );
+  KPIMUtils::extractEmailAddressAndName( newAttendee, email, name );
   emit dropped( new Attendee( name, email, true ) );
 }
 
@@ -392,7 +392,7 @@ void KOEditorDetails::openAddressBook()
       KABC::Addressee a = (*itr);
       bool myself = KOPrefs::instance()->thatIsMe( a.preferredEmail() );
       bool sameAsOrganizer = mOrganizerCombo &&
-        EmailAddressTools::compareEmail( a.preferredEmail(), mOrganizerCombo->currentText(), false );
+        KPIMUtils::compareEmail( a.preferredEmail(), mOrganizerCombo->currentText(), false );
       KCal::Attendee::PartStat partStat;
       if ( myself && sameAsOrganizer )
         partStat = KCal::Attendee::Accepted;
@@ -575,7 +575,7 @@ void KOEditorDetails::fillAttendeeInput( AttendeeListItem *aItem )
   mDisableItemUpdate = true;
   QString name = a->name();
   if (!a->email().isEmpty()) {
-    name = EmailAddressTools::quoteNameIfNecessary( name );
+    name = KPIMUtils::quoteNameIfNecessary( name );
     name += " <" + a->email() + '>';
   }
   mNameEdit->setText(name);
@@ -611,15 +611,15 @@ void KOEditorDetails::updateAttendeeItem()
 
   QString name;
   QString email;
-  EmailAddressTools::extractEmailAddressAndName(mNameEdit->text(), email, name);
+  KPIMUtils::extractEmailAddressAndName(mNameEdit->text(), email, name);
 
   bool iAmTheOrganizer = mOrganizerCombo &&
     KOPrefs::instance()->thatIsMe( mOrganizerCombo->currentText() );
   if ( iAmTheOrganizer ) {
     bool myself =
-      EmailAddressTools::compareEmail( email, mOrganizerCombo->currentText(), false );
+      KPIMUtils::compareEmail( email, mOrganizerCombo->currentText(), false );
     bool wasMyself =
-      EmailAddressTools::compareEmail( a->email(), mOrganizerCombo->currentText(), false );
+      KPIMUtils::compareEmail( a->email(), mOrganizerCombo->currentText(), false );
     if ( myself ) {
       mStatusCombo->setCurrentIndex( KCal::Attendee::Accepted );
       mRsvpButton->setChecked( false );

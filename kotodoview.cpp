@@ -65,7 +65,7 @@
 
 #include <libkdepim/kdatepickerpopup.h>
 
-#include <emailfunctions/email.h>
+#include <kpimutils/email.h>
 
 #include "docprefs.h"
 
@@ -325,7 +325,7 @@ void KOTodoListView::contentsDropEvent( QDropEvent *e )
         if( text.startsWith( "file:" ) ) {
           todo->addAttachment( new Attachment( text ) );
         } else {
-          QStringList emails = EmailAddressTools::splitAddressList( text );
+          QStringList emails = KPIMUtils::splitAddressList( text );
           for(QStringList::ConstIterator it = emails.begin();it!=emails.end();++it) {
             kDebug(5850) << " Email: " << (*it) << endl;
             int pos = (*it).indexOf("<");
