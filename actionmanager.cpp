@@ -1490,10 +1490,10 @@ void ActionManager::keyBindings()
   KKeyDialog dlg( KKeyChooser::AllActions,
     KKeyChooser::LetterShortcutsDisallowed, view() );
   if ( mMainWindow )
-    dlg.insert( mMainWindow->getActionCollection() );
+    dlg.addCollection( mMainWindow->getActionCollection() );
 
   foreach ( KOrg::Part *part, mParts ) {
-    if ( part ) dlg.insert( part->actionCollection(), part->shortInfo() );
+    if ( part ) dlg.addCollection( part->actionCollection(), part->shortInfo() );
   }
   dlg.configure();
 }
