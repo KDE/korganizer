@@ -66,7 +66,6 @@
 #if defined(USE_SOLARIS)
 #include <sys/param.h>
 
-#define ZONEINFODIR    "/usr/share/lib/zoneinfo"
 #define INITFILE       "/etc/default/init"
 #endif
 
