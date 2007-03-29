@@ -72,6 +72,7 @@ KOTodoListViewQuickSearch::KOTodoListViewQuickSearch( QWidget *parent,
 
   addAction( action );*/
 
+  setMovable( false );
   layout()->setSpacing( KDialog::spacingHint() );
 
   mQuickSearchLine = new KOTodoListViewQuickSearchLine( this, listViews );
