@@ -55,7 +55,7 @@
 #include <kactioncollection.h>
 #include <kfiledialog.h>
 #include <kio/netaccess.h>
-#include <kkeydialog.h>
+#include <kshortcutsdialog.h>
 #include <kmenu.h>
 #include <kstandarddirs.h>
 #include <ktip.h>
@@ -1487,8 +1487,8 @@ void ActionManager::enableIncidenceActions( bool enabled )
 
 void ActionManager::keyBindings()
 {
-  KKeyDialog dlg( KKeyChooser::AllActions,
-    KKeyChooser::LetterShortcutsDisallowed, view() );
+  KShortcutsDialog dlg( KShortcutsEditor::AllActions,
+    KShortcutsEditor::LetterShortcutsDisallowed, view() );
   if ( mMainWindow )
     dlg.addCollection( mMainWindow->getActionCollection() );
 

@@ -71,7 +71,7 @@
 #include <ktip.h>
 #include <KStandardGuiItem>
 #include <kstatusbar.h>
-#include <kkeydialog.h>
+#include <kshortcutsdialog.h>
 #include <QCursor>
 #include <QTimer>
 #include <q3vbox.h>
@@ -216,8 +216,8 @@ void KOrganizer::initActions()
 
 void KOrganizer::slotEditKeys()
 {
-  KKeyDialog::configure( actionCollection(),
-    KKeyChooser::LetterShortcutsDisallowed );
+  KShortcutsDialog::configure( actionCollection(),
+    KShortcutsEditor::LetterShortcutsDisallowed );
 }
 
 bool KOrganizer::queryClose()
