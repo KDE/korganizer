@@ -168,7 +168,7 @@ void AlarmDockWindow::slotQuit()
       i18n("Do you want to start the KOrganizer reminder daemon at login "
            "(note that you will not get reminders whilst the daemon is not running)?"),
       i18n("Close KOrganizer Reminder Daemon"),
-      KGuiItem(i18n("Start")), KGuiItem(i18n("Do Not Start")),
+      KGuiItem(i18n("Start")), KGuiItem(i18n("Do Not Start")), KStandardGuiItem::cancel(),
       QString::fromLatin1("AskForStartAtLogin")
       );
 

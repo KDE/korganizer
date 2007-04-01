@@ -838,6 +838,7 @@ int CalendarView::msgItemDelete( Incidence *incidence )
     i18n("The item \"%1\" will be permanently deleted.", incidence->summary() ),
     i18n("KOrganizer Confirmation"),
     KGuiItem( i18n("&Delete"),"edit-delete" ),
+    KStandardGuiItem::cancel(),
     QString(),
     KMessageBox::Notify );
 }
@@ -1523,6 +1524,7 @@ void CalendarView::exportVCalendar()
       i18n("The journal entries can not be exported to a vCalendar file."),
       i18n("Data Loss Warning"),
       KGuiItem(i18n("Proceed")),
+      KStandardGuiItem::cancel(),
       QString( "dontaskVCalExport" ),
       KMessageBox::Notify );
     if (result != KMessageBox::Continue) return;
