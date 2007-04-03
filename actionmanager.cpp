@@ -38,7 +38,6 @@
 #include "koviewmanager.h"
 #include "kowindowlist.h"
 #include "k3process.h"
-#include "konewstuff.h"
 #include "history.h"
 #include "kogroupware.h"
 #include "resourceview.h"
@@ -48,6 +47,8 @@
 
 #include <kcal/calendarlocal.h>
 #include <kcal/calendarresources.h>
+#include <kcal/calendarlocal.h>
+#include <kcal/filestorage.h>
 #include <kcal/htmlexport.h>
 #include <kcal/htmlexportsettings.h>
 
@@ -68,6 +69,8 @@
 #include <ktoggleaction.h>
 #include <krecentfilesaction.h>
 #include <kstandardaction.h>
+#include <knewstuff2/engine.h>
+#include <knewstuff2/core/entry.h>
 #include <QApplication>
 #include <QTimer>
 #include <QLabel>
@@ -93,15 +96,12 @@ ActionManager::ActionManager( KXMLGUIClient *client, CalendarView *widget,
   mCalendarView = widget;
   mIsPart = isPart;
   mTempFile = 0;
-  mNewStuff = 0;
   mHtmlExportSync = false;
   mMainWindow = mainWindow;
 }
 
 ActionManager::~ActionManager()
 {
-  delete mNewStuff;
-
   // Remove Part plugins
   KOCore::self()->unloadParts( mMainWindow, mParts );
 
@@ -1395,14 +1395,68 @@ void ActionManager::downloadNewStuff()
 {
   kDebug(5850) << "ActionManager::downloadNewStuff()" << endl;
 
-  if ( !mNewStuff ) mNewStuff = new KONewStuff( mCalendarView );
-  mNewStuff->download();
+  // FIXME (KNS2): use mCalendarView as parent widget
+  KNS::Entry::List entries = KNS::Engine::download();
+
+  KNS::Entry::List::Iterator it;
+  for( it = entries.begin(); it != entries.end(); ++it ) {
+    KNS::Entry *entry = (*it);
+
+    if( entry->status() != KNS::Entry::Installed ) {
+      continue;
+    }
+
+    CalendarLocal cal( KOPrefs::instance()->timeSpec() );
+
+    // FIXME (KNS2): According to Reinhold, this should cope with remote URIs
+    FileStorage storage( &cal, entry->payload().representation() );
+    if ( !storage.load() ) {
+      KMessageBox::error( mCalendarView, i18n("Could not load calendar.") );
+      return;
+    }
+
+    Event::List events = cal.events();
+
+    QStringList eventList;
+
+    Event::List::ConstIterator it;
+    for( it = events.begin(); it != events.end(); ++it ) {
+      QString text = (*it)->summary();
+      eventList.append( text );
+    }
+
+    int result = KMessageBox::warningContinueCancelList( mCalendarView,
+      i18n("The downloaded events will be merged into your current calendar."),
+      eventList );
+
+    if ( result != KMessageBox::Continue ) {
+      // FIXME (KNS2): hm, no way out here :-)
+    }
+
+    if ( mCalendarView->openCalendar( entry->payload().representation(), true ) ) {
+      // FIXME (KNS2): here neither
+    }
+  }
+
+  // FIXME (KNS2): monday change
+  //KNS::Engine::cleanup();
 }
 
 void ActionManager::uploadNewStuff()
 {
-  if ( !mNewStuff ) mNewStuff = new KONewStuff( mCalendarView );
-  mNewStuff->upload();
+  KTemporaryFile tmpfile;
+  if (!tmpfile.open()) {
+    return;
+  }
+  QString tmpfilename = tmpfile.fileName();
+  tmpfile.close();
+
+  // FIXME (KNS2): use mCalendarView as parent widget
+  if( mCalendarView->saveCalendar( tmpfilename ) ) {
+    KNS::Engine::upload( tmpfilename );
+  } else {
+    // FIXME (KNS2): display error here
+  }
 }
 
 QString ActionManager::localFileName()

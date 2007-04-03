@@ -41,7 +41,6 @@ class KRecentFilesAction;
 class KOWindowList;
 class KToggleAction;
 class K3Process;
-class KONewStuff;
 class ActionManager;
 class CalendarView;
 

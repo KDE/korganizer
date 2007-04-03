@@ -183,7 +183,6 @@ set(korganizer_LIB_SRCS
    docprefs.cpp 
    statusdialog.cpp 
    koglobals.cpp 
-   konewstuff.cpp 
    actionmanager.cpp 
    resourceview.cpp 
    navigatorbar.cpp 
@@ -213,7 +212,7 @@ qt4_add_dbus_interfaces(korganizer_LIB_SRCS org.kde.korganizer.Korganizer.xml )
 
 kde4_add_library(korganizer SHARED ${korganizer_LIB_SRCS})
 
-target_link_libraries(korganizer ${KDE4_KPARTS_LIBS} ${KDE4_KNEWSTUFF_LIBS} ${KDE4_KDEPRINT_LIBS} ${KDE4_KABC_LIBS} ${KDE4_KUTILS_LIBS} ${KDE4_KCAL_LIBS} kpimidentities
+target_link_libraries(korganizer ${KDE4_KPARTS_LIBS} ${KDE4_KNEWSTUFF2_LIBS} ${KDE4_KDEPRINT_LIBS} ${KDE4_KABC_LIBS} ${KDE4_KUTILS_LIBS} ${KDE4_KCAL_LIBS} kpimidentities
                                                       kdepim korganizer_eventviewer korganizer_calendar kocorehelper 
                                                       korg_stdprinting kholidays korganizer_interfaces )
 
@@ -224,6 +223,7 @@ install(TARGETS korganizer  DESTINATION ${LIB_INSTALL_DIR})
 
 ########### install files ###############
 
+install( FILES korganizer.knsrc  DESTINATION  ${CONFIG_INSTALL_DIR})
 install( FILES korganizer.desktop  DESTINATION ${XDG_APPS_DIR})
 install( FILES korganizer-import.desktop  DESTINATION ${XDG_APPS_DIR})
 install( FILES korganizer.kcfg  DESTINATION ${KCFG_INSTALL_DIR})

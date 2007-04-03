@@ -56,7 +56,6 @@ class KTemporaryFile;
 class KXMLGUIClient;
 class CalendarView;
 class KOrganizer;
-class KONewStuff;
 class KOWindowList;
 class ImportDialog;
 class ResourceView;
@@ -414,7 +413,6 @@ class KDE_EXPORT ActionManager : public QObject
     KOrg::MainWindow *mMainWindow;
     bool mIsPart;
 
-    KONewStuff *mNewStuff;
     bool mHtmlExportSync;
 
     // Either mCalendar *or* mCalendarResources is set.
