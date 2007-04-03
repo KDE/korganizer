@@ -36,7 +36,7 @@
 #include <klocale.h>
 #include <kdatetime.h>
 #include <kapplication.h>
-#include <kwin.h>
+#include <kwm.h>
 #include <kconfiggroup.h>
 
 #include <QPushButton>
