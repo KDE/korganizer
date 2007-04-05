@@ -4,7 +4,6 @@ Type=ServiceType
 X-KDE-ServiceType=KOrganizer/PrintPlugin
 Comment=KOrganizer Part
 Comment[af]=Korganizer Deel
-Comment[be]=Частка "K Арганізатар"
 Comment[bg]=Модул KOrganizer
 Comment[br]=Perzh KOrganizer
 Comment[ca]=Part de KOrganizer
