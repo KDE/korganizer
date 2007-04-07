@@ -333,8 +333,7 @@ void ResourceView::addResource()
 
   resource->setResourceName( i18n("%1 resource", type ) );
 
-  KRES::ConfigDialog *dlg = new KRES::ConfigDialog( this, QString("calendar"), resource,
-                          "KRES::ConfigDialog" );
+  KRES::ConfigDialog *dlg = new KRES::ConfigDialog( this, QString("calendar"), resource );
 
   if ( dlg && dlg->exec() ) {
     resource->setTimeSpec( KOPrefs::instance()->timeSpec() );
@@ -464,8 +463,7 @@ void ResourceView::editResource()
   if ( !item ) return;
   ResourceCalendar *resource = item->resource();
 
-  KRES::ConfigDialog dlg( this, QString("calendar"), resource,
-                          "KRES::ConfigDialog" );
+  KRES::ConfigDialog dlg( this, QString("calendar"), resource );
 
   if ( dlg.exec() ) {
     item->setText( 0, resource->resourceName() );
