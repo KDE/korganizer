@@ -1476,7 +1476,7 @@ void CalPrintPluginBase::drawTodo( int &count, Todo *todo, QPainter &p,
 
   // due date
   if ( todo->hasDueDate() && posDueDt>=0 ) {
-    outStr = local->formatDate( todo->dtDue().date(), true );
+    outStr = local->formatDate( todo->dtDue().date(), KLocale::ShortDate );
     rect = p.boundingRect( posDueDt, y, x + width, -1,
                            Qt::AlignTop | Qt::AlignLeft, outStr );
     p.drawText( rect, Qt::AlignTop | Qt::AlignLeft, outStr );
@@ -1593,7 +1593,7 @@ void CalPrintPluginBase::drawJournal( Journal * journal, QPainter &p, int x, int
   p.setFont( QFont( "sans-serif", 15 ) );
   QString headerText;
   QString dateText( KGlobal::locale()->
-        formatDate( journal->dtStart().date(), false ) );
+        formatDate( journal->dtStart().date(), KLocale::LongDate ) );
 
   if ( journal->summary().isEmpty() ) {
     headerText = dateText;

@@ -293,7 +293,7 @@ void KOWhatsNextView::appendEvent( Incidence *ev, const QDateTime &start,
       } else {
         /*if (reply) */
         mText += i18nc("date, from - to", "%1, %2 - %3",
-              KGlobal::locale()->formatDate( starttime.date(), true ) ,
+              KGlobal::locale()->formatDate( starttime.date(), KLocale::ShortDate ) ,
               KGlobal::locale()->formatTime( starttime.time() ) ,
               KGlobal::locale()->formatTime( endtime.time() ) );
       }
