@@ -32,7 +32,6 @@
 #include <QListWidget>
 #include <QSpinBox>
 #include <QCheckBox>
-#include <q3widgetstack.h>
 #include <QRadioButton>
 #include <QLabel>
 #include <QPushButton>

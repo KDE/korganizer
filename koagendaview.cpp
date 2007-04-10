@@ -25,7 +25,7 @@
 
 
 #include <QLabel>
-#include <q3frame.h>
+#include <QFrame>
 #include <QLayout>
 #ifndef KORG_NOSPLITTER
 #include <QSplitter>

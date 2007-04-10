@@ -27,7 +27,7 @@
 #include <qnamespace.h>
 #include <QLayout>
 #include <QTimer>
-#include <q3frame.h>
+#include <QFrame>
 #include <QLabel>
 //Added by qt3to4:
 #include <QWheelEvent>

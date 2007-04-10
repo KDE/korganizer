@@ -29,7 +29,6 @@
 
 
 #include <q3buttongroup.h>
-#include <q3widgetstack.h>
 #include <QDateTime>
 #include <QLineEdit>
 #include <QLabel>

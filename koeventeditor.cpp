@@ -27,7 +27,6 @@
 #include <q3frame.h>
 #include <QPixmap>
 #include <QLayout>
-#include <q3widgetstack.h>
 
 #include <QVBoxLayout>
 #include <QHBoxLayout>

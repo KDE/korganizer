@@ -25,7 +25,7 @@
 #ifndef DATENAVIGATORCONTAINER_H
 #define DATENAVIGATORCONTAINER_H
 
-#include <q3frame.h>
+#include <qframe.h>
 //Added by qt3to4:
 #include <QResizeEvent>
 #include <QList>
