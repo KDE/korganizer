@@ -29,7 +29,6 @@
 #include <q3intdict.h>
 #include <QDateTime>
 #include <QApplication>
-#include <q3popupmenu.h>
 #include <QCursor>
 #include <QPainter>
 #include <QLabel>

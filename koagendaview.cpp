@@ -32,7 +32,7 @@
 #endif
 #include <QFont>
 #include <QFontMetrics>
-#include <q3popupmenu.h>
+#include <QMenu>
 #include <QToolTip>
 #include <QPainter>
 #include <QPushButton>

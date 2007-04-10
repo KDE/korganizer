@@ -27,8 +27,8 @@
 #include <QPushButton>
 #include <QLayout>
 #include <q3frame.h>
-#include <q3popupmenu.h>
 #include <QLabel>
+#include <Q3PopupMenu>
 //Added by qt3to4:
 #include <QMouseEvent>
 #include <QPixmap>

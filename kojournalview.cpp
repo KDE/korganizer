@@ -26,7 +26,6 @@
 // View of Journal entries
 
 #include <QLayout>
-#include <q3popupmenu.h>
 
 #include <QLabel>
 #include <q3scrollview.h>

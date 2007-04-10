@@ -30,7 +30,7 @@
 
 #include <QApplication>
 #include <QTimer>
-#include <q3popupmenu.h>
+#include <QMenu>
 #include <QLabel>
 #include <q3header.h>
 //Added by qt3to4:
