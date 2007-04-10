@@ -686,11 +686,23 @@ void KOAgendaItem::paintTodoIcon( QPainter *p, int &x, int ft )
   conditionalPaint( p, b, x, ft, completedPxmp );
 }
 
+void KOAgendaItem::paintAlarmIcon( QPainter *p, int &x, int ft )
+{
+  if (!mIconAlarm) return;
+  int y = ft;
+  // if we can't fit it all, bottom align it, more or less, so
+  // it can be guessed better, visually
+  if ( visibleRect().height() - ft < alarmPxmp->height() )
+      y -= ( alarmPxmp->height() - visibleRect().height() - ft );
+  p->drawPixmap( x, y, *alarmPxmp );
+  x += alarmPxmp->width() + ft;
+}
+
 void KOAgendaItem::paintIcons( QPainter *p, int &x, int ft )
 {
   paintEventIcon( p, x, ft );
   paintTodoIcon( p, x, ft );
-  conditionalPaint( p, mIconAlarm,          x, ft, *alarmPxmp );
+  paintAlarmIcon( p, x, ft );
   conditionalPaint( p, mIconRecur,          x, ft, *recurPxmp );
   conditionalPaint( p, mIconReadonly,       x, ft, *readonlyPxmp );
   conditionalPaint( p, mIconReply,          x, ft, *replyPxmp );
