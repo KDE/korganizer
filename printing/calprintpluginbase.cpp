@@ -25,7 +25,7 @@
 
 #include <QPainter>
 #include <QLayout>
-#include <q3frame.h>
+#include <QFrame>
 #include <QLabel>
 #include <QtAlgorithms>
 

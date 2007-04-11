@@ -28,7 +28,7 @@
 
 #include <kcal/incidencebase.h>
 
-#include <q3frame.h>
+#include <QFrame>
 #include <QColor>
 #include <QToolTip>
 #include <QMap>

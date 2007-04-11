@@ -24,7 +24,7 @@
 */
 
 #include <QToolTip>
-#include <q3frame.h>
+#include <QFrame>
 #include <QPixmap>
 #include <QLayout>
 
