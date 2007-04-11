@@ -55,26 +55,26 @@ QString DocPrefs::doc() const
 
 bool DocPrefs::readBoolEntry( const QString &id ) const
 {
-    mConfig->setGroup( mDocId );
-    bool result = mConfig->readEntry( id, false );
+    KConfigGroup docConfig( mConfig, mDocId );
+    bool result = docConfig.readEntry( id, false );
     return result;
 }
 
 void DocPrefs::writeBoolEntry( const QString &id, bool value )
 {
-    mConfig->setGroup( mDocId );
-    mConfig->writeEntry( id, value );
+    KConfigGroup docConfig( mConfig, mDocId );
+    docConfig.writeEntry( id, value );
 }
 
 int DocPrefs::readNumEntry( const QString &id ) const
 {
-  mConfig->setGroup( mDocId );
-  int result = mConfig->readEntry( id, 0 );
+  KConfigGroup docConfig( mConfig, mDocId );
+  int result = docConfig.readEntry( id, 0 );
   return result;
 }
 
 void DocPrefs::writeNumEntry( const QString &id, int value )
 {
-  mConfig->setGroup( mDocId );
-  mConfig->writeEntry( id, value );
+  KConfigGroup docConfig( mConfig, mDocId );
+  docConfig.writeEntry( id, value );
 }

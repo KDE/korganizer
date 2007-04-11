@@ -255,13 +255,13 @@ void AlarmDialog::slotSave()
   if ( lock.data()->lock() != KLockFile::LockOK )
     return;
 
-  config->setGroup( "General" );
-  int numReminders = config->readEntry("Reminders", 0);
-  config->writeEntry( "Reminders", ++numReminders );
+  KConfigGroup generalConfig( config, "General" );
+  int numReminders = generalConfig.readEntry("Reminders", 0);
+  generalConfig.writeEntry( "Reminders", ++numReminders );
 
-  config->setGroup( QString("Incidence-%1").arg(numReminders) );
-  config->writeEntry( "UID", mIncidence->uid() );
-  config->writeEntry( "RemindAt", mRemindAt );
+  KConfigGroup incidenceConfig( config, QString("Incidence-%1").arg(numReminders) );
+  incidenceConfig.writeEntry( "UID", mIncidence->uid() );
+  incidenceConfig.writeEntry( "RemindAt", mRemindAt );
   config->sync();
   lock.data()->unlock();
 }

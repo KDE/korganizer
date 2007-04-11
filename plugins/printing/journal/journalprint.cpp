@@ -84,7 +84,8 @@ void CalPrintJournal::setSettingsWidget()
 void CalPrintJournal::loadConfig()
 {
   if ( mConfig ) {
-    mUseDateRange = mConfig->readEntry( "JournalsInRange", false );
+    KConfigGroup config( mConfig, "Journalprint" );
+    mUseDateRange = config.readEntry( "JournalsInRange", false );
   }
   setSettingsWidget();
 }
@@ -95,7 +96,8 @@ void CalPrintJournal::saveConfig()
 
   readSettingsWidget();
   if ( mConfig ) {
-    mConfig->writeEntry( "JournalsInRange", mUseDateRange );
+    KConfigGroup config( mConfig, "Journalprint" );
+    config.writeEntry( "JournalsInRange", mUseDateRange );
   }
 }
 

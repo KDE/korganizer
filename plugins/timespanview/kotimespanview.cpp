@@ -58,9 +58,9 @@ void KOTimeSpanView::readSettings()
   kDebug(5850) << "KOTimeSpanView::readSettings()" << endl;
 
   KConfig config( "korganizerrc", true, false); // Open read-only, no kdeglobals
-  config.setGroup("Views");
+  KConfigGroup viewsConfig( &config, "Views" );
 
-  QList<int> sizes = config.readEntry("Separator TimeSpanView",QList<int>());
+  QList<int> sizes = viewsConfig.readEntry("Separator TimeSpanView",QList<int>());
   if (sizes.count() == 2) {
     mTimeSpanWidget->setSplitterSizes(sizes);
   }
@@ -70,10 +70,10 @@ void KOTimeSpanView::writeSettings(KConfig *config)
 {
 //  kDebug(5850) << "KOTimeSpanView::writeSettings()" << endl;
 
-  config->setGroup("Views");
+  KConfigGroup viewsConfig( config, "Views" );
 
   QList<int> list = mTimeSpanWidget->splitterSizes();
-  config->writeEntry("Separator TimeSpanView",list);
+  viewsConfig.writeEntry("Separator TimeSpanView",list);
 }
 
 int KOTimeSpanView::maxDatesHint()

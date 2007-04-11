@@ -177,37 +177,37 @@ void KOPrefs::setCategoryDefaults()
 
 void KOPrefs::usrReadConfig()
 {
-  config()->setGroup("General");
-  mCustomCategories = config()->readEntry("Custom Categories", QStringList() );
+  KConfigGroup generalConfig( config(), "General");
+  mCustomCategories = generalConfig.readEntry("Custom Categories", QStringList() );
   if (mCustomCategories.isEmpty()) setCategoryDefaults();
 
   // old category colors, ignore if they have the old default
   // should be removed a few versions after 3.2...
-  config()->setGroup("Category Colors");
+  KConfigGroup colorsConfig( config(), "Category Colors");
   QList<QColor> oldCategoryColors;
   QStringList::Iterator it;
   for (it = mCustomCategories.begin();it != mCustomCategories.end();++it ) {
-    QColor c = config()->readEntry(*it, mDefaultCategoryColor);
+    QColor c = colorsConfig.readEntry(*it, mDefaultCategoryColor);
     oldCategoryColors.append( (c == QColor(196,196,196)) ?
                               mDefaultCategoryColor : c);
   }
 
   // new category colors
-  config()->setGroup("Category Colors2");
+  KConfigGroup colors2Config( config(), "Category Colors2");
   QList<QColor>::Iterator it2;
   for (it = mCustomCategories.begin(), it2 = oldCategoryColors.begin();
        it != mCustomCategories.end(); ++it, ++it2 ) {
-    setCategoryColor(*it,config()->readEntry(*it, *it2));
+    setCategoryColor(*it,colors2Config.readEntry(*it, *it2));
   }
 
-  config()->setGroup( "Resources Colors" );
-  QMap<QString, QString> map = config()->entryMap( "Resources Colors" );
+  KConfigGroup rColorsConfig( config(), "Resources Colors");
+  QMap<QString, QString> map = rColorsConfig.entryMap();
 
   QMap<QString, QString>::Iterator it3;
   for( it3 = map.begin(); it3 != map.end(); ++it3 ) {
     kDebug(5850)<< "KOPrefs::usrReadConfig: key: " << it3.key() << " value: "
       << it3.value()<<endl;
-    setResourceColor( it3.key(), config()->readEntry( it3.key(),
+    setResourceColor( it3.key(), rColorsConfig.readEntry( it3.key(),
       mDefaultResourceColor ) );
   }
 
@@ -228,20 +228,20 @@ void KOPrefs::usrReadConfig()
 
 void KOPrefs::usrWriteConfig()
 {
-  config()->setGroup("General");
-  config()->writeEntry("Custom Categories",mCustomCategories);
+  KConfigGroup generalConfig( config(), "General");
+  generalConfig.writeEntry("Custom Categories",mCustomCategories);
 
-  config()->setGroup("Category Colors2");
+  KConfigGroup colors2Config( config(), "Category Colors2");
   QHash<QString, QColor>::const_iterator i = mCategoryColors.constBegin();
   while (i != mCategoryColors.constEnd()) {
-    config()->writeEntry(i.key(),i.value() );
+    colors2Config.writeEntry(i.key(),i.value() );
     ++i;
   }
 
-  config()->setGroup( "Resources Colors" );
+  KConfigGroup rColorsConfig( config(), "Resources Colors" );
   i = mResourceColors.constBegin();
   while (i != mResourceColors.constEnd()) {
-    config()->writeEntry(i.key(),i.value() );
+    rColorsConfig.writeEntry(i.key(),i.value() );
     ++i;
   }
 

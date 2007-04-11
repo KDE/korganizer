@@ -97,10 +97,11 @@ void CalPrintYear::setSettingsWidget()
 void CalPrintYear::loadConfig()
 {
   if ( mConfig ) {
-    mYear = mConfig->readEntry( "Year", 2007 );
-    mPages = mConfig->readEntry( "Pages", 1 );
-    mSubDaysEvents = mConfig->readEntry( "ShowSubDayEventsAs", (int)TimeBoxes );
-    mHolidaysEvents = mConfig->readEntry( "ShowHolidaysAs", (int)Text );
+    KConfigGroup config( mConfig, "Yearprint" );
+    mYear = config.readEntry( "Year", 2007 );
+    mPages = config.readEntry( "Pages", 1 );
+    mSubDaysEvents = config.readEntry( "ShowSubDayEventsAs", (int)TimeBoxes );
+    mHolidaysEvents = config.readEntry( "ShowHolidaysAs", (int)Text );
   }
   setSettingsWidget();
 }
@@ -111,11 +112,12 @@ void CalPrintYear::saveConfig()
 
   readSettingsWidget();
   if ( mConfig ) {
-    mConfig->writeEntry( "Year", mYear );
-    mConfig->writeEntry( "Pages", mPages );
-    mConfig->writeEntry( "Pages", mPages );
-    mConfig->writeEntry( "ShowSubDayEventsAs", mSubDaysEvents );
-    mConfig->writeEntry( "ShowHolidaysAs", mHolidaysEvents );
+    KConfigGroup config( mConfig, "Yearprint" );
+    config.writeEntry( "Year", mYear );
+    config.writeEntry( "Pages", mPages );
+    config.writeEntry( "Pages", mPages );
+    config.writeEntry( "ShowSubDayEventsAs", mSubDaysEvents );
+    config.writeEntry( "ShowHolidaysAs", mHolidaysEvents );
   }
 }
 

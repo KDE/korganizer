@@ -492,16 +492,16 @@ void CalendarView::readSettings()
   KConfig *config = KOGlobals::self()->config();
 
 #ifndef KORG_NOSPLITTER
-  config->setGroup( "KOrganizer Geometry" );
+  KConfigGroup geometryConfig( config, "KOrganizer Geometry" );
 
-  QList<int> sizes = config->readEntry( "Separator1",QList<int>() );
+  QList<int> sizes = geometryConfig.readEntry( "Separator1",QList<int>() );
   if ( sizes.count() != 2 ) {
     sizes << mDateNavigator->minimumSizeHint().width();
     sizes << 300;
   }
   mPanner->setSizes( sizes );
 
-  sizes = config->readEntry( "Separator2",QList<int>() );
+  sizes = geometryConfig.readEntry( "Separator2",QList<int>() );
   mLeftSplitter->setSizes( sizes );
 #endif
 
@@ -512,8 +512,8 @@ void CalendarView::readSettings()
 
   readFilterSettings( config );
 
-  config->setGroup( "Views" );
-  int dateCount = config->readEntry( "ShownDatesCount", 7 );
+  KConfigGroup viewConfig( config, "Views" );
+  int dateCount = viewConfig.readEntry( "ShownDatesCount", 7 );
   if ( dateCount == 5 ) mNavigator->selectWorkWeek();
   else if ( dateCount == 7 ) mNavigator->selectWeek();
   else mNavigator->selectDates( dateCount );
@@ -527,13 +527,13 @@ void CalendarView::writeSettings()
   KConfig *config = KOGlobals::self()->config();
 
 #ifndef KORG_NOSPLITTER
-  config->setGroup( "KOrganizer Geometry" );
+  KConfigGroup geometryConfig( config, "KOrganizer Geometry" );
 
   QList<int> list = mPanner->sizes();
-  config->writeEntry( "Separator1", list );
+  geometryConfig.writeEntry( "Separator1", list );
 
   list = mLeftSplitter->sizes();
-  config->writeEntry( "Separator2", list );
+  geometryConfig.writeEntry( "Separator2", list );
 #endif
   mEventViewer->writeSettings( config );
   mViewManager->writeSettings( config );
@@ -543,8 +543,8 @@ void CalendarView::writeSettings()
 
   writeFilterSettings( config );
 
-  config->setGroup( "Views" );
-  config->writeEntry( "ShownDatesCount", mNavigator->selectedDates().count() );
+  KConfigGroup viewConfig( config, "Views" );
+  viewConfig.writeEntry( "ShownDatesCount", mNavigator->selectedDates().count() );
 
   config->sync();
 }
@@ -556,10 +556,10 @@ void CalendarView::readFilterSettings( KConfig *config )
   qDeleteAll( mFilters );
   mFilters.clear();
 
-  config->setGroup( "General" );
+  KConfigGroup generalConfig( config, "General" );
   // FIXME: Move the filter loading and saving to the CalFilter class in libkcal
-  QStringList filterList = config->readEntry ("CalendarFilters" , QStringList() );
-  QString currentFilter = config->readEntry( "Current Filter" );
+  QStringList filterList = generalConfig.readEntry ("CalendarFilters" , QStringList() );
+  QString currentFilter = generalConfig.readEntry( "Current Filter" );
 
   QStringList::ConstIterator it = filterList.begin();
   QStringList::ConstIterator end = filterList.end();
@@ -567,18 +567,17 @@ void CalendarView::readFilterSettings( KConfig *config )
 //    kDebug(5850) << "  filter: " << (*it) << endl;
     CalFilter *filter;
     filter = new CalFilter( *it );
-    config->setGroup( "Filter_" + (*it) );
-    filter->setCriteria( config->readEntry( "Criteria", 0 ) );
-    filter->setCategoryList( config->readEntry( "CategoryList" , QStringList() ) );
+    KConfigGroup filterConfig( config, "Filter_" + (*it) );
+    filter->setCriteria( filterConfig.readEntry( "Criteria", 0 ) );
+    filter->setCategoryList( filterConfig.readEntry( "CategoryList" , QStringList() ) );
     if ( filter->criteria() & KCal::CalFilter::HideTodosWithoutAttendeeInEmailList )
       filter->setEmailList( KOPrefs::instance()->allEmails() );
-    filter->setCompletedTimeSpan( config->readEntry( "HideTodoDays", 0 ) );
+    filter->setCompletedTimeSpan( filterConfig.readEntry( "HideTodoDays", 0 ) );
     mFilters.append( filter );
 
     ++it;
   }
 
-  config->setGroup( "General" );
   int pos = filterList.indexOf( currentFilter );
   mCurrentFilter = 0;
   if ( pos>=0 ) {
@@ -596,17 +595,17 @@ void CalendarView::writeFilterSettings( KConfig *config )
   foreach ( CalFilter *filter, mFilters ) {
 //    kDebug(5850) << " fn: " << filter->name() << endl;
     filterList << filter->name();
-    config->setGroup( "Filter_" + filter->name() );
-    config->writeEntry( "Criteria", filter->criteria() );
-    config->writeEntry( "CategoryList", filter->categoryList() );
-    config->writeEntry( "HideTodoDays", filter->completedTimeSpan() );
+    KConfigGroup filterConfig( config, "Filter_" + filter->name() );
+    filterConfig.writeEntry( "Criteria", filter->criteria() );
+    filterConfig.writeEntry( "CategoryList", filter->categoryList() );
+    filterConfig.writeEntry( "HideTodoDays", filter->completedTimeSpan() );
   }
-  config->setGroup( "General" );
-  config->writeEntry( "CalendarFilters", filterList );
+  KConfigGroup generalConfig( config, "General" );
+  generalConfig.writeEntry( "CalendarFilters", filterList );
   if ( mCurrentFilter ) {
-    config->writeEntry( "Current Filter", mCurrentFilter->name() );
+    generalConfig.writeEntry( "Current Filter", mCurrentFilter->name() );
   } else {
-    config->writeEntry( "Current Filter", QString() );
+    generalConfig.writeEntry( "Current Filter", QString() );
   }
 }
 
@@ -975,7 +974,7 @@ KOEventEditor *CalendarView::newEventEditor( const QDateTime &startDtParam,
 
 void CalendarView::newEvent()
 {
-  kdDebug(5850) << "CalendarView::newEvent()" << endl;
+  kDebug(5850) << "CalendarView::newEvent()" << endl;
   newEvent( QDateTime(), QDateTime() );
 }
 

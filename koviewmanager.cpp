@@ -70,8 +70,8 @@ KOrg::BaseView *KOViewManager::currentView()
 
 void KOViewManager::readSettings(KConfig *config)
 {
-  config->setGroup("General");
-  QString view = config->readEntry("Current View");
+  KConfigGroup generalConfig( config, "General" );
+  QString view = generalConfig.readEntry("Current View");
 
   if (view == QLatin1String("WhatsNext")) showWhatsNextView();
   else if (view == QLatin1String("Month")) showMonthView();
@@ -83,7 +83,7 @@ void KOViewManager::readSettings(KConfig *config)
 
 void KOViewManager::writeSettings(KConfig *config)
 {
-  config->setGroup("General");
+  KConfigGroup generalConfig( config, "General" );
 
   QString view;
   if (mCurrentView == mWhatsNextView) view = "WhatsNext";
@@ -93,7 +93,7 @@ void KOViewManager::writeSettings(KConfig *config)
   else if (mCurrentView == mTodoView) view = "Todo";
   else view = "Agenda";
 
-  config->writeEntry("Current View",view);
+  generalConfig.writeEntry("Current View",view);
 
   if (mAgendaView) {
     mAgendaView->writeSettings(config);
