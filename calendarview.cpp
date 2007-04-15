@@ -514,9 +514,11 @@ void CalendarView::readSettings()
 
   KConfigGroup viewConfig( config, "Views" );
   int dateCount = viewConfig.readEntry( "ShownDatesCount", 7 );
-  if ( dateCount == 5 ) mNavigator->selectWorkWeek();
-  else if ( dateCount == 7 ) mNavigator->selectWeek();
-  else mNavigator->selectDates( dateCount );
+  if ( dateCount == 7 ) {
+    mNavigator->selectWeek();
+  } else {
+    mNavigator->selectDates( mNavigator->selectedDates().first(), dateCount );
+  }
 }
 
 
@@ -1011,6 +1013,7 @@ void CalendarView::newEvent( const QString &summary, const QString &description,
 void CalendarView::newTodo( const QString &summary, const QString &description,
                             const QStringList &attachments, const QStringList &attendees )
 {
+  kDebug(5850) << k_funcinfo << endl;
   KOTodoEditor *todoEditor = mDialogManager->getTodoEditor();
   connectIncidenceEditor( todoEditor );
   todoEditor->newTodo();
@@ -1023,7 +1026,7 @@ void CalendarView::newTodo( const QString &summary, const QString &description,
 
 void CalendarView::newTodo()
 {
-  kDebug(5850) << "CalendarView::newTodo()" << endl;
+  kDebug(5850) << k_funcinfo << endl;
   QDateTime dtDue;
   bool allday = true;
   KOTodoEditor *todoEditor = mDialogManager->getTodoEditor();

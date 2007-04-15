@@ -57,7 +57,7 @@ void DateNavigator::selectDates( const DateList& dateList )
 {
   if (dateList.count() > 0) {
     mSelectedDates = dateList;
-    
+
     emitSelected();
   }
 }
@@ -90,9 +90,9 @@ void DateNavigator::selectDates( const QDate &d, int count )
   for( i = 0; i < count; ++i ) {
     dates.append( d.addDays( i ) );
   }
-  
+
   mSelectedDates = dates;
-  
+
   emitSelected();
 }
 
@@ -100,9 +100,11 @@ void DateNavigator::selectWeekByDay( int weekDay, const QDate &d )
 {
   int dateCount = mSelectedDates.count();
   bool weekStart = ( weekDay == KGlobal::locale()->weekStartDay() );
-  if ( weekDay == 1 && dateCount == 5 ) selectWorkWeek( d );
-  else if ( weekStart && dateCount == 7 ) selectWeek( d );
-  else selectDates( d, dateCount );
+  if ( weekStart && dateCount == 7 ) {
+    selectWeek( d );
+  } else {
+    selectDates( d, dateCount );
+  }
 }
 
 void DateNavigator::selectWeek()
@@ -132,16 +134,24 @@ void DateNavigator::selectWorkWeek()
 
 void DateNavigator::selectWorkWeek( const QDate &d )
 {
-  int dayOfWeek = KOGlobals::self()->calendarSystem()->dayOfWeek( d );
-
-  QDate firstDate = d.addDays( 1 - dayOfWeek );
-
   int weekStart = KGlobal::locale()->weekStartDay();
-  if ( weekStart != 1 && dayOfWeek >= weekStart ) {
-    firstDate = firstDate.addDays( 7 );
+  int dayOfWeek = KOGlobals::self()->calendarSystem()->dayOfWeek( d );
+  QDate currentDate = d.addDays( weekStart - dayOfWeek );
+
+  if ( weekStart != 1 && dayOfWeek < weekStart ) {
+    currentDate = currentDate.addDays( -7 );
   }
 
-  selectDates( firstDate, 5 );
+  mSelectedDates.clear();
+  int mask = KOGlobals::self()->getWorkWeekMask();
+
+  for ( int i = 0; i < 7; ++i ) {
+    if ( ( 1 << ( ( i + weekStart + 6 ) % 7 ) ) & (mask) ) {
+      mSelectedDates.append( currentDate.addDays( i ) );
+    }
+  }
+
+  emitSelected();
 }
 
 void DateNavigator::selectToday()
@@ -150,9 +160,11 @@ void DateNavigator::selectToday()
 
   int dateCount = mSelectedDates.count();
 
-  if ( dateCount == 5 ) selectWorkWeek( d );
-  else if ( dateCount == 7 ) selectWeek( d );
-  else selectDates( d, dateCount );
+  if ( dateCount == 7 ) {
+    selectWeek( d );
+  } else {
+    selectDates( d, dateCount );
+  }
 }
 
 void DateNavigator::selectPreviousYear()
