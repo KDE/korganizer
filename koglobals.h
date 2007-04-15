@@ -61,7 +61,7 @@ class KDE_EXPORT KOGlobals
 
     QStringList holiday( const QDate & );
     bool isWorkDay( const QDate & );
-
+    int getWorkWeekMask();
     /**
        Set which holidays the user wants to use.
        @param h a KHolidays object initialized with the desired locale.
