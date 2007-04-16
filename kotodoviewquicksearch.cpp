@@ -62,7 +62,7 @@ KOTodoListViewQuickSearch::KOTodoListViewQuickSearch( QWidget *parent,
     mQuickSearchLine( 0 )
 {
   /*if ( !action ) {
-  action  = new KAction(KIcon(QApplication::isRightToLeft() ? "clear_left" : "locationbar_erase"), i18n("Reset"), this);
+  action  = new KAction(KIcon(QApplication::isRightToLeft() ? "clear-left" : "locationbar-erase"), i18n("Reset"), this);
   actionCollection->addAction("reset_quicksearch", action );
     connect(action, SIGNAL(triggered(bool) ), SLOT( reset() ));
     action->setWhatsThis( i18n( "Reset Quick Search\n"
