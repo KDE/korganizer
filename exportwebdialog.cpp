@@ -29,7 +29,6 @@
 
 
 #include <QPushButton>
-#include <q3filedialog.h>
 #include <QTextStream>
 #include <QLabel>
 //Added by qt3to4:

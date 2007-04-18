@@ -91,7 +91,6 @@
 #include <QApplication>
 #include <QClipboard>
 #include <QCursor>
-#include <q3multilineedit.h>
 #include <QTimer>
 #include <QStackedWidget>
 #include <QList>

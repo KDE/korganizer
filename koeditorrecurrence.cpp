@@ -23,7 +23,6 @@
 */
 
 #include <QToolTip>
-#include <q3filedialog.h>
 #include <QLayout>
 
 #include <QGroupBox>

@@ -73,7 +73,6 @@
 #include <kshortcutsdialog.h>
 #include <QCursor>
 #include <QTimer>
-#include <q3vbox.h>
 #include <QFile>
 #include <QLabel>
 #include <QLayout>

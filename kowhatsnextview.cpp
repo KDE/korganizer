@@ -23,7 +23,6 @@
 */
 
 #include <QLayout>
-#include <q3textbrowser.h>
 #include <QTextCodec>
 #include <QFileInfo>
 #include <QLabel>
