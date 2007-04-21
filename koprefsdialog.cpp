@@ -101,18 +101,29 @@ KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *paren
   addWidString( KOPrefs::instance()->userEmailItem(), mUserEmailSettings );
 
   QGroupBox *saveGroupBox = new QGroupBox( i18n("Saving Calendar"), topFrame );
-  KVBox *saveGroup = new KVBox( saveGroupBox );
 
-  addWidBool( KOPrefs::instance()->htmlWithSaveItem(), saveGroup );
+  QVBoxLayout *saveGroupLayout = new QVBoxLayout;
+  saveGroupBox->setLayout( saveGroupLayout );
 
-  KPrefsWidBool *autoSave = addWidBool( KOPrefs::instance()->autoSaveItem(), saveGroup );
+  KPrefsWidBool *htmlWithSave = addWidBool(
+    KOPrefs::instance()->htmlWithSaveItem(), saveGroupBox );
+  saveGroupLayout->addWidget( htmlWithSave->checkBox() );
 
-  KHBox *intervalBox = new KHBox( saveGroup );
-  addWidInt( KOPrefs::instance()->autoSaveIntervalItem(), intervalBox );
+  KPrefsWidBool *autoSave = addWidBool( KOPrefs::instance()->autoSaveItem(),
+    saveGroupBox );
+  saveGroupLayout->addWidget( autoSave->checkBox() );
+    
+  QBoxLayout *intervalLayout = new QHBoxLayout;
+  saveGroupLayout->addLayout( intervalLayout );
+
+  KPrefsWidInt *autoSaveInterval = addWidInt(
+    KOPrefs::instance()->autoSaveIntervalItem(), saveGroupBox );
   connect( autoSave->checkBox(), SIGNAL( toggled( bool ) ),
-           intervalBox, SLOT( setEnabled( bool ) ) );
-  intervalBox->setSpacing( KDialog::spacingHint() );
-//   new QWidget( intervalBox );
+           autoSaveInterval->label(), SLOT( setEnabled( bool ) ) );
+  connect( autoSave->checkBox(), SIGNAL( toggled( bool ) ),
+           autoSaveInterval->spinBox(), SLOT( setEnabled( bool ) ) );
+  intervalLayout->addWidget( autoSaveInterval->label() );
+  intervalLayout->addWidget( autoSaveInterval->spinBox() );
 
   addWidBool( KOPrefs::instance()->confirmItem(), topFrame );
   addWidRadios( KOPrefs::instance()->destinationItem(), topFrame);
@@ -610,6 +621,9 @@ KOPrefsDialogColors::KOPrefsDialogColors( const KComponentData &inst, QWidget *p
   QGroupBox *categoryGroup = new QGroupBox( i18n("Categories"), topFrame );
   topLayout->addWidget( categoryGroup, 7, 0, 1, 2 );
 
+  QBoxLayout *categoryLayout = new QHBoxLayout;
+  categoryGroup->setLayout( categoryLayout );
+
   mCategoryCombo = new QComboBox(categoryGroup);
   mCategoryCombo->addItems( KOPrefs::instance()->mCustomCategories );
   mCategoryCombo->setWhatsThis(
@@ -617,17 +631,23 @@ KOPrefsDialogColors::KOPrefsDialogColors( const KComponentData &inst, QWidget *p
                          "You can change the selected category color using "
                          "the button below." ) );
   connect(mCategoryCombo,SIGNAL(activated(int)),SLOT(updateCategoryColor()));
+  categoryLayout->addWidget( mCategoryCombo );
 
   mCategoryButton = new KColorButton(categoryGroup);
   mCategoryButton->setWhatsThis(
                    i18n( "Choose here the color of the event category selected "
                          "using the combo box above." ) );
   connect(mCategoryButton,SIGNAL(changed(const QColor &)),SLOT(setCategoryColor()));
+  categoryLayout->addWidget( mCategoryButton );
+
   updateCategoryColor();
 
   // resources colors
   QGroupBox *resourceGroup = new QGroupBox( i18n("Resources"), topFrame );
   topLayout->addWidget( resourceGroup, 8, 0, 1, 2 );
+
+  QBoxLayout *resourceLayout = new QVBoxLayout;
+  resourceGroup->setLayout( resourceLayout );
 
   mResourceCombo = new QComboBox(resourceGroup);
   mResourceCombo->setWhatsThis(
@@ -635,12 +655,15 @@ KOPrefsDialogColors::KOPrefsDialogColors( const KComponentData &inst, QWidget *p
                          "You can change the selected resource color using "
                          "the button below." ) );
   connect(mResourceCombo,SIGNAL(activated(int)),SLOT(updateResourceColor()));
+  resourceLayout->addWidget( mResourceCombo );
 
   mResourceButton = new KColorButton(resourceGroup);
   mResourceButton->setWhatsThis(
                    i18n( "Choose here the color of the resource selected "
                          "using the combo box above." ) );
   connect(mResourceButton,SIGNAL(changed(const QColor &)),SLOT(setResourceColor()));
+  resourceLayout->addWidget( mResourceButton );
+
   updateResources();
 
   topLayout->setRowStretch(9,1);
