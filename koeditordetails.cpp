@@ -34,7 +34,7 @@
 #include <QPushButton>
 #include <QRadioButton>
 #include <QRegExp>
-#include <QToolTip>
+
 
 
 #include <QGridLayout>

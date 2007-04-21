@@ -29,7 +29,7 @@
 #include <QLayout>
 #include <QCheckBox>
 
-#include <QToolTip>
+
 #include <QToolButton>
 //Added by qt3to4:
 #include <QPixmap>

@@ -23,7 +23,7 @@
 */
 
 #include <QString>
-#include <QToolTip>
+
 #include <QPushButton>
 #include <QLayout>
 #include <QLabel>

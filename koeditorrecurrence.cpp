@@ -22,7 +22,7 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include <QToolTip>
+
 #include <QLayout>
 
 #include <QGroupBox>

@@ -38,7 +38,7 @@
 #include <kaction.h>
 #include <kstandardaction.h>
 
-#include <QToolTip>
+
 #include <QFile>
 //Added by qt3to4:
 #include <QMouseEvent>

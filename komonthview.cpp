@@ -28,7 +28,7 @@
 #include <QFontMetrics>
 #include <qnamespace.h>
 #include <QPushButton>
-#include <QToolTip>
+
 #include <QPainter>
 #include <QCursor>
 #include <q3listbox.h>

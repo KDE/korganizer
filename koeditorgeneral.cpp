@@ -24,7 +24,7 @@
 
 
 #include <QWidget>
-#include <QToolTip>
+
 #include <QLayout>
 
 

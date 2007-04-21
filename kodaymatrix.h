@@ -30,7 +30,7 @@
 
 #include <QFrame>
 #include <QColor>
-#include <QToolTip>
+
 #include <QMap>
 
 class QDragEnterEvent;

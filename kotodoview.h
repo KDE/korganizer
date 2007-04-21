@@ -28,7 +28,7 @@
 #define KOTODOVIEW_H
 
 #include <QMap>
-#include <QToolTip>
+
 #include <QMenu>
 #include <QList>
 #include <QEvent>

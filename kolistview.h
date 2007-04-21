@@ -27,7 +27,7 @@
 #define _KOLISTVIEW_H
 
 #include <q3dict.h>
-#include <QToolTip>
+
 
 #include <kcal/incidence.h>
 

@@ -28,7 +28,7 @@
 
 #include <q3listbox.h>
 #include <q3ptrvector.h>
-#include <QToolTip>
+
 //Added by qt3to4:
 #include <QPixmap>
 #include <QKeyEvent>
