@@ -114,6 +114,10 @@ TimeLabels::TimeLabels(int rows,QWidget *parent, Qt::WFlags f) :
 void TimeLabels::mousePosChanged(const QPoint &pos)
 {
   moveChild(mMousePos, 0, pos.y());
+
+  // The repaint somehow prevents that the red line leaves a black artifact when
+  // moved down. It's not a full solution, though.
+  repaint();
 }
 
 void TimeLabels::showMousePos()
