@@ -455,59 +455,98 @@ class KOPrefsDialogViews : public KPrefsModule
           addWidBool( KOPrefs::instance()->showAllDayTodoItem(), topFrame );
       topLayout->addWidget( showTodosAgenda->checkBox() );
 
-      /*** Date Navigator Group ***/
+
       QGroupBox *dateNavGroup = new QGroupBox( i18n("Date Navigator"), topFrame );
-      addWidBool( KOPrefs::instance()->dailyRecurItem(), dateNavGroup );
-      addWidBool( KOPrefs::instance()->weeklyRecurItem(), dateNavGroup );
       topLayout->addWidget( dateNavGroup );
 
+      QBoxLayout *dateNavLayout = new QVBoxLayout( dateNavGroup );
+      
+      dateNavLayout->addWidget( addWidBool(
+        KOPrefs::instance()->dailyRecurItem() )->checkBox() );
+      dateNavLayout->addWidget( addWidBool(
+        KOPrefs::instance()->weeklyRecurItem() )->checkBox() );
 
-      /*** Agenda View Group ***/
+
       QGroupBox *agendaGroup = new QGroupBox( i18n("Agenda View"), topFrame );
-
-      KHBox *hourSizeBox = new KHBox( agendaGroup );
-      KPrefsWidInt *hourSize =
-          addWidInt( KOPrefs::instance()->hourSizeItem(), hourSizeBox );
-      hourSize->spinBox()->setSuffix(i18nc("suffix in the hour size spin box", " pixel"));
-      // horizontal spacer:
-      new QWidget( hourSizeBox );
-
-      KHBox *nextDaysBox = new KHBox( agendaGroup );
-      KPrefsWidInt *nextDays =
-        addWidInt( KOPrefs::instance()->nextXDaysItem(), nextDaysBox );
-      nextDays->spinBox()->setSuffix(i18nc("suffix in the N days spin box", " days"));
-      new QWidget( nextDaysBox );
-
-      KPrefsWidBool *marcusBainsEnabled =
-          addWidBool( KOPrefs::instance()->marcusBainsEnabledItem(), agendaGroup );
-
-      KPrefsWidBool *marcusBainsShowSeconds =
-          addWidBool( KOPrefs::instance()->marcusBainsShowSecondsItem(), agendaGroup );
-      connect( marcusBainsEnabled->checkBox(), SIGNAL( toggled( bool ) ),
-               marcusBainsShowSeconds->checkBox(), SLOT( setEnabled( bool ) ) );
-
-      addWidBool( KOPrefs::instance()->selectionStartsEditorItem(), agendaGroup );
-
-      addWidBool( KOPrefs::instance()->agendaViewUsesResourceColorItem(), agendaGroup );
-
       topLayout->addWidget( agendaGroup );
 
+      QBoxLayout *agendaLayout = new QVBoxLayout( agendaGroup );
 
-      /*** Month View Group ***/
+      
+      QBoxLayout *hourSizeLayout = new QHBoxLayout;
+      agendaLayout->addLayout( hourSizeLayout );
+      
+      KPrefsWidInt *hourSize =
+          addWidInt( KOPrefs::instance()->hourSizeItem() );
+      hourSize->spinBox()->setSuffix(i18nc("suffix in the hour size spin box", " pixel"));
+
+      hourSizeLayout->addWidget( hourSize->label() );
+      hourSizeLayout->addWidget( hourSize->spinBox() );
+      hourSizeLayout->addStretch( 1 );
+
+
+      QBoxLayout *nextDaysLayout = new QHBoxLayout;
+      agendaLayout->addLayout( nextDaysLayout );
+      
+      KPrefsWidInt *nextDays =
+        addWidInt( KOPrefs::instance()->nextXDaysItem() );
+      nextDays->spinBox()->setSuffix(i18nc("suffix in the N days spin box", " days"));
+
+      nextDaysLayout->addWidget( nextDays->label() );
+      nextDaysLayout->addWidget( nextDays->spinBox() );
+      nextDaysLayout->addStretch( 1 );
+
+
+      KPrefsWidBool *marcusBainsEnabled =
+          addWidBool( KOPrefs::instance()->marcusBainsEnabledItem() );
+      agendaLayout->addWidget( marcusBainsEnabled->checkBox() );
+
+      KPrefsWidBool *marcusBainsShowSeconds =
+          addWidBool( KOPrefs::instance()->marcusBainsShowSecondsItem() );
+      connect( marcusBainsEnabled->checkBox(), SIGNAL( toggled( bool ) ),
+               marcusBainsShowSeconds->checkBox(), SLOT( setEnabled( bool ) ) );
+      agendaLayout->addWidget( marcusBainsShowSeconds->checkBox() );
+
+      agendaLayout->addWidget( addWidBool(
+        KOPrefs::instance()->selectionStartsEditorItem() )->checkBox() );
+
+      agendaLayout->addWidget( addWidBool(
+        KOPrefs::instance()->agendaViewUsesResourceColorItem() )->checkBox() );
+
+
       QGroupBox *monthGroup = new QGroupBox( i18n("Month View"), topFrame );
-      addWidBool( KOPrefs::instance()->enableMonthScrollItem(), monthGroup );
-      addWidBool( KOPrefs::instance()->fullViewMonthItem(), monthGroup );
-      addWidBool( KOPrefs::instance()->monthViewUsesCategoryColorItem(), monthGroup );
-      addWidBool( KOPrefs::instance()->monthViewUsesResourceColorItem(), monthGroup );
       topLayout->addWidget( monthGroup );
+      
+      QBoxLayout *monthLayout = new QVBoxLayout( monthGroup );
+      
+      monthLayout->addWidget(
+        addWidBool(
+          KOPrefs::instance()->enableMonthScrollItem() )->checkBox() );
+      monthLayout->addWidget(
+        addWidBool(
+          KOPrefs::instance()->fullViewMonthItem() )->checkBox() );
+      monthLayout->addWidget(
+        addWidBool(
+          KOPrefs::instance()->monthViewUsesCategoryColorItem() )->checkBox() );
+      monthLayout->addWidget(
+        addWidBool(
+          KOPrefs::instance()->monthViewUsesResourceColorItem() )->checkBox() );
 
 
-      /*** Todo View Group ***/
       QGroupBox *todoGroup = new QGroupBox( i18n("To-do View"), topFrame );
-      addWidBool( KOPrefs::instance()->fullViewTodoItem(), todoGroup );
-      addWidBool( KOPrefs::instance()->useSplitListViewsItem(), todoGroup );
-      addWidBool( KOPrefs::instance()->recordTodosInJournalsItem(), todoGroup );
       topLayout->addWidget( todoGroup );
+
+      QBoxLayout *todoLayout = new QVBoxLayout( todoGroup );
+      
+      todoLayout->addWidget(
+        addWidBool(
+          KOPrefs::instance()->fullViewTodoItem() )->checkBox() );
+      todoLayout->addWidget(
+        addWidBool(
+          KOPrefs::instance()->useSplitListViewsItem() )->checkBox() );
+      todoLayout->addWidget(
+        addWidBool(
+          KOPrefs::instance()->recordTodosInJournalsItem() )->checkBox() );
 
       topLayout->addStretch( 1 );
 
