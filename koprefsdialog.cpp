@@ -665,7 +665,7 @@ KOPrefsDialogColors::KOPrefsDialogColors( const KComponentData &inst, QWidget *p
   QGroupBox *resourceGroup = new QGroupBox( i18n("Resources"), topFrame );
   topLayout->addWidget( resourceGroup, 8, 0, 1, 2 );
 
-  QBoxLayout *resourceLayout = new QVBoxLayout;
+  QBoxLayout *resourceLayout = new QHBoxLayout;
   resourceGroup->setLayout( resourceLayout );
 
   mResourceCombo = new QComboBox(resourceGroup);
