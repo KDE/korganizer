@@ -101,10 +101,11 @@ TimeLabels::TimeLabels(int rows,QWidget *parent, Qt::WFlags f) :
   setBackgroundRole( QPalette::Background );
 
   mMousePos = new QFrame(this);
-  mMousePos->setLineWidth(0);
+  mMousePos->setLineWidth( 1 );
+  mMousePos->setFrameStyle( QFrame::HLine );
 //  mMousePos->setMargin(0);
   QPalette pal;
-  pal.setColor( mMousePos->backgroundRole(), Qt::red );
+  pal.setColor( QPalette::Dark, Qt::red );
   mMousePos->setPalette( pal );
   mMousePos->setFixedSize(width(), 1);
   addChild(mMousePos, 0, 0);

@@ -74,10 +74,11 @@
 MarcusBains::MarcusBains( KOAgenda *_agenda )
     : QFrame( _agenda->viewport() ), agenda( _agenda )
 {
-  setLineWidth(0);
+  setLineWidth( 1 );
+  setFrameStyle( QFrame::HLine );
 //  setMargin(0);
   QPalette pal;
-  pal.setColor( backgroundRole(), Qt::red );
+  pal.setColor( QPalette::Dark, Qt::red );
   setPalette( pal );
   minutes = new QTimer(this);
   minutes->setSingleShot( true );
@@ -87,7 +88,7 @@ MarcusBains::MarcusBains( KOAgenda *_agenda )
   mTimeBox = new QLabel(this);
   mTimeBox->setAlignment(Qt::AlignRight | Qt::AlignBottom);
   QPalette pal1 = mTimeBox->palette();
-  pal1.setColor(QPalette::Foreground, Qt::red);
+  pal1.setColor(QPalette::WindowText, Qt::red);
   mTimeBox->setPalette(pal1);
 #ifdef __GNUC__
 #warning "kde4: porting ?"

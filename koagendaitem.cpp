@@ -718,7 +718,8 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
 
   if ( !bgColor.isValid() ) {
     QStringList categories = mIncidence->categories();
-    QString cat = categories.first();
+    QString cat;
+    if ( !categories.isEmpty() ) cat = categories.first();
     if (cat.isEmpty())
       bgColor = KOPrefs::instance()->mEventColor;
     else
