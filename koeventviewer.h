@@ -25,7 +25,7 @@
 #ifndef KOEVENTVIEWER_H
 #define KOEVENTVIEWER_H
 
-#include <q3textbrowser.h>
+#include <KTextBrowser>
 #include <kdemacros.h>
 
 #include <kconfig.h>
@@ -40,7 +40,7 @@ using namespace KCal;
 /**
   Viewer widget for events.
 */
-class KDE_EXPORT KOEventViewer : public Q3TextBrowser
+class KDE_EXPORT KOEventViewer : public KTextBrowser
 {
     Q_OBJECT
   public:
@@ -63,8 +63,7 @@ class KDE_EXPORT KOEventViewer : public Q3TextBrowser
 
     /**
       Add given text to currently shown content.
-    */    
-  
+    */
     void addText( const QString &text );
    
     /**
@@ -88,9 +87,9 @@ class KDE_EXPORT KOEventViewer : public Q3TextBrowser
       journal view and scrolling to show it.
     */
     virtual void showIncidenceContext();
+
   private:
     Incidence *mIncidence;
-    Q3TextBrowser *mEventTextView;
     QString mDefaultText;
     QString mText;
 };
