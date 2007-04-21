@@ -593,38 +593,38 @@ int RecurYearly::day()
 ExceptionsWidget::ExceptionsWidget( QWidget *parent ) : QWidget( parent )
 {
   QBoxLayout *topLayout = new QVBoxLayout( this );
+  topLayout->setSpacing( 0 );
+  topLayout->setMargin( 0 );
 
   QGroupBox *groupBox = new QGroupBox( i18n("E&xceptions"), this );
   topLayout->addWidget( groupBox );
 
-  QWidget *box = new QWidget( groupBox );
+  QGridLayout *boxLayout = new QGridLayout( groupBox );
 
-  QGridLayout *boxLayout = new QGridLayout( box );
-
-  mExceptionDateEdit = new KDateEdit( box );
+  mExceptionDateEdit = new KDateEdit( groupBox );
   mExceptionDateEdit->setWhatsThis(
        i18n("A date that should be considered an exception "
       "to the recurrence rules for this event or to-do.") );
   mExceptionDateEdit->setDate( QDate::currentDate() );
   boxLayout->addWidget( mExceptionDateEdit, 0, 0 );
 
-  QPushButton *addExceptionButton = new QPushButton( i18n("&Add"), box );
+  QPushButton *addExceptionButton = new QPushButton( i18n("&Add"), groupBox );
   addExceptionButton->setWhatsThis(
        i18n("Add this date as an exception "
       "to the recurrence rules for this event or to-do.") );
   boxLayout->addWidget( addExceptionButton, 1, 0 );
-  QPushButton *changeExceptionButton = new QPushButton( i18n("&Change"), box );
+  QPushButton *changeExceptionButton = new QPushButton( i18n("&Change"), groupBox );
   changeExceptionButton->setWhatsThis(
        i18n("Replace the currently selected date with this date.") );
   boxLayout->addWidget( changeExceptionButton, 2, 0 );
-  QPushButton *deleteExceptionButton = new QPushButton( i18n("&Delete"), box );
+  QPushButton *deleteExceptionButton = new QPushButton( i18n("&Delete"), groupBox );
   deleteExceptionButton->setWhatsThis(
        i18n("Delete the currently selected date from the list of dates "
             "that should be considered exceptions to the recurrence rules "
             "for this event or to-do.") );
   boxLayout->addWidget( deleteExceptionButton, 3, 0 );
 
-  mExceptionList = new QListWidget( box );
+  mExceptionList = new QListWidget( groupBox );
   mExceptionList->setWhatsThis(
        i18n("Displays current dates that are being considered "
       "exceptions to the recurrence rules for this event "
@@ -716,7 +716,8 @@ DateList ExceptionsDialog::dates()
 RecurrenceRangeWidget::RecurrenceRangeWidget( QWidget *parent ) : QWidget( parent )
 {
   QBoxLayout *topLayout = new QVBoxLayout( this );
-//   topLayout->setSpacing( KDialog::spacingHint() );
+  topLayout->setSpacing( 0 );
+  topLayout->setMargin( 0 );
 
   mRangeGroupBox = new QGroupBox( i18n("Recurrence Range"), this );
   mRangeGroupBox->setWhatsThis(
@@ -1010,13 +1011,11 @@ KOEditorRecurrence::KOEditorRecurrence( QWidget* parent ) : QWidget( parent )
     mTimeGroupBox->hide();
   }
 
-//  QFrame *timeFrame = new QFrame( mTimeGroupBox );
-//  QBoxLayout *layoutTimeFrame = new QHBoxLayout( timeFrame );
-//  layoutTimeFrame->setSpacing( KDialog::spacingHint() );
+  QBoxLayout *layoutTimeBox = new QHBoxLayout( mTimeGroupBox );
+  layoutTimeBox->setSpacing( KDialog::spacingHint() );
 
   mDateTimeLabel = new QLabel( mTimeGroupBox );
-//  mDateTimeLabel = new QLabel( timeFrame );
-//  layoutTimeFrame->addWidget( mDateTimeLabel );
+  layoutTimeBox->addWidget( mDateTimeLabel );
 
   mRuleBox = new QGroupBox( i18n("Recurrence Rule"), this );
   mRuleBox->setWhatsThis(
