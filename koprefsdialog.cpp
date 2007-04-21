@@ -298,11 +298,13 @@ class KOPrefsDialogTime : public KPrefsModule
 
 
       QGroupBox *workingHoursGroupBox = new QGroupBox( i18n("Working Hours"), topFrame);
-      QLayout *ly = new QVBoxLayout( workingHoursGroupBox );
       topLayout->addWidget( workingHoursGroupBox, 6, 0, 1, 2 );
-      KVBox *workingHoursGroup = new KVBox( workingHoursGroupBox );
 
-      KHBox *workDaysBox = new KHBox( workingHoursGroup );
+      QBoxLayout *workingHoursLayout = new QVBoxLayout( workingHoursGroupBox );
+
+      QBoxLayout *workDaysLayout = new QHBoxLayout;
+      workingHoursLayout->addLayout( workDaysLayout );
+
       // Respect start of week setting
       int weekStart=KGlobal::locale()->weekStartDay();
       for ( int i = 0; i < 7; ++i ) {
@@ -312,7 +314,7 @@ class KOPrefsDialogTime : public KPrefsModule
           weekDayName = weekDayName.left( 1 );
         }
         int index = ( i + weekStart + 6 ) % 7;
-        mWorkDays[ index ] = new QCheckBox( weekDayName, workDaysBox );
+        mWorkDays[ index ] = new QCheckBox( weekDayName );
         mWorkDays[ index ]->setWhatsThis(
                          i18n( "Check this box to make KOrganizer mark the "
                                "working hours for this day of the week. "
@@ -322,17 +324,34 @@ class KOPrefsDialogTime : public KPrefsModule
 
         connect( mWorkDays[ index ], SIGNAL( stateChanged( int ) ),
                SLOT( slotWidChanged() ) );
+
+        workDaysLayout->addWidget( mWorkDays[ index ] );
       }
 
-      KHBox *workStartBox = new KHBox(workingHoursGroup);
-      addWidTime( KOPrefs::instance()->workingHoursStartItem(), workStartBox );
+      KPrefsWidTime *workStart =
+        addWidTime( KOPrefs::instance()->workingHoursStartItem() );
 
-      KHBox *workEndBox = new KHBox(workingHoursGroup);
-      addWidTime( KOPrefs::instance()->workingHoursEndItem(), workEndBox );
+      QHBoxLayout *workStartLayout = new QHBoxLayout;
+      workingHoursLayout->addLayout( workStartLayout );
+
+      workStartLayout->addWidget( workStart->label() );
+      workStartLayout->addWidget( workStart->timeEdit() );
+      
+
+      KPrefsWidTime *workEnd =
+        addWidTime( KOPrefs::instance()->workingHoursEndItem() );
+
+      QHBoxLayout *workEndLayout = new QHBoxLayout;
+      workingHoursLayout->addLayout( workEndLayout );
+
+      workEndLayout->addWidget( workEnd->label() );
+      workEndLayout->addWidget( workEnd->timeEdit() );
 
 
-      addWidBool( KOPrefs::instance()->excludeHolidaysItem(),
-                  workingHoursGroup );
+      KPrefsWidBool *excludeHolidays =
+        addWidBool( KOPrefs::instance()->excludeHolidaysItem() );
+
+      workingHoursLayout->addWidget( excludeHolidays->checkBox() );
 
       topLayout->setRowStretch(7,1);
 
