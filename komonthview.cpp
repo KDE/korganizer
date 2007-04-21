@@ -300,6 +300,8 @@ MonthViewCell::MonthViewCell( KOMonthView *parent)
     mMonthView( parent ), mPrimary( false ), mHoliday( false )
 {
   QVBoxLayout *topLayout = new QVBoxLayout( this );
+  topLayout->setMargin( 0 );
+  topLayout->setSpacing( 0 );
 
   mLabel = new QLabel( this );
   mLabel->setFrameStyle( QFrame::Panel | QFrame::Plain );
@@ -499,7 +501,8 @@ class MonthViewCell::CreateItemVisitor :
       mItem = new MonthViewItem( event, dt, text );
       if (KOPrefs::instance()->monthViewUsesCategoryColor()) {
         QStringList categories = event->categories();
-        QString cat = categories.first();
+        QString cat;
+        if ( !categories.isEmpty() ) cat = categories.first();
         if (cat.isEmpty()) {
           mItem->setPalette(QPalette(KOPrefs::instance()->mEventColor, KOPrefs::instance()->mEventColor));
         } else {
@@ -734,6 +737,8 @@ KOMonthView::KOMonthView( Calendar *calendar, QWidget *parent )
       mShortDayLabels( false ), mWidthLongDayLabel( 0 ), mSelectedCell( 0 )
 {
   QGridLayout *dayLayout = new QGridLayout( this );
+  dayLayout->setSpacing( 0 );
+  dayLayout->setMargin( 0 );
 
   QFont bfont = font();
   bfont.setBold( true );
@@ -761,7 +766,7 @@ KOMonthView::KOMonthView( Calendar *calendar, QWidget *parent )
     label->setLineWidth( 1 );
     label->setAlignment( Qt::AlignCenter );
 
-    mDayLabels.insert( i, label );
+    mDayLabels[i] = label;
 
     dayLayout->addWidget( label, 1, i );
     dayLayout->addItem( new QSpacerItem( 10, 0 ), 0, i );
@@ -775,7 +780,7 @@ KOMonthView::KOMonthView( Calendar *calendar, QWidget *parent )
     for( col = 0; col < mDaysPerWeek; ++col ) {
       MonthViewCell *cell = new MonthViewCell( this );
       cell->setCalendar(calendar);
-      mCells.insert( row * mDaysPerWeek + col, cell );
+      mCells[row * mDaysPerWeek + col] = cell;
       dayLayout->addWidget( cell, row + 2, col );
 
       connect( cell, SIGNAL( defaultAction( Incidence * ) ),
