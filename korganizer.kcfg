@@ -299,7 +299,7 @@
 
   <group name="KOrganizer Plugins">
     <entry type="StringList" name="SelectedPlugins">
-      <default>holidays,webexport</default>
+      <default></default>
     </entry>
   </group>
 
