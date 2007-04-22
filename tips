@@ -1,26 +1,5 @@
 <tip category="KOrganizer|General">
 <html>
-<p>...that you can synchronize your calendar data with the data on a Palm Pilot by using <a href="http://www.slac.com/pilone/kpilot_home">KPilot</a>?
-</p>
-</html>
-</tip>
-
-<tip category="KOrganizer|General">
-<html>
-<p>...that it is possible to show the current time in the calendar? Enable the current time line in the dialog which appears after selecting <b>Settings</b>, <b>Configure KOrganizer...</b> from the menu bar.
-</p>
-</html>
-</tip>
-
-<tip category="KOrganizer|General">
-<html>
-<p>...that KOrganizer supports Microsoft Exchange? Add the <b>Microsoft&reg; Exchange 2000 resource</b> using the <b>Resource View</b> from the KOrganizer sidebar.
-</p>
-</html>
-</tip>
-
-<tip category="KOrganizer|General">
-<html>
 <p>...that you can select whether the week starts on Monday or on Sunday in the KDE Control Center? KOrganizer uses this setting. Look at Regional & Accessibility->Country/Region & Languages in the KDE Control Center, or select <b>Settings</b>,
 <b>Configure Date & Time...</b> from the menu bar. Select the Time & Dates tab.
 </p>
@@ -30,13 +9,6 @@
 <tip category="KOrganizer|General">
 <html>
 <p>...that you can edit to-dos quickly by right clicking on the property you wish to change; like the priority, the category or the date?
-</p>
-</html>
-</tip>
-
-<tip category="KOrganizer|General">
-<html>
-<p>...that you can view and edit a calendar from the shell with konsolekalendar? Run <b>konsolekalendar --help</b> for the available options.
 </p>
 </html>
 </tip>
