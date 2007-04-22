@@ -56,15 +56,17 @@ ConfigDialog::ConfigDialog(QWidget *parent)
   QRadioButton *btn;
   mDayNumGroup = new QButtonGroup( this );
   btn = new QRadioButton( i18n("Show day number"), dayNumBox );
-  mDayNumGroup->addButton( btn );
+  mDayNumGroup->addButton( btn, 0 );
   groupLayout->addWidget( btn );
   btn = new QRadioButton( i18n("Show days to end of year"), dayNumBox );
-  mDayNumGroup->addButton( btn );
+  mDayNumGroup->addButton( btn, 1 );
   groupLayout->addWidget( btn );
   btn = new QRadioButton( i18n("Show both"), dayNumBox );
-  mDayNumGroup->addButton( btn );
+  mDayNumGroup->addButton( btn, 2 );
   groupLayout->addWidget( btn );
+
   connect(this, SIGNAL(okClicked()), this, SLOT(slotOk()));
+
   load();
 }
 
@@ -78,7 +80,8 @@ void ConfigDialog::load()
   KConfigGroup config(&_config, "Calendar/DateNum Plugin");
   int datenum = config.readEntry( "ShowDayNumbers", 0 );
   QAbstractButton *btn = mDayNumGroup->button( datenum );
-  if (btn) btn->setChecked( true );
+  if (!btn) btn = mDayNumGroup->button( 0 );
+  btn->setChecked( true );
 }
 
 void ConfigDialog::save()
