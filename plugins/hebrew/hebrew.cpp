@@ -82,15 +82,9 @@ QString Hebrew::shortText(const QDate & date)
   label_text = QString("%1 %2").arg(cal->dayString(date, false))
                                 .arg(cal->monthName(date));
 
-  if (holidays.count())
-      {
-        int count = holidays.count();
-
-        for (int h = 0; h <= count; ++h)
-            {
-              label_text += '\n' + holidays.at(h);
-            }
-      }
+  foreach( QString holiday, holidays ) {
+    label_text += '\n' + holiday;
+  }
 
   return label_text;
 }
