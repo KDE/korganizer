@@ -1189,6 +1189,8 @@ void KOPrefsDialogPlugins::configure()
   if ( plugin ) {
     plugin->configure( this );
     delete plugin;
+    
+    slotWidChanged();
   } else {
     KMessageBox::sorry( this, i18n( "Unable to configure this plugin" ),
                         "PluginConfigUnable" );
