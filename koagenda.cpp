@@ -1192,7 +1192,7 @@ void KOAgenda::setActionCursor( int actionType, bool acting )
       break;
     case RESIZETOP:
     case RESIZEBOTTOM:
-      setCursor( Qt::SizeHorCursor );
+      setCursor( Qt::SizeVerCursor );
       break;
     case RESIZELEFT:
     case RESIZERIGHT:
@@ -1691,8 +1691,7 @@ void KOAgenda::insertMultiItem (Event *event,const QDate &qd,int XBegin,int XEnd
     }
   }
 
-  QList<KOAgendaItem*>::iterator it;
-  QList<KOAgendaItem*>::iterator b = multiItems.begin();
+  QList<KOAgendaItem*>::iterator it = multiItems.begin();
   QList<KOAgendaItem*>::iterator e = multiItems.end();
   KOAgendaItem *first = multiItems.first();
   KOAgendaItem *last = multiItems.last();
@@ -1701,9 +1700,10 @@ void KOAgenda::insertMultiItem (Event *event,const QDate &qd,int XBegin,int XEnd
   while ( it != e ) {
     KOAgendaItem *item = *it;
     ++it;
-    next = (it==e)?0:(*it);
+    next = (it == e ) ? 0 : (*it);
     if ( item )
-      item->setMultiItem( (item == first)?0:first, prev, next, (item==last)?0:last  );
+      item->setMultiItem( (item == first) ? 0 : first, prev, next,
+        ( item == last ) ? 0 : last );
     prev = item;
   }
 
