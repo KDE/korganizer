@@ -163,6 +163,7 @@ void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
 void KOEditorGeneralEvent::initClass(QWidget *parent,QBoxLayout *topLayout)
 {
   QBoxLayout *classLayout = new QHBoxLayout();
+  classLayout->setSpacing( topLayout->spacing() );
   topLayout->addItem( classLayout );
 
   QLabel *freeTimeLabel = new QLabel(i18n("S&how time as:"),parent);
@@ -313,7 +314,7 @@ void KOEditorGeneralEvent::writeEvent(Event *event)
 
   QDate tmpDate;
   QTime tmpTime;
-  QDateTime tmpDT;
+  KDateTime tmpDT;
 
   // temp. until something better happens.
   QString tmpStr;
@@ -322,14 +323,12 @@ void KOEditorGeneralEvent::writeEvent(Event *event)
     event->setFloats(true);
     // need to change this.
     tmpDate = mStartDateEdit->date();
-    tmpTime.setHMS(0,0,0);
     tmpDT.setDate(tmpDate);
-    tmpDT.setTime(tmpTime);
+    tmpDT.setDateOnly( true );
     event->setDtStart(tmpDT);
 
-    tmpDate = mEndDateEdit->date();
-    tmpTime.setHMS(0,0,0);
-    event->setDtEnd(KDateTime(tmpDate, tmpTime, KOPrefs::instance()->timeSpec()));
+    tmpDT.setDate( mEndDateEdit->date() );
+    event->setDtEnd( tmpDT );
   } else {
     event->setFloats(false);
 
