@@ -1144,7 +1144,7 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins( const KComponentData &inst, QWidget 
            SLOT( slotWidChanged() ) );
 
   load();
-//  usrReadConfig();
+
   selectionChanged( 0 );
 }
 
