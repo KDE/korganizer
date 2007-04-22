@@ -355,6 +355,7 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent )
   connect( mAttachments, SIGNAL( moved() ), SLOT( slotRemove() ) );
 
   QBoxLayout *buttonLayout = new QHBoxLayout();
+  buttonLayout->setSpacing( topLayout->spacing() );
   topLayout->addItem( buttonLayout );
 
   QPushButton *button = new QPushButton( i18n("&Add..."), this );

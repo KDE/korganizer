@@ -212,22 +212,26 @@ void KOEditorGeneral::initAlarm(QWidget *parent,QBoxLayout *topLayout)
   mAlarmInfoLabel = new QLabel("XXX reminders configured", mAlarmStack );
   mAlarmStack->insertWidget( AdvancedAlarmLabel, mAlarmInfoLabel );
 
-  KHBox *simpleAlarmBox = new KHBox( mAlarmStack );
+  QWidget *simpleAlarmBox = new QWidget( mAlarmStack );
   mAlarmStack->insertWidget( SimpleAlarmPage, simpleAlarmBox );
 
-  mAlarmButton = new QCheckBox(i18n("&Reminder:"), simpleAlarmBox );
+  QBoxLayout *simpleAlarmLayout = new QHBoxLayout( simpleAlarmBox );
+
+  mAlarmButton = new QCheckBox(i18n("&Reminder:") );
   mAlarmButton->setWhatsThis(
        i18n("Activates a reminder for this event or to-do.") );
+  simpleAlarmLayout->addWidget( mAlarmButton );
 
   QString whatsThis = i18n("Sets how long before the event occurs "
                            "the reminder will be triggered.");
-  mAlarmTimeEdit = new QSpinBox( simpleAlarmBox );
+  mAlarmTimeEdit = new QSpinBox();
   mAlarmTimeEdit->setRange( 0, 99999 );
   mAlarmTimeEdit->setObjectName( "alarmTimeEdit" );
   mAlarmTimeEdit->setValue( 0 );
   mAlarmTimeEdit->setWhatsThis( whatsThis );
+  simpleAlarmLayout->addWidget( mAlarmTimeEdit );
 
-  mAlarmIncrCombo = new QComboBox( simpleAlarmBox );
+  mAlarmIncrCombo = new QComboBox();
   mAlarmIncrCombo->setWhatsThis( whatsThis );
   mAlarmIncrCombo->addItem( i18n("minute(s)") );
   mAlarmIncrCombo->addItem( i18n("hour(s)") );
@@ -235,6 +239,8 @@ void KOEditorGeneral::initAlarm(QWidget *parent,QBoxLayout *topLayout)
 //  mAlarmIncrCombo->setMinimumHeight(20);
   connect(mAlarmButton, SIGNAL(toggled(bool)), mAlarmTimeEdit, SLOT(setEnabled(bool)));
   connect(mAlarmButton, SIGNAL(toggled(bool)), mAlarmIncrCombo, SLOT(setEnabled(bool)));
+  simpleAlarmLayout->addWidget( mAlarmIncrCombo );
+
   mAlarmTimeEdit->setEnabled( false );
   mAlarmIncrCombo->setEnabled( false );
 
@@ -242,7 +248,6 @@ void KOEditorGeneral::initAlarm(QWidget *parent,QBoxLayout *topLayout)
   alarmLayout->addWidget( mAlarmEditButton );
   connect( mAlarmEditButton, SIGNAL( clicked() ),
       SLOT( editAlarms() ) );
-
 }
 
 void KOEditorGeneral::selectCategories()

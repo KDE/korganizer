@@ -143,6 +143,7 @@ QBoxLayout *RecurBase::createFrequencySpinBar( QWidget *parent, QLayout *layout,
     const QString &everyText, const QString &unitText )
 {
   QBoxLayout *freqLayout = new QHBoxLayout();
+  freqLayout->setSpacing( layout->spacing() );
   layout->addItem( freqLayout );
 
   QString whatsThis = i18n("Sets how often this event or to-do should recur.");

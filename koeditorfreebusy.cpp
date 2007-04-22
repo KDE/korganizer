@@ -196,6 +196,7 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent )
 
   // The control panel for the gantt widget
   QBoxLayout *controlLayout = new QHBoxLayout();
+  controlLayout->setSpacing( topLayout->spacing() );
   topLayout->addItem( controlLayout );
 
   QString whatsThis = i18n("Sets the zoom level on the Gantt chart. "

@@ -150,26 +150,40 @@ void ExportWebDialog::setupGeneralPage()
 
   QGroupBox *rangeGroup = new QGroupBox( i18n("Date Range"), mGeneralPage );
   topLayout->addWidget( rangeGroup );
-  addWidDate( mSettings->dateStartItem(), rangeGroup );
-  addWidDate( mSettings->dateEndItem(), rangeGroup );
+
+  QBoxLayout *rangeLayout = new QVBoxLayout( rangeGroup );
+  
+  KPrefsWidDate *dateStart = addWidDate( mSettings->dateStartItem() );
+  rangeLayout->addWidget( dateStart->label() );
+  rangeLayout->addWidget( dateStart->dateEdit() );
+  KPrefsWidDate *dateEnd = addWidDate( mSettings->dateEndItem() );
+  rangeLayout->addWidget( dateEnd->label() );
+  rangeLayout->addWidget( dateEnd->dateEdit() );
 
   QGroupBox *typeGroup = new QGroupBox( i18n("View Type"), mGeneralPage );
   topLayout->addWidget( typeGroup );
-//  addWidBool( mSettings->weekViewItem(), typeGroup );
-  addWidBool( mSettings->monthViewItem(), typeGroup );
-  addWidBool( mSettings->eventViewItem(), typeGroup );
-  addWidBool( mSettings->todoViewItem(), typeGroup );
-//  addWidBool( mSettings->journalViewItem(), typeGroup );
-//  addWidBool( mSettings->freeBusyViewItem(), typeGroup );
-  addWidBool( mSettings->excludePrivateItem(), typeGroup );
-  addWidBool( mSettings->excludeConfidentialItem(), typeGroup );
+
+  QBoxLayout *typeLayout = new QVBoxLayout( typeGroup );
+  
+  typeLayout->addWidget( addWidBool( mSettings->monthViewItem() )->checkBox() );
+  typeLayout->addWidget( addWidBool( mSettings->eventViewItem() )->checkBox() );
+  typeLayout->addWidget( addWidBool( mSettings->todoViewItem() )->checkBox() );
+  typeLayout->addWidget(
+    addWidBool( mSettings->excludePrivateItem() )->checkBox() );
+  typeLayout->addWidget(
+    addWidBool( mSettings->excludeConfidentialItem() )->checkBox() );
 
   QGroupBox *destGroup = new QGroupBox(i18n("Destination"), mGeneralPage );
   topLayout->addWidget(destGroup);
+
+  QBoxLayout *destLayout = new QHBoxLayout( destGroup );
+
   KPrefsWidPath *pathWid = addWidPath( mSettings->outputFileItem(),
                                        destGroup, "text/html", KFile::File );
   connect( pathWid->urlRequester(), SIGNAL( textChanged( const QString & ) ),
            SLOT( slotTextChanged( const QString & ) ) );
+  destLayout->addWidget( pathWid->label() );
+  destLayout->addWidget( pathWid->urlRequester() );
 
   topLayout->addStretch( 1 );
 }
