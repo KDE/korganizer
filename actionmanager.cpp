@@ -1246,7 +1246,9 @@ void ActionManager::updateConfig()
                              KOPrefs::instance()->mNextXDays ) );
 
   KOCore::self()->reloadPlugins();
-  mParts = KOCore::self()->reloadParts( mMainWindow, mParts );
+
+// Commented out because it crashes KOrganizer.
+//  mParts = KOCore::self()->reloadParts( mMainWindow, mParts );
 
   setDestinationPolicy();
 
