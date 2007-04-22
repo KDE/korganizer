@@ -100,6 +100,7 @@ void FocusLineEdit::focusInEvent ( QFocusEvent *e )
 void KOEditorGeneral::initHeader(QWidget *parent,QBoxLayout *topLayout)
 {
   QGridLayout *headerLayout = new QGridLayout();
+  headerLayout->setSpacing( topLayout->spacing() );
   topLayout->addItem(headerLayout);
 
 #if 0
@@ -136,6 +137,7 @@ void KOEditorGeneral::initHeader(QWidget *parent,QBoxLayout *topLayout)
 void KOEditorGeneral::initCategories(QWidget *parent, QBoxLayout *topLayout)
 {
   QBoxLayout *categoriesLayout = new QHBoxLayout();
+  categoriesLayout->setSpacing( topLayout->spacing() );
   topLayout->addItem( categoriesLayout );
 
   QString whatsThis = i18n("Allows you to select the categories that this "
@@ -156,6 +158,7 @@ void KOEditorGeneral::initCategories(QWidget *parent, QBoxLayout *topLayout)
 void KOEditorGeneral::initSecrecy(QWidget *parent, QBoxLayout *topLayout)
 {
   QBoxLayout *secrecyLayout = new QHBoxLayout();
+  secrecyLayout->setSpacing( topLayout->spacing() );
   topLayout->addItem( secrecyLayout );
 
   QLabel *secrecyLabel = new QLabel(i18n("Acc&ess:"),parent);
@@ -195,6 +198,7 @@ void KOEditorGeneral::initDescription(QWidget *parent,QBoxLayout *topLayout)
 void KOEditorGeneral::initAlarm(QWidget *parent,QBoxLayout *topLayout)
 {
   QBoxLayout *alarmLayout = new QHBoxLayout();
+  alarmLayout->setSpacing( topLayout->spacing() );
   topLayout->addItem(alarmLayout);
 
   mAlarmBell = new QLabel(parent);

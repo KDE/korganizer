@@ -136,12 +136,17 @@ void KOTodoEditor::setupGeneral()
     mGeneral->initHeader(topFrame,topLayout);
     mGeneral->initTime(topFrame,topLayout);
     mGeneral->initStatus(topFrame,topLayout);
+
     QBoxLayout *alarmLineLayout = new QHBoxLayout();
+    alarmLineLayout->setSpacing( spacingHint() );
     topLayout->addItem(alarmLineLayout);
     mGeneral->initAlarm(topFrame,alarmLineLayout);
     alarmLineLayout->addStretch( 1 );
+
     mGeneral->initDescription(topFrame,topLayout);
+
     QBoxLayout *detailsLayout = new QHBoxLayout();
+    detailsLayout->setSpacing( spacingHint() );
     topLayout->addItem(detailsLayout);
     mGeneral->initCategories( topFrame, detailsLayout );
     mGeneral->initSecrecy( topFrame, detailsLayout );

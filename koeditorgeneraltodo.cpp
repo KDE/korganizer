@@ -212,6 +212,7 @@ void KOEditorGeneralTodo::initPriority(QWidget *parent, QBoxLayout *topLayout)
 void KOEditorGeneralTodo::initStatus(QWidget *parent,QBoxLayout *topLayout)
 {
   QBoxLayout *statusLayout = new QHBoxLayout();
+  statusLayout->setSpacing( topLayout->spacing() );
   topLayout->addItem(statusLayout);
 
   initCompletion( parent, statusLayout );
