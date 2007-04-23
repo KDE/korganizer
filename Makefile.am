@@ -50,8 +50,7 @@ lib_LTLIBRARIES = libkorganizer_eventviewer.la \
                   libkorganizer_calendar.la libkorganizer.la 
 
 libkorganizer_la_LDFLAGS = $(all_libraries) $(KDE_RPATH) -version-info 1:0
-libkorganizer_la_LIBADD  = $(LIB_KPARTS) $(LIB_KFILE) $(LIB_KNEWSTUFF) \
-	-lkdeprint -lkabc -lkutils \
+libkorganizer_la_LIBADD  = \
 	$(top_builddir)/libkcal/libkcal.la \
 	$(top_builddir)/libkpimidentities/libkpimidentities.la \
 	$(top_builddir)/libkdepim/libkdepim.la \
@@ -60,8 +59,11 @@ libkorganizer_la_LIBADD  = $(LIB_KPARTS) $(LIB_KFILE) $(LIB_KNEWSTUFF) \
 	printing/libkocorehelper.la \
 	printing/libkorg_stdprinting.la \
 	$(top_builddir)/kdgantt/libkdgantt.la \
-        $(top_builddir)/libemailfunctions/libemailfunctions.la \
-        $(top_builddir)/libkholidays/libkholidays.la
+	$(top_builddir)/libemailfunctions/libemailfunctions.la \
+	$(top_builddir)/libkholidays/libkholidays.la \
+	$(LIB_KPARTS) $(LIB_KFILE) $(LIB_KNEWSTUFF) \
+	-lkdeprint -lkabc -lkutils
+
 libkorganizer_la_COMPILE_FIRST = \
 	kogroupwareprefspage.ui \
 	$(top_srcdir)/libkdepim/categoryselectdialog.h
