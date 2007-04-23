@@ -52,8 +52,7 @@ lib_LTLIBRARIES = libkorganizer.la libkorganizer_eventviewer.la \
                   libkorganizer_calendar.la
 
 libkorganizer_la_LDFLAGS = $(all_libraries) $(KDE_RPATH) -version-info 1:0
-libkorganizer_la_LIBADD  = $(LIB_KPARTS) $(LIB_KFILE) \
-	-lkdeprint -lkabc -lkutils \
+libkorganizer_la_LIBADD  = \
 	$(top_builddir)/libkcal/libkcal.la \
 	$(top_builddir)/libkpimidentities/libkpimidentities.la \
 	$(top_builddir)/libkdepim/libkdepim.la \
@@ -62,7 +61,9 @@ libkorganizer_la_LIBADD  = $(LIB_KPARTS) $(LIB_KFILE) \
 	$(top_builddir)/kdgantt/libkdgantt.la \
 	$(KNEWSTUFF_LIB) \
 	$(top_builddir)/ktnef/lib/libktnef.la \
-        $(top_builddir)/kresources/remote/libkcal_resourceremote.la
+	$(top_builddir)/kresources/remote/libkcal_resourceremote.la \
+	$(LIB_KPARTS) $(LIB_KFILE) -lkdeprint -lkabc -lkutils
+
 libkorganizer_la_COMPILE_FIRST = kofilterview_base.ui \
 	outgoingdialog_base.ui \
 	incomingdialog_base.ui \
@@ -119,17 +120,17 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
 
 libkorganizer_eventviewer_la_LDFLAGS = $(all_libraries) $(KDE_RPATH) \
                                        -no-undefined -version-info 1:0
-libkorganizer_eventviewer_la_LIBADD  = $(LIB_KPARTS) \
-                                       $(top_builddir)/libkcal/libkcal.la \
-                                       $(top_builddir)/libkdepim/libkdepim.la
+libkorganizer_eventviewer_la_LIBADD  = $(top_builddir)/libkcal/libkcal.la \
+                                       $(top_builddir)/libkdepim/libkdepim.la \
+                                       $(LIB_KPARTS)
 libkorganizer_eventviewer_la_SOURCES = koeventviewer.cpp urihandler.cpp \
                                        kmailIface.stub koeventviewerdialog.cpp
 
 libkorganizer_calendar_la_LDFLAGS = $(all_libraries) $(KDE_RPATH) \
                                     -no-undefined -version-info 1:0
-libkorganizer_calendar_la_LIBADD  = $(LIB_KPARTS) \
-                                    $(top_builddir)/libkdepim/libkdepim.la \
-                                    $(top_builddir)/libkcal/libkcal.la
+libkorganizer_calendar_la_LIBADD  = $(top_builddir)/libkdepim/libkdepim.la \
+                                    $(top_builddir)/libkcal/libkcal.la \
+                                    $(LIB_KPARTS)
 libkorganizer_calendar_la_SOURCES = stdcalendar.cpp
 
 kmailIface_DIR = $(top_srcdir)/kmail
