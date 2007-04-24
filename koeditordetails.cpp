@@ -85,6 +85,8 @@ void CustomListViewItem<KCal::Attendee *>::updateItem()
     setPixmap(4,KOGlobals::self()->smallIcon("mailappt"));
   else
     setPixmap(4,KOGlobals::self()->smallIcon("nomailappt"));
+  setText(5, mData->delegate());
+  setText(6, mData->delegator());
 }
 
 KOAttendeeListView::KOAttendeeListView ( QWidget *parent, const char *name )
@@ -221,9 +223,11 @@ KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent,
 			"from the attendee.") );
   mListView->addColumn( i18n("Name"), 200 );
   mListView->addColumn( i18n("Email"), 200 );
-  mListView->addColumn( i18n("Role"), 60 );
+  mListView->addColumn( i18n("Role"), 80 );
   mListView->addColumn( i18n("Status"), 100 );
-  mListView->addColumn( i18n("RSVP"), 35 );
+  mListView->addColumn( i18n("RSVP"), 55 );
+  mListView->addColumn( i18n("Delegated to"), 120 );
+  mListView->addColumn( i18n("Delegated from" ), 120 );
   mListView->setResizeMode( QListView::LastColumn );
   if ( KOPrefs::instance()->mCompactDialogs ) {
     mListView->setFixedHeight( 78 );
@@ -389,12 +393,12 @@ void KOEditorDetails::openAddressBook()
           itr != aList.end(); ++itr ) {
       KABC::Addressee a = (*itr);
       bool myself = KOPrefs::instance()->thatIsMe( a.preferredEmail() );
-      bool sameAsOrganizer = mOrganizerCombo && 
+      bool sameAsOrganizer = mOrganizerCombo &&
         KPIM::compareEmail( a.preferredEmail(), mOrganizerCombo->currentText(), false );
       KCal::Attendee::PartStat partStat;
-      if ( myself && sameAsOrganizer ) 
+      if ( myself && sameAsOrganizer )
         partStat = KCal::Attendee::Accepted;
-      else 
+      else
         partStat = KCal::Attendee::NeedsAction;
       insertAttendee( new Attendee( a.realName(), a.preferredEmail(),
                                     !myself, partStat,
@@ -605,7 +609,7 @@ void KOEditorDetails::updateAttendeeItem()
   if ( iAmTheOrganizer ) {
     bool myself =
       KPIM::compareEmail( email, mOrganizerCombo->currentText(), false );
-    bool wasMyself = 
+    bool wasMyself =
       KPIM::compareEmail( a->email(), mOrganizerCombo->currentText(), false );
     if ( myself ) {
       mStatusCombo->setCurrentItem( KCal::Attendee::Accepted );
