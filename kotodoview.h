@@ -193,8 +193,6 @@ class KOTodoView : public KOrg::BaseView
     void unSubTodoSignal();
     void unAllSubTodoSignal();
 
-    void todoCompleted( Todo * );
-
     void purgeCompletedSignal();
 
   protected slots:
