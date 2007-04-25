@@ -8,6 +8,7 @@ include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/interfaces
 		     ${CMAKE_BINARY_DIR}/libkdepim 
                      ${QT_INCLUDES} )
 
+add_definitions (-DQT3_SUPPORT -DQT3_SUPPORT_WARNINGS)
 
 add_subdirectory( printing ) 
 add_subdirectory( korgac ) 
