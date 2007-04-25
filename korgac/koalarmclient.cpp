@@ -57,8 +57,8 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
   connect( mDocker, SIGNAL( quitSignal() ), SLOT( slotQuit() ) );
 
   KConfig c( KStandardDirs::locate( "config", "korganizerrc" ) );
-  c.setGroup( "Time & Date" );
-  QString tz = c.readEntry( "TimeZoneId" );
+  KConfigGroup cg( &c, "Time & Date" );
+  QString tz = cg.readEntry( "TimeZoneId" );
   kDebug(5890) << "TimeZone: " << tz << endl;
 
   mCalendar = new CalendarResources( tz );
@@ -104,10 +104,9 @@ KOAlarmClient::~KOAlarmClient()
 
 void KOAlarmClient::checkAlarms()
 {
-  KSharedConfig::Ptr cfg = KGlobal::config();
+  KConfigGroup cfg( KGlobal::config(), "General" );
 
-  cfg->setGroup( "General" );
-  if ( !cfg->readEntry( "Enabled", true ) ) return;
+  if ( !cfg.readEntry( "Enabled", true ) ) return;
 
   QDateTime from = mLastChecked.addSecs( 1 );
   mLastChecked = QDateTime::currentDateTime();
@@ -185,10 +184,9 @@ void KOAlarmClient::forceAlarmCheck()
 
 void KOAlarmClient::dumpDebug()
 {
-  KSharedConfig::Ptr cfg = KGlobal::config();
+  KConfigGroup cfg( KGlobal::config(), "Alarms" );
 
-  cfg->setGroup( "Alarms" );
-  QDateTime lastChecked = cfg->readEntry( "CalendarsLastChecked", QDateTime() );
+  QDateTime lastChecked = cfg.readEntry( "CalendarsLastChecked", QDateTime() );
 
   kDebug(5890) << "Last Check: " << lastChecked << endl;
 }
