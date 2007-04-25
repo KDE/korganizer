@@ -242,7 +242,7 @@ void KOEventEditor::setTexts( const QString &summary, const QString &description
 {
   if ( description.isEmpty() && summary.contains("\n") ) {
     mGeneral->setDescription( summary );
-    int pos = summary.find( "\n" );
+    int pos = summary.indexOf( "\n" );
     mGeneral->setSummary( summary.left( pos ) );
   } else {
     mGeneral->setSummary( summary );

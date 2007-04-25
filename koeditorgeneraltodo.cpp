@@ -224,7 +224,7 @@ void KOEditorGeneralTodo::initStatus(QWidget *parent,QBoxLayout *topLayout)
 
 void KOEditorGeneralTodo::setDefaults( const QDateTime &due, bool allDay )
 {
-kdDebug()<<"KOEditorGeneralTodo::setDefaults: " << due <<endl;
+kDebug()<<"KOEditorGeneralTodo::setDefaults: " << due <<endl;
   KOEditorGeneral::setDefaults(allDay);
 
   mTimeButton->setChecked( !allDay );
