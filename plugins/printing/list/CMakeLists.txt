@@ -8,7 +8,7 @@ set(korg_listprint_PART_SRCS listprint.cpp )
 
 kde4_automoc(${korg_listprint_PART_SRCS})
 
-kde4_add_ui3_files(korg_listprint_PART_SRCS calprintlistconfig_base.ui )
+kde4_add_ui_files(korg_listprint_PART_SRCS calprintlistconfig_base.ui )
 
 kde4_add_plugin(korg_listprint WITH_PREFIX ${korg_listprint_PART_SRCS})
 
@@ -22,23 +22,3 @@ install(TARGETS korg_listprint  DESTINATION ${PLUGIN_INSTALL_DIR})
 ########### install files ###############
 
 install( FILES listprint.desktop  DESTINATION ${SERVICES_INSTALL_DIR}/korganizer)
-
-
-
-
-#original Makefile.am contents follow:
-
-#INCLUDES = -I$(top_srcdir)/korganizer/interfaces -I$(top_srcdir)/korganizer/printing -I$(top_srcdir) $(all_includes) 
-#
-#kde_module_LTLIBRARIES = libkorg_listprint.la
-#
-#libkorg_listprint_la_SOURCES = calprintlistconfig_base.ui  listprint.cpp
-#libkorg_listprint_la_LDFLAGS = -module $(KDE_PLUGIN) $(KDE_RPATH) $(all_libraries) 
-#libkorg_listprint_la_LIBADD = $(LIB_KDECORE) $(LIB_KDEUI) $(top_builddir)/korganizer/printing/libkorg_stdprinting.la
-#
-#noinst_HEADERS = 
-#
-#servicedir  = $(kde_servicesdir)/korganizer
-#service_DATA = listprint.desktop
-#
-#METASOURCES = AUTO
