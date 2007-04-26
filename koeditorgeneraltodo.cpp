@@ -96,6 +96,7 @@ void KOEditorGeneralTodo::finishSetup()
 
 void KOEditorGeneralTodo::initTime(QWidget *parent,QBoxLayout *topLayout)
 {
+  kDebug(5850) << k_funcinfo << endl;
   QBoxLayout *timeLayout = new QVBoxLayout();
   topLayout->addItem(timeLayout);
 
@@ -224,16 +225,11 @@ void KOEditorGeneralTodo::initStatus(QWidget *parent,QBoxLayout *topLayout)
 
 void KOEditorGeneralTodo::setDefaults( const QDateTime &due, bool allDay )
 {
-kDebug()<<"KOEditorGeneralTodo::setDefaults: " << due <<endl;
+  kDebug(5850) << k_funcinfo << due <<endl;
   KOEditorGeneral::setDefaults(allDay);
 
   mTimeButton->setChecked( !allDay );
-  if(mTimeButton->isChecked()) {
-    mTimeButton->setEnabled(true);
-  }
-  else {
-    mTimeButton->setEnabled(false);
-  }
+  mTimeButton->setEnabled( mTimeButton->isChecked() /* i.e. !allDay */ );
 
   enableTimeEdits( !allDay );
 
@@ -246,9 +242,13 @@ kDebug()<<"KOEditorGeneralTodo::setDefaults: " << due <<endl;
   if ( due.isValid() ) {
     mDueDateEdit->setDate( due.date() );
     mDueTimeEdit->setTime( due.time() );
+  } else {
+    // Make it due tomorrow.
+    mDueDateEdit->setDate( QDate::currentDate().addDays(1) );
+    mDueTimeEdit->setTime( QTime::currentTime() );
   }
 
-  if ( QDateTime::currentDateTime() < due ) {
+   if ( !due.isValid() || (QDateTime::currentDateTime() < due) ) {
     mStartDateEdit->setDate( QDate::currentDate() );
     mStartTimeEdit->setTime( QTime::currentTime() );
   } else {
