@@ -257,6 +257,7 @@ void KOEditorAttachments::slotEdit()
         attitem->setData( KCodecs::base64Encode( data ) );
         attitem->setMimeType( KIO::NetAccess::mimetype( uri, this ) );
         attitem->setLabel( uri.prettyURL() );
+        KIO::NetAccess::removeTempFile( tmpFile );
       }
     }
   }
@@ -304,6 +305,7 @@ void KOEditorAttachments::addAttachment( const QString &uri,
       else
         item->setMimeType( KIO::NetAccess::mimetype( uri, this ) );
       item->setLabel( uri );
+      KIO::NetAccess::removeTempFile( tmpFile );
     }
   }
 }
