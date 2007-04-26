@@ -43,8 +43,8 @@
 #include <kcal/event.h>
 #include <kcal/freebusy.h>
 
-#include <kdgantt/KDGanttView.h>
-#include <kdgantt/KDGanttViewTaskItem.h>
+#include <kdgantt1/KDGanttView.h>
+#include <kdgantt1/KDGanttViewTaskItem.h>
 
 #include "koprefs.h"
 #include "koglobals.h"

@@ -69,7 +69,7 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, QObject *parent,
 {
   KGlobal::locale()->insertCatalog( "libkcal" );
   KGlobal::locale()->insertCatalog( "libkdepim" );
-  KGlobal::locale()->insertCatalog( "kdgantt" );
+  KGlobal::locale()->insertCatalog( "kdgantt1" );
 
   KOCore::self()->addXMLGUIClient( mTopLevelWidget, this );
 

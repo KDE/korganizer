@@ -4,7 +4,7 @@ include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/interfaces
                      ${CMAKE_SOURCE_DIR}/libkpimidentities 
                      ${CMAKE_SOURCE_DIR}/libkholidays 
                      ${CMAKE_SOURCE_DIR}/mimelib ${CMAKE_SOURCE_DIR}/libkleo ${CMAKE_SOURCE_DIR}/korganizer/printing 
-                     ${CMAKE_SOURCE_DIR}/kdgantt 
+                     ${CMAKE_SOURCE_DIR}/kdgantt1 
 		     ${CMAKE_BINARY_DIR}/libkdepim 
                      ${QT_INCLUDES} )
 
@@ -134,7 +134,7 @@ install(TARGETS korganizer_calendar  DESTINATION ${LIB_INSTALL_DIR})
 ########### next target ###############
 
 set(korganizer_LIB_SRCS 
-   ${libkdgantt_SRCS}
+   ${libkdgantt1_SRCS}
    komessagebox.cpp 
    koagendaview.cpp 
    koagenda.cpp 
