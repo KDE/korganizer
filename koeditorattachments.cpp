@@ -30,10 +30,15 @@
 
 #include <klocale.h>
 #include <kdebug.h>
+#include <kmdcodec.h>
 #include <kmessagebox.h>
 #include <klistview.h>
+#include <krun.h>
 #include <kurldrag.h>
+#include <ktempfile.h>
+#include <kio/netaccess.h>
 
+#include <qfile.h>
 #include <qlayout.h>
 #include <qlistview.h>
 #include <qpushbutton.h>
@@ -71,13 +76,22 @@ class AttachmentListItem : public KListViewItem
       mAttachment->setMimeType( mime );
       readAttachment();
     }
+    void setLabel( const QString &label )
+    {
+      mAttachment->setLabel( label );
+      readAttachment();
+    }
 
     void readAttachment()
     {
       if ( mAttachment->isUri() )
         setText( 0, mAttachment->uri() );
-      else
-        setText( 0, i18n("[Binary data]") );
+      else {
+        if ( mAttachment->label().isEmpty() )
+          setText( 0, i18n("[Binary data]") );
+        else
+          setText( 0, mAttachment->label() );
+      }
       setText( 1, mAttachment->mimeType() );
     }
 
@@ -97,7 +111,7 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent,
                    i18n("Displays a list of current items (files, mail, etc.) "
                         "that have been associated with this event or to-do. "
                         "The URI column displays the location of the file.") );
-  mAttachments->addColumn( i18n("URI") );
+  mAttachments->addColumn( i18n("Label / URI") );
   mAttachments->addColumn( i18n("MIME Type") );
   topLayout->addWidget( mAttachments );
   connect( mAttachments, SIGNAL( doubleClicked( QListViewItem * ) ),
@@ -105,12 +119,19 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent,
 
   QBoxLayout *buttonLayout = new QHBoxLayout( topLayout );
 
-  QPushButton *button = new QPushButton( i18n("&Add..."), this );
+  QPushButton *button = new QPushButton( i18n("&Add URI..."), this );
   QWhatsThis::add( button,
                    i18n("Shows a dialog used to select an attachment "
-                        "to add to this event or to-do.") );
+                        "to add to this event or to-do as link.") );
   buttonLayout->addWidget( button );
   connect( button, SIGNAL( clicked() ), SLOT( slotAdd() ) );
+
+  button = new QPushButton( i18n("&Add File..."), this );
+  QWhatsThis::add( button,
+                   i18n("Shows a dialog used to select an attachment "
+                        "to add to this event or to-do as link as inline data.") );
+  buttonLayout->addWidget( button );
+  connect( button, SIGNAL( clicked() ), SLOT( slotAddData() ) );
 
   button = new QPushButton( i18n("&Edit..."), this );
   QWhatsThis::add( button,
@@ -175,7 +196,13 @@ void KOEditorAttachments::showAttachment( QListViewItem *item )
   if ( att->isUri() ) {
     emit openURL( att->uri() );
   } else {
-    // FIXME: Handle binary attachments
+    KTempFile f;
+    if ( !f.file() )
+      return;
+    QCString decoded = KCodecs::base64Decode( QCString( att->data() ) );
+    f.file()->writeBlock( decoded.data(), decoded.length() );
+    f.file()->close();
+    KRun::runURL( f.name(), att->mimeType(), true, false );
   }
 }
 
@@ -187,9 +214,17 @@ void KOEditorAttachments::slotAdd()
          "URL (e.g. a web page) or file to be attached (only "
          "the link will be attached, not the file itself):"), this,
                                        i18n("Add Attachment") );
-  // TODO: Implement adding binary attachments
   if ( !uri.isEmpty() ) {
     addAttachment( uri.url() );
+  }
+}
+
+void KOEditorAttachments::slotAddData()
+{
+  KURL uri = KPimURLRequesterDlg::getURL( QString::null, i18n(
+         "File to be attached:"), this, i18n("Add Attachment") );
+  if ( !uri.isEmpty() ) {
+    addAttachment( uri.url(), QString::null, false );
   }
 }
 
@@ -209,7 +244,21 @@ void KOEditorAttachments::slotEdit()
     if ( !uri.isEmpty() )
       attitem->setUri( uri.url() );
   } else {
-    // FIXME: Handle binary attachments
+    KURL uri = KPimURLRequesterDlg::getURL( QString::null, i18n(
+         "File to be attached:"), this, i18n("Add Attachment") );
+    if ( !uri.isEmpty() ) {
+          QString tmpFile;
+      if ( KIO::NetAccess::download( uri, tmpFile, this ) ) {
+        QFile f( tmpFile );
+        if ( !f.open( IO_ReadOnly ) )
+          return;
+        QByteArray data = f.readAll();
+        f.close();
+        attitem->setData( KCodecs::base64Encode( data ) );
+        attitem->setMimeType( KIO::NetAccess::mimetype( uri, this ) );
+        attitem->setLabel( uri.prettyURL() );
+      }
+    }
   }
 }
 
@@ -235,11 +284,28 @@ void KOEditorAttachments::setDefaults()
 }
 
 void KOEditorAttachments::addAttachment( const QString &uri,
-                                         const QString &mimeType )
+                                         const QString &mimeType, bool asUri )
 {
   AttachmentListItem *item = new AttachmentListItem( 0, mAttachments );
-  item->setUri( uri );
-  if ( !mimeType.isEmpty() ) item->setMimeType( mimeType );
+  if ( asUri ) {
+    item->setUri( uri );
+    if ( !mimeType.isEmpty() ) item->setMimeType( mimeType );
+  } else {
+    QString tmpFile;
+    if ( KIO::NetAccess::download( uri, tmpFile, this ) ) {
+      QFile f( tmpFile );
+      if ( !f.open( IO_ReadOnly ) )
+        return;
+      QByteArray data = f.readAll();
+      f.close();
+      item->setData( KCodecs::base64Encode( data ) );
+      if ( !mimeType.isEmpty() )
+        item->setMimeType( mimeType );
+      else
+        item->setMimeType( KIO::NetAccess::mimetype( uri, this ) );
+      item->setLabel( uri );
+    }
+  }
 }
 
 

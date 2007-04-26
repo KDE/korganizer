@@ -45,7 +45,7 @@ class KOEditorAttachments : public QWidget
     ~KOEditorAttachments();
 
     void addAttachment( const QString &uri,
-                        const QString &mimeType = QString::null );
+                        const QString &mimeType = QString::null, bool asUri = true );
     void addAttachment( KCal::Attachment *attachment );
 
     /** Set widgets to default values */
@@ -60,6 +60,7 @@ class KOEditorAttachments : public QWidget
   protected slots:
     void showAttachment( QListViewItem *item );
     void slotAdd();
+    void slotAddData();
     void slotEdit();
     void slotRemove();
     void slotShow();
