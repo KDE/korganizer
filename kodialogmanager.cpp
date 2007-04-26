@@ -92,9 +92,9 @@ KODialogManager::KODialogManager( CalendarView *mainView ) :
   mFilterEditDialog = 0;
 
   mCategoryEditDialog = new KPIM::CategoryEditDialog( KOPrefs::instance(), mMainView );
-#ifdef Q_OS_X11 
+#ifdef Q_OS_X11
   KWM::setMainWindow( mCategoryEditDialog, 0 );
-#endif  
+#endif
   connect( mainView, SIGNAL( categoriesChanged() ),
            mCategoryEditDialog, SLOT( reload() ) );
   connect( mCategoryEditDialog, SIGNAL( categoryConfigChanged() ), mainView,
@@ -272,6 +272,7 @@ void KODialogManager::connectEditor( KOIncidenceEditor*editor )
 
 KOTodoEditor *KODialogManager::getTodoEditor()
 {
+  kDebug(5850) << k_funcinfo << endl;
   KOTodoEditor *todoEditor = new KOTodoEditor( mMainView->calendar(), mMainView );
   connectEditor( todoEditor );
   return todoEditor;

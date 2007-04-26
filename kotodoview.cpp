@@ -1167,6 +1167,7 @@ void KOTodoView::popupMenu( Q3ListViewItem *item, const QPoint &, int column )
 
 void KOTodoView::newTodo()
 {
+  kDebug(5850) << k_funcinfo << endl;
   emit newTodoSignal( QDate::currentDate().addDays(7) );
 }
 
