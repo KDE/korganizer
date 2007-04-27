@@ -45,7 +45,7 @@ class KCalendarIface : public DCOPObject
   k_dcop:
 
     /** This is a struct.
-     * 
+     *
      */
     struct ResourceRequestReply {
         bool vCalInOK;
@@ -66,6 +66,12 @@ class KCalendarIface : public DCOPObject
                                   const QString& description,
                                   const QString& attachment,
                                   const QStringList& attendees ) = 0;
+    virtual void openEventEditor( const QString& summary,
+                                  const QString& description,
+                                  const QString& attachment,
+                                  const QStringList& attendees,
+                                  const QString& attachmentMimetype,
+                                  bool inlineAttachment ) = 0;
 
     virtual void openTodoEditor( const QString& text ) = 0;
     virtual void openTodoEditor( const QString& summary,

@@ -368,11 +368,17 @@ void KOIncidenceEditor::openURL( const KURL &url )
   UriHandler::process( uri );
 }
 
-void KOIncidenceEditor::addAttachments( const QStringList &attachments )
+void KOIncidenceEditor::addAttachments( const QStringList &attachments,
+                                        const QStringList &mimeTypes,
+                                        bool inlineAttachments )
 {
   QStringList::ConstIterator it;
-  for ( it = attachments.begin(); it != attachments.end(); ++it ) {
-    mAttachments->addAttachment( *it );
+  uint i = 0;
+  for ( it = attachments.begin(); it != attachments.end(); ++it, ++i ) {
+    QString mimeType;
+    if ( mimeTypes.count() > i )
+      mimeType = mimeTypes[ i ];
+    mAttachments->addAttachment( *it, mimeType, !inlineAttachments );
   }
 }
 

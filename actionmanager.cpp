@@ -1528,6 +1528,16 @@ void ActionManager::openEventEditor( const QString& summary,
   mCalendarView->newEvent( summary, description, attachment, attendees );
 }
 
+void ActionManager::openEventEditor( const QString & summary,
+                                     const QString & description,
+                                     const QString & attachment,
+                                     const QStringList & attendees,
+                                     const QString & attachmentMimetype,
+                                     bool inlineAttachment )
+{
+  mCalendarView->newEvent( summary, description, attachment, attendees, attachmentMimetype, inlineAttachment );
+}
+
 void ActionManager::openTodoEditor( const QString& text )
 {
   mCalendarView->newTodo( text );

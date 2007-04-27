@@ -280,7 +280,8 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
       attendees list
     */
     void newEvent( const QString &summary, const QString &description = QString::null,
-                   const QStringList &attachment = QStringList(), const QStringList &attendees = QStringList() );
+                   const QStringList &attachment = QStringList(), const QStringList &attendees = QStringList(),
+                   const QStringList &attachmentMimetypes = QStringList(), bool inlineAttachment = false );
     void newFloatingEvent();
 
     /** Create a read-only viewer dialog for the supplied incidence. It calls the correct showXXX method*/
