@@ -215,7 +215,7 @@ void KOEditorAttachments::slotAdd()
          "the link will be attached, not the file itself):"), this,
                                        i18n("Add Attachment") );
   if ( !uri.isEmpty() ) {
-    addAttachment( uri.url() );
+    addAttachment( uri );
   }
 }
 
@@ -224,7 +224,7 @@ void KOEditorAttachments::slotAddData()
   KURL uri = KPimURLRequesterDlg::getURL( QString::null, i18n(
          "File to be attached:"), this, i18n("Add Attachment") );
   if ( !uri.isEmpty() ) {
-    addAttachment( uri.url(), QString::null, false );
+    addAttachment( uri, QString::null, false );
   }
 }
 
@@ -256,7 +256,10 @@ void KOEditorAttachments::slotEdit()
         f.close();
         attitem->setData( KCodecs::base64Encode( data ) );
         attitem->setMimeType( KIO::NetAccess::mimetype( uri, this ) );
-        attitem->setLabel( uri.prettyURL() );
+        QString label = uri.fileName();
+        if ( label.isEmpty() )
+          label = uri.prettyURL();
+        attitem->setLabel( label );
         KIO::NetAccess::removeTempFile( tmpFile );
       }
     }
@@ -284,12 +287,12 @@ void KOEditorAttachments::setDefaults()
   mAttachments->clear();
 }
 
-void KOEditorAttachments::addAttachment( const QString &uri,
+void KOEditorAttachments::addAttachment( const KURL &uri,
                                          const QString &mimeType, bool asUri )
 {
   AttachmentListItem *item = new AttachmentListItem( 0, mAttachments );
   if ( asUri ) {
-    item->setUri( uri );
+    item->setUri( uri.url() );
     if ( !mimeType.isEmpty() ) item->setMimeType( mimeType );
   } else {
     QString tmpFile;
@@ -304,7 +307,10 @@ void KOEditorAttachments::addAttachment( const QString &uri,
         item->setMimeType( mimeType );
       else
         item->setMimeType( KIO::NetAccess::mimetype( uri, this ) );
-      item->setLabel( uri );
+      QString label = uri.fileName();
+      if ( label.isEmpty() )
+        label = uri.prettyURL();
+      item->setLabel( label );
       KIO::NetAccess::removeTempFile( tmpFile );
     }
   }

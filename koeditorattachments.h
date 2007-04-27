@@ -44,7 +44,7 @@ class KOEditorAttachments : public QWidget
                          const char *name = 0 );
     ~KOEditorAttachments();
 
-    void addAttachment( const QString &uri,
+    void addAttachment( const KURL &uri,
                         const QString &mimeType = QString::null, bool asUri = true );
     void addAttachment( KCal::Attachment *attachment );
 
