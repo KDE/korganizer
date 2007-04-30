@@ -23,7 +23,7 @@ qt4_add_dbus_adaptor(korgac_SRCS org.kde.korganizer.KOrgac.xml koalarmclient.h K
 
 kde4_add_executable(korgac ${korgac_SRCS})
 
-target_link_libraries(korgac  ${KDE4_KDEUI_LIBS} ${KDE4_PHONONCORE_LIBS} korganizer_eventviewer)
+target_link_libraries(korgac  ${KDE4_KDEUI_LIBS} ${KDE4_PHONON_LIBS} korganizer_eventviewer)
 
 install(TARGETS korgac  DESTINATION ${BIN_INSTALL_DIR} )
 
@@ -37,7 +37,7 @@ kde4_automoc(${testalarmdlg_SRCS})
 
 kde4_add_executable(testalarmdlg ${testalarmdlg_SRCS})
 
-target_link_libraries(testalarmdlg  ${KDE4_KDEUI_LIBS} ${KDE4_PHONONCORE_LIBS} ${KDE4_KCAL_LIBS} korganizer_eventviewer)
+target_link_libraries(testalarmdlg  ${KDE4_KDEUI_LIBS} ${KDE4_PHONON_LIBS} ${KDE4_KCAL_LIBS} korganizer_eventviewer)
 
 endif(KDE4_BUILD_TESTS)
 
