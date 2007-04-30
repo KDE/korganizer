@@ -66,7 +66,7 @@
 #include <kio/netaccess.h>
 #include <kmessagebox.h>
 #include <k3process.h>
-#include <kwm.h>
+#include <kwindowsystem.h>
 #include <ktip.h>
 #include <KStandardGuiItem>
 #include <kstatusbar.h>

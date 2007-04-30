@@ -41,7 +41,7 @@
 #include <kmessagebox.h>
 #include <knotification.h>
 #include <kcombobox.h>
-#include <kwm.h>
+#include <kwindowsystem.h>
 #include <klockfile.h>
 #include <kpushbutton.h>
 #include <phonon/audioplayer.h>
@@ -179,15 +179,15 @@ void AlarmDialog::slotUser2()
   QDBusReply<int> reply = korganizerObj.call( "winId" );
   if ( reply.isValid() ) {
     int window = reply;
-    int desktop = KWM::windowInfo( window, NET::WMDesktop ).desktop();
+    int desktop = KWindowSystem::windowInfo( window, NET::WMDesktop ).desktop();
 
-    if ( KWM::currentDesktop() == desktop ) {
-      KWM::minimizeWindow( winId(), false );
+    if ( KWindowSystem::currentDesktop() == desktop ) {
+      KWindowSystem::minimizeWindow( winId(), false );
     }
     else
-      KWM::setCurrentDesktop( desktop );
+      KWindowSystem::setCurrentDesktop( desktop );
 
-    KWM::activateWindow( KWM::transientFor( window ) );
+    KWindowSystem::activateWindow( KWindowSystem::transientFor( window ) );
   }
 #endif
 }
@@ -196,8 +196,8 @@ void AlarmDialog::show()
 {
   KDialog::show();
 #ifdef Q_OS_UNIX
-  KWM::setState( winId(), NET::KeepAbove );
-  KWM::setOnAllDesktops( winId(), true );
+  KWindowSystem::setState( winId(), NET::KeepAbove );
+  KWindowSystem::setOnAllDesktops( winId(), true );
 #endif
   eventNotification();
 }

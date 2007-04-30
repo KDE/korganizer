@@ -62,7 +62,7 @@
 #include <ktip.h>
 #include <ktemporaryfile.h>
 #include <kxmlguiclient.h>
-#include <kwm.h>
+#include <kwindowsystem.h>
 #include <knotification.h>
 #include <KStandardGuiItem>
 #include <kdeversion.h>
@@ -706,7 +706,7 @@ void ActionManager::file_open( const KUrl &url )
   KOrg::MainWindow *korg=ActionManager::findInstance( url );
   if ( ( 0 != korg )&&( korg != mMainWindow ) ) {
 #ifdef Q_OS_UNIX
-    KWM::activateWindow( korg->topLevelWidget()->winId() );
+    KWindowSystem::activateWindow( korg->topLevelWidget()->winId() );
 #endif
     return;
   }

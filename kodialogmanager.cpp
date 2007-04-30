@@ -25,7 +25,7 @@
 
 #include <kcmultidialog.h>
 #include <ksettings/dialog.h>
-#include <kwm.h>
+#include <kwindowsystem.h>
 
 #include <libkdepim/categoryeditdialog.h>
 
@@ -93,7 +93,7 @@ KODialogManager::KODialogManager( CalendarView *mainView ) :
 
   mCategoryEditDialog = new KPIM::CategoryEditDialog( KOPrefs::instance(), mMainView );
 #ifdef Q_OS_X11
-  KWM::setMainWindow( mCategoryEditDialog, 0 );
+  KWindowSystem::setMainWindow( mCategoryEditDialog, 0 );
 #endif
   connect( mainView, SIGNAL( categoriesChanged() ),
            mCategoryEditDialog, SLOT( reload() ) );

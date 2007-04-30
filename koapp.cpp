@@ -32,7 +32,7 @@
 #include <kconfig.h>
 #include <kdebug.h>
 #include <klocale.h>
-#include <kwm.h>
+#include <kwindowsystem.h>
 #include <kurl.h>
 
 #include <kcal/calformat.h>
