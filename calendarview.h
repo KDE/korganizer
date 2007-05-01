@@ -334,7 +334,8 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
     void newSubTodo( Todo * );
 
     void newTodo( const QString &summary, const QString &description = QString::null,
-                  const QStringList &attachments = QStringList(), const QStringList &attendees = QStringList() );
+                  const QStringList &attachments = QStringList(), const QStringList &attendees = QStringList(),
+                  const QStringList &attachmentMimetypes = QStringList(), bool inlineAttachment = false );
 
     void newJournal();
     void newJournal( const QDate &date );

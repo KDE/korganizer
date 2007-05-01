@@ -81,6 +81,12 @@ class KCalendarIface : public DCOPObject
                                  const QString& description,
                                  const QString& attachment,
                                  const QStringList& attendees ) = 0;
+    virtual void openTodoEditor( const QString& summary,
+                                 const QString& description,
+                                 const QString& attachment,
+                                 const QStringList& attendees,
+                                 const QString& attachmentMimetype,
+                                 bool inlineAttachment ) = 0;
 
     virtual void openJournalEditor( const QDate& date ) = 0;
     virtual void openJournalEditor( const QString& text,
