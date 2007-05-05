@@ -61,7 +61,8 @@ libkorganizer_la_LIBADD  = $(LIB_KPARTS) $(LIB_KFILE) $(LIB_KNEWSTUFF) \
 	printing/libkorg_stdprinting.la \
 	$(top_builddir)/kdgantt/libkdgantt.la \
         $(top_builddir)/libemailfunctions/libemailfunctions.la \
-        $(top_builddir)/libkholidays/libkholidays.la
+        $(top_builddir)/libkholidays/libkholidays.la \
+	$(top_builddir)/libkmime/libkmime.la
 libkorganizer_la_COMPILE_FIRST = \
 	kogroupwareprefspage.ui \
 	$(top_srcdir)/libkdepim/categoryselectdialog.h

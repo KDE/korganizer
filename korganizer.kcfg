@@ -436,4 +436,17 @@
     </entry>
 
   </group>
+
+  <group name="Kontact">
+    <entry type="Enum" name="DefaultEmailAttachMethod">
+      <label>The default way of attaching dropped emails data to an event</label>
+      <choices>
+        <choice name="Ask"/>
+        <choice name="Link"/>
+        <choice name="InlineFull"/>
+        <choice name="InlineBody"/>
+      </choices>
+      <default>Ask</default>
+    </entry>
+  </group>
 </kcfg>

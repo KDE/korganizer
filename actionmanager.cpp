@@ -49,9 +49,12 @@
 #include <libkcal/htmlexport.h>
 #include <libkcal/htmlexportsettings.h>
 
+#include <libkmime/kmime_message.h>
+
 #include <dcopclient.h>
 #include <kaction.h>
 #include <kfiledialog.h>
+#include <kiconloader.h>
 #include <kio/netaccess.h>
 #include <kkeydialog.h>
 #include <kpopupmenu.h>
@@ -66,6 +69,7 @@
 #include <kactionclasses.h>
 
 #include <qapplication.h>
+#include <qcursor.h>
 #include <qtimer.h>
 #include <qlabel.h>
 
@@ -1530,12 +1534,96 @@ void ActionManager::openEventEditor( const QString& summary,
 
 void ActionManager::openEventEditor( const QString & summary,
                                      const QString & description,
-                                     const QString & attachment,
+                                     const QString & uri,
+                                     const QString & file,
                                      const QStringList & attendees,
-                                     const QString & attachmentMimetype,
-                                     bool inlineAttachment )
+                                     const QString & attachmentMimetype )
 {
-  mCalendarView->newEvent( summary, description, attachment, attendees, attachmentMimetype, inlineAttachment );
+  int action = KOPrefs::instance()->defaultEmailAttachMethod();
+  if ( attachmentMimetype != "message/rfc822" ) {
+    action = KOPrefs::Link;
+  } else if ( KOPrefs::instance()->defaultEmailAttachMethod() == KOPrefs::Ask ) {
+    KPopupMenu *menu = new KPopupMenu( 0 );
+    menu->insertItem( i18n("Attach as &link"), KOPrefs::Link );
+    menu->insertItem( i18n("Attach &inline"), KOPrefs::InlineFull );
+    menu->insertItem( i18n("Attach inline &without attachments"), KOPrefs::InlineBody );
+    menu->insertSeparator();
+    menu->insertItem( SmallIcon("cancel"), i18n("C&ancel"), KOPrefs::Ask );
+    action = menu->exec( QCursor::pos(), 0 );
+    delete menu;
+  }
+
+  QString attData;
+  KTempFile tf;
+  tf.setAutoDelete( true );
+  switch ( action ) {
+    case KOPrefs::Ask:
+      return;
+    case KOPrefs::Link:
+      attData = uri;
+      break;
+    case KOPrefs::InlineFull:
+      attData = file;
+      break;
+    case KOPrefs::InlineBody:
+    {
+      QFile f( file );
+      if ( !f.open( IO_ReadOnly ) )
+        return;
+      KMime::Message *msg = new KMime::Message();
+      msg->setContent( QCString( f.readAll() ) );
+      QCString head = msg->head();
+      msg->parse();
+      if ( msg == msg->textContent() || msg->textContent() == 0 ) { // no attachments
+        attData = file;
+      } else {
+        if ( KMessageBox::warningContinueCancel( 0,
+              i18n("Removing attachments from an email might invalidate its signature."),
+              i18n("Remove Attachments"), KStdGuiItem::cont(), "BodyOnlyInlineAttachment" )
+              != KMessageBox::Continue )
+          return;
+        // due to kmime shortcomings in KDE3, we need to assemble the result manually
+        int begin = 0;
+        int end = head.find( '\n' );
+        bool skipFolded = false;
+        while ( end >= 0 && end > begin ) {
+          if ( head.find( "Content-Type:", begin, false ) != begin &&
+                head.find( "Content-Transfer-Encoding:", begin, false ) != begin &&
+                !(skipFolded && (head[begin] == ' ' || head[end] == '\t')) ) {
+            QCString line = head.mid( begin, end - begin );
+            tf.file()->writeBlock( line.data(), line.length() );
+            tf.file()->writeBlock( "\n", 1 );
+            skipFolded = false;
+          } else {
+            skipFolded = true;
+          }
+
+          begin = end + 1;
+          end = head.find( '\n', begin );
+          if ( end < 0 && begin < (int)head.length() )
+            end = head.length() - 1;
+        }
+        QCString cte = msg->textContent()->contentTransferEncoding()->as7BitString();
+        if ( !cte.stripWhiteSpace().isEmpty() ) {
+          tf.file()->writeBlock( cte.data(), cte.length() );
+          tf.file()->writeBlock( "\n", 1 );
+        }
+        QCString ct = msg->textContent()->contentType()->as7BitString();
+        if ( !ct.stripWhiteSpace().isEmpty() )
+          tf.file()->writeBlock( ct.data(), ct.length() );
+        tf.file()->writeBlock( "\n", 1 );
+        tf.file()->writeBlock( msg->textContent()->body() );
+        attData = tf.name();
+      }
+      tf.close();
+      delete msg;
+      break;
+    }
+    default:
+      kdFatal() << k_funcinfo << "Unhandled drop type" << endl;
+  }
+
+  mCalendarView->newEvent( summary, description, attData, attendees, attachmentMimetype, action != KOPrefs::Link );
 }
 
 void ActionManager::openTodoEditor( const QString& text )

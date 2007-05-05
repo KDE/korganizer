@@ -68,10 +68,10 @@ class KCalendarIface : public DCOPObject
                                   const QStringList& attendees ) = 0;
     virtual void openEventEditor( const QString& summary,
                                   const QString& description,
-                                  const QString& attachment,
+                                  const QString& uri,
+                                  const QString& file,
                                   const QStringList& attendees,
-                                  const QString& attachmentMimetype,
-                                  bool inlineAttachment ) = 0;
+                                  const QString& attachmentMimetype ) = 0;
 
     virtual void openTodoEditor( const QString& text ) = 0;
     virtual void openTodoEditor( const QString& summary,
