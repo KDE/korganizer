@@ -62,7 +62,7 @@ bool KOMailClient::mailAttendees(IncidenceBase *incidence,const QString &attachm
   for(uint i=0; i<attendees.count();++i) {
     const QString email = (*attendees.at(i))->email();
     // In case we (as one of our identities) are the organizer we are sending this
-    // mail. We could also have added ourselves as an attendee, in which case we 
+    // mail. We could also have added ourselves as an attendee, in which case we
     // don't want to send ourselves a notification mail.
     if( organizerEmail !=  email )
       toList << email;
@@ -197,7 +197,7 @@ bool KOMailClient::send(const QString &from,const QString &to,
       if (idx>=0) {
         idx = attachment.find(':',idx)+1;
         meth = attachment.mid(idx,attachment.find('\n',idx)-idx);
-        meth = meth.lower();
+        meth = meth.lower().stripWhiteSpace();
       } else {
         meth = "publish";
       }
