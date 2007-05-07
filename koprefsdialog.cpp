@@ -112,6 +112,7 @@ KOPrefsDialogMain::KOPrefsDialogMain( QWidget *parent, const char *name )
 
   addWidBool( KOPrefs::instance()->confirmItem(), topFrame );
   addWidRadios( KOPrefs::instance()->destinationItem(), topFrame);
+  addWidRadios( KOPrefs::instance()->defaultEmailAttachMethodItem(), topFrame );
 
   topTopLayout->addStretch( 1 );
 
