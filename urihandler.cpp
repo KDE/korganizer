@@ -79,7 +79,7 @@ bool UriHandler::process( const QString &uri )
       QString tmpStr = "kaddressbook --editor-only --uid ";
       tmpStr += K3Process::quote( uri.mid( ::qstrlen( KDEPIMPROTOCOL_CONTACT ) ) 
       );
-      KRun::runCommand( tmpStr, "KAddressBook", iconPath );
+      KRun::runCommand( tmpStr, "KAddressBook", iconPath, NULL );
       return true;
     }
   } else if ( uri.startsWith( KDEPIMPROTOCOL_INCIDENCE ) ) {
