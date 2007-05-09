@@ -138,7 +138,9 @@ KOEditorAlarms::KOEditorAlarms( KCal::Alarm::List *alarms, QWidget *parent )
   setCaption( i18n("Edit Reminders") );
   setButtons( Ok | Apply | Cancel );
   setDefaultButton( Ok );
-  mWidget.setupUi( this );
+  QWidget *widget = new QWidget(this);
+  mWidget.setupUi( widget );
+  setMainWidget(widget);
   mWidget.mAlarmList->setColumnWidthMode( 0, Q3ListView::Maximum );
   mWidget.mAlarmList->setColumnWidthMode( 1, Q3ListView::Maximum );
   connect( mWidget.mAlarmList, SIGNAL( selectionChanged( Q3ListViewItem * ) ),
