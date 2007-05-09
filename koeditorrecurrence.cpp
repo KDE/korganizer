@@ -647,7 +647,7 @@ void ExceptionsWidget::addException()
 {
   QDate date = mExceptionDateEdit->date();
   QString dateStr = KGlobal::locale()->formatDate( date );
-  if( !mExceptionList->findItems( dateStr, Qt::MatchExactly ).isEmpty() ) {
+  if( mExceptionList->findItems( dateStr, Qt::MatchExactly ).isEmpty() ) {
     mExceptionDates.append( date );
     mExceptionList->addItem( dateStr );
   }
