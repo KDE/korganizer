@@ -30,7 +30,7 @@ class StatusDialog : public KDialog
 {
     Q_OBJECT
   public:
-    StatusDialog(QWidget* parent=0,const char* name=0);
+    StatusDialog(QWidget* parent=0);
     ~StatusDialog();
 
     Attendee::PartStat status();

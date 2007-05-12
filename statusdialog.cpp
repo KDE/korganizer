@@ -39,7 +39,7 @@
 #include "statusdialog.h"
 #include "statusdialog.moc"
 
-StatusDialog::StatusDialog(QWidget* parent, const char* name) :
+StatusDialog::StatusDialog(QWidget* parent) :
   KDialog(parent)
 {
   setModal( true );
