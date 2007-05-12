@@ -142,12 +142,12 @@ void FilterEdit::saveChanges()
 
   current->setName(mNameLineEdit->text());
   int criteria = 0;
-  if ( mCompletedCheck->isChecked() ) criteria |= CalFilter::HideCompleted;
+  if ( mCompletedCheck->isChecked() ) criteria |= CalFilter::HideCompletedTodos;
   if ( mRecurringCheck->isChecked() ) criteria |= CalFilter::HideRecurring;
   if ( mCatShowCheck->isChecked() ) criteria |= CalFilter::ShowCategories;
   if ( mHideInactiveTodosCheck->isChecked() ) criteria |= CalFilter::HideInactiveTodos;
   if ( mHideTodosNotAssignedToMeCheck->isChecked() )
-    criteria |= CalFilter::HideTodosWithoutAttendeeInEmailList;
+    criteria |= CalFilter::HideNoMatchingAttendeeTodos;
   current->setCriteria( criteria );
   current->setCompletedTimeSpan( mCompletedTimeSpan->value() );
 
@@ -176,12 +176,12 @@ void FilterEdit::filterSelected(CalFilter *filter)
   mNameLineEdit->setText(current ? current->name() : QString::null);
   mNameLineEdit->blockSignals(false);
   mDetailsFrame->setEnabled(true);
-  mCompletedCheck->setChecked( current->criteria() & CalFilter::HideCompleted );
+  mCompletedCheck->setChecked( current->criteria() & CalFilter::HideCompletedTodos );
   mCompletedTimeSpan->setValue( current->completedTimeSpan() );
   mRecurringCheck->setChecked( current->criteria() & CalFilter::HideRecurring );
   mHideInactiveTodosCheck->setChecked( current->criteria() & CalFilter::HideInactiveTodos );
   mHideTodosNotAssignedToMeCheck->setChecked(
-      current->criteria() & CalFilter::HideTodosWithoutAttendeeInEmailList );
+      current->criteria() & CalFilter::HideNoMatchingAttendeeTodos );
   if ( current->criteria() & CalFilter::ShowCategories ) {
     mCatShowCheck->setChecked( true );
   } else {

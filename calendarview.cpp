@@ -571,7 +571,7 @@ void CalendarView::readFilterSettings( KConfig *config )
     KConfigGroup filterConfig( config, "Filter_" + (*it) );
     filter->setCriteria( filterConfig.readEntry( "Criteria", 0 ) );
     filter->setCategoryList( filterConfig.readEntry( "CategoryList" , QStringList() ) );
-    if ( filter->criteria() & KCal::CalFilter::HideTodosWithoutAttendeeInEmailList )
+    if ( filter->criteria() & KCal::CalFilter::HideNoMatchingAttendeeTodos )
       filter->setEmailList( KOPrefs::instance()->allEmails() );
     filter->setCompletedTimeSpan( filterConfig.readEntry( "HideTodoDays", 0 ) );
     mFilters.append( filter );
