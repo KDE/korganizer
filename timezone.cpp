@@ -52,7 +52,11 @@ int main(int argc,char **argv)
   kDebug(5850) << "localtime: " << t->tm_hour << ":" << t->tm_min << endl;
 
   kDebug(5850) << "tzname: " << tzname[0] << " " << tzname[1] << endl;
-  kDebug(5850) << "timezone: " << timezone/3600 << endl;
+#ifndef __APPLE__
+  kDebug(5850) << "timezone: " << timezone / 3600 << endl;
+#else
+#warning port timezone debug output if needed
+#endif
   
   QTime qtime = QTime::currentTime();
   
