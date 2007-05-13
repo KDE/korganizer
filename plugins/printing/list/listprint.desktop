@@ -44,7 +44,6 @@ Name[x-test]=xxList Print Stylexx
 Name[zh_TW]=清單列印風格
 Comment=This plugin allows you to print out events and to-dos in list form.
 Comment[af]=Hierdie inprop module druk afsprake en te-doen items in lys vorm.
-Comment[bg]=Приставката служи за печат на събитията и задачите в списъчна форма.
 Comment[ca]=Aquest endollable permet imprimir esdeveniments i tasques pendents en forma de llista.
 Comment[cs]=tento modul umožňuje tisknout události a úlohy do seznamu.
 Comment[da]=Dette plugin gør at du kan udskrive begivenheder og opgaver på en liste.
