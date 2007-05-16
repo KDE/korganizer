@@ -113,6 +113,7 @@ void ResourceItem::createSubresourceItems()
                                              mView, this );
       QColor resourceColor = *KOPrefs::instance()->resourceColor( *it );
       item->setResourceColor( resourceColor );
+      item->update();
     }
   }
   mSubItemsCreated = true;
@@ -301,11 +302,25 @@ void ResourceView::emitResourcesChanged()
 
 void ResourceView::addResource()
 {
+  bool ok = false;
   KCal::CalendarResourceManager *manager = mCalendar->resourceManager();
-
+  ResourceItem *i = static_cast<ResourceItem*>( mListView->selectedItem() );
+  if ( i && ( i->isSubresource() || i->resource()->canHaveSubresources() ) ) {
+    const QString folderName = KInputDialog::getText( i18n( "Add Subresource" ),
+            i18n( "Please enter a name for the new subresource" ), QString::null,
+            &ok, this );
+    if ( !ok )
+      return;
+    const QString parentId = i->isSubresource() ? i->resourceIdentifier() : QString:: null;
+    if ( !i->resource()->addSubresource( folderName, parentId ) ) {
+      KMessageBox::error( this, i18n("<qt>Unable to create subresource <b>%1</b>.</qt>")
+                                .arg( folderName ) );
+    }
+    return;
+  }
+  
   QStringList types = manager->resourceTypeNames();
   QStringList descs = manager->resourceTypeDescriptions();
-  bool ok = false;
   QString desc = KInputDialog::getItem( i18n( "Resource Configuration" ),
       i18n( "Please select type of the new resource:" ), descs, 0, false, &ok,
             this );
@@ -329,6 +344,10 @@ void ResourceView::addResource()
 
   if ( dlg && dlg->exec() ) {
     resource->setTimeZoneId( KOPrefs::instance()->mTimeZoneId );
+    if ( resource->isActive() ) {
+      resource->open();
+      resource->load();
+    }
     manager->add( resource );
     // we have to call resourceAdded manually, because for in-process changes
     // the dcop signals are not connected, so the resource's signals would not
@@ -351,6 +370,7 @@ void ResourceView::addResourceItem( ResourceCalendar *resource )
 
   resourceColor= *KOPrefs::instance()->resourceColor(resource->identifier());
   item->setResourceColor(resourceColor);
+  item->update();
 
   connect( resource, SIGNAL( signalSubresourceAdded( ResourceCalendar *,
                                                      const QString &,
@@ -359,7 +379,13 @@ void ResourceView::addResourceItem( ResourceCalendar *resource )
            SLOT( slotSubresourceAdded( ResourceCalendar *, const QString &,
                                        const QString &, const QString & ) ) );
 
- connect( resource, SIGNAL( signalSubresourceRemoved( ResourceCalendar *,
+  connect( resource, SIGNAL( signalSubresourceAdded( ResourceCalendar *,
+                                                     const QString &,
+                                                     const QString & ) ),
+           SLOT( slotSubresourceAdded( ResourceCalendar *, const QString &,
+                                       const QString & ) ) );
+ 
+  connect( resource, SIGNAL( signalSubresourceRemoved( ResourceCalendar *,
                                                        const QString &,
                                                        const QString & ) ),
            SLOT( slotSubresourceRemoved( ResourceCalendar *, const QString &,
@@ -372,6 +398,14 @@ void ResourceView::addResourceItem( ResourceCalendar *resource )
   emit resourcesChanged();
 }
 
+void ResourceView::slotSubresourceAdded( ResourceCalendar *calendar,
+                                         const QString& type,
+                                         const QString& resource )
+{
+   slotSubresourceAdded( calendar, type, resource, resource );
+}
+
+
 // Add a new entry
 void ResourceView::slotSubresourceAdded( ResourceCalendar *calendar,
                                          const QString& /*type*/,
@@ -383,9 +417,12 @@ void ResourceView::slotSubresourceAdded( ResourceCalendar *calendar,
     // Not found
     return;
 
+  if ( findItemByIdentifier( resource ) ) return;
+
   ResourceItem *item = static_cast<ResourceItem *>( i );
-  ( void )new ResourceItem( calendar, resource, label, this, item );
-  emitResourcesChanged();
+  ResourceItem *newItem = new ResourceItem( calendar, resource, label, this, item );
+  QColor resourceColor = *KOPrefs::instance()->resourceColor( resource );
+  newItem->setResourceColor( resourceColor );
 }
 
 // Remove an entry
@@ -425,9 +462,14 @@ void ResourceView::removeResource()
   ResourceItem *item = currentItem();
   if ( !item ) return;
 
-  int km = KMessageBox::warningContinueCancel( this,
-        i18n("<qt>Do you really want to delete the resource <b>%1</b>?</qt>")
-        .arg( item->text( 0 ) ), "", KStdGuiItem::del() );
+  const QString warningMsg = item->isSubresource() ?
+        i18n("<qt>Do you really want to remove the subresource <b>%1</b>? "
+              "Note that its contents will be completely deleted. This "
+              "operation cannot be undone. </qt>").arg( item->text( 0 ) ) :
+        i18n("<qt>Do you really want to remove the resource <b>%1</b>?</qt>").arg( item->text( 0 ) );
+
+  int km = KMessageBox::warningContinueCancel( this, warningMsg, "",
+        KGuiItem( i18n("&Remove" ), "editdelete") );
   if ( km == KMessageBox::Cancel ) return;
 
 // Don't be so restricitve
@@ -439,12 +481,19 @@ void ResourceView::removeResource()
   }
 #endif
   if ( item->isSubresource() ) {
-    // FIXME delete the folder in KMail
+    if ( !item->resource()->removeSubresource( item->resourceIdentifier() ) )
+      KMessageBox::sorry( this,
+              i18n ("<qt>Failed to remove the subresource <b>%1</b>. The "
+                  "reason could be that it is a built-in one which cannot "
+                  "be removed, or that the removal of the underlying storage "
+                  "folder failed.</qt>").arg( item->resource()->name() ) );
+      return;
   } else {
     mCalendar->resourceManager()->remove( item->resource() );
+  }
     mListView->takeItem( item );
     delete item;
-  }
+
   updateResourceList();
   emit resourcesChanged();
 }
