@@ -1620,8 +1620,8 @@ void ActionManager::openEventEditor( const QString & summary,
       break;
     }
     default:
-      break;
-    // menu could have been closed by cancel
+      // menu could have been closed by cancel, if so, do nothing
+      return;
   }
 
   mCalendarView->newEvent( summary, description, attData, attendees, attachmentMimetype, action != KOPrefs::Link );
