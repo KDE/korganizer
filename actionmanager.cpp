@@ -1620,7 +1620,8 @@ void ActionManager::openEventEditor( const QString & summary,
       break;
     }
     default:
-      kdFatal() << k_funcinfo << "Unhandled drop type" << endl;
+      break;
+    // menu could have been closed by cancel
   }
 
   mCalendarView->newEvent( summary, description, attData, attendees, attachmentMimetype, action != KOPrefs::Link );
