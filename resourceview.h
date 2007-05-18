@@ -133,8 +133,6 @@ class ResourceView : public CalendarViewExtension
     void currentChanged( QListViewItem* );
     void slotSubresourceAdded( ResourceCalendar *, const QString &,
                                const QString &resource,const QString& label );
-    void slotSubresourceAdded( ResourceCalendar *, const QString &,
-                               const QString &resource );
 
     void slotSubresourceRemoved( ResourceCalendar *, const QString &,
                                  const QString & );

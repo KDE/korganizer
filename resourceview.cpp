@@ -379,12 +379,6 @@ void ResourceView::addResourceItem( ResourceCalendar *resource )
            SLOT( slotSubresourceAdded( ResourceCalendar *, const QString &,
                                        const QString &, const QString & ) ) );
 
-  connect( resource, SIGNAL( signalSubresourceAdded( ResourceCalendar *,
-                                                     const QString &,
-                                                     const QString & ) ),
-           SLOT( slotSubresourceAdded( ResourceCalendar *, const QString &,
-                                       const QString & ) ) );
- 
   connect( resource, SIGNAL( signalSubresourceRemoved( ResourceCalendar *,
                                                        const QString &,
                                                        const QString & ) ),
@@ -397,14 +391,6 @@ void ResourceView::addResourceItem( ResourceCalendar *resource )
   updateResourceList();
   emit resourcesChanged();
 }
-
-void ResourceView::slotSubresourceAdded( ResourceCalendar *calendar,
-                                         const QString& type,
-                                         const QString& resource )
-{
-   slotSubresourceAdded( calendar, type, resource, resource );
-}
-
 
 // Add a new entry
 void ResourceView::slotSubresourceAdded( ResourceCalendar *calendar,
