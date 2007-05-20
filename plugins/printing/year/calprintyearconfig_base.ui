@@ -109,7 +109,7 @@
         </widget>
       </item>
       <item>
-        <widget class="Q3GroupBox" name="mDisplayOptionsGroup" >
+        <widget class="QGroupBox" name="mDisplayOptionsGroup" >
           <property name="title" >
             <string>Display Options</string>
           </property>
