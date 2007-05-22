@@ -128,6 +128,8 @@ void PublishDialog::openAddressbook()
   KABC::Addressee::List addressList;
   addressList = KABC::AddresseeDialog::getAddressees( this );
   //KABC::Addressee a = KABC::AddresseeDialog::getAddressee(this);
+  if( addressList.isEmpty())
+     return;
   KABC::Addressee a = addressList.first();
   if ( !a.isEmpty() ) {
     int i;
