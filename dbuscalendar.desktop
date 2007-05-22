@@ -4,6 +4,7 @@ Type=ServiceType
 X-KDE-ServiceType=DBUS/Organizer
 Comment=Organizer with a D-BUS interface
 Comment[es]=Organizador con una interfaz D-BUS
+Comment[ja]=D-Bus インターフェースを持つカレンダー
 Comment[kk]=D-BUS интерфейсті Ұйымдастырғыш
 Comment[sv]=Filofax med DBus-gränssnitt
 Comment[x-test]=xxOrganizer with a D-BUS interfacexx
