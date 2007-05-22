@@ -348,8 +348,8 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent )
            SLOT( showAttachmentContextMenu( Q3IconViewItem *,
                                             const QPoint & ) ) );
   connect( mAttachments, SIGNAL( dropped( QDropEvent *,
-                                          const QList<Q3IconDragItem> & ) ),
-           SLOT( dropped( QDropEvent *, const QList<Q3IconDragItem> & ) ) );
+                                          const Q3ValueList<Q3IconDragItem>  & ) ),
+           SLOT( dropped( QDropEvent *, const Q3ValueList<Q3IconDragItem>  & ) ) );
 
   // FIXME for some reason it doesn't work
   connect( mAttachments, SIGNAL( moved() ), SLOT( slotRemove() ) );
@@ -582,7 +582,7 @@ void KOEditorAttachments::copyComplete( KJob *job )
 }
 
 void KOEditorAttachments::dropped ( QDropEvent * e,
-                                    const QList<Q3IconDragItem> & /*lst*/ )
+                                    const Q3ValueList<Q3IconDragItem>  & /*lst*/ )
 {
   dropEvent( e );
 }
