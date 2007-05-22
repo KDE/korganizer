@@ -116,20 +116,23 @@ void FilterEdit::updateFilterList()
 {
   mRulesList->clear();
 
-  if ( mFilters || mFilters->empty() )
+  if ( !mFilters || mFilters->empty() )
     emit( dataConsistent(false) );
-  else {
+  else { 
     QList<CalFilter*>::iterator i;
     for ( i = mFilters->begin(); i != mFilters->end(); ++i ) {
-      if ( *i ) { mRulesList->addItem( (*i)->name() ); }
+      if ( *i ) { 
+	      mRulesList->addItem( (*i)->name() ); 
+      }
     }
-
-    CalFilter *f = mFilters->at( mRulesList->currentRow() );
-    if ( f ) filterSelected( f );
-
+    if( mRulesList->currentRow() != -1 )
+    {
+      CalFilter *f = mFilters->at( mRulesList->currentRow() );
+      if ( f ) 
+	filterSelected( f );
+    }
     emit( dataConsistent(true) );
   }
-
   if ( mFilters && current == 0L && mFilters->count() > 0 )
     filterSelected( mFilters->at(0) );
   mDeleteButton->setEnabled( !mFilters->isEmpty() );
