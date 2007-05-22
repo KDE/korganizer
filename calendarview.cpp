@@ -501,7 +501,8 @@ void CalendarView::readSettings()
   mPanner->setSizes( sizes );
 
   sizes = geometryConfig.readEntry( "Separator2",QList<int>() );
-  mLeftSplitter->setSizes( sizes );
+  if( !sizes.isEmpty())
+     mLeftSplitter->setSizes( sizes );
 #endif
 
   mEventViewer->readSettings( config );

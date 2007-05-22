@@ -93,7 +93,8 @@ QList<int> TimeSpanWidget::splitterSizes()
 
 void TimeSpanWidget::setSplitterSizes( QList<int> sizes )
 {
-  mSplitter->setSizes( sizes );
+  if( sizes.count() == 2)
+    mSplitter->setSizes( sizes );
 }
 
 void TimeSpanWidget::addItem( KCal::Event *event )
