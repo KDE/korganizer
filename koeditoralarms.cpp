@@ -155,7 +155,10 @@ KOEditorAlarms::KOEditorAlarms( KCal::Alarm::List *alarms, QWidget *parent )
   connect( mWidget.mRepeats, SIGNAL( toggled( bool ) ), SLOT( changed() ) );
   connect( mWidget.mRepeatCount, SIGNAL( valueChanged( int ) ), SLOT( changed() ) );
   connect( mWidget.mRepeatInterval, SIGNAL( valueChanged( int ) ), SLOT( changed() ) );
-  connect( mWidget.mAlarmType, SIGNAL(clicked(int)), SLOT( changed() ) );
+  connect( mWidget.mTypeDisplayRadio, SIGNAL(clicked()), SLOT( changed() ) );
+  connect( mWidget.mTypeSoundRadio, SIGNAL(clicked()), SLOT( changed() ) );
+  connect( mWidget.mTypeAppRadio, SIGNAL(clicked()), SLOT( changed() ) );
+  connect( mWidget.mTypeEmailRadio, SIGNAL(clicked()), SLOT( changed() ) );
   connect( mWidget.mDisplayText, SIGNAL( textChanged() ), SLOT( changed() ) );
   connect( mWidget.mSoundFile, SIGNAL( textChanged( const QString & ) ), SLOT( changed() ) );
   connect( mWidget.mApplication, SIGNAL( textChanged( const QString & ) ), SLOT( changed() ) );
