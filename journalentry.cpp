@@ -231,9 +231,8 @@ JournalEntry::JournalEntry( Journal* j, QWidget *parent ) :
   mPrintButton = new QToolButton( this, "printButton" );
   mPrintButton->setPixmap( KOGlobals::self()->smallIcon( "printer1" ) );
   mPrintButton->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
-  //FIXME: uncomment the next two lines after the string freeze is lifted
-//  QToolTip::add( mPrintButton, i18n("Print this journal entry") );
-//  QWhatsThis::add( mPrintButton, i18n("Opens the print dialog for this journal entry") );
+  QToolTip::add( mPrintButton, i18n("Print this journal entry") );
+  QWhatsThis::add( mPrintButton, i18n("Opens the print dialog for this journal entry") );
   mLayout->addWidget( mPrintButton, 0, 6 );
   connect( mPrintButton, SIGNAL(clicked()), this, SLOT( printItem() ) );
 #endif
