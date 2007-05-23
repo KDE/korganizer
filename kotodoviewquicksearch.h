@@ -96,7 +96,6 @@ class KOTodoListViewQuickSearch : public QToolBar
     Calendar *mCalendar;
     KOTodoListViewQuickSearchLine *mQuickSearchLine;
     QLabel *mCategoryLabel;
-    static QAction *action;
 };
 
 class KOTodoListViewQuickSearchContainer : public QWidget

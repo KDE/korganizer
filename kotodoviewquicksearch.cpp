@@ -52,8 +52,6 @@
 using namespace KPIM;
 using namespace KCal;
 
-QAction *KOTodoListViewQuickSearch::action = 0;
-
 KOTodoListViewQuickSearch::KOTodoListViewQuickSearch( QWidget *parent,
                                             QList<K3ListView*> listViews,
                                             KActionCollection *actionCollection,
@@ -209,15 +207,11 @@ void KOTodoListViewQuickSearch::resizeEvent( QResizeEvent *e )
 
 void KOTodoListViewQuickSearch::showEvent( QShowEvent *e )
 {
-  connect( action, SIGNAL( activated() ), this, SLOT( reset() ) );
-
   QToolBar::showEvent( e );
 }
 
 void KOTodoListViewQuickSearch::hideEvent( QHideEvent *e )
 {
-  disconnect( action, SIGNAL( activated() ), this, SLOT( reset() ) );
-
   QToolBar::hideEvent( e );
 }
 
