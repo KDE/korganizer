@@ -155,15 +155,21 @@ KOEditorAlarms::KOEditorAlarms( KCal::Alarm::List *alarms, QWidget *parent )
   connect( mWidget.mRepeats, SIGNAL( toggled( bool ) ), SLOT( changed() ) );
   connect( mWidget.mRepeatCount, SIGNAL( valueChanged( int ) ), SLOT( changed() ) );
   connect( mWidget.mRepeatInterval, SIGNAL( valueChanged( int ) ), SLOT( changed() ) );
-  connect( mWidget.mTypeDisplayRadio, SIGNAL(clicked()), SLOT( changed() ) );
-  connect( mWidget.mTypeSoundRadio, SIGNAL(clicked()), SLOT( changed() ) );
-  connect( mWidget.mTypeAppRadio, SIGNAL(clicked()), SLOT( changed() ) );
-  connect( mWidget.mTypeEmailRadio, SIGNAL(clicked()), SLOT( changed() ) );
+
+  connect( mWidget.mTypeDisplayRadio, SIGNAL(clicked()), SLOT( slotDisplayRadioClicked() ) );
+  connect( mWidget.mTypeSoundRadio, SIGNAL(clicked()), SLOT( slotSoundRadioClicked() ) );
+  connect( mWidget.mTypeAppRadio, SIGNAL(clicked()), SLOT( slotAppRadioClicked() ) );
+  connect( mWidget.mTypeEmailRadio, SIGNAL(clicked()), SLOT( slotEmailRadioClicked() ) );
+
   connect( mWidget.mDisplayText, SIGNAL( textChanged() ), SLOT( changed() ) );
   connect( mWidget.mSoundFile, SIGNAL( textChanged( const QString & ) ), SLOT( changed() ) );
   connect( mWidget.mApplication, SIGNAL( textChanged( const QString & ) ), SLOT( changed() ) );
   connect( mWidget.mAppArguments, SIGNAL( textChanged( const QString & ) ), SLOT( changed() ) );
   connect( mWidget.mEmailAddress, SIGNAL( textChanged( const QString & ) ), SLOT( changed() ) );
+  connect( mWidget.mRepeats, SIGNAL( toggled( bool ) ), mWidget.mIntervalLabel,SLOT(setEnabled(bool)));
+  connect( mWidget.mRepeats, SIGNAL( toggled( bool ) ), mWidget.mRepeatInterval,SLOT(setEnabled(bool)));
+  connect( mWidget.mRepeats, SIGNAL( toggled( bool ) ), mWidget.mHowOftenLabel,SLOT(setEnabled(bool)));
+  connect( mWidget.mRepeats, SIGNAL( toggled( bool ) ), mWidget.mRepeatCount,SLOT(setEnabled(bool)));
   connect( mWidget.mEmailText, SIGNAL( textChanged() ), SLOT( changed() ) );
   connect( this,SIGNAL(okClicked()),SLOT(slotOk()));
   connect( this,SIGNAL(applyClicked()),SLOT(slotApply()));
@@ -173,6 +179,30 @@ KOEditorAlarms::KOEditorAlarms( KCal::Alarm::List *alarms, QWidget *parent )
 KOEditorAlarms::~KOEditorAlarms()
 {
 }
+
+void KOEditorAlarms::slotDisplayRadioClicked()
+{
+  mWidget.mTypeStack->setCurrentIndex(0);
+  changed();
+}
+
+void KOEditorAlarms::slotSoundRadioClicked()
+{
+  mWidget.mTypeStack->setCurrentIndex(1);
+  changed();
+}
+
+void KOEditorAlarms::slotAppRadioClicked()
+{
+  mWidget.mTypeStack->setCurrentIndex(2);
+  changed();
+}
+
+void KOEditorAlarms::slotEmailRadioClicked()
+{
+  mWidget.mTypeStack->setCurrentIndex(3);
+  changed();
+} 
 
 void KOEditorAlarms::changed()
 {

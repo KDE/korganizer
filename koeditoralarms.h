@@ -48,6 +48,11 @@ class KOEditorAlarms : public KDialog
     void slotRemove();
     void changed();
     void selectionChanged( Q3ListViewItem *listviewitem );
+    void slotDisplayRadioClicked();
+    void slotSoundRadioClicked();
+    void slotAppRadioClicked();
+    void slotEmailRadioClicked();
+
   protected:
     void init();
     void readAlarm( KCal::Alarm *alarm );
