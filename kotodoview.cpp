@@ -495,7 +495,7 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent)
     QString label = QString ("%1 %").arg (i);
     mPercentage[ mPercentageCompletedPopupMenu->addAction(label) ] = i;
   }
-  connect( mPercentageCompletedPopupMenu, SIGNAL( activated( QAction* ) ),
+  connect( mPercentageCompletedPopupMenu, SIGNAL(triggered( QAction* ) ),
            SLOT( setNewPercentage( QAction* ) ) );
 
   mMovePopupMenu = new KDatePickerPopup(
@@ -1324,8 +1324,8 @@ QMenu *KOTodoView::getCategoryPopupMenu( KOTodoViewItem *todoItem )
       action->setChecked( true );
   }
 
-  connect ( tempMenu, SIGNAL( activated( QAction* ) ),
-            SLOT( changedCategories( QAction* ) ) );
+  connect ( tempMenu, SIGNAL(triggered(QAction*) ),
+            SLOT( changedCategories(QAction*) ) );
   return tempMenu;
 }
 
