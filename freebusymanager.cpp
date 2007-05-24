@@ -99,9 +99,7 @@ void FreeBusyDownloadJob::slotResult( KIO::Job *job )
 
   FreeBusy *fb = mManager->iCalToFreeBusy( mFreeBusyData );
   emit freeBusyDownloaded( fb, mEmail );
-  // PENDING(steffen): Is this safe?
-  //job->deleteLater();
-  delete this;
+  deleteLater();
 }
 
 
@@ -149,7 +147,7 @@ QString FreeBusyManager::freeBusyToIcal( KCal::FreeBusy *freebusy )
 
 void FreeBusyManager::slotPerhapsUploadFB()
 {
-  // user has automtic uploading disabled, bail out
+  // user has automatic uploading disabled, bail out
   if ( !KOPrefs::instance()->freeBusyPublishAuto() )
      return;
   if( mTimerID != 0 )
