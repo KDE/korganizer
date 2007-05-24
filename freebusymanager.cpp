@@ -364,7 +364,7 @@ bool FreeBusyManager::processRetrieveQueue()
 
   KURL sourceURL = freeBusyUrl( email );
 
-  kdDebug(5850) << "FreeBusyManager::processRetrieveQueue(): url: " << sourceURL.url()
+  kdDebug(5850) << "FreeBusyManager::processRetrieveQueue(): url: " << sourceURL
             << endl;
 
   if ( !sourceURL.isValid() ) {
@@ -449,7 +449,7 @@ KURL FreeBusyManager::freeBusyUrl( const QString &email )
       << email << '\'' << endl;
     return KURL();
 }
-  kdDebug(5850) << "Server FreeBusy url: " << sourceURL.url() << endl;
+  kdDebug(5850) << "Server FreeBusy url: " << sourceURL << endl;
   if ( KOPrefs::instance()->mFreeBusyFullDomainRetrieval )
     sourceURL.setFileName( email + ".ifb" );
   else
@@ -457,7 +457,7 @@ KURL FreeBusyManager::freeBusyUrl( const QString &email )
   sourceURL.setUser( KOPrefs::instance()->mFreeBusyRetrieveUser );
   sourceURL.setPass( KOPrefs::instance()->mFreeBusyRetrievePassword );
 
-  kdDebug(5850) << "Results in generated: " << sourceURL.url() << endl;
+  kdDebug(5850) << "Results in generated: " << sourceURL << endl;
   return sourceURL;
 }
 
