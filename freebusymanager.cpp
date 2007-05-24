@@ -109,11 +109,10 @@ void FreeBusyDownloadJob::slotResult( KIO::Job *job )
     mManager->saveFreeBusy( fb, p );
   }
   emit freeBusyDownloaded( fb, mEmail );
-  // PENDING(steffen): Is this safe?
-  //job->deleteLater();
-  delete this;
+  deleteLater();
 }
 
+////
 
 FreeBusyManager::FreeBusyManager( QObject *parent, const char *name )
   : QObject( parent, name ),
@@ -159,7 +158,7 @@ QString FreeBusyManager::freeBusyToIcal( KCal::FreeBusy *freebusy )
 
 void FreeBusyManager::slotPerhapsUploadFB()
 {
-  // user has automtic uploading disabled, bail out
+  // user has automatic uploading disabled, bail out
   if ( !KOPrefs::instance()->freeBusyPublishAuto() ||
        KOPrefs::instance()->freeBusyPublishUrl().isEmpty() )
      return;
@@ -400,7 +399,7 @@ KURL FreeBusyManager::freeBusyUrl( const QString &email )
   cfg.setGroup( email );
   QString url = cfg.readEntry( "url" );
   if ( !url.isEmpty() ) {
-    kdDebug(5850) << "found cached url: " << url << endl; 
+    kdDebug(5850) << "found cached url: " << url << endl;
     return KURL( url );
   }
   // Try with the url configurated by preferred email in kaddressbook
@@ -414,16 +413,19 @@ KURL FreeBusyManager::freeBusyUrl( const QString &email )
         "Preferred email of " << email << " is " << pref << endl;
       cfg.setGroup( pref );
       url = cfg.readEntry ( "url" );
-      if ( !url.isEmpty() )
+      if ( !url.isEmpty() ) {
         kdDebug( 5850 ) << "FreeBusyManager::freeBusyUrl():" <<
           "Taken url from preferred email:" << url << endl;
         return KURL( url );
+      }
     }
   }
   // None found. Check if we do automatic FB retrieving then
-  if ( !KOPrefs::instance()->mFreeBusyRetrieveAuto )
+  if ( !KOPrefs::instance()->mFreeBusyRetrieveAuto ) {
+    kdDebug( 5850 ) << "no auto retrieving" << endl;
     // No, so no FB list here
     return KURL();
+  }
 
   // Sanity check: Don't download if it's not a correct email
   // address (this also avoids downloading for "(empty email)").
