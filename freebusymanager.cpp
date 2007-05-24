@@ -364,7 +364,7 @@ bool FreeBusyManager::processRetrieveQueue()
 
   KUrl sourceURL = freeBusyUrl( email );
 
-  kDebug(5850) << "FreeBusyManager::retrieveFreeBusy(): url: " << sourceURL.url()
+  kDebug(5850) << "FreeBusyManager::retrieveFreeBusy(): url: " << sourceURL
             << endl;
 
   if ( !sourceURL.isValid() ) {
