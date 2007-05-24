@@ -109,11 +109,10 @@ void FreeBusyDownloadJob::slotResult( KJob *job )
     mManager->saveFreeBusy( fb, p );
   }
   emit freeBusyDownloaded( fb, mEmail );
-  // PENDING(steffen): Is this safe?
-  //job->deleteLater();
-  delete this;
+  deleteLater();
 }
 
+////
 
 FreeBusyManager::FreeBusyManager( QObject *parent ) : QObject( parent ),
     mCalendar( 0 ), mTimerID( 0 ), mUploadingFreeBusy( false )
@@ -158,7 +157,7 @@ QString FreeBusyManager::freeBusyToIcal( KCal::FreeBusy *freebusy )
 
 void FreeBusyManager::slotPerhapsUploadFB()
 {
-  // user has automtic uploading disabled, bail out
+  // user has automatic uploading disabled, bail out
   if ( !KOPrefs::instance()->freeBusyPublishAuto() ||
        KOPrefs::instance()->freeBusyPublishUrl().isEmpty() )
      return;
@@ -412,10 +411,11 @@ KUrl FreeBusyManager::freeBusyUrl( const QString &email )
         "Preferred email of " << email << " is " << pref << endl;
       group = cfg.group(pref);
       url = group.readEntry ( "url" );
-      if ( !url.isEmpty() )
+      if ( !url.isEmpty() ) {
         kDebug( 5850 ) << "FreeBusyManager::freeBusyUrl():" <<
           "Taken url from preferred email:" << url << endl;
         return KUrl( url );
+      }
     }
   }
   // None found. Check if we do automatic FB retrieving then
