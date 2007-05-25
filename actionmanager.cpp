@@ -385,7 +385,7 @@ void ActionManager::initActions()
   connect( mCalendarView, SIGNAL( newFilterListSignal( const QStringList & ) ),
 	    this, SLOT( setItems( const QStringList & ) ) );
   connect( mCalendarView, SIGNAL( selectFilterSignal( int ) ),
-           mFilterAction, SLOT( setCurrentItem( int ) ) );
+           this, SLOT( slotChangeComboActionItem( int ) ) );
   connect( mCalendarView, SIGNAL( filterChanged() ),
            this, SLOT( setTitle() ) );
 
@@ -630,6 +630,11 @@ void ActionManager::initActions()
   mACollection->addAction("filter_label", act );
   act->setDefaultWidget( filterLabel );
 }
+
+void ActionManager::slotChangeComboActionItem(int index)
+{
+  mFilterAction->setCurrentItem(index);
+}	
 
 void ActionManager::setItems( const QStringList & lst)
 {

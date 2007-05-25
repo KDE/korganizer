@@ -362,6 +362,8 @@ class KDE_EXPORT ActionManager : public QObject
   private slots:
     void dumpText( const QString & );  // only for debugging purposes
 
+    void slotChangeComboActionItem(int);
+
   private:
     class ActionStringsVisitor;
 
