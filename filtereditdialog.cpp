@@ -106,6 +106,9 @@ FilterEdit::FilterEdit(QList<CalFilter*> *filters, QWidget *parent)
   connect( mDeleteButton, SIGNAL( clicked() ), SLOT( bDeletePressed() ) );
   connect( mNameLineEdit, SIGNAL( textChanged(const QString &) ), SLOT( updateSelectedName(const QString &) ) );
   connect( mCatEditButton, SIGNAL( clicked() ), SLOT( editCategorySelection() ) );
+  connect( mCompletedCheck, SIGNAL(toggled(bool)), mCompletedTimeSpanLabel, SLOT(setEnabled(bool)));
+  connect( mCompletedCheck, SIGNAL(toggled(bool)), mCompletedTimeSpan, SLOT(setEnabled(bool)));
+
 }
 
 FilterEdit::~FilterEdit() {
