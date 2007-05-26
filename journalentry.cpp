@@ -43,7 +43,6 @@
 #include <ktextedit.h>
 #include <ktimeedit.h>
 #include <klineedit.h>
-#include <k3activelabel.h>
 #include <KStandardGuiItem>
 #include <kmessagebox.h>
 
@@ -62,14 +61,6 @@
 #include "calprinter.h"
 #endif
 
-class JournalTitleLable : public K3ActiveLabel
-{
-public:
-  JournalTitleLable( QWidget *parent ) : K3ActiveLabel( parent ) {}
-
-  void openLink( const QString &/*link*/ ) {}
-};
-
 
 JournalDateEntry::JournalDateEntry( Calendar *calendar, QWidget *parent ) :
   KVBox( parent ), mCalendar( calendar )
@@ -77,13 +68,13 @@ JournalDateEntry::JournalDateEntry( Calendar *calendar, QWidget *parent ) :
 //kDebug(5850)<<"JournalEntry::JournalEntry, parent="<<parent<<endl;
   mChanger = 0;
 
-  mTitle = new JournalTitleLable( this );
+  mTitle = new QLabel( this );
 #ifdef __GNUC__
 #warning "kde4: porting"
 #endif
   //mTitle->setMargin(2);
   mTitle->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Fixed );
-  connect( mTitle, SIGNAL( linkClicked( const QString & ) ),
+  connect( mTitle, SIGNAL( linkActivated( const QString & ) ),
            this, SLOT( emitNewJournal() ) );
 }
 
@@ -100,7 +91,7 @@ void JournalDateEntry::setDate(const QDate &date)
               i18n("[Add Journal Entry]") +
               "</a></font></center></qt>";
 
-  mTitle->setHtml( dtstring );
+  mTitle->setText( dtstring );
   mDate = date;
   emit setDateSignal( date );
 }
