@@ -101,8 +101,7 @@ void DateNavigator::selectWeekByDay( int weekDay, const QDate &d )
 {
   int dateCount = mSelectedDates.count();
   bool weekStart = ( weekDay == KGlobal::locale()->weekStartDay() );
-  if ( weekDay == 1 && dateCount == 5 ) selectWorkWeek( d );
-  else if ( weekStart && dateCount == 7 ) selectWeek( d );
+  if ( weekStart && dateCount == 7 ) selectWeek( d );
   else selectDates( d, dateCount );
 }
 
@@ -133,16 +132,26 @@ void DateNavigator::selectWorkWeek()
 
 void DateNavigator::selectWorkWeek( const QDate &d )
 {
+  int weekStart = KGlobal::locale()->weekStartDay();
+ 
   int dayOfWeek = KOGlobals::self()->calendarSystem()->dayOfWeek( d );
 
-  QDate firstDate = d.addDays( 1 - dayOfWeek );
+  QDate currentDate = d.addDays( weekStart - dayOfWeek );
 
-  int weekStart = KGlobal::locale()->weekStartDay();
-  if ( weekStart != 1 && dayOfWeek >= weekStart ) {
-    firstDate = firstDate.addDays( 7 );
+  if ( weekStart != 1 && dayOfWeek < weekStart ) {
+    currentDate = currentDate.addDays( -7 );
   }
 
-  selectDates( firstDate, 5 );
+  mSelectedDates.clear();
+  int mask = KOGlobals::self()->getWorkWeekMask();
+
+  for ( int i = 0; i < 7; ++i ) {
+    if( (1<< ((i + weekStart + 6) % 7)) & (mask) ) {
+	mSelectedDates.append(currentDate.addDays(i));
+    }
+  }
+  
+  emitSelected();
 }
 
 void DateNavigator::selectToday()
@@ -151,8 +160,7 @@ void DateNavigator::selectToday()
 
   int dateCount = mSelectedDates.count();
 
-  if ( dateCount == 5 ) selectWorkWeek( d );
-  else if ( dateCount == 7 ) selectWeek( d );
+  if ( dateCount == 7 ) selectWeek( d );
   else selectDates( d, dateCount );
 }
 

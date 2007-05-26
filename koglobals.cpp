@@ -172,6 +172,11 @@ bool KOGlobals::isWorkDay( const QDate &date )
   return !nonWorkDay;
 }
 
+int KOGlobals::getWorkWeekMask()
+{
+  return KOPrefs::instance()->mWorkWeekMask;
+}
+
 void KOGlobals::setHolidays( KHolidays *h )
 {
   delete mHolidays;

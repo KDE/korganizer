@@ -494,9 +494,8 @@ void CalendarView::readSettings()
 
   config->setGroup( "Views" );
   int dateCount = config->readNumEntry( "ShownDatesCount", 7 );
-  if ( dateCount == 5 ) mNavigator->selectWorkWeek();
-  else if ( dateCount == 7 ) mNavigator->selectWeek();
-  else mNavigator->selectDates( dateCount );
+  if ( dateCount == 7 ) mNavigator->selectWeek();
+  else mNavigator->selectDates( mNavigator->selectedDates().first(), dateCount );
 }
 
 
