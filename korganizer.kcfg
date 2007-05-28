@@ -440,7 +440,7 @@
   <group name="Kontact">
     <entry type="Enum" name="DefaultEmailAttachMethod">
       <label>Default email attachment method</label>
-      <whatsthis>The default way of attaching dropped emails data to an event</whatsthis>
+      <whatsthis>The default way of attaching dropped emails to an event</whatsthis>
       <choices>
         <choice name="Ask">
           <label>Always ask</label>
@@ -456,6 +456,22 @@
         </choice>
       </choices>
       <default>Ask</default>
+    </entry>
+    <entry type="Enum" name="DefaultTodoAttachMethod">
+      <label>Default todo attachment method</label>
+      <whatsthis>The default way of attaching dropped emails to a task</whatsthis>
+      <choices>
+        <choice name="TodoAttachAsk">
+          <label>Always ask</label>
+        </choice>
+        <choice name="TodoAttachLink">
+          <label>Only attach link to message</label>
+        </choice>
+        <choice name="TodoAttachInlineFull">
+          <label>Attach complete message</label>
+        </choice>
+      </choices>
+      <default>TodoAttachInlineFull</default>
     </entry>
   </group>
 </kcfg>
