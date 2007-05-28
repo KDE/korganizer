@@ -61,6 +61,7 @@ libkorganizer_la_LIBADD  = \
 	$(top_builddir)/kdgantt/libkdgantt.la \
 	$(top_builddir)/libemailfunctions/libemailfunctions.la \
 	$(top_builddir)/libkholidays/libkholidays.la \
+	$(top_builddir)/libkmime/libkmime.la \
 	$(LIB_KPARTS) $(LIB_KFILE) $(LIB_KNEWSTUFF) \
 	-lkdeprint -lkabc -lkutils
 
