@@ -47,11 +47,10 @@ timezone_SOURCES = timezone.cpp
 timezone_COMPILE_FIRST = koprefs_base.h
 
 lib_LTLIBRARIES = libkorganizer_eventviewer.la \
-                  libkorganizer_calendar.la libkorganizer.la 
+                  libkorganizer_calendar.la libkorganizer.la
 
 libkorganizer_la_LDFLAGS = $(all_libraries) $(KDE_RPATH) -version-info 1:0
-libkorganizer_la_LIBADD  = $(LIB_KPARTS) $(LIB_KFILE) $(LIB_KNEWSTUFF) \
-	-lkdeprint -lkabc -lkutils \
+libkorganizer_la_LIBADD  = \
 	$(top_builddir)/libkcal/libkcal.la \
 	$(top_builddir)/libkpimidentities/libkpimidentities.la \
 	$(top_builddir)/libkdepim/libkdepim.la \
@@ -60,9 +59,11 @@ libkorganizer_la_LIBADD  = $(LIB_KPARTS) $(LIB_KFILE) $(LIB_KNEWSTUFF) \
 	printing/libkocorehelper.la \
 	printing/libkorg_stdprinting.la \
 	$(top_builddir)/kdgantt/libkdgantt.la \
-        $(top_builddir)/libemailfunctions/libemailfunctions.la \
-        $(top_builddir)/libkholidays/libkholidays.la \
-	$(top_builddir)/libkmime/libkmime.la
+	$(top_builddir)/libemailfunctions/libemailfunctions.la \
+	$(top_builddir)/libkholidays/libkholidays.la \
+	$(LIB_KPARTS) $(LIB_KFILE) $(LIB_KNEWSTUFF) \
+	-lkdeprint -lkabc -lkutils
+
 libkorganizer_la_COMPILE_FIRST = \
 	kogroupwareprefspage.ui \
 	$(top_srcdir)/libkdepim/categoryselectdialog.h
@@ -117,7 +118,7 @@ libkorganizer_calendar_la_LDFLAGS = $(all_libraries) $(KDE_RPATH) \
                                     -no-undefined -version-info 1:0
 libkorganizer_calendar_la_LIBADD  = $(LIB_KPARTS) \
                                     $(top_builddir)/libkdepim/libkdepim.la \
-                                    $(top_builddir)/libkcal/libkcal.la 
+                                    $(top_builddir)/libkcal/libkcal.la
 libkorganizer_calendar_la_SOURCES = stdcalendar.cpp
 
 
@@ -172,7 +173,7 @@ messages: rc.cpp
 	$(XGETTEXT) `find . -name "*.cpp" -o -name "*.h"` -o $(podir)/korganizer.pot
 	rm -f tips.cpp
 
-xdg_apps_DATA = korganizer.desktop 
+xdg_apps_DATA = korganizer.desktop
 
 kde_kcfg_DATA = korganizer.kcfg
 
@@ -193,7 +194,7 @@ updatedir = $(kde_datadir)/kconf_update
 DOXYGEN_REFERENCES=libkcal kdeui
 include $(top_srcdir)/admin/Doxyfile.am
 
-install-data-local: 
+install-data-local:
 	$(mkinstalldirs) $(DESTDIR)$(kde_servicesdir)
 	$(mkinstalldirs) $(DESTDIR)$(kde_servicesdir)/korganizer
 	$(INSTALL_DATA) $(srcdir)/uninstall.desktop $(DESTDIR)$(kde_servicesdir)/korganizer_configgroupautomation.desktop
