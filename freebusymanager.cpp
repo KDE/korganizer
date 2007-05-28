@@ -426,8 +426,10 @@ KUrl FreeBusyManager::freeBusyUrl( const QString &email )
   // Sanity check: Don't download if it's not a correct email
   // address (this also avoids downloading for "(empty email)").
   int emailpos = email.indexOf( '@' );
-  if( emailpos == -1 )
-    return KUrl();
+  if( emailpos == -1 ) {
+     kDebug( 5850 ) << "No '@' found in " << email << endl;
+     return KUrl();
+  }
 
   // Cut off everything left of the @ sign to get the user name.
   const QString emailName = email.left( emailpos );

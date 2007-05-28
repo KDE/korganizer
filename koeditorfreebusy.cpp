@@ -34,6 +34,7 @@
 
 #include <kdgantt1/KDGanttView.h>
 #include <kdgantt1/KDGanttViewTaskItem.h>
+#include <kdgantt1/KDGanttViewSubwidgets.h>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -51,6 +52,9 @@
 #include <QTimerEvent>
 #include <QVBoxLayout>
 
+// The FreeBusyItem is the whole line for a given attendee.
+// Individual "busy" periods are created as sub-items of this item.
+//
 // We can't use the CustomListViewItem base class, since we need a
 // different inheritance hierarchy for supporting the Gantt view.
 class FreeBusyItem : public KDGanttViewTaskItem
@@ -179,6 +183,8 @@ void FreeBusyItem::setFreeBusyPeriods( FreeBusy *fb )
   mIsDownloading = false;
 }
 
+////
+
 KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent )
   : QWidget( parent )
 {
@@ -292,12 +298,19 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent )
   } else {
     mGanttView->setHourFormat( KDGanttView::Hour_24_FourDigit );
   }
+  // mEventRectangle is the colored rectangle representing the event being modified
+  mEventRectangle = new KDIntervalColorRectangle( mGanttView );
+  mEventRectangle->setColor( Qt::magenta );
+  mGanttView->addIntervalBackgroundColor( mEventRectangle );
+
   connect( mGanttView, SIGNAL ( timeIntervalSelected( const QDateTime &,
                                                       const QDateTime & ) ),
            mGanttView, SLOT( zoomToSelection( const QDateTime &,
                                               const  QDateTime & ) ) );
   connect( mGanttView, SIGNAL( lvItemDoubleClicked( KDGanttViewItem * ) ),
            SLOT( editFreeBusyUrl( KDGanttViewItem * ) ) );
+  connect( mGanttView, SIGNAL( intervalColorRectangleMoved( const QDateTime&, const QDateTime& ) ),
+           this, SLOT( slotIntervalColorRectangleMoved( const QDateTime&, const QDateTime& ) ) );
 
   FreeBusyManager *m = KOGroupware::instance()->freeBusyManager();
   connect( m, SIGNAL( freeBusyRetrieved( KCal::FreeBusy *, const QString & ) ),
@@ -374,6 +387,14 @@ void KOEditorFreeBusy::readEvent( Event *event )
                 event->dtEnd().toTimeSpec( timeSpec ).dateTime() );
   mIsOrganizer = KOPrefs::instance()->thatIsMe( event->organizer().email() );
   updateStatusSummary();
+}
+
+void KOEditorFreeBusy::slotIntervalColorRectangleMoved( const QDateTime& start, const QDateTime& end )
+{
+  kDebug() << k_funcinfo << "slotIntervalColorRectangleMoved " << start << "," << end << endl;
+  mDtStart = start;
+  mDtEnd = end;
+  emit dateTimesChanged( start, end );
 }
 
 void KOEditorFreeBusy::setDateTimes( const QDateTime &start, const QDateTime &end )
@@ -465,8 +486,7 @@ void KOEditorFreeBusy::slotUpdateGanttView( const QDateTime &dtFrom, const QDate
   QDateTime horizonStart = QDateTime( dtFrom.addDays( -15 ).date() );
   mGanttView->setHorizonStart( horizonStart );
   mGanttView->setHorizonEnd( dtTo.addDays( 15 ) );
-  mGanttView->clearBackgroundColor();
-  mGanttView->setIntervalBackgroundColor( dtFrom, dtTo, Qt::magenta );
+  mEventRectangle->setDateTimes( dtFrom, dtTo );
   mGanttView->setUpdateEnabled( block );
   mGanttView->centerTimelineAfterShow( dtFrom );
 }

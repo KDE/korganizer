@@ -28,6 +28,7 @@
 #include <QDateTime>
 #include <QTimer>
 
+class KDIntervalColorRectangle;
 class QComboBox;
 class QLabel;
 class QTimerEvent;
@@ -80,6 +81,7 @@ class KOEditorFreeBusy : public QWidget
     void slotPickDate();
 
     void reload();
+    void slotIntervalColorRectangleMoved( const QDateTime& start, const QDateTime& end );
 
   protected:
     void timerEvent( QTimerEvent * );
@@ -94,6 +96,7 @@ class KOEditorFreeBusy : public QWidget
     void updateStatusSummary();
 
     KDGanttView *mGanttView;
+    KDIntervalColorRectangle* mEventRectangle;
     QLabel *mStatusSummaryLabel;
     bool mIsOrganizer;
     QComboBox *scaleCombo;
