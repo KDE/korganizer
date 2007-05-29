@@ -323,7 +323,6 @@ void KOViewManager::showAgendaView()
 
     connect( mAgendaSideBySideView,SIGNAL( zoomViewHorizontally(const QDate &, int )),
              mMainView->dateNavigator(),SLOT( selectDates( const QDate &, int ) ) );*/
-//     mAgendaSideBySideView->readSettings();
     if ( mAgendaViewTabs )
       mAgendaViewTabs->addTab( mAgendaSideBySideView, i18n("Calendars Side by Side") );
   }

@@ -24,6 +24,10 @@
 class QBoxLayout;
 class KOAgendaView;
 
+namespace KCal {
+  class ResourceCalendar;
+}
+
 namespace KOrg {
 
 /**
@@ -54,6 +58,7 @@ class MultiAgendaView : public AgendaView
     void finishTypeAhead();
 
   private:
+    void addView( const QString &label, KCal::ResourceCalendar *res, const QString &subRes = QString::null );
     void deleteViews();
     void recreateViews();
     void setupViews();

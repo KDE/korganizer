@@ -52,6 +52,7 @@ void MultiAgendaView::recreateViews()
     mTopLevelLayout->addWidget( av );
     mAgendaViews.append( av );
     mAgendaWidgets.append( av );
+    av->show();
   } else {
     CalendarResourceManager *manager = calres->resourceManager();
     for ( CalendarResourceManager::ActiveIterator it = manager->activeBegin(); it != manager->activeEnd(); ++it ) {
@@ -60,27 +61,13 @@ void MultiAgendaView::recreateViews()
         for ( QStringList::ConstIterator subit = subResources.constBegin(); subit != subResources.constEnd(); ++subit ) {
           if ( !(*it)->subresourceActive( *subit ) )
             continue;
-          QVBox *box = new QVBox( this );
-          mTopLevelLayout->addWidget( box );
-          new QLabel( (*it)->labelForSubresource( *subit ), box );
-          KOAgendaView* av = new KOAgendaView( calendar(), box );
-          mAgendaViews.append( av );
-          mAgendaWidgets.append( box );
-          box->show();
+          addView( (*it)->labelForSubresource( *subit ), *it, *subit );
         }
       } else {
-        QVBox *box = new QVBox( this );
-        mTopLevelLayout->addWidget( box );
-        new QLabel( (*it)->resourceName(), box );
-        KOAgendaView* av = new KOAgendaView( calendar(), box );
-        mAgendaViews.append( av );
-        mAgendaWidgets.append( box );
-        box->show();
+        addView( (*it)->resourceName(), *it );
       }
     }
   }
-  mTopLevelLayout->invalidate();
-  update();
   setupViews();
 }
 
@@ -246,6 +233,18 @@ void MultiAgendaView::finishTypeAhead()
 {
   FOREACH_VIEW( agenda )
     agenda->finishTypeAhead();
+}
+
+void MultiAgendaView::addView( const QString &label, KCal::ResourceCalendar * res, const QString & subRes )
+{
+  QVBox *box = new QVBox( this );
+  mTopLevelLayout->addWidget( box );
+  new QLabel( label, box );
+  KOAgendaView* av = new KOAgendaView( calendar(), box );
+  av->setResource( res, subRes );
+  mAgendaViews.append( av );
+  mAgendaWidgets.append( box );
+  box->show();
 }
 
 #include "multiagendaview.moc"

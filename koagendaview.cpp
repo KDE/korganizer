@@ -415,7 +415,8 @@ void KOAlternateLabel::setText( const QString &text ) {
 
 KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
   KOrg::AgendaView (cal,parent,name), mExpandButton( 0 ), mAllowAgendaUpdate( true ),
-  mUpdateItem( 0 )
+  mUpdateItem( 0 ),
+  mResource( 0 )
 {
   mSelectedDates.append(QDate::currentDate());
 
@@ -1238,6 +1239,9 @@ void KOAgendaView::showIncidences( const Incidence::List & )
 void KOAgendaView::insertIncidence( Incidence *incidence, const QDate &curDate,
                                     int curCol )
 {
+  if ( !filterByResource( incidence ) )
+    return;
+
   // FIXME: Use a visitor here, or some other method to get rid of the dynamic_cast's
   Event *event = dynamic_cast<Event *>( incidence );
   Todo  *todo  = dynamic_cast<Todo  *>( incidence );
@@ -1734,4 +1738,26 @@ void KOAgendaView::clearTimeSpanSelection()
   mAgenda->clearSelection();
   mAllDayAgenda->clearSelection();
   deleteSelectedDateTime();
+}
+
+void KOAgendaView::setResource(KCal::ResourceCalendar * res, const QString & subResource)
+{
+  mResource = res;
+  mSubResource = subResource;
+}
+
+bool KOAgendaView::filterByResource(Incidence * incidence)
+{
+  if ( !mResource )
+    return true;
+  CalendarResources *calRes = dynamic_cast<CalendarResources*>( calendar() );
+  if ( !calRes )
+    return true;
+  if ( calRes->resource( incidence ) != mResource )
+    return false;
+  if ( !mSubResource.isEmpty() ) {
+    if ( mResource->subresourceIdentifier( incidence ) != mSubResource )
+      return false;
+  }
+  return true;
 }

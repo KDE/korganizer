@@ -40,6 +40,10 @@ class KOAgenda;
 class KOAgendaItem;
 class KConfig;
 
+namespace KCal {
+  class ResourceCalendar;
+}
+
 namespace KOrg {
   class IncidenceChangerBase;
 }
@@ -184,6 +188,9 @@ class KOAgendaView : public KOrg::AgendaView
 
     void setTypeAheadReceiver( QObject * );
 
+    /** Show only incidences from the given resource. */
+    void setResource( KCal::ResourceCalendar *res, const QString &subResource = QString::null );
+
   public slots:
     virtual void updateView();
     virtual void updateConfig();
@@ -271,6 +278,9 @@ class KOAgendaView : public KOrg::AgendaView
     void newTimeSpanSelectedAllDay( const QPoint &start, const QPoint &end );
 
   private:
+    bool filterByResource( Incidence *incidence );
+
+  private:
     // view widgets
     QFrame *mDayLabels;
     QHBox *mDayLabelsFrame;
@@ -306,6 +316,9 @@ class KOAgendaView : public KOrg::AgendaView
     bool mAllowAgendaUpdate;
 
     Incidence *mUpdateItem;
+
+    KCal::ResourceCalendar *mResource;
+    QString mSubResource;
 };
 
 #endif
