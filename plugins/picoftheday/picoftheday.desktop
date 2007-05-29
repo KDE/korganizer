@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+X-KDE-Library=libkorg_picoftheday
+Name=Wikipedia Picture Of the Day Plugin for Calendars
+Type=Service
+ServiceTypes=Calendar/Plugin,Calendar/Decoration
+X-KDE-KOrganizer-HasSettings=true
+X-KDE-PluginInterfaceVersion=2

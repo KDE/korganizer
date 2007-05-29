@@ -814,10 +814,23 @@ void KOAgendaView::createDayLabels()
       }
     }
 
+// TODO: Hier smallPixmap implementieren!
+    for ( it = cds.begin(); it!= cds.end(); ++it ) {
+      QPixmap pixmap = (*it)->smallPixmap( date ).scaled( mDayLabels->width(), (*it)->smallPixmap( date ).height()/6, Qt::KeepAspectRatio );
+      if ( !pixmap.isNull() ) {
+        QLabel* image = new QLabel( mDayLabels );
+        image->setAlignment(Qt::AlignCenter);
+        image->setPixmap( pixmap );
+        image->setMaximumWidth( mDayLabels->width() );
+        dayLayout->addWidget(image);
+      }
+    }
+
     for(it = cds.begin(); it != cds.end(); ++it ) {
       QWidget *wid = (*it)->smallWidget( mDayLabels, date );
       if ( wid ) {
 //      wid->setHeight(20);
+        kDebug() << "Widget added: " << wid->toolTip() << endl;
         dayLayout->addWidget(wid);
       }
     }

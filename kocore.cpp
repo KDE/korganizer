@@ -278,7 +278,7 @@ KOrg::CalendarDecoration::List KOCore::calendarDecorations()
     KService::List plugins = availableCalendarDecorations();
     KService::List::ConstIterator it;
     for( it = plugins.begin(); it != plugins.end(); ++it ) {
-      if ( (*it)->hasServiceType("Calendar/Decoration") ) {
+      if ( (*it)->hasServiceType(KOrg::CalendarDecoration::serviceType()) ) {
         QString name = (*it)->desktopEntryName();
         if ( selectedPlugins.contains( name )  ) {
           KOrg::CalendarDecoration *d = loadCalendarDecoration(*it);

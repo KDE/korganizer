@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+X-KDE-Library=libkorg_thisdayinhistory
+Name=Wikipedia 'This Day in History' Plugin
+Type=Service
+ServiceTypes=Calendar/Plugin,Calendar/Decoration
+X-KDE-KOrganizer-HasSettings=true
+X-KDE-PluginInterfaceVersion=2
