@@ -26,6 +26,8 @@
 #define KOVIEWMANAGER_H
 
 #include <qobject.h>
+class QWidget;
+class QTabWidget;
 
 class CalendarView;
 
@@ -99,11 +101,14 @@ class KOViewManager : public QObject
     void zoomOutHorizontally();
     void zoomInVertically();
     void zoomOutVertically();
-
+  private slots:
+    void currentAgendaViewTabChanged( QWidget* );
   private:
+    QWidget* widgetForView( KOrg::BaseView* ) const;
     CalendarView *mMainView;
 
     KOAgendaView    *mAgendaView;
+    KOAgendaView    *mAgendaSideBySideView;
     KOListView      *mListView;
     KOMonthView     *mMonthView;
     KOTodoView      *mTodoView;
@@ -113,8 +118,8 @@ class KOViewManager : public QObject
     KOrg::BaseView *mCurrentView;
 
     KOrg::BaseView *mLastEventView;
+    QTabWidget *mAgendaViewTabs;
 
-    int mAgendaViewMode;
 };
 
 #endif
