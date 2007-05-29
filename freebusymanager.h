@@ -66,7 +66,8 @@ class FreeBusyDownloadJob : public QObject
     void slotData(  KIO::Job *, const QByteArray &data );
 
   signals:
-    void freeBusyDownloaded( KCal::FreeBusy *, const QString& );
+    void freeBusyDownloaded( KCal::FreeBusy *, const QString& email );
+    void freeBusyDownloadError( const QString& email );
 
   private:
     FreeBusyManager *mManager;
@@ -153,6 +154,7 @@ class FreeBusyManager : public QObject, public KCal::FreeBusyCache
 
   private slots:
     void slotUploadFreeBusyResult( KIO::Job * );
+    void slotFreeBusyDownloadError( const QString& email );
 
   private:
     KCal::Calendar *mCalendar;
