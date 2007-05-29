@@ -24,6 +24,7 @@
 
 
 #include <libkcal/calendar.h>
+#include <libkcal/calendarresources.h>
 
 #include <qlayout.h>
 
@@ -33,10 +34,12 @@
 
 #include "koglobals.h"
 #include "koprefs.h"
+#include "timelineitem.h"
 
 #include "kotimelineview.h"
 
 using namespace KOrg;
+using namespace KCal;
 
 KOTimelineView::KOTimelineView(Calendar *calendar, QWidget *parent,
                                  const char *name)
@@ -47,6 +50,10 @@ KOTimelineView::KOTimelineView(Calendar *calendar, QWidget *parent,
     mGantt->setCalendarMode( true );
     mGantt->setShowLegendButton( false );
     mGantt->setScale( KDGanttView::Hour );
+    mGantt->removeColumn( 0 );
+    mGantt->addColumn( i18n("Calendar") );
+    mGantt->setHeaderVisible( true );
+
     vbox->addWidget( mGantt );
 }
 
@@ -54,7 +61,7 @@ KOTimelineView::~KOTimelineView()
 {
 }
 
-/*virtual*/ 
+/*virtual*/
 KCal::ListBase<KCal::Incidence> KOTimelineView::selectedIncidences()
 {
     return KCal::ListBase<KCal::Incidence>();
@@ -78,6 +85,28 @@ void KOTimelineView::showDates(const QDate& start, const QDate& end)
   mGantt->setHorizonStart( QDateTime(start) );
   mGantt->setHorizonEnd( QDateTime(end) );
   mGantt->zoomToFit();
+
+  mGantt->clear();
+  CalendarResources *calres = dynamic_cast<CalendarResources*>( calendar() );
+  if ( !calres ) {
+    new TimelineItem( i18n("Calendar"), mGantt );
+  } else {
+    CalendarResourceManager *manager = calres->resourceManager();
+    for ( CalendarResourceManager::ActiveIterator it = manager->activeBegin(); it != manager->activeEnd(); ++it ) {
+      if ( (*it)->canHaveSubresources() ) {
+        QStringList subResources = (*it)->subresources();
+        for ( QStringList::ConstIterator subit = subResources.constBegin(); subit != subResources.constEnd(); ++subit ) {
+          QString type = (*it)->subresourceType( *subit );
+          if ( !(*it)->subresourceActive( *subit ) || (!type.isEmpty() && type != "event") )
+            continue;
+          new TimelineItem( (*it)->labelForSubresource( *subit ), mGantt );
+        }
+      } else {
+        new TimelineItem( (*it)->resourceName(), mGantt );
+      }
+    }
+  }
+
 }
 
 /*virtual*/
