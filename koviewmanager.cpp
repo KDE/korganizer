@@ -37,6 +37,7 @@
 #include "kolistview.h"
 #include "kowhatsnextview.h"
 #include "kojournalview.h"
+#include "kotimelineview.h"
 #include "koprefs.h"
 #include "koglobals.h"
 #include "navigatorbar.h"
@@ -59,6 +60,7 @@ KOViewManager::KOViewManager( CalendarView *mainView ) :
   mMonthView = 0;
   mListView = 0;
   mJournalView = 0;
+  mTimelineView = 0;
   mAgendaViewTabs = 0;
 }
 
@@ -82,6 +84,7 @@ void KOViewManager::readSettings(KConfig *config)
   else if (view == "List") showListView();
   else if (view == "Journal") showJournalView();
   else if (view == "Todo") showTodoView();
+  else if (view == "Timeline") showTimelineView();
   else showAgendaView();
 }
 
@@ -95,6 +98,7 @@ void KOViewManager::writeSettings(KConfig *config)
   else if (mCurrentView == mListView) view = "List";
   else if (mCurrentView == mJournalView) view = "Journal";
   else if (mCurrentView == mTodoView) view = "Todo";
+  else if (mCurrentView == mTimelineView) view = "Timeline";
   else view = "Agenda";
 
   config->writeEntry("Current View",view);
@@ -395,6 +399,17 @@ void KOViewManager::showJournalView()
   }
 
   showView(mJournalView);
+}
+
+
+void KOViewManager::showTimelineView()
+{
+  if (!mTimelineView) {
+    mTimelineView = new KOTimelineView(mMainView->calendar(),mMainView->viewStack(),
+                                     "KOViewManager::TimelineView");
+    addView(mTimelineView);
+  }
+  showView(mTimelineView);
 }
 
 void KOViewManager::showEventView()

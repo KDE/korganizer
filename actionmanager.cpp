@@ -371,6 +371,10 @@ void ActionManager::initActions()
                KOGlobals::self()->smallIcon( "journal" ), 0,
                mCalendarView->viewManager(), SLOT( showJournalView() ),
                mACollection, "view_journal" );
+  new KAction( i18n("&Timeline View"),
+               KOGlobals::self()->smallIcon( "journal" ), 0,
+               mCalendarView->viewManager(), SLOT( showTimelineView() ),
+               mACollection, "view_timeline" );
 
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~ FILTERS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   new KAction( i18n("&Refresh"), 0,
