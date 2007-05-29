@@ -4,7 +4,7 @@ include_directories( ${CMAKE_SOURCE_DIR}/korganizer/interfaces ${CMAKE_SOURCE_DI
 
 ########### next target ###############
 
-set(korg_thisdayinhistory_PART_SRCS thisdayinhistory.cpp )
+set(korg_thisdayinhistory_PART_SRCS thisdayinhistory.cpp tdihwidget.cpp)
 
 kde4_automoc(${korg_thisdayinhistory_PART_SRCS})
 

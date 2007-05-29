@@ -1,6 +1,5 @@
 /*
     This file is part of KOrganizer.
-    Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
     Copyright (c) 2007 Loïc Corbasson <loic.corbasson@gmail.com>
 
     This program is free software; you can redistribute it and/or modify
@@ -17,24 +16,23 @@
     along with this program; if not, write to the Free Software
     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 */
-#ifndef KORG_THISDAYINHISTORY_H
-#define KORG_THISDAYINHISTORY_H
 
-#include <QString>
+#include "tdihwidget.h"
+#include "tdihwidget.moc"
+#include <kurllabel.h>
+#include <ktoolinvocation.h>
 
-#include <calendar/calendardecoration.h>
+TDIHWidget::TDIHWidget(QWidget* parent)
+  : KUrlLabel(parent)
+{
+  connect( this, SIGNAL(leftClickedUrl(const QString&)),
+           this, SLOT(invokeBrowser(const QString&)) );
+}
 
-using namespace KOrg;
+TDIHWidget::~TDIHWidget()
+{
+}
 
-class ThisDayInHistory : public CalendarDecoration {
-  public:
-    ThisDayInHistory();
-    ~ThisDayInHistory() {}
-    
-    QWidget* smallWidget( QWidget *, const QDate &);
-    
-    QString info();
-
-};
-
-#endif
+void TDIHWidget::invokeBrowser(const QString &url) {
+  KToolInvocation::invokeBrowser(url);
+}

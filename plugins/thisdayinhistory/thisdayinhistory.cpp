@@ -19,15 +19,15 @@
 */
 
 #include "thisdayinhistory.h"
+#include "tdihwidget.h"
+
 #include "koglobals.h"
 #include "korganizer.h"
+#include "koapp.h"
+
 #include <kconfig.h>
 #include <kstandarddirs.h>
-
 #include <kcalendarsystem.h>
-
-#include <kurllabel.h>
-#include <ktoolinvocation.h>
 
 class ThisDayInHistoryFactory : public CalendarDecorationFactory {
   public:
@@ -46,14 +46,10 @@ ThisDayInHistory::ThisDayInHistory()
 
 QWidget* ThisDayInHistory::smallWidget( QWidget *parent, const QDate &date)
 {
-  KUrlLabel* l = new KUrlLabel(parent);
+  TDIHWidget* l = new TDIHWidget(parent);
   l->setText(i18n("This Day in History"));
   l->setUrl(i18nc("Localized Wikipedia website", "http://en.wikipedia.org/wiki/") + date.toString(i18nc("Qt date format used by the localized Wikipedia", "MMMM_d")));
-  l->setToolTip(l->url());
 
-  // FIXME
-  QObject::connect(l, SIGNAL(leftClickedUrl(const QString&)),
-                   l, SLOT( invokeBrowser(const QString&)));
   return l;
 }
 
@@ -61,3 +57,4 @@ QString ThisDayInHistory::info()
 {
   return i18n("This plugin provides links to Wikipedia's 'This Day in History' pages.");
 }
+
