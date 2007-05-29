@@ -100,4 +100,5 @@ void Hebrew::configure(QWidget * parent)
   ConfigDialog *dlg = new ConfigDialog(parent);        //parent?
 
   dlg->exec();
+  delete dlg;
 }
