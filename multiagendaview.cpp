@@ -59,7 +59,8 @@ void MultiAgendaView::recreateViews()
       if ( (*it)->canHaveSubresources() ) {
         QStringList subResources = (*it)->subresources();
         for ( QStringList::ConstIterator subit = subResources.constBegin(); subit != subResources.constEnd(); ++subit ) {
-          if ( !(*it)->subresourceActive( *subit ) )
+          QString type = (*it)->subresourceType( *subit );
+          if ( !(*it)->subresourceActive( *subit ) || (!type.isEmpty() && type != "event") )
             continue;
           addView( (*it)->labelForSubresource( *subit ), *it, *subit );
         }

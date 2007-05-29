@@ -1471,6 +1471,8 @@ void KOAgendaView::fillAgenda()
 
         if ( ! todo->hasDueDate() ) continue;  // todo shall not be displayed if it has no date
 
+        if ( !filterByResource( todo ) ) continue;
+
         // ToDo items shall be displayed for the day they are due, but only showed today if they are already overdue.
         // Already completed items can be displayed on their original due date
         bool overdue = todo->isOverdue();
