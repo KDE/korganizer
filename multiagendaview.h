@@ -21,7 +21,8 @@
 
 #include "agendaview.h"
 
-class QBoxLayout;
+class QScrollView;
+class QHBox;
 class KOAgendaView;
 
 namespace KCal {
@@ -57,11 +58,15 @@ class MultiAgendaView : public AgendaView
 
     void finishTypeAhead();
 
+  protected:
+    void resizeEvent( QResizeEvent *ev );
+
   private:
     void addView( const QString &label, KCal::ResourceCalendar *res, const QString &subRes = QString::null );
     void deleteViews();
     void recreateViews();
     void setupViews();
+    void resizeScrollView( const QSize &size );
 
   private slots:
     void slotSelectionChanged();
@@ -70,7 +75,8 @@ class MultiAgendaView : public AgendaView
   private:
     QValueList<KOAgendaView*> mAgendaViews;
     QValueList<QWidget*> mAgendaWidgets;
-    QBoxLayout *mTopLevelLayout;
+    QHBox *mTopBox;
+    QScrollView *mScrollView;
 };
 
 }

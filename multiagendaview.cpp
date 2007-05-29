@@ -37,7 +37,14 @@ using namespace KOrg;
 MultiAgendaView::MultiAgendaView(Calendar * cal, QWidget * parent, const char *name ) :
     AgendaView( cal, parent, name )
 {
-  mTopLevelLayout = new QHBoxLayout( this );
+  QBoxLayout *topLevelLayout = new QHBoxLayout( this );
+  mScrollView = new QScrollView( this );
+  mScrollView->setResizePolicy( QScrollView::Manual );
+  mScrollView->setVScrollBarMode( QScrollView::AlwaysOff );
+  mScrollView->setFrameShape( QFrame::NoFrame );
+  topLevelLayout->addWidget( mScrollView );
+  mTopBox = new QHBox( mScrollView->viewport() );
+  mScrollView->addChild( mTopBox );
   recreateViews();
 }
 
@@ -48,8 +55,7 @@ void MultiAgendaView::recreateViews()
   CalendarResources *calres = dynamic_cast<CalendarResources*>( calendar() );
   if ( !calres ) {
     // fallback to single-agenda
-    KOAgendaView* av = new KOAgendaView( calendar(), this );
-    mTopLevelLayout->addWidget( av );
+    KOAgendaView* av = new KOAgendaView( calendar(), mTopBox );
     mAgendaViews.append( av );
     mAgendaWidgets.append( av );
     av->show();
@@ -70,6 +76,7 @@ void MultiAgendaView::recreateViews()
     }
   }
   setupViews();
+  resizeScrollView( size() );
 }
 
 void MultiAgendaView::deleteViews()
@@ -238,14 +245,30 @@ void MultiAgendaView::finishTypeAhead()
 
 void MultiAgendaView::addView( const QString &label, KCal::ResourceCalendar * res, const QString & subRes )
 {
-  QVBox *box = new QVBox( this );
-  mTopLevelLayout->addWidget( box );
-  new QLabel( label, box );
+  QVBox *box = new QVBox( mTopBox );
+  QLabel *l = new QLabel( label, box );
+  l->setAlignment( AlignVCenter | AlignHCenter );
   KOAgendaView* av = new KOAgendaView( calendar(), box );
   av->setResource( res, subRes );
   mAgendaViews.append( av );
   mAgendaWidgets.append( box );
   box->show();
+}
+
+void MultiAgendaView::resizeEvent(QResizeEvent * ev)
+{
+  resizeScrollView( ev->size() );
+  AgendaView::resizeEvent( ev );
+}
+
+void MultiAgendaView::resizeScrollView(const QSize & size)
+{
+  int width = QMAX( mTopBox->sizeHint().width(), size.width() );
+  int height = size.height();
+  if ( width > size.width() )
+    height -= mScrollView->horizontalScrollBar()->height();
+  mScrollView->resizeContents( width, height );
+  mTopBox->resize( width, height );
 }
 
 #include "multiagendaview.moc"
