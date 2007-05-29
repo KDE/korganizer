@@ -250,6 +250,7 @@ void MultiAgendaView::addView( const QString &label, KCal::ResourceCalendar * re
   l->setAlignment( AlignVCenter | AlignHCenter );
   KOAgendaView* av = new KOAgendaView( calendar(), box );
   av->setResource( res, subRes );
+  av->setIncidenceChanger( mChanger );
   mAgendaViews.append( av );
   mAgendaWidgets.append( box );
   box->show();
@@ -269,6 +270,13 @@ void MultiAgendaView::resizeScrollView(const QSize & size)
     height -= mScrollView->horizontalScrollBar()->height();
   mScrollView->resizeContents( width, height );
   mTopBox->resize( width, height );
+}
+
+void MultiAgendaView::setIncidenceChanger(IncidenceChangerBase * changer)
+{
+  AgendaView::setIncidenceChanger( changer );
+  FOREACH_VIEW( agenda )
+    agenda->setIncidenceChanger( changer );
 }
 
 #include "multiagendaview.moc"

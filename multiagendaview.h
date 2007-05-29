@@ -56,6 +56,8 @@ class MultiAgendaView : public AgendaView
     void updateView();
     void changeIncidenceDisplay( Incidence *incidence, int mode );
 
+    void setIncidenceChanger( IncidenceChangerBase *changer );
+
     void finishTypeAhead();
 
   protected:
