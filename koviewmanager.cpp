@@ -40,6 +40,7 @@
 #include "koprefs.h"
 #include "koglobals.h"
 #include "navigatorbar.h"
+#include "multiagendaview.h"
 
 #include "koviewmanager.h"
 #include "koviewmanager.moc"
@@ -285,7 +286,7 @@ void KOViewManager::showAgendaView()
 
   QWidget *parent = mMainView->viewStack();
   if ( !mAgendaViewTabs && showBoth ) {
-    mAgendaViewTabs = new QTabWidget( mMainView->viewStack() ); 
+    mAgendaViewTabs = new QTabWidget( mMainView->viewStack() );
     connect( mAgendaViewTabs, SIGNAL( currentChanged( QWidget* ) ),
              this, SLOT( currentAgendaViewTabChanged( QWidget* ) ) );
     parent = mAgendaViewTabs;
@@ -309,20 +310,20 @@ void KOViewManager::showAgendaView()
   }
 
   if ( !mAgendaSideBySideView && showSideBySide ) {
-    mAgendaSideBySideView = 
-      new KOAgendaView( mMainView->calendar(), parent,
+    mAgendaSideBySideView =
+      new MultiAgendaView( mMainView->calendar(), parent,
                         "KOViewManager::AgendaSideBySideView" );
 
     addView(mAgendaSideBySideView);
 
-    connect(mAgendaSideBySideView, SIGNAL( toggleExpand() ),
+/*    connect(mAgendaSideBySideView, SIGNAL( toggleExpand() ),
             mMainView, SLOT( toggleExpand() ) );
     connect(mMainView, SIGNAL( calendarViewExpanded( bool ) ),
             mAgendaSideBySideView, SLOT( setExpandedButton( bool ) ) );
 
     connect( mAgendaSideBySideView,SIGNAL( zoomViewHorizontally(const QDate &, int )),
-             mMainView->dateNavigator(),SLOT( selectDates( const QDate &, int ) ) );
-    mAgendaSideBySideView->readSettings();
+             mMainView->dateNavigator(),SLOT( selectDates( const QDate &, int ) ) );*/
+//     mAgendaSideBySideView->readSettings();
     if ( mAgendaViewTabs )
       mAgendaViewTabs->addTab( mAgendaSideBySideView, i18n("Calendars Side by Side") );
   }

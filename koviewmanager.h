@@ -38,7 +38,10 @@ class KOTodoView;
 class KOWhatsNextView;
 class KOJournalView;
 
-namespace KOrg { class BaseView; }
+namespace KOrg {
+  class BaseView;
+  class MultiAgendaView;
+}
 using namespace KCal;
 
 /**
@@ -108,7 +111,7 @@ class KOViewManager : public QObject
     CalendarView *mMainView;
 
     KOAgendaView    *mAgendaView;
-    KOAgendaView    *mAgendaSideBySideView;
+    MultiAgendaView *mAgendaSideBySideView;
     KOListView      *mListView;
     KOMonthView     *mMonthView;
     KOTodoView      *mTodoView;

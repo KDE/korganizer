@@ -105,7 +105,8 @@ libkorganizer_la_SOURCES = komessagebox.cpp \
 	freebusymanager.cpp freebusyurldialog.cpp \
 	eventarchiver.cpp koidentitymanager.cpp \
 	exportwebdialog.cpp kocorehelper.cpp incidencechanger.cpp \
-  template_management_dialog_base.ui templatemanagementdialog.cpp
+	template_management_dialog_base.ui templatemanagementdialog.cpp \
+	agendaview.cpp multiagendaview.cpp
 
 
 libkorganizer_eventviewer_la_LDFLAGS = $(all_libraries) $(KDE_RPATH) \

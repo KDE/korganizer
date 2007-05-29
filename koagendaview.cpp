@@ -414,7 +414,7 @@ void KOAlternateLabel::setText( const QString &text ) {
 ////////////////////////////////////////////////////////////////////////////
 
 KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
-  KOEventView (cal,parent,name), mExpandButton( 0 ), mAllowAgendaUpdate( true ),
+  KOrg::AgendaView (cal,parent,name), mExpandButton( 0 ), mAllowAgendaUpdate( true ),
   mUpdateItem( 0 )
 {
   mSelectedDates.append(QDate::currentDate());
@@ -573,6 +573,8 @@ void KOAgendaView::connectAgenda( KOAgenda *agenda, QPopupMenu *popup,
 
   connect( agenda, SIGNAL( newStartSelectSignal() ),
            otherAgenda, SLOT( clearSelection() ) );
+  connect( agenda, SIGNAL( newStartSelectSignal() ),
+           SIGNAL( timeSpanSelectionChanged()) );
 
   connect( agenda, SIGNAL( editIncidenceSignal( Incidence * ) ),
                    SIGNAL( editIncidenceSignal( Incidence * ) ) );
@@ -1725,4 +1727,11 @@ void KOAgendaView::setIncidenceChanger( IncidenceChangerBase *changer )
   mChanger = changer;
   mAgenda->setIncidenceChanger( changer );
   mAllDayAgenda->setIncidenceChanger( changer );
+}
+
+void KOAgendaView::clearTimeSpanSelection()
+{
+  mAgenda->clearSelection();
+  mAllDayAgenda->clearSelection();
+  deleteSelectedDateTime();
 }

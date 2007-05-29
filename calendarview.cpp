@@ -940,7 +940,7 @@ KOEventEditor *CalendarView::newEventEditor( const QDateTime &startDtParam,
   eventEditor->newEvent();
   connectIncidenceEditor( eventEditor );
   eventEditor->setDates( startDt, endDt, allDay );
-  mDialogManager->connectTypeAhead( eventEditor, viewManager()->agendaView() );
+  mDialogManager->connectTypeAhead( eventEditor, dynamic_cast<KOrg::AgendaView*>(viewManager()->currentView()) );
   return eventEditor;
 }
 
