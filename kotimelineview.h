@@ -26,7 +26,17 @@
 
 #include <korganizer/baseview.h>
 
+#include <qmap.h>
+
 class KDGanttView;
+
+namespace KCal {
+  class ResourceCalendar;
+}
+
+namespace KOrg {
+  class TimelineItem;
+}
 
 /**
   This class provides a view ....
@@ -49,6 +59,7 @@ class KOTimelineView : public KOrg::BaseView
 
   private:
     KDGanttView* mGantt;
+    QMap<KCal::ResourceCalendar*, QMap<QString, KOrg::TimelineItem*> > mCalendarItemMap;
 };
 
 #endif

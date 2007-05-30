@@ -87,26 +87,63 @@ void KOTimelineView::showDates(const QDate& start, const QDate& end)
   mGantt->zoomToFit();
 
   mGantt->clear();
+
+  // item for every calendar
+  TimelineItem *item = 0;
   CalendarResources *calres = dynamic_cast<CalendarResources*>( calendar() );
   if ( !calres ) {
-    new TimelineItem( i18n("Calendar"), mGantt );
+    item = new TimelineItem( i18n("Calendar"), mGantt );
+    mCalendarItemMap[0][QString()] = item;
   } else {
     CalendarResourceManager *manager = calres->resourceManager();
     for ( CalendarResourceManager::ActiveIterator it = manager->activeBegin(); it != manager->activeEnd(); ++it ) {
+      QColor resourceColor = *KOPrefs::instance()->resourceColor( (*it)->identifier() );
       if ( (*it)->canHaveSubresources() ) {
         QStringList subResources = (*it)->subresources();
         for ( QStringList::ConstIterator subit = subResources.constBegin(); subit != subResources.constEnd(); ++subit ) {
           QString type = (*it)->subresourceType( *subit );
           if ( !(*it)->subresourceActive( *subit ) || (!type.isEmpty() && type != "event") )
             continue;
-          new TimelineItem( (*it)->labelForSubresource( *subit ), mGantt );
+          item = new TimelineItem( (*it)->labelForSubresource( *subit ), mGantt );
+          resourceColor = *KOPrefs::instance()->resourceColor( (*it)->identifier() );
+          QColor subrescol = *KOPrefs::instance()->resourceColor( *subit );
+          if ( subrescol.isValid() )
+            resourceColor = subrescol;
+          if ( resourceColor.isValid() )
+            item->setColors( resourceColor, resourceColor, resourceColor );
+          mCalendarItemMap[*it][*subit] = item;
         }
       } else {
-        new TimelineItem( (*it)->resourceName(), mGantt );
+        item = new TimelineItem( (*it)->resourceName(), mGantt );
+        if ( resourceColor.isValid() )
+          item->setColors( resourceColor, resourceColor, resourceColor );
+        mCalendarItemMap[*it][QString()] = item;
       }
     }
   }
 
+  // add incidences
+  Event::List events;
+  events = calendar()->events( start, end, true );
+  for ( Event::List::ConstIterator it = events.constBegin(); it != events.constEnd(); ++it ) {
+    TimelineItem *item = 0;
+    if ( !calres ) {
+      item = mCalendarItemMap[0][QString()];
+    } else {
+      ResourceCalendar *res = calres->resource( *it );
+      if ( res->canHaveSubresources() ) {
+        QString subRes = res->subresourceIdentifier( *it );
+        item = mCalendarItemMap[res][subRes];
+      } else {
+        item = mCalendarItemMap[res][QString()];
+      }
+    }
+    if ( !item ) {
+      kdWarning() << k_funcinfo << "Help! Something is really wrong here!" << endl;
+      continue;
+    }
+    item->insertIncidence( *it );
+  }
 }
 
 /*virtual*/

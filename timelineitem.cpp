@@ -18,6 +18,8 @@
 
 #include "timelineitem.h"
 
+#include "kohelper.h"
+
 #include <libkcal/calendar.h>
 #include <libkcal/resourcecalendar.h>
 
@@ -28,18 +30,28 @@ TimelineItem::TimelineItem( const QString &label, KDGanttView * parent) :
     KDGanttViewTaskItem( parent )
 {
   setListViewText( 0, label );
+  setDisplaySubitemsAsGroup( true );
   if ( listView() )
     listView()->setRootIsDecorated( false );
 }
 
 void TimelineItem::insertIncidence(KCal::Incidence * incidence)
 {
-  new TimelineSubItem( incidence, this );
+  TimelineSubItem * item = new TimelineSubItem( incidence, this );
+  QColor c1, c2, c3;
+  colors( c1, c2, c3 );
+  item->setColors( c1, c2, c3 );
 }
 
 TimelineSubItem::TimelineSubItem(KCal::Incidence * incidence, TimelineItem * parent) :
     KDGanttViewTaskItem( parent ),
     mIncidence( incidence )
 {
+  setStartTime( incidence->dtStart() );
+  QDateTime end = incidence->dtEnd();
+  if ( incidence->doesFloat() ) {
+    end = end.addDays( 1 );
+  }
+  setEndTime( end );
 }
 
