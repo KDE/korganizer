@@ -20,14 +20,14 @@
 #ifndef POTDWIDGET_H
 #define POTDWIDGET_H
 
-#include <QString>
-#include <QDate>
 #include <kurl.h>
-#include <khtmlview.h>
-#include <khtml_part.h>
 #include <kio/job.h>
 
-class POTDWidget : public KHTMLPart {
+#include <QString>
+#include <QDate>
+#include <QLabel>
+
+class POTDWidget : public QLabel {
   Q_OBJECT
 
   public:
@@ -44,6 +44,7 @@ class POTDWidget : public KHTMLPart {
   private slots:
     void gotFileName(KJob* job);
     void gotImagePageUrl(KJob* job);
+    void gotPOTD(KJob* job);
 };
 
 

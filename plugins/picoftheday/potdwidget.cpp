@@ -21,10 +21,12 @@
 #include "potdwidget.moc"
 
 #include <kio/scheduler.h>
+#include <kdebug.h>
 
+#include <qdom.h>
 
 POTDWidget::POTDWidget(QWidget* parent)
-  : KHTMLPart( parent )
+  : QLabel( parent )
 {
 }
 
@@ -101,11 +103,33 @@ void POTDWidget::gotImagePageUrl(KJob* job)
   thumbUrl.replace(QRegExp("http://upload.wikimedia.org/wikipedia/commons/(.*)/([^/]*)"),
                    "http://upload.wikimedia.org/wikipedia/commons/thumb/\\1/\\2/100px-\\2");
 
-  kDebug() << "POTD: got POTD image page source: " << thumbUrl << endl;
+  kDebug() << "POTD: got POTD thumbnail URL: " << thumbUrl << endl;
   mThumbUrl = thumbUrl;
 
-  //FIXME: KHTMLPart is unnecessary, find a more lightweight widget (use QPixmap?)
-  view()->resize(100, 100);
+  KJob *potdJob = KIO::storedGet(mThumbUrl, false, false); // TODO: change to KIO::get() and KIO::TransferJob?
+//  KIO::Scheduler::scheduleJob(imgJob);
 
-  openUrl(KUrl(mThumbUrl));
+  connect(potdJob, SIGNAL(result(KJob *)),
+          this, SLOT(gotPOTD(KJob *)));
 }
+
+void POTDWidget::gotPOTD(KJob* job)
+{
+  if (job->error())
+  {
+    kWarning() << "POTD: could not get POTD: " << job->errorString() << endl;
+    return;
+  }
+
+  // First step completed: we now know the POTD's file name
+  KIO::StoredTransferJob* const storedJob = static_cast<KIO::StoredTransferJob*>( job );
+  QPixmap *p = new QPixmap();
+  if ( p->loadFromData(storedJob->data()) ) {
+    kDebug() << "POTD: got POTD. " << endl;
+    setPixmap(*p);
+  //FIXME: thumbnail is fixed at 100px for now
+    setMaximumHeight(100);
+    setMaximumWidth(100);
+  }
+}
+

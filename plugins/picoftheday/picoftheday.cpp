@@ -49,7 +49,7 @@ QWidget* Picoftheday::smallWidget( QWidget *parent, const QDate &date)
   POTDWidget *w = new POTDWidget(parent);
   w->loadPOTD(date);
 
-  return w->widget();
+  return w;
 }
 
 
