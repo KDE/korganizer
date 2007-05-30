@@ -1,6 +1,5 @@
 /*
     This file is part of KOrganizer.
-    Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
     Copyright (c) 2007 Loïc Corbasson <loic.corbasson@gmail.com>
 
     This program is free software; you can redistribute it and/or modify
@@ -18,42 +17,34 @@
     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-#include "picoftheday.h"
-#include "potdwidget.h"
+#ifndef POTDWIDGET_H
+#define POTDWIDGET_H
 
-#include "koglobals.h"
-
-#include <kconfig.h>
-#include <kstandarddirs.h>
+#include <QString>
+#include <QDate>
+#include <kurl.h>
 #include <khtmlview.h>
 #include <khtml_part.h>
+#include <kio/job.h>
 
+class POTDWidget : public KHTMLPart {
+  Q_OBJECT
 
-class PicofthedayFactory : public CalendarDecorationFactory {
   public:
-    CalendarDecoration *create() { return new Picoftheday; }
+    POTDWidget(QWidget *parent = 0);
+    virtual ~POTDWidget();
+    
+    void loadPOTD(const QDate &date);
+
+  protected:
+    QString mFileName;
+    KUrl mImagePageUrl;
+    KUrl mThumbUrl;
+
+  private slots:
+    void gotFileName(KJob* job);
+    void gotImagePageUrl(KJob* job);
 };
 
-K_EXPORT_COMPONENT_FACTORY( libkorg_picoftheday, PicofthedayFactory )
 
-
-Picoftheday::Picoftheday()
-{
-  KConfig _config( "korganizerrc", KConfig::NoGlobals );
-  KConfigGroup config(&_config, "Calendar/PicOfTheDay Plugin");
-}
-
-
-QWidget* Picoftheday::smallWidget( QWidget *parent, const QDate &date)
-{
-  POTDWidget *w = new POTDWidget(parent);
-  w->loadPOTD(date);
-
-  return w->widget();
-}
-
-
-QString Picoftheday::info()
-{
-  return i18n("This plugin provides the Wikipedia <i>Picture of the Day</i>.");
-}
+#endif
