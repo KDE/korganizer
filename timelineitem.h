@@ -45,6 +45,8 @@ class TimelineSubItem : public KDGanttViewTaskItem
 {
   public:
     TimelineSubItem( KCal::Incidence *incidence, TimelineItem *parent );
+
+    KCal::Incidence* incidence() const { return mIncidence; }
   private:
     KCal::Incidence *mIncidence;
 };

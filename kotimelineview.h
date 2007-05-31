@@ -24,11 +24,12 @@
 #ifndef KOTIMELINEVIEW_H
 #define KOTIMELINEVIEW_H
 
-#include <korganizer/baseview.h>
+#include <koeventview.h>
 
 #include <qmap.h>
 
 class KDGanttView;
+class KDGanttViewItem;
 
 namespace KCal {
   class ResourceCalendar;
@@ -41,7 +42,7 @@ namespace KOrg {
 /**
   This class provides a view ....
 */
-class KOTimelineView : public KOrg::BaseView
+class KOTimelineView : public KOEventView
 {
     Q_OBJECT
   public:
@@ -56,10 +57,20 @@ class KOTimelineView : public KOrg::BaseView
     virtual void showIncidences(const KCal::ListBase<KCal::Incidence>&);
     virtual void updateView();
     virtual void changeIncidenceDisplay(KCal::Incidence*, int);
+    virtual int maxDatesHint() { return 0; }
+
+    virtual bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay);
+
+  private slots:
+    void itemSelected( KDGanttViewItem *item );
+    void itemDoubleClicked( KDGanttViewItem *item );
+    void itemRightClicked( KDGanttViewItem *item );
 
   private:
     KDGanttView* mGantt;
     QMap<KCal::ResourceCalendar*, QMap<QString, KOrg::TimelineItem*> > mCalendarItemMap;
+    KOEventPopupMenu *mEventPopup;
+    QDateTime mRmbDate;
 };
 
 #endif

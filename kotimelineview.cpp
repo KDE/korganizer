@@ -32,6 +32,7 @@
 #include <kdgantt/KDGanttViewTaskItem.h>
 #include <kdgantt/KDGanttViewSubwidgets.h>
 
+#include "koeventpopupmenu.h"
 #include "koglobals.h"
 #include "koprefs.h"
 #include "timelineitem.h"
@@ -43,7 +44,8 @@ using namespace KCal;
 
 KOTimelineView::KOTimelineView(Calendar *calendar, QWidget *parent,
                                  const char *name)
-  : KOrg::BaseView(calendar, parent, name)
+  : KOEventView(calendar, parent, name),
+  mEventPopup( 0 )
 {
     QVBoxLayout* vbox = new QVBoxLayout(this);
     mGantt = new KDGanttView(this);
@@ -55,10 +57,18 @@ KOTimelineView::KOTimelineView(Calendar *calendar, QWidget *parent,
     mGantt->setHeaderVisible( true );
 
     vbox->addWidget( mGantt );
+
+    connect( mGantt, SIGNAL(gvCurrentChanged(KDGanttViewItem*)),
+             SLOT(itemSelected(KDGanttViewItem*)) );
+    connect( mGantt, SIGNAL(itemDoubleClicked(KDGanttViewItem*)),
+             SLOT(itemDoubleClicked(KDGanttViewItem*)) );
+    connect( mGantt, SIGNAL(itemRightClicked(KDGanttViewItem*)),
+             SLOT(itemRightClicked(KDGanttViewItem*)) );
 }
 
 KOTimelineView::~KOTimelineView()
 {
+  delete mEventPopup;
 }
 
 /*virtual*/
@@ -82,6 +92,7 @@ int KOTimelineView::currentDateCount()
 /*virtual*/
 void KOTimelineView::showDates(const QDate& start, const QDate& end)
 {
+  mRmbDate = QDateTime();
   mGantt->setHorizonStart( QDateTime(start) );
   mGantt->setHorizonEnd( QDateTime(end) );
   mGantt->zoomToFit();
@@ -176,6 +187,41 @@ void KOTimelineView::updateView()
 /*virtual*/
 void KOTimelineView::changeIncidenceDisplay(KCal::Incidence*, int)
 {
+}
+
+void KOTimelineView::itemSelected( KDGanttViewItem *item )
+{
+  TimelineSubItem *tlitem = dynamic_cast<TimelineSubItem*>( item );
+  if ( tlitem )
+    emit incidenceSelected( tlitem->incidence() );
+}
+
+void KOTimelineView::itemDoubleClicked( KDGanttViewItem *item )
+{
+  TimelineSubItem *tlitem = dynamic_cast<TimelineSubItem*>( item );
+  if ( tlitem )
+    emit editIncidenceSignal( tlitem->incidence() );
+}
+
+void KOTimelineView::itemRightClicked( KDGanttViewItem *item )
+{
+  mRmbDate = mGantt->getDateTimeForCoordX( QCursor::pos().x(), true );
+  TimelineSubItem *tlitem = dynamic_cast<TimelineSubItem*>( item );
+  if ( !tlitem ) {
+    showNewEventPopup();
+    return;
+  }
+  if ( !mEventPopup )
+    mEventPopup = eventPopup();
+  mEventPopup->showIncidencePopup( tlitem->incidence(), QDate() );
+}
+
+bool KOTimelineView::eventDurationHint(QDateTime & startDt, QDateTime & endDt, bool & allDay)
+{
+  startDt = mRmbDate;
+  endDt = mRmbDate.addSecs( 2 * 60 * 60 );
+  allDay = false;
+  return mRmbDate.isValid();
 }
 
 #include "kotimelineview.moc"
