@@ -54,7 +54,7 @@ void DateChecker::enableRollover( RolloverType r )
     case FollowDay:
     case FollowMonth:
       if ( !mUpdateTimer ) {
-        mUpdateTimer = new QTimer( this );
+        mUpdateTimer = new QTimer( this, "mUpdateTimer" );
         connect( mUpdateTimer, SIGNAL( timeout() ),
                  SLOT( possiblyPastMidnight() ) );
       }
