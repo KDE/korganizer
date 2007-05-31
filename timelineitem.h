@@ -21,6 +21,8 @@
 
 #include <kdgantt/KDGanttViewTaskItem.h>
 
+#include <qmap.h>
+
 class KDGanttView;
 
 namespace KCal {
@@ -31,6 +33,8 @@ namespace KCal {
 
 namespace KOrg {
 
+class TimelineSubItem;
+
 class TimelineItem : public KDGanttViewTaskItem
 {
   public:
@@ -39,6 +43,10 @@ class TimelineItem : public KDGanttViewTaskItem
     void insertIncidence( KCal::Incidence *incidence,
                           const QDateTime &start = QDateTime(),
                           const QDateTime &end = QDateTime() );
+    void removeIncidence( KCal::Incidence *incidence );
+
+  private:
+    QMap<KCal::Incidence*, TimelineSubItem*> mItemMap;
 };
 
 class TimelineSubItem : public KDGanttViewTaskItem

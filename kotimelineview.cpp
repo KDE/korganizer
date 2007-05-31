@@ -92,6 +92,8 @@ int KOTimelineView::currentDateCount()
 /*virtual*/
 void KOTimelineView::showDates(const QDate& start, const QDate& end)
 {
+  mStartDate = start;
+  mEndDate = end;
   mRmbDate = QDateTime();
   mGantt->setHorizonStart( QDateTime(start) );
   mGantt->setHorizonEnd( QDateTime(end) );
@@ -138,38 +140,7 @@ void KOTimelineView::showDates(const QDate& start, const QDate& end)
   for ( QDate day = start; day <= end; day = day.addDays( 1 ) ) {
     events = calendar()->events( day, EventSortStartDate, SortDirectionAscending );
     for ( Event::List::ConstIterator it = events.constBegin(); it != events.constEnd(); ++it ) {
-      TimelineItem *item = 0;
-      if ( !calres ) {
-        item = mCalendarItemMap[0][QString()];
-      } else {
-        ResourceCalendar *res = calres->resource( *it );
-        if ( res->canHaveSubresources() ) {
-          QString subRes = res->subresourceIdentifier( *it );
-          item = mCalendarItemMap[res][subRes];
-        } else {
-          item = mCalendarItemMap[res][QString()];
-        }
-      }
-      if ( !item ) {
-        kdWarning() << k_funcinfo << "Help! Something is really wrong here!" << endl;
-        continue;
-      }
-
-      if ( (*it)->doesRecur() ) {
-        QValueList<QDateTime> l = (*it)->startDateTimesForDate( day );
-        if ( l.isEmpty() ) {
-          // strange, but seems to happen for some recurring events...
-          item->insertIncidence( *it, QDateTime( day, (*it)->dtStart().time() ),
-                                  QDateTime( day, (*it)->dtEnd().time() ) );
-        } else {
-          for ( QValueList<QDateTime>::ConstIterator it2 = l.constBegin();
-                it2 != l.constEnd(); ++it2 ) {
-            item->insertIncidence( *it, *it2, (*it)->endDateForStart( *it2 ) );
-          }
-        }
-      } else {
-        item->insertIncidence( *it );
-      }
+      insertIncidence( *it, day );
     }
   }
 }
@@ -182,11 +153,28 @@ void KOTimelineView::showIncidences(const KCal::ListBase<KCal::Incidence>&)
 /*virtual*/
 void KOTimelineView::updateView()
 {
+  if ( mStartDate.isValid() && mEndDate.isValid() )
+    showDates( mStartDate, mEndDate );
 }
 
 /*virtual*/
-void KOTimelineView::changeIncidenceDisplay(KCal::Incidence*, int)
+void KOTimelineView::changeIncidenceDisplay(KCal::Incidence* incidence, int mode)
 {
+  kdDebug() << k_funcinfo << incidence << " " << mode << endl;
+  switch ( mode ) {
+    case KOGlobals::INCIDENCEADDED:
+      insertIncidence( incidence );
+      break;
+    case KOGlobals::INCIDENCEEDITED:
+      removeIncidence( incidence );
+      insertIncidence( incidence );
+      break;
+    case KOGlobals::INCIDENCEDELETED:
+      removeIncidence( incidence );
+      break;
+    default:
+      updateView();
+  }
 }
 
 void KOTimelineView::itemSelected( KDGanttViewItem *item )
@@ -222,6 +210,84 @@ bool KOTimelineView::eventDurationHint(QDateTime & startDt, QDateTime & endDt, b
   endDt = mRmbDate.addSecs( 2 * 60 * 60 );
   allDay = false;
   return mRmbDate.isValid();
+}
+
+TimelineItem * KOTimelineView::calendarItemForIncidence(KCal::Incidence * incidence)
+{
+  CalendarResources *calres = dynamic_cast<CalendarResources*>( calendar() );
+  TimelineItem *item = 0;
+  if ( !calres ) {
+    item = mCalendarItemMap[0][QString()];
+  } else {
+    ResourceCalendar *res = calres->resource( incidence );
+    if ( !res )
+      return 0;
+    if ( res->canHaveSubresources() ) {
+      QString subRes = res->subresourceIdentifier( incidence );
+      item = mCalendarItemMap[res][subRes];
+    } else {
+      item = mCalendarItemMap[res][QString()];
+    }
+  }
+  return item;
+}
+
+void KOTimelineView::insertIncidence(KCal::Incidence * incidence, const QDate &day )
+{
+  TimelineItem *item = calendarItemForIncidence( incidence );
+  if ( !item ) {
+    kdWarning() << k_funcinfo << "Help! Something is really wrong here!" << endl;
+    return;
+  }
+
+  if ( incidence->doesRecur() ) {
+    QValueList<QDateTime> l = incidence->startDateTimesForDate( day );
+    if ( l.isEmpty() ) {
+      // strange, but seems to happen for some recurring events...
+      item->insertIncidence( incidence, QDateTime( day, incidence->dtStart().time() ),
+                              QDateTime( day, incidence->dtEnd().time() ) );
+    } else {
+      for ( QValueList<QDateTime>::ConstIterator it = l.constBegin();
+            it != l.constEnd(); ++it ) {
+        item->insertIncidence( incidence, *it, incidence->endDateForStart( *it ) );
+      }
+    }
+  } else {
+    item->insertIncidence( incidence );
+  }
+}
+
+void KOTimelineView::insertIncidence(KCal::Incidence * incidence)
+{
+  KCal::Event *event = dynamic_cast<KCal::Event*>( incidence );
+  if ( !event )
+    return;
+  if ( incidence->doesRecur() )
+    insertIncidence( incidence, QDate() );
+  for ( QDate day = mStartDate; day <= mEndDate; day = day.addDays( 1 ) ) {
+    Event::List events = calendar()->events( day, EventSortStartDate, SortDirectionAscending );
+    for ( Event::List::ConstIterator it = events.constBegin(); it != events.constEnd(); ++it ) {
+      if ( events.contains( event ) )
+        insertIncidence( *it, day );
+    }
+  }
+}
+
+void KOTimelineView::removeIncidence(KCal::Incidence * incidence)
+{
+  TimelineItem *item = calendarItemForIncidence( incidence );
+  if ( item ) {
+    item->removeIncidence( incidence );
+  } else {
+    // try harder, the incidence might already be removed from the resource
+    typedef QMap<QString, KOrg::TimelineItem*> M2_t;
+    typedef QMap<KCal::ResourceCalendar*, M2_t> M1_t;
+    for ( M1_t::ConstIterator it1 = mCalendarItemMap.constBegin(); it1 != mCalendarItemMap.constEnd(); ++it1 ) {
+      for ( M2_t::ConstIterator it2 = it1.data().constBegin(); it2 != it1.data().constEnd(); ++it2 ) {
+        it2.data()->removeIncidence( incidence );
+      }
+    }
+  }
 }
 
 #include "kotimelineview.moc"

@@ -46,6 +46,13 @@ void TimelineItem::insertIncidence(KCal::Incidence * incidence, const QDateTime 
     item->setStartTime( start );
   if ( end.isValid() )
     item->setEndTime( end );
+  mItemMap[incidence] = item;
+}
+
+void TimelineItem::removeIncidence(KCal::Incidence * incidence)
+{
+  delete mItemMap[incidence];
+  mItemMap.remove( incidence );
 }
 
 TimelineSubItem::TimelineSubItem(KCal::Incidence * incidence, TimelineItem * parent) :

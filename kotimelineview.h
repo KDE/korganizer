@@ -56,10 +56,16 @@ class KOTimelineView : public KOEventView
     virtual void showDates(const QDate&, const QDate&);
     virtual void showIncidences(const KCal::ListBase<KCal::Incidence>&);
     virtual void updateView();
-    virtual void changeIncidenceDisplay(KCal::Incidence*, int);
+    virtual void changeIncidenceDisplay(KCal::Incidence* incidence, int mode);
     virtual int maxDatesHint() { return 0; }
 
     virtual bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay);
+
+  private:
+    KOrg::TimelineItem* calendarItemForIncidence( KCal::Incidence* incidence );
+    void insertIncidence( KCal::Incidence* incidence );
+    void insertIncidence( KCal::Incidence* incidence, const QDate &day );
+    void removeIncidence( KCal::Incidence* incidence );
 
   private slots:
     void itemSelected( KDGanttViewItem *item );
@@ -70,6 +76,7 @@ class KOTimelineView : public KOEventView
     KDGanttView* mGantt;
     QMap<KCal::ResourceCalendar*, QMap<QString, KOrg::TimelineItem*> > mCalendarItemMap;
     KOEventPopupMenu *mEventPopup;
+    QDate mStartDate, mEndDate;
     QDateTime mRmbDate;
 };
 
