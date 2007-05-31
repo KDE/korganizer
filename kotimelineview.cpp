@@ -124,25 +124,42 @@ void KOTimelineView::showDates(const QDate& start, const QDate& end)
 
   // add incidences
   Event::List events;
-  events = calendar()->events( start, end, true );
-  for ( Event::List::ConstIterator it = events.constBegin(); it != events.constEnd(); ++it ) {
-    TimelineItem *item = 0;
-    if ( !calres ) {
-      item = mCalendarItemMap[0][QString()];
-    } else {
-      ResourceCalendar *res = calres->resource( *it );
-      if ( res->canHaveSubresources() ) {
-        QString subRes = res->subresourceIdentifier( *it );
-        item = mCalendarItemMap[res][subRes];
+  for ( QDate day = start; day <= end; day = day.addDays( 1 ) ) {
+    events = calendar()->events( day, EventSortStartDate, SortDirectionAscending );
+    for ( Event::List::ConstIterator it = events.constBegin(); it != events.constEnd(); ++it ) {
+      TimelineItem *item = 0;
+      if ( !calres ) {
+        item = mCalendarItemMap[0][QString()];
       } else {
-        item = mCalendarItemMap[res][QString()];
+        ResourceCalendar *res = calres->resource( *it );
+        if ( res->canHaveSubresources() ) {
+          QString subRes = res->subresourceIdentifier( *it );
+          item = mCalendarItemMap[res][subRes];
+        } else {
+          item = mCalendarItemMap[res][QString()];
+        }
+      }
+      if ( !item ) {
+        kdWarning() << k_funcinfo << "Help! Something is really wrong here!" << endl;
+        continue;
+      }
+
+      if ( (*it)->doesRecur() ) {
+        QValueList<QDateTime> l = (*it)->startDateTimesForDate( day );
+        if ( l.isEmpty() ) {
+          // strange, but seems to happen for some recurring events...
+          item->insertIncidence( *it, QDateTime( day, (*it)->dtStart().time() ),
+                                  QDateTime( day, (*it)->dtEnd().time() ) );
+        } else {
+          for ( QValueList<QDateTime>::ConstIterator it2 = l.constBegin();
+                it2 != l.constEnd(); ++it2 ) {
+            item->insertIncidence( *it, *it2, (*it)->endDateForStart( *it2 ) );
+          }
+        }
+      } else {
+        item->insertIncidence( *it );
       }
     }
-    if ( !item ) {
-      kdWarning() << k_funcinfo << "Help! Something is really wrong here!" << endl;
-      continue;
-    }
-    item->insertIncidence( *it );
   }
 }
 

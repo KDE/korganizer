@@ -21,6 +21,7 @@
 #include "kohelper.h"
 
 #include <libkcal/calendar.h>
+#include <libkcal/incidenceformatter.h>
 #include <libkcal/resourcecalendar.h>
 
 using namespace KOrg;
@@ -35,12 +36,16 @@ TimelineItem::TimelineItem( const QString &label, KDGanttView * parent) :
     listView()->setRootIsDecorated( false );
 }
 
-void TimelineItem::insertIncidence(KCal::Incidence * incidence)
+void TimelineItem::insertIncidence(KCal::Incidence * incidence, const QDateTime & start, const QDateTime & end)
 {
   TimelineSubItem * item = new TimelineSubItem( incidence, this );
   QColor c1, c2, c3;
   colors( c1, c2, c3 );
   item->setColors( c1, c2, c3 );
+  if ( start.isValid() )
+    item->setStartTime( start );
+  if ( end.isValid() )
+    item->setEndTime( end );
 }
 
 TimelineSubItem::TimelineSubItem(KCal::Incidence * incidence, TimelineItem * parent) :
@@ -53,5 +58,6 @@ TimelineSubItem::TimelineSubItem(KCal::Incidence * incidence, TimelineItem * par
     end = end.addDays( 1 );
   }
   setEndTime( end );
-}
 
+  setTooltipText( IncidenceFormatter::toolTipString( incidence ) );
+}

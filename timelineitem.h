@@ -36,7 +36,9 @@ class TimelineItem : public KDGanttViewTaskItem
   public:
     TimelineItem( const QString &label, KDGanttView* parent );
 
-    void insertIncidence( KCal::Incidence *incidence );
+    void insertIncidence( KCal::Incidence *incidence,
+                          const QDateTime &start = QDateTime(),
+                          const QDateTime &end = QDateTime() );
 };
 
 class TimelineSubItem : public KDGanttViewTaskItem
