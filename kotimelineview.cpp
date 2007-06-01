@@ -306,7 +306,8 @@ void KOTimelineView::itemMoved(KDGanttViewItem * item)
   QDateTime newStart = tlit->startTime();
   if ( i->doesFloat() )
     newStart = QDateTime( newStart.date() );
-  i->setDtStart( newStart );
+  int delta = tlit->originalStart().secsTo( newStart );
+  i->setDtStart( i->dtStart().addSecs( delta ) );
   int duration = tlit->startTime().secsTo( tlit->endTime() );
   int allDayOffset = 0;
   if ( i->doesFloat() ) {
@@ -317,8 +318,8 @@ void KOTimelineView::itemMoved(KDGanttViewItem * item)
     if ( duration < 0 ) duration = 0;
   }
   i->setDuration( duration );
-  tlit->setStartTime( newStart );
-  tlit->setEndTime( newStart.addSecs( duration + allDayOffset ) );
+  TimelineItem *parent = static_cast<TimelineItem*>( tlit->parent() );
+  parent->moveItems( i, tlit->originalStart().secsTo( newStart ), duration + allDayOffset );
   mChanger->endChange( i );
 }
 

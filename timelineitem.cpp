@@ -58,6 +58,7 @@ void TimelineItem::insertIncidence(KCal::Incidence * incidence, const QDateTime 
   item->setColors( c1, c2, c3 );
 
   item->setStartTime( start );
+  item->setOriginalStart( start );
   item->setEndTime( end );
 
   mItemMap[incidence].append( item );
@@ -72,6 +73,20 @@ void TimelineItem::removeIncidence(KCal::Incidence * incidence)
   mItemMap.remove( incidence );
 }
 
+void TimelineItem::moveItems(KCal::Incidence * incidence, int delta, int duration)
+{
+  typedef QValueList<TimelineSubItem*> ItemList;
+  ItemList list = mItemMap[incidence];
+  for ( ItemList::ConstIterator it = list.constBegin(); it != list.constEnd(); ++it ) {
+    QDateTime start = (*it)->originalStart();
+    start = start.addSecs( delta );
+    (*it)->setStartTime( start );
+    (*it)->setOriginalStart( start );
+    (*it)->setEndTime( start.addSecs( duration ) );
+  }
+}
+
+
 TimelineSubItem::TimelineSubItem(KCal::Incidence * incidence, TimelineItem * parent) :
     KDGanttViewTaskItem( parent ),
     mIncidence( incidence )
@@ -82,3 +97,4 @@ TimelineSubItem::TimelineSubItem(KCal::Incidence * incidence, TimelineItem * par
     setResizeable( true );
   }
 }
+

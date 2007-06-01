@@ -46,6 +46,8 @@ class TimelineItem : public KDGanttViewTaskItem
                           const QDateTime &end = QDateTime() );
     void removeIncidence( KCal::Incidence *incidence );
 
+    void moveItems( KCal::Incidence* incidence, int delta, int duration );
+
   private:
     QMap<KCal::Incidence*, QValueList<TimelineSubItem*> > mItemMap;
 };
@@ -56,8 +58,12 @@ class TimelineSubItem : public KDGanttViewTaskItem
     TimelineSubItem( KCal::Incidence *incidence, TimelineItem *parent );
 
     KCal::Incidence* incidence() const { return mIncidence; }
+
+    QDateTime originalStart() const { return mStart; }
+    void setOriginalStart( const QDateTime &dt ) { mStart = dt; }
   private:
     KCal::Incidence *mIncidence;
+    QDateTime mStart;
 };
 
 }
