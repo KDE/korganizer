@@ -1044,6 +1044,7 @@ void KOAgenda::endItemAction()
   setCursor( arrowCursor );
   bool multiModify = false;
   // FIXME: do the cloning here...
+  Incidence* inc = mActionItem->incidence();
 
   if ( mItemMoved ) {
     bool modify = true;
@@ -1146,7 +1147,7 @@ void KOAgenda::endItemAction()
       emit itemModified( modif );
     }
     // FIXME: If the change failed, we need to update the view!
-    mChanger->endChange( mActionItem->incidence() );
+    mChanger->endChange( inc );
   }
 
   mActionItem = 0;
