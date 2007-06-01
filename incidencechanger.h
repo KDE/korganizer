@@ -25,7 +25,7 @@
 #define INCIDENCECHANGER_H
 
 #include "korganizer/incidencechangerbase.h"
-#include <kdepim_export.h>
+#include "korganizer_export.h"
 
 class KORGANIZER_EXPORT IncidenceChanger : public KOrg::IncidenceChangerBase
 {
