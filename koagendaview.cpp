@@ -810,11 +810,12 @@ void KOAgendaView::createDayLabels()
         KOAlternateLabel*label = new KOAlternateLabel( text, text, QString(), mDayLabels );
         label->setMinimumWidth(1);
         label->setAlignment(Qt::AlignCenter);
+        label->setMaximumWidth( mDayLabels->width() );
         dayLayout->addWidget(label);
+        dayLayout->setAlignment(label, Qt::AlignCenter);
       }
     }
 
-// TODO: Hier smallPixmap implementieren!
     for ( it = cds.begin(); it!= cds.end(); ++it ) {
       QPixmap pixmap = (*it)->smallPixmap( date ).scaled( mDayLabels->width(), (*it)->smallPixmap( date ).height()/6, Qt::KeepAspectRatio );
       if ( !pixmap.isNull() ) {
@@ -823,15 +824,17 @@ void KOAgendaView::createDayLabels()
         image->setPixmap( pixmap );
         image->setMaximumWidth( mDayLabels->width() );
         dayLayout->addWidget(image);
+        dayLayout->setAlignment(image, Qt::AlignCenter);
       }
     }
 
     for(it = cds.begin(); it != cds.end(); ++it ) {
       QWidget *wid = (*it)->smallWidget( mDayLabels, date );
       if ( wid ) {
-//      wid->setHeight(20);
-        kDebug() << "Widget added: " << wid->toolTip() << endl;
+        wid->setMaximumHeight( mAgenda->height()/5 ); //TODO: use a better metric, handle view resizes
+        wid->setMaximumWidth( mDayLabels->width() );
         dayLayout->addWidget(wid);
+        dayLayout->setAlignment(wid, Qt::AlignCenter);
       }
     }
 #endif

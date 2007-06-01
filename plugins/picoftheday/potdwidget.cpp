@@ -128,8 +128,6 @@ void POTDWidget::gotPOTD(KJob* job)
     kDebug() << "POTD: got POTD. " << endl;
     setPixmap(*p);
   //FIXME: thumbnail is fixed at 100px for now
-    setMaximumHeight(100);
-    setMaximumWidth(100);
   }
 }
 
