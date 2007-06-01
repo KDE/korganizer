@@ -36,22 +36,39 @@ TimelineItem::TimelineItem( const QString &label, KDGanttView * parent) :
     listView()->setRootIsDecorated( false );
 }
 
-void TimelineItem::insertIncidence(KCal::Incidence * incidence, const QDateTime & start, const QDateTime & end)
+void TimelineItem::insertIncidence(KCal::Incidence * incidence, const QDateTime & _start, const QDateTime & _end)
 {
+  QDateTime start = incidence->dtStart(), end = incidence->dtEnd();
+  if ( _start.isValid() )
+    start = _start;
+  if ( _end.isValid() )
+    end = _end;
+  if ( incidence->doesFloat() )
+    end = end.addDays( 1 );
+
+  typedef QValueList<TimelineSubItem*> ItemList;
+  ItemList list = mItemMap[incidence];
+  for ( ItemList::ConstIterator it = list.constBegin(); it != list.constEnd(); ++it )
+    if ( (*it)->startTime() == start && (*it)->endTime() == end )
+      return;
+
   TimelineSubItem * item = new TimelineSubItem( incidence, this );
   QColor c1, c2, c3;
   colors( c1, c2, c3 );
   item->setColors( c1, c2, c3 );
-  if ( start.isValid() )
-    item->setStartTime( start );
-  if ( end.isValid() )
-    item->setEndTime( end );
-  mItemMap[incidence] = item;
+
+  item->setStartTime( start );
+  item->setEndTime( end );
+
+  mItemMap[incidence].append( item );
 }
 
 void TimelineItem::removeIncidence(KCal::Incidence * incidence)
 {
-  delete mItemMap[incidence];
+  typedef QValueList<TimelineSubItem*> ItemList;
+  ItemList list = mItemMap[incidence];
+  for ( ItemList::ConstIterator it = list.constBegin(); it != list.constEnd(); ++it )
+    delete *it;
   mItemMap.remove( incidence );
 }
 
@@ -59,12 +76,9 @@ TimelineSubItem::TimelineSubItem(KCal::Incidence * incidence, TimelineItem * par
     KDGanttViewTaskItem( parent ),
     mIncidence( incidence )
 {
-  setStartTime( incidence->dtStart() );
-  QDateTime end = incidence->dtEnd();
-  if ( incidence->doesFloat() ) {
-    end = end.addDays( 1 );
-  }
-  setEndTime( end );
-
   setTooltipText( IncidenceFormatter::toolTipString( incidence ) );
+  if ( !incidence->isReadOnly() ) {
+    setMoveable( true );
+    setResizeable( true );
+  }
 }

@@ -71,6 +71,7 @@ class KOTimelineView : public KOEventView
     void itemSelected( KDGanttViewItem *item );
     void itemDoubleClicked( KDGanttViewItem *item );
     void itemRightClicked( KDGanttViewItem *item );
+    void itemMoved( KDGanttViewItem *item );
 
   private:
     KDGanttView* mGantt;

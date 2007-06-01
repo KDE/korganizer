@@ -64,6 +64,8 @@ KOTimelineView::KOTimelineView(Calendar *calendar, QWidget *parent,
              SLOT(itemDoubleClicked(KDGanttViewItem*)) );
     connect( mGantt, SIGNAL(itemRightClicked(KDGanttViewItem*)),
              SLOT(itemRightClicked(KDGanttViewItem*)) );
+    connect( mGantt, SIGNAL(gvItemMoved(KDGanttViewItem*)),
+             SLOT(itemMoved(KDGanttViewItem*)) );
 }
 
 KOTimelineView::~KOTimelineView()
@@ -99,6 +101,7 @@ void KOTimelineView::showDates(const QDate& start, const QDate& end)
   mGantt->setHorizonEnd( QDateTime(end) );
   mGantt->zoomToFit();
 
+  mGantt->setUpdateEnabled( false );
   mGantt->clear();
 
   // item for every calendar
@@ -143,6 +146,8 @@ void KOTimelineView::showDates(const QDate& start, const QDate& end)
       insertIncidence( *it, day );
     }
   }
+
+  mGantt->setUpdateEnabled( true );
 }
 
 /*virtual*/
@@ -253,7 +258,8 @@ void KOTimelineView::insertIncidence(KCal::Incidence * incidence, const QDate &d
       }
     }
   } else {
-    item->insertIncidence( incidence );
+    if ( incidence->dtStart().date() == day || incidence->dtStart().date() < mStartDate )
+      item->insertIncidence( incidence );
   }
 }
 
@@ -288,6 +294,32 @@ void KOTimelineView::removeIncidence(KCal::Incidence * incidence)
       }
     }
   }
+}
+
+void KOTimelineView::itemMoved(KDGanttViewItem * item)
+{
+  TimelineSubItem *tlit = dynamic_cast<TimelineSubItem*>( item );
+  if ( !tlit )
+    return;
+  Incidence *i = tlit->incidence();
+  mChanger->beginChange( i );
+  QDateTime newStart = tlit->startTime();
+  if ( i->doesFloat() )
+    newStart = QDateTime( newStart.date() );
+  i->setDtStart( newStart );
+  int duration = tlit->startTime().secsTo( tlit->endTime() );
+  int allDayOffset = 0;
+  if ( i->doesFloat() ) {
+    duration /= (60*60*24);
+    duration *= (60*60*24);
+    allDayOffset = (60*60*24);
+    duration -= allDayOffset;
+    if ( duration < 0 ) duration = 0;
+  }
+  i->setDuration( duration );
+  tlit->setStartTime( newStart );
+  tlit->setEndTime( newStart.addSecs( duration + allDayOffset ) );
+  mChanger->endChange( i );
 }
 
 #include "kotimelineview.moc"

@@ -22,6 +22,7 @@
 #include <kdgantt/KDGanttViewTaskItem.h>
 
 #include <qmap.h>
+#include <qvaluelist.h>
 
 class KDGanttView;
 
@@ -46,7 +47,7 @@ class TimelineItem : public KDGanttViewTaskItem
     void removeIncidence( KCal::Incidence *incidence );
 
   private:
-    QMap<KCal::Incidence*, TimelineSubItem*> mItemMap;
+    QMap<KCal::Incidence*, QValueList<TimelineSubItem*> > mItemMap;
 };
 
 class TimelineSubItem : public KDGanttViewTaskItem
