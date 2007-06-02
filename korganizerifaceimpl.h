@@ -61,6 +61,12 @@ public:
   /** @reimp from KOrganizerIface::addIncidence() */
   bool addIncidence( const QString &iCal );
 
+  /** @reimp from KOrganizerIface::loadProfile() */
+  void loadProfile( const QString& path );
+
+  /** @reimp from KOrganizerIface::saveToProfile() */
+  void saveToProfile( const QString& path ) const;
+
 private:
   ActionManager* mActionManager;
 };
