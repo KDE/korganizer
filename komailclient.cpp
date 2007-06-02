@@ -196,7 +196,8 @@ bool KOMailClient::send(const QString &from,const QString &to,
       int idx = attachment.find("METHOD");
       if (idx>=0) {
         idx = attachment.find(':',idx)+1;
-        meth = attachment.mid(idx,attachment.find('\n',idx)-idx);
+        const int newline = attachment.find('\n',idx);
+        meth = attachment.mid(idx, newline - idx - 1);
         meth = meth.lower().stripWhiteSpace();
       } else {
         meth = "publish";
