@@ -20,6 +20,10 @@
 
 #include "kohelper.h"
 
+#define protected public
+#include <kdgantt/KDGanttViewSubwidgets.h>
+#undef public
+
 #include <libkcal/calendar.h>
 #include <libkcal/incidenceformatter.h>
 #include <libkcal/resourcecalendar.h>
@@ -89,7 +93,10 @@ void TimelineItem::moveItems(KCal::Incidence * incidence, int delta, int duratio
 
 TimelineSubItem::TimelineSubItem(KCal::Incidence * incidence, TimelineItem * parent) :
     KDGanttViewTaskItem( parent ),
-    mIncidence( incidence )
+    mIncidence( incidence ),
+    mLeft( 0 ),
+    mRight( 0 ),
+    mMarkerWidth( 0 )
 {
   setTooltipText( IncidenceFormatter::toolTipString( incidence ) );
   if ( !incidence->isReadOnly() ) {
@@ -98,3 +105,56 @@ TimelineSubItem::TimelineSubItem(KCal::Incidence * incidence, TimelineItem * par
   }
 }
 
+TimelineSubItem::~TimelineSubItem()
+{
+  delete mLeft;
+  delete mRight;
+}
+
+void TimelineSubItem::showItem(bool show, int coordY)
+{
+  KDGanttViewTaskItem::showItem( show, coordY );
+  int y;
+  if ( coordY != 0 )
+    y = coordY;
+  else
+    y = getCoordY();
+  int startX = myGanttView->myTimeHeader->getCoordX(myStartTime);
+  int endX = myGanttView->myTimeHeader->getCoordX(myEndTime);
+
+  const int mw = QMAX( 1, QMIN( 4, endX - startX ) );
+  if ( !mLeft || mw != mMarkerWidth ) {
+    if ( !mLeft ) {
+      mLeft = new KDCanvasPolygon( myGanttView->myTimeTable, this, Type_is_KDGanttViewItem );
+      mLeft->setBrush( Qt::black );
+    }
+    QPointArray a = QPointArray( 4 );
+    a.setPoint( 0, 0, -mw -myItemSize/2 - 2 );
+    a.setPoint( 1, mw, -myItemSize/2 - 2 );
+    a.setPoint( 2, mw, myItemSize/2 + 2 );
+    a.setPoint( 3, 0, myItemSize/2 + mw + 2 );
+    mLeft->setPoints( a );
+  }
+  if ( !mRight || mw != mMarkerWidth ) {
+    if ( !mRight ) {
+      mRight = new KDCanvasPolygon( myGanttView->myTimeTable, this, Type_is_KDGanttViewItem );
+      mRight->setBrush( Qt::black );
+    }
+    QPointArray a = QPointArray( 4 );
+    a.setPoint( 0, -mw, -myItemSize/2 - 2 );
+    a.setPoint( 1, 0, -myItemSize/2 - mw - 2 );
+    a.setPoint( 2, 0, myItemSize/2 + mw + 2 );
+    a.setPoint( 3, -mw, myItemSize/2 + 2 );
+    mRight->setPoints( a );
+  }
+  kdDebug( mw != mMarkerWidth ) << k_funcinfo << "Marker size changed!!!!!" << endl;
+  mMarkerWidth = mw;
+  mLeft->setX( startX );
+  mLeft->setY( y );
+  mLeft->setZ( startShape->z() - 1 );
+  mLeft->show();
+  mRight->setX( endX );
+  mRight->setY( y );
+  mRight->setZ( startShape->z() - 1 );
+  mRight->show();
+}

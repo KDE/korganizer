@@ -19,12 +19,15 @@
 #ifndef KORG_TIMELINEITEM_H
 #define KORG_TIMELINEITEM_H
 
+#define private protected
 #include <kdgantt/KDGanttViewTaskItem.h>
+#undef protected
 
 #include <qmap.h>
 #include <qvaluelist.h>
 
 class KDGanttView;
+class KDCanvasPolygon;
 
 namespace KCal {
   class Calendar;
@@ -56,14 +59,21 @@ class TimelineSubItem : public KDGanttViewTaskItem
 {
   public:
     TimelineSubItem( KCal::Incidence *incidence, TimelineItem *parent );
+    ~TimelineSubItem();
 
     KCal::Incidence* incidence() const { return mIncidence; }
 
     QDateTime originalStart() const { return mStart; }
     void setOriginalStart( const QDateTime &dt ) { mStart = dt; }
+
+  private:
+    void showItem( bool show = true, int coordY = 0 );
+
   private:
     KCal::Incidence *mIncidence;
     QDateTime mStart;
+    KDCanvasPolygon *mLeft, *mRight;
+    int mMarkerWidth;
 };
 
 }
