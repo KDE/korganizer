@@ -54,7 +54,7 @@ KOCore *KOCore::self()
 }
 
 KOCore::KOCore()
-  : mCalendarDecorationsLoaded( false ), mIdentityManager( 0 )
+  : mOldCalendarDecorationsLoaded( false ), mIdentityManager( 0 )
 {
 }
 
@@ -80,10 +80,10 @@ KService::List KOCore::availablePlugins()
                            KOrg::Plugin::interfaceVersion() );
 }
 
-KService::List KOCore::availableCalendarDecorations()
+KService::List KOCore::availableOldCalendarDecorations()
 {
-  return availablePlugins( KOrg::CalendarDecoration::serviceType(),
-                           KOrg::CalendarDecoration::interfaceVersion() );
+  return availablePlugins( KOrg::OldCalendarDecoration::serviceType(),
+                           KOrg::OldCalendarDecoration::interfaceVersion() );
 }
 
 KService::List KOCore::availableParts()
@@ -137,35 +137,35 @@ KOrg::Plugin *KOCore::loadPlugin( const QString &name )
   return 0;
 }
 
-KOrg::CalendarDecoration *KOCore::loadCalendarDecoration(KService::Ptr service)
+KOrg::OldCalendarDecoration *KOCore::loadOldCalendarDecoration(KService::Ptr service)
 {
-  kDebug(5850) << "loadCalendarDecoration: library: " << service->library() << endl;
+  kDebug(5850) << "loadOldCalendarDecoration: library: " << service->library() << endl;
 
   KLibFactory *factory = KLibLoader::self()->factory(service->library().toLatin1());
 
   if (!factory) {
-    kDebug(5850) << "KOCore::loadCalendarDecoration(): Factory creation failed" << endl;
+    kDebug(5850) << "KOCore::loadOldCalendarDecoration(): Factory creation failed" << endl;
     return 0;
   }
 
-  KOrg::CalendarDecorationFactory *pluginFactory =
-      static_cast<KOrg::CalendarDecorationFactory *>(factory);
+  KOrg::OldCalendarDecorationFactory *pluginFactory =
+      static_cast<KOrg::OldCalendarDecorationFactory *>(factory);
 
   if (!pluginFactory) {
-    kDebug(5850) << "KOCore::loadCalendarDecoration(): Cast failed" << endl;
+    kDebug(5850) << "KOCore::loadOldCalendarDecoration(): Cast failed" << endl;
     return 0;
   }
 
   return pluginFactory->create();
 }
 
-KOrg::CalendarDecoration *KOCore::loadCalendarDecoration( const QString &name )
+KOrg::OldCalendarDecoration *KOCore::loadOldCalendarDecoration( const QString &name )
 {
-  KService::List list = availableCalendarDecorations();
+  KService::List list = availableOldCalendarDecorations();
   KService::List::ConstIterator it;
   for( it = list.begin(); it != list.end(); ++it ) {
     if ( (*it)->desktopEntryName() == name ) {
-      return loadCalendarDecoration( *it );
+      return loadOldCalendarDecoration( *it );
     }
   }
   return 0;
@@ -269,27 +269,27 @@ KOrg::PrintPlugin *KOCore::loadPrintPlugin( const QString &name )
   return 0;
 }
 
-KOrg::CalendarDecoration::List KOCore::calendarDecorations()
+KOrg::OldCalendarDecoration::List KOCore::oldCalendarDecorations()
 {
-  if ( !mCalendarDecorationsLoaded ) {
+  if ( !mOldCalendarDecorationsLoaded ) {
     QStringList selectedPlugins = KOPrefs::instance()->mSelectedPlugins;
 
-    mCalendarDecorations.clear();
-    KService::List plugins = availableCalendarDecorations();
+    mOldCalendarDecorations.clear();
+    KService::List plugins = availableOldCalendarDecorations();
     KService::List::ConstIterator it;
     for( it = plugins.begin(); it != plugins.end(); ++it ) {
-      if ( (*it)->hasServiceType(KOrg::CalendarDecoration::serviceType()) ) {
+      if ( (*it)->hasServiceType(KOrg::OldCalendarDecoration::serviceType()) ) {
         QString name = (*it)->desktopEntryName();
         if ( selectedPlugins.contains( name )  ) {
-          KOrg::CalendarDecoration *d = loadCalendarDecoration(*it);
-          mCalendarDecorations.append( d );
+          KOrg::OldCalendarDecoration *d = loadOldCalendarDecoration(*it);
+          mOldCalendarDecorations.append( d );
         }
       }
     }
-    mCalendarDecorationsLoaded = true;
+    mOldCalendarDecorationsLoaded = true;
   }
 
-  return mCalendarDecorations;
+  return mOldCalendarDecorations;
 }
 
 KOrg::Part::List KOCore::loadParts( KOrg::MainWindow *parent )
@@ -336,9 +336,9 @@ KOrg::PrintPlugin::List KOCore::loadPrintPlugins()
 
 void KOCore::unloadPlugins()
 {
-  qDeleteAll( mCalendarDecorations );
-  mCalendarDecorations.clear();
-  mCalendarDecorationsLoaded = false;
+  qDeleteAll( mOldCalendarDecorations );
+  mOldCalendarDecorations.clear();
+  mOldCalendarDecorationsLoaded = false;
 }
 
 void KOCore::unloadParts( KOrg::MainWindow *parent, KOrg::Part::List &parts )
@@ -366,10 +366,10 @@ KOrg::Part::List KOCore::reloadParts( KOrg::MainWindow *parent,
 
 void KOCore::reloadPlugins()
 {
-  mCalendarDecorationsLoaded = false;
+  mOldCalendarDecorationsLoaded = false;
 // Plugins should be unloaded, but e.g. komonthview keeps using the old ones
   unloadPlugins();
-  calendarDecorations();
+  oldCalendarDecorations();
 }
 
 KPIM::IdentityManager* KOCore::identityManager()

@@ -25,9 +25,9 @@
 #include "configdialog.h"
 #include <kcalendarsystem.h>
 
-class DatenumsFactory : public CalendarDecorationFactory {
+class DatenumsFactory : public OldCalendarDecorationFactory {
   public:
-    CalendarDecoration *create() { return new Datenums; }
+    OldCalendarDecoration *create() { return new Datenums; }
 };
 
 K_EXPORT_COMPONENT_FACTORY( libkorg_datenums, DatenumsFactory )

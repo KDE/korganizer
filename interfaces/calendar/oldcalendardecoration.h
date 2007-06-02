@@ -18,8 +18,8 @@
     the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
     Boston, MA 02110-1301, USA.
 */
-#ifndef KORG_CALENDARDECORATION_H
-#define KORG_CALENDARDECORATION_H
+#ifndef KORG_OLDCALENDARDECORATION_H
+#define KORG_OLDCALENDARDECORATION_H
 
 #include <QString>
 #include <QDateTime>
@@ -38,16 +38,16 @@ namespace KOrg {
   It provides entities like texts and pictures for a given date. Implementations
   can implement all functions or only a subset.
 */
-class CalendarDecoration : public Plugin
+class OldCalendarDecoration : public Plugin
 {
   public:
     static int interfaceVersion() { return 2; }
-    static QString serviceType() { return "Calendar/Decoration"; }
+    static QString serviceType() { return "Calendar/OldDecoration"; }
 
-    typedef QList<CalendarDecoration*> List;
+    typedef QList<OldCalendarDecoration*> List;
 
-    CalendarDecoration() {}
-    virtual ~CalendarDecoration() {}
+    OldCalendarDecoration() {}
+    virtual ~OldCalendarDecoration() {}
 
     /**
       Return a short text for a given date, ususally only a few words.
@@ -74,10 +74,10 @@ class CalendarDecoration : public Plugin
     virtual QWidget *smallWidget( QWidget *, const QDate & ) { return 0; }
 };
 
-class CalendarDecorationFactory : public PluginFactory
+class OldCalendarDecorationFactory : public PluginFactory
 {
   public:
-    virtual CalendarDecoration *create() = 0;
+    virtual OldCalendarDecoration *create() = 0;
 };
 
 }

@@ -29,10 +29,10 @@
 
 bool Hebrew::IsraelP;
 
-class HebrewFactory:public CalendarDecorationFactory
+class HebrewFactory:public OldCalendarDecorationFactory
 {
 public:
-  CalendarDecoration * create()
+  OldCalendarDecoration * create()
   {
     return new Hebrew;
   }

@@ -29,9 +29,9 @@
 #include <kstandarddirs.h>
 #include <kcalendarsystem.h>
 
-class ThisDayInHistoryFactory : public CalendarDecorationFactory {
+class ThisDayInHistoryFactory : public OldCalendarDecorationFactory {
   public:
-    CalendarDecoration *create() { return new ThisDayInHistory; }
+    OldCalendarDecoration *create() { return new ThisDayInHistory; }
 };
 
 K_EXPORT_COMPONENT_FACTORY( libkorg_thisdayinhistory, ThisDayInHistoryFactory )

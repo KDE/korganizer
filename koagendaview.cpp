@@ -801,8 +801,8 @@ void KOAgendaView::createDayLabels()
     }
 
 #ifndef KORG_NOPLUGINS
-    CalendarDecoration::List cds = KOCore::self()->calendarDecorations();
-    CalendarDecoration::List::iterator it;
+    OldCalendarDecoration::List cds = KOCore::self()->oldCalendarDecorations();
+    OldCalendarDecoration::List::iterator it;
     for ( it = cds.begin(); it!= cds.end(); ++it ) {
       QString text = (*it)->shortText( date );
       if ( !text.isEmpty() ) {

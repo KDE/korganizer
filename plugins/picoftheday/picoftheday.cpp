@@ -29,9 +29,9 @@
 #include <khtml_part.h>
 
 
-class PicofthedayFactory : public CalendarDecorationFactory {
+class PicofthedayFactory : public OldCalendarDecorationFactory {
   public:
-    CalendarDecoration *create() { return new Picoftheday; }
+    OldCalendarDecoration *create() { return new Picoftheday; }
 };
 
 K_EXPORT_COMPONENT_FACTORY( libkorg_picoftheday, PicofthedayFactory )

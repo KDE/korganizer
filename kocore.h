@@ -25,7 +25,7 @@
 #ifndef KOCORE_H
 #define KOCORE_H
 
-#include <calendar/calendardecoration.h>
+#include <calendar/oldcalendardecoration.h>
 #include <korganizer/part.h>
 #include <korganizer/printplugin.h>
 
@@ -42,15 +42,15 @@ class KDE_EXPORT KOCore
     static KOCore *self();
 
     KService::List availablePlugins();
-    KService::List availableCalendarDecorations();
+    KService::List availableOldCalendarDecorations();
     KService::List availableParts();
     KService::List availablePrintPlugins();
 
     KOrg::Plugin *loadPlugin( KService::Ptr service );
     KOrg::Plugin *loadPlugin( const QString & );
 
-    KOrg::CalendarDecoration *loadCalendarDecoration( KService::Ptr service );
-    KOrg::CalendarDecoration *loadCalendarDecoration( const QString & );
+    KOrg::OldCalendarDecoration *loadOldCalendarDecoration( KService::Ptr service );
+    KOrg::OldCalendarDecoration *loadOldCalendarDecoration( const QString & );
 
     KOrg::Part *loadPart( KService::Ptr, KOrg::MainWindow *parent );
     KOrg::Part *loadPart( const QString &, KOrg::MainWindow *parent );
@@ -58,7 +58,7 @@ class KDE_EXPORT KOCore
     KOrg::PrintPlugin *loadPrintPlugin( KService::Ptr service );
     KOrg::PrintPlugin *loadPrintPlugin( const QString & );
 
-    KOrg::CalendarDecoration::List calendarDecorations();
+    KOrg::OldCalendarDecoration::List oldCalendarDecorations();
     KOrg::PrintPlugin::List loadPrintPlugins();
     KOrg::Part::List loadParts( KOrg::MainWindow *parent );
 
@@ -97,8 +97,8 @@ class KDE_EXPORT KOCore
   private:
     static KOCore *mSelf;
 
-    KOrg::CalendarDecoration::List mCalendarDecorations;
-    bool mCalendarDecorationsLoaded;
+    KOrg::OldCalendarDecoration::List mOldCalendarDecorations;
+    bool mOldCalendarDecorationsLoaded;
 
     QMap<QWidget*, KXMLGUIClient*> mXMLGUIClients;
 

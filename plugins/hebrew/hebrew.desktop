@@ -89,6 +89,6 @@ Comment[uk]=Показує всі дати в korganizer також і в сис
 Comment[x-test]=xxShows all dates in korganizer also in the Jewish calendar system.xx
 Comment[zh_TW]=顯示所有猶太行事曆的日期
 Type=Service
-ServiceTypes=Calendar/Plugin,Calendar/Decoration
+ServiceTypes=Calendar/Plugin,Calendar/OldDecoration
 X-KDE-KOrganizer-HasSettings=true
 X-KDE-PluginInterfaceVersion=2

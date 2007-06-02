@@ -87,6 +87,6 @@ Comment[uk]=Цей втулок показує зверху перегляду �
 Comment[x-test]=xxFor each day this plugin shows its daynumber of the year at the top of the agenda view. For example, February 1 is day 32 of the year.xx
 Comment[zh_TW]=對每一天，此外掛程式會顯示這是一年中的第幾天。
 Type=Service
-ServiceTypes=Calendar/Plugin,Calendar/Decoration
+ServiceTypes=Calendar/Plugin,Calendar/OldDecoration
 X-KDE-KOrganizer-HasSettings=true
 X-KDE-PluginInterfaceVersion=2

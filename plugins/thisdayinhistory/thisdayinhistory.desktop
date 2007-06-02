@@ -4,6 +4,6 @@ X-KDE-Library=libkorg_thisdayinhistory
 Name=Wikipedia 'This Day in History' Plugin
 Name[zh_TW]=維基百科「歷史上的今天」外掛程式
 Type=Service
-ServiceTypes=Calendar/Plugin,Calendar/Decoration
+ServiceTypes=Calendar/Plugin,Calendar/OldDecoration
 X-KDE-KOrganizer-HasSettings=true
 X-KDE-PluginInterfaceVersion=2

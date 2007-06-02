@@ -1,7 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
 Type=ServiceType
-X-KDE-ServiceType=Calendar/Decoration
+X-KDE-ServiceType=Calendar/OldDecoration
 Comment=Calendar Decoration Plugin
 Comment[af]=Kalender Versiering Inplak
 Comment[br]=Lugent kinkladur an deiziadur

@@ -21,11 +21,11 @@
 
 #include <QString>
 #include <QStringList>
-#include <calendar/calendardecoration.h>
+#include <calendar/oldcalendardecoration.h>
 
 using namespace KOrg;
 
-class Hebrew:public CalendarDecoration
+class Hebrew:public OldCalendarDecoration
 {
 public:
   Hebrew()

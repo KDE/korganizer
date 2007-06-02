@@ -21,11 +21,11 @@
 
 #include <QString>
 
-#include <calendar/calendardecoration.h>
+#include <calendar/oldcalendardecoration.h>
 
 using namespace KOrg;
 
-class Datenums : public CalendarDecoration {
+class Datenums : public OldCalendarDecoration {
   public:
     Datenums();
     ~Datenums() {}

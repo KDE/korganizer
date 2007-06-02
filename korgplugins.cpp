@@ -76,15 +76,15 @@ int main(int argc,char **argv)
     }
   }
   
-  plugins = KOCore::self()->availableCalendarDecorations();
+  plugins = KOCore::self()->availableOldCalendarDecorations();
   for(it = plugins.begin(); it != plugins.end(); ++it) {
-    kDebug(5850) << "CalendarDecoration: " << (*it)->desktopEntryName() << " ("
+    kDebug(5850) << "OldCalendarDecoration: " << (*it)->desktopEntryName() << " ("
               << (*it)->name() << ")" << endl;
-    KOrg::CalendarDecoration *p = KOCore::self()->loadCalendarDecoration(*it);
+    KOrg::OldCalendarDecoration *p = KOCore::self()->loadOldCalendarDecoration(*it);
     if (!p) {
-      kDebug(5850) << "Calendar decoration loading failed." << endl;
+      kDebug(5850) << "Old calendar decoration loading failed." << endl;
     } else {
-      kDebug(5850) << "CALENDAR DECORATION INFO: " << p->info() << endl;
+      kDebug(5850) << "OLD CALENDAR DECORATION INFO: " << p->info() << endl;
     }
   }
 

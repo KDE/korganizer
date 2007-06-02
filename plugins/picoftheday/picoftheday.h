@@ -22,11 +22,11 @@
 
 #include <QString>
 
-#include <calendar/calendardecoration.h>
+#include <calendar/oldcalendardecoration.h>
 
 using namespace KOrg;
 
-class Picoftheday : public CalendarDecoration {
+class Picoftheday : public OldCalendarDecoration {
   public:
     Picoftheday();
     ~Picoftheday() {}

@@ -4,6 +4,6 @@ X-KDE-Library=libkorg_picoftheday
 Name=Wikipedia Picture Of the Day Plugin for Calendars
 Name[zh_TW]=行事曆維基「本日圖片」外掛程式
 Type=Service
-ServiceTypes=Calendar/Plugin,Calendar/Decoration
+ServiceTypes=Calendar/Plugin,Calendar/OldDecoration
 X-KDE-KOrganizer-HasSettings=true
 X-KDE-PluginInterfaceVersion=2
