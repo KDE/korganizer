@@ -21,9 +21,9 @@
 #ifndef KORG_INCIDENCECHANGERBASE_H
 #define KORG_INCIDENCECHANGERBASE_H
 
+#include <korganizer/korganizer_export.h>
 #include <kcal/scheduler.h>
 #include <QObject>
-#include <kdepim_export.h>
 
 class QWidget;
 namespace KCal {
@@ -34,7 +34,7 @@ using namespace KCal;
 
 namespace KOrg {
 
-class KDE_EXPORT IncidenceChangerBase : public QObject
+class KORGANIZER_EXPORT IncidenceChangerBase : public QObject
 {
 Q_OBJECT
 public:

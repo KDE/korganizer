@@ -20,6 +20,7 @@
 #ifndef KLISTVIEWNEWSEARCHLINE_H
 #define KLISTVIEWNEWSEARCHLINE_H
 
+#include "korganizer_export.h"
 #include <klineedit.h>
 
 class K3ListView;
@@ -37,7 +38,7 @@ class QToolButton;
  * appropriate KListViews should be needed.
  */
 
-class KDEUI_EXPORT KListViewNewSearchLine : public KLineEdit
+class KORGANIZER_EXPORT KListViewNewSearchLine : public KLineEdit
 {
     Q_OBJECT
 
