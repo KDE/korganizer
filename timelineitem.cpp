@@ -147,7 +147,6 @@ void TimelineSubItem::showItem(bool show, int coordY)
     a.setPoint( 3, -mw, myItemSize/2 + 2 );
     mRight->setPoints( a );
   }
-  kdDebug( mw != mMarkerWidth ) << k_funcinfo << "Marker size changed!!!!!" << endl;
   mMarkerWidth = mw;
   mLeft->setX( startX );
   mLeft->setY( y );

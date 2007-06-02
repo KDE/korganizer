@@ -28,7 +28,6 @@
 
 #include <qlayout.h>
 
-#include <kdgantt/KDGanttView.h>
 #include <kdgantt/KDGanttViewTaskItem.h>
 #include <kdgantt/KDGanttViewSubwidgets.h>
 
@@ -51,10 +50,15 @@ KOTimelineView::KOTimelineView(Calendar *calendar, QWidget *parent,
     mGantt = new KDGanttView(this);
     mGantt->setCalendarMode( true );
     mGantt->setShowLegendButton( false );
-    mGantt->setScale( KDGanttView::Hour );
+    mGantt->setFixedHorizon( true );
     mGantt->removeColumn( 0 );
     mGantt->addColumn( i18n("Calendar") );
     mGantt->setHeaderVisible( true );
+    if ( KGlobal::locale()->use12Clock() )
+      mGantt->setHourFormat( KDGanttView::Hour_12 );
+    else
+      mGantt->setHourFormat( KDGanttView::Hour_24_FourDigit );
+
 
     vbox->addWidget( mGantt );
 
@@ -66,6 +70,8 @@ KOTimelineView::KOTimelineView(Calendar *calendar, QWidget *parent,
              SLOT(itemRightClicked(KDGanttViewItem*)) );
     connect( mGantt, SIGNAL(gvItemMoved(KDGanttViewItem*)),
              SLOT(itemMoved(KDGanttViewItem*)) );
+    connect( mGantt, SIGNAL(rescaling(KDGanttView::Scale)),
+             SLOT(overscale(KDGanttView::Scale)) );
 }
 
 KOTimelineView::~KOTimelineView()
@@ -98,7 +104,11 @@ void KOTimelineView::showDates(const QDate& start, const QDate& end)
   mEndDate = end;
   mRmbDate = QDateTime();
   mGantt->setHorizonStart( QDateTime(start) );
-  mGantt->setHorizonEnd( QDateTime(end) );
+  mGantt->setHorizonEnd( QDateTime(end.addDays(1)) );
+  mGantt->setMinorScaleCount( 1 );
+  mGantt->setScale( KDGanttView::Hour );
+  mGantt->setMinimumScale( KDGanttView::Hour );
+  mGantt->setMaximumScale( KDGanttView::Hour );
   mGantt->zoomToFit();
 
   mGantt->setUpdateEnabled( false );
@@ -321,6 +331,14 @@ void KOTimelineView::itemMoved(KDGanttViewItem * item)
   TimelineItem *parent = static_cast<TimelineItem*>( tlit->parent() );
   parent->moveItems( i, tlit->originalStart().secsTo( newStart ), duration + allDayOffset );
   mChanger->endChange( i );
+}
+
+void KOTimelineView::overscale(KDGanttView::Scale scale)
+{
+  Q_UNUSED( scale );
+  mGantt->setZoomFactor( 1, false );
+  mGantt->setScale( KDGanttView::Hour );
+  mGantt->setMinorScaleCount( 12 );
 }
 
 #include "kotimelineview.moc"

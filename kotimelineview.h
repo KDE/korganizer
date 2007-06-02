@@ -25,10 +25,9 @@
 #define KOTIMELINEVIEW_H
 
 #include <koeventview.h>
-
+#include <kdgantt/KDGanttView.h>
 #include <qmap.h>
 
-class KDGanttView;
 class KDGanttViewItem;
 
 namespace KCal {
@@ -72,6 +71,7 @@ class KOTimelineView : public KOEventView
     void itemDoubleClicked( KDGanttViewItem *item );
     void itemRightClicked( KDGanttViewItem *item );
     void itemMoved( KDGanttViewItem *item );
+    void overscale( KDGanttView::Scale scale );
 
   private:
     KDGanttView* mGantt;
