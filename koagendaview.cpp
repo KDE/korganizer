@@ -1209,13 +1209,13 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
     td->setDtDue( endDt );
   }
 
-  mChanger->changeIncidence( oldIncidence, incidence );
-  mChanger->endChange(incidence);
-  delete oldIncidence;
-
   item->setItemDate( startDt.date() );
 
   item->setToolTip( IncidenceFormatter::toolTipString( incidence ));
+
+  mChanger->changeIncidence( oldIncidence, incidence );
+  mChanger->endChange(incidence);
+  delete oldIncidence;
 
   // don't update the agenda as the item already has the correct coordinates.
   // an update would delete the current item and recreate it, but we are still
