@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui>
-<kpartgui name="korganizer" version="40">
+<kpartgui name="korganizer" version="390">
 
   <MenuBar>
     <Menu name="file"><text>&amp;File</text>

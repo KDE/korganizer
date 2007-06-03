@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui>
-<kpartgui name="timespanview" version="2">
+<kpartgui name="timespanview" version="390">
 
   <MenuBar>
     <Menu name="view">
