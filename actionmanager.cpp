@@ -1899,6 +1899,46 @@ void ActionManager::slotAutoArchive()
   slotAutoArchivingSettingsModified();
 }
 
+void ActionManager::loadProfile( const QString & path )
+{
+  KOPrefs::instance()->writeConfig();
+  KConfig* const cfg = KOPrefs::instance()->config();
+
+  const KConfig profile( path+"/korganizerrc", /*read-only=*/false, /*useglobals=*/false );
+  const QStringList groups = profile.groupList();
+  for ( QStringList::ConstIterator it = groups.begin(), end = groups.end(); it != end; ++it )
+  {
+    cfg->setGroup( *it );
+    typedef QMap<QString, QString> StringMap;
+    const StringMap entries = profile.entryMap( *it );
+    for ( StringMap::ConstIterator it2 = entries.begin(), end = entries.end(); it2 != end; ++it2 )
+    {
+      cfg->writeEntry( it2.key(), it2.data() );
+    }
+  }
+
+  cfg->sync();
+  KOPrefs::instance()->readConfig();
+}
+
+namespace {
+    void copyConfigEntry( KConfig* source, KConfig* dest, const QString& group, const QString& key, const QString& defaultValue=QString() )
+    {
+        source->setGroup( group );
+        dest->setGroup( group );
+        dest->writeEntry( key, source->readEntry( key, defaultValue ) );
+    }
+}
+
+void ActionManager::saveToProfile( const QString & path ) const
+{
+  KOPrefs::instance()->writeConfig();
+  KConfig* const cfg = KOPrefs::instance()->config();
+
+  KConfig profile( path+"/korganizerrc", /*read-only=*/false, /*useglobals=*/false );
+  ::copyConfigEntry( cfg, &profile, "Views", "Agenda View Calendar Display" );
+}
+
 QWidget *ActionManager::dialogParent()
 {
   return mCalendarView->topLevelWidget();

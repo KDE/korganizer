@@ -92,10 +92,12 @@ bool KOrganizerIfaceImpl::addIncidence( const QString &ical )
 
 void KOrganizerIfaceImpl::loadProfile( const QString& path )
 {
+    mActionManager->loadProfile( path );
 }
 
 void KOrganizerIfaceImpl::saveToProfile( const QString& path ) const
 {
+    mActionManager->saveToProfile( path );
 }
 
 
