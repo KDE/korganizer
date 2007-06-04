@@ -36,7 +36,6 @@ class KActionCollection;
 class KAction;
 class K3ListView;
 class QComboBox;
-class QListViewItem;
 class QResizeEvent;
 class QLabel;
 class QShowEvent;

@@ -28,7 +28,6 @@
 #include <QColor>
 #include "printplugin.h"
 
-class KCalendarSytstem;
 
 namespace KOrg {
 

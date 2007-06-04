@@ -29,10 +29,8 @@
 #include <kurl.h>
 #include <QList>
 
-class QDateTime;
 
 namespace KPIM {
-class CategorySelectDialog;
 class DesignerFields;
 class EmbeddedURLPage;
 }

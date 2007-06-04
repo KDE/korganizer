@@ -31,7 +31,6 @@ class KOEditorGeneralEvent;
 class KOEditorRecurrence;
 class KOEditorFreeBusy;
 
-class SaveTemplateDialog;
 
 class KOEditorFreeBusy;
 

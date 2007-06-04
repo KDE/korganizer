@@ -28,9 +28,7 @@
 
 #include <korganizer/baseview.h>
 
-class Q3ListView;
 
-class KOEventViewerDialog;
 
 class WhatsNextTextBrowser : public Q3TextBrowser {
     Q_OBJECT

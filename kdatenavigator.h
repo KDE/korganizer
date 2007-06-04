@@ -34,7 +34,6 @@
 
 #include <kcal/incidencebase.h>
 
-class QPushButton;
 class QLabel;
 
 namespace KCal {

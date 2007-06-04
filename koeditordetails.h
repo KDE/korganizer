@@ -36,11 +36,9 @@
 
 class QPushButton;
 class QCheckBox;
-class QLineEdit;
 class QLabel;
 class QComboBox;
 class KHBox;
-class KDateEdit;
 class KOEditorFreeBusy;
 
 namespace KCal {

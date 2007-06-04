@@ -49,7 +49,6 @@ class KOEventEditor;
 class DateNavigatorContainer;
 class DateNavigator;
 class KOIncidenceEditor;
-class ResourceView;
 class NavigatorBar;
 class DateChecker;
 

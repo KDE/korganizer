@@ -30,9 +30,7 @@
 
 class QTimer;
 
-class KCalendarSystem;
 
-class NavigatorBar;
 
 class DateChecker: public QObject
 {

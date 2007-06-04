@@ -31,7 +31,6 @@
 #include <korganizer/mainwindow.h>
 
 
-class KComponentData;
 class KAboutData;
 class K3Process;
 
@@ -39,8 +38,7 @@ class CalendarView;
 class ActionManager;
 
 namespace KCal {
-  class CalendarResources;
-  class Calendar;
+    class Calendar;
   class Incidence;
 }
 using namespace KCal;

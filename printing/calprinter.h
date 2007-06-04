@@ -39,11 +39,9 @@ using namespace KCal;
 
 class QButtonGroup;
 class QStackedWidget;
-class KPrinter;
 class CalPrintDialog;
 class KConfig;
 class QComboBox;
-class QLabel;
 
 
 /**

@@ -29,7 +29,6 @@
 
 namespace KCal {
 class Event;
-class Todo;
 }
 using namespace KCal;
 

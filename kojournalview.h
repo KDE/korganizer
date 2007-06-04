@@ -27,7 +27,6 @@
 #include <korganizer/baseview.h>
 #include "journalentry.h"
 
-class JournalEntry;
 class Q3ScrollView;
 class KVBox;
 

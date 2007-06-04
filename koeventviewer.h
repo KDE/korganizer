@@ -31,9 +31,7 @@
 #include <kconfig.h>
 namespace KCal {
 class Incidence;
-class Todo;
 class Event;
-class Journal;
 }
 using namespace KCal;
 

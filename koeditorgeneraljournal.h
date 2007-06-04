@@ -41,7 +41,6 @@ class QCheckBox;
 class QWidget;
 
 namespace KCal {
-class Incidence;
 class Journal;
 }
 using namespace KCal;

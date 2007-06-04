@@ -32,7 +32,6 @@
 
 class QLineEdit;
 class QLabel;
-class QSpinBox;
 class QComboBox;
 class KColorButton;
 class KPushButton;

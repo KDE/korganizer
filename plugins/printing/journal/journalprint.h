@@ -30,7 +30,6 @@
 
 #ifndef KORG_NOPRINTER
 namespace KCal {
-class Calendar;
 }
 
 using namespace KCal;

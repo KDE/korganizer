@@ -26,7 +26,6 @@
 class K3ListView;
 class Q3ListViewItem;
 class QContextMenuEvent;
-class QToolButton;
 
 /* FIXME push changes into kdelibs */
 

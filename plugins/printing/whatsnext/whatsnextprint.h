@@ -29,9 +29,6 @@
 #include "ui_calprintwhatsnextconfig_base.h"
 
 #ifndef KORG_NOPRINTER
-namespace KCal {
-class Calendar;
-}
 
 using namespace KCal;
 

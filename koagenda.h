@@ -43,7 +43,6 @@
 
 class QTime;
 class QLabel;
-class KConfig;
 class KOAgenda;
 class KOAgendaItem;
 

@@ -49,7 +49,6 @@ class QSplitter;
 class QMouseEvent;
 
 class KLineEdit;
-class KToolBar;
 
 class KOTodoListView;
 class KOTodoListViewQuickSearch;

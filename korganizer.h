@@ -36,11 +36,6 @@
 #include <korganizer/part.h>
 #include <kparts/mainwindow.h>
 
-class KTemporaryFile;
-class KRecentFilesAction;
-class KOWindowList;
-class KToggleAction;
-class K3Process;
 class ActionManager;
 class CalendarView;
 

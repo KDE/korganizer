@@ -30,7 +30,6 @@
 #include <QLabel>
 #include <QBoxLayout>
 
-class KRestrictedLine;
 
 class KDateEdit;
 class KTimeEdit;
