@@ -532,6 +532,11 @@ void ActionManager::initActions()
   connect( mCalendarView,SIGNAL( groupEventsSelected( bool ) ),
            action,SLOT( setEnabled( bool ) ) );
 
+  mForwardEvent = new KAction( i18n("&Send as iCalendar..."), "mail_forward", 0,
+                               mCalendarView, SLOT(schedule_forward()),
+                               mACollection, "schedule_forward" );
+  mForwardEvent->setEnabled( false );
+
   action = new KAction( i18n("&Mail Free Busy Information..."), 0,
                         mCalendarView, SLOT( mailFreeBusy() ),
                         mACollection, "mail_freebusy" );
@@ -1481,6 +1486,7 @@ void ActionManager::enableIncidenceActions( bool enabled )
   mCopyAction->setEnabled( enabled );
   mDeleteAction->setEnabled( enabled );
   mPublishEvent->setEnabled( enabled );
+  mForwardEvent->setEnabled( enabled );
 }
 
 void ActionManager::keyBindings()

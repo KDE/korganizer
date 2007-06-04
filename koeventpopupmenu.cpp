@@ -24,9 +24,11 @@
 
 #include <qcursor.h>
 
+#include <kactioncollection.h>
 #include <klocale.h>
 #include <kdebug.h>
 #include <kiconloader.h>
+#include <kurl.h>
 
 #include <libkcal/event.h>
 
@@ -36,6 +38,7 @@
 #include "koeventpopupmenu.h"
 #include "koeventpopupmenu.moc"
 #include "kocorehelper.h"
+#include "actionmanager.h"
 #ifndef KORG_NOPRINTER
 #include "calprinter.h"
 #endif
@@ -77,6 +80,10 @@ KOEventPopupMenu::KOEventPopupMenu()
   mRecurrenceItems.append(
     insertItem( i18n("&Dissociate Future Occurrences"),
                 this, SLOT( dissociateFutureOccurrence() ) ) );
+
+  insertSeparator();
+  insertItem( KOGlobals::self()->smallIcon("mail_forward"), i18n( "Send as iCalendar..."),
+              this, SLOT(forward()) );
 }
 
 void KOEventPopupMenu::showIncidencePopup( Incidence *incidence, const QDate &qd )
@@ -168,4 +175,14 @@ void KOEventPopupMenu::dissociateFutureOccurrence()
 {
   if ( mCurrentIncidence )
     emit dissociateFutureOccurrenceSignal( mCurrentIncidence, mCurrentDate );
+}
+
+void KOEventPopupMenu::forward()
+{
+  KOrg::MainWindow *w = ActionManager::findInstance( KURL() );
+  if ( !w || !mCurrentIncidence )
+    return;
+  KActionCollection *ac = w->getActionCollection();
+  KAction *action = ac->action( "schedule_forward" );
+  action->activate();
 }
