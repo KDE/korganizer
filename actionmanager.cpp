@@ -372,7 +372,7 @@ void ActionManager::initActions()
                mCalendarView->viewManager(), SLOT( showJournalView() ),
                mACollection, "view_journal" );
   new KAction( i18n("&Timeline View"),
-               KOGlobals::self()->smallIcon( "journal" ), 0,
+               KOGlobals::self()->smallIcon( "timeline" ), 0,
                mCalendarView->viewManager(), SLOT( showTimelineView() ),
                mACollection, "view_timeline" );
 
