@@ -108,8 +108,8 @@ class DecorationFactory : public PluginFactory
     virtual Decoration *create() = 0;
 };
 
-};
+}
 
-};
+}
 
 #endif
