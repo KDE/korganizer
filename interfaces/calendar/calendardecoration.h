@@ -39,7 +39,7 @@ class Element
   public:
     Element() {}
     virtual ~Element() {}
-  
+
     virtual QList<QString> availablePositions() = 0; //{ QList<QString> l; l << "Panel" << "Top" << "Left" << "Bottom" << "Right"; return l; }
 
     /**
@@ -93,8 +93,8 @@ class Decoration : public Plugin
 
     Decoration() {}
     virtual ~Decoration() {}
-    
-    QList<AgendaElement*> agenda() { return agendaElements; };
+
+    QList<AgendaElement*> agenda() { return agendaElements; }
 
   protected:
     QList<AgendaElement*> agendaElements;
