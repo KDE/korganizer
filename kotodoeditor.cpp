@@ -129,6 +129,7 @@ void KOTodoEditor::setupGeneral()
     mGeneral->initStatus(topFrame,topLayout);
     QBoxLayout *alarmLineLayout = new QHBoxLayout(topLayout);
     mGeneral->initAlarm(topFrame,alarmLineLayout);
+    mGeneral->enableAlarm( false );
     alarmLineLayout->addStretch( 1 );
     mGeneral->initDescription(topFrame,topLayout);
     QBoxLayout *detailsLayout = new QHBoxLayout(topLayout);
