@@ -22,17 +22,26 @@
 
 #include <QString>
 
-#include <calendar/oldcalendardecoration.h>
+#include <calendar/calendardecoration.h>
 
-using namespace KOrg;
+using namespace KOrg::CalendarDecoration;
 
-class Picoftheday : public OldCalendarDecoration {
+class PicofthedayAgenda : public AgendaElement {
+  public:
+    PicofthedayAgenda();
+    ~PicofthedayAgenda() {}
+    
+  protected:
+    QWidget *widget( QWidget *, const QDate &);
+};
+
+
+class Picoftheday : public Decoration {
   public:
     Picoftheday();
     ~Picoftheday() {}
     
-    QWidget *smallWidget( QWidget *, const QDate &);
-    
+  protected:
     QString info();
 
 };

@@ -54,7 +54,7 @@ KOCore *KOCore::self()
 }
 
 KOCore::KOCore()
-  : mOldCalendarDecorationsLoaded( false ), mIdentityManager( 0 )
+  : mOldCalendarDecorationsLoaded( false ), mCalendarDecorationsLoaded( false ), mIdentityManager( 0 ) //CalDec:DEPRECATED
 {
 }
 
@@ -80,10 +80,16 @@ KService::List KOCore::availablePlugins()
                            KOrg::Plugin::interfaceVersion() );
 }
 
-KService::List KOCore::availableOldCalendarDecorations()
+KService::List KOCore::availableOldCalendarDecorations() //CalDec:DEPRECATED
 {
   return availablePlugins( KOrg::OldCalendarDecoration::serviceType(),
                            KOrg::OldCalendarDecoration::interfaceVersion() );
+}
+
+KService::List KOCore::availableCalendarDecorations()
+{
+  return availablePlugins( KOrg::CalendarDecoration::Decoration::serviceType(),
+                           KOrg::CalendarDecoration::Decoration::interfaceVersion() );
 }
 
 KService::List KOCore::availableParts()
@@ -137,7 +143,7 @@ KOrg::Plugin *KOCore::loadPlugin( const QString &name )
   return 0;
 }
 
-KOrg::OldCalendarDecoration *KOCore::loadOldCalendarDecoration(KService::Ptr service)
+KOrg::OldCalendarDecoration *KOCore::loadOldCalendarDecoration(KService::Ptr service) //CalDec:DEPRECATED
 {
   kDebug(5850) << "loadOldCalendarDecoration: library: " << service->library() << endl;
 
@@ -159,13 +165,47 @@ KOrg::OldCalendarDecoration *KOCore::loadOldCalendarDecoration(KService::Ptr ser
   return pluginFactory->create();
 }
 
-KOrg::OldCalendarDecoration *KOCore::loadOldCalendarDecoration( const QString &name )
+KOrg::OldCalendarDecoration *KOCore::loadOldCalendarDecoration( const QString &name ) //CalDec:DEPRECATED
 {
   KService::List list = availableOldCalendarDecorations();
   KService::List::ConstIterator it;
   for( it = list.begin(); it != list.end(); ++it ) {
     if ( (*it)->desktopEntryName() == name ) {
       return loadOldCalendarDecoration( *it );
+    }
+  }
+  return 0;
+}
+
+KOrg::CalendarDecoration::Decoration *KOCore::loadCalendarDecoration(KService::Ptr service)
+{
+  kDebug(5850) << "loadCalendarDecoration: library: " << service->library() << endl;
+
+  KLibFactory *factory = KLibLoader::self()->factory(service->library().toLatin1());
+
+  if (!factory) {
+    kDebug(5850) << "KOCore::loadCalendarDecoration(): Factory creation failed" << endl;
+    return 0;
+  }
+
+  KOrg::CalendarDecoration::DecorationFactory *pluginFactory =
+      static_cast<KOrg::CalendarDecoration::DecorationFactory *>(factory);
+
+  if (!pluginFactory) {
+    kDebug(5850) << "KOCore::loadCalendarDecoration(): Cast failed" << endl;
+    return 0;
+  }
+
+  return pluginFactory->create();
+}
+
+KOrg::CalendarDecoration::Decoration *KOCore::loadCalendarDecoration( const QString &name )
+{
+  KService::List list = availableCalendarDecorations();
+  KService::List::ConstIterator it;
+  for( it = list.begin(); it != list.end(); ++it ) {
+    if ( (*it)->desktopEntryName() == name ) {
+      return loadCalendarDecoration( *it );
     }
   }
   return 0;
@@ -269,7 +309,7 @@ KOrg::PrintPlugin *KOCore::loadPrintPlugin( const QString &name )
   return 0;
 }
 
-KOrg::OldCalendarDecoration::List KOCore::oldCalendarDecorations()
+KOrg::OldCalendarDecoration::List KOCore::oldCalendarDecorations() //CalDec:DEPRECATED
 {
   if ( !mOldCalendarDecorationsLoaded ) {
     QStringList selectedPlugins = KOPrefs::instance()->mSelectedPlugins;
@@ -290,6 +330,29 @@ KOrg::OldCalendarDecoration::List KOCore::oldCalendarDecorations()
   }
 
   return mOldCalendarDecorations;
+}
+
+KOrg::CalendarDecoration::Decoration::List KOCore::calendarDecorations()
+{
+  if ( !mCalendarDecorationsLoaded ) {
+    QStringList selectedPlugins = KOPrefs::instance()->mSelectedPlugins;
+
+    mCalendarDecorations.clear();
+    KService::List plugins = availableCalendarDecorations();
+    KService::List::ConstIterator it;
+    for( it = plugins.begin(); it != plugins.end(); ++it ) {
+      if ( (*it)->hasServiceType(KOrg::CalendarDecoration::Decoration::serviceType()) ) {
+        QString name = (*it)->desktopEntryName();
+        if ( selectedPlugins.contains( name )  ) {
+          KOrg::CalendarDecoration::Decoration *d = loadCalendarDecoration(*it);
+          mCalendarDecorations.append( d );
+        }
+      }
+    }
+    mCalendarDecorationsLoaded = true;
+  }
+
+  return mCalendarDecorations;
 }
 
 KOrg::Part::List KOCore::loadParts( KOrg::MainWindow *parent )

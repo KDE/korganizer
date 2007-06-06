@@ -28,10 +28,11 @@
 #include <khtmlview.h>
 #include <khtml_part.h>
 
+using namespace KOrg::CalendarDecoration;
 
-class PicofthedayFactory : public OldCalendarDecorationFactory {
+class PicofthedayFactory : public DecorationFactory {
   public:
-    OldCalendarDecoration *create() { return new Picoftheday; }
+    Decoration *create() { return new Picoftheday; }
 };
 
 K_EXPORT_COMPONENT_FACTORY( libkorg_picoftheday, PicofthedayFactory )
@@ -40,11 +41,28 @@ K_EXPORT_COMPONENT_FACTORY( libkorg_picoftheday, PicofthedayFactory )
 Picoftheday::Picoftheday()
 {
   KConfig _config( "korganizerrc", KConfig::NoGlobals );
-  KConfigGroup config(&_config, "Calendar/PicOfTheDay Plugin");
+  KConfigGroup config(&_config, "Calendar/Picoftheday Plugin");
+
+  PicofthedayAgenda* a = new PicofthedayAgenda();
+  agendaElements += a;
+}
+
+QString Picoftheday::info()
+{
+  return i18n("This plugin provides the Wikipedia <i>Picture of the Day</i>.");
 }
 
 
-QWidget* Picoftheday::smallWidget( QWidget *parent, const QDate &date)
+PicofthedayAgenda::PicofthedayAgenda()
+{
+  KConfig _config( "korganizerrc", KConfig::NoGlobals );
+  KConfigGroup config(&_config, "Calendar/Picoftheday Plugin/Agenda");
+  
+  // TODO: read the position from the config 
+  m_position = "DayTopB";
+}
+
+QWidget* PicofthedayAgenda::widget( QWidget *parent, const QDate &date)
 {
   POTDWidget *w = new POTDWidget(parent);
   w->loadPOTD(date);
@@ -52,8 +70,3 @@ QWidget* Picoftheday::smallWidget( QWidget *parent, const QDate &date)
   return w;
 }
 
-
-QString Picoftheday::info()
-{
-  return i18n("This plugin provides the Wikipedia <i>Picture of the Day</i>.");
-}

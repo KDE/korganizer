@@ -76,7 +76,7 @@ int main(int argc,char **argv)
     }
   }
   
-  plugins = KOCore::self()->availableOldCalendarDecorations();
+  plugins = KOCore::self()->availableOldCalendarDecorations(); //CalDec:DEPRECATED
   for(it = plugins.begin(); it != plugins.end(); ++it) {
     kDebug(5850) << "OldCalendarDecoration: " << (*it)->desktopEntryName() << " ("
               << (*it)->name() << ")" << endl;
@@ -85,6 +85,18 @@ int main(int argc,char **argv)
       kDebug(5850) << "Old calendar decoration loading failed." << endl;
     } else {
       kDebug(5850) << "OLD CALENDAR DECORATION INFO: " << p->info() << endl;
+    }
+  }
+
+  plugins = KOCore::self()->availableCalendarDecorations();
+  for(it = plugins.begin(); it != plugins.end(); ++it) {
+    kDebug(5850) << "CalendarDecoration: " << (*it)->desktopEntryName() << " ("
+              << (*it)->name() << ")" << endl;
+    KOrg::CalendarDecoration::Decoration *p = KOCore::self()->loadCalendarDecoration(*it);
+    if (!p) {
+      kDebug(5850) << "Calendar decoration loading failed." << endl;
+    } else {
+      kDebug(5850) << "CALENDAR DECORATION INFO: " << p->info() << endl;
     }
   }
 
