@@ -34,55 +34,67 @@ namespace KOrg {
 
 namespace CalendarDecoration {
 
+/* Class for calendar decoration elements
+ * It provides entities like texts and pictures for a given date.
+ * Implementations can implement all functions or only a subset.
+ */
 class Element
 {
   public:
     Element() {}
     virtual ~Element() {}
 
-    virtual QList<QString> availablePositions() = 0; //{ QList<QString> l; l << "Panel" << "Top" << "Left" << "Bottom" << "Right"; return l; }
+    virtual QList<QString> availablePositions() = 0;
 
-    /**
-      The positions the decoration can accept.
-    */
-    QList<QString> acceptablePositions() { return availablePositions(); } //was virtual
+    /* The positions the decoration element can accept.
+     * By default, they are all available positions.
+     */
+    QList<QString> acceptablePositions() { return availablePositions(); }
 
-    /**
-      The decoration's position.
-    */
-    QString position() { return m_position; } //was virtual
+    /* The decoration element's current position.
+     */
+    QString position() { return m_position; }
 
-    /**
-      The widget to be shown.
-    */
+    /* The widget to be shown for a given @param date,
+     * with @param parent as parent widget.
+     */
     virtual QWidget *widget( QWidget *parent, const QDate &date ) { return 0; }
 
   protected:
     QString m_position;
 
   public slots:
-    void positionChanged( const QString &newPosition ) {} //was virtual
+    /* Slot to use to allow the widget to adapt to a @param newPosition
+     * when it changed.
+     */
+    void positionChanged( const QString &newPosition ) {}
 
 };
 
-
+/* Class for calendar decoration elements in the agenda view
+ */
 class AgendaElement : public Element
 {
   public:
     AgendaElement() {}
     virtual ~AgendaElement() {}
 
-    QList<QString> availablePositions() { QList<QString> l; l << "Panel" << "Top" << "Left" << "Bottom" << "Right" << "DayTopT" << "DayTopL" << "DayTopB" << "DayTopR" << "DayBottomT" << "DayBottomL" << "DayBottomB" << "DayBottomR"; return l; } //  Panel" << "Top" << "Left" << "Bottom" << "Right // FIXME: use const?
-    //enum Position { Panel, Top, Left, Bottom, Right, DayTopT, DayTopL, DayTopB, DayTopR, DayBottomT, DayBottomL, DayBottomB, DayBottomR };
+    QList<QString> availablePositions() {
+      QList<QString> l;
+      l << "Panel" << "Top" << "Left" << "Bottom" << "Right"
+                                                       // "Standard" positions
+        << "DayTopT" << "DayTopL" << "DayTopB" << "DayTopR"
+                    // Around the top label (T=top, L=left, B=bottom, R=right)
+        << "DayBottom"; // Under the event list
+      return l; }
 
 };
 
-/**
-  FIXME:comment This class provides the interface for a date dependent decoration.
-
-  It provides entities like texts and pictures for a given date. Implementations
-  can implement all functions or only a subset.
-*/
+/* This class provides the interface for a date dependent decoration.
+ *
+ * The decoration is made of various decoration elements,
+ * which show a defined widget for a given date.
+ */
 class Decoration : public Plugin
 {
   public:
@@ -94,6 +106,9 @@ class Decoration : public Plugin
     Decoration() {}
     virtual ~Decoration() {}
 
+    /* Returns the various decoration elements of this decoration
+     * for the agenda view.
+     */
     QList<AgendaElement*> agenda() { return agendaElements; }
 
   protected:

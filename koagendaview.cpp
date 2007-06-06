@@ -774,6 +774,7 @@ void KOAgendaView::createDayLabels()
 #ifndef KORG_NOPLUGINS
     CalendarDecoration::Decoration::List cds = KOCore::self()->calendarDecorations();
 
+    // Show calendar decorations for the top of the top label
     foreach ( CalendarDecoration::Decoration* deco, cds ) {
       kDebug() << deco->info() << endl;
       kDebug() << "agenda decos: " << deco->agenda().count() << endl;
@@ -861,6 +862,7 @@ void KOAgendaView::createDayLabels()
     }
 
 
+    // Show calendar decorations for the bottom of the top label
     foreach ( CalendarDecoration::Decoration* deco, cds ) {
 //      kDebug() << deco->info() << endl;
 //      kDebug() << "agenda decos: " << deco->agenda().count() << endl;
