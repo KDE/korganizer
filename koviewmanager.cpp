@@ -335,7 +335,7 @@ void KOViewManager::showAgendaView()
     showView( static_cast<KOrg::BaseView*>( mAgendaViewTabs->currentPage() ) );
   else if ( mAgendaView )
     showView( mAgendaView );
-  else if ( mAgendaView )
+  else if ( mAgendaSideBySideView )
     showView( mAgendaSideBySideView );
 }
 
@@ -445,7 +445,7 @@ void KOViewManager::setDocumentId( const QString &id )
 
 QWidget* KOViewManager::widgetForView( KOrg::BaseView* view ) const
 {
-  if ( view == mAgendaView || view == mAgendaSideBySideView ) {
+  if ( (view == mAgendaView || view == mAgendaSideBySideView) && mAgendaViewTabs ) {
     return mAgendaViewTabs;
   }
   return view;
