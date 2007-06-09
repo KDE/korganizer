@@ -45,9 +45,10 @@
 #include <ktoolinvocation.h>
 
 KOEventViewer::KOEventViewer( QWidget *parent )
-  : KTextBrowser( parent, true ), mDefaultText("")
+  : KTextBrowser( parent ), mDefaultText("")
 {
   mIncidence = 0;
+  setNotifyClick( true );
 }
 
 KOEventViewer::~KOEventViewer()
