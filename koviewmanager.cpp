@@ -309,8 +309,6 @@ void KOViewManager::showAgendaView()
     connect( mAgendaView,SIGNAL( zoomViewHorizontally(const QDate &, int )),
              mMainView->dateNavigator(),SLOT( selectDates( const QDate &, int ) ) );
     mAgendaView->readSettings();
-    if ( mAgendaViewTabs )
-      mAgendaViewTabs->addTab( mAgendaView, i18n("Merged calendar") );
   }
 
   if ( !mAgendaSideBySideView && showSideBySide ) {
@@ -327,15 +325,25 @@ void KOViewManager::showAgendaView()
 
     connect( mAgendaSideBySideView,SIGNAL( zoomViewHorizontally(const QDate &, int )),
              mMainView->dateNavigator(),SLOT( selectDates( const QDate &, int ) ) );*/
-    if ( mAgendaViewTabs )
-      mAgendaViewTabs->addTab( mAgendaSideBySideView, i18n("Calendars Side by Side") );
   }
 
-  if ( mAgendaViewTabs )
+  if ( showBoth && mAgendaViewTabs ) {
+    if ( mAgendaView && mAgendaViewTabs->indexOf( mAgendaView ) < 0 )
+      mAgendaViewTabs->addTab( mAgendaView, i18n("Merged calendar") );
+    if ( mAgendaSideBySideView  && mAgendaViewTabs->indexOf( mAgendaSideBySideView ) < 0 )
+      mAgendaViewTabs->addTab( mAgendaSideBySideView, i18n("Calendars Side by Side") );
+  } else {
+    if ( mAgendaView && mMainView->viewStack()->id( mAgendaView ) < 0 )
+      mMainView->viewStack()->addWidget( mAgendaView );
+    if ( mAgendaSideBySideView && mMainView->viewStack()->id( mAgendaSideBySideView ) < 0 )
+      mMainView->viewStack()->addWidget( mAgendaSideBySideView );
+  }
+
+  if ( mAgendaViewTabs && showBoth )
     showView( static_cast<KOrg::BaseView*>( mAgendaViewTabs->currentPage() ) );
-  else if ( mAgendaView )
+  else if ( mAgendaView && showMerged )
     showView( mAgendaView );
-  else if ( mAgendaSideBySideView )
+  else if ( mAgendaSideBySideView && showSideBySide )
     showView( mAgendaSideBySideView );
 }
 
@@ -445,7 +453,8 @@ void KOViewManager::setDocumentId( const QString &id )
 
 QWidget* KOViewManager::widgetForView( KOrg::BaseView* view ) const
 {
-  if ( (view == mAgendaView || view == mAgendaSideBySideView) && mAgendaViewTabs ) {
+  const bool showBoth = KOPrefs::instance()->agendaViewCalendarDisplay() == KOPrefs::AllCalendarViews;
+  if ( (view == mAgendaView || view == mAgendaSideBySideView) && mAgendaViewTabs && showBoth ) {
     return mAgendaViewTabs;
   }
   return view;
