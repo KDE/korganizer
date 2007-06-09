@@ -272,6 +272,9 @@ class KOAgendaView : public KOEventView
     QFrame *mDayLabels;
     KHBox *mDayLabelsFrame;
     QBoxLayout *mLayoutDayLabels;
+    QFrame *mBottomDayLabels;
+    KHBox *mBottomDayLabelsFrame;
+    QBoxLayout *mLayoutBottomDayLabels;
     QFrame *mAllDayFrame;
     KOAgenda *mAllDayAgenda;
     KOAgenda *mAgenda;

@@ -434,6 +434,9 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
   mLayoutDayLabels = 0;
   mDayLabelsFrame = 0;
   mDayLabels = 0;
+  mLayoutBottomDayLabels = 0;
+  mBottomDayLabelsFrame = 0;
+  mBottomDayLabels = 0;
 
   bool isRTL = KOGlobals::self()->reverseLayout();
 
@@ -522,6 +525,10 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
 
   // make connections between dependent widgets
   mTimeLabels->setAgenda(mAgenda);
+
+  // Create a frame at the bottom which may be used by decorations
+  mBottomDayLabelsFrame = new KHBox(this);
+  topLayout->addWidget(mBottomDayLabelsFrame);
 
   // Update widgets to reflect user preferences
 //  updateConfig();
@@ -754,21 +761,33 @@ void KOAgendaView::createDayLabels()
   // It would remove some flickering and gain speed (since this is called by
   // each updateView() call)
   delete mDayLabels;
+  delete mBottomDayLabels;
 
   mDayLabels = new QFrame (mDayLabelsFrame);
   mLayoutDayLabels = new QHBoxLayout(mDayLabels);
   mLayoutDayLabels->setMargin(0);
   mLayoutDayLabels->addSpacing(mTimeLabels->width());
 
+  mBottomDayLabels = new QFrame (mBottomDayLabelsFrame);
+  mLayoutBottomDayLabels = new QHBoxLayout(mBottomDayLabels);
+  mLayoutBottomDayLabels->setMargin(0);
+  mLayoutBottomDayLabels->addSpacing(mTimeLabels->width());
+
   const KCalendarSystem*calsys=KOGlobals::self()->calendarSystem();
 
   DateList::ConstIterator dit;
   for( dit = mSelectedDates.begin(); dit != mSelectedDates.end(); ++dit ) {
     QDate date = *dit;
+    // TODO: grid layouting
     QBoxLayout *dayLayout = new QVBoxLayout();
     dayLayout->setMargin(0);
     mLayoutDayLabels->addItem(dayLayout);
     mLayoutDayLabels->setStretchFactor(dayLayout, 1);
+//    dayLayout->setMinimumWidth(1);
+    QBoxLayout *dayBottomLayout = new QVBoxLayout();
+    dayBottomLayout->setMargin(0);
+    mLayoutBottomDayLabels->addItem(dayBottomLayout);
+    mLayoutBottomDayLabels->setStretchFactor(dayBottomLayout, 1);
 //    dayLayout->setMinimumWidth(1);
 
 #ifndef KORG_NOPLUGINS
@@ -785,7 +804,7 @@ void KOAgendaView::createDayLabels()
           QWidget *wid = it->widget( mDayLabels, date );
           if ( wid ) {
             wid->setMaximumHeight( mAgenda->height()/5 ); //TODO: use a better metric, handle view resizes
-            wid->setMaximumWidth( mDayLabels->width() );
+//            wid->setMaximumWidth( mDayLabels->width() );
             dayLayout->addWidget(wid);
             dayLayout->setAlignment(wid, Qt::AlignCenter);
           }
@@ -833,7 +852,7 @@ void KOAgendaView::createDayLabels()
         KOAlternateLabel*label = new KOAlternateLabel( text, text, QString(), mDayLabels );
         label->setMinimumWidth(1);
         label->setAlignment(Qt::AlignCenter);
-        label->setMaximumWidth( mDayLabels->width() );
+//        label->setMaximumWidth( mDayLabels->width() );
         dayLayout->addWidget(label);
         dayLayout->setAlignment(label, Qt::AlignCenter);
       }
@@ -845,7 +864,7 @@ void KOAgendaView::createDayLabels()
         QLabel* image = new QLabel( mDayLabels );
         image->setAlignment(Qt::AlignCenter);
         image->setPixmap( pixmap );
-        image->setMaximumWidth( mDayLabels->width() );
+//        image->setMaximumWidth( mDayLabels->width() );
         dayLayout->addWidget(image);
         dayLayout->setAlignment(image, Qt::AlignCenter);
       }
@@ -855,7 +874,7 @@ void KOAgendaView::createDayLabels()
       QWidget *wid = (*it)->smallWidget( mDayLabels, date );
       if ( wid ) {
         wid->setMaximumHeight( mAgenda->height()/5 ); //TODO: use a better metric, handle view resizes
-        wid->setMaximumWidth( mDayLabels->width() );
+//        wid->setMaximumWidth( mDayLabels->width() );
         dayLayout->addWidget(wid);
         dayLayout->setAlignment(wid, Qt::AlignCenter);
       }
@@ -873,7 +892,7 @@ void KOAgendaView::createDayLabels()
           QWidget *wid = it->widget( mDayLabels, date );
           if ( wid ) {
             wid->setMaximumHeight( mAgenda->height()/5 ); //TODO: use a better metric, handle view resizes
-            wid->setMaximumWidth( mDayLabels->width() );
+//            wid->setMaximumWidth( mDayLabels->width() );
             dayLayout->addWidget(wid);
             dayLayout->setAlignment(wid, Qt::AlignCenter);
           }
@@ -881,10 +900,34 @@ void KOAgendaView::createDayLabels()
       }
     }
 #endif
+
+#ifndef KORG_NOPLUGINS
+    // Show calendar decorations for the bottom of each day
+    foreach ( CalendarDecoration::Decoration* deco, cds ) {
+//      kDebug() << deco->info() << endl;
+//      kDebug() << "agenda decos: " << deco->agenda().count() << endl;
+      foreach ( CalendarDecoration::AgendaElement* it, deco->agenda() ) {
+//        kDebug() << "found an agenda element, can be positioned at: " << it->acceptablePositions() << endl;
+        // TODO: filter only widgets for this position (and position them adequately, and reject a 2nd widget for the same position)
+        if ( it->position() == "DayBottomC" ) {
+          QWidget *wid = it->widget( mBottomDayLabels, date );
+          if ( wid ) {
+            wid->setMaximumHeight( mAgenda->height()/5 ); //TODO: use a better metric, handle view resizes
+//            wid->setMaximumWidth( mBottomDayLabels->width() );
+            dayBottomLayout->addWidget(wid);
+            dayBottomLayout->setAlignment(wid, Qt::AlignCenter);
+          }
+        }
+      }
+    }
+#endif
+
   }
 
   mLayoutDayLabels->addSpacing(mAgenda->verticalScrollBar()->width());
   mDayLabels->show();
+  mLayoutBottomDayLabels->addSpacing(mAgenda->verticalScrollBar()->width());
+  mBottomDayLabels->show();
 }
 
 void KOAgendaView::enableAgendaUpdate( bool enable )

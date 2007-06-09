@@ -99,9 +99,12 @@ void POTDWidget::gotImagePageUrl(KJob* job)
   QString thumbUrl = mImagePageUrl.url();
   // From e.g. http://upload.wikimedia.org/wikipedia/commons/6/66/Agasthiyamalai_range_and_Tirunelveli_rainshadow.jpg
   // to http://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Agasthiyamalai_range_and_Tirunelveli_rainshadow.jpg/800px-Agasthiyamalai_range_and_Tirunelveli_rainshadow.jpg
-  //FIXME: thumbnail is fixed at 100px for now
+  //TODO: use parent's width or find sth better?
+  QWidget* p = static_cast<QWidget*>(parent());
+  kDebug() << "POTD: parent w: " << p->width() << endl;
+//  kDebug() << QString::number(2 * 50 * int(p->width()/50+1)) << endl;
   thumbUrl.replace(QRegExp("http://upload.wikimedia.org/wikipedia/commons/(.*)/([^/]*)"),
-                   "http://upload.wikimedia.org/wikipedia/commons/thumb/\\1/\\2/100px-\\2");
+                   "http://upload.wikimedia.org/wikipedia/commons/thumb/\\1/\\2/" + QString::number(100) + "px-\\2");
 
   kDebug() << "POTD: got POTD thumbnail URL: " << thumbUrl << endl;
   mThumbUrl = thumbUrl;
