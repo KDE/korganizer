@@ -1449,7 +1449,7 @@ void CalendarView::schedule(Scheduler::Method method, Incidence *incidence)
 
 void CalendarView::openAddressbook()
 {
-  KRun::runCommand("kaddressbook");
+  KRun::runCommand("kaddressbook", topLevelWidget());
 }
 
 void CalendarView::setModified(bool modified)
