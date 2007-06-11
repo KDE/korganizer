@@ -60,6 +60,7 @@ KOEventEditor::KOEventEditor( Calendar *calendar, QWidget *parent )
 
 KOEventEditor::~KOEventEditor()
 {
+  mFreeBusy = 0; // see note in processInput()
   emit dialogClose( mEvent );
 }
 
@@ -280,13 +281,14 @@ bool KOEventEditor::processInput()
     mEvent->setOrganizer( Person( KOPrefs::instance()->fullName(),
                           KOPrefs::instance()->email() ) );
     writeEvent( mEvent );
+    // NOTE: triggered by addIncidence, the kolab resource might open a non-modal dialog (parent is not available in the resource) to select a resource folder. Thus the user can close this dialog before addIncidence() returns.
     if ( !mChanger->addIncidence( mEvent, this ) ) {
       delete mEvent;
       mEvent = 0;
       return false;
     }
   }
-
+  // safe, b/c mFreeBusy is reset to 0 in the dtor
   if ( mFreeBusy ) mFreeBusy->cancelReload();
 
   return true;
