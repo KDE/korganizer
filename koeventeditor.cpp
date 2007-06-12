@@ -60,7 +60,6 @@ KOEventEditor::KOEventEditor( Calendar *calendar, QWidget *parent )
 
 KOEventEditor::~KOEventEditor()
 {
-  mFreeBusy = 0; // see note in processInput()
   emit dialogClose( mEvent );
 }
 
@@ -255,6 +254,8 @@ bool KOEventEditor::processInput()
 
   if ( !validateInput() || !mChanger ) return false;
 
+  QGuardedPtr<KOEditorFreeBusy> freeBusy( mFreeBusy );
+
   if ( mEvent ) {
     bool rc = true;
     Event *oldEvent = mEvent->clone();
@@ -288,8 +289,8 @@ bool KOEventEditor::processInput()
       return false;
     }
   }
-  // safe, b/c mFreeBusy is reset to 0 in the dtor
-  if ( mFreeBusy ) mFreeBusy->cancelReload();
+  // if "this" was deleted, freeBusy is 0 (being a guardedptr)
+  if ( freeBusy ) freeBusy->cancelReload();
 
   return true;
 }
