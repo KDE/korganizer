@@ -211,6 +211,7 @@
     </entry>
 
     <entry type="Enum" name="Agenda View Calendar Display">
+      <label>Agenda View Calendar Display</label>
       <choices>
         <choice name="CalendarsMerged">
             <label>Merge all calendars into one view</label>
