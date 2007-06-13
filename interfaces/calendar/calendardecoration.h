@@ -25,6 +25,7 @@
 #include <QDateTime>
 #include <QPixmap>
 #include <QList>
+#include <QStringList>
 
 #include <klibloader.h>
 
@@ -34,9 +35,13 @@ namespace KOrg {
 
 namespace CalendarDecoration {
 
-/* Class for calendar decoration elements
- * It provides entities like texts and pictures for a given date.
- * Implementations can implement all functions or only a subset.
+/**
+  @class Element
+
+  @brief Class for calendar decoration elements
+
+  It provides entities like texts and pictures for a given date.
+  Implementations can implement all functions or only a subset.
  */
 class Element
 {
@@ -44,19 +49,22 @@ class Element
     Element() {}
     virtual ~Element() {}
 
-    virtual QList<QString> availablePositions() = 0;
+    virtual QStringList availablePositions() = 0;
 
-    /* The positions the decoration element can accept.
-     * By default, they are all available positions.
+    /**
+      This function returns the positions the decoration element can accept
+      (by default, all available positions)
      */
-    QList<QString> acceptablePositions() { return availablePositions(); }
+    QStringList acceptablePositions() { return availablePositions(); }
 
-    /* The decoration element's current position.
+    /**
+      Returns the decoration element's current position.
      */
     QString position() { return m_position; }
 
-    /* The widget to be shown for a given @param date,
-     * with @param parent as parent widget.
+    /**
+      The widget to be shown for a given @param date,
+      with @param parent as parent widget.
      */
     virtual QWidget *widget( QWidget *parent, const QDate &date ) { return 0; }
 
@@ -64,14 +72,18 @@ class Element
     QString m_position;
 
   public slots:
-    /* Slot to use to allow the widget to adapt to a @param newPosition
-     * when it changed.
+    /**
+      Slot to use to allow the widget to adapt to a @param newPosition
+      when it changed.
      */
     void positionChanged( const QString &newPosition ) {}
 
 };
 
-/* Class for calendar decoration elements in the agenda view
+/**
+  @class AgendaElement
+
+  @brief Class for calendar decoration elements in the agenda view
  */
 class AgendaElement : public Element
 {
@@ -79,8 +91,8 @@ class AgendaElement : public Element
     AgendaElement() {}
     virtual ~AgendaElement() {}
 
-    QList<QString> availablePositions() {
-      QList<QString> l;
+    QStringList availablePositions() {
+      QStringList l;
       l << "Panel" << "Top" << "Left" << "Bottom" << "Right"
                                                        // "Standard" positions
         << "DayTopT" << "DayTopL" << "DayTopB" << "DayTopR"
@@ -90,10 +102,13 @@ class AgendaElement : public Element
 
 };
 
-/* This class provides the interface for a date dependent decoration.
- *
- * The decoration is made of various decoration elements,
- * which show a defined widget for a given date.
+/**
+  @class Decoration
+  
+  @brief This class provides the interface for a date dependent decoration.
+ 
+  The decoration is made of various decoration elements,
+  which show a defined widget for a given date.
  */
 class Decoration : public Plugin
 {
@@ -106,8 +121,9 @@ class Decoration : public Plugin
     Decoration() {}
     virtual ~Decoration() {}
 
-    /* Returns the various decoration elements of this decoration
-     * for the agenda view.
+    /**
+      Returns the various decoration elements of this decoration
+      for the agenda view.
      */
     QList<AgendaElement*> agenda() { return agendaElements; }
 
