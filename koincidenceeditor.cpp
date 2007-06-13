@@ -24,6 +24,7 @@
 
 #include <qtooltip.h>
 #include <qframe.h>
+#include <qguardedptr.h>
 #include <qpixmap.h>
 #include <qlayout.h>
 #include <qwidgetstack.h>
@@ -117,7 +118,11 @@ void KOIncidenceEditor::slotApply()
 
 void KOIncidenceEditor::slotOk()
 {
-  if ( processInput() ) accept();
+  // "this" can be deleted before processInput() returns (processInput() opens 
+  // a non-modal dialog when Kolab is used). So accept should only be executed
+  // when "this" is still valid
+  QGuardedPtr<QWidget> ptr( this );
+  if ( processInput() && ptr ) accept();
 }
 
 void KOIncidenceEditor::updateCategoryConfig()
