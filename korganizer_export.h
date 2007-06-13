@@ -23,22 +23,15 @@
 /* needed for KDE_EXPORT and KDE_IMPORT macros */
 #include <kdemacros.h>
 
-#ifdef Q_WS_WIN
-
 #ifndef KORGANIZER_EXPORT
-# ifdef MAKE_KORGANIZER_LIB
+# if defined(MAKE_KORGANIZER_LIB)
+   /* We are building this library */ 
 #  define KORGANIZER_EXPORT KDE_EXPORT
 # else
+   /* We are using this library */ 
 #  define KORGANIZER_EXPORT KDE_IMPORT
 # endif
 #endif
-
-#else // not windows
-
-#define KORGANIZER_EXPORT KDE_EXPORT
-#endif /* not windows */
-
-
 
 # ifndef KORGANIZER_EXPORT_DEPRECATED
 #  define KORGANIZER_EXPORT_DEPRECATED KDE_DEPRECATED KORGANIZER_EXPORT
