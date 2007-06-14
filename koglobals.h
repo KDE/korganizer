@@ -34,7 +34,9 @@ class KCalendarSystem;
 class AlarmClient;
 
 class KConfig;
-class KHolidays;
+namespace LibKHolidays {
+  class KHolidays;
+}
 
 class KDE_EXPORT KOGlobals
 {
@@ -70,11 +72,11 @@ class KDE_EXPORT KOGlobals
        @param h a KHolidays object initialized with the desired locale.
        We capture this object, so you must not delete it.
     */
-    void setHolidays( KHolidays *h );
+    void setHolidays( LibKHolidays::KHolidays *h );
 
     /** return the KHolidays object or 0 if none has been defined
     */
-    KHolidays *holidays() const;
+    LibKHolidays::KHolidays *holidays() const;
 
     const KComponentData &componentData() const { return mOwnInstance; }
 
@@ -88,7 +90,7 @@ class KDE_EXPORT KOGlobals
 
     AlarmClient *mAlarmClient;
 
-    KHolidays *mHolidays;
+    LibKHolidays::KHolidays *mHolidays;
 };
 
 #endif

@@ -39,6 +39,7 @@
 
 #include <kcalendarsystem.h>
 #include <kholidays.h>
+using namespace LibKHolidays;
 
 #include "alarmclient.h"
 

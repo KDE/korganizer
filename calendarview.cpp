@@ -111,6 +111,7 @@
 #include <kvbox.h>
 
 using namespace KOrg;
+using namespace LibKHolidays;
 
 CalendarView::CalendarView( QWidget *parent )
   : CalendarViewBase( parent ),

@@ -62,6 +62,7 @@
 #include <kstandarddirs.h>
 #include <kconfig.h>
 #include <kholidays.h>
+using namespace LibKHolidays;
 
 #if defined(USE_SOLARIS)
 #include <sys/param.h>
