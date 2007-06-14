@@ -30,7 +30,7 @@ class Plugin
 {
   public:
     static int interfaceVersion() { return 2; }
-    static QString serviceType() { return "Calendar/Plugin"; }
+    static QString serviceType() { return QLatin1String("Calendar/Plugin"); }
 
     Plugin() {}
     virtual ~Plugin() {}

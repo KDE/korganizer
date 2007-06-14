@@ -71,7 +71,7 @@ class Element
   protected:
     QString m_position;
 
-  public slots:
+  public Q_SLOTS:
     /**
       Slot to use to allow the widget to adapt to a @param newPosition
       when it changed.
@@ -114,7 +114,7 @@ class Decoration : public Plugin
 {
   public:
     static int interfaceVersion() { return 3; }
-    static QString serviceType() { return "Calendar/Decoration"; }
+    static QString serviceType() { return QLatin1String("Calendar/Decoration"); }
 
     typedef QList<Decoration*> List;
 

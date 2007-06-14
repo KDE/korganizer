@@ -42,7 +42,7 @@ class OldCalendarDecoration : public Plugin
 {
   public:
     static int interfaceVersion() { return 2; }
-    static QString serviceType() { return "Calendar/OldDecoration"; }
+    static QString serviceType() { return QLatin1String("Calendar/OldDecoration"); }
 
     typedef QList<OldCalendarDecoration*> List;
 
