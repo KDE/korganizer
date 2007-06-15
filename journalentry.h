@@ -1,37 +1,40 @@
 /*
-    This file is part of KOrganizer.
-    Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
-    Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+  This file is part of KOrganizer.
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
+  Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
+  Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-    GNU General Public License for more details.
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
 
-    As a special exception, permission is given to link this program
-    with any edition of Qt, and distribute the resulting executable,
-    without including the source code for Qt in the source distribution.
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+  As a special exception, permission is given to link this program
+  with any edition of Qt, and distribute the resulting executable,
+  without including the source code for Qt in the source distribution.
 */
 #ifndef JOURNALENTRY_H
 #define JOURNALENTRY_H
 //
 // Widget showing one Journal entry
 
-
-//Added by qt3to4:
-#include <QLabel>
-#include <QGridLayout>
-#include <QEvent>
+#include <kcal/journal.h>
+#include <kcal/listbase.h>
 #include <kvbox.h>
+
+#include <QDate>
+#include <QEvent>
+#include <QGridLayout>
+#include <QLabel>
 
 class QLabel;
 class QCheckBox;
@@ -46,13 +49,12 @@ class IncidenceChangerBase;
 }
 using namespace KOrg;
 namespace KCal {
-  class Calendar;
-  class Journal;
+class Calendar;
 }
 using namespace KCal;
 
 class JournalEntry : public QWidget {
-    Q_OBJECT
+  Q_OBJECT
   public:
     typedef ListBase<JournalEntry> List;
 
@@ -116,7 +118,7 @@ class JournalEntry : public QWidget {
 
 
 class JournalDateEntry : public KVBox {
-    Q_OBJECT
+  Q_OBJECT
   public:
     typedef ListBase<JournalDateEntry> List;
 

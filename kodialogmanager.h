@@ -14,9 +14,9 @@
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
   GNU General Public License for more details.
 
-  You should have received a copy of the GNU General Public License
-  along with this program; if not, write to the Free Software
-  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
   As a special exception, permission is given to link this program
   with any edition of Qt, and distribute the resulting executable,
@@ -28,11 +28,16 @@
 #include <QObject>
 #include <QList>
 
-namespace KCal{class CalFilter; }
+namespace KCal {
+class CalFilter;
+class Incidence;
+}
 class CalendarView;
 class KCMultiDialog;
 class KConfigureDialog;
-namespace KPIM { class CategoryEditDialog; }
+namespace KPIM {
+class CategoryEditDialog;
+}
 class KOIncidenceEditor;
 class KOEventEditor;
 class KOTodoEditor;
@@ -42,21 +47,19 @@ class ArchiveDialog;
 class FilterEditDialog;
 class KOAgendaView;
 
-using namespace KCal;
-
 /**
   This class manages the dialogs used by the calendar view. It owns the objects
   and handles creation and selection.
 */
 class KODialogManager : public QObject
 {
-    Q_OBJECT
+  Q_OBJECT
   public:
     explicit KODialogManager( CalendarView * );
     virtual ~KODialogManager();
 
     /** Get the appropriate editor for the given incidence */
-    KOIncidenceEditor *getEditor( Incidence * );
+    KOIncidenceEditor *getEditor( KCal::Incidence * );
     /** Get an editor dialog for an Event. */
     KOEventEditor *getEventEditor();
     /** Get an editor dialog for a Todo. */
@@ -69,14 +72,14 @@ class KODialogManager : public QObject
 
     void connectTypeAhead( KOEventEditor *editor, KOAgendaView *agenda );
 
-    static void errorSaveIncidence( QWidget *parent, Incidence *incidence );
+    static void errorSaveIncidence( QWidget *parent, KCal::Incidence *incidence );
 
   public slots:
     void showOptionsDialog();
     void showCategoryEditDialog();
     void showSearchDialog();
     void showArchiveDialog();
-    void showFilterEditDialog(QList<CalFilter*> *filters);
+    void showFilterEditDialog(QList<KCal::CalFilter*> *filters);
 
   private:
     class DialogManagerVisitor;
@@ -85,7 +88,6 @@ class KODialogManager : public QObject
     CalendarView *mMainView;
 
     KCMultiDialog *mOptionsDialog;
-//    KConfigureDialog *mOptionsDialog;
     KPIM::CategoryEditDialog *mCategoryEditDialog;
     SearchDialog *mSearchDialog;
     ArchiveDialog *mArchiveDialog;

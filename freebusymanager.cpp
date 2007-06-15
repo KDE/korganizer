@@ -388,7 +388,7 @@ void FreeBusyManager::cancelRetrieval()
   mRetrieveQueue.clear();
 }
 
-KUrl FreeBusyManager::freeBusyUrl( const QString &email )
+KUrl FreeBusyManager::freeBusyUrl( const QString &email ) const
 {
   kDebug(5850) << "FreeBusyManager::freeBusyUrl(): " << email << endl;
 

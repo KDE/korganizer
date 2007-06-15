@@ -1,44 +1,45 @@
 /*
-    This file is part of KOrganizer.
+  This file is part of KOrganizer.
 
-    Copyright (c) 2000,2001,2003 Cornelius Schumacher <schumacher@kde.org>
-    Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+  Copyright (c) 2000,2001,2003 Cornelius Schumacher <schumacher@kde.org>
+  Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-    GNU General Public License for more details.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-    As a special exception, permission is given to link this program
-    with any edition of Qt, and distribute the resulting executable,
-    without including the source code for Qt in the source distribution.
+  As a special exception, permission is given to link this program
+  with any edition of Qt, and distribute the resulting executable,
+  without including the source code for Qt in the source distribution.
 */
 #ifndef KOAGENDAVIEW_H
 #define KOAGENDAVIEW_H
 
-#include <q3scrollview.h>
-#include <QLabel>
-//Added by qt3to4:
-#include <QPixmap>
-#include <QPaintEvent>
-#include <QVector>
-#include <QFrame>
-#include <QBoxLayout>
-#include <QResizeEvent>
-#include <QMenu>
+#include "koeventview.h"
+#include "calprinter.h"
+
 #include <kvbox.h>
 
-#include "calprinter.h"
-#include "koeventview.h"
+#include <q3scrollview.h>
+#include <QBoxLayout>
+#include <QLabel>
+#include <QFrame>
+#include <QMenu>
+#include <QPaintEvent>
+#include <QPixmap>
+#include <QResizeEvent>
+#include <QSplitter>
+#include <QVector>
 
 class KHBox;
 class QPushButton;
@@ -47,9 +48,13 @@ class KOAgenda;
 class KOAgendaItem;
 class KConfig;
 
+namespace KOrg {
+class IncidenceChangerBase;
+}
+
 class TimeLabels : public Q3ScrollView
 {
-    Q_OBJECT
+  Q_OBJECT
   public:
     explicit TimeLabels( int rows, QWidget *parent = 0, Qt::WFlags f = 0 );
 
@@ -92,10 +97,10 @@ class TimeLabels : public Q3ScrollView
 
 class EventIndicator : public QFrame
 {
-    Q_OBJECT
+  Q_OBJECT
   public:
     enum Location { Top, Bottom };
-    EventIndicator( Location loc = Top, QWidget *parent = 0 );
+    explicit EventIndicator( Location loc = Top, QWidget *parent = 0 );
     virtual ~EventIndicator();
 
     void changeColumns( int columns );
@@ -116,7 +121,7 @@ class EventIndicator : public QFrame
 
 class KOAlternateLabel : public QLabel
 {
-    Q_OBJECT
+  Q_OBJECT
   public:
     KOAlternateLabel( const QString &shortlabel, const QString &longlabel,
                       const QString &extensivelabel = QString(),
@@ -145,12 +150,10 @@ class KOAlternateLabel : public QLabel
 */
 class KOAgendaView : public KOEventView
 {
-    Q_OBJECT
+  Q_OBJECT
   public:
     explicit KOAgendaView( Calendar *cal, QWidget *parent = 0 );
     virtual ~KOAgendaView();
-
-
 
     /** Returns maximum number of days supported by the koagendaview */
     virtual int maxDatesHint();
@@ -213,7 +216,7 @@ class KOAgendaView : public KOEventView
     void slotTodoDropped( Todo *, const QPoint &, bool );
 
     void enableAgendaUpdate( bool enable );
-    void setIncidenceChanger( IncidenceChangerBase *changer );
+    void setIncidenceChanger( KOrg::IncidenceChangerBase *changer );
 
     void zoomInHorizontally( const QDate& date=QDate() );
     void zoomOutHorizontally( const QDate& date=QDate() );

@@ -1,30 +1,47 @@
 /*
-    This file is part of KOrganizer.
+  This file is part of KOrganizer.
 
-    Copyright (c) 2001 Eitzenberger Thomas <thomas.eitzenberger@siemens.at>
-    Parts of the source code have been copied from kdpdatebutton.cpp
+  Copyright (c) 2001 Eitzenberger Thomas <thomas.eitzenberger@siemens.at>
+  Parts of the source code have been copied from kdpdatebutton.cpp
 
-    Copyright (c) 2003 Cornelius Schumacher <schumacher@kde.org>
-    Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+  Copyright (c) 2003 Cornelius Schumacher <schumacher@kde.org>
+  Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-    GNU General Public License for more details.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-    As a special exception, permission is given to link this program
-    with any edition of Qt, and distribute the resulting executable,
-    without including the source code for Qt in the source distribution.
+  As a special exception, permission is given to link this program
+  with any edition of Qt, and distribute the resulting executable,
+  without including the source code for Qt in the source distribution.
 */
+
+#include "kodaymatrix.h"
+#include "koprefs.h"
+#include "koglobals.h"
+#include "kodialogmanager.h"
+
+#include <kcal/vcaldrag.h>
+#include <kcal/icaldrag.h>
+#include <kcal/dndfactory.h>
+#include <kcal/calendarresources.h>
+#include <kcal/resourcecalendar.h>
+
+#include <kglobal.h>
+#include <kdebug.h>
+#include <klocale.h>
+#include <kiconloader.h>
+#include <kcalendarsystem.h>
 
 #include <QEvent>
 #include <QPainter>
@@ -39,24 +56,6 @@
 #include <QDragEnterEvent>
 #include <QMouseEvent>
 
-#include <kglobal.h>
-#include <kdebug.h>
-#include <klocale.h>
-#include <kiconloader.h>
-
-#include <kcal/vcaldrag.h>
-#include <kcal/icaldrag.h>
-#include <kcal/dndfactory.h>
-#include <kcal/calendarresources.h>
-#include <kcal/resourcecalendar.h>
-
-#include <kcalendarsystem.h>
-
-#include "koprefs.h"
-#include "koglobals.h"
-#include "kodialogmanager.h"
-
-#include "kodaymatrix.h"
 #include "kodaymatrix.moc"
 
 #ifndef NODND
@@ -136,7 +135,7 @@ void KODayMatrix::setCalendar( Calendar *cal )
   updateEvents();
 }
 
-QColor KODayMatrix::getShadedColor( const QColor &color )
+QColor KODayMatrix::getShadedColor( const QColor &color ) const
 {
   QColor shaded;
   int h = 0;
@@ -309,7 +308,7 @@ void KODayMatrix::updateEvents()
   }
 }
 
-const QDate& KODayMatrix::getDate( int offset )
+const QDate& KODayMatrix::getDate( int offset ) const
 {
   if ( offset < 0 || offset > NUMDAYS - 1 ) {
     kDebug(5850) << "Wrong offset (" << offset << ") in KODayMatrix::getDate(int)" << endl;
@@ -318,7 +317,7 @@ const QDate& KODayMatrix::getDate( int offset )
   return mDays[ offset ];
 }
 
-QString KODayMatrix::getHolidayLabel( int offset )
+QString KODayMatrix::getHolidayLabel( int offset ) const
 {
   if ( offset < 0 || offset > NUMDAYS - 1 ) {
     kDebug(5850) << "Wrong offset (" << offset << ") in KODayMatrix::getHolidayLabel(int)" << endl;
@@ -327,7 +326,7 @@ QString KODayMatrix::getHolidayLabel( int offset )
   return mHolidays[ offset ];
 }
 
-int KODayMatrix::getDayIndexFrom( int x, int y )
+int KODayMatrix::getDayIndexFrom( int x, int y ) const
 {
   return 7 * ( y / mDaySize.height() ) +
          ( KOGlobals::self()->reverseLayout() ?
@@ -500,8 +499,8 @@ void KODayMatrix::dropEvent( QDropEvent *e )
     QAction *a = menu->exec( QCursor::pos() );
     if ( a == copy ) {
       action = DRAG_COPY;
-    } else if ( a == move ) { 
-      action = DRAG_MOVE; 
+    } else if ( a == move ) {
+      action = DRAG_MOVE;
     }
   }
 

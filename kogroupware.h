@@ -17,10 +17,9 @@
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
   GNU General Public License for more details.
 
-  You should have received a copy of the GNU General Public License
-  along with this program; if not, write to the Free Software
-  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
-  MA  02110-1301, USA.
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
   In addition, as a special exception, the copyright holders give
   permission to link the code of this program with any edition of
@@ -40,9 +39,10 @@
 #include <kcal/calendarresources.h>
 #include <kcal/icalformat.h>
 #include <kcal/scheduler.h>
-#include <QString>
 
 #include <kio/job.h>
+
+#include <QString>
 
 using namespace KCal;
 
@@ -55,7 +55,7 @@ class FreeBusyManager;
 
 class KOGroupware : public QObject
 {
-    Q_OBJECT
+  Q_OBJECT
   public:
     static KOGroupware* create( CalendarView*, KCal::CalendarResources* );
     static KOGroupware* instance();
@@ -72,9 +72,6 @@ class KOGroupware : public QObject
 
     // THIS IS THE ACTUAL KM/KO API
     enum EventState { Accepted, ConditionallyAccepted, Declined, Request };
-
-    // convert the TNEF attachment to a vCard or iCalendar part
-    QString msTNEFToVPart( const QByteArray& tnef );
 
   private slots:
     /** Handle iCals given by KMail. */

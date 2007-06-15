@@ -1,27 +1,27 @@
 /*
-    This file is part of KOrganizer.
+  This file is part of KOrganizer.
 
-    Copyright (c) 1997, 1998 Preston Brown <pbrown@kde.org>
-    Copyright (c) 2000,2001 Cornelius Schumacher <schumacher@kde.org>
-    Copyright (c) 2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+  Copyright (c) 1997, 1998 Preston Brown <pbrown@kde.org>
+  Copyright (c) 2000,2001 Cornelius Schumacher <schumacher@kde.org>
+  Copyright (C) 2004 Reinhold Kainhofer <reinhold@kainhofer.com>
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-    GNU General Public License for more details.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-    As a special exception, permission is given to link this program
-    with any edition of Qt, and distribute the resulting executable,
-    without including the source code for Qt in the source distribution.
+  As a special exception, permission is given to link this program
+  with any edition of Qt, and distribute the resulting executable,
+  without including the source code for Qt in the source distribution.
 */
 #ifndef KOJOURNALEDITOR_H
 #define KOJOURNALEDITOR_H
@@ -45,7 +45,7 @@ class KOEditorGeneralJournal;
 */
 class KOJournalEditor : public KOIncidenceEditor
 {
-    Q_OBJECT
+  Q_OBJECT
   public:
     /**
       Constructs a new Journal editor.
@@ -63,16 +63,16 @@ class KOJournalEditor : public KOIncidenceEditor
     void newJournal();
 
     /**
-      Sets the given summary and description. If description is empty and the 
-      summary contains multiple lines, the summary will be used as description 
+      Sets the given summary and description. If description is empty and the
+      summary contains multiple lines, the summary will be used as description
       and only the first line of summary will be used as the summary.
-        @param summary The summary of the new journal. If description is empty and summary 
+        @param summary The summary of the new journal. If description is empty and summary
                     contains newlines, the summary will only be the first line of the string.
-        @param description The extensive contents of the new journal. If empty and 
-                    summary contains line breaks, the summary will be used as 
+        @param description The extensive contents of the new journal. If empty and
+                    summary contains line breaks, the summary will be used as
                     description and only the first line will be the summary.
     */
-    void setTexts( const QString &summary, const QString &description = QString::null );
+    void setTexts( const QString &summary, const QString &description = QString() );
 
     /** Edit an existing Journal. */
     void editIncidence(Incidence *);

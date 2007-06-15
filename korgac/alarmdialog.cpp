@@ -1,39 +1,34 @@
 /*
-    This file is part of the KOrganizer alarm daemon.
+  This file is part of the KOrganizer alarm daemon.
 
-    Copyright (c) 2000,2003 Cornelius Schumacher <schumacher@kde.org>
+  Copyright (c) 2000,2003 Cornelius Schumacher <schumacher@kde.org>
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-    GNU General Public License for more details.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-    As a special exception, permission is given to link this program
-    with any edition of Qt, and distribute the resulting executable,
-    without including the source code for Qt in the source distribution.
+  As a special exception, permission is given to link this program
+  with any edition of Qt, and distribute the resulting executable,
+  without including the source code for Qt in the source distribution.
 */
 
+#include "alarmdialog.h"
+#include "koeventviewer.h"
+#include <korganizer_interface.h>
 
+#include <kcal/event.h>
 
-#include <QLabel>
-#include <QFile>
-#include <QSpinBox>
-#include <QLayout>
-#include <QPushButton>
-#include <QDataStream>
-//Added by qt3to4:
-#include <QVBoxLayout>
-#include <QBoxLayout>
-#include <QtDBus>
+#include <phonon/audioplayer.h>
 #include <kiconloader.h>
 #include <klocale.h>
 #include <k3process.h>
@@ -44,18 +39,21 @@
 #include <kwindowsystem.h>
 #include <klockfile.h>
 #include <kpushbutton.h>
-#include <phonon/audioplayer.h>
-
-#include <kcal/event.h>
 #include <ktoolinvocation.h>
 #include <kglobal.h>
 #include <kvbox.h>
 
-#include "koeventviewer.h"
+#include <QLabel>
+#include <QFile>
+#include <QSpinBox>
+#include <QLayout>
+#include <QPushButton>
+#include <QDataStream>
+#include <QVBoxLayout>
+#include <QBoxLayout>
+#include <QtDBus>
 
-#include "alarmdialog.h"
 #include "alarmdialog.moc"
-#include <korganizer_interface.h>
 
 AlarmDialog::AlarmDialog( QWidget *parent )
   : KDialog( parent/*, Qt::WType_TopLevel | Qt::WStyle_Customize | Qt::WStyle_StaysOnTop |

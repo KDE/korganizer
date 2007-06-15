@@ -1,52 +1,41 @@
 /*
-    This file is part of KOrganizer.
+  This file is part of KOrganizer.
 
-    Copyright (c) 2000-2003 Cornelius Schumacher <schumacher@kde.org>
-    Copyright (c) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+  Copyright (c) 2000-2003 Cornelius Schumacher <schumacher@kde.org>
+  Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-    GNU General Public License for more details.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-    As a special exception, permission is given to link this program
-    with any edition of Qt, and distribute the resulting executable,
-    without including the source code for Qt in the source distribution.
+  As a special exception, permission is given to link this program
+  with any edition of Qt, and distribute the resulting executable,
+  without including the source code for Qt in the source distribution.
 */
 
-#include <QLayout>
-#include <QLabel>
-#include <QLineEdit>
-#include <QSlider>
-#include <QFile>
-#include <QComboBox>
+#include "koprefsdialog.h"
+#include "koprefs.h"
+#include "ktimeedit.h"
+#include "koglobals.h"
+#include "stdcalendar.h"
 
+#include <kdemacros.h>
 
-#include <q3grid.h>
-#include <QSpinBox>
-#include <QCheckBox>
-#include <QRadioButton>
-#include <QPushButton>
-#include <q3listview.h>
-#include <QTabWidget>
-#include <q3buttongroup.h>
-#include <QTextStream>
-//Added by qt3to4:
-#include <QGridLayout>
-#include <QBoxLayout>
-#include <QHBoxLayout>
-#include <QVBoxLayout>
-#include <QGroupBox>
+#include <kcal/calendarresources.h>
+#include <kholidays.h>
+using namespace LibKHolidays;
 
+#include <kvbox.h>
 #include <kcolorbutton.h>
 #include <kdebug.h>
 #include <klocale.h>
@@ -58,28 +47,36 @@
 #include <ksystemtimezone.h>
 #include <kpushbutton.h>
 #include <kocore.h>
-#include <kcal/calendarresources.h>
 #include <kstandarddirs.h>
 #include <kconfig.h>
-#include <kholidays.h>
-using namespace LibKHolidays;
+
+#include <q3grid.h>
+#include <QLayout>
+#include <QLabel>
+#include <QLineEdit>
+#include <QSlider>
+#include <QFile>
+#include <QComboBox>
+#include <QSpinBox>
+#include <QCheckBox>
+#include <QRadioButton>
+#include <QPushButton>
+#include <q3listview.h>
+#include <QTabWidget>
+#include <q3buttongroup.h>
+#include <QTextStream>
+#include <QGridLayout>
+#include <QBoxLayout>
+#include <QHBoxLayout>
+#include <QVBoxLayout>
+#include <QGroupBox>
 
 #if defined(USE_SOLARIS)
 #include <sys/param.h>
-
 #define INITFILE       "/etc/default/init"
 #endif
 
-#include "koprefs.h"
-
 #include "ui_kogroupwareprefspage.h"
-#include "koprefsdialog.h"
-#include "ktimeedit.h"
-#include "koglobals.h"
-#include "stdcalendar.h"
-#include <kdemacros.h>
-#include <kvbox.h>
-
 
 KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *parent )
   : KPrefsModule( KOPrefs::instance(), inst, parent )
@@ -113,7 +110,7 @@ KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *paren
   KPrefsWidBool *autoSave = addWidBool( KOPrefs::instance()->autoSaveItem(),
     saveGroupBox );
   saveGroupLayout->addWidget( autoSave->checkBox() );
-    
+
   QBoxLayout *intervalLayout = new QHBoxLayout;
   saveGroupLayout->addLayout( intervalLayout );
 
@@ -337,7 +334,7 @@ class KOPrefsDialogTime : public KPrefsModule
 
       workStartLayout->addWidget( workStart->label() );
       workStartLayout->addWidget( workStart->timeEdit() );
-      
+
 
       KPrefsWidTime *workEnd =
         addWidTime( KOPrefs::instance()->workingHoursEndItem() );
@@ -461,7 +458,7 @@ class KOPrefsDialogViews : public KPrefsModule
       topLayout->addWidget( dateNavGroup );
 
       QBoxLayout *dateNavLayout = new QVBoxLayout( dateNavGroup );
-      
+
       dateNavLayout->addWidget( addWidBool(
         KOPrefs::instance()->dailyRecurItem() )->checkBox() );
       dateNavLayout->addWidget( addWidBool(
@@ -473,10 +470,10 @@ class KOPrefsDialogViews : public KPrefsModule
 
       QBoxLayout *agendaLayout = new QVBoxLayout( agendaGroup );
 
-      
+
       QBoxLayout *hourSizeLayout = new QHBoxLayout;
       agendaLayout->addLayout( hourSizeLayout );
-      
+
       KPrefsWidInt *hourSize =
           addWidInt( KOPrefs::instance()->hourSizeItem() );
       hourSize->spinBox()->setSuffix(i18nc("suffix in the hour size spin box", " pixel"));
@@ -488,7 +485,7 @@ class KOPrefsDialogViews : public KPrefsModule
 
       QBoxLayout *nextDaysLayout = new QHBoxLayout;
       agendaLayout->addLayout( nextDaysLayout );
-      
+
       KPrefsWidInt *nextDays =
         addWidInt( KOPrefs::instance()->nextXDaysItem() );
       nextDays->spinBox()->setSuffix(i18nc("suffix in the N days spin box", " days"));
@@ -517,9 +514,9 @@ class KOPrefsDialogViews : public KPrefsModule
 
       QGroupBox *monthGroup = new QGroupBox( i18n("Month View"), topFrame );
       topLayout->addWidget( monthGroup );
-      
+
       QBoxLayout *monthLayout = new QVBoxLayout( monthGroup );
-      
+
       monthLayout->addWidget(
         addWidBool(
           KOPrefs::instance()->enableMonthScrollItem() )->checkBox() );
@@ -538,7 +535,7 @@ class KOPrefsDialogViews : public KPrefsModule
       topLayout->addWidget( todoGroup );
 
       QBoxLayout *todoLayout = new QVBoxLayout( todoGroup );
-      
+
       todoLayout->addWidget(
         addWidBool(
           KOPrefs::instance()->fullViewTodoItem() )->checkBox() );
@@ -737,7 +734,7 @@ void KOPrefsDialogColors::usrWriteConfig()
     KOPrefs::instance()->setCategoryColor(i.key(), i.value() );
     ++i;
   }
-    
+
   i = mResourceDict.constBegin();
   while (i != mResourceDict.constEnd()) {
     KOPrefs::instance()->setResourceColor(i.key(), i.value() );
@@ -1008,9 +1005,9 @@ KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling( const KCompo
   mGroupwarePage = new Ui::KOGroupwarePrefsPage();
   QWidget *widget = new QWidget( this );
   widget->setObjectName( "KOGrouparePrefsPage" );
-  
+
   mGroupwarePage->setupUi( widget );
-  
+
       // signals and slots connections
   connect(mGroupwarePage->publishDays, SIGNAL(valueChanged(int)), SLOT(slotWidChanged()));
   connect(mGroupwarePage->publishUrl, SIGNAL(textChanged(const QString&)), SLOT(slotWidChanged()));
@@ -1031,7 +1028,7 @@ KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling( const KCompo
   load();
 }
 
-KOPrefsDialogGroupwareScheduling::~KOPrefsDialogGroupwareScheduling() 
+KOPrefsDialogGroupwareScheduling::~KOPrefsDialogGroupwareScheduling()
 {
   delete mGroupwarePage;
 }
@@ -1190,7 +1187,7 @@ void KOPrefsDialogPlugins::configure()
   if ( plugin ) {
     plugin->configure( this );
     delete plugin;
-    
+
     slotWidChanged();
   } else {
     KMessageBox::sorry( this, i18n( "Unable to configure this plugin" ),

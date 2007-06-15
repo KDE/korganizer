@@ -1,31 +1,31 @@
 /*
-    This file is part of KOrganizer.
+  This file is part of KOrganizer.
 
-    Copyright (c) 2002,2003 Cornelius Schumacher <schumacher@kde.org>
+  Copyright (c) 2002,2003 Cornelius Schumacher <schumacher@kde.org>
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-    GNU General Public License for more details.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-    As a special exception, permission is given to link this program
-    with any edition of Qt, and distribute the resulting executable,
-    without including the source code for Qt in the source distribution.
+  As a special exception, permission is given to link this program
+  with any edition of Qt, and distribute the resulting executable,
+  without including the source code for Qt in the source distribution.
 */
 
-#include <QApplication>
-//Added by qt3to4:
-#include <QPixmap>
-#include <QIcon>
+#include "koglobals.h"
+#include "koprefs.h"
+#include "alarmclient.h"
+#include "korganizer_part.h"
 
 #include <kdebug.h>
 #include <kglobal.h>
@@ -36,17 +36,14 @@
 #include <kstaticdeleter.h>
 #include <kiconloader.h>
 #include <kcomponentdata.h>
-
 #include <kcalendarsystem.h>
 #include <kholidays.h>
 using namespace LibKHolidays;
 
-#include "alarmclient.h"
-
-#include "koglobals.h"
-#include "koprefs.h"
-#include "korganizer_part.h"
 #include <Q3ValueList>
+#include <QApplication>
+#include <QPixmap>
+#include <QIcon>
 
 #if 0 // unused
 class NopAlarmClient : public AlarmClient
@@ -137,17 +134,17 @@ bool KOGlobals::reverseLayout()
   return QApplication::isRightToLeft();
 }
 
-QPixmap KOGlobals::smallIcon( const QString& name )
+QPixmap KOGlobals::smallIcon( const QString& name ) const
 {
   return SmallIcon( name );
 }
 
-QIcon KOGlobals::smallIconSet( const QString& name, int size )
+QIcon KOGlobals::smallIconSet( const QString& name, int size ) const
 {
   return SmallIconSet( name, size );
 }
 
-QStringList KOGlobals::holiday( const QDate &date )
+QStringList KOGlobals::holiday( const QDate &date ) const
 {
   QStringList hdays;
 
@@ -160,7 +157,7 @@ QStringList KOGlobals::holiday( const QDate &date )
   return hdays;
 }
 
-bool KOGlobals::isWorkDay( const QDate &date )
+bool KOGlobals::isWorkDay( const QDate &date ) const
 {
   int mask( ~( KOPrefs::instance()->mWorkWeekMask ) );
 

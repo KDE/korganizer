@@ -1,12 +1,12 @@
 /***************************************************************************
- *   Copyright (C) 2003 by Jonathan Singer                                             *
- *   jsinger@leeta.net                                                                                *
- *   Calendar routines from Hebrew Calendar by Frank Yellin                     *
- *                                                                                                             *
- *   This program is free software; you can redistribute it and/or modify      *
+ *   Copyright (C) 2003 by Jonathan Singer                                 *
+ *   jsinger@leeta.net                                                     *
+ *   Calendar routines from Hebrew Calendar by Frank Yellin                *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or      *
- *   (at your option) any later version.                                                       *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
  ***************************************************************************/
 #include "parsha.h"
 #include <klocale.h>
@@ -180,7 +180,7 @@ QString
  */
 
   int week = daynumber / 7;        // week of the year
-  unsigned const char *array = NULL;
+  unsigned const char *array = 0;
   int index;
 
   // get the appropriate array by exhaustive search into the 14 year types.  Since we
@@ -245,7 +245,7 @@ QString
 
   QString buffer;
 
-  if (array == NULL)
+  if (!array)
     /* Something is terribly wrong. */
       {
         buffer = "??Parsha??";

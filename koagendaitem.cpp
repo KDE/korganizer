@@ -1,27 +1,52 @@
 /*
-    This file is part of KOrganizer.
+  This file is part of KOrganizer.
 
-    Copyright (c) 2000,2001,2003 Cornelius Schumacher <schumacher@kde.org>
-    Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+  Copyright (c) 2000,2001,2003 Cornelius Schumacher <schumacher@kde.org>
+  Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-    GNU General Public License for more details.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-    As a special exception, permission is given to link this program
-    with any edition of Qt, and distribute the resulting executable,
-    without including the source code for Qt in the source distribution.
+  As a special exception, permission is given to link this program
+  with any edition of Qt, and distribute the resulting executable,
+  without including the source code for Qt in the source distribution.
 */
+
+#include "koagendaitem.h"
+#include "koprefs.h"
+#include "koglobals.h"
+
+#include <libkdepim/kvcarddrag.h>
+
+#include <kcal/icaldrag.h>
+#include <kcal/incidence.h>
+#include <kcal/todo.h>
+#include <kcal/incidenceformatter.h>
+#include <kcal/vcaldrag.h>
+
+#include <kpimutils/email.h>
+
+#ifndef KORG_NOKABC
+#include <kabc/addressee.h>
+#include <kabc/vcardconverter.h>
+#endif
+
+#include <kiconloader.h>
+#include <kdebug.h>
+#include <klocale.h>
+#include <kwordwrap.h>
+#include <kmessagebox.h>
 
 #include <QPainter>
 #include <QPixmap>
@@ -30,28 +55,6 @@
 #include <QDropEvent>
 #include <QDragEnterEvent>
 
-#include <kiconloader.h>
-#include <kdebug.h>
-#include <klocale.h>
-#include <kwordwrap.h>
-#include <kmessagebox.h>
-
-#include <kcal/icaldrag.h>
-#include <kcal/incidence.h>
-#include <kcal/todo.h>
-#include <kcal/incidenceformatter.h>
-#include <kcal/vcaldrag.h>
-#include <libkdepim/kvcarddrag.h>
-#include <kpimutils/email.h>
-#ifndef KORG_NOKABC
-#include <kabc/addressee.h>
-#include <kabc/vcardconverter.h>
-#endif
-
-#include "koprefs.h"
-#include "koglobals.h"
-
-#include "koagendaitem.h"
 #include "koagendaitem.moc"
 
 //--------------------------------------------------------------------------
@@ -408,7 +411,7 @@ void KOAgendaItem::resetMovePrivate()
       if ( !mStartMoveInfo->mFirstMultiItem ) {
         // This was the first multi-item when the move started, delete all previous
         KOAgendaItem*toDel=mStartMoveInfo->mPrevMultiItem;
-        KOAgendaItem*nowDel=0L;
+        KOAgendaItem*nowDel=0;
         while (toDel) {
           nowDel=toDel;
           if (nowDel->moveInfo()) {
@@ -416,13 +419,13 @@ void KOAgendaItem::resetMovePrivate()
           }
           emit removeAgendaItem( nowDel );
         }
-        mMultiItemInfo->mFirstMultiItem = 0L;
-        mMultiItemInfo->mPrevMultiItem = 0L;
+        mMultiItemInfo->mFirstMultiItem = 0;
+        mMultiItemInfo->mPrevMultiItem = 0;
       }
       if ( !mStartMoveInfo->mLastMultiItem ) {
         // This was the last multi-item when the move started, delete all next
         KOAgendaItem*toDel=mStartMoveInfo->mNextMultiItem;
-        KOAgendaItem*nowDel=0L;
+        KOAgendaItem*nowDel=0;
         while (toDel) {
           nowDel=toDel;
           if (nowDel->moveInfo()) {
@@ -430,8 +433,8 @@ void KOAgendaItem::resetMovePrivate()
           }
           emit removeAgendaItem( nowDel );
         }
-        mMultiItemInfo->mLastMultiItem = 0L;
-        mMultiItemInfo->mNextMultiItem = 0L;
+        mMultiItemInfo->mLastMultiItem = 0;
+        mMultiItemInfo->mNextMultiItem = 0;
       }
 
       if ( mStartMoveInfo->mFirstMultiItem==0 && mStartMoveInfo->mLastMultiItem==0 ) {
@@ -558,12 +561,12 @@ void KOAgendaItem::addAttendee( const QString &newAttendee )
       mIncidence->addAttendee(new Attendee(name,email));
     KMessageBox::information( this, i18n("Attendee \"%1\" added to the calendar item \"%2\"", KPIMUtils::normalizedAddress(name, email, QString()), text()), i18n("Attendee added"), "AttendeeDroppedAdded" );
   }
-  
+
 }
 
 void KOAgendaItem::dropEvent( QDropEvent *e )
 {
-  // TODO: Organize this better: First check for attachment (not only file, also any other url!), then if it's a vcard, otherwise check for attendees, then if the data is binary, add a binary attachment. 
+  // TODO: Organize this better: First check for attachment (not only file, also any other url!), then if it's a vcard, otherwise check for attendees, then if the data is binary, add a binary attachment.
 #ifndef KORG_NODND
   const QMimeData *md = e->mimeData();
 

@@ -1,27 +1,27 @@
 /*
-    This file is part of KOrganizer.
+  This file is part of KOrganizer.
 
-    Copyright (c) 2001 Eitzenberger Thomas <thomas.eitzenberger@siemens.at>
-    Copyright (c) 2003 Cornelius Schumacher <schumacher@kde.org>
-    Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+  Copyright (c) 2001 Eitzenberger Thomas <thomas.eitzenberger@siemens.at>
+  Copyright (c) 2003 Cornelius Schumacher <schumacher@kde.org>
+  Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-    GNU General Public License for more details.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-    As a special exception, permission is given to link this program
-    with any edition of Qt, and distribute the resulting executable,
-    without including the source code for Qt in the source distribution.
+  As a special exception, permission is given to link this program
+  with any edition of Qt, and distribute the resulting executable,
+  without including the source code for Qt in the source distribution.
 */
 #ifndef KODAYMATRIX_H
 #define KODAYMATRIX_H
@@ -108,7 +108,7 @@ class DynamicTip : public QToolTip
  */
 class KODayMatrix: public QFrame
 {
-    Q_OBJECT
+  Q_OBJECT
   public:
     /** constructor to create a day matrix widget.
      *
@@ -145,12 +145,12 @@ class KODayMatrix: public QFrame
     /** returns the QDate object associated with day indexed by the
      *  supplied offset.
      */
-    const QDate& getDate( int offset );
+    const QDate& getDate( int offset ) const;
 
     /** returns the official name of this holy day or 0 if there is no label
      *  for this day.
      */
-    QString getHolidayLabel( int offset );
+    QString getHolidayLabel( int offset ) const;
 
     /** adds all actual selected days from mSelStart to mSelEnd to the supplied
      *  DateList.
@@ -242,14 +242,14 @@ class KODayMatrix: public QFrame
      *  @param x horizontal coordinate
      *  @param y vertical coordinate
      */
-    int getDayIndexFrom( int x, int y );
+    int getDayIndexFrom( int x, int y ) const;
 
     /** calculates a "shaded" color from the supplied color object.
      *  (Copied from Cornelius's kdpdatebutton.cpp)
      *
      *  @param color source based on which a shaded color should be calculated.
      */
-    QColor getShadedColor( const QColor &color );
+    QColor getShadedColor( const QColor &color ) const;
 
     /** number of days to be displayed. For now there is no support for any other number then 42.
         so change it at your own risk :o) */

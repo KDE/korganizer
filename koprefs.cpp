@@ -1,37 +1,36 @@
 /*
-    This file is part of KOrganizer.
+  This file is part of KOrganizer.
 
-    Copyright (c) 2001,2003 Cornelius Schumacher <schumacher@kde.org>
-    Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+  Copyright (c) 2001,2003 Cornelius Schumacher <schumacher@kde.org>
+  Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-    GNU General Public License for more details.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-    As a special exception, permission is given to link this program
-    with any edition of Qt, and distribute the resulting executable,
-    without including the source code for Qt in the source distribution.
+  As a special exception, permission is given to link this program
+  with any edition of Qt, and distribute the resulting executable,
+  without including the source code for Qt in the source distribution.
 */
 
-#include <time.h>
-#include <unistd.h>
+#include "koprefs.h"
+#include "kocore.h"
 
-#include <QDir>
-#include <QString>
-#include <QFont>
-#include <QColor>
-#include <QMap>
-#include <QStringList>
+#include <libkpimidentities/identitymanager.h>
+#include <libkpimidentities/identity.h>
+
+#include <kpimutils/email.h>
+#include <kabc/stdaddressbook.h>
 
 #include <kglobalsettings.h>
 #include <kglobal.h>
@@ -43,22 +42,24 @@
 #include <kstringhandler.h>
 #include <ksystemtimezone.h>
 
-#include "koprefs.h"
-#include <libkpimidentities/identitymanager.h>
-#include <libkpimidentities/identity.h>
-#include <kpimutils/email.h>
-#include <kabc/stdaddressbook.h>
-#include "kocore.h"
+#include <QDir>
+#include <QString>
+#include <QFont>
+#include <QColor>
+#include <QMap>
+#include <QStringList>
+
+#include <time.h>
+#include <unistd.h>
 
 KOPrefs *KOPrefs::mInstance = 0;
 static KStaticDeleter<KOPrefs> insd;
 
-QColor getTextColor(const QColor &c)
+QColor getTextColor( const QColor &c )
 {
-  float luminance = (c.red() * 0.299) + (c.green() * 0.587) + (c.blue() * 0.114);
-  return (luminance > 128.0) ? QColor( 0, 0 ,0 ) : QColor( 255, 255 ,255 );
+  float luminance = ( c.red() * 0.299 ) + ( c.green() * 0.587 ) + ( c.blue() * 0.114 );
+  return ( luminance > 128.0 ) ? QColor( 0, 0, 0 ) : QColor( 255, 255, 255 );
 }
-
 
 KOPrefs::KOPrefs() :
   KOPrefsBase()
@@ -85,12 +86,10 @@ KOPrefs::KOPrefs() :
   eventColorItem()->setDefaultValue( mDefaultCategoryColor );
 }
 
-
 KOPrefs::~KOPrefs()
 {
   kDebug(5850) << "KOPrefs::~KOPrefs()" << endl;
 }
-
 
 KOPrefs *KOPrefs::instance()
 {
@@ -108,10 +107,14 @@ void KOPrefs::usrSetDefaults()
   // settings for example.
 
   KEMailSettings settings;
-  QString tmp = settings.getSetting(KEMailSettings::RealName);
-  if ( !tmp.isEmpty() ) setUserName( tmp );
-  tmp = settings.getSetting(KEMailSettings::EmailAddress);
-  if ( !tmp.isEmpty() ) setUserEmail( tmp );
+  QString tmp = settings.getSetting( KEMailSettings::RealName );
+  if ( !tmp.isEmpty() ) {
+    setUserName( tmp );
+  }
+  tmp = settings.getSetting( KEMailSettings::EmailAddress );
+  if ( !tmp.isEmpty() ) {
+    setUserEmail( tmp );
+  }
   fillMailDefaults();
 
   mTimeBarFont = mDefaultTimeBarFont;
@@ -131,8 +134,9 @@ void KOPrefs::fillMailDefaults()
   if ( userEmail() == defEmail ) {
     // No korg settings - but maybe there's a kcontrol[/kmail] setting available
     KEMailSettings settings;
-    if ( !settings.getSetting( KEMailSettings::EmailAddress ).isEmpty() )
+    if ( !settings.getSetting( KEMailSettings::EmailAddress ).isEmpty() ) {
       mEmailControlCenter = true;
+    }
   }
 }
 
@@ -153,7 +157,7 @@ KDateTime::Spec KOPrefs::timeSpec()
   return mTimeSpec;
 }
 
-void KOPrefs::setTimeSpec(const KDateTime::Spec &spec)
+void KOPrefs::setTimeSpec( const KDateTime::Spec &spec )
 {
   mTimeSpec = spec;
 }
@@ -169,27 +173,28 @@ void KOPrefs::setCategoryDefaults()
       << i18n("Birthday");
 
   QStringList::Iterator it;
-  for (it = mCustomCategories.begin();it != mCustomCategories.end();++it ) {
-    setCategoryColor(*it,mDefaultCategoryColor);
+  for ( it = mCustomCategories.begin(); it != mCustomCategories.end(); ++it ) {
+    setCategoryColor( *it, mDefaultCategoryColor );
   }
 }
 
-
 void KOPrefs::usrReadConfig()
 {
-  KConfigGroup generalConfig( config(), "General");
-  mCustomCategories = generalConfig.readEntry("Custom Categories", QStringList() );
-  if (mCustomCategories.isEmpty()) setCategoryDefaults();
+  KConfigGroup generalConfig( config(), "General" );
+  mCustomCategories = generalConfig.readEntry( "Custom Categories", QStringList() );
+  if ( mCustomCategories.isEmpty() ) {
+    setCategoryDefaults();
+  }
 
   // old category colors, ignore if they have the old default
   // should be removed a few versions after 3.2...
   KConfigGroup colorsConfig( config(), "Category Colors");
   QList<QColor> oldCategoryColors;
   QStringList::Iterator it;
-  for (it = mCustomCategories.begin();it != mCustomCategories.end();++it ) {
-    QColor c = colorsConfig.readEntry(*it, mDefaultCategoryColor);
-    oldCategoryColors.append( (c == QColor(196,196,196)) ?
-                              mDefaultCategoryColor : c);
+  for ( it = mCustomCategories.begin();it != mCustomCategories.end();++it ) {
+    QColor c = colorsConfig.readEntry( *it, mDefaultCategoryColor );
+    oldCategoryColors.append( ( c == QColor( 196, 196, 196 ) ) ?
+                              mDefaultCategoryColor : c );
   }
 
   // new category colors
@@ -197,20 +202,19 @@ void KOPrefs::usrReadConfig()
   QList<QColor>::Iterator it2;
   for (it = mCustomCategories.begin(), it2 = oldCategoryColors.begin();
        it != mCustomCategories.end(); ++it, ++it2 ) {
-    setCategoryColor(*it,colors2Config.readEntry(*it, *it2));
+    setCategoryColor( *it, colors2Config.readEntry( *it, *it2 ) );
   }
 
   KConfigGroup rColorsConfig( config(), "Resources Colors");
   QMap<QString, QString> map = rColorsConfig.entryMap();
 
   QMap<QString, QString>::Iterator it3;
-  for( it3 = map.begin(); it3 != map.end(); ++it3 ) {
+  for ( it3 = map.begin(); it3 != map.end(); ++it3 ) {
     kDebug(5850)<< "KOPrefs::usrReadConfig: key: " << it3.key() << " value: "
       << it3.value()<<endl;
     setResourceColor( it3.key(), rColorsConfig.readEntry( it3.key(),
       mDefaultResourceColor ) );
   }
-
 
   if (!mTimeSpec.isValid()) {
     setTimeZoneDefault();
@@ -218,67 +222,75 @@ void KOPrefs::usrReadConfig()
 
 #if 0
   config()->setGroup("FreeBusy");
-  if( mRememberRetrievePw )
-    mRetrievePassword = KStringHandler::obscure( config()->readEntry( "Retrieve Server Password" ) );
+  if ( mRememberRetrievePw ) {
+    mRetrievePassword =
+      KStringHandler::obscure( config()->readEntry( "Retrieve Server Password" ) );
+  }
 #endif
   KPimPrefs::usrReadConfig();
   fillMailDefaults();
 }
 
-
 void KOPrefs::usrWriteConfig()
 {
   KConfigGroup generalConfig( config(), "General");
-  generalConfig.writeEntry("Custom Categories",mCustomCategories);
+  generalConfig.writeEntry( "Custom Categories", mCustomCategories );
 
   KConfigGroup colors2Config( config(), "Category Colors2");
   QHash<QString, QColor>::const_iterator i = mCategoryColors.constBegin();
-  while (i != mCategoryColors.constEnd()) {
-    colors2Config.writeEntry(i.key(),i.value() );
+  while ( i != mCategoryColors.constEnd() ) {
+    colors2Config.writeEntry( i.key(), i.value() );
     ++i;
   }
 
   KConfigGroup rColorsConfig( config(), "Resources Colors" );
   i = mResourceColors.constBegin();
   while (i != mResourceColors.constEnd()) {
-    rColorsConfig.writeEntry(i.key(),i.value() );
+    rColorsConfig.writeEntry( i.key(), i.value() );
     ++i;
   }
 
-  if( !mFreeBusyPublishSavePassword ) {
+  if ( !mFreeBusyPublishSavePassword ) {
     KConfigSkeleton::ItemPassword *i = freeBusyPublishPasswordItem();
     i->setValue( "" );
     i->writeConfig( config() );
   }
-  if( !mFreeBusyRetrieveSavePassword ) {
+  if ( !mFreeBusyRetrieveSavePassword ) {
     KConfigSkeleton::ItemPassword *i = freeBusyRetrievePasswordItem();
     i->setValue( "" );
     i->writeConfig( config() );
   }
 
 #if 0
-  if( mRememberRetrievePw )
-    config()->writeEntry( "Retrieve Server Password", KStringHandler::obscure( mRetrievePassword ) );
-  else
+  if ( mRememberRetrievePw ) {
+    config()->writeEntry( "Retrieve Server Password",
+                          KStringHandler::obscure( mRetrievePassword ) );
+  } else {
     config()->deleteEntry( "Retrieve Server Password" );
+  }
 #endif
 
   KPimPrefs::usrWriteConfig();
 }
 
-void KOPrefs::setCategoryColor( const QString &cat, const QColor & color)
+void KOPrefs::setCategoryColor( const QString &cat, const QColor &color )
 {
   mCategoryColors.insert( cat, color );
 }
 
-QColor KOPrefs::categoryColor( const QString &cat )
+QColor KOPrefs::categoryColor( const QString &cat ) const
 {
   QColor color;
 
-  if ( !cat.isEmpty() ) color = mCategoryColors.value( cat );
+  if ( !cat.isEmpty() ) {
+    color = mCategoryColors.value( cat );
+  }
 
-  if ( color.isValid() ) return color;
-  else return mDefaultCategoryColor;
+  if ( color.isValid() ) {
+    return color;
+  } else {
+    return mDefaultCategoryColor;
+  }
 }
 
 void KOPrefs::setResourceColor ( const QString &cal, const QColor &color )
@@ -288,13 +300,18 @@ void KOPrefs::setResourceColor ( const QString &cal, const QColor &color )
   mResourceColors.insert( cal, color );
 }
 
-QColor KOPrefs::resourceColor( const QString &cal )
+QColor KOPrefs::resourceColor( const QString &cal ) const
 {
   QColor color;
-  if( !cal.isEmpty() ) color = mResourceColors.value( cal );
+  if ( !cal.isEmpty() ) {
+    color = mResourceColors.value( cal );
+  }
 
-  if ( color.isValid() ) return color;
-  else return mDefaultResourceColor;
+  if ( color.isValid() ) {
+    return color;
+  } else {
+    return mDefaultResourceColor;
+  }
 }
 
 QString KOPrefs::fullName()
@@ -363,16 +380,20 @@ QStringList KOPrefs::fullEmails()
   return fullEmails;
 }
 
-bool KOPrefs::thatIsMe( const QString& _email )
+bool KOPrefs::thatIsMe( const QString &_email )
 {
-  if ( KOCore::self()->identityManager()->thatIsMe( _email ) )
+  if ( KOCore::self()->identityManager()->thatIsMe( _email ) ) {
     return true;
+  }
+
   // in case email contains a full name, strip it out
   QString email = KPIMUtils::extractEmailAddress( _email );
-  if ( mAdditionalMails.contains( email )  )
+  if ( mAdditionalMails.contains( email ) ) {
     return true;
+  }
   QStringList lst = KABC::StdAddressBook::self( true )->whoAmI().emails();
-  if ( lst.contains( email )  )
+  if ( lst.contains( email ) ) {
     return true;
+  }
   return false;
 }

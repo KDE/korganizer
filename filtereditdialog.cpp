@@ -1,48 +1,48 @@
 /*
-    This file is part of KOrganizer.
+  This file is part of KOrganizer.
 
-    Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
-    Copyright (C) 2004 Reinhold Kainhofer <reinhold@kainhofer.com>
-    Copyright (C) 2005 Thomas Zander <zander@kde.org>
+  Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
+  Copyright (C) 2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+  Copyright (C) 2005 Thomas Zander <zander@kde.org>
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-    GNU General Public License for more details.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-    As a special exception, permission is given to link this program
-    with any edition of Qt, and distribute the resulting executable,
-    without including the source code for Qt in the source distribution.
+  As a special exception, permission is given to link this program
+  with any edition of Qt, and distribute the resulting executable,
+  without including the source code for Qt in the source distribution.
 */
 
-#include <QPushButton>
-#include <QCheckBox>
-#include <QLineEdit>
-#include <QRadioButton>
+#include "filtereditdialog.h"
+#include "koprefs.h"
+#include "ui_filteredit_base.h"
 
-#include <QList>
+#include <libkdepim/categoryselectdialog.h>
+
+#include <kcal/calfilter.h>
 
 #include <kdebug.h>
 #include <klocale.h>
 #include <kmessagebox.h>
 #include <knuminput.h>
 
-#include <kcal/calfilter.h>
-#include <libkdepim/categoryselectdialog.h>
+#include <QPushButton>
+#include <QCheckBox>
+#include <QLineEdit>
+#include <QRadioButton>
+#include <QList>
 
-#include "koprefs.h"
-#include "ui_filteredit_base.h"
-
-#include "filtereditdialog.h"
 #include "filtereditdialog.moc"
 
 FilterEditDialog::FilterEditDialog( QList<CalFilter*> *filters, QWidget *parent )
@@ -64,7 +64,7 @@ FilterEditDialog::FilterEditDialog( QList<CalFilter*> *filters, QWidget *parent 
 FilterEditDialog::~FilterEditDialog()
 {
   delete mFilterEdit;
-  mFilterEdit = 0L;
+  mFilterEdit = 0;
 }
 
 void FilterEditDialog::updateFilterList()
@@ -121,30 +121,32 @@ void FilterEdit::updateFilterList()
 
   if ( !mFilters || mFilters->empty() )
     emit( dataConsistent(false) );
-  else { 
+  else {
     QList<CalFilter*>::iterator i;
     for ( i = mFilters->begin(); i != mFilters->end(); ++i ) {
-      if ( *i ) { 
-	      mRulesList->addItem( (*i)->name() ); 
+      if ( *i ) {
+	      mRulesList->addItem( (*i)->name() );
       }
     }
     if( mRulesList->currentRow() != -1 )
     {
       CalFilter *f = mFilters->at( mRulesList->currentRow() );
-      if ( f ) 
+      if ( f )
 	filterSelected( f );
     }
     emit( dataConsistent(true) );
   }
-  if ( mFilters && current == 0L && mFilters->count() > 0 )
+  if ( mFilters && mFilters->count() > 0 && !current ) {
     filterSelected( mFilters->at(0) );
+  }
   mDeleteButton->setEnabled( !mFilters->isEmpty() );
 }
 
 void FilterEdit::saveChanges()
 {
-  if(current == 0L)
+  if ( !current ) {
     return;
+  }
 
   current->setName(mNameLineEdit->text());
   int criteria = 0;
@@ -179,7 +181,7 @@ void FilterEdit::filterSelected(CalFilter *filter)
 
   current = filter;
   mNameLineEdit->blockSignals(true);
-  mNameLineEdit->setText(current ? current->name() : QString::null);
+  mNameLineEdit->setText(current ? current->name() : QString());
   mNameLineEdit->blockSignals(false);
   mDetailsFrame->setEnabled(true);
   mCompletedCheck->setChecked( current->criteria() & CalFilter::HideCompletedTodos );
@@ -219,7 +221,7 @@ void FilterEdit::bDeletePressed() {
   CalFilter *filter = mFilters->at( selected );
   mFilters->removeAll( filter );
   delete filter;
-  current = 0L;
+  current = 0;
   updateFilterList();
   mRulesList->setCurrentRow( qMin(mRulesList->count()-1, selected) );
   emit filterChanged();

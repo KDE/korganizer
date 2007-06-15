@@ -1,28 +1,54 @@
 /*
-    This file is part of KOrganizer.
-    Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
-    Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+  This file is part of KOrganizer.
+  Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
+  Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-    GNU General Public License for more details.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-    As a special exception, permission is given to link this program
-    with any edition of Qt, and distribute the resulting executable,
-    without including the source code for Qt in the source distribution.
+  As a special exception, permission is given to link this program
+  with any edition of Qt, and distribute the resulting executable,
+  without including the source code for Qt in the source distribution.
 */
+#include "koagendaview.h"
+#include "koglobals.h"
+#ifndef KORG_NOPLUGINS
+#include "kocore.h"
+#endif
+#include "koprefs.h"
+#include "koagenda.h"
+#include "koagendaitem.h"
+#include "kogroupware.h"
+#include "kodialogmanager.h"
+#include "koeventpopupmenu.h"
 
+#include <kcal/calendar.h>
+#include <kcal/icaldrag.h>
+#include <kcal/dndfactory.h>
+#include <kcal/calfilter.h>
+#include <kcal/incidenceformatter.h>
 
+#include <kapplication.h>
+#include <kcalendarsystem.h>
+#include <kdebug.h>
+#include <kstandarddirs.h>
+#include <kiconloader.h>
+#include <klocale.h>
+#include <kconfig.h>
+#include <kglobal.h>
+#include <kglobalsettings.h>
+#include <kholidays.h>
 
 #include <QLabel>
 #include <QFrame>
@@ -33,12 +59,10 @@
 #include <QFont>
 #include <QFontMetrics>
 #include <QMenu>
-
 #include <QPainter>
 #include <QPushButton>
 #include <QCursor>
 #include <QBitArray>
-//Added by qt3to4:
 #include <QPaintEvent>
 #include <QGridLayout>
 #include <QBoxLayout>
@@ -46,37 +70,6 @@
 #include <QResizeEvent>
 #include <QVBoxLayout>
 
-#include <kapplication.h>
-#include <kdebug.h>
-#include <kstandarddirs.h>
-#include <kiconloader.h>
-#include <klocale.h>
-#include <kconfig.h>
-#include <kglobal.h>
-#include <kglobalsettings.h>
-#include <kholidays.h>
-
-#include <kcal/calendar.h>
-#include <kcal/icaldrag.h>
-#include <kcal/dndfactory.h>
-#include <kcal/calfilter.h>
-#include <kcal/incidenceformatter.h>
-
-#include <kcalendarsystem.h>
-
-#include "koglobals.h"
-#ifndef KORG_NOPLUGINS
-#include "kocore.h"
-#endif
-#include "koprefs.h"
-#include "koagenda.h"
-#include "koagendaitem.h"
-
-#include "kogroupware.h"
-#include "kodialogmanager.h"
-#include "koeventpopupmenu.h"
-
-#include "koagendaview.h"
 #include "koagendaview.moc"
 
 using namespace KOrg;
@@ -836,7 +829,7 @@ void KOAgendaView::createDayLabels()
     QStringList::ConstIterator textit = texts.begin();
     for ( ; textit != texts.end(); ++textit ) {
       // use a KOAlternateLabel so when the text doesn't fit any more a tooltip is used
-      KOAlternateLabel*label = new KOAlternateLabel( (*textit), (*textit), QString::null, mDayLabels );
+      KOAlternateLabel*label = new KOAlternateLabel( (*textit), (*textit), QString(), mDayLabels );
       label->setMinimumWidth(1);
       label->setAlignment(Qt::AlignCenter);
       dayLayout->addWidget(label);

@@ -1,48 +1,45 @@
 /*
-    This file is part of KOrganizer.
+  This file is part of KOrganizer.
 
-    Copyright (c) 2001,2003 Cornelius Schumacher <schumacher@kde.org>
-    Copyright (c) 2005 Rafal Rzepecki <divide@users.sourceforge.net>
+  Copyright (c) 2001,2003 Cornelius Schumacher <schumacher@kde.org>
+  Copyright (c) 2005 Rafal Rzepecki <divide@users.sourceforge.net>
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-    GNU General Public License for more details.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-    As a special exception, permission is given to link this program
-    with any edition of Qt, and distribute the resulting executable,
-    without including the source code for Qt in the source distribution.
+  As a special exception, permission is given to link this program
+  with any edition of Qt, and distribute the resulting executable,
+  without including the source code for Qt in the source distribution.
 */
 
-#include <QRegExp>
+#include "koeventviewer.h"
+#include "urihandler.h"
 
 #include <libkdepim/kdepimprotocols.h>
-
-#include "koeventviewer.h"
-
-#include "urihandler.h"
 
 #include <kcal/incidence.h>
 #include <kcal/incidenceformatter.h>
 
 #ifndef KORG_NODBUS
 #include <kapplication.h>
-#include <ktoolinvocation.h>
 #include "korganizerinterface.h"
 #endif
-
 #include <kdebug.h>
 #include <koglobals.h>
 #include <ktoolinvocation.h>
+
+#include <QRegExp>
 
 KOEventViewer::KOEventViewer( QWidget *parent )
   : KTextBrowser( parent ), mDefaultText("")
@@ -64,7 +61,7 @@ void KOEventViewer::readSettings( KConfig * config )
     config->setGroup( QString("EventViewer-%1").arg( name() )  );
     int zoomFactor = config->readEntry("ZoomFactor", pointSize() );
     zoomTo( zoomFactor/2 );
-    kDebug(5850) << " KOEventViewer: restoring the pointSize:  "<< pointSize() 
+    kDebug(5850) << " KOEventViewer: restoring the pointSize:  "<< pointSize()
       << ", zoomFactor: " << zoomFactor << endl;
 #endif
   }
@@ -84,19 +81,19 @@ void KOEventViewer::setSource( const QString &n )
   QString uri = n;
   // QTextBrowser for some reason insists on putting // in links,
   // this is a crude workaround
-  if ( uri.startsWith( KDEPIMPROTOCOL_CONTACT ) || 
+  if ( uri.startsWith( KDEPIMPROTOCOL_CONTACT ) ||
        uri.startsWith( KDEPIMPROTOCOL_EMAIL ) ||
        uri.startsWith( QString( KDEPIMPROTOCOL_INCIDENCE ).
                                                   section( ':', 0, 0 ) ) ||
        uri.startsWith( KDEPIMPROTOCOL_NEWSARTICLE ) )
     uri.replace( QRegExp( "^([^:]*:)//" ), "\\1" );
-  
+
   UriHandler::process( uri );
 }
 
 bool KOEventViewer::appendIncidence( Incidence *incidence )
 {
-  QString codeForIncidence = 
+  QString codeForIncidence =
                         IncidenceFormatter::extensiveDisplayString( incidence );
 /*  kDebug( 5850 ) << " KOEventViewer: appending incidence, HTML code:" << endl
                   << "-------------------FROM HERE--------------------" << endl
@@ -146,7 +143,7 @@ void KOEventViewer::changeIncidenceDisplay( Incidence *incidence, int action )
       case KOGlobals::INCIDENCEDELETED: {
         setIncidence( 0 );
         break;
-      } 
+      }
     }
   }
 }

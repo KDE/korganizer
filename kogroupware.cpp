@@ -50,7 +50,6 @@
 #include <QFile>
 #include <QRegExp>
 #include <QDir>
-//Added by qt3to4:
 #include <QTextStream>
 
 FreeBusyManager *KOGroupware::mFreeBusyManager = 0;

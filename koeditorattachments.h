@@ -1,33 +1,32 @@
 /*
-    This file is part of KOrganizer.
+  This file is part of KOrganizer.
 
-    Copyright (c) 2003 Cornelius Schumacher <schumacher@kde.org>
-    Copyright (c) 2005 Reinhold Kainhofer <reinhold@kainhofer.com>
-    Copyright (c) 2005 Rafal Rzepecki <divide@users.sourceforge.net>
+  Copyright (c) 2003 Cornelius Schumacher <schumacher@kde.org>
+  Copyright (C) 2005 Reinhold Kainhofer <reinhold@kainhofer.com>
+  Copyright (c) 2005 Rafal Rzepecki <divide@users.sourceforge.net>
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-    GNU General Public License for more details.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-    As a special exception, permission is given to link this program
-    with any edition of Qt, and distribute the resulting executable,
-    without including the source code for Qt in the source distribution.
+  As a special exception, permission is given to link this program
+  with any edition of Qt, and distribute the resulting executable,
+  without including the source code for Qt in the source distribution.
 */
 #ifndef KOEDITORATTACHMENTS_H
 #define KOEDITORATTACHMENTS_H
 
 #include <QWidget>
-//Added by qt3to4:
 #include <QDragEnterEvent>
 #include <Q3ValueList>
 #include <QLabel>
@@ -57,7 +56,7 @@ class Job;
 
 class AttachmentEditDialog : public KDialog
 {
-    Q_OBJECT
+  Q_OBJECT
   public:
     AttachmentEditDialog( AttachmentIconItem *item,
                           QWidget *parent, bool modal=true );
@@ -76,12 +75,11 @@ class AttachmentEditDialog : public KDialog
     KUrlRequester *mURLRequester;
 };
 
-
 class KOEditorAttachments : public QWidget
 {
-    Q_OBJECT
+  Q_OBJECT
   public:
-    KOEditorAttachments( int spacing = 8, QWidget *parent = 0 );
+    explicit KOEditorAttachments( int spacing = 8, QWidget *parent = 0 );
     ~KOEditorAttachments();
 
     void addAttachment( const QString &uri,
@@ -120,7 +118,7 @@ class KOEditorAttachments : public QWidget
     void copyComplete( KJob *job );
   protected:
     QString generateLocalAttachmentPath( const QString &filename,
-                                         const KMimeType::Ptr mimeType );
+                                         const KMimeType::Ptr mimeType ) const;
 
   signals:
     void openURL( const KUrl &url );

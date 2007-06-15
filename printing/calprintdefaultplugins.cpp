@@ -1,37 +1,37 @@
 /*
-    This file is part of KOrganizer.
+  This file is part of KOrganizer.
 
-    Copyright (c) 1998 Preston Brown <pbrown@kde.org>
-    Copyright (c) 2003 Reinhold Kainhofer <reinhold@kainhofer.com>
-    Copyright (c) 2003 Cornelius Schumacher <schumacher@kde.org>
+  Copyright (c) 1998 Preston Brown <pbrown@kde.org>
+  Copyright (C) 2003 Reinhold Kainhofer <reinhold@kainhofer.com>
+  Copyright (c) 2003 Cornelius Schumacher <schumacher@kde.org>
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-    GNU General Public License for more details.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-    As a special exception, permission is given to link this program
-    with any edition of Qt, and distribute the resulting executable,
-    without including the source code for Qt in the source distribution.
+  As a special exception, permission is given to link this program
+  with any edition of Qt, and distribute the resulting executable,
+  without including the source code for Qt in the source distribution.
 */
 
 #ifndef KORG_NOPRINTER
 
-#include <QPainter>
-#include <QDateTime>
-#include <QCheckBox>
-#include <QLineEdit>
-#include <q3buttongroup.h>
-#include <QWidget>
+#include "calprintdefaultplugins.h"
+
+#include <libkdepim/kdateedit.h>
+
+#include <kcal/todo.h>
+#include <kcal/calendar.h>
 
 #include <kglobal.h>
 #include <klocale.h>
@@ -42,12 +42,12 @@
 #include <knuminput.h>
 #include <kcombobox.h>
 
-#include <kcal/todo.h>
-#include <kcal/calendar.h>
-
-#include <libkdepim/kdateedit.h>
-
-#include "calprintdefaultplugins.h"
+#include <QPainter>
+#include <QDateTime>
+#include <QCheckBox>
+#include <QLineEdit>
+#include <q3buttongroup.h>
+#include <QWidget>
 
 /**************************************************************
  *           Print Incidence
@@ -392,7 +392,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
     if ( mShowSubitemsNotes ) {
       if ( (*it)->relations().isEmpty() || (*it)->type() != "Todo" ) {
         int notesPosition = drawBoxWithCaption( p, notesBox, i18n("Notes:"),
-                         QString::null, /*sameLine=*/false, /*expand=*/false,
+                         QString(), /*sameLine=*/false, /*expand=*/false,
                          captionFont, textFont );
         QPen oldPen( p.pen() );
         p.setPen( Qt::DotLine );
@@ -410,7 +410,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
 
     if ( mShowAttachments ) {
       int attachStart = drawBoxWithCaption( p, attachmentsBox,
-                        i18n("Attachments:"), QString::null, /*sameLine=*/false,
+                        i18n("Attachments:"), QString(), /*sameLine=*/false,
                         /*expand=*/false, captionFont, textFont );
       // TODO: Print out the attachments somehow
     }
@@ -438,11 +438,11 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
       QString optionsString;
       if ( !(*it)->statusStr().isEmpty() ) {
         optionsString += i18n("Status: %1", (*it)->statusStr() );
-        optionsString += "\n";
+        optionsString += '\n';
       }
       if ( !(*it)->secrecyStr().isEmpty() ) {
         optionsString += i18n("Secrecy: %1", (*it)->secrecyStr() );
-        optionsString += "\n";
+        optionsString += '\n';
       }
       if ( (*it)->type() == "Event" ) {
         Event *e = static_cast<Event*>(*it);

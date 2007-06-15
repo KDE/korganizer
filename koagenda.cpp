@@ -1,30 +1,51 @@
 /*
-    This file is part of KOrganizer.
-    Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
-    Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+  This file is part of KOrganizer.
+  Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
+  Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
 
-    Marcus Bains line.
-    Copyright (c) 2001 Ali Rahimi <ali@mit.edu>
+  Marcus Bains line.
+  Copyright (c) 2001 Ali Rahimi <ali@mit.edu>
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-    GNU General Public License for more details.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-    As a special exception, permission is given to link this program
-    with any edition of Qt, and distribute the resulting executable,
-    without including the source code for Qt in the source distribution.
+  As a special exception, permission is given to link this program
+  with any edition of Qt, and distribute the resulting executable,
+  without including the source code for Qt in the source distribution.
 */
-#include <assert.h>
+#include "koagenda.h"
+#include "koagendaitem.h"
+#include "koprefs.h"
+#include "koglobals.h"
+#include "komessagebox.h"
+#include "incidencechanger.h"
+#include "kohelper.h"
+#include <korganizer/baseview.h>
+
+#include <kcal/event.h>
+#include <kcal/todo.h>
+#include <kcal/dndfactory.h>
+#include <kcal/icaldrag.h>
+#include <kcal/vcaldrag.h>
+#include <kcal/calendar.h>
+#include <kcal/calendarresources.h>
+
+#include <kdebug.h>
+#include <klocale.h>
+#include <kiconloader.h>
+#include <kglobal.h>
+#include <kmessagebox.h>
 
 #include <q3intdict.h>
 #include <QDateTime>
@@ -32,7 +53,6 @@
 #include <QCursor>
 #include <QPainter>
 #include <QLabel>
-//Added by qt3to4:
 #include <QWheelEvent>
 #include <QPixmap>
 #include <QVector>
@@ -44,31 +64,10 @@
 #include <QResizeEvent>
 #include <QMouseEvent>
 
-#include <kdebug.h>
-#include <klocale.h>
-#include <kiconloader.h>
-#include <kglobal.h>
-#include <kmessagebox.h>
-
-#include "koagendaitem.h"
-#include "koprefs.h"
-#include "koglobals.h"
-#include "komessagebox.h"
-#include "incidencechanger.h"
-#include "kohelper.h"
-
-#include "koagenda.h"
-#include "koagenda.moc"
-#include <korganizer/baseview.h>
-
-#include <kcal/event.h>
-#include <kcal/todo.h>
-#include <kcal/dndfactory.h>
-#include <kcal/icaldrag.h>
-#include <kcal/vcaldrag.h>
-#include <kcal/calendar.h>
-#include <kcal/calendarresources.h>
+#include <assert.h>
 #include <math.h>
+
+#include "koagenda.moc"
 
 ////////////////////////////////////////////////////////////////////////////
 MarcusBains::MarcusBains( KOAgenda *_agenda )
@@ -727,7 +726,7 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
   return true;
 }
 
-bool KOAgenda::ptInSelection( QPoint gpos ) const
+bool KOAgenda::ptInSelection( const QPoint &gpos ) const
 {
   if ( !mHasSelection ) {
     return false;
@@ -1341,7 +1340,7 @@ void KOAgenda::placeSubCells( KOAgendaItem *placeItem )
   placeItem->update();
 }
 
-int KOAgenda::columnWidth( int column )
+int KOAgenda::columnWidth( int column ) const
 {
   int start = gridToContents( QPoint( column, 0 ) ).x();
   if (KOGlobals::self()->reverseLayout() )
@@ -1490,7 +1489,7 @@ QPoint KOAgenda::gridToContents( const QPoint &gpos ) const
   Return Y coordinate corresponding to time. Coordinates are rounded to fit into
   the grid.
 */
-int KOAgenda::timeToY(const QTime &time)
+int KOAgenda::timeToY( const QTime &time ) const
 {
 //  kDebug(5850) << "Time: " << time.toString() << endl;
   int minutesPerCell = 24 * 60 / mRows;
@@ -1508,7 +1507,7 @@ int KOAgenda::timeToY(const QTime &time)
   Return time corresponding to cell y coordinate. Coordinates are rounded to
   fit into the grid.
 */
-QTime KOAgenda::gyToTime(int gy)
+QTime KOAgenda::gyToTime( int gy ) const
 {
 //  kDebug(5850) << "gyToTime: " << gy << endl;
   int secondsPerCell = 24 * 60 * 60/ mRows;
@@ -1526,7 +1525,7 @@ QTime KOAgenda::gyToTime(int gy)
   return time;
 }
 
-QVector<int> KOAgenda::minContentsY()
+QVector<int> KOAgenda::minContentsY() const
 {
   QVector<int> minArray;
   minArray.fill( timeToY( QTime(23, 59) ), mSelectedDates.count() );
@@ -1542,7 +1541,7 @@ QVector<int> KOAgenda::minContentsY()
   return minArray;
 }
 
-QVector<int> KOAgenda::maxContentsY()
+QVector<int> KOAgenda::maxContentsY() const
 {
   QVector<int> maxArray;
   maxArray.fill( timeToY( QTime(0, 0) ), mSelectedDates.count() );

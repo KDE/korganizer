@@ -1,28 +1,28 @@
 /*
-    This file is part of the KOrganizer interfaces.
+  This file is part of the KOrganizer interfaces.
 
-    Copyright (c) 1999,2001,2003 Cornelius Schumacher <schumacher@kde.org>
-		Copyright (C) 2004           Reinhold Kainhofer   <reinhold@kainhofer.com>
+  Copyright (c) 1999,2001,2003 Cornelius Schumacher <schumacher@kde.org>
+  Copyright (C) 2004           Reinhold Kainhofer   <reinhold@kainhofer.com>
 
-    This library is free software; you can redistribute it and/or
-    modify it under the terms of the GNU Library General Public
-    License as published by the Free Software Foundation; either
-    version 2 of the License, or (at your option) any later version.
+  This library is free software; you can redistribute it and/or
+  modify it under the terms of the GNU Library General Public
+  License as published by the Free Software Foundation; either
+  version 2 of the License, or (at your option) any later version.
 
-    This library is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-    Library General Public License for more details.
+  This library is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  Library General Public License for more details.
 
-    You should have received a copy of the GNU Library General Public License
-    along with this library; see the file COPYING.LIB.  If not, write to
-    the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
-    Boston, MA 02110-1301, USA.
+  You should have received a copy of the GNU Library General Public License
+  along with this library; see the file COPYING.LIB.  If not, write to
+  the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+  Boston, MA 02110-1301, USA.
 */
 #ifndef KORG_BASEVIEW_H
 #define KORG_BASEVIEW_H
 
-#include <QWidget>
+#include <QtGui/QWidget>
 
 #include <klocale.h>
 #include <kdebug.h>
@@ -33,20 +33,18 @@
 
 #include <kcal/event.h>
 
-
 using namespace KCal;
 
 namespace KCal { class Calendar; }
 
 namespace KOrg {
 
-
 /**
-  This class provides an interface for all views being displayed within the main
-  calendar view. It has functions to update the view, to specify date range and
-  other display parameter and to return selected objects. An important class,
-  which inherits KOBaseView is KOEventView, which provides the interface for all
-  views of event data like the agenda or the month view.
+  This class provides an interface for all views being displayed within the
+  main calendar view. It has functions to update the view, to specify date
+  range and other display parameter and to return selected objects. An
+  important class, which inherits KOBaseView is KOEventView, which provides
+  the interface for all views of event data like the agenda or the month view.
 
   @short Base class for calendar views
   @author Preston Brown, Cornelius Schumacher
@@ -54,7 +52,7 @@ namespace KOrg {
 */
 class KDE_EXPORT BaseView : public QWidget
 {
-    Q_OBJECT
+  Q_OBJECT
   public:
     /**
       Constructs a view.
@@ -84,27 +82,30 @@ class KDE_EXPORT BaseView : public QWidget
     virtual Incidence::List selectedIncidences() = 0;
 
     /**
-      @return a list of the dates of selected events.  Most views can probably only
-      select a single event at a time, but some may be able to select
-      more than one.
+      Returns a list of the dates of selected events. Most views can
+      probably only select a single event at a time, but some may be able
+      to select more than one.
     */
     virtual DateList selectedDates() = 0;
 
     virtual CalPrinterBase::PrintType printType();
 
     /**
-      Return number of currently shown dates. A return value of 0 means no idea.
+      Returns the number of currently shown dates.
+      A return value of 0 means no idea.
     */
     virtual int currentDateCount() = 0;
 
-    /** Return if this view is a view for displaying events. */
+    /**
+      Returns if this view is a view for displaying events.
+    */
     virtual bool isEventView();
 
-  public slots:
+  public Q_SLOTS:
     /**
-      Show incidences for the given date range. The date range actually shown may be
-      different from the requested range, depending on the particular requirements
-      of the view.
+      Show incidences for the given date range. The date range actually shown
+      may be different from the requested range, depending on the particular
+      requirements of the view.
 
       @param start Start of date range.
       @param end   End of date range.
@@ -112,8 +113,8 @@ class KDE_EXPORT BaseView : public QWidget
     virtual void showDates( const QDate &start, const QDate &end ) = 0;
 
     /**
-      Show given incidences. Depending on the actual view it might not be possible to
-      show all given events.
+      Shows given incidences. Depending on the actual view it might not
+      be possible to show all given events.
 
       @param incidenceList a list of incidences to show.
     */
@@ -153,11 +154,12 @@ class KDE_EXPORT BaseView : public QWidget
     virtual void clearSelection();
 
     /**
-      Set the default start/end date/time for new events. Return true if anything was changed
+      Sets the default start/end date/time for new events.
+      Return true if anything was changed
     */
     virtual bool eventDurationHint(QDateTime &/*startDt*/, QDateTime &/*endDt*/, bool &/*allDay*/);
 
-  signals:
+  Q_SIGNALS:
     void incidenceSelected( Incidence * );
 
     /**

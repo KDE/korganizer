@@ -1,26 +1,26 @@
 /*
-    This file is part of KOrganizer.
+  This file is part of KOrganizer.
 
-    Copyright (c) 1998 Preston Brown <pbrown@kde.org>
-    Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+  Copyright (c) 1998 Preston Brown <pbrown@kde.org>
+  Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-    GNU General Public License for more details.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-    As a special exception, permission is given to link this program
-    with any edition of Qt, and distribute the resulting executable,
-    without including the source code for Qt in the source distribution.
+  As a special exception, permission is given to link this program
+  with any edition of Qt, and distribute the resulting executable,
+  without including the source code for Qt in the source distribution.
 */
 #ifndef _CALPRINTER_H
 #define _CALPRINTER_H
@@ -43,7 +43,6 @@ class CalPrintDialog;
 class KConfig;
 class QComboBox;
 
-
 /**
   CalPrinter is a class for printing Calendars.  It can print in several
   different formats (day, week, month).  It also provides a way for setting
@@ -51,8 +50,7 @@ class QComboBox;
 */
 class KDE_EXPORT CalPrinter : public QObject, public KOrg::CalPrinterBase
 {
-    Q_OBJECT
-
+  Q_OBJECT
   public:
     enum ePrintOrientation {
       eOrientPlugin=0,
@@ -79,10 +77,10 @@ class KDE_EXPORT CalPrinter : public QObject, public KOrg::CalPrinterBase
     */
     void setDateRange( const QDate &start, const QDate &end );
 
-  public slots:
+  public Q_SLOTS:
     void updateConfig();
 
-  private slots:
+  private Q_SLOTS:
     void doPrint( KOrg::PrintPlugin *selectedStyle, CalPrinter::ePrintOrientation dlgorientation, bool preview = false );
 
   public:
@@ -104,19 +102,19 @@ class KDE_EXPORT CalPrinter : public QObject, public KOrg::CalPrinterBase
 
 class CalPrintDialog : public KDialog
 {
-    Q_OBJECT
+  Q_OBJECT
   public:
-    CalPrintDialog( KOrg::PrintPlugin::List plugins, QWidget *parent = 0 );
+    explicit CalPrintDialog( KOrg::PrintPlugin::List plugins, QWidget *parent = 0 );
     virtual ~CalPrintDialog();
     KOrg::PrintPlugin *selectedPlugin();
     void setOrientation( CalPrinter::ePrintOrientation orientation );
     CalPrinter::ePrintOrientation orientation() { return mOrientation; }
 
-  public slots:
+  public Q_SLOTS:
     void setPrintType( int );
     void setPreview( bool );
 
-  protected slots:
+  protected Q_SLOTS:
     void slotOk();
 
   private:

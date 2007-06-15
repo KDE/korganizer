@@ -1,20 +1,22 @@
-/* This file is part of the KDE libraries
-   Copyright (c) 2003 Scott Wheeler <wheeler@kde.org>
-   Copyright (c) 2005 Rafal Rzepecki <divide@users.sourceforge.net>
+/*
+  This file is part of KOrganizer.
 
-   This library is free software; you can redistribute it and/or
-   modify it under the terms of the GNU Library General Public
-   License version 2 as published by the Free Software Foundation.
+  Copyright (c) 2003 Scott Wheeler <wheeler@kde.org>
+  Copyright (c) 2005 Rafal Rzepecki <divide@users.sourceforge.net>
 
-   This library is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-   Library General Public License for more details.
+  This library is free software; you can redistribute it and/or
+  modify it under the terms of the GNU Library General Public
+  License version 2 as published by the Free Software Foundation.
 
-   You should have received a copy of the GNU Library General Public License
-   along with this library; see the file COPYING.LIB.  If not, write to
-   the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
-   Boston, MA 02110-1301, USA.
+  This library is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  Library General Public License for more details.
+
+  You should have received a copy of the GNU Library General Public License
+  along with this library; see the file COPYING.LIB.  If not, write to
+  the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+  Boston, MA 02110-1301, USA.
 */
 
 #ifndef KLISTVIEWNEWSEARCHLINE_H
@@ -39,9 +41,8 @@ class QContextMenuEvent;
 
 class KORGANIZER_EXPORT KListViewNewSearchLine : public KLineEdit
 {
-    Q_OBJECT
-
-public:
+  Q_OBJECT
+  public:
 
     /**
      * Constructs a KListViewNewSearchLine with \a listView being the K3ListView to

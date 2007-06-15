@@ -1,34 +1,29 @@
 /*
-    This file is part of KOrganizer.
+  This file is part of KOrganizer.
 
-    Copyright (c) 2003 Cornelius Schumacher <schumacher@kde.org>
-    Copyright (c) 2005 Rafal Rzepecki <divide@users.sourceforge.net>
+  Copyright (c) 2003 Cornelius Schumacher <schumacher@kde.org>
+  Copyright (c) 2005 Rafal Rzepecki <divide@users.sourceforge.net>
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-    GNU General Public License for more details.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-    As a special exception, permission is given to link this program
-    with any edition of Qt, and distribute the resulting executable,
-    without including the source code for Qt in the source distribution.
+  As a special exception, permission is given to link this program
+  with any edition of Qt, and distribute the resulting executable,
+  without including the source code for Qt in the source distribution.
 */
 
-#include <QObject>
-
-#include <libkdepim/kdepimprotocols.h>
-
 #include "urihandler.h"
-
 #ifndef KORG_NODBUS
 #include <knodeinterface.h>
 #include <kmailinterface.h>
@@ -36,12 +31,16 @@
 #include <coreinterface.h>
 #endif
 
+#include <libkdepim/kdepimprotocols.h>
+
 #include <kiconloader.h>
 #include <krun.h>
 #include <kapplication.h>
 #include <k3process.h>
 #include <kdebug.h>
 #include <ktoolinvocation.h>
+
+#include <QObject>
 
 bool UriHandler::process( const QString &uri )
 {
@@ -77,9 +76,9 @@ bool UriHandler::process( const QString &uri )
       */
       QString iconPath = KIconLoader::global()->iconPath( "go", K3Icon::Small );
       QString tmpStr = "kaddressbook --editor-only --uid ";
-      tmpStr += K3Process::quote( uri.mid( ::qstrlen( KDEPIMPROTOCOL_CONTACT ) ) 
+      tmpStr += K3Process::quote( uri.mid( ::qstrlen( KDEPIMPROTOCOL_CONTACT ) )
       );
-      KRun::runCommand( tmpStr, "KAddressBook", iconPath, NULL );
+      KRun::runCommand( tmpStr, "KAddressBook", iconPath, 0 );
       return true;
     }
   } else if ( uri.startsWith( KDEPIMPROTOCOL_INCIDENCE ) ) {
@@ -89,16 +88,16 @@ bool UriHandler::process( const QString &uri )
     // we must work around KUrl breakage (it doesn't know about URNs)
     QString uid = KUrl::fromPercentEncoding( uri.toLatin1() ).mid( 11 );
     OrgKdeKorganizerKorganizerInterface korganizerIface("org.kde.korganizer", "/Korganizer", QDBusConnection::sessionBus() );
-    
+
     return korganizerIface.showIncidence( uid );
   } else if ( uri.startsWith( KDEPIMPROTOCOL_NEWSARTICLE ) ) {
     KToolInvocation::startServiceByDesktopPath( "knode" );
     org::kde::knode knode("org.kde.knode", "/KNode", QDBusConnection::sessionBus());
     knode.openURL(uri);
   } else {  // no special URI, let KDE handle it
-    new KRun(KUrl( uri ),0L);
+    new KRun(KUrl( uri ),0);
   }
 #endif /* KORG_NODBUS */
-  
+
   return false;
 }

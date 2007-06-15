@@ -1,47 +1,38 @@
 /*
-    This file is part of KOrganizer.
+  This file is part of KOrganizer.
+  Copyright (c) 2000,2001 Cornelius Schumacher <schumacher@kde.org>
+  Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
 
-    Copyright (c) 2000,2001 Cornelius Schumacher <schumacher@kde.org>
-    Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-    GNU General Public License for more details.
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
-
-    As a special exception, permission is given to link this program
-    with any edition of Qt, and distribute the resulting executable,
-    without including the source code for Qt in the source distribution.
+  As a special exception, permission is given to link this program
+  with any edition of Qt, and distribute the resulting executable,
+  without including the source code for Qt in the source distribution.
 */
+#include "komonthview.h"
+#include "koprefs.h"
+#include "koglobals.h"
+#include "koeventpopupmenu.h"
+#include "kohelper.h"
 
-#include <q3popupmenu.h>
-#include <QFont>
-#include <QFontMetrics>
-#include <qnamespace.h>
-#include <QPushButton>
+#include <kcal/calfilter.h>
+#include <kcal/calendar.h>
+#include <kcal/incidenceformatter.h>
+#include <kcal/calendarresources.h>
 
-#include <QPainter>
-#include <QCursor>
-#include <q3listbox.h>
-#include <QLayout>
-#include <QLabel>
-//Added by qt3to4:
-#include <QGridLayout>
-#include <QKeyEvent>
-#include <QFrame>
-#include <QResizeEvent>
-#include <QVBoxLayout>
-#include <QMouseEvent>
-
+#include <kcalendarsystem.h>
 #include <kdebug.h>
 #include <klocale.h>
 #include <kglobal.h>
@@ -49,18 +40,23 @@
 #include <kiconloader.h>
 #include <kwordwrap.h>
 
-#include <kcalendarsystem.h>
-#include <kcal/calfilter.h>
-#include <kcal/calendar.h>
-#include <kcal/incidenceformatter.h>
-#include <kcal/calendarresources.h>
+#include <q3popupmenu.h>
+#include <QFont>
+#include <QFontMetrics>
+#include <qnamespace.h>
+#include <QPushButton>
+#include <QPainter>
+#include <QCursor>
+#include <q3listbox.h>
+#include <QLayout>
+#include <QLabel>
+#include <QGridLayout>
+#include <QKeyEvent>
+#include <QFrame>
+#include <QResizeEvent>
+#include <QVBoxLayout>
+#include <QMouseEvent>
 
-#include "koprefs.h"
-#include "koglobals.h"
-#include "koeventpopupmenu.h"
-#include "kohelper.h"
-
-#include "komonthview.h"
 #include "komonthview.moc"
 
 //--------------------------------------------------------------------------
@@ -454,7 +450,7 @@ class MonthViewCell::CreateItemVisitor :
   public:
     CreateItemVisitor() : mItem(0) {}
 
-    bool act( IncidenceBase *incidence, const QDate &date, QPalette stdPal, int multiDay )
+    bool act( IncidenceBase *incidence, const QDate &date, const QPalette &stdPal, int multiDay )
     {
       mItem = 0;
       mDate = date;
@@ -729,7 +725,6 @@ void MonthViewCell::contextMenu( Q3ListBoxItem *item )
     mMonthView->showGeneralContextMenu();
   }
 }
-
 
 KOMonthView::KOMonthView( Calendar *calendar, QWidget *parent )
     : KOEventView( calendar, parent ),

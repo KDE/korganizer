@@ -1,36 +1,68 @@
 /*
-    This file is part of KOrganizer.
+  This file is part of KOrganizer.
+  Copyright (c) 2000,2001,2003 Cornelius Schumacher <schumacher@kde.org>
+  Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+  Copyright (c) 2005 Rafal Rzepecki <divide@users.sourceforge.net>
 
-    Copyright (c) 2000,2001,2003 Cornelius Schumacher <schumacher@kde.org>
-    Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
-    Copyright (c) 2005 Rafal Rzepecki <divide@users.sourceforge.net>
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-    GNU General Public License for more details.
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor,
-    Boston, MA 02110-1301, USA.
-
-    As a special exception, permission is given to link this program
-    with any edition of Qt, and distribute the resulting executable,
-    without including the source code for Qt in the source distribution.
+  As a special exception, permission is given to link this program
+  with any edition of Qt, and distribute the resulting executable,
+  without including the source code for Qt in the source distribution.
 */
 
-#include <QLayout>
+#include "kotodoview.h"
+#include "docprefs.h"
+#include "kodialogmanager.h"
+#include "koprefs.h"
+#include "koglobals.h"
+using namespace KOrg;
+#include "kotodoviewitem.h"
+#include "kotodoviewquicksearch.h"
+#ifndef KORG_NOPRINTER
+#include "kocorehelper.h"
+#include "calprinter.h"
+#endif
+#include <korganizer/mainwindow.h>
+
+#include <libkdepim/kdatepickerpopup.h>
+
+#include <kcal/icaldrag.h>
+#include <kcal/vcaldrag.h>
+#include <kcal/dndfactory.h>
+#include <kcal/calendarresources.h>
+#include <kcal/resourcecalendar.h>
+#include <kcal/calfilter.h>
+#include <kcal/incidenceformatter.h>
+
+#include <kpimutils/email.h>
+
+#include <kdebug.h>
+#include <klocale.h>
+#include <kglobal.h>
+#include <kiconloader.h>
+#include <kmessagebox.h>
+#include <kactioncollection.h>
+#include <ktoolbar.h>
+#include <kvbox.h>
+
 #include <q3header.h>
+#include <QLayout>
 #include <QCursor>
 #include <QLabel>
 #include <QTimer>
-
 #include <QStackedWidget>
 #include <QMenu>
 #include <QBoxLayout>
@@ -47,44 +79,7 @@
 #include <QApplication>
 #include <QMimeData>
 
-#include <kdebug.h>
-#include <klocale.h>
-#include <kglobal.h>
-#include <kiconloader.h>
-#include <kmessagebox.h>
-#include <kactioncollection.h>
-#include <ktoolbar.h>
-
-#include <kcal/icaldrag.h>
-#include <kcal/vcaldrag.h>
-#include <kcal/dndfactory.h>
-#include <kcal/calendarresources.h>
-#include <kcal/resourcecalendar.h>
-#include <kcal/calfilter.h>
-#include <kcal/incidenceformatter.h>
-
-#include <libkdepim/kdatepickerpopup.h>
-
-#include <kpimutils/email.h>
-
-#include "docprefs.h"
-
-#include "kodialogmanager.h"
-#include "kotodoview.h"
-#include "koprefs.h"
-#include "koglobals.h"
-using namespace KOrg;
-#include "kotodoviewitem.h"
-#include "kotodoviewquicksearch.h"
-#include <korganizer/mainwindow.h>
-#include <kvbox.h>
-
 #include "kotodoview.moc"
-#ifndef KORG_NOPRINTER
-#include "kocorehelper.h"
-#include "calprinter.h"
-#endif
-
 
 KOTodoListViewToolTip::KOTodoListViewToolTip (QWidget* parent,
                                               KOTodoListView* lv )

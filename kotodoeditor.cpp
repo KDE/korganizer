@@ -1,60 +1,55 @@
 /*
-    This file is part of KOrganizer.
+  This file is part of KOrganizer.
 
-    Copyright (c) 1997, 1998 Preston Brown <pbrown@kde.org>
-    Copyright (c) 2000-2003 Cornelius Schumacher <schumacher@kde.org>
-    Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+  Copyright (c) 1997, 1998 Preston Brown <pbrown@kde.org>
+  Copyright (c) 2000-2003 Cornelius Schumacher <schumacher@kde.org>
+  Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-    GNU General Public License for more details.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-    As a special exception, permission is given to link this program
-    with any edition of Qt, and distribute the resulting executable,
-    without including the source code for Qt in the source distribution.
+  As a special exception, permission is given to link this program
+  with any edition of Qt, and distribute the resulting executable,
+  without including the source code for Qt in the source distribution.
 */
-
-
-#include <QFrame>
-#include <QPixmap>
-#include <QLayout>
-#include <QDateTime>
-//Added by qt3to4:
-#include <QVBoxLayout>
-#include <QHBoxLayout>
-#include <QBoxLayout>
-
-#include <kiconloader.h>
-#include <klocale.h>
-#include <kmessagebox.h>
-
-#include <kcal/calendarlocal.h>
-#include <kcal/calendarresources.h>
-#include <kcal/resourcecalendar.h>
-
+#include "kotodoeditor.h"
+#include "kocore.h"
+#include "koeditorgeneraltodo.h"
+#include "koeditordetails.h"
+#include "koeditorrecurrence.h"
+#include "koeditoralarms.h"
 #include "koprefs.h"
 #include "koeditorattachments.h"
 #include "kogroupware.h"
 #include "kodialogmanager.h"
 #include "incidencechanger.h"
 
-#include "koeditorgeneraltodo.h"
-#include "koeditordetails.h"
-#include "koeditorrecurrence.h"
-#include "koeditoralarms.h"
+#include <kcal/calendarlocal.h>
+#include <kcal/calendarresources.h>
+#include <kcal/resourcecalendar.h>
 
-#include "kotodoeditor.h"
-#include "kocore.h"
+#include <kiconloader.h>
+#include <klocale.h>
+#include <kmessagebox.h>
+
+#include <QFrame>
+#include <QPixmap>
+#include <QLayout>
+#include <QDateTime>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QBoxLayout>
 
 KOTodoEditor::KOTodoEditor( Calendar *calendar, QWidget *parent ) :
   KOIncidenceEditor( QString(), calendar, parent )

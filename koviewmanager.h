@@ -14,9 +14,9 @@
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
   GNU General Public License for more details.
 
-  You should have received a copy of the GNU General Public License
-  along with this program; if not, write to the Free Software
-  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
   As a special exception, permission is given to link this program
   with any edition of Qt, and distribute the resulting executable,
@@ -26,9 +26,11 @@
 #define KOVIEWMANAGER_H
 
 #include <QObject>
+#include <QDate>
+
+class KConfig;
 
 class CalendarView;
-
 class KOListView;
 class KOAgendaView;
 class KOMonthView;
@@ -37,7 +39,7 @@ class KOWhatsNextView;
 class KOJournalView;
 
 namespace KOrg { class BaseView; }
-using namespace KCal;
+namespace KCal { class Incidence; }
 
 /**
   This class manages the views of the calendar. It owns the objects and handles
@@ -45,7 +47,7 @@ using namespace KCal;
 */
 class KOViewManager : public QObject
 {
-    Q_OBJECT
+  Q_OBJECT
   public:
     explicit KOViewManager( CalendarView * );
     virtual ~KOViewManager();
@@ -57,9 +59,9 @@ class KOViewManager : public QObject
     void writeSettings( KConfig *config );
 
     /** Read which view was shown last from config file */
-    void readCurrentView( KConfig * );
+    void readCurrentView( KConfig *config );
     /** Write which view is currently shown to config file */
-    void writeCurrentView( KConfig * );
+    void writeCurrentView( KConfig *config );
 
     KOrg::BaseView *currentView();
 
@@ -73,7 +75,7 @@ class KOViewManager : public QObject
     void connectView( KOrg::BaseView * );
     void addView( KOrg::BaseView * );
 
-    Incidence *currentSelection();
+    KCal::Incidence *currentSelection();
     QDate currentSelectionDate();
 
     KOAgendaView *agendaView() const { return mAgendaView; }

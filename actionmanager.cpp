@@ -17,13 +17,13 @@
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
   GNU General Public License for more details.
 
-  You should have received a copy of the GNU General Public License
-  along with this program; if not, write to the Free Software
-  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-  As a special exception, permission is given to link this program with any edition of Qt, and
-  distribute the resulting executable, without including the source code for Qt in the source
-  distribution.
+  As a special exception, permission is given to link this program
+  with any edition of Qt, and distribute the resulting executable,
+  without including the source code for Qt in the source distribution.
 */
 
 #include "actionmanager.h"
@@ -47,7 +47,6 @@
 
 #include <kcal/calendarlocal.h>
 #include <kcal/calendarresources.h>
-#include <kcal/calendarlocal.h>
 #include <kcal/filestorage.h>
 #include <kcal/htmlexport.h>
 #include <kcal/htmlexportsettings.h>
@@ -75,7 +74,6 @@
 #include <QTimer>
 #include <QLabel>
 #include <kicon.h>
-#include "calendaradaptor.h"
 #include <QtDBus>
 
 // FIXME: Several places in the file don't use KConfigXT yet!
@@ -634,7 +632,7 @@ void ActionManager::initActions()
 void ActionManager::slotChangeComboActionItem(int index)
 {
   mFilterAction->setCurrentItem(index);
-}	
+}
 
 void ActionManager::setItems( const QStringList & lst)
 {

@@ -1,4 +1,6 @@
-/* This file is part of the KDE libraries
+/*
+   This file is part of the KDE libraries
+
    Copyright (c) 2003 Scott Wheeler <wheeler@kde.org>
    Copyright (c) 2005 Rafal Rzepecki <divide@users.sourceforge.net>
 
@@ -24,16 +26,14 @@
 #include <k3listview.h>
 #include <kiconloader.h>
 #include <ktoolbar.h>
-
 #include <kdebug.h>
 #include <klocale.h>
 
+#include <q3header.h>
 #include <QApplication>
 #include <QTimer>
 #include <QMenu>
 #include <QLabel>
-#include <q3header.h>
-//Added by qt3to4:
 #include <QContextMenuEvent>
 
 #define KLISTVIEWSEARCHLINE_ALLVISIBLECOLUMNS_ID 2004
@@ -142,10 +142,10 @@ void KListViewNewSearchLine::addListView(K3ListView *lv)
 {
     if (lv) {
         connectListView(lv);
-        
+
         d->listViews.append(lv);
         setEnabled(!d->listViews.isEmpty());
-        
+
         checkColumns();
     }
 }
@@ -236,7 +236,7 @@ void KListViewNewSearchLine::setListViews(const QList<K3ListView *> &lv)
     for (QList<K3ListView *>::Iterator it = d->listViews.begin();
          it != d->listViews.end(); ++it)
              disconnectListView(*it);
-    
+
     d->listViews = lv;
 
     for (QList<K3ListView *>::Iterator it = d->listViews.begin();
@@ -292,7 +292,7 @@ void KListViewNewSearchLine::contextMenuEvent( QContextMenuEvent *e )
     // TODO_QT4: Use QAction-based calls instead
     subMenu->insertItem( i18n("All Visible Columns"), KLISTVIEWSEARCHLINE_ALLVISIBLECOLUMNS_ID );
     subMenu->addSeparator();
-    
+
     bool allColumnsAreSearchColumns = true;
     // TODO Make the entry order match the actual column order
     Q3Header* const header = d->listViews.first()->header();
@@ -316,12 +316,12 @@ void KListViewNewSearchLine::contextMenuEvent( QContextMenuEvent *e )
       }
     }
     subMenu->setItemChecked(KLISTVIEWSEARCHLINE_ALLVISIBLECOLUMNS_ID, allColumnsAreSearchColumns);
-    
+
         // searchColumnsMenuActivated() relies on one possible "all" representation
     if(allColumnsAreSearchColumns && !d->searchColumns.isEmpty())
       d->searchColumns.clear();
   }
-    
+
   popup->exec( e->globalPos() );
   delete popup;
 }
@@ -351,7 +351,7 @@ bool KListViewNewSearchLine::canChooseColumnsCheck()
         return false;
 
     const K3ListView *first = d->listViews.first();
-    
+
     const unsigned int numcols = first->columns();
     // the listviews have only one column,
     if (numcols < 2)
@@ -416,7 +416,7 @@ void KListViewNewSearchLine::listViewDeleted(QObject *o)
                 << endl;
         return;
     }
-    
+
     d->listViews.removeAll(lv);
     setEnabled(d->listViews.isEmpty());
 }
@@ -468,7 +468,6 @@ void KListViewNewSearchLine::checkItemParentsNotVisible(K3ListView *listView)
     }
 }
 
-#include <kdebug.h>
 #include <kvbox.h>
 
 /** Check whether \p item, its siblings and their descendents should be shown. Show or hide the items as necessary.
@@ -487,7 +486,7 @@ bool KListViewNewSearchLine::checkItemParentsVisible(Q3ListViewItem *item, Q3Lis
     for(; item; item = item->nextSibling())
     {
         //What we pass to our children as highestHiddenParent:
-        Q3ListViewItem * hhp = highestHiddenParent ? highestHiddenParent : item->isVisible() ? 0L : item;
+        Q3ListViewItem * hhp = highestHiddenParent ? highestHiddenParent : item->isVisible() ? 0 : item;
         bool childMatch = false;
         if(item->firstChild() && checkItemParentsVisible(item->firstChild(), hhp))
             childMatch = true;

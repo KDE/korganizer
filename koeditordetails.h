@@ -1,38 +1,40 @@
 /*
-    This file is part of KOrganizer.
-    Copyright (c) 2000,2001 Cornelius Schumacher <schumacher@kde.org>
-    Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+  This file is part of KOrganizer.
+  Copyright (c) 2000,2001 Cornelius Schumacher <schumacher@kde.org>
+  Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-    GNU General Public License for more details.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-    As a special exception, permission is given to link this program
-    with any edition of Qt, and distribute the resulting executable,
-    without including the source code for Qt in the source distribution.
+  As a special exception, permission is given to link this program
+  with any edition of Qt, and distribute the resulting executable,
+  without including the source code for Qt in the source distribution.
 */
 #ifndef _KOEDITORDETAILS_H
 #define _KOEDITORDETAILS_H
 
-#include <k3listview.h>
 #include "customlistviewitem.h"
+
+#include <k3listview.h>
+#include <kvbox.h>
+
 #include <QDragEnterEvent>
 #include <QLabel>
 #include <QDragMoveEvent>
 #include <QEvent>
 #include <QDropEvent>
 #include <QList>
-#include <kvbox.h>
 
 class QPushButton;
 class QCheckBox;
@@ -46,7 +48,7 @@ class Attendee;
 class Incidence;
 }
 using namespace KCal;
-    
+
 namespace KPIM {
 class AddresseeLineEdit;
 }
@@ -60,27 +62,28 @@ typedef CustomListViewItem<KCal::Attendee *> AttendeeListItem;
  */
 class KOAttendeeListView : public K3ListView
 {
-Q_OBJECT
-public:
-  KOAttendeeListView (QWidget *parent=0);
-  virtual ~KOAttendeeListView();
-  virtual void addAttendee( const QString& newAttendee );
-public slots:
-  virtual void contentsDragEnterEvent( QDragEnterEvent *e );
-  virtual void dragEnterEvent( QDragEnterEvent *e );
-  virtual void contentsDropEvent( QDropEvent *e );
-  virtual void dropEvent( QDropEvent *e );
-  virtual void contentsDragMoveEvent(QDragMoveEvent *e);
-signals:
-  void dropped(Attendee*);
-};
+  Q_OBJECT
+  public:
+    KOAttendeeListView (QWidget *parent=0);
+    virtual ~KOAttendeeListView();
+    virtual void addAttendee( const QString& newAttendee );
 
+  public slots:
+    virtual void contentsDragEnterEvent( QDragEnterEvent *e );
+    virtual void dragEnterEvent( QDragEnterEvent *e );
+    virtual void contentsDropEvent( QDropEvent *e );
+    virtual void dropEvent( QDropEvent *e );
+    virtual void contentsDragMoveEvent(QDragMoveEvent *e);
+
+  signals:
+    void dropped(Attendee*);
+};
 
 class KOEditorDetails : public QWidget
 {
-    Q_OBJECT
+  Q_OBJECT
   public:
-    KOEditorDetails (int spacing = 8,QWidget* parent = 0);
+    explicit KOEditorDetails( int spacing = 8, QWidget *parent = 0 );
     virtual ~KOEditorDetails();
 
     /** Set widgets to default values */

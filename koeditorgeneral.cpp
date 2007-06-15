@@ -1,48 +1,36 @@
 /*
-    This file is part of KOrganizer.
-    Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
-    Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+  This file is part of KOrganizer.
+  Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
+  Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-    GNU General Public License for more details.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-    As a special exception, permission is given to link this program
-    with any edition of Qt, and distribute the resulting executable,
-    without including the source code for Qt in the source distribution.
+  As a special exception, permission is given to link this program
+  with any edition of Qt, and distribute the resulting executable,
+  without including the source code for Qt in the source distribution.
 */
+#include "koeditorgeneral.h"
+#include "koeditoralarms.h"
+#include "koprefs.h"
+#include "koglobals.h"
 
+#include <libkdepim/kdateedit.h>
+#include <libkdepim/categoryselectdialog.h>
 
-#include <QWidget>
-
-#include <QLayout>
-
-
-#include <q3buttongroup.h>
-#include <QDateTime>
-#include <QLineEdit>
-#include <QLabel>
-#include <QCheckBox>
-#include <QPushButton>
-#include <QComboBox>
-#include <QSpinBox>
-
-//Added by qt3to4:
-#include <QFocusEvent>
-#include <QGridLayout>
-#include <QFrame>
-#include <QHBoxLayout>
-#include <QBoxLayout>
+#include <kcal/todo.h>
+#include <kcal/event.h>
 
 #include <kglobal.h>
 #include <kdebug.h>
@@ -56,17 +44,22 @@
 #include <krestrictedline.h>
 #include <kvbox.h>
 
-#include <kcal/todo.h>
-#include <kcal/event.h>
+#include <q3buttongroup.h>
+#include <QWidget>
+#include <QLayout>
+#include <QDateTime>
+#include <QLineEdit>
+#include <QLabel>
+#include <QCheckBox>
+#include <QPushButton>
+#include <QComboBox>
+#include <QSpinBox>
+#include <QFocusEvent>
+#include <QGridLayout>
+#include <QFrame>
+#include <QHBoxLayout>
+#include <QBoxLayout>
 
-#include <libkdepim/kdateedit.h>
-#include <libkdepim/categoryselectdialog.h>
-
-#include "koprefs.h"
-#include "koglobals.h"
-
-#include "koeditorgeneral.h"
-#include "koeditoralarms.h"
 #include "koeditorgeneral.moc"
 
 KOEditorGeneral::KOEditorGeneral(QObject* parent, const char* name) :
@@ -79,7 +72,6 @@ KOEditorGeneral::KOEditorGeneral(QObject* parent, const char* name) :
 KOEditorGeneral::~KOEditorGeneral()
 {
 }
-
 
 FocusLineEdit::FocusLineEdit( QWidget *parent )
   : QLineEdit( parent ), mSkipFirst( true )
@@ -95,7 +87,6 @@ void FocusLineEdit::focusInEvent ( QFocusEvent *e )
   }
   QLineEdit::focusInEvent( e );
 }
-
 
 void KOEditorGeneral::initHeader(QWidget *parent,QBoxLayout *topLayout)
 {

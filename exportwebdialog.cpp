@@ -1,39 +1,36 @@
 /*
-    This file is part of KOrganizer.
-    Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
-    Copyright (c) 2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+  This file is part of KOrganizer.
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
+  Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
+  Copyright (C) 2004 Reinhold Kainhofer <reinhold@kainhofer.com>
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-    GNU General Public License for more details.
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
 
-    As a special exception, permission is given to link this program
-    with any edition of Qt, and distribute the resulting executable,
-    without including the source code for Qt in the source distribution.
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+  As a special exception, permission is given to link this program
+  with any edition of Qt, and distribute the resulting executable,
+  without including the source code for Qt in the source distribution.
 */
 
-#include <QLayout>
-#include <QRadioButton>
-#include <QCheckBox>
-#include <QLineEdit>
+#include "exportwebdialog.h"
+#include "koprefs.h"
+#include "kocore.h"
 
+#include <libkdepim/kdateedit.h>
 
-#include <QPushButton>
-#include <QTextStream>
-#include <QLabel>
-//Added by qt3to4:
-#include <QVBoxLayout>
-#include <QGroupBox>
+#include <kcal/calendar.h>
+#include <kcal/htmlexportsettings.h>
 
 #include <klocale.h>
 #include <kdebug.h>
@@ -48,20 +45,19 @@
 #include <kio/netaccess.h>
 #include <ktemporaryfile.h>
 #include <kmessagebox.h>
-
-#include <kcal/calendar.h>
-#include <kcal/htmlexportsettings.h>
-
-#include <libkdepim/kdateedit.h>
-#include <libkdepim/kdateedit.h>
 #include <kvbox.h>
 
-#include "koprefs.h"
-#include "kocore.h"
+#include <QLayout>
+#include <QRadioButton>
+#include <QCheckBox>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QTextStream>
+#include <QLabel>
+#include <QVBoxLayout>
+#include <QGroupBox>
 
-#include "exportwebdialog.h"
 #include "exportwebdialog.moc"
-
 
 // FIXME: The basic structure of this dialog has been copied from KPrefsDialog,
 //        because we want custom buttons, a Tabbed dialog, and a different
@@ -90,7 +86,7 @@ ExportWebDialog::ExportWebDialog( HTMLExportSettings *settings, QWidget *parent)
   connect( this, SIGNAL( user1Clicked() ), SLOT( slotOk() ) );
   connect( this, SIGNAL( cancelClicked() ), SLOT( reject() ) );
   connect( this, SIGNAL( defaultClicked()) , this, SLOT(slotDefault()));
-  connect(this,SIGNAL(applyClicked()),this,SLOT(slotApply())); 
+  connect(this,SIGNAL(applyClicked()),this,SLOT(slotApply()));
   readConfig();
 }
 
@@ -152,7 +148,7 @@ void ExportWebDialog::setupGeneralPage()
   topLayout->addWidget( rangeGroup );
 
   QBoxLayout *rangeLayout = new QVBoxLayout( rangeGroup );
-  
+
   KPrefsWidDate *dateStart = addWidDate( mSettings->dateStartItem() );
   rangeLayout->addWidget( dateStart->label() );
   rangeLayout->addWidget( dateStart->dateEdit() );
@@ -164,7 +160,7 @@ void ExportWebDialog::setupGeneralPage()
   topLayout->addWidget( typeGroup );
 
   QBoxLayout *typeLayout = new QVBoxLayout( typeGroup );
-  
+
   typeLayout->addWidget( addWidBool( mSettings->monthViewItem() )->checkBox() );
   typeLayout->addWidget( addWidBool( mSettings->eventViewItem() )->checkBox() );
   typeLayout->addWidget( addWidBool( mSettings->todoViewItem() )->checkBox() );

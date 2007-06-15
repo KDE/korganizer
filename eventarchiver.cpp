@@ -1,40 +1,41 @@
 /*
-    This file is part of KOrganizer.
-    Copyright (c) 2000,2001 Cornelius Schumacher <schumacher@kde.org>
-    Copyright (c) 2004 David Faure <faure@kde.org>
-    Copyright (C) 2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+  This file is part of KOrganizer.
+  Copyright (c) 2000,2001 Cornelius Schumacher <schumacher@kde.org>
+  Copyright (c) 2004 David Faure <faure@kde.org>
+  Copyright (C) 2004 Reinhold Kainhofer <reinhold@kainhofer.com>
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-    GNU General Public License for more details.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-    As a special exception, permission is given to link this program
-    with any edition of Qt, and distribute the resulting executable,
-    without including the source code for Qt in the source distribution.
+  As a special exception, permission is given to link this program
+  with any edition of Qt, and distribute the resulting executable,
+  without including the source code for Qt in the source distribution.
 */
 
 #include "eventarchiver.h"
-#include <kglobal.h>
-#include <klocale.h>
-#include <ktemporaryfile.h>
+#include "koprefs.h"
+
 #include <kio/netaccess.h>
-#include <kglobal.h>
 #include <kcal/filestorage.h>
 #include <kcal/calendarlocal.h>
 #include <kcal/calendar.h>
-#include <kmessagebox.h>
+
 #include <kdebug.h>
-#include "koprefs.h"
+#include <kglobal.h>
+#include <klocale.h>
+#include <ktemporaryfile.h>
+#include <kmessagebox.h>
 
 EventArchiver::EventArchiver( QObject* parent, const char* name )
  : QObject( parent )
@@ -78,7 +79,7 @@ void EventArchiver::run( Calendar* calendar, const QDate& limitDate, QWidget* wi
   Event::List events;
   Todo::List todos;
   Journal::List journals;
-  
+
   if ( KOPrefs::instance()->mArchiveEvents ) {
     events = calendar->rawEvents(
       QDate( 1769, 12, 1 ),
@@ -95,9 +96,9 @@ void EventArchiver::run( Calendar* calendar, const QDate& limitDate, QWidget* wi
       }
     }
   }
-  
+
   incidences = Calendar::mergeIncidenceList( events, todos, journals );
-  
+
 
   kDebug(5850) << "EventArchiver: archiving incidences before " << limitDate << " -> " << incidences.count() << " incidences found." << endl;
   if ( incidences.isEmpty() ) {

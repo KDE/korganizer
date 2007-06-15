@@ -17,10 +17,9 @@
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
   GNU General Public License for more details.
 
-  You should have received a copy of the GNU General Public License
-  along with this program; if not, write to the Free Software
-  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
-  MA  02110-1301, USA.
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
   In addition, as a special exception, the copyright holders give
   permission to link the code of this program with any edition of
@@ -57,7 +56,7 @@ class KJob;
  */
 class FreeBusyDownloadJob : public QObject
 {
-    Q_OBJECT
+  Q_OBJECT
   public:
     FreeBusyDownloadJob( const QString &email, const KUrl &url,
                    FreeBusyManager *manager );
@@ -80,7 +79,7 @@ class FreeBusyDownloadJob : public QObject
 
 class FreeBusyManager : public QObject, public KCal::FreeBusyCache
 {
-    Q_OBJECT
+  Q_OBJECT
   public:
     FreeBusyManager( QObject *parent );
 
@@ -117,7 +116,7 @@ class FreeBusyManager : public QObject, public KCal::FreeBusyCache
     /**
       Return URL of freeBusy information for given email address.
     */
-    KUrl freeBusyUrl( const QString &email );
+    KUrl freeBusyUrl( const QString &email ) const;
 
     /**
       Return directory used for stroing free/busy information.

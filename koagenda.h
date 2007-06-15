@@ -1,33 +1,34 @@
 /*
-    This file is part of KOrganizer.
-    Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
-    Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+  This file is part of KOrganizer.
+  Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
+  Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-    GNU General Public License for more details.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-    As a special exception, permission is given to link this program
-    with any edition of Qt, and distribute the resulting executable,
-    without including the source code for Qt in the source distribution.
+  As a special exception, permission is given to link this program
+  with any edition of Qt, and distribute the resulting executable,
+  without including the source code for Qt in the source distribution.
 */
 #ifndef KOAGENDA_H
 #define KOAGENDA_H
 
+#include <kcal/incidence.h>
+
 #include <q3scrollview.h>
 #include <QTimer>
 #include <QPointer>
-//Added by qt3to4:
 #include <QWheelEvent>
 #include <QVector>
 #include <QList>
@@ -38,15 +39,12 @@
 #include <QLabel>
 #include <QResizeEvent>
 #include <QMouseEvent>
-#include <kcal/incidencebase.h>
-
 
 class QTime;
 class QLabel;
 class KOAgenda;
 class KOAgendaItem;
 
-using namespace KOrg;
 namespace KOrg {
 class IncidenceChangerBase;
 }
@@ -59,7 +57,7 @@ class Calendar;
 }
 
 class MarcusBains : public QFrame {
-    Q_OBJECT
+  Q_OBJECT
   public:
     MarcusBains( KOAgenda *agenda = 0 );
     virtual ~MarcusBains();
@@ -76,14 +74,13 @@ class MarcusBains : public QFrame {
     int oldToday;
 };
 
-
 class KOAgenda : public Q3ScrollView
 {
-    Q_OBJECT
+  Q_OBJECT
   public:
     KOAgenda ( int columns, int rows, int columnSize, QWidget *parent=0,
                Qt::WFlags f = 0 );
-    KOAgenda ( int columns, QWidget *parent = 0, Qt::WFlags f = 0 );
+    explicit KOAgenda ( int columns, QWidget *parent = 0, Qt::WFlags f = 0 );
     virtual ~KOAgenda();
 
     Incidence *selectedIncidence() const;
@@ -99,11 +96,11 @@ class KOAgenda : public Q3ScrollView
     QPoint contentsToGrid ( const QPoint &pos ) const;
     QPoint gridToContents ( const QPoint &gpos ) const;
 
-    int timeToY ( const QTime &time );
-    QTime gyToTime ( int y );
+    int timeToY ( const QTime &time ) const;
+    QTime gyToTime ( int y ) const;
 
-    QVector<int> minContentsY();
-    QVector<int> maxContentsY();
+    QVector<int> minContentsY() const;
+    QVector<int> maxContentsY() const;
 
     int visibleContentsYMin();
     int visibleContentsYMax();
@@ -117,12 +114,13 @@ class KOAgenda : public Q3ScrollView
     void insertMultiItem ( Event *event, const QDate &qd, int XBegin, int XEnd,
                            int YTop, int YBottom );
 
-    /** remove an event and all its multi-items from the agenda.
-     *  This function removes the items from the view, but doesn't delete them immediately.
-     *  Instead, they are queued in mItemsToDelete and later deleted by
-     *  the slot deleteItemsToDelete() (called by QTimer::singleShot )
-     *    @param incidence The pointer to the incidence that should be removed.
-     */
+    /**
+      Removes an event and all its multi-items from the agenda. This function
+      removes the items from the view, but doesn't delete them immediately.
+      Instead, they are queued in mItemsToDelete and later deleted by the
+      slot deleteItemsToDelete() (called by QTimer::singleShot ).
+      @param incidence The pointer to the incidence that should be removed.
+    */
     void removeIncidence( Incidence *incidence );
 
     void changeColumns( int columns );
@@ -132,9 +130,6 @@ class KOAgenda : public Q3ScrollView
 
     double gridSpacingX() const { return mGridSpacingX; }
     double gridSpacingY() const { return mGridSpacingY; }
-
-//    virtual QSizePolicy sizePolicy() const;
-
     void clear();
 
     /** Calculates the minimum width */
@@ -154,7 +149,8 @@ class KOAgenda : public Q3ScrollView
     void finishTypeAhead();
 
     void setCalendar( Calendar*cal ) { mCalendar = cal; }
-    void setIncidenceChanger( IncidenceChangerBase *changer ) { mChanger = changer; }
+    void setIncidenceChanger( KOrg::IncidenceChangerBase *changer )
+    { mChanger = changer; }
 
   public slots:
     void scrollUp();
@@ -173,10 +169,12 @@ class KOAgenda : public Q3ScrollView
       about selection/deselection of events.
     */
     void selectItem( KOAgendaItem * );
+
     /**
-      Select the item associated with a given uid. Linear search, use carefully.
-        @param uid the UID of the item that should be selected. If no such
-                   item exists, the selection is not changed.
+      Selects the item associated with a given uid.
+      Linear search, use carefully.
+      @param uid the UID of the item that should be selected. If no such
+      item exists, the selection is not changed.
     */
     void selectItemByUID( const QString& uid );
     bool removeAgendaItem( KOAgendaItem *item );
@@ -219,7 +217,7 @@ class KOAgenda : public Q3ScrollView
 
   protected:
     void drawContents( QPainter *p, int cx, int cy, int cw, int ch );
-    int columnWidth( int column );
+    int columnWidth( int column ) const;
     virtual void resizeEvent ( QResizeEvent * );
 
     /** Handles mouse events. Called from eventFilter */
@@ -246,7 +244,7 @@ class KOAgenda : public Q3ScrollView
     MouseActionType isInResizeArea( bool horizontal, const QPoint &pos, KOAgendaItem *item );
     /** Return whether the cell specified by the grid point belongs to the current select
     */
-    bool ptInSelection( QPoint gpos ) const;
+    bool ptInSelection( const QPoint &gpos ) const;
 
 
     /** Start selecting time span. */
