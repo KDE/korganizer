@@ -301,7 +301,7 @@ protected:
     }
     QPixmap pixmap;
     if( urls.count() > 1 )
-        pixmap = KGlobal::iconLoader()->loadIcon( "kmultiple", K3Icon::Desktop );
+        pixmap = KIconLoader::global()->loadIcon( "kmultiple", K3Icon::Desktop );
     if( pixmap.isNull() )
         pixmap = static_cast<AttachmentIconItem *>( currentItem() )->icon();
 
@@ -498,9 +498,9 @@ void KOEditorAttachments::dropEvent( QDropEvent* event ) {
       if ( !( weCanCopy = KProtocolManager::supportsReading( *it ) ) )
         break; // either we can copy them all, or no copying at all
     if ( weCanCopy )
-      menu.insertItem( i18n( "&Copy here" ), 0 );
+      menu.addAction( i18n( "&Copy here" ) );
   } else {
-    menu.insertItem( i18n( "&Copy here" ), 0 );
+    menu.addAction( i18n( "&Copy here" ) );
   }
 
   menu.addSeparator();

@@ -59,11 +59,7 @@ class KOrganizer : public KPartsMainWindow, public KOrgMainWindow
 {
   Q_OBJECT
   public:
-    /**
-      Constructs a new main window.
-      @param name     Qt internal widget name
-    */
-    KOrganizer( const char *name = 0 );
+    KOrganizer();
     virtual ~KOrganizer();
 
     void init( bool hasDocument );
