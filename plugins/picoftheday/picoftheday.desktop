@@ -8,4 +8,4 @@ Name[zh_TW]=行事曆維基「本日圖片」外掛程式
 Type=Service
 ServiceTypes=Calendar/Plugin,Calendar/Decoration
 X-KDE-KOrganizer-HasSettings=true
-X-KDE-PluginInterfaceVersion=3
+X-KDE-PluginInterfaceVersion=2

@@ -2,6 +2,7 @@
   This file is part of KOrganizer.
 
   Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
+  Copyright (c) 2007 Loïc Corbasson <loic.corbasson@gmail.com>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -26,9 +27,11 @@
 #include "configdialog.h"
 #include <kcalendarsystem.h>
 
-class DatenumsFactory : public OldCalendarDecorationFactory {
+using namespace KOrg::CalendarDecoration;
+
+class DatenumsFactory : public DecorationFactory {
   public:
-    OldCalendarDecoration *create() { return new Datenums; }
+    Decoration *create() { return new Datenums; }
 };
 
 K_EXPORT_COMPONENT_FACTORY( libkorg_datenums, DatenumsFactory )
@@ -37,19 +40,35 @@ K_EXPORT_COMPONENT_FACTORY( libkorg_datenums, DatenumsFactory )
 Datenums::Datenums()
 {
   KConfig _config( "korganizerrc", KConfig::NoGlobals );
-  KConfigGroup config(&_config, "Calendar/DateNum Plugin");
-  mDateNum = config.readEntry( "ShowDayNumbers", 0 );
+  KConfigGroup config(&_config, "Calendar/Datenums Plugin");
+
+  DatenumsAgenda* a = new DatenumsAgenda();
+  agendaElements += a;
 }
 
-void Datenums::configure(QWidget *parent)
+QString Datenums::info()
+{
+  return i18n("This plugin shows information on a day's position in the year.");
+}
+
+DatenumsAgenda::DatenumsAgenda()
+{
+  KConfig _config( "korganizerrc", KConfig::NoGlobals );
+  KConfigGroup config(&_config, "Calendar/Datenums Plugin/Agenda");
+  mDateNum = config.readEntry( "ShowDayNumbers", 0 );
+
+  // TODO: read the position from the config
+  m_position = DayTopT;
+}
+
+void DatenumsAgenda::configure(QWidget *parent)
 {
   ConfigDialog *dlg = new ConfigDialog(parent);
   dlg->exec();
   delete dlg;
 }
 
-
-QString Datenums::shortText( const QDate &date ) const
+QString DatenumsAgenda::shortText( const QDate &date )
 {
   int doy = KOGlobals::self()->calendarSystem()->dayOfYear(date);
   switch (mDateNum) {
@@ -67,7 +86,3 @@ QString Datenums::shortText( const QDate &date ) const
   return QString::number( doy );
 }
 
-QString Datenums::info()
-{
-  return i18n("This plugin provides numbers of days and weeks.");
-}

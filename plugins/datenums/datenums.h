@@ -2,6 +2,7 @@
   This file is part of KOrganizer.
 
   Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
+  Copyright (c) 2007 Loïc Corbasson <loic.corbasson@gmail.com>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,24 +21,32 @@
 #ifndef KORG_DATENUMS_H
 #define KORG_DATENUMS_H
 
-#include <QString>
+#include <QtCore/QString>
 
-#include <calendar/oldcalendardecoration.h>
+#include <calendar/calendardecoration.h>
 
-using namespace KOrg;
+using namespace KOrg::CalendarDecoration;
 
-class Datenums : public OldCalendarDecoration {
+class DatenumsAgenda : public AgendaElement {
+  public:
+    DatenumsAgenda();
+    ~DatenumsAgenda() {}
+
+    void configure( QWidget *parent );
+
+    QString shortText( const QDate & );
+
+  protected:
+    int mDateNum;
+};
+
+class Datenums : public Decoration {
   public:
     Datenums();
     ~Datenums() {}
 
-    void configure( QWidget *parent );
-    QString shortText( const QDate &qd ) const;
-
-    QString info();
-
   protected:
-    int mDateNum;
+    QString info();
 };
 
 #endif
