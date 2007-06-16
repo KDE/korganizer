@@ -47,6 +47,7 @@
 #include <kabc/addressee.h>
 
 #include <QPixmap>
+#include <QPointer>
 #include <QLayout>
 #include <QDateTime>
 #include <QVBoxLayout>
@@ -132,7 +133,11 @@ void KOIncidenceEditor::slotOk()
 {
   if ( mAttachments )
     mAttachments->applyChanges();
-  if ( processInput() ) accept();
+  // "this" can be deleted before processInput() returns (processInput() opens
+  // a non-modal dialog when Kolab is used). So accept should only be executed
+  // when "this" is still valid
+  QPointer<QWidget> ptr( this );
+  if ( processInput() && ptr ) accept();
 }
 
 void KOIncidenceEditor::updateCategoryConfig()
