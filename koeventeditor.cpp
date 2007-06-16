@@ -25,6 +25,7 @@
 
 #include <qtooltip.h>
 #include <qframe.h>
+#include <qguardedptr.h>
 #include <qpixmap.h>
 #include <qlayout.h>
 #include <qwidgetstack.h>
@@ -254,6 +255,8 @@ bool KOEventEditor::processInput()
 
   if ( !validateInput() || !mChanger ) return false;
 
+  QGuardedPtr<KOEditorFreeBusy> freeBusy( mFreeBusy );
+
   if ( mEvent ) {
     bool rc = true;
     Event *oldEvent = mEvent->clone();
@@ -286,8 +289,8 @@ bool KOEventEditor::processInput()
       return false;
     }
   }
-
-  if ( mFreeBusy ) mFreeBusy->cancelReload();
+  // if "this" was deleted, freeBusy is 0 (being a guardedptr)
+  if ( freeBusy ) freeBusy->cancelReload();
 
   return true;
 }
