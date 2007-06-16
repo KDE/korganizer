@@ -38,7 +38,7 @@
 #include <kurl.h>
 #include <kapplication.h>
 #include <ktoolinvocation.h>
-#include <k3process.h>
+#include <kshell.h>
 
 #include <QtDBus>
 #include <QByteArray>
@@ -147,15 +147,15 @@ bool KOMailClient::send(const QString &from,const QString &to,
       if (command.isNull()) return false; // give up
 
       command.append(QString::fromLatin1(" -s "));
-      command.append(K3Process::quote(subject));
+      command.append(KShell::quoteArg(subject));
 
       if (bcc) {
         command.append(QString::fromLatin1(" -b "));
-        command.append(K3Process::quote(from));
+        command.append(KShell::quoteArg(from));
       }
 
       command.append(" ");
-      command.append(K3Process::quote(to));
+      command.append(KShell::quoteArg(to));
 
       needHeaders = false;
     }

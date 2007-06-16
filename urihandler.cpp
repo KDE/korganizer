@@ -36,7 +36,7 @@
 #include <kiconloader.h>
 #include <krun.h>
 #include <kapplication.h>
-#include <k3process.h>
+#include <kshell.h>
 #include <kdebug.h>
 #include <ktoolinvocation.h>
 
@@ -76,7 +76,7 @@ bool UriHandler::process( const QString &uri )
       */
       QString iconPath = KIconLoader::global()->iconPath( "go", K3Icon::Small );
       QString tmpStr = "kaddressbook --editor-only --uid ";
-      tmpStr += K3Process::quote( uri.mid( ::qstrlen( KDEPIMPROTOCOL_CONTACT ) )
+      tmpStr += KShell::quoteArg( uri.mid( ::qstrlen( KDEPIMPROTOCOL_CONTACT ) )
       );
       KRun::runCommand( tmpStr, "KAddressBook", iconPath, 0 );
       return true;
