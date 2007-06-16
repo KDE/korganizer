@@ -24,9 +24,10 @@
 #ifndef KOEVENTVIEWERDIALOG_H
 #define KOEVENTVIEWERDIALOG_H
 
-#include <kdialog.h>
-#include <kdemacros.h>
+#include "korganizer_export.h"
 #include "koeventviewer.h"
+
+#include <kdialog.h>
 
 namespace KCal {
 class Incidence;
@@ -38,7 +39,7 @@ class KOEventViewer;
 /**
   Viewer dialog for events.
 */
-class KDE_EXPORT KOEventViewerDialog : public KDialog
+class KORGANIZER_EXPORT KOEventViewerDialog : public KDialog
 {
   Q_OBJECT
   public:

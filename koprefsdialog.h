@@ -25,6 +25,8 @@
 #ifndef KOPREFSDIALOG_H
 #define KOPREFSDIALOG_H
 
+#include "korganizer_export.h"
+
 #include <libkdepim/kprefsdialog.h>
 #include <libkdepim/kcmdesignerfields.h>
 
@@ -44,7 +46,7 @@ namespace Ui {
   class KOGroupwarePrefsPage;
 }
 
-class KDE_EXPORT KOPrefsDialogMain : public KPrefsModule
+class KORGANIZER_EXPORT KOPrefsDialogMain : public KPrefsModule
 {
   Q_OBJECT
   public:
@@ -56,7 +58,7 @@ class KDE_EXPORT KOPrefsDialogMain : public KPrefsModule
     QWidget *mUserEmailSettings;
 };
 
-class KDE_EXPORT KOPrefsDialogColors : public KPrefsModule
+class KORGANIZER_EXPORT KOPrefsDialogColors : public KPrefsModule
 {
   Q_OBJECT
   public:
@@ -86,7 +88,7 @@ class KDE_EXPORT KOPrefsDialogColors : public KPrefsModule
     QStringList mResourceIdentifier;
 };
 
-class KDE_EXPORT KOPrefsDialogGroupScheduling : public KPrefsModule
+class KORGANIZER_EXPORT KOPrefsDialogGroupScheduling : public KPrefsModule
 {
   Q_OBJECT
   public:
@@ -109,7 +111,7 @@ class KDE_EXPORT KOPrefsDialogGroupScheduling : public KPrefsModule
 
 class KOGroupwarePrefsPage;
 
-class KDE_EXPORT KOPrefsDialogGroupwareScheduling : public KPrefsModule
+class KORGANIZER_EXPORT KOPrefsDialogGroupwareScheduling : public KPrefsModule
 {
   Q_OBJECT
   public:
@@ -124,7 +126,7 @@ class KDE_EXPORT KOPrefsDialogGroupwareScheduling : public KPrefsModule
     Ui::KOGroupwarePrefsPage *mGroupwarePage;
 };
 
-class KDE_EXPORT KOPrefsDialogPlugins : public KPrefsModule
+class KORGANIZER_EXPORT KOPrefsDialogPlugins : public KPrefsModule
 {
   Q_OBJECT
   public:
@@ -143,7 +145,7 @@ class KDE_EXPORT KOPrefsDialogPlugins : public KPrefsModule
     KPushButton *mConfigureButton;
 };
 
-class KDE_EXPORT KOPrefsDesignerFields : public KPIM::KCMDesignerFields
+class KORGANIZER_EXPORT KOPrefsDesignerFields : public KPIM::KCMDesignerFields
 {
   public:
     explicit KOPrefsDesignerFields( const KComponentData &inst, QWidget *parent = 0 );

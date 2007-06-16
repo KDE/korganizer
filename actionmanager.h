@@ -28,8 +28,8 @@
 #ifndef KORG_ACTIONMANAGER_H
 #define KORG_ACTIONMANAGER_H
 
+#include "korganizer_export.h"
 #include <korganizer/part.h>
-#include <kdemacros.h>
 
 #include <kurl.h>
 
@@ -72,7 +72,7 @@ using namespace KCal;
   actions are in one location.
   It also provides DCOP interface[s].
 */
-class KDE_EXPORT ActionManager : public QObject
+class KORGANIZER_EXPORT ActionManager : public QObject
 {
   Q_OBJECT
   public:

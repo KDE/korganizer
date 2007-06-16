@@ -22,16 +22,17 @@
 #ifndef KORG_BASEVIEW_H
 #define KORG_BASEVIEW_H
 
-#include <QtGui/QWidget>
+#include "printplugin.h"
+#include "korganizer/korganizer_export.h"
+#include "korganizer/incidencechangerbase.h"
+
+#include <kcal/event.h>
 
 #include <klocale.h>
 #include <kdebug.h>
 #include <kmessagebox.h>
-#include <kdemacros.h>
-#include "korganizer/incidencechangerbase.h"
-#include "printplugin.h"
 
-#include <kcal/event.h>
+#include <QtGui/QWidget>
 
 using namespace KCal;
 
@@ -50,7 +51,7 @@ namespace KOrg {
   @author Preston Brown, Cornelius Schumacher
   @see KOTodoView, KOEventView, KOListView, KOAgendaView, KOMonthView
 */
-class KDE_EXPORT BaseView : public QWidget
+class KORGANIZER_EXPORT BaseView : public QWidget
 {
   Q_OBJECT
   public:

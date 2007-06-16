@@ -24,9 +24,9 @@
 #ifndef KOPREFS_H
 #define KOPREFS_H
 
+#include "korganizer_export.h"
 #include "koprefs_base.h"
 
-#include <kdemacros.h>
 #include <kdatetime.h>
 
 #include <QHash>
@@ -37,7 +37,7 @@ class QStringList;
 
 QColor getTextColor( const QColor &c );
 
-class KDE_EXPORT KOPrefs : public KOPrefsBase
+class KORGANIZER_EXPORT KOPrefs : public KOPrefsBase
 {
   public:
     virtual ~KOPrefs();

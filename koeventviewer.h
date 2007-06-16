@@ -25,9 +25,10 @@
 #ifndef KOEVENTVIEWER_H
 #define KOEVENTVIEWER_H
 
+#include "korganizer_export.h"
+
 #include <kconfig.h>
 #include <ktextbrowser.h>
-#include <kdemacros.h>
 
 namespace KCal {
 class Incidence;
@@ -38,7 +39,7 @@ using namespace KCal;
 /**
   Viewer widget for events.
 */
-class KDE_EXPORT KOEventViewer : public KTextBrowser
+class KORGANIZER_EXPORT KOEventViewer : public KTextBrowser
 {
   Q_OBJECT
   public:

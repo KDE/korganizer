@@ -24,9 +24,9 @@
 #ifndef KORG_GLOBALS_H
 #define KORG_GLOBALS_H
 
-#include <kdemacros.h>
-#include <QPixmap>
+#include "korganizer_export.h"
 #include <kcomponentdata.h>
+#include <QPixmap>
 
 class QPixmap;
 class QIcon;
@@ -38,7 +38,7 @@ namespace LibKHolidays {
   class KHolidays;
 }
 
-class KDE_EXPORT KOGlobals
+class KORGANIZER_EXPORT KOGlobals
 {
   public:
     static KOGlobals *self();

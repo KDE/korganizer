@@ -24,7 +24,7 @@
 #ifndef KOHELPER_H
 #define KOHELPER_H
 
-#include <kdemacros.h>
+#include "korganizer_export.h"
 #include <QColor>
 
 namespace KCal {
@@ -35,7 +35,7 @@ namespace KCal {
 // Provides static methods that are useful to all views.
 // TODO: replace this class with KOHelper namespace.
 
-class KDE_EXPORT KOHelper
+class KORGANIZER_EXPORT KOHelper
 {
   public:
     /**

@@ -27,10 +27,10 @@
 
 #ifndef KORG_NOPRINTER
 
+#include "korganizer/korganizer_export.h"
+#include "korganizer/baseview.h"
+#include "korganizer/printplugin.h"
 #include <kdialog.h>
-#include <korganizer/baseview.h>
-#include <korganizer/printplugin.h>
-#include <kdemacros.h>
 
 namespace KOrg {
 class CoreHelper;
@@ -48,7 +48,7 @@ class QComboBox;
   different formats (day, week, month).  It also provides a way for setting
   up the printer and remembering these preferences.
 */
-class KDE_EXPORT CalPrinter : public QObject, public KOrg::CalPrinterBase
+class KORGANIZER_EXPORT CalPrinter : public QObject, public KOrg::CalPrinterBase
 {
   Q_OBJECT
   public:

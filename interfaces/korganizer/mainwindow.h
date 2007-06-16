@@ -21,8 +21,8 @@
 #ifndef KORG_MAINWINDOW_H
 #define KORG_MAINWINDOW_H
 
+#include "korganizer/korganizer_export.h"
 #include <kxmlguiclient.h>
-
 #include <QtGui/QWidget>
 
 class KActionCollection;
@@ -39,7 +39,7 @@ class CalendarViewBase;
   @short interface for korganizer main window
   @author Cornelius Schumacher
 */
-class KDE_EXPORT MainWindow
+class KORGANIZER_EXPORT MainWindow
 {
   public:
     MainWindow();

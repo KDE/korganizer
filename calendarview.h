@@ -26,16 +26,18 @@
 #ifndef CALENDARVIEW_H
 #define CALENDARVIEW_H
 
+#include "korganizer_export.h"
+#include <korganizer/koeventviewer.h>
+#include <korganizer/calendarviewbase.h>
+
+#include <kcal/scheduler.h>
+
+#include <kfile.h>
+
 #include <QWidget>
 #include <QMap>
 #include <QByteArray>
 #include <QList>
-#include <kfile.h>
-#include <korganizer/koeventviewer.h>
-#include <kcal/scheduler.h>
-#include <kdemacros.h>
-
-#include <korganizer/calendarviewbase.h>
 
 class QStackedWidget;
 class QSplitter;
@@ -79,7 +81,7 @@ class CalendarViewExtension : public QWidget
   @short main calendar view widget
   @author Cornelius Schumacher
 */
-class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::CalendarObserver
+class KORGANIZER_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::CalendarObserver
 {
   Q_OBJECT
   public:

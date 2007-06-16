@@ -28,6 +28,7 @@
 
 #ifndef KORG_NOPRINTER
 
+#include "korganizer/korganizer_export.h"
 #include "korganizer/printplugin.h"
 #include "korganizer/corehelper.h"
 
@@ -37,7 +38,6 @@
 
 #include <kdatetime.h>
 #include <kprinter.h>
-#include <kdemacros.h>
 
 #include <QtCore/QDateTime>
 #include <QtGui/QPainter>
@@ -61,7 +61,7 @@ using namespace KCal;
   Base class for KOrganizer printing classes. Each sub class represents one
   calendar print format.
 */
-class KDE_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
+class KORGANIZER_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
 {
   public:
     enum DisplayFlags {

@@ -32,12 +32,12 @@
 #ifndef KORGANIZER_SHARED_H
 #define KORGANIZER_SHARED_H
 
+#include "korganizer_export.h"
 #include <QObject>
-#include <kdemacros.h>
 
 class ActionManager;
 
-class KDE_EXPORT KOrganizerIfaceImpl : public QObject
+class KORGANIZER_EXPORT KOrganizerIfaceImpl : public QObject
 {
   Q_OBJECT
   public:

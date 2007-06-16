@@ -442,7 +442,7 @@ For security reasons, it is not recommended to store your password in the config
  <layoutdefault spacing="6" margin="11" />
  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
  <includes>
-  <include location="global" >kdemacros.h</include>
+  <include location="global" >korganizer_export.h</include>
  </includes>
  <resources/>
  <connections/>
