@@ -85,6 +85,8 @@ void CustomListViewItem<KCal::Attendee *>::updateItem()
     setPixmap(4,KOGlobals::self()->smallIcon("mailappt"));
   else
     setPixmap(4,KOGlobals::self()->smallIcon("nomailappt"));
+  setText(5, mData->delegate());
+  setText(6, mData->delegator());
 }
 
 KOAttendeeListView::KOAttendeeListView ( QWidget *parent )
@@ -222,9 +224,11 @@ KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent )
 			"from the attendee.") );
   mListView->addColumn( i18n("Name"), 200 );
   mListView->addColumn( i18n("Email"), 200 );
-  mListView->addColumn( i18n("Role"), 60 );
+  mListView->addColumn( i18n("Role"), 80 );
   mListView->addColumn( i18n("Status"), 100 );
-  mListView->addColumn( i18n("RSVP"), 35 );
+  mListView->addColumn( i18n("RSVP"), 55 );
+  mListView->addColumn( i18n("Delegated to"), 120 );
+  mListView->addColumn( i18n("Delegated from" ), 120 );
   mListView->setResizeMode( Q3ListView::LastColumn );
   if ( KOPrefs::instance()->mCompactDialogs ) {
     mListView->setFixedHeight( 78 );
