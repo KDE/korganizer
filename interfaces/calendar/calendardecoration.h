@@ -85,10 +85,30 @@ class Element
     Position position() { return m_position; }
 
     /**
+      Return a short text for a given date, usually only a few words.
+     */
+    virtual QString shortText( const QDate & ) { return QString(); }
+    /**
+      Return a long text for a given date. This text can be of any length, but
+      usually it will have one or a few paragraphs.
+     */
+    virtual QString longText( const QDate & ) { return QString(); }
+
+    /**
+      Return a small pixmap. The size should be something like 30x30 pixels.
+     */
+    virtual QPixmap smallPixmap( const QDate &) { return QPixmap(); }
+    /**
+      Return a large pixmap. The size should be something like 300x300 pixels.
+     */
+    virtual QPixmap largePixmap( const QDate &) { return QPixmap(); }
+
+    /**
       The widget to be shown for a given @param date,
       with @param parent as parent widget.
      */
-    virtual QWidget *widget( QWidget *parent, const QDate &date ) { Q_UNUSED(parent); Q_UNUSED(date); return 0; }
+    virtual QWidget *widget( QWidget *parent, const QDate &date ) 
+      { Q_UNUSED(parent); Q_UNUSED(date); return 0; }
 
   protected:
     Position m_position;
@@ -98,7 +118,8 @@ class Element
       Slot to use to allow the widget to adapt to a @param newPosition
       when it changed.
      */
-    void positionChanged( const Position &newPosition ) { Q_UNUSED(newPosition); }
+    void widgetPositionChanged( const Position &newPosition )
+      { Q_UNUSED(newPosition); }
 
 };
 
@@ -114,7 +135,8 @@ class AgendaElement : public Element
     virtual ~AgendaElement() {}
 
     QFlags<Positions> availablePositions() {
-      return Panel|Top|Left|Bottom|Right|DayTopT|DayTopL|DayTopB|DayTopR|DayBottomC; }
+      return Panel|Top|Left|Bottom|Right|
+             DayTopT|DayTopL|DayTopB|DayTopR|DayBottomC; }
 
 };
 
@@ -124,12 +146,12 @@ class AgendaElement : public Element
   @brief This class provides the interface for a date dependent decoration.
 
   The decoration is made of various decoration elements,
-  which show a defined widget for a given date.
+  which show a defined text/picture/widget for a given date.
  */
 class Decoration : public Plugin
 {
   public:
-    static int interfaceVersion() { return 3; }
+    static int interfaceVersion() { return 2; }
     static QString serviceType() { return QLatin1String("Calendar/Decoration"); }
 
     typedef QList<Decoration*> List;
