@@ -32,7 +32,7 @@ class PicofthedayAgenda : public AgendaElement {
     ~PicofthedayAgenda() {}
     
   protected:
-    QWidget *widget( QWidget *, const QDate &);
+    QWidget *widget( QWidget *, const QDate &) const;
 };
 
 

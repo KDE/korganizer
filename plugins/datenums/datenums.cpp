@@ -68,7 +68,7 @@ void DatenumsAgenda::configure(QWidget *parent)
   delete dlg;
 }
 
-QString DatenumsAgenda::shortText( const QDate &date )
+QString DatenumsAgenda::shortText( const QDate &date ) const
 {
   int doy = KOGlobals::self()->calendarSystem()->dayOfYear(date);
   switch (mDateNum) {

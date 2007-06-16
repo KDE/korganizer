@@ -31,7 +31,7 @@ class ThisDayInHistory : public OldCalendarDecoration {
     ThisDayInHistory();
     ~ThisDayInHistory() {}
     
-    QWidget* smallWidget( QWidget *, const QDate &);
+    QWidget* smallWidget( QWidget *, const QDate &) const;
     
     QString info();
 

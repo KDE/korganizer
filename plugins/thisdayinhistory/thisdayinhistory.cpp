@@ -44,7 +44,7 @@ ThisDayInHistory::ThisDayInHistory()
 }
 
 
-QWidget* ThisDayInHistory::smallWidget( QWidget *parent, const QDate &date)
+QWidget* ThisDayInHistory::smallWidget( QWidget *parent, const QDate &date) const
 {
   TDIHWidget* l = new TDIHWidget(parent);
   l->setText(i18n("This Day in History"));

@@ -62,7 +62,7 @@ PicofthedayAgenda::PicofthedayAgenda()
   m_position = DayBottomC;
 }
 
-QWidget* PicofthedayAgenda::widget( QWidget *parent, const QDate &date)
+QWidget* PicofthedayAgenda::widget( QWidget *parent, const QDate &date) const
 {
   POTDWidget *w = new POTDWidget(parent);
   w->loadPOTD(date);

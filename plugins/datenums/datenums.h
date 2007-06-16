@@ -34,7 +34,7 @@ class DatenumsAgenda : public AgendaElement {
 
     void configure( QWidget *parent );
 
-    QString shortText( const QDate & );
+    QString shortText( const QDate & ) const;
 
   protected:
     int mDateNum;

@@ -71,43 +71,44 @@ class Element
     Element() {}
     virtual ~Element() {}
 
-    virtual QFlags<Positions> availablePositions() = 0;
+    virtual QFlags<Positions> availablePositions() const = 0;
 
     /**
       This function returns the positions the decoration element can accept
       (by default, all available positions)
      */
-    QFlags<Positions> acceptablePositions() { return availablePositions(); }
+    QFlags<Positions> acceptablePositions() const
+      { return availablePositions(); }
 
     /**
       Returns the decoration element's current position.
      */
-    Position position() { return m_position; }
+    Position position() const { return m_position; }
 
     /**
       Return a short text for a given date, usually only a few words.
      */
-    virtual QString shortText( const QDate & ) { return QString(); }
+    virtual QString shortText( const QDate & ) const { return QString(); }
     /**
       Return a long text for a given date. This text can be of any length, but
       usually it will have one or a few paragraphs.
      */
-    virtual QString longText( const QDate & ) { return QString(); }
+    virtual QString longText( const QDate & ) const { return QString(); }
 
     /**
       Return a small pixmap. The size should be something like 30x30 pixels.
      */
-    virtual QPixmap smallPixmap( const QDate &) { return QPixmap(); }
+    virtual QPixmap smallPixmap( const QDate &) const { return QPixmap(); }
     /**
       Return a large pixmap. The size should be something like 300x300 pixels.
      */
-    virtual QPixmap largePixmap( const QDate &) { return QPixmap(); }
+    virtual QPixmap largePixmap( const QDate &) const { return QPixmap(); }
 
     /**
       The widget to be shown for a given @param date,
       with @param parent as parent widget.
      */
-    virtual QWidget *widget( QWidget *parent, const QDate &date ) 
+    virtual QWidget *widget( QWidget *parent, const QDate &date ) const
       { Q_UNUSED(parent); Q_UNUSED(date); return 0; }
 
   protected:
@@ -134,7 +135,7 @@ class AgendaElement : public Element
     AgendaElement() {}
     virtual ~AgendaElement() {}
 
-    QFlags<Positions> availablePositions() {
+    QFlags<Positions> availablePositions() const {
       return Panel|Top|Left|Bottom|Right|
              DayTopT|DayTopL|DayTopB|DayTopR|DayBottomC; }
 

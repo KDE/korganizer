@@ -52,26 +52,27 @@ class OldCalendarDecoration : public Plugin
     /**
       Return a short text for a given date, ususally only a few words.
     */
-    virtual QString shortText( const QDate & ) { return QString(); }
+    virtual QString shortText( const QDate & ) const { return QString(); }
     /**
       Return along text for a given date. This text can be of any length, but
       usually it will have one or a few paragraphs.
     */
-    virtual QString longText( const QDate & ) { return QString(); }
+    virtual QString longText( const QDate & ) const { return QString(); }
 
     /**
       Return a small pixmap. The size should be something like 30x30 pixels.
     */
-    virtual QPixmap smallPixmap( const QDate &) { return QPixmap(); }
+    virtual QPixmap smallPixmap( const QDate &) const { return QPixmap(); }
     /**
       Return a large pixmap. The size should be something like 300x300 pixels.
     */
-    virtual QPixmap largePixmap( const QDate &) { return QPixmap(); }
+    virtual QPixmap largePixmap( const QDate &) const { return QPixmap(); }
 
     /**
       Return a small widget. It should have the size of a pushbutton.
     */
-    virtual QWidget *smallWidget( QWidget *, const QDate & ) { return 0; }
+    virtual QWidget *smallWidget( QWidget *, const QDate & ) const
+      { return 0; }
 };
 
 class OldCalendarDecorationFactory : public PluginFactory
