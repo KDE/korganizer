@@ -793,7 +793,7 @@ void KOAgendaView::createDayLabels()
       foreach ( CalendarDecoration::AgendaElement* it, deco->agenda() ) {
         kDebug() << "found an agenda element, can be positioned at: " << it->acceptablePositions() << endl;
         // TODO: filter only widgets for this position (and position them adequately, and reject a 2nd widget for the same position)
-        if ( it->position() == "DayTopT" ) {
+        if ( it->position() == CalendarDecoration::DayTopT ) {
           QWidget *wid = it->widget( mDayLabels, date );
           if ( wid ) {
             wid->setMaximumHeight( mAgenda->height()/5 ); //TODO: use a better metric, handle view resizes
@@ -881,7 +881,7 @@ void KOAgendaView::createDayLabels()
       foreach ( CalendarDecoration::AgendaElement* it, deco->agenda() ) {
 //        kDebug() << "found an agenda element, can be positioned at: " << it->acceptablePositions() << endl;
         // TODO: filter only widgets for this position (and position them adequately, and reject a 2nd widget for the same position)
-        if ( it->position() == "DayTopB" ) {
+        if ( it->position() == CalendarDecoration::DayTopB ) {
           QWidget *wid = it->widget( mDayLabels, date );
           if ( wid ) {
             wid->setMaximumHeight( mAgenda->height()/5 ); //TODO: use a better metric, handle view resizes
@@ -902,7 +902,7 @@ void KOAgendaView::createDayLabels()
       foreach ( CalendarDecoration::AgendaElement* it, deco->agenda() ) {
 //        kDebug() << "found an agenda element, can be positioned at: " << it->acceptablePositions() << endl;
         // TODO: filter only widgets for this position (and position them adequately, and reject a 2nd widget for the same position)
-        if ( it->position() == "DayBottomC" ) {
+        if ( it->position() == CalendarDecoration::DayBottomC ) {
           QWidget *wid = it->widget( mBottomDayLabels, date );
           if ( wid ) {
             wid->setMaximumHeight( mAgenda->height()/5 ); //TODO: use a better metric, handle view resizes

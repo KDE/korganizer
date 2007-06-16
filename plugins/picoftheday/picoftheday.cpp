@@ -59,7 +59,7 @@ PicofthedayAgenda::PicofthedayAgenda()
   KConfigGroup config(&_config, "Calendar/Picoftheday Plugin/Agenda");
   
   // TODO: read the position from the config 
-  m_position = "DayBottomC";
+  m_position = DayBottomC;
 }
 
 QWidget* PicofthedayAgenda::widget( QWidget *parent, const QDate &date)

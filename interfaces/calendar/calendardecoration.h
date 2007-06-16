@@ -1,7 +1,7 @@
 /*
   This file is part of the KOrganizer interfaces.
 
-  Copyright (c) 2001,2003 Cornelius Schumacher <schumacher@kde.org>
+  Copyright (c) 2007 Loïc Corbasson <loic.corbasson@gmail.com>
 
   This library is free software; you can redistribute it and/or
   modify it under the terms of the GNU Library General Public
@@ -22,7 +22,7 @@
 #define KORG_CALENDARDECORATION_H
 
 #include <QtCore/QString>
-#include <QtCore/QStringList>
+#include <QtCore/QFlags>
 #include <QtCore/QDateTime>
 #include <QtCore/QList>
 #include <QtGui/QPixmap>
@@ -34,6 +34,28 @@
 namespace KOrg {
 
 namespace CalendarDecoration {
+
+/**
+  The various places a decoration can be shown at.
+  Note that a particular view only implements a subset of those available here.
+*/
+enum Position {
+  // "Standard" positions (for all views)
+  Panel     =   1,
+  Top       =   2,
+  Left      =   4,
+  Bottom    =   8,
+  Right     =  16,
+  // Agenda view - Around the top label (T=top, L=left, B=bottom, R=right)
+  DayTopT   =  32,
+  DayTopL   =  64,
+  DayTopB   = 128,
+  DayTopR   = 256,
+  // Agenda view - Under the event list
+  DayBottomC = 512
+};
+Q_DECLARE_FLAGS(Positions, Position)
+Q_DECLARE_OPERATORS_FOR_FLAGS(Positions)
 
 /**
   @class Element
@@ -49,34 +71,34 @@ class Element
     Element() {}
     virtual ~Element() {}
 
-    virtual QStringList availablePositions() = 0;
+    virtual QFlags<Positions> availablePositions() = 0;
 
     /**
       This function returns the positions the decoration element can accept
       (by default, all available positions)
      */
-    QStringList acceptablePositions() { return availablePositions(); }
+    QFlags<Positions> acceptablePositions() { return availablePositions(); }
 
     /**
       Returns the decoration element's current position.
      */
-    QString position() { return m_position; }
+    Position position() { return m_position; }
 
     /**
       The widget to be shown for a given @param date,
       with @param parent as parent widget.
      */
-    virtual QWidget *widget( QWidget *parent, const QDate &date ) { return 0; }
+    virtual QWidget *widget( QWidget *parent, const QDate &date ) { Q_UNUSED(parent); Q_UNUSED(date); return 0; }
 
   protected:
-    QString m_position;
+    Position m_position;
 
   public Q_SLOTS:
     /**
       Slot to use to allow the widget to adapt to a @param newPosition
       when it changed.
      */
-    void positionChanged( const QString &newPosition ) {}
+    void positionChanged( const Position &newPosition ) { Q_UNUSED(newPosition); }
 
 };
 
@@ -91,14 +113,8 @@ class AgendaElement : public Element
     AgendaElement() {}
     virtual ~AgendaElement() {}
 
-    QStringList availablePositions() {
-      QStringList l;
-      l << "Panel" << "Top" << "Left" << "Bottom" << "Right"
-                                                       // "Standard" positions
-        << "DayTopT" << "DayTopL" << "DayTopB" << "DayTopR"
-                    // Around the top label (T=top, L=left, B=bottom, R=right)
-        << "DayBottom"; // Under the event list
-      return l; }
+    QFlags<Positions> availablePositions() {
+      return Panel|Top|Left|Bottom|Right|DayTopT|DayTopL|DayTopB|DayTopR|DayBottomC; }
 
 };
 
