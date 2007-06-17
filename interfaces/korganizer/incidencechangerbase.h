@@ -58,7 +58,7 @@ public:
   static bool incidencesEqual( Incidence *inc1, Incidence *inc2 );
   static bool assignIncidence( Incidence *inc1, Incidence *inc2 );
 */
-signals:
+Q_SIGNALS:
   void incidenceAdded( Incidence * );
   void incidenceChanged( Incidence *oldInc, Incidence *newInc, int );
   void incidenceChanged( Incidence *oldInc, Incidence *newInc );
