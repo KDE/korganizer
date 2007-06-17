@@ -74,13 +74,11 @@ install(TARGETS korganizerpart  DESTINATION ${PLUGIN_INSTALL_DIR})
 
 ########### next target ###############
 
-if(KDE4_BUILD_TESTS)
 set(korgplugins_SRCS korgplugins.cpp )
 
 kde4_automoc(${korgplugins_SRCS})
 
-
-kde4_add_executable(korgplugins ${korgplugins_SRCS})
+kde4_add_test_executable(korgplugins ${korgplugins_SRCS})
 
 target_link_libraries(korgplugins  korganizer ${KDE4_KIO_LIBS} )
 
@@ -92,11 +90,9 @@ set(timezone_SRCS timezone.cpp )
 kde4_automoc(${timezone_SRCS})
 
 
-kde4_add_executable(timezone ${timezone_SRCS})
+kde4_add_test_executable(timezone ${timezone_SRCS})
 
 target_link_libraries(timezone  korganizer ${KDE4_KIO_LIBS} )
-
-endif(KDE4_BUILD_TESTS)
 
 ########### next target ###############
 
