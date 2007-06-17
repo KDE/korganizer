@@ -21,30 +21,34 @@
 #define POTDWIDGET_H
 
 #include <kurl.h>
+#include <kurllabel.h>
 #include <kio/job.h>
 
 #include <QString>
 #include <QDate>
-#include <QLabel>
 
-class POTDWidget : public QLabel {
+class POTDWidget : public KUrlLabel {
   Q_OBJECT
 
   public:
-    POTDWidget(QWidget *parent = 0);
+    POTDWidget( QWidget *parent = 0 );
     virtual ~POTDWidget();
     
-    void loadPOTD(const QDate &date);
+    void loadPOTD( const QDate &date );
 
   protected:
     QString mFileName;
     KUrl mImagePageUrl;
     KUrl mThumbUrl;
+    QString mDescription;
 
   private slots:
-    void gotFileName(KJob* job);
-    void gotImagePageUrl(KJob* job);
-    void gotPOTD(KJob* job);
+    void gotFileName( KJob* job );
+    void gotImagePageUrl( KJob* job );
+    void gotPOTD( KJob* job );
+
+  public slots:
+    void invokeBrowser( const QString &url );
 };
 
 
