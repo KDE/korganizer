@@ -35,7 +35,7 @@ class Part : public KParts::Part
 {
   public:
     static int interfaceVersion() { return 2; }
-    static QString serviceType() { return "KOrganizer/Part"; }
+    static QString serviceType() { return QLatin1String("KOrganizer/Part"); }
 
     typedef QList<Part*> List;
 
