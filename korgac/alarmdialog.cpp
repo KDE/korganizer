@@ -192,10 +192,8 @@ void AlarmDialog::slotUser2()
 void AlarmDialog::show()
 {
   KDialog::show();
-#ifdef Q_OS_UNIX
   KWindowSystem::setState( winId(), NET::KeepAbove );
   KWindowSystem::setOnAllDesktops( winId(), true );
-#endif
   eventNotification();
 }
 
