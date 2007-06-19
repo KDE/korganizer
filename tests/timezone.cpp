@@ -44,7 +44,7 @@ int main(int argc,char **argv)
   const KTimeZone *zone = KOPrefs::instance()->timeSpec().timeZone();
   if (zone)
     kDebug(5850) << "KOrganizer TimezoneId: " << zone->name() << endl;
-  
+
   time_t ltime;
   ::time( &ltime );
   tm *t = localtime( &ltime );
@@ -57,9 +57,9 @@ int main(int argc,char **argv)
 #else
 #warning port timezone debug output if needed
 #endif
-  
+
   QTime qtime = QTime::currentTime();
-  
+
   kDebug(5850) << "QDateTime::currentTime(): "
             << qtime.toString( Qt::ISODate ) << endl;
 

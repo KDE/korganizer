@@ -1,4 +1,5 @@
 project(korganizer)
+add_subdirectory( tests )
 
 include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/interfaces 
                      ${CMAKE_SOURCE_DIR}/libkpimidentities 
@@ -82,17 +83,6 @@ kde4_add_test_executable(korgplugins ${korgplugins_SRCS})
 
 target_link_libraries(korgplugins  korganizer ${KDE4_KIO_LIBS} )
 
-
-########### next target ###############
-
-set(timezone_SRCS timezone.cpp )
-
-kde4_automoc(${timezone_SRCS})
-
-
-kde4_add_test_executable(timezone ${timezone_SRCS})
-
-target_link_libraries(timezone  korganizer ${KDE4_KIO_LIBS} )
 
 ########### next target ###############
 
