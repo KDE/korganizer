@@ -223,10 +223,16 @@ CalPrintDialog::CalPrintDialog( KOrg::PrintPlugin::List plugins,
   }
   // Insert all plugins with in sorted order; plugins with clashing IDs will be first...
   QMap<int, KOrg::PrintPlugin*>::ConstIterator mapit;
+  bool firstButton = true; 
   for ( mapit = mPluginIDs.begin(); mapit != mPluginIDs.end(); ++mapit ) {
     KOrg::PrintPlugin *p = mapit.value();
     QRadioButton *radioButton = new QRadioButton( p->description() );
     radioButton->setEnabled( p->enabled() );
+    if(firstButton)
+    {
+       firstButton = false;
+       radioButton->setChecked(true);
+    }
 //     radioButton->setMinimumHeight( radioButton->sizeHint().height() - 5 );
     mTypeGroup->addButton( radioButton, mapit.key() );
     typeLayout->addWidget( radioButton );
