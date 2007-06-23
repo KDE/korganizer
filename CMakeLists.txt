@@ -75,17 +75,6 @@ install(TARGETS korganizerpart  DESTINATION ${PLUGIN_INSTALL_DIR})
 
 ########### next target ###############
 
-set(korgplugins_SRCS korgplugins.cpp )
-
-kde4_automoc(${korgplugins_SRCS})
-
-kde4_add_test_executable(korgplugins ${korgplugins_SRCS})
-
-target_link_libraries(korgplugins  korganizer ${KDE4_KIO_LIBS} )
-
-
-########### next target ###############
-
 set(korganizer_eventviewer_LIB_SRCS koeventviewer.cpp urihandler.cpp koeventviewerdialog.cpp )
 
 kde4_automoc(${korganizer_eventviewer_LIB_SRCS})

@@ -1,5 +1,6 @@
 
 add_subdirectory( pixmaps ) 
+add_subdirectory( tests ) 
 
 include_directories( ${CMAKE_SOURCE_DIR}/korganizer  )
 
@@ -27,16 +28,6 @@ target_link_libraries(korgac  ${KDE4_KDEUI_LIBS} ${KDE4_PHONON_LIBS} korganizer_
 
 install(TARGETS korgac  DESTINATION ${BIN_INSTALL_DIR} )
 
-
-########### next target ###############
-set(testalarmdlg_SRCS testalarmdlg.cpp alarmdialog.cpp )
-QT4_ADD_DBUS_INTERFACE( testalarmdlg_SRCS ${korganizer_xml} korganizer_interface )
-
-kde4_automoc(${testalarmdlg_SRCS})
-
-kde4_add_test_executable(testalarmdlg ${testalarmdlg_SRCS})
-
-target_link_libraries(testalarmdlg  ${KDE4_KDEUI_LIBS} ${KDE4_PHONON_LIBS} ${KDE4_KCAL_LIBS} korganizer_eventviewer)
 
 ########### install files ###############
 
