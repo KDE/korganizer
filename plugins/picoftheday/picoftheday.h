@@ -32,7 +32,9 @@ class PicofthedayAgenda : public AgendaElement {
     ~PicofthedayAgenda() {}
     
   protected:
-    QWidget *widget( QWidget *, const QDate &) const;
+    QWidget *widget( QWidget *, const QDate & ) const;
+    int mThumbnailSize;
+    Qt::AspectRatioMode mAspectRatioMode;
 };
 
 
@@ -41,9 +43,10 @@ class Picoftheday : public Decoration {
     Picoftheday();
     ~Picoftheday() {}
     
+    void configure( QWidget *parent );
+
   protected:
     QString info();
-
 };
 
 #endif

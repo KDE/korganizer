@@ -20,6 +20,7 @@
 
 #include "picoftheday.h"
 #include "potdwidget.h"
+#include "configdialog.h"
 
 #include "koglobals.h"
 
@@ -47,6 +48,13 @@ Picoftheday::Picoftheday()
   agendaElements += a;
 }
 
+void Picoftheday::configure(QWidget *parent)
+{
+  ConfigDialog *dlg = new ConfigDialog(parent);
+  dlg->exec();
+  delete dlg;
+}
+
 QString Picoftheday::info()
 {
   return i18n("This plugin provides the Wikipedia <i>Picture of the Day</i>.");
@@ -57,15 +65,19 @@ PicofthedayAgenda::PicofthedayAgenda()
 {
   KConfig _config( "korganizerrc", KConfig::NoGlobals );
   KConfigGroup config(&_config, "Calendar/Picoftheday Plugin/Agenda");
+  mThumbnailSize = config.readEntry( "ThumbnailSize", 120 );
+  mAspectRatioMode = (Qt::AspectRatioMode)config.readEntry( "AspectRatioMode", int(Qt::KeepAspectRatio) );
   
   // TODO: read the position from the config 
   m_position = DayBottomC;
 }
 
-QWidget* PicofthedayAgenda::widget( QWidget *parent, const QDate &date) const
+QWidget* PicofthedayAgenda::widget( QWidget *parent, const QDate &date ) const
 {
   POTDWidget *w = new POTDWidget(parent);
-  w->loadPOTD(date);
+  w->setThumbnailSize( mThumbnailSize );
+  w->loadPOTD( date );
+  w->setAspectRatioMode( mAspectRatioMode );
 
   return w;
 }

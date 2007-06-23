@@ -34,13 +34,17 @@ class POTDWidget : public KUrlLabel {
     POTDWidget( QWidget *parent = 0 );
     virtual ~POTDWidget();
     
+    void setAspectRatioMode( const Qt::AspectRatioMode mode );
+    void setThumbnailSize( const int size );
     void loadPOTD( const QDate &date );
 
   protected:
     QString mFileName;
     KUrl mImagePageUrl;
     KUrl mThumbUrl;
+    int mThumbSize;
     QString mDescription;
+    Qt::AspectRatioMode mARMode;
 
   private slots:
     void gotFileName( KJob* job );

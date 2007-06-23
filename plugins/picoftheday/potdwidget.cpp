@@ -30,12 +30,24 @@
 POTDWidget::POTDWidget(QWidget* parent)
   : KUrlLabel( parent )
 {
+  mThumbSize = 120;
+  mARMode = Qt::KeepAspectRatio;
   connect( this, SIGNAL( leftClickedUrl(const QString&) ),
            this, SLOT( invokeBrowser(const QString&) ) );
 }
 
 POTDWidget::~POTDWidget()
 {
+}
+
+void POTDWidget::setAspectRatioMode( const Qt::AspectRatioMode mode )
+{
+  this->mARMode = mode;
+}
+
+void POTDWidget::setThumbnailSize( const int size )
+{
+  this->mThumbSize = size;
 }
 
 void POTDWidget::loadPOTD( const QDate &date )
@@ -130,16 +142,10 @@ void POTDWidget::gotImagePageUrl(KJob* job)
   kDebug() << "POTD: got POTD image page source: " << mImagePageUrl << endl;
 
   QString thumbUrl = mImagePageUrl.url();
-  // From e.g. http://upload.wikimedia.org/wikipedia/commons/6/66/Agasthiyamalai_range_and_Tirunelveli_rainshadow.jpg
-  // to http://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Agasthiyamalai_range_and_Tirunelveli_rainshadow.jpg/800px-Agasthiyamalai_range_and_Tirunelveli_rainshadow.jpg
-  //TODO: use parent's width or find sth better? (300px?)
-  QWidget* p = static_cast<QWidget*>( parent() );
-  kDebug() << "POTD: parent w: " << p->width() << endl;
-//  kDebug() << QString::number(2 * 50 * int(p->width()/50+1)) << endl;
   thumbUrl.replace(
     QRegExp("http://upload.wikimedia.org/wikipedia/commons/(.*)/([^/]*)"),
     "http://upload.wikimedia.org/wikipedia/commons/thumb/\\1/\\2/" 
-      + QString::number(100) + "px-\\2"
+      + QString::number(mThumbSize) + "px-\\2"
     );
 
   kDebug() << "POTD: got POTD thumbnail URL: " << thumbUrl << endl;
@@ -167,11 +173,9 @@ void POTDWidget::gotPOTD(KJob* job)
   QPixmap *p = new QPixmap();
   if ( p->loadFromData(storedJob->data()) ) {
     kDebug() << "POTD: got POTD. " << endl;
-    setPixmap(*p);
-  //FIXME: thumbnail is fixed at 100px for now
+    setPixmap( p->scaled( mThumbSize, mThumbSize, mARMode, Qt::SmoothTransformation ) );
   }
 }
-
 
 void POTDWidget::invokeBrowser( const QString &url ) {
   KToolInvocation::invokeBrowser( url );
