@@ -20,11 +20,12 @@
 */
 
 #include "datenums.h"
+#include "configdialog.h"
+
 #include "koglobals.h"
+
 #include <kconfig.h>
 #include <kstandarddirs.h>
-
-#include "configdialog.h"
 #include <kcalendarsystem.h>
 
 using namespace KOrg::CalendarDecoration;
@@ -46,6 +47,13 @@ Datenums::Datenums()
   agendaElements += a;
 }
 
+void Datenums::configure(QWidget *parent)
+{
+  ConfigDialog *dlg = new ConfigDialog(parent);
+  dlg->exec();
+  delete dlg;
+}
+
 QString Datenums::info()
 {
   return i18n("This plugin shows information on a day's position in the year.");
@@ -54,18 +62,11 @@ QString Datenums::info()
 DatenumsAgenda::DatenumsAgenda()
 {
   KConfig _config( "korganizerrc", KConfig::NoGlobals );
-  KConfigGroup config(&_config, "Calendar/Datenums Plugin/Agenda");
-  mDateNum = config.readEntry( "ShowDayNumbers", 0 );
+  KConfigGroup gconfig(&_config, "Calendar/Datenums Plugin");
+  mDateNum = gconfig.readEntry( "ShowDayNumbers", 0 );
 
   // TODO: read the position from the config
   m_position = DayTopT;
-}
-
-void DatenumsAgenda::configure(QWidget *parent)
-{
-  ConfigDialog *dlg = new ConfigDialog(parent);
-  dlg->exec();
-  delete dlg;
 }
 
 QString DatenumsAgenda::shortText( const QDate &date ) const

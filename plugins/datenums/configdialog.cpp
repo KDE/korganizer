@@ -79,7 +79,7 @@ ConfigDialog::~ConfigDialog()
 void ConfigDialog::load()
 {
   KConfig _config( "korganizerrc", KConfig::NoGlobals  );
-  KConfigGroup config(&_config, "Calendar/DateNum Plugin");
+  KConfigGroup config(&_config, "Calendar/Datenums Plugin");
   int datenum = config.readEntry( "ShowDayNumbers", 0 );
   QAbstractButton *btn = mDayNumGroup->button( datenum );
   if (!btn) btn = mDayNumGroup->button( 0 );
@@ -89,7 +89,7 @@ void ConfigDialog::load()
 void ConfigDialog::save()
 {
   KConfig _config( "korganizerrc", KConfig::NoGlobals  );
-  KConfigGroup config(&_config, "Calendar/DateNum Plugin");
+  KConfigGroup config(&_config, "Calendar/Datenums Plugin");
   config.writeEntry("ShowDayNumbers", mDayNumGroup->checkedId() );
   config.sync();
 }

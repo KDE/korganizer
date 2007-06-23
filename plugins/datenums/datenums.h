@@ -32,8 +32,6 @@ class DatenumsAgenda : public AgendaElement {
     DatenumsAgenda();
     ~DatenumsAgenda() {}
 
-    void configure( QWidget *parent );
-
     QString shortText( const QDate & ) const;
 
   protected:
@@ -44,6 +42,8 @@ class Datenums : public Decoration {
   public:
     Datenums();
     ~Datenums() {}
+
+    void configure( QWidget *parent );
 
   protected:
     QString info();
