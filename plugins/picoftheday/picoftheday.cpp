@@ -69,7 +69,7 @@ PicofthedayAgenda::PicofthedayAgenda()
   mAspectRatioMode = (Qt::AspectRatioMode)config.readEntry( "AspectRatioMode", int(Qt::KeepAspectRatio) );
   
   // TODO: read the position from the config 
-  m_position = DayBottomC;
+  mPosition = DayBottomC;
 }
 
 QWidget* PicofthedayAgenda::widget( QWidget *parent, const QDate &date ) const

@@ -66,7 +66,7 @@ DatenumsAgenda::DatenumsAgenda()
   mDateNum = gconfig.readEntry( "ShowDayNumbers", 0 );
 
   // TODO: read the position from the config
-  m_position = DayTopT;
+  mPosition = DayTopT;
 }
 
 QString DatenumsAgenda::shortText( const QDate &date ) const

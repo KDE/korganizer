@@ -83,7 +83,7 @@ class Element
     /**
       Returns the decoration element's current position.
      */
-    Position position() const { return m_position; }
+    Position position() const { return mPosition; }
 
     /**
       Return a short text for a given date, usually only a few words.
@@ -112,7 +112,7 @@ class Element
       { Q_UNUSED(parent); Q_UNUSED(date); return 0; }
 
   protected:
-    Position m_position;
+    Position mPosition;
 
   public Q_SLOTS:
     /**
