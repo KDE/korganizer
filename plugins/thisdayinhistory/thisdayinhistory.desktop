@@ -4,6 +4,7 @@ X-KDE-Library=libkorg_thisdayinhistory
 Name=Wikipedia 'This Day in History' Plugin
 Name[el]=Πρόσθετο 'Αυτή η ημέρα στην Ιστορία' της Wikipedia
 Name[es]=Plugin de Wikipedia 'Este día en la historia'
+Name[sv]=Insticksprogram med 'Den här dagen i historien' från Wikipedia
 Name[zh_TW]=維基百科「歷史上的今天」外掛程式
 Type=Service
 ServiceTypes=Calendar/Plugin,Calendar/OldDecoration
