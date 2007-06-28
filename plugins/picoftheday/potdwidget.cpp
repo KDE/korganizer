@@ -42,12 +42,12 @@ POTDWidget::~POTDWidget()
 
 void POTDWidget::setAspectRatioMode( const Qt::AspectRatioMode mode )
 {
-  this->mARMode = mode;
+  mARMode = mode;
 }
 
 void POTDWidget::setThumbnailSize( const int size )
 {
-  this->mThumbSize = size;
+  mThumbSize = size;
 }
 
 void POTDWidget::loadPOTD( const QDate &date )
@@ -145,7 +145,7 @@ void POTDWidget::gotImagePageUrl(KJob* job)
   thumbUrl.replace(
     QRegExp("http://upload.wikimedia.org/wikipedia/commons/(.*)/([^/]*)"),
     "http://upload.wikimedia.org/wikipedia/commons/thumb/\\1/\\2/" 
-      + QString::number(mThumbSize) + "px-\\2"
+      + QString::number(2*mThumbSize) + "px-\\2"
     );
 
   kDebug() << "POTD: got POTD thumbnail URL: " << thumbUrl << endl;

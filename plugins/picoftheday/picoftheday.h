@@ -33,6 +33,8 @@ class PicofthedayAgenda : public AgendaElement {
     
   protected:
     QWidget *widget( QWidget *, const QDate & ) const;
+
+  private:
     int mThumbnailSize;
     Qt::AspectRatioMode mAspectRatioMode;
 };
