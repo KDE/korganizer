@@ -4,6 +4,7 @@ X-KDE-Library=libkorg_picoftheday
 Name=Wikipedia Picture Of the Day Plugin for Calendars
 Name[el]=Πρόσθετο εικόνας της ημέρας της Wikipedia για Ημερολόγια
 Name[es]=Imagen de la wikipedia del plugin dl día para calendarios
+Name[ja]=カレンダー用 Wikipedia 今日の写真プラグイン
 Name[sv]=Insticksprogram för kalendrar med 'Dagens bild' från Wikipedia
 Name[zh_TW]=行事曆維基「本日圖片」外掛程式
 Type=Service
