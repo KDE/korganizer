@@ -14,7 +14,6 @@ X-KDE-CfgDlgHierarchy=KOrganizer
 
 Name=Colors
 Name[af]=Kleure
-Name[ar]=الألوان
 Name[br]=Livioù
 Name[cs]=Barvy
 Name[cy]=Lliwiau
@@ -69,7 +68,6 @@ Name[xh]=Imibala
 Name[zh_TW]=顏色
 Comment=KOrganizer Colors Configuration
 Comment[af]=KOrganizer kleure opstelling
-Comment[ar]=إعداد ألوان KOrganizer
 Comment[ca]=Configuració de colors a KOrganizer
 Comment[cs]=Nastavení barev KOrganizeru
 Comment[cy]=Ffurfweddiad Lliwiau KTrefnydd

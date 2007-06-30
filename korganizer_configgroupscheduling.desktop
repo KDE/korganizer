@@ -14,7 +14,6 @@ X-KDE-CfgDlgHierarchy=KOrganizer
 
 Name=Group Scheduling
 Name[af]=Groep Skedulering
-Name[ar]=جدولة المجموعة
 Name[ca]=Planificació de grups
 Name[cs]=Skupinové plánování
 Name[cy]=Trefnlennu Grŵp
@@ -61,7 +60,6 @@ Name[x-test]=xxGroup Schedulingxx
 Name[zh_TW]=群組排程
 Comment=KOrganizer Group Scheduling Configuration
 Comment[af]=KOrganizer groep skedulering opstelling
-Comment[ar]=إعداد جدولة مجموعة KOrganizer
 Comment[ca]=Configuració de la planificació de grups a KOrganizer
 Comment[cs]=Nastavení skupinového plánování KOrganizeru
 Comment[cy]=Ffurfweddiad Trefnlennu Grŵp KTrefnydd

@@ -14,7 +14,6 @@ X-KDE-CfgDlgHierarchy=KOrganizer
 
 Name=Time & Date
 Name[af]=Datum & Tyd
-Name[ar]=الوقت و التاريخ
 Name[br]=Deiziad hag eur
 Name[ca]=Hora i data
 Name[cs]=Datum a čas
@@ -65,7 +64,6 @@ Name[x-test]=xxTime & Datexx
 Name[zh_TW]=時間與日期
 Comment=KOrganizer Time Configuration
 Comment[af]=KOrganizer tyd opstelling
-Comment[ar]=إعداد الوقت لِــ KOrganizer
 Comment[ca]=Configuració del temps a KOrganizer
 Comment[cs]=Nastavení času v KOrganizeru
 Comment[cy]=Ffurfweddiad Amser KTrefnydd

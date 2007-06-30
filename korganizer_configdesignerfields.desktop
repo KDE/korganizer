@@ -14,7 +14,6 @@ X-KDE-CfgDlgHierarchy=KOrganizer
 
 Name=Custom Pages
 Name[af]=Pasmaak Blaaie
-Name[ar]=الصفحات المعتادة
 Name[br]=Pajennoù dre ziouer
 Name[ca]=Pàgines a mida
 Name[cs]=Vlastní stránky
@@ -60,7 +59,6 @@ Name[uk]=Нетипові сторінки
 Name[x-test]=xxCustom Pagesxx
 Comment=Configure the Custom Pages
 Comment[af]=Stel die pasmaak blaaie op
-Comment[ar]=إعداد الصفحات المعتادة
 Comment[br]=Kefluniañ ar pajennoù diouzhoc'h
 Comment[ca]=Configura les pàgines a mida
 Comment[cs]=Nastavení vlastních stránek
