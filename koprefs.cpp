@@ -26,8 +26,8 @@
 #include "koprefs.h"
 #include "kocore.h"
 
-#include <libkpimidentities/identitymanager.h>
-#include <libkpimidentities/identity.h>
+#include <kpimidentities/identitymanager.h>
+#include <kpimidentities/identity.h>
 
 #include <kpimutils/email.h>
 #include <kabc/stdaddressbook.h>
@@ -358,9 +358,9 @@ QStringList KOPrefs::fullEmails()
 
   QStringList::Iterator it;
   // Grab emails from the email identities
-  KPIM::IdentityManager *idmanager = KOCore::self()->identityManager();
+  KPIMIdentities::IdentityManager *idmanager = KOCore::self()->identityManager();
   QStringList lst = idmanager->identities();
-  KPIM::IdentityManager::ConstIterator it1;
+  KPIMIdentities::IdentityManager::ConstIterator it1;
   for ( it1 = idmanager->begin() ; it1 != idmanager->end() ; ++it1 ) {
     fullEmails << (*it1).fullEmailAddr();
   }

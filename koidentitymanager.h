@@ -25,15 +25,15 @@
 #ifndef KOIDENTITYMANAGER_H
 #define KOIDENTITYMANAGER_H
 
-#include <libkpimidentities/identitymanager.h>
+#include <kpimidentities/identitymanager.h>
 
 namespace KOrg {
 
-class IdentityManager : public KPIM::IdentityManager
+class IdentityManager : public KPIMIdentities::IdentityManager
 {
   public:
     explicit IdentityManager( QObject *parent=0, const char *name=0 )
-      : KPIM::IdentityManager( true /*readonly*/, parent, name ) {}
+      : KPIMIdentities::IdentityManager( true /*readonly*/, parent, name ) {}
 
   protected:
     virtual void createDefaultIdentity( QString &fullName, QString &emailAddress );

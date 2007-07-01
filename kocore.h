@@ -34,7 +34,7 @@
 
 #include <kservice.h>
 
-namespace KPIM { class IdentityManager; }
+namespace KPIMIdentities { class IdentityManager; }
 
 class KORGANIZER_EXPORT KOCore
 {
@@ -93,7 +93,7 @@ class KORGANIZER_EXPORT KOCore
     KOrg::Part::List reloadParts( KOrg::MainWindow *parent,
                                   KOrg::Part::List &parts );
 
-    KPIM::IdentityManager* identityManager();
+    KPIMIdentities::IdentityManager* identityManager();
 
   protected:
     KOCore();
@@ -112,7 +112,7 @@ class KORGANIZER_EXPORT KOCore
 
     QMap<QWidget*, KXMLGUIClient*> mXMLGUIClients;
 
-    KPIM::IdentityManager *mIdentityManager;
+    KPIMIdentities::IdentityManager *mIdentityManager;
 };
 
 #endif

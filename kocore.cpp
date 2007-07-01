@@ -435,7 +435,7 @@ void KOCore::reloadPlugins()
   oldCalendarDecorations();
 }
 
-KPIM::IdentityManager* KOCore::identityManager()
+KPIMIdentities::IdentityManager* KOCore::identityManager()
 {
   if ( !mIdentityManager )
     mIdentityManager = new KOrg::IdentityManager;
