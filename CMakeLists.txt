@@ -2,7 +2,6 @@ project(korganizer)
 add_subdirectory( tests )
 
 include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/interfaces 
-                     ${CMAKE_SOURCE_DIR}/libkpimidentities 
                      ${CMAKE_SOURCE_DIR}/libkholidays 
                      ${CMAKE_SOURCE_DIR}/mimelib ${CMAKE_SOURCE_DIR}/libkleo ${CMAKE_SOURCE_DIR}/korganizer/printing 
                      ${CMAKE_SOURCE_DIR}/kdgantt1 
