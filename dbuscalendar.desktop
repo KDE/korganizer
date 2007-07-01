@@ -5,6 +5,7 @@ X-KDE-ServiceType=DBUS/Organizer
 Comment=Organizer with a D-BUS interface
 Comment[el]=Organizer με περιβάλλον χρήσης D-BUS
 Comment[es]=Organizador con una interfaz D-BUS
+Comment[fa]=سازمان‌دهنده با یک واسط D-BUS
 Comment[ja]=D-Bus インターフェースを持つカレンダー
 Comment[kk]=D-BUS интерфейсті Ұйымдастырғыш
 Comment[sv]=Filofax med DBus-gränssnitt
