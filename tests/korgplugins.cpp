@@ -34,7 +34,7 @@
 
 int main(int argc,char **argv)
 {
-  KAboutData aboutData("korgplugins",I18N_NOOP("KOrgPlugins"),"0.1");
+  KAboutData aboutData("korgplugins", 0,ki18n("KOrgPlugins"),"0.1");
   KCmdLineArgs::init(argc,argv,&aboutData);
 
   KApplication app;

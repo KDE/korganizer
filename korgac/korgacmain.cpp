@@ -53,25 +53,22 @@ class MyApp : public KUniqueApplication
 
 static const char korgacVersion[] = "0.9";
 
-static const KCmdLineOptions options[] =
-{
-  { 0, 0, 0 }
-};
-
 int main( int argc, char **argv )
 {
   KLocale::setMainCatalog( "korganizer" );
-  KAboutData aboutData( "korgac", I18N_NOOP("KOrganizer Reminder Daemon"),
-                        korgacVersion, I18N_NOOP("KOrganizer Reminder Daemon"),
+  KAboutData aboutData( "korgac", 0, ki18n("KOrganizer Reminder Daemon"),
+                        korgacVersion, ki18n("KOrganizer Reminder Daemon"),
                         KAboutData::License_GPL,
-                        "(c) 2003 Cornelius Schumacher",
-                        0, "http://pim.kde.org" );
-  aboutData.addAuthor( "Cornelius Schumacher", I18N_NOOP("Maintainer"),
+                        ki18n("(c) 2003 Cornelius Schumacher"),
+                        KLocalizedString(), "http://pim.kde.org" );
+  aboutData.addAuthor( ki18n("Cornelius Schumacher"), ki18n("Maintainer"),
                        "schumacher@kde.org" );
-  aboutData.addAuthor( "Reinhold Kainhofer", I18N_NOOP("Maintainer"),
+  aboutData.addAuthor( ki18n("Reinhold Kainhofer"), ki18n("Maintainer"),
                        "kainhofer@kde.org" );
 
   KCmdLineArgs::init( argc, argv, &aboutData );
+
+  KCmdLineOptions options;
   KCmdLineArgs::addCmdLineOptions( options );
   KUniqueApplication::addCmdLineOptions();
 

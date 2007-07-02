@@ -34,7 +34,7 @@
 
 int main(int argc,char **argv)
 {
-  KAboutData aboutData("testkabc",I18N_NOOP("TestKabc"),"0.1");
+  KAboutData aboutData("testkabc", 0,ki18n("TestKabc"),"0.1");
   KCmdLineArgs::init(argc,argv,&aboutData);
 
   KApplication app;

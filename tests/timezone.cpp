@@ -36,7 +36,7 @@
 
 int main(int argc,char **argv)
 {
-  KAboutData aboutData("timezone",I18N_NOOP("KOrganizer Timezone Test"),"0.1");
+  KAboutData aboutData("timezone", 0,ki18n("KOrganizer Timezone Test"),"0.1");
   KCmdLineArgs::init(argc,argv,&aboutData);
 
   KApplication app;

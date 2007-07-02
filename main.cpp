@@ -40,7 +40,7 @@ int main ( int argc, char **argv )
   KOrg::AboutData aboutData;
 
   KCmdLineArgs::init( argc, argv, &aboutData );
-  KCmdLineArgs::addCmdLineOptions( korganizer_options );
+  KCmdLineArgs::addCmdLineOptions( korganizer_options() );
   KUniqueApplication::addCmdLineOptions();
 
   if ( !KOrganizerApp::start() ) return 0;

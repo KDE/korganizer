@@ -31,50 +31,50 @@
 using namespace KOrg;
 
 AboutData::AboutData()
-  : KAboutData( "korganizer", I18N_NOOP("KOrganizer"), korgVersion,
-                I18N_NOOP("A Personal Organizer for KDE"),
+  : KAboutData( "korganizer", 0, ki18n("KOrganizer"), korgVersion,
+                ki18n("A Personal Organizer for KDE"),
                 KAboutData::License_GPL,
-                "(c) 1997-1999 Preston Brown\n"
+                ki18n("(c) 1997-1999 Preston Brown\n"
                 "(c) 2000-2004,2007 Cornelius Schumacher\n"
-                "(c) 2004-2005 Reinhold Kainhofer", 0,
+                "(c) 2004-2005 Reinhold Kainhofer"), KLocalizedString(),
                 "http://korganizer.kde.org" )
 {
-  addAuthor("Reinhold Kainhofer",I18N_NOOP("Current Maintainer"),
+  addAuthor(ki18n("Reinhold Kainhofer"),ki18n("Current Maintainer"),
             "reinhold@kainhofer.com");
-  addAuthor("Cornelius Schumacher",I18N_NOOP("Co-Maintainer"),
+  addAuthor(ki18n("Cornelius Schumacher"),ki18n("Co-Maintainer"),
             "schumacher@kde.org");
-  addAuthor("Preston Brown",I18N_NOOP("Original Author"),
+  addAuthor(ki18n("Preston Brown"),ki18n("Original Author"),
             "pbrown@kde.org");
-  addCredit("Richard Apodaca");
-  addCredit("Jan-Pascal van Best");
-  addCredit("Laszlo Boloni");
-  addCredit("Barry Benowitz");
-  addCredit("Christopher Beard");
-  addCredit("Kalle Dalheimer");
-  addCredit("Ian Dawes");
-  addCredit("Thomas Eitzenberger");
-  addCredit("Neil Hart");
-  addCredit("Declan Houlihan");
-  addCredit("Hans-Jürgen Husel");
-  addCredit("Tim Jansen");
-  addCredit("Christian Kirsch");
-  addCredit("Tobias König");
-  addCredit("Martin Koller");
-  addCredit("Uwe Koloska");
-  addCredit("Glen Parker");
-  addCredit("Dan Pilone");
-  addCredit("Roman Rohr");
-  addCredit("Rafał Rzepecki", I18N_NOOP( "Part of work sponsored by Google with"
+  addCredit(ki18n("Richard Apodaca"));
+  addCredit(ki18n("Jan-Pascal van Best"));
+  addCredit(ki18n("Laszlo Boloni"));
+  addCredit(ki18n("Barry Benowitz"));
+  addCredit(ki18n("Christopher Beard"));
+  addCredit(ki18n("Kalle Dalheimer"));
+  addCredit(ki18n("Ian Dawes"));
+  addCredit(ki18n("Thomas Eitzenberger"));
+  addCredit(ki18n("Neil Hart"));
+  addCredit(ki18n("Declan Houlihan"));
+  addCredit(ki18n("Hans-Jürgen Husel"));
+  addCredit(ki18n("Tim Jansen"));
+  addCredit(ki18n("Christian Kirsch"));
+  addCredit(ki18n("Tobias König"));
+  addCredit(ki18n("Martin Koller"));
+  addCredit(ki18n("Uwe Koloska"));
+  addCredit(ki18n("Glen Parker"));
+  addCredit(ki18n("Dan Pilone"));
+  addCredit(ki18n("Roman Rohr"));
+  addCredit(ki18n("Rafał Rzepecki"), ki18n( "Part of work sponsored by Google with"
       " Summer of Code 2005" ));
-  addCredit("Don Sanders");
-  addCredit("Bram Schoenmakers");
-  addCredit("Günter Schwann");
-  addCredit("Herwin Jan Steehouwer");
-  addCredit("Mario Teijeiro");
-  addCredit("Nick Thompson");
-  addCredit("Bo Thorsen");
-  addCredit("Allen Winter");
-  addCredit("Larry Wright");
-  addCredit("Thomas Zander");
-  addCredit("Fester Zigterman");
+  addCredit(ki18n("Don Sanders"));
+  addCredit(ki18n("Bram Schoenmakers"));
+  addCredit(ki18n("Günter Schwann"));
+  addCredit(ki18n("Herwin Jan Steehouwer"));
+  addCredit(ki18n("Mario Teijeiro"));
+  addCredit(ki18n("Nick Thompson"));
+  addCredit(ki18n("Bo Thorsen"));
+  addCredit(ki18n("Allen Winter"));
+  addCredit(ki18n("Larry Wright"));
+  addCredit(ki18n("Thomas Zander"));
+  addCredit(ki18n("Fester Zigterman"));
 }
