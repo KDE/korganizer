@@ -36,23 +36,83 @@ namespace KOrg {
 namespace CalendarDecoration {
 
 /**
+  @class FlexibleElement
+
+  @brief Class for calendar decoration elements
+
+  It provides entities like texts and pictures for a given date.
+  Implementations can implement all functions or only a subset.
+ */
+class FlexibleElement
+{
+  public:
+    FlexibleElement() {}
+    virtual ~FlexibleElement() {}
+
+    /**
+      Return a short text for a given date,
+      usually only a few words.
+     */
+    virtual QString shortText( const QDate & ) const
+      { return QString(); }
+    /**
+      Return a long text for a given date.
+      This text can be of any length,
+      but usually it will have one or a few lines.
+     */
+    virtual QString longText( const QDate & ) const
+      { return QString(); }
+    /**
+      Return an extensive text for a given date.
+      This text can be of any length,
+      but usually it will have one or a few paragraphs.
+     */
+    virtual QString extensiveText( const QDate & ) const
+      { return QString(); }
+
+    /**
+      Return a pixmap for a give date and a given size.
+     */
+    virtual QPixmap pixmap( const QDate &, const QSize & ) const
+      { return QPixmap(); }
+
+    /**
+      Return a tooltip.
+     */
+    virtual QString toolTip( const QDate & ) const
+      { return QString(); }
+
+    /**
+      Return a tooltip.
+     */
+    virtual KUrl url( const QDate & ) const
+      { return KUrl(); }
+};
+
+
+
+/******************** <DEPRECATED> ************************/
+
+/**
   The various places a decoration can be shown at.
   Note that a particular view only implements a subset of those available here.
 */
 enum Position {
   // "Standard" positions (for all views)
-  Panel     =   1,
-  Top       =   2,
-  Left      =   4,
-  Bottom    =   8,
-  Right     =  16,
+  Panel       =     1,
+  Top         =     2,
+  Left        =     4,
+  Bottom      =     8,
+  Right       =    16,
   // Agenda view - Around the top label (T=top, L=left, B=bottom, R=right)
-  DayTopT   =  32,
-  DayTopL   =  64,
-  DayTopB   = 128,
-  DayTopR   = 256,
+  DayTopT     =    32,
+  DayTopL     =    64,
+  DayTopB     =   128,
+  DayTopR     =   256,
   // Agenda view - Under the event list
-  DayBottomC = 512
+  DayBottomC  =   512,
+  // Month view - At the bottom of each cell, near the day label
+  CellBottom  =  1024
 };
 Q_DECLARE_FLAGS(Positions, Position)
 Q_DECLARE_OPERATORS_FOR_FLAGS(Positions)
@@ -142,6 +202,24 @@ class AgendaElement : public Element
 };
 
 /**
+  @class MonthElement
+
+  @brief Class for calendar decoration elements in the month view
+ */
+class MonthElement : public Element
+{
+  public:
+    MonthElement() {}
+    virtual ~MonthElement() {}
+
+    QFlags<Positions> availablePositions() const {
+      return Panel|Top|Left|Bottom|Right|CellBottom; }
+
+};
+
+/******************** </DEPRECATED> ************************/
+
+/**
   @class Decoration
 
   @brief This class provides the interface for a date dependent decoration.
@@ -160,14 +238,26 @@ class Decoration : public Plugin
     Decoration() {}
     virtual ~Decoration() {}
 
+    QList<FlexibleElement*> elements() { return flexibleElements; }
+/******************** <DEPRECATED> ************************/
     /**
       Returns the various decoration elements of this decoration
       for the agenda view.
      */
     QList<AgendaElement*> agenda() { return agendaElements; }
+    /**
+      Returns the various decoration elements of this decoration
+      for the month view.
+     */
+    QList<MonthElement*> month() { return monthElements; }
+/******************** </DEPRECATED> ************************/
 
   protected:
+/******************** <DEPRECATED> ************************/
     QList<AgendaElement*> agendaElements;
+    QList<MonthElement*> monthElements;
+/******************** </DEPRECATED> ************************/
+    QList<FlexibleElement*> flexibleElements;
 
 };
 
