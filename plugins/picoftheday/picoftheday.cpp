@@ -74,7 +74,8 @@ QWidget* PicofthedayAgenda::widget( QWidget *parent, const QDate &date ) const
 {
   POTDWidget *w = new POTDWidget(parent);
   w->setThumbnailSize( mThumbnailSize );
-  w->loadPOTD( date );
+  w->setDate( date );
+  w->downloadPOTD();
   w->setAspectRatioMode( mAspectRatioMode );
 
   return w;

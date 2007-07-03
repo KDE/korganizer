@@ -35,24 +35,30 @@ class POTDWidget : public KUrlLabel {
     virtual ~POTDWidget();
     
     void setAspectRatioMode( const Qt::AspectRatioMode mode );
+    void setDate( const QDate &date );
     void setThumbnailSize( const int size );
-    void loadPOTD( const QDate &date );
+    void downloadPOTD();
+    void getImagePage();
+    void getThumbnail();
 
   protected:
+    QDate mDate;
     QString mFileName;
     KUrl mImagePageUrl;
     KUrl mThumbUrl;
     int mThumbSize;
     QString mDescription;
     Qt::AspectRatioMode mARMode;
+    QPixmap mPixmap;
 
   private slots:
-    void gotFileName( KJob* job );
-    void gotImagePageUrl( KJob* job );
-    void gotPOTD( KJob* job );
+    void downloadStep1Result( KJob* job );
+    void downloadStep2Result( KJob* job );
+    void downloadStep3Result( KJob* job );
 
   public slots:
     void invokeBrowser( const QString &url );
+    void resizeEvent( QResizeEvent *event );
 };
 
 

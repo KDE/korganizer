@@ -27,11 +27,13 @@
 
 #include <qdom.h>
 
-POTDWidget::POTDWidget(QWidget* parent)
+POTDWidget::POTDWidget( QWidget* parent )
   : KUrlLabel( parent )
 {
   mThumbSize = 120;
+  resize( 120, 120 );
   mARMode = Qt::KeepAspectRatio;
+  mDate = QDate::currentDate();
   connect( this, SIGNAL( leftClickedUrl(const QString&) ),
            this, SLOT( invokeBrowser(const QString&) ) );
 }
@@ -50,64 +52,83 @@ void POTDWidget::setThumbnailSize( const int size )
   mThumbSize = size;
 }
 
-void POTDWidget::loadPOTD( const QDate &date )
+void POTDWidget::setDate( const QDate &date )
 {
-  KUrl *url = new KUrl( "http://commons.wikimedia.org/wiki/Template:Potd/"
-                        + date.toString(Qt::ISODate) + "?action=raw" );
-
-  KJob *job = KIO::storedGet( *url, false, false );
-// TODO: change to KIO::get() and KIO::TransferJob?
-//  KIO::Scheduler::scheduleJob(job);
-
-  connect( job,  SIGNAL( result(KJob *) ),
-           this, SLOT( gotFileName(KJob *) ) );
+  mDate = date;
 }
 
-void POTDWidget::gotFileName( KJob* job )
+void POTDWidget::downloadPOTD()
+{
+  KUrl *url = new KUrl( "http://commons.wikimedia.org/wiki/Template:Potd/"
+                        + mDate.toString(Qt::ISODate) + "?action=raw" );
+               // The file at that URL contains the file name for the POTD
+
+  KIO::SimpleJob *job = KIO::storedGet( *url, false, false );
+  KIO::Scheduler::scheduleJob( job );
+
+  connect( job,  SIGNAL( result(KJob *) ),
+           this, SLOT( downloadStep1Result(KJob *) ) );
+}
+
+/**
+  Give it a job which fetched the raw page,
+  and it'll give you the image file name hiding in it.
+ */
+void POTDWidget::downloadStep1Result( KJob* job )
 {
   if ( job->error() )
   {
-    kWarning() << "POTD: could not get POTD file name: " << job->errorString() << endl;
+    kWarning() << "picoftheday Plugin: could not get POTD file name: "
+               << job->errorString() << endl;
     return;
   }
 
   // First step completed: we now know the POTD's file name
-  KIO::StoredTransferJob* const storedJob =
+  KIO::StoredTransferJob* const transferJob =
     static_cast<KIO::StoredTransferJob*>( job );
-  mFileName =
-    QString::fromUtf8( storedJob->data().data(), storedJob->data().size() );
-  kDebug() << "POTD: got POTD file name: " << mFileName << endl;
+  mFileName = QString::fromUtf8( transferJob->data().data(),
+                                 transferJob->data().size() );
+  kDebug() << "picoftheday Plugin: got POTD file name: " << mFileName << endl;
 
+  getImagePage();
+}
+
+void POTDWidget::getImagePage()
+{
   KUrl *url =
     new KUrl( "http://commons.wikimedia.org/wiki/Image:" + mFileName );
+  // We'll find the info to get the thumbnail we want on the POTD's image page
 
   setUrl( url->url() );
 
-  KJob *imgJob = KIO::storedGet( *url, false, false );
-// TODO: change to KIO::get() and KIO::TransferJob?
-//  KIO::Scheduler::scheduleJob(imgJob);
+  KIO::SimpleJob *job = KIO::storedGet( *url, false, false );
+  KIO::Scheduler::scheduleJob( job );
 
-  connect( imgJob,  SIGNAL( result(KJob *) ),
-           this, SLOT( gotImagePageUrl(KJob *) ) );
+  connect( job,  SIGNAL( result(KJob *) ),
+           this, SLOT( downloadStep2Result(KJob *) ) );
 }
 
-void POTDWidget::gotImagePageUrl(KJob* job)
+/**
+  Give it a job which fetched the image page,
+  and it'll give you the appropriate thumbnail URL.
+ */
+void POTDWidget::downloadStep2Result( KJob* job )
 {
-  if (job->error())
+  if ( job->error() )
   {
-    kWarning() << "POTD: could not get POTD image page: " 
+    kWarning() << "picoftheday Plugin: could not get POTD image page: " 
                << job->errorString() << endl;
     return;
   }
 
   // Get the image URL from the image page's source code
   // and transform it to get an appropriate thumbnail size
-  KIO::StoredTransferJob* const storedJob =
+  KIO::StoredTransferJob* const transferJob =
     static_cast<KIO::StoredTransferJob*>( job );
   
   QDomDocument imgPage;
-  if( !imgPage.setContent( QString::fromUtf8( storedJob->data().data(),
-                                              storedJob->data().size() ) ) ) {
+  if ( !imgPage.setContent( QString::fromUtf8( transferJob->data().data(),
+                                             transferJob->data().size() ) ) ) {
     kWarning() << "Wikipedia returned an invalid XML page for image "
                << mFileName << endl;
     return;
@@ -127,7 +148,6 @@ void POTDWidget::gotImagePageUrl(KJob* job)
     }
   }
 
-
   // We go through all links and stop at the first right-looking candidate
   QDomNodeList links = imgPage.elementsByTagName("a");
   for ( int i=0; i<links.length(); i++ ) {
@@ -139,45 +159,83 @@ void POTDWidget::gotImagePageUrl(KJob* job)
     }
   }
  
-  kDebug() << "POTD: got POTD image page source: " << mImagePageUrl << endl;
+  kDebug() << "picoftheday Plugin: got POTD image page source: " 
+           << mImagePageUrl << endl;
 
   QString thumbUrl = mImagePageUrl.url();
   thumbUrl.replace(
     QRegExp("http://upload.wikimedia.org/wikipedia/commons/(.*)/([^/]*)"),
     "http://upload.wikimedia.org/wikipedia/commons/thumb/\\1/\\2/" 
-      + QString::number(2*mThumbSize) + "px-\\2"
+      + QString::number( mThumbSize+200 ) + "px-\\2"
     );
 
-  kDebug() << "POTD: got POTD thumbnail URL: " << thumbUrl << endl;
+  kDebug() << "picoftheday Plugin: got POTD thumbnail URL: " 
+           << thumbUrl << endl;
   mThumbUrl = thumbUrl;
 
-  KJob *potdJob = KIO::storedGet(mThumbUrl, false, false);
-// TODO: change to KIO::get() and KIO::TransferJob?
-//  KIO::Scheduler::scheduleJob(imgJob);
-
-  connect(potdJob, SIGNAL(result(KJob *)),
-          this, SLOT(gotPOTD(KJob *)));
+  getThumbnail();
 }
 
-void POTDWidget::gotPOTD(KJob* job)
+void POTDWidget::getThumbnail()
+{
+  KIO::SimpleJob *job = KIO::storedGet( mThumbUrl, false, false );
+  KIO::Scheduler::scheduleJob( job );
+
+  connect( job, SIGNAL(result(KJob *)),
+           this, SLOT(downloadStep3Result(KJob *)) );
+}
+
+void POTDWidget::downloadStep3Result( KJob* job )
 {
   if (job->error())
   {
-    kWarning() << "POTD: could not get POTD: " << job->errorString() << endl;
+    kWarning() << "picoftheday Plugin: could not get POTD: "
+               << job->errorString() << endl;
     return;
   }
 
   // First step completed: we now know the POTD's file name
-  KIO::StoredTransferJob* const storedJob =
+  KIO::StoredTransferJob* const transferJob =
     static_cast<KIO::StoredTransferJob*>( job );
-  QPixmap *p = new QPixmap();
-  if ( p->loadFromData(storedJob->data()) ) {
-    kDebug() << "POTD: got POTD. " << endl;
-    setPixmap( p->scaled( mThumbSize, mThumbSize, mARMode, Qt::SmoothTransformation ) );
+  if ( mPixmap.loadFromData( transferJob->data() ) ) {
+    kDebug() << "picoftheday Plugin: got POTD. " << endl;
+    setPixmap( mPixmap.scaled( mThumbSize, mThumbSize, mARMode ) );
   }
 }
 
 void POTDWidget::invokeBrowser( const QString &url ) {
   KToolInvocation::invokeBrowser( url );
+}
+
+//TODO: this is still a work-in-progress
+void POTDWidget::resizeEvent( QResizeEvent *event )
+{
+  mThumbSize = width();
+  if ( ( width() > mPixmap.width() || height() > mPixmap.height() )
+       && !mImagePageUrl.isEmpty() ) {
+    int newThumbSize = qMax( width() + 200, mPixmap.width() );
+//         FIXME TODO
+//         resizeImage(&image, QSize(newWidth, newHeight));
+//         update();
+
+  QString thumbUrl = mImagePageUrl.url();
+  thumbUrl.replace(
+    QRegExp("http://upload.wikimedia.org/wikipedia/commons/(.*)/([^/]*)"),
+    "http://upload.wikimedia.org/wikipedia/commons/thumb/\\1/\\2/"
+      + QString::number(newThumbSize) + "px-\\2"
+    );
+
+  kDebug() << "picoftheday Plugin: got POTD another thumbnail URL: "
+           << thumbUrl << endl;
+  mThumbUrl = thumbUrl;
+
+  KIO::SimpleJob *job = KIO::storedGet( mThumbUrl, false, false );
+// TODO: change to KIO::storedGet() and KIO::StoredTransferJob?
+  KIO::Scheduler::scheduleJob( job );
+
+   connect( job, SIGNAL( result(KJob *) ),
+            this, SLOT( downloadStep3Result(KJob *) ) );
+  }
+     QWidget::resizeEvent( event );
 }
 
