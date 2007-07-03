@@ -22,17 +22,30 @@
 
 #include <QString>
 
-#include <calendar/oldcalendardecoration.h>
+#include <calendar/calendardecoration.h>
 
-using namespace KOrg;
+using namespace KOrg::CalendarDecoration;
 
-class ThisDayInHistory : public OldCalendarDecoration {
+class ThisDayInHistoryElement : public FlexibleElement {
+  public:
+    ThisDayInHistoryElement();
+    ~ThisDayInHistoryElement() {}
+
+  protected:
+    QString smallText( const QDate & ) const;
+    KUrl url( const QDate & ) const;
+
+};
+
+
+class ThisDayInHistory : public Decoration {
   public:
     ThisDayInHistory();
     ~ThisDayInHistory() {}
     
-    QWidget* smallWidget( QWidget *, const QDate &) const;
+//    void configure( QWidget *parent );
     
+  protected:
     QString info();
 
 };

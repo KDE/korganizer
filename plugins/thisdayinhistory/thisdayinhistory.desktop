@@ -9,6 +9,6 @@ Name[pa]=ਵਿਕਿਪੀਡਿਆ 'ਇਤਹਾਸ ਵਿੱਚ ਅੱਜ ਦ
 Name[sv]=Insticksprogram med 'Den här dagen i historien' från Wikipedia
 Name[zh_TW]=維基百科「歷史上的今天」外掛程式
 Type=Service
-ServiceTypes=Calendar/Plugin,Calendar/OldDecoration
+ServiceTypes=Calendar/Plugin,Calendar/Decoration
 X-KDE-KOrganizer-HasSettings=true
 X-KDE-PluginInterfaceVersion=2

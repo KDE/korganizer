@@ -19,19 +19,21 @@
 */
 
 #include "thisdayinhistory.h"
-#include "tdihwidget.h"
 
 #include "koglobals.h"
 #include "korganizer.h"
 #include "koapp.h"
 
+#include <kcalendarsystem.h>
 #include <kconfig.h>
 #include <kstandarddirs.h>
-#include <kcalendarsystem.h>
+#include <kurl.h>
 
-class ThisDayInHistoryFactory : public OldCalendarDecorationFactory {
+using namespace KOrg::CalendarDecoration;
+
+class ThisDayInHistoryFactory : public DecorationFactory {
   public:
-    OldCalendarDecoration *create() { return new ThisDayInHistory; }
+    Decoration *create() { return new ThisDayInHistory; }
 };
 
 K_EXPORT_COMPONENT_FACTORY( libkorg_thisdayinhistory, ThisDayInHistoryFactory )
@@ -40,21 +42,29 @@ K_EXPORT_COMPONENT_FACTORY( libkorg_thisdayinhistory, ThisDayInHistoryFactory )
 ThisDayInHistory::ThisDayInHistory()
 {
   KConfig _config( "korganizerrc", KConfig::NoGlobals );
-  KConfigGroup config(&_config, "This Day in History Plugin");
-}
-
-
-QWidget* ThisDayInHistory::smallWidget( QWidget *parent, const QDate &date) const
-{
-  TDIHWidget* l = new TDIHWidget(parent);
-  l->setText(i18n("This Day in History"));
-  l->setUrl(i18nc("Localized Wikipedia website", "http://en.wikipedia.org/wiki/") + date.toString(i18nc("Qt date format used by the localized Wikipedia", "MMMM_d")));
-
-  return l;
+  KConfigGroup config( &_config, "This Day in History Plugin" );
 }
 
 QString ThisDayInHistory::info()
 {
-  return i18n("This plugin provides links to Wikipedia's 'This Day in History' pages.");
+  return i18n("This plugin provides links to Wikipedia's "
+              "'This Day in History' pages.");
+}
+
+
+ThisDayInHistoryElement::ThisDayInHistoryElement()
+{
+}
+
+QString ThisDayInHistoryElement::smallText( const QDate &date ) const
+{
+  return i18n("This Day in History");
+}
+
+KUrl ThisDayInHistoryElement::url( const QDate &date ) const
+{
+  return i18nc("Localized Wikipedia website", "http://en.wikipedia.org/wiki/")
+    + date.toString( i18nc("Qt date format used by the localized Wikipedia",
+                            "MMMM_d") );
 }
 
