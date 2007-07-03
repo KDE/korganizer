@@ -162,6 +162,13 @@ void POTDWidget::downloadStep2Result( KJob* job )
   kDebug() << "picoftheday Plugin: got POTD image page source: " 
            << mImagePageUrl << endl;
 
+  generateThumbnailUrl();
+
+  getThumbnail();
+}
+
+void POTDWidget::generateThumbnailUrl()
+{
   QString thumbUrl = mImagePageUrl.url();
   thumbUrl.replace(
     QRegExp("http://upload.wikimedia.org/wikipedia/commons/(.*)/([^/]*)"),
@@ -172,8 +179,6 @@ void POTDWidget::downloadStep2Result( KJob* job )
   kDebug() << "picoftheday Plugin: got POTD thumbnail URL: " 
            << thumbUrl << endl;
   mThumbUrl = thumbUrl;
-
-  getThumbnail();
 }
 
 void POTDWidget::getThumbnail()
@@ -210,6 +215,9 @@ void POTDWidget::invokeBrowser( const QString &url ) {
 //TODO: this is still a work-in-progress
 void POTDWidget::resizeEvent( QResizeEvent *event )
 {
+/*  kDebug() << "picoftheday Plugin: I GOT A RESIZE EVENT! "
+           << "new width: " << width() << " instead of " << event->oldSize().width()
+           << "new height: " << height() << " instead of " << event->oldSize().height();*/
   mThumbSize = width();
   if ( ( width() > mPixmap.width() || height() > mPixmap.height() )
        && !mImagePageUrl.isEmpty() ) {
@@ -218,23 +226,10 @@ void POTDWidget::resizeEvent( QResizeEvent *event )
 //         resizeImage(&image, QSize(newWidth, newHeight));
 //         update();
 
-  QString thumbUrl = mImagePageUrl.url();
-  thumbUrl.replace(
-    QRegExp("http://upload.wikimedia.org/wikipedia/commons/(.*)/([^/]*)"),
-    "http://upload.wikimedia.org/wikipedia/commons/thumb/\\1/\\2/"
-      + QString::number(newThumbSize) + "px-\\2"
-    );
+  generateThumbnailUrl();
 
-  kDebug() << "picoftheday Plugin: got POTD another thumbnail URL: "
-           << thumbUrl << endl;
-  mThumbUrl = thumbUrl;
+  getThumbnail();
 
-  KIO::SimpleJob *job = KIO::storedGet( mThumbUrl, false, false );
-// TODO: change to KIO::storedGet() and KIO::StoredTransferJob?
-  KIO::Scheduler::scheduleJob( job );
-
-   connect( job, SIGNAL( result(KJob *) ),
-            this, SLOT( downloadStep3Result(KJob *) ) );
   }
      QWidget::resizeEvent( event );
 }

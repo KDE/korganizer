@@ -39,6 +39,7 @@ class POTDWidget : public KUrlLabel {
     void setThumbnailSize( const int size );
     void downloadPOTD();
     void getImagePage();
+    void generateThumbnailUrl();
     void getThumbnail();
 
   protected:

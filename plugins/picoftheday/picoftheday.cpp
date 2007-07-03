@@ -65,18 +65,16 @@ PicofthedayAgenda::PicofthedayAgenda()
   KConfigGroup config(&_config, "Calendar/Picoftheday Plugin/Agenda");
   mThumbnailSize = config.readEntry( "ThumbnailSize", 120 );
   mAspectRatioMode = (Qt::AspectRatioMode)config.readEntry( "AspectRatioMode", int(Qt::KeepAspectRatio) );
-  
-  // TODO: read the position from the config 
-  mPosition = DayBottomC;
+  mPosition = /*config.readEntry( "Position",*/ DayBottomC /*)*/;
 }
 
 QWidget* PicofthedayAgenda::widget( QWidget *parent, const QDate &date ) const
 {
   POTDWidget *w = new POTDWidget(parent);
   w->setThumbnailSize( mThumbnailSize );
+  w->setAspectRatioMode( mAspectRatioMode );
   w->setDate( date );
   w->downloadPOTD();
-  w->setAspectRatioMode( mAspectRatioMode );
 
   return w;
 }
