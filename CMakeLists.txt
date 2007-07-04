@@ -110,6 +110,7 @@ install(TARGETS korganizer_calendar  DESTINATION ${LIB_INSTALL_DIR})
 set(korganizer_LIB_SRCS 
    ${libkdgantt1_SRCS}
    komessagebox.cpp 
+   koalternatelabel.cpp 
    koagendaview.cpp 
    koagenda.cpp 
    koagendaitem.cpp 
