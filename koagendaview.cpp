@@ -761,8 +761,8 @@ void KOAgendaView::createDayLabels()
               dayLayout->setAlignment( label, Qt::AlignCenter );
             }
           }
-        }*/
-      }
+        }
+      }*/
     }
 #endif
 
