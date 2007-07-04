@@ -32,6 +32,7 @@
 #include "kogroupware.h"
 #include "kodialogmanager.h"
 #include "koeventpopupmenu.h"
+#include "koalternatelabel.h"
 
 #include <kcal/calendar.h>
 #include <kcal/icaldrag.h>
@@ -329,90 +330,6 @@ void EventIndicator::enableColumn(int column, bool enable)
 
 #include <kcal/incidence.h>
 #include <kvbox.h>
-
-////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////
-
-
-KOAlternateLabel::KOAlternateLabel(const QString &shortlabel, const QString &longlabel,
-    const QString &extensivelabel, QWidget *parent )
-  : QLabel( parent ), mTextTypeFixed( false ), mShortText( shortlabel ),
-    mLongText( longlabel ), mExtensiveText( extensivelabel )
-{
-  setSizePolicy(QSizePolicy( QSizePolicy::Expanding, QSizePolicy::Fixed ));
-  if (mExtensiveText.isEmpty()) mExtensiveText = mLongText;
-  squeezeTextToLabel();
-}
-
-KOAlternateLabel::~KOAlternateLabel()
-{
-}
-
-void KOAlternateLabel::useShortText()
-{
-  mTextTypeFixed = true;
-  QLabel::setText( mShortText );
-  setToolTip( mExtensiveText );
-}
-
-void KOAlternateLabel::useLongText()
-{
-  mTextTypeFixed = true;
-  QLabel::setText( mLongText );
-  this->setToolTip( mExtensiveText );
-}
-
-void KOAlternateLabel::useExtensiveText()
-{
-  mTextTypeFixed = true;
-  QLabel::setText( mExtensiveText );
-  this->setToolTip("");
-}
-
-void KOAlternateLabel::useDefaultText()
-{
-  mTextTypeFixed = false;
-  squeezeTextToLabel();
-}
-
-void KOAlternateLabel::squeezeTextToLabel()
-{
-  if (mTextTypeFixed) return;
-
-  QFontMetrics fm(fontMetrics());
-  int labelWidth = size().width();
-  int textWidth = fm.width(mLongText);
-  int longTextWidth = fm.width(mExtensiveText);
-  if (longTextWidth <= labelWidth) {
-    QLabel::setText( mExtensiveText );
-    this->setToolTip("");
-  } else if (textWidth <= labelWidth) {
-    QLabel::setText( mLongText );
-    this->setToolTip( mExtensiveText );
-  } else {
-    QLabel::setText( mShortText );
-    this->setToolTip( mExtensiveText );
-  }
-}
-
-void KOAlternateLabel::resizeEvent( QResizeEvent * )
-{
-  squeezeTextToLabel();
-}
-
-QSize KOAlternateLabel::minimumSizeHint() const
-{
-  QSize sh = QLabel::minimumSizeHint();
-  sh.setWidth(-1);
-  return sh;
-}
-
-void KOAlternateLabel::setText( const QString &text ) {
-  mLongText = text;
-  squeezeTextToLabel();
-}
-
 
 ////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////
@@ -864,6 +781,7 @@ void KOAgendaView::createDayLabels()
     }
 
 #ifndef KORG_NOPLUGINS
+/* OLD INTERFACE, WILL BE REMOVED IN THE NEAR FUTURE
     OldCalendarDecoration::List ocds = KOCore::self()->oldCalendarDecorations();
     OldCalendarDecoration::List::iterator it;
     for ( it = ocds.begin(); it!= ocds.end(); ++it ) {
@@ -902,7 +820,7 @@ void KOAgendaView::createDayLabels()
         dayLayout->setAlignment(wid, Qt::AlignCenter);
       }
     }
-
+*/
 
     // Show calendar decorations for the bottom of the top label
     // TODO: sync with DayTopT

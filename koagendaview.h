@@ -119,31 +119,6 @@ class EventIndicator : public QFrame
     QVector<bool> mEnabled;
 };
 
-class KOAlternateLabel : public QLabel
-{
-  Q_OBJECT
-  public:
-    KOAlternateLabel( const QString &shortlabel, const QString &longlabel,
-                      const QString &extensivelabel = QString(),
-                      QWidget *parent = 0 );
-    ~KOAlternateLabel();
-
-    virtual QSize minimumSizeHint() const;
-
-  public slots:
-    void setText( const QString & );
-    void useShortText();
-    void useLongText();
-    void useExtensiveText();
-    void useDefaultText();
-
-  protected:
-    virtual void resizeEvent( QResizeEvent * );
-    virtual void squeezeTextToLabel();
-    bool mTextTypeFixed;
-    QString mShortText, mLongText, mExtensiveText;
-};
-
 /**
   KOAgendaView is the agenda-like view used to display events in an one or
   multi-day view.
