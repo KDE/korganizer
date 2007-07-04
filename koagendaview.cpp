@@ -707,8 +707,23 @@ void KOAgendaView::createDayLabels()
     // Show calendar decorations for the top of the top label
     foreach ( CalendarDecoration::Decoration* deco, cds ) {
       kDebug() << deco->info() << endl;
-      kDebug() << "agenda decos: " << deco->agenda().count() << endl;
-      foreach ( CalendarDecoration::AgendaElement* it, deco->agenda() ) {
+      foreach ( CalendarDecoration::FlexibleElement* it, deco->elements() ) {
+        //TODO: check if it's the right place, get the size
+        QSize *size = new QSize( 200, 150 );
+        QPixmap pixmap = it->pixmap( date, *size );
+        QString shortText = it->shortText( date );
+        QString longText = it->longText( date );
+        QString extensiveText = it->extensiveText( date );
+        QString toolTip = it->toolTip( date );
+        KUrl url = it->url( date );
+          // TODO: change to KODecorationLabel? (urls)
+        KOAlternateLabel *label = new KOAlternateLabel( shortText, longText,
+            extensiveText,
+            mDayLabels );
+        label->setToolTip( toolTip );
+        dayLayout->addWidget( label );
+      }
+/*      foreach ( CalendarDecoration::AgendaElement* it, deco->agenda() ) {
         // TODO: reject a 2nd widget for the same position
         if ( it->position() == CalendarDecoration::DayTopT ) {
           QWidget *wid = it->widget( mDayLabels, date );
@@ -746,7 +761,7 @@ void KOAgendaView::createDayLabels()
               dayLayout->setAlignment( label, Qt::AlignCenter );
             }
           }
-        }
+        }*/
       }
     }
 #endif

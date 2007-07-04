@@ -50,6 +50,18 @@ class FlexibleElement
     virtual ~FlexibleElement() {}
 
     /**
+    Return a name for easy identification.
+    This will be used for example for internal configuration (position, etc.),
+    so don't i18n it and make it unique for your decoration.
+     */
+    virtual QString elementName() const = 0;
+    /**
+    Return a name for easy identification.
+    This will be used for example for configuration (position, etc.).
+     */
+    virtual QString elementInfo() const = 0;
+    
+    /**
       Return a short text for a given date,
       usually only a few words.
      */
@@ -87,6 +99,11 @@ class FlexibleElement
      */
     virtual KUrl url( const QDate & ) const
       { return KUrl(); }
+
+/*    // TODO: think about this:
+  signals:
+    virtual void pixmapReady( const QPixmap & ) const;
+    */
 };
 
 

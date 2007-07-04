@@ -32,6 +32,7 @@ class ThisDayInHistoryElement : public FlexibleElement {
     ~ThisDayInHistoryElement() {}
 
   protected:
+    QString elementName() const;
     QString smallText( const QDate & ) const;
     KUrl url( const QDate & ) const;
 

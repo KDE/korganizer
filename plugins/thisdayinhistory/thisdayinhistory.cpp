@@ -56,6 +56,11 @@ ThisDayInHistoryElement::ThisDayInHistoryElement()
 {
 }
 
+QString ThisDayInHistoryElement::elementName() const
+{
+  return "Main Element";
+}
+
 QString ThisDayInHistoryElement::smallText( const QDate &date ) const
 {
   return i18n("This Day in History");
