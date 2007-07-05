@@ -54,7 +54,6 @@ class KRecentFilesAction;
 class KSelectAction;
 class KToggleAction;
 class KConfigGroup;
-class K3Process;
 class KTemporaryFile;
 class KXMLGUIClient;
 class CalendarView;
@@ -338,8 +337,6 @@ class KORGANIZER_EXPORT ActionManager : public QObject
 
     /** called by the auto archive timer to automatically delete/archive events */
     void slotAutoArchive();
-
-    void configureDateTimeFinished(K3Process *);
 
     void setTitle();
 

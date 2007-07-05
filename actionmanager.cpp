@@ -37,7 +37,6 @@
 #include "koprefs.h"
 #include "koviewmanager.h"
 #include "kowindowlist.h"
-#include "k3process.h"
 #include "history.h"
 #include "kogroupware.h"
 #include "resourceview.h"
@@ -60,6 +59,7 @@
 #include <kstandarddirs.h>
 #include <ktip.h>
 #include <ktemporaryfile.h>
+#include <kprocess.h>
 #include <kxmlguiclient.h>
 #include <kwindowsystem.h>
 #include <knotification.h>
@@ -742,15 +742,13 @@ void ActionManager::file_icalimport()
     return;
   }
 
-  K3Process proc;
+  KProcess proc;
   proc << "ical2vcal" << tmpfn.fileName();
-  bool success = proc.start( K3Process::Block );
+  retVal = proc.execute();
 
-  if ( !success ) {
+  if ( retVal == -1 ) {
     kDebug(5850) << "Error starting ical2vcal." << endl;
     return;
-  } else {
-    retVal = proc.exitStatus();
   }
 
   kDebug(5850) << "ical2vcal return value: " << retVal << endl;
@@ -1271,16 +1269,12 @@ void ActionManager::setDestinationPolicy()
 
 void ActionManager::configureDateTime()
 {
-  K3Process *proc = new K3Process;
-  *proc << "kcmshell" << "language";
+  KProcess proc;
+  proc << "kcmshell" << "language";
 
-  connect( proc,SIGNAL( processExited( K3Process * ) ),
-          SLOT( configureDateTimeFinished( K3Process * ) ) );
-
-  if ( !proc->start() ) {
+  if ( !proc.startDetached() ) {
       KMessageBox::sorry( dialogParent(),
         i18n("Could not start control module for date and time format.") );
-      delete proc;
   }
 }
 
@@ -1389,11 +1383,6 @@ bool ActionManager::deleteIncidence( const QString& uid, bool force )
 bool ActionManager::addIncidence( const QString& ical )
 {
   return mCalendarView->addIncidence( ical );
-}
-
-void ActionManager::configureDateTimeFinished( K3Process *proc )
-{
-  delete proc;
 }
 
 void ActionManager::downloadNewStuff()
