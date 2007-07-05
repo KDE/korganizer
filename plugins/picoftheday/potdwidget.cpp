@@ -25,6 +25,7 @@
 #include <kio/scheduler.h>
 #include <kdebug.h>
 
+#include <QtGui/QResizeEvent>
 #include <qdom.h>
 
 POTDWidget::POTDWidget( QWidget* parent )
@@ -34,6 +35,7 @@ POTDWidget::POTDWidget( QWidget* parent )
   resize( 120, 120 );
   mARMode = Qt::KeepAspectRatio;
   mDate = QDate::currentDate();
+  setScaledContents(true);
   connect( this, SIGNAL( leftClickedUrl(const QString&) ),
            this, SLOT( invokeBrowser(const QString&) ) );
 }
@@ -59,6 +61,21 @@ void POTDWidget::setDate( const QDate &date )
 
 void POTDWidget::downloadPOTD()
 {
+  // Allow debugging even without internet connection in debug builds
+  // when KORG_NO_INTERNET is set
+  int debug_internet = qgetenv("KORG_NO_INTERNET").toInt();
+  if ( debug_internet ) {
+    if ( debug_internet == 1 ) {
+      mThumbUrl = "file:/usr/share/icons/default.kde/128x128/apps/kmenu.png";
+    }
+    if ( debug_internet == 2 ) {
+      mThumbUrl = "file:" + qgetenv("HOME") + "/" 
+                  + mDate.toString(Qt::ISODate) + ".png";
+    }
+    getThumbnail();
+    return;
+  }
+
   KUrl *url = new KUrl( "http://commons.wikimedia.org/wiki/Template:Potd/"
                         + mDate.toString(Qt::ISODate) + "?action=raw" );
                // The file at that URL contains the file name for the POTD
@@ -204,20 +221,23 @@ void POTDWidget::downloadStep3Result( KJob* job )
     static_cast<KIO::StoredTransferJob*>( job );
   if ( mPixmap.loadFromData( transferJob->data() ) ) {
     kDebug() << "picoftheday Plugin: got POTD. " << endl;
-    setPixmap( mPixmap.scaled( mThumbSize, mThumbSize, mARMode ) );
+//    setPixmap( mPixmap.scaled( mThumbSize, mThumbSize, mARMode ) );
+    setPixmap( mPixmap );
   }
 }
 
-void POTDWidget::invokeBrowser( const QString &url ) {
+void POTDWidget::invokeBrowser( const QString &url )
+{
   KToolInvocation::invokeBrowser( url );
 }
 
 //TODO: this is still a work-in-progress
 void POTDWidget::resizeEvent( QResizeEvent *event )
 {
-/*  kDebug() << "picoftheday Plugin: I GOT A RESIZE EVENT! "
+  kDebug() << "picoftheday Plugin: I GOT A RESIZE EVENT! "
            << "new width: " << width() << " instead of " << event->oldSize().width()
-           << "new height: " << height() << " instead of " << event->oldSize().height();*/
+           << "new height: " << height() << " instead of " << event->oldSize().height()
+           << endl;
   mThumbSize = width();
   if ( ( width() > mPixmap.width() || height() > mPixmap.height() )
        && !mImagePageUrl.isEmpty() ) {
@@ -226,11 +246,14 @@ void POTDWidget::resizeEvent( QResizeEvent *event )
 //         resizeImage(&image, QSize(newWidth, newHeight));
 //         update();
 
-  generateThumbnailUrl();
+    generateThumbnailUrl();
 
-  getThumbnail();
+    getThumbnail();
 
   }
-     QWidget::resizeEvent( event );
+  if ( ( ! height() == 0 ) && ( ! width() == 0 ) ) {
+    setPixmap( mPixmap.scaled( width(), height(), mARMode ) );
+  }
+  QWidget::resizeEvent( event );
 }
 

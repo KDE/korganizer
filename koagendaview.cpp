@@ -438,6 +438,7 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
 
   // Create a frame at the bottom which may be used by decorations
   mBottomDayLabelsFrame = new KHBox(this);
+  mBottomDayLabelsFrame->setSpacing(2);
   topLayout->addWidget(mBottomDayLabelsFrame);
 
   // Update widgets to reflect user preferences
@@ -681,6 +682,7 @@ void KOAgendaView::createDayLabels()
   mBottomDayLabels = new QFrame (mBottomDayLabelsFrame);
   mLayoutBottomDayLabels = new QHBoxLayout(mBottomDayLabels);
   mLayoutBottomDayLabels->setMargin(0);
+  mBottomDayLabelsFrame->setStretchFactor(mBottomDayLabels, 1);
   mLayoutBottomDayLabels->addSpacing(mTimeLabels->width());
 
   const KCalendarSystem*calsys=KOGlobals::self()->calendarSystem();
