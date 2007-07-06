@@ -69,7 +69,7 @@ void POTDWidget::downloadPOTD()
       mThumbUrl = "file:/usr/share/icons/default.kde/128x128/apps/kmenu.png";
     }
     if ( debug_internet == 2 ) {
-      mThumbUrl = "file:" + qgetenv("HOME") + "/" 
+      mThumbUrl = "file:" + qgetenv("HOME") + '/' 
                   + mDate.toString(Qt::ISODate) + ".png";
     }
     getThumbnail();
