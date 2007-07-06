@@ -709,15 +709,15 @@ void KOAgendaView::createDayLabels()
     // Show calendar decorations for the top of the top label
     foreach ( CalendarDecoration::Decoration* deco, cds ) {
       kDebug() << deco->info() << endl;
-      foreach ( CalendarDecoration::FlexibleElement* it, deco->elements() ) {
+      foreach ( CalendarDecoration::Element* it, deco->dayElements( date ) ) {
         //TODO: check if it's the right place, get the size
         QSize *size = new QSize( 200, 150 );
-        QPixmap pixmap = it->pixmap( date, *size );
-        QString shortText = it->shortText( date );
-        QString longText = it->longText( date );
-        QString extensiveText = it->extensiveText( date );
-        QString toolTip = it->toolTip( date );
-        KUrl url = it->url( date );
+        QPixmap pixmap = it->pixmap( *size );
+        QString shortText = it->shortText();
+        QString longText = it->longText();
+        QString extensiveText = it->extensiveText();
+        QString toolTip = it->longText();
+        KUrl url = it->url();
           // TODO: change to KODecorationLabel? (urls)
         KOAlternateLabel *label = new KOAlternateLabel( shortText, longText,
             extensiveText,
@@ -839,53 +839,7 @@ void KOAgendaView::createDayLabels()
     }
 */
 
-    // Show calendar decorations for the bottom of the top label
-    // TODO: sync with DayTopT
-    foreach ( CalendarDecoration::Decoration* deco, cds ) {
-//      kDebug() << deco->info() << endl;
-//      kDebug() << "agenda decos: " << deco->agenda().count() << endl;
-      foreach ( CalendarDecoration::AgendaElement* it, deco->agenda() ) {
-//        kDebug() << "found an agenda element, can be positioned at: " 
-//                 << it->acceptablePositions() << endl;
-        // TODO: reject a 2nd widget for the same position
-        if ( it->position() == CalendarDecoration::DayTopB ) {
-          QWidget *wid = it->widget( mDayLabels, date );
-          if ( wid ) {
-            //TODO: use a better metric, handle view resizes
-            wid->setMaximumHeight( mAgenda->height()/5 ); 
-//            wid->setMaximumWidth( mDayLabels->width() );
-            dayLayout->addWidget(wid);
-            dayLayout->setAlignment(wid, Qt::AlignCenter);
-          }
-        }
-      }
-    }
 #endif
-
-#ifndef KORG_NOPLUGINS
-    // Show calendar decorations for the bottom of each day
-    // TODO: sync with DayTopT
-    foreach ( CalendarDecoration::Decoration* deco, cds ) {
-//      kDebug() << deco->info() << endl;
-//      kDebug() << "agenda decos: " << deco->agenda().count() << endl;
-      foreach ( CalendarDecoration::AgendaElement* it, deco->agenda() ) {
-//        kDebug() << "found an agenda element, can be positioned at: " 
-//                 << it->acceptablePositions() << endl;
-        // TODO: reject a 2nd widget for the same position)
-        if ( it->position() == CalendarDecoration::DayBottomC ) {
-          QWidget *wid = it->widget( mBottomDayLabels, date );
-          if ( wid ) {
-            //TODO: use a better metric, handle view resizes
-            wid->setMaximumHeight( mAgenda->height()/5 );
-//            wid->setMaximumWidth( mBottomDayLabels->width() );
-            dayBottomLayout->addWidget(wid);
-            dayBottomLayout->setAlignment(wid, Qt::AlignCenter);
-          }
-        }
-      }
-    }
-#endif
-
   }
 
   mLayoutDayLabels->addSpacing(mAgenda->verticalScrollBar()->width());

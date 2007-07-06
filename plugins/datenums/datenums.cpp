@@ -39,12 +39,11 @@ K_EXPORT_COMPONENT_FACTORY( libkorg_datenums, DatenumsFactory )
 
 
 Datenums::Datenums()
+  : mDateNums( 0 )
 {
   KConfig _config( "korganizerrc", KConfig::NoGlobals );
   KConfigGroup config(&_config, "Calendar/Datenums Plugin");
-
-  DatenumsAgenda* a = new DatenumsAgenda();
-  agendaElements += a;
+  mDateNums = config.readEntry( "ShowDayNumbers", 0 );
 }
 
 void Datenums::configure(QWidget *parent)
@@ -59,31 +58,27 @@ QString Datenums::info()
   return i18n("This plugin shows information on a day's position in the year.");
 }
 
-DatenumsAgenda::DatenumsAgenda()
+Element::List Datenums::createDayElements( const QDate &date )
 {
-  KConfig _config( "korganizerrc", KConfig::NoGlobals );
-  KConfigGroup gconfig(&_config, "Calendar/Datenums Plugin");
-  mDateNum = gconfig.readEntry( "ShowDayNumbers", 0 );
+  Element::List result;
 
-  // TODO: read the position from the config
-  mPosition = DayTopT;
-}
-
-QString DatenumsAgenda::shortText( const QDate &date ) const
-{
   int doy = KOGlobals::self()->calendarSystem()->dayOfYear(date);
-  switch (mDateNum) {
+  switch (mDateNums) {
     case 1: // only days until end of year
-        return QString::number( KOGlobals::self()->calendarSystem()->daysInYear(date) - doy );
-        break;
+      result.append( new StoredElement(
+        QString::number(
+          KOGlobals::self()->calendarSystem()->daysInYear(date) - doy ) ) );
+      break;
     case 2: // both day of year and days till end of year
-        return i18nc("dayOfYear / daysTillEndOfYear", "%1 / %2", doy ,
-                KOGlobals::self()->calendarSystem()->daysInYear(date) - doy);
-        break;
+      result.append( new StoredElement(
+        i18nc("dayOfYear / daysTillEndOfYear", "%1 / %2", doy ,
+          KOGlobals::self()->calendarSystem()->daysInYear(date) - doy) ) );
+      break;
     case 0: // only day of year
     default:
-        return QString::number( doy );
+      result.append( new StoredElement( QString::number( doy ) ) );
   }
-  return QString::number( doy );
+
+  return result;
 }
 

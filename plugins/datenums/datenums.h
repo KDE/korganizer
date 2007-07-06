@@ -27,26 +27,21 @@
 
 using namespace KOrg::CalendarDecoration;
 
-class DatenumsAgenda : public AgendaElement {
-  public:
-    DatenumsAgenda();
-    ~DatenumsAgenda() {}
-
-    QString shortText( const QDate & ) const;
-
-  protected:
-    int mDateNum;
-};
-
-class Datenums : public Decoration {
+class Datenums : public Decoration
+{
   public:
     Datenums();
     ~Datenums() {}
 
     void configure( QWidget *parent );
 
+    Element::List createDayElements( const QDate & );
+
   protected:
     QString info();
+    
+  private:
+    int mDateNums;
 };
 
 #endif

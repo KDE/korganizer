@@ -143,6 +143,11 @@ void KOPrefs::fillMailDefaults()
 void KOPrefs::setTimeZoneDefault()
 {
   const KTimeZone *zone = KSystemTimeZones::local();
+  if ( !zone ) {
+    kError() << "KSystemTimeZones::local() return 0" << endl;
+    return;
+  }
+
   kDebug () << "----- time zone: " << zone->name() << endl;
 
   mTimeSpec = zone;

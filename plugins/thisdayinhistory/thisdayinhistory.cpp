@@ -51,25 +51,18 @@ QString ThisDayInHistory::info()
               "'This Day in History' pages.");
 }
 
-
-ThisDayInHistoryElement::ThisDayInHistoryElement()
+Element::List ThisDayInHistory::createElements( const QDate &date )
 {
-}
+  Element::List elements;
 
-QString ThisDayInHistoryElement::elementName() const
-{
-  return "Main Element";
-}
-
-QString ThisDayInHistoryElement::smallText( const QDate &date ) const
-{
-  return i18n("This Day in History");
-}
-
-KUrl ThisDayInHistoryElement::url( const QDate &date ) const
-{
-  return i18nc("Localized Wikipedia website", "http://en.wikipedia.org/wiki/")
+  StoredElement *element = new StoredElement();
+  element->setShortText( "This day in history" );
+  element->setUrl( i18nc("Localized Wikipedia website",
+    "http://en.wikipedia.org/wiki/")
     + date.toString( i18nc("Qt date format used by the localized Wikipedia",
-                            "MMMM_d") );
-}
+                            "MMMM_d") ) );
 
+  elements.append( element );
+
+  return elements;
+}

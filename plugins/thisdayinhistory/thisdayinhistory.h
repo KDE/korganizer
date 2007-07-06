@@ -26,29 +26,17 @@
 
 using namespace KOrg::CalendarDecoration;
 
-class ThisDayInHistoryElement : public FlexibleElement {
-  public:
-    ThisDayInHistoryElement();
-    ~ThisDayInHistoryElement() {}
-
-  protected:
-    QString elementName() const;
-    QString smallText( const QDate & ) const;
-    KUrl url( const QDate & ) const;
-
-};
-
-
-class ThisDayInHistory : public Decoration {
+class ThisDayInHistory : public Decoration
+{
   public:
     ThisDayInHistory();
     ~ThisDayInHistory() {}
+
+    Element::List createElements( const QDate & );
     
 //    void configure( QWidget *parent );
     
-  protected:
     QString info();
-
 };
 
 #endif
