@@ -299,7 +299,10 @@ MonthViewCell::MonthViewCell( KOMonthView *parent)
   topLayout->setMargin( 0 );
   topLayout->setSpacing( 0 );
 
+  QHBoxLayout *labelLayout = new QHBoxLayout( this );
   mLabel = new QLabel( this );
+  labelLayout->addWidget( mLabel );
+/* TODO: Add code for the loading of the cell decorations around here? */
   mLabel->setFrameStyle( QFrame::Panel | QFrame::Plain );
   mLabel->setLineWidth( 1 );
   mLabel->setAlignment( Qt::AlignCenter );
@@ -356,6 +359,7 @@ void MonthViewCell::setDate( const QDate &date )
     text = QString::number( KOGlobals::self()->calendarSystem()->day(mDate) );
   }
   mLabel->setText( text );
+/* TODO: Add code for the loading of the decorations around here */
 
   resizeEvent( 0 );
 }
@@ -697,6 +701,7 @@ void MonthViewCell::deselect()
 void MonthViewCell::resizeEvent ( QResizeEvent * )
 {
   mLabel->move( width() - mLabel->width(), height() - mLabel->height() );
+/* TODO: Add code to move cell decorations around here */
 }
 
 void MonthViewCell::defaultAction( Q3ListBoxItem *item )
@@ -1034,6 +1039,7 @@ void KOMonthView::updateView()
   for ( it = incidences.begin(); it != incidences.end(); ++it )
     changeIncidenceDisplayAdded( *it );
 
+/* TODO: Add code for the loading of the decorations around here? */
   processSelectionChange();
 }
 

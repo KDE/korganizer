@@ -680,9 +680,9 @@ void KOAgendaView::createDayLabels()
   mLayoutDayLabels->addSpacing(mTimeLabels->width());
 
   mBottomDayLabels = new QFrame (mBottomDayLabelsFrame);
+  mBottomDayLabelsFrame->setStretchFactor(mBottomDayLabels, 1);
   mLayoutBottomDayLabels = new QHBoxLayout(mBottomDayLabels);
   mLayoutBottomDayLabels->setMargin(0);
-  mBottomDayLabelsFrame->setStretchFactor(mBottomDayLabels, 1);
   mLayoutBottomDayLabels->addSpacing(mTimeLabels->width());
 
   const KCalendarSystem*calsys=KOGlobals::self()->calendarSystem();

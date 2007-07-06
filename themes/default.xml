@@ -26,10 +26,10 @@
   <element name="calendar-items">
     <background color="#97EB79"/>
     <element name="events">
-      <background icon="event"/>
+      <icon value="event"/>
     </element>
     <element name="to-dos">
-      <background icon="to-do"/>
+      <icon value="to-do"/>
       <element name="due-today">
         <background color="#FFC832"/>
       </element>
@@ -74,4 +74,21 @@
   <element name="holidays">
     <background color="#FF6464"/>
   </element>
+  <year value="1534">
+<!--    <month value="1">
+      <day value="1">-->
+        <!-- Konqi's birthday, TODO: make it special! -->
+        <view type="agenda">
+          <element name="agenda">
+            <background image="konqui.png"/>
+          </element>
+          <element name="calendar-items">
+            <element name="events">
+              <icon src="Scotland-flag.png"/><!-- he's born in the Highlands after all :) -->
+            </element>
+          </element>
+        </view>
+<!--      </day>
+    </month>-->
+  </year>
 </korganizer-theme>
