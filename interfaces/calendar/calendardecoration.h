@@ -160,7 +160,10 @@ class Decoration : public Plugin
     Decoration() {}
     virtual ~Decoration()
     {
-      // FIXME: Delete all elements.
+      mDayElements.clear();
+      mWeekElements.clear();
+      mMonthElements.clear();
+      mYearElements.clear();
     }
 
     /**
