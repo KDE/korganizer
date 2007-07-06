@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE korganizer-theme>
+<korganizer-theme>
+  <view type="agenda">
+    <element name="agenda">
+      <background color="#FFFFFF" image="tux-filigrane.png"/>
+      <element name="work-hours">
+        <background color="#E1E1FF"/>
+      </element>
+    </element>
+    <element name="time-labels">
+      <font size="16"/>
+    </element>
+    <element name="events">
+      <font size="8"/>
+    </element>
+  </view>
+  <view type="agenda">
+    <element name="events">
+      <font size="6"/>
+    </element>
+  </view>
+  <element name="current-time-line">
+    <font size="8"/>
+  </element>
+  <element name="calendar-items">
+    <background color="#97EB79"/>
+    <element name="events">
+      <background icon="event"/>
+    </element>
+    <element name="to-dos">
+      <background icon="to-do"/>
+      <element name="due-today">
+        <background color="#FFC832"/>
+      </element>
+      <element name="overdue">
+        <background color="#FF6464"/>
+      </element>
+    </element>
+    <element name="categories">
+      <element name="appointment">
+      </element>
+      <element name="birthday">
+      </element>
+      <element name="business">
+      </element>
+      <element name="education">
+      </element>
+      <element name="holiday">
+      </element>
+      <element name="meeting">
+      </element>
+      <element name="miscellaneous">
+      </element>
+      <element name="personal">
+      </element>
+      <element name="phone-call">
+      </element>
+      <element name="special-occasion">
+      </element>
+      <element name="travel">
+      </element>
+      <element name="vacation">
+      </element>
+    </element>
+    <element name="resources">
+      <element name="default-calendar">
+      </element>
+      <element name="birthdays">
+      </element>
+    </element>
+    <frame color="#D8DBD5"/>
+  </element>
+  <element name="holidays">
+    <background color="#FF6464"/>
+  </element>
+</korganizer-theme>
