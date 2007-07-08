@@ -188,7 +188,7 @@ qt4_add_dbus_interfaces(korganizer_LIB_SRCS org.kde.korganizer.Korganizer.xml )
 
 kde4_add_library(korganizer SHARED ${korganizer_LIB_SRCS})
 
-target_link_libraries(korganizer ${KDE4_KPARTS_LIBS} ${KDE4_KNEWSTUFF2_LIBS} ${KDE4_KDEPRINT_LIBS} ${KDE4_KABC_LIBS} ${KDE4_KUTILS_LIBRARY} ${KDE4_KCAL_LIBS} kpimidentities
+target_link_libraries(korganizer ${KDE4_KPARTS_LIBS} ${KDE4_KNEWSTUFF2_LIBS} ${KDE4_KDEPRINT_LIBS} ${KDE4_KABC_LIBS} ${KDE4_KUTILS_LIBRARY} ${KDE4_KCAL_LIBS} ${KDE4_KPIMIDENTITIES_LIBS}
                                                       kdepim korganizer_eventviewer korganizer_calendar kocorehelper 
                                                       korg_stdprinting kholidays korganizer_interfaces )
 
