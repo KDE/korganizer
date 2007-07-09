@@ -746,8 +746,8 @@ void ActionManager::file_icalimport()
   proc << "ical2vcal" << tmpfn.fileName();
   retVal = proc.execute();
 
-  if ( retVal == -1 ) {
-    kDebug(5850) << "Error starting ical2vcal." << endl;
+  if ( retVal < 0 ) {
+    kDebug(5850) << "Error executing ical2vcal." << endl;
     return;
   }
 
@@ -769,11 +769,11 @@ void ActionManager::file_icalimport()
                                 "discard them; please check to see that all "
                                 "your relevant data was correctly imported." ),
                                  i18n("ICal Import Successful with Warning") );
-  } else if ( retVal == -1 ) {
+  } else if ( retVal == -1 ) { // XXX this is bogus
     KMessageBox::error( dialogParent(),
                          i18n( "KOrganizer encountered an error parsing your "
                               ".calendar file from ical; import has failed." ) );
-  } else if ( retVal == -2 ) {
+  } else if ( retVal == -2 ) { // XXX this is bogus
     KMessageBox::error( dialogParent(),
                          i18n( "KOrganizer does not think that your .calendar "
                               "file is a valid ical calendar; import has failed." ) );
