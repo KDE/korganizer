@@ -6,7 +6,6 @@ include_directories( ${CMAKE_SOURCE_DIR}/korganizer/interfaces ${CMAKE_SOURCE_DI
 
 set(korg_listprint_PART_SRCS listprint.cpp )
 
-kde4_automoc(${korg_listprint_PART_SRCS})
 
 kde4_add_ui_files(korg_listprint_PART_SRCS calprintlistconfig_base.ui )
 

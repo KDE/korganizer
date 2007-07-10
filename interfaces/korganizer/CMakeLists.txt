@@ -9,7 +9,6 @@ set(korganizer_interfaces_LIB_SRCS
   mainwindow.cpp
 )
 
-kde4_automoc(${korganizer_interfaces_LIB_SRCS})
 
 kde4_add_library(korganizer_interfaces SHARED ${korganizer_interfaces_LIB_SRCS})
 

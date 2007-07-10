@@ -6,7 +6,6 @@ include_directories( ${CMAKE_SOURCE_DIR}/korganizer/interfaces ${CMAKE_SOURCE_DI
 
 set(korg_yearprint_PART_SRCS yearprint.cpp )
 
-kde4_automoc(${korg_yearprint_PART_SRCS})
 
 kde4_add_ui_files(korg_yearprint_PART_SRCS calprintyearconfig_base.ui )
 

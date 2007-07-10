@@ -29,7 +29,6 @@ set(korganizer_bin_SRCS
    koapp.cpp 
 )
 
-kde4_automoc(${korganizer_bin_SRCS})
 
 kde4_add_executable(korganizer_bin ${korganizer_bin_SRCS})
 
@@ -44,7 +43,6 @@ install(TARGETS korganizer_bin  DESTINATION ${BIN_INSTALL_DIR} )
 
 set(kcm_korganizer_PART_SRCS koprefsdialog.cpp )
 
-kde4_automoc(${kcm_korganizer_PART_SRCS})
 
 kde4_add_plugin(kcm_korganizer ${kcm_korganizer_PART_SRCS})
 
@@ -61,7 +59,6 @@ install(TARGETS kcm_korganizer  DESTINATION ${PLUGIN_INSTALL_DIR})
 
 set(korganizerpart_PART_SRCS korganizer_part.cpp )
 
-kde4_automoc(${korganizerpart_PART_SRCS})
 
 kde4_add_plugin(korganizerpart WITH_PREFIX ${korganizerpart_PART_SRCS})
 
@@ -76,7 +73,6 @@ install(TARGETS korganizerpart  DESTINATION ${PLUGIN_INSTALL_DIR})
 
 set(korganizer_eventviewer_LIB_SRCS koeventviewer.cpp urihandler.cpp koeventviewerdialog.cpp )
 
-kde4_automoc(${korganizer_eventviewer_LIB_SRCS})
 
 qt4_add_dbus_interfaces(korganizer_eventviewer_LIB_SRCS org.kde.korganizer.Korganizer.xml)
 qt4_add_dbus_interfaces(korganizer_eventviewer_LIB_SRCS ${CMAKE_SOURCE_DIR}/kmail/org.kde.kmail.kmail.xml)
@@ -95,7 +91,6 @@ install(TARGETS korganizer_eventviewer  DESTINATION ${LIB_INSTALL_DIR})
 
 set(korganizer_calendar_LIB_SRCS stdcalendar.cpp )
 
-kde4_automoc(${korganizer_calendar_LIB_SRCS})
 
 kde4_add_library(korganizer_calendar SHARED ${korganizer_calendar_LIB_SRCS})
 
@@ -176,7 +171,6 @@ set(korganizer_LIB_SRCS
    incidencechanger.cpp 
    templatemanagementdialog.cpp )
 
-kde4_automoc(${korganizer_LIB_SRCS})
 
 kde4_add_kcfg_files(korganizer_LIB_SRCS koprefs_base.kcfgc )
 

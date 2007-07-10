@@ -6,7 +6,6 @@ include_directories( ${CMAKE_SOURCE_DIR}/korganizer/interfaces ${CMAKE_SOURCE_DI
 
 set(korg_journalprint_PART_SRCS journalprint.cpp )
 
-kde4_automoc(${korg_journalprint_PART_SRCS})
 
 kde4_add_ui_files(korg_journalprint_PART_SRCS calprintjournalconfig_base.ui )
 
