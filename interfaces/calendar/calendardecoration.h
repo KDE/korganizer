@@ -160,6 +160,22 @@ class Decoration : public Plugin
     Decoration() {}
     virtual ~Decoration()
     {
+      foreach ( Element::List lst, mDayElements ) {
+        qDeleteAll( lst );
+        lst.clear();
+      }
+      foreach ( Element::List lst, mWeekElements ) {
+        qDeleteAll( lst );
+        lst.clear();
+      }
+      foreach ( Element::List lst, mMonthElements ) {
+        qDeleteAll( lst );
+        lst.clear();
+      }
+      foreach ( Element::List lst, mYearElements ) {
+        qDeleteAll( lst );
+        lst.clear();
+      }
       mDayElements.clear();
       mWeekElements.clear();
       mMonthElements.clear();
