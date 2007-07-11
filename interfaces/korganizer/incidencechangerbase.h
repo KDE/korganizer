@@ -23,7 +23,7 @@
 
 #include "korganizer/korganizer_export.h"
 #include <kcal/scheduler.h>
-#include <QObject>
+#include <QtCore/QObject>
 
 class QWidget;
 namespace KCal {
