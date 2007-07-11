@@ -39,7 +39,7 @@ class KOEventViewer;
 /**
   Viewer dialog for events.
 */
-class KORGANIZER_EXPORT KOEventViewerDialog : public KDialog
+class KORGANIZER_EVENTVIEWER_EXPORT KOEventViewerDialog : public KDialog
 {
   Q_OBJECT
   public:

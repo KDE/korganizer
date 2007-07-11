@@ -27,7 +27,7 @@
 #include "korganizer_export.h"
 #include <QString>
 
-class KORGANIZER_EXPORT UriHandler
+class KORGANIZER_EVENTVIEWER_EXPORT UriHandler
 {
   public:
     /**

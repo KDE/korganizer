@@ -39,7 +39,7 @@ using namespace KCal;
 /**
   Viewer widget for events.
 */
-class KORGANIZER_EXPORT KOEventViewer : public KTextBrowser
+class KORGANIZER_EVENTVIEWER_EXPORT KOEventViewer : public KTextBrowser
 {
   Q_OBJECT
   public:
