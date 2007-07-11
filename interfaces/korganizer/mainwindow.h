@@ -39,7 +39,7 @@ class CalendarViewBase;
   @short interface for korganizer main window
   @author Cornelius Schumacher
 */
-class KORGANIZER_EXPORT MainWindow
+class KORGANIZER_INTERFACES_EXPORT MainWindow
 {
   public:
     MainWindow();

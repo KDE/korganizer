@@ -48,7 +48,7 @@ class QComboBox;
   different formats (day, week, month).  It also provides a way for setting
   up the printer and remembering these preferences.
 */
-class KORGANIZER_EXPORT CalPrinter : public QObject, public KOrg::CalPrinterBase
+class KORG_STDPRINTING_EXPORT CalPrinter : public QObject, public KOrg::CalPrinterBase
 {
   Q_OBJECT
   public:

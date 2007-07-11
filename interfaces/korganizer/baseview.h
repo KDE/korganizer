@@ -51,7 +51,7 @@ namespace KOrg {
   @author Preston Brown, Cornelius Schumacher
   @see KOTodoView, KOEventView, KOListView, KOAgendaView, KOMonthView
 */
-class KORGANIZER_EXPORT BaseView : public QWidget
+class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
 {
   Q_OBJECT
   public:

@@ -34,7 +34,7 @@ using namespace KCal;
 
 namespace KOrg {
 
-class KORGANIZER_EXPORT IncidenceChangerBase : public QObject
+class KORGANIZER_INTERFACES_EXPORT IncidenceChangerBase : public QObject
 {
 Q_OBJECT
 public:
