@@ -6,7 +6,7 @@ include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/interfaces
                      ${CMAKE_SOURCE_DIR}/mimelib ${CMAKE_SOURCE_DIR}/libkleo ${CMAKE_SOURCE_DIR}/korganizer/printing 
                      ${CMAKE_SOURCE_DIR}/kdgantt1 
 		     ${CMAKE_BINARY_DIR}/libkdepim 
-                     ${QT_INCLUDES} )
+                     ${QT_INCLUDES} ${ZLIB_INCLUDE_DIR} )
 
 add_definitions (-DQT3_SUPPORT -DQT3_SUPPORT_WARNINGS)
 
