@@ -31,7 +31,6 @@
 #include <korganizer/mainwindow.h>
 
 class KAboutData;
-class K3Process;
 
 class CalendarView;
 class ActionManager;
@@ -88,9 +87,6 @@ class KOrganizerPart: public KParts::ReadOnlyPart,
 
   protected:
     virtual bool openFile();
-
-  protected slots:
-    void startCompleted( K3Process * );
 
   private:
     CalendarView *mView;

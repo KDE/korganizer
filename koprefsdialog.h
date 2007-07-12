@@ -46,7 +46,7 @@ namespace Ui {
   class KOGroupwarePrefsPage;
 }
 
-class KORGANIZER_EXPORT KOPrefsDialogMain : public KPrefsModule
+class KCM_KORGANIZER_EXPORT KOPrefsDialogMain : public KPrefsModule
 {
   Q_OBJECT
   public:
@@ -58,7 +58,7 @@ class KORGANIZER_EXPORT KOPrefsDialogMain : public KPrefsModule
     QWidget *mUserEmailSettings;
 };
 
-class KORGANIZER_EXPORT KOPrefsDialogColors : public KPrefsModule
+class KCM_KORGANIZER_EXPORT KOPrefsDialogColors : public KPrefsModule
 {
   Q_OBJECT
   public:
@@ -88,7 +88,7 @@ class KORGANIZER_EXPORT KOPrefsDialogColors : public KPrefsModule
     QStringList mResourceIdentifier;
 };
 
-class KORGANIZER_EXPORT KOPrefsDialogGroupScheduling : public KPrefsModule
+class KCM_KORGANIZER_EXPORT KOPrefsDialogGroupScheduling : public KPrefsModule
 {
   Q_OBJECT
   public:
@@ -111,7 +111,7 @@ class KORGANIZER_EXPORT KOPrefsDialogGroupScheduling : public KPrefsModule
 
 class KOGroupwarePrefsPage;
 
-class KORGANIZER_EXPORT KOPrefsDialogGroupwareScheduling : public KPrefsModule
+class KCM_KORGANIZER_EXPORT KOPrefsDialogGroupwareScheduling : public KPrefsModule
 {
   Q_OBJECT
   public:
@@ -126,7 +126,7 @@ class KORGANIZER_EXPORT KOPrefsDialogGroupwareScheduling : public KPrefsModule
     Ui::KOGroupwarePrefsPage *mGroupwarePage;
 };
 
-class KORGANIZER_EXPORT KOPrefsDialogPlugins : public KPrefsModule
+class KCM_KORGANIZER_EXPORT KOPrefsDialogPlugins : public KPrefsModule
 {
   Q_OBJECT
   public:
@@ -145,7 +145,7 @@ class KORGANIZER_EXPORT KOPrefsDialogPlugins : public KPrefsModule
     KPushButton *mConfigureButton;
 };
 
-class KORGANIZER_EXPORT KOPrefsDesignerFields : public KPIM::KCMDesignerFields
+class KCM_KORGANIZER_EXPORT KOPrefsDesignerFields : public KPIM::KCMDesignerFields
 {
   public:
     explicit KOPrefsDesignerFields( const KComponentData &inst, QWidget *parent = 0 );
