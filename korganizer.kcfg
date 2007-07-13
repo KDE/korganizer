@@ -448,4 +448,56 @@
     </entry>
 
   </group>
+
+  <group name="Theme/Agenda view">
+    <!-- BEGIN: These entries are the same for the agenda and month views, please keep them in sync -->
+    <entry key="Grid__BackgroundColor" type="Color">
+    </entry>
+    <entry key="Grid__BackgroundImage" type="String">
+    </entry>
+    <!-- END:   These entries are the same for the agenda and month views, please keep them in sync -->
+    <entry key="Grid_WorkHours__BackgroundColor" type="Color">
+    </entry>
+    <entry key="Grid_WorkHours__BackgroundImage" type="String">
+    </entry>
+    <entry key="TimeLabels__Font" type="Font">
+    </entry>
+    <entry key="MarcusBainsLine__Font" type="Font">
+    </entry>
+    <entry key="Holidays__BackgroundColor" type="Color">
+    </entry>
+    <entry key="CalendarItems__Font" type="Font">
+    </entry>
+    <entry key="CalendarItems__BackgroundColor" type="Color">
+    </entry>
+    <entry key="CalendarItems__FrameColor" type="Color">
+    </entry>
+    <entry key="CalendarItems_Events__Font" type="Font">
+    </entry>
+    <entry key="CalendarItems_Events__Icon" type="String">
+    </entry>
+    <entry key="CalendarItems_ToDos__Icon" type="String">
+    </entry>
+    <entry key="CalendarItems_ToDos_DueToday__BackgroundColor" type="String">
+    </entry>
+    <entry key="CalendarItems_ToDos_Overdue__BackgroundColor" type="String">
+    </entry>
+    <!-- TODO: categories, resources -->
+    
+<!--
+    <entry type="Color" key="Holiday Color">
+      <label>Holiday color</label>
+      <whatsthis>Select the holiday color here. The holiday color will be used for the holiday name in the month view and the holiday number in the date navigator.</whatsthis>
+      <default>255, 100, 100</default>
+    </entry>
+    <entry type="Font" key="TimeBar Font">
+      <label>Time bar</label>
+      <whatsthis>Press this button to configure the time bar font. The time bar is the widget that shows the hours in the agenda view. This button will open the &quot;Select Font&quot; dialog, allowing you to choose the hour font for the time bar.</whatsthis>
+    </entry>
+-->
+  </group>
+
+  <group name="Theme/Month view">
+  </group>
+
 </kcfg>

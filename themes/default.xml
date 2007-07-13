@@ -1,94 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE korganizer-theme>
-<korganizer-theme>
+<korganizer-theme version="1.0">
   <view type="agenda">
-    <element name="agenda">
-      <background color="#FFFFFF" image="tux-filigrane.png"/>
-      <subelement name="work-hours">
+    <grid>
+      <background color="#FFFFFF" src="tux-filigrane.png"/>
+      <work-hours>
         <background color="#E1E1FF"/>
-      </subelement>
-    </element>
-    <element name="time-labels">
+      </work-hours>
+    </grid>
+    <time-labels>
       <font size="16"/>
-    </element>
-    <group name="calendar-items">
+    </time-labels>
+    <calendar-items>
       <font size="8"/>
-    </group>
+    </calendar-items>
   </view>
   <view type="agenda">
-    <element name="events">
-      <font size="6"/>
-    </element>
+    <calendar-items>
+      <events>
+        <font size="6"/>
+      </events>
+    </calendar-items>
   </view>
-  <element name="current-time-line">
+  <marcus-bains-line>
     <font size="8"/>
-  </element>
-  <group name="calendar-items">
+  </marcus-bains-line>
+  <calendar-items>
     <background color="#97EB79"/>
-    <element name="events">
-      <icon value="event"/>
-    </element>
-    <element name="to-dos">
-      <icon value="to-do"/>
-      <subelement name="due-today">
+    <events>
+      <icon name="event"/>
+    </events>
+    <to-dos>
+      <icon name="to-do"/>
+      <due-today>
         <background color="#FFC832"/>
-      </subelement>
-      <subelement name="overdue">
+      </due-today>
+      <overdue>
         <background color="#FF6464"/>
-      </subelement>
-    </element>
-    <element name="categories">
-      <subelement name="appointment">
-      </subelement>
-      <subelement name="birthday">
-      </subelement>
-      <subelement name="business">
-      </subelement>
-      <subelement name="education">
-      </subelement>
-      <subelement name="holiday">
-      </subelement>
-      <subelement name="meeting">
-      </subelement>
-      <subelement name="miscellaneous">
-      </subelement>
-      <subelement name="personal">
-      </subelement>
-      <subelement name="phone-call">
-      </subelement>
-      <subelement name="special-occasion">
-      </subelement>
-      <subelement name="travel">
-      </subelement>
-      <subelement name="vacation">
-      </subelement>
-    </element>
-    <element name="resources">
-      <subelement name="default-calendar">
-      </subelement>
-      <subelement name="birthdays">
-      </subelement>
-    </element>
+      </overdue>
+    </to-dos>
+    <categories>
+      <appointment>
+      </appointment>
+      <birthday>
+      </birthday>
+      <business>
+      </business>
+      <education>
+      </education>
+      <holiday>
+      </holiday>
+      <meeting>
+      </meeting>
+      <miscellaneous>
+      </miscellaneous>
+      <personal>
+      </personal>
+      <phone-call>
+      </phone-call>
+      <special-occasion>
+      </special-occasion>
+      <travel>
+      </travel>
+      <vacation>
+      </vacation>
+    </categories>
+    <resources>
+      <default-calendar>
+      </default-calendar>
+      <birthdays>
+      </birthdays>
+    </resources>
     <frame color="#D8DBD5"/>
-  </group>
-  <element name="holidays">
+  </calendar-items>
+  <holidays>
     <background color="#FF6464"/>
-  </element>
+  </holidays>
   <year value="1534">
 <!--    <month value="1">
       <day value="1">-->
         <!-- Konqi's birthday, TODO: make it special! -->
         <view type="agenda">
-          <element name="agenda">
-            <background image="konqui.png"/>
-          </element>
-          <element name="calendar-items">
-            <element name="events">
+          <agenda>
+            <background src="konqui.png"/>
+          </agenda>
+          <calendar-items>
+            <events>
               <icon src="Scotland-flag.png"/><!-- he's born in the Highlands after all :) -->
-            </element>
-          </element>
+            </events>
+          </calendar-items>
         </view>
 <!--      </day>
     </month>-->
   </year>
+  <!-- FIXME: for testing purposes -->
+  <some-unknown-element>
+    <inside-some-unknown-element/>
+  </some-unknown-element>
+  <!-- /FIXME: for testing purposes -->
 </korganizer-theme>

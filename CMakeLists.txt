@@ -39,6 +39,24 @@ target_link_libraries(korganizer_bin ${KDE4_KDECORE_LIBS} korganizer)
 install(TARGETS korganizer_bin  DESTINATION ${BIN_INSTALL_DIR} )
 
 
+########### next target ###############   # FIXME to be removed! (only needed for testing before copying everything to korganizer)
+
+set(theme_bin_SRCS
+   thememain.cpp
+   themeimporter.cpp
+   theme.cpp
+)
+
+
+kde4_add_executable(theme_bin ${theme_bin_SRCS})
+
+set_target_properties(theme_bin  PROPERTIES OUTPUT_NAME thememain)
+
+target_link_libraries(theme_bin ${KDE4_KDECORE_LIBS} korganizer)
+
+install(TARGETS theme_bin  DESTINATION ${BIN_INSTALL_DIR} )
+
+
 ########### next target ###############
 
 set(kcm_korganizer_PART_SRCS koprefsdialog.cpp )
@@ -104,6 +122,8 @@ install(TARGETS korganizer_calendar  DESTINATION ${LIB_INSTALL_DIR})
 
 set(korganizer_LIB_SRCS 
    ${libkdgantt1_SRCS}
+   themeimporter.cpp
+   theme.cpp
    komessagebox.cpp 
    koalternatelabel.cpp 
    koagendaview.cpp 
