@@ -403,6 +403,7 @@ class KORGANIZER_EXPORT ActionManager : public QObject
     QAction *mDeleteAction;
     QAction *mNextXDays;
     QAction *mPublishEvent;
+    KAction *mForwardEvent;
 
     QAction *mUndoAction;
     QAction *mRedoAction;

@@ -490,6 +490,7 @@ class KORGANIZER_EXPORT CalendarView : public KOrg::CalendarViewBase, public Cal
     void schedule_reply( Incidence *incidence = 0 );
     void schedule_counter( Incidence *incidence = 0 );
     void schedule_declinecounter( Incidence *incidence = 0 );
+    void schedule_forward( Incidence *incidence = 0 );
     void mailFreeBusy( int daysToPublish = 30 );
     void uploadFreeBusy();
 

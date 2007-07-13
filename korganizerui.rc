@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui>
-<kpartgui name="korganizer" version="390">
+<kpartgui name="korganizer" version="391">
 
   <MenuBar>
     <Menu name="file"><text>&amp;File</text>
@@ -83,6 +83,7 @@
       <Action name="schedule_cancel"/>
       <Action name="schedule_refresh"/>
       <Action name="schedule_counter"/>
+      <Action name="schedule_forward"/>
       <Separator/>
       <Action name="mail_freebusy"/>
       <Action name="upload_freebusy"/>

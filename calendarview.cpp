@@ -61,6 +61,7 @@
 #include "incidencechanger.h"
 #include "kholidays.h"
 #include "mailscheduler.h"
+#include "komailclient.h"
 
 #include <kcal/vcaldrag.h>
 #include <kcal/icaldrag.h>
@@ -1373,6 +1374,33 @@ void CalendarView::schedule_counter(Incidence *incidence)
 void CalendarView::schedule_declinecounter(Incidence *incidence)
 {
   schedule(Scheduler::Declinecounter,incidence);
+}
+
+void CalendarView::schedule_forward(Incidence * incidence)
+{
+  if (incidence == 0)
+    incidence = selectedIncidence();
+
+  if (!incidence) {
+    KMessageBox::information( this, i18n("No item selected."),
+                              "ForwardNoEventSelected" );
+    return;
+  }
+
+  PublishDialog publishdlg;
+  if ( publishdlg.exec() == QDialog::Accepted ) {
+    QString recipients = publishdlg.addresses();
+    ICalFormat format;
+    QString messageText = format.createScheduleMessage( incidence, Scheduler::Request );
+    KOMailClient mailer;
+    if ( mailer.mailTo( incidence, recipients, messageText ) ) {
+
+      KMessageBox::information( this, i18n("The item information was successfully sent."),
+                                i18n("Forwarding"), "IncidenceForwardSuccess" );
+    } else {
+      KMessageBox::error( this, i18n("Unable to forward the item '%1'").arg( incidence->summary() ) );
+    }
+  }
 }
 
 void CalendarView::mailFreeBusy( int daysToPublish )
