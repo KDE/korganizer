@@ -27,12 +27,23 @@
 
 namespace KOrg {
 
+  /**
+  @class Theme
+  @brief Class for theme management (essentially import/export).
+   */
   class Theme : public QObject
   {
       Q_OBJECT
 
     public:
+      /**
+        Import settings from a theme at the specified URL into KOrganizer's
+        config.
+       */
       static void useThemeFrom( const KUrl &url );
+      /**
+        Save the current theme settings to a theme file
+       */
       static void saveThemeTo( const KUrl &url );
 
   };

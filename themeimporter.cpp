@@ -41,6 +41,8 @@ ThemeImporter::~ThemeImporter()
   mPerViewConfigGroups.clear();
 }
 
+///////////////////////////////////////////////////////////////////////////////
+
 bool ThemeImporter::read( QIODevice* device )
 {
   setDevice( device );
@@ -256,6 +258,8 @@ void ThemeImporter::readHolidays( const QString &viewType,
   kDebug() << "element not implemented yet." << endl;
 }
 
+///////////////////////////////////////////////////////////////////////////////
+
 void ThemeImporter::setColor( const QString &viewType,
                               const int year, const int month,
                               const int day,
@@ -268,14 +272,19 @@ void ThemeImporter::setColor( const QString &viewType,
   }
 }
 
-QList<KConfigGroup*> ThemeImporter::perViewConfigGroups( const QString &viewType )
+///////////////////////////////////////////////////////////////////////////////
+
+QList<KConfigGroup*> ThemeImporter::perViewConfigGroups(
+     const QString &viewType )
 {
   QMap<QString, KConfigGroup*>::ConstIterator it;
   QList<KConfigGroup*> l;
   if ( ! viewType.isEmpty() ) {
     it = mPerViewConfigGroups.find( viewType );
     if ( it == mPerViewConfigGroups.end() ) {
-      l.append( registerPerViewConfigGroup( createPerViewConfigGroup( viewType ), viewType ) );
+      l.append( registerPerViewConfigGroup(
+                createPerViewConfigGroup( viewType ), viewType
+                                          ) );
     } else {
       l.append( *it );
     }
@@ -290,13 +299,15 @@ QList<KConfigGroup*> ThemeImporter::perViewConfigGroups( const QString &viewType
   return l;
 }
 
-KConfigGroup* ThemeImporter::registerPerViewConfigGroup( KConfigGroup* g, const QString &viewType )
+KConfigGroup* ThemeImporter::registerPerViewConfigGroup( KConfigGroup* g,
+     const QString &viewType )
 {
   mPerViewConfigGroups.insert( viewType, g );
   return g;
 }
 
-KConfigGroup* ThemeImporter::createPerViewConfigGroup( const QString &viewType ) const
+KConfigGroup* ThemeImporter::createPerViewConfigGroup(
+     const QString &viewType ) const
 {
   QString formattedViewType = viewType;
   formattedViewType.replace( 0, 1, viewType.toUpper().left(1) );
