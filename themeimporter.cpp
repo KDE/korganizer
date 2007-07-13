@@ -265,10 +265,37 @@ void ThemeImporter::setColor( const QString &viewType,
                               const int day,
                               const QString &key, const QString &value )
 {
-  QString color = value; // FIXME: port to QColor
-  foreach ( KConfigGroup* g, perViewConfigGroups( viewType ) ) {
-    kDebug() << viewType << ": " << key << ": " << value << endl;
-    g->writeEntry( key, color );
+  QString htmlColor = value.toUpper();
+  if ( htmlColor.count( QRegExp("^#[0-9A-F]{6}$") ) == 1 ) {
+    // Let's convert from (hexadecimal) QChars to ints:
+    QChar c;
+    c = htmlColor[1];
+    int r = ( (c >= '0' && c <= '9') ? (c.unicode() - '0') :
+              ( ( c >= 'A' && c <= 'F' ) ? (c.unicode() - 'A' + 10) : 0 ) );
+    r *= 16;
+    c = htmlColor[2];
+    r += ( (c >= '0' && c <= '9') ? (c.unicode() - '0') :
+           ( ( c >= 'A' && c <= 'F' ) ? (c.unicode() - 'A' + 10) : 0 ) );
+    c = htmlColor[3];
+    int g = ( (c >= '0' && c <= '9') ? (c.unicode() - '0') :
+              ( ( c >= 'A' && c <= 'F' ) ? (c.unicode() - 'A' + 10) : 0 ) );
+    g *= 16;
+    c = htmlColor[4];
+    g += ( (c >= '0' && c <= '9') ? (c.unicode() - '0') :
+           ( ( c >= 'A' && c <= 'F' ) ? (c.unicode() - 'A' + 10) : 0 ) );
+    c = htmlColor[5];
+    int b = ( (c >= '0' && c <= '9') ? (c.unicode() - '0') :
+              ( ( c >= 'A' && c <= 'F' ) ? (c.unicode() - 'A' + 10) : 0 ) );
+    b *= 16;
+    c = htmlColor[6];
+    b += ( (c >= '0' && c <= '9') ? (c.unicode() - '0') :
+           ( ( c >= 'A' && c <= 'F' ) ? (c.unicode() - 'A' + 10) : 0 ) );
+
+    QColor color(r, g, b);
+    foreach ( KConfigGroup* g, perViewConfigGroups( viewType ) ) {
+      kDebug() << viewType << ": " << key << ": " << value << endl;
+      g->writeEntry( key, color );
+    }
   }
 }
 
