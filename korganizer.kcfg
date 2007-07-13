@@ -352,11 +352,6 @@
       <whatsthis>Select the agenda view background color here.</whatsthis>
       <default>255, 255, 255</default>
     </entry>
-    <entry type="Color" key="WorkingHoursColor">
-      <label>Working hours color</label>
-      <whatsthis>Select the working hours color for the agenda view here.</whatsthis>
-      <default>225, 225, 255</default>
-    </entry>
     <entry type="Color" key="Todo due today Color" name="TodoDueTodayColor">
       <label>To-do due today color</label>
       <whatsthis>Select the to-do due today color here.</whatsthis>
@@ -452,11 +447,15 @@
   <group name="Theme/Agenda view">
     <!-- BEGIN: These entries are the same for the agenda and month views, please keep them in sync -->
     <entry key="Grid__BackgroundColor" type="Color">
+      <default>255, 255, 255</default>
     </entry>
     <entry key="Grid__BackgroundImage" type="String">
     </entry>
     <!-- END:   These entries are the same for the agenda and month views, please keep them in sync -->
     <entry key="Grid_WorkHours__BackgroundColor" type="Color">
+      <label>Working hours color</label>
+      <whatsthis>Select the working hours background color for the agenda view here.</whatsthis>
+      <default>225, 225, 255</default>
     </entry>
     <entry key="Grid_WorkHours__BackgroundImage" type="String">
     </entry>
@@ -465,12 +464,15 @@
     <entry key="MarcusBainsLine__Font" type="Font">
     </entry>
     <entry key="Holidays__BackgroundColor" type="Color">
+      <default>255, 100, 100</default><!-- FIXME -->
     </entry>
     <entry key="CalendarItems__Font" type="Font">
     </entry>
     <entry key="CalendarItems__BackgroundColor" type="Color">
+      <default>255, 100, 100</default><!-- FIXME -->
     </entry>
     <entry key="CalendarItems__FrameColor" type="Color">
+      <default>255, 100, 100</default><!-- FIXME -->
     </entry>
     <entry key="CalendarItems_Events__Font" type="Font">
     </entry>

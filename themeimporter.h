@@ -26,6 +26,8 @@
 #include <KConfig>
 #include <KUrl>
 
+#include "koprefs.h"
+
 namespace KOrg {
 
   /**

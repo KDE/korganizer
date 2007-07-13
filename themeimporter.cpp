@@ -290,8 +290,8 @@ void ThemeImporter::setColor( const QString &viewType,
     c = htmlColor[6];
     b += ( (c >= '0' && c <= '9') ? (c.unicode() - '0') :
            ( ( c >= 'A' && c <= 'F' ) ? (c.unicode() - 'A' + 10) : 0 ) );
-
     QColor color(r, g, b);
+
     foreach ( KConfigGroup* g, perViewConfigGroups( viewType ) ) {
       kDebug() << viewType << ": " << key << ": " << value << endl;
       g->writeEntry( key, color );

@@ -1386,20 +1386,20 @@ void KOAgenda::drawContents(QPainter* p, int cx, int cy, int cw, int ch)
                ( (gxStart>0) && (gxStart<int(mHolidayMask->count())) && (!mHolidayMask->at(gxStart-1) ) ) ) {
             if ( pt2.y() > cy ) {
               dbp.fillRect( xStart, cy, xWidth, pt2.y() - cy + 1,
-                            KOPrefs::instance()->mWorkingHoursColor);
+                            KOPrefs::instance()->grid_WorkHours__BackgroundColor() );
             }
           }
           if ( (gxStart < int(mHolidayMask->count()-1)) && (!mHolidayMask->at(gxStart)) ) {
             if ( pt1.y() < cy + ch - 1 ) {
               dbp.fillRect( xStart, pt1.y(), xWidth, cy + ch - pt1.y() + 1,
-                            KOPrefs::instance()->mWorkingHoursColor);
+                            KOPrefs::instance()->grid_WorkHours__BackgroundColor() );
             }
           }
         } else {
           // last entry in holiday mask denotes the previous day not visible (needed for overnight shifts)
           if ( gxStart < int(mHolidayMask->count()-1) && !mHolidayMask->at(gxStart)) {
             dbp.fillRect( xStart, pt1.y(), xWidth, pt2.y() - pt1.y() + 1,
-                          KOPrefs::instance()->mWorkingHoursColor );
+                          KOPrefs::instance()->grid_WorkHours__BackgroundColor() );
           }
         }
         ++gxStart;

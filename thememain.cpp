@@ -34,7 +34,7 @@
 
 int main ( int argc, char **argv )
 {
-  KAboutData aboutData("korg_theming",
+  KAboutData aboutData("korganizer",
                         0,
                         ki18n("KOrganizer Theming Stub"),
                         "0.001",
