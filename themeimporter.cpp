@@ -162,10 +162,12 @@ void ThemeImporter::readGrid( const QString &viewType,
 
     if ( isStartElement() ) {
       if ( name() == "background" ) {
-        kDebug() << "grid bgimg: " << attributes().value("src").toString() << endl;
         setColor( viewType, year, month, day,
                   "Grid__BackgroundColor",
                   attributes().value("color").toString() );
+        setPath( viewType, year, month, day,
+                 "Grid__BackgroundImage",
+                 attributes().value("src").toString() );
         readNext();
       }
       else if ( name() == "work-hours" ) {
@@ -177,8 +179,12 @@ void ThemeImporter::readGrid( const QString &viewType,
 
           if ( isStartElement() ) {
             if ( name() == "background" ) {
-              kDebug() << "wh bgcolor: " << attributes().value("color").toString() << endl;
-              kDebug() << "wh bgimg: " << attributes().value("src").toString() << endl;
+              setColor( viewType, year, month, day,
+                        "Grid_WorkHours__BackgroundColor",
+                        attributes().value("color").toString() );
+              setPath( viewType, year, month, day,
+                       "Grid_WorkHours__BackgroundImage",
+                       attributes().value("src").toString() );
               readNext();
             }
             else {
@@ -293,8 +299,23 @@ void ThemeImporter::setColor( const QString &viewType,
     QColor color(r, g, b);
 
     foreach ( KConfigGroup* g, perViewConfigGroups( viewType ) ) {
+      // FIXME: the date is ignored
       kDebug() << viewType << ": " << key << ": " << value << endl;
       g->writeEntry( key, color );
+    }
+  }
+}
+
+void ThemeImporter::setPath( const QString &viewType,
+                             const int year, const int month,
+                             const int day,
+                             const QString &key, const QString &value )
+{
+  if ( ! value.isEmpty() ) {
+    foreach ( KConfigGroup* g, perViewConfigGroups( viewType ) ) {
+        // FIXME: the date is ignored
+      kDebug() << viewType << ": " << key << ": " << value << endl;
+      g->writePathEntry( key, value );
     }
   }
 }
