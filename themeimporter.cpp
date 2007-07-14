@@ -141,7 +141,6 @@ void ThemeImporter::readUnknownElement()
     readNext();
 
     if ( isEndElement() ) {
-      kDebug() << "is end element of " << name().toString() << endl;
       break;
     }
 
@@ -204,8 +203,29 @@ void ThemeImporter::readTimeLabels( const QString &viewType,
                                     const int year, const int month,
                                     const int day )
 {
-  // TODO
-  kDebug() << "element not implemented yet." << endl;
+  while ( !atEnd() ) {
+    readNext();
+
+    if ( isEndElement() )
+      break;
+
+    if ( isStartElement() ) {
+      if ( name() == "font" ) {
+        setFont( viewType, year, month, day,
+                 "TimeLabels__Font",
+                 attributes().value("family").toString(),
+                 attributes().value("style-hint").toString(),
+                 attributes().value("point-size").toString().toInt(),
+                 attributes().value("weight").toString().toInt(),
+                 attributes().value("style").toString(),
+                 attributes().value("stretch-factor").toString().toInt() );
+        readNext();
+      }
+      else {
+        readUnknownElement();
+      }
+    }
+  }
 }
 
 void ThemeImporter::readCalendarItems( const QString &viewType,
@@ -273,29 +293,9 @@ void ThemeImporter::setColor( const QString &viewType,
 {
   QString htmlColor = value.toUpper();
   if ( htmlColor.count( QRegExp("^#[0-9A-F]{6}$") ) == 1 ) {
-    // Let's convert from (hexadecimal) QChars to ints:
-    QChar c;
-    c = htmlColor[1];
-    int r = ( (c >= '0' && c <= '9') ? (c.unicode() - '0') :
-              ( ( c >= 'A' && c <= 'F' ) ? (c.unicode() - 'A' + 10) : 0 ) );
-    r *= 16;
-    c = htmlColor[2];
-    r += ( (c >= '0' && c <= '9') ? (c.unicode() - '0') :
-           ( ( c >= 'A' && c <= 'F' ) ? (c.unicode() - 'A' + 10) : 0 ) );
-    c = htmlColor[3];
-    int g = ( (c >= '0' && c <= '9') ? (c.unicode() - '0') :
-              ( ( c >= 'A' && c <= 'F' ) ? (c.unicode() - 'A' + 10) : 0 ) );
-    g *= 16;
-    c = htmlColor[4];
-    g += ( (c >= '0' && c <= '9') ? (c.unicode() - '0') :
-           ( ( c >= 'A' && c <= 'F' ) ? (c.unicode() - 'A' + 10) : 0 ) );
-    c = htmlColor[5];
-    int b = ( (c >= '0' && c <= '9') ? (c.unicode() - '0') :
-              ( ( c >= 'A' && c <= 'F' ) ? (c.unicode() - 'A' + 10) : 0 ) );
-    b *= 16;
-    c = htmlColor[6];
-    b += ( (c >= '0' && c <= '9') ? (c.unicode() - '0') :
-           ( ( c >= 'A' && c <= 'F' ) ? (c.unicode() - 'A' + 10) : 0 ) );
+    int r = htmlColor.mid(1,2).toInt(0, 16);
+    int g = htmlColor.mid(3,2).toInt(0, 16);
+    int b = htmlColor.mid(5,2).toInt(0, 16);
     QColor color(r, g, b);
 
     foreach ( KConfigGroup* g, perViewConfigGroups( viewType ) ) {
@@ -317,6 +317,44 @@ void ThemeImporter::setPath( const QString &viewType,
       kDebug() << viewType << ": " << key << ": " << value << endl;
       g->writePathEntry( key, value );
     }
+  }
+}
+
+void ThemeImporter::setFont( const QString &viewType,
+                             const int year, const int month,
+                             const int day,
+                             const QString &key,
+                             const QString &family, const QString &styleHint,
+                             const int pointSize, const int weight,
+                             const QString &style, const int stretchFactor )
+{
+  QFont f( family, pointSize, weight );
+
+  QFont::StyleHint sh = QFont::AnyStyle;
+  if ( styleHint == "AnyStyle" )         sh = QFont::AnyStyle;
+  else if ( styleHint == "SansSerif" )   sh = QFont::SansSerif;
+  else if ( styleHint == "Helvetica" )   sh = QFont::Helvetica;
+  else if ( styleHint == "Serif" )       sh = QFont::Serif;
+  else if ( styleHint == "Times" )       sh = QFont::Times;
+  else if ( styleHint == "TypeWriter" )  sh = QFont::TypeWriter;
+  else if ( styleHint == "Courier" )     sh = QFont::Courier;
+  else if ( styleHint == "OldEnglish" )  sh = QFont::OldEnglish;
+  else if ( styleHint == "Decorative" )  sh = QFont::Decorative;
+  else if ( styleHint == "System" )      sh = QFont::System;
+  f.setStyleHint( sh );
+  QFont::Style s = QFont::StyleNormal;
+  if ( style == "Normal" )        s = QFont::StyleNormal;
+  else if ( style == "Italic" )   s = QFont::StyleItalic;
+  else if ( style == "Oblique" )  s = QFont::StyleOblique;
+  f.setStyle( s );
+  f.setStretch( stretchFactor );
+
+  foreach ( KConfigGroup* g, perViewConfigGroups( viewType ) ) {
+    // FIXME: the date is ignored
+    kDebug() << viewType << ": " << key << ": " << family << "\t"
+             << styleHint << "\t" << pointSize << "\t" << weight << "\t"
+             << style << "\t" << stretchFactor << endl;
+    g->writeEntry( key, f );
   }
 }
 

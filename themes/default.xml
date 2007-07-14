@@ -9,21 +9,21 @@
       </work-hours>
     </grid>
     <time-labels>
-      <font size="16"/>
+      <font point-size="16"/>
     </time-labels>
     <calendar-items>
-      <font size="8"/>
+      <font point-size="8"/>
     </calendar-items>
   </view>
   <view type="agenda">
     <calendar-items>
       <events>
-        <font size="6"/>
+        <font point-size="6"/>
       </events>
     </calendar-items>
   </view>
   <marcus-bains-line>
-    <font size="8"/>
+    <font point-size="8"/>
   </marcus-bains-line>
   <calendar-items>
     <background color="#97EB79"/>

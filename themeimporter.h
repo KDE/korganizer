@@ -153,6 +153,18 @@ namespace KOrg {
                     const int day,
                     const QString &key, const QString &value );
 
+      /**
+      Set the font for @param key in view @param viewType for date @p year
+      @p month @p day to @param value
+       */
+      void setFont( const QString &viewType,
+                    const int year, const int month,
+                    const int day,
+                    const QString &key,
+                    const QString &family, const QString &styleHint,
+                    const int pointSize, const int weight,
+                    const QString &style, const int stretchFactor );
+
       /////////////////////////////////////////////////////////////////////////
 
       /**
