@@ -41,7 +41,7 @@ int main ( int argc, char **argv )
                         ki18n("DO NOT USE - Stub doing various things with KOrganizer themes"),
                         KAboutData::License_GPL,
                         ki18n("© 2007 Loïc Corbasson"),
-                        "",
+                        KLocalizedString(),
                         "http://blog.loic.corbasson.fr/",
                         "loic.corbasson@gmail.com");
   
