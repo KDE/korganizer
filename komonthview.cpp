@@ -103,7 +103,7 @@ void KNoScrollListBox::setBackground( bool primary, bool workDay )
 {
   QColor color;
   if ( workDay ) {
-    color = KOPrefs::instance()->grid_WorkHours__BackgroundColor();
+    color = KOPrefs::instance()->agenda__Grid_WorkHours__BackgroundColor();
   } else {
     color = KOPrefs::instance()->agendaBgColor();
   }

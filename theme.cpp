@@ -21,6 +21,7 @@
 
 #include "theme.h"
 #include "themeimporter.h"
+#include "koprefs.h"
 
 #include <kdebug.h>
 
@@ -43,6 +44,7 @@ void Theme::useThemeFrom( const KUrl &url )
     return;
   }
 
+  clearCurrentTheme();
   ThemeImporter reader( file );
 /*  ThemeImporter reader();
     if ( !reader.read( file ) ) {
@@ -60,3 +62,25 @@ void Theme::saveThemeTo( const KUrl &url )
 {
 }
 
+void Theme::clearCurrentTheme()
+{
+  foreach ( QString viewType, Theme::themableViews() ) {
+    KConfigGroup( KSharedConfig::openConfig(), "Theme/" + viewType + " view" ).deleteGroup();
+  }
+}
+
+const QStringList Theme::themableViews( const QString &viewType )
+{
+  QStringList l;
+  l.append( "Agenda" );
+  l.append( "Month" );
+  if ( l.contains( viewType ) ) {
+    return QStringList( viewType );
+  }
+  else if ( viewType.isEmpty() ) {
+    return l;
+  }
+  else {
+    return QStringList();
+  }
+}

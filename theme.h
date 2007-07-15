@@ -45,7 +45,15 @@ namespace KOrg {
         Save the current theme settings to a theme file
        */
       static void saveThemeTo( const KUrl &url );
+      /**
+        Clear the current theme settings
+       */
+      static void clearCurrentTheme();
 
+      /**
+        Return all themable views corresponding to the @p viewType.
+       */
+      static const QStringList themableViews( const QString &viewType = QString() );
   };
 
 }

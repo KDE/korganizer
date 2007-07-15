@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE korganizer-theme>
 <korganizer-theme version="1.0">
-  <view type="agenda">
+  <grid>
+    <background color="#FFFFFF"/>
+  </grid>
+  <view type="Agenda">
     <grid>
-      <background color="#FFFFFF" src="tux-filigrane.png"/>
+      <background src="tux-filigrane.png"/><!-- This is only to test fancy things :) -->
       <work-hours>
         <background color="#E1E1FF"/>
       </work-hours>
@@ -15,7 +18,7 @@
       <font point-size="8"/>
     </calendar-items>
   </view>
-  <view type="agenda">
+  <view type="Agenda">
     <calendar-items>
       <events>
         <font point-size="6"/>
@@ -80,10 +83,10 @@
 <!--    <month value="1">
       <day value="1">-->
         <!-- Konqi's birthday, TODO: make it special! -->
-        <view type="agenda">
-          <agenda>
+        <view type="Agenda">
+          <Agenda>
             <background src="konqui.png"/>
-          </agenda>
+          </Agenda>
           <calendar-items>
             <events>
               <icon src="Scotland-flag.png"/><!-- he's born in the Highlands after all :) -->

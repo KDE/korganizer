@@ -20,6 +20,7 @@
 */
 
 #include "themeimporter.h"
+#include "theme.h"
 
 #include <KLocale>
 
@@ -298,10 +299,10 @@ void ThemeImporter::setColor( const QString &viewType,
     int b = htmlColor.mid(5,2).toInt(0, 16);
     QColor color(r, g, b);
 
-    foreach ( KConfigGroup* g, perViewConfigGroups( viewType ) ) {
+    foreach ( QString v, Theme::themableViews( viewType ) ) {
       // FIXME: the date is ignored
-      kDebug() << viewType << ": " << key << ": " << value << endl;
-      g->writeEntry( key, color );
+      kDebug() << v << ": " << key << ": " << value << endl;
+      configGroup( v )->writeEntry( v + "__" + key, color );
     }
   }
 }
@@ -312,10 +313,10 @@ void ThemeImporter::setPath( const QString &viewType,
                              const QString &key, const QString &value )
 {
   if ( ! value.isEmpty() ) {
-    foreach ( KConfigGroup* g, perViewConfigGroups( viewType ) ) {
-        // FIXME: the date is ignored
-      kDebug() << viewType << ": " << key << ": " << value << endl;
-      g->writePathEntry( key, value );
+    foreach ( QString v, Theme::themableViews( viewType ) ) {
+      // FIXME: the date is ignored
+      kDebug() << v << ": " << key << ": " << value << endl;
+      configGroup( v )->writePathEntry( v + "__" + key, value );
     }
   }
 }
@@ -347,40 +348,41 @@ void ThemeImporter::setFont( const QString &viewType,
   else if ( style == "Italic" )   s = QFont::StyleItalic;
   else if ( style == "Oblique" )  s = QFont::StyleOblique;
   f.setStyle( s );
-  f.setStretch( stretchFactor );
+  int sf = ( stretchFactor < 1 ? 100 : stretchFactor );
+  f.setStretch( sf );
 
-  foreach ( KConfigGroup* g, perViewConfigGroups( viewType ) ) {
-    // FIXME: the date is ignored
-    kDebug() << viewType << ": " << key << ": " << family << "\t"
+  foreach ( QString v, Theme::themableViews( viewType ) ) {
+      // FIXME: the date is ignored
+    kDebug() << v << ": " << key << ": " << family << "\t"
              << styleHint << "\t" << pointSize << "\t" << weight << "\t"
              << style << "\t" << stretchFactor << endl;
-    g->writeEntry( key, f );
+    configGroup( v )->writeEntry( v + "__" + key, f );
   }
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 
-QList<KConfigGroup*> ThemeImporter::perViewConfigGroups(
-     const QString &viewType )
+KConfigGroup* ThemeImporter::configGroup( const QString &viewType )
 {
   QMap<QString, KConfigGroup*>::ConstIterator it;
-  QList<KConfigGroup*> l;
+  KConfigGroup* g;
   if ( ! viewType.isEmpty() ) {
     it = mPerViewConfigGroups.find( viewType );
     if ( it == mPerViewConfigGroups.end() ) {
-      l.append( registerPerViewConfigGroup(
-                createPerViewConfigGroup( viewType ), viewType
-                                          ) );
+      g = registerPerViewConfigGroup( createPerViewConfigGroup( viewType ),
+                                      viewType );
     } else {
-      l.append( *it );
+      g = *it;
     }
   }
-  else {
-    foreach ( QString v, themableViews() ) {
-      foreach ( KConfigGroup* g, perViewConfigGroups( v ) ) {
-        l.append( g );
-      }
-    }
+  return g;
+}
+
+QList<KConfigGroup*> ThemeImporter::perViewConfigGroups()
+{
+  QList<KConfigGroup*> l;
+  foreach ( QString v, Theme::themableViews() ) {
+      l.append( configGroup( v ) );
   }
   return l;
 }
@@ -395,16 +397,5 @@ KConfigGroup* ThemeImporter::registerPerViewConfigGroup( KConfigGroup* g,
 KConfigGroup* ThemeImporter::createPerViewConfigGroup(
      const QString &viewType ) const
 {
-  QString formattedViewType = viewType;
-  formattedViewType.replace( 0, 1, viewType.toUpper().left(1) );
-  formattedViewType = "Theme/" + formattedViewType + " view";
-  return new KConfigGroup( KSharedConfig::openConfig(), formattedViewType );
-}
-
-const QStringList ThemeImporter::themableViews() const
-{
-  QStringList l;
-  l.append( "agenda" );
-  l.append( "month" );
-  return l;
+  return new KConfigGroup( KSharedConfig::openConfig(), "Theme/" + viewType + " view" );
 }

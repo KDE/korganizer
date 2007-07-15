@@ -446,43 +446,43 @@
 
   <group name="Theme/Agenda view">
     <!-- BEGIN: These entries are the same for the agenda and month views, please keep them in sync -->
-    <entry key="Grid__BackgroundColor" type="Color">
+    <entry key="Agenda__Grid__BackgroundColor" type="Color">
       <default>255, 255, 255</default>
     </entry>
-    <entry key="Grid__BackgroundImage" type="String">
+    <entry key="Agenda__Grid__BackgroundImage" type="String">
     </entry>
     <!-- END:   These entries are the same for the agenda and month views, please keep them in sync -->
-    <entry key="Grid_WorkHours__BackgroundColor" type="Color">
+    <entry key="Agenda__Grid_WorkHours__BackgroundColor" type="Color">
       <label>Working hours color</label>
       <whatsthis>Select the working hours background color for the agenda view here.</whatsthis>
       <default>225, 225, 255</default>
     </entry>
-    <entry key="Grid_WorkHours__BackgroundImage" type="String">
+    <entry key="Agenda__Grid_WorkHours__BackgroundImage" type="String">
     </entry>
-    <entry key="TimeLabels__Font" type="Font">
+    <entry key="Agenda__TimeLabels__Font" type="Font">
     </entry>
-    <entry key="MarcusBainsLine__Font" type="Font">
+    <entry key="Agenda__MarcusBainsLine__Font" type="Font">
     </entry>
-    <entry key="Holidays__BackgroundColor" type="Color">
+    <entry key="Agenda__Holidays__BackgroundColor" type="Color">
       <default>255, 100, 100</default><!-- FIXME -->
     </entry>
-    <entry key="CalendarItems__Font" type="Font">
+    <entry key="Agenda__CalendarItems__Font" type="Font">
     </entry>
-    <entry key="CalendarItems__BackgroundColor" type="Color">
+    <entry key="Agenda__CalendarItems__BackgroundColor" type="Color">
       <default>255, 100, 100</default><!-- FIXME -->
     </entry>
-    <entry key="CalendarItems__FrameColor" type="Color">
+    <entry key="Agenda__CalendarItems__FrameColor" type="Color">
       <default>255, 100, 100</default><!-- FIXME -->
     </entry>
-    <entry key="CalendarItems_Events__Font" type="Font">
+    <entry key="Agenda__CalendarItems_Events__Font" type="Font">
     </entry>
-    <entry key="CalendarItems_Events__Icon" type="String">
+    <entry key="Agenda__CalendarItems_Events__Icon" type="String">
     </entry>
-    <entry key="CalendarItems_ToDos__Icon" type="String">
+    <entry key="Agenda__CalendarItems_ToDos__Icon" type="String">
     </entry>
-    <entry key="CalendarItems_ToDos_DueToday__BackgroundColor" type="String">
+    <entry key="Agenda__CalendarItems_ToDos_DueToday__BackgroundColor" type="String">
     </entry>
-    <entry key="CalendarItems_ToDos_Overdue__BackgroundColor" type="String">
+    <entry key="Agenda__CalendarItems_ToDos_Overdue__BackgroundColor" type="String">
     </entry>
     <!-- TODO: categories, resources -->
     
@@ -500,6 +500,13 @@
   </group>
 
   <group name="Theme/Month view">
+    <!-- BEGIN: These entries are the same for the agenda and month views, please keep them in sync -->
+    <entry key="Month__Grid__BackgroundColor" type="Color">
+      <default>255, 255, 255</default>
+    </entry>
+    <entry key="Month__Grid__BackgroundImage" type="String">
+    </entry>
+    <!-- END:   These entries are the same for the agenda and month views, please keep them in sync -->
   </group>
 
 </kcfg>

@@ -168,11 +168,15 @@ namespace KOrg {
       /////////////////////////////////////////////////////////////////////////
 
       /**
-        Return the config group for @param viewType if specified, or all config
-        groups corresponding to the various available views if not.
+        Return the config group corresponding to the @p viewType view.
        */
-      QList<KConfigGroup*> perViewConfigGroups( const QString &viewType
-                                                              = QString() );
+     KConfigGroup* configGroup( const QString &viewType );
+
+      /**
+        Return all config groups corresponding to the various available views.
+       */
+      QList<KConfigGroup*> perViewConfigGroups();
+
       /**
         Register a config group for a given view.
         The config group will be deleted on destruction of this object.
@@ -185,10 +189,6 @@ namespace KOrg {
       KConfigGroup* createPerViewConfigGroup( const QString &viewType ) const;
       QMap<QString, KConfigGroup*> mPerViewConfigGroups;
 
-      /**
-        Return all themable views available.
-       */
-      const QStringList themableViews() const;
   };
 
 }
