@@ -58,11 +58,15 @@ namespace KOrg {
       /**
         Read a view tag and act adequately.
        */
-      void readView();
+      void readView( const QString &viewType = QString(),
+                     const int year = 0, const int month = 0,
+                     const int day = 0 );
       /**
         Read a date tag and act adequately.
        */
-      void readDate();
+      void readDate( const QString &viewType = QString(),
+                     const int year = 0, const int month = 0,
+                     const int day = 0 );
 
       /**
         Read an element and act adequately.
@@ -164,6 +168,15 @@ namespace KOrg {
                     const QString &family, const QString &styleHint,
                     const int pointSize, const int weight,
                     const QString &style, const int stretchFactor );
+
+      /**
+        Set @param key in view @param viewType for date @p year
+        @p month @p day to @param value
+       */
+      void setString( const QString &viewType,
+                    const int year, const int month,
+                    const int day,
+                    const QString &key, const QString &value );
 
       /////////////////////////////////////////////////////////////////////////
 

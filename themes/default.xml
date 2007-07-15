@@ -4,6 +4,9 @@
   <grid>
     <background color="#FFFFFF"/>
   </grid>
+  <calendar-items>
+    <font point-size="8"/>
+  </calendar-items>
   <view type="Agenda">
     <grid>
       <background src="tux-filigrane.png"/><!-- This is only to test fancy things :) -->
@@ -15,11 +18,6 @@
       <font point-size="16"/>
     </time-labels>
     <calendar-items>
-      <font point-size="8"/>
-    </calendar-items>
-  </view>
-  <view type="Agenda">
-    <calendar-items>
       <events>
         <font point-size="6"/>
       </events>
@@ -27,6 +25,7 @@
   </view>
   <marcus-bains-line>
     <font point-size="8"/>
+    <line color="#FF0000"/>
   </marcus-bains-line>
   <calendar-items>
     <background color="#97EB79"/>
@@ -84,9 +83,9 @@
       <day value="1">-->
         <!-- Konqi's birthday, TODO: make it special! -->
         <view type="Agenda">
-          <Agenda>
+          <grid>
             <background src="konqui.png"/>
-          </Agenda>
+          </grid>
           <calendar-items>
             <events>
               <icon src="Scotland-flag.png"/><!-- he's born in the Highlands after all :) -->
