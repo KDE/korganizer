@@ -191,6 +191,8 @@ void ThemeImporter::readCalendarItems( const QString &viewType,
 {
   Q_ASSERT( isStartElement() && name() == "calendar-items" );
 
+  QString cfg = "CalendarItems";
+
   while ( !atEnd() ) {
     readNext();
 
@@ -200,16 +202,16 @@ void ThemeImporter::readCalendarItems( const QString &viewType,
     if ( isStartElement() ) {
       if ( name() == "background" ) {
         setColor( viewType, year, month, day,
-                  "CalendarItems__BackgroundColor",
+                  cfg + "__BackgroundColor",
                   attributes().value("color").toString() );
         setPath( viewType, year, month, day,
-                 "CalendarItems__BackgroundImage",
+                 cfg + "__BackgroundImage",
                  attributes().value("src").toString() );
         readNext();
       }
       else if ( name() == "font" ) {
         setFont( viewType, year, month, day,
-                 "CalendarItems__Font",
+                 cfg + "__Font",
                  attributes().value("family").toString(),
                  attributes().value("style-hint").toString(),
                  attributes().value("point-size").toString().toInt(),
@@ -220,16 +222,16 @@ void ThemeImporter::readCalendarItems( const QString &viewType,
       }
       else if ( name() == "frame" ) {
         setColor( viewType, year, month, day,
-                  "CalendarItems__FrameColor",
+                  cfg + "__FrameColor",
                   attributes().value("color").toString() );
         readNext();
       }
       else if ( name() == "icon" ) {
         setString( viewType, year, month, day,
-                   "CalendarItems__Icon",
+                   cfg + "__Icon",
                    attributes().value("name").toString() );
         setPath( viewType, year, month, day,
-                 "CalendarItems__IconFile",
+                 cfg + "__IconFile",
                  attributes().value("src").toString() );
         readNext();
       }
@@ -252,6 +254,8 @@ void ThemeImporter::readEvents( const QString &viewType,
 {
   Q_ASSERT( isStartElement() && name() == "events" );
 
+  QString cfg = "CalendarItems_Events";
+
   while ( !atEnd() ) {
     readNext();
 
@@ -261,16 +265,16 @@ void ThemeImporter::readEvents( const QString &viewType,
     if ( isStartElement() ) {
       if ( name() == "background" ) {
         setColor( viewType, year, month, day,
-                  "Events__BackgroundColor",
+                  cfg + "__BackgroundColor",
                   attributes().value("color").toString() );
         setPath( viewType, year, month, day,
-                 "Events__BackgroundImage",
+                 cfg + "__BackgroundImage",
                  attributes().value("src").toString() );
         readNext();
       }
       else if ( name() == "font" ) {
         setFont( viewType, year, month, day,
-                 "Events__Font",
+                 cfg + "__Font",
                  attributes().value("family").toString(),
                  attributes().value("style-hint").toString(),
                  attributes().value("point-size").toString().toInt(),
@@ -281,16 +285,16 @@ void ThemeImporter::readEvents( const QString &viewType,
       }
       else if ( name() == "frame" ) {
         setColor( viewType, year, month, day,
-                  "Events__FrameColor",
+                  cfg + "__FrameColor",
                   attributes().value("color").toString() );
         readNext();
       }
       else if ( name() == "icon" ) {
         setString( viewType, year, month, day,
-                   "Events__Icon",
+                   cfg + "__Icon",
                    attributes().value("name").toString() );
         setPath( viewType, year, month, day,
-                 "Events__IconFile",
+                 cfg + "__IconFile",
                  attributes().value("src").toString() );
         readNext();
       }
@@ -307,6 +311,8 @@ void ThemeImporter::readToDos( const QString &viewType,
 {
   Q_ASSERT( isStartElement() && name() == "to-dos" );
 
+  QString cfg = "CalendarItems_ToDos";
+
   while ( !atEnd() ) {
     readNext();
 
@@ -316,16 +322,16 @@ void ThemeImporter::readToDos( const QString &viewType,
     if ( isStartElement() ) {
       if ( name() == "background" ) {
         setColor( viewType, year, month, day,
-                  "ToDos__BackgroundColor",
+                  cfg + "__BackgroundColor",
                   attributes().value("color").toString() );
         setPath( viewType, year, month, day,
-                 "ToDos__BackgroundImage",
+                 cfg + "__BackgroundImage",
                  attributes().value("src").toString() );
         readNext();
       }
       else if ( name() == "font" ) {
         setFont( viewType, year, month, day,
-                 "ToDos__Font",
+                 cfg + "__Font",
                  attributes().value("family").toString(),
                  attributes().value("style-hint").toString(),
                  attributes().value("point-size").toString().toInt(),
@@ -336,16 +342,16 @@ void ThemeImporter::readToDos( const QString &viewType,
       }
       else if ( name() == "frame" ) {
         setColor( viewType, year, month, day,
-                  "ToDos__FrameColor",
+                  cfg + "__FrameColor",
                   attributes().value("color").toString() );
         readNext();
       }
       else if ( name() == "icon" ) {
         setString( viewType, year, month, day,
-                   "ToDos__Icon",
+                   cfg + "__Icon",
                    attributes().value("name").toString() );
         setPath( viewType, year, month, day,
-                 "ToDos__IconFile",
+                 cfg + "__IconFile",
                  attributes().value("src").toString() );
         readNext();
       }
@@ -362,6 +368,8 @@ void ThemeImporter::readCategories( const QString &viewType,
 {
   Q_ASSERT( isStartElement() && name() == "categories" );
 
+  QString cfg = "CalendarItems_Categories";
+
   // TODO
   kDebug() << "element not implemented yet." << endl;
 }
@@ -371,6 +379,8 @@ void ThemeImporter::readResources( const QString &viewType,
                                    const int day )
 {
   Q_ASSERT( isStartElement() && name() == "resources" );
+
+  QString cfg = "CalendarItems_Resources";
 
   // TODO
   kDebug() << "element not implemented yet." << endl;
@@ -382,6 +392,8 @@ void ThemeImporter::readGrid( const QString &viewType,
 {
   Q_ASSERT( isStartElement() && name() == "grid" );
 
+  QString cfg = "Grid";
+
   while ( !atEnd() ) {
     readNext();
 
@@ -391,10 +403,10 @@ void ThemeImporter::readGrid( const QString &viewType,
     if ( isStartElement() ) {
       if ( name() == "background" ) {
         setColor( viewType, year, month, day,
-                  "Grid__BackgroundColor",
+                  cfg + "__BackgroundColor",
                   attributes().value("color").toString() );
         setPath( viewType, year, month, day,
-                 "Grid__BackgroundImage",
+                 cfg + "__BackgroundImage",
                  attributes().value("src").toString() );
         readNext();
       }
@@ -408,10 +420,10 @@ void ThemeImporter::readGrid( const QString &viewType,
           if ( isStartElement() ) {
             if ( name() == "background" ) {
               setColor( viewType, year, month, day,
-                        "Grid_WorkHours__BackgroundColor",
+                        cfg + "_WorkHours__BackgroundColor",
                         attributes().value("color").toString() );
               setPath( viewType, year, month, day,
-                       "Grid_WorkHours__BackgroundImage",
+                       cfg + "_WorkHours__BackgroundImage",
                        attributes().value("src").toString() );
               readNext();
             }
@@ -434,6 +446,8 @@ void ThemeImporter::readHolidays( const QString &viewType,
 {
   Q_ASSERT( isStartElement() && name() == "holidays" );
 
+  QString cfg = "Holidays";
+
   // TODO
   kDebug() << "element not implemented yet." << endl;
 }
@@ -444,6 +458,8 @@ void ThemeImporter::readMarcusBainsLine( const QString &viewType,
 {
   Q_ASSERT( isStartElement() && name() == "marcus-bains-line" );
 
+  QString cfg = "MarcusBainsLine";
+
   while ( !atEnd() ) {
     readNext();
 
@@ -453,7 +469,7 @@ void ThemeImporter::readMarcusBainsLine( const QString &viewType,
     if ( isStartElement() ) {
       if ( name() == "font" ) {
         setFont( viewType, year, month, day,
-                 "MarcusBainsLine__Font",
+                 cfg + "__Font",
                  attributes().value("family").toString(),
                  attributes().value("style-hint").toString(),
                  attributes().value("point-size").toString().toInt(),
@@ -464,7 +480,7 @@ void ThemeImporter::readMarcusBainsLine( const QString &viewType,
       }
       else if ( name() == "line" ) {
         setColor( viewType, year, month, day,
-                  "MarcusBainsLine__LineColor",
+                  cfg + "__LineColor",
                   attributes().value("color").toString() );
         readNext();
       }
@@ -481,6 +497,8 @@ void ThemeImporter::readTimeLabels( const QString &viewType,
 {
   Q_ASSERT( isStartElement() && name() == "time-labels" );
 
+  QString cfg = "TimeLabels";
+
   while ( !atEnd() ) {
     readNext();
 
@@ -490,7 +508,7 @@ void ThemeImporter::readTimeLabels( const QString &viewType,
     if ( isStartElement() ) {
       if ( name() == "font" ) {
         setFont( viewType, year, month, day,
-                 "TimeLabels__Font",
+                 cfg + "__Font",
                  attributes().value("family").toString(),
                  attributes().value("style-hint").toString(),
                  attributes().value("point-size").toString().toInt(),
