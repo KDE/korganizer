@@ -425,7 +425,7 @@ extern "C"
 {
   KDE_EXPORT KCModule *create_korganizerconfigtime( QWidget *parent, const char * )
   {
-    KGlobal::locale()->insertCatalog( "timezones" );
+    KGlobal::locale()->insertCatalog( "timezones4" );
     return new KOPrefsDialogTime( KOGlobals::self()->componentData(), parent /*, "kcmkorganizertime"*/ );
   }
 }
