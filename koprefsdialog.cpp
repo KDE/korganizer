@@ -183,9 +183,9 @@ class KOPrefsDialogTime : public KPrefsModule
                SLOT( slotWidChanged() ) );
 
       QString sCurrentlySet(i18n("Unknown"));
-      const KTimeZone *zone = KSystemTimeZones::local();
-      if (zone)
-        sCurrentlySet = zone->name();
+      KTimeZone zone = KSystemTimeZones::local();
+      if (zone.isValid())
+        sCurrentlySet = zone.name();
       // Read all system time zones
       QStringList list;
       const KTimeZones::ZoneMap timezones = KSystemTimeZones::zones();
@@ -359,9 +359,9 @@ class KOPrefsDialogTime : public KPrefsModule
   protected:
     void usrReadConfig()
     {
-      const KTimeZone *tz = KOPrefs::instance()->timeSpec().timeZone();
-      if (tz)
-        setCombo( mTimeZoneCombo, i18n( tz->name().toUtf8() ) );
+      KTimeZone tz = KOPrefs::instance()->timeSpec().timeZone();
+      if (tz.isValid())
+        setCombo( mTimeZoneCombo, i18n( tz.name().toUtf8() ) );
 
       mAlarmTimeCombo->setCurrentIndex( KOPrefs::instance()->mAlarmTime );
       for ( int i = 0; i < 7; ++i ) {
@@ -379,8 +379,8 @@ class KOPrefsDialogTime : public KPrefsModule
           selectedZone = *tz;
           break;
         }
-      const KTimeZone* zone = KSystemTimeZones::zone(selectedZone);
-      if (zone)
+      KTimeZone zone = KSystemTimeZones::zone(selectedZone);
+      if (zone.isValid())
         KOPrefs::instance()->setTimeSpec(zone);
 
       KOPrefs::instance()->mHolidays = ( mHolidayCombo->currentIndex() == 0 ) ?  // (None)

@@ -41,9 +41,9 @@ int main(int argc,char **argv)
 
   KApplication app;
 
-  const KTimeZone *zone = KOPrefs::instance()->timeSpec().timeZone();
-  if (zone)
-    kDebug(5850) << "KOrganizer TimezoneId: " << zone->name() << endl;
+  KTimeZone zone = KOPrefs::instance()->timeSpec().timeZone();
+  if (zone.isValid())
+    kDebug(5850) << "KOrganizer TimezoneId: " << zone.name() << endl;
 
   time_t ltime;
   ::time( &ltime );
