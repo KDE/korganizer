@@ -656,10 +656,10 @@ KOPrefsDialogColors::KOPrefsDialogColors( const KComponentData &inst, QWidget *p
   topLayout->addWidget(agendaBgColor->button(),3,1);
 
   // working hours color
-  KPrefsWidColor *agenda__Grid_WorkHours__BackgroundColor =
-      addWidColor( KOPrefs::instance()->agenda__Grid_WorkHours__BackgroundColorItem(), topFrame );
-  topLayout->addWidget(agenda__Grid_WorkHours__BackgroundColor->label(),4,0);
-  topLayout->addWidget(agenda__Grid_WorkHours__BackgroundColor->button(),4,1);
+  KPrefsWidColor *agendaGridWorkHoursBackgroundColor =
+      addWidColor( KOPrefs::instance()->agendaGridWorkHoursBackgroundColorItem(), topFrame );
+  topLayout->addWidget(agendaGridWorkHoursBackgroundColor->label(),4,0);
+  topLayout->addWidget(agendaGridWorkHoursBackgroundColor->button(),4,1);
 
   // Todo due today color
   KPrefsWidColor *todoDueTodayColor =

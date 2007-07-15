@@ -744,12 +744,12 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
   QColor textColor = getTextColor(bgColor);
   p.setPen( textColor );
   p.setBackground( QBrush( bgColor ) );
-  p.setFont( KOPrefs::instance()->agenda__CalendarItems__Font() );
+  p.setFont( KOPrefs::instance()->agendaCalendarItemsFont() );
   if ( mIncidence ) {
     if ( mIncidence->type() == "Event" )
-      p.setFont( KOPrefs::instance()->agenda__CalendarItems_Events__Font() );
+      p.setFont( KOPrefs::instance()->agendaCalendarItemsEventsFont() );
     if ( mIncidence->type() == "Todo" )
-      p.setFont( KOPrefs::instance()->agenda__CalendarItems_ToDos__Font() );
+      p.setFont( KOPrefs::instance()->agendaCalendarItemsToDosFont() );
   }
   QFontMetrics fm = p.fontMetrics();
 

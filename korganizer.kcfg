@@ -448,96 +448,96 @@
 
   <group name="Theme/Agenda view">
     <!-- BEGIN: These entries are the same for the agenda and month views, please keep them in sync -->
-    <entry key="Agenda__Grid__BackgroundColor" type="Color">
+    <entry key="AgendaGridBackgroundColor" type="Color">
       <default>255, 255, 255</default>
     </entry>
-    <entry key="Agenda__Grid__BackgroundImage" type="String">
+    <entry key="AgendaGridBackgroundImage" type="String">
     </entry>
     <!-- END:   These entries are the same for the agenda and month views, please keep them in sync -->
-    <entry key="Agenda__Grid_WorkHours__BackgroundColor" type="Color">
+    <entry key="AgendaGridWorkHoursBackgroundColor" type="Color">
       <label>Working hours color</label>
       <whatsthis>Select the working hours background color for the agenda view here.</whatsthis>
       <default>225, 225, 255</default>
     </entry>
-    <entry key="Agenda__Grid_WorkHours__BackgroundImage" type="String">
+    <entry key="AgendaGridWorkHoursBackgroundImage" type="String">
     </entry>
 
-    <entry key="Agenda__TimeLabels__Font" type="Font">
+    <entry key="AgendaTimeLabelsFont" type="Font">
     </entry>
 
-    <entry key="Agenda__MarcusBainsLine__Color" type="Color">
+    <entry key="AgendaMarcusBainsLineColor" type="Color">
     </entry>
-    <entry key="Agenda__MarcusBainsLine__Font" type="Font">
+    <entry key="AgendaMarcusBainsLineFont" type="Font">
     </entry>
 
     <!-- BEGIN: These entries are the same for the agenda and month views, please keep them in sync -->
-    <entry key="Agenda__Holidays__BackgroundColor" type="Color">
+    <entry key="AgendaHolidaysBackgroundColor" type="Color">
       <default>255, 100, 100</default><!-- FIXME -->
     </entry>
 
-    <entry key="Agenda__CalendarItems__BackgroundColor" type="Color">
+    <entry key="AgendaCalendarItemsBackgroundColor" type="Color">
       <default>255, 100, 100</default><!-- FIXME -->
     </entry>
-    <entry key="Agenda__CalendarItems__BackgroundImage" type="String">
+    <entry key="AgendaCalendarItemsBackgroundImage" type="String">
     </entry>
-    <entry key="Agenda__CalendarItems__Font" type="Font">
+    <entry key="AgendaCalendarItemsFont" type="Font">
     </entry>
-    <entry key="Agenda__CalendarItems__FrameColor" type="Color">
+    <entry key="AgendaCalendarItemsFrameColor" type="Color">
       <default>255, 100, 100</default><!-- FIXME -->
     </entry>
-    <entry key="Agenda__CalendarItems__Icon" type="String">
+    <entry key="AgendaCalendarItemsIcon" type="String">
     </entry>
 
-    <entry key="Agenda__CalendarItems_Events__BackgroundColor" type="Color">
+    <entry key="AgendaCalendarItemsEventsBackgroundColor" type="Color">
       <default>255, 100, 100</default><!-- FIXME -->
     </entry>
-    <entry key="Agenda__CalendarItems_Events__BackgroundImage" type="String">
+    <entry key="AgendaCalendarItemsEventsBackgroundImage" type="String">
     </entry>
-    <entry key="Agenda__CalendarItems_Events__Font" type="Font">
+    <entry key="AgendaCalendarItemsEventsFont" type="Font">
     </entry>
-    <entry key="Agenda__CalendarItems_Events__FrameColor" type="Color">
+    <entry key="AgendaCalendarItemsEventsFrameColor" type="Color">
       <default>255, 100, 100</default><!-- FIXME -->
     </entry>
-    <entry key="Agenda__CalendarItems_Events__Icon" type="String">
+    <entry key="AgendaCalendarItemsEventsIcon" type="String">
     </entry>
 
-    <entry key="Agenda__CalendarItems_ToDos__BackgroundColor" type="Color">
+    <entry key="AgendaCalendarItemsToDosBackgroundColor" type="Color">
       <default>255, 100, 100</default><!-- FIXME -->
     </entry>
-    <entry key="Agenda__CalendarItems_ToDos__BackgroundImage" type="String">
+    <entry key="AgendaCalendarItemsToDosBackgroundImage" type="String">
     </entry>
-    <entry key="Agenda__CalendarItems_ToDos__Font" type="Font">
+    <entry key="AgendaCalendarItemsToDosFont" type="Font">
     </entry>
-    <entry key="Agenda__CalendarItems_ToDos__FrameColor" type="Color">
+    <entry key="AgendaCalendarItemsToDosFrameColor" type="Color">
       <default>255, 100, 100</default><!-- FIXME -->
     </entry>
-    <entry key="Agenda__CalendarItems_ToDos__Icon" type="String">
+    <entry key="AgendaCalendarItemsToDosIcon" type="String">
     </entry>
 
-    <entry key="Agenda__CalendarItems_ToDos_DueToday__BackgroundColor" type="Color">
+    <entry key="AgendaCalendarItemsToDosDueTodayBackgroundColor" type="Color">
       <default>255, 100, 100</default><!-- FIXME -->
     </entry>
-    <entry key="Agenda__CalendarItems_ToDos_DueToday__BackgroundImage" type="String">
+    <entry key="AgendaCalendarItemsToDosDueTodayBackgroundImage" type="String">
     </entry>
-    <entry key="Agenda__CalendarItems_ToDos_DueToday__Font" type="Font">
+    <entry key="AgendaCalendarItemsToDosDueTodayFont" type="Font">
     </entry>
-    <entry key="Agenda__CalendarItems_ToDos_DueToday__FrameColor" type="Color">
+    <entry key="AgendaCalendarItemsToDosDueTodayFrameColor" type="Color">
       <default>255, 100, 100</default><!-- FIXME -->
     </entry>
-    <entry key="Agenda__CalendarItems_ToDos_DueToday__Icon" type="String">
+    <entry key="AgendaCalendarItemsToDosDueTodayIcon" type="String">
     </entry>
 
-    <entry key="Agenda__CalendarItems_ToDos_Overdue__BackgroundColor" type="Color">
+    <entry key="AgendaCalendarItemsToDosOverdueBackgroundColor" type="Color">
       <default>255, 100, 100</default><!-- FIXME -->
     </entry>
-    <entry key="Agenda__CalendarItems_ToDos_Overdue__BackgroundImage" type="String">
+    <entry key="AgendaCalendarItemsToDosOverdueBackgroundImage" type="String">
     </entry>
-    <entry key="Agenda__CalendarItems_ToDos_Overdue__Font" type="Font">
+    <entry key="AgendaCalendarItemsToDosOverdueFont" type="Font">
     </entry>
-    <entry key="Agenda__CalendarItems_ToDos_Overdue__FrameColor" type="Color">
+    <entry key="AgendaCalendarItemsToDosOverdueFrameColor" type="Color">
       <default>255, 100, 100</default><!-- FIXME -->
     </entry>
-    <entry key="Agenda__CalendarItems_ToDos_Overdue__Icon" type="String">
+    <entry key="AgendaCalendarItemsToDosOverdueIcon" type="String">
     </entry>
 
     <!-- TODO: categories, resources -->
@@ -558,10 +558,10 @@
 
   <group name="Theme/Month view">
     <!-- BEGIN: These entries are the same for the agenda and month views, please keep them in sync -->
-    <entry key="Month__Grid__BackgroundColor" type="Color">
+    <entry key="MonthGridBackgroundColor" type="Color">
       <default>255, 255, 255</default>
     </entry>
-    <entry key="Month__Grid__BackgroundImage" type="String">
+    <entry key="MonthGridBackgroundImage" type="String">
     </entry>
     <!-- END:   These entries are the same for the agenda and month views, please keep them in sync -->
   </group>
