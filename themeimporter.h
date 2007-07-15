@@ -56,24 +56,24 @@ namespace KOrg {
       /////////////////////////////////////////////////////////////////////////
 
       /**
-        Read a view tag and act adequately.
+        Read an element and act adequately.
        */
-      void readView( const QString &viewType = QString(),
-                     const int year = 0, const int month = 0,
-                     const int day = 0 );
+      void readElement( const QString &viewType = QString(),
+                        const int year = 0, const int month = 0,
+                        const int day = 0 );
+
       /**
         Read a date tag and act adequately.
        */
       void readDate( const QString &viewType = QString(),
                      const int year = 0, const int month = 0,
                      const int day = 0 );
-
       /**
-        Read an element and act adequately.
+        Read a view tag and act adequately.
        */
-      void readElement( const QString &viewType = QString(),
-                        const int year = 0, const int month = 0,
-                        const int day = 0 );
+      void readView( const QString &viewType = QString(),
+                     const int year = 0, const int month = 0,
+                     const int day = 0 );
 
       /**
         Read an unknown element and act adequately.
@@ -83,47 +83,47 @@ namespace KOrg {
       /////////////////////////////////////////////////////////////////////////
 
       /**
+        Read a calendar-items tag and act adequately.
+       */
+      void readCalendarItems( const QString &viewType = QString(),
+                              const int year = 0, const int month = 0,
+                              const int day = 0 );
+        /**
+          Calendar items: read an events tag and act adequately.
+          */
+        void readEvents( const QString &viewType = QString(),
+                        const int year = 0, const int month = 0,
+                        const int day = 0 );
+        /**
+          Calendar items: read a to-dos tag and act adequately.
+          */
+        void readToDos( const QString &viewType = QString(),
+                        const int year = 0, const int month = 0,
+                        const int day = 0 );
+        /**
+          Calendar items: read a categories tag and act adequately.
+          */
+        void readCategories( const QString &viewType = QString(),
+                            const int year = 0, const int month = 0,
+                            const int day = 0 );
+        /**
+          Calendar items: read a resources tag and act adequately.
+          */
+        void readResources( const QString &viewType = QString(),
+                            const int year = 0, const int month = 0,
+                            const int day = 0 );
+      /**
         Read a grid tag and act adequately.
        */
       void readGrid( const QString &viewType = QString(),
                      const int year = 0, const int month = 0,
                      const int day = 0 );
       /**
-        Read a time-labels tag and act adequately.
+        Read a holidays tag and act adequately.
        */
-      void readTimeLabels( const QString &viewType = QString(),
-                           const int year = 0, const int month = 0,
-                           const int day = 0 );
-      /**
-        Read a calendar-items tag and act adequately.
-       */
-      void readCalendarItems( const QString &viewType = QString(),
-                              const int year = 0, const int month = 0,
-                              const int day = 0 );
-          /**
-            Calendar items: read an events tag and act adequately.
-          */
-          void readEvents( const QString &viewType = QString(),
-                           const int year = 0, const int month = 0,
-                           const int day = 0 );
-          /**
-            Calendar items: read a to-dos tag and act adequately.
-          */
-          void readToDos( const QString &viewType = QString(),
-                          const int year = 0, const int month = 0,
-                          const int day = 0 );
-          /**
-            Calendar items: read a categories tag and act adequately.
-          */
-          void readCategories( const QString &viewType = QString(),
-                               const int year = 0, const int month = 0,
-                               const int day = 0 );
-          /**
-            Calendar items: read a resources tag and act adequately.
-          */
-          void readResources( const QString &viewType = QString(),
-                              const int year = 0, const int month = 0,
-                              const int day = 0 );
+      void readHolidays( const QString &viewType = QString(),
+                         const int year = 0, const int month = 0,
+                         const int day = 0 );
       /**
         Read a marcus-bains-line tag and act adequately.
        */
@@ -131,11 +131,11 @@ namespace KOrg {
                                 const int year = 0, const int month = 0,
                                 const int day = 0 );
       /**
-        Read a holidays tag and act adequately.
+        Read a time-labels tag and act adequately.
        */
-      void readHolidays( const QString &viewType = QString(),
-                         const int year = 0, const int month = 0,
-                         const int day = 0 );
+      void readTimeLabels( const QString &viewType = QString(),
+                           const int year = 0, const int month = 0,
+                           const int day = 0 );
 
       /////////////////////////////////////////////////////////////////////////
 
@@ -149,15 +149,6 @@ namespace KOrg {
                      const QString &key, const QString &value );
 
       /**
-        Set the path for @param key in view @param viewType for date @p year
-        @p month @p day to @param value
-       */
-      void setPath( const QString &viewType,
-                    const int year, const int month,
-                    const int day,
-                    const QString &key, const QString &value );
-
-      /**
       Set the font for @param key in view @param viewType for date @p year
       @p month @p day to @param value
        */
@@ -168,6 +159,15 @@ namespace KOrg {
                     const QString &family, const QString &styleHint,
                     const int pointSize, const int weight,
                     const QString &style, const int stretchFactor );
+
+      /**
+      Set the path for @param key in view @param viewType for date @p year
+      @p month @p day to @param value
+       */
+      void setPath( const QString &viewType,
+                    const int year, const int month,
+                    const int day,
+                    const QString &key, const QString &value );
 
       /**
         Set @param key in view @param viewType for date @p year

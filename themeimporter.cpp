@@ -81,25 +81,30 @@ void ThemeImporter::readThemeXml()
   }
 }
 
-void ThemeImporter::readView( const QString &viewType,
-                              const int year, const int month,
-                              const int day )
+///////////////////////////////////////////////////////////////////////////////
+
+void ThemeImporter::readElement( const QString &viewType,
+                                 const int year, const int month,
+                                 const int day )
 {
-  Q_ASSERT( isStartElement() && name() == "view" );
+  if ( name() == "view" )
+    readView( viewType, year, month, day );
+  else if ( name() == "year" || name() == "month" || name() == "day" )
+    readDate( viewType, year, month, day );
 
-  QString v = attributes().value("type").toString();
-  kDebug() << "viewType: " << v << endl;
+  else if ( name() == "grid" )
+    readGrid( viewType, year, month, day );
+  else if ( name() == "time-labels" )
+    readTimeLabels( viewType, year, month, day );
+  else if ( name() == "calendar-items" )
+    readCalendarItems( viewType, year, month, day );
+  else if ( name() == "marcus-bains-line" )
+    readMarcusBainsLine( viewType, year, month, day );
+  else if ( name() == "holidays" )
+    readHolidays( viewType, year, month, day );
 
-  while ( !atEnd() ) {
-    readNext();
-
-    if ( isEndElement() )
-      break;
-
-    if ( isStartElement() ) {
-      readElement( v, year, month, day );
-    }
-  }
+  else
+    readUnknownElement();
 }
 
 void ThemeImporter::readDate( const QString &viewType,
@@ -107,7 +112,7 @@ void ThemeImporter::readDate( const QString &viewType,
                               const int day )
 {
   Q_ASSERT( isStartElement() && ( name() == "year" || name() == "month"
-                                                   || name() == "day" ) );
+      || name() == "day" ) );
 
   int y = year;
   int m = month;
@@ -137,30 +142,26 @@ void ThemeImporter::readDate( const QString &viewType,
   }
 }
 
-void ThemeImporter::readElement( const QString &viewType,
-                                 const int year, const int month,
-                                 const int day )
+void ThemeImporter::readView( const QString &viewType,
+                              const int year, const int month,
+                              const int day )
 {
-  if ( name() == "view" )
-    readView( viewType, year, month, day );
-  else if ( name() == "year" || name() == "month" || name() == "day" )
-    readDate( viewType, year, month, day );
+  Q_ASSERT( isStartElement() && name() == "view" );
 
-  else if ( name() == "grid" )
-    readGrid( viewType, year, month, day );
-  else if ( name() == "time-labels" )
-    readTimeLabels( viewType, year, month, day );
-  else if ( name() == "calendar-items" )
-    readCalendarItems( viewType, year, month, day );
-  else if ( name() == "marcus-bains-line" )
-    readMarcusBainsLine( viewType, year, month, day );
-  else if ( name() == "holidays" )
-    readHolidays( viewType, year, month, day );
+  QString v = attributes().value("type").toString();
+  kDebug() << "viewType: " << v << endl;
 
-  else
-    readUnknownElement();
+  while ( !atEnd() ) {
+    readNext();
+
+    if ( isEndElement() )
+      break;
+
+    if ( isStartElement() ) {
+      readElement( v, year, month, day );
+    }
+  }
 }
-
 
 void ThemeImporter::readUnknownElement()
 {
@@ -180,6 +181,199 @@ void ThemeImporter::readUnknownElement()
     if ( isStartElement() )
       readUnknownElement();
   }
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+void ThemeImporter::readCalendarItems( const QString &viewType,
+                                       const int year, const int month,
+                                       const int day )
+{
+  Q_ASSERT( isStartElement() && name() == "calendar-items" );
+
+  while ( !atEnd() ) {
+    readNext();
+
+    if ( isEndElement() )
+      break;
+
+    if ( isStartElement() ) {
+      if ( name() == "background" ) {
+        setColor( viewType, year, month, day,
+                  "CalendarItems__BackgroundColor",
+                  attributes().value("color").toString() );
+        setPath( viewType, year, month, day,
+                 "CalendarItems__BackgroundImage",
+                 attributes().value("src").toString() );
+        readNext();
+      }
+      else if ( name() == "font" ) {
+        setFont( viewType, year, month, day,
+                 "CalendarItems__Font",
+                 attributes().value("family").toString(),
+                 attributes().value("style-hint").toString(),
+                 attributes().value("point-size").toString().toInt(),
+                 attributes().value("weight").toString().toInt(),
+                 attributes().value("style").toString(),
+                 attributes().value("stretch-factor").toString().toInt() );
+        readNext();
+      }
+      else if ( name() == "frame" ) {
+        setColor( viewType, year, month, day,
+                  "CalendarItems__FrameColor",
+                  attributes().value("color").toString() );
+        readNext();
+      }
+      else if ( name() == "icon" ) {
+        setString( viewType, year, month, day,
+                   "CalendarItems__Icon",
+                   attributes().value("name").toString() );
+        setPath( viewType, year, month, day,
+                 "CalendarItems__IconFile",
+                 attributes().value("src").toString() );
+        readNext();
+      }
+      else if ( name() == "events" ) {
+        readEvents( viewType, year, month, day );
+      }
+      else if ( name() == "to-dos" ) {
+        readToDos( viewType, year, month, day );
+      }
+      else {
+        readUnknownElement();
+      }
+    }
+  }
+}
+
+void ThemeImporter::readEvents( const QString &viewType,
+                                const int year, const int month,
+                                const int day )
+{
+  Q_ASSERT( isStartElement() && name() == "events" );
+
+  while ( !atEnd() ) {
+    readNext();
+
+    if ( isEndElement() )
+      break;
+
+    if ( isStartElement() ) {
+      if ( name() == "background" ) {
+        setColor( viewType, year, month, day,
+                  "Events__BackgroundColor",
+                  attributes().value("color").toString() );
+        setPath( viewType, year, month, day,
+                 "Events__BackgroundImage",
+                 attributes().value("src").toString() );
+        readNext();
+      }
+      else if ( name() == "font" ) {
+        setFont( viewType, year, month, day,
+                 "Events__Font",
+                 attributes().value("family").toString(),
+                 attributes().value("style-hint").toString(),
+                 attributes().value("point-size").toString().toInt(),
+                 attributes().value("weight").toString().toInt(),
+                 attributes().value("style").toString(),
+                 attributes().value("stretch-factor").toString().toInt() );
+        readNext();
+      }
+      else if ( name() == "frame" ) {
+        setColor( viewType, year, month, day,
+                  "Events__FrameColor",
+                  attributes().value("color").toString() );
+        readNext();
+      }
+      else if ( name() == "icon" ) {
+        setString( viewType, year, month, day,
+                   "Events__Icon",
+                   attributes().value("name").toString() );
+        setPath( viewType, year, month, day,
+                 "Events__IconFile",
+                 attributes().value("src").toString() );
+        readNext();
+      }
+      else {
+        readUnknownElement();
+      }
+    }
+  }
+}
+
+void ThemeImporter::readToDos( const QString &viewType,
+                               const int year, const int month,
+                               const int day )
+{
+  Q_ASSERT( isStartElement() && name() == "to-dos" );
+
+  while ( !atEnd() ) {
+    readNext();
+
+    if ( isEndElement() )
+      break;
+
+    if ( isStartElement() ) {
+      if ( name() == "background" ) {
+        setColor( viewType, year, month, day,
+                  "ToDos__BackgroundColor",
+                  attributes().value("color").toString() );
+        setPath( viewType, year, month, day,
+                 "ToDos__BackgroundImage",
+                 attributes().value("src").toString() );
+        readNext();
+      }
+      else if ( name() == "font" ) {
+        setFont( viewType, year, month, day,
+                 "ToDos__Font",
+                 attributes().value("family").toString(),
+                 attributes().value("style-hint").toString(),
+                 attributes().value("point-size").toString().toInt(),
+                 attributes().value("weight").toString().toInt(),
+                 attributes().value("style").toString(),
+                 attributes().value("stretch-factor").toString().toInt() );
+        readNext();
+      }
+      else if ( name() == "frame" ) {
+        setColor( viewType, year, month, day,
+                  "ToDos__FrameColor",
+                  attributes().value("color").toString() );
+        readNext();
+      }
+      else if ( name() == "icon" ) {
+        setString( viewType, year, month, day,
+                   "ToDos__Icon",
+                   attributes().value("name").toString() );
+        setPath( viewType, year, month, day,
+                 "ToDos__IconFile",
+                 attributes().value("src").toString() );
+        readNext();
+      }
+      else {
+        readUnknownElement();
+      }
+    }
+  }
+}
+
+void ThemeImporter::readCategories( const QString &viewType,
+                                    const int year, const int month,
+                                    const int day )
+{
+  Q_ASSERT( isStartElement() && name() == "categories" );
+
+  // TODO
+  kDebug() << "element not implemented yet." << endl;
+}
+
+void ThemeImporter::readResources( const QString &viewType,
+                                   const int year, const int month,
+                                   const int day )
+{
+  Q_ASSERT( isStartElement() && name() == "resources" );
+
+  // TODO
+  kDebug() << "element not implemented yet." << endl;
 }
 
 void ThemeImporter::readGrid( const QString &viewType,
@@ -234,223 +428,11 @@ void ThemeImporter::readGrid( const QString &viewType,
   }
 }
 
-void ThemeImporter::readTimeLabels( const QString &viewType,
-                                    const int year, const int month,
-                                    const int day )
+void ThemeImporter::readHolidays( const QString &viewType,
+                                  const int year, const int month,
+                                  const int day )
 {
-  Q_ASSERT( isStartElement() && name() == "time-labels" );
-
-  while ( !atEnd() ) {
-    readNext();
-
-    if ( isEndElement() )
-      break;
-
-    if ( isStartElement() ) {
-      if ( name() == "font" ) {
-        setFont( viewType, year, month, day,
-                 "TimeLabels__Font",
-                 attributes().value("family").toString(),
-                 attributes().value("style-hint").toString(),
-                 attributes().value("point-size").toString().toInt(),
-                 attributes().value("weight").toString().toInt(),
-                 attributes().value("style").toString(),
-                 attributes().value("stretch-factor").toString().toInt() );
-        readNext();
-      }
-      else {
-        readUnknownElement();
-      }
-    }
-  }
-}
-
-void ThemeImporter::readCalendarItems( const QString &viewType,
-                                       const int year, const int month,
-                                       const int day )
-{
-  Q_ASSERT( isStartElement() && name() == "calendar-items" );
-
-  while ( !atEnd() ) {
-    readNext();
-
-    if ( isEndElement() )
-      break;
-
-    if ( isStartElement() ) {
-      if ( name() == "background" ) {
-        setColor( viewType, year, month, day,
-                  "CalendarItems__BackgroundColor",
-                  attributes().value("color").toString() );
-        setPath( viewType, year, month, day,
-                 "CalendarItems__BackgroundImage",
-                 attributes().value("src").toString() );
-        readNext();
-      }
-      else if ( name() == "font" ) {
-        setFont( viewType, year, month, day,
-                 "CalendarItems__Font",
-                 attributes().value("family").toString(),
-                 attributes().value("style-hint").toString(),
-                 attributes().value("point-size").toString().toInt(),
-                 attributes().value("weight").toString().toInt(),
-                 attributes().value("style").toString(),
-                 attributes().value("stretch-factor").toString().toInt() );
-        readNext();
-      }
-      else if ( name() == "frame" ) {
-        setColor( viewType, year, month, day,
-                  "CalendarItems__FrameColor",
-                  attributes().value("color").toString() );
-        readNext();
-      }
-      else if ( name() == "icon" ) {
-        setString( viewType, year, month, day,
-                   "CalendarItems__Icon",
-                   attributes().value("name").toString() );
-        setPath( viewType, year, month, day,
-                  "CalendarItems__IconFile",
-                  attributes().value("src").toString() );
-        readNext();
-      }
-      else if ( name() == "events" ) {
-        readEvents( viewType, year, month, day );
-      }
-      else if ( name() == "to-dos" ) {
-        readToDos( viewType, year, month, day );
-      }
-      else {
-        readUnknownElement();
-      }
-    }
-  }
-}
-
-void ThemeImporter::readEvents( const QString &viewType,
-                                const int year, const int month,
-                                const int day )
-{
-  Q_ASSERT( isStartElement() && name() == "events" );
-
-  while ( !atEnd() ) {
-    readNext();
-
-    if ( isEndElement() )
-      break;
-
-    if ( isStartElement() ) {
-      if ( name() == "background" ) {
-        setColor( viewType, year, month, day,
-                  "Events__BackgroundColor",
-                  attributes().value("color").toString() );
-        setPath( viewType, year, month, day,
-                 "Events__BackgroundImage",
-                 attributes().value("src").toString() );
-        readNext();
-      }
-      else if ( name() == "font" ) {
-        setFont( viewType, year, month, day,
-                 "Events__Font",
-                 attributes().value("family").toString(),
-                            attributes().value("style-hint").toString(),
-                                       attributes().value("point-size").toString().toInt(),
-                                           attributes().value("weight").toString().toInt(),
-                                               attributes().value("style").toString(),
-                                                   attributes().value("stretch-factor").toString().toInt() );
-        readNext();
-      }
-      else if ( name() == "frame" ) {
-        setColor( viewType, year, month, day,
-                  "Events__FrameColor",
-                  attributes().value("color").toString() );
-        readNext();
-      }
-      else if ( name() == "icon" ) {
-        setString( viewType, year, month, day,
-                   "Events__Icon",
-                   attributes().value("name").toString() );
-        setPath( viewType, year, month, day,
-                 "Events__IconFile",
-                 attributes().value("src").toString() );
-        readNext();
-      }
-      else {
-        readUnknownElement();
-      }
-    }
-  }
-}
-
-void ThemeImporter::readToDos( const QString &viewType,
-                               const int year, const int month,
-                               const int day )
-{
-  Q_ASSERT( isStartElement() && name() == "to-dos" );
-
-  while ( !atEnd() ) {
-    readNext();
-
-    if ( isEndElement() )
-      break;
-
-    if ( isStartElement() ) {
-      if ( name() == "background" ) {
-        setColor( viewType, year, month, day,
-                  "ToDos__BackgroundColor",
-                  attributes().value("color").toString() );
-        setPath( viewType, year, month, day,
-                 "ToDos__BackgroundImage",
-                 attributes().value("src").toString() );
-        readNext();
-      }
-      else if ( name() == "font" ) {
-        setFont( viewType, year, month, day,
-                 "ToDos__Font",
-                 attributes().value("family").toString(),
-                            attributes().value("style-hint").toString(),
-                                       attributes().value("point-size").toString().toInt(),
-                                           attributes().value("weight").toString().toInt(),
-                                               attributes().value("style").toString(),
-                                                   attributes().value("stretch-factor").toString().toInt() );
-        readNext();
-      }
-      else if ( name() == "frame" ) {
-        setColor( viewType, year, month, day,
-                  "ToDos__FrameColor",
-                  attributes().value("color").toString() );
-        readNext();
-      }
-      else if ( name() == "icon" ) {
-        setString( viewType, year, month, day,
-                   "ToDos__Icon",
-                   attributes().value("name").toString() );
-        setPath( viewType, year, month, day,
-                 "ToDos__IconFile",
-                 attributes().value("src").toString() );
-        readNext();
-      }
-      else {
-        readUnknownElement();
-      }
-    }
-  }
-}
-
-void ThemeImporter::readCategories( const QString &viewType,
-                                    const int year, const int month,
-                                    const int day )
-{
-  Q_ASSERT( isStartElement() && name() == "categories" );
-
-  // TODO
-  kDebug() << "element not implemented yet." << endl;
-}
-
-void ThemeImporter::readResources( const QString &viewType,
-                                   const int year, const int month,
-                                   const int day )
-{
-  Q_ASSERT( isStartElement() && name() == "resources" );
+  Q_ASSERT( isStartElement() && name() == "holidays" );
 
   // TODO
   kDebug() << "element not implemented yet." << endl;
@@ -493,14 +475,35 @@ void ThemeImporter::readMarcusBainsLine( const QString &viewType,
   }
 }
 
-void ThemeImporter::readHolidays( const QString &viewType,
-                                  const int year, const int month,
-                                  const int day )
+void ThemeImporter::readTimeLabels( const QString &viewType,
+                                    const int year, const int month,
+                                    const int day )
 {
-  Q_ASSERT( isStartElement() && name() == "holidays" );
+  Q_ASSERT( isStartElement() && name() == "time-labels" );
 
-  // TODO
-  kDebug() << "element not implemented yet." << endl;
+  while ( !atEnd() ) {
+    readNext();
+
+    if ( isEndElement() )
+      break;
+
+    if ( isStartElement() ) {
+      if ( name() == "font" ) {
+        setFont( viewType, year, month, day,
+                 "TimeLabels__Font",
+                 attributes().value("family").toString(),
+                 attributes().value("style-hint").toString(),
+                 attributes().value("point-size").toString().toInt(),
+                 attributes().value("weight").toString().toInt(),
+                 attributes().value("style").toString(),
+                 attributes().value("stretch-factor").toString().toInt() );
+        readNext();
+      }
+      else {
+        readUnknownElement();
+      }
+    }
+  }
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -521,20 +524,6 @@ void ThemeImporter::setColor( const QString &viewType,
       // FIXME: the date is ignored
       kDebug() << "setting: " << v << ": " << key << ": " << value << endl;
       configGroup( v )->writeEntry( v + "__" + key, color );
-    }
-  }
-}
-
-void ThemeImporter::setPath( const QString &viewType,
-                             const int year, const int month,
-                             const int day,
-                             const QString &key, const QString &value )
-{
-  if ( ! value.isEmpty() ) {
-    foreach ( QString v, Theme::themableViews( viewType ) ) {
-      // FIXME: the date is ignored
-      kDebug() << "setting: " << v << ": " << key << ": " << value << endl;
-      configGroup( v )->writePathEntry( v + "__" + key, value );
     }
   }
 }
@@ -570,11 +559,25 @@ void ThemeImporter::setFont( const QString &viewType,
   f.setStretch( sf );
 
   foreach ( QString v, Theme::themableViews( viewType ) ) {
-      // FIXME: the date is ignored
+    // FIXME: the date is ignored
     kDebug() << "setting: " << v << ": " << key << ": " << family << "\t"
              << styleHint << "\t" << pointSize << "\t" << weight << "\t"
              << style << "\t" << sf << endl;
     configGroup( v )->writeEntry( v + "__" + key, f );
+  }
+}
+
+void ThemeImporter::setPath( const QString &viewType,
+                             const int year, const int month,
+                             const int day,
+                             const QString &key, const QString &value )
+{
+  if ( ! value.isEmpty() ) {
+    foreach ( QString v, Theme::themableViews( viewType ) ) {
+      // FIXME: the date is ignored
+      kDebug() << "setting: " << v << ": " << key << ": " << value << endl;
+      configGroup( v )->writePathEntry( v + "__" + key, value );
+    }
   }
 }
 
