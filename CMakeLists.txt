@@ -1,21 +1,22 @@
 project(korganizer)
 add_subdirectory( tests )
 
-include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/interfaces 
-                     ${CMAKE_SOURCE_DIR}/libkholidays 
-                     ${CMAKE_SOURCE_DIR}/mimelib ${CMAKE_SOURCE_DIR}/libkleo ${CMAKE_SOURCE_DIR}/korganizer/printing 
-                     ${CMAKE_SOURCE_DIR}/kdgantt1 
-		     ${CMAKE_BINARY_DIR}/libkdepim 
+include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/interfaces
+                     ${CMAKE_SOURCE_DIR}/libkholidays
+                     ${CMAKE_SOURCE_DIR}/mimelib
+                     ${CMAKE_SOURCE_DIR}/korganizer/printing
+                     ${CMAKE_SOURCE_DIR}/kdgantt1
+		     ${CMAKE_BINARY_DIR}/libkdepim
                      ${QT_INCLUDES} ${ZLIB_INCLUDE_DIR} )
 
 add_definitions (-DQT3_SUPPORT -DQT3_SUPPORT_WARNINGS)
 
-add_subdirectory( printing ) 
-add_subdirectory( korgac ) 
-add_subdirectory( pixmaps ) 
-add_subdirectory( sounds ) 
-add_subdirectory( plugins ) 
-add_subdirectory( interfaces ) 
+add_subdirectory( printing )
+add_subdirectory( korgac )
+add_subdirectory( pixmaps )
+add_subdirectory( sounds )
+add_subdirectory( plugins )
+add_subdirectory( interfaces )
 
 set( PERL ${PERL_EXECUTABLE} )
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/ical2vcal.cmake ${CMAKE_CURRENT_BINARY_DIR}/ical2vcal @ONLY)
@@ -24,9 +25,9 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/ical2vcal.cmake ${CMAKE_CURRENT_BINAR
 ########### next target ###############
 
 set(korganizer_bin_SRCS
-   main.cpp 
-   korganizer.cpp 
-   koapp.cpp 
+   main.cpp
+   korganizer.cpp
+   koapp.cpp
 )
 
 
