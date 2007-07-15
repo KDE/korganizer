@@ -220,8 +220,20 @@ void ThemeImporter::readCalendarItems( const QString &viewType,
         stack.append( qMakePair( QString("to-dos"),
                                  QString("CalendarItems_ToDos") ) );
       }
-      //TODO: overdue & due-today
-      /* The sub-elements of these tags should allow free text */
+      /* Sub-elements of to-dos (second level) */
+      else if ( stack.count() == 2 && stack.last().first == "to-dos"
+                && name() == "overdue" ) {
+        stack.append( qMakePair( QString("to-dos/overdue"),
+                      QString("CalendarItems_ToDos_Overdue")
+                               ) );
+      }
+      else if ( stack.count() == 2 && stack.last().first == "to-dos"
+                && name() == "due-today" ) {
+        stack.append( qMakePair( QString("to-dos/due-today"),
+                      QString("CalendarItems_ToDos_DueToday")
+                               ) );
+      }
+      /* The sub-elements of these tags allow free text */
       else if ( stack.count() == 1 && name() == "categories" ) {
         stack.append( qMakePair( QString("categories"),
                                  // When a setting applies to all categories,

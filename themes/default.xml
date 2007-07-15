@@ -39,6 +39,7 @@
       </due-today>
       <overdue>
         <background color="#FF6464"/>
+        <font weight="75"/>
       </overdue>
     </to-dos>
     <categories>
