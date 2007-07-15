@@ -42,30 +42,33 @@
       </overdue>
     </to-dos>
     <categories>
-      <appointment>
-      </appointment>
-      <birthday>
-      </birthday>
-      <business>
-      </business>
-      <education>
-      </education>
-      <holiday>
-      </holiday>
-      <meeting>
-      </meeting>
-      <miscellaneous>
-      </miscellaneous>
-      <personal>
-      </personal>
-      <phone-call>
-      </phone-call>
-      <special-occasion>
-      </special-occasion>
-      <travel>
-      </travel>
-      <vacation>
-      </vacation>
+      <category name="Appointment">
+        <background src="rendez-vous.png"/><!-- FIXME: for testing only -->
+        <background color="#DDDDDD"/><!-- FIXME: for testing only -->
+      </category>
+      <category name="Birthday">
+        <background color="#FFFF64"/><!-- FIXME: for testing only -->
+      </category>
+      <category name="Business">
+      </category>
+      <category name="Education">
+      </category>
+      <category name="Holiday">
+      </category>
+      <category name="Meeting">
+      </category>
+      <category name="Miscellaneous">
+      </category>
+      <category name="Personal">
+      </category>
+      <category name="Phone Call">
+      </category>
+      <category name="Special Occasion">
+      </category>
+      <category name="Travel">
+      </category>
+      <category name="Vacation">
+      </category>
     </categories>
     <resources>
       <default-calendar>

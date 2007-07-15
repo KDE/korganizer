@@ -88,30 +88,6 @@ namespace KOrg {
       void readCalendarItems( const QString &viewType = QString(),
                               const int year = 0, const int month = 0,
                               const int day = 0 );
-        /**
-          Calendar items: read an events tag and act adequately.
-          */
-        void readEvents( const QString &viewType = QString(),
-                        const int year = 0, const int month = 0,
-                        const int day = 0 );
-        /**
-          Calendar items: read a to-dos tag and act adequately.
-          */
-        void readToDos( const QString &viewType = QString(),
-                        const int year = 0, const int month = 0,
-                        const int day = 0 );
-        /**
-          Calendar items: read a categories tag and act adequately.
-          */
-        void readCategories( const QString &viewType = QString(),
-                            const int year = 0, const int month = 0,
-                            const int day = 0 );
-        /**
-          Calendar items: read a resources tag and act adequately.
-          */
-        void readResources( const QString &viewType = QString(),
-                            const int year = 0, const int month = 0,
-                            const int day = 0 );
       /**
         Read a grid tag and act adequately.
        */
