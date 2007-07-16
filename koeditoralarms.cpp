@@ -256,7 +256,7 @@ void KOEditorAlarms::readAlarm( KCal::Alarm *alarm )
   mWidget.mRepeats->setChecked( alarm->repeatCount()>0 );
   if ( alarm->repeatCount()>0 ) {
     mWidget.mRepeatCount->setValue( alarm->repeatCount() );
-    mWidget.mRepeatInterval->setValue( alarm->snoozeTime() );
+    mWidget.mRepeatInterval->setValue( alarm->snoozeTime().asSeconds() / 60 );
   }
   int id = 0;
 

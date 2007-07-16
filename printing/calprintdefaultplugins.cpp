@@ -145,7 +145,7 @@ class TimePrintStringsVisitor : public IncidenceBase::Visitor
         mEndString = (event->floats()) ? (event->dtEndDateStr(false)) : (event->dtEndStr(false));
       } else if ( event->hasDuration() ) {
         mEndCaption = i18n("Duration: ");
-        int mins = event->duration() / 60;
+        int mins = event->duration().asSeconds() / 60;
         if ( mins >= 60 ) {
           mEndString += i18np( "1 hour ", "%1 hours ", mins/60 );
         }
