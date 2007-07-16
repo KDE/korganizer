@@ -72,10 +72,11 @@
       </category>
     </categories>
     <resources>
-      <default-calendar>
-      </default-calendar>
-      <birthdays>
-      </birthdays>
+      <resource name="Default Calendar">
+      </resource>
+      <resource name="Birthdays">
+        <background color="#FFFF64"/><!-- FIXME: for testing only -->
+      </resource>
     </resources>
     <frame color="#D8DBD5"/>
   </calendar-items>
@@ -99,6 +100,13 @@
 <!--      </day>
     </month>-->
   </year>
+  <month value="10">
+    <day value="14">
+      <grid>
+        <background src="kde4ever.png"/><!-- KDE's birthday -->
+      </grid>
+    </day>
+  </month>
   <!-- FIXME: for testing purposes -->
   <some-unknown-element>
     <inside-some-unknown-element/>

@@ -118,6 +118,16 @@ void ThemeImporter::readDate( const QString &viewType,
   int m = month;
   int d = day;
 
+  if ( name() == "year" ) {
+    y = attributes().value("value").toString().toInt();
+  }
+  else if ( name() == "month" ) {
+    m = attributes().value("value").toString().toInt();
+  }
+  else if ( name() == "day" ) {
+    d = attributes().value("value").toString().toInt();
+  }
+
   while ( !atEnd() ) {
     readNext();
 
@@ -125,19 +135,13 @@ void ThemeImporter::readDate( const QString &viewType,
       break;
 
     if ( isStartElement() ) {
-      if ( name() == "year" ) {
-        y = attributes().value("value").toString().toInt();
-        readElement( QString(), y, m, d );
+      if ( name() == "year" || name() == "month" || name() == "day" ) {
+        readDate( viewType, y, m, d );
       }
-      else if ( name() == "month" ) {
-        m = attributes().value("value").toString().toInt();
-        readElement( QString(), y, m, d );
+      else {
+        readElement( viewType, y, m, d );
       }
-      else if ( name() == "day" ) {
-        d = attributes().value("value").toString().toInt();
-        readElement( QString(), y, m, d );
-      }
-      kDebug() << "date: " << y << "-" << m << "-" << d;
+      kDebug() << "date: " << y << "-" << m << "-" << d << endl;
     }
   }
 }
@@ -148,7 +152,8 @@ void ThemeImporter::readView( const QString &viewType,
 {
   Q_ASSERT( isStartElement() && name() == "view" );
 
-  QString v = attributes().value("type").toString();
+  QString v = viewType;
+  v = attributes().value("type").toString();
   kDebug() << "viewType: " << v << endl;
 
   while ( !atEnd() ) {
@@ -367,8 +372,27 @@ void ThemeImporter::readHolidays( const QString &viewType,
 
   QString cfg = "Holidays";
 
-  // TODO
-  kDebug() << "element not implemented yet." << endl;
+  while ( !atEnd() ) {
+    readNext();
+
+    if ( isEndElement() )
+      break;
+
+    if ( isStartElement() ) {
+      if ( name() == "background" ) {
+        setColor( viewType, year, month, day,
+                  cfg + "BackgroundColor",
+                  attributes().value("color").toString() );
+        setPath( viewType, year, month, day,
+                 cfg + "BackgroundImage",
+                 attributes().value("src").toString() );
+        readNext();
+      }
+      else {
+        readUnknownElement();
+      }
+    }
+  }
 }
 
 void ThemeImporter::readMarcusBainsLine( const QString &viewType,
@@ -458,9 +482,15 @@ void ThemeImporter::setColor( const QString &viewType,
     QColor color(r, g, b);
 
     foreach ( QString v, Theme::themableViews( viewType ) ) {
-      // FIXME: the date is ignored
-      kDebug() << "setting: " << v << ": " << key << ": " << value << endl;
-      configGroup( v )->writeEntry( v + key, color );
+      if ( year == 0 && month == 0 && day == 0 ) {
+        kDebug() << "setting: " << v << ": " << key << ": " << value << endl;
+        configGroup( v )->writeEntry( v + key, color );
+      }
+      else {
+        // FIXME
+        kDebug() << "THEORICAL setting: " << year << "-" << month << "-" << day
+                 << ": " << v << ": " << key << ": " << value << endl;
+      }
     }
   }
 }
@@ -496,11 +526,19 @@ void ThemeImporter::setFont( const QString &viewType,
   f.setStretch( sf );
 
   foreach ( QString v, Theme::themableViews( viewType ) ) {
-    // FIXME: the date is ignored
-    kDebug() << "setting: " << v << ": " << key << ": " << family << "\t"
-             << styleHint << "\t" << pointSize << "\t" << weight << "\t"
-             << style << "\t" << sf << endl;
-    configGroup( v )->writeEntry( v + key, f );
+    if ( year == 0 && month == 0 && day == 0 ) {
+      kDebug() << "setting: " << v << ": " << key << ": " << family << "\t"
+               << styleHint << "\t" << pointSize << "\t" << weight << "\t"
+               << style << "\t" << sf << endl;
+      configGroup( v )->writeEntry( v + key, f );
+    }
+    else {
+      // FIXME
+      kDebug() << "THEORICAL setting: " << year << "-" << month << "-" << day
+          << ": " << v << ": " << key << ": " << family << "\t"
+          << styleHint << "\t" << pointSize << "\t" << weight << "\t"
+          << style << "\t" << sf << endl;
+    }
   }
 }
 
@@ -511,9 +549,15 @@ void ThemeImporter::setPath( const QString &viewType,
 {
   if ( ! value.isEmpty() ) {
     foreach ( QString v, Theme::themableViews( viewType ) ) {
-      // FIXME: the date is ignored
-      kDebug() << "setting: " << v << ": " << key << ": " << value << endl;
-      configGroup( v )->writePathEntry( v + key, value );
+      if ( year == 0 && month == 0 && day == 0 ) {
+        kDebug() << "setting: " << v << ": " << key << ": " << value << endl;
+        configGroup( v )->writePathEntry( v + key, value );
+      }
+      else {
+        // FIXME
+        kDebug() << "THEORICAL setting: " << year << "-" << month << "-" << day
+                 << ": " << v << ": " << key << ": " << value << endl;
+      }
     }
   }
 }
@@ -525,9 +569,15 @@ void ThemeImporter::setString( const QString &viewType,
 {
   if ( ! value.isEmpty() ) {
     foreach ( QString v, Theme::themableViews( viewType ) ) {
-      // FIXME: the date is ignored
-      kDebug() << "setting: " << v << ": " << key << ": " << value << endl;
-      configGroup( v )->writeEntry( v + key, value );
+      if ( year == 0 && month == 0 && day == 0 ) {
+        kDebug() << "setting: " << v << ": " << key << ": " << value << endl;
+        configGroup( v )->writeEntry( v + key, value );
+      }
+      else {
+        // FIXME
+        kDebug() << "THEORICAL setting: " << year << "-" << month << "-" << day
+            << ": " << v << ": " << key << ": " << value << endl;
+      }
     }
   }
 }
