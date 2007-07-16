@@ -336,51 +336,10 @@
 
   </group>
 
-  <group name="Colors">
-    <entry type="Color" key="Holiday Color">
-      <label>Holiday color</label>
-      <whatsthis>Select the holiday color here. The holiday color will be used for the holiday name in the month view and the holiday number in the date navigator.</whatsthis>
-      <default>255, 100, 100</default>
-    </entry>
-    <entry type="Color" key="Highlight Color">
-      <label>Highlight color</label>
-      <whatsthis>Select the highlight color here. The highlight color will be used for marking the currently selected area in your agenda and in the date navigator.</whatsthis>
-      <default>100, 100, 255</default>
-    </entry>
-    <entry type="Color" key="AgendaBackgroundColor" name="AgendaBgColor">
-      <label>Agenda view background color</label>
-      <whatsthis>Select the agenda view background color here.</whatsthis>
-      <default>255, 255, 255</default>
-    </entry>
-    <entry type="Color" key="Todo due today Color" name="TodoDueTodayColor">
-      <label>To-do due today color</label>
-      <whatsthis>Select the to-do due today color here.</whatsthis>
-      <default>255, 200, 50</default>
-    </entry>
-    <entry type="Color" key="Todo overdue Color" name="TodoOverdueColor">
-      <label>To-do overdue color</label>
-      <whatsthis>Select the to-do overdue color here.</whatsthis>
-      <default>255, 100, 100</default>
-    </entry>
-    <entry type="Color" key="EventColor">
-      <label>Default event color</label>
-      <whatsthis>Select the default event color here. The default event color will be used for events categories in your agenda. Note that you can specify a separate color for each event category below.</whatsthis>
-      <default>151, 235, 121</default>
-    </entry>
-  </group>
-
   <group name="Fonts">
-    <entry type="Font" key="TimeBar Font">
-      <label>Time bar</label>
-      <whatsthis>Press this button to configure the time bar font. The time bar is the widget that shows the hours in the agenda view. This button will open the &quot;Select Font&quot; dialog, allowing you to choose the hour font for the time bar.</whatsthis>
-    </entry>
     <entry type="Font" key="AgendaView Font">
       <label>Agenda view</label>
       <whatsthis>Press this button to configure the agenda view font. This button will open the &quot;Select Font&quot; dialog, allowing you to choose the font for the events in the agenda view.</whatsthis>
-    </entry>
-    <entry type="Font" key="MarcusBains Font">
-      <label>Current-time line</label>
-      <whatsthis>Press this button to configure the current-time line font. This button will open the &quot;Select Font&quot; dialog, allowing you to choose the font for the current-time line in the agenda view.</whatsthis>
     </entry>
     <entry type="Font" key="MonthView Font">
       <label>Month view</label>
@@ -449,11 +408,17 @@
   <group name="Theme/Agenda view">
     <!-- BEGIN: These entries are the same for the agenda and month views, please keep them in sync -->
     <entry key="AgendaGridBackgroundColor" type="Color">
+      <label>Agenda view background color</label>
+      <whatsthis>Select the agenda view background color here.</whatsthis>
       <default>255, 255, 255</default>
     </entry>
     <entry key="AgendaGridBackgroundImage" type="String">
     </entry>
-    <!-- END:   These entries are the same for the agenda and month views, please keep them in sync -->
+    <entry key="AgendaGridHighlightColor" type="Color">
+      <label>Highlight color</label>
+      <whatsthis>Select the highlight color here. The highlight color will be used for marking the currently selected area in your agenda and in the date navigator.</whatsthis>
+      <default>100, 100, 255</default>
+    </entry>
     <entry key="AgendaGridWorkHoursBackgroundColor" type="Color">
       <label>Working hours color</label>
       <whatsthis>Select the working hours background color for the agenda view here.</whatsthis>
@@ -461,20 +426,21 @@
     </entry>
     <entry key="AgendaGridWorkHoursBackgroundImage" type="String">
     </entry>
+    <!-- END:   These entries are the same for the agenda and month views, please keep them in sync -->
 
     <entry key="AgendaTimeLabelsFont" type="Font">
+      <label>Time bar</label>
+      <whatsthis>Press this button to configure the time bar font. The time bar is the widget that shows the hours in the agenda view. This button will open the &quot;Select Font&quot; dialog, allowing you to choose the hour font for the time bar.</whatsthis>
     </entry>
 
     <entry key="AgendaMarcusBainsLineColor" type="Color">
     </entry>
     <entry key="AgendaMarcusBainsLineFont" type="Font">
+      <label>Current-time line</label>
+      <whatsthis>Press this button to configure the current-time line font. This button will open the &quot;Select Font&quot; dialog, allowing you to choose the font for the current-time line in the agenda view.</whatsthis>
     </entry>
 
     <!-- BEGIN: These entries are the same for the agenda and month views, please keep them in sync -->
-    <entry key="AgendaHolidaysBackgroundColor" type="Color">
-      <default>255, 100, 100</default><!-- FIXME -->
-    </entry>
-
     <entry key="AgendaCalendarItemsBackgroundColor" type="Color">
       <default>255, 100, 100</default><!-- FIXME -->
     </entry>
@@ -489,7 +455,9 @@
     </entry>
 
     <entry key="AgendaCalendarItemsEventsBackgroundColor" type="Color">
-      <default>255, 100, 100</default><!-- FIXME -->
+      <label>Default event color</label>
+      <whatsthis>Select the default event color here. The default event color will be used for events categories in your agenda. Note that you can specify a separate color for each event category below.</whatsthis>
+      <default>151, 235, 121</default>
     </entry>
     <entry key="AgendaCalendarItemsEventsBackgroundImage" type="String">
     </entry>
@@ -515,55 +483,146 @@
     </entry>
 
     <entry key="AgendaCalendarItemsToDosDueTodayBackgroundColor" type="Color">
-      <default>255, 100, 100</default><!-- FIXME -->
+      <label>To-do due today color</label>
+      <whatsthis>Select the to-do due today color here.</whatsthis>
+      <default>255, 200, 50</default>
     </entry>
     <entry key="AgendaCalendarItemsToDosDueTodayBackgroundImage" type="String">
     </entry>
     <entry key="AgendaCalendarItemsToDosDueTodayFont" type="Font">
     </entry>
     <entry key="AgendaCalendarItemsToDosDueTodayFrameColor" type="Color">
-      <default>255, 100, 100</default><!-- FIXME -->
     </entry>
     <entry key="AgendaCalendarItemsToDosDueTodayIcon" type="String">
     </entry>
 
     <entry key="AgendaCalendarItemsToDosOverdueBackgroundColor" type="Color">
-      <default>255, 100, 100</default><!-- FIXME -->
+      <label>To-do overdue color</label>
+      <whatsthis>Select the to-do overdue color here.</whatsthis>
+      <default>255, 100, 100</default>
     </entry>
     <entry key="AgendaCalendarItemsToDosOverdueBackgroundImage" type="String">
     </entry>
     <entry key="AgendaCalendarItemsToDosOverdueFont" type="Font">
     </entry>
     <entry key="AgendaCalendarItemsToDosOverdueFrameColor" type="Color">
-      <default>255, 100, 100</default><!-- FIXME -->
     </entry>
     <entry key="AgendaCalendarItemsToDosOverdueIcon" type="String">
     </entry>
-
     <!-- TODO: categories, resources -->
-    <!-- END:   These entries are the same for the agenda and month views, please keep them in sync -->
 
-<!--
-    <entry type="Color" key="Holiday Color">
+    <entry key="AgendaHolidaysBackgroundColor" type="Color">
       <label>Holiday color</label>
       <whatsthis>Select the holiday color here. The holiday color will be used for the holiday name in the month view and the holiday number in the date navigator.</whatsthis>
       <default>255, 100, 100</default>
     </entry>
-    <entry type="Font" key="TimeBar Font">
-      <label>Time bar</label>
-      <whatsthis>Press this button to configure the time bar font. The time bar is the widget that shows the hours in the agenda view. This button will open the &quot;Select Font&quot; dialog, allowing you to choose the hour font for the time bar.</whatsthis>
+    <entry key="AgendaHolidaysBackgroundImage" type="String">
     </entry>
--->
+    <!-- END:   These entries are the same for the agenda and month views, please keep them in sync -->
   </group>
 
   <group name="Theme/Month view">
-    <!-- BEGIN: These entries are the same for the agenda and month views, please keep them in sync -->
+    <!-- BEGIN: These entries are the same for the Month and month views, please keep them in sync -->
     <entry key="MonthGridBackgroundColor" type="Color">
+      <label>Month view background color</label>
+      <whatsthis>Select the Month view background color here.</whatsthis>
       <default>255, 255, 255</default>
     </entry>
     <entry key="MonthGridBackgroundImage" type="String">
     </entry>
-    <!-- END:   These entries are the same for the agenda and month views, please keep them in sync -->
+    <entry key="MonthGridHighlightColor" type="Color">
+      <label>Highlight color</label>
+      <whatsthis>Select the highlight color here. The highlight color will be used for marking the currently selected area in your Month and in the date navigator.</whatsthis>
+      <default>100, 100, 255</default>
+    </entry>
+    <entry key="MonthGridWorkHoursBackgroundColor" type="Color">
+      <label>Working hours color</label>
+      <whatsthis>Select the working hours background color for the Month view here.</whatsthis>
+      <default>225, 225, 255</default>
+    </entry>
+    <entry key="MonthGridWorkHoursBackgroundImage" type="String">
+    </entry>
+    <!-- END:   These entries are the same for the Month and month views, please keep them in sync -->
+    
+    <!-- BEGIN: These entries are the same for the Month and month views, please keep them in sync -->
+    <entry key="MonthCalendarItemsBackgroundColor" type="Color">
+      <default>255, 100, 100</default><!-- FIXME -->
+    </entry>
+    <entry key="MonthCalendarItemsBackgroundImage" type="String">
+    </entry>
+    <entry key="MonthCalendarItemsFont" type="Font">
+    </entry>
+    <entry key="MonthCalendarItemsFrameColor" type="Color">
+      <default>255, 100, 100</default><!-- FIXME -->
+    </entry>
+    <entry key="MonthCalendarItemsIcon" type="String">
+    </entry>
+    
+    <entry key="MonthCalendarItemsEventsBackgroundColor" type="Color">
+      <label>Default event color</label>
+      <whatsthis>Select the default event color here. The default event color will be used for events categories in your Month. Note that you can specify a separate color for each event category below.</whatsthis>
+      <default>151, 235, 121</default>
+    </entry>
+    <entry key="MonthCalendarItemsEventsBackgroundImage" type="String">
+    </entry>
+    <entry key="MonthCalendarItemsEventsFont" type="Font">
+    </entry>
+    <entry key="MonthCalendarItemsEventsFrameColor" type="Color">
+      <default>255, 100, 100</default><!-- FIXME -->
+    </entry>
+    <entry key="MonthCalendarItemsEventsIcon" type="String">
+    </entry>
+    
+    <entry key="MonthCalendarItemsToDosBackgroundColor" type="Color">
+      <default>255, 100, 100</default><!-- FIXME -->
+    </entry>
+    <entry key="MonthCalendarItemsToDosBackgroundImage" type="String">
+    </entry>
+    <entry key="MonthCalendarItemsToDosFont" type="Font">
+    </entry>
+    <entry key="MonthCalendarItemsToDosFrameColor" type="Color">
+      <default>255, 100, 100</default><!-- FIXME -->
+    </entry>
+    <entry key="MonthCalendarItemsToDosIcon" type="String">
+    </entry>
+    
+    <entry key="MonthCalendarItemsToDosDueTodayBackgroundColor" type="Color">
+      <label>To-do due today color</label>
+      <whatsthis>Select the to-do due today color here.</whatsthis>
+      <default>255, 200, 50</default>
+    </entry>
+    <entry key="MonthCalendarItemsToDosDueTodayBackgroundImage" type="String">
+    </entry>
+    <entry key="MonthCalendarItemsToDosDueTodayFont" type="Font">
+    </entry>
+    <entry key="MonthCalendarItemsToDosDueTodayFrameColor" type="Color">
+    </entry>
+    <entry key="MonthCalendarItemsToDosDueTodayIcon" type="String">
+    </entry>
+    
+    <entry key="MonthCalendarItemsToDosOverdueBackgroundColor" type="Color">
+      <label>To-do overdue color</label>
+      <whatsthis>Select the to-do overdue color here.</whatsthis>
+      <default>255, 100, 100</default>
+    </entry>
+    <entry key="MonthCalendarItemsToDosOverdueBackgroundImage" type="String">
+    </entry>
+    <entry key="MonthCalendarItemsToDosOverdueFont" type="Font">
+    </entry>
+    <entry key="MonthCalendarItemsToDosOverdueFrameColor" type="Color">
+    </entry>
+    <entry key="MonthCalendarItemsToDosOverdueIcon" type="String">
+    </entry>
+    <!-- TODO: categories, resources -->
+    
+    <entry key="MonthHolidaysBackgroundColor" type="Color">
+      <label>Holiday color</label>
+      <whatsthis>Select the holiday color here. The holiday color will be used for the holiday name in the month view and the holiday number in the date navigator.</whatsthis>
+      <default>255, 100, 100</default>
+    </entry>
+    <entry key="MonthHolidaysBackgroundImage" type="String">
+    </entry>
+    <!-- END:   These entries are the same for the Month and month views, please keep them in sync -->
   </group>
 
 </kcfg>

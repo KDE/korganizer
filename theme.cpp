@@ -74,6 +74,7 @@ const QStringList Theme::themableViews( const QString &viewType )
   QStringList l;
   l.append( "Agenda" );
   l.append( "Month" );
+  // TODO:  TodoView?
   if ( l.contains( viewType ) ) {
     return QStringList( viewType );
   }

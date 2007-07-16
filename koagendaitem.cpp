@@ -713,10 +713,10 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
   QColor bgColor;
   if ( mIncidence->type() == "Todo" ) {
     if ( static_cast<Todo*>(mIncidence)->isOverdue() )
-      bgColor = KOPrefs::instance()->todoOverdueColor();
+      bgColor = KOPrefs::instance()->agendaCalendarItemsToDosOverdueBackgroundColor();
     else if ( static_cast<Todo*>(mIncidence)->dtDue().date() ==
               QDateTime::currentDateTime().date() )
-      bgColor = KOPrefs::instance()->todoDueTodayColor();
+      bgColor = KOPrefs::instance()->agendaCalendarItemsToDosDueTodayBackgroundColor();
   }
 
   if ( !bgColor.isValid() ) {
@@ -724,7 +724,7 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
     QString cat;
     if ( !categories.isEmpty() ) cat = categories.first();
     if (cat.isEmpty())
-      bgColor = KOPrefs::instance()->mEventColor;
+      bgColor = KOPrefs::instance()->agendaCalendarItemsBackgroundColor();
     else
       bgColor = KOPrefs::instance()->categoryColor(cat);
   }

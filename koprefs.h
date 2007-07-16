@@ -105,7 +105,7 @@ class KORGANIZER_EXPORT KOPrefs : public KOPrefsBase
     QColor mDefaultResourceColor;
 
     QFont mDefaultMonthViewFont;
-    QFont mDefaultTimeBarFont;
+    QFont mDefaultAgendaTimeLabelsFont;
 
     KDateTime::Spec mTimeSpec;
 

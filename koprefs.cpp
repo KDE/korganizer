@@ -67,10 +67,10 @@ KOPrefs::KOPrefs() :
   mDefaultCategoryColor = QColor( 151, 235, 121 );
   mDefaultResourceColor = QColor();//Default is a color invalid
 
-  mDefaultTimeBarFont = KGlobalSettings::generalFont();
+  mDefaultAgendaTimeLabelsFont = KGlobalSettings::generalFont();
   // make a large default time bar font, at least 16 points.
-  mDefaultTimeBarFont.setPointSize(
-    qMax( mDefaultTimeBarFont.pointSize() + 4, 16 ) );
+  mDefaultAgendaTimeLabelsFont.setPointSize(
+    qMax( mDefaultAgendaTimeLabelsFont.pointSize() + 4, 16 ) );
 
   mDefaultMonthViewFont = KGlobalSettings::generalFont();
   // make it a bit smaller
@@ -81,9 +81,9 @@ KOPrefs::KOPrefs() :
   addItemPath( "Html Export File", mHtmlExportFile,
       QDir::homePath() + '/' + i18nc( "Default export file", "calendar.html" ) );
 
-  timeBarFontItem()->setDefaultValue( mDefaultTimeBarFont );
+  agendaTimeLabelsFontItem()->setDefaultValue( mDefaultAgendaTimeLabelsFont );
   monthViewFontItem()->setDefaultValue( mDefaultMonthViewFont );
-  eventColorItem()->setDefaultValue( mDefaultCategoryColor );
+  agendaCalendarItemsEventsBackgroundColorItem()->setDefaultValue( mDefaultCategoryColor );
 }
 
 KOPrefs::~KOPrefs()
@@ -117,7 +117,7 @@ void KOPrefs::usrSetDefaults()
   }
   fillMailDefaults();
 
-  mTimeBarFont = mDefaultTimeBarFont;
+  setAgendaTimeLabelsFont( mDefaultAgendaTimeLabelsFont );
   mMonthViewFont = mDefaultMonthViewFont;
 
   setTimeZoneDefault();

@@ -576,7 +576,7 @@ class KOPrefsDialogFonts : public KPrefsModule
       topLayout->setSpacing( KDialog::spacingHint() );
 
       KPrefsWidFont *timeBarFont =
-          addWidFont( KOPrefs::instance()->timeBarFontItem(), topFrame,
+          addWidFont( KOPrefs::instance()->agendaTimeLabelsFontItem(), topFrame,
                       KGlobal::locale()->formatTime( QTime( 12, 34 ) ) );
       topLayout->addWidget(timeBarFont->label(),0,0);
       topLayout->addWidget(timeBarFont->preview(),0,1);
@@ -599,7 +599,7 @@ class KOPrefsDialogFonts : public KPrefsModule
       topLayout->addWidget(agendaViewFont->button(),2,2);
 
       KPrefsWidFont *marcusBainsFont =
-          addWidFont( KOPrefs::instance()->marcusBainsFontItem(), topFrame,
+          addWidFont( KOPrefs::instance()->agendaMarcusBainsLineFontItem(), topFrame,
                       KGlobal::locale()->formatTime( QTime( 12, 34, 23 ) ) );
       topLayout->addWidget(marcusBainsFont->label(),3,0);
       topLayout->addWidget(marcusBainsFont->preview(),3,1);
@@ -634,24 +634,24 @@ KOPrefsDialogColors::KOPrefsDialogColors( const KComponentData &inst, QWidget *p
 
   // Holiday Color
   KPrefsWidColor *holidayColor =
-      addWidColor( KOPrefs::instance()->holidayColorItem(), topFrame );
+      addWidColor( KOPrefs::instance()->agendaHolidaysBackgroundColorItem(), topFrame );
   topLayout->addWidget(holidayColor->label(),0,0);
   topLayout->addWidget(holidayColor->button(),0,1);
 
   // Highlight Color
   KPrefsWidColor *highlightColor =
-      addWidColor( KOPrefs::instance()->highlightColorItem(), topFrame );
+      addWidColor( KOPrefs::instance()->agendaGridHighlightColorItem(), topFrame );
   topLayout->addWidget(highlightColor->label(),1,0);
   topLayout->addWidget(highlightColor->button(),1,1);
 
   KPrefsWidColor *eventColor =
-      addWidColor( KOPrefs::instance()->eventColorItem(), topFrame );
+      addWidColor( KOPrefs::instance()->agendaCalendarItemsEventsBackgroundColorItem(), topFrame );
   topLayout->addWidget(eventColor->label(),2,0);
   topLayout->addWidget(eventColor->button(),2,1);
 
   // agenda view background color
   KPrefsWidColor *agendaBgColor =
-      addWidColor( KOPrefs::instance()->agendaBgColorItem(), topFrame );
+      addWidColor( KOPrefs::instance()->agendaGridBackgroundColorItem(), topFrame );
   topLayout->addWidget(agendaBgColor->label(),3,0);
   topLayout->addWidget(agendaBgColor->button(),3,1);
 
@@ -663,13 +663,13 @@ KOPrefsDialogColors::KOPrefsDialogColors( const KComponentData &inst, QWidget *p
 
   // Todo due today color
   KPrefsWidColor *todoDueTodayColor =
-      addWidColor( KOPrefs::instance()->todoDueTodayColorItem(), topFrame );
+      addWidColor( KOPrefs::instance()->agendaCalendarItemsToDosDueTodayBackgroundColorItem(), topFrame );
   topLayout->addWidget(todoDueTodayColor->label(),5,0);
   topLayout->addWidget(todoDueTodayColor->button(),5,1);
 
   // Todo overdue color
   KPrefsWidColor *todoOverdueColor =
-      addWidColor( KOPrefs::instance()->todoOverdueColorItem(), topFrame );
+      addWidColor( KOPrefs::instance()->agendaCalendarItemsToDosOverdueBackgroundColorItem(), topFrame );
   topLayout->addWidget(todoOverdueColor->label(),6,0);
   topLayout->addWidget(todoOverdueColor->button(),6,1);
 

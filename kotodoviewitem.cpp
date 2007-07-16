@@ -229,13 +229,13 @@ void KOTodoViewItem::paintCell(QPainter *p, const QColorGroup &cg, int column, i
   if (mTodo->hasDueDate()) {
     if (mTodo->dtDue().date()==QDate::currentDate() &&
         !mTodo->isCompleted()) {
-      _cg.setColor(QPalette::Base, KOPrefs::instance()->mTodoDueTodayColor);
-      _cg.setColor(QPalette::Text, getTextColor(KOPrefs::instance()->mTodoDueTodayColor));
+      _cg.setColor(QPalette::Base, KOPrefs::instance()->agendaCalendarItemsToDosDueTodayBackgroundColor());
+      _cg.setColor(QPalette::Text, getTextColor(KOPrefs::instance()->agendaCalendarItemsToDosDueTodayBackgroundColor()));
     }
     if (mTodo->dtDue().date() < QDate::currentDate() &&
         !mTodo->isCompleted()) {
-      _cg.setColor(QPalette::Base, KOPrefs::instance()->mTodoOverdueColor);
-      _cg.setColor(QPalette::Text, getTextColor(KOPrefs::instance()->mTodoOverdueColor));
+      _cg.setColor(QPalette::Base, KOPrefs::instance()->agendaCalendarItemsToDosOverdueBackgroundColor());
+      _cg.setColor(QPalette::Text, getTextColor(KOPrefs::instance()->agendaCalendarItemsToDosOverdueBackgroundColor()));
     }
   }
 #endif

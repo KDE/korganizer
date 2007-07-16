@@ -556,7 +556,7 @@ void KODayMatrix::paintEvent( QPaintEvent * )
     // fix larger selections starting in the previous month
     if ( row < 0 && mSelEnd > 0 ) row = 0;
     col = mSelStart -row*7;
-    QColor selcol = KOPrefs::instance()->mHighlightColor;
+    QColor selcol = KOPrefs::instance()->agendaGridHighlightColor();
 
     if ( row < 6 && row >= 0 ) {
       if (row == mSelEnd/7) {
@@ -610,7 +610,7 @@ void KODayMatrix::paintEvent( QPaintEvent * )
 
     bool holiday = ! KOGlobals::self()->isWorkDay( mDays[ i ] );
 
-    QColor holidayColorShaded = getShadedColor( KOPrefs::instance()->mHolidayColor );
+    QColor holidayColorShaded = getShadedColor( KOPrefs::instance()->agendaHolidaysBackgroundColor() );
     // if today then draw rectangle around day
     if (mToday == i) {
       tmppen = p.pen();
@@ -620,7 +620,7 @@ void KODayMatrix::paintEvent( QPaintEvent * )
       //draw red rectangle for holidays
       if (holiday) {
         if (actcol == textColor) {
-          mTodayPen.setColor(KOPrefs::instance()->mHolidayColor);
+          mTodayPen.setColor(KOPrefs::instance()->agendaHolidaysBackgroundColor());
         } else {
           mTodayPen.setColor(holidayColorShaded);
         }
@@ -645,7 +645,7 @@ void KODayMatrix::paintEvent( QPaintEvent * )
     // if it is a holiday then use the default holiday color
     if (holiday) {
       if (actcol == textColor) {
-        p.setPen(KOPrefs::instance()->mHolidayColor);
+        p.setPen(KOPrefs::instance()->agendaHolidaysBackgroundColor());
       } else {
         p.setPen(holidayColorShaded);
       }

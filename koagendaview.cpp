@@ -220,7 +220,7 @@ int TimeLabels::minimumWidth() const
 /** updates widget's internal state */
 void TimeLabels::updateConfig()
 {
-  setFont(KOPrefs::instance()->mTimeBarFont);
+  setFont(KOPrefs::instance()->agendaTimeLabelsFont());
 
   QString test = "20";
   if ( KGlobal::locale()->use12Clock() )

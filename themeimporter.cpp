@@ -334,6 +334,12 @@ void ThemeImporter::readGrid( const QString &viewType,
                  attributes().value("src").toString() );
         readNext();
       }
+      else if ( name() == "highlight" ) {
+        setColor( viewType, year, month, day,
+                  cfg + "HighlightColor",
+                  attributes().value("color").toString() );
+        readNext();
+      }
       else if ( name() == "work-hours" ) {
         while ( !atEnd() ) {
           readNext();

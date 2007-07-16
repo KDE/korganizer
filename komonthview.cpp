@@ -94,8 +94,8 @@ KNoScrollListBox::KNoScrollListBox( QWidget *parent )
   : Q3ListBox( parent ), mSqueezing( false )
 {
   QPalette pal = palette();
-  pal.setColor( QPalette::Foreground, KOPrefs::instance()->agendaBgColor().dark( 150 ) );
-  pal.setColor( QPalette::Base, KOPrefs::instance()->agendaBgColor() );
+  pal.setColor( QPalette::Foreground, KOPrefs::instance()->monthGridBackgroundColor().dark( 150 ) );
+  pal.setColor( QPalette::Base, KOPrefs::instance()->monthGridBackgroundColor() );
   setPalette( pal );
 }
 
@@ -103,9 +103,9 @@ void KNoScrollListBox::setBackground( bool primary, bool workDay )
 {
   QColor color;
   if ( workDay ) {
-    color = KOPrefs::instance()->agendaGridWorkHoursBackgroundColor();
+    color = KOPrefs::instance()->monthGridWorkHoursBackgroundColor();
   } else {
-    color = KOPrefs::instance()->agendaBgColor();
+    color = KOPrefs::instance()->monthGridBackgroundColor();
   }
 
   QPalette pal = palette();
@@ -425,7 +425,7 @@ void MonthViewCell::updateCell()
     setPalette( mTodayPalette );
 
     QPalette pal = mItemList->palette();
-    pal.setColor( QPalette::Foreground, KOPrefs::instance()->highlightColor() );
+    pal.setColor( QPalette::Foreground, KOPrefs::instance()->monthGridHighlightColor() );
     mItemList->setPalette( pal );
   }
   else {
@@ -435,7 +435,7 @@ void MonthViewCell::updateCell()
       setPalette( mStandardPalette );
 
     QPalette pal = mItemList->palette();
-    pal.setColor( QPalette::Foreground, KOPrefs::instance()->agendaBgColor().dark( 150 ) );
+    pal.setColor( QPalette::Foreground, KOPrefs::instance()->monthGridBackgroundColor().dark( 150 ) );
     mItemList->setPalette( pal );
   }
 
@@ -504,7 +504,7 @@ class MonthViewCell::CreateItemVisitor :
         QString cat;
         if ( !categories.isEmpty() ) cat = categories.first();
         if (cat.isEmpty()) {
-          mItem->setPalette(QPalette(KOPrefs::instance()->mEventColor, KOPrefs::instance()->mEventColor));
+          mItem->setPalette(QPalette(KOPrefs::instance()->monthCalendarItemsEventsBackgroundColor(), KOPrefs::instance()->monthCalendarItemsEventsBackgroundColor()));
         } else {
           mItem->setPalette( QPalette( KOPrefs::instance()->categoryColor(cat), KOPrefs::instance()->categoryColor(cat) ) );
         }
@@ -562,7 +562,7 @@ void MonthViewCell::addIncidence( Incidence *incidence, int multiDay )
 
       QColor resourceColor = KOHelper::resourceColor( mCalendar, incidence );
       if ( !resourceColor.isValid() )
-        resourceColor = KOPrefs::instance()->mEventColor;
+        resourceColor = KOPrefs::instance()->monthCalendarItemsEventsBackgroundColor();
       item->setResourceColor( resourceColor );
 
       // FIXME: Find the correct position (time-wise) to insert the item.
@@ -623,14 +623,14 @@ void MonthViewCell::updateConfig()
 
   mHolidayPalette = mStandardPalette;
   mHolidayPalette.setColor( QPalette::Foreground,
-                            KOPrefs::instance()->holidayColor() );
+                            KOPrefs::instance()->monthHolidaysBackgroundColor() );
   mHolidayPalette.setColor( QPalette::Text,
-                            KOPrefs::instance()->holidayColor() );
+                            KOPrefs::instance()->monthHolidaysBackgroundColor() );
   mTodayPalette = mStandardPalette;
   mTodayPalette.setColor( QPalette::Foreground,
-                          KOPrefs::instance()->highlightColor() );
+                          KOPrefs::instance()->monthGridHighlightColor() );
   mTodayPalette.setColor( QPalette::Text,
-                          KOPrefs::instance()->highlightColor() );
+                          KOPrefs::instance()->monthGridHighlightColor() );
   updateCell();
 
   mItemList->setBackground( mPrimary, KOGlobals::self()->isWorkDay( mDate ) );

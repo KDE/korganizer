@@ -3,6 +3,7 @@
 <korganizer-theme version="1.0">
   <grid>
     <background color="#FFFFFF"/>
+    <highlight color="#6464FF"/>
   </grid>
   <calendar-items>
     <font point-size="8"/>

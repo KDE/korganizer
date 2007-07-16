@@ -151,7 +151,7 @@ void MarcusBains::updateLocation(bool recalculate)
   raise();
 
   if(recalculate)
-    mTimeBox->setFont(KOPrefs::instance()->mMarcusBainsFont);
+    mTimeBox->setFont(KOPrefs::instance()->agendaMarcusBainsLineFont());
 
   mTimeBox->setText(KGlobal::locale()->formatTime(tim, KOPrefs::instance()->mMarcusBainsShowSeconds));
   mTimeBox->adjustSize();
@@ -1356,7 +1356,7 @@ int KOAgenda::columnWidth( int column ) const
 void KOAgenda::drawContents(QPainter* p, int cx, int cy, int cw, int ch)
 {
   QPixmap db(cw, ch);
-  db.fill(KOPrefs::instance()->mAgendaBgColor);
+  db.fill(KOPrefs::instance()->agendaGridBackgroundColor());
   QPainter dbp(&db);
   dbp.translate(-cx,-cy);
 
@@ -1415,26 +1415,26 @@ void KOAgenda::drawContents(QPainter* p, int cx, int cy, int cw, int ch)
       // draw start day
       pt = gridToContents( mSelectionStartCell );
       pt1 = gridToContents( QPoint( mSelectionStartCell.x() + 1, mRows + 1 ) );
-      dbp.fillRect( QRect( pt, pt1 ), KOPrefs::instance()->mHighlightColor );
+      dbp.fillRect( QRect( pt, pt1 ), KOPrefs::instance()->agendaGridHighlightColor() );
       // draw all other days between the start day and the day of the selection end
       for ( int c = mSelectionStartCell.x() + 1; c < mSelectionEndCell.x(); ++c ) {
         pt = gridToContents( QPoint( c, 0 ) );
         pt1 = gridToContents( QPoint( c + 1, mRows + 1 ) );
-        dbp.fillRect( QRect( pt, pt1 ), KOPrefs::instance()->mHighlightColor );
+        dbp.fillRect( QRect( pt, pt1 ), KOPrefs::instance()->agendaGridHighlightColor() );
       }
       // draw end day
       pt = gridToContents( QPoint( mSelectionEndCell.x(), 0 ) );
       pt1 = gridToContents( mSelectionEndCell + QPoint(1,1) );
-      dbp.fillRect( QRect( pt, pt1), KOPrefs::instance()->mHighlightColor );
+      dbp.fillRect( QRect( pt, pt1), KOPrefs::instance()->agendaGridHighlightColor() );
     }  else { // single day selection
       pt = gridToContents( mSelectionStartCell );
       pt1 = gridToContents( mSelectionEndCell + QPoint(1,1) );
-      dbp.fillRect( QRect( pt, pt1 ), KOPrefs::instance()->mHighlightColor );
+      dbp.fillRect( QRect( pt, pt1 ), KOPrefs::instance()->agendaGridHighlightColor() );
     }
   }
 
-  QPen hourPen( KOPrefs::instance()->mAgendaBgColor.dark( 150 ) );
-  QPen halfHourPen( KOPrefs::instance()->mAgendaBgColor.dark( 125 ) );
+  QPen hourPen( KOPrefs::instance()->agendaGridBackgroundColor().dark( 150 ) );
+  QPen halfHourPen( KOPrefs::instance()->agendaGridBackgroundColor().dark( 125 ) );
   dbp.setPen( hourPen );
 
   // Draw vertical lines of grid, start with the last line not yet visible
