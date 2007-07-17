@@ -84,33 +84,4 @@
   <holidays>
     <background color="#FF6464"/>
   </holidays>
-  <year value="1534">
-<!--    <month value="1">
-      <day value="1">-->
-        <!-- Konqi's birthday, TODO: make it special! -->
-        <view type="Agenda">
-          <grid>
-            <background src="konqui.png"/>
-          </grid>
-          <calendar-items>
-            <events>
-              <icon src="Scotland-flag.png"/><!-- he's born in the Highlands after all :) -->
-            </events>
-          </calendar-items>
-        </view>
-<!--      </day>
-    </month>-->
-  </year>
-  <month value="10">
-    <day value="14">
-      <grid>
-        <background src="kde4ever.png"/><!-- KDE's birthday -->
-      </grid>
-    </day>
-  </month>
-  <!-- FIXME: for testing purposes -->
-  <some-unknown-element>
-    <inside-some-unknown-element/>
-  </some-unknown-element>
-  <!-- /FIXME: for testing purposes -->
 </korganizer-theme>
