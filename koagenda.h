@@ -72,8 +72,6 @@ class MarcusBains : public QFrame {
     KOAgenda* mAgenda;
     QTime mOldTime;
     int mOldToday;
-    bool mShowSeconds;
-    bool mDisabled;
 };
 
 class KOAgenda : public Q3ScrollView

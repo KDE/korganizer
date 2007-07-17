@@ -73,27 +73,9 @@
 MarcusBains::MarcusBains( KOAgenda *agenda )
     : QFrame( agenda->viewport() ), mAgenda( agenda )
 {
-  // It seems logical to adjust the line width with the label's font weight
-  int fw = KOPrefs::instance()->agendaMarcusBainsLineFont().weight();
-  setLineWidth( 1 + abs(fw - QFont::Normal)/QFont::Light );
-  setFrameStyle( QFrame::HLine );
-
-  QColor color = KOPrefs::instance()->agendaMarcusBainsLineColor();
-
-  QPalette pal = palette();
-  pal.setColor( QPalette::Dark, color );
-  setPalette( pal );
-
   mTimeBox = new QLabel( this );
   mTimeBox->setAlignment( Qt::AlignRight | Qt::AlignBottom );
-  mTimeBox->setFont( KOPrefs::instance()->agendaMarcusBainsLineFont() );
-  QPalette pal1 = mTimeBox->palette();
-  pal1.setColor( QPalette::WindowText, color );
-  mTimeBox->setPalette( pal1 );
   mAgenda->addChild( mTimeBox );
-
-  mDisabled = !( KOPrefs::instance()->marcusBainsEnabled() );
-  mShowSeconds = false;//KOPrefs::instance()->marcusBainsShowSeconds();
 
   mTimer = new QTimer( this );
   mTimer->setSingleShot( true );
@@ -126,6 +108,9 @@ int MarcusBains::todayColumn()
 
 void MarcusBains::updateLocation( bool recalculate )
 {
+  bool showSeconds = KOPrefs::instance()->marcusBainsShowSeconds();
+  QColor color = KOPrefs::instance()->agendaMarcusBainsLineColor();
+
   QTime tim = QTime::currentTime();
   if ( (tim.hour() == 0) && (mOldTime.hour()==23) )
     // We are on a new day
@@ -142,7 +127,7 @@ void MarcusBains::updateLocation( bool recalculate )
   int y = int( minutes  *  mAgenda->gridSpacingY() / minutesPerCell );
   int x = int( mAgenda->gridSpacingX() * today );
 
-  if ( mDisabled || (today<0) ) {
+  if ( !( KOPrefs::instance()->marcusBainsEnabled() ) || (today<0) ) {
     hide();
     mTimeBox->hide();
     return;
@@ -151,14 +136,25 @@ void MarcusBains::updateLocation( bool recalculate )
     mTimeBox->show();
   }
 
-  // Line
+  /* Line */
+  // It seems logical to adjust the line width with the label's font weight
+  int fw = KOPrefs::instance()->agendaMarcusBainsLineFont().weight();
+  setLineWidth( 1 + abs(fw - QFont::Normal)/QFont::Light );
+  setFrameStyle( QFrame::HLine );
+  QPalette pal = palette();
+  pal.setColor( QPalette::Dark, color );
+  setPalette( pal );
   if ( recalculate )
     setFixedSize( int( mAgenda->gridSpacingX() ), 1 );
   mAgenda->moveChild( this, x, y );
   raise();
 
-  // Label
-  mTimeBox->setText( KGlobal::locale()->formatTime( tim, mShowSeconds ) );
+  /* Label */
+  mTimeBox->setFont( KOPrefs::instance()->agendaMarcusBainsLineFont() );
+  QPalette pal1 = mTimeBox->palette();
+  pal1.setColor( QPalette::WindowText, color );
+  mTimeBox->setPalette( pal1 );
+  mTimeBox->setText( KGlobal::locale()->formatTime( tim, showSeconds ) );
   mTimeBox->adjustSize();
   if ( y-mTimeBox->height() >= 0 )
     y -= mTimeBox->height();
@@ -171,7 +167,7 @@ void MarcusBains::updateLocation( bool recalculate )
   mAgenda->moveChild( mTimeBox, x, y);
   mTimeBox->raise();
 
-  if ( mShowSeconds ) {
+  if ( showSeconds || recalculate ) {
     mTimer->start( 1000 );
   } else {
     mTimer->start( 1000 * (60 - tim.second()) );
