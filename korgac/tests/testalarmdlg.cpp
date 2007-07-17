@@ -41,8 +41,9 @@ int main(int argc,char **argv)
 
   Event *e = new Event;
   e->setSummary( "This is a summary." );
-  e->setDtStart( QDateTime::currentDateTime() );
-  e->setDtEnd( QDateTime::currentDateTime().addDays( 1 ) );
+  KDateTime now = KDateTime::currentLocalDateTime();
+  e->setDtStart( now );
+  e->setDtEnd( now.addDays( 1 ) );
 
   Alarm *a = e->newAlarm();
 //  a->setProcedureAlarm( "/usr/X11R6/bin/xeyes" );
