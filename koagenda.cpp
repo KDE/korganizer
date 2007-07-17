@@ -69,75 +69,80 @@
 
 #include "koagenda.moc"
 
-////////////////////////////////////////////////////////////////////////////
-MarcusBains::MarcusBains( KOAgenda *_agenda )
-    : QFrame( _agenda->viewport() ), agenda( _agenda )
+///////////////////////////////////////////////////////////////////////////////
+MarcusBains::MarcusBains( KOAgenda *agenda )
+    : QFrame( agenda->viewport() ), mAgenda( agenda )
 {
-  setLineWidth( 1 );
+  // It seems logical to adjust the line width with the label's font weight
+  int fw = KOPrefs::instance()->agendaMarcusBainsLineFont().weight();
+  setLineWidth( 1 + abs(fw - QFont::Normal)/QFont::Light );
   setFrameStyle( QFrame::HLine );
-//  setMargin(0);
-  QPalette pal;
-  pal.setColor( QPalette::Dark, Qt::red );
+
+  QColor color = KOPrefs::instance()->agendaMarcusBainsLineColor();
+
+  QPalette pal = palette();
+  pal.setColor( QPalette::Dark, color );
   setPalette( pal );
-  minutes = new QTimer(this);
-  minutes->setSingleShot( true );
-  connect(minutes, SIGNAL(timeout()), this, SLOT(updateLocation()));
-  minutes->start( 0 );
 
-  mTimeBox = new QLabel(this);
-  mTimeBox->setAlignment(Qt::AlignRight | Qt::AlignBottom);
+  mTimeBox = new QLabel( this );
+  mTimeBox->setAlignment( Qt::AlignRight | Qt::AlignBottom );
+  mTimeBox->setFont( KOPrefs::instance()->agendaMarcusBainsLineFont() );
   QPalette pal1 = mTimeBox->palette();
-  pal1.setColor(QPalette::WindowText, Qt::red);
-  mTimeBox->setPalette(pal1);
-#ifdef __GNUC__
-#warning "kde4: porting ?"
-#endif
-  //mTimeBox->setAutoMask(true);
+  pal1.setColor( QPalette::WindowText, color );
+  mTimeBox->setPalette( pal1 );
+  mAgenda->addChild( mTimeBox );
 
-  agenda->addChild(mTimeBox);
+  mDisabled = !( KOPrefs::instance()->marcusBainsEnabled() );
+  mShowSeconds = false;//KOPrefs::instance()->marcusBainsShowSeconds();
 
-  oldToday = -1;
+  mTimer = new QTimer( this );
+  mTimer->setSingleShot( true );
+  connect( mTimer, SIGNAL(timeout()), this, SLOT(updateLocation()) );
+  mTimer->start( 0 );
+
+  mOldToday = -1;
 }
 
 MarcusBains::~MarcusBains()
 {
-  delete minutes;
 }
 
 int MarcusBains::todayColumn()
 {
   QDate currentDate = QDate::currentDate();
 
-  DateList dateList = agenda->dateList();
+  DateList dateList = mAgenda->dateList();
   DateList::ConstIterator it;
   int col = 0;
-  for(it = dateList.begin(); it != dateList.end(); ++it) {
-    if((*it) == currentDate)
+  for ( it = dateList.begin(); it != dateList.end(); ++it ) {
+    if ( (*it) == currentDate )
       return KOGlobals::self()->reverseLayout() ?
-             agenda->columns() - 1 - col : col;
-      ++col;
+             mAgenda->columns() - 1 - col : col;
+    ++col;
   }
 
   return -1;
 }
 
-void MarcusBains::updateLocation(bool recalculate)
+void MarcusBains::updateLocation( bool recalculate )
 {
   QTime tim = QTime::currentTime();
-  if((tim.hour() == 0) && (oldTime.hour()==23))
+  if ( (tim.hour() == 0) && (mOldTime.hour()==23) )
+    // We are on a new day
     recalculate = true;
+  int today = recalculate ? todayColumn() : mOldToday;
 
-  int mins = tim.hour()*60 + tim.minute();
-  int minutesPerCell = 24 * 60 / agenda->rows();
-  int y = int( mins * agenda->gridSpacingY() / minutesPerCell );
-  int today = recalculate ? todayColumn() : oldToday;
-  int x = int( agenda->gridSpacingX() * today );
-  bool disabled = !(KOPrefs::instance()->mMarcusBainsEnabled);
+  // Number of minutes since beginning of the day
+  int minutes = tim.hour()*60 + tim.minute();
+  int minutesPerCell = 24 * 60 / mAgenda->rows();
 
-  oldTime = tim;
-  oldToday = today;
+  mOldTime = tim;
+  mOldToday = today;
 
-  if(disabled || (today<0)) {
+  int y = int( minutes  *  mAgenda->gridSpacingY() / minutesPerCell );
+  int x = int( mAgenda->gridSpacingX() * today );
+
+  if ( mDisabled || (today<0) ) {
     hide();
     mTimeBox->hide();
     return;
@@ -146,27 +151,31 @@ void MarcusBains::updateLocation(bool recalculate)
     mTimeBox->show();
   }
 
-  if ( recalculate ) setFixedSize( int( agenda->gridSpacingX() ), 1 );
-  agenda->moveChild( this, x, y );
+  // Line
+  if ( recalculate )
+    setFixedSize( int( mAgenda->gridSpacingX() ), 1 );
+  mAgenda->moveChild( this, x, y );
   raise();
 
-  if(recalculate)
-    mTimeBox->setFont(KOPrefs::instance()->agendaMarcusBainsLineFont());
-
-  mTimeBox->setText(KGlobal::locale()->formatTime(tim, KOPrefs::instance()->mMarcusBainsShowSeconds));
+  // Label
+  mTimeBox->setText( KGlobal::locale()->formatTime( tim, mShowSeconds ) );
   mTimeBox->adjustSize();
-  if (y-mTimeBox->height()>=0) y-=mTimeBox->height(); else y++;
-  if (x-mTimeBox->width()+agenda->gridSpacingX() > 0)
-    x += int( agenda->gridSpacingX() - mTimeBox->width() - 1 );
-  else x++;
-  agenda->moveChild(mTimeBox,x,y);
+  if ( y-mTimeBox->height() >= 0 )
+    y -= mTimeBox->height();
+  else
+    y++;
+  if ( x-mTimeBox->width() + mAgenda->gridSpacingX() > 0 )
+    x += int( mAgenda->gridSpacingX() - mTimeBox->width() - 1 );
+  else
+    x++;
+  mAgenda->moveChild( mTimeBox, x, y);
   mTimeBox->raise();
-#ifdef __GNUC__
-#warning "kde4: porting ?"
-#endif
-  //mTimeBox->setAutoMask(true);
 
-  minutes->start( 1000 );
+  if ( mShowSeconds ) {
+    mTimer->start( 1000 );
+  } else {
+    mTimer->start( 1000 * (60 - tim.second()) );
+  }
 }
 
 

@@ -67,11 +67,13 @@ class MarcusBains : public QFrame {
 
   private:
     int todayColumn();
-    QTimer *minutes;
-    QLabel *mTimeBox;
-    KOAgenda *agenda;
-    QTime oldTime;
-    int oldToday;
+    QTimer* mTimer;
+    QLabel* mTimeBox;  // Label showing the current time
+    KOAgenda* mAgenda;
+    QTime mOldTime;
+    int mOldToday;
+    bool mShowSeconds;
+    bool mDisabled;
 };
 
 class KOAgenda : public Q3ScrollView
