@@ -25,6 +25,7 @@
 */
 
 #include "koeditorgeneraljournal.h"
+#include "koprefs.h"
 #include "koeditorgeneral.h"
 
 #include <kcal/journal.h>
@@ -157,7 +158,7 @@ void KOEditorGeneralJournal::writeJournal( Journal *journal )
   journal->setSummary( mSummaryEdit->text() );
   journal->setDescription( mDescriptionEdit->toPlainText() );
 
-  QDateTime tmpDT( mDateEdit->date(), QTime(0,0,0) );
+  KDateTime tmpDT( mDateEdit->date(), QTime(0,0,0), KOPrefs::instance()->timeSpec() );
   bool hasTime = mTimeCheckBox->isChecked();
   journal->setFloats( !hasTime );
   if ( hasTime ) {

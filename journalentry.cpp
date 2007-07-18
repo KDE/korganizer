@@ -359,7 +359,7 @@ void JournalEntry::writeJournalPrivate( Journal *j )
   j->setSummary( mTitleEdit->text() );
   bool hasTime = mTimeCheck->isChecked();
   QTime tm( mTimeEdit->getTime() );
-  j->setDtStart( QDateTime( mDate, hasTime?tm:QTime(0,0,0) ) );
+  j->setDtStart( KDateTime( mDate, hasTime?tm:QTime(0,0,0), KOPrefs::instance()->timeSpec() ) );
   j->setFloats( !hasTime );
   j->setDescription( mEditor->toPlainText() );
 }

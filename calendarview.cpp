@@ -723,7 +723,7 @@ void CalendarView::incidenceChanged( Incidence *oldIncidence,
 
         if ( journals.isEmpty() ) {
           journal = new Journal();
-          journal->setDtStart( QDateTime::currentDateTime() );
+          journal->setDtStart( KDateTime::currentDateTime( KOPrefs::instance()->timeSpec() ) );
 
           QString dateStr = KGlobal::locale()->formatDate( QDate::currentDate() );
           journal->setSummary( i18n("Journal of %1", dateStr ) );
