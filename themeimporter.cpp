@@ -483,11 +483,20 @@ void ThemeImporter::setColor( const QString &viewType,
                               const QString &key, const QString &value )
 {
   QString htmlColor = value.toUpper();
-  if ( htmlColor.count( QRegExp("^#[0-9A-F]{6}$") ) == 1 ) {
+  if ( ( htmlColor.count( QRegExp("^#[0-9A-F]{6}$") ) == 1 )
+       || ( htmlColor.count( QRegExp("^#[0-9A-F]{8}$") ) == 1 ) ) {
+      // #RRGGBB or #AARRGGBB, for consistency with Qt
     int r = htmlColor.mid(1,2).toInt(0, 16);
     int g = htmlColor.mid(3,2).toInt(0, 16);
     int b = htmlColor.mid(5,2).toInt(0, 16);
-    QColor color(r, g, b);
+    int a = 255;
+    if ( htmlColor.length() == 1+8 ) {
+      a = r;
+      r = g;
+      g = b;
+      b = htmlColor.mid(7,2).toInt(0, 16);
+    }
+    QColor color( r, g, b, a );
 
     foreach ( QString v, Theme::themableViews( viewType ) ) {
       if ( year == 0 && month == 0 && day == 0 ) {

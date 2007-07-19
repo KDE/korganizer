@@ -117,7 +117,11 @@ namespace KOrg {
 
       /**
         Set the color for @param key in view @param viewType for date @p year
-        @p month @p day to @param value
+        @p month @p day to @param value.
+
+        @p value should take either the "#RRGGBB" or the "#AARRGGBB" form,
+        with AA, RR, GG and BB representing each a group of two hexadecimal
+        digits.
        */
       void setColor( const QString &viewType,
                      const int year, const int month,
@@ -126,7 +130,7 @@ namespace KOrg {
 
       /**
       Set the font for @param key in view @param viewType for date @p year
-      @p month @p day to @param value
+      @p month @p day to @param value.
        */
       void setFont( const QString &viewType,
                     const int year, const int month,
@@ -138,7 +142,7 @@ namespace KOrg {
 
       /**
       Set the path for @param key in view @param viewType for date @p year
-      @p month @p day to @param value
+      @p month @p day to @param value.
        */
       void setPath( const QString &viewType,
                     const int year, const int month,
@@ -147,7 +151,7 @@ namespace KOrg {
 
       /**
         Set @param key in view @param viewType for date @p year
-        @p month @p day to @param value
+        @p month @p day to @param value.
        */
       void setString( const QString &viewType,
                     const int year, const int month,
