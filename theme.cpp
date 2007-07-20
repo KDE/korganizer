@@ -24,11 +24,13 @@
 #include "koprefs.h"
 
 #include <kdebug.h>
+#include <KIO/NetAccess>
 #include <KMimeType>
 #include <KStandardDirs>
 #include <KTempDir>
 #include <KZip>
 
+#include <QtCore/QDir>
 #include <QtCore/QFile>
 
 #include "theme.moc"
@@ -58,10 +60,8 @@ void Theme::useThemeFrom( const KUrl &url )
   }
 
   if ( mimeType->name() == "application/zip" ) {
-    QString tempPath = KStandardDirs::locateLocal( "tmp", "korganizer-theme" );
-
-    KTempDir *tempDir = new KTempDir( tempPath );
-
+    QDir *storageDir 
+        = new QDir( KStandardDirs::locateLocal( "appdata", "theme" ) );
     KZip *zip = new KZip( url.path() );
 
     if ( ! zip->open(QIODevice::ReadOnly) ) {
@@ -77,9 +77,10 @@ void Theme::useThemeFrom( const KUrl &url )
       return;
     }
 
-    dir->copyTo( tempDir->name() );
+    KIO::NetAccess::del( storageDir->path(), 0 );
+    dir->copyTo( storageDir->path() );
 
-    file = new QFile( tempDir->name() + "/theme.xml" );
+    file = new QFile( storageDir->path() + "/theme.xml" );
 
     if ( ! file->open(QFile::ReadOnly | QFile::Text) ) {
       //TODO: KMessageBox "invalid file"
@@ -88,7 +89,7 @@ void Theme::useThemeFrom( const KUrl &url )
     }
 
     KMimeType::Ptr mimeType;
-    mimeType = KMimeType::findByUrl( tempDir->name() + "/theme.xml" );
+    mimeType = KMimeType::findByUrl( storageDir->path() + "/theme.xml" );
     if ( mimeType->name() != "application/xml" ) {
       //TODO: KMessageBox "invalid file"
       kDebug() << "Theme: can't import: invalid file: (6) " << url.path() << endl;
