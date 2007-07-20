@@ -23,6 +23,7 @@
 
 #include <kurl.h>
 
+#include <QtCore/QDir>
 #include <QtCore/QObject>
 
 namespace KOrg {
@@ -50,6 +51,10 @@ namespace KOrg {
        */
       static void clearCurrentTheme();
 
+      /**
+        Return the directory where the current theme is stored.
+      */
+      static const QDir storageDir();
       /**
         Return all themable views corresponding to the @p viewType.
        */

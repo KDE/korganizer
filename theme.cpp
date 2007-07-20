@@ -27,10 +27,8 @@
 #include <KIO/NetAccess>
 #include <KMimeType>
 #include <KStandardDirs>
-#include <KTempDir>
 #include <KZip>
 
-#include <QtCore/QDir>
 #include <QtCore/QFile>
 
 #include "theme.moc"
@@ -52,16 +50,8 @@ void Theme::useThemeFrom( const KUrl &url )
 
   KMimeType::Ptr mimeType;
   mimeType = KMimeType::findByUrl( url );
-  if ( ( mimeType->name() != "application/xml" )
-       && ( mimeType->name() != "application/zip" ) ) {
-    //TODO: KMessageBox "invalid file"
-    kDebug() << "Theme: can't import: invalid file: (2) " << url.path() << endl;
-    return;
-  }
 
   if ( mimeType->name() == "application/zip" ) {
-    QDir *storageDir 
-        = new QDir( KStandardDirs::locateLocal( "appdata", "theme" ) );
     KZip *zip = new KZip( url.path() );
 
     if ( ! zip->open(QIODevice::ReadOnly) ) {
@@ -77,10 +67,13 @@ void Theme::useThemeFrom( const KUrl &url )
       return;
     }
 
-    KIO::NetAccess::del( storageDir->path(), 0 );
-    dir->copyTo( storageDir->path() );
+    if ( ! KIO::NetAccess::del( KUrl::fromPath( storageDir().absolutePath() ),
+                                0 ) ) {
+      kWarning() << "Theme: could not delete stale theme files" << endl;
+    }
+    dir->copyTo( storageDir().path() );
 
-    file = new QFile( storageDir->path() + "/theme.xml" );
+    file = new QFile( storageDir().path() + "/theme.xml" );
 
     if ( ! file->open(QFile::ReadOnly | QFile::Text) ) {
       //TODO: KMessageBox "invalid file"
@@ -89,13 +82,21 @@ void Theme::useThemeFrom( const KUrl &url )
     }
 
     KMimeType::Ptr mimeType;
-    mimeType = KMimeType::findByUrl( storageDir->path() + "/theme.xml" );
+    mimeType = KMimeType::findByUrl( storageDir().path() + "/theme.xml" );
     if ( mimeType->name() != "application/xml" ) {
       //TODO: KMessageBox "invalid file"
       kDebug() << "Theme: can't import: invalid file: (6) " << url.path() << endl;
       return;
     }
+  } else if ( mimeType->name() == "application/xml" ) {
+    KIO::NetAccess::file_copy( url.path(),
+                               storageDir().path() + "/", 0 );
+  } else {
+    //TODO: KMessageBox "invalid file"
+    kDebug() << "Theme: can't import: invalid file: (2) " << url.path() << endl;
+    return;
   }
+
 
   clearCurrentTheme();
   ThemeImporter reader( file );
@@ -103,6 +104,23 @@ void Theme::useThemeFrom( const KUrl &url )
 
 void Theme::saveThemeTo( const KUrl &url )
 {
+  KZip *zip = new KZip( url.path() );
+
+  if ( ! zip->open(QIODevice::WriteOnly) ) {
+      //TODO: KMessageBox "no write permission"
+    kDebug() << "Theme: can't export: no write permission: " << url.path() << endl;
+    return;
+  }
+  if ( ! zip->addLocalDirectory( storageDir().absolutePath(), QString() ) ) {
+      //TODO: KMessageBox "could not add theme files"
+    kDebug() << "Theme: can't export: could not add theme files to: " << url.path() << endl;
+    return;
+  }
+  if ( ! zip->close() ) {
+      //TODO: KMessageBox "could not write theme file"
+    kDebug() << "Theme: can't export: could not close theme file: " << url.path() << endl;
+    return;
+  }
 }
 
 void Theme::clearCurrentTheme()
@@ -110,6 +128,12 @@ void Theme::clearCurrentTheme()
   foreach ( QString viewType, Theme::themableViews() ) {
     KConfigGroup( KSharedConfig::openConfig(), "Theme/" + viewType + " view" ).deleteGroup();
   }
+}
+
+const QDir Theme::storageDir()
+{
+  QDir *dir = new QDir( KStandardDirs::locateLocal( "appdata", "theme" ) );
+  return *dir;
 }
 
 const QStringList Theme::themableViews( const QString &viewType )
