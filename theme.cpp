@@ -24,6 +24,10 @@
 #include "koprefs.h"
 
 #include <kdebug.h>
+#include <KMimeType>
+#include <KStandardDirs>
+#include <KTempDir>
+#include <KZip>
 
 #include <QtCore/QFile>
 
@@ -39,23 +43,61 @@ void Theme::useThemeFrom( const KUrl &url )
   QFile* file = new QFile( url.path() ); // FIXME: does it work with remote URLs?
   kDebug() << file->fileName() << endl;
   if ( ( ! file->open(QFile::ReadOnly | QFile::Text) ) || ( ! url.isLocalFile() ) ) {
-    //TODO: msg "invalid file"
-    kDebug() << "Theme: can't import: invalid file: " << url.path() << endl;
+    //TODO: KMessageBox "invalid file"
+    kDebug() << "Theme: can't import: invalid file: (1) " << url.path() << endl;
     return;
+  }
+
+  KMimeType::Ptr mimeType;
+  mimeType = KMimeType::findByUrl( url );
+  if ( ( mimeType->name() != "application/xml" )
+       && ( mimeType->name() != "application/zip" ) ) {
+    //TODO: KMessageBox "invalid file"
+    kDebug() << "Theme: can't import: invalid file: (2) " << url.path() << endl;
+    return;
+  }
+
+  if ( mimeType->name() == "application/zip" ) {
+    QString tempPath = KStandardDirs::locateLocal( "tmp", "korganizer-theme" );
+
+    KTempDir *tempDir = new KTempDir( tempPath );
+
+    KZip *zip = new KZip( url.path() );
+
+    if ( ! zip->open(QIODevice::ReadOnly) ) {
+      //TODO: KMessageBox "invalid file"
+      kDebug() << "Theme: can't import: invalid file: (3) " << url.path() << endl;
+      return;
+    }
+
+    const KArchiveDirectory *dir = zip->directory();
+    if ( dir == 0 ) {
+      //TODO: KMessageBox "invalid file"
+      kDebug() << "Theme: can't import: invalid file: (4) " << url.path() << endl;
+      return;
+    }
+
+    dir->copyTo( tempDir->name() );
+
+    file = new QFile( tempDir->name() + "/theme.xml" );
+
+    if ( ! file->open(QFile::ReadOnly | QFile::Text) ) {
+      //TODO: KMessageBox "invalid file"
+      kDebug() << "Theme: can't import: invalid file: (5) " << url.path() << endl;
+      return;
+    }
+
+    KMimeType::Ptr mimeType;
+    mimeType = KMimeType::findByUrl( tempDir->name() + "/theme.xml" );
+    if ( mimeType->name() != "application/xml" ) {
+      //TODO: KMessageBox "invalid file"
+      kDebug() << "Theme: can't import: invalid file: (6) " << url.path() << endl;
+      return;
+    }
   }
 
   clearCurrentTheme();
   ThemeImporter reader( file );
-/*  ThemeImporter reader();
-    if ( !reader.read( file ) ) {
-    // FIXME: why doesn't this work?
-    kWarning() << "Theme import: Parse error in file " << file->fileName() << " at line "
-        << reader.lineNumber() << ", column " << reader.columnNumber() << ":" <<endl;
-    kWarning() << reader.errorString() << endl;
-  } else {
-    kDebug() << "Theme: File loaded" << endl;
-  }*/
-
 }
 
 void Theme::saveThemeTo( const KUrl &url )
