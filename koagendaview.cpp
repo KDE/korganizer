@@ -996,7 +996,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
 
   // Start date of this incidence, calculate the offset from it (so recurring and
   // non-recurring items can be treated exactly the same, we never need to check
-  // for doesRecur(), because we only move the start day by the number of days the
+  // for recurs(), because we only move the start day by the number of days the
   // agenda item was really moved. Smart, isn't it?)
   QDate thisDate;
   if ( item->cellXLeft() < 0 ) {
@@ -1062,7 +1062,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
   // TODO_Recurrence: This does not belong here, and I'm not really sure
   // how it's supposed to work anyway.
 /* Recurrence *recur = incidence->recurrence();
-  if ( recur->doesRecur() && daysOffset != 0 ) {
+  if ( recur->recurs() && daysOffset != 0 ) {
     switch ( recur->recurrenceType() ) {
       case Recurrence::rYearlyPos: {
         int freq = recur->frequency();
@@ -1229,7 +1229,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
   // we are currently working on, which would lead to crashes
   // Only the actually moved agenda item is already at the correct position and mustn't be
   // recreated. All others have to!!!
-  if ( incidence->doesRecur() ) {
+  if ( incidence->recurs() ) {
     mUpdateItem = incidence;
     QTimer::singleShot( 0, this, SLOT( doUpdateItem() ) );
   }
@@ -1331,7 +1331,7 @@ void KOAgendaView::insertIncidence( Incidence *incidence, const QDate &curDate,
     mAllDayAgenda->insertAllDayItem( incidence, curDate, curCol, curCol );
   } else if ( incidence->floats() ) {
 // FIXME: This breaks with recurring multi-day events!
-    if ( incidence->recurrence()->doesRecur() ) {
+    if ( incidence->recurrence()->recurs() ) {
       mAllDayAgenda->insertAllDayItem( incidence, curDate, curCol, curCol );
     } else {
       // Insert multi-day events only on the first day, otherwise it will
@@ -1390,7 +1390,7 @@ void KOAgendaView::changeIncidenceDisplayAdded( Incidence *incidence )
   QDate l = mSelectedDates.last();
   QDate startDt = incidence->dtStart().date();
 
-  if ( incidence->doesRecur() ) {
+  if ( incidence->recurs() ) {
     DateList::ConstIterator dit;
     QDate curDate;
     for( dit = mSelectedDates.begin(); dit != mSelectedDates.end(); ++dit ) {

@@ -360,7 +360,7 @@ void KOEditorGeneralTodo::writeTodo(Todo *todo)
 
   // TODO: Don't use the due date for the recurrence, but the start date (cf. rfc 2445)
   KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
-  if ( todo->doesRecur() && !mStartDateModified ) {
+  if ( todo->recurs() && !mStartDateModified ) {
     todo->setDtDue( KDateTime(tmpDueDT, timeSpec) );
   } else {
       todo->setDtDue( KDateTime(tmpDueDT, timeSpec), true );

@@ -125,7 +125,7 @@ void KOWhatsNextView::updateView()
     Event::List::ConstIterator it;
     for( it = events.begin(); it != events.end(); ++it ) {
       Event *ev = *it;
-      if ( !ev->doesRecur() ){
+      if ( !ev->recurs() ){
         appendEvent(ev);
       } else {
         Recurrence *recur = ev->recurrence();

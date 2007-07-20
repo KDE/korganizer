@@ -99,7 +99,7 @@ void KOEventPopupMenu::showIncidencePopup( Incidence *incidence, const QDate &qd
       (*it)->setEnabled(!mCurrentIncidence->isReadOnly());
     }
     for ( it = mRecurrenceItems.begin(); it != mRecurrenceItems.end(); ++it ) {
-      (*it)->setVisible( mCurrentIncidence->doesRecur() );
+      (*it)->setVisible( mCurrentIncidence->recurs() );
     }
     popup(QCursor::pos());
   } else {

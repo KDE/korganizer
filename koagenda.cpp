@@ -1079,7 +1079,7 @@ void KOAgenda::endItemAction()
 
   if ( mItemMoved ) {
     bool modify = true;
-    if ( mActionItem->incidence()->doesRecur() ) {
+    if ( mActionItem->incidence()->recurs() ) {
       int res = KOMessageBox::fourBtnMsgBox( this, QMessageBox::Question,
           i18n("The item you try to change is a recurring item. Shall the changes "
                "be applied only to this single occurrence, only to the future items, "

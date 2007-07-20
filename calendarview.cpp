@@ -2062,7 +2062,7 @@ void CalendarView::deleteIncidence(Incidence *incidence, bool force)
     return;
   }
 
-  if ( incidence->doesRecur() ) {
+  if ( incidence->recurs() ) {
     QDate itemDate = mViewManager->currentSelectionDate();
     kDebug(5850) << "Recurrence-Date: " << itemDate.toString() << endl;
     int km = KMessageBox::Ok;

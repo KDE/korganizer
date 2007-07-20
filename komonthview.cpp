@@ -478,7 +478,7 @@ class MonthViewCell::CreateItemVisitor :
            ( mMultiDay == 0 && event->recursOn( mDate, timeSpec ) ) ) {
           text = "(-- " + event->summary();
           dt = event->dtStart();
-        } else if ( !event->doesRecur() && mDate == dtEnd ||
+        } else if ( !event->recurs() && mDate == dtEnd ||
                     // last day of a recurring multi-day event?
                   ( mMultiDay == length && event->recursOn( mDate.addDays( -length ), timeSpec ) ) ) {
           text = event->summary() + " --)";
@@ -533,7 +533,7 @@ class MonthViewCell::CreateItemVisitor :
       text += todo->summary();
 
       mItem = new MonthViewItem( todo, dt, text );
-      if ( todo->doesRecur() ) {
+      if ( todo->recurs() ) {
         mDate < todo->dtDue().date() ?
         mItem->setTodoDone( true ) : mItem->setTodo( true );
       }
@@ -983,7 +983,7 @@ void KOMonthView::changeIncidenceDisplayAdded( Incidence *incidence )
   bool floats = incidence->floats();
 
   KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
-  if ( incidence->doesRecur() ) {
+  if ( incidence->recurs() ) {
     for ( int i = 0; i < mCells.count(); ++i ) {
       if ( incidence->recursOn( mCells[i]->date(), timeSpec ) ) {
 

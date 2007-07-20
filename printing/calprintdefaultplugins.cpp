@@ -278,7 +278,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
     }
 
 
-    if ( (*it)->doesRecur() ) {
+    if ( (*it)->recurs() ) {
       QRect recurBox( timesBox.left()+padding(), h+padding(), timesBox.right()-padding(), lineHeight );
       // TODO: Convert the recurrence to a string and print it out!
       QString recurString( "TODO: Convert Repeat to String!" );

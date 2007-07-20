@@ -301,7 +301,7 @@ class KOEditorRecurrence : public QWidget
     /** Check if the input is valid. */
     bool validateInput();
 
-    bool doesRecur();
+    bool recurs();
 
   public slots:
     void setRecurrenceEnabled( bool );

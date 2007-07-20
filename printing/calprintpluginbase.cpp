@@ -1166,7 +1166,7 @@ void CalPrintPluginBase::drawMonth( QPainter &p, const QDate &dt, const QRect &b
         evit != events.end(); ++evit ) {
     Event *e = (*evit);
     if (!e) continue;
-    if ( e->doesRecur() ) {
+    if ( e->recurs() ) {
       if ( e->recursOn( start, timeSpec ) ) {
         // This occurrence has possibly started before the beginning of the
         // month, so obtain the start date before the beginning of the month

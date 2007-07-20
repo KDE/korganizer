@@ -105,7 +105,7 @@ bool KOListView::ListItemVisitor::visit( Event *e )
   else
     mItem->setSortKey(1,"0");
 
-  if ( e->doesRecur() ) {
+  if ( e->recurs() ) {
     static const QPixmap recurPxmp = KOGlobals::self()->smallIcon("recur");
     mItem->setPixmap(2,recurPxmp);
     mItem->setSortKey(2,"1");
@@ -147,7 +147,7 @@ bool KOListView::ListItemVisitor::visit(Todo *t)
   else
     mItem->setSortKey(1, "0");
 
-  if ( t->doesRecur() ) {
+  if ( t->recurs() ) {
     static const QPixmap recurPxmp = KOGlobals::self()->smallIcon("recur");
     mItem->setPixmap(2,recurPxmp);
     mItem->setSortKey(2, "1");

@@ -1235,7 +1235,7 @@ void KOTodoView::setNewPercentage( KOTodoViewItem *item, int percentage )
       todo->setPercentComplete( percentage );
     }
     item->construct();
-    if ( todo->doesRecur() && percentage == 100 )
+    if ( todo->recurs() && percentage == 100 )
       mChanger->changeIncidence( oldTodo, todo, KOGlobals::COMPLETION_MODIFIED_WITH_RECURRENCE );
     else
       mChanger->changeIncidence( oldTodo, todo, KOGlobals::COMPLETION_MODIFIED );
@@ -1297,7 +1297,7 @@ void KOTodoView::copyTodoToDate( const QDate &date )
     newTodo->setPercentComplete( 0 );
 
     // avoid forking
-    if ( newTodo->doesRecur() )
+    if ( newTodo->recurs() )
       newTodo->recurrence()->unsetRecurs();
 
     mChanger->addIncidence( newTodo, this );

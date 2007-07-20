@@ -1328,7 +1328,7 @@ void KOEditorRecurrence::readIncidence(Incidence *incidence)
 
   mRecurrenceRange->setDateTimes( incidence->recurrence()->startDateTime().toTimeSpec( timeSpec ).dateTime() );
 
-  if ( incidence->doesRecur() && r ) {
+  if ( incidence->recurs() && r ) {
     mRecurrenceRange->setDuration( r->duration() );
     if ( r->duration() == 0 ) mRecurrenceRange->setEndDate( r->endDate() );
   }
@@ -1340,7 +1340,7 @@ void KOEditorRecurrence::writeIncidence( Incidence *incidence )
 {
   if ( !mEnabledCheck->isChecked() || !isEnabled() )
   {
-    if ( incidence->doesRecur() )
+    if ( incidence->recurs() )
       incidence->recurrence()->unsetRecurs();
     return;
   }
@@ -1454,7 +1454,7 @@ void KOEditorRecurrence::showRecurrenceRangeDialog()
   }
 }
 
-bool KOEditorRecurrence::doesRecur()
+bool KOEditorRecurrence::recurs()
 {
   return mEnabledCheck->isChecked();
 }

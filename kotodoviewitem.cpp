@@ -77,7 +77,7 @@ int KOTodoViewItem::compare( Q3ListViewItem *it, int col, bool ascending ) const
     case ( KOTodoView::eSummaryColumn ):
       return mTodo->summary().localeAwareCompare( i->todo()->summary() );
     case ( KOTodoView::eRecurColumn ):
-      return ( mTodo->doesRecur() ? 1 : 0 ) - (i->todo()->doesRecur() ? 1 : 0 );
+      return ( mTodo->recurs() ? 1 : 0 ) - (i->todo()->recurs() ? 1 : 0 );
     case ( KOTodoView::ePriorityColumn ):
       c = mTodo->priority() - i->todo()->priority();
       if ( c )
@@ -115,7 +115,7 @@ void KOTodoViewItem::construct()
   setOn( mTodo->isCompleted() );
   setText( KOTodoView::eSummaryColumn, mTodo->summary());
   static const QPixmap recurPxmp = KOGlobals::self()->smallIcon("recur");
-  if ( mTodo->doesRecur() )
+  if ( mTodo->recurs() )
     setPixmap( KOTodoView::eRecurColumn, recurPxmp );
 
   if ( mTodo->priority()==0 ) {
