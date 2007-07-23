@@ -215,8 +215,8 @@ install(TARGETS korganizer  DESTINATION ${LIB_INSTALL_DIR})
 ########### install files ###############
 
 install( FILES korganizer.knsrc  DESTINATION  ${CONFIG_INSTALL_DIR})
-install( FILES korganizer.desktop  DESTINATION ${XDG_APPS_DIR})
-install( FILES korganizer-import.desktop  DESTINATION ${XDG_APPS_DIR})
+install( FILES korganizer.desktop  DESTINATION ${XDG_APPS_INSTALL_DIR})
+install( FILES korganizer-import.desktop  DESTINATION ${XDG_APPS_INSTALL_DIR})
 install( FILES korganizer.kcfg  DESTINATION ${KCFG_INSTALL_DIR})
 install( FILES korganizer_part.rc  DESTINATION ${DATA_INSTALL_DIR}/korganizer)
 install( FILES dbuscalendar.desktop  DESTINATION ${SERVICETYPES_INSTALL_DIR})
@@ -226,7 +226,7 @@ install( FILES korganizerui.rc  DESTINATION ${DATA_INSTALL_DIR}/korganizer)
 install( FILES korganizer.upd  DESTINATION ${KCONF_UPDATE_INSTALL_DIR})
 install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/ical2vcal DESTINATION ${BIN_INSTALL_DIR})
 
-install( FILES org.kde.Korganizer.Calendar.xml org.kde.korganizer.Korganizer.xml DESTINATION ${DBUS_INTERFACES_DIR})
+install( FILES org.kde.Korganizer.Calendar.xml org.kde.korganizer.Korganizer.xml DESTINATION ${DBUS_INTERFACES_INSTALL_DIR})
 install( FILES korganizer_export.h  DESTINATION ${INCLUDE_INSTALL_DIR}/korganizer)
 
 kde4_install_icons( ${ICON_INSTALL_DIR}   )
