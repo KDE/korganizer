@@ -220,7 +220,7 @@ void KDateNavigator::updateConfig()
   for( int i = 0; i < 7; i++ ) {
     day = weekstart + i <= 7 ? weekstart + i : ( weekstart + i ) % 7;
     QString dayName = KOGlobals::self()->calendarSystem()->weekDayName( day,
-                                                                        true );
+                      KCalendarSystem::ShortDayName );
     if ( KOPrefs::instance()->mCompactDialogs ) dayName = dayName.left( 1 );
     mHeadings[i]->setText( dayName );
   }

@@ -350,7 +350,7 @@ void MonthViewCell::setDate( const QDate &date )
   QString text;
   if ( KOGlobals::self()->calendarSystem()->day( date ) == 1 ) {
     text = i18nc("'Month day' for month view cells", "%1 %2",
-          KOGlobals::self()->calendarSystem()->monthName( date, true ) ,
+          KOGlobals::self()->calendarSystem()->monthName( date, KCalendarSystem::ShortName ) ,
           KOGlobals::self()->calendarSystem()->day(mDate) );
     QFontMetrics fm( mLabel->font() );
     mLabel->resize( mLabelSize + QSize( fm.width( text ), 0 ) );
@@ -879,7 +879,11 @@ void KOMonthView::updateDayLabels()
   for ( int i = 0; i < 7; i++ ) {
     currDay = i+mWeekStartDay;
     if ( currDay > 7 ) currDay -= 7;
-    mDayLabels[i]->setText( calsys->weekDayName( currDay, mShortDayLabels ) );
+    if ( mShortDayLabels ) {
+      mDayLabels[i]->setText( calsys->weekDayName( currDay, KCalendarSystem::ShortDayName ) );
+    } else {
+      mDayLabels[i]->setText( calsys->weekDayName( currDay, KCalendarSystem::LongDayName ) );
+    }
   }
 }
 

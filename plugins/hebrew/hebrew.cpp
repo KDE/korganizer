@@ -81,7 +81,7 @@ QString Hebrew::shortText(const QDate & date) const
                          hebrew_day_number, hebrew_year);
 
   KCalendarSystem *cal = KCalendarSystem::create("hebrew");
-  label_text = QString("%1 %2").arg(cal->dayString(date, false))
+  label_text = QString("%1 %2").arg(cal->dayString(date, KCalendarSystem::LongFormat))
                                 .arg(cal->monthName(date));
 
   foreach( QString holiday, holidays ) {

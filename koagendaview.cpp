@@ -771,7 +771,7 @@ void KOAgendaView::createDayLabels()
     int dW = calsys->dayOfWeek(date);
     QString veryLongStr = KGlobal::locale()->formatDate( date );
     QString longstr = i18nc( "short_weekday date (e.g. Mon 13)","%1 %2" ,
-          calsys->weekDayName( dW, true ) ,
+          calsys->weekDayName( dW, KCalendarSystem::ShortDayName ) ,
           calsys->day(date) );
     QString shortstr = QString::number(calsys->day(date));
 

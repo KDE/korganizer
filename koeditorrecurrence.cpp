@@ -190,7 +190,7 @@ RecurWeekly::RecurWeekly( QWidget *parent ) : RecurBase( parent )
     // index in CheckBox array(=day): label-1
     const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
     QString weekDayName = calSys->weekDayName(
-      (i + weekStart + 6)%7 + 1, true );
+      (i + weekStart + 6)%7 + 1, KCalendarSystem::ShortDayName );
     if ( KOPrefs::instance()->mCompactDialogs ) {
       weekDayName = weekDayName.left( 1 );
     }
