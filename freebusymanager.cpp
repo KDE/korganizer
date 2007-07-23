@@ -224,6 +224,12 @@ void FreeBusyManager::publishFreeBusy()
             "</qt>" ), i18n("No Free/Busy Upload URL") );
     return;
   }
+  if ( !targetURL.isValid() ) {
+     KMessageBox::sorry( 0,
+      i18n( "<qt>The target URL '%1' provided is invalid."
+            "</qt>" ).arg( targetURL.prettyURL() ), i18n("Invalid URL") );
+    return;
+  }
   targetURL.setUser( KOPrefs::instance()->mFreeBusyPublishUser );
   targetURL.setPass( KOPrefs::instance()->mFreeBusyPublishPassword );
 
@@ -325,7 +331,7 @@ void FreeBusyManager::slotUploadFreeBusyResult(KJob *_job)
     mUploadingFreeBusy = false;
 }
 
-bool FreeBusyManager::retrieveFreeBusy( const QString &email )
+bool FreeBusyManager::retrieveFreeBusy( const QString &email, bool forceDownload )
 {
   kDebug(5850) << "FreeBusyManager::retrieveFreeBusy(): " << email << endl;
   if ( email.isEmpty() ) return false;
@@ -344,7 +350,7 @@ bool FreeBusyManager::retrieveFreeBusy( const QString &email )
   }
 
   // Don't download free/busy if the user does not want it.
-  if( !KOPrefs::instance()->mFreeBusyRetrieveAuto )
+  if( !KOPrefs::instance()->mFreeBusyRetrieveAuto && !forceDownload)
     return false;
 
   mRetrieveQueue.append( email );

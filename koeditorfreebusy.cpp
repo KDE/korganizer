@@ -101,10 +101,10 @@ class FreeBusyItem : public KDGanttViewTaskItem
     void setUpdateTimerID( int id ) { mTimerID = id; }
     int updateTimerID() const { return mTimerID; }
 
-    void startDownload() {
+    void startDownload( bool forceDownload ) {
       mIsDownloading = true;
       FreeBusyManager *m = KOGroupware::instance()->freeBusyManager();
-      if ( !m->retrieveFreeBusy( attendee()->email() ) ) {
+      if ( !m->retrieveFreeBusy( attendee()->email(), forceDownload ) ) {
         mIsDownloading = false;
       }
     }
@@ -259,7 +259,7 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent )
     i18n("Reloads Free/Busy data for all attendees from "
          "the corresponding servers.") );
   controlLayout->addWidget( button );
-  connect( button, SIGNAL( clicked() ), SLOT( reload() ) );
+  connect( button, SIGNAL( clicked() ), SLOT( manualReload() ) );
 
   mGanttView = new KDGanttView( this, "mGanttView" );
   mGanttView->setWhatsThis(
@@ -316,7 +316,7 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent )
   connect( m, SIGNAL( freeBusyRetrieved( KCal::FreeBusy *, const QString & ) ),
            SLOT( slotInsertFreeBusy( KCal::FreeBusy *, const QString & ) ) );
 
-  connect( &mReloadTimer, SIGNAL( timeout() ), SLOT( reload() ) );
+  connect( &mReloadTimer, SIGNAL( timeout() ), SLOT( autoReload() ) );
   mReloadTimer.setSingleShot( true );
 }
 
@@ -444,7 +444,7 @@ void KOEditorFreeBusy::timerEvent( QTimerEvent *event )
   while ( item ) {
     if ( item->updateTimerID() == event->timerId() ) {
       item->setUpdateTimerID( 0 );
-      item->startDownload();
+      item->startDownload( mForceDownload );
       return;
     }
     item = static_cast<FreeBusyItem *>( item->nextSibling() );
@@ -675,13 +675,28 @@ void KOEditorFreeBusy::cancelReload()
   mReloadTimer.stop();
 }
 
+void KOEditorFreeBusy::manualReload()
+{
+  mForceDownload = true;
+  reload();
+}
+
+void KOEditorFreeBusy::autoReload()
+{
+  mForceDownload = false;
+  reload();
+}
+
 void KOEditorFreeBusy::reload()
 {
   kDebug(5850) << "KOEditorFreeBusy::reload()" << endl;
 
   FreeBusyItem *item = static_cast<FreeBusyItem *>( mGanttView->firstChild() );
   while ( item ) {
-    updateFreeBusyData( item );
+    if (  mForceDownload )
+      item->startDownload( mForceDownload );
+    else
+      updateFreeBusyData( item );
     item = static_cast<FreeBusyItem *>( item->nextSibling() );
   }
 }

@@ -97,7 +97,7 @@ class FreeBusyManager : public QObject, public KCal::FreeBusyCache
                      retrieved.
         @return true if a download is initiated, and false otherwise
     */
-    bool retrieveFreeBusy( const QString &email );
+    bool retrieveFreeBusy( const QString &email, bool forceDownload );
 
     void cancelRetrieval();
 
