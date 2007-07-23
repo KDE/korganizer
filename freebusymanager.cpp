@@ -227,7 +227,7 @@ void FreeBusyManager::publishFreeBusy()
   if ( !targetURL.isValid() ) {
      KMessageBox::sorry( 0,
       i18n( "<qt>The target URL '%1' provided is invalid."
-            "</qt>" ).arg( targetURL.prettyURL() ), i18n("Invalid URL") );
+            "</qt>" ).arg( targetURL.prettyUrl() ), i18n("Invalid URL") );
     return;
   }
   targetURL.setUser( KOPrefs::instance()->mFreeBusyPublishUser );
