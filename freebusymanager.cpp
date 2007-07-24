@@ -116,7 +116,8 @@ void FreeBusyDownloadJob::slotResult( KIO::Job *job )
 
 FreeBusyManager::FreeBusyManager( QObject *parent, const char *name )
   : QObject( parent, name ),
-    mCalendar( 0 ), mTimerID( 0 ), mUploadingFreeBusy( false )
+    mCalendar( 0 ), mTimerID( 0 ), mUploadingFreeBusy( false ),
+    mBrokenUrl( false )
 {
 }
 
@@ -206,6 +207,11 @@ void FreeBusyManager::timerEvent( QTimerEvent* )
   publishFreeBusy();
 }
 
+void FreeBusyManager::setBrokenUrl( bool isBroken )
+{
+  mBrokenUrl = isBroken;
+}
+
 /*!
   This method is called when the user has selected to publish its
   free/busy list or when the delay have passed.
@@ -225,10 +231,13 @@ void FreeBusyManager::publishFreeBusy()
             "</qt>" ), i18n("No Free/Busy Upload URL") );
     return;
   }
+  if ( mBrokenUrl ) // Url is invalid, don't try again
+    return;
   if ( !targetURL.isValid() ) {
      KMessageBox::sorry( 0,
       i18n( "<qt>The target URL '%1' provided is invalid."
             "</qt>" ).arg( targetURL.prettyURL() ), i18n("Invalid URL") );
+    mBrokenUrl = true;
     return;
   }
   targetURL.setUser( KOPrefs::instance()->mFreeBusyPublishUser );

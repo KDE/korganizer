@@ -120,6 +120,12 @@ class FreeBusyManager : public QObject, public KCal::FreeBusyCache
     */
     QString freeBusyDir();
 
+    /**
+      Change the broken Url status
+      mBrokenUrl is used to show the 'broken url popup' only once
+     */
+    void setBrokenUrl( bool isBroken );
+
   public slots:
     // When something changed in the calendar, we get this called
     void slotPerhapsUploadFB();
@@ -164,6 +170,8 @@ class FreeBusyManager : public QObject, public KCal::FreeBusyCache
     QDateTime mNextUploadTime;
     int mTimerID;
     bool mUploadingFreeBusy;
+    bool mBrokenUrl;
+
 };
 
 #endif
