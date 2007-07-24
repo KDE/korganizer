@@ -43,6 +43,7 @@
 #include "importdialog.h"
 #include "eventarchiver.h"
 #include "stdcalendar.h"
+#include "freebusymanager.h"
 
 #include <kcal/calendarlocal.h>
 #include <kcal/calendarresources.h>
@@ -1260,6 +1261,8 @@ void ActionManager::updateConfig()
 
   if ( mResourceView )
     mResourceView->updateView();
+
+  KOGroupware::instance()->freeBusyManager()->setBrokenUrl( false );
 }
 
 void ActionManager::setDestinationPolicy()
