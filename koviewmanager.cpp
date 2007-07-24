@@ -24,6 +24,7 @@
 */
 
 #include "koviewmanager.h"
+#include <qtabwidget.h>
 #include "calendarview.h"
 #include "datenavigator.h"
 #include "kotodoview.h"
@@ -32,9 +33,11 @@
 #include "kolistview.h"
 #include "kowhatsnextview.h"
 #include "kojournalview.h"
+#include "kotimelineview.h"
 #include "koprefs.h"
 #include "koglobals.h"
 #include "navigatorbar.h"
+#include "multiagendaview.h"
 
 #include <kconfig.h>
 #include <kglobal.h>
@@ -53,9 +56,12 @@ KOViewManager::KOViewManager( CalendarView *mainView ) :
   mWhatsNextView = 0;
   mTodoView = 0;
   mAgendaView = 0;
+  mAgendaSideBySideView = 0;
   mMonthView = 0;
   mListView = 0;
   mJournalView = 0;
+  mTimelineView = 0;
+  mAgendaViewTabs = 0;
 }
 
 KOViewManager::~KOViewManager()
@@ -78,6 +84,7 @@ void KOViewManager::readSettings(KConfig *config)
   else if (view == QLatin1String("List")) showListView();
   else if (view == QLatin1String("Journal")) showJournalView();
   else if (view == QLatin1String("Todo")) showTodoView();
+  else if (view == "Timeline") showTimelineView();
   else showAgendaView();
 }
 
@@ -91,6 +98,7 @@ void KOViewManager::writeSettings(KConfig *config)
   else if (mCurrentView == mListView) view = "List";
   else if (mCurrentView == mJournalView) view = "Journal";
   else if (mCurrentView == mTodoView) view = "Todo";
+  else if (mCurrentView == mTimelineView) view = "Timeline";
   else view = "Agenda";
 
   generalConfig.writeEntry("Current View",view);
@@ -275,9 +283,21 @@ void KOViewManager::showListView()
 
 void KOViewManager::showAgendaView()
 {
-  if (!mAgendaView) {
-    mAgendaView = new KOAgendaView(mMainView->calendar(), mMainView->viewStack() );;
-    mAgendaView->setObjectName( "KOViewManager::AgendaView" );
+  const bool showBoth = KOPrefs::instance()->agendaViewCalendarDisplay() == KOPrefs::AllCalendarViews;
+  const bool showMerged = showBoth || KOPrefs::instance()->agendaViewCalendarDisplay() == KOPrefs::CalendarsMerged;
+  const bool showSideBySide = showBoth || KOPrefs::instance()->agendaViewCalendarDisplay() == KOPrefs::CalendarsSideBySide;
+
+  QWidget *parent = mMainView->viewStack();
+  if ( !mAgendaViewTabs && showBoth ) {
+    mAgendaViewTabs = new QTabWidget( mMainView->viewStack() );
+    connect( mAgendaViewTabs, SIGNAL( currentChanged( QWidget* ) ),
+             this, SLOT( currentAgendaViewTabChanged( QWidget* ) ) );
+    parent = mAgendaViewTabs;
+  }
+
+  if ( !mAgendaView && showMerged ) {
+    mAgendaView = new KOAgendaView(mMainView->calendar(), parent);
+    mAgendaView->setObjectName("KOViewManager::AgendaView");
 
     addView(mAgendaView);
 
@@ -287,11 +307,35 @@ void KOViewManager::showAgendaView()
             mAgendaView, SLOT( setExpandedButton( bool ) ) );
 
     connect( mAgendaView,SIGNAL( zoomViewHorizontally(const QDate &, int )),
-      mMainView->dateNavigator(),SLOT( selectDates( const QDate &, int ) ) );
+             mMainView->dateNavigator(),SLOT( selectDates( const QDate &, int ) ) );
     mAgendaView->readSettings();
+    if ( mAgendaViewTabs )
+      mAgendaViewTabs->addTab( mAgendaView, i18n("Merged calendar") );
   }
 
-  showView(mAgendaView);
+  if ( !mAgendaSideBySideView && showSideBySide ) {
+    mAgendaSideBySideView =
+      new MultiAgendaView( mMainView->calendar(), parent );
+    mAgendaSideBySideView->setObjectName("KOViewManager::AgendaSideBySideView");
+    addView(mAgendaSideBySideView);
+
+/*    connect(mAgendaSideBySideView, SIGNAL( toggleExpand() ),
+            mMainView, SLOT( toggleExpand() ) );
+    connect(mMainView, SIGNAL( calendarViewExpanded( bool ) ),
+            mAgendaSideBySideView, SLOT( setExpandedButton( bool ) ) );
+
+    connect( mAgendaSideBySideView,SIGNAL( zoomViewHorizontally(const QDate &, int )),
+             mMainView->dateNavigator(),SLOT( selectDates( const QDate &, int ) ) );*/
+    if ( mAgendaViewTabs )
+      mAgendaViewTabs->addTab( mAgendaSideBySideView, i18n("Calendars Side by Side") );
+  }
+
+  if ( mAgendaViewTabs )
+    showView( static_cast<KOrg::BaseView*>( mAgendaViewTabs->currentPage() ) );
+  else if ( mAgendaView )
+    showView( mAgendaView );
+  else if ( mAgendaSideBySideView )
+    showView( mAgendaSideBySideView );
 }
 
 void KOViewManager::showDayView()
@@ -357,6 +401,18 @@ void KOViewManager::showJournalView()
   showView(mJournalView);
 }
 
+
+void KOViewManager::showTimelineView()
+{
+  if (!mTimelineView) {
+    mTimelineView = new KOTimelineView(mMainView->calendar(),mMainView->viewStack());
+    mTimelineView->setObjectName("KOViewManager::TimelineView");
+
+    addView(mTimelineView);
+  }
+  showView(mTimelineView);
+}
+
 void KOViewManager::showEventView()
 {
   if ( mLastEventView ) showView( mLastEventView );
@@ -385,4 +441,19 @@ QDate KOViewManager::currentSelectionDate()
 void KOViewManager::setDocumentId( const QString &id )
 {
   if (mTodoView) mTodoView->setDocumentId( id );
+}
+
+
+QWidget* KOViewManager::widgetForView( KOrg::BaseView* view ) const
+{
+  if ( (view == mAgendaView || view == mAgendaSideBySideView) && mAgendaViewTabs ) {
+    return mAgendaViewTabs;
+  }
+  return view;
+}
+
+
+void KOViewManager::currentAgendaViewTabChanged( QWidget* widget )
+{
+  showView( static_cast<KOrg::BaseView*>( widget ) );
 }

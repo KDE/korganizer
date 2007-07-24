@@ -336,8 +336,11 @@ void EventIndicator::enableColumn(int column, bool enable)
 ////////////////////////////////////////////////////////////////////////////
 
 KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
-  KOEventView ( cal, parent ), mExpandButton( 0 ), mAllowAgendaUpdate( true ),
-  mUpdateItem( 0 )
+  KOrg::AgendaView( cal, parent ),
+  mExpandButton( 0 ),
+  mAllowAgendaUpdate( true ),
+  mUpdateItem( 0 ),
+  mResource( 0 )
 {
   mSelectedDates.append(QDate::currentDate());
 
@@ -502,6 +505,8 @@ void KOAgendaView::connectAgenda( KOAgenda *agenda, QMenu *popup,
 
   connect( agenda, SIGNAL( newStartSelectSignal() ),
            otherAgenda, SLOT( clearSelection() ) );
+  connect( agenda, SIGNAL( newStartSelectSignal() ),
+           SIGNAL( timeSpanSelectionChanged()) );
 
   connect( agenda, SIGNAL( editIncidenceSignal( Incidence * ) ),
                    SIGNAL( editIncidenceSignal( Incidence * ) ) );
@@ -621,7 +626,7 @@ void KOAgendaView::zoomOutHorizontally( const QDate &date )
   }
 
   if ( abs( count ) >= 31 )
-    kDebug(5850) << "change to the mounth view?"<<endl;
+    kDebug(5850) << "change to the month view?"<<endl;
   else
     //We want to center the date
     emit zoomViewHorizontally( newBegin, count );
@@ -1303,6 +1308,9 @@ void KOAgendaView::showIncidences( const Incidence::List &incidences )
 void KOAgendaView::insertIncidence( Incidence *incidence, const QDate &curDate,
                                     int curCol )
 {
+  if ( !filterByResource( incidence ) )
+    return;
+
   // FIXME: Use a visitor here, or some other method to get rid of the dynamic_cast's
   Event *event = dynamic_cast<Event *>( incidence );
   Todo  *todo  = dynamic_cast<Todo  *>( incidence );
@@ -1592,8 +1600,7 @@ CalPrinter::PrintType KOAgendaView::printType()
 
 void KOAgendaView::updateEventIndicatorTop( int newY )
 {
-  int i;
-  for( i = 0; i < mMinY.size(); ++i ) {
+  for(int i = 0; i < mMinY.size(); ++i ) {
     mEventIndicatorTop->enableColumn( i, newY >= mMinY[i] );
   }
   mEventIndicatorTop->update();
@@ -1601,8 +1608,7 @@ void KOAgendaView::updateEventIndicatorTop( int newY )
 
 void KOAgendaView::updateEventIndicatorBottom( int newY )
 {
-  int i;
-  for( i = 0; i < mMaxY.size(); ++i ) {
+  for(int i = 0; i < mMaxY.size(); ++i ) {
     mEventIndicatorBottom->enableColumn( i, newY <= mMaxY[i] );
   }
   mEventIndicatorBottom->update();
@@ -1792,4 +1798,33 @@ void KOAgendaView::setIncidenceChanger( IncidenceChangerBase *changer )
   mChanger = changer;
   mAgenda->setIncidenceChanger( changer );
   mAllDayAgenda->setIncidenceChanger( changer );
+}
+
+void KOAgendaView::clearTimeSpanSelection()
+{
+  mAgenda->clearSelection();
+  mAllDayAgenda->clearSelection();
+  deleteSelectedDateTime();
+}
+
+void KOAgendaView::setResource(KCal::ResourceCalendar * res, const QString & subResource)
+{
+  mResource = res;
+  mSubResource = subResource;
+}
+
+bool KOAgendaView::filterByResource(Incidence * incidence)
+{
+  if ( !mResource )
+    return true;
+  CalendarResources *calRes = dynamic_cast<CalendarResources*>( calendar() );
+  if ( !calRes )
+    return true;
+  if ( calRes->resource( incidence ) != mResource )
+    return false;
+  if ( !mSubResource.isEmpty() ) {
+    if ( mResource->subresourceIdentifier( incidence ) != mSubResource )
+      return false;
+  }
+  return true;
 }

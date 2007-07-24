@@ -128,8 +128,11 @@ set(korganizer_LIB_SRCS
    komessagebox.cpp 
    koalternatelabel.cpp 
    koagendaview.cpp 
+   agendaview.cpp 
+   multiagendaview.cpp 
    koagenda.cpp 
    koagendaitem.cpp 
+   timelineitem.cpp 
    datenavigator.cpp 
    kdatenavigator.cpp 
    datenavigatorcontainer.cpp 
@@ -190,6 +193,7 @@ set(korganizer_LIB_SRCS
    exportwebdialog.cpp 
    kocorehelper.cpp 
    incidencechanger.cpp 
+   kotimelineview.cpp 
    templatemanagementdialog.cpp )
 
 

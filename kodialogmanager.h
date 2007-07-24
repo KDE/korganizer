@@ -45,7 +45,7 @@ class KOJournalEditor;
 class SearchDialog;
 class ArchiveDialog;
 class FilterEditDialog;
-class KOAgendaView;
+namespace KOrg { class AgendaView; }
 
 /**
   This class manages the dialogs used by the calendar view. It owns the objects
@@ -70,7 +70,7 @@ class KODialogManager : public QObject
 
     void updateSearchDialog();
 
-    void connectTypeAhead( KOEventEditor *editor, KOAgendaView *agenda );
+    void connectTypeAhead( KOEventEditor *editor, KOrg::AgendaView *agenda );
 
     static void errorSaveIncidence( QWidget *parent, KCal::Incidence *incidence );
 

@@ -212,6 +212,23 @@
       <default>true</default>
     </entry>
 
+    <entry type="Enum" name="Agenda View Calendar Display">
+      <label>Agenda View Calendar Display</label>
+      <choices>
+        <choice name="CalendarsMerged">
+            <label>Merge all calendars into one view</label>
+        </choice>
+        <choice name="CalendarsSideBySide">
+            <label>Show calendars side by side</label>
+        </choice>
+        <choice name="AllCalendarViews">
+            <label>Switch between views with tabs</label>
+        </choice>
+      </choices>
+      <default>CalendarsMerged</default>
+    </entry>
+
+
 
     <entry type="DateTime" name="DayBegins">
       <label>Day begins at</label>

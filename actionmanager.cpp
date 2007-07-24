@@ -361,6 +361,9 @@ void ActionManager::initActions()
   action  = new KAction(KIcon("journal"), i18n("&Journal"), this);
   mACollection->addAction("view_journal", action );
   connect(action, SIGNAL(triggered(bool) ), mCalendarView->viewManager(), SLOT( showJournalView() ));
+  action = new KAction( KIcon( "timeline" ), i18n("&Timeline View"), this );
+  mACollection->addAction("view_timeline", action );
+  connect(action, SIGNAL(triggered(bool) ), mCalendarView->viewManager(), SLOT( showTimelineView() ));
 
 
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~ FILTERS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

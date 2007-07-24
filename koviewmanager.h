@@ -27,6 +27,7 @@
 
 #include <QObject>
 #include <QDate>
+class QTabWidget;
 
 class KConfig;
 
@@ -37,9 +38,17 @@ class KOMonthView;
 class KOTodoView;
 class KOWhatsNextView;
 class KOJournalView;
+class KOTimelineView;
 
-namespace KOrg { class BaseView; }
-namespace KCal { class Incidence; }
+namespace KOrg {
+class BaseView;
+class MultiAgendaView;
+}
+
+namespace KCal {
+class Incidence;
+}
+
 
 /**
   This class manages the views of the calendar. It owns the objects and handles
@@ -91,6 +100,7 @@ class KOViewManager : public QObject
     void showNextXView();
     void showMonthView();
     void showTodoView();
+    void showTimelineView();
     void showJournalView();
 
     void showEventView();
@@ -101,22 +111,25 @@ class KOViewManager : public QObject
     void zoomOutHorizontally();
     void zoomInVertically();
     void zoomOutVertically();
-
+  private slots:
+    void currentAgendaViewTabChanged( QWidget* );
   private:
+    QWidget* widgetForView( KOrg::BaseView* ) const;
     CalendarView *mMainView;
 
     KOAgendaView    *mAgendaView;
+    KOrg::MultiAgendaView *mAgendaSideBySideView;
     KOListView      *mListView;
     KOMonthView     *mMonthView;
     KOTodoView      *mTodoView;
     KOWhatsNextView *mWhatsNextView;
     KOJournalView   *mJournalView;
+    KOTimelineView  *mTimelineView;
 
     KOrg::BaseView *mCurrentView;
 
     KOrg::BaseView *mLastEventView;
-
-    int mAgendaViewMode;
+    QTabWidget *mAgendaViewTabs;
 };
 
 #endif

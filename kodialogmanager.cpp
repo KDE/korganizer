@@ -239,7 +239,7 @@ KOEventEditor *KODialogManager::getEventEditor()
 }
 
 void KODialogManager::connectTypeAhead( KOEventEditor *editor,
-                                        KOAgendaView *agenda )
+                                        KOrg::AgendaView *agenda )
 {
   if ( editor && agenda ) {
     agenda->setTypeAheadReceiver( editor->typeAheadReceiver() );

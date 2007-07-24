@@ -508,13 +508,20 @@ class KOPrefsDialogViews : public KPrefsModule
 
       agendaLayout->addWidget( addWidBool(
         KOPrefs::instance()->selectionStartsEditorItem() )->checkBox() );
-
       agendaLayout->addWidget( addWidBool(
         KOPrefs::instance()->agendaViewUsesResourceColorItem() )->checkBox() );
 
 
+      agendaLayout->addWidget( addWidCombo(
+        KOPrefs::instance()->agendaViewCalendarDisplayItem() )->comboBox() );
+
+
+      /*** Month and Todo view groups side by side, to save space. ***/
+      QHBoxLayout *hbox = new QHBoxLayout();
+      topLayout->addLayout( hbox );
+
       QGroupBox *monthGroup = new QGroupBox( i18n("Month View"), topFrame );
-      topLayout->addWidget( monthGroup );
+      hbox->addWidget( monthGroup );
 
       QBoxLayout *monthLayout = new QVBoxLayout( monthGroup );
 
@@ -533,7 +540,7 @@ class KOPrefsDialogViews : public KPrefsModule
 
 
       QGroupBox *todoGroup = new QGroupBox( i18n("To-do View"), topFrame );
-      topLayout->addWidget( todoGroup );
+      hbox->addWidget( todoGroup );
 
       QBoxLayout *todoLayout = new QVBoxLayout( todoGroup );
 

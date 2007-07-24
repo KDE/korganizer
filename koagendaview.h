@@ -25,7 +25,6 @@
 #ifndef KOAGENDAVIEW_H
 #define KOAGENDAVIEW_H
 
-#include "koeventview.h"
 #include "calprinter.h"
 
 #include <kvbox.h>
@@ -41,12 +40,18 @@
 #include <QSplitter>
 #include <QVector>
 
+#include "agendaview.h"
+
 class KHBox;
 class QPushButton;
 
 class KOAgenda;
 class KOAgendaItem;
 class KConfig;
+
+namespace KCal {
+  class ResourceCalendar;
+}
 
 namespace KOrg {
 class IncidenceChangerBase;
@@ -120,10 +125,10 @@ class EventIndicator : public QFrame
 };
 
 /**
-  KOAgendaView is the agenda-like view used to display events in an one or
+  KOAgendaView is the agenda-like view used to display events in a single one or
   multi-day view.
 */
-class KOAgendaView : public KOEventView
+class KOAgendaView : public KOrg::AgendaView
 {
   Q_OBJECT
   public:
@@ -163,6 +168,9 @@ class KOAgendaView : public KOEventView
 
     void setTypeAheadReceiver( QObject * );
 
+    /** Show only incidences from the given resource. */
+    void setResource( KCal::ResourceCalendar *res, const QString &subResource = QString::null );
+
   public slots:
     virtual void updateView();
     virtual void updateConfig();
@@ -201,9 +209,13 @@ class KOAgendaView : public KOEventView
 
     void zoomView( const int delta, const QPoint &pos,
       const Qt::Orientation orient=Qt::Horizontal );
+
+    void clearTimeSpanSelection();
   signals:
     void toggleExpand();
     void zoomViewHorizontally(const QDate &, int count );
+
+    void timeSpanSelectionChanged();
 
   protected:
     /** Fill agenda beginning with date startDate */
@@ -212,7 +224,7 @@ class KOAgendaView : public KOEventView
     /** Fill agenda using the current set value for the start date */
     void fillAgenda();
 
-    void connectAgenda( KOAgenda*agenda, QMenu*popup, KOAgenda* otherAgenda );
+    void connectAgenda( KOAgenda *agenda, QMenu *popup, KOAgenda *otherAgenda );
 
     /** Create labels for the selected dates. */
     void createDayLabels();
@@ -244,6 +256,9 @@ class KOAgendaView : public KOEventView
     void newTimeSpanSelected( const QPoint &start, const QPoint &end );
     /** Updates data for selected timespan for all day event*/
     void newTimeSpanSelectedAllDay( const QPoint &start, const QPoint &end );
+
+  private:
+    bool filterByResource( Incidence *incidence );
 
   private:
     // view widgets
@@ -284,6 +299,9 @@ class KOAgendaView : public KOEventView
     bool mAllowAgendaUpdate;
 
     Incidence *mUpdateItem;
+
+    KCal::ResourceCalendar *mResource;
+    QString mSubResource;
 };
 
 #endif
