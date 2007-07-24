@@ -35,6 +35,7 @@
 #include <kio/copyjob.h>
 #include <kio/jobclasses.h>
 #include <kio/jobuidelegate.h>
+#include <kio/netaccess.h>
 #include <klocale.h>
 #include <kdebug.h>
 #include <kdialog.h>
@@ -53,6 +54,7 @@
 #include <ktemporaryfile.h>
 #include <kurlrequester.h>
 
+#include <QCheckBox>
 #include <QCursor>
 #include <QFile>
 #include <QFileInfo>
@@ -122,6 +124,10 @@ class AttachmentIconItem : public K3IconViewItem
       mAttachment->setLabel( description );
       readAttachment();
     }
+    bool isBinary() const
+    {
+      return mAttachment->isBinary();
+    }
     const bool isLocal() const
     {
       return mAttachment->isLocal();
@@ -152,10 +158,14 @@ class AttachmentIconItem : public K3IconViewItem
 
     void readAttachment()
     {
-      if ( mAttachment->label().isEmpty() )
-        setText( mAttachment->uri() );
-      else
+      if ( mAttachment->label().isEmpty() ) {
+        if ( mAttachment->isUri() )
+          setText( mAttachment->uri() );
+        else
+          setText( i18n( "[Binary data]" ) );
+      } else {
         setText( mAttachment->label() );
+      }
 
       setRenameEnabled( true );
 
@@ -222,31 +232,36 @@ AttachmentEditDialog::AttachmentEditDialog( AttachmentIconItem *item,
   grid->addWidget( mTypeLabel, 2, 2 );
   mMimeType = KMimeType::mimeType( item->mimeType() );
 
+  mInline = new QCheckBox( i18n("Store attachment inline"), page );
+  grid->addWidget( mInline, 3, 0, 1, 3 );
+  mInline->setChecked( item->isBinary() );
+
   if ( item->attachment()->isUri() && !item->isLocal() ) {
     label = new QLabel( i18n( "Location:" ), page );
-    grid->addWidget( label, 3, 0 );
+    grid->addWidget( label, 4, 0 );
     mURLRequester = new KUrlRequester( item->uri(), page );
-    grid->addWidget( mURLRequester, 3, 2 );
+    grid->addWidget( mURLRequester, 4, 2 );
     connect( mURLRequester, SIGNAL( urlSelected( const KUrl & ) ),
               SLOT( urlChanged( const KUrl & ) ) );
   } else {
     if ( item->isLocal() ) {
-      grid->addWidget( new QLabel( i18n( "Size:" ), page ), 3, 0 );
+      grid->addWidget( new QLabel( i18n( "Size:" ), page ), 4, 0 );
       uint size = QFileInfo( KUrl( item->uri() ).path() ).size();
       grid->addWidget( new QLabel( QString::fromLatin1( "%1 (%2)" )
                          .arg( KIO::convertSize( size ) )
                          .arg( KGlobal::locale()->formatNumber(
-                                                    size, 0 ) ), page ), 3, 2 );
+                                                    size, 0 ) ), page ), 4, 2 );
     } else {
-      grid->addWidget( new QLabel(
-              i18n( "Binary attachment, not supported." ), page ), 3, 0, 1, 3 );
+//       grid->addWidget( new QLabel(
+//               i18n( "Binary attachment, not supported." ), page ), 4, 0, 1, 3 );
+//     }
+// #if 0
+      grid->addWidget( new QLabel( QString::fromLatin1( "%1 (%2)" )
+                          .arg( KIO::convertSize( item->attachment()->size() ) )
+                          .arg( KGlobal::locale()->formatNumber(
+                                item->attachment()->size(), 0 ) ), page ), 4, 2 );
+// #endif
     }
-#if 0
-    grid->addWidget( new QLabel( QString::fromLatin1( "%1 (%2)" )
-                         .arg( KIO::convertSize( item->attachment()->size() ) )
-                         .arg( KGlobal::locale()->formatNumber(
-                              item->attachment()->size(), 0 ) ), page ), 3, 2 );
-#endif
   }
   vbl->addStretch( 10 );
   connect(this,SIGNAL(applyClicked()), this, SLOT(slotApply()));
@@ -256,8 +271,22 @@ void AttachmentEditDialog::slotApply()
 {
   mItem->setLabel( mLabelEdit->text() );
   mItem->setMimeType( mMimeType->name() );
-  if ( mURLRequester )
-    mItem->setUri( mURLRequester->url().path() );
+  if ( mURLRequester ) {
+    if ( mInline->isChecked() ) {
+      QString tmpFile;
+      if ( KIO::NetAccess::download( mURLRequester->url(), tmpFile, this ) ) {
+        QFile f( tmpFile );
+        if ( !f.open( QIODevice::ReadOnly ) )
+          return;
+        QByteArray data = f.readAll();
+        f.close();
+        mItem->setData( data );
+      }
+      KIO::NetAccess::removeTempFile( tmpFile );
+    } else {
+      mItem->setUri( mURLRequester->url().path() );
+    }
+  }
 }
 
 void AttachmentEditDialog::accept()
@@ -598,21 +627,18 @@ void KOEditorAttachments::showAttachment( Q3IconViewItem *item )
   if ( att->isUri() ) {
     emit openURL( att->uri() );
   } else {
-    KMessageBox::sorry( this, i18n( "Binary attachment, not supported." ) );
-#if 0
     // read-only not to give the idea that it could be written to
     KTemporaryFile file;
     file.setSuffix(QString( KMimeType::mimeType( att->mimeType()
                            )->patterns().first() )
                            .replace( "*", "" ));
-    file.setAutoRemove(false);
+    file.setAutoRemove( false );
     file.open();
     file.setPermissions(QFile::ReadUser);
-    QDataStream str ( &file );
-    str << att->decodedData();
+    file.write( QByteArray::fromBase64( att->data() )  );
     file.flush();
-    KRun::runURL( file.fileName(), att->mimeType(), true );
-#endif
+    KRun::runUrl( KUrl(file.fileName()), att->mimeType(), 0, true );
+    file.close();
   }
 }
 

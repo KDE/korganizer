@@ -49,6 +49,7 @@ class QLineEdit;
 class K3IconView;
 class KMenu;
 class KUrlRequester;
+class QCheckBox;
 
 namespace KIO {
 class Job;
@@ -73,6 +74,7 @@ class AttachmentEditDialog : public KDialog
     QLabel *mTypeLabel, *mIcon;
     QLineEdit *mLabelEdit;
     KUrlRequester *mURLRequester;
+    QCheckBox *mInline;
 };
 
 class KOEditorAttachments : public QWidget
