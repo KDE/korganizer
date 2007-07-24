@@ -45,7 +45,7 @@ class AttachmentIconItem;
 class Q3IconDragItem;
 class Q3IconViewItem;
 class QLabel;
-class QLineEdit;
+class KLineEdit;
 class K3IconView;
 class KMenu;
 class KUrlRequester;
@@ -72,7 +72,7 @@ class AttachmentEditDialog : public KDialog
     KMimeType::Ptr mMimeType;
     AttachmentIconItem *mItem;
     QLabel *mTypeLabel, *mIcon;
-    QLineEdit *mLabelEdit;
+    KLineEdit *mLabelEdit;
     KUrlRequester *mURLRequester;
     QCheckBox *mInline;
 };

@@ -60,7 +60,6 @@
 #include <QFileInfo>
 #include <QLabel>
 #include <QLayout>
-#include <QLineEdit>
 #include <QPushButton>
 #include <QRegExp>
 #include <QString>
@@ -219,6 +218,7 @@ AttachmentEditDialog::AttachmentEditDialog( AttachmentIconItem *item,
   mLabelEdit = new KLineEdit( page );
   mLabelEdit->setText( item->label().isEmpty() ? item->uri() :
                                                   item->label() );
+  mLabelEdit->setClickMessage( i18n( "Attachment name" ) );
   grid->addWidget( mLabelEdit, 0, 2 );
 
   KSeparator* sep = new KSeparator( Qt::Horizontal, page );
@@ -252,15 +252,10 @@ AttachmentEditDialog::AttachmentEditDialog( AttachmentIconItem *item,
                          .arg( KGlobal::locale()->formatNumber(
                                                     size, 0 ) ), page ), 4, 2 );
     } else {
-//       grid->addWidget( new QLabel(
-//               i18n( "Binary attachment, not supported." ), page ), 4, 0, 1, 3 );
-//     }
-// #if 0
       grid->addWidget( new QLabel( QString::fromLatin1( "%1 (%2)" )
                           .arg( KIO::convertSize( item->attachment()->size() ) )
                           .arg( KGlobal::locale()->formatNumber(
                                 item->attachment()->size(), 0 ) ), page ), 4, 2 );
-// #endif
     }
   }
   vbl->addStretch( 10 );
@@ -269,7 +264,12 @@ AttachmentEditDialog::AttachmentEditDialog( AttachmentIconItem *item,
 
 void AttachmentEditDialog::slotApply()
 {
-  mItem->setLabel( mLabelEdit->text() );
+  if ( mLabelEdit->text().isEmpty() )
+    mItem->setLabel( mURLRequester->url().fileName() );
+  else
+    mItem->setLabel( mLabelEdit->text() );
+  if ( mItem->label().isEmpty() )
+    mItem->setLabel( i18n( "New attachment" ) );
   mItem->setMimeType( mMimeType->name() );
   if ( mURLRequester ) {
     if ( mInline->isChecked() ) {
@@ -647,7 +647,6 @@ void KOEditorAttachments::showAttachment( Q3IconViewItem *item )
 void KOEditorAttachments::slotAdd()
 {
   AttachmentIconItem *item = new AttachmentIconItem( 0, mAttachments );
-  item->setLabel( i18n( "New attachment" ) );
   AttachmentEditDialog *dlg = new AttachmentEditDialog( item, mAttachments );
 
   dlg->setCaption( i18n( "Add Attachment" ) );
