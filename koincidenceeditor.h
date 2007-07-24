@@ -77,7 +77,9 @@ class KOIncidenceEditor : public KPageDialog
     /**
       Adds attachments to the editor
     */
-    void addAttachments( const QStringList &attachments );
+    void addAttachments( const QStringList &attachments,
+                         const QStringList& mimeTypes = QStringList(),
+                         bool inlineAttachment = false );
     /**
       Adds attendees to the editor
     */

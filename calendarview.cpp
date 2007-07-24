@@ -1001,13 +1001,14 @@ void CalendarView::newEvent( const QDateTime &startDt, const QDateTime &endDt,
 }
 
 void CalendarView::newEvent( const QString &summary, const QString &description,
-                             const QStringList &attachments, const QStringList &attendees )
+                             const QStringList &attachments, const QStringList &attendees,
+                             const QStringList &attachmentMimetypes, bool inlineAttachment )
 {
   KOEventEditor *eventEditor = newEventEditor();
   eventEditor->setTexts( summary, description );
   // if attach or attendee list is empty, these methods don't do anything, so
   // it's save to call them in every case
-  eventEditor->addAttachments( attachments );
+  eventEditor->addAttachments( attachments, attachmentMimetypes, inlineAttachment );
   eventEditor->addAttendees( attendees );
   eventEditor->show();
 }

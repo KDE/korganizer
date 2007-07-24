@@ -10,7 +10,7 @@
     </method>
     <method name="goDate">
       <arg name="date" type="s" direction="in"/>
-    </method>      
+    </method>
     <method name="openEventEditor">
       <arg name="text" type="s" direction="in"/>
     </method>
@@ -18,6 +18,14 @@
       <arg name="summary" type="s" direction="in"/>
       <arg name="description" type="s" direction="in"/>
       <arg name="attachments" type="as" direction="in"/>
+    </method>
+    <method name="openEventEditor">
+      <arg name="summary" type="s" direction="in"/>
+      <arg name="description" type="s" direction="in"/>
+      <arg name="attachment" type="s" direction="in"/>
+      <arg name="attendees" type="as" direction="in"/>
+      <arg name="attachmentMimetype" type="s" direction="in"/>
+      <arg name="inlineAttachment" type="b" direction="in"/>
     </method>
     <method name="openEventEditor">
       <arg name="summary" type="s" direction="in"/>

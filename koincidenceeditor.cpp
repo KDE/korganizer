@@ -390,11 +390,32 @@ void KOIncidenceEditor::openURL( const KUrl &url )
   UriHandler::process( uri );
 }
 
-void KOIncidenceEditor::addAttachments( const QStringList &attachments )
+void KOIncidenceEditor::addAttachments( const QStringList &attachments,
+                                        const QStringList &mimeTypes,
+                                        bool inlineAttachments )
 {
   QStringList::ConstIterator it;
-  for ( it = attachments.begin(); it != attachments.end(); ++it ) {
-    mAttachments->addAttachment( *it );
+  int i = 0;
+  for ( it = attachments.begin(); it != attachments.end(); ++it, ++i ) {
+    QString mimeType;
+    if ( mimeTypes.count() > i )
+      mimeType = mimeTypes[ i ];
+    if ( !inlineAttachments ) {
+      mAttachments->addAttachment( *it, mimeType, *it );
+    } else {
+      QString tmpFile;
+      if ( KIO::NetAccess::download( *it, tmpFile, this ) ) {
+        QFile f( tmpFile );
+        if ( !f.open( QFile::ReadOnly ) )
+          return;
+        QByteArray data = f.readAll();
+        f.close();
+        if ( mimeType.isEmpty() )
+          mimeType = KIO::NetAccess::mimetype( *it, this );
+        mAttachments->addAttachment( data.toBase64(), mimeType, f.fileName() );
+        KIO::NetAccess::removeTempFile( tmpFile );
+      }
+    }
   }
 }
 

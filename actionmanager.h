@@ -192,6 +192,12 @@ class KORGANIZER_EXPORT ActionManager : public QObject
                           const QString& description,
                           const QStringList& attachments,
                           const QStringList& attendees );
+    void openEventEditor( const QString& summary,
+                          const QString& description,
+                          const QString& attachment,
+                          const QStringList& attendees,
+                          const QString& attachmentMimetype,
+                          bool inlineAttachment );
 
     void openTodoEditor( const QString& );
     void openTodoEditor( const QString& summary,
