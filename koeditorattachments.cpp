@@ -140,10 +140,14 @@ class AttachmentIconItem : public K3IconViewItem
                          bool local = false )
     {
       QString iconStr = mimeType->iconName( uri );
+      QStringList overlays;
+      if ( !uri.isNull() && !local ) {
+        overlays << "link";
+      }
+
       return KIconLoader::global()->loadIcon( iconStr, K3Icon::Desktop, 0,
-                                              K3Icon::DefaultState | (
-                                                ( uri.isNull() || local ) ? 0 :
-                                                  K3Icon::LinkOverlay) );
+                                              K3Icon::DefaultState,
+                                              overlays  );
     }
 
     void readAttachment()

@@ -88,7 +88,7 @@ void KOWhatsNextView::updateView()
 {
   KIconLoader kil("korganizer");
   QString *ipath = new QString();
-  kil.loadIcon("korganizer",K3Icon::NoGroup,32,K3Icon::DefaultState,ipath);
+  kil.loadIcon("korganizer",K3Icon::NoGroup,32,K3Icon::DefaultState,QStringList(),ipath);
 
   mText = "<table width=\"100%\">\n";
   mText += "<tr bgcolor=\"#3679AD\"><td><h1>";
@@ -116,7 +116,7 @@ void KOWhatsNextView::updateView()
 
   if (events.count() > 0) {
     mText += "<p></p>";
-    kil.loadIcon("appointment",K3Icon::NoGroup,22,K3Icon::DefaultState,ipath);
+    kil.loadIcon("appointment",K3Icon::NoGroup,22,K3Icon::DefaultState,QStringList(),ipath);
     mText += "<h2><img src=\"";
     mText += *ipath;
     mText += "\">";
@@ -156,7 +156,7 @@ void KOWhatsNextView::updateView()
   mTodos.clear();
   Todo::List todos = calendar()->todos( TodoSortDueDate, SortDirectionAscending );
   if ( todos.count() > 0 ) {
-    kil.loadIcon("todo",K3Icon::NoGroup,22,K3Icon::DefaultState,ipath);
+    kil.loadIcon("todo",K3Icon::NoGroup,22,K3Icon::DefaultState,QStringList(),ipath);
     mText += "<h2><img src=\"";
     mText += *ipath;
     mText += "\">";
@@ -195,7 +195,7 @@ void KOWhatsNextView::updateView()
       if (me->status()==Attendee::NeedsAction && me->RSVP()) {
         if (replies == 0) {
           mText += "<p></p>";
-          kil.loadIcon("reply",K3Icon::NoGroup,22,K3Icon::DefaultState,ipath);
+          kil.loadIcon("reply",K3Icon::NoGroup,22,K3Icon::DefaultState,QStringList(),ipath);
           mText += "<h2><img src=\"";
           mText += *ipath;
           mText += "\">";
@@ -216,7 +216,7 @@ void KOWhatsNextView::updateView()
       if (me->status()==Attendee::NeedsAction && me->RSVP()) {
         if (replies == 0) {
           mText += "<p></p>";
-          kil.loadIcon("reply",K3Icon::NoGroup,22,K3Icon::DefaultState,ipath);
+          kil.loadIcon("reply",K3Icon::NoGroup,22,K3Icon::DefaultState,QStringList(),ipath);
           mText += "<h2><img src=\"";
           mText += *ipath;
           mText += "\">";
