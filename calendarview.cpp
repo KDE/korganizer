@@ -1014,16 +1014,17 @@ void CalendarView::newEvent( const QString &summary, const QString &description,
 }
 
 void CalendarView::newTodo( const QString &summary, const QString &description,
-                            const QStringList &attachments, const QStringList &attendees )
+                            const QStringList &attachments, const QStringList &attendees,
+                            const QStringList &attachmentMimetypes, bool inlineAttachment )
 {
   kDebug(5850) << k_funcinfo << endl;
   KOTodoEditor *todoEditor = mDialogManager->getTodoEditor();
   connectIncidenceEditor( todoEditor );
   todoEditor->newTodo();
-  todoEditor->setTexts( summary, description );
-  todoEditor->addAttachments( attachments );
-  todoEditor->addAttendees( attendees );
   todoEditor->setDates( QDateTime(), false );
+  todoEditor->setTexts( summary, description );
+  todoEditor->addAttachments( attachments, attachmentMimetypes, inlineAttachment );
+  todoEditor->addAttendees( attendees );
   todoEditor->show();
 }
 

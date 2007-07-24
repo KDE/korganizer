@@ -357,7 +357,8 @@ class KORGANIZER_EXPORT CalendarView : public KOrg::CalendarViewBase, public Cal
     void newSubTodo( Todo * );
 
     void newTodo( const QString &summary, const QString &description = QString(),
-                  const QStringList &attachments = QStringList(), const QStringList &attendees = QStringList() );
+                  const QStringList &attachments = QStringList(), const QStringList &attendees = QStringList(),
+                  const QStringList &attachmentMimetypes = QStringList(), bool inlineAttachment = false );
 
     void newJournal();
     void newJournal( const QDate &date );

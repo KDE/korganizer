@@ -1629,6 +1629,17 @@ void ActionManager::openTodoEditor( const QString& summary,
   mCalendarView->newTodo( summary, description, attachments, attendees );
 }
 
+void ActionManager::openTodoEditor(const QString & summary,
+                                   const QString & description,
+                                   const QString & attachment,
+                                   const QStringList & attendees,
+                                   const QString & attachmentMimetype,
+                                   bool inlineAttachment)
+{
+  mCalendarView->newTodo( summary, description, QStringList(attachment),
+                          attendees, QStringList(attachmentMimetype), inlineAttachment );
+}
+
 void ActionManager::openJournalEditor( const QDate& date )
 {
   mCalendarView->newJournal( date );
