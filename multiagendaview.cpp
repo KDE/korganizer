@@ -266,7 +266,7 @@ void MultiAgendaView::resizeEvent(QResizeEvent * ev)
 
 void MultiAgendaView::resizeScrollView(const QSize & size)
 {
-  int width = QMAX( mTopBox->sizeHint().width(), size.width() );
+  int width = qMax( mTopBox->sizeHint().width(), size.width() );
   int height = size.height();
   if ( width > size.width() )
     height -= mScrollView->horizontalScrollBar()->height();

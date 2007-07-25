@@ -122,7 +122,7 @@ void TimelineSubItem::showItem(bool show, int coordY)
   int startX = myGanttView->myTimeHeader->getCoordX(myStartTime);
   int endX = myGanttView->myTimeHeader->getCoordX(myEndTime);
 
-  const int mw = QMAX( 1, QMIN( 4, endX - startX ) );
+  const int mw = qMax( 1, qMin( 4, endX - startX ) );
   if ( !mLeft || mw != mMarkerWidth ) {
     if ( !mLeft ) {
       mLeft = new KDCanvasPolygon( myGanttView->myTimeTable, this, Type_is_KDGanttViewItem );

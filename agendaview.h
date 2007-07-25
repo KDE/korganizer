@@ -28,7 +28,7 @@ class AgendaView : public KOEventView
 {
   Q_OBJECT
   public:
-    AgendaView( Calendar *cal,QWidget *parent=0 );
+    explicit AgendaView( Calendar *cal, QWidget *parent = 0 );
 
     virtual void setTypeAheadReceiver( QObject * ) = 0;
 

@@ -1400,7 +1400,7 @@ void CalendarView::schedule_forward(Incidence * incidence)
       KMessageBox::information( this, i18n("The item information was successfully sent."),
                                 i18n("Forwarding"), "IncidenceForwardSuccess" );
     } else {
-      KMessageBox::error( this, i18n("Unable to forward the item '%1'").arg( incidence->summary() ) );
+      KMessageBox::error( this, i18n( "Unable to forward the item '%1'", incidence->summary() ) );
     }
   }
 }

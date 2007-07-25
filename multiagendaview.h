@@ -64,7 +64,7 @@ class MultiAgendaView : public AgendaView
     void resizeEvent( QResizeEvent *ev );
 
   private:
-    void addView( const QString &label, KCal::ResourceCalendar *res, const QString &subRes = QString::null );
+    void addView( const QString &label, KCal::ResourceCalendar *res, const QString &subRes = QString() );
     void deleteViews();
     void recreateViews();
     void setupViews();

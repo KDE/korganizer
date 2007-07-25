@@ -80,7 +80,7 @@ class KOEditorFreeBusy : public QWidget
     void slotZoomToTime();
     void slotPickDate();
 
-    // Force the download of FB informations
+    // Force the download of FB information
     void manualReload();
     // Only download FB if the auto-download option is set in config
     void autoReload();

@@ -238,7 +238,7 @@ void FreeBusyManager::publishFreeBusy()
   if ( !targetURL.isValid() ) {
     KMessageBox::sorry( 0,
       i18n( "<qt>The target URL '%1' provided is invalid."
-            "</qt>" ).arg( targetURL.prettyUrl() ), i18n("Invalid URL") );
+            "</qt>" , targetURL.prettyUrl() ), i18n("Invalid URL") );
      mBrokenUrl = true;
     return;
   }

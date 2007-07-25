@@ -169,7 +169,7 @@ class KOAgendaView : public KOrg::AgendaView
     void setTypeAheadReceiver( QObject * );
 
     /** Show only incidences from the given resource. */
-    void setResource( KCal::ResourceCalendar *res, const QString &subResource = QString::null );
+    void setResource( KCal::ResourceCalendar *res, const QString &subResource = QString() );
 
   public slots:
     virtual void updateView();
