@@ -121,79 +121,79 @@ install(TARGETS korganizer_calendar  DESTINATION ${LIB_INSTALL_DIR})
 
 ########### next target ###############
 
-set(korganizer_LIB_SRCS 
+set(korganizer_LIB_SRCS
    ${libkdgantt1_SRCS}
    themeimporter.cpp
    theme.cpp
-   komessagebox.cpp 
-   koalternatelabel.cpp 
-   koagendaview.cpp 
-   agendaview.cpp 
-   multiagendaview.cpp 
-   koagenda.cpp 
-   koagendaitem.cpp 
-   timelineitem.cpp 
-   datenavigator.cpp 
-   kdatenavigator.cpp 
-   datenavigatorcontainer.cpp 
-   datechecker.cpp 
-   komonthview.cpp 
-   searchdialog.cpp 
-   calendarview.cpp 
-   koviewmanager.cpp 
-   kodialogmanager.cpp 
-   archivedialog.cpp 
-   kohelper.cpp 
-   komailclient.cpp 
-   kotodoview.cpp 
-   kotodoviewitem.cpp 
-   kotodoviewquicksearch.cpp 
-   klistviewnewsearchline.cpp 
-   kolistview.cpp 
-   koincidenceeditor.cpp 
-   koeventeditor.cpp 
-   kotodoeditor.cpp 
-   kojournaleditor.cpp 
-   koprefs.cpp 
-   kowindowlist.cpp 
-   koeditorgeneral.cpp 
-   koeditorgeneralevent.cpp 
-   koeditorgeneraltodo.cpp 
-   koeditorgeneraljournal.cpp 
-   koeditordetails.cpp 
-   koeditoralarms.cpp 
-   koeditorrecurrence.cpp 
-   koeditorattachments.cpp 
-   koeventpopupmenu.cpp 
-   koeditorfreebusy.cpp 
-   publishdialog.cpp 
-   koeventview.cpp 
-   filtereditdialog.cpp 
-   kowhatsnextview.cpp 
-   kojournalview.cpp 
-   journalentry.cpp 
-   kocore.cpp 
-   mailscheduler.cpp 
-   kodaymatrix.cpp 
-   docprefs.cpp 
-   statusdialog.cpp 
-   koglobals.cpp 
-   actionmanager.cpp 
-   resourceview.cpp 
-   navigatorbar.cpp 
-   kogroupware.cpp 
-   history.cpp 
-   aboutdata.cpp 
-   importdialog.cpp 
-   korganizerifaceimpl.cpp 
-   freebusymanager.cpp 
-   freebusyurldialog.cpp 
-   eventarchiver.cpp 
-   koidentitymanager.cpp 
-   exportwebdialog.cpp 
-   kocorehelper.cpp 
-   incidencechanger.cpp 
-   kotimelineview.cpp 
+   komessagebox.cpp
+   koalternatelabel.cpp
+   koagendaview.cpp
+   agendaview.cpp
+   multiagendaview.cpp
+   koagenda.cpp
+   koagendaitem.cpp
+   timelineitem.cpp
+   datenavigator.cpp
+   kdatenavigator.cpp
+   datenavigatorcontainer.cpp
+   datechecker.cpp
+   komonthview.cpp
+   searchdialog.cpp
+   calendarview.cpp
+   koviewmanager.cpp
+   kodialogmanager.cpp
+   archivedialog.cpp
+   kohelper.cpp
+   komailclient.cpp
+   kotodoview.cpp
+   kotodoviewitem.cpp
+   kotodoviewquicksearch.cpp
+   klistviewnewsearchline.cpp
+   kolistview.cpp
+   koincidenceeditor.cpp
+   koeventeditor.cpp
+   kotodoeditor.cpp
+   kojournaleditor.cpp
+   koprefs.cpp
+   kowindowlist.cpp
+   koeditorgeneral.cpp
+   koeditorgeneralevent.cpp
+   koeditorgeneraltodo.cpp
+   koeditorgeneraljournal.cpp
+   koeditordetails.cpp
+   koeditoralarms.cpp
+   koeditorrecurrence.cpp
+   koeditorattachments.cpp
+   koeventpopupmenu.cpp
+   koeditorfreebusy.cpp
+   publishdialog.cpp
+   koeventview.cpp
+   filtereditdialog.cpp
+   kowhatsnextview.cpp
+   kojournalview.cpp
+   journalentry.cpp
+   kocore.cpp
+   mailscheduler.cpp
+   kodaymatrix.cpp
+   docprefs.cpp
+   statusdialog.cpp
+   koglobals.cpp
+   actionmanager.cpp
+   resourceview.cpp
+   navigatorbar.cpp
+   kogroupware.cpp
+   history.cpp
+   aboutdata.cpp
+   importdialog.cpp
+   korganizerifaceimpl.cpp
+   freebusymanager.cpp
+   freebusyurldialog.cpp
+   eventarchiver.cpp
+   koidentitymanager.cpp
+   exportwebdialog.cpp
+   kocorehelper.cpp
+   incidencechanger.cpp
+   kotimelineview.cpp
    templatemanagementdialog.cpp )
 
 
@@ -207,8 +207,8 @@ qt4_add_dbus_interfaces(korganizer_LIB_SRCS org.kde.korganizer.Korganizer.xml )
 
 kde4_add_library(korganizer SHARED ${korganizer_LIB_SRCS})
 
-target_link_libraries(korganizer ${KDE4_KNEWSTUFF2_LIBS} ${KDE4_KDEPRINT_LIBRARY} ${KDE4_KABC_LIBRARY} ${KDE4_KUTILS_LIBRARY} ${KDE4_KCAL_LIBRARY} ${KDE4_KPIMIDENTITIES_LIBRARY}
-                                                      kdepim korganizer_eventviewer korganizer_calendar kocorehelper 
+target_link_libraries(korganizer ${KDE4_KNEWSTUFF2_LIBS} ${KDE4_KDEPRINT_LIBRARY} ${KDE4_KABC_LIBRARY} ${KDE4_KUTILS_LIBRARY} ${KDE4_KCAL_LIBRARY} ${KDE4_KPIMIDENTITIES_LIBRARY} ${KDE4_KMIME_LIBRARY}
+                                                      kdepim korganizer_eventviewer korganizer_calendar kocorehelper
                                                       korg_stdprinting kholidays korganizer_interfaces )
 
 set_target_properties(korganizer PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )

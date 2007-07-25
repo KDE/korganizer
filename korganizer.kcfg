@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE kcfg SYSTEM 
+<!DOCTYPE kcfg SYSTEM
     "http://www.kde.org/standards/kcfg/1.0/kcfg.dtd">
 <kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -560,7 +560,7 @@
     <entry key="MonthGridWorkHoursBackgroundImage" type="String">
     </entry>
     <!-- END:   These entries are the same for the Month and month views, please keep them in sync -->
-    
+
     <!-- BEGIN: These entries are the same for the Month and month views, please keep them in sync -->
     <entry key="MonthCalendarItemsBackgroundColor" type="Color">
       <default>255, 100, 100</default><!-- FIXME -->
@@ -574,7 +574,7 @@
     </entry>
     <entry key="MonthCalendarItemsIcon" type="String">
     </entry>
-    
+
     <entry key="MonthCalendarItemsEventsBackgroundColor" type="Color">
       <label>Default event color</label>
       <whatsthis>Select the default event color here. The default event color will be used for events categories in your Month. Note that you can specify a separate color for each event category below.</whatsthis>
@@ -589,7 +589,7 @@
     </entry>
     <entry key="MonthCalendarItemsEventsIcon" type="String">
     </entry>
-    
+
     <entry key="MonthCalendarItemsToDosBackgroundColor" type="Color">
       <default>255, 100, 100</default><!-- FIXME -->
     </entry>
@@ -602,7 +602,7 @@
     </entry>
     <entry key="MonthCalendarItemsToDosIcon" type="String">
     </entry>
-    
+
     <entry key="MonthCalendarItemsToDosDueTodayBackgroundColor" type="Color">
       <label>To-do due today color</label>
       <whatsthis>Select the to-do due today color here.</whatsthis>
@@ -616,7 +616,7 @@
     </entry>
     <entry key="MonthCalendarItemsToDosDueTodayIcon" type="String">
     </entry>
-    
+
     <entry key="MonthCalendarItemsToDosOverdueBackgroundColor" type="Color">
       <label>To-do overdue color</label>
       <whatsthis>Select the to-do overdue color here.</whatsthis>
@@ -631,7 +631,7 @@
     <entry key="MonthCalendarItemsToDosOverdueIcon" type="String">
     </entry>
     <!-- TODO: categories, resources -->
-    
+
     <entry key="MonthHolidaysBackgroundColor" type="Color">
       <label>Holiday color</label>
       <whatsthis>Select the holiday color here. The holiday color will be used for the holiday name in the month view and the holiday number in the date navigator.</whatsthis>
@@ -642,4 +642,16 @@
     <!-- END:   These entries are the same for the Month and month views, please keep them in sync -->
   </group>
 
+  <group name="Kontact">
+    <entry type="Enum" name="DefaultEmailAttachMethod">
+      <label>The default way of attaching dropped emails data to an event</label>
+      <choices>
+        <choice name="Ask"/>
+        <choice name="Link"/>
+        <choice name="InlineFull"/>
+        <choice name="InlineBody"/>
+      </choices>
+      <default>Ask</default>
+    </entry>
+  </group>
 </kcfg>

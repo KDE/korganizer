@@ -22,10 +22,10 @@
     <method name="openEventEditor">
       <arg name="summary" type="s" direction="in"/>
       <arg name="description" type="s" direction="in"/>
-      <arg name="attachment" type="s" direction="in"/>
+      <arg name="uri" type="s" direction="in"/>
+      <arg name="file" type="s" direction="in"/>
       <arg name="attendees" type="as" direction="in"/>
       <arg name="attachmentMimetype" type="s" direction="in"/>
-      <arg name="inlineAttachment" type="b" direction="in"/>
     </method>
     <method name="openEventEditor">
       <arg name="summary" type="s" direction="in"/>

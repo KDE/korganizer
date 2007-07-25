@@ -51,9 +51,13 @@
 #include <kcal/htmlexport.h>
 #include <kcal/htmlexportsettings.h>
 
+#include <kmime/kmime_message.h>
+
+#include <k3popupmenu.h>
 #include <kaction.h>
 #include <kactioncollection.h>
 #include <kfiledialog.h>
+#include <kiconloader.h>
 #include <kio/netaccess.h>
 #include <kshortcutsdialog.h>
 #include <kmenu.h>
@@ -1600,13 +1604,76 @@ void ActionManager::openEventEditor( const QString& summary,
 
 void ActionManager::openEventEditor( const QString & summary,
                                      const QString & description,
-                                     const QString & attachment,
+                                     const QString & uri,
+                                     const QString & file,
                                      const QStringList & attendees,
-                                     const QString & attachmentMimetype,
-                                     bool inlineAttachment )
+                                     const QString & attachmentMimetype )
 {
-  mCalendarView->newEvent( summary, description, QStringList(attachment), attendees,
-                           QStringList(attachmentMimetype), inlineAttachment );
+  int action = KOPrefs::instance()->defaultEmailAttachMethod();
+  if ( attachmentMimetype != "message/rfc822" ) {
+    action = KOPrefs::Link;
+  } else if ( KOPrefs::instance()->defaultEmailAttachMethod() == KOPrefs::Ask ) {
+    K3PopupMenu *menu = new K3PopupMenu( 0 );
+    menu->insertItem( i18n("Attach as &link"), KOPrefs::Link );
+    menu->insertItem( i18n("Attach &inline"), KOPrefs::InlineFull );
+    menu->insertItem( i18n("Attach inline &without attachments"), KOPrefs::InlineBody );
+    menu->insertSeparator();
+    menu->insertItem( SmallIcon("cancel"), i18n("C&ancel"), KOPrefs::Ask );
+    action = menu->exec( QCursor::pos(), 0 );
+    delete menu;
+  }
+
+  QString attData;
+  KTemporaryFile tf;
+  tf.setAutoRemove( true );
+  switch ( action ) {
+    case KOPrefs::Ask:
+      return;
+    case KOPrefs::Link:
+      attData = uri;
+      break;
+    case KOPrefs::InlineFull:
+      attData = file;
+      break;
+    case KOPrefs::InlineBody:
+    {
+      QFile f( file );
+      if ( !f.open( IO_ReadOnly ) )
+        return;
+      KMime::Message *msg = new KMime::Message();
+      msg->setContent( f.readAll() );
+      msg->parse();
+      if ( msg == msg->textContent() || msg->textContent() == 0 ) { // no attachments
+        attData = file;
+      } else {
+        if ( KMessageBox::warningContinueCancel( 0,
+              i18n("Removing attachments from an email might invalidate its signature."),
+              i18n("Remove Attachments"), KStandardGuiItem::cont(), KStandardGuiItem::cancel(),
+              "BodyOnlyInlineAttachment" )
+              != KMessageBox::Continue )
+          return;
+        KMime::Message *newMsg = new KMime::Message();
+        newMsg->setHead( msg->head() );
+        newMsg->setBody( msg->textContent()->body() );
+        newMsg->parse();
+        newMsg->contentTransferEncoding()->from7BitString(
+              msg->textContent()->contentTransferEncoding()->as7BitString() );
+        newMsg->contentType()->from7BitString( msg->textContent()->contentType()->as7BitString() );
+        newMsg->assemble();
+        tf.write( newMsg->encodedContent() );
+        attData = tf.fileName();
+      }
+      tf.close();
+      delete msg;
+      break;
+    }
+    default:
+      kFatal() << k_funcinfo << "Unhandled drop type" << endl;
+  }
+
+  mCalendarView->newEvent( summary, description, QStringList(attData),
+                           attendees, QStringList(attachmentMimetype),
+                           action != KOPrefs::Link );
 }
 
 void ActionManager::openTodoEditor( const QString& text )
