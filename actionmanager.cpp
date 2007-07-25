@@ -1668,7 +1668,8 @@ void ActionManager::openEventEditor( const QString & summary,
       break;
     }
     default:
-      kFatal() << k_funcinfo << "Unhandled drop type" << endl;
+      // menu could have been closed by cancel, if so, do nothing
+      return;
   }
 
   mCalendarView->newEvent( summary, description, QStringList(attData),

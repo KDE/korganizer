@@ -644,12 +644,21 @@
 
   <group name="Kontact">
     <entry type="Enum" name="DefaultEmailAttachMethod">
-      <label>The default way of attaching dropped emails data to an event</label>
+      <label>Default email attachment method</label>
+      <whatsthis>The default way of attaching dropped emails data to an event</whatsthis>
       <choices>
-        <choice name="Ask"/>
-        <choice name="Link"/>
-        <choice name="InlineFull"/>
-        <choice name="InlineBody"/>
+        <choice name="Ask">
+          <label>Always ask</label>
+        </choice>
+        <choice name="Link">
+          <label>Only attach link to message</label>
+        </choice>
+        <choice name="InlineFull">
+          <label>Attach complete message</label>
+        </choice>
+        <choice name="InlineBody">
+          <label>Attach message without attachments</label>
+        </choice>
       </choices>
       <default>Ask</default>
     </entry>
