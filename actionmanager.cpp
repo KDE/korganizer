@@ -1699,13 +1699,42 @@ void ActionManager::openTodoEditor( const QString& summary,
 
 void ActionManager::openTodoEditor(const QString & summary,
                                    const QString & description,
-                                   const QString & attachment,
+                                   const QString & uri,
+                                   const QString & file,
                                    const QStringList & attendees,
-                                   const QString & attachmentMimetype,
-                                   bool inlineAttachment)
+                                   const QString & attachmentMimetype)
 {
-  mCalendarView->newTodo( summary, description, QStringList(attachment),
-                          attendees, QStringList(attachmentMimetype), inlineAttachment );
+  int action = KOPrefs::instance()->defaultTodoAttachMethod();
+  if ( attachmentMimetype != "message/rfc822" ) {
+    action = KOPrefs::TodoAttachLink;
+  } else if ( KOPrefs::instance()->defaultTodoAttachMethod() == KOPrefs::TodoAttachAsk ) {
+    K3PopupMenu *menu = new K3PopupMenu( 0 );
+    menu->insertItem( i18n("Attach as &link"), KOPrefs::TodoAttachLink );
+    menu->insertItem( i18n("Attach &inline"), KOPrefs::TodoAttachInlineFull );
+    menu->insertSeparator();
+    menu->insertItem( SmallIcon("cancel"), i18n("C&ancel"), KOPrefs::TodoAttachAsk );
+    action = menu->exec( QCursor::pos(), 0 );
+    delete menu;
+  }
+
+  QString attData;
+  switch ( action ) {
+    case KOPrefs::TodoAttachAsk:
+      return;
+    case KOPrefs::TodoAttachLink:
+      attData = uri;
+      break;
+    case KOPrefs::TodoAttachInlineFull:
+      attData = file;
+      break;
+    default:
+      // menu could have been closed by cancel, if so, do nothing
+      return;
+  }
+
+  mCalendarView->newTodo( summary, description, QStringList(attData),
+                          attendees, QStringList(attachmentMimetype),
+                          action != KOPrefs::Link );
 }
 
 void ActionManager::openJournalEditor( const QDate& date )

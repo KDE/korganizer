@@ -209,10 +209,10 @@ class KORGANIZER_EXPORT ActionManager : public QObject
                          const QStringList& attendees );
     void openTodoEditor( const QString& summary,
                          const QString& description,
-                         const QString& attachment,
+                         const QString& uri,
+                         const QString& file,
                          const QStringList& attendees,
-                         const QString& attachmentMimetype,
-                         bool inlineAttachment );
+                         const QString& attachmentMimetype );
 
     void openJournalEditor( const QDate& date );
     void openJournalEditor( const QString& text, const QDate& date );
