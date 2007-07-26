@@ -264,9 +264,12 @@ AttachmentEditDialog::AttachmentEditDialog( AttachmentIconItem *item,
 
 void AttachmentEditDialog::slotApply()
 {
-  if ( mLabelEdit->text().isEmpty() )
-    mItem->setLabel( mURLRequester->url().fileName() );
-  else
+  if ( mLabelEdit->text().isEmpty() ) {
+    if ( mURLRequester->url().isLocalFile() )
+      mItem->setLabel( mURLRequester->url().fileName() );
+    else
+      mItem->setLabel( mURLRequester->url().url() );
+  } else
     mItem->setLabel( mLabelEdit->text() );
   if ( mItem->label().isEmpty() )
     mItem->setLabel( i18n( "New attachment" ) );
@@ -284,7 +287,7 @@ void AttachmentEditDialog::slotApply()
       }
       KIO::NetAccess::removeTempFile( tmpFile );
     } else {
-      mItem->setUri( mURLRequester->url().path() );
+      mItem->setUri( mURLRequester->url().url() );
     }
   }
 }
