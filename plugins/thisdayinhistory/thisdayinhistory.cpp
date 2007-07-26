@@ -51,16 +51,16 @@ QString ThisDayInHistory::info()
               "'This Day in History' pages.");
 }
 
-Element::List ThisDayInHistory::createElements( const QDate &date )
+Element::List ThisDayInHistory::createDayElements( const QDate &date )
 {
   Element::List elements;
 
-  StoredElement *element = new StoredElement();
-  element->setShortText( "This day in history" );
+  StoredElement *element = new StoredElement( i18n("This day in history") );
   element->setUrl( i18nc("Localized Wikipedia website",
-    "http://en.wikipedia.org/wiki/")
-    + date.toString( i18nc("Qt date format used by the localized Wikipedia",
-                            "MMMM_d") ) );
+                         "http://en.wikipedia.org/wiki/")
+                   + date.toString( i18nc("Qt date format used by the"
+                                           "localized Wikipedia",
+                                          "MMMM_d") ) );
 
   elements.append( element );
 
