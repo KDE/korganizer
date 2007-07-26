@@ -27,7 +27,6 @@
 
 #include "korganizer_export.h"
 
-#include <calendar/oldcalendardecoration.h>
 #include <calendar/calendardecoration.h>
 #include <korganizer/part.h>
 #include <korganizer/printplugin.h>
@@ -44,16 +43,12 @@ class KORGANIZER_EXPORT KOCore
     static KOCore *self();
 
     KService::List availablePlugins();
-    KService::List availableOldCalendarDecorations(); //CalDec:DEPRECATED
     KService::List availableCalendarDecorations();
     KService::List availableParts();
     KService::List availablePrintPlugins();
 
     KOrg::Plugin *loadPlugin( KService::Ptr service );
     KOrg::Plugin *loadPlugin( const QString & );
-
-    KOrg::OldCalendarDecoration *loadOldCalendarDecoration( KService::Ptr service ); //CalDec:DEPRECATED
-    KOrg::OldCalendarDecoration *loadOldCalendarDecoration( const QString & ); //CalDec:DEPRECATED
 
     KOrg::CalendarDecoration::Decoration *loadCalendarDecoration( KService::Ptr service );
     KOrg::CalendarDecoration::Decoration *loadCalendarDecoration( const QString & );
@@ -64,7 +59,6 @@ class KORGANIZER_EXPORT KOCore
     KOrg::PrintPlugin *loadPrintPlugin( KService::Ptr service );
     KOrg::PrintPlugin *loadPrintPlugin( const QString & );
 
-    KOrg::OldCalendarDecoration::List oldCalendarDecorations(); //CalDec:DEPRECATED
     KOrg::CalendarDecoration::Decoration::List calendarDecorations();
     KOrg::PrintPlugin::List loadPrintPlugins();
     KOrg::Part::List loadParts( KOrg::MainWindow *parent );
@@ -103,9 +97,6 @@ class KORGANIZER_EXPORT KOCore
 
   private:
     static KOCore *mSelf;
-
-    KOrg::OldCalendarDecoration::List mOldCalendarDecorations; //CalDec:DEPRECATED
-    bool mOldCalendarDecorationsLoaded; //CalDec:DEPRECATED
 
     KOrg::CalendarDecoration::Decoration::List mCalendarDecorations;
     bool mCalendarDecorationsLoaded;
