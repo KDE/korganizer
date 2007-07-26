@@ -36,13 +36,15 @@
 #include <QGroupBox>
 #include <QButtonGroup>
 
+#include "datenums.h"
+
 #include "configdialog.moc"
 
 ConfigDialog::ConfigDialog(QWidget *parent)
   : KDialog(parent)
 {
   setCaption( i18n("Configure Day Numbers") );
-  setButtons( Ok|Cancel );
+  setButtons( Ok | Cancel );
   setDefaultButton(  Ok );
   setModal( true );
   QFrame *topFrame = new QFrame( this );
@@ -58,13 +60,13 @@ ConfigDialog::ConfigDialog(QWidget *parent)
   QRadioButton *btn;
   mDayNumGroup = new QButtonGroup( this );
   btn = new QRadioButton( i18n("Show day number"), dayNumBox );
-  mDayNumGroup->addButton( btn, 0 );
+  mDayNumGroup->addButton( btn, int(Datenums::DayOfYear) );
   groupLayout->addWidget( btn );
   btn = new QRadioButton( i18n("Show days to end of year"), dayNumBox );
-  mDayNumGroup->addButton( btn, 1 );
+  mDayNumGroup->addButton( btn, int(Datenums::DaysRemaining) );
   groupLayout->addWidget( btn );
   btn = new QRadioButton( i18n("Show both"), dayNumBox );
-  mDayNumGroup->addButton( btn, 2 );
+  mDayNumGroup->addButton( btn, int(Datenums::DayOfYear | Datenums::DaysRemaining) );
   groupLayout->addWidget( btn );
 
   connect(this, SIGNAL(okClicked()), this, SLOT(slotOk()));
@@ -80,9 +82,9 @@ void ConfigDialog::load()
 {
   KConfig _config( "korganizerrc", KConfig::NoGlobals  );
   KConfigGroup config(&_config, "Calendar/Datenums Plugin");
-  int datenum = config.readEntry( "ShowDayNumbers", 0 );
+  int datenum = config.readEntry( "ShowDayNumbers", int(Datenums::DayOfYear | Datenums::DaysRemaining) );
   QAbstractButton *btn = mDayNumGroup->button( datenum );
-  if (!btn) btn = mDayNumGroup->button( 0 );
+  if (!btn) btn = mDayNumGroup->button( int(Datenums::DayOfYear | Datenums::DaysRemaining) );
   btn->setChecked( true );
 }
 

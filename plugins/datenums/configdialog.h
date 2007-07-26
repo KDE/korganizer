@@ -20,15 +20,16 @@
 #ifndef CONFIGDIALOG_H
 #define CONFIGDIALOG_H
 
-#include <kdialog.h>
+#include <KDialog>
 
 class QButtonGroup;
 
 class ConfigDialog : public KDialog
 {
-  Q_OBJECT
+    Q_OBJECT
+
   public:
-    ConfigDialog(QWidget *parent=0);
+    ConfigDialog( QWidget *parent = 0 );
     virtual ~ConfigDialog();
 
   protected:

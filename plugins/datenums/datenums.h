@@ -21,8 +21,6 @@
 #ifndef KORG_DATENUMS_H
 #define KORG_DATENUMS_H
 
-#include <QtCore/QString>
-
 #include <calendar/calendardecoration.h>
 
 using namespace KOrg::CalendarDecoration;
@@ -37,11 +35,18 @@ class Datenums : public Decoration
 
     Element::List createDayElements( const QDate & );
 
-  protected:
+    enum DayNumber {
+      DayOfYear = 1,
+      DaysRemaining = 2
+    };
+    Q_DECLARE_FLAGS(DayNumbers, DayNumber)
+
     QString info();
-    
+
   private:
-    int mDateNums;
+    DayNumbers mDisplayedInfo;
 };
+
+Q_DECLARE_OPERATORS_FOR_FLAGS(Datenums::DayNumbers)
 
 #endif
