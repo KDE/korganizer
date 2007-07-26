@@ -90,7 +90,7 @@ void Theme::useThemeFrom( const KUrl &url )
     }
   } else if ( mimeType->name() == "application/xml" ) {
     KIO::NetAccess::file_copy( url.path(),
-                               storageDir().path() + "/", 0 );
+                               storageDir().path() + '/', 0 );
   } else {
     //TODO: KMessageBox "invalid file"
     kDebug() << "Theme: can't import: invalid file: (2) " << url.path() << endl;
