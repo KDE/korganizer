@@ -2,6 +2,7 @@
   This file is part of KOrganizer.
 
   Copyright (c) 2003 Jonathan Singer <jsinger@leeta.net>
+  Copyright (C) 2007 Loïc Corbasson <loic.corbasson@gmail.com>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,22 +21,25 @@
 #ifndef KORG_HEBREW_H
 #define KORG_HEBREW_H
 
-#include <QString>
-#include <QStringList>
-#include <calendar/oldcalendardecoration.h>
+#include <calendar/calendardecoration.h>
 
-using namespace KOrg;
+using namespace KOrg::CalendarDecoration;
 
-class Hebrew:public OldCalendarDecoration
+class Hebrew : public Decoration
 {
   public:
-    Hebrew() {}
-    ~Hebrew() {}
+    Hebrew();
+    ~Hebrew();
+
     void configure( QWidget *parent );
-    QString shortText( const QDate &qd ) const;
+
+    Element::List createDayElements( const QDate & );
 
     QString info();
-    static bool IsraelP;
+
+  private:
+    bool showParsha, showChol, showOmer;
+    bool areWeInIsrael;
 };
 
 #endif

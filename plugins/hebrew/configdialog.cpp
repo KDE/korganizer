@@ -1,30 +1,36 @@
 /*
-    This file is part of KOrganizer.
-    Copyright (c) 2003 Jonathan Singer <jsinger@leeta.net>
+  This file is part of KOrganizer.
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
+  Copyright (c) 2003 Jonathan Singer <jsinger@leeta.net>
+  Copyright (C) 2007 Loïc Corbasson <loic.corbasson@gmail.com>
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-    GNU General Public License for more details.
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 */
+
 #include "configdialog.h"
-#include "configdialog.moc"
-#include <QFrame>
+
+#include <QtGui/QFrame>
+#include <QtGui/QLayout>
+
 #include <klocale.h>
-#include <QLayout>
 #include <kapplication.h>
 #include <kglobal.h>
 #include <kconfig.h>
 #include <kstandarddirs.h>
+
+#include "configdialog.moc"
 
 ConfigDialog::ConfigDialog(QWidget * parent)
   :KDialog( parent)
@@ -39,21 +45,21 @@ ConfigDialog::ConfigDialog(QWidget * parent)
   topLayout->setMargin( 0 );
   topLayout->setSpacing( spacingHint() );
 
-  israel_box = new QCheckBox(topFrame);
-  israel_box->setText(i18n("Use Israeli holidays"));
-  topLayout->addWidget(israel_box);
+  mIsraelBox = new QCheckBox(topFrame);
+  mIsraelBox->setText(i18n("Use Israeli holidays"));
+  topLayout->addWidget(mIsraelBox);
 
-  parsha_box = new QCheckBox(topFrame);
-  parsha_box->setText(i18n("Show weekly parsha"));
-  topLayout->addWidget(parsha_box);
+  mParshaBox = new QCheckBox(topFrame);
+  mParshaBox->setText(i18n("Show weekly parsha"));
+  topLayout->addWidget(mParshaBox);
 
-  omer_box = new QCheckBox(topFrame);
-  omer_box->setText(i18n("Show day of Omer"));
-  topLayout->addWidget(omer_box);
+  mOmerBox = new QCheckBox(topFrame);
+  mOmerBox->setText(i18n("Show day of Omer"));
+  topLayout->addWidget(mOmerBox);
 
-  chol_box = new QCheckBox(topFrame);
-  chol_box->setText(i18n("Show Chol HaMoed"));
-  topLayout->addWidget(chol_box);
+  mCholBox = new QCheckBox(topFrame);
+  mCholBox->setText(i18n("Show Chol HaMoed"));
+  topLayout->addWidget(mCholBox);
   connect( this, SIGNAL( okClicked() ),this,SLOT( slotOk() ) );
   load();
 }
@@ -67,24 +73,24 @@ void ConfigDialog::load()
   KConfig config("korganizerrc", KConfig::NoGlobals );
 
   KConfigGroup group(&config, "Calendar/Hebrew Calendar Plugin");
-  israel_box->setChecked(group.
-                         readEntry("Israel",
+  mIsraelBox->setChecked(group.
+                         readEntry("UseIsraelSettings",
                                        (KGlobal::locale()->
                                         country() == QLatin1String(".il"))));
-  parsha_box->setChecked(group.readEntry("Parsha", true));
-  chol_box->setChecked(group.readEntry("Chol_HaMoed", true));
-  omer_box->setChecked(group.readEntry("Omer", true));
+  mParshaBox->setChecked(group.readEntry("ShowParsha", true));
+  mCholBox->setChecked(group.readEntry("ShowChol_HaMoed", true));
+  mOmerBox->setChecked(group.readEntry("ShowOmer", true));
 
 }
 
 void ConfigDialog::save()
 {
-  KConfig config("korganizerrc", KConfig::NoGlobals); // Open read-write, no kdeglobals
+  KConfig config("korganizerrc", KConfig::NoGlobals);
   KConfigGroup group(&config,"Calendar/Hebrew Calendar Plugin");
-  group.writeEntry("Israel", israel_box->isChecked());
-  group.writeEntry("Parsha", parsha_box->isChecked());
-  group.writeEntry("Chol_HaMoed", chol_box->isChecked());
-  group.writeEntry("Omer", omer_box->isChecked());
+  group.writeEntry("UseIsraelSettings", mIsraelBox->isChecked());
+  group.writeEntry("ShowParsha", mParshaBox->isChecked());
+  group.writeEntry("ShowChol_HaMoed", mCholBox->isChecked());
+  group.writeEntry("ShowOmer", mOmerBox->isChecked());
   group.sync();
 }
 

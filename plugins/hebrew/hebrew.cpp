@@ -2,6 +2,7 @@
   This file is part of KOrganizer.
 
   Copyright (c) 2003 Jonathan Singer <jsinger@leeta.net>
+  Copyright (C) 2007 Loïc Corbasson <loic.corbasson@gmail.com>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -19,88 +20,77 @@
 */
 
 #include "hebrew.h"
+
+#include <KCalendarSystem>
+#include <KConfig>
+#include <KGlobal>
+#include <KStandardDirs>
+
 #include "configdialog.h"
-#include "parsha.h"
 #include "converter.h"
 #include "holiday.h"
+#include "parsha.h"
 
-#include <kglobal.h>
-#include <kconfig.h>
-#include <kstandarddirs.h>
-#include <kcalendarsystem.h>
+using namespace KOrg::CalendarDecoration;
 
-bool Hebrew::IsraelP;
-
-class HebrewFactory:public OldCalendarDecorationFactory
-{
-public:
-  OldCalendarDecoration * create()
-  {
-    return new Hebrew;
-  }
+class HebrewFactory : public DecorationFactory {
+  public:
+    Decoration *create() { return new Hebrew; }
 };
 
 K_EXPORT_COMPONENT_FACTORY( libkorg_hebrew, HebrewFactory )
 
 
-QString Hebrew::shortText(const QDate & date) const
+Hebrew::Hebrew()
 {
+  KConfig config( "korganizerrc", KConfig::NoGlobals );
 
-  KConfig config("korganizerrc", KConfig::NoGlobals );
+  KConfigGroup group( &config, "Calendar/Hebrew Calendar Plugin" );
+  areWeInIsrael = group.readEntry( "UseIsraelSettings",
+                                   ( KGlobal::locale()->country()
+                                          == QLatin1String(".il") ) );
+  showParsha = group.readEntry( "ShowParsha", true );
+  showChol = group.readEntry( "ShowChol_HaMoed", true );
+  showOmer = group.readEntry( "ShowOmer", true );
+}
 
-  KConfigGroup group(&config,"Calendar/Hebrew Calendar Plugin");
-  IsraelP =
-    group.readEntry("Israel",
-                         (KGlobal::locale()->country() == QLatin1String(".il")));
-  Holiday::ParshaP = group.readEntry("Parsha", true);
-  Holiday::CholP = group.readEntry("Chol_HaMoed", true);
-  Holiday::OmerP = group.readEntry("Omer", true);
-  QString label_text;
+Hebrew::~Hebrew()
+{
+}
 
-  int day = date.day();
-  int month = date.month();
-  int year = date.year();
+void Hebrew::configure( QWidget *parent )
+{
+  ConfigDialog dlg( parent );
+}
 
-  // core calculations!!
-  struct DateResult result;
+Element::List Hebrew::createDayElements( const QDate &date )
+{
+  Element::List el;
 
-  Converter::SecularToHebrewConversion(year, month, day, /*0, */
-                                       &result);
-  int hebrew_day = result.day;
-  int hebrew_month = result.month;
-  int hebrew_year = result.year;
-  int hebrew_day_of_week = result.day_of_week;
-  bool hebrew_leap_year_p = result.hebrew_leap_year_p;
-  int hebrew_kvia = result.kvia;
-  int hebrew_day_number = result.hebrew_day_number;
+  QString text;
 
-  QStringList holidays =
-    Holiday::FindHoliday(hebrew_month, hebrew_day,
-                         hebrew_day_of_week + 1, hebrew_kvia,
-                         hebrew_leap_year_p, IsraelP,
-                         hebrew_day_number, hebrew_year);
+  HebrewDate hd = HebrewDate::fromSecular( date.year(), date.month(),
+                                           date.day() );
+
+  QStringList holidays = Holiday::findHoliday( hd, areWeInIsrael, showParsha,
+                                               showChol, showOmer );
 
   KCalendarSystem *cal = KCalendarSystem::create("hebrew");
-  label_text = QString("%1 %2").arg(cal->dayString(date, KCalendarSystem::LongFormat))
-                                .arg(cal->monthName(date));
+  text = cal->dayString( date ) + ' ' + cal->monthName( date );
 
   foreach( QString holiday, holidays ) {
-    label_text += '\n' + holiday;
+    text += "<br/>\n" + holiday;
   }
 
-  return label_text;
+  text = i18nc("Change the next two strings if emphasis is done differently in "
+               "your language.", "<qt><p align=\"center\"><i>\n")
+         + text + i18n("\n</i></p></qt>");
+  el.append( new StoredElement( text ) );
+
+  return el;
 }
 
 QString Hebrew::info()
 {
-  return
-    i18n("This plugin provides the date in the Jewish calendar.");
-}
-
-void Hebrew::configure(QWidget * parent)
-{
-  ConfigDialog *dlg = new ConfigDialog(parent);        //parent?
-
-  dlg->exec();
-  delete dlg;
+  return i18n("This plugin provides the date in the Jewish calendar.");
 }
