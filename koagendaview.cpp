@@ -33,6 +33,7 @@
 #include "kodialogmanager.h"
 #include "koeventpopupmenu.h"
 #include "koalternatelabel.h"
+#include "kodecorationlabel.h"
 
 #include <kcal/calendar.h>
 #include <kcal/icaldrag.h>
@@ -690,13 +691,12 @@ void KOAgendaView::createDayLabels()
   mLayoutBottomDayLabels->setMargin(0);
   mLayoutBottomDayLabels->addSpacing(mTimeLabels->width());
 
-  const KCalendarSystem*calsys=KOGlobals::self()->calendarSystem();
+  const KCalendarSystem *calsys = KOGlobals::self()->calendarSystem();
 
   DateList::ConstIterator dit;
   for( dit = mSelectedDates.begin(); dit != mSelectedDates.end(); ++dit ) {
     QDate date = *dit;
-    // TODO: grid layouting
-    QBoxLayout *dayLayout = new QVBoxLayout();
+    QGridLayout *dayLayout = new QGridLayout();
     dayLayout->setMargin(0);
     mLayoutDayLabels->addItem(dayLayout);
     mLayoutDayLabels->setStretchFactor(dayLayout, 1);
@@ -713,63 +713,22 @@ void KOAgendaView::createDayLabels()
 
     // Show calendar decorations for the top of the top label
     foreach ( CalendarDecoration::Decoration* deco, cds ) {
-      kDebug() << deco->info() << endl;
+      kDebug() << deco->info() << ": " << deco->dayElements(date).count() << endl;
       foreach ( CalendarDecoration::Element* it, deco->dayElements( date ) ) {
+        kDebug() << deco->info() << "----" << date.toString(Qt::ISODate) << ":  " << it->shortText() << endl;
         //TODO: check if it's the right place, get the size
-        QSize *size = new QSize( 200, 150 );
-        QPixmap pixmap = it->pixmap( *size );
+/*        QPixmap pixmap = it->pixmap( *size );
         QString shortText = it->shortText();
         QString longText = it->longText();
         QString extensiveText = it->extensiveText();
-        QString toolTip = it->longText();
         KUrl url = it->url();
-          // TODO: change to KODecorationLabel? (urls)
-        KOAlternateLabel *label = new KOAlternateLabel( shortText, longText,
-            extensiveText,
-            mDayLabels );
-        label->setToolTip( toolTip );
-        dayLayout->addWidget( label );
+        KODecorationLabel *label = new KODecorationLabel( shortText, longText,
+            extensiveText, pixmap, url, mDayLabels );*/
+        KODecorationLabel *label = new KODecorationLabel( it, mDayLabels );
+//        label->setMaximumHeight( mAgenda->height()/5 ); //FIXME
+        dayLayout->addWidget( label, 3, 1 ); // Center bottom
+        dayLayout->setAlignment( label, Qt::AlignCenter );
       }
-/*      foreach ( CalendarDecoration::AgendaElement* it, deco->agenda() ) {
-        // TODO: reject a 2nd widget for the same position
-        if ( it->position() == CalendarDecoration::DayTopT ) {
-          QWidget *wid = it->widget( mDayLabels, date );
-          if ( wid ) {  // The decoration element uses a custom widget
-            //TODO: use a better metric, handle view resizes
-            wid->setMaximumHeight( mAgenda->height()/5 ); 
-//            wid->setMaximumWidth( mDayLabels->width() );
-            dayLayout->addWidget( wid );
-            dayLayout->setAlignment( wid, Qt::AlignCenter );
-          }
-          else {  // No custom widget...
-            QPixmap pixmap = it->smallPixmap( date );
-            if ( !pixmap.isNull() ) {  // ... but there is a pixmap
-              QLabel* image = new QLabel( mDayLabels );
-              image->setAlignment( Qt::AlignCenter );
-              image->setPixmap( pixmap );
-              //TODO: use a better metric, handle view resizes
-              wid->setMaximumHeight( mAgenda->height()/5 );
-//            image->setMaximumWidth( mDayLabels->width() );
-              dayLayout->addWidget( image );
-              dayLayout->setAlignment( image, Qt::AlignCenter );
-            }
-            QString shortText = it->shortText( date );
-            QString longText = it->longText( date );
-            if ( longText.isEmpty() )
-              longText = shortText;
-            if ( ! (shortText+longText).isEmpty() ) {  // ... but there is text
-              KOAlternateLabel *label = 
-                new KOAlternateLabel( shortText, longText, QString(),
-                                      mDayLabels );
-              label->setMinimumWidth(1);
-              label->setAlignment( Qt::AlignCenter );
-//            label->setMaximumWidth( mDayLabels->width() );
-              dayLayout->addWidget( label );
-              dayLayout->setAlignment( label, Qt::AlignCenter );
-            }
-          }
-        }
-      }*/
     }
 #endif
 
@@ -789,7 +748,7 @@ void KOAgendaView::createDayLabels()
       font.setBold(true);
       dayLabel->setFont(font);
     }
-    dayLayout->addWidget(dayLabel);
+    dayLayout->addWidget(dayLabel, 1, 1);
 
     // if a holiday region is selected, show the holiday name
     QStringList texts = KOGlobals::self()->holiday( date );
@@ -799,51 +758,10 @@ void KOAgendaView::createDayLabels()
       KOAlternateLabel*label = new KOAlternateLabel( (*textit), (*textit), QString(), mDayLabels );
       label->setMinimumWidth(1);
       label->setAlignment(Qt::AlignCenter);
-      dayLayout->addWidget(label);
+      dayLayout->addWidget(label, 2, 1);
     }
 
 #ifndef KORG_NOPLUGINS
-/* OLD INTERFACE, WILL BE REMOVED IN THE NEAR FUTURE
-    OldCalendarDecoration::List ocds = KOCore::self()->oldCalendarDecorations();
-    OldCalendarDecoration::List::iterator it;
-    for ( it = ocds.begin(); it!= ocds.end(); ++it ) {
-      QString text = (*it)->shortText( date );
-      if ( !text.isEmpty() ) {
-        // use a KOAlternateLabel so when the text doesn't fit any more a tooltip is used
-        KOAlternateLabel*label = new KOAlternateLabel( text, text, QString(), mDayLabels );
-        label->setMinimumWidth(1);
-        label->setAlignment(Qt::AlignCenter);
-//        label->setMaximumWidth( mDayLabels->width() );
-        dayLayout->addWidget(label);
-        dayLayout->setAlignment(label, Qt::AlignCenter);
-      }
-    }
-
-    for ( it = ocds.begin(); it!= ocds.end(); ++it ) {
-      QPixmap pixmap = (*it)->smallPixmap( date );
-      if ( !pixmap.isNull() ) {
-        QLabel* image = new QLabel( mDayLabels );
-        image->setAlignment(Qt::AlignCenter);
-        image->setPixmap( pixmap.scaled( mDayLabels->width(), 
-                                         (*it)->smallPixmap( date ).height()/6,
-                                         Qt::KeepAspectRatio ) );
-//        image->setMaximumWidth( mDayLabels->width() );
-        dayLayout->addWidget(image);
-        dayLayout->setAlignment(image, Qt::AlignCenter);
-      }
-    }
-
-    for(it = ocds.begin(); it != ocds.end(); ++it ) {
-      QWidget *wid = (*it)->smallWidget( mDayLabels, date );
-      if ( wid ) {
-        wid->setMaximumHeight( mAgenda->height()/5 ); //TODO: use a better metric, handle view resizes
-//        wid->setMaximumWidth( mDayLabels->width() );
-        dayLayout->addWidget(wid);
-        dayLayout->setAlignment(wid, Qt::AlignCenter);
-      }
-    }
-*/
-
 #endif
   }
 

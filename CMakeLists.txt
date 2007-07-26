@@ -127,6 +127,7 @@ set(korganizer_LIB_SRCS
    theme.cpp
    komessagebox.cpp
    koalternatelabel.cpp
+   kodecorationlabel.cpp
    koagendaview.cpp
    agendaview.cpp
    multiagendaview.cpp
