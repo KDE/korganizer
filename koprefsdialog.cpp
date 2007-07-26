@@ -71,11 +71,6 @@ using namespace LibKHolidays;
 #include <QVBoxLayout>
 #include <QGroupBox>
 
-#if defined(USE_SOLARIS)
-#include <sys/param.h>
-#define INITFILE       "/etc/default/init"
-#endif
-
 #include "ui_kogroupwareprefspage.h"
 
 KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *parent )
