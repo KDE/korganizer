@@ -20,35 +20,68 @@
 #ifndef KORG_PICOFTHEDAY_H
 #define KORG_PICOFTHEDAY_H
 
-#include <QString>
+#include <KIO/Job>
 
 #include <calendar/calendardecoration.h>
 
 using namespace KOrg::CalendarDecoration;
 
-class PicofthedayAgenda : public AgendaElement {
+class Picoftheday : public Decoration
+{
   public:
-    PicofthedayAgenda();
-    ~PicofthedayAgenda() {}
-    
-  protected:
-    QWidget *widget( QWidget *, const QDate & ) const;
+    Picoftheday();
+    ~Picoftheday();
+
+    Element::List createDayElements( const QDate & );
+
+/*    void configure( QWidget *parent );*/
+
+    QString info();
 
   private:
-    int mThumbnailSize;
+    int mThumbWidth;
     Qt::AspectRatioMode mAspectRatioMode;
 };
 
 
-class Picoftheday : public Decoration {
-  public:
-    Picoftheday();
-    ~Picoftheday() {}
-    
-    void configure( QWidget *parent );
+class POTDElement : public StoredElement
+{
+    Q_OBJECT
 
-  protected:
-    QString info();
+  public:
+    POTDElement( const QDate &date, const int initialThumbWidth );
+    ~POTDElement() {}
+
+    void setDate( const QDate &date );
+    void setThumbnailSize( const int width );
+    void setThumbnailSize( const QSize &size );
+    QPixmap pixmap( const QSize &size );
+
+  public slots:
+    void download();
+    void getImagePage();
+    void getThumbnail();
+
+  signals:
+    void gotNewPixmap( const QPixmap & ) const;
+    void gotNewShortText( const QString & ) const;
+    void gotNewLongText( const QString & ) const;
+    void gotNewExtensiveText( const QString & ) const;
+    void gotNewUrl( const KUrl & ) const;
+
+  private:
+    QDate mDate;
+    QString mFileName;
+    KUrl mImagePageUrl;
+    KUrl mThumbUrl;
+    int mThumbWidth;
+    QString mDescription;
+    Qt::AspectRatioMode mARMode;
+
+  private slots:
+    void downloadStep1Result( KJob* job );
+    void downloadStep2Result( KJob* job );
+    void downloadStep3Result( KJob* job );
 };
 
 #endif
