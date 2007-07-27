@@ -100,7 +100,8 @@ TimeLabels::TimeLabels(int rows,QWidget *parent, Qt::WFlags f) :
   mMousePos->setFrameStyle( QFrame::HLine );
 //  mMousePos->setMargin(0);
   QPalette pal;
-  pal.setColor( QPalette::Dark, Qt::red );
+  pal.setColor( QPalette::Dark,
+                KOPrefs::instance()->agendaMarcusBainsLineColor() );
   mMousePos->setPalette( pal );
   mMousePos->setFixedSize(width(), 1);
   addChild(mMousePos, 0, 0);
@@ -134,10 +135,10 @@ void TimeLabels::setCellHeight(double height)
   Optimization so that only the "dirty" portion of the scroll view
   is redrawn.  Unfortunately, this is not called by default paintEvent() method.
 */
-void TimeLabels::drawContents(QPainter *p,int cx, int cy, int cw, int ch)
+void TimeLabels::drawContents( QPainter *p, int cx, int cy, int cw, int ch )
 {
-  p->setBrush(palette().background());
-  p->drawRect(cx,cy,cw,ch);
+  p->setBrush( palette().background() ); // TODO: theming, see if we want sth here...
+  p->drawRect( cx, cy, cw, ch);
 
   // bug:  the parameters cx and cw are the areas that need to be
   //       redrawn, not the area of the widget.  unfortunately, this
@@ -148,37 +149,40 @@ void TimeLabels::drawContents(QPainter *p,int cx, int cy, int cw, int ch)
   cw = contentsWidth();
 
   // end of workaround
-  int cell = ((int)(cy/mCellHeight));
+  int cell = ((int)(cy / mCellHeight));  // indicates which hour we start drawing with
   double y = cell * mCellHeight;
   QFontMetrics fm = fontMetrics();
   QString hour;
-  QString suffix = "am";
-  int timeHeight =  fm.ascent();
-  QFont nFont = font();
+  int timeHeight = fm.ascent();
+  QFont hourFont = KOPrefs::instance()->agendaTimeLabelsFont();
   p->setFont( font() );
 
-  if (!KGlobal::locale()->use12Clock()) {
+  QString suffix;
+  if ( ! KGlobal::locale()->use12Clock() ) {
       suffix = "00";
-  } else
-      if (cell > 11) suffix = "pm";
+  } else {
+    suffix = "am";
+    if (cell > 11) suffix = "pm";
+  }
 
+  // We adjust the size of the hour font to keep it reasonable
   if ( timeHeight >  mCellHeight ) {
     timeHeight = int(mCellHeight-1);
-    int pointS = nFont.pointSize();
-    while ( pointS > 4 ) {
-      nFont.setPointSize( pointS );
-      fm = QFontMetrics( nFont );
+    int pointS = hourFont.pointSize();
+    while ( pointS > 4 ) { // TODO: use smallestReadableFont() when added to kdelibs
+      hourFont.setPointSize( pointS );
+      fm = QFontMetrics( hourFont );
       if ( fm.ascent() < mCellHeight )
         break;
       -- pointS;
     }
-    fm = QFontMetrics( nFont );
+    fm = QFontMetrics( hourFont );
     timeHeight = fm.ascent();
   }
   //timeHeight -= (timeHeight/4-2);
-  QFont sFont = nFont;
-  sFont.setPointSize( sFont.pointSize()/2 );
-  QFontMetrics fmS(  sFont );
+  QFont suffixFont = hourFont;
+  suffixFont.setPointSize( suffixFont.pointSize()/2 );
+  QFontMetrics fmS(  suffixFont );
   int startW = mMiniWidth - frameWidth()-2 ;
   int tw2 = fmS.width(suffix);
   int divTimeHeight = (timeHeight-1) /2 - 1;
@@ -197,9 +201,9 @@ void TimeLabels::drawContents(QPainter *p,int cx, int cy, int cw, int ch)
     // center and draw the time label
     int timeWidth = fm.width(hour);
     int offset = startW - timeWidth - tw2 -1 ;
-    p->setFont( nFont );
+    p->setFont( hourFont );
     p->drawText( offset, int(y+timeHeight), hour);
-    p->setFont( sFont );
+    p->setFont( suffixFont );
     offset = startW - tw2;
     p->drawText( offset, int(y+timeHeight-divTimeHeight), suffix);
 
