@@ -2,6 +2,7 @@
   This file is part of KOrganizer.
   Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
   Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+  Copyright (C) 2007 Loïc Corbasson <loic.corbasson@gmail.com>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -31,16 +32,17 @@
 
 #include "kodecorationlabel.moc"
 
-KODecorationLabel::KODecorationLabel( const KOrg::CalendarDecoration::Element *e,
+KODecorationLabel::KODecorationLabel( KOrg::CalendarDecoration::Element *e,
                                       QWidget *parent )
   : QLabel( parent ), mAutomaticSqueeze( true ), mDecorationElement( e ),
     mShortText( e->shortText() ), mLongText( e->longText() ),
     mExtensiveText( e->extensiveText() )
 {
   mPixmap = e->pixmap( size() );
+  mUrl = e->url();
   setUrl( e->url() );
 
-  setSizePolicy(QSizePolicy( QSizePolicy::Expanding, QSizePolicy::Fixed ));
+  //setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
   setAlignment( Qt::AlignCenter );
 
   connect( e, SIGNAL( gotNewExtensiveText( const QString & ) ),
@@ -64,8 +66,10 @@ KODecorationLabel::KODecorationLabel( const QString &shortText,
                                       QWidget *parent )
   : QLabel( parent ), mAutomaticSqueeze( true ), mShortText( shortText ),
     mLongText( longText ), mExtensiveText( extensiveText ),
-    mPixmap( pixmap ), mUrl( url )
+    mPixmap( pixmap )
 {
+  setUrl( url );
+
   setSizePolicy(QSizePolicy( QSizePolicy::Expanding, QSizePolicy::Fixed ));
   squeezeContentsToLabel();
 }
@@ -78,7 +82,7 @@ QSize KODecorationLabel::minimumSizeHint() const
 {
   QSize sh = QLabel::minimumSizeHint();
   sh.setWidth(-1);
-  //sh.setHeight(120); //FIXME
+  sh.setHeight(120); //FIXME
   return sh;
 }
 
@@ -100,7 +104,9 @@ void KODecorationLabel::mouseReleaseEvent( QMouseEvent *event )
 
 void KODecorationLabel::resizeEvent( QResizeEvent *event )
 {
-  mPixmap = mDecorationElement->pixmap( event->size() );
+  kDebug() << "DecorationLabel got a resize event; old size "
+           << event->oldSize() << "--> new size " << event->size() << endl;
+  mPixmap = mDecorationElement->pixmap( event->size() ); //FIXME
   squeezeContentsToLabel();
 }
 
@@ -159,11 +165,11 @@ void KODecorationLabel::squeezeContentsToLabel()
   int labelWidth = size().width();
   int longTextWidth = fm.width(mLongText);
   int extensiveTextWidth = fm.width(mExtensiveText);
-  int pixmapWidth = mPixmap.width();
 
-  if ( ( !mPixmap.isNull() ) ) {
-kDebug() << "using pixmap" << endl;
-    usePixmap( true ); // TODO: scale the pixmap!
+  if ( ! mPixmap.isNull() ) {
+kDebug() << "using pixmap" << endl; //FIXME: remove these debug lines
+kDebug() << "pixmap size: " << mPixmap.size() << endl;
+    usePixmap( true );
   } else if ( ( !mExtensiveText.isEmpty() )
               && ( extensiveTextWidth <= labelWidth ) ) {
 kDebug() << "using extenstext" << endl;
@@ -174,6 +180,7 @@ kDebug() << "using longtext" << endl;
     useLongText( true );
   } else {
 kDebug() << "using shorttext" << endl;
+kDebug() << "pixmap size: " << mPixmap.size() << endl;
     useShortText( true );
   }
 }
@@ -201,7 +208,9 @@ void KODecorationLabel::useLongText( bool allowAutomaticSqueeze )
 void KODecorationLabel::usePixmap( bool allowAutomaticSqueeze )
 {
   mAutomaticSqueeze = allowAutomaticSqueeze;
-  QLabel::setPixmap( mPixmap );
+  QLabel::setPixmap( mPixmap ); // .scaled( sizeHint(), Qt::KeepAspectRatio ) //FIXME: scale to the label's size!!
+  kDebug() << "sizeHint " << sizeHint() << endl;
+  kDebug() << "MINsizeHint " << minimumSizeHint() << endl;
   setToolTip( mExtensiveText.isEmpty() ? mLongText : mExtensiveText );
 }
 

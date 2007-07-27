@@ -3,6 +3,7 @@
 
   Copyright (c) 2000,2001,2003 Cornelius Schumacher <schumacher@kde.org>
   Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+  Copyright (C) 2007 Loïc Corbasson <loic.corbasson@gmail.com>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -38,7 +39,7 @@ class KODecorationLabel : public QLabel
     Q_OBJECT
 
   public:
-    explicit KODecorationLabel( const KOrg::CalendarDecoration::Element *e,
+    explicit KODecorationLabel( KOrg::CalendarDecoration::Element *e,
                        QWidget *parent = 0 );
     explicit KODecorationLabel( const QString &shortText,
                        const QString &longText = QString(),
@@ -48,7 +49,7 @@ class KODecorationLabel : public QLabel
                        QWidget *parent = 0 );
     ~KODecorationLabel();
 
-    virtual QSize minimumSizeHint() const;
+    QSize minimumSizeHint() const;
 
   public slots:
     void setExtensiveText( const QString & );
@@ -68,7 +69,7 @@ class KODecorationLabel : public QLabel
     virtual void mouseReleaseEvent( QMouseEvent * );
     virtual void squeezeContentsToLabel();
     bool mAutomaticSqueeze;
-    const KOrg::CalendarDecoration::Element *mDecorationElement;
+    KOrg::CalendarDecoration::Element *mDecorationElement;
     QString mShortText, mLongText, mExtensiveText;
     QPixmap mPixmap;
     KUrl mUrl;
