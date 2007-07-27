@@ -23,10 +23,10 @@
 #include <QtCore/QSize>
 #include <QtXml/QDomDocument>
 
-#include <KLocale>
-#include <KIO/Scheduler>
-#include <KDebug>
 #include <KConfig>
+#include <KDebug>
+#include <KIO/Scheduler>
+#include <KLocale>
 #include <KStandardDirs>
 
 #include "koglobals.h"
@@ -49,8 +49,7 @@ Picoftheday::Picoftheday()
 {
   KConfig _config( "korganizerrc", KConfig::NoGlobals ); // TODO: access via korg's std method?
   KConfigGroup config( &_config, "Picture of the Day Plugin" );
-  mThumbWidth = config.readEntry( "InitialThumbnailWidth", 120 );
-  mAspectRatioMode = (Qt::AspectRatioMode)config.readEntry( "AspectRatioMode", int(Qt::KeepAspectRatio) );
+  mThumbSize = config.readEntry( "InitialThumbnailSize", QSize(120,120) );
 }
 
 Picoftheday::~Picoftheday()
@@ -72,7 +71,7 @@ Element::List Picoftheday::createDayElements( const QDate &date )
 {
   Element::List elements;
 
-  POTDElement *element = new POTDElement( date, mThumbWidth );
+  POTDElement *element = new POTDElement( date, mThumbSize );
   elements.append( element );
 
   return elements;
@@ -80,14 +79,15 @@ Element::List Picoftheday::createDayElements( const QDate &date )
 
 ////////////////////////////////////////////////////////////////////////////////
 
-POTDElement::POTDElement( const QDate &date, const int initialThumbWidth )
-  : mDate( date ), mThumbWidth( initialThumbWidth )
+POTDElement::POTDElement( const QDate &date, const QSize &initialThumbSize )
+  : mDate( date ), mThumbSize( initialThumbSize )
 {
   setShortText( i18n("Loading…") );
   setLongText( i18n("<qt>Loading <i>Picture of the Day</i>…</qt>") );
   download();
 }
 
+/** First step of three in the download process */
 void POTDElement::download()
 {
   KUrl url = KUrl( "http://commons.wikimedia.org/wiki/Template:Potd/"
@@ -124,6 +124,7 @@ void POTDElement::downloadStep1Result( KJob* job )
   getImagePage();
 }
 
+/** Second step of three in the download process */
 void POTDElement::getImagePage()
 {
   mUrl = KUrl( "http://commons.wikimedia.org/wiki/Image:" + mFileName );
@@ -184,28 +185,75 @@ void POTDElement::downloadStep2Result( KJob* job )
   // We go through all links and stop at the first right-looking candidate
   QDomNodeList links = imgPage.elementsByTagName("a");
   for ( int i=0; i<links.length(); i++ ) {
-    QString href =
-      QString( links.item(i).attributes().namedItem("href").nodeValue() );
+    QString href = links.item(i).attributes().namedItem("href").nodeValue();
     if ( href.startsWith("http://upload.wikimedia.org/wikipedia/commons/") ) {
-      mImagePageUrl = href;
+      mFullSizeImageUrl = href;
       break;
     }
   }
 
-  kDebug() << "picoftheday Plugin: got POTD image page source: " 
-           << mImagePageUrl << endl;
+  // We get the image's width/height ratio
+  mHWRatio = 1.0;
+  QDomNodeList images = imgPage.elementsByTagName("img");
+  for ( int i=0; i<links.length(); i++ ) {
+    QDomNamedNodeMap attr = images.item(i).attributes();
+    QString src = attr.namedItem("src").nodeValue();
+
+    if ( src.startsWith( thumbnailUrl( mFullSizeImageUrl ).url() ) ) {
+      if ( ( attr.namedItem("height").nodeValue().toInt() != 0 )
+           && ( attr.namedItem("width").nodeValue().toInt() != 0 ) ) {
+        mHWRatio = attr.namedItem("height").nodeValue().toFloat()
+                  / attr.namedItem("width").nodeValue().toFloat();
+      }
+      break;
+    }
+
+  }
+  kDebug() << "picoftheday Plugin: h/w ratio: " << mHWRatio << endl;
+
+  kDebug() << "picoftheday Plugin: got POTD image page source: "
+           << mFullSizeImageUrl << endl;
 
   getThumbnail();
 }
 
+/** Returns the thumbnail URL for a given width corresponding to a full-size
+    image URL */
+KUrl POTDElement::thumbnailUrl( const KUrl &fullSizeUrl, const int width ) const
+{
+  QString thumbUrl = fullSizeUrl.url();
+  if ( width != 0 ) {
+    thumbUrl.replace(
+      QRegExp("http://upload.wikimedia.org/wikipedia/commons/(.*)/([^/]*)"),
+      "http://upload.wikimedia.org/wikipedia/commons/thumb/\\1/\\2/"
+        + QString::number( width ) + "px-\\2"
+    );
+  } else {  // This will not return a valid thumbnail URL, but will at least
+            // give some info (the beginning of the URL)
+    thumbUrl.replace(
+      QRegExp("http://upload.wikimedia.org/wikipedia/commons/(.*)/([^/]*)"),
+      "http://upload.wikimedia.org/wikipedia/commons/thumb/\\1/\\2"
+    );
+  }
+  return KUrl( thumbUrl );
+}
+
+/** Third step of three in the downloading process */
 void POTDElement::getThumbnail()
 {
-  QString thumbUrl = mImagePageUrl.url();
-  thumbUrl.replace(
-    QRegExp("http://upload.wikimedia.org/wikipedia/commons/(.*)/([^/]*)"),
-    "http://upload.wikimedia.org/wikipedia/commons/thumb/\\1/\\2/" 
-      + QString::number( mThumbWidth /*+200 FIXME*/ ) + "px-\\2"
-    );
+  int thumbWidth = mThumbSize.width();
+  if ( mThumbSize.height() /* the requested height */
+       < mThumbSize.width() * mHWRatio /* the thumbnail's height,
+                                          based on the requested width
+                                          and the image's ratio */
+     ) {  /* We would download too much, as the downloaded picture would be
+             taller than requested, so we adjust the width of the picture to
+             be downloaded in consequence */
+    thumbWidth /= ( ( mThumbSize.width() * mHWRatio ) / mThumbSize.height() );
+  }
+  kDebug() << "picoftheday Plugin: will download thumbnail of size "
+           << QSize( thumbWidth, thumbWidth * mHWRatio ) << endl;
+  QString thumbUrl = thumbnailUrl( mFullSizeImageUrl, thumbWidth ).url();
 
   kDebug() << "picoftheday Plugin: got POTD thumbnail URL: " 
            << thumbUrl << endl;
@@ -218,6 +266,10 @@ void POTDElement::getThumbnail()
            this, SLOT(downloadStep3Result(KJob *)) );
 }
 
+/**
+  Give it a job which fetched the thumbnail,
+  and it'll give the corresponding pixmap to you.
+ */
 void POTDElement::downloadStep3Result( KJob* job )
 {
   if (job->error())
@@ -232,16 +284,19 @@ void POTDElement::downloadStep3Result( KJob* job )
     static_cast<KIO::StoredTransferJob*>( job );
   if ( mPixmap.loadFromData( transferJob->data() ) ) {
     kDebug() << "picoftheday Plugin: got POTD. " << endl;
-    emit gotNewPixmap( mPixmap );
+    emit gotNewPixmap( mPixmap.scaled( mThumbSize, Qt::KeepAspectRatio,
+                       Qt::SmoothTransformation ) );
   }
 }
 
 QPixmap POTDElement::pixmap( const QSize &size )
 {
+  kDebug() << "picoftheday Plugin: called for a new pixmap size ("
+           << size << " instead of " << mThumbSize << ")" << endl;
   if ( mPixmap.width() < size.width() || mPixmap.height() < size.height() ) {
     setThumbnailSize( size );
 
-    if ( mImagePageUrl.url().isEmpty() ) {
+    if ( mFullSizeImageUrl.url().isEmpty() ) {
       if ( mFileName.isEmpty() ) {
         download();
       } else {
@@ -251,15 +306,10 @@ QPixmap POTDElement::pixmap( const QSize &size )
       getThumbnail();
     }
   }
-  return mPixmap;
-}
-
-void POTDElement::setThumbnailSize( const int width )
-{
-  mThumbWidth = width;
+  return mPixmap.scaled( size, Qt::KeepAspectRatio, Qt::SmoothTransformation );
 }
 
 void POTDElement::setThumbnailSize( const QSize &size )
 {
-  mThumbWidth = size.width();
+  mThumbSize = size;
 }

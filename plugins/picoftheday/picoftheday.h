@@ -39,8 +39,7 @@ class Picoftheday : public Decoration
     QString info();
 
   private:
-    int mThumbWidth;
-    Qt::AspectRatioMode mAspectRatioMode;
+    QSize mThumbSize;
 };
 
 
@@ -49,13 +48,13 @@ class POTDElement : public StoredElement
     Q_OBJECT
 
   public:
-    POTDElement( const QDate &date, const int initialThumbWidth );
+    POTDElement( const QDate &date, const QSize &initialThumbSize );
     ~POTDElement() {}
 
     void setDate( const QDate &date );
-    void setThumbnailSize( const int width );
     void setThumbnailSize( const QSize &size );
     QPixmap pixmap( const QSize &size );
+    KUrl thumbnailUrl( const KUrl &fullSizeUrl, const int width = 0 ) const;
 
   public slots:
     void download();
@@ -71,12 +70,12 @@ class POTDElement : public StoredElement
 
   private:
     QDate mDate;
-    QString mFileName;
-    KUrl mImagePageUrl;
-    KUrl mThumbUrl;
-    int mThumbWidth;
     QString mDescription;
-    Qt::AspectRatioMode mARMode;
+    QString mFileName;
+    KUrl mFullSizeImageUrl;
+    float mHWRatio;
+    QSize mThumbSize;
+    KUrl mThumbUrl;
 
   private slots:
     void downloadStep1Result( KJob* job );
