@@ -504,8 +504,9 @@ void ThemeImporter::setColor( const QString &viewType,
         configGroup( v )->writeEntry( v + key, color );
       }
       else {
-        // TODO: implement this when date-dependent themes will be enabled
-        kDebug() << "THEORICAL setting: " << year << "-" << month << "-" << day
+      // TODO: implement this when date-dependent themes will be enabled
+      kWarning() << "ThemeImporter: feature not yet implemented" << endl;
+      kWarning() << "THEORICAL setting: " << year << "-" << month << "-" << day
                  << ": " << v << ": " << key << ": " << value << endl;
       }
     }
@@ -550,8 +551,9 @@ void ThemeImporter::setFont( const QString &viewType,
       configGroup( v )->writeEntry( v + key, f );
     }
     else {
-      // TODO: implement this when date-dependent themes will be enabled
-      kDebug() << "THEORICAL setting: " << year << "-" << month << "-" << day
+    // TODO: implement this when date-dependent themes will be enabled
+    kWarning() << "ThemeImporter: feature not yet implemented" << endl;
+    kWarning() << "THEORICAL setting: " << year << "-" << month << "-" << day
           << ": " << v << ": " << key << ": " << family << "\t"
           << styleHint << "\t" << pointSize << "\t" << weight << "\t"
           << style << "\t" << sf << endl;
@@ -571,8 +573,9 @@ void ThemeImporter::setPath( const QString &viewType,
         configGroup( v )->writePathEntry( v + key, value );
       }
       else {
-        // TODO: implement this when date-dependent themes will be enabled
-        kDebug() << "THEORICAL setting: " << year << "-" << month << "-" << day
+      // TODO: implement this when date-dependent themes will be enabled
+      kWarning() << "ThemeImporter: feature not yet implemented" << endl;
+      kWarning() << "THEORICAL setting: " << year << "-" << month << "-" << day
                  << ": " << v << ": " << key << ": " << value << endl;
       }
     }
@@ -591,8 +594,9 @@ void ThemeImporter::setString( const QString &viewType,
         configGroup( v )->writeEntry( v + key, value );
       }
       else {
-        // TODO: implement this when date-dependent themes will be enabled
-        kDebug() << "THEORICAL setting: " << year << "-" << month << "-" << day
+      // TODO: implement this when date-dependent themes will be enabled
+      kWarning() << "ThemeImporter: feature not yet implemented" << endl;
+      kWarning() << "THEORICAL setting: " << year << "-" << month << "-" << day
             << ": " << v << ": " << key << ": " << value << endl;
       }
     }
