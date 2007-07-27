@@ -67,7 +67,7 @@ class Element : public QObject
       Return a short text for a given date,
       usually only a few words.
      */
-    virtual QString shortText() const;
+    virtual QString shortText();
     /**
       Return a long text for a given date.
       This text can be of any length,
@@ -75,24 +75,24 @@ class Element : public QObject
       
       Can for example be used as a tool tip.
      */
-    virtual QString longText() const;
+    virtual QString longText();
     /**
       Return an extensive text for a given date.
       This text can be of any length,
       but usually it will have one or a few paragraphs.
      */
-    virtual QString extensiveText() const;
+    virtual QString extensiveText();
 
     /**
       Return a pixmap for a given date and a given size.
      */
-    virtual QPixmap pixmap( const QSize & ) const;
+    virtual QPixmap pixmap( const QSize & );
 
     /**
       Return a URL pointing to more information about the content of the
       element.
      */
-    virtual KUrl url() const;
+    virtual KUrl url();
 
   Q_SIGNALS:
     virtual void gotNewPixmap( const QPixmap & ) const;
@@ -117,19 +117,19 @@ class StoredElement : public Element
     StoredElement( const QPixmap &pixmap );
 
     void setShortText( const QString &t );
-    QString shortText() const;
+    QString shortText();
 
     void setLongText( const QString &t );
-    QString longText() const;
+    QString longText();
 
     void setExtensiveText( const QString &t );
-    QString extensiveText() const;
+    QString extensiveText();
 
     void setPixmap( const QPixmap &p );
-    QPixmap pixmap() const;
+    QPixmap pixmap();
 
     void setUrl( const KUrl &u );
-    KUrl url() const;
+    KUrl url();
 
   protected:
     QString mShortText;
