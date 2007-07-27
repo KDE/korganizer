@@ -74,7 +74,7 @@ FreeBusyUrlWidget::FreeBusyUrlWidget( KCal::Attendee *attendee, QWidget *parent 
   topLayout->setSpacing( KDialog::spacingHint() );
 
   QLabel *label = new QLabel(
-      i18n("Location of Free/Busy information for %1 <%2>:",
+      i18n("Location of Free/Busy information for %1 <%2>:", //krazy:exclude=i18ncheckarg
         mAttendee->name(), mAttendee->email() ), this );
   topLayout->addWidget( label );
 

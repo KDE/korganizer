@@ -299,7 +299,7 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
     // We will be sending out a message here. Now make sure there is
     // some summary
     if( incidence->summary().isEmpty() )
-      incidence->setSummary( i18n("<No summary given>") );
+      incidence->setSummary( i18n("<No summary given>") ); //krazy:exclude=i18ncheckarg
 
     // Send the mail
     KCal::MailScheduler scheduler( mCalendar );

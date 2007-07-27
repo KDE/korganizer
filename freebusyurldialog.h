@@ -21,8 +21,8 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef FREEBUSYURLCONFIG_H
-#define FREEBUSYURLCONFIG_H
+#ifndef FREEBUSYURLDIALOG_H
+#define FREEBUSYURLDIALOG_H
 
 #include <kdialog.h>
 

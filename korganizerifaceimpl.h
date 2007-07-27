@@ -29,8 +29,8 @@
   your version.
  */
 
-#ifndef KORGANIZER_SHARED_H
-#define KORGANIZER_SHARED_H
+#ifndef KORGANIZERIFACEIMPL_H
+#define KORGANIZERIFACEIMPL_H
 
 #include "korganizer_export.h"
 #include <QObject>

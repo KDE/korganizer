@@ -22,8 +22,8 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef _ARCHIVE_DLG
-#define _ARCHIVE_DLG
+#ifndef ARCHIVEDIALOG_H
+#define ARCHIVEDIALOG_H
 
 #include <kdialog.h>
 

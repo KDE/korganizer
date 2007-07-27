@@ -22,6 +22,7 @@
     without including the source code for Qt in the source distribution.
 */
 
+#include "kotimelineview.h"
 
 #include <kcal/calendar.h>
 #include <kcal/calendarresources.h>
@@ -35,8 +36,6 @@
 #include "koglobals.h"
 #include "koprefs.h"
 #include "timelineitem.h"
-
-#include "kotimelineview.h"
 
 using namespace KOrg;
 using namespace KCal;

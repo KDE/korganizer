@@ -225,11 +225,12 @@ void FreeBusyManager::publishFreeBusy()
   KUrl targetURL ( KOPrefs::instance()->freeBusyPublishUrl() );
   if ( targetURL.isEmpty() )  {
     KMessageBox::sorry( 0,
-      i18n( "<qt>No URL configured for uploading your free/busy list. Please "
-            "set it in KOrganizer's configuration dialog, on the \"Free/Busy\" page. "
-            "<br>Contact your system administrator for the exact URL and the "
-            "account details."
-            "</qt>" ), i18n("No Free/Busy Upload URL") );
+      i18n( "<qt><p>No URL configured for uploading your free/busy list. "
+            "Please set it in KOrganizer's configuration dialog, on the "
+            "\"Free/Busy\" page.</p>"
+            "<p>Contact your system administrator for the exact URL and the "
+            "account details.</p></qt>" ),
+      i18n("No Free/Busy Upload URL") );
     return;
   }
 
@@ -329,12 +330,13 @@ void FreeBusyManager::slotUploadFreeBusyResult(KJob *_job)
     KIO::FileCopyJob* job = static_cast<KIO::FileCopyJob *>(_job);
     if ( job->error() )
         KMessageBox::sorry( 0,
-          i18n( "<qt>The software could not upload your free/busy list to the "
-                "URL '%1'. There might be a problem with the access rights, or "
-                "you specified an incorrect URL. The system said: <em>%2</em>."
-                "<br>Please check the URL or contact your system administrator."
-                "</qt>", job->destUrl().prettyUrl() ,
-                           job->errorString() ) );
+          i18n( "<qt><p>The software could not upload your free/busy list to "
+                "the URL '%1'. There might be a problem with the access "
+                "rights, or you specified an incorrect URL. The system said: "
+                "<em>%2</em>.</p>"
+                "<p>Please check the URL or contact your system administrator."
+                "</p></qt>", job->destUrl().prettyUrl(),
+                job->errorString() ) );
     // Delete temp file
     KUrl src = job->srcUrl();
     Q_ASSERT( src.isLocalFile() );

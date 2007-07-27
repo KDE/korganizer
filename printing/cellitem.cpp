@@ -34,7 +34,7 @@ using namespace KOrg;
 
 QString CellItem::label() const
 {
-  return i18n("<undefined>");
+  return i18n("<undefined>"); //krazy:exclude=i18ncheckarg
 }
 
 QList<CellItem*> CellItem::placeItem( QList<CellItem*> cells,
