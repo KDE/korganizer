@@ -280,8 +280,8 @@ QString Parsha::findParshaName( int dayNumber, int kvia, bool isLeapYear,
 
   if (!array) { /* Something is terribly wrong! */
     buffer = "??Parsha??";
-    kWarning() << "Hebrew: Was not able to determine the Parsha. Please report "
-                  "this as a bug." << endl;
+    kWarning() << "Hebrew Plugin: Was not able to determine the Parsha. "
+                  "Please report this as a bug." << endl;
     return buffer;
   }
 

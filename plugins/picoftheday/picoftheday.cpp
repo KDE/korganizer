@@ -292,20 +292,25 @@ void POTDElement::downloadStep3Result( KJob* job )
 QPixmap POTDElement::pixmap( const QSize &size )
 {
   kDebug() << "picoftheday Plugin: called for a new pixmap size ("
-           << size << " instead of " << mThumbSize << ")" << endl;
-  if ( mPixmap.width() < size.width() || mPixmap.height() < size.height() ) {
+           << size << " instead of " << mThumbSize << ", stored pixmap: "
+           << mPixmap.size() << ")" << endl;
+  if ( ( mThumbSize.width() < size.width() )
+       || ( mThumbSize.height() < size.height() ) ) {
     setThumbnailSize( size );
 
     if ( mFullSizeImageUrl.url().isEmpty() ) {
       if ( mFileName.isEmpty() ) {
-        download();
+        download();  // Start from the beginning (step 1/3)
       } else {
-        getImagePage();
+        getImagePage();  // Start from the middle (step 2/3)
       }
     } else {
-      getThumbnail();
+      getThumbnail();  // Start from the end (step 3/3)
     }
   }
+  /* else, either we already got a sufficiently big pixmap (stored in mPixmap),
+     or we will get one anytime soon (we are downloading it already) and we will
+     actualize what we return here later via gotNewPixmap */
   return mPixmap.scaled( size, Qt::KeepAspectRatio, Qt::SmoothTransformation );
 }
 
