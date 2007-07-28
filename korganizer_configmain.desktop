@@ -14,6 +14,7 @@ X-KDE-CfgDlgHierarchy=KOrganizer
 
 Name=Personal
 Name[af]=Persoonlik
+Name[bg]=Персоналност
 Name[br]=Diouzhoc'h
 Name[cs]=Osobní
 Name[cy]=Personol
@@ -62,6 +63,7 @@ Name[x-test]=xxPersonalxx
 Name[zh_TW]=個人 
 Comment=KOrganizer Main Configuration
 Comment[af]=KOrganizer hoof opstelling
+Comment[bg]=Главни настройки за KOrganizer
 Comment[br]=Kefluniadur kentañ KOrganizer
 Comment[ca]=Configuració principal a KOrganizer
 Comment[cs]=Hlavní nastavení KOrganizeru
@@ -109,6 +111,7 @@ Comment[uk]=Налаштування особистих даних у KOrganizer
 Comment[x-test]=xxKOrganizer Main Configurationxx
 Comment[zh_TW]=KOrganizer 主設定
 Keywords=korganizer,main,personal
+Keywords[bg]=Keywords=организатор, главни, персонални, настройки, korganizer, main, personal
 Keywords[ca]=korganizer,principal,personal
 Keywords[cs]=korganizer,hlavní,osobní
 Keywords[cy]=korganizer,ktrefnydd,prif,personol

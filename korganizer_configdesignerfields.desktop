@@ -14,6 +14,7 @@ X-KDE-CfgDlgHierarchy=KOrganizer
 
 Name=Custom Pages
 Name[af]=Pasmaak Blaaie
+Name[bg]=Потребителски полета
 Name[br]=Pajennoù dre ziouer
 Name[ca]=Pàgines a mida
 Name[cs]=Vlastní stránky
@@ -60,6 +61,7 @@ Name[uk]=Нетипові сторінки
 Name[x-test]=xxCustom Pagesxx
 Comment=Configure the Custom Pages
 Comment[af]=Stel die pasmaak blaaie op
+Comment[bg]=Настройки на потребителските полета
 Comment[br]=Kefluniañ ar pajennoù diouzhoc'h
 Comment[ca]=Configura les pàgines a mida
 Comment[cs]=Nastavení vlastních stránek
@@ -106,6 +108,7 @@ Comment[uk]=Налаштування нетипових сторінок
 Comment[x-test]=xxConfigure the Custom Pagesxx
 Comment[zh_TW]=設定 Custom Pages
 Keywords=korganizer, configure, settings, custom fields
+Keywords[bg]=Keywords=организатор, настройки, korganizer, configure, settings, custom fields
 Keywords[ca]=korganizer, configura, opcions, camps a mida
 Keywords[cs]=korganizer,nastavení,vlastní pole
 Keywords[da]=korganizer, indstil, opsætning, brugervalgte felter

@@ -14,6 +14,7 @@ X-KDE-CfgDlgHierarchy=KOrganizer
 
 Name=Fonts
 Name[af]=Skrif tipes
+Name[bg]=Шрифтове
 Name[br]=Fontoù
 Name[ca]=Lletres
 Name[cs]=Písma
@@ -69,6 +70,7 @@ Name[xh]=Ubungakanani bamagama
 Name[zh_TW]=字型
 Comment=KOrganizer Fonts Configuration
 Comment[af]=KOrganizer skrif tipe opstelling
+Comment[bg]=Настройки на шрифтовете за KOrganizer
 Comment[ca]=Configuració de lletres al KOrganizer
 Comment[cs]=Nastavení písem KOrganizeru
 Comment[cy]=ffurfweddiad Wynebfathau KTrefnydd
@@ -116,6 +118,7 @@ Comment[x-test]=xxKOrganizer Fonts Configurationxx
 Comment[zh_TW]=KOrganizer 字型設定
 Keywords=korganizer,fonts
 Keywords[af]=korganizer, fonts
+Keywords[bg]=Keywords=организатор, шрифтове, настройки, korganizer, fonts
 Keywords[br]=korganizer,nodrezhoù
 Keywords[ca]=korganizer,lletres
 Keywords[cs]=korganizer,písma

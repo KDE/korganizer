@@ -2,6 +2,7 @@
 Encoding=UTF-8
 X-KDE-Library=libkorg_picoftheday
 Name=Wikipedia Picture Of the Day Plugin for Calendars
+Name[bg]=Приставка на календара за дати и смятане с дати
 Name[el]=Πρόσθετο εικόνας της ημέρας της Wikipedia για Ημερολόγια
 Name[es]=Imagen de la wikipedia del plugin dl día para calendarios
 Name[fa]=عکس ویکی پدیا از وصلۀ روز برای تقویمها

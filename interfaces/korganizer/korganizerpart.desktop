@@ -4,6 +4,7 @@ Type=ServiceType
 X-KDE-ServiceType=KOrganizer/Part
 Comment=KOrganizer Part
 Comment[af]=Korganizer Deel
+Comment[bg]=Модул KOrganizer
 Comment[br]=Perzh KOrganizer
 Comment[ca]=Part de KOrganizer
 Comment[cy]=KTrefnydd Part

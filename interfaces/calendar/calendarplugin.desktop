@@ -4,6 +4,7 @@ Type=ServiceType
 X-KDE-ServiceType=Calendar/Plugin
 Comment=Calendar Plugin
 Comment[af]=Kalender Inplak
+Comment[bg]=Приставка за календар
 Comment[br]=Lugent an deiziadur
 Comment[ca]=Endollable calendari
 Comment[cs]=Kalendářový modul
