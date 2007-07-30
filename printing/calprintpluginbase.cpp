@@ -917,7 +917,7 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
   p.setFont(QFont("sans-serif", 10, QFont::Bold));
   p.drawText( headerTextBox, Qt::AlignRight | Qt::AlignVCenter, dayNumStr);
 
-  Event::List eventList = mCalendar->events( qd,
+  Event::List eventList = mCalendar->events( qd, KPimPrefs::timeSpec(),
                                              EventSortStartDate,
                                              SortDirectionAscending );
   QString text;
@@ -1036,6 +1036,7 @@ void CalPrintPluginBase::drawTimeTable(QPainter &p,
 
   // draw each day
   QDate curDate(fromDate);
+  KDateTime::Spec timeSpec = KPimPrefs::timeSpec();
   int i=0;
   double cellWidth = double(dowBox.width()) / double(fromDate.daysTo(toDate)+1);
   while (curDate<=toDate) {
@@ -1044,7 +1045,7 @@ void CalPrintPluginBase::drawTimeTable(QPainter &p,
     QRect dayBox( allDayBox );
     dayBox.setTop( tlBox.top() );
     dayBox.setBottom( box.bottom() );
-    Event::List eventList = mCalendar->events(curDate,
+    Event::List eventList = mCalendar->events(curDate, timeSpec,
                                               EventSortStartDate,
                                               SortDirectionAscending);
     alldayHeight = drawAllDayBox( p, eventList, curDate, false, allDayBox );

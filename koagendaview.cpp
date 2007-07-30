@@ -1427,7 +1427,7 @@ void KOAgendaView::fillAgenda()
 //    kDebug(5850) << "KOAgendaView::fillAgenda(): " << currentDate.toString()
 //              << endl;
 
-    dayEvents = calendar()->events(currentDate,
+    dayEvents = calendar()->events(currentDate, KOPrefs::instance()->timeSpec(),
                                    EventSortStartDate,
                                    SortDirectionAscending);
 

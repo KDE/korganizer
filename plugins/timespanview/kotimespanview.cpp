@@ -111,7 +111,7 @@ void KOTimeSpanView::insertItems(const QDate &start, const QDate &end)
   mTimeSpanWidget->clear();
   mTimeSpanWidget->setDateRange( start, end );
 
-  Event::List events = calendar()->events( start, end );
+  Event::List events = calendar()->events( start, end, KPimPrefs::timeSpec() );
   Event::List::ConstIterator it;
   for( it = events.begin(); it != events.end(); ++it ) {
     mTimeSpanWidget->addItem( *it );

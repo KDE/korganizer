@@ -136,8 +136,9 @@ void SearchDialog::search( const QRegExp &re )
   QDate endDt = mEndDate->date();
 
   Event::List events;
+  KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
   if (mEventsCheck->isChecked()) {
-    events = mCalendar->events( startDt, endDt, mInclusiveCheck->isChecked() );
+    events = mCalendar->events( startDt, endDt, timeSpec, mInclusiveCheck->isChecked() );
   }
   Todo::List todos;
   if (mTodosCheck->isChecked()) {

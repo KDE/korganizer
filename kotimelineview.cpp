@@ -148,8 +148,9 @@ void KOTimelineView::showDates(const QDate& start, const QDate& end)
 
   // add incidences
   Event::List events;
+  KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
   for ( QDate day = start; day <= end; day = day.addDays( 1 ) ) {
-    events = calendar()->events( day, EventSortStartDate, SortDirectionAscending );
+    events = calendar()->events( day, timeSpec, EventSortStartDate, SortDirectionAscending );
     for ( Event::List::ConstIterator it = events.constBegin(); it != events.constEnd(); ++it ) {
       insertIncidence( *it, day );
     }
@@ -278,8 +279,9 @@ void KOTimelineView::insertIncidence(KCal::Incidence * incidence)
     return;
   if ( incidence->recurs() )
     insertIncidence( incidence, QDate() );
+  KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
   for ( QDate day = mStartDate; day <= mEndDate; day = day.addDays( 1 ) ) {
-    Event::List events = calendar()->events( day, EventSortStartDate, SortDirectionAscending );
+    Event::List events = calendar()->events( day, timeSpec, EventSortStartDate, SortDirectionAscending );
     for ( Event::List::ConstIterator it = events.constBegin(); it != events.constEnd(); ++it ) {
       if ( events.contains( event ) )
         insertIncidence( *it, day );

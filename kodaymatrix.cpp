@@ -291,7 +291,7 @@ void KODayMatrix::updateEvents()
 
   for( int i = 0; i < NUMDAYS; i++ ) {
     // if events are set for the day then remember to draw it bold
-    Event::List eventlist = mCalendar->events( mDays[ i ] );
+    Event::List eventlist = mCalendar->events( mDays[ i ], mCalendar->timeSpec() );
     int numEvents = eventlist.count();
     Event::List::ConstIterator it;
     for( it = eventlist.begin(); it != eventlist.end(); ++it ) {

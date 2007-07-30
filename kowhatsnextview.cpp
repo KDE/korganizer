@@ -110,8 +110,9 @@ void KOWhatsNextView::updateView()
   mText+="</h2>\n";
 
   Event::List events;
+  KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
   for ( QDate date = mStartDate; date <= mEndDate; date = date.addDays( 1 ) )
-    events += calendar()->events(date,
+    events += calendar()->events(date, timeSpec,
                                  EventSortStartDate, SortDirectionAscending);
 
   if (events.count() > 0) {
@@ -130,7 +131,6 @@ void KOWhatsNextView::updateView()
       } else {
         Recurrence *recur = ev->recurrence();
         int duration = ev->dtStart().secsTo( ev->dtEnd() );
-	KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
         KDateTime start = recur->getPreviousDateTime(
                                 KDateTime( mStartDate, QTime(), timeSpec ) );
         KDateTime end = start.addSecs( duration );
@@ -186,7 +186,7 @@ void KOWhatsNextView::updateView()
 
   QStringList myEmails( KOPrefs::instance()->allEmails() );
   int replies = 0;
-  events = calendar()->events( QDate::currentDate(), QDate(2975,12,6) );
+  events = calendar()->events( QDate::currentDate(), QDate(2975,12,6), timeSpec );
   Event::List::ConstIterator it2;
   for( it2 = events.begin(); it2 != events.end(); ++it2 ) {
     Event *ev = *it2;
