@@ -352,25 +352,30 @@ void KOEditorGeneral::updateAlarmWidgets()
   }
 }
 
-void KOEditorGeneral::readIncidence(Incidence *event)
+void KOEditorGeneral::readIncidence( Incidence *incidence )
 {
-  mSummaryEdit->setText(event->summary());
-  mLocationEdit->setText(event->location());
+  mSummaryEdit->setText( incidence->summary() );
+  mLocationEdit->setText( incidence->location() );
 
   // TODO: Implement description as rich text, too.
-  mDescriptionEdit->setPlainText(event->description());
+  mDescriptionEdit->setPlainText( incidence->description() );
 
-#if 0
-  // organizer information
-  mOwnerLabel->setText(i18n("Owner: ") + event->organizer().fullName() );
-#endif
-
-  mSecrecyCombo->setCurrentIndex(event->secrecy());
+  switch( incidence->secrecy() ) {
+  case Incidence::SecrecyPublic:
+    mSecrecyCombo->setCurrentIndex( 0 );
+    break;
+  case Incidence::SecrecyPrivate:
+    mSecrecyCombo->setCurrentIndex( 1 );
+    break;
+  case Incidence::SecrecyConfidential:
+    mSecrecyCombo->setCurrentIndex( 2 );
+    break;
+  }
 
   // set up alarm stuff
   mAlarmList.clear();
   Alarm::List::ConstIterator it;
-  Alarm::List alarms = event->alarms();
+  Alarm::List alarms = incidence->alarms();
   for( it = alarms.begin(); it != alarms.end(); ++it ) {
     Alarm *al = new Alarm( *(*it) );
     al->setParent( 0 );
@@ -379,53 +384,62 @@ void KOEditorGeneral::readIncidence(Incidence *event)
   updateDefaultAlarmTime();
   updateAlarmWidgets();
 
-  setCategories(event->categories());
+  setCategories( incidence->categories() );
 }
 
 Alarm *KOEditorGeneral::alarmFromSimplePage() const
 {
   if ( mAlarmButton->isChecked() ) {
     Alarm *alarm = new Alarm( 0 );
-    alarm->setDisplayAlarm("");
-    alarm->setEnabled(true);
+    alarm->setDisplayAlarm( "" );
+    alarm->setEnabled( true );
     QString tmpStr = mAlarmTimeEdit->text();
     int j = mAlarmTimeEdit->value() * -60;
-    if (mAlarmIncrCombo->currentIndex() == 1)
+    if ( mAlarmIncrCombo->currentIndex() == 1 ) {
       j = j * 60;
-    else if (mAlarmIncrCombo->currentIndex() == 2)
-      j = j * (60 * 24);
+    } else if ( mAlarmIncrCombo->currentIndex() == 2 ) {
+      j = j * ( 60 * 24 );
+    }
     alarm->setStartOffset( j );
     return alarm;
   } else {
     return 0;
   }
 }
-void KOEditorGeneral::writeIncidence(Incidence *event)
-{
-//  kDebug(5850) << "KOEditorGeneral::writeEvent()" << endl;
 
-  event->setSummary(mSummaryEdit->text());
-  event->setLocation(mLocationEdit->text());
-  event->setDescription(mDescriptionEdit->toPlainText());
-  event->setCategories(mCategories);
-  event->setSecrecy(mSecrecyCombo->currentIndex());
+void KOEditorGeneral::writeIncidence( Incidence *incidence )
+{
+  incidence->setSummary( mSummaryEdit->text() );
+  incidence->setLocation( mLocationEdit->text() );
+  incidence->setDescription( mDescriptionEdit->toPlainText() );
+  incidence->setCategories( mCategories );
+  switch( mSecrecyCombo->currentIndex() ) {
+  case 1:
+    incidence->setSecrecy( Incidence::SecrecyPrivate );
+    break;
+  case 2:
+    incidence->setSecrecy( Incidence::SecrecyConfidential );
+    break;
+  default:
+    incidence->setSecrecy( Incidence::SecrecyPublic );
+  }
 
   // alarm stuff
-  event->clearAlarms();
+  incidence->clearAlarms();
   if ( mAlarmStack->indexOf( mAlarmStack->currentWidget() ) == SimpleAlarmPage ) {
     Alarm *al = alarmFromSimplePage();
     if ( al ) {
-      al->setParent( event );
-      event->addAlarm( al );
+      al->setParent( incidence );
+      incidence->addAlarm( al );
     }
   } else {
     // simply assign the list of alarms
     Alarm::List::ConstIterator it;
-    for( it = mAlarmList.begin(); it != mAlarmList.end(); ++it ) {
+    for ( it = mAlarmList.begin(); it != mAlarmList.end(); ++it ) {
       Alarm *al = new Alarm( *(*it) );
-      al->setParent( event );
+      al->setParent( incidence );
       al->setEnabled( true );
-      event->addAlarm( al );
+      incidence->addAlarm( al );
     }
   }
 }
