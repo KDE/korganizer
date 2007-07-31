@@ -53,6 +53,7 @@ Comment[fa]=همۀ تاریخهای KOrganizer، همچنین سیستم تقو�
 Comment[pt]=Mostra todas as datas no KOrganizer também no sistema de calendários Judeu.
 Comment[pt_BR]=Mostra todas as datas no KOrganizer também no sistema de calendários Judeu.
 Comment[sv]=Visar också alla datum i Korganizer enligt den judiska kalendern.
+Comment[zh_TW]=在 KOrganizer 中也顯示所有猶太行事曆系統的日期
 Type=Service
 ServiceTypes=Calendar/Plugin,Calendar/Decoration
 X-KDE-KOrganizer-HasSettings=true
