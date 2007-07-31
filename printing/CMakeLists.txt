@@ -22,7 +22,7 @@ set(korg_stdprinting_LIB_SRCS
    calprinter.cpp 
    calprintpluginbase.cpp 
    calprintdefaultplugins.cpp )
-
+kde4_add_kcfg_files(korg_stdprinting_LIB_SRCS ../koprefs_base.kcfgc )
 
 kde4_add_ui_files(korg_stdprinting_LIB_SRCS 
    calprintincidenceconfig_base.ui
