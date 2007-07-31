@@ -212,7 +212,7 @@
       <default>true</default>
     </entry>
 
-    <entry type="Enum" name="Agenda View Calendar Display">
+    <entry type="Enum" name="AgendaViewCalendarDisplay">
       <label>Agenda View Calendar Display</label>
       <choices>
         <choice name="CalendarsMerged">
