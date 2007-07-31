@@ -27,9 +27,9 @@
 #ifndef KORG_NOPRINTER
 
 #include "calprintdefaultplugins.h"
-#include "koprefs.h"
 
 #include <libkdepim/kdateedit.h>
+#include <libkdepim/kpimprefs.h>
 
 #include <kcal/todo.h>
 #include <kcal/calendar.h>
@@ -565,7 +565,7 @@ void CalPrintDay::print( QPainter &p, int width, int height )
 {
   QDate curDay( mFromDate );
 
-  KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
+  KDateTime::Spec timeSpec = KPimPrefs::timeSpec();
   do {
     QTime curStartTime( mStartTime );
     QTime curEndTime( mEndTime );
