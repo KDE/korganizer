@@ -85,6 +85,7 @@ void EventArchiver::run( Calendar* calendar, const QDate& limitDate, QWidget* wi
       QDate( 1769, 12, 1 ),
       // #29555, also advertised by the "limitDate not included" in the class docu
       limitDate.addDays( -1 ),
+      KOPrefs::instance()->timeSpec(),
       true );
   }
   if ( KOPrefs::instance()->mArchiveTodos ) {
