@@ -72,13 +72,14 @@ class KOTimelineView : public KOEventView
     void itemRightClicked( KDGanttViewItem *item );
     void itemMoved( KDGanttViewItem *item );
     void overscale( KDGanttView::Scale scale );
+    void newEventWithHint( const QDateTime & );
 
   private:
     KDGanttView* mGantt;
     QMap<KCal::ResourceCalendar*, QMap<QString, KOrg::TimelineItem*> > mCalendarItemMap;
     KOEventPopupMenu *mEventPopup;
     QDate mStartDate, mEndDate;
-    QDateTime mRmbDate;
+    QDateTime mHintDate;
 };
 
 #endif
