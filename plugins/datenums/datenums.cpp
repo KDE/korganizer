@@ -68,16 +68,16 @@ Element::List Datenums::createDayElements( const QDate &date )
   StoredElement *e;
   switch ( mDisplayedInfo ) {
     case DayOfYear: // only day of year
-      e = new StoredElement( QString::number( dayOfYear ) );
+      e = new StoredElement( "main element", QString::number( dayOfYear ) );
     case DaysRemaining: // only days until end of year
-      e = new StoredElement( QString::number( remainingDays ),
+      e = new StoredElement( "main element", QString::number( remainingDays ),
                              i18np("1 day before the end of the year",
                                    "%1 days before the end of the year",
                                    remainingDays) );
       break;
     case DayOfYear + DaysRemaining: // both day of year and days till end of year
     default:
-      e = new StoredElement( QString::number( dayOfYear ),
+      e = new StoredElement( "main element", QString::number( dayOfYear ),
                              i18nc("dayOfYear / daysTillEndOfYear", "%1 / %2",
                                    dayOfYear, remainingDays),
                              i18np("1 day since the beginning of the year,\n",
