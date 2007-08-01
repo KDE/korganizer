@@ -27,7 +27,8 @@ using namespace KOrg::CalendarDecoration;
 
 ////////////////////////////////////////////////////////////////////////////////
 
-Element::Element()
+Element::Element( const QString &id )
+  : mId( id )
 {
 }
 
@@ -37,7 +38,7 @@ Element::~Element()
 
 QString Element::id() const
 {
-  return QString();
+  return mId;
 }
 
 QString Element::elementInfo() const
@@ -72,31 +73,31 @@ KUrl Element::url()
 
 ////////////////////////////////////////////////////////////////////////////////
 
-StoredElement::StoredElement()
+StoredElement::StoredElement( const QString &id ) : Element( id )
 {
 }
 
-StoredElement::StoredElement( const QString &shortText )
-  : mShortText( shortText )
+StoredElement::StoredElement( const QString &id, const QString &shortText )
+  : Element( id ), mShortText( shortText )
 {
 }
 
-StoredElement::StoredElement( const QString &shortText,
+StoredElement::StoredElement( const QString &id, const QString &shortText,
                               const QString &longText )
-  : mShortText( shortText ), mLongText( longText )
+  : Element( id ), mShortText( shortText ), mLongText( longText )
 {
 }
 
-StoredElement::StoredElement( const QString &shortText,
+StoredElement::StoredElement( const QString &id, const QString &shortText,
                               const QString &longText,
                               const QString &extensiveText )
-  : mShortText( shortText ), mLongText( longText ),
+  : Element( id ), mShortText( shortText ), mLongText( longText ),
     mExtensiveText( extensiveText )
 {
 }
 
-StoredElement::StoredElement( const QPixmap &pixmap )
-  : mPixmap( pixmap )
+StoredElement::StoredElement( const QString &id, const QPixmap &pixmap )
+  : Element( id ), mPixmap( pixmap )
 {
 }
 
@@ -203,7 +204,7 @@ Element::List Decoration::weekElements( const QDate &d )
   }
 }
 
-Element::List Decoration::monthElement( const QDate &d )
+Element::List Decoration::monthElements( const QDate &d )
 {
   QDate date = monthDate( d );
   QMap<QDate,Element::List>::ConstIterator it;
@@ -215,7 +216,7 @@ Element::List Decoration::monthElement( const QDate &d )
   }
 }
 
-Element::List Decoration::yearElement( const QDate &d )
+Element::List Decoration::yearElements( const QDate &d )
 {
   QDate date = yearDate( d );
   QMap<QDate,Element::List>::ConstIterator it;

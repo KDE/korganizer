@@ -49,7 +49,7 @@ class Element : public QObject
   public:
     typedef QList<Element *> List;
 
-    Element();
+    Element( const QString &id );
     virtual ~Element();
 
     /**
@@ -100,6 +100,9 @@ class Element : public QObject
     virtual void gotNewLongText( const QString & ) const;
     virtual void gotNewExtensiveText( const QString & ) const;
     virtual void gotNewUrl( const KUrl & ) const;
+
+  protected:
+    QString mId;
 };
 
 /**
@@ -109,27 +112,28 @@ class Element : public QObject
 class StoredElement : public Element
 {
   public:
-    StoredElement();
-    StoredElement( const QString &shortText );
-    StoredElement( const QString &shortText, const QString &longText );
-    StoredElement( const QString &shortText, const QString &longText,
-                   const QString &extensiveText );
-    StoredElement( const QPixmap &pixmap );
+    StoredElement( const QString &id );
+    StoredElement( const QString &id, const QString &shortText );
+    StoredElement( const QString &id, const QString &shortText,
+                   const QString &longText );
+    StoredElement( const QString &id, const QString &shortText,
+                   const QString &longText, const QString &extensiveText );
+    StoredElement( const QString &id, const QPixmap &pixmap );
 
-    void setShortText( const QString &t );
-    QString shortText();
+    virtual void setShortText( const QString &t );
+    virtual QString shortText();
 
-    void setLongText( const QString &t );
-    QString longText();
+    virtual void setLongText( const QString &t );
+    virtual QString longText();
 
-    void setExtensiveText( const QString &t );
-    QString extensiveText();
+    virtual void setExtensiveText( const QString &t );
+    virtual QString extensiveText();
 
-    void setPixmap( const QPixmap &p );
-    QPixmap pixmap();
+    virtual void setPixmap( const QPixmap &p );
+    virtual QPixmap pixmap();
 
-    void setUrl( const KUrl &u );
-    KUrl url();
+    virtual void setUrl( const KUrl &u );
+    virtual KUrl url();
 
   protected:
     QString mShortText;
@@ -172,12 +176,12 @@ class Decoration : public Plugin
     /**
       Return all elements for the month the given date belongs to.
     */
-    virtual Element::List monthElement( const QDate &d );
+    virtual Element::List monthElements( const QDate &d );
 
     /**
       Return all elements for the year the given date belongs to.
     */
-    virtual Element::List yearElement( const QDate &d );
+    virtual Element::List yearElements( const QDate &d );
 
   protected:
     /**
@@ -224,7 +228,6 @@ class Decoration : public Plugin
     */
     virtual Element::List createYearElements( const QDate & );
 
-  protected:
     /**
       Map all dates of the same week to a single date.
     */
