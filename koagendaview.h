@@ -269,12 +269,13 @@ class KOAgendaView : public KOrg::AgendaView
     KHBox *mBottomDayLabelsFrame;
     QBoxLayout *mLayoutBottomDayLabels;
     QFrame *mAllDayFrame;
-    KOAgenda *mAllDayAgenda;
-    KOAgenda *mAgenda;
-    TimeLabels *mTimeLabels;
     QWidget *mDummyAllDayLeft;
     QSplitter *mSplitterAgenda;
     QPushButton *mExpandButton;
+
+    KOAgenda *mAllDayAgenda;
+    KOAgenda *mAgenda;
+    TimeLabels *mTimeLabels;
 
     DateList mSelectedDates;  // List of dates to be displayed
     int mViewType;

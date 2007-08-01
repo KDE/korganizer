@@ -25,6 +25,7 @@
 #include "koglobals.h"
 #ifndef KORG_NOPLUGINS
 #include "kocore.h"
+#include "kodecorationlabel.h"
 #endif
 #include "koprefs.h"
 #include "koagenda.h"
@@ -33,7 +34,6 @@
 #include "kodialogmanager.h"
 #include "koeventpopupmenu.h"
 #include "koalternatelabel.h"
-#include "kodecorationlabel.h"
 
 #include <kcal/calendar.h>
 #include <kcal/icaldrag.h>
@@ -51,6 +51,7 @@
 #include <kglobal.h>
 #include <kglobalsettings.h>
 #include <kholidays.h>
+#include <KVBox>
 
 #include <QLabel>
 #include <QFrame>
@@ -101,7 +102,7 @@ TimeLabels::TimeLabels(int rows,QWidget *parent, Qt::WFlags f) :
 //  mMousePos->setMargin(0);
   QPalette pal;
   pal.setColor( QPalette::Dark,
-                KOPrefs::instance()->agendaMarcusBainsLineColor() );
+                KOPrefs::instance()->agendaMarcusBainsLineLineColor() );
   mMousePos->setPalette( pal );
   mMousePos->setFixedSize(width(), 1);
   addChild(mMousePos, 0, 0);
@@ -347,7 +348,7 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
   mUpdateItem( 0 ),
   mResource( 0 )
 {
-  mSelectedDates.append(QDate::currentDate());
+  mSelectedDates.append( QDate::currentDate() );
 
   mLayoutDayLabels = 0;
   mDayLabelsFrame = 0;
@@ -363,45 +364,53 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
       mExpandedPixmap = KOGlobals::self()->smallIcon( "arrow-down" );
       mNotExpandedPixmap = KOGlobals::self()->smallIcon( "arrow-up" );
     } else {
-      mExpandedPixmap = KOGlobals::self()->smallIcon( isRTL ? "arrow-left" : "arrow-right" );
-      mNotExpandedPixmap = KOGlobals::self()->smallIcon( isRTL ? "arrow-right" : "arrow-left" );
+      mExpandedPixmap = KOGlobals::self()->smallIcon( isRTL ? "arrow-left"
+                                                            : "arrow-right" );
+      mNotExpandedPixmap = KOGlobals::self()->smallIcon( isRTL ? "arrow-right"
+                                                               : "arrow-left" );
     }
   }
 
-  QBoxLayout *topLayout = new QVBoxLayout(this);
-  topLayout->setMargin(0);
+  QBoxLayout *topLayout = new QVBoxLayout( this );
+  topLayout->setMargin( 0 );
 
-  // Create day name labels for agenda columns
-  mDayLabelsFrame = new KHBox(this);
-  topLayout->addWidget(mDayLabelsFrame);
 
-  // Create agenda splitter
+  /* Create agenda splitter */
 #ifndef KORG_NOSPLITTER
-  mSplitterAgenda = new QSplitter(Qt::Vertical,this);
-  topLayout->addWidget(mSplitterAgenda);
-
+  mSplitterAgenda = new QSplitter( Qt::Vertical, this );
+  topLayout->addWidget( mSplitterAgenda );
   mSplitterAgenda->setOpaqueResize( KGlobalSettings::opaqueResize() );
-
-  mAllDayFrame = new KHBox(mSplitterAgenda);
-
-  QWidget *agendaFrame = new QWidget(mSplitterAgenda);
 #else
+  // If we don't use splitters, we still need to order the widgets nevertheless
   KVBox *mainBox = new KVBox( this );
   topLayout->addWidget( mainBox );
-
-  mAllDayFrame = new KHBox(mainBox);
-
-  QWidget *agendaFrame = new QWidget(mainBox);
 #endif
 
-  // Create all-day agenda widget
+
+  /* Create day name labels for agenda columns */
+#ifndef KORG_NOSPLITTER
+  mDayLabelsFrame = new KHBox( mSplitterAgenda );
+#else
+  mDayLabelsFrame = new KHBox( this );
+  topLayout->addWidget( mDayLabelsFrame );
+#endif
+
+
+  /* Create all-day agenda widget */
+#ifndef KORG_NOSPLITTER
+  mAllDayFrame = new KHBox( mSplitterAgenda );
+#else
+  mAllDayFrame = new KHBox( mainBox );
+#endif
+
+  // Alignment and description widgets
   mDummyAllDayLeft = new KVBox( mAllDayFrame );
 
   if ( KOPrefs::instance()->compactDialogs() ) {
-    mExpandButton = new QPushButton(mDummyAllDayLeft);
+    mExpandButton = new QPushButton( mDummyAllDayLeft );
     mExpandButton->setIcon( QIcon(mNotExpandedPixmap) );
     mExpandButton->setSizePolicy( QSizePolicy( QSizePolicy::Fixed,
-                                  QSizePolicy::Fixed ) );
+                                               QSizePolicy::Fixed ) );
     connect( mExpandButton, SIGNAL( clicked() ), SIGNAL( toggleExpand() ) );
   } else {
     QLabel *label = new QLabel( i18n("All Day"), mDummyAllDayLeft );
@@ -409,80 +418,91 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
     label->setWordWrap( true );
   }
 
-  mAllDayAgenda = new KOAgenda(1,mAllDayFrame);
-  QWidget *dummyAllDayRight = new QWidget(mAllDayFrame);
+  // The widget itself
+  mAllDayAgenda = new KOAgenda( 1, mAllDayFrame );
+  QWidget *dummyAllDayRight = new QWidget( mAllDayFrame );
 
-  // Create agenda frame
-  QGridLayout *agendaLayout = new QGridLayout(agendaFrame);
+  // Create the event context menu for the all-day agenda
+  mAllDayAgendaPopup = eventPopup();
+
+
+  /* Create the main agenda widget and the related widgets */
+#ifndef KORG_NOSPLITTER
+  QWidget *agendaFrame = new QWidget( mSplitterAgenda );
+#else
+  QWidget *agendaFrame = new QWidget( mainBox );
+#endif
+  QGridLayout *agendaLayout = new QGridLayout( agendaFrame );
   agendaLayout->setMargin(0);
-//  QHBox *agendaFrame = new QHBox(splitterAgenda);
 
-  // create event indicator bars
-  mEventIndicatorTop = new EventIndicator(EventIndicator::Top,agendaFrame);
-  agendaLayout->addWidget(mEventIndicatorTop,0,1);
-  mEventIndicatorBottom = new EventIndicator(EventIndicator::Bottom,
-                                             agendaFrame);
-  agendaLayout->addWidget(mEventIndicatorBottom,2,1);
-  QWidget *dummyAgendaRight = new QWidget(agendaFrame);
-  agendaLayout->addWidget(dummyAgendaRight,0,2);
+  // Create event indicator bars
+  mEventIndicatorTop = new EventIndicator( EventIndicator::Top, agendaFrame );
+  agendaLayout->addWidget( mEventIndicatorTop, 0, 1 );
+  mEventIndicatorBottom = new EventIndicator( EventIndicator::Bottom,
+                                              agendaFrame );
+  agendaLayout->addWidget( mEventIndicatorBottom, 2, 1 );
+
+  // Alignment and description widgets
+  QWidget *dummyAgendaRight = new QWidget( agendaFrame );
+  agendaLayout->addWidget( dummyAgendaRight, 0, 2 );
 
   // Create time labels
-  mTimeLabels = new TimeLabels(24,agendaFrame);
-  agendaLayout->addWidget(mTimeLabels,1,0);
+  mTimeLabels = new TimeLabels( 24, agendaFrame );
+  agendaLayout->addWidget( mTimeLabels, 1, 0 );
 
   // Create agenda
-  mAgenda = new KOAgenda(1,96,KOPrefs::instance()->mHourSize,agendaFrame);
+  mAgenda = new KOAgenda( 1, 96, KOPrefs::instance()->mHourSize, agendaFrame );
   agendaLayout->addWidget( mAgenda, 1, 1, 1, 2 );
-  agendaLayout->setColumnStretch(1,1);
+  agendaLayout->setColumnStretch( 1, 1 );
 
   // Create event context menu for agenda
   mAgendaPopup = eventPopup();
 
-  // Create event context menu for all day agenda
-  mAllDayAgendaPopup = eventPopup();
-
-  // make connections between dependent widgets
+  // Make connections between dependent widgets
   mTimeLabels->setAgenda(mAgenda);
 
-  // Create a frame at the bottom which may be used by decorations
-  mBottomDayLabelsFrame = new KHBox(this);
-  mBottomDayLabelsFrame->setSpacing(2);
-  topLayout->addWidget(mBottomDayLabelsFrame);
+  // Scrolling
+  connect( mAgenda->verticalScrollBar(), SIGNAL( valueChanged(int) ),
+           mTimeLabels, SLOT( positionChanged() ) );
+  connect( mTimeLabels->verticalScrollBar(), SIGNAL( valueChanged(int) ),
+           SLOT( setContentsPos(int) ) );
+  connect( mAgenda,
+           SIGNAL( zoomView(const int, const QPoint &, const Qt::Orientation) ),
+           SLOT( zoomView(const int, const QPoint &, const Qt::Orientation) ) );
 
-  // Update widgets to reflect user preferences
-//  updateConfig();
+  // Event indicator updates
+  connect( mAgenda, SIGNAL( lowerYChanged(int) ),
+           SLOT( updateEventIndicatorTop(int) ) );
+  connect( mAgenda, SIGNAL( upperYChanged(int) ),
+           SLOT( updateEventIndicatorBottom(int) ) );
 
-  createDayLabels();
 
-  // these blank widgets make the All Day Event box line up with the agenda
+  /* Create a frame at the bottom which may be used by decorations */
+#ifndef KORG_NOSPLITTER
+  if ( KOPrefs::instance()->decorationsAtAgendaViewBottom().count() > 0 ) {
+    mBottomDayLabelsFrame = new KHBox( mSplitterAgenda );
+  } else {
+    mBottomDayLabelsFrame = new KHBox( this );
+    topLayout->addWidget( mBottomDayLabelsFrame );
+  }
+#else
+  mBottomDayLabelsFrame = new KHBox( this );
+  topLayout->addWidget( mBottomDayLabelsFrame );
+#endif
+  mBottomDayLabelsFrame->setSpacing(2);  // TODO: CHECK THIS
+
+
+  /* Make the all-day and normal agendas line up with each other */
   dummyAllDayRight->setFixedWidth(mAgenda->verticalScrollBar()->width());
-  dummyAgendaRight->setFixedWidth(mAgenda->verticalScrollBar()->width());
-
   updateTimeBarWidth();
 
-  // Scrolling
-  connect(mAgenda->verticalScrollBar(),SIGNAL(valueChanged(int)),
-          mTimeLabels, SLOT(positionChanged()));
 
-  connect( mAgenda,
-    SIGNAL( zoomView( const int, const QPoint & ,const Qt::Orientation ) ),
-    SLOT( zoomView( const int, const QPoint &, const Qt::Orientation ) ) );
+  /* Update widgets to reflect user preferences */
+//  updateConfig();
+  createDayLabels();
 
-  connect(mTimeLabels->verticalScrollBar(),SIGNAL(valueChanged(int)),
-          SLOT(setContentsPos(int)));
 
-  // Create Events, depends on type of agenda
-  connect( mAgenda, SIGNAL(newTimeSpanSignal(const QPoint &, const QPoint &)),
-                    SLOT(newTimeSpanSelected(const QPoint &, const QPoint &)));
-  connect( mAllDayAgenda, SIGNAL(newTimeSpanSignal(const QPoint &, const QPoint &)),
-                          SLOT(newTimeSpanSelectedAllDay(const QPoint &, const QPoint &)));
-
-  // event indicator update
-  connect( mAgenda, SIGNAL(lowerYChanged(int)),
-                    SLOT(updateEventIndicatorTop(int)));
-  connect( mAgenda, SIGNAL(upperYChanged(int)),
-                    SLOT(updateEventIndicatorBottom(int)));
-
+  /* Connect the agendas */
   connectAgenda( mAgenda, mAgendaPopup, mAllDayAgenda );
   connectAgenda( mAllDayAgenda, mAllDayAgendaPopup, mAgenda);
 }
@@ -507,6 +527,10 @@ void KOAgendaView::connectAgenda( KOAgenda *agenda, QMenu *popup,
 
   // Create/Show/Edit/Delete Event
   connect( agenda, SIGNAL( newEventSignal() ), SIGNAL( newEventSignal() ) );
+
+  connect( agenda,
+           SIGNAL( newTimeSpanSignal( const QPoint &, const QPoint & ) ),
+           SLOT( newTimeSpanSelected( const QPoint &, const QPoint & ) ) );
 
   connect( agenda, SIGNAL( newStartSelectSignal() ),
            otherAgenda, SLOT( clearSelection() ) );
@@ -700,41 +724,10 @@ void KOAgendaView::createDayLabels()
   DateList::ConstIterator dit;
   for( dit = mSelectedDates.begin(); dit != mSelectedDates.end(); ++dit ) {
     QDate date = *dit;
-    QGridLayout *dayLayout = new QGridLayout();
-    dayLayout->setMargin(0);
-    mLayoutDayLabels->addItem(dayLayout);
-    mLayoutDayLabels->setStretchFactor(dayLayout, 1);
-//    dayLayout->setMinimumWidth(1);
-    QBoxLayout *dayBottomLayout = new QVBoxLayout();
-    dayBottomLayout->setMargin(0);
-    mLayoutBottomDayLabels->addItem(dayBottomLayout);
-    mLayoutBottomDayLabels->setStretchFactor(dayBottomLayout, 1);
-//    dayLayout->setMinimumWidth(1);
-
-#ifndef KORG_NOPLUGINS
-    CalendarDecoration::Decoration::List cds = 
-      KOCore::self()->calendarDecorations();
-
-    // Show calendar decorations for the top of the top label
-    foreach ( CalendarDecoration::Decoration* deco, cds ) {
-      kDebug() << deco->info() << ": " << deco->dayElements(date).count() << endl;
-      foreach ( CalendarDecoration::Element* it, deco->dayElements( date ) ) {
-        kDebug() << deco->info() << "----" << date.toString(Qt::ISODate) << ":  " << it->shortText() << endl;
-        //TODO: check if it's the right place, get the size
-/*        QPixmap pixmap = it->pixmap( *size );
-        QString shortText = it->shortText();
-        QString longText = it->longText();
-        QString extensiveText = it->extensiveText();
-        KUrl url = it->url();
-        KODecorationLabel *label = new KODecorationLabel( shortText, longText,
-            extensiveText, pixmap, url, mDayLabels );*/
-        KODecorationLabel *label = new KODecorationLabel( it, mDayLabels );
-//        label->setMaximumHeight( mAgenda->height()/5 ); //FIXME
-        dayLayout->addWidget( label, 3, 1 ); // Center bottom
-        dayLayout->setAlignment( label, Qt::AlignCenter );
-      }
-    }
-#endif
+    KVBox *dayLabelBox = new KVBox( mDayLabels );
+    mLayoutDayLabels->addWidget( dayLabelBox );
+    KVBox *bottomDayLabelBox = new KVBox( mBottomDayLabels );
+    mLayoutBottomDayLabels->addWidget( bottomDayLabelBox );
 
     int dW = calsys->dayOfWeek(date);
     QString veryLongStr = KGlobal::locale()->formatDate( date );
@@ -744,7 +737,7 @@ void KOAgendaView::createDayLabels()
     QString shortstr = QString::number(calsys->day(date));
 
     KOAlternateLabel *dayLabel = new KOAlternateLabel(shortstr,
-      longstr, veryLongStr, mDayLabels);
+      longstr, veryLongStr, dayLabelBox);
     dayLabel->setMinimumWidth(1);
     dayLabel->setAlignment(Qt::AlignHCenter);
     if (date == QDate::currentDate()) {
@@ -752,20 +745,53 @@ void KOAgendaView::createDayLabels()
       font.setBold(true);
       dayLabel->setFont(font);
     }
-    dayLayout->addWidget(dayLabel, 1, 1);
 
     // if a holiday region is selected, show the holiday name
     QStringList texts = KOGlobals::self()->holiday( date );
     QStringList::ConstIterator textit = texts.begin();
     for ( ; textit != texts.end(); ++textit ) {
       // use a KOAlternateLabel so when the text doesn't fit any more a tooltip is used
-      KOAlternateLabel*label = new KOAlternateLabel( (*textit), (*textit), QString(), mDayLabels );
+      KOAlternateLabel*label = new KOAlternateLabel( (*textit), (*textit), QString(), dayLabelBox );
       label->setMinimumWidth(1);
       label->setAlignment(Qt::AlignCenter);
-      dayLayout->addWidget(label, 2, 1);
     }
 
 #ifndef KORG_NOPLUGINS
+    foreach ( QString decoName,
+              KOPrefs::instance()->decorationsAtAgendaViewTop() ) {
+      if ( KOPrefs::instance()->selectedPlugins().contains( decoName ) ) {
+        CalendarDecoration::Decoration* deco
+          = KOCore::self()->loadCalendarDecoration( decoName );
+
+        KHBox *decoHBox = new KHBox( dayLabelBox );
+        decoHBox->setFrameShape( QFrame::StyledPanel );
+
+        foreach ( CalendarDecoration::Element* it, deco->dayElements( date ) ) {
+          KODecorationLabel *label = new KODecorationLabel( it, decoHBox );
+          label->setAlignment( Qt::AlignBottom );
+        //label->setMinimumWidth( 1 );
+        //label->setMaximumWidth( mAgenda->width() / mSelectedDates.count() );
+        }
+      }
+    }
+
+    foreach ( QString decoName,
+              KOPrefs::instance()->decorationsAtAgendaViewBottom() ) {
+      if ( KOPrefs::instance()->selectedPlugins().contains( decoName ) ) {
+        CalendarDecoration::Decoration* deco
+          = KOCore::self()->loadCalendarDecoration( decoName );
+
+        KHBox *decoHBox = new KHBox( bottomDayLabelBox );
+        decoHBox->setFrameShape( QFrame::StyledPanel );
+
+        foreach ( CalendarDecoration::Element* it, deco->dayElements( date ) ) {
+          KODecorationLabel *label = new KODecorationLabel( it, decoHBox );
+          label->setAlignment( Qt::AlignBottom );
+        //label->setMinimumWidth( 1 );
+        //label->setMaximumWidth( mAgenda->width() / mSelectedDates.count() );
+        }
+      }
+    }
 #endif
   }
 
@@ -773,6 +799,27 @@ void KOAgendaView::createDayLabels()
   mDayLabels->show();
   mLayoutBottomDayLabels->addSpacing(mAgenda->verticalScrollBar()->width());
   mBottomDayLabels->show();
+
+#ifndef KORG_NOPLUGINS
+  // Week decoration labels
+  foreach ( QString decoName,
+            ( KOPrefs::instance()->decorationsAtAgendaViewTop()
+              + KOPrefs::instance()->decorationsAtAgendaViewBottom() ) ) {
+    if ( KOPrefs::instance()->selectedPlugins().contains( decoName ) ) {
+      CalendarDecoration::Decoration* deco
+        = KOCore::self()->loadCalendarDecoration( decoName );
+
+      KHBox *decoHBox = new KHBox( mDayLabels );
+      decoHBox->setFrameShape( QFrame::StyledPanel );
+
+      foreach ( CalendarDecoration::Element* it,
+                deco->weekElements( mSelectedDates.first() ) ) {
+        KODecorationLabel *label = new KODecorationLabel( it, decoHBox );
+        label->setAlignment( Qt::AlignBottom );
+      }
+    }
+  }
+#endif
 }
 
 void KOAgendaView::enableAgendaUpdate( bool enable )
@@ -905,10 +952,8 @@ void KOAgendaView::updateConfig()
 
 void KOAgendaView::updateTimeBarWidth()
 {
-  int width;
-
-  width = mDummyAllDayLeft->fontMetrics().width( i18n("All Day") );
-  width = qMax( width, mTimeLabels->width() );
+  int width = qMax( mDummyAllDayLeft->fontMetrics().width( i18n("All Day"),
+                    mTimeLabels->width() );
 
   mDummyAllDayLeft->setFixedWidth( width );
   mTimeLabels->setFixedWidth( width );
