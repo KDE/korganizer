@@ -48,7 +48,8 @@ class POTDElement : public StoredElement
     Q_OBJECT
 
   public:
-    POTDElement( const QDate &date, const QSize &initialThumbSize );
+    POTDElement( const QString &id, const QDate &date,
+                 const QSize &initialThumbSize );
     ~POTDElement() {}
 
     void setDate( const QDate &date );
@@ -56,31 +57,42 @@ class POTDElement : public StoredElement
     QPixmap pixmap( const QSize &size );
     KUrl thumbnailUrl( const KUrl &fullSizeUrl, const int width = 0 ) const;
 
-  public slots:
-    void download();
-    void getImagePage();
-    void getThumbnail();
-
   signals:
     void gotNewPixmap( const QPixmap & ) const;
     void gotNewShortText( const QString & ) const;
     void gotNewLongText( const QString & ) const;
     void gotNewExtensiveText( const QString & ) const;
     void gotNewUrl( const KUrl & ) const;
+    // The following three signals are only used internally
+    void step1Success() const;
+    void step2Success() const;
+    void step3Success() const;
+
+  protected slots:
+    void step1StartDownload();
+    void step2GetImagePage();
+    void step3GetThumbnail();
 
   private:
     QDate mDate;
     QString mDescription;
+    QSize mDlThumbSize;
     QString mFileName;
     KUrl mFullSizeImageUrl;
     float mHWRatio;
     QSize mThumbSize;
     KUrl mThumbUrl;
+    bool mFirstStepCompleted;
+    bool mSecondStepCompleted;
+    KIO::SimpleJob *mFirstStepJob;
+    KIO::SimpleJob *mSecondStepJob;
+    KIO::SimpleJob *mThirdStepJob;
+    QTimer *mTimer;
 
   private slots:
-    void downloadStep1Result( KJob* job );
-    void downloadStep2Result( KJob* job );
-    void downloadStep3Result( KJob* job );
+    void step1Result( KJob* job );
+    void step2Result( KJob* job );
+    void step3Result( KJob* job );
 };
 
 #endif

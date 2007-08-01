@@ -47,9 +47,9 @@ K_EXPORT_COMPONENT_FACTORY( libkorg_picoftheday, PicofthedayFactory )
 
 Picoftheday::Picoftheday()
 {
-  KConfig _config( "korganizerrc", KConfig::NoGlobals ); // TODO: access via korg's std method?
+  KConfig _config( "korganizerrc" );
   KConfigGroup config( &_config, "Picture of the Day Plugin" );
-  mThumbSize = config.readEntry( "InitialThumbnailSize", QSize(120,120) );
+  mThumbSize = config.readEntry( "InitialThumbnailSize", QSize( 120, 120 ) );
 }
 
 Picoftheday::~Picoftheday()
@@ -71,7 +71,7 @@ Element::List Picoftheday::createDayElements( const QDate &date )
 {
   Element::List elements;
 
-  POTDElement *element = new POTDElement( date, mThumbSize );
+  POTDElement *element = new POTDElement( "main element", date, mThumbSize );
   elements.append( element );
 
   return elements;
@@ -79,38 +79,52 @@ Element::List Picoftheday::createDayElements( const QDate &date )
 
 ////////////////////////////////////////////////////////////////////////////////
 
-POTDElement::POTDElement( const QDate &date, const QSize &initialThumbSize )
-  : mDate( date ), mThumbSize( initialThumbSize )
+POTDElement::POTDElement( const QString &id, const QDate &date,
+                          const QSize &initialThumbSize )
+  : StoredElement( id ), mDate( date ), mThumbSize( initialThumbSize ),
+    mFirstStepCompleted( false ), mSecondStepCompleted( false ),
+    mFirstStepJob( 0 ), mSecondStepJob( 0 ), mThirdStepJob( 0 )
 {
   setShortText( i18n("Loading…") );
   setLongText( i18n("<qt>Loading <i>Picture of the Day</i>…</qt>") );
-  download();
+
+  mTimer = new QTimer( this );
+  mTimer->setSingleShot( true );
+
+  step1StartDownload();
 }
 
 /** First step of three in the download process */
-void POTDElement::download()
+void POTDElement::step1StartDownload()
 {
-  KUrl url = KUrl( "http://commons.wikimedia.org/wiki/Template:Potd/"
-                   + mDate.toString(Qt::ISODate) + "?action=raw" );
-               // The file at that URL contains the file name for the POTD
+  if ( (!mFirstStepCompleted) && (!mFirstStepJob) ) {
+    KUrl url = KUrl( "http://commons.wikimedia.org/wiki/Template:Potd/"
+                    + mDate.toString(Qt::ISODate) + "?action=raw" );
+                // The file at that URL contains the file name for the POTD
 
-  KIO::SimpleJob *job = KIO::storedGet( url, false, false );
-  KIO::Scheduler::scheduleJob( job );
+    mFirstStepJob = KIO::storedGet( url, false, false );
+    KIO::Scheduler::scheduleJob( mFirstStepJob );
 
-  connect( job,  SIGNAL( result(KJob *) ),
-           this, SLOT( downloadStep1Result(KJob *) ) );
+    connect( mFirstStepJob,  SIGNAL( result(KJob *) ),
+             this, SLOT( step1Result(KJob *) ) );
+    connect( this, SIGNAL( step1Success() ), this, SLOT( step2GetImagePage() ) );
+  }
 }
 
 /**
   Give it a job which fetched the raw page,
   and it'll give you the image file name hiding in it.
  */
-void POTDElement::downloadStep1Result( KJob* job )
+void POTDElement::step1Result( KJob* job )
 {
   if ( job->error() )
   {
     kWarning() << "picoftheday Plugin: could not get POTD file name: "
                << job->errorString() << endl;
+    kDebug() << "file name: " << mFileName << endl;
+    kDebug() << "full-size image: " << mFullSizeImageUrl.url() << endl;
+    kDebug() << "thumbnail: " << mThumbUrl.url() << endl;
+    mFirstStepCompleted = false;
     return;
   }
 
@@ -121,36 +135,47 @@ void POTDElement::downloadStep1Result( KJob* job )
                                  transferJob->data().size() );
   kDebug() << "picoftheday Plugin: got POTD file name: " << mFileName << endl;
 
-  getImagePage();
+  if ( !mFileName.isEmpty() ) {
+    mFirstStepCompleted = true;
+    mFirstStepJob = 0;
+    emit step1Success();
+  }
 }
 
 /** Second step of three in the download process */
-void POTDElement::getImagePage()
+void POTDElement::step2GetImagePage()
 {
-  mUrl = KUrl( "http://commons.wikimedia.org/wiki/Image:" + mFileName );
-  // We'll find the info to get the thumbnail we want on the POTD's image page
+  if ( (!mSecondStepCompleted) && (!mSecondStepJob) ) {
+    mUrl = KUrl( "http://commons.wikimedia.org/wiki/Image:" + mFileName );
+    // We'll find the info to get the thumbnail we want on the POTD's image page
 
-  emit gotNewUrl( mUrl );
-  mShortText = i18n("Picture Page");
-  emit gotNewShortText( mShortText );
+    emit gotNewUrl( mUrl );
+    mShortText = i18n("Picture Page");
+    emit gotNewShortText( mShortText );
 
-  KIO::SimpleJob *job = KIO::storedGet( mUrl, false, false );
-  KIO::Scheduler::scheduleJob( job );
+    mSecondStepJob = KIO::storedGet( mUrl, false, false );
+    KIO::Scheduler::scheduleJob( mSecondStepJob );
 
-  connect( job,  SIGNAL( result(KJob *) ),
-           this, SLOT( downloadStep2Result(KJob *) ) );
+    connect( mSecondStepJob,  SIGNAL( result(KJob *) ),
+            this, SLOT( step2Result(KJob *) ) );
+    connect( this, SIGNAL( step2Success() ), SLOT( step3GetThumbnail() ) );
+  }
 }
 
 /**
   Give it a job which fetched the image page,
   and it'll give you the appropriate thumbnail URL.
  */
-void POTDElement::downloadStep2Result( KJob* job )
+void POTDElement::step2Result( KJob* job )
 {
   if ( job->error() )
   {
     kWarning() << "picoftheday Plugin: could not get POTD image page: " 
                << job->errorString() << endl;
+    kDebug() << "file name: " << mFileName << endl;
+    kDebug() << "full-size image: " << mFullSizeImageUrl.url() << endl;
+    kDebug() << "thumbnail: " << mThumbUrl.url() << endl;
+    mSecondStepCompleted = false;
     return;
   }
 
@@ -214,7 +239,11 @@ void POTDElement::downloadStep2Result( KJob* job )
   kDebug() << "picoftheday Plugin: got POTD image page source: "
            << mFullSizeImageUrl << endl;
 
-  getThumbnail();
+  if ( !mFullSizeImageUrl.isEmpty() ) {
+    mSecondStepCompleted = true;
+    mSecondStepJob = 0;
+    emit step2Success();
+  }
 }
 
 /** Returns the thumbnail URL for a given width corresponding to a full-size
@@ -239,8 +268,11 @@ KUrl POTDElement::thumbnailUrl( const KUrl &fullSizeUrl, const int width ) const
 }
 
 /** Third step of three in the downloading process */
-void POTDElement::getThumbnail()
+void POTDElement::step3GetThumbnail()
 {
+  if ( mThirdStepJob ) mThirdStepJob->kill();
+  mThirdStepJob = 0;
+
   int thumbWidth = mThumbSize.width();
   if ( mThumbSize.height() /* the requested height */
        < mThumbSize.width() * mHWRatio /* the thumbnail's height,
@@ -251,31 +283,39 @@ void POTDElement::getThumbnail()
              be downloaded in consequence */
     thumbWidth /= ( ( mThumbSize.width() * mHWRatio ) / mThumbSize.height() );
   }
+  mDlThumbSize = QSize( thumbWidth, thumbWidth * mHWRatio );
   kDebug() << "picoftheday Plugin: will download thumbnail of size "
-           << QSize( thumbWidth, thumbWidth * mHWRatio ) << endl;
+           << mDlThumbSize << endl;
   QString thumbUrl = thumbnailUrl( mFullSizeImageUrl, thumbWidth ).url();
 
   kDebug() << "picoftheday Plugin: got POTD thumbnail URL: " 
            << thumbUrl << endl;
   mThumbUrl = thumbUrl;
 
-  KIO::SimpleJob *job = KIO::storedGet( thumbUrl, false, false );
-  KIO::Scheduler::scheduleJob( job );
+  mThirdStepJob = KIO::storedGet( thumbUrl, false, false );
+  kDebug() << "get " << thumbUrl << endl;//FIXME
+  KIO::Scheduler::scheduleJob( mThirdStepJob );
 
-  connect( job, SIGNAL(result(KJob *)),
-           this, SLOT(downloadStep3Result(KJob *)) );
+  connect( mThirdStepJob, SIGNAL(result(KJob *)),
+           this, SLOT(step3Result(KJob *)) );
 }
 
 /**
   Give it a job which fetched the thumbnail,
   and it'll give the corresponding pixmap to you.
  */
-void POTDElement::downloadStep3Result( KJob* job )
+void POTDElement::step3Result( KJob* job )
 {
+  if ( job != mThirdStepJob ) return;
+  mThirdStepJob = 0;
+
   if (job->error())
   {
     kWarning() << "picoftheday Plugin: could not get POTD: "
                << job->errorString() << endl;
+    kDebug() << "file name: " << mFileName << endl;
+    kDebug() << "full-size image: " << mFullSizeImageUrl.url() << endl;
+    kDebug() << "thumbnail: " << mThumbUrl.url() << endl;
     return;
   }
 
@@ -298,14 +338,30 @@ QPixmap POTDElement::pixmap( const QSize &size )
        || ( mThumbSize.height() < size.height() ) ) {
     setThumbnailSize( size );
 
-    if ( mFullSizeImageUrl.url().isEmpty() ) {
-      if ( mFileName.isEmpty() ) {
-        download();  // Start from the beginning (step 1/3)
+    if ( !mFirstStepCompleted ) {
+      step1StartDownload();  // First run, start from the beginning
+    } else if ( ( mDlThumbSize.width() < size.width() )
+                && ( mDlThumbSize.height() < size.height() ) ) {
+      if ( mThirdStepJob ) {
+        // Another download (for the old size) is already running;
+        // we'll run after that
+        disconnect( this, SIGNAL( step3Success() ),
+                    this, SLOT( step3GetThumbnail() ) );
+        connect( this, SIGNAL( step3Success() ), SLOT( step3GetThumbnail() ) );
+      } else if ( mFirstStepJob || mSecondStepJob ) {
+        // The download process did not get to step 3 yet, and will download
+        // the correct size automagically
       } else {
-        getImagePage();  // Start from the middle (step 2/3)
+        // We start a new thumbnail download a little later; the following code
+        // is to avoid too frequent transfers e.g. when resizing
+        mTimer->stop();
+        disconnect( mTimer, SIGNAL( timeout() ),
+                   this, SLOT( step3GetThumbnail() ) );
+        connect( mTimer, SIGNAL( timeout() ),
+                 this, SLOT( step3GetThumbnail() ) );
+        mTimer->setSingleShot( true );
+        mTimer->start( 1000 );
       }
-    } else {
-      getThumbnail();  // Start from the end (step 3/3)
     }
   }
   /* else, either we already got a sufficiently big pixmap (stored in mPixmap),
