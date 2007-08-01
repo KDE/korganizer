@@ -41,7 +41,7 @@ K_EXPORT_COMPONENT_FACTORY( libkorg_thisdayinhistory, ThisDayInHistoryFactory )
 
 ThisDayInHistory::ThisDayInHistory()
 {
-  KConfig _config( "korganizerrc", KConfig::NoGlobals );
+  KConfig _config( "korganizerrc" );
   KConfigGroup config( &_config, "This Day in History Plugin" );
 }
 
@@ -55,13 +55,30 @@ Element::List ThisDayInHistory::createDayElements( const QDate &date )
 {
   Element::List elements;
 
-  StoredElement *element = new StoredElement( i18n("This day in history") );
+  StoredElement *element = new StoredElement( "Wikipedia link",
+                                              i18n("This day in history") );
   element->setUrl( i18nc("Localized Wikipedia website",
                          "http://en.wikipedia.org/wiki/")
                    + date.toString( i18nc("Qt date format used by the"
                                            "localized Wikipedia",
                                           "MMMM_d") ) );
 
+  elements.append( element );
+
+  return elements;
+}
+
+Element::List ThisDayInHistory::createMonthElements( const QDate &date )
+{
+  Element::List elements;
+
+  StoredElement *element = new StoredElement( "Wikipedia link",
+                                              i18n("This month in history") );
+  element->setUrl( i18nc("Localized Wikipedia website",
+                         "http://en.wikipedia.org/wiki/")
+                   + date.toString( i18nc("Qt date format used by the"
+                                           "localized Wikipedia",
+                                          "MMMM_yyyy") ) );
   elements.append( element );
 
   return elements;

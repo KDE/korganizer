@@ -31,6 +31,7 @@ class ThisDayInHistory : public Decoration
     ~ThisDayInHistory() {}
 
     Element::List createDayElements( const QDate & );
+    Element::List createMonthElements( const QDate & );
 
 //    void configure( QWidget *parent );
 
