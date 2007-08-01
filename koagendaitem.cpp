@@ -57,7 +57,7 @@
 
 #include "koagendaitem.moc"
 
-//--------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 
 QPixmap *KOAgendaItem::alarmPxmp = 0;
 QPixmap *KOAgendaItem::recurPxmp = 0;
@@ -67,18 +67,17 @@ QPixmap *KOAgendaItem::groupPxmp = 0;
 QPixmap *KOAgendaItem::groupPxmpTentative = 0;
 QPixmap *KOAgendaItem::organizerPxmp = 0;
 
-//--------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 
-KOAgendaItem::KOAgendaItem( Incidence *incidence, const QDate &qd, QWidget *parent,
-                             Qt::WFlags f ) :
-  // TODO_QT4: Use constructor without *name=0 param
-  QWidget( parent, f ), mIncidence( incidence ), mDate( qd ),
-  mLabelText( mIncidence->summary() ), mIconAlarm( false ),
-  mIconRecur( false ), mIconReadonly( false ), mIconReply( false ),
-  mIconGroup( false ), mIconGroupTentative( false ), mIconOrganizer( false ),
-  mMultiItemInfo( 0 ), mStartMoveInfo( 0 )
+KOAgendaItem::KOAgendaItem( Incidence *incidence, const QDate &qd,
+                            QWidget *parent )
+  : QWidget( parent ), mIncidence( incidence ), mDate( qd ),
+    mLabelText( mIncidence->summary() ), mIconAlarm( false ),
+    mIconRecur( false ), mIconReadonly( false ), mIconReply( false ),
+    mIconGroup( false ), mIconGroupTentative( false ), mIconOrganizer( false ),
+    mMultiItemInfo( 0 ), mStartMoveInfo( 0 )
 {
-  setAttribute(Qt::WA_NoSystemBackground, true);
+  setAttribute( Qt::WA_NoSystemBackground, true );
 
   setCellXY( 0, 0, 1 );
   setCellXRight( 0 );
@@ -86,7 +85,7 @@ KOAgendaItem::KOAgendaItem( Incidence *incidence, const QDate &qd, QWidget *pare
   mResourceColor = QColor();
   updateIcons();
 
-  // select() does nothing, if state hasn't change, so preset mSelected.
+  // select() does nothing if the state hasn't changed, so preset mSelected.
   mSelected = true;
   select( false );
 
@@ -206,9 +205,9 @@ void KOAgendaItem::setCellXY( int X, int YTop, int YBottom )
   mCellYBottom = YBottom;
 }
 
-void KOAgendaItem::setCellXRight( int xright )
+void KOAgendaItem::setCellXRight( int XRight )
 {
-  mCellXRight = xright;
+  mCellXRight = XRight;
 }
 
 void KOAgendaItem::setCellX( int XLeft, int XRight )
@@ -654,10 +653,10 @@ void KOAgendaItem::paintFrame( QPainter *p, const QColor &color )
   p->setPen( oldpen );
 }
 
-static void conditionalPaint( QPainter *p, bool cond, int &x, int ft,
+static void conditionalPaint( QPainter *p, bool condition, int &x, int ft,
                               const QPixmap &pxmp )
 {
-  if ( !cond ) return;
+  if ( !condition ) return;
 
   p->drawPixmap( x, ft, pxmp );
   x += pxmp.width() + ft;
@@ -668,8 +667,9 @@ void KOAgendaItem::paintTodoIcon( QPainter *p, int &x, int ft )
   if ( !mIncidence ) return;
   static const QPixmap todoPxmp = KOGlobals::self()->smallIcon("todo");
   static const QPixmap completedPxmp = KOGlobals::self()->smallIcon("checkedbox");
-  if ( mIncidence->type() != "Todo" )
-    return;
+
+  if ( mIncidence->type() != "Todo" ) return;
+
   bool b = ( static_cast<Todo *>( mIncidence ) )->isCompleted();
   conditionalPaint( p, !b, x, ft, todoPxmp );
   conditionalPaint( p, b, x, ft, completedPxmp );
@@ -689,14 +689,14 @@ void KOAgendaItem::paintIcons( QPainter *p, int &x, int ft )
 
 void KOAgendaItem::paintEvent( QPaintEvent * )
 {
-  if ( !mIncidence )return;
+  if ( !mIncidence ) return;
 
   QPainter p( this );
   const int ft = 2; // frame thickness for layout, see paintFrame()
   const int margin = 1 + ft; // frame + space between frame and content
 
   // General idea is to always show the icons (even in the all-day events).
-  // This creates a consistent fealing for the user when the view mode
+  // This creates a consistent feeling for the user when the view mode
   // changes and therefore the available width changes.
   // Also look at #17984
 
@@ -710,7 +710,7 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
     organizerPxmp      = new QPixmap( KOGlobals::self()->smallIcon("organizer") );
   }
 
-  QColor bgColor;
+  QColor bgColor = KOPrefs::instance()->agendaCalendarItemsEventsBackgroundColor();
   if ( mIncidence->type() == "Todo" ) {
     if ( static_cast<Todo*>(mIncidence)->isOverdue() )
       bgColor = KOPrefs::instance()->agendaCalendarItemsToDosOverdueBackgroundColor();
@@ -720,6 +720,7 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
   }
 
   if ( !bgColor.isValid() ) {
+    kDebug() << "invalid bgColor: " << bgColor.name() <<endl;
     QStringList categories = mIncidence->categories();
     QString cat;
     if ( !categories.isEmpty() ) cat = categories.first();
