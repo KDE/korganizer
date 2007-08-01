@@ -26,7 +26,7 @@
 #include <QtCore/QList>
 #include <QtGui/QPixmap>
 
-#include <KLibLoader>
+#include <klibloader.h>
 
 #include "plugin.h"
 
