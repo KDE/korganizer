@@ -760,6 +760,7 @@ KOMonthView::KOMonthView( Calendar *calendar, QWidget *parent )
   mLabel->setAlignment( Qt::AlignCenter );
   mLabel->setLineWidth( 0 );
   mLabel->setFrameStyle( QFrame::Plain );
+  mDecorationsFrame = new QFrame( mTopBox );
 
   dayLayout->addWidget( mTopBox, 0, 0, 1, mDaysPerWeek );
 
@@ -920,7 +921,7 @@ void KOMonthView::showDates( const QDate &start, const QDate & )
       CalendarDecoration::Decoration* deco
           = KOCore::self()->loadCalendarDecoration( decoName );
 
-      KHBox *decoHBox = new KHBox( mTopBox );
+      KHBox *decoHBox = new KHBox( mDecorationsFrame );
       decoHBox->setFrameShape( QFrame::StyledPanel );
 
       foreach ( CalendarDecoration::Element* it, deco->monthElements( start ) ) {
