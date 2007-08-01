@@ -22,10 +22,15 @@
   without including the source code for Qt in the source distribution.
 */
 #include "komonthview.h"
+
 #include "koprefs.h"
 #include "koglobals.h"
 #include "koeventpopupmenu.h"
 #include "kohelper.h"
+#ifndef KORG_NOPLUGINS
+#include "kocore.h"
+#include "kodecorationlabel.h"
+#endif
 
 #include <kcal/calfilter.h>
 #include <kcal/calendar.h>
@@ -58,6 +63,8 @@
 #include <QMouseEvent>
 
 #include "komonthview.moc"
+
+using namespace KOrg;
 
 //--------------------------------------------------------------------------
 
@@ -746,14 +753,15 @@ KOMonthView::KOMonthView( Calendar *calendar, QWidget *parent )
   QFont mfont = bfont;
   mfont.setPointSize( 20 );
 
-  // month name on top
-  mLabel = new QLabel( this );
+  // Top box with month name and decorations
+  mTopBox = new KHBox( this );
+  mLabel = new QLabel( mTopBox );
   mLabel->setFont( mfont );
   mLabel->setAlignment( Qt::AlignCenter );
   mLabel->setLineWidth( 0 );
   mLabel->setFrameStyle( QFrame::Plain );
 
-  dayLayout->addWidget( mLabel, 0, 0, 1, mDaysPerWeek );
+  dayLayout->addWidget( mTopBox, 0, 0, 1, mDaysPerWeek );
 
   // create the day of the week labels (Sun, Mon, etc) and add them to
   // the layout.
@@ -905,6 +913,24 @@ void KOMonthView::showDates( const QDate &start, const QDate & )
                      calSys->monthName( start ) ,
                      calSys->year( start ) ) );
 
+#ifndef KORG_NOPLUGINS
+  // Month decoration labels
+  foreach ( QString decoName, KOPrefs::instance()->decorationsAtMonthViewTop() ) {
+    if ( KOPrefs::instance()->selectedPlugins().contains( decoName ) ) {
+      CalendarDecoration::Decoration* deco
+          = KOCore::self()->loadCalendarDecoration( decoName );
+
+      KHBox *decoHBox = new KHBox( mTopBox );
+      decoHBox->setFrameShape( QFrame::StyledPanel );
+
+      foreach ( CalendarDecoration::Element* it, deco->monthElements( start ) ) {
+        KODecorationLabel *label = new KODecorationLabel( it, decoHBox );
+        label->setAlignment( Qt::AlignBottom );
+      }
+    }
+  }
+#endif
+
   bool primary = false;
   int i;
   for( i = 0; i < mCells.size(); ++i ) {
@@ -1043,7 +1069,6 @@ void KOMonthView::updateView()
   for ( it = incidences.begin(); it != incidences.end(); ++it )
     changeIncidenceDisplayAdded( *it );
 
-/* TODO: Add code for the loading of the decorations around here? */
   processSelectionChange();
 }
 

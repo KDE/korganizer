@@ -33,6 +33,9 @@
 #include <QLabel>
 #include <QResizeEvent>
 #include <QMouseEvent>
+
+#include <KHBox>
+
 #include "koeventview.h"
 
 class KNoScrollListBox;
@@ -232,7 +235,7 @@ class MonthViewCell : public QWidget
   The class KOMonthView represents the monthly view in KOrganizer.
   It holds several instances of the class MonthViewCell.
 
-  @short KOMonthview represents the montly view in KOrganizer.
+  @short KOMonthview represents the monthly view in KOrganizer.
   @see KOBaseView, KODayListView, MonthViewCell
 */
 class KOMonthView: public KOEventView
@@ -301,6 +304,7 @@ class KOMonthView: public KOEventView
     MonthViewCell *mSelectedCell;
 
     KOEventPopupMenu *mEventContextMenu;
+    KHBox *mTopBox;
     QLabel *mLabel;
 };
 
