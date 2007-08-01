@@ -67,11 +67,11 @@ class MarcusBains : public QFrame {
 
   private:
     int todayColumn();
-    QTimer* mTimer;
-    QLabel* mTimeBox;  // Label showing the current time
-    KOAgenda* mAgenda;
+    QTimer *mTimer;
+    QLabel *mTimeBox;  // Label showing the current time
+    KOAgenda *mAgenda;
     QTime mOldTime;
-    int mOldToday;
+    int mOldTodayCol;
 };
 
 class KOAgenda : public Q3ScrollView
@@ -216,6 +216,11 @@ class KOAgenda : public Q3ScrollView
                            RESIZETOP, RESIZEBOTTOM, RESIZELEFT, RESIZERIGHT };
 
   protected:
+    /**
+      Draw the background grid of the agenda.
+      @p cw grid width
+      @p ch grid height
+    */
     void drawContents( QPainter *p, int cx, int cy, int cw, int ch );
     int columnWidth( int column ) const;
     virtual void resizeEvent ( QResizeEvent * );

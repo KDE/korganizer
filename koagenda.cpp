@@ -82,7 +82,7 @@ MarcusBains::MarcusBains( KOAgenda *agenda )
   connect( mTimer, SIGNAL(timeout()), this, SLOT(updateLocation()) );
   mTimer->start( 0 );
 
-  mOldToday = -1;
+  mOldTodayCol = -1;
 }
 
 MarcusBains::~MarcusBains()
@@ -109,25 +109,25 @@ int MarcusBains::todayColumn()
 void MarcusBains::updateLocation( bool recalculate )
 {
   bool showSeconds = KOPrefs::instance()->marcusBainsShowSeconds();
-  QColor color = KOPrefs::instance()->agendaMarcusBainsLineColor();
+  QColor color = KOPrefs::instance()->agendaMarcusBainsLineLineColor();
 
   QTime tim = QTime::currentTime();
   if ( (tim.hour() == 0) && (mOldTime.hour()==23) )
     // We are on a new day
     recalculate = true;
-  int today = recalculate ? todayColumn() : mOldToday;
+  int todayCol = recalculate ? todayColumn() : mOldTodayCol;
 
   // Number of minutes since beginning of the day
   int minutes = tim.hour()*60 + tim.minute();
   int minutesPerCell = 24 * 60 / mAgenda->rows();
 
   mOldTime = tim;
-  mOldToday = today;
+  mOldTodayCol = todayCol;
 
   int y = int( minutes  *  mAgenda->gridSpacingY() / minutesPerCell );
-  int x = int( mAgenda->gridSpacingX() * today );
+  int x = int( mAgenda->gridSpacingX() * todayCol );
 
-  if ( !( KOPrefs::instance()->marcusBainsEnabled() ) || (today<0) ) {
+  if ( !( KOPrefs::instance()->marcusBainsEnabled() ) || (todayCol<0) ) {
     hide();
     mTimeBox->hide();
     return;
@@ -1358,18 +1358,25 @@ int KOAgenda::columnWidth( int column ) const
 /*
   Draw grid in the background of the agenda.
 */
-void KOAgenda::drawContents(QPainter* p, int cx, int cy, int cw, int ch)
+void KOAgenda::drawContents( QPainter* p, int cx, int cy, int cw, int ch )
 {
-  QPixmap db(cw, ch);
-  db.fill(KOPrefs::instance()->agendaGridBackgroundColor());
-  QPainter dbp(&db);
-  dbp.translate(-cx,-cy);
+  QPixmap db( cw, ch );
+  db.fill(); // We don't want to see leftovers from previous paints
+  QPainter dbp( &db );
+  // TODO: CHECK THIS
+//  if ( ! KOPrefs::instance()->agendaGridBackgroundImage().isEmpty() ) {
+//    QPixmap bgImage( KOPrefs::instance()->agendaGridBackgroundImage() );
+//    dbp.drawPixmap( 0, 0, cw, ch, bgImage ); FIXME
+//  }
+  dbp.fillRect( cx, cy, cw, ch,
+                KOPrefs::instance()->agendaGridBackgroundColor() );
+  dbp.translate( -cx, -cy );
 
 //  kDebug(5850) << "KOAgenda::drawContents()" << endl;
   double lGridSpacingY = mGridSpacingY*2;
 
   // Highlight working hours
-  if (mWorkingHoursEnable) {
+  if ( mWorkingHoursEnable ) {
     QPoint pt1( cx, mWorkingHoursYTop );
     QPoint pt2( cx+cw, mWorkingHoursYBottom );
     if ( pt2.x() >= pt1.x() /*&& pt2.y() >= pt1.y()*/) {
