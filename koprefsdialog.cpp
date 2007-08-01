@@ -70,6 +70,10 @@ using namespace LibKHolidays;
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 #include <QGroupBox>
+#include <QTreeWidget>
+
+#include <calendar/calendardecoration.h>
+#include <korganizer/printplugin.h>
 
 #include "ui_kogroupwareprefspage.h"
 
@@ -148,6 +152,8 @@ extern "C"
   }
 }
 
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 class KOPrefsDialogTime : public KPrefsModule
 {
@@ -427,6 +433,8 @@ extern "C"
   }
 }
 
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 class KOPrefsDialogViews : public KPrefsModule
 {
@@ -564,6 +572,8 @@ extern "C"
   }
 }
 
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 class KOPrefsDialogFonts : public KPrefsModule
 {
@@ -624,6 +634,8 @@ extern "C"
   }
 }
 
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 KOPrefsDialogColors::KOPrefsDialogColors( const KComponentData &inst, QWidget *parent )
       : KPrefsModule( KOPrefs::instance(), inst, parent )
@@ -835,6 +847,8 @@ extern "C"
   }
 }
 
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( const KComponentData &inst, QWidget *parent )
   : KPrefsModule( KOPrefs::instance(), inst, parent )
@@ -1002,6 +1016,8 @@ extern "C"
   }
 }
 
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling( const KComponentData &inst, QWidget *parent )
   : KPrefsModule( KOPrefs::instance(), inst, parent )
@@ -1084,18 +1100,23 @@ extern "C"
   }
 }
 
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
-
-class PluginItem : public Q3CheckListItem {
+class PluginItem : public QTreeWidgetItem {
   public:
-    PluginItem( Q3ListView *parent, KService::Ptr service ) :
-      Q3CheckListItem( parent, service->name(), Q3CheckListItem::CheckBox ), mService( service )
-    {}
+    PluginItem( QTreeWidget *parent, KService::Ptr service )
+      : QTreeWidgetItem( parent, QStringList( service->name() ) ),
+        mService( service ) {}
+    PluginItem( QTreeWidgetItem *parent, KService::Ptr service )
+      : QTreeWidgetItem( parent, QStringList( service->name() ) ),
+        mService( service ) {}
+
     KService::Ptr service() { return mService; }
+
   private:
     KService::Ptr mService;
 };
-
 
 /**
   Dialog for selecting and configuring KOrganizer plugins
@@ -1110,10 +1131,10 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins( const KComponentData &inst, QWidget 
   QBoxLayout *topLayout = new QVBoxLayout( topFrame );
   topLayout->setSpacing( KDialog::spacingHint() );
 
-  mListView = new Q3ListView( topFrame );
-  mListView->addColumn( i18n("Name") );
-  mListView->setResizeMode( Q3ListView::LastColumn );
-  topLayout->addWidget( mListView );
+  mTreeWidget = new QTreeWidget( topFrame );
+  mTreeWidget->setColumnCount( 1 );
+  mTreeWidget->setHeaderLabel( i18n("Name") );
+  topLayout->addWidget( mTreeWidget );
 
   mDescription = new QLabel( topFrame );
   mDescription->setAlignment( Qt::AlignVCenter );
@@ -1121,69 +1142,121 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins( const KComponentData &inst, QWidget 
   mDescription->setFrameShape( QLabel::Panel );
   mDescription->setFrameShadow( QLabel::Sunken );
   mDescription->setMinimumSize( QSize( 0, 55 ) );
-  QSizePolicy policy( (QSizePolicy::SizeType)5, (QSizePolicy::SizeType)0 );
+  QSizePolicy policy( QSizePolicy::MinimumExpanding, QSizePolicy::Fixed );
   policy.setHorizontalStretch( 0 );
   policy.setVerticalStretch( 0 );
   policy.setHeightForWidth( mDescription->sizePolicy().hasHeightForWidth() );
   mDescription->setSizePolicy( policy );
   topLayout->addWidget( mDescription );
 
-
   QWidget *buttonRow = new QWidget( topFrame );
   QBoxLayout *buttonRowLayout = new QHBoxLayout( buttonRow );
   mConfigureButton = new KPushButton( KGuiItem( i18n("Configure &Plugin..."),
       "configure", QString(), i18n("This button allows you to configure"
       " the plugin that you have selected in the list above") ), buttonRow );
-
   buttonRowLayout->addWidget( mConfigureButton );
-  buttonRowLayout->addItem( new QSpacerItem(1, 1,  QSizePolicy::Expanding) );
+  buttonRowLayout->addItem( new QSpacerItem(1, 1, QSizePolicy::Expanding) );
   topLayout->addWidget( buttonRow );
+
+
+  mPositioningGroupBox = new QGroupBox( i18n("Position"), topFrame );
+  mPositionMonthTop = new QCheckBox( i18n("Show in the month view"),
+                                     mPositioningGroupBox );
+  mPositionAgendaTop = new QCheckBox( i18n("Show at the top of the agenda views"),
+                                      mPositioningGroupBox );
+  mPositionAgendaBottom = new QCheckBox( i18n("Show at the bottom of the agenda "
+                                              "views"), mPositioningGroupBox );
+  QVBoxLayout *positioningLayout = new QVBoxLayout( mPositioningGroupBox );
+  positioningLayout->addWidget( mPositionMonthTop );
+  positioningLayout->addWidget( mPositionAgendaTop );
+  positioningLayout->addWidget( mPositionAgendaBottom );
+  positioningLayout->addStretch( 1 );
+  topLayout->addWidget( mPositioningGroupBox );
+
   connect( mConfigureButton, SIGNAL( clicked() ), SLOT( configure() ) );
 
-  connect( mListView, SIGNAL( selectionChanged( Q3ListViewItem* ) ),
-           SLOT( selectionChanged( Q3ListViewItem* ) ) );
-  connect( mListView, SIGNAL( clicked( Q3ListViewItem* ) ),
+  connect( mPositionMonthTop, SIGNAL( clicked() ),
+           SLOT( positioningChanged() ) );
+  connect( mPositionAgendaTop, SIGNAL( clicked() ),
+           SLOT( positioningChanged() ) );
+  connect( mPositionAgendaBottom, SIGNAL( clicked() ),
+           SLOT( positioningChanged() ) );
+
+  connect( mTreeWidget, SIGNAL( itemSelectionChanged() ),
+           SLOT( selectionChanged() ) );
+  connect( mTreeWidget, SIGNAL( itemClicked ( QTreeWidgetItem*, int ) ),
            SLOT( slotWidChanged() ) );
 
   load();
 
-  selectionChanged( 0 );
+  selectionChanged();
 }
 
 void KOPrefsDialogPlugins::usrReadConfig()
 {
-  mListView->clear();
+  mTreeWidget->clear();
   KService::List plugins = KOCore::self()->availablePlugins();
   plugins += KOCore::self()->availableParts();
 
   QStringList selectedPlugins = KOPrefs::instance()->mSelectedPlugins;
 
+  QTreeWidgetItem *decorations =
+    new QTreeWidgetItem( mTreeWidget, QStringList(i18n("Calendar decorations")) );
+  QTreeWidgetItem *printPlugins =
+    new QTreeWidgetItem( mTreeWidget, QStringList(i18n("Print plugins")) );
+  QTreeWidgetItem *others =
+    new QTreeWidgetItem( mTreeWidget, QStringList(i18n("Other plugins")) );
+
   KService::List::ConstIterator it;
   for( it = plugins.begin(); it != plugins.end(); ++it ) {
-    Q3CheckListItem *item = new PluginItem( mListView, *it );
+    QTreeWidgetItem *item;
+    if ( (*it)->hasServiceType( KOrg::CalendarDecoration::Decoration::serviceType() ) ) {
+      item = new PluginItem( decorations, *it );
+    } else if ( (*it)->hasServiceType( KOrg::PrintPlugin::serviceType() ) ){
+      item = new PluginItem( printPlugins, *it );
+    } else {
+      item = new PluginItem( others, *it );
+    }
     if ( selectedPlugins.contains( (*it)->desktopEntryName() ) ) {
-      item->setOn( true );
+      item->setCheckState( 0, Qt::Checked );
+    } else {
+      item->setCheckState( 0, Qt::Unchecked );
     }
   }
+
+  decorations->setExpanded( true );
+  printPlugins->setExpanded( true );
+  others->setExpanded( true );
+
+  mDecorationsAtMonthViewTop = KOPrefs::instance()->decorationsAtMonthViewTop().toSet();
+  mDecorationsAtAgendaViewTop = KOPrefs::instance()->decorationsAtAgendaViewTop().toSet();
+  mDecorationsAtAgendaViewBottom = KOPrefs::instance()->decorationsAtAgendaViewBottom().toSet();
 }
 
 void KOPrefsDialogPlugins::usrWriteConfig()
 {
   QStringList selectedPlugins;
 
-  PluginItem *item = static_cast<PluginItem *>( mListView->firstChild() );
-  while( item ) {
-    if( item->isOn() ) {
-      selectedPlugins.append( item->service()->desktopEntryName() );
+  for (int i = 0; i < mTreeWidget->topLevelItemCount(); i++) {
+    QTreeWidgetItem *serviceTypeGroup = mTreeWidget->topLevelItem( i );
+    for (int j = 0; j < serviceTypeGroup->childCount(); j++) {
+      PluginItem *item = static_cast<PluginItem *>( serviceTypeGroup->child( j ) );
+      if( item->checkState( 0 ) == Qt::Checked ) {
+        selectedPlugins.append( item->service()->desktopEntryName() );
+      }
     }
-    item = static_cast<PluginItem *>( item->nextSibling() );
   }
   KOPrefs::instance()->mSelectedPlugins = selectedPlugins;
+
+  KOPrefs::instance()->setDecorationsAtMonthViewTop( mDecorationsAtMonthViewTop.toList() );
+  KOPrefs::instance()->setDecorationsAtAgendaViewTop( mDecorationsAtAgendaViewTop.toList() );
+  KOPrefs::instance()->setDecorationsAtAgendaViewBottom( mDecorationsAtAgendaViewBottom.toList() );
 }
 
 void KOPrefsDialogPlugins::configure()
 {
-  PluginItem *item = static_cast<PluginItem *>( mListView->selectedItem() );
+  if ( mTreeWidget->selectedItems().count() != 1 ) return;
+  PluginItem *item = static_cast<PluginItem *>( mTreeWidget->selectedItems().last() );
   if ( !item ) return;
 
   KOrg::Plugin *plugin = KOCore::self()->loadPlugin( item->service() );
@@ -1199,9 +1272,65 @@ void KOPrefsDialogPlugins::configure()
   }
 }
 
-void KOPrefsDialogPlugins::selectionChanged( Q3ListViewItem *i )
+void KOPrefsDialogPlugins::positioningChanged()
 {
-  PluginItem *item = dynamic_cast<PluginItem*>( i );
+  if ( mTreeWidget->selectedItems().count() != 1 ) return;
+
+  PluginItem *item = dynamic_cast<PluginItem*>( mTreeWidget->selectedItems().last() );
+  if ( !item ) return;
+
+  QString decoration = item->service()->desktopEntryName();
+
+  if ( mPositionMonthTop->checkState() == Qt::Checked ) {
+    if ( ! mDecorationsAtMonthViewTop.contains( decoration ) ) {
+      mDecorationsAtMonthViewTop.insert( decoration );
+      kDebug() << "added mt";
+    }
+  } else {
+    mDecorationsAtMonthViewTop.remove( decoration );
+    kDebug() << "removed mt";
+  }
+
+  if ( mPositionAgendaTop->checkState() == Qt::Checked ) {
+    if ( ! mDecorationsAtAgendaViewTop.contains( decoration ) ) {
+      mDecorationsAtAgendaViewTop.insert( decoration );
+      kDebug() << "added dt";
+    }
+  } else {
+    mDecorationsAtAgendaViewTop.remove( decoration );
+    kDebug() << "removed dt";
+  }
+
+  if ( mPositionAgendaBottom->checkState() == Qt::Checked ) {
+    if ( ! mDecorationsAtAgendaViewBottom.contains( decoration ) ) {
+      mDecorationsAtAgendaViewBottom.insert( decoration );
+      kDebug() << "added db";
+    }
+  } else {
+    mDecorationsAtAgendaViewBottom.remove( decoration );
+    kDebug() << "removed db";
+  }
+
+  kDebug() << mDecorationsAtMonthViewTop;
+  kDebug() << mDecorationsAtAgendaViewTop;
+  kDebug() << mDecorationsAtAgendaViewBottom;
+  slotWidChanged();
+}
+
+void KOPrefsDialogPlugins::selectionChanged()
+{
+  mPositioningGroupBox->hide();
+  mPositionMonthTop->setChecked( Qt::Unchecked );
+  mPositionAgendaTop->setChecked( Qt::Unchecked );
+  mPositionAgendaBottom->setChecked( Qt::Unchecked );
+
+  if ( mTreeWidget->selectedItems().count() != 1 ) {
+    mConfigureButton->setEnabled( false );
+    mDescription->setText( QString() );
+    return;
+  }
+
+  PluginItem *item = dynamic_cast<PluginItem*>( mTreeWidget->selectedItems().last() );
   if ( !item ) {
     mConfigureButton->setEnabled( false );
     mDescription->setText( QString() );
@@ -1217,6 +1346,18 @@ void KOPrefsDialogPlugins::selectionChanged( Q3ListViewItem *i )
   mDescription->setText( item->service()->comment() );
   mConfigureButton->setEnabled( hasSettings );
 
+  if ( item->service()->hasServiceType(
+         KOrg::CalendarDecoration::Decoration::serviceType() ) ) {
+    QString decoration = item->service()->desktopEntryName();
+    if ( mDecorationsAtMonthViewTop.contains( decoration ) )
+      mPositionMonthTop->setChecked( Qt::Checked );
+    if ( mDecorationsAtAgendaViewTop.contains( decoration ) )
+      mPositionAgendaTop->setChecked( Qt::Checked );
+    if ( mDecorationsAtAgendaViewBottom.contains( decoration ) )
+      mPositionAgendaBottom->setChecked( Qt::Checked );
+    mPositioningGroupBox->show();
+  }
+
   slotWidChanged();
 }
 
@@ -1229,6 +1370,8 @@ extern "C"
   }
 }
 
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 extern "C"
 {

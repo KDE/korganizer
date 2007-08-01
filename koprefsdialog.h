@@ -31,7 +31,6 @@
 #include <libkdepim/kcmdesignerfields.h>
 
 #include <QHash>
-#include <QLabel>
 
 class QLineEdit;
 class QLabel;
@@ -41,6 +40,8 @@ class KPushButton;
 class QColor;
 class Q3ListView;
 class KComponentData;
+class QGroupBox;
+class QTreeWidget;
 
 namespace Ui {
   class KOGroupwarePrefsPage;
@@ -136,13 +137,21 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogPlugins : public KPrefsModule
     void usrReadConfig();
     void usrWriteConfig();
     void configure();
-    void selectionChanged( Q3ListViewItem* );
+    void selectionChanged();
+    void positioningChanged();
 
   private:
     void buildList();
-    Q3ListView *mListView;
+    QTreeWidget *mTreeWidget;
     QLabel *mDescription;
     KPushButton *mConfigureButton;
+    QGroupBox *mPositioningGroupBox;
+    QCheckBox *mPositionMonthTop;
+    QCheckBox *mPositionAgendaTop;
+    QCheckBox *mPositionAgendaBottom;
+    QSet<QString> mDecorationsAtMonthViewTop;
+    QSet<QString> mDecorationsAtAgendaViewTop;
+    QSet<QString> mDecorationsAtAgendaViewBottom;
 };
 
 class KCM_KORGANIZER_EXPORT KOPrefsDesignerFields : public KPIM::KCMDesignerFields
@@ -157,5 +166,20 @@ class KCM_KORGANIZER_EXPORT KOPrefsDesignerFields : public KPIM::KCMDesignerFiel
     QStringList readActivePages();
     QString applicationName();
 };
+
+/*class KCM_KORGANIZER_EXPORT KOPrefsDialogThemes : public KPrefsModule
+{
+    Q_OBJECT
+  public:
+    KOPrefsDialogThemes( const KComponentData &inst, QWidget *parent );
+
+  protected slots:
+    void usrReadConfig();
+    void usrWriteConfig();
+    void importTheme();
+    void exportTheme();
+
+  private:
+};*/
 
 #endif
