@@ -70,6 +70,8 @@ KOTimelineView::KOTimelineView(Calendar *calendar, QWidget *parent)
              SLOT(itemMoved(KDGanttViewItem*)) );
     connect( mGantt, SIGNAL(rescaling(KDGanttView::Scale)),
              SLOT(overscale(KDGanttView::Scale)) );
+    connect( mGantt, SIGNAL( dateTimeDoubleClicked( const QDateTime& ) ),
+             SLOT( newEventWithHint( const QDateTime& ) ) );
 }
 
 KOTimelineView::~KOTimelineView()
@@ -100,7 +102,7 @@ void KOTimelineView::showDates(const QDate& start, const QDate& end)
 {
   mStartDate = start;
   mEndDate = end;
-  mRmbDate = QDateTime();
+  mHintDate = KDateTime();
   mGantt->setHorizonStart( QDateTime(start) );
   mGantt->setHorizonEnd( QDateTime(end.addDays(1)) );
   mGantt->setMinorScaleCount( 1 );
@@ -207,7 +209,7 @@ void KOTimelineView::itemDoubleClicked( KDGanttViewItem *item )
 
 void KOTimelineView::itemRightClicked( KDGanttViewItem *item )
 {
-  mRmbDate = mGantt->getDateTimeForCoordX( QCursor::pos().x(), true );
+  mHintDate = KDateTime( mGantt->getDateTimeForCoordX( QCursor::pos().x(), true ) );
   TimelineSubItem *tlitem = dynamic_cast<TimelineSubItem*>( item );
   if ( !tlitem ) {
     showNewEventPopup();
@@ -220,10 +222,17 @@ void KOTimelineView::itemRightClicked( KDGanttViewItem *item )
 
 bool KOTimelineView::eventDurationHint(KDateTime & startDt, KDateTime & endDt, bool & allDay)
 {
-  startDt = KDateTime(mRmbDate);
-  endDt = KDateTime(mRmbDate.addSecs( 2 * 60 * 60 ));
+  startDt = KDateTime(mHintDate);
+  endDt = KDateTime(mHintDate.addSecs( 2 * 60 * 60 ));
   allDay = false;
-  return mRmbDate.isValid();
+  return mHintDate.isValid();
+}
+
+//slot
+void KOTimelineView::newEventWithHint( const QDateTime& dt )
+{
+  mHintDate = KDateTime(dt);
+  emit newEventSignal( dt );
 }
 
 TimelineItem * KOTimelineView::calendarItemForIncidence(KCal::Incidence * incidence)
@@ -335,10 +344,16 @@ void KOTimelineView::itemMoved(KDGanttViewItem * item)
 
 void KOTimelineView::overscale(KDGanttView::Scale scale)
 {
+  /* Disabled, looks *really* bogus:
+     this triggers and endless rescaling loop; we want to set
+     a fixed scale, the Gantt view doesn't like it and rescales
+     (emitting a rescaling signal that leads here) and so on...
   Q_UNUSED( scale );
+  //set a relative zoom factor of 1 (?!)
   mGantt->setZoomFactor( 1, false );
   mGantt->setScale( KDGanttView::Hour );
   mGantt->setMinorScaleCount( 12 );
+  */
 }
 
 #include "kotimelineview.moc"
