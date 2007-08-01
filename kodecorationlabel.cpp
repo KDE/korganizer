@@ -25,8 +25,8 @@
 
 #include "kodecorationlabel.h"
 
-#include <QtGui/QCursor>
 #include <QtGui/QMouseEvent>
+#include <QtGui/QResizeEvent>
 
 #include <KToolInvocation>
 
@@ -41,9 +41,6 @@ KODecorationLabel::KODecorationLabel( KOrg::CalendarDecoration::Element *e,
   mPixmap = e->pixmap( size() );
   mUrl = e->url();
   setUrl( e->url() );
-
-  //setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
-  setAlignment( Qt::AlignCenter );
 
   connect( e, SIGNAL( gotNewExtensiveText( const QString & ) ),
            this, SLOT( setExtensiveText( const QString & ) ) );
@@ -70,7 +67,6 @@ KODecorationLabel::KODecorationLabel( const QString &shortText,
 {
   setUrl( url );
 
-  setSizePolicy(QSizePolicy( QSizePolicy::Expanding, QSizePolicy::Fixed ));
   squeezeContentsToLabel();
 }
 
@@ -78,13 +74,14 @@ KODecorationLabel::~KODecorationLabel()
 {
 }
 
-QSize KODecorationLabel::minimumSizeHint() const
+// TODO; this is a hack to let the widget expand when room is available;
+//       it would be great to find sth better!
+/*QSize KODecorationLabel::sizeHint() const
 {
-  QSize sh = QLabel::minimumSizeHint();
-  sh.setWidth(-1);
-  sh.setHeight(120); //FIXME
-  return sh;
-}
+  QSize sh = QLabel::sizeHint();
+  return QSize( qMax( width()+1, sh.width()+1 ),
+                qMax( height()+1, sh.height()+1 ) );
+}*/
 
 void KODecorationLabel::mouseReleaseEvent( QMouseEvent *event )
 {
@@ -92,8 +89,10 @@ void KODecorationLabel::mouseReleaseEvent( QMouseEvent *event )
 
   switch ( event->button() ) {
     case Qt::LeftButton:
-      KToolInvocation::invokeBrowser( mUrl.url() );
-      setForegroundRole( QPalette::LinkVisited );
+      if ( ! mUrl.isEmpty() ) {
+        KToolInvocation::invokeBrowser( mUrl.url() );
+        setForegroundRole( QPalette::LinkVisited );
+      }
       break;
     case Qt::MidButton:
     case Qt::RightButton:
@@ -106,7 +105,8 @@ void KODecorationLabel::resizeEvent( QResizeEvent *event )
 {
   kDebug() << "DecorationLabel got a resize event; old size "
            << event->oldSize() << "--> new size " << event->size() << endl;
-  mPixmap = mDecorationElement->pixmap( event->size() ); //FIXME
+  mPixmap = mDecorationElement->pixmap( event->size() );
+  QLabel::resizeEvent( event );
   squeezeContentsToLabel();
 }
 
@@ -124,7 +124,7 @@ void KODecorationLabel::setLongText( const QString &text )
 
 void KODecorationLabel::setPixmap( const QPixmap &pixmap )
 {
-  mPixmap = pixmap;
+  mPixmap = pixmap.scaled( size(), Qt::KeepAspectRatio );
   squeezeContentsToLabel();
 }
 
@@ -167,22 +167,25 @@ void KODecorationLabel::squeezeContentsToLabel()
   int extensiveTextWidth = fm.width(mExtensiveText);
 
   if ( ! mPixmap.isNull() ) {
-kDebug() << "using pixmap" << endl; //FIXME: remove these debug lines
-kDebug() << "pixmap size: " << mPixmap.size() << endl;
     usePixmap( true );
   } else if ( ( !mExtensiveText.isEmpty() )
               && ( extensiveTextWidth <= labelWidth ) ) {
-kDebug() << "using extenstext" << endl;
     useExtensiveText( true );
   } else if ( ( !mLongText.isEmpty() )
               && ( longTextWidth <= labelWidth ) ) {
-kDebug() << "using longtext" << endl;
     useLongText( true );
   } else {
-kDebug() << "using shorttext" << endl;
-kDebug() << "pixmap size: " << mPixmap.size() << endl;
     useShortText( true );
   }
+
+  setAlignment( Qt::AlignCenter );
+  setWordWrap( true );
+  QSize msh = QLabel::minimumSizeHint();
+  msh.setHeight( fontMetrics().lineSpacing() );
+  msh.setWidth( 0 );
+  setMinimumSize( msh );
+  setSizePolicy( sizePolicy().horizontalPolicy(),
+                 QSizePolicy::MinimumExpanding );
 }
 
 void KODecorationLabel::useDefaultText()
@@ -208,9 +211,7 @@ void KODecorationLabel::useLongText( bool allowAutomaticSqueeze )
 void KODecorationLabel::usePixmap( bool allowAutomaticSqueeze )
 {
   mAutomaticSqueeze = allowAutomaticSqueeze;
-  QLabel::setPixmap( mPixmap ); // .scaled( sizeHint(), Qt::KeepAspectRatio ) //FIXME: scale to the label's size!!
-  kDebug() << "sizeHint " << sizeHint() << endl;
-  kDebug() << "MINsizeHint " << minimumSizeHint() << endl;
+  QLabel::setPixmap( mPixmap );
   setToolTip( mExtensiveText.isEmpty() ? mLongText : mExtensiveText );
 }
 

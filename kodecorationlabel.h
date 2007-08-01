@@ -26,9 +26,7 @@
 #ifndef KODECORATIONLABEL_H
 #define KODECORATIONLABEL_H
 
-#include <QtCore/QString>
 #include <QtGui/QLabel>
-#include <QtGui/QPixmap>
 
 #include <KUrl>
 
@@ -49,7 +47,7 @@ class KODecorationLabel : public QLabel
                        QWidget *parent = 0 );
     ~KODecorationLabel();
 
-    QSize minimumSizeHint() const;
+/*     QSize sizeHint() const;*/
 
   public slots:
     void setExtensiveText( const QString & );
