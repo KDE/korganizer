@@ -70,9 +70,9 @@ ConfigDialog::~ConfigDialog()
 
 void ConfigDialog::load()
 {
-  KConfig config("korganizerrc", KConfig::NoGlobals );
+  KConfig config( "korganizerrc" );
 
-  KConfigGroup group(&config, "Calendar/Hebrew Calendar Plugin");
+  KConfigGroup group(&config, "Hebrew Calendar Plugin");
   mIsraelBox->setChecked(group.
                          readEntry("UseIsraelSettings",
                                        (KGlobal::locale()->
@@ -85,8 +85,8 @@ void ConfigDialog::load()
 
 void ConfigDialog::save()
 {
-  KConfig config("korganizerrc", KConfig::NoGlobals);
-  KConfigGroup group(&config,"Calendar/Hebrew Calendar Plugin");
+  KConfig config( "korganizerrc" );
+  KConfigGroup group(&config,"Hebrew Calendar Plugin");
   group.writeEntry("UseIsraelSettings", mIsraelBox->isChecked());
   group.writeEntry("ShowParsha", mParshaBox->isChecked());
   group.writeEntry("ShowChol_HaMoed", mCholBox->isChecked());
