@@ -59,7 +59,7 @@ class KORGANIZER_EXPORT KOCore
     KOrg::PrintPlugin *loadPrintPlugin( KService::Ptr service );
     KOrg::PrintPlugin *loadPrintPlugin( const QString & );
 
-    KOrg::CalendarDecoration::Decoration::List calendarDecorations();
+    KOrg::CalendarDecoration::Decoration::List loadCalendarDecorations();
     KOrg::PrintPlugin::List loadPrintPlugins();
     KOrg::Part::List loadParts( KOrg::MainWindow *parent );
 

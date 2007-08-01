@@ -269,7 +269,7 @@ KOrg::PrintPlugin *KOCore::loadPrintPlugin( const QString &name )
   return 0;
 }
 
-KOrg::CalendarDecoration::Decoration::List KOCore::calendarDecorations()
+KOrg::CalendarDecoration::Decoration::List KOCore::loadCalendarDecorations()
 {
   if ( !mCalendarDecorationsLoaded ) {
     QStringList selectedPlugins = KOPrefs::instance()->mSelectedPlugins;
@@ -369,7 +369,7 @@ void KOCore::reloadPlugins()
   // TODO: does this still apply?
   // Plugins should be unloaded, but e.g. komonthview keeps using the old ones
   unloadPlugins();
-  calendarDecorations();
+  loadCalendarDecorations();
 }
 
 KPIMIdentities::IdentityManager* KOCore::identityManager()
