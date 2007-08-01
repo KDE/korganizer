@@ -221,23 +221,23 @@ void ThemeImporter::readCalendarItems( const QString &viewType,
       /* Item type tags: first level */
       if ( stack.count() == 1 && name() == "events" ) {
         stack.append( qMakePair( QString("events"),
-                                 QString("CalendarItemsEvents") ) );
+                                 QString("CalendarItems Events") ) );
       }
       else if ( stack.count() == 1 && name() == "to-dos" ) {
         stack.append( qMakePair( QString("to-dos"),
-                                 QString("CalendarItemsToDos") ) );
+                                 QString("CalendarItems ToDos") ) );
       }
       /* Sub-elements of to-dos (second level) */
       else if ( stack.count() == 2 && stack.last().first == "to-dos"
                 && name() == "overdue" ) {
         stack.append( qMakePair( QString("to-dos/overdue"),
-                      QString("CalendarItemsToDosOverdue")
+                      QString("CalendarItems ToDos Overdue")
                                ) );
       }
       else if ( stack.count() == 2 && stack.last().first == "to-dos"
                 && name() == "due-today" ) {
         stack.append( qMakePair( QString("to-dos/due-today"),
-                      QString("CalendarItemsToDosDueToday")
+                      QString("CalendarItems ToDos DueToday")
                                ) );
       }
       /* The sub-elements of these tags allow free text */
@@ -258,29 +258,29 @@ void ThemeImporter::readCalendarItems( const QString &viewType,
                 && name() == "category" ) {
         QString n = attributes().value("name").toString();
         stack.append( qMakePair( QString("categories/" + n),
-                                 QString("CalendarItemsCategories" + n)
+                                 QString("CalendarItems Categories" + n)
                                ) );
       }
       else if ( stack.count() == 2 && stack.last().first == "resources"
                 && name() == "resource" ) {
         QString n = attributes().value("name").toString();
         stack.append( qMakePair( QString("resources/" + n),
-                                 QString("CalendarItemsResources" + n)
+                                 QString("CalendarItems Resources" + n)
                                ) );
       }
       /* Settings' tags */
       else if ( name() == "background" ) {
         setColor( viewType, year, month, day,
-                  stack.last().second + "BackgroundColor",
+                  stack.last().second + " Background Color",
                   attributes().value("color").toString() );
         setPath( viewType, year, month, day,
-                 stack.last().second + "BackgroundImage",
+                 stack.last().second + " Background Image",
                  attributes().value("src").toString() );
         readNext();
       }
       else if ( name() == "font" ) {
         setFont( viewType, year, month, day,
-                 stack.last().second + "Font",
+                 stack.last().second + " Font",
                  attributes().value("family").toString(),
                  attributes().value("style-hint").toString(),
                  attributes().value("point-size").toString().toInt(),
@@ -291,16 +291,16 @@ void ThemeImporter::readCalendarItems( const QString &viewType,
       }
       else if ( name() == "frame" ) {
         setColor( viewType, year, month, day,
-                  stack.last().second + "FrameColor",
+                  stack.last().second + " Frame Color",
                   attributes().value("color").toString() );
         readNext();
       }
       else if ( name() == "icon" ) {
         setString( viewType, year, month, day,
-                   stack.last().second + "Icon",
+                   stack.last().second + " Icon",
                    attributes().value("name").toString() );
         setPath( viewType, year, month, day,
-                 stack.last().second + "IconFile",
+                 stack.last().second + " IconFile",
                  attributes().value("src").toString() );
         readNext();
       }
@@ -329,16 +329,16 @@ void ThemeImporter::readGrid( const QString &viewType,
     if ( isStartElement() ) {
       if ( name() == "background" ) {
         setColor( viewType, year, month, day,
-                  cfg + "BackgroundColor",
+                  cfg + " Background Color",
                   attributes().value("color").toString() );
         setPath( viewType, year, month, day,
-                 cfg + "BackgroundImage",
+                 cfg + " Background Image",
                  attributes().value("src").toString() );
         readNext();
       }
       else if ( name() == "highlight" ) {
         setColor( viewType, year, month, day,
-                  cfg + "HighlightColor",
+                  cfg + " Highlight Color",
                   attributes().value("color").toString() );
         readNext();
       }
@@ -352,10 +352,10 @@ void ThemeImporter::readGrid( const QString &viewType,
           if ( isStartElement() ) {
             if ( name() == "background" ) {
               setColor( viewType, year, month, day,
-                        cfg + "WorkHoursBackgroundColor",
+                        cfg + " WorkHours Background Color",
                         attributes().value("color").toString() );
               setPath( viewType, year, month, day,
-                       cfg + "WorkHoursBackgroundImage",
+                       cfg + " WorkHours Background Image",
                        attributes().value("src").toString() );
               readNext();
             }
@@ -389,10 +389,10 @@ void ThemeImporter::readHolidays( const QString &viewType,
     if ( isStartElement() ) {
       if ( name() == "background" ) {
         setColor( viewType, year, month, day,
-                  cfg + "BackgroundColor",
+                  cfg + " Background Color",
                   attributes().value("color").toString() );
         setPath( viewType, year, month, day,
-                 cfg + "BackgroundImage",
+                 cfg + " Background Image",
                  attributes().value("src").toString() );
         readNext();
       }
@@ -420,7 +420,7 @@ void ThemeImporter::readMarcusBainsLine( const QString &viewType,
     if ( isStartElement() ) {
       if ( name() == "font" ) {
         setFont( viewType, year, month, day,
-                 cfg + "Font",
+                 cfg + " Font",
                  attributes().value("family").toString(),
                  attributes().value("style-hint").toString(),
                  attributes().value("point-size").toString().toInt(),
@@ -431,7 +431,7 @@ void ThemeImporter::readMarcusBainsLine( const QString &viewType,
       }
       else if ( name() == "line" ) {
         setColor( viewType, year, month, day,
-                  cfg + "LineColor",
+                  cfg + " Line Color",
                   attributes().value("color").toString() );
         readNext();
       }
@@ -459,7 +459,7 @@ void ThemeImporter::readTimeLabels( const QString &viewType,
     if ( isStartElement() ) {
       if ( name() == "font" ) {
         setFont( viewType, year, month, day,
-                 cfg + "Font",
+                 cfg + " Font",
                  attributes().value("family").toString(),
                  attributes().value("style-hint").toString(),
                  attributes().value("point-size").toString().toInt(),
