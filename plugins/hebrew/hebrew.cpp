@@ -84,7 +84,7 @@ Element::List Hebrew::createDayElements( const QDate &date )
 
   text = i18nc("Change the next two strings if emphasis is done differently in "
                "your language.",
-               "<qt><p align=\"center\"><i>\n%1\n</i></p></qt>").args( text );
+               "<qt><p align=\"center\"><i>\n%1\n</i></p></qt>", text );
   el.append( new StoredElement( "main element", text ) );
 
   return el;
