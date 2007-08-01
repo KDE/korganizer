@@ -952,7 +952,7 @@ void KOAgendaView::updateConfig()
 
 void KOAgendaView::updateTimeBarWidth()
 {
-  int width = qMax( mDummyAllDayLeft->fontMetrics().width( i18n("All Day"),
+  int width = qMax( mDummyAllDayLeft->fontMetrics().width( i18n("All Day") ),
                     mTimeLabels->width() );
 
   mDummyAllDayLeft->setFixedWidth( width );
