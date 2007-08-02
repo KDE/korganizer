@@ -371,19 +371,19 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
     }
   }
 
-  mTopLayout = new QVBoxLayout( this );
+  mTopLayout = new QGridLayout( this );
   mTopLayout->setMargin( 0 );
 
 
   /* Create agenda splitter */
 #ifndef KORG_NOSPLITTER
   mSplitterAgenda = new QSplitter( Qt::Vertical, this );
-  mTopLayout->addWidget( mSplitterAgenda );
+  mTopLayout->addWidget( mSplitterAgenda, 1, 0 );
   mSplitterAgenda->setOpaqueResize( KGlobalSettings::opaqueResize() );
 #else
   // If we don't use splitters, we still need to order the widgets nevertheless
   KVBox *mainBox = new KVBox( this );
-  mTopLayout->addWidget( mainBox );
+  mTopLayout->addWidget( mainBox, 1, 0 );
 #endif
 
 
@@ -392,7 +392,7 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
   mDayLabelsFrame = new KHBox( mSplitterAgenda );
 #else
   mDayLabelsFrame = new KHBox( this );
-  mTopLayout->addWidget( mDayLabelsFrame );
+  mTopLayout->addWidget( mDayLabelsFrame, 0, 0 );
 #endif
 
 
@@ -482,7 +482,7 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
   mBottomDayLabelsFrame = new KHBox( mSplitterAgenda );
 #else
   mBottomDayLabelsFrame = new KHBox( this );
-  mTopLayout->addWidget( mBottomDayLabelsFrame );
+  mTopLayout->addWidget( mBottomDayLabelsFrame, 2, 0 );
 #endif
   mBottomDayLabelsFrame->setSpacing(2);
 
@@ -718,17 +718,17 @@ void KOAgendaView::createDayLabels()
 
 #ifndef KORG_NOPLUGINS
 #ifndef KORG_NOSPLITTER
-    if ( KOPrefs::instance()->decorationsAtAgendaViewTop().count() > 0 ) {
+  if ( KOPrefs::instance()->decorationsAtAgendaViewTop().count() > 0 ) {
     mDayLabelsFrame->setParent( mSplitterAgenda );
   } else {
     mDayLabelsFrame->setParent( this );
-    mTopLayout->addWidget( mDayLabelsFrame );
+    mTopLayout->addWidget( mDayLabelsFrame, 0, 0 );
   }
   if ( KOPrefs::instance()->decorationsAtAgendaViewBottom().count() > 0 ) {
     mBottomDayLabelsFrame->setParent( mSplitterAgenda );
   } else {
     mBottomDayLabelsFrame->setParent( this );
-    mTopLayout->addWidget( mBottomDayLabelsFrame );
+    mTopLayout->addWidget( mBottomDayLabelsFrame, 0, 0 );
   }
 #endif
 #endif
