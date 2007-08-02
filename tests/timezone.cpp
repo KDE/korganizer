@@ -43,26 +43,26 @@ int main(int argc,char **argv)
 
   KTimeZone zone = KOPrefs::instance()->timeSpec().timeZone();
   if (zone.isValid())
-    kDebug(5850) << "KOrganizer TimezoneId: " << zone.name() << endl;
+    kDebug(5850) <<"KOrganizer TimezoneId:" << zone.name();
 
   time_t ltime;
   ::time( &ltime );
   tm *t = localtime( &ltime );
 
-  kDebug(5850) << "localtime: " << t->tm_hour << ":" << t->tm_min << endl;
+  kDebug(5850) <<"localtime:" << t->tm_hour <<":" << t->tm_min;
 
-  kDebug(5850) << "tzname: " << tzname[0] << " " << tzname[1] << endl;
+  kDebug(5850) <<"tzname:" << tzname[0] <<"" << tzname[1];
 #ifndef __APPLE__
-  kDebug(5850) << "timezone: " << timezone / 3600 << endl;
+  kDebug(5850) <<"timezone:" << timezone / 3600;
 #else
 #warning port timezone debug output if needed
 #endif
 
   QTime qtime = QTime::currentTime();
 
-  kDebug(5850) << "QDateTime::currentTime(): "
+  kDebug(5850) <<"QDateTime::currentTime():"
             << qtime.toString( Qt::ISODate ) << endl;
 
-  kDebug(5850) << "KLocale::formatTime(): "
+  kDebug(5850) <<"KLocale::formatTime():"
             << KGlobal::locale()->formatTime( qtime ) << endl;
 }

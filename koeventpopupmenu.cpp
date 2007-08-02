@@ -103,7 +103,7 @@ void KOEventPopupMenu::showIncidencePopup( Incidence *incidence, const QDate &qd
     }
     popup(QCursor::pos());
   } else {
-    kDebug(5850) << "KOEventPopupMenu::showEventPopup(): No event selected" << endl;
+    kDebug(5850) <<"KOEventPopupMenu::showEventPopup(): No event selected";
   }
 }
 

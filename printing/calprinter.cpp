@@ -62,7 +62,7 @@ CalPrinter::CalPrinter( QWidget *parent, Calendar *calendar, KOrg::CoreHelper *h
 
 CalPrinter::~CalPrinter()
 {
-  kDebug(5850) << "~CalPrinter()" << endl;
+  kDebug(5850) <<"~CalPrinter()";
 
   mPrintPlugins.clear();
 

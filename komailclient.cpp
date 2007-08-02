@@ -124,7 +124,7 @@ bool KOMailClient::mailTo(IncidenceBase *incidence,const QString &recipients,
   }
   QString body = IncidenceFormatter::mailBodyString(incidence);
   bool bcc = KOPrefs::instance()->mBcc;
-  kDebug () << "KOMailClient::mailTo " << recipients << endl;
+  kDebug () <<"KOMailClient::mailTo" << recipients;
   return send(from,recipients,subject,body,bcc,attachment);
 }
 
@@ -132,7 +132,7 @@ bool KOMailClient::send(const QString &from,const QString &to,
                         const QString &subject,const QString &body,bool bcc,
                         const QString &attachment)
 {
-  kDebug(5850) << "KOMailClient::sendMail():\nFrom: " << from << "\nTo: " << to
+  kDebug(5850) <<"KOMailClient::sendMail():\nFrom:" << from <<"\nTo:" << to
             << "\nSubject: " << subject << "\nBody: \n" << body
             << "\nAttachment:\n" << attachment << endl;
 
@@ -163,7 +163,7 @@ bool KOMailClient::send(const QString &from,const QString &to,
     FILE * fd = popen(command.toLocal8Bit(),"w");
     if (!fd)
     {
-      kError() << "Unable to open a pipe to " << command << endl;
+      kError() <<"Unable to open a pipe to" << command;
       return false;
     }
 
@@ -217,7 +217,7 @@ int KOMailClient::kMailOpenComposer(const QString& arg0,const QString& arg1,
   const QString& arg2,const QString& arg3,const QString& arg4,int arg5,
   const KUrl& arg6)
 {
-  //kDebug(5850) << "KOMailClient::kMailOpenComposer( "
+  //kDebug(5850) <<"KOMailClient::kMailOpenComposer("
   //  << arg0 << " , " << arg1 << arg2 << " , " << arg3
   //  << arg4 << " , " << arg5 << " , " << arg6 << " )" << endl;
   int result = 0;
@@ -232,7 +232,7 @@ int KOMailClient::kMailOpenComposer(const QString& arg0,const QString& arg1,
   }
   else
   {
-    kDebug(5850) << "kMailOpenComposer() call failed." << endl;
+    kDebug(5850) <<"kMailOpenComposer() call failed.";
   }
   return result;
 }
@@ -245,7 +245,7 @@ int KOMailClient::kMailOpenComposer( const QString& arg0, const QString& arg1,
                                      const QByteArray& arg11, const QString& arg12,
                                      const QByteArray& arg13, const QByteArray& arg14 )
 {
-    //kDebug(5850) << "KOMailClient::kMailOpenComposer( "
+    //kDebug(5850) <<"KOMailClient::kMailOpenComposer("
     //    << arg0 << " , " << arg1 << arg2 << " , " << arg3
     //   << arg4 << " , " << arg5 << " , " << arg6
     //    << arg7 << " , " << arg8 << " , " << arg9
@@ -278,7 +278,7 @@ int KOMailClient::kMailOpenComposer( const QString& arg0, const QString& arg1,
     if (reply.isValid()) {
             result=reply;
     } else {
-      kDebug(5850) << "kMailOpenComposer() call failed." << endl;
+      kDebug(5850) <<"kMailOpenComposer() call failed.";
     }
     return result;
 }

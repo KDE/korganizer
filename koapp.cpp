@@ -65,7 +65,7 @@ KOrganizerApp::~KOrganizerApp()
 
 int KOrganizerApp::newInstance()
 {
-  kDebug(5850) << "KOApp::newInstance()" << endl;
+  kDebug(5850) <<"KOApp::newInstance()";
   static bool first = true;
   if ( isSessionRestored() && first ) {
      KOrg::MainWindow *korg = ActionManager::findInstance( KUrl() );
@@ -99,7 +99,7 @@ int KOrganizerApp::newInstance()
     processCalendar( KUrl() );
     KOrg::MainWindow *korg = ActionManager::findInstance( KUrl() );
     if ( !korg ) {
-      kError() << "Unable to find default calendar resources view." << endl;
+      kError() <<"Unable to find default calendar resources view.";
       return -1;
     }
     // Check for import, merge or ask
@@ -118,7 +118,7 @@ int KOrganizerApp::newInstance()
     }
   }
 
-  kDebug(5850) << "KOApp::newInstance() done" << endl;
+  kDebug(5850) <<"KOApp::newInstance() done";
 
   return 0;
 }
@@ -133,7 +133,7 @@ void KOrganizerApp::processCalendar( const KUrl &url )
     korg->init( hasDocument );
     korg->topLevelWidget()->show();
 
-    kDebug(5850) << "KOrganizerApp::processCalendar(): '" << url.url()
+    kDebug(5850) <<"KOrganizerApp::processCalendar(): '" << url.url()
                   << "'" << endl;
 
     if ( hasDocument )

@@ -1099,7 +1099,7 @@ KOEditorRecurrence::~KOEditorRecurrence()
 
 void KOEditorRecurrence::setRecurrenceEnabled( bool enabled )
 {
-//  kDebug(5850) << "KOEditorRecurrence::setRecurrenceEnabled(): " << (enabled ? "on" : "off") << endl;
+//  kDebug(5850) <<"KOEditorRecurrence::setRecurrenceEnabled():" << (enabled ?"on" :"off");
 
   mTimeGroupBox->setEnabled( enabled );
   mRuleBox->setEnabled( enabled );
@@ -1130,7 +1130,7 @@ void KOEditorRecurrence::showCurrentRule( int current )
 
 void KOEditorRecurrence::setDateTimes( const QDateTime &start, const QDateTime &end )
 {
-//  kDebug(5850) << "KOEditorRecurrence::setDateTimes" << endl;
+//  kDebug(5850) <<"KOEditorRecurrence::setDateTimes";
 
   mEventStartDt = start;
   mRecurrenceRange->setDateTimes( start, end );

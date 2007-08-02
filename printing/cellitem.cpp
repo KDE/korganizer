@@ -40,7 +40,7 @@ QString CellItem::label() const
 QList<CellItem*> CellItem::placeItem( QList<CellItem*> cells,
                                         CellItem *placeItem )
 {
-  kDebug(5855) << "Placing " << placeItem->label() << endl;
+  kDebug(5855) <<"Placing" << placeItem->label();
 
   QList<KOrg::CellItem*> conflictItems;
   int maxSubCells = 0;
@@ -53,7 +53,7 @@ QList<CellItem*> CellItem::placeItem( QList<CellItem*> cells,
     if ( item == placeItem ) continue;
 
     if ( item->overlaps( placeItem ) ) {
-      kDebug(5855) << "  Overlaps: " << item->label() << endl;
+      kDebug(5855) <<"  Overlaps:" << item->label();
 
       conflictItems.append( item );
       if ( item->subCells() > maxSubCells ) maxSubCells = item->subCells();
@@ -65,20 +65,20 @@ QList<CellItem*> CellItem::placeItem( QList<CellItem*> cells,
     // Look for unused sub cell and insert item
     int i;
     for( i = 0; i < maxSubCells; ++i ) {
-      kDebug(5855) << "  Trying subcell " << i << endl;
+      kDebug(5855) <<"  Trying subcell" << i;
       if ( !subCellDict.contains( i ) ) {
-        kDebug(5855) << "  Use subcell " << i << endl;
+        kDebug(5855) <<"  Use subcell" << i;
         placeItem->setSubCell( i );
         break;
       }
     }
     if ( i == maxSubCells ) {
-      kDebug(5855) << "  New subcell " << i << endl;
+      kDebug(5855) <<"  New subcell" << i;
       placeItem->setSubCell( maxSubCells );
       maxSubCells++;  // add new item to number of sub cells
     }
 
-    kDebug(5855) << "  Sub cells: " << maxSubCells << endl;
+    kDebug(5855) <<"  Sub cells:" << maxSubCells;
 
     // Write results to item to be placed
     conflictItems.append( placeItem );
@@ -90,7 +90,7 @@ QList<CellItem*> CellItem::placeItem( QList<CellItem*> cells,
     }
     // Todo: Adapt subCells of items conflicting with conflicting items
   } else {
-    kDebug(5855) << "  no conflicts" << endl;
+    kDebug(5855) <<"  no conflicts";
     placeItem->setSubCell( 0 );
     placeItem->setSubCells( 1 );
   }

@@ -46,7 +46,7 @@ using namespace KOrg;
 
 void WhatsNextTextBrowser::setSource(const QString& n)
 {
-  kDebug(5850) << "WhatsNextTextBrowser::setSource(): " << n << endl;
+  kDebug(5850) <<"WhatsNextTextBrowser::setSource():" << n;
 
   if (n.startsWith("event:")) {
     emit showIncidence(n);
@@ -179,7 +179,7 @@ void KOWhatsNextView::updateView()
         }
       }
       priority++;
-      kDebug(5850) << "adding the todos..." << endl;
+      kDebug(5850) <<"adding the todos...";
     }
     mText += "</ul>\n";
   }
@@ -227,14 +227,14 @@ void KOWhatsNextView::updateView()
         appendEvent(to);
       }
     }
-    kDebug () << "check for todo-replies..." << endl;
+    kDebug () <<"check for todo-replies...";
   }
   if (replies > 0 ) mText += "</table>\n";
 
 
   mText += "</td></tr>\n</table>\n";
 
-  kDebug(5850) << "KOWhatsNextView::updateView: text: " << mText << endl;
+  kDebug(5850) <<"KOWhatsNextView::updateView: text:" << mText;
 
   delete ipath;
 
@@ -261,14 +261,14 @@ void KOWhatsNextView::changeIncidenceDisplay(Incidence *, int action)
       updateView();
       break;
     default:
-      kDebug(5850) << "KOWhatsNextView::changeIncidenceDisplay(): Illegal action " << action << endl;
+      kDebug(5850) <<"KOWhatsNextView::changeIncidenceDisplay(): Illegal action" << action;
   }
 }
 
 void KOWhatsNextView::appendEvent( Incidence *ev, const QDateTime &start,
                                    const QDateTime &end )
 {
-  kDebug(5850) << "KOWhatsNextView::appendEvent(): " << ev->uid() << endl;
+  kDebug(5850) <<"KOWhatsNextView::appendEvent():" << ev->uid();
 
   mText += "<tr><td><b>";
 //  if (!ev->floats()) {
@@ -326,7 +326,7 @@ void KOWhatsNextView::appendTodo( Incidence *ev )
 
 void KOWhatsNextView::showIncidence( const QString &uid )
 {
-  kDebug(5850) << "KOWhatsNextView::showIncidence(): " << uid << endl;
+  kDebug(5850) <<"KOWhatsNextView::showIncidence():" << uid;
   Incidence *incidence = 0;
 
   if ( uid.startsWith( "event://" ) ) {

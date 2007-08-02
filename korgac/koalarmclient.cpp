@@ -49,7 +49,7 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
 {
   new KOrgacAdaptor(this);
   QDBusConnection::sessionBus().registerObject("/ac", this);
-  kDebug(5890) << "KOAlarmClient::KOAlarmClient()" << endl;
+  kDebug(5890) <<"KOAlarmClient::KOAlarmClient()";
 
   mDocker = new AlarmDockWindow;
   mDocker->show();
@@ -59,7 +59,7 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
   KConfig c( KStandardDirs::locate( "config", "korganizerrc" ) );
   KConfigGroup cg( &c, "Time & Date" );
   QString tz = cg.readEntry( "TimeZoneId" );
-  kDebug(5890) << "TimeZone: " << tz << endl;
+  kDebug(5890) <<"TimeZone:" << tz;
 
   mCalendar = new CalendarResources( tz );
   mCalendar->readConfig();
@@ -69,7 +69,7 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
 
   KConfigGroup config(KGlobal::config(), "Alarms");
   int interval = config.readEntry( "Interval", 60 );
-  kDebug(5890) << "KOAlarmClient check interval: " << interval << " seconds."
+  kDebug(5890) <<"KOAlarmClient check interval:" << interval <<" seconds."
                 << endl;
   mLastChecked = config.readEntry( "CalendarsLastChecked", QDateTime() );
 
@@ -111,13 +111,13 @@ void KOAlarmClient::checkAlarms()
   QDateTime from = mLastChecked.addSecs( 1 );
   mLastChecked = QDateTime::currentDateTime();
 
-  kDebug(5891) << "Check: " << from.toString() << " - " << mLastChecked.toString() << endl;
+  kDebug(5891) <<"Check:" << from.toString() <<" -" << mLastChecked.toString();
 
   QList<Alarm *> alarms = mCalendar->alarms( KDateTime( from, KDateTime::LocalZone ), KDateTime( mLastChecked, KDateTime::LocalZone ) );
 
   QList<Alarm *>::ConstIterator it;
   for( it = alarms.begin(); it != alarms.end(); ++it ) {
-    kDebug(5891) << "REMINDER: " << (*it)->parent()->summary() << endl;
+    kDebug(5891) <<"REMINDER:" << (*it)->parent()->summary();
     Incidence *incidence = mCalendar->incidence( (*it)->parent()->uid() );
     createReminder( incidence, QDateTime::currentDateTime() );
   }
@@ -158,7 +158,7 @@ void KOAlarmClient::saveLastCheckTime()
 
 void KOAlarmClient::quit()
 {
-  kDebug(5890) << "KOAlarmClient::quit()" << endl;
+  kDebug(5890) <<"KOAlarmClient::quit()";
   kapp->quit();
 }
 
@@ -188,7 +188,7 @@ void KOAlarmClient::dumpDebug()
 
   QDateTime lastChecked = cfg.readEntry( "CalendarsLastChecked", QDateTime() );
 
-  kDebug(5890) << "Last Check: " << lastChecked << endl;
+  kDebug(5890) <<"Last Check:" << lastChecked;
 }
 
 QStringList KOAlarmClient::dumpAlarms()

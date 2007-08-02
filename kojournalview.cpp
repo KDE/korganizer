@@ -108,7 +108,7 @@ Incidence::List KOJournalView::selectedIncidences()
 
 void KOJournalView::clearEntries()
 {
-//  kDebug(5850)<<"KOJournalView::clearEntries()"<<endl;
+//  kDebug(5850)<<"KOJournalView::clearEntries()";
   QMap<QDate, JournalDateEntry*>::Iterator it;
   for ( it = mEntries.begin(); it != mEntries.end(); ++it ) {
     delete (it.value());
@@ -130,13 +130,13 @@ void KOJournalView::updateView()
 
 void KOJournalView::flushView()
 {
-//  kDebug(5850) << "KOJournalView::flushView(): "<< endl;
+//  kDebug(5850) <<"KOJournalView::flushView():";
   emit flushEntries();
 }
 
 void KOJournalView::showDates(const QDate &start, const QDate &end)
 {
-//  kDebug(5850) << "KOJournalView::showDates(): "<<start.toString().toLatin1()<<" - "<<end.toString().toLatin1() << endl;
+//  kDebug(5850) <<"KOJournalView::showDates():"<<start.toString().toLatin1()<<" -"<<end.toString().toLatin1();
   clearEntries();
   if ( end<start ) return;
 
@@ -157,7 +157,7 @@ void KOJournalView::showDates(const QDate &start, const QDate &end)
 
 void KOJournalView::showIncidences( const Incidence::List &incidences )
 {
-//  kDebug(5850) << "KOJournalView::showIncidences(): "<< endl;
+//  kDebug(5850) <<"KOJournalView::showIncidences():";
   clearEntries();
   Incidence::List::const_iterator it;
   for ( it=incidences.constBegin(); it!=incidences.constEnd(); ++it) {
@@ -170,7 +170,7 @@ void KOJournalView::showIncidences( const Incidence::List &incidences )
 
 void KOJournalView::changeIncidenceDisplay(Incidence *incidence, int action)
 {
-//  kDebug(5850) << "KOJournalView::changeIncidenceDisplay(): "<< endl;
+//  kDebug(5850) <<"KOJournalView::changeIncidenceDisplay():";
   Journal *journal = dynamic_cast<Journal*>(incidence);
   if (journal) {
     switch(action) {
@@ -184,7 +184,7 @@ void KOJournalView::changeIncidenceDisplay(Incidence *incidence, int action)
         emit journalDeleted( journal );
         break;
       default:
-        kDebug(5850) << "KOListView::changeIncidenceDisplay(): Illegal action " << action << endl;
+        kDebug(5850) <<"KOListView::changeIncidenceDisplay(): Illegal action" << action;
     }
   }
 }

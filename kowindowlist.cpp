@@ -32,7 +32,7 @@
 KOWindowList::KOWindowList()
   : QObject( 0), mDefaultWindow( 0 )
 {
-//  kDebug(5850) << "KOWindowList::KOWindowList()" << endl;
+//  kDebug(5850) <<"KOWindowList::KOWindowList()";
 }
 
 KOWindowList::~KOWindowList()

@@ -170,7 +170,7 @@ QDate KDateNavigator::endDate() const
 
 void KDateNavigator::updateDates()
 {
-// kDebug(5850) << "KDateNavigator::updateDates(), this=" << this << endl;
+// kDebug(5850) <<"KDateNavigator::updateDates(), this=" << this;
   QDate dayone = startDate();
 
   mDayMatrix->updateView( dayone );
@@ -208,7 +208,7 @@ void KDateNavigator::updateDayMatrix()
 
 void KDateNavigator::updateView()
 {
-//   kDebug(5850) << "KDateNavigator::updateView(), view " << this << endl;
+//   kDebug(5850) <<"KDateNavigator::updateView(), view" << this;
   updateDayMatrix();
   repaint();
 }

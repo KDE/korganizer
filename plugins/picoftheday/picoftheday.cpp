@@ -119,11 +119,11 @@ void POTDElement::step1Result( KJob* job )
 {
   if ( job->error() )
   {
-    kWarning() << "picoftheday Plugin: could not get POTD file name: "
+    kWarning() <<"picoftheday Plugin: could not get POTD file name:"
                << job->errorString() << endl;
-    kDebug() << "file name: " << mFileName << endl;
-    kDebug() << "full-size image: " << mFullSizeImageUrl.url() << endl;
-    kDebug() << "thumbnail: " << mThumbUrl.url() << endl;
+    kDebug() <<"file name:" << mFileName;
+    kDebug() <<"full-size image:" << mFullSizeImageUrl.url();
+    kDebug() <<"thumbnail:" << mThumbUrl.url();
     mFirstStepCompleted = false;
     return;
   }
@@ -133,7 +133,7 @@ void POTDElement::step1Result( KJob* job )
     static_cast<KIO::StoredTransferJob*>( job );
   mFileName = QString::fromUtf8( transferJob->data().data(),
                                  transferJob->data().size() );
-  kDebug() << "picoftheday Plugin: got POTD file name: " << mFileName << endl;
+  kDebug() <<"picoftheday Plugin: got POTD file name:" << mFileName;
 
   if ( !mFileName.isEmpty() ) {
     mFirstStepCompleted = true;
@@ -170,11 +170,11 @@ void POTDElement::step2Result( KJob* job )
 {
   if ( job->error() )
   {
-    kWarning() << "picoftheday Plugin: could not get POTD image page: " 
+    kWarning() <<"picoftheday Plugin: could not get POTD image page:" 
                << job->errorString() << endl;
-    kDebug() << "file name: " << mFileName << endl;
-    kDebug() << "full-size image: " << mFullSizeImageUrl.url() << endl;
-    kDebug() << "thumbnail: " << mThumbUrl.url() << endl;
+    kDebug() <<"file name:" << mFileName;
+    kDebug() <<"full-size image:" << mFullSizeImageUrl.url();
+    kDebug() <<"thumbnail:" << mThumbUrl.url();
     mSecondStepCompleted = false;
     return;
   }
@@ -187,7 +187,7 @@ void POTDElement::step2Result( KJob* job )
   QDomDocument imgPage;
   if ( !imgPage.setContent( QString::fromUtf8( transferJob->data().data(),
                                              transferJob->data().size() ) ) ) {
-    kWarning() << "Wikipedia returned an invalid XML page for image "
+    kWarning() <<"Wikipedia returned an invalid XML page for image"
                << mFileName << endl;
     return;
   }
@@ -234,9 +234,9 @@ void POTDElement::step2Result( KJob* job )
     }
 
   }
-  kDebug() << "picoftheday Plugin: h/w ratio: " << mHWRatio << endl;
+  kDebug() <<"picoftheday Plugin: h/w ratio:" << mHWRatio;
 
-  kDebug() << "picoftheday Plugin: got POTD image page source: "
+  kDebug() <<"picoftheday Plugin: got POTD image page source:"
            << mFullSizeImageUrl << endl;
 
   if ( !mFullSizeImageUrl.isEmpty() ) {
@@ -284,16 +284,16 @@ void POTDElement::step3GetThumbnail()
     thumbWidth /= ( ( mThumbSize.width() * mHWRatio ) / mThumbSize.height() );
   }
   mDlThumbSize = QSize( thumbWidth, thumbWidth * mHWRatio );
-  kDebug() << "picoftheday Plugin: will download thumbnail of size "
+  kDebug() <<"picoftheday Plugin: will download thumbnail of size"
            << mDlThumbSize << endl;
   QString thumbUrl = thumbnailUrl( mFullSizeImageUrl, thumbWidth ).url();
 
-  kDebug() << "picoftheday Plugin: got POTD thumbnail URL: " 
+  kDebug() <<"picoftheday Plugin: got POTD thumbnail URL:" 
            << thumbUrl << endl;
   mThumbUrl = thumbUrl;
 
   mThirdStepJob = KIO::storedGet( thumbUrl, false, false );
-  kDebug() << "get " << thumbUrl << endl;//FIXME
+  kDebug() <<"get" << thumbUrl;//FIXME
   KIO::Scheduler::scheduleJob( mThirdStepJob );
 
   connect( mThirdStepJob, SIGNAL(result(KJob *)),
@@ -311,11 +311,11 @@ void POTDElement::step3Result( KJob* job )
 
   if (job->error())
   {
-    kWarning() << "picoftheday Plugin: could not get POTD: "
+    kWarning() <<"picoftheday Plugin: could not get POTD:"
                << job->errorString() << endl;
-    kDebug() << "file name: " << mFileName << endl;
-    kDebug() << "full-size image: " << mFullSizeImageUrl.url() << endl;
-    kDebug() << "thumbnail: " << mThumbUrl.url() << endl;
+    kDebug() <<"file name:" << mFileName;
+    kDebug() <<"full-size image:" << mFullSizeImageUrl.url();
+    kDebug() <<"thumbnail:" << mThumbUrl.url();
     return;
   }
 
@@ -323,7 +323,7 @@ void POTDElement::step3Result( KJob* job )
   KIO::StoredTransferJob* const transferJob =
     static_cast<KIO::StoredTransferJob*>( job );
   if ( mPixmap.loadFromData( transferJob->data() ) ) {
-    kDebug() << "picoftheday Plugin: got POTD. " << endl;
+    kDebug() <<"picoftheday Plugin: got POTD.";
     emit gotNewPixmap( mPixmap.scaled( mThumbSize, Qt::KeepAspectRatio,
                        Qt::SmoothTransformation ) );
   }
@@ -331,7 +331,7 @@ void POTDElement::step3Result( KJob* job )
 
 QPixmap POTDElement::pixmap( const QSize &size )
 {
-  kDebug() << "picoftheday Plugin: called for a new pixmap size ("
+  kDebug() <<"picoftheday Plugin: called for a new pixmap size ("
            << size << " instead of " << mThumbSize << ", stored pixmap: "
            << mPixmap.size() << ")" << endl;
   if ( ( mThumbSize.width() < size.width() )

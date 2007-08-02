@@ -88,7 +88,7 @@ bool MailScheduler::performTransaction( IncidenceBase *incidence,
 QList<ScheduleMessage*> MailScheduler::retrieveTransactions()
 {
   QString incomingDirName = KStandardDirs::locateLocal( "data", "korganizer/income" );
-  kDebug(5850) << "MailScheduler::retrieveTransactions: dir: "
+  kDebug(5850) <<"MailScheduler::retrieveTransactions: dir:"
                 << incomingDirName << endl;
 
   QList<ScheduleMessage*> messageList;
@@ -97,7 +97,7 @@ QList<ScheduleMessage*> MailScheduler::retrieveTransactions()
   QStringList incoming = incomingDir.entryList( QDir::Files );
   QStringList::ConstIterator it;
   for( it = incoming.begin(); it != incoming.end(); ++it ) {
-    kDebug(5850) << "-- File: " << (*it) << endl;
+    kDebug(5850) <<"-- File:" << (*it);
 
     QFile f( incomingDirName + '/' + (*it) );
     bool inserted = false;

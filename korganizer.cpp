@@ -88,7 +88,7 @@ KOrganizer::KOrganizer() : KParts::MainWindow(  ), KOrg::MainWindow()
   // modal subdialogs will only affect this dialog, not the other windows
   setAttribute( Qt::WA_GroupLeader );
 
-  kDebug(5850) << "KOrganizer::KOrganizer()" << endl;
+  kDebug(5850) <<"KOrganizer::KOrganizer()";
   KOCore::self()->addXMLGUIClient( this, this );
 //  setMinimumSize(600,400);  // make sure we don't get resized too small...
 
@@ -109,7 +109,7 @@ KOrganizer::~KOrganizer()
 
 void KOrganizer::init( bool document )
 {
-  kDebug(5850) << "KOrganizer::init() "
+  kDebug(5850) <<"KOrganizer::init()"
             << ( document ? "hasDocument" : "resources" ) << endl;
 
   setHasDocument( document );
@@ -151,7 +151,7 @@ void KOrganizer::init( bool document )
   setStandardToolBarMenuEnabled( true );
   setTitle();
 
-  kDebug(5850) << "KOrganizer::KOrganizer() done" << endl;
+  kDebug(5850) <<"KOrganizer::KOrganizer() done";
 }
 
 void KOrganizer::newMainWindow( const KUrl &url )
@@ -185,7 +185,7 @@ void KOrganizer::readSettings()
 
 void KOrganizer::writeSettings()
 {
-  kDebug(5850) << "KOrganizer::writeSettings" << endl;
+  kDebug(5850) <<"KOrganizer::writeSettings";
 
   KConfig *config = KOGlobals::self()->config();
 
@@ -219,7 +219,7 @@ void KOrganizer::slotEditKeys()
 
 bool KOrganizer::queryClose()
 {
-  kDebug(5850) << "KOrganizer::queryClose()" << endl;
+  kDebug(5850) <<"KOrganizer::queryClose()";
 
   bool close = mActionManager->queryClose();
 
@@ -284,7 +284,7 @@ KOrg::CalendarViewBase *KOrganizer::view() const
 
 void KOrganizer::setTitle()
 {
-//  kDebug(5850) << "KOrganizer::setTitle" << endl;
+//  kDebug(5850) <<"KOrganizer::setTitle";
 
   QString title;
   if ( !hasDocument() ) {

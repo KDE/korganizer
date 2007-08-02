@@ -94,7 +94,7 @@ void KOEditorGeneralTodo::finishSetup()
 
 void KOEditorGeneralTodo::initTime(QWidget *parent,QBoxLayout *topLayout)
 {
-  kDebug(5850) << k_funcinfo << endl;
+  kDebug(5850) << k_funcinfo;
   QBoxLayout *timeLayout = new QVBoxLayout();
   topLayout->addItem(timeLayout);
 
@@ -223,7 +223,7 @@ void KOEditorGeneralTodo::initStatus(QWidget *parent,QBoxLayout *topLayout)
 
 void KOEditorGeneralTodo::setDefaults( const QDateTime &due, bool allDay )
 {
-  kDebug(5850) << k_funcinfo << due <<endl;
+  kDebug(5850) << k_funcinfo << due;
   KOEditorGeneral::setDefaults(allDay);
 
   mTimeButton->setChecked( !allDay );

@@ -87,12 +87,12 @@ class PrintCellItem : public KOrg::CellItem
       PrintCellItem *other = static_cast<PrintCellItem *>( o );
 
 #if 0
-      kDebug(5850) << "PrintCellItem::overlaps() " << event()->summary()
+      kDebug(5850) <<"PrintCellItem::overlaps()" << event()->summary()
                     << " <-> " << other->event()->summary() << endl;
-      kDebug(5850) << "  start     : " << start.toString() << endl;
-      kDebug(5850) << "  end       : " << end.toString() << endl;
-      kDebug(5850) << "  otherStart: " << otherStart.toString() << endl;
-      kDebug(5850) << "  otherEnd  : " << otherEnd.toString() << endl;
+      kDebug(5850) <<"  start     :" << start.toString();
+      kDebug(5850) <<"  end       :" << end.toString();
+      kDebug(5850) <<"  otherStart:" << otherStart.toString();
+      kDebug(5850) <<"  otherEnd  :" << otherEnd.toString();
 #endif
 
       return !( other->start() >= end() || other->end() <= start() );
@@ -186,7 +186,7 @@ void CalPrintPluginBase::doLoadConfig()
     setUseColors( mUseColors );
     loadConfig();
   } else {
-    kDebug(5850) << "No config available in loadConfig!!!!" << endl;
+    kDebug(5850) <<"No config available in loadConfig!!!!";
   }
 }
 
@@ -200,7 +200,7 @@ void CalPrintPluginBase::doSaveConfig()
     group.writeEntry( "UseColors", mUseColors );
     mConfig->sync();
   } else {
-    kDebug(5850) << "No config available in saveConfig!!!!" << endl;
+    kDebug(5850) <<"No config available in saveConfig!!!!";
   }
 }
 
@@ -961,7 +961,7 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
 // TODO TODO TODO
 void CalPrintPluginBase::drawIncidence( QPainter &p, const QRect &dayBox, const QString &time, const QString &summary, int &textY )
 {
-  kDebug(5850) << "summary = " << summary << endl;
+  kDebug(5850) <<"summary =" << summary;
 
   int flags = Qt::AlignLeft;
   QFontMetrics fm = p.fontMetrics();

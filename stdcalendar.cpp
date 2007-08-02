@@ -61,12 +61,12 @@ StdCalendar::StdCalendar()
     if ( !fileName.isEmpty() ) {
       KUrl url( fileName );
       if ( url.isLocalFile() ) {
-        kDebug(5850) << "Local resource at " << url << endl;
+        kDebug(5850) <<"Local resource at" << url;
         defaultResource = manager->createResource( "file" );
         if ( defaultResource )
           defaultResource->setValue( "File", url.path() );
       } else {
-        kDebug(5850) << "Remote Resource at " << url << endl;
+        kDebug(5850) <<"Remote Resource at" << url;
         defaultResource = manager->createResource( "remote" );
         if ( defaultResource )
           defaultResource->setValue( "URL", url.url() );
@@ -76,7 +76,7 @@ StdCalendar::StdCalendar()
     // No resource created, i.e. no path found in config => use default path
     if ( !defaultResource ) {
       fileName = KStandardDirs::locateLocal( "data", "korganizer/std.ics" );
-      kDebug(5850) << "Creating new default local resource at " << fileName << endl;
+      kDebug(5850) <<"Creating new default local resource at" << fileName;
       defaultResource = manager->createResource( "file" );
       if ( defaultResource )
         defaultResource->setValue( "File", fileName );
@@ -93,12 +93,12 @@ StdCalendar::StdCalendar()
     // By default, also create a birthday resource
     KCal::ResourceCalendar *bdayResource = manager->createResource( "birthdays" );
     if ( bdayResource ) {
-      kDebug(5850) << "Adding Birthdays resource" << endl;
+      kDebug(5850) <<"Adding Birthdays resource";
       bdayResource->setTimeSpec( KPimPrefs::timeSpec() );
       bdayResource->setResourceName( i18n("Birthdays") );
       manager->add( bdayResource );
     } else {
-      kDebug(5850) << "Unable to add a Birthdays resource" << endl;
+      kDebug(5850) <<"Unable to add a Birthdays resource";
     }
   }
 }

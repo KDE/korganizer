@@ -127,7 +127,7 @@ void KOGroupware::incomingDirChanged( const QString& path )
   const QString incomingDirName = KStandardDirs::locateLocal( "data","korganizer/" )
                                   + "income.";
   if ( !path.startsWith( incomingDirName ) ) {
-    kDebug(5850) << "incomingDirChanged: Wrong dir " << path << endl;
+    kDebug(5850) <<"incomingDirChanged: Wrong dir" << path;
     return;
   }
   QString action = path.mid( incomingDirName.length() );
@@ -145,7 +145,7 @@ void KOGroupware::incomingDirChanged( const QString& path )
   // Read the file and remove it
   QFile f( path + '/' + files[0] );
   if (!f.open(QIODevice::ReadOnly)) {
-    kError(5850) << "Can't open file '" << files[0] << "'" << endl;
+    kError(5850) <<"Can't open file '" << files[0] <<"'";
     return;
   }
   QTextStream t(&f);
@@ -160,7 +160,7 @@ void KOGroupware::incomingDirChanged( const QString& path )
     QString errorMessage;
     if (mFormat.exception())
       errorMessage = i18n( "Error message: %1", mFormat.exception()->message() );
-    kDebug(5850) << "MailScheduler::retrieveTransactions() Error parsing "
+    kDebug(5850) <<"MailScheduler::retrieveTransactions() Error parsing"
                   << errorMessage << endl;
     KMessageBox::detailedError( mView,
         i18n("Error while processing an invitation or update."),
@@ -198,7 +198,7 @@ void KOGroupware::incomingDirChanged( const QString& path )
   else if ( action.startsWith( "reply" ) )
     scheduler.acceptTransaction( incidence, method, status );
   else
-    kError(5850) << "Unknown incoming action " << action << endl;
+    kError(5850) <<"Unknown incoming action" << action;
   mView->updateView();
   delete message;
 }
@@ -291,7 +291,7 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
       return ( rc == KMessageBox::Yes );
     }
   } else {
-    kWarning(5850) << "Groupware messages for Journals are not implemented yet!" << endl;
+    kWarning(5850) <<"Groupware messages for Journals are not implemented yet!";
     return true;
   }
 

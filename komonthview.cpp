@@ -348,7 +348,7 @@ MonthViewCell::MonthViewCell( KOMonthView *parent)
 
 void MonthViewCell::setDate( const QDate &date )
 {
-//  kDebug(5850) << "MonthViewCell::setDate(): " << date.toString() << endl;
+//  kDebug(5850) <<"MonthViewCell::setDate():" << date.toString();
 
   mDate = date;
 
@@ -881,7 +881,7 @@ void KOMonthView::updateConfig()
 
 void KOMonthView::updateDayLabels()
 {
-  kDebug(5850) << "KOMonthView::updateDayLabels()" << endl;
+  kDebug(5850) <<"KOMonthView::updateDayLabels()";
 
   const KCalendarSystem*calsys=KOGlobals::self()->calendarSystem();
   int currDay;
@@ -898,7 +898,7 @@ void KOMonthView::updateDayLabels()
 
 void KOMonthView::showDates( const QDate &start, const QDate & )
 {
-//  kDebug(5850) << "KOMonthView::showDates(): " << start.toString() << endl;
+//  kDebug(5850) <<"KOMonthView::showDates():" << start.toString();
 
   const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
 
@@ -961,7 +961,7 @@ void KOMonthView::showDates( const QDate &start, const QDate & )
 
 void KOMonthView::showIncidences( const Incidence::List & )
 {
-  kDebug(5850) << "KOMonthView::showIncidences( const Incidence::List & ) is not implemented yet." << endl;
+  kDebug(5850) <<"KOMonthView::showIncidences( const Incidence::List & ) is not implemented yet.";
 }
 
 class KOMonthView::GetDateVisitor : public IncidenceBase::Visitor
@@ -1007,7 +1007,7 @@ void KOMonthView::changeIncidenceDisplayAdded( Incidence *incidence )
   GetDateVisitor gdv;
 
   if ( !gdv.act( incidence ) ) {
-    kDebug(5850) << "Visiting GetDateVisitor failed." << endl;
+    kDebug(5850) <<"Visiting GetDateVisitor failed.";
     return;
   }
 

@@ -218,7 +218,7 @@ void AlarmDialog::eventNotification()
 // FIXME: Check whether this should be done for all multiple alarms
     if (alarm->type() == Alarm::Procedure) {
 // FIXME: Add a message box asking whether the procedure should really be executed
-      kDebug(5890) << "Starting program: '" << alarm->programFile() << "'" << endl;
+      kDebug(5890) <<"Starting program: '" << alarm->programFile() <<"'";
       QProcess::startDetached( QFile::encodeName(alarm->programFile()));
     }
     else if (alarm->type() == Alarm::Audio) {

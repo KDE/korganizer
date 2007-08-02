@@ -63,7 +63,7 @@ QColor KOHelper::resourceColor( KCal::Calendar *calendar,
       }
     }
 //   } else {
-//     kDebug(5850) << "resourceColor: Calendar is not a CalendarResources" <<endl;
+//     kDebug(5850) <<"resourceColor: Calendar is not a CalendarResources";
   }
   return resourceColor;
 }

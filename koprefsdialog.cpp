@@ -793,11 +793,11 @@ void KOPrefsDialogColors::updateResources()
 {
   mResourceCombo->clear();
   mResourceIdentifier.clear();
-  kDebug( 5850) << "KOPrefsDialogColors::updateResources()" << endl;
+  kDebug( 5850) <<"KOPrefsDialogColors::updateResources()";
 
   KCal::CalendarResourceManager *manager = KOrg::StdCalendar::self()->resourceManager();
 
-  kDebug(5850) << "Loading Calendar resources...:" << endl;
+  kDebug(5850) <<"Loading Calendar resources...:";
   KCal::CalendarResourceManager::Iterator it;
   for( it = manager->begin(); it != manager->end(); ++it ) {
     if ( !(*it)->subresources().isEmpty() ) {
@@ -820,7 +820,7 @@ void KOPrefsDialogColors::updateResources()
 
 void KOPrefsDialogColors::setResourceColor()
 {
-  kDebug( 5850) << "KOPrefsDialogColors::setResorceColor()" << endl;
+  kDebug( 5850) <<"KOPrefsDialogColors::setResorceColor()";
 
   mResourceDict.insert( mResourceIdentifier[mResourceCombo->currentIndex()],
     mResourceButton->color() );
@@ -829,7 +829,7 @@ void KOPrefsDialogColors::setResourceColor()
 
 void KOPrefsDialogColors::updateResourceColor()
 {
-  kDebug( 5850 ) << "KOPrefsDialogColors::updateResourceColor()" << endl;
+  kDebug( 5850 ) <<"KOPrefsDialogColors::updateResourceColor()";
   QString res= mResourceIdentifier[mResourceCombo->currentIndex()];
   QColor color = mCategoryDict.value( res );
   if( color.isValid() )  {
@@ -1379,7 +1379,7 @@ KOPrefsDesignerFields::KOPrefsDesignerFields( const KComponentData &inst, QWidge
 QString KOPrefsDesignerFields::localUiDir()
 {
   QString dir = KStandardDirs::locateLocal( "data", "korganizer/designer/event/");
-  kDebug() << "KOPrefsDesignerFields::localUiDir(): " << dir << endl;
+  kDebug() <<"KOPrefsDesignerFields::localUiDir():" << dir;
   return dir;
 }
 

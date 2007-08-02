@@ -65,7 +65,7 @@ KOTodoEditor::~KOTodoEditor()
 
 void KOTodoEditor::init()
 {
-  kDebug(5850) << k_funcinfo << endl;
+  kDebug(5850) << k_funcinfo;
   setupGeneral();
   setupRecurrence();
   setupAttendeesTab();
@@ -171,7 +171,7 @@ void KOTodoEditor::setupRecurrence()
 
 void KOTodoEditor::editIncidence(Incidence *incidence)
 {
-  kDebug(5850) << k_funcinfo << endl;
+  kDebug(5850) << k_funcinfo;
   Todo *todo=dynamic_cast<Todo*>(incidence);
   if (todo)
   {
@@ -186,7 +186,7 @@ void KOTodoEditor::editIncidence(Incidence *incidence)
 
 void KOTodoEditor::newTodo()
 {
-  kDebug(5850) << k_funcinfo << endl;
+  kDebug(5850) << k_funcinfo;
   init();
   mTodo = 0;
   setCaption( i18n("New To-do") );
@@ -208,7 +208,7 @@ void KOTodoEditor::setTexts( const QString &summary, const QString &description 
 
 void KOTodoEditor::loadDefaults()
 {
-  kDebug(5850) << k_funcinfo << endl;
+  kDebug(5850) << k_funcinfo;
   setDates( QDateTime::currentDateTime().addDays(7), true, 0 );
 }
 
@@ -221,15 +221,15 @@ bool KOTodoEditor::processInput()
     Todo *oldTodo = mTodo->clone();
     Todo *todo = mTodo->clone();
 
-    kDebug(5850) << "KOTodoEditor::processInput() write event." << endl;
+    kDebug(5850) <<"KOTodoEditor::processInput() write event.";
     writeTodo( todo );
-    kDebug(5850) << "KOTodoEditor::processInput() event written." << endl;
+    kDebug(5850) <<"KOTodoEditor::processInput() event written.";
 
     if( *mTodo == *todo )
       // Don't do anything
-      kDebug(5850) << "Todo not changed\n";
+      kDebug(5850) <<"Todo not changed";
     else {
-      kDebug(5850) << "Todo changed\n";
+      kDebug(5850) <<"Todo changed";
       //IncidenceChanger::assignIncidence( mTodo, todo );
       writeTodo( mTodo );
       mChanger->changeIncidence( oldTodo, mTodo );
@@ -290,7 +290,7 @@ void KOTodoEditor::setDates( const QDateTime &due, bool allDay, Todo *relatedEve
 void KOTodoEditor::readTodo( Todo *todo )
 {
   if ( !todo ) return;
-  kDebug(5850)<<"read todo"<<endl;
+  kDebug(5850)<<"read todo";
   mGeneral->readTodo( todo );
   mDetails->readEvent( todo );
 //  mAlarms->readIncidence( todo );

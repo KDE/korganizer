@@ -127,7 +127,7 @@ void ExportWebDialog::slotOk()
 
 void ExportWebDialog::slotDefault()
 {
-  kDebug(5850) << "KPrefsDialog::slotDefault()" << endl;
+  kDebug(5850) <<"KPrefsDialog::slotDefault()";
 
   if (KMessageBox::warningContinueCancel(this,
       i18n("You are about to set all preferences to default values. All "

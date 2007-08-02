@@ -554,7 +554,7 @@ void KOAgendaItem::dragEnterEvent( QDragEnterEvent *e )
 
 void KOAgendaItem::addAttendee( const QString &newAttendee )
 {
-  kDebug(5850) << " Email: " << newAttendee << endl;
+  kDebug(5850) <<" Email:" << newAttendee;
   QString name, email;
   KPIMUtils::extractEmailAddressAndName( newAttendee, email, name );
   if ( !( name.isEmpty() && email.isEmpty() ) ) {
@@ -592,7 +592,7 @@ void KOAgendaItem::dropEvent( QDropEvent *e )
   }
 #else
   if( decoded ) {
-    kDebug(5850) << "Dropped : " << text << endl;
+    kDebug(5850) <<"Dropped :" << text;
 
     QStringList emails = text.split( ",", QString::SkipEmptyParts  );
     for( QStringList::ConstIterator it = emails.begin(); it != emails.end();
@@ -721,7 +721,7 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
   }
 
   if ( !bgColor.isValid() ) {
-    kDebug() << "invalid bgColor: " << bgColor.name() <<endl;
+    kDebug() <<"invalid bgColor:" << bgColor.name();
     QStringList categories = mIncidence->categories();
     QString cat;
     if ( !categories.isEmpty() ) cat = categories.first();
@@ -853,7 +853,7 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
                                 0,
                                 mLabelText );
 
-    //kDebug() << "SIZES for " << mLabelText <<  ": " << width() << " :: " << txtWidth << endl;
+    //kDebug() <<"SIZES for" << mLabelText <<":" << width() <<" ::" << txtWidth;
     ww->drawText( &p, x, margin, Qt::AlignHCenter | KWordWrap::FadeOut );
     delete ww;
     return;

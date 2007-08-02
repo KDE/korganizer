@@ -37,7 +37,7 @@
 bool IncidenceChanger::beginChange( Incidence * incidence )
 {
   if ( !incidence ) return false;
-kDebug(5850)<<"IncidenceChanger::beginChange for incidence \""<<incidence->summary()<<"\""<<endl;
+kDebug(5850)<<"IncidenceChanger::beginChange for incidence \""<<incidence->summary()<<"\"";
   return mCalendar->beginChange( incidence );
 }
 
@@ -81,14 +81,14 @@ bool IncidenceChanger::endChange( Incidence *incidence )
   // FIXME: if that's a groupware incidence, and the incidence was
   // never locked, we can't unlock it with endChange().
   if ( !incidence ) return false;
-kDebug(5850)<<"IncidenceChanger::endChange for incidence \""<<incidence->summary()<<"\""<<endl;
+kDebug(5850)<<"IncidenceChanger::endChange for incidence \""<<incidence->summary()<<"\"";
   return mCalendar->endChange( incidence );
 }
 
 bool IncidenceChanger::deleteIncidence( Incidence *incidence )
 {
   if ( !incidence ) return true;
-kDebug(5850)<<"IncidenceChanger::deleteIncidence for incidence \""<<incidence->summary()<<"\""<<endl;
+kDebug(5850)<<"IncidenceChanger::deleteIncidence for incidence \""<<incidence->summary()<<"\"";
   bool doDelete = sendGroupwareMessage( incidence, KCal::Scheduler::Cancel );
   if( doDelete ) {
     // @TODO: let Calendar::deleteIncidence do the locking...
@@ -102,7 +102,7 @@ kDebug(5850)<<"IncidenceChanger::deleteIncidence for incidence \""<<incidence->s
 bool IncidenceChanger::cutIncidence( Incidence *incidence )
 {
   if ( !incidence ) return true;
-kDebug(5850)<<"IncidenceChanger::deleteIncidence for incidence \""<<incidence->summary()<<"\""<<endl;
+kDebug(5850)<<"IncidenceChanger::deleteIncidence for incidence \""<<incidence->summary()<<"\"";
   bool doDelete = sendGroupwareMessage( incidence, KCal::Scheduler::Cancel );
   if( doDelete ) {
     // @TODO: the factory needs to do the locking!
@@ -258,12 +258,12 @@ bool IncidenceChanger::myAttendeeStatusChanged( Incidence *oldInc, Incidence *ne
 bool IncidenceChanger::changeIncidence( Incidence *oldinc, Incidence *newinc,
                                         int action )
 {
-kDebug(5850)<<"IncidenceChanger::changeIncidence for incidence \""<<newinc->summary()<<"\" ( old one was \""<<oldinc->summary()<<"\")"<<endl;
+kDebug(5850)<<"IncidenceChanger::changeIncidence for incidence \""<<newinc->summary()<<"\" ( old one was \""<<oldinc->summary()<<"\")";
   if( incidencesEqual( newinc, oldinc ) ) {
     // Don't do anything
-    kDebug(5850) << "Incidence not changed\n";
+    kDebug(5850) <<"Incidence not changed";
   } else {
-    kDebug(5850) << "Incidence changed\n";
+    kDebug(5850) <<"Incidence changed";
     bool statusChanged = myAttendeeStatusChanged( oldinc, newinc );
     int revision = newinc->revision();
     newinc->setRevision( revision + 1 );
@@ -292,12 +292,12 @@ kDebug(5850)<<"IncidenceChanger::changeIncidence for incidence \""<<newinc->summ
 
 bool IncidenceChanger::addIncidence( Incidence *incidence, QWidget *parent )
 {
-kDebug(5850)<<"IncidenceChanger::addIncidence for incidence \""<<incidence->summary()<<"\""<<endl;
+kDebug(5850)<<"IncidenceChanger::addIncidence for incidence \""<<incidence->summary()<<"\"";
   if ( KOPrefs::instance()->mUseGroupwareCommunication ) {
     if ( !KOGroupware::instance()->sendICalMessage( parent,
                                                     KCal::Scheduler::Request,
                                                     incidence ) ) {
-      kError() << "sendIcalMessage failed." << endl;
+      kError() <<"sendIcalMessage failed.";
     }
   }
   // FIXME: This is a nasty hack, since we need to set a parent for the

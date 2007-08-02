@@ -176,7 +176,7 @@ void FilterEdit::filterSelected()
 void FilterEdit::filterSelected(CalFilter *filter)
 {
   if(filter == current) return;
-  kDebug(5850) << "Selected filter " << filter->name() << endl;
+  kDebug(5850) <<"Selected filter" << filter->name();
   saveChanges();
 
   current = filter;

@@ -67,7 +67,7 @@ void ThemeImporter::readThemeXml()
 {
   Q_ASSERT( isStartElement() && name() == "korganizer-theme" );
 
-  kDebug() << "Reading theme XML." << endl;
+  kDebug() <<"Reading theme XML.";
   
   while ( !atEnd() ) {
     readNext();
@@ -143,7 +143,7 @@ void ThemeImporter::readDate( const QString &viewType,
       else {
         readElement( viewType, y, m, d );
       }
-      kDebug() << "date: " << y << "-" << m << "-" << d << endl;
+      kDebug() <<"date:" << y <<"-" << m <<"-" << d;
     }
   }
 }
@@ -156,7 +156,7 @@ void ThemeImporter::readView( const QString &viewType,
 
   QString v = viewType;
   v = attributes().value("type").toString();
-  kDebug() << "viewType: " << v << endl;
+  kDebug() <<"viewType:" << v;
 
   while ( !atEnd() ) {
     readNext();
@@ -174,7 +174,7 @@ void ThemeImporter::readUnknownElement()
 {
   Q_ASSERT( isStartElement() );
 
-  kWarning() << "ThemeImporter: Unknown element found at line " << lineNumber()
+  kWarning() <<"ThemeImporter: Unknown element found at line" << lineNumber()
              << ", ending at column " << columnNumber() << ": "
              << name().toString() << endl;
 
@@ -500,13 +500,13 @@ void ThemeImporter::setColor( const QString &viewType,
 
     foreach ( QString v, Theme::themableViews( viewType ) ) {
       if ( year == 0 && month == 0 && day == 0 ) {
-        kDebug() << "setting: " << v << ": " << key << ": " << value << endl;
+        kDebug() <<"setting:" << v <<":" << key <<":" << value;
         configGroup( v )->writeEntry( v + key, color );
       }
       else {
       // TODO: implement this when date-dependent themes will be enabled
-      kWarning() << "ThemeImporter: feature not yet implemented" << endl;
-      kWarning() << "THEORICAL setting: " << year << "-" << month << "-" << day
+      kWarning() <<"ThemeImporter: feature not yet implemented";
+      kWarning() <<"THEORICAL setting:" << year <<"-" << month <<"-" << day
                  << ": " << v << ": " << key << ": " << value << endl;
       }
     }
@@ -545,15 +545,15 @@ void ThemeImporter::setFont( const QString &viewType,
 
   foreach ( QString v, Theme::themableViews( viewType ) ) {
     if ( year == 0 && month == 0 && day == 0 ) {
-      kDebug() << "setting: " << v << ": " << key << ": " << family << "\t"
+      kDebug() <<"setting:" << v <<":" << key <<":" << family <<"\t"
                << styleHint << "\t" << pointSize << "\t" << weight << "\t"
                << style << "\t" << sf << endl;
       configGroup( v )->writeEntry( v + key, f );
     }
     else {
     // TODO: implement this when date-dependent themes will be enabled
-    kWarning() << "ThemeImporter: feature not yet implemented" << endl;
-    kWarning() << "THEORICAL setting: " << year << "-" << month << "-" << day
+    kWarning() <<"ThemeImporter: feature not yet implemented";
+    kWarning() <<"THEORICAL setting:" << year <<"-" << month <<"-" << day
           << ": " << v << ": " << key << ": " << family << "\t"
           << styleHint << "\t" << pointSize << "\t" << weight << "\t"
           << style << "\t" << sf << endl;
@@ -569,13 +569,13 @@ void ThemeImporter::setPath( const QString &viewType,
   if ( ! value.isEmpty() ) {
     foreach ( QString v, Theme::themableViews( viewType ) ) {
       if ( year == 0 && month == 0 && day == 0 ) {
-        kDebug() << "setting: " << v << ": " << key << ": " << value << endl;
+        kDebug() <<"setting:" << v <<":" << key <<":" << value;
         configGroup( v )->writePathEntry( v + key, value );
       }
       else {
       // TODO: implement this when date-dependent themes will be enabled
-      kWarning() << "ThemeImporter: feature not yet implemented" << endl;
-      kWarning() << "THEORICAL setting: " << year << "-" << month << "-" << day
+      kWarning() <<"ThemeImporter: feature not yet implemented";
+      kWarning() <<"THEORICAL setting:" << year <<"-" << month <<"-" << day
                  << ": " << v << ": " << key << ": " << value << endl;
       }
     }
@@ -590,13 +590,13 @@ void ThemeImporter::setString( const QString &viewType,
   if ( ! value.isEmpty() ) {
     foreach ( QString v, Theme::themableViews( viewType ) ) {
       if ( year == 0 && month == 0 && day == 0 ) {
-        kDebug() << "setting: " << v << ": " << key << ": " << value << endl;
+        kDebug() <<"setting:" << v <<":" << key <<":" << value;
         configGroup( v )->writeEntry( v + key, value );
       }
       else {
       // TODO: implement this when date-dependent themes will be enabled
-      kWarning() << "ThemeImporter: feature not yet implemented" << endl;
-      kWarning() << "THEORICAL setting: " << year << "-" << month << "-" << day
+      kWarning() <<"ThemeImporter: feature not yet implemented";
+      kWarning() <<"THEORICAL setting:" << year <<"-" << month <<"-" << day
             << ": " << v << ": " << key << ": " << value << endl;
       }
     }

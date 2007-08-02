@@ -170,7 +170,7 @@ void KOIncidenceEditor::cancelRemovedAttendees( Incidence *incidence )
 
 void KOIncidenceEditor::slotManageTemplates()
 {
-  kDebug(5850) << "KOIncidenceEditor::manageTemplates()" << endl;
+  kDebug(5850) <<"KOIncidenceEditor::manageTemplates()";
 
   QString tp = type();
 
@@ -242,7 +242,7 @@ void KOIncidenceEditor::setupDesignerTabs( const QString &type )
 
 QWidget *KOIncidenceEditor::addDesignerTab( const QString &uifile )
 {
-  kDebug(5850) << "Designer tab: " << uifile << endl;
+  kDebug(5850) <<"Designer tab:" << uifile;
 
   KPIM::DesignerFields *wid = new KPIM::DesignerFields( uifile, 0 );
   mDesignerFields.append( wid );
@@ -309,12 +309,12 @@ void KOIncidenceEditor::readDesignerFields( Incidence *i )
 
 void KOIncidenceEditor::writeDesignerFields( Incidence *i )
 {
-  kDebug(5850) << "KOIncidenceEditor::writeDesignerFields()" << endl;
+  kDebug(5850) <<"KOIncidenceEditor::writeDesignerFields()";
 
   KCalStorage storage( i );
   foreach ( KPIM::DesignerFields *fields, mDesignerFields ) {
     if ( fields ) {
-      kDebug(5850) << "Write Field " << fields->title() << endl;
+      kDebug(5850) <<"Write Field" << fields->title();
       fields->save( &storage );
     }
   }
@@ -324,8 +324,8 @@ void KOIncidenceEditor::writeDesignerFields( Incidence *i )
 void KOIncidenceEditor::setupEmbeddedURLPage( const QString &label,
                                  const QString &url, const QString &mimetype )
 {
-  kDebug(5850) << "KOIncidenceEditor::setupEmbeddedURLPage()" << endl;
-  kDebug(5850) << "label=" << label << ", url=" << url << ", mimetype=" << mimetype << endl;
+  kDebug(5850) <<"KOIncidenceEditor::setupEmbeddedURLPage()";
+  kDebug(5850) <<"label=" << label <<", url=" << url <<", mimetype=" << mimetype;
   QFrame *topFrame = new QFrame();
   addPage( topFrame, label );
   QBoxLayout *topLayout = new QVBoxLayout( topFrame );
@@ -342,11 +342,11 @@ void KOIncidenceEditor::setupEmbeddedURLPage( const QString &label,
 
 void KOIncidenceEditor::createEmbeddedURLPages( Incidence *i )
 {
-  kDebug(5850) << "KOIncidenceEditor::createEmbeddedURLPages()" << endl;
+  kDebug(5850) <<"KOIncidenceEditor::createEmbeddedURLPages()";
 
   if ( !i ) return;
   if ( !mEmbeddedURLPages.isEmpty() ) {
-    kDebug(5850) << "mEmbeddedURLPages are not empty, clearing it!" << endl;
+    kDebug(5850) <<"mEmbeddedURLPages are not empty, clearing it!";
     qDeleteAll( mEmbeddedURLPages );
     mEmbeddedURLPages.clear();
   }
@@ -364,8 +364,8 @@ void KOIncidenceEditor::createEmbeddedURLPages( Incidence *i )
   Attachment::List att = i->attachments();
   for ( Attachment::List::Iterator it = att.begin(); it != att.end(); ++it ) {
     Attachment *a = (*it);
-    kDebug(5850) << "Iterating over the attachments " << endl;
-    kDebug(5850) << "label=" << a->label() << ", url=" << a->uri() << ", mimetype=" << a->mimeType() << endl;
+    kDebug(5850) <<"Iterating over the attachments";
+    kDebug(5850) <<"label=" << a->label() <<", url=" << a->uri() <<", mimetype=" << a->mimeType();
     if ( a->showInline() && a->isUri() ) {
       // TODO: Allow more mime-types, but add security checks!
 /*      if ( a->mimeType() == QLatin1String("application/x-designer") ) {

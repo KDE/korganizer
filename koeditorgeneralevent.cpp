@@ -231,7 +231,7 @@ void KOEditorGeneralEvent::associateTime(bool time)
 
 void KOEditorGeneralEvent::setDateTimes( const KDateTime &start, const KDateTime &end )
 {
-//  kDebug(5850) << "KOEditorGeneralEvent::setDateTimes(): Start DateTime: " << start.toString() << endl;
+//  kDebug(5850) <<"KOEditorGeneralEvent::setDateTimes(): Start DateTime:" << start.toString();
 
   mStartDateEdit->setDate(start.date());
   // KTimeEdit seems to emit some signals when setTime() is called.
@@ -263,7 +263,7 @@ void KOEditorGeneralEvent::setDateTimes( const KDateTime &start, const KDateTime
 
 void KOEditorGeneralEvent::startTimeChanged( QTime newtime )
 {
-  kDebug(5850) << "KOEditorGeneralEvent::startTimeChanged() " << newtime.toString() << endl;
+  kDebug(5850) <<"KOEditorGeneralEvent::startTimeChanged()" << newtime.toString();
 
   int secsep = mCurrStartDateTime.secsTo(mCurrEndDateTime);
 
@@ -279,7 +279,7 @@ void KOEditorGeneralEvent::startTimeChanged( QTime newtime )
 
 void KOEditorGeneralEvent::endTimeChanged( QTime newtime )
 {
-//  kDebug(5850) << "KOEditorGeneralEvent::endTimeChanged " << newtime.toString() << endl;
+//  kDebug(5850) <<"KOEditorGeneralEvent::endTimeChanged" << newtime.toString();
 
   QDateTime newdt(mCurrEndDateTime.date(), newtime);
   mCurrEndDateTime = newdt;
@@ -375,7 +375,7 @@ void KOEditorGeneralEvent::readEvent( Event *event, bool tmpl )
 
 void KOEditorGeneralEvent::writeEvent(Event *event)
 {
-//  kDebug(5850) << "KOEditorGeneralEvent::writeEvent()" << endl;
+//  kDebug(5850) <<"KOEditorGeneralEvent::writeEvent()";
 
   writeIncidence(event);
 
@@ -416,7 +416,6 @@ void KOEditorGeneralEvent::writeEvent(Event *event)
   event->setTransparency( mFreeTimeCombo->currentIndex() > 0
                          ? KCal::Event::Transparent
                          : KCal::Event::Opaque);
-
 
 //  kDebug(5850) << "KOEditorGeneralEvent::writeEvent() done" << endl;
 }
@@ -487,7 +486,7 @@ void KOEditorGeneralEvent::emitDateTimeStr()
 
 bool KOEditorGeneralEvent::validateInput()
 {
-//  kDebug(5850) << "KOEditorGeneralEvent::validateInput()" << endl;
+//  kDebug(5850) <<"KOEditorGeneralEvent::validateInput()";
 
   if (mTimeAssociateButton->isChecked()) {
     if (!mStartTimeEdit->inputIsValid()) {

@@ -61,7 +61,7 @@
 JournalDateEntry::JournalDateEntry( Calendar *calendar, QWidget *parent ) :
   KVBox( parent ), mCalendar( calendar )
 {
-//kDebug(5850)<<"JournalEntry::JournalEntry, parent="<<parent<<endl;
+//kDebug(5850)<<"JournalEntry::JournalEntry, parent="<<parent;
   mChanger = 0;
 
   mTitle = new QLabel( this );
@@ -173,7 +173,7 @@ void JournalDateEntry::journalDeleted( Journal *journal )
 JournalEntry::JournalEntry( Journal* j, QWidget *parent ) :
   QWidget( parent ), mJournal( j )
 {
-//kDebug(5850)<<"JournalEntry::JournalEntry, parent="<<parent<<endl;
+//kDebug(5850)<<"JournalEntry::JournalEntry, parent="<<parent;
   mDirty = false;
   mWriteInProgress = false;
   mChanger = 0;
@@ -324,12 +324,12 @@ void JournalEntry::setJournal(Journal *journal)
 void JournalEntry::setDirty()
 {
   mDirty = true;
-  kDebug(5850) << "JournalEntry::setDirty()" << endl;
+  kDebug(5850) <<"JournalEntry::setDirty()";
 }
 
 bool JournalEntry::eventFilter( QObject *o, QEvent *e )
 {
-//  kDebug(5850) << "JournalEntry::event received " << e->type() << endl;
+//  kDebug(5850) <<"JournalEntry::event received" << e->type();
 
   if ( e->type() == QEvent::FocusOut || e->type() == QEvent::Hide ||
        e->type() == QEvent::Close ) {
@@ -366,10 +366,10 @@ void JournalEntry::writeJournalPrivate( Journal *j )
 
 void JournalEntry::writeJournal()
 {
-//  kDebug(5850) << "JournalEntry::writeJournal()" << endl;
+//  kDebug(5850) <<"JournalEntry::writeJournal()";
 
   if ( mReadOnly || !mDirty || !mChanger ) {
-    kDebug(5850)<<"Journal either read-only, unchanged or no changer object available"<<endl;
+    kDebug(5850)<<"Journal either read-only, unchanged or no changer object available";
     return;
   }
   bool newJournal = false;
