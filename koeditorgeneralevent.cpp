@@ -38,13 +38,13 @@
 #include <kfiledialog.h>
 #include <kstandarddirs.h>
 #include <ktextedit.h>
+#include <KComboBox>
 
 #include <QLayout>
 #include <QSpinBox>
 #include <QDateTime>
 #include <QLabel>
 #include <QCheckBox>
-#include <QComboBox>
 #include <QPushButton>
 #include <QGroupBox>
 #include <QGridLayout>
@@ -169,7 +169,7 @@ void KOEditorGeneralEvent::initClass(QWidget *parent,QBoxLayout *topLayout)
   freeTimeLabel->setWhatsThis( whatsThis );
   classLayout->addWidget(freeTimeLabel);
 
-  mFreeTimeCombo = new QComboBox( parent );
+  mFreeTimeCombo = new KComboBox( parent );
   mFreeTimeCombo->setEditable( false );
   mFreeTimeCombo->setWhatsThis( whatsThis );
   mFreeTimeCombo->addItem( i18n("Busy") );

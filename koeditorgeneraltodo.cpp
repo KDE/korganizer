@@ -38,6 +38,7 @@
 #include <kstandarddirs.h>
 #include <kfiledialog.h>
 #include <ktextedit.h>
+#include <KComboBox>
 
 #include <QLayout>
 #include <QDateTime>
@@ -162,7 +163,7 @@ void KOEditorGeneralTodo::initCompletion(QWidget *parent, QBoxLayout *topLayout)
 {
   QString whatsThis = i18n("Sets the current completion status of this to-do "
                            "as a percentage.");
-  mCompletedCombo = new QComboBox(parent);
+  mCompletedCombo = new KComboBox(parent);
   mCompletedCombo->setWhatsThis( whatsThis );
   for (int i = 0; i <= 100; i+=10) {
     // xgettext:no-c-format
@@ -192,7 +193,7 @@ void KOEditorGeneralTodo::initPriority(QWidget *parent, QBoxLayout *topLayout)
   QLabel *priorityLabel = new QLabel(i18n("&Priority:"),parent);
   topLayout->addWidget(priorityLabel);
 
-  mPriorityCombo = new QComboBox(parent);
+  mPriorityCombo = new KComboBox(parent);
   mPriorityCombo->addItem( i18n("unspecified") );
   mPriorityCombo->addItem( i18n("1 (highest)") );
   mPriorityCombo->addItem( i18n("2") );

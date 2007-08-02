@@ -32,9 +32,9 @@
 
 #include <QHash>
 
-class QLineEdit;
+class KLineEdit;
 class QLabel;
-class QComboBox;
+class KComboBox;
 class KColorButton;
 class KPushButton;
 class QColor;
@@ -78,11 +78,11 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogColors : public KPrefsModule
     void setResourceColor();
     void updateResourceColor();
   private:
-    QComboBox     *mCategoryCombo;
+    KComboBox     *mCategoryCombo;
     KColorButton  *mCategoryButton;
     QHash<QString, QColor> mCategoryDict;
 
-    QComboBox     *mResourceCombo;
+    KComboBox     *mResourceCombo;
     KColorButton  *mResourceButton;
     QHash<QString, QColor> mResourceDict;
     //For translation Identifier <->idx in Combo
@@ -107,7 +107,7 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogGroupScheduling : public KPrefsModule
 
   private:
     Q3ListView *mAMails;
-    QLineEdit *aEmailsEdit;
+    KLineEdit *aEmailsEdit;
 };
 
 class KOGroupwarePrefsPage;

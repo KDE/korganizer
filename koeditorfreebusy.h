@@ -29,7 +29,7 @@
 #include <QTimer>
 
 class KDIntervalColorRectangle;
-class QComboBox;
+class KComboBox;
 class QLabel;
 class QTimerEvent;
 class KDateTime;
@@ -103,7 +103,7 @@ class KOEditorFreeBusy : public QWidget
     KDIntervalColorRectangle* mEventRectangle;
     QLabel *mStatusSummaryLabel;
     bool mIsOrganizer;
-    QComboBox *scaleCombo;
+    KComboBox *scaleCombo;
 
     QDateTime mDtStart, mDtEnd;
 

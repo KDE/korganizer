@@ -27,11 +27,11 @@
 #include <klocale.h>
 #include <kpushbutton.h>
 #include <kstandardguiitem.h>
+#include <KComboBox>
 
 #include <QLabel>
 #include <QStringList>
 #include <QLayout>
-#include <QComboBox>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QBoxLayout>
@@ -54,7 +54,7 @@ StatusDialog::StatusDialog(QWidget* parent) :
   QLabel *text = new QLabel(i18n("Set your status"),this);
   statusLayout->addWidget( text );
 
-  mStatus = new QComboBox( this );
+  mStatus = new KComboBox( this );
   mStatus->setEditable( false );
   mStatus->addItems( Attendee::statusList() );
   statusLayout->addWidget( mStatus );

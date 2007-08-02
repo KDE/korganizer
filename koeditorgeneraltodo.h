@@ -30,6 +30,7 @@
 #include <QLabel>
 #include <QBoxLayout>
 
+class KComboBox;
 class KDateEdit;
 class KTimeEdit;
 
@@ -93,10 +94,10 @@ class KOEditorGeneralTodo : public KOEditorGeneral
     QCheckBox               *mDueCheck;
     KDateEdit               *mDueDateEdit;
     KTimeEdit               *mDueTimeEdit;
-    QComboBox               *mCompletedCombo;
+    KComboBox               *mCompletedCombo;
     QLabel                  *mCompletedLabel;
     QLabel                  *mPriorityLabel;
-    QComboBox               *mPriorityCombo;
+    KComboBox               *mPriorityCombo;
 
     KDateEdit               *mCompletionDateEdit;
     KTimeEdit               *mCompletionTimeEdit;

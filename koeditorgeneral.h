@@ -26,20 +26,21 @@
 
 #include <kcal/alarm.h>
 
-#include <QLineEdit>
+#include <KLineEdit>
+
 #include <QLabel>
 #include <QFocusEvent>
 #include <QBoxLayout>
 
 class QWidget;
 class QBoxLayout;
-class QLineEdit;
 class QLabel;
 class QCheckBox;
 class QStackedWidget;
 class QSpinBox;
 class QPushButton;
-class QComboBox;
+class KComboBox;
+class KLineEdit;
 class KTextEdit;
 class KSqueezedTextLabel;
 
@@ -48,7 +49,7 @@ class Incidence;
 }
 using namespace KCal;
 
-class FocusLineEdit : public QLineEdit
+class FocusLineEdit : public KLineEdit
 {
   Q_OBJECT
   public:
@@ -110,18 +111,18 @@ class KOEditorGeneral : public QObject
   protected:
     Alarm *alarmFromSimplePage() const;
 
-    QLineEdit               *mSummaryEdit;
-    QLineEdit               *mLocationEdit;
+    KLineEdit               *mSummaryEdit;
+    KLineEdit               *mLocationEdit;
     QLabel                  *mAlarmBell;
     QStackedWidget            *mAlarmStack;
     QLabel                  *mAlarmInfoLabel;
     QCheckBox               *mAlarmButton;
     QSpinBox                *mAlarmTimeEdit;
-    QComboBox               *mAlarmIncrCombo;
+    KComboBox               *mAlarmIncrCombo;
     QPushButton             *mAlarmEditButton;
     KTextEdit               *mDescriptionEdit;
     QLabel                  *mOwnerLabel;
-    QComboBox               *mSecrecyCombo;
+    KComboBox               *mSecrecyCombo;
     QPushButton             *mCategoriesButton;
     KSqueezedTextLabel      *mCategoriesLabel;
 

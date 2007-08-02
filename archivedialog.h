@@ -28,7 +28,7 @@
 #include <kdialog.h>
 
 class QRadioButton;
-class QComboBox;
+class KComboBox;
 class KIntNumInput;
 class KUrlRequester;
 class KDateEdit;
@@ -64,7 +64,7 @@ class ArchiveDialog : public KDialog
     QRadioButton *mArchiveOnceRB;
     QRadioButton *mAutoArchiveRB;
     KIntNumInput *mExpiryTimeNumInput;
-    QComboBox *mExpiryUnitsComboBox;
+    KComboBox *mExpiryUnitsComboBox;
     QCheckBox *mEvents;
     QCheckBox *mTodos;
 

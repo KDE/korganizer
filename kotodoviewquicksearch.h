@@ -33,7 +33,7 @@
 class KActionCollection;
 class KAction;
 class K3ListView;
-class QComboBox;
+class KComboBox;
 class QResizeEvent;
 class QLabel;
 class QShowEvent;
@@ -88,7 +88,7 @@ class KOTodoListViewQuickSearch : public QToolBar
   private:
     /** Helper method for the filling of the category combo. */
     void insertCategory(QString which);
-    QComboBox *mCategoryCombo;
+    KComboBox *mCategoryCombo;
     QVector<QString> categoryList;
     Calendar *mCalendar;
     KOTodoListViewQuickSearchLine *mQuickSearchLine;

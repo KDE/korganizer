@@ -85,9 +85,9 @@ int RecurBase::frequency()
   return mFrequencyEdit->value();
 }
 
-QComboBox *RecurBase::createWeekCountCombo( QWidget *parent )
+KComboBox *RecurBase::createWeekCountCombo( QWidget *parent )
 {
-  QComboBox *combo = new QComboBox( parent );
+  KComboBox *combo = new KComboBox( parent );
   if ( !combo ) return 0;
   combo->setWhatsThis(
                    i18n("The number of the week from the beginning "
@@ -106,9 +106,9 @@ QComboBox *RecurBase::createWeekCountCombo( QWidget *parent )
   return combo;
 }
 
-QComboBox *RecurBase::createWeekdayCombo( QWidget *parent )
+KComboBox *RecurBase::createWeekdayCombo( QWidget *parent )
 {
-  QComboBox *combo = new QComboBox( parent );
+  KComboBox *combo = new KComboBox( parent );
   if ( !combo ) return 0;
   combo->setWhatsThis(
                    i18n("The weekday on which this event or to-do "
@@ -120,9 +120,9 @@ QComboBox *RecurBase::createWeekdayCombo( QWidget *parent )
   return combo;
 }
 
-QComboBox *RecurBase::createMonthNameCombo( QWidget *parent )
+KComboBox *RecurBase::createMonthNameCombo( QWidget *parent )
 {
-  QComboBox *combo = new QComboBox( parent );
+  KComboBox *combo = new KComboBox( parent );
   combo->setWhatsThis(
                    i18n("The month during which this event or to-do "
                         "should recur.") );
@@ -257,7 +257,7 @@ RecurMonthly::RecurMonthly( QWidget *parent ) : RecurBase( parent )
 
   QString whatsThis = i18n("The day of the month on which this event or to-do "
                            "should recur.");
-  mByDayCombo = new QComboBox( buttonGroup );
+  mByDayCombo = new KComboBox( buttonGroup );
   mByDayCombo->setWhatsThis( whatsThis );
   mByDayCombo->setMaxVisibleItems( 7 );
   mByDayCombo->addItem( i18n("1st") );
@@ -891,7 +891,7 @@ RecurrenceChooser::RecurrenceChooser( QWidget *parent ) : QWidget( parent )
   QBoxLayout *topLayout = new QVBoxLayout( this );
 
   if ( KOPrefs::instance()->mCompactDialogs ) {
-    mTypeCombo = new QComboBox( this );
+    mTypeCombo = new KComboBox( this );
     mTypeCombo->setWhatsThis(
                      i18n("Sets the type of recurrence this event or to-do "
                           "should have.") );

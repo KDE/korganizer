@@ -49,14 +49,14 @@ using namespace LibKHolidays;
 #include <kocore.h>
 #include <kstandarddirs.h>
 #include <kconfig.h>
+#include <KLineEdit>
+#include <KComboBox>
 
 #include <q3grid.h>
 #include <QLayout>
 #include <QLabel>
-#include <QLineEdit>
 #include <QSlider>
 #include <QFile>
-#include <QComboBox>
 #include <QSpinBox>
 #include <QCheckBox>
 #include <QRadioButton>
@@ -179,7 +179,7 @@ class KOPrefsDialogTime : public KPrefsModule
                                 "same time zone. KOrganizer will automatically "
                                 "adjust for daylight savings." );
       timeZoneLabel->setWhatsThis( whatsThis );
-      mTimeZoneCombo = new QComboBox( timeZoneBox );
+      mTimeZoneCombo = new KComboBox( timeZoneBox );
 
       connect( mTimeZoneCombo, SIGNAL( activated( int ) ),
                SLOT( slotWidChanged() ) );
@@ -224,7 +224,7 @@ class KOPrefsDialogTime : public KPrefsModule
                         "agenda view, etc." );
       holidayLabel->setWhatsThis( whatsThis );
 
-      mHolidayCombo = new QComboBox( holidayRegBox );
+      mHolidayCombo = new KComboBox( holidayRegBox );
       connect( mHolidayCombo, SIGNAL( activated( int ) ),
                SLOT( slotWidChanged() ) );
 
@@ -288,7 +288,7 @@ class KOPrefsDialogTime : public KPrefsModule
       topLayout->addWidget( alarmLabel, 5, 0 );
       alarmLabel->setWhatsThis(
                        i18n( "Enter the default reminder time here." ) );
-      mAlarmTimeCombo = new QComboBox( topFrame );
+      mAlarmTimeCombo = new KComboBox( topFrame );
       mAlarmTimeCombo->setWhatsThis(
                        i18n( "Enter the default reminder time here." ) );
       connect( mAlarmTimeCombo, SIGNAL( activated( int ) ),
@@ -399,7 +399,7 @@ class KOPrefsDialogTime : public KPrefsModule
       KOPrefs::instance()->writeConfig();
     }
 
-    void setCombo( QComboBox *combo, const QString &text,
+    void setCombo( KComboBox *combo, const QString &text,
                    const QStringList *tags = 0 )
     {
       if (tags) {
@@ -416,11 +416,11 @@ class KOPrefsDialogTime : public KPrefsModule
     }
 
   private:
-    QComboBox    *mTimeZoneCombo;
+    KComboBox    *mTimeZoneCombo;
     QStringList   tzonenames;
-    QComboBox    *mHolidayCombo;
+    KComboBox    *mHolidayCombo;
     QMap<QString,QString> mRegionMap;
-    QComboBox    *mAlarmTimeCombo;
+    KComboBox    *mAlarmTimeCombo;
     QCheckBox    *mWorkDays[7];
 };
 
@@ -696,7 +696,7 @@ KOPrefsDialogColors::KOPrefsDialogColors( const KComponentData &inst, QWidget *p
   QBoxLayout *categoryLayout = new QHBoxLayout;
   categoryGroup->setLayout( categoryLayout );
 
-  mCategoryCombo = new QComboBox(categoryGroup);
+  mCategoryCombo = new KComboBox(categoryGroup);
   mCategoryCombo->addItems( KOPrefs::instance()->mCustomCategories );
   mCategoryCombo->setWhatsThis(
                    i18n( "Select here the event category you want to modify. "
@@ -721,7 +721,7 @@ KOPrefsDialogColors::KOPrefsDialogColors( const KComponentData &inst, QWidget *p
   QBoxLayout *resourceLayout = new QHBoxLayout;
   resourceGroup->setLayout( resourceLayout );
 
-  mResourceCombo = new QComboBox(resourceGroup);
+  mResourceCombo = new KComboBox(resourceGroup);
   mResourceCombo->setWhatsThis(
                    i18n( "Select here resource you want to modify. "
                          "You can change the selected resource color using "
@@ -912,7 +912,7 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( const KComponentData
                     "one set in personal preferences." );
   aEmailsEditLabel->setWhatsThis( whatsThis );
   topLayout->addWidget(aEmailsEditLabel,5,0);
-  aEmailsEdit = new QLineEdit(topFrame);
+  aEmailsEdit = new KLineEdit(topFrame);
   aEmailsEdit->setWhatsThis( whatsThis );
   aEmailsEdit->setEnabled(false);
   topLayout->addWidget(aEmailsEdit,5,1);

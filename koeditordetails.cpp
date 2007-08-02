@@ -26,7 +26,6 @@
 #include "koeditordetails.h"
 
 #include <QCheckBox>
-#include <QComboBox>
 #include <QDateTime>
 #include <QLabel>
 #include <QLayout>
@@ -44,6 +43,7 @@
 #include <QVBoxLayout>
 #include <QDragEnterEvent>
 
+#include <KComboBox>
 #include <kdebug.h>
 #include <klocale.h>
 #include <kiconloader.h>
@@ -206,7 +206,7 @@ KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent )
 			   "KOrganizer configuration.");
   mOrganizerLabel = new QLabel( i18n( "Identity as organizer:" ),
                                 mOrganizerHBox );
-  mOrganizerCombo = new QComboBox( mOrganizerHBox );
+  mOrganizerCombo = new KComboBox( mOrganizerHBox );
   mOrganizerLabel->setWhatsThis( whatsThis );
   mOrganizerCombo->setWhatsThis( whatsThis );
   fillOrganizerCombo();
@@ -262,7 +262,7 @@ KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent )
   attendeeRoleLabel->setWhatsThis( whatsThis );
   attendeeRoleLabel->setText( i18n("Ro&le:") );
 
-  mRoleCombo = new QComboBox( this );
+  mRoleCombo = new KComboBox( this );
   mRoleCombo->setWhatsThis( whatsThis );
   mRoleCombo->addItems( Attendee::roleList() );
   attendeeRoleLabel->setBuddy( mRoleCombo );
@@ -275,7 +275,7 @@ KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent )
   statusLabel->setWhatsThis( whatsThis );
   statusLabel->setText( i18n("Stat&us:") );
 
-  mStatusCombo = new QComboBox( this );
+  mStatusCombo = new KComboBox( this );
   mStatusCombo->setWhatsThis( whatsThis );
   mStatusCombo->addItems( Attendee::statusList() );
   statusLabel->setBuddy( mStatusCombo );
@@ -480,7 +480,7 @@ void KOEditorDetails::readEvent( Incidence *event )
 
   if ( KOPrefs::instance()->thatIsMe( event->organizer().email() ) ) {
     if ( !mOrganizerCombo ) {
-      mOrganizerCombo = new QComboBox( mOrganizerHBox );
+      mOrganizerCombo = new KComboBox( mOrganizerHBox );
       fillOrganizerCombo();
     }
     mOrganizerLabel->setText( i18n( "Identity as organizer:" ) );

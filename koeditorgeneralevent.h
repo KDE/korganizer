@@ -34,7 +34,7 @@ class QLabel;
 class KDateEdit;
 class KTimeEdit;
 class QCheckBox;
-class QComboBox;
+class KComboBox;
 class QBoxLayout;
 
 namespace KCal {
@@ -100,7 +100,7 @@ class KOEditorGeneralEvent : public KOEditorGeneral
     KTimeEdit               *mEndTimeEdit;
     QLabel                  *mDurationLabel;
     QCheckBox               *mTimeAssociateButton;
-    QComboBox               *mFreeTimeCombo;
+    KComboBox               *mFreeTimeCombo;
 
     // current start and end date and time
     QDateTime mCurrStartDateTime;

@@ -27,8 +27,8 @@
 #include <kcal/incidencebase.h>
 
 #include <kdialog.h>
+#include <KComboBox>
 
-#include <QComboBox>
 #include <QDateTime>
 #include <QWidget>
 #include <QBitArray>
@@ -62,9 +62,9 @@ class RecurBase : public QWidget
     QWidget *frequencyEdit();
 
   protected:
-    static QComboBox *createWeekCountCombo( QWidget *parent=0 );
-    static QComboBox *createWeekdayCombo( QWidget *parent=0 );
-    static QComboBox *createMonthNameCombo( QWidget *parent=0 );
+    static KComboBox *createWeekCountCombo( QWidget *parent=0 );
+    static KComboBox *createWeekdayCombo( QWidget *parent=0 );
+    static KComboBox *createMonthNameCombo( QWidget *parent=0 );
     QBoxLayout *createFrequencySpinBar( QWidget *parent, QLayout *layout,
     const QString &everyText, const QString &unitText );
 
@@ -108,11 +108,11 @@ class RecurMonthly : public RecurBase
 
   private:
     QRadioButton *mByDayRadio;
-    QComboBox *mByDayCombo;
+    KComboBox *mByDayCombo;
 
     QRadioButton *mByPosRadio;
-    QComboBox *mByPosCountCombo;
-    QComboBox *mByPosWeekdayCombo;
+    KComboBox *mByPosCountCombo;
+    KComboBox *mByPosWeekdayCombo;
 };
 
 class RecurYearly : public RecurBase
@@ -141,11 +141,11 @@ class RecurYearly : public RecurBase
     QRadioButton *mByDayRadio;
 
     QSpinBox *mByMonthSpin;
-    QComboBox *mByMonthCombo;
+    KComboBox *mByMonthCombo;
 
-    QComboBox *mByPosDayCombo;
-    QComboBox *mByPosWeekdayCombo;
-    QComboBox *mByPosMonthCombo;
+    KComboBox *mByPosDayCombo;
+    KComboBox *mByPosWeekdayCombo;
+    KComboBox *mByPosMonthCombo;
 
     QSpinBox *mByDaySpin;
 };
@@ -168,7 +168,7 @@ class RecurrenceChooser : public QWidget
     void emitChoice();
 
   private:
-    QComboBox *mTypeCombo;
+    KComboBox *mTypeCombo;
 
     QRadioButton *mDailyButton;
     QRadioButton *mWeeklyButton;

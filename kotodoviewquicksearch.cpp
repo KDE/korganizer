@@ -41,14 +41,16 @@
 #include <kaction.h>
 #include <kactioncollection.h>
 #include <k3listviewsearchline.h>
+#include <KComboBox>
+#include <kicon.h>
+
 #include <QLayout>
 #include <QLabel>
-#include <QComboBox>
 #include <QApplication>
 #include <QRegExp>
 #include <QSizePolicy>
 #include <QTimer>
-#include <kicon.h>
+
 using namespace KPIM;
 using namespace KCal;
 
@@ -81,7 +83,7 @@ KOTodoListViewQuickSearch::KOTodoListViewQuickSearch( QWidget *parent,
   mCategoryLabel->setObjectName( "kde toolbar widget" );
   addWidget( mCategoryLabel );
 
-  mCategoryCombo = new QComboBox( this );
+  mCategoryCombo = new KComboBox( this );
   mCategoryCombo->setObjectName( "quick search category combo box" );
   fillCategories();
   addWidget( mCategoryCombo );

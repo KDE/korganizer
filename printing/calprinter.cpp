@@ -31,7 +31,6 @@
 #include <QRadioButton>
 #include <QLayout>
 #include <QPushButton>
-#include <QComboBox>
 #include <QLabel>
 #include <QSplitter>
 #include <QGridLayout>
@@ -42,6 +41,7 @@
 #include <kdebug.h>
 #include <kdeversion.h>
 #include <kstandardguiitem.h>
+#include <kcombobox.h>
 
 #include "korganizer/corehelper.h"
 
@@ -202,7 +202,7 @@ CalPrintDialog::CalPrintDialog( KOrg::PrintPlugin::List plugins,
                                          splitterRight );
   splitterRightLayout->addWidget( orientationLabel, 1, 0 );
 
-  mOrientationSelection = new QComboBox( splitterRight );
+  mOrientationSelection = new KComboBox( splitterRight );
   mOrientationSelection->addItem( i18n("Use Default Orientation of Selected Style") );
   mOrientationSelection->addItem( i18n("Use Printer Default") );
   mOrientationSelection->addItem( i18n("Portrait") );

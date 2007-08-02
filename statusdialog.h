@@ -25,7 +25,7 @@
 #include <kcal/attendee.h>
 using namespace KCal;
 
-class QComboBox;
+class KComboBox;
 
 class StatusDialog : public KDialog
 {
@@ -37,7 +37,7 @@ class StatusDialog : public KDialog
     Attendee::PartStat status();
 
   private:
-    QComboBox *mStatus;
+    KComboBox *mStatus;
 };
 
 #endif

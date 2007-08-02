@@ -39,7 +39,7 @@
 class QPushButton;
 class QCheckBox;
 class QLabel;
-class QComboBox;
+class KComboBox;
 class KHBox;
 class KOEditorFreeBusy;
 
@@ -129,11 +129,11 @@ class KOEditorDetails : public QWidget
     KPIM::AddresseeLineEdit *mNameEdit;
     QString mUid;
     K3ListView *mListView;
-    QComboBox* mRoleCombo;
+    KComboBox* mRoleCombo;
     QCheckBox* mRsvpButton;
-    QComboBox* mStatusCombo;
+    KComboBox* mStatusCombo;
     KHBox* mOrganizerHBox;
-    QComboBox *mOrganizerCombo; // either we organize it (combo shown)
+    KComboBox *mOrganizerCombo; // either we organize it (combo shown)
     QLabel *mOrganizerLabel; // or someone else does (just a label is shown)
 
     QPushButton* mAddButton;

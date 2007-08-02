@@ -40,6 +40,7 @@
 #include <kurl.h>
 #include <klineedit.h>
 #include <kvbox.h>
+#include <KComboBox>
 
 #include <QLabel>
 #include <QLayout>
@@ -116,7 +117,7 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent)
     i18n("The age of the events and to-dos to archive. All older items "
          "will be saved and deleted, the newer will be kept."));
 
-  mExpiryUnitsComboBox = new QComboBox(autoArchiveHBox);
+  mExpiryUnitsComboBox = new KComboBox(autoArchiveHBox);
   // Those items must match the "Expiry Unit" enum in the kcfg file!
   mExpiryUnitsComboBox->addItem( i18n("Day(s)") );
   mExpiryUnitsComboBox->addItem( i18n("Week(s)") );

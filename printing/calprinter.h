@@ -41,7 +41,7 @@ class QButtonGroup;
 class QStackedWidget;
 class CalPrintDialog;
 class KConfig;
-class QComboBox;
+class KComboBox;
 
 /**
   CalPrinter is a class for printing Calendars.  It can print in several
@@ -122,7 +122,7 @@ class CalPrintDialog : public KDialog
     QStackedWidget *mConfigArea;
     QMap<int, KOrg::PrintPlugin*> mPluginIDs;
     QString mPreviewText;
-    QComboBox *mOrientationSelection;
+    KComboBox *mOrientationSelection;
 
     CalPrinter::ePrintOrientation mOrientation;
 };

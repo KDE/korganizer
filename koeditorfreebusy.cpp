@@ -40,11 +40,11 @@
 #include <klocale.h>
 #include <kiconloader.h>
 #include <kmessagebox.h>
+#include <KComboBox>
 
 #include <QToolTip>
 #include <QLayout>
 #include <QLabel>
-#include <QComboBox>
 #include <QPushButton>
 #include <QFrame>
 #include <QHBoxLayout>
@@ -217,7 +217,7 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent )
   label->setWhatsThis( whatsThis );
   controlLayout->addWidget( label );
 
-  scaleCombo = new QComboBox( this );
+  scaleCombo = new KComboBox( this );
   scaleCombo->setWhatsThis( whatsThis );
   scaleCombo->addItem( i18n( "Hour" ) );
   scaleCombo->addItem( i18n( "Day" ) );

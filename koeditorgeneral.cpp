@@ -43,16 +43,16 @@
 #include <ktextedit.h>
 #include <krestrictedline.h>
 #include <kvbox.h>
+#include <KLineEdit>
+#include <KComboBox>
 
 #include <q3buttongroup.h>
 #include <QWidget>
 #include <QLayout>
 #include <QDateTime>
-#include <QLineEdit>
 #include <QLabel>
 #include <QCheckBox>
 #include <QPushButton>
-#include <QComboBox>
 #include <QSpinBox>
 #include <QFocusEvent>
 #include <QGridLayout>
@@ -74,7 +74,7 @@ KOEditorGeneral::~KOEditorGeneral()
 }
 
 FocusLineEdit::FocusLineEdit( QWidget *parent )
-  : QLineEdit( parent ), mSkipFirst( true )
+  : KLineEdit( parent ), mSkipFirst( true )
 {
 }
 
@@ -85,7 +85,7 @@ void FocusLineEdit::focusInEvent ( QFocusEvent *e )
   } else {
     mSkipFirst = false;
   }
-  QLineEdit::focusInEvent( e );
+  KLineEdit::focusInEvent( e );
 }
 
 void KOEditorGeneral::initHeader(QWidget *parent,QBoxLayout *topLayout)
@@ -119,7 +119,7 @@ void KOEditorGeneral::initHeader(QWidget *parent,QBoxLayout *topLayout)
   locationLabel->setWhatsThis( whatsThis );
   headerLayout->addWidget(locationLabel,2,0);
 
-  mLocationEdit = new QLineEdit(parent);
+  mLocationEdit = new KLineEdit(parent);
   mLocationEdit->setWhatsThis( whatsThis );
   headerLayout->addWidget(mLocationEdit,2,1);
   locationLabel->setBuddy( mLocationEdit );
@@ -163,7 +163,7 @@ void KOEditorGeneral::initSecrecy(QWidget *parent, QBoxLayout *topLayout)
   secrecyLabel->setWhatsThis( whatsThis );
   secrecyLayout->addWidget(secrecyLabel);
 
-  mSecrecyCombo = new QComboBox(parent);
+  mSecrecyCombo = new KComboBox(parent);
   mSecrecyCombo->setWhatsThis( whatsThis );
   mSecrecyCombo->addItems( Incidence::secrecyList() );
   secrecyLayout->addWidget(mSecrecyCombo);
@@ -222,7 +222,7 @@ void KOEditorGeneral::initAlarm(QWidget *parent,QBoxLayout *topLayout)
   mAlarmTimeEdit->setWhatsThis( whatsThis );
   simpleAlarmLayout->addWidget( mAlarmTimeEdit );
 
-  mAlarmIncrCombo = new QComboBox();
+  mAlarmIncrCombo = new KComboBox();
   mAlarmIncrCombo->setWhatsThis( whatsThis );
   mAlarmIncrCombo->addItem( i18n("minute(s)") );
   mAlarmIncrCombo->addItem( i18n("hour(s)") );
