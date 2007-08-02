@@ -49,7 +49,7 @@ Picoftheday::Picoftheday()
 {
   KConfig _config( "korganizerrc" );
   KConfigGroup config( &_config, "Picture of the Day Plugin" );
-  mThumbSize = config.readEntry( "InitialThumbnailSize", QSize( 120, 120 ) );
+  mThumbSize = config.readEntry( "InitialThumbnailSize", QSize( 120, 60 ) );
 }
 
 Picoftheday::~Picoftheday()
