@@ -166,6 +166,7 @@ bool KOAgendaItem::dissociateFromMultiItem()
                             lastItem );
   }
   delete mMultiItemInfo;
+  mMultiItemInfo = 0;
   return true;
 }
 
