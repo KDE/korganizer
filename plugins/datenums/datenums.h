@@ -34,6 +34,7 @@ class Datenums : public Decoration
     void configure( QWidget *parent );
 
     Element::List createDayElements( const QDate & );
+    Element::List createWeekElements( const QDate & );
 
     enum DayNumber {
       DayOfYear = 1,
