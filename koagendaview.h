@@ -262,6 +262,7 @@ class KOAgendaView : public KOrg::AgendaView
 
   private:
     // view widgets
+    QVBoxLayout *mTopLayout;
     QFrame *mDayLabels;
     KHBox *mDayLabelsFrame;
     QBoxLayout *mLayoutDayLabels;

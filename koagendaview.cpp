@@ -371,19 +371,19 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
     }
   }
 
-  QBoxLayout *topLayout = new QVBoxLayout( this );
-  topLayout->setMargin( 0 );
+  mTopLayout = new QVBoxLayout( this );
+  mTopLayout->setMargin( 0 );
 
 
   /* Create agenda splitter */
 #ifndef KORG_NOSPLITTER
   mSplitterAgenda = new QSplitter( Qt::Vertical, this );
-  topLayout->addWidget( mSplitterAgenda );
+  mTopLayout->addWidget( mSplitterAgenda );
   mSplitterAgenda->setOpaqueResize( KGlobalSettings::opaqueResize() );
 #else
   // If we don't use splitters, we still need to order the widgets nevertheless
   KVBox *mainBox = new KVBox( this );
-  topLayout->addWidget( mainBox );
+  mTopLayout->addWidget( mainBox );
 #endif
 
 
@@ -392,7 +392,7 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
   mDayLabelsFrame = new KHBox( mSplitterAgenda );
 #else
   mDayLabelsFrame = new KHBox( this );
-  topLayout->addWidget( mDayLabelsFrame );
+  mTopLayout->addWidget( mDayLabelsFrame );
 #endif
 
 
@@ -479,17 +479,12 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
 
   /* Create a frame at the bottom which may be used by decorations */
 #ifndef KORG_NOSPLITTER
-  if ( KOPrefs::instance()->decorationsAtAgendaViewBottom().count() > 0 ) {
-    mBottomDayLabelsFrame = new KHBox( mSplitterAgenda );
-  } else {
-    mBottomDayLabelsFrame = new KHBox( this );
-    topLayout->addWidget( mBottomDayLabelsFrame );
-  }
+  mBottomDayLabelsFrame = new KHBox( mSplitterAgenda );
 #else
   mBottomDayLabelsFrame = new KHBox( this );
-  topLayout->addWidget( mBottomDayLabelsFrame );
+  mTopLayout->addWidget( mBottomDayLabelsFrame );
 #endif
-  mBottomDayLabelsFrame->setSpacing(2);  // TODO: CHECK THIS
+  mBottomDayLabelsFrame->setSpacing(2);
 
 
   /* Make the all-day and normal agendas line up with each other */
@@ -721,6 +716,23 @@ void KOAgendaView::createDayLabels()
 
   const KCalendarSystem *calsys = KOGlobals::self()->calendarSystem();
 
+#ifndef KORG_NOPLUGINS
+#ifndef KORG_NOSPLITTER
+    if ( KOPrefs::instance()->decorationsAtAgendaViewTop().count() > 0 ) {
+    mDayLabelsFrame->setParent( mSplitterAgenda );
+  } else {
+    mDayLabelsFrame->setParent( this );
+    mTopLayout->addWidget( mDayLabelsFrame );
+  }
+  if ( KOPrefs::instance()->decorationsAtAgendaViewBottom().count() > 0 ) {
+    mBottomDayLabelsFrame->setParent( mSplitterAgenda );
+  } else {
+    mBottomDayLabelsFrame->setParent( this );
+    mTopLayout->addWidget( mBottomDayLabelsFrame );
+  }
+#endif
+#endif
+
   DateList::ConstIterator dit;
   for( dit = mSelectedDates.begin(); dit != mSelectedDates.end(); ++dit ) {
     QDate date = *dit;
@@ -769,8 +781,6 @@ void KOAgendaView::createDayLabels()
         foreach ( CalendarDecoration::Element* it, deco->dayElements( date ) ) {
           KODecorationLabel *label = new KODecorationLabel( it, decoHBox );
           label->setAlignment( Qt::AlignBottom );
-        //label->setMinimumWidth( 1 );
-        //label->setMaximumWidth( mAgenda->width() / mSelectedDates.count() );
         }
       }
     }
@@ -787,8 +797,6 @@ void KOAgendaView::createDayLabels()
         foreach ( CalendarDecoration::Element* it, deco->dayElements( date ) ) {
           KODecorationLabel *label = new KODecorationLabel( it, decoHBox );
           label->setAlignment( Qt::AlignBottom );
-        //label->setMinimumWidth( 1 );
-        //label->setMaximumWidth( mAgenda->width() / mSelectedDates.count() );
         }
       }
     }
