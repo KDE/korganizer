@@ -95,7 +95,7 @@ void KODecorationLabel::mouseReleaseEvent( QMouseEvent *event )
 void KODecorationLabel::resizeEvent( QResizeEvent *event )
 {
   kDebug() <<"DecorationLabel got a resize event; old size"
-           << event->oldSize() << "--> new size " << event->size() << endl;
+           << event->oldSize() << "--> new size" << event->size();
   mPixmap = mDecorationElement->pixmap( event->size() );
   QLabel::resizeEvent( event );
   squeezeContentsToLabel();

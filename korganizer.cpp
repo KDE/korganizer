@@ -110,7 +110,7 @@ KOrganizer::~KOrganizer()
 void KOrganizer::init( bool document )
 {
   kDebug(5850) <<"KOrganizer::init()"
-            << ( document ? "hasDocument" : "resources" ) << endl;
+            << ( document ? "hasDocument" : "resources" );
 
   setHasDocument( document );
 

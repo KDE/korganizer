@@ -189,7 +189,7 @@ void ActionManager::createCalendarResources()
   kDebug(5850) <<"CalendarResources used by KOrganizer:";
   CalendarResourceManager::Iterator it;
   for( it = manager->begin(); it != manager->end(); ++it ) {
-    kDebug(5850) <<"" << (*it)->resourceName();
+    kDebug(5850) << (*it)->resourceName();
     (*it)->setResolveConflict( true );
 //    (*it)->dump();
   }
@@ -1006,8 +1006,7 @@ bool ActionManager::saveURL()
   }
 
   if ( !mCalendarView->saveCalendar( mFile ) ) {
-    kDebug(5850) <<"ActionManager::saveURL(): calendar view save failed."
-                  << endl;
+    kDebug(5850) <<"ActionManager::saveURL(): calendar view save failed.";
     return false;
   } else {
     mCalendarView->setModified( false );

@@ -567,7 +567,7 @@ bool KOAgenda::eventFilter_wheel ( QObject *object, QWheelEvent *e )
       viewportPos = e->pos();
     }
     //kDebug(5850)<<"KOAgenda::eventFilter_wheel: type:"<<
-    //  e->type()<<" delta: "<< e->delta()<< endl;
+    //  e->type()<<"delta:"<< e->delta();
     emit zoomView( -e->delta() ,
       contentsToGrid( viewportToContents( viewportPos ) ),
       Qt::Horizontal );
@@ -890,7 +890,7 @@ void KOAgenda::performItemAction(const QPoint& viewportPos)
 //  kDebug(5850) <<"clipper:" << point.x() <<"," << point.y();
 //  kDebug(5850) <<"visible height:" << visibleHeight();
   QPoint pos = viewportToContents( viewportPos );
-//  kDebug(5850) <<"contents:" << x <<"," << y <<"";
+//  kDebug(5850) <<"contents:" << x <<"," << y;
   QPoint gpos = contentsToGrid( pos );
   QPoint clipperPos = clipper()->
                       mapFromGlobal(viewport()->mapToGlobal(viewportPos));
@@ -1261,7 +1261,7 @@ void KOAgenda::adjustItemPosition( KOAgendaItem *item )
 void KOAgenda::placeAgendaItem( KOAgendaItem *item, double subCellWidth )
 {
 //  kDebug(5850) <<"KOAgenda::placeAgendaItem():" << item->incidence()->summary()
-//            << " subCellWidth: " << subCellWidth << endl;
+//            << "subCellWidth:" << subCellWidth;
 
   // "left" upper corner, no subcells yet, RTL layouts have right/left switched, widths are negative then
   QPoint pt = gridToContents( QPoint( item->cellXLeft(), item->cellYTop() ) );
@@ -1511,7 +1511,6 @@ int KOAgenda::timeToY( const QTime &time ) const
 //  kDebug(5850) <<"timeMinutes:" << timeMinutes;
   int Y = (timeMinutes + (minutesPerCell / 2)) / minutesPerCell;
 //  kDebug(5850) <<"y:" << Y;
-//  kDebug(5850) <<"";
   return Y;
 }
 
@@ -1586,8 +1585,7 @@ KOAgendaItem *KOAgenda::insertItem( Incidence *incidence, const QDate &qd, int X
 {
 #if 0
   kDebug(5850) <<"KOAgenda::insertItem:" << event->summary() <<"-"
-                << qd.toString() << " ;top, bottom:" << YTop << "," << YBottom
-                << endl;
+                << qd.toString() << ";top, bottom:" << YTop << "," << YBottom;
 #endif
 
   if ( mAllDayMode ) {

@@ -399,7 +399,7 @@ bool CalendarView::openCalendar(const QString& filename, bool merge)
 
   if (!QFile::exists(filename)) {
     kDebug(5850) <<"CalendarView::openCalendar(): Error! File '" << filename
-              << "' doesn't exist." << endl;
+              << "' doesn't exist.";
   }
 
   bool loadedSuccesfully = true;
@@ -1415,8 +1415,8 @@ void CalendarView::mailFreeBusy( int daysToPublish )
                       KOPrefs::instance()->email() ) );
 
   kDebug(5850) <<"calendarview: schedule_publish_freebusy: startDate:"
-     << KGlobal::locale()->formatDateTime( start ) << " End Date: "
-     << KGlobal::locale()->formatDateTime( end ) << endl;
+     << KGlobal::locale()->formatDateTime( start ) << "End Date:"
+     << KGlobal::locale()->formatDateTime( end );
 
   PublishDialog *publishdlg = new PublishDialog();
   if ( publishdlg->exec() == QDialog::Accepted ) {

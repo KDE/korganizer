@@ -305,8 +305,7 @@ KOrg::Part::List KOCore::loadParts( KOrg::MainWindow *parent )
       KOrg::Part *part = loadPart( *it, parent );
       if ( part ) {
         if ( !parent->mainGuiClient() ) {
-          kError() <<"KOCore::loadParts(): parent has no mainGuiClient."
-                    << endl;
+          kError() <<"KOCore::loadParts(): parent has no mainGuiClient.";
         } else {
           parent->mainGuiClient()->insertChildClient( part );
           parts.append( part );

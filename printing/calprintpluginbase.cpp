@@ -88,7 +88,7 @@ class PrintCellItem : public KOrg::CellItem
 
 #if 0
       kDebug(5850) <<"PrintCellItem::overlaps()" << event()->summary()
-                    << " <-> " << other->event()->summary() << endl;
+                    << "<->" << other->event()->summary();
       kDebug(5850) <<"  start     :" << start.toString();
       kDebug(5850) <<"  end       :" << end.toString();
       kDebug(5850) <<"  otherStart:" << otherStart.toString();

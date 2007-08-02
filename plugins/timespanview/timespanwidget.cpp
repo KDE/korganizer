@@ -104,7 +104,7 @@ void TimeSpanWidget::addItem( KCal::Event *event )
   QDateTime endDt = event->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() ).dateTime();
 
 //  kDebug(5850) <<"TimeSpanWidget::addItem(): start:" << startDt.toString()
-//            << "  end: " << endDt.toString() << endl;
+//            << " end:" << endDt.toString();
 
 //  int startSecs = mStartDate.secsTo( startDt );
 //  int durationSecs = startDt.secsTo( endDt );

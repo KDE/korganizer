@@ -42,8 +42,8 @@ int main(int argc,char **argv)
   KService::List plugins = KOCore::self()->availablePlugins();
   KService::List::ConstIterator it;
   for(it = plugins.begin(); it != plugins.end(); ++it) {
-    kDebug(5850) <<"Plugin:" << (*it)->desktopEntryName() <<" ("
-              << (*it)->name() << ")" << endl;
+    kDebug(5850) <<"Plugin:" << (*it)->desktopEntryName() <<"("
+              << (*it)->name() << ")";
     KOrg::Plugin *p = KOCore::self()->loadPlugin(*it);
     if (!p) {
       kDebug(5850) <<"Plugin loading failed.";
@@ -54,8 +54,8 @@ int main(int argc,char **argv)
   
   plugins = KOCore::self()->availablePrintPlugins();
   for(it = plugins.begin(); it != plugins.end(); ++it) {
-    kDebug(5850) <<"Print plugin:" << (*it)->desktopEntryName() <<" ("
-              << (*it)->name() << ")" << endl;
+    kDebug(5850) <<"Print plugin:" << (*it)->desktopEntryName() <<"("
+              << (*it)->name() << ")";
     KOrg::PrintPlugin *p = KOCore::self()->loadPrintPlugin(*it);
     if (!p) {
       kDebug(5850) <<"Print plugin loading failed.";
@@ -66,8 +66,8 @@ int main(int argc,char **argv)
   
   plugins = KOCore::self()->availableParts();
   for(it = plugins.begin(); it != plugins.end(); ++it) {
-    kDebug(5850) <<"Part:" << (*it)->desktopEntryName() <<" ("
-              << (*it)->name() << ")" << endl;
+    kDebug(5850) <<"Part:" << (*it)->desktopEntryName() <<"("
+              << (*it)->name() << ")";
     KOrg::Part *p = KOCore::self()->loadPart(*it,0);
     if (!p) {
       kDebug(5850) <<"Part loading failed.";
@@ -78,8 +78,8 @@ int main(int argc,char **argv)
   
   plugins = KOCore::self()->availableCalendarDecorations();
   for(it = plugins.begin(); it != plugins.end(); ++it) {
-    kDebug(5850) <<"CalendarDecoration:" << (*it)->desktopEntryName() <<" ("
-              << (*it)->name() << ")" << endl;
+    kDebug(5850) <<"CalendarDecoration:" << (*it)->desktopEntryName() <<"("
+              << (*it)->name() << ")";
     KOrg::CalendarDecoration::Decoration *p = KOCore::self()->loadCalendarDecoration(*it);
     if (!p) {
       kDebug(5850) <<"Calendar decoration loading failed.";

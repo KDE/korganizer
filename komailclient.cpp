@@ -133,8 +133,8 @@ bool KOMailClient::send(const QString &from,const QString &to,
                         const QString &attachment)
 {
   kDebug(5850) <<"KOMailClient::sendMail():\nFrom:" << from <<"\nTo:" << to
-            << "\nSubject: " << subject << "\nBody: \n" << body
-            << "\nAttachment:\n" << attachment << endl;
+            << "\nSubject:" << subject << "\nBody: \n" << body
+            << "\nAttachment:\n" << attachment;
 
   if (KOPrefs::instance()->mMailClient == KOPrefs::MailClientSendmail) {
     bool needHeaders = true;
@@ -218,8 +218,8 @@ int KOMailClient::kMailOpenComposer(const QString& arg0,const QString& arg1,
   const KUrl& arg6)
 {
   //kDebug(5850) <<"KOMailClient::kMailOpenComposer("
-  //  << arg0 << " , " << arg1 << arg2 << " , " << arg3
-  //  << arg4 << " , " << arg5 << " , " << arg6 << " )" << endl;
+  //  << arg0 << "," << arg1 << arg2 << "," << arg3
+  //  << arg4 << "," << arg5 << "," << arg6 << ")";
   int result = 0;
   kapp->updateRemoteUserTimestamp( "kmail" );
 #ifdef __GNUC__
@@ -246,11 +246,11 @@ int KOMailClient::kMailOpenComposer( const QString& arg0, const QString& arg1,
                                      const QByteArray& arg13, const QByteArray& arg14 )
 {
     //kDebug(5850) <<"KOMailClient::kMailOpenComposer("
-    //    << arg0 << " , " << arg1 << arg2 << " , " << arg3
-    //   << arg4 << " , " << arg5 << " , " << arg6
-    //    << arg7 << " , " << arg8 << " , " << arg9
-    //    << arg10<< " , " << arg11<< " , " << arg12
-    //    << arg13<< " , " << arg14<< " )" << endl;
+    //    << arg0 << "," << arg1 << arg2 << "," << arg3
+    //   << arg4 << "," << arg5 << "," << arg6
+    //    << arg7 << "," << arg8 << "," << arg9
+    //    << arg10<< "," << arg11<< "," << arg12
+    //    << arg13<< "," << arg14<< ")";
 
     int result = 0;
 

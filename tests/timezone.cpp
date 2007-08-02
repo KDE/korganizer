@@ -51,7 +51,7 @@ int main(int argc,char **argv)
 
   kDebug(5850) <<"localtime:" << t->tm_hour <<":" << t->tm_min;
 
-  kDebug(5850) <<"tzname:" << tzname[0] <<"" << tzname[1];
+  kDebug(5850) <<"tzname:" << tzname[0] << tzname[1];
 #ifndef __APPLE__
   kDebug(5850) <<"timezone:" << timezone / 3600;
 #else
@@ -61,8 +61,8 @@ int main(int argc,char **argv)
   QTime qtime = QTime::currentTime();
 
   kDebug(5850) <<"QDateTime::currentTime():"
-            << qtime.toString( Qt::ISODate ) << endl;
+            << qtime.toString( Qt::ISODate );
 
   kDebug(5850) <<"KLocale::formatTime():"
-            << KGlobal::locale()->formatTime( qtime ) << endl;
+            << KGlobal::locale()->formatTime( qtime );
 }

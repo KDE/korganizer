@@ -77,8 +77,8 @@ void TimeLine::setDateRange( const QDateTime &start, const QDateTime &end )
 
   mDayOffset = QDateTime( mStartDate.date() ).secsTo( mStartDate ) / mSecsPerPixel;
 
-  kDebug(5850) <<"TimeLines::setDateRange(): mDaySpacing:" << mDaySpacing <<"  mDayOffset:"
-            << mDayOffset << "  mSecsPerPixel: " << mSecsPerPixel << endl;
+  kDebug(5850) <<"TimeLines::setDateRange(): mDaySpacing:" << mDaySpacing <<" mDayOffset:"
+            << mDayOffset << " mSecsPerPixel: " << mSecsPerPixel;
 }
 
 void TimeLine::setContentsPos( int pos )

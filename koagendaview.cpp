@@ -304,9 +304,9 @@ EventIndicator::~EventIndicator()
 
 void EventIndicator::drawContents(QPainter *p)
 {
-//  kDebug(5850) <<"======== top:" << contentsRect().top() <<"  bottom"
-//         << contentsRect().bottom() << "  left " << contentsRect().left()
-//         << "  right " << contentsRect().right() << endl;
+//  kDebug(5850) <<"======== top:" << contentsRect().top() <<" bottom"
+//         << contentsRect().bottom() << " left" << contentsRect().left()
+//         << " right" << contentsRect().right();
 
   int i;
   for(i=0;i<mColumns;++i) {
@@ -1480,8 +1480,7 @@ void KOAgendaView::fillAgenda()
   int curCol = 0;
   for( dit = mSelectedDates.begin(); dit != mSelectedDates.end(); ++dit ) {
     QDate currentDate = *dit;
-//    kDebug(5850) <<"KOAgendaView::fillAgenda():" << currentDate.toString()
-//              << endl;
+//    kDebug(5850) <<"KOAgendaView::fillAgenda():" << currentDate.toString();
 
     dayEvents = calendar()->events(currentDate, KOPrefs::instance()->timeSpec(),
                                    EventSortStartDate,

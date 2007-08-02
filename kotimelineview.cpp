@@ -176,7 +176,7 @@ void KOTimelineView::updateView()
 /*virtual*/
 void KOTimelineView::changeIncidenceDisplay(KCal::Incidence* incidence, int mode)
 {
-  kDebug() << k_funcinfo << incidence <<"" << mode;
+  kDebug() << k_funcinfo << incidence << mode;
   switch ( mode ) {
     case KOGlobals::INCIDENCEADDED:
       insertIncidence( incidence );

@@ -90,7 +90,7 @@ void DynamicTip::maybeTip( const QPoint &pos )
   QRect rct( col * dwidth, row * dheight, dwidth, dheight );
 
 //  kDebug(5850) <<"DynamicTip::maybeTip matrix cell index [" <<
-//                col << "][" << row << "] => " <<(col+row*7) << endl;
+//                col << "][" << row << "] =>" <<(col+row*7);
 
   //show holiday names only
   QString str = mMatrix->getHolidayLabel( col + row * 7 );

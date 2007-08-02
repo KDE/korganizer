@@ -417,7 +417,7 @@ void KOEditorGeneralEvent::writeEvent(Event *event)
                          ? KCal::Event::Transparent
                          : KCal::Event::Opaque);
 
-//  kDebug(5850) << "KOEditorGeneralEvent::writeEvent() done" << endl;
+//  kDebug(5850) << "KOEditorGeneralEvent::writeEvent() done";
 }
 
 void KOEditorGeneralEvent::setDuration()

@@ -134,7 +134,7 @@ void KOrganizerApp::processCalendar( const KUrl &url )
     korg->topLevelWidget()->show();
 
     kDebug(5850) <<"KOrganizerApp::processCalendar(): '" << url.url()
-                  << "'" << endl;
+                  << "'";
 
     if ( hasDocument )
       korg->openURL( url );

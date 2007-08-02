@@ -89,7 +89,7 @@ QList<ScheduleMessage*> MailScheduler::retrieveTransactions()
 {
   QString incomingDirName = KStandardDirs::locateLocal( "data", "korganizer/income" );
   kDebug(5850) <<"MailScheduler::retrieveTransactions: dir:"
-                << incomingDirName << endl;
+                << incomingDirName;
 
   QList<ScheduleMessage*> messageList;
 
@@ -110,7 +110,7 @@ QList<ScheduleMessage*> MailScheduler::retrieveTransactions()
       if ( !f.open( QIODevice::ReadOnly ) ) {
         kDebug(5850)
           << "MailScheduler::retrieveTransactions(): Can't open file'"
-          << (*it) << "'" << endl;
+          << (*it) << "'";
       } else {
         QTextStream t( &f );
         t.setCodec( "ISO 8859-1" );
@@ -122,7 +122,7 @@ QList<ScheduleMessage*> MailScheduler::retrieveTransactions()
         if ( mess) {
           kDebug(5850)
             << "MailScheduler::retrieveTransactions: got message '"
-            << (*it) << "'" << endl;
+            << (*it) << "'";
           messageList.append( mess );
           mEventMap[ mess->event() ] = incomingDirName + '/' + (*it);
         } else {
@@ -131,8 +131,8 @@ QList<ScheduleMessage*> MailScheduler::retrieveTransactions()
             errorMessage = mFormat->exception()->message();
           }
           kDebug(5850)
-            << "MailScheduler::retrieveTransactions() Error parsing message: "
-            << errorMessage << endl;
+            << "MailScheduler::retrieveTransactions() Error parsing message:"
+            << errorMessage;
         }
         f.close();
       }

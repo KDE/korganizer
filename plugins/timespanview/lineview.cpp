@@ -58,8 +58,8 @@ void LineView::addLine( int start, int end )
   if( start < 0 ) start = 0;
   if( end > mPixelWidth) end = mPixelWidth;
 
-  kDebug(5850) <<"LineView::addLine() col:" << count <<"  start:" << start
-            << "  end: " << end << endl;
+  kDebug(5850) <<"LineView::addLine() col:" << count <<"start:" << start
+            << "end:" << end;
 
   mLines.append( new Line( count, start, end ) );
 }
@@ -101,16 +101,16 @@ void LineView::drawContents(QPainter* p, int cx, int cy, int cw, int ch)
     int cbottom = line->column * 20 + 10 + 5;
     int s = line->start;
     int e = line->end;
-//    kDebug(5850) <<"  LineView::drawContents(): ctop:" << ctop <<"  cbottom:"
-//              << cbottom << "  s: " << s << "  e: " << e << endl;
+//    kDebug(5850) <<"  LineView::drawContents(): ctop:" << ctop <<" cbottom:"
+//              << cbottom << " s:" << s << " e:" << e;
     if ( ctop <= (cy+ch) && cbottom >= cy &&
          s <= (cx+cw) && e >= cx ) {
       if ( s < cx ) s = cx;
       if ( e > (cx+cw) ) e = cx+cw;
       if ( ctop < cy ) ctop = cy;
       if ( cbottom > (cy+ch) ) cbottom = cy+ch;
-//      kDebug(5850) <<"            drawContents(): ctop:" << ctop <<"  cbottom:"
-//                << cbottom << "  s: " << s << "  e: " << e << endl;
+//      kDebug(5850) <<"            drawContents(): ctop:" << ctop <<" cbottom:"
+//                << cbottom << " s:" << s << " e:" << e;
       p->fillRect( s, ctop, e - s + 1, cbottom - ctop + 1, QBrush("red") );
     }
   }

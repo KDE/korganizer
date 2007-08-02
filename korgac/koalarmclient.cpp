@@ -69,8 +69,7 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
 
   KConfigGroup config(KGlobal::config(), "Alarms");
   int interval = config.readEntry( "Interval", 60 );
-  kDebug(5890) <<"KOAlarmClient check interval:" << interval <<" seconds."
-                << endl;
+  kDebug(5890) <<"KOAlarmClient check interval:" << interval << "seconds.";
   mLastChecked = config.readEntry( "CalendarsLastChecked", QDateTime() );
 
   // load reminders that were active when quitting

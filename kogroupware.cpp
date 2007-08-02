@@ -161,7 +161,7 @@ void KOGroupware::incomingDirChanged( const QString& path )
     if (mFormat.exception())
       errorMessage = i18n( "Error message: %1", mFormat.exception()->message() );
     kDebug(5850) <<"MailScheduler::retrieveTransactions() Error parsing"
-                  << errorMessage << endl;
+                  << errorMessage;
     KMessageBox::detailedError( mView,
         i18n("Error while processing an invitation or update."),
         errorMessage );

@@ -383,8 +383,7 @@ bool FreeBusyManager::processRetrieveQueue()
 
   KUrl sourceURL = freeBusyUrl( email );
 
-  kDebug(5850) <<"FreeBusyManager::retrieveFreeBusy(): url:" << sourceURL
-            << endl;
+  kDebug(5850) <<"FreeBusyManager::retrieveFreeBusy(): url:" << sourceURL;
 
   if ( !sourceURL.isValid() ) {
     kDebug(5850) <<"Invalid FB URL";
@@ -428,12 +427,12 @@ KUrl FreeBusyManager::freeBusyUrl( const QString &email ) const
     pref = (*it).preferredEmail();
     if ( !pref.isEmpty() && pref != email ) {
       kDebug( 5850 ) <<"FreeBusyManager::freeBusyUrl():" <<
-        "Preferred email of " << email << " is " << pref << endl;
+        "Preferred email of" << email << "is" << pref;
       group = cfg.group(pref);
       url = group.readEntry ( "url" );
       if ( !url.isEmpty() ) {
         kDebug( 5850 ) <<"FreeBusyManager::freeBusyUrl():" <<
-          "Taken url from preferred email:" << url << endl;
+          "Taken url from preferred email:" << url;
         return KUrl( url );
       }
     }
@@ -466,7 +465,7 @@ KUrl FreeBusyManager::freeBusyUrl( const QString &email ) const
        && !emailHost.endsWith( '.' + hostDomain ) ) {
     // Host names do not match
     kDebug(5850) <<"Host '" << sourceURL.host() <<"' doesn't match email '"
-      << email << "'" << endl;
+      << email << "'";
     return KUrl();
 }
 
@@ -488,8 +487,7 @@ KCal::FreeBusy *FreeBusyManager::iCalToFreeBusy( const QByteArray &data )
   QString freeBusyVCal = QString::fromUtf8( data );
   KCal::FreeBusy *fb = mFormat.parseFreeBusy( freeBusyVCal );
   if ( !fb ) {
-    kDebug(5850) <<"FreeBusyManager::iCalToFreeBusy(): Error parsing free/busy"
-              << endl;
+    kDebug(5850) <<"FreeBusyManager::iCalToFreeBusy(): Error parsing free/busy";
     kDebug(5850) << freeBusyVCal;
   }
   return fb;
@@ -509,13 +507,13 @@ FreeBusy *FreeBusyManager::loadFreeBusy( const QString &email )
   QFile f( fbd + '/' + email + ".ifb" );
   if ( !f.exists() ) {
     kDebug(5850) <<"FreeBusyManager::loadFreeBusy()" << f.fileName()
-              << " doesn't exist." << endl;
+              << "doesn't exist.";
     return 0;
   }
 
   if ( !f.open( QIODevice::ReadOnly ) ) {
     kDebug(5850) <<"FreeBusyManager::loadFreeBusy() Unable to open file"
-              << f.fileName() << endl;
+              << f.fileName();
     return 0;
   }
 
@@ -548,8 +546,7 @@ bool FreeBusyManager::saveFreeBusy( FreeBusy *freebusy, const Person &person )
   filename += ".ifb";
   QFile f( filename );
 
-  kDebug(5850) <<"FreeBusyManager::saveFreeBusy(): filename:" << filename
-            << endl;
+  kDebug(5850) <<"FreeBusyManager::saveFreeBusy(): filename:" << filename;
 
   freebusy->clearAttendees();
   freebusy->setOrganizer( person );
@@ -558,8 +555,7 @@ bool FreeBusyManager::saveFreeBusy( FreeBusy *freebusy, const Person &person )
                                                        Scheduler::Publish );
 
   if ( !f.open( QIODevice::ReadWrite ) ) {
-    kDebug(5850) <<"acceptFreeBusy: Can't open:" << filename <<" for writing"
-              << endl;
+    kDebug(5850) <<"acceptFreeBusy: Can't open:" << filename << "for writing";
     return false;
   }
   QTextStream t( &f );

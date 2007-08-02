@@ -136,8 +136,7 @@ void KOEventView::showNewEventPopup()
 {
   QMenu *popup = newEventPopup();
   if ( !popup ) {
-    kError() <<"KOEventView::showNewEventPopup(): popup creation failed"
-              << endl;
+    kError() <<"KOEventView::showNewEventPopup(): popup creation failed";
     return;
   }
 
