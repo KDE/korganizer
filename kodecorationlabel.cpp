@@ -74,15 +74,6 @@ KODecorationLabel::~KODecorationLabel()
 {
 }
 
-// TODO; this is a hack to let the widget expand when room is available;
-//       it would be great to find sth better!
-/*QSize KODecorationLabel::sizeHint() const
-{
-  QSize sh = QLabel::sizeHint();
-  return QSize( qMax( width()+1, sh.width()+1 ),
-                qMax( height()+1, sh.height()+1 ) );
-}*/
-
 void KODecorationLabel::mouseReleaseEvent( QMouseEvent *event )
 {
   QLabel::mouseReleaseEvent( event );

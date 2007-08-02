@@ -47,8 +47,6 @@ class KODecorationLabel : public QLabel
                        QWidget *parent = 0 );
     ~KODecorationLabel();
 
-/*     QSize sizeHint() const;*/
-
   public slots:
     void setExtensiveText( const QString & );
     void setLongText( const QString & );
