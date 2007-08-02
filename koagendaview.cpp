@@ -777,10 +777,12 @@ void KOAgendaView::createDayLabels()
 
         KHBox *decoHBox = new KHBox( dayLabelBox );
         decoHBox->setFrameShape( QFrame::StyledPanel );
+        decoHBox->setMinimumWidth( 1 );
 
         foreach ( CalendarDecoration::Element* it, deco->dayElements( date ) ) {
           KODecorationLabel *label = new KODecorationLabel( it, decoHBox );
           label->setAlignment( Qt::AlignBottom );
+          label->setMinimumWidth( 1 );
         }
       }
     }
@@ -793,10 +795,12 @@ void KOAgendaView::createDayLabels()
 
         KHBox *decoHBox = new KHBox( bottomDayLabelBox );
         decoHBox->setFrameShape( QFrame::StyledPanel );
+        decoHBox->setMinimumWidth( 1 );
 
         foreach ( CalendarDecoration::Element* it, deco->dayElements( date ) ) {
           KODecorationLabel *label = new KODecorationLabel( it, decoHBox );
           label->setAlignment( Qt::AlignBottom );
+          label->setMinimumWidth( 1 );
         }
       }
     }
@@ -819,11 +823,13 @@ void KOAgendaView::createDayLabels()
 
       KHBox *decoHBox = new KHBox( mDayLabels );
       decoHBox->setFrameShape( QFrame::StyledPanel );
+      decoHBox->setMinimumWidth( 1 );
 
       foreach ( CalendarDecoration::Element* it,
                 deco->weekElements( mSelectedDates.first() ) ) {
         KODecorationLabel *label = new KODecorationLabel( it, decoHBox );
         label->setAlignment( Qt::AlignBottom );
+        label->setMinimumWidth( 1 );
       }
     }
   }
