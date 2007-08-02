@@ -1705,18 +1705,21 @@ void KOAgenda::insertMultiItem (Event *event,const QDate &qd,int XBegin,int XEnd
 
   QList<KOAgendaItem*>::iterator it = multiItems.begin();
   QList<KOAgendaItem*>::iterator e = multiItems.end();
-  KOAgendaItem *first = multiItems.first();
-  KOAgendaItem *last = multiItems.last();
-  KOAgendaItem *prev = 0, *next = 0;
 
-  while ( it != e ) {
-    KOAgendaItem *item = *it;
-    ++it;
-    next = (it == e ) ? 0 : (*it);
-    if ( item )
-      item->setMultiItem( (item == first) ? 0 : first, prev, next,
-        ( item == last ) ? 0 : last );
-    prev = item;
+  if ( it != e ) { // .first asserts if the list is empty
+    KOAgendaItem *first = multiItems.first();
+    KOAgendaItem *last = multiItems.last();
+    KOAgendaItem *prev = 0, *next = 0;
+
+    while ( it != e ) {
+      KOAgendaItem *item = *it;
+      ++it;
+      next = (it == e ) ? 0 : (*it);
+      if ( item )
+        item->setMultiItem( (item == first) ? 0 : first, prev, next,
+          ( item == last ) ? 0 : last );
+      prev = item;
+    }
   }
 
   marcus_bains();
