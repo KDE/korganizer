@@ -766,17 +766,21 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
   QString shortH;
   QString longH;
   if ( !isMultiItem() ) {
-    shortH = KGlobal::locale()->formatTime(mIncidence->dtStart().time());
+    shortH = KGlobal::locale()->formatTime(
+    mIncidence->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ).time());
     if (mIncidence->type() != "Todo")
       longH = i18n("%1 - %2", shortH,
-                KGlobal::locale()->formatTime(mIncidence->dtEnd().time()));
+                KGlobal::locale()->formatTime(
+                mIncidence->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() ).time()));
     else
       longH = shortH;
   } else if ( !mMultiItemInfo->mFirstMultiItem ) {
-    shortH = KGlobal::locale()->formatTime(mIncidence->dtStart().time());
+    shortH = KGlobal::locale()->formatTime(
+             mIncidence->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ).time());
     longH = shortH;
   } else {
-    shortH = KGlobal::locale()->formatTime(mIncidence->dtEnd().time());
+    shortH = KGlobal::locale()->formatTime(
+             mIncidence->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() ).time());
     longH = i18n("- %1", shortH);
   }
 
@@ -870,8 +874,8 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
          (mIncidence->dtStart() != mIncidence->dtEnd()) ) { // multi days
       shortH = longH =
         i18n("%1 - %2",
-              KGlobal::locale()->formatDate(mIncidence->dtStart().date()),
-              KGlobal::locale()->formatDate(mIncidence->dtEnd().date()));
+              KGlobal::locale()->formatDate(mIncidence->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ).date()),
+              KGlobal::locale()->formatDate(mIncidence->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() ).date()));
 
       // paint headline
       p.fillRect( 0, 0, width(), (ft/2) + margin + hlHeight,

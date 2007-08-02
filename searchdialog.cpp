@@ -149,9 +149,9 @@ void SearchDialog::search( const QRegExp &re )
       for (it=alltodos.begin(); it!=alltodos.end(); ++it) {
         todo = *it;
         if ( (!todo->hasStartDate() && !todo->hasDueDate() ) || // undated
-             ( todo->hasStartDate() && (todo->dtStart().date()>=startDt) && (todo->dtStart().date()<=endDt) ) || // start dt in range
-             ( todo->hasDueDate() && (todo->dtDue().date()>=startDt) && (todo->dtDue().date()<=endDt) ) || // due dt in range
-             ( todo->hasCompletedDate() && (todo->completed().date()>=startDt) && (todo->completed().date()<=endDt) ) ) { // completed dt in range
+             ( todo->hasStartDate() && (todo->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ).date()>=startDt) && (todo->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ).date()<=endDt) ) || // start dt in range
+             ( todo->hasDueDate() && (todo->dtDue().toTimeSpec( KOPrefs::instance()->timeSpec() ).date()>=startDt) && (todo->dtDue().toTimeSpec( KOPrefs::instance()->timeSpec() ).date()<=endDt) ) || // due dt in range
+             ( todo->hasCompletedDate() && (todo->completed().toTimeSpec( KOPrefs::instance()->timeSpec() ).date()>=startDt) && (todo->completed().toTimeSpec( KOPrefs::instance()->timeSpec() ).date()<=endDt) ) ) { // completed dt in range
           todos.append( todo );
         }
       }

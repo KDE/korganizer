@@ -309,7 +309,7 @@ class KOPrefsDialogTime : public KPrefsModule
       int weekStart=KGlobal::locale()->weekStartDay();
       for ( int i = 0; i < 7; ++i ) {
         const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
-        QString weekDayName = calSys->weekDayName( (i + weekStart + 6)%7 + 1, 
+        QString weekDayName = calSys->weekDayName( (i + weekStart + 6)%7 + 1,
                                                    KCalendarSystem::ShortDayName );
         if ( KOPrefs::instance()->mCompactDialogs ) {
           weekDayName = weekDayName.left( 1 );

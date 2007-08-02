@@ -979,7 +979,6 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
   QDate oldThisDate( item->itemDate() );
   int daysOffset = oldThisDate.daysTo( thisDate );
   int daysLength = 0;
-
 //  startDt.setDate( startDate );
 
   Incidence *incidence = item->incidence();
@@ -1003,27 +1002,27 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
 //  kDebug(5850) << "KOAgendaView::updateEventDates(): now setting dates" << endl;
   // FIXME: use a visitor here
   if ( incidence->type() == "Event" ) {
-    startDt = incidence->dtStart();
+    startDt = incidence->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() );
     startDt = startDt.addDays( daysOffset );
     startDt.setTime( startTime );
     endDt = startDt.addDays( daysLength );
     endDt.setTime( endTime );
     Event*ev = static_cast<Event*>(incidence);
-    if( incidence->dtStart() == startDt && ev->dtEnd() == endDt ) {
+    if( incidence->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ) == startDt
+        && ev->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() ) == endDt ) {
       // No change
       delete oldIncidence;
       return;
     }
-    incidence->setDtStart( startDt );
-    ev->setDtEnd( endDt );
   } else if ( incidence->type() == "Todo" ) {
     Todo *td = static_cast<Todo*>(incidence);
-    startDt = td->hasStartDate() ? td->dtStart() : td->dtDue();
-    startDt = KDateTime( thisDate.addDays( td->dtDue().daysTo( startDt ) ),
-                         startTime, startDt.timeSpec());
-    endDt = KDateTime( thisDate, endTime, startDt.timeSpec());
+    startDt = td->hasStartDate() ? td->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() )
+                                 : td->dtDue().toTimeSpec( KOPrefs::instance()->timeSpec() );
+    startDt = KDateTime( thisDate.addDays( td->dtDue().toTimeSpec( KOPrefs::instance()->timeSpec() ).daysTo( startDt ) ),
+                         startTime, KOPrefs::instance()->timeSpec() );
+    endDt = KDateTime( thisDate, endTime, KOPrefs::instance()->timeSpec() );
 
-    if( td->dtDue() == endDt ) {
+    if( td->dtDue().toTimeSpec( KOPrefs::instance()->timeSpec() )  == endDt ) {
       // No change
       delete oldIncidence;
       return;
@@ -1176,16 +1175,15 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
 
   // FIXME: use a visitor here
   if ( incidence->type() == "Event" ) {
-    incidence->setDtStart( startDt );
-    (static_cast<Event*>( incidence ) )->setDtEnd( endDt );
+    incidence->setDtStart( startDt.toTimeSpec( incidence->dtStart().timeSpec() ) );
+    (static_cast<Event*>( incidence ) )->setDtEnd( endDt.toTimeSpec( incidence->dtStart().timeSpec() ) );
   } else if ( incidence->type() == "Todo" ) {
     Todo *td = static_cast<Todo*>( incidence );
     if ( td->hasStartDate() )
-      td->setDtStart( startDt );
-    td->setDtDue( endDt );
+      td->setDtStart( startDt.toTimeSpec( incidence->dtStart().timeSpec() ) );
+    td->setDtDue( endDt.toTimeSpec( incidence->dtStart().timeSpec() ) );
   }
-
-  item->setItemDate( startDt.date() );
+  item->setItemDate( startDt.toTimeSpec( KOPrefs::instance()->timeSpec() ).date() );
 
   item->setToolTip( IncidenceFormatter::toolTipString( incidence ));
 
@@ -1252,15 +1250,15 @@ void KOAgendaView::showIncidences( const Incidence::List &incidences )
   if ( !wehaveall )
     calendar()->setFilter( 0 );
 
-  KDateTime start = incidences.first()->dtStart(),
-            end = incidences.first()->dtEnd();
+  KDateTime start = incidences.first()->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ),
+            end = incidences.first()->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() );
   Incidence *first = incidences.first();
   for ( Incidence::List::ConstIterator it = incidences.constBegin();
         it != incidences.constEnd(); ++it ) {
-    if ( ( *it )->dtStart() < start )
+    if ( ( *it )->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ) < start )
       first = *it;
-    start = qMin( start, ( *it )->dtStart() );
-    end = qMax( start, ( *it )->dtEnd() );
+    start = qMin( start, ( *it )->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ) );
+    end = qMax( start, ( *it )->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() ) );
   }
 
   end.toTimeSpec( start );    // allow direct comparison of dates
@@ -1292,8 +1290,8 @@ void KOAgendaView::insertIncidence( Incidence *incidence, const QDate &curDate,
   int beginX;
   int endX;
   if ( event ) {
-    beginX = curDate.daysTo( incidence->dtStart().date() ) + curCol;
-    endX = curDate.daysTo( event->dateEnd() ) + curCol;
+    beginX = curDate.daysTo( incidence->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ).date() ) + curCol;
+    endX = curDate.daysTo( event->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() ).date() ) + curCol;
   } else if ( todo ) {
     if ( ! todo->hasDueDate() ) return;  // todo shall not be displayed if it has no date
     beginX = curDate.daysTo( todo->dtDue().date() ) + curCol;
@@ -1301,7 +1299,6 @@ void KOAgendaView::insertIncidence( Incidence *incidence, const QDate &curDate,
   } else {
     return;
   }
-
   if ( todo && todo->isOverdue() ) {
     mAllDayAgenda->insertAllDayItem( incidence, curDate, curCol, curCol );
   } else if ( incidence->floats() ) {
@@ -1315,9 +1312,9 @@ void KOAgendaView::insertIncidence( Incidence *incidence, const QDate &curDate,
         mAllDayAgenda->insertAllDayItem( incidence, curDate, beginX, endX );
       }
     }
-  } else if ( event && event->isMultiDay() ) {
-    int startY = mAgenda->timeToY( event->dtStart().time() );
-    QTime endtime( event->dtEnd().time() );
+  } else if ( event && event->isMultiDay( KOPrefs::instance()->timeSpec() ) ) {
+    int startY = mAgenda->timeToY( event->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ).time() );
+    QTime endtime( event->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() ).time() );
     if ( endtime == QTime( 0, 0, 0 ) ) endtime = QTime( 23, 59, 59 );
     int endY = mAgenda->timeToY( endtime ) - 1;
     if ( (beginX <= 0 && curCol == 0) || beginX == curCol ) {
@@ -1336,8 +1333,8 @@ void KOAgendaView::insertIncidence( Incidence *incidence, const QDate &curDate,
   } else {
     int startY = 0, endY = 0;
     if ( event ) {
-      startY = mAgenda->timeToY( incidence->dtStart().time() );
-      QTime endtime( event->dtEnd().time() );
+      startY = mAgenda->timeToY( incidence->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ).time() );
+      QTime endtime( event->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() ).time() );
       if ( endtime == QTime( 0, 0, 0 ) ) endtime = QTime( 23, 59, 59 );
       endY = mAgenda->timeToY( endtime ) - 1;
     }
@@ -1363,7 +1360,7 @@ void KOAgendaView::changeIncidenceDisplayAdded( Incidence *incidence )
 
   QDate f = mSelectedDates.first();
   QDate l = mSelectedDates.last();
-  QDate startDt = incidence->dtStart().date();
+  QDate startDt = incidence->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ).date();
 
   if ( incidence->recurs() ) {
     DateList::ConstIterator dit;
@@ -1380,7 +1377,7 @@ void KOAgendaView::changeIncidenceDisplayAdded( Incidence *incidence )
 
   QDate endDt;
   if ( incidence->type() == "Event" )
-    endDt = (static_cast<Event *>(incidence))->dateEnd();
+    endDt = (static_cast<Event *>(incidence))->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() ).date();
   if ( todo ) {
     endDt = todo->isOverdue() ? QDate::currentDate()
                               : todo->dtDue().date();

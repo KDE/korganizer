@@ -285,14 +285,14 @@ void KOWhatsNextView::appendEvent( Incidence *ev, const QDateTime &start,
 
       if ( starttime.date().daysTo( endtime.date() ) >= 1 ) {
         mText += i18nc("date from - to", "%1 - %2",
-                KGlobal::locale()->formatDateTime( starttime ) ,
-                KGlobal::locale()->formatDateTime( endtime ) );
+                KGlobal::locale()->formatDateTime( starttime.toTimeSpec( KOPrefs::instance()->timeSpec() ) ) ,
+                KGlobal::locale()->formatDateTime( endtime.toTimeSpec( KOPrefs::instance()->timeSpec() ) ) );
       } else {
         /*if (reply) */
         mText += i18nc("date, from - to", "%1, %2 - %3",
-              KGlobal::locale()->formatDate( starttime.date(), KLocale::ShortDate ) ,
-              KGlobal::locale()->formatTime( starttime.time() ) ,
-              KGlobal::locale()->formatTime( endtime.time() ) );
+              KGlobal::locale()->formatDate( starttime.toTimeSpec( KOPrefs::instance()->timeSpec() ).date(), KLocale::ShortDate ) ,
+              KGlobal::locale()->formatTime( starttime.toTimeSpec( KOPrefs::instance()->timeSpec() ).time() ) ,
+              KGlobal::locale()->formatTime( endtime.toTimeSpec( KOPrefs::instance()->timeSpec() ).time() ) );
       }
     }
 //  }

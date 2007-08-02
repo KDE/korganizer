@@ -100,8 +100,8 @@ void TimeSpanWidget::addItem( KCal::Event *event )
 {
   new Q3ListViewItem( mList, event->summary() );
 
-  QDateTime startDt = event->dtStart();
-  QDateTime endDt = event->dtEnd();
+  QDateTime startDt = event->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ).dateTime();
+  QDateTime endDt = event->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() ).dateTime();
 
 //  kDebug(5850) << "TimeSpanWidget::addItem(): start: " << startDt.toString()
 //            << "  end: " << endDt.toString() << endl;

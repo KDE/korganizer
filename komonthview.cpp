@@ -1017,7 +1017,6 @@ void KOMonthView::changeIncidenceDisplayAdded( Incidence *incidence )
   if ( incidence->recurs() ) {
     for ( int i = 0; i < mCells.count(); ++i ) {
       if ( incidence->recursOn( mCells[i]->date(), timeSpec ) ) {
-
         // handle multiday events
         int length = gdv.startDate().date().daysTo( gdv.endDate().addSecs( floats ? 0 : -1 ).date() );
         for ( int j = 0; j <= length && i+j < mCells.count(); ++j ) {
@@ -1028,8 +1027,8 @@ void KOMonthView::changeIncidenceDisplayAdded( Incidence *incidence )
   } else {
     // addSecs(-1) is added to handle 0:00 cases (because it's non-inclusive according to rfc)
     if ( gdv.endDate().isValid() ) {
-      QDate endDate = gdv.endDate().addSecs( floats ? 0 : -1).date();
-      for ( QDate date = gdv.startDate().date();
+      QDate endDate = gdv.endDate().toTimeSpec( KOPrefs::instance()->timeSpec() ).addSecs( floats ? 0 : -1).date();
+      for ( QDate date = gdv.startDate().toTimeSpec( KOPrefs::instance()->timeSpec() ).date();
             date <= endDate; date = date.addDays( 1 ) ) {
         MonthViewCell *mvc = mDateToCell[ date ];
         if ( mvc ) mvc->addIncidence( incidence );

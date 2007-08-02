@@ -38,6 +38,7 @@
 #include <kfiledialog.h>
 #include <kstandarddirs.h>
 #include <ktextedit.h>
+#include <ksystemtimezone.h>
 #include <KComboBox>
 
 #include <QLayout>
@@ -68,6 +69,16 @@ KOEditorGeneralEvent::KOEditorGeneralEvent(QObject* parent,
 KOEditorGeneralEvent::~KOEditorGeneralEvent()
 {
 }
+
+KDateTime::Spec KOEditorGeneralEvent::timeSpec()
+{
+  // build time spec
+  KDateTime::Spec spec;
+  spec.setType( KSystemTimeZones::zone( mTimeZoneCombo->currentText() ) );
+
+  return spec;
+}
+
 
 void KOEditorGeneralEvent::finishSetup()
 {
@@ -118,6 +129,29 @@ void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
   mStartTimeEdit = new KTimeEdit( timeGroupBox );
   layoutTimeBox->addWidget(mStartTimeEdit,0,2);
 
+  /*
+     Timezone
+  */
+  QLabel *timeZoneLabel = new QLabel( i18n("Time zone:"), timeGroupBox );
+  layoutTimeBox->addWidget( timeZoneLabel, 0, 3, Qt::AlignRight );
+  QString whatsThis = i18n( "Select the timezone for this event. "
+                                "It will also affect recurrences" );
+  timeZoneLabel->setWhatsThis( whatsThis );
+  mTimeZoneCombo = new KComboBox( timeGroupBox );
+  layoutTimeBox->addWidget( mTimeZoneCombo, 0, 4 );
+
+  // Read all system time zones
+  QStringList list;
+  const KTimeZones::ZoneMap timezones = KSystemTimeZones::zones();
+  for (KTimeZones::ZoneMap::ConstIterator it = timezones.begin();  it != timezones.end();  ++it) {
+    list.append(i18n(it.key().toUtf8()));
+  }
+  list.sort();
+  mTimeZoneCombo->addItems( list );
+  selectLocalTZ();
+  mTimeZoneCombo->setWhatsThis( whatsThis );
+
+
 
   mEndDateLabel = new QLabel( i18n("&End:"), timeGroupBox );
   layoutTimeBox->addWidget( mEndDateLabel, 1, 0 );
@@ -137,12 +171,12 @@ void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
 
   mDurationLabel = new QLabel( timeGroupBox );
   if ( KOPrefs::instance()->mCompactDialogs ) {
-    layoutTimeBox->addWidget( mDurationLabel, 3, 0, 1, 4 );
+    layoutTimeBox->addWidget( mDurationLabel, 3, 0, 1, 5 );
   } else {
     flagsBox->addWidget( mDurationLabel, 0, Qt::AlignRight );
   }
 
-  layoutTimeBox->addLayout( flagsBox, 2, 0, 1, 4 );
+  layoutTimeBox->addLayout( flagsBox, 2, 0, 1, 5 );
 
   // time widgets are checked if they contain a valid time
   connect(mStartTimeEdit, SIGNAL(timeChanged(QTime)),
@@ -155,6 +189,7 @@ void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
           this, SLOT(startDateChanged(const QDate&)));
   connect(mEndDateEdit, SIGNAL(dateChanged(const QDate&)),
           this, SLOT(endDateChanged(const QDate&)));
+
 }
 
 void KOEditorGeneralEvent::initClass(QWidget *parent,QBoxLayout *topLayout)
@@ -194,7 +229,7 @@ void KOEditorGeneralEvent::associateTime(bool time)
   allDayChanged(!time);
 }
 
-void KOEditorGeneralEvent::setDateTimes( const QDateTime &start, const QDateTime &end )
+void KOEditorGeneralEvent::setDateTimes( const KDateTime &start, const KDateTime &end )
 {
 //  kDebug(5850) << "KOEditorGeneralEvent::setDateTimes(): Start DateTime: " << start.toString() << endl;
 
@@ -206,8 +241,21 @@ void KOEditorGeneralEvent::setDateTimes( const QDateTime &start, const QDateTime
   mEndDateEdit->setDate(end.date());
   mEndTimeEdit->setTime(end.time());
 
-  mCurrStartDateTime = start;
-  mCurrEndDateTime = end;
+  mCurrStartDateTime = start.dateTime();
+  mCurrEndDateTime = end.dateTime();
+
+  // start and end must always have the same TZ
+  // select the TZ in the combobox
+  int nCurrentlySet = 0;
+  for ( int i = 0; i < mTimeZoneCombo->count(); ++i )
+  {
+    if ( mTimeZoneCombo->itemText(i) ==  start.timeSpec().timeZone().name())
+    {
+      nCurrentlySet = i;
+      break;
+    }
+  }
+  mTimeZoneCombo->setCurrentIndex(nCurrentlySet);
 
   setDuration();
   emitDateTimeStr();
@@ -274,7 +322,30 @@ void KOEditorGeneralEvent::setDefaults( const QDateTime &from,
   mTimeAssociateButton->setChecked(!allDay);
   timeStuffDisable(allDay);
 
-  setDateTimes(from,to);
+  selectLocalTZ();
+
+  setDateTimes( KDateTime( from, KDateTime::Spec( KDateTime::LocalZone ) ),
+                KDateTime( to,   KDateTime::Spec( KDateTime::LocalZone ) ) );
+}
+
+void KOEditorGeneralEvent::selectLocalTZ()
+{
+  QString sCurrentlySet(i18n("Unknown"));
+  KTimeZone zone = KSystemTimeZones::local();
+  if (zone.isValid())
+    sCurrentlySet = zone.name();
+
+  // find the currently set time zone and select it
+  int nCurrentlySet = 0;
+  for ( int i = 0; i < mTimeZoneCombo->count(); ++i )
+  {
+    if (mTimeZoneCombo->itemText(i) == sCurrentlySet)
+    {
+      nCurrentlySet = i;
+      break;
+    }
+  }
+  mTimeZoneCombo->setCurrentIndex(nCurrentlySet);
 }
 
 void KOEditorGeneralEvent::readEvent( Event *event, bool tmpl )
@@ -286,9 +357,8 @@ void KOEditorGeneralEvent::readEvent( Event *event, bool tmpl )
 
   if ( !tmpl ) {
     // the rest is for the events only
-    KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
-    setDateTimes(event->dtStart().toTimeSpec(timeSpec).dateTime(),
-                 event->dtEnd().toTimeSpec(timeSpec).dateTime());
+    setDateTimes(event->dtStart(),
+                 event->dtEnd());
   }
 
   switch( event->transparency() ) {
@@ -334,17 +404,19 @@ void KOEditorGeneralEvent::writeEvent(Event *event)
     tmpTime = mEndTimeEdit->getTime();
     tmpDT.setDate(tmpDate);
     tmpDT.setTime(tmpTime);
+    tmpDT.setTimeSpec( timeSpec() );
     event->setDtEnd(tmpDT);
 
     // set date/time start
     tmpDate = mStartDateEdit->date();
     tmpTime = mStartTimeEdit->getTime();
-    event->setDtStart(KDateTime(tmpDate, tmpTime, KOPrefs::instance()->timeSpec()));
+    event->setDtStart( KDateTime( tmpDate, tmpTime, timeSpec() ) );
   } // check for float
 
   event->setTransparency( mFreeTimeCombo->currentIndex() > 0
                          ? KCal::Event::Transparent
                          : KCal::Event::Opaque);
+
 
 //  kDebug(5850) << "KOEditorGeneralEvent::writeEvent() done" << endl;
 }

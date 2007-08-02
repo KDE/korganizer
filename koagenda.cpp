@@ -1104,12 +1104,13 @@ void KOAgenda::endItemAction()
             Incidence* oldInc = mActionItem->incidence();
             Incidence* oldIncSaved = mActionItem->incidence()->clone();
             Incidence* newInc = mCalendar->dissociateOccurrence(
-                oldInc, mActionItem->itemDate() );
+                oldInc, mActionItem->itemDate(), KOPrefs::instance()->timeSpec() );
             if ( newInc ) {
               // don't recreate items, they already have the correct position
               emit enableAgendaUpdate( false );
               mChanger->changeIncidence( oldIncSaved, oldInc );
               mActionItem->setIncidence( newInc );
+
               mActionItem->dissociateFromMultiItem();
               mChanger->addIncidence( newInc, this );
               emit enableAgendaUpdate( true );
@@ -1132,7 +1133,7 @@ void KOAgenda::endItemAction()
             Incidence* oldInc = mActionItem->incidence();
             Incidence* oldIncSaved = mActionItem->incidence()->clone();
             Incidence* newInc = mCalendar->dissociateOccurrence(
-                oldInc, mActionItem->itemDate(), false );
+                oldInc, mActionItem->itemDate(), KOPrefs::instance()->timeSpec(), false );
             if ( newInc ) {
               emit enableAgendaUpdate( false );
               mActionItem->dissociateFromMultiItem();

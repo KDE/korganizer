@@ -17,6 +17,7 @@
 */
 
 #include "timelineitem.h"
+#include "koprefs.h"
 
 #include "kohelper.h"
 
@@ -42,7 +43,7 @@ TimelineItem::TimelineItem( const QString &label, KDGanttView * parent) :
 
 void TimelineItem::insertIncidence(KCal::Incidence * incidence, const KDateTime & _start, const KDateTime & _end)
 {
-  KDateTime start = incidence->dtStart(), end = incidence->dtEnd();
+  KDateTime start = incidence->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ), end = incidence->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() );
   if ( _start.isValid() )
     start = _start;
   if ( _end.isValid() )

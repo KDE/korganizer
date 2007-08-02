@@ -1261,7 +1261,7 @@ void CalendarView::dissociateOccurrence( Incidence *incidence, const QDate &date
   startMultiModify( i18n("Dissociate occurrence") );
   Incidence*oldincidence = incidence->clone();
 
-  Incidence* newInc = mCalendar->dissociateOccurrence( incidence, date, true );
+  Incidence* newInc = mCalendar->dissociateOccurrence( incidence, date, KOPrefs::instance()->timeSpec(), true );
 
   if ( newInc ) {
     // TODO: Use the same resource instead of asking again!
@@ -1289,7 +1289,7 @@ void CalendarView::dissociateFutureOccurrence( Incidence *incidence, const QDate
   startMultiModify( i18n("Dissociate future occurrences") );
   Incidence*oldincidence = incidence->clone();
 
-  Incidence* newInc = mCalendar->dissociateOccurrence( incidence, date, true );
+  Incidence* newInc = mCalendar->dissociateOccurrence( incidence, date, KOPrefs::instance()->timeSpec(), true );
   if ( newInc ) {
     // TODO: Use the same resource instead of asking again!
     mChanger->changeIncidence( oldincidence, incidence );
@@ -1918,7 +1918,7 @@ void CalendarView::showIncidenceContext( Incidence *incidence )
     if ( !viewManager()->currentView()->inherits( "KOEventView" ) )
       viewManager()->showAgendaView();
     // just select the appropriate date
-    mNavigator->selectWeek( incidence->dtStart().date() );
+    mNavigator->selectWeek( incidence->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ).date() );
     return;
   } else if ( dynamic_cast<KCal::Journal *>( incidence ) ) {
     if ( !viewManager()->currentView()->inherits( "KOJournalView" ) )

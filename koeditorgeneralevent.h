@@ -72,7 +72,7 @@ class KOEditorGeneralEvent : public KOEditorGeneral
     bool validateInput();
 
   public slots:
-    void setDateTimes( const QDateTime &start, const QDateTime &end );
+    void setDateTimes( const KDateTime &start, const KDateTime &end );
     void setDuration();
 
   protected slots:
@@ -92,6 +92,9 @@ class KOEditorGeneralEvent : public KOEditorGeneral
     void dateTimesChanged( const QDateTime &start, const QDateTime &end );
 
   private:
+    KDateTime::Spec timeSpec();
+    void selectLocalTZ();
+
     QLabel                  *mStartDateLabel;
     QLabel                  *mEndDateLabel;
     KDateEdit               *mStartDateEdit;
@@ -101,7 +104,7 @@ class KOEditorGeneralEvent : public KOEditorGeneral
     QLabel                  *mDurationLabel;
     QCheckBox               *mTimeAssociateButton;
     KComboBox               *mFreeTimeCombo;
-
+    KComboBox               *mTimeZoneCombo;
     // current start and end date and time
     QDateTime mCurrStartDateTime;
     QDateTime mCurrEndDateTime;
