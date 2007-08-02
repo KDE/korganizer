@@ -21,8 +21,8 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef KORG_GLOBALS_H
-#define KORG_GLOBALS_H
+#ifndef KOGLOBALS_H
+#define KOGLOBALS_H
 
 #include "korganizer_export.h"
 #include <kcomponentdata.h>
