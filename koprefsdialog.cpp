@@ -1284,36 +1284,27 @@ void KOPrefsDialogPlugins::positioningChanged()
   if ( mPositionMonthTop->checkState() == Qt::Checked ) {
     if ( ! mDecorationsAtMonthViewTop.contains( decoration ) ) {
       mDecorationsAtMonthViewTop.insert( decoration );
-      kDebug() << "added mt";
     }
   } else {
     mDecorationsAtMonthViewTop.remove( decoration );
-    kDebug() << "removed mt";
   }
 
   if ( mPositionAgendaTop->checkState() == Qt::Checked ) {
     if ( ! mDecorationsAtAgendaViewTop.contains( decoration ) ) {
       mDecorationsAtAgendaViewTop.insert( decoration );
-      kDebug() << "added dt";
     }
   } else {
     mDecorationsAtAgendaViewTop.remove( decoration );
-    kDebug() << "removed dt";
   }
 
   if ( mPositionAgendaBottom->checkState() == Qt::Checked ) {
     if ( ! mDecorationsAtAgendaViewBottom.contains( decoration ) ) {
       mDecorationsAtAgendaViewBottom.insert( decoration );
-      kDebug() << "added db";
     }
   } else {
     mDecorationsAtAgendaViewBottom.remove( decoration );
-    kDebug() << "removed db";
   }
 
-  kDebug() << mDecorationsAtMonthViewTop;
-  kDebug() << mDecorationsAtAgendaViewTop;
-  kDebug() << mDecorationsAtAgendaViewBottom;
   slotWidChanged();
 }
 
