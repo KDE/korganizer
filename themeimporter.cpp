@@ -258,14 +258,14 @@ void ThemeImporter::readCalendarItems( const QString &viewType,
                 && name() == "category" ) {
         QString n = attributes().value("name").toString();
         stack.append( qMakePair( QString("categories/" + n),
-                                 QString("CalendarItems Categories" + n)
+                                 QString("CalendarItems Categories " + n)
                                ) );
       }
       else if ( stack.count() == 2 && stack.last().first == "resources"
                 && name() == "resource" ) {
         QString n = attributes().value("name").toString();
         stack.append( qMakePair( QString("resources/" + n),
-                                 QString("CalendarItems Resources" + n)
+                                 QString("CalendarItems Resources " + n)
                                ) );
       }
       /* Settings' tags */
