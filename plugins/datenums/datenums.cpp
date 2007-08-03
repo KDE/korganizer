@@ -69,6 +69,7 @@ Element::List Datenums::createDayElements( const QDate &date )
   switch ( mDisplayedInfo ) {
     case DayOfYear: // only day of year
       e = new StoredElement( "main element", QString::number( dayOfYear ) );
+      break;
     case DaysRemaining: // only days until end of year
       e = new StoredElement( "main element", QString::number( remainingDays ),
                              i18np("1 day before the end of the year",
@@ -149,6 +150,7 @@ Element::List Datenums::createWeekElements( const QDate &date )
   switch ( mDisplayedInfo ) {
     case DayOfYear: // only week of year
       e = new StoredElement( "main element", weekOfYearShort, weekOfYearLong );
+      break;
     case DaysRemaining: // only weeks until end of year
       e = new StoredElement( "main element", remainingWeeksShort,
                              remainingWeeksLong );
