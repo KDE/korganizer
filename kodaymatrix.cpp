@@ -221,7 +221,7 @@ void KODayMatrix::recalculateToday()
       mToday = i;
     }
   }
-  // kdDegug(5850) << "Today is visible at "<< today << "." << endl;
+  // kDebug(5850) << "Today is visible at "<< today << ".";
 }
 
 /* slot */ void KODayMatrix::updateView()
