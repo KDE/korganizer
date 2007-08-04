@@ -761,6 +761,8 @@ KOMonthView::KOMonthView( Calendar *calendar, QWidget *parent )
   mLabel->setLineWidth( 0 );
   mLabel->setFrameStyle( QFrame::Plain );
   mDecorationsFrame = new QFrame( mTopBox );
+  mDecorationsFrame->setLineWidth( 0 );
+  mDecorationsFrame->setFrameStyle( QFrame::NoFrame | QFrame::Plain );
 
   dayLayout->addWidget( mTopBox, 0, 0, 1, mDaysPerWeek );
 
@@ -925,6 +927,8 @@ void KOMonthView::showDates( const QDate &start, const QDate & )
       decoHBox->setFrameShape( QFrame::StyledPanel );
 
       foreach ( CalendarDecoration::Element* it, deco->monthElements( start ) ) {
+        kDebug() << "adding Element " << it->id() << " of Decoration "
+                 << deco->info() << " to the top of the month view";
         KODecorationLabel *label = new KODecorationLabel( it, decoHBox );
         label->setAlignment( Qt::AlignBottom );
       }
