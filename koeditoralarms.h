@@ -29,8 +29,6 @@
 
 #include "ui_koeditoralarms_base.h"
 
-class Q3ListViewItem;
-
 class AlarmListViewItem;
 
 class KOEditorAlarms : public KDialog
@@ -47,7 +45,7 @@ class KOEditorAlarms : public KDialog
     void slotDuplicate();
     void slotRemove();
     void changed();
-    void selectionChanged( Q3ListViewItem *listviewitem );
+    void itemSelectionChanged();
     void slotDisplayRadioClicked();
     void slotSoundRadioClicked();
     void slotAppRadioClicked();

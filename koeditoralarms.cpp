@@ -26,7 +26,6 @@
 #include "koeditoralarms.h"
 
 #include <QLayout>
-#include <Q3ListView>
 #include <QPushButton>
 #include <QSpinBox>
 #include <QComboBox>
@@ -42,10 +41,10 @@
 
 #include <kpimutils/email.h>
 
-class AlarmListViewItem : public Q3ListViewItem
+class AlarmListViewItem : public QTreeWidgetItem
 {
   public:
-    AlarmListViewItem( Q3ListView *parent, KCal::Alarm *alarm );
+    AlarmListViewItem( QTreeWidget *parent, KCal::Alarm *alarm );
     virtual ~AlarmListViewItem();
     KCal::Alarm *alarm() const { return mAlarm; }
     void construct();
@@ -54,8 +53,8 @@ class AlarmListViewItem : public Q3ListViewItem
     KCal::Alarm *mAlarm;
 };
 
-AlarmListViewItem::AlarmListViewItem( Q3ListView *parent, KCal::Alarm *alarm )
-    : Q3ListViewItem( parent )
+AlarmListViewItem::AlarmListViewItem( QTreeWidget *parent, KCal::Alarm *alarm )
+    : QTreeWidgetItem( parent )
 {
   if ( alarm ) {
     mAlarm = new KCal::Alarm( *alarm );
@@ -140,11 +139,9 @@ KOEditorAlarms::KOEditorAlarms( KCal::Alarm::List *alarms, QWidget *parent )
   setDefaultButton( Ok );
   QWidget *widget = new QWidget(this);
   mWidget.setupUi( widget );
-  setMainWidget(widget);
-  mWidget.mAlarmList->setColumnWidthMode( 0, Q3ListView::Maximum );
-  mWidget.mAlarmList->setColumnWidthMode( 1, Q3ListView::Maximum );
-  connect( mWidget.mAlarmList, SIGNAL( selectionChanged( Q3ListViewItem * ) ),
-           SLOT( selectionChanged( Q3ListViewItem * ) ) );
+  setMainWidget( widget );
+  connect( mWidget.mAlarmList, SIGNAL( itemSelectionChanged() ),
+           SLOT( itemSelectionChanged() ) );
   connect( mWidget.mAddButton, SIGNAL( clicked() ), SLOT( slotAdd() ) );
   connect( mWidget.mRemoveButton, SIGNAL( clicked() ), SLOT( slotRemove() ) );
   connect( mWidget.mDuplicateButton, SIGNAL( clicked() ), SLOT( slotDuplicate() ) );
@@ -344,14 +341,17 @@ void KOEditorAlarms::writeAlarm( KCal::Alarm *alarm )
   }
 }
 
-void KOEditorAlarms::selectionChanged( Q3ListViewItem *listviewitem )
+void KOEditorAlarms::itemSelectionChanged()
 {
-  AlarmListViewItem *item = dynamic_cast<AlarmListViewItem*>(listviewitem);
-  mCurrentItem = item;
-  mWidget.mTimeGroup->setEnabled( item );
-  mWidget.mTypeGroup->setEnabled( item );
-  if ( item ) {
-    readAlarm( item->alarm() );
+  if ( mWidget.mAlarmList->currentItem() ) {
+    AlarmListViewItem *item = 
+      dynamic_cast<AlarmListViewItem*>( mWidget.mAlarmList->currentItem() );
+    mCurrentItem = item;
+    mWidget.mTimeGroup->setEnabled( item );
+    mWidget.mTypeGroup->setEnabled( item );
+    if ( item ) {
+      readAlarm( item->alarm() );
+    }
   }
 }
 
@@ -360,13 +360,13 @@ void KOEditorAlarms::slotApply()
   // copy the mAlarms list
   if ( mAlarms ) {
     mAlarms->clear();
-    Q3ListViewItemIterator it( mWidget.mAlarmList );
-    while ( it.current() ) {
-      AlarmListViewItem *item = dynamic_cast<AlarmListViewItem*>(*it);
+    for ( int i = 0; i < mWidget.mAlarmList->topLevelItemCount(); ++i ) {
+      AlarmListViewItem *item = 
+        dynamic_cast< AlarmListViewItem* >( 
+          mWidget.mAlarmList->topLevelItem( i ) );
       if ( item ) {
         mAlarms->append( new KCal::Alarm( *(item->alarm()) ) );
       }
-      ++it;
     }
   }
 }
@@ -398,7 +398,7 @@ void KOEditorAlarms::slotRemove()
   if ( mCurrentItem ) {
     delete mCurrentItem;
     mCurrentItem = dynamic_cast<AlarmListViewItem*>( mWidget.mAlarmList->currentItem() );
-    mWidget.mAlarmList->setSelected( mCurrentItem, true );
+    mWidget.mAlarmList->setCurrentItem( mCurrentItem );
 
   }
 }
@@ -410,7 +410,9 @@ void KOEditorAlarms::init()
   for ( it = mAlarms->begin(); it != mAlarms->end(); ++it ) {
     new AlarmListViewItem( mWidget.mAlarmList, *it );
   }
-  mWidget.mAlarmList->setSelected( mWidget.mAlarmList->firstChild(), true );
+  if ( mWidget.mAlarmList->topLevelItemCount() > 0 ) {
+    mWidget.mAlarmList->setCurrentItem( mWidget.mAlarmList->topLevelItem( 0 ) );
+  }
   mInitializing = false;
 }
 

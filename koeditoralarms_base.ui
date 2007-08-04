@@ -508,12 +508,15 @@
       </spacer>
      </item>
      <item rowspan="4" row="0" column="0" >
-      <widget class="Q3ListView" name="mAlarmList" >
+      <widget class="QTreeWidget" name="mAlarmList" >
        <property name="allColumnsShowFocus" >
         <bool>true</bool>
        </property>
-       <property name="resizeMode" >
-        <enum>Q3ListView::AllColumns</enum>
+       <property name="selectionMode" >
+        <enum>QAbstractItemView::SingleSelection</enum>
+       </property>
+       <property name="rootIsDecorated" >
+        <bool>false</bool>
        </property>
        <column>
         <property name="text" >
