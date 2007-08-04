@@ -149,7 +149,6 @@ set(korganizer_LIB_SRCS
    kotodoview.cpp
    kotodoviewitem.cpp
    kotodoviewquicksearch.cpp
-   klistviewnewsearchline.cpp
    kolistview.cpp
    koincidenceeditor.cpp
    koeventeditor.cpp
