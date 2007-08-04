@@ -780,6 +780,8 @@ void KOAgendaView::createDayLabels()
         decoHBox->setMinimumWidth( 1 );
 
         foreach ( CalendarDecoration::Element* it, deco->dayElements( date ) ) {
+          kDebug() << "adding Element " << it->id() << " of Decoration "
+            << deco->info() << " to the top of the agenda view";
           KODecorationLabel *label = new KODecorationLabel( it, decoHBox );
           label->setAlignment( Qt::AlignBottom );
           label->setMinimumWidth( 1 );
@@ -798,6 +800,8 @@ void KOAgendaView::createDayLabels()
         decoHBox->setMinimumWidth( 1 );
 
         foreach ( CalendarDecoration::Element* it, deco->dayElements( date ) ) {
+          kDebug() << "adding Element " << it->id() << " of Decoration "
+            << deco->info() << " to the bottom of the agenda view";
           KODecorationLabel *label = new KODecorationLabel( it, decoHBox );
           label->setAlignment( Qt::AlignBottom );
           label->setMinimumWidth( 1 );
@@ -806,11 +810,6 @@ void KOAgendaView::createDayLabels()
     }
 #endif
   }
-
-  mLayoutDayLabels->addSpacing(mAgenda->verticalScrollBar()->width());
-  mDayLabels->show();
-  mLayoutBottomDayLabels->addSpacing(mAgenda->verticalScrollBar()->width());
-  mBottomDayLabels->show();
 
 #ifndef KORG_NOPLUGINS
   // Week decoration labels
@@ -827,6 +826,8 @@ void KOAgendaView::createDayLabels()
 
       foreach ( CalendarDecoration::Element* it,
                 deco->weekElements( mSelectedDates.first() ) ) {
+        kDebug() << "adding Element " << it->id() << " of Decoration "
+                 << deco->info() << " to the week part of the agenda view";
         KODecorationLabel *label = new KODecorationLabel( it, decoHBox );
         label->setAlignment( Qt::AlignBottom );
         label->setMinimumWidth( 1 );
@@ -834,6 +835,11 @@ void KOAgendaView::createDayLabels()
     }
   }
 #endif
+
+  mLayoutDayLabels->addSpacing(mAgenda->verticalScrollBar()->width());
+  mDayLabels->show();
+  mLayoutBottomDayLabels->addSpacing(mAgenda->verticalScrollBar()->width());
+  mBottomDayLabels->show();
 }
 
 void KOAgendaView::enableAgendaUpdate( bool enable )
