@@ -706,13 +706,19 @@ void KOAgendaView::createDayLabels()
   mDayLabels = new QFrame (mDayLabelsFrame);
   mLayoutDayLabels = new QHBoxLayout(mDayLabels);
   mLayoutDayLabels->setMargin(0);
-  mLayoutDayLabels->addSpacing(mTimeLabels->width());
+  KVBox *weekLabelBox = new KVBox( mDayLabels );
+  mLayoutDayLabels->addWidget( weekLabelBox );
+  weekLabelBox->setMinimumWidth( mTimeLabels->width() );
+  weekLabelBox->setMaximumWidth( mTimeLabels->width() );
 
   mBottomDayLabels = new QFrame (mBottomDayLabelsFrame);
   mBottomDayLabelsFrame->setStretchFactor(mBottomDayLabels, 1);
   mLayoutBottomDayLabels = new QHBoxLayout(mBottomDayLabels);
   mLayoutBottomDayLabels->setMargin(0);
-  mLayoutBottomDayLabels->addSpacing(mTimeLabels->width());
+  KVBox *bottomWeekLabelBox = new KVBox( mBottomDayLabels );
+  mLayoutBottomDayLabels->addWidget( bottomWeekLabelBox );
+  bottomWeekLabelBox->setMinimumWidth( mTimeLabels->width() );
+  bottomWeekLabelBox->setMaximumWidth( mTimeLabels->width() );
 
   const KCalendarSystem *calsys = KOGlobals::self()->calendarSystem();
 
@@ -820,7 +826,7 @@ void KOAgendaView::createDayLabels()
       CalendarDecoration::Decoration* deco
         = KOCore::self()->loadCalendarDecoration( decoName );
 
-      KHBox *decoHBox = new KHBox( mDayLabels );
+      KHBox *decoHBox = new KHBox( weekLabelBox );
       decoHBox->setFrameShape( QFrame::StyledPanel );
       decoHBox->setMinimumWidth( 1 );
 
