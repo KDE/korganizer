@@ -923,14 +923,19 @@ void KOMonthView::showDates( const QDate &start, const QDate & )
       CalendarDecoration::Decoration* deco
           = KOCore::self()->loadCalendarDecoration( decoName );
 
-      KHBox *decoHBox = new KHBox( mDecorationsFrame );
-      decoHBox->setFrameShape( QFrame::StyledPanel );
+      CalendarDecoration::Element::List elements;
+      elements = deco->monthElements( start );
+      if ( elements.count() > 0 ) {
+        KHBox *decoHBox = new KHBox( mDecorationsFrame );
+        decoHBox->setFrameShape( QFrame::StyledPanel );
+        decoHBox->setMinimumWidth( 1 );
 
-      foreach ( CalendarDecoration::Element* it, deco->monthElements( start ) ) {
-        kDebug() << "adding Element " << it->id() << " of Decoration "
-                 << deco->info() << " to the top of the month view";
-        KODecorationLabel *label = new KODecorationLabel( it, decoHBox );
-        label->setAlignment( Qt::AlignBottom );
+        foreach ( CalendarDecoration::Element* it, elements ) {
+          kDebug() << "adding Element " << it->id() << " of Decoration "
+                   << deco->info() << " to the top of the month view";
+          KODecorationLabel *label = new KODecorationLabel( it, decoHBox );
+          label->setAlignment( Qt::AlignBottom );
+        }
       }
     }
   }
