@@ -394,6 +394,7 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
   mDayLabelsFrame = new KHBox( this );
   mTopLayout->addWidget( mDayLabelsFrame, 0, 0 );
 #endif
+  mDayLabelsFrame->setSpacing( 2 );
 
 
   /* Create all-day agenda widget */
@@ -402,6 +403,7 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
 #else
   mAllDayFrame = new KHBox( mainBox );
 #endif
+  mAllDayFrame->setSpacing( 2 );
 
   // Alignment and description widgets
   mDummyAllDayLeft = new KVBox( mAllDayFrame );
@@ -432,28 +434,30 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
 #else
   QWidget *agendaFrame = new QWidget( mainBox );
 #endif
-  QGridLayout *agendaLayout = new QGridLayout( agendaFrame );
-  agendaLayout->setMargin(0);
+  mAgendaLayout = new QGridLayout( agendaFrame );
+  mAgendaLayout->setMargin( 0 );
+  mAgendaLayout->setHorizontalSpacing( 2 );
+  mAgendaLayout->setVerticalSpacing( 0 );
 
   // Create event indicator bars
   mEventIndicatorTop = new EventIndicator( EventIndicator::Top, agendaFrame );
-  agendaLayout->addWidget( mEventIndicatorTop, 0, 1 );
+  mAgendaLayout->addWidget( mEventIndicatorTop, 0, 1 );
   mEventIndicatorBottom = new EventIndicator( EventIndicator::Bottom,
                                               agendaFrame );
-  agendaLayout->addWidget( mEventIndicatorBottom, 2, 1 );
+  mAgendaLayout->addWidget( mEventIndicatorBottom, 2, 1 );
 
   // Alignment and description widgets
   QWidget *dummyAgendaRight = new QWidget( agendaFrame );
-  agendaLayout->addWidget( dummyAgendaRight, 0, 2 );
+  mAgendaLayout->addWidget( dummyAgendaRight, 0, 2 );
 
   // Create time labels
   mTimeLabels = new TimeLabels( 24, agendaFrame );
-  agendaLayout->addWidget( mTimeLabels, 1, 0 );
+  mAgendaLayout->addWidget( mTimeLabels, 1, 0 );
 
   // Create agenda
   mAgenda = new KOAgenda( 1, 96, KOPrefs::instance()->mHourSize, agendaFrame );
-  agendaLayout->addWidget( mAgenda, 1, 1, 1, 2 );
-  agendaLayout->setColumnStretch( 1, 1 );
+  mAgendaLayout->addWidget( mAgenda, 1, 1, 1, 2 );
+  mAgendaLayout->setColumnStretch( 1, 1 );
 
   // Create event context menu for agenda
   mAgendaPopup = eventPopup();
@@ -484,13 +488,12 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
   mBottomDayLabelsFrame = new KHBox( this );
   mTopLayout->addWidget( mBottomDayLabelsFrame, 2, 0 );
 #endif
-  mBottomDayLabelsFrame->setSpacing(2);
+  mBottomDayLabelsFrame->setSpacing( 2 );
 
 
   /* Make the all-day and normal agendas line up with each other */
-  mAllDayFrame->setMargin( agendaLayout->margin() );
-  mAllDayFrame->setSpacing( agendaLayout->spacing() );
-  dummyAllDayRight->setFixedWidth(mAgenda->verticalScrollBar()->width());
+  dummyAllDayRight->setFixedWidth( mAgenda->verticalScrollBar()->width()
+                                   - mAgendaLayout->horizontalSpacing() );
   updateTimeBarWidth();
 
 
@@ -710,8 +713,8 @@ void KOAgendaView::createDayLabels()
   mLayoutDayLabels->setMargin(0);
   KVBox *weekLabelBox = new KVBox( mDayLabels );
   mLayoutDayLabels->addWidget( weekLabelBox );
-  weekLabelBox->setMinimumWidth( mTimeLabels->width() );
-  weekLabelBox->setMaximumWidth( mTimeLabels->width() );
+  weekLabelBox->setFixedWidth( mTimeLabels->width()
+                               - mAgendaLayout->horizontalSpacing() );
 
   mBottomDayLabels = new QFrame (mBottomDayLabelsFrame);
   mBottomDayLabelsFrame->setStretchFactor(mBottomDayLabels, 1);
@@ -719,8 +722,8 @@ void KOAgendaView::createDayLabels()
   mLayoutBottomDayLabels->setMargin(0);
   KVBox *bottomWeekLabelBox = new KVBox( mBottomDayLabels );
   mLayoutBottomDayLabels->addWidget( bottomWeekLabelBox );
-  bottomWeekLabelBox->setMinimumWidth( mTimeLabels->width() );
-  bottomWeekLabelBox->setMaximumWidth( mTimeLabels->width() );
+  bottomWeekLabelBox->setFixedWidth( mTimeLabels->width()
+                                     - mAgendaLayout->horizontalSpacing() );
 
   const KCalendarSystem *calsys = KOGlobals::self()->calendarSystem();
 
