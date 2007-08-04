@@ -269,7 +269,7 @@ class KOAgendaView : public KOrg::AgendaView
     QFrame *mBottomDayLabels;
     KHBox *mBottomDayLabelsFrame;
     QBoxLayout *mLayoutBottomDayLabels;
-    QFrame *mAllDayFrame;
+    KHBox *mAllDayFrame;
     QWidget *mDummyAllDayLeft;
     QSplitter *mSplitterAgenda;
     QPushButton *mExpandButton;

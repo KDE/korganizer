@@ -488,6 +488,8 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
 
 
   /* Make the all-day and normal agendas line up with each other */
+  mAllDayFrame->setMargin( agendaLayout->margin() );
+  mAllDayFrame->setSpacing( agendaLayout->spacing() );
   dummyAllDayRight->setFixedWidth(mAgenda->verticalScrollBar()->width());
   updateTimeBarWidth();
 
