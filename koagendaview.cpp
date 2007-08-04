@@ -822,13 +822,32 @@ void KOAgendaView::createDayLabels()
 #ifndef KORG_NOPLUGINS
   // Week decoration labels
   foreach ( QString decoName,
-            ( KOPrefs::instance()->decorationsAtAgendaViewTop()
-              + KOPrefs::instance()->decorationsAtAgendaViewBottom() ) ) {
+            KOPrefs::instance()->decorationsAtAgendaViewTop() ) {
     if ( KOPrefs::instance()->selectedPlugins().contains( decoName ) ) {
       CalendarDecoration::Decoration* deco
         = KOCore::self()->loadCalendarDecoration( decoName );
 
       KHBox *decoHBox = new KHBox( weekLabelBox );
+      decoHBox->setFrameShape( QFrame::StyledPanel );
+      decoHBox->setMinimumWidth( 1 );
+
+      foreach ( CalendarDecoration::Element* it,
+                deco->weekElements( mSelectedDates.first() ) ) {
+        kDebug() << "adding Element " << it->id() << " of Decoration "
+                 << deco->info() << " to the week part of the agenda view";
+        KODecorationLabel *label = new KODecorationLabel( it, decoHBox );
+        label->setAlignment( Qt::AlignBottom );
+        label->setMinimumWidth( 1 );
+      }
+    }
+  }
+  foreach ( QString decoName,
+            KOPrefs::instance()->decorationsAtAgendaViewBottom() ) {
+    if ( KOPrefs::instance()->selectedPlugins().contains( decoName ) ) {
+      CalendarDecoration::Decoration* deco
+         = KOCore::self()->loadCalendarDecoration( decoName );
+
+      KHBox *decoHBox = new KHBox( bottomWeekLabelBox );
       decoHBox->setFrameShape( QFrame::StyledPanel );
       decoHBox->setMinimumWidth( 1 );
 
