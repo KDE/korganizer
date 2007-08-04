@@ -760,9 +760,7 @@ KOMonthView::KOMonthView( Calendar *calendar, QWidget *parent )
   mLabel->setAlignment( Qt::AlignCenter );
   mLabel->setLineWidth( 0 );
   mLabel->setFrameStyle( QFrame::Plain );
-  mDecorationsFrame = new QFrame( mTopBox );
-  mDecorationsFrame->setLineWidth( 0 );
-  mDecorationsFrame->setFrameStyle( QFrame::NoFrame | QFrame::Plain );
+  mDecorationsFrame = 0;
 
   dayLayout->addWidget( mTopBox, 0, 0, 1, mDaysPerWeek );
 
@@ -916,6 +914,10 @@ void KOMonthView::showDates( const QDate &start, const QDate & )
                      calSys->monthName( start ) ,
                      calSys->year( start ) ) );
 
+  delete mDecorationsFrame;
+  mDecorationsFrame = new QFrame( mTopBox );
+  mDecorationsFrame->setLineWidth( 0 );
+  mDecorationsFrame->setFrameStyle( QFrame::NoFrame | QFrame::Plain );
 #ifndef KORG_NOPLUGINS
   // Month decoration labels
   foreach ( QString decoName, KOPrefs::instance()->decorationsAtMonthViewTop() ) {
