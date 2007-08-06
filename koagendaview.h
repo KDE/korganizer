@@ -41,13 +41,19 @@
 #include <QVector>
 
 #include "agendaview.h"
+#include "ui_timescaleedit_base.h"
 
 class KHBox;
+class KComboBox;
 class QPushButton;
+class QListWidget;
 
+class KOAgendaView;
 class KOAgenda;
 class KOAgendaItem;
 class KConfig;
+
+class TimeLabelsZone;
 
 namespace KCal {
   class ResourceCalendar;
@@ -57,11 +63,31 @@ namespace KOrg {
 class IncidenceChangerBase;
 }
 
+class TimeScaleConfigDialog : public QDialog
+{
+  Q_OBJECT
+
+  public:
+    TimeScaleConfigDialog( QWidget *parent );
+
+  private slots:
+    void add();
+    void remove();
+    void up();
+    void down();
+    void okClicked();
+   
+  private:
+    QStringList zones();
+    Ui::TimeScaleEditDialog ui;
+
+};
+
 class TimeLabels : public Q3ScrollView
 {
   Q_OBJECT
   public:
-    explicit TimeLabels( int rows, QWidget *parent = 0, Qt::WFlags f = 0 );
+    explicit TimeLabels( const KDateTime::Spec &spec, int rows, TimeLabelsZone *parent = 0, Qt::WFlags f = 0 );
 
     /** Calculates the minimum width */
     virtual int minimumWidth() const;
@@ -75,6 +101,11 @@ class TimeLabels : public Q3ScrollView
     /**  */
     virtual void paintEvent( QPaintEvent *e );
 
+    /** */
+    virtual void contextMenuEvent( QContextMenuEvent *event );
+
+    /** Returns time spec of this label */
+    KDateTime::Spec timeSpec();
   public slots:
     /** update time label positions */
     void positionChanged();
@@ -92,12 +123,40 @@ class TimeLabels : public Q3ScrollView
     void setCellHeight( double height );
 
   private:
+    KDateTime::Spec mSpec;
     int mRows;
     double mCellHeight;
     int mMiniWidth;
     KOAgenda* mAgenda;
+    TimeLabelsZone *mTimeLabelsZone;
 
     QFrame *mMousePos;  // shows a marker for the current mouse position in y direction
+};
+
+class TimeLabelsZone : public QWidget
+{
+public:
+  TimeLabelsZone( KOAgendaView *parent, KOAgenda *agenda );
+
+  /** Add a new time label with the given spec.
+      If spec is not valid, use the display timespec.
+  */
+  void addTimeLabels( const KDateTime::Spec &spec );
+  int timeLabelsWidth();
+  void setTimeLabelsWidth( int width );
+  void updateAll();
+  void reset();
+  void init();
+
+private:
+  void setupTimeLabel( TimeLabels* timeLabel );
+  KOAgenda *mAgenda;
+  KOAgendaView *mParent;
+
+//  QWidget *mTimeLabelsFrame;
+  QHBoxLayout *mTimeLabelsLayout;
+  TimeLabels *mTimeLabels;
+  QList<TimeLabels*> mTimeLabelsList;
 };
 
 class EventIndicator : public QFrame
@@ -211,6 +270,12 @@ class KOAgendaView : public KOrg::AgendaView
       const Qt::Orientation orient=Qt::Horizontal );
 
     void clearTimeSpanSelection();
+
+    // Used by the timelabelszone
+    void updateTimeBarWidth();
+    /** Create labels for the selected dates. */
+    void createDayLabels();
+
   signals:
     void toggleExpand();
     void zoomViewHorizontally(const QDate &, int count );
@@ -226,9 +291,6 @@ class KOAgendaView : public KOrg::AgendaView
 
     void connectAgenda( KOAgenda *agenda, QMenu *popup, KOAgenda *otherAgenda );
 
-    /** Create labels for the selected dates. */
-    void createDayLabels();
-
     /**
       Set the masks on the agenda widgets indicating, which days are holidays.
     */
@@ -240,8 +302,6 @@ class KOAgendaView : public KOrg::AgendaView
       removed.
     */
     void updateEventIndicators();
-
-    void updateTimeBarWidth();
 
   protected slots:
     /** Update event belonging to agenda item */
@@ -259,7 +319,9 @@ class KOAgendaView : public KOrg::AgendaView
 
   private:
     bool filterByResource( Incidence *incidence );
-
+    void setupTimeLabel( TimeLabels *timeLabel );
+    int timeLabelsWidth();
+  
   private:
     // view widgets
     QGridLayout *mTopLayout;
@@ -277,7 +339,8 @@ class KOAgendaView : public KOrg::AgendaView
 
     KOAgenda *mAllDayAgenda;
     KOAgenda *mAgenda;
-    TimeLabels *mTimeLabels;
+
+    TimeLabelsZone *mTimeLabelsZone;
 
     DateList mSelectedDates;  // List of dates to be displayed
     int mViewType;

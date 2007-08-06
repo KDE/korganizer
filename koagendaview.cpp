@@ -52,6 +52,9 @@
 #include <kglobalsettings.h>
 #include <kholidays.h>
 #include <KVBox>
+#include <ksystemtimezone.h>
+#include <kpushbutton.h>
+#include <kcombobox.h>
 
 #include <QLabel>
 #include <QFrame>
@@ -64,6 +67,7 @@
 #include <QMenu>
 #include <QPainter>
 #include <QPushButton>
+#include <QToolButton>
 #include <QCursor>
 #include <QBitArray>
 #include <QPaintEvent>
@@ -72,15 +76,98 @@
 #include <QHBoxLayout>
 #include <QResizeEvent>
 #include <QVBoxLayout>
+#include <QListWidget>
 
 #include "koagendaview.moc"
 
 using namespace KOrg;
 
-TimeLabels::TimeLabels(int rows,QWidget *parent, Qt::WFlags f) :
+TimeScaleConfigDialog::TimeScaleConfigDialog( QWidget *parent )
+  : QDialog( parent )
+{
+  ui.setupUi( this );
+
+  QStringList list;
+  const KTimeZones::ZoneMap timezones = KSystemTimeZones::zones();
+  for (KTimeZones::ZoneMap::ConstIterator it = timezones.begin();  it != timezones.end();  ++it) {
+    list.append(i18n(it.key().toUtf8()));
+  }
+  list.sort();
+  ui.zoneCombo->addItems( list );
+  ui.zoneCombo->setCurrentIndex( 0 );
+
+  ui.addButton->setIcon( KIcon( "plus" ) );
+  ui.removeButton->setIcon( KIcon( "edit-delete" ) );
+  ui.upButton->setIcon( KIcon( "arrow-up" ) );
+  ui.downButton->setIcon( KIcon( "arrow-down" ) );
+
+  connect( ui.addButton, SIGNAL( clicked() ), SLOT( add() ) );
+  connect( ui.removeButton, SIGNAL( clicked() ), SLOT( remove() ) );
+  connect( ui.upButton, SIGNAL( clicked() ), SLOT( up() ) );
+  connect( ui.downButton, SIGNAL( clicked() ), SLOT( down() ) );
+
+  connect( ui.okButton, SIGNAL( clicked() ), SLOT( okClicked() ) );
+  connect( ui.cancelButton, SIGNAL( clicked() ), SLOT( reject() ) );
+
+  ui.listWidget->addItems( KOPrefs::instance()->timeScaleTimezones() );
+}
+
+void TimeScaleConfigDialog::okClicked()
+{
+  KOPrefs::instance()->setTimeScaleTimezones( zones() );
+  accept();
+}
+
+void TimeScaleConfigDialog::add()
+{
+  // Do not add duplicates
+  for ( int i=0; i < ui.listWidget->count(); i++ )
+  {
+    if ( ui.listWidget->item( i )->text() == ui.zoneCombo->currentText() )
+      return;
+  }
+
+  ui.listWidget->addItem( ui.zoneCombo->currentText() );
+}
+
+void TimeScaleConfigDialog::remove()
+{
+  delete ui.listWidget->takeItem( ui.listWidget->currentRow() );
+}
+
+void TimeScaleConfigDialog::up()
+{
+  int row = ui.listWidget->currentRow();
+  QListWidgetItem *item = ui.listWidget->takeItem( row );
+  ui.listWidget->insertItem( qMax( row - 1, 0 ), item );
+  ui.listWidget->setCurrentRow( qMax( row - 1, 0 ) );
+}
+
+void TimeScaleConfigDialog::down()
+{
+  int row = ui.listWidget->currentRow();
+  QListWidgetItem *item = ui.listWidget->takeItem( row );
+  ui.listWidget->insertItem( qMin( row + 1, ui.listWidget->count() ), item );
+  ui.listWidget->setCurrentRow( qMin( row + 1, ui.listWidget->count() - 1 ) );
+}
+
+QStringList TimeScaleConfigDialog::zones()
+{
+  QStringList list;
+  for ( int i=0; i < ui.listWidget->count(); i++ )
+  {
+    list << ui.listWidget->item( i )->text();
+  }
+  return list;
+}
+
+TimeLabels::TimeLabels( const KDateTime::Spec &spec, int rows, TimeLabelsZone *parent, Qt::WFlags f) :
 // TODO_QT4: Use constructor without *name=0 param
   Q3ScrollView(parent,/*name*/0,f)
 {
+  mTimeLabelsZone = parent;
+  mSpec = spec;
+
   mRows = rows;
   mMiniWidth = 0;
 
@@ -106,6 +193,13 @@ TimeLabels::TimeLabels(int rows,QWidget *parent, Qt::WFlags f) :
   mMousePos->setPalette( pal );
   mMousePos->setFixedSize(width(), 1);
   addChild(mMousePos, 0, 0);
+
+  if ( mSpec.isValid() )
+    setToolTip( i18n( "Timezone:" ) + mSpec.timeZone().name() );
+  else
+    setToolTip( i18n( "Calendar display timezone:" )
+                + KOPrefs::instance()->timeSpec().timeZone().name() );
+
 }
 
 void TimeLabels::mousePosChanged(const QPoint &pos)
@@ -138,6 +232,16 @@ void TimeLabels::setCellHeight(double height)
 */
 void TimeLabels::drawContents( QPainter *p, int cx, int cy, int cw, int ch )
 {
+  int beginning;
+
+  if ( !mSpec.isValid() )
+    beginning = 0;
+  else
+    beginning = ( mSpec.timeZone().currentOffset()
+                 - KOPrefs::instance()->timeSpec().timeZone().currentOffset() )
+                 / ( 60 * 60 );
+
+
   p->setBrush( palette().background() ); // TODO: theming, see if we want sth here...
   p->drawRect( cx, cy, cw, ch);
 
@@ -150,8 +254,8 @@ void TimeLabels::drawContents( QPainter *p, int cx, int cy, int cw, int ch )
   cw = contentsWidth();
 
   // end of workaround
-  int cell = ((int)(cy / mCellHeight));  // indicates which hour we start drawing with
-  double y = cell * mCellHeight;
+  int cell = ((int)(cy / mCellHeight)) + beginning;  // indicates which hour we start drawing with
+  double y = ( cell - beginning ) * mCellHeight;
   QFontMetrics fm = fontMetrics();
   QString hour;
   int timeHeight = fm.ascent();
@@ -192,13 +296,26 @@ void TimeLabels::drawContents( QPainter *p, int cx, int cy, int cw, int ch )
   while (y < cy + ch+mCellHeight) {
     // hour, full line
     p->drawLine( cx, int(y), cw+2, int(y) );
-    hour.setNum(cell);
+
+    hour.setNum(cell % 24 );
+    // handle different timezones
+    if ( cell < 0 )
+      hour.setNum( cell + 24 );
     // handle 24h and am/pm time formats
     if (KGlobal::locale()->use12Clock()) {
       if (cell == 12) suffix = "pm";
       if (cell == 0) hour.setNum(12);
       if (cell > 12) hour.setNum(cell - 12);
     }
+
+    QPen pen;
+    if ( cell < 0 || cell >= 24 ) {
+      pen.setColor( QColor( 150, 150, 150 ) );
+    } else {
+      pen.setColor( QPalette::Text );
+    }
+    p->setPen( pen );
+
     // center and draw the time label
     int timeWidth = fm.width(hour);
     int offset = startW - timeWidth - tw2 -1 ;
@@ -283,6 +400,113 @@ void TimeLabels::paintEvent(QPaintEvent*)
   repaintContents(contentsX(), contentsY(), visibleWidth(), visibleHeight());
 }
 
+void TimeLabels::contextMenuEvent( QContextMenuEvent *event )
+{
+  QMenu popup( this );
+  QAction *editTimeZones = popup.addAction( KIcon( "edit" ), i18n( "&Edit timezones" ) );
+  QAction *removeTimeZone = popup.addAction( KIcon( "delete" ), i18n( "&Remove %1 timezone", mSpec.timeZone().name() ) );
+  if ( !mSpec.isValid() )
+    removeTimeZone->setEnabled( false );
+
+  QAction *activatedAction = popup.exec( QCursor::pos() );
+  if ( activatedAction == editTimeZones ) {
+    TimeScaleConfigDialog dialog( this );
+    if ( dialog.exec() == QDialog::Accepted )
+      mTimeLabelsZone->reset();
+  } else if ( activatedAction == removeTimeZone ) {
+    QStringList list = KOPrefs::instance()->timeScaleTimezones();
+    list.removeAll( mSpec.timeZone().name() );
+    KOPrefs::instance()->setTimeScaleTimezones( list );
+    mTimeLabelsZone->reset();
+    hide();
+    deleteLater();
+  }
+}
+
+KDateTime::Spec TimeLabels::timeSpec()
+{
+  return mSpec;
+}
+
+TimeLabelsZone::TimeLabelsZone( KOAgendaView *parent, KOAgenda *agenda)
+  : QWidget( parent ), mAgenda( agenda ),  mParent( parent )
+{
+  mTimeLabelsLayout = new QHBoxLayout( this );
+  mTimeLabelsLayout->setMargin( 0 );
+  mTimeLabelsLayout->setSpacing( 0 );
+
+  init();
+}
+
+void TimeLabelsZone::reset()
+{
+  foreach( TimeLabels* label, mTimeLabelsList ) {
+    label->hide();
+    label->deleteLater();
+  }
+  mTimeLabelsList.clear();
+
+  init();
+
+  // Update some related geometry from the agenda view
+  updateAll();
+  mParent->createDayLabels();
+  mParent->updateTimeBarWidth();
+}
+
+void TimeLabelsZone::init()
+{
+  addTimeLabels( KDateTime::Spec() );
+
+  foreach( QString zoneStr, KOPrefs::instance()->timeScaleTimezones() ) {
+    KTimeZone zone = KSystemTimeZones::zone( zoneStr );
+    if ( zone.isValid() )
+      addTimeLabels( zone );
+  }
+}
+
+void TimeLabelsZone::addTimeLabels( const KDateTime::Spec &spec )
+{
+  TimeLabels *labels = new TimeLabels( spec, 24, this );
+  mTimeLabelsList.prepend( labels );
+  mTimeLabelsLayout->insertWidget( 0, labels );
+  setupTimeLabel( labels );
+}
+
+void TimeLabelsZone::setupTimeLabel( TimeLabels* timeLabel )
+{
+  timeLabel->setAgenda( mAgenda );
+  connect( mAgenda->verticalScrollBar(), SIGNAL( valueChanged(int) ),
+           timeLabel, SLOT( positionChanged() ) );
+  connect( timeLabel->verticalScrollBar(), SIGNAL( valueChanged(int) ),
+           mParent, SLOT( setContentsPos(int) ) );
+}
+
+int TimeLabelsZone::timeLabelsWidth()
+{
+  if ( mTimeLabelsList.isEmpty() )
+    return 0;
+  else {
+    return mTimeLabelsList.first()->width() * mTimeLabelsList.count();
+  }
+}
+
+void TimeLabelsZone::updateAll()
+{
+  foreach( TimeLabels* timeLabel, mTimeLabelsList ) {
+    timeLabel->updateConfig();
+    timeLabel->positionChanged();
+    timeLabel->repaint();
+  }
+}
+
+void TimeLabelsZone::setTimeLabelsWidth( int width )
+{
+  foreach( TimeLabels* timeLabel, mTimeLabelsList ) {
+    timeLabel->setFixedWidth( width / mTimeLabelsList.count() );
+  }
+}
+
 ////////////////////////////////////////////////////////////////////////////
 
 EventIndicator::EventIndicator( Location loc, QWidget *parent ) : QFrame( parent )
@@ -346,7 +570,8 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
   mExpandButton( 0 ),
   mAllowAgendaUpdate( true ),
   mUpdateItem( 0 ),
-  mResource( 0 )
+  mResource( 0 ),
+  mTimeLabelsZone( 0 )
 {
   mSelectedDates.append( QDate::currentDate() );
 
@@ -373,8 +598,6 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
 
   mTopLayout = new QGridLayout( this );
   mTopLayout->setMargin( 0 );
-
-
   /* Create agenda splitter */
 #ifndef KORG_NOSPLITTER
   mSplitterAgenda = new QSplitter( Qt::Vertical, this );
@@ -386,6 +609,16 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
   mTopLayout->addWidget( mainBox, 1, 0 );
 #endif
 
+  /* Create the main agenda widget and the related widgets */
+#ifndef KORG_NOSPLITTER
+  QWidget *agendaFrame = new QWidget( mSplitterAgenda );
+#else
+  QWidget *agendaFrame = new QWidget( mainBox );
+#endif
+  mAgendaLayout = new QGridLayout( agendaFrame );
+  mAgendaLayout->setMargin( 0 );
+  mAgendaLayout->setHorizontalSpacing( 2 );
+  mAgendaLayout->setVerticalSpacing( 0 );
 
   /* Create day name labels for agenda columns */
 #ifndef KORG_NOSPLITTER
@@ -395,7 +628,6 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
   mTopLayout->addWidget( mDayLabelsFrame, 0, 0 );
 #endif
   mDayLabelsFrame->setSpacing( 2 );
-
 
   /* Create all-day agenda widget */
 #ifndef KORG_NOSPLITTER
@@ -428,16 +660,6 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
   mAllDayAgendaPopup = eventPopup();
 
 
-  /* Create the main agenda widget and the related widgets */
-#ifndef KORG_NOSPLITTER
-  QWidget *agendaFrame = new QWidget( mSplitterAgenda );
-#else
-  QWidget *agendaFrame = new QWidget( mainBox );
-#endif
-  mAgendaLayout = new QGridLayout( agendaFrame );
-  mAgendaLayout->setMargin( 0 );
-  mAgendaLayout->setHorizontalSpacing( 2 );
-  mAgendaLayout->setVerticalSpacing( 0 );
 
   // Create event indicator bars
   mEventIndicatorTop = new EventIndicator( EventIndicator::Top, agendaFrame );
@@ -450,26 +672,19 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
   QWidget *dummyAgendaRight = new QWidget( agendaFrame );
   mAgendaLayout->addWidget( dummyAgendaRight, 0, 2 );
 
-  // Create time labels
-  mTimeLabels = new TimeLabels( 24, agendaFrame );
-  mAgendaLayout->addWidget( mTimeLabels, 1, 0 );
-
   // Create agenda
   mAgenda = new KOAgenda( 1, 96, KOPrefs::instance()->mHourSize, agendaFrame );
   mAgendaLayout->addWidget( mAgenda, 1, 1, 1, 2 );
   mAgendaLayout->setColumnStretch( 1, 1 );
 
+  // Create time labels
+  mTimeLabelsZone = new TimeLabelsZone( this, mAgenda );
+  mAgendaLayout->addWidget( mTimeLabelsZone, 1, 0 );
+
   // Create event context menu for agenda
   mAgendaPopup = eventPopup();
 
-  // Make connections between dependent widgets
-  mTimeLabels->setAgenda(mAgenda);
-
   // Scrolling
-  connect( mAgenda->verticalScrollBar(), SIGNAL( valueChanged(int) ),
-           mTimeLabels, SLOT( positionChanged() ) );
-  connect( mTimeLabels->verticalScrollBar(), SIGNAL( valueChanged(int) ),
-           SLOT( setContentsPos(int) ) );
   connect( mAgenda,
            SIGNAL( zoomView(const int, const QPoint &, const Qt::Orientation) ),
            SLOT( zoomView(const int, const QPoint &, const Qt::Orientation) ) );
@@ -479,7 +694,6 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
            SLOT( updateEventIndicatorTop(int) ) );
   connect( mAgenda, SIGNAL( upperYChanged(int) ),
            SLOT( updateEventIndicatorBottom(int) ) );
-
 
   /* Create a frame at the bottom which may be used by decorations */
 #ifndef KORG_NOSPLITTER
@@ -576,11 +790,10 @@ void KOAgendaView::zoomInVertically( )
   mAgenda->updateConfig();
   mAgenda->checkScrollBoundaries();
 
-  mTimeLabels->updateConfig();
-  mTimeLabels->positionChanged();
-  mTimeLabels->repaint();
+  mTimeLabelsZone->updateAll();
 
   updateView();
+
 }
 
 void KOAgendaView::zoomOutVertically( )
@@ -592,10 +805,7 @@ void KOAgendaView::zoomOutVertically( )
     mAgenda->updateConfig();
     mAgenda->checkScrollBoundaries();
 
-    mTimeLabels->updateConfig();
-    mTimeLabels->positionChanged();
-    mTimeLabels->repaint();
-
+    mTimeLabelsZone->updateAll();
     updateView();
   }
 }
@@ -713,7 +923,7 @@ void KOAgendaView::createDayLabels()
   mLayoutDayLabels->setMargin(0);
   KVBox *weekLabelBox = new KVBox( mDayLabels );
   mLayoutDayLabels->addWidget( weekLabelBox );
-  weekLabelBox->setFixedWidth( mTimeLabels->width()
+  weekLabelBox->setFixedWidth( mTimeLabelsZone->width()
                                - mAgendaLayout->horizontalSpacing() );
 
   mBottomDayLabels = new QFrame (mBottomDayLabelsFrame);
@@ -722,7 +932,7 @@ void KOAgendaView::createDayLabels()
   mLayoutBottomDayLabels->setMargin(0);
   KVBox *bottomWeekLabelBox = new KVBox( mBottomDayLabels );
   mLayoutBottomDayLabels->addWidget( bottomWeekLabelBox );
-  bottomWeekLabelBox->setFixedWidth( mTimeLabels->width()
+  bottomWeekLabelBox->setFixedWidth( mTimeLabelsZone->width()
                                      - mAgendaLayout->horizontalSpacing() );
 
   const KCalendarSystem *calsys = KOGlobals::self()->calendarSystem();
@@ -984,17 +1194,10 @@ void KOAgendaView::updateConfig()
 {
 //  kDebug(5850) <<"KOAgendaView::updateConfig()";
 
-  // update config for children
-  mTimeLabels->updateConfig();
   mAgenda->updateConfig();
   mAllDayAgenda->updateConfig();
 
-  // widget synchronization
-  // FIXME: find a better way, maybe signal/slot
-  mTimeLabels->positionChanged();
-
-  // for some reason, this needs to be called explicitly
-  mTimeLabels->repaint();
+  mTimeLabelsZone->updateAll();
 
   updateTimeBarWidth();
 
@@ -1014,13 +1217,15 @@ void KOAgendaView::updateConfig()
   updateView();
 }
 
+
+
 void KOAgendaView::updateTimeBarWidth()
 {
   int width = qMax( mDummyAllDayLeft->fontMetrics().width( i18n("All Day") ),
-                    mTimeLabels->width() );
+                    mTimeLabelsZone->timeLabelsWidth() );
 
   mDummyAllDayLeft->setFixedWidth( width );
-  mTimeLabels->setFixedWidth( width );
+  mTimeLabelsZone->setTimeLabelsWidth( width );
 }
 
 

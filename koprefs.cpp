@@ -232,6 +232,10 @@ void KOPrefs::usrReadConfig()
       KStringHandler::obscure( config()->readEntry( "Retrieve Server Password" ) );
   }
 #endif
+  KConfigGroup timeScaleConfig( config(), "Timescale" );
+  setTimeScaleTimezones( timeScaleConfig.readEntry( "Timescale Timezones", QStringList() ) );
+
+
   KPimPrefs::usrReadConfig();
   fillMailDefaults();
 }
@@ -274,6 +278,9 @@ void KOPrefs::usrWriteConfig()
     config()->deleteEntry( "Retrieve Server Password" );
   }
 #endif
+
+  KConfigGroup timeScaleConfig( config(), "Timescale" );
+  timeScaleConfig.writeEntry( "Timescale Timezones", timeScaleTimezones() );
 
   KPimPrefs::usrWriteConfig();
 }
@@ -401,4 +408,14 @@ bool KOPrefs::thatIsMe( const QString &_email )
     return true;
   }
   return false;
+}
+
+QStringList KOPrefs::timeScaleTimezones()
+{
+  return mTimeScaleTimeZones;
+}
+
+void KOPrefs::setTimeScaleTimezones( const QStringList &list )
+{
+  mTimeScaleTimeZones = list;
 }
