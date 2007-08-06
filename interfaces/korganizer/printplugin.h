@@ -153,7 +153,7 @@ class PrintPlugin : public KOrg::Plugin
     QDate mToDate;
 
   protected:
-    QWidget *mConfigWidget;
+    QPointer<QWidget> mConfigWidget;
     KOrg::CoreHelper *mCoreHelper;
     /** The printer object. This will only be available in the doPrint method
         of the selected plugin */

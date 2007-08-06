@@ -60,7 +60,7 @@ QWidget *CalPrintList::createConfigWidget( QWidget *w )
 void CalPrintList::readSettingsWidget()
 {
   CalPrintListConfig *cfg =
-      dynamic_cast<CalPrintListConfig*>( mConfigWidget );
+      dynamic_cast<CalPrintListConfig*>( ( QWidget* )mConfigWidget );
   if ( cfg ) {
     mFromDate = cfg->mFromDate->date();
     mToDate = cfg->mToDate->date();
@@ -71,7 +71,7 @@ void CalPrintList::readSettingsWidget()
 void CalPrintList::setSettingsWidget()
 {
   CalPrintListConfig *cfg =
-      dynamic_cast<CalPrintListConfig*>( mConfigWidget );
+      dynamic_cast<CalPrintListConfig*>( ( QWidget* )mConfigWidget );
   if ( cfg ) {
     cfg->mFromDate->setDate( mFromDate );
     cfg->mToDate->setDate( mToDate );
@@ -102,7 +102,7 @@ void CalPrintList::setDateRange( const QDate& from, const QDate& to )
 {
   CalPrintPluginBase::setDateRange( from, to );
   CalPrintListConfig *cfg =
-      dynamic_cast<CalPrintListConfig*>( mConfigWidget );
+      dynamic_cast<CalPrintListConfig*>( ( QWidget* )mConfigWidget );
   if ( cfg ) {
     cfg->mFromDate->setDate( from );
     cfg->mToDate->setDate( to );

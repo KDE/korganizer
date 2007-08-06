@@ -58,7 +58,7 @@ QWidget *CalPrintYear::createConfigWidget( QWidget *w )
 void CalPrintYear::readSettingsWidget()
 {
   CalPrintYearConfig *cfg =
-      dynamic_cast<CalPrintYearConfig*>( mConfigWidget );
+      dynamic_cast<CalPrintYearConfig*>( ( QWidget* )mConfigWidget );
   if ( cfg ) {
     mYear = cfg->mYear->value();
     mPages = cfg->mPages->currentText().toInt();
@@ -70,7 +70,7 @@ void CalPrintYear::readSettingsWidget()
 void CalPrintYear::setSettingsWidget()
 {
   CalPrintYearConfig *cfg =
-      dynamic_cast<CalPrintYearConfig*>( mConfigWidget );
+      dynamic_cast<CalPrintYearConfig*>( ( QWidget* )mConfigWidget );
   if ( cfg ) {
     const KCalendarSystem *calsys = calendarSystem();
     QDate start;
@@ -131,7 +131,7 @@ void CalPrintYear::setDateRange( const QDate& from, const QDate& to )
 {
   CalPrintPluginBase::setDateRange( from, to );
   CalPrintYearConfig *cfg =
-      dynamic_cast<CalPrintYearConfig*>( mConfigWidget );
+      dynamic_cast<CalPrintYearConfig*>( ( QWidget* )mConfigWidget );
   if ( cfg ) {
     cfg->mYear->setValue( from.year() );
   }
