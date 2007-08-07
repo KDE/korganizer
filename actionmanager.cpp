@@ -88,7 +88,7 @@ ActionManager::ActionManager( KXMLGUIClient *client, CalendarView *widget,
                               QObject *parent, KOrg::MainWindow *mainWindow,
                               bool isPart )
   : QObject( parent ), mRecent( 0 ),
-    mResourceButtonsAction( 0 ), mResourceViewShowAction( 0 ), mCalendar( 0 ),
+    mResourceViewShowAction( 0 ), mCalendar( 0 ),
     mCalendarResources( 0 ), mResourceView( 0 ), mIsClosing( false )
 {
   new CalendarAdaptor( this );
@@ -582,16 +582,10 @@ void ActionManager::initActions()
   mResourceViewShowAction  = new KToggleAction(i18n("Show Resource View"), this);
   mACollection->addAction("show_resourceview", mResourceViewShowAction );
     connect(mResourceViewShowAction, SIGNAL(triggered(bool) ), SLOT( toggleResourceView() ));
-  mResourceButtonsAction  = new KToggleAction(i18n("Show &Resource Buttons"), this);
-  mACollection->addAction("show_resourcebuttons", mResourceButtonsAction );
-    connect(mResourceButtonsAction, SIGNAL(triggered(bool) ), SLOT( toggleResourceButtons() ));
     mResourceViewShowAction->setChecked(
         config.readEntry( "ResourceViewVisible", true ) );
-    mResourceButtonsAction->setChecked(
-        config.readEntry( "ResourceButtonsVisible", true ) );
 
     toggleResourceView();
-    toggleResourceButtons();
   }
 
 
@@ -669,10 +663,6 @@ void ActionManager::writeSettings()
   KConfigGroup config = KOGlobals::self()->config()->group("Settings");
   mCalendarView->writeSettings();
 
-  if ( mResourceButtonsAction ) {
-    config.writeEntry( "ResourceButtonsVisible",
-                       mResourceButtonsAction->isChecked() );
-  }
   if ( mDateNavigatorShowAction ) {
     config.writeEntry( "DateNavigatorVisible",
                        mDateNavigatorShowAction->isChecked() );
@@ -1343,15 +1333,6 @@ void ActionManager::toggleResourceView()
     if ( visible ) mResourceView->show();
     else mResourceView->hide();
   }
-}
-
-void ActionManager::toggleResourceButtons()
-{
-  bool visible = mResourceButtonsAction->isChecked();
-
-  kDebug(5850) <<"RESOURCE VIEW" << long( mResourceView );
-
-  if ( mResourceView ) mResourceView->showButtons( visible );
 }
 
 bool ActionManager::openURL( const QString &url )

@@ -46,6 +46,7 @@ class QAction;
 class QSplitter;
 class QMouseEvent;
 
+class KHBox;
 class KLineEdit;
 
 class KOTodoListView;
@@ -247,6 +248,7 @@ class KOTodoView : public KOrg::BaseView
 
     DocPrefs *mDocPrefs;
     QString mCurrentDoc;
+    KHBox *mQuickAddBox;
     KLineEdit *mQuickAdd;
     KOTodoListViewQuickSearch *mSearchToolBar;
 

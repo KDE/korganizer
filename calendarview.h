@@ -42,6 +42,8 @@
 class QStackedWidget;
 class QSplitter;
 
+class KVBox;
+
 class CalPrinter;
 class KOViewManager;
 class KODialogManager;
@@ -606,6 +608,7 @@ class KORGANIZER_EXPORT CalendarView : public KOrg::CalendarViewBase, public Cal
     DateNavigator *mNavigator;
     DateChecker *mDateChecker;
 
+    KVBox *mEventViewerBox;
     KOEventViewer *mEventViewer;
     KOViewManager *mViewManager;
     KODialogManager *mDialogManager;

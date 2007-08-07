@@ -156,7 +156,9 @@ CalendarView::CalendarView( QWidget *parent )
   mTodoList = new KOTodoView( CalendarNull::self(), mLeftSplitter );
   mTodoList->setObjectName( "todolist" );
 
-  mEventViewer = new KOEventViewer( mLeftSplitter );
+  mEventViewerBox = new KVBox( mLeftSplitter );
+  mEventViewerBox->setMargin( KDialog::marginHint() );
+  mEventViewer = new KOEventViewer( mEventViewerBox );
   mEventViewer->setObjectName( "EventViewer" );
 
   KVBox *rightBox = new KVBox( mPanner );
@@ -184,7 +186,8 @@ CalendarView::CalendarView( QWidget *parent )
                                        QDate::currentDate() );
   mTodoList = new KOTodoView( CalendarNull::self(), leftFrame, "todolist" );
 
-  mEventViewer = new KOEventViewer ( leftFrame, "EventViewer" );
+  mEventViewerBox = new KVBox( leftFrame );
+  mEventViewer = new KOEventViewer ( mEventViewerContainer, "EventViewer" );
 
   QWidget *rightBox = new QWidget( mainBox );
   QBoxLayout *rightLayout = new QVBoxLayout( rightBox );
@@ -1772,9 +1775,9 @@ void CalendarView::showTodoView( bool show )
 void CalendarView::showEventViewer( bool show )
 {
   if( show )
-    mEventViewer->show();
+    mEventViewerBox->show();
   else
-    mEventViewer->hide();
+    mEventViewerBox->hide();
 }
 
 

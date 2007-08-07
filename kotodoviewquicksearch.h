@@ -60,7 +60,7 @@ class KOTodoListViewQuickSearchLine : public K3ListViewSearchLine
 
 class KOTodoListViewQuickSearchContainer;
 
-class KOTodoListViewQuickSearch : public QToolBar
+class KOTodoListViewQuickSearch : public QWidget
 {
   Q_OBJECT
   friend class KOTodoListViewQuickSearchContainer;

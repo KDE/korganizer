@@ -41,8 +41,6 @@ DateNavigatorContainer::DateNavigatorContainer( QWidget *parent )
   : QFrame( parent ), mCalendar( 0 ),
     mHorizontalCount( 1 ), mVerticalCount( 1 )
 {
-  setFrameStyle( QFrame::Sunken | QFrame::StyledPanel );
-
   mNavigatorView = new KDateNavigator( this );
   mNavigatorView->setWhatsThis(
                    i18n( "<qt><p>Select the dates you want to "

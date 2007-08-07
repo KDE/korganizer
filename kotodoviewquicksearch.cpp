@@ -58,7 +58,7 @@ KOTodoListViewQuickSearch::KOTodoListViewQuickSearch( QWidget *parent,
                                             QList<K3ListView*> listViews,
                                             KActionCollection *actionCollection,
                                             Calendar *calendar )
-  : QToolBar( parent ), mCategoryCombo( 0 ), mCalendar( calendar ),
+  : QWidget( parent ), mCategoryCombo( 0 ), mCalendar( calendar ),
     mQuickSearchLine( 0 )
 {
   /*if ( !action ) {
@@ -71,28 +71,22 @@ KOTodoListViewQuickSearch::KOTodoListViewQuickSearch( QWidget *parent,
   }
 
   addAction( action );*/
-
-  setMovable( false );
-  layout()->setSpacing( KDialog::spacingHint() );
+  QHBoxLayout *layout = new QHBoxLayout( this );
 
   mQuickSearchLine = new KOTodoListViewQuickSearchLine( this, listViews );
   mQuickSearchLine->setClickMessage( i18n("Search") );
-  addWidget( mQuickSearchLine );
-
-  mCategoryLabel = new QLabel( i18n("&Category:"), this );
-  mCategoryLabel->setObjectName( "kde toolbar widget" );
-  addWidget( mCategoryLabel );
+  layout->addWidget( mQuickSearchLine );
+  layout->setContentsMargins( 0, 0, 0, 0 );
 
   mCategoryCombo = new KComboBox( this );
   mCategoryCombo->setObjectName( "quick search category combo box" );
   fillCategories();
-  addWidget( mCategoryCombo );
+  layout->addWidget( mCategoryCombo );
 
   mCategoryCombo->setCurrentIndex( 0 );
   connect( mCategoryCombo, SIGNAL ( activated( int ) ),
            this, SLOT( slotCategoryChanged( int ) ) );
 
-  mCategoryLabel->setBuddy( mCategoryCombo );
 }
 
 KOTodoListViewQuickSearch::~KOTodoListViewQuickSearch()
@@ -187,15 +181,9 @@ void KOTodoListViewQuickSearch::setCalendar( Calendar *calendar )
 
 void KOTodoListViewQuickSearch::resizeEvent( QResizeEvent *e )
 {
-  int w = width() - mCategoryCombo->sizeHint().width()
-                  - mCategoryLabel->sizeHint().width();
+  int w = width() - mCategoryCombo->sizeHint().width();
   int halfw = width() / 2;
 
-  if ( w < halfw ) {
-    w += mCategoryLabel->sizeHint().width();
-    mCategoryLabel->hide();
-  } else
-    mCategoryLabel->show();
   if ( w < halfw ) {
     slotCategoryChanged( 0 );
     mCategoryCombo->hide();
@@ -204,17 +192,17 @@ void KOTodoListViewQuickSearch::resizeEvent( QResizeEvent *e )
     mCategoryCombo->show();
   }
 
-  QToolBar::resizeEvent( e );
+  QWidget::resizeEvent( e );
 }
 
 void KOTodoListViewQuickSearch::showEvent( QShowEvent *e )
 {
-  QToolBar::showEvent( e );
+  QWidget::showEvent( e );
 }
 
 void KOTodoListViewQuickSearch::hideEvent( QHideEvent *e )
 {
-  QToolBar::hideEvent( e );
+  QWidget::hideEvent( e );
 }
 
 KOTodoListViewQuickSearchContainer::KOTodoListViewQuickSearchContainer(
@@ -249,8 +237,7 @@ QSize KOTodoListViewQuickSearchContainer::sizeHint() const
 
 QSize KOTodoListViewQuickSearchContainer::minimumSizeHint() const
 {
-  return QSize( mQuickSearch->iconSize().width() + 
-                mQuickSearch->mQuickSearchLine->minimumSizeHint().width() +
+  return QSize( mQuickSearch->mQuickSearchLine->minimumSizeHint().width() +
                 3 * KDialog::spacingHint(),
                 mQuickSearch->minimumSizeHint().height() );
 }

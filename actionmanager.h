@@ -334,8 +334,6 @@ class KORGANIZER_EXPORT ActionManager : public QObject
     void downloadNewStuff();
     void uploadNewStuff();
 
-    void toggleResourceButtons();
-
     void toggleDateNavigator();
     void toggleTodoView();
     void toggleEventViewer();
@@ -397,7 +395,6 @@ class KORGANIZER_EXPORT ActionManager : public QObject
 
     // Actions
     KRecentFilesAction *mRecent;
-    KToggleAction *mResourceButtonsAction;
 
     KToggleAction *mDateNavigatorShowAction;
     KToggleAction *mTodoViewShowAction;

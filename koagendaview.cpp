@@ -609,17 +609,6 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
   mTopLayout->addWidget( mainBox, 1, 0 );
 #endif
 
-  /* Create the main agenda widget and the related widgets */
-#ifndef KORG_NOSPLITTER
-  QWidget *agendaFrame = new QWidget( mSplitterAgenda );
-#else
-  QWidget *agendaFrame = new QWidget( mainBox );
-#endif
-  mAgendaLayout = new QGridLayout( agendaFrame );
-  mAgendaLayout->setMargin( 0 );
-  mAgendaLayout->setHorizontalSpacing( 2 );
-  mAgendaLayout->setVerticalSpacing( 0 );
-
   /* Create day name labels for agenda columns */
 #ifndef KORG_NOSPLITTER
   mDayLabelsFrame = new KHBox( mSplitterAgenda );
@@ -659,7 +648,16 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
   // Create the event context menu for the all-day agenda
   mAllDayAgendaPopup = eventPopup();
 
-
+  /* Create the main agenda widget and the related widgets */
+#ifndef KORG_NOSPLITTER
+  QWidget *agendaFrame = new QWidget( mSplitterAgenda );
+#else
+  QWidget *agendaFrame = new QWidget( mainBox );
+#endif
+  mAgendaLayout = new QGridLayout( agendaFrame );
+  mAgendaLayout->setMargin( 0 );
+  mAgendaLayout->setHorizontalSpacing( 2 );
+  mAgendaLayout->setVerticalSpacing( 0 );
 
   // Create event indicator bars
   mEventIndicatorTop = new EventIndicator( EventIndicator::Top, agendaFrame );

@@ -454,9 +454,7 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent)
   if ( !KOPrefs::instance()->mEnableTodoQuickSearch ) container->hide();
   topLayout->addWidget( container );
 
-  QLabel *title = new QLabel( i18n("To-dos:"), this );
-  title->setFrameStyle( QFrame::Panel | QFrame::Raised );
-  topLayout->addWidget( title );
+  topLayout->addWidget( mWidgetStack );
 
   mQuickAdd = new KLineEdit( this);
   mQuickAdd->setClickMessage(i18n( "Click to add a new to-do" ));
@@ -465,8 +463,6 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent)
 
   if ( !KOPrefs::instance()->mEnableQuickTodo ) mQuickAdd->hide();
 
-//  topLayout->addWidget( mTodoListView );
-  topLayout->addWidget( mWidgetStack );
 
 #ifdef __GNUC__
 #warning "Implement the popup menus as KSelectActions, once it's save enough to use that class!"

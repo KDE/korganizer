@@ -113,8 +113,6 @@ class ResourceView : public CalendarViewExtension
 
     void requestClose( ResourceCalendar * );
 
-    void showButtons( bool visible );
-
   public slots:
     void addResourceItem( ResourceCalendar * );
     void updateResourceItem( ResourceCalendar * );
@@ -131,7 +129,7 @@ class ResourceView : public CalendarViewExtension
     void addResource();
     void removeResource();
     void editResource();
-    void currentChanged( Q3ListViewItem* );
+
     void slotSubresourceAdded( ResourceCalendar *, const QString &,
                                const QString &resource,const QString& label );
     void slotSubresourceRemoved( ResourceCalendar *, const QString &,
@@ -153,9 +151,6 @@ class ResourceView : public CalendarViewExtension
   private:
     K3ListView *mListView;
     KCal::CalendarResources *mCalendar;
-    QPushButton *mAddButton;
-    QPushButton *mDeleteButton;
-    QPushButton *mEditButton;
     QList<ResourceCalendar*> mResourcesToClose;
 };
 

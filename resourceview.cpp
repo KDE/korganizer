@@ -220,14 +220,13 @@ ResourceView::ResourceView( KCal::CalendarResources *calendar, QWidget *parent )
 {
   QBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->setSpacing( KDialog::spacingHint() );
-  topLayout->setMargin( 0 );
 
   mListView = new K3ListView( this );
   mListView->setWhatsThis(
                    i18n( "<qt><p>Select on this list the active KOrganizer "
                          "resources. Check the resource box to make it "
-                         "active. Press the \"Add...\" button below to add new "
-                         "resources to the list.</p>"
+                         "active. Use the context menu to add, remove or edit "
+                         "resources in the list.</p>"
                          "<p>Events, journal entries and to-dos are retrieved "
                          "and stored on resources. Available "
                          "resources include groupware servers, local files, "
@@ -236,45 +235,9 @@ ResourceView::ResourceView( KCal::CalendarResources *calendar, QWidget *parent )
                          "when creating incidents you will either automatically "
                          "use the default resource or be prompted "
                          "to select the resource to use.</p></qt>" ) );
-  mListView->addColumn( i18n("Calendar") );
+  mListView->addColumn( i18n("Calendars") );
   mListView->setResizeMode( Q3ListView::LastColumn );
   topLayout->addWidget( mListView );
-
-  KHBox *buttonBox = new KHBox( this );
-  buttonBox->setSpacing( KDialog::spacingHint() );
-  topLayout->addWidget( buttonBox );
-
-  mAddButton = new QPushButton( i18n("Add..."), buttonBox );
-  mAddButton->setObjectName( "add" );
-  mAddButton->setWhatsThis(
-                   i18n( "<qt><p>Press this button to add a resource to "
-                         "KOrganizer.</p>"
-                         "<p>Events, journal entries and to-dos are retrieved "
-                         "and stored on resources. Available "
-                         "resources include groupware servers, local files, "
-                         "journal entries as blogs on a server, etc... </p>"
-                         "<p>If you have more than one active resource, "
-                         "when creating incidents you will either automatically "
-                         "use the default resource or be prompted "
-                         "to select the resource to use.</p></qt>" ) );
-  mEditButton = new QPushButton( i18n("Edit..."), buttonBox );
-  mEditButton->setObjectName( "edit" );
-  mEditButton->setWhatsThis(
-                   i18n( "Press this button to edit the resource currently "
-                         "selected on the KOrganizer resources list above." ) );
-  mDeleteButton = new QPushButton( i18n("Remove"), buttonBox );
-  mDeleteButton->setObjectName( "del" );
-  mDeleteButton->setWhatsThis(
-                   i18n( "Press this button to delete the resource currently "
-                         "selected on the KOrganizer resources list above." ) );
-  mDeleteButton->setDisabled( true );
-  mEditButton->setDisabled( true );
-
-  connect( mListView, SIGNAL( clicked( Q3ListViewItem * ) ),
-           SLOT( currentChanged( Q3ListViewItem * ) ) );
-  connect( mAddButton, SIGNAL( clicked() ), SLOT( addResource() ) );
-  connect( mDeleteButton, SIGNAL( clicked() ), SLOT( removeResource() ) );
-  connect( mEditButton, SIGNAL( clicked() ), SLOT( editResource() ) );
   connect( mListView, SIGNAL( doubleClicked ( Q3ListViewItem *, const QPoint &,
                                               int ) ),
            SLOT( editResource() ) );
@@ -473,18 +436,6 @@ void ResourceView::editResource()
   emitResourcesChanged();
 }
 
-void ResourceView::currentChanged( Q3ListViewItem *item)
-{
-   ResourceItem *i = currentItem();
-   if ( !item || i->isSubresource() ) {
-     mDeleteButton->setEnabled( false );
-     mEditButton->setEnabled( false );
-   } else {
-     mDeleteButton->setEnabled( true );
-     mEditButton->setEnabled( true );
-   }
-}
-
 ResourceItem *ResourceView::findItem( ResourceCalendar *r )
 {
   Q3ListViewItem *item;
@@ -636,19 +587,6 @@ void ResourceView::updateResourceList()
     ResourceItem *item = static_cast<ResourceItem *>( it.current() );
     item->setStandardResource( item->resource() == stdRes );
     ++it;
-  }
-}
-
-void ResourceView::showButtons( bool visible )
-{
-  if ( visible ) {
-    mAddButton->show();
-    mDeleteButton->show();
-    mEditButton->show();
-  } else {
-    mAddButton->hide();
-    mDeleteButton->hide();
-    mEditButton->hide();
   }
 }
 
