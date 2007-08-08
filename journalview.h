@@ -53,13 +53,13 @@ class Calendar;
 }
 using namespace KCal;
 
-class JournalEntry : public QWidget {
+class JournalView : public QWidget {
   Q_OBJECT
   public:
-    typedef ListBase<JournalEntry> List;
+    typedef ListBase<JournalView> List;
 
-    JournalEntry( Journal* j, QWidget *parent );
-    virtual ~JournalEntry();
+    JournalView( Journal* j, QWidget *parent );
+    virtual ~JournalView();
 
     void setJournal(Journal *);
     Journal *journal() const { return mJournal; }
@@ -107,13 +107,13 @@ class JournalEntry : public QWidget {
 };
 
 
-class JournalDateEntry : public KVBox {
+class JournalDateView : public KVBox {
   Q_OBJECT
   public:
-    typedef ListBase<JournalDateEntry> List;
+    typedef ListBase<JournalDateView> List;
 
-    JournalDateEntry( Calendar *, QWidget *parent );
-    virtual ~JournalDateEntry();
+    JournalDateView( Calendar *, QWidget *parent );
+    virtual ~JournalDateView();
 
     void addJournal( Journal * );
     Journal::List journals() const;
@@ -141,7 +141,7 @@ class JournalDateEntry : public KVBox {
   private:
     Calendar *mCalendar;
     QDate mDate;
-    QMap<Journal*,JournalEntry*> mEntries;
+    QMap<Journal*,JournalView*> mEntries;
 
     IncidenceChangerBase *mChanger;
 };

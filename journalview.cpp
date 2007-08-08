@@ -25,7 +25,7 @@
 
 // Journal Entry
 
-#include "journalentry.h"
+#include "journalview.h"
 #include "kodialogmanager.h"
 #include "incidencechanger.h"
 #include "koglobals.h"
@@ -56,12 +56,12 @@
 #include <QGridLayout>
 #include <QEvent>
 
-#include "journalentry.moc"
+#include "journalview.moc"
 
-JournalDateEntry::JournalDateEntry( Calendar *calendar, QWidget *parent ) :
+JournalDateView::JournalDateView( Calendar *calendar, QWidget *parent ) :
   KVBox( parent ), mCalendar( calendar )
 {
-//kDebug(5850)<<"JournalEntry::JournalEntry, parent="<<parent;
+//kDebug(5850)<<"JournalView::JournalView, parent="<<parent;
   mChanger = 0;
 
 #ifdef __GNUC__
@@ -69,21 +69,21 @@ JournalDateEntry::JournalDateEntry( Calendar *calendar, QWidget *parent ) :
 #endif
 }
 
-JournalDateEntry::~JournalDateEntry()
+JournalDateView::~JournalDateView()
 {
 }
 
-void JournalDateEntry::setDate(const QDate &date)
+void JournalDateView::setDate(const QDate &date)
 {
   mDate = date;
   emit setDateSignal( date );
 }
 
-void JournalDateEntry::clear()
+void JournalDateView::clear()
 {
-  QList<JournalEntry*> values( mEntries.values() );
+  QList<JournalView*> values( mEntries.values() );
 
-  QList<JournalEntry*>::Iterator it = values.begin();
+  QList<JournalView*>::Iterator it = values.begin();
   for ( ; it != values.end(); ++it ) {
     delete (*it);
   }
@@ -91,12 +91,12 @@ void JournalDateEntry::clear()
 }
 
 // should only be called by the KOJournalView now.
-void JournalDateEntry::addJournal( Journal *j )
+void JournalDateView::addJournal( Journal *j )
 {
-  QMap<Journal*,JournalEntry*>::Iterator pos = mEntries.find( j );
+  QMap<Journal*,JournalView*>::Iterator pos = mEntries.find( j );
   if ( pos != mEntries.end() ) return;
 
-  JournalEntry *entry = new JournalEntry( j, this );
+  JournalView *entry = new JournalView( j, this );
   entry->show();
   entry->setDate( mDate );
   entry->setIncidenceChanger( mChanger );
@@ -112,7 +112,7 @@ void JournalDateEntry::addJournal( Journal *j )
            this, SIGNAL( editIncidence( Incidence* ) ) );
 }
 
-Journal::List JournalDateEntry::journals() const
+Journal::List JournalDateView::journals() const
 {
   QList<Journal*> jList( mEntries.keys() );
   Journal::List l;
@@ -123,29 +123,29 @@ Journal::List JournalDateEntry::journals() const
   return l;
 }
 
-void JournalDateEntry::setIncidenceChanger( IncidenceChangerBase *changer )
+void JournalDateView::setIncidenceChanger( IncidenceChangerBase *changer )
 {
   mChanger = changer;
   emit setIncidenceChangerSignal( changer );
 }
 
-void JournalDateEntry::emitNewJournal()
+void JournalDateView::emitNewJournal()
 {
   emit newJournal( mDate );
 }
 
-void JournalDateEntry::journalEdited( Journal *journal )
+void JournalDateView::journalEdited( Journal *journal )
 {
-  QMap<Journal*,JournalEntry*>::Iterator pos = mEntries.find( journal );
+  QMap<Journal*,JournalView*>::Iterator pos = mEntries.find( journal );
   if ( pos == mEntries.end() ) return;
 
   pos.value()->setJournal( journal );
 
 }
 
-void JournalDateEntry::journalDeleted( Journal *journal )
+void JournalDateView::journalDeleted( Journal *journal )
 {
-  QMap<Journal*,JournalEntry*>::Iterator pos = mEntries.find( journal );
+  QMap<Journal*,JournalView*>::Iterator pos = mEntries.find( journal );
   if ( pos == mEntries.end() ) return;
 
   delete pos.value();
@@ -155,10 +155,10 @@ void JournalDateEntry::journalDeleted( Journal *journal )
 
 
 
-JournalEntry::JournalEntry( Journal* j, QWidget *parent ) :
+JournalView::JournalView( Journal* j, QWidget *parent ) :
   QWidget( parent ), mJournal( j )
 {
-//kDebug(5850)<<"JournalEntry::JournalEntry, parent="<<parent;
+//kDebug(5850)<<"JournalView::JournalView, parent="<<parent;
   mDirty = false;
   mWriteInProgress = false;
   mChanger = 0;
@@ -214,11 +214,11 @@ JournalEntry::JournalEntry( Journal* j, QWidget *parent ) :
   mDirty = false;
 }
 
-JournalEntry::~JournalEntry()
+JournalView::~JournalView()
 {
 }
 
-void JournalEntry::deleteItem()
+void JournalView::deleteItem()
 {
 /*  KMessageBox::ButtonCode *code = KMessageBox::warningContinueCancel(this,
       i18n("The journal \"%1\" on %2 will be permanently deleted.")
@@ -231,13 +231,13 @@ void JournalEntry::deleteItem()
 //   }
 }
 
-void JournalEntry::editItem()
+void JournalView::editItem()
 {
   if ( mJournal )
     emit editIncidence( mJournal );
 }
 
-void JournalEntry::printItem()
+void JournalView::printItem()
 {
 #ifndef KORG_NOPRINTER
   if ( mJournal ) {
@@ -255,7 +255,7 @@ void JournalEntry::printItem()
 #endif
 }
 
-void JournalEntry::setReadOnly( bool readonly )
+void JournalView::setReadOnly( bool readonly )
 {
   mReadOnly = readonly;
   mEditButton->setEnabled( !mReadOnly );
@@ -263,12 +263,12 @@ void JournalEntry::setReadOnly( bool readonly )
 }
 
 
-void JournalEntry::setDate(const QDate &date)
+void JournalView::setDate(const QDate &date)
 {
   mDate = date;
 }
 
-void JournalEntry::setJournal(Journal *journal)
+void JournalView::setJournal(Journal *journal)
 {
   if ( !journal ) return;
 
@@ -278,19 +278,19 @@ void JournalEntry::setJournal(Journal *journal)
   mDirty = false;
 }
 
-void JournalEntry::setDirty()
+void JournalView::setDirty()
 {
   mDirty = true;
-  kDebug(5850) <<"JournalEntry::setDirty()";
+  kDebug(5850) <<"JournalView::setDirty()";
 }
 
-bool JournalEntry::eventFilter( QObject *o, QEvent *e )
+bool JournalView::eventFilter( QObject *o, QEvent *e )
 {
   return QWidget::eventFilter( o, e );    // standard event processing
 }
 
 
-void JournalEntry::readJournal( Journal *j )
+void JournalView::readJournal( Journal *j )
 {
   mJournal = j;
   QTextCursor cursor = QTextCursor( mEditor->textCursor() );

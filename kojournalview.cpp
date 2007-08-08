@@ -27,7 +27,7 @@
 // View of Journal entries
 
 #include "kojournalview.h"
-#include "journalentry.h"
+#include "journalview.h"
 #include "koglobals.h"
 
 #include <kcal/calendar.h>
@@ -62,11 +62,11 @@ KOJournalView::~KOJournalView()
 
 void KOJournalView::appendJournal( Journal*journal, const QDate &dt)
 {
-  JournalDateEntry *entry = 0;
+  JournalDateView *entry = 0;
   if ( mEntries.contains( dt ) ) {
     entry = mEntries[dt];
   } else {
-    entry = new JournalDateEntry( calendar(), mVBox );
+    entry = new JournalDateView( calendar(), mVBox );
     entry->setDate( dt );
     entry->setIncidenceChanger( mChanger );
     entry->show();
@@ -108,7 +108,7 @@ Incidence::List KOJournalView::selectedIncidences()
 void KOJournalView::clearEntries()
 {
 //  kDebug(5850)<<"KOJournalView::clearEntries()";
-  QMap<QDate, JournalDateEntry*>::Iterator it;
+  QMap<QDate, JournalDateView*>::Iterator it;
   for ( it = mEntries.begin(); it != mEntries.end(); ++it ) {
     delete (it.value());
   }
@@ -116,7 +116,7 @@ void KOJournalView::clearEntries()
 }
 void KOJournalView::updateView()
 {
-  QMap<QDate, JournalDateEntry*>::Iterator it = mEntries.end();
+  QMap<QDate, JournalDateView*>::Iterator it = mEntries.end();
   while ( it != mEntries.begin() ) {
     --it;
     it.value()->clear();

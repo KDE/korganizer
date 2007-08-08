@@ -26,7 +26,7 @@
 #define KOJOURNALVIEW_H
 
 #include <korganizer/baseview.h>
-#include "journalentry.h"
+#include "journalview.h"
 
 class Q3ScrollView;
 class KVBox;
@@ -74,7 +74,7 @@ class KOJournalView : public KOrg::BaseView
   private:
     Q3ScrollView *mSV;
     KVBox *mVBox;
-    QMap<QDate, JournalDateEntry*> mEntries;
+    QMap<QDate, JournalDateView*> mEntries;
 //    DateList mSelectedDates;  // List of dates to be displayed
 };
 
