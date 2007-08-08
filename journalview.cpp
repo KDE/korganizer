@@ -293,6 +293,7 @@ bool JournalView::eventFilter( QObject *o, QEvent *e )
 void JournalView::readJournal( Journal *j )
 {
   mJournal = j;
+  mEditor->clear();
   QTextCursor cursor = QTextCursor( mEditor->textCursor() );
   cursor.movePosition( QTextCursor::Start );
   QTextCharFormat bodyFormat = QTextCharFormat( cursor.charFormat() );
@@ -314,7 +315,9 @@ void JournalView::readJournal( Journal *j )
   }
   cursor.setBlockCharFormat( bodyFormat );
   if ( mJournal->descriptionIsRich() ) {
-    mEditor->insertHtml( mJournal->description() );
+    QString description = mJournal->description();
+    description.replace ( '\n', "<br/>" );
+    mEditor->insertHtml( description );
   }
   else {
     mEditor->insertPlainText( mJournal->description() );

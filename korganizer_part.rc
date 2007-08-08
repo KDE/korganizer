@@ -166,6 +166,7 @@
   <Menu name="rmb_selection_popup">
     <Action name="new_event"/>
     <Action name="new_todo"/>
+    <Action name="new_journal"/>
     <Separator/>
     <Action name="edit_paste"/>
     <Merge/>

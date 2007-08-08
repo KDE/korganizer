@@ -38,6 +38,8 @@ class QLabel;
 class QBoxLayout;
 class QCheckBox;
 class QWidget;
+class QPushButton;
+class KSqueezedTextLabel;
 
 namespace KCal {
 class Journal;
@@ -53,6 +55,7 @@ class KOEditorGeneralJournal : public QObject
 
     void initDate( QWidget *, QBoxLayout * );
     void initDescription( QWidget *, QBoxLayout * );
+    void initCategories( QWidget *, QBoxLayout * );
     void initTitle( QWidget *parent, QBoxLayout *topLayout );
 
     /** Set date widget to default values */
@@ -67,9 +70,16 @@ class KOEditorGeneralJournal : public QObject
     /** Check if the input is valid. */
     bool validateInput();
 
-    void setDescription( const QString &text );
+    void setDescription( const QString &text, bool isRich = false );
     void setSummary( const QString &text );
     void finishSetup();
+
+  public slots:
+    void setCategories(const QStringList &categories);
+    void selectCategories();
+
+  signals:
+    void openCategoryDialog();
 
   protected:
     QLineEdit  *mSummaryEdit;
@@ -79,6 +89,13 @@ class KOEditorGeneralJournal : public QObject
     KDateEdit  *mDateEdit;
     QCheckBox  *mTimeCheckBox;
     KTimeEdit  *mTimeEdit;
+    QPushButton *mCategoriesButton;
+    KSqueezedTextLabel *mCategoriesLabel;
+    QLabel     *mHtmlLabel;
+    QCheckBox  *mHtmlCheckBox;
+
+  private:
+    QStringList mCategories;
 };
 
 #endif

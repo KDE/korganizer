@@ -27,6 +27,9 @@
 #include "koeditorgeneraljournal.h"
 #include "koprefs.h"
 #include "koeditorgeneral.h"
+#include "koglobals.h"
+
+#include <libkdepim/categoryselectdialog.h>
 
 #include <kcal/journal.h>
 
@@ -37,6 +40,7 @@
 #include <klocale.h>
 #include <kmessagebox.h>
 #include <kdebug.h>
+#include <KSqueezedTextLabel>
 
 #include <q3groupbox.h>
 #include <QDateTime>
@@ -45,7 +49,7 @@
 #include <QLayout>
 #include <QHBoxLayout>
 #include <QBoxLayout>
-
+#include <QPushButton>
 
 KOEditorGeneralJournal::KOEditorGeneralJournal( QObject *parent ) : QObject( parent )
 {
@@ -122,6 +126,14 @@ kDebug()<<"KOEditorGeneralJournal::setTime, time is valid";
 
 void KOEditorGeneralJournal::initDescription( QWidget *parent, QBoxLayout *topLayout )
 {
+  QBoxLayout *htmlLayout = new QHBoxLayout();
+  topLayout->addItem( htmlLayout );
+  mHtmlLabel = new QLabel( "Use HTML", parent );
+  mHtmlCheckBox = new QCheckBox( parent );
+  htmlLayout->addWidget( mHtmlLabel );
+  htmlLayout->addWidget( mHtmlCheckBox );
+  mHtmlLabel->setBuddy( mHtmlCheckBox );
+  htmlLayout->addStretch();
   mDescriptionEdit = new KTextEdit( parent );
   mDescriptionEdit->append("");
   mDescriptionEdit->setReadOnly( false );
@@ -129,6 +141,47 @@ void KOEditorGeneralJournal::initDescription( QWidget *parent, QBoxLayout *topLa
   mDescriptionEdit->setLineWrapMode( KTextEdit::WidgetWidth );
   mDescriptionEdit->setTabChangesFocus( true );
   topLayout->addWidget( mDescriptionEdit );
+}
+
+void KOEditorGeneralJournal::initCategories(QWidget *parent, QBoxLayout *topLayout)
+{
+  QBoxLayout *categoriesLayout = new QHBoxLayout();
+  categoriesLayout->setSpacing( topLayout->spacing() );
+  topLayout->addItem( categoriesLayout );
+
+  QString whatsThis = i18n("Allows you to select the categories that this "
+      "journal belongs to.");
+
+  mCategoriesButton = new QPushButton(parent);
+  mCategoriesButton->setText(i18n("Select Cate&gories..."));
+  mCategoriesButton->setWhatsThis( whatsThis );
+  connect(mCategoriesButton,SIGNAL(clicked()),SLOT(selectCategories()));
+  categoriesLayout->addWidget(mCategoriesButton);
+
+  mCategoriesLabel = new KSqueezedTextLabel(parent);
+  mCategoriesLabel->setWhatsThis( whatsThis );
+  mCategoriesLabel->setFrameStyle(QFrame::Panel|QFrame::Sunken);
+  categoriesLayout->addWidget(mCategoriesLabel,1);
+}
+
+void KOEditorGeneralJournal::setCategories( const QStringList &categories )
+{
+  mCategoriesLabel->setText( categories.join(",") );
+  mCategories = categories;
+}
+
+void KOEditorGeneralJournal::selectCategories()
+{
+  KPIM::CategorySelectDialog *categoryDialog = new KPIM::CategorySelectDialog( KOPrefs::instance(), mCategoriesButton  );
+  KOGlobals::fitDialogToScreen( categoryDialog );
+  categoryDialog->setSelected( mCategories );
+
+  connect(categoryDialog, SIGNAL(editCategories()), this, SIGNAL(openCategoryDialog()));
+
+  if ( categoryDialog->exec() ) {
+    setCategories( categoryDialog->selectedCategories() );
+  }
+  delete categoryDialog;
 }
 
 void KOEditorGeneralJournal::readJournal( Journal *journal, bool tmpl )
@@ -144,14 +197,15 @@ kDebug()<<"KOEditorGeneralJournal::readJournal, does float";
       setTime( QTime( -1, -1, -1 ) );
     }
   }
-  setDescription( journal->description() );
+  setDescription( journal->description(), journal->descriptionIsRich() );
 }
 
 void KOEditorGeneralJournal::writeJournal( Journal *journal )
 {
 //  kDebug(5850) <<"KOEditorGeneralJournal::writeIncidence()";
   journal->setSummary( mSummaryEdit->text() );
-  journal->setDescription( mDescriptionEdit->toPlainText() );
+  journal->setDescription( mDescriptionEdit->toPlainText(),
+                           mHtmlCheckBox->isChecked() );
 
   KDateTime tmpDT( mDateEdit->date(), QTime(0,0,0), KOPrefs::instance()->timeSpec() );
   bool hasTime = mTimeCheckBox->isChecked();
@@ -165,9 +219,11 @@ void KOEditorGeneralJournal::writeJournal( Journal *journal )
 }
 
 
-void KOEditorGeneralJournal::setDescription( const QString &text )
+void KOEditorGeneralJournal::setDescription( const QString &text, bool isRich )
 {
+  //FIXME: Once we have a WYSIWYG editor then make this setHtml
   mDescriptionEdit->setPlainText( text );
+  mHtmlCheckBox->setChecked( isRich );
 }
 
 void KOEditorGeneralJournal::setSummary( const QString &text )

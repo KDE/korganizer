@@ -85,6 +85,7 @@ void KOJournalEditor::setupGeneral()
   mGeneral->initTitle( topFrame, topLayout );
   mGeneral->initDate( topFrame, topLayout );
   mGeneral->initDescription( topFrame, topLayout );
+  mGeneral->initCategories( topFrame, topLayout );
 
   mGeneral->finishSetup();
 }

@@ -454,7 +454,7 @@ void ActionManager::initActions()
   action->setEnabled( false );
   connect( mCalendarView,SIGNAL( todoSelected( bool ) ),
            action,SLOT( setEnabled( bool ) ) );
-  action  = new KAction(i18n("New &Journal..."), this);
+  action  = new KAction(KIcon("newjournal"), i18n("New &Journal..."), this);
   mACollection->addAction("new_journal", action );
   connect(action, SIGNAL(triggered(bool) ), mCalendarView, SLOT( newJournal() ));
 
