@@ -30,6 +30,7 @@
 
 #include <QtCore/QDateTime>
 #include <QtCore/QList>
+#include <QtGui/QWidget>
 
 namespace KCal {
 class Calendar;
