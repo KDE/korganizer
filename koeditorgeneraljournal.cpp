@@ -128,10 +128,10 @@ void KOEditorGeneralJournal::initDescription( QWidget *parent, QBoxLayout *topLa
 {
   QBoxLayout *htmlLayout = new QHBoxLayout();
   topLayout->addItem( htmlLayout );
-  mHtmlLabel = new QLabel( "Use HTML", parent );
   mHtmlCheckBox = new QCheckBox( parent );
-  htmlLayout->addWidget( mHtmlLabel );
+  mHtmlLabel = new QLabel( "Use HTML", parent );
   htmlLayout->addWidget( mHtmlCheckBox );
+  htmlLayout->addWidget( mHtmlLabel );
   mHtmlLabel->setBuddy( mHtmlCheckBox );
   htmlLayout->addStretch();
   mDescriptionEdit = new KTextEdit( parent );
