@@ -146,8 +146,7 @@ void KODialogManager::showOptionsDialog()
     modules.append( "korganizer_configmain.desktop" );
     modules.append( "korganizer_configtime.desktop" );
     modules.append( "korganizer_configviews.desktop" );
-    modules.append( "korganizer_configfonts.desktop" );
-    modules.append( "korganizer_configcolors.desktop" );
+    modules.append( "korganizer_configcolorsandfonts.desktop" );
     modules.append( "korganizer_configgroupscheduling.desktop" );
     modules.append( "korganizer_configgroupautomation.desktop" );
     modules.append( "korganizer_configfreebusy.desktop" );

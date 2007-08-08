@@ -59,11 +59,11 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogMain : public KPrefsModule
     QWidget *mUserEmailSettings;
 };
 
-class KCM_KORGANIZER_EXPORT KOPrefsDialogColors : public KPrefsModule
+class KCM_KORGANIZER_EXPORT KOPrefsDialogColorsAndFonts : public KPrefsModule
 {
   Q_OBJECT
   public:
-    KOPrefsDialogColors( const KComponentData &inst, QWidget *parent );
+    KOPrefsDialogColorsAndFonts( const KComponentData &inst, QWidget *parent );
 
   protected:
     void usrWriteConfig();

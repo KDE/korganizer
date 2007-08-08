@@ -1,6 +1,6 @@
 [Desktop Entry]
 Encoding=UTF-8
-Icon=dlgedit
+Icon=configure-toolbars
 Type=Service
 ServiceTypes=KCModule
 DocPath=korganizer/preferences.html
