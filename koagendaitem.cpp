@@ -686,7 +686,8 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
 
   QPainter p( this );
   p.setRenderHint( QPainter::Antialiasing );
-  const int ft = 2; // frame thickness for layout, see drawRoundedRect()
+  const int ft = 2; // frame thickness for layout, see drawRoundedRect(),
+                    // keep multiple of 2
   const int margin = 1 + ft; // frame + space between frame and content
 
   // General idea is to always show the icons (even in the all-day events).
@@ -927,10 +928,10 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
   delete ww;
 
   setMask( QRegion( roundedRect( QRect( ft/2, ft/2, width(), height() ), 
-				 roundTop, roundBottom, false ).toFillPolygon().toPolygon() ) );
+				 roundTop, roundBottom ).toFillPolygon().toPolygon() ) );
 }
 
-QPainterPath KOAgendaItem::roundedRect( const QRect& rect, bool roundTop, bool roundBottom, bool frame )
+QPainterPath KOAgendaItem::roundedRect( const QRect& rect, bool roundTop, bool roundBottom )
 {
   int xRnd = 10; 
   int yRnd = 10;
@@ -969,7 +970,7 @@ void KOAgendaItem::drawRoundedRect( QPainter *p, const QRect& rect,
 				    const QColor& color, const QColor& bgcolor,
 				    bool frame, int ft, bool roundTop, bool roundBottom )
 {
-  QPainterPath path = roundedRect( rect, roundTop, roundBottom, frame );
+  QPainterPath path = roundedRect( rect, roundTop, roundBottom );
   
   QColor oldPen(p->pen().color());
   QColor oldBrush(p->brush().color());
