@@ -150,6 +150,7 @@ void KOJournalView::showDates(const QDate &start, const QDate &end)
     }
     if ( jnls.count() < 1 ) {
       // create an empty dateentry widget
+      //updateView();
       appendJournal( 0, d );
     }
   }

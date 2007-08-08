@@ -131,11 +131,6 @@ void KOEditorGeneralJournal::initDescription( QWidget *parent, QBoxLayout *topLa
   topLayout->addWidget( mDescriptionEdit );
 }
 
-void KOEditorGeneralJournal::setDefaults( const QDate &date )
-{
-  setDate( date );
-}
-
 void KOEditorGeneralJournal::readJournal( Journal *journal, bool tmpl )
 {
   setSummary( journal->summary() );

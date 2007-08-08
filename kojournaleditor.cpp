@@ -60,7 +60,6 @@ KOJournalEditor::~KOJournalEditor()
 void KOJournalEditor::init()
 {
   setupGeneral();
-  setupAttendeesTab();
 }
 
 void KOJournalEditor::reload()
@@ -73,28 +72,18 @@ void KOJournalEditor::setupGeneral()
 {
   mGeneral = new KOEditorGeneralJournal(this);
 
+  QFrame *topFrame = new QFrame();
+  setMainWidget( topFrame );
+
+  QBoxLayout *topLayout = new QVBoxLayout( topFrame );
   if (KOPrefs::instance()->mCompactDialogs) {
-    QFrame *topFrame = new QFrame();
-    addPage(topFrame, i18n("General"));
-
-    QBoxLayout *topLayout = new QVBoxLayout( topFrame );
     topLayout->setMargin( marginHint() );
-    topLayout->setSpacing( spacingHint() );
-
-    mGeneral->initTitle( topFrame, topLayout );
-    mGeneral->initDate( topFrame, topLayout );
-    mGeneral->initDescription( topFrame, topLayout );
-  } else {
-    QFrame *topFrame = new QFrame();
-    addPage(topFrame, i18n("&General"));
-
-    QBoxLayout *topLayout = new QVBoxLayout(topFrame);
-    topLayout->setSpacing(spacingHint());
-
-    mGeneral->initTitle( topFrame, topLayout );
-    mGeneral->initDate( topFrame, topLayout );
-    mGeneral->initDescription( topFrame, topLayout );
   }
+  topLayout->setSpacing(spacingHint());
+
+  mGeneral->initTitle( topFrame, topLayout );
+  mGeneral->initDate( topFrame, topLayout );
+  mGeneral->initDescription( topFrame, topLayout );
 
   mGeneral->finishSetup();
 }
@@ -132,7 +121,9 @@ void KOJournalEditor::setTexts( const QString &summary, const QString &descripti
 
 void KOJournalEditor::loadDefaults()
 {
+  setTexts( "Journal for " + QDate::currentDate().toString() );
   setDate( QDate::currentDate() );
+  setTime( QTime::currentTime() );
 }
 
 bool KOJournalEditor::processInput()
@@ -174,26 +165,28 @@ void KOJournalEditor::deleteJournal()
 
 void KOJournalEditor::setDate( const QDate &date )
 {
-  mGeneral->setDefaults( date );
-  mDetails->setDefaults();
+  mGeneral->setDate( date );
+}
+
+void KOJournalEditor::setTime( const QTime &time )
+{
+  mGeneral->setTime( time );
 }
 
 void KOJournalEditor::readJournal( Journal *journal )
 {
   kDebug(5851)<<"read Journal";
   mGeneral->readJournal( journal );
-  mDetails->readEvent( journal );
 }
 
 void KOJournalEditor::writeJournal( Journal *journal )
 {
   mGeneral->writeJournal( journal );
-  mDetails->writeEvent( journal );
 }
 
 bool KOJournalEditor::validateInput()
 {
-  return mGeneral->validateInput() && mDetails->validateInput();
+  return mGeneral->validateInput();
 }
 
 int KOJournalEditor::msgItemDelete()

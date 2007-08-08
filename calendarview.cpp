@@ -1074,7 +1074,9 @@ void CalendarView::newJournal( const QString &text, const QDate &date )
   KOJournalEditor *journalEditor = mDialogManager->getJournalEditor();
   connectIncidenceEditor( journalEditor );
   journalEditor->newJournal();
-  journalEditor->setTexts( text );
+  if ( !text.isEmpty() ) {
+    journalEditor->setTexts( text );
+  }
   if ( !date.isValid() ) {
     journalEditor->setDate( mNavigator->selectedDates().first() );
   } else {

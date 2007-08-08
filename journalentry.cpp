@@ -83,10 +83,6 @@ void JournalDateEntry::setDate(const QDate &date)
   QString dtstring = QString( "<qt><center><b><i>%1</i></b>  " )
                      .arg( KGlobal::locale()->formatDate(date) );
 
-  dtstring += " <font size=\"-1\"><a href=\"#\">" +
-              i18n("[Add Journal Entry]") +
-              "</a></font></center></qt>";
-
   mTitle->setText( dtstring );
   mDate = date;
   emit setDateSignal( date );
@@ -193,17 +189,20 @@ JournalEntry::JournalEntry( Journal* j, QWidget *parent ) :
 
   mTitleLabel->setWhatsThis( whatsThis );
   mTitleEdit->setWhatsThis( whatsThis );
+  mTitleEdit->setReadOnly( true );
 
   mTimeCheck = new QCheckBox( i18n("Ti&me: "), this );
   mLayout->addWidget( mTimeCheck, 0, 2 );
   mTimeEdit = new KTimeEdit( this );
   mLayout->addWidget( mTimeEdit, 0, 3 );
-  connect( mTimeCheck, SIGNAL(toggled(bool)),
-           this, SLOT(timeCheckBoxToggled(bool)) );
+  //connect( mTimeCheck, SIGNAL(toggled(bool)),
+  //         this, SLOT(timeCheckBoxToggled(bool)) );
   mTimeCheck->setWhatsThis( i18n("Determines whether this journal entry has "
                                     "a time associated with it") );
   mTimeEdit->setWhatsThis( i18n( "Sets the time associated with this journal "
                                     " entry" ) );
+  mTimeCheck->setDisabled( true );
+  mTimeEdit->setDisabled( true );
 
   mDeleteButton = new QToolButton( this );
   mDeleteButton->setObjectName( "deleteButton" );
@@ -243,6 +242,7 @@ JournalEntry::JournalEntry( Journal* j, QWidget *parent ) :
   connect( mEditor, SIGNAL(textChanged()), SLOT(setDirty()) );
 
   mEditor->installEventFilter(this);
+  mEditor->setReadOnly( true );
 
   readJournal( mJournal );
   mDirty = false;
@@ -295,10 +295,10 @@ void JournalEntry::printItem()
 void JournalEntry::setReadOnly( bool readonly )
 {
   mReadOnly = readonly;
-  mTitleEdit->setReadOnly( mReadOnly );
-  mEditor->setReadOnly( mReadOnly );
-  mTimeCheck->setEnabled( !mReadOnly );
-  mTimeEdit->setEnabled( !mReadOnly && mTimeCheck->isChecked() );
+  mTitleEdit->setReadOnly( true );
+  mEditor->setReadOnly( true );
+  mTimeCheck->setDisabled( true );
+  mTimeEdit->setDisabled( true );
   mDeleteButton->setEnabled( !mReadOnly );
 }
 
@@ -345,12 +345,16 @@ void JournalEntry::readJournal( Journal *j )
   mTitleEdit->setText( mJournal->summary() );
   bool hasTime = !mJournal->floats();
   mTimeCheck->setChecked( hasTime );
-  mTimeEdit->setEnabled( hasTime );
+  mTimeEdit->setEnabled( false );
   if ( hasTime ) {
     mTimeEdit->setTime( mJournal->dtStart().time() );
   }
-  //TODO: Allow rich text
-  mEditor->setPlainText( mJournal->description() );
+  if ( mJournal->descriptionIsRich() ) {
+    mEditor->setHtml( mJournal->description() );
+  }
+  else {
+    mEditor->setPlainText( mJournal->description() );
+  }
   setReadOnly( mJournal->isReadOnly() );
 }
 

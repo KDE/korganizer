@@ -55,9 +55,9 @@ class KOEditorGeneralJournal : public QObject
     void initDescription( QWidget *, QBoxLayout * );
     void initTitle( QWidget *parent, QBoxLayout *topLayout );
 
-    /** Set widgets to default values */
-    void setDefaults( const QDate &date );
+    /** Set date widget to default values */
     void setDate( const QDate &date );
+    /** Set time widget to default values */
     void setTime( const QTime &time );
     /** Read journal object and setup widgets accordingly */
     void readJournal( Journal *, bool tmpl = false );

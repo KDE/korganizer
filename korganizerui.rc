@@ -113,6 +113,7 @@
   <ToolBar noMerge="1" name="mainToolBar"><text>Main</text>
     <Action name="new_event"/>
     <Action name="new_todo"/>
+    <Action name="new_journal"/>
     <Action name="file_print"/>
     <Action name="mail_appointment"/>
     <Separator/>

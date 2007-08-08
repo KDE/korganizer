@@ -77,8 +77,10 @@ class KOJournalEditor : public KOIncidenceEditor
     /** Edit an existing Journal. */
     void editIncidence(Incidence *);
 
-    /** Set widgets to default values */
+    /** Set date widget to default values */
     void setDate( const QDate &date );
+    /** Set time widget to default values */
+    void setTime( const QTime &time );
     /** Read event object and setup widgets accordingly */
     void readJournal( Journal * );
     /** Write event settings to event object */
