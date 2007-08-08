@@ -51,7 +51,7 @@
 #include <QLabel>
 #include <QLayout>
 #include <QCheckBox>
-#include <QToolButton>
+#include <QPushButton>
 #include <QPixmap>
 #include <QGridLayout>
 #include <QEvent>
@@ -64,14 +64,9 @@ JournalDateEntry::JournalDateEntry( Calendar *calendar, QWidget *parent ) :
 //kDebug(5850)<<"JournalEntry::JournalEntry, parent="<<parent;
   mChanger = 0;
 
-  mTitle = new QLabel( this );
 #ifdef __GNUC__
 #warning "kde4: porting"
 #endif
-  //mTitle->setMargin(2);
-  mTitle->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Fixed );
-  connect( mTitle, SIGNAL( linkActivated( const QString & ) ),
-           this, SLOT( emitNewJournal() ) );
 }
 
 JournalDateEntry::~JournalDateEntry()
@@ -80,10 +75,6 @@ JournalDateEntry::~JournalDateEntry()
 
 void JournalDateEntry::setDate(const QDate &date)
 {
-  QString dtstring = QString( "<qt><center><b><i>%1</i></b>  " )
-                     .arg( KGlobal::locale()->formatDate(date) );
-
-  mTitle->setText( dtstring );
   mDate = date;
   emit setDateSignal( date );
 }
@@ -115,8 +106,6 @@ void JournalDateEntry::addJournal( Journal *j )
            entry, SLOT( setIncidenceChanger( IncidenceChangerBase * ) ) );
   connect( this, SIGNAL( setDateSignal( const QDate & ) ),
            entry, SLOT( setDate( const QDate & ) ) );
-  connect( this, SIGNAL( flushEntries() ),
-           entry, SLOT( flushEntry() ) );
   connect( entry, SIGNAL( deleteIncidence( Incidence* ) ),
            this, SIGNAL( deleteIncidence( Incidence* ) ) );
   connect( entry, SIGNAL( editIncidence( Incidence* ) ),
@@ -179,70 +168,47 @@ JournalEntry::JournalEntry( Journal* j, QWidget *parent ) :
   mLayout->setSpacing( KDialog::spacingHint() );
   mLayout->setMargin( KDialog::marginHint() );
 
-  QString whatsThis = i18n("Sets the Title of this journal entry.");
+  mEditor = new KTextEdit(this);
+  mEditor->installEventFilter(this);
+  mEditor->setTextInteractionFlags( Qt::TextSelectableByMouse |
+                                    Qt::TextSelectableByKeyboard );
+  mEditor->setFrameStyle( QFrame::StyledPanel );
+  //FIXME: Get this padded
+  mEditor->setStyleSheet( "padding: 50px;" );
+  mLayout->addWidget( mEditor, 0, 0, 1, 3 );
 
-  mTitleLabel = new QLabel( i18n("&Title: "), this );
-  mLayout->addWidget( mTitleLabel, 0, 0 );
-  mTitleEdit = new KLineEdit( this );
-  mLayout->addWidget( mTitleEdit, 0, 1 );
-  mTitleLabel->setBuddy( mTitleEdit );
+  mEditButton = new QPushButton( this );
+  mEditButton->setObjectName( "editButton" );
+  mEditButton->setText( i18n("&Edit") );
+  mEditButton->setIcon( KOGlobals::self()->smallIcon( "edit" ) );
+  mEditButton->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
+  mEditButton->setToolTip( i18n("Edit this journal entry") );
+  mEditButton->setWhatsThis( i18n("Opens an editor dialog for this journal entry") );
+  mLayout->addWidget( mEditButton, 1, 0 );
+  connect( mEditButton, SIGNAL(clicked()), this, SLOT( editItem() ) );
 
-  mTitleLabel->setWhatsThis( whatsThis );
-  mTitleEdit->setWhatsThis( whatsThis );
-  mTitleEdit->setReadOnly( true );
-
-  mTimeCheck = new QCheckBox( i18n("Ti&me: "), this );
-  mLayout->addWidget( mTimeCheck, 0, 2 );
-  mTimeEdit = new KTimeEdit( this );
-  mLayout->addWidget( mTimeEdit, 0, 3 );
-  //connect( mTimeCheck, SIGNAL(toggled(bool)),
-  //         this, SLOT(timeCheckBoxToggled(bool)) );
-  mTimeCheck->setWhatsThis( i18n("Determines whether this journal entry has "
-                                    "a time associated with it") );
-  mTimeEdit->setWhatsThis( i18n( "Sets the time associated with this journal "
-                                    " entry" ) );
-  mTimeCheck->setDisabled( true );
-  mTimeEdit->setDisabled( true );
-
-  mDeleteButton = new QToolButton( this );
+  mDeleteButton = new QPushButton( this );
   mDeleteButton->setObjectName( "deleteButton" );
+  mDeleteButton->setText( i18n("&Delete") );
   QPixmap pix = KOGlobals::self()->smallIcon( "edit-delete" );
   mDeleteButton->setIcon( pix );
   mDeleteButton->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
   mDeleteButton->setToolTip( i18n("Delete this journal entry") );
   mDeleteButton->setWhatsThis( i18n("Delete this journal entry") );
-  mLayout->addWidget( mDeleteButton, 0, 4 );
+  mLayout->addWidget( mDeleteButton, 1, 1 );
   connect( mDeleteButton, SIGNAL(pressed()), this, SLOT(deleteItem()) );
 
-  mEditButton = new QToolButton( this );
-  mEditButton->setObjectName( "editButton" );
-  mEditButton->setIcon( KOGlobals::self()->smallIcon( "edit" ) );
-  mEditButton->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
-  mEditButton->setToolTip( i18n("Edit this journal entry") );
-  mEditButton->setWhatsThis( i18n("Opens an editor dialog for this journal entry") );
-  mLayout->addWidget( mEditButton, 0, 5 );
-  connect( mEditButton, SIGNAL(clicked()), this, SLOT( editItem() ) );
-
 #ifndef KORG_NOPRINTER
-  mPrintButton = new QToolButton( this );
+  mPrintButton = new QPushButton( this );
+  mPrintButton->setText( i18n("&Print") );
   mPrintButton->setObjectName( "printButton" );
   mPrintButton->setIcon( KOGlobals::self()->smallIcon( "printer1" ) );
   mPrintButton->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
   mPrintButton->setToolTip( i18n("Print this journal entry") );
   mPrintButton->setWhatsThis( i18n("Opens a print dialog for this journal entry") );
-  mLayout->addWidget( mPrintButton, 0, 6 );
+  mLayout->addWidget( mPrintButton, 1, 2 );
   connect( mPrintButton, SIGNAL(clicked()), this, SLOT( printItem() ) );
 #endif
-  mEditor = new KTextEdit(this);
-  mLayout->addWidget( mEditor, 1, 0, 2, 7 );
-
-  connect( mTitleEdit, SIGNAL(textChanged( const QString& )), SLOT(setDirty()) );
-  connect( mTimeCheck, SIGNAL(toggled(bool)), SLOT(setDirty()) );
-  connect( mTimeEdit, SIGNAL(timeChanged(QTime)), SLOT(setDirty()) );
-  connect( mEditor, SIGNAL(textChanged()), SLOT(setDirty()) );
-
-  mEditor->installEventFilter(this);
-  mEditor->setReadOnly( true );
 
   readJournal( mJournal );
   mDirty = false;
@@ -250,7 +216,6 @@ JournalEntry::JournalEntry( Journal* j, QWidget *parent ) :
 
 JournalEntry::~JournalEntry()
 {
-  writeJournal();
 }
 
 void JournalEntry::deleteItem()
@@ -268,7 +233,6 @@ void JournalEntry::deleteItem()
 
 void JournalEntry::editItem()
 {
-  writeJournal();
   if ( mJournal )
     emit editIncidence( mJournal );
 }
@@ -276,7 +240,6 @@ void JournalEntry::editItem()
 void JournalEntry::printItem()
 {
 #ifndef KORG_NOPRINTER
-  writeJournal();
   if ( mJournal ) {
     Calendar *cal = 0;
     KOCoreHelper helper;
@@ -295,24 +258,18 @@ void JournalEntry::printItem()
 void JournalEntry::setReadOnly( bool readonly )
 {
   mReadOnly = readonly;
-  mTitleEdit->setReadOnly( true );
-  mEditor->setReadOnly( true );
-  mTimeCheck->setDisabled( true );
-  mTimeEdit->setDisabled( true );
+  mEditButton->setEnabled( !mReadOnly );
   mDeleteButton->setEnabled( !mReadOnly );
 }
 
 
 void JournalEntry::setDate(const QDate &date)
 {
-  writeJournal();
   mDate = date;
 }
 
 void JournalEntry::setJournal(Journal *journal)
 {
-  if ( !mWriteInProgress )
-    writeJournal();
   if ( !journal ) return;
 
   mJournal = journal;
@@ -329,12 +286,6 @@ void JournalEntry::setDirty()
 
 bool JournalEntry::eventFilter( QObject *o, QEvent *e )
 {
-//  kDebug(5850) <<"JournalEntry::event received" << e->type();
-
-  if ( e->type() == QEvent::FocusOut || e->type() == QEvent::Hide ||
-       e->type() == QEvent::Close ) {
-    writeJournal();
-  }
   return QWidget::eventFilter( o, e );    // standard event processing
 }
 
@@ -342,77 +293,32 @@ bool JournalEntry::eventFilter( QObject *o, QEvent *e )
 void JournalEntry::readJournal( Journal *j )
 {
   mJournal = j;
-  mTitleEdit->setText( mJournal->summary() );
-  bool hasTime = !mJournal->floats();
-  mTimeCheck->setChecked( hasTime );
-  mTimeEdit->setEnabled( false );
-  if ( hasTime ) {
-    mTimeEdit->setTime( mJournal->dtStart().time() );
+  QTextCursor cursor = QTextCursor( mEditor->textCursor() );
+  cursor.movePosition( QTextCursor::Start );
+  QTextCharFormat bodyFormat = QTextCharFormat( cursor.charFormat() );
+  if ( !mJournal->summary().isEmpty() ) {
+    QTextCharFormat titleFormat = bodyFormat;
+    titleFormat.setFontWeight( QFont::Bold );
+    // FIXME: Is there a way to just make this +4?
+    titleFormat.setFontPointSize( 14 );
+    cursor.insertText( mJournal->summary(), titleFormat );
+    cursor.insertBlock();
   }
+  if ( !mJournal->floats() ) {
+    QTextCharFormat dateFormat = bodyFormat;
+    dateFormat.setFontWeight( QFont::Bold );
+    // FIXME: Is there a way to just make this +2?
+    dateFormat.setFontPointSize( 11 );
+    cursor.insertText( mJournal->dtStartStr(), dateFormat );
+    cursor.insertBlock();
+  }
+  cursor.setBlockCharFormat( bodyFormat );
   if ( mJournal->descriptionIsRich() ) {
-    mEditor->setHtml( mJournal->description() );
+    mEditor->insertHtml( mJournal->description() );
   }
   else {
-    mEditor->setPlainText( mJournal->description() );
+    mEditor->insertPlainText( mJournal->description() );
   }
+  cursor.insertBlock();
   setReadOnly( mJournal->isReadOnly() );
-}
-
-void JournalEntry::writeJournalPrivate( Journal *j )
-{
-  j->setSummary( mTitleEdit->text() );
-  bool hasTime = mTimeCheck->isChecked();
-  QTime tm( mTimeEdit->getTime() );
-  j->setDtStart( KDateTime( mDate, hasTime?tm:QTime(0,0,0), KOPrefs::instance()->timeSpec() ) );
-  j->setFloats( !hasTime );
-  j->setDescription( mEditor->toPlainText() );
-}
-
-void JournalEntry::writeJournal()
-{
-//  kDebug(5850) <<"JournalEntry::writeJournal()";
-
-  if ( mReadOnly || !mDirty || !mChanger ) {
-    kDebug(5850)<<"Journal either read-only, unchanged or no changer object available";
-    return;
-  }
-  bool newJournal = false;
-  mWriteInProgress = true;
-
-  Journal *oldJournal = 0;
-
-  if ( !mJournal ) {
-    newJournal = true;
-    mJournal = new Journal;
-    writeJournalPrivate( mJournal );
-    if ( !mChanger->addIncidence( mJournal, this ) ) {
-      KODialogManager::errorSaveIncidence( this, mJournal );
-      delete mJournal;
-      mJournal = 0;
-    }
-  } else {
-    oldJournal = mJournal->clone();
-    if ( mChanger->beginChange( mJournal ) ) {
-      writeJournalPrivate( mJournal );
-      mChanger->changeIncidence( oldJournal, mJournal, KOGlobals::DESCRIPTION_MODIFIED );
-      mChanger->endChange( mJournal );
-    }
-    delete oldJournal;
-  }
-  mDirty = false;
-  mWriteInProgress = false;
-}
-
-void JournalEntry::flushEntry()
-{
-  if (!mDirty) return;
-
-  writeJournal();
-}
-
-void JournalEntry::timeCheckBoxToggled(bool on)
-{
-  mTimeEdit->setEnabled(on);
-  if(on)
-    mTimeEdit->setFocus();
 }

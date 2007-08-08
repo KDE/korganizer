@@ -60,6 +60,7 @@ KOJournalEditor::~KOJournalEditor()
 void KOJournalEditor::init()
 {
   setupGeneral();
+  setupAttendeesTab();
 }
 
 void KOJournalEditor::reload()
@@ -73,7 +74,7 @@ void KOJournalEditor::setupGeneral()
   mGeneral = new KOEditorGeneralJournal(this);
 
   QFrame *topFrame = new QFrame();
-  setMainWidget( topFrame );
+  addPage( topFrame, i18n("General") );
 
   QBoxLayout *topLayout = new QVBoxLayout( topFrame );
   if (KOPrefs::instance()->mCompactDialogs) {

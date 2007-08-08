@@ -47,14 +47,13 @@ KOJournalView::KOJournalView(Calendar *calendar, QWidget *parent )
   : KOrg::BaseView( calendar, parent )
 {
   QVBoxLayout*topLayout = new QVBoxLayout( this );
-  topLayout->setAutoAdd(true);
   mSV = new Q3ScrollView( this, "JournalScrollView" );
   mVBox = new KVBox( mSV->viewport() );
   mSV->setVScrollBarMode( Q3ScrollView::Auto );
   mSV->setHScrollBarMode( Q3ScrollView::AlwaysOff );
   mSV->setResizePolicy( Q3ScrollView::AutoOneFit );
   mSV->addChild( mVBox );
-//  mVBox->setSpacing( 10 );
+  topLayout->addWidget( mSV );
 }
 
 KOJournalView::~KOJournalView()
@@ -117,8 +116,9 @@ void KOJournalView::clearEntries()
 }
 void KOJournalView::updateView()
 {
-  QMap<QDate, JournalDateEntry*>::Iterator it;
-  for ( it = mEntries.begin(); it != mEntries.end(); ++it ) {
+  QMap<QDate, JournalDateEntry*>::Iterator it = mEntries.end();
+  while ( it != mEntries.begin() ) {
+    --it;
     it.value()->clear();
     Journal::List journals = calendar()->journals( it.key() );
     Journal::List::Iterator it1;
@@ -143,9 +143,11 @@ void KOJournalView::showDates(const QDate &start, const QDate &end)
   Journal::List::ConstIterator it;
   Journal::List jnls;
   QDate d=start;
-  for ( QDate d=start; d<=end; d=d.addDays(1) ) {
+  for ( QDate d=end; d>=start; d=d.addDays(-1) ) {
     jnls = calendar()->journals( d );
-    for ( it = jnls.begin(); it != jnls.end(); ++it ) {
+    it = jnls.end();
+    while ( it != jnls.begin() ) {
+      --it;
       appendJournal( *it, d );
     }
     if ( jnls.count() < 1 ) {
@@ -160,8 +162,9 @@ void KOJournalView::showIncidences( const Incidence::List &incidences )
 {
 //  kDebug(5850) <<"KOJournalView::showIncidences():";
   clearEntries();
-  Incidence::List::const_iterator it;
-  for ( it=incidences.constBegin(); it!=incidences.constEnd(); ++it) {
+  Incidence::List::const_iterator it = incidences.constEnd();
+  while ( it != incidences.constBegin() ) {
+    --it;
     if ((*it) && ( (*it)->type() == "Journal" ) ) {
       Journal*j = static_cast<Journal*>(*it);
       if ( j ) appendJournal( j, j->dtStart().date() );

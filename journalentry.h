@@ -42,7 +42,7 @@ class QGridLayout;
 class KLineEdit;
 class KTextEdit;
 class KTimeEdit;
-class QToolButton;
+class QPushButton;
 
 namespace KOrg {
 class IncidenceChangerBase;
@@ -77,11 +77,9 @@ class JournalEntry : public QWidget {
     void deleteItem();
     void editItem();
     void printItem();
-    void timeCheckBoxToggled(bool on);
   public slots:
     void setIncidenceChanger( IncidenceChangerBase *changer ) { mChanger = changer; }
     void setDate(const QDate &);
-    void flushEntry();
 
   signals:
     void deleteIncidence( Incidence * );
@@ -91,23 +89,15 @@ class JournalEntry : public QWidget {
     void clearFields();
     bool eventFilter( QObject *o, QEvent *e );
 
-    void writeJournal();
-
   private:
-    void writeJournalPrivate( Journal *j );
-
     Journal *mJournal;
     QDate mDate;
     bool mReadOnly;
 
-    QLabel *mTitleLabel;
-    KLineEdit *mTitleEdit;
     KTextEdit *mEditor;
-    QCheckBox *mTimeCheck;
-    KTimeEdit *mTimeEdit;
-    QToolButton *mDeleteButton;
-    QToolButton *mEditButton;
-    QToolButton *mPrintButton;
+    QPushButton *mEditButton;
+    QPushButton *mDeleteButton;
+    QPushButton *mPrintButton;
 
     QGridLayout *mLayout;
 
@@ -153,8 +143,6 @@ class JournalDateEntry : public KVBox {
     QDate mDate;
     QMap<Journal*,JournalEntry*> mEntries;
 
-    QLabel *mTitle;
-    QWidget *mAddBar;
     IncidenceChangerBase *mChanger;
 };
 
