@@ -168,7 +168,6 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     void dragEnterEvent( QDragEnterEvent *e );
     void dropEvent( QDropEvent *e );
     void paintEvent( QPaintEvent *e );
-    void paintFrame( QPainter *p, const QColor &color );
     void paintTodoIcon( QPainter *p, int &x, int ft );
 
     // paint all visible icons
@@ -183,6 +182,12 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
 
 
   private:
+    QPainterPath roundedRect( const QRect &rect, bool roundTop, bool roundBottom,
+			      bool frame );
+    void drawRoundedRect( QPainter *p, const QRect& rect, 
+			  const QColor& color, const QColor& bgcolor,
+			  bool frame, int ft, bool roundTop, bool roundBottom );
+
     int mCellXLeft, mCellXRight;
     int mCellYTop, mCellYBottom;
     int mSubCell;  // subcell number of this item

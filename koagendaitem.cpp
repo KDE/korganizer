@@ -645,14 +645,6 @@ bool KOAgendaItem::overlaps( KOrg::CellItem *o ) const
   return false;
 }
 
-void KOAgendaItem::paintFrame( QPainter *p, const QColor &color )
-{
-  QColor oldpen(p->pen().color());
-  p->setPen( color );
-  p->drawRect( 0, 0, width(), height() );
-  p->drawRect( 1, 1, width() - 2, height() - 2 );
-  p->setPen( oldpen );
-}
 
 static void conditionalPaint( QPainter *p, bool condition, int &x, int ft,
                               const QPixmap &pxmp )
@@ -693,7 +685,8 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
   if ( !mIncidence ) return;
 
   QPainter p( this );
-  const int ft = 2; // frame thickness for layout, see paintFrame()
+  p.setRenderHint( QPainter::Antialiasing );
+  const int ft = 2; // frame thickness for layout, see drawRoundedRect()
   const int margin = 1 + ft; // frame + space between frame and content
 
   // General idea is to always show the icons (even in the all-day events).
@@ -745,7 +738,7 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
   }
   QColor textColor = getTextColor(bgColor);
   p.setPen( textColor );
-  p.setBackground( QBrush( bgColor ) );
+
   p.setFont( KOPrefs::instance()->agendaCalendarItemsFont() );
   if ( mIncidence ) {
     if ( mIncidence->type() == "Event" )
@@ -758,7 +751,12 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
   int singleLineHeight = fm.boundingRect( mLabelText ).height();
 
   p.eraseRect( 0, 0, width(), height() );
-  paintFrame( &p, frameColor );
+
+  bool roundTop = !prevMultiItem();
+  bool roundBottom = !nextMultiItem();
+  
+  drawRoundedRect( &p, QRect( ft, ft, width() - ft, height() - ft ), 
+		   frameColor, bgColor, true, ft, roundTop, roundBottom );
 
   // calculate the height of the full version (case 4) to test whether it is
   // possible
@@ -878,8 +876,7 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
               KGlobal::locale()->formatDate(mIncidence->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() ).date()));
 
       // paint headline
-      p.fillRect( 0, 0, width(), (ft/2) + margin + hlHeight,
-                  QBrush( frameColor ) );
+      drawRoundedRect( &p, QRect( ft/2, ft/2, width(), - ft/2 + margin + hlHeight), frameColor, frameColor, false, ft, roundTop, false );
     }
 
     x += visRect.left();
@@ -890,9 +887,7 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
   }
   else {
     // paint headline
-    p.fillRect( 0, 0, width(), (ft/2) + margin + hlHeight,
-                QBrush( frameColor ) );
-
+    drawRoundedRect( &p, QRect( ft/2, ft/2, width(), - ft/2 + margin + hlHeight), frameColor, frameColor, false, ft, roundTop, false );
     txtWidth = width() - margin - x;
     eventX = x;
     paintIcons( &p, x, ft );
@@ -930,5 +925,64 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
     ww->drawText( &p, eventX + (txtWidth-ww->boundingRect().width()-2*margin)/2,
                   y, Qt::AlignHCenter | KWordWrap::FadeOut );
   delete ww;
+
+  setMask( QRegion( roundedRect( QRect( ft/2, ft/2, width(), height() ), 
+				 roundTop, roundBottom, false ).toFillPolygon().toPolygon() ) );
 }
 
+QPainterPath KOAgendaItem::roundedRect( const QRect& rect, bool roundTop, bool roundBottom, bool frame )
+{
+  int xRnd = 10; 
+  int yRnd = 10;
+  int xDiam = 2 * xRnd;
+  int yDiam = 2 * yRnd;
+
+  int x1, y1, x2, y2;
+  rect.getCoords( &x1, &y1, &x2, &y2 );
+
+  QPainterPath path;
+  if ( roundTop ) {
+    path.moveTo( x2, y1 + yRnd );
+    path.arcTo( QRect( x2 - xDiam, y1, xDiam, yDiam ), 0, +90.0 );
+    path.lineTo( x1 + xRnd, y1 );
+    path.arcTo( QRect( x1, y1, xDiam, yDiam ), 90.0, +90.0 );
+  } else {
+    path.moveTo( x2, y1 );
+    path.lineTo( x1, y1 );
+  }
+
+  if ( roundBottom ) {
+    path.lineTo( x1, y2 - yRnd );
+    path.arcTo( QRect(x1, y2 - yDiam, xDiam, yDiam), 180.0, +90.0 );
+    path.lineTo( x1 + xRnd, y2 );
+    path.arcTo( QRect(x2 - xDiam, y2 - yDiam, xDiam, yDiam), 270.0, +90.0 );
+  } else {
+    path.lineTo( x1, y2 );
+    path.lineTo( x2, y2 );
+  }
+  path.closeSubpath();
+
+  return path;
+}
+
+void KOAgendaItem::drawRoundedRect( QPainter *p, const QRect& rect, 
+				    const QColor& color, const QColor& bgcolor,
+				    bool frame, int ft, bool roundTop, bool roundBottom )
+{
+  QPainterPath path = roundedRect( rect, roundTop, roundBottom, frame );
+  
+  QColor oldPen(p->pen().color());
+  QColor oldBrush(p->brush().color());
+  if ( frame ) {
+    QPen pen( color );
+    pen.setWidth( ft );
+    p->setPen( pen );
+  }
+  else
+    p->setPen( Qt::NoPen );
+
+  p->setBrush( bgcolor );
+  p->drawPath( path );
+  p->setPen( oldPen );
+  p->setBrush( oldBrush );
+}
