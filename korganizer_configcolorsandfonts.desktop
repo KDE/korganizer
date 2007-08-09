@@ -13,8 +13,5 @@ X-KDE-ParentComponents=korganizer,kontact_korganizerplugin
 X-KDE-CfgDlgHierarchy=KOrganizer
 
 Name=Colors and Fonts
-Name[fr]=Couleurs et Polices
 Comment=KOrganizer Colors and Fonts Configuration
-Comment[fr]=Configuration des couleurs et polices de KOrganizer
 Keywords=korganizer,colors,fonts
-Keywords[fr]=KOrganizer,couleurs,polices
