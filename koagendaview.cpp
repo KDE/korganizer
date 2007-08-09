@@ -1443,7 +1443,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
   // FIXME: use a visitor here
   if ( incidence->type() == "Event" ) {
     incidence->setDtStart( startDt.toTimeSpec( incidence->dtStart().timeSpec() ) );
-    (static_cast<Event*>( incidence ) )->setDtEnd( endDt.toTimeSpec( incidence->dtStart().timeSpec() ) );
+    (static_cast<Event*>( incidence ) )->setDtEnd( endDt.toTimeSpec( incidence->dtEnd().timeSpec() ) );
   } else if ( incidence->type() == "Todo" ) {
     Todo *td = static_cast<Todo*>( incidence );
     if ( td->hasStartDate() )

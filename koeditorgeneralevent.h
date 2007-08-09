@@ -83,6 +83,9 @@ class KOEditorGeneralEvent : public KOEditorGeneral
     void startDateChanged( const QDate& );
     void endTimeChanged( QTime );
     void endDateChanged( const QDate& );
+    void startSpecChanged();
+    void endSpecChanged();
+    
 
     void emitDateTimeStr();
 
@@ -92,7 +95,10 @@ class KOEditorGeneralEvent : public KOEditorGeneral
     void dateTimesChanged( const QDateTime &start, const QDateTime &end );
 
   private:
-    KDateTime::Spec timeSpec();
+    // if start is true,
+    KDateTime::Spec getTimeSpecFromCombo( KComboBox *comboBox );
+    void selectTimeZoneInCombo( KComboBox *comboBox, const KDateTime::Spec &spec );
+    void fillComboBox( KComboBox *comboBox );
     void selectLocalTZ();
 
     QLabel                  *mStartDateLabel;
@@ -104,10 +110,14 @@ class KOEditorGeneralEvent : public KOEditorGeneral
     QLabel                  *mDurationLabel;
     QCheckBox               *mTimeAssociateButton;
     KComboBox               *mFreeTimeCombo;
-    KComboBox               *mTimeZoneCombo;
+    KComboBox               *mTimeZoneComboStart;
+    KComboBox               *mTimeZoneComboEnd;
     // current start and end date and time
     QDateTime mCurrStartDateTime;
     QDateTime mCurrEndDateTime;
+    // specs
+    KDateTime::Spec mStartSpec;
+    KDateTime::Spec mEndSpec;
 };
 
 #endif
