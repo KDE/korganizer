@@ -28,7 +28,7 @@
 
 #include <kcal/event.h>
 
-#include <phonon/audioplayer.h>
+#include <Phonon/MediaObject>
 #include <kiconloader.h>
 #include <klocale.h>
 #include <kdebug.h>
@@ -223,8 +223,10 @@ void AlarmDialog::eventNotification()
     }
     else if (alarm->type() == Alarm::Audio) {
       beeped = true;
-      Phonon::AudioPlayer* player = new Phonon::AudioPlayer( Phonon::NotificationCategory, this );
-      player->play( KUrl( QFile::encodeName(alarm->audioFile() ) ) );
+      Phonon::MediaObject* player = Phonon::createPlayer( Phonon::NotificationCategory, alarm->audioFile() );
+      player->setParent( this );
+      connect( player, SIGNAL( finished() ), player, SLOT( deleteLater() ) );
+      player->play();
     }
   }
 
