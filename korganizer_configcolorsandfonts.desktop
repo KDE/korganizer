@@ -13,5 +13,13 @@ X-KDE-ParentComponents=korganizer,kontact_korganizerplugin
 X-KDE-CfgDlgHierarchy=KOrganizer
 
 Name=Colors and Fonts
+Name[ga]=Dathanna agus Clófhoirne
+Name[ja]=色とフォント
+Name[zh_TW]=顏色與字型
 Comment=KOrganizer Colors and Fonts Configuration
+Comment[ga]=Cumraíocht na nDathanna/gClófhoirne le haghaidh KOrganizer
+Comment[ja]=KOrganizer の色とフォントの設定
+Comment[zh_TW]=KOrganizer 顏色與字型設定
 Keywords=korganizer,colors,fonts
+Keywords[ga]=korganizer,dathanna,clófhoirne
+Keywords[ja]=korganizer,色,フォント
