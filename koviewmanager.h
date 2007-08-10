@@ -39,6 +39,7 @@ class KOTodoView;
 class KOWhatsNextView;
 class KOJournalView;
 class KOTimelineView;
+class KOTimeSpentView;
 
 namespace KOrg {
 class BaseView;
@@ -101,6 +102,7 @@ class KOViewManager : public QObject
     void showMonthView();
     void showTodoView();
     void showTimelineView();
+    void showTimeSpentView();
     void showJournalView();
 
     void showEventView();
@@ -125,7 +127,7 @@ class KOViewManager : public QObject
     KOWhatsNextView *mWhatsNextView;
     KOJournalView   *mJournalView;
     KOTimelineView  *mTimelineView;
-
+    KOTimeSpentView   *mTimeSpentView;
     KOrg::BaseView *mCurrentView;
 
     KOrg::BaseView *mLastEventView;

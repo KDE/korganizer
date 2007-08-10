@@ -38,6 +38,8 @@
       <Action name="view_month"/>
       <Action name="view_timeline"/>
       <Separator/>
+      <Action name="view_timespent"/>
+      <Separator/>
       <Action name="view_list"/>
       <Action name="view_todo"/>
       <Action name="view_journal"/>

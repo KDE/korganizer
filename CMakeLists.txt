@@ -172,6 +172,7 @@ set(korganizer_LIB_SRCS
    kowhatsnextview.cpp
    kojournalview.cpp
    journalview.cpp
+   kotimespentview.cpp
    kocore.cpp
    mailscheduler.cpp
    kodaymatrix.cpp

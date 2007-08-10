@@ -368,6 +368,9 @@ void ActionManager::initActions()
   action = new KAction( KIcon( "timeline" ), i18n("&Timeline View"), this );
   mACollection->addAction("view_timeline", action );
   connect(action, SIGNAL(triggered(bool) ), mCalendarView->viewManager(), SLOT( showTimelineView() ));
+  action = new KAction( KIcon( "timespent" ), i18n("&Timespent View"), this );
+  mACollection->addAction("view_timespent", action );
+  connect(action, SIGNAL(triggered(bool) ), mCalendarView->viewManager(), SLOT( showTimeSpentView() ));
 
 
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~ FILTERS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
