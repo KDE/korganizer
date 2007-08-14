@@ -78,7 +78,10 @@ class KOEditorFreeBusy : public QWidget
     void slotZoomToTime();
     void slotPickDate();
 
-    void reload();
+    // Force the download of FB informations
+    void manualReload();
+    // Only download FB if the auto-download option is set in config
+    void autoReload();
     void slotIntervalColorRectangleMoved( const QDateTime& start, const QDateTime& end );
 
   protected:
@@ -92,7 +95,7 @@ class KOEditorFreeBusy : public QWidget
     bool tryDate( FreeBusyItem *attendee,
                   QDateTime &tryFrom, QDateTime &tryTo );
     void updateStatusSummary();
-
+    void reload();
     KDGanttView *mGanttView;
     KDIntervalColorRectangle* mEventRectangle;
     QLabel *mStatusSummaryLabel;
@@ -102,6 +105,8 @@ class KOEditorFreeBusy : public QWidget
     QDateTime mDtStart, mDtEnd;
 
     QTimer mReloadTimer;
+
+    bool mForceDownload;
 };
 
 #endif

@@ -95,7 +95,7 @@ class FreeBusyManager : public QObject, public KCal::FreeBusyCache
 
       Return true if a download is initiated, and false otherwise
     */
-    bool retrieveFreeBusy( const QString &email );
+    bool retrieveFreeBusy( const QString &email, bool forceDownload );
 
     void cancelRetrieval();
 
@@ -120,6 +120,12 @@ class FreeBusyManager : public QObject, public KCal::FreeBusyCache
       Return directory used for stroing free/busy information.
     */
     QString freeBusyDir();
+
+    /**
+      Change the broken Url status
+      mBrokenUrl is used to show the 'broken url popup' only once
+     */
+    void setBrokenUrl( bool isBroken );
 
   public slots:
     // When something changed in the calendar, we get this called
@@ -166,6 +172,8 @@ class FreeBusyManager : public QObject, public KCal::FreeBusyCache
     QDateTime mNextUploadTime;
     int mTimerID;
     bool mUploadingFreeBusy;
+    bool mBrokenUrl;
+
 };
 
 #endif

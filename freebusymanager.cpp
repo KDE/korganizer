@@ -117,7 +117,8 @@ void FreeBusyDownloadJob::slotResult( KIO::Job *job )
 
 FreeBusyManager::FreeBusyManager( QObject *parent, const char *name )
   : QObject( parent, name ),
-    mCalendar( 0 ), mTimerID( 0 ), mUploadingFreeBusy( false )
+    mCalendar( 0 ), mTimerID( 0 ), mUploadingFreeBusy( false ),
+    mBrokenUrl( false )
 {
 }
 
@@ -207,6 +208,11 @@ void FreeBusyManager::timerEvent( QTimerEvent* )
   publishFreeBusy();
 }
 
+void FreeBusyManager::setBrokenUrl( bool isBroken )
+{
+  mBrokenUrl = isBroken;
+}
+
 /*!
   This method is called when the user has selected to publish its
   free/busy list or when the delay have passed.
@@ -224,6 +230,15 @@ void FreeBusyManager::publishFreeBusy()
             "<br>Contact your system administrator for the exact URL and the "
             "account details."
             "</qt>" ), i18n("No Free/Busy Upload URL") );
+    return;
+  }
+  if ( mBrokenUrl ) // Url is invalid, don't try again
+    return;
+  if ( !targetURL.isValid() ) {
+     KMessageBox::sorry( 0,
+      i18n( "<qt>The target URL '%1' provided is invalid."
+            "</qt>" ).arg( targetURL.prettyURL() ), i18n("Invalid URL") );
+    mBrokenUrl = true;
     return;
   }
   targetURL.setUser( KOPrefs::instance()->mFreeBusyPublishUser );
@@ -326,7 +341,7 @@ void FreeBusyManager::slotUploadFreeBusyResult(KIO::Job *_job)
     mUploadingFreeBusy = false;
 }
 
-bool FreeBusyManager::retrieveFreeBusy( const QString &email )
+bool FreeBusyManager::retrieveFreeBusy( const QString &email, bool forceDownload )
 {
   kdDebug(5850) << "FreeBusyManager::retrieveFreeBusy(): " << email << endl;
   if ( email.isEmpty() ) return false;
@@ -338,7 +353,7 @@ bool FreeBusyManager::retrieveFreeBusy( const QString &email )
   }
 
   // Don't download free/busy if the user does not want it.
-  if( !KOPrefs::instance()->mFreeBusyRetrieveAuto ) {
+  if( !KOPrefs::instance()->mFreeBusyRetrieveAuto && !forceDownload) {
     slotFreeBusyDownloadError( email ); // fblist
     return false;
   }

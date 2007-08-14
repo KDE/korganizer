@@ -53,6 +53,12 @@ class Event;
 class CalendarView;
 class FreeBusyManager;
 
+namespace KOrg {
+class IncidenceChangerBase;
+}
+
+using namespace KOrg;
+
 class KOGroupware : public QObject
 {
     Q_OBJECT
@@ -80,6 +86,8 @@ class KOGroupware : public QObject
     /** Handle iCals given by KMail. */
     void incomingDirChanged( const QString& path );
 
+    /** Updates some slot connections when the view incidence changer changes */
+    void slotViewNewIncidenceChanger( IncidenceChangerBase* changer );
   protected:
     KOGroupware( CalendarView*, KCal::CalendarResources* );
 

@@ -91,6 +91,19 @@ KOGroupware *KOGroupware::instance()
   incomingDirChanged( locateLocal( "data", "korganizer/income.delegated/" ) );
 }
 
+void KOGroupware::slotViewNewIncidenceChanger( IncidenceChangerBase* changer )
+{
+    // Call slot perhapsUploadFB if an incidence was added, changed or removed
+    connect( changer, SIGNAL( incidenceAdded( Incidence* ) ),
+             mFreeBusyManager, SLOT( slotPerhapsUploadFB() ) );
+    connect( changer, SIGNAL( incidenceChanged( Incidence*, Incidence*, int ) ),
+             mFreeBusyManager, SLOT( slotPerhapsUploadFB() ) );
+    connect( changer, SIGNAL( incidenceChanged( Incidence*, Incidence* ) ),
+             mFreeBusyManager, SLOT( slotPerhapsUploadFB() ) ) ;
+    connect( changer, SIGNAL( incidenceDeleted( Incidence * ) ),
+             mFreeBusyManager, SLOT( slotPerhapsUploadFB() ) );
+}
+
 FreeBusyManager *KOGroupware::freeBusyManager()
 {
   if ( !mFreeBusyManager ) {
@@ -98,6 +111,9 @@ FreeBusyManager *KOGroupware::freeBusyManager()
     mFreeBusyManager->setCalendar( mCalendar );
     connect( mCalendar, SIGNAL( calendarChanged() ),
              mFreeBusyManager, SLOT( slotPerhapsUploadFB() ) );
+    connect( mView, SIGNAL( newIncidenceChanger( IncidenceChangerBase* ) ),
+             this, SLOT( slotViewNewIncidenceChanger( IncidenceChangerBase* ) ) );
+    slotViewNewIncidenceChanger( mView->incidenceChanger() );
   }
 
   return mFreeBusyManager;
