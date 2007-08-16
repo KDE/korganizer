@@ -257,7 +257,7 @@ void KOEditorGeneralEvent::setDateTimes( const KDateTime &start, const KDateTime
 
   mCurrStartDateTime = start.dateTime();
   mCurrEndDateTime = end.dateTime();
-  
+
   selectTimeZoneInCombo( mTimeZoneComboStart, start.timeSpec() );
   selectTimeZoneInCombo( mTimeZoneComboEnd, end.timeSpec() );
 
@@ -433,6 +433,7 @@ void KOEditorGeneralEvent::writeEvent(Event *event)
   QDate tmpDate;
   QTime tmpTime;
   KDateTime tmpDT;
+  tmpDT.setTimeSpec( getTimeSpecFromCombo( mTimeZoneComboEnd ) );
 
   // temp. until something better happens.
   QString tmpStr;
@@ -455,7 +456,6 @@ void KOEditorGeneralEvent::writeEvent(Event *event)
     tmpTime = mEndTimeEdit->getTime();
     tmpDT.setDate(tmpDate);
     tmpDT.setTime(tmpTime);
-    tmpDT.setTimeSpec( getTimeSpecFromCombo( mTimeZoneComboEnd ) );
     event->setDtEnd(tmpDT);
 
     // set date/time start
