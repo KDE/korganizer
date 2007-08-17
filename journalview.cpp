@@ -173,8 +173,6 @@ JournalView::JournalView( Journal* j, QWidget *parent ) :
   mEditor->setTextInteractionFlags( Qt::TextSelectableByMouse |
                                     Qt::TextSelectableByKeyboard );
   mEditor->setFrameStyle( QFrame::StyledPanel );
-  //FIXME: Get this padded
-  mEditor->setStyleSheet( "padding: 50px;" );
   mLayout->addWidget( mEditor, 0, 0, 1, 3 );
 
   mEditButton = new QPushButton( this );
@@ -296,6 +294,9 @@ void JournalView::readJournal( Journal *j )
   mEditor->clear();
   QTextCursor cursor = QTextCursor( mEditor->textCursor() );
   cursor.movePosition( QTextCursor::Start );
+  QTextBlockFormat bodyBlock = QTextBlockFormat( cursor.blockFormat() );
+  //FIXME: Do padding
+  bodyBlock.setTextIndent( 2 );
   QTextCharFormat bodyFormat = QTextCharFormat( cursor.charFormat() );
   if ( !mJournal->summary().isEmpty() ) {
     QTextCharFormat titleFormat = bodyFormat;

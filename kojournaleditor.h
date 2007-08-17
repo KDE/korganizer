@@ -72,7 +72,9 @@ class KOJournalEditor : public KOIncidenceEditor
                     summary contains line breaks, the summary will be used as
                     description and only the first line will be the summary.
     */
-    void setTexts( const QString &summary, const QString &description = QString() );
+    void setTexts( const QString &summary,
+                   const QString &description = QString(),
+                   bool richDescription = false );
 
     /** Edit an existing Journal. */
     void editIncidence(Incidence *);

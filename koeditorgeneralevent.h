@@ -85,7 +85,7 @@ class KOEditorGeneralEvent : public KOEditorGeneral
     void endDateChanged( const QDate& );
     void startSpecChanged();
     void endSpecChanged();
-    
+
 
     void emitDateTimeStr();
 

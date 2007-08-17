@@ -51,8 +51,11 @@
 #include <QBoxLayout>
 #include <QPushButton>
 
-KOEditorGeneralJournal::KOEditorGeneralJournal( QObject *parent ) : QObject( parent )
+KOEditorGeneralJournal::KOEditorGeneralJournal( QObject *parent,
+                                                const char* name ) :
+    KOEditorGeneral( parent, name )
 {
+  setObjectName( name );
 }
 
 KOEditorGeneralJournal::~KOEditorGeneralJournal()
@@ -124,25 +127,6 @@ kDebug()<<"KOEditorGeneralJournal::setTime, time is valid";
   }
 }
 
-void KOEditorGeneralJournal::initDescription( QWidget *parent, QBoxLayout *topLayout )
-{
-  QBoxLayout *htmlLayout = new QHBoxLayout();
-  topLayout->addItem( htmlLayout );
-  mHtmlCheckBox = new QCheckBox( parent );
-  mHtmlLabel = new QLabel( "Use HTML", parent );
-  htmlLayout->addWidget( mHtmlCheckBox );
-  htmlLayout->addWidget( mHtmlLabel );
-  mHtmlLabel->setBuddy( mHtmlCheckBox );
-  htmlLayout->addStretch();
-  mDescriptionEdit = new KTextEdit( parent );
-  mDescriptionEdit->append("");
-  mDescriptionEdit->setReadOnly( false );
-  mDescriptionEdit->setOverwriteMode( false );
-  mDescriptionEdit->setLineWrapMode( KTextEdit::WidgetWidth );
-  mDescriptionEdit->setTabChangesFocus( true );
-  topLayout->addWidget( mDescriptionEdit );
-}
-
 void KOEditorGeneralJournal::initCategories(QWidget *parent, QBoxLayout *topLayout)
 {
   QBoxLayout *categoriesLayout = new QHBoxLayout();
@@ -204,9 +188,12 @@ void KOEditorGeneralJournal::writeJournal( Journal *journal )
 {
 //  kDebug(5850) <<"KOEditorGeneralJournal::writeIncidence()";
   journal->setSummary( mSummaryEdit->text() );
-  journal->setDescription( mDescriptionEdit->toPlainText(),
-                           mHtmlCheckBox->isChecked() );
-
+  if ( mHtmlCheckBox->isChecked() ) {
+    journal->setDescription( mDescriptionEdit->toHtml(), true );
+  }
+  else {
+    journal->setDescription( mDescriptionEdit->toPlainText(), false );
+  }
   KDateTime tmpDT( mDateEdit->date(), QTime(0,0,0), KOPrefs::instance()->timeSpec() );
   bool hasTime = mTimeCheckBox->isChecked();
   journal->setFloats( !hasTime );
@@ -216,14 +203,6 @@ void KOEditorGeneralJournal::writeJournal( Journal *journal )
   journal->setDtStart(tmpDT);
 
 //  kDebug(5850) <<"KOEditorGeneralJournal::writeJournal() done";
-}
-
-
-void KOEditorGeneralJournal::setDescription( const QString &text, bool isRich )
-{
-  //FIXME: Once we have a WYSIWYG editor then make this setHtml
-  mDescriptionEdit->setPlainText( text );
-  mHtmlCheckBox->setChecked( isRich );
 }
 
 void KOEditorGeneralJournal::setSummary( const QString &text )

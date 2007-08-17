@@ -172,18 +172,26 @@ void KOEditorGeneral::initSecrecy(QWidget *parent, QBoxLayout *topLayout)
 
 void KOEditorGeneral::initDescription(QWidget *parent,QBoxLayout *topLayout)
 {
-  mDescriptionEdit = new KTextEdit(parent);
+  QBoxLayout *htmlLayout = new QHBoxLayout();
+  topLayout->addItem( htmlLayout );
+  mHtmlCheckBox = new QCheckBox( parent );
+  mHtmlLabel = new QLabel( "Use HTML", parent );
+  htmlLayout->addWidget( mHtmlCheckBox );
+  htmlLayout->addWidget( mHtmlLabel );
+  mHtmlLabel->setBuddy( mHtmlCheckBox );
+  htmlLayout->addStretch();
+  mDescriptionEdit = new KTextEdit( parent );
   mDescriptionEdit->setWhatsThis(
-		   i18n("Sets the description for this event or to-do. This "
-			"will be displayed in a reminder if one is set, "
-			"as well as in a tooltip when you hover over the "
-			"event.") );
+                                 i18n("Sets the description for this event, to-do or journal. This "
+      "will be displayed in a reminder if one is set, "
+      "as well as in a tooltip when you hover over the "
+      "event.") );
   mDescriptionEdit->append("");
-  mDescriptionEdit->setReadOnly(false);
-  mDescriptionEdit->setOverwriteMode(false);
+  mDescriptionEdit->setReadOnly( false );
+  mDescriptionEdit->setOverwriteMode( false );
   mDescriptionEdit->setLineWrapMode( KTextEdit::WidgetWidth );
-  mDescriptionEdit->setTabChangesFocus( true );;
-  topLayout->addWidget(mDescriptionEdit);
+  mDescriptionEdit->setTabChangesFocus( true );
+  topLayout->addWidget( mDescriptionEdit );
 }
 
 void KOEditorGeneral::initAlarm(QWidget *parent,QBoxLayout *topLayout)
@@ -411,7 +419,12 @@ void KOEditorGeneral::writeIncidence( Incidence *incidence )
 {
   incidence->setSummary( mSummaryEdit->text() );
   incidence->setLocation( mLocationEdit->text() );
-  incidence->setDescription( mDescriptionEdit->toPlainText() );
+  if ( mHtmlCheckBox->isChecked() ) {
+    incidence->setDescription( mDescriptionEdit->toHtml(), true );
+  }
+  else {
+    incidence->setDescription( mDescriptionEdit->toPlainText(), false );
+  }
   incidence->setCategories( mCategories );
   switch( mSecrecyCombo->currentIndex() ) {
   case 1:
@@ -449,9 +462,16 @@ void KOEditorGeneral::setSummary( const QString &text )
   mSummaryEdit->setText( text );
 }
 
-void KOEditorGeneral::setDescription( const QString &text )
+void KOEditorGeneral::setDescription( const QString &text, bool isRich )
 {
-  mDescriptionEdit->setPlainText( text );
+  //FIXME: Once we have a WYSIWYG editor then make this setHtml
+  if ( isRich ) {
+    mDescriptionEdit->setHtml( text );
+  }
+  else {
+    mDescriptionEdit->setPlainText( text );
+  }
+  mHtmlCheckBox->setChecked( isRich );
 }
 
 QObject *KOEditorGeneral::typeAheadReceiver() const

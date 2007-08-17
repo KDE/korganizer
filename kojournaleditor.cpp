@@ -109,15 +109,17 @@ void KOJournalEditor::newJournal()
   loadDefaults();
 }
 
-void KOJournalEditor::setTexts( const QString &summary, const QString &description )
+void KOJournalEditor::setTexts( const QString &summary,
+                                const QString &description,
+                                bool richDescription )
 {
   if ( description.isEmpty() && summary.contains("\n") ) {
-    mGeneral->setDescription( summary );
+    mGeneral->setDescription( summary, false );
     int pos = summary.indexOf( "\n" );
     mGeneral->setSummary( summary.left( pos ) );
   } else {
     mGeneral->setSummary( summary );
-    mGeneral->setDescription( description );
+    mGeneral->setDescription( description, richDescription );
   }
 }
 

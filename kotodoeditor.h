@@ -60,7 +60,9 @@ class KOTodoEditor : public KOIncidenceEditor
       summary contains multiple lines, the summary will be used as description
       and only the first line of summary will be used as the summary.
     */
-    void setTexts( const QString &summary, const QString &description = QString() );
+    void setTexts( const QString &summary,
+                   const QString &description = QString(),
+                   bool richDescription = false );
     /** Edit an existing todo. */
     void editIncidence(Incidence *);
 

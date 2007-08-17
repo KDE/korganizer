@@ -25,6 +25,8 @@
 #ifndef KOEDITORGENERALJOURNAL_H
 #define KOEDITORGENERALJOURNAL_H
 
+#include "koeditorgeneral.h"
+
 #include <QObject>
 #include <QDateTime>
 #include <QLabel>
@@ -46,15 +48,14 @@ class Journal;
 }
 using namespace KCal;
 
-class KOEditorGeneralJournal : public QObject
+class KOEditorGeneralJournal : public KOEditorGeneral
 {
   Q_OBJECT
   public:
-    KOEditorGeneralJournal ( QObject* parent=0 );
+    KOEditorGeneralJournal ( QObject* parent=0, const char *name = 0 );
     virtual ~KOEditorGeneralJournal();
 
     void initDate( QWidget *, QBoxLayout * );
-    void initDescription( QWidget *, QBoxLayout * );
     void initCategories( QWidget *, QBoxLayout * );
     void initTitle( QWidget *parent, QBoxLayout *topLayout );
 
@@ -70,7 +71,6 @@ class KOEditorGeneralJournal : public QObject
     /** Check if the input is valid. */
     bool validateInput();
 
-    void setDescription( const QString &text, bool isRich = false );
     void setSummary( const QString &text );
     void finishSetup();
 
@@ -84,15 +84,12 @@ class KOEditorGeneralJournal : public QObject
   protected:
     QLineEdit  *mSummaryEdit;
     QLabel     *mSummaryLabel;
-    KTextEdit  *mDescriptionEdit;
     QLabel     *mDateLabel;
     KDateEdit  *mDateEdit;
     QCheckBox  *mTimeCheckBox;
     KTimeEdit  *mTimeEdit;
     QPushButton *mCategoriesButton;
     KSqueezedTextLabel *mCategoriesLabel;
-    QLabel     *mHtmlLabel;
-    QCheckBox  *mHtmlCheckBox;
 
   private:
     QStringList mCategories;

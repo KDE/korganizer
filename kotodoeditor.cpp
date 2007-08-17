@@ -192,15 +192,16 @@ void KOTodoEditor::newTodo()
   setCaption( i18n("New To-do") );
 }
 
-void KOTodoEditor::setTexts( const QString &summary, const QString &description )
+void KOTodoEditor::setTexts( const QString &summary, const QString &description,
+                             bool richDescription )
 {
   if ( description.isEmpty() && summary.contains("\n") ) {
-    mGeneral->setDescription( summary );
+    mGeneral->setDescription( summary, richDescription );
     int pos = summary.indexOf( "\n" );
     mGeneral->setSummary( summary.left( pos ) );
   } else {
     mGeneral->setSummary( summary );
-    mGeneral->setDescription( description );
+    mGeneral->setDescription( description, richDescription );
   }
 }
 

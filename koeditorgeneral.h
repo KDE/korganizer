@@ -91,7 +91,7 @@ class KOEditorGeneral : public QObject
     void enableAlarm( bool enable );
 
     void setSummary( const QString & );
-    void setDescription( const QString & );
+    void setDescription( const QString &, bool isRich );
 
     QObject *typeAheadReceiver() const;
 
@@ -125,6 +125,8 @@ class KOEditorGeneral : public QObject
     KComboBox               *mSecrecyCombo;
     QPushButton             *mCategoriesButton;
     KSqueezedTextLabel      *mCategoriesLabel;
+    QLabel                  *mHtmlLabel;
+    QCheckBox               *mHtmlCheckBox;
 
     enum AlarmStackPages { SimpleAlarmPage, AdvancedAlarmLabel };
 
