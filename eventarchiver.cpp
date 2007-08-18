@@ -188,7 +188,7 @@ void EventArchiver::archiveIncidences( Calendar* calendar, const QDate& /*limitD
   KUrl archiveURL( KOPrefs::instance()->mArchiveFile );
   QString archiveFile;
 
-  if ( KIO::NetAccess::exists( archiveURL, true, widget ) ) {
+  if ( KIO::NetAccess::exists( archiveURL, KIO::NetAccess::SourceSide, widget ) ) {
     if( !KIO::NetAccess::download( archiveURL, archiveFile, widget ) ) {
       kDebug(5850) <<"EventArchiver::archiveEvents(): Can't download archive file";
       return;
