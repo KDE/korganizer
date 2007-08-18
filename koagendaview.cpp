@@ -1271,9 +1271,11 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
   if ( incidence->type() == "Event" ) {
     startDt = incidence->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() );
     startDt = startDt.addDays( daysOffset );
-    startDt.setTime( startTime );
+    if ( !startDt.isDateOnly() )
+      startDt.setTime( startTime );
     endDt = startDt.addDays( daysLength );
-    endDt.setTime( endTime );
+    if ( !endDt.isDateOnly() )
+      endDt.setTime( endTime );
     Event*ev = static_cast<Event*>(incidence);
     if( incidence->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ) == startDt
         && ev->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() ) == endDt ) {
@@ -1627,6 +1629,7 @@ void KOAgendaView::changeIncidenceDisplayAdded( Incidence *incidence )
 
   QDate f = mSelectedDates.first();
   QDate l = mSelectedDates.last();
+
   QDate startDt = incidence->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ).date();
 
   if ( incidence->recurs() ) {
@@ -1654,7 +1657,6 @@ void KOAgendaView::changeIncidenceDisplayAdded( Incidence *incidence )
       return;
     }
   }
-
   if ( startDt >= f && startDt <= l ) {
     insertIncidence( incidence, startDt );
   }

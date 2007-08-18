@@ -80,7 +80,7 @@ void KOEditorGeneralEvent::fillComboBox( KComboBox *comboBox )
   }
   list.sort();
   list.prepend( "UTC" );
-  list.prepend( i18n( "No timezone" ) );
+  list.prepend( i18n( "Floating" ) );
   comboBox->addItems( list );
 }
 
@@ -91,7 +91,7 @@ KDateTime::Spec KOEditorGeneralEvent::getTimeSpecFromCombo( KComboBox *comboBox 
 
   if ( comboBox->currentText() == "UTC" )
     spec.setType( KDateTime::UTC );
-  else if ( comboBox->currentText() == i18n( "No timezone" ) )
+  else if ( comboBox->currentText() == i18n( "Floating" ) )
     spec = KDateTime::Spec();
   else
     spec.setType( KSystemTimeZones::zone( comboBox->currentText() ) );
@@ -231,6 +231,15 @@ void KOEditorGeneralEvent::timeStuffDisable(bool disable)
 {
   mStartTimeEdit->setEnabled( !disable );
   mEndTimeEdit->setEnabled( !disable );
+
+  if ( disable ) {
+  selectTimeZoneInCombo( mTimeZoneComboStart, KDateTime::Spec() );
+  selectTimeZoneInCombo( mTimeZoneComboEnd, KDateTime::Spec() );
+  } else {
+    selectLocalTZ();
+  }
+  mTimeZoneComboStart->setEnabled( !disable );
+  mTimeZoneComboEnd->setEnabled( !disable );
 
   setDuration();
   emitDateTimeStr();
@@ -433,17 +442,19 @@ void KOEditorGeneralEvent::writeEvent(Event *event)
   QDate tmpDate;
   QTime tmpTime;
   KDateTime tmpDT;
-  tmpDT.setTimeSpec( getTimeSpecFromCombo( mTimeZoneComboEnd ) );
 
   // temp. until something better happens.
   QString tmpStr;
 
   if (!mTimeAssociateButton->isChecked()) {
     event->setFloats(true);
+    tmpDT.setTimeSpec( KDateTime::ClockTime );
+
     // need to change this.
     tmpDate = mStartDateEdit->date();
     tmpDT.setDate(tmpDate);
     tmpDT.setDateOnly( true );
+    qDebug() << tmpDT.date();
     event->setDtStart(tmpDT);
 
     tmpDT.setDate( mEndDateEdit->date() );
@@ -456,6 +467,7 @@ void KOEditorGeneralEvent::writeEvent(Event *event)
     tmpTime = mEndTimeEdit->getTime();
     tmpDT.setDate(tmpDate);
     tmpDT.setTime(tmpTime);
+    tmpDT.setTimeSpec( getTimeSpecFromCombo( mTimeZoneComboEnd ) );
     event->setDtEnd(tmpDT);
 
     // set date/time start
