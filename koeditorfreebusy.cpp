@@ -391,7 +391,7 @@ void KOEditorFreeBusy::readEvent( Event *event )
 
 void KOEditorFreeBusy::slotIntervalColorRectangleMoved( const QDateTime& start, const QDateTime& end )
 {
-  kDebug() << k_funcinfo <<"slotIntervalColorRectangleMoved" << start <<"," << end;
+  kDebug() <<"slotIntervalColorRectangleMoved" << start <<"," << end;
   mDtStart = start;
   mDtEnd = end;
   emit dateTimesChanged( start, end );

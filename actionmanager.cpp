@@ -1559,7 +1559,7 @@ ActionManager::ResourceRequestReply ActionManager::resourceRequest( const QList<
  const QByteArray& resource,
  const QString& vCalIn )
 {
-    kDebug(5850) << k_funcinfo <<"resource=" << resource <<" vCalIn=" << vCalIn;
+    kDebug(5850) <<"resource=" << resource <<" vCalIn=" << vCalIn;
     ActionManager::ResourceRequestReply reply;
     reply.vCalOut = "VCalOut";
     return reply;

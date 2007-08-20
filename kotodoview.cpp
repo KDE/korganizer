@@ -787,7 +787,7 @@ void KOTodoView::restoreListViewState( Q3ListView *listView )
     listView->setContentsPos( 0, mDocPrefs->readNumEntry( listView->objectName() + " pos" ) );
     listView->blockSignals( false );
   } else
-    kError( 5850 ) << k_funcinfo <<" mDocPrefs doesn't exist";
+    kError( 5850 ) <<" mDocPrefs doesn't exist";
 }
 
 void KOTodoView::saveListViewState( Q3ListView *listView )
@@ -801,7 +801,7 @@ void KOTodoView::saveListViewState( Q3ListView *listView )
           = dynamic_cast<KOTodoViewItem *>( it.current() ) )
         mDocPrefs->writeNumEntry( todoItem->todo()->uid(), todoItem->isOpen() );
   } else
-    kError( 5850 ) << k_funcinfo <<" mDocPrefs doesn't exist";
+    kError( 5850 ) <<" mDocPrefs doesn't exist";
 }
 
 // PENDING(kalle) Don't use split listview when in sidebar.
@@ -1158,7 +1158,7 @@ void KOTodoView::popupMenu( Q3ListViewItem *item, const QPoint &, int column )
 
 void KOTodoView::newTodo()
 {
-  kDebug(5850) << k_funcinfo;
+  kDebug(5850) ;
   emit newTodoSignal( QDate::currentDate().addDays(7) );
 }
 

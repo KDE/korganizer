@@ -65,7 +65,7 @@ KOTodoEditor::~KOTodoEditor()
 
 void KOTodoEditor::init()
 {
-  kDebug(5850) << k_funcinfo;
+  kDebug(5850) ;
   setupGeneral();
   setupRecurrence();
   setupAttendeesTab();
@@ -171,7 +171,7 @@ void KOTodoEditor::setupRecurrence()
 
 void KOTodoEditor::editIncidence(Incidence *incidence)
 {
-  kDebug(5850) << k_funcinfo;
+  kDebug(5850) ;
   Todo *todo=dynamic_cast<Todo*>(incidence);
   if (todo)
   {
@@ -186,7 +186,7 @@ void KOTodoEditor::editIncidence(Incidence *incidence)
 
 void KOTodoEditor::newTodo()
 {
-  kDebug(5850) << k_funcinfo;
+  kDebug(5850) ;
   init();
   mTodo = 0;
   setCaption( i18n("New To-do") );
@@ -209,7 +209,7 @@ void KOTodoEditor::setTexts( const QString &summary, const QString &description,
 
 void KOTodoEditor::loadDefaults()
 {
-  kDebug(5850) << k_funcinfo;
+  kDebug(5850) ;
   setDates( QDateTime::currentDateTime().addDays(7), true, 0 );
 }
 

@@ -269,7 +269,7 @@ void KODialogManager::connectEditor( KOIncidenceEditor*editor )
 
 KOTodoEditor *KODialogManager::getTodoEditor()
 {
-  kDebug(5850) << k_funcinfo;
+  kDebug(5850) ;
   KOTodoEditor *todoEditor = new KOTodoEditor( mMainView->calendar(), mMainView );
   connectEditor( todoEditor );
   return todoEditor;

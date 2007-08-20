@@ -176,7 +176,7 @@ void KOTimelineView::updateView()
 /*virtual*/
 void KOTimelineView::changeIncidenceDisplay(KCal::Incidence* incidence, int mode)
 {
-  kDebug() << k_funcinfo << incidence << mode;
+  kDebug() << incidence << mode;
   switch ( mode ) {
     case KOGlobals::INCIDENCEADDED:
       insertIncidence( incidence );
@@ -259,7 +259,7 @@ void KOTimelineView::insertIncidence(KCal::Incidence * incidence, const QDate &d
 {
   TimelineItem *item = calendarItemForIncidence( incidence );
   if ( !item ) {
-    kWarning() << k_funcinfo <<"Help! Something is really wrong here!";
+    kWarning() <<"Help! Something is really wrong here!";
     return;
   }
 
