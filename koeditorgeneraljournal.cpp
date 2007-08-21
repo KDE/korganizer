@@ -4,6 +4,7 @@
   Copyright (C) 2004 Reinhold Kainhofer <reinhold@kainhofer.com>
 	large parts of code taken from KOEditorGeneralJournal.cpp:
   Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
+  Copyright (c) 2007 Mike Arthur <mike@mikearthur.co.uk>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
