@@ -34,6 +34,10 @@ class KComboBox;
 class KDateEdit;
 class KTimeEdit;
 
+namespace KPIM {
+class KTimeZoneComboBox;
+}
+
 namespace KCal {
 class Todo;
 }
@@ -85,6 +89,11 @@ class KOEditorGeneralTodo : public KOEditorGeneral
     void setCompletedDate();
 
  private:
+    KPIM::KTimeZoneComboBox       *mTimeZoneComboStart;
+    KPIM::KTimeZoneComboBox       *mTimeZoneComboDue;
+    KDateTime::Spec         mStartSpec;
+    KDateTime::Spec         mDueSpec;
+
     bool                    mAlreadyComplete;
     bool                    mStartDateModified;
 

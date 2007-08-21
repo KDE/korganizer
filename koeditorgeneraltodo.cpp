@@ -27,6 +27,7 @@
 #include "ktimeedit.h"
 
 #include <libkdepim/kdateedit.h>
+#include <libkdepim/ktimezonecombobox.h>
 
 #include <kcal/todo.h>
 
@@ -57,7 +58,7 @@
 
 KOEditorGeneralTodo::KOEditorGeneralTodo(QObject* parent,
                                          const char* name)
-  : KOEditorGeneral( parent, name)
+  : KOEditorGeneral( parent, name )
 {
 }
 
@@ -107,7 +108,19 @@ void KOEditorGeneralTodo::initTime(QWidget *parent,QBoxLayout *topLayout)
   QGridLayout *layoutTimeBox = new QGridLayout( timeGroupBox );
   layoutTimeBox->setSpacing( KDialog::spacingHint() );
 
-  QString whatsThis = i18n("Sets the start date for this to-do");
+  /*
+    Timezone
+  */
+  QString whatsThis = i18n( "Select the timezone for this event. "
+                                "It will also affect recurrences" );
+  mTimeZoneComboStart = new KPIM::KTimeZoneComboBox( timeGroupBox );
+  mTimeZoneComboDue = new KPIM::KTimeZoneComboBox( timeGroupBox );
+  layoutTimeBox->addWidget( mTimeZoneComboStart, 0, 3 );
+  layoutTimeBox->addWidget( mTimeZoneComboDue, 1, 3 );
+  mTimeZoneComboStart->setWhatsThis( whatsThis );
+  mTimeZoneComboDue->setWhatsThis( whatsThis );
+
+  whatsThis = i18n("Sets the start date for this to-do");
   mStartCheck = new QCheckBox(i18n("Sta&rt:"),timeGroupBox);
   mStartCheck->setWhatsThis( whatsThis );
   layoutTimeBox->addWidget(mStartCheck,0,0);
@@ -153,6 +166,11 @@ void KOEditorGeneralTodo::initTime(QWidget *parent,QBoxLayout *topLayout)
 
   connect(mTimeButton,SIGNAL(toggled(bool)),SLOT(enableTimeEdits(bool)));
   connect(mTimeButton,SIGNAL(toggled(bool)),SLOT(dateChanged()));
+
+  connect(mTimeZoneComboStart, SIGNAL(currentIndexChanged(int)),
+	  this, SLOT(startDateModified()) );
+  connect(mTimeZoneComboDue, SIGNAL(currentIndexChanged(int)),
+	  this, SLOT(dateChanged()) );
 
   // some more layouting
   layoutTimeBox->setColumnStretch(3,1);
@@ -266,13 +284,13 @@ void KOEditorGeneralTodo::readTodo(Todo *todo)
 
   QDateTime dueDT;
 
-  KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
   if (todo->hasDueDate()) {
     enableAlarm( true );
-    dueDT = todo->dtDue().toTimeSpec(timeSpec).dateTime();
+    dueDT = todo->dtDue().dateTime();
     mDueDateEdit->setDate(dueDT.date());
     mDueTimeEdit->setTime(dueDT.time());
     mDueCheck->setChecked(true);
+    mTimeZoneComboDue->selectTimeSpec( todo->dtDue().timeSpec() );
   } else {
     enableAlarm( false );
     mDueDateEdit->setEnabled(false);
@@ -283,10 +301,11 @@ void KOEditorGeneralTodo::readTodo(Todo *todo)
   }
 
   if (todo->hasStartDate()) {
-    QDateTime start = todo->dtStart().toTimeSpec(timeSpec).dateTime();
+    QDateTime start = todo->dtStart().dateTime();
     mStartDateEdit->setDate(start.date());
     mStartTimeEdit->setTime(start.time());
     mStartCheck->setChecked(true);
+    mTimeZoneComboStart->selectTimeSpec( todo->dtStart().timeSpec() );
   } else {
     mStartDateEdit->setEnabled(false);
     mStartTimeEdit->setEnabled(false);
@@ -300,7 +319,7 @@ void KOEditorGeneralTodo::readTodo(Todo *todo)
   mAlreadyComplete = false;
   mCompletedCombo->setCurrentIndex(todo->percentComplete() / 10);
   if (todo->isCompleted() && todo->hasCompletedDate()) {
-    mCompleted = todo->completed().toTimeSpec(timeSpec).dateTime();
+    mCompleted = todo->completed().toTimeSpec( KOPrefs::instance()->timeSpec() ).dateTime();
     mAlreadyComplete = true;
   }
   setCompletedDate();
@@ -319,9 +338,12 @@ void KOEditorGeneralTodo::writeTodo(Todo *todo)
   todo->setHasDueDate(mDueCheck->isChecked());
   todo->setHasStartDate(mStartCheck->isChecked());
 
+  KDateTime::Spec startSpec = mTimeZoneComboStart->selectedTimeSpec();
+  KDateTime::Spec dueSpec = mTimeZoneComboDue->selectedTimeSpec();
+
   QDate tmpSDate, tmpDDate;
   QTime tmpSTime, tmpDTime;
-  QDateTime tmpStartDT, tmpDueDT;
+  KDateTime tmpStartDT, tmpDueDT;
   if ( mTimeButton->isChecked() ) {
     todo->setFloats(false);
 
@@ -330,6 +352,7 @@ void KOEditorGeneralTodo::writeTodo(Todo *todo)
     tmpDTime = mDueTimeEdit->getTime();
     tmpDueDT.setDate(tmpDDate);
     tmpDueDT.setTime(tmpDTime);
+    tmpDueDT.setTimeSpec( dueSpec );
 
     // set start date/time
     if ( mStartCheck->isChecked() ) {
@@ -337,38 +360,35 @@ void KOEditorGeneralTodo::writeTodo(Todo *todo)
       tmpSTime = mStartTimeEdit->getTime();
       tmpStartDT.setDate(tmpSDate);
       tmpStartDT.setTime(tmpSTime);
+      tmpStartDT.setTimeSpec( startSpec );
     } else {
       tmpStartDT = tmpDueDT;
     }
   } else {
     todo->setFloats(true);
+    tmpDueDT.setDateOnly( true );
+    tmpStartDT.setDateOnly( true );
 
     // need to change this.
     tmpDDate = mDueDateEdit->date();
-    tmpDTime.setHMS(0,0,0);
     tmpDueDT.setDate(tmpDDate);
-    tmpDueDT.setTime(tmpDTime);
 
     if ( mStartCheck->isChecked() ) {
       tmpSDate = mStartDateEdit->date();
-      tmpSTime.setHMS(0,0,0);
       tmpStartDT.setDate(tmpSDate);
-      tmpStartDT.setTime(tmpSTime);
     } else {
       tmpStartDT = tmpDueDT;
     }
   }
 
   // TODO: Don't use the due date for the recurrence, but the start date (cf. rfc 2445)
-  KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
   if ( todo->recurs() && !mStartDateModified ) {
-    todo->setDtDue( KDateTime(tmpDueDT, timeSpec) );
+    todo->setDtDue( tmpDueDT );
   } else {
-      todo->setDtDue( KDateTime(tmpDueDT, timeSpec), true );
-      todo->setDtStart( KDateTime(tmpStartDT, timeSpec) );
-      todo->setDtRecurrence( KDateTime(tmpDueDT, timeSpec) );
+    todo->setDtDue( tmpDueDT, true );
+    todo->setDtStart( tmpStartDT );
+    todo->setDtRecurrence( tmpDueDT );
   }
-
   todo->setPriority( mPriorityCombo->currentIndex() );
 
   // set completion state
@@ -384,7 +404,8 @@ void KOEditorGeneralTodo::writeTodo(Todo *todo)
       // truncated, but that's an effect done by KTimeEdit automatically).
       completed = mCompleted;
     }
-    todo->setCompleted( KDateTime(completed, timeSpec) );
+    // TODO: should we add the ability to choose this timezone ?
+    todo->setCompleted( KDateTime(completed, KOPrefs::instance()->timeSpec() ) );
   }
 }
 
@@ -400,9 +421,13 @@ void KOEditorGeneralTodo::enableDueEdit(bool enable)
 
   if (enable) {
     mDueTimeEdit->setEnabled( mTimeButton->isChecked() );
+    mTimeZoneComboDue->setEnabled( mTimeButton->isChecked() );
   } else {
     mDueTimeEdit->setEnabled( false );
+    mTimeZoneComboDue->setEnabled( false );
   }
+
+  mTimeZoneComboDue->setFloating( !mTimeZoneComboDue->isEnabled() );
 }
 
 void KOEditorGeneralTodo::enableStartEdit( bool enable )
@@ -419,18 +444,26 @@ void KOEditorGeneralTodo::enableStartEdit( bool enable )
 
   if (enable) {
     mStartTimeEdit->setEnabled( mTimeButton->isChecked() );
+    mTimeZoneComboStart->setEnabled( mTimeButton->isChecked() );
   } else {
     mStartTimeEdit->setEnabled( false );
+    mTimeZoneComboStart->setEnabled( false );
   }
+
+  mTimeZoneComboStart->setFloating( !mTimeZoneComboStart->isEnabled() );
 }
 
 void KOEditorGeneralTodo::enableTimeEdits(bool enable)
 {
   if(mStartCheck->isChecked()) {
     mStartTimeEdit->setEnabled( enable );
+    mTimeZoneComboStart->setEnabled( enable );
+    mTimeZoneComboStart->setFloating( !enable );
   }
   if(mDueCheck->isChecked()) {
     mDueTimeEdit->setEnabled( enable );
+    mTimeZoneComboDue->setEnabled( enable );
+    mTimeZoneComboDue->setFloating( !enable );
   }
 }
 
@@ -502,18 +535,25 @@ void KOEditorGeneralTodo::dateChanged()
   if ( mStartCheck->isChecked() ) {
     dateTimeStr += i18n("Start: %1",
                                      l->formatDate( mStartDateEdit->date() ) );
-    if ( mTimeButton->isChecked() )
+    if ( mTimeButton->isChecked() ) {
       dateTimeStr += QString(" %1").arg(
                                    l->formatTime( mStartTimeEdit->getTime() ) );
+
+      dateTimeStr += mTimeZoneComboStart->selectedTimeSpec().timeZone().name();
+    }
   }
 
   if ( mDueCheck->isChecked() ) {
     dateTimeStr += i18n("   Due: %1",
                                       l->formatDate( mDueDateEdit->date() ) );
-    if ( mTimeButton->isChecked() )
+    if ( mTimeButton->isChecked() ) {
       dateTimeStr += QString(" %1").arg(
                                     l->formatTime( mDueTimeEdit->getTime() ) );
+      dateTimeStr += mTimeZoneComboDue->selectedTimeSpec().timeZone().name();
+    }
   }
+
+  mDueSpec = mTimeZoneComboDue->selectedTimeSpec();
 
   emit dateTimeStrChanged( dateTimeStr );
   QDateTime endDt( mDueDateEdit->date(), mDueTimeEdit->getTime() );
@@ -523,6 +563,8 @@ void KOEditorGeneralTodo::dateChanged()
 void KOEditorGeneralTodo::startDateModified()
 {
   mStartDateModified = true;
+  mStartSpec = mTimeZoneComboStart->selectedTimeSpec();
+
   dateChanged();
 }
 

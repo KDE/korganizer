@@ -37,6 +37,10 @@ class QCheckBox;
 class KComboBox;
 class QBoxLayout;
 
+namespace KPIM {
+class KTimeZoneComboBox;
+}
+
 namespace KCal {
 class Event;
 }
@@ -95,12 +99,6 @@ class KOEditorGeneralEvent : public KOEditorGeneral
     void dateTimesChanged( const QDateTime &start, const QDateTime &end );
 
   private:
-    // if start is true,
-    KDateTime::Spec getTimeSpecFromCombo( KComboBox *comboBox );
-    void selectTimeZoneInCombo( KComboBox *comboBox, const KDateTime::Spec &spec );
-    void fillComboBox( KComboBox *comboBox );
-    void selectLocalTZ();
-
     QLabel                  *mStartDateLabel;
     QLabel                  *mEndDateLabel;
     KDateEdit               *mStartDateEdit;
@@ -110,8 +108,8 @@ class KOEditorGeneralEvent : public KOEditorGeneral
     QLabel                  *mDurationLabel;
     QCheckBox               *mTimeAssociateButton;
     KComboBox               *mFreeTimeCombo;
-    KComboBox               *mTimeZoneComboStart;
-    KComboBox               *mTimeZoneComboEnd;
+    KPIM::KTimeZoneComboBox *mTimeZoneComboStart;
+    KPIM::KTimeZoneComboBox *mTimeZoneComboEnd;
     // current start and end date and time
     QDateTime mCurrStartDateTime;
     QDateTime mCurrEndDateTime;
