@@ -290,6 +290,7 @@ void KOEditorGeneralTodo::readTodo(Todo *todo)
     mDueDateEdit->setDate(dueDT.date());
     mDueTimeEdit->setTime(dueDT.time());
     mDueCheck->setChecked(true);
+    mDueSpec = todo->dtDue().timeSpec();
     mTimeZoneComboDue->selectTimeSpec( todo->dtDue().timeSpec() );
   } else {
     enableAlarm( false );
@@ -305,6 +306,7 @@ void KOEditorGeneralTodo::readTodo(Todo *todo)
     mStartDateEdit->setDate(start.date());
     mStartTimeEdit->setTime(start.time());
     mStartCheck->setChecked(true);
+    mStartSpec = todo->dtStart().timeSpec();
     mTimeZoneComboStart->selectTimeSpec( todo->dtStart().timeSpec() );
   } else {
     mStartDateEdit->setEnabled(false);
@@ -458,12 +460,12 @@ void KOEditorGeneralTodo::enableTimeEdits(bool enable)
   if(mStartCheck->isChecked()) {
     mStartTimeEdit->setEnabled( enable );
     mTimeZoneComboStart->setEnabled( enable );
-    mTimeZoneComboStart->setFloating( !enable );
+    mTimeZoneComboStart->setFloating( !enable, mStartSpec );
   }
   if(mDueCheck->isChecked()) {
     mDueTimeEdit->setEnabled( enable );
     mTimeZoneComboDue->setEnabled( enable );
-    mTimeZoneComboDue->setFloating( !enable );
+    mTimeZoneComboDue->setFloating( !enable, mDueSpec );
   }
 }
 
