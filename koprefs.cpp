@@ -38,7 +38,7 @@
 #include <klocale.h>
 #include <kdebug.h>
 #include <kemailsettings.h>
-#include <kstaticdeleter.h>
+#include <k3staticdeleter.h>
 #include <kstringhandler.h>
 #include <ksystemtimezone.h>
 
@@ -53,7 +53,7 @@
 #include <unistd.h>
 
 KOPrefs *KOPrefs::mInstance = 0;
-static KStaticDeleter<KOPrefs> insd;
+static K3StaticDeleter<KOPrefs> insd;
 
 QColor getTextColor( const QColor &c )
 {

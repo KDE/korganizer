@@ -33,7 +33,7 @@
 #include <kstandarddirs.h>
 #include <kglobalsettings.h>
 #include <klocale.h>
-#include <kstaticdeleter.h>
+#include <k3staticdeleter.h>
 #include <kiconloader.h>
 #include <kcomponentdata.h>
 #include <kcalendarsystem.h>
@@ -56,7 +56,7 @@ class NopAlarmClient : public AlarmClient
 
 KOGlobals *KOGlobals::mSelf = 0;
 
-static KStaticDeleter<KOGlobals> koGlobalsDeleter;
+static K3StaticDeleter<KOGlobals> koGlobalsDeleter;
 
 KOGlobals *KOGlobals::self()
 {

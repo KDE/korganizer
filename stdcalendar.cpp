@@ -24,7 +24,7 @@
 #include <kcal/resourcecalendar.h>
 #include <libkdepim/kpimprefs.h>
 
-#include <kstaticdeleter.h>
+#include <k3staticdeleter.h>
 #include <kconfig.h>
 #include <kstandarddirs.h>
 #include <klocale.h>
@@ -32,7 +32,7 @@
 
 using namespace KOrg;
 
-static KStaticDeleter<StdCalendar> selfDeleter;
+static K3StaticDeleter<StdCalendar> selfDeleter;
 
 StdCalendar *StdCalendar::mSelf = 0;
 
