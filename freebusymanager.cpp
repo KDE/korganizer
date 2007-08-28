@@ -470,16 +470,19 @@ KURL FreeBusyManager::freeBusyUrl( const QString &email )
   KURL sourceURL;
   sourceURL = KOPrefs::instance()->mFreeBusyRetrieveUrl;
 
-  // Don't try to fetch free/busy data for users not on the specified servers
-  // This tests if the hostnames match, or one is a subset of the other
-  const QString hostDomain = sourceURL.host();
-  if ( hostDomain != emailHost && !hostDomain.endsWith( '.' + emailHost )
-       && !emailHost.endsWith( '.' + hostDomain ) ) {
-    // Host names do not match
-    kdDebug(5850) << "Host '" << sourceURL.host() << "' doesn't match email '"
-      << email << '\'' << endl;
-    return KURL();
-}
+  if ( KOPrefs::instance()->mFreeBusyCheckHostname ) {
+    // Don't try to fetch free/busy data for users not on the specified servers
+    // This tests if the hostnames match, or one is a subset of the other
+    const QString hostDomain = sourceURL.host();
+    if ( hostDomain != emailHost && !hostDomain.endsWith( '.' + emailHost )
+         && !emailHost.endsWith( '.' + hostDomain ) ) {
+      // Host names do not match
+      kdDebug(5850) << "Host '" << sourceURL.host() << "' doesn't match email '"
+        << email << '\'' << endl;
+      return KURL();
+    }
+  }
+
   kdDebug(5850) << "Server FreeBusy url: " << sourceURL << endl;
   if ( KOPrefs::instance()->mFreeBusyFullDomainRetrieval )
     sourceURL.setFileName( email + ".ifb" );
