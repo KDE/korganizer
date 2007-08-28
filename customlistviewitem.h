@@ -33,12 +33,12 @@ class CustomListViewItem : public K3ListViewItem
 {
   public:
     CustomListViewItem( T data, K3ListView *parent ) :
-      K3ListViewItem( parent ), mData( data ) { updateItem(); };
+      K3ListViewItem( parent ), mData( data ) { updateItem(); }
     CustomListViewItem( T data, K3ListView *parent, K3ListViewItem* after ) :
-      K3ListViewItem( parent, after ), mData( data ) { updateItem(); };
-    ~CustomListViewItem() {};
+      K3ListViewItem( parent, after ), mData( data ) { updateItem(); }
+    ~CustomListViewItem() {}
     
-    void updateItem() {};
+    void updateItem() {}
 
     T data() const { return mData; }
 

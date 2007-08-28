@@ -123,11 +123,11 @@ class PrintPlugin : public KOrg::Plugin
     /**
       Load complete config.
     */
-    virtual void doLoadConfig() {};
+    virtual void doLoadConfig() {}
     /**
       Save complete config.
     */
-    virtual void doSaveConfig() {};
+    virtual void doSaveConfig() {}
 
 
   public:
