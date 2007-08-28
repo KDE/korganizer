@@ -23,8 +23,8 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef JOURNALENTRY_H
-#define JOURNALENTRY_H
+#ifndef KORGANIZER_JOURNALVIEW_H
+#define KORGANIZER_JOURNALVIEW_H
 //
 // Widget showing one Journal entry
 
@@ -147,5 +147,4 @@ class JournalDateView : public KVBox {
     IncidenceChangerBase *mChanger;
 };
 
-
-#endif
+#endif // KORGANIZER_JOURNALVIEW_H
