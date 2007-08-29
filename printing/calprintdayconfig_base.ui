@@ -92,7 +92,7 @@
       <item row="1" column="3" >
        <widget class="QTimeEdit" name="mToTime" >
         <property name="whatsThis" >
-         <string>It's possible to print only those events which are inside a given timerange. With this time selection box you can define the end of this time range. The start time should be defined with the &lt;i>Start time&lt;/i> option. Note you can automatically modify these settings if you check &lt;i>Extend time range to include all events&lt;/i>.</string>
+         <string>It is possible to print only those events which are inside a given timerange. With this time selection box you can define the end of this time range. The start time should be defined with the &lt;i>Start time&lt;/i> option. Note you can automatically modify these settings if you check &lt;i>Extend time range to include all events&lt;/i>.</string>
         </property>
         <property name="time" >
          <time>
@@ -129,7 +129,7 @@
       <item row="0" column="3" >
        <widget class="QTimeEdit" name="mFromTime" >
         <property name="whatsThis" >
-         <string>It's possible to print only those events which are inside a given timerange. With this time selection box you can define the start of this time range. The end time should be defined with the &lt;i>End time&lt;/i> option. Note you can automatically modify these settings if you check &lt;i>Extend time range to include all events&lt;/i>.</string>
+         <string>It is possible to print only those events which are inside a given timerange. With this time selection box you can define the start of this time range. The end time should be defined with the &lt;i>End time&lt;/i> option. Note you can automatically modify these settings if you check &lt;i>Extend time range to include all events&lt;/i>.</string>
         </property>
         <property name="time" >
          <time>
