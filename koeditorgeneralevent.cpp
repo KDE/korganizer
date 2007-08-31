@@ -147,9 +147,9 @@ void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
 
   QHBoxLayout *flagsBox = new QHBoxLayout();
 
-  mTimeAssociateButton = new QCheckBox(i18n("T&ime associated"), timeBoxFrame );
-  flagsBox->addWidget(mTimeAssociateButton);
-  connect(mTimeAssociateButton, SIGNAL(toggled(bool)),SLOT(associateTime(bool)));
+  mAlldayEventCheckbox = new QCheckBox(i18n("T&ime associated"), timeGroupBox );
+  flagsBox->addWidget(mAlldayEventCheckbox);
+  connect(mAlldayEventCheckbox, SIGNAL(toggled(bool)),SLOT(associateTime(bool)));
 
   mDurationLabel = new QLabel( timeGroupBox );
   if ( KOPrefs::instance()->mCompactDialogs ) {
@@ -340,7 +340,7 @@ void KOEditorGeneralEvent::readEvent( Event *event, bool tmpl )
 {
   QString tmpStr;
 
-  mTimeAssociateButton->setChecked(event->floats());
+  mAlldayEventCheckbox->setChecked(event->floats());
   timeStuffDisable(event->floats());
 
   if ( !tmpl ) {
