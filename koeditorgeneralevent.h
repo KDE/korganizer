@@ -106,7 +106,7 @@ class KOEditorGeneralEvent : public KOEditorGeneral
     KTimeEdit               *mStartTimeEdit;
     KTimeEdit               *mEndTimeEdit;
     QLabel                  *mDurationLabel;
-    QCheckBox               *mTimeAssociateButton;
+    QCheckBox               *mAlldayEventCheckbox;
     KComboBox               *mFreeTimeCombo;
     KPIM::KTimeZoneComboBox *mTimeZoneComboStart;
     KPIM::KTimeZoneComboBox *mTimeZoneComboEnd;
