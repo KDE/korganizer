@@ -92,7 +92,7 @@ class KOEditorGeneralEvent : public KOEditorGeneral
     KTimeEdit               *mStartTimeEdit;
     KTimeEdit               *mEndTimeEdit;
     QLabel                  *mDurationLabel;
-    QCheckBox               *mTimeAssociateButton;
+    QCheckBox               *mAlldayEventCheckbox;
     QComboBox               *mFreeTimeCombo;
 
     // current start and end date and time
