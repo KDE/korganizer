@@ -209,15 +209,19 @@ MonthViewItem::MonthViewItem( Incidence *incidence, const KDateTime &dt,
   mIncidence = incidence;
   mDateTime = dt;
 
+  mEventPixmap     = KOGlobals::self()->smallIcon("event");
   mTodoPixmap      = KOGlobals::self()->smallIcon("todo");
   mTodoDonePixmap  = KOGlobals::self()->smallIcon("checkedbox");
+  mJournalPixmap   = KOGlobals::self()->smallIcon("journal");
   mAlarmPixmap     = KOGlobals::self()->smallIcon("bell");
   mRecurPixmap     = KOGlobals::self()->smallIcon("recur");
   mReplyPixmap     = KOGlobals::self()->smallIcon("mail-reply-sender");
 
   mResourceColor = QColor();
+  mEvent     = false;
   mTodo      = false;
   mTodoDone  = false;
+  mJournal   = false;
   mRecur     = false;
   mAlarm     = false;
   mReply     = false;
@@ -241,13 +245,17 @@ void MonthViewItem::paint( QPainter *p )
     p->eraseRect( offset, offset, listBox()->maxItemWidth()-2*offset, height( listBox() )-2*offset );
   }
   int x = 3;
+  if ( mEvent ) {
+    p->drawPixmap( x, 0, mEventPixmap );
+    x += mEventPixmap.width() + 2;
+  }
   if ( mTodo ) {
     p->drawPixmap( x, 0, mTodoPixmap );
     x += mTodoPixmap.width() + 2;
   }
   if ( mTodoDone ) {
     p->drawPixmap( x, 0, mTodoDonePixmap );
-    x += mTodoPixmap.width() + 2;
+    x += mTodoDonePixmap.width() + 2;
   }
   if ( mRecur ) {
     p->drawPixmap( x, 0, mRecurPixmap );
@@ -518,6 +526,7 @@ class MonthViewCell::CreateItemVisitor :
       } else {
         mItem->setPalette( mStandardPalette );
       }
+      mItem->setEvent( true );
 
       Attendee *me = event->attendeeByMails( KOPrefs::instance()->allEmails() );
       if ( me != 0 ) {
