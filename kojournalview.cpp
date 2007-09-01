@@ -32,11 +32,11 @@
 
 #include <kcal/calendar.h>
 
-#include <kdebug.h>
-#include <klocale.h>
-#include <kvbox.h>
+#include <KDebug>
+#include <KLocale>
+#include <KVBox>
 
-#include <q3scrollview.h>
+#include <QScrollArea>
 #include <QLayout>
 #include <QLabel>
 #include <QVBoxLayout>
@@ -47,13 +47,12 @@ KOJournalView::KOJournalView(Calendar *calendar, QWidget *parent )
   : KOrg::BaseView( calendar, parent )
 {
   QVBoxLayout*topLayout = new QVBoxLayout( this );
-  mSV = new Q3ScrollView( this, "JournalScrollView" );
-  mVBox = new KVBox( mSV->viewport() );
-  mSV->setVScrollBarMode( Q3ScrollView::Auto );
-  mSV->setHScrollBarMode( Q3ScrollView::AlwaysOff );
-  mSV->setResizePolicy( Q3ScrollView::AutoOneFit );
-  mSV->addChild( mVBox );
-  topLayout->addWidget( mSV );
+  mSA = new QScrollArea( this );
+  mVBox = new KVBox( mSA->viewport() );
+  mSA->setHorizontalScrollBarPolicy( Qt::ScrollBarAlwaysOff );
+  mSA->setWidgetResizable ( true );
+  mSA->setWidget( mVBox );
+  topLayout->addWidget( mSA );
 }
 
 KOJournalView::~KOJournalView()
