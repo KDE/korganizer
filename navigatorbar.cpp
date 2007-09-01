@@ -158,10 +158,18 @@ void NavigatorBar::selectDates( const KCal::DateList &dateList )
       mHasMinWidth = true;
     }
 
-    // compute the label at the top of the navigator
+    // compute the labels at the top of the navigator
     mMonth->setText( i18nc( "monthname year", "%1 %2" ,
                        calSys->monthName( mDate ) ,
                        calSys->year( mDate ) ) );
+    QDate switchDate = mDate.addYears( -1 );
+    mPrevYear->setText( calSys->yearString( switchDate ) );
+    switchDate = mDate.addMonths( -1 );
+    mPrevMonth->setText( calSys->monthName( switchDate ) );
+    switchDate = mDate.addMonths( 1 );
+    mNextMonth->setText( calSys->monthName( switchDate ) );
+    switchDate = mDate.addYears( 1 );
+    mNextYear->setText( calSys->yearString( switchDate ) );
   }
 }
 
