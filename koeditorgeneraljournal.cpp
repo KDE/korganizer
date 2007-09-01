@@ -183,6 +183,7 @@ kDebug()<<"KOEditorGeneralJournal::readJournal, does float";
     }
   }
   setDescription( journal->description(), journal->descriptionIsRich() );
+  setCategories( journal->categories() );
 }
 
 void KOEditorGeneralJournal::writeJournal( Journal *journal )
@@ -202,6 +203,7 @@ void KOEditorGeneralJournal::writeJournal( Journal *journal )
     tmpDT.setTime( mTimeEdit->getTime() );
   }
   journal->setDtStart(tmpDT);
+  journal->setCategories( mCategories );
 
 //  kDebug(5850) <<"KOEditorGeneralJournal::writeJournal() done";
 }

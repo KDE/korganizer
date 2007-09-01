@@ -28,6 +28,7 @@
 
 #include "koeditorgeneraljournal.h"
 #include "koeditordetails.h"
+#include "koeditorattachments.h"
 #include "kodialogmanager.h"
 #include "koprefs.h"
 
@@ -61,6 +62,7 @@ void KOJournalEditor::init()
 {
   setupGeneral();
   setupAttendeesTab();
+  setupAttachmentsTab();
 }
 
 void KOJournalEditor::reload()
@@ -181,11 +183,15 @@ void KOJournalEditor::readJournal( Journal *journal )
 {
   kDebug(5851)<<"read Journal";
   mGeneral->readJournal( journal );
+  mDetails->readEvent( journal );
+  mAttachments->readIncidence( journal );
 }
 
 void KOJournalEditor::writeJournal( Journal *journal )
 {
   mGeneral->writeJournal( journal );
+  mDetails->writeEvent( journal );
+  mAttachments->writeIncidence( journal );
 }
 
 bool KOJournalEditor::validateInput()
