@@ -30,7 +30,7 @@
 #include "koglobals.h"
 
 #include <kdebug.h>
-#include <kglobalsettings.h>
+#include <kcolorscheme.h>
 #include <klocale.h>
 
 #include <QPainter>
@@ -246,11 +246,11 @@ void KOTodoViewItem::paintCell(QPainter *p, const QColorGroup &cg, int column, i
     int progress = (int)(( (width-6)*mTodo->percentComplete())/100.0 + 0.5);
 
     p->fillRect( 0, 0, width, height(), _cg.color( QPalette::Base ) ); // background
-    p->setPen( KGlobalSettings::textColor() );  //border
-    p->setBrush( KGlobalSettings::baseColor() );  //filling
+    p->setPen( KColorScheme(QPalette::Active, KColorScheme::View).foreground().color() );  //border
+    p->setBrush( KColorScheme(QPalette::Active, KColorScheme::View).background().color() );  //filling
     p->drawRect( 2, 2, width-4, height()-4);
     p->fillRect( 3, 3, progress, height()-6,
-        KGlobalSettings::highlightColor() );
+        KColorScheme(QPalette::Active, KColorScheme::Selection).background().color() );
     p->restore();
   } else {
     Q3CheckListItem::paintCell(p, _cg, column, width, alignment);
