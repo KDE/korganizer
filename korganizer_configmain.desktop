@@ -1,8 +1,7 @@
 [Desktop Entry]
-Encoding=UTF-8
 Icon=identity
 Type=Service
-ServiceTypes=KCModule
+X-KDE-ServiceTypes=KCModule
 
 X-KDE-ModuleType=Library
 X-KDE-Library=kcm_korganizer
@@ -109,12 +108,12 @@ Comment[tr]=KOrganizer Temel Yapılandırması
 Comment[uk]=Налаштування особистих даних у KOrganizer
 Comment[x-test]=xxKOrganizer Main Configurationxx
 Comment[zh_TW]=KOrganizer 主設定
-Keywords=korganizer,main
-Keywords[el]=korganizer,κύριο,βασικό
-Keywords[fa]=korganizer،اصلی
-Keywords[ga]=korganizer,príomh
-Keywords[ja]=korganizer,主要,メイン
-Keywords[nl]=korganizer,algemeen,hoofd
-Keywords[pt]=korganizer,principal
-Keywords[pt_BR]=korganizer,principal
-Keywords[sv]=korganizer,huvud
+X-KDE-Keywords=korganizer,main
+X-KDE-Keywords[el]=korganizer,κύριο,βασικό
+X-KDE-Keywords[fa]=korganizer،اصلی
+X-KDE-Keywords[ga]=korganizer,príomh
+X-KDE-Keywords[ja]=korganizer,主要,メイン
+X-KDE-Keywords[nl]=korganizer,algemeen,hoofd
+X-KDE-Keywords[pt]=korganizer,principal
+X-KDE-Keywords[pt_BR]=korganizer,principal
+X-KDE-Keywords[sv]=korganizer,huvud

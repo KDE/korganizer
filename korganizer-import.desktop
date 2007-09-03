@@ -1,5 +1,4 @@
 [Desktop Entry]
-Encoding=UTF-8
 NoDisplay=true
 Comment=Calendar and Scheduling Program
 Comment[af]=Kalender en Skedulering Program
@@ -59,7 +58,7 @@ Comment[zh_TW]=行事曆與排程軟體
 Exec=korganizer --import %U
 Icon=korganizer
 Path=
-DocPath=korganizer/index.html
+X-KDE-DocPath=korganizer/index.html
 Type=Application
 Terminal=false
 Name=KOrganizer
@@ -124,7 +123,7 @@ GenericName[uk]=Персональний тижневик
 GenericName[uz]=Шахсий органайзер
 GenericName[x-test]=xxPersonal Organizerxx
 GenericName[zh_TW]=個人行程組織軟體
-ServiceTypes=Browser/View,DBUS/Organizer
+X-KDE-ServiceTypes=Browser/View,DBUS/Organizer
 X-KDE-Library=libkorganizerpart
 X-KDE-StartupNotify=true
 X-DBUS-StartupType=Unique
