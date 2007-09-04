@@ -323,13 +323,13 @@ void KOTimelineView::itemMoved(KDGanttViewItem * item)
   Incidence *i = tlit->incidence();
   mChanger->beginChange( i );
   KDateTime newStart(tlit->startTime());
-  if ( i->floats() )
+  if ( i->allDay() )
     newStart = KDateTime( newStart.date() );
   int delta = tlit->originalStart().secsTo( newStart );
   i->setDtStart( i->dtStart().addSecs( delta ) );
   int duration = tlit->startTime().secsTo( tlit->endTime() );
   int allDayOffset = 0;
-  if ( i->floats() ) {
+  if ( i->allDay() ) {
     duration /= (60*60*24);
     duration *= (60*60*24);
     allDayOffset = (60*60*24);

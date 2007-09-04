@@ -281,7 +281,7 @@ Event *CalPrintPluginBase::holiday( const QDate &dt )
     holiday->setSummary( hstring );
     holiday->setDtStart( kdt );
     holiday->setDtEnd( kdt );
-    holiday->setFloats( true );
+    holiday->setAllDay( true );
     holiday->setCategories( i18n("Holiday") );
     return holiday;
   }
@@ -717,12 +717,12 @@ int CalPrintPluginBase::drawAllDayBox(QPainter &p, Event::List &eventList,
 
   it = eventList.begin();
   Event *currEvent = 0;
-  // First, print all floating events
+  // First, print the all-day events
   while( it!=eventList.end() ) {
     currEvent=*it;
     itold=it;
     ++it;
-    if ( currEvent && currEvent->floats() ) {
+    if ( currEvent && currEvent->allDay() ) {
       // set the colors according to the categories
       if ( expandable ) {
         QRect eventBox( box );
@@ -931,7 +931,7 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
     if ( ( !printRecurDaily  && currEvent->recurrenceType() == Recurrence::rDaily  ) ||
          ( !printRecurWeekly && currEvent->recurrenceType() == Recurrence::rWeekly ) ) {
       continue; }
-    if ( currEvent->floats() || currEvent->isMultiDay() )
+    if ( currEvent->allDay() || currEvent->isMultiDay() )
       text = "";
     else
       text = local->formatTime( currEvent->dtStart().time() );
@@ -947,7 +947,7 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
       if ( ( !printRecurDaily  && todo->recurrenceType() == Recurrence::rDaily  ) ||
            ( !printRecurWeekly && todo->recurrenceType() == Recurrence::rWeekly ) )
         continue;
-      if ( todo->hasDueDate() && !todo->floats() )
+      if ( todo->hasDueDate() && !todo->allDay() )
         text += KGlobal::locale()->formatTime(todo->dtDue().time()) + ' ';
       else
         text = "";
@@ -1068,7 +1068,7 @@ class MonthEventStruct
       event = ev;
       start = s;
       end = e;
-      if ( event->floats() ) {
+      if ( event->allDay() ) {
         start = KDateTime( start.date(), QTime(0,0,0) );
         end = KDateTime( end.date().addDays(1), QTime(0,0,0) ).addSecs(-1);
       }

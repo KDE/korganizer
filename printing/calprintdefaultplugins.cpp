@@ -135,7 +135,7 @@ class TimePrintStringsVisitor : public IncidenceBase::Visitor
       if ( event->dtStart().isValid() ) {
         mStartCaption =  i18n("Start date: ");
         // Show date/time or only date, depending on whether it's an all-day event
-        mStartString = (event->floats()) ? (event->dtStartDateStr(false)) : (event->dtStartStr(false));
+        mStartString = (event->allDay()) ? (event->dtStartDateStr(false)) : (event->dtStartStr(false));
       } else {
         mStartCaption = i18n("No start date");
         mStartString.clear();
@@ -143,7 +143,7 @@ class TimePrintStringsVisitor : public IncidenceBase::Visitor
 
       if ( event->hasEndDate() ) {
         mEndCaption = i18n("End date: ");
-        mEndString = (event->floats()) ? (event->dtEndDateStr(false)) : (event->dtEndStr(false));
+        mEndString = (event->allDay()) ? (event->dtEndDateStr(false)) : (event->dtEndStr(false));
       } else if ( event->hasDuration() ) {
         mEndCaption = i18n("Duration: ");
         int mins = event->duration().asSeconds() / 60;
@@ -163,7 +163,7 @@ class TimePrintStringsVisitor : public IncidenceBase::Visitor
       if ( todo->hasStartDate() ) {
         mStartCaption =  i18n("Start date: ");
         // Show date/time or only date, depending on whether it's an all-day event
-        mStartString = (todo->floats()) ? (todo->dtStartDateStr(false)) : (todo->dtStartStr(false));
+        mStartString = (todo->allDay()) ? (todo->dtStartDateStr(false)) : (todo->dtStartStr(false));
       } else {
         mStartCaption = i18n("No start date");
         mStartString.clear();
@@ -171,7 +171,7 @@ class TimePrintStringsVisitor : public IncidenceBase::Visitor
 
       if ( todo->hasDueDate() ) {
         mEndCaption = i18n("Due date: ");
-        mEndString = (todo->floats()) ? (todo->dtDueDateStr(false)) : (todo->dtDueStr(false));
+        mEndString = (todo->allDay()) ? (todo->dtDueDateStr(false)) : (todo->dtDueStr(false));
       } else {
         mEndCaption = i18n("No due date");
         mEndString.clear();
@@ -180,7 +180,7 @@ class TimePrintStringsVisitor : public IncidenceBase::Visitor
     }
     bool visit( Journal *journal ) {
       mStartCaption = i18n("Start date: ");
-      mStartString = (journal->floats()) ? (journal->dtStartDateStr(false)) : (journal->dtStartStr(false));
+      mStartString = (journal->allDay()) ? (journal->dtStartDateStr(false)) : (journal->dtStartStr(false));
       mEndCaption.clear();
       mEndString.clear();
       return true;

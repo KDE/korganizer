@@ -485,7 +485,7 @@ class MonthViewCell::CreateItemVisitor :
       KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
       KDateTime dt( mDate, timeSpec );
       // take the time 0:00 into account, which is non-inclusive
-      QDate dtEnd = event->dtEnd().toTimeSpec( timeSpec ).addSecs( event->floats() ? 0 : -1).date();
+      QDate dtEnd = event->dtEnd().toTimeSpec( timeSpec ).addSecs( event->allDay() ? 0 : -1).date();
       KDateTime dtStart = event->dtStart().toTimeSpec( timeSpec );
       int length = dtStart.date().daysTo( dtEnd );
       if ( event->isMultiDay() ) {
@@ -503,7 +503,7 @@ class MonthViewCell::CreateItemVisitor :
           text = "----------------";
         }
       } else {
-        if (event->floats())
+        if (event->allDay())
           text = event->summary();
         else {
 	  QTime startTime = event->dtStart().toTimeSpec( timeSpec ).time();
@@ -540,7 +540,7 @@ class MonthViewCell::CreateItemVisitor :
       if ( !KOPrefs::instance()->showAllDayTodo() )
         return false;
       KDateTime dt( mDate, KOPrefs::instance()->timeSpec() );
-      if ( todo->hasDueDate() && !todo->floats() ) {
+      if ( todo->hasDueDate() && !todo->allDay() ) {
         QTime dueTime = todo->dtDue().toTimeSpec( KOPrefs::instance()->timeSpec() ).time();
         text += KGlobal::locale()->formatTime( dueTime );
         text += ' ';
@@ -1031,14 +1031,14 @@ void KOMonthView::changeIncidenceDisplayAdded( Incidence *incidence )
     return;
   }
 
-  bool floats = incidence->floats();
+  bool allDay = incidence->allDay();
 
   KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
   if ( incidence->recurs() ) {
     for ( int i = 0; i < mCells.count(); ++i ) {
       if ( incidence->recursOn( mCells[i]->date(), timeSpec ) ) {
         // handle multiday events
-        int length = gdv.startDate().date().daysTo( gdv.endDate().addSecs( floats ? 0 : -1 ).date() );
+        int length = gdv.startDate().date().daysTo( gdv.endDate().addSecs( allDay ? 0 : -1 ).date() );
         for ( int j = 0; j <= length && i+j < mCells.count(); ++j ) {
           mCells[i+j]->addIncidence( incidence, j );
         }
@@ -1047,7 +1047,7 @@ void KOMonthView::changeIncidenceDisplayAdded( Incidence *incidence )
   } else {
     // addSecs(-1) is added to handle 0:00 cases (because it's non-inclusive according to rfc)
     if ( gdv.endDate().isValid() ) {
-      QDate endDate = gdv.endDate().toTimeSpec( KOPrefs::instance()->timeSpec() ).addSecs( floats ? 0 : -1).date();
+      QDate endDate = gdv.endDate().toTimeSpec( KOPrefs::instance()->timeSpec() ).addSecs( allDay ? 0 : -1).date();
       for ( QDate date = gdv.startDate().toTimeSpec( KOPrefs::instance()->timeSpec() ).date();
             date <= endDate; date = date.addDays( 1 ) ) {
         MonthViewCell *mvc = mDateToCell[ date ];

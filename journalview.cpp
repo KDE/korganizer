@@ -307,7 +307,7 @@ void JournalView::readJournal( Journal *j )
     cursor.insertText( mJournal->summary(), titleFormat );
     cursor.insertBlock();
   }
-  if ( !mJournal->floats() ) {
+  if ( !mJournal->allDay() ) {
     QTextCharFormat dateFormat = bodyFormat;
     dateFormat.setFontWeight( QFont::Bold );
     // FIXME: Is there a way to just make this +2?

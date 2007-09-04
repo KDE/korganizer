@@ -174,11 +174,11 @@ void KOEditorGeneralJournal::readJournal( Journal *journal, bool tmpl )
   setSummary( journal->summary() );
   if ( !tmpl ) {
     setDate( journal->dtStart().date() );
-    if ( !journal->floats() ) {
-kDebug()<<"KOEditorGeneralJournal::readJournal, does not float, time="<<(journal->dtStart().time().toString());
+    if ( !journal->allDay() ) {
+kDebug()<<"KOEditorGeneralJournal::readJournal, is not all-day, time="<<(journal->dtStart().time().toString());
       setTime( journal->dtStart().time() );
     } else {
-kDebug()<<"KOEditorGeneralJournal::readJournal, does float";
+kDebug()<<"KOEditorGeneralJournal::readJournal, is an all-day";
       setTime( QTime( -1, -1, -1 ) );
     }
   }
@@ -198,7 +198,7 @@ void KOEditorGeneralJournal::writeJournal( Journal *journal )
   }
   KDateTime tmpDT( mDateEdit->date(), QTime(0,0,0), KOPrefs::instance()->timeSpec() );
   bool hasTime = mTimeCheckBox->isChecked();
-  journal->setFloats( !hasTime );
+  journal->setAllDay( !hasTime );
   if ( hasTime ) {
     tmpDT.setTime( mTimeEdit->getTime() );
   }

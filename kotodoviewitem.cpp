@@ -127,7 +127,7 @@ void KOTodoViewItem::construct()
 
   if (mTodo->hasDueDate()) {
     QString dtStr = mTodo->dtDueDateStr();
-    if (!mTodo->floats()) {
+    if (!mTodo->allDay()) {
       dtStr += ' ' + mTodo->dtDueTimeStr();
     }
     setText( KOTodoView::eDueDateColumn, dtStr );

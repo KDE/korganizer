@@ -916,8 +916,8 @@ void CalendarView::edit_paste()
     // only use selected area if event is of the same type (all-day or non-all-day
     // as the current selection is
     if ( aView && endDT.isValid() && useEndTime ) {
-      if ( (pastedEvent->floats() && aView->selectedIsAllDay()) ||
-           (!pastedEvent->floats() && ! aView->selectedIsAllDay()) ) {
+      if ( (pastedEvent->allDay() && aView->selectedIsAllDay()) ||
+           (!pastedEvent->allDay() && ! aView->selectedIsAllDay()) ) {
         pastedEvent->setDtEnd(KDateTime( endDT, KOPrefs::instance()->timeSpec() ));
       }
     }

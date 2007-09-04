@@ -118,13 +118,13 @@ bool KOListView::ListItemVisitor::visit( Event *e )
 
   mItem->setText( 3,e->dtStartDateStr( true, KOPrefs::instance()->timeSpec() ) );
   mItem->setSortKey( 3, e->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ).toString(KDateTime::ISODate));
-  if (e->floats()) mItem->setText(4, "---"); else {
+  if (e->allDay()) mItem->setText(4, "---"); else {
     mItem->setText( 4, e->dtStartTimeStr( true, KOPrefs::instance()->timeSpec() ) );
     mItem->setSortKey( 4,e->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ).time().toString(Qt::ISODate));
   }
   mItem->setText( 5,e->dtEndDateStr( true, KOPrefs::instance()->timeSpec() ) );
   mItem->setSortKey( 5, e->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() ).toString(KDateTime::ISODate));
-  if (e->floats()) mItem->setText(6, "---"); else {
+  if (e->allDay()) mItem->setText(6, "---"); else {
     mItem->setText( 6, e->dtEndTimeStr( true, KOPrefs::instance()->timeSpec() )  );
     mItem->setSortKey( 6, e->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() ).time().toString(Qt::ISODate));
   }
@@ -158,7 +158,7 @@ bool KOListView::ListItemVisitor::visit(Todo *t)
   if (t->hasStartDate()) {
     mItem->setText(3,t->dtStartDateStr( true, false, KOPrefs::instance()->timeSpec() ));
     mItem->setSortKey(3,t->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ).toString(KDateTime::ISODate));
-    if (t->floats()) {
+    if (t->allDay()) {
       mItem->setText(4,"---");
     } else {
       mItem->setText(4,t->dtStartTimeStr( true, false, KOPrefs::instance()->timeSpec() ));
@@ -172,7 +172,7 @@ bool KOListView::ListItemVisitor::visit(Todo *t)
   if (t->hasDueDate()) {
     mItem->setText(5,t->dtDueDateStr( true, KOPrefs::instance()->timeSpec() ) );
     mItem->setSortKey( 5, t->dtDue().toTimeSpec( KOPrefs::instance()->timeSpec() ).toString(KDateTime::ISODate) );
-    if (t->floats()) {
+    if (t->allDay()) {
       mItem->setText(6,"---");
     } else {
       mItem->setText(6,t->dtDueTimeStr( true, KOPrefs::instance()->timeSpec() ));

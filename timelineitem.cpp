@@ -48,7 +48,7 @@ void TimelineItem::insertIncidence(KCal::Incidence * incidence, const KDateTime 
     start = _start;
   if ( _end.isValid() )
     end = _end;
-  if ( incidence->floats() )
+  if ( incidence->allDay() )
     end = end.addDays( 1 );
 
   typedef QList<TimelineSubItem*> ItemList;

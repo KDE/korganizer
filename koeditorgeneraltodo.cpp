@@ -316,7 +316,7 @@ void KOEditorGeneralTodo::readTodo(Todo *todo)
     mStartCheck->setChecked(false);
   }
 
-  mTimeButton->setChecked( !todo->floats() );
+  mTimeButton->setChecked( !todo->allDay() );
 
   mAlreadyComplete = false;
   mCompletedCombo->setCurrentIndex(todo->percentComplete() / 10);
@@ -347,7 +347,7 @@ void KOEditorGeneralTodo::writeTodo(Todo *todo)
   QTime tmpSTime, tmpDTime;
   KDateTime tmpStartDT, tmpDueDT;
   if ( mTimeButton->isChecked() ) {
-    todo->setFloats(false);
+    todo->setAllDay(false);
 
     // set due date/time
     tmpDDate = mDueDateEdit->date();
@@ -367,7 +367,7 @@ void KOEditorGeneralTodo::writeTodo(Todo *todo)
       tmpStartDT = tmpDueDT;
     }
   } else {
-    todo->setFloats(true);
+    todo->setAllDay(true);
     tmpDueDT.setDateOnly( true );
     tmpStartDT.setDateOnly( true );
 

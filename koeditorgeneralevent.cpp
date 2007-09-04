@@ -340,8 +340,8 @@ void KOEditorGeneralEvent::readEvent( Event *event, bool tmpl )
 {
   QString tmpStr;
 
-  mAlldayEventCheckbox->setChecked(event->floats());
-  timeStuffDisable(event->floats());
+  mAlldayEventCheckbox->setChecked(event->allDay());
+  timeStuffDisable(event->allDay());
 
   if ( !tmpl ) {
     // the rest is for the events only
@@ -375,7 +375,7 @@ void KOEditorGeneralEvent::writeEvent(Event *event)
   QString tmpStr;
 
   if (mAlldayEventCheckbox->isChecked()) {
-    event->setFloats(true);
+    event->setAllDay(true);
 
     // need to change this.
     tmpDate = mStartDateEdit->date();
@@ -388,7 +388,7 @@ void KOEditorGeneralEvent::writeEvent(Event *event)
     tmpDT.setDate( mEndDateEdit->date() );
     event->setDtEnd( tmpDT );
   } else {
-    event->setFloats(false);
+    event->setAllDay(false);
 
     // set date/time end
     tmpDate = mEndDateEdit->date();
@@ -402,7 +402,7 @@ void KOEditorGeneralEvent::writeEvent(Event *event)
     tmpDate = mStartDateEdit->date();
     tmpTime = mStartTimeEdit->getTime();
     event->setDtStart( KDateTime( tmpDate, tmpTime, mTimeZoneComboStart->selectedTimeSpec() ) );
-  } // check for float
+  } // check for all-day
 
   event->setTransparency( mFreeTimeCombo->currentIndex() > 0
                          ? KCal::Event::Transparent

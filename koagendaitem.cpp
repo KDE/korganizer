@@ -755,8 +755,8 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
 
   bool roundTop = !prevMultiItem();
   bool roundBottom = !nextMultiItem();
-  
-  drawRoundedRect( &p, QRect( ft, ft, width() - ft, height() - ft ), 
+
+  drawRoundedRect( &p, QRect( ft, ft, width() - ft, height() - ft ),
 		   frameColor, bgColor, true, ft, roundTop, roundBottom );
 
   // calculate the height of the full version (case 4) to test whether it is
@@ -814,7 +814,7 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
   if ( (2 * singleLineHeight) > (height() - 2 * margin) ) {
     int x = margin, txtWidth;
 
-    if ( mIncidence->floats() ) {
+    if ( mIncidence->allDay() ) {
       x += visRect.left();
       paintIcons( &p, x, ft );
       txtWidth = visRect.right() - margin - x;
@@ -836,7 +836,7 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
        (isMultiItem() && mMultiItemInfo->mNextMultiItem && mMultiItemInfo->mFirstMultiItem) ) {
     int x = margin, txtWidth;
 
-    if ( mIncidence->floats() ) {
+    if ( mIncidence->allDay() ) {
       x += visRect.left();
       paintIcons( &p, x, ft );
       txtWidth = visRect.right() - margin - x;
@@ -866,7 +866,7 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
 
   int x = margin, txtWidth, hTxtWidth, eventX;
 
-  if ( mIncidence->floats() ) {
+  if ( mIncidence->allDay() ) {
     shortH = longH = "";
 
     if ( (mIncidence->type() != "Todo") &&
@@ -927,13 +927,13 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
                   y, Qt::AlignHCenter | KWordWrap::FadeOut );
   delete ww;
 
-  setMask( QRegion( roundedRect( QRect( ft/2, ft/2, width(), height() ), 
+  setMask( QRegion( roundedRect( QRect( ft/2, ft/2, width(), height() ),
 				 roundTop, roundBottom ).toFillPolygon().toPolygon() ) );
 }
 
 QPainterPath KOAgendaItem::roundedRect( const QRect& rect, bool roundTop, bool roundBottom )
 {
-  int xRnd = 10; 
+  int xRnd = 10;
   int yRnd = 10;
   int xDiam = 2 * xRnd;
   int yDiam = 2 * yRnd;
@@ -966,12 +966,12 @@ QPainterPath KOAgendaItem::roundedRect( const QRect& rect, bool roundTop, bool r
   return path;
 }
 
-void KOAgendaItem::drawRoundedRect( QPainter *p, const QRect& rect, 
+void KOAgendaItem::drawRoundedRect( QPainter *p, const QRect& rect,
 				    const QColor& color, const QColor& bgcolor,
 				    bool frame, int ft, bool roundTop, bool roundBottom )
 {
   QPainterPath path = roundedRect( rect, roundTop, roundBottom );
-  
+
   QColor oldPen(p->pen().color());
   QColor oldBrush(p->brush().color());
   if ( frame ) {
