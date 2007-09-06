@@ -25,13 +25,14 @@
 #define KOGLOBALS_H
 
 #include "korganizer_export.h"
+#include <alarmclient.h>
 #include <kcomponentdata.h>
 #include <QPixmap>
 
 class QPixmap;
 class QIcon;
 class KCalendarSystem;
-class AlarmClient;
+using KPIM::AlarmClient;
 
 class KConfig;
 namespace LibKHolidays {
