@@ -30,6 +30,7 @@
 
 class QFrame;
 class HTMLExportSettings;
+using namespace KPIM;
 
 /**
   ExportWebDialog is a class that provides the dialog and functions to export a

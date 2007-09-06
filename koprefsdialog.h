@@ -43,6 +43,8 @@ class KComponentData;
 class QGroupBox;
 class QTreeWidget;
 
+using namespace KPIM;
+
 namespace Ui {
   class KOGroupwarePrefsPage;
 }
