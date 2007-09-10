@@ -72,7 +72,7 @@ class KOGroupware : public QObject
          Returns false if the user cancels the dialog, and true if the
          user presses Yes og or No.
     */
-    bool sendICalMessage( QWidget* parent, KCal::Scheduler::Method method,
+    bool sendICalMessage( QWidget* parent, KCal::iTIPMethod method,
                           Incidence* incidence, bool isDeleting = false,
                           bool statusChanged = false );
 

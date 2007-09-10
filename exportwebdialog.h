@@ -29,7 +29,10 @@
 #include <kpagedialog.h>
 
 class QFrame;
-class HTMLExportSettings;
+namespace KCal {
+  class HTMLExportSettings;
+}
+using namespace KCal;
 using namespace KPIM;
 
 /**
@@ -73,7 +76,7 @@ class ExportWebDialog : public KPageDialog, public KPrefsWidManager
     virtual void usrWriteConfig() {}
 
   private:
-    HTMLExportSettings* mSettings;
+    HTMLExportSettings *mSettings;
     QFrame *mGeneralPage;
     QFrame *mEventPage;
     QFrame *mTodoPage;

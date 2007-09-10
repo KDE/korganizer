@@ -344,8 +344,8 @@ void CalendarView::setIncidenceChanger( IncidenceChangerBase *changer )
   connect( mChanger, SIGNAL( incidenceDeleted( Incidence * ) ),
            this, SLOT( incidenceDeleted( Incidence * ) ) );
 
-  connect( mChanger, SIGNAL( schedule( Scheduler::Method, Incidence*) ),
-           this, SLOT( schedule( Scheduler::Method, Incidence*) ) );
+  connect( mChanger, SIGNAL( schedule( iTIPMethod, Incidence*) ),
+           this, SLOT( schedule( iTIPMethod, Incidence*) ) );
 
 
   connect( this, SIGNAL( cancelAttendees( Incidence * ) ),
@@ -1350,37 +1350,37 @@ void CalendarView::schedule_publish(Incidence *incidence)
 
 void CalendarView::schedule_request(Incidence *incidence)
 {
-  schedule(Scheduler::Request,incidence);
+  schedule(iTIPRequest,incidence);
 }
 
 void CalendarView::schedule_refresh(Incidence *incidence)
 {
-  schedule(Scheduler::Refresh,incidence);
+  schedule(iTIPRefresh,incidence);
 }
 
 void CalendarView::schedule_cancel(Incidence *incidence)
 {
-  schedule(Scheduler::Cancel,incidence);
+  schedule(iTIPCancel,incidence);
 }
 
 void CalendarView::schedule_add(Incidence *incidence)
 {
-  schedule(Scheduler::Add,incidence);
+  schedule(iTIPAdd,incidence);
 }
 
 void CalendarView::schedule_reply(Incidence *incidence)
 {
-  schedule(Scheduler::Reply,incidence);
+  schedule(iTIPReply,incidence);
 }
 
 void CalendarView::schedule_counter(Incidence *incidence)
 {
-  schedule(Scheduler::Counter,incidence);
+  schedule(iTIPCounter,incidence);
 }
 
 void CalendarView::schedule_declinecounter(Incidence *incidence)
 {
-  schedule(Scheduler::Declinecounter,incidence);
+  schedule(iTIPDeclineCounter,incidence);
 }
 
 void CalendarView::schedule_forward(Incidence * incidence)
@@ -1398,7 +1398,7 @@ void CalendarView::schedule_forward(Incidence * incidence)
   if ( publishdlg.exec() == QDialog::Accepted ) {
     QString recipients = publishdlg.addresses();
     ICalFormat format;
-    QString messageText = format.createScheduleMessage( incidence, Scheduler::Request );
+    QString messageText = format.createScheduleMessage( incidence, iTIPRequest );
     KOMailClient mailer;
     if ( mailer.mailTo( incidence, recipients, messageText ) ) {
 
@@ -1443,7 +1443,7 @@ void CalendarView::uploadFreeBusy()
   KOGroupware::instance()->freeBusyManager()->publishFreeBusy();
 }
 
-void CalendarView::schedule(Scheduler::Method method, Incidence *incidence)
+void CalendarView::schedule(iTIPMethod method, Incidence *incidence)
 {
   if ( !incidence ) {
     incidence = selectedIncidence();
@@ -1455,7 +1455,7 @@ void CalendarView::schedule(Scheduler::Method method, Incidence *incidence)
     return;
   }
 
-  if( incidence->attendeeCount() == 0 && method != Scheduler::Publish ) {
+  if( incidence->attendeeCount() == 0 && method != iTIPPublish ) {
     KMessageBox::information( this, i18n("The item has no attendees."),
                               "ScheduleNoIncidences" );
     return;

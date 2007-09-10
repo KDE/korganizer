@@ -35,7 +35,7 @@ public:
   ~IncidenceChanger() {}
 
   bool beginChange( Incidence * incidence );
-  bool sendGroupwareMessage( Incidence *incidence, KCal::Scheduler::Method method, bool deleting = false );
+  bool sendGroupwareMessage( Incidence *incidence, KCal::iTIPMethod method, bool deleting = false );
   bool endChange( Incidence *incidence );
 
   bool addIncidence( Incidence *incidence, QWidget *parent = 0 );

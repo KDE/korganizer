@@ -168,8 +168,8 @@ void KOGroupware::incomingDirChanged( const QString& path )
     return;
   }
 
-  KCal::Scheduler::Method method =
-    static_cast<KCal::Scheduler::Method>( message->method() );
+  KCal::iTIPMethod method =
+    static_cast<KCal::iTIPMethod>( message->method() );
   KCal::ScheduleMessage::Status status = message->status();
   KCal::Incidence* incidence =
     dynamic_cast<KCal::Incidence*>( message->event() );
@@ -194,7 +194,7 @@ void KOGroupware::incomingDirChanged( const QString& path )
     scheduler.acceptTransaction( incidence, method, status );
   } else if ( action.startsWith( "cancel" ) )
     // Delete the old incidence, if one is present
-    scheduler.acceptTransaction( incidence, KCal::Scheduler::Cancel, status );
+    scheduler.acceptTransaction( incidence, KCal::iTIPCancel, status );
   else if ( action.startsWith( "reply" ) )
     scheduler.acceptTransaction( incidence, method, status );
   else
@@ -216,7 +216,7 @@ class KOInvitationFormatterHelper : public InvitationFormatterHelper
  * Return false means revert the changes
  */
 bool KOGroupware::sendICalMessage( QWidget* parent,
-                                   KCal::Scheduler::Method method,
+                                   KCal::iTIPMethod method,
                                    Incidence* incidence, bool isDeleting,
                                    bool statusChanged )
 {
@@ -260,9 +260,9 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
       return true;
     }
   } else if( incidence->type() == "Todo" ) {
-    if( method == Scheduler::Request )
+    if( method == iTIPRequest )
       // This is an update to be sent to the organizer
-      method = Scheduler::Reply;
+      method = iTIPReply;
 
     // Ask if the user wants to tell the organizer about the current status
     QString txt = i18n( "Do you want to send a status update to the "
@@ -270,11 +270,11 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
     rc = KMessageBox::questionYesNo( parent, txt, QString(), KGuiItem(i18n("Send Update")), KGuiItem(i18n("Do Not Send")) );
   } else if( incidence->type() == "Event" ) {
     QString txt;
-    if ( statusChanged && method == Scheduler::Request ) {
+    if ( statusChanged && method == iTIPRequest ) {
       txt = i18n( "Your status as an attendee of this event "
           "changed. Do you want to send a status update to the "
           "organizer of this event?" );
-      method = Scheduler::Reply;
+      method = iTIPReply;
       rc = KMessageBox::questionYesNo( parent, txt, QString(), KGuiItem(i18n("Send Update")), KGuiItem(i18n("Do Not Send")) );
     } else {
       if( isDeleting )

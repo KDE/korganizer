@@ -43,8 +43,8 @@ class MailScheduler : public IMIPScheduler
     virtual ~MailScheduler();
 
     bool publish ( IncidenceBase *incidence, const QString &recipients );
-    bool performTransaction( IncidenceBase *incidence, Method method );
-    bool performTransaction( IncidenceBase *incidence, Method method,
+    bool performTransaction( IncidenceBase *incidence, iTIPMethod method );
+    bool performTransaction( IncidenceBase *incidence, iTIPMethod method,
                              const QString &recipients );
     QList<ScheduleMessage*> retrieveTransactions();
 

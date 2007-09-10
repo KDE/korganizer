@@ -114,10 +114,10 @@ void FreeBusyDownloadJob::slotResult( KJob *job )
 
 ////
 
-FreeBusyManager::FreeBusyManager( QObject *parent ) : 
+FreeBusyManager::FreeBusyManager( QObject *parent ) :
   QObject( parent ),
   mCalendar( 0 ), mTimerID( 0 ), mUploadingFreeBusy( false ),
-  mBrokenUrl( false )			      
+  mBrokenUrl( false )
 {
 }
 
@@ -154,7 +154,7 @@ QString FreeBusyManager::ownerFreeBusyAsString()
 
 QString FreeBusyManager::freeBusyToIcal( KCal::FreeBusy *freebusy )
 {
-  return mFormat.createScheduleMessage( freebusy, Scheduler::Publish );
+  return mFormat.createScheduleMessage( freebusy, iTIPPublish );
 }
 
 void FreeBusyManager::slotPerhapsUploadFB()
@@ -552,7 +552,7 @@ bool FreeBusyManager::saveFreeBusy( FreeBusy *freebusy, const Person &person )
   freebusy->setOrganizer( person );
 
   QString messageText = mFormat.createScheduleMessage( freebusy,
-                                                       Scheduler::Publish );
+                                                       iTIPPublish );
 
   if ( !f.open( QIODevice::ReadWrite ) ) {
     kDebug(5850) <<"acceptFreeBusy: Can't open:" << filename << "for writing";
