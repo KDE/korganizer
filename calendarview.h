@@ -55,8 +55,13 @@ class KOIncidenceEditor;
 class NavigatorBar;
 class DateChecker;
 
-namespace KOrg { class History; class IncidenceChangerBase; }
-class HTMLExportSettings;
+namespace KOrg {
+  class History;
+  class IncidenceChangerBase;
+}
+namespace KCal {
+  class HTMLExportSettings;
+}
 
 using namespace KOrg;
 using namespace KCal;
@@ -539,7 +544,7 @@ class KORGANIZER_EXPORT CalendarView : public KOrg::CalendarViewBase, public Cal
     void slotAutoArchivingSettingsModified() { emit autoArchivingSettingsModified(); }
 
     void showErrorMessage( const QString & );
-    void schedule( Scheduler::Method, Incidence *incidence );
+    void schedule( iTIPMethod, Incidence *incidence );
     void addIncidenceOn( Incidence *, const QDate & );
     void moveIncidenceTo( Incidence *, const QDate & );
     void filterActivated( int filterNum );

@@ -61,7 +61,9 @@ class KOrganizer;
 class KOWindowList;
 class ImportDialog;
 class ResourceView;
-class HTMLExportSettings;
+namespace KCal {
+  class HTMLExportSettings;
+}
 
 using namespace KCal;
 

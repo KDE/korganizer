@@ -41,7 +41,7 @@ kDebug(5850)<<"IncidenceChanger::beginChange for incidence \""<<incidence->summa
   return mCalendar->beginChange( incidence );
 }
 
-bool IncidenceChanger::sendGroupwareMessage( Incidence *incidence, KCal::Scheduler::Method method, bool deleting )
+bool IncidenceChanger::sendGroupwareMessage( Incidence *incidence, KCal::iTIPMethod method, bool deleting )
 {
   if ( KOPrefs::instance()->thatIsMe( incidence->organizer().email() ) && incidence->attendeeCount()>0
       && !KOPrefs::instance()->mUseGroupwareCommunication ) {
@@ -68,7 +68,7 @@ void IncidenceChanger::cancelAttendees( Incidence *incidence )
       // FIXME: Groupware schedulling should be factored out to it's own class
       //        anyway
       KCal::MailScheduler scheduler( mCalendar );
-      scheduler.performTransaction( incidence, Scheduler::Cancel );
+      scheduler.performTransaction( incidence, iTIPCancel );
     }
   }
 }
@@ -89,7 +89,7 @@ bool IncidenceChanger::deleteIncidence( Incidence *incidence )
 {
   if ( !incidence ) return true;
 kDebug(5850)<<"IncidenceChanger::deleteIncidence for incidence \""<<incidence->summary()<<"\"";
-  bool doDelete = sendGroupwareMessage( incidence, KCal::Scheduler::Cancel );
+  bool doDelete = sendGroupwareMessage( incidence, KCal::iTIPCancel );
   if( doDelete ) {
     // @TODO: let Calendar::deleteIncidence do the locking...
     emit incidenceToBeDeleted( incidence );
@@ -103,7 +103,7 @@ bool IncidenceChanger::cutIncidence( Incidence *incidence )
 {
   if ( !incidence ) return true;
 kDebug(5850)<<"IncidenceChanger::deleteIncidence for incidence \""<<incidence->summary()<<"\"";
-  bool doDelete = sendGroupwareMessage( incidence, KCal::Scheduler::Cancel );
+  bool doDelete = sendGroupwareMessage( incidence, KCal::iTIPCancel );
   if( doDelete ) {
     // @TODO: the factory needs to do the locking!
     DndFactory factory( mCalendar );
@@ -273,7 +273,7 @@ kDebug(5850)<<"IncidenceChanger::changeIncidence for incidence \""<<newinc->summ
     //        pattern...
     if( !KOPrefs::instance()->mUseGroupwareCommunication ||
         KOGroupware::instance()->sendICalMessage( 0,
-                                                  KCal::Scheduler::Request,
+                                                  KCal::iTIPRequest,
                                                   newinc, false, statusChanged ) ) {
       // Accept the event changes
       if ( action<0 ) {
@@ -295,7 +295,7 @@ bool IncidenceChanger::addIncidence( Incidence *incidence, QWidget *parent )
 kDebug(5850)<<"IncidenceChanger::addIncidence for incidence \""<<incidence->summary()<<"\"";
   if ( KOPrefs::instance()->mUseGroupwareCommunication ) {
     if ( !KOGroupware::instance()->sendICalMessage( parent,
-                                                    KCal::Scheduler::Request,
+                                                    KCal::iTIPRequest,
                                                     incidence ) ) {
       kError() <<"sendIcalMessage failed.";
     }

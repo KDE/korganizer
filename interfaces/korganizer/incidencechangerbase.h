@@ -43,7 +43,7 @@ public:
   virtual ~IncidenceChangerBase();
 
   virtual bool sendGroupwareMessage( Incidence *incidence,
-          KCal::Scheduler::Method method, bool deleting = false ) = 0;
+          iTIPMethod method, bool deleting = false ) = 0;
 
   virtual bool beginChange( Incidence * incidence ) = 0;
   virtual bool endChange( Incidence *incidence ) = 0;
@@ -65,7 +65,7 @@ Q_SIGNALS:
   void incidenceToBeDeleted( Incidence * );
   void incidenceDeleted( Incidence * );
 
-  void schedule( Scheduler::Method method, Incidence *incidence );
+  void schedule( iTIPMethod method, Incidence *incidence );
 protected:
   Calendar *mCalendar;
 };

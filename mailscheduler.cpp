@@ -52,13 +52,13 @@ bool MailScheduler::publish( IncidenceBase *incidence,
                              const QString &recipients )
 {
   QString messageText = mFormat->createScheduleMessage( incidence,
-                                                        Scheduler::Publish );
+                                                        iTIPPublish );
   KOMailClient mailer;
   return mailer.mailTo( incidence, recipients, messageText );
 }
 
 bool MailScheduler::performTransaction( IncidenceBase *incidence,
-                                        Method method,
+                                        iTIPMethod method,
                                         const QString &recipients )
 {
   QString messageText = mFormat->createScheduleMessage( incidence, method );
@@ -68,16 +68,16 @@ bool MailScheduler::performTransaction( IncidenceBase *incidence,
 }
 
 bool MailScheduler::performTransaction( IncidenceBase *incidence,
-                                        Method method )
+                                        iTIPMethod method )
 {
   QString messageText = mFormat->createScheduleMessage( incidence, method );
 
   KOMailClient mailer;
   bool status;
-  if ( method == Request ||
-       method == Cancel ||
-       method == Add ||
-       method == Declinecounter ) {
+  if ( method == iTIPRequest ||
+       method == iTIPCancel ||
+       method == iTIPAdd ||
+       method == iTIPDeclineCounter ) {
     status = mailer.mailAttendees( incidence, messageText );
   } else {
     status = mailer.mailOrganizer( incidence, messageText );
