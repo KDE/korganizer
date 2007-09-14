@@ -497,9 +497,9 @@ void KOEditorAttachments::dropEvent( QDropEvent* event ) {
   const QMimeData *md = event->mimeData();
   QStringList labels;
 
-  if ( KVCardDrag::canDecode( md ) ) {
+  if ( KPIM::KVCardDrag::canDecode( md ) ) {
     KABC::Addressee::List addressees;
-    KVCardDrag::fromMimeData( md, addressees );
+    KPIM::KVCardDrag::fromMimeData( md, addressees );
     for ( KABC::Addressee::List::ConstIterator it = addressees.constBegin();
           it != addressees.constEnd(); ++it ) {
       urls.append( KDEPIMPROTOCOL_CONTACT + ( *it ).uid() );

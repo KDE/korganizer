@@ -114,7 +114,7 @@ void KOAttendeeListView::contentsDragMoveEvent( QDragMoveEvent *e )
 {
 #ifndef KORG_NODND
   const QMimeData *md = e->mimeData();
-  if ( KVCardDrag::canDecode( md ) || md->hasText() ) {
+  if ( KPIM::KVCardDrag::canDecode( md ) || md->hasText() ) {
     e->accept();
   } else {
     e->ignore();
@@ -126,7 +126,7 @@ void KOAttendeeListView::dragEnterEvent( QDragEnterEvent *e )
 {
 #ifndef KORG_NODND
   const QMimeData *md = e->mimeData();
-  if ( KVCardDrag::canDecode( md ) || md->hasText() ) {
+  if ( KPIM::KVCardDrag::canDecode( md ) || md->hasText() ) {
     e->accept();
   } else {
     e->ignore();
@@ -154,9 +154,9 @@ void KOAttendeeListView::dropEvent( QDropEvent *e )
   const QMimeData *md = e->mimeData();
 
 #ifndef KORG_NOKABC
-  if ( KVCardDrag::canDecode( md ) ) {
+  if ( KPIM::KVCardDrag::canDecode( md ) ) {
     KABC::Addressee::List list;
-    KVCardDrag::fromMimeData( md, list );
+    KPIM::KVCardDrag::fromMimeData( md, list );
 
     KABC::Addressee::List::Iterator it;
     for ( it = list.begin(); it != list.end(); ++it ) {
