@@ -45,7 +45,7 @@ StdCalendar *StdCalendar::self()
 }
 
 StdCalendar::StdCalendar()
-  : CalendarResources( KPimPrefs::timeSpec() )
+  : CalendarResources( KPIM::KPimPrefs::timeSpec() )
 {
   readConfig();
 
@@ -84,7 +84,7 @@ StdCalendar::StdCalendar()
     }
 
     if ( defaultResource ) {
-      defaultResource->setTimeSpec( KPimPrefs::timeSpec() );
+      defaultResource->setTimeSpec( KPIM::KPimPrefs::timeSpec() );
       defaultResource->setResourceName( resourceName );
       manager->add( defaultResource );
       manager->setStandardResource( defaultResource );
@@ -94,7 +94,7 @@ StdCalendar::StdCalendar()
     KCal::ResourceCalendar *bdayResource = manager->createResource( "birthdays" );
     if ( bdayResource ) {
       kDebug(5850) <<"Adding Birthdays resource";
-      bdayResource->setTimeSpec( KPimPrefs::timeSpec() );
+      bdayResource->setTimeSpec( KPIM::KPimPrefs::timeSpec() );
       bdayResource->setResourceName( i18n("Birthdays") );
       manager->add( bdayResource );
     } else {

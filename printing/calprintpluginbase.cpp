@@ -275,7 +275,7 @@ Event *CalPrintPluginBase::holiday( const QDate &dt )
   QString hstring( holidayString( dt ) );
   if ( !hstring.isEmpty() ) {
     //FIXME: KOPrefs::instance()->timeSpec()?
-    KDateTime::Spec timeSpec = KPimPrefs::timeSpec();
+    KDateTime::Spec timeSpec = KPIM::KPimPrefs::timeSpec();
     KDateTime kdt( dt, QTime(), timeSpec );
     Event*holiday=new Event();
     holiday->setSummary( hstring );
@@ -917,7 +917,7 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
   p.setFont(QFont("sans-serif", 10, QFont::Bold));
   p.drawText( headerTextBox, Qt::AlignRight | Qt::AlignVCenter, dayNumStr);
 
-  Event::List eventList = mCalendar->events( qd, KPimPrefs::timeSpec(),
+  Event::List eventList = mCalendar->events( qd, KPIM::KPimPrefs::timeSpec(),
                                              EventSortStartDate,
                                              SortDirectionAscending );
   QString text;
@@ -1036,7 +1036,7 @@ void CalPrintPluginBase::drawTimeTable(QPainter &p,
 
   // draw each day
   QDate curDate(fromDate);
-  KDateTime::Spec timeSpec = KPimPrefs::timeSpec();
+  KDateTime::Spec timeSpec = KPIM::KPimPrefs::timeSpec();
   int i=0;
   double cellWidth = double(dowBox.width()) / double(fromDate.daysTo(toDate)+1);
   while (curDate<=toDate) {
@@ -1162,7 +1162,7 @@ void CalPrintPluginBase::drawMonth( QPainter &p, const QDate &dt, const QRect &b
   QList<MonthEventStruct> monthentries;
 
   //FIXME: KOPrefs::instance()->timeSpec()?
-  KDateTime::Spec timeSpec = KPimPrefs::timeSpec();
+  KDateTime::Spec timeSpec = KPIM::KPimPrefs::timeSpec();
   for ( Event::List::ConstIterator evit = events.begin();
         evit != events.end(); ++evit ) {
     Event *e = (*evit);
