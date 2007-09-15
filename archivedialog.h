@@ -31,9 +31,11 @@ class QRadioButton;
 class KComboBox;
 class KIntNumInput;
 class KUrlRequester;
-class KDateEdit;
 class QCheckBox;
 
+namespace KPIM {
+class KDateEdit;
+}
 namespace KCal {
 class Calendar;
 }
@@ -59,7 +61,7 @@ class ArchiveDialog : public KDialog
 
   private:
     KUrlRequester *mArchiveFile;
-    KDateEdit *mDateEdit;
+    KPIM::KDateEdit *mDateEdit;
     QCheckBox *mDeleteCb;
     QRadioButton *mArchiveOnceRB;
     QRadioButton *mAutoArchiveRB;

@@ -33,8 +33,6 @@
 #include <QLabel>
 #include <QBoxLayout>
 
-class KDateEdit;
-class KTimeEdit;
 class KTextEdit;
 class QLineEdit;
 class QLabel;
@@ -43,6 +41,11 @@ class QCheckBox;
 class QWidget;
 class QPushButton;
 class KSqueezedTextLabel;
+
+namespace KPIM {
+class KDateEdit;
+class KTimeEdit;
+}
 
 namespace KCal {
 class Journal;
@@ -86,9 +89,9 @@ class KOEditorGeneralJournal : public KOEditorGeneral
     QLineEdit  *mSummaryEdit;
     QLabel     *mSummaryLabel;
     QLabel     *mDateLabel;
-    KDateEdit  *mDateEdit;
+    KPIM::KDateEdit *mDateEdit;
     QCheckBox  *mTimeCheckBox;
-    KTimeEdit  *mTimeEdit;
+    KPIM::KTimeEdit *mTimeEdit;
     QPushButton *mCategoriesButton;
     KSqueezedTextLabel *mCategoriesLabel;
 

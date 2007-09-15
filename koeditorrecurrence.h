@@ -42,7 +42,9 @@ class QRadioButton;
 class QSpinBox;
 class QStackedWidget;
 
+namespace KPIM {
 class KDateEdit;
+}
 namespace KCal {
 class Incidence;
 }
@@ -199,7 +201,7 @@ class ExceptionsWidget : public QWidget, public ExceptionsBase
     void deleteException();
 
   private:
-    KDateEdit *mExceptionDateEdit;
+    KPIM::KDateEdit *mExceptionDateEdit;
     QListWidget *mExceptionList;
     DateList mExceptionDates;
 };
@@ -259,7 +261,7 @@ class RecurrenceRangeWidget : public QWidget, public RecurrenceRangeBase
     QRadioButton *mEndDurationButton;
     QSpinBox *mEndDurationEdit;
     QRadioButton *mEndDateButton;
-    KDateEdit *mEndDateEdit;
+    KPIM::KDateEdit *mEndDateEdit;
 };
 
 class RecurrenceRangeDialog : public KDialog, public RecurrenceRangeBase
