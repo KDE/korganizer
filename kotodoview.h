@@ -55,7 +55,7 @@ class KOTodoViewItem;
 
 namespace KPIM {
 class KDatePickerPopup;
-};
+}
 
 class DocPrefs;
 
