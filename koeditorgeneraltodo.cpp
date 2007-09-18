@@ -127,12 +127,12 @@ void KOEditorGeneralTodo::initTime(QWidget *parent,QBoxLayout *topLayout)
   connect(mStartCheck,SIGNAL(toggled(bool)),SLOT(enableStartEdit(bool)));
   connect(mStartCheck,SIGNAL(toggled(bool)),SLOT(startDateModified()));
 
-  mStartDateEdit = new KDateEdit(timeGroupBox);
+  mStartDateEdit = new KPIM::KDateEdit(timeGroupBox);
   mStartDateEdit->setWhatsThis( whatsThis );
   layoutTimeBox->addWidget(mStartDateEdit,0,1);
   connect(mStartDateEdit,SIGNAL(dateChanged(const QDate&)),SLOT(startDateModified()));
 
-  mStartTimeEdit = new KTimeEdit(timeGroupBox);
+  mStartTimeEdit = new KPIM::KTimeEdit(timeGroupBox);
   mStartTimeEdit->setWhatsThis(
                    i18n("Sets the start time for this to-do.") );
   layoutTimeBox->addWidget(mStartTimeEdit,0,2);
@@ -147,12 +147,12 @@ void KOEditorGeneralTodo::initTime(QWidget *parent,QBoxLayout *topLayout)
   connect(mDueCheck,SIGNAL(toggled(bool)),SIGNAL(dueDateEditToggle(bool)));
   connect(mDueCheck,SIGNAL(toggled(bool)),SLOT(dateChanged()));
 
-  mDueDateEdit = new KDateEdit(timeGroupBox);
+  mDueDateEdit = new KPIM::KDateEdit(timeGroupBox);
   mDueDateEdit->setWhatsThis( whatsThis );
   layoutTimeBox->addWidget(mDueDateEdit,1,1);
   connect(mDueDateEdit,SIGNAL(dateChanged(const QDate&)),SLOT(dateChanged()));
 
-  mDueTimeEdit = new KTimeEdit(timeGroupBox);
+  mDueTimeEdit = new KPIM::KTimeEdit(timeGroupBox);
   mDueTimeEdit->setWhatsThis(
                    i18n("Sets the due time for this to-do.") );
   layoutTimeBox->addWidget(mDueTimeEdit,1,2);
@@ -194,9 +194,9 @@ void KOEditorGeneralTodo::initCompletion(QWidget *parent, QBoxLayout *topLayout)
   mCompletedLabel = new QLabel(i18n("co&mpleted"),parent);
   topLayout->addWidget(mCompletedLabel);
   mCompletedLabel->setBuddy( mCompletedCombo );
-  mCompletionDateEdit = new KDateEdit( parent );
+  mCompletionDateEdit = new KPIM::KDateEdit( parent );
   topLayout->addWidget( mCompletionDateEdit );
-  mCompletionTimeEdit = new KTimeEdit( parent, QTime() );
+  mCompletionTimeEdit = new KPIM::KTimeEdit( parent, QTime() );
   topLayout->addWidget( mCompletionTimeEdit );
 }
 

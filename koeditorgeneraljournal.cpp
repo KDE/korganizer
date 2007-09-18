@@ -91,7 +91,7 @@ void KOEditorGeneralJournal::initDate( QWidget *parent, QBoxLayout *topLayout )
   mDateLabel = new QLabel( i18n("&Date:"), parent );
   dateLayout->addWidget( mDateLabel );
 
-  mDateEdit = new KDateEdit( parent );
+  mDateEdit = new KPIM::KDateEdit( parent );
   dateLayout->addWidget( mDateEdit );
   mDateLabel->setBuddy( mDateEdit );
 
@@ -100,7 +100,7 @@ void KOEditorGeneralJournal::initDate( QWidget *parent, QBoxLayout *topLayout )
   mTimeCheckBox = new QCheckBox( i18n("&Time: "), parent );
   dateLayout->addWidget( mTimeCheckBox );
 
-  mTimeEdit = new KTimeEdit( parent );
+  mTimeEdit = new KPIM::KTimeEdit( parent );
   dateLayout->addWidget( mTimeEdit );
   connect( mTimeCheckBox, SIGNAL(toggled(bool)),
            mTimeEdit, SLOT(setEnabled(bool)) );

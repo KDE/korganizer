@@ -52,7 +52,10 @@ class KLineEdit;
 class KOTodoListView;
 class KOTodoListViewQuickSearch;
 class KOTodoViewItem;
+
+namespace KPIM {
 class KDatePickerPopup;
+}
 
 class DocPrefs;
 
@@ -233,8 +236,8 @@ class KOTodoView : public KOrg::BaseView
     QMenu *mPriorityPopupMenu;
     QMenu *mPercentageCompletedPopupMenu;
     QMenu *mCategoryPopupMenu;
-    KDatePickerPopup *mMovePopupMenu;
-    KDatePickerPopup *mCopyPopupMenu;
+    KPIM::KDatePickerPopup *mMovePopupMenu;
+    KPIM::KDatePickerPopup *mCopyPopupMenu;
 
     QMap<QAction*, int> mPercentage;
     QMap<QAction*, int> mPriority;

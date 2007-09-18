@@ -545,7 +545,7 @@ void KOAgendaItem::dragEnterEvent( QDragEnterEvent *e )
     e->ignore();
     return;
   }
-  if ( KVCardDrag::canDecode( md ) || md->hasText() )
+  if ( KPIM::KVCardDrag::canDecode( md ) || md->hasText() )
     e->accept();
   else
     e->ignore();
@@ -580,7 +580,7 @@ void KOAgendaItem::dropEvent( QDropEvent *e )
 #ifndef KORG_NOKABC
   KABC::Addressee::List list;
 
-  if ( KVCardDrag::fromMimeData( md, list ) ) {
+  if ( KPIM::KVCardDrag::fromMimeData( md, list ) ) {
     KABC::Addressee::List::Iterator it;
     for ( it = list.begin(); it != list.end(); ++it ) {
       QString em( (*it).fullEmail() );

@@ -38,6 +38,7 @@ using namespace KOrg;
 #include <korganizer/mainwindow.h>
 
 #include <libkdepim/kdatepickerpopup.h>
+using namespace KPIM;
 
 #include <kcal/icaldrag.h>
 #include <kcal/vcaldrag.h>

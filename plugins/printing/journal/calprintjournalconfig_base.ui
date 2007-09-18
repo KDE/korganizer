@@ -77,7 +77,7 @@
          </widget>
         </item>
         <item>
-         <widget class="KDateEdit" name="mFromDate" >
+         <widget class="KPIM::KDateEdit" name="mFromDate" >
           <property name="focusPolicy" >
            <enum>Qt::StrongFocus</enum>
           </property>
@@ -94,7 +94,7 @@
          </widget>
         </item>
         <item>
-         <widget class="KDateEdit" name="mToDate" >
+         <widget class="KPIM::KDateEdit" name="mToDate" >
           <property name="focusPolicy" >
            <enum>Qt::StrongFocus</enum>
           </property>
@@ -143,7 +143,7 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>KDateEdit</class>
+   <class>KPIM::KDateEdit</class>
    <extends>QComboBox</extends>
    <header>kdateedit.h</header>
    <container>0</container>

@@ -31,13 +31,13 @@
 #include <QBoxLayout>
 
 class QLabel;
-class KDateEdit;
-class KTimeEdit;
 class QCheckBox;
 class KComboBox;
 class QBoxLayout;
 
 namespace KPIM {
+class KDateEdit;
+class KTimeEdit;
 class KTimeZoneComboBox;
 }
 
@@ -101,10 +101,10 @@ class KOEditorGeneralEvent : public KOEditorGeneral
   private:
     QLabel                  *mStartDateLabel;
     QLabel                  *mEndDateLabel;
-    KDateEdit               *mStartDateEdit;
-    KDateEdit               *mEndDateEdit;
-    KTimeEdit               *mStartTimeEdit;
-    KTimeEdit               *mEndTimeEdit;
+    KPIM::KDateEdit         *mStartDateEdit;
+    KPIM::KDateEdit         *mEndDateEdit;
+    KPIM::KTimeEdit         *mStartTimeEdit;
+    KPIM::KTimeEdit         *mEndTimeEdit;
     QLabel                  *mDurationLabel;
     QCheckBox               *mAlldayEventCheckbox;
     KComboBox               *mFreeTimeCombo;

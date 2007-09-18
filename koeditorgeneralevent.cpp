@@ -112,11 +112,11 @@ void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
   mStartDateLabel = new QLabel( i18n("&Start:"), timeGroupBox );
   layoutTimeBox->addWidget( mStartDateLabel, 0, 0 );
 
-  mStartDateEdit = new KDateEdit( timeGroupBox );
+  mStartDateEdit = new KPIM::KDateEdit( timeGroupBox );
   layoutTimeBox->addWidget(mStartDateEdit,0,1);
   mStartDateLabel->setBuddy( mStartDateEdit );
 
-  mStartTimeEdit = new KTimeEdit( timeGroupBox );
+  mStartTimeEdit = new KPIM::KTimeEdit( timeGroupBox );
   layoutTimeBox->addWidget(mStartTimeEdit,0,2);
 
   /*
@@ -138,11 +138,11 @@ void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
   mEndDateLabel = new QLabel( i18n("&End:"), timeGroupBox );
   layoutTimeBox->addWidget( mEndDateLabel, 1, 0 );
 
-  mEndDateEdit = new KDateEdit( timeGroupBox );
+  mEndDateEdit = new KPIM::KDateEdit( timeGroupBox );
   layoutTimeBox->addWidget(mEndDateEdit,1,1);
   mEndDateLabel->setBuddy( mEndDateEdit );
 
-  mEndTimeEdit = new KTimeEdit( timeGroupBox );
+  mEndTimeEdit = new KPIM::KTimeEdit( timeGroupBox );
   layoutTimeBox->addWidget( mEndTimeEdit, 1, 2 );
 
   QHBoxLayout *flagsBox = new QHBoxLayout();

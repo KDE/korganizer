@@ -565,7 +565,7 @@ void CalPrintDay::print( QPainter &p, int width, int height )
 {
   QDate curDay( mFromDate );
 
-  KDateTime::Spec timeSpec = KPimPrefs::timeSpec();
+  KDateTime::Spec timeSpec = KPIM::KPimPrefs::timeSpec();
   do {
     QTime curStartTime( mStartTime );
     QTime curEndTime( mEndTime );

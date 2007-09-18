@@ -100,7 +100,7 @@
          </widget>
         </item>
         <item>
-         <widget class="KDateEdit" name="mFromDate" >
+         <widget class="KPIM::KDateEdit" name="mFromDate" >
           <property name="enabled" >
            <bool>false</bool>
           </property>
@@ -145,7 +145,7 @@
          </widget>
         </item>
         <item>
-         <widget class="KDateEdit" name="mToDate" >
+         <widget class="KPIM::KDateEdit" name="mToDate" >
           <property name="enabled" >
            <bool>false</bool>
           </property>
@@ -394,7 +394,7 @@
  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>KDateEdit</class>
+   <class>KPIM::KDateEdit</class>
    <extends>QComboBox</extends>
    <header>kdateedit.h</header>
   </customwidget>

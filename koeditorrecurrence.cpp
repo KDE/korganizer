@@ -598,7 +598,7 @@ ExceptionsWidget::ExceptionsWidget( QWidget *parent ) : QWidget( parent )
 
   QGridLayout *boxLayout = new QGridLayout( groupBox );
 
-  mExceptionDateEdit = new KDateEdit( groupBox );
+  mExceptionDateEdit = new KPIM::KDateEdit( groupBox );
   mExceptionDateEdit->setWhatsThis(
        i18n("A date that should be considered an exception "
       "to the recurrence rules for this event or to-do.") );
@@ -772,7 +772,7 @@ RecurrenceRangeWidget::RecurrenceRangeWidget( QWidget *parent ) : QWidget( paren
   rangeButtonGroup->addButton( mEndDateButton );
   endDateLayout->addWidget( mEndDateButton );
 
-  mEndDateEdit = new KDateEdit( mRangeGroupBox );
+  mEndDateEdit = new KPIM::KDateEdit( mRangeGroupBox );
   mEndDateEdit->setWhatsThis( i18n("Date after which the event or to-do should stop "
                         "recurring") );
   endDateLayout->addWidget( mEndDateEdit );

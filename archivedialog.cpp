@@ -92,7 +92,7 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent)
   mArchiveOnceRB = new QRadioButton(i18n("Archive now items older than:"),topFrame);
   dateLayout->addWidget(mArchiveOnceRB);
   radioBG->addButton(mArchiveOnceRB);
-  mDateEdit = new KDateEdit(topFrame);
+  mDateEdit = new KPIM::KDateEdit(topFrame);
   mDateEdit->setWhatsThis(
     i18n("The date before which items should be archived. All older events and to-dos will "
          "be saved and deleted, the newer (and events exactly on that date) will be kept."));
