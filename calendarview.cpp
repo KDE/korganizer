@@ -598,6 +598,15 @@ void CalendarView::goDate( const QDate& date )
   mNavigator->selectDate( date );
 }
 
+void CalendarView::showDate(const QDate & date)
+{
+  int dateCount = mNavigator->datesCount();
+  if ( dateCount == 7 )
+    mNavigator->selectWeek( date );
+  else
+    mNavigator->selectDates( date, dateCount );
+}
+
 void CalendarView::goToday()
 {
   mNavigator->selectToday();

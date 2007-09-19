@@ -103,6 +103,8 @@ class KCalendarIface : public DCOPObject
 
     virtual void goDate( const QDate& date ) = 0;
     virtual void goDate( const QString& date ) = 0;
+
+    virtual void showDate( const QDate &date ) = 0;
 };
 
 inline QDataStream& operator<<( QDataStream& str, const KCalendarIface::ResourceRequestReply& reply )

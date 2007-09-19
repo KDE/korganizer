@@ -205,6 +205,7 @@ class KDE_EXPORT ActionManager : public QObject, public KCalendarIface
 
     void goDate( const QDate& );
     void goDate( const QString& );
+    void showDate( const QDate &date );
 
     QString localFileName();
 
