@@ -518,6 +518,9 @@ class KORGANIZER_EXPORT CalendarView : public KOrg::CalendarViewBase, public Cal
     /** Move the current view date to the specified date */
     void goDate( const QDate& date );
 
+    /** Show the given date without changing date selection length. */
+    void showDate( const QDate &date );
+
     /** Move the current view date to today */
     void goToday();
 

@@ -230,6 +230,7 @@ class KORGANIZER_EXPORT ActionManager : public QObject
 
     void goDate( const QDate& );
     void goDate( const QString& );
+    void showDate( const QDate &date );
 
   public:
     QString localFileName();
