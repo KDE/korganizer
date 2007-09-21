@@ -13,6 +13,7 @@ Name[pa]=ਵਿਕਿਪੀਡਿਆ 'ਇਤਹਾਸ ਵਿੱਚ ਅੱਜ ਦ
 Name[pt]='Plugin' do Wikipédia para 'Aconteceu neste dia'
 Name[pt_BR]='Plugin' do Wikipédia para 'Aconteceu neste dia'
 Name[sv]=Insticksprogram med 'Den här dagen i historien' från Wikipedia
+Name[zh_CN]=Wikipedia “历史上的今天” 插件
 Name[zh_TW]=維基百科「歷史上的今天」外掛程式
 Type=Service
 ServiceTypes=Calendar/Plugin,Calendar/Decoration

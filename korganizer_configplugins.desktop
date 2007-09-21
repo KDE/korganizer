@@ -57,6 +57,7 @@ Name[tr]=Eklentiler
 Name[uk]=Втулки
 Name[uz]=Плагинлар
 Name[x-test]=xxPluginsxx
+Name[zh_CN]=插件
 Name[zh_TW]=外掛程式
 Comment=KOrganizer Plugin Configuration
 Comment[af]=Korganizer inprop module opstelling
@@ -104,6 +105,7 @@ Comment[ta]=கேஅமைப்பாளர் சொருகுப்பொ�
 Comment[tr]=KOrganizer Eklenti Yapılandırması
 Comment[uk]=Втулок налаштування KOrganizer
 Comment[x-test]=xxKOrganizer Plugin Configurationxx
+Comment[zh_CN]=KOrganizer 插件配置
 Comment[zh_TW]=KOrganizer外掛程式設定
 X-KDE-Keywords=korganizer,plugin,module
 X-KDE-Keywords[bg]=X-KDE-Keywords=организатор, модул, приставка, korganizer, plugin, module

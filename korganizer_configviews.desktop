@@ -63,6 +63,7 @@ Name[tr]=Görünümler
 Name[uk]=Перегляди
 Name[uz]=Кўринишлар
 Name[x-test]=xxViewsxx
+Name[zh_CN]=视图
 Name[zh_TW]=檢視
 Comment=KOrganizer View Configuration
 Comment[af]=KOrganizer aansig opstelling
@@ -110,6 +111,7 @@ Comment[tg]=Танзимоти намудҳои органайзери KDE
 Comment[tr]=KOrganizer Görünüm Yapılandırması
 Comment[uk]=Налаштування переглядів у KOrganizer
 Comment[x-test]=xxKOrganizer View Configurationxx
+Comment[zh_CN]=KOrganizer 视图配置
 Comment[zh_TW]=KOrganizer 檢視設定
 X-KDE-Keywords=korganizer,view
 X-KDE-Keywords[bg]=X-KDE-Keywords=организатор, изглед, изгледи, настройки, korganizer, view
