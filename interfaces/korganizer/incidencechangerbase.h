@@ -37,19 +37,19 @@ class IncidenceChangerBase : public QObject
 {
 Q_OBJECT
 public:
-  IncidenceChangerBase( Calendar*cal, QObject *parent = 0 ) : 
+  IncidenceChangerBase( Calendar*cal, QObject *parent = 0 ) :
         QObject( parent ), mCalendar( cal ) {}
   virtual ~IncidenceChangerBase() {}
 
-  virtual bool sendGroupwareMessage( Incidence *incidence, 
+  virtual bool sendGroupwareMessage( Incidence *incidence,
           KCal::Scheduler::Method method, bool deleting = false ) = 0;
 
   virtual bool beginChange( Incidence * incidence ) = 0;
   virtual bool endChange( Incidence *incidence ) = 0;
 
   virtual bool addIncidence( Incidence *incidence, QWidget *parent = 0 ) = 0;
-  virtual bool changeIncidence( Incidence *newinc, Incidence *oldinc, 
-                                int action = -1 ) = 0;
+  virtual bool changeIncidence( Incidence *newinc, Incidence *oldinc,
+                                int action = -1, bool counter = false ) = 0;
   virtual bool deleteIncidence( Incidence *incidence ) = 0;
   virtual bool cutIncidence( Incidence *incidence ) = 0;
 
@@ -63,7 +63,7 @@ signals:
   void incidenceChanged( Incidence *oldInc, Incidence *newInc );
   void incidenceToBeDeleted( Incidence * );
   void incidenceDeleted( Incidence * );
-  
+
   void schedule( Scheduler::Method method, Incidence *incidence );
 protected:
   Calendar *mCalendar;

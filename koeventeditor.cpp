@@ -272,7 +272,7 @@ bool KOEventEditor::processInput()
       kdDebug(5850) << "Event changed\n";
       //IncidenceChanger::assignIncidence( mEvent, event );
       writeEvent( mEvent );
-      mChanger->changeIncidence( oldEvent, mEvent );
+      mChanger->changeIncidence( oldEvent, mEvent, -1, mIsCounter );
     }
     delete event;
     delete oldEvent;
@@ -300,6 +300,7 @@ void KOEventEditor::processCancel()
   kdDebug(5850) << "KOEventEditor::processCancel()" << endl;
 
   if ( mFreeBusy ) mFreeBusy->cancelReload();
+  if ( mIsCounter ) deleteEvent();
 }
 
 void KOEventEditor::deleteEvent()

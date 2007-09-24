@@ -59,7 +59,7 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
                                       Calendar *calendar, QWidget *parent )
   : KDialogBase( Tabbed, caption, Ok | Apply | Cancel | Default, Ok,
                  parent, 0, false, false ),
-    mDetails( 0 ), mAttachments( 0 )
+    mDetails( 0 ), mAttachments( 0 ), mIsCounter( false )
 {
   // Set this to be the group leader for all subdialogs - this means
   // modal subdialogs will only affect this dialog, not the other windows
@@ -118,7 +118,7 @@ void KOIncidenceEditor::slotApply()
 
 void KOIncidenceEditor::slotOk()
 {
-  // "this" can be deleted before processInput() returns (processInput() opens 
+  // "this" can be deleted before processInput() returns (processInput() opens
   // a non-modal dialog when Kolab is used). So accept should only be executed
   // when "this" is still valid
   QGuardedPtr<QWidget> ptr( this );
@@ -397,6 +397,15 @@ void KOIncidenceEditor::addAttendees( const QStringList &attendees )
   }
 }
 
+void KOIncidenceEditor::selectInvitationCounterProposal(bool enable)
+{
+  mIsCounter = enable;
+  if ( mIsCounter ) {
+    setCaption( i18n( "Counter proposal" ) );
+    setButtonOK( i18n( "Counter proposal" ) );
+    enableButtonApply( false );
+  }
+}
 
 
 #include "koincidenceeditor.moc"

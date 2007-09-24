@@ -68,6 +68,8 @@ class KOIncidenceEditor : public KDialogBase
 
     virtual void reload() = 0;
 
+    void selectInvitationCounterProposal( bool enable );
+
   public slots:
     void updateCategoryConfig();
     /** Edit an existing todo. */
@@ -148,6 +150,7 @@ class KOIncidenceEditor : public KDialogBase
     QMap<QWidget*, KPIM::DesignerFields*> mDesignerFieldForWidget;
     QPtrList<QWidget> mEmbeddedURLPages;
     QPtrList<QWidget> mAttachedDesignerFields;
+    bool mIsCounter;
 };
 
 #endif
