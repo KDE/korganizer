@@ -59,6 +59,7 @@ Name[tg]=Варақаҳои замимавии истифодашаванда
 Name[tr]=Özel Sayfa
 Name[uk]=Нетипові сторінки
 Name[x-test]=xxCustom Pagesxx
+Name[zh_CN]=定制页
 Comment=Configure the Custom Pages
 Comment[af]=Stel die pasmaak blaaie op
 Comment[bg]=Настройки на потребителските полета
@@ -107,6 +108,7 @@ Comment[tg]=Танзимоти варақаҳои замимавии истиф�
 Comment[tr]=Özel Sayfaları Yapılandır
 Comment[uk]=Налаштування нетипових сторінок
 Comment[x-test]=xxConfigure the Custom Pagesxx
+Comment[zh_CN]=配置定制页
 Comment[zh_TW]=設定 Custom Pages
 X-KDE-Keywords=korganizer, configure, settings, custom fields
 X-KDE-Keywords[bg]=X-KDE-Keywords=организатор, настройки, korganizer, configure, settings, custom fields
