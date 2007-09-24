@@ -43,6 +43,7 @@
 #include <qvgroupbox.h>
 #include <qwhatsthis.h>
 #include <qwidgetstack.h>
+#include <qvaluevector.h>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -53,7 +54,7 @@
 #include <kabc/vcardconverter.h>
 #include <libkdepim/addressesdialog.h>
 #include <libkdepim/addresseelineedit.h>
-#include <kabc/distributionlist.h>
+#include <libkdepim/distributionlist.h>
 #include <kabc/stdaddressbook.h>
 #endif
 #include <libkdepim/kvcarddrag.h>
@@ -391,19 +392,7 @@ void KOEditorDetails::openAddressBook()
     KABC::Addressee::List aList = dia->allToAddressesNoDuplicates();
     for ( KABC::Addressee::List::iterator itr = aList.begin();
           itr != aList.end(); ++itr ) {
-      KABC::Addressee a = (*itr);
-      bool myself = KOPrefs::instance()->thatIsMe( a.preferredEmail() );
-      bool sameAsOrganizer = mOrganizerCombo &&
-        KPIM::compareEmail( a.preferredEmail(), mOrganizerCombo->currentText(), false );
-      KCal::Attendee::PartStat partStat;
-      if ( myself && sameAsOrganizer )
-        partStat = KCal::Attendee::Accepted;
-      else
-        partStat = KCal::Attendee::NeedsAction;
-      insertAttendee( new Attendee( a.realName(), a.preferredEmail(),
-                                    !myself, partStat,
-                                    KCal::Attendee::ReqParticipant, a.uid() ),
-                      true );
+      insertAttendeeFromAddressee( (*itr) );
     }
   }
   delete dia;
@@ -511,15 +500,52 @@ void KOEditorDetails::readEvent( Incidence *event )
 void KOEditorDetails::writeEvent(Incidence *event)
 {
   event->clearAttendees();
+  QValueVector<QListViewItem*> toBeDeleted;
   QListViewItem *item;
   AttendeeListItem *a;
   for (item = mListView->firstChild(); item;
        item = item->nextSibling()) {
     a = (AttendeeListItem *)item;
-    event->addAttendee(new Attendee(*(a->data())));
+    Attendee *attendee = a->data();
+    Q_ASSERT( attendee );
+    /* Check if the attendee is a distribution list and expand it */
+    if ( attendee->email().isEmpty() ) {
+      KPIM::DistributionList list = 
+        KPIM::DistributionList::findByName( KABC::StdAddressBook::self(), attendee->name() );
+      if ( !list.isEmpty() ) {
+        toBeDeleted.push_back( item ); // remove it once we are done expanding
+        KPIM::DistributionList::Entry::List entries = list.entries( KABC::StdAddressBook::self() );
+        KPIM::DistributionList::Entry::List::Iterator it( entries.begin() );
+        while ( it != entries.end() ) {
+          KPIM::DistributionList::Entry &e = ( *it );
+          ++it;
+          // this calls insertAttendee, which appends
+          insertAttendeeFromAddressee( e.addressee, attendee ); 
+          // TODO: duplicate check, in case it was already added manually
+        }
+      }
+    } else {
+      bool skip = false;
+      if ( attendee->email().endsWith( "example.net" ) ) {
+        if ( KMessageBox::warningYesNo( this, i18n("%1 does not look like a valid email address. "
+                "Are you sure you want to invite this participant?").arg( attendee->email() ),
+              i18n("Invalid email address") ) != KMessageBox::Yes ) {
+          skip = true;
+        }
+      }
+      if ( !skip ) {
+        event->addAttendee( new Attendee( *attendee ) );
+      }
+    }
   }
   if ( mOrganizerCombo ) {
+    // TODO: Don't take a string and split it up... Is there a better way?
     event->setOrganizer( mOrganizerCombo->currentText() );
+  }
+  // cleanup
+  QValueVector<QListViewItem*>::iterator it;
+  for( it = toBeDeleted.begin(); it != toBeDeleted.end(); ++it ) {
+    delete *it;
   }
 }
 
@@ -650,5 +676,28 @@ void KOEditorDetails::fillOrganizerCombo()
   }
   mOrganizerCombo->insertStringList( uniqueList );
 }
+
+void KOEditorDetails::insertAttendeeFromAddressee( const KABC::Addressee& a,
+                                                   const Attendee* at )
+{
+  bool myself = KOPrefs::instance()->thatIsMe( a.preferredEmail() );
+  bool sameAsOrganizer = mOrganizerCombo &&
+    KPIM::compareEmail( a.preferredEmail(), mOrganizerCombo->currentText(), false );
+  KCal::Attendee::PartStat partStat = at? at->status() : KCal::Attendee::NeedsAction;
+  bool rsvp = at? at->RSVP() : true;
+  
+  if ( myself && sameAsOrganizer ) {
+    partStat = KCal::Attendee::Accepted;
+    rsvp = false;
+  }
+  Attendee *newAt = new Attendee( a.realName(),
+                               a.preferredEmail(),
+                               !myself, partStat,
+                               at ? at->role() : Attendee::ReqParticipant,
+                               a.uid() );
+  newAt->setRSVP( rsvp );
+  insertAttendee( newAt, true );
+}
+
 
 #include "koeditordetails.moc"
