@@ -381,7 +381,7 @@
                                     <cstring>mSoundFile</cstring>
                                 </property>
                                 <property name="filter">
-                                    <string>*.wav|Wav Files\n*.mp3|MP3 files\n*.*|All files</string>
+					<string>audio/x-wav audio/x-mp3 application/ogg</string>
                                 </property>
                             </widget>
                             <spacer>
