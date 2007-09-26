@@ -125,7 +125,6 @@ class KOEditorGeneral : public QObject
     KComboBox               *mSecrecyCombo;
     QPushButton             *mCategoriesButton;
     KSqueezedTextLabel      *mCategoriesLabel;
-    QLabel                  *mHtmlLabel;
     QCheckBox               *mHtmlCheckBox;
 
     enum AlarmStackPages { SimpleAlarmPage, AdvancedAlarmLabel };
