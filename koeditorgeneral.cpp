@@ -175,11 +175,8 @@ void KOEditorGeneral::initDescription(QWidget *parent,QBoxLayout *topLayout)
 {
   QBoxLayout *htmlLayout = new QHBoxLayout();
   topLayout->addItem( htmlLayout );
-  mHtmlCheckBox = new QCheckBox( parent );
-  mHtmlLabel = new QLabel( "Use HTML", parent );
+  mHtmlCheckBox = new QCheckBox( i18n("Use HTML"), parent );
   htmlLayout->addWidget( mHtmlCheckBox );
-  htmlLayout->addWidget( mHtmlLabel );
-  mHtmlLabel->setBuddy( mHtmlCheckBox );
   htmlLayout->addStretch();
   mDescriptionEdit = new KTextEdit( parent );
   mDescriptionEdit->setWhatsThis(
