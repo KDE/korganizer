@@ -38,6 +38,7 @@
 #include "freebusymanager.h"
 #include "calendarview.h"
 #include "mailscheduler.h"
+#include "koincidenceeditor.h"
 #include "koprefs.h"
 #include <kpimutils/email.h>
 #include <kcal/attendee.h>
@@ -51,6 +52,7 @@
 #include <QRegExp>
 #include <QDir>
 #include <QTextStream>
+#include <QTimer>
 
 FreeBusyManager *KOGroupware::mFreeBusyManager = 0;
 
@@ -80,28 +82,24 @@ KOGroupware *KOGroupware::instance()
   KDirWatch* watcher = KDirWatch::self();
   watcher->addDir( KStandardDirs::locateLocal( "data", "korganizer/income.accepted/" ) );
   watcher->addDir( KStandardDirs::locateLocal( "data", "korganizer/income.tentative/" ) );
+  watcher->addDir( KStandardDirs::locateLocal( "data", "korganizer/income.counter/" ) );
   watcher->addDir( KStandardDirs::locateLocal( "data", "korganizer/income.cancel/" ) );
   watcher->addDir( KStandardDirs::locateLocal( "data", "korganizer/income.reply/" ) );
   watcher->addDir( KStandardDirs::locateLocal( "data", "korganizer/income.delegated/" ) );
   connect( watcher, SIGNAL( dirty( const QString& ) ),
            this, SLOT( incomingDirChanged( const QString& ) ) );
   // Now set the ball rolling
+  QTimer::singleShot( 0, this, SLOT(initialCheckForChanges()) );
+}
+
+void KOGroupware::initialCheckForChanges()
+{
   incomingDirChanged( KStandardDirs::locateLocal( "data", "korganizer/income.accepted/" ) );
   incomingDirChanged( KStandardDirs::locateLocal( "data", "korganizer/income.tentative/" ) );
+  incomingDirChanged( KStandardDirs::locateLocal( "data", "korganizer/income.counter/" ) );
   incomingDirChanged( KStandardDirs::locateLocal( "data", "korganizer/income.cancel/" ) );
   incomingDirChanged( KStandardDirs::locateLocal( "data", "korganizer/income.reply/" ) );
   incomingDirChanged( KStandardDirs::locateLocal( "data", "korganizer/income.delegated/" ) );
-
-  if ( !mFreeBusyManager ) {
-    mFreeBusyManager = new FreeBusyManager( this );
-    mFreeBusyManager->setObjectName( "freebusymanager" );
-    mFreeBusyManager->setCalendar( mCalendar );
-    connect( mCalendar, SIGNAL( calendarChanged() ),
-             mFreeBusyManager, SLOT( slotPerhapsUploadFB() ) );
-    connect( mView, SIGNAL( newIncidenceChanger( IncidenceChangerBase* ) ),
-             this, SLOT( slotViewNewIncidenceChanger( IncidenceChangerBase* ) ) );
-    slotViewNewIncidenceChanger( mView->incidenceChanger() );
-  }
 }
 
 void KOGroupware::slotViewNewIncidenceChanger( IncidenceChangerBase* changer )
@@ -175,7 +173,7 @@ void KOGroupware::incomingDirChanged( const QString& path )
     dynamic_cast<KCal::Incidence*>( message->event() );
   KCal::MailScheduler scheduler( mCalendar );
   if ( action.startsWith( "accepted" ) || action.startsWith( "tentative" )
-       || action.startsWith( "delegated" ) ) {
+       || action.startsWith( "delegated" ) || action.startsWith( "counter" ) ) {
     // Find myself and set my status. This can't be done in the scheduler,
     // since this does not know the choice I made in the KMail bpf
     KCal::Attendee::List attendees = incidence->attendees();
@@ -184,7 +182,7 @@ void KOGroupware::incomingDirChanged( const QString& path )
       if( (*it)->email() == receiver ) {
         if ( action.startsWith( "accepted" ) )
           (*it)->setStatus( KCal::Attendee::Accepted );
-        else if ( action.startsWith( "tentative" ) )
+        else if ( action.startsWith( "tentative" ) || action.startsWith( "counter" ) )
           (*it)->setStatus( KCal::Attendee::Tentative );
         else if ( action.startsWith( "delegated" ) )
           (*it)->setStatus( KCal::Attendee::Delegated );
@@ -199,6 +197,12 @@ void KOGroupware::incomingDirChanged( const QString& path )
     scheduler.acceptTransaction( incidence, method, status );
   else
     kError(5850) <<"Unknown incoming action" << action;
+
+  if ( action.startsWith( "counter" ) ) {
+    mView->editIncidence( incidence );
+    KOIncidenceEditor *tmp = mView->editorDialog( incidence );
+    tmp->selectInvitationCounterProposal( true );
+  }
   mView->updateView();
   delete message;
 }

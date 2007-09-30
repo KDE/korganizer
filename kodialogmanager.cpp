@@ -249,8 +249,8 @@ void KODialogManager::connectTypeAhead( KOEventEditor *editor,
 
 void KODialogManager::connectEditor( KOIncidenceEditor*editor )
 {
-/*  connect( editor, SIGNAL( deleteIncidenceSignal( Incidence * ) ),
-           mMainView, SLOT( deleteIncidence( Incidence * ) ) );*/
+  connect( editor, SIGNAL( deleteIncidenceSignal( Incidence * ) ),
+           mMainView, SLOT( deleteIncidence( Incidence * ) ) );
 
   connect( mCategoryEditDialog, SIGNAL( categoryConfigChanged() ),
            editor, SLOT( updateCategoryConfig() ) );
