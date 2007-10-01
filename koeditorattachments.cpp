@@ -149,8 +149,8 @@ class AttachmentIconItem : public K3IconViewItem
         overlays << "link";
       }
 
-      return KIconLoader::global()->loadIcon( iconStr, K3Icon::Desktop, 0,
-                                              K3Icon::DefaultState,
+      return KIconLoader::global()->loadIcon( iconStr, KIconLoader::Desktop, 0,
+                                              KIconLoader::DefaultState,
                                               overlays  );
     }
 
@@ -336,7 +336,7 @@ protected:
     }
     QPixmap pixmap;
     if( urls.count() > 1 )
-        pixmap = KIconLoader::global()->loadIcon( "kmultiple", K3Icon::Desktop );
+        pixmap = KIconLoader::global()->loadIcon( "kmultiple", KIconLoader::Desktop );
     if( pixmap.isNull() )
         pixmap = static_cast<AttachmentIconItem *>( currentItem() )->icon();
 
