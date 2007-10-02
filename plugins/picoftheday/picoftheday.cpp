@@ -198,8 +198,9 @@ void POTDElement::step2Result( KJob* job )
   for ( int i=0; i<divs.length(); i++ ) {
     if ( QString( divs.item(i).attributes().namedItem("class").nodeValue() ) ==
            QString( "description " + wikipediaLanguage ) ) {
-      // TODO: delete the <span> tag before the real description text
-      mDescription = QString( divs.item(i).toElement().text() );
+      QDomNode descrNode = divs.item(i);
+      descrNode.removeChild( descrNode.firstChild() );
+      mDescription = QString( descrNode.toElement().text().trimmed() );
       mLongText = mDescription;
       emit gotNewLongText( mLongText );
 //      break; // TODO: make this more reliable (for now we use the last desc.,
