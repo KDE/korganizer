@@ -163,13 +163,13 @@ void NavigatorBar::selectDates( const KCal::DateList &dateList )
                        calSys->monthName( mDate ) ,
                        calSys->year( mDate ) ) );
     QDate switchDate = mDate.addYears( -1 );
-    mPrevYear->setText( calSys->yearString( switchDate ) );
+    mPrevYear->setToolTip( calSys->yearString( switchDate ) );
     switchDate = mDate.addMonths( -1 );
-    mPrevMonth->setText( calSys->monthName( switchDate ) );
+    mPrevMonth->setToolTip( calSys->monthName( switchDate ) );
     switchDate = mDate.addMonths( 1 );
-    mNextMonth->setText( calSys->monthName( switchDate ) );
+    mNextMonth->setToolTip( calSys->monthName( switchDate ) );
     switchDate = mDate.addYears( 1 );
-    mNextYear->setText( calSys->yearString( switchDate ) );
+    mNextYear->setToolTip( calSys->yearString( switchDate ) );
   }
 }
 
