@@ -82,8 +82,10 @@ Element::List Picoftheday::createDayElements( const QDate &date )
 POTDElement::POTDElement( const QString &id, const QDate &date,
                           const QSize &initialThumbSize )
   : StoredElement( id ), mDate( date ), mThumbSize( initialThumbSize ),
-    mFirstStepCompleted( false ), mSecondStepCompleted( false ),
-    mFirstStepJob( 0 ), mSecondStepJob( 0 ), mThirdStepJob( 0 )
+    mFirstStepCompleted( false ), mFirstStepBisCompleted( false ),
+    mSecondStepCompleted( false ),
+    mFirstStepJob( 0 ), mFirstStepBisJob( 0 ), mSecondStepJob( 0 ),
+    mThirdStepJob( 0 )
 {
   setShortText( i18n("Loading…") );
   setLongText( i18n("<qt>Loading <i>Picture of the Day</i>…</qt>") );
@@ -97,6 +99,7 @@ POTDElement::POTDElement( const QString &id, const QDate &date,
 /** First step of three in the download process */
 void POTDElement::step1StartDownload()
 {
+  // Start downloading the picture
   if ( (!mFirstStepCompleted) && (!mFirstStepJob) ) {
     KUrl url = KUrl( "http://commons.wikimedia.org/wiki/Template:Potd/"
                     + mDate.toString(Qt::ISODate) + "?action=raw" );
@@ -108,6 +111,20 @@ void POTDElement::step1StartDownload()
     connect( mFirstStepJob,  SIGNAL( result(KJob *) ),
              this, SLOT( step1Result(KJob *) ) );
     connect( this, SIGNAL( step1Success() ), this, SLOT( step2GetImagePage() ) );
+  }
+  // Download its description
+  if ( (!mFirstStepBisCompleted) && (!mFirstStepBisJob) ) {
+    QString wikipediaLanguage = KGlobal::locale()->language();
+    wikipediaLanguage.replace( QRegExp("^([^_][^_]*)_.*$"), "\\1" );
+    KUrl url = KUrl( "http://commons.wikimedia.org/wiki/Template:Potd/"
+                    + mDate.toString(Qt::ISODate) + "_(" + wikipediaLanguage
+                    + ')' + "?action=render" );
+
+    mFirstStepBisJob = KIO::storedGet( url, false, false );
+    KIO::Scheduler::scheduleJob( mFirstStepBisJob );
+
+    connect( mFirstStepBisJob,  SIGNAL( result(KJob *) ),
+             this, SLOT( step1BisResult(KJob *) ) );
   }
 }
 
@@ -139,6 +156,37 @@ void POTDElement::step1Result( KJob* job )
     mFirstStepCompleted = true;
     mFirstStepJob = 0;
     emit step1Success();
+  }
+}
+
+/**
+  Give it a job which fetched the raw page,
+  and it'll give you the description hiding in it.
+ */
+void POTDElement::step1BisResult( KJob* job )
+{
+  if ( job->error() )
+  {
+    kWarning() <<"picoftheday Plugin: could not get POTD description:"
+               << job->errorString();
+    kDebug() <<"file name:" << mFileName;
+    kDebug() <<"full-size image:" << mFullSizeImageUrl.url();
+    kDebug() <<"thumbnail:" << mThumbUrl.url();
+    mFirstStepBisCompleted = false;
+    return;
+  }
+
+  // First step completed: we now know the POTD's description
+  KIO::StoredTransferJob* const transferJob =
+    static_cast<KIO::StoredTransferJob*>( job );
+  QString description = QString::fromUtf8( transferJob->data().data(),
+                                           transferJob->data().size() );
+  kDebug() <<"picoftheday Plugin: got POTD description:" << description;
+
+  if ( !description.isEmpty() ) {
+    mDescription = description;
+    mFirstStepBisCompleted = true;
+    mFirstStepBisJob = 0;
   }
 }
 
@@ -200,7 +248,8 @@ void POTDElement::step2Result( KJob* job )
            QString( "description " + wikipediaLanguage ) ) {
       QDomNode descrNode = divs.item(i);
       descrNode.removeChild( descrNode.firstChild() );
-      mDescription = QString( descrNode.toElement().text().trimmed() );
+      if ( !mFirstStepBisCompleted )
+        mDescription = QString( descrNode.toElement().text().trimmed() );
       mLongText = mDescription;
       emit gotNewLongText( mLongText );
 //      break; // TODO: make this more reliable (for now we use the last desc.,

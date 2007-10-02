@@ -83,14 +83,17 @@ class POTDElement : public StoredElement
     QSize mThumbSize;
     KUrl mThumbUrl;
     bool mFirstStepCompleted;
+    bool mFirstStepBisCompleted;
     bool mSecondStepCompleted;
     KIO::SimpleJob *mFirstStepJob;
+    KIO::SimpleJob *mFirstStepBisJob;
     KIO::SimpleJob *mSecondStepJob;
     KIO::SimpleJob *mThirdStepJob;
     QTimer *mTimer;
 
   private slots:
     void step1Result( KJob* job );
+    void step1BisResult( KJob* job );
     void step2Result( KJob* job );
     void step3Result( KJob* job );
 };
