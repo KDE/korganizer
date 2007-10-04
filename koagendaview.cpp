@@ -98,8 +98,8 @@ TimeScaleConfigDialog::TimeScaleConfigDialog( QWidget *parent )
 
   ui.addButton->setIcon( KIcon( "plus" ) );
   ui.removeButton->setIcon( KIcon( "edit-delete" ) );
-  ui.upButton->setIcon( KIcon( "arrow-up" ) );
-  ui.downButton->setIcon( KIcon( "arrow-down" ) );
+  ui.upButton->setIcon( KIcon( "go-up" ) );
+  ui.downButton->setIcon( KIcon( "go-down" ) );
 
   connect( ui.addButton, SIGNAL( clicked() ), SLOT( add() ) );
   connect( ui.removeButton, SIGNAL( clicked() ), SLOT( remove() ) );
@@ -586,13 +586,13 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
 
   if ( KOPrefs::instance()->compactDialogs() ) {
     if ( KOPrefs::instance()->mVerticalScreen ) {
-      mExpandedPixmap = KOGlobals::self()->smallIcon( "arrow-down" );
-      mNotExpandedPixmap = KOGlobals::self()->smallIcon( "arrow-up" );
+      mExpandedPixmap = KOGlobals::self()->smallIcon( "go-down" );
+      mNotExpandedPixmap = KOGlobals::self()->smallIcon( "go-up" );
     } else {
-      mExpandedPixmap = KOGlobals::self()->smallIcon( isRTL ? "arrow-left"
-                                                            : "arrow-right" );
-      mNotExpandedPixmap = KOGlobals::self()->smallIcon( isRTL ? "arrow-right"
-                                                               : "arrow-left" );
+      mExpandedPixmap = KOGlobals::self()->smallIcon( isRTL ? "go-next-rtl"
+                                                            : "go-next" );
+      mNotExpandedPixmap = KOGlobals::self()->smallIcon( isRTL ? "go-previous-rtl"
+                                                               : "go-previous" );
     }
   }
 
