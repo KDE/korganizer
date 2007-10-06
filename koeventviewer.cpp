@@ -39,6 +39,7 @@
 #include <koglobals.h>
 #include <ktoolinvocation.h>
 #include <kconfiggroup.h>
+
 #include <QRegExp>
 
 KOEventViewer::KOEventViewer( QWidget *parent )

@@ -109,7 +109,7 @@ void CalPrinter::print( int type, const QDate &fd, const QDate &td,
     (*it)->setSelectedIncidences( selectedIncidences );
   }
   CalPrintDialog printDialog( mPrintPlugins, mParent );
-  KConfigGroup grp(mConfig,mConfig->group());
+  KConfigGroup grp( mConfig, mConfig->group() );
   printDialog.setOrientation( CalPrinter::ePrintOrientation( grp.readEntry("Orientation", 1 ) ) );
   printDialog.setPreview( preview );
   printDialog.setPrintType( type );

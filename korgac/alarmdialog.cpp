@@ -246,9 +246,9 @@ void AlarmDialog::wakeUp()
 void AlarmDialog::slotSave()
 {
   KSharedConfig::Ptr config = KGlobal::config();
-  KLockFile::Ptr lock = config->lockFile();
-  if ( lock.data()->lock() != KLockFile::LockOK )
-    return;
+  // KLockFile::Ptr lock = config->lockFile();
+  // if ( lock.data()->lock() != KLockFile::LockOK )
+  //   return;
 
   KConfigGroup generalConfig( config, "General" );
   int numReminders = generalConfig.readEntry("Reminders", 0);
@@ -258,6 +258,6 @@ void AlarmDialog::slotSave()
   incidenceConfig.writeEntry( "UID", mIncidence->uid() );
   incidenceConfig.writeEntry( "RemindAt", mRemindAt );
   config->sync();
-  lock.data()->unlock();
+  // lock.data()->unlock();
 }
 

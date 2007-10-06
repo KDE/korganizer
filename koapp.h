@@ -26,6 +26,7 @@
 #define KOAPP_H
 
 #include <kuniqueapplication.h>
+#include <kurl.h>
 
 class KOrganizerApp : public KUniqueApplication
 {

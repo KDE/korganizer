@@ -96,11 +96,12 @@ void CalPrintIncidence::setSettingsWidget()
 void CalPrintIncidence::loadConfig()
 {
   if ( mConfig ) {
-    mUseColors = mConfig->readEntry( "Use Colors", false );
-    mShowOptions = mConfig->readEntry( "Show Options", false );
-    mShowSubitemsNotes = mConfig->readEntry( "Show Subitems and Notes", false );
-    mShowAttendees = mConfig->readEntry( "Use Attendees", false );
-    mShowAttachments = mConfig->readEntry( "Use Attachments", false );
+    KConfigGroup grp( mConfig, mConfig->group() );
+    mUseColors = grp.readEntry( "Use Colors", false );
+    mShowOptions = grp.readEntry( "Show Options", false );
+    mShowSubitemsNotes = grp.readEntry( "Show Subitems and Notes", false );
+    mShowAttendees = grp.readEntry( "Use Attendees", false );
+    mShowAttachments = grp.readEntry( "Use Attachments", false );
   }
   setSettingsWidget();
 }
@@ -109,11 +110,12 @@ void CalPrintIncidence::saveConfig()
 {
   readSettingsWidget();
   if ( mConfig ) {
-    mConfig->writeEntry( "Use Colors", mUseColors );
-    mConfig->writeEntry( "Show Options", mShowOptions );
-    mConfig->writeEntry( "Show Subitems and Notes", mShowSubitemsNotes );
-    mConfig->writeEntry( "Use Attendees", mShowAttendees );
-    mConfig->writeEntry( "Use Attachments", mShowAttachments );
+    KConfigGroup grp( mConfig, mConfig->group() );
+    grp.writeEntry( "Use Colors", mUseColors );
+    grp.writeEntry( "Show Options", mShowOptions );
+    grp.writeEntry( "Show Subitems and Notes", mShowSubitemsNotes );
+    grp.writeEntry( "Use Attendees", mShowAttendees );
+    grp.writeEntry( "Use Attachments", mShowAttachments );
   }
 }
 
@@ -527,14 +529,15 @@ void CalPrintDay::setSettingsWidget()
 void CalPrintDay::loadConfig()
 {
   if ( mConfig ) {
+    KConfigGroup grp( mConfig, mConfig->group() );
     QDate dt;
     QTime tm1( dayStart() );
     QDateTime startTm( dt, tm1 );
     QDateTime endTm( dt, tm1.addSecs( 12 * 60 * 60 ) );
-    mStartTime = mConfig->readEntry( "Start time", startTm ).time();
-    mEndTime = mConfig->readEntry( "End time", endTm ).time();
-    mIncludeTodos = mConfig->readEntry( "Include todos", false );
-    mIncludeAllEvents = mConfig->readEntry( "Include all events", false );
+    mStartTime = grp.readEntry( "Start time", startTm ).time();
+    mEndTime = grp.readEntry( "End time", endTm ).time();
+    mIncludeTodos = grp.readEntry( "Include todos", false );
+    mIncludeAllEvents = grp.readEntry( "Include all events", false );
   }
   setSettingsWidget();
 }
@@ -543,10 +546,11 @@ void CalPrintDay::saveConfig()
 {
   readSettingsWidget();
   if ( mConfig ) {
-    mConfig->writeEntry( "Start time", QDateTime( QDate(), mStartTime ) );
-    mConfig->writeEntry( "End time", QDateTime( QDate(), mEndTime ) );
-    mConfig->writeEntry( "Include todos", mIncludeTodos );
-    mConfig->writeEntry( "Include all events", mIncludeAllEvents );
+    KConfigGroup grp( mConfig, mConfig->group() );
+    grp.writeEntry( "Start time", QDateTime( QDate(), mStartTime ) );
+    grp.writeEntry( "End time", QDateTime( QDate(), mEndTime ) );
+    grp.writeEntry( "Include todos", mIncludeTodos );
+    grp.writeEntry( "Include all events", mIncludeAllEvents );
   }
 }
 
@@ -677,14 +681,15 @@ void CalPrintWeek::setSettingsWidget()
 void CalPrintWeek::loadConfig()
 {
   if ( mConfig ) {
+    KConfigGroup grp( mConfig, mConfig->group() );
     QDate dt;
     QTime tm1( dayStart() );
     QDateTime startTm( dt, tm1  );
     QDateTime endTm( dt, tm1.addSecs( 43200 ) );
-    mStartTime = mConfig->readEntry( "Start time", startTm ).time();
-    mEndTime = mConfig->readEntry( "End time", endTm ).time();
-    mIncludeTodos = mConfig->readEntry( "Include todos", false );
-    mWeekPrintType =(eWeekPrintType)( mConfig->readEntry( "Print type", (int)Filofax ) );
+    mStartTime = grp.readEntry( "Start time", startTm ).time();
+    mEndTime = grp.readEntry( "End time", endTm ).time();
+    mIncludeTodos = grp.readEntry( "Include todos", false );
+    mWeekPrintType =(eWeekPrintType)( grp.readEntry( "Print type", (int)Filofax ) );
   }
   setSettingsWidget();
 }
@@ -693,10 +698,11 @@ void CalPrintWeek::saveConfig()
 {
   readSettingsWidget();
   if ( mConfig ) {
-    mConfig->writeEntry( "Start time", QDateTime( QDate(), mStartTime ) );
-    mConfig->writeEntry( "End time", QDateTime( QDate(), mEndTime ) );
-    mConfig->writeEntry( "Include todos", mIncludeTodos );
-    mConfig->writeEntry( "Print type", int( mWeekPrintType ) );
+    KConfigGroup grp( mConfig, mConfig->group() );
+    grp.writeEntry( "Start time", QDateTime( QDate(), mStartTime ) );
+    grp.writeEntry( "End time", QDateTime( QDate(), mEndTime ) );
+    grp.writeEntry( "Include todos", mIncludeTodos );
+    grp.writeEntry( "Print type", int( mWeekPrintType ) );
   }
 }
 
@@ -861,10 +867,11 @@ void CalPrintMonth::setSettingsWidget()
 void CalPrintMonth::loadConfig()
 {
   if ( mConfig ) {
-    mWeekNumbers = mConfig->readEntry( "Print week numbers", true );
-    mRecurDaily = mConfig->readEntry( "Print daily incidences", true );
-    mRecurWeekly = mConfig->readEntry( "Print weekly incidences", true );
-    mIncludeTodos = mConfig->readEntry( "Include todos", false );
+    KConfigGroup grp( mConfig, mConfig->group() );
+    mWeekNumbers = grp.readEntry( "Print week numbers", true );
+    mRecurDaily = grp.readEntry( "Print daily incidences", true );
+    mRecurWeekly = grp.readEntry( "Print weekly incidences", true );
+    mIncludeTodos = grp.readEntry( "Include todos", false );
   }
   setSettingsWidget();
 }
@@ -873,10 +880,11 @@ void CalPrintMonth::saveConfig()
 {
   readSettingsWidget();
   if ( mConfig ) {
-    mConfig->writeEntry( "Print week numbers", mWeekNumbers );
-    mConfig->writeEntry( "Print daily incidences", mRecurDaily );
-    mConfig->writeEntry( "Print weekly incidences", mRecurWeekly );
-    mConfig->writeEntry( "Include todos", mIncludeTodos );
+    KConfigGroup grp( mConfig, mConfig->group() );
+    grp.writeEntry( "Print week numbers", mWeekNumbers );
+    grp.writeEntry( "Print daily incidences", mRecurDaily );
+    grp.writeEntry( "Print weekly incidences", mRecurWeekly );
+    grp.writeEntry( "Include todos", mIncludeTodos );
   }
 }
 
@@ -1034,16 +1042,17 @@ void CalPrintTodos::setSettingsWidget()
 void CalPrintTodos::loadConfig()
 {
   if ( mConfig ) {
-    mPageTitle = mConfig->readEntry( "Page title", i18n("To-do list") );
-    mTodoPrintType = (eTodoPrintType)mConfig->readEntry( "Print type", (int)TodosAll );
-    mIncludeDescription = mConfig->readEntry( "Include description", true );
-    mIncludePriority = mConfig->readEntry( "Include priority", true );
-    mIncludeDueDate = mConfig->readEntry( "Include due date", true );
-    mIncludePercentComplete = mConfig->readEntry( "Include percentage completed", true );
-    mConnectSubTodos = mConfig->readEntry( "Connect subtodos", true );
-    mStrikeOutCompleted = mConfig->readEntry( "Strike out completed summaries",  true );
-    mTodoSortField = (eTodoSortField)mConfig->readEntry( "Sort field", (int)TodoFieldSummary );
-    mTodoSortDirection = (eTodoSortDirection)mConfig->readEntry( "Sort direction", (int)TodoDirectionAscending );
+    KConfigGroup grp( mConfig, mConfig->group() );
+    mPageTitle = grp.readEntry( "Page title", i18n("To-do list") );
+    mTodoPrintType = (eTodoPrintType)grp.readEntry( "Print type", (int)TodosAll );
+    mIncludeDescription = grp.readEntry( "Include description", true );
+    mIncludePriority = grp.readEntry( "Include priority", true );
+    mIncludeDueDate = grp.readEntry( "Include due date", true );
+    mIncludePercentComplete = grp.readEntry( "Include percentage completed", true );
+    mConnectSubTodos = grp.readEntry( "Connect subtodos", true );
+    mStrikeOutCompleted = grp.readEntry( "Strike out completed summaries",  true );
+    mTodoSortField = (eTodoSortField)grp.readEntry( "Sort field", (int)TodoFieldSummary );
+    mTodoSortDirection = (eTodoSortDirection)grp.readEntry( "Sort direction", (int)TodoDirectionAscending );
   }
   setSettingsWidget();
 }
@@ -1052,16 +1061,17 @@ void CalPrintTodos::saveConfig()
 {
   readSettingsWidget();
   if ( mConfig ) {
-    mConfig->writeEntry( "Page title", mPageTitle );
-    mConfig->writeEntry( "Print type", int( mTodoPrintType ) );
-    mConfig->writeEntry( "Include description", mIncludeDescription );
-    mConfig->writeEntry( "Include priority", mIncludePriority );
-    mConfig->writeEntry( "Include due date", mIncludeDueDate );
-    mConfig->writeEntry( "Include percentage completed", mIncludePercentComplete );
-    mConfig->writeEntry( "Connect subtodos", mConnectSubTodos );
-    mConfig->writeEntry( "Strike out completed summaries", mStrikeOutCompleted );
-    mConfig->writeEntry( "Sort field", (int)mTodoSortField );
-    mConfig->writeEntry( "Sort direction", (int)mTodoSortDirection );
+    KConfigGroup grp( mConfig, mConfig->group() );
+    grp.writeEntry( "Page title", mPageTitle );
+    grp.writeEntry( "Print type", int( mTodoPrintType ) );
+    grp.writeEntry( "Include description", mIncludeDescription );
+    grp.writeEntry( "Include priority", mIncludePriority );
+    grp.writeEntry( "Include due date", mIncludeDueDate );
+    grp.writeEntry( "Include percentage completed", mIncludePercentComplete );
+    grp.writeEntry( "Connect subtodos", mConnectSubTodos );
+    grp.writeEntry( "Strike out completed summaries", mStrikeOutCompleted );
+    grp.writeEntry( "Sort field", (int)mTodoSortField );
+    grp.writeEntry( "Sort direction", (int)mTodoSortDirection );
   }
 }
 
