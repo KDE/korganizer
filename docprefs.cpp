@@ -25,6 +25,7 @@
 #include "docprefs.h"
 
 #include <kconfig.h>
+#include <kconfiggroup.h>
 #include <kstandarddirs.h>
 #include <kdebug.h>
 

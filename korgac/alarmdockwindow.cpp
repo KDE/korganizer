@@ -31,6 +31,7 @@
 #include <klocale.h>
 #include <kiconloader.h>
 #include <kconfig.h>
+#include <kconfiggroup.h>
 #include <kurl.h>
 #include <kstandarddirs.h>
 #include <kmenu.h>

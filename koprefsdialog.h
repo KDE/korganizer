@@ -31,6 +31,7 @@
 #include <libkdepim/kcmdesignerfields.h>
 
 #include <QHash>
+#include <QSet>
 
 class KLineEdit;
 class QLabel;

@@ -27,6 +27,7 @@
 #include <QtGui/QPixmap>
 
 #include <klibloader.h>
+#include <kurl.h>
 
 #include "plugin.h"
 

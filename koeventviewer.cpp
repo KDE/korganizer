@@ -38,6 +38,7 @@
 #include <kdebug.h>
 #include <koglobals.h>
 #include <ktoolinvocation.h>
+#include <kconfiggroup.h>
 
 #include <QRegExp>
 

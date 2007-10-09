@@ -109,13 +109,14 @@ void CalPrinter::print( int type, const QDate &fd, const QDate &td,
     (*it)->setSelectedIncidences( selectedIncidences );
   }
   CalPrintDialog printDialog( mPrintPlugins, mParent );
-  printDialog.setOrientation( CalPrinter::ePrintOrientation( mConfig->readEntry("Orientation", 1 ) ) );
+  KConfigGroup grp( mConfig, mConfig->group() );
+  printDialog.setOrientation( CalPrinter::ePrintOrientation( grp.readEntry("Orientation", 1 ) ) );
   printDialog.setPreview( preview );
   printDialog.setPrintType( type );
   setDateRange( fd, td );
 
   if ( printDialog.exec() == QDialog::Accepted ) {
-    mConfig->writeEntry( "Orientation", (int)printDialog.orientation() );
+    grp.writeEntry( "Orientation", (int)printDialog.orientation() );
 
     // Save all changes in the dialog
     for ( it = mPrintPlugins.begin(); it != mPrintPlugins.end(); ++it ) {
