@@ -221,7 +221,7 @@ int KOMailClient::kMailOpenComposer(const QString& arg0,const QString& arg1,
   //  << arg0 << "," << arg1 << arg2 << "," << arg3
   //  << arg4 << "," << arg5 << "," << arg6 << ")";
   int result = 0;
-  kapp->updateRemoteUserTimestamp( "kmail" );
+  kapp->updateRemoteUserTimestamp( "org.kde.kmail" );
 #ifdef __GNUC__
 #warning "kde4: verify it when kmail call was ported to dbus";
 #endif
@@ -254,7 +254,7 @@ int KOMailClient::kMailOpenComposer( const QString& arg0, const QString& arg1,
 
     int result = 0;
 
-    kapp->updateRemoteUserTimestamp("kmail");
+    kapp->updateRemoteUserTimestamp("org.kde.kmail");
     QDBusInterface kmail("org.kde.kmail", "/KMail", "org.kde.kmail.KMail");
     QList<QVariant> argList;
     argList << arg0;
