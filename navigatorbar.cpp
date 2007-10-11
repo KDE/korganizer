@@ -162,7 +162,7 @@ void NavigatorBar::selectDates( const KCal::DateList &dateList )
     // compute the labels at the top of the navigator
     mMonth->setText( i18nc( "monthname year", "%1 %2",
                             calSys->monthName( mDate ),
-                            calSys->year( mDate ) ) );
+                            calSys->yearString( mDate ) ) );
   }
 }
 
