@@ -51,7 +51,6 @@ void ActiveLabel::mouseReleaseEvent( QMouseEvent * )
   emit clicked();
 }
 
-
 NavigatorBar::NavigatorBar( QWidget *parent )
   : QWidget( parent ), mHasMinWidth( false )
 {
@@ -67,33 +66,33 @@ NavigatorBar::NavigatorBar( QWidget *parent )
   pix = KOGlobals::self()->smallIconSet( isRTL ? "arrow-right-double" : "arrow-left-double" );
   mPrevYear->setIcon( pix );
   mPrevYear->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
-  mPrevYear->setToolTip( i18n("Previous year") );
+  mPrevYear->setToolTip( i18n( "Scroll backward to the previous year" ) );
 
-  pix = KOGlobals::self()->smallIconSet( isRTL ? "arrow-right" : "arrow-left");
+  pix = KOGlobals::self()->smallIconSet( isRTL ? "arrow-right" : "arrow-left" );
   mPrevMonth = new QPushButton( this );
   mPrevMonth->setIcon( pix );
   mPrevMonth->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
-  mPrevMonth->setToolTip( i18n("Previous month") );
+  mPrevMonth->setToolTip( i18n( "Scroll backward to the previous month" ) );
 
   // Create forward navigation buttons
-  pix = KOGlobals::self()->smallIconSet( isRTL ? "arrow-left" : "arrow-right");
+  pix = KOGlobals::self()->smallIconSet( isRTL ? "arrow-left" : "arrow-right" );
   mNextMonth = new QPushButton( this );
   mNextMonth->setIcon( pix );
   mNextMonth->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
-  mNextMonth->setToolTip( i18n("Next month") );
+  mNextMonth->setToolTip( i18n( "Scroll forward to the next month" ) );
 
-  pix = KOGlobals::self()->smallIconSet( isRTL ? "arrow-left-double" : "arrow-right-double");
+  pix = KOGlobals::self()->smallIconSet( isRTL ? "arrow-left-double" : "arrow-right-double" );
   mNextYear = new QPushButton( this );
   mNextYear->setIcon( pix );
   mNextYear->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
-  mNextYear->setToolTip( i18n("Next year") );
+  mNextYear->setToolTip( i18n( "Scroll forward to the next year" ) );
 
   // Create month name button
   mMonth = new ActiveLabel( this );
   mMonth->setFont( tfont );
   mMonth->setAlignment( Qt::AlignCenter );
   mMonth->setMinimumHeight( mPrevYear->sizeHint().height() );
-  mMonth->setToolTip( i18n("Select a month") );
+  mMonth->setToolTip( i18n( "Select a month" ) );
 
   // set up control frame layout
   QBoxLayout *ctrlLayout = new QHBoxLayout( this );
@@ -148,10 +147,12 @@ void NavigatorBar::selectDates( const KCal::DateList &dateList )
       int i;
       int maxwidth = 0;
 
-      for( i = 1; i <= calSys->monthsInYear( mDate ); ++i ) {
-        int w = QFontMetrics( mMonth->font() ).width( QString("%1 8888")
-            .arg( calSys->monthName( i, calSys->year( mDate ) ) ) );
-        if ( w > maxwidth ) maxwidth = w;
+      for ( i = 1; i <= calSys->monthsInYear( mDate ); ++i ) {
+        QString m = calSys->monthName( i, calSys->year( mDate ) );
+        int w = QFontMetrics( mMonth->font() ).width( QString( "%1 8888" ).arg( m ) );
+        if ( w > maxwidth ) {
+          maxwidth = w;
+        }
       }
       mMonth->setMinimumWidth( maxwidth );
 
@@ -159,17 +160,9 @@ void NavigatorBar::selectDates( const KCal::DateList &dateList )
     }
 
     // compute the labels at the top of the navigator
-    mMonth->setText( i18nc( "monthname year", "%1 %2" ,
-                       calSys->monthName( mDate ) ,
-                       calSys->year( mDate ) ) );
-    QDate switchDate = mDate.addYears( -1 );
-    mPrevYear->setToolTip( calSys->yearString( switchDate ) );
-    switchDate = mDate.addMonths( -1 );
-    mPrevMonth->setToolTip( calSys->monthName( switchDate ) );
-    switchDate = mDate.addMonths( 1 );
-    mNextMonth->setToolTip( calSys->monthName( switchDate ) );
-    switchDate = mDate.addYears( 1 );
-    mNextYear->setToolTip( calSys->yearString( switchDate ) );
+    mMonth->setText( i18nc( "monthname year", "%1 %2",
+                            calSys->monthName( mDate ),
+                            calSys->year( mDate ) ) );
   }
 }
 
@@ -182,9 +175,9 @@ void NavigatorBar::selectMonth()
 
   Q3PopupMenu *popup = new Q3PopupMenu( mMonth );
 
-  for ( i = 1; i <= months; i++ )
+  for ( i = 1; i <= months; i++ ) {
     popup->insertItem( calSys->monthName( i, calSys->year( mDate ) ), i );
-
+  }
   popup->setActiveItem( calSys->month( mDate ) - 1 );
   popup->setMinimumWidth( mMonth->width() );
 

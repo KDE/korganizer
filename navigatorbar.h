@@ -46,7 +46,6 @@ class ActiveLabel : public QLabel
     void mouseReleaseEvent ( QMouseEvent * e );
 };
 
-
 class NavigatorBar: public QWidget
 {
   Q_OBJECT
@@ -64,7 +63,7 @@ class NavigatorBar: public QWidget
     void goPrevMonth();
     void goNextYear();
     void goPrevYear();
-    void goMonth(int month);
+    void goMonth( int month );
 
   private slots:
     void selectMonth();
