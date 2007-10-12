@@ -43,7 +43,7 @@
 #include <QRegExp>
 
 KOEventViewer::KOEventViewer( QWidget *parent )
-  : KTextBrowser( parent ), mDefaultText("")
+  : KTextBrowser( parent ), mDefaultText( "" )
 {
   mIncidence = 0;
   setNotifyClick( true );
@@ -53,27 +53,27 @@ KOEventViewer::~KOEventViewer()
 {
 }
 
-void KOEventViewer::readSettings( KConfig * config )
+void KOEventViewer::readSettings( KConfig *config )
 {
   if ( config ) {
 // With each restart of KOrganizer the font site gets halfed. What should this
 // be good for?
 #if 0
-    config->setGroup( QString("EventViewer-%1").arg( name() )  );
-    int zoomFactor = config->readEntry("ZoomFactor", fontPointSize() );
-    zoomTo( zoomFactor/2 );
-    kDebug(5850) <<" KOEventViewer: restoring the fontPointSize:"<< fontPointSize()
-      << ", zoomFactor: " << zoomFactor;
+    config->setGroup( QString( "EventViewer-%1" ).arg( name() ) );
+    int zoomFactor = config->readEntry( "ZoomFactor", fontPointSize() );
+    zoomTo( zoomFactor / 2 );
+    kDebug(5850) << " KOEventViewer: restoring the fontPointSize:" << fontPointSize()
+                 << ", zoomFactor: " << zoomFactor;
 #endif
   }
 }
 
-void KOEventViewer::writeSettings( KConfig * config )
+void KOEventViewer::writeSettings( KConfig *config )
 {
   if ( config ) {
     kDebug(5850) << " KOEventViewer: saving the zoomFactor:" << fontPointSize();
-    KConfigGroup configGroup( config, QString("EventViewer-%1").arg( objectName() ) );
-    configGroup.writeEntry("ZoomFactor", fontPointSize() );
+    KConfigGroup configGroup( config, QString( "EventViewer-%1" ).arg( objectName() ) );
+    configGroup.writeEntry( "ZoomFactor", fontPointSize() );
   }
 }
 
@@ -84,22 +84,17 @@ void KOEventViewer::setSource( const QString &n )
   // this is a crude workaround
   if ( uri.startsWith( KDEPIMPROTOCOL_CONTACT ) ||
        uri.startsWith( KDEPIMPROTOCOL_EMAIL ) ||
-       uri.startsWith( QString( KDEPIMPROTOCOL_INCIDENCE ).
-                                                  section( ':', 0, 0 ) ) ||
-       uri.startsWith( KDEPIMPROTOCOL_NEWSARTICLE ) )
+       uri.startsWith( QString( KDEPIMPROTOCOL_INCIDENCE ).section( ':', 0, 0 ) ) ||
+       uri.startsWith( KDEPIMPROTOCOL_NEWSARTICLE ) ) {
     uri.replace( QRegExp( "^([^:]*:)//" ), "\\1" );
+  }
 
   UriHandler::process( uri );
 }
 
 bool KOEventViewer::appendIncidence( Incidence *incidence )
 {
-  QString codeForIncidence =
-                        IncidenceFormatter::extensiveDisplayString( incidence );
-/*  kDebug( 5850 ) <<" KOEventViewer: appending incidence, HTML code:" << endl
-                  << "-------------------FROM HERE--------------------" << endl
-                  << codeForIncidence << endl
-                  << "--------------------TO HERE---------------------"; */
+  QString codeForIncidence = IncidenceFormatter::extensiveDisplayString( incidence );
   addText( codeForIncidence );
   return true;
 }
@@ -119,7 +114,9 @@ void KOEventViewer::setIncidence( Incidence *incidence )
 void KOEventViewer::clearEvents( bool now )
 {
   mText = "";
-  if ( now ) setText( mDefaultText );
+  if ( now ) {
+    setText( mDefaultText );
+  }
 }
 
 void KOEventViewer::addText( const QString &text )
@@ -136,15 +133,17 @@ void KOEventViewer::setDefaultText( const QString &text )
 void KOEventViewer::changeIncidenceDisplay( Incidence *incidence, int action )
 {
   if ( mIncidence && ( incidence->uid() == mIncidence->uid() ) ) {
-    switch (action ) {
-      case KOGlobals::INCIDENCEEDITED:{
-        setIncidence( incidence );
-        break;
-      }
-      case KOGlobals::INCIDENCEDELETED: {
-        setIncidence( 0 );
-        break;
-      }
+    switch ( action ) {
+    case KOGlobals::INCIDENCEEDITED:
+    {
+      setIncidence( incidence );
+      break;
+    }
+    case KOGlobals::INCIDENCEDELETED:
+    {
+      setIncidence( 0 );
+      break;
+    }
     }
   }
 }
@@ -154,9 +153,10 @@ void KOEventViewer::editIncidence()
   if ( mIncidence ) {
 #ifndef KORG_NODBUS
     // make sure korganizer is running or the part is shown
-    KToolInvocation::startServiceByDesktopPath("korganizer");
+    KToolInvocation::startServiceByDesktopPath( "korganizer" );
 
-    OrgKdeKorganizerKorganizerInterface korganizerIface("org.kde.korganizer.Korganizer", "/Korganizer", QDBusConnection::sessionBus() );
+    OrgKdeKorganizerKorganizerInterface korganizerIface(
+      "org.kde.korganizer.Korganizer", "/Korganizer", QDBusConnection::sessionBus() );
     korganizerIface.editIncidence( mIncidence->uid() );
 #endif
   }
@@ -167,9 +167,10 @@ void KOEventViewer::showIncidenceContext()
 #ifndef KORG_NODBUS
   if ( mIncidence ) {
     // make sure korganizer is running or the part is shown
-    KToolInvocation::startServiceByDesktopPath("korganizer");
+    KToolInvocation::startServiceByDesktopPath( "korganizer" );
 
-    OrgKdeKorganizerKorganizerInterface korganizerIface("org.kde.korganizer.Korganizer", "/Korganizer", QDBusConnection::sessionBus() );
+    OrgKdeKorganizerKorganizerInterface korganizerIface(
+      "org.kde.korganizer.Korganizer", "/Korganizer", QDBusConnection::sessionBus() );
     korganizerIface.showIncidenceContext( mIncidence->uid() );
   }
 #endif
