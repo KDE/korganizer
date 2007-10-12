@@ -86,7 +86,7 @@ void KOViewManager::readSettings(KConfig *config)
   else if (view == QLatin1String("List")) showListView();
   else if (view == QLatin1String("Journal")) showJournalView();
   else if (view == QLatin1String("Todo")) showTodoView();
-  else if (view == "Timeline") showTimelineView();
+  else if (view == "Timeline") showTimeLineView();
   else if (view == "TimeSpent") showTimeSpentView();
   else showAgendaView();
 }
@@ -416,7 +416,7 @@ void KOViewManager::showJournalView()
 }
 
 
-void KOViewManager::showTimelineView()
+void KOViewManager::showTimeLineView()
 {
   if (!mTimelineView) {
     mTimelineView = new KOTimelineView(mMainView->calendar(),mMainView->viewStack());

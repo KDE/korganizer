@@ -101,7 +101,7 @@ class KOViewManager : public QObject
     void showNextXView();
     void showMonthView();
     void showTodoView();
-    void showTimelineView();
+    void showTimeLineView();
     void showTimeSpentView();
     void showJournalView();
 
