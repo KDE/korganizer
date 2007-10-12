@@ -60,9 +60,9 @@ void KOEventViewer::readSettings( KConfig * config )
 // be good for?
 #if 0
     config->setGroup( QString("EventViewer-%1").arg( name() )  );
-    int zoomFactor = config->readEntry("ZoomFactor", pointSize() );
+    int zoomFactor = config->readEntry("ZoomFactor", fontPointSize() );
     zoomTo( zoomFactor/2 );
-    kDebug(5850) <<" KOEventViewer: restoring the pointSize:"<< pointSize()
+    kDebug(5850) <<" KOEventViewer: restoring the fontPointSize:"<< fontPointSize()
       << ", zoomFactor: " << zoomFactor;
 #endif
   }
@@ -71,9 +71,9 @@ void KOEventViewer::readSettings( KConfig * config )
 void KOEventViewer::writeSettings( KConfig * config )
 {
   if ( config ) {
-    kDebug(5850) <<" KOEventViewer: saving the zoomFactor:"<< pointSize();
+    kDebug(5850) << " KOEventViewer: saving the zoomFactor:" << fontPointSize();
     KConfigGroup configGroup( config, QString("EventViewer-%1").arg( objectName() ) );
-    configGroup.writeEntry("ZoomFactor", pointSize() );
+    configGroup.writeEntry("ZoomFactor", fontPointSize() );
   }
 }
 
