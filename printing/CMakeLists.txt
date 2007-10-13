@@ -35,9 +35,3 @@ target_link_libraries(korg_stdprinting ${KDE4_KDEUI_LIBS} ${KDE4_KUTILS_LIBS} ko
 
 set_target_properties(korg_stdprinting PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
 install(TARGETS korg_stdprinting  DESTINATION ${LIB_INSTALL_DIR})
-
-
-########### install files ###############
-
-install( FILES calprintpluginbase.h calprinter.h  DESTINATION ${INCLUDE_INSTALL_DIR}/korganizer)
-
