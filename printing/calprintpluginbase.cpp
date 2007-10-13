@@ -143,13 +143,13 @@ QWidget *CalPrintPluginBase::createConfigWidget( QWidget *w )
   return wdg;
 }
 
-void CalPrintPluginBase::doPrint( KPrinter *printer )
+void CalPrintPluginBase::doPrint( QPrinter *printer )
 {
   if ( !printer ) return;
   mPrinter = printer;
   QPainter p;
 
-  mPrinter->setColorMode( mUseColors?(KPrinter::Color):(KPrinter::GrayScale) );
+  mPrinter->setColorMode( mUseColors?(QPrinter::Color):(QPrinter::GrayScale) );
 
   p.begin( mPrinter );
   // TODO: Fix the margins!!!
@@ -222,9 +222,9 @@ void CalPrintPluginBase::setUseColors( bool useColors )
   mUseColors = useColors;
 }
 
-KPrinter::Orientation CalPrintPluginBase::orientation() const
+QPrinter::Orientation CalPrintPluginBase::orientation() const
 {
-  return (mPrinter)?(mPrinter->orientation()):(KPrinter::Portrait);
+  return (mPrinter)?(mPrinter->orientation()):(QPrinter::Portrait);
 }
 
 
@@ -301,7 +301,7 @@ int CalPrintPluginBase::headerHeight() const
 {
   if ( mHeaderHeight >= 0 )
     return mHeaderHeight;
-  else if ( orientation() == KPrinter::Portrait )
+  else if ( orientation() == QPrinter::Portrait )
     return PORTRAIT_HEADER_HEIGHT;
   else
     return LANDSCAPE_HEADER_HEIGHT;

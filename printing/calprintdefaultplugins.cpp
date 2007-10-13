@@ -37,17 +37,17 @@
 #include <kglobal.h>
 #include <klocale.h>
 #include <kdebug.h>
-#include <kprinter.h>
 #include <kconfig.h>
 #include <kcalendarsystem.h>
 #include <knuminput.h>
 #include <kcombobox.h>
 
-#include <QPainter>
-#include <QDateTime>
-#include <QCheckBox>
-#include <QLineEdit>
 #include <q3buttongroup.h>
+#include <QCheckBox>
+#include <QDateTime>
+#include <QLineEdit>
+#include <QPainter>
+#include <QPrinter>
 #include <QWidget>
 
 /**************************************************************
@@ -706,11 +706,11 @@ void CalPrintWeek::saveConfig()
   }
 }
 
-KPrinter::Orientation CalPrintWeek::defaultOrientation()
+QPrinter::Orientation CalPrintWeek::defaultOrientation()
 {
-  if ( mWeekPrintType == Filofax ) return KPrinter::Portrait;
-  else if ( mWeekPrintType == SplitWeek ) return KPrinter::Portrait;
-  else return KPrinter::Landscape;
+  if ( mWeekPrintType == Filofax ) return QPrinter::Portrait;
+  else if ( mWeekPrintType == SplitWeek ) return QPrinter::Portrait;
+  else return QPrinter::Landscape;
 }
 
 void CalPrintWeek::setDateRange( const QDate &from, const QDate &to )
@@ -748,7 +748,7 @@ void CalPrintWeek::print( QPainter &p, int width, int height )
       do {
         line1 = local->formatDate( curWeek.addDays( -6 ) );
         line2 = local->formatDate( curWeek );
-        if ( orientation() == KPrinter::Landscape ) {
+        if ( orientation() == QPrinter::Landscape ) {
           title = i18nc("date from-to", "%1 - %2", line1, line2 );
         } else {
           title = i18nc("date from-\nto", "%1 -\n%2", line1, line2 );
@@ -766,7 +766,7 @@ void CalPrintWeek::print( QPainter &p, int width, int height )
       do {
         line1 = local->formatDate( curWeek.addDays( -6 ) );
         line2 = local->formatDate( curWeek );
-        if ( orientation() == KPrinter::Landscape ) {
+        if ( orientation() == QPrinter::Landscape ) {
           title = i18nc("date from - to (week number)", "%1 - %2 (Week %3)",
                         line1, line2, curWeek.weekNumber());
         } else {

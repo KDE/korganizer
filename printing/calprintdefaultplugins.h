@@ -57,8 +57,8 @@ class CalPrintIncidence : public CalPrintPluginBase
         }
       }
     virtual QWidget *createConfigWidget(QWidget*);
-    virtual KPrinter::Orientation defaultOrientation()
-      { return KPrinter::Portrait; }
+    virtual QPrinter::Orientation defaultOrientation()
+      { return QPrinter::Portrait; }
 
   public:
     void print( QPainter &p, int width, int height );
@@ -116,7 +116,7 @@ class CalPrintWeek : public CalPrintPluginBase
     /**
       Returns the default orientation for the eWeekPrintType.
     */
-    virtual KPrinter::Orientation defaultOrientation();
+    virtual QPrinter::Orientation defaultOrientation();
 
   public:
     void print(QPainter &p, int width, int height);
@@ -142,7 +142,7 @@ class CalPrintMonth : public CalPrintPluginBase
     virtual int sortID() { return CalPrinterBase::Month; }
     virtual bool enabled() { return true; }
     virtual QWidget *createConfigWidget(QWidget*);
-    virtual KPrinter::Orientation defaultOrientation() { return KPrinter::Landscape; }
+    virtual QPrinter::Orientation defaultOrientation() { return QPrinter::Landscape; }
 
   public:
     void print(QPainter &p, int width, int height);

@@ -37,10 +37,10 @@
 #include <kcal/todo.h>
 
 #include <kdatetime.h>
-#include <kprinter.h>
 
 #include <QtCore/QDateTime>
 #include <QtGui/QPainter>
+#include <QtGui/QPrinter>
 
 class PrintCellItem;
 class QWidget;
@@ -92,7 +92,7 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
     /**
       Start printing.
     */
-    virtual void doPrint( KPrinter *printer );
+    virtual void doPrint( QPrinter *printer );
 
     /**
       Load print format configuration from config file.
@@ -134,7 +134,7 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
     static int weekdayColumn( int weekday );
     void setCategoryColors( QPainter &p, Incidence *incidence );
 
-    KPrinter::Orientation orientation() const;
+    QPrinter::Orientation orientation() const;
 
     /** Returns the height of the page header. If the height was explicitly
         set using setHeaderHeight, that value is returned, otherwise a

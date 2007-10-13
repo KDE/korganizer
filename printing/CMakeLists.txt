@@ -31,7 +31,7 @@ kde4_add_ui_files(korg_stdprinting_LIB_SRCS
 
 kde4_add_library(korg_stdprinting SHARED ${korg_stdprinting_LIB_SRCS})
 
-target_link_libraries(korg_stdprinting  ${KDE4_KDEUI_LIBS} kocorehelper kdepim ${KDE4_KCAL_LIBS} ${KDE4_KDEPRINT_LIBS} )
+target_link_libraries(korg_stdprinting ${KDE4_KDEUI_LIBS} ${KDE4_KUTILS_LIBS} kocorehelper kdepim ${KDE4_KCAL_LIBS} )
 
 set_target_properties(korg_stdprinting PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
 install(TARGETS korg_stdprinting  DESTINATION ${LIB_INSTALL_DIR})

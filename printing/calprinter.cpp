@@ -25,23 +25,25 @@
 
 #include "calprinter.h"
 
-#include <QStackedWidget>
-#include <QGroupBox>
 #include <QButtonGroup>
-#include <QRadioButton>
-#include <QLayout>
-#include <QPushButton>
 #include <QLabel>
-#include <QSplitter>
+#include <QLayout>
 #include <QGridLayout>
+#include <QGroupBox>
+#include <QPushButton>
+#include <QRadioButton>
+#include <QSplitter>
+#include <QStackedWidget>
+#include <QPrintDialog>
+#include <QPrinter>
 
 #include <kvbox.h>
-#include <kprinter.h>
 #include <kconfig.h>
 #include <kdebug.h>
 #include <kdeversion.h>
 #include <kstandardguiitem.h>
 #include <kcombobox.h>
+#include <kprintpreview.h>
 
 #include "korganizer/corehelper.h"
 
@@ -138,26 +140,32 @@ void CalPrinter::doPrint( KOrg::PrintPlugin *selectedStyle,
                  i18n("Printing error") );
     return;
   }
-  KPrinter printer;
 
-  printer.setPreviewOnly( preview );
+  QPrinter printer;
   switch ( dlgorientation ) {
     case eOrientPlugin:
       printer.setOrientation( selectedStyle->defaultOrientation() );
       break;
     case eOrientPortrait:
-      printer.setOrientation( KPrinter::Portrait );
+      printer.setOrientation( QPrinter::Portrait );
       break;
     case eOrientLandscape:
-      printer.setOrientation( KPrinter::Landscape );
+      printer.setOrientation( QPrinter::Landscape );
       break;
     case eOrientPrinter:
     default:
       break;
   }
 
-  if ( preview || printer.setup( mParent, i18n("Print Calendar") ) ) {
+  if ( preview ) {
+    KPrintPreview printPreview( &printer );
     selectedStyle->doPrint( &printer );
+    printPreview.exec();
+  } else {
+    QPrintDialog printDialog( &printer, mParent );
+    if ( printDialog.exec() == QDialog::Accepted ) {
+      selectedStyle->doPrint( &printer );
+    }
   }
 }
 
@@ -224,7 +232,7 @@ CalPrintDialog::CalPrintDialog( KOrg::PrintPlugin::List plugins,
   }
   // Insert all plugins with in sorted order; plugins with clashing IDs will be first...
   QMap<int, KOrg::PrintPlugin*>::ConstIterator mapit;
-  bool firstButton = true; 
+  bool firstButton = true;
   for ( mapit = mPluginIDs.begin(); mapit != mPluginIDs.end(); ++mapit ) {
     KOrg::PrintPlugin *p = mapit.value();
     QRadioButton *radioButton = new QRadioButton( p->description() );

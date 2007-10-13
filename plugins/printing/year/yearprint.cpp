@@ -121,9 +121,9 @@ void CalPrintYear::saveConfig()
   }
 }
 
-KPrinter::Orientation CalPrintYear::defaultOrientation()
+QPrinter::Orientation CalPrintYear::defaultOrientation()
 {
-  return ( mPages == 1 )?(KPrinter::Landscape):(KPrinter::Portrait);
+  return ( mPages == 1 )?(QPrinter::Landscape):(QPrinter::Portrait);
 }
 
 
@@ -174,7 +174,7 @@ kDebug()<<"headerBox:"<<headerBox;
     QString stdate = locale->formatDate( start );
     QString endate = locale->formatDate( end );
     QString title;
-    if ( orientation() == KPrinter::Landscape ) {
+    if ( orientation() == QPrinter::Landscape ) {
       title = i18nc("date from - to", "%1 - %2", stdate, endate);
     } else {
       title = i18nc("date from -\nto", "%1 -\n%2", stdate, endate);

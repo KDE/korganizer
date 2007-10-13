@@ -44,7 +44,7 @@ class CalPrintYear : public CalPrintPluginBase
     virtual int sortID() { return 900; }
     virtual bool enabled() { return true; }
     virtual QWidget *createConfigWidget( QWidget* );
-    virtual KPrinter::Orientation defaultOrientation();
+    virtual QPrinter::Orientation defaultOrientation();
 
   public:
     virtual void print(QPainter &p, int width, int height);
