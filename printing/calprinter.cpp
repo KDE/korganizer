@@ -165,13 +165,9 @@ void CalPrinter::doPrint( KOrg::PrintPlugin *selectedStyle,
   }
 }
 
-///////////////////////////////////////////////////////////////////////////////
-
 void CalPrinter::updateConfig()
 {
 }
-
-/****************************************************************************/
 
 CalPrintDialog::CalPrintDialog( KOrg::PrintPlugin::List plugins, QWidget *parent )
   : KDialog( parent )
@@ -188,10 +184,6 @@ CalPrintDialog::CalPrintDialog( KOrg::PrintPlugin::List plugins, QWidget *parent
   QGroupBox *typeBox = new QGroupBox( i18n( "Print Style" ), splitter );
   QBoxLayout *typeLayout = new QVBoxLayout( typeBox );
   mTypeGroup = new QButtonGroup( typeBox );
-  // use the minimal width possible = max width of the radio buttons, not extensible
-/*  mTypeGroup->setSizePolicy( QSizePolicy( (QSizePolicy::SizeType)4,
-    (QSizePolicy::SizeType)5, 0, 0,
-      mTypeGroup->sizePolicy().hasHeightForWidth() ) );*/
 
   QWidget *splitterRight = new QWidget( splitter );
   QGridLayout *splitterRightLayout = new QGridLayout( splitterRight );
@@ -217,27 +209,28 @@ CalPrintDialog::CalPrintDialog( KOrg::PrintPlugin::List plugins, QWidget *parent
   // First insert the config widgets into the widget stack. This possibly assigns
   // proper ids (when two plugins have the same sortID), so store them in a map
   // and use these new IDs to later sort the plugins for the type selection.
-  for ( KOrg::PrintPlugin::List::Iterator it = plugins.begin();
-        it != plugins.end(); ++it ) {
+  for ( KOrg::PrintPlugin::List::Iterator it = plugins.begin(); it != plugins.end(); ++it ) {
     int newid = mConfigArea->insertWidget( (*it)->sortID(), (*it)->configWidget( mConfigArea ) );
     mPluginIDs[newid] = (*it);
   }
-  // Insert all plugins with in sorted order; plugins with clashing IDs will be first...
+  // Insert all plugins in sorted order; plugins with clashing IDs will be first
   QMap<int, KOrg::PrintPlugin*>::ConstIterator mapit;
-  bool firstButton = true;
+  int firstButton = true;
+  int id = 0;
   for ( mapit = mPluginIDs.begin(); mapit != mPluginIDs.end(); ++mapit ) {
     KOrg::PrintPlugin *p = mapit.value();
     QRadioButton *radioButton = new QRadioButton( p->description() );
     radioButton->setEnabled( p->enabled() );
-    if(firstButton)
-    {
-       firstButton = false;
-       radioButton->setChecked(true);
+    if ( firstButton && p->enabled() ) {
+      firstButton = false;
+      radioButton->setChecked( true );
+      setPrintType( id );
     }
-//     radioButton->setMinimumHeight( radioButton->sizeHint().height() - 5 );
     mTypeGroup->addButton( radioButton, mapit.key() );
     typeLayout->addWidget( radioButton );
+    id++;
   }
+  typeLayout->insertStretch( -1, 100 );
   connect( this, SIGNAL(okClicked()), SLOT(slotOk()) );
   setMinimumSize( minimumSizeHint() );
   resize( minimumSizeHint() );
