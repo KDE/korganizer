@@ -12,13 +12,25 @@
    </rect>
   </property>
   <layout class="QGridLayout" >
-   <property name="margin" >
+   <property name="leftMargin" >
     <number>9</number>
    </property>
-   <property name="spacing" >
+   <property name="topMargin" >
+    <number>9</number>
+   </property>
+   <property name="rightMargin" >
+    <number>9</number>
+   </property>
+   <property name="bottomMargin" >
+    <number>9</number>
+   </property>
+   <property name="horizontalSpacing" >
     <number>6</number>
    </property>
-   <item row="1" column="0" colspan="2" >
+   <property name="verticalSpacing" >
+    <number>6</number>
+   </property>
+   <item row="2" column="0" colspan="2" >
     <widget class="QGroupBox" name="mPrintType" >
      <property name="title" >
       <string>To-dos to Print</string>
@@ -56,11 +68,20 @@
       </item>
       <item>
        <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
         <property name="spacing" >
          <number>6</number>
+        </property>
+        <property name="leftMargin" >
+         <number>0</number>
+        </property>
+        <property name="topMargin" >
+         <number>0</number>
+        </property>
+        <property name="rightMargin" >
+         <number>0</number>
+        </property>
+        <property name="bottomMargin" >
+         <number>0</number>
         </property>
         <item>
          <spacer>
@@ -84,9 +105,7 @@
            <bool>false</bool>
           </property>
           <property name="sizePolicy" >
-           <sizepolicy>
-            <hsizetype>4</hsizetype>
-            <vsizetype>5</vsizetype>
+           <sizepolicy vsizetype="Preferred" hsizetype="Maximum" >
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -129,9 +148,7 @@
            <bool>false</bool>
           </property>
           <property name="sizePolicy" >
-           <sizepolicy>
-            <hsizetype>4</hsizetype>
-            <vsizetype>5</vsizetype>
+           <sizepolicy vsizetype="Preferred" hsizetype="Maximum" >
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -178,17 +195,26 @@
      </layout>
     </widget>
    </item>
-   <item row="4" column="0" colspan="2" >
+   <item row="5" column="0" colspan="2" >
     <widget class="QGroupBox" name="otherOptionsBox" >
      <property name="title" >
       <string>Other Options</string>
      </property>
      <layout class="QVBoxLayout" >
-      <property name="margin" >
-       <number>11</number>
-      </property>
       <property name="spacing" >
        <number>6</number>
+      </property>
+      <property name="leftMargin" >
+       <number>11</number>
+      </property>
+      <property name="topMargin" >
+       <number>11</number>
+      </property>
+      <property name="rightMargin" >
+       <number>11</number>
+      </property>
+      <property name="bottomMargin" >
+       <number>11</number>
       </property>
       <item>
        <widget class="QCheckBox" name="mConnectSubTodos" >
@@ -213,16 +239,28 @@
      </layout>
     </widget>
    </item>
-   <item row="3" column="0" colspan="2" >
+   <item row="4" column="0" colspan="2" >
     <widget class="QGroupBox" name="sortingOptionsBox" >
      <property name="title" >
       <string>Sorting Options</string>
      </property>
      <layout class="QGridLayout" >
-      <property name="margin" >
+      <property name="leftMargin" >
        <number>11</number>
       </property>
-      <property name="spacing" >
+      <property name="topMargin" >
+       <number>11</number>
+      </property>
+      <property name="rightMargin" >
+       <number>11</number>
+      </property>
+      <property name="bottomMargin" >
+       <number>11</number>
+      </property>
+      <property name="horizontalSpacing" >
+       <number>6</number>
+      </property>
+      <property name="verticalSpacing" >
        <number>6</number>
       </property>
       <item row="0" column="0" >
@@ -294,7 +332,7 @@
      </layout>
     </widget>
    </item>
-   <item row="5" column="1" >
+   <item row="6" column="1" >
     <spacer>
      <property name="orientation" >
       <enum>Qt::Vertical</enum>
@@ -310,7 +348,7 @@
      </property>
     </spacer>
    </item>
-   <item row="2" column="0" colspan="2" >
+   <item row="3" column="0" colspan="2" >
     <widget class="QGroupBox" name="includeInfoBox" >
      <property name="title" >
       <string>Include Information</string>
@@ -319,10 +357,22 @@
       <bool>false</bool>
      </property>
      <layout class="QGridLayout" >
-      <property name="margin" >
+      <property name="leftMargin" >
        <number>11</number>
       </property>
-      <property name="spacing" >
+      <property name="topMargin" >
+       <number>11</number>
+      </property>
+      <property name="rightMargin" >
+       <number>11</number>
+      </property>
+      <property name="bottomMargin" >
+       <number>11</number>
+      </property>
+      <property name="horizontalSpacing" >
+       <number>6</number>
+      </property>
+      <property name="verticalSpacing" >
        <number>6</number>
       </property>
       <item row="1" column="0" >
@@ -371,20 +421,30 @@
      </layout>
     </widget>
    </item>
-   <item row="0" column="1" >
+   <item row="1" column="1" >
     <widget class="QLineEdit" name="mTitle" >
      <property name="text" >
       <string>To-do List</string>
      </property>
     </widget>
    </item>
-   <item row="0" column="0" >
+   <item row="1" column="0" >
     <widget class="QLabel" name="mTitleLabel" >
      <property name="text" >
       <string>&amp;Title:</string>
      </property>
      <property name="buddy" >
       <cstring>mTitle</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" colspan="2" >
+    <widget class="QLabel" name="label" >
+     <property name="text" >
+      <string>&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
+p, li { white-space: pre-wrap; }
+&lt;/style>&lt;/head>&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;">
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-weight:600;">Print to-dos options:&lt;/span>&lt;/p>&lt;/body>&lt;/html></string>
      </property>
     </widget>
    </item>
@@ -420,24 +480,64 @@
    <signal>toggled(bool)</signal>
    <receiver>mFromDateLabel</receiver>
    <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
   </connection>
   <connection>
    <sender>mPrintDueRange</sender>
    <signal>toggled(bool)</signal>
    <receiver>mToDate</receiver>
    <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
   </connection>
   <connection>
    <sender>mPrintDueRange</sender>
    <signal>toggled(bool)</signal>
    <receiver>mToDateLabel</receiver>
    <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
   </connection>
   <connection>
    <sender>mPrintDueRange</sender>
    <signal>toggled(bool)</signal>
    <receiver>mFromDate</receiver>
    <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
   </connection>
  </connections>
 </ui>
