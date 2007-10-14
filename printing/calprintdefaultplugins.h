@@ -44,21 +44,20 @@ class CalPrintIncidence : public CalPrintPluginBase
   public:
     CalPrintIncidence();
     virtual ~CalPrintIncidence();
-    virtual QString description() { return i18n("Print &incidence"); }
-    virtual QString info() { return i18n("Prints an incidence on one page"); }
+    virtual QString description() { return i18n( "Print &incidence" ); }
+    virtual QString info() { return i18n( "Prints an incidence on one page" ); }
     virtual int sortID() { return CalPrinterBase::Incidence; }
     // Enable the Print Incidence option only if there are selected incidences.
     virtual bool enabled()
-      {
-        if ( mSelectedIncidences.count() > 0 ) {
-          return true;
-        } else {
-          return false;
-        }
+    {
+      if ( mSelectedIncidences.count() > 0 ) {
+        return true;
+      } else {
+        return false;
       }
+    }
     virtual QWidget *createConfigWidget(QWidget*);
-    virtual QPrinter::Orientation defaultOrientation()
-      { return QPrinter::Portrait; }
+    virtual QPrinter::Orientation defaultOrientation() { return QPrinter::Portrait; }
 
   public:
     void print( QPainter &p, int width, int height );
@@ -77,25 +76,24 @@ class CalPrintIncidence : public CalPrintPluginBase
     bool mShowAttachments;
 };
 
-
 class CalPrintDay : public CalPrintPluginBase
 {
   public:
     CalPrintDay();
     virtual ~CalPrintDay();
-    virtual QString description() { return i18n("Print da&y"); }
-    virtual QString info() { return i18n("Prints all events of a single day on one page"); }
+    virtual QString description() { return i18n( "Print da&y" ); }
+    virtual QString info() { return i18n( "Prints all events of a single day on one page" ); }
     virtual int sortID() { return CalPrinterBase::Day; }
     virtual bool enabled() { return true; }
-    virtual QWidget *createConfigWidget( QWidget* );
+    virtual QWidget *createConfigWidget( QWidget * );
 
   public:
-    void print(QPainter &p, int width, int height);
+    void print( QPainter &p, int width, int height );
     virtual void readSettingsWidget();
     virtual void setSettingsWidget();
     virtual void loadConfig();
     virtual void saveConfig();
-    virtual void setDateRange( const QDate& from, const QDate& to );
+    virtual void setDateRange( const QDate &from, const QDate &to );
 
   protected:
     QTime mStartTime, mEndTime;
@@ -108,8 +106,8 @@ class CalPrintWeek : public CalPrintPluginBase
   public:
     CalPrintWeek();
     virtual ~CalPrintWeek();
-    virtual QString description() { return i18n("Print &week"); }
-    virtual QString info() { return i18n("Prints all events of one week on one page"); }
+    virtual QString description() { return i18n( "Print &week" ); }
+    virtual QString info() { return i18n( "Prints all events of one week on one page" ); }
     virtual int sortID() { return CalPrinterBase::Week; }
     virtual bool enabled() { return true; }
     virtual QWidget *createConfigWidget(QWidget*);
@@ -119,15 +117,19 @@ class CalPrintWeek : public CalPrintPluginBase
     virtual QPrinter::Orientation defaultOrientation();
 
   public:
-    void print(QPainter &p, int width, int height);
+    void print( QPainter &p, int width, int height );
     virtual void readSettingsWidget();
     virtual void setSettingsWidget();
     virtual void loadConfig();
     virtual void saveConfig();
-    virtual void setDateRange( const QDate& from, const QDate& to );
+    virtual void setDateRange( const QDate &from, const QDate &to );
 
   protected:
-    enum eWeekPrintType { Filofax=0, Timetable, SplitWeek } mWeekPrintType;
+    enum eWeekPrintType {
+      Filofax=0,
+      Timetable,
+      SplitWeek
+    } mWeekPrintType;
     QTime mStartTime, mEndTime;
     bool mIncludeTodos;
 };
@@ -137,20 +139,20 @@ class CalPrintMonth : public CalPrintPluginBase
   public:
     CalPrintMonth();
     virtual ~CalPrintMonth();
-    virtual QString description() { return i18n("Print mont&h"); }
-    virtual QString info() { return i18n("Prints all events of one month on one page"); }
+    virtual QString description() { return i18n( "Print mont&h" ); }
+    virtual QString info() { return i18n( "Prints all events of one month on one page" ); }
     virtual int sortID() { return CalPrinterBase::Month; }
     virtual bool enabled() { return true; }
     virtual QWidget *createConfigWidget(QWidget*);
     virtual QPrinter::Orientation defaultOrientation() { return QPrinter::Landscape; }
 
   public:
-    void print(QPainter &p, int width, int height);
+    void print( QPainter &p, int width, int height );
     virtual void readSettingsWidget();
     virtual void setSettingsWidget();
     virtual void loadConfig();
     virtual void saveConfig();
-    virtual void setDateRange( const QDate& from, const QDate& to );
+    virtual void setDateRange( const QDate &from, const QDate &to );
 
   protected:
     bool mWeekNumbers;
@@ -164,8 +166,8 @@ class CalPrintTodos : public CalPrintPluginBase
   public:
     CalPrintTodos();
     virtual ~CalPrintTodos();
-    virtual QString description() { return i18n("Print to-&dos"); }
-    virtual QString info() { return i18n("Prints all to-dos in a (tree-like) list"); }
+    virtual QString description() { return i18n( "Print to-&dos" ); }
+    virtual QString info() { return i18n( "Prints all to-dos in a (tree-like) list" ); }
     virtual int sortID() { return CalPrinterBase::Todolist; }
     virtual bool enabled() { return true; }
     virtual QWidget *createConfigWidget(QWidget*);
