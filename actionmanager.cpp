@@ -449,15 +449,15 @@ void ActionManager::initActions()
   /************************** Actions MENU *********************************/
   bool isRTL = QApplication::isRightToLeft();
 
-  action = new KAction( KIcon( "calendar-today" ), i18n( "Go to &Today" ), this );
+  action = new KAction( KIcon( "calendar-today" ), i18n( "To &today" ), this );
   action->setIconText( i18n( "Today" ) );
   action->setToolTip( i18n( "Scroll to Today" ) );
   mACollection->addAction( "go_today", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(goToday()) );
 
-  action = new KAction( KIcon( isRTL ? "go-next" : "go-previous" ), i18n( "Go &Backward" ), this );
+  action = new KAction( KIcon( isRTL ? "go-next" : "go-previous" ), i18n( "&Backward" ), this );
   action->setIconText( i18n( "Back" ) );
-  action->setToolTip( i18n( "Scroll Backwards" ) );
+  action->setToolTip( i18n( "Scroll Backward" ) );
   mACollection->addAction( "go_previous", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(goPrevious()) );
 
@@ -469,7 +469,7 @@ void ActionManager::initActions()
   connect( mCalendarView, SIGNAL(changeNavStringPrev(const QString &)),
            this, SLOT(dumpText(const QString &)) );*/
 
-  action = new KAction( KIcon( isRTL ? "go-previous" : "go-next" ), i18n( "Go &Forward" ), this );
+  action = new KAction( KIcon( isRTL ? "go-previous" : "go-next" ), i18n( "&Forward" ), this );
   action->setIconText( i18n( "Forward" ) );
   action->setToolTip( i18n( "Scroll Forward" ) );
   mACollection->addAction( "go_next", action );
