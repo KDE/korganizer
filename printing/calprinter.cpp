@@ -180,7 +180,7 @@ CalPrintDialog::CalPrintDialog( KOrg::PrintPlugin::List plugins, QWidget *parent
 
   QSplitter *splitter = new QSplitter( page );
   splitter->setOrientation( Qt::Horizontal );
-
+  splitter->setChildrenCollapsible( false );
   QGroupBox *typeBox = new QGroupBox( i18n( "Print Style" ), splitter );
   QBoxLayout *typeLayout = new QVBoxLayout( typeBox );
   mTypeGroup = new QButtonGroup( typeBox );
@@ -191,7 +191,7 @@ CalPrintDialog::CalPrintDialog( KOrg::PrintPlugin::List plugins, QWidget *parent
   splitterRightLayout->setSpacing( spacingHint() );
 
   mConfigArea = new QStackedWidget( splitterRight );
-  splitterRightLayout->addMultiCellWidget( mConfigArea, 0, 0, 0, 1 );
+  splitterRightLayout->addWidget( mConfigArea, 0, 0, 1, 2 );
   QLabel *orientationLabel = new QLabel( i18n( "Page &orientation:" ), splitterRight );
   splitterRightLayout->addWidget( orientationLabel, 1, 0 );
 
