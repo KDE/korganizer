@@ -764,14 +764,13 @@ KOMonthView::KOMonthView( Calendar *calendar, QWidget *parent )
 
   // Top box with month name and decorations
   mTopBox = new KHBox( this );
-  mLabel = new QLabel( mTopBox );
-  mLabel->setFont( mfont );
-  mLabel->setAlignment( Qt::AlignCenter );
-  mLabel->setLineWidth( 0 );
-  mLabel->setFrameStyle( QFrame::Plain );
+  mTitle = new QLabel( mTopBox );
+  mTitle->setFont( mfont );
+  mTitle->setLineWidth( 0 );
+  mTitle->setFrameStyle( QFrame::Plain );
   mDecorationsFrame = 0;
 
-  dayLayout->addWidget( mTopBox, 0, 0, 1, mDaysPerWeek );
+  dayLayout->addWidget( mTopBox, 0, 0, 1, -1, Qt::AlignCenter );
 
   // create the day of the week labels (Sun, Mon, etc) and add them to
   // the layout.
@@ -907,8 +906,6 @@ void KOMonthView::updateDayLabels()
 
 void KOMonthView::showDates( const QDate &start, const QDate & )
 {
-//  kDebug(5850) <<"KOMonthView::showDates():" << start.toString();
-
   const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
 
   mDateToCell.clear();
@@ -919,9 +916,9 @@ void KOMonthView::showDates( const QDate &start, const QDate & )
   int weekdayCol=( mStartDate.dayOfWeek() + 7 - mWeekStartDay ) % 7;
   mStartDate = mStartDate.addDays( -weekdayCol );
 
-  mLabel->setText( i18nc( "monthname year", "%1 %2" ,
-                     calSys->monthName( start ) ,
-                     calSys->year( start ) ) );
+  mTitle->setText( i18nc( "monthname year", "%1 %2" ,
+                          calSys->monthName( start ) ,
+                          calSys->yearString( start ) ) );
 
   delete mDecorationsFrame;
   mDecorationsFrame = new QFrame( mTopBox );

@@ -311,7 +311,7 @@ class KOMonthView: public KOEventView
 
     KOEventPopupMenu *mEventContextMenu;
     KHBox *mTopBox;
-    QLabel *mLabel;
+    QLabel *mTitle;
     QFrame *mDecorationsFrame;
 };
 
