@@ -193,6 +193,7 @@ CalPrintDialog::CalPrintDialog( KOrg::PrintPlugin::List plugins, QWidget *parent
   mConfigArea = new QStackedWidget( splitterRight );
   splitterRightLayout->addWidget( mConfigArea, 0, 0, 1, 2 );
   QLabel *orientationLabel = new QLabel( i18n( "Page &orientation:" ), splitterRight );
+  orientationLabel->setAlignment( Qt::AlignRight );
   splitterRightLayout->addWidget( orientationLabel, 1, 0 );
 
   mOrientationSelection = new KComboBox( splitterRight );
