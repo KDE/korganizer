@@ -1881,17 +1881,16 @@ void ActionManager::goDate( const QString &date )
 
 void ActionManager::updateUndoAction( const QString &text )
 {
-  if ( text.isNull() ) {
+  mUndoAction->setText( i18n( "Undo" ) );
+    if ( text.isNull() ) {
     mUndoAction->setEnabled( false );
-    mUndoAction->setText( i18n( "Undo" ) );
   } else {
     mUndoAction->setEnabled( true );
-    if ( text.isEmpty() ) {
-      mUndoAction->setText( i18n( "Undo" ) );
-    } else {
+    if ( !text.isEmpty() ) {
       mUndoAction->setText( i18n( "Undo (%1)", text ) );
     }
   }
+  mUndoAction->setIconText( i18n( "Undo" ) );
 }
 
 void ActionManager::updateRedoAction( const QString &text )
