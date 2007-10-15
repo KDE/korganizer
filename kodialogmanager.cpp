@@ -120,27 +120,9 @@ void KODialogManager::errorSaveIncidence( QWidget *parent, Incidence *incidence 
 void KODialogManager::showOptionsDialog()
 {
   if (!mOptionsDialog) {
-#if 0
-    mOptionsDialog = new KConfigureDialog();
-//    mOptionsDialog = new KConfigureDialog( KConfigureDialog::Configurable );
-//    mOptionsDialog = new KConfigureDialog( mMainView );
-    connect( mOptionsDialog->dialog(),
-             SIGNAL( configCommitted( const QByteArray & ) ),
-             mMainView, SLOT( updateConfig() ) );
-#else
     mOptionsDialog = new KCMultiDialog( mMainView );
     connect( mOptionsDialog, SIGNAL( configCommitted( const QByteArray & ) ),
              mMainView, SLOT( updateConfig( const QByteArray& ) ) );
-#if 0
-    connect( mOptionsDialog, SIGNAL( applyClicked() ),
-             mMainView, SLOT( updateConfig() ) );
-    connect( mOptionsDialog, SIGNAL( okClicked() ),
-             mMainView, SLOT( updateConfig() ) );
-    // @TODO Find a way to do this with KCMultiDialog
-    connect(mCategoryEditDialog,SIGNAL(categoryConfigChanged()),
-            mOptionsDialog,SLOT(updateCategories()));
-#endif
-
     QStringList modules;
 
     modules.append( "korganizer_configmain.desktop" );
@@ -157,7 +139,6 @@ void KODialogManager::showOptionsDialog()
     QStringList::iterator mit;
     for ( mit = modules.begin(); mit != modules.end(); ++mit )
       mOptionsDialog->addModule( *mit );
-#endif
   }
 
   mOptionsDialog->show();
