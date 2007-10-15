@@ -1,4 +1,5 @@
 [Desktop Entry]
+Name=DBUSCalendar
 Type=ServiceType
 X-KDE-ServiceType=DBUS/Organizer
 Comment=Organizer with a D-BUS interface
