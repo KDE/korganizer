@@ -1350,7 +1350,7 @@ void ActionManager::setDestinationPolicy()
 void ActionManager::configureDateTime()
 {
   KProcess proc;
-  proc << "kcmshell" << "language";
+  proc << "kcmshell4" << "language";
 
   if ( !proc.startDetached() ) {
     KMessageBox::sorry( dialogParent(),
