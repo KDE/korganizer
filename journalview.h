@@ -83,6 +83,7 @@ class JournalView : public QWidget {
     void setDate(const QDate &);
 
   signals:
+    void configChanged();
     void deleteIncidence( Incidence * );
     void editIncidence( Incidence * );
 

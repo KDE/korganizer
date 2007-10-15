@@ -191,6 +191,7 @@ class KOTodoView : public KOrg::BaseView
     void updateCategories();
 
   signals:
+    void configChanged();
     void unSubTodoSignal();
     void unAllSubTodoSignal();
 
