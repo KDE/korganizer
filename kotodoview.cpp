@@ -79,12 +79,14 @@ using namespace KPIM;
 #include <QSplitter>
 #include <QApplication>
 #include <QMimeData>
+#include <QToolTip>
 
 #include "kotodoview.moc"
 
 KOTodoListViewToolTip::KOTodoListViewToolTip (QWidget* parent,
                                               KOTodoListView* lv )
 {
+  mParent = parent;
   todolist=lv;
 }
 
@@ -108,16 +110,11 @@ void KOTodoListViewToolTip::maybeTip( const QPoint & pos)
     /* Show the tip */
     QString tipText( IncidenceFormatter::toolTipString( i->todo() ) );;
     if ( !tipText.isEmpty() ) {
-#ifdef __GNUC__
-#warning port QToolTip usage
-#endif
-      // tip(r, tipText);
+      QToolTip::showText( pos, tipText, mParent, r );
     }
   }
 
 }
-
-
 
 KOTodoListView::KOTodoListView( QWidget *parent )
   : K3ListView( parent ), mCalendar( 0 ), mChanger( 0 )
