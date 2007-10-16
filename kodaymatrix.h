@@ -30,7 +30,6 @@
 
 #include <QFrame>
 #include <QColor>
-
 #include <QMap>
 
 class QDragEnterEvent;
@@ -44,11 +43,10 @@ class QPaintEvent;
 class KODayMatrix;
 
 namespace KCal {
-class Incidence;
-class Calendar;
+  class Incidence;
+  class Calendar;
 }
 using namespace KCal;
-
 
 #if 0
 /**
@@ -127,12 +125,13 @@ class KODayMatrix: public QFrame
     */
     void setCalendar( Calendar * );
 
-    /** updates the day matrix to start with the given date. Does all the necessary
-     *  checks for holidays or events on a day and stores them for display later on.
+    /** updates the day matrix to start with the given date. Does all the
+     *  necessary checks for holidays or events on a day and stores them
+     *  for display later on.
      *  Does NOT update the view visually. Call repaint() for this.
      *
-     *  @param actdate recalculates the day matrix to show NUMDAYS starting from this
-     *                 date.
+     *  @param actdate recalculates the day matrix to show NUMDAYS starting
+     *  from this date.
      */
     void updateView( const QDate &actdate );
 
@@ -145,7 +144,7 @@ class KODayMatrix: public QFrame
     /** returns the QDate object associated with day indexed by the
      *  supplied offset.
      */
-    const QDate& getDate( int offset ) const;
+    const QDate &getDate( int offset ) const;
 
     /** returns the official name of this holy day or 0 if there is no label
      *  for this day.
@@ -157,9 +156,9 @@ class KODayMatrix: public QFrame
      */
     void addSelectedDaysTo( DateList & );
 
-    /** sets the actual to be displayed selection in the day matrix starting from
-     *  start and ending with end. Theview must be manually updated by calling
-     *  repaint. (?)
+    /** sets the actual to be displayed selection in the day matrix starting
+     *  from start and ending with end. Theview must be manually updated by
+     *  calling repaint. (?)
      *    @param start start of the new selection
      *    @param end end date of the new selection
      */
@@ -171,22 +170,23 @@ class KODayMatrix: public QFrame
     void clearSelection();
 
     /** Is today visible in the view? Keep this in sync with
-    * the values today (below) can take.
-    */
+     * the values today (below) can take.
+     */
     bool isTodayVisible() const { return mToday >= 0; }
 
-    /** If today is visible, then we can find out if today is
-    * near the beginning or the end of the month.
-    * This is dependent on today remaining the index
-    * in the array of visible dates and going from
-    * top left (0) to bottom right (41).
-    */
+    /**
+     * If today is visible, then we can find out if today is
+     * near the beginning or the end of the month.
+     * This is dependent on today remaining the index
+     * in the array of visible dates and going from
+     * top left (0) to bottom right (41).
+     */
     bool isBeginningOfMonth() const { return mToday <= 8; }
     bool isEndOfMonth() const { return mToday >= 27; }
 
   public slots:
-    /** Recalculates all the flags of the days in the matrix like holidays or events
-     *  on a day (Actually calls above method with the actual startdate).
+    /** Recalculates all the flags of the days in the matrix like holidays or
+     *  events on a day (Actually calls above method with the actual startdate).
      */
     void updateView();
 
@@ -197,8 +197,8 @@ class KODayMatrix: public QFrame
     void recalculateToday();
 
   signals:
-    /** emitted if the user selects a block of days with the mouse by dragging a rectangle
-     *  inside the matrix
+    /** emitted if the user selects a block of days with the mouse by dragging
+     *  a rectangle inside the matrix
      *
      *  @param daylist list of days that have been selected by the user
      */
@@ -210,7 +210,9 @@ class KODayMatrix: public QFrame
      *  @param dt QDate that has been selected
      */
     void incidenceDropped( Incidence *incidence, const QDate &dt );
-    /** emitted if the user has dropped an event inside the matrix and chose to move it instead of copy
+
+    /** emitted if the user has dropped an event inside the matrix and chose
+     * to move it instead of copy
      *
      *  @param oldincidence the new calendar incidence
      *  @param dt QDate that has been selected
@@ -251,58 +253,58 @@ class KODayMatrix: public QFrame
      */
     QColor getShadedColor( const QColor &color ) const;
 
-    /** number of days to be displayed. For now there is no support for any other number then 42.
-        so change it at your own risk :o) */
+    /** number of days to be displayed. For now there is no support for any
+        other number then 42. so change it at your own risk :o) */
     static const int NUMDAYS;
 
     /** calendar instance to be queried for holidays, events, ... */
-    Calendar  *mCalendar;
+    Calendar *mCalendar;
 
     /** starting date of the matrix */
-    QDate     mStartDate;
+    QDate mStartDate;
 
     /** array of day labels to optimeize drawing performance. */
-    QString   *mDayLabels;
+    QString *mDayLabels;
 
     /** array of days displayed to reduce memory consumption by
         subsequently calling QDate::addDays(). */
-    QDate     *mDays;
+    QDate *mDays;
 
     /** array of storing the number of events on a given day.
-      *  used for drawing a bold font if there is at least one event on that day.
-      */
-    int      *mEvents;
+     * used for drawing a bold font if there is at least one event on that day.
+     */
+    int *mEvents;
 
     /** stores holiday names of the days shown in the matrix. */
-    QMap<int,QString>  mHolidays;
+    QMap<int,QString> mHolidays;
 
     /** index of today or -1 if today is not visible in the matrix. */
-    int       mToday;
+    int mToday;
 
     /** index of day where dragged selection was initiated.
         used to detect "negative" timely selections */
-    int       mSelInit;
+    int mSelInit;
 
     /** if mSelStart has this value it indicates that there is no
         actual selection in the matrix. */
     static const int NOSELECTION;
 
     /** index of first selected day. */
-    int       mSelStart;
+    int mSelStart;
 
     /** index of last selected day. */
-    int       mSelEnd;
+    int mSelEnd;
 
     /** dynamic tooltip to handle mouse dependent tips for each day in the matrix. */
 //    DynamicTip* mToolTip;
 
     /** default width of the frame drawn around today if it is visible in the matrix. */
-    int       mTodayMarginWidth;
+    int mTodayMarginWidth;
 
-    /** stores actual size of each day in the widget so that I don't need to ask this data
-     *  on every repaint.
+    /** stores actual size of each day in the widget so we don't need to
+     *  ask on every repaint.
      */
-    QRect     mDaySize;
+    QRect mDaySize;
 };
 
 #endif
