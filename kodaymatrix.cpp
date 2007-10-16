@@ -532,7 +532,6 @@ void KODayMatrix::paintEvent( QPaintEvent * )
 {
   QPainter p;
   QRect sz = frameRect();
-  QPixmap pm( sz.size() );
   int dheight = mDaySize.height();
   int dwidth = mDaySize.width();
   int row, col;
@@ -541,8 +540,7 @@ void KODayMatrix::paintEvent( QPaintEvent * )
 
   QPalette pal = palette();
 
-  p.begin( &pm, this );
-  pm.fill( pal.color( QPalette::Base ) );
+  p.begin( this );
 
   // draw topleft frame
   p.setPen( pal.color( QPalette::Mid ) );
@@ -680,7 +678,6 @@ void KODayMatrix::paintEvent( QPaintEvent * )
     }
   }
   p.end();
-  bitBlt( this, 0, 0, &pm );
 }
 
 // ----------------------------------------------------------------------------
