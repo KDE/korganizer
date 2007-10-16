@@ -58,45 +58,12 @@
 #include <QResizeEvent>
 #include <QDragEnterEvent>
 #include <QMouseEvent>
+#include <QToolTip>
 #ifndef NODND
 #include <QCursor>
 #endif
 
 #include "kodaymatrix.moc"
-
-// ============================================================================
-//  D Y N A M I C   T I P
-// ============================================================================
-
-#ifdef __GNUC__
-#warning Port me!
-#endif
-#if 0
-DynamicTip::DynamicTip( QWidget * parent )
-  : QToolTip( parent )
-{
-  mMatrix = static_cast<KODayMatrix *>( parent );
-}
-
-void DynamicTip::maybeTip( const QPoint &pos )
-{
-  // calculate which cell of the matrix the mouse is in
-  QRect sz = mMatrix->frameRect();
-  int dheight = sz.height() * 7 / 42;
-  int dwidth = sz.width() / 7;
-  int row = pos.y() / dheight;
-  int col = pos.x() / dwidth;
-
-  QRect rct( col * dwidth, row * dheight, dwidth, dheight );
-
-  // show holiday names only
-  QString str = mMatrix->getHolidayLabel( col + row * 7 );
-  if ( str.isEmpty() ) {
-    return;
-  }
-  tip( rct, str );
-}
-#endif
 
 // ============================================================================
 //  K O D A Y M A T R I X
@@ -112,10 +79,6 @@ KODayMatrix::KODayMatrix( QWidget *parent )
   mDays = new QDate[NUMDAYS];
   mDayLabels = new QString[NUMDAYS];
   mEvents = new int[NUMDAYS];
-#ifdef __GNUC__
-#warning Port me!
-#endif
-//  mToolTip = new DynamicTip( this );
 
   mTodayMarginWidth = 2;
   mSelEnd = mSelStart = NOSELECTION;
@@ -150,10 +113,6 @@ KODayMatrix::~KODayMatrix()
   delete [] mDays;
   delete [] mDayLabels;
   delete [] mEvents;
-#ifdef __GNUC__
-#warning Port me!
-#endif
-//  delete mToolTip;
 }
 
 void KODayMatrix::addSelectedDaysTo( DateList &selDays )
@@ -340,6 +299,29 @@ int KODayMatrix::getDayIndexFrom( int x, int y ) const
 //  M O U S E   E V E N T   H A N D L I N G
 // ----------------------------------------------------------------------------
 
+bool KODayMatrix::event( QEvent *event )
+{
+  if ( event->type() == QEvent::ToolTip ) {
+    QHelpEvent *helpEvent = static_cast<QHelpEvent*>( event );
+
+    // calculate which cell of the matrix the mouse is in
+    QRect sz = frameRect();
+    int dheight = sz.height() * 7 / 42;
+    int dwidth = sz.width() / 7;
+    int row = helpEvent->pos().y() / dheight;
+    int col = helpEvent->pos().x() / dwidth;
+
+    // show holiday names only
+    QString tipText = getHolidayLabel( col + row * 7 );
+    if ( !tipText.isEmpty() ) {
+      QToolTip::showText( helpEvent->globalPos(), tipText );
+    } else {
+      QToolTip::hideText();
+    }
+  }
+  return QWidget::event( event );
+}
+
 void KODayMatrix::mousePressEvent( QMouseEvent *e )
 {
   mSelStart = getDayIndexFrom( e->x(), e->y() );
@@ -506,7 +488,7 @@ void KODayMatrix::dropEvent( QDropEvent *e )
     }
     menu->addSeparator();
 #ifdef __GNUC__
-        #warning Use a standard action for cancel
+#warning Use a standard action for cancel
 #endif
     cancel = menu->addAction( KOGlobals::self()->smallIcon( "cancel" ), i18n( "&Cancel" ) );
     QAction *a = menu->exec( QCursor::pos() );

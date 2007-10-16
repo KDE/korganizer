@@ -32,6 +32,7 @@
 #include <QColor>
 #include <QMap>
 
+class QEvent;
 class QDragEnterEvent;
 class QDragMoveEvent;
 class QDragLeaveEvent;
@@ -47,37 +48,6 @@ namespace KCal {
   class Calendar;
 }
 using namespace KCal;
-
-#if 0
-/**
- *  small helper class to dynamically show tooltips inside the day matrix.
- *  This class asks the day matrix object for a appropriate label which
- *  is in our special case the name of the holiday or null if this day is no holiday.
- */
-class DynamicTip : public QToolTip
-{
-  public:
-    /**
-     * Constructor that expects a KODayMatrix object as parent.
-     *
-     * @param parent the parent KODayMatrix control.
-     */
-    DynamicTip( QWidget *parent );
-
-  protected:
-    /**
-     * Qt's callback to ask the object to provide an approrpiate text for the
-     * tooltip to be shown.
-     *
-     * @param pos coordinates of the mouse.
-     */
-    void maybeTip( const QPoint &pos );
-
-  private:
-    /** the parent control this tooltip is designed for. */
-    KODayMatrix *mMatrix;
-};
-#endif
 
 /**
  *  Replacement for kdpdatebuton.cpp that used 42 widgets for the day matrix to be displayed.
@@ -220,6 +190,8 @@ class KODayMatrix: public QFrame
     void incidenceDroppedMove( Incidence *oldincidence, const QDate &dt );
 
   protected:
+    bool event( QEvent *e );
+
     void paintEvent( QPaintEvent *ev );
 
     void mousePressEvent( QMouseEvent *e );
@@ -294,9 +266,6 @@ class KODayMatrix: public QFrame
 
     /** index of last selected day. */
     int mSelEnd;
-
-    /** dynamic tooltip to handle mouse dependent tips for each day in the matrix. */
-//    DynamicTip* mToolTip;
 
     /** default width of the frame drawn around today if it is visible in the matrix. */
     int mTodayMarginWidth;
