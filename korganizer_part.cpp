@@ -105,6 +105,7 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, QObject *parent,
 
   QVBoxLayout *topLayout = new QVBoxLayout( canvas );
   topLayout->addWidget( mView );
+  topLayout->setMargin(0);
 
   connect( mView, SIGNAL( incidenceSelected( Incidence * ) ),
            SLOT( slotChangeInfo( Incidence * ) ) );
