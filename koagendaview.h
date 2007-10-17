@@ -27,8 +27,6 @@
 
 #include "calprinter.h"
 
-#include <kvbox.h>
-
 #include <q3scrollview.h>
 #include <QBoxLayout>
 #include <QLabel>
@@ -41,7 +39,9 @@
 #include <QVector>
 
 #include "agendaview.h"
-#include "ui_timescaleedit_base.h"
+
+class TimeLabels;
+class TimeLabelsZone;
 
 class KHBox;
 class KComboBox;
@@ -53,8 +53,6 @@ class KOAgenda;
 class KOAgendaItem;
 class KConfig;
 
-class TimeLabelsZone;
-
 namespace KCal {
   class ResourceCalendar;
 }
@@ -62,102 +60,6 @@ namespace KCal {
 namespace KOrg {
 class IncidenceChangerBase;
 }
-
-class TimeScaleConfigDialog : public QDialog
-{
-  Q_OBJECT
-
-  public:
-    TimeScaleConfigDialog( QWidget *parent );
-
-  private slots:
-    void add();
-    void remove();
-    void up();
-    void down();
-    void okClicked();
-   
-  private:
-    QStringList zones();
-    Ui::TimeScaleEditDialog ui;
-
-};
-
-class TimeLabels : public Q3ScrollView
-{
-  Q_OBJECT
-  public:
-    explicit TimeLabels( const KDateTime::Spec &spec, int rows, TimeLabelsZone *parent = 0, Qt::WFlags f = 0 );
-
-    /** Calculates the minimum width */
-    virtual int minimumWidth() const;
-
-    /** updates widget's internal state */
-    void updateConfig();
-
-    /**  */
-    void setAgenda( KOAgenda *agenda );
-
-    /**  */
-    virtual void paintEvent( QPaintEvent *e );
-
-    /** */
-    virtual void contextMenuEvent( QContextMenuEvent *event );
-
-    /** Returns time spec of this label */
-    KDateTime::Spec timeSpec();
-  public slots:
-    /** update time label positions */
-    void positionChanged();
-
-  protected:
-    void drawContents( QPainter *p, int cx, int cy, int cw, int ch );
-
-  private slots:
-    /** update the position of the marker showing the mouse position */
-    void mousePosChanged(const QPoint &pos);
-
-    void showMousePos();
-    void hideMousePos();
-
-    void setCellHeight( double height );
-
-  private:
-    KDateTime::Spec mSpec;
-    int mRows;
-    double mCellHeight;
-    int mMiniWidth;
-    KOAgenda* mAgenda;
-    TimeLabelsZone *mTimeLabelsZone;
-
-    QFrame *mMousePos;  // shows a marker for the current mouse position in y direction
-};
-
-class TimeLabelsZone : public QWidget
-{
-public:
-  TimeLabelsZone( KOAgendaView *parent, KOAgenda *agenda );
-
-  /** Add a new time label with the given spec.
-      If spec is not valid, use the display timespec.
-  */
-  void addTimeLabels( const KDateTime::Spec &spec );
-  int timeLabelsWidth();
-  void setTimeLabelsWidth( int width );
-  void updateAll();
-  void reset();
-  void init();
-
-private:
-  void setupTimeLabel( TimeLabels* timeLabel );
-  KOAgenda *mAgenda;
-  KOAgendaView *mParent;
-
-//  QWidget *mTimeLabelsFrame;
-  QHBoxLayout *mTimeLabelsLayout;
-  TimeLabels *mTimeLabels;
-  QList<TimeLabels*> mTimeLabelsList;
-};
 
 class EventIndicator : public QFrame
 {

@@ -129,6 +129,7 @@ set(korganizer_LIB_SRCS
    koalternatelabel.cpp
    kodecorationlabel.cpp
    koagendaview.cpp
+   timelabelszone.cpp
    agendaview.cpp
    multiagendaview.cpp
    koagenda.cpp
