@@ -503,7 +503,7 @@ void CalendarView::readSettings()
 
   mEventViewer->readSettings( config );
   mViewManager->readSettings( config );
-  mTodoList->restoreLayout( config, QString( "Todo Layout" ) );
+  mTodoList->restoreLayout( config, QString( "Todo View" ) );
 
   readFilterSettings( config );
 
@@ -531,7 +531,7 @@ void CalendarView::writeSettings()
 #endif
   mEventViewer->writeSettings( config );
   mViewManager->writeSettings( config );
-  mTodoList->saveLayout( config, QString( "Todo Layout" ) );
+  mTodoList->saveLayout( config, QString( "Todo View" ) );
 
   KOPrefs::instance()->writeConfig();
 
