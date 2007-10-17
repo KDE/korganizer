@@ -403,6 +403,7 @@ enum {
 
 void KODayMatrix::dragEnterEvent( QDragEnterEvent *e )
 {
+  e->acceptProposedAction();
 #ifndef KORG_NODND
   const QMimeData *md = e->mimeData();
   if ( !ICalDrag::canDecode( md ) && !VCalDrag::canDecode( md ) ) {
