@@ -90,7 +90,7 @@ KODayMatrix::KODayMatrix( QWidget *parent )
 void KODayMatrix::setCalendar( Calendar *cal )
 {
   mCalendar = cal;
-  setAcceptDrops( mCalendar );
+  setAcceptDrops( mCalendar!=0 );
   updateEvents();
 }
 
@@ -301,7 +301,7 @@ int KODayMatrix::getDayIndexFrom( int x, int y ) const
 
 bool KODayMatrix::event( QEvent *event )
 {
-  if ( event->type() == QEvent::ToolTip ) {
+  if ( KOPrefs::instance()->mEnableToolTips && event->type() == QEvent::ToolTip ) {
     QHelpEvent *helpEvent = static_cast<QHelpEvent*>( event );
 
     // calculate which cell of the matrix the mouse is in
@@ -474,7 +474,7 @@ void KODayMatrix::dropEvent( QDropEvent *e )
   } else if ( keyboardModifiers & Qt::ShiftModifier ) {
     action = DRAG_MOVE;
   } else {
-    QAction *copy = 0, *move = 0, *cancel = 0;
+    QAction *copy = 0,  *move = 0, *cancel = 0;
     KMenu *menu = new KMenu( this );
     if ( existingEvent || existingTodo ) {
       move = menu->addAction( i18n( "&Move" ) );
