@@ -169,14 +169,17 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
 
   mTopLayout = new QGridLayout( this );
   mTopLayout->setMargin( 0 );
+
   /* Create agenda splitter */
   mSplitterAgenda = new QSplitter( Qt::Vertical, this );
   mTopLayout->addWidget( mSplitterAgenda, 1, 0 );
   mSplitterAgenda->setOpaqueResize( KGlobalSettings::opaqueResize() );
 
+
   /* Create day name labels for agenda columns */
   mDayLabelsFrame = new KHBox( mSplitterAgenda );
   mDayLabelsFrame->setSpacing( 2 );
+
 
   /* Create all-day agenda widget */
   mAllDayFrame = new KHBox( mSplitterAgenda );
@@ -203,6 +206,7 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
 
   // Create the event context menu for the all-day agenda
   mAllDayAgendaPopup = eventPopup();
+
 
   /* Create the main agenda widget and the related widgets */
   QWidget *agendaFrame = new QWidget( mSplitterAgenda );
@@ -244,6 +248,7 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
            SLOT( updateEventIndicatorTop(int) ) );
   connect( mAgenda, SIGNAL( upperYChanged(int) ),
            SLOT( updateEventIndicatorBottom(int) ) );
+
 
   /* Create a frame at the bottom which may be used by decorations */
   mBottomDayLabelsFrame = new KHBox( mSplitterAgenda );
