@@ -511,7 +511,7 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent)
   action = mItemPopupMenu->addAction(i18n("&Edit..."), this, SLOT (editTodo()) );
   mActionsOnSelection.append( action );
 #ifndef KORG_NOPRINTER
-  action = mItemPopupMenu->addAction(KOGlobals::self()->smallIcon("printer1"), i18n("&Print..."), this, SLOT( printTodo() ) );
+  action = mItemPopupMenu->addAction(KOGlobals::self()->smallIcon("document-print"), i18n("&Print..."), this, SLOT( printTodo() ) );
   mActionsOnSelection.append( action );
 #endif
   action = mItemPopupMenu->addAction(KOGlobals::self()->smallIconSet("edit-delete"), i18n("&Delete"), this,
