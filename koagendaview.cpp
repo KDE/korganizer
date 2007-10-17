@@ -139,10 +139,10 @@ void EventIndicator::enableColumn(int column, bool enable)
 KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
   KOrg::AgendaView( cal, parent ),
   mExpandButton( 0 ),
+  mTimeLabelsZone( 0 ),
   mAllowAgendaUpdate( true ),
   mUpdateItem( 0 ),
-  mResource( 0 ),
-  mTimeLabelsZone( 0 )
+  mResource( 0 )
 {
   mSelectedDates.append( QDate::currentDate() );
 
