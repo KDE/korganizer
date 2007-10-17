@@ -165,6 +165,7 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     void addAttendee( const QString & );
 
   protected:
+    bool event( QEvent *event );
     void dragEnterEvent( QDragEnterEvent *e );
     void dropEvent( QDropEvent *e );
     void paintEvent( QPaintEvent *e );

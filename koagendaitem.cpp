@@ -987,3 +987,13 @@ void KOAgendaItem::drawRoundedRect( QPainter *p, const QRect& rect,
   p->setPen( oldPen );
   p->setBrush( oldBrush );
 }
+
+bool KOAgendaItem::event( QEvent *event )
+{
+  if ( event->type() == QEvent::ToolTip ) {
+    if( !KOPrefs::instance()->mEnableToolTips) {
+      return true;
+    }
+  }
+  return QWidget::event( event );
+}
