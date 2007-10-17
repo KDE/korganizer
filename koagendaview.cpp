@@ -99,11 +99,11 @@ EventIndicator::~EventIndicator()
 {
 }
 
-void EventIndicator::drawContents(QPainter *p)
+void EventIndicator::paintEvent( QPaintEvent *event )
 {
-//  kDebug(5850) <<"======== top:" << contentsRect().top() <<" bottom"
-//         << contentsRect().bottom() << " left" << contentsRect().left()
-//         << " right" << contentsRect().right();
+  QFrame::paintEvent( event );
+
+  QPainter painter( this );
 
   int i;
   for(i=0;i<mColumns;++i) {
@@ -112,7 +112,7 @@ void EventIndicator::drawContents(QPainter *p)
       int xOffset = KOGlobals::self()->reverseLayout() ?
                (mColumns - 1 - i)*cellWidth + cellWidth/2 -mPixmap.width()/2 :
                i*cellWidth + cellWidth/2 -mPixmap.width()/2;
-      p->drawPixmap(QPoint(xOffset,0),mPixmap);
+      painter.drawPixmap(QPoint(xOffset,0),mPixmap);
     }
   }
 }

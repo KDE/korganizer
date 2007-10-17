@@ -74,7 +74,7 @@ class EventIndicator : public QFrame
     void enableColumn( int column, bool enable );
 
   protected:
-    void drawContents( QPainter * );
+    void paintEvent( QPaintEvent *event );
 
   private:
     int mColumns;
