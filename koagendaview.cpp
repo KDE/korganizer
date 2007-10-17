@@ -290,6 +290,13 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
   /* Connect the agendas */
   connectAgenda( mAgenda, mAgendaPopup, mAllDayAgenda );
   connectAgenda( mAllDayAgenda, mAllDayAgendaPopup, mAgenda);
+
+  connect( mAgenda,
+           SIGNAL( newTimeSpanSignal( const QPoint &, const QPoint & ) ),
+           SLOT( newTimeSpanSelected( const QPoint &, const QPoint & ) ) );
+  connect( mAllDayAgenda,
+           SIGNAL( newTimeSpanSignal( const QPoint &, const QPoint & ) ),
+           SLOT( newTimeSpanSelectedAllDay( const QPoint &, const QPoint & ) ) );
 }
 
 
@@ -312,10 +319,6 @@ void KOAgendaView::connectAgenda( KOAgenda *agenda, QMenu *popup,
 
   // Create/Show/Edit/Delete Event
   connect( agenda, SIGNAL( newEventSignal() ), SIGNAL( newEventSignal() ) );
-
-  connect( agenda,
-           SIGNAL( newTimeSpanSignal( const QPoint &, const QPoint & ) ),
-           SLOT( newTimeSpanSelected( const QPoint &, const QPoint & ) ) );
 
   connect( agenda, SIGNAL( newStartSelectSignal() ),
            otherAgenda, SLOT( clearSelection() ) );
