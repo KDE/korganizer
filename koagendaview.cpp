@@ -61,9 +61,7 @@
 #include <QLabel>
 #include <QFrame>
 #include <QLayout>
-#ifndef KORG_NOSPLITTER
 #include <QSplitter>
-#endif
 #include <QFont>
 #include <QFontMetrics>
 #include <QMenu>
@@ -172,31 +170,16 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
   mTopLayout = new QGridLayout( this );
   mTopLayout->setMargin( 0 );
   /* Create agenda splitter */
-#ifndef KORG_NOSPLITTER
   mSplitterAgenda = new QSplitter( Qt::Vertical, this );
   mTopLayout->addWidget( mSplitterAgenda, 1, 0 );
   mSplitterAgenda->setOpaqueResize( KGlobalSettings::opaqueResize() );
-#else
-  // If we don't use splitters, we still need to order the widgets nevertheless
-  KVBox *mainBox = new KVBox( this );
-  mTopLayout->addWidget( mainBox, 1, 0 );
-#endif
 
   /* Create day name labels for agenda columns */
-#ifndef KORG_NOSPLITTER
   mDayLabelsFrame = new KHBox( mSplitterAgenda );
-#else
-  mDayLabelsFrame = new KHBox( this );
-  mTopLayout->addWidget( mDayLabelsFrame, 0, 0 );
-#endif
   mDayLabelsFrame->setSpacing( 2 );
 
   /* Create all-day agenda widget */
-#ifndef KORG_NOSPLITTER
   mAllDayFrame = new KHBox( mSplitterAgenda );
-#else
-  mAllDayFrame = new KHBox( mainBox );
-#endif
   mAllDayFrame->setSpacing( 2 );
 
   // Alignment and description widgets
@@ -222,11 +205,7 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
   mAllDayAgendaPopup = eventPopup();
 
   /* Create the main agenda widget and the related widgets */
-#ifndef KORG_NOSPLITTER
   QWidget *agendaFrame = new QWidget( mSplitterAgenda );
-#else
-  QWidget *agendaFrame = new QWidget( mainBox );
-#endif
   mAgendaLayout = new QGridLayout( agendaFrame );
   mAgendaLayout->setMargin( 0 );
   mAgendaLayout->setHorizontalSpacing( 2 );
@@ -267,12 +246,7 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
            SLOT( updateEventIndicatorBottom(int) ) );
 
   /* Create a frame at the bottom which may be used by decorations */
-#ifndef KORG_NOSPLITTER
   mBottomDayLabelsFrame = new KHBox( mSplitterAgenda );
-#else
-  mBottomDayLabelsFrame = new KHBox( this );
-  mTopLayout->addWidget( mBottomDayLabelsFrame, 2, 0 );
-#endif
   mBottomDayLabelsFrame->setSpacing( 2 );
 
 
@@ -512,7 +486,6 @@ void KOAgendaView::createDayLabels()
   const KCalendarSystem *calsys = KOGlobals::self()->calendarSystem();
 
 #ifndef KORG_NOPLUGINS
-#ifndef KORG_NOSPLITTER
   if ( KOPrefs::instance()->decorationsAtAgendaViewTop().count() > 0 ) {
     mDayLabelsFrame->setParent( mSplitterAgenda );
   } else {
@@ -525,7 +498,6 @@ void KOAgendaView::createDayLabels()
     mBottomDayLabelsFrame->setParent( this );
     mTopLayout->addWidget( mBottomDayLabelsFrame, 0, 0 );
   }
-#endif
 #endif
 
   DateList::ConstIterator dit;
@@ -1492,12 +1464,10 @@ void KOAgendaView::readSettings(KConfig *config)
 
   KConfigGroup group = config->group("Views");
 
-#ifndef KORG_NOSPLITTER
   QList<int> sizes = group.readEntry("Separator AgendaView",QList<int>());
   if (sizes.count() == 2) {
     mSplitterAgenda->setSizes(sizes);
   }
-#endif
 
   updateConfig();
 }
@@ -1508,10 +1478,8 @@ void KOAgendaView::writeSettings(KConfig *config)
 
   KConfigGroup group = config->group("Views");
 
-#ifndef KORG_NOSPLITTER
   QList<int> list = mSplitterAgenda->sizes();
   group.writeEntry("Separator AgendaView",list);
-#endif
 }
 
 void KOAgendaView::setHolidayMasks()

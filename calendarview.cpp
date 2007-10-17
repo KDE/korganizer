@@ -98,9 +98,7 @@
 #include <QList>
 #include <QFile>
 #include <QLayout>
-#ifndef KORG_NOSPLITTER
 #include <QSplitter>
-#endif
 #include <QByteArray>
 #include <QBoxLayout>
 #include <QVBoxLayout>
@@ -134,7 +132,6 @@ CalendarView::CalendarView( QWidget *parent )
   QBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->setMargin(0);
 
-#ifndef KORG_NOSPLITTER
   // create the main layout frames.
   mPanner = new QSplitter( Qt::Horizontal, this );
   mPanner->setObjectName( "CalendarView::Panner" );
@@ -164,45 +161,6 @@ CalendarView::CalendarView( QWidget *parent )
   rightBox->setStretchFactor( mRightFrame, 1 );
 
   mLeftFrame = mLeftSplitter;
-#else
-  QWidget *mainBox;
-  QWidget *leftFrame;
-
-  if ( KOPrefs::instance()->mVerticalScreen ) {
-    mainBox = new KVBox( this );
-    leftFrame = new KHBox( mainBox );
-  } else {
-    mainBox = new KHBox( this );
-    leftFrame = new KVBox( mainBox );
-  }
-
-  topLayout->addWidget( mainBox );
-
-  mDateNavigator = new KDateNavigator( leftFrame, true,
-                                       "CalendarView::DateNavigator",
-                                       QDate::currentDate() );
-  mTodoList = new KOTodoView( CalendarNull::self(), leftFrame, "todolist" );
-
-  mEventViewerBox = new KVBox( leftFrame );
-  mEventViewer = new KOEventViewer ( mEventViewerContainer, "EventViewer" );
-
-  QWidget *rightBox = new QWidget( mainBox );
-  QBoxLayout *rightLayout = new QVBoxLayout( rightBox );
-  rightLayout->setMargin();
-
-  mNavigatorBar = new NavigatorBar( QDate::currentDate(), rightBox );
-  rightLayout->addWidget( mNavigatorBar );
-
-  mRightFrame = new QStackedWidget( rightBox );
-  rightLayout->addWidget( mRightFrame );
-
-  mLeftFrame = leftFrame;
-
-  if ( KOPrefs::instance()->mVerticalScreen ) {
-//    mTodoList->setFixedHeight( 60 );
-    mTodoList->setFixedHeight( mDateNavigator->sizeHint().height() );
-  }
-#endif
 
   connect( mNavigator, SIGNAL( datesSelected( const KCal::DateList & ) ),
            SLOT( showDates( const KCal::DateList & ) ) );
@@ -485,7 +443,6 @@ void CalendarView::readSettings()
 
   KConfig *config = KOGlobals::self()->config();
 
-#ifndef KORG_NOSPLITTER
   KConfigGroup geometryConfig( config, "KOrganizer Geometry" );
 
   QList<int> sizes = geometryConfig.readEntry( "Separator1",QList<int>() );
@@ -499,7 +456,6 @@ void CalendarView::readSettings()
   if ( !sizes.isEmpty() ) {
      mLeftSplitter->setSizes( sizes );
   }
-#endif
 
   mEventViewer->readSettings( config );
   mViewManager->readSettings( config );
@@ -520,7 +476,6 @@ void CalendarView::writeSettings()
 {
   KConfig *config = KOGlobals::self()->config();
 
-#ifndef KORG_NOSPLITTER
   KConfigGroup geometryConfig( config, "KOrganizer Geometry" );
 
   QList<int> list = mPanner->sizes();
@@ -528,7 +483,7 @@ void CalendarView::writeSettings()
 
   list = mLeftSplitter->sizes();
   geometryConfig.writeEntry( "Separator2", list );
-#endif
+
   mEventViewer->writeSettings( config );
   mViewManager->writeSettings( config );
   mTodoList->saveLayout( config, QString( "Todo View" ) );
