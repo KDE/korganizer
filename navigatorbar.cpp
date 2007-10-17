@@ -178,18 +178,14 @@ void NavigatorBar::selectMonth()
   for ( i = 1; i <= months; i++ ) {
     popup->insertItem( calSys->monthName( i, calSys->year( mDate ) ), i );
   }
-  popup->setActiveItem( calSys->month( mDate ) - 1 );
-  popup->setMinimumWidth( mMonth->width() );
+  popup->setActiveItem( calSys->month( mDate ) );
 
-  if ( ( month = popup->exec( mMonth->mapToGlobal( QPoint( 0, 0 ) ),
-                              calSys->month( mDate ) - 1 ) ) == -1 ) {
-    delete popup;
-    return;  // canceled
-  }
-
-  emit goMonth( month );
+  month = popup->exec( mMonth->mapToGlobal( QPoint( 0, 0 ) ), calSys->month( mDate ) - 1 );
 
   delete popup;
+  if ( month >= 0 ) {
+    emit goMonth( month );
+  }
 }
 
 #include "navigatorbar.moc"
