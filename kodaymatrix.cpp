@@ -37,6 +37,8 @@
 #include <kcal/calendarresources.h>
 #include <kcal/resourcecalendar.h>
 
+#include <kaction.h>
+#include <kstandardaction.h>
 #include <kglobal.h>
 #include <kdebug.h>
 #include <klocale.h>
@@ -475,23 +477,18 @@ void KODayMatrix::dropEvent( QDropEvent *e )
   } else if ( keyboardModifiers & Qt::ShiftModifier ) {
     action = DRAG_MOVE;
   } else {
-    QAction *copy = 0,  *move = 0, *cancel = 0;
+    QAction *copy = 0, *move = 0, *cancel = 0;
     KMenu *menu = new KMenu( this );
     if ( existingEvent || existingTodo ) {
-      move = menu->addAction( i18n( "&Move" ) );
-      if ( existingEvent )
-#ifdef __GNUC__
-#warning Use a standard action for copy
-#endif
+      move = menu->addAction( KOGlobals::self()->smallIcon( "edit-paste" ), i18n( "&Move" ) );
+      if ( existingEvent ) {
         copy = menu->addAction( KOGlobals::self()->smallIcon( "edit-copy" ), i18n( "&Copy" ) );
+      }
     } else {
-      move = menu->addAction( i18n( "&Add" ) );
+      move = menu->addAction( KOGlobals::self()->smallIcon( "edit-add" ), i18n( "&Add" ) );
     }
     menu->addSeparator();
-#ifdef __GNUC__
-#warning Use a standard action for cancel
-#endif
-    cancel = menu->addAction( KOGlobals::self()->smallIcon( "cancel" ), i18n( "&Cancel" ) );
+    cancel = menu->addAction( KOGlobals::self()->smallIcon( "process-stop" ), i18n( "&Cancel" ) );
     QAction *a = menu->exec( QCursor::pos() );
     if ( a == copy ) {
       action = DRAG_COPY;
