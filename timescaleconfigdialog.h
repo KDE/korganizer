@@ -21,45 +21,30 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef TIMELABELSZONE_H
-#define TIMELABELSZONE_H
+#ifndef TIMESCALECONFIGDIALOG_H
+#define TIMESCALECONFIGDIALOG_H
 
-#include <QWidget>
-#include <QList>
+#include <QDialog>
 
-#include <kdatetime.h>
+#include "ui_timescaleedit_base.h"
 
-#include "agendaview.h"
-
-class KOAgendaView;
-class KOAgenda;
-class QHBoxLayout;
-class TimeLabels;
-
-class TimeLabelsZone : public QWidget
+class TimeScaleConfigDialog : public QDialog
 {
+  Q_OBJECT
+
   public:
-    TimeLabelsZone( KOAgendaView *parent, KOAgenda *agenda );
+    TimeScaleConfigDialog( QWidget *parent );
 
-    /** Add a new time label with the given spec.
-        If spec is not valid, use the display timespec.
-    */
-    void addTimeLabels( const KDateTime::Spec &spec );
-    int timeLabelsWidth();
-    void setTimeLabelsWidth( int width );
-    void updateAll();
-    void reset();
-    void init();
-
+  private slots:
+    void add();
+    void remove();
+    void up();
+    void down();
+    void okClicked();
+   
   private:
-    void setupTimeLabel( TimeLabels *timeLabel );
-    KOAgenda *mAgenda;
-    KOAgendaView *mParent;
-
-  //  QWidget *mTimeLabelsFrame;
-    QHBoxLayout *mTimeLabelsLayout;
-    TimeLabels *mTimeLabels;
-    QList<TimeLabels*> mTimeLabelsList;
+    QStringList zones();
+    Ui::TimeScaleEditDialog ui;
 };
 
 #endif
