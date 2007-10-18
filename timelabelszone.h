@@ -38,6 +38,7 @@ class TimeLabels;
 
 class TimeLabelsZone : public QWidget
 {
+    Q_OBJECT
   public:
     TimeLabelsZone( KOAgendaView *parent, KOAgenda *agenda );
 
