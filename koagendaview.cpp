@@ -171,11 +171,7 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
   mAllDayFrame->setSpacing( 2 );
 
   // Alignment and description widgets
-  mDummyAllDayLeft = new KVBox( mAllDayFrame );
-
-  QLabel *label = new QLabel( i18n("All Day"), mDummyAllDayLeft );
-  label->setAlignment( Qt::AlignRight | Qt::AlignVCenter  );
-  label->setWordWrap( true );
+  mTimeBarHeaderFrame = new KHBox( mAllDayFrame );
 
   // The widget itself
   mAllDayAgenda = new KOAgenda( 1, mAllDayFrame );
@@ -736,14 +732,28 @@ void KOAgendaView::updateConfig()
   updateView();
 }
 
+void KOAgendaView::createTimeBarHeaders()
+{
+  qDeleteAll( mTimeBarHeaders );
+  mTimeBarHeaders.clear();
 
+  foreach( TimeLabels *timeLabel, mTimeLabelsZone->timeLabels() ) {
+    QLabel *label = new QLabel( i18n("All Day"), mTimeBarHeaderFrame );
+    label->setText( timeLabel->header() );
+    label->setAlignment( Qt::AlignBottom | Qt::AlignHCenter  );
+    label->setWordWrap( true );
+    label->setToolTip( timeLabel->headerToolTip() );
+    mTimeBarHeaders.append( label );
+  }
+}
 
 void KOAgendaView::updateTimeBarWidth()
 {
-  int width = qMax( mDummyAllDayLeft->fontMetrics().width( i18n("All Day") ),
-                    mTimeLabelsZone->timeLabelsWidth() );
+  createTimeBarHeaders();
 
-  mDummyAllDayLeft->setFixedWidth( width );
+  int width = mTimeLabelsZone->timeLabelsWidth();
+
+  mTimeBarHeaderFrame->setFixedWidth( width );
   mTimeLabelsZone->setTimeLabelsWidth( width );
 }
 

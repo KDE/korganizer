@@ -176,6 +176,8 @@ class KOAgendaView : public KOrg::AgendaView
     /** Create labels for the selected dates. */
     void createDayLabels();
 
+    void createTimeBarHeaders();
+
   signals:
     void zoomViewHorizontally(const QDate &, int count );
 
@@ -231,9 +233,10 @@ class KOAgendaView : public KOrg::AgendaView
     KHBox *mBottomDayLabelsFrame;
     QBoxLayout *mLayoutBottomDayLabels;
     KHBox *mAllDayFrame;
-    QWidget *mDummyAllDayLeft;
+    QWidget *mTimeBarHeaderFrame;
     QGridLayout *mAgendaLayout;
     QSplitter *mSplitterAgenda;
+    QList<QWidget *> mTimeBarHeaders;
 
     KOAgenda *mAllDayAgenda;
     KOAgenda *mAgenda;

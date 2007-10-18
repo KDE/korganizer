@@ -42,8 +42,10 @@ class TimeLabelsZone;
 
 class TimeLabels : public Q3ScrollView
 {
-  Q_OBJECT
+    Q_OBJECT
   public:
+    typedef QList<TimeLabels *> List;
+  
     explicit TimeLabels( const KDateTime::Spec &spec, int rows, TimeLabelsZone *parent = 0, Qt::WFlags f = 0 );
 
     /** Calculates the minimum width */
@@ -63,6 +65,17 @@ class TimeLabels : public Q3ScrollView
 
     /** Returns time spec of this label */
     KDateTime::Spec timeSpec();
+
+    /**
+      Return string which can be used as a header for the time label.
+    */
+    QString header() const;
+
+    /**
+      Return string which can be used as a tool tip for the header.
+    */
+    QString headerToolTip() const;
+
   public slots:
     /** update time label positions */
     void positionChanged();

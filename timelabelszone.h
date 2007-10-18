@@ -30,11 +30,11 @@
 #include <kdatetime.h>
 
 #include "agendaview.h"
+#include "timelabels.h"
 
 class KOAgendaView;
 class KOAgenda;
 class QHBoxLayout;
-class TimeLabels;
 
 class TimeLabelsZone : public QWidget
 {
@@ -52,6 +52,8 @@ class TimeLabelsZone : public QWidget
     void reset();
     void init();
 
+    TimeLabels::List timeLabels() const;
+
   private:
     void setupTimeLabel( TimeLabels *timeLabel );
     KOAgenda *mAgenda;
@@ -60,7 +62,7 @@ class TimeLabelsZone : public QWidget
   //  QWidget *mTimeLabelsFrame;
     QHBoxLayout *mTimeLabelsLayout;
     TimeLabels *mTimeLabels;
-    QList<TimeLabels*> mTimeLabelsList;
+    TimeLabels::List mTimeLabelsList;
 };
 
 #endif

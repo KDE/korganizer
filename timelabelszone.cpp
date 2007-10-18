@@ -24,7 +24,6 @@
 
 #include "timelabelszone.h"
 
-#include "timelabels.h"
 #include "koagendaview.h"
 #include "koagenda.h"
 #include "koprefs.h"
@@ -61,7 +60,7 @@ void TimeLabelsZone::reset()
 
 void TimeLabelsZone::init()
 {
-  addTimeLabels( KDateTime::Spec() );
+  addTimeLabels( KOPrefs::instance()->timeSpec() );
 
   foreach( QString zoneStr, KOPrefs::instance()->timeScaleTimezones() ) {
     KTimeZone zone = KSystemTimeZones::zone( zoneStr );
@@ -110,6 +109,11 @@ void TimeLabelsZone::setTimeLabelsWidth( int width )
   foreach( TimeLabels* timeLabel, mTimeLabelsList ) {
     timeLabel->setFixedWidth( width / mTimeLabelsList.count() );
   }
+}
+
+TimeLabels::List TimeLabelsZone::timeLabels() const
+{
+  return mTimeLabelsList;
 }
 
 #include "timelabelszone.moc"

@@ -102,12 +102,9 @@ TimeLabels::TimeLabels( const KDateTime::Spec &spec, int rows, TimeLabelsZone *p
   mMousePos->setFixedSize(width(), 1);
   addChild(mMousePos, 0, 0);
 
-  if ( mSpec.isValid() )
+  if ( mSpec.isValid() ) {
     setToolTip( i18n( "Timezone:" ) + mSpec.timeZone().name() );
-  else
-    setToolTip( i18n( "Calendar display timezone:" )
-                + KOPrefs::instance()->timeSpec().timeZone().name() );
-
+  }
 }
 
 void TimeLabels::mousePosChanged(const QPoint &pos)
@@ -336,6 +333,42 @@ void TimeLabels::contextMenuEvent( QContextMenuEvent *event )
 KDateTime::Spec TimeLabels::timeSpec()
 {
   return mSpec;
+}
+
+QString TimeLabels::header() const
+{
+  KTimeZone tz = mSpec.timeZone();
+
+  QString header = tz.countryCode();
+  if( header.isEmpty() ) header = tz.name();
+  
+  return header;
+}
+
+QString TimeLabels::headerToolTip() const
+{
+  KTimeZone tz = mSpec.timeZone();
+
+  QString toolTip;
+  toolTip += "<qt>";
+  toolTip += i18n("Timezone: %1",tz.name() );
+  toolTip += "<br/>";
+  toolTip += i18n("Country Code: %1",tz.countryCode() );
+  if ( !tz.abbreviations().isEmpty() ) {
+    toolTip += "<br/>";
+    toolTip += i18n("Abbreviations:");
+    foreach( QByteArray a, tz.abbreviations() ) {
+      toolTip += "<br/>";
+      toolTip += "&nbsp;" + QString::fromLocal8Bit( a );
+    }
+  }
+  if ( !tz.comment().isEmpty() ) {
+    toolTip += "<br/>";
+    toolTip += i18n("Comment:<br/>%1",tz.comment() );
+  }
+  toolTip += "</qt>";
+  
+  return toolTip;
 }
 
 #include "timelabels.moc"
