@@ -35,12 +35,6 @@
 #include "koeventpopupmenu.h"
 #include "koalternatelabel.h"
 
-#include <kcal/calendar.h>
-#include <kcal/icaldrag.h>
-#include <kcal/dndfactory.h>
-#include <kcal/calfilter.h>
-#include <kcal/incidenceformatter.h>
-
 #include <kapplication.h>
 #include <kcalendarsystem.h>
 #include <kdebug.h>
