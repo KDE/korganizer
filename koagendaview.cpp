@@ -53,7 +53,7 @@
 #include <kglobal.h>
 #include <kglobalsettings.h>
 #include <kholidays.h>
-#include <KVBox>
+#include <kvbox.h>
 #include <ksystemtimezone.h>
 #include <kpushbutton.h>
 #include <kcombobox.h>
