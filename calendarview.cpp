@@ -1769,11 +1769,6 @@ void CalendarView::addExtension( CalendarViewExtension::Factory *factory )
   mExtensions.append( extension );
 }
 
-void CalendarView::toggleExpand()
-{
-  showLeftFrame( mLeftFrame->isHidden() );
-}
-
 void CalendarView::showLeftFrame( bool show )
 {
   if ( show ) {

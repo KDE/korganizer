@@ -138,7 +138,6 @@ void EventIndicator::enableColumn(int column, bool enable)
 
 KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
   KOrg::AgendaView( cal, parent ),
-  mExpandButton( 0 ),
   mTimeLabelsZone( 0 ),
   mAllowAgendaUpdate( true ),
   mUpdateItem( 0 ),
@@ -152,20 +151,6 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
   mLayoutBottomDayLabels = 0;
   mBottomDayLabelsFrame = 0;
   mBottomDayLabels = 0;
-
-  bool isRTL = KOGlobals::self()->reverseLayout();
-
-  if ( KOPrefs::instance()->compactDialogs() ) {
-    if ( KOPrefs::instance()->mVerticalScreen ) {
-      mExpandedPixmap = KOGlobals::self()->smallIcon( "go-down" );
-      mNotExpandedPixmap = KOGlobals::self()->smallIcon( "go-up" );
-    } else {
-      mExpandedPixmap = KOGlobals::self()->smallIcon( isRTL ? "go-next-rtl"
-                                                            : "go-next" );
-      mNotExpandedPixmap = KOGlobals::self()->smallIcon( isRTL ? "go-previous-rtl"
-                                                               : "go-previous" );
-    }
-  }
 
   mTopLayout = new QGridLayout( this );
   mTopLayout->setMargin( 0 );
@@ -188,17 +173,9 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
   // Alignment and description widgets
   mDummyAllDayLeft = new KVBox( mAllDayFrame );
 
-  if ( KOPrefs::instance()->compactDialogs() ) {
-    mExpandButton = new QPushButton( mDummyAllDayLeft );
-    mExpandButton->setIcon( QIcon(mNotExpandedPixmap) );
-    mExpandButton->setSizePolicy( QSizePolicy( QSizePolicy::Fixed,
-                                               QSizePolicy::Fixed ) );
-    connect( mExpandButton, SIGNAL( clicked() ), SIGNAL( toggleExpand() ) );
-  } else {
-    QLabel *label = new QLabel( i18n("All Day"), mDummyAllDayLeft );
-    label->setAlignment( Qt::AlignRight | Qt::AlignVCenter  );
-    label->setWordWrap( true );
-  }
+  QLabel *label = new QLabel( i18n("All Day"), mDummyAllDayLeft );
+  label->setAlignment( Qt::AlignRight | Qt::AlignVCenter  );
+  label->setWordWrap( true );
 
   // The widget itself
   mAllDayAgenda = new KOAgenda( 1, mAllDayFrame );
@@ -1498,17 +1475,6 @@ void KOAgendaView::setHolidayMasks()
 void KOAgendaView::setContentsPos( int y )
 {
   mAgenda->setContentsPos( 0, y );
-}
-
-void KOAgendaView::setExpandedButton( bool expanded )
-{
-  if ( !mExpandButton ) return;
-
-  if ( expanded ) {
-    mExpandButton->setIcon( QIcon(mExpandedPixmap) );
-  } else {
-    mExpandButton->setIcon( QIcon(mNotExpandedPixmap) );
-  }
 }
 
 void KOAgendaView::clearSelection()

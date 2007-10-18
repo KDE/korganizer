@@ -152,8 +152,6 @@ class KOAgendaView : public KOrg::AgendaView
 
     void setContentsPos( int y );
 
-    void setExpandedButton( bool expanded );
-
     void finishTypeAhead();
 
     /** reschedule the todo  to the given x- and y- coordinates. Third parameter determines all-day (no time specified) */
@@ -179,7 +177,6 @@ class KOAgendaView : public KOrg::AgendaView
     void createDayLabels();
 
   signals:
-    void toggleExpand();
     void zoomViewHorizontally(const QDate &, int count );
 
     void timeSpanSelectionChanged();
@@ -237,7 +234,6 @@ class KOAgendaView : public KOrg::AgendaView
     QWidget *mDummyAllDayLeft;
     QGridLayout *mAgendaLayout;
     QSplitter *mSplitterAgenda;
-    QPushButton *mExpandButton;
 
     KOAgenda *mAllDayAgenda;
     KOAgenda *mAgenda;
@@ -257,9 +253,6 @@ class KOAgendaView : public KOrg::AgendaView
     QVector<int> mMaxY;
 
     QVector<bool> mHolidayMask;
-
-    QPixmap mExpandedPixmap;
-    QPixmap mNotExpandedPixmap;
 
     QDateTime mTimeSpanBegin;
     QDateTime mTimeSpanEnd;

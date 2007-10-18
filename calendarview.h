@@ -556,7 +556,6 @@ class KORGANIZER_EXPORT CalendarView : public KOrg::CalendarViewBase, public Cal
     /** Move to the previous date(s) in the current view */
     void goPrevious();
 
-    void toggleExpand();
     void showLeftFrame( bool show=true );
 
     void dialogClosing( Incidence * );
