@@ -27,7 +27,6 @@
 
 #include <kcolordialog.h>
 #include <kdialog.h>
-#include <k3listview.h>
 #include <klocale.h>
 #include <kdebug.h>
 #include <kglobal.h>
@@ -91,12 +90,16 @@ ResourceView *ResourceViewFactory::resourceView() const
 }
 
 ResourceItem::ResourceItem( ResourceCalendar *resource, ResourceView *view,
-                            K3ListView *parent )
-  : Q3CheckListItem( parent, resource->resourceName(), CheckBox ),
+                            QTreeWidget *parent )
+  : QTreeWidgetItem( parent ),
     mResource( resource ), mView( view ), mBlockStateChange( false ),
     mIsSubresource( false ), mResourceIdentifier( QString() ),
     mSubItemsCreated( false ), mIsStandardResource( false )
 {
+  setFlags( flags() | Qt::ItemIsUserCheckable );
+
+  setText( 0, resource->resourceName() );
+
   mResourceColor = QColor();
   setGuiState();
 
@@ -109,8 +112,7 @@ void ResourceItem::createSubresourceItems()
 {
   const QStringList subresources = mResource->subresources();
   if ( !subresources.isEmpty() ) {
-    setOpen( true );
-    setExpandable( true );
+    setExpanded( true );
     // This resource has subresources
     QStringList::ConstIterator it;
     for ( it=subresources.begin(); it!=subresources.end(); ++it ) {
@@ -127,10 +129,14 @@ ResourceItem::ResourceItem( KCal::ResourceCalendar *resource,
                             const QString& sub, const QString& label,
                             ResourceView *view, ResourceItem* parent )
 
-  : Q3CheckListItem( parent, label, CheckBox ), mResource( resource ),
+  : QTreeWidgetItem( parent ), mResource( resource ),
     mView( view ), mBlockStateChange( false ), mIsSubresource( true ),
-    mSubItemsCreated( false ), mIsStandardResource( false )
+    mSubItemsCreated( false ), mIsStandardResource( false ), mActive( false )
 {
+  setFlags( flags() | Qt::ItemIsUserCheckable );
+
+  setText( 0, label );
+
   mResourceColor = QColor();
   mResourceIdentifier = sub;
   setGuiState();
@@ -146,8 +152,18 @@ void ResourceItem::setGuiState()
   mBlockStateChange = false;
 }
 
+void ResourceItem::setOn( bool checked )
+{
+  if ( checked ) setCheckState( 0, Qt::Checked );
+  else setCheckState( 0, Qt::Unchecked );
+  
+  mActive = checked;
+}
+
 void ResourceItem::stateChange( bool active )
 {
+  if ( mActive == active ) return;
+
   if ( mBlockStateChange ) return;
 
   if ( mIsSubresource ) {
@@ -164,7 +180,7 @@ void ResourceItem::stateChange( bool active )
       mView->requestClose( mResource );
     }
 
-    setOpen( mResource->isActive() && childCount() > 0 );
+    setExpanded( mResource->isActive() && childCount() > 0 );
 
     setGuiState();
   }
@@ -181,37 +197,23 @@ void ResourceItem::setResourceColor(QColor& color)
 {
   if ( color.isValid() ) {
     if ( mResourceColor != color ) {
-      QPixmap px(height()-4,height()-4);
+      int height = 10; // FIXME: Find out real height of cell
+      QPixmap px( height - 4, height -4 );
       mResourceColor = color;
       px.fill(color);
-      setPixmap(0,px);
+      setData( 0, Qt::DecorationRole, px );
     }
   } else {
     mResourceColor = color ;
-    setPixmap( 0, QPixmap() );
+    setData( 0, Qt::DecorationRole, QPixmap() );
   }
 }
 
 void ResourceItem::setStandardResource( bool std )
 {
   if ( mIsStandardResource != std ) {
-    mIsStandardResource = std;
-    repaint();
+    // FIXME: Set font of standard resource to bold and others to normal
   }
-}
-
-void ResourceItem::paintCell(QPainter *p, const QColorGroup &cg,
-      int column, int width, int alignment)
-{
-  QFont oldFont = p->font();
-  QFont newFont = oldFont;
-  newFont.setBold( mIsStandardResource && !mIsSubresource );
-  p->setFont( newFont );
-  Q3CheckListItem::paintCell( p, cg, column, width, alignment );
-  p->setFont( oldFont );
-/*  QColorGroup _cg = cg;
-  if(!mResource) return;
-  _cg.setColor(QPalette::Base, getTextColor(mResourceColor));*/
 }
 
 
@@ -221,7 +223,7 @@ ResourceView::ResourceView( KCal::CalendarResources *calendar, QWidget *parent )
   QBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->setSpacing( KDialog::spacingHint() );
 
-  mListView = new K3ListView( this );
+  mListView = new QTreeWidget( this );
   mListView->setWhatsThis(
                    i18n( "<qt><p>Select on this list the active KOrganizer "
                          "resources. Check the resource box to make it "
@@ -235,16 +237,20 @@ ResourceView::ResourceView( KCal::CalendarResources *calendar, QWidget *parent )
                          "when creating incidents you will either automatically "
                          "use the default resource or be prompted "
                          "to select the resource to use.</p></qt>" ) );
-  mListView->addColumn( i18n("Calendars") );
-  mListView->setResizeMode( Q3ListView::LastColumn );
+  mListView->setRootIsDecorated( false );
+  mListView->setHeaderLabel( i18n( "Calendars" ) );
   topLayout->addWidget( mListView );
-  connect( mListView, SIGNAL( doubleClicked ( Q3ListViewItem *, const QPoint &,
-                                              int ) ),
-           SLOT( editResource() ) );
-  connect( mListView, SIGNAL( contextMenuRequested ( Q3ListViewItem *,
-                                                     const QPoint &, int ) ),
-           SLOT( contextMenuRequested( Q3ListViewItem *, const QPoint &,
-                                       int ) ) );
+
+  connect( mListView, SIGNAL( itemDoubleClicked ( QTreeWidgetItem *,
+    const QPoint &, int ) ),
+    SLOT( editResource() ) );
+  
+  mListView->setContextMenuPolicy( Qt::CustomContextMenu );
+  connect( mListView, SIGNAL( customContextMenuRequested( const QPoint & ) ),
+    SLOT( showContextMenu( const QPoint & ) ) );
+
+  connect( mListView, SIGNAL( itemClicked( QTreeWidgetItem *, int ) ),
+    SLOT( slotItemClicked( QTreeWidgetItem *, int ) ) );
 
   updateView();
 }
@@ -315,8 +321,7 @@ void ResourceView::addResource()
 
 void ResourceView::addResourceItem( ResourceCalendar *resource )
 {
-
-  ResourceItem *item=new ResourceItem( resource, this, mListView );
+  ResourceItem *item = new ResourceItem( resource, this, mListView );
 
   QColor resourceColor;
 
@@ -330,7 +335,7 @@ void ResourceView::addResourceItem( ResourceCalendar *resource )
            SLOT( slotSubresourceAdded( ResourceCalendar *, const QString &,
                                        const QString &, const QString & ) ) );
 
- connect( resource, SIGNAL( signalSubresourceRemoved( ResourceCalendar *,
+  connect( resource, SIGNAL( signalSubresourceRemoved( ResourceCalendar *,
                                                        const QString &,
                                                        const QString & ) ),
            SLOT( slotSubresourceRemoved( ResourceCalendar *, const QString &,
@@ -349,12 +354,14 @@ void ResourceView::slotSubresourceAdded( ResourceCalendar *calendar,
                                          const QString& resource,
                                          const QString& label)
 {
-  Q3ListViewItem *i = mListView->findItem( calendar->resourceName(), 0 );
-  if ( !i )
+  QList<QTreeWidgetItem *> items =
+    mListView->findItems( calendar->resourceName(), Qt::MatchExactly, 0 );
+  if ( items.isEmpty() ) {
     // Not found
     return;
+  }
 
-  ResourceItem *item = static_cast<ResourceItem *>( i );
+  ResourceItem *item = static_cast<ResourceItem *>( items.first() );
   ( void )new ResourceItem( calendar, resource, label, this, item );
   emitResourcesChanged();
 }
@@ -386,7 +393,7 @@ void ResourceView::updateResourceItem( ResourceCalendar *resource )
 
 ResourceItem *ResourceView::currentItem()
 {
-  Q3ListViewItem *item = mListView->currentItem();
+  QTreeWidgetItem *item = mListView->currentItem();
   ResourceItem *rItem = static_cast<ResourceItem *>( item );
   return rItem;
 }
@@ -413,7 +420,6 @@ void ResourceView::removeResource()
     // FIXME delete the folder in KMail
   } else {
     mCalendar->resourceManager()->remove( item->resource() );
-    mListView->takeItem( item );
     delete item;
   }
   updateResourceList();
@@ -438,31 +444,31 @@ void ResourceView::editResource()
 
 ResourceItem *ResourceView::findItem( ResourceCalendar *r )
 {
-  Q3ListViewItem *item;
-  ResourceItem *i = 0;
-  for( item = mListView->firstChild(); item; item = item->nextSibling() ) {
-    i = static_cast<ResourceItem *>( item );
-    if ( i->resource() == r ) break;
-  }
-  return i;
-}
-
-ResourceItem *ResourceView::findItemByIdentifier( const QString& id )
-{
-  Q3ListViewItem *item;
-  ResourceItem *i = 0;
-  for( item = mListView->firstChild(); item; item = item->itemBelow() ) {
-    i = static_cast<ResourceItem *>( item );
-    if ( i->resourceIdentifier() == id )
-       return i;
+  QList<QTreeWidgetItem *> items =
+    mListView->findItems( "*", Qt::MatchWildcard );
+  foreach( QTreeWidgetItem *i, items ) {
+    ResourceItem *item = static_cast<ResourceItem *>( i );
+    if ( item->resource() == r ) return item;
   }
   return 0;
 }
 
-
-void ResourceView::contextMenuRequested ( Q3ListViewItem *i,
-                                          const QPoint &pos, int )
+ResourceItem *ResourceView::findItemByIdentifier( const QString& id )
 {
+  QList<QTreeWidgetItem *> items =
+    mListView->findItems( "*", Qt::MatchWildcard );
+  foreach( QTreeWidgetItem *i, items ) {
+    ResourceItem *item = static_cast<ResourceItem *>( i );
+    if ( item->resourceIdentifier() == id ) return item;
+  }
+  return 0;
+}
+
+void ResourceView::showContextMenu( const QPoint &pos )
+{
+  QTreeWidgetItem *i = mListView->itemAt( pos );
+  if ( !i ) return;
+  
   KCal::CalendarResourceManager *manager = mCalendar->resourceManager();
   ResourceItem *item = static_cast<ResourceItem *>( i );
 
@@ -495,10 +501,10 @@ void ResourceView::contextMenuRequested ( Q3ListViewItem *i,
     }
 
     menu->addSeparator();
- }
+  }
   menu->addAction( i18n("&Add..."), this, SLOT( addResource() ) );
 
-  menu->popup( pos );
+  menu->popup( mapToGlobal( pos ) );
 }
 
 void ResourceView::assignColor()
@@ -581,18 +587,25 @@ void ResourceView::setStandard()
 
 void ResourceView::updateResourceList()
 {
-  Q3ListViewItemIterator it( mListView );
   ResourceCalendar* stdRes = mCalendar->resourceManager()->standardResource();
-  while ( it.current() ) {
-    ResourceItem *item = static_cast<ResourceItem *>( it.current() );
+
+  QList<QTreeWidgetItem *> items =
+    mListView->findItems( "*", Qt::MatchWildcard );
+  foreach( QTreeWidgetItem *i, items ) {
+    ResourceItem *item = static_cast<ResourceItem *>( i );
     item->setStandardResource( item->resource() == stdRes );
-    ++it;
   }
 }
 
 void ResourceView::requestClose( ResourceCalendar *r )
 {
   mResourcesToClose.append( r );
+}
+
+void ResourceView::slotItemClicked( QTreeWidgetItem *i, int )
+{
+  ResourceItem *item = static_cast<ResourceItem *>( i );
+  if ( item ) item->stateChange( item->checkState( 0 ) == Qt::Checked );
 }
 
 #include "resourceview.moc"
