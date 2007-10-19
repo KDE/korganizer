@@ -60,32 +60,21 @@ NavigatorBar::NavigatorBar( QWidget *parent )
 
   bool isRTL = KOGlobals::self()->reverseLayout();
 
-  QIcon pix;
-  // Create backward navigation buttons
-  mPrevYear = new QPushButton( this );
-  pix = KOGlobals::self()->smallIconSet( isRTL ? "arrow-right-double" : "arrow-left-double" );
-  mPrevYear->setIcon( pix );
-  mPrevYear->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
-  mPrevYear->setToolTip( i18n( "Scroll backward to the previous year" ) );
+  mPrevYear = createNavigationButton(
+    isRTL ? "arrow-right-double" : "arrow-left-double",
+    i18n("Scroll backward to the previous year") );
 
-  pix = KOGlobals::self()->smallIconSet( isRTL ? "arrow-right" : "arrow-left" );
-  mPrevMonth = new QPushButton( this );
-  mPrevMonth->setIcon( pix );
-  mPrevMonth->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
-  mPrevMonth->setToolTip( i18n( "Scroll backward to the previous month" ) );
+  mPrevMonth = createNavigationButton(
+    isRTL ? "arrow-right" : "arrow-left",
+    i18n( "Scroll backward to the previous month" ) );
 
-  // Create forward navigation buttons
-  pix = KOGlobals::self()->smallIconSet( isRTL ? "arrow-left" : "arrow-right" );
-  mNextMonth = new QPushButton( this );
-  mNextMonth->setIcon( pix );
-  mNextMonth->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
-  mNextMonth->setToolTip( i18n( "Scroll forward to the next month" ) );
+  mNextMonth = createNavigationButton(
+    isRTL ? "arrow-left" : "arrow-right",
+    i18n( "Scroll forward to the next month" ) );
 
-  pix = KOGlobals::self()->smallIconSet( isRTL ? "arrow-left-double" : "arrow-right-double" );
-  mNextYear = new QPushButton( this );
-  mNextYear->setIcon( pix );
-  mNextYear->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
-  mNextYear->setToolTip( i18n( "Scroll forward to the next year" ) );
+  mNextYear = createNavigationButton(
+    isRTL ? "arrow-left-double" : "arrow-right-double",
+    i18n( "Scroll forward to the next year" ) );
 
   // Create month name button
   mMonth = new ActiveLabel( this );
@@ -186,6 +175,24 @@ void NavigatorBar::selectMonth()
   if ( month >= 0 ) {
     emit goMonth( month );
   }
+}
+
+QPushButton *NavigatorBar::createNavigationButton( const QString &icon,
+  const QString &toolTip )
+{
+  QPushButton *button = new QPushButton( this );
+
+  button->setIcon( KOGlobals::self()->smallIconSet( icon ) );
+
+  // By the default the button has a very wide minimum size (for whatever
+  // reasons). Override this, so that the date navigator doesn't need to be
+  // so wide anymore. The minimum size is dominated by the other elements of the
+  // date navigator then.
+  button->setMinimumSize( 10, 10 );
+
+  button->setToolTip( toolTip );
+
+  return button;
 }
 
 #include "navigatorbar.moc"

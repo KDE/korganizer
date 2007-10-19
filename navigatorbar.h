@@ -65,6 +65,10 @@ class NavigatorBar: public QWidget
     void goPrevYear();
     void goMonth( int month );
 
+  protected:
+    QPushButton *createNavigationButton( const QString &icon,
+      const QString &toolTip );
+
   private slots:
     void selectMonth();
 
