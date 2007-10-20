@@ -60,6 +60,7 @@
 #include <QFrame>
 #include <QHBoxLayout>
 #include <QBoxLayout>
+#include <QTextCharFormat>
 
 #include "koeditorgeneral.moc"
 
@@ -175,8 +176,21 @@ void KOEditorGeneral::initDescription(QWidget *parent,QBoxLayout *topLayout)
 {
   QBoxLayout *htmlLayout = new QHBoxLayout();
   topLayout->addItem( htmlLayout );
-  mHtmlCheckBox = new QCheckBox( i18n("Use HTML"), parent );
-  htmlLayout->addWidget( mHtmlCheckBox );
+  mDescriptionBoldButton = new QPushButton( parent );
+  mDescriptionBoldButton->setIcon( KIcon( "format-text-bold" ) );
+  connect(mDescriptionBoldButton, SIGNAL(clicked()),
+          this, SLOT(toggleDescriptionBold()));
+  mDescriptionItalicButton = new QPushButton( parent );
+  mDescriptionItalicButton->setIcon( KIcon( "format-text-italic" ) );
+  connect(mDescriptionItalicButton, SIGNAL(clicked()),
+          this, SLOT(toggleDescriptionItalic()));
+  mDescriptionUnderlineButton = new QPushButton( parent );
+  mDescriptionUnderlineButton->setIcon( KIcon( "format-text-underline" ) );
+  connect(mDescriptionUnderlineButton, SIGNAL(clicked()),
+          this, SLOT(toggleDescriptionUnderline()));
+  htmlLayout->addWidget( mDescriptionBoldButton );
+  htmlLayout->addWidget( mDescriptionItalicButton );
+  htmlLayout->addWidget( mDescriptionUnderlineButton );
   htmlLayout->addStretch();
   mDescriptionEdit = new KTextEdit( parent );
   mDescriptionEdit->setWhatsThis(
@@ -360,11 +374,9 @@ void KOEditorGeneral::updateAlarmWidgets()
 
 void KOEditorGeneral::readIncidence( Incidence *incidence )
 {
-  mSummaryEdit->setText( incidence->summary() );
+  setSummary( incidence->summary() );
   mLocationEdit->setText( incidence->location() );
-
-  // TODO: Implement description as rich text, too.
-  mDescriptionEdit->setPlainText( incidence->description() );
+  setDescription( incidence->description(), incidence->descriptionIsRich() );
 
   switch( incidence->secrecy() ) {
   case Incidence::SecrecyPublic:
@@ -417,11 +429,13 @@ void KOEditorGeneral::writeIncidence( Incidence *incidence )
 {
   incidence->setSummary( mSummaryEdit->text() );
   incidence->setLocation( mLocationEdit->text() );
-  if ( mHtmlCheckBox->isChecked() ) {
-    incidence->setDescription( mDescriptionEdit->toHtml(), true );
+  if ( mRichDescription ) {
+    incidence->setDescription( mDescriptionEdit->toHtml(),
+                               mRichDescription );
   }
   else {
-    incidence->setDescription( mDescriptionEdit->toPlainText(), false );
+    incidence->setDescription( mDescriptionEdit->toPlainText(),
+                               mRichDescription );
   }
   incidence->setCategories( mCategories );
   switch( mSecrecyCombo->currentIndex() ) {
@@ -462,17 +476,55 @@ void KOEditorGeneral::setSummary( const QString &text )
 
 void KOEditorGeneral::setDescription( const QString &text, bool isRich )
 {
-  //FIXME: Once we have a WYSIWYG editor then make this setHtml
   if ( isRich ) {
     mDescriptionEdit->setHtml( text );
+    mRichDescription = true;
   }
   else {
     mDescriptionEdit->setPlainText( text );
+    mRichDescription = false;
   }
-  mHtmlCheckBox->setChecked( isRich );
 }
 
 QObject *KOEditorGeneral::typeAheadReceiver() const
 {
   return mSummaryEdit;
+}
+
+void KOEditorGeneral::toggleDescriptionBold() {
+  mRichDescription = true;
+  QTextCursor cursor( mDescriptionEdit->textCursor() );
+  if ( cursor.selectionStart() == cursor.selectionEnd() ) {
+    cursor.select( QTextCursor::WordUnderCursor );
+  }
+  QTextCharFormat text;
+  if (cursor.charFormat().fontWeight() == QFont::Bold ) {
+    text.setFontWeight( QFont::Normal );
+  }
+  else {
+    text.setFontWeight( QFont::Bold );
+  }
+  cursor.mergeCharFormat( text );
+}
+
+void KOEditorGeneral::toggleDescriptionItalic() {
+  mRichDescription = true;
+  QTextCursor cursor( mDescriptionEdit->textCursor() );
+  if ( cursor.selectionStart() == cursor.selectionEnd() ) {
+    cursor.select( QTextCursor::WordUnderCursor );
+  }
+  QTextCharFormat text;
+  text.setFontItalic( !cursor.charFormat().fontItalic() );
+  cursor.mergeCharFormat( text );
+}
+
+void KOEditorGeneral::toggleDescriptionUnderline() {
+  mRichDescription = true;
+  QTextCursor cursor( mDescriptionEdit->textCursor() );
+  if ( cursor.selectionStart() == cursor.selectionEnd() ) {
+    cursor.select( QTextCursor::WordUnderCursor );
+  }
+  QTextCharFormat text;
+  text.setFontUnderline( !cursor.charFormat().fontUnderline() );
+  cursor.mergeCharFormat( text );
 }

@@ -1005,15 +1005,19 @@ void CalendarView::newJournal( const QDate &date )
 void CalendarView::newJournal( const QString &text, const QDate &date )
 {
   KOJournalEditor *journalEditor = mDialogManager->getJournalEditor();
+  QDate journalDate = date;
   connectIncidenceEditor( journalEditor );
   journalEditor->newJournal();
+  if ( !journalDate.isValid() ) {
+    journalDate = mNavigator->selectedDates().first();
+  }
+  journalEditor->setDate( journalDate );
   if ( !text.isEmpty() ) {
     journalEditor->setTexts( text );
   }
-  if ( !date.isValid() ) {
-    journalEditor->setDate( mNavigator->selectedDates().first() );
-  } else {
-    journalEditor->setDate( date );
+  else {
+    journalEditor->setTexts( "Journal for " +
+        journalDate.toString( Qt::LocaleDate ) );
   }
   journalEditor->show();
 }
