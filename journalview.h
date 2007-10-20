@@ -41,7 +41,7 @@ class QLabel;
 class QCheckBox;
 class QGridLayout;
 class KLineEdit;
-class KTextEdit;
+class KTextBrowser;
 class KTimeEdit;
 class QPushButton;
 
@@ -96,7 +96,7 @@ class JournalView : public QWidget {
     QDate mDate;
     bool mReadOnly;
 
-    KTextEdit *mEditor;
+    KTextBrowser *mBrowser;
     QPushButton *mEditButton;
     QPushButton *mDeleteButton;
     QPushButton *mPrintButton;
