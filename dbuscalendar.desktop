@@ -1,6 +1,8 @@
 [Desktop Entry]
 Name=DBUSCalendar
 Name[ga]=Féilire DBUS
+Name[pt]=Calendário DBUS
+Name[pt_BR]=Calendário DBUS
 Name[sv]=DBus-kalender
 Name[zh_TW]=DBUS行事曆
 Type=ServiceType
