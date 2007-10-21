@@ -449,7 +449,7 @@ void ActionManager::initActions()
   /************************** Actions MENU *********************************/
   bool isRTL = QApplication::isRightToLeft();
 
-  action = new KAction( KIcon( "calendar-today" ), i18n( "To &today" ), this );
+  action = new KAction( KIcon( "go-jump-today" ), i18n( "To &today" ), this );
   action->setIconText( i18n( "Today" ) );
   action->setToolTip( i18n( "Scroll to Today" ) );
   mACollection->addAction( "go_today", action );
