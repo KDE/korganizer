@@ -135,7 +135,7 @@ bool KOListView::ListItemVisitor::visit( Event *e )
 
 bool KOListView::ListItemVisitor::visit(Todo *t)
 {
-  static const QPixmap todoPxmp = KOGlobals::self()->smallIcon("todo");
+  static const QPixmap todoPxmp = KOGlobals::self()->smallIcon("view-calendar-tasks");
   static const QPixmap todoDonePxmp = KOGlobals::self()->smallIcon("checkedbox");
   mItem->setPixmap(0, t->isCompleted() ? todoDonePxmp : todoPxmp );
   mItem->setText(0,t->summary());

@@ -220,7 +220,7 @@ MonthViewItem::MonthViewItem( Incidence *incidence, const KDateTime &dt, const Q
   mDateTime = dt;
 
   mEventPixmap     = KOGlobals::self()->smallIcon( "appointment" );
-  mTodoPixmap      = KOGlobals::self()->smallIcon( "todo" );
+  mTodoPixmap      = KOGlobals::self()->smallIcon( "view-calendar-tasks" );
   mTodoDonePixmap  = KOGlobals::self()->smallIcon( "checkedbox" );
   mJournalPixmap   = KOGlobals::self()->smallIcon( "journal" );
   mAlarmPixmap     = KOGlobals::self()->smallIcon( "bell" );

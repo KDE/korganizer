@@ -658,7 +658,7 @@ static void conditionalPaint( QPainter *p, bool condition, int &x, int ft,
 void KOAgendaItem::paintTodoIcon( QPainter *p, int &x, int ft )
 {
   if ( !mIncidence ) return;
-  static const QPixmap todoPxmp = KOGlobals::self()->smallIcon("todo");
+  static const QPixmap todoPxmp = KOGlobals::self()->smallIcon("view-calendar-tasks");
   static const QPixmap completedPxmp = KOGlobals::self()->smallIcon("checkedbox");
 
   if ( mIncidence->type() != "Todo" ) return;

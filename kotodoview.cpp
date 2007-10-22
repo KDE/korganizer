@@ -520,7 +520,7 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent)
 
   mItemPopupMenu->addSeparator();
 
-  mItemPopupMenu->addAction(KOGlobals::self()->smallIconSet("todo"), i18n("New &To-do..."), this,
+  mItemPopupMenu->addAction(KOGlobals::self()->smallIconSet("view-calendar-tasks"), i18n("New &To-do..."), this,
                              SLOT (newTodo()));
   action = mItemPopupMenu->addAction(i18n("New Su&b-to-do..."), this, SLOT (newSubTodo()));
   mActionsOnSelection.append( action );
@@ -557,7 +557,7 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent)
            mItemPopupMenu, SLOT( hide() ) );
 
   mPopupMenu = new QMenu(this);
-  mPopupMenu->addAction(KOGlobals::self()->smallIconSet("todo"), i18n("&New To-do..."), this,
+  mPopupMenu->addAction(KOGlobals::self()->smallIconSet("view-calendar-tasks"), i18n("&New To-do..."), this,
                          SLOT (newTodo()));
   mPopupMenu->addAction(i18nc("delete completed to-dos","&Purge Completed"),
                          this, SLOT(purgeCompleted()));

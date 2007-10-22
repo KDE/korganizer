@@ -156,7 +156,7 @@ void KOWhatsNextView::updateView()
   mTodos.clear();
   Todo::List todos = calendar()->todos( TodoSortDueDate, SortDirectionAscending );
   if ( todos.count() > 0 ) {
-    kil.loadIcon("todo",KIconLoader::NoGroup,22,KIconLoader::DefaultState,QStringList(),ipath);
+    kil.loadIcon("view-calendar-tasks",KIconLoader::NoGroup,22,KIconLoader::DefaultState,QStringList(),ipath);
     mText += "<h2><img src=\"";
     mText += *ipath;
     mText += "\">";

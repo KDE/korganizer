@@ -347,43 +347,43 @@ void ActionManager::initActions()
   /************************** VIEW MENU *********************************/
 
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~~ VIEWS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  action = new KAction( KIcon( "whatsnext" ), i18n( "What's &Next" ), this );
+  action = new KAction( KIcon( "view-calendar-upcoming-events" ), i18n( "What's &Next" ), this );
   mACollection->addAction( "view_whatsnext", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
            SLOT(showWhatsNextView()) );
 
-  action = new KAction( KIcon( "1day" ), i18n( "&Day" ), this );
+  action = new KAction( KIcon( "view-calendar-day" ), i18n( "&Day" ), this );
   mACollection->addAction( "view_day", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
            SLOT(showDayView()) );
 
-  mNextXDays = new KAction( KIcon( "xdays" ), QString(), this );
+  mNextXDays = new KAction( KIcon( "view-calendar-upcoming-days" ), QString(), this );
   mACollection->addAction( "view_nextx", mNextXDays );
   connect( mNextXDays, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
            SLOT(showNextXView()) );
   mNextXDays->setText( i18np( "&Next Day", "&Next %1 Days", KOPrefs::instance()->mNextXDays ) );
 
-  action = new KAction( KIcon( "5days" ), i18n( "W&ork Week" ), this );
+  action = new KAction( KIcon( "view-calendar-workweek" ), i18n( "W&ork Week" ), this );
   mACollection->addAction( "view_workweek", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
            SLOT(showWorkWeekView()) );
 
-  action = new KAction( KIcon( "7days" ), i18n( "&Week" ), this );
+  action = new KAction( KIcon( "view-calendar-week" ), i18n( "&Week" ), this );
   mACollection->addAction( "view_week", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
            SLOT(showWeekView()) );
 
-  action = new KAction( KIcon( "month" ), i18n( "&Month" ), this );
+  action = new KAction( KIcon( "view-calendar-month" ), i18n( "&Month" ), this );
   mACollection->addAction( "view_month", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
            SLOT(showMonthView()) );
 
-  action = new KAction( KIcon( "list" ), i18n( "&Event List" ), this );
+  action = new KAction( KIcon( "view-calendar-list" ), i18n( "&Event List" ), this );
   mACollection->addAction( "view_list", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
            SLOT(showListView()) );
 
-  action = new KAction( KIcon( "todo" ), i18n( "&To-do List" ), this );
+  action = new KAction( KIcon( "view-calendar-tasks" ), i18n( "&To-do List" ), this );
   mACollection->addAction( "view_todo", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
            SLOT(showTodoView()) );
