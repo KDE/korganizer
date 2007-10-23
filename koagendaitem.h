@@ -183,9 +183,8 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
 
 
   private:
-    QPainterPath roundedRect( const QRect &rect, bool roundTop, bool roundBottom );
     void drawRoundedRect( QPainter *p, const QRect& rect, 
-			  const QColor& color, const QColor& bgcolor,
+			  bool selected, const QColor& bgcolor,
 			  bool frame, int ft, bool roundTop, bool roundBottom );
 
     int mCellXLeft, mCellXRight;
