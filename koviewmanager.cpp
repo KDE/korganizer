@@ -86,7 +86,7 @@ void KOViewManager::readSettings(KConfig *config)
   else if (view == QLatin1String("List")) showListView();
   else if (view == QLatin1String("Journal")) showJournalView();
   else if (view == QLatin1String("Todo")) showTodoView();
-  else if (view == "Timeline") showTimelineView();
+  else if (view == "Timeline") showTimeLineView();
   else if (view == "TimeSpent") showTimeSpentView();
   else showAgendaView();
 }
@@ -315,11 +315,6 @@ void KOViewManager::showAgendaView()
 
     addView(mAgendaView);
 
-    connect(mAgendaView, SIGNAL( toggleExpand() ),
-            mMainView, SLOT( toggleExpand() ) );
-    connect(mMainView, SIGNAL( calendarViewExpanded( bool ) ),
-            mAgendaView, SLOT( setExpandedButton( bool ) ) );
-
     connect( mAgendaView,SIGNAL( zoomViewHorizontally(const QDate &, int )),
              mMainView->dateNavigator(),SLOT( selectDates( const QDate &, int ) ) );
     mAgendaView->readSettings();
@@ -333,11 +328,7 @@ void KOViewManager::showAgendaView()
     mAgendaSideBySideView->setObjectName("KOViewManager::AgendaSideBySideView");
     addView(mAgendaSideBySideView);
 
-/*    connect(mAgendaSideBySideView, SIGNAL( toggleExpand() ),
-            mMainView, SLOT( toggleExpand() ) );
-    connect(mMainView, SIGNAL( calendarViewExpanded( bool ) ),
-            mAgendaSideBySideView, SLOT( setExpandedButton( bool ) ) );
-
+/*
     connect( mAgendaSideBySideView,SIGNAL( zoomViewHorizontally(const QDate &, int )),
              mMainView->dateNavigator(),SLOT( selectDates( const QDate &, int ) ) );*/
     if ( mAgendaViewTabs )
@@ -416,7 +407,7 @@ void KOViewManager::showJournalView()
 }
 
 
-void KOViewManager::showTimelineView()
+void KOViewManager::showTimeLineView()
 {
   if (!mTimelineView) {
     mTimelineView = new KOTimelineView(mMainView->calendar(),mMainView->viewStack());

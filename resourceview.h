@@ -28,14 +28,14 @@
 #include "calendarview.h"
 
 #include <kcal/resourcecalendar.h>
-#include <q3listview.h>
+
+#include <QTreeWidget>
 #include <QList>
 
 namespace KCal {
 class CalendarResources;
 }
 using namespace KCal;
-class K3ListView;
 class ResourceView;
 class QPushButton;
 
@@ -57,14 +57,14 @@ class ResourceViewFactory : public CalendarViewExtension::Factory
 };
 
 
-class ResourceItem : public Q3CheckListItem
+class ResourceItem : public QTreeWidgetItem
 {
   public:
     ResourceItem( KCal::ResourceCalendar *resource, ResourceView *view,
-                  K3ListView *parent );
+                  QTreeWidget *parent );
     ResourceItem( KCal::ResourceCalendar *resource, const QString& sub,
                   const QString& label, ResourceView *view,
-                  ResourceItem* parent );
+                  ResourceItem *parent );
 
     KCal::ResourceCalendar *resource() { return mResource; }
     const QString& resourceIdentifier() { return mResourceIdentifier; }
@@ -74,16 +74,17 @@ class ResourceItem : public Q3CheckListItem
 
     void update();
 
-    virtual void paintCell(QPainter *p, const QColorGroup &cg,
-      int column, int width, int alignment);
-
     void setResourceColor(QColor& color);
     QColor &resourceColor() {return mResourceColor;}
-  protected:
+
     void stateChange( bool active );
+
+  protected:
 
     void setGuiState();
     QColor mResourceColor;
+
+    void setOn( bool checked );
 
   private:
     KCal::ResourceCalendar *mResource;
@@ -93,6 +94,7 @@ class ResourceItem : public Q3CheckListItem
     QString mResourceIdentifier;
     bool mSubItemsCreated;
     bool mIsStandardResource;
+    bool mActive;
 };
 
 /**
@@ -136,7 +138,7 @@ class ResourceView : public CalendarViewExtension
                                  const QString & );
     void closeResource( ResourceCalendar * );
 
-    void contextMenuRequested ( Q3ListViewItem *i, const QPoint &pos, int );
+    void showContextMenu( const QPoint &pos );
 
     void assignColor();
     void disableColor();
@@ -148,8 +150,10 @@ class ResourceView : public CalendarViewExtension
     void setStandard();
     void updateResourceList();
 
+    void slotItemClicked( QTreeWidgetItem *, int );
+
   private:
-    K3ListView *mListView;
+    QTreeWidget *mListView;
     KCal::CalendarResources *mCalendar;
     QList<ResourceCalendar*> mResourcesToClose;
 };

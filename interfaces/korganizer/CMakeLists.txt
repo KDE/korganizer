@@ -21,5 +21,4 @@ install(TARGETS korganizer_interfaces  DESTINATION ${LIB_INSTALL_DIR})
 ########### install files ###############
 
 install( FILES korganizerpart.desktop korgprintplugin.desktop  DESTINATION ${SERVICETYPES_INSTALL_DIR})
-install( FILES part.h baseview.h calendarviewbase.h mainwindow.h corehelper.h printplugin.h incidencechangerbase.h  DESTINATION ${INCLUDE_INSTALL_DIR}/korganizer)
 

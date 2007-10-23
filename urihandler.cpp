@@ -65,7 +65,7 @@ bool UriHandler::process( const QString &uri )
     return true;
   } else if ( uri.startsWith( KDEPIMPROTOCOL_CONTACT ) ) {
     if (QDBusConnection::sessionBus().interface()->isServiceRegistered("org.kde.kaddressbook") ) {
-      kapp->updateRemoteUserTimestamp("kaddressbook");
+      kapp->updateRemoteUserTimestamp("org.kde.kaddressbook");
       org::kde::KAddressbook::Core kaddressbook("org.kde.kaddressbook", "/KAddressBook", QDBusConnection::sessionBus());
       kaddressbook.showContactEditor(uri.mid( ::qstrlen( KDEPIMPROTOCOL_CONTACT ) ) );
       return true;

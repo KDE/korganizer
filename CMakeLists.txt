@@ -129,6 +129,9 @@ set(korganizer_LIB_SRCS
    koalternatelabel.cpp
    kodecorationlabel.cpp
    koagendaview.cpp
+   timelabelszone.cpp
+   timelabels.cpp
+   timescaleconfigdialog.cpp
    agendaview.cpp
    multiagendaview.cpp
    koagenda.cpp
@@ -208,7 +211,7 @@ qt4_add_dbus_interfaces(korganizer_LIB_SRCS org.kde.korganizer.Korganizer.xml )
 
 kde4_add_library(korganizer SHARED ${korganizer_LIB_SRCS})
 
-target_link_libraries(korganizer ${KDE4_KNEWSTUFF2_LIBS} ${KDE4_KDEPRINT_LIBRARY} ${KDE4_KABC_LIBRARY} ${KDE4_KUTILS_LIBRARY} ${KDE4_KCAL_LIBRARY} ${KDE4_KPIMIDENTITIES_LIBRARY} ${KDE4_KMIME_LIBRARY}
+target_link_libraries(korganizer ${KDE4_KNEWSTUFF2_LIBS} ${KDE4_KABC_LIBRARY} ${KDE4_KUTILS_LIBRARY} ${KDE4_KCAL_LIBRARY} ${KDE4_KPIMIDENTITIES_LIBRARY} ${KDE4_KMIME_LIBRARY}
                                                       kdepim korganizer_eventviewer korganizer_calendar kocorehelper
                                                       korg_stdprinting kholidays korganizer_interfaces )
 
@@ -232,6 +235,5 @@ install( FILES korganizer.upd  DESTINATION ${KCONF_UPDATE_INSTALL_DIR})
 install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/ical2vcal DESTINATION ${BIN_INSTALL_DIR})
 
 install( FILES org.kde.Korganizer.Calendar.xml org.kde.korganizer.Korganizer.xml DESTINATION ${DBUS_INTERFACES_INSTALL_DIR})
-install( FILES korganizer_export.h  DESTINATION ${INCLUDE_INSTALL_DIR}/korganizer)
 
 kde4_install_icons( ${ICON_INSTALL_DIR}   )

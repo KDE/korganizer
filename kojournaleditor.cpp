@@ -127,7 +127,6 @@ void KOJournalEditor::setTexts( const QString &summary,
 
 void KOJournalEditor::loadDefaults()
 {
-  setTexts( "Journal for " + QDate::currentDate().toString() );
   setDate( QDate::currentDate() );
   setTime( QTime::currentTime() );
 }

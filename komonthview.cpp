@@ -127,38 +127,47 @@ void KNoScrollListBox::setBackground( bool primary, bool workDay )
 void KNoScrollListBox::keyPressEvent( QKeyEvent *e )
 {
   switch( e->key() ) {
-    case Qt::Key_Right:
-      scrollBy( 4, 0 );
+  case Qt::Key_Right:
+    scrollBy( 4, 0 );
+    break;
+
+  case Qt::Key_Left:
+    scrollBy( -4, 0 );
+    break;
+
+  case Qt::Key_Up:
+    if ( !count() ) {
       break;
-    case Qt::Key_Left:
-      scrollBy( -4, 0 );
-      break;
-    case Qt::Key_Up:
-      if ( !count() ) break;
-      setCurrentItem( ( currentItem() + count() - 1 ) % count() );
-      if ( !itemVisible( currentItem() ) ) {
-        if ( (unsigned int)currentItem() == ( count() - 1 ) ) {
-          setTopItem( currentItem() - numItemsVisible() + 1 );
-        } else {
-          setTopItem( topItem() - 1 );
-        }
+    }
+    setCurrentItem( ( currentItem() + count() - 1 ) % count() );
+    if ( !itemVisible( currentItem() ) ) {
+      if ( (unsigned int)currentItem() == ( count() - 1 ) ) {
+        setTopItem( currentItem() - numItemsVisible() + 1 );
+      } else {
+        setTopItem( topItem() - 1 );
       }
+    }
+    break;
+
+  case Qt::Key_Down:
+    if ( !count() ) {
       break;
-    case Qt::Key_Down:
-      if ( !count() ) break;
-      setCurrentItem( ( currentItem() + 1 ) % count() );
-      if( !itemVisible( currentItem() ) ) {
-        if( currentItem() == 0 ) {
-          setTopItem( 0 );
-        } else {
-          setTopItem( topItem() + 1 );
-        }
+    }
+    setCurrentItem( ( currentItem() + 1 ) % count() );
+    if( !itemVisible( currentItem() ) ) {
+      if( currentItem() == 0 ) {
+        setTopItem( 0 );
+      } else {
+        setTopItem( topItem() + 1 );
       }
-    case Qt::Key_Shift:
-      emit shiftDown();
-      break;
-    default:
-      break;
+    }
+
+  case Qt::Key_Shift:
+    emit shiftDown();
+    break;
+
+  default:
+    break;
   }
 }
 
@@ -194,37 +203,38 @@ void KNoScrollListBox::contentsMouseDoubleClickEvent ( QMouseEvent * e )
 void KNoScrollListBox::resizeEvent( QResizeEvent *e )
 {
   bool s = count() && ( maxItemWidth() > e->size().width() );
-  if ( mSqueezing || s )
+  if ( mSqueezing || s ) {
     triggerUpdate( false );
+  }
 
   mSqueezing = s;
   Q3ListBox::resizeEvent( e );
 }
 
-MonthViewItem::MonthViewItem( Incidence *incidence, const KDateTime &dt,
-                              const QString & s ) : Q3ListBoxItem()
+MonthViewItem::MonthViewItem( Incidence *incidence, const KDateTime &dt, const QString & s )
+  : Q3ListBoxItem()
 {
   setText( s );
 
   mIncidence = incidence;
   mDateTime = dt;
 
-  mEventPixmap     = KOGlobals::self()->smallIcon("event");
-  mTodoPixmap      = KOGlobals::self()->smallIcon("todo");
-  mTodoDonePixmap  = KOGlobals::self()->smallIcon("checkedbox");
-  mJournalPixmap   = KOGlobals::self()->smallIcon("journal");
-  mAlarmPixmap     = KOGlobals::self()->smallIcon("bell");
-  mRecurPixmap     = KOGlobals::self()->smallIcon("recur");
-  mReplyPixmap     = KOGlobals::self()->smallIcon("mail-reply-sender");
+  mEventPixmap     = KOGlobals::self()->smallIcon( "appointment" );
+  mTodoPixmap      = KOGlobals::self()->smallIcon( "view-calendar-tasks" );
+  mTodoDonePixmap  = KOGlobals::self()->smallIcon( "checkedbox" );
+  mJournalPixmap   = KOGlobals::self()->smallIcon( "journal" );
+  mAlarmPixmap     = KOGlobals::self()->smallIcon( "bell" );
+  mRecurPixmap     = KOGlobals::self()->smallIcon( "recur" );
+  mReplyPixmap     = KOGlobals::self()->smallIcon( "mail-reply-sender" );
 
   mResourceColor = QColor();
-  mEvent     = false;
-  mTodo      = false;
-  mTodoDone  = false;
-  mJournal   = false;
-  mRecur     = false;
-  mAlarm     = false;
-  mReply     = false;
+  mEvent = false;
+  mTodo = false;
+  mTodoDone = false;
+  mJournal = false;
+  mRecur = false;
+  mAlarm = false;
+  mReply = false;
 }
 
 void MonthViewItem::paint( QPainter *p )
@@ -242,7 +252,8 @@ void MonthViewItem::paint( QPainter *p )
   }
   if ( KOPrefs::instance()->monthViewUsesCategoryColor() ) {
     p->setBackground( QBrush( bgColor ) );
-    p->eraseRect( offset, offset, listBox()->maxItemWidth()-2*offset, height( listBox() )-2*offset );
+    p->eraseRect( offset, offset, listBox()->maxItemWidth() - 2 * offset,
+                  height( listBox() ) - 2 * offset );
   }
   int x = 3;
   if ( mEvent ) {
@@ -266,17 +277,18 @@ void MonthViewItem::paint( QPainter *p )
     x += mAlarmPixmap.width() + 2;
   }
   if ( mReply ) {
-    p->drawPixmap(x, 0, mReplyPixmap );
+    p->drawPixmap( x, 0, mReplyPixmap );
     x += mReplyPixmap.width() + 2;
   }
   QFontMetrics fm = p->fontMetrics();
   int yPos;
   int pmheight = qMax( mRecurPixmap.height(),
                        qMax( mAlarmPixmap.height(), mReplyPixmap.height() ) );
-  if( pmheight < fm.height() )
-    yPos = fm.ascent() + fm.leading()/2;
-  else
-    yPos = pmheight/2 - fm.height()/2  + fm.ascent();
+  if( pmheight < fm.height() ) {
+    yPos = fm.ascent() + fm.leading() / 2;
+  } else {
+    yPos = pmheight / 2 - fm.height() / 2  + fm.ascent();
+  }
   QColor textColor = getTextColor( bgColor );
   p->setPen( textColor );
 
@@ -286,7 +298,7 @@ void MonthViewItem::paint( QPainter *p )
 int MonthViewItem::height( const Q3ListBox *lb ) const
 {
   return qMax( qMax( mRecurPixmap.height(), mReplyPixmap.height() ),
-               qMax( mAlarmPixmap.height(), lb->fontMetrics().lineSpacing()+1) );
+               qMax( mAlarmPixmap.height(), lb->fontMetrics().lineSpacing() + 1 ) );
 }
 
 int MonthViewItem::width( const Q3ListBox *lb ) const
@@ -302,11 +314,10 @@ int MonthViewItem::width( const Q3ListBox *lb ) const
     x += mReplyPixmap.width()+2;
   }
 
-  return( x + lb->fontMetrics().boundingRect( text() ).width() + 1 );
+  return x + lb->fontMetrics().boundingRect( text() ).width() + 1;
 }
 
-
-MonthViewCell::MonthViewCell( KOMonthView *parent)
+MonthViewCell::MonthViewCell( KOMonthView *parent )
   : QWidget( parent ),
     mMonthView( parent ), mPrimary( false ), mHoliday( false )
 {
@@ -356,22 +367,21 @@ MonthViewCell::MonthViewCell( KOMonthView *parent)
 
 void MonthViewCell::setDate( const QDate &date )
 {
-//  kDebug(5850) <<"MonthViewCell::setDate():" << date.toString();
-
   mDate = date;
 
   setFrameWidth();
 
   QString text;
-  if ( KOGlobals::self()->calendarSystem()->day( date ) == 1 ) {
-    text = i18nc("'Month day' for month view cells", "%1 %2",
-          KOGlobals::self()->calendarSystem()->monthName( date, KCalendarSystem::ShortName ) ,
-          KOGlobals::self()->calendarSystem()->day(mDate) );
+  const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
+  if ( calSys->day( date ) == 1 ) {
+    text = i18nc( "'Month day' for month view cells", "%1 %2",
+                  calSys->monthName( date, KCalendarSystem::ShortName ),
+                  calSys->day( mDate ) );
     QFontMetrics fm( mLabel->font() );
     mLabel->resize( mLabelSize + QSize( fm.width( text ), 0 ) );
   } else {
     mLabel->resize( mLabelSize );
-    text = QString::number( KOGlobals::self()->calendarSystem()->day(mDate) );
+    text = QString::number( calSys->day( mDate ) );
   }
   mLabel->setText( text );
 /* TODO: Add code for the loading of the decorations around here */
@@ -387,10 +397,11 @@ QDate MonthViewCell::date() const
 void MonthViewCell::setFrameWidth()
 {
   // show current day with a thicker frame
-  if ( mDate == QDate::currentDate() )
+  if ( mDate == QDate::currentDate() ) {
     mItemList->setLineWidth( 3 );
-  else
+  } else {
     mItemList->setLineWidth( 1 );
+  }
 }
 
 void MonthViewCell::setPrimary( bool primary )
@@ -442,22 +453,24 @@ void MonthViewCell::updateCell()
     QPalette pal = mItemList->palette();
     pal.setColor( QPalette::Foreground, KOPrefs::instance()->monthGridHighlightColor() );
     mItemList->setPalette( pal );
-  }
-  else {
-    if ( mHoliday )
+  } else {
+    if ( mHoliday ) {
       setPalette( mHolidayPalette );
-    else
+    } else {
       setPalette( mStandardPalette );
+    }
 
     QPalette pal = mItemList->palette();
-    pal.setColor( QPalette::Foreground, KOPrefs::instance()->monthGridBackgroundColor().dark( 150 ) );
+    pal.setColor( QPalette::Foreground,
+                  KOPrefs::instance()->monthGridBackgroundColor().dark( 150 ) );
     mItemList->setPalette( pal );
   }
 
   mItemList->clear();
 
   if ( !mHolidayString.isEmpty() ) {
-    MonthViewItem *item = new MonthViewItem( 0, KDateTime( mDate, KOPrefs::instance()->timeSpec() ), mHolidayString );
+    MonthViewItem *item =
+      new MonthViewItem( 0, KDateTime( mDate, KOPrefs::instance()->timeSpec() ), mHolidayString );
     item->setPalette( mHolidayPalette );
     mItemList->insertItem( item );
   }
@@ -485,7 +498,8 @@ class MonthViewCell::CreateItemVisitor :
       KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
       KDateTime dt( mDate, timeSpec );
       // take the time 0:00 into account, which is non-inclusive
-      QDate dtEnd = event->dtEnd().toTimeSpec( timeSpec ).addSecs( event->allDay() ? 0 : -1).date();
+      QDate dtEnd =
+        event->dtEnd().toTimeSpec( timeSpec ).addSecs( event->allDay() ? 0 : -1 ).date();
       KDateTime dtStart = event->dtStart().toTimeSpec( timeSpec );
       int length = dtStart.date().daysTo( dtEnd );
       if ( event->isMultiDay() ) {
@@ -495,18 +509,19 @@ class MonthViewCell::CreateItemVisitor :
           dt = event->dtStart();
         } else if ( !event->recurs() && mDate == dtEnd ||
                     // last day of a recurring multi-day event?
-                  ( mMultiDay == length && event->recursOn( mDate.addDays( -length ), timeSpec ) ) ) {
+                    ( mMultiDay == length &&
+                      event->recursOn( mDate.addDays( -length ), timeSpec ) ) ) {
           text = event->summary() + " --)";
-        } else if (!(event->dtStart().date().daysTo(mDate) % 7) && length > 7 ) {
+        } else if ( !( event->dtStart().date().daysTo( mDate ) % 7 ) && length > 7 ) {
           text = "-- " + event->summary() + " --";
         } else {
           text = "----------------";
         }
       } else {
-        if (event->allDay())
+        if ( event->allDay() ) {
           text = event->summary();
-        else {
-	  QTime startTime = event->dtStart().toTimeSpec( timeSpec ).time();
+        } else {
+          QTime startTime = event->dtStart().toTimeSpec( timeSpec ).time();
           text = KGlobal::locale()->formatTime(startTime);
           dt.setTime( startTime );
           text += ' ' + event->summary();
@@ -514,14 +529,20 @@ class MonthViewCell::CreateItemVisitor :
       }
 
       mItem = new MonthViewItem( event, dt, text );
-      if (KOPrefs::instance()->monthViewUsesCategoryColor()) {
+      if ( KOPrefs::instance()->monthViewUsesCategoryColor() ) {
         QStringList categories = event->categories();
         QString cat;
-        if ( !categories.isEmpty() ) cat = categories.first();
-        if (cat.isEmpty()) {
-          mItem->setPalette(QPalette(KOPrefs::instance()->monthCalendarItemsEventsBackgroundColor(), KOPrefs::instance()->monthCalendarItemsEventsBackgroundColor()));
+        if ( !categories.isEmpty() ) {
+          cat = categories.first();
+        }
+        if ( cat.isEmpty() ) {
+          mItem->setPalette(
+            QPalette( KOPrefs::instance()->monthCalendarItemsEventsBackgroundColor(),
+                      KOPrefs::instance()->monthCalendarItemsEventsBackgroundColor() ) );
         } else {
-          mItem->setPalette( QPalette( KOPrefs::instance()->categoryColor(cat), KOPrefs::instance()->categoryColor(cat) ) );
+          mItem->setPalette(
+            QPalette( KOPrefs::instance()->categoryColor( cat ),
+                      KOPrefs::instance()->categoryColor( cat ) ) );
         }
       } else {
         mItem->setPalette( mStandardPalette );
@@ -531,14 +552,16 @@ class MonthViewCell::CreateItemVisitor :
       Attendee *me = event->attendeeByMails( KOPrefs::instance()->allEmails() );
       if ( me != 0 ) {
         mItem->setReply( me->status() == Attendee::NeedsAction && me->RSVP() );
-      } else
-        mItem->setReply(false);
+      } else {
+        mItem->setReply( false );
+      }
       return true;
     }
     bool visit( Todo *todo ) {
       QString text;
-      if ( !KOPrefs::instance()->showAllDayTodo() )
+      if ( !KOPrefs::instance()->showAllDayTodo() ) {
         return false;
+      }
       KDateTime dt( mDate, KOPrefs::instance()->timeSpec() );
       if ( todo->hasDueDate() && !todo->allDay() ) {
         QTime dueTime = todo->dtDue().toTimeSpec( KOPrefs::instance()->timeSpec() ).time();
@@ -552,9 +575,9 @@ class MonthViewCell::CreateItemVisitor :
       if ( todo->recurs() ) {
         mDate < todo->dtDue().date() ?
         mItem->setTodoDone( true ) : mItem->setTodo( true );
-      }
-      else
+      } else {
         todo->isCompleted() ? mItem->setTodoDone( true ) : mItem->setTodo( true );
+      }
       mItem->setPalette( mStandardPalette );
       return true;
     }
@@ -564,7 +587,6 @@ class MonthViewCell::CreateItemVisitor :
     QPalette mStandardPalette;
     int mMultiDay;
 };
-
 
 void MonthViewCell::addIncidence( Incidence *incidence, int multiDay )
 {
@@ -577,8 +599,9 @@ void MonthViewCell::addIncidence( Incidence *incidence, int multiDay )
       item->setRecur( incidence->recurrenceType() );
 
       QColor resourceColor = KOHelper::resourceColor( mCalendar, incidence );
-      if ( !resourceColor.isValid() )
+      if ( !resourceColor.isValid() ) {
         resourceColor = KOPrefs::instance()->monthCalendarItemsEventsBackgroundColor();
+      }
       item->setResourceColor( resourceColor );
 
       // FIXME: Find the correct position (time-wise) to insert the item.
@@ -604,9 +627,8 @@ void MonthViewCell::addIncidence( Incidence *incidence, int multiDay )
 void MonthViewCell::removeIncidence( Incidence *incidence )
 {
   for ( uint i = 0; i < mItemList->count(); ++i ) {
-    MonthViewItem *item = static_cast<MonthViewItem *>(mItemList->item( i ) );
-    if ( item && item->incidence() &&
-         item->incidence()->uid() == incidence->uid() ) {
+    MonthViewItem *item = static_cast<MonthViewItem *>( mItemList->item( i ) );
+    if ( item && item->incidence() && item->incidence()->uid() == incidence->uid() ) {
       mItemList->removeItem( i );
       --i;
     }
@@ -623,9 +645,9 @@ void MonthViewCell::updateConfig()
                QSize( 2, 2 );
 //  mStandardPalette = mOriginalPalette;
   QColor bg = mStandardPalette.color( QPalette::Active, QPalette::Background );
-  int h,s,v;
+  int h, s, v;
   bg.getHsv( &h, &s, &v );
-  if ( date().month() %2 == 0 ) {
+  if ( date().month() % 2 == 0 ) {
     if ( v < 128 ) {
       bg = bg.light( 125 );
     } else {
@@ -635,7 +657,6 @@ void MonthViewCell::updateConfig()
   QPalette pal;
   pal.setColor( backgroundRole(), bg );
   setPalette( pal );
-//  mStandardPalette.setColor( QPalette::Background, bg);*/
 
   mHolidayPalette = mStandardPalette;
   mHolidayPalette.setColor( QPalette::Foreground,
@@ -666,12 +687,15 @@ void MonthViewCell::enableScrollBars( bool enabled )
 Incidence *MonthViewCell::selectedIncidence()
 {
   int index = mItemList->currentItem();
-  if ( index < 0 ) return 0;
+  if ( index < 0 ) {
+    return 0;
+  }
 
-  MonthViewItem *item =
-      static_cast<MonthViewItem *>( mItemList->item( index ) );
+  MonthViewItem *item = static_cast<MonthViewItem *>( mItemList->item( index ) );
 
-  if ( !item ) return 0;
+  if ( !item ) {
+    return 0;
+  }
 
   return item->incidence();
 }
@@ -680,12 +704,15 @@ QDate MonthViewCell::selectedIncidenceDate()
 {
   QDate qd;
   int index = mItemList->currentItem();
-  if ( index < 0 ) return qd;
+  if ( index < 0 ) {
+    return qd;
+  }
 
-  MonthViewItem *item =
-      static_cast<MonthViewItem *>( mItemList->item( index ) );
+  MonthViewItem *item = static_cast<MonthViewItem *>( mItemList->item( index ) );
 
-  if ( !item ) return qd;
+  if ( !item ) {
+    return qd;
+  }
 
   return item->incidenceDateTime().date();
 }
@@ -695,8 +722,9 @@ void MonthViewCell::select()
   // setSelectedCell will deselect currently selected cells
   mMonthView->setSelectedCell( this );
 
-  if( KOPrefs::instance()->enableMonthScroll() )
+  if( KOPrefs::instance()->enableMonthScroll() ) {
     enableScrollBars( true );
+  }
 
   // don't mess up the cell when it represents today
   if( mDate != QDate::currentDate() ) {
@@ -729,7 +757,9 @@ void MonthViewCell::defaultAction( Q3ListBoxItem *item )
   } else {
     MonthViewItem *eventItem = static_cast<MonthViewItem *>( item );
     Incidence *incidence = eventItem->incidence();
-    if ( incidence ) mMonthView->defaultAction( incidence );
+    if ( incidence ) {
+      mMonthView->defaultAction( incidence );
+    }
   }
 }
 
@@ -740,17 +770,18 @@ void MonthViewCell::contextMenu( Q3ListBoxItem *item )
   if ( item ) {
     MonthViewItem *eventItem = static_cast<MonthViewItem *>( item );
     Incidence *incidence = eventItem->incidence();
-    if ( incidence ) mMonthView->showEventContextMenu( incidence, date() );
-  }
-  else {
+    if ( incidence ) {
+      mMonthView->showEventContextMenu( incidence, date() );
+    }
+  } else {
     mMonthView->showGeneralContextMenu();
   }
 }
 
 KOMonthView::KOMonthView( Calendar *calendar, QWidget *parent )
-    : KOEventView( calendar, parent ),
-      mDaysPerWeek( 7 ), mNumWeeks( 6 ), mNumCells( mDaysPerWeek * mNumWeeks ),
-      mShortDayLabels( false ), mWidthLongDayLabel( 0 ), mSelectedCell( 0 )
+  : KOEventView( calendar, parent ),
+    mDaysPerWeek( 7 ), mNumWeeks( 6 ), mNumCells( mDaysPerWeek * mNumWeeks ),
+    mShortDayLabels( false ), mWidthLongDayLabel( 0 ), mSelectedCell( 0 )
 {
   QGridLayout *dayLayout = new QGridLayout( this );
   dayLayout->setSpacing( 0 );
@@ -764,20 +795,19 @@ KOMonthView::KOMonthView( Calendar *calendar, QWidget *parent )
 
   // Top box with month name and decorations
   mTopBox = new KHBox( this );
-  mLabel = new QLabel( mTopBox );
-  mLabel->setFont( mfont );
-  mLabel->setAlignment( Qt::AlignCenter );
-  mLabel->setLineWidth( 0 );
-  mLabel->setFrameStyle( QFrame::Plain );
+  mTitle = new QLabel( mTopBox );
+  mTitle->setFont( mfont );
+  mTitle->setLineWidth( 0 );
+  mTitle->setFrameStyle( QFrame::Plain );
   mDecorationsFrame = 0;
 
-  dayLayout->addWidget( mTopBox, 0, 0, 1, mDaysPerWeek );
+  dayLayout->addWidget( mTopBox, 0, 0, 1, -1, Qt::AlignCenter );
 
   // create the day of the week labels (Sun, Mon, etc) and add them to
   // the layout.
   mDayLabels.resize( mDaysPerWeek );
   int i;
-  for( i = 0; i < mDaysPerWeek; i++ ) {
+  for ( i = 0; i < mDaysPerWeek; i++ ) {
     QLabel *label = new QLabel( this );
     label->setFont( bfont );
     label->setFrameStyle( QFrame::Panel | QFrame::Raised );
@@ -794,8 +824,8 @@ KOMonthView::KOMonthView( Calendar *calendar, QWidget *parent )
   int row, col;
 
   mCells.resize( mNumCells );
-  for( row = 0; row < mNumWeeks; ++row ) {
-    for( col = 0; col < mDaysPerWeek; ++col ) {
+  for ( row = 0; row < mNumWeeks; ++row ) {
+    for ( col = 0; col < mDaysPerWeek; ++col ) {
       MonthViewCell *cell = new MonthViewCell( this );
       cell->setCalendar(calendar);
       mCells[row * mDaysPerWeek + col] = cell;
@@ -839,7 +869,9 @@ Incidence::List KOMonthView::selectedIncidences()
 
   if ( mSelectedCell ) {
     Incidence *incidence = mSelectedCell->selectedIncidence();
-    if ( incidence ) selected.append( incidence );
+    if ( incidence ) {
+      selected.append( incidence );
+    }
   }
 
   return selected;
@@ -851,7 +883,9 @@ DateList KOMonthView::selectedDates()
 
   if ( mSelectedCell ) {
     QDate qd = mSelectedCell->selectedIncidenceDate();
-    if ( qd.isValid() ) selected.append( qd );
+    if ( qd.isValid() ) {
+      selected.append( qd );
+    }
   }
 
   return selected;
@@ -876,9 +910,10 @@ void KOMonthView::updateConfig()
   mWidthLongDayLabel = 0;
 
   for ( int i = 0; i < 7; ++i ) {
-    int width =
-        fontmetric.width( KOGlobals::self()->calendarSystem()->weekDayName( i + 1 ) );
-    if ( width > mWidthLongDayLabel ) mWidthLongDayLabel = width;
+    int width = fontmetric.width( KOGlobals::self()->calendarSystem()->weekDayName( i + 1 ) );
+    if ( width > mWidthLongDayLabel ) {
+      mWidthLongDayLabel = width;
+    }
   }
 
   updateDayLabels();
@@ -890,13 +925,15 @@ void KOMonthView::updateConfig()
 
 void KOMonthView::updateDayLabels()
 {
-  kDebug(5850) <<"KOMonthView::updateDayLabels()";
+  kDebug(5850) << "KOMonthView::updateDayLabels()";
 
-  const KCalendarSystem*calsys=KOGlobals::self()->calendarSystem();
+  const KCalendarSystem *calsys = KOGlobals::self()->calendarSystem();
   int currDay;
   for ( int i = 0; i < 7; i++ ) {
-    currDay = i+mWeekStartDay;
-    if ( currDay > 7 ) currDay -= 7;
+    currDay = i + mWeekStartDay;
+    if ( currDay > 7 ) {
+      currDay -= 7;
+    }
     if ( mShortDayLabels ) {
       mDayLabels[i]->setText( calsys->weekDayName( currDay, KCalendarSystem::ShortDayName ) );
     } else {
@@ -907,8 +944,6 @@ void KOMonthView::updateDayLabels()
 
 void KOMonthView::showDates( const QDate &start, const QDate & )
 {
-//  kDebug(5850) <<"KOMonthView::showDates():" << start.toString();
-
   const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
 
   mDateToCell.clear();
@@ -919,9 +954,9 @@ void KOMonthView::showDates( const QDate &start, const QDate & )
   int weekdayCol=( mStartDate.dayOfWeek() + 7 - mWeekStartDay ) % 7;
   mStartDate = mStartDate.addDays( -weekdayCol );
 
-  mLabel->setText( i18nc( "monthname year", "%1 %2" ,
-                     calSys->monthName( start ) ,
-                     calSys->year( start ) ) );
+  mTitle->setText( i18nc( "monthname year", "%1 %2",
+                          calSys->monthName( start ),
+                          calSys->yearString( start ) ) );
 
   delete mDecorationsFrame;
   mDecorationsFrame = new QFrame( mTopBox );
@@ -931,8 +966,7 @@ void KOMonthView::showDates( const QDate &start, const QDate & )
   // Month decoration labels
   foreach ( QString decoName, KOPrefs::instance()->decorationsAtMonthViewTop() ) {
     if ( KOPrefs::instance()->selectedPlugins().contains( decoName ) ) {
-      CalendarDecoration::Decoration* deco
-          = KOCore::self()->loadCalendarDecoration( decoName );
+      CalendarDecoration::Decoration *deco = KOCore::self()->loadCalendarDecoration( decoName );
 
       CalendarDecoration::Element::List elements;
       elements = deco->monthElements( start );
@@ -941,9 +975,10 @@ void KOMonthView::showDates( const QDate &start, const QDate & )
         decoHBox->setFrameShape( QFrame::StyledPanel );
         decoHBox->setMinimumWidth( 1 );
 
-        foreach ( CalendarDecoration::Element* it, elements ) {
-          kDebug() << "adding Element " << it->id() << " of Decoration "
-                   << deco->info() << " to the top of the month view";
+        foreach ( CalendarDecoration::Element *it, elements ) {
+          kDebug() << "adding Element " << it->id()
+                   << " of Decoration " << deco->info()
+                   << " to the top of the month view";
           KODecorationLabel *label = new KODecorationLabel( it, decoHBox );
           label->setAlignment( Qt::AlignBottom );
         }
@@ -954,7 +989,7 @@ void KOMonthView::showDates( const QDate &start, const QDate & )
 
   bool primary = false;
   int i;
-  for( i = 0; i < mCells.size(); ++i ) {
+  for ( i = 0; i < mCells.size(); ++i ) {
     QDate date = mStartDate.addDays( i );
     if ( calSys->day( date ) == 1 ) {
       primary = !primary;
@@ -962,18 +997,19 @@ void KOMonthView::showDates( const QDate &start, const QDate & )
 
     mCells[i]->setDate( date );
     mDateToCell[date] = mCells[i];
-    if( date == start )
+    if ( date == start ) {
       mCells[i]->select();
-
+    }
     mCells[i]->setPrimary( primary );
 
-    bool isHoliday = calSys->dayOfWeek( date ) == calSys->weekDayOfPray()
-                  || !KOGlobals::self()->isWorkDay( date );
+    bool isHoliday = ( calSys->dayOfWeek( date ) == calSys->weekDayOfPray() ||
+                       !KOGlobals::self()->isWorkDay( date ) );
     mCells[i]->setHoliday( isHoliday );
 
     // add holiday, if present
     QStringList holidays( KOGlobals::self()->holiday( date ) );
-    mCells[i]->setHolidayString( holidays.join( i18nc("delimiter for joining holiday names", "," ) ) );
+    mCells[i]->setHolidayString( holidays.join(
+                                   i18nc( "delimiter for joining holiday names", "," ) ) );
   }
 
   updateView();
@@ -981,7 +1017,7 @@ void KOMonthView::showDates( const QDate &start, const QDate & )
 
 void KOMonthView::showIncidences( const Incidence::List & )
 {
-  kDebug(5850) <<"KOMonthView::showIncidences( const Incidence::List & ) is not implemented yet.";
+  kDebug(5850) << "KOMonthView::showIncidences( const Incidence::List & ) is not implemented yet.";
 }
 
 class KOMonthView::GetDateVisitor : public IncidenceBase::Visitor
@@ -1007,10 +1043,10 @@ class KOMonthView::GetDateVisitor : public IncidenceBase::Visitor
       if ( todo->hasDueDate() ) {
         mStartDate = todo->dtDue();
         mEndDate = todo->dtDue();
-
         return true;
-      } else
+      } else {
         return false;
+      }
     }
     bool visit( Journal *journal ) {
       mStartDate = journal->dtStart();
@@ -1027,7 +1063,7 @@ void KOMonthView::changeIncidenceDisplayAdded( Incidence *incidence )
   GetDateVisitor gdv;
 
   if ( !gdv.act( incidence ) ) {
-    kDebug(5850) <<"Visiting GetDateVisitor failed.";
+    kDebug(5850) << "Visiting GetDateVisitor failed.";
     return;
   }
 
@@ -1038,20 +1074,23 @@ void KOMonthView::changeIncidenceDisplayAdded( Incidence *incidence )
     for ( int i = 0; i < mCells.count(); ++i ) {
       if ( incidence->recursOn( mCells[i]->date(), timeSpec ) ) {
         // handle multiday events
-        int length = gdv.startDate().date().daysTo( gdv.endDate().addSecs( allDay ? 0 : -1 ).date() );
+        int length =
+          gdv.startDate().date().daysTo( gdv.endDate().addSecs( allDay ? 0 : -1 ).date() );
         for ( int j = 0; j <= length && i+j < mCells.count(); ++j ) {
-          mCells[i+j]->addIncidence( incidence, j );
+          mCells[i + j]->addIncidence( incidence, j );
         }
       }
     }
   } else {
     // addSecs(-1) is added to handle 0:00 cases (because it's non-inclusive according to rfc)
     if ( gdv.endDate().isValid() ) {
-      QDate endDate = gdv.endDate().toTimeSpec( KOPrefs::instance()->timeSpec() ).addSecs( allDay ? 0 : -1).date();
-      for ( QDate date = gdv.startDate().toTimeSpec( KOPrefs::instance()->timeSpec() ).date();
+      QDate endDate = gdv.endDate().toTimeSpec( timeSpec ).addSecs( allDay ? 0 : -1 ).date();
+      for ( QDate date = gdv.startDate().toTimeSpec( timeSpec ).date();
             date <= endDate; date = date.addDays( 1 ) ) {
         MonthViewCell *mvc = mDateToCell[ date ];
-        if ( mvc ) mvc->addIncidence( incidence );
+        if ( mvc ) {
+          mvc->addIncidence( incidence );
+        }
       }
     }
   }
@@ -1060,34 +1099,37 @@ void KOMonthView::changeIncidenceDisplayAdded( Incidence *incidence )
 void KOMonthView::changeIncidenceDisplay( Incidence *incidence, int action )
 {
   switch ( action ) {
-    case KOGlobals::INCIDENCEADDED:
-      changeIncidenceDisplayAdded( incidence );
-      break;
-    case KOGlobals::INCIDENCEEDITED:
-      for( int i = 0; i < mCells.count(); i++ )
-        mCells[i]->removeIncidence( incidence );
-      changeIncidenceDisplayAdded( incidence );
-      break;
-    case KOGlobals::INCIDENCEDELETED:
-      for( int i = 0; i < mCells.count(); i++ )
-        mCells[i]->removeIncidence( incidence );
-      break;
-    default:
-      return;
+  case KOGlobals::INCIDENCEADDED:
+    changeIncidenceDisplayAdded( incidence );
+    break;
+  case KOGlobals::INCIDENCEEDITED:
+    for ( int i = 0; i < mCells.count(); i++ ) {
+      mCells[i]->removeIncidence( incidence );
+    }
+    changeIncidenceDisplayAdded( incidence );
+    break;
+  case KOGlobals::INCIDENCEDELETED:
+    for ( int i = 0; i < mCells.count(); i++ ) {
+      mCells[i]->removeIncidence( incidence );
+    }
+    break;
+  default:
+    return;
   }
 }
 
 void KOMonthView::updateView()
 {
-  for( int i = 0; i < mCells.count(); ++i ) {
+  for ( int i = 0; i < mCells.count(); ++i ) {
     mCells[i]->updateCell();
   }
 
   Incidence::List incidences = calendar()->incidences();
   Incidence::List::ConstIterator it;
 
-  for ( it = incidences.begin(); it != incidences.end(); ++it )
+  for ( it = incidences.begin(); it != incidences.end(); ++it ) {
     changeIncidenceDisplayAdded( *it );
+  }
 
   processSelectionChange();
 }
@@ -1123,21 +1165,23 @@ void KOMonthView::showGeneralContextMenu()
 
 void KOMonthView::setSelectedCell( MonthViewCell *cell )
 {
-  if ( mSelectedCell && cell != mSelectedCell )
+  if ( mSelectedCell && cell != mSelectedCell ) {
     mSelectedCell->deselect();
+  }
 
   mSelectedCell = cell;
 
-  if ( !mSelectedCell )
+  if ( !mSelectedCell ) {
     emit incidenceSelected( 0 );
-  else
+  } else {
     emit incidenceSelected( mSelectedCell->selectedIncidence() );
+  }
 }
 
 void KOMonthView::processSelectionChange()
 {
   Incidence::List incidences = selectedIncidences();
-  if (incidences.count() > 0) {
+  if ( incidences.count() > 0 ) {
     emit incidenceSelected( incidences.first() );
   } else {
     emit incidenceSelected( 0 );

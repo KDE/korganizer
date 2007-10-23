@@ -91,6 +91,9 @@ class KOViewManager : public QObject
     KOAgendaView *agendaView() const { return mAgendaView; }
     KOTodoView   *todoView() const { return mTodoView; }
 
+  signals:
+    void configChanged();
+
   public slots:
     void showWhatsNextView();
     void showListView();
@@ -101,7 +104,7 @@ class KOViewManager : public QObject
     void showNextXView();
     void showMonthView();
     void showTodoView();
-    void showTimelineView();
+    void showTimeLineView();
     void showTimeSpentView();
     void showJournalView();
 

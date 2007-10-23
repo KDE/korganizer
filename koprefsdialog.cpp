@@ -500,7 +500,7 @@ class KOPrefsDialogViews : public KPrefsModule
       generalLayout->addStretch( 1 );
 
       QFrame *agendaFrame = new QFrame( this );
-      tabWidget->addTab( agendaFrame, KIcon( "5days" ), i18n( "Agenda View" ) );
+      tabWidget->addTab( agendaFrame, KIcon( "view-calendar-workweek" ), i18n( "Agenda View" ) );
 
       QBoxLayout *agendaLayout = new QVBoxLayout( agendaFrame );
 
@@ -551,7 +551,7 @@ class KOPrefsDialogViews : public KPrefsModule
 
 
       QFrame *monthFrame = new QFrame( this );
-      tabWidget->addTab( monthFrame, KIcon( "month" ), i18n( "Month View" ) );
+      tabWidget->addTab( monthFrame, KIcon( "view-calendar-month" ), i18n( "Month View" ) );
 
       QBoxLayout *monthLayout = new QVBoxLayout( monthFrame );
 
@@ -570,7 +570,7 @@ class KOPrefsDialogViews : public KPrefsModule
       monthLayout->addStretch( 1 );
 
       QFrame *todoFrame = new QFrame( this );
-      tabWidget->addTab( todoFrame, KIcon( "todo" ), i18n( "Todo View" ) );
+      tabWidget->addTab( todoFrame, KIcon( "view-calendar-tasks" ), i18n( "Todo View" ) );
 
       QBoxLayout *todoLayout = new QVBoxLayout( todoFrame );
 

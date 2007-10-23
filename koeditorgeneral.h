@@ -103,6 +103,9 @@ class KOEditorGeneral : public QObject
     void editAlarms();
     void updateAlarmWidgets();
     void updateDefaultAlarmTime();
+    void toggleDescriptionBold();
+    void toggleDescriptionItalic();
+    void toggleDescriptionUnderline();
 
   signals:
     void openCategoryDialog();
@@ -125,7 +128,10 @@ class KOEditorGeneral : public QObject
     KComboBox               *mSecrecyCombo;
     QPushButton             *mCategoriesButton;
     KSqueezedTextLabel      *mCategoriesLabel;
-    QCheckBox               *mHtmlCheckBox;
+    QPushButton             *mDescriptionBoldButton;
+    QPushButton             *mDescriptionItalicButton;
+    QPushButton             *mDescriptionUnderlineButton;
+    bool                    mRichDescription;
 
     enum AlarmStackPages { SimpleAlarmPage, AdvancedAlarmLabel };
 

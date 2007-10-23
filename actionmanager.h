@@ -91,9 +91,9 @@ class KORGANIZER_EXPORT ActionManager : public QObject
       Create Calendar object based on local file and set it on the view.
     */
     void createCalendarLocal();
+
     /**
-      Create Calendar object based on the resource framework and set it on the
-      view.
+      Create Calendar object based on the resource framework and set it on the view.
     */
     void createCalendarResources();
 
@@ -114,58 +114,69 @@ class KORGANIZER_EXPORT ActionManager : public QObject
                     resource will be added, depending on the type of the url.
     */
     bool addResource( const KUrl &mUrl );
+
     /**
-      Open calendar file from URL. Merge into current calendar, if \a merge is
-      true.
+      Open calendar file from URL. Merge into current calendar, if \a merge is true.
         @param url The URL to open
         @param merge If true, the items from the url will be inserted into the
                      current calendar (default resource). Otherwise a new
                      resource is added for the given url.
     */
     bool openURL( const KUrl &url, bool merge = false );
+
     /** Save calendar file to URL of current calendar */
     bool saveURL();
+
     /** Save calendar file to URL */
     bool saveAsURL( const KUrl &kurl );
+
     /** Save calendar if it is modified by the user. Ask user what to do. */
     bool saveModifiedURL();
 
     void exportHTML();
     void exportHTML( HTMLExportSettings * );
+
   public:
     /** Get current URL */
     KUrl url() const { return mURL; }
 
     /** Is there a instance with this URL? */
-    static KOrg::MainWindow* findInstance( const KUrl &url );
+    static KOrg::MainWindow *findInstance( const KUrl &url );
+
     /** Open calendar file from URL */
     bool openURL( const QString &url );
+
     /** Open calendar file from URL */
     bool mergeURL( const QString &url );
+
     /** Save calendar file to URL */
     bool saveAsURL( const QString &url );
+
     /** Close calendar file opened from URL */
     void closeUrl();
+
     /** Get current URL as QString */
     QString getCurrentURLasString() const;
+
     /**
       Delete the incidence with the given unique id from current calendar.
       @param uid UID of the incidence to delete.
       @param force If true, all recurrences and sub-todos (if applicable) will be
                          deleted without prompting for confirmation.
     */
-    virtual bool deleteIncidence( const QString& uid, bool force = false );
+    virtual bool deleteIncidence( const QString &uid, bool force = false );
 
-    bool editIncidence( const QString& uid );
+    bool editIncidence( const QString &uid );
 
     /**
       Add an incidence to the active calendar.
       @param ical A calendar in iCalendar format containing the incidence.
     */
 
-    bool addIncidence( const QString& ical );
+    bool addIncidence( const QString &ical );
 
     bool showIncidence( const QString &uid );
+
     /**
       Show an incidence in context. This means showing the todo, agenda or
       journal view (as appropriate) and scrolling it to show the incidence.
@@ -175,61 +186,63 @@ class KORGANIZER_EXPORT ActionManager : public QObject
 
     //// Implementation of the DCOP interface
     struct ResourceRequestReply {
-        bool vCalInOK;
-        QString vCalOut;
-        bool vCalOutOK; bool isFree;
-        QDateTime start; QDateTime end;
+      bool vCalInOK;
+      QString vCalOut;
+      bool vCalOutOK;
+      bool isFree;
+      QDateTime start;
+      QDateTime end;
     };
 
   public slots:
-    virtual ResourceRequestReply resourceRequest( const QList<QPair<QDateTime, QDateTime> >& busy,
-                                                  const QByteArray& resource,
-                                                  const QString& vCalIn );
+    virtual ResourceRequestReply resourceRequest( const QList<QPair<QDateTime, QDateTime> > &busy,
+                                                  const QByteArray &resource,
+                                                  const QString &vCalIn );
 
-    void openEventEditor( const QString& );
-    void openEventEditor( const QString& summary,
-                          const QString& description,
-                          const QStringList& attachments );
-    void openEventEditor( const QString& summary,
-                          const QString& description,
-                          const QStringList& attachments,
-                          const QStringList& attendees );
-    void openEventEditor( const QString& summary,
-                          const QString& description,
-                          const QString& uri,
-                          const QString& file,
-                          const QStringList& attendees,
-                          const QString& attachmentMimetype );
+    void openEventEditor( const QString &);
+    void openEventEditor( const QString &summary,
+                          const QString &description,
+                          const QStringList &attachments );
+    void openEventEditor( const QString &summary,
+                          const QString &description,
+                          const QStringList &attachments,
+                          const QStringList &attendees );
+    void openEventEditor( const QString &summary,
+                          const QString &description,
+                          const QString &uri,
+                          const QString &file,
+                          const QStringList &attendees,
+                          const QString &attachmentMimetype );
 
-    void openTodoEditor( const QString& );
-    void openTodoEditor( const QString& summary,
-                         const QString& description,
-                         const QStringList& attachments );
-    void openTodoEditor( const QString& summary,
-                         const QString& description,
-                         const QStringList& attachments,
-                         const QStringList& attendees );
-    void openTodoEditor( const QString& summary,
-                         const QString& description,
-                         const QString& uri,
-                         const QString& file,
-                         const QStringList& attendees,
-                         const QString& attachmentMimetype );
+    void openTodoEditor( const QString &);
+    void openTodoEditor( const QString &summary,
+                         const QString &description,
+                         const QStringList &attachments );
+    void openTodoEditor( const QString &summary,
+                         const QString &description,
+                         const QStringList &attachments,
+                         const QStringList &attendees );
+    void openTodoEditor( const QString &summary,
+                         const QString &description,
+                         const QString &uri,
+                         const QString &file,
+                         const QStringList &attendees,
+                         const QString &attachmentMimetype );
 
-    void openJournalEditor( const QDate& date );
-    void openJournalEditor( const QString& text, const QDate& date );
-    void openJournalEditor( const QString& text );
+    void openJournalEditor( const QDate &date );
+    void openJournalEditor( const QString &text, const QDate &date );
+    void openJournalEditor( const QString &text );
    //TODO:
-   // void openJournalEditor( const QString& summary,
-   //                         const QString& description,
-   //                         const QStringList& attachments );
+   // void openJournalEditor( const QString &summary,
+   //                         const QString &description,
+   //                         const QStringList &attachments );
 
     void showJournalView();
     void showTodoView();
     void showEventView();
 
-    void goDate( const QDate& );
-    void goDate( const QString& );
+    void goDate( const QDate &);
+    void goDate( const QString &);
     void showDate( const QDate &date );
 
   public:
@@ -283,8 +296,8 @@ class KORGANIZER_EXPORT ActionManager : public QObject
     void writeSettings();
 
     /* Session management */
-    void saveProperties( KConfigGroup& );
-    void readProperties( const KConfigGroup& );
+    void saveProperties( KConfigGroup &);
+    void readProperties( const KConfigGroup &);
 
     void loadParts();
 
@@ -292,6 +305,7 @@ class KORGANIZER_EXPORT ActionManager : public QObject
 
   protected slots:
      void setItems( const QStringList & );
+
     /** open new window */
     void file_new();
 
@@ -403,12 +417,10 @@ class KORGANIZER_EXPORT ActionManager : public QObject
     KToggleAction *mTodoViewShowAction;
     KToggleAction *mResourceViewShowAction;
     KToggleAction *mEventViewerShowAction;
-//     KToggleAction *mToggleAlarmAction;
 
     QAction *mShowIncidenceAction;
     QAction *mEditIncidenceAction;
     QAction *mDeleteIncidenceAction;
-//     KAction *mAssignResourceAction;
 
     QAction *mCutAction;
     QAction *mCopyAction;

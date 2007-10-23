@@ -206,9 +206,10 @@ void KOrganizer::initActions()
   KStandardAction::keyBindings(this, SLOT(slotEditKeys()), actionCollection());
   KStandardAction::configureToolbars(this, SLOT(configureToolbars() ), actionCollection());
   KStandardAction::quit( this, SLOT( close() ), actionCollection() );
-  setAutoSaveSettings();
 
   createGUI( 0 );
+
+  setAutoSaveSettings();
 }
 
 void KOrganizer::slotEditKeys()

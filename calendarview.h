@@ -96,9 +96,8 @@ class KORGANIZER_EXPORT CalendarView : public KOrg::CalendarViewBase, public Cal
       Constructs a new calendar view widget.
       @param parent   parent window
     */
-    CalendarView( QWidget *parent = 0 );
+    CalendarView( QWidget *parent=0 );
     virtual ~CalendarView();
-
 
     class CalendarViewVisitor : public IncidenceBase::Visitor
     {
@@ -121,7 +120,6 @@ class KORGANIZER_EXPORT CalendarView : public KOrg::CalendarViewBase, public Cal
         bool visit( Journal *journal ) { return mView->deleteJournal( journal ); }
     };
 
-
     void setCalendar( Calendar * );
     Calendar *calendar();
 
@@ -135,12 +133,11 @@ class KORGANIZER_EXPORT CalendarView : public KOrg::CalendarViewBase, public Cal
     NavigatorBar *navigatorBar() const { return mNavigatorBar; }
     DateNavigator *dateNavigator() const { return mNavigator; }
 
-    KOIncidenceEditor *editorDialog( Incidence* ) const;
+    KOIncidenceEditor *editorDialog( Incidence *incidence ) const;
     IncidenceChangerBase *incidenceChanger() const { return mChanger; }
 
     QDate startDate();
     QDate endDate();
-
 
     void addView( KOrg::BaseView * );
     void showView( KOrg::BaseView * );
@@ -153,9 +150,11 @@ class KORGANIZER_EXPORT CalendarView : public KOrg::CalendarViewBase, public Cal
 
     /** currentSelection() returns a pointer to the incidence selected in the current view */
     Incidence *currentSelection();
+
     /** Return a pointer to the incidence selected in the current view. If there
         is no selection, return the selected todo from the todo list on the left */
     Incidence *selectedIncidence();
+
     /** Returns the name of the current filter */
     QString currentFilterName() const;
 
@@ -164,16 +163,20 @@ class KORGANIZER_EXPORT CalendarView : public KOrg::CalendarViewBase, public Cal
      *  and emit this signal which notifies all widgets which have registered
      *  for notification to update their settings. */
     void configChanged();
+
     /** Emitted when the categories were updated, and thus the categories editor
      *  dialog needs to reload the list of categories */
     void categoriesChanged();
+
     /** Emitted when the categories were edited by the user, and thus the views
      *  need to reload the list of categories */
     void categoryConfigChanged();
-    /** emitted when the topwidget is closing down, so that any attached
+
+    /** Emitted when the topwidget is closing down, so that any attached
         child windows can also close. */
     void closingDown();
-    /** emitted right before we die */
+
+    /** Emitted right before we die */
     void closed( QWidget * );
 
     /** Emitted when state of modified flag changes */
@@ -210,7 +213,6 @@ class KORGANIZER_EXPORT CalendarView : public KOrg::CalendarViewBase, public Cal
     */
     void cancelAttendees( Incidence * );
 
-
     /**
       Emitted, when clipboard content changes. Parameter indicates if paste
       is possible or not.
@@ -224,8 +226,8 @@ class KORGANIZER_EXPORT CalendarView : public KOrg::CalendarViewBase, public Cal
     /** Emitted when auto-archiving options were modified */
     void autoArchivingSettingsModified();
 
-    void newIncidenceChanger( IncidenceChangerBase* );
-    void exportHTML( HTMLExportSettings* );
+    void newIncidenceChanger( IncidenceChangerBase * );
+    void exportHTML( HTMLExportSettings * );
 
     void newFilterListSignal( const QStringList & );
     void selectFilterSignal( int );
@@ -234,11 +236,11 @@ class KORGANIZER_EXPORT CalendarView : public KOrg::CalendarViewBase, public Cal
   public slots:
     /** options dialog made a changed to the configuration. we catch this
      *  and notify all widgets which need to update their configuration. */
-    void updateConfig( const QByteArray& );
+    void updateConfig( const QByteArray & );
+
     /** Calendar configuration was changed, so refresh categories list
     */
     void updateCategories();
-
 
     /**
       Load calendar from file \a filename. If \a merge is true, load
@@ -249,7 +251,7 @@ class KORGANIZER_EXPORT CalendarView : public KOrg::CalendarViewBase, public Cal
                      current calendar (default resource or calendar file). If
                      false, the file is added as a new calendar resource.
     */
-    bool openCalendar( const QString &filename, bool merge = false );
+    bool openCalendar( const QString &filename, bool merge=false );
 
     /**
       Save calendar data to file. Return true if calendar could be
@@ -269,14 +271,15 @@ class KORGANIZER_EXPORT CalendarView : public KOrg::CalendarViewBase, public Cal
 
     void showIncidence();
     void editIncidence();
-    bool editIncidence( const QString& uid );
-    bool showIncidence( const QString& uid );
+    bool editIncidence( const QString &uid );
+    bool showIncidence( const QString &uid );
+
     /**
       Show an incidence in context. This means showing the todo, agenda or
       journal view (as appropriate) and scrolling it to show the incidence.
       @param uid Unique ID of the incidence to show.
     */
-    bool showIncidenceContext( const QString& uid );
+    bool showIncidenceContext( const QString &uid );
     void deleteIncidence();
 
     /**
@@ -294,87 +297,107 @@ class KORGANIZER_EXPORT CalendarView : public KOrg::CalendarViewBase, public Cal
     /** create new event without having a date hint. Takes current date as
      default hint. */
     void newEvent();
+
     /** create an editeventwin with supplied date/time, and if bool is true,
      * make the event take all day. */
     void newEvent( const QDate &startDt );
     void newEvent( const QDateTime &startDt );
-    void newEvent( const QDateTime &startDt, const QDateTime &EndDt, bool allDay = false );
+    void newEvent( const QDateTime &startDt, const QDateTime &EndDt, bool allDay=false );
+
     /**
       Create new Event from given summary, description, attachment list and
       attendees list
     */
-    void newEvent( const QString &summary, const QString &description = QString(),
-                   const QStringList &attachment = QStringList(), const QStringList &attendees = QStringList(),
-                   const QStringList &attachmentMimetypes = QStringList(), bool inlineAttachment = false );
+    void newEvent( const QString &summary, const QString &description=QString(),
+                   const QStringList &attachment=QStringList(),
+                   const QStringList &attendees=QStringList(),
+                   const QStringList &attachmentMimetypes=QStringList(),
+                   bool inlineAttachment=false );
     void newFloatingEvent();
 
-    /** Create a read-only viewer dialog for the supplied incidence. It calls the correct showXXX method*/
+    /** Create a read-only viewer dialog for the supplied incidence.
+        It calls the correct showXXX method */
     void showIncidence( Incidence * );
+
     /**
       Show an incidence in context. This means showing the todo, agenda or
       journal view (as appropriate) and scrolling it to show the incidence.
       @param incidence The incidence to show.
     */
     void showIncidenceContext( Incidence *incidence );
+
     /** Create an editor for the supplied incidence. It calls the correct editXXX method*/
     bool editIncidence( Incidence * );
+
     /**
       Delete the supplied incidence. It calls the correct deleteXXX method
       @param force If true, all recurrences and sub-todos (if applicable) will be
                    deleted without prompting for confirmation.
     */
-    void deleteIncidence( Incidence *, bool force = false );
+    void deleteIncidence( Incidence *, bool force=false );
+
     /**
       Cuts the selected incidence using the edit_cut() method
     */
     void cutIncidence( Incidence * );
+
     /**
       Copies the selected incidence using the edit_copy() method
     */
     void copyIncidence( Incidence *);
+
     /** Delete the supplied todo and all sub-todos */
     void deleteSubTodosIncidence ( Todo *todo );
+
     /**
       Delete the todo incidence, and its sub-to-dos.
       @param todo The todo to delete.
       @param force If true, all sub-todos will be deleted without prompting for confirmation.
     */
-    void deleteTodoIncidence ( Todo *todo, bool force = false );
+    void deleteTodoIncidence ( Todo *todo, bool force=false );
+
     /** Check if deleting the supplied event is allowed. */
     bool deleteEvent( Event * ) { return true; }
+
     /** Check if deleting the todo is allowed */
     bool deleteTodo( Todo * ) {return true; }
+
     /** Check if deleting the supplied journal is allowed. */
     bool deleteJournal( Journal * ) { return true; }
+
     /**
       Delete the incidence with the given unique ID. Returns false, if event wasn't found.
       @param uid The UID of the incidence to delete.
       @param force If true, all recurrences and sub-todos (if applicable) will be
                    deleted without prompting for confirmation.
     */
-    bool deleteIncidence( const QString &uid, bool force = false );
+    bool deleteIncidence( const QString &uid, bool force=false );
 
     /** create new todo */
     void newTodo();
+
     /** create new todo, due on date */
     void newTodo( const QDate &date );
+
     /** create new todo with a parent todo */
     void newSubTodo();
+
     /** create new todo with a parent todo */
     void newSubTodo( Todo * );
 
-    void newTodo( const QString &summary, const QString &description = QString(),
-                  const QStringList &attachments = QStringList(), const QStringList &attendees = QStringList(),
-                  const QStringList &attachmentMimetypes = QStringList(), bool inlineAttachment = false );
+    void newTodo( const QString &summary, const QString &description=QString(),
+                  const QStringList &attachments=QStringList(),
+                  const QStringList &attendees=QStringList(),
+                  const QStringList &attachmentMimetypes=QStringList(),
+                  bool inlineAttachment=false );
 
     void newJournal();
     void newJournal( const QDate &date );
-    void newJournal( const QString &text, const QDate &date = QDate() );
+    void newJournal( const QString &text, const QDate &date=QDate() );
 
     void toggleAlarm( Incidence * );
     void dissociateOccurrence( Incidence *, const QDate & );
     void dissociateFutureOccurrence( Incidence *, const QDate & );
-
 
     /**
       Check if clipboard contains vCalendar event. The signal pasteEnabled() is
@@ -453,18 +476,22 @@ class KORGANIZER_EXPORT CalendarView : public KOrg::CalendarViewBase, public Cal
      * currently in the View, called currIds.
      */
     void appointment_edit();
+
     /**
      * pop up dialog confirming deletion of currently selected event in the
      * View.
      */
     void appointment_delete();
 
-    /* frees a subtodo from it's relation, update the view */
+    /** Frees a subtodo from it's relation, update the view */
     void todo_unsub();
-    /* Free a subtodo from it's relation, without update the view */
+
+    /** Free a subtodo from it's relation, without update the view */
     bool todo_unsub( Todo *todo );
+
     /** Make all sub-to-dos of todo independents, update the view*/
     bool makeSubTodosIndependents ( );
+
     /** Make all sub-to-dos of todo independents, not update the view*/
     bool makeSubTodosIndependents ( Todo *todo );
 
@@ -476,31 +503,33 @@ class KORGANIZER_EXPORT CalendarView : public KOrg::CalendarViewBase, public Cal
 
     /** query whether or not the calendar is "dirty". */
     bool isModified();
+
     /** set the state of calendar. Modified means "dirty", i.e. needing a save.
         @param modified Whether the calendar has been modified
     */
-    void setModified( bool modified = true );
+    void setModified( bool modified=true );
 
     /** query if the calendar is read-only. */
     bool isReadOnly();
+
     /** set state of calendar to read-only
         @param readOnly whether the calendar view should be set read-only or not
     */
-    void setReadOnly( bool readOnly = true );
+    void setReadOnly( bool readOnly=true );
 
     void eventUpdated( Incidence * );
 
     /* iTIP scheduling actions */
-    void schedule_publish( Incidence *incidence = 0 );
-    void schedule_request( Incidence *incidence = 0 );
-    void schedule_refresh( Incidence *incidence = 0 );
-    void schedule_cancel( Incidence *incidence = 0 );
-    void schedule_add( Incidence *incidence = 0 );
-    void schedule_reply( Incidence *incidence = 0 );
-    void schedule_counter( Incidence *incidence = 0 );
-    void schedule_declinecounter( Incidence *incidence = 0 );
-    void schedule_forward( Incidence *incidence = 0 );
-    void mailFreeBusy( int daysToPublish = 30 );
+    void schedule_publish( Incidence *incidence=0 );
+    void schedule_request( Incidence *incidence=0 );
+    void schedule_refresh( Incidence *incidence=0 );
+    void schedule_cancel( Incidence *incidence=0 );
+    void schedule_add( Incidence *incidence=0 );
+    void schedule_reply( Incidence *incidence=0 );
+    void schedule_counter( Incidence *incidence=0 );
+    void schedule_declinecounter( Incidence *incidence=0 );
+    void schedule_forward( Incidence *incidence=0 );
+    void mailFreeBusy( int daysToPublish=30 );
     void uploadFreeBusy();
 
     void openAddressbook();
@@ -516,7 +545,7 @@ class KORGANIZER_EXPORT CalendarView : public KOrg::CalendarViewBase, public Cal
     void showEventViewer( bool );
 
     /** Move the current view date to the specified date */
-    void goDate( const QDate& date );
+    void goDate( const QDate &date );
 
     /** Show the given date without changing date selection length. */
     void showDate( const QDate &date );
@@ -530,8 +559,7 @@ class KORGANIZER_EXPORT CalendarView : public KOrg::CalendarViewBase, public Cal
     /** Move to the previous date(s) in the current view */
     void goPrevious();
 
-    void toggleExpand();
-    void showLeftFrame( bool show = true );
+    void showLeftFrame( bool show=true );
 
     void dialogClosing( Incidence * );
 
@@ -551,6 +579,7 @@ class KORGANIZER_EXPORT CalendarView : public KOrg::CalendarViewBase, public Cal
     void addIncidenceOn( Incidence *, const QDate & );
     void moveIncidenceTo( Incidence *, const QDate & );
     void filterActivated( int filterNum );
+
   protected slots:
     /** Select a view or adapt the current view to display the specified dates. */
     void showDates( const KCal::DateList & );
@@ -581,8 +610,9 @@ class KORGANIZER_EXPORT CalendarView : public KOrg::CalendarViewBase, public Cal
         defaults, if invalid values are given) and allow the view to adjust the
         type. */
     void dateTimesForNewEvent( QDateTime &startDt, QDateTime &endDt, bool &allDay );
-    KOEventEditor *newEventEditor( const QDateTime &startDtParam = QDateTime(),
-         const QDateTime &endDtParam = QDateTime() , bool allDayParam = false );
+    KOEventEditor *newEventEditor( const QDateTime &startDtParam=QDateTime(),
+                                   const QDateTime &endDtParam=QDateTime(),
+                                   bool allDayParam=false );
 
   private:
     void init();
@@ -593,21 +623,20 @@ class KORGANIZER_EXPORT CalendarView : public KOrg::CalendarViewBase, public Cal
     // Helper function for purgeCompleted that recursively purges a todo and
     // its subitems. If it cannot delete a completed todo (because it has
     // uncompleted subitems), notAllPurged is set to true.
-    bool purgeCompletedSubTodos( Todo* todo, bool &notAllPurged );
+    bool purgeCompletedSubTodos( Todo *todo, bool &notAllPurged );
 
     KOrg::History *mHistory;
 
     CalPrinter *mCalPrinter;
 
-    QSplitter    *mPanner;
-    QSplitter    *mLeftSplitter;
-    QWidget      *mLeftFrame;
+    QSplitter *mPanner;
+    QSplitter *mLeftSplitter;
+    QWidget *mLeftFrame;
     QStackedWidget *mRightFrame;
 
     NavigatorBar *mNavigatorBar;
 
     DateNavigatorContainer *mDateNavigator;
-
 
     QList<CalendarViewExtension*> mExtensions;
 
@@ -626,8 +655,8 @@ class KORGANIZER_EXPORT CalendarView : public KOrg::CalendarViewBase, public Cal
     CalFilter *mCurrentFilter;
 
     // various housekeeping variables.
-    bool            mModified; // flag indicating if calendar is modified
-    bool            mReadOnly; // flag indicating if calendar is read-only
+    bool  mModified; // flag indicating if calendar is modified
+    bool  mReadOnly; // flag indicating if calendar is read-only
     QDate mSaveSingleDate;
 
     Incidence *mSelectedIncidence;
@@ -637,8 +666,5 @@ class KORGANIZER_EXPORT CalendarView : public KOrg::CalendarViewBase, public Cal
 
     KOrg::IncidenceChangerBase *mChanger;
 };
-
-
-
 
 #endif

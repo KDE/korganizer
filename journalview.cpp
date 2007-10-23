@@ -42,12 +42,12 @@
 #include <kdialog.h>
 #include <kglobal.h>
 #include <klocale.h>
-#include <ktextedit.h>
 #include <ktimeedit.h>
 #include <klineedit.h>
 #include <kstandardguiitem.h>
 #include <kmessagebox.h>
 #include <kvbox.h>
+#include <KTextBrowser>
 
 #include <QLabel>
 #include <QLayout>
@@ -169,12 +169,9 @@ JournalView::JournalView( Journal* j, QWidget *parent ) :
   mLayout->setSpacing( KDialog::spacingHint() );
   mLayout->setMargin( KDialog::marginHint() );
 
-  mEditor = new KTextEdit(this);
-  mEditor->installEventFilter(this);
-  mEditor->setTextInteractionFlags( Qt::TextSelectableByMouse |
-                                    Qt::TextSelectableByKeyboard );
-  mEditor->setFrameStyle( QFrame::StyledPanel );
-  mLayout->addWidget( mEditor, 0, 0, 1, 3 );
+  mBrowser = new KTextBrowser(this);
+  mBrowser->setFrameStyle( QFrame::StyledPanel );
+  mLayout->addWidget( mBrowser, 0, 0, 1, 3 );
 
   mEditButton = new QPushButton( this );
   mEditButton->setObjectName( "editButton" );
@@ -201,7 +198,7 @@ JournalView::JournalView( Journal* j, QWidget *parent ) :
   mPrintButton = new QPushButton( this );
   mPrintButton->setText( i18n("&Print") );
   mPrintButton->setObjectName( "printButton" );
-  mPrintButton->setIcon( KOGlobals::self()->smallIcon( "printer1" ) );
+  mPrintButton->setIcon( KOGlobals::self()->smallIcon( "printer" ) );
   mPrintButton->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
   mPrintButton->setToolTip( i18n("Print this journal entry") );
   mPrintButton->setWhatsThis( i18n("Opens a print dialog for this journal entry") );
@@ -288,13 +285,14 @@ bool JournalView::eventFilter( QObject *o, QEvent *e )
   return QWidget::eventFilter( o, e );    // standard event processing
 }
 
-
 void JournalView::readJournal( Journal *j )
 {
+  int baseFontSize = KGlobalSettings::generalFont().pointSize();
   mJournal = j;
-  mEditor->clear();
-  QTextCursor cursor = QTextCursor( mEditor->textCursor() );
+  mBrowser->clear();
+  QTextCursor cursor = QTextCursor( mBrowser->textCursor() );
   cursor.movePosition( QTextCursor::Start );
+
   QTextBlockFormat bodyBlock = QTextBlockFormat( cursor.blockFormat() );
   //FIXME: Do padding
   bodyBlock.setTextIndent( 2 );
@@ -302,27 +300,28 @@ void JournalView::readJournal( Journal *j )
   if ( !mJournal->summary().isEmpty() ) {
     QTextCharFormat titleFormat = bodyFormat;
     titleFormat.setFontWeight( QFont::Bold );
-    // FIXME: Is there a way to just make this +4?
-    titleFormat.setFontPointSize( 14 );
+    titleFormat.setFontPointSize( baseFontSize + 4 );
     cursor.insertText( mJournal->summary(), titleFormat );
     cursor.insertBlock();
   }
+  QTextCharFormat dateFormat = bodyFormat;
+  dateFormat.setFontWeight( QFont::Bold );
+  dateFormat.setFontPointSize( baseFontSize + 1 );
   if ( !mJournal->allDay() ) {
-    QTextCharFormat dateFormat = bodyFormat;
-    dateFormat.setFontWeight( QFont::Bold );
-    // FIXME: Is there a way to just make this +2?
-    dateFormat.setFontPointSize( 11 );
     cursor.insertText( mJournal->dtStartStr(), dateFormat );
-    cursor.insertBlock();
   }
+  else {
+    cursor.insertText( mJournal->dtStartDateStr(), dateFormat );
+  }
+  cursor.insertBlock();
+  cursor.insertBlock();
   cursor.setBlockCharFormat( bodyFormat );
   if ( mJournal->descriptionIsRich() ) {
     QString description = mJournal->description();
-    description.replace ( '\n', "<br/>" );
-    mEditor->insertHtml( description );
+    mBrowser->insertHtml( description );
   }
   else {
-    mEditor->insertPlainText( mJournal->description() );
+    mBrowser->insertPlainText( mJournal->description() );
   }
   cursor.insertBlock();
   setReadOnly( mJournal->isReadOnly() );

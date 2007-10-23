@@ -81,7 +81,8 @@ class KORG_STDPRINTING_EXPORT CalPrinter : public QObject, public KOrg::CalPrint
     void updateConfig();
 
   private Q_SLOTS:
-    void doPrint( KOrg::PrintPlugin *selectedStyle, CalPrinter::ePrintOrientation dlgorientation, bool preview = false );
+    void doPrint( KOrg::PrintPlugin *selectedStyle,
+                  ePrintOrientation dlgorientation, bool preview = false );
 
   public:
     void print( int type, const QDate &fd, const QDate &td,

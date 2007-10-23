@@ -658,7 +658,7 @@ static void conditionalPaint( QPainter *p, bool condition, int &x, int ft,
 void KOAgendaItem::paintTodoIcon( QPainter *p, int &x, int ft )
 {
   if ( !mIncidence ) return;
-  static const QPixmap todoPxmp = KOGlobals::self()->smallIcon("todo");
+  static const QPixmap todoPxmp = KOGlobals::self()->smallIcon("view-calendar-tasks");
   static const QPixmap completedPxmp = KOGlobals::self()->smallIcon("checkedbox");
 
   if ( mIncidence->type() != "Todo" ) return;
@@ -705,7 +705,18 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
     organizerPxmp      = new QPixmap( KOGlobals::self()->smallIcon("organizer") );
   }
 
-  QColor bgColor = KOPrefs::instance()->agendaCalendarItemsEventsBackgroundColor();
+  QColor bgColor;
+  
+  QStringList categories = mIncidence->categories();
+  if ( categories.isEmpty() ) {
+    bgColor = KOPrefs::instance()->agendaCalendarItemsEventsBackgroundColor();
+    if ( !bgColor.isValid() ) {
+      bgColor = KOPrefs::instance()->agendaCalendarItemsBackgroundColor();
+    }
+  } else {
+    bgColor = KOPrefs::instance()->categoryColor( categories.first() );
+  }
+
   if ( mIncidence->type() == "Todo" ) {
     if ( static_cast<Todo*>(mIncidence)->isOverdue() )
       bgColor = KOPrefs::instance()->agendaCalendarItemsToDosOverdueBackgroundColor();
@@ -714,16 +725,6 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
       bgColor = KOPrefs::instance()->agendaCalendarItemsToDosDueTodayBackgroundColor();
   }
 
-  if ( !bgColor.isValid() ) {
-    kDebug() <<"invalid bgColor:" << bgColor.name();
-    QStringList categories = mIncidence->categories();
-    QString cat;
-    if ( !categories.isEmpty() ) cat = categories.first();
-    if (cat.isEmpty())
-      bgColor = KOPrefs::instance()->agendaCalendarItemsBackgroundColor();
-    else
-      bgColor = KOPrefs::instance()->categoryColor(cat);
-  }
   QColor frameColor;
   if ( KOPrefs::instance()->agendaViewUsesResourceColor()
     && mResourceColor.isValid() ) {
@@ -986,4 +987,14 @@ void KOAgendaItem::drawRoundedRect( QPainter *p, const QRect& rect,
   p->drawPath( path );
   p->setPen( oldPen );
   p->setBrush( oldBrush );
+}
+
+bool KOAgendaItem::event( QEvent *event )
+{
+  if ( event->type() == QEvent::ToolTip ) {
+    if( !KOPrefs::instance()->mEnableToolTips) {
+      return true;
+    }
+  }
+  return QWidget::event( event );
 }

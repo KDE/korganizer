@@ -79,12 +79,14 @@ using namespace KPIM;
 #include <QSplitter>
 #include <QApplication>
 #include <QMimeData>
+#include <QToolTip>
 
 #include "kotodoview.moc"
 
 KOTodoListViewToolTip::KOTodoListViewToolTip (QWidget* parent,
                                               KOTodoListView* lv )
 {
+  mParent = parent;
   todolist=lv;
 }
 
@@ -108,16 +110,11 @@ void KOTodoListViewToolTip::maybeTip( const QPoint & pos)
     /* Show the tip */
     QString tipText( IncidenceFormatter::toolTipString( i->todo() ) );;
     if ( !tipText.isEmpty() ) {
-#ifdef __GNUC__
-#warning port QToolTip usage
-#endif
-      // tip(r, tipText);
+      QToolTip::showText( pos, tipText, mParent, r );
     }
   }
 
 }
-
-
 
 KOTodoListView::KOTodoListView( QWidget *parent )
   : K3ListView( parent ), mCalendar( 0 ), mChanger( 0 )
@@ -514,7 +511,7 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent)
   action = mItemPopupMenu->addAction(i18n("&Edit..."), this, SLOT (editTodo()) );
   mActionsOnSelection.append( action );
 #ifndef KORG_NOPRINTER
-  action = mItemPopupMenu->addAction(KOGlobals::self()->smallIcon("printer1"), i18n("&Print..."), this, SLOT( printTodo() ) );
+  action = mItemPopupMenu->addAction(KOGlobals::self()->smallIcon("document-print"), i18n("&Print..."), this, SLOT( printTodo() ) );
   mActionsOnSelection.append( action );
 #endif
   action = mItemPopupMenu->addAction(KOGlobals::self()->smallIconSet("edit-delete"), i18n("&Delete"), this,
@@ -523,7 +520,7 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent)
 
   mItemPopupMenu->addSeparator();
 
-  mItemPopupMenu->addAction(KOGlobals::self()->smallIconSet("todo"), i18n("New &To-do..."), this,
+  mItemPopupMenu->addAction(KOGlobals::self()->smallIconSet("view-calendar-tasks"), i18n("New &To-do..."), this,
                              SLOT (newTodo()));
   action = mItemPopupMenu->addAction(i18n("New Su&b-to-do..."), this, SLOT (newSubTodo()));
   mActionsOnSelection.append( action );
@@ -560,7 +557,7 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent)
            mItemPopupMenu, SLOT( hide() ) );
 
   mPopupMenu = new QMenu(this);
-  mPopupMenu->addAction(KOGlobals::self()->smallIconSet("todo"), i18n("&New To-do..."), this,
+  mPopupMenu->addAction(KOGlobals::self()->smallIconSet("view-calendar-tasks"), i18n("&New To-do..."), this,
                          SLOT (newTodo()));
   mPopupMenu->addAction(i18nc("delete completed to-dos","&Purge Completed"),
                          this, SLOT(purgeCompleted()));

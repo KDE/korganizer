@@ -51,7 +51,6 @@ void ActiveLabel::mouseReleaseEvent( QMouseEvent * )
   emit clicked();
 }
 
-
 NavigatorBar::NavigatorBar( QWidget *parent )
   : QWidget( parent ), mHasMinWidth( false )
 {
@@ -61,39 +60,28 @@ NavigatorBar::NavigatorBar( QWidget *parent )
 
   bool isRTL = KOGlobals::self()->reverseLayout();
 
-  QIcon pix;
-  // Create backward navigation buttons
-  mPrevYear = new QPushButton( this );
-  pix = KOGlobals::self()->smallIconSet( isRTL ? "arrow-right-double" : "arrow-left-double" );
-  mPrevYear->setIcon( pix );
-  mPrevYear->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
-  mPrevYear->setToolTip( i18n("Previous year") );
+  mPrevYear = createNavigationButton(
+    isRTL ? "arrow-right-double" : "arrow-left-double",
+    i18n("Scroll backward to the previous year") );
 
-  pix = KOGlobals::self()->smallIconSet( isRTL ? "arrow-right" : "arrow-left");
-  mPrevMonth = new QPushButton( this );
-  mPrevMonth->setIcon( pix );
-  mPrevMonth->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
-  mPrevMonth->setToolTip( i18n("Previous month") );
+  mPrevMonth = createNavigationButton(
+    isRTL ? "arrow-right" : "arrow-left",
+    i18n( "Scroll backward to the previous month" ) );
 
-  // Create forward navigation buttons
-  pix = KOGlobals::self()->smallIconSet( isRTL ? "arrow-left" : "arrow-right");
-  mNextMonth = new QPushButton( this );
-  mNextMonth->setIcon( pix );
-  mNextMonth->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
-  mNextMonth->setToolTip( i18n("Next month") );
+  mNextMonth = createNavigationButton(
+    isRTL ? "arrow-left" : "arrow-right",
+    i18n( "Scroll forward to the next month" ) );
 
-  pix = KOGlobals::self()->smallIconSet( isRTL ? "arrow-left-double" : "arrow-right-double");
-  mNextYear = new QPushButton( this );
-  mNextYear->setIcon( pix );
-  mNextYear->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
-  mNextYear->setToolTip( i18n("Next year") );
+  mNextYear = createNavigationButton(
+    isRTL ? "arrow-left-double" : "arrow-right-double",
+    i18n( "Scroll forward to the next year" ) );
 
   // Create month name button
   mMonth = new ActiveLabel( this );
   mMonth->setFont( tfont );
   mMonth->setAlignment( Qt::AlignCenter );
   mMonth->setMinimumHeight( mPrevYear->sizeHint().height() );
-  mMonth->setToolTip( i18n("Select a month") );
+  mMonth->setToolTip( i18n( "Select a month" ) );
 
   // set up control frame layout
   QBoxLayout *ctrlLayout = new QHBoxLayout( this );
@@ -148,10 +136,12 @@ void NavigatorBar::selectDates( const KCal::DateList &dateList )
       int i;
       int maxwidth = 0;
 
-      for( i = 1; i <= calSys->monthsInYear( mDate ); ++i ) {
-        int w = QFontMetrics( mMonth->font() ).width( QString("%1 8888")
-            .arg( calSys->monthName( i, calSys->year( mDate ) ) ) );
-        if ( w > maxwidth ) maxwidth = w;
+      for ( i = 1; i <= calSys->monthsInYear( mDate ); ++i ) {
+        QString m = calSys->monthName( i, calSys->year( mDate ) );
+        int w = QFontMetrics( mMonth->font() ).width( QString( "%1 8888" ).arg( m ) );
+        if ( w > maxwidth ) {
+          maxwidth = w;
+        }
       }
       mMonth->setMinimumWidth( maxwidth );
 
@@ -159,17 +149,9 @@ void NavigatorBar::selectDates( const KCal::DateList &dateList )
     }
 
     // compute the labels at the top of the navigator
-    mMonth->setText( i18nc( "monthname year", "%1 %2" ,
-                       calSys->monthName( mDate ) ,
-                       calSys->year( mDate ) ) );
-    QDate switchDate = mDate.addYears( -1 );
-    mPrevYear->setToolTip( calSys->yearString( switchDate ) );
-    switchDate = mDate.addMonths( -1 );
-    mPrevMonth->setToolTip( calSys->monthName( switchDate ) );
-    switchDate = mDate.addMonths( 1 );
-    mNextMonth->setToolTip( calSys->monthName( switchDate ) );
-    switchDate = mDate.addYears( 1 );
-    mNextYear->setToolTip( calSys->yearString( switchDate ) );
+    mMonth->setText( i18nc( "monthname year", "%1 %2",
+                            calSys->monthName( mDate ),
+                            calSys->yearString( mDate ) ) );
   }
 }
 
@@ -182,21 +164,35 @@ void NavigatorBar::selectMonth()
 
   Q3PopupMenu *popup = new Q3PopupMenu( mMonth );
 
-  for ( i = 1; i <= months; i++ )
+  for ( i = 1; i <= months; i++ ) {
     popup->insertItem( calSys->monthName( i, calSys->year( mDate ) ), i );
-
-  popup->setActiveItem( calSys->month( mDate ) - 1 );
-  popup->setMinimumWidth( mMonth->width() );
-
-  if ( ( month = popup->exec( mMonth->mapToGlobal( QPoint( 0, 0 ) ),
-                              calSys->month( mDate ) - 1 ) ) == -1 ) {
-    delete popup;
-    return;  // canceled
   }
+  popup->setActiveItem( calSys->month( mDate ) );
 
-  emit goMonth( month );
+  month = popup->exec( mMonth->mapToGlobal( QPoint( 0, 0 ) ), calSys->month( mDate ) - 1 );
 
   delete popup;
+  if ( month >= 0 ) {
+    emit goMonth( month );
+  }
+}
+
+QPushButton *NavigatorBar::createNavigationButton( const QString &icon,
+  const QString &toolTip )
+{
+  QPushButton *button = new QPushButton( this );
+
+  button->setIcon( KOGlobals::self()->smallIconSet( icon ) );
+
+  // By the default the button has a very wide minimum size (for whatever
+  // reasons). Override this, so that the date navigator doesn't need to be
+  // so wide anymore. The minimum size is dominated by the other elements of the
+  // date navigator then.
+  button->setMinimumSize( 10, 10 );
+
+  button->setToolTip( toolTip );
+
+  return button;
 }
 
 #include "navigatorbar.moc"

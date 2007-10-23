@@ -80,8 +80,8 @@ class KOEditorGeneralEvent : public KOEditorGeneral
     void setDuration();
 
   protected slots:
-    void timeStuffDisable( bool disable );
-    void associateTime( bool time );
+    void setTimeEditorsEnabled( bool enabled );
+    void slotHasTimeCheckboxToggled( bool checked );
 
     void startTimeChanged( QTime );
     void startDateChanged( const QDate& );
@@ -106,7 +106,7 @@ class KOEditorGeneralEvent : public KOEditorGeneral
     KPIM::KTimeEdit         *mStartTimeEdit;
     KPIM::KTimeEdit         *mEndTimeEdit;
     QLabel                  *mDurationLabel;
-    QCheckBox               *mAlldayEventCheckbox;
+    QCheckBox               *mHasTimeCheckbox;
     KComboBox               *mFreeTimeCombo;
     KPIM::KTimeZoneComboBox *mTimeZoneComboStart;
     KPIM::KTimeZoneComboBox *mTimeZoneComboEnd;

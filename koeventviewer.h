@@ -31,8 +31,8 @@
 #include <ktextbrowser.h>
 
 namespace KCal {
-class Incidence;
-class Event;
+  class Incidence;
+  class Event;
 }
 using namespace KCal;
 
@@ -55,8 +55,8 @@ class KORGANIZER_EVENTVIEWER_EXPORT KOEventViewer : public KTextBrowser
 
     /**
       Clear viewer.
-        @param now If set to true delete view immediately. If set to
-                   false delete it with next call to appendIncidence().
+      @param now Delete view immediately if set; else delete it with the
+      next call to appendIncidence().
     */
     void clearEvents( bool now = false );
 
@@ -66,13 +66,12 @@ class KORGANIZER_EVENTVIEWER_EXPORT KOEventViewer : public KTextBrowser
     void addText( const QString &text );
 
     /**
-      Set the default text that is showed when
-      there aren't a incidence to show
+      Set the default text when there isn't an incidence to display.
     */
     void setDefaultText( const QString &text );
 
-    void readSettings( KConfig *config);
-    void writeSettings ( KConfig *config);
+    void readSettings( KConfig *config );
+    void writeSettings ( KConfig *config );
 
   public slots:
     /**
@@ -81,6 +80,7 @@ class KORGANIZER_EVENTVIEWER_EXPORT KOEventViewer : public KTextBrowser
     virtual void setIncidence( Incidence * );
     void changeIncidenceDisplay( Incidence *incidence, int action );
     virtual void editIncidence();
+
     /**
       Show the incidence in context. That means showing the todo, agenda or
       journal view and scrolling to show it.

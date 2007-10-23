@@ -26,14 +26,14 @@
 #include <calendar/plugin.h>
 #include <kcal/incidence.h>
 
-#include <kprinter.h>
 
 #include <QtCore/QDateTime>
 #include <QtCore/QList>
+#include <QtGui/QPrinter>
 #include <QtGui/QWidget>
 
 namespace KCal {
-class Calendar;
+  class Calendar;
 }
 
 namespace KOrg {
@@ -110,7 +110,7 @@ class PrintPlugin : public KOrg::Plugin
     /**
       Actually do the printing.
     */
-    virtual void doPrint( KPrinter *printer ) = 0;
+    virtual void doPrint( QPrinter *printer ) = 0;
 
     /**
       Orientation of printout. Default is Portrait. If your plugin wants
@@ -118,7 +118,7 @@ class PrintPlugin : public KOrg::Plugin
       config settings), implement this function in your subclass and
       return the desired orientation.
     */
-    virtual KPrinter::Orientation defaultOrientation() { return KPrinter::Portrait; }
+    virtual QPrinter::Orientation defaultOrientation() { return QPrinter::Portrait; }
 
     /**
       Load complete config.
@@ -158,7 +158,7 @@ class PrintPlugin : public KOrg::Plugin
     KOrg::CoreHelper *mCoreHelper;
     /** The printer object. This will only be available in the doPrint method
         of the selected plugin */
-    KPrinter *mPrinter;
+    QPrinter *mPrinter;
     KCal::Calendar *mCalendar;
     KCal::Incidence::List mSelectedIncidences;
     KConfig *mConfig;

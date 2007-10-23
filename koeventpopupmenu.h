@@ -62,6 +62,7 @@ class KOEventPopupMenu : public QMenu {
     void forward();
 
   signals:
+    void configChanged();
     void editIncidenceSignal(Incidence *);
     void showIncidenceSignal(Incidence *);
     void deleteIncidenceSignal(Incidence *);
