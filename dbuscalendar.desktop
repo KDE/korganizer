@@ -4,6 +4,7 @@ Name[ga]=Féilire DBUS
 Name[pt]=Calendário DBUS
 Name[pt_BR]=Calendário DBUS
 Name[sv]=DBus-kalender
+Name[x-test]=xxDBUSCalendarxx
 Name[zh_TW]=DBUS行事曆
 Type=ServiceType
 X-KDE-ServiceType=DBUS/Organizer
