@@ -96,7 +96,7 @@ void CalPrintIncidence::setSettingsWidget()
 void CalPrintIncidence::loadConfig()
 {
   if ( mConfig ) {
-    KConfigGroup grp( mConfig, mConfig->group() );
+    KConfigGroup grp( mConfig, "General" );
     mUseColors = grp.readEntry( "Use Colors", false );
     mShowOptions = grp.readEntry( "Show Options", false );
     mShowSubitemsNotes = grp.readEntry( "Show Subitems and Notes", false );
@@ -110,7 +110,7 @@ void CalPrintIncidence::saveConfig()
 {
   readSettingsWidget();
   if ( mConfig ) {
-    KConfigGroup grp( mConfig, mConfig->group() );
+    KConfigGroup grp( mConfig, "General" );
     grp.writeEntry( "Use Colors", mUseColors );
     grp.writeEntry( "Show Options", mShowOptions );
     grp.writeEntry( "Show Subitems and Notes", mShowSubitemsNotes );
@@ -555,7 +555,7 @@ void CalPrintDay::setSettingsWidget()
 void CalPrintDay::loadConfig()
 {
   if ( mConfig ) {
-    KConfigGroup grp( mConfig, mConfig->group() );
+    KConfigGroup grp( mConfig, "General" );
     QDate dt;
     QTime tm1( dayStart() );
     QDateTime startTm( dt, tm1 );
@@ -572,7 +572,7 @@ void CalPrintDay::saveConfig()
 {
   readSettingsWidget();
   if ( mConfig ) {
-    KConfigGroup grp( mConfig, mConfig->group() );
+    KConfigGroup grp( mConfig, "General" );
     grp.writeEntry( "Start time", QDateTime( QDate(), mStartTime ) );
     grp.writeEntry( "End time", QDateTime( QDate(), mEndTime ) );
     grp.writeEntry( "Include todos", mIncludeTodos );
@@ -704,7 +704,7 @@ void CalPrintWeek::setSettingsWidget()
 void CalPrintWeek::loadConfig()
 {
   if ( mConfig ) {
-    KConfigGroup grp( mConfig, mConfig->group() );
+    KConfigGroup grp( mConfig, "General" );
     QDate dt;
     QTime tm1( dayStart() );
     QDateTime startTm( dt, tm1 );
@@ -721,7 +721,7 @@ void CalPrintWeek::saveConfig()
 {
   readSettingsWidget();
   if ( mConfig ) {
-    KConfigGroup grp( mConfig, mConfig->group() );
+    KConfigGroup grp( mConfig, "General" );
     grp.writeEntry( "Start time", QDateTime( QDate(), mStartTime ) );
     grp.writeEntry( "End time", QDateTime( QDate(), mEndTime ) );
     grp.writeEntry( "Include todos", mIncludeTodos );
@@ -893,7 +893,7 @@ void CalPrintMonth::setSettingsWidget()
 void CalPrintMonth::loadConfig()
 {
   if ( mConfig ) {
-    KConfigGroup grp( mConfig, mConfig->group() );
+    KConfigGroup grp( mConfig, "General" );
     mWeekNumbers = grp.readEntry( "Print week numbers", true );
     mRecurDaily = grp.readEntry( "Print daily incidences", true );
     mRecurWeekly = grp.readEntry( "Print weekly incidences", true );
@@ -906,7 +906,7 @@ void CalPrintMonth::saveConfig()
 {
   readSettingsWidget();
   if ( mConfig ) {
-    KConfigGroup grp( mConfig, mConfig->group() );
+    KConfigGroup grp( mConfig, "General" );
     grp.writeEntry( "Print week numbers", mWeekNumbers );
     grp.writeEntry( "Print daily incidences", mRecurDaily );
     grp.writeEntry( "Print weekly incidences", mRecurWeekly );
@@ -1068,7 +1068,7 @@ void CalPrintTodos::setSettingsWidget()
 void CalPrintTodos::loadConfig()
 {
   if ( mConfig ) {
-    KConfigGroup grp( mConfig, mConfig->group() );
+    KConfigGroup grp( mConfig, "General" );
     mPageTitle = grp.readEntry( "Page title", i18n( "To-do list" ) );
     mTodoPrintType = (eTodoPrintType)grp.readEntry( "Print type", (int)TodosAll );
     mIncludeDescription = grp.readEntry( "Include description", true );
@@ -1089,7 +1089,7 @@ void CalPrintTodos::saveConfig()
 {
   readSettingsWidget();
   if ( mConfig ) {
-    KConfigGroup grp( mConfig, mConfig->group() );
+    KConfigGroup grp( mConfig, "General" );
     grp.writeEntry( "Page title", mPageTitle );
     grp.writeEntry( "Print type", int( mTodoPrintType ) );
     grp.writeEntry( "Include description", mIncludeDescription );
