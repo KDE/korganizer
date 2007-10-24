@@ -1277,7 +1277,7 @@ void ActionManager::readProperties( const KConfigGroup &config )
 
   bool isResourceCalendar(
     config.readEntry( "UseResourceCalendar", true ) );
-  QString calendarUrl = config.readPathEntry( "Calendar" );
+  QString calendarUrl = config.readPathEntry( "Calendar", QString() );
 
   if ( !isResourceCalendar && !calendarUrl.isEmpty() ) {
     mMainWindow->init( true );
