@@ -393,7 +393,7 @@ void ActionManager::initActions()
   connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
            SLOT(showJournalView()) );
 
-  action = new KAction( KIcon( "timeline" ), i18n( "Time&line" ), this );
+  action = new KAction( KIcon( "view-calendar-timeline" ), i18n( "Time&line" ), this );
   mACollection->addAction( "view_timeline", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
            SLOT(showTimeLineView()) );
