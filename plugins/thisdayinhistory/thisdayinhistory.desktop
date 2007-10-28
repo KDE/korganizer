@@ -2,6 +2,7 @@
 Encoding=UTF-8
 X-KDE-Library=libkorg_thisdayinhistory
 Name=Wikipedia 'This Day in History' Plugin
+Name[ca]=Connector d'imatge del dia de la Viquipèdia
 Name[el]=Πρόσθετο 'Αυτή η ημέρα στην Ιστορία' της Wikipedia
 Name[es]=Plugin de Wikipedia 'Este día en la historia'
 Name[it]=Plugin "Questo giorno nella storia" da Wikipedia

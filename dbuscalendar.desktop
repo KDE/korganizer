@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=DBUSCalendar
+Name[de]=D-Bus-Kalender
 Name[el]=Ημερολόγιο DBUS
 Name[ga]=Féilire DBUS
 Name[pt]=Calendário DBUS
@@ -11,6 +12,8 @@ Type=ServiceType
 X-KDE-ServiceType=DBUS/Organizer
 Comment=Organizer with a D-BUS interface
 Comment[bg]=Организатор с поддръжка на интерфейс DCOP
+Comment[ca]=Organitzador amb una interfície DBUS
+Comment[de]=Organizer mit D-Bus-Schnittstelle
 Comment[el]=Organizer με περιβάλλον χρήσης D-BUS
 Comment[es]=Organizador con una interfaz D-BUS
 Comment[fa]=سازمان‌دهنده با یک واسط D-BUS
