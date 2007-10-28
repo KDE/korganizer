@@ -211,14 +211,14 @@ void KOPrefs::usrReadConfig()
   }
 
   KConfigGroup rColorsConfig( config(), "Resources Colors");
-  QMap<QString, QString> map = rColorsConfig.entryMap();
+  const QStringList colorKeyList = rColorsConfig.keyList();
 
-  QMap<QString, QString>::Iterator it3;
-  for ( it3 = map.begin(); it3 != map.end(); ++it3 ) {
-    kDebug(5850)<<"KOPrefs::usrReadConfig: key:" << it3.key() << "value:"
-      << it3.value();
-    setResourceColor( it3.key(), rColorsConfig.readEntry( it3.key(),
-      mDefaultResourceColor ) );
+  QStringList::ConstIterator it3;
+  for ( it3 = colorKeyList.begin(); it3 != colorKeyList.end(); ++it3 ) {
+    QColor color = rColorsConfig.readEntry( *it3, mDefaultResourceColor );
+    kDebug(5850)<<"KOPrefs::usrReadConfig: key:" << (*it3) << "value:"
+                << color;
+    setResourceColor( *it3, color );
   }
 
   if (!mTimeSpec.isValid()) {
