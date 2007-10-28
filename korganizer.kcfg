@@ -143,12 +143,12 @@
     <entry type="DateTime" name="StartTime">
       <label>Default appointment time</label>
       <whatsthis>Enter the default time for events here. The default is used if you do not supply a start time.</whatsthis>
-      <default>QDateTime(QDate(), QTime(10,0))</default>
+      <default>QDateTime(QDate(1752,1,1), QTime(10,0))</default>
     </entry>
     <entry type="DateTime" name="DefaultDuration">
       <label>Default duration of new appointment (HH:MM)</label>
       <whatsthis>Enter default duration for events here. The default is used if you do not supply an end time.</whatsthis>
-      <default>QDateTime(QDate(), QTime(2,0))</default>
+      <default>QDateTime(QDate(1752,1,1), QTime(2,0))</default>
     </entry>
     <entry type="Int" key="Default Alarm Time" name="AlarmTime">
       <label>Default Reminder Time</label>
@@ -233,18 +233,18 @@
     <entry type="DateTime" name="DayBegins">
       <label>Day begins at</label>
       <whatsthis>Enter the start time for events here. This time should be the earliest time that you use for events, as it will be displayed at the top.</whatsthis>
-      <default>QDateTime(QDate(), QTime(7,0))</default>
+      <default>QDateTime(QDate(1752,1,1), QTime(7,0))</default>
     </entry>
 
     <entry type="DateTime" name="WorkingHoursStart">
       <label>Daily starting hour</label>
       <whatsthis>Enter the start time for the working hours here. The working hours will be marked with color by KOrganizer.</whatsthis>
-      <default>QDateTime(QDate(), QTime(8,0))</default>
+      <default>QDateTime(QDate(1752,1,1), QTime(8,0))</default>
     </entry>
     <entry type="DateTime" name="WorkingHoursEnd">
       <label>Daily ending hour</label>
       <whatsthis>Enter the ending time for the working hours here. The working hours will be marked with color by KOrganizer.</whatsthis>
-      <default>QDateTime(QDate(), QTime(17,0))</default>
+      <default>QDateTime(QDate(1752,1,1), QTime(17,0))</default>
     </entry>
     <entry type="Int" key="Work Week Mask" name="WorkWeekMask">
       <default>31</default>
