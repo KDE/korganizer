@@ -188,10 +188,31 @@ void KOEditorGeneral::initDescription(QWidget *parent,QBoxLayout *topLayout)
   mDescriptionUnderlineButton->setIcon( KIcon( "format-text-underline" ) );
   connect(mDescriptionUnderlineButton, SIGNAL(clicked()),
           this, SLOT(toggleDescriptionUnderline()));
+  mDescriptionStrikethroughButton = new QPushButton( parent );
+  mDescriptionStrikethroughButton->setIcon( KIcon( "format-text-strikethrough" ) );
+  connect(mDescriptionStrikethroughButton, SIGNAL(clicked()),
+          this, SLOT(toggleDescriptionStrikethrough()));
+  mDescriptionLeftAlignButton = new QPushButton( parent );
+  mDescriptionLeftAlignButton->setIcon( KIcon( "format-justify-left" ) );
+  connect(mDescriptionLeftAlignButton, SIGNAL(clicked()),
+          this, SLOT(toggleDescriptionLeftAlign()));
+  mDescriptionCentreAlignButton = new QPushButton( parent );
+  mDescriptionCentreAlignButton->setIcon( KIcon( "format-justify-center" ) );
+  connect(mDescriptionCentreAlignButton, SIGNAL(clicked()),
+          this, SLOT(toggleDescriptionCentreAlign()));
+  mDescriptionRightAlignButton = new QPushButton( parent );
+  mDescriptionRightAlignButton->setIcon( KIcon( "format-justify-right" ) );
+  connect(mDescriptionRightAlignButton, SIGNAL(clicked()),
+          this, SLOT(toggleDescriptionRightAlign()));
   htmlLayout->addWidget( mDescriptionBoldButton );
   htmlLayout->addWidget( mDescriptionItalicButton );
   htmlLayout->addWidget( mDescriptionUnderlineButton );
+  htmlLayout->addWidget( mDescriptionStrikethroughButton );
+  htmlLayout->addWidget( mDescriptionLeftAlignButton );
+  htmlLayout->addWidget( mDescriptionCentreAlignButton );
+  htmlLayout->addWidget( mDescriptionRightAlignButton );
   htmlLayout->addStretch();
+
   mDescriptionEdit = new KTextEdit( parent );
   mDescriptionEdit->setWhatsThis(
                                  i18n("Sets the description for this event, to-do or journal. This "
@@ -527,4 +548,38 @@ void KOEditorGeneral::toggleDescriptionUnderline() {
   QTextCharFormat text;
   text.setFontUnderline( !cursor.charFormat().fontUnderline() );
   cursor.mergeCharFormat( text );
+}
+
+void KOEditorGeneral::toggleDescriptionStrikethrough() {
+  mRichDescription = true;
+  QTextCursor cursor( mDescriptionEdit->textCursor() );
+  if ( cursor.selectionStart() == cursor.selectionEnd() ) {
+    cursor.select( QTextCursor::WordUnderCursor );
+  }
+  QTextCharFormat text;
+  text.setFontStrikeOut( !cursor.charFormat().fontStrikeOut() );
+  cursor.mergeCharFormat( text );
+}
+
+void KOEditorGeneral::toggleDescriptionLeftAlign() {
+  setAlignment( Qt::AlignLeft );
+}
+
+void KOEditorGeneral::toggleDescriptionCentreAlign() {
+  setAlignment( Qt::AlignHCenter );
+}
+
+void KOEditorGeneral::toggleDescriptionRightAlign() {
+  setAlignment( Qt::AlignRight );
+}
+
+void KOEditorGeneral::setAlignment( Qt::Alignment alignment ) {
+  mRichDescription = true;
+  QTextCursor cursor( mDescriptionEdit->textCursor() );
+  cursor.select( QTextCursor::LineUnderCursor );
+  QTextBlockFormat text;
+  if ( alignment != cursor.blockFormat().alignment() ) {
+    text.setAlignment( alignment );
+    cursor.mergeBlockFormat( text );
+  }
 }

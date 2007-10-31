@@ -106,6 +106,10 @@ class KOEditorGeneral : public QObject
     void toggleDescriptionBold();
     void toggleDescriptionItalic();
     void toggleDescriptionUnderline();
+    void toggleDescriptionStrikethrough();
+    void toggleDescriptionLeftAlign();
+    void toggleDescriptionCentreAlign();
+    void toggleDescriptionRightAlign();
 
   signals:
     void openCategoryDialog();
@@ -113,6 +117,7 @@ class KOEditorGeneral : public QObject
 
   protected:
     Alarm *alarmFromSimplePage() const;
+    void setAlignment( Qt::Alignment alignment );
 
     KLineEdit               *mSummaryEdit;
     KLineEdit               *mLocationEdit;
@@ -131,6 +136,10 @@ class KOEditorGeneral : public QObject
     QPushButton             *mDescriptionBoldButton;
     QPushButton             *mDescriptionItalicButton;
     QPushButton             *mDescriptionUnderlineButton;
+    QPushButton             *mDescriptionStrikethroughButton;
+    QPushButton             *mDescriptionLeftAlignButton;
+    QPushButton             *mDescriptionCentreAlignButton;
+    QPushButton             *mDescriptionRightAlignButton;
     bool                    mRichDescription;
 
     enum AlarmStackPages { SimpleAlarmPage, AdvancedAlarmLabel };
