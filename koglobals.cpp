@@ -71,12 +71,6 @@ KOGlobals::KOGlobals()
   : mOwnInstance( "korganizer" ),
   mHolidays(0)
 {
-  // Needed to distinguish from global KComponentData
-  // in case we are a KPart
-  // why do you set the group and then don't do anything with the config object?
-  KSharedConfig::Ptr c = mOwnInstance.config();
-  c->setGroup( "General" );
-
   KIconLoader::global()->addAppDir( "kdepim" );
 
   mAlarmClient = new AlarmClient;

@@ -55,7 +55,7 @@ CalPrinter::CalPrinter( QWidget *parent, Calendar *calendar, KOrg::CoreHelper *h
   : QObject( parent )
 {
   mParent = parent;
-  mConfig = new KConfig( "korganizer_printing.rc", KConfig::OnlyLocal );
+  mConfig = new KConfig( "korganizer_printing.rc", KConfig::SimpleConfig );
   mCoreHelper = helper;
 
   init( calendar );

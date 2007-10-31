@@ -261,7 +261,7 @@ class KOPrefsDialogTime : public KPrefsModule
                                       "l10n/" + (*it) + "/entry.desktop" );
         QString regionName;
         if ( !countryFile.isEmpty() ) {
-          KConfig _cfg( countryFile, KConfig::OnlyLocal );
+          KConfig _cfg( countryFile, KConfig::SimpleConfig );
           KConfigGroup cfg(&_cfg, "KCM Locale" );
           regionName = cfg.readEntry( "Name" );
         }
