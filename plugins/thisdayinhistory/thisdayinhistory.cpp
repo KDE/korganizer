@@ -29,6 +29,8 @@
 #include <kconfiggroup.h>
 #include <kstandarddirs.h>
 #include <kurl.h>
+#include <kpluginfactory.h>
+#include <kpluginloader.h>
 
 using namespace KOrg::CalendarDecoration;
 
@@ -37,8 +39,7 @@ class ThisDayInHistoryFactory : public DecorationFactory {
     Decoration *create() { return new ThisDayInHistory; }
 };
 
-K_EXPORT_COMPONENT_FACTORY( libkorg_thisdayinhistory, ThisDayInHistoryFactory )
-
+K_EXPORT_PLUGIN( ThisDayInHistoryFactory )
 
 ThisDayInHistory::ThisDayInHistory()
 {

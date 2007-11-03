@@ -63,8 +63,7 @@ install(TARGETS theme_bin  DESTINATION ${BIN_INSTALL_DIR} )
 set(kcm_korganizer_PART_SRCS koprefsdialog.cpp )
 
 
-kde4_add_plugin(kcm_korganizer ${kcm_korganizer_PART_SRCS})
-
+kde4_add_plugin(kcm_korganizer WITH_PREFIX ${kcm_korganizer_PART_SRCS})
 
 
 target_link_libraries(kcm_korganizer ${KDE4_KDECORE_LIBS} korganizer kdepim kholidays)

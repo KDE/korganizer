@@ -34,6 +34,8 @@
 
 #include <kconfig.h>
 #include <kdebug.h>
+#include <kpluginfactory.h>
+#include <kpluginloader.h>
 
 #include <QButtonGroup>
 
@@ -42,8 +44,7 @@ class JournalPrintFactory : public KOrg::PrintPluginFactory {
     KOrg::PrintPlugin *create() { return new CalPrintJournal; }
 };
 
-K_EXPORT_COMPONENT_FACTORY( libkorg_journalprint, JournalPrintFactory )
-
+K_EXPORT_PLUGIN( JournalPrintFactory )
 
 /**************************************************************
  *           Print Journal

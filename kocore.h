@@ -63,9 +63,9 @@ class KORGANIZER_EXPORT KOCore
     KOrg::PrintPlugin::List loadPrintPlugins();
     KOrg::Part::List loadParts( KOrg::MainWindow *parent );
 
-    void addXMLGUIClient( QWidget*, KXMLGUIClient *guiclient );
-    void removeXMLGUIClient( QWidget* );
-    KXMLGUIClient *xmlguiClient( QWidget* ) const;
+    void addXMLGUIClient( QWidget *, KXMLGUIClient *guiclient );
+    void removeXMLGUIClient( QWidget * );
+    KXMLGUIClient *xmlguiClient( QWidget * ) const;
 
     /**
       Unload the parts in &p parts for this main window. Clears
@@ -84,16 +84,13 @@ class KORGANIZER_EXPORT KOCore
         @param parent the parent main window for all parts
         @param parts the list of parts to be reloaded
     */
-    KOrg::Part::List reloadParts( KOrg::MainWindow *parent,
-                                  KOrg::Part::List &parts );
+    KOrg::Part::List reloadParts( KOrg::MainWindow *parent, KOrg::Part::List &parts );
 
-    KPIMIdentities::IdentityManager* identityManager();
+    KPIMIdentities::IdentityManager *identityManager();
 
   protected:
     KOCore();
-
-    KService::List availablePlugins( const QString &type,
-                                         int pluginInterfaceVersion = -1 );
+    KService::List availablePlugins( const QString &type, int pluginInterfaceVersion = -1 );
 
   private:
     static KOCore *mSelf;
