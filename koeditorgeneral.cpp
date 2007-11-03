@@ -61,6 +61,7 @@
 #include <QHBoxLayout>
 #include <QBoxLayout>
 #include <QTextCharFormat>
+#include <QTextList>
 
 #include "koeditorgeneral.moc"
 
@@ -204,6 +205,15 @@ void KOEditorGeneral::initDescription(QWidget *parent,QBoxLayout *topLayout)
   mDescriptionRightAlignButton->setIcon( KIcon( "format-justify-right" ) );
   connect(mDescriptionRightAlignButton, SIGNAL(clicked()),
           this, SLOT(toggleDescriptionRightAlign()));
+  mDescriptionUnorderedListButton = new QPushButton( parent );
+  //mDescriptionUnorderedListButton->setIcon( KIcon( "unordered-list" ) );
+  connect(mDescriptionUnorderedListButton, SIGNAL(clicked()),
+          this, SLOT(toggleDescriptionUnorderedList()));
+  mDescriptionOrderedListButton = new QPushButton( parent );
+  //mDescriptionOrderedListButton->setIcon( KIcon( "ordered-list" ) );
+  connect(mDescriptionOrderedListButton, SIGNAL(clicked()),
+          this, SLOT(toggleDescriptionOrderedList()));
+  mRichDescription = new QCheckBox( i18n("Rich Text"), parent );
   htmlLayout->addWidget( mDescriptionBoldButton );
   htmlLayout->addWidget( mDescriptionItalicButton );
   htmlLayout->addWidget( mDescriptionUnderlineButton );
@@ -211,6 +221,9 @@ void KOEditorGeneral::initDescription(QWidget *parent,QBoxLayout *topLayout)
   htmlLayout->addWidget( mDescriptionLeftAlignButton );
   htmlLayout->addWidget( mDescriptionCentreAlignButton );
   htmlLayout->addWidget( mDescriptionRightAlignButton );
+  htmlLayout->addWidget( mDescriptionUnorderedListButton );
+  htmlLayout->addWidget( mDescriptionOrderedListButton );
+  htmlLayout->addWidget( mRichDescription );
   htmlLayout->addStretch();
 
   mDescriptionEdit = new KTextEdit( parent );
@@ -450,13 +463,13 @@ void KOEditorGeneral::writeIncidence( Incidence *incidence )
 {
   incidence->setSummary( mSummaryEdit->text() );
   incidence->setLocation( mLocationEdit->text() );
-  if ( mRichDescription ) {
+  if ( mRichDescription->isChecked() ) {
     incidence->setDescription( mDescriptionEdit->toHtml(),
-                               mRichDescription );
+                               true );
   }
   else {
     incidence->setDescription( mDescriptionEdit->toPlainText(),
-                               mRichDescription );
+                               false );
   }
   incidence->setCategories( mCategories );
   switch( mSecrecyCombo->currentIndex() ) {
@@ -497,13 +510,12 @@ void KOEditorGeneral::setSummary( const QString &text )
 
 void KOEditorGeneral::setDescription( const QString &text, bool isRich )
 {
+  mRichDescription->setChecked( isRich );
   if ( isRich ) {
     mDescriptionEdit->setHtml( text );
-    mRichDescription = true;
   }
   else {
     mDescriptionEdit->setPlainText( text );
-    mRichDescription = false;
   }
 }
 
@@ -513,7 +525,7 @@ QObject *KOEditorGeneral::typeAheadReceiver() const
 }
 
 void KOEditorGeneral::toggleDescriptionBold() {
-  mRichDescription = true;
+  mRichDescription->setChecked( true );
   QTextCursor cursor( mDescriptionEdit->textCursor() );
   if ( cursor.selectionStart() == cursor.selectionEnd() ) {
     cursor.select( QTextCursor::WordUnderCursor );
@@ -529,7 +541,7 @@ void KOEditorGeneral::toggleDescriptionBold() {
 }
 
 void KOEditorGeneral::toggleDescriptionItalic() {
-  mRichDescription = true;
+  mRichDescription->setChecked( true );
   QTextCursor cursor( mDescriptionEdit->textCursor() );
   if ( cursor.selectionStart() == cursor.selectionEnd() ) {
     cursor.select( QTextCursor::WordUnderCursor );
@@ -540,7 +552,7 @@ void KOEditorGeneral::toggleDescriptionItalic() {
 }
 
 void KOEditorGeneral::toggleDescriptionUnderline() {
-  mRichDescription = true;
+  mRichDescription->setChecked( true );
   QTextCursor cursor( mDescriptionEdit->textCursor() );
   if ( cursor.selectionStart() == cursor.selectionEnd() ) {
     cursor.select( QTextCursor::WordUnderCursor );
@@ -551,7 +563,7 @@ void KOEditorGeneral::toggleDescriptionUnderline() {
 }
 
 void KOEditorGeneral::toggleDescriptionStrikethrough() {
-  mRichDescription = true;
+  mRichDescription->setChecked( true );
   QTextCursor cursor( mDescriptionEdit->textCursor() );
   if ( cursor.selectionStart() == cursor.selectionEnd() ) {
     cursor.select( QTextCursor::WordUnderCursor );
@@ -574,7 +586,7 @@ void KOEditorGeneral::toggleDescriptionRightAlign() {
 }
 
 void KOEditorGeneral::setAlignment( Qt::Alignment alignment ) {
-  mRichDescription = true;
+  mRichDescription->setChecked( true );
   QTextCursor cursor( mDescriptionEdit->textCursor() );
   cursor.select( QTextCursor::LineUnderCursor );
   QTextBlockFormat text;
@@ -582,4 +594,18 @@ void KOEditorGeneral::setAlignment( Qt::Alignment alignment ) {
     text.setAlignment( alignment );
     cursor.mergeBlockFormat( text );
   }
+}
+
+void KOEditorGeneral::toggleDescriptionOrderedList() {
+  createList( QTextListFormat::ListDecimal );
+}
+
+void KOEditorGeneral::toggleDescriptionUnorderedList() {
+  createList( QTextListFormat::ListDisc );
+}
+
+QTextList *KOEditorGeneral::createList( QTextListFormat::Style style ) {
+  mRichDescription->setChecked( true );
+  QTextCursor cursor( mDescriptionEdit->textCursor() );
+  return cursor.createList( style );
 }

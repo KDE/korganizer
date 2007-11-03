@@ -190,13 +190,13 @@ void KOEditorGeneralJournal::writeJournal( Journal *journal )
 {
 //  kDebug(5850) <<"KOEditorGeneralJournal::writeIncidence()";
   journal->setSummary( mSummaryEdit->text() );
-  if ( mRichDescription ) {
+  if ( mRichDescription->isChecked() ) {
     journal->setDescription( mDescriptionEdit->toHtml(),
-                             mRichDescription );
+                             true );
   }
   else {
     journal->setDescription( mDescriptionEdit->toPlainText(),
-                             mRichDescription );
+                             false );
   }
   KDateTime tmpDT( mDateEdit->date(), QTime(0,0,0), KOPrefs::instance()->timeSpec() );
   bool hasTime = mTimeCheckBox->isChecked();
