@@ -557,7 +557,6 @@ void KOAgendaItem::dragEnterEvent( QDragEnterEvent *e )
 
 void KOAgendaItem::addAttendee( const QString &newAttendee )
 {
-  kDebug(5850) <<" Email:" << newAttendee;
   QString name, email;
   KPIMUtils::extractEmailAddressAndName( newAttendee, email, name );
   if ( !( name.isEmpty() && email.isEmpty() ) ) {
@@ -595,8 +594,6 @@ void KOAgendaItem::dropEvent( QDropEvent *e )
   }
 #else
   if( decoded ) {
-    kDebug(5850) <<"Dropped :" << text;
-
     QStringList emails = text.split( ",", QString::SkipEmptyParts  );
     for( QStringList::ConstIterator it = emails.begin(); it != emails.end();
         ++it ) {
@@ -852,7 +849,6 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
                                 0,
                                 mLabelText );
 
-    //kDebug() <<"SIZES for" << mLabelText <<":" << width() <<" ::" << txtWidth;
     ww->drawText( &p, x, margin, Qt::AlignHCenter | KWordWrap::FadeOut );
     delete ww;
     return;
@@ -935,12 +931,12 @@ void KOAgendaItem::drawRoundedRect( QPainter *p, const QRect& rect,
 {
 	QRect r = rect;
 	p->save();
-	
+
 	QPainterPath path;
-	
+
 	bool shrinkWidth = r.width() < 16;
 	bool shrinkHeight = r.height() < 16;
-	
+
 	qreal rnd = 2.1;
 	int sw = shrinkWidth? 7 : 11;
 	int sh = shrinkHeight ? 7 : 11;
@@ -948,7 +944,7 @@ void KOAgendaItem::drawRoundedRect( QPainter *p, const QRect& rect,
 	QRectF tl( r.x()+rnd, r.y()+rnd, sw, sh );
 	QRectF bl( r.x()+rnd, r.y()+r.height()-sh-1-rnd, sw, sh );
 	QRectF br( r.x()+r.width()-sw-rnd, r.y()+r.height()-sh-1-rnd, sw, sh );
-	
+
 	if( roundTop ) {
 		path.moveTo( tr.topRight() );
 		path.arcTo( tr, 0.0, 90.0 );
@@ -958,7 +954,7 @@ void KOAgendaItem::drawRoundedRect( QPainter *p, const QRect& rect,
 		path.moveTo( tr.topRight() );
 		path.lineTo( tl.topLeft() );
 	}
-	
+
 	if( roundBottom ) {
 		path.lineTo( bl.topLeft() );
 		path.arcTo( bl, 180.0, 90.0 );
@@ -969,11 +965,11 @@ void KOAgendaItem::drawRoundedRect( QPainter *p, const QRect& rect,
 		path.lineTo( br.bottomRight() );
 	}
 	path.closeSubpath();
-	
+
 	// header
 	if ( !frame ) {
 		QLinearGradient gradient( QPointF(r.x(), r.y()), QPointF(r.x(), r.y()+r.height()) );
-		
+
 		if( selected ) {
 			gradient.setColorAt(0, QColor(0,0,0,40));
 			gradient.setColorAt(1, QColor(255,255,255,30));
@@ -981,21 +977,21 @@ void KOAgendaItem::drawRoundedRect( QPainter *p, const QRect& rect,
 			gradient.setColorAt(0, QColor(255,255,255,70));
 			gradient.setColorAt(1, QColor(0,0,0,20));
 		}
-		
+
 		p->setBrush(gradient);
 		p->setPen(Qt::NoPen);
 		p->drawPath(path);
-		
+
 		p->setRenderHint(QPainter::Antialiasing, false);
 		p->setPen(QColor(0,0,0,30));
 		p->drawLine(r.x()+3, r.y()+r.height()-4, r.x()+r.width()-4, r.y()+r.height()-4);
 		p->setPen(QColor(255,255,255,60));
 		p->drawLine(r.x()+3, r.y()+r.height()-3, r.x()+r.width()-4, r.y()+r.height()-3);
-		
+
 		p->restore();
 		return;
 	}
-	
+
 	QLinearGradient gradient(QPointF(r.x(), r.y()), QPointF(r.x(), r.y()+r.height()));
 	gradient.setColorAt(0, bgColor.light(115));
 	if(r.height()-20 > 0) {
@@ -1003,25 +999,25 @@ void KOAgendaItem::drawRoundedRect( QPainter *p, const QRect& rect,
 		gradient.setColorAt(b, bgColor);
 	}
 	gradient.setColorAt(1, bgColor.dark(110));
-	
+
 	p->setBrush(gradient);
 	p->setPen(Qt::NoPen);
 	p->drawPath(path);
-	
+
 	p->setRenderHint(QPainter::Antialiasing, false);
-	
+
 	if ( r.width() - 16 > 0 ) {
-		
+
 		int x = r.x()+8;
 		int x2 = r.x()+r.width()-9;
 		int y = r.y();
-		
+
 		// drawLine don't draw points
 		if ( x == x2 ) {
 			x2 += 1;
 			p->setClipRect(QRect(x, y, 1, r.height()));
 		}
-		
+
 		// top lines
 		p->setPen(QColor(0,0,0,4));
 		p->drawLine(x, y, x2, y);
@@ -1033,7 +1029,7 @@ void KOAgendaItem::drawRoundedRect( QPainter *p, const QRect& rect,
 		p->drawLine(x, y+3, x2, y+3);
 		p->setPen(QColor(191,191,191,4));
 		p->drawLine(x, y+4, x2, y+4);
-		
+
 		// bottom lines
 		y = r.y()+r.height()-6;
 		p->setPen(QColor(255,255,255,3));
@@ -1048,20 +1044,20 @@ void KOAgendaItem::drawRoundedRect( QPainter *p, const QRect& rect,
 		p->drawLine(x, y+4, x2, y+4);
 		p->setPen(QColor(0,0,0,15));
 		p->drawLine(x, y+5, x2, y+5);
-		
+
 		p->setClipping(false);
 	}
 	if ( r.height() - 16 > 0 ) {
-		
+
 		int x = r.x();
 		int y = r.y()+8;
 		int y2 = r.y()+r.height()-9;
-		
+
 		if ( y == y2 ) {
 			y2 += 1;
 			p->setClipRect(QRect(x, y, r.width(), 1));
 		}
-		
+
 		// left lines
 		p->setPen(QColor(0,0,0,14));
 		p->drawLine(x, y, x, y2);
@@ -1073,7 +1069,7 @@ void KOAgendaItem::drawRoundedRect( QPainter *p, const QRect& rect,
 		p->drawLine(x+2, y, x+2, y2);
 		p->setPen(QColor(191,191,191,4));
 		p->drawLine(x+3, y, x+3, y2);
-		
+
 		// right lines
 		x = r.x()+r.width()-5;
 		p->setPen(QColor(191,191,191,4));
@@ -1086,27 +1082,27 @@ void KOAgendaItem::drawRoundedRect( QPainter *p, const QRect& rect,
 		p->drawLine(x+3, y, x+3, y2);
 		p->setPen(QColor(0,0,0,14));
 		p->drawLine(x+4, y, x+4, y2);
-		
+
 		p->setClipping(false);
 	}
-	
+
 	// don't overlap the edges
 	int lw = shrinkWidth ? r.width()/2 : 8;
 	int rw = shrinkWidth ? r.width() - lw : 8;
 	int th = shrinkHeight ? r.height()/2 : 8;
 	int bh = shrinkHeight ? r.height() - th : 8;
-	
+
 	// keep the bottom round for items which ending at 00:15
 	if(shrinkHeight && !roundTop && roundBottom && r.height() > 3 ) {
 		bh += th-3;
 		th = 3;
 	}
-	
+
 	if ( roundTop ) {
 		QImage topLeft(8, 8, QImage::Format_ARGB32);
 		topLeft.fill(Qt::transparent);
 		QPainter painter(&topLeft);
-		
+
 		int y = 0;
 		painter.setPen(QColor(0,0,0,2));
 		painter.drawPoint(5, y);
@@ -1209,19 +1205,19 @@ void KOAgendaItem::drawRoundedRect( QPainter *p, const QRect& rect,
 		painter.drawPoint(3, y);
 		painter.setPen(QColor(255,255,255,6));
 		painter.drawPoint(4, y);
-		
+
 		painter.end();
-		
+
 		QImage topRight = topLeft.mirrored(true, false);
 		p->drawImage(r.x(), r.y(), topLeft, 0, 0, lw, th);
 		p->drawImage(r.x()+r.width()-rw, r.y(), topRight, 8-rw, 0, rw, th);
-		
+
 	} else {
 		// rectangular
 		QImage topLeft(8, 8, QImage::Format_ARGB32);
 		topLeft.fill(Qt::transparent);
 		QPainter painter(&topLeft);
-		
+
 		int y = 0;
 		painter.setPen(QColor(0,0,0,2));
 		painter.drawPoint(2, y);
@@ -1293,19 +1289,19 @@ void KOAgendaItem::drawRoundedRect( QPainter *p, const QRect& rect,
 		painter.drawLine(3, y, 3, 7);
 		painter.setPen(QColor(191,191,191,4));
 		painter.drawLine(4, y, 4, 7);
-		
+
 		painter.end();
-		
+
 		QImage topRight = topLeft.mirrored(true, false);
 		p->drawImage(r.x(), r.y(), topLeft, 0, 0, lw, th);
 		p->drawImage(r.x()+r.width()-rw, r.y(), topRight, 8-rw, 0, rw, th);
 	}
-	
+
 	if ( roundBottom ) {
 		QImage bottomLeft(8, 8, QImage::Format_ARGB32);
 		bottomLeft.fill(Qt::transparent);
 		QPainter painter(&bottomLeft);
-		
+
 		int y = 0;
 		painter.setPen(QColor(0,0,0,13));
 		painter.drawPoint(0, y);
@@ -1416,19 +1412,19 @@ void KOAgendaItem::drawRoundedRect( QPainter *p, const QRect& rect,
 		painter.drawPoint(6, y);
 		painter.setPen(QColor(0,0,0,13));
 		painter.drawPoint(7, y);
-		
+
 		painter.end();
-		
+
 		QImage bottomRight = bottomLeft.mirrored(true, false);
 		p->drawImage(r.x(), r.y()+ r.height()-bh, bottomLeft, 0, 8-bh, lw, bh);
 		p->drawImage(r.x()+r.width()-rw, r.y()+r.height()-bh, bottomRight, 8-rw, 8-bh, rw, 8);
-		
+
 	} else {
 		// rectangular
 		QImage bottomLeft(8, 8, QImage::Format_ARGB32);
 		bottomLeft.fill(Qt::transparent);
 		QPainter painter(&bottomLeft);
-		
+
 		int y = 0;
 		painter.setPen(QColor(0,0,0,14));
 		painter.drawLine(0, y, 0, 1);
@@ -1518,14 +1514,14 @@ void KOAgendaItem::drawRoundedRect( QPainter *p, const QRect& rect,
 		painter.drawPoint(4, y);
 		painter.setPen(QColor(0,0,0,15));
 		painter.drawLine(5, y, 7, y);
-		
+
 		painter.end();
-		
+
 		QImage bottomRight = bottomLeft.mirrored(true, false);
 		p->drawImage(r.x(), r.y()+ r.height()-bh, bottomLeft, 0, 8-bh, lw, bh);
 		p->drawImage(r.x()+r.width()-rw, r.y()+r.height()-bh, bottomRight, 8-rw, 8-bh, rw, 8);
 	}
-	
+
 	p->restore();
 }
 

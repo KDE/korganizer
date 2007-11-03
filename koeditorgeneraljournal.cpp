@@ -40,7 +40,6 @@
 #include <kglobal.h>
 #include <klocale.h>
 #include <kmessagebox.h>
-#include <kdebug.h>
 #include <KSqueezedTextLabel>
 
 #include <q3groupbox.h>
@@ -52,9 +51,8 @@
 #include <QBoxLayout>
 #include <QPushButton>
 
-KOEditorGeneralJournal::KOEditorGeneralJournal( QObject *parent,
-                                                const char* name ) :
-    KOEditorGeneral( parent, name )
+KOEditorGeneralJournal::KOEditorGeneralJournal( QObject *parent, const char* name )
+  : KOEditorGeneral( parent, name )
 {
   setObjectName( name );
 }
@@ -111,19 +109,15 @@ void KOEditorGeneralJournal::initDate( QWidget *parent, QBoxLayout *topLayout )
 
 void KOEditorGeneralJournal::setDate( const QDate &date )
 {
-//  kDebug(5850) <<"KOEditorGeneralJournal::setDate(): Date:" << date.toString();
-
   mDateEdit->setDate( date );
 }
 
 void KOEditorGeneralJournal::setTime( const QTime &time )
 {
-kDebug()<<"KOEditorGeneralJournal::setTime, time="<<time.toString();
   bool validTime = time.isValid();
   mTimeCheckBox->setChecked( validTime );
   mTimeEdit->setEnabled( validTime );
   if ( validTime ) {
-kDebug()<<"KOEditorGeneralJournal::setTime, time is valid";
     mTimeEdit->setTime( time );
   }
 }
@@ -175,10 +169,8 @@ void KOEditorGeneralJournal::readJournal( Journal *journal, bool tmpl )
   if ( !tmpl ) {
     setDate( journal->dtStart().date() );
     if ( !journal->allDay() ) {
-kDebug()<<"KOEditorGeneralJournal::readJournal, is not all-day, time="<<(journal->dtStart().time().toString());
       setTime( journal->dtStart().time() );
     } else {
-kDebug()<<"KOEditorGeneralJournal::readJournal, is an all-day";
       setTime( QTime( -1, -1, -1 ) );
     }
   }
@@ -188,7 +180,6 @@ kDebug()<<"KOEditorGeneralJournal::readJournal, is an all-day";
 
 void KOEditorGeneralJournal::writeJournal( Journal *journal )
 {
-//  kDebug(5850) <<"KOEditorGeneralJournal::writeIncidence()";
   journal->setSummary( mSummaryEdit->text() );
   if ( mRichDescription->isChecked() ) {
     journal->setDescription( mDescriptionEdit->toHtml(),
@@ -206,8 +197,6 @@ void KOEditorGeneralJournal::writeJournal( Journal *journal )
   }
   journal->setDtStart(tmpDT);
   journal->setCategories( mCategories );
-
-//  kDebug(5850) <<"KOEditorGeneralJournal::writeJournal() done";
 }
 
 void KOEditorGeneralJournal::setSummary( const QString &text )
@@ -226,8 +215,6 @@ void KOEditorGeneralJournal::finishSetup()
 
 bool KOEditorGeneralJournal::validateInput()
 {
-//  kDebug(5850) <<"KOEditorGeneralJournal::validateInput()";
-
   if (!mDateEdit->date().isValid()) {
     KMessageBox::sorry( 0,
         i18n("Please specify a valid date, for example '%1'.",

@@ -148,7 +148,7 @@ void KOPrefs::setTimeZoneDefault()
     return;
   }
 
-  kDebug () <<"----- time zone:" << zone.name();
+  kDebug (5850) <<"----- time zone:" << zone.name();
 
   mTimeSpec = zone;
 }
@@ -349,7 +349,7 @@ QString KOPrefs::email()
 QStringList KOPrefs::allEmails()
 {
   // Grab emails from the email identities
-  kDebug()<<" KOCore::self()->identityManager() :"<<KOCore::self()->identityManager();
+  kDebug(5850)<<" KOCore::self()->identityManager() :"<<KOCore::self()->identityManager();
   QStringList lst = KOCore::self()->identityManager()->allEmails();
   // Add emails configured in korganizer
   lst += mAdditionalMails;

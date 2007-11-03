@@ -67,8 +67,6 @@ void ThemeImporter::readThemeXml()
 {
   Q_ASSERT( isStartElement() && name() == "korganizer-theme" );
 
-  kDebug() <<"Reading theme XML.";
-  
   while ( !atEnd() ) {
     readNext();
 
@@ -143,7 +141,6 @@ void ThemeImporter::readDate( const QString &viewType,
       else {
         readElement( viewType, y, m, d );
       }
-      kDebug() <<"date:" << y <<"-" << m <<"-" << d;
     }
   }
 }
@@ -156,7 +153,6 @@ void ThemeImporter::readView( const QString &viewType,
 
   QString v = viewType;
   v = attributes().value("type").toString();
-  kDebug() <<"viewType:" << v;
 
   while ( !atEnd() ) {
     readNext();
@@ -500,7 +496,6 @@ void ThemeImporter::setColor( const QString &viewType,
 
     foreach ( QString v, Theme::themableViews( viewType ) ) {
       if ( year == 0 && month == 0 && day == 0 ) {
-        kDebug() <<"setting:" << v <<":" << key <<":" << value;
         configGroup( v )->writeEntry( v + key, color );
       }
       else {
@@ -545,9 +540,6 @@ void ThemeImporter::setFont( const QString &viewType,
 
   foreach ( QString v, Theme::themableViews( viewType ) ) {
     if ( year == 0 && month == 0 && day == 0 ) {
-      kDebug() <<"setting:" << v <<":" << key <<":" << family <<"\t"
-               << styleHint << "\t" << pointSize << "\t" << weight << "\t"
-               << style << "\t" << sf;
       configGroup( v )->writeEntry( v + key, f );
     }
     else {
@@ -569,10 +561,8 @@ void ThemeImporter::setPath( const QString &viewType,
   if ( ! value.isEmpty() ) {
     foreach ( QString v, Theme::themableViews( viewType ) ) {
       if ( year == 0 && month == 0 && day == 0 ) {
-        kDebug() <<"setting:" << v <<":" << key <<":" << value;
         configGroup( v )->writePathEntry( v + key, value );
-      }
-      else {
+      } else {
       // TODO: implement this when date-dependent themes will be enabled
       kWarning() <<"ThemeImporter: feature not yet implemented";
       kWarning() <<"THEORICAL setting:" << year <<"-" << month <<"-" << day
@@ -590,7 +580,6 @@ void ThemeImporter::setString( const QString &viewType,
   if ( ! value.isEmpty() ) {
     foreach ( QString v, Theme::themableViews( viewType ) ) {
       if ( year == 0 && month == 0 && day == 0 ) {
-        kDebug() <<"setting:" << v <<":" << key <<":" << value;
         configGroup( v )->writeEntry( v + key, value );
       }
       else {

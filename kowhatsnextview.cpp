@@ -31,7 +31,6 @@
 
 #include <kglobal.h>
 #include <klocale.h>
-#include <kdebug.h>
 #include <kiconloader.h>
 #include <kmessagebox.h>
 
@@ -46,8 +45,6 @@ using namespace KOrg;
 
 void WhatsNextTextBrowser::setSource(const QString& n)
 {
-  kDebug(5850) <<"WhatsNextTextBrowser::setSource():" << n;
-
   if (n.startsWith("event:")) {
     emit showIncidence(n);
     return;
@@ -179,7 +176,6 @@ void KOWhatsNextView::updateView()
         }
       }
       priority++;
-      kDebug(5850) <<"adding the todos...";
     }
     mText += "</ul>\n";
   }
@@ -227,14 +223,11 @@ void KOWhatsNextView::updateView()
         appendEvent(to);
       }
     }
-    kDebug () <<"check for todo-replies...";
   }
   if (replies > 0 ) mText += "</table>\n";
 
 
   mText += "</td></tr>\n</table>\n";
-
-  kDebug(5850) <<"KOWhatsNextView::updateView: text:" << mText;
 
   delete ipath;
 
@@ -252,23 +245,22 @@ void KOWhatsNextView::showIncidences( const Incidence::List & )
 {
 }
 
-void KOWhatsNextView::changeIncidenceDisplay(Incidence *, int action)
+void KOWhatsNextView::changeIncidenceDisplay( Incidence *, int action )
 {
-  switch(action) {
-    case KOGlobals::INCIDENCEADDED:
-    case KOGlobals::INCIDENCEEDITED:
-    case KOGlobals::INCIDENCEDELETED:
-      updateView();
-      break;
-    default:
-      kDebug(5850) <<"KOWhatsNextView::changeIncidenceDisplay(): Illegal action" << action;
+  switch( action ) {
+  case KOGlobals::INCIDENCEADDED:
+  case KOGlobals::INCIDENCEEDITED:
+  case KOGlobals::INCIDENCEDELETED:
+    updateView();
+    break;
+  default:
+    break;
   }
 }
 
 void KOWhatsNextView::appendEvent( Incidence *ev, const QDateTime &start,
                                    const QDateTime &end )
 {
-  kDebug(5850) <<"KOWhatsNextView::appendEvent():" << ev->uid();
 
   mText += "<tr><td><b>";
 //  if (!ev->allDay()) {
@@ -326,7 +318,6 @@ void KOWhatsNextView::appendTodo( Incidence *ev )
 
 void KOWhatsNextView::showIncidence( const QString &uid )
 {
-  kDebug(5850) <<"KOWhatsNextView::showIncidence():" << uid;
   Incidence *incidence = 0;
 
   if ( uid.startsWith( "event://" ) ) {

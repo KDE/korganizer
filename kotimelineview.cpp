@@ -174,22 +174,21 @@ void KOTimelineView::updateView()
 }
 
 /*virtual*/
-void KOTimelineView::changeIncidenceDisplay(KCal::Incidence* incidence, int mode)
+void KOTimelineView::changeIncidenceDisplay( KCal::Incidence *incidence, int mode )
 {
-  kDebug() << incidence << mode;
   switch ( mode ) {
-    case KOGlobals::INCIDENCEADDED:
-      insertIncidence( incidence );
-      break;
-    case KOGlobals::INCIDENCEEDITED:
-      removeIncidence( incidence );
-      insertIncidence( incidence );
-      break;
-    case KOGlobals::INCIDENCEDELETED:
-      removeIncidence( incidence );
-      break;
-    default:
-      updateView();
+  case KOGlobals::INCIDENCEADDED:
+    insertIncidence( incidence );
+    break;
+  case KOGlobals::INCIDENCEEDITED:
+    removeIncidence( incidence );
+    insertIncidence( incidence );
+    break;
+  case KOGlobals::INCIDENCEDELETED:
+    removeIncidence( incidence );
+    break;
+  default:
+    updateView();
   }
 }
 

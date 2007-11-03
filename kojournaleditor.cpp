@@ -38,7 +38,6 @@
 
 #include <kmessagebox.h>
 #include <klocale.h>
-#include <kdebug.h>
 
 #include <QLayout>
 #include <QVBoxLayout>
@@ -67,8 +66,9 @@ void KOJournalEditor::init()
 
 void KOJournalEditor::reload()
 {
-  kDebug(5851)<<"reloading Journal";
-  if ( mJournal ) readJournal( mJournal );
+  if ( mJournal ) {
+    readJournal( mJournal );
+  }
 }
 
 void KOJournalEditor::setupGeneral()
@@ -160,10 +160,10 @@ bool KOJournalEditor::processInput()
 
 void KOJournalEditor::deleteJournal()
 {
-  kDebug(5850) <<"Delete journal";
-
-  if ( mJournal )
+  if ( mJournal ) {
     emit deleteIncidenceSignal( mJournal );
+  }
+
   emit dialogClose( mJournal );
   reject();
 }
@@ -180,7 +180,6 @@ void KOJournalEditor::setTime( const QTime &time )
 
 void KOJournalEditor::readJournal( Journal *journal )
 {
-  kDebug(5851)<<"read Journal";
   mGeneral->readJournal( journal );
   mDetails->readEvent( journal );
   mAttachments->readIncidence( journal );
