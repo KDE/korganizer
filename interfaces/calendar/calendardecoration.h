@@ -26,7 +26,6 @@
 #include <QtCore/QList>
 #include <QtGui/QPixmap>
 
-#include <klibloader.h>
 #include <kurl.h>
 
 #include "plugin.h"
@@ -73,7 +72,7 @@ class Element : public QObject
       Return a long text for a given date.
       This text can be of any length,
       but usually it will have one or a few lines.
-      
+
       Can for example be used as a tool tip.
      */
     virtual QString longText();
@@ -215,17 +214,17 @@ class Decoration : public Plugin
     virtual Element::List createDayElements( const QDate & );
 
     /**
-      Create elements for the week the given date belongs to. 
+      Create elements for the week the given date belongs to.
     */
     virtual Element::List createWeekElements( const QDate & );
 
     /**
-      Create elements for the month the given date belongs to. 
+      Create elements for the month the given date belongs to.
     */
     virtual Element::List createMonthElements( const QDate & );
 
     /**
-      Create elements for the year the given date belongs to. 
+      Create elements for the year the given date belongs to.
     */
     virtual Element::List createYearElements( const QDate & );
 

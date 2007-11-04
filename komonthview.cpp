@@ -325,7 +325,8 @@ MonthViewCell::MonthViewCell( KOMonthView *parent )
   topLayout->setMargin( 0 );
   topLayout->setSpacing( 0 );
 
-  QHBoxLayout *labelLayout = new QHBoxLayout( this );
+  QHBoxLayout *labelLayout = new QHBoxLayout();
+  topLayout->addLayout( labelLayout );
   mLabel = new QLabel( this );
   labelLayout->addWidget( mLabel );
 /* TODO: Add code for the loading of the cell decorations around here? */

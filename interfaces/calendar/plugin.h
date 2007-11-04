@@ -22,7 +22,7 @@
 #define KORG_PLUGIN_H
 
 #include <klocale.h>
-#include <klibloader.h>
+#include <kpluginfactory.h>
 
 namespace KOrg {
 
@@ -40,7 +40,7 @@ class Plugin
     virtual void configure( QWidget * ) {}
 };
 
-class PluginFactory : public KLibFactory
+class PluginFactory : public KPluginFactory
 {
   public:
     virtual Plugin *create() = 0;

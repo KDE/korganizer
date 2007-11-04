@@ -99,9 +99,9 @@ void KOEventEditor::init()
 
 void KOEventEditor::reload()
 {
-  kDebug(5850) <<"KOEventEditor::reload()";
-
-  if ( mEvent ) readEvent( mEvent );
+  if ( mEvent ) {
+    readEvent( mEvent );
+  }
 }
 
 void KOEventEditor::setupGeneral()
@@ -263,9 +263,9 @@ void KOEventEditor::loadDefaults()
 
 bool KOEventEditor::processInput()
 {
-  kDebug(5850) <<"KOEventEditor::processInput()";
-
-  if ( !validateInput() || !mChanger ) return false;
+  if ( !validateInput() || !mChanger ) {
+    return false;
+  }
 
   QPointer<KOEditorFreeBusy> freeBusy( mFreeBusy );
 
@@ -274,15 +274,13 @@ bool KOEventEditor::processInput()
     Event *oldEvent = mEvent->clone();
     Event *event = mEvent->clone();
 
-    kDebug(5850) <<"KOEventEditor::processInput() write event.";
     writeEvent( event );
-    kDebug(5850) <<"KOEventEditor::processInput() event written.";
 
     if( *event == *mEvent )
       // Don't do anything
-      kDebug(5850) <<"Event not changed";
+      kDebug(5850) << "Event not changed";
     else {
-      kDebug(5850) <<"Event changed";
+      kDebug(5850) << "Event changed";
       //IncidenceChanger::assignIncidence( mEvent, event );
       writeEvent( mEvent );
       mChanger->changeIncidence( oldEvent, mEvent, -1, mIsCounter );
@@ -309,18 +307,18 @@ bool KOEventEditor::processInput()
 
 void KOEventEditor::processCancel()
 {
-  kDebug(5850) <<"KOEventEditor::processCancel()";
-
-  if ( mFreeBusy ) mFreeBusy->cancelReload();
+  if ( mFreeBusy ) {
+    mFreeBusy->cancelReload();
+  }
   if ( mIsCounter ) deleteEvent();
 }
 
 void KOEventEditor::deleteEvent()
 {
-  kDebug(5850) <<"Delete event";
-
-  if ( mEvent )
+  if ( mEvent ) {
     emit deleteIncidenceSignal( mEvent );
+  }
+
   emit dialogClose( mEvent );
   reject();
 }
@@ -377,7 +375,6 @@ void KOEventEditor::loadTemplate( /*const*/ CalendarLocal& cal )
     KMessageBox::error( this,
         i18n("Template does not contain a valid event.") );
   } else {
-    kDebug(5850) <<"KOEventEditor::slotLoadTemplate(): readTemplate";
     readEvent( events.first(), true );
   }
 }
@@ -389,7 +386,6 @@ QStringList& KOEventEditor::templates() const
 
 void KOEventEditor::slotSaveTemplate( const QString &templateName )
 {
-  kDebug(5006) <<"SlotSaveTemplate";
   Event *event = new Event;
   writeEvent( event );
   saveAsTemplate( event, templateName );

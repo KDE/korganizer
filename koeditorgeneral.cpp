@@ -61,6 +61,7 @@
 #include <QHBoxLayout>
 #include <QBoxLayout>
 #include <QTextCharFormat>
+#include <QTextList>
 
 #include "koeditorgeneral.moc"
 
@@ -188,10 +189,43 @@ void KOEditorGeneral::initDescription(QWidget *parent,QBoxLayout *topLayout)
   mDescriptionUnderlineButton->setIcon( KIcon( "format-text-underline" ) );
   connect(mDescriptionUnderlineButton, SIGNAL(clicked()),
           this, SLOT(toggleDescriptionUnderline()));
+  mDescriptionStrikethroughButton = new QPushButton( parent );
+  mDescriptionStrikethroughButton->setIcon( KIcon( "format-text-strikethrough" ) );
+  connect(mDescriptionStrikethroughButton, SIGNAL(clicked()),
+          this, SLOT(toggleDescriptionStrikethrough()));
+  mDescriptionLeftAlignButton = new QPushButton( parent );
+  mDescriptionLeftAlignButton->setIcon( KIcon( "format-justify-left" ) );
+  connect(mDescriptionLeftAlignButton, SIGNAL(clicked()),
+          this, SLOT(toggleDescriptionLeftAlign()));
+  mDescriptionCentreAlignButton = new QPushButton( parent );
+  mDescriptionCentreAlignButton->setIcon( KIcon( "format-justify-center" ) );
+  connect(mDescriptionCentreAlignButton, SIGNAL(clicked()),
+          this, SLOT(toggleDescriptionCentreAlign()));
+  mDescriptionRightAlignButton = new QPushButton( parent );
+  mDescriptionRightAlignButton->setIcon( KIcon( "format-justify-right" ) );
+  connect(mDescriptionRightAlignButton, SIGNAL(clicked()),
+          this, SLOT(toggleDescriptionRightAlign()));
+  mDescriptionUnorderedListButton = new QPushButton( parent );
+  //mDescriptionUnorderedListButton->setIcon( KIcon( "unordered-list" ) );
+  connect(mDescriptionUnorderedListButton, SIGNAL(clicked()),
+          this, SLOT(toggleDescriptionUnorderedList()));
+  mDescriptionOrderedListButton = new QPushButton( parent );
+  //mDescriptionOrderedListButton->setIcon( KIcon( "ordered-list" ) );
+  connect(mDescriptionOrderedListButton, SIGNAL(clicked()),
+          this, SLOT(toggleDescriptionOrderedList()));
+  mRichDescription = new QCheckBox( i18n("Rich Text"), parent );
   htmlLayout->addWidget( mDescriptionBoldButton );
   htmlLayout->addWidget( mDescriptionItalicButton );
   htmlLayout->addWidget( mDescriptionUnderlineButton );
+  htmlLayout->addWidget( mDescriptionStrikethroughButton );
+  htmlLayout->addWidget( mDescriptionLeftAlignButton );
+  htmlLayout->addWidget( mDescriptionCentreAlignButton );
+  htmlLayout->addWidget( mDescriptionRightAlignButton );
+  htmlLayout->addWidget( mDescriptionUnorderedListButton );
+  htmlLayout->addWidget( mDescriptionOrderedListButton );
+  htmlLayout->addWidget( mRichDescription );
   htmlLayout->addStretch();
+
   mDescriptionEdit = new KTextEdit( parent );
   mDescriptionEdit->setWhatsThis(
                                  i18n("Sets the description for this event, to-do or journal. This "
@@ -429,13 +463,13 @@ void KOEditorGeneral::writeIncidence( Incidence *incidence )
 {
   incidence->setSummary( mSummaryEdit->text() );
   incidence->setLocation( mLocationEdit->text() );
-  if ( mRichDescription ) {
+  if ( mRichDescription->isChecked() ) {
     incidence->setDescription( mDescriptionEdit->toHtml(),
-                               mRichDescription );
+                               true );
   }
   else {
     incidence->setDescription( mDescriptionEdit->toPlainText(),
-                               mRichDescription );
+                               false );
   }
   incidence->setCategories( mCategories );
   switch( mSecrecyCombo->currentIndex() ) {
@@ -476,13 +510,12 @@ void KOEditorGeneral::setSummary( const QString &text )
 
 void KOEditorGeneral::setDescription( const QString &text, bool isRich )
 {
+  mRichDescription->setChecked( isRich );
   if ( isRich ) {
     mDescriptionEdit->setHtml( text );
-    mRichDescription = true;
   }
   else {
     mDescriptionEdit->setPlainText( text );
-    mRichDescription = false;
   }
 }
 
@@ -492,7 +525,7 @@ QObject *KOEditorGeneral::typeAheadReceiver() const
 }
 
 void KOEditorGeneral::toggleDescriptionBold() {
-  mRichDescription = true;
+  mRichDescription->setChecked( true );
   QTextCursor cursor( mDescriptionEdit->textCursor() );
   if ( cursor.selectionStart() == cursor.selectionEnd() ) {
     cursor.select( QTextCursor::WordUnderCursor );
@@ -508,7 +541,7 @@ void KOEditorGeneral::toggleDescriptionBold() {
 }
 
 void KOEditorGeneral::toggleDescriptionItalic() {
-  mRichDescription = true;
+  mRichDescription->setChecked( true );
   QTextCursor cursor( mDescriptionEdit->textCursor() );
   if ( cursor.selectionStart() == cursor.selectionEnd() ) {
     cursor.select( QTextCursor::WordUnderCursor );
@@ -519,7 +552,7 @@ void KOEditorGeneral::toggleDescriptionItalic() {
 }
 
 void KOEditorGeneral::toggleDescriptionUnderline() {
-  mRichDescription = true;
+  mRichDescription->setChecked( true );
   QTextCursor cursor( mDescriptionEdit->textCursor() );
   if ( cursor.selectionStart() == cursor.selectionEnd() ) {
     cursor.select( QTextCursor::WordUnderCursor );
@@ -527,4 +560,52 @@ void KOEditorGeneral::toggleDescriptionUnderline() {
   QTextCharFormat text;
   text.setFontUnderline( !cursor.charFormat().fontUnderline() );
   cursor.mergeCharFormat( text );
+}
+
+void KOEditorGeneral::toggleDescriptionStrikethrough() {
+  mRichDescription->setChecked( true );
+  QTextCursor cursor( mDescriptionEdit->textCursor() );
+  if ( cursor.selectionStart() == cursor.selectionEnd() ) {
+    cursor.select( QTextCursor::WordUnderCursor );
+  }
+  QTextCharFormat text;
+  text.setFontStrikeOut( !cursor.charFormat().fontStrikeOut() );
+  cursor.mergeCharFormat( text );
+}
+
+void KOEditorGeneral::toggleDescriptionLeftAlign() {
+  setAlignment( Qt::AlignLeft );
+}
+
+void KOEditorGeneral::toggleDescriptionCentreAlign() {
+  setAlignment( Qt::AlignHCenter );
+}
+
+void KOEditorGeneral::toggleDescriptionRightAlign() {
+  setAlignment( Qt::AlignRight );
+}
+
+void KOEditorGeneral::setAlignment( Qt::Alignment alignment ) {
+  mRichDescription->setChecked( true );
+  QTextCursor cursor( mDescriptionEdit->textCursor() );
+  cursor.select( QTextCursor::LineUnderCursor );
+  QTextBlockFormat text;
+  if ( alignment != cursor.blockFormat().alignment() ) {
+    text.setAlignment( alignment );
+    cursor.mergeBlockFormat( text );
+  }
+}
+
+void KOEditorGeneral::toggleDescriptionOrderedList() {
+  createList( QTextListFormat::ListDecimal );
+}
+
+void KOEditorGeneral::toggleDescriptionUnorderedList() {
+  createList( QTextListFormat::ListDisc );
+}
+
+QTextList *KOEditorGeneral::createList( QTextListFormat::Style style ) {
+  mRichDescription->setChecked( true );
+  QTextCursor cursor( mDescriptionEdit->textCursor() );
+  return cursor.createList( style );
 }

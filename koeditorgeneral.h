@@ -31,6 +31,7 @@
 #include <QLabel>
 #include <QFocusEvent>
 #include <QBoxLayout>
+#include <QTextList>
 
 class QWidget;
 class QBoxLayout;
@@ -106,6 +107,12 @@ class KOEditorGeneral : public QObject
     void toggleDescriptionBold();
     void toggleDescriptionItalic();
     void toggleDescriptionUnderline();
+    void toggleDescriptionStrikethrough();
+    void toggleDescriptionLeftAlign();
+    void toggleDescriptionCentreAlign();
+    void toggleDescriptionRightAlign();
+    void toggleDescriptionOrderedList();
+    void toggleDescriptionUnorderedList();
 
   signals:
     void openCategoryDialog();
@@ -113,6 +120,8 @@ class KOEditorGeneral : public QObject
 
   protected:
     Alarm *alarmFromSimplePage() const;
+    void setAlignment( Qt::Alignment alignment );
+    QTextList *createList( QTextListFormat::Style style );
 
     KLineEdit               *mSummaryEdit;
     KLineEdit               *mLocationEdit;
@@ -131,7 +140,13 @@ class KOEditorGeneral : public QObject
     QPushButton             *mDescriptionBoldButton;
     QPushButton             *mDescriptionItalicButton;
     QPushButton             *mDescriptionUnderlineButton;
-    bool                    mRichDescription;
+    QPushButton             *mDescriptionStrikethroughButton;
+    QPushButton             *mDescriptionLeftAlignButton;
+    QPushButton             *mDescriptionCentreAlignButton;
+    QPushButton             *mDescriptionRightAlignButton;
+    QPushButton             *mDescriptionUnorderedListButton;
+    QPushButton             *mDescriptionOrderedListButton;
+    QCheckBox               *mRichDescription;
 
     enum AlarmStackPages { SimpleAlarmPage, AdvancedAlarmLabel };
 

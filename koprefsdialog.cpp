@@ -37,7 +37,6 @@ using namespace LibKHolidays;
 
 #include <kvbox.h>
 #include <kcolorbutton.h>
-#include <kdebug.h>
 #include <klocale.h>
 #include <kglobal.h>
 #include <kmessagebox.h>
@@ -83,11 +82,11 @@ KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *paren
   QBoxLayout *topTopLayout = new QVBoxLayout( this );
   QTabWidget *tabWidget = new QTabWidget( this );
   topTopLayout->addWidget( tabWidget );
-  
+
   QFrame *personalFrame = new QFrame( this );
   QVBoxLayout *personalLayout = new QVBoxLayout( personalFrame );
   tabWidget->addTab( personalFrame, KIcon( "personal" ), i18n( "Personal" ) );
-  
+
   KPrefsWidBool *emailControlCenter =
       addWidBool( KOPrefs::instance()->emailControlCenterItem(), personalFrame );
   connect(emailControlCenter->checkBox(),SIGNAL(toggled(bool)),
@@ -143,7 +142,7 @@ KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *paren
   saveLayout->addWidget( confirmItem->checkBox() );
   KPrefsWidRadios *destinationItem = addWidRadios( KOPrefs::instance()->destinationItem(), saveFrame);
   saveLayout->addWidget( destinationItem->groupBox() );
-  
+
 
   saveLayout->addStretch( 1 );
 
@@ -183,7 +182,7 @@ class KOPrefsDialogTime : public KPrefsModule
       QVBoxLayout *layout = new QVBoxLayout( this );
       QTabWidget *tabWidget = new QTabWidget( this );
       layout->addWidget( tabWidget );
-      
+
       QFrame *regionalPage = new QFrame( parent );
       tabWidget->addTab( regionalPage, KIcon( "flag" ), i18n( "Regional" ) );
 
@@ -477,7 +476,7 @@ class KOPrefsDialogViews : public KPrefsModule
       QBoxLayout *generalLayout = new QVBoxLayout( topFrame );
       generalLayout->setSpacing( KDialog::spacingHint() );
 
-      
+
       KPrefsWidBool *enableToolTips =
 	  addWidBool( KOPrefs::instance()->enableToolTipsItem(), topFrame );
       generalLayout->addWidget( enableToolTips->checkBox() );
@@ -806,11 +805,9 @@ void KOPrefsDialogColorsAndFonts::updateResources()
 {
   mResourceCombo->clear();
   mResourceIdentifier.clear();
-  kDebug( 5850) <<"KOPrefsDialogColorsAndFonts::updateResources()";
 
   KCal::CalendarResourceManager *manager = KOrg::StdCalendar::self()->resourceManager();
 
-  kDebug(5850) <<"Loading Calendar resources...:";
   KCal::CalendarResourceManager::Iterator it;
   for( it = manager->begin(); it != manager->end(); ++it ) {
     if ( !(*it)->subresources().isEmpty() ) {
@@ -833,8 +830,6 @@ void KOPrefsDialogColorsAndFonts::updateResources()
 
 void KOPrefsDialogColorsAndFonts::setResourceColor()
 {
-  kDebug( 5850) <<"KOPrefsDialogColorsAndFonts::setResorceColor()";
-
   mResourceDict.insert( mResourceIdentifier[mResourceCombo->currentIndex()],
     mResourceButton->color() );
   slotWidChanged();
@@ -842,7 +837,6 @@ void KOPrefsDialogColorsAndFonts::setResourceColor()
 
 void KOPrefsDialogColorsAndFonts::updateResourceColor()
 {
-  kDebug( 5850 ) <<"KOPrefsDialogColorsAndFonts::updateResourceColor()";
   QString res= mResourceIdentifier[mResourceCombo->currentIndex()];
   QColor color = mCategoryDict.value( res );
   if( color.isValid() )  {
@@ -1045,7 +1039,7 @@ KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling( const KCompo
   mGroupwarePage->groupwareTab->setTabIcon( 1, KIcon( "go-down" ) );
 
       // signals and slots connections
-  
+
   connect(mGroupwarePage->publishDays, SIGNAL(valueChanged(int)), SLOT(slotWidChanged()));
   connect(mGroupwarePage->publishUrl, SIGNAL(textChanged(const QString&)), SLOT(slotWidChanged()));
   connect(mGroupwarePage->publishUser, SIGNAL(textChanged(const QString&)), SLOT(slotWidChanged()));
@@ -1396,7 +1390,6 @@ KOPrefsDesignerFields::KOPrefsDesignerFields( const KComponentData &inst, QWidge
 QString KOPrefsDesignerFields::localUiDir()
 {
   QString dir = KStandardDirs::locateLocal( "data", "korganizer/designer/event/");
-  kDebug() <<"KOPrefsDesignerFields::localUiDir():" << dir;
   return dir;
 }
 

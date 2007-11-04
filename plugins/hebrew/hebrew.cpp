@@ -21,10 +21,12 @@
 
 #include "hebrew.h"
 
-#include <KCalendarSystem>
-#include <KConfig>
-#include <KGlobal>
-#include <KStandardDirs>
+#include <kcalendarsystem.h>
+#include <kconfig.h>
+#include <kglobal.h>
+#include <kstandarddirs.h>
+#include <kpluginfactory.h>
+#include <kpluginloader.h>
 
 #include "configdialog.h"
 #include "converter.h"
@@ -38,8 +40,7 @@ class HebrewFactory : public DecorationFactory {
     Decoration *create() { return new Hebrew; }
 };
 
-K_EXPORT_COMPONENT_FACTORY( libkorg_hebrew, HebrewFactory )
-
+K_EXPORT_PLUGIN( HebrewFactory )
 
 Hebrew::Hebrew()
 {

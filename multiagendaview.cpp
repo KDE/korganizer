@@ -174,7 +174,6 @@ int MultiAgendaView::currentDateCount()
 
 void MultiAgendaView::showDates(const QDate & start, const QDate & end)
 {
-  kDebug() ;
   recreateViews();
   FOREACH_VIEW( agendaView )
     agendaView->showDates( start, end );
@@ -188,7 +187,6 @@ void MultiAgendaView::showIncidences(const Incidence::List & incidenceList)
 
 void MultiAgendaView::updateView()
 {
-  kDebug() ;
   recreateViews();
   FOREACH_VIEW( agendaView )
     agendaView->updateView();

@@ -26,7 +26,7 @@
 #include <calendar/plugin.h>
 #include <kcal/incidence.h>
 
-
+#include <QtCore/QPointer>
 #include <QtCore/QDateTime>
 #include <QtCore/QList>
 #include <QtGui/QPrinter>

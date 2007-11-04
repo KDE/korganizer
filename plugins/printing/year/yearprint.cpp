@@ -32,6 +32,8 @@
 #include <kdebug.h>
 #include <kcalendarsystem.h>
 #include <klocale.h>
+#include <kpluginfactory.h>
+#include <kpluginloader.h>
 
 #include <qcheckbox.h>
 #include <qspinbox.h>
@@ -43,7 +45,7 @@ class YearPrintFactory : public KOrg::PrintPluginFactory {
     KOrg::PrintPlugin *create() { return new CalPrintYear; }
 };
 
-K_EXPORT_COMPONENT_FACTORY( libkorg_yearlyprint, YearPrintFactory )
+K_EXPORT_PLUGIN( YearPrintFactory )
 
 
 /**************************************************************

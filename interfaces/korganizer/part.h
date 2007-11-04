@@ -24,7 +24,7 @@
 #include <korganizer/mainwindow.h>
 
 #include <kparts/part.h>
-#include <klibloader.h>
+#include <kpluginfactory.h>
 
 #include <QtCore/QString>
 #include <QtCore/QList>
@@ -54,7 +54,7 @@ class Part : public KParts::Part
     MainWindow *mMainWindow;
 };
 
-class PartFactory : public KLibFactory
+class PartFactory : public KPluginFactory
 {
   public:
     virtual Part *create( MainWindow *parent ) = 0;

@@ -24,9 +24,11 @@
 
 #include "koglobals.h"
 
-#include <KCalendarSystem>
-#include <KConfig>
-#include <KStandardDirs>
+#include <kcalendarsystem.h>
+#include <kconfig.h>
+#include <kstandarddirs.h>
+#include <kpluginfactory.h>
+#include <kpluginloader.h>
 
 using namespace KOrg::CalendarDecoration;
 
@@ -35,8 +37,7 @@ class DatenumsFactory : public DecorationFactory {
     Decoration *create() { return new Datenums; }
 };
 
-K_EXPORT_COMPONENT_FACTORY( libkorg_datenums, DatenumsFactory )
-
+K_EXPORT_PLUGIN( DatenumsFactory )
 
 Datenums::Datenums()
   : mDisplayedInfo( DayOfYear | DaysRemaining )

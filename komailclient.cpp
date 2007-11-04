@@ -124,7 +124,7 @@ bool KOMailClient::mailTo(IncidenceBase *incidence,const QString &recipients,
   }
   QString body = IncidenceFormatter::mailBodyString(incidence);
   bool bcc = KOPrefs::instance()->mBcc;
-  kDebug () <<"KOMailClient::mailTo" << recipients;
+  kDebug (5850) <<"KOMailClient::mailTo" << recipients;
   return send(from,recipients,subject,body,bcc,attachment);
 }
 
@@ -133,8 +133,8 @@ bool KOMailClient::send(const QString &from,const QString &to,
                         const QString &attachment)
 {
   kDebug(5850) <<"KOMailClient::sendMail():\nFrom:" << from <<"\nTo:" << to
-            << "\nSubject:" << subject << "\nBody: \n" << body
-            << "\nAttachment:\n" << attachment;
+               << "\nSubject:" << subject << "\nBody: \n" << body
+               << "\nAttachment:\n" << attachment;
 
   if (KOPrefs::instance()->mMailClient == KOPrefs::MailClientSendmail) {
     bool needHeaders = true;
@@ -217,9 +217,6 @@ int KOMailClient::kMailOpenComposer(const QString& arg0,const QString& arg1,
   const QString& arg2,const QString& arg3,const QString& arg4,int arg5,
   const KUrl& arg6)
 {
-  //kDebug(5850) <<"KOMailClient::kMailOpenComposer("
-  //  << arg0 << "," << arg1 << arg2 << "," << arg3
-  //  << arg4 << "," << arg5 << "," << arg6 << ")";
   int result = 0;
   kapp->updateRemoteUserTimestamp( "org.kde.kmail" );
 #ifdef __GNUC__
@@ -229,10 +226,8 @@ int KOMailClient::kMailOpenComposer(const QString& arg0,const QString& arg1,
   QDBusReply<int> reply = kmail.call("openComposer", arg0, arg1, arg2, arg3, arg4, arg5, arg6.url());
   if (reply.isValid() ) {
       result=reply;
-  }
-  else
-  {
-    kDebug(5850) <<"kMailOpenComposer() call failed.";
+  } else {
+    kDebug(5850) << "kMailOpenComposer() call failed.";
   }
   return result;
 }
@@ -245,13 +240,6 @@ int KOMailClient::kMailOpenComposer( const QString& arg0, const QString& arg1,
                                      const QByteArray& arg11, const QString& arg12,
                                      const QByteArray& arg13, const QByteArray& arg14 )
 {
-    //kDebug(5850) <<"KOMailClient::kMailOpenComposer("
-    //    << arg0 << "," << arg1 << arg2 << "," << arg3
-    //   << arg4 << "," << arg5 << "," << arg6
-    //    << arg7 << "," << arg8 << "," << arg9
-    //    << arg10<< "," << arg11<< "," << arg12
-    //    << arg13<< "," << arg14<< ")";
-
     int result = 0;
 
     kapp->updateRemoteUserTimestamp("org.kde.kmail");
@@ -278,7 +266,7 @@ int KOMailClient::kMailOpenComposer( const QString& arg0, const QString& arg1,
     if (reply.isValid()) {
             result=reply;
     } else {
-      kDebug(5850) <<"kMailOpenComposer() call failed.";
+      kDebug(5850) << "kMailOpenComposer() call failed.";
     }
     return result;
 }

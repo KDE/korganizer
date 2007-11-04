@@ -36,7 +36,6 @@
 #include <kdgantt1/KDGanttViewTaskItem.h>
 #include <kdgantt1/KDGanttViewSubwidgets.h>
 
-#include <kdebug.h>
 #include <klocale.h>
 #include <kiconloader.h>
 #include <kmessagebox.h>
@@ -391,7 +390,6 @@ void KOEditorFreeBusy::readEvent( Event *event )
 
 void KOEditorFreeBusy::slotIntervalColorRectangleMoved( const QDateTime& start, const QDateTime& end )
 {
-  kDebug() <<"slotIntervalColorRectangleMoved" << start <<"," << end;
   mDtStart = start;
   mDtEnd = end;
   emit dateTimesChanged( start, end );
@@ -456,8 +454,6 @@ void KOEditorFreeBusy::timerEvent( QTimerEvent *event )
 void KOEditorFreeBusy::slotInsertFreeBusy( KCal::FreeBusy *fb,
                                            const QString &email )
 {
-  kDebug(5850) <<"KOEditorFreeBusy::slotInsertFreeBusy()" << email;
-
   if ( fb ) {
     fb->sortList();
   }
@@ -689,8 +685,6 @@ void KOEditorFreeBusy::autoReload()
 
 void KOEditorFreeBusy::reload()
 {
-  kDebug(5850) <<"KOEditorFreeBusy::reload()";
-
   FreeBusyItem *item = static_cast<FreeBusyItem *>( mGanttView->firstChild() );
   while ( item ) {
     if (  mForceDownload )

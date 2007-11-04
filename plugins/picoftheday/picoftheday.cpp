@@ -28,9 +28,10 @@
 #include <KIO/Scheduler>
 #include <KLocale>
 #include <KStandardDirs>
+#include <kpluginfactory.h>
+#include <kpluginloader.h>
 
 #include "koglobals.h"
-
 #include "configdialog.h"
 
 #include "picoftheday.moc"
@@ -42,7 +43,7 @@ class PicofthedayFactory : public DecorationFactory {
     Decoration *create() { return new Picoftheday; }
 };
 
-K_EXPORT_COMPONENT_FACTORY( libkorg_picoftheday, PicofthedayFactory )
+K_EXPORT_PLUGIN( PicofthedayFactory )
 
 
 Picoftheday::Picoftheday()
@@ -218,7 +219,7 @@ void POTDElement::step2Result( KJob* job )
 {
   if ( job->error() )
   {
-    kWarning() <<"picoftheday Plugin: could not get POTD image page:" 
+    kWarning() <<"picoftheday Plugin: could not get POTD image page:"
                << job->errorString();
     kDebug() <<"file name:" << mFileName;
     kDebug() <<"full-size image:" << mFullSizeImageUrl.url();
@@ -338,7 +339,7 @@ void POTDElement::step3GetThumbnail()
            << mDlThumbSize;
   QString thumbUrl = thumbnailUrl( mFullSizeImageUrl, thumbWidth ).url();
 
-  kDebug() <<"picoftheday Plugin: got POTD thumbnail URL:" 
+  kDebug() <<"picoftheday Plugin: got POTD thumbnail URL:"
            << thumbUrl;
   mThumbUrl = thumbUrl;
 
