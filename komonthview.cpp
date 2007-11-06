@@ -117,7 +117,12 @@ MonthViewItem::MonthViewItem( Incidence *incidence, const KDateTime &dt, const Q
   mAlarm = false;
   mReply = false;
 
-  QString tipText( IncidenceFormatter::toolTipString( incidence ) );
+  QString tipText;
+  if ( incidence ) {
+    tipText = IncidenceFormatter::toolTipString( incidence );
+  } else {
+    tipText = s;
+  }
   if ( !tipText.isEmpty() ) {
     setToolTip( tipText );
   }
