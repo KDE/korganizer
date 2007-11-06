@@ -33,13 +33,13 @@
 class KComboBox;
 
 namespace KPIM {
-class KDateEdit;
-class KTimeEdit;
-class KTimeZoneComboBox;
+  class KDateEdit;
+  class KTimeEdit;
+  class KTimeZoneComboBox;
 }
 
 namespace KCal {
-class Todo;
+  class Todo;
 }
 using namespace KCal;
 
@@ -50,17 +50,19 @@ class KOEditorGeneralTodo : public KOEditorGeneral
     explicit KOEditorGeneralTodo( QObject *parent = 0 );
     virtual ~KOEditorGeneralTodo();
 
-    void initTime(QWidget *, QBoxLayout *);
-    void initStatus(QWidget *, QBoxLayout *);
-    void initCompletion(QWidget *, QBoxLayout *);
-    void initPriority(QWidget *, QBoxLayout *);
+    void initTime( QWidget *, QBoxLayout * );
+    void initStatus( QWidget *, QBoxLayout * );
+    void initCompletion( QWidget *, QBoxLayout * );
+    void initPriority( QWidget *, QBoxLayout * );
 
     void finishSetup();
 
     /** Set widgets to default values */
     void setDefaults( const QDateTime &due, bool allDay );
+
     /** Read todo object and setup widgets accordingly */
     void readTodo(Todo *);
+
     /** Write todo settings to event object */
     void writeTodo(Todo *);
 
@@ -68,7 +70,7 @@ class KOEditorGeneralTodo : public KOEditorGeneral
     bool validateInput();
 
     /** The todo has been modified externally */
-    void modified (Todo*, int);
+    void modified ( Todo *, int );
 
   signals:
     void dueDateEditToggle( bool );
@@ -89,8 +91,8 @@ class KOEditorGeneralTodo : public KOEditorGeneral
     void setCompletedDate();
 
  private:
-    KPIM::KTimeZoneComboBox       *mTimeZoneComboStart;
-    KPIM::KTimeZoneComboBox       *mTimeZoneComboDue;
+    KPIM::KTimeZoneComboBox *mTimeZoneComboStart;
+    KPIM::KTimeZoneComboBox *mTimeZoneComboDue;
     KDateTime::Spec         mStartSpec;
     KDateTime::Spec         mDueSpec;
 
@@ -113,7 +115,7 @@ class KOEditorGeneralTodo : public KOEditorGeneral
 
     QCheckBox               *mStartCheck;
 
-    QDateTime mCompleted;
+    QDateTime               mCompleted;
 };
 
 #endif
