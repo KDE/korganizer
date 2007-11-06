@@ -128,62 +128,45 @@ MonthViewItem::MonthViewItem( Incidence *incidence, const KDateTime &dt, const Q
   }
 }
 
-void MonthViewItem::paint( QPainter *p )
+void MonthViewItem::drawIt()
 {
-  bool sel = isSelected();
+  kDebug(5850) << "IN drawIt()";
 
-  QColor bgColor = palette().color( QPalette::Normal,
-            sel ? QPalette::Highlight : QPalette::Background );
-  int offset=0;
-  if ( KOPrefs::instance()->monthViewUsesResourceColor() &&
-    mResourceColor.isValid() ) {
-    p->setBackground( QBrush( mResourceColor ) );
-    p->eraseRect( 0, 0, listWidget()->maximumWidth(), height( listWidget() ) );
-    offset=2;
-  }
-  if ( KOPrefs::instance()->monthViewUsesCategoryColor() ) {
-    p->setBackground( QBrush( bgColor ) );
-    p->eraseRect( offset, offset, listWidget()->maximumWidth() - 2 * offset,
-                  height( listWidget() ) - 2 * offset );
-  }
-  int x = 3;
+  // Icon
   if ( mEvent ) {
-    p->drawPixmap( x, 0, mEventPixmap );
-    x += mEventPixmap.width() + 2;
+    setIcon( mEventPixmap );
   }
   if ( mTodo ) {
-    p->drawPixmap( x, 0, mTodoPixmap );
-    x += mTodoPixmap.width() + 2;
+    setIcon( mTodoPixmap );
   }
   if ( mTodoDone ) {
-    p->drawPixmap( x, 0, mTodoDonePixmap );
-    x += mTodoDonePixmap.width() + 2;
+    setIcon( mTodoDonePixmap );
   }
   if ( mRecur ) {
-    p->drawPixmap( x, 0, mRecurPixmap );
-    x += mRecurPixmap.width() + 2;
+    setIcon( mRecurPixmap );
   }
   if ( mAlarm ) {
-    p->drawPixmap( x, 0, mAlarmPixmap );
-    x += mAlarmPixmap.width() + 2;
+    setIcon( mAlarmPixmap );
   }
   if ( mReply ) {
-    p->drawPixmap( x, 0, mReplyPixmap );
-    x += mReplyPixmap.width() + 2;
+    setIcon( mReplyPixmap );
   }
-  QFontMetrics fm = p->fontMetrics();
-  int yPos;
-  int pmheight = qMax( mRecurPixmap.height(),
-                       qMax( mAlarmPixmap.height(), mReplyPixmap.height() ) );
-  if( pmheight < fm.height() ) {
-    yPos = fm.ascent() + fm.leading() / 2;
-  } else {
-    yPos = pmheight / 2 - fm.height() / 2  + fm.ascent();
-  }
-  QColor textColor = getTextColor( bgColor );
-  p->setPen( textColor );
 
-  KWordWrap::drawFadeoutText( p, x, yPos, listWidget()->width() - x, text() );
+  // Background color
+  QColor bgColor =
+    palette().color( QPalette::Normal,
+                     isSelected() ? QPalette::Highlight : QPalette::Background );
+  if ( KOPrefs::instance()->monthViewUsesResourceColor() && mResourceColor.isValid() ) {
+    setBackground( QBrush( mResourceColor ) );
+  }
+  if ( KOPrefs::instance()->monthViewUsesCategoryColor() ) {
+      setBackground( QBrush( bgColor ) );
+  }
+
+  setForeground( QBrush( getTextColor( bgColor ) ) );
+#if 0
+  KWordWrap::drawFadeoutText( &p, x, yPos, listWidget()->width() - x, text() );
+#endif
 }
 
 int MonthViewItem::height( const QListWidget *lw ) const
@@ -424,6 +407,7 @@ class MonthViewCell::CreateItemVisitor :
         mItem->setPalette( mStandardPalette );
       }
       mItem->setEvent( true );
+      mItem->drawIt();
 
       Attendee *me = event->attendeeByMails( KOPrefs::instance()->allEmails() );
       if ( me != 0 ) {
@@ -455,6 +439,7 @@ class MonthViewCell::CreateItemVisitor :
         todo->isCompleted() ? mItem->setTodoDone( true ) : mItem->setTodo( true );
       }
       mItem->setPalette( mStandardPalette );
+      mItem->drawIt();
       return true;
     }
   protected:

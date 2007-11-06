@@ -68,9 +68,9 @@ class MonthViewItem: public QListWidgetItem
 
     void setResourceColor( QColor &color ) { mResourceColor = color; }
     QColor &resourceColor() { return mResourceColor; }
+    void drawIt();
 
   protected:
-    virtual void paint( QPainter * );
     virtual int height( const QListWidget * ) const;
     virtual int width( const QListWidget * ) const;
     //Color of the resource
