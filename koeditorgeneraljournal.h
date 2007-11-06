@@ -56,7 +56,7 @@ class KOEditorGeneralJournal : public KOEditorGeneral
 {
   Q_OBJECT
   public:
-    KOEditorGeneralJournal ( QObject* parent=0, const char *name = 0 );
+    KOEditorGeneralJournal ( QObject *parent=0 );
     virtual ~KOEditorGeneralJournal();
 
     void initDate( QWidget *, QBoxLayout * );

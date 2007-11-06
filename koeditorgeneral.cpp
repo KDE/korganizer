@@ -65,10 +65,9 @@
 
 #include "koeditorgeneral.moc"
 
-KOEditorGeneral::KOEditorGeneral(QObject* parent, const char* name) :
-  QObject( parent )
+KOEditorGeneral::KOEditorGeneral( QObject *parent )
+  : QObject( parent )
 {
-  setObjectName( name );
   mAlarmList.setAutoDelete( true );
 }
 
@@ -91,151 +90,147 @@ void FocusLineEdit::focusInEvent ( QFocusEvent *e )
   KLineEdit::focusInEvent( e );
 }
 
-void KOEditorGeneral::initHeader(QWidget *parent,QBoxLayout *topLayout)
+void KOEditorGeneral::initHeader( QWidget *parent, QBoxLayout *topLayout )
 {
   QGridLayout *headerLayout = new QGridLayout();
   headerLayout->setSpacing( topLayout->spacing() );
-  topLayout->addItem(headerLayout);
+  topLayout->addItem( headerLayout );
 
-#if 0
-  mOwnerLabel = new QLabel(i18n("Owner:"),parent);
-  headerLayout->addWidget( mOwnerLabel, 0, 0, 1, 2 );
-#endif
-
-  QString whatsThis = i18n("Sets the Title of this event or to-do.");
-  QLabel *summaryLabel = new QLabel(i18n("T&itle:"),parent);
+  QString whatsThis = i18n( "Sets the Title of this event or to-do." );
+  QLabel *summaryLabel = new QLabel( i18nc( "event or to-do title", "T&itle:" ), parent );
   summaryLabel->setWhatsThis( whatsThis );
   QFont f = summaryLabel->font();
   f.setBold( true );
-  summaryLabel->setFont(f);
-  headerLayout->addWidget(summaryLabel,1,0);
+  summaryLabel->setFont( f );
+  headerLayout->addWidget( summaryLabel, 1, 0 );
 
-  mSummaryEdit = new FocusLineEdit(parent);
+  mSummaryEdit = new FocusLineEdit( parent );
   mSummaryEdit->setWhatsThis( whatsThis );
   connect( mSummaryEdit, SIGNAL( focusReceivedSignal() ),
            SIGNAL( focusReceivedSignal() ) );
-  headerLayout->addWidget(mSummaryEdit,1,1);
+  headerLayout->addWidget( mSummaryEdit, 1, 1 );
   summaryLabel->setBuddy( mSummaryEdit );
 
-  whatsThis = i18n("Sets where the event or to-do will take place.");
-  QLabel *locationLabel = new QLabel(i18n("&Location:"),parent);
+  whatsThis = i18n( "Sets where the event or to-do will take place." );
+  QLabel *locationLabel = new QLabel( i18n( "&Location:" ), parent );
   locationLabel->setWhatsThis( whatsThis );
-  headerLayout->addWidget(locationLabel,2,0);
+  headerLayout->addWidget( locationLabel, 2, 0 );
 
-  mLocationEdit = new KLineEdit(parent);
+  mLocationEdit = new KLineEdit( parent );
   mLocationEdit->setWhatsThis( whatsThis );
-  headerLayout->addWidget(mLocationEdit,2,1);
+  headerLayout->addWidget( mLocationEdit, 2, 1 );
   locationLabel->setBuddy( mLocationEdit );
 }
 
-void KOEditorGeneral::initCategories(QWidget *parent, QBoxLayout *topLayout)
+void KOEditorGeneral::initCategories( QWidget *parent, QBoxLayout *topLayout )
 {
   QBoxLayout *categoriesLayout = new QHBoxLayout();
   categoriesLayout->setSpacing( topLayout->spacing() );
   topLayout->addItem( categoriesLayout );
 
-  QString whatsThis = i18n("Allows you to select the categories that this "
-		  	   "event or to-do belongs to.");
-
-  mCategoriesButton = new QPushButton(parent);
-  mCategoriesButton->setText(i18n("Select Cate&gories..."));
+  QString whatsThis = i18n( "Allows you to select the categories that this "
+                            "event or to-do belongs to." );
+  mCategoriesButton = new QPushButton( parent );
+  mCategoriesButton->setText( i18n( "Select Cate&gories..." ) );
   mCategoriesButton->setWhatsThis( whatsThis );
-  connect(mCategoriesButton,SIGNAL(clicked()),SLOT(selectCategories()));
-  categoriesLayout->addWidget(mCategoriesButton);
+  connect( mCategoriesButton, SIGNAL(clicked()), SLOT(selectCategories()) );
+  categoriesLayout->addWidget( mCategoriesButton );
 
-  mCategoriesLabel = new KSqueezedTextLabel(parent);
+  mCategoriesLabel = new KSqueezedTextLabel( parent );
   mCategoriesLabel->setWhatsThis( whatsThis );
-  mCategoriesLabel->setFrameStyle(QFrame::Panel|QFrame::Sunken);
-  categoriesLayout->addWidget(mCategoriesLabel,1);
+  mCategoriesLabel->setFrameStyle( QFrame::Panel|QFrame::Sunken );
+  categoriesLayout->addWidget( mCategoriesLabel, 1 );
 }
 
-void KOEditorGeneral::initSecrecy(QWidget *parent, QBoxLayout *topLayout)
+void KOEditorGeneral::initSecrecy( QWidget *parent, QBoxLayout *topLayout )
 {
   QBoxLayout *secrecyLayout = new QHBoxLayout();
   secrecyLayout->setSpacing( topLayout->spacing() );
   topLayout->addItem( secrecyLayout );
 
-  QLabel *secrecyLabel = new QLabel(i18n("Acc&ess:"),parent);
-  QString whatsThis = i18n("Sets whether the access to this event or to-do "
-  			   "is restricted. Please note that KOrganizer "
-			   "currently does not use this setting, so the "
-			   "implementation of the restrictions will depend "
-			   "on the groupware server. This means that events "
-			   "or to-dos marked as private or confidential may "
-			   "be visible to others.");
+  QLabel *secrecyLabel = new QLabel( i18n( "Acc&ess:" ), parent );
+  QString whatsThis = i18n( "Sets whether the access to this event or to-do "
+                            "is restricted. Please note that KOrganizer "
+                            "currently does not use this setting, so the "
+                            "implementation of the restrictions will depend "
+                            "on the groupware server. This means that events "
+                            "or to-dos marked as private or confidential may "
+                            "be visible to others." );
   secrecyLabel->setWhatsThis( whatsThis );
   secrecyLayout->addWidget(secrecyLabel);
 
-  mSecrecyCombo = new KComboBox(parent);
+  mSecrecyCombo = new KComboBox( parent );
   mSecrecyCombo->setWhatsThis( whatsThis );
   mSecrecyCombo->addItems( Incidence::secrecyList() );
-  secrecyLayout->addWidget(mSecrecyCombo);
+  secrecyLayout->addWidget( mSecrecyCombo );
   secrecyLabel->setBuddy( mSecrecyCombo );
 }
 
-void KOEditorGeneral::initDescription(QWidget *parent,QBoxLayout *topLayout)
+void KOEditorGeneral::initDescription( QWidget *parent, QBoxLayout *topLayout )
 {
   QBoxLayout *htmlLayout = new QHBoxLayout();
   topLayout->addItem( htmlLayout );
   mDescriptionBoldButton = new QPushButton( parent );
   mDescriptionBoldButton->setIcon( KIcon( "format-text-bold" ) );
   mDescriptionBoldButton->setToolTip( i18n( "Bold text" ) );
-  connect(mDescriptionBoldButton, SIGNAL(clicked()),
-          this, SLOT(toggleDescriptionBold()));
+  connect( mDescriptionBoldButton, SIGNAL(clicked()),
+           this, SLOT(toggleDescriptionBold()) );
 
   mDescriptionItalicButton = new QPushButton( parent );
   mDescriptionItalicButton->setIcon( KIcon( "format-text-italic" ) );
   mDescriptionItalicButton->setToolTip( i18n( "Italicize text" ) );
-  connect(mDescriptionItalicButton, SIGNAL(clicked()),
-          this, SLOT(toggleDescriptionItalic()));
+  connect( mDescriptionItalicButton, SIGNAL(clicked()),
+           this, SLOT(toggleDescriptionItalic()) );
 
   mDescriptionUnderlineButton = new QPushButton( parent );
   mDescriptionUnderlineButton->setIcon( KIcon( "format-text-underline" ) );
   mDescriptionUnderlineButton->setToolTip( i18n( "Underline text" ) );
-  connect(mDescriptionUnderlineButton, SIGNAL(clicked()),
-          this, SLOT(toggleDescriptionUnderline()));
+  connect( mDescriptionUnderlineButton, SIGNAL(clicked()),
+           this, SLOT(toggleDescriptionUnderline()) );
 
   mDescriptionStrikethroughButton = new QPushButton( parent );
   mDescriptionStrikethroughButton->setIcon( KIcon( "format-text-strikethrough" ) );
   mDescriptionStrikethroughButton->setToolTip( i18n( "Strike-through text" ) );
-  connect(mDescriptionStrikethroughButton, SIGNAL(clicked()),
-          this, SLOT(toggleDescriptionStrikethrough()));
+  connect( mDescriptionStrikethroughButton, SIGNAL(clicked()),
+           this, SLOT(toggleDescriptionStrikethrough()) );
 
   mDescriptionLeftAlignButton = new QPushButton( parent );
   mDescriptionLeftAlignButton->setIcon( KIcon( "format-justify-left" ) );
   mDescriptionLeftAlignButton->setToolTip( i18n( "Left-justify text" ) );
-  connect(mDescriptionLeftAlignButton, SIGNAL(clicked()),
-          this, SLOT(toggleDescriptionLeftAlign()));
+  connect( mDescriptionLeftAlignButton, SIGNAL(clicked()),
+           this, SLOT(toggleDescriptionLeftAlign()) );
 
   mDescriptionCentreAlignButton = new QPushButton( parent );
   mDescriptionCentreAlignButton->setIcon( KIcon( "format-justify-center" ) );
   mDescriptionCentreAlignButton->setToolTip( i18n( "Center text" ) );
-  connect(mDescriptionCentreAlignButton, SIGNAL(clicked()),
-          this, SLOT(toggleDescriptionCentreAlign()));
+  connect( mDescriptionCentreAlignButton, SIGNAL(clicked()),
+           this, SLOT(toggleDescriptionCentreAlign()) );
 
   mDescriptionRightAlignButton = new QPushButton( parent );
   mDescriptionRightAlignButton->setIcon( KIcon( "format-justify-right" ) );
   mDescriptionRightAlignButton->setToolTip( i18n( "Right-justify text" ) );
-  connect(mDescriptionRightAlignButton, SIGNAL(clicked()),
-          this, SLOT(toggleDescriptionRightAlign()));
+  connect( mDescriptionRightAlignButton, SIGNAL(clicked()),
+           this, SLOT(toggleDescriptionRightAlign()) );
 
   mDescriptionUnorderedListButton = new QPushButton( parent );
   //FIXME: use icon when it's available. remove text.
   //mDescriptionUnorderedListButton->setIcon( KIcon( "unordered-list" ) );
-  mDescriptionUnorderedListButton->setText( i18nc( "no icon, so use the html tag", "<ul>" ) );
+  mDescriptionUnorderedListButton->setText(
+    i18nc( "no icon, so use the html tag", "<placeholder>ul</placeholder>" ) );
   mDescriptionUnorderedListButton->setToolTip( i18n( "Unordered-list item" ) );
-  connect(mDescriptionUnorderedListButton, SIGNAL(clicked()),
-          this, SLOT(toggleDescriptionUnorderedList()));
+  connect( mDescriptionUnorderedListButton, SIGNAL(clicked()),
+           this, SLOT(toggleDescriptionUnorderedList()) );
 
   mDescriptionOrderedListButton = new QPushButton( parent );
   //FIXME: use icon when it's available. remove text.
   //mDescriptionOrderedListButton->setIcon( KIcon( "ordered-list" ) );
-  mDescriptionOrderedListButton->setText( i18nc( "no icon, so use the html tag", "<ol>" ) );
+  mDescriptionOrderedListButton->setText(
+    i18nc( "no icon, so use the html tag", "<placeholder>ol</placeholder>" ) );
   mDescriptionOrderedListButton->setToolTip( i18n( "Ordered-list item" ) );
-  connect(mDescriptionOrderedListButton, SIGNAL(clicked()),
-          this, SLOT(toggleDescriptionOrderedList()));
+  connect( mDescriptionOrderedListButton, SIGNAL(clicked()),
+           this, SLOT(toggleDescriptionOrderedList()) );
 
-  mRichDescription = new QCheckBox( i18n("Rich Text"), parent );
+  mRichDescription = new QCheckBox( i18n( "Rich Text" ), parent );
   mRichDescription->setToolTip( i18n( "Toggle Rich Text" ) );
 
   htmlLayout->addWidget( mDescriptionBoldButton );
@@ -252,11 +247,10 @@ void KOEditorGeneral::initDescription(QWidget *parent,QBoxLayout *topLayout)
 
   mDescriptionEdit = new KTextEdit( parent );
   mDescriptionEdit->setWhatsThis(
-                                 i18n("Sets the description for this event, to-do or journal. This "
-      "will be displayed in a reminder if one is set, "
-      "as well as in a tooltip when you hover over the "
-      "event.") );
-  mDescriptionEdit->append("");
+    i18n( "Sets the description for this event, to-do or journal. "
+          "This will be displayed in a reminder if one is set, "
+          "as well as in a tooltip when you hover over the event." ) );
+  mDescriptionEdit->append( "" );
   mDescriptionEdit->setReadOnly( false );
   mDescriptionEdit->setOverwriteMode( false );
   mDescriptionEdit->setLineWrapMode( KTextEdit::WidgetWidth );
@@ -264,21 +258,20 @@ void KOEditorGeneral::initDescription(QWidget *parent,QBoxLayout *topLayout)
   topLayout->addWidget( mDescriptionEdit );
 }
 
-void KOEditorGeneral::initAlarm(QWidget *parent,QBoxLayout *topLayout)
+void KOEditorGeneral::initAlarm( QWidget *parent, QBoxLayout *topLayout )
 {
   QBoxLayout *alarmLayout = new QHBoxLayout();
   alarmLayout->setSpacing( topLayout->spacing() );
-  topLayout->addItem(alarmLayout);
+  topLayout->addItem( alarmLayout );
 
-  mAlarmBell = new QLabel(parent);
-  mAlarmBell->setPixmap(KOGlobals::self()->smallIcon("bell"));
+  mAlarmBell = new QLabel( parent );
+  mAlarmBell->setPixmap( KOGlobals::self()->smallIcon( "bell" ) );
   alarmLayout->addWidget( mAlarmBell );
-
 
   mAlarmStack = new QStackedWidget( parent );
   alarmLayout->addWidget( mAlarmStack );
 
-  mAlarmInfoLabel = new QLabel("XXX reminders configured", mAlarmStack );
+  mAlarmInfoLabel = new QLabel( "XXX reminders configured", mAlarmStack );
   mAlarmStack->insertWidget( AdvancedAlarmLabel, mAlarmInfoLabel );
 
   QWidget *simpleAlarmBox = new QWidget( mAlarmStack );
@@ -286,13 +279,12 @@ void KOEditorGeneral::initAlarm(QWidget *parent,QBoxLayout *topLayout)
 
   QBoxLayout *simpleAlarmLayout = new QHBoxLayout( simpleAlarmBox );
 
-  mAlarmButton = new QCheckBox(i18n("&Reminder:") );
-  mAlarmButton->setWhatsThis(
-       i18n("Activates a reminder for this event or to-do.") );
+  mAlarmButton = new QCheckBox( i18n( "&Reminder:" ) );
+  mAlarmButton->setWhatsThis( i18n( "Activates a reminder for this event or to-do." ) );
   simpleAlarmLayout->addWidget( mAlarmButton );
 
-  QString whatsThis = i18n("Sets how long before the event occurs "
-                           "the reminder will be triggered.");
+  QString whatsThis =
+    i18n( "Sets how long before the event occurs the reminder will be triggered." );
   mAlarmTimeEdit = new QSpinBox();
   mAlarmTimeEdit->setRange( 0, 99999 );
   mAlarmTimeEdit->setObjectName( "alarmTimeEdit" );
@@ -302,37 +294,36 @@ void KOEditorGeneral::initAlarm(QWidget *parent,QBoxLayout *topLayout)
 
   mAlarmIncrCombo = new KComboBox();
   mAlarmIncrCombo->setWhatsThis( whatsThis );
-  mAlarmIncrCombo->addItem( i18n("minute(s)") );
-  mAlarmIncrCombo->addItem( i18n("hour(s)") );
-  mAlarmIncrCombo->addItem( i18n("day(s)") );
+  mAlarmIncrCombo->addItem( i18n( "minute(s)" ) );
+  mAlarmIncrCombo->addItem( i18n( "hour(s)" ) );
+  mAlarmIncrCombo->addItem( i18n( "day(s)" ) );
 //  mAlarmIncrCombo->setMinimumHeight(20);
-  connect(mAlarmButton, SIGNAL(toggled(bool)), mAlarmTimeEdit, SLOT(setEnabled(bool)));
-  connect(mAlarmButton, SIGNAL(toggled(bool)), mAlarmIncrCombo, SLOT(setEnabled(bool)));
+  connect( mAlarmButton, SIGNAL(toggled(bool)), mAlarmTimeEdit, SLOT(setEnabled(bool)) );
+  connect( mAlarmButton, SIGNAL(toggled(bool)), mAlarmIncrCombo, SLOT(setEnabled(bool)) );
   simpleAlarmLayout->addWidget( mAlarmIncrCombo );
 
   mAlarmTimeEdit->setEnabled( false );
   mAlarmIncrCombo->setEnabled( false );
 
-  mAlarmEditButton = new QPushButton( i18n("Advanced"), parent );
+  mAlarmEditButton = new QPushButton( i18nc( "advanced alarm settings", "Advanced" ), parent );
   alarmLayout->addWidget( mAlarmEditButton );
-  connect( mAlarmEditButton, SIGNAL( clicked() ),
-      SLOT( editAlarms() ) );
+  connect( mAlarmEditButton, SIGNAL( clicked() ), SLOT( editAlarms() ) );
 }
 
 void KOEditorGeneral::selectCategories()
 {
-  KPIM::CategorySelectDialog *categoryDialog = new KPIM::CategorySelectDialog( KOPrefs::instance(), mCategoriesButton	 );
+  KPIM::CategorySelectDialog *categoryDialog =
+    new KPIM::CategorySelectDialog( KOPrefs::instance(), mCategoriesButton );
   KOGlobals::fitDialogToScreen( categoryDialog );
   categoryDialog->setSelected( mCategories );
 
-  connect(categoryDialog, SIGNAL(editCategories()), this, SIGNAL(openCategoryDialog()));
+  connect( categoryDialog, SIGNAL(editCategories()), this, SIGNAL(openCategoryDialog()) );
 
   if ( categoryDialog->exec() ) {
     setCategories( categoryDialog->selectedCategories() );
   }
   delete categoryDialog;
 }
-
 
 void KOEditorGeneral::editAlarms()
 {
@@ -350,7 +341,6 @@ void KOEditorGeneral::editAlarms()
   }
 }
 
-
 void KOEditorGeneral::enableAlarm( bool enable )
 {
   mAlarmStack->setEnabled( enable );
@@ -359,21 +349,19 @@ void KOEditorGeneral::enableAlarm( bool enable )
 
 void KOEditorGeneral::setCategories( const QStringList &categories )
 {
-  mCategoriesLabel->setText( categories.join(",") );
+  mCategoriesLabel->setText( categories.join( "," ) );
   mCategories = categories;
 }
 
-void KOEditorGeneral::setDefaults(bool /*allDay*/)
+void KOEditorGeneral::setDefaults( bool allDay )
 {
-#if 0
-  mOwnerLabel->setText(i18n("Owner: ") + KOPrefs::instance()->fullName());
-#endif
+  Q_UNUSED( allDay );
 
   mAlarmList.clear();
   updateDefaultAlarmTime();
   updateAlarmWidgets();
 
-  mSecrecyCombo->setCurrentIndex(Incidence::SecrecyPublic);
+  mSecrecyCombo->setCurrentIndex( Incidence::SecrecyPublic );
 }
 
 void KOEditorGeneral::updateDefaultAlarmTime()
@@ -381,14 +369,14 @@ void KOEditorGeneral::updateDefaultAlarmTime()
   // FIXME: Implement a KPrefsComboItem to solve this in a clean way.
 // FIXME: Use an int value for minutes instead of 5 hardcoded values
   int alarmTime;
-  int a[] = { 1,5,10,15,30 };
+  int a[] = { 1, 5, 10, 15, 30 };
   int index = KOPrefs::instance()->mAlarmTime;
-  if (index < 0 || index > 4) {
+  if ( index < 0 || index > 4 ) {
     alarmTime = 0;
   } else {
     alarmTime = a[index];
   }
-  mAlarmTimeEdit->setValue(alarmTime);
+  mAlarmTimeEdit->setValue( alarmTime );
 }
 
 void KOEditorGeneral::updateAlarmWidgets()
@@ -398,34 +386,34 @@ void KOEditorGeneral::updateAlarmWidgets()
     mAlarmButton->setChecked( false );
   } else if ( mAlarmList.count() > 1 ) {
     mAlarmStack->setCurrentIndex( AdvancedAlarmLabel );
-    mAlarmInfoLabel->setText( i18np("1 reminder configured",
-                                   "%1 reminders configured",
-                                   mAlarmList.count() ) );
+    mAlarmInfoLabel->setText( i18np( "1 reminder configured",
+                                     "%1 reminders configured",
+                                     mAlarmList.count() ) );
   } else {
     Alarm *alarm = mAlarmList.first();
     // Check if its the trivial type of alarm, which can be
     // configured with a simply spin box...
 
-    if ( alarm->type() == Alarm::Display && alarm->text().isEmpty()
-         && alarm->repeatCount() == 0 && !alarm->hasTime()
-         && alarm->hasStartOffset() && alarm->startOffset().asSeconds() < 0 )  {
+    if ( alarm->type() == Alarm::Display && alarm->text().isEmpty() &&
+         alarm->repeatCount() == 0 && !alarm->hasTime() &&
+         alarm->hasStartOffset() && alarm->startOffset().asSeconds() < 0 ) {
       mAlarmStack->setCurrentIndex( SimpleAlarmPage );
       mAlarmButton->setChecked( true );
       int offset = alarm->startOffset().asSeconds();
 
       offset = offset / -60; // make minutes
       int useoffset = offset;
-      if (offset % (24*60) == 0) { // divides evenly into days?
-        useoffset = offset / (24*60);
-        mAlarmIncrCombo->setCurrentIndex(2);
-      } else if (offset % 60 == 0) { // divides evenly into hours?
+      if ( offset % ( 24 * 60 ) == 0 ) { // divides evenly into days?
+        useoffset = offset / ( 24 * 60 );
+        mAlarmIncrCombo->setCurrentIndex( 2 );
+      } else if ( offset % 60 == 0 ) { // divides evenly into hours?
         useoffset = offset / 60;
-        mAlarmIncrCombo->setCurrentIndex(1);
+        mAlarmIncrCombo->setCurrentIndex( 1 );
       }
       mAlarmTimeEdit->setValue( useoffset );
     } else {
       mAlarmStack->setCurrentIndex( AdvancedAlarmLabel );
-      mAlarmInfoLabel->setText( i18n("1 advanced reminder configured") );
+      mAlarmInfoLabel->setText( i18n( "1 advanced reminder configured" ) );
     }
   }
 }
@@ -452,7 +440,7 @@ void KOEditorGeneral::readIncidence( Incidence *incidence )
   mAlarmList.clear();
   Alarm::List::ConstIterator it;
   Alarm::List alarms = incidence->alarms();
-  for( it = alarms.begin(); it != alarms.end(); ++it ) {
+  for ( it = alarms.begin(); it != alarms.end(); ++it ) {
     Alarm *al = new Alarm( *(*it) );
     al->setParent( 0 );
     mAlarmList.append( al );
@@ -488,12 +476,9 @@ void KOEditorGeneral::writeIncidence( Incidence *incidence )
   incidence->setSummary( mSummaryEdit->text() );
   incidence->setLocation( mLocationEdit->text() );
   if ( mRichDescription->isChecked() ) {
-    incidence->setDescription( mDescriptionEdit->toHtml(),
-                               true );
-  }
-  else {
-    incidence->setDescription( mDescriptionEdit->toPlainText(),
-                               false );
+    incidence->setDescription( mDescriptionEdit->toHtml(), true );
+  } else {
+    incidence->setDescription( mDescriptionEdit->toPlainText(), false );
   }
   incidence->setCategories( mCategories );
   switch( mSecrecyCombo->currentIndex() ) {
@@ -537,8 +522,7 @@ void KOEditorGeneral::setDescription( const QString &text, bool isRich )
   mRichDescription->setChecked( isRich );
   if ( isRich ) {
     mDescriptionEdit->setHtml( text );
-  }
-  else {
+  } else {
     mDescriptionEdit->setPlainText( text );
   }
 }
@@ -548,23 +532,24 @@ QObject *KOEditorGeneral::typeAheadReceiver() const
   return mSummaryEdit;
 }
 
-void KOEditorGeneral::toggleDescriptionBold() {
+void KOEditorGeneral::toggleDescriptionBold()
+{
   mRichDescription->setChecked( true );
   QTextCursor cursor( mDescriptionEdit->textCursor() );
   if ( cursor.selectionStart() == cursor.selectionEnd() ) {
     cursor.select( QTextCursor::WordUnderCursor );
   }
   QTextCharFormat text;
-  if (cursor.charFormat().fontWeight() == QFont::Bold ) {
+  if ( cursor.charFormat().fontWeight() == QFont::Bold ) {
     text.setFontWeight( QFont::Normal );
-  }
-  else {
+  } else {
     text.setFontWeight( QFont::Bold );
   }
   cursor.mergeCharFormat( text );
 }
 
-void KOEditorGeneral::toggleDescriptionItalic() {
+void KOEditorGeneral::toggleDescriptionItalic()
+{
   mRichDescription->setChecked( true );
   QTextCursor cursor( mDescriptionEdit->textCursor() );
   if ( cursor.selectionStart() == cursor.selectionEnd() ) {
@@ -575,7 +560,8 @@ void KOEditorGeneral::toggleDescriptionItalic() {
   cursor.mergeCharFormat( text );
 }
 
-void KOEditorGeneral::toggleDescriptionUnderline() {
+void KOEditorGeneral::toggleDescriptionUnderline()
+{
   mRichDescription->setChecked( true );
   QTextCursor cursor( mDescriptionEdit->textCursor() );
   if ( cursor.selectionStart() == cursor.selectionEnd() ) {
@@ -586,7 +572,8 @@ void KOEditorGeneral::toggleDescriptionUnderline() {
   cursor.mergeCharFormat( text );
 }
 
-void KOEditorGeneral::toggleDescriptionStrikethrough() {
+void KOEditorGeneral::toggleDescriptionStrikethrough()
+{
   mRichDescription->setChecked( true );
   QTextCursor cursor( mDescriptionEdit->textCursor() );
   if ( cursor.selectionStart() == cursor.selectionEnd() ) {
@@ -597,19 +584,23 @@ void KOEditorGeneral::toggleDescriptionStrikethrough() {
   cursor.mergeCharFormat( text );
 }
 
-void KOEditorGeneral::toggleDescriptionLeftAlign() {
+void KOEditorGeneral::toggleDescriptionLeftAlign()
+{
   setAlignment( Qt::AlignLeft );
 }
 
-void KOEditorGeneral::toggleDescriptionCentreAlign() {
+void KOEditorGeneral::toggleDescriptionCentreAlign()
+{
   setAlignment( Qt::AlignHCenter );
 }
 
-void KOEditorGeneral::toggleDescriptionRightAlign() {
+void KOEditorGeneral::toggleDescriptionRightAlign()
+{
   setAlignment( Qt::AlignRight );
 }
 
-void KOEditorGeneral::setAlignment( Qt::Alignment alignment ) {
+void KOEditorGeneral::setAlignment( Qt::Alignment alignment )
+{
   mRichDescription->setChecked( true );
   QTextCursor cursor( mDescriptionEdit->textCursor() );
   cursor.select( QTextCursor::LineUnderCursor );
@@ -620,15 +611,18 @@ void KOEditorGeneral::setAlignment( Qt::Alignment alignment ) {
   }
 }
 
-void KOEditorGeneral::toggleDescriptionOrderedList() {
+void KOEditorGeneral::toggleDescriptionOrderedList()
+{
   createList( QTextListFormat::ListDecimal );
 }
 
-void KOEditorGeneral::toggleDescriptionUnorderedList() {
+void KOEditorGeneral::toggleDescriptionUnorderedList()
+{
   createList( QTextListFormat::ListDisc );
 }
 
-QTextList *KOEditorGeneral::createList( QTextListFormat::Style style ) {
+QTextList *KOEditorGeneral::createList( QTextListFormat::Style style )
+{
   mRichDescription->setChecked( true );
   QTextCursor cursor( mDescriptionEdit->textCursor() );
   return cursor.createList( style );

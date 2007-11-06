@@ -47,7 +47,7 @@ class KOEditorGeneralTodo : public KOEditorGeneral
 {
   Q_OBJECT
   public:
-    explicit KOEditorGeneralTodo( QObject *parent = 0, const char *name = 0);
+    explicit KOEditorGeneralTodo( QObject *parent = 0 );
     virtual ~KOEditorGeneralTodo();
 
     void initTime(QWidget *, QBoxLayout *);

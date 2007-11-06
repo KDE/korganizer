@@ -56,9 +56,8 @@
 
 #include "koeditorgeneraltodo.moc"
 
-KOEditorGeneralTodo::KOEditorGeneralTodo(QObject* parent,
-                                         const char* name)
-  : KOEditorGeneral( parent, name )
+KOEditorGeneralTodo::KOEditorGeneralTodo( QObject* parent )
+  : KOEditorGeneral( parent )
 {
 }
 

@@ -51,10 +51,9 @@
 #include <QBoxLayout>
 #include <QPushButton>
 
-KOEditorGeneralJournal::KOEditorGeneralJournal( QObject *parent, const char* name )
-  : KOEditorGeneral( parent, name )
+KOEditorGeneralJournal::KOEditorGeneralJournal( QObject *parent )
+  : KOEditorGeneral( parent )
 {
-  setObjectName( name );
 }
 
 KOEditorGeneralJournal::~KOEditorGeneralJournal()

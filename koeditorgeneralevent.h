@@ -50,7 +50,7 @@ class KOEditorGeneralEvent : public KOEditorGeneral
 {
   Q_OBJECT
   public:
-    explicit KOEditorGeneralEvent( QObject *parent = 0, const char *name = 0 );
+    explicit KOEditorGeneralEvent( QObject *parent = 0 );
     virtual ~KOEditorGeneralEvent();
 
     void initTime(QWidget *,QBoxLayout *);

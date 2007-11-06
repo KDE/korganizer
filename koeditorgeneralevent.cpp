@@ -56,9 +56,8 @@
 
 #include "koeditorgeneralevent.moc"
 
-KOEditorGeneralEvent::KOEditorGeneralEvent(QObject* parent,
-                                           const char* name) :
-  KOEditorGeneral( parent, name)
+KOEditorGeneralEvent::KOEditorGeneralEvent( QObject* parent)
+  : KOEditorGeneral( parent )
 {
   connect( this, SIGNAL( dateTimesChanged( const QDateTime &, const QDateTime & )),
            SLOT( setDuration() ) );
@@ -151,7 +150,7 @@ void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
   flagsBox->addWidget(mHasTimeCheckbox);
   connect( mHasTimeCheckbox, SIGNAL( toggled( bool ) ),
     SLOT( slotHasTimeCheckboxToggled( bool ) ) );
-    
+
   mDurationLabel = new QLabel( timeGroupBox );
   if ( KOPrefs::instance()->mCompactDialogs ) {
     layoutTimeBox->addWidget( mDurationLabel, 3, 0, 1, 5 );
