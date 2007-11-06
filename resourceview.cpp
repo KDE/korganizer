@@ -156,7 +156,7 @@ void ResourceItem::setOn( bool checked )
 {
   if ( checked ) setCheckState( 0, Qt::Checked );
   else setCheckState( 0, Qt::Unchecked );
-  
+
   mActive = checked;
 }
 
@@ -241,16 +241,15 @@ ResourceView::ResourceView( KCal::CalendarResources *calendar, QWidget *parent )
   mListView->setHeaderLabel( i18n( "Calendars" ) );
   topLayout->addWidget( mListView );
 
-  connect( mListView, SIGNAL( itemDoubleClicked ( QTreeWidgetItem *,
-    const QPoint &, int ) ),
-    SLOT( editResource() ) );
-  
+  connect( mListView, SIGNAL( itemDoubleClicked ( QTreeWidgetItem *, int ) ),
+           SLOT( editResource() ) );
+
   mListView->setContextMenuPolicy( Qt::CustomContextMenu );
   connect( mListView, SIGNAL( customContextMenuRequested( const QPoint & ) ),
-    SLOT( showContextMenu( const QPoint & ) ) );
+           SLOT( showContextMenu( const QPoint & ) ) );
 
   connect( mListView, SIGNAL( itemClicked( QTreeWidgetItem *, int ) ),
-    SLOT( slotItemClicked( QTreeWidgetItem *, int ) ) );
+           SLOT( slotItemClicked( QTreeWidgetItem *, int ) ) );
 
   updateView();
 }
@@ -468,7 +467,7 @@ void ResourceView::showContextMenu( const QPoint &pos )
 {
   QTreeWidgetItem *i = mListView->itemAt( pos );
   if ( !i ) return;
-  
+
   KCal::CalendarResourceManager *manager = mCalendar->resourceManager();
   ResourceItem *item = static_cast<ResourceItem *>( i );
 
