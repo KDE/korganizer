@@ -43,12 +43,12 @@ class QPushButton;
 class KSqueezedTextLabel;
 
 namespace KPIM {
-class KDateEdit;
-class KTimeEdit;
+  class KDateEdit;
+  class KTimeEdit;
 }
 
 namespace KCal {
-class Journal;
+  class Journal;
 }
 using namespace KCal;
 
@@ -79,7 +79,7 @@ class KOEditorGeneralJournal : public KOEditorGeneral
     void finishSetup();
 
   public slots:
-    void setCategories(const QStringList &categories);
+    void setCategories( const QStringList &categories );
     void selectCategories();
 
   signals:
