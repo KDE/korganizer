@@ -30,31 +30,14 @@
 
 #include <KHBox>
 
-#include <q3listbox.h>
-#include <q3ptrvector.h>
+#include <QListWidget>
 #include <QKeyEvent>
 #include <QLabel>
 #include <QMouseEvent>
 #include <QPixmap>
 #include <QResizeEvent>
 
-class KNoScrollListBox;
-
-#if 0
-class KOMonthCellToolTip : public QToolTip
-{
-  public:
-    KOMonthCellToolTip( QWidget *parent, KNoScrollListBox *lv );
-
-  protected:
-    void maybeTip( const QPoint &pos );
-
-  private:
-    KNoScrollListBox *eventlist;
-};
-#endif
-
-class KNoScrollListBox: public Q3ListBox
+class KNoScrollListBox: public QListWidget
 {
   Q_OBJECT
   public:
@@ -62,24 +45,9 @@ class KNoScrollListBox: public Q3ListBox
     ~KNoScrollListBox() {}
 
     void setBackground( bool primary, bool workday );
-
-  signals:
-    void shiftDown();
-    void shiftUp();
-    void rightClick();
-
-  protected slots:
-    void keyPressEvent( QKeyEvent *e );
-    void keyReleaseEvent( QKeyEvent *e );
-    void mousePressEvent( QMouseEvent *e );
-    void resizeEvent( QResizeEvent *e );
-    void contentsMouseDoubleClickEvent( QMouseEvent *e );
-
-  private:
-    bool mSqueezing;
 };
 
-class MonthViewItem: public Q3ListBoxItem
+class MonthViewItem: public QListWidgetItem
 {
   public:
     MonthViewItem( Incidence *, const KDateTime &dt, const QString &title );
@@ -103,8 +71,8 @@ class MonthViewItem: public Q3ListBoxItem
 
   protected:
     virtual void paint( QPainter * );
-    virtual int height( const Q3ListBox * ) const;
-    virtual int width( const Q3ListBox * ) const;
+    virtual int height( const QListWidget * ) const;
+    virtual int width( const QListWidget * ) const;
     //Color of the resource
     QColor mResourceColor;
 
@@ -218,8 +186,8 @@ class MonthViewCell : public QWidget
     void resizeEvent( QResizeEvent * );
 
   protected slots:
-    void defaultAction( Q3ListBoxItem * );
-    void contextMenu( Q3ListBoxItem * );
+    void defaultAction( QListWidgetItem * );
+    void contextMenu( const QPoint &pos );
 
   private:
     class CreateItemVisitor;
