@@ -1,6 +1,6 @@
 [Desktop Entry]
 Encoding=UTF-8
-X-KDE-Library=libkorg_datenums
+X-KDE-Library=korg_datenums
 Name=Date Numbers Plugin for Calendars
 Name[af]=Dag nommer inprop module vir kalenders
 Name[bg]=Приставка на календара за дати и смятане с дати

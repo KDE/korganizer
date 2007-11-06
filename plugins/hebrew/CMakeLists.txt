@@ -16,8 +16,7 @@ set( korg_hebrew_PART_SRCS
      hebrew.cpp
    )
 
-kde4_add_plugin( korg_hebrew
-                 WITH_PREFIX ${korg_hebrew_PART_SRCS} )
+kde4_add_plugin( korg_hebrew ${korg_hebrew_PART_SRCS} )
 
 target_link_libraries( korg_hebrew
                        ${KDE4_KDECORE_LIBS}

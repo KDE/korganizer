@@ -9,7 +9,7 @@ set(korg_whatsnextprint_PART_SRCS whatsnextprint.cpp )
 
 kde4_add_ui_files(korg_whatsnextprint_PART_SRCS calprintwhatsnextconfig_base.ui )
 
-kde4_add_plugin(korg_whatsnextprint WITH_PREFIX ${korg_whatsnextprint_PART_SRCS})
+kde4_add_plugin(korg_whatsnextprint ${korg_whatsnextprint_PART_SRCS})
 
 
 

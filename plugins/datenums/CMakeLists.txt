@@ -13,8 +13,7 @@ set( korg_datenums_PART_SRCS
      datenums.cpp
    )
 
-kde4_add_plugin( korg_datenums
-                 WITH_PREFIX ${korg_datenums_PART_SRCS} )
+kde4_add_plugin( korg_datenums ${korg_datenums_PART_SRCS} )
 
 target_link_libraries( korg_datenums
                        ${KDE4_KDECORE_LIBS}

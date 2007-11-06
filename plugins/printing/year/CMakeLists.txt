@@ -9,7 +9,7 @@ set(korg_yearprint_PART_SRCS yearprint.cpp )
 
 kde4_add_ui_files(korg_yearprint_PART_SRCS calprintyearconfig_base.ui )
 
-kde4_add_plugin(korg_yearprint WITH_PREFIX ${korg_yearprint_PART_SRCS})
+kde4_add_plugin(korg_yearprint ${korg_yearprint_PART_SRCS})
 
 
 

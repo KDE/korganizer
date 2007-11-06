@@ -1,6 +1,6 @@
 [Desktop Entry]
 Encoding=UTF-8
-X-KDE-Library=libkorg_journalprint
+X-KDE-Library=korg_journalprint
 Name=Journal Print Style
 Name[af]=Joernaal druk styl
 Name[ca]=Estil d'impressió del diari

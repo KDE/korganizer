@@ -1,6 +1,6 @@
 [Desktop Entry]
 Encoding=UTF-8
-X-KDE-Library=libkorg_timespanview
+X-KDE-Library=korg_timespanview
 Name=Timespan View Plugin for KOrganizer
 Name[af]=Tydlyn aansig inprop module vir KOrganizer
 Name[ca]=Connector de vista de període temporal per a KOrganizer

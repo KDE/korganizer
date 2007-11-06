@@ -13,8 +13,7 @@ set( korg_picoftheday_PART_SRCS
    )
 
 
-kde4_add_plugin( korg_picoftheday
-                 WITH_PREFIX ${korg_picoftheday_PART_SRCS} )
+kde4_add_plugin( korg_picoftheday ${korg_picoftheday_PART_SRCS} )
 
 
 

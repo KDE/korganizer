@@ -1,6 +1,6 @@
 [Desktop Entry]
 Encoding=UTF-8
-X-KDE-Library=libkorg_listprint
+X-KDE-Library=korg_listprint
 Name=List Print Style
 Name[af]=Lys druk styl
 Name[ca]=Estil d'impressió en llista

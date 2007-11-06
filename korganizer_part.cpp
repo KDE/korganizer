@@ -60,7 +60,7 @@
 #include <QVBoxLayout>
 
 typedef KParts::GenericFactory< KOrganizerPart > KOrganizerFactory;
-K_EXPORT_COMPONENT_FACTORY( libkorganizerpart, KOrganizerFactory )
+K_EXPORT_COMPONENT_FACTORY( korganizerpart, KOrganizerFactory )
 
 KOrganizerPart::KOrganizerPart( QWidget *parentWidget, QObject *parent,
                                 const QStringList & ) :

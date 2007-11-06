@@ -42,7 +42,7 @@ class TimespanViewFactory : public KOrg::PartFactory {
     }
 };
 
-K_EXPORT_COMPONENT_FACTORY( libkorg_timespanview, TimespanViewFactory )
+K_EXPORT_COMPONENT_FACTORY( korg_timespanview, TimespanViewFactory )
 
 
 TimespanView::TimespanView(KOrg::MainWindow *parent ) : KOrg::Part(parent), mView(0)

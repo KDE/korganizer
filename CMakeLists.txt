@@ -63,7 +63,7 @@ install(TARGETS theme_bin  DESTINATION ${BIN_INSTALL_DIR} )
 set(kcm_korganizer_PART_SRCS koprefsdialog.cpp )
 
 
-kde4_add_plugin(kcm_korganizer WITH_PREFIX ${kcm_korganizer_PART_SRCS})
+kde4_add_plugin(kcm_korganizer ${kcm_korganizer_PART_SRCS})
 
 
 target_link_libraries(kcm_korganizer ${KDE4_KDECORE_LIBS} korganizer kdepim kholidays)
@@ -78,7 +78,7 @@ install(TARGETS kcm_korganizer  DESTINATION ${PLUGIN_INSTALL_DIR})
 set(korganizerpart_PART_SRCS korganizer_part.cpp )
 
 
-kde4_add_plugin(korganizerpart WITH_PREFIX ${korganizerpart_PART_SRCS})
+kde4_add_plugin(korganizerpart ${korganizerpart_PART_SRCS})
 
 
 
@@ -228,7 +228,15 @@ install( FILES korganizer.kcfg  DESTINATION ${KCFG_INSTALL_DIR})
 install( FILES korganizer_part.rc  DESTINATION ${DATA_INSTALL_DIR}/korganizer)
 install( FILES dbuscalendar.desktop  DESTINATION ${SERVICETYPES_INSTALL_DIR})
 install( FILES tips  DESTINATION ${DATA_INSTALL_DIR}/korganizer)
-install( FILES korganizer_configmain.desktop                      korganizer_configtime.desktop                      korganizer_configviews.desktop                      korganizer_configcolorsandfonts.desktop                      korganizer_configplugins.desktop                      korganizer_configgroupscheduling.desktop                      korganizer_configfreebusy.desktop                      korganizer_configdesignerfields.desktop                      webcal.protocol  DESTINATION ${SERVICES_INSTALL_DIR})
+install( FILES korganizer_configmain.desktop
+               korganizer_configtime.desktop
+               korganizer_configviews.desktop
+               korganizer_configcolorsandfonts.desktop
+               korganizer_configplugins.desktop
+               korganizer_configgroupscheduling.desktop
+               korganizer_configfreebusy.desktop
+               korganizer_configdesignerfields.desktop
+               webcal.protocol  DESTINATION ${SERVICES_INSTALL_DIR})
 install( FILES korganizerui.rc  DESTINATION ${DATA_INSTALL_DIR}/korganizer)
 install( FILES korganizer.upd  DESTINATION ${KCONF_UPDATE_INSTALL_DIR})
 install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/ical2vcal DESTINATION ${BIN_INSTALL_DIR})

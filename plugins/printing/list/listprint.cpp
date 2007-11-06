@@ -44,7 +44,7 @@ class ListPrintFactory : public KOrg::PrintPluginFactory {
     KOrg::PrintPlugin *create() { return new CalPrintList; }
 };
 
-K_EXPORT_COMPONENT_FACTORY( libkorg_listprint, ListPrintFactory )
+K_EXPORT_COMPONENT_FACTORY( korg_listprint, ListPrintFactory )
 
 
 
