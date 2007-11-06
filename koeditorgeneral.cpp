@@ -179,41 +179,65 @@ void KOEditorGeneral::initDescription(QWidget *parent,QBoxLayout *topLayout)
   topLayout->addItem( htmlLayout );
   mDescriptionBoldButton = new QPushButton( parent );
   mDescriptionBoldButton->setIcon( KIcon( "format-text-bold" ) );
+  mDescriptionBoldButton->setToolTip( i18n( "Bold text" ) );
   connect(mDescriptionBoldButton, SIGNAL(clicked()),
           this, SLOT(toggleDescriptionBold()));
+
   mDescriptionItalicButton = new QPushButton( parent );
   mDescriptionItalicButton->setIcon( KIcon( "format-text-italic" ) );
+  mDescriptionItalicButton->setToolTip( i18n( "Italicize text" ) );
   connect(mDescriptionItalicButton, SIGNAL(clicked()),
           this, SLOT(toggleDescriptionItalic()));
+
   mDescriptionUnderlineButton = new QPushButton( parent );
   mDescriptionUnderlineButton->setIcon( KIcon( "format-text-underline" ) );
+  mDescriptionUnderlineButton->setToolTip( i18n( "Underline text" ) );
   connect(mDescriptionUnderlineButton, SIGNAL(clicked()),
           this, SLOT(toggleDescriptionUnderline()));
+
   mDescriptionStrikethroughButton = new QPushButton( parent );
   mDescriptionStrikethroughButton->setIcon( KIcon( "format-text-strikethrough" ) );
+  mDescriptionStrikethroughButton->setToolTip( i18n( "Strike-through text" ) );
   connect(mDescriptionStrikethroughButton, SIGNAL(clicked()),
           this, SLOT(toggleDescriptionStrikethrough()));
+
   mDescriptionLeftAlignButton = new QPushButton( parent );
   mDescriptionLeftAlignButton->setIcon( KIcon( "format-justify-left" ) );
+  mDescriptionLeftAlignButton->setToolTip( i18n( "Left-justify text" ) );
   connect(mDescriptionLeftAlignButton, SIGNAL(clicked()),
           this, SLOT(toggleDescriptionLeftAlign()));
+
   mDescriptionCentreAlignButton = new QPushButton( parent );
   mDescriptionCentreAlignButton->setIcon( KIcon( "format-justify-center" ) );
+  mDescriptionCentreAlignButton->setToolTip( i18n( "Center text" ) );
   connect(mDescriptionCentreAlignButton, SIGNAL(clicked()),
           this, SLOT(toggleDescriptionCentreAlign()));
+
   mDescriptionRightAlignButton = new QPushButton( parent );
   mDescriptionRightAlignButton->setIcon( KIcon( "format-justify-right" ) );
+  mDescriptionRightAlignButton->setToolTip( i18n( "Right-justify text" ) );
   connect(mDescriptionRightAlignButton, SIGNAL(clicked()),
           this, SLOT(toggleDescriptionRightAlign()));
+
   mDescriptionUnorderedListButton = new QPushButton( parent );
+  //FIXME: use icon when it's available. remove text.
   //mDescriptionUnorderedListButton->setIcon( KIcon( "unordered-list" ) );
+  mDescriptionUnorderedListButton->setText( i18nc( "no icon, so use the html tag", "<ul>" ) );
+  mDescriptionUnorderedListButton->setToolTip( i18n( "Unordered-list item" ) );
   connect(mDescriptionUnorderedListButton, SIGNAL(clicked()),
           this, SLOT(toggleDescriptionUnorderedList()));
+
   mDescriptionOrderedListButton = new QPushButton( parent );
+  //FIXME: use icon when it's available. remove text.
   //mDescriptionOrderedListButton->setIcon( KIcon( "ordered-list" ) );
+  mDescriptionOrderedListButton->setText( i18nc( "no icon, so use the html tag", "<ol>" ) );
+  mDescriptionOrderedListButton->setToolTip( i18n( "Ordered-list item" ) );
   connect(mDescriptionOrderedListButton, SIGNAL(clicked()),
           this, SLOT(toggleDescriptionOrderedList()));
+
   mRichDescription = new QCheckBox( i18n("Rich Text"), parent );
+  mRichDescription->setToolTip( i18n( "Toggle Rich Text" ) );
+
   htmlLayout->addWidget( mDescriptionBoldButton );
   htmlLayout->addWidget( mDescriptionItalicButton );
   htmlLayout->addWidget( mDescriptionUnderlineButton );
