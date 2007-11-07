@@ -463,22 +463,25 @@ void MonthViewCell::addIncidence( Incidence *incidence, int multiDay )
       }
       item->setResourceColor( resourceColor );
 
-      // FIXME: Find the correct position (time-wise) to insert the item.
-      //        Currently, the items are displayed in "random" order instead of
-      //        chronologically sorted.
       int i = 0;
       int pos = -1;
       KDateTime dt( item->incidenceDateTime() );
 
-      while ( i < mItemList->count() && pos<0 ) {
+      while ( i < mItemList->count() && pos < 0 ) {
         QListWidgetItem *item = mItemList->item( i );
         MonthViewItem *mvitem = dynamic_cast<MonthViewItem*>( item );
-        if ( mvitem && mvitem->incidenceDateTime()>dt ) {
+        if ( mvitem && mvitem->incidenceDateTime() > dt ) {
           pos = i;
         }
         ++i;
       }
-      mItemList->insertItem( pos, item );
+      if ( pos >= 0 ) {
+        // insert chronologically
+        mItemList->insertItem( pos, item );
+      } else {
+        // append to end of list
+        mItemList->addItem( item );
+      }
     }
   }
 }
