@@ -107,6 +107,7 @@ MonthViewItem::MonthViewItem( Incidence *incidence, const KDateTime &dt, const Q
   mAlarmPixmap     = KOGlobals::self()->smallIcon( "bell" );
   mRecurPixmap     = KOGlobals::self()->smallIcon( "recur" );
   mReplyPixmap     = KOGlobals::self()->smallIcon( "mail-reply-sender" );
+  mHolidayPixmap   = KOGlobals::self()->smallIcon( "favorites" );
 
   mResourceColor = QColor();
   mEvent = false;
@@ -116,6 +117,7 @@ MonthViewItem::MonthViewItem( Incidence *incidence, const KDateTime &dt, const Q
   mRecur = false;
   mAlarm = false;
   mReply = false;
+  mHoliday = false;
 
   QString tipText;
   if ( incidence ) {
@@ -130,8 +132,6 @@ MonthViewItem::MonthViewItem( Incidence *incidence, const KDateTime &dt, const Q
 
 void MonthViewItem::drawIt()
 {
-  kDebug(5850) << "IN drawIt()";
-
   // Icon
   if ( mEvent ) {
     setIcon( mEventPixmap );
@@ -151,6 +151,9 @@ void MonthViewItem::drawIt()
   if ( mReply ) {
     setIcon( mReplyPixmap );
   }
+  if ( mHoliday ) {
+    setIcon( mHolidayPixmap );
+  }
 
   // Background color
   QColor bgColor =
@@ -164,9 +167,6 @@ void MonthViewItem::drawIt()
   }
 
   setForeground( QBrush( getTextColor( bgColor ) ) );
-#if 0
-  KWordWrap::drawFadeoutText( &p, x, yPos, listWidget()->width() - x, text() );
-#endif
 }
 
 int MonthViewItem::height( const QListWidget *lw ) const
@@ -195,26 +195,23 @@ MonthViewCell::MonthViewCell( KOMonthView *parent )
   : QWidget( parent ),
     mMonthView( parent ), mPrimary( false ), mHoliday( false )
 {
-  QVBoxLayout *topLayout = new QVBoxLayout( this );
+  QGridLayout *topLayout = new QGridLayout( this );
   topLayout->setMargin( 0 );
   topLayout->setSpacing( 0 );
-
-  QHBoxLayout *labelLayout = new QHBoxLayout();
-  topLayout->addLayout( labelLayout );
-  mLabel = new QLabel( this );
-  labelLayout->addWidget( mLabel );
-/* TODO: Add code for the loading of the cell decorations around here? */
-  mLabel->setFrameStyle( QFrame::Panel | QFrame::Plain );
-  mLabel->setLineWidth( 1 );
-  mLabel->setAlignment( Qt::AlignCenter );
 
   mItemList = new KNoScrollListBox( this );
   mItemList->setMinimumSize( 10, 10 );
   mItemList->setFrameStyle( QFrame::Panel | QFrame::Plain );
   mItemList->setLineWidth( 1 );
   mItemList->setContextMenuPolicy( Qt::CustomContextMenu );
+  topLayout->addWidget( mItemList, 0, 0 );
 
-  topLayout->addWidget( mItemList );
+/* TODO: Add code for the loading of the cell decorations around here? */
+  mLabel = new QLabel( this );
+  mLabel->setFrameStyle( QFrame::Box | QFrame::Raised );
+  mLabel->setLineWidth( 1 );
+  mLabel->setAlignment( Qt::AlignRight );
+  topLayout->addWidget( mLabel, 1, 0, 1, 2, Qt::AlignRight );
 
   mLabel->raise();
 
@@ -331,12 +328,14 @@ void MonthViewCell::updateCell()
     MonthViewItem *item =
       new MonthViewItem( 0, KDateTime( mDate, KOPrefs::instance()->timeSpec() ), mHolidayString );
     item->setPalette( mHolidayPalette );
+    item->setHoliday( true );
+    item->drawIt();
     mItemList->addItem( item );
   }
 }
 
-class MonthViewCell::CreateItemVisitor :
-      public IncidenceBase::Visitor
+class MonthViewCell::CreateItemVisitor
+  : public IncidenceBase::Visitor
 {
   public:
     CreateItemVisitor() : mItem(0) {}
@@ -407,7 +406,6 @@ class MonthViewCell::CreateItemVisitor :
         mItem->setPalette( mStandardPalette );
       }
       mItem->setEvent( true );
-      mItem->drawIt();
 
       Attendee *me = event->attendeeByMails( KOPrefs::instance()->allEmails() );
       if ( me != 0 ) {
@@ -415,6 +413,7 @@ class MonthViewCell::CreateItemVisitor :
       } else {
         mItem->setReply( false );
       }
+      mItem->drawIt();
       return true;
     }
     bool visit( Todo *todo ) {
@@ -433,8 +432,7 @@ class MonthViewCell::CreateItemVisitor :
 
       mItem = new MonthViewItem( todo, dt, text );
       if ( todo->recurs() ) {
-        mDate < todo->dtDue().date() ?
-        mItem->setTodoDone( true ) : mItem->setTodo( true );
+        mDate < todo->dtDue().date() ? mItem->setTodoDone( true ) : mItem->setTodo( true );
       } else {
         todo->isCompleted() ? mItem->setTodoDone( true ) : mItem->setTodo( true );
       }
@@ -665,8 +663,7 @@ KOMonthView::KOMonthView( Calendar *calendar, QWidget *parent )
 
   dayLayout->addWidget( mTopBox, 0, 0, 1, -1, Qt::AlignCenter );
 
-  // create the day of the week labels (Sun, Mon, etc) and add them to
-  // the layout.
+  // Create the day of the week labels (Sun, Mon, etc)
   mDayLabels.resize( mDaysPerWeek );
   int i;
   for ( i = 0; i < mDaysPerWeek; i++ ) {
@@ -683,13 +680,12 @@ KOMonthView::KOMonthView( Calendar *calendar, QWidget *parent )
     dayLayout->setColumnStretch( i, 1 );
   }
 
-  int row, col;
-
   mCells.resize( mNumCells );
+  int row, col;
   for ( row = 0; row < mNumWeeks; ++row ) {
     for ( col = 0; col < mDaysPerWeek; ++col ) {
       MonthViewCell *cell = new MonthViewCell( this );
-      cell->setCalendar(calendar);
+      cell->setCalendar( calendar );
       mCells[row * mDaysPerWeek + col] = cell;
       dayLayout->addWidget( cell, row + 2, col );
 
@@ -896,17 +892,16 @@ class KOMonthView::GetDateVisitor : public IncidenceBase::Visitor
     bool visit( Event *event ) {
       mStartDate = event->dtStart();
       mEndDate = event->dtEnd();
-
       return true;
     }
     bool visit( Todo *todo ) {
       if ( todo->hasDueDate() ) {
         mStartDate = todo->dtDue();
         mEndDate = todo->dtDue();
-        return true;
       } else {
         return false;
       }
+      return true;
     }
     bool visit( Journal *journal ) {
       mStartDate = journal->dtStart();
@@ -923,7 +918,6 @@ void KOMonthView::changeIncidenceDisplayAdded( Incidence *incidence )
   GetDateVisitor gdv;
 
   if ( !gdv.act( incidence ) ) {
-    kDebug(5850) << "Visiting GetDateVisitor failed.";
     return;
   }
 

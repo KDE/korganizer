@@ -59,6 +59,7 @@ class MonthViewItem: public QListWidgetItem
     void setRecur( bool on ) { mRecur = on; }
     void setAlarm( bool on ) { mAlarm = on; }
     void setReply( bool on ) { mReply = on; }
+    void setHoliday( bool on ) { mHoliday = on; }
 
     void setPalette( const QPalette &p ) { mPalette = p; }
     QPalette palette() const { return mPalette; }
@@ -84,6 +85,7 @@ class MonthViewItem: public QListWidgetItem
     bool mRecur;
     bool mAlarm;
     bool mReply;
+    bool mHoliday;
 
     QPixmap mEventPixmap;
     QPixmap mTodoPixmap;
@@ -92,6 +94,7 @@ class MonthViewItem: public QListWidgetItem
     QPixmap mAlarmPixmap;
     QPixmap mRecurPixmap;
     QPixmap mReplyPixmap;
+    QPixmap mHolidayPixmap;
 
     QPalette mPalette;
     KDateTime mDateTime;
