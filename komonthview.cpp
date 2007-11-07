@@ -492,7 +492,7 @@ void MonthViewCell::removeIncidence( Incidence *incidence )
     MonthViewItem *item = static_cast<MonthViewItem *>( mItemList->item( i ) );
     if ( item && item->incidence() && item->incidence()->uid() == incidence->uid() ) {
       mItemList->removeItemWidget( mItemList->item( i ) );
-      --i;
+      break;
     }
   }
 }
@@ -969,6 +969,7 @@ void KOMonthView::changeIncidenceDisplay( Incidence *incidence, int action )
     for ( int i = 0; i < mCells.count(); i++ ) {
       mCells[i]->removeIncidence( incidence );
     }
+    updateView();
     break;
   default:
     return;
