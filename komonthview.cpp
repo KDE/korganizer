@@ -199,19 +199,18 @@ MonthViewCell::MonthViewCell( KOMonthView *parent )
   topLayout->setMargin( 0 );
   topLayout->setSpacing( 0 );
 
+/* TODO: Add code for the loading of the cell decorations around here? */
+  mLabel = new QLabel( this );
+  mLabel->setFrameStyle( QFrame::Box | QFrame::Raised );
+  mLabel->setLineWidth( 1 );
+  mLabel->setAlignment( Qt::AlignCenter );
+
   mItemList = new KNoScrollListBox( this );
   mItemList->setMinimumSize( 10, 10 );
   mItemList->setFrameStyle( QFrame::Panel | QFrame::Plain );
   mItemList->setLineWidth( 1 );
   mItemList->setContextMenuPolicy( Qt::CustomContextMenu );
   topLayout->addWidget( mItemList, 0, 0 );
-
-/* TODO: Add code for the loading of the cell decorations around here? */
-  mLabel = new QLabel( this );
-  mLabel->setFrameStyle( QFrame::Box | QFrame::Raised );
-  mLabel->setLineWidth( 1 );
-  mLabel->setAlignment( Qt::AlignRight );
-  topLayout->addWidget( mLabel, 1, 0, 1, 2, Qt::AlignRight );
 
   mLabel->raise();
 
