@@ -13,8 +13,7 @@ set( korg_thisdayinhistory_PART_SRCS
    )
 
 
-kde4_add_plugin( korg_thisdayinhistory
-                 WITH_PREFIX ${korg_thisdayinhistory_PART_SRCS} )
+kde4_add_plugin( korg_thisdayinhistory ${korg_thisdayinhistory_PART_SRCS} )
 
 
 

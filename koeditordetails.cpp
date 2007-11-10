@@ -99,7 +99,7 @@ KOAttendeeListView::KOAttendeeListView ( QWidget *parent )
 }
 
 /** KOAttendeeListView is a child class of K3ListView  which supports
- *  dropping of attendees (e.g. from kaddressbook) onto it. If an attendeee
+ *  dropping of attendees (e.g. from kaddressbook) onto it. If an attendee
  *  was dropped, the signal dropped(Attendee*)  is emitted.
  */
 KOAttendeeListView::~KOAttendeeListView()
@@ -243,7 +243,7 @@ KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent )
 #endif
 
   whatsThis = i18n("Edits the name of the attendee selected in the list "
-  		   "above, or adds a new attendee if there are no attendees"
+  		   "above, or adds a new attendee if there are no attendees "
 		   "in the list.");
   QLabel *attendeeLabel = new QLabel( this );
   attendeeLabel->setWhatsThis( whatsThis );

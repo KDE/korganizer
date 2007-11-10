@@ -36,13 +36,13 @@ class KComboBox;
 class QBoxLayout;
 
 namespace KPIM {
-class KDateEdit;
-class KTimeEdit;
-class KTimeZoneComboBox;
+  class KDateEdit;
+  class KTimeEdit;
+  class KTimeZoneComboBox;
 }
 
 namespace KCal {
-class Event;
+  class Event;
 }
 using namespace KCal;
 
@@ -50,16 +50,17 @@ class KOEditorGeneralEvent : public KOEditorGeneral
 {
   Q_OBJECT
   public:
-    explicit KOEditorGeneralEvent( QObject *parent = 0, const char *name = 0 );
+    explicit KOEditorGeneralEvent( QObject *parent = 0 );
     virtual ~KOEditorGeneralEvent();
 
-    void initTime(QWidget *,QBoxLayout *);
-    void initClass(QWidget *,QBoxLayout *);
+    void initTime( QWidget *, QBoxLayout * );
+    void initClass( QWidget *, QBoxLayout * );
 
     void finishSetup();
 
     /** Set widgets to default values */
     void setDefaults( const QDateTime &from, const QDateTime &to, bool allDay );
+
     /**
       Read event object and setup widgets accordingly.
         @param event the event where the new data comes from
@@ -84,13 +85,11 @@ class KOEditorGeneralEvent : public KOEditorGeneral
     void slotHasTimeCheckboxToggled( bool checked );
 
     void startTimeChanged( QTime );
-    void startDateChanged( const QDate& );
+    void startDateChanged( const QDate & );
     void endTimeChanged( QTime );
-    void endDateChanged( const QDate& );
+    void endDateChanged( const QDate & );
     void startSpecChanged();
     void endSpecChanged();
-
-
     void emitDateTimeStr();
 
   signals:

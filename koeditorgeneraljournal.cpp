@@ -51,10 +51,9 @@
 #include <QBoxLayout>
 #include <QPushButton>
 
-KOEditorGeneralJournal::KOEditorGeneralJournal( QObject *parent, const char* name )
-  : KOEditorGeneral( parent, name )
+KOEditorGeneralJournal::KOEditorGeneralJournal( QObject *parent )
+  : KOEditorGeneral( parent )
 {
-  setObjectName( name );
 }
 
 KOEditorGeneralJournal::~KOEditorGeneralJournal()
@@ -66,8 +65,8 @@ void KOEditorGeneralJournal::initTitle( QWidget *parent, QBoxLayout *topLayout )
   QHBoxLayout *hbox = new QHBoxLayout();
   topLayout->addItem( hbox );
 
-  QString whatsThis = i18n("Sets the title of this journal.");
-  QLabel *summaryLabel = new QLabel( i18n("T&itle:"), parent );
+  QString whatsThis = i18n( "Sets the title of this journal." );
+  QLabel *summaryLabel = new QLabel( i18nc( "journal title", "T&itle:" ), parent );
   summaryLabel->setWhatsThis( whatsThis );
   QFont f = summaryLabel->font();
   f.setBold( true );
@@ -80,13 +79,12 @@ void KOEditorGeneralJournal::initTitle( QWidget *parent, QBoxLayout *topLayout )
   hbox->addWidget( mSummaryEdit );
 }
 
-
 void KOEditorGeneralJournal::initDate( QWidget *parent, QBoxLayout *topLayout )
 {
   QBoxLayout *dateLayout = new QHBoxLayout();
   topLayout->addItem( dateLayout );
 
-  mDateLabel = new QLabel( i18n("&Date:"), parent );
+  mDateLabel = new QLabel( i18n( "&Date:" ), parent );
   dateLayout->addWidget( mDateLabel );
 
   mDateEdit = new KPIM::KDateEdit( parent );
@@ -95,13 +93,12 @@ void KOEditorGeneralJournal::initDate( QWidget *parent, QBoxLayout *topLayout )
 
   dateLayout->addStretch();
 
-  mTimeCheckBox = new QCheckBox( i18n("&Time: "), parent );
+  mTimeCheckBox = new QCheckBox( i18n( "&Time: " ), parent );
   dateLayout->addWidget( mTimeCheckBox );
 
   mTimeEdit = new KPIM::KTimeEdit( parent );
   dateLayout->addWidget( mTimeEdit );
-  connect( mTimeCheckBox, SIGNAL(toggled(bool)),
-           mTimeEdit, SLOT(setEnabled(bool)) );
+  connect( mTimeCheckBox, SIGNAL(toggled(bool)), mTimeEdit, SLOT(setEnabled(bool)) );
 
   dateLayout->addStretch();
   setTime( QTime( -1, -1, -1 ) );
@@ -122,40 +119,40 @@ void KOEditorGeneralJournal::setTime( const QTime &time )
   }
 }
 
-void KOEditorGeneralJournal::initCategories(QWidget *parent, QBoxLayout *topLayout)
+void KOEditorGeneralJournal::initCategories( QWidget *parent, QBoxLayout *topLayout )
 {
   QBoxLayout *categoriesLayout = new QHBoxLayout();
   categoriesLayout->setSpacing( topLayout->spacing() );
   topLayout->addItem( categoriesLayout );
 
-  QString whatsThis = i18n("Allows you to select the categories that this "
-      "journal belongs to.");
+  QString whatsThis = i18n( "Allows you to select the categories that this journal belongs to." );
 
-  mCategoriesButton = new QPushButton(parent);
-  mCategoriesButton->setText(i18n("Select Cate&gories..."));
+  mCategoriesButton = new QPushButton( parent );
+  mCategoriesButton->setText( i18n( "Select Cate&gories..." ) );
   mCategoriesButton->setWhatsThis( whatsThis );
-  connect(mCategoriesButton,SIGNAL(clicked()),SLOT(selectCategories()));
-  categoriesLayout->addWidget(mCategoriesButton);
+  connect( mCategoriesButton, SIGNAL(clicked()), SLOT(selectCategories()) );
+  categoriesLayout->addWidget( mCategoriesButton );
 
-  mCategoriesLabel = new KSqueezedTextLabel(parent);
+  mCategoriesLabel = new KSqueezedTextLabel( parent );
   mCategoriesLabel->setWhatsThis( whatsThis );
-  mCategoriesLabel->setFrameStyle(QFrame::Panel|QFrame::Sunken);
-  categoriesLayout->addWidget(mCategoriesLabel,1);
+  mCategoriesLabel->setFrameStyle( QFrame::Panel|QFrame::Sunken );
+  categoriesLayout->addWidget( mCategoriesLabel, 1 );
 }
 
 void KOEditorGeneralJournal::setCategories( const QStringList &categories )
 {
-  mCategoriesLabel->setText( categories.join(",") );
+  mCategoriesLabel->setText( categories.join( "," ) );
   mCategories = categories;
 }
 
 void KOEditorGeneralJournal::selectCategories()
 {
-  KPIM::CategorySelectDialog *categoryDialog = new KPIM::CategorySelectDialog( KOPrefs::instance(), mCategoriesButton  );
+  KPIM::CategorySelectDialog *categoryDialog =
+    new KPIM::CategorySelectDialog( KOPrefs::instance(), mCategoriesButton );
   KOGlobals::fitDialogToScreen( categoryDialog );
   categoryDialog->setSelected( mCategories );
 
-  connect(categoryDialog, SIGNAL(editCategories()), this, SIGNAL(openCategoryDialog()));
+  connect( categoryDialog, SIGNAL(editCategories()), this, SIGNAL(openCategoryDialog()) );
 
   if ( categoryDialog->exec() ) {
     setCategories( categoryDialog->selectedCategories() );
@@ -184,12 +181,11 @@ void KOEditorGeneralJournal::writeJournal( Journal *journal )
   if ( mRichDescription->isChecked() ) {
     journal->setDescription( mDescriptionEdit->toHtml(),
                              true );
-  }
-  else {
+  } else {
     journal->setDescription( mDescriptionEdit->toPlainText(),
                              false );
   }
-  KDateTime tmpDT( mDateEdit->date(), QTime(0,0,0), KOPrefs::instance()->timeSpec() );
+  KDateTime tmpDT( mDateEdit->date(), QTime( 0, 0, 0 ), KOPrefs::instance()->timeSpec() );
   bool hasTime = mTimeCheckBox->isChecked();
   journal->setAllDay( !hasTime );
   if ( hasTime ) {
@@ -215,10 +211,10 @@ void KOEditorGeneralJournal::finishSetup()
 
 bool KOEditorGeneralJournal::validateInput()
 {
-  if (!mDateEdit->date().isValid()) {
+  if ( !mDateEdit->date().isValid() ) {
     KMessageBox::sorry( 0,
-        i18n("Please specify a valid date, for example '%1'.",
-          KGlobal::locale()->formatDate( QDate::currentDate() ) ) );
+                        i18n( "Please specify a valid date, for example '%1'.",
+                              KGlobal::locale()->formatDate( QDate::currentDate() ) ) );
     return false;
   }
 

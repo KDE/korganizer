@@ -33,7 +33,7 @@
 #include <QList>
 
 namespace KCal {
-class CalendarResources;
+  class CalendarResources;
 }
 using namespace KCal;
 class ResourceView;
@@ -42,8 +42,7 @@ class QPushButton;
 class ResourceViewFactory : public CalendarViewExtension::Factory
 {
   public:
-    ResourceViewFactory( KCal::CalendarResources *calendar,
-                         CalendarView *view );
+    ResourceViewFactory( KCal::CalendarResources *calendar, CalendarView *view );
 
     virtual ~ResourceViewFactory(){}
     CalendarViewExtension *create( QWidget * );
@@ -56,31 +55,29 @@ class ResourceViewFactory : public CalendarViewExtension::Factory
     ResourceView *mResourceView;
 };
 
-
 class ResourceItem : public QTreeWidgetItem
 {
   public:
     ResourceItem( KCal::ResourceCalendar *resource, ResourceView *view,
                   QTreeWidget *parent );
-    ResourceItem( KCal::ResourceCalendar *resource, const QString& sub,
-                  const QString& label, ResourceView *view,
+    ResourceItem( KCal::ResourceCalendar *resource, const QString &sub,
+                  const QString &label, ResourceView *view,
                   ResourceItem *parent );
 
     KCal::ResourceCalendar *resource() { return mResource; }
-    const QString& resourceIdentifier() { return mResourceIdentifier; }
+    const QString &resourceIdentifier() { return mResourceIdentifier; }
     bool isSubresource() const { return mIsSubresource; }
     void createSubresourceItems();
     void setStandardResource( bool std );
 
     void update();
 
-    void setResourceColor(QColor& color);
+    void setResourceColor( QColor &color );
     QColor &resourceColor() {return mResourceColor;}
 
     void stateChange( bool active );
 
   protected:
-
     void setGuiState();
     QColor mResourceColor;
 
@@ -124,7 +121,7 @@ class ResourceView : public CalendarViewExtension
 
   protected:
     ResourceItem *findItem( ResourceCalendar * );
-    ResourceItem *findItemByIdentifier( const QString& id );
+    ResourceItem *findItemByIdentifier( const QString &id );
     ResourceItem *currentItem();
 
   protected slots:
@@ -133,7 +130,7 @@ class ResourceView : public CalendarViewExtension
     void editResource();
 
     void slotSubresourceAdded( ResourceCalendar *, const QString &,
-                               const QString &resource,const QString& label );
+                               const QString &resource, const QString &label );
     void slotSubresourceRemoved( ResourceCalendar *, const QString &,
                                  const QString & );
     void closeResource( ResourceCalendar * );

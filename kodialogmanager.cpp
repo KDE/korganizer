@@ -130,7 +130,6 @@ void KODialogManager::showOptionsDialog()
     modules.append( "korganizer_configviews.desktop" );
     modules.append( "korganizer_configcolorsandfonts.desktop" );
     modules.append( "korganizer_configgroupscheduling.desktop" );
-    modules.append( "korganizer_configgroupautomation.desktop" );
     modules.append( "korganizer_configfreebusy.desktop" );
     modules.append( "korganizer_configplugins.desktop" );
     modules.append( "korganizer_configdesignerfields.desktop" );

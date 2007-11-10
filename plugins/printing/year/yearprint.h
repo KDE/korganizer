@@ -39,7 +39,7 @@ class CalPrintYear : public CalPrintPluginBase
   public:
     CalPrintYear():CalPrintPluginBase() {}
     virtual ~CalPrintYear() {}
-    virtual QString description() { return i18n("Print &Year"); }
+    virtual QString description() { return i18n("Print &year"); }
     virtual QString info() { return i18n("Prints a calendar for an entire year"); }
     virtual int sortID() { return 900; }
     virtual bool enabled() { return true; }

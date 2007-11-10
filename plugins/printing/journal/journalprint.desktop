@@ -1,6 +1,6 @@
 [Desktop Entry]
 Encoding=UTF-8
-X-KDE-Library=libkorg_journalprint
+X-KDE-Library=korg_journalprint
 Name=Journal Print Style
 Name[af]=Joernaal druk styl
 Name[ca]=Estil d'impressió del diari
@@ -8,6 +8,7 @@ Name[cs]=Tiskový styl deníku
 Name[da]=Journal udskriftsstil
 Name[de]=Journal Druckstil
 Name[el]=Στυλ εκτύπωσης χρονικού
+Name[eo]=Ĵurnal-Presostilo
 Name[es]=Estilo de impresión del diario
 Name[et]=Päeviku trükkimise stiil
 Name[eu]=Egunkariak inprimatzeko estiloa

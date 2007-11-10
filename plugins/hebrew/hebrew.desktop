@@ -1,6 +1,6 @@
 [Desktop Entry]
 Encoding=UTF-8
-X-KDE-Library=libkorg_hebrew
+X-KDE-Library=korg_hebrew
 Name=Jewish Calendar Plugin
 Name[af]=Joodse kalender inprop module
 Name[bg]=Приставка за еврейския календар
@@ -10,6 +10,7 @@ Name[cs]=Modul židovského kalendáře
 Name[da]=Jødisk kalender-plugin
 Name[de]=Modul für jüdischen Kalender
 Name[el]=Πρόσθετο εβραϊκού ημερολογίου
+Name[eo]=Judkalendar-kromaĵo
 Name[es]=Accesorio de calendario judío
 Name[et]=Juudi kalendri plugin
 Name[eu]=Egutegi judutar plugin-a

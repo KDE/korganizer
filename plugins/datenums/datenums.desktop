@@ -1,6 +1,6 @@
 [Desktop Entry]
 Encoding=UTF-8
-X-KDE-Library=libkorg_datenums
+X-KDE-Library=korg_datenums
 Name=Date Numbers Plugin for Calendars
 Name[af]=Dag nommer inprop module vir kalenders
 Name[bg]=Приставка на календара за дати и смятане с дати
@@ -9,6 +9,7 @@ Name[cs]=Modul pro očíslování dat v kalendáři
 Name[da]=Datonumre-plugin for kalendere
 Name[de]=Kalendertag-Modul für Kalender
 Name[el]=Πρόσθετο αριθμού ημερών για Ημερολόγια
+Name[eo]=Datnumera kromaĵo por Kalendaro
 Name[es]=Accesorio de números de fecha para calendarios
 Name[et]=Kuupäeva nummerdamise plugin kalendritele
 Name[eu]=Egutegientzako data zenbakiak

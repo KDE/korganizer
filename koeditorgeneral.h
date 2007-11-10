@@ -46,7 +46,7 @@ class KTextEdit;
 class KSqueezedTextLabel;
 
 namespace KCal {
-class Incidence;
+  class Incidence;
 }
 using namespace KCal;
 
@@ -70,21 +70,23 @@ class KOEditorGeneral : public QObject
 {
   Q_OBJECT
   public:
-    explicit KOEditorGeneral (QObject* parent=0,const char* name=0);
+    explicit KOEditorGeneral( QObject *parent=0 );
     virtual ~KOEditorGeneral();
 
-    void initHeader(QWidget *,QBoxLayout *);
-    void initDescription(QWidget *,QBoxLayout *);
-    void initSecrecy(QWidget *,QBoxLayout *);
-    void initCategories(QWidget *,QBoxLayout *);
-    void initAlarm(QWidget *,QBoxLayout *);
+    void initHeader( QWidget *, QBoxLayout * );
+    void initDescription( QWidget *, QBoxLayout * );
+    void initSecrecy( QWidget *, QBoxLayout * );
+    void initCategories( QWidget *, QBoxLayout * );
+    void initAlarm( QWidget *, QBoxLayout * );
 
     /** Set widgets to default values */
-    void setDefaults(bool allDay);
+    void setDefaults( bool allDay );
+
     /** Read event object and setup widgets accordingly */
-    void readIncidence(Incidence *);
+    void readIncidence( Incidence * );
+
     /** Write event settings to event object */
-    void writeIncidence(Incidence *);
+    void writeIncidence( Incidence * );
 
     /** Check if the input is valid. */
     bool validateInput() { return true; }
@@ -97,7 +99,7 @@ class KOEditorGeneral : public QObject
     QObject *typeAheadReceiver() const;
 
   public slots:
-    void setCategories(const QStringList &categories);
+    void setCategories( const QStringList &categories );
     void selectCategories();
 
   protected slots:
@@ -126,7 +128,7 @@ class KOEditorGeneral : public QObject
     KLineEdit               *mSummaryEdit;
     KLineEdit               *mLocationEdit;
     QLabel                  *mAlarmBell;
-    QStackedWidget            *mAlarmStack;
+    QStackedWidget          *mAlarmStack;
     QLabel                  *mAlarmInfoLabel;
     QCheckBox               *mAlarmButton;
     QSpinBox                *mAlarmTimeEdit;
@@ -148,7 +150,10 @@ class KOEditorGeneral : public QObject
     QPushButton             *mDescriptionOrderedListButton;
     QCheckBox               *mRichDescription;
 
-    enum AlarmStackPages { SimpleAlarmPage, AdvancedAlarmLabel };
+    enum AlarmStackPages {
+      SimpleAlarmPage,
+      AdvancedAlarmLabel
+    };
 
   private:
     QStringList mCategories;
