@@ -204,6 +204,8 @@ kde4_add_kcfg_files(korganizer_LIB_SRCS koprefs_base.kcfgc )
 
 kde4_add_ui_files(korganizer_LIB_SRCS filteredit_base.ui koeditoralarms_base.ui publishdialog_base.ui template_management_dialog_base.ui kogroupwareprefspage.ui searchdialog_base.ui timescaleedit_base.ui)
 
+qt4_add_resources(korganizer_LIB_SRCS agendaitem_pixmaps/agendaitemtheme.qrc )
+
 qt4_add_dbus_adaptor(korganizer_LIB_SRCS org.kde.korganizer.Korganizer.xml korganizerifaceimpl.h KOrganizerIfaceImpl )
 qt4_add_dbus_adaptor(korganizer_LIB_SRCS org.kde.Korganizer.Calendar.xml actionmanager.h ActionManager )
 qt4_add_dbus_interfaces(korganizer_LIB_SRCS org.kde.korganizer.Korganizer.xml )
