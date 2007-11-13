@@ -12,6 +12,7 @@ X-KDE-ParentComponents=korganizer,kontact_korganizerplugin
 X-KDE-CfgDlgHierarchy=KOrganizer
 
 Name=Time and Date
+Name[el]=Ώρα και Ημερομηνία
 Name[ga]=Am agus Dáta
 Name[ja]=日付と時間
 Name[pt]=Hora e Data
@@ -19,6 +20,7 @@ Name[pt_BR]=Hora e Data
 Name[sv]=Tid och datum
 Name[zh_TW]=時間與日期
 Comment=KOrganizer Time and Date Configuration
+Comment[el]=Ρύθμιση ώρας και ημερομηνίας του KOrganizer
 Comment[ga]=Cumraíocht Ama agus Dáta le haghaidh KOrganizer
 Comment[ja]=KOrganizer 日付と時間の設定
 Comment[pt]=Configuração da Data e Hora no KOrganizer
