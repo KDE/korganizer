@@ -40,7 +40,7 @@
 #include <qpushbutton.h>
 
 KOAlarmClient::KOAlarmClient( QObject *parent, const char *name )
-  : DCOPObject( "ac" ), QObject( parent, name )
+  : DCOPObject( "ac" ), QObject( parent, name ), mDialog( 0 )
 {
   kdDebug(5890) << "KOAlarmClient::KOAlarmClient()" << endl;
 
@@ -94,6 +94,7 @@ KOAlarmClient::~KOAlarmClient()
 {
   delete mCalendar;
   delete mDocker;
+  delete mDialog;
 }
 
 void KOAlarmClient::checkAlarms()
@@ -123,17 +124,17 @@ void KOAlarmClient::createReminder( KCal::Incidence *incidence, QDateTime dt )
   if ( !incidence )
     return;
 
-  AlarmDialog *dialog = new AlarmDialog();
-  dialog->setIncidence( incidence );
-  dialog->setRemindAt( dt );
-  connect( dialog, SIGNAL( finishedSignal( AlarmDialog *) ), SLOT( slotRemove( AlarmDialog *) ) );
-  connect( mDocker, SIGNAL( suspendAllSignal() ), dialog, SLOT( slotUser1() ) );
-  connect( mDocker, SIGNAL( dismissAllSignal() ), dialog, SLOT( slotOk() ) );
-  connect( this, SIGNAL( saveAllSignal() ), dialog, SLOT( slotSave() ) );
-  dialog->wakeUp();
-  mReminders.append( dialog );
-  emit reminderCount( mReminders.count() );
-  saveLastCheckTime(); 
+  if ( !mDialog ) {
+    mDialog = new AlarmDialog();
+    connect( mDialog, SIGNAL(reminderCount(int)), mDocker, SLOT(slotUpdate(int)) );
+    connect( mDocker, SIGNAL(suspendAllSignal()), mDialog, SLOT(suspendAll()) );
+    connect( mDocker, SIGNAL(dismissAllSignal()), mDialog, SLOT(dismissAll()) );
+    connect( this, SIGNAL( saveAllSignal() ), mDialog, SLOT( slotSave() ) );
+  }
+
+  mDialog->addIncidence( incidence, dt );
+  mDialog->wakeUp();
+  saveLastCheckTime();
 }
 
 void KOAlarmClient::slotQuit()
@@ -154,13 +155,6 @@ void KOAlarmClient::quit()
 {
   kdDebug(5890) << "KOAlarmClient::quit()" << endl;
   kapp->quit();
-}
-
-void KOAlarmClient::slotRemove( AlarmDialog *d )
-{
-  mReminders.remove( d );
-  delete d;
-  emit reminderCount( mReminders.count() );
 }
 
 bool KOAlarmClient::commitData( QSessionManager& )
