@@ -1,5 +1,4 @@
 [Desktop Entry]
-Encoding=UTF-8
 X-KDE-Library=korg_hebrew
 Name=Jewish Calendar Plugin
 Name[af]=Joodse kalender inprop module
@@ -66,6 +65,6 @@ Comment[x-test]=xxShows all dates in KOrganizer also in the Jewish calendar syst
 Comment[zh_CN]=在 KOrganizer 中显示犹太教日历系统的全部日期。
 Comment[zh_TW]=在 KOrganizer 中也顯示所有猶太行事曆系統的日期
 Type=Service
-ServiceTypes=Calendar/Plugin,Calendar/Decoration
+X-KDE-ServiceTypes=Calendar/Plugin,Calendar/Decoration
 X-KDE-KOrganizer-HasSettings=true
 X-KDE-PluginInterfaceVersion=2

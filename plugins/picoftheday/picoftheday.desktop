@@ -1,5 +1,4 @@
 [Desktop Entry]
-Encoding=UTF-8
 X-KDE-Library=korg_picoftheday
 Name=Wikipedia Picture Of the Day Plugin for Calendars
 Name[bg]=Приставка на календара за дати и смятане с дати
@@ -20,6 +19,6 @@ Name[x-test]=xxWikipedia Picture Of the Day Plugin for Calendarsxx
 Name[zh_CN]=日历的每日 Wikipedia 贴图插件
 Name[zh_TW]=行事曆維基「本日圖片」外掛程式
 Type=Service
-ServiceTypes=Calendar/Plugin,Calendar/Decoration
+X-KDE-ServiceTypes=Calendar/Plugin,Calendar/Decoration
 X-KDE-KOrganizer-HasSettings=true
 X-KDE-PluginInterfaceVersion=2
