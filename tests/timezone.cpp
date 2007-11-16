@@ -52,7 +52,8 @@ int main(int argc,char **argv)
   kDebug(5850) <<"localtime:" << t->tm_hour <<":" << t->tm_min;
 
   kDebug(5850) <<"tzname:" << tzname[0] << tzname[1];
-#ifndef __APPLE__
+#if !defined(__APPLE__) && !defined(Q_OS_FREEBSD)
+  // The BSD-likes have a timezone(3) function, not a variable
   kDebug(5850) <<"timezone:" << timezone / 3600;
 #else
 #warning port timezone debug output if needed
