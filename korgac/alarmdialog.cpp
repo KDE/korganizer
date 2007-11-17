@@ -165,7 +165,7 @@ void AlarmDialog::slotUser2()
   org::kde::korganizer::Korganizer korganizer("org.kde.korganizer", "/Korganizer", QDBusConnection::sessionBus());
   korganizer.editIncidence(mIncidence->uid());
 
-#ifdef Q_OS_X11
+#ifdef Q_WS_X11
 #ifdef __GNUC__
 #warning "kde4: verify it when kontact will not crash"
 #endif
