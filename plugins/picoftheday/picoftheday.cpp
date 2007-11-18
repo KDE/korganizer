@@ -57,10 +57,11 @@ Picoftheday::~Picoftheday()
 {
 }
 
-/*void Picoftheday::configure( QWidget *parent )
+void Picoftheday::configure( QWidget *parent )
 {
   ConfigDialog dlg( parent );
-}*/
+  dlg.exec();
+}
 
 QString Picoftheday::info()
 {

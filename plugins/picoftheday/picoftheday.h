@@ -34,7 +34,7 @@ class Picoftheday : public Decoration
 
     Element::List createDayElements( const QDate & );
 
-/*    void configure( QWidget *parent );*/
+    void configure( QWidget *parent );
 
     QString info();
 

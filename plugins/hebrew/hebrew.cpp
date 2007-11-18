@@ -62,6 +62,7 @@ Hebrew::~Hebrew()
 void Hebrew::configure( QWidget *parent )
 {
   ConfigDialog dlg( parent );
+  dlg.exec();
 }
 
 Element::List Hebrew::createDayElements( const QDate &date )

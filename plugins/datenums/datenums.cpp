@@ -51,6 +51,7 @@ Datenums::Datenums()
 void Datenums::configure( QWidget *parent )
 {
   ConfigDialog dlg( parent );
+  dlg.exec();
 }
 
 QString Datenums::info()
