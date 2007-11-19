@@ -12,7 +12,7 @@ X-KDE-ParentComponents=korganizer,kontact_korganizerplugin
 X-KDE-CfgDlgHierarchy=KOrganizer
 
 Name=Colors and Fonts
-Name[ca]=Colors i lletres
+Name[ca]=Colors i tipus de lletra
 Name[de]=Farben und Schriftarten
 Name[el]=Χρώματα και γραμματοσειρές
 Name[et]=Värvid ja fondid
@@ -29,7 +29,7 @@ Name[x-test]=xxColors and Fontsxx
 Name[zh_CN]=颜色和字体
 Name[zh_TW]=顏色與字型
 Comment=KOrganizer Colors and Fonts Configuration
-Comment[ca]=Configuració de colors i lletres del KOrganizer
+Comment[ca]=Configuració de colors i tipus de lletra del KOrganizer
 Comment[de]=Farb- und Schriftdarstellung für KOrganizer
 Comment[el]=Ρύθμιση χρωμάτων και γραμματοσειρών του KOrganizer
 Comment[et]=KOrganizeri värvide ja fontide seadistamine
