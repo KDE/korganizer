@@ -20,5 +20,5 @@ Name[zh_CN]=Wikipedia “历史上的今天” 插件
 Name[zh_TW]=維基百科「歷史上的今天」外掛程式
 Type=Service
 X-KDE-ServiceTypes=Calendar/Plugin,Calendar/Decoration
-X-KDE-KOrganizer-HasSettings=true
+X-KDE-KOrganizer-HasSettings=false
 X-KDE-PluginInterfaceVersion=2
