@@ -54,6 +54,7 @@
 #include <QList>
 #include <QDropEvent>
 #include <QDragEnterEvent>
+#include <QPixmapCache>
 
 #include "koagendaitem.moc"
 
@@ -646,16 +647,16 @@ bool KOAgendaItem::overlaps( KOrg::CellItem *o ) const
 }
 
 
-static void conditionalPaint( QPainter *p, bool condition, int &x, int ft,
+static void conditionalPaint( QPainter *p, bool condition, int &x, int y, int ft,
                               const QPixmap &pxmp )
 {
   if ( !condition ) return;
 
-  p->drawPixmap( x, ft, pxmp );
+  p->drawPixmap( x, y, pxmp );
   x += pxmp.width() + ft;
 }
 
-void KOAgendaItem::paintTodoIcon( QPainter *p, int &x, int ft )
+void KOAgendaItem::paintTodoIcon( QPainter *p, int &x, int y, int ft )
 {
   if ( !mIncidence ) return;
   static const QPixmap todoPxmp = KOGlobals::self()->smallIcon("view-calendar-tasks");
@@ -664,20 +665,20 @@ void KOAgendaItem::paintTodoIcon( QPainter *p, int &x, int ft )
   if ( mIncidence->type() != "Todo" ) return;
 
   bool b = ( static_cast<Todo *>( mIncidence ) )->isCompleted();
-  conditionalPaint( p, !b, x, ft, todoPxmp );
-  conditionalPaint( p, b, x, ft, completedPxmp );
+  conditionalPaint( p, !b, x, y, ft, todoPxmp );
+  conditionalPaint( p, b, x, y, ft, completedPxmp );
 }
 
-void KOAgendaItem::paintIcons( QPainter *p, int &x, int ft )
+void KOAgendaItem::paintIcons( QPainter *p, int &x, int y, int ft )
 {
-  paintTodoIcon( p, x, ft );
-  conditionalPaint( p, mIconAlarm,          x, ft, *alarmPxmp );
-  conditionalPaint( p, mIconRecur,          x, ft, *recurPxmp );
-  conditionalPaint( p, mIconReadonly,       x, ft, *readonlyPxmp );
-  conditionalPaint( p, mIconReply,          x, ft, *replyPxmp );
-  conditionalPaint( p, mIconGroup,          x, ft, *groupPxmp );
-  conditionalPaint( p, mIconGroupTentative, x, ft, *groupPxmpTentative );
-  conditionalPaint( p, mIconOrganizer,      x, ft, *organizerPxmp );
+  paintTodoIcon( p, x, y, ft );
+  conditionalPaint( p, mIconAlarm,          x, y, ft, *alarmPxmp );
+  conditionalPaint( p, mIconRecur,          x, y, ft, *recurPxmp );
+  conditionalPaint( p, mIconReadonly,       x, y, ft, *readonlyPxmp );
+  conditionalPaint( p, mIconReply,          x, y, ft, *replyPxmp );
+  conditionalPaint( p, mIconGroup,          x, y, ft, *groupPxmp );
+  conditionalPaint( p, mIconGroupTentative, x, y, ft, *groupPxmpTentative );
+  conditionalPaint( p, mIconOrganizer,      x, y, ft, *organizerPxmp );
 }
 
 void KOAgendaItem::paintEvent( QPaintEvent * )
@@ -686,9 +687,10 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
 
   QPainter p( this );
   p.setRenderHint( QPainter::Antialiasing );
+  const int fmargin = 0; // frame margin
   const int ft = 1; // frame thickness for layout, see drawRoundedRect(),
                     // keep multiple of 2
-  const int margin = 5 + ft; // frame + space between frame and content
+  const int margin = 5 + ft + fmargin ; // frame + space between frame and content
 
 
   // General idea is to always show the icons (even in the all-day events).
@@ -726,13 +728,13 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
       bgColor = KOPrefs::instance()->agendaCalendarItemsToDosDueTodayBackgroundColor();
   }
 
-  QColor frameColor;
   if ( KOPrefs::instance()->agendaViewUsesResourceColor()
      && mResourceColor.isValid() ) {
-    frameColor = mResourceColor;
-  } else {
-    frameColor = bgColor;
+    bgColor = mResourceColor;
   }
+
+  if ( mSelected )
+    bgColor = bgColor.light(110);
 
   QColor textColor = getTextColor(bgColor);
   p.setPen( textColor );
@@ -748,12 +750,10 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
 
   int singleLineHeight = fm.boundingRect( mLabelText ).height();
 
-  p.eraseRect( 0, 0, width(), height() );
-
   bool roundTop = !prevMultiItem();
   bool roundBottom = !nextMultiItem();
 
-  drawRoundedRect( &p, QRect( ft, ft, width() - ft, height() - ft ),
+  drawRoundedRect( &p, QRect( fmargin, fmargin, width() - fmargin * 2, height() - fmargin * 2),
                    mSelected, bgColor, true, ft, roundTop, roundBottom );
 
   // calculate the height of the full version (case 4) to test whether it is
@@ -799,8 +799,8 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
   // it's just a few pixel, one can still guess the whole text from just four pixels' height!
   if ( //( singleLineHeight > height()-4 ) || // ignore margin, be gentle.. Even ignore 2 pixel outside the item
        ( width() < 16 ) ) {
-    int x = margin;
-    paintTodoIcon( &p, x, ft );
+    int x = qRound( (width() - 16) / 2.0 );
+    paintTodoIcon( &p, x, margin, ft );
     return;
   }
 
@@ -813,15 +813,17 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
 
     if ( mIncidence->allDay() ) {
       x += visRect.left();
-      paintIcons( &p, x, ft );
+      int y =  qRound( (height() - 16) / 2.0 );
+      paintIcons( &p, x, y, ft );
       txtWidth = visRect.right() - margin - x;
     }
     else {
-      paintIcons( &p, x, ft );
+      int y =  qRound( (height() - 16) / 2.0 );
+      paintIcons( &p, x, y, ft );
       txtWidth = width() - margin - x;
     }
 
-    int y = ((height() - 2 * ft - singleLineHeight) / 2) + fm.ascent();
+    int y = ((height() - singleLineHeight) / 2) + fm.ascent();
     KWordWrap::drawFadeoutText( &p, x, y,
                                 txtWidth, mLabelText );
     return;
@@ -835,11 +837,11 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
 
     if ( mIncidence->allDay() ) {
       x += visRect.left();
-      paintIcons( &p, x, ft );
+      paintIcons( &p, x, margin, ft );
       txtWidth = visRect.right() - margin - x;
     }
     else {
-      paintIcons( &p, x, ft );
+      paintIcons( &p, x, margin, ft );
       txtWidth = width() - margin - x;
     }
 
@@ -873,21 +875,22 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
               KGlobal::locale()->formatDate(mIncidence->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() ).date()));
 
       // paint headline
-      drawRoundedRect( &p, QRect( ft, ft, width() - ft, - ft + margin + hlHeight), mSelected, bgColor, false, ft, roundTop, false );
+      drawRoundedRect( &p, QRect( fmargin, fmargin, width() - fmargin * 2, - fmargin * 2 + margin + hlHeight), mSelected, bgColor, false, ft, roundTop, false );
     }
 
     x += visRect.left();
     eventX = x;
     txtWidth = visRect.right() - margin - x;
-    paintIcons( &p, x, ft );
+    paintIcons( &p, x, margin, ft );
     hTxtWidth = visRect.right() - margin - x;
   }
   else {
     // paint headline
-     drawRoundedRect( &p, QRect( ft, ft, width() - ft, - ft + margin + hlHeight), mSelected, bgColor, false, ft, roundTop, false );
+     drawRoundedRect( &p, QRect( fmargin, fmargin, width() - fmargin * 2, - fmargin * 2 + margin + hlHeight), mSelected, bgColor, false, ft, roundTop, false );
+
     txtWidth = width() - margin - x;
     eventX = x;
-    paintIcons( &p, x, ft );
+    paintIcons( &p, x, margin, ft );
     hTxtWidth = width() - margin - x;
   }
 
@@ -902,8 +905,8 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
     headline = longH;
     x += (hTxtWidth - hw) / 2;
   }
-  p.setBackground( QBrush( frameColor ) );
-  p.setPen( getTextColor( frameColor ) );
+  p.setBackground( QBrush( bgColor ) );
+  p.setPen( getTextColor( bgColor ) );
   KWordWrap::drawFadeoutText( &p, x, (margin + hlHeight + fm.ascent())/2 - 2, hTxtWidth, headline );
 
   // draw event text
@@ -929,600 +932,196 @@ void KOAgendaItem::drawRoundedRect( QPainter *p, const QRect& rect,
 				    bool selected, const QColor& bgColor,
                                     bool frame, int /*ft*/, bool roundTop, bool roundBottom )
 {
-	QRect r = rect;
-	p->save();
+  QRect r = rect;
+  r.adjust(0,0,1,1);
 
-	QPainterPath path;
+  p->save();
 
-	bool shrinkWidth = r.width() < 16;
-	bool shrinkHeight = r.height() < 16;
+  QPainterPath path;
 
-	qreal rnd = 2.1;
-	int sw = shrinkWidth? 7 : 11;
-	int sh = shrinkHeight ? 7 : 11;
-	QRectF tr( r.x()+r.width()-sw-rnd, r.y()+rnd, sw, sh );
-	QRectF tl( r.x()+rnd, r.y()+rnd, sw, sh );
-	QRectF bl( r.x()+rnd, r.y()+r.height()-sh-1-rnd, sw, sh );
-	QRectF br( r.x()+r.width()-sw-rnd, r.y()+r.height()-sh-1-rnd, sw, sh );
+  bool shrinkWidth = r.width() < 16;
+  bool shrinkHeight = r.height() < 16;
 
-	if( roundTop ) {
-		path.moveTo( tr.topRight() );
-		path.arcTo( tr, 0.0, 90.0 );
-		path.lineTo( tl.topRight() );
-		path.arcTo( tl, 90.0, 90.0 );
-	} else {
-		path.moveTo( tr.topRight() );
-		path.lineTo( tl.topLeft() );
-	}
+  qreal rnd = 2.1;
+  int sw = shrinkWidth? 10 : 11;
+  int sh = shrinkHeight ? 10 : 11;
+  QRectF tr( r.x()+r.width()-sw-rnd, r.y()+rnd, sw, sh );
+  QRectF tl( r.x()+rnd, r.y()+rnd, sw, sh );
+  QRectF bl( r.x()+rnd, r.y()+r.height()-sh-1-rnd, sw, sh );
+  QRectF br( r.x()+r.width()-sw-rnd, r.y()+r.height()-sh-1-rnd, sw, sh );
 
-	if( roundBottom ) {
-		path.lineTo( bl.topLeft() );
-		path.arcTo( bl, 180.0, 90.0 );
-		path.lineTo( br.bottomLeft() );
-		path.arcTo( br, 270.0, 90.0 );
-	} else {
-		path.lineTo( bl.bottomLeft() );
-		path.lineTo( br.bottomRight() );
-	}
-	path.closeSubpath();
+  if( roundTop ) {
+    path.moveTo( tr.topRight() );
+    path.arcTo( tr, 0.0, 90.0 );
+    path.lineTo( tl.topRight() );
+    path.arcTo( tl, 90.0, 90.0 );
+  } else {
+    path.moveTo( tr.topRight() );
+    path.lineTo( tl.topLeft() );
+  }
 
-	// header
-	if ( !frame ) {
-		QLinearGradient gradient( QPointF(r.x(), r.y()), QPointF(r.x(), r.y()+r.height()) );
+  if( roundBottom ) {
+    path.lineTo( bl.topLeft() );
+    path.arcTo( bl, 180.0, 90.0 );
+    path.lineTo( br.bottomLeft() );
+    path.arcTo( br, 270.0, 90.0 );
+  } else {
+    path.lineTo( bl.bottomLeft() );
+    path.lineTo( br.bottomRight() );
+  }
+  path.closeSubpath();
 
-		if( selected ) {
-			gradient.setColorAt(0, QColor(0,0,0,40));
-			gradient.setColorAt(1, QColor(255,255,255,30));
-		} else {
-			gradient.setColorAt(0, QColor(255,255,255,70));
-			gradient.setColorAt(1, QColor(0,0,0,20));
-		}
+  // header
+  if ( !frame ) {
+    QLinearGradient gradient( QPointF(r.x(), r.y()), QPointF(r.x(), r.height()) );
 
-		p->setBrush(gradient);
-		p->setPen(Qt::NoPen);
-		p->drawPath(path);
+    if( selected ) {
+      QColor top = bgColor.dark(250);
+      top.setAlpha(40);
+      gradient.setColorAt(0, top);
+      gradient.setColorAt(1, QColor(255,255,255,30));
+    } else {
+      gradient.setColorAt(0, QColor(255,255,255,90));
+      gradient.setColorAt(1, QColor(0,0,0,10));
+    }
 
-		p->setRenderHint(QPainter::Antialiasing, false);
-		p->setPen(QColor(0,0,0,30));
-		p->drawLine(r.x()+3, r.y()+r.height()-4, r.x()+r.width()-4, r.y()+r.height()-4);
-		p->setPen(QColor(255,255,255,60));
-		p->drawLine(r.x()+3, r.y()+r.height()-3, r.x()+r.width()-4, r.y()+r.height()-3);
+    p->setBrush(gradient);
+    p->setPen(Qt::NoPen);
+    p->drawPath(path);
 
-		p->restore();
-		return;
-	}
+    QPixmap separator;
+    QString key("ko_hsep");
+    if ( !QPixmapCache::find( key, separator ) ) {
+      separator = QPixmap(":/headerSeparator.png");
+      QPixmapCache::insert(key, separator );
+    }
+    p->fillRect(QRect(r.x()+3, r.y()+r.height()-2, r.x()+r.width()-4, 2), QBrush(separator));
 
-	QLinearGradient gradient(QPointF(r.x(), r.y()), QPointF(r.x(), r.y()+r.height()));
-	gradient.setColorAt(0, bgColor.light(115));
-	if(r.height()-20 > 0) {
-		qreal b = (r.height() - 20.0) / r.height();
-		gradient.setColorAt(b, bgColor);
-	}
-	gradient.setColorAt(1, bgColor.dark(110));
+    p->restore();
+    return;
+  }
 
-	p->setBrush(gradient);
-	p->setPen(Qt::NoPen);
-	p->drawPath(path);
+  QLinearGradient gradient(QPointF(r.x(), r.y()), QPointF(r.x(), r.height()));
 
-	p->setRenderHint(QPainter::Antialiasing, false);
+  if(r.height() > 50 ) {
+    if ( mIncidence->allDay() && mIncidence->dtStart() == mIncidence->dtEnd() && mIncidence->type() != "Todo" ) {
+      gradient.setColorAt(0, bgColor.light(130));
+      qreal t = 1.0 - (r.height() - 18.0) / r.height();
+      gradient.setColorAt(t, bgColor.light(115));
+      qreal b = (r.height() - 20.0) / r.height();
+      gradient.setColorAt(b, bgColor);
+    } else {
+      gradient.setColorAt(0, bgColor.light(115));
+      qreal b = (r.height() - 20.0) / r.height();
+      gradient.setColorAt(b, bgColor);
+    }
+    gradient.setColorAt(1, bgColor.dark(110));
+  } else {
+    if ( mIncidence->allDay() && mIncidence->dtStart() == mIncidence->dtEnd() && mIncidence->type() != "Todo" ) {
+      gradient.setColorAt(0, bgColor.light(130));
+      gradient.setColorAt(0.35, bgColor.light(115));
+      gradient.setColorAt(0.65, bgColor);
+    } else {
+      gradient.setColorAt(0, bgColor.light(115));
+      gradient.setColorAt(0.65, bgColor);
+    }
+    gradient.setColorAt(1, bgColor.dark(110));
+  }
 
-	if ( r.width() - 16 > 0 ) {
+  p->setBrush(gradient);
+  p->setPen(Qt::NoPen);
+  p->drawPath(path);
 
-		int x = r.x()+8;
-		int x2 = r.x()+r.width()-9;
-		int y = r.y();
+  p->setRenderHint(QPainter::Antialiasing, false);
 
-		// drawLine don't draw points
-		if ( x == x2 ) {
-			x2 += 1;
-			p->setClipRect(QRect(x, y, 1, r.height()));
-		}
+  if ( r.width() - 16 > 0 ) {
 
-		// top lines
-		p->setPen(QColor(0,0,0,4));
-		p->drawLine(x, y, x2, y);
-		p->setPen(QColor(0,0,0,32));
-		p->drawLine(x, y+1, x2, y+1);
-		p->setPen(QColor(252,252,252,85));
-		p->drawLine(x, y+2, x2, y+2);
-		p->setPen(QColor(244,244,244,25));
-		p->drawLine(x, y+3, x2, y+3);
-		p->setPen(QColor(191,191,191,4));
-		p->drawLine(x, y+4, x2, y+4);
+    QPixmap topLines;
+    QString key("ko_t");
+    if ( !QPixmapCache::find( key, topLines ) ) {
+      topLines = QPixmap(":/topLines.png");
+      QPixmapCache::insert(key, topLines );
+    }
+    p->setBrushOrigin(r.x()+8, r.y());
+    p->fillRect(QRect(r.x()+8, r.y(), r.width()-16, 5), QBrush(topLines));
 
-		// bottom lines
-		y = r.y()+r.height()-6;
-		p->setPen(QColor(255,255,255,3));
-		p->drawLine(x, y, x2, y);
-		p->setPen(QColor(255,255,255,24));
-		p->drawLine(x, y+1, x2, y+1);
-		p->setPen(QColor(255,255,255,84));
-		p->drawLine(x, y+2, x2, y+2);
-		p->setPen(QColor(0,0,0,102));
-		p->drawLine(x, y+3, x2, y+3);
-		p->setPen(QColor(0,0,0,51));
-		p->drawLine(x, y+4, x2, y+4);
-		p->setPen(QColor(0,0,0,15));
-		p->drawLine(x, y+5, x2, y+5);
+    QPixmap bottomLines;
+    key = QString("ko_b");
+    if ( !QPixmapCache::find( key, bottomLines ) ) {
+      bottomLines = QPixmap(":/bottomLines.png");
+      QPixmapCache::insert(key, bottomLines );
+    }
+    p->setBrushOrigin(r.x()+8, r.y()+r.height()-6);
+    p->fillRect(QRect(r.x()+8, r.y()+r.height()-6, r.width()-16, 6), QBrush(bottomLines));
 
-		p->setClipping(false);
-	}
-	if ( r.height() - 16 > 0 ) {
+  }
 
-		int x = r.x();
-		int y = r.y()+8;
-		int y2 = r.y()+r.height()-9;
+  if ( r.height() - 16 > 0 ) {
 
-		if ( y == y2 ) {
-			y2 += 1;
-			p->setClipRect(QRect(x, y, r.width(), 1));
-		}
+    QPixmap leftLines;
+    QString key("ko_l");
+    if ( !QPixmapCache::find( key, leftLines ) ) {
+      leftLines = QPixmap(":/leftLines.png");
+      QPixmapCache::insert(key, leftLines );
+    }
+    p->setBrushOrigin(r.x(), r.y()+8);
+    p->fillRect(QRect(r.x(), r.y()+8, 5, r.height()-16), QBrush(leftLines));
 
-		// left lines
-		p->setPen(QColor(0,0,0,14));
-		p->drawLine(x, y, x, y2);
-		p->setPen(QColor(0,0,0,50));
-		p->drawLine(x+1, y, x+1, y2);
-		p->setPen(QColor(252,252,252,85));
-		p->drawLine(x+2, y, x+2, y2);
-		p->setPen(QColor(244,244,244,25));
-		p->drawLine(x+2, y, x+2, y2);
-		p->setPen(QColor(191,191,191,4));
-		p->drawLine(x+3, y, x+3, y2);
+    QPixmap rightLines;
+    key = QString("ko_r");
+    if ( !QPixmapCache::find( key, rightLines ) ) {
+      rightLines = QPixmap(":/rightLines.png");
+      QPixmapCache::insert(key, rightLines );
+    }
+    p->setBrushOrigin(r.x()+r.width()-5, r.y()+8);
+    p->fillRect(QRect(r.x()+r.width()-5, r.y()+8, 5, r.height()-16), QBrush(rightLines));
+  }
 
-		// right lines
-		x = r.x()+r.width()-5;
-		p->setPen(QColor(191,191,191,4));
-		p->drawLine(x, y, x, y2);
-		p->setPen(QColor(244,244,244,25));
-		p->drawLine(x+1, y, x+1, y2);
-		p->setPen(QColor(252,252,252,85));
-		p->drawLine(x+2, y, x+2, y2);
-		p->setPen(QColor(0,0,0,50));
-		p->drawLine(x+3, y, x+3, y2);
-		p->setPen(QColor(0,0,0,14));
-		p->drawLine(x+4, y, x+4, y2);
+  // don't overlap the edges
+  int lw = shrinkWidth ? r.width()/2 : 8;
+  int rw = shrinkWidth ? r.width() - lw : 8;
+  int th = shrinkHeight ? r.height()/2 : 8;
+  int bh = shrinkHeight ? r.height() - th : 8;
 
-		p->setClipping(false);
-	}
+  // keep the bottom round for items which ending at 00:15
+  if(shrinkHeight && !roundTop && roundBottom && r.height() > 3 ) {
+    bh += th-3;
+    th = 3;
+  }
 
-	// don't overlap the edges
-	int lw = shrinkWidth ? r.width()/2 : 8;
-	int rw = shrinkWidth ? r.width() - lw : 8;
-	int th = shrinkHeight ? r.height()/2 : 8;
-	int bh = shrinkHeight ? r.height() - th : 8;
+  QPixmap topLeft;
+  QString key = roundTop ? QString("ko_tl") : QString("ko_rtl");
+  if ( !QPixmapCache::find( key, topLeft ) ) {
+    topLeft = roundTop ? QPixmap(":/roundTopLeft.png") : QPixmap(":/rectangularTopLeft.png");
+    QPixmapCache::insert(key, topLeft );
+  }
+  p->drawPixmap(r.x(), r.y(), topLeft, 0, 0, lw, th);
 
-	// keep the bottom round for items which ending at 00:15
-	if(shrinkHeight && !roundTop && roundBottom && r.height() > 3 ) {
-		bh += th-3;
-		th = 3;
-	}
+  QPixmap topRight;
+  key = roundTop ? QString("ko_tr") : QString("ko_rtr");
+  if ( !QPixmapCache::find( key, topRight ) ) {
+    topRight = roundTop ? QPixmap(":/roundTopRight.png") : QPixmap(":/rectangularTopRight.png");
+    QPixmapCache::insert(key, topRight );
+  }
+  p->drawPixmap(r.x()+r.width()-rw, r.y(), topRight, 8-rw, 0, rw, th);
 
-	if ( roundTop ) {
-		QImage topLeft(8, 8, QImage::Format_ARGB32);
-		topLeft.fill(Qt::transparent);
-		QPainter painter(&topLeft);
+  QPixmap bottomLeft;
+  key = roundBottom ? QString("ko_bl") : QString("ko_rbl");
+  if ( !QPixmapCache::find( key, bottomLeft ) ) {
+    bottomLeft = roundBottom ? QPixmap(":/roundBottomLeft.png") : QPixmap(":/rectangularBottomLeft.png");
+    QPixmapCache::insert(key, bottomLeft );
+  }
+  p->drawPixmap(r.x(), r.y()+ r.height()-bh, bottomLeft, 0, 8-bh, lw, bh);
 
-		int y = 0;
-		painter.setPen(QColor(0,0,0,2));
-		painter.drawPoint(5, y);
-		painter.setPen(QColor(0,0,0,2));
-		painter.drawPoint(6, y);
-		painter.setPen(QColor(0,0,0,3));
-		painter.drawPoint(7, y);
-		y = 1;
-		painter.setPen(QColor(0,0,0,2));
-		painter.drawPoint(3, y);
-		painter.setPen(QColor(0,0,0,7));
-		painter.drawPoint(4, y);
-		painter.setPen(QColor(0,0,0,16));
-		painter.drawPoint(5, y);
-		painter.setPen(QColor(0,0,0,23));
-		painter.drawPoint(6, y);
-		painter.setPen(QColor(0,0,0,29));
-		painter.drawPoint(7, y);
-		y = 2;
-		painter.setPen(QColor(0,0,0,4));
-		painter.drawPoint(2, y);
-		painter.setPen(QColor(0,0,0,16));
-		painter.drawPoint(3, y);
-		painter.setPen(QColor(0,0,0,37));
-		painter.drawPoint(4, y);
-		painter.setPen(QColor(179,179,179,91));
-		painter.drawPoint(5, y);
-		painter.setPen(QColor(224,224,224,100));
-		painter.drawPoint(6, y);
-		painter.setPen(QColor(252,252,252,94));
-		painter.drawPoint(7, y);
-		y = 3;
-		painter.setPen(QColor(0,0,0,4));
-		painter.drawPoint(1, y);
-		painter.setPen(QColor(0,0,0,19));
-		painter.drawPoint(2, y);
-		painter.setPen(QColor(83,83,83,61));
-		painter.drawPoint(3, y);
-		painter.setPen(QColor(221,221,221,105));
-		painter.drawPoint(4, y);
-		painter.setPen(QColor(255,255,255,72));
-		painter.drawPoint(5, y);
-		painter.setPen(QColor(249,249,249,45));
-		painter.drawPoint(6, y);
-		painter.setPen(QColor(255,255,255,31));
-		painter.drawPoint(7, y);
-		y = 4;
-		painter.setPen(QColor(0,0,0,3));
-		painter.drawPoint(0, y);
-		painter.setPen(QColor(0,0,0,16));
-		painter.drawPoint(1, y);
-		painter.setPen(QColor(0,0,0,46));
-		painter.drawPoint(2, y);
-		painter.setPen(QColor(218,218,218,106));
-		painter.drawPoint(3, y);
-		painter.setPen(QColor(250,250,250,60));
-		painter.drawPoint(4, y);
-		painter.setPen(QColor(254,254,254,27));
-		painter.drawPoint(5, y);
-		painter.setPen(QColor(233,233,233,12));
-		painter.drawPoint(6, y);
-		painter.setPen(QColor(212,212,212,6));
-		painter.drawPoint(7, y);
-		y = 5;
-		painter.setPen(QColor(0,0,0,9));
-		painter.drawPoint(0, y);
-		painter.setPen(QColor(0,0,0,37));
-		painter.drawPoint(1, y);
-		painter.setPen(QColor(156,156,156,104));
-		painter.drawPoint(2, y);
-		painter.setPen(QColor(255,255,255,72));
-		painter.drawPoint(3, y);
-		painter.setPen(QColor(254,254,254,27));
-		painter.drawPoint(4, y);
-		painter.setPen(QColor(223,223,223,8));
-		painter.drawPoint(5, y);
-		painter.setPen(QColor(255,255,255,2));
-		painter.drawPoint(6, y);
-		y = 6;
-		painter.setPen(QColor(0,0,0,11));
-		painter.drawPoint(0, y);
-		painter.setPen(QColor(0,0,0,46));
-		painter.drawPoint(1, y);
-		painter.setPen(QColor(205,205,205,109));
-		painter.drawPoint(2, y);
-		painter.setPen(QColor(249,249,249,45));
-		painter.drawPoint(3, y);
-		painter.setPen(QColor(255,255,255,12));
-		painter.drawPoint(4, y);
-		painter.setPen(QColor(255,255,255,2));
-		painter.drawPoint(5, y);
-		y = 7;
-		painter.setPen(QColor(0,0,0,11));
-		painter.drawPoint(0, y);
-		painter.setPen(QColor(0,0,0,49));
-		painter.drawPoint(1, y);
-		painter.setPen(QColor(252,252,252,87));
-		painter.drawPoint(2, y);
-		painter.setPen(QColor(255,255,255,31));
-		painter.drawPoint(3, y);
-		painter.setPen(QColor(255,255,255,6));
-		painter.drawPoint(4, y);
+  QPixmap bottomRight;
+  key = roundBottom ? QString("ko_br") : QString("ko_rbr");
+  if ( !QPixmapCache::find( key, bottomRight ) ) {
+    bottomRight = roundBottom ? QPixmap(":/roundBottomRight.png") : QPixmap(":/rectangularBottomRight.png");
+    QPixmapCache::insert(key, bottomRight );
+  }
+  p->drawPixmap(r.x()+r.width()-rw, r.y()+r.height()-bh, bottomRight, 8-rw, 8-bh, rw, 8);
 
-		painter.end();
-
-		QImage topRight = topLeft.mirrored(true, false);
-		p->drawImage(r.x(), r.y(), topLeft, 0, 0, lw, th);
-		p->drawImage(r.x()+r.width()-rw, r.y(), topRight, 8-rw, 0, rw, th);
-
-	} else {
-		// rectangular
-		QImage topLeft(8, 8, QImage::Format_ARGB32);
-		topLeft.fill(Qt::transparent);
-		QPainter painter(&topLeft);
-
-		int y = 0;
-		painter.setPen(QColor(0,0,0,2));
-		painter.drawPoint(2, y);
-		painter.setPen(QColor(0,0,0,3));
-		painter.drawPoint(3, y);
-		painter.drawPoint(4, y);
-		painter.setPen(QColor(0,0,0,4));
-		painter.drawLine(5, y, 7, y);
-		y = 1;
-		painter.setPen(QColor(0,0,0,3));
-		painter.drawPoint(0, y);
-		painter.setPen(QColor(0,0,0,10));
-		painter.drawPoint(1, y);
-		painter.setPen(QColor(0,0,0,21));
-		painter.drawPoint(2, y);
-		painter.setPen(QColor(0,0,0,29));
-		painter.drawPoint(3, y);
-		painter.setPen(QColor(0,0,0,31));
-		painter.drawPoint(4, y);
-		painter.setPen(QColor(0,0,0,32));
-		painter.drawLine(5, y, 7, y);
-		y = 2;
-		painter.setPen(QColor(0,0,0,11));
-		painter.drawPoint(0, y);
-		painter.setPen(QColor(0,0,0,33));
-		painter.drawPoint(1, y);
-		painter.setPen(QColor(253,253,253,141));
-		painter.drawPoint(2, y);
-		painter.setPen(QColor(252,252,252,101));
-		painter.drawPoint(3, y);
-		painter.setPen(QColor(252,252,252,87));
-		painter.drawPoint(4, y);
-		painter.setPen(QColor(252,252,252,85));
-		painter.drawLine(5, y, 7, y);
-		y = 3;
-		painter.setPen(QColor(0,0,0,10));
-		painter.drawPoint(0, y);
-		painter.setPen(QColor(0,0,0,40));
-		painter.drawPoint(1, y);
-		painter.setPen(QColor(252,252,252,101));
-		painter.drawPoint(2, y);
-		painter.setPen(QColor(249,249,249,47));
-		painter.drawPoint(3, y);
-		painter.setPen(QColor(245,245,245,28));
-		painter.drawPoint(4, y);
-		painter.setPen(QColor(244,244,244,25));
-		painter.drawLine(5, y, 7, y);
-		y = 4;
-		painter.setPen(QColor(0,0,0,13));
-		painter.drawPoint(0, y);
-		painter.setPen(QColor(0,0,0,46));
-		painter.drawPoint(1, y);
-		painter.setPen(QColor(252,252,252,87));
-		painter.drawPoint(2, y);
-		painter.setPen(QColor(245,245,245,28));
-		painter.drawPoint(3, y);
-		painter.setPen(QColor(218,218,218,7));
-		painter.drawPoint(4, y);
-		painter.setPen(QColor(191,191,191,4));
-		painter.drawLine(5, y, 7, y);
-		y = 5;
-		painter.setPen(QColor(0,0,0,14));
-		painter.drawLine(0, y, 0, 7);
-		painter.setPen(QColor(0,0,0,50));
-		painter.drawLine(1, y, 1, 7);
-		painter.setPen(QColor(252,252,252,85));
-		painter.drawLine(2, y, 2, 7);
-		painter.setPen(QColor(244,244,244,25));
-		painter.drawLine(3, y, 3, 7);
-		painter.setPen(QColor(191,191,191,4));
-		painter.drawLine(4, y, 4, 7);
-
-		painter.end();
-
-		QImage topRight = topLeft.mirrored(true, false);
-		p->drawImage(r.x(), r.y(), topLeft, 0, 0, lw, th);
-		p->drawImage(r.x()+r.width()-rw, r.y(), topRight, 8-rw, 0, rw, th);
-	}
-
-	if ( roundBottom ) {
-		QImage bottomLeft(8, 8, QImage::Format_ARGB32);
-		bottomLeft.fill(Qt::transparent);
-		QPainter painter(&bottomLeft);
-
-		int y = 0;
-		painter.setPen(QColor(0,0,0,13));
-		painter.drawPoint(0, y);
-		painter.setPen(QColor(0,0,0,47));
-		painter.drawPoint(1, y);
-		painter.setPen(QColor(222,222,222,101));
-		painter.drawPoint(2, y);
-		painter.setPen(QColor(249,249,249,45));
-		painter.drawPoint(3, y);
-		painter.setPen(QColor(255,255,255,11));
-		painter.drawPoint(4, y);
-		y =1;
-		painter.setPen(QColor(0,0,0,11));
-		painter.drawPoint(0, y);
-		painter.setPen(QColor(0,0,0,40));
-		painter.drawPoint(1, y);
-		painter.setPen(QColor(165,165,165,98));
-		painter.drawPoint(2, y);
-		painter.setPen(QColor(251,251,251,72));
-		painter.drawPoint(3, y);
-		painter.setPen(QColor(255,255,255,26));
-		painter.drawPoint(4, y);
-		painter.setPen(QColor(255,255,255,7));
-		painter.drawPoint(5, y);
-		y = 2;
-		painter.setPen(QColor(0,0,0,7));
-		painter.drawPoint(0, y);
-		painter.setPen(QColor(0,0,0,28));
-		painter.drawPoint(1, y);
-		painter.setPen(QColor(0,0,0,67));
-		painter.drawPoint(2, y);
-		painter.setPen(QColor(216,216,216,106));
-		painter.drawPoint(3, y);
-		painter.setPen(QColor(250,250,250,60));
-		painter.drawPoint(4, y);
-		painter.setPen(QColor(245,245,245,27));
-		painter.drawPoint(5, y);
-		painter.setPen(QColor(255,255,255,11));
-		painter.drawPoint(6, y);
-		painter.setPen(QColor(255,255,255,5));
-		painter.drawPoint(7, y);
-		y = 3;
-		painter.setPen(QColor(0,0,0,4));
-		painter.drawPoint(0, y);
-		painter.setPen(QColor(0,0,0,16));
-		painter.drawPoint(1, y);
-		painter.setPen(QColor(0,0,0,44));
-		painter.drawPoint(2, y);
-		painter.setPen(QColor(58,58,58,87));
-		painter.drawPoint(3, y);
-		painter.setPen(QColor(214,214,214,107));
-		painter.drawPoint(4, y);
-		painter.setPen(QColor(251,251,251,72));
-		painter.drawPoint(5, y);
-		painter.setPen(QColor(255,255,255,44));
-		painter.drawPoint(6, y);
-		painter.setPen(QColor(246,246,246,31));
-		painter.drawPoint(7, y);
-		y = 4;
-		painter.setPen(QColor(0,0,0,7));
-		painter.drawPoint(1, y);
-		painter.setPen(QColor(0,0,0,23));
-		painter.drawPoint(2, y);
-		painter.setPen(QColor(0,0,0,51));
-		painter.drawPoint(3, y);
-		painter.setPen(QColor(0,0,0,83));
-		painter.drawPoint(4, y);
-		painter.setPen(QColor(149,149,149,108));
-		painter.drawPoint(5, y);
-		painter.setPen(QColor(211,211,211,105));
-		painter.drawPoint(6, y);
-		painter.setPen(QColor(255,255,255,93));
-		painter.drawPoint(7, y);
-		y = 5;
-		painter.setPen(QColor(0,0,0,2));
-		painter.drawPoint(1, y);
-		painter.setPen(QColor(0,0,0,8));
-		painter.drawPoint(2, y);
-		painter.setPen(QColor(0,0,0,23));
-		painter.drawPoint(3, y);
-		painter.setPen(QColor(0,0,0,44));
-		painter.drawPoint(4, y);
-		painter.setPen(QColor(0,0,0,67));
-		painter.drawPoint(5, y);
-		painter.setPen(QColor(0,0,0,85));
-		painter.drawPoint(6, y);
-		painter.setPen(QColor(0,0,0,96));
-		painter.drawPoint(7, y);
-		y = 6;
-		painter.setPen(QColor(0,0,0,2));
-		painter.drawPoint(2, y);
-		painter.setPen(QColor(0,0,0,7));
-		painter.drawPoint(3, y);
-		painter.setPen(QColor(0,0,0,16));
-		painter.drawPoint(4, y);
-		painter.setPen(QColor(0,0,0,28));
-		painter.drawPoint(5, y);
-		painter.setPen(QColor(0,0,0,40));
-		painter.drawPoint(6, y);
-		painter.setPen(QColor(0,0,0,47));
-		painter.drawPoint(7, y);
-		y = 7;
-		painter.setPen(QColor(0,0,0,4));
-		painter.drawPoint(4, y);
-		painter.setPen(QColor(0,0,0,7));
-		painter.drawPoint(5, y);
-		painter.setPen(QColor(0,0,0,11));
-		painter.drawPoint(6, y);
-		painter.setPen(QColor(0,0,0,13));
-		painter.drawPoint(7, y);
-
-		painter.end();
-
-		QImage bottomRight = bottomLeft.mirrored(true, false);
-		p->drawImage(r.x(), r.y()+ r.height()-bh, bottomLeft, 0, 8-bh, lw, bh);
-		p->drawImage(r.x()+r.width()-rw, r.y()+r.height()-bh, bottomRight, 8-rw, 8-bh, rw, 8);
-
-	} else {
-		// rectangular
-		QImage bottomLeft(8, 8, QImage::Format_ARGB32);
-		bottomLeft.fill(Qt::transparent);
-		QPainter painter(&bottomLeft);
-
-		int y = 0;
-		painter.setPen(QColor(0,0,0,14));
-		painter.drawLine(0, y, 0, 1);
-		painter.setPen(QColor(0,0,0,50));
-		painter.drawLine(1, y, 1, 1);
-		painter.setPen(QColor(252,252,252,85));
-		painter.drawLine(2, y, 2, 1);
-		painter.setPen(QColor(244,244,244,25));
-		painter.drawLine(3, y, 3, 1);
-		painter.setPen(QColor(191,191,191,4));
-		painter.drawLine(4, y, 4, 1);
-		y = 2;
-		painter.setPen(QColor(0,0,0,14));
-		painter.drawPoint(0, y);
-		painter.setPen(QColor(0,0,0,50));
-		painter.drawPoint(1, y);
-		painter.setPen(QColor(252,252,252,87));
-		painter.drawPoint(2, y);
-		painter.setPen(QColor(254,254,254,27));
-		painter.drawPoint(3, y);
-		painter.setPen(QColor(255,255,255,6));
-		painter.drawPoint(4, y);
-		painter.setPen(QColor(255,255,255,3));
-		painter.drawLine(5, y, 7, y);
-		y = 3;
-		painter.setPen(QColor(0,0,0,14));
-		painter.drawPoint(0, y);
-		painter.setPen(QColor(0,0,0,50));
-		painter.drawPoint(1, y);
-		painter.setPen(QColor(252,252,252,101));
-		painter.drawPoint(2, y);
-		painter.setPen(QColor(255,255,255,46));
-		painter.drawPoint(3, y);
-		painter.setPen(QColor(254,254,254,27));
-		painter.drawPoint(4, y);
-		painter.setPen(QColor(255,255,255,24));
-		painter.drawLine(5, y, 7, y);
-		y = 4;
-		painter.setPen(QColor(0,0,0,13));
-		painter.drawPoint(0, y);
-		painter.setPen(QColor(0,0,0,46));
-		painter.drawPoint(1, y);
-		painter.setPen(QColor(253,253,253,141));
-		painter.drawPoint(2, y);
-		painter.setPen(QColor(255,255,255,100));
-		painter.drawPoint(3, y);
-		painter.setPen(QColor(255,255,255,86));
-		painter.drawPoint(4, y);
-		painter.setPen(QColor(255,255,255,84));
-		painter.drawLine(5, y, 7, y);
-		y = 5;
-		painter.setPen(QColor(0,0,0,10));
-		painter.drawPoint(0, y);
-		painter.setPen(QColor(0,0,0,34));
-		painter.drawPoint(1, y);
-		painter.setPen(QColor(0,0,0,68));
-		painter.drawPoint(2, y);
-		painter.setPen(QColor(0,0,0,92));
-		painter.drawPoint(3, y);
-		painter.setPen(QColor(0,0,0,100));
-		painter.drawPoint(4, y);
-		painter.setPen(QColor(0,0,0,102));
-		painter.drawLine(5, y, 7, y);
-		y = 6;
-		painter.setPen(QColor(0,0,0,5));
-		painter.drawPoint(0, y);
-		painter.setPen(QColor(0,0,0,17));
-		painter.drawPoint(1, y);
-		painter.setPen(QColor(0,0,0,34));
-		painter.drawPoint(2, y);
-		painter.setPen(QColor(0,0,0,46));
-		painter.drawPoint(3, y);
-		painter.setPen(QColor(0,0,0,50));
-		painter.drawPoint(4, y);
-		painter.setPen(QColor(0,0,0,51));
-		painter.drawLine(5, y, 7, y);
-		y = 7;
-		painter.setPen(QColor(0,0,0,1));
-		painter.drawPoint(0, y);
-		painter.setPen(QColor(0,0,0,5));
-		painter.drawPoint(1, y);
-		painter.setPen(QColor(0,0,0,10));
-		painter.drawPoint(2, y);
-		painter.setPen(QColor(0,0,0,13));
-		painter.drawPoint(3, y);
-		painter.setPen(QColor(0,0,0,14));
-		painter.drawPoint(4, y);
-		painter.setPen(QColor(0,0,0,15));
-		painter.drawLine(5, y, 7, y);
-
-		painter.end();
-
-		QImage bottomRight = bottomLeft.mirrored(true, false);
-		p->drawImage(r.x(), r.y()+ r.height()-bh, bottomLeft, 0, 8-bh, lw, bh);
-		p->drawImage(r.x()+r.width()-rw, r.y()+r.height()-bh, bottomRight, 8-rw, 8-bh, rw, 8);
-	}
-
-	p->restore();
+  p->restore();
 }
 
 bool KOAgendaItem::event( QEvent *event )

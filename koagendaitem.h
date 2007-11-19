@@ -169,10 +169,10 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     void dragEnterEvent( QDragEnterEvent *e );
     void dropEvent( QDropEvent *e );
     void paintEvent( QPaintEvent *e );
-    void paintTodoIcon( QPainter *p, int &x, int ft );
+    void paintTodoIcon( QPainter *p, int &x, int y, int ft );
 
     // paint all visible icons
-    void paintIcons( QPainter *p, int &x, int ft );
+    void paintIcons( QPainter *p, int &x, int y, int ft );
 
     /** private movement functions. startMove needs to be called of only one of
      *  the multitems. it will then loop through the whole series using

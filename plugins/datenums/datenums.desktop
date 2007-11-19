@@ -1,5 +1,4 @@
 [Desktop Entry]
-Encoding=UTF-8
 X-KDE-Library=korg_datenums
 Name=Date Numbers Plugin for Calendars
 Name[af]=Dag nommer inprop module vir kalenders
@@ -91,6 +90,6 @@ Comment[x-test]=xxFor each day this plugin shows its daynumber of the year at th
 Comment[zh_CN]=此插件可对每天在议事日程视图中上方显示该日在一年中的序号。例如，2月1日是一年的第32天。
 Comment[zh_TW]=對每一天，此外掛程式會顯示這是一年中的第幾天。
 Type=Service
-ServiceTypes=Calendar/Plugin,Calendar/Decoration
+X-KDE-ServiceTypes=Calendar/Plugin,Calendar/Decoration
 X-KDE-KOrganizer-HasSettings=true
 X-KDE-PluginInterfaceVersion=2

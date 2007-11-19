@@ -124,7 +124,7 @@ public:
       // text
       p.drawText( QRect( margin + 2, y + 2, width() - 2 * margin, lineHeight ), i.key()
 		  + ": "
-		  + i18n( "%1 hours (", QString::number( i.value() / (60 * 60) ) )
+		  + i18nc( "Example: 5 hours (80%)", "%1 hours (", QString::number( i.value() / (60 * 60) ) )
 		  + QString::number( (int)( (double) i.value() * 100 / total ) )
 		  + "% )" );
       y += totalLineHeight;    

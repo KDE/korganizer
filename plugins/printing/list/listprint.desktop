@@ -1,5 +1,4 @@
 [Desktop Entry]
-Encoding=UTF-8
 X-KDE-Library=korg_listprint
 Name=List Print Style
 Name[af]=Lys druk styl
@@ -89,6 +88,6 @@ Comment[x-test]=xxThis plugin allows you to print out events and to-dos in list 
 Comment[zh_CN]=此插件允许您以列表格式打印事件和待办事宜。
 Comment[zh_TW]=此外掛程式允許您以清單格式印出事件與待辦事項。
 Type=Service
-ServiceTypes=Calendar/Plugin,KOrganizer/PrintPlugin
+X-KDE-ServiceTypes=Calendar/Plugin,KOrganizer/PrintPlugin
 X-KDE-KOrganizer-HasSettings=false
 X-KDE-PluginInterfaceVersion=2

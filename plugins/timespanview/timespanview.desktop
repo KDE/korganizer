@@ -1,5 +1,4 @@
 [Desktop Entry]
-Encoding=UTF-8
 X-KDE-Library=korg_timespanview
 Name=Timespan View Plugin for KOrganizer
 Name[af]=Tydlyn aansig inprop module vir KOrganizer
@@ -26,7 +25,7 @@ Name[kk]=KOrganizer-дің уақыт аралығы көрініс модулі
 Name[km]=កម្មវិធី​ជំនួយ​ទិដ្ឋភាព​រយៈពេល​សម្រាប់ KOrganizer
 Name[lt]=Laiko tarpsnio vaizdo KOrganizer priedas
 Name[ms]=Plugin Paparan Kitar Waktu untuk KOrganizer
-Name[nb]=Programtilllegg for periodevisning i KOrganizer
+Name[nb]=Programtillegg for periodevisning i KOrganizer
 Name[nds]=Tietbruuk-Moduul för KOrganizer
 Name[ne]=केडीई आयोजकका लागि समयावधि दृश्य प्लगइन
 Name[nl]=Tijdspanneplugin voor KOrganizer
@@ -87,6 +86,6 @@ Comment[x-test]=xxThis plugin provides a timespan view for korganizer (like the 
 Comment[zh_CN]=此插件为 KOrganizer 提供了时间跨度视图(类似于待办或月视图)。如果您启用了此插件，您可以像甘特图程序那样切换到时间跨度视图并查看您的事件。
 Comment[zh_TW]=此外掛程式提供時間檢視模式。如果您開啟此外掛程式，您可以切換時間檢視，讓您使用類似甘特圖的圖形來檢視事件。
 Type=Service
-ServiceTypes=KOrganizer/Part
+X-KDE-ServiceTypes=KOrganizer/Part
 X-KDE-KOrganizer-HasSettings=false
 X-KDE-PluginInterfaceVersion=2

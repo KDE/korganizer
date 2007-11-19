@@ -1,5 +1,4 @@
 [Desktop Entry]
-Encoding=UTF-8
 X-KDE-Library=korg_hebrew
 Name=Jewish Calendar Plugin
 Name[af]=Joodse kalender inprop module
@@ -54,10 +53,12 @@ Comment[bg]=Приставката служи за показване на да�
 Comment[ca]=Mostra totes les dates en el KOrganizer també en el sistema del calendari jueu.
 Comment[de]=Zeigt alle Daten in KOrganizer auch im jüdischen Kalendarium an.
 Comment[el]=Εμφανίζει όλες τις ημερομηνίες στο korganizer και στο εβραϊκό ημερολογιακό σύστημα.
+Comment[et]=Näitab KOrganizeris kõiki kuupäevi ka juudi kalendri järgi.
 Comment[fa]=همۀ تاریخهای KOrganizer، همچنین سیستم تقویم یهودی را نمایش می‌دهد.
 Comment[it]=Mostra tutte le date in korganizer anche secondo il calendario ebraico.
 Comment[ja]=KOrganizer のすべての日付をユダヤ暦でも表示します。
 Comment[ko]=KOrganizer의 모든 날짜를 히브리 달력의 날짜로도 표시합니다.
+Comment[nds]=Wiest all Daten vun KOrganizer ok in't juudsche Kalennersysteem.
 Comment[nl]=Toont alle data in KOrganizer ook in het Joodse kalendersysteem.
 Comment[pt]=Mostra todas as datas no KOrganizer também no sistema de calendários Judeu.
 Comment[pt_BR]=Mostra todas as datas no KOrganizer também no sistema de calendários Judeu.
@@ -66,6 +67,6 @@ Comment[x-test]=xxShows all dates in KOrganizer also in the Jewish calendar syst
 Comment[zh_CN]=在 KOrganizer 中显示犹太教日历系统的全部日期。
 Comment[zh_TW]=在 KOrganizer 中也顯示所有猶太行事曆系統的日期
 Type=Service
-ServiceTypes=Calendar/Plugin,Calendar/Decoration
+X-KDE-ServiceTypes=Calendar/Plugin,Calendar/Decoration
 X-KDE-KOrganizer-HasSettings=true
 X-KDE-PluginInterfaceVersion=2

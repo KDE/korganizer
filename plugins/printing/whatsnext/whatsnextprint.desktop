@@ -1,5 +1,4 @@
 [Desktop Entry]
-Encoding=UTF-8
 X-KDE-Library=korg_whatsnextprint
 Name=What's Next Print Style
 Name[af]=Wat is volgende - druk styl
@@ -87,6 +86,6 @@ Comment[x-test]=xxThis plugin allows you to print out a list of all upcoming eve
 Comment[zh_CN]=此插件允许您打印所有即将到达的事件和代办事宜。
 Comment[zh_TW]=此外掛程式允許您印出即將發生的事件與待辦事項清單。
 Type=Service
-ServiceTypes=Calendar/Plugin,KOrganizer/PrintPlugin
+X-KDE-ServiceTypes=Calendar/Plugin,KOrganizer/PrintPlugin
 X-KDE-KOrganizer-HasSettings=false
 X-KDE-PluginInterfaceVersion=2

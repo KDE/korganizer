@@ -1,5 +1,4 @@
 [Desktop Entry]
-Encoding=UTF-8
 X-KDE-Library=korg_journalprint
 Name=Journal Print Style
 Name[af]=Joernaal druk styl
@@ -90,6 +89,6 @@ Comment[x-test]=xxThis plugin allows you to print out journal entries (diary ent
 Comment[zh_CN]=此插件允许您打印日记项目。
 Comment[zh_TW]=此外掛程式讓您印出日誌項目。
 Type=Service
-ServiceTypes=Calendar/Plugin,KOrganizer/PrintPlugin
+X-KDE-ServiceTypes=Calendar/Plugin,KOrganizer/PrintPlugin
 X-KDE-KOrganizer-HasSettings=false
 X-KDE-PluginInterfaceVersion=2
