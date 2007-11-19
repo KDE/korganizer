@@ -201,7 +201,7 @@ void ResourceItem::setResourceColor( QColor &color )
 {
   if ( color.isValid() ) {
     if ( mResourceColor != color ) {
-      int height = 10; // FIXME: Find out real height of cell
+      int height = treeWidget()->visualItemRect(this).height();
       QPixmap px( height - 4, height - 4 );
       mResourceColor = color;
       px.fill(color);
@@ -215,9 +215,9 @@ void ResourceItem::setResourceColor( QColor &color )
 
 void ResourceItem::setStandardResource( bool std )
 {
-  if ( mIsStandardResource != std ) {
-    // FIXME: Set font of standard resource to bold and others to normal
-  }
+  QFont font = qvariant_cast<QFont>(data(0, Qt::FontRole));
+  font.setBold(std);
+  setData(0, Qt::FontRole, font);
 }
 
 ResourceView::ResourceView( KCal::CalendarResources *calendar, QWidget *parent )
