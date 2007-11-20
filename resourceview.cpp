@@ -38,6 +38,8 @@
 #include <kmessagebox.h>
 #include <kinputdialog.h>
 #include <kvbox.h>
+#include <krandom.h>
+#include <kcolorcollection.h>
 
 #include <QLayout>
 #include <QLabel>
@@ -281,7 +283,6 @@ void ResourceView::emitResourcesChanged()
 void ResourceView::addResource()
 {
   KCal::CalendarResourceManager *manager = mCalendar->resourceManager();
-
   QStringList types = manager->resourceTypeNames();
   QStringList descs = manager->resourceTypeDescriptions();
   bool ok = false;
@@ -305,6 +306,14 @@ void ResourceView::addResource()
   resource->setResourceName( i18n( "%1 resource", type ) );
 
   KRES::ConfigDialog *dlg = new KRES::ConfigDialog( this, QString( "calendar" ), resource );
+
+  // TODO: Add a fallback (KColorCollection::setName() broken?)
+  KColorCollection collection("Oxygen.colors");
+  // TODO: Be smarter than this
+  int rand = ( KRandom::random() % collection.count() ) + 1;
+  QColor color = collection.color( rand );
+
+  KOPrefs::instance()->setResourceColor( resource->identifier(),  color);
 
   if ( dlg && dlg->exec() ) {
     resource->setTimeSpec( KOPrefs::instance()->timeSpec() );
