@@ -392,6 +392,13 @@
       <whatsthis>Select the default event color here. The default event color will be used for events categories in your agenda. Note that you can specify a separate color for each event category below.</whatsthis>
       <default>151, 235, 121</default>
     </entry>
+
+    <entry type="Bool" key="AssignDefaultResourceColors">
+      <default>true</default>
+    </entry>
+    <entry type="Int" key="DefaultResourceColorSeed">
+      <default>0</default>
+    </entry>
   </group>
 
   <group name="Fonts">

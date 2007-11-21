@@ -289,6 +289,19 @@ QColor* KOPrefs::resourceColor( const QString &cal )
   QColor *color=0;
   if( !cal.isEmpty() ) color = mResourceColors[cal];
 
+  // assign default color if enabled
+  if ( !cal.isEmpty() && !color && assignDefaultResourceColors() ) {
+    QColor defColor( 0xE7, 0x0F, 0x00 );
+    int h, s, v;
+    defColor.getHsv( h, s, v );
+    h = ( defaultResourceColorSeed() % 12 ) * 30;
+    s -= s * ( (defaultResourceColorSeed() / 12) % 2 ) * 0.5;
+    defColor.setHsv( h, s, v );
+    setDefaultResourceColorSeed( defaultResourceColorSeed() + 1 );
+    setResourceColor( cal, defColor );
+    color = mResourceColors[cal];
+  }
+
   if (color && color->isValid() )
     return color;
   else
