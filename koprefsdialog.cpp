@@ -505,7 +505,7 @@ class KOPrefsDialogViews : public KPrefsModule
 
       addWidBool( KOPrefs::instance()->selectionStartsEditorItem(), agendaGroup );
 
-      addWidBool( KOPrefs::instance()->agendaViewUsesResourceColorItem(), agendaGroup );
+      addWidCombo( KOPrefs::instance()->agendaViewColorsItem(), agendaGroup );
 
       addWidCombo( KOPrefs::instance()->agendaViewCalendarDisplayItem(), agendaGroup );
 

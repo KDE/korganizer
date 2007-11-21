@@ -318,7 +318,7 @@ void ResourceView::addResource()
     }
     return;
   }
-  
+
   QStringList types = manager->resourceTypeNames();
   QStringList descs = manager->resourceTypeDescriptions();
   QString desc = KInputDialog::getItem( i18n( "Resource Configuration" ),
@@ -556,7 +556,7 @@ void ResourceView::contextMenuRequested ( QListViewItem *i,
 
     menu->insertItem( i18n("Show &Info"), this, SLOT( showInfo() ) );
     //FIXME: This is better on the resource dialog
-    if ( KOPrefs::instance()->agendaViewUsesResourceColor() ) {
+    if ( KOPrefs::instance()->agendaViewColors() != KOPrefs::CategoryOnly ) {
       QPopupMenu *assignMenu= new QPopupMenu( menu );
       assignMenu->insertItem( i18n( "&Assign Color" ), this, SLOT( assignColor() ) );
       if ( item->resourceColor().isValid() )

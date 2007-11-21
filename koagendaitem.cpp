@@ -558,13 +558,13 @@ void KOAgendaItem::addAttendee( const QString &newAttendee )
   if ( !( name.isEmpty() && email.isEmpty() ) ) {
     mIncidence->addAttendee(new Attendee(name,email));
     KMessageBox::information( this, i18n("Attendee \"%1\" added to the calendar item \"%2\"").arg(KPIM::normalizedAddress(name, email, QString())).arg(text()), i18n("Attendee added"), "AttendeeDroppedAdded" );
-  } 
- 
+  }
+
 }
 
 void KOAgendaItem::dropEvent( QDropEvent *e )
 {
-  // TODO: Organize this better: First check for attachment (not only file, also any other url!), then if it's a vcard, otherwise check for attendees, then if the data is binary, add a binary attachment. 
+  // TODO: Organize this better: First check for attachment (not only file, also any other url!), then if it's a vcard, otherwise check for attendees, then if the data is binary, add a binary attachment.
 #ifndef KORG_NODND
   QString text;
 
@@ -749,26 +749,41 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
       bgColor = KOPrefs::instance()->todoDueTodayColor();
   }
 
-  if ( !bgColor.isValid() ) {
-    QStringList categories = mIncidence->categories();
-    QString cat = categories.first();
-    if (cat.isEmpty())
-      bgColor = KOPrefs::instance()->mEventColor;
-    else
-      bgColor = *(KOPrefs::instance()->categoryColor(cat));
-  }
+  QColor categoryColor;
+  QStringList categories = mIncidence->categories();
+  QString cat = categories.first();
+  if (cat.isEmpty())
+    categoryColor = KOPrefs::instance()->mEventColor;
+  else
+    categoryColor = *(KOPrefs::instance()->categoryColor(cat));
+
+  QColor resourceColor = mResourceColor;
+  if ( !resourceColor.isValid() )
+    resourceColor = categoryColor;
+
   QColor frameColor;
-  if ( KOPrefs::instance()->agendaViewUsesResourceColor()
-    && mResourceColor.isValid() ) {
-     frameColor = mSelected ? QColor( 85 + mResourceColor.red() * 2/3,
-                                      85 + mResourceColor.green() * 2/3,
-                                      85 + mResourceColor.blue() * 2/3 )
-                                : mResourceColor;
+  if ( KOPrefs::instance()->agendaViewColors() == KOPrefs::ResourceOnly ||
+       KOPrefs::instance()->agendaViewColors() == KOPrefs::CategoryInsideResourceOutside ) {
+    frameColor = bgColor.isValid() ? bgColor : resourceColor;
   } else {
-    frameColor = mSelected ? QColor( 85 + bgColor.red() * 2/3,
-                                     85 + bgColor.green() * 2/3,
-                                     85 + bgColor.blue() * 2/3 )
-                                : bgColor.dark(115);
+    frameColor = bgColor.isValid() ? bgColor : categoryColor;
+  }
+
+  if ( !bgColor.isValid() ) {
+    if ( KOPrefs::instance()->agendaViewColors() == KOPrefs::ResourceOnly ||
+         KOPrefs::instance()->agendaViewColors() == KOPrefs::ResourceInsideCategoryOutside ) {
+      bgColor = resourceColor;
+    } else {
+      bgColor = categoryColor;
+    }
+  }
+
+  if ( mSelected ) {
+    frameColor = QColor( 85 + frameColor.red() * 2/3,
+                        85 + frameColor.green() * 2/3,
+                        85 + frameColor.blue() * 2/3 );
+  } else {
+    frameColor = frameColor.dark( 115 );
   }
   QColor textColor = getTextColor(bgColor);
   p.setPen( textColor );
