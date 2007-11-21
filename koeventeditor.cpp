@@ -94,6 +94,9 @@ void KOEventEditor::init()
 
   connect( mGeneral, SIGNAL( openCategoryDialog() ),
            SIGNAL( editCategories() ) );
+  connect( this, SIGNAL( updateCategoryConfig() ),
+           mGeneral, SIGNAL( updateCategoryConfig() ) );
+
 }
 
 void KOEventEditor::reload()

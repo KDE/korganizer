@@ -125,10 +125,6 @@ void KOIncidenceEditor::slotOk()
   if ( processInput() && ptr ) accept();
 }
 
-void KOIncidenceEditor::updateCategoryConfig()
-{
-}
-
 void KOIncidenceEditor::slotCancel()
 {
   processCancel();

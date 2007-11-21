@@ -71,7 +71,6 @@ class KOIncidenceEditor : public KDialogBase
     void selectInvitationCounterProposal( bool enable );
 
   public slots:
-    void updateCategoryConfig();
     /** Edit an existing todo. */
     virtual void editIncidence(Incidence *) = 0;
     virtual void setIncidenceChanger( IncidenceChangerBase *changer ) {
@@ -94,6 +93,7 @@ class KOIncidenceEditor : public KDialogBase
     void deleteAttendee( Incidence * );
 
     void editCategories();
+    void updateCategoryConfig();
     void dialogClose( Incidence * );
     void editCanceled( Incidence * );
 
