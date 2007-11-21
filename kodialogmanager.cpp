@@ -233,7 +233,7 @@ void KODialogManager::connectEditor( KOIncidenceEditor*editor )
            mMainView, SLOT( deleteIncidence( Incidence * ) ) );
 
   connect( mCategoryEditDialog, SIGNAL( categoryConfigChanged() ),
-           editor, SLOT( updateCategoryConfig() ) );
+           editor, SIGNAL( updateCategoryConfig() ) );
   connect( editor, SIGNAL( editCategories() ),
            mCategoryEditDialog, SLOT( show() ) );
 
