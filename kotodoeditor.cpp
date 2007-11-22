@@ -79,6 +79,9 @@ void KOTodoEditor::init()
 
   connect( mGeneral, SIGNAL( openCategoryDialog() ),
            SIGNAL( editCategories() ) );
+
+  connect( mDetails, SIGNAL(updateAttendeeSummary(int)),
+           mGeneral, SLOT(updateAttendeeSummary(int)) );
 }
 
 void KOTodoEditor::reload()
@@ -97,11 +100,10 @@ void KOTodoEditor::setupGeneral()
     topLayout->setMargin(marginHint());
     topLayout->setSpacing(spacingHint());
 
-    mGeneral->initHeader(topFrame,topLayout);
+    mGeneral->initHeader( i18n("To-do"), topFrame, topLayout );
     mGeneral->initTime(topFrame,topLayout);
     QHBoxLayout *priorityLayout = new QHBoxLayout( topLayout );
     mGeneral->initPriority(topFrame,priorityLayout);
-    mGeneral->initCategories( topFrame, topLayout );
     topLayout->addStretch(1);
 
     QFrame *topFrame2 = addPage(i18n("Details"));
@@ -124,7 +126,7 @@ void KOTodoEditor::setupGeneral()
     QBoxLayout *topLayout = new QVBoxLayout(topFrame);
     topLayout->setSpacing(spacingHint());
 
-    mGeneral->initHeader(topFrame,topLayout);
+    mGeneral->initHeader( i18n("To-do"), topFrame, topLayout );
     mGeneral->initTime(topFrame,topLayout);
     mGeneral->initStatus(topFrame,topLayout);
     QBoxLayout *alarmLineLayout = new QHBoxLayout(topLayout);
@@ -133,7 +135,6 @@ void KOTodoEditor::setupGeneral()
     alarmLineLayout->addStretch( 1 );
     mGeneral->initDescription(topFrame,topLayout);
     QBoxLayout *detailsLayout = new QHBoxLayout(topLayout);
-    mGeneral->initCategories( topFrame, detailsLayout );
     mGeneral->initSecrecy( topFrame, detailsLayout );
   }
   // By default, the To-do has no time associated and

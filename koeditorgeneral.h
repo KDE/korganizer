@@ -66,10 +66,9 @@ class KOEditorGeneral : public QObject
     KOEditorGeneral (QObject* parent=0,const char* name=0);
     virtual ~KOEditorGeneral();
 
-    void initHeader(QWidget *,QBoxLayout *);
+    void initHeader( const QString &label, QWidget *parent,QBoxLayout *topLayout );
     void initDescription(QWidget *,QBoxLayout *);
     void initSecrecy(QWidget *,QBoxLayout *);
-    void initCategories(QWidget *,QBoxLayout *);
     void initAlarm(QWidget *,QBoxLayout *);
 
     /** Set widgets to default values */
@@ -97,6 +96,7 @@ class KOEditorGeneral : public QObject
     void editAlarms();
     void updateAlarmWidgets();
     void updateDefaultAlarmTime();
+    void updateAttendeeSummary( int count );
 
   signals:
     void openCategoryDialog();
@@ -108,6 +108,7 @@ class KOEditorGeneral : public QObject
 
     QLineEdit               *mSummaryEdit;
     QLineEdit               *mLocationEdit;
+    QLabel                  *mAttendeeSummaryLabel;
     QLabel                  *mAlarmBell;
     QWidgetStack            *mAlarmStack;
     QLabel                  *mAlarmInfoLabel;

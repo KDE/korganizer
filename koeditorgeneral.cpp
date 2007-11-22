@@ -91,9 +91,15 @@ void FocusLineEdit::focusInEvent ( QFocusEvent *e )
 }
 
 
-void KOEditorGeneral::initHeader(QWidget *parent,QBoxLayout *topLayout)
+void KOEditorGeneral::initHeader( const QString &label, QWidget *parent,QBoxLayout *topLayout)
 {
-  QGridLayout *headerLayout = new QGridLayout(topLayout);
+  QBoxLayout *generalLayout = new QVBoxLayout( topLayout );
+  QGroupBox *groupBox = new QGroupBox( 1, QGroupBox::Horizontal, label, parent );
+  generalLayout->addWidget( groupBox );
+  QFrame *groupFrame = new QFrame( groupBox );
+
+  QGridLayout *headerLayout = new QGridLayout( groupFrame );
+  headerLayout->setSpacing( topLayout->spacing() );
 
 #if 0
   mOwnerLabel = new QLabel(i18n("Owner:"),parent);
@@ -101,48 +107,48 @@ void KOEditorGeneral::initHeader(QWidget *parent,QBoxLayout *topLayout)
 #endif
 
   QString whatsThis = i18n("Sets the Title of this event or to-do.");
-  QLabel *summaryLabel = new QLabel(i18n("T&itle:"),parent);
+  QLabel *summaryLabel = new QLabel( i18n("T&itle:"), groupFrame );
   QWhatsThis::add( summaryLabel, whatsThis );
   QFont f = summaryLabel->font();
   f.setBold( true );
   summaryLabel->setFont(f);
   headerLayout->addWidget(summaryLabel,1,0);
 
-  mSummaryEdit = new FocusLineEdit(parent);
+  mSummaryEdit = new FocusLineEdit( groupFrame );
   QWhatsThis::add( mSummaryEdit, whatsThis );
   connect( mSummaryEdit, SIGNAL( focusReceivedSignal() ),
            SIGNAL( focusReceivedSignal() ) );
   headerLayout->addWidget(mSummaryEdit,1,1);
   summaryLabel->setBuddy( mSummaryEdit );
 
+  mAttendeeSummaryLabel = new QLabel( groupFrame );
+  updateAttendeeSummary( 0 );
+  headerLayout->addWidget( mAttendeeSummaryLabel, 1, 2 );
+
   whatsThis = i18n("Sets where the event or to-do will take place.");
-  QLabel *locationLabel = new QLabel(i18n("&Location:"),parent);
+  QLabel *locationLabel = new QLabel( i18n("&Location:"), groupFrame );
   QWhatsThis::add( locationLabel, whatsThis );
   headerLayout->addWidget(locationLabel,2,0);
 
-  mLocationEdit = new QLineEdit(parent);
+  mLocationEdit = new QLineEdit( groupFrame );
   QWhatsThis::add( mLocationEdit, whatsThis );
-  headerLayout->addWidget(mLocationEdit,2,1);
+  headerLayout->addMultiCellWidget( mLocationEdit, 2, 2, 1, 2 );
   locationLabel->setBuddy( mLocationEdit );
-}
 
-void KOEditorGeneral::initCategories(QWidget *parent, QBoxLayout *topLayout)
-{
-  QBoxLayout *categoriesLayout = new QHBoxLayout( topLayout );
-
-  QString whatsThis = i18n("Allows you to select the categories that this "
-		  	   "event or to-do belongs to.");
-
-  mCategoriesButton = new QPushButton(parent);
-  mCategoriesButton->setText(i18n("Select Cate&gories..."));
-  QWhatsThis::add( mCategoriesButton, whatsThis );
-  connect(mCategoriesButton,SIGNAL(clicked()),SLOT(selectCategories()));
-  categoriesLayout->addWidget(mCategoriesButton);
-
-  mCategoriesLabel = new KSqueezedTextLabel(parent);
+  whatsThis = i18n("Allows you to select the categories that this event or to-do belongs to.");
+  QLabel *categoriesLabel = new QLabel( i18n("Categories:"), groupFrame );
+  QWhatsThis::add( categoriesLabel, whatsThis );
+  headerLayout->addWidget( categoriesLabel, 3, 0 );
+  mCategoriesLabel = new KSqueezedTextLabel( groupFrame );
   QWhatsThis::add( mCategoriesLabel, whatsThis );
   mCategoriesLabel->setFrameStyle(QFrame::Panel|QFrame::Sunken);
-  categoriesLayout->addWidget(mCategoriesLabel,1);
+  headerLayout->addWidget( mCategoriesLabel, 3, 1 );
+
+  mCategoriesButton = new QPushButton( groupFrame );
+  mCategoriesButton->setText(i18n("&Select..."));
+  QWhatsThis::add( mCategoriesButton, whatsThis );
+  connect(mCategoriesButton,SIGNAL(clicked()),SLOT(selectCategories()));
+  headerLayout->addWidget( mCategoriesButton, 3, 2 );
 }
 
 void KOEditorGeneral::initSecrecy(QWidget *parent, QBoxLayout *topLayout)
@@ -436,4 +442,9 @@ void KOEditorGeneral::setDescription( const QString &text )
 QObject *KOEditorGeneral::typeAheadReceiver() const
 {
   return mSummaryEdit;
+}
+
+void KOEditorGeneral::updateAttendeeSummary(int count)
+{
+  mAttendeeSummaryLabel->setText( i18n( "One attendee", "%n attendees", count ) );
 }

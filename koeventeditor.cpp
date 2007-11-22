@@ -97,6 +97,8 @@ void KOEventEditor::init()
   connect( this, SIGNAL( updateCategoryConfig() ),
            mGeneral, SIGNAL( updateCategoryConfig() ) );
 
+  connect( mDetails, SIGNAL(updateAttendeeSummary(int)),
+           mGeneral, SLOT(updateAttendeeSummary(int)) );
 }
 
 void KOEventEditor::reload()
@@ -119,12 +121,11 @@ void KOEventEditor::setupGeneral()
     QBoxLayout *topLayout = new QVBoxLayout(topFrame);
     topLayout->setSpacing(spacingHint());
 
-    mGeneral->initHeader(topFrame,topLayout);
+    mGeneral->initHeader( i18n("Event"), topFrame, topLayout );
     mGeneral->initTime(topFrame,topLayout);
 //    QBoxLayout *alarmLineLayout = new QHBoxLayout(topLayout);
     mGeneral->initAlarm(topFrame,topLayout);
     mGeneral->enableAlarm( false );
-    mGeneral->initCategories( topFrame, topLayout );
 
     topLayout->addStretch( 1 );
 
@@ -145,7 +146,7 @@ void KOEventEditor::setupGeneral()
     QBoxLayout *topLayout = new QVBoxLayout(topFrame);
     topLayout->setSpacing(spacingHint());
 
-    mGeneral->initHeader(topFrame,topLayout);
+    mGeneral->initHeader( i18n("Event"), topFrame, topLayout );
     mGeneral->initTime(topFrame,topLayout);
     QBoxLayout *alarmLineLayout = new QHBoxLayout(topLayout);
     mGeneral->initAlarm(topFrame,alarmLineLayout);
@@ -153,7 +154,6 @@ void KOEventEditor::setupGeneral()
     mGeneral->initClass(topFrame,alarmLineLayout);
     mGeneral->initDescription(topFrame,topLayout);
     QBoxLayout *detailsLayout = new QHBoxLayout(topLayout);
-    mGeneral->initCategories( topFrame, detailsLayout );
     mGeneral->initSecrecy( topFrame, detailsLayout );
   }
 

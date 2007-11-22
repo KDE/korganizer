@@ -379,6 +379,7 @@ void KOEditorDetails::removeAttendee()
   delete aItem;
 
   updateAttendeeInput();
+  emit updateAttendeeSummary( mListView->childCount() );
 }
 
 
@@ -439,6 +440,7 @@ void KOEditorDetails::insertAttendee( Attendee *a, bool goodEmailAddress )
       static_cast<KListViewItem*>( mListView->lastItem() ) );
   mListView->setSelected( item, true );
   if( mFreeBusy ) mFreeBusy->insertAttendee( a, goodEmailAddress );
+  emit updateAttendeeSummary( mListView->childCount() );
 }
 
 void KOEditorDetails::setDefaults()
@@ -495,6 +497,7 @@ void KOEditorDetails::readEvent( Incidence *event )
 
   // Reinstate free/busy view updates
   if( mFreeBusy ) mFreeBusy->setUpdateEnabled( block );
+  emit updateAttendeeSummary( mListView->childCount() );
 }
 
 void KOEditorDetails::writeEvent(Incidence *event)
@@ -510,7 +513,7 @@ void KOEditorDetails::writeEvent(Incidence *event)
     Q_ASSERT( attendee );
     /* Check if the attendee is a distribution list and expand it */
     if ( attendee->email().isEmpty() ) {
-      KPIM::DistributionList list = 
+      KPIM::DistributionList list =
         KPIM::DistributionList::findByName( KABC::StdAddressBook::self(), attendee->name() );
       if ( !list.isEmpty() ) {
         toBeDeleted.push_back( item ); // remove it once we are done expanding
@@ -520,7 +523,7 @@ void KOEditorDetails::writeEvent(Incidence *event)
           KPIM::DistributionList::Entry &e = ( *it );
           ++it;
           // this calls insertAttendee, which appends
-          insertAttendeeFromAddressee( e.addressee, attendee ); 
+          insertAttendeeFromAddressee( e.addressee, attendee );
           // TODO: duplicate check, in case it was already added manually
         }
       }
@@ -685,7 +688,7 @@ void KOEditorDetails::insertAttendeeFromAddressee( const KABC::Addressee& a,
     KPIM::compareEmail( a.preferredEmail(), mOrganizerCombo->currentText(), false );
   KCal::Attendee::PartStat partStat = at? at->status() : KCal::Attendee::NeedsAction;
   bool rsvp = at? at->RSVP() : true;
-  
+
   if ( myself && sameAsOrganizer ) {
     partStat = KCal::Attendee::Accepted;
     rsvp = false;
