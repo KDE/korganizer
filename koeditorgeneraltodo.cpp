@@ -160,6 +160,10 @@ void KOEditorGeneralTodo::initTime(QWidget *parent,QBoxLayout *topLayout)
 
   // some more layouting
   layoutTimeBox->setColStretch(3,1);
+
+   QBoxLayout *secLayout = new QHBoxLayout();
+   layoutTimeBox->addLayout( secLayout, 0, 4 );
+   initSecrecy( timeBoxFrame, secLayout );
 }
 
 

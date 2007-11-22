@@ -134,8 +134,6 @@ void KOTodoEditor::setupGeneral()
     mGeneral->enableAlarm( false );
     alarmLineLayout->addStretch( 1 );
     mGeneral->initDescription(topFrame,topLayout);
-    QBoxLayout *detailsLayout = new QHBoxLayout(topLayout);
-    mGeneral->initSecrecy( topFrame, detailsLayout );
   }
   // By default, the To-do has no time associated and
   // neither a start nor end time.
