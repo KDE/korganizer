@@ -2,7 +2,7 @@
 Icon=configure-toolbars
 Type=Service
 X-KDE-ServiceTypes=KCModule
-X-KDE-DocPath=korganizer/preferences.html
+X-DocPath=korganizer/preferences.html
 
 X-KDE-ModuleType=Library
 X-KDE-Library=kcm_korganizer
