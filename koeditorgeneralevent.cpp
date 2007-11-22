@@ -106,7 +106,7 @@ void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
 
   QFrame *timeBoxFrame = new QFrame(timeGroupBox);
 
-  QGridLayout *layoutTimeBox = new QGridLayout(timeBoxFrame,2,3);
+  QGridLayout *layoutTimeBox = new QGridLayout( timeBoxFrame );
   layoutTimeBox->setSpacing(topLayout->spacing());
 
 
@@ -131,20 +131,12 @@ void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
   mEndTimeEdit = new KTimeEdit(timeBoxFrame);
   layoutTimeBox->addWidget(mEndTimeEdit,1,2);
 
-  QHBoxLayout *flagsBox = new QHBoxLayout();
-
   mAlldayEventCheckbox = new QCheckBox(i18n("All-&day event"),timeBoxFrame);
-  flagsBox->addWidget(mAlldayEventCheckbox);
+  layoutTimeBox->addWidget( mAlldayEventCheckbox, 0, 3 );
   connect(mAlldayEventCheckbox, SIGNAL(toggled(bool)),SLOT(associateTime(bool)));
 
   mDurationLabel = new QLabel( timeBoxFrame );
-  if ( KOPrefs::instance()->mCompactDialogs ) {
-    layoutTimeBox->addMultiCellWidget( mDurationLabel, 3, 3, 0, 3 );
-  } else {
-    flagsBox->addWidget( mDurationLabel, 0, 2 );
-  }
-
-  layoutTimeBox->addMultiCellLayout( flagsBox, 2, 2, 0, 3 );
+  layoutTimeBox->addWidget( mDurationLabel, 1, 3 );
 
   // time widgets are checked if they contain a valid time
   connect(mStartTimeEdit, SIGNAL(timeChanged(QTime)),
@@ -157,6 +149,19 @@ void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
           this, SLOT(startDateChanged(const QDate&)));
   connect(mEndDateEdit, SIGNAL(dateChanged(const QDate&)),
           this, SLOT(endDateChanged(const QDate&)));
+
+  QBoxLayout *alarmLineLayout = new QHBoxLayout();
+  layoutTimeBox->addMultiCellLayout( alarmLineLayout, 2, 2, 0, 4 );
+  initAlarm( timeBoxFrame, alarmLineLayout);
+  alarmLineLayout->addStretch( 1 );
+
+  QBoxLayout *secLayout = new QHBoxLayout();
+  layoutTimeBox->addLayout( secLayout, 0, 4 );
+  initSecrecy( timeBoxFrame, secLayout );
+
+  QBoxLayout *classLayout = new QHBoxLayout();
+  layoutTimeBox->addLayout( classLayout, 1, 4 );
+  initClass( timeBoxFrame, classLayout );
 }
 
 void KOEditorGeneralEvent::initClass(QWidget *parent,QBoxLayout *topLayout)

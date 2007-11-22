@@ -148,13 +148,7 @@ void KOEventEditor::setupGeneral()
 
     mGeneral->initHeader( i18n("Event"), topFrame, topLayout );
     mGeneral->initTime(topFrame,topLayout);
-    QBoxLayout *alarmLineLayout = new QHBoxLayout(topLayout);
-    mGeneral->initAlarm(topFrame,alarmLineLayout);
-    alarmLineLayout->addStretch( 1 );
-    mGeneral->initClass(topFrame,alarmLineLayout);
     mGeneral->initDescription(topFrame,topLayout);
-    QBoxLayout *detailsLayout = new QHBoxLayout(topLayout);
-    mGeneral->initSecrecy( topFrame, detailsLayout );
   }
 
   mGeneral->finishSetup();
