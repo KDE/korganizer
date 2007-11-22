@@ -27,6 +27,7 @@
 
 #include <libkcal/incidence.h>
 #include <libkdepim/kpimurlrequesterdlg.h>
+#include <libkdepim/kfileio.h>
 
 #include <klocale.h>
 #include <kdebug.h>
@@ -36,6 +37,7 @@
 #include <krun.h>
 #include <kurldrag.h>
 #include <ktempfile.h>
+#include <ktempdir.h>
 #include <kio/netaccess.h>
 
 #include <qfile.h>
@@ -44,6 +46,9 @@
 #include <qpushbutton.h>
 #include <qdragobject.h>
 #include <qwhatsthis.h>
+
+#include <cassert>
+#include <set>
 
 class AttachmentListItem : public KListViewItem
 {
@@ -57,6 +62,7 @@ class AttachmentListItem : public KListViewItem
         mAttachment = new KCal::Attachment( QString::null );
       }
       readAttachment();
+      setDragEnabled( true );
     }
     ~AttachmentListItem() { delete mAttachment; }
     KCal::Attachment *attachment() const { return mAttachment; }
@@ -99,6 +105,45 @@ class AttachmentListItem : public KListViewItem
     KCal::Attachment *mAttachment;
 };
 
+class AttachmentListView : public KListView
+{
+    public:
+        AttachmentListView( QWidget* parent=0 )
+            :KListView( parent )
+        {
+        }
+        ~AttachmentListView()
+        {
+            for ( std::set<KTempDir*>::iterator it = mTempDirs.begin() ; it != mTempDirs.end() ; ++it ) {
+                delete *it;
+            }
+        }
+    protected:
+        QDragObject * dragObject()
+        {
+            AttachmentListItem * item = dynamic_cast<AttachmentListItem*>( selectedItem() );
+            if ( !item ) return 0;
+            KCal::Attachment * att = item->attachment();
+            assert( att );
+            KURL url;
+            if ( att->isUri() ) {
+                url.setPath( att->uri() );
+            } else {
+                KTempDir * tempDir = new KTempDir(); // will be deleted on editor close
+                tempDir->setAutoDelete( true );
+                mTempDirs.insert( tempDir );
+                QByteArray data = KCodecs::base64Decode( QCString( att->data( ) ) );
+                const QString fileName = tempDir->name( ) + "/" + att->label();
+                KPIM::kByteArrayToFile( data, fileName, false, false, false );
+                url.setPath( fileName );
+            }
+            KURLDrag *drag  = new KURLDrag( url, this );
+            return drag;
+        }
+    private:
+        std::set<KTempDir*> mTempDirs;
+};
+
 KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent,
                                           const char *name )
   : QWidget( parent, name )
@@ -106,7 +151,7 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent,
   QBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->setSpacing( spacing );
 
-  mAttachments = new KListView( this );
+  mAttachments = new AttachmentListView( this );
   QWhatsThis::add( mAttachments,
                    i18n("Displays a list of current items (files, mail, etc.) "
                         "that have been associated with this event or to-do. "
@@ -133,12 +178,14 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent,
   buttonLayout->addWidget( button );
   connect( button, SIGNAL( clicked() ), SLOT( slotAddData() ) );
 
+#ifdef TEMPORARILY_REMOVED 
   button = new QPushButton( i18n("&Edit..."), this );
   QWhatsThis::add( button,
                    i18n("Shows a dialog used to edit the attachment "
                         "currently selected in the list above.") );
   buttonLayout->addWidget( button );
   connect( button, SIGNAL( clicked() ), SLOT( slotEdit() ) );
+#endif
 
   button = new QPushButton( i18n("&Remove"), this );
   QWhatsThis::add( button,
@@ -175,8 +222,11 @@ void KOEditorAttachments::dropEvent( QDropEvent* event ) {
   KURL::List urls;
   QString text;
   if ( KURLDrag::decode( event, urls ) ) {
+    const bool asUri = KMessageBox::questionYesNo( this, 
+            i18n("Do you want to link to the attachments, or include them in the event?"),
+            i18n("Attach as link?"), i18n("As Link"), i18n("As File") ) == KMessageBox::Yes;
     for ( KURL::List::ConstIterator it = urls.begin(); it != urls.end(); ++it ) {
-      addAttachment( (*it).url() );
+      addAttachment( (*it).url(), QString::null, asUri );
     }
   } else if ( QTextDrag::decode( event, text ) ) {
     QStringList lst = QStringList::split( '\n', text );
