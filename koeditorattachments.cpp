@@ -59,7 +59,6 @@ class AttachmentListItem : public KIconViewItem
     AttachmentListItem( KCal::Attachment*att, QIconView *parent ) :
         KIconViewItem( parent )
     {
-      parent->show();
       if ( att ) {
         mAttachment = new KCal::Attachment( *att );
       } else {
@@ -184,7 +183,6 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent,
            SLOT( showAttachment( QIconViewItem * ) ) );
   connect( mAttachments, SIGNAL(selectionChanged()),
            SLOT(selectionChanged()) );
-  mAttachments->hide();
 
   QBoxLayout *buttonLayout = new QHBoxLayout( topLayout );
 
@@ -357,9 +355,6 @@ void KOEditorAttachments::slotRemove()
     for ( QValueList<QIconViewItem*>::iterator it( selected.begin() ), end( selected.end() ); it != end ; ++it ) {
         delete *it;
     }
-
-    if ( mAttachments->count() == 0 )
-      mAttachments->hide();
 }
 
 void KOEditorAttachments::slotShow()
