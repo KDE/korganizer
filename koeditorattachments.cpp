@@ -59,6 +59,7 @@ class AttachmentListItem : public KIconViewItem
     AttachmentListItem( KCal::Attachment*att, QIconView *parent ) :
         KIconViewItem( parent )
     {
+      parent->show();
       if ( att ) {
         mAttachment = new KCal::Attachment( *att );
       } else {
@@ -181,6 +182,9 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent,
   topLayout->addWidget( mAttachments );
   connect( mAttachments, SIGNAL( doubleClicked( QIconViewItem * ) ),
            SLOT( showAttachment( QIconViewItem * ) ) );
+  connect( mAttachments, SIGNAL(selectionChanged()),
+           SLOT(selectionChanged()) );
+  mAttachments->hide();
 
   QBoxLayout *buttonLayout = new QHBoxLayout( topLayout );
 
@@ -207,21 +211,22 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent,
   connect( button, SIGNAL( clicked() ), SLOT( slotEdit() ) );
 #endif
 
-  button = new QPushButton( i18n("&Remove"), this );
-  QWhatsThis::add( button,
+  mRemoveBtn = new QPushButton( i18n("&Remove"), this );
+  QWhatsThis::add( mRemoveBtn,
                    i18n("Removes the attachment selected in the list above "
                         "from this event or to-do.") );
-  buttonLayout->addWidget( button );
-  connect( button, SIGNAL( clicked() ), SLOT( slotRemove() ) );
+  buttonLayout->addWidget( mRemoveBtn );
+  connect( mRemoveBtn, SIGNAL( clicked() ), SLOT( slotRemove() ) );
 
-  button = new QPushButton( i18n("&Show"), this );
-  QWhatsThis::add( button,
+  mShowBtn = new QPushButton( i18n("&Show"), this );
+  QWhatsThis::add( mShowBtn,
                    i18n("Opens the attachment selected in the list above "
                         "in the viewer that is associated with it in your "
                         "KDE preferences.") );
-  buttonLayout->addWidget( button );
-  connect( button, SIGNAL( clicked() ), SLOT( slotShow() ) );
+  buttonLayout->addWidget( mShowBtn );
+  connect( mShowBtn, SIGNAL( clicked() ), SLOT( slotShow() ) );
 
+  selectionChanged();
   setAcceptDrops( true );
 }
 
@@ -352,6 +357,9 @@ void KOEditorAttachments::slotRemove()
     for ( QValueList<QIconViewItem*>::iterator it( selected.begin() ), end( selected.end() ); it != end ; ++it ) {
         delete *it;
     }
+
+    if ( mAttachments->count() == 0 )
+      mAttachments->hide();
 }
 
 void KOEditorAttachments::slotShow()
@@ -412,6 +420,9 @@ void KOEditorAttachments::readIncidence( KCal::Incidence *i )
   for( it = attachments.begin(); it != attachments.end(); ++it ) {
     addAttachment( (*it) );
   }
+  if ( mAttachments->count() > 0 ) {
+    QTimer::singleShot( 0, mAttachments, SLOT(arrangeItemsInGrid()) );
+  }
 }
 
 void KOEditorAttachments::writeIncidence( KCal::Incidence *i )
@@ -425,6 +436,19 @@ void KOEditorAttachments::writeIncidence( KCal::Incidence *i )
     if ( attitem )
       i->addAttachment( new KCal::Attachment( *(attitem->attachment() ) ) );
   }
+}
+
+void KOEditorAttachments::selectionChanged()
+{
+  bool selected = false;
+  for ( QIconViewItem *item = mAttachments->firstItem(); item; item = item->nextItem() ) {
+    if ( item->isSelected() ) {
+      selected = true;
+      break;
+    }
+  }
+  mRemoveBtn->setEnabled( selected );
+  mShowBtn->setEnabled( selected );
 }
 
 #include "koeditorattachments.moc"
