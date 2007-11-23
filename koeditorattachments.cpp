@@ -122,7 +122,11 @@ class AttachmentIconView : public KIconView
             :KIconView( parent )
         {
             setAcceptDrops( true );
-            setSelectionMode( QIconView::Multi );
+            setSelectionMode( QIconView::Extended );
+            setMode( KIconView::Select );
+            setItemTextPos( QIconView::Right );
+            setArrangement( QIconView::LeftToRight );
+            setMaxItemWidth( QMAX(maxItemWidth(), 250) );
         }
         ~AttachmentIconView()
         {
@@ -178,21 +182,21 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent,
 
   QBoxLayout *buttonLayout = new QHBoxLayout( topLayout );
 
-  QPushButton *button = new QPushButton( i18n("&Add URI..."), this );
+  QPushButton *button = new QPushButton( i18n("&Attach URI..."), this );
   QWhatsThis::add( button,
                    i18n("Shows a dialog used to select an attachment "
                         "to add to this event or to-do as link.") );
   buttonLayout->addWidget( button );
   connect( button, SIGNAL( clicked() ), SLOT( slotAdd() ) );
 
-  button = new QPushButton( i18n("&Add File..."), this );
+  button = new QPushButton( i18n("&Attach File..."), this );
   QWhatsThis::add( button,
                    i18n("Shows a dialog used to select an attachment "
                         "to add to this event or to-do as link as inline data.") );
   buttonLayout->addWidget( button );
   connect( button, SIGNAL( clicked() ), SLOT( slotAddData() ) );
 
-#ifdef TEMPORARILY_REMOVED 
+#ifdef TEMPORARILY_REMOVED
   button = new QPushButton( i18n("&Edit..."), this );
   QWhatsThis::add( button,
                    i18n("Shows a dialog used to edit the attachment "
@@ -235,7 +239,7 @@ void KOEditorAttachments::dropEvent( QDropEvent* event ) {
   KURL::List urls;
   QString text;
   if ( KURLDrag::decode( event, urls ) ) {
-    const bool asUri = KMessageBox::questionYesNo( this, 
+    const bool asUri = KMessageBox::questionYesNo( this,
             i18n("Do you want to link to the attachments, or include them in the event?"),
             i18n("Attach as link?"), i18n("As Link"), i18n("As File") ) == KMessageBox::Yes;
     for ( KURL::List::ConstIterator it = urls.begin(); it != urls.end(); ++it ) {
@@ -349,7 +353,11 @@ void KOEditorAttachments::slotRemove()
 
 void KOEditorAttachments::slotShow()
 {
-  showAttachment( mAttachments->currentItem() );
+  for ( QIconViewItem *it = mAttachments->firstItem(); it; it = it->nextItem() ) {
+    if ( !it->isSelected() )
+      continue;
+    showAttachment( it );
+  }
 }
 
 void KOEditorAttachments::setDefaults()
