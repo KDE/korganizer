@@ -34,8 +34,9 @@ class Attachment;
 }
 
 class QIconViewItem;
+class AttachmentIconView;
+class QMimeSource;
 class QPushButton;
-class KIconView;
 
 class KOEditorAttachments : public QWidget
 {
@@ -67,12 +68,17 @@ class KOEditorAttachments : public QWidget
     void slotShow();
     void dragEnterEvent( QDragEnterEvent *event );
     void dropEvent( QDropEvent *event );
+    void slotCopy();
+    void slotCut();
+    void slotPaste();
     void selectionChanged();
   signals:
     void openURL( const KURL &url );
 
   private:
-    KIconView *mAttachments;
+    void handlePasteOrDrop( QMimeSource* source );
+
+    AttachmentIconView *mAttachments;
     QPushButton *mRemoveBtn, *mShowBtn;
 };
 

@@ -42,6 +42,8 @@
 #include <kmimetype.h>
 #include <kiconloader.h>
 #include <kfiledialog.h>
+#include <kstdaction.h>
+#include <kactioncollection.h>
 
 #include <qfile.h>
 #include <qlayout.h>
@@ -49,6 +51,8 @@
 #include <qpushbutton.h>
 #include <qdragobject.h>
 #include <qwhatsthis.h>
+#include <qapplication.h>
+#include <qclipboard.h>
 
 #include <cassert>
 #include <set>
@@ -118,6 +122,7 @@ class AttachmentListItem : public KIconViewItem
 
 class AttachmentIconView : public KIconView
 {
+    friend class KOEditorAttachments;
     public:
         AttachmentIconView( QWidget* parent=0 )
             :KIconView( parent )
@@ -128,7 +133,7 @@ class AttachmentIconView : public KIconView
             setItemTextPos( QIconView::Right );
             setArrangement( QIconView::LeftToRight );
             setMaxItemWidth( QMAX(maxItemWidth(), 250) );
-            setMinimumHeight( 38 );
+            setMinimumHeight( 40 );
         }
         ~AttachmentIconView()
         {
@@ -153,9 +158,10 @@ class AttachmentIconView : public KIconView
                     KTempDir * tempDir = new KTempDir(); // will be deleted on editor close
                     tempDir->setAutoDelete( true );
                     mTempDirs.insert( tempDir );
-                    QByteArray data = KCodecs::base64Decode( QCString( att->data( ) ) );
+                    QByteArray decoded;
+                    KCodecs::base64Decode( QCString( att->data() ), decoded );
                     const QString fileName = tempDir->name( ) + "/" + att->label();
-                    KPIM::kByteArrayToFile( data, fileName, false, false, false );
+                    KPIM::kByteArrayToFile( decoded, fileName, false, false, false );
                     url.setPath( fileName );
                 }
                 urls << url;
@@ -226,6 +232,11 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent,
 
   selectionChanged();
   setAcceptDrops( true );
+
+  KActionCollection* ac = new KActionCollection( this, this );
+  KStdAction::copy(this, SLOT(slotCopy( ) ), ac );
+  KStdAction::cut(this, SLOT(slotCut( ) ), ac );
+  KStdAction::paste(this, SLOT(slotPaste( ) ), ac );
 }
 
 KOEditorAttachments::~KOEditorAttachments()
@@ -237,27 +248,33 @@ bool KOEditorAttachments::hasAttachments()
   return mAttachments->count() != 0;
 }
 
-void KOEditorAttachments::dragEnterEvent( QDragEnterEvent* event ) {
+void KOEditorAttachments::dragEnterEvent( QDragEnterEvent* event )
+{
   event->accept( KURLDrag::canDecode( event ) | QTextDrag::canDecode( event ) );
 }
 
-void KOEditorAttachments::dropEvent( QDropEvent* event ) {
+void KOEditorAttachments::handlePasteOrDrop( QMimeSource* source )
+{
   KURL::List urls;
   QString text;
-  if ( KURLDrag::decode( event, urls ) ) {
+  if ( KURLDrag::decode( source, urls ) ) {
     const bool asUri = KMessageBox::questionYesNo( this,
             i18n("Do you want to link to the attachments, or include them in the event?"),
             i18n("Attach as link?"), i18n("As Link"), i18n("As File") ) == KMessageBox::Yes;
     for ( KURL::List::ConstIterator it = urls.begin(); it != urls.end(); ++it ) {
       addAttachment( (*it).url(), QString::null, asUri );
     }
-  } else if ( QTextDrag::decode( event, text ) ) {
+  } else if ( QTextDrag::decode( source, text ) ) {
     QStringList lst = QStringList::split( '\n', text );
     for ( QStringList::ConstIterator it = lst.begin(); it != lst.end(); ++it ) {
       addAttachment( (*it)  );
     }
   }
+}
 
+void KOEditorAttachments::dropEvent( QDropEvent* event )
+{
+    handlePasteOrDrop( event );
 }
 
 void KOEditorAttachments::showAttachment( QIconViewItem *item )
@@ -279,8 +296,6 @@ void KOEditorAttachments::showAttachment( QIconViewItem *item )
     KRun::runURL( f.name(), att->mimeType(), true, false );
   }
 }
-
-
 
 void KOEditorAttachments::slotAdd()
 {
@@ -431,6 +446,23 @@ void KOEditorAttachments::writeIncidence( KCal::Incidence *i )
     if ( attitem )
       i->addAttachment( new KCal::Attachment( *(attitem->attachment() ) ) );
   }
+}
+
+
+void KOEditorAttachments::slotCopy()
+{
+    QApplication::clipboard()->setData( mAttachments->dragObject(), QClipboard::Clipboard );
+}
+
+void KOEditorAttachments::slotCut()
+{
+    slotCopy();
+    slotRemove();
+}
+
+void KOEditorAttachments::slotPaste()
+{
+    handlePasteOrDrop( QApplication::clipboard()->data() );
 }
 
 void KOEditorAttachments::selectionChanged()
