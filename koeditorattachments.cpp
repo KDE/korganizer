@@ -267,8 +267,9 @@ void KOEditorAttachments::showAttachment( QIconViewItem *item )
     KTempFile f;
     if ( !f.file() )
       return;
-    QCString decoded = KCodecs::base64Decode( QCString( att->data() ) );
-    f.file()->writeBlock( decoded.data(), decoded.length() );
+    QByteArray decoded;
+    KCodecs::base64Decode( QCString( att->data() ), decoded );
+    f.file()->writeBlock( decoded );
     f.file()->close();
     KRun::runURL( f.name(), att->mimeType(), true, false );
   }
