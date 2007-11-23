@@ -29,6 +29,7 @@
 
 class KOEditorGeneralEvent;
 class KOEditorRecurrence;
+class KOEditorRecurrenceDialog;
 class KOEditorFreeBusy;
 
 class SaveTemplateDialog;
@@ -63,10 +64,10 @@ class KOEventEditor : public KOIncidenceEditor
       Clear event win for new event
     */
     void newEvent();
-    
+
     /**
-      Sets the given summary and description. If description is empty and the 
-      summary contains multiple lines, the summary will be used as description 
+      Sets the given summary and description. If description is empty and the
+      summary contains multiple lines, the summary will be used as description
       and only the first line of summary will be used as the summary.
     */
     void setTexts( const QString &summary, const QString &description = QString::null );
@@ -100,6 +101,7 @@ class KOEventEditor : public KOIncidenceEditor
     void deleteEvent();
 
     void slotSaveTemplate( const QString & );
+    void updateRecurrenceSummary();
 
   protected:
     QString type() { return "Event"; }
@@ -121,6 +123,7 @@ class KOEventEditor : public KOIncidenceEditor
     Event *mEvent;
 
     KOEditorGeneralEvent *mGeneral;
+    KOEditorRecurrenceDialog *mRecurrenceDialog;
     KOEditorRecurrence   *mRecurrence;
     KOEditorFreeBusy     *mFreeBusy;
 };

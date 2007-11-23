@@ -36,7 +36,7 @@
 #include <kmessagebox.h>
 #include <libkcal/calendarresources.h>
 #include <libkcal/resourcecalendar.h>
-
+#include <libkcal/incidenceformatter.h>
 #include <libkcal/calendarlocal.h>
 
 #include "koprefs.h"
@@ -99,6 +99,11 @@ void KOEventEditor::init()
 
   connect( mDetails, SIGNAL(updateAttendeeSummary(int)),
            mGeneral, SLOT(updateAttendeeSummary(int)) );
+
+  connect( mGeneral, SIGNAL(editRecurrence()),
+           mRecurrenceDialog, SLOT(show()) );
+  connect( mRecurrenceDialog, SIGNAL(okClicked()),
+           SLOT(updateRecurrenceSummary()) );
 }
 
 void KOEventEditor::reload()
@@ -163,6 +168,7 @@ void KOEventEditor::modified (int /*modification*/)
 
 void KOEventEditor::setupRecurrence()
 {
+#if 0
   QFrame *topFrame = addPage( i18n("Rec&urrence") );
 
   QWhatsThis::add( topFrame,
@@ -173,6 +179,10 @@ void KOEventEditor::setupRecurrence()
 
   mRecurrence = new KOEditorRecurrence( topFrame );
   topLayout->addWidget( mRecurrence );
+#endif
+  mRecurrenceDialog = new KOEditorRecurrenceDialog( this );
+  mRecurrenceDialog->hide();
+  mRecurrence = mRecurrenceDialog->editor();
 }
 
 void KOEventEditor::setupFreeBusy()
@@ -383,6 +393,14 @@ void KOEventEditor::slotSaveTemplate( const QString &templateName )
 QObject *KOEventEditor::typeAheadReceiver() const
 {
   return mGeneral->typeAheadReceiver();
+}
+
+void KOEventEditor::updateRecurrenceSummary()
+{
+  Event *ev =  new Event();
+  writeEvent( ev );
+  mGeneral->updateRecurrenceSummary( IncidenceFormatter::recurrenceString( ev ) );
+  delete ev;
 }
 
 #include "koeventeditor.moc"

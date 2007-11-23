@@ -64,6 +64,8 @@ class KOEditorGeneralEvent : public KOEditorGeneral
     /** Check if the input is valid. */
     bool validateInput();
 
+    void updateRecurrenceSummary( const QString &summary );
+
   public slots:
     void setDateTimes( const QDateTime &start, const QDateTime &end );
     void setDuration();
@@ -83,6 +85,7 @@ class KOEditorGeneralEvent : public KOEditorGeneral
     void allDayChanged(bool);
     void dateTimeStrChanged( const QString & );
     void dateTimesChanged( const QDateTime &start, const QDateTime &end );
+    void editRecurrence();
 
   private:
     QLabel                  *mStartDateLabel;
@@ -94,6 +97,7 @@ class KOEditorGeneralEvent : public KOEditorGeneral
     QLabel                  *mDurationLabel;
     QCheckBox               *mAlldayEventCheckbox;
     QComboBox               *mFreeTimeCombo;
+    QLabel                  *mRecurrenceSummary;
 
     // current start and end date and time
     QDateTime mCurrStartDateTime;

@@ -46,6 +46,7 @@
 #include <ktextedit.h>
 
 #include <libkcal/event.h>
+#include <libkcal/incidenceformatter.h>
 
 #include "ktimeedit.h"
 #include <libkdepim/kdateedit.h>
@@ -150,9 +151,18 @@ void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
   connect(mEndDateEdit, SIGNAL(dateChanged(const QDate&)),
           this, SLOT(endDateChanged(const QDate&)));
 
+  QBoxLayout *recLayout = new QHBoxLayout();
+  layoutTimeBox->addMultiCellLayout( recLayout, 2, 2, 0, 4 );
+  mRecurrenceSummary = new QLabel( QString(), timeBoxFrame );
+  recLayout->addWidget( mRecurrenceSummary );
+  QPushButton *recEditButton = new QPushButton( i18n("Edit Recurrence"), timeBoxFrame );
+  recLayout->addWidget( recEditButton );
+  connect( recEditButton, SIGNAL(clicked()), SIGNAL(editRecurrence()) );
+  recLayout->addStretch( 1 );
+
   QBoxLayout *alarmLineLayout = new QHBoxLayout();
-  layoutTimeBox->addMultiCellLayout( alarmLineLayout, 2, 2, 0, 4 );
-  initAlarm( timeBoxFrame, alarmLineLayout);
+  layoutTimeBox->addMultiCellLayout( alarmLineLayout, 3, 3, 0, 4 );
+  initAlarm( timeBoxFrame, alarmLineLayout );
   alarmLineLayout->addStretch( 1 );
 
   QBoxLayout *secLayout = new QHBoxLayout();
@@ -301,6 +311,8 @@ void KOEditorGeneralEvent::readEvent( Event *event, bool tmpl )
     mFreeTimeCombo->setCurrentItem(0);
     break;
   }
+
+  mRecurrenceSummary->setText( IncidenceFormatter::recurrenceString( event ) );
 
   readIncidence(event);
 }
@@ -470,4 +482,9 @@ bool KOEditorGeneralEvent::validateInput()
   }
 
   return KOEditorGeneral::validateInput();
+}
+
+void KOEditorGeneralEvent::updateRecurrenceSummary(const QString & summary)
+{
+  mRecurrenceSummary->setText( summary );
 }
