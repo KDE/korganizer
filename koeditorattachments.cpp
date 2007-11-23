@@ -33,12 +33,14 @@
 #include <kdebug.h>
 #include <kmdcodec.h>
 #include <kmessagebox.h>
-#include <klistview.h>
+#include <kiconview.h>
 #include <krun.h>
 #include <kurldrag.h>
 #include <ktempfile.h>
 #include <ktempdir.h>
 #include <kio/netaccess.h>
+#include <kmimetype.h>
+#include <kiconloader.h>
 
 #include <qfile.h>
 #include <qlayout.h>
@@ -50,11 +52,11 @@
 #include <cassert>
 #include <set>
 
-class AttachmentListItem : public KListViewItem
+class AttachmentListItem : public KIconViewItem
 {
   public:
-    AttachmentListItem( KCal::Attachment*att, QListView *parent ) :
-        KListViewItem( parent )
+    AttachmentListItem( KCal::Attachment*att, QIconView *parent ) :
+        KIconViewItem( parent )
     {
       if ( att ) {
         mAttachment = new KCal::Attachment( *att );
@@ -91,28 +93,38 @@ class AttachmentListItem : public KListViewItem
     void readAttachment()
     {
       if ( mAttachment->isUri() )
-        setText( 0, mAttachment->uri() );
+        setText( mAttachment->uri() );
       else {
         if ( mAttachment->label().isEmpty() )
-          setText( 0, i18n("[Binary data]") );
+          setText( i18n("[Binary data]") );
         else
-          setText( 0, mAttachment->label() );
+          setText( mAttachment->label() );
       }
-      setText( 1, mAttachment->mimeType() );
+      KMimeType::Ptr mt = KMimeType::mimeType( mAttachment->mimeType() );
+      if ( mt ) {
+          const QString iconName( mt->icon( QString(), false ) );
+          QPixmap pix = KGlobal::iconLoader( )->loadIcon( iconName, KIcon::Small );
+          if ( pix.isNull() )
+            pix = KGlobal::iconLoader( )->loadIcon( "unknown", KIcon::Small );
+            if ( !pix.isNull() )
+              setPixmap( pix );
+      }
     }
 
   private:
     KCal::Attachment *mAttachment;
 };
 
-class AttachmentListView : public KListView
+class AttachmentIconView : public KIconView
 {
     public:
-        AttachmentListView( QWidget* parent=0 )
-            :KListView( parent )
+        AttachmentIconView( QWidget* parent=0 )
+            :KIconView( parent )
         {
+            setAcceptDrops( true );
+            setSelectionMode( QIconView::Multi );
         }
-        ~AttachmentListView()
+        ~AttachmentIconView()
         {
             for ( std::set<KTempDir*>::iterator it = mTempDirs.begin() ; it != mTempDirs.end() ; ++it ) {
                 delete *it;
@@ -121,23 +133,28 @@ class AttachmentListView : public KListView
     protected:
         QDragObject * dragObject()
         {
-            AttachmentListItem * item = dynamic_cast<AttachmentListItem*>( selectedItem() );
-            if ( !item ) return 0;
-            KCal::Attachment * att = item->attachment();
-            assert( att );
-            KURL url;
-            if ( att->isUri() ) {
-                url.setPath( att->uri() );
-            } else {
-                KTempDir * tempDir = new KTempDir(); // will be deleted on editor close
-                tempDir->setAutoDelete( true );
-                mTempDirs.insert( tempDir );
-                QByteArray data = KCodecs::base64Decode( QCString( att->data( ) ) );
-                const QString fileName = tempDir->name( ) + "/" + att->label();
-                KPIM::kByteArrayToFile( data, fileName, false, false, false );
-                url.setPath( fileName );
+            KURL::List urls;
+            for ( QIconViewItem *it = firstItem( ); it; it = it->nextItem( ) ) {
+                if ( !it->isSelected() ) continue;
+                AttachmentListItem * item = dynamic_cast<AttachmentListItem*>( it );
+                if ( !item ) return 0;
+                KCal::Attachment * att = item->attachment();
+                assert( att );
+                KURL url;
+                if ( att->isUri() ) {
+                    url.setPath( att->uri() );
+                } else {
+                    KTempDir * tempDir = new KTempDir(); // will be deleted on editor close
+                    tempDir->setAutoDelete( true );
+                    mTempDirs.insert( tempDir );
+                    QByteArray data = KCodecs::base64Decode( QCString( att->data( ) ) );
+                    const QString fileName = tempDir->name( ) + "/" + att->label();
+                    KPIM::kByteArrayToFile( data, fileName, false, false, false );
+                    url.setPath( fileName );
+                }
+                urls << url;
             }
-            KURLDrag *drag  = new KURLDrag( url, this );
+            KURLDrag *drag  = new KURLDrag( urls, this );
             return drag;
         }
     private:
@@ -151,16 +168,13 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent,
   QBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->setSpacing( spacing );
 
-  mAttachments = new AttachmentListView( this );
+  mAttachments = new AttachmentIconView( this );
   QWhatsThis::add( mAttachments,
                    i18n("Displays a list of current items (files, mail, etc.) "
-                        "that have been associated with this event or to-do. "
-                        "The URI column displays the location of the file.") );
-  mAttachments->addColumn( i18n("Label / URI") );
-  mAttachments->addColumn( i18n("MIME Type") );
+                        "that have been associated with this event or to-do. ") );
   topLayout->addWidget( mAttachments );
-  connect( mAttachments, SIGNAL( doubleClicked( QListViewItem * ) ),
-           SLOT( showAttachment( QListViewItem * ) ) );
+  connect( mAttachments, SIGNAL( doubleClicked( QIconViewItem * ) ),
+           SLOT( showAttachment( QIconViewItem * ) ) );
 
   QBoxLayout *buttonLayout = new QHBoxLayout( topLayout );
 
@@ -202,7 +216,6 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent,
   buttonLayout->addWidget( button );
   connect( button, SIGNAL( clicked() ), SLOT( slotShow() ) );
 
-  setAcceptDrops( TRUE );
 }
 
 KOEditorAttachments::~KOEditorAttachments()
@@ -211,7 +224,7 @@ KOEditorAttachments::~KOEditorAttachments()
 
 bool KOEditorAttachments::hasAttachments()
 {
-  return mAttachments->childCount() > 0;
+  return mAttachments->count() != 0;
 }
 
 void KOEditorAttachments::dragEnterEvent( QDragEnterEvent* event ) {
@@ -237,7 +250,7 @@ void KOEditorAttachments::dropEvent( QDropEvent* event ) {
 
 }
 
-void KOEditorAttachments::showAttachment( QListViewItem *item )
+void KOEditorAttachments::showAttachment( QIconViewItem *item )
 {
   AttachmentListItem *attitem = static_cast<AttachmentListItem*>(item);
   if ( !attitem || !attitem->attachment() ) return;
@@ -280,7 +293,7 @@ void KOEditorAttachments::slotAddData()
 
 void KOEditorAttachments::slotEdit()
 {
-  QListViewItem *item = mAttachments->currentItem();
+  QIconViewItem *item = mAttachments->currentItem();
   AttachmentListItem *attitem = static_cast<AttachmentListItem*>(item);
   if ( !attitem || !attitem->attachment() ) return;
 
@@ -318,13 +331,20 @@ void KOEditorAttachments::slotEdit()
 
 void KOEditorAttachments::slotRemove()
 {
-  QListViewItem *item = mAttachments->currentItem();
-  if ( !item ) return;
+    QValueList<QIconViewItem*> selected;
+    for ( QIconViewItem *it = mAttachments->firstItem( ); it; it = it->nextItem( ) ) {
+        if ( !it->isSelected() ) continue;
+        selected << it;
+    }
+    if ( selected.isEmpty() || KMessageBox::warningContinueCancel(this,
+                    selected.count() == 1?i18n("This item will be permanently deleted."):
+                    i18n("The selected items will be permanently deleted."),
+                    i18n("KOrganizer Confirmation"),KStdGuiItem::del()) != KMessageBox::Continue )
+        return;
 
-  if ( KMessageBox::warningContinueCancel(this,
-        i18n("This item will be permanently deleted."),
-  i18n("KOrganizer Confirmation"),KStdGuiItem::del()) == KMessageBox::Continue )
-    delete item;
+    for ( QValueList<QIconViewItem*>::iterator it( selected.begin() ), end( selected.end() ); it != end ; ++it ) {
+        delete *it;
+    }
 }
 
 void KOEditorAttachments::slotShow()
@@ -387,9 +407,9 @@ void KOEditorAttachments::writeIncidence( KCal::Incidence *i )
 {
   i->clearAttachments();
 
-  QListViewItem *item;
+  QIconViewItem *item;
   AttachmentListItem *attitem;
-  for( item = mAttachments->firstChild(); item; item = item->nextSibling() ) {
+  for( item = mAttachments->firstItem(); item; item = item->nextItem() ) {
     attitem = static_cast<AttachmentListItem*>(item);
     if ( attitem )
       i->addAttachment( new KCal::Attachment( *(attitem->attachment() ) ) );

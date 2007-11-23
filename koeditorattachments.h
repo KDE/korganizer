@@ -33,8 +33,8 @@ class Incidence;
 class Attachment;
 }
 
-class QListViewItem;
-class KListView;
+class QIconViewItem;
+class KIconView;
 
 class KOEditorAttachments : public QWidget
 {
@@ -58,7 +58,7 @@ class KOEditorAttachments : public QWidget
     bool hasAttachments();
 
   protected slots:
-    void showAttachment( QListViewItem *item );
+    void showAttachment( QIconViewItem *item );
     void slotAdd();
     void slotAddData();
     void slotEdit();
@@ -70,7 +70,7 @@ class KOEditorAttachments : public QWidget
     void openURL( const KURL &url );
 
   private:
-    KListView *mAttachments;
+    KIconView *mAttachments;
 };
 
 #endif
