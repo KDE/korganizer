@@ -291,7 +291,7 @@ void KOEditorGeneralEvent::setDefaults( const QDateTime &from,
   setDateTimes(from,to);
 }
 
-void KOEditorGeneralEvent::readEvent( Event *event, bool tmpl )
+void KOEditorGeneralEvent::readEvent( Event *event, Calendar *calendar, bool tmpl )
 {
   QString tmpStr;
 
@@ -314,7 +314,7 @@ void KOEditorGeneralEvent::readEvent( Event *event, bool tmpl )
 
   mRecurrenceSummary->setText( IncidenceFormatter::recurrenceString( event ) );
 
-  readIncidence(event);
+  readIncidence(event, calendar);
 }
 
 void KOEditorGeneralEvent::writeEvent(Event *event)

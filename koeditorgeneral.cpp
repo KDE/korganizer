@@ -65,6 +65,7 @@
 #include "koeditoralarms.h"
 #include "koeditorattachments.h"
 #include "koeditorgeneral.moc"
+#include "kohelper.h"
 
 KOEditorGeneral::KOEditorGeneral(QObject* parent, const char* name) :
   QObject( parent, name ), mAttachments(0)
@@ -137,20 +138,27 @@ void KOEditorGeneral::initHeader( const QString &label, QWidget *parent,QBoxLayo
   headerLayout->addMultiCellWidget( mLocationEdit, 2, 2, 1, 2 );
   locationLabel->setBuddy( mLocationEdit );
 
+  QBoxLayout *thirdLineLayout = new QHBoxLayout();
+  headerLayout->addMultiCellLayout( thirdLineLayout, 3, 3, 0, 2 );
+
+  mResourceLabel = new QLabel( groupFrame );
+  mResourceLabel->hide();
+  thirdLineLayout->addWidget( mResourceLabel );
+
   whatsThis = i18n("Allows you to select the categories that this event or to-do belongs to.");
   QLabel *categoriesLabel = new QLabel( i18n("Categories:"), groupFrame );
   QWhatsThis::add( categoriesLabel, whatsThis );
-  headerLayout->addWidget( categoriesLabel, 3, 0 );
+  thirdLineLayout->addWidget( categoriesLabel );
   mCategoriesLabel = new KSqueezedTextLabel( groupFrame );
   QWhatsThis::add( mCategoriesLabel, whatsThis );
   mCategoriesLabel->setFrameStyle(QFrame::Panel|QFrame::Sunken);
-  headerLayout->addWidget( mCategoriesLabel, 3, 1 );
+  thirdLineLayout->addWidget( mCategoriesLabel );
 
   mCategoriesButton = new QPushButton( groupFrame );
   mCategoriesButton->setText(i18n("&Select..."));
   QWhatsThis::add( mCategoriesButton, whatsThis );
   connect(mCategoriesButton,SIGNAL(clicked()),SLOT(selectCategories()));
-  headerLayout->addWidget( mCategoriesButton, 3, 2 );
+  thirdLineLayout->addWidget( mCategoriesButton );
 }
 
 void KOEditorGeneral::initSecrecy(QWidget *parent, QBoxLayout *topLayout)
@@ -377,7 +385,7 @@ void KOEditorGeneral::updateAlarmWidgets()
   }
 }
 
-void KOEditorGeneral::readIncidence(Incidence *event)
+void KOEditorGeneral::readIncidence(Incidence *event, Calendar *calendar)
 {
   mSummaryEdit->setText(event->summary());
   mLocationEdit->setText(event->location());
@@ -406,6 +414,12 @@ void KOEditorGeneral::readIncidence(Incidence *event)
   setCategories(event->categories());
 
   mAttachments->readIncidence( event );
+
+  QString resLabel = KOHelper::resourceLabel( calendar, event );
+  if ( !resLabel.isEmpty() ) {
+    mResourceLabel->setText( i18n( "Calendar: %1" ).arg( resLabel ) );
+    mResourceLabel->show();
+  }
 }
 
 Alarm *KOEditorGeneral::alarmFromSimplePage() const

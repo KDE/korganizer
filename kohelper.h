@@ -43,6 +43,11 @@ class KDE_EXPORT KOHelper
     */
     static QColor resourceColor( KCal::Calendar*calendar, KCal::Incidence*incidence );
 
+    /**
+      Returns the resource label the given incidence belongs to.
+    */
+    static QString resourceLabel( KCal::Calendar *calendar, KCal::Incidence *incidence );
+
 };
 
 #endif

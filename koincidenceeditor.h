@@ -71,7 +71,7 @@ class KOIncidenceEditor : public KDialogBase
 
   public slots:
     /** Edit an existing todo. */
-    virtual void editIncidence(Incidence *) = 0;
+    virtual void editIncidence(Incidence *, Calendar *) = 0;
     virtual void setIncidenceChanger( IncidenceChangerBase *changer ) {
         mChanger = changer; }
     /** Initialize editor. This function creates the tab widgets. */

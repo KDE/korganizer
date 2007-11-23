@@ -74,7 +74,7 @@ class KOEventEditor : public KOIncidenceEditor
     /**
       Edit an existing event.
     */
-    void editIncidence( Incidence * );
+    void editIncidence( Incidence *incidence, Calendar *calendar );
 
     /**
       Set widgets to the given date/time values
@@ -85,7 +85,7 @@ class KOEventEditor : public KOIncidenceEditor
       Read event object and setup widgets accordingly. If tmpl is true, the
       event is read as template, i.e. the time and date information isn't set.
     */
-    void readEvent( Event *, bool tmpl = false );
+    void readEvent( Event *event, Calendar *calendar, bool tmpl = false );
     /**
       Write event settings to event object
     */
@@ -121,6 +121,7 @@ class KOEventEditor : public KOIncidenceEditor
 
   private:
     Event *mEvent;
+    Calendar* mCalendar;
 
     KOEditorGeneralEvent *mGeneral;
     KOEditorRecurrenceDialog *mRecurrenceDialog;

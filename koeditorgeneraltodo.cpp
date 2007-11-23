@@ -266,9 +266,9 @@ void KOEditorGeneralTodo::setDefaults( const QDateTime &due, bool allDay )
   mCompletedCombo->setCurrentItem(0);
 }
 
-void KOEditorGeneralTodo::readTodo(Todo *todo)
+void KOEditorGeneralTodo::readTodo(Todo *todo, Calendar *calendar)
 {
-  KOEditorGeneral::readIncidence(todo);
+  KOEditorGeneral::readIncidence(todo, calendar);
 
   QDateTime dueDT;
 
@@ -563,7 +563,7 @@ void KOEditorGeneralTodo::modified (Todo* todo, int modification)
     break;
   case KOGlobals::UNKNOWN_MODIFIED: // fall through
   default:
-    readTodo( todo );
+    readTodo( todo, 0 );
     break;
   }
 }

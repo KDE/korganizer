@@ -42,6 +42,7 @@ class KOEditorAttachments;
 
 namespace KCal {
 class Incidence;
+class Calendar;
 }
 using namespace KCal;
 
@@ -77,7 +78,7 @@ class KOEditorGeneral : public QObject
     /** Set widgets to default values */
     void setDefaults(bool allDay);
     /** Read event object and setup widgets accordingly */
-    void readIncidence(Incidence *);
+    void readIncidence(Incidence *event, Calendar *calendar);
     /** Write event settings to event object */
     void writeIncidence(Incidence *);
 
@@ -129,6 +130,7 @@ class KOEditorGeneral : public QObject
     QPushButton             *mCategoriesButton;
     KSqueezedTextLabel      *mCategoriesLabel;
     KOEditorAttachments     *mAttachments;
+    QLabel                  *mResourceLabel;
 
     enum AlarmStackPages { SimpleAlarmPage, AdvancedAlarmLabel };
 

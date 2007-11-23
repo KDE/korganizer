@@ -56,6 +56,7 @@ KOTodoEditor::KOTodoEditor( Calendar *calendar, QWidget *parent ) :
   KOIncidenceEditor( QString::null, calendar, parent )
 {
   mTodo = 0;
+  mCalendar = 0;
   mRelatedTodo = 0;
 }
 
@@ -86,7 +87,7 @@ void KOTodoEditor::init()
 
 void KOTodoEditor::reload()
 {
-  if ( mTodo ) readTodo( mTodo );
+  if ( mTodo ) readTodo( mTodo, mCalendar );
 }
 
 void KOTodoEditor::setupGeneral()
@@ -161,7 +162,7 @@ void KOTodoEditor::setupRecurrence()
           mRecurrence, SLOT( setEnabled( bool ) ) );
 }
 
-void KOTodoEditor::editIncidence(Incidence *incidence)
+void KOTodoEditor::editIncidence(Incidence *incidence, Calendar *calendar)
 {
   kdDebug(5850) << k_funcinfo << endl;
   Todo *todo=dynamic_cast<Todo*>(incidence);
@@ -170,7 +171,8 @@ void KOTodoEditor::editIncidence(Incidence *incidence)
     init();
 
     mTodo = todo;
-    readTodo(mTodo);
+    mCalendar = calendar;
+    readTodo( mTodo, mCalendar );
   }
 
   setCaption( i18n("Edit To-do") );
@@ -181,6 +183,7 @@ void KOTodoEditor::newTodo()
   kdDebug(5850) << k_funcinfo << endl;
   init();
   mTodo = 0;
+  mCalendar = 0;
   setCaption( i18n("New To-do") );
 }
 
@@ -277,12 +280,12 @@ void KOTodoEditor::setDates( const QDateTime &due, bool allDay, Todo *relatedEve
     mRecurrence->setDefaults( QDateTime::currentDateTime(), due, false );
 }
 
-void KOTodoEditor::readTodo( Todo *todo )
+void KOTodoEditor::readTodo( Todo *todo, Calendar *calendar )
 {
   if ( !todo ) return;
 //   mRelatedTodo = todo->relatedTo();
   kdDebug(5850)<<"read todo"<<endl;
-  mGeneral->readTodo( todo );
+  mGeneral->readTodo( todo, calendar );
   mDetails->readEvent( todo );
 //  mAlarms->readIncidence( todo );
   mRecurrence->readIncidence( todo );
@@ -343,7 +346,7 @@ void KOTodoEditor::loadTemplate( /*const*/ CalendarLocal& cal )
     KMessageBox::error( this,
         i18n("Template does not contain a valid to-do.") );
   } else {
-    readTodo( todos.first() );
+    readTodo( todos.first(), 0 );
   }
 }
 

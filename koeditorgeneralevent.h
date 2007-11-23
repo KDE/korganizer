@@ -57,7 +57,7 @@ class KOEditorGeneralEvent : public KOEditorGeneral
       Read event object and setup widgets accordingly. If templ is true, the
       event is read as template, i.e. the time and date information isn't set.
     */
-    void readEvent( Event *, bool tmpl = false );
+    void readEvent( Event *event, Calendar *calendar, bool tmpl = false );
     /** Write event settings to event object */
     void writeEvent( Event * );
 
