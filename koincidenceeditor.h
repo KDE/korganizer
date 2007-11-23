@@ -39,7 +39,6 @@ class EmbeddedURLPage;
 namespace KOrg { class IncidenceChangerBase; }
 
 class KOEditorDetails;
-class KOEditorAttachments;
 
 namespace KCal {
 class Calendar;
@@ -98,6 +97,10 @@ class KOIncidenceEditor : public KDialogBase
     void editCanceled( Incidence * );
 
     void deleteIncidenceSignal( Incidence * );
+    void signalAddAttachments( const QStringList &attachments,
+                               const QStringList& mimeTypes = QStringList(),
+                               bool inlineAttachment = false );
+
 
   protected slots:
     void slotApply();
@@ -117,7 +120,6 @@ class KOIncidenceEditor : public KDialogBase
     virtual void loadTemplate( /*const*/ CalendarLocal& ) = 0;
 
     void setupAttendeesTab();
-    void setupAttachmentsTab();
     void setupDesignerTabs( const QString &type );
 
     void saveAsTemplate( Incidence *, const QString &name );
@@ -143,7 +145,6 @@ class KOIncidenceEditor : public KDialogBase
     Calendar *mCalendar;
 
     KOEditorDetails *mDetails;
-    KOEditorAttachments *mAttachments;
     KOrg::IncidenceChangerBase *mChanger;
 
     QPtrList<KPIM::DesignerFields> mDesignerFields;

@@ -70,7 +70,7 @@ void KOTodoEditor::init()
   setupGeneral();
   setupRecurrence();
   setupAttendeesTab();
-  setupAttachmentsTab();
+//  setupAttachmentsTab();
 
   connect( mGeneral, SIGNAL( dateTimeStrChanged( const QString & ) ),
            mRecurrence, SLOT( setDateTimeStr( const QString & ) ) );
@@ -134,6 +134,11 @@ void KOTodoEditor::setupGeneral()
     mGeneral->enableAlarm( false );
     alarmLineLayout->addStretch( 1 );
     mGeneral->initDescription(topFrame,topLayout);
+    mGeneral->initAttachments(topFrame,topLayout);
+    connect( mGeneral, SIGNAL( openURL( const KURL& ) ),
+             this, SLOT( openURL( const KURL& ) ) );
+    connect( this, SIGNAL( signalAddAttachments( const QStringList&, const QStringList&, bool ) ),
+             mGeneral, SLOT( addAttachments( const QStringList&, const QStringList&, bool ) ) );
   }
   // By default, the To-do has no time associated and
   // neither a start nor end time.
@@ -270,7 +275,6 @@ void KOTodoEditor::setDates( const QDateTime &due, bool allDay, Todo *relatedEve
     mRecurrence->setDefaults( mTodo->dtStart(), due, false );
   else
     mRecurrence->setDefaults( QDateTime::currentDateTime(), due, false );
-  mAttachments->setDefaults();
 }
 
 void KOTodoEditor::readTodo( Todo *todo )
@@ -282,7 +286,6 @@ void KOTodoEditor::readTodo( Todo *todo )
   mDetails->readEvent( todo );
 //  mAlarms->readIncidence( todo );
   mRecurrence->readIncidence( todo );
-  mAttachments->readIncidence( todo );
 
   createEmbeddedURLPages( todo );
   readDesignerFields( todo );
@@ -295,7 +298,6 @@ void KOTodoEditor::writeTodo( Todo *todo )
   mRecurrence->writeIncidence( todo );
   mGeneral->writeTodo( todo );
   mDetails->writeEvent( todo );
-  mAttachments->writeIncidence( todo );
 
   if ( *(oldIncidence->recurrence()) != *(todo->recurrence() ) ) {
     todo->setDtDue( todo->dtDue(), true );

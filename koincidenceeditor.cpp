@@ -49,7 +49,6 @@
 #include "koprefs.h"
 #include "koglobals.h"
 #include "koeditordetails.h"
-#include "koeditorattachments.h"
 #include "koeditoralarms.h"
 #include "urihandler.h"
 #include "koincidenceeditor.h"
@@ -59,7 +58,7 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
                                       Calendar *calendar, QWidget *parent )
   : KDialogBase( Tabbed, caption, Ok | Apply | Cancel | Default, Ok,
                  parent, 0, false, false ),
-    mDetails( 0 ), mAttachments( 0 ), mIsCounter( false )
+    mDetails( 0 ), mIsCounter( false )
 {
   // Set this to be the group leader for all subdialogs - this means
   // modal subdialogs will only affect this dialog, not the other windows
@@ -93,22 +92,6 @@ void KOIncidenceEditor::setupAttendeesTab()
 
   mDetails = new KOEditorDetails( spacingHint(), topFrame );
   topLayout->addWidget( mDetails );
-}
-
-void KOIncidenceEditor::setupAttachmentsTab()
-{
-  QFrame *topFrame = addPage( i18n("Attach&ments") );
-  QWhatsThis::add( topFrame,
-                   i18n("The Attachments tab allows you to add or remove "
-                        "files, emails, contacts, and other items "
-                        "associated with this event or to-do.") );
-
-  QBoxLayout *topLayout = new QVBoxLayout( topFrame );
-
-  mAttachments = new KOEditorAttachments( spacingHint(), topFrame );
-  connect( mAttachments, SIGNAL( openURL( const KURL & ) ) ,
-           this, SLOT( openURL( const KURL & ) ) );
-  topLayout->addWidget( mAttachments );
 }
 
 void KOIncidenceEditor::slotApply()
@@ -373,14 +356,7 @@ void KOIncidenceEditor::addAttachments( const QStringList &attachments,
                                         const QStringList &mimeTypes,
                                         bool inlineAttachments )
 {
-  QStringList::ConstIterator it;
-  uint i = 0;
-  for ( it = attachments.begin(); it != attachments.end(); ++it, ++i ) {
-    QString mimeType;
-    if ( mimeTypes.count() > i )
-      mimeType = mimeTypes[ i ];
-    mAttachments->addAttachment( *it, mimeType, !inlineAttachments );
-  }
+    emit signalAddAttachments( attachments, mimeTypes, inlineAttachments );
 }
 
 void KOIncidenceEditor::addAttendees( const QStringList &attendees )

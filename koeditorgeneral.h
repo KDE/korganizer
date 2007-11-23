@@ -37,6 +37,8 @@ class QPushButton;
 class QComboBox;
 class KTextEdit;
 class KSqueezedTextLabel;
+class KURL;
+class KOEditorAttachments;
 
 namespace KCal {
 class Incidence;
@@ -70,6 +72,7 @@ class KOEditorGeneral : public QObject
     void initDescription(QWidget *,QBoxLayout *);
     void initSecrecy(QWidget *,QBoxLayout *);
     void initAlarm(QWidget *,QBoxLayout *);
+    void initAttachments(QWidget *,QBoxLayout *);
 
     /** Set widgets to default values */
     void setDefaults(bool allDay);
@@ -91,6 +94,10 @@ class KOEditorGeneral : public QObject
   public slots:
     void setCategories(const QStringList &categories);
     void selectCategories();
+    void addAttachments( const QStringList &attachments,
+                         const QStringList& mimeTypes = QStringList(),
+                         bool inlineAttachment = false );
+
 
   protected slots:
     void editAlarms();
@@ -102,7 +109,7 @@ class KOEditorGeneral : public QObject
     void openCategoryDialog();
     void updateCategoryConfig();
     void focusReceivedSignal();
-
+    void openURL( const KURL & );
   protected:
     Alarm *alarmFromSimplePage() const;
 
@@ -121,6 +128,7 @@ class KOEditorGeneral : public QObject
     QComboBox               *mSecrecyCombo;
     QPushButton             *mCategoriesButton;
     KSqueezedTextLabel      *mCategoriesLabel;
+    KOEditorAttachments     *mAttachments;
 
     enum AlarmStackPages { SimpleAlarmPage, AdvancedAlarmLabel };
 

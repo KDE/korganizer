@@ -44,7 +44,6 @@
 #include "koeditoralarms.h"
 #include "koeditorrecurrence.h"
 #include "koeditordetails.h"
-#include "koeditorattachments.h"
 #include "koeditorfreebusy.h"
 #include "kogroupware.h"
 #include "kodialogmanager.h"
@@ -70,7 +69,6 @@ void KOEventEditor::init()
   setupRecurrence();
   setupAttendeesTab();
   setupFreeBusy();
-  setupAttachmentsTab();
   setupDesignerTabs( "event" );
 
   mDetails->setFreeBusyWidget( mFreeBusy );
@@ -154,6 +152,11 @@ void KOEventEditor::setupGeneral()
     mGeneral->initHeader( i18n("Event"), topFrame, topLayout );
     mGeneral->initTime(topFrame,topLayout);
     mGeneral->initDescription(topFrame,topLayout);
+    mGeneral->initAttachments(topFrame,topLayout);
+    connect( mGeneral, SIGNAL( openURL( const KURL& ) ),
+             this, SLOT( openURL( const KURL& ) ) );
+    connect( this, SIGNAL( signalAddAttachments( const QStringList&, const QStringList&, bool ) ),
+             mGeneral, SLOT( addAttachments( const QStringList&, const QStringList&, bool ) ) );
   }
 
   mGeneral->finishSetup();
@@ -223,7 +226,6 @@ void KOEventEditor::setDates( const QDateTime &from, const QDateTime &to, bool a
 {
   mGeneral->setDefaults( from, to, allDay );
   mDetails->setDefaults();
-  mAttachments->setDefaults();
   mRecurrence->setDefaults( from, to, allDay );
   if( mFreeBusy ) {
     if ( allDay )
@@ -325,7 +327,6 @@ void KOEventEditor::readEvent( Event *event, bool tmpl )
   mGeneral->readEvent( event, tmpl );
   mDetails->readEvent( event );
   mRecurrence->readIncidence( event );
-  mAttachments->readIncidence( event );
 //  mAlarms->readIncidence( event );
   if ( mFreeBusy ) {
     mFreeBusy->readEvent( event );
@@ -340,7 +341,6 @@ void KOEventEditor::writeEvent( Event *event )
 {
   mGeneral->writeEvent( event );
   mDetails->writeEvent( event );
-  mAttachments->writeIncidence( event );
 
   cancelRemovedAttendees( event );
 

@@ -41,6 +41,7 @@
 #include <qwhatsthis.h>
 
 #include <kglobal.h>
+#include <kdialog.h>
 #include <kdebug.h>
 #include <klocale.h>
 #include <kiconloader.h>
@@ -62,10 +63,11 @@
 
 #include "koeditorgeneral.h"
 #include "koeditoralarms.h"
+#include "koeditorattachments.h"
 #include "koeditorgeneral.moc"
 
 KOEditorGeneral::KOEditorGeneral(QObject* parent, const char* name) :
-  QObject( parent, name )
+  QObject( parent, name ), mAttachments(0)
 {
   mAlarmList.setAutoDelete( true );
 }
@@ -186,7 +188,7 @@ void KOEditorGeneral::initDescription(QWidget *parent,QBoxLayout *topLayout)
   mDescriptionEdit->setOverwriteMode(false);
   mDescriptionEdit->setWordWrap( KTextEdit::WidgetWidth );
   mDescriptionEdit->setTabChangesFocus( true );;
-  topLayout->addWidget(mDescriptionEdit);
+  topLayout->addWidget(mDescriptionEdit, 4);
 }
 
 void KOEditorGeneral::initAlarm(QWidget *parent,QBoxLayout *topLayout)
@@ -235,6 +237,28 @@ void KOEditorGeneral::initAlarm(QWidget *parent,QBoxLayout *topLayout)
   connect( mAlarmEditButton, SIGNAL( clicked() ),
       SLOT( editAlarms() ) );
 
+}
+
+void KOEditorGeneral::initAttachments(QWidget *parent,QBoxLayout *topLayout)
+{
+  mAttachments = new KOEditorAttachments( KDialog::spacingHint(), parent );
+  connect( mAttachments, SIGNAL( openURL( const KURL & ) ) ,
+           this, SIGNAL( openURL( const KURL & ) ) );
+  topLayout->addWidget( mAttachments, 1 );
+}
+
+void KOEditorGeneral::addAttachments( const QStringList &attachments,
+                                      const QStringList &mimeTypes,
+                                      bool inlineAttachments )
+{
+  QStringList::ConstIterator it;
+  uint i = 0;
+  for ( it = attachments.begin(); it != attachments.end(); ++it, ++i ) {
+    QString mimeType;
+    if ( mimeTypes.count() > i )
+      mimeType = mimeTypes[ i ];
+    mAttachments->addAttachment( *it, mimeType, !inlineAttachments );
+  }
 }
 
 void KOEditorGeneral::selectCategories()
@@ -293,6 +317,7 @@ void KOEditorGeneral::setDefaults(bool /*allDay*/)
   updateAlarmWidgets();
 
   mSecrecyCombo->setCurrentItem(Incidence::SecrecyPublic);
+  mAttachments->setDefaults();
 }
 
 void KOEditorGeneral::updateDefaultAlarmTime()
@@ -379,6 +404,8 @@ void KOEditorGeneral::readIncidence(Incidence *event)
   updateAlarmWidgets();
 
   setCategories(event->categories());
+
+  mAttachments->readIncidence( event );
 }
 
 Alarm *KOEditorGeneral::alarmFromSimplePage() const
@@ -427,6 +454,7 @@ void KOEditorGeneral::writeIncidence(Incidence *event)
       event->addAlarm( al );
     }
   }
+  mAttachments->writeIncidence( event );
 }
 
 void KOEditorGeneral::setSummary( const QString &text )

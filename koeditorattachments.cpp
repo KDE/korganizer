@@ -128,6 +128,7 @@ class AttachmentIconView : public KIconView
             setItemTextPos( QIconView::Right );
             setArrangement( QIconView::LeftToRight );
             setMaxItemWidth( QMAX(maxItemWidth(), 250) );
+            setMinimumHeight( 38 );
         }
         ~AttachmentIconView()
         {
@@ -221,6 +222,7 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent,
   buttonLayout->addWidget( button );
   connect( button, SIGNAL( clicked() ), SLOT( slotShow() ) );
 
+  setAcceptDrops( true );
 }
 
 KOEditorAttachments::~KOEditorAttachments()
