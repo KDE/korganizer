@@ -41,6 +41,7 @@
 #include <kio/netaccess.h>
 #include <kmimetype.h>
 #include <kiconloader.h>
+#include <kfiledialog.h>
 
 #include <qfile.h>
 #include <qlayout.h>
@@ -288,8 +289,7 @@ void KOEditorAttachments::slotAdd()
 
 void KOEditorAttachments::slotAddData()
 {
-  KURL uri = KPimURLRequesterDlg::getURL( QString::null, i18n(
-         "File to be attached:"), this, i18n("Add Attachment") );
+  KURL uri = KFileDialog::getOpenFileName( QString(), QString(), this, i18n("Add Attachment") );
   if ( !uri.isEmpty() ) {
     addAttachment( uri, QString::null, false );
   }
