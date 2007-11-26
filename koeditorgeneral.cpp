@@ -94,15 +94,11 @@ void FocusLineEdit::focusInEvent ( QFocusEvent *e )
 }
 
 
-void KOEditorGeneral::initHeader( const QString &label, QWidget *parent,QBoxLayout *topLayout)
+void KOEditorGeneral::initHeader( QWidget *parent,QBoxLayout *topLayout)
 {
-  QBoxLayout *generalLayout = new QVBoxLayout( topLayout );
-  QGroupBox *groupBox = new QGroupBox( 1, QGroupBox::Horizontal, label, parent );
-  generalLayout->addWidget( groupBox );
-  QFrame *groupFrame = new QFrame( groupBox );
-
-  QGridLayout *headerLayout = new QGridLayout( groupFrame );
+  QGridLayout *headerLayout = new QGridLayout();
   headerLayout->setSpacing( topLayout->spacing() );
+  topLayout->addLayout( headerLayout );
 
 #if 0
   mOwnerLabel = new QLabel(i18n("Owner:"),parent);
@@ -110,30 +106,30 @@ void KOEditorGeneral::initHeader( const QString &label, QWidget *parent,QBoxLayo
 #endif
 
   QString whatsThis = i18n("Sets the Title of this event or to-do.");
-  QLabel *summaryLabel = new QLabel( i18n("T&itle:"), groupFrame );
+  QLabel *summaryLabel = new QLabel( i18n("T&itle:"), parent );
   QWhatsThis::add( summaryLabel, whatsThis );
   QFont f = summaryLabel->font();
   f.setBold( true );
   summaryLabel->setFont(f);
   headerLayout->addWidget(summaryLabel,1,0);
 
-  mSummaryEdit = new FocusLineEdit( groupFrame );
+  mSummaryEdit = new FocusLineEdit( parent );
   QWhatsThis::add( mSummaryEdit, whatsThis );
   connect( mSummaryEdit, SIGNAL( focusReceivedSignal() ),
            SIGNAL( focusReceivedSignal() ) );
   headerLayout->addWidget(mSummaryEdit,1,1);
   summaryLabel->setBuddy( mSummaryEdit );
 
-  mAttendeeSummaryLabel = new QLabel( groupFrame );
+  mAttendeeSummaryLabel = new QLabel( parent );
   updateAttendeeSummary( 0 );
   headerLayout->addWidget( mAttendeeSummaryLabel, 1, 2 );
 
   whatsThis = i18n("Sets where the event or to-do will take place.");
-  QLabel *locationLabel = new QLabel( i18n("&Location:"), groupFrame );
+  QLabel *locationLabel = new QLabel( i18n("&Location:"), parent );
   QWhatsThis::add( locationLabel, whatsThis );
   headerLayout->addWidget(locationLabel,2,0);
 
-  mLocationEdit = new QLineEdit( groupFrame );
+  mLocationEdit = new QLineEdit( parent );
   QWhatsThis::add( mLocationEdit, whatsThis );
   headerLayout->addMultiCellWidget( mLocationEdit, 2, 2, 1, 2 );
   locationLabel->setBuddy( mLocationEdit );
@@ -141,20 +137,20 @@ void KOEditorGeneral::initHeader( const QString &label, QWidget *parent,QBoxLayo
   QBoxLayout *thirdLineLayout = new QHBoxLayout();
   headerLayout->addMultiCellLayout( thirdLineLayout, 3, 3, 0, 2 );
 
-  mResourceLabel = new QLabel( groupFrame );
+  mResourceLabel = new QLabel( parent );
   mResourceLabel->hide();
   thirdLineLayout->addWidget( mResourceLabel );
 
   whatsThis = i18n("Allows you to select the categories that this event or to-do belongs to.");
-  QLabel *categoriesLabel = new QLabel( i18n("Categories:"), groupFrame );
+  QLabel *categoriesLabel = new QLabel( i18n("Categories:"), parent );
   QWhatsThis::add( categoriesLabel, whatsThis );
   thirdLineLayout->addWidget( categoriesLabel );
-  mCategoriesLabel = new KSqueezedTextLabel( groupFrame );
+  mCategoriesLabel = new KSqueezedTextLabel( parent );
   QWhatsThis::add( mCategoriesLabel, whatsThis );
   mCategoriesLabel->setFrameStyle(QFrame::Panel|QFrame::Sunken);
   thirdLineLayout->addWidget( mCategoriesLabel );
 
-  mCategoriesButton = new QPushButton( groupFrame );
+  mCategoriesButton = new QPushButton( parent );
   mCategoriesButton->setText(i18n("&Select..."));
   QWhatsThis::add( mCategoriesButton, whatsThis );
   connect(mCategoriesButton,SIGNAL(clicked()),SLOT(selectCategories()));
@@ -488,5 +484,8 @@ QObject *KOEditorGeneral::typeAheadReceiver() const
 
 void KOEditorGeneral::updateAttendeeSummary(int count)
 {
-  mAttendeeSummaryLabel->setText( i18n( "One attendee", "%n attendees", count ) );
+  if ( count <= 0 )
+    mAttendeeSummaryLabel->setText( "No attendees" );
+  else
+    mAttendeeSummaryLabel->setText( i18n( "One attendee", "%n attendees", count ) );
 }

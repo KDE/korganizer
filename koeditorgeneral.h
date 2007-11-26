@@ -69,7 +69,7 @@ class KOEditorGeneral : public QObject
     KOEditorGeneral (QObject* parent=0,const char* name=0);
     virtual ~KOEditorGeneral();
 
-    void initHeader( const QString &label, QWidget *parent,QBoxLayout *topLayout );
+    void initHeader( QWidget *parent,QBoxLayout *topLayout );
     void initDescription(QWidget *,QBoxLayout *);
     void initSecrecy(QWidget *,QBoxLayout *);
     void initAlarm(QWidget *,QBoxLayout *);

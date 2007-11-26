@@ -124,7 +124,7 @@ void KOEventEditor::setupGeneral()
     QBoxLayout *topLayout = new QVBoxLayout(topFrame);
     topLayout->setSpacing(spacingHint());
 
-    mGeneral->initHeader( i18n("Event"), topFrame, topLayout );
+    mGeneral->initHeader( topFrame, topLayout );
     mGeneral->initTime(topFrame,topLayout);
 //    QBoxLayout *alarmLineLayout = new QHBoxLayout(topLayout);
     mGeneral->initAlarm(topFrame,topLayout);
@@ -149,7 +149,7 @@ void KOEventEditor::setupGeneral()
     QBoxLayout *topLayout = new QVBoxLayout(topFrame);
     topLayout->setSpacing(spacingHint());
 
-    mGeneral->initHeader( i18n("Event"), topFrame, topLayout );
+    mGeneral->initHeader( topFrame, topLayout );
     mGeneral->initTime(topFrame,topLayout);
     mGeneral->initDescription(topFrame,topLayout);
     mGeneral->initAttachments(topFrame,topLayout);

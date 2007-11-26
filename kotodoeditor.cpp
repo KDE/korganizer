@@ -101,7 +101,7 @@ void KOTodoEditor::setupGeneral()
     topLayout->setMargin(marginHint());
     topLayout->setSpacing(spacingHint());
 
-    mGeneral->initHeader( i18n("To-do"), topFrame, topLayout );
+    mGeneral->initHeader( topFrame, topLayout );
     mGeneral->initTime(topFrame,topLayout);
     QHBoxLayout *priorityLayout = new QHBoxLayout( topLayout );
     mGeneral->initPriority(topFrame,priorityLayout);
@@ -127,7 +127,7 @@ void KOTodoEditor::setupGeneral()
     QBoxLayout *topLayout = new QVBoxLayout(topFrame);
     topLayout->setSpacing(spacingHint());
 
-    mGeneral->initHeader( i18n("To-do"), topFrame, topLayout );
+    mGeneral->initHeader( topFrame, topLayout );
     mGeneral->initTime(topFrame,topLayout);
     mGeneral->initStatus(topFrame,topLayout);
     QBoxLayout *alarmLineLayout = new QHBoxLayout(topLayout);

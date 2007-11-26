@@ -109,7 +109,7 @@ void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
 
   QGridLayout *layoutTimeBox = new QGridLayout( timeBoxFrame );
   layoutTimeBox->setSpacing(topLayout->spacing());
-
+  layoutTimeBox->setColStretch( 3, 1 );
 
   mStartDateLabel = new QLabel(i18n("&Start:"),timeBoxFrame);
   layoutTimeBox->addWidget(mStartDateLabel,0,0);
@@ -132,7 +132,7 @@ void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
   mEndTimeEdit = new KTimeEdit(timeBoxFrame);
   layoutTimeBox->addWidget(mEndTimeEdit,1,2);
 
-  mAlldayEventCheckbox = new QCheckBox(i18n("All-&day event"),timeBoxFrame);
+  mAlldayEventCheckbox = new QCheckBox(i18n("All-&day"),timeBoxFrame);
   layoutTimeBox->addWidget( mAlldayEventCheckbox, 0, 3 );
   connect(mAlldayEventCheckbox, SIGNAL(toggled(bool)),SLOT(associateTime(bool)));
 
@@ -152,16 +152,18 @@ void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
           this, SLOT(endDateChanged(const QDate&)));
 
   QBoxLayout *recLayout = new QHBoxLayout();
-  layoutTimeBox->addMultiCellLayout( recLayout, 2, 2, 0, 4 );
+  layoutTimeBox->addMultiCellLayout( recLayout, 2, 2, 1, 4 );
   mRecurrenceSummary = new QLabel( QString(), timeBoxFrame );
   recLayout->addWidget( mRecurrenceSummary );
-  QPushButton *recEditButton = new QPushButton( i18n("Edit Recurrence"), timeBoxFrame );
+  QPushButton *recEditButton = new QPushButton( i18n("Edit..."), timeBoxFrame );
   recLayout->addWidget( recEditButton );
   connect( recEditButton, SIGNAL(clicked()), SIGNAL(editRecurrence()) );
   recLayout->addStretch( 1 );
 
+  QLabel *label = new QLabel( i18n("Reminder:"), timeBoxFrame );
+  layoutTimeBox->addWidget( label, 3, 0 );
   QBoxLayout *alarmLineLayout = new QHBoxLayout();
-  layoutTimeBox->addMultiCellLayout( alarmLineLayout, 3, 3, 0, 4 );
+  layoutTimeBox->addMultiCellLayout( alarmLineLayout, 3, 3, 1, 4 );
   initAlarm( timeBoxFrame, alarmLineLayout );
   alarmLineLayout->addStretch( 1 );
 
