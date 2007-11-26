@@ -44,12 +44,15 @@
 #include <kfiledialog.h>
 #include <kstdaction.h>
 #include <kactioncollection.h>
+#include <kpopupmenu.h>
 
 #include <qfile.h>
+#include <qlabel.h>
 #include <qlayout.h>
 #include <qlistview.h>
 #include <qpushbutton.h>
 #include <qdragobject.h>
+#include <qtooltip.h>
 #include <qwhatsthis.h>
 #include <qapplication.h>
 #include <qclipboard.h>
@@ -133,7 +136,7 @@ class AttachmentIconView : public KIconView
             setItemTextPos( QIconView::Right );
             setArrangement( QIconView::LeftToRight );
             setMaxItemWidth( QMAX(maxItemWidth(), 250) );
-            setMinimumHeight( 40 );
+            setMinimumHeight( QMAX(fontMetrics().height(), 16) + 12 );
         }
         ~AttachmentIconView()
         {
@@ -177,8 +180,11 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent,
                                           const char *name )
   : QWidget( parent, name )
 {
-  QBoxLayout *topLayout = new QVBoxLayout( this );
+  QBoxLayout *topLayout = new QHBoxLayout( this );
   topLayout->setSpacing( spacing );
+
+  QLabel *label = new QLabel( i18n("Attachments:"), this );
+  topLayout->addWidget( label );
 
   mAttachments = new AttachmentIconView( this );
   QWhatsThis::add( mAttachments,
@@ -189,54 +195,50 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent,
            SLOT( showAttachment( QIconViewItem * ) ) );
   connect( mAttachments, SIGNAL(selectionChanged()),
            SLOT(selectionChanged()) );
+  connect( mAttachments, SIGNAL(contextMenuRequested(QIconViewItem*,const QPoint&)),
+           SLOT(contextMenu(QIconViewItem*,const QPoint&)) );
 
-  QBoxLayout *buttonLayout = new QHBoxLayout( topLayout );
+  mAddMenu = new KPopupMenu( this );
+  mContextMenu = new KPopupMenu( this );
 
-  QPushButton *button = new QPushButton( i18n("&Attach URI..."), this );
-  QWhatsThis::add( button,
-                   i18n("Shows a dialog used to select an attachment "
-                        "to add to this event or to-do as link.") );
-  buttonLayout->addWidget( button );
-  connect( button, SIGNAL( clicked() ), SLOT( slotAdd() ) );
+  KActionCollection* ac = new KActionCollection( this, this );
 
-  button = new QPushButton( i18n("&Attach File..."), this );
-  QWhatsThis::add( button,
-                   i18n("Shows a dialog used to select an attachment "
+  mOpenAction = new KAction( i18n("View"), 0, this, SLOT(slotShow()), ac );
+  mOpenAction->plug( mContextMenu );
+  mContextMenu->insertSeparator();
+
+  mCopyAction = KStdAction::copy(this, SLOT(slotCopy( ) ), ac );
+  mCopyAction->plug( mContextMenu );
+  mCutAction = KStdAction::cut(this, SLOT(slotCut( ) ), ac );
+  mCutAction->plug( mContextMenu );
+  KAction *action = KStdAction::paste(this, SLOT(slotPaste( ) ), ac );
+  action->plug( mContextMenu );
+
+  action = new KAction( i18n("&Attach File..."), 0, this, SLOT(slotAddData()), ac );
+  action->setWhatsThis( i18n("Shows a dialog used to select an attachment "
                         "to add to this event or to-do as link as inline data.") );
-  buttonLayout->addWidget( button );
-  connect( button, SIGNAL( clicked() ), SLOT( slotAddData() ) );
+  action->plug( mAddMenu );
+  action = new KAction( i18n("Attach &Link..."), 0, this, SLOT(slotAdd()), ac );
+  action->setWhatsThis( i18n("Shows a dialog used to select an attachment "
+                        "to add to this event or to-do as link.") );
+  action->plug( mAddMenu );
 
-#ifdef TEMPORARILY_REMOVED
-  button = new QPushButton( i18n("&Edit..."), this );
-  QWhatsThis::add( button,
-                   i18n("Shows a dialog used to edit the attachment "
-                        "currently selected in the list above.") );
-  buttonLayout->addWidget( button );
-  connect( button, SIGNAL( clicked() ), SLOT( slotEdit() ) );
-#endif
+  QPushButton *addButton = new QPushButton( this );
+  addButton->setIconSet( SmallIconSet( "add" ) );
+  addButton->setPopup( mAddMenu );
+  topLayout->addWidget( addButton );
 
-  mRemoveBtn = new QPushButton( i18n("&Remove"), this );
+  mRemoveBtn = new QPushButton( this );
+  mRemoveBtn->setIconSet( SmallIconSet( "remove" ) );
+  QToolTip::add( mRemoveBtn, i18n("&Remove") );
   QWhatsThis::add( mRemoveBtn,
                    i18n("Removes the attachment selected in the list above "
                         "from this event or to-do.") );
-  buttonLayout->addWidget( mRemoveBtn );
+  topLayout->addWidget( mRemoveBtn );
   connect( mRemoveBtn, SIGNAL( clicked() ), SLOT( slotRemove() ) );
-
-  mShowBtn = new QPushButton( i18n("&Show"), this );
-  QWhatsThis::add( mShowBtn,
-                   i18n("Opens the attachment selected in the list above "
-                        "in the viewer that is associated with it in your "
-                        "KDE preferences.") );
-  buttonLayout->addWidget( mShowBtn );
-  connect( mShowBtn, SIGNAL( clicked() ), SLOT( slotShow() ) );
 
   selectionChanged();
   setAcceptDrops( true );
-
-  KActionCollection* ac = new KActionCollection( this, this );
-  KStdAction::copy(this, SLOT(slotCopy( ) ), ac );
-  KStdAction::cut(this, SLOT(slotCut( ) ), ac );
-  KStdAction::paste(this, SLOT(slotPaste( ) ), ac );
 }
 
 KOEditorAttachments::~KOEditorAttachments()
@@ -475,7 +477,15 @@ void KOEditorAttachments::selectionChanged()
     }
   }
   mRemoveBtn->setEnabled( selected );
-  mShowBtn->setEnabled( selected );
+}
+
+void KOEditorAttachments::contextMenu(QIconViewItem * item, const QPoint & pos)
+{
+  const bool enable = item != 0;
+  mOpenAction->setEnabled( enable );
+  mCopyAction->setEnabled( enable );
+  mCutAction->setEnabled( enable );
+  mContextMenu->exec( pos );
 }
 
 #include "koeditorattachments.moc"

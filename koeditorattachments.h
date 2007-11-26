@@ -37,6 +37,8 @@ class QIconViewItem;
 class AttachmentIconView;
 class QMimeSource;
 class QPushButton;
+class QPopupMenu;
+class KAction;
 
 class KOEditorAttachments : public QWidget
 {
@@ -72,6 +74,7 @@ class KOEditorAttachments : public QWidget
     void slotCut();
     void slotPaste();
     void selectionChanged();
+    void contextMenu( QIconViewItem* item, const QPoint &pos );
   signals:
     void openURL( const KURL &url );
 
@@ -79,7 +82,9 @@ class KOEditorAttachments : public QWidget
     void handlePasteOrDrop( QMimeSource* source );
 
     AttachmentIconView *mAttachments;
-    QPushButton *mRemoveBtn, *mShowBtn;
+    QPushButton *mRemoveBtn;
+    QPopupMenu *mContextMenu, *mAddMenu;
+    KAction *mOpenAction, *mCopyAction, *mCutAction;
 };
 
 #endif
