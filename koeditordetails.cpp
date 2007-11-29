@@ -702,5 +702,28 @@ void KOEditorDetails::insertAttendeeFromAddressee( const KABC::Addressee& a,
   insertAttendee( newAt, true );
 }
 
+void KOEditorDetails::acceptForMe()
+{
+  changeStatusForMe( Attendee::Accepted );
+}
+
+void KOEditorDetails::declineForMe()
+{
+  changeStatusForMe( Attendee::Declined );
+}
+
+void KOEditorDetails::changeStatusForMe(Attendee::PartStat status)
+{
+  const QStringList myEmails = KOPrefs::instance()->allEmails();
+  for ( QListViewItemIterator it( mListView ); it.current(); ++it ) {
+    AttendeeListItem *item = static_cast<AttendeeListItem*>( it.current() );
+    for ( QStringList::ConstIterator it2( myEmails.begin() ), end( myEmails.end() ); it2 != end; ++it2 ) {
+      if ( item->data()->email() == *it2 ) {
+        item->data()->setStatus( status );
+        item->updateItem();
+      }
+    }
+  }
+}
 
 #include "koeditordetails.moc"

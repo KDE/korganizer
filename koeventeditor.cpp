@@ -102,6 +102,11 @@ void KOEventEditor::init()
            mRecurrenceDialog, SLOT(show()) );
   connect( mRecurrenceDialog, SIGNAL(okClicked()),
            SLOT(updateRecurrenceSummary()) );
+
+  connect( mGeneral, SIGNAL(acceptInvitation()),
+           mDetails, SLOT(acceptForMe()) );
+  connect( mGeneral, SIGNAL(declineInvitation()),
+           mDetails, SLOT(declineForMe()) );
 }
 
 void KOEventEditor::reload()
@@ -149,6 +154,7 @@ void KOEventEditor::setupGeneral()
     QBoxLayout *topLayout = new QVBoxLayout(topFrame);
     topLayout->setSpacing(spacingHint());
 
+    mGeneral->initInvitationBar( topFrame, topLayout );
     mGeneral->initHeader( topFrame, topLayout );
     mGeneral->initTime(topFrame,topLayout);
     mGeneral->initDescription(topFrame,topLayout);

@@ -27,6 +27,8 @@
 #include <klistview.h>
 #include "customlistviewitem.h"
 
+#include <libkcal/attendee.h>
+
 class QPushButton;
 class QCheckBox;
 class QLineEdit;
@@ -111,6 +113,9 @@ class KOEditorDetails : public QWidget
      * to be used by the new Attendee. */
     void insertAttendeeFromAddressee( const KABC::Addressee& , const Attendee* at=0 );
 
+    void acceptForMe();
+    void declineForMe();
+
   signals:
     void updateAttendeeSummary( int count );
 
@@ -129,6 +134,7 @@ class KOEditorDetails : public QWidget
     void fillOrganizerCombo();
 
     void insertAttendee( Attendee*, bool goodEmailAddress );
+    void changeStatusForMe( Attendee::PartStat status );
 
   private:
     bool mDisableItemUpdate;

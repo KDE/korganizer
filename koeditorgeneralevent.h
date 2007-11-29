@@ -48,6 +48,7 @@ class KOEditorGeneralEvent : public KOEditorGeneral
 
     void initTime(QWidget *,QBoxLayout *);
     void initClass(QWidget *,QBoxLayout *);
+    void initInvitationBar( QWidget* parent, QBoxLayout *layout );
 
     void finishSetup();
 
@@ -86,6 +87,8 @@ class KOEditorGeneralEvent : public KOEditorGeneral
     void dateTimeStrChanged( const QString & );
     void dateTimesChanged( const QDateTime &start, const QDateTime &end );
     void editRecurrence();
+    void acceptInvitation();
+    void declineInvitation();
 
   private:
     QLabel                  *mStartDateLabel;
@@ -98,6 +101,7 @@ class KOEditorGeneralEvent : public KOEditorGeneral
     QCheckBox               *mAlldayEventCheckbox;
     QComboBox               *mFreeTimeCombo;
     QLabel                  *mRecurrenceSummary;
+    QFrame                  *mInvitationBar;
 
     // current start and end date and time
     QDateTime mCurrStartDateTime;

@@ -194,6 +194,30 @@ void KOEditorGeneralEvent::initClass(QWidget *parent,QBoxLayout *topLayout)
   freeTimeLabel->setBuddy( mFreeTimeCombo );
 }
 
+void KOEditorGeneralEvent::initInvitationBar(QWidget * parent, QBoxLayout * layout)
+{
+  QBoxLayout *topLayout = new QHBoxLayout( layout );
+  mInvitationBar = new QFrame( parent );
+  mInvitationBar->setPaletteBackgroundColor( KGlobalSettings::alternateBackgroundColor() );
+  topLayout->addWidget( mInvitationBar );
+
+  QBoxLayout *barLayout = new QHBoxLayout( mInvitationBar );
+  barLayout->setSpacing( layout->spacing() );
+  QLabel *label = new QLabel( i18n("You have not yet definitely responded to this invitation." ), mInvitationBar );
+  barLayout->addWidget( label );
+  barLayout->addStretch( 1 );
+  QPushButton *button = new QPushButton( i18n("Accept"), mInvitationBar );
+  connect( button, SIGNAL(clicked()), SIGNAL(acceptInvitation()) );
+  connect( button, SIGNAL(clicked()), mInvitationBar, SLOT(hide()) );
+  barLayout->addWidget( button );
+  button = new QPushButton( i18n("Decline"), mInvitationBar );
+  connect( button, SIGNAL(clicked()), SIGNAL(declineInvitation()) );
+  connect( button, SIGNAL(clicked()), mInvitationBar, SLOT(hide()) );
+  barLayout->addWidget( button );
+
+  mInvitationBar->hide();
+}
+
 void KOEditorGeneralEvent::timeStuffDisable(bool disable)
 {
   mStartTimeEdit->setEnabled( !disable );
@@ -315,6 +339,14 @@ void KOEditorGeneralEvent::readEvent( Event *event, Calendar *calendar, bool tmp
   }
 
   mRecurrenceSummary->setText( IncidenceFormatter::recurrenceString( event ) );
+
+  Attendee *me = event->attendeeByMails( KOPrefs::instance()->allEmails() );
+  if ( me && (me->status() == Attendee::NeedsAction || me->status() == Attendee::Tentative ||
+       me->status() == Attendee::InProcess) ) {
+    mInvitationBar->show();
+  } else {
+    mInvitationBar->hide();
+  }
 
   readIncidence(event, calendar);
 }
