@@ -77,9 +77,9 @@ void KOEventViewer::writeSettings( KConfig *config )
   }
 }
 
-void KOEventViewer::setSource( const QString &n )
+void KOEventViewer::setSource( const QUrl &name )
 {
-  QString uri = n;
+  QString uri = name.toString();
   // QTextBrowser for some reason insists on putting // in links,
   // this is a crude workaround
   if ( uri.startsWith( KDEPIMPROTOCOL_CONTACT ) ||

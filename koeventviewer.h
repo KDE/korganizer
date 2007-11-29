@@ -30,6 +30,8 @@
 #include <kconfig.h>
 #include <ktextbrowser.h>
 
+class QUrl;
+
 namespace KCal {
   class Incidence;
   class Event;
@@ -46,10 +48,8 @@ class KORGANIZER_EVENTVIEWER_EXPORT KOEventViewer : public KTextBrowser
     KOEventViewer( QWidget *parent = 0 );
     virtual ~KOEventViewer();
 
-    /**
-      Reimplemented from QTextBrowser to handle links.
-    */
-    void setSource( const QString & );
+    /** Reimplemented from QTextBrowser to handle links. */
+    void setSource( const QUrl &name );
 
     virtual bool appendIncidence( Incidence * );
 

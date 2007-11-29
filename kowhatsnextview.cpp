@@ -43,16 +43,15 @@
 
 using namespace KOrg;
 
-void WhatsNextTextBrowser::setSource(const QString& n)
+void WhatsNextTextBrowser::setSource( const QUrl &name )
 {
-  if (n.startsWith("event:")) {
-    emit showIncidence(n);
-    return;
-  } else if (n.startsWith("todo:")) {
-    emit showIncidence(n);
-    return;
+  QString uri = name.toString();
+  if ( uri.startsWith( "event:" ) ) {
+    emit showIncidence( uri );
+  } else if ( uri.startsWith( "todo:" ) ) {
+    emit showIncidence( uri );
   } else {
-    Q3TextBrowser::setSource(n);
+    QTextBrowser::setSource( uri );
   }
 }
 
