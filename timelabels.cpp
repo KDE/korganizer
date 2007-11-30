@@ -312,7 +312,7 @@ void TimeLabels::contextMenuEvent( QContextMenuEvent *event )
   QMenu popup( this );
   QAction *editTimeZones = popup.addAction( KIcon( "edit" ), i18n( "&Edit timezones" ) );
   QAction *removeTimeZone = popup.addAction( KIcon( "delete" ), i18n( "&Remove %1 timezone", mSpec.timeZone().name() ) );
-  if ( !mSpec.isValid() || !KOPrefs::instance()->timeScaleTimezones().count() ) {
+  if ( !mSpec.isValid() || !KOPrefs::instance()->timeScaleTimezones().count() || mSpec == KOPrefs::instance()->timeSpec() ) {
     removeTimeZone->setEnabled( false );
   }
 
