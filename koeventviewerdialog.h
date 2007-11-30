@@ -26,7 +26,6 @@
 
 #include "korganizer_export.h"
 #include "koeventviewer.h"
-
 #include <kdialog.h>
 
 namespace KCal {

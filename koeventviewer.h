@@ -26,10 +26,9 @@
 #define KOEVENTVIEWER_H
 
 #include "korganizer_export.h"
-
-#include <kconfig.h>
 #include <ktextbrowser.h>
 
+class KConfig;
 class QUrl;
 
 namespace KCal {

@@ -24,12 +24,10 @@
 */
 
 #include "urihandler.h"
-#ifndef KORG_NODBUS
 #include <knodeinterface.h>
 #include <kmailinterface.h>
 #include <korganizerinterface.h>
 #include <coreinterface.h>
-#endif
 
 #include <libkdepim/kdepimprotocols.h>
 
@@ -46,7 +44,6 @@ bool UriHandler::process( const QString &uri )
 {
   kDebug(5850) <<"UriHandler::process():" << uri;
 
-#ifndef KORG_NODBUS
   if ( uri.startsWith( KDEPIMPROTOCOL_EMAIL ) ) {
     // make sure kmail is running or the part is shown
     KToolInvocation::startServiceByDesktopPath("kmail");
@@ -97,7 +94,6 @@ bool UriHandler::process( const QString &uri )
   } else {  // no special URI, let KDE handle it
     new KRun(KUrl( uri ),0);
   }
-#endif /* KORG_NODBUS */
 
   return false;
 }
