@@ -39,7 +39,6 @@
 #include "koprefs.h"
 
 #include <kaction.h>
-#include <kactioncollection.h>
 #include <k3listviewsearchline.h>
 #include <KComboBox>
 #include <kicon.h>
@@ -56,21 +55,10 @@ using namespace KCal;
 
 KOTodoListViewQuickSearch::KOTodoListViewQuickSearch( QWidget *parent,
                                             QList<K3ListView*> listViews,
-                                            KActionCollection *actionCollection,
                                             Calendar *calendar )
   : QWidget( parent ), mCategoryCombo( 0 ), mCalendar( calendar ),
     mQuickSearchLine( 0 )
 {
-  /*if ( !action ) {
-  action  = new KAction(KIcon(QApplication::isRightToLeft() ? "edit-clear-locationbar-rtl" : "edit-clear-locationbar"), i18n("Reset"), this);
-  actionCollection->addAction("reset_quicksearch", action );
-    connect(action, SIGNAL(triggered(bool) ), SLOT( reset() ));
-    action->setWhatsThis( i18n( "Reset Quick Search\n"
-                                  "Resets the quick search so that "
-                                  "all to-dos are shown again." ) );
-  }
-
-  addAction( action );*/
   QHBoxLayout *layout = new QHBoxLayout( this );
 
   mQuickSearchLine = new KOTodoListViewQuickSearchLine( this, listViews );
@@ -208,10 +196,9 @@ void KOTodoListViewQuickSearch::hideEvent( QHideEvent *e )
 KOTodoListViewQuickSearchContainer::KOTodoListViewQuickSearchContainer(
                                QWidget *parent,
                                QList<K3ListView*> listViews,
-                               KActionCollection *actionCollection,
                                Calendar *calendar)
-     : QWidget( parent ), mQuickSearch( new KOTodoListViewQuickSearch(
-         this, listViews, actionCollection, calendar ) )
+  : QWidget( parent ),
+    mQuickSearch( new KOTodoListViewQuickSearch( this, listViews, calendar ) )
 {
   setSizePolicy( QSizePolicy( QSizePolicy::Expanding, QSizePolicy::Fixed ) );
   mQuickSearch->setObjectName( "search toolbar" );

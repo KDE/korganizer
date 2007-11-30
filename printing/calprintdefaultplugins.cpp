@@ -219,8 +219,6 @@ int CalPrintIncidence::printCaptionAndText( QPainter &p, const QRect &box,
 #include <qfontdatabase.h>
 void CalPrintIncidence::print( QPainter &p, int width, int height )
 {
-  KLocale *local = KGlobal::locale();
-
   QFont oldFont( p.font() );
   QFont textFont( "sans-serif", 11, QFont::Normal );
   QFont captionFont( "sans-serif", 11, QFont::Bold );
@@ -430,6 +428,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
                             (*it)->description(), /*sameLine=*/false,
                             /*expand=*/false, captionFont, textFont );
         // TODO: Draw subitems
+        Q_UNUSED( subitemsStart );  // until printing subitems is implemented
       }
     }
 
@@ -438,6 +437,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
                         i18n( "Attachments:" ), QString(), /*sameLine=*/false,
                         /*expand=*/false, captionFont, textFont );
       // TODO: Print out the attachments somehow
+      Q_UNUSED( attachStart ); // until printing attachments is implemented
     }
     if ( mShowAttendees ) {
       Attendee::List attendees = (*it)->attendees();

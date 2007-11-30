@@ -30,7 +30,6 @@
 #include <QToolBar>
 #include <QVector>
 
-class KActionCollection;
 class KAction;
 class K3ListView;
 class KComboBox;
@@ -67,7 +66,6 @@ class KOTodoListViewQuickSearch : public QWidget
   public:
     KOTodoListViewQuickSearch( QWidget *parent,
                                QList<K3ListView*> listViews,
-                               KActionCollection *actionCollection,
                                Calendar *calendar );
     virtual ~KOTodoListViewQuickSearch();
 
@@ -101,7 +99,6 @@ class KOTodoListViewQuickSearchContainer : public QWidget
   public:
     KOTodoListViewQuickSearchContainer( QWidget *parent,
                                QList<K3ListView*> listViews,
-                               KActionCollection *actionCollection,
                                Calendar *calendar);
     virtual ~KOTodoListViewQuickSearchContainer();
 
