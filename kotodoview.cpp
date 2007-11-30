@@ -783,10 +783,12 @@ void KOTodoView::saveListViewState( Q3ListView *listView )
     mDocPrefs->writeBoolEntry( listView->objectName() + " pos",
                            listView->contentsY() );
 
-    for ( Q3ListViewItemIterator it( listView ); it.current(); ++it )
-      if ( KOTodoViewItem *todoItem
-          = dynamic_cast<KOTodoViewItem *>( it.current() ) )
+    for ( Q3ListViewItemIterator it( listView ); it.current(); ++it ) {
+      KOTodoViewItem *todoItem = dynamic_cast<KOTodoViewItem *>( it.current() );
+      if ( todoItem && todoItem->todo() ) {
         mDocPrefs->writeNumEntry( todoItem->todo()->uid(), todoItem->isOpen() );
+      }
+    }
   } else
     kError( 5850 ) <<" mDocPrefs doesn't exist";
 }
