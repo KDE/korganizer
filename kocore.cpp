@@ -118,7 +118,7 @@ KOrg::Plugin *KOCore::loadPlugin( KService::Ptr service )
     return 0;
   }
 
-  return pluginFactory->create();
+  return pluginFactory->createPluginFactory();
 }
 
 KOrg::Plugin *KOCore::loadPlugin( const QString &name )
@@ -153,7 +153,7 @@ KOrg::CalendarDecoration::Decoration *KOCore::loadCalendarDecoration( KService::
     return 0;
   }
 
-  return pluginFactory->create();
+  return pluginFactory->createPluginFactory();
 }
 
 KOrg::CalendarDecoration::Decoration *KOCore::loadCalendarDecoration( const QString &name )
@@ -192,7 +192,7 @@ KOrg::Part *KOCore::loadPart( KService::Ptr service, KOrg::MainWindow *parent )
     return 0;
   }
 
-  return pluginFactory->create( parent );
+  return pluginFactory->createPluginFactory( parent );
 }
 
 KOrg::PrintPlugin *KOCore::loadPrintPlugin( KService::Ptr service )
@@ -219,7 +219,7 @@ KOrg::PrintPlugin *KOCore::loadPrintPlugin( KService::Ptr service )
     return 0;
   }
 
-  return pluginFactory->create();
+  return pluginFactory->createPluginFactory();
 }
 
 void KOCore::addXMLGUIClient( QWidget *wdg, KXMLGUIClient *guiclient )

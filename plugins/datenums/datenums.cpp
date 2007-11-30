@@ -34,7 +34,7 @@ using namespace KOrg::CalendarDecoration;
 
 class DatenumsFactory : public DecorationFactory {
   public:
-    Decoration *create() { return new Datenums; }
+    Decoration *createPluginFactory() { return new Datenums; }
 };
 
 K_EXPORT_PLUGIN( DatenumsFactory )

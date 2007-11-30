@@ -41,7 +41,7 @@
 
 class JournalPrintFactory : public KOrg::PrintPluginFactory {
   public:
-    KOrg::PrintPlugin *create() { return new CalPrintJournal; }
+    KOrg::PrintPlugin *createPluginFactory() { return new CalPrintJournal; }
 };
 
 K_EXPORT_PLUGIN( JournalPrintFactory )

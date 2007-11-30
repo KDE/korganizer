@@ -167,7 +167,7 @@ class PrintPlugin : public KOrg::Plugin
 class PrintPluginFactory : public PluginFactory
 {
   public:
-    virtual PrintPlugin *create() = 0;
+    virtual PrintPlugin *createPluginFactory() = 0;
 };
 
 }

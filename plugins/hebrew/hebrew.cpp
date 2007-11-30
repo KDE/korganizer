@@ -37,7 +37,7 @@ using namespace KOrg::CalendarDecoration;
 
 class HebrewFactory : public DecorationFactory {
   public:
-    Decoration *create() { return new Hebrew; }
+    Decoration *createPluginFactory() { return new Hebrew; }
 };
 
 K_EXPORT_PLUGIN( HebrewFactory )

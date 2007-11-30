@@ -36,7 +36,7 @@ using namespace KOrg;
 
 class TimespanViewFactory : public KOrg::PartFactory {
   public:
-    KOrg::Part *create( KOrg::MainWindow *parent )
+    KOrg::Part *createPluginFactory( KOrg::MainWindow *parent )
     {
       return new TimespanView( parent );
     }

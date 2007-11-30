@@ -42,7 +42,7 @@
 
 class YearPrintFactory : public KOrg::PrintPluginFactory {
   public:
-    KOrg::PrintPlugin *create() { return new CalPrintYear; }
+    KOrg::PrintPlugin *createPluginFactory() { return new CalPrintYear; }
 };
 
 K_EXPORT_PLUGIN( YearPrintFactory )

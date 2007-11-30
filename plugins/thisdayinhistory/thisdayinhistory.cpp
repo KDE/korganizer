@@ -36,7 +36,7 @@ using namespace KOrg::CalendarDecoration;
 
 class ThisDayInHistoryFactory : public DecorationFactory {
   public:
-    Decoration *create() { return new ThisDayInHistory; }
+    Decoration *createPluginFactory() { return new ThisDayInHistory; }
 };
 
 K_EXPORT_PLUGIN( ThisDayInHistoryFactory )

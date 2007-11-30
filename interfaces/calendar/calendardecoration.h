@@ -253,7 +253,7 @@ class Decoration : public Plugin
 class DecorationFactory : public PluginFactory
 {
   public:
-    virtual Decoration *create() = 0;
+    virtual Decoration *createPluginFactory() = 0;
 };
 
 }

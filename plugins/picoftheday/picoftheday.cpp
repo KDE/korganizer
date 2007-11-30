@@ -40,7 +40,7 @@ using namespace KOrg::CalendarDecoration;
 
 class PicofthedayFactory : public DecorationFactory {
   public:
-    Decoration *create() { return new Picoftheday; }
+    Decoration *createPluginFactory() { return new Picoftheday; }
 };
 
 K_EXPORT_PLUGIN( PicofthedayFactory )
