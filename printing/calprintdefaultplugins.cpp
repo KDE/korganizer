@@ -192,6 +192,10 @@ class TimePrintStringsVisitor : public IncidenceBase::Visitor
       mEndString.clear();
       return true;
     }
+    bool visit( FreeBusy *fb ) {
+      Q_UNUSED( fb );
+      return true;
+    }
 };
 
 int CalPrintIncidence::printCaptionAndText( QPainter &p, const QRect &box,
