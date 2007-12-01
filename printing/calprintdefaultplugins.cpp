@@ -864,8 +864,8 @@ void CalPrintMonth::readSettingsWidget()
   CalPrintMonthConfig *cfg = dynamic_cast<CalPrintMonthConfig *>( ( QWidget* )mConfigWidget );
 
   if ( cfg ) {
-    mFromDate = QDate( cfg->mFromYear->value(), cfg->mFromMonth->currentItem()+1, 1 );
-    mToDate = QDate( cfg->mToYear->value(), cfg->mToMonth->currentItem()+1, 1 );
+    mFromDate = QDate( cfg->mFromYear->value(), cfg->mFromMonth->currentIndex()+1, 1 );
+    mToDate = QDate( cfg->mToYear->value(), cfg->mToMonth->currentIndex()+1, 1 );
 
     mWeekNumbers =  cfg->mWeekNumbers->isChecked();
     mRecurDaily = cfg->mRecurDaily->isChecked();
@@ -923,17 +923,17 @@ void CalPrintMonth::setDateRange( const QDate &from, const QDate &to )
   if ( cfg && calSys ) {
     cfg->mFromMonth->clear();
     for ( int i=0; i<calSys->monthsInYear( mFromDate ); ++i ) {
-      cfg->mFromMonth->insertItem( calSys->monthName( i+1, mFromDate.year() ) );
+      cfg->mFromMonth->addItem( calSys->monthName( i+1, mFromDate.year() ) );
     }
     cfg->mToMonth->clear();
     for ( int i=0; i<calSys->monthsInYear( mToDate ); ++i ) {
-      cfg->mToMonth->insertItem( calSys->monthName( i+1, mToDate.year() ) );
+      cfg->mToMonth->addItem( calSys->monthName( i+1, mToDate.year() ) );
     }
   }
   if ( cfg ) {
-    cfg->mFromMonth->setCurrentItem( from.month()-1 );
+    cfg->mFromMonth->setCurrentIndex( from.month()-1 );
     cfg->mFromYear->setValue( to.year() );
-    cfg->mToMonth->setCurrentItem( mToDate.month()-1 );
+    cfg->mToMonth->setCurrentIndex( mToDate.month()-1 );
     cfg->mToYear->setValue( mToDate.year() );
   }
 }
