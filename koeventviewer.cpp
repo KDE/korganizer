@@ -153,7 +153,7 @@ void KOEventViewer::editIncidence()
     KToolInvocation::startServiceByDesktopPath( "korganizer" );
 
     OrgKdeKorganizerKorganizerInterface korganizerIface(
-      "org.kde.korganizer.Korganizer", "/Korganizer", QDBusConnection::sessionBus() );
+      "org.kde.korganizer", "/Korganizer", QDBusConnection::sessionBus() );
     korganizerIface.editIncidence( mIncidence->uid() );
   }
 }
@@ -165,7 +165,7 @@ void KOEventViewer::showIncidenceContext()
     KToolInvocation::startServiceByDesktopPath( "korganizer" );
 
     OrgKdeKorganizerKorganizerInterface korganizerIface(
-      "org.kde.korganizer.Korganizer", "/Korganizer", QDBusConnection::sessionBus() );
+      "org.kde.korganizer", "/Korganizer", QDBusConnection::sessionBus() );
     korganizerIface.showIncidenceContext( mIncidence->uid() );
   }
 }
