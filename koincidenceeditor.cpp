@@ -58,7 +58,7 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
                                       Calendar *calendar, QWidget *parent )
   : KDialogBase( Tabbed, caption, Ok | Apply | Cancel | Default, Ok,
                  parent, 0, false, false ),
-    mDetails( 0 ), mIsCounter( false )
+    mAttendeeEditor( 0 ), mIsCounter( false )
 {
   // Set this to be the group leader for all subdialogs - this means
   // modal subdialogs will only affect this dialog, not the other windows
@@ -90,7 +90,7 @@ void KOIncidenceEditor::setupAttendeesTab()
 
   QBoxLayout *topLayout = new QVBoxLayout( topFrame );
 
-  mDetails = new KOEditorDetails( spacingHint(), topFrame );
+  mAttendeeEditor = mDetails = new KOEditorDetails( spacingHint(), topFrame );
   topLayout->addWidget( mDetails );
 }
 
@@ -123,7 +123,7 @@ void KOIncidenceEditor::cancelRemovedAttendees( Incidence *incidence )
   if ( KOPrefs::instance()->thatIsMe( incidence->organizer().email() ) ) {
     Incidence *ev = incidence->clone();
     ev->registerObserver( 0 );
-    mDetails->cancelAttendeeEvent( ev );
+    mAttendeeEditor->cancelAttendeeEvent( ev );
     if ( ev->attendeeCount() > 0 ) {
       emit deleteAttendee( ev );
     }
@@ -365,7 +365,7 @@ void KOIncidenceEditor::addAttendees( const QStringList &attendees )
   for ( it = attendees.begin(); it != attendees.end(); ++it ) {
     QString name, email;
     KABC::Addressee::parseEmailAddress( *it, name, email );
-    mDetails->insertAttendee( new Attendee( name, email ) );
+    mAttendeeEditor->insertAttendee( new Attendee( name, email ) );
   }
 }
 

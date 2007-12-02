@@ -24,6 +24,8 @@
 #ifndef KOEDITORFREEBUSY_H
 #define KOEDITORFREEBUSY_H
 
+#include "koattendeeeditor.h"
+
 #include <qwidget.h>
 #include <qdatetime.h>
 #include <qtimer.h>
@@ -40,7 +42,7 @@ namespace KCal {
 }
 
 
-class KOEditorFreeBusy : public QWidget
+class KOEditorFreeBusy : public KOAttendeeEditor
 {
     Q_OBJECT
   public:
@@ -51,12 +53,13 @@ class KOEditorFreeBusy : public QWidget
     void setUpdateEnabled( bool enabled );
     bool updateEnabled() const;
 
-    void insertAttendee( KCal::Attendee *, bool readFBList );
+    void insertAttendee( KCal::Attendee *, bool readFBList = true );
     void removeAttendee( KCal::Attendee * );
     void updateAttendee( KCal::Attendee * );
     void clearAttendees();
 
     void readEvent( KCal::Event * );
+    void writeEvent( KCal::Event *event );
 
     void triggerReload();
     void cancelReload();
@@ -84,8 +87,14 @@ class KOEditorFreeBusy : public QWidget
     void autoReload();
     void slotIntervalColorRectangleMoved( const QDateTime& start, const QDateTime& end );
 
+    void removeAttendee();
+
   protected:
     void timerEvent( QTimerEvent* );
+    KCal::Attendee* currentAttendee() const;
+    void updateCurrentItem() const;
+    void clearSelection() const;
+    void changeStatusForMe( KCal::Attendee::PartStat status );
 
   private:
     void updateFreeBusyData( FreeBusyItem * );

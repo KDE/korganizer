@@ -39,6 +39,7 @@ class EmbeddedURLPage;
 namespace KOrg { class IncidenceChangerBase; }
 
 class KOEditorDetails;
+class KOAttendeeEditor;
 
 namespace KCal {
 class Calendar;
@@ -145,6 +146,7 @@ class KOIncidenceEditor : public KDialogBase
     Calendar *mCalendar;
 
     KOEditorDetails *mDetails;
+    KOAttendeeEditor *mAttendeeEditor;
     KOrg::IncidenceChangerBase *mChanger;
 
     QPtrList<KPIM::DesignerFields> mDesignerFields;

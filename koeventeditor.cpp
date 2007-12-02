@@ -67,11 +67,8 @@ void KOEventEditor::init()
   setupGeneral();
 //  setupAlarmsTab();
   setupRecurrence();
-  setupAttendeesTab();
   setupFreeBusy();
   setupDesignerTabs( "event" );
-
-  mDetails->setFreeBusyWidget( mFreeBusy );
 
   // Propagate date time settings to recurrence tab
   connect( mGeneral, SIGNAL( dateTimesChanged( const QDateTime &, const QDateTime & ) ),
@@ -95,7 +92,7 @@ void KOEventEditor::init()
   connect( this, SIGNAL( updateCategoryConfig() ),
            mGeneral, SIGNAL( updateCategoryConfig() ) );
 
-  connect( mDetails, SIGNAL(updateAttendeeSummary(int)),
+  connect( mFreeBusy, SIGNAL(updateAttendeeSummary(int)),
            mGeneral, SLOT(updateAttendeeSummary(int)) );
 
   connect( mGeneral, SIGNAL(editRecurrence()),
@@ -104,9 +101,9 @@ void KOEventEditor::init()
            SLOT(updateRecurrenceSummary()) );
 
   connect( mGeneral, SIGNAL(acceptInvitation()),
-           mDetails, SLOT(acceptForMe()) );
+           mFreeBusy, SLOT(acceptForMe()) );
   connect( mGeneral, SIGNAL(declineInvitation()),
-           mDetails, SLOT(declineForMe()) );
+           mFreeBusy, SLOT(declineForMe()) );
 }
 
 void KOEventEditor::reload()
@@ -196,14 +193,14 @@ void KOEventEditor::setupRecurrence()
 
 void KOEventEditor::setupFreeBusy()
 {
-  QFrame *freeBusyPage = addPage( i18n("&Free/Busy") );
+  QFrame *freeBusyPage = addPage( i18n("&Attendees") );
   QWhatsThis::add( freeBusyPage,
         i18n("The Free/Busy tab allows you to see whether "
        "other attendees are free or busy during your event.") );
 
   QBoxLayout *topLayout = new QVBoxLayout( freeBusyPage );
 
-  mFreeBusy = new KOEditorFreeBusy( spacingHint(), freeBusyPage );
+  mAttendeeEditor = mFreeBusy = new KOEditorFreeBusy( spacingHint(), freeBusyPage );
   topLayout->addWidget( mFreeBusy );
 }
 
@@ -232,7 +229,6 @@ void KOEventEditor::newEvent()
 void KOEventEditor::setDates( const QDateTime &from, const QDateTime &to, bool allDay )
 {
   mGeneral->setDefaults( from, to, allDay );
-  mDetails->setDefaults();
   mRecurrence->setDefaults( from, to, allDay );
   if( mFreeBusy ) {
     if ( allDay )
@@ -332,7 +328,6 @@ void KOEventEditor::deleteEvent()
 void KOEventEditor::readEvent( Event *event, Calendar *calendar, bool tmpl )
 {
   mGeneral->readEvent( event, calendar, tmpl );
-  mDetails->readEvent( event );
   mRecurrence->readIncidence( event );
 //  mAlarms->readIncidence( event );
   if ( mFreeBusy ) {
@@ -347,7 +342,8 @@ void KOEventEditor::readEvent( Event *event, Calendar *calendar, bool tmpl )
 void KOEventEditor::writeEvent( Event *event )
 {
   mGeneral->writeEvent( event );
-  mDetails->writeEvent( event );
+  if ( mFreeBusy )
+    mFreeBusy->writeEvent( event );
 
   cancelRemovedAttendees( event );
 
