@@ -13,6 +13,7 @@ X-KDE-CfgDlgHierarchy=KOrganizer
 
 Name=Time and Date
 Name[ca]=Hora i data
+Name[de]=Zeit und Datum
 Name[el]=Ώρα και Ημερομηνία
 Name[es]=Fecha y hora
 Name[et]=Kellaaeg ja kuupäev
@@ -33,6 +34,7 @@ Name[zh_CN]=时间和日期
 Name[zh_TW]=時間與日期
 Comment=KOrganizer Time and Date Configuration
 Comment[ca]=Configuració de la data i hora al KOrganizer
+Comment[de]=KOrganizer-Einstellungen für Zeit/Datum
 Comment[el]=Ρύθμιση ώρας και ημερομηνίας του KOrganizer
 Comment[es]=Configuración de la fecha y hora de KOrganizer
 Comment[et]=KOrganizeri ajaseadistused
