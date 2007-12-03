@@ -37,7 +37,7 @@ class KOCOREHELPER_EXPORT CellItem
       : mSubCells( 0 ), mSubCell( -1 )
     {
     }
- 	virtual ~CellItem(){}
+    virtual ~CellItem() {}
     void setSubCells( int v ) { mSubCells = v; }
     int subCells() const { return mSubCells; }
 
@@ -49,15 +49,14 @@ class KOCOREHELPER_EXPORT CellItem
     virtual QString label() const;
 
     /**
-      Place item \arg placeItem into stripe containing items \arg cells in a
+      Place item @p placeItem into stripe containing items @p cells in a
       way that items don't overlap.
-        @param cells The list of other cell items to be laid out parallel to the placeItem.
-        @param placeItem The item to be laid out.
+      @param cells The list of other cell items to be laid out parallel to the placeItem.
+      @param placeItem The item to be laid out.
 
-      \return Placed items
+      @return Placed items
     */
-    static QList<CellItem*> placeItem( QList<CellItem*> cells,
-                                         CellItem *placeItem );
+    static QList<CellItem*> placeItem( QList<CellItem*> cells, CellItem *placeItem );
 
   private:
     int mSubCells;
