@@ -1062,8 +1062,8 @@ void CalPrintTodos::setSettingsWidget()
 
     if ( mTodoSortDirection != TodoDirectionUnset ) {
       // do not insert if already done so.
-      cfg->mSortDirection->addItem( i18n( "Ascending" ) );
-      cfg->mSortDirection->addItem( i18n( "Descending" ) );
+      cfg->mSortDirection->addItem( i18nc( "@option sort in increasing order", "Ascending" ) );
+      cfg->mSortDirection->addItem( i18nc( "@option sort in descreasing order", "Descending" ) );
       cfg->mSortDirection->setCurrentIndex( mTodoSortDirection );
     }
   }
@@ -1146,7 +1146,7 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
       poscomplete = posdue; //if not print the Due Date column
     }
     outStr.truncate( 0 );
-    outStr += i18n( "Complete" );
+    outStr += i18nc( "@label to-do percentage complete", "Complete" );
     p.drawText( poscomplete, mCurrentLinePos - 2, outStr );
   } else {
     poscomplete = -1;
@@ -1154,7 +1154,7 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
 
   if ( mIncludeDueDate ) {
     outStr.truncate( 0 );
-    outStr += i18n( "Due" );
+    outStr += i18nc( "@label to-do due date", "Due" );
     p.drawText( posdue, mCurrentLinePos - 2, outStr );
   } else {
     posdue = -1;
