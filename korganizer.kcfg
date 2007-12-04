@@ -280,7 +280,6 @@
       <default>true</default>
     </entry>
 
-
     <entry type="Bool" key="Full View Month">
       <label>Month view uses full window</label>
       <whatsthis>Check this box to use the full KOrganizer window when displaying the month view. If this box is checked, you will gain some space for the monthly view, but other widgets, such as the date navigator, the item details and the resources list, will not be displayed.</whatsthis>
@@ -375,7 +374,7 @@
     <entry type="Color" key="WorkingHoursColor">
       <label>Working hours color</label>
       <whatsthis>Select the working hours color for the agenda view here.</whatsthis>
-      <default>225, 225, 255</default>
+      <default>255, 235, 154</default>
     </entry>
     <entry type="Color" key="Todo due today Color" name="TodoDueTodayColor">
       <label>To-do due today color</label>
@@ -399,6 +398,10 @@
     <entry type="Int" key="DefaultResourceColorSeed">
       <default>0</default>
     </entry>
+    <entry type="StringList" key="DefaultResourceColors">
+        <default>#c1d4e7,#d0e7c1,#e3e7c1,#e7c1e6,#a1b1c1</default>
+    </entry>
+
   </group>
 
   <group name="Fonts">

@@ -761,6 +761,9 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
   if ( !resourceColor.isValid() )
     resourceColor = categoryColor;
 
+  if (!KOPrefs::instance()->hasCategoryColor(cat))
+      categoryColor = resourceColor;
+
   QColor frameColor;
   if ( KOPrefs::instance()->agendaViewColors() == KOPrefs::ResourceOnly ||
        KOPrefs::instance()->agendaViewColors() == KOPrefs::CategoryInsideResourceOutside ) {

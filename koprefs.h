@@ -85,6 +85,7 @@ class KDE_EXPORT KOPrefs : public KOPrefsBase
 
     void setCategoryColor( const QString &cat, const QColor &color );
     QColor *categoryColor( const QString &cat );
+    bool hasCategoryColor( const QString &cat ) const;
 
     void setResourceColor ( const QString &, const QColor & );
     QColor* resourceColor( const QString & );
