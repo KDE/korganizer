@@ -176,7 +176,7 @@ JournalView::JournalView( Journal* j, QWidget *parent ) :
   mEditButton = new QPushButton( this );
   mEditButton->setObjectName( "editButton" );
   mEditButton->setText( i18n("&Edit") );
-  mEditButton->setIcon( KOGlobals::self()->smallIcon( "edit" ) );
+  mEditButton->setIcon( KOGlobals::self()->smallIcon( "document-properties" ) );
   mEditButton->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
   mEditButton->setToolTip( i18n("Edit this journal entry") );
   mEditButton->setWhatsThis( i18n("Opens an editor dialog for this journal entry") );
@@ -198,7 +198,7 @@ JournalView::JournalView( Journal* j, QWidget *parent ) :
   mPrintButton = new QPushButton( this );
   mPrintButton->setText( i18n("&Print") );
   mPrintButton->setObjectName( "printButton" );
-  mPrintButton->setIcon( KOGlobals::self()->smallIcon( "printer" ) );
+  mPrintButton->setIcon( KOGlobals::self()->smallIcon( "document-print" ) );
   mPrintButton->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
   mPrintButton->setToolTip( i18n("Print this journal entry") );
   mPrintButton->setWhatsThis( i18n("Opens a print dialog for this journal entry") );
