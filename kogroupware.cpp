@@ -59,8 +59,9 @@ KOGroupware *KOGroupware::mInstance = 0;
 KOGroupware *KOGroupware::create( CalendarView *view,
                                   KCal::CalendarResources *calendar )
 {
-  if( !mInstance )
+  if ( !mInstance ) {
     mInstance = new KOGroupware( view, calendar );
+  }
   return mInstance;
 }
 
@@ -71,20 +72,19 @@ KOGroupware *KOGroupware::instance()
   return mInstance;
 }
 
-
- KOGroupware::KOGroupware( CalendarView* view, KCal::CalendarResources* cal )
-   : QObject( 0 ), mView( view ), mCalendar( cal )
+KOGroupware::KOGroupware( CalendarView *view, KCal::CalendarResources *cal )
+  : QObject( 0 ), mView( view ), mCalendar( cal )
 {
   setObjectName( "kmgroupware_instance" );
   // Set up the dir watch of the three incoming dirs
-  KDirWatch* watcher = KDirWatch::self();
+  KDirWatch *watcher = KDirWatch::self();
   watcher->addDir( KStandardDirs::locateLocal( "data", "korganizer/income.accepted/" ) );
   watcher->addDir( KStandardDirs::locateLocal( "data", "korganizer/income.tentative/" ) );
   watcher->addDir( KStandardDirs::locateLocal( "data", "korganizer/income.cancel/" ) );
   watcher->addDir( KStandardDirs::locateLocal( "data", "korganizer/income.reply/" ) );
   watcher->addDir( KStandardDirs::locateLocal( "data", "korganizer/income.delegated/" ) );
-  connect( watcher, SIGNAL( dirty( const QString& ) ),
-           this, SLOT( incomingDirChanged( const QString& ) ) );
+  connect( watcher, SIGNAL(dirty(const QString&)),
+           this, SLOT(incomingDirChanged(const QString&)) );
   // Now set the ball rolling
   incomingDirChanged( KStandardDirs::locateLocal( "data", "korganizer/income.accepted/" ) );
   incomingDirChanged( KStandardDirs::locateLocal( "data", "korganizer/income.tentative/" ) );
@@ -96,25 +96,25 @@ KOGroupware *KOGroupware::instance()
     mFreeBusyManager = new FreeBusyManager( this );
     mFreeBusyManager->setObjectName( "freebusymanager" );
     mFreeBusyManager->setCalendar( mCalendar );
-    connect( mCalendar, SIGNAL( calendarChanged() ),
-             mFreeBusyManager, SLOT( slotPerhapsUploadFB() ) );
-    connect( mView, SIGNAL( newIncidenceChanger( IncidenceChangerBase* ) ),
-             this, SLOT( slotViewNewIncidenceChanger( IncidenceChangerBase* ) ) );
+    connect( mCalendar, SIGNAL(calendarChanged()),
+             mFreeBusyManager, SLOT(slotPerhapsUploadFB()) );
+    connect( mView, SIGNAL(newIncidenceChanger( IncidenceChangerBase*)),
+             this, SLOT(slotViewNewIncidenceChanger(IncidenceChangerBase*)) );
     slotViewNewIncidenceChanger( mView->incidenceChanger() );
   }
 }
 
-void KOGroupware::slotViewNewIncidenceChanger( IncidenceChangerBase* changer )
+void KOGroupware::slotViewNewIncidenceChanger( IncidenceChangerBase *changer )
 {
   // Call slot perhapsUploadFB if an incidence was added, changed or removed
-  connect( changer, SIGNAL( incidenceAdded( Incidence* ) ),
-	   mFreeBusyManager, SLOT( slotPerhapsUploadFB() ) );
-  connect( changer, SIGNAL( incidenceChanged( Incidence*, Incidence*, int ) ),
-	   mFreeBusyManager, SLOT( slotPerhapsUploadFB() ) );
-  connect( changer, SIGNAL( incidenceChanged( Incidence*, Incidence* ) ),
-	   mFreeBusyManager, SLOT( slotPerhapsUploadFB() ) ) ;
-  connect( changer, SIGNAL( incidenceDeleted( Incidence * ) ),
-	   mFreeBusyManager, SLOT( slotPerhapsUploadFB() ) );
+  connect( changer, SIGNAL(incidenceAdded(Incidence*)),
+           mFreeBusyManager, SLOT(slotPerhapsUploadFB()) );
+  connect( changer, SIGNAL(incidenceChanged(Incidence*,Incidence*,int)),
+           mFreeBusyManager, SLOT(slotPerhapsUploadFB()) );
+  connect( changer, SIGNAL(incidenceChanged(Incidence*,Incidence*)),
+           mFreeBusyManager, SLOT(slotPerhapsUploadFB()) ) ;
+  connect( changer, SIGNAL(incidenceDeleted(Incidence*)),
+           mFreeBusyManager, SLOT(slotPerhapsUploadFB()) );
 }
 
 FreeBusyManager *KOGroupware::freeBusyManager()
@@ -122,33 +122,33 @@ FreeBusyManager *KOGroupware::freeBusyManager()
   return mFreeBusyManager;
 }
 
-void KOGroupware::incomingDirChanged( const QString& path )
+void KOGroupware::incomingDirChanged( const QString &path )
 {
-  const QString incomingDirName = KStandardDirs::locateLocal( "data","korganizer/" )
-                                  + "income.";
+  const QString incomingDirName = KStandardDirs::locateLocal( "data","korganizer/" ) + "income.";
   if ( !path.startsWith( incomingDirName ) ) {
     kDebug(5850) <<"incomingDirChanged: Wrong dir" << path;
     return;
   }
   QString action = path.mid( incomingDirName.length() );
-  while ( action.length() > 0 && action[ action.length()-1 ] == '/' )
+  while ( action.length() > 0 && action[ action.length()-1 ] == '/' ) {
     // Strip slashes at the end
-    action.truncate( action.length()-1 );
+    action.truncate( action.length() - 1 );
+  }
 
   // Handle accepted invitations
   QDir dir( path );
   const QStringList files = dir.entryList( QDir::Files );
-  if ( files.isEmpty() )
+  if ( files.isEmpty() ) {
     // No more files here
     return;
-
+  }
   // Read the file and remove it
   QFile f( path + '/' + files[0] );
-  if (!f.open(QIODevice::ReadOnly)) {
-    kError(5850) <<"Can't open file '" << files[0] <<"'";
+  if ( !f.open( QIODevice::ReadOnly ) ) {
+    kError(5850) << "Can't open file '" << files[0] << "'";
     return;
   }
-  QTextStream t(&f);
+  QTextStream t( &f );
   t.setCodec( "UTF-8" );
   QString receiver = KPIMUtils::firstEmailAddress( t.readLine() );
   QString iCal = t.readAll();
@@ -158,47 +158,49 @@ void KOGroupware::incomingDirChanged( const QString& path )
   ScheduleMessage *message = mFormat.parseScheduleMessage( mCalendar, iCal );
   if ( !message ) {
     QString errorMessage;
-    if (mFormat.exception())
+    if ( mFormat.exception() ) {
       errorMessage = i18n( "Error message: %1", mFormat.exception()->message() );
-    kDebug(5850) <<"MailScheduler::retrieveTransactions() Error parsing"
-                  << errorMessage;
+    }
+    kDebug(5850) << "MailScheduler::retrieveTransactions() Error parsing"
+                 << errorMessage;
     KMessageBox::detailedError( mView,
-        i18n("Error while processing an invitation or update."),
-        errorMessage );
+                                i18n( "Error while processing an invitation or update." ),
+                                errorMessage );
     return;
   }
 
-  KCal::iTIPMethod method =
-    static_cast<KCal::iTIPMethod>( message->method() );
+  KCal::iTIPMethod method = static_cast<KCal::iTIPMethod>( message->method() );
   KCal::ScheduleMessage::Status status = message->status();
-  KCal::Incidence* incidence =
-    dynamic_cast<KCal::Incidence*>( message->event() );
+  KCal::Incidence *incidence = dynamic_cast<KCal::Incidence*>( message->event() );
   KCal::MailScheduler scheduler( mCalendar );
-  if ( action.startsWith( "accepted" ) || action.startsWith( "tentative" )
-       || action.startsWith( "delegated" ) ) {
+  if ( action.startsWith( "accepted" ) ||
+       action.startsWith( "tentative" ) ||
+       action.startsWith( "delegated" ) ) {
     // Find myself and set my status. This can't be done in the scheduler,
     // since this does not know the choice I made in the KMail bpf
     KCal::Attendee::List attendees = incidence->attendees();
     KCal::Attendee::List::ConstIterator it;
     for ( it = attendees.begin(); it != attendees.end(); ++it ) {
-      if( (*it)->email() == receiver ) {
-        if ( action.startsWith( "accepted" ) )
+      if ( (*it)->email() == receiver ) {
+        if ( action.startsWith( "accepted" ) ) {
           (*it)->setStatus( KCal::Attendee::Accepted );
-        else if ( action.startsWith( "tentative" ) )
+        } else if ( action.startsWith( "tentative" ) ) {
           (*it)->setStatus( KCal::Attendee::Tentative );
-        else if ( action.startsWith( "delegated" ) )
+        } else if ( action.startsWith( "delegated" ) ) {
           (*it)->setStatus( KCal::Attendee::Delegated );
+        }
         break;
       }
     }
     scheduler.acceptTransaction( incidence, method, status );
-  } else if ( action.startsWith( "cancel" ) )
+  } else if ( action.startsWith( "cancel" ) ) {
     // Delete the old incidence, if one is present
     scheduler.acceptTransaction( incidence, KCal::iTIPCancel, status );
-  else if ( action.startsWith( "reply" ) )
+  } else if ( action.startsWith( "reply" ) ) {
     scheduler.acceptTransaction( incidence, method, status );
-  else
-    kError(5850) <<"Unknown incoming action" << action;
+  } else {
+    kError(5850) << "Unknown incoming action" << action;
+  }
   mView->updateView();
   delete message;
 }
@@ -215,14 +217,15 @@ class KOInvitationFormatterHelper : public InvitationFormatterHelper
  * Return true means accept the changes
  * Return false means revert the changes
  */
-bool KOGroupware::sendICalMessage( QWidget* parent,
+bool KOGroupware::sendICalMessage( QWidget *parent,
                                    KCal::iTIPMethod method,
-                                   Incidence* incidence, bool isDeleting,
+                                   Incidence *incidence, bool isDeleting,
                                    bool statusChanged )
 {
   // If there are no attendees, don't bother
-  if( incidence->attendees().isEmpty() )
+  if ( incidence->attendees().isEmpty() ) {
     return true;
+  }
 
   bool isOrganizer = KOPrefs::instance()->thatIsMe( incidence->organizer().email() );
   int rc = 0;
@@ -244,73 +247,83 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
     /* We are the organizer. If there is more than one attendee, or if there is
      * only one, and it's not the same as the organizer, ask the user to send
      * mail. */
-    if ( incidence->attendees().count() > 1
-        || incidence->attendees().first()->email() != incidence->organizer().email() ) {
+    if ( incidence->attendees().count() > 1 ||
+         incidence->attendees().first()->email() != incidence->organizer().email() ) {
       QString type;
-      if( incidence->type() == "Event") type = i18n("event");
-      else if( incidence->type() == "Todo" ) type = i18n("task");
-      else if( incidence->type() == "Journal" ) type = i18n("journal entry");
-      else type = incidence->type();
+      if ( incidence->type() == "Event" ) {
+        type = i18n( "event" );
+      } else if ( incidence->type() == "Todo" ) {
+        type = i18n( "task" );
+      } else if ( incidence->type() == "Journal" ) {
+        type = i18n( "journal entry" );
+      } else {
+        type = incidence->type();
+      }
       QString txt = i18n( "This %1 includes other people. "
-          "Should email be sent out to the attendees?" ,
-          type );
-      rc = KMessageBox::questionYesNoCancel( parent, txt,
-          i18n("Group Scheduling Email"), KGuiItem(i18n("Send Email")), KGuiItem(i18n("Do Not Send")) );
+                          "Should email be sent out to the attendees?",
+                          type );
+      rc = KMessageBox::questionYesNoCancel(
+             parent, txt, i18n( "Group Scheduling Email" ),
+             KGuiItem( i18n( "Send Email" ) ), KGuiItem( i18n( "Do Not Send" ) ) );
     } else {
       return true;
     }
-  } else if( incidence->type() == "Todo" ) {
-    if( method == iTIPRequest )
+  } else if ( incidence->type() == "Todo" ) {
+    if ( method == iTIPRequest ) {
       // This is an update to be sent to the organizer
       method = iTIPReply;
-
+    }
     // Ask if the user wants to tell the organizer about the current status
     QString txt = i18n( "Do you want to send a status update to the "
-                        "organizer of this task?");
-    rc = KMessageBox::questionYesNo( parent, txt, QString(), KGuiItem(i18n("Send Update")), KGuiItem(i18n("Do Not Send")) );
-  } else if( incidence->type() == "Event" ) {
+                        "organizer of this task?" );
+    rc = KMessageBox::questionYesNo(
+           parent, txt, QString(),
+           KGuiItem( i18n( "Send Update" ) ), KGuiItem( i18n( "Do Not Send" ) ) );
+  } else if ( incidence->type() == "Event" ) {
     QString txt;
     if ( statusChanged && method == iTIPRequest ) {
       txt = i18n( "Your status as an attendee of this event "
-          "changed. Do you want to send a status update to the "
-          "organizer of this event?" );
+                  "changed. Do you want to send a status update to the "
+                  "organizer of this event?" );
       method = iTIPReply;
-      rc = KMessageBox::questionYesNo( parent, txt, QString(), KGuiItem(i18n("Send Update")), KGuiItem(i18n("Do Not Send")) );
+      rc = KMessageBox::questionYesNo(
+             parent, txt, QString(),
+             KGuiItem( i18n( "Send Update" ) ), KGuiItem( i18n( "Do Not Send" ) ) );
     } else {
-      if( isDeleting )
+      if ( isDeleting ) {
         txt = i18n( "You are not the organizer of this event. "
-            "Deleting it will bring your calendar out of sync "
-            "with the organizers calendar. Do you really want "
-            "to delete it?" );
-      else
+                    "Deleting it will bring your calendar out of sync "
+                    "with the organizers calendar. Do you really want "
+                    "to delete it?" );
+      } else {
         txt = i18n( "You are not the organizer of this event. "
-            "Editing it will bring your calendar out of sync "
-            "with the organizers calendar. Do you really want "
-            "to edit it?" );
+                    "Editing it will bring your calendar out of sync "
+                    "with the organizers calendar. Do you really want "
+                    "to edit it?" );
+      }
       rc = KMessageBox::warningYesNo( parent, txt );
-      return ( rc == KMessageBox::Yes );
+      return rc == KMessageBox::Yes;
     }
   } else {
-    kWarning(5850) <<"Groupware messages for Journals are not implemented yet!";
+    kWarning(5850) << "Groupware messages for Journals are not implemented yet!";
     return true;
   }
 
-  if( rc == KMessageBox::Yes ) {
+  if ( rc == KMessageBox::Yes ) {
     // We will be sending out a message here. Now make sure there is
     // some summary
-    if( incidence->summary().isEmpty() )
-      incidence->setSummary( i18n("<No summary given>") ); //krazy:exclude=i18ncheckarg
-
+    if ( incidence->summary().isEmpty() ) {
+      incidence->setSummary( i18n( "<placeholder>No summary given</placeholder>" ) );
+    }
     // Send the mail
     KCal::MailScheduler scheduler( mCalendar );
     scheduler.performTransaction( incidence, method );
-
     return true;
-  } else if( rc == KMessageBox::No )
+  } else if ( rc == KMessageBox::No ) {
     return true;
-  else
+  } else {
     return false;
+  }
 }
-
 
 #include "kogroupware.moc"
