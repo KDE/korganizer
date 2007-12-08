@@ -248,7 +248,7 @@ KOTodoListViewQuickSearch *KOTodoListViewQuickSearchContainer::quickSearch()
   return mQuickSearch;
 }
 
-void KOTodoListViewQuickSearchContainer::resizeEvent ( QResizeEvent */*e*/ )
+void KOTodoListViewQuickSearchContainer::resizeEvent ( QResizeEvent * /*e*/ )
 {
   mQuickSearch->setGeometry( QRect( QPoint( 0, 0 ), size() ) );
 }
