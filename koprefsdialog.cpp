@@ -350,7 +350,7 @@ class KOPrefsDialogTime : public KPrefsModule
       regionalLayout->setRowStretch( 4, 1 );
 
       QFrame *defaultPage = new QFrame( parent );
-      tabWidget->addTab( defaultPage, KIcon( "eraser" ), i18n( "Default values" )  );
+      tabWidget->addTab( defaultPage, KIcon( "draw-eraser" ), i18n( "Default values" )  );
       QGridLayout *defaultLayout = new QGridLayout( defaultPage );
       defaultLayout->setSpacing( KDialog::spacingHint() );
 
