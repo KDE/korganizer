@@ -35,7 +35,7 @@ namespace KCal {
 // Provides static methods that are useful to all views.
 // TODO: replace this class with KOHelper namespace.
 
-class KORGANIZER_EXPORT KOHelper
+class KORGANIZERPRIVATE_EXPORT KOHelper
 {
   public:
     /**

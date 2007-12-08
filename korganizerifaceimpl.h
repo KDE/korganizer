@@ -37,7 +37,7 @@
 
 class ActionManager;
 
-class KORGANIZER_EXPORT KOrganizerIfaceImpl : public QObject
+class KORGANIZERPRIVATE_EXPORT KOrganizerIfaceImpl : public QObject
 {
   Q_OBJECT
   public:

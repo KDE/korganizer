@@ -29,7 +29,7 @@
 
 namespace KOrg {
 
-class KORGANIZER_EXPORT AboutData : public KAboutData
+class KORGANIZERPRIVATE_EXPORT AboutData : public KAboutData
 {
   public:
     AboutData();

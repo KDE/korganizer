@@ -27,7 +27,7 @@
 #include "korganizer/incidencechangerbase.h"
 #include "korganizer_export.h"
 
-class KORGANIZER_EXPORT IncidenceChanger : public KOrg::IncidenceChangerBase
+class KORGANIZERPRIVATE_EXPORT IncidenceChanger : public KOrg::IncidenceChangerBase
 {
 Q_OBJECT
 public:

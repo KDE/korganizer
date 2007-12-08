@@ -9,7 +9,7 @@ set(timezone_SRCS timezone.cpp )
 
 kde4_add_executable(timezone TEST ${timezone_SRCS})
 
-target_link_libraries(timezone  korganizer ${KDE4_KIO_LIBS} )
+target_link_libraries(timezone  korganizerprivate ${KDE4_KIO_LIBS} )
 
 ########### next target ###############
 
@@ -18,7 +18,7 @@ set(korgplugins_SRCS korgplugins.cpp )
 
 kde4_add_executable(korgplugins TEST ${korgplugins_SRCS})
 
-target_link_libraries(korgplugins  korganizer ${KDE4_KIO_LIBS} )
+target_link_libraries(korgplugins  korganizerprivate ${KDE4_KIO_LIBS} )
 
 
 

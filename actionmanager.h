@@ -73,7 +73,7 @@ using namespace KCal;
   actions are in one location.
   It also provides DCOP interface[s].
 */
-class KORGANIZER_EXPORT ActionManager : public QObject
+class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
 {
   Q_OBJECT
   public:

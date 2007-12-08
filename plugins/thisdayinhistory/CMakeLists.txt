@@ -20,7 +20,7 @@ kde4_add_plugin( korg_thisdayinhistory ${korg_thisdayinhistory_PART_SRCS} )
 target_link_libraries( korg_thisdayinhistory
                        ${KDE4_KDECORE_LIBS}
                        ${KDE4_KDEUI_LIBS}
-                       korganizer )
+                       korganizerprivate )
 
 install( TARGETS korg_thisdayinhistory
          DESTINATION ${PLUGIN_INSTALL_DIR} )

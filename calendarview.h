@@ -88,7 +88,7 @@ class CalendarViewExtension : public QWidget
   @short main calendar view widget
   @author Cornelius Schumacher
 */
-class KORGANIZER_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::CalendarObserver
+class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::CalendarObserver
 {
   Q_OBJECT
   public:

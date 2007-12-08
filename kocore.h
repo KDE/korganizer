@@ -35,7 +35,7 @@
 
 namespace KPIMIdentities { class IdentityManager; }
 
-class KORGANIZER_EXPORT KOCore
+class KORGANIZERPRIVATE_EXPORT KOCore
 {
   public:
     ~KOCore();
