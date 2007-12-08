@@ -214,7 +214,7 @@ void KOEditorGeneral::initDescription( QWidget *parent, QBoxLayout *topLayout )
 
   mDescriptionUnorderedListButton = new QPushButton( parent );
   //FIXME: use icon when it's available. remove text.
-  //mDescriptionUnorderedListButton->setIcon( KIcon( "unordered-list" ) );
+  mDescriptionUnorderedListButton->setIcon( KIcon( "format-list-unordered" ) );
   mDescriptionUnorderedListButton->setText(
     i18nc( "no icon, so use the html tag", "<placeholder>ul</placeholder>" ) );
   mDescriptionUnorderedListButton->setToolTip( i18n( "Unordered-list item" ) );
@@ -223,7 +223,7 @@ void KOEditorGeneral::initDescription( QWidget *parent, QBoxLayout *topLayout )
 
   mDescriptionOrderedListButton = new QPushButton( parent );
   //FIXME: use icon when it's available. remove text.
-  //mDescriptionOrderedListButton->setIcon( KIcon( "ordered-list" ) );
+  mDescriptionOrderedListButton->setIcon( KIcon( "format-list-ordered" ) );
   mDescriptionOrderedListButton->setText(
     i18nc( "no icon, so use the html tag", "<placeholder>ol</placeholder>" ) );
   mDescriptionOrderedListButton->setToolTip( i18n( "Ordered-list item" ) );
@@ -265,7 +265,7 @@ void KOEditorGeneral::initAlarm( QWidget *parent, QBoxLayout *topLayout )
   topLayout->addItem( alarmLayout );
 
   mAlarmBell = new QLabel( parent );
-  mAlarmBell->setPixmap( KOGlobals::self()->smallIcon( "bell" ) );
+  mAlarmBell->setPixmap( KOGlobals::self()->smallIcon( "preferences-desktop-notification-bell" ) );
   alarmLayout->addWidget( mAlarmBell );
 
   mAlarmStack = new QStackedWidget( parent );
