@@ -21,9 +21,7 @@
 
 #include "kohelper.h"
 
-//#define protected public
 #include <kdgantt1/KDGanttViewSubwidgets.h>
-//#undef public
 
 #include <kcal/calendar.h>
 #include <kcal/incidenceformatter.h>
