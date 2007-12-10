@@ -161,8 +161,10 @@ class AttachmentIconView : public KIconView
                     KTempDir * tempDir = new KTempDir(); // will be deleted on editor close
                     tempDir->setAutoDelete( true );
                     mTempDirs.insert( tempDir );
+                    QByteArray encoded;
+                    encoded.duplicate( att->data(), strlen(att->data()) );
                     QByteArray decoded;
-                    KCodecs::base64Decode( QCString( att->data() ), decoded );
+                    KCodecs::base64Decode( encoded, decoded );
                     const QString fileName = tempDir->name( ) + "/" + att->label();
                     KPIM::kByteArrayToFile( decoded, fileName, false, false, false );
                     url.setPath( fileName );
@@ -291,8 +293,10 @@ void KOEditorAttachments::showAttachment( QIconViewItem *item )
     KTempFile f;
     if ( !f.file() )
       return;
+    QByteArray encoded;
+    encoded.duplicate( att->data(), strlen(att->data()) );
     QByteArray decoded;
-    KCodecs::base64Decode( QCString( att->data() ), decoded );
+    KCodecs::base64Decode( encoded, decoded );
     f.file()->writeBlock( decoded );
     f.file()->close();
     KRun::runURL( f.name(), att->mimeType(), true, false );
