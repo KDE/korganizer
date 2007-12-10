@@ -343,7 +343,7 @@ KCal::Attendee * KOEditorDetails::currentAttendee() const
   return aItem->data();
 }
 
-void KOEditorDetails::updateCurrentItem() const
+void KOEditorDetails::updateCurrentItem()
 {
   AttendeeListItem *item = static_cast<AttendeeListItem*>( mListView->selectedItem() );
   if ( item )

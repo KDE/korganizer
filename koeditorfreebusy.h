@@ -55,7 +55,6 @@ class KOEditorFreeBusy : public KOAttendeeEditor
 
     void insertAttendee( KCal::Attendee *, bool readFBList = true );
     void removeAttendee( KCal::Attendee * );
-    void updateAttendee( KCal::Attendee * );
     void clearAttendees();
 
     void readEvent( KCal::Event * );
@@ -92,7 +91,7 @@ class KOEditorFreeBusy : public KOAttendeeEditor
   protected:
     void timerEvent( QTimerEvent* );
     KCal::Attendee* currentAttendee() const;
-    void updateCurrentItem() const;
+    void updateCurrentItem();
     void clearSelection() const;
     void changeStatusForMe( KCal::Attendee::PartStat status );
 

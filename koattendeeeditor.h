@@ -81,7 +81,7 @@ class KOAttendeeEditor : public QWidget
     void fillOrganizerCombo();
 
     virtual KCal::Attendee* currentAttendee() const = 0;
-    virtual void updateCurrentItem() const = 0;
+    virtual void updateCurrentItem() = 0;
 
     virtual void changeStatusForMe( KCal::Attendee::PartStat status ) = 0;
 

@@ -373,21 +373,6 @@ void KOEditorFreeBusy::insertAttendee( Attendee *attendee, bool readFBList )
   emit updateAttendeeSummary( mGanttView->childCount() );
 }
 
-void KOEditorFreeBusy::updateAttendee( Attendee *attendee )
-{
-  FreeBusyItem *anItem =
-      static_cast<FreeBusyItem *>( mGanttView->firstChild() );
-  while( anItem ) {
-    if( anItem->attendee() == attendee ) {
-      anItem->updateItem();
-      updateFreeBusyData( anItem );
-      updateStatusSummary();
-      break;
-    }
-    anItem = static_cast<FreeBusyItem *>( anItem->nextSibling() );
-  }
-}
-
 void KOEditorFreeBusy::clearAttendees()
 {
   mGanttView->clear();
@@ -793,11 +778,14 @@ KCal::Attendee * KOEditorFreeBusy::currentAttendee() const
   return aItem->attendee();
 }
 
-void KOEditorFreeBusy::updateCurrentItem() const
+void KOEditorFreeBusy::updateCurrentItem()
 {
   FreeBusyItem* item = static_cast<FreeBusyItem*>( mGanttView->selectedItem() );
-  if ( item )
+  if ( item ) {
     item->updateItem();
+    updateFreeBusyData( item );
+    updateStatusSummary();
+  }
 }
 
 void KOEditorFreeBusy::removeAttendee()

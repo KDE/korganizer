@@ -105,7 +105,7 @@ class KOEditorDetails : public KOAttendeeEditor
     void changeStatusForMe( Attendee::PartStat status );
 
     KCal::Attendee* currentAttendee() const;
-    void updateCurrentItem() const;
+    void updateCurrentItem();
 
   private:
     bool mDisableItemUpdate;
