@@ -20,20 +20,19 @@
 
 #include "koattendeeeditor.h"
 #include "koprefs.h"
+#include "koglobals.h"
 
 #ifndef KORG_NOKABC
 #include <kabc/addresseedialog.h>
-// #include <kabc/vcardconverter.h>
 #include <libkdepim/addressesdialog.h>
 #include <libkdepim/addresseelineedit.h>
-// #include <libkdepim/distributionlist.h>
-// #include <kabc/stdaddressbook.h>
 #endif
 
 #include <libkcal/incidence.h>
 
 #include <libemailfunctions/email.h>
 
+#include <kiconloader.h>
 #include <klocale.h>
 
 #include <qcheckbox.h>
@@ -131,7 +130,15 @@ void KOAttendeeEditor::initEditWidgets(QWidget * parent, QBoxLayout * layout)
 
   mStatusCombo = new QComboBox( false, parent );
   QWhatsThis::add( mStatusCombo, whatsThis );
-  mStatusCombo->insertStringList( Attendee::statusList() );
+//   mStatusCombo->insertStringList( Attendee::statusList() );
+  mStatusCombo->insertItem( SmallIcon( "help" ), Attendee::statusName( Attendee::NeedsAction ) );
+  mStatusCombo->insertItem( KOGlobals::self()->smallIcon( "ok" ), Attendee::statusName( Attendee::Accepted ) );
+  mStatusCombo->insertItem( KOGlobals::self()->smallIcon( "no" ), Attendee::statusName( Attendee::Declined ) );
+  mStatusCombo->insertItem( KOGlobals::self()->smallIcon( "apply" ), Attendee::statusName( Attendee::Tentative ) );
+  mStatusCombo->insertItem( KOGlobals::self()->smallIcon( "mail_forward" ), Attendee::statusName( Attendee::Delegated ) );
+  mStatusCombo->insertItem( Attendee::statusName( Attendee::Completed ) );
+  mStatusCombo->insertItem( KOGlobals::self()->smallIcon( "help" ), Attendee::statusName( Attendee::InProcess ) );
+
   statusLabel->setBuddy( mStatusCombo );
   connect( mStatusCombo, SIGNAL( activated( int ) ),
            SLOT( updateAttendee() ) );
