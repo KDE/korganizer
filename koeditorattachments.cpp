@@ -127,8 +127,9 @@ class AttachmentIconView : public KIconView
 {
     friend class KOEditorAttachments;
     public:
-        AttachmentIconView( QWidget* parent=0 )
-            :KIconView( parent )
+        AttachmentIconView( KOEditorAttachments* parent=0 )
+            :KIconView( parent ),
+             mParent( parent )
         {
             setAcceptDrops( true );
             setSelectionMode( QIconView::Extended );
@@ -174,8 +175,13 @@ class AttachmentIconView : public KIconView
             KURLDrag *drag  = new KURLDrag( urls, this );
             return drag;
         }
+        void contentsDropEvent( QDropEvent* event )
+        {
+          mParent->handlePasteOrDrop( event );
+        }
     private:
         std::set<KTempDir*> mTempDirs;
+        KOEditorAttachments* mParent;
 };
 
 KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent,

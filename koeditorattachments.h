@@ -79,6 +79,7 @@ class KOEditorAttachments : public QWidget
     void openURL( const KURL &url );
 
   private:
+    friend class AttachmentIconView;
     void handlePasteOrDrop( QMimeSource* source );
 
     AttachmentIconView *mAttachments;
