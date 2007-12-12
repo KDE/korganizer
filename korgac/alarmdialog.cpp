@@ -141,7 +141,13 @@ void AlarmDialog::addIncidence( Incidence *incidence, const QDateTime &reminderA
   Todo *todo;
   if ( dynamic_cast<Event*>( incidence ) ) {
     item->setPixmap( 0, SmallIcon( "appointment" ) );
-    item->setText( 1, incidence->dtStartStr() );
+    if ( incidence->doesRecur() ) {
+      QDateTime nextStart = incidence->recurrence()->getNextDateTime( reminderAt );
+      if ( nextStart.isValid() )
+        item->setText( 1, KGlobal::locale()->formatDateTime( nextStart ) );
+    }
+    if ( item->text( 1 ).isEmpty() )
+      item->setText( 1, incidence->dtStartStr() );
   } else if ( (todo = dynamic_cast<Todo*>( incidence )) ) {
     item->setPixmap( 0, SmallIcon( "todo" ) );
     item->setText( 1, todo->dtDueStr() );
