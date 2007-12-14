@@ -328,6 +328,10 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent,
 
   connect( mGanttView, SIGNAL(lvSelectionChanged(KDGanttViewItem*)),
           this, SLOT(updateAttendeeInput()) );
+  connect( mGanttView, SIGNAL(lvItemLeftClicked(KDGanttViewItem*)),
+           this, SLOT(showAttendeeStatusMenu()) );
+  connect( mGanttView, SIGNAL(lvItemRightClicked(KDGanttViewItem*)),
+           this, SLOT(showAttendeeStatusMenu()) );
 
   FreeBusyManager *m = KOGroupware::instance()->freeBusyManager();
   connect( m, SIGNAL( freeBusyRetrieved( KCal::FreeBusy *, const QString & ) ),
@@ -826,6 +830,27 @@ void KOEditorFreeBusy::changeStatusForMe(KCal::Attendee::PartStat status)
         item->updateItem();
       }
     }
+  }
+}
+
+void KOEditorFreeBusy::showAttendeeStatusMenu()
+{
+  if ( mGanttView->mapFromGlobal( QCursor::pos() ).x() > 22 )
+    return;
+  QPopupMenu popup;
+  popup.insertItem( SmallIcon( "help" ), Attendee::statusName( Attendee::NeedsAction ), Attendee::NeedsAction );
+  popup.insertItem( KOGlobals::self()->smallIcon( "ok" ), Attendee::statusName( Attendee::Accepted ), Attendee::Accepted );
+  popup.insertItem( KOGlobals::self()->smallIcon( "no" ), Attendee::statusName( Attendee::Declined ), Attendee::Declined );
+  popup.insertItem( KOGlobals::self()->smallIcon( "apply" ), Attendee::statusName( Attendee::Tentative ), Attendee::Tentative );
+  popup.insertItem( KOGlobals::self()->smallIcon( "mail_forward" ), Attendee::statusName( Attendee::Delegated ), Attendee::Delegated );
+  popup.insertItem( Attendee::statusName( Attendee::Completed ), Attendee::Completed );
+  popup.insertItem( KOGlobals::self()->smallIcon( "help" ), Attendee::statusName( Attendee::InProcess ), Attendee::InProcess );
+  popup.setItemChecked( currentAttendee()->status(), true );
+  int status = popup.exec( QCursor::pos() );
+  if ( status >= 0 ) {
+    currentAttendee()->setStatus( (Attendee::PartStat)status );
+    updateCurrentItem();
+    updateAttendeeInput();
   }
 }
 

@@ -79,6 +79,7 @@ class KOEditorFreeBusy : public KOAttendeeEditor
     void slotCenterOnStart() ;
     void slotZoomToTime();
     void slotPickDate();
+    void showAttendeeStatusMenu();
 
     // Force the download of FB informations
     void manualReload();
