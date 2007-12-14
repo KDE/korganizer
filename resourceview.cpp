@@ -32,17 +32,20 @@
 #include <kdebug.h>
 #include <kglobal.h>
 #include <kmessagebox.h>
+#include <kinputdialog.h>
+#include <kiconloader.h>
 #include <kresources/resource.h>
 #include <kresources/configdialog.h>
-#include <kinputdialog.h>
 #include <libkcal/calendarresources.h>
 
 #include <qhbox.h>
+#include <qheader.h>
 #include <qlayout.h>
 #include <qlabel.h>
 #include <qpainter.h>
 #include <qpushbutton.h>
 #include <qpopupmenu.h>
+#include <qtooltip.h>
 #include <qwhatsthis.h>
 
 #include "koprefs.h"
@@ -217,7 +220,48 @@ ResourceView::ResourceView( KCal::CalendarResources *calendar,
 {
   QBoxLayout *topLayout = new QVBoxLayout( this, 0, KDialog::spacingHint() );
 
+  QHBoxLayout *buttonBox = new QHBoxLayout();
+  buttonBox->setSpacing( KDialog::spacingHint() );
+  topLayout->addLayout( buttonBox );
+
+  QLabel *calLabel = new QLabel( i18n( "Calendar" ), this );
+  buttonBox->addWidget( calLabel );
+  buttonBox->addStretch( 1 );
+
+  mAddButton = new QPushButton( this, "add" );
+  mAddButton->setIconSet( SmallIconSet( "add" ) );
+  buttonBox->addWidget( mAddButton );
+  QToolTip::add( mAddButton, i18n( "Add calendar" ) );
+  QWhatsThis::add( mAddButton,
+                   i18n( "<qt><p>Press this button to add a resource to "
+                         "KOrganizer.</p>"
+                         "<p>Events, journal entries and to-dos are retrieved "
+                         "and stored on resources. Available "
+                         "resources include groupware servers, local files, "
+                         "journal entries as blogs on a server, etc... </p>"
+                         "<p>If you have more than one active resource, "
+                         "when creating incidents you will either automatically "
+                         "use the default resource or be prompted "
+                         "to select the resource to use.</p></qt>" ) );
+  mEditButton = new QPushButton( this, "edit" );
+  mEditButton->setIconSet( SmallIconSet( "edit" ) );
+  buttonBox->addWidget( mEditButton );
+  QToolTip::add( mEditButton, i18n( "Edit calendar settings" ) );
+  QWhatsThis::add( mEditButton,
+                   i18n( "Press this button to edit the resource currently "
+                         "selected on the KOrganizer resources list above." ) );
+  mDeleteButton = new QPushButton( this, "del" );
+  mDeleteButton->setIconSet( SmallIconSet( "remove" ) );
+  buttonBox->addWidget( mDeleteButton );
+  QToolTip::add( mDeleteButton, i18n( "Remove calendar" ) );
+  QWhatsThis::add( mDeleteButton,
+                   i18n( "Press this button to delete the resource currently "
+                         "selected on the KOrganizer resources list above." ) );
+  mDeleteButton->setDisabled( true );
+  mEditButton->setDisabled( true );
+
   mListView = new KListView( this );
+  mListView->header()->hide();
   QWhatsThis::add( mListView,
                    i18n( "<qt><p>Select on this list the active KOrganizer "
                          "resources. Check the resource box to make it "
@@ -234,33 +278,6 @@ ResourceView::ResourceView( KCal::CalendarResources *calendar,
   mListView->addColumn( i18n("Calendar") );
   mListView->setResizeMode( QListView::LastColumn );
   topLayout->addWidget( mListView );
-
-  QHBox *buttonBox = new QHBox( this );
-  buttonBox->setSpacing( KDialog::spacingHint() );
-  topLayout->addWidget( buttonBox );
-
-  mAddButton = new QPushButton( i18n("Add..."), buttonBox, "add" );
-  QWhatsThis::add( mAddButton,
-                   i18n( "<qt><p>Press this button to add a resource to "
-                         "KOrganizer.</p>"
-                         "<p>Events, journal entries and to-dos are retrieved "
-                         "and stored on resources. Available "
-                         "resources include groupware servers, local files, "
-                         "journal entries as blogs on a server, etc... </p>"
-                         "<p>If you have more than one active resource, "
-                         "when creating incidents you will either automatically "
-                         "use the default resource or be prompted "
-                         "to select the resource to use.</p></qt>" ) );
-  mEditButton = new QPushButton( i18n("Edit..."), buttonBox, "edit" );
-  QWhatsThis::add( mEditButton,
-                   i18n( "Press this button to edit the resource currently "
-                         "selected on the KOrganizer resources list above." ) );
-  mDeleteButton = new QPushButton( i18n("Remove"), buttonBox, "del" );
-  QWhatsThis::add( mDeleteButton,
-                   i18n( "Press this button to delete the resource currently "
-                         "selected on the KOrganizer resources list above." ) );
-  mDeleteButton->setDisabled( true );
-  mEditButton->setDisabled( true );
 
   connect( mListView, SIGNAL( clicked( QListViewItem * ) ),
            SLOT( currentChanged( QListViewItem * ) ) );
