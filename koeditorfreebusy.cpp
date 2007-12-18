@@ -68,7 +68,7 @@ class FreeBusyItem : public KDGanttViewTaskItem
 {
   public:
     FreeBusyItem( Attendee *attendee, KDGanttView *parent ) :
-      KDGanttViewTaskItem( parent ), mAttendee( attendee ), mTimerID( 0 ),
+      KDGanttViewTaskItem( parent, parent->lastItem() ), mAttendee( attendee ), mTimerID( 0 ),
       mIsDownloading( false )
     {
       Q_ASSERT( attendee );
@@ -332,6 +332,8 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent,
            this, SLOT(showAttendeeStatusMenu()) );
   connect( mGanttView, SIGNAL(lvItemRightClicked(KDGanttViewItem*)),
            this, SLOT(showAttendeeStatusMenu()) );
+  connect( mGanttView, SIGNAL(lvMouseButtonClicked(int, KDGanttViewItem*, const QPoint&, int)),
+           this, SLOT(listViewClicked(int, KDGanttViewItem*)) );
 
   FreeBusyManager *m = KOGroupware::instance()->freeBusyManager();
   connect( m, SIGNAL( freeBusyRetrieved( KCal::FreeBusy *, const QString & ) ),
@@ -852,6 +854,12 @@ void KOEditorFreeBusy::showAttendeeStatusMenu()
     updateCurrentItem();
     updateAttendeeInput();
   }
+}
+
+void KOEditorFreeBusy::listViewClicked(int button, KDGanttViewItem * item)
+{
+  if ( button == Qt::LeftButton && item == 0 )
+    addNewAttendee();
 }
 
 #include "koeditorfreebusy.moc"
