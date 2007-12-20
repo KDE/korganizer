@@ -711,7 +711,7 @@ void KOAgendaItem::paintIcons( QPainter *p, int &x, int ft )
   conditionalPaint( p, mIconOrganizer,      x, ft, *organizerPxmp );
 }
 
-void KOAgendaItem::paintEvent( QPaintEvent * )
+void KOAgendaItem::paintEvent( QPaintEvent *ev )
 {
   //HACK
   // to reproduce a crash:
@@ -720,6 +720,15 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
   // causes a crash for me every time in this method unless we make
   // the following check
   if ( !mIncidence )return;
+
+  QRect visRect = visibleRect();
+  // when scrolling horizontally in the side-by-side view, the repainted area is clipped
+  // to the newly visible area, which is a problem since the content changes when visRect
+  // changes, so repaint the full item in that case
+  if ( ev->rect() != visRect && visRect.isValid() && ev->rect().isValid() ) {
+    repaint( visRect );
+    return;
+  }
 
   QPainter p( this );
   const int ft = 2; // frame thickness for layout, see paintFrame()
@@ -842,9 +851,6 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
     paintTodoIcon( &p, x, ft );
     return;
   }
-
-  // Used for multi-day events to make sure the summary is on screen
-  QRect visRect=visibleRect();
 
   // case 2: draw a single line when no more space
   if ( (2 * singleLineHeight) > (height() - 2 * margin) ) {
