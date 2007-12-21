@@ -86,6 +86,7 @@ target_link_libraries(korganizer_eventviewer ${KDE4_KPARTS_LIBS} ${KDE4_KCAL_LIB
 set_target_properties(korganizer_eventviewer PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
 install(TARGETS korganizer_eventviewer  DESTINATION ${LIB_INSTALL_DIR})
 
+add_dependencies(korganizer_eventviewer kmail)
 
 ########### next target ###############
 
