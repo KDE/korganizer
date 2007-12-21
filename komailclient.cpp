@@ -26,6 +26,7 @@
 #include "komailclient.h"
 #include "koprefs.h"
 #include "version.h"
+#include <kmailinterface.h>
 
 #include <kcal/event.h>
 #include <kcal/todo.h>
@@ -191,9 +192,10 @@ bool KOMailClient::send(const QString &from,const QString &to,
         return false;
       }
     }
-
+    org::kde::kmail::kmail kmail("org.kde.kmail", "/KMail", QDBusConnection::sessionBus());
+    kapp->updateRemoteUserTimestamp("org.kde.kmail");
     if (attachment.isEmpty()) {
-      if (!kMailOpenComposer(to,"",bcc ? from : "",subject,body,0,KUrl())) return false;
+      return kmail.openComposer(to,"",bcc ? from : "",subject,body,false).isValid();
     } else {
       QString meth;
       int idx = attachment.indexOf( "METHOD" );
@@ -205,70 +207,12 @@ bool KOMailClient::send(const QString &from,const QString &to,
       } else {
         meth = "publish";
       }
-      if (!kMailOpenComposer(to,"",bcc ? from : "",subject,body,0,"cal.ics","7bit",
-                             attachment.toUtf8(),"text","calendar","method",meth,
-                             "attachment","utf-8")) return false;
+      return kmail.openComposer
+          (to,"",bcc ? from : "",subject,body,false,"cal.ics","7bit",
+           attachment.toUtf8(),"text","calendar","method",meth,"attachment",
+           "utf-8").isValid();
     }
   }
   return true;
 }
-
-int KOMailClient::kMailOpenComposer(const QString& arg0,const QString& arg1,
-  const QString& arg2,const QString& arg3,const QString& arg4,int arg5,
-  const KUrl& arg6)
-{
-  int result = 0;
-  kapp->updateRemoteUserTimestamp( "org.kde.kmail" );
-#ifdef __GNUC__
-#warning "kde4: verify it when kmail call was ported to dbus";
-#endif
-  QDBusInterface kmail("org.kde.kmail", "/KMail", "org.kde.kmail.KMail");
-  QDBusReply<int> reply = kmail.call("openComposer", arg0, arg1, arg2, arg3, arg4, arg5, arg6.url());
-  if (reply.isValid() ) {
-      result=reply;
-  } else {
-    kDebug(5850) << "kMailOpenComposer() call failed.";
-  }
-  return result;
-}
-
-int KOMailClient::kMailOpenComposer( const QString& arg0, const QString& arg1,
-                                     const QString& arg2, const QString& arg3,
-                                     const QString& arg4, int arg5, const QString& arg6,
-                                     const QByteArray& arg7, const QByteArray& arg8,
-                                     const QByteArray& arg9, const QByteArray& arg10,
-                                     const QByteArray& arg11, const QString& arg12,
-                                     const QByteArray& arg13, const QByteArray& arg14 )
-{
-    int result = 0;
-
-    kapp->updateRemoteUserTimestamp("org.kde.kmail");
-    QDBusInterface kmail("org.kde.kmail", "/KMail", "org.kde.kmail.KMail");
-    QList<QVariant> argList;
-    argList << arg0;
-    argList << arg1;
-    argList << arg2;
-    argList << arg3;
-    argList << arg4;
-    argList << arg5;
-    argList << arg6;
-    argList << arg7;
-    argList << arg8;
-    argList << arg9;
-    argList << arg10;
-    argList << arg11;
-    argList << arg12;
-    argList << arg13;
-    argList << arg14;
-
-    QDBusReply<int> reply = kmail.callWithArgumentList(QDBus::Block,"openComposer",argList);
-
-    if (reply.isValid()) {
-            result=reply;
-    } else {
-      kDebug(5850) << "kMailOpenComposer() call failed.";
-    }
-    return result;
-}
-
 

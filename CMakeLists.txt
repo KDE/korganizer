@@ -192,8 +192,11 @@ qt4_add_resources(korganizer_LIB_SRCS agendaitem_pixmaps/agendaitemtheme.qrc )
 qt4_add_dbus_adaptor(korganizer_LIB_SRCS org.kde.korganizer.Korganizer.xml korganizerifaceimpl.h KOrganizerIfaceImpl )
 qt4_add_dbus_adaptor(korganizer_LIB_SRCS org.kde.Korganizer.Calendar.xml actionmanager.h ActionManager )
 qt4_add_dbus_interfaces(korganizer_LIB_SRCS org.kde.korganizer.Korganizer.xml )
+qt4_add_dbus_interfaces(korganizer_LIB_SRCS ${CMAKE_BINARY_DIR}/kmail/org.kde.kmail.kmail.xml)
 
 kde4_add_library(korganizerprivate SHARED ${korganizer_LIB_SRCS})
+
+add_dependencies(korganizerprivate kmail)
 
 target_link_libraries(korganizerprivate ${KDE4_KNEWSTUFF2_LIBS} ${KDE4_KABC_LIBRARY} ${KDE4_KUTILS_LIBRARY} ${KDE4_KCAL_LIBRARY} ${KDE4_KPIMIDENTITIES_LIBRARY} ${KDE4_KMIME_LIBRARY} kdepim korganizer_eventviewer korganizer_calendar kocorehelper korg_stdprinting kholidays korganizer_interfaces )
 
