@@ -170,6 +170,10 @@ void KOEditorGeneral::initDescription( QWidget *parent, QBoxLayout *topLayout )
 {
   QBoxLayout *htmlLayout = new QHBoxLayout();
   topLayout->addItem( htmlLayout );
+  mRichDescription = new QCheckBox( i18n( "Rich Text" ), parent );
+  mRichDescription->setToolTip( i18n( "Toggle Rich Text" ) );
+  connect( mRichDescription, SIGNAL(toggled(bool)),
+           this, SLOT(setDescriptionRich(bool)) );
   mDescriptionBoldButton = new QPushButton( parent );
   mDescriptionBoldButton->setIcon( KIcon( "format-text-bold" ) );
   mDescriptionBoldButton->setToolTip( i18n( "Bold text" ) );
@@ -213,26 +217,18 @@ void KOEditorGeneral::initDescription( QWidget *parent, QBoxLayout *topLayout )
            this, SLOT(toggleDescriptionRightAlign()) );
 
   mDescriptionUnorderedListButton = new QPushButton( parent );
-  //FIXME: use icon when it's available. remove text.
   mDescriptionUnorderedListButton->setIcon( KIcon( "format-list-unordered" ) );
-  mDescriptionUnorderedListButton->setText(
-    i18nc( "no icon, so use the html tag", "<placeholder>ul</placeholder>" ) );
   mDescriptionUnorderedListButton->setToolTip( i18n( "Unordered-list item" ) );
   connect( mDescriptionUnorderedListButton, SIGNAL(clicked()),
            this, SLOT(toggleDescriptionUnorderedList()) );
 
   mDescriptionOrderedListButton = new QPushButton( parent );
-  //FIXME: use icon when it's available. remove text.
   mDescriptionOrderedListButton->setIcon( KIcon( "format-list-ordered" ) );
-  mDescriptionOrderedListButton->setText(
-    i18nc( "no icon, so use the html tag", "<placeholder>ol</placeholder>" ) );
   mDescriptionOrderedListButton->setToolTip( i18n( "Ordered-list item" ) );
   connect( mDescriptionOrderedListButton, SIGNAL(clicked()),
            this, SLOT(toggleDescriptionOrderedList()) );
 
-  mRichDescription = new QCheckBox( i18n( "Rich Text" ), parent );
-  mRichDescription->setToolTip( i18n( "Toggle Rich Text" ) );
-
+  htmlLayout->addWidget( mRichDescription );
   htmlLayout->addWidget( mDescriptionBoldButton );
   htmlLayout->addWidget( mDescriptionItalicButton );
   htmlLayout->addWidget( mDescriptionUnderlineButton );
@@ -242,7 +238,6 @@ void KOEditorGeneral::initDescription( QWidget *parent, QBoxLayout *topLayout )
   htmlLayout->addWidget( mDescriptionRightAlignButton );
   htmlLayout->addWidget( mDescriptionUnorderedListButton );
   htmlLayout->addWidget( mDescriptionOrderedListButton );
-  htmlLayout->addWidget( mRichDescription );
   htmlLayout->addStretch();
 
   mDescriptionEdit = new KTextEdit( parent );
@@ -256,6 +251,8 @@ void KOEditorGeneral::initDescription( QWidget *parent, QBoxLayout *topLayout )
   mDescriptionEdit->setLineWrapMode( KTextEdit::WidgetWidth );
   mDescriptionEdit->setTabChangesFocus( true );
   topLayout->addWidget( mDescriptionEdit );
+
+  toggleDescriptionRichButtons( mRichDescription->isChecked() );
 }
 
 void KOEditorGeneral::initAlarm( QWidget *parent, QBoxLayout *topLayout )
@@ -522,6 +519,7 @@ void KOEditorGeneral::setDescription( const QString &text, bool isRich )
   mRichDescription->setChecked( isRich );
   if ( isRich ) {
     mDescriptionEdit->setHtml( text );
+
   } else {
     mDescriptionEdit->setPlainText( text );
   }
@@ -619,6 +617,30 @@ void KOEditorGeneral::toggleDescriptionOrderedList()
 void KOEditorGeneral::toggleDescriptionUnorderedList()
 {
   createList( QTextListFormat::ListDisc );
+}
+
+void KOEditorGeneral::toggleDescriptionRichButtons( bool rich )
+{
+  mDescriptionBoldButton->setEnabled( rich );
+  mDescriptionItalicButton->setEnabled( rich );
+  mDescriptionUnderlineButton->setEnabled( rich );
+  mDescriptionStrikethroughButton->setEnabled( rich );
+  mDescriptionLeftAlignButton->setEnabled( rich );
+  mDescriptionCentreAlignButton->setEnabled( rich );
+  mDescriptionRightAlignButton->setEnabled( rich );
+  mDescriptionUnorderedListButton->setEnabled( rich );
+  mDescriptionOrderedListButton->setEnabled( rich );
+}
+
+void KOEditorGeneral::setDescriptionRich( bool rich )
+{
+  toggleDescriptionRichButtons( rich );
+  if ( !rich ) {
+    QTextCursor cursor( mDescriptionEdit->textCursor() );
+    cursor.select( QTextCursor::Document );
+    cursor.setCharFormat( QTextCharFormat() );
+    mDescriptionEdit->setPlainText( mDescriptionEdit->toPlainText() );
+  }
 }
 
 QTextList *KOEditorGeneral::createList( QTextListFormat::Style style )

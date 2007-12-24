@@ -115,6 +115,7 @@ class KOEditorGeneral : public QObject
     void toggleDescriptionRightAlign();
     void toggleDescriptionOrderedList();
     void toggleDescriptionUnorderedList();
+    void setDescriptionRich( bool rich );
 
   signals:
     void openCategoryDialog();
@@ -156,6 +157,7 @@ class KOEditorGeneral : public QObject
     };
 
   private:
+    void toggleDescriptionRichButtons( bool rich );
     QStringList mCategories;
     KCal::Alarm::List mAlarmList;
 };
