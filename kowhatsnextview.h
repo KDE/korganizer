@@ -33,7 +33,7 @@ class WhatsNextTextBrowser : public KTextBrowser
   Q_OBJECT
   public:
     explicit WhatsNextTextBrowser( QWidget *parent ) : KTextBrowser( parent ) {}
-    /** Reimplemented from QTextBrowser to handle links. */
+    /** Reimplemented from KTextBrowser to handle links. */
     void setSource( const QUrl &name );
 
   signals:
