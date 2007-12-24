@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui>
-<kpartgui name="korganizer" version="394">
+<kpartgui name="korganizer" version="395">
 
   <MenuBar>
     <Menu name="file"><text>&amp;File</text>
@@ -58,7 +58,7 @@
         <Action name="zoom_out_vertically"/>
       </Menu>
     </Menu>
-    <Menu name="go_document"><text>&amp;Go</text>
+    <Menu name="go"><text>&amp;Go</text>
       <Action name="go_today"/>
       <Action name="go_select"/>
     </Menu>
