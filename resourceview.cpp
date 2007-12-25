@@ -491,7 +491,13 @@ ResourceItem *ResourceView::findItemByIdentifier( const QString &id )
 void ResourceView::showContextMenu( const QPoint &pos )
 {
   QTreeWidgetItem *i = mListView->itemAt( pos );
-  if ( !i ) {
+
+  if ( !i ) { // No item clicked.
+    // Creation of menu entries not specific to one item
+    QMenu *menu = new QMenu( this );
+    menu->addAction( i18n( "&Add..." ), this, SLOT( addResource() ) );
+    menu->popup( mapToGlobal( pos ) );
+
     return;
   }
 
