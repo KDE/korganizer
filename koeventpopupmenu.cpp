@@ -83,7 +83,7 @@ KOEventPopupMenu::KOEventPopupMenu()
                this, SLOT( dissociateFutureOccurrence() ) ) );
 
   insertSeparator();
-  insertItem( KOGlobals::self()->smallIcon("mail_forward"), i18n( "Send as iCalendar..."),
+  insertItem( KOGlobals::self()->smallIcon("mail-forward"), i18n( "Send as iCalendar..."),
               this, SLOT(forward()) );
 }
 

@@ -588,7 +588,7 @@ void ActionManager::initActions()
   action->setEnabled( true );
 
   mForwardEvent = new KAction( i18n( "&Send as iCalendar..." ), this );
-  mACollection->addAction( "mail_forward", mForwardEvent );
+  mACollection->addAction( "mail-forward", mForwardEvent );
   connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(schedule_forward()) );
   mForwardEvent->setEnabled( false );
 
