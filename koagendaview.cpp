@@ -87,8 +87,11 @@ EventIndicator::EventIndicator( Location loc, QWidget *parent ) : QFrame( parent
   mLocation = loc;
   mTopLayout = 0;
 
-  if (mLocation == Top) mPixmap = KOGlobals::self()->smallIcon("upindicator");
-  else mPixmap = KOGlobals::self()->smallIcon("downindicator");
+  if (mLocation == Top) {
+    mPixmap = KOGlobals::self()->smallIcon( "arrow-up-double" );
+  } else {
+    mPixmap = KOGlobals::self()->smallIcon( "arrow-down-double" );
+  }
 
   setMinimumHeight(mPixmap.height());
 }
