@@ -107,18 +107,6 @@ void KOEventPopupMenu::showIncidencePopup( Incidence *incidence, const QDate &qd
   }
 }
 
-void KOEventPopupMenu::addAdditionalItem(const QIcon &icon,const QString &text,
-                                    const QObject *receiver, const char *member,
-                                    bool editOnly)
-{
-  if (!mHasAdditionalItems) {
-    mHasAdditionalItems = true;
-    addSeparator();
-  }
-  QAction *id = addAction(icon,text,receiver,member);
-  if (editOnly) mEditOnlyItems.append(id);
-}
-
 void KOEventPopupMenu::popupShow()
 {
   if (mCurrentIncidence) emit showIncidenceSignal(mCurrentIncidence);
@@ -181,10 +169,16 @@ void KOEventPopupMenu::dissociateFutureOccurrence()
 void KOEventPopupMenu::forward()
 {
   KOrg::MainWindow *w = ActionManager::findInstance( KUrl() );
-  if ( !w || !mCurrentIncidence )
+  if ( !w || !mCurrentIncidence ) {
     return;
+  }
+
   KActionCollection *ac = w->getActionCollection();
   QAction *action = ac->action( "schedule_forward" );
-  action->trigger();
+  if ( action ) {
+    action->trigger();
+  } else {
+    kError(5850) << "What happened to the schedule_forward action?";
+  }
 }
 

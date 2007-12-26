@@ -41,11 +41,6 @@ class KOEventPopupMenu : public QMenu {
   public:
     KOEventPopupMenu();
 
-    void addAdditionalItem(const QIcon &icon,const QString &text,
-                           const QObject *receiver, const char *member,
-                           bool editOnly=false);
-
-
   public slots:
     void showIncidencePopup( Incidence *, const QDate & );
 
