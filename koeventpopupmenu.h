@@ -32,11 +32,12 @@
 #include <QDateTime>
 
 namespace KCal {
-class Incidence;
+  class Incidence;
 }
 using namespace KCal;
 
-class KOEventPopupMenu : public QMenu {
+class KOEventPopupMenu : public QMenu
+{
   Q_OBJECT
   public:
     KOEventPopupMenu();
