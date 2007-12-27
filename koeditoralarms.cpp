@@ -34,7 +34,6 @@
 
 #include <kurlrequester.h>
 #include <klocale.h>
-#include <kdebug.h>
 
 #include <kcal/alarm.h>
 #include <kcal/incidence.h>
@@ -48,7 +47,10 @@ class AlarmListViewItem : public QTreeWidgetItem
     virtual ~AlarmListViewItem();
     KCal::Alarm *alarm() const { return mAlarm; }
     void construct();
-    enum AlarmViewColumns { ColAlarmType=0, ColAlarmOffset, ColAlarmRepeat };
+    enum AlarmViewColumns {
+      ColAlarmType=0,
+      ColAlarmOffset,
+      ColAlarmRepeat };
   protected:
     KCal::Alarm *mAlarm;
 };
@@ -73,17 +75,21 @@ void AlarmListViewItem::construct()
 {
   if ( mAlarm ) {
     // Alarm type:
-    QString type( i18n("Unknown") );
+    QString type( i18nc( "@option unknown alarm type", "Unknown" ) );
     switch ( mAlarm->type() ) {
-      case KCal::Alarm::Display: type = i18n("Reminder Dialog");
-        break;
-      case KCal::Alarm::Procedure: type = i18n("Application/Script");
-        break;
-      case KCal::Alarm::Email: type = i18n("Email");
-        break;
-      case KCal::Alarm::Audio: type = i18n("Audio");
-        break;
-      default: break;
+    case KCal::Alarm::Display:
+      type = i18nc( "@option popup reminder dialog", "Reminder Dialog" );
+      break;
+    case KCal::Alarm::Procedure:
+      type = i18nc( "@option run application or script", "Application/Script" );
+      break;
+    case KCal::Alarm::Email:
+      type = i18nc( "@option send email reminder", "Email" );
+      break;
+    case KCal::Alarm::Audio:
+      type = i18nc( "@option play a sound", "Audio" );
+      break;
+    default: break;
     }
     setText( ColAlarmType, type );
 
@@ -93,83 +99,102 @@ void AlarmListViewItem::construct()
     if ( mAlarm->hasStartOffset() ) {
       offset = mAlarm->startOffset().asSeconds();
       if ( offset < 0 ) {
-        offsetstr = ki18nc("N days/hours/minutes before/after the start/end", "%1 before the start");
+        offsetstr =
+          ki18nc( "@info N days/hours/minutes before/after the start/end",
+                  "%1 before the start" );
         offset = -offset;
       } else {
-        offsetstr = ki18nc("N days/hours/minutes before/after the start/end", "%1 after the start");
+        offsetstr =
+          ki18nc( "@info N days/hours/minutes before/after the start/end",
+                  "%1 after the start" );
       }
     } else if ( mAlarm->hasEndOffset() ) {
       offset = mAlarm->endOffset().asSeconds();
       if ( offset < 0 ) {
-        offsetstr = ki18nc("N days/hours/minutes before/after the start/end", "%1 before the end");
+        offsetstr =
+          ki18nc( "@info N days/hours/minutes before/after the start/end",
+                  "%1 before the end" );
         offset = -offset;
       } else {
-        offsetstr = ki18nc("N days/hours/minutes before/after the start/end", "%1 after the end");
+        offsetstr =
+          ki18nc( "@info N days/hours/minutes before/after the start/end",
+                  "%1 after the end" );
       }
     }
 
     offset = offset / 60; // make minutes
     int useoffset = offset;
 
-    if ( offset % (24*60) == 0 && offset>0 ) { // divides evenly into days?
-      useoffset = offset / (24*60);
-      offsetstr = offsetstr.subs( i18np("1 day", "%1 days", useoffset ) );
-    } else if (offset % 60 == 0 && offset>0 ) { // divides evenly into hours?
+    if ( offset % ( 24 * 60 ) == 0 && offset > 0 ) { // divides evenly into days?
+      useoffset = offset / ( 24 * 60 );
+      offsetstr =
+        offsetstr.subs( i18ncp( "@info alarm offset specified in days",
+                                "1 day", "%1 days", useoffset ) );
+    } else if ( offset % 60 == 0 && offset > 0 ) { // divides evenly into hours?
       useoffset = offset / 60;
-      offsetstr = offsetstr.subs( i18np("1 hour", "%1 hours", useoffset ) );
+      offsetstr =
+        offsetstr.subs( i18ncp( "@info alarm offset specified in hours",
+                                "1 hour", "%1 hours", useoffset ) );
     } else {
       useoffset = offset;
-      offsetstr = offsetstr.subs( i18np("1 minute", "%1 minutes", useoffset ) );
+      offsetstr =
+        offsetstr.subs( i18ncp( "@info alarm offset specified in minutes",
+                                "1 minute", "%1 minutes", useoffset ) );
     }
     setText( ColAlarmOffset, offsetstr.toString() );
 
     // Alarm repeat
-    if ( mAlarm->repeatCount()>0 ) {
-      setText( ColAlarmRepeat, i18n("Yes") );
+    if ( mAlarm->repeatCount() > 0 ) {
+      setText( ColAlarmRepeat, i18nc( "@info yes, the alarm repeats", "Yes" ) );
     }
   }
 }
 
-
 KOEditorAlarms::KOEditorAlarms( KCal::Alarm::List *alarms, QWidget *parent )
-  : KDialog( parent), mAlarms( alarms ),mCurrentItem(0)
+  : KDialog( parent ), mAlarms( alarms ), mCurrentItem( 0 )
 {
-  setCaption( i18n("Edit Reminders") );
+  setCaption( i18nc( "@title", "Edit Reminders" ) );
   setButtons( Ok | Apply | Cancel );
   setDefaultButton( Ok );
-  QWidget *widget = new QWidget(this);
+  QWidget *widget = new QWidget( this );
   mWidget.setupUi( widget );
   setMainWidget( widget );
-  connect( mWidget.mAlarmList, SIGNAL( itemSelectionChanged() ),
-           SLOT( itemSelectionChanged() ) );
-  connect( mWidget.mAddButton, SIGNAL( clicked() ), SLOT( slotAdd() ) );
-  connect( mWidget.mRemoveButton, SIGNAL( clicked() ), SLOT( slotRemove() ) );
-  connect( mWidget.mDuplicateButton, SIGNAL( clicked() ), SLOT( slotDuplicate() ) );
+  connect( mWidget.mAlarmList, SIGNAL(itemSelectionChanged()),
+           SLOT(itemSelectionChanged()) );
+  connect( mWidget.mAddButton, SIGNAL(clicked()), SLOT(slotAdd()) );
+  connect( mWidget.mRemoveButton, SIGNAL(clicked()), SLOT(slotRemove()) );
+  connect( mWidget.mDuplicateButton, SIGNAL(clicked()), SLOT(slotDuplicate()) );
 
-  connect( mWidget.mAlarmOffset, SIGNAL( valueChanged( int ) ), SLOT( changed() ) );
-  connect( mWidget.mOffsetUnit, SIGNAL( activated( int ) ), SLOT( changed() ) );
-  connect( mWidget.mBeforeAfter, SIGNAL( activated( int ) ), SLOT( changed() ) );
-  connect( mWidget.mRepeats, SIGNAL( toggled( bool ) ), SLOT( changed() ) );
-  connect( mWidget.mRepeatCount, SIGNAL( valueChanged( int ) ), SLOT( changed() ) );
-  connect( mWidget.mRepeatInterval, SIGNAL( valueChanged( int ) ), SLOT( changed() ) );
+  connect( mWidget.mAlarmOffset, SIGNAL(valueChanged(int)), SLOT(changed()) );
+  connect( mWidget.mOffsetUnit, SIGNAL(activated(int)), SLOT(changed()) );
+  connect( mWidget.mBeforeAfter, SIGNAL(activated(int)), SLOT(changed()) );
+  connect( mWidget.mRepeats, SIGNAL(toggled(bool)), SLOT(changed()) );
+  connect( mWidget.mRepeatCount, SIGNAL(valueChanged(int)), SLOT(changed()) );
+  connect( mWidget.mRepeatInterval, SIGNAL(valueChanged(int)), SLOT(changed()) );
 
-  connect( mWidget.mTypeDisplayRadio, SIGNAL(clicked()), SLOT( slotDisplayRadioClicked() ) );
-  connect( mWidget.mTypeSoundRadio, SIGNAL(clicked()), SLOT( slotSoundRadioClicked() ) );
-  connect( mWidget.mTypeAppRadio, SIGNAL(clicked()), SLOT( slotAppRadioClicked() ) );
-  connect( mWidget.mTypeEmailRadio, SIGNAL(clicked()), SLOT( slotEmailRadioClicked() ) );
+  connect( mWidget.mTypeDisplayRadio, SIGNAL(clicked()), SLOT(slotDisplayRadioClicked()) );
+  connect( mWidget.mTypeSoundRadio, SIGNAL(clicked()), SLOT(slotSoundRadioClicked()) );
+  connect( mWidget.mTypeAppRadio, SIGNAL(clicked()), SLOT(slotAppRadioClicked() ));
+  connect( mWidget.mTypeEmailRadio, SIGNAL(clicked()), SLOT(slotEmailRadioClicked()) );
 
-  connect( mWidget.mDisplayText, SIGNAL( textChanged() ), SLOT( changed() ) );
-  connect( mWidget.mSoundFile, SIGNAL( textChanged( const QString & ) ), SLOT( changed() ) );
-  connect( mWidget.mApplication, SIGNAL( textChanged( const QString & ) ), SLOT( changed() ) );
-  connect( mWidget.mAppArguments, SIGNAL( textChanged( const QString & ) ), SLOT( changed() ) );
-  connect( mWidget.mEmailAddress, SIGNAL( textChanged( const QString & ) ), SLOT( changed() ) );
-  connect( mWidget.mRepeats, SIGNAL( toggled( bool ) ), mWidget.mIntervalLabel,SLOT(setEnabled(bool)));
-  connect( mWidget.mRepeats, SIGNAL( toggled( bool ) ), mWidget.mRepeatInterval,SLOT(setEnabled(bool)));
-  connect( mWidget.mRepeats, SIGNAL( toggled( bool ) ), mWidget.mHowOftenLabel,SLOT(setEnabled(bool)));
-  connect( mWidget.mRepeats, SIGNAL( toggled( bool ) ), mWidget.mRepeatCount,SLOT(setEnabled(bool)));
-  connect( mWidget.mEmailText, SIGNAL( textChanged() ), SLOT( changed() ) );
-  connect( this,SIGNAL(okClicked()),SLOT(slotOk()));
-  connect( this,SIGNAL(applyClicked()),SLOT(slotApply()));
+  connect( mWidget.mDisplayText, SIGNAL(textChanged()), SLOT(changed()) );
+  connect( mWidget.mSoundFile, SIGNAL(textChanged(const QString&)), SLOT(changed()) );
+  connect( mWidget.mApplication, SIGNAL(textChanged(const QString&)), SLOT(changed()) );
+  connect( mWidget.mAppArguments, SIGNAL(textChanged(const QString&)), SLOT(changed()) );
+  connect( mWidget.mEmailAddress, SIGNAL(textChanged(const QString&)), SLOT(changed()) );
+
+  connect( mWidget.mRepeats, SIGNAL(toggled(bool)),
+           mWidget.mIntervalLabel, SLOT(setEnabled(bool)) );
+  connect( mWidget.mRepeats, SIGNAL(toggled(bool)),
+           mWidget.mRepeatInterval, SLOT(setEnabled(bool)) );
+  connect( mWidget.mRepeats, SIGNAL(toggled(bool)),
+           mWidget.mHowOftenLabel, SLOT(setEnabled(bool)) );
+  connect( mWidget.mRepeats, SIGNAL(toggled(bool)),
+           mWidget.mRepeatCount, SLOT(setEnabled(bool)) );
+
+  connect( mWidget.mEmailText, SIGNAL(textChanged()), SLOT(changed()) );
+  connect( this, SIGNAL(okClicked()), SLOT(slotOk()) );
+  connect( this, SIGNAL(applyClicked()), SLOT(slotApply()) );
   init();
 }
 
@@ -211,7 +236,9 @@ void KOEditorAlarms::changed()
 
 void KOEditorAlarms::readAlarm( KCal::Alarm *alarm )
 {
-  if ( !alarm ) return;
+  if ( !alarm ) {
+    return;
+  }
 
   mInitializing = true;
 
@@ -236,10 +263,10 @@ void KOEditorAlarms::readAlarm( KCal::Alarm *alarm )
   offset = offset / 60; // make minutes
   int useoffset = offset;
 
-  if ( offset % (24*60) == 0 && offset>0 ) { // divides evenly into days?
-    useoffset = offset / (24*60);
+  if ( offset % ( 24 * 60 ) == 0 && offset > 0 ) { // divides evenly into days?
+    useoffset = offset / ( 24 * 60 );
     mWidget.mOffsetUnit->setCurrentIndex( 2 );
-  } else if (offset % 60 == 0 && offset>0 ) { // divides evenly into hours?
+  } else if ( offset % 60 == 0 && offset > 0 ) { // divides evenly into hours?
     useoffset = offset / 60;
     mWidget.mOffsetUnit->setCurrentIndex( 1 );
   } else {
@@ -248,45 +275,46 @@ void KOEditorAlarms::readAlarm( KCal::Alarm *alarm )
   }
   mWidget.mAlarmOffset->setValue( useoffset );
 
-
   // Repeating
-  mWidget.mRepeats->setChecked( alarm->repeatCount()>0 );
-  if ( alarm->repeatCount()>0 ) {
+  mWidget.mRepeats->setChecked( alarm->repeatCount() > 0 );
+  if ( alarm->repeatCount() > 0 ) {
     mWidget.mRepeatCount->setValue( alarm->repeatCount() );
     mWidget.mRepeatInterval->setValue( alarm->snoozeTime().asSeconds() / 60 );
   }
   int id = 0;
 
   switch ( alarm->type() ) {
-    case KCal::Alarm::Audio:
-        mWidget.mTypeSoundRadio->setChecked( true );
-        mWidget.mSoundFile->setUrl( alarm->audioFile() );
-        id = 1;
-        break;
-    case KCal::Alarm::Procedure:
-        mWidget.mTypeAppRadio->setChecked( true );
-        mWidget.mApplication->setUrl( alarm->programFile() );
-        mWidget.mAppArguments->setText( alarm->programArguments() );
-        id = 2;
-        break;
-    case KCal::Alarm::Email: {
-        mWidget.mTypeEmailRadio->setChecked( true );
-        QList<KCal::Person> addresses = alarm->mailAddresses();
-        QStringList add;
-        for ( QList<KCal::Person>::ConstIterator it = addresses.begin();
-              it != addresses.end(); ++it ) {
-          add << (*it).fullName();
-        }
-        mWidget.mEmailAddress->setText( add.join(", ") );
-        mWidget.mEmailText->setPlainText( alarm->mailText() );
-        id = 3;
-        break;}
-    case KCal::Alarm::Display:
-    case KCal::Alarm::Invalid:
-    default:
-        mWidget.mTypeDisplayRadio->setChecked( true );
-        mWidget.mDisplayText->setPlainText( alarm->text() );
-        break;
+  case KCal::Alarm::Audio:
+    mWidget.mTypeSoundRadio->setChecked( true );
+    mWidget.mSoundFile->setUrl( alarm->audioFile() );
+    id = 1;
+    break;
+  case KCal::Alarm::Procedure:
+    mWidget.mTypeAppRadio->setChecked( true );
+    mWidget.mApplication->setUrl( alarm->programFile() );
+    mWidget.mAppArguments->setText( alarm->programArguments() );
+    id = 2;
+    break;
+  case KCal::Alarm::Email:
+  {
+    mWidget.mTypeEmailRadio->setChecked( true );
+    QList<KCal::Person> addresses = alarm->mailAddresses();
+    QStringList add;
+    for ( QList<KCal::Person>::ConstIterator it = addresses.begin();
+          it != addresses.end(); ++it ) {
+      add << (*it).fullName();
+    }
+    mWidget.mEmailAddress->setText( add.join( ", " ) );
+    mWidget.mEmailText->setPlainText( alarm->mailText() );
+    id = 3;
+    break;
+  }
+  case KCal::Alarm::Display:
+  case KCal::Alarm::Invalid:
+  default:
+    mWidget.mTypeDisplayRadio->setChecked( true );
+    mWidget.mDisplayText->setPlainText( alarm->text() );
+    break;
   }
 
   mWidget.mTypeStack->setCurrentIndex( id );
@@ -297,11 +325,17 @@ void KOEditorAlarms::readAlarm( KCal::Alarm *alarm )
 void KOEditorAlarms::writeAlarm( KCal::Alarm *alarm )
 {
   // Offsets
-  int offset = mWidget.mAlarmOffset->value()*60; // minutes
+  int offset = mWidget.mAlarmOffset->value() * 60; // minutes
   int offsetunit = mWidget.mOffsetUnit->currentIndex();
-  if ( offsetunit >= 1 ) offset *= 60; // hours
-  if ( offsetunit >= 2 ) offset *= 24; // days
-  if ( offsetunit >= 3 ) offset *= 7; // weeks
+  if ( offsetunit >= 1 ) {
+    offset *= 60; // hours
+  }
+  if ( offsetunit >= 2 ) {
+    offset *= 24; // days
+  }
+  if ( offsetunit >= 3 ) {
+    offset *= 7; // weeks
+  }
 
   int beforeafterpos = mWidget.mBeforeAfter->currentIndex();
   if ( beforeafterpos % 2 == 0 ) { // before -> negative
@@ -344,7 +378,7 @@ void KOEditorAlarms::writeAlarm( KCal::Alarm *alarm )
 void KOEditorAlarms::itemSelectionChanged()
 {
   if ( mWidget.mAlarmList->currentItem() ) {
-    AlarmListViewItem *item = 
+    AlarmListViewItem *item =
       dynamic_cast<AlarmListViewItem*>( mWidget.mAlarmList->currentItem() );
     mCurrentItem = item;
     mWidget.mTimeGroup->setEnabled( item );
@@ -361,11 +395,10 @@ void KOEditorAlarms::slotApply()
   if ( mAlarms ) {
     mAlarms->clear();
     for ( int i = 0; i < mWidget.mAlarmList->topLevelItemCount(); ++i ) {
-      AlarmListViewItem *item = 
-        dynamic_cast< AlarmListViewItem* >( 
-          mWidget.mAlarmList->topLevelItem( i ) );
+      AlarmListViewItem *item =
+        dynamic_cast< AlarmListViewItem *>( mWidget.mAlarmList->topLevelItem( i ) );
       if ( item ) {
-        mAlarms->append( new KCal::Alarm( *(item->alarm()) ) );
+        mAlarms->append( new KCal::Alarm( *( item->alarm() ) ) );
       }
     }
   }
