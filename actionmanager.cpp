@@ -587,9 +587,9 @@ void ActionManager::initActions()
   connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(mailFreeBusy()) );
   action->setEnabled( true );
 
-  mForwardEvent = new KAction( i18n( "&Send as iCalendar..." ), this );
-  mACollection->addAction( "mail-forward", mForwardEvent );
-  connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(schedule_forward()) );
+  mForwardEvent = new KAction( KIcon( "mail-forward" ), i18n( "&Send as iCalendar..." ), this );
+  mACollection->addAction( "schedule_forward", mForwardEvent );
+  connect( mForwardEvent, SIGNAL(triggered(bool)), mCalendarView, SLOT(schedule_forward()) );
   mForwardEvent->setEnabled( false );
 
   action = new KAction( i18n( "&Upload Free Busy Information" ), this );
