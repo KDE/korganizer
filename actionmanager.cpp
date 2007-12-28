@@ -1709,8 +1709,8 @@ void ActionManager::openEventEditor( const QString &summary,
     menu->insertItem( i18n( "Attach as &link" ), KOPrefs::Link );
     menu->insertItem( i18n( "Attach &inline" ), KOPrefs::InlineFull );
     menu->insertItem( i18n( "Attach inline &without attachments" ), KOPrefs::InlineBody );
-    menu->insertSeparator();
-    menu->insertItem( SmallIcon( "dialog-cancel" ), i18n( "C&ancel" ), KOPrefs::Ask );
+    menu->addSeparator();
+    menu->insertItem( KIcon( "dialog-cancel" ), i18n( "C&ancel" ), KOPrefs::Ask );
     action = menu->exec( QCursor::pos(), 0 );
     delete menu;
   }
@@ -1805,8 +1805,8 @@ void ActionManager::openTodoEditor( const QString &summary,
     K3PopupMenu *menu = new K3PopupMenu( 0 );
     menu->insertItem( i18n( "Attach as &link" ), KOPrefs::TodoAttachLink );
     menu->insertItem( i18n( "Attach &inline" ), KOPrefs::TodoAttachInlineFull );
-    menu->insertSeparator();
-    menu->insertItem( SmallIcon( "dialog-cancel" ), i18n( "C&ancel" ), KOPrefs::TodoAttachAsk );
+    menu->addSeparator();
+    menu->insertItem( KIcon( "dialog-cancel" ), i18n( "C&ancel" ), KOPrefs::TodoAttachAsk );
     action = menu->exec( QCursor::pos(), 0 );
     delete menu;
   }

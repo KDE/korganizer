@@ -78,7 +78,7 @@ KOEventPopupMenu::KOEventPopupMenu()
   mRecurrenceItems.append( addAction( i18n( "Dissociate &Future Occurrences" ),
                                       this, SLOT(dissociateFutureOccurrence()) ) );
 
-  insertSeparator();
+  addSeparator();
   insertItem( KOGlobals::self()->smallIcon( "mail-forward" ), i18n( "Send as iCalendar..." ),
               this, SLOT(forward()) );
 }

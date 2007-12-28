@@ -201,7 +201,7 @@ bool KOMailClient::send(const QString &from,const QString &to,
       int idx = attachment.indexOf( "METHOD" );
       if (idx>=0) {
         idx = attachment.indexOf( ':', idx )+1;
-        const int newline = attachment.find('\n',idx);
+        const int newline = attachment.indexOf('\n',idx);
         meth = attachment.mid(idx, newline - idx - 1);
         meth = meth.toLower().trimmed();
       } else {
