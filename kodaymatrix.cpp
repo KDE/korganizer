@@ -485,7 +485,7 @@ void KODayMatrix::dropEvent( QDropEvent *e )
         copy = menu->addAction( KOGlobals::self()->smallIcon( "edit-copy" ), i18n( "&Copy" ) );
       }
     } else {
-      move = menu->addAction( KOGlobals::self()->smallIcon( "edit-add" ), i18n( "&Add" ) );
+      move = menu->addAction( KOGlobals::self()->smallIcon( "list-add" ), i18n( "&Add" ) );
     }
     menu->addSeparator();
     cancel = menu->addAction( KOGlobals::self()->smallIcon( "process-stop" ), i18n( "&Cancel" ) );
