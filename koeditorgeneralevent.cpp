@@ -221,6 +221,12 @@ void KOEditorGeneralEvent::slotHasTimeCheckboxToggled( bool checked )
   emit allDayChanged( !checked );
 }
 
+void KOEditorGeneralEvent::setDateTimes( const QDateTime &start, const QDateTime &end )
+{
+  setDateTimes( KDateTime( start, KOPrefs::instance()->timeSpec() ),
+                KDateTime( end, KOPrefs::instance()->timeSpec() ) );
+}
+
 void KOEditorGeneralEvent::setDateTimes( const KDateTime &start, const KDateTime &end )
 {
 //  kDebug(5850) <<"KOEditorGeneralEvent::setDateTimes(): Start DateTime:" << start.toString();
@@ -322,8 +328,7 @@ void KOEditorGeneralEvent::setDefaults( const QDateTime &from,
   mStartSpec = mTimeZoneComboStart->selectedTimeSpec();
   mEndSpec = mTimeZoneComboEnd->selectedTimeSpec();
 
-  setDateTimes( KDateTime( from, KDateTime::Spec( KDateTime::LocalZone ) ),
-                KDateTime( to, KDateTime::Spec( KDateTime::LocalZone ) ) );
+  setDateTimes( from, to );
 }
 
 void KOEditorGeneralEvent::readEvent( Event *event, bool isTemplate )

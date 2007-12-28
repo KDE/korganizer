@@ -87,8 +87,11 @@ EventIndicator::EventIndicator( Location loc, QWidget *parent ) : QFrame( parent
   mLocation = loc;
   mTopLayout = 0;
 
-  if (mLocation == Top) mPixmap = KOGlobals::self()->smallIcon("upindicator");
-  else mPixmap = KOGlobals::self()->smallIcon("downindicator");
+  if (mLocation == Top) {
+    mPixmap = KOGlobals::self()->smallIcon( "arrow-up-double" );
+  } else {
+    mPixmap = KOGlobals::self()->smallIcon( "arrow-down-double" );
+  }
 
   setMinimumHeight(mPixmap.height());
 }
@@ -1417,24 +1420,24 @@ void KOAgendaView::readSettings()
   readSettings(KOGlobals::self()->config());
 }
 
-void KOAgendaView::readSettings(KConfig *config)
+void KOAgendaView::readSettings( KConfig *config )
 {
-  KConfigGroup group = config->group("Views");
+  KConfigGroup group = config->group( "Views" );
 
-  QList<int> sizes = group.readEntry("Separator AgendaView",QList<int>());
-  if (sizes.count() == 2) {
-    mSplitterAgenda->setSizes(sizes);
+  QList<int> sizes = group.readEntry( "Separator AgendaView", QList<int>() );
+  if ( sizes.count() == 4 ) { // Number of sections divided by separators in the view
+    mSplitterAgenda->setSizes( sizes );
   }
 
   updateConfig();
 }
 
-void KOAgendaView::writeSettings(KConfig *config)
+void KOAgendaView::writeSettings( KConfig *config )
 {
-  KConfigGroup group = config->group("Views");
+  KConfigGroup group = config->group( "Views" );
 
   QList<int> list = mSplitterAgenda->sizes();
-  group.writeEntry("Separator AgendaView",list);
+  group.writeEntry( "Separator AgendaView", list );
 }
 
 void KOAgendaView::setHolidayMasks()

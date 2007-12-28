@@ -57,11 +57,11 @@ class Part : public KParts::Part
 class PartFactory : public KPluginFactory
 {
   public:
-    virtual Part *create( MainWindow *parent ) = 0;
+    virtual Part *createPluginFactory( MainWindow *parent ) = 0;
 
   protected:
-    virtual QObject *createObject( QObject *, const char *,const char *,
-                                   const QStringList & )
+    virtual QObject *createObject( QObject *, const char *, const QStringList &
+)
     {
       return 0;
     }

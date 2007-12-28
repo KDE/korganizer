@@ -278,7 +278,7 @@ void ActionManager::initActions()
   mACollection->addAction( "downloadnewstuff", action );
   connect( action, SIGNAL(triggered(bool)), SLOT(downloadNewStuff()) );
 
-  action = new KAction( KIcon( "webexport" ), i18n( "Export &Web Page..." ), this );
+  action = new KAction( KIcon( "document-export-html" ), i18n( "Export &Web Page..." ), this );
   mACollection->addAction( "export_web", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(exportWeb()) );
 
@@ -388,7 +388,7 @@ void ActionManager::initActions()
   connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
            SLOT(showTodoView()) );
 
-  action = new KAction( KIcon( "journal" ), i18n( "&Journal" ), this );
+  action = new KAction( KIcon( "view-pim-journal" ), i18n( "&Journal" ), this );
   mACollection->addAction( "view_journal", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
            SLOT(showJournalView()) );
@@ -398,7 +398,7 @@ void ActionManager::initActions()
   connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
            SLOT(showTimeLineView()) );
 
-  action = new KAction( KIcon( "timespent" ), i18n( "Time&spent" ), this );
+  action = new KAction( KIcon( "view-calendar-time-spent" ), i18n( "Time&spent" ), this );
   mACollection->addAction( "view_timespent", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
            SLOT(showTimeSpentView()) );
@@ -455,8 +455,8 @@ void ActionManager::initActions()
   mACollection->addAction( "go_today", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(goToday()) );
 
-  action = new KAction( KIcon( isRTL ? "go-next" : "go-previous" ), i18n( "&Backward" ), this );
-  action->setIconText( i18n( "Back" ) );
+  action = new KAction( KIcon( isRTL ? "go-next" : "go-previous" ), i18nc( "scroll backward", "&Backward" ), this );
+  action->setIconText( i18nc( "scroll backward", "Back" ) );
   action->setToolTip( i18n( "Scroll Backward" ) );
   mACollection->addAction( "go_previous", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(goPrevious()) );
@@ -469,8 +469,8 @@ void ActionManager::initActions()
   connect( mCalendarView, SIGNAL(changeNavStringPrev(const QString &)),
            this, SLOT(dumpText(const QString &)) );*/
 
-  action = new KAction( KIcon( isRTL ? "go-previous" : "go-next" ), i18n( "&Forward" ), this );
-  action->setIconText( i18n( "Forward" ) );
+  action = new KAction( KIcon( isRTL ? "go-previous" : "go-next" ), i18nc( "scroll forward", "&Forward" ), this );
+  action->setIconText( i18nc( "scoll forward", "Forward" ) );
   action->setToolTip( i18n( "Scroll Forward" ) );
   mACollection->addAction( "go_next", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(goNext()) );
@@ -480,14 +480,14 @@ void ActionManager::initActions()
   */
 
   /************************** Actions MENU *********************************/
-  action = new KAction( KIcon( "appointment" ), i18n( "New E&vent..." ), this );
+  action = new KAction( KIcon( "appointment-new" ), i18n( "New E&vent..." ), this );
   action->setIconText( i18n( "Event" ) );
   action->setToolTip( i18n( "Create a new Event" ) );
   mACollection->addAction( "new_event", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView,
            SLOT(newEvent()) );
 
-  action = new KAction( KIcon( "newtodo" ), i18n( "New &To-do..." ), this );
+  action = new KAction( KIcon( "task-new" ), i18n( "New &To-do..." ), this );
   action->setIconText( i18n( "To-do" ) );
   action->setToolTip( i18n( "Create a new To-do" ) );
   mACollection->addAction( "new_todo", action );
@@ -502,7 +502,7 @@ void ActionManager::initActions()
   connect( mCalendarView,SIGNAL(todoSelected(bool)), action,
            SLOT(setEnabled(bool)) );
 
-  action = new KAction( KIcon( "newjournal" ), i18n( "New &Journal..." ), this );
+  action = new KAction( KIcon( "journal-new" ), i18n( "New &Journal..." ), this );
   action->setIconText( i18n( "Journal" ) );
   action->setToolTip( i18n( "Create a new Journal" ) );
   mACollection->addAction( "new_journal", action );
@@ -547,7 +547,7 @@ void ActionManager::initActions()
   connect( mPublishEvent, SIGNAL(triggered(bool)), mCalendarView, SLOT(schedule_publish()) );
   mPublishEvent->setEnabled( false );
 
-  action = new KAction( KIcon( "mail" ), i18n( "Send &Invitation to Attendees" ), this );
+  action = new KAction( KIcon( "mail-send" ), i18n( "Send &Invitation to Attendees" ), this );
   mACollection->addAction( "schedule_request", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(schedule_request()) );
   action->setEnabled( false );
@@ -587,9 +587,9 @@ void ActionManager::initActions()
   connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(mailFreeBusy()) );
   action->setEnabled( true );
 
-  mForwardEvent = new KAction( i18n( "&Send as iCalendar..." ), this );
-  mACollection->addAction( "mail_forward", mForwardEvent );
-  connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(schedule_forward()) );
+  mForwardEvent = new KAction( KIcon( "mail-forward" ), i18n( "&Send as iCalendar..." ), this );
+  mACollection->addAction( "schedule_forward", mForwardEvent );
+  connect( mForwardEvent, SIGNAL(triggered(bool)), mCalendarView, SLOT(schedule_forward()) );
   mForwardEvent->setEnabled( false );
 
   action = new KAction( i18n( "&Upload Free Busy Information" ), this );
@@ -648,7 +648,7 @@ void ActionManager::initActions()
 //                     this, SLOT(manageResources()),
 //                     mACollection, "conf_resources" );
 
-  action = new KAction( KIcon( "configure" ), i18n( "Manage View &Filters..." ), this );
+  action = new KAction( KIcon( "view-filter" ), i18n( "Manage View &Filters..." ), this );
   mACollection->addAction( "edit_filters", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView,
            SLOT(editFilters()) );
@@ -1709,8 +1709,8 @@ void ActionManager::openEventEditor( const QString &summary,
     menu->insertItem( i18n( "Attach as &link" ), KOPrefs::Link );
     menu->insertItem( i18n( "Attach &inline" ), KOPrefs::InlineFull );
     menu->insertItem( i18n( "Attach inline &without attachments" ), KOPrefs::InlineBody );
-    menu->insertSeparator();
-    menu->insertItem( SmallIcon( "cancel" ), i18n( "C&ancel" ), KOPrefs::Ask );
+    menu->addSeparator();
+    menu->insertItem( KIcon( "dialog-cancel" ), i18n( "C&ancel" ), KOPrefs::Ask );
     action = menu->exec( QCursor::pos(), 0 );
     delete menu;
   }
@@ -1805,8 +1805,8 @@ void ActionManager::openTodoEditor( const QString &summary,
     K3PopupMenu *menu = new K3PopupMenu( 0 );
     menu->insertItem( i18n( "Attach as &link" ), KOPrefs::TodoAttachLink );
     menu->insertItem( i18n( "Attach &inline" ), KOPrefs::TodoAttachInlineFull );
-    menu->insertSeparator();
-    menu->insertItem( SmallIcon( "cancel" ), i18n( "C&ancel" ), KOPrefs::TodoAttachAsk );
+    menu->addSeparator();
+    menu->insertItem( KIcon( "dialog-cancel" ), i18n( "C&ancel" ), KOPrefs::TodoAttachAsk );
     action = menu->exec( QCursor::pos(), 0 );
     delete menu;
   }

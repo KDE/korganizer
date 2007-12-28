@@ -192,6 +192,10 @@ class TimePrintStringsVisitor : public IncidenceBase::Visitor
       mEndString.clear();
       return true;
     }
+    bool visit( FreeBusy *fb ) {
+      Q_UNUSED( fb );
+      return true;
+    }
 };
 
 int CalPrintIncidence::printCaptionAndText( QPainter &p, const QRect &box,
@@ -219,8 +223,6 @@ int CalPrintIncidence::printCaptionAndText( QPainter &p, const QRect &box,
 #include <qfontdatabase.h>
 void CalPrintIncidence::print( QPainter &p, int width, int height )
 {
-  KLocale *local = KGlobal::locale();
-
   QFont oldFont( p.font() );
   QFont textFont( "sans-serif", 11, QFont::Normal );
   QFont captionFont( "sans-serif", 11, QFont::Bold );
@@ -430,6 +432,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
                             (*it)->description(), /*sameLine=*/false,
                             /*expand=*/false, captionFont, textFont );
         // TODO: Draw subitems
+        Q_UNUSED( subitemsStart );  // until printing subitems is implemented
       }
     }
 
@@ -438,6 +441,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
                         i18n( "Attachments:" ), QString(), /*sameLine=*/false,
                         /*expand=*/false, captionFont, textFont );
       // TODO: Print out the attachments somehow
+      Q_UNUSED( attachStart ); // until printing attachments is implemented
     }
     if ( mShowAttendees ) {
       Attendee::List attendees = (*it)->attendees();
@@ -864,8 +868,8 @@ void CalPrintMonth::readSettingsWidget()
   CalPrintMonthConfig *cfg = dynamic_cast<CalPrintMonthConfig *>( ( QWidget* )mConfigWidget );
 
   if ( cfg ) {
-    mFromDate = QDate( cfg->mFromYear->value(), cfg->mFromMonth->currentItem()+1, 1 );
-    mToDate = QDate( cfg->mToYear->value(), cfg->mToMonth->currentItem()+1, 1 );
+    mFromDate = QDate( cfg->mFromYear->value(), cfg->mFromMonth->currentIndex()+1, 1 );
+    mToDate = QDate( cfg->mToYear->value(), cfg->mToMonth->currentIndex()+1, 1 );
 
     mWeekNumbers =  cfg->mWeekNumbers->isChecked();
     mRecurDaily = cfg->mRecurDaily->isChecked();
@@ -923,17 +927,17 @@ void CalPrintMonth::setDateRange( const QDate &from, const QDate &to )
   if ( cfg && calSys ) {
     cfg->mFromMonth->clear();
     for ( int i=0; i<calSys->monthsInYear( mFromDate ); ++i ) {
-      cfg->mFromMonth->insertItem( calSys->monthName( i+1, mFromDate.year() ) );
+      cfg->mFromMonth->addItem( calSys->monthName( i+1, mFromDate.year() ) );
     }
     cfg->mToMonth->clear();
     for ( int i=0; i<calSys->monthsInYear( mToDate ); ++i ) {
-      cfg->mToMonth->insertItem( calSys->monthName( i+1, mToDate.year() ) );
+      cfg->mToMonth->addItem( calSys->monthName( i+1, mToDate.year() ) );
     }
   }
   if ( cfg ) {
-    cfg->mFromMonth->setCurrentItem( from.month()-1 );
+    cfg->mFromMonth->setCurrentIndex( from.month()-1 );
     cfg->mFromYear->setValue( to.year() );
-    cfg->mToMonth->setCurrentItem( mToDate.month()-1 );
+    cfg->mToMonth->setCurrentIndex( mToDate.month()-1 );
     cfg->mToYear->setValue( mToDate.year() );
   }
 }
@@ -1058,8 +1062,8 @@ void CalPrintTodos::setSettingsWidget()
 
     if ( mTodoSortDirection != TodoDirectionUnset ) {
       // do not insert if already done so.
-      cfg->mSortDirection->addItem( i18n( "Ascending" ) );
-      cfg->mSortDirection->addItem( i18n( "Descending" ) );
+      cfg->mSortDirection->addItem( i18nc( "@option sort in increasing order", "Ascending" ) );
+      cfg->mSortDirection->addItem( i18nc( "@option sort in descreasing order", "Descending" ) );
       cfg->mSortDirection->setCurrentIndex( mTodoSortDirection );
     }
   }
@@ -1142,7 +1146,7 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
       poscomplete = posdue; //if not print the Due Date column
     }
     outStr.truncate( 0 );
-    outStr += i18n( "Complete" );
+    outStr += i18nc( "@label to-do percentage complete", "Complete" );
     p.drawText( poscomplete, mCurrentLinePos - 2, outStr );
   } else {
     poscomplete = -1;
@@ -1150,7 +1154,7 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
 
   if ( mIncludeDueDate ) {
     outStr.truncate( 0 );
-    outStr += i18n( "Due" );
+    outStr += i18nc( "@label to-do due date", "Due" );
     p.drawText( posdue, mCurrentLinePos - 2, outStr );
   } else {
     posdue = -1;

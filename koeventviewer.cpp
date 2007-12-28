@@ -25,18 +25,16 @@
 
 #include "koeventviewer.h"
 #include "urihandler.h"
+#include "korganizerinterface.h"
+#include "koglobals.h"
 
 #include <libkdepim/kdepimprotocols.h>
 
 #include <kcal/incidence.h>
 #include <kcal/incidenceformatter.h>
 
-#ifndef KORG_NODBUS
 #include <kapplication.h>
-#include "korganizerinterface.h"
-#endif
 #include <kdebug.h>
-#include <koglobals.h>
 #include <ktoolinvocation.h>
 #include <kconfiggroup.h>
 
@@ -77,9 +75,9 @@ void KOEventViewer::writeSettings( KConfig *config )
   }
 }
 
-void KOEventViewer::setSource( const QString &n )
+void KOEventViewer::setSource( const QUrl &name )
 {
-  QString uri = n;
+  QString uri = name.toString();
   // QTextBrowser for some reason insists on putting // in links,
   // this is a crude workaround
   if ( uri.startsWith( KDEPIMPROTOCOL_CONTACT ) ||
@@ -151,29 +149,25 @@ void KOEventViewer::changeIncidenceDisplay( Incidence *incidence, int action )
 void KOEventViewer::editIncidence()
 {
   if ( mIncidence ) {
-#ifndef KORG_NODBUS
     // make sure korganizer is running or the part is shown
     KToolInvocation::startServiceByDesktopPath( "korganizer" );
 
     OrgKdeKorganizerKorganizerInterface korganizerIface(
-      "org.kde.korganizer.Korganizer", "/Korganizer", QDBusConnection::sessionBus() );
+      "org.kde.korganizer", "/Korganizer", QDBusConnection::sessionBus() );
     korganizerIface.editIncidence( mIncidence->uid() );
-#endif
   }
 }
 
 void KOEventViewer::showIncidenceContext()
 {
-#ifndef KORG_NODBUS
   if ( mIncidence ) {
     // make sure korganizer is running or the part is shown
     KToolInvocation::startServiceByDesktopPath( "korganizer" );
 
     OrgKdeKorganizerKorganizerInterface korganizerIface(
-      "org.kde.korganizer.Korganizer", "/Korganizer", QDBusConnection::sessionBus() );
+      "org.kde.korganizer", "/Korganizer", QDBusConnection::sessionBus() );
     korganizerIface.showIncidenceContext( mIncidence->uid() );
   }
-#endif
 }
 
 #include "koeventviewer.moc"

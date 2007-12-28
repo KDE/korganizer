@@ -55,7 +55,6 @@ using namespace KPIM;
 #include <kglobal.h>
 #include <kiconloader.h>
 #include <kmessagebox.h>
-#include <kactioncollection.h>
 #include <ktoolbar.h>
 #include <kvbox.h>
 
@@ -428,15 +427,6 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent)
 {
   QBoxLayout *topLayout = new QVBoxLayout( this );
 
-  // find the main window (for the action collection)
-  KActionCollection *collection = 0;
-  for ( QWidget *curWidget = parentWidget(); curWidget;
-        curWidget = curWidget->parentWidget() ) {
-    KOrg::MainWindow *mainWidget = dynamic_cast<KOrg::MainWindow *>( curWidget );
-    if ( mainWidget )
-      collection = mainWidget->getActionCollection();
-  }
-
   setupListViews();
   QList<K3ListView *> list;
   list.append( mMyTodoListView );
@@ -444,8 +434,7 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent)
   list.append( mYourTodoListView );
   list.append( mOtherTodoListView );
   KOTodoListViewQuickSearchContainer *container =
-          new KOTodoListViewQuickSearchContainer( this, list,
-                                                  collection, calendar);
+          new KOTodoListViewQuickSearchContainer( this, list, calendar);
   container->setObjectName("todo quick search");
   mSearchToolBar = container->quickSearch();
 
@@ -794,10 +783,12 @@ void KOTodoView::saveListViewState( Q3ListView *listView )
     mDocPrefs->writeBoolEntry( listView->objectName() + " pos",
                            listView->contentsY() );
 
-    for ( Q3ListViewItemIterator it( listView ); it.current(); ++it )
-      if ( KOTodoViewItem *todoItem
-          = dynamic_cast<KOTodoViewItem *>( it.current() ) )
+    for ( Q3ListViewItemIterator it( listView ); it.current(); ++it ) {
+      KOTodoViewItem *todoItem = dynamic_cast<KOTodoViewItem *>( it.current() );
+      if ( todoItem && todoItem->todo() ) {
         mDocPrefs->writeNumEntry( todoItem->todo()->uid(), todoItem->isOpen() );
+      }
+    }
   } else
     kError( 5850 ) <<" mDocPrefs doesn't exist";
 }
@@ -1071,6 +1062,8 @@ void KOTodoView::showIncidences( const Incidence::List &incidences )
 
   // the final touch (make the user notice)
   first->setSelected( true );
+#else
+  Q_UNUSED( incidences );
 #endif
 }
 
@@ -1365,11 +1358,12 @@ void KOTodoView::setDocumentId( const QString &id )
 
 void KOTodoView::itemStateChanged( Q3ListViewItem *item )
 {
-  if (!item) return;
+  if ( !item ) {
+    return;
+  }
 
   KOTodoViewItem *todoItem = (KOTodoViewItem *)item;
-
-//  kDebug(5850) <<"KOTodoView::itemStateChanged():" << todoItem->todo()->summary();
+  Q_UNUSED( todoItem ); // until we do something useful
 }
 
 void KOTodoView::setNewPercentageDelayed( KOTodoViewItem *item, int percentage )

@@ -36,7 +36,7 @@ using namespace KOrg::CalendarDecoration;
 
 class ThisDayInHistoryFactory : public DecorationFactory {
   public:
-    Decoration *create() { return new ThisDayInHistory; }
+    Decoration *createPluginFactory() { return new ThisDayInHistory; }
 };
 
 K_EXPORT_PLUGIN( ThisDayInHistoryFactory )
@@ -78,7 +78,7 @@ Element::List ThisDayInHistory::createMonthElements( const QDate &date )
                                               i18n("This month in history") );
   element->setUrl( i18nc("Localized Wikipedia website",
                          "http://en.wikipedia.org/wiki/")
-                   + date.toString( i18nc("Qt date format used by the"
+                   + date.toString( i18nc("Qt date format used by the "
                                            "localized Wikipedia",
                                           "MMMM_yyyy") ) );
   elements.append( element );

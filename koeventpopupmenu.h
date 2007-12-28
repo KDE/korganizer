@@ -32,19 +32,15 @@
 #include <QDateTime>
 
 namespace KCal {
-class Incidence;
+  class Incidence;
 }
 using namespace KCal;
 
-class KOEventPopupMenu : public QMenu {
+class KOEventPopupMenu : public QMenu
+{
   Q_OBJECT
   public:
     KOEventPopupMenu();
-
-    void addAdditionalItem(const QIcon &icon,const QString &text,
-                           const QObject *receiver, const char *member,
-                           bool editOnly=false);
-
 
   public slots:
     void showIncidencePopup( Incidence *, const QDate & );

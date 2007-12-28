@@ -43,32 +43,26 @@
 
 using namespace KOrg;
 
-void WhatsNextTextBrowser::setSource(const QString& n)
+void WhatsNextTextBrowser::setSource( const QUrl &name )
 {
-  if (n.startsWith("event:")) {
-    emit showIncidence(n);
-    return;
-  } else if (n.startsWith("todo:")) {
-    emit showIncidence(n);
-    return;
+  QString uri = name.toString();
+  if ( uri.startsWith( "event:" ) ) {
+    emit showIncidence( uri );
+  } else if ( uri.startsWith( "todo:" ) ) {
+    emit showIncidence( uri );
   } else {
-    Q3TextBrowser::setSource(n);
+    KTextBrowser::setSource( uri );
   }
 }
 
-KOWhatsNextView::KOWhatsNextView(Calendar *calendar, QWidget *parent )
-  : KOrg::BaseView(calendar, parent )
+KOWhatsNextView::KOWhatsNextView( Calendar *calendar, QWidget *parent )
+  : KOrg::BaseView( calendar, parent )
 {
-//  QLabel *dateLabel =
-//      new QLabel(KGlobal::locale()->formatDate(QDate::currentDate()),this);
-//  dateLabel->setMargin(2);
-//  dateLabel->setAlignment(Qt::AlignCenter);
+  mView = new WhatsNextTextBrowser( this );
+  connect( mView, SIGNAL(showIncidence(const QString &)),
+           SLOT(showIncidence(const QString &)) );
 
-  mView = new WhatsNextTextBrowser(this);
-  connect(mView,SIGNAL(showIncidence(const QString &)),SLOT(showIncidence(const QString &)));
-
-  QBoxLayout *topLayout = new QVBoxLayout(this);
-//  topLayout->addWidget(dateLabel);
+  QBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->addWidget(mView);
 }
 
@@ -83,9 +77,10 @@ int KOWhatsNextView::currentDateCount()
 
 void KOWhatsNextView::updateView()
 {
-  KIconLoader kil("korganizer");
+  KIconLoader kil( "korganizer" );
   QString *ipath = new QString();
-  kil.loadIcon("korganizer",KIconLoader::NoGroup,32,KIconLoader::DefaultState,QStringList(),ipath);
+  kil.loadIcon( "office-calendar", KIconLoader::NoGroup, 32,
+                KIconLoader::DefaultState, QStringList(), ipath );
 
   mText = "<table width=\"100%\">\n";
   mText += "<tr bgcolor=\"#3679AD\"><td><h1>";
@@ -93,45 +88,46 @@ void KOWhatsNextView::updateView()
   mText += *ipath;
   mText += "\">";
   mText += "<font color=\"white\"> ";
-  mText += i18n("What's Next?") + "</font></h1>";
+  mText += i18n( "What's Next?" ) + "</font></h1>";
   mText += "</td></tr>\n<tr><td>";
 
   mText += "<h2>";
   if ( mStartDate.daysTo( mEndDate ) < 1 ) {
     mText += KGlobal::locale()->formatDate( mStartDate );
   } else {
-    mText += i18nc("Date from - to", "%1 - %2",
-              KGlobal::locale()->formatDate( mStartDate ) ,
-              KGlobal::locale()->formatDate( mEndDate ) );
+    mText += i18nc(
+      "date from - to", "%1 - %2",
+      KGlobal::locale()->formatDate( mStartDate ),
+      KGlobal::locale()->formatDate( mEndDate ) );
   }
   mText+="</h2>\n";
 
   Event::List events;
   KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
-  for ( QDate date = mStartDate; date <= mEndDate; date = date.addDays( 1 ) )
-    events += calendar()->events(date, timeSpec,
-                                 EventSortStartDate, SortDirectionAscending);
+  for ( QDate date = mStartDate; date <= mEndDate; date = date.addDays( 1 ) ) {
+    events += calendar()->events( date, timeSpec, EventSortStartDate, SortDirectionAscending );
+  }
 
-  if (events.count() > 0) {
+  if ( events.count() > 0 ) {
     mText += "<p></p>";
-    kil.loadIcon("appointment",KIconLoader::NoGroup,22,KIconLoader::DefaultState,QStringList(),ipath);
+    kil.loadIcon( "appointment", KIconLoader::NoGroup, 22,
+                  KIconLoader::DefaultState, QStringList(), ipath );
     mText += "<h2><img src=\"";
     mText += *ipath;
     mText += "\">";
-    mText += i18n("Events:") + "</h2>\n";
+    mText += i18n( "Events:" ) + "</h2>\n";
     mText += "<table>\n";
     Event::List::ConstIterator it;
-    for( it = events.begin(); it != events.end(); ++it ) {
+    for ( it = events.begin(); it != events.end(); ++it ) {
       Event *ev = *it;
-      if ( !ev->recurs() ){
-        appendEvent(ev);
+      if ( !ev->recurs() ) {
+        appendEvent( ev );
       } else {
         Recurrence *recur = ev->recurrence();
         int duration = ev->dtStart().secsTo( ev->dtEnd() );
-        KDateTime start = recur->getPreviousDateTime(
-                                KDateTime( mStartDate, QTime(), timeSpec ) );
+        KDateTime start = recur->getPreviousDateTime( KDateTime( mStartDate, QTime(), timeSpec ) );
         KDateTime end = start.addSecs( duration );
-        KDateTime endDate( mEndDate, QTime(23,59,59), timeSpec );
+        KDateTime endDate( mEndDate, QTime( 23, 59, 59 ), timeSpec );
         if ( end.date() >= mStartDate ) {
           appendEvent( ev, start.dateTime(), end.dateTime() );
         }
@@ -139,9 +135,13 @@ void KOWhatsNextView::updateView()
         int count = times.count();
         if ( count > 0 ) {
           int i = 0;
-          if ( times[0] == start ) ++i;  // start has already been appended
-          if ( !times[count - 1].isValid() ) --count;  // list overflow
-	  for ( ;  i < count && times[i].date() <= mEndDate;  ++i ) {
+          if ( times[0] == start ) {
+            ++i;  // start has already been appended
+          }
+          if ( !times[count - 1].isValid() ) {
+            --count;  // list overflow
+          }
+          for ( ;  i < count && times[i].date() <= mEndDate;  ++i ) {
             appendEvent( ev, times[i].dateTime() );
           }
         }
@@ -153,25 +153,27 @@ void KOWhatsNextView::updateView()
   mTodos.clear();
   Todo::List todos = calendar()->todos( TodoSortDueDate, SortDirectionAscending );
   if ( todos.count() > 0 ) {
-    kil.loadIcon("view-calendar-tasks",KIconLoader::NoGroup,22,KIconLoader::DefaultState,QStringList(),ipath);
+    kil.loadIcon( "view-calendar-tasks", KIconLoader::NoGroup, 22,
+                  KIconLoader::DefaultState, QStringList(), ipath );
     mText += "<h2><img src=\"";
     mText += *ipath;
     mText += "\">";
-    mText += i18n("To-do:") + "</h2>\n";
+    mText += i18n( "To-do:" ) + "</h2>\n";
     mText += "<ul>\n";
     Todo::List::ConstIterator it;
-    for( it = todos.begin(); it != todos.end(); ++it ) {
+    for ( it = todos.begin(); it != todos.end(); ++it ) {
       Todo *todo = *it;
-      if ( !todo->isCompleted() && todo->hasDueDate() && todo->dtDue().date() <= mEndDate )
-                  appendTodo(todo);
+      if ( !todo->isCompleted() && todo->hasDueDate() && todo->dtDue().date() <= mEndDate ) {
+        appendTodo( todo );
+      }
     }
     bool gotone = false;
     int priority = 1;
-    while (!gotone && priority<=9 ) {
-      for( it = todos.begin(); it != todos.end(); ++it ) {
+    while ( !gotone && priority <= 9 ) {
+      for ( it = todos.begin(); it != todos.end(); ++it ) {
         Todo *todo = *it;
-        if (!todo->isCompleted() && (todo->priority() == priority) ) {
-          appendTodo(todo);
+        if ( !todo->isCompleted() && ( todo->priority() == priority ) ) {
+          appendTodo( todo );
           gotone = true;
         }
       }
@@ -182,20 +184,21 @@ void KOWhatsNextView::updateView()
 
   QStringList myEmails( KOPrefs::instance()->allEmails() );
   int replies = 0;
-  events = calendar()->events( QDate::currentDate(), QDate(2975,12,6), timeSpec );
+  events = calendar()->events( QDate::currentDate(), QDate( 2975, 12, 6 ), timeSpec );
   Event::List::ConstIterator it2;
-  for( it2 = events.begin(); it2 != events.end(); ++it2 ) {
+  for ( it2 = events.begin(); it2 != events.end(); ++it2 ) {
     Event *ev = *it2;
     Attendee *me = ev->attendeeByMails( myEmails );
-    if (me!=0) {
-      if (me->status()==Attendee::NeedsAction && me->RSVP()) {
-        if (replies == 0) {
+    if ( me != 0 ) {
+      if ( me->status() == Attendee::NeedsAction && me->RSVP() ) {
+        if ( replies == 0 ) {
           mText += "<p></p>";
-          kil.loadIcon("reply",KIconLoader::NoGroup,22,KIconLoader::DefaultState,QStringList(),ipath);
+          kil.loadIcon( "mail-reply", KIconLoader::NoGroup, 22,
+                        KIconLoader::DefaultState, QStringList(), ipath );
           mText += "<h2><img src=\"";
           mText += *ipath;
           mText += "\">";
-          mText += i18n("Events and to-dos that need a reply:") + "</h2>\n";
+          mText += i18n( "Events and to-dos that need a reply:" ) + "</h2>\n";
           mText += "<table>\n";
         }
         replies++;
@@ -205,27 +208,29 @@ void KOWhatsNextView::updateView()
   }
   todos = calendar()->todos();
   Todo::List::ConstIterator it3;
-  for( it3 = todos.begin(); it3 != todos.end(); ++it3 ) {
+  for ( it3 = todos.begin(); it3 != todos.end(); ++it3 ) {
     Todo *to = *it3;
     Attendee *me = to->attendeeByMails( myEmails );
-    if (me!=0) {
-      if (me->status()==Attendee::NeedsAction && me->RSVP()) {
-        if (replies == 0) {
+    if ( me != 0 ) {
+      if ( me->status() == Attendee::NeedsAction && me->RSVP() ) {
+        if ( replies == 0 ) {
           mText += "<p></p>";
-          kil.loadIcon("reply",KIconLoader::NoGroup,22,KIconLoader::DefaultState,QStringList(),ipath);
+          kil.loadIcon( "mail-reply", KIconLoader::NoGroup, 22,
+                        KIconLoader::DefaultState, QStringList(), ipath );
           mText += "<h2><img src=\"";
           mText += *ipath;
           mText += "\">";
-          mText += i18n("Events and to-dos that need a reply:") + "</h2>\n";
+          mText += i18n( "Events and to-dos that need a reply:" ) + "</h2>\n";
           mText += "<table>\n";
         }
         replies++;
-        appendEvent(to);
+        appendEvent( to );
       }
     }
   }
-  if (replies > 0 ) mText += "</table>\n";
-
+  if ( replies > 0 ) {
+    mText += "</table>\n";
+  }
 
   mText += "</td></tr>\n</table>\n";
 
@@ -263,54 +268,65 @@ void KOWhatsNextView::appendEvent( Incidence *ev, const QDateTime &start,
 {
 
   mText += "<tr><td><b>";
-//  if (!ev->allDay()) {
-    if ( ev->type() == "Event" ) {
-      Event *event = static_cast<Event *>(ev);
-      KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
-      KDateTime starttime( start, timeSpec );
-      if ( !starttime.isValid() )
-        starttime = event->dtStart();
-      KDateTime endtime( end, timeSpec );
-      if ( !endtime.isValid() )
-        endtime = starttime.addSecs(
-                  event->dtStart().secsTo( event->dtEnd() ) );
-
-      if ( starttime.date().daysTo( endtime.date() ) >= 1 ) {
-        mText += i18nc("date from - to", "%1 - %2",
-                KGlobal::locale()->formatDateTime( starttime.toTimeSpec( KOPrefs::instance()->timeSpec() ) ) ,
-                KGlobal::locale()->formatDateTime( endtime.toTimeSpec( KOPrefs::instance()->timeSpec() ) ) );
-      } else {
-        /*if (reply) */
-        mText += i18nc("date, from - to", "%1, %2 - %3",
-              KGlobal::locale()->formatDate( starttime.toTimeSpec( KOPrefs::instance()->timeSpec() ).date(), KLocale::ShortDate ) ,
-              KGlobal::locale()->formatTime( starttime.toTimeSpec( KOPrefs::instance()->timeSpec() ).time() ) ,
-              KGlobal::locale()->formatTime( endtime.toTimeSpec( KOPrefs::instance()->timeSpec() ).time() ) );
-      }
+  if ( ev->type() == "Event" ) {
+    Event *event = static_cast<Event *>(ev);
+    KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
+    KDateTime starttime( start, timeSpec );
+    if ( !starttime.isValid() ) {
+      starttime = event->dtStart();
     }
-//  }
+    KDateTime endtime( end, timeSpec );
+    if ( !endtime.isValid() ) {
+      endtime = starttime.addSecs( event->dtStart().secsTo( event->dtEnd() ) );
+    }
+
+    if ( starttime.date().daysTo( endtime.date() ) >= 1 ) {
+      mText += i18nc(
+        "date from - to", "%1 - %2",
+        KGlobal::locale()->formatDateTime(
+          starttime.toTimeSpec( KOPrefs::instance()->timeSpec() ) ),
+        KGlobal::locale()->formatDateTime(
+          endtime.toTimeSpec( KOPrefs::instance()->timeSpec() ) ) );
+    } else {
+      mText += i18nc(
+        "date, from - to", "%1, %2 - %3",
+        KGlobal::locale()->formatDate(
+          starttime.toTimeSpec( KOPrefs::instance()->timeSpec() ).date(), KLocale::ShortDate ),
+        KGlobal::locale()->formatTime(
+          starttime.toTimeSpec( KOPrefs::instance()->timeSpec() ).time() ),
+        KGlobal::locale()->formatTime(
+          endtime.toTimeSpec( KOPrefs::instance()->timeSpec() ).time() ) );
+    }
+  }
   mText += "</b></td><td><a ";
-  if (ev->type()=="Event") mText += "href=\"event:";
-  if (ev->type()=="Todo") mText += "href=\"todo:";
+  if ( ev->type() == "Event" ) {
+    mText += "href=\"event:";
+  }
+  if ( ev->type() == "Todo" ) {
+    mText += "href=\"todo:";
+  }
   mText += ev->uid() + "\">";
   mText += ev->summary();
   mText += "</a></td></tr>\n";
 }
 
-void KOWhatsNextView::appendTodo( Incidence *ev )
+void KOWhatsNextView::appendTodo( Incidence *incidence )
 {
-  if ( mTodos.contains( ev )  ) return;
+  if ( mTodos.contains( incidence ) ) {
+    return;
+  }
 
-  mTodos.append( ev );
+  mTodos.append( incidence );
 
-  mText += "<li><a href=\"todo:" + ev->uid() + "\">";
-  mText += ev->summary();
+  mText += "<li><a href=\"todo:" + incidence->uid() + "\">";
+  mText += incidence->summary();
   mText += "</a>";
 
-  if ( ev->type() == "Todo" ) {
-    Todo *todo = static_cast<Todo*>(ev);
+  if ( incidence->type() == "Todo" ) {
+    Todo *todo = static_cast<Todo*>( incidence );
     if ( todo->hasDueDate() ) {
-      mText += i18n("  (Due: %1)",
-           (todo->allDay())?(todo->dtDueDateStr()):(todo->dtDueStr()) );
+      mText += i18nc( "to-do due date", "  (Due: %1)",
+                     todo->allDay() ? todo->dtDueDateStr() : todo->dtDueStr() );
     }
   }
   mText += "</li>\n";
@@ -325,7 +341,9 @@ void KOWhatsNextView::showIncidence( const QString &uid )
   } else if ( uid.startsWith( "todo://" ) ) {
     incidence = calendar()->incidence( uid.mid( 7 ) );
   }
-  if ( incidence ) emit showIncidenceSignal( incidence );
+  if ( incidence ) {
+    emit showIncidenceSignal( incidence );
+  }
 }
 
 #include "kowhatsnextview.moc"

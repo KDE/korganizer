@@ -58,21 +58,6 @@ class KOMailClient
     bool send(const QString &from,const QString &to,const QString &subject,
               const QString &body,bool bcc=false,
               const QString &attachment=QString());
-
-    int kMailOpenComposer(const QString& to, const QString& cc,
-                          const QString& bcc, const QString& subject,
-                          const QString& body, int hidden,
-                          const QString& attachName, const QByteArray& attachCte,
-                          const QByteArray& attachData,
-                          const QByteArray& attachType,
-                          const QByteArray& attachSubType,
-                          const QByteArray& attachParamAttr,
-                          const QString& attachParamValue,
-                          const QByteArray& attachContDisp,
-                          const QByteArray& attachCharset);
-    int kMailOpenComposer(const QString& arg0,const QString& arg1,
-                          const QString& arg2,const QString& arg3,
-                          const QString& arg4,int arg5,const KUrl& arg6);
 };
 
 #endif

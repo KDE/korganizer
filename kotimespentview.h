@@ -30,8 +30,8 @@
 #include <korganizer/baseview.h>
 
 class QDate;
-
 class TimeSpentWidget;
+
 /**
   This view show the time spent on each category.
 */
@@ -39,7 +39,7 @@ class KOTimeSpentView : public KOrg::BaseView
 {
   Q_OBJECT
   public:
-    explicit KOTimeSpentView(Calendar *calendar, QWidget *parent = 0 );
+    explicit KOTimeSpentView( Calendar *calendar, QWidget *parent = 0 );
     ~KOTimeSpentView();
 
     virtual int currentDateCount();
@@ -48,10 +48,10 @@ class KOTimeSpentView : public KOrg::BaseView
 
   public slots:
     virtual void updateView();
-    virtual void showDates(const QDate &start, const QDate &end);
+    virtual void showDates( const QDate &start, const QDate &end );
     virtual void showIncidences( const Incidence::List &incidenceList );
 
-    void changeIncidenceDisplay(Incidence *, int);
+    void changeIncidenceDisplay( Incidence *, int );
 
   private:
     TimeSpentWidget *mView;

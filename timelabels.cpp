@@ -310,10 +310,11 @@ void TimeLabels::contextMenuEvent( QContextMenuEvent *event )
   Q_UNUSED( event );
 
   QMenu popup( this );
-  QAction *editTimeZones = popup.addAction( KIcon( "edit" ), i18n( "&Edit timezones" ) );
-  QAction *removeTimeZone = popup.addAction( KIcon( "delete" ), i18n( "&Remove %1 timezone", mSpec.timeZone().name() ) );
-  if ( !mSpec.isValid() )
+  QAction *editTimeZones = popup.addAction( KIcon( "document-properties" ), i18n( "&Edit timezones" ) );
+  QAction *removeTimeZone = popup.addAction( KIcon( "edit-delete" ), i18n( "&Remove %1 timezone", mSpec.timeZone().name() ) );
+  if ( !mSpec.isValid() || !KOPrefs::instance()->timeScaleTimezones().count() || mSpec == KOPrefs::instance()->timeSpec() ) {
     removeTimeZone->setEnabled( false );
+  }
 
   QAction *activatedAction = popup.exec( QCursor::pos() );
   if ( activatedAction == editTimeZones ) {
@@ -341,7 +342,7 @@ QString TimeLabels::header() const
 
   QString header = tz.countryCode();
   if( header.isEmpty() ) header = tz.name();
-  
+
   return header;
 }
 
@@ -367,7 +368,7 @@ QString TimeLabels::headerToolTip() const
     toolTip += i18n("Comment:<br/>%1",tz.comment() );
   }
   toolTip += "</qt>";
-  
+
   return toolTip;
 }
 

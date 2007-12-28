@@ -110,7 +110,8 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent)
          "this means you will not need to use this dialog box again, except to change the settings."));
 
   mExpiryTimeNumInput = new KIntNumInput(autoArchiveHBox);
-  mExpiryTimeNumInput->setRange(1, 500, 1, false);
+  mExpiryTimeNumInput->setRange(1, 500, 1);
+  mExpiryTimeNumInput->setSliderEnabled(false);
   mExpiryTimeNumInput->setEnabled(false);
   mExpiryTimeNumInput->setValue(7);
   mExpiryTimeNumInput->setWhatsThis(

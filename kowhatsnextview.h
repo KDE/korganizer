@@ -24,19 +24,20 @@
 #ifndef KOWHATSNEXTVIEW_H
 #define KOWHATSNEXTVIEW_H
 
-#include <q3textbrowser.h>
-
 #include <korganizer/baseview.h>
+#include <ktextbrowser.h>
+class QUrl;
 
-class WhatsNextTextBrowser : public Q3TextBrowser {
+class WhatsNextTextBrowser : public KTextBrowser
+{
   Q_OBJECT
   public:
-    explicit WhatsNextTextBrowser(QWidget *parent) : Q3TextBrowser(parent) {}
-
-    void setSource(const QString &);
+    explicit WhatsNextTextBrowser( QWidget *parent ) : KTextBrowser( parent ) {}
+    /** Reimplemented from KTextBrowser to handle links. */
+    void setSource( const QUrl &name );
 
   signals:
-    void showIncidence(const QString &uid);
+    void showIncidence( const QString &uid );
 };
 
 /**
@@ -46,7 +47,7 @@ class KOWhatsNextView : public KOrg::BaseView
 {
   Q_OBJECT
   public:
-    explicit KOWhatsNextView(Calendar *calendar, QWidget *parent = 0 );
+    explicit KOWhatsNextView( Calendar *calendar, QWidget *parent = 0 );
     ~KOWhatsNextView();
 
     virtual int currentDateCount();
@@ -55,10 +56,10 @@ class KOWhatsNextView : public KOrg::BaseView
 
   public slots:
     virtual void updateView();
-    virtual void showDates(const QDate &start, const QDate &end);
+    virtual void showDates( const QDate &start, const QDate &end );
     virtual void showIncidences( const Incidence::List &incidenceList );
 
-    void changeIncidenceDisplay(Incidence *, int);
+    void changeIncidenceDisplay( Incidence *, int );
 
   protected:
     void appendEvent( Incidence *, const QDateTime &start = QDateTime(),
@@ -66,10 +67,10 @@ class KOWhatsNextView : public KOrg::BaseView
     void appendTodo( Incidence * );
 
   private slots:
-    void showIncidence(const QString &);
+    void showIncidence( const QString & );
 
   private:
-    Q3TextBrowser *mView;
+    KTextBrowser *mView;
     QString mText;
     QDate mStartDate;
     QDate mEndDate;

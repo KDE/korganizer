@@ -30,7 +30,7 @@ class Plugin
 {
   public:
     static int interfaceVersion() { return 2; }
-    static QString serviceType() { return QLatin1String("Calendar/Plugin"); }
+    static QString serviceType() { return QLatin1String( "Calendar/Plugin" ); }
 
     Plugin() {}
     virtual ~Plugin() {}
@@ -43,14 +43,11 @@ class Plugin
 class PluginFactory : public KPluginFactory
 {
   public:
-    virtual Plugin *create() = 0;
+    virtual Plugin *createPluginFactory() = 0;
 
   protected:
-    virtual QObject *createObject( QObject *, const char *,
-                                   const QStringList & )
-    {
-      return 0;
-    }
+    virtual QObject *createObject( QObject *, const char *, const QStringList & )
+    { return 0; }
 };
 
 }

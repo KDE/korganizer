@@ -9,6 +9,7 @@ include_directories(
 
 set( korg_picoftheday_PART_SRCS
      ${CMAKE_SOURCE_DIR}/korganizer/interfaces/calendar/calendardecoration.cpp
+     configdialog.cpp
      picoftheday.cpp
    )
 

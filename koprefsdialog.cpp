@@ -350,7 +350,7 @@ class KOPrefsDialogTime : public KPrefsModule
       regionalLayout->setRowStretch( 4, 1 );
 
       QFrame *defaultPage = new QFrame( parent );
-      tabWidget->addTab( defaultPage, KIcon( "eraser" ), i18n( "Default values" )  );
+      tabWidget->addTab( defaultPage, KIcon( "draw-eraser" ), i18n( "Default values" )  );
       QGridLayout *defaultLayout = new QGridLayout( defaultPage );
       defaultLayout->setSpacing( KDialog::spacingHint() );
 
@@ -613,7 +613,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
   topTopLayout->addWidget( colorFrame );
   QGridLayout *colorLayout = new QGridLayout(colorFrame);
   colorLayout->setSpacing( KDialog::spacingHint() );
-  tabWidget->addTab( colorFrame, KIcon( "color-picker" ), i18n( "Colors" ) );
+  tabWidget->addTab( colorFrame, KIcon( "preferences-desktop-color" ), i18n( "Colors" ) );
   // Holiday Color
   KPrefsWidColor *holidayColor =
       addWidColor( KOPrefs::instance()->agendaHolidaysBackgroundColorItem(), colorFrame );
@@ -709,7 +709,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
 
 
       QWidget *fontFrame = new QWidget( this );
-      tabWidget->addTab( fontFrame, KIcon( "kfontview" ), i18n( "Fonts" ) );
+      tabWidget->addTab( fontFrame, KIcon( "preferences-desktop-font" ), i18n( "Fonts" ) );
 
       QGridLayout *fontLayout = new QGridLayout(fontFrame);
       fontLayout->setSpacing( KDialog::spacingHint() );

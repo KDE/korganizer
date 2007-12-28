@@ -40,7 +40,7 @@ using namespace KOrg::CalendarDecoration;
 
 class PicofthedayFactory : public DecorationFactory {
   public:
-    Decoration *create() { return new Picoftheday; }
+    Decoration *createPluginFactory() { return new Picoftheday; }
 };
 
 K_EXPORT_PLUGIN( PicofthedayFactory )
@@ -57,10 +57,11 @@ Picoftheday::~Picoftheday()
 {
 }
 
-/*void Picoftheday::configure( QWidget *parent )
+void Picoftheday::configure( QWidget *parent )
 {
   ConfigDialog dlg( parent );
-}*/
+  dlg.exec();
+}
 
 QString Picoftheday::info()
 {

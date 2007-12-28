@@ -38,6 +38,8 @@
 #include <kmessagebox.h>
 #include <kinputdialog.h>
 #include <kvbox.h>
+#include <krandom.h>
+#include <kcolorcollection.h>
 
 #include <QLayout>
 #include <QLabel>
@@ -201,7 +203,7 @@ void ResourceItem::setResourceColor( QColor &color )
 {
   if ( color.isValid() ) {
     if ( mResourceColor != color ) {
-      int height = 10; // FIXME: Find out real height of cell
+      int height = treeWidget()->visualItemRect(this).height();
       QPixmap px( height - 4, height - 4 );
       mResourceColor = color;
       px.fill(color);
@@ -215,9 +217,9 @@ void ResourceItem::setResourceColor( QColor &color )
 
 void ResourceItem::setStandardResource( bool std )
 {
-  if ( mIsStandardResource != std ) {
-    // FIXME: Set font of standard resource to bold and others to normal
-  }
+  QFont font = qvariant_cast<QFont>(data(0, Qt::FontRole));
+  font.setBold(std);
+  setData(0, Qt::FontRole, font);
 }
 
 ResourceView::ResourceView( KCal::CalendarResources *calendar, QWidget *parent )
@@ -281,7 +283,6 @@ void ResourceView::emitResourcesChanged()
 void ResourceView::addResource()
 {
   KCal::CalendarResourceManager *manager = mCalendar->resourceManager();
-
   QStringList types = manager->resourceTypeNames();
   QStringList descs = manager->resourceTypeDescriptions();
   bool ok = false;
@@ -305,6 +306,14 @@ void ResourceView::addResource()
   resource->setResourceName( i18n( "%1 resource", type ) );
 
   KRES::ConfigDialog *dlg = new KRES::ConfigDialog( this, QString( "calendar" ), resource );
+
+  // TODO: Add a fallback (KColorCollection::setName() broken?)
+  KColorCollection collection("Oxygen.colors");
+  // TODO: Be smarter than this
+  int rand = ( KRandom::random() % collection.count() ) + 1;
+  QColor color = collection.color( rand );
+
+  KOPrefs::instance()->setResourceColor( resource->identifier(),  color);
 
   if ( dlg && dlg->exec() ) {
     resource->setTimeSpec( KOPrefs::instance()->timeSpec() );
@@ -482,7 +491,13 @@ ResourceItem *ResourceView::findItemByIdentifier( const QString &id )
 void ResourceView::showContextMenu( const QPoint &pos )
 {
   QTreeWidgetItem *i = mListView->itemAt( pos );
-  if ( !i ) {
+
+  if ( !i ) { // No item clicked.
+    // Creation of menu entries not specific to one item
+    QMenu *menu = new QMenu( this );
+    menu->addAction( i18n( "&Add..." ), this, SLOT( addResource() ) );
+    menu->popup( mapToGlobal( pos ) );
+
     return;
   }
 

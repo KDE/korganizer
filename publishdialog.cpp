@@ -42,6 +42,7 @@ PublishDialog::PublishDialog( QWidget* parent, bool modal )
 {
   setCaption( i18n("Select Addresses") );
   setButtons( Ok|Cancel|Help );
+  setModal( modal );
   QWidget *widget = new QWidget( this );
   widget->setObjectName( "PublishFreeBusy" );
   mUI.setupUi( widget );

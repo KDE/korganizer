@@ -126,7 +126,8 @@ void Theme::saveThemeTo( const KUrl &url )
 void Theme::clearCurrentTheme()
 {
   foreach ( QString viewType, Theme::themableViews() ) {
-    KConfigGroup( KSharedConfig::openConfig(), "Theme/" + viewType + " view" ).deleteGroup();
+    KSharedConfig::Ptr conf = KSharedConfig::openConfig();
+    KConfigGroup( conf, "Theme/" + viewType + " view" ).deleteGroup();
   }
 }
 

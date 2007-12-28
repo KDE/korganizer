@@ -47,14 +47,14 @@
 using namespace KCal;
 
 namespace KCal {
-class Calendar;
-class Event;
+  class Calendar;
+  class Event;
 }
 class CalendarView;
 class FreeBusyManager;
 
 namespace KOrg {
-class IncidenceChangerBase;
+  class IncidenceChangerBase;
 }
 
 using namespace KOrg;
@@ -63,8 +63,8 @@ class KOGroupware : public QObject
 {
   Q_OBJECT
   public:
-    static KOGroupware* create( CalendarView*, KCal::CalendarResources* );
-    static KOGroupware* instance();
+    static KOGroupware *create( CalendarView *, KCal::CalendarResources * );
+    static KOGroupware *instance();
 
     FreeBusyManager *freeBusyManager();
 
@@ -72,23 +72,29 @@ class KOGroupware : public QObject
          Returns false if the user cancels the dialog, and true if the
          user presses Yes og or No.
     */
-    bool sendICalMessage( QWidget* parent, KCal::iTIPMethod method,
-                          Incidence* incidence, bool isDeleting = false,
+    bool sendICalMessage( QWidget *parent, KCal::iTIPMethod method,
+                          Incidence *incidence, bool isDeleting = false,
                           bool statusChanged = false );
 
     // THIS IS THE ACTUAL KM/KO API
-    enum EventState { Accepted, ConditionallyAccepted, Declined, Request };
+    enum EventState {
+      Accepted,
+      ConditionallyAccepted,
+      Declined,
+      Request
+    };
 
   private slots:
     /** Handle iCals given by KMail. */
-    void incomingDirChanged( const QString& path );
+    void incomingDirChanged( const QString &path );
 
     /** Updates some slot connections when the view incidence changer changes */
-    void slotViewNewIncidenceChanger( IncidenceChangerBase* changer );
+    void slotViewNewIncidenceChanger( IncidenceChangerBase *changer );
+
 
     void initialCheckForChanges();
   protected:
-    KOGroupware( CalendarView*, KCal::CalendarResources* );
+    KOGroupware( CalendarView *, KCal::CalendarResources * );
 
   private:
     static KOGroupware *mInstance;
