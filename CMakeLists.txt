@@ -1,6 +1,7 @@
 project(korganizer)
 add_subdirectory( tests )
 
+add_definitions(-DKDE_DEFAULT_DEBUG_AREA=5850)
 include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/interfaces
                      ${CMAKE_SOURCE_DIR}/libkholidays
                      ${CMAKE_SOURCE_DIR}/mimelib
