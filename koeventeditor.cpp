@@ -214,7 +214,7 @@ void KOEventEditor::editIncidence( Incidence *incidence )
     readEvent( mEvent );
   }
 
-  setCaption( i18nc( "@title", "Edit Event" ) );
+  setCaption( i18nc( "@title:window", "Edit Event" ) );
 }
 
 void KOEventEditor::newEvent()
@@ -222,7 +222,7 @@ void KOEventEditor::newEvent()
   init();
   mEvent = 0;
   loadDefaults();
-  setCaption( i18nc( "@title", "New Event" ) );
+  setCaption( i18nc( "@title:window", "New Event" ) );
 }
 
 void KOEventEditor::setDates( const QDateTime &from, const QDateTime &to, bool allDay )
@@ -376,7 +376,7 @@ int KOEventEditor::msgItemDelete()
   return KMessageBox::warningContinueCancel(
     this,
     i18nc( "@info", "This item will be permanently deleted." ),
-    i18nc( "@title", "KOrganizer Confirmation" ),
+    i18nc( "@title:window", "KOrganizer Confirmation" ),
     KGuiItem( i18nc( "@action:button", "Delete" ), "edit-delete" ) );
 }
 
