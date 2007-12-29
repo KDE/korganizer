@@ -25,16 +25,15 @@
 */
 
 #include "kojournaleditor.h"
-
 #include "koeditorgeneraljournal.h"
 #include "koeditordetails.h"
 #include "koeditorattachments.h"
 #include "kodialogmanager.h"
 #include "koprefs.h"
+#include "korganizer/baseview.h"
 
 #include <kcal/journal.h>
 #include <kcal/calendarlocal.h>
-#include <korganizer/baseview.h>
 
 #include <kmessagebox.h>
 #include <klocale.h>
@@ -46,8 +45,8 @@
 
 using namespace KCal;
 
-KOJournalEditor::KOJournalEditor( Calendar *calendar, QWidget *parent ) :
-  KOIncidenceEditor( i18n("Edit Journal Entry"), calendar, parent )
+KOJournalEditor::KOJournalEditor( Calendar *calendar, QWidget *parent )
+  : KOIncidenceEditor( i18n( "Edit Journal Entry" ), calendar, parent )
 {
   mJournal = 0;
 }
@@ -73,16 +72,16 @@ void KOJournalEditor::reload()
 
 void KOJournalEditor::setupGeneral()
 {
-  mGeneral = new KOEditorGeneralJournal(this);
+  mGeneral = new KOEditorGeneralJournal( this );
 
   QFrame *topFrame = new QFrame();
-  addPage( topFrame, i18n("General") );
+  addPage( topFrame, i18nc( "@title general journal settings", "General" ) );
 
   QBoxLayout *topLayout = new QVBoxLayout( topFrame );
-  if (KOPrefs::instance()->mCompactDialogs) {
+  if ( KOPrefs::instance()->mCompactDialogs ) {
     topLayout->setMargin( marginHint() );
   }
-  topLayout->setSpacing(spacingHint());
+  topLayout->setSpacing( spacingHint() );
 
   mGeneral->initTitle( topFrame, topLayout );
   mGeneral->initDate( topFrame, topLayout );
@@ -94,13 +93,12 @@ void KOJournalEditor::setupGeneral()
 
 void KOJournalEditor::editIncidence( Incidence *incidence )
 {
-  Journal *journal=dynamic_cast<Journal*>(incidence);
-  if (journal)
-  {
+  Journal *journal=dynamic_cast<Journal*>( incidence );
+  if ( journal ) {
     init();
 
     mJournal = journal;
-    readJournal(mJournal);
+    readJournal( mJournal );
   }
 }
 
@@ -115,7 +113,7 @@ void KOJournalEditor::setTexts( const QString &summary,
                                 const QString &description,
                                 bool richDescription )
 {
-  if ( description.isEmpty() && summary.contains("\n") ) {
+  if ( description.isEmpty() && summary.contains( "\n" ) ) {
     mGeneral->setDescription( summary, false );
     int pos = summary.indexOf( "\n" );
     mGeneral->setSummary( summary.left( pos ) );
@@ -133,7 +131,9 @@ void KOJournalEditor::loadDefaults()
 
 bool KOJournalEditor::processInput()
 {
-  if ( !validateInput() ) return false;
+  if ( !validateInput() ) {
+    return false;
+  }
 
   if ( mJournal ) {
     Journal *oldJournal = mJournal->clone();
@@ -213,12 +213,11 @@ void KOJournalEditor::modified( int /*modification*/)
   reload();
 }
 
-void KOJournalEditor::loadTemplate( /*const*/ CalendarLocal& cal)
+void KOJournalEditor::loadTemplate( CalendarLocal &cal )
 {
   Journal::List journals = cal.journals();
   if ( journals.count() == 0 ) {
-    KMessageBox::error( this,
-        i18n("Template does not contain a valid journal.") );
+    KMessageBox::error( this, i18n( "Template does not contain a valid journal." ) );
   } else {
     readJournal( journals.first() );
   }
@@ -231,8 +230,9 @@ void KOJournalEditor::slotSaveTemplate( const QString &templateName )
   saveAsTemplate( journal, templateName );
 }
 
-QStringList& KOJournalEditor::templates() const
+QStringList &KOJournalEditor::templates() const
 {
   return KOPrefs::instance()->mJournalTemplates;
 }
+
 #include "kojournaleditor.moc"
