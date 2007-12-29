@@ -44,17 +44,16 @@ class KHBox;
 class KOEditorFreeBusy;
 
 namespace KCal {
-class Attendee;
-class Incidence;
+  class Attendee;
+  class Incidence;
 }
 using namespace KCal;
 
 namespace KPIM {
-class AddresseeLineEdit;
+  class AddresseeLineEdit;
 }
 
 typedef CustomListViewItem<KCal::Attendee *> AttendeeListItem;
-
 
 /** KOAttendeeListView is a child class of K3ListView  which supports
  *  dropping of attendees (e.g. from kaddressbook) onto it. If an attendeee
@@ -64,19 +63,19 @@ class KOAttendeeListView : public K3ListView
 {
   Q_OBJECT
   public:
-    KOAttendeeListView (QWidget *parent=0);
+    KOAttendeeListView( QWidget *parent=0 );
     virtual ~KOAttendeeListView();
-    virtual void addAttendee( const QString& newAttendee );
+    virtual void addAttendee( const QString &newAttendee );
 
   public slots:
     virtual void contentsDragEnterEvent( QDragEnterEvent *e );
     virtual void dragEnterEvent( QDragEnterEvent *e );
     virtual void contentsDropEvent( QDropEvent *e );
     virtual void dropEvent( QDropEvent *e );
-    virtual void contentsDragMoveEvent(QDragMoveEvent *e);
+    virtual void contentsDragMoveEvent( QDragMoveEvent *e );
 
   signals:
-    void dropped(Attendee*);
+    void dropped( Attendee * );
 };
 
 class KOEditorDetails : public QWidget
@@ -88,13 +87,16 @@ class KOEditorDetails : public QWidget
 
     /** Set widgets to default values */
     void setDefaults();
-    /** Read event object and setup widgets accordingly */
-    void readEvent(Incidence *);
-    /** Write event settings to event object */
-    void writeEvent(Incidence *);
 
-    /** return a clone of the event with attendees to be canceld*/
-    void cancelAttendeeEvent(Incidence *);
+    /** Read incidence and setup widgets accordingly */
+    void readIncidence( Incidence * );
+
+    /** Write settings to incidence */
+    void writeIncidence( Incidence * );
+
+    /** return a clone of the incidence with attendees to be canceled */
+    void cancelAttendeeIncidence( Incidence * );
+
     /** Check if the input is valid. */
     bool validateInput();
 
@@ -105,7 +107,7 @@ class KOEditorDetails : public QWidget
     bool hasAttendees();
 
   public slots:
-    void insertAttendee(Attendee *);
+    void insertAttendee( Attendee * );
 
   protected slots:
     void addNewAttendee();
@@ -113,15 +115,15 @@ class KOEditorDetails : public QWidget
     void openAddressBook();
     void updateAttendeeInput();
     void clearAttendeeInput();
-    void fillAttendeeInput(AttendeeListItem *);
+    void fillAttendeeInput( AttendeeListItem * );
     void updateAttendeeItem();
-    void setEnableAttendeeInput(bool);
+    void setEnableAttendeeInput( bool );
 
   protected:
-    virtual bool eventFilter( QObject *, QEvent *);
+    virtual bool eventFilter( QObject *, QEvent * );
     void fillOrganizerCombo();
 
-    void insertAttendee( Attendee*, bool goodEmailAddress );
+    void insertAttendee( Attendee *, bool goodEmailAddress );
 
   private:
     bool mDisableItemUpdate;
@@ -129,18 +131,18 @@ class KOEditorDetails : public QWidget
     KPIM::AddresseeLineEdit *mNameEdit;
     QString mUid;
     K3ListView *mListView;
-    KComboBox* mRoleCombo;
-    QCheckBox* mRsvpButton;
-    KComboBox* mStatusCombo;
-    KHBox* mOrganizerHBox;
+    KComboBox *mRoleCombo;
+    QCheckBox *mRsvpButton;
+    KComboBox *mStatusCombo;
+    KHBox *mOrganizerHBox;
     KComboBox *mOrganizerCombo; // either we organize it (combo shown)
     QLabel *mOrganizerLabel; // or someone else does (just a label is shown)
 
-    QPushButton* mAddButton;
-    QPushButton* mRemoveButton;
-    QPushButton* mAddressBookButton;
+    QPushButton *mAddButton;
+    QPushButton *mRemoveButton;
+    QPushButton *mAddressBookButton;
 
-    QList<Attendee*> mdelAttendees;
+    QList<Attendee *> mdelAttendees;
 
     KOEditorFreeBusy *mFreeBusy;
 };

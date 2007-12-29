@@ -181,14 +181,14 @@ void KOJournalEditor::setTime( const QTime &time )
 void KOJournalEditor::readJournal( Journal *journal )
 {
   mGeneral->readJournal( journal );
-  mDetails->readEvent( journal );
+  mDetails->readIncidence( journal );
   mAttachments->readIncidence( journal );
 }
 
 void KOJournalEditor::writeJournal( Journal *journal )
 {
   mGeneral->writeJournal( journal );
-  mDetails->writeEvent( journal );
+  mDetails->writeIncidence( journal );
   mAttachments->writeIncidence( journal );
 }
 
@@ -199,9 +199,11 @@ bool KOJournalEditor::validateInput()
 
 int KOJournalEditor::msgItemDelete()
 {
-  return KMessageBox::warningContinueCancel( this,
-      i18n("This journal entry will be permanently deleted."),
-      i18n("KOrganizer Confirmation"), KGuiItem( i18n("Delete"), "edit-delete" ));
+  return KMessageBox::warningContinueCancel(
+    this,
+    i18n( "This journal entry will be permanently deleted." ),
+    i18n( "KOrganizer Confirmation" ),
+    KGuiItem( i18n( "Delete" ), "edit-delete" ) );
 }
 
 void KOJournalEditor::modified( int /*modification*/)

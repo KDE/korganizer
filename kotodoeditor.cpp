@@ -290,10 +290,14 @@ void KOTodoEditor::setDates( const QDateTime &due, bool allDay, Todo *relatedEve
 
 void KOTodoEditor::readTodo( Todo *todo )
 {
-  if ( !todo ) return;
-  kDebug(5850)<<"read todo";
+  if ( !todo ) {
+    return;
+  }
+
+  kDebug(5850);
+
   mGeneral->readTodo( todo );
-  mDetails->readEvent( todo );
+  mDetails->readIncidence( todo );
 //  mAlarms->readIncidence( todo );
   mRecurrence->readIncidence( todo );
   mAttachments->readIncidence( todo );
@@ -306,9 +310,9 @@ void KOTodoEditor::writeTodo( Todo *todo )
 {
   Incidence *oldIncidence = todo->clone();
 
-  mRecurrence->writeIncidence( todo );
   mGeneral->writeTodo( todo );
-  mDetails->writeEvent( todo );
+  mDetails->writeIncidence( todo );
+  mRecurrence->writeIncidence( todo );
   mAttachments->writeIncidence( todo );
 
   if ( *(oldIncidence->recurrence()) != *(todo->recurrence() ) ) {
