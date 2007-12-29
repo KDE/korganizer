@@ -130,7 +130,7 @@ KOTodoListView::KOTodoListView( QWidget *parent )
   addColumn( i18n("Recurs") );
   addColumn( i18n("Priority") );
   setColumnAlignment( KOTodoView::ePriorityColumn, Qt::AlignHCenter );
-  addColumn( i18n("Complete") );
+  addColumn( i18nc( "@title:column percent complete", "Complete") );
   setColumnAlignment( KOTodoView::ePercentColumn, Qt::AlignRight );
   addColumn( i18n("Due Date/Time") );
   setColumnAlignment( KOTodoView::eDueDateColumn, Qt::AlignLeft );
@@ -456,15 +456,15 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent)
 #endif
   mPriorityPopupMenu = new QMenu( this );
   mPriority[ mPriorityPopupMenu->addAction( i18nc("Unspecified priority", "unspecified") ) ] = 0;
-  mPriority[ mPriorityPopupMenu->addAction( i18n( "1 (highest)") ) ] = 1;
+  mPriority[ mPriorityPopupMenu->addAction( i18nc( "@action:inmenu highest priority", "1 (highest)") ) ] = 1;
   mPriority[ mPriorityPopupMenu->addAction( i18n( "2" ) ) ] = 2;
   mPriority[ mPriorityPopupMenu->addAction( i18n( "3" ) ) ] = 3;
   mPriority[ mPriorityPopupMenu->addAction( i18n( "4" ) ) ] = 4;
-  mPriority[ mPriorityPopupMenu->addAction( i18n( "5 (medium)" ) ) ] = 5;
+  mPriority[ mPriorityPopupMenu->addAction( i18nc( "@action:inmenu medium priority", "5 (medium)" ) ) ] = 5;
   mPriority[ mPriorityPopupMenu->addAction( i18n( "6" ) ) ] = 6;
   mPriority[ mPriorityPopupMenu->addAction( i18n( "7" ) ) ] = 7;
   mPriority[ mPriorityPopupMenu->addAction( i18n( "8" ) ) ] = 8;
-  mPriority[ mPriorityPopupMenu->addAction( i18n( "9 (lowest)" ) ) ] = 9;
+  mPriority[ mPriorityPopupMenu->addAction( i18nc( "@action:inmenu lowest priority", "9 (lowest)" ) ) ] = 9;
   connect( mPriorityPopupMenu, SIGNAL( triggered( QAction* ) ),
            SLOT( setNewPriority( QAction* ) ));
 
