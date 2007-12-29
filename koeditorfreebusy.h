@@ -85,7 +85,7 @@ class KOEditorFreeBusy : public QWidget
     // Only download FB if the auto-download option is set in config
     void autoReload();
 
-    void slotIntervalColorRectangleMoved( const QDateTime& start, const QDateTime& end );
+    void slotIntervalColorRectangleMoved( const QDateTime &start, const QDateTime &end );
 
   protected:
     void timerEvent( QTimerEvent * );
@@ -100,7 +100,7 @@ class KOEditorFreeBusy : public QWidget
     void updateStatusSummary();
     void reload();
     KDGanttView *mGanttView;
-    KDIntervalColorRectangle* mEventRectangle;
+    KDIntervalColorRectangle *mEventRectangle;
     QLabel *mStatusSummaryLabel;
     bool mIsOrganizer;
     KComboBox *scaleCombo;
