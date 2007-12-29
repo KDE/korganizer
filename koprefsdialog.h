@@ -58,6 +58,7 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogMain : public KPrefsModule
 
   protected slots:
     void toggleEmailSettings( bool on );
+
   private:
     QWidget *mUserEmailSettings;
 };
@@ -80,6 +81,7 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogColorsAndFonts : public KPrefsModule
     void updateResources();
     void setResourceColor();
     void updateResourceColor();
+
   private:
     KComboBox     *mCategoryCombo;
     KColorButton  *mCategoryButton;
@@ -172,7 +174,7 @@ class KCM_KORGANIZER_EXPORT KOPrefsDesignerFields : public KPIM::KCMDesignerFiel
 
 /*class KCM_KORGANIZER_EXPORT KOPrefsDialogThemes : public KPrefsModule
 {
-    Q_OBJECT
+  Q_OBJECT
   public:
     KOPrefsDialogThemes( const KComponentData &inst, QWidget *parent );
 
@@ -181,8 +183,6 @@ class KCM_KORGANIZER_EXPORT KOPrefsDesignerFields : public KPIM::KCMDesignerFiel
     void usrWriteConfig();
     void importTheme();
     void exportTheme();
-
-  private:
 };*/
 
 #endif
