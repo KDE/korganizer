@@ -329,7 +329,7 @@ void KOEventEditor::deleteEvent()
 void KOEventEditor::readEvent( Event *event, bool tmpl )
 {
   mGeneral->readEvent( event, tmpl );
-  mDetails->readEvent( event );
+  mDetails->readIncidence( event );
   mRecurrence->readIncidence( event );
   mAttachments->readIncidence( event );
 //  mAlarms->readIncidence( event );
@@ -345,7 +345,7 @@ void KOEventEditor::readEvent( Event *event, bool tmpl )
 void KOEventEditor::writeEvent( Event *event )
 {
   mGeneral->writeEvent( event );
-  mDetails->writeEvent( event );
+  mDetails->writeIncidence( event );
   mAttachments->writeIncidence( event );
 
   cancelRemovedAttendees( event );
