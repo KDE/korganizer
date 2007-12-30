@@ -189,7 +189,7 @@ bool KOListView::ListItemVisitor::visit(Todo *t)
 
 bool KOListView::ListItemVisitor::visit( Journal *t )
 {
-  static const QPixmap jrnalPxmp = KOGlobals::self()->smallIcon( "view-calendar-journal" );
+  static const QPixmap jrnalPxmp = KOGlobals::self()->smallIcon( "view-pim-journal" );
   mItem->setPixmap( 0, jrnalPxmp );
   if ( t->summary().isEmpty() ) {
     mItem->setText( 0, t->description().section( "\n", 0, 0 ) );
