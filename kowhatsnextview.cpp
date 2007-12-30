@@ -110,7 +110,7 @@ void KOWhatsNextView::updateView()
 
   if ( events.count() > 0 ) {
     mText += "<p></p>";
-    kil.loadIcon( "appointment", KIconLoader::NoGroup, 22,
+    kil.loadIcon( "view-calendar-day", KIconLoader::NoGroup, 22,
                   KIconLoader::DefaultState, QStringList(), ipath );
     mText += "<h2><img src=\"";
     mText += *ipath;

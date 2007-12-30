@@ -100,14 +100,14 @@ MonthViewItem::MonthViewItem( Incidence *incidence, const KDateTime &dt, const Q
   mIncidence = incidence;
   mDateTime = dt;
 
-  mEventPixmap     = KOGlobals::self()->smallIcon( "appointment" );
+  mEventPixmap     = KOGlobals::self()->smallIcon( "view-calendar-day" );
   mTodoPixmap      = KOGlobals::self()->smallIcon( "view-calendar-tasks" );
   mTodoDonePixmap  = KOGlobals::self()->smallIcon( "checkedbox" );
-  mJournalPixmap   = KOGlobals::self()->smallIcon( "journal" );
+  mJournalPixmap   = KOGlobals::self()->smallIcon( "view-calendar-journal" );
   mAlarmPixmap     = KOGlobals::self()->smallIcon( "bell" );
   mRecurPixmap     = KOGlobals::self()->smallIcon( "recur" );
   mReplyPixmap     = KOGlobals::self()->smallIcon( "mail-reply-sender" );
-  mHolidayPixmap   = KOGlobals::self()->smallIcon( "favorites" );
+  mHolidayPixmap   = KOGlobals::self()->smallIcon( "emblem-favorite" );
 
   mResourceColor = QColor();
   mEvent = false;

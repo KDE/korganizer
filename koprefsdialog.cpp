@@ -83,7 +83,7 @@ KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *paren
 
   QFrame *personalFrame = new QFrame( this );
   QVBoxLayout *personalLayout = new QVBoxLayout( personalFrame );
-  tabWidget->addTab( personalFrame, KIcon( "personal" ),
+  tabWidget->addTab( personalFrame, KIcon( "preferences-desktop-personal" ),
                      i18nc( "@title:tab personal settings", "Personal" ) );
 
   KPrefsWidBool *emailControlCenter =

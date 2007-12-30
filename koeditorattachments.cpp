@@ -341,7 +341,7 @@ class AttachmentIconView : public K3IconView
       }
       QPixmap pixmap;
       if ( urls.count() > 1 ) {
-        pixmap = KIconLoader::global()->loadIcon( "kmultiple", KIconLoader::Desktop );
+        pixmap = KIconLoader::global()->loadIcon( "mail-attachment", KIconLoader::Desktop );
       }
       if ( pixmap.isNull() ) {
         pixmap = static_cast<AttachmentIconItem *>( currentItem() )->icon();

@@ -31,10 +31,10 @@
   <calendar-items>
     <background color="#97EB79"/>
     <events>
-      <icon name="event"/>
+      <icon name="view-calendar-day"/>
     </events>
     <to-dos>
-      <icon name="to-do"/>
+      <icon name="view-calendar-task"/>
       <due-today>
         <background color="#FFC832"/>
       </due-today>

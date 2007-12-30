@@ -130,9 +130,9 @@ void FreeBusyItem::updateItem()
   setListViewText( 2, mAttendee->roleStr() );
   setListViewText( 3, mAttendee->statusStr() );
   if ( mAttendee->RSVP() && !mAttendee->email().isEmpty() ) {
-    setPixmap( 4, KOGlobals::self()->smallIcon( "mailappt" ) );
+    setPixmap( 4, KOGlobals::self()->smallIcon( "mail-flag" ) );
   } else {
-    setPixmap( 4, KOGlobals::self()->smallIcon( "nomailappt" ) );
+    setPixmap( 4, KOGlobals::self()->smallIcon( "mail-queue" ) );
   }
 }
 

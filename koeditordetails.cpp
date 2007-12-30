@@ -77,9 +77,9 @@ void CustomListViewItem<KCal::Attendee *>::updateItem()
   setText( 2, mData->roleStr() );
   setText( 3, mData->statusStr() );
   if ( mData->RSVP() && !mData->email().isEmpty() ) {
-    setPixmap( 4, KOGlobals::self()->smallIcon( "mailappt" ) );
+    setPixmap( 4, KOGlobals::self()->smallIcon( "mail-flag" ) );
   } else {
-    setPixmap( 4, KOGlobals::self()->smallIcon( "nomailappt" ) );
+    setPixmap( 4, KOGlobals::self()->smallIcon( "mail-queue" ) );
   }
   setText( 5, mData->delegate() );
   setText( 6, mData->delegator() );
