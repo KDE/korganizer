@@ -34,10 +34,10 @@
 
 #ifndef KORG_NOKABC
 #include <kabc/addresseedialog.h>
-#include <kabc/distributionlist.h>
 #include <kabc/stdaddressbook.h>
 #include <libkdepim/addressesdialog.h>
 #include <libkdepim/addresseelineedit.h>
+#include <libkdepim/distributionlist.h>
 #endif
 #include <libkdepim/kvcarddrag.h>
 
