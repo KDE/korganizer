@@ -6,7 +6,7 @@ include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/interfaces
                      ${CMAKE_SOURCE_DIR}/mimelib
                      ${CMAKE_SOURCE_DIR}/korganizer/printing
                      ${CMAKE_SOURCE_DIR}/kdgantt1
-		     ${CMAKE_BINARY_DIR}/libkdepim
+                     ${CMAKE_BINARY_DIR}/libkdepim
                      ${QT_INCLUDES} ${ZLIB_INCLUDE_DIR} )
 
 add_definitions (-DQT3_SUPPORT -DQT3_SUPPORT_WARNINGS)
@@ -91,7 +91,7 @@ set(korganizer_eventviewer_LIB_SRCS koeventviewer.cpp urihandler.cpp koeventview
 
 
 qt4_add_dbus_interfaces(korganizer_eventviewer_LIB_SRCS org.kde.korganizer.Korganizer.xml)
-qt4_add_dbus_interfaces(korganizer_eventviewer_LIB_SRCS ${CMAKE_SOURCE_DIR}/kmail/org.kde.kmail.kmail.xml)
+qt4_add_dbus_interfaces(korganizer_eventviewer_LIB_SRCS ${CMAKE_BINARY_DIR}/kmail/org.kde.kmail.kmail.xml)
 qt4_add_dbus_interfaces(korganizer_eventviewer_LIB_SRCS ${CMAKE_SOURCE_DIR}/knode/org.kde.knode.xml)
 qt4_add_dbus_interfaces(korganizer_eventviewer_LIB_SRCS ${CMAKE_SOURCE_DIR}/kaddressbook/org.kde.KAddressbook.Core.xml)
 
@@ -102,6 +102,7 @@ target_link_libraries(korganizer_eventviewer ${KDE4_KPARTS_LIBS} ${KDE4_KCAL_LIB
 set_target_properties(korganizer_eventviewer PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
 install(TARGETS korganizer_eventviewer  DESTINATION ${LIB_INSTALL_DIR})
 
+add_dependencies(korganizer_eventviewer kmail)
 
 ########### next target ###############
 
@@ -110,7 +111,7 @@ set(korganizer_calendar_LIB_SRCS stdcalendar.cpp )
 
 kde4_add_library(korganizer_calendar SHARED ${korganizer_calendar_LIB_SRCS})
 
-target_link_libraries(korganizer_calendar ${KDE4_KPARTS_LIBS} kdepim ${KDE4_KCAL_LIBS})
+target_link_libraries(korganizer_calendar ${KDE4_KPARTS_LIBS} ${KDE4_KCAL_LIBS} kdepim)
 
 set_target_properties(korganizer_calendar PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
 install(TARGETS korganizer_calendar  DESTINATION ${LIB_INSTALL_DIR})
@@ -207,8 +208,11 @@ qt4_add_resources(korganizerprivate_LIB_SRCS agendaitem_pixmaps/agendaitemtheme.
 qt4_add_dbus_adaptor(korganizerprivate_LIB_SRCS org.kde.korganizer.Korganizer.xml korganizerifaceimpl.h KOrganizerIfaceImpl )
 qt4_add_dbus_adaptor(korganizerprivate_LIB_SRCS org.kde.Korganizer.Calendar.xml actionmanager.h ActionManager )
 qt4_add_dbus_interfaces(korganizerprivate_LIB_SRCS org.kde.korganizer.Korganizer.xml )
+qt4_add_dbus_interfaces(korganizerprivate_LIB_SRCS ${CMAKE_BINARY_DIR}/kmail/org.kde.kmail.kmail.xml)
 
 kde4_add_library(korganizerprivate SHARED ${korganizerprivate_LIB_SRCS})
+
+add_dependencies(korganizerprivate kmail)
 
 target_link_libraries(korganizerprivate ${KDE4_KNEWSTUFF2_LIBS} ${KDE4_KABC_LIBRARY} ${KDE4_KUTILS_LIBRARY} ${KDE4_KCAL_LIBRARY} ${KDE4_KPIMIDENTITIES_LIBRARY} ${KDE4_KMIME_LIBRARY}
                                                       kdepim korganizer_eventviewer korganizer_calendar kocorehelper
