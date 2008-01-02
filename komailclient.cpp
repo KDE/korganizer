@@ -41,7 +41,7 @@
 #include <ktoolinvocation.h>
 #include <kshell.h>
 
-#include <QtDBus>
+#include <QtDBus/QtDBus>
 #include <QByteArray>
 
 #include <unistd.h>
