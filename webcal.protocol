@@ -6,5 +6,5 @@ output=filesystem
 reading=true
 defaultMimetype=application/octet-stream
 determineMimetypeFromExtension=true
-Icon=www
+Icon=internet-web-browser
 maxInstances=3

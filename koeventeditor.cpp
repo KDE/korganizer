@@ -24,7 +24,6 @@
 */
 
 #include "koeventeditor.h"
-
 #include "koprefs.h"
 #include "koeditorgeneralevent.h"
 #include "koeditoralarms.h"
@@ -113,55 +112,55 @@ void KOEventEditor::setupGeneral()
 
   if( KOPrefs::instance()->mCompactDialogs ) {
     QFrame *topFrame = new QFrame();
-    addPage(topFrame, i18n( "General"));
-    topFrame->setWhatsThis(
-                     i18n("The General tab allows you to set the most common "
-                          "options for the event.") );
+    addPage( topFrame, i18nc( "@title:tab general event settings", "General" ) );
+    topFrame->setWhatsThis( i18nc( "@info:whatsthis",
+                                   "The General tab allows you to set the most "
+                                   "common options for the event." ) );
 
-    QBoxLayout *topLayout = new QVBoxLayout(topFrame);
-    topLayout->setSpacing(spacingHint());
+    QBoxLayout *topLayout = new QVBoxLayout( topFrame );
+    topLayout->setSpacing( spacingHint() );
 
-    mGeneral->initHeader(topFrame,topLayout);
-    mGeneral->initTime(topFrame,topLayout);
-    mGeneral->initAlarm(topFrame,topLayout);
+    mGeneral->initHeader( topFrame, topLayout );
+    mGeneral->initTime( topFrame, topLayout );
+    mGeneral->initAlarm( topFrame, topLayout );
     mGeneral->enableAlarm( false );
     mGeneral->initCategories( topFrame, topLayout );
 
     topLayout->addStretch( 1 );
 
     QFrame *topFrame2 = new QFrame();
-    addPage(topFrame2, i18n("Details"));
+    addPage( topFrame2, i18nc( "@title:tab", "Details" ) );
 
-    QBoxLayout *topLayout2 = new QVBoxLayout(topFrame2);
-    topLayout2->setSpacing(spacingHint());
+    QBoxLayout *topLayout2 = new QVBoxLayout( topFrame2 );
+    topLayout2->setSpacing( spacingHint() );
 
-    mGeneral->initClass(topFrame2,topLayout2);
+    mGeneral->initClass( topFrame2, topLayout2 );
     mGeneral->initSecrecy( topFrame2, topLayout2 );
-    mGeneral->initDescription(topFrame2,topLayout2);
+    mGeneral->initDescription( topFrame2, topLayout2 );
   } else {
     QFrame *topFrame = new QFrame();
-    addPage(topFrame, i18n("&General"));
-    topFrame->setWhatsThis(
-                     i18n("The General tab allows you to set the most common "
-                          "options for the event.") );
+    addPage( topFrame, i18nc( "@title:tab general event settings", "&General" ) );
+    topFrame->setWhatsThis( i18nc( "@info:whatsthis",
+                                   "The General tab allows you to set the most "
+                                   "common options for the event." ) );
 
-    QBoxLayout *topLayout = new QVBoxLayout(topFrame);
-    topLayout->setSpacing(spacingHint());
+    QBoxLayout *topLayout = new QVBoxLayout( topFrame );
+    topLayout->setSpacing( spacingHint() );
 
-    mGeneral->initHeader(topFrame,topLayout);
-    mGeneral->initTime(topFrame,topLayout);
+    mGeneral->initHeader( topFrame, topLayout );
+    mGeneral->initTime( topFrame, topLayout );
 
     QBoxLayout *alarmLineLayout = new QHBoxLayout();
     alarmLineLayout->setSpacing( spacingHint() );
-    topLayout->addItem(alarmLineLayout);
-    mGeneral->initAlarm(topFrame,alarmLineLayout);
+    topLayout->addItem( alarmLineLayout );
+    mGeneral->initAlarm( topFrame, alarmLineLayout );
     alarmLineLayout->addStretch( 1 );
-    mGeneral->initClass(topFrame,alarmLineLayout);
-    mGeneral->initDescription(topFrame,topLayout);
+    mGeneral->initClass( topFrame, alarmLineLayout );
+    mGeneral->initDescription( topFrame, topLayout );
 
     QBoxLayout *detailsLayout = new QHBoxLayout();
     detailsLayout->setSpacing( spacingHint() );
-    topLayout->addItem(detailsLayout);
+    topLayout->addItem( detailsLayout );
     mGeneral->initCategories( topFrame, detailsLayout );
     mGeneral->initSecrecy( topFrame, detailsLayout );
   }
@@ -169,9 +168,11 @@ void KOEventEditor::setupGeneral()
   mGeneral->finishSetup();
 }
 
-void KOEventEditor::modified (int /*modification*/)
+void KOEventEditor::modified( int modification )
 {
-  // Play dump, just reload the event. This dialog has become so complicated
+  Q_UNUSED( modification );
+
+  // Play dumb, just reload the event. This dialog has become so complicated
   // that there is no point in trying to be smart here...
   reload();
 }
@@ -179,11 +180,11 @@ void KOEventEditor::modified (int /*modification*/)
 void KOEventEditor::setupRecurrence()
 {
   QFrame *topFrame = new QFrame();
-  addPage(topFrame, i18n("Rec&urrence") );
+  addPage( topFrame, i18nc( "@title:tab", "Rec&urrence" ) );
 
-  topFrame->setWhatsThis(
-        i18n("The Recurrence tab allows you to set options on "
-       "how often this event recurs.") );
+  topFrame->setWhatsThis( i18nc( "@info:whatsthis",
+                                 "The Recurrence tab allows you to set options "
+                                 "on how often this event recurs." ) );
 
   QBoxLayout *topLayout = new QVBoxLayout( topFrame );
 
@@ -194,10 +195,11 @@ void KOEventEditor::setupRecurrence()
 void KOEventEditor::setupFreeBusy()
 {
   QFrame *freeBusyPage = new QFrame();
-  addPage(freeBusyPage, i18n("&Free/Busy") );
-  freeBusyPage->setWhatsThis(
-        i18n("The Free/Busy tab allows you to see whether "
-       "other attendees are free or busy during your event.") );
+  addPage( freeBusyPage, i18nc( "@title:tab", "&Free/Busy" ) );
+  freeBusyPage->setWhatsThis( i18nc( "@info:whatsthis",
+                                     "The Free/Busy tab allows you to see "
+                                     "whether other attendees are free or busy "
+                                     "during your event." ) );
 
   QBoxLayout *topLayout = new QVBoxLayout( freeBusyPage );
 
@@ -207,15 +209,15 @@ void KOEventEditor::setupFreeBusy()
 
 void KOEventEditor::editIncidence( Incidence *incidence )
 {
-  Event*event = dynamic_cast<Event*>(incidence);
+  Event*event = dynamic_cast<Event*>( incidence );
   if ( event ) {
     init();
 
     mEvent = event;
-    readEvent(mEvent);
+    readEvent( mEvent );
   }
 
-  setCaption( i18n("Edit Event") );
+  setCaption( i18nc( "@title:window", "Edit Event" ) );
 }
 
 void KOEventEditor::newEvent()
@@ -223,7 +225,7 @@ void KOEventEditor::newEvent()
   init();
   mEvent = 0;
   loadDefaults();
-  setCaption( i18n("New Event") );
+  setCaption( i18nc( "@title:window", "New Event" ) );
 }
 
 void KOEventEditor::setDates( const QDateTime &from, const QDateTime &to, bool allDay )
@@ -232,11 +234,12 @@ void KOEventEditor::setDates( const QDateTime &from, const QDateTime &to, bool a
   mDetails->setDefaults();
   mAttachments->setDefaults();
   mRecurrence->setDefaults( from, to, allDay );
-  if( mFreeBusy ) {
-    if ( allDay )
+  if ( mFreeBusy ) {
+    if ( allDay ) {
       mFreeBusy->setDateTimes( from, to.addDays( 1 ) );
-    else
+    } else {
       mFreeBusy->setDateTimes( from, to );
+    }
   }
 }
 
@@ -244,8 +247,8 @@ void KOEventEditor::setTexts( const QString &summary,
                               const QString &description,
                               bool richDescription )
 {
-  if ( description.isEmpty() && summary.contains("\n") ) {
-    mGeneral->setDescription( summary, richDescription  );
+  if ( description.isEmpty() && summary.contains( "\n" ) ) {
+    mGeneral->setDescription( summary, richDescription );
     int pos = summary.indexOf( "\n" );
     mGeneral->setSummary( summary.left( pos ) );
   } else {
@@ -257,8 +260,8 @@ void KOEventEditor::setTexts( const QString &summary,
 void KOEventEditor::loadDefaults()
 {
   QDateTime from( QDate::currentDate(), KOPrefs::instance()->mStartTime.time() );
-  int addSecs = ( KOPrefs::instance()->mDefaultDuration.time().hour()*3600 ) +
-                ( KOPrefs::instance()->mDefaultDuration.time().minute()*60 );
+  int addSecs = ( KOPrefs::instance()->mDefaultDuration.time().hour() * 3600 ) +
+                ( KOPrefs::instance()->mDefaultDuration.time().minute() * 60 );
   QDateTime to( from.addSecs( addSecs ) );
 
   setDates( from, to, false );
@@ -279,10 +282,10 @@ bool KOEventEditor::processInput()
 
     writeEvent( event );
 
-    if( *event == *mEvent )
+    if ( *event == *mEvent ) {
       // Don't do anything
       kDebug(5850) << "Event not changed";
-    else {
+    } else {
       kDebug(5850) << "Event changed";
       //IncidenceChanger::assignIncidence( mEvent, event );
       writeEvent( mEvent );
@@ -303,7 +306,9 @@ bool KOEventEditor::processInput()
     }
   }
   // if "this" was deleted, freeBusy is 0 (being a guardedptr)
-  if ( freeBusy ) freeBusy->cancelReload();
+  if ( freeBusy ) {
+    freeBusy->cancelReload();
+  }
 
   return true;
 }
@@ -357,32 +362,39 @@ void KOEventEditor::writeEvent( Event *event )
 
 bool KOEventEditor::validateInput()
 {
-  if ( !mGeneral->validateInput() ) return false;
-  if ( !mDetails->validateInput() ) return false;
-  if ( !mRecurrence->validateInput() ) return false;
+  if ( !mGeneral->validateInput() ) {
+    return false;
+  }
+  if ( !mDetails->validateInput() ) {
+    return false;
+  }
+  if ( !mRecurrence->validateInput() ) {
+    return false;
+  }
 
   return true;
 }
 
 int KOEventEditor::msgItemDelete()
 {
-  return KMessageBox::warningContinueCancel(this,
-      i18n("This item will be permanently deleted."),
-      i18n("KOrganizer Confirmation"),KGuiItem(i18n("Delete"),"edit-delete"));
+  return KMessageBox::warningContinueCancel(
+    this,
+    i18nc( "@info", "This item will be permanently deleted." ),
+    i18nc( "@title:window", "KOrganizer Confirmation" ),
+    KGuiItem( i18nc( "@action:button", "Delete" ), "edit-delete" ) );
 }
 
-void KOEventEditor::loadTemplate( /*const*/ CalendarLocal& cal )
+void KOEventEditor::loadTemplate( CalendarLocal &cal )
 {
-  const Event::List events = cal.events();
+  Event::List events = cal.events();
   if ( events.count() == 0 ) {
-    KMessageBox::error( this,
-        i18n("Template does not contain a valid event.") );
+    KMessageBox::error( this, i18nc( "@info", "Template does not contain a valid event." ) );
   } else {
     readEvent( events.first(), true );
   }
 }
 
-QStringList& KOEventEditor::templates() const
+QStringList &KOEventEditor::templates() const
 {
   return KOPrefs::instance()->mEventTemplates;
 }

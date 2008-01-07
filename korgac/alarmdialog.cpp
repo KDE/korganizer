@@ -50,7 +50,7 @@
 #include <QDataStream>
 #include <QVBoxLayout>
 #include <QBoxLayout>
-#include <QtDBus>
+#include <QtDBus/QtDBus>
 #include <QProcess>
 #include "alarmdialog.moc"
 

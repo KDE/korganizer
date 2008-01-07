@@ -53,7 +53,7 @@ KOEventPopupMenu::KOEventPopupMenu()
   addAction( i18n( "&Show" ), this, SLOT( popupShow() ) );
   mEditOnlyItems.append( addAction( i18n( "&Edit..." ), this, SLOT( popupEdit() ) ) );
 #ifndef KORG_NOPRINTER
-  addAction( KOGlobals::self()->smallIcon( "printer" ), i18n( "&Print..." ),
+  addAction( KOGlobals::self()->smallIcon( "document-print" ), i18n( "&Print..." ),
              this, SLOT( print() ) );
 #endif
   //------------------------------------------------------------------------

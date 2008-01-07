@@ -112,7 +112,7 @@ class KOIncidenceEditor : public KPageDialog
   protected:
     virtual QString type() { return QString(); }
     virtual QStringList& templates() const = 0;
-    virtual void loadTemplate( /*const*/ CalendarLocal& ) = 0;
+    virtual void loadTemplate( CalendarLocal & ) = 0;
 
     void setupAttendeesTab();
     void setupAttachmentsTab();

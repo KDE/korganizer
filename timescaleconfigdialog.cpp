@@ -55,8 +55,8 @@ TimeScaleConfigDialog::TimeScaleConfigDialog( QWidget *parent )
   ui.zoneCombo->addItems( list );
   ui.zoneCombo->setCurrentIndex( 0 );
 
-  ui.addButton->setIcon( KIcon( "plus" ) );
-  ui.removeButton->setIcon( KIcon( "edit-delete" ) );
+  ui.addButton->setIcon( KIcon( "list-add" ) );
+  ui.removeButton->setIcon( KIcon( "list-remove" ) );
   ui.upButton->setIcon( KIcon( "go-up" ) );
   ui.downButton->setIcon( KIcon( "go-down" ) );
 

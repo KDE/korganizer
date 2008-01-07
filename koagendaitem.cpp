@@ -699,13 +699,13 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
   // Also look at #17984
 
   if ( !alarmPxmp ) {
-    alarmPxmp          = new QPixmap( KOGlobals::self()->smallIcon("bell") );
-    recurPxmp          = new QPixmap( KOGlobals::self()->smallIcon("recur") );
-    readonlyPxmp       = new QPixmap( KOGlobals::self()->smallIcon("readonlyevent") );
-    replyPxmp          = new QPixmap( KOGlobals::self()->smallIcon("mail-reply-sender") );
-    groupPxmp          = new QPixmap( KOGlobals::self()->smallIcon("groupevent") );
-    groupPxmpTentative = new QPixmap( KOGlobals::self()->smallIcon("groupeventtentative") );
-    organizerPxmp      = new QPixmap( KOGlobals::self()->smallIcon("organizer") );
+    alarmPxmp          = new QPixmap( KOGlobals::self()->smallIcon( "bell" ) );
+    recurPxmp          = new QPixmap( KOGlobals::self()->smallIcon( "recur" ) );
+    readonlyPxmp       = new QPixmap( KOGlobals::self()->smallIcon( "object-locked" ) );
+    replyPxmp          = new QPixmap( KOGlobals::self()->smallIcon( "mail-reply-sender" ) );
+    groupPxmp          = new QPixmap( KOGlobals::self()->smallIcon( "groupevent" ) );
+    groupPxmpTentative = new QPixmap( KOGlobals::self()->smallIcon( "groupeventtentative" ) );
+    organizerPxmp      = new QPixmap( KOGlobals::self()->smallIcon( "organizer" ) );
   }
 
   QColor bgColor;

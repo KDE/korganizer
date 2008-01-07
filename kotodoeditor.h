@@ -51,7 +51,8 @@ class KOTodoEditor : public KOIncidenceEditor
     void reload();
 
     /**
-      Edit new todo. Use the set* methods to set appropriate default values if needed
+      Edit new todo.
+      Use setter methods to set appropriate default values, as needed.
     */
     void newTodo();
 
@@ -63,24 +64,30 @@ class KOTodoEditor : public KOIncidenceEditor
     void setTexts( const QString &summary,
                    const QString &description = QString(),
                    bool richDescription = false );
+
     /** Edit an existing todo. */
-    void editIncidence(Incidence *);
+    void editIncidence( Incidence * );
 
     /** Set widgets to default values */
     void setDates( const QDateTime &due, bool allDay = true, Todo *relatedTodo = 0 );
+
     /** Read event object and setup widgets accordingly */
-    void readTodo(Todo *);
+    void readTodo( Todo * );
+
     /** Write event settings to event object */
-    void writeTodo(Todo *);
+    void writeTodo( Todo * );
 
     /** Check if the input is valid. */
     bool validateInput();
-    /** Process user input and create or update event. Returns false if input
-     * is not valid */
+
+    /**
+      Process user input and create or update event.
+      Returns false if input is not valid.
+    */
     bool processInput();
 
     /** This todo has been modified externally */
-    void modified (int change=0);
+    void modified( int change=0 );
 
   protected slots:
     void loadDefaults();
@@ -88,8 +95,8 @@ class KOTodoEditor : public KOIncidenceEditor
     void slotSaveTemplate( const QString & );
 
   protected:
-    void loadTemplate( /*const*/ CalendarLocal& );
-    QStringList& templates() const;
+    void loadTemplate( CalendarLocal & );
+    QStringList &templates() const;
     QString type() { return "Todo"; }
     void setupGeneral();
     void setupRecurrence();
@@ -97,7 +104,6 @@ class KOTodoEditor : public KOIncidenceEditor
 
   private:
     Todo *mTodo;
-
     Todo *mRelatedTodo;
 
     KOEditorGeneralTodo *mGeneral;

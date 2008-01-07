@@ -32,9 +32,9 @@
 
 class QDateTime;
 namespace KCal {
-class Calendar;
-class Journal;
-class Incidence;
+  class Calendar;
+  class Journal;
+  class Incidence;
 }
 using namespace KCal;
 
@@ -66,11 +66,12 @@ class KOJournalEditor : public KOIncidenceEditor
       Sets the given summary and description. If description is empty and the
       summary contains multiple lines, the summary will be used as description
       and only the first line of summary will be used as the summary.
-        @param summary The summary of the new journal. If description is empty and summary
-                    contains newlines, the summary will only be the first line of the string.
-        @param description The extensive contents of the new journal. If empty and
-                    summary contains line breaks, the summary will be used as
-                    description and only the first line will be the summary.
+      @param summary The summary of the new journal. If description is empty
+      and summary contains newlines, the summary will only be the first line
+      of the string.
+      @param description The extensive contents of the new journal. If empty and
+      summary contains line breaks, the summary will be used as description and
+      only the first line will be the summary.
     */
     void setTexts( const QString &summary,
                    const QString &description = QString(),
@@ -81,22 +82,29 @@ class KOJournalEditor : public KOIncidenceEditor
 
     /** Set date widget to default values */
     void setDate( const QDate &date );
+
     /** Set time widget to default values */
     void setTime( const QTime &time );
+
     /** Read event object and setup widgets accordingly */
     void readJournal( Journal * );
+
     /** Write event settings to event object */
     void writeJournal( Journal * );
 
     int msgItemDelete();
+
     /** Check if the input is valid. */
     bool validateInput();
-    /** Process user input and create or update event. Returns false if input
-     * is not valid */
+
+    /**
+      Process user input and create or update event.
+      Returns false if input is not valid.
+    */
     bool processInput();
 
     /** This Journal has been modified externally */
-    void modified (int change=0);
+    void modified( int change=0 );
 
   protected slots:
     void loadDefaults();
@@ -109,8 +117,9 @@ class KOJournalEditor : public KOIncidenceEditor
     void setupGeneral();
 //    int msgItemDelete();
 
-    void loadTemplate( /*const*/ CalendarLocal& );
-    QStringList& templates() const;
+    void loadTemplate( CalendarLocal & );
+    QStringList &templates() const;
+
   private:
     Journal *mJournal;
     KOEditorGeneralJournal *mGeneral;

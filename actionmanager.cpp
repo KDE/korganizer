@@ -79,7 +79,7 @@
 #include <QTimer>
 #include <QLabel>
 #include <kicon.h>
-#include <QtDBus>
+#include <QtDBus/QtDBus>
 
 // FIXME: Several places in the file don't use KConfigXT yet!
 KOWindowList *ActionManager::mWindowList = 0;

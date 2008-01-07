@@ -43,10 +43,10 @@ class QSpinBox;
 class QStackedWidget;
 
 namespace KPIM {
-class KDateEdit;
+  class KDateEdit;
 }
 namespace KCal {
-class Incidence;
+  class Incidence;
 }
 using namespace KCal;
 
@@ -120,7 +120,11 @@ class RecurMonthly : public RecurBase
 class RecurYearly : public RecurBase
 {
   public:
-    enum YearlyType { byDay, byPos, byMonth };
+    enum YearlyType {
+      byDay,
+      byPos,
+      byMonth
+    };
 
     explicit RecurYearly( QWidget *parent = 0 );
 
@@ -158,7 +162,12 @@ class RecurrenceChooser : public QWidget
   public:
     explicit RecurrenceChooser( QWidget *parent = 0 );
 
-    enum { Daily, Weekly, Monthly, Yearly };
+    enum {
+      Daily,
+      Weekly,
+      Monthly,
+      Yearly
+    };
 
     void setType( int );
     int type();
@@ -181,7 +190,7 @@ class RecurrenceChooser : public QWidget
 class ExceptionsBase
 {
   public:
-	virtual ~ExceptionsBase(){}
+    virtual ~ExceptionsBase(){}
     virtual void setDates( const DateList & ) = 0;
     virtual DateList dates() = 0;
 };
@@ -221,7 +230,7 @@ class ExceptionsDialog : public KDialog, public ExceptionsBase
 class RecurrenceRangeBase
 {
   public:
-	virtual ~RecurrenceRangeBase() {}
+    virtual ~RecurrenceRangeBase() {}
     virtual void setDefaults( const QDateTime &from ) = 0;
 
     virtual void setDuration( int ) = 0;
@@ -291,12 +300,19 @@ class KOEditorRecurrence : public QWidget
     explicit KOEditorRecurrence ( QWidget *parent = 0 );
     virtual ~KOEditorRecurrence();
 
-    enum { Daily, Weekly, Monthly, Yearly };
+    enum {
+      Daily,
+      Weekly,
+      Monthly,
+      Yearly
+    };
 
     /** Set widgets to default values */
     void setDefaults( const QDateTime &from, const QDateTime &to, bool allday );
+
     /** Read event object and setup widgets accordingly */
     void readIncidence( Incidence * );
+
     /** Write event settings to event object */
     void writeIncidence( Incidence * );
 

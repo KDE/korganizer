@@ -130,9 +130,9 @@ void FreeBusyItem::updateItem()
   setListViewText( 2, mAttendee->roleStr() );
   setListViewText( 3, mAttendee->statusStr() );
   if ( mAttendee->RSVP() && !mAttendee->email().isEmpty() ) {
-    setPixmap( 4, KOGlobals::self()->smallIcon( "mailappt" ) );
+    setPixmap( 4, KOGlobals::self()->smallIcon( "mail-flag" ) );
   } else {
-    setPixmap( 4, KOGlobals::self()->smallIcon( "nomailappt" ) );
+    setPixmap( 4, KOGlobals::self()->smallIcon( "mail-queue" ) );
   }
 }
 
@@ -205,75 +205,76 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent )
   controlLayout->setSpacing( topLayout->spacing() );
   topLayout->addItem( controlLayout );
 
-  QString whatsThis = i18n("Sets the zoom level on the Gantt chart. "
-                           "'Hour' shows a range of several hours, "
-                           "'Day' shows a range of a few days, "
-                           "'Week' shows a range of a few months, "
-                           "and 'Month' shows a range of a few years, "
-                           "while 'Automatic' selects the range most "
-                           "appropriate for the current event or to-do.");
-  QLabel *label = new QLabel( i18n( "Scale: " ), this );
+  QString whatsThis = i18nc( "@info:whatsthis",
+                             "Sets the zoom level on the Gantt chart. "
+                             "'Hour' shows a range of several hours, "
+                             "'Day' shows a range of a few days, "
+                             "'Week' shows a range of a few months, "
+                             "and 'Month' shows a range of a few years, "
+                             "while 'Automatic' selects the range most "
+                             "appropriate for the current event or to-do." );
+  QLabel *label = new QLabel( i18nc( "@label", "Scale: " ), this );
   label->setWhatsThis( whatsThis );
   controlLayout->addWidget( label );
 
   scaleCombo = new KComboBox( this );
   scaleCombo->setWhatsThis( whatsThis );
-  scaleCombo->addItem( i18n( "Hour" ) );
-  scaleCombo->addItem( i18n( "Day" ) );
-  scaleCombo->addItem( i18n( "Week" ) );
-  scaleCombo->addItem( i18n( "Month" ) );
-  scaleCombo->addItem( i18n( "Automatic" ) );
+  scaleCombo->addItem( i18nc( "@item:inlistbox range in hours", "Hour" ) );
+  scaleCombo->addItem( i18nc( "@item:inlistbox range in days", "Day" ) );
+  scaleCombo->addItem( i18nc( "@item:inlistbox range in weeks", "Week" ) );
+  scaleCombo->addItem( i18nc( "@item:inlistbox range in months", "Month" ) );
+  scaleCombo->addItem( i18nc( "@item:inlistbox range is computed automatically", "Automatic" ) );
   scaleCombo->setCurrentIndex( 0 ); // start with "hour"
   connect( scaleCombo, SIGNAL( activated( int ) ),
            SLOT( slotScaleChanged( int ) ) );
   controlLayout->addWidget( scaleCombo );
 
-  QPushButton *button = new QPushButton( i18n( "Center on Start" ), this );
-  button->setWhatsThis(
-    i18n("Centers the Gantt chart on the start time "
-         "and day of this event.") );
+  QPushButton *button = new QPushButton( i18nc( "@action:button", "Center on Start" ), this );
+  button->setWhatsThis( i18nc( "@info:whatsthis",
+                               "Centers the Gantt chart on the start time "
+                               "and day of this event." ) );
   connect( button, SIGNAL( clicked() ), SLOT( slotCenterOnStart() ) );
   controlLayout->addWidget( button );
 
-  button = new QPushButton( i18n( "Zoom to Fit" ), this );
-  button->setWhatsThis(
-    i18n("Zooms the Gantt chart so that you can see the "
-         "entire duration of the event on it.") );
+  button = new QPushButton( i18nc( "@action:button", "Zoom to Fit" ), this );
+  button->setWhatsThis( i18nc( "@info:whatsthis",
+                               "Zooms the Gantt chart so that you can see the "
+                               "entire duration of the event on it." ) );
   connect( button, SIGNAL( clicked() ), SLOT( slotZoomToTime() ) );
   controlLayout->addWidget( button );
 
   controlLayout->addStretch( 1 );
 
-  button = new QPushButton( i18n( "Pick Date" ), this );
-  button->setWhatsThis(
-    i18n("Moves the event to a date and time when all the "
-         "attendees are free.") );
+  button = new QPushButton( i18nc( "@action:button", "Pick Date" ), this );
+  button->setWhatsThis( i18nc( "@info:whatsthis",
+                               "Moves the event to a date and time when all "
+                               "the attendees are free." ) );
   connect( button, SIGNAL( clicked() ), SLOT( slotPickDate() ) );
   controlLayout->addWidget( button );
 
   controlLayout->addStretch( 1 );
 
-  button = new QPushButton( i18n("Reload"), this );
-  button->setWhatsThis(
-    i18n("Reloads Free/Busy data for all attendees from "
-         "the corresponding servers.") );
+  button = new QPushButton( i18nc( "@action:button reload freebusy data", "Reload" ), this );
+  button->setWhatsThis( i18nc( "@info:whatsthis",
+                               "Reloads Free/Busy data for all attendees from "
+                               "the corresponding servers." ) );
   controlLayout->addWidget( button );
   connect( button, SIGNAL( clicked() ), SLOT( manualReload() ) );
 
   mGanttView = new KDGanttView( this, "mGanttView" );
-  mGanttView->setWhatsThis(
-    i18n("Shows the free/busy status of all attendees. "
-         "Double-clicking on an attendees entry in the "
-         "list will allow you to enter the location of their "
-         "Free/Busy Information.") );
+  mGanttView->setWhatsThis( i18nc( "@info:whatsthis",
+                                   "Shows the free/busy status of all attendees. "
+                                   "Double-clicking on an attendees entry in the "
+                                   "list will allow you to enter the location of "
+                                   "their Free/Busy Information." ) );
   topLayout->addWidget( mGanttView );
   // Remove the predefined "Task Name" column
   mGanttView->removeColumn( 0 );
-  mGanttView->addColumn( i18n("Name"), 180 );
-  mGanttView->addColumn( i18n("Email"), 180 );
-  mGanttView->addColumn( i18n("Role"), 60 );
-  mGanttView->addColumn( i18n("Status"), 100 );
-  mGanttView->addColumn( i18n("RSVP"), 35 );
+  mGanttView->addColumn( i18nc( "@title:column attendee name", "Name" ), 180 );
+  mGanttView->addColumn( i18nc( "@title:column attendee email", "Email" ), 180 );
+  mGanttView->addColumn( i18nc( "@title:column attendee role", "Role" ), 60 );
+  mGanttView->addColumn( i18nc( "@title:column attendee status", "Status" ), 100 );
+  mGanttView->addColumn( i18nc( "@title:column attendee has RSVPed?", "RSVP" ), 35 );
   if ( KOPrefs::instance()->mCompactDialogs ) {
     mGanttView->setFixedHeight( 78 );
   }
@@ -388,7 +389,8 @@ void KOEditorFreeBusy::readEvent( Event *event )
   updateStatusSummary();
 }
 
-void KOEditorFreeBusy::slotIntervalColorRectangleMoved( const QDateTime& start, const QDateTime& end )
+void KOEditorFreeBusy::slotIntervalColorRectangleMoved( const QDateTime &start,
+                                                        const QDateTime &end )
 {
   mDtStart = start;
   mDtEnd = end;
@@ -503,19 +505,20 @@ void KOEditorFreeBusy::slotPickDate()
     if ( start == dtStart && end == dtEnd ) {
       KMessageBox::information(
         this,
-        i18n( "The meeting already has suitable start/end times." ), QString(),
+        i18nc( "@info", "The meeting already has suitable start/end times." ),
+        QString(),
         "MeetingTimeOKFreeBusy" );
     } else {
       emit dateTimesChanged( start.dateTime(), end.dateTime() );
       slotUpdateGanttView( start.dateTime(), end.dateTime() );
       KMessageBox::information(
         this,
-        i18n( "The meeting has been moved to\nStart: %1\nEnd: %2." ,
-              start.dateTime().toString(), end.dateTime().toString() ), QString(),
+        i18nc( "@info", "The meeting has been moved to\nStart: %1\nEnd: %2.",
+               start.dateTime().toString(), end.dateTime().toString() ), QString(),
         "MeetingMovedFreeBusy" );
     }
   } else {
-    KMessageBox::sorry( this, i18n( "No suitable date found." ) );
+    KMessageBox::sorry( this, i18nc( "@info", "No suitable date found." ) );
   }
 }
 
@@ -651,10 +654,12 @@ void KOEditorFreeBusy::updateStatusSummary()
   }
   if ( total > 1 && mIsOrganizer ) {
     mStatusSummaryLabel->show();
-    mStatusSummaryLabel->setText(
-      i18n( "Of the %1 participants, %2 have accepted, %3"
-            " have tentatively accepted, and %4 have declined.",
-            total, accepted, tentative, declined ) );
+    mStatusSummaryLabel->setText( i18nc( "@label",
+                                         "Of the %1 participants, "
+                                         "%2 have accepted, "
+                                         "%3 have tentatively accepted, and "
+                                         "%4 have declined.",
+                                         total, accepted, tentative, declined ) );
   } else {
     mStatusSummaryLabel->hide();
   }
@@ -687,10 +692,11 @@ void KOEditorFreeBusy::reload()
 {
   FreeBusyItem *item = static_cast<FreeBusyItem *>( mGanttView->firstChild() );
   while ( item ) {
-    if (  mForceDownload )
+    if ( mForceDownload ) {
       item->startDownload( mForceDownload );
-    else
+    } else {
       updateFreeBusyData( item );
+    }
     item = static_cast<FreeBusyItem *>( item->nextSibling() );
   }
 }

@@ -48,9 +48,6 @@ class AlarmDockWindow : public KSystemTrayIcon
     void suspendAllSignal();
     void dismissAllSignal();
 
-  protected:
-//    void closeEvent( QCloseEvent * );
-
   protected slots:
     void slotActivated( QSystemTrayIcon::ActivationReason reason );
     void slotQuit();

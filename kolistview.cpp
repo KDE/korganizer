@@ -113,7 +113,7 @@ bool KOListView::ListItemVisitor::visit( Event *e )
   else
     mItem->setSortKey(2,"0");
 
-  static const QPixmap eventPxmp = KOGlobals::self()->smallIcon("appointment");
+  static const QPixmap eventPxmp = KOGlobals::self()->smallIcon( "view-calendar-day" );
   mItem->setPixmap(0, eventPxmp);
 
   mItem->setText( 3,e->dtStartDateStr( true, KOPrefs::instance()->timeSpec() ) );
@@ -135,7 +135,7 @@ bool KOListView::ListItemVisitor::visit( Event *e )
 
 bool KOListView::ListItemVisitor::visit(Todo *t)
 {
-  static const QPixmap todoPxmp = KOGlobals::self()->smallIcon("view-calendar-tasks");
+  static const QPixmap todoPxmp = KOGlobals::self()->smallIcon( "view-calendar-tasks" );
   static const QPixmap todoDonePxmp = KOGlobals::self()->smallIcon("checkedbox");
   mItem->setPixmap(0, t->isCompleted() ? todoDonePxmp : todoPxmp );
   mItem->setText(0,t->summary());
@@ -189,7 +189,7 @@ bool KOListView::ListItemVisitor::visit(Todo *t)
 
 bool KOListView::ListItemVisitor::visit( Journal *t )
 {
-  static const QPixmap jrnalPxmp = KOGlobals::self()->smallIcon( "journal" );
+  static const QPixmap jrnalPxmp = KOGlobals::self()->smallIcon( "view-pim-journal" );
   mItem->setPixmap( 0, jrnalPxmp );
   if ( t->summary().isEmpty() ) {
     mItem->setText( 0, t->description().section( "\n", 0, 0 ) );
