@@ -20,5 +20,3 @@ kde4_add_executable(korgplugins TEST ${korgplugins_SRCS})
 
 target_link_libraries(korgplugins korganizerprivate ${KDE4_KIO_LIBS})
 
-
-

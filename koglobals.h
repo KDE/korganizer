@@ -39,7 +39,7 @@ namespace LibKHolidays {
   class KHolidays;
 }
 
-class KORGANIZER_EXPORT KOGlobals
+class KORGANIZERPRIVATE_EXPORT KOGlobals
 {
   public:
     static KOGlobals *self();

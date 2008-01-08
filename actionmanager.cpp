@@ -1879,6 +1879,12 @@ void ActionManager::goDate( const QString &date )
   goDate( KGlobal::locale()->readDate( date ) );
 }
 
+void ActionManager::showDate(const QDate & date)
+{
+  mCalendarView->showDate( date );
+}
+
+
 void ActionManager::updateUndoAction( const QString &text )
 {
   mUndoAction->setText( i18n( "Undo" ) );

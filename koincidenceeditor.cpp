@@ -57,7 +57,7 @@
 KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
                                       Calendar *calendar, QWidget *parent )
   : KPageDialog( parent ),
-    mDetails( 0 ), mAttachments( 0 )
+    mDetails( 0 ), mAttachments( 0 ), mIsCounter( false )
 {
   setFaceType( KPageDialog::Tabbed );
   setCaption( caption );
@@ -138,10 +138,6 @@ void KOIncidenceEditor::slotOk()
   // when "this" is still valid
   QPointer<QWidget> ptr( this );
   if ( processInput() && ptr ) accept();
-}
-
-void KOIncidenceEditor::updateCategoryConfig()
-{
 }
 
 void KOIncidenceEditor::slotCancel()
@@ -431,6 +427,15 @@ void KOIncidenceEditor::addAttendees( const QStringList &attendees )
   }
 }
 
+void KOIncidenceEditor::selectInvitationCounterProposal(bool enable)
+{
+  mIsCounter = enable;
+  if ( mIsCounter ) {
+    setCaption( i18n( "Counter proposal" ) );
+    setButtonText( KDialog::Ok, i18n( "Counter proposal" ) );
+    enableButtonApply( false );
+  }
+}
 
 
 #include "koincidenceeditor.moc"

@@ -36,11 +36,8 @@
 
 bool IncidenceChanger::beginChange( Incidence * incidence )
 {
-  if ( !incidence ) {
-    return false;
-  }
-
-  kDebug(5850) << "\"" << incidence->summary() << "\"";
+  if ( !incidence ) return false;
+  kDebug(5850)<<"IncidenceChanger::beginChange for incidence \""<<incidence->summary()<<"\"";
   return mCalendar->beginChange( incidence );
 }
 
@@ -185,8 +182,6 @@ class IncidenceChanger::ComparisonVisitor : public IncidenceBase::Visitor
     IncidenceBase *mIncidence2;
 };
 
-// FIXME: this doesn't work since incidences don't have proper assignment operators
-#if 0
 class IncidenceChanger::AssignmentVisitor : public IncidenceBase::Visitor
 {
   public:
@@ -220,6 +215,7 @@ class IncidenceChanger::AssignmentVisitor : public IncidenceBase::Visitor
         return false;
       }
     }
+#if 0 //disabled, Journal and FreeBusy don't have assignment operators
     bool visit( Journal *journal )
     {
       Journal *j2 = dynamic_cast<Journal*>(mIncidence2);
@@ -240,16 +236,21 @@ class IncidenceChanger::AssignmentVisitor : public IncidenceBase::Visitor
         return false;
       }
     }
-
+#endif
   protected:
     IncidenceBase *mIncidence2;
 };
-#endif
 
 bool IncidenceChanger::incidencesEqual( Incidence *inc1, Incidence *inc2 )
 {
   ComparisonVisitor v;
   return ( v.act( inc1, inc2 ) );
+}
+
+bool IncidenceChanger::assignIncidence( Incidence *inc1, Incidence *inc2 )
+{
+  AssignmentVisitor v;
+  return v.act( inc1, inc2 );
 }
 
 bool IncidenceChanger::myAttendeeStatusChanged( Incidence *oldInc, Incidence *newInc )
@@ -264,7 +265,7 @@ bool IncidenceChanger::myAttendeeStatusChanged( Incidence *oldInc, Incidence *ne
 }
 
 bool IncidenceChanger::changeIncidence( Incidence *oldinc, Incidence *newinc,
-                                        int action )
+                                        int action, bool counter )
 {
   kDebug(5850) << "for incidence \"" << newinc->summary()
                << "\" ( old one was \"" << oldinc->summary() << "\")";
@@ -272,6 +273,10 @@ bool IncidenceChanger::changeIncidence( Incidence *oldinc, Incidence *newinc,
   if ( incidencesEqual( newinc, oldinc ) ) {
     // Don't do anything
     kDebug(5850) << "Incidence not changed";
+    if ( counter ) {
+      KCal::MailScheduler scheduler( mCalendar );
+      scheduler.performTransaction( newinc, KCal::iTIPReply );
+    }
   } else {
     kDebug(5850) << "Changing incidence";
     bool statusChanged = myAttendeeStatusChanged( oldinc, newinc );
@@ -281,19 +286,36 @@ bool IncidenceChanger::changeIncidence( Incidence *oldinc, Incidence *newinc,
     //        for group cheduling. Each implementation could then just do what
     //        it wants with the event. If no groupware is used,use the null
     //        pattern...
-    if ( !KOPrefs::instance()->mUseGroupwareCommunication ||
-         KOGroupware::instance()->sendICalMessage( 0,
-                                                   KCal::iTIPRequest,
-                                                   newinc, false, statusChanged ) ) {
+    bool revert = KOPrefs::instance()->mUseGroupwareCommunication;
+    if ( !counter && revert &&
+        KOGroupware::instance()->sendICalMessage( 0,
+                                                  KCal::iTIPRequest,
+                                                  newinc, false, statusChanged ) ) {
       // Accept the event changes
       if ( action < 0 ) {
         emit incidenceChanged( oldinc, newinc );
       } else {
         emit incidenceChanged( oldinc, newinc, action );
       }
-    } else {
-      // FIXME: Revert the changes
-//      assignIncidence( newinc, oldinc );
+      revert = false;
+    }
+    if ( counter && revert ) {
+      // pseudo counter as done by outlook
+      Event *e = dynamic_cast<Event*>( newinc );
+      if ( e ) {
+        Incidence* tmp = oldinc->clone();
+        tmp->setSummary( i18n("Counter proposal: %1").arg( e->summary() ) );
+        tmp->setDescription( e->description() );
+        tmp->addComment( i18n("Proposed new meeting time: %1 - %2").arg( e->dtStartStr() ).arg( e->dtEndStr() ) );
+        KCal::MailScheduler scheduler( mCalendar );
+        scheduler.performTransaction( tmp, KCal::iTIPReply );
+      } else {
+        kWarning(5850) << k_funcinfo << "Counter proposals only supported for events" << endl;
+      }
+    }
+
+    if ( revert ) {
+      assignIncidence( newinc, oldinc );
       return false;
     }
   }

@@ -245,7 +245,7 @@ void POTDElement::step2Result( KJob* job )
   QDomNodeList divs = imgPage.elementsByTagName("div");
   QString wikipediaLanguage = KGlobal::locale()->language();
   wikipediaLanguage.replace( QRegExp("^([^_][^_]*)_.*$"), "\\1" );
-  for ( int i=0; i<divs.length(); i++ ) {
+  for ( uint i=0; i<divs.length(); i++ ) {
     if ( QString( divs.item(i).attributes().namedItem("class").nodeValue() ) ==
            QString( "description " + wikipediaLanguage ) ) {
       QDomNode descrNode = divs.item(i);
@@ -261,7 +261,7 @@ void POTDElement::step2Result( KJob* job )
 
   // We go through all links and stop at the first right-looking candidate
   QDomNodeList links = imgPage.elementsByTagName("a");
-  for ( int i=0; i<links.length(); i++ ) {
+  for ( uint i=0; i<links.length(); i++ ) {
     QString href = links.item(i).attributes().namedItem("href").nodeValue();
     if ( href.startsWith("http://upload.wikimedia.org/wikipedia/commons/") ) {
       mFullSizeImageUrl = href;
@@ -272,7 +272,7 @@ void POTDElement::step2Result( KJob* job )
   // We get the image's width/height ratio
   mHWRatio = 1.0;
   QDomNodeList images = imgPage.elementsByTagName("img");
-  for ( int i=0; i<links.length(); i++ ) {
+  for ( uint i=0; i<links.length(); i++ ) {
     QDomNamedNodeMap attr = images.item(i).attributes();
     QString src = attr.namedItem("src").nodeValue();
 

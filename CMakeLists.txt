@@ -7,7 +7,7 @@ include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/interfaces
                      ${CMAKE_SOURCE_DIR}/mimelib
                      ${CMAKE_SOURCE_DIR}/korganizer/printing
                      ${CMAKE_SOURCE_DIR}/kdgantt1
-		     ${CMAKE_BINARY_DIR}/libkdepim
+                     ${CMAKE_BINARY_DIR}/libkdepim
                      ${QT_INCLUDES} ${ZLIB_INCLUDE_DIR} )
 
 add_definitions (-DQT3_SUPPORT -DQT3_SUPPORT_WARNINGS)
@@ -25,20 +25,36 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/ical2vcal.cmake ${CMAKE_CURRENT_BINAR
 
 ########### next target ###############
 
-set(korganizer_bin_SRCS
+set(korganizer_SRCS
    main.cpp
    korganizer.cpp
    koapp.cpp
 )
 
 
-kde4_add_executable(korganizer_bin ${korganizer_bin_SRCS})
+kde4_add_executable(korganizer ${korganizer_SRCS})
 
-set_target_properties(korganizer_bin  PROPERTIES OUTPUT_NAME korganizer)
+target_link_libraries(korganizer ${KDE4_KDECORE_LIBS} korganizerprivate)
 
-target_link_libraries(korganizer_bin ${KDE4_KDECORE_LIBS} korganizerprivate)
+install(TARGETS korganizer  DESTINATION ${BIN_INSTALL_DIR} )
 
-install(TARGETS korganizer_bin  DESTINATION ${BIN_INSTALL_DIR} )
+
+########### next target ###############   # FIXME to be removed! (only needed for testing before copying everything to korganizer)
+
+set(theme_bin_SRCS
+   thememain.cpp
+   themeimporter.cpp
+   theme.cpp
+)
+
+
+kde4_add_executable(theme_bin ${theme_bin_SRCS})
+
+set_target_properties(theme_bin  PROPERTIES OUTPUT_NAME thememain)
+
+target_link_libraries(theme_bin ${KDE4_KDECORE_LIBS} korganizerprivate)
+
+install(TARGETS theme_bin  DESTINATION ${BIN_INSTALL_DIR} )
 
 
 ########### next target ###############
@@ -104,7 +120,7 @@ install(TARGETS korganizer_calendar  DESTINATION ${LIB_INSTALL_DIR})
 
 ########### next target ###############
 
-set(korganizer_LIB_SRCS
+set(korganizerprivate_LIB_SRCS
    ${libkdgantt1_SRCS}
    themeimporter.cpp
    theme.cpp
@@ -184,26 +200,28 @@ set(korganizer_LIB_SRCS
    templatemanagementdialog.cpp )
 
 
-kde4_add_kcfg_files(korganizer_LIB_SRCS koprefs_base.kcfgc )
+kde4_add_kcfg_files(korganizerprivate_LIB_SRCS koprefs_base.kcfgc )
 
-kde4_add_ui_files(korganizer_LIB_SRCS filteredit_base.ui koeditoralarms_base.ui publishdialog_base.ui template_management_dialog_base.ui kogroupwareprefspage.ui searchdialog_base.ui timescaleedit_base.ui)
+kde4_add_ui_files(korganizerprivate_LIB_SRCS filteredit_base.ui koeditoralarms_base.ui publishdialog_base.ui template_management_dialog_base.ui kogroupwareprefspage.ui searchdialog_base.ui timescaleedit_base.ui)
 
-qt4_add_resources(korganizer_LIB_SRCS agendaitem_pixmaps/agendaitemtheme.qrc )
+qt4_add_resources(korganizerprivate_LIB_SRCS agendaitem_pixmaps/agendaitemtheme.qrc )
 
-qt4_add_dbus_adaptor(korganizer_LIB_SRCS org.kde.korganizer.Korganizer.xml korganizerifaceimpl.h KOrganizerIfaceImpl )
-qt4_add_dbus_adaptor(korganizer_LIB_SRCS org.kde.Korganizer.Calendar.xml actionmanager.h ActionManager )
-qt4_add_dbus_interfaces(korganizer_LIB_SRCS org.kde.korganizer.Korganizer.xml )
-qt4_add_dbus_interfaces(korganizer_LIB_SRCS ${CMAKE_BINARY_DIR}/kmail/org.kde.kmail.kmail.xml)
+qt4_add_dbus_adaptor(korganizerprivate_LIB_SRCS org.kde.korganizer.Korganizer.xml korganizerifaceimpl.h KOrganizerIfaceImpl )
+qt4_add_dbus_adaptor(korganizerprivate_LIB_SRCS org.kde.Korganizer.Calendar.xml actionmanager.h ActionManager )
+qt4_add_dbus_interfaces(korganizerprivate_LIB_SRCS org.kde.korganizer.Korganizer.xml )
+qt4_add_dbus_interfaces(korganizerprivate_LIB_SRCS ${CMAKE_BINARY_DIR}/kmail/org.kde.kmail.kmail.xml)
 
-kde4_add_library(korganizerprivate SHARED ${korganizer_LIB_SRCS})
+kde4_add_library(korganizerprivate SHARED ${korganizerprivate_LIB_SRCS})
 
 add_dependencies(korganizerprivate kmail)
 
-target_link_libraries(korganizerprivate ${KDE4_KNEWSTUFF2_LIBS} ${KDE4_KABC_LIBRARY} ${KDE4_KUTILS_LIBRARY} ${KDE4_KCAL_LIBRARY} ${KDE4_KPIMIDENTITIES_LIBRARY} ${KDE4_KMIME_LIBRARY} kdepim korganizer_eventviewer korganizer_calendar kocorehelper korg_stdprinting kholidays korganizer_interfaces )
+target_link_libraries(korganizerprivate ${KDE4_KNEWSTUFF2_LIBS} ${KDE4_KABC_LIBRARY} ${KDE4_KUTILS_LIBRARY} ${KDE4_KCAL_LIBRARY} ${KDE4_KPIMIDENTITIES_LIBRARY} ${KDE4_KMIME_LIBRARY}
+                                                      kdepim korganizer_eventviewer korganizer_calendar kocorehelper
+                                                      korg_stdprinting kholidays korganizer_interfaces )
 
 set_target_properties(korganizerprivate PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
 
-install(TARGETS korganizerprivate DESTINATION ${LIB_INSTALL_DIR})
+install(TARGETS korganizerprivate  DESTINATION ${LIB_INSTALL_DIR})
 
 
 ########### install files ###############

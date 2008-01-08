@@ -21,9 +21,7 @@
 
 #include "kohelper.h"
 
-#define protected public
 #include <kdgantt1/KDGanttViewSubwidgets.h>
-#undef public
 
 #include <kcal/calendar.h>
 #include <kcal/incidenceformatter.h>
@@ -120,13 +118,13 @@ void TimelineSubItem::showItem(bool show, int coordY)
     y = coordY;
   else
     y = getCoordY();
-  int startX = myGanttView->myTimeHeader->getCoordX(myStartTime);
-  int endX = myGanttView->myTimeHeader->getCoordX(myEndTime);
+  int startX = myGanttView->timeHeaderWidget()->getCoordX(myStartTime);
+  int endX = myGanttView->timeHeaderWidget()->getCoordX(myEndTime);
 
   const int mw = qMax( 1, qMin( 4, endX - startX ) );
   if ( !mLeft || mw != mMarkerWidth ) {
     if ( !mLeft ) {
-      mLeft = new KDCanvasPolygon( myGanttView->myTimeTable, this, Type_is_KDGanttViewItem );
+      mLeft = new KDCanvasPolygon( myGanttView->timeTableWidget(), this, Type_is_KDGanttViewItem );
       mLeft->setBrush( Qt::black );
     }
     QPointArray a = QPointArray( 4 );
@@ -138,7 +136,7 @@ void TimelineSubItem::showItem(bool show, int coordY)
   }
   if ( !mRight || mw != mMarkerWidth ) {
     if ( !mRight ) {
-      mRight = new KDCanvasPolygon( myGanttView->myTimeTable, this, Type_is_KDGanttViewItem );
+      mRight = new KDCanvasPolygon( myGanttView->timeTableWidget(), this, Type_is_KDGanttViewItem );
       mRight->setBrush( Qt::black );
     }
     QPointArray a = QPointArray( 4 );

@@ -315,6 +315,7 @@ void KOEditorGeneral::selectCategories()
   categoryDialog->setSelected( mCategories );
 
   connect( categoryDialog, SIGNAL(editCategories()), this, SIGNAL(openCategoryDialog()) );
+  connect(this, SIGNAL(updateCategoryConfig()), categoryDialog, SLOT(updateCategoryConfig()));
 
   if ( categoryDialog->exec() ) {
     setCategories( categoryDialog->selectedCategories() );

@@ -119,6 +119,7 @@ class KOEditorGeneral : public QObject
 
   signals:
     void openCategoryDialog();
+    void updateCategoryConfig();
     void focusReceivedSignal();
 
   protected:

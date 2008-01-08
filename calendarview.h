@@ -88,7 +88,7 @@ class CalendarViewExtension : public QWidget
   @short main calendar view widget
   @author Cornelius Schumacher
 */
-class KORGANIZER_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::CalendarObserver
+class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::CalendarObserver
 {
   Q_OBJECT
   public:
@@ -546,6 +546,9 @@ class KORGANIZER_EXPORT CalendarView : public KOrg::CalendarViewBase, public Cal
 
     /** Move the current view date to the specified date */
     void goDate( const QDate &date );
+
+    /** Show the given date without changing date selection length. */
+    void showDate( const QDate &date );
 
     /** Move the current view date to today */
     void goToday();

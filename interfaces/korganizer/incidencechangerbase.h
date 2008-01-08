@@ -38,7 +38,7 @@ class KORGANIZER_INTERFACES_EXPORT IncidenceChangerBase : public QObject
 {
 Q_OBJECT
 public:
-  explicit IncidenceChangerBase( Calendar*cal, QObject *parent = 0 );
+  explicit IncidenceChangerBase( Calendar *cal, QObject *parent = 0 );
 
   virtual ~IncidenceChangerBase();
 
@@ -50,7 +50,7 @@ public:
 
   virtual bool addIncidence( Incidence *incidence, QWidget *parent = 0 ) = 0;
   virtual bool changeIncidence( Incidence *newinc, Incidence *oldinc,
-                                int action = -1 ) = 0;
+                                int action = -1, bool counter = false ) = 0;
   virtual bool deleteIncidence( Incidence *incidence ) = 0;
   virtual bool cutIncidence( Incidence *incidence ) = 0;
 

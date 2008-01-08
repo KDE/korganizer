@@ -19,9 +19,7 @@
 #ifndef KORG_TIMELINEITEM_H
 #define KORG_TIMELINEITEM_H
 
-#define private protected
 #include <kdgantt1/KDGanttViewTaskItem.h>
-#undef protected
 
 #include <QMap>
 #include <QList>

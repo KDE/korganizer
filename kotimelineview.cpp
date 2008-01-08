@@ -308,7 +308,9 @@ void KOTimelineView::removeIncidence(KCal::Incidence * incidence)
     typedef QMap<KCal::ResourceCalendar*, M2_t> M1_t;
     for ( M1_t::ConstIterator it1 = mCalendarItemMap.constBegin(); it1 != mCalendarItemMap.constEnd(); ++it1 ) {
       for ( M2_t::ConstIterator it2 = it1.data().constBegin(); it2 != it1.data().constEnd(); ++it2 ) {
-        it2.data()->removeIncidence( incidence );
+        if ( it2.data() ) {
+          it2.data()->removeIncidence( incidence );
+        }
       }
     }
   }

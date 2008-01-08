@@ -37,7 +37,7 @@ class QStringList;
 
 QColor getTextColor( const QColor &c );
 
-class KORGANIZER_EXPORT KOPrefs : public KOPrefsBase
+class KORGANIZERPRIVATE_EXPORT KOPrefs : public KOPrefsBase
 {
   public:
     virtual ~KOPrefs();
