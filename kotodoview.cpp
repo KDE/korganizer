@@ -1081,9 +1081,8 @@ CalPrinter::PrintType KOTodoView::printType()
 void KOTodoView::printTodo()
 {
 #ifndef KORG_NOPRINTER
-  Calendar *cal = 0;
   KOCoreHelper helper;
-  CalPrinter printer( this, cal, &helper );
+  CalPrinter printer( this, BaseView::calendar(), &helper );
   connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
 
   Incidence::List selectedIncidences;
