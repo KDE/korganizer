@@ -57,7 +57,7 @@ class FilterEditDialog : public KDialog
   public slots:
     void updateFilterList();
     void updateCategoryConfig();
-    void setDialogConsistent(bool consistent);
+    void setDialogConsistent( bool consistent );
 
   private:
     FilterEdit *mFilterEdit;
@@ -71,7 +71,7 @@ class FilterEdit : public QWidget, Ui::FilterEdit_base
 {
   Q_OBJECT
   public:
-    explicit FilterEdit( QList<CalFilter*> *filters, QWidget *parent);
+    explicit FilterEdit( QList<CalFilter*> *filters, QWidget *parent );
     ~FilterEdit();
 
     void updateFilterList();
@@ -87,12 +87,12 @@ class FilterEdit : public QWidget, Ui::FilterEdit_base
     void filterSelected();
     void bNewPressed();
     void bDeletePressed();
-    void updateSelectedName(const QString &);
-    void updateCategorySelection(const QStringList &categories);
+    void updateSelectedName( const QString & );
+    void updateCategorySelection( const QStringList &categories );
     void editCategorySelection();
 
   private:
-    void filterSelected(CalFilter *f);
+    void filterSelected( CalFilter *f );
 
     QList<CalFilter*> *mFilters;
     CalFilter *current;
