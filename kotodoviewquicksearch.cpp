@@ -62,7 +62,7 @@ KOTodoListViewQuickSearch::KOTodoListViewQuickSearch( QWidget *parent,
   QHBoxLayout *layout = new QHBoxLayout( this );
 
   mQuickSearchLine = new KOTodoListViewQuickSearchLine( this, listViews );
-  mQuickSearchLine->setClickMessage( i18n("Search") );
+  mQuickSearchLine->setClickMessage( i18nc( "@label in QuickSearchLine", "Search") );
   layout->addWidget( mQuickSearchLine );
   layout->setContentsMargins( 0, 0, 0, 0 );
 
