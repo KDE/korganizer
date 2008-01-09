@@ -170,7 +170,9 @@ void FilterEdit::saveChanges()
 
 void FilterEdit::filterSelected()
 {
-  filterSelected( mFilters->at(mRulesList->currentRow()) );
+  if ( mRulesList->currentRow() < mFilters->count() ) {
+    filterSelected( mFilters->at( mRulesList->currentRow() ) );
+  }
 }
 
 void FilterEdit::filterSelected(CalFilter *filter)
