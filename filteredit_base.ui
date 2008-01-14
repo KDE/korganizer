@@ -206,6 +206,9 @@
            <property name="whatsThis" >
             <string>When this option is enabled, this filter will show all items which do &lt;i>not&lt;/i> contain the selected categories.</string>
            </property>
+           <property name="checked" >
+             <bool>true</bool>
+           </property>
            <property name="text" >
             <string>Show all except selected</string>
            </property>
