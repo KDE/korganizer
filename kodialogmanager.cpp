@@ -92,6 +92,7 @@ KODialogManager::KODialogManager( CalendarView *mainView ) :
   mFilterEditDialog = 0;
 
   mCategoryEditDialog = new KPIM::CategoryEditDialog( KOPrefs::instance(), mMainView, true );
+  mCategoryEditDialog->setHelp(QString(), "korganizer");
   KWindowSystem::setMainWindow( mCategoryEditDialog, 0 );
   connect( mainView, SIGNAL( categoriesChanged() ),
            mCategoryEditDialog, SLOT( reload() ) );
