@@ -41,6 +41,7 @@
 #include <klineedit.h>
 #include <kvbox.h>
 #include <KComboBox>
+#include <KTextBrowser>
 
 #include <QLabel>
 #include <QLayout>
@@ -70,7 +71,8 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent)
   QVBoxLayout *topLayout = new QVBoxLayout(topFrame);
   topLayout->setSpacing(spacingHint());
 
-  QLabel *descLabel = new QLabel(
+  KTextBrowser *descLabel = new KTextBrowser(topFrame);
+  descLabel->setText(
     i18n("Archiving saves old items into the given file and "
          "then deletes them in the current calendar. If the archive file "
          "already exists they will be added. "
@@ -78,10 +80,8 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent)
          "to your calendar, use the &quot;Merge Calendar&quot; function. "
          "You can view an archive by opening it in KOrganizer like any "
          "other calendar. It is not saved in a special format, but as "
-         "vCalendar.\">How to restore</a>)"),
-    topFrame);
+         "vCalendar.\">How to restore</a>)"));
   descLabel->setTextInteractionFlags(Qt::TextSelectableByMouse|Qt::TextSelectableByKeyboard | Qt::LinksAccessibleByMouse | Qt::LinksAccessibleByKeyboard );
-  descLabel->setWordWrap( true );
   topLayout->addWidget(descLabel);
 
   QButtonGroup* radioBG = new QButtonGroup( this );
