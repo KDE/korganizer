@@ -248,6 +248,7 @@ KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent )
   mNameEdit->setWhatsThis( whatsThis );
   mNameEdit->setClickMessage( i18nc( "@label", "Click to add a new attendee" ) );
   attendeeLabel->setBuddy( mNameEdit );
+  mNameEdit->setClearButtonShown(true);
   mNameEdit->installEventFilter( this );
   connect( mNameEdit, SIGNAL(textChanged(const QString&)),
            SLOT(updateAttendeeItem()) );

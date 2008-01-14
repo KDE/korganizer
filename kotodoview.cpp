@@ -446,6 +446,7 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent)
   mQuickAdd = new KLineEdit( this);
   mQuickAdd->setClickMessage(i18n( "Click to add a new to-do" ));
   mQuickAdd->setAcceptDrops( false );
+  mQuickAdd->setClearButtonShown(true);
   topLayout->addWidget( mQuickAdd );
 
   if ( !KOPrefs::instance()->mEnableQuickTodo ) mQuickAdd->hide();
