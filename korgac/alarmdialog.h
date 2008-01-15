@@ -39,6 +39,8 @@ using namespace KCal;
 class KOEventViewer;
 class QSpinBox;
 class KComboBox;
+class QTreeWidget;
+class AlarmListItem;
 
 class AlarmDialog : public KDialog {
   Q_OBJECT
@@ -46,37 +48,41 @@ class AlarmDialog : public KDialog {
     AlarmDialog( QWidget *parent = 0 );
     virtual ~AlarmDialog();
 
-    void setIncidence( Incidence *incidence );
+    void addIncidence( Incidence *incidence, const QDateTime &reminderAt );
     void setRemindAt( const QDateTime &dt );
     void eventNotification();
-    void wakeUp();
 
   public slots:
     void slotOk();
     void slotUser1();
     void slotUser2();
+    void slotUser3();
     void slotSave();
+    void wakeUp();
     void show();
+    void suspend();
+    void suspendAll();
+    void dismissAll();
 
   signals:
-    void finishedSignal( AlarmDialog* );
+    void reminderCount( int count );
 
   private Q_SLOTS:
-    void suspendValueChanged();
-    void suspendUnitChanged();
+    void updateButtons();
+    void showDetails();
 
   private:
     bool startKOrganizer();
-    void setTimer( int seconds );
+    void setTimer();
+    int activeCount();
+    QList<AlarmListItem *> selectedItems() const;
 
-    KOEventViewer *mEventViewer;
-
-    Incidence *mIncidence;
+    QTreeWidget *mIncidenceListView;
+    KOEventViewer *mDetailView;
 
     QSpinBox *mSuspendSpin;
     KComboBox *mSuspendUnit;
     QTimer mSuspendTimer;
-    QDateTime mRemindAt;
 };
 
 #endif

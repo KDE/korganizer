@@ -58,7 +58,6 @@ class KOAlarmClient : public QObject, public KSessionManager
     void debugShowDialog();
 
   public slots:
-    void slotRemove( AlarmDialog *d );
     void slotQuit();
 
   protected slots:
@@ -73,12 +72,12 @@ class KOAlarmClient : public QObject, public KSessionManager
     void saveLastCheckTime();
 
     AlarmDockWindow *mDocker;  // the panel icon
-    QList<AlarmDialog *> mReminders;
-
     KCal::CalendarResources *mCalendar;
 
     QDateTime mLastChecked;
     QTimer mCheckTimer;
+
+    AlarmDialog *mDialog;
 };
 
 #endif
