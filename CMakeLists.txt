@@ -97,13 +97,13 @@ qt4_add_dbus_interfaces(korganizer_eventviewer_LIB_SRCS ${CMAKE_SOURCE_DIR}/knod
 qt4_add_dbus_interfaces(korganizer_eventviewer_LIB_SRCS ${CMAKE_SOURCE_DIR}/kaddressbook/org.kde.KAddressbook.Core.xml)
 
 kde4_add_library(korganizer_eventviewer SHARED ${korganizer_eventviewer_LIB_SRCS})
+add_dependencies(korganizer_eventviewer kmail_xml)
 
 target_link_libraries(korganizer_eventviewer ${KDE4_KPARTS_LIBS} ${KDE4_KCAL_LIBS})
 
 set_target_properties(korganizer_eventviewer PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
 install(TARGETS korganizer_eventviewer  DESTINATION ${LIB_INSTALL_DIR})
 
-add_dependencies(korganizer_eventviewer kmail)
 
 ########### next target ###############
 
