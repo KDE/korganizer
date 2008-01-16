@@ -24,8 +24,8 @@
 #include <kcal/calendarresources.h>
 
 #include <qlayout.h>
-#include <Q3HBox>
-#include <Q3VBox>
+#include <KHBox>
+#include <KVBox>
 #include <Q3ScrollView>
 
 #define FOREACH_VIEW(av) \
@@ -45,7 +45,7 @@ MultiAgendaView::MultiAgendaView(Calendar * cal, QWidget * parent ) :
   mScrollView->setVScrollBarMode( Q3ScrollView::AlwaysOff );
   mScrollView->setFrameShape( QFrame::NoFrame );
   topLevelLayout->addWidget( mScrollView );
-  mTopBox = new Q3HBox( mScrollView->viewport() );
+  mTopBox = new KHBox( mScrollView->viewport() );
   mScrollView->addChild( mTopBox );
   recreateViews();
 }
@@ -245,7 +245,7 @@ void MultiAgendaView::finishTypeAhead()
 
 void MultiAgendaView::addView( const QString& label, KCal::ResourceCalendar * res,  const QString& subResource )
 {
-    Q3VBox *box = new Q3VBox( mTopBox );
+    KVBox *box = new KVBox( mTopBox );
     QLabel *l = new QLabel( label, box );
     l->setAlignment( Qt::AlignVCenter | Qt::AlignHCenter );
     KOAgendaView *av = new KOAgendaView( calendar(), box );

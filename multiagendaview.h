@@ -22,7 +22,7 @@
 #include "agendaview.h"
 
 class Q3ScrollView;
-class Q3HBox;
+class KHBox;
 class KOAgendaView;
 
 namespace KCal {
@@ -77,7 +77,7 @@ class MultiAgendaView : public AgendaView
   private:
     QList<KOAgendaView*> mAgendaViews;
     QList<QWidget*> mAgendaWidgets;
-    Q3HBox *mTopBox;
+    KHBox *mTopBox;
     Q3ScrollView *mScrollView;
 };
 
