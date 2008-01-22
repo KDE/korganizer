@@ -460,6 +460,7 @@ void KOEditorFreeBusy::updateFreeBusyData( FreeBusyItem* item )
 
 void KOEditorFreeBusy::timerEvent( QTimerEvent* event )
 {
+  killTimer( event->timerId() );
   FreeBusyItem *item = static_cast<FreeBusyItem *>( mGanttView->firstChild() );
   while( item ) {
     if( item->updateTimerID() == event->timerId() ) {
