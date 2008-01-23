@@ -853,9 +853,8 @@ void KOTodoView::showTodo()
 void KOTodoView::printTodo()
 {
 #ifndef KORG_NOPRINTER
-  Calendar *cal;
   KOCoreHelper helper;
-  CalPrinter printer( this, cal, &helper );
+  CalPrinter printer( this, BaseView::calendar(), &helper );
   connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
 
   Incidence::List selectedIncidences;

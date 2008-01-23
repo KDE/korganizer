@@ -280,9 +280,8 @@ void JournalEntry::printItem()
 #ifndef KORG_NOPRINTER
   writeJournal();
   if ( mJournal ) {
-    Calendar *cal;
     KOCoreHelper helper;
-    CalPrinter printer( this, cal, &helper );
+    CalPrinter printer( this, 0, &helper );
     connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
 
     Incidence::List selectedIncidences;
