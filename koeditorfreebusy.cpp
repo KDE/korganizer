@@ -35,6 +35,15 @@
 #include <kiconloader.h>
 #include <kmessagebox.h>
 
+#ifndef KORG_NOKABC
+#include <kabc/addresseedialog.h>
+#include <kabc/vcardconverter.h>
+#include <libkdepim/addressesdialog.h>
+#include <libkdepim/addresseelineedit.h>
+#include <libkdepim/distributionlist.h>
+#include <kabc/stdaddressbook.h>
+#endif
+
 #include <libkcal/event.h>
 #include <libkcal/freebusy.h>
 
