@@ -62,6 +62,8 @@
 #include "incidencechanger.h"
 #include "kholidays.h"
 #include "mailscheduler.h"
+#include "komailclient.h"
+#include "multiagendaview.h"
 
 #include <libkcal/vcaldrag.h>
 #include <libkcal/icaldrag.h>
@@ -596,6 +598,15 @@ void CalendarView::goDate( const QDate& date )
   mNavigator->selectDate( date );
 }
 
+void CalendarView::showDate(const QDate & date)
+{
+  int dateCount = mNavigator->datesCount();
+  if ( dateCount == 7 )
+    mNavigator->selectWeek( date );
+  else
+    mNavigator->selectDates( date, dateCount );
+}
+
 void CalendarView::goToday()
 {
   mNavigator->selectToday();
@@ -648,6 +659,18 @@ void CalendarView::updateConfig( const QCString& receiver)
     }
   }
   emit configChanged();
+
+  // force reload and handle agenda view type switch
+  const bool showMerged = KOPrefs::instance()->agendaViewCalendarDisplay() == KOPrefs::CalendarsMerged;
+  const bool showSideBySide = KOPrefs::instance()->agendaViewCalendarDisplay() == KOPrefs::CalendarsSideBySide;
+  KOrg::BaseView *view = mViewManager->currentView();
+  mViewManager->showAgendaView();
+  if ( view == mViewManager->agendaView() && showSideBySide )
+    view = mViewManager->multiAgendaView();
+  else if ( view == mViewManager->multiAgendaView() && showMerged )
+    view = mViewManager->agendaView();
+  mViewManager->showView( view );
+
   // To make the "fill window" configurations work
   mViewManager->raiseCurrentView();
 }
@@ -940,7 +963,7 @@ KOEventEditor *CalendarView::newEventEditor( const QDateTime &startDtParam,
   eventEditor->newEvent();
   connectIncidenceEditor( eventEditor );
   eventEditor->setDates( startDt, endDt, allDay );
-  mDialogManager->connectTypeAhead( eventEditor, viewManager()->agendaView() );
+  mDialogManager->connectTypeAhead( eventEditor, dynamic_cast<KOrg::AgendaView*>(viewManager()->currentView()) );
   return eventEditor;
 }
 
@@ -972,28 +995,30 @@ void CalendarView::newEvent( const QDateTime &startDt, const QDateTime &endDt,
 }
 
 void CalendarView::newEvent( const QString &summary, const QString &description,
-                             const QStringList &attachments, const QStringList &attendees )
+                             const QStringList &attachments, const QStringList &attendees,
+                             const QStringList &attachmentMimetypes, bool inlineAttachment )
 {
   KOEventEditor *eventEditor = newEventEditor();
   eventEditor->setTexts( summary, description );
   // if attach or attendee list is empty, these methods don't do anything, so
   // it's save to call them in every case
-  eventEditor->addAttachments( attachments );
+  eventEditor->addAttachments( attachments, attachmentMimetypes, inlineAttachment );
   eventEditor->addAttendees( attendees );
   eventEditor->show();
 }
 
 void CalendarView::newTodo( const QString &summary, const QString &description,
-                            const QStringList &attachments, const QStringList &attendees )
+                            const QStringList &attachments, const QStringList &attendees,
+                            const QStringList &attachmentMimetypes, bool inlineAttachment )
 {
   kdDebug(5850) << k_funcinfo << endl;
   KOTodoEditor *todoEditor = mDialogManager->getTodoEditor();
   connectIncidenceEditor( todoEditor );
   todoEditor->newTodo();
-  todoEditor->setTexts( summary, description );
-  todoEditor->addAttachments( attachments );
-  todoEditor->addAttendees( attendees );
   todoEditor->setDates( QDateTime(), false );
+  todoEditor->setTexts( summary, description );
+  todoEditor->addAttachments( attachments, attachmentMimetypes, inlineAttachment );
+  todoEditor->addAttendees( attendees );
   todoEditor->show();
 }
 
@@ -1345,6 +1370,33 @@ void CalendarView::schedule_counter(Incidence *incidence)
 void CalendarView::schedule_declinecounter(Incidence *incidence)
 {
   schedule(Scheduler::Declinecounter,incidence);
+}
+
+void CalendarView::schedule_forward(Incidence * incidence)
+{
+  if (incidence == 0)
+    incidence = selectedIncidence();
+
+  if (!incidence) {
+    KMessageBox::information( this, i18n("No item selected."),
+                              "ForwardNoEventSelected" );
+    return;
+  }
+
+  PublishDialog publishdlg;
+  if ( publishdlg.exec() == QDialog::Accepted ) {
+    QString recipients = publishdlg.addresses();
+    ICalFormat format;
+    QString messageText = format.createScheduleMessage( incidence, Scheduler::Request );
+    KOMailClient mailer;
+    if ( mailer.mailTo( incidence, recipients, messageText ) ) {
+
+      KMessageBox::information( this, i18n("The item information was successfully sent."),
+                                i18n("Forwarding"), "IncidenceForwardSuccess" );
+    } else {
+      KMessageBox::error( this, i18n("Unable to forward the item '%1'").arg( incidence->summary() ) );
+    }
+  }
 }
 
 void CalendarView::mailFreeBusy( int daysToPublish )
@@ -1872,7 +1924,7 @@ bool CalendarView::editIncidence( Incidence *incidence )
   connectIncidenceEditor( incidenceEditor );
 
   mDialogList.insert( incidence, incidenceEditor );
-  incidenceEditor->editIncidence( incidence );
+  incidenceEditor->editIncidence( incidence, mCalendar );
   incidenceEditor->show();
   return true;
 }

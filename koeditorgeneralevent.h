@@ -48,6 +48,7 @@ class KOEditorGeneralEvent : public KOEditorGeneral
 
     void initTime(QWidget *,QBoxLayout *);
     void initClass(QWidget *,QBoxLayout *);
+    void initInvitationBar( QWidget* parent, QBoxLayout *layout );
 
     void finishSetup();
 
@@ -57,12 +58,14 @@ class KOEditorGeneralEvent : public KOEditorGeneral
       Read event object and setup widgets accordingly. If templ is true, the
       event is read as template, i.e. the time and date information isn't set.
     */
-    void readEvent( Event *, bool tmpl = false );
+    void readEvent( Event *event, Calendar *calendar, bool tmpl = false );
     /** Write event settings to event object */
     void writeEvent( Event * );
 
     /** Check if the input is valid. */
     bool validateInput();
+
+    void updateRecurrenceSummary( const QString &summary );
 
   public slots:
     void setDateTimes( const QDateTime &start, const QDateTime &end );
@@ -83,6 +86,9 @@ class KOEditorGeneralEvent : public KOEditorGeneral
     void allDayChanged(bool);
     void dateTimeStrChanged( const QString & );
     void dateTimesChanged( const QDateTime &start, const QDateTime &end );
+    void editRecurrence();
+    void acceptInvitation();
+    void declineInvitation();
 
   private:
     QLabel                  *mStartDateLabel;
@@ -92,8 +98,10 @@ class KOEditorGeneralEvent : public KOEditorGeneral
     KTimeEdit               *mStartTimeEdit;
     KTimeEdit               *mEndTimeEdit;
     QLabel                  *mDurationLabel;
-    QCheckBox               *mTimeAssociateButton;
+    QCheckBox               *mAlldayEventCheckbox;
     QComboBox               *mFreeTimeCombo;
+    QLabel                  *mRecurrenceSummary;
+    QFrame                  *mInvitationBar;
 
     // current start and end date and time
     QDateTime mCurrStartDateTime;

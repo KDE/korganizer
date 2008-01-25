@@ -51,6 +51,9 @@ class KOrganizerIface : virtual public DCOPObject
                   incidence, only the first is added to KOrganizer's calendar.
     */
     virtual bool addIncidence(const QString &iCal) = 0;
+
+    virtual void loadProfile( const QString& path ) = 0;
+    virtual void saveToProfile( const QString& path ) const = 0;
 };
 
 #endif

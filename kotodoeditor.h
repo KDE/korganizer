@@ -54,18 +54,18 @@ class KOTodoEditor : public KOIncidenceEditor
     void newTodo();
 
     /**
-      Sets the given summary and description. If description is empty and the 
-      summary contains multiple lines, the summary will be used as description 
+      Sets the given summary and description. If description is empty and the
+      summary contains multiple lines, the summary will be used as description
       and only the first line of summary will be used as the summary.
     */
     void setTexts( const QString &summary, const QString &description = QString::null );
     /** Edit an existing todo. */
-    void editIncidence(Incidence *);
+    void editIncidence(Incidence *incidence, Calendar* calendar);
 
     /** Set widgets to default values */
     void setDates( const QDateTime &due, bool allDay = true, Todo *relatedTodo = 0 );
     /** Read event object and setup widgets accordingly */
-    void readTodo(Todo *);
+    void readTodo(Todo *todo, Calendar *calendar);
     /** Write event settings to event object */
     void writeTodo(Todo *);
 
@@ -93,6 +93,7 @@ class KOTodoEditor : public KOIncidenceEditor
 
   private:
     Todo *mTodo;
+    Calendar *mCalendar;
 
     Todo *mRelatedTodo;
 

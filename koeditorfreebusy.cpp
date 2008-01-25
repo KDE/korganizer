@@ -27,6 +27,7 @@
 #include <qlabel.h>
 #include <qcombobox.h>
 #include <qpushbutton.h>
+#include <qvaluevector.h>
 #include <qwhatsthis.h>
 
 #include <kdebug.h>
@@ -39,6 +40,7 @@
 
 #include <kdgantt/KDGanttView.h>
 #include <kdgantt/KDGanttViewTaskItem.h>
+#include <kdgantt/KDGanttViewSubwidgets.h>
 
 #include "koprefs.h"
 #include "koglobals.h"
@@ -48,14 +50,16 @@
 
 #include "koeditorfreebusy.h"
 
-
+// The FreeBusyItem is the whole line for a given attendee.
+// Individual "busy" periods are created as sub-items of this item.
+//
 // We can't use the CustomListViewItem base class, since we need a
 // different inheritance hierarchy for supporting the Gantt view.
 class FreeBusyItem : public KDGanttViewTaskItem
 {
   public:
     FreeBusyItem( Attendee *attendee, KDGanttView *parent ) :
-      KDGanttViewTaskItem( parent ), mAttendee( attendee ), mTimerID( 0 ),
+      KDGanttViewTaskItem( parent, parent->lastItem() ), mAttendee( attendee ), mTimerID( 0 ),
       mIsDownloading( false )
     {
       Q_ASSERT( attendee );
@@ -115,14 +119,27 @@ class FreeBusyItem : public KDGanttViewTaskItem
 
 void FreeBusyItem::updateItem()
 {
-  setListViewText( 0, mAttendee->name() );
-  setListViewText( 1, mAttendee->email() );
-  setListViewText( 2, mAttendee->roleStr() );
-  setListViewText( 3, mAttendee->statusStr() );
-  if ( mAttendee->RSVP() && !mAttendee->email().isEmpty() )
-    setPixmap( 4, KOGlobals::self()->smallIcon( "mailappt" ) );
-  else
-    setPixmap( 4, KOGlobals::self()->smallIcon( "nomailappt" ) );
+  setListViewText( 0, mAttendee->fullName() );
+  switch ( mAttendee->status() ) {
+    case Attendee::Accepted:
+      setPixmap( 0, KOGlobals::self()->smallIcon( "ok" ) );
+      break;
+    case Attendee::Declined:
+      setPixmap( 0, KOGlobals::self()->smallIcon( "no" ) );
+      break;
+    case Attendee::NeedsAction:
+    case Attendee::InProcess:
+      setPixmap( 0, KOGlobals::self()->smallIcon( "help" ) );
+      break;
+    case Attendee::Tentative:
+      setPixmap( 0, KOGlobals::self()->smallIcon( "apply" ) );
+      break;
+    case Attendee::Delegated:
+      setPixmap( 0, KOGlobals::self()->smallIcon( "mail_forward" ) );
+      break;
+    default:
+      setPixmap( 0, QPixmap() );
+  }
 }
 
 
@@ -142,6 +159,13 @@ void FreeBusyItem::setFreeBusyPeriods( FreeBusy* fb )
       newSubItem->setStartTime( (*it).start() );
       newSubItem->setEndTime( (*it).end() );
       newSubItem->setColors( Qt::red, Qt::red, Qt::red );
+      QString toolTip;
+      if ( !(*it).summary().isEmpty() )
+        toolTip += "<b>" + (*it).summary() + "</b><br/>";
+      if ( !(*it).location().isEmpty() )
+        toolTip += i18n( "Location: %1" ).arg( (*it).location() );
+      if ( !toolTip.isEmpty() )
+        newSubItem->setTooltipText( toolTip );
     }
     setFreeBusy( fb );
     setShowNoInformation( false );
@@ -167,13 +191,16 @@ void FreeBusyItem::setFreeBusyPeriods( FreeBusy* fb )
   mIsDownloading = false;
 }
 
+////
 
 KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent,
                                     const char *name )
-  : QWidget( parent, name )
+  : KOAttendeeEditor( parent, name )
 {
   QVBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->setSpacing( spacing );
+
+  initOrganizerWidgets( this, topLayout );
 
   // Label for status summary information
   // Uses the tooltip palette to highlight it
@@ -252,11 +279,7 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent,
   topLayout->addWidget( mGanttView );
   // Remove the predefined "Task Name" column
   mGanttView->removeColumn( 0 );
-  mGanttView->addColumn( i18n("Name"), 180 );
-  mGanttView->addColumn( i18n("Email"), 180 );
-  mGanttView->addColumn( i18n("Role"), 60 );
-  mGanttView->addColumn( i18n("Status"), 100 );
-  mGanttView->addColumn( i18n("RSVP"), 35 );
+  mGanttView->addColumn( i18n("Attendee") );
   if ( KOPrefs::instance()->mCompactDialogs ) {
     mGanttView->setFixedHeight( 78 );
   }
@@ -279,18 +302,39 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent,
     mGanttView->setHourFormat( KDGanttView::Hour_12 );
   else
     mGanttView->setHourFormat( KDGanttView::Hour_24_FourDigit );
+
+  // mEventRectangle is the colored rectangle representing the event being modified
+  mEventRectangle = new KDIntervalColorRectangle( mGanttView );
+  mEventRectangle->setColor( Qt::magenta );
+  mGanttView->addIntervalBackgroundColor( mEventRectangle );
+
   connect( mGanttView, SIGNAL ( timeIntervalSelected( const QDateTime &,
                                                       const QDateTime & ) ),
            mGanttView, SLOT( zoomToSelection( const QDateTime &,
                                               const  QDateTime & ) ) );
   connect( mGanttView, SIGNAL( lvItemDoubleClicked( KDGanttViewItem * ) ),
            SLOT( editFreeBusyUrl( KDGanttViewItem * ) ) );
+  connect( mGanttView, SIGNAL( intervalColorRectangleMoved( const QDateTime&, const QDateTime& ) ),
+           this, SLOT( slotIntervalColorRectangleMoved( const QDateTime&, const QDateTime& ) ) );
+
+  connect( mGanttView, SIGNAL(lvSelectionChanged(KDGanttViewItem*)),
+          this, SLOT(updateAttendeeInput()) );
+  connect( mGanttView, SIGNAL(lvItemLeftClicked(KDGanttViewItem*)),
+           this, SLOT(showAttendeeStatusMenu()) );
+  connect( mGanttView, SIGNAL(lvItemRightClicked(KDGanttViewItem*)),
+           this, SLOT(showAttendeeStatusMenu()) );
+  connect( mGanttView, SIGNAL(lvMouseButtonClicked(int, KDGanttViewItem*, const QPoint&, int)),
+           this, SLOT(listViewClicked(int, KDGanttViewItem*)) );
 
   FreeBusyManager *m = KOGroupware::instance()->freeBusyManager();
   connect( m, SIGNAL( freeBusyRetrieved( KCal::FreeBusy *, const QString & ) ),
            SLOT( slotInsertFreeBusy( KCal::FreeBusy *, const QString & ) ) );
 
   connect( &mReloadTimer, SIGNAL( timeout() ), SLOT( autoReload() ) );
+
+  initEditWidgets( this, topLayout );
+  connect( mRemoveButton, SIGNAL(clicked()),
+           SLOT(removeAttendee()) );
 }
 
 KOEditorFreeBusy::~KOEditorFreeBusy()
@@ -318,22 +362,12 @@ void KOEditorFreeBusy::insertAttendee( Attendee *attendee, bool readFBList )
   FreeBusyItem* item = new FreeBusyItem( attendee, mGanttView );
   if ( readFBList )
     updateFreeBusyData( item );
-  updateStatusSummary();
-}
-
-void KOEditorFreeBusy::updateAttendee( Attendee *attendee )
-{
-  FreeBusyItem *anItem =
-      static_cast<FreeBusyItem *>( mGanttView->firstChild() );
-  while( anItem ) {
-    if( anItem->attendee() == attendee ) {
-      anItem->updateItem();
-      updateFreeBusyData( anItem );
-      updateStatusSummary();
-      break;
-    }
-    anItem = static_cast<FreeBusyItem *>( anItem->nextSibling() );
+  else {
+    clearSelection();
+    mGanttView->setSelected( item, true );
   }
+  updateStatusSummary();
+  emit updateAttendeeSummary( mGanttView->childCount() );
 }
 
 void KOEditorFreeBusy::clearAttendees()
@@ -355,11 +389,27 @@ bool KOEditorFreeBusy::updateEnabled() const
 
 void KOEditorFreeBusy::readEvent( Event *event )
 {
+  bool block = updateEnabled();
+  setUpdateEnabled( false );
+  clearAttendees();
+
   setDateTimes( event->dtStart(), event->dtEnd() );
   mIsOrganizer = KOPrefs::instance()->thatIsMe( event->organizer().email() );
   updateStatusSummary();
+  clearSelection();
+  KOAttendeeEditor::readEvent( event );
+
+  setUpdateEnabled( block );
+  emit updateAttendeeSummary( mGanttView->childCount() );
 }
 
+void KOEditorFreeBusy::slotIntervalColorRectangleMoved( const QDateTime& start, const QDateTime& end )
+{
+  kdDebug() << k_funcinfo << "slotIntervalColorRectangleMoved " << start << "," << end << endl;
+  mDtStart = start;
+  mDtEnd = end;
+  emit dateTimesChanged( start, end );
+}
 
 void KOEditorFreeBusy::setDateTimes( const QDateTime &start, const QDateTime &end )
 {
@@ -447,8 +497,7 @@ void KOEditorFreeBusy::slotUpdateGanttView( const QDateTime &dtFrom, const QDate
   QDateTime horizonStart = QDateTime( dtFrom.addDays( -15 ).date() );
   mGanttView->setHorizonStart( horizonStart  );
   mGanttView->setHorizonEnd( dtTo.addDays( 15 ) );
-  mGanttView->clearBackgroundColor();
-  mGanttView->setIntervalBackgroundColor( dtFrom, dtTo, Qt::magenta );
+  mEventRectangle->setDateTimes( dtFrom, dtTo );
   mGanttView->setUpdateEnabled( block );
   mGanttView->centerTimelineAfterShow( dtFrom );
 }
@@ -667,6 +716,142 @@ void KOEditorFreeBusy::editFreeBusyUrl( KDGanttViewItem *i )
 
   FreeBusyUrlDialog dialog( attendee, this );
   dialog.exec();
+}
+
+void KOEditorFreeBusy::writeEvent(KCal::Event * event)
+{
+  event->clearAttendees();
+  QValueVector<FreeBusyItem*> toBeDeleted;
+  for ( FreeBusyItem *item = static_cast<FreeBusyItem *>( mGanttView->firstChild() ); item;
+        item = static_cast<FreeBusyItem*>( item->nextSibling() ) )
+  {
+    Attendee *attendee = item->attendee();
+    Q_ASSERT( attendee );
+    /* Check if the attendee is a distribution list and expand it */
+    if ( attendee->email().isEmpty() ) {
+      KPIM::DistributionList list =
+        KPIM::DistributionList::findByName( KABC::StdAddressBook::self(), attendee->name() );
+      if ( !list.isEmpty() ) {
+        toBeDeleted.push_back( item ); // remove it once we are done expanding
+        KPIM::DistributionList::Entry::List entries = list.entries( KABC::StdAddressBook::self() );
+        KPIM::DistributionList::Entry::List::Iterator it( entries.begin() );
+        while ( it != entries.end() ) {
+          KPIM::DistributionList::Entry &e = ( *it );
+          ++it;
+          // this calls insertAttendee, which appends
+          insertAttendeeFromAddressee( e.addressee, attendee );
+          // TODO: duplicate check, in case it was already added manually
+        }
+      }
+    } else {
+      bool skip = false;
+      if ( attendee->email().endsWith( "example.net" ) ) {
+        if ( KMessageBox::warningYesNo( this, i18n("%1 does not look like a valid email address. "
+                "Are you sure you want to invite this participant?").arg( attendee->email() ),
+              i18n("Invalid email address") ) != KMessageBox::Yes ) {
+          skip = true;
+        }
+      }
+      if ( !skip ) {
+        event->addAttendee( new Attendee( *attendee ) );
+      }
+    }
+  }
+
+  KOAttendeeEditor::writeEvent( event );
+
+  // cleanup
+  QValueVector<FreeBusyItem*>::iterator it;
+  for( it = toBeDeleted.begin(); it != toBeDeleted.end(); ++it ) {
+    delete *it;
+  }
+}
+
+KCal::Attendee * KOEditorFreeBusy::currentAttendee() const
+{
+  KDGanttViewItem *item = mGanttView->selectedItem();
+  FreeBusyItem *aItem = static_cast<FreeBusyItem*>( item );
+  if ( !aItem )
+    return 0;
+  return aItem->attendee();
+}
+
+void KOEditorFreeBusy::updateCurrentItem()
+{
+  FreeBusyItem* item = static_cast<FreeBusyItem*>( mGanttView->selectedItem() );
+  if ( item ) {
+    item->updateItem();
+    updateFreeBusyData( item );
+    updateStatusSummary();
+  }
+}
+
+void KOEditorFreeBusy::removeAttendee()
+{
+  FreeBusyItem *item = static_cast<FreeBusyItem*>( mGanttView->selectedItem() );
+  if ( !item )
+    return;
+
+  Attendee *delA = new Attendee( item->attendee()->name(), item->attendee()->email(),
+                                 item->attendee()->RSVP(), item->attendee()->status(),
+                                 item->attendee()->role(), item->attendee()->uid() );
+  mdelAttendees.append( delA );
+  delete item;
+
+  updateStatusSummary();
+  updateAttendeeInput();
+  emit updateAttendeeSummary( mGanttView->childCount() );
+}
+
+void KOEditorFreeBusy::clearSelection() const
+{
+  KDGanttViewItem *item = mGanttView->selectedItem();
+  if ( item )
+    mGanttView->setSelected( item, false );
+  mGanttView->repaint();
+  item->repaint();
+}
+
+void KOEditorFreeBusy::changeStatusForMe(KCal::Attendee::PartStat status)
+{
+  const QStringList myEmails = KOPrefs::instance()->allEmails();
+  for ( FreeBusyItem *item = static_cast<FreeBusyItem *>( mGanttView->firstChild() ); item;
+        item = static_cast<FreeBusyItem*>( item->nextSibling() ) )
+  {
+    for ( QStringList::ConstIterator it2( myEmails.begin() ), end( myEmails.end() ); it2 != end; ++it2 ) {
+      if ( item->attendee()->email() == *it2 ) {
+        item->attendee()->setStatus( status );
+        item->updateItem();
+      }
+    }
+  }
+}
+
+void KOEditorFreeBusy::showAttendeeStatusMenu()
+{
+  if ( mGanttView->mapFromGlobal( QCursor::pos() ).x() > 22 )
+    return;
+  QPopupMenu popup;
+  popup.insertItem( SmallIcon( "help" ), Attendee::statusName( Attendee::NeedsAction ), Attendee::NeedsAction );
+  popup.insertItem( KOGlobals::self()->smallIcon( "ok" ), Attendee::statusName( Attendee::Accepted ), Attendee::Accepted );
+  popup.insertItem( KOGlobals::self()->smallIcon( "no" ), Attendee::statusName( Attendee::Declined ), Attendee::Declined );
+  popup.insertItem( KOGlobals::self()->smallIcon( "apply" ), Attendee::statusName( Attendee::Tentative ), Attendee::Tentative );
+  popup.insertItem( KOGlobals::self()->smallIcon( "mail_forward" ), Attendee::statusName( Attendee::Delegated ), Attendee::Delegated );
+  popup.insertItem( Attendee::statusName( Attendee::Completed ), Attendee::Completed );
+  popup.insertItem( KOGlobals::self()->smallIcon( "help" ), Attendee::statusName( Attendee::InProcess ), Attendee::InProcess );
+  popup.setItemChecked( currentAttendee()->status(), true );
+  int status = popup.exec( QCursor::pos() );
+  if ( status >= 0 ) {
+    currentAttendee()->setStatus( (Attendee::PartStat)status );
+    updateCurrentItem();
+    updateAttendeeInput();
+  }
+}
+
+void KOEditorFreeBusy::listViewClicked(int button, KDGanttViewItem * item)
+{
+  if ( button == Qt::LeftButton && item == 0 )
+    addNewAttendee();
 }
 
 #include "koeditorfreebusy.moc"

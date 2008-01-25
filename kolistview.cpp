@@ -183,17 +183,14 @@ bool KOListView::ListItemVisitor::visit(Todo *t)
   return true;
 }
 
-bool KOListView::ListItemVisitor::visit( Journal *t )
+bool KOListView::ListItemVisitor::visit(Journal *t)
 {
   static const QPixmap jrnalPxmp = KOGlobals::self()->smallIcon( "journal" );
-  mItem->setPixmap( 0, jrnalPxmp );
-  if ( t->summary().isEmpty() ) {
-    mItem->setText( 0, t->description().section( "\n", 0, 0 ) );
-  } else {
-    mItem->setText( 0, t->summary() );
-  }
+  mItem->setPixmap(0,jrnalPxmp);
+  // Just use the first line
+  mItem->setText( 0, t->description().section( "\n", 0, 0 ) );
   mItem->setText( 3, t->dtStartDateStr() );
-  mItem->setSortKey( 3, t->dtStart().toString( Qt::ISODate ) );
+  mItem->setSortKey( 3, t->dtStart().toString(Qt::ISODate) );
 
   return true;
 }

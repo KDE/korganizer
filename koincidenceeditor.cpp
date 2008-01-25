@@ -49,7 +49,6 @@
 #include "koprefs.h"
 #include "koglobals.h"
 #include "koeditordetails.h"
-#include "koeditorattachments.h"
 #include "koeditoralarms.h"
 #include "urihandler.h"
 #include "koincidenceeditor.h"
@@ -59,7 +58,7 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
                                       Calendar *calendar, QWidget *parent )
   : KDialogBase( Tabbed, caption, Ok | Apply | Cancel | Default, Ok,
                  parent, 0, false, false ),
-    mDetails( 0 ), mAttachments( 0 )
+    mAttendeeEditor( 0 ), mIsCounter( false )
 {
   // Set this to be the group leader for all subdialogs - this means
   // modal subdialogs will only affect this dialog, not the other windows
@@ -91,24 +90,8 @@ void KOIncidenceEditor::setupAttendeesTab()
 
   QBoxLayout *topLayout = new QVBoxLayout( topFrame );
 
-  mDetails = new KOEditorDetails( spacingHint(), topFrame );
+  mAttendeeEditor = mDetails = new KOEditorDetails( spacingHint(), topFrame );
   topLayout->addWidget( mDetails );
-}
-
-void KOIncidenceEditor::setupAttachmentsTab()
-{
-  QFrame *topFrame = addPage( i18n("Attach&ments") );
-  QWhatsThis::add( topFrame,
-                   i18n("The Attachments tab allows you to add or remove "
-                        "files, emails, contacts, and other items "
-                        "associated with this event or to-do.") );
-
-  QBoxLayout *topLayout = new QVBoxLayout( topFrame );
-
-  mAttachments = new KOEditorAttachments( spacingHint(), topFrame );
-  connect( mAttachments, SIGNAL( openURL( const KURL & ) ) ,
-           this, SLOT( openURL( const KURL & ) ) );
-  topLayout->addWidget( mAttachments );
 }
 
 void KOIncidenceEditor::slotApply()
@@ -118,15 +101,11 @@ void KOIncidenceEditor::slotApply()
 
 void KOIncidenceEditor::slotOk()
 {
-  // "this" can be deleted before processInput() returns (processInput() opens 
+  // "this" can be deleted before processInput() returns (processInput() opens
   // a non-modal dialog when Kolab is used). So accept should only be executed
   // when "this" is still valid
   QGuardedPtr<QWidget> ptr( this );
   if ( processInput() && ptr ) accept();
-}
-
-void KOIncidenceEditor::updateCategoryConfig()
-{
 }
 
 void KOIncidenceEditor::slotCancel()
@@ -144,7 +123,7 @@ void KOIncidenceEditor::cancelRemovedAttendees( Incidence *incidence )
   if ( KOPrefs::instance()->thatIsMe( incidence->organizer().email() ) ) {
     Incidence *ev = incidence->clone();
     ev->registerObserver( 0 );
-    mDetails->cancelAttendeeEvent( ev );
+    mAttendeeEditor->cancelAttendeeEvent( ev );
     if ( ev->attendeeCount() > 0 ) {
       emit deleteAttendee( ev );
     }
@@ -373,12 +352,11 @@ void KOIncidenceEditor::openURL( const KURL &url )
   UriHandler::process( uri );
 }
 
-void KOIncidenceEditor::addAttachments( const QStringList &attachments )
+void KOIncidenceEditor::addAttachments( const QStringList &attachments,
+                                        const QStringList &mimeTypes,
+                                        bool inlineAttachments )
 {
-  QStringList::ConstIterator it;
-  for ( it = attachments.begin(); it != attachments.end(); ++it ) {
-    mAttachments->addAttachment( *it );
-  }
+    emit signalAddAttachments( attachments, mimeTypes, inlineAttachments );
 }
 
 void KOIncidenceEditor::addAttendees( const QStringList &attendees )
@@ -387,10 +365,19 @@ void KOIncidenceEditor::addAttendees( const QStringList &attendees )
   for ( it = attendees.begin(); it != attendees.end(); ++it ) {
     QString name, email;
     KABC::Addressee::parseEmailAddress( *it, name, email );
-    mDetails->insertAttendee( new Attendee( name, email ) );
+    mAttendeeEditor->insertAttendee( new Attendee( name, email ) );
   }
 }
 
+void KOIncidenceEditor::selectInvitationCounterProposal(bool enable)
+{
+  mIsCounter = enable;
+  if ( mIsCounter ) {
+    setCaption( i18n( "Counter proposal" ) );
+    setButtonOK( i18n( "Counter proposal" ) );
+    enableButtonApply( false );
+  }
+}
 
 
 #include "koincidenceeditor.moc"

@@ -280,7 +280,8 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
       attendees list
     */
     void newEvent( const QString &summary, const QString &description = QString::null,
-                   const QStringList &attachment = QStringList(), const QStringList &attendees = QStringList() );
+                   const QStringList &attachment = QStringList(), const QStringList &attendees = QStringList(),
+                   const QStringList &attachmentMimetypes = QStringList(), bool inlineAttachment = false );
     void newFloatingEvent();
 
     /** Create a read-only viewer dialog for the supplied incidence. It calls the correct showXXX method*/
@@ -333,7 +334,8 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
     void newSubTodo( Todo * );
 
     void newTodo( const QString &summary, const QString &description = QString::null,
-                  const QStringList &attachments = QStringList(), const QStringList &attendees = QStringList() );
+                  const QStringList &attachments = QStringList(), const QStringList &attendees = QStringList(),
+                  const QStringList &attachmentMimetypes = QStringList(), bool inlineAttachment = false );
 
     void newJournal();
     void newJournal( const QDate &date );
@@ -463,6 +465,7 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
     void schedule_reply( Incidence *incidence = 0 );
     void schedule_counter( Incidence *incidence = 0 );
     void schedule_declinecounter( Incidence *incidence = 0 );
+    void schedule_forward( Incidence *incidence = 0 );
     void mailFreeBusy( int daysToPublish = 30 );
     void uploadFreeBusy();
 
@@ -480,6 +483,9 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
 
     /** Move the current view date to the specified date */
     void goDate( const QDate& date );
+
+    /** Show the given date without changing date selection length. */
+    void showDate( const QDate &date );
 
     /** Move the current view date to today */
     void goToday();

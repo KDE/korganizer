@@ -237,11 +237,11 @@ bool IncidenceChanger::incidencesEqual( Incidence *inc1, Incidence *inc2 )
   return ( v.act( inc1, inc2 ) );
 }
 
-/*bool IncidenceChanger::assignIncidence( Incidence *inc1, Incidence *inc2 )
+bool IncidenceChanger::assignIncidence( Incidence *inc1, Incidence *inc2 )
 {
   AssignmentVisitor v;
   return v.act( inc1, inc2 );
-}*/
+}
 
 bool IncidenceChanger::myAttendeeStatusChanged( Incidence *oldInc, Incidence *newInc )
 {
@@ -254,12 +254,16 @@ bool IncidenceChanger::myAttendeeStatusChanged( Incidence *oldInc, Incidence *ne
 }
 
 bool IncidenceChanger::changeIncidence( Incidence *oldinc, Incidence *newinc,
-                                        int action )
+                                        int action, bool counter )
 {
 kdDebug(5850)<<"IncidenceChanger::changeIncidence for incidence \""<<newinc->summary()<<"\" ( old one was \""<<oldinc->summary()<<"\")"<<endl;
   if( incidencesEqual( newinc, oldinc ) ) {
     // Don't do anything
     kdDebug(5850) << "Incidence not changed\n";
+    if ( counter ) {
+      KCal::MailScheduler scheduler( mCalendar );
+      scheduler.performTransaction( newinc, Scheduler::Reply );
+    }
   } else {
     kdDebug(5850) << "Incidence changed\n";
     bool statusChanged = myAttendeeStatusChanged( oldinc, newinc );
@@ -269,7 +273,8 @@ kdDebug(5850)<<"IncidenceChanger::changeIncidence for incidence \""<<newinc->sum
     //        for group cheduling. Each implementation could then just do what
     //        it wants with the event. If no groupware is used,use the null
     //        pattern...
-    if( !KOPrefs::instance()->mUseGroupwareCommunication ||
+    bool revert = KOPrefs::instance()->mUseGroupwareCommunication;
+    if ( !counter && revert &&
         KOGroupware::instance()->sendICalMessage( 0,
                                                   KCal::Scheduler::Request,
                                                   newinc, false, statusChanged ) ) {
@@ -279,9 +284,25 @@ kdDebug(5850)<<"IncidenceChanger::changeIncidence for incidence \""<<newinc->sum
       } else {
         emit incidenceChanged( oldinc, newinc, action );
       }
-    } else {
-      // FIXME: Revert the changes
-//      assignIncidence( newinc, oldinc );
+      revert = false;
+    }
+    if ( counter && revert ) {
+      // pseudo counter as done by outlook
+      Event *e = dynamic_cast<Event*>( newinc );
+      if ( e ) {
+        Incidence* tmp = oldinc->clone();
+        tmp->setSummary( i18n("Counter proposal: %1").arg( e->summary() ) );
+        tmp->setDescription( e->description() );
+        tmp->addComment( i18n("Proposed new meeting time: %1 - %2").arg( e->dtStartStr() ).arg( e->dtEndStr() ) );
+        KCal::MailScheduler scheduler( mCalendar );
+        scheduler.performTransaction( tmp, Scheduler::Reply );
+      } else {
+        kdWarning(5850) << k_funcinfo << "Counter proposals only supported for events" << endl;
+      }
+    }
+
+    if ( revert ) {
+      assignIncidence( newinc, oldinc );
       return false;
     }
   }
@@ -298,7 +319,7 @@ kdDebug(5850)<<"IncidenceChanger::addIncidence for incidence \""<<incidence->sum
       kdError() << "sendIcalMessage failed." << endl;
     }
   }
-  // FIXME: This is a nasty hack, since we need to set a parent for the 
+  // FIXME: This is a nasty hack, since we need to set a parent for the
   //        resource selection dialog. However, we don't have any UI methods
   //        in the calendar, only in the CalendarResources::DestinationPolicy
   //        So we need to type-cast it and extract it from the CalendarResources
@@ -310,7 +331,7 @@ kdDebug(5850)<<"IncidenceChanger::addIncidence for incidence \""<<incidence->sum
   }
   bool success = mCalendar->addIncidence( incidence );
   if ( stdcal ) {
-    // Reset the parent widget, otherwise we'll end up with pointers to deleted 
+    // Reset the parent widget, otherwise we'll end up with pointers to deleted
     // widgets sooner or later
     stdcal->setDialogParentWidget( tmpparent );
   }

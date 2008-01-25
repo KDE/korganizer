@@ -54,7 +54,7 @@ class KOEditorGeneralTodo : public KOEditorGeneral
     /** Set widgets to default values */
     void setDefaults( const QDateTime &due, bool allDay );
     /** Read todo object and setup widgets accordingly */
-    void readTodo(Todo *);
+    void readTodo(Todo *todo, Calendar *calendar);
     /** Write todo settings to event object */
     void writeTodo(Todo *);
 
@@ -96,7 +96,7 @@ class KOEditorGeneralTodo : public KOEditorGeneral
     QLabel                  *mCompletedLabel;
     QLabel                  *mPriorityLabel;
     QComboBox               *mPriorityCombo;
-    
+
     KDateEdit               *mCompletionDateEdit;
     KTimeEdit               *mCompletionTimeEdit;
 

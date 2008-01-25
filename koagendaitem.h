@@ -157,6 +157,7 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     void paintFrame(QPainter *p, const QColor &color);
     void paintEventIcon(QPainter *p, int &x, int ft);
     void paintTodoIcon(QPainter *p, int &x, int ft);
+    void paintAlarmIcon(QPainter *p, int &x, int ft);
 
     // paint all visible icons
     void paintIcons(QPainter *p, int &x, int ft);

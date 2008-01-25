@@ -99,16 +99,17 @@ void FreeBusyDownloadJob::slotResult( KIO::Job *job )
   kdDebug(5850) << "FreeBusyDownloadJob::slotResult() " << mEmail << endl;
 
   if( job->error() ) {
-    kdDebug(5850) << "FreeBusyDownloadJob::slotResult() job error :-(" << endl;
+    kdDebug(5850) << "FreeBusyDownloadJob::slotResult() job error for " << mEmail << endl;
+    emit freeBusyDownloadError( mEmail );
+  } else {
+    FreeBusy *fb = mManager->iCalToFreeBusy( mFreeBusyData );
+    if ( fb ) {
+      Person p = fb->organizer();
+      p.setEmail( mEmail );
+      mManager->saveFreeBusy( fb, p );
+    }
+    emit freeBusyDownloaded( fb, mEmail );
   }
-
-  FreeBusy *fb = mManager->iCalToFreeBusy( mFreeBusyData );
-  if ( fb ) {
-    Person p = fb->organizer();
-    p.setEmail( mEmail );
-    mManager->saveFreeBusy( fb, p );
-  }
-  emit freeBusyDownloaded( fb, mEmail );
   deleteLater();
 }
 
@@ -345,13 +346,6 @@ bool FreeBusyManager::retrieveFreeBusy( const QString &email, bool forceDownload
   kdDebug(5850) << "FreeBusyManager::retrieveFreeBusy(): " << email << endl;
   if ( email.isEmpty() ) return false;
 
-  if( KOPrefs::instance()->thatIsMe( email ) ) {
-    // Don't download our own free-busy list from the net
-    kdDebug(5850) << "freebusy of owner" << endl;
-    emit freeBusyRetrieved( ownerFreeBusy(), email );
-    return true;
-  }
-
   // Check for cached copy of free/busy list
   KCal::FreeBusy *fb = loadFreeBusy( email );
   if ( fb ) {
@@ -359,8 +353,10 @@ bool FreeBusyManager::retrieveFreeBusy( const QString &email, bool forceDownload
   }
 
   // Don't download free/busy if the user does not want it.
-  if( !KOPrefs::instance()->mFreeBusyRetrieveAuto && !forceDownload)
+  if( !KOPrefs::instance()->mFreeBusyRetrieveAuto && !forceDownload) {
+    slotFreeBusyDownloadError( email ); // fblist
     return false;
+  }
 
   mRetrieveQueue.append( email );
 
@@ -383,6 +379,7 @@ bool FreeBusyManager::processRetrieveQueue()
 
   if ( !sourceURL.isValid() ) {
     kdDebug(5850) << "Invalid FB URL\n";
+    slotFreeBusyDownloadError( email );
     return false;
   }
 
@@ -395,7 +392,24 @@ bool FreeBusyManager::processRetrieveQueue()
                                             const QString & ) ),
            SLOT( processRetrieveQueue() ) );
 
+  connect( job, SIGNAL( freeBusyDownloadError( const QString& ) ),
+           this, SLOT( slotFreeBusyDownloadError( const QString& ) ) );
+
   return true;
+}
+
+void FreeBusyManager::slotFreeBusyDownloadError( const QString& email )
+{
+  if( KOPrefs::instance()->thatIsMe( email ) ) {
+    // We tried to download our own free-busy list from the net, but it failed
+    // so use local version instead.
+    // The reason we try to download even our own free-busy list is that
+    // this allows to avoid showing as busy the folders that are "fb relevant for nobody"
+    // like shared resources (meeting rooms etc.)
+    kdDebug(5850) << "freebusy of owner, falling back to local list" << endl;
+    emit freeBusyRetrieved( ownerFreeBusy(), email );
+  }
+
 }
 
 void FreeBusyManager::cancelRetrieval()
@@ -456,16 +470,19 @@ KURL FreeBusyManager::freeBusyUrl( const QString &email )
   KURL sourceURL;
   sourceURL = KOPrefs::instance()->mFreeBusyRetrieveUrl;
 
-  // Don't try to fetch free/busy data for users not on the specified servers
-  // This tests if the hostnames match, or one is a subset of the other
-  const QString hostDomain = sourceURL.host();
-  if ( hostDomain != emailHost && !hostDomain.endsWith( '.' + emailHost )
-       && !emailHost.endsWith( '.' + hostDomain ) ) {
-    // Host names do not match
-    kdDebug(5850) << "Host '" << sourceURL.host() << "' doesn't match email '"
-      << email << '\'' << endl;
-    return KURL();
-}
+  if ( KOPrefs::instance()->mFreeBusyCheckHostname ) {
+    // Don't try to fetch free/busy data for users not on the specified servers
+    // This tests if the hostnames match, or one is a subset of the other
+    const QString hostDomain = sourceURL.host();
+    if ( hostDomain != emailHost && !hostDomain.endsWith( '.' + emailHost )
+         && !emailHost.endsWith( '.' + hostDomain ) ) {
+      // Host names do not match
+      kdDebug(5850) << "Host '" << sourceURL.host() << "' doesn't match email '"
+        << email << '\'' << endl;
+      return KURL();
+    }
+  }
+
   kdDebug(5850) << "Server FreeBusy url: " << sourceURL << endl;
   if ( KOPrefs::instance()->mFreeBusyFullDomainRetrieval )
     sourceURL.setFileName( email + ".ifb" );

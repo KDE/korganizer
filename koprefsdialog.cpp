@@ -112,6 +112,7 @@ KOPrefsDialogMain::KOPrefsDialogMain( QWidget *parent, const char *name )
 
   addWidBool( KOPrefs::instance()->confirmItem(), topFrame );
   addWidRadios( KOPrefs::instance()->destinationItem(), topFrame);
+  addWidRadios( KOPrefs::instance()->defaultEmailAttachMethodItem(), topFrame );
 
   topTopLayout->addStretch( 1 );
 
@@ -504,10 +505,15 @@ class KOPrefsDialogViews : public KPrefsModule
 
       addWidBool( KOPrefs::instance()->selectionStartsEditorItem(), agendaGroup );
 
-      addWidBool( KOPrefs::instance()->agendaViewUsesResourceColorItem(), agendaGroup );
+      addWidCombo( KOPrefs::instance()->agendaViewColorsItem(), agendaGroup );
+
+      addWidCombo( KOPrefs::instance()->agendaViewCalendarDisplayItem(), agendaGroup );
 
       topLayout->addWidget( agendaGroup );
 
+      /*** Month and Todo view groups side by side, to save space. ***/
+      QHBoxLayout *hbox = new QHBoxLayout();
+      topLayout->addLayout( hbox );
 
       /*** Month View Group ***/
       QGroupBox *monthGroup = new QGroupBox( 1, Horizontal,
@@ -518,7 +524,7 @@ class KOPrefsDialogViews : public KPrefsModule
       addWidBool( KOPrefs::instance()->monthViewUsesCategoryColorItem(),
                       monthGroup );
       addWidBool( KOPrefs::instance()->monthViewUsesResourceColorItem(), monthGroup );
-      topLayout->addWidget( monthGroup );
+      hbox->addWidget( monthGroup );
 
 
       /*** Todo View Group ***/
@@ -527,7 +533,7 @@ class KOPrefsDialogViews : public KPrefsModule
                                             topFrame );
       addWidBool( KOPrefs::instance()->fullViewTodoItem(), todoGroup );
       addWidBool( KOPrefs::instance()->recordTodosInJournalsItem(), todoGroup );
-      topLayout->addWidget( todoGroup );
+      hbox->addWidget( todoGroup );
 
       topLayout->addStretch( 1 );
 

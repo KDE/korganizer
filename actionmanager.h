@@ -169,6 +169,12 @@ class KDE_EXPORT ActionManager : public QObject, public KCalendarIface
                           const QString& description,
                           const QString& attachment,
                           const QStringList& attendees );
+    void openEventEditor( const QString& summary,
+                          const QString& description,
+                          const QString& uri,
+                          const QString& file,
+                          const QStringList& attendees,
+                          const QString& attachmentMimetype );
 
     void openTodoEditor( const QString& );
     void openTodoEditor( const QString& summary,
@@ -178,6 +184,12 @@ class KDE_EXPORT ActionManager : public QObject, public KCalendarIface
                          const QString& description,
                          const QString& attachment,
                          const QStringList& attendees );
+    void openTodoEditor( const QString& summary,
+                         const QString& description,
+                         const QString& uri,
+                         const QString& file,
+                         const QStringList& attendees,
+                         const QString& attachmentMimetype );
 
     void openJournalEditor( const QDate& date );
     void openJournalEditor( const QString& text, const QDate& date );
@@ -193,10 +205,15 @@ class KDE_EXPORT ActionManager : public QObject, public KCalendarIface
 
     void goDate( const QDate& );
     void goDate( const QString& );
+    void showDate( const QDate &date );
 
     QString localFileName();
 
     bool queryClose();
+
+    void loadProfile( const QString & path );
+
+    void saveToProfile( const QString & path ) const;
 
   signals:
     /**
@@ -377,6 +394,7 @@ class KDE_EXPORT ActionManager : public QObject, public KCalendarIface
     KAction *mDeleteAction;
     KAction *mNextXDays;
     KAction *mPublishEvent;
+    KAction *mForwardEvent;
 
     KAction *mUndoAction;
     KAction *mRedoAction;

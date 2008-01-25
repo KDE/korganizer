@@ -414,8 +414,9 @@ void KOAlternateLabel::setText( const QString &text ) {
 ////////////////////////////////////////////////////////////////////////////
 
 KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
-  KOEventView (cal,parent,name), mExpandButton( 0 ), mAllowAgendaUpdate( true ),
-  mUpdateItem( 0 )
+  KOrg::AgendaView (cal,parent,name), mExpandButton( 0 ), mAllowAgendaUpdate( true ),
+  mUpdateItem( 0 ),
+  mResource( 0 )
 {
   mSelectedDates.append(QDate::currentDate());
 
@@ -573,6 +574,8 @@ void KOAgendaView::connectAgenda( KOAgenda *agenda, QPopupMenu *popup,
 
   connect( agenda, SIGNAL( newStartSelectSignal() ),
            otherAgenda, SLOT( clearSelection() ) );
+  connect( agenda, SIGNAL( newStartSelectSignal() ),
+           SIGNAL( timeSpanSelectionChanged()) );
 
   connect( agenda, SIGNAL( editIncidenceSignal( Incidence * ) ),
                    SIGNAL( editIncidenceSignal( Incidence * ) ) );
@@ -1236,6 +1239,9 @@ void KOAgendaView::showIncidences( const Incidence::List & )
 void KOAgendaView::insertIncidence( Incidence *incidence, const QDate &curDate,
                                     int curCol )
 {
+  if ( !filterByResource( incidence ) )
+    return;
+
   // FIXME: Use a visitor here, or some other method to get rid of the dynamic_cast's
   Event *event = dynamic_cast<Event *>( incidence );
   Todo  *todo  = dynamic_cast<Todo  *>( incidence );
@@ -1464,6 +1470,8 @@ void KOAgendaView::fillAgenda()
         Todo *todo = *todos.at(numTodo);
 
         if ( ! todo->hasDueDate() ) continue;  // todo shall not be displayed if it has no date
+
+        if ( !filterByResource( todo ) ) continue;
 
         // ToDo items shall be displayed for the day they are due, but only showed today if they are already overdue.
         // Already completed items can be displayed on their original due date
@@ -1725,4 +1733,33 @@ void KOAgendaView::setIncidenceChanger( IncidenceChangerBase *changer )
   mChanger = changer;
   mAgenda->setIncidenceChanger( changer );
   mAllDayAgenda->setIncidenceChanger( changer );
+}
+
+void KOAgendaView::clearTimeSpanSelection()
+{
+  mAgenda->clearSelection();
+  mAllDayAgenda->clearSelection();
+  deleteSelectedDateTime();
+}
+
+void KOAgendaView::setResource(KCal::ResourceCalendar * res, const QString & subResource)
+{
+  mResource = res;
+  mSubResource = subResource;
+}
+
+bool KOAgendaView::filterByResource(Incidence * incidence)
+{
+  if ( !mResource )
+    return true;
+  CalendarResources *calRes = dynamic_cast<CalendarResources*>( calendar() );
+  if ( !calRes )
+    return true;
+  if ( calRes->resource( incidence ) != mResource )
+    return false;
+  if ( !mSubResource.isEmpty() ) {
+    if ( mResource->subresourceIdentifier( incidence ) != mSubResource )
+      return false;
+  }
+  return true;
 }

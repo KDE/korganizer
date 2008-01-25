@@ -46,6 +46,7 @@
 #include <ktextedit.h>
 
 #include <libkcal/event.h>
+#include <libkcal/incidenceformatter.h>
 
 #include "ktimeedit.h"
 #include <libkdepim/kdateedit.h>
@@ -76,8 +77,8 @@ void KOEditorGeneralEvent::finishSetup()
   QWidget::setTabOrder( mStartDateEdit, mStartTimeEdit );
   QWidget::setTabOrder( mStartTimeEdit, mEndDateEdit );
   QWidget::setTabOrder( mEndDateEdit, mEndTimeEdit );
-  QWidget::setTabOrder( mEndTimeEdit, mTimeAssociateButton );
-  QWidget::setTabOrder( mTimeAssociateButton, mAlarmButton );
+  QWidget::setTabOrder( mEndTimeEdit, mAlldayEventCheckbox );
+  QWidget::setTabOrder( mAlldayEventCheckbox, mAlarmButton );
   QWidget::setTabOrder( mAlarmButton, mAlarmTimeEdit );
   QWidget::setTabOrder( mAlarmTimeEdit, mAlarmIncrCombo );
 //   QWidget::setTabOrder( mAlarmIncrCombo, mAlarmSoundButton );
@@ -106,9 +107,9 @@ void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
 
   QFrame *timeBoxFrame = new QFrame(timeGroupBox);
 
-  QGridLayout *layoutTimeBox = new QGridLayout(timeBoxFrame,2,3);
+  QGridLayout *layoutTimeBox = new QGridLayout( timeBoxFrame );
   layoutTimeBox->setSpacing(topLayout->spacing());
-
+  layoutTimeBox->setColStretch( 3, 1 );
 
   mStartDateLabel = new QLabel(i18n("&Start:"),timeBoxFrame);
   layoutTimeBox->addWidget(mStartDateLabel,0,0);
@@ -131,20 +132,12 @@ void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
   mEndTimeEdit = new KTimeEdit(timeBoxFrame);
   layoutTimeBox->addWidget(mEndTimeEdit,1,2);
 
-  QHBoxLayout *flagsBox = new QHBoxLayout();
-
-  mTimeAssociateButton = new QCheckBox(i18n("T&ime associated"),timeBoxFrame);
-  flagsBox->addWidget(mTimeAssociateButton);
-  connect(mTimeAssociateButton, SIGNAL(toggled(bool)),SLOT(associateTime(bool)));
+  mAlldayEventCheckbox = new QCheckBox(i18n("All-&day"),timeBoxFrame);
+  layoutTimeBox->addWidget( mAlldayEventCheckbox, 0, 3 );
+  connect(mAlldayEventCheckbox, SIGNAL(toggled(bool)),SLOT(associateTime(bool)));
 
   mDurationLabel = new QLabel( timeBoxFrame );
-  if ( KOPrefs::instance()->mCompactDialogs ) {
-    layoutTimeBox->addMultiCellWidget( mDurationLabel, 3, 3, 0, 3 );
-  } else {
-    flagsBox->addWidget( mDurationLabel, 0, 2 );
-  }
-
-  layoutTimeBox->addMultiCellLayout( flagsBox, 2, 2, 0, 3 );
+  layoutTimeBox->addWidget( mDurationLabel, 1, 3 );
 
   // time widgets are checked if they contain a valid time
   connect(mStartTimeEdit, SIGNAL(timeChanged(QTime)),
@@ -157,6 +150,30 @@ void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
           this, SLOT(startDateChanged(const QDate&)));
   connect(mEndDateEdit, SIGNAL(dateChanged(const QDate&)),
           this, SLOT(endDateChanged(const QDate&)));
+
+  QBoxLayout *recLayout = new QHBoxLayout();
+  layoutTimeBox->addMultiCellLayout( recLayout, 2, 2, 1, 4 );
+  mRecurrenceSummary = new QLabel( QString(), timeBoxFrame );
+  recLayout->addWidget( mRecurrenceSummary );
+  QPushButton *recEditButton = new QPushButton( i18n("Edit..."), timeBoxFrame );
+  recLayout->addWidget( recEditButton );
+  connect( recEditButton, SIGNAL(clicked()), SIGNAL(editRecurrence()) );
+  recLayout->addStretch( 1 );
+
+  QLabel *label = new QLabel( i18n("Reminder:"), timeBoxFrame );
+  layoutTimeBox->addWidget( label, 3, 0 );
+  QBoxLayout *alarmLineLayout = new QHBoxLayout();
+  layoutTimeBox->addMultiCellLayout( alarmLineLayout, 3, 3, 1, 4 );
+  initAlarm( timeBoxFrame, alarmLineLayout );
+  alarmLineLayout->addStretch( 1 );
+
+  QBoxLayout *secLayout = new QHBoxLayout();
+  layoutTimeBox->addLayout( secLayout, 0, 4 );
+  initSecrecy( timeBoxFrame, secLayout );
+
+  QBoxLayout *classLayout = new QHBoxLayout();
+  layoutTimeBox->addLayout( classLayout, 1, 4 );
+  initClass( timeBoxFrame, classLayout );
 }
 
 void KOEditorGeneralEvent::initClass(QWidget *parent,QBoxLayout *topLayout)
@@ -177,6 +194,30 @@ void KOEditorGeneralEvent::initClass(QWidget *parent,QBoxLayout *topLayout)
   freeTimeLabel->setBuddy( mFreeTimeCombo );
 }
 
+void KOEditorGeneralEvent::initInvitationBar(QWidget * parent, QBoxLayout * layout)
+{
+  QBoxLayout *topLayout = new QHBoxLayout( layout );
+  mInvitationBar = new QFrame( parent );
+  mInvitationBar->setPaletteBackgroundColor( KGlobalSettings::alternateBackgroundColor() );
+  topLayout->addWidget( mInvitationBar );
+
+  QBoxLayout *barLayout = new QHBoxLayout( mInvitationBar );
+  barLayout->setSpacing( layout->spacing() );
+  QLabel *label = new QLabel( i18n("You have not yet definitely responded to this invitation." ), mInvitationBar );
+  barLayout->addWidget( label );
+  barLayout->addStretch( 1 );
+  QPushButton *button = new QPushButton( i18n("Accept"), mInvitationBar );
+  connect( button, SIGNAL(clicked()), SIGNAL(acceptInvitation()) );
+  connect( button, SIGNAL(clicked()), mInvitationBar, SLOT(hide()) );
+  barLayout->addWidget( button );
+  button = new QPushButton( i18n("Decline"), mInvitationBar );
+  connect( button, SIGNAL(clicked()), SIGNAL(declineInvitation()) );
+  connect( button, SIGNAL(clicked()), mInvitationBar, SLOT(hide()) );
+  barLayout->addWidget( button );
+
+  mInvitationBar->hide();
+}
+
 void KOEditorGeneralEvent::timeStuffDisable(bool disable)
 {
   mStartTimeEdit->setEnabled( !disable );
@@ -188,9 +229,9 @@ void KOEditorGeneralEvent::timeStuffDisable(bool disable)
 
 void KOEditorGeneralEvent::associateTime(bool time)
 {
-  timeStuffDisable(!time);
+  timeStuffDisable(time);
   //if(alarmButton->isChecked()) alarmStuffDisable(noTime);
-  allDayChanged(!time);
+  allDayChanged(time);
 }
 
 void KOEditorGeneralEvent::setDateTimes( const QDateTime &start, const QDateTime &end )
@@ -270,17 +311,17 @@ void KOEditorGeneralEvent::setDefaults( const QDateTime &from,
 {
   KOEditorGeneral::setDefaults(allDay);
 
-  mTimeAssociateButton->setChecked(!allDay);
+  mAlldayEventCheckbox->setChecked(allDay);
   timeStuffDisable(allDay);
 
   setDateTimes(from,to);
 }
 
-void KOEditorGeneralEvent::readEvent( Event *event, bool tmpl )
+void KOEditorGeneralEvent::readEvent( Event *event, Calendar *calendar, bool tmpl )
 {
   QString tmpStr;
 
-  mTimeAssociateButton->setChecked(!event->doesFloat());
+  mAlldayEventCheckbox->setChecked(event->doesFloat());
   timeStuffDisable(event->doesFloat());
 
   if ( !tmpl ) {
@@ -297,7 +338,17 @@ void KOEditorGeneralEvent::readEvent( Event *event, bool tmpl )
     break;
   }
 
-  readIncidence(event);
+  mRecurrenceSummary->setText( IncidenceFormatter::recurrenceString( event ) );
+
+  Attendee *me = event->attendeeByMails( KOPrefs::instance()->allEmails() );
+  if ( me && (me->status() == Attendee::NeedsAction || me->status() == Attendee::Tentative ||
+       me->status() == Attendee::InProcess) ) {
+    mInvitationBar->show();
+  } else {
+    mInvitationBar->hide();
+  }
+
+  readIncidence(event, calendar);
 }
 
 void KOEditorGeneralEvent::writeEvent(Event *event)
@@ -313,7 +364,7 @@ void KOEditorGeneralEvent::writeEvent(Event *event)
   // temp. until something better happens.
   QString tmpStr;
 
-  if (!mTimeAssociateButton->isChecked()) {
+  if (mAlldayEventCheckbox->isChecked()) {
     event->setFloats(true);
     // need to change this.
     tmpDate = mStartDateEdit->date();
@@ -360,7 +411,7 @@ void KOEditorGeneralEvent::setDuration()
   // any duration if this happens
   if(mCurrEndDateTime >= mCurrStartDateTime) {
 
-    if (!mTimeAssociateButton->isChecked()) {
+    if (mAlldayEventCheckbox->isChecked()) {
       int daydiff = mCurrStartDateTime.date().daysTo(mCurrEndDateTime.date()) + 1;
       tmpStr = i18n("Duration: ");
       tmpStr.append(i18n("1 Day","%n Days",daydiff));
@@ -402,7 +453,7 @@ void KOEditorGeneralEvent::emitDateTimeStr()
   KLocale *l = KGlobal::locale();
 
   QString from,to;
-  if (!mTimeAssociateButton->isChecked()) {
+  if (mAlldayEventCheckbox->isChecked()) {
     from = l->formatDate(mCurrStartDateTime.date());
     to = l->formatDate(mCurrEndDateTime.date());
   } else {
@@ -420,7 +471,7 @@ bool KOEditorGeneralEvent::validateInput()
 {
 //  kdDebug(5850) << "KOEditorGeneralEvent::validateInput()" << endl;
 
-  if (mTimeAssociateButton->isChecked()) {
+  if (!mAlldayEventCheckbox->isChecked()) {
     if (!mStartTimeEdit->inputIsValid()) {
       KMessageBox::sorry( 0,
           i18n("Please specify a valid start time, for example '%1'.")
@@ -453,7 +504,7 @@ bool KOEditorGeneralEvent::validateInput()
   QDateTime startDt,endDt;
   startDt.setDate(mStartDateEdit->date());
   endDt.setDate(mEndDateEdit->date());
-  if (mTimeAssociateButton->isChecked()) {
+  if (!mAlldayEventCheckbox->isChecked()) {
     startDt.setTime(mStartTimeEdit->getTime());
     endDt.setTime(mEndTimeEdit->getTime());
   }
@@ -465,4 +516,9 @@ bool KOEditorGeneralEvent::validateInput()
   }
 
   return KOEditorGeneral::validateInput();
+}
+
+void KOEditorGeneralEvent::updateRecurrenceSummary(const QString & summary)
+{
+  mRecurrenceSummary->setText( summary );
 }

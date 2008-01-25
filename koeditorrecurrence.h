@@ -338,4 +338,15 @@ class KOEditorRecurrence : public QWidget
     QDateTime mEventStartDt;
 };
 
+class KOEditorRecurrenceDialog : public KDialogBase
+{
+  Q_OBJECT
+  public:
+    KOEditorRecurrenceDialog( QWidget *parent );
+    KOEditorRecurrence* editor() const { return mRecurrence; }
+
+  private:
+    KOEditorRecurrence *mRecurrence;
+};
+
 #endif

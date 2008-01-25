@@ -45,7 +45,7 @@ class KCalendarIface : public DCOPObject
   k_dcop:
 
     /** This is a struct.
-     * 
+     *
      */
     struct ResourceRequestReply {
         bool vCalInOK;
@@ -66,6 +66,12 @@ class KCalendarIface : public DCOPObject
                                   const QString& description,
                                   const QString& attachment,
                                   const QStringList& attendees ) = 0;
+    virtual void openEventEditor( const QString& summary,
+                                  const QString& description,
+                                  const QString& uri,
+                                  const QString& file,
+                                  const QStringList& attendees,
+                                  const QString& attachmentMimetype ) = 0;
 
     virtual void openTodoEditor( const QString& text ) = 0;
     virtual void openTodoEditor( const QString& summary,
@@ -75,6 +81,12 @@ class KCalendarIface : public DCOPObject
                                  const QString& description,
                                  const QString& attachment,
                                  const QStringList& attendees ) = 0;
+    virtual void openTodoEditor( const QString& summary,
+                                 const QString& description,
+                                 const QString& uri,
+                                 const QString& file,
+                                 const QStringList& attendees,
+                                 const QString& attachmentMimetype ) = 0;
 
     virtual void openJournalEditor( const QDate& date ) = 0;
     virtual void openJournalEditor( const QString& text,
@@ -91,6 +103,8 @@ class KCalendarIface : public DCOPObject
 
     virtual void goDate( const QDate& date ) = 0;
     virtual void goDate( const QString& date ) = 0;
+
+    virtual void showDate( const QDate &date ) = 0;
 };
 
 inline QDataStream& operator<<( QDataStream& str, const KCalendarIface::ResourceRequestReply& reply )

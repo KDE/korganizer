@@ -28,7 +28,9 @@
 #include <qscrollview.h>
 #include <qlabel.h>
 
-#include "koeventview.h"
+#include "calprinter.h"
+
+#include "agendaview.h"
 
 class QHBox;
 class QPushButton;
@@ -37,6 +39,14 @@ class QBoxLayout;
 class KOAgenda;
 class KOAgendaItem;
 class KConfig;
+
+namespace KCal {
+  class ResourceCalendar;
+}
+
+namespace KOrg {
+  class IncidenceChangerBase;
+}
 
 class TimeLabels : public QScrollView
 {
@@ -133,10 +143,10 @@ class KOAlternateLabel : public QLabel
 };
 
 /**
-  KOAgendaView is the agenda-like view used to display events in an one or
+  KOAgendaView is the agenda-like view used to display events in a single one or
   multi-day view.
 */
-class KOAgendaView : public KOEventView
+class KOAgendaView : public KOrg::AgendaView
 {
     Q_OBJECT
   public:
@@ -163,7 +173,7 @@ class KOAgendaView : public KOEventView
     /** Remove all events from view */
     void clearView();
 
-    CalPrinterBase::PrintType printType();
+    KOrg::CalPrinterBase::PrintType printType();
 
     /** start-datetime of selection */
     QDateTime selectionStart() { return mTimeSpanBegin; }
@@ -177,6 +187,9 @@ class KOAgendaView : public KOEventView
     bool selectedIsSingleCell();
 
     void setTypeAheadReceiver( QObject * );
+
+    /** Show only incidences from the given resource. */
+    void setResource( KCal::ResourceCalendar *res, const QString &subResource = QString::null );
 
   public slots:
     virtual void updateView();
@@ -206,7 +219,7 @@ class KOAgendaView : public KOEventView
     void slotTodoDropped( Todo *, const QPoint &, bool );
 
     void enableAgendaUpdate( bool enable );
-    void setIncidenceChanger( IncidenceChangerBase *changer );
+    void setIncidenceChanger( KOrg::IncidenceChangerBase *changer );
 
     void zoomInHorizontally( const QDate& date=QDate() );
     void zoomOutHorizontally( const QDate& date=QDate() );
@@ -216,9 +229,13 @@ class KOAgendaView : public KOEventView
 
     void zoomView( const int delta, const QPoint &pos,
       const Qt::Orientation orient=Qt::Horizontal );
+
+    void clearTimeSpanSelection();
   signals:
     void toggleExpand();
     void zoomViewHorizontally(const QDate &, int count );
+
+    void timeSpanSelectionChanged();
 
   protected:
     /** Fill agenda beginning with date startDate */
@@ -261,6 +278,9 @@ class KOAgendaView : public KOEventView
     void newTimeSpanSelectedAllDay( const QPoint &start, const QPoint &end );
 
   private:
+    bool filterByResource( Incidence *incidence );
+
+  private:
     // view widgets
     QFrame *mDayLabels;
     QHBox *mDayLabelsFrame;
@@ -296,6 +316,9 @@ class KOAgendaView : public KOEventView
     bool mAllowAgendaUpdate;
 
     Incidence *mUpdateItem;
+
+    KCal::ResourceCalendar *mResource;
+    QString mSubResource;
 };
 
 #endif

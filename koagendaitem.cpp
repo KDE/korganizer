@@ -558,13 +558,13 @@ void KOAgendaItem::addAttendee( const QString &newAttendee )
   if ( !( name.isEmpty() && email.isEmpty() ) ) {
     mIncidence->addAttendee(new Attendee(name,email));
     KMessageBox::information( this, i18n("Attendee \"%1\" added to the calendar item \"%2\"").arg(KPIM::normalizedAddress(name, email, QString())).arg(text()), i18n("Attendee added"), "AttendeeDroppedAdded" );
-  } 
- 
+  }
+
 }
 
 void KOAgendaItem::dropEvent( QDropEvent *e )
 {
-  // TODO: Organize this better: First check for attachment (not only file, also any other url!), then if it's a vcard, otherwise check for attendees, then if the data is binary, add a binary attachment. 
+  // TODO: Organize this better: First check for attachment (not only file, also any other url!), then if it's a vcard, otherwise check for attendees, then if the data is binary, add a binary attachment.
 #ifndef KORG_NODND
   QString text;
 
@@ -686,11 +686,23 @@ void KOAgendaItem::paintTodoIcon( QPainter *p, int &x, int ft )
   conditionalPaint( p, b, x, ft, completedPxmp );
 }
 
+void KOAgendaItem::paintAlarmIcon( QPainter *p, int &x, int ft )
+{
+  if (!mIconAlarm) return;
+  int y = ft;
+  // if we can't fit it all, bottom align it, more or less, so
+  // it can be guessed better, visually
+  if ( visibleRect().height() - ft < alarmPxmp->height() )
+      y -= ( alarmPxmp->height() - visibleRect().height() - ft );
+  p->drawPixmap( x, y, *alarmPxmp );
+  x += alarmPxmp->width() + ft;
+}
+
 void KOAgendaItem::paintIcons( QPainter *p, int &x, int ft )
 {
   paintEventIcon( p, x, ft );
   paintTodoIcon( p, x, ft );
-  conditionalPaint( p, mIconAlarm,          x, ft, *alarmPxmp );
+  paintAlarmIcon( p, x, ft );
   conditionalPaint( p, mIconRecur,          x, ft, *recurPxmp );
   conditionalPaint( p, mIconReadonly,       x, ft, *readonlyPxmp );
   conditionalPaint( p, mIconReply,          x, ft, *replyPxmp );
@@ -699,7 +711,7 @@ void KOAgendaItem::paintIcons( QPainter *p, int &x, int ft )
   conditionalPaint( p, mIconOrganizer,      x, ft, *organizerPxmp );
 }
 
-void KOAgendaItem::paintEvent( QPaintEvent * )
+void KOAgendaItem::paintEvent( QPaintEvent *ev )
 {
   //HACK
   // to reproduce a crash:
@@ -708,6 +720,15 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
   // causes a crash for me every time in this method unless we make
   // the following check
   if ( !mIncidence )return;
+
+  QRect visRect = visibleRect();
+  // when scrolling horizontally in the side-by-side view, the repainted area is clipped
+  // to the newly visible area, which is a problem since the content changes when visRect
+  // changes, so repaint the full item in that case
+  if ( ev->rect() != visRect && visRect.isValid() && ev->rect().isValid() ) {
+    repaint( visRect );
+    return;
+  }
 
   QPainter p( this );
   const int ft = 2; // frame thickness for layout, see paintFrame()
@@ -737,26 +758,44 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
       bgColor = KOPrefs::instance()->todoDueTodayColor();
   }
 
-  if ( !bgColor.isValid() ) {
-    QStringList categories = mIncidence->categories();
-    QString cat = categories.first();
-    if (cat.isEmpty())
-      bgColor = KOPrefs::instance()->mEventColor;
-    else
-      bgColor = *(KOPrefs::instance()->categoryColor(cat));
-  }
+  QColor categoryColor;
+  QStringList categories = mIncidence->categories();
+  QString cat = categories.first();
+  if (cat.isEmpty())
+    categoryColor = KOPrefs::instance()->mEventColor;
+  else
+    categoryColor = *(KOPrefs::instance()->categoryColor(cat));
+
+  QColor resourceColor = mResourceColor;
+  if ( !resourceColor.isValid() )
+    resourceColor = categoryColor;
+
+  if (!KOPrefs::instance()->hasCategoryColor(cat))
+      categoryColor = resourceColor;
+
   QColor frameColor;
-  if ( KOPrefs::instance()->agendaViewUsesResourceColor()
-    && mResourceColor.isValid() ) {
-     frameColor = mSelected ? QColor( 85 + mResourceColor.red() * 2/3,
-                                      85 + mResourceColor.green() * 2/3,
-                                      85 + mResourceColor.blue() * 2/3 )
-                                : mResourceColor;
+  if ( KOPrefs::instance()->agendaViewColors() == KOPrefs::ResourceOnly ||
+       KOPrefs::instance()->agendaViewColors() == KOPrefs::CategoryInsideResourceOutside ) {
+    frameColor = bgColor.isValid() ? bgColor : resourceColor;
   } else {
-    frameColor = mSelected ? QColor( 85 + bgColor.red() * 2/3,
-                                     85 + bgColor.green() * 2/3,
-                                     85 + bgColor.blue() * 2/3 )
-                                : bgColor.dark(115);
+    frameColor = bgColor.isValid() ? bgColor : categoryColor;
+  }
+
+  if ( !bgColor.isValid() ) {
+    if ( KOPrefs::instance()->agendaViewColors() == KOPrefs::ResourceOnly ||
+         KOPrefs::instance()->agendaViewColors() == KOPrefs::ResourceInsideCategoryOutside ) {
+      bgColor = resourceColor;
+    } else {
+      bgColor = categoryColor;
+    }
+  }
+
+  if ( mSelected ) {
+    frameColor = QColor( 85 + frameColor.red() * 2/3,
+                        85 + frameColor.green() * 2/3,
+                        85 + frameColor.blue() * 2/3 );
+  } else {
+    frameColor = frameColor.dark( 115 );
   }
   QColor textColor = getTextColor(bgColor);
   p.setPen( textColor );
@@ -812,9 +851,6 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
     paintTodoIcon( &p, x, ft );
     return;
   }
-
-  // Used for multi-day events to make sure the summary is on screen
-  QRect visRect=visibleRect();
 
   // case 2: draw a single line when no more space
   if ( (2 * singleLineHeight) > (height() - 2 * margin) ) {

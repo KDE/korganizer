@@ -58,6 +58,7 @@ class KOEventPopupMenu : public QPopupMenu {
     void popupAlarm();
     void dissociateOccurrence();
     void dissociateFutureOccurrence();
+    void forward();
 
   signals:
     void editIncidenceSignal(Incidence *);

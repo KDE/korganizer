@@ -33,8 +33,12 @@ class Incidence;
 class Attachment;
 }
 
-class QListViewItem;
-class KListView;
+class QIconViewItem;
+class AttachmentIconView;
+class QMimeSource;
+class QPushButton;
+class QPopupMenu;
+class KAction;
 
 class KOEditorAttachments : public QWidget
 {
@@ -44,8 +48,8 @@ class KOEditorAttachments : public QWidget
                          const char *name = 0 );
     ~KOEditorAttachments();
 
-    void addAttachment( const QString &uri,
-                        const QString &mimeType = QString::null );
+    void addAttachment( const KURL &uri,
+                        const QString &mimeType = QString::null, bool asUri = true );
     void addAttachment( KCal::Attachment *attachment );
 
     /** Set widgets to default values */
@@ -58,18 +62,30 @@ class KOEditorAttachments : public QWidget
     bool hasAttachments();
 
   protected slots:
-    void showAttachment( QListViewItem *item );
+    void showAttachment( QIconViewItem *item );
     void slotAdd();
+    void slotAddData();
     void slotEdit();
     void slotRemove();
     void slotShow();
     void dragEnterEvent( QDragEnterEvent *event );
     void dropEvent( QDropEvent *event );
+    void slotCopy();
+    void slotCut();
+    void slotPaste();
+    void selectionChanged();
+    void contextMenu( QIconViewItem* item, const QPoint &pos );
   signals:
     void openURL( const KURL &url );
 
   private:
-    KListView *mAttachments;
+    friend class AttachmentIconView;
+    void handlePasteOrDrop( QMimeSource* source );
+
+    AttachmentIconView *mAttachments;
+    QPushButton *mRemoveBtn;
+    QPopupMenu *mContextMenu, *mAddMenu;
+    KAction *mOpenAction, *mCopyAction, *mCutAction;
 };
 
 #endif

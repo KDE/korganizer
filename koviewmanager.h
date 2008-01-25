@@ -26,6 +26,8 @@
 #define KOVIEWMANAGER_H
 
 #include <qobject.h>
+class QWidget;
+class QTabWidget;
 
 class CalendarView;
 
@@ -35,8 +37,12 @@ class KOMonthView;
 class KOTodoView;
 class KOWhatsNextView;
 class KOJournalView;
+class KOTimelineView;
 
-namespace KOrg { class BaseView; }
+namespace KOrg {
+  class BaseView;
+  class MultiAgendaView;
+}
 using namespace KCal;
 
 /**
@@ -77,6 +83,7 @@ class KOViewManager : public QObject
     QDate currentSelectionDate();
 
     KOAgendaView *agendaView() const { return mAgendaView; }
+    KOrg::MultiAgendaView *multiAgendaView() const { return mAgendaSideBySideView; }
     KOTodoView   *todoView() const { return mTodoView; }
 
   public slots:
@@ -89,6 +96,7 @@ class KOViewManager : public QObject
     void showNextXView();
     void showMonthView();
     void showTodoView();
+    void showTimelineView();
     void showJournalView();
 
     void showEventView();
@@ -99,22 +107,25 @@ class KOViewManager : public QObject
     void zoomOutHorizontally();
     void zoomInVertically();
     void zoomOutVertically();
-
+  private slots:
+    void currentAgendaViewTabChanged( QWidget* );
   private:
+    QWidget* widgetForView( KOrg::BaseView* ) const;
     CalendarView *mMainView;
 
     KOAgendaView    *mAgendaView;
+    MultiAgendaView *mAgendaSideBySideView;
     KOListView      *mListView;
     KOMonthView     *mMonthView;
     KOTodoView      *mTodoView;
     KOWhatsNextView *mWhatsNextView;
     KOJournalView   *mJournalView;
+    KOTimelineView  *mTimelineView;
 
     KOrg::BaseView *mCurrentView;
 
     KOrg::BaseView *mLastEventView;
-
-    int mAgendaViewMode;
+    QTabWidget *mAgendaViewTabs;
 };
 
 #endif

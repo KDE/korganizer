@@ -29,6 +29,7 @@
 
 class KOEditorGeneralEvent;
 class KOEditorRecurrence;
+class KOEditorRecurrenceDialog;
 class KOEditorFreeBusy;
 
 class SaveTemplateDialog;
@@ -63,17 +64,17 @@ class KOEventEditor : public KOIncidenceEditor
       Clear event win for new event
     */
     void newEvent();
-    
+
     /**
-      Sets the given summary and description. If description is empty and the 
-      summary contains multiple lines, the summary will be used as description 
+      Sets the given summary and description. If description is empty and the
+      summary contains multiple lines, the summary will be used as description
       and only the first line of summary will be used as the summary.
     */
     void setTexts( const QString &summary, const QString &description = QString::null );
     /**
       Edit an existing event.
     */
-    void editIncidence( Incidence * );
+    void editIncidence( Incidence *incidence, Calendar *calendar );
 
     /**
       Set widgets to the given date/time values
@@ -84,7 +85,7 @@ class KOEventEditor : public KOIncidenceEditor
       Read event object and setup widgets accordingly. If tmpl is true, the
       event is read as template, i.e. the time and date information isn't set.
     */
-    void readEvent( Event *, bool tmpl = false );
+    void readEvent( Event *event, Calendar *calendar, bool tmpl = false );
     /**
       Write event settings to event object
     */
@@ -100,6 +101,7 @@ class KOEventEditor : public KOIncidenceEditor
     void deleteEvent();
 
     void slotSaveTemplate( const QString & );
+    void updateRecurrenceSummary();
 
   protected:
     QString type() { return "Event"; }
@@ -119,8 +121,10 @@ class KOEventEditor : public KOIncidenceEditor
 
   private:
     Event *mEvent;
+    Calendar* mCalendar;
 
     KOEditorGeneralEvent *mGeneral;
+    KOEditorRecurrenceDialog *mRecurrenceDialog;
     KOEditorRecurrence   *mRecurrence;
     KOEditorFreeBusy     *mFreeBusy;
 };

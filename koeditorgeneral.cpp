@@ -41,6 +41,7 @@
 #include <qwhatsthis.h>
 
 #include <kglobal.h>
+#include <kdialog.h>
 #include <kdebug.h>
 #include <klocale.h>
 #include <kiconloader.h>
@@ -62,10 +63,12 @@
 
 #include "koeditorgeneral.h"
 #include "koeditoralarms.h"
+#include "koeditorattachments.h"
 #include "koeditorgeneral.moc"
+#include "kohelper.h"
 
 KOEditorGeneral::KOEditorGeneral(QObject* parent, const char* name) :
-  QObject( parent, name )
+  QObject( parent, name ), mAttachments(0)
 {
   mAlarmList.setAutoDelete( true );
 }
@@ -91,9 +94,11 @@ void FocusLineEdit::focusInEvent ( QFocusEvent *e )
 }
 
 
-void KOEditorGeneral::initHeader(QWidget *parent,QBoxLayout *topLayout)
+void KOEditorGeneral::initHeader( QWidget *parent,QBoxLayout *topLayout)
 {
-  QGridLayout *headerLayout = new QGridLayout(topLayout);
+  QGridLayout *headerLayout = new QGridLayout();
+  headerLayout->setSpacing( topLayout->spacing() );
+  topLayout->addLayout( headerLayout );
 
 #if 0
   mOwnerLabel = new QLabel(i18n("Owner:"),parent);
@@ -101,48 +106,55 @@ void KOEditorGeneral::initHeader(QWidget *parent,QBoxLayout *topLayout)
 #endif
 
   QString whatsThis = i18n("Sets the Title of this event or to-do.");
-  QLabel *summaryLabel = new QLabel(i18n("T&itle:"),parent);
+  QLabel *summaryLabel = new QLabel( i18n("T&itle:"), parent );
   QWhatsThis::add( summaryLabel, whatsThis );
   QFont f = summaryLabel->font();
   f.setBold( true );
   summaryLabel->setFont(f);
   headerLayout->addWidget(summaryLabel,1,0);
 
-  mSummaryEdit = new FocusLineEdit(parent);
+  mSummaryEdit = new FocusLineEdit( parent );
   QWhatsThis::add( mSummaryEdit, whatsThis );
   connect( mSummaryEdit, SIGNAL( focusReceivedSignal() ),
            SIGNAL( focusReceivedSignal() ) );
   headerLayout->addWidget(mSummaryEdit,1,1);
   summaryLabel->setBuddy( mSummaryEdit );
 
+  mAttendeeSummaryLabel = new QLabel( parent );
+  updateAttendeeSummary( 0 );
+  headerLayout->addWidget( mAttendeeSummaryLabel, 1, 2 );
+
   whatsThis = i18n("Sets where the event or to-do will take place.");
-  QLabel *locationLabel = new QLabel(i18n("&Location:"),parent);
+  QLabel *locationLabel = new QLabel( i18n("&Location:"), parent );
   QWhatsThis::add( locationLabel, whatsThis );
   headerLayout->addWidget(locationLabel,2,0);
 
-  mLocationEdit = new QLineEdit(parent);
+  mLocationEdit = new QLineEdit( parent );
   QWhatsThis::add( mLocationEdit, whatsThis );
-  headerLayout->addWidget(mLocationEdit,2,1);
+  headerLayout->addMultiCellWidget( mLocationEdit, 2, 2, 1, 2 );
   locationLabel->setBuddy( mLocationEdit );
-}
 
-void KOEditorGeneral::initCategories(QWidget *parent, QBoxLayout *topLayout)
-{
-  QBoxLayout *categoriesLayout = new QHBoxLayout( topLayout );
+  QBoxLayout *thirdLineLayout = new QHBoxLayout();
+  headerLayout->addMultiCellLayout( thirdLineLayout, 3, 3, 0, 2 );
 
-  QString whatsThis = i18n("Allows you to select the categories that this "
-		  	   "event or to-do belongs to.");
+  mResourceLabel = new QLabel( parent );
+  mResourceLabel->hide();
+  thirdLineLayout->addWidget( mResourceLabel );
 
-  mCategoriesButton = new QPushButton(parent);
-  mCategoriesButton->setText(i18n("Select Cate&gories..."));
-  QWhatsThis::add( mCategoriesButton, whatsThis );
-  connect(mCategoriesButton,SIGNAL(clicked()),SLOT(selectCategories()));
-  categoriesLayout->addWidget(mCategoriesButton);
-
-  mCategoriesLabel = new KSqueezedTextLabel(parent);
+  whatsThis = i18n("Allows you to select the categories that this event or to-do belongs to.");
+  QLabel *categoriesLabel = new QLabel( i18n("Categories:"), parent );
+  QWhatsThis::add( categoriesLabel, whatsThis );
+  thirdLineLayout->addWidget( categoriesLabel );
+  mCategoriesLabel = new KSqueezedTextLabel( parent );
   QWhatsThis::add( mCategoriesLabel, whatsThis );
   mCategoriesLabel->setFrameStyle(QFrame::Panel|QFrame::Sunken);
-  categoriesLayout->addWidget(mCategoriesLabel,1);
+  thirdLineLayout->addWidget( mCategoriesLabel );
+
+  mCategoriesButton = new QPushButton( parent );
+  mCategoriesButton->setText(i18n("&Select..."));
+  QWhatsThis::add( mCategoriesButton, whatsThis );
+  connect(mCategoriesButton,SIGNAL(clicked()),SLOT(selectCategories()));
+  thirdLineLayout->addWidget( mCategoriesButton );
 }
 
 void KOEditorGeneral::initSecrecy(QWidget *parent, QBoxLayout *topLayout)
@@ -180,7 +192,7 @@ void KOEditorGeneral::initDescription(QWidget *parent,QBoxLayout *topLayout)
   mDescriptionEdit->setOverwriteMode(false);
   mDescriptionEdit->setWordWrap( KTextEdit::WidgetWidth );
   mDescriptionEdit->setTabChangesFocus( true );;
-  topLayout->addWidget(mDescriptionEdit);
+  topLayout->addWidget(mDescriptionEdit, 4);
 }
 
 void KOEditorGeneral::initAlarm(QWidget *parent,QBoxLayout *topLayout)
@@ -231,6 +243,28 @@ void KOEditorGeneral::initAlarm(QWidget *parent,QBoxLayout *topLayout)
 
 }
 
+void KOEditorGeneral::initAttachments(QWidget *parent,QBoxLayout *topLayout)
+{
+  mAttachments = new KOEditorAttachments( KDialog::spacingHint(), parent );
+  connect( mAttachments, SIGNAL( openURL( const KURL & ) ) ,
+           this, SIGNAL( openURL( const KURL & ) ) );
+  topLayout->addWidget( mAttachments, 1 );
+}
+
+void KOEditorGeneral::addAttachments( const QStringList &attachments,
+                                      const QStringList &mimeTypes,
+                                      bool inlineAttachments )
+{
+  QStringList::ConstIterator it;
+  uint i = 0;
+  for ( it = attachments.begin(); it != attachments.end(); ++it, ++i ) {
+    QString mimeType;
+    if ( mimeTypes.count() > i )
+      mimeType = mimeTypes[ i ];
+    mAttachments->addAttachment( *it, mimeType, !inlineAttachments );
+  }
+}
+
 void KOEditorGeneral::selectCategories()
 {
   KPIM::CategorySelectDialog *categoryDialog = new KPIM::CategorySelectDialog( KOPrefs::instance(), mCategoriesButton	 );
@@ -238,6 +272,7 @@ void KOEditorGeneral::selectCategories()
   categoryDialog->setSelected( mCategories );
 
   connect(categoryDialog, SIGNAL(editCategories()), this, SIGNAL(openCategoryDialog()));
+  connect(this, SIGNAL(updateCategoryConfig()), categoryDialog, SLOT(updateCategoryConfig()));
 
   if ( categoryDialog->exec() ) {
     setCategories( categoryDialog->selectedCategories() );
@@ -286,6 +321,7 @@ void KOEditorGeneral::setDefaults(bool /*allDay*/)
   updateAlarmWidgets();
 
   mSecrecyCombo->setCurrentItem(Incidence::SecrecyPublic);
+  mAttachments->setDefaults();
 }
 
 void KOEditorGeneral::updateDefaultAlarmTime()
@@ -345,7 +381,7 @@ void KOEditorGeneral::updateAlarmWidgets()
   }
 }
 
-void KOEditorGeneral::readIncidence(Incidence *event)
+void KOEditorGeneral::readIncidence(Incidence *event, Calendar *calendar)
 {
   mSummaryEdit->setText(event->summary());
   mLocationEdit->setText(event->location());
@@ -372,6 +408,14 @@ void KOEditorGeneral::readIncidence(Incidence *event)
   updateAlarmWidgets();
 
   setCategories(event->categories());
+
+  mAttachments->readIncidence( event );
+
+  QString resLabel = KOHelper::resourceLabel( calendar, event );
+  if ( !resLabel.isEmpty() ) {
+    mResourceLabel->setText( i18n( "Calendar: %1" ).arg( resLabel ) );
+    mResourceLabel->show();
+  }
 }
 
 Alarm *KOEditorGeneral::alarmFromSimplePage() const
@@ -420,6 +464,7 @@ void KOEditorGeneral::writeIncidence(Incidence *event)
       event->addAlarm( al );
     }
   }
+  mAttachments->writeIncidence( event );
 }
 
 void KOEditorGeneral::setSummary( const QString &text )
@@ -435,4 +480,12 @@ void KOEditorGeneral::setDescription( const QString &text )
 QObject *KOEditorGeneral::typeAheadReceiver() const
 {
   return mSummaryEdit;
+}
+
+void KOEditorGeneral::updateAttendeeSummary(int count)
+{
+  if ( count <= 0 )
+    mAttendeeSummaryLabel->setText( "No attendees" );
+  else
+    mAttendeeSummaryLabel->setText( i18n( "One attendee", "%n attendees", count ) );
 }

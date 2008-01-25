@@ -237,7 +237,7 @@ KOEventEditor *KODialogManager::getEventEditor()
 }
 
 void KODialogManager::connectTypeAhead( KOEventEditor *editor,
-                                        KOAgendaView *agenda )
+                                        KOrg::AgendaView *agenda )
 {
   if ( editor && agenda ) {
     agenda->setTypeAheadReceiver( editor->typeAheadReceiver() );
@@ -248,11 +248,11 @@ void KODialogManager::connectTypeAhead( KOEventEditor *editor,
 
 void KODialogManager::connectEditor( KOIncidenceEditor*editor )
 {
-/*  connect( editor, SIGNAL( deleteIncidenceSignal( Incidence * ) ),
-           mMainView, SLOT( deleteIncidence( Incidence * ) ) );*/
+  connect( editor, SIGNAL( deleteIncidenceSignal( Incidence * ) ),
+           mMainView, SLOT( deleteIncidence( Incidence * ) ) );
 
   connect( mCategoryEditDialog, SIGNAL( categoryConfigChanged() ),
-           editor, SLOT( updateCategoryConfig() ) );
+           editor, SIGNAL( updateCategoryConfig() ) );
   connect( editor, SIGNAL( editCategories() ),
            mCategoryEditDialog, SLOT( show() ) );
 

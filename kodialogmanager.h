@@ -40,7 +40,7 @@ class KOJournalEditor;
 class SearchDialog;
 class ArchiveDialog;
 class FilterEditDialog;
-class KOAgendaView;
+namespace KOrg { class AgendaView; }
 
 using namespace KCal;
 
@@ -67,7 +67,7 @@ class KODialogManager : public QObject
 
     void updateSearchDialog();
 
-    void connectTypeAhead( KOEventEditor *editor, KOAgendaView *agenda );
+    void connectTypeAhead( KOEventEditor *editor, KOrg::AgendaView *agenda );
 
     static void errorSaveIncidence( QWidget *parent, Incidence *incidence );
 
@@ -81,7 +81,7 @@ class KODialogManager : public QObject
   private:
     class DialogManagerVisitor;
     class EditorDialogVisitor;
-    
+
     CalendarView *mMainView;
 
     KCMultiDialog *mOptionsDialog;

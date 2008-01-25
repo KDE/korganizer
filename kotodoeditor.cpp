@@ -56,6 +56,7 @@ KOTodoEditor::KOTodoEditor( Calendar *calendar, QWidget *parent ) :
   KOIncidenceEditor( QString::null, calendar, parent )
 {
   mTodo = 0;
+  mCalendar = 0;
   mRelatedTodo = 0;
 }
 
@@ -70,7 +71,7 @@ void KOTodoEditor::init()
   setupGeneral();
   setupRecurrence();
   setupAttendeesTab();
-  setupAttachmentsTab();
+//  setupAttachmentsTab();
 
   connect( mGeneral, SIGNAL( dateTimeStrChanged( const QString & ) ),
            mRecurrence, SLOT( setDateTimeStr( const QString & ) ) );
@@ -79,11 +80,14 @@ void KOTodoEditor::init()
 
   connect( mGeneral, SIGNAL( openCategoryDialog() ),
            SIGNAL( editCategories() ) );
+
+  connect( mDetails, SIGNAL(updateAttendeeSummary(int)),
+           mGeneral, SLOT(updateAttendeeSummary(int)) );
 }
 
 void KOTodoEditor::reload()
 {
-  if ( mTodo ) readTodo( mTodo );
+  if ( mTodo ) readTodo( mTodo, mCalendar );
 }
 
 void KOTodoEditor::setupGeneral()
@@ -97,11 +101,10 @@ void KOTodoEditor::setupGeneral()
     topLayout->setMargin(marginHint());
     topLayout->setSpacing(spacingHint());
 
-    mGeneral->initHeader(topFrame,topLayout);
+    mGeneral->initHeader( topFrame, topLayout );
     mGeneral->initTime(topFrame,topLayout);
     QHBoxLayout *priorityLayout = new QHBoxLayout( topLayout );
     mGeneral->initPriority(topFrame,priorityLayout);
-    mGeneral->initCategories( topFrame, topLayout );
     topLayout->addStretch(1);
 
     QFrame *topFrame2 = addPage(i18n("Details"));
@@ -124,16 +127,19 @@ void KOTodoEditor::setupGeneral()
     QBoxLayout *topLayout = new QVBoxLayout(topFrame);
     topLayout->setSpacing(spacingHint());
 
-    mGeneral->initHeader(topFrame,topLayout);
+    mGeneral->initHeader( topFrame, topLayout );
     mGeneral->initTime(topFrame,topLayout);
     mGeneral->initStatus(topFrame,topLayout);
     QBoxLayout *alarmLineLayout = new QHBoxLayout(topLayout);
     mGeneral->initAlarm(topFrame,alarmLineLayout);
+    mGeneral->enableAlarm( false );
     alarmLineLayout->addStretch( 1 );
     mGeneral->initDescription(topFrame,topLayout);
-    QBoxLayout *detailsLayout = new QHBoxLayout(topLayout);
-    mGeneral->initCategories( topFrame, detailsLayout );
-    mGeneral->initSecrecy( topFrame, detailsLayout );
+    mGeneral->initAttachments(topFrame,topLayout);
+    connect( mGeneral, SIGNAL( openURL( const KURL& ) ),
+             this, SLOT( openURL( const KURL& ) ) );
+    connect( this, SIGNAL( signalAddAttachments( const QStringList&, const QStringList&, bool ) ),
+             mGeneral, SLOT( addAttachments( const QStringList&, const QStringList&, bool ) ) );
   }
   // By default, the To-do has no time associated and
   // neither a start nor end time.
@@ -156,7 +162,7 @@ void KOTodoEditor::setupRecurrence()
           mRecurrence, SLOT( setEnabled( bool ) ) );
 }
 
-void KOTodoEditor::editIncidence(Incidence *incidence)
+void KOTodoEditor::editIncidence(Incidence *incidence, Calendar *calendar)
 {
   kdDebug(5850) << k_funcinfo << endl;
   Todo *todo=dynamic_cast<Todo*>(incidence);
@@ -165,7 +171,8 @@ void KOTodoEditor::editIncidence(Incidence *incidence)
     init();
 
     mTodo = todo;
-    readTodo(mTodo);
+    mCalendar = calendar;
+    readTodo( mTodo, mCalendar );
   }
 
   setCaption( i18n("Edit To-do") );
@@ -176,6 +183,7 @@ void KOTodoEditor::newTodo()
   kdDebug(5850) << k_funcinfo << endl;
   init();
   mTodo = 0;
+  mCalendar = 0;
   setCaption( i18n("New To-do") );
 }
 
@@ -270,19 +278,17 @@ void KOTodoEditor::setDates( const QDateTime &due, bool allDay, Todo *relatedEve
     mRecurrence->setDefaults( mTodo->dtStart(), due, false );
   else
     mRecurrence->setDefaults( QDateTime::currentDateTime(), due, false );
-  mAttachments->setDefaults();
 }
 
-void KOTodoEditor::readTodo( Todo *todo )
+void KOTodoEditor::readTodo( Todo *todo, Calendar *calendar )
 {
   if ( !todo ) return;
 //   mRelatedTodo = todo->relatedTo();
   kdDebug(5850)<<"read todo"<<endl;
-  mGeneral->readTodo( todo );
+  mGeneral->readTodo( todo, calendar );
   mDetails->readEvent( todo );
 //  mAlarms->readIncidence( todo );
   mRecurrence->readIncidence( todo );
-  mAttachments->readIncidence( todo );
 
   createEmbeddedURLPages( todo );
   readDesignerFields( todo );
@@ -295,7 +301,6 @@ void KOTodoEditor::writeTodo( Todo *todo )
   mRecurrence->writeIncidence( todo );
   mGeneral->writeTodo( todo );
   mDetails->writeEvent( todo );
-  mAttachments->writeIncidence( todo );
 
   if ( *(oldIncidence->recurrence()) != *(todo->recurrence() ) ) {
     todo->setDtDue( todo->dtDue(), true );
@@ -341,7 +346,7 @@ void KOTodoEditor::loadTemplate( /*const*/ CalendarLocal& cal )
     KMessageBox::error( this,
         i18n("Template does not contain a valid to-do.") );
   } else {
-    readTodo( todos.first() );
+    readTodo( todos.first(), 0 );
   }
 }
 

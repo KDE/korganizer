@@ -27,24 +27,44 @@
 
 #include <libkcal/incidence.h>
 #include <libkdepim/kpimurlrequesterdlg.h>
+#include <libkdepim/kfileio.h>
 
 #include <klocale.h>
 #include <kdebug.h>
+#include <kmdcodec.h>
 #include <kmessagebox.h>
-#include <klistview.h>
+#include <kiconview.h>
+#include <krun.h>
 #include <kurldrag.h>
+#include <ktempfile.h>
+#include <ktempdir.h>
+#include <kio/netaccess.h>
+#include <kmimetype.h>
+#include <kiconloader.h>
+#include <kfiledialog.h>
+#include <kstdaction.h>
+#include <kactioncollection.h>
+#include <kpopupmenu.h>
 
+#include <qfile.h>
+#include <qlabel.h>
 #include <qlayout.h>
 #include <qlistview.h>
 #include <qpushbutton.h>
 #include <qdragobject.h>
+#include <qtooltip.h>
 #include <qwhatsthis.h>
+#include <qapplication.h>
+#include <qclipboard.h>
 
-class AttachmentListItem : public KListViewItem
+#include <cassert>
+#include <set>
+
+class AttachmentListItem : public KIconViewItem
 {
   public:
-    AttachmentListItem( KCal::Attachment*att, QListView *parent ) :
-        KListViewItem( parent )
+    AttachmentListItem( KCal::Attachment*att, QIconView *parent ) :
+        KIconViewItem( parent )
     {
       if ( att ) {
         mAttachment = new KCal::Attachment( *att );
@@ -52,6 +72,7 @@ class AttachmentListItem : public KListViewItem
         mAttachment = new KCal::Attachment( QString::null );
       }
       readAttachment();
+      setDragEnabled( true );
     }
     ~AttachmentListItem() { delete mAttachment; }
     KCal::Attachment *attachment() const { return mAttachment; }
@@ -71,70 +92,161 @@ class AttachmentListItem : public KListViewItem
       mAttachment->setMimeType( mime );
       readAttachment();
     }
+    void setLabel( const QString &label )
+    {
+      mAttachment->setLabel( label );
+      readAttachment();
+    }
 
     void readAttachment()
     {
       if ( mAttachment->isUri() )
-        setText( 0, mAttachment->uri() );
-      else
-        setText( 0, i18n("[Binary data]") );
-      setText( 1, mAttachment->mimeType() );
+        setText( mAttachment->uri() );
+      else {
+        if ( mAttachment->label().isEmpty() )
+          setText( i18n("[Binary data]") );
+        else
+          setText( mAttachment->label() );
+      }
+      KMimeType::Ptr mt = KMimeType::mimeType( mAttachment->mimeType() );
+      if ( mt ) {
+          const QString iconName( mt->icon( QString(), false ) );
+          QPixmap pix = KGlobal::iconLoader( )->loadIcon( iconName, KIcon::Small );
+          if ( pix.isNull() )
+            pix = KGlobal::iconLoader( )->loadIcon( "unknown", KIcon::Small );
+            if ( !pix.isNull() )
+              setPixmap( pix );
+      }
     }
 
   private:
     KCal::Attachment *mAttachment;
 };
 
+class AttachmentIconView : public KIconView
+{
+    friend class KOEditorAttachments;
+    public:
+        AttachmentIconView( KOEditorAttachments* parent=0 )
+            :KIconView( parent ),
+             mParent( parent )
+        {
+            setAcceptDrops( true );
+            setSelectionMode( QIconView::Extended );
+            setMode( KIconView::Select );
+            setItemTextPos( QIconView::Right );
+            setArrangement( QIconView::LeftToRight );
+            setMaxItemWidth( QMAX(maxItemWidth(), 250) );
+            setMinimumHeight( QMAX(fontMetrics().height(), 16) + 12 );
+        }
+        ~AttachmentIconView()
+        {
+            for ( std::set<KTempDir*>::iterator it = mTempDirs.begin() ; it != mTempDirs.end() ; ++it ) {
+                delete *it;
+            }
+        }
+    protected:
+        QDragObject * dragObject()
+        {
+            KURL::List urls;
+            for ( QIconViewItem *it = firstItem( ); it; it = it->nextItem( ) ) {
+                if ( !it->isSelected() ) continue;
+                AttachmentListItem * item = dynamic_cast<AttachmentListItem*>( it );
+                if ( !item ) return 0;
+                KCal::Attachment * att = item->attachment();
+                assert( att );
+                KURL url;
+                if ( att->isUri() ) {
+                    url.setPath( att->uri() );
+                } else {
+                    KTempDir * tempDir = new KTempDir(); // will be deleted on editor close
+                    tempDir->setAutoDelete( true );
+                    mTempDirs.insert( tempDir );
+                    QByteArray encoded;
+                    encoded.duplicate( att->data(), strlen(att->data()) );
+                    QByteArray decoded;
+                    KCodecs::base64Decode( encoded, decoded );
+                    const QString fileName = tempDir->name( ) + "/" + att->label();
+                    KPIM::kByteArrayToFile( decoded, fileName, false, false, false );
+                    url.setPath( fileName );
+                }
+                urls << url;
+            }
+            KURLDrag *drag  = new KURLDrag( urls, this );
+            return drag;
+        }
+        void contentsDropEvent( QDropEvent* event )
+        {
+          mParent->handlePasteOrDrop( event );
+        }
+    private:
+        std::set<KTempDir*> mTempDirs;
+        KOEditorAttachments* mParent;
+};
+
 KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent,
                                           const char *name )
   : QWidget( parent, name )
 {
-  QBoxLayout *topLayout = new QVBoxLayout( this );
+  QBoxLayout *topLayout = new QHBoxLayout( this );
   topLayout->setSpacing( spacing );
 
-  mAttachments = new KListView( this );
+  QLabel *label = new QLabel( i18n("Attachments:"), this );
+  topLayout->addWidget( label );
+
+  mAttachments = new AttachmentIconView( this );
   QWhatsThis::add( mAttachments,
                    i18n("Displays a list of current items (files, mail, etc.) "
-                        "that have been associated with this event or to-do. "
-                        "The URI column displays the location of the file.") );
-  mAttachments->addColumn( i18n("URI") );
-  mAttachments->addColumn( i18n("MIME Type") );
+                        "that have been associated with this event or to-do. ") );
   topLayout->addWidget( mAttachments );
-  connect( mAttachments, SIGNAL( doubleClicked( QListViewItem * ) ),
-           SLOT( showAttachment( QListViewItem * ) ) );
+  connect( mAttachments, SIGNAL( doubleClicked( QIconViewItem * ) ),
+           SLOT( showAttachment( QIconViewItem * ) ) );
+  connect( mAttachments, SIGNAL(selectionChanged()),
+           SLOT(selectionChanged()) );
+  connect( mAttachments, SIGNAL(contextMenuRequested(QIconViewItem*,const QPoint&)),
+           SLOT(contextMenu(QIconViewItem*,const QPoint&)) );
 
-  QBoxLayout *buttonLayout = new QHBoxLayout( topLayout );
+  mAddMenu = new KPopupMenu( this );
+  mContextMenu = new KPopupMenu( this );
 
-  QPushButton *button = new QPushButton( i18n("&Add..."), this );
-  QWhatsThis::add( button,
-                   i18n("Shows a dialog used to select an attachment "
-                        "to add to this event or to-do.") );
-  buttonLayout->addWidget( button );
-  connect( button, SIGNAL( clicked() ), SLOT( slotAdd() ) );
+  KActionCollection* ac = new KActionCollection( this, this );
 
-  button = new QPushButton( i18n("&Edit..."), this );
-  QWhatsThis::add( button,
-                   i18n("Shows a dialog used to edit the attachment "
-                        "currently selected in the list above.") );
-  buttonLayout->addWidget( button );
-  connect( button, SIGNAL( clicked() ), SLOT( slotEdit() ) );
+  mOpenAction = new KAction( i18n("View"), 0, this, SLOT(slotShow()), ac );
+  mOpenAction->plug( mContextMenu );
+  mContextMenu->insertSeparator();
 
-  button = new QPushButton( i18n("&Remove"), this );
-  QWhatsThis::add( button,
+  mCopyAction = KStdAction::copy(this, SLOT(slotCopy( ) ), ac );
+  mCopyAction->plug( mContextMenu );
+  mCutAction = KStdAction::cut(this, SLOT(slotCut( ) ), ac );
+  mCutAction->plug( mContextMenu );
+  KAction *action = KStdAction::paste(this, SLOT(slotPaste( ) ), ac );
+  action->plug( mContextMenu );
+
+  action = new KAction( i18n("&Attach File..."), 0, this, SLOT(slotAddData()), ac );
+  action->setWhatsThis( i18n("Shows a dialog used to select an attachment "
+                        "to add to this event or to-do as link as inline data.") );
+  action->plug( mAddMenu );
+  action = new KAction( i18n("Attach &Link..."), 0, this, SLOT(slotAdd()), ac );
+  action->setWhatsThis( i18n("Shows a dialog used to select an attachment "
+                        "to add to this event or to-do as link.") );
+  action->plug( mAddMenu );
+
+  QPushButton *addButton = new QPushButton( this );
+  addButton->setIconSet( SmallIconSet( "add" ) );
+  addButton->setPopup( mAddMenu );
+  topLayout->addWidget( addButton );
+
+  mRemoveBtn = new QPushButton( this );
+  mRemoveBtn->setIconSet( SmallIconSet( "remove" ) );
+  QToolTip::add( mRemoveBtn, i18n("&Remove") );
+  QWhatsThis::add( mRemoveBtn,
                    i18n("Removes the attachment selected in the list above "
                         "from this event or to-do.") );
-  buttonLayout->addWidget( button );
-  connect( button, SIGNAL( clicked() ), SLOT( slotRemove() ) );
+  topLayout->addWidget( mRemoveBtn );
+  connect( mRemoveBtn, SIGNAL( clicked() ), SLOT( slotRemove() ) );
 
-  button = new QPushButton( i18n("&Show"), this );
-  QWhatsThis::add( button,
-                   i18n("Opens the attachment selected in the list above "
-                        "in the viewer that is associated with it in your "
-                        "KDE preferences.") );
-  buttonLayout->addWidget( button );
-  connect( button, SIGNAL( clicked() ), SLOT( slotShow() ) );
-
-  setAcceptDrops( TRUE );
+  selectionChanged();
+  setAcceptDrops( true );
 }
 
 KOEditorAttachments::~KOEditorAttachments()
@@ -143,30 +255,39 @@ KOEditorAttachments::~KOEditorAttachments()
 
 bool KOEditorAttachments::hasAttachments()
 {
-  return mAttachments->childCount() > 0;
+  return mAttachments->count() != 0;
 }
 
-void KOEditorAttachments::dragEnterEvent( QDragEnterEvent* event ) {
+void KOEditorAttachments::dragEnterEvent( QDragEnterEvent* event )
+{
   event->accept( KURLDrag::canDecode( event ) | QTextDrag::canDecode( event ) );
 }
 
-void KOEditorAttachments::dropEvent( QDropEvent* event ) {
+void KOEditorAttachments::handlePasteOrDrop( QMimeSource* source )
+{
   KURL::List urls;
   QString text;
-  if ( KURLDrag::decode( event, urls ) ) {
+  if ( KURLDrag::decode( source, urls ) ) {
+    const bool asUri = KMessageBox::questionYesNo( this,
+            i18n("Do you want to link to the attachments, or include them in the event?"),
+            i18n("Attach as link?"), i18n("As Link"), i18n("As File") ) == KMessageBox::Yes;
     for ( KURL::List::ConstIterator it = urls.begin(); it != urls.end(); ++it ) {
-      addAttachment( (*it).url() );
+      addAttachment( (*it).url(), QString::null, asUri );
     }
-  } else if ( QTextDrag::decode( event, text ) ) {
+  } else if ( QTextDrag::decode( source, text ) ) {
     QStringList lst = QStringList::split( '\n', text );
     for ( QStringList::ConstIterator it = lst.begin(); it != lst.end(); ++it ) {
       addAttachment( (*it)  );
     }
   }
-
 }
 
-void KOEditorAttachments::showAttachment( QListViewItem *item )
+void KOEditorAttachments::dropEvent( QDropEvent* event )
+{
+    handlePasteOrDrop( event );
+}
+
+void KOEditorAttachments::showAttachment( QIconViewItem *item )
 {
   AttachmentListItem *attitem = static_cast<AttachmentListItem*>(item);
   if ( !attitem || !attitem->attachment() ) return;
@@ -175,11 +296,18 @@ void KOEditorAttachments::showAttachment( QListViewItem *item )
   if ( att->isUri() ) {
     emit openURL( att->uri() );
   } else {
-    // FIXME: Handle binary attachments
+    KTempFile f;
+    if ( !f.file() )
+      return;
+    QByteArray encoded;
+    encoded.duplicate( att->data(), strlen(att->data()) );
+    QByteArray decoded;
+    KCodecs::base64Decode( encoded, decoded );
+    f.file()->writeBlock( decoded );
+    f.file()->close();
+    KRun::runURL( f.name(), att->mimeType(), true, false );
   }
 }
-
-
 
 void KOEditorAttachments::slotAdd()
 {
@@ -187,15 +315,22 @@ void KOEditorAttachments::slotAdd()
          "URL (e.g. a web page) or file to be attached (only "
          "the link will be attached, not the file itself):"), this,
                                        i18n("Add Attachment") );
-  // TODO: Implement adding binary attachments
   if ( !uri.isEmpty() ) {
-    addAttachment( uri.url() );
+    addAttachment( uri );
+  }
+}
+
+void KOEditorAttachments::slotAddData()
+{
+  KURL uri = KFileDialog::getOpenFileName( QString(), QString(), this, i18n("Add Attachment") );
+  if ( !uri.isEmpty() ) {
+    addAttachment( uri, QString::null, false );
   }
 }
 
 void KOEditorAttachments::slotEdit()
 {
-  QListViewItem *item = mAttachments->currentItem();
+  QIconViewItem *item = mAttachments->currentItem();
   AttachmentListItem *attitem = static_cast<AttachmentListItem*>(item);
   if ( !attitem || !attitem->attachment() ) return;
 
@@ -209,24 +344,53 @@ void KOEditorAttachments::slotEdit()
     if ( !uri.isEmpty() )
       attitem->setUri( uri.url() );
   } else {
-    // FIXME: Handle binary attachments
+    KURL uri = KPimURLRequesterDlg::getURL( QString::null, i18n(
+         "File to be attached:"), this, i18n("Add Attachment") );
+    if ( !uri.isEmpty() ) {
+          QString tmpFile;
+      if ( KIO::NetAccess::download( uri, tmpFile, this ) ) {
+        QFile f( tmpFile );
+        if ( !f.open( IO_ReadOnly ) )
+          return;
+        QByteArray data = f.readAll();
+        f.close();
+        attitem->setData( KCodecs::base64Encode( data ) );
+        attitem->setMimeType( KIO::NetAccess::mimetype( uri, this ) );
+        QString label = uri.fileName();
+        if ( label.isEmpty() )
+          label = uri.prettyURL();
+        attitem->setLabel( label );
+        KIO::NetAccess::removeTempFile( tmpFile );
+      }
+    }
   }
 }
 
 void KOEditorAttachments::slotRemove()
 {
-  QListViewItem *item = mAttachments->currentItem();
-  if ( !item ) return;
+    QValueList<QIconViewItem*> selected;
+    for ( QIconViewItem *it = mAttachments->firstItem( ); it; it = it->nextItem( ) ) {
+        if ( !it->isSelected() ) continue;
+        selected << it;
+    }
+    if ( selected.isEmpty() || KMessageBox::warningContinueCancel(this,
+                    selected.count() == 1?i18n("This item will be permanently deleted."):
+                    i18n("The selected items will be permanently deleted."),
+                    i18n("KOrganizer Confirmation"),KStdGuiItem::del()) != KMessageBox::Continue )
+        return;
 
-  if ( KMessageBox::warningContinueCancel(this,
-        i18n("This item will be permanently deleted."),
-  i18n("KOrganizer Confirmation"),KStdGuiItem::del()) == KMessageBox::Continue )
-    delete item;
+    for ( QValueList<QIconViewItem*>::iterator it( selected.begin() ), end( selected.end() ); it != end ; ++it ) {
+        delete *it;
+    }
 }
 
 void KOEditorAttachments::slotShow()
 {
-  showAttachment( mAttachments->currentItem() );
+  for ( QIconViewItem *it = mAttachments->firstItem(); it; it = it->nextItem() ) {
+    if ( !it->isSelected() )
+      continue;
+    showAttachment( it );
+  }
 }
 
 void KOEditorAttachments::setDefaults()
@@ -234,12 +398,33 @@ void KOEditorAttachments::setDefaults()
   mAttachments->clear();
 }
 
-void KOEditorAttachments::addAttachment( const QString &uri,
-                                         const QString &mimeType )
+void KOEditorAttachments::addAttachment( const KURL &uri,
+                                         const QString &mimeType, bool asUri )
 {
   AttachmentListItem *item = new AttachmentListItem( 0, mAttachments );
-  item->setUri( uri );
-  if ( !mimeType.isEmpty() ) item->setMimeType( mimeType );
+  if ( asUri ) {
+    item->setUri( uri.url() );
+    if ( !mimeType.isEmpty() ) item->setMimeType( mimeType );
+  } else {
+    QString tmpFile;
+    if ( KIO::NetAccess::download( uri, tmpFile, this ) ) {
+      QFile f( tmpFile );
+      if ( !f.open( IO_ReadOnly ) )
+        return;
+      QByteArray data = f.readAll();
+      f.close();
+      item->setData( KCodecs::base64Encode( data ) );
+      if ( !mimeType.isEmpty() )
+        item->setMimeType( mimeType );
+      else
+        item->setMimeType( KIO::NetAccess::mimetype( uri, this ) );
+      QString label = uri.fileName();
+      if ( label.isEmpty() )
+        label = uri.prettyURL();
+      item->setLabel( label );
+      KIO::NetAccess::removeTempFile( tmpFile );
+    }
+  }
 }
 
 
@@ -257,19 +442,60 @@ void KOEditorAttachments::readIncidence( KCal::Incidence *i )
   for( it = attachments.begin(); it != attachments.end(); ++it ) {
     addAttachment( (*it) );
   }
+  if ( mAttachments->count() > 0 ) {
+    QTimer::singleShot( 0, mAttachments, SLOT(arrangeItemsInGrid()) );
+  }
 }
 
 void KOEditorAttachments::writeIncidence( KCal::Incidence *i )
 {
   i->clearAttachments();
 
-  QListViewItem *item;
+  QIconViewItem *item;
   AttachmentListItem *attitem;
-  for( item = mAttachments->firstChild(); item; item = item->nextSibling() ) {
+  for( item = mAttachments->firstItem(); item; item = item->nextItem() ) {
     attitem = static_cast<AttachmentListItem*>(item);
     if ( attitem )
       i->addAttachment( new KCal::Attachment( *(attitem->attachment() ) ) );
   }
+}
+
+
+void KOEditorAttachments::slotCopy()
+{
+    QApplication::clipboard()->setData( mAttachments->dragObject(), QClipboard::Clipboard );
+}
+
+void KOEditorAttachments::slotCut()
+{
+    slotCopy();
+    slotRemove();
+}
+
+void KOEditorAttachments::slotPaste()
+{
+    handlePasteOrDrop( QApplication::clipboard()->data() );
+}
+
+void KOEditorAttachments::selectionChanged()
+{
+  bool selected = false;
+  for ( QIconViewItem *item = mAttachments->firstItem(); item; item = item->nextItem() ) {
+    if ( item->isSelected() ) {
+      selected = true;
+      break;
+    }
+  }
+  mRemoveBtn->setEnabled( selected );
+}
+
+void KOEditorAttachments::contextMenu(QIconViewItem * item, const QPoint & pos)
+{
+  const bool enable = item != 0;
+  mOpenAction->setEnabled( enable );
+  mCopyAction->setEnabled( enable );
+  mCutAction->setEnabled( enable );
+  mContextMenu->exec( pos );
 }
 
 #include "koeditorattachments.moc"

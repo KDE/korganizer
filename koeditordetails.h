@@ -26,6 +26,9 @@
 
 #include <klistview.h>
 #include "customlistviewitem.h"
+#include "koattendeeeditor.h"
+
+#include <libkcal/attendee.h>
 
 class QPushButton;
 class QCheckBox;
@@ -41,7 +44,7 @@ class Attendee;
 class Incidence;
 }
 using namespace KCal;
-    
+
 namespace KPIM {
 class AddresseeLineEdit;
 }
@@ -72,7 +75,7 @@ signals:
 };
 
 
-class KOEditorDetails : public QWidget
+class KOEditorDetails : public KOAttendeeEditor
 {
     Q_OBJECT
   public:
@@ -86,56 +89,29 @@ class KOEditorDetails : public QWidget
     /** Write event settings to event object */
     void writeEvent(Incidence *);
 
-    /** return a clone of the event with attendees to be canceld*/
-    void cancelAttendeeEvent(Incidence *);
     /** Check if the input is valid. */
     bool validateInput();
-
-    /** Set the gantt view */
-    void setFreeBusyWidget( KOEditorFreeBusy * );
 
     /** Returns whether at least one attendee was added */
     bool hasAttendees();
 
-  public slots:
-    void insertAttendee(Attendee *);
+    void insertAttendee( Attendee*, bool goodEmailAddress = true );
 
   protected slots:
-    void addNewAttendee();
     void removeAttendee();
-    void openAddressBook();
-    void updateAttendeeInput();
-    void clearAttendeeInput();
-    void fillAttendeeInput(AttendeeListItem *);
-    void updateAttendeeItem();
-    void setEnableAttendeeInput(bool);
+    void slotInsertAttendee( Attendee *a );
 
   protected:
-    virtual bool eventFilter( QObject *, QEvent *);
-    void fillOrganizerCombo();
+    void changeStatusForMe( Attendee::PartStat status );
 
-    void insertAttendee( Attendee*, bool goodEmailAddress );
+    KCal::Attendee* currentAttendee() const;
+    void updateCurrentItem();
 
   private:
     bool mDisableItemUpdate;
 
-    KPIM::AddresseeLineEdit *mNameEdit;
-    QString mUid;
     KListView *mListView;
-    QComboBox* mRoleCombo;
-    QCheckBox* mRsvpButton;
-    QComboBox* mStatusCombo;
-    QHBox* mOrganizerHBox;
-    QComboBox *mOrganizerCombo; // either we organize it (combo shown)
-    QLabel *mOrganizerLabel; // or someone else does (just a label is shown)
-
-    QPushButton* mAddButton;
-    QPushButton* mRemoveButton;
-    QPushButton* mAddressBookButton;
-
-    QPtrList<Attendee> mdelAttendees;
-
-    KOEditorFreeBusy *mFreeBusy;
+//     KOEditorFreeBusy *mFreeBusy;
 };
 
 #endif

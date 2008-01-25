@@ -204,11 +204,43 @@
       <whatsthis>Check this box if you want to show seconds on the current-time line.</whatsthis>
       <default>true</default>
     </entry>
-    <entry type="Bool" key="Agenda View Uses Resource Color">
-      <label>Agenda view uses resource colors</label>
-      <whatsthis>Check this box to make the agenda view use the resource colors of an item.</whatsthis>
-      <default>true</default>
+
+    <entry type="Enum" key="AgendaViewColors">
+      <label>Colors used in agenda view</label>
+      <whatsthis>Choose the colors of the agenda view items.</whatsthis>
+      <choices>
+        <choice name="CategoryInsideResourceOutside">
+          <label>Category inside, calendar outside</label>
+        </choice>
+        <choice name="ResourceInsideCategoryOutside">
+          <label>Calendar inside, category outside</label>
+        </choice>
+        <choice name="CategoryOnly">
+          <label>Only category</label>
+        </choice>
+        <choice name="ResourceOnly">
+          <label>Only calendar</label>
+        </choice>
+      </choices>
+      <default>ResourceInsideCategoryOutside</default>
     </entry>
+
+    <entry type="Enum" name="Agenda View Calendar Display">
+      <label>Agenda View Calendar Display</label>
+      <choices>
+        <choice name="CalendarsMerged">
+            <label>Merge all calendars into one view</label>
+        </choice>
+        <choice name="CalendarsSideBySide">
+            <label>Show calendars side by side</label>
+        </choice>
+        <choice name="AllCalendarViews">
+            <label>Switch between views with tabs</label>
+        </choice>
+      </choices>
+      <default>CalendarsMerged</default>
+    </entry>
+
 
 
     <entry type="DateTime" name="DayBegins">
@@ -247,7 +279,6 @@
       <whatsthis>Check this box to make the month view use the resource colors of an item.</whatsthis>
       <default>true</default>
     </entry>
-
 
     <entry type="Bool" key="Full View Month">
       <label>Month view uses full window</label>
@@ -343,7 +374,7 @@
     <entry type="Color" key="WorkingHoursColor">
       <label>Working hours color</label>
       <whatsthis>Select the working hours color for the agenda view here.</whatsthis>
-      <default>225, 225, 255</default>
+      <default>255, 235, 154</default>
     </entry>
     <entry type="Color" key="Todo due today Color" name="TodoDueTodayColor">
       <label>To-do due today color</label>
@@ -360,6 +391,17 @@
       <whatsthis>Select the default event color here. The default event color will be used for events categories in your agenda. Note that you can specify a separate color for each event category below.</whatsthis>
       <default>151, 235, 121</default>
     </entry>
+
+    <entry type="Bool" key="AssignDefaultResourceColors">
+      <default>true</default>
+    </entry>
+    <entry type="Int" key="DefaultResourceColorSeed">
+      <default>0</default>
+    </entry>
+    <entry type="StringList" key="DefaultResourceColors">
+        <default>#c1d4e7,#d0e7c1,#e3e7c1,#e7c1e6,#a1b1c1</default>
+    </entry>
+
   </group>
 
   <group name="Fonts">
@@ -415,6 +457,12 @@
       <default>false</default>
     </entry>
 
+    <entry type="Bool" name="FreeBusyCheckHostname">
+      <label>Check whether hostname and retrieval email address match</label>
+      <whatsthis>With this setting you can configure whether the domain part of the free/busy url has to match the domain part of the user id you are looking for. For example if this option is 'true' then looking for the free/busy data of joe@mydomain.com on the server www.yourdomain.com won't work.</whatsthis>
+      <default>true</default>
+    </entry>
+
     <entry type="Bool" name="FreeBusyFullDomainRetrieval">
       <label>Use full email address for retrieval</label>
       <whatsthis>With this setting, you can change the filename that will be fetched from the server. With this checked, it will download a free/busy file called user@domain.ifb, for example nn@kde.org.ifb. Without this set, it will download user.ifb, for example nn.ifb.</whatsthis>
@@ -435,5 +483,43 @@
       <default>false</default>
     </entry>
 
+  </group>
+
+  <group name="Kontact">
+    <entry type="Enum" name="DefaultEmailAttachMethod">
+      <label>Default email attachment method</label>
+      <whatsthis>The default way of attaching dropped emails to an event</whatsthis>
+      <choices>
+        <choice name="Ask">
+          <label>Always ask</label>
+        </choice>
+        <choice name="Link">
+          <label>Only attach link to message</label>
+        </choice>
+        <choice name="InlineFull">
+          <label>Attach complete message</label>
+        </choice>
+        <choice name="InlineBody">
+          <label>Attach message without attachments</label>
+        </choice>
+      </choices>
+      <default>Ask</default>
+    </entry>
+    <entry type="Enum" name="DefaultTodoAttachMethod">
+      <label>Default todo attachment method</label>
+      <whatsthis>The default way of attaching dropped emails to a task</whatsthis>
+      <choices>
+        <choice name="TodoAttachAsk">
+          <label>Always ask</label>
+        </choice>
+        <choice name="TodoAttachLink">
+          <label>Only attach link to message</label>
+        </choice>
+        <choice name="TodoAttachInlineFull">
+          <label>Attach complete message</label>
+        </choice>
+      </choices>
+      <default>TodoAttachInlineFull</default>
+    </entry>
   </group>
 </kcfg>

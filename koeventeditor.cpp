@@ -25,7 +25,6 @@
 
 #include <qtooltip.h>
 #include <qframe.h>
-#include <qguardedptr.h>
 #include <qpixmap.h>
 #include <qlayout.h>
 #include <qwidgetstack.h>
@@ -37,7 +36,7 @@
 #include <kmessagebox.h>
 #include <libkcal/calendarresources.h>
 #include <libkcal/resourcecalendar.h>
-
+#include <libkcal/incidenceformatter.h>
 #include <libkcal/calendarlocal.h>
 
 #include "koprefs.h"
@@ -45,7 +44,6 @@
 #include "koeditoralarms.h"
 #include "koeditorrecurrence.h"
 #include "koeditordetails.h"
-#include "koeditorattachments.h"
 #include "koeditorfreebusy.h"
 #include "kogroupware.h"
 #include "kodialogmanager.h"
@@ -55,7 +53,7 @@
 
 KOEventEditor::KOEventEditor( Calendar *calendar, QWidget *parent )
   : KOIncidenceEditor( QString::null, calendar, parent ),
-    mEvent( 0 ), mGeneral( 0 ), mRecurrence( 0 ), mFreeBusy( 0 )
+    mEvent( 0 ), mCalendar( 0 ), mGeneral( 0 ), mRecurrence( 0 ), mFreeBusy( 0 )
 {
 }
 
@@ -69,12 +67,8 @@ void KOEventEditor::init()
   setupGeneral();
 //  setupAlarmsTab();
   setupRecurrence();
-  setupAttendeesTab();
   setupFreeBusy();
-  setupAttachmentsTab();
   setupDesignerTabs( "event" );
-
-  mDetails->setFreeBusyWidget( mFreeBusy );
 
   // Propagate date time settings to recurrence tab
   connect( mGeneral, SIGNAL( dateTimesChanged( const QDateTime &, const QDateTime & ) ),
@@ -95,13 +89,28 @@ void KOEventEditor::init()
 
   connect( mGeneral, SIGNAL( openCategoryDialog() ),
            SIGNAL( editCategories() ) );
+  connect( this, SIGNAL( updateCategoryConfig() ),
+           mGeneral, SIGNAL( updateCategoryConfig() ) );
+
+  connect( mFreeBusy, SIGNAL(updateAttendeeSummary(int)),
+           mGeneral, SLOT(updateAttendeeSummary(int)) );
+
+  connect( mGeneral, SIGNAL(editRecurrence()),
+           mRecurrenceDialog, SLOT(show()) );
+  connect( mRecurrenceDialog, SIGNAL(okClicked()),
+           SLOT(updateRecurrenceSummary()) );
+
+  connect( mGeneral, SIGNAL(acceptInvitation()),
+           mFreeBusy, SLOT(acceptForMe()) );
+  connect( mGeneral, SIGNAL(declineInvitation()),
+           mFreeBusy, SLOT(declineForMe()) );
 }
 
 void KOEventEditor::reload()
 {
   kdDebug(5850) << "KOEventEditor::reload()" << endl;
 
-  if ( mEvent ) readEvent( mEvent );
+  if ( mEvent ) readEvent( mEvent, mCalendar );
 }
 
 void KOEventEditor::setupGeneral()
@@ -117,12 +126,11 @@ void KOEventEditor::setupGeneral()
     QBoxLayout *topLayout = new QVBoxLayout(topFrame);
     topLayout->setSpacing(spacingHint());
 
-    mGeneral->initHeader(topFrame,topLayout);
+    mGeneral->initHeader( topFrame, topLayout );
     mGeneral->initTime(topFrame,topLayout);
 //    QBoxLayout *alarmLineLayout = new QHBoxLayout(topLayout);
     mGeneral->initAlarm(topFrame,topLayout);
     mGeneral->enableAlarm( false );
-    mGeneral->initCategories( topFrame, topLayout );
 
     topLayout->addStretch( 1 );
 
@@ -143,16 +151,15 @@ void KOEventEditor::setupGeneral()
     QBoxLayout *topLayout = new QVBoxLayout(topFrame);
     topLayout->setSpacing(spacingHint());
 
-    mGeneral->initHeader(topFrame,topLayout);
+    mGeneral->initInvitationBar( topFrame, topLayout );
+    mGeneral->initHeader( topFrame, topLayout );
     mGeneral->initTime(topFrame,topLayout);
-    QBoxLayout *alarmLineLayout = new QHBoxLayout(topLayout);
-    mGeneral->initAlarm(topFrame,alarmLineLayout);
-    alarmLineLayout->addStretch( 1 );
-    mGeneral->initClass(topFrame,alarmLineLayout);
     mGeneral->initDescription(topFrame,topLayout);
-    QBoxLayout *detailsLayout = new QHBoxLayout(topLayout);
-    mGeneral->initCategories( topFrame, detailsLayout );
-    mGeneral->initSecrecy( topFrame, detailsLayout );
+    mGeneral->initAttachments(topFrame,topLayout);
+    connect( mGeneral, SIGNAL( openURL( const KURL& ) ),
+             this, SLOT( openURL( const KURL& ) ) );
+    connect( this, SIGNAL( signalAddAttachments( const QStringList&, const QStringList&, bool ) ),
+             mGeneral, SLOT( addAttachments( const QStringList&, const QStringList&, bool ) ) );
   }
 
   mGeneral->finishSetup();
@@ -167,6 +174,7 @@ void KOEventEditor::modified (int /*modification*/)
 
 void KOEventEditor::setupRecurrence()
 {
+#if 0
   QFrame *topFrame = addPage( i18n("Rec&urrence") );
 
   QWhatsThis::add( topFrame,
@@ -177,29 +185,34 @@ void KOEventEditor::setupRecurrence()
 
   mRecurrence = new KOEditorRecurrence( topFrame );
   topLayout->addWidget( mRecurrence );
+#endif
+  mRecurrenceDialog = new KOEditorRecurrenceDialog( this );
+  mRecurrenceDialog->hide();
+  mRecurrence = mRecurrenceDialog->editor();
 }
 
 void KOEventEditor::setupFreeBusy()
 {
-  QFrame *freeBusyPage = addPage( i18n("&Free/Busy") );
+  QFrame *freeBusyPage = addPage( i18n("&Attendees") );
   QWhatsThis::add( freeBusyPage,
         i18n("The Free/Busy tab allows you to see whether "
        "other attendees are free or busy during your event.") );
 
   QBoxLayout *topLayout = new QVBoxLayout( freeBusyPage );
 
-  mFreeBusy = new KOEditorFreeBusy( spacingHint(), freeBusyPage );
+  mAttendeeEditor = mFreeBusy = new KOEditorFreeBusy( spacingHint(), freeBusyPage );
   topLayout->addWidget( mFreeBusy );
 }
 
-void KOEventEditor::editIncidence( Incidence *incidence )
+void KOEventEditor::editIncidence( Incidence *incidence, Calendar *calendar )
 {
   Event*event = dynamic_cast<Event*>(incidence);
   if ( event ) {
     init();
 
     mEvent = event;
-    readEvent(mEvent);
+    mCalendar = calendar;
+    readEvent( mEvent, mCalendar );
   }
 
   setCaption( i18n("Edit Event") );
@@ -216,8 +229,6 @@ void KOEventEditor::newEvent()
 void KOEventEditor::setDates( const QDateTime &from, const QDateTime &to, bool allDay )
 {
   mGeneral->setDefaults( from, to, allDay );
-  mDetails->setDefaults();
-  mAttachments->setDefaults();
   mRecurrence->setDefaults( from, to, allDay );
   if( mFreeBusy ) {
     if ( allDay )
@@ -273,7 +284,7 @@ bool KOEventEditor::processInput()
       kdDebug(5850) << "Event changed\n";
       //IncidenceChanger::assignIncidence( mEvent, event );
       writeEvent( mEvent );
-      mChanger->changeIncidence( oldEvent, mEvent );
+      mChanger->changeIncidence( oldEvent, mEvent, -1, mIsCounter );
     }
     delete event;
     delete oldEvent;
@@ -283,6 +294,7 @@ bool KOEventEditor::processInput()
     mEvent->setOrganizer( Person( KOPrefs::instance()->fullName(),
                           KOPrefs::instance()->email() ) );
     writeEvent( mEvent );
+    // NOTE: triggered by addIncidence, the kolab resource might open a non-modal dialog (parent is not available in the resource) to select a resource folder. Thus the user can close this dialog before addIncidence() returns.
     if ( !mChanger->addIncidence( mEvent, this ) ) {
       delete mEvent;
       mEvent = 0;
@@ -300,6 +312,7 @@ void KOEventEditor::processCancel()
   kdDebug(5850) << "KOEventEditor::processCancel()" << endl;
 
   if ( mFreeBusy ) mFreeBusy->cancelReload();
+  if ( mIsCounter ) deleteEvent();
 }
 
 void KOEventEditor::deleteEvent()
@@ -312,12 +325,10 @@ void KOEventEditor::deleteEvent()
   reject();
 }
 
-void KOEventEditor::readEvent( Event *event, bool tmpl )
+void KOEventEditor::readEvent( Event *event, Calendar *calendar, bool tmpl )
 {
-  mGeneral->readEvent( event, tmpl );
-  mDetails->readEvent( event );
+  mGeneral->readEvent( event, calendar, tmpl );
   mRecurrence->readIncidence( event );
-  mAttachments->readIncidence( event );
 //  mAlarms->readIncidence( event );
   if ( mFreeBusy ) {
     mFreeBusy->readEvent( event );
@@ -331,8 +342,8 @@ void KOEventEditor::readEvent( Event *event, bool tmpl )
 void KOEventEditor::writeEvent( Event *event )
 {
   mGeneral->writeEvent( event );
-  mDetails->writeEvent( event );
-  mAttachments->writeIncidence( event );
+  if ( mFreeBusy )
+    mFreeBusy->writeEvent( event );
 
   cancelRemovedAttendees( event );
 
@@ -365,7 +376,7 @@ void KOEventEditor::loadTemplate( /*const*/ CalendarLocal& cal )
         i18n("Template does not contain a valid event.") );
   } else {
     kdDebug(5850) << "KOEventEditor::slotLoadTemplate(): readTemplate" << endl;
-    readEvent( events.first(), true );
+    readEvent( events.first(), 0, true );
   }
 }
 
@@ -385,6 +396,14 @@ void KOEventEditor::slotSaveTemplate( const QString &templateName )
 QObject *KOEventEditor::typeAheadReceiver() const
 {
   return mGeneral->typeAheadReceiver();
+}
+
+void KOEventEditor::updateRecurrenceSummary()
+{
+  Event *ev =  new Event();
+  writeEvent( ev );
+  mGeneral->updateRecurrenceSummary( IncidenceFormatter::recurrenceString( ev ) );
+  delete ev;
 }
 
 #include "koeventeditor.moc"

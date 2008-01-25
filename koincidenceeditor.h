@@ -39,7 +39,7 @@ class EmbeddedURLPage;
 namespace KOrg { class IncidenceChangerBase; }
 
 class KOEditorDetails;
-class KOEditorAttachments;
+class KOAttendeeEditor;
 
 namespace KCal {
 class Calendar;
@@ -68,10 +68,11 @@ class KOIncidenceEditor : public KDialogBase
 
     virtual void reload() = 0;
 
+    void selectInvitationCounterProposal( bool enable );
+
   public slots:
-    void updateCategoryConfig();
     /** Edit an existing todo. */
-    virtual void editIncidence(Incidence *) = 0;
+    virtual void editIncidence(Incidence *, Calendar *) = 0;
     virtual void setIncidenceChanger( IncidenceChangerBase *changer ) {
         mChanger = changer; }
     /** Initialize editor. This function creates the tab widgets. */
@@ -79,7 +80,9 @@ class KOIncidenceEditor : public KDialogBase
     /**
       Adds attachments to the editor
     */
-    void addAttachments( const QStringList &attachments );
+    void addAttachments( const QStringList &attachments,
+                         const QStringList& mimeTypes = QStringList(),
+                         bool inlineAttachment = false );
     /**
       Adds attendees to the editor
     */
@@ -90,10 +93,15 @@ class KOIncidenceEditor : public KDialogBase
     void deleteAttendee( Incidence * );
 
     void editCategories();
+    void updateCategoryConfig();
     void dialogClose( Incidence * );
     void editCanceled( Incidence * );
 
     void deleteIncidenceSignal( Incidence * );
+    void signalAddAttachments( const QStringList &attachments,
+                               const QStringList& mimeTypes = QStringList(),
+                               bool inlineAttachment = false );
+
 
   protected slots:
     void slotApply();
@@ -113,7 +121,6 @@ class KOIncidenceEditor : public KDialogBase
     virtual void loadTemplate( /*const*/ CalendarLocal& ) = 0;
 
     void setupAttendeesTab();
-    void setupAttachmentsTab();
     void setupDesignerTabs( const QString &type );
 
     void saveAsTemplate( Incidence *, const QString &name );
@@ -139,13 +146,14 @@ class KOIncidenceEditor : public KDialogBase
     Calendar *mCalendar;
 
     KOEditorDetails *mDetails;
-    KOEditorAttachments *mAttachments;
+    KOAttendeeEditor *mAttendeeEditor;
     KOrg::IncidenceChangerBase *mChanger;
 
     QPtrList<KPIM::DesignerFields> mDesignerFields;
     QMap<QWidget*, KPIM::DesignerFields*> mDesignerFieldForWidget;
     QPtrList<QWidget> mEmbeddedURLPages;
     QPtrList<QWidget> mAttachedDesignerFields;
+    bool mIsCounter;
 };
 
 #endif

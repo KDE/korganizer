@@ -63,13 +63,13 @@ class KOJournalEditor : public KOIncidenceEditor
     void newJournal();
 
     /**
-      Sets the given summary and description. If description is empty and the 
-      summary contains multiple lines, the summary will be used as description 
+      Sets the given summary and description. If description is empty and the
+      summary contains multiple lines, the summary will be used as description
       and only the first line of summary will be used as the summary.
     */
     void setTexts( const QString &summary, const QString &description = QString::null );
     /** Edit an existing Journal. */
-    void editIncidence(Incidence *);
+    void editIncidence(Incidence *, Calendar *);
 
     /** Set widgets to default values */
     void setDate( const QDate &date );

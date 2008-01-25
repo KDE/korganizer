@@ -24,10 +24,13 @@
 #ifndef KOEDITORFREEBUSY_H
 #define KOEDITORFREEBUSY_H
 
+#include "koattendeeeditor.h"
+
 #include <qwidget.h>
 #include <qdatetime.h>
 #include <qtimer.h>
 
+class KDIntervalColorRectangle;
 class QLabel;
 class KDGanttView;
 class KDGanttViewItem;
@@ -39,7 +42,7 @@ namespace KCal {
 }
 
 
-class KOEditorFreeBusy : public QWidget
+class KOEditorFreeBusy : public KOAttendeeEditor
 {
     Q_OBJECT
   public:
@@ -50,12 +53,12 @@ class KOEditorFreeBusy : public QWidget
     void setUpdateEnabled( bool enabled );
     bool updateEnabled() const;
 
-    void insertAttendee( KCal::Attendee *, bool readFBList );
+    void insertAttendee( KCal::Attendee *, bool readFBList = true );
     void removeAttendee( KCal::Attendee * );
-    void updateAttendee( KCal::Attendee * );
     void clearAttendees();
 
     void readEvent( KCal::Event * );
+    void writeEvent( KCal::Event *event );
 
     void triggerReload();
     void cancelReload();
@@ -76,14 +79,23 @@ class KOEditorFreeBusy : public QWidget
     void slotCenterOnStart() ;
     void slotZoomToTime();
     void slotPickDate();
+    void showAttendeeStatusMenu();
 
     // Force the download of FB informations
     void manualReload();
     // Only download FB if the auto-download option is set in config
     void autoReload();
+    void slotIntervalColorRectangleMoved( const QDateTime& start, const QDateTime& end );
+
+    void removeAttendee();
+    void listViewClicked( int button, KDGanttViewItem* item );
 
   protected:
     void timerEvent( QTimerEvent* );
+    KCal::Attendee* currentAttendee() const;
+    void updateCurrentItem();
+    void clearSelection() const;
+    void changeStatusForMe( KCal::Attendee::PartStat status );
 
   private:
     void updateFreeBusyData( FreeBusyItem * );
@@ -95,6 +107,7 @@ class KOEditorFreeBusy : public QWidget
     void updateStatusSummary();
     void reload();
     KDGanttView *mGanttView;
+    KDIntervalColorRectangle* mEventRectangle;
     QLabel *mStatusSummaryLabel;
     bool mIsOrganizer;
     QComboBox *scaleCombo;

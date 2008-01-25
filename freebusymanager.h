@@ -4,7 +4,7 @@
   Requires the Qt and KDE widget libraries, available at no cost at
   http://www.trolltech.com and http://www.kde.org respectively
 
-  Copyright (c) 2002-2004 Klarälvdalens Datakonsult AB
+  Copyright (c) 2002-2004 Klarï¿½lvdalens Datakonsult AB
         <info@klaralvdalens-datakonsult.se>
 
   This program is free software; you can redistribute it and/or modify
@@ -66,7 +66,8 @@ class FreeBusyDownloadJob : public QObject
     void slotData(  KIO::Job *, const QByteArray &data );
 
   signals:
-    void freeBusyDownloaded( KCal::FreeBusy *, const QString& );
+    void freeBusyDownloaded( KCal::FreeBusy *, const QString& email );
+    void freeBusyDownloadError( const QString& email );
 
   private:
     FreeBusyManager *mManager;
@@ -159,6 +160,7 @@ class FreeBusyManager : public QObject, public KCal::FreeBusyCache
 
   private slots:
     void slotUploadFreeBusyResult( KIO::Job * );
+    void slotFreeBusyDownloadError( const QString& email );
 
   private:
     KCal::Calendar *mCalendar;
