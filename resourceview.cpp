@@ -359,22 +359,35 @@ void ResourceView::addResource()
   KRES::ConfigDialog *dlg = new KRES::ConfigDialog( this, QString("calendar"), resource,
                           "KRES::ConfigDialog" );
 
-  if ( dlg && dlg->exec() ) {
+  bool success = true;
+  if ( !dlg || !dlg->exec() )
+    success = false;
+
+  if ( success ) {
     resource->setTimeZoneId( KOPrefs::instance()->mTimeZoneId );
-    if ( resource->isActive() ) {
-      resource->open();
-      resource->load();
+    if ( resource->isActive() && ( !resource->open() || !resource->load() ) ) {
+      // ### There is a resourceLoadError() signal declared in ResourceCalendar
+      //     but no subclass seems to make use of it. We could do better.
+      KMessageBox::error( this, i18n("Unable to create the resource.")
+                                .arg( type ) );
+      success = false;
     }
+  }
+
+  if ( success ) {
     manager->add( resource );
     // we have to call resourceAdded manually, because for in-process changes
     // the dcop signals are not connected, so the resource's signals would not
     // be connected otherwise
     mCalendar->resourceAdded( resource );
-  } else {
-    delete resource;
-    resource = 0;
   }
-  if ( dlg ) delete dlg;
+
+  if ( !success )
+    delete resource;
+
+  delete dlg;
+
+  //### maybe only do this if ( success )
   emitResourcesChanged();
 }
 
