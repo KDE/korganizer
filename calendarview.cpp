@@ -1883,6 +1883,11 @@ void CalendarView::copyIncidence(Incidence *)
   edit_copy();
 }
 
+void CalendarView::pasteIncidence()
+{
+  edit_paste();
+}
+
 void CalendarView::showIncidence( Incidence *incidence )
 {
   KOEventViewerDialog *eventViewer = new KOEventViewerDialog( this );

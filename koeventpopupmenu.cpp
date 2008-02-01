@@ -64,6 +64,9 @@ KOEventPopupMenu::KOEventPopupMenu()
   mEditOnlyItems.append(
     insertItem( KOGlobals::self()->smallIcon("editcopy"), i18n("&Copy"),
                 this, SLOT( popupCopy() ) ) );
+  // paste is always possible
+  insertItem( KOGlobals::self()->smallIcon("editpaste"), i18n("&Paste"),
+                this, SLOT( popupPaste() ) );
   mEditOnlyItems.append(
     insertItem( KOGlobals::self()->smallIcon("editdelete"), i18n("&Delete"),
                 this, SLOT( popupDelete() ) ) );
@@ -156,6 +159,11 @@ void KOEventPopupMenu::popupCut()
 void KOEventPopupMenu::popupCopy()
 {
   if (mCurrentIncidence) emit copyIncidenceSignal(mCurrentIncidence);
+}
+
+void KOEventPopupMenu::popupPaste()
+{
+  emit pasteIncidenceSignal();
 }
 
 

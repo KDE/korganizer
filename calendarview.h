@@ -302,6 +302,11 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
       Copies the selected incidence using the edit_copy() method
     */
     void copyIncidence( Incidence *);
+    /**
+      Pastes the curren incidence using the edit_paste() method
+    */
+    void pasteIncidence();
+
     /** Delete the supplied todo and all sub-todos */
     void deleteSubTodosIncidence ( Todo *todo );
     /**
