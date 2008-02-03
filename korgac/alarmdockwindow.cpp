@@ -98,7 +98,7 @@ AlarmDockWindow::AlarmDockWindow()
   if ( !quit ) {
     kDebug(5890) << "No Quit standard action.";
   } else {
-    quit->disconnect( SIGNAL(activated()), this, SLOT(maybeQuit()) );
+    quit->disconnect( SIGNAL(triggered(bool)), this, SLOT(maybeQuit()) );
     connect( quit, SIGNAL(activated()), SLOT(slotQuit()) );
   }
 
