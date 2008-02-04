@@ -282,10 +282,25 @@ void ResourceView::emitResourcesChanged()
 
 void ResourceView::addResource()
 {
+  bool ok = false;
   KCal::CalendarResourceManager *manager = mCalendar->resourceManager();
+  ResourceItem *i = static_cast<ResourceItem*>( mListView->selectedItems().first() );
+  if ( i && ( i->isSubresource() || i->resource()->canHaveSubresources() ) ) {
+    const QString folderName = KInputDialog::getText( i18n( "Add Subresource" ),
+            i18n( "Please enter a name for the new subresource" ), QString::null,
+            &ok, this );
+    if ( !ok )
+      return;
+    const QString parentId = i->isSubresource() ? i->resourceIdentifier() : QString:: null;
+    if ( !i->resource()->addSubresource( folderName, parentId ) ) {
+      KMessageBox::error( this, i18n("<qt>Unable to create subresource <b>%1</b>.</qt>")
+                                .arg( folderName ) );
+    }
+    return;
+  }
+
   QStringList types = manager->resourceTypeNames();
   QStringList descs = manager->resourceTypeDescriptions();
-  bool ok = false;
   QString desc = KInputDialog::getItem( i18n( "Resource Configuration" ),
                                         i18n( "Please select type of the new resource:" ),
                                         descs, 0, false, &ok, this );
@@ -519,7 +534,7 @@ void ResourceView::showContextMenu( const QPoint &pos )
 
     menu->addAction( i18n( "Show &Info" ), this, SLOT( showInfo() ) );
     //FIXME: This is better on the resource dialog
-    if ( KOPrefs::instance()->agendaViewUsesResourceColor() ) {
+    if ( KOPrefs::instance()->agendaViewColors() != KOPrefs::CategoryOnly ) {
       QMenu *assignMenu = menu->addMenu( i18n( "Resource Colors" ) );
       assignMenu->addAction( i18n( "&Assign Color" ), this, SLOT( assignColor() ) );
       if ( item->resourceColor().isValid() ) {

@@ -710,16 +710,6 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
 
   QColor bgColor;
 
-  QStringList categories = mIncidence->categories();
-  if ( categories.isEmpty() ) {
-    bgColor = KOPrefs::instance()->agendaCalendarItemsEventsBackgroundColor();
-    if ( !bgColor.isValid() ) {
-      bgColor = KOPrefs::instance()->agendaCalendarItemsBackgroundColor();
-    }
-  } else {
-    bgColor = KOPrefs::instance()->categoryColor( categories.first() );
-  }
-
   if ( mIncidence->type() == "Todo" ) {
     if ( static_cast<Todo*>(mIncidence)->isOverdue() )
       bgColor = KOPrefs::instance()->agendaCalendarItemsToDosOverdueBackgroundColor();
@@ -728,12 +718,8 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
       bgColor = KOPrefs::instance()->agendaCalendarItemsToDosDueTodayBackgroundColor();
   }
 
-  if ( KOPrefs::instance()->agendaViewUsesResourceColor()
-     && mResourceColor.isValid() ) {
-    bgColor = mResourceColor;
-  }
-
   QColor categoryColor;
+  QStringList categories = mIncidence->categories();
   QString cat;
   if (!categories.isEmpty())
     cat = categories.first();
@@ -745,6 +731,31 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
   QColor resourceColor = mResourceColor;
   if ( !resourceColor.isValid() )
     resourceColor = categoryColor;
+
+  QColor frameColor;
+  if ( KOPrefs::instance()->agendaViewColors() == KOPrefs::ResourceOnly ||
+       KOPrefs::instance()->agendaViewColors() == KOPrefs::CategoryInsideResourceOutside ) {
+    frameColor = bgColor.isValid() ? bgColor : resourceColor;
+  } else {
+    frameColor = bgColor.isValid() ? bgColor : categoryColor;
+  }
+
+  if ( !bgColor.isValid() ) {
+    if ( KOPrefs::instance()->agendaViewColors() == KOPrefs::ResourceOnly ||
+         KOPrefs::instance()->agendaViewColors() == KOPrefs::ResourceInsideCategoryOutside ) {
+      bgColor = resourceColor;
+    } else {
+      bgColor = categoryColor;
+    }
+  }
+
+  if ( mSelected ) {
+    frameColor = QColor( 85 + frameColor.red() * 2/3,
+                        85 + frameColor.green() * 2/3,
+                        85 + frameColor.blue() * 2/3 );
+  } else {
+    frameColor = frameColor.dark( 115 );
+  }
 
   if (!KOPrefs::instance()->hasCategoryColor(cat))
       categoryColor = resourceColor;
@@ -894,7 +905,7 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
               KGlobal::locale()->formatDate(mIncidence->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() ).date()));
 
       // paint headline
-      drawRoundedRect( &p, QRect( fmargin, fmargin, width() - fmargin * 2, - fmargin * 2 + margin + hlHeight), mSelected, bgColor, false, ft, roundTop, false );
+      drawRoundedRect( &p, QRect( fmargin, fmargin, width() - fmargin * 2, - fmargin * 2 + margin + hlHeight), mSelected, frameColor, false, ft, roundTop, false );
     }
 
     x += visRect.left();
@@ -905,7 +916,7 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
   }
   else {
     // paint headline
-     drawRoundedRect( &p, QRect( fmargin, fmargin, width() - fmargin * 2, - fmargin * 2 + margin + hlHeight), mSelected, bgColor, false, ft, roundTop, false );
+     drawRoundedRect( &p, QRect( fmargin, fmargin, width() - fmargin * 2, - fmargin * 2 + margin + hlHeight), mSelected, frameColor, false, ft, roundTop, false );
 
     txtWidth = width() - margin - x;
     eventX = x;
@@ -924,8 +935,8 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
     headline = longH;
     x += (hTxtWidth - hw) / 2;
   }
-  p.setBackground( QBrush( bgColor ) );
-  p.setPen( getTextColor( bgColor ) );
+  p.setBackground( QBrush( frameColor ) );
+  p.setPen( getTextColor( frameColor ) );
   KWordWrap::drawFadeoutText( &p, x, (margin + hlHeight + fm.ascent())/2 - 2, hTxtWidth, headline );
 
   // draw event text
@@ -1003,6 +1014,10 @@ void KOAgendaItem::drawRoundedRect( QPainter *p, const QRect& rect,
       gradient.setColorAt(0, QColor(255,255,255,90));
       gradient.setColorAt(1, QColor(0,0,0,10));
     }
+
+    p->setBrush(bgColor);
+    p->setPen(Qt::NoPen);
+    p->drawPath(path);
 
     p->setBrush(gradient);
     p->setPen(Qt::NoPen);

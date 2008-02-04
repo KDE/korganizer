@@ -556,7 +556,7 @@ class KOPrefsDialogViews : public KPrefsModule
       agendaLayout->addWidget(
         addWidBool( KOPrefs::instance()->selectionStartsEditorItem() )->checkBox() );
       agendaLayout->addWidget(
-        addWidBool( KOPrefs::instance()->agendaViewUsesResourceColorItem() )->checkBox() );
+        addWidCombo( KOPrefs::instance()->agendaViewColorsItem() )->comboBox() );
       agendaLayout->addWidget(
         addWidCombo( KOPrefs::instance()->agendaViewCalendarDisplayItem() )->comboBox() );
 
