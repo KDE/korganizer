@@ -1,6 +1,8 @@
 
-include_directories( ${CMAKE_SOURCE_DIR}/korganizer/interfaces
-${CMAKE_SOURCE_BINARY_DIR}/korganizer ${CMAKE_SOURCE_DIR}/korganizer )
+include_directories( 
+    ${CMAKE_SOURCE_DIR}/korganizer/interfaces 
+    ${CMAKE_SOURCE_DIR}/korganizer
+)
 
 
 ########### next target ###############
