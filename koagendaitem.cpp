@@ -733,6 +733,25 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
     bgColor = mResourceColor;
   }
 
+  QColor categoryColor;
+  QString cat;
+  if (!categories.isEmpty())
+    cat = categories.first();
+  if (cat.isEmpty())
+    categoryColor = KOPrefs::instance()->mEventColor;
+  else
+    categoryColor = KOPrefs::instance()->categoryColor(cat);
+
+  QColor resourceColor = mResourceColor;
+  if ( !resourceColor.isValid() )
+    resourceColor = categoryColor;
+
+  if (!KOPrefs::instance()->hasCategoryColor(cat))
+      categoryColor = resourceColor;
+
+  if (!bgColor.isValid())
+    bgColor = categoryColor;
+
   if ( mSelected )
     bgColor = bgColor.light(110);
 

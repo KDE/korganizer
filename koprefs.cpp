@@ -176,11 +176,6 @@ void KOPrefs::setCategoryDefaults()
       << i18n("Holiday") << i18n("Vacation") << i18n("Special Occasion")
       << i18n("Personal") << i18n("Travel") << i18n("Miscellaneous")
       << i18n("Birthday");
-
-  QStringList::Iterator it;
-  for ( it = mCustomCategories.begin(); it != mCustomCategories.end(); ++it ) {
-    setCategoryColor( *it, mDefaultCategoryColor );
-  }
 }
 
 void KOPrefs::usrReadConfig()
@@ -207,7 +202,9 @@ void KOPrefs::usrReadConfig()
   QList<QColor>::Iterator it2;
   for (it = mCustomCategories.begin(), it2 = oldCategoryColors.begin();
        it != mCustomCategories.end(); ++it, ++it2 ) {
-    setCategoryColor( *it, colors2Config.readEntry( *it, *it2 ) );
+      QColor c = config()->group(QString()).readEntry(*it, *it2);
+      if ( c != mDefaultCategoryColor )
+          setCategoryColor(*it,c);
   }
 
   KConfigGroup rColorsConfig( config(), "Resources Colors");
@@ -305,6 +302,12 @@ QColor KOPrefs::categoryColor( const QString &cat ) const
   }
 }
 
+
+bool KOPrefs::hasCategoryColor( const QString& cat ) const
+{
+    return mCategoryColors[ cat ].isValid();
+}
+
 void KOPrefs::setResourceColor ( const QString &cal, const QColor &color )
 {
   kDebug(5850)<<"KOPrefs::setResourceColor:" << cal << "color:" <<
@@ -312,11 +315,28 @@ void KOPrefs::setResourceColor ( const QString &cal, const QColor &color )
   mResourceColors.insert( cal, color );
 }
 
-QColor KOPrefs::resourceColor( const QString &cal ) const
+QColor KOPrefs::resourceColor( const QString &cal )
 {
   QColor color;
   if ( !cal.isEmpty() ) {
     color = mResourceColors.value( cal );
+  }
+
+  // assign default color if enabled
+  if ( !cal.isEmpty() && !color.isValid() && assignDefaultResourceColors() ) {
+    QColor defColor( 0x37, 0x7A, 0xBC );
+    if ( defaultResourceColorSeed() > 0 && defaultResourceColorSeed() - 1 < (int)defaultResourceColors().size() ) {
+        defColor = QColor( defaultResourceColors()[defaultResourceColorSeed()-1] );
+    } else {
+        int h, s, v;
+        defColor.getHsv( &h, &s, &v );
+        h = ( defaultResourceColorSeed() % 12 ) * 30;
+        s -= s * ( (defaultResourceColorSeed() / 12) % 2 ) * 0.5;
+        defColor.setHsv( h, s, v );
+    }
+    setDefaultResourceColorSeed( defaultResourceColorSeed() + 1 );
+    setResourceColor( cal, defColor );
+    color = mResourceColors[cal];
   }
 
   if ( color.isValid() ) {
