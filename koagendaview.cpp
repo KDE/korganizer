@@ -41,6 +41,7 @@
 #include <kcal/icaldrag.h>
 #include <kcal/dndfactory.h>
 #include <kcal/calfilter.h>
+#include <kcal/incidence.h>
 #include <kcal/incidenceformatter.h>
 
 #include <kapplication.h>
@@ -130,10 +131,6 @@ void EventIndicator::enableColumn(int column, bool enable)
 {
   mEnabled[column] = enable;
 }
-
-
-#include <kcal/incidence.h>
-#include <kvbox.h>
 
 ////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////
