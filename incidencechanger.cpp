@@ -304,9 +304,9 @@ bool IncidenceChanger::changeIncidence( Incidence *oldinc, Incidence *newinc,
       Event *e = dynamic_cast<Event*>( newinc );
       if ( e ) {
         Incidence* tmp = oldinc->clone();
-        tmp->setSummary( i18n("Counter proposal: %1").arg( e->summary() ) );
+        tmp->setSummary( i18n( "Counter proposal: %1", e->summary() ) );
         tmp->setDescription( e->description() );
-        tmp->addComment( i18n("Proposed new meeting time: %1 - %2").arg( e->dtStartStr() ).arg( e->dtEndStr() ) );
+        tmp->addComment( i18n( "Proposed new meeting time: %1 - %2", e->dtStartStr(), e->dtEndStr() ) );
         KCal::MailScheduler scheduler( mCalendar );
         scheduler.performTransaction( tmp, KCal::iTIPReply );
       } else {
