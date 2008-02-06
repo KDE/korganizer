@@ -383,11 +383,13 @@ void ResourceView::addResourceItem( ResourceCalendar *resource )
 
   ResourceItem *item=new ResourceItem( resource, this, mListView );
 
-  QColor resourceColor;
-
-  resourceColor= *KOPrefs::instance()->resourceColor(resource->identifier());
-  item->setResourceColor(resourceColor);
-  item->update();
+  // assign a color, but only if this is a resource that actually
+  // hold items at top level
+  if ( !resource->canHaveSubresources() || resource->subresources().isEmpty() ) {
+      QColor resourceColor = *KOPrefs::instance()->resourceColor(resource->identifier());
+      item->setResourceColor(resourceColor);
+      item->update();
+  }
 
   connect( resource, SIGNAL( signalSubresourceAdded( ResourceCalendar *,
                                                      const QString &,
