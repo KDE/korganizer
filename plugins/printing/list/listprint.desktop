@@ -3,6 +3,7 @@ Encoding=UTF-8
 X-KDE-Library=libkorg_listprint
 Name=List Print Style
 Name[af]=Lys druk styl
+Name[bg]=Печат като списък
 Name[ca]=Estil d'impressió en llista
 Name[cs]=Styl deníku - seznam
 Name[da]=Listeudskriftsstil

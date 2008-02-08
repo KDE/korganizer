@@ -3,6 +3,7 @@ Encoding=UTF-8
 X-KDE-Library=libkorg_journalprint
 Name=Journal Print Style
 Name[af]=Joernaal druk styl
+Name[bg]=Стил на отпечатване на календар
 Name[ca]=Estil d'impressió del diari
 Name[cs]=Tiskový styl deníku
 Name[da]=Journal udskriftsstil
