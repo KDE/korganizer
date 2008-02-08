@@ -62,23 +62,23 @@ CalendarViewExtension *ResourceViewFactory::create( QWidget *parent )
 {
   mResourceView = new ResourceView( mCalendar, parent );
 
-  QObject::connect( mResourceView, SIGNAL( resourcesChanged() ),
-                    mView, SLOT( updateView() ) );
-  QObject::connect( mResourceView, SIGNAL( resourcesChanged() ),
-                    mView, SLOT( updateCategories() ) );
+  QObject::connect( mResourceView, SIGNAL(resourcesChanged()),
+                    mView, SLOT(updateView()) );
+  QObject::connect( mResourceView, SIGNAL(resourcesChanged()),
+                    mView, SLOT(updateCategories()) );
 
   QObject::connect( mCalendar,
-                    SIGNAL( signalResourceAdded( ResourceCalendar * ) ),
+                    SIGNAL(signalResourceAdded(ResourceCalendar *)),
                     mResourceView,
-                    SLOT( addResourceItem( ResourceCalendar * ) ) );
+                    SLOT(addResourceItem(ResourceCalendar *)) );
   QObject::connect( mCalendar,
-                    SIGNAL( signalResourceModified( ResourceCalendar * ) ),
+                    SIGNAL(signalResourceModified(ResourceCalendar *)),
                     mResourceView,
-                    SLOT( updateResourceItem( ResourceCalendar * ) ) );
-  QObject::connect( mCalendar, SIGNAL( signalResourceAdded( ResourceCalendar * ) ),
-                    mView, SLOT( updateCategories() ) );
-  QObject::connect( mCalendar, SIGNAL( signalResourceModified( ResourceCalendar * ) ),
-                    mView, SLOT( updateCategories() ) );
+                    SLOT(updateResourceItem(ResourceCalendar *)) );
+  QObject::connect( mCalendar, SIGNAL(signalResourceAdded(ResourceCalendar *)),
+                    mView, SLOT(updateCategories()) );
+  QObject::connect( mCalendar, SIGNAL(signalResourceModified(ResourceCalendar *)),
+                    mView, SLOT(updateCategories()) );
 
   return mResourceView;
 }
@@ -217,9 +217,9 @@ void ResourceItem::setResourceColor( QColor &color )
 
 void ResourceItem::setStandardResource( bool std )
 {
-  QFont font = qvariant_cast<QFont>(data(0, Qt::FontRole));
-  font.setBold(std);
-  setData(0, Qt::FontRole, font);
+  QFont font = qvariant_cast<QFont>( data( 0, Qt::FontRole ) );
+  font.setBold( std );
+  setData( 0, Qt::FontRole, font );
 }
 
 ResourceView::ResourceView( KCal::CalendarResources *calendar, QWidget *parent )
@@ -229,31 +229,32 @@ ResourceView::ResourceView( KCal::CalendarResources *calendar, QWidget *parent )
   topLayout->setSpacing( KDialog::spacingHint() );
 
   mListView = new QTreeWidget( this );
-  mListView->setWhatsThis( i18n( "<qt><p>Select on this list the active KOrganizer "
-                                 "resources. Check the resource box to make it "
-                                 "active. Use the context menu to add, remove or edit "
-                                 "resources in the list.</p>"
-                                 "<p>Events, journal entries and to-dos are retrieved "
-                                 "and stored on resources. Available "
-                                 "resources include groupware servers, local files, "
-                                 "journal entries as blogs on a server, etc...</p>"
-                                 "<p>If you have more than one active resource, "
-                                 "when creating incidents you will either automatically "
-                                 "use the default resource or be prompted "
-                                 "to select the resource to use.</p></qt>" ) );
+  mListView->setWhatsThis(
+    i18n( "<qt><p>Select on this list the active KOrganizer "
+          "resources. Check the resource box to make it "
+          "active. Use the context menu to add, remove or edit "
+          "resources in the list.</p>"
+          "<p>Events, journal entries and to-dos are retrieved "
+          "and stored on resources. Available "
+          "resources include groupware servers, local files, "
+          "journal entries as blogs on a server, etc...</p>"
+          "<p>If you have more than one active resource, "
+          "when creating incidents you will either automatically "
+          "use the default resource or be prompted "
+          "to select the resource to use.</p></qt>" ) );
   mListView->setRootIsDecorated( false );
   mListView->setHeaderLabel( i18n( "Calendars" ) );
   topLayout->addWidget( mListView );
 
-  connect( mListView, SIGNAL( itemDoubleClicked ( QTreeWidgetItem *, int ) ),
-           SLOT( editResource() ) );
+  connect( mListView, SIGNAL(itemDoubleClicked(QTreeWidgetItem *,int)),
+           SLOT(editResource()) );
 
   mListView->setContextMenuPolicy( Qt::CustomContextMenu );
-  connect( mListView, SIGNAL( customContextMenuRequested( const QPoint & ) ),
-           SLOT( showContextMenu( const QPoint & ) ) );
+  connect( mListView, SIGNAL(customContextMenuRequested(const QPoint &)),
+           SLOT(showContextMenu(const QPoint &)) );
 
-  connect( mListView, SIGNAL( itemClicked( QTreeWidgetItem *, int ) ),
-           SLOT( slotItemClicked( QTreeWidgetItem *, int ) ) );
+  connect( mListView, SIGNAL(itemClicked(QTreeWidgetItem *,int)),
+           SLOT(slotItemClicked(QTreeWidgetItem *,int)) );
 
   updateView();
 }
@@ -286,24 +287,28 @@ void ResourceView::addResource()
   KCal::CalendarResourceManager *manager = mCalendar->resourceManager();
   ResourceItem *i = static_cast<ResourceItem*>( mListView->selectedItems().first() );
   if ( i && ( i->isSubresource() || i->resource()->canHaveSubresources() ) ) {
-    const QString folderName = KInputDialog::getText( i18n( "Add Subresource" ),
-            i18n( "Please enter a name for the new subresource" ), QString::null,
-            &ok, this );
-    if ( !ok )
+    const QString folderName =
+      KInputDialog::getText( i18n( "Add Subresource" ),
+                             i18n( "Please enter a name for the new subresource" ),
+                             QString(), &ok, this );
+    if ( !ok ) {
       return;
+    }
+
     const QString parentId = i->isSubresource() ? i->resourceIdentifier() : QString:: null;
     if ( !i->resource()->addSubresource( folderName, parentId ) ) {
-      KMessageBox::error( this, i18n("<qt>Unable to create subresource <b>%1</b>.</qt>")
-                                .arg( folderName ) );
+      KMessageBox::error( this,
+                          i18n( "<qt>Unable to create subresource <b>%1</b>.</qt>", folderName ) );
     }
     return;
   }
 
   QStringList types = manager->resourceTypeNames();
   QStringList descs = manager->resourceTypeDescriptions();
-  QString desc = KInputDialog::getItem( i18n( "Resource Configuration" ),
-                                        i18n( "Please select type of the new resource:" ),
-                                        descs, 0, false, &ok, this );
+  QString desc =
+    KInputDialog::getItem( i18n( "Resource Configuration" ),
+                           i18n( "Please select type of the new resource:" ),
+                           descs, 0, false, &ok, this );
   if ( !ok ) {
     return;
   }
@@ -323,12 +328,12 @@ void ResourceView::addResource()
   KRES::ConfigDialog *dlg = new KRES::ConfigDialog( this, QString( "calendar" ), resource );
 
   // TODO: Add a fallback (KColorCollection::setName() broken?)
-  KColorCollection collection("Oxygen.colors");
+  KColorCollection collection( "Oxygen.colors" );
   // TODO: Be smarter than this
   int rand = ( KRandom::random() % collection.count() ) + 1;
   QColor color = collection.color( rand );
 
-  KOPrefs::instance()->setResourceColor( resource->identifier(),  color);
+  KOPrefs::instance()->setResourceColor( resource->identifier(), color );
 
   if ( dlg && dlg->exec() ) {
     resource->setTimeSpec( KOPrefs::instance()->timeSpec() );
@@ -352,23 +357,18 @@ void ResourceView::addResourceItem( ResourceCalendar *resource )
   QColor resourceColor;
 
   resourceColor= KOPrefs::instance()->resourceColor( resource->identifier() );
-  item->setResourceColor(resourceColor);
+  item->setResourceColor( resourceColor );
 
-  connect( resource, SIGNAL( signalSubresourceAdded( ResourceCalendar *,
-                                                     const QString &,
-                                                     const QString &,
-                                                     const QString & ) ),
-           SLOT( slotSubresourceAdded( ResourceCalendar *, const QString &,
-                                       const QString &, const QString & ) ) );
+  connect( resource,
+           SIGNAL(signalSubresourceAdded(ResourceCalendar *,const QString &,const QString &,const QString &)),
+           SLOT(slotSubresourceAdded(ResourceCalendar *,const QString &,const QString &,const QString &)) );
 
-  connect( resource, SIGNAL( signalSubresourceRemoved( ResourceCalendar *,
-                                                       const QString &,
-                                                       const QString & ) ),
-           SLOT( slotSubresourceRemoved( ResourceCalendar *, const QString &,
-                                         const QString & ) ) );
+  connect( resource,
+           SIGNAL(signalSubresourceRemoved(ResourceCalendar *,const QString &,const QString &)),
+           SLOT(slotSubresourceRemoved(ResourceCalendar *,const QString &,const QString &)) );
 
-  connect( resource, SIGNAL( resourceSaved( ResourceCalendar * ) ),
-           SLOT( closeResource( ResourceCalendar * ) ) );
+  connect( resource, SIGNAL(resourceSaved(ResourceCalendar *)),
+           SLOT(closeResource(ResourceCalendar *)) );
 
   updateResourceList();
   emit resourcesChanged();
@@ -435,11 +435,10 @@ void ResourceView::removeResource()
   }
 
   int km =
-    KMessageBox::warningContinueCancel( this,
-                                        i18n( "<qt>Do you really want to delete "
-                                              "the resource <b>%1</b>?</qt>",
-                                              item->text( 0 ) ),
-                                        "", KStandardGuiItem::del() );
+    KMessageBox::warningContinueCancel(
+      this,
+      i18n( "<qt>Do you really want to delete the resource <b>%1</b>?</qt>",
+            item->text( 0 ) ), "", KStandardGuiItem::del() );
   if ( km == KMessageBox::Cancel ) {
     return;
   }
@@ -510,7 +509,7 @@ void ResourceView::showContextMenu( const QPoint &pos )
   if ( !i ) { // No item clicked.
     // Creation of menu entries not specific to one item
     QMenu *menu = new QMenu( this );
-    menu->addAction( i18n( "&Add..." ), this, SLOT( addResource() ) );
+    menu->addAction( i18n( "&Add..." ), this, SLOT(addResource()) );
     menu->popup( mapToGlobal( pos ) );
 
     return;
@@ -520,37 +519,37 @@ void ResourceView::showContextMenu( const QPoint &pos )
   ResourceItem *item = static_cast<ResourceItem *>( i );
 
   QMenu *menu = new QMenu( this );
-  connect( menu, SIGNAL( aboutToHide() ), menu, SLOT( deleteLater() ) );
+  connect( menu, SIGNAL(aboutToHide()), menu, SLOT(deleteLater()) );
   if ( item ) {
     QAction *reloadAction = menu->addAction(
-      i18nc( "reload the resource", "Re&load" ), this, SLOT( reloadResource() ) );
+      i18nc( "reload the resource", "Re&load" ), this, SLOT(reloadResource()) );
     reloadAction->setEnabled( item->resource()->isActive() );
 
     QAction *saveAction = menu->addAction(
-      i18nc( "save the resource", "&Save" ), this, SLOT( saveResource() ) );
+      i18nc( "save the resource", "&Save" ), this, SLOT(saveResource()) );
     saveAction->setEnabled( item->resource()->isActive() );
 
     menu->addSeparator();
 
-    menu->addAction( i18n( "Show &Info" ), this, SLOT( showInfo() ) );
+    menu->addAction( i18n( "Show &Info" ), this, SLOT(showInfo()) );
     //FIXME: This is better on the resource dialog
     if ( KOPrefs::instance()->agendaViewColors() != KOPrefs::CategoryOnly ) {
       QMenu *assignMenu = menu->addMenu( i18n( "Resource Colors" ) );
-      assignMenu->addAction( i18n( "&Assign Color" ), this, SLOT( assignColor() ) );
+      assignMenu->addAction( i18n( "&Assign Color" ), this, SLOT(assignColor()) );
       if ( item->resourceColor().isValid() ) {
-        assignMenu->addAction( i18n( "&Disable Color" ), this, SLOT( disableColor() ) );
+        assignMenu->addAction( i18n( "&Disable Color" ), this, SLOT(disableColor()) );
       }
     }
 
-    menu->addAction( i18n( "&Edit..." ), this, SLOT( editResource() ) );
-    menu->addAction( i18n( "&Remove" ), this, SLOT( removeResource() ) );
+    menu->addAction( i18n( "&Edit..." ), this, SLOT(editResource()) );
+    menu->addAction( i18n( "&Remove" ), this, SLOT(removeResource()) );
     if ( item->resource() != manager->standardResource() ) {
       menu->addSeparator();
-      menu->addAction( i18n( "Use as &Default Calendar" ), this, SLOT( setStandard() ) );
+      menu->addAction( i18n( "Use as &Default Calendar" ), this, SLOT(setStandard()) );
     }
     menu->addSeparator();
   }
-  menu->addAction( i18n( "&Add..." ), this, SLOT( addResource() ) );
+  menu->addAction( i18n( "&Add..." ), this, SLOT(addResource()) );
   menu->popup( mapToGlobal( pos ) );
 }
 
