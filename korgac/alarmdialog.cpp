@@ -155,10 +155,10 @@ void AlarmDialog::addIncidence( Incidence *incidence, const QDateTime &reminderA
   item->mRemindAt = reminderAt;
   Todo *todo;
   if ( dynamic_cast<Event*>( incidence ) ) {
-    item->setIcon( 0, SmallIcon( "appointment" ) );
+    item->setIcon( 0, SmallIcon( "view-calendar-day" ) );
     item->setText( 1, incidence->dtStartStr() );
   } else if ( (todo = dynamic_cast<Todo*>( incidence )) ) {
-    item->setIcon( 0, SmallIcon( "todo" ) );
+    item->setIcon( 0, SmallIcon( "view-calendar-tasks" ) );
     item->setText( 1, todo->dtDueStr() );
   }
   if ( activeCount() == 1 ) {// previously empty
