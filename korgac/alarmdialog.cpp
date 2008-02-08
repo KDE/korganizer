@@ -235,7 +235,7 @@ void AlarmDialog::setTimer()
     AlarmListItem *item = static_cast<AlarmListItem *>( root->child( i ) );
     if ( item->mRemindAt > QDateTime::currentDateTime() ) {
       int secs = QDateTime::currentDateTime().secsTo( item->mRemindAt );
-      nextReminderAt = nextReminderAt <= 0 ? secs : QMIN( nextReminderAt, secs );
+      nextReminderAt = nextReminderAt <= 0 ? secs : qMin( nextReminderAt, secs );
     }
   }
 
