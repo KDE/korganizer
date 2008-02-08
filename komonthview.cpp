@@ -543,6 +543,10 @@ void MonthViewCell::enableScrollBars( bool enabled )
     mItemList->setVerticalScrollBarPolicy( Qt::ScrollBarAlwaysOff );
     mItemList->setHorizontalScrollBarPolicy( Qt::ScrollBarAlwaysOff );
   }
+  // the list has to be resetted in order to display the full items
+  // otherwise the item text remains cutted altough scrollbars would
+  // support the display of the full entry.
+  mItemList->reset();
 }
 
 Incidence *MonthViewCell::selectedIncidence()
