@@ -86,23 +86,25 @@ AlarmDialog::AlarmDialog( QWidget *parent )
 
   QWidget *topBox = new QWidget( this);
   setMainWidget( topBox );
-  setCaption( i18n("Reminder") );
+  setCaption( i18nc( "@title:window", "Reminder" ) );
   setButtons( Ok | User1 | User2 | User3 );
   setDefaultButton( User1 );
-  setButtonText( Ok, i18n("Dismiss") );
-  setButtonText( User1, i18n("Dismiss all") );
-  setButtonText( User2, i18n("Edit...") );
-  setButtonText( User3, i18n("Suspend") );
+  setButtonText( Ok, i18nc( "@action:button", "Dismiss" ) );
+  setButtonText( User1, i18nc( "@action:button", "Dismiss all" ) );
+  setButtonText( User2, i18nc( "@action:button", "Edit..." ) );
+  setButtonText( User3, i18nc( "@action:button", "Suspend" ) );
   QBoxLayout *topLayout = new QVBoxLayout( topBox );
   topLayout->setSpacing( spacingHint() );
 
-  QLabel *label = new QLabel( i18n("The following events triggered reminders:"),
-                              topBox );
+  QLabel *label =
+    new QLabel( i18nc( "@label", "The following events triggered reminders:" ), topBox );
   topLayout->addWidget( label );
 
   mIncidenceListView = new QTreeWidget( topBox );
   mIncidenceListView->setColumnCount( 2 );
-  QStringList headerLabels = (QStringList( i18n( "Summary" ) ) << i18n( "Due" ) );
+  QStringList headerLabels =
+    ( QStringList( i18nc( "@title:column reminder summary", "Summary" ) )
+      << i18nc( "@title:column reminder due date/time", "Due" ) );
   mIncidenceListView->setHeaderLabels( headerLabels );
   mIncidenceListView->setAllColumnsShowFocus( true );
   mIncidenceListView->setSelectionMode( QAbstractItemView::ExtendedSelection );
@@ -121,17 +123,17 @@ AlarmDialog::AlarmDialog( QWidget *parent )
   suspendBox->setSpacing( spacingHint() );
   topLayout->addWidget( suspendBox );
 
-  QLabel *l = new QLabel( i18n("Suspend &duration:"), suspendBox );
+  QLabel *l = new QLabel( i18nc( "@label:spinbox", "Suspend &duration:"), suspendBox );
   mSuspendSpin = new QSpinBox( suspendBox );
   mSuspendSpin->setRange( 1, 9999 );
   mSuspendSpin->setValue( 5 );  // default suspend duration
   l->setBuddy( mSuspendSpin );
 
   mSuspendUnit = new KComboBox( suspendBox );
-  mSuspendUnit->addItem( i18n("minute(s)") );
-  mSuspendUnit->addItem( i18n("hour(s)") );
-  mSuspendUnit->addItem( i18n("day(s)") );
-  mSuspendUnit->addItem( i18n("week(s)") );
+  mSuspendUnit->addItem( i18nc( "@item:inlistbox suspend in terms of minutes", "minute(s)") );
+  mSuspendUnit->addItem( i18nc( "@item:inlistbox suspend in terms of hours", "hour(s)") );
+  mSuspendUnit->addItem( i18nc( "@item:inlistbox suspend in terms of days", "day(s)") );
+  mSuspendUnit->addItem( i18nc( "@item:inlistbox suspend in terms of weeks", "week(s)") );
   connect( &mSuspendTimer, SIGNAL(timeout()), SLOT(wakeUp()) );
 
   // showButton( User2/*3*/, false );
@@ -249,7 +251,7 @@ void AlarmDialog::slotUser2()
 {
   if ( !QDBusConnection::sessionBus().interface()->isServiceRegistered( "org.kde.korganizer" ) ) {
     if ( KToolInvocation::startServiceByDesktopName( "korganizer", QString() ) )
-      KMessageBox::error( 0, i18n("Could not start KOrganizer.") );
+      KMessageBox::error( 0, i18nc( "@info", "Could not start KOrganizer." ) );
   }
   org::kde::korganizer::Korganizer korganizer( "org.kde.korganizer", "/Korganizer", QDBusConnection::sessionBus() );
   ItemList selection = selectedItems();
