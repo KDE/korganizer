@@ -23,16 +23,13 @@
 */
 #ifndef ALARMDIALOG_H
 #define ALARMDIALOG_H
-//
-// Alarm dialog.
-//
-#include <QTimer>
-#include <QDateTime>
+
+#include <kcal/incidence.h>
 
 #include <kdialog.h>
 
-#include <kcal/event.h>
-#include <kcal/calendarlocal.h>
+#include <QTimer>
+#include <QDateTime>
 
 using namespace KCal;
 
@@ -42,7 +39,8 @@ class KComboBox;
 class QTreeWidget;
 class AlarmListItem;
 
-class AlarmDialog : public KDialog {
+class AlarmDialog : public KDialog
+{
   Q_OBJECT
   public:
     AlarmDialog( QWidget *parent = 0 );

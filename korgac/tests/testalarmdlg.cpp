@@ -22,7 +22,10 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include <QWidget>
+#include "alarmdialog.h"
+
+#include <kcal/event.h>
+using namespace KCal;
 
 #include <kaboutdata.h>
 #include <kapplication.h>
@@ -30,7 +33,8 @@
 #include <klocale.h>
 #include <kcmdlineargs.h>
 
-#include "alarmdialog.h"
+#include <QWidget>
+
 
 int main(int argc,char **argv)
 {
@@ -50,10 +54,9 @@ int main(int argc,char **argv)
   a->setAudioAlarm( "/opt/kde/share/apps/korganizer/sounds/spinout.wav" );
 
   AlarmDialog dlg;
-  app.setMainWidget( &dlg );
   dlg.addIncidence( e, QDateTime::currentDateTime() );
   dlg.show();
   dlg.eventNotification();
-    
+
   app.exec();
 }

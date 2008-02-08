@@ -27,8 +27,9 @@
 #include <korganizer_interface.h>
 
 #include <kcal/event.h>
+#include <kcal/todo.h>
+
 #include <kconfig.h>
-#include <Phonon/MediaObject>
 #include <kiconloader.h>
 #include <klocale.h>
 #include <kdebug.h>
@@ -53,6 +54,8 @@
 #include <QTreeWidget>
 #include <QtDBus/QtDBus>
 #include <QProcess>
+#include <Phonon/MediaObject>
+
 #include "alarmdialog.moc"
 
 class AlarmListItem : public QTreeWidgetItem
@@ -76,7 +79,6 @@ class AlarmListItem : public QTreeWidgetItem
 
 typedef QList<AlarmListItem *> ItemList;
 
-
 AlarmDialog::AlarmDialog( QWidget *parent )
   : KDialog( parent/*, Qt::WType_TopLevel | Qt::WStyle_Customize | Qt::WStyle_StaysOnTop |
                      Qt::WStyle_DialogBorder,*/ ),
@@ -84,7 +86,7 @@ AlarmDialog::AlarmDialog( QWidget *parent )
 {
   KIconLoader::global()->addAppDir( "kdepim" );
 
-  QWidget *topBox = new QWidget( this);
+  QWidget *topBox = new QWidget( this );
   setMainWidget( topBox );
   setCaption( i18nc( "@title:window", "Reminder" ) );
   setButtons( Ok | User1 | User2 | User3 );
@@ -123,26 +125,26 @@ AlarmDialog::AlarmDialog( QWidget *parent )
   suspendBox->setSpacing( spacingHint() );
   topLayout->addWidget( suspendBox );
 
-  QLabel *l = new QLabel( i18nc( "@label:spinbox", "Suspend &duration:"), suspendBox );
+  QLabel *l = new QLabel( i18nc( "@label:spinbox", "Suspend &duration:" ), suspendBox );
   mSuspendSpin = new QSpinBox( suspendBox );
   mSuspendSpin->setRange( 1, 9999 );
   mSuspendSpin->setValue( 5 );  // default suspend duration
   l->setBuddy( mSuspendSpin );
 
   mSuspendUnit = new KComboBox( suspendBox );
-  mSuspendUnit->addItem( i18nc( "@item:inlistbox suspend in terms of minutes", "minute(s)") );
-  mSuspendUnit->addItem( i18nc( "@item:inlistbox suspend in terms of hours", "hour(s)") );
-  mSuspendUnit->addItem( i18nc( "@item:inlistbox suspend in terms of days", "day(s)") );
-  mSuspendUnit->addItem( i18nc( "@item:inlistbox suspend in terms of weeks", "week(s)") );
+  mSuspendUnit->addItem( i18nc( "@item:inlistbox suspend in terms of minutes", "minute(s)" ) );
+  mSuspendUnit->addItem( i18nc( "@item:inlistbox suspend in terms of hours", "hour(s)" ) );
+  mSuspendUnit->addItem( i18nc( "@item:inlistbox suspend in terms of days", "day(s)" ) );
+  mSuspendUnit->addItem( i18nc( "@item:inlistbox suspend in terms of weeks", "week(s)" ) );
   connect( &mSuspendTimer, SIGNAL(timeout()), SLOT(wakeUp()) );
 
   // showButton( User2/*3*/, false );
 
   setMinimumSize( 300, 200 );
-  connect(this, SIGNAL(okClicked()), this, SLOT(slotOk()));
-  connect(this, SIGNAL(user1Clicked()), this, SLOT(slotUser1()));
-  connect(this, SIGNAL(user2Clicked()), this, SLOT(slotUser2()));
-  connect(this, SIGNAL(user3Clicked()), this, SLOT(slotUser3()));
+  connect( this, SIGNAL(okClicked()), this, SLOT(slotOk()) );
+  connect( this, SIGNAL(user1Clicked()), this, SLOT(slotUser1()) );
+  connect( this, SIGNAL(user2Clicked()), this, SLOT(slotUser2()) );
+  connect( this, SIGNAL(user3Clicked()), this, SLOT(slotUser3()) );
 }
 
 AlarmDialog::~AlarmDialog()
@@ -159,7 +161,7 @@ void AlarmDialog::addIncidence( Incidence *incidence, const QDateTime &reminderA
   if ( dynamic_cast<Event*>( incidence ) ) {
     item->setIcon( 0, SmallIcon( "view-calendar-day" ) );
     item->setText( 1, incidence->dtStartStr() );
-  } else if ( (todo = dynamic_cast<Todo*>( incidence )) ) {
+  } else if ( ( todo = dynamic_cast<Todo*>( incidence ) ) ) {
     item->setIcon( 0, SmallIcon( "view-calendar-tasks" ) );
     item->setText( 1, todo->dtDueStr() );
   }
@@ -173,11 +175,13 @@ void AlarmDialog::addIncidence( Incidence *incidence, const QDateTime &reminderA
 void AlarmDialog::slotOk()
 {
   ItemList selection = selectedItems();
-  for ( ItemList::Iterator it = selection.begin(); it != selection.end(); ++it )
+  for ( ItemList::Iterator it = selection.begin(); it != selection.end(); ++it ) {
     delete *it;
-  if ( activeCount() == 0 )
+  }
+
+  if ( activeCount() == 0 ) {
     accept();
-  else {
+  } else {
     updateButtons();
     showDetails();
   }
@@ -191,8 +195,9 @@ void AlarmDialog::slotUser1()
 
 void AlarmDialog::suspend()
 {
-  if ( !isVisible() )
+  if ( !isVisible() ) {
     return;
+  }
 
   int unit=1;
   switch ( mSuspendUnit->currentIndex() ) {
@@ -209,7 +214,7 @@ void AlarmDialog::suspend()
   }
 
   QTreeWidgetItem *const root = mIncidenceListView->invisibleRootItem();
-  for ( int i = 0 ; i < root->childCount() ; i++ ) {
+  for ( int i = 0; i < root->childCount(); i++ ) {
     AlarmListItem *item = static_cast<AlarmListItem *>( root->child( i ) );
     if ( item->isSelected() && !item->isHidden() ) {
       item->setHidden( true );
@@ -220,9 +225,9 @@ void AlarmDialog::suspend()
   }
 
   setTimer();
-  if ( activeCount() == 0 )
+  if ( activeCount() == 0 ) {
     accept();
-  else {
+  } else {
     updateButtons();
     showDetails();
   }
@@ -233,7 +238,7 @@ void AlarmDialog::setTimer()
 {
   int nextReminderAt = -1;
   QTreeWidgetItem *const root = mIncidenceListView->invisibleRootItem();
-  for ( int i = 0 ; i < root->childCount() ; i++ ) {
+  for ( int i = 0; i < root->childCount(); i++ ) {
     AlarmListItem *item = static_cast<AlarmListItem *>( root->child( i ) );
     if ( item->mRemindAt > QDateTime::currentDateTime() ) {
       int secs = QDateTime::currentDateTime().secsTo( item->mRemindAt );
@@ -243,20 +248,24 @@ void AlarmDialog::setTimer()
 
   if ( nextReminderAt >= 0 ) {
     mSuspendTimer.stop();
-    mSuspendTimer.start( 1000 * (nextReminderAt + 1), true );
+    mSuspendTimer.start( 1000 * ( nextReminderAt + 1 ), true );
   }
 }
 
 void AlarmDialog::slotUser2()
 {
   if ( !QDBusConnection::sessionBus().interface()->isServiceRegistered( "org.kde.korganizer" ) ) {
-    if ( KToolInvocation::startServiceByDesktopName( "korganizer", QString() ) )
+    if ( KToolInvocation::startServiceByDesktopName( "korganizer", QString() ) ) {
       KMessageBox::error( 0, i18nc( "@info", "Could not start KOrganizer." ) );
+    }
   }
-  org::kde::korganizer::Korganizer korganizer( "org.kde.korganizer", "/Korganizer", QDBusConnection::sessionBus() );
+  org::kde::korganizer::Korganizer korganizer(
+    "org.kde.korganizer", "/Korganizer", QDBusConnection::sessionBus() );
+
   ItemList selection = selectedItems();
-  if ( selection.count() != 1 )
+  if ( selection.count() != 1 ) {
     return;
+  }
   Incidence *incidence = selection.first()->mIncidence;
   korganizer.editIncidence( incidence->uid() );
 
@@ -265,9 +274,10 @@ void AlarmDialog::slotUser2()
 #warning "kde4: verify it when kontact will not crash"
 #endif
   // get desktop # where korganizer (or kontact) runs
-  QString object = QDBusConnection::sessionBus().interface()->isServiceRegistered( "org.kde.kontact" ) ?
-           "kontact/mainwindow_1" : "korganizer/MainWindow_1";
-  QDBusInterface korganizerObj("org.kde.korganizer", '/'+object);
+  QString object =
+    QDBusConnection::sessionBus().interface()->isServiceRegistered( "org.kde.kontact" ) ?
+    "kontact/mainwindow_1" : "korganizer/MainWindow_1";
+  QDBusInterface korganizerObj( "org.kde.korganizer", '/' + object );
   QDBusReply<int> reply = korganizerObj.call( "winId" );
   if ( reply.isValid() ) {
     int window = reply;
@@ -275,10 +285,9 @@ void AlarmDialog::slotUser2()
 
     if ( KWindowSystem::currentDesktop() == desktop ) {
       KWindowSystem::minimizeWindow( winId(), false );
-    }
-    else
+    } else {
       KWindowSystem::setCurrentDesktop( desktop );
-
+    }
     KWindowSystem::activateWindow( KWindowSystem::transientFor( window ) );
   }
 #endif
@@ -300,10 +309,11 @@ void AlarmDialog::show()
 void AlarmDialog::dismissAll()
 {
   QTreeWidgetItem *const root = mIncidenceListView->invisibleRootItem();
-  for ( int i = 0 ; i < root->childCount() ; i++ ) {
+  for ( int i = 0; i < root->childCount(); i++ ) {
     AlarmListItem *item = static_cast<AlarmListItem *>( root->child( i ) );
-    if ( item->isHidden() )
+    if ( item->isHidden() ) {
       continue;
+    }
     delete item;
   }
   setTimer();
@@ -319,10 +329,11 @@ void AlarmDialog::eventNotification()
   QList<AlarmListItem *> list;
 
   QTreeWidgetItem *const root = mIncidenceListView->invisibleRootItem();
-  for ( int i = 0 ; i < root->childCount() ; i++ ) {
+  for ( int i = 0; i < root->childCount(); i++ ) {
     AlarmListItem *item = static_cast<AlarmListItem *>( root->child( i ) );
-    if ( item->isHidden() || item->mNotified )
+    if ( item->isHidden() || item->mNotified ) {
       continue;
+    }
     found = true;
     item->mNotified = true;
     Alarm::List alarms = item->mIncidence->alarms();
@@ -330,17 +341,17 @@ void AlarmDialog::eventNotification()
     for ( it = alarms.begin(); it != alarms.end(); ++it ) {
       Alarm *alarm = *it;
       // FIXME: Check whether this should be done for all multiple alarms
-      if (alarm->type() == Alarm::Procedure) {
+      if ( alarm->type() == Alarm::Procedure ) {
         // FIXME: Add a message box asking whether the procedure should really be executed
-      kDebug(5890) <<"Starting program: '" << alarm->programFile() <<"'";
-      QProcess::startDetached( QFile::encodeName(alarm->programFile()));
-      }
-      else if (alarm->type() == Alarm::Audio) {
+      kDebug(5890) << "Starting program: '" << alarm->programFile() << "'";
+      QProcess::startDetached( QFile::encodeName( alarm->programFile() ) );
+      } else if ( alarm->type() == Alarm::Audio ) {
         beeped = true;
-      Phonon::MediaObject* player = Phonon::createPlayer( Phonon::NotificationCategory, alarm->audioFile() );
-      player->setParent( this );
-      connect( player, SIGNAL( finished() ), player, SLOT( deleteLater() ) );
-      player->play();
+        Phonon::MediaObject *player =
+          Phonon::createPlayer( Phonon::NotificationCategory, alarm->audioFile() );
+        player->setParent( this );
+        connect( player, SIGNAL(finished()), player, SLOT(deleteLater()) );
+        player->play();
       }
     }
   }
@@ -354,7 +365,7 @@ void AlarmDialog::wakeUp()
 {
   bool activeReminders = false;
   QTreeWidgetItem *const root = mIncidenceListView->invisibleRootItem();
-  for ( int i = 0 ; i < root->childCount() ; i++ ) {
+  for ( int i = 0; i < root->childCount(); i++ ) {
     AlarmListItem *item = static_cast<AlarmListItem *>( root->child( i ) );
     if ( item->mRemindAt <= QDateTime::currentDateTime() ) {
       if ( item->isHidden() ) {
@@ -367,8 +378,9 @@ void AlarmDialog::wakeUp()
     }
   }
 
-  if ( activeReminders )
+  if ( activeReminders ) {
     show();
+  }
   setTimer();
   showDetails();
   emit reminderCount( activeCount() );
@@ -382,13 +394,13 @@ void AlarmDialog::slotSave()
   //   return;
 
   KConfigGroup generalConfig( config, "General" );
-  int numReminders = generalConfig.readEntry("Reminders", 0);
+  int numReminders = generalConfig.readEntry( "Reminders", 0 );
 
   QTreeWidgetItem *const root = mIncidenceListView->invisibleRootItem();
-  for ( int i = 0 ; i < root->childCount() ; i++ ) {
+  for ( int i = 0; i < root->childCount(); i++ ) {
     AlarmListItem *item = static_cast<AlarmListItem *>( root->child( i ) );
     KConfigGroup incidenceConfig( config,
-                                  QString("Incidence-%1").arg(numReminders) );
+                                  QString( "Incidence-%1" ).arg( numReminders ) );
     incidenceConfig.writeEntry( "UID", item->mIncidence->uid() );
     incidenceConfig.writeEntry( "RemindAt", item->mRemindAt );
     ++numReminders;
@@ -412,10 +424,11 @@ QList<AlarmListItem *> AlarmDialog::selectedItems() const
   QList<AlarmListItem *> list;
 
   QTreeWidgetItem *const root = mIncidenceListView->invisibleRootItem();
-  for ( int i = 0 ; i < root->childCount() ; i++ ) {
+  for ( int i = 0; i < root->childCount(); i++ ) {
     AlarmListItem *item = static_cast<AlarmListItem *>( root->child( i ) );
-    if ( item->isSelected() )
+    if ( item->isSelected() ) {
       list.append( item );
+    }
   }
   return list;
 }
@@ -424,10 +437,11 @@ int AlarmDialog::activeCount()
 {
   int count = 0;
   QTreeWidgetItem *const root = mIncidenceListView->invisibleRootItem();
-  for ( int i = 0 ; i < root->childCount() ; i++ ) {
+  for ( int i = 0; i < root->childCount(); i++ ) {
     AlarmListItem *item = static_cast<AlarmListItem *>( root->child( i ) );
-    if ( !item->isHidden() )
+    if ( !item->isHidden() ) {
       count++;
+    }
   }
   return count;
 }
@@ -436,10 +450,11 @@ void AlarmDialog::suspendAll()
 {
   mIncidenceListView->clearSelection();
   QTreeWidgetItem *const root = mIncidenceListView->invisibleRootItem();
-  for ( int i = 0 ; i < root->childCount() ; i++ ) {
+  for ( int i = 0; i < root->childCount(); i++ ) {
     QTreeWidgetItem *item = root->child( i );
-    if ( !item->isHidden() )
+    if ( !item->isHidden() ) {
       item->setSelected( true );
+    }
   }
   suspend();
 }
@@ -449,7 +464,8 @@ void AlarmDialog::showDetails()
   mDetailView->clearEvents( true );
   mDetailView->clear();
   AlarmListItem *item = dynamic_cast<AlarmListItem *>( mIncidenceListView->currentItem() );
-  if ( !item || item->isHidden() )
+  if ( !item || item->isHidden() ) {
     return;
+  }
   mDetailView->appendIncidence( item->mIncidence );
 }
