@@ -55,7 +55,7 @@ AlarmDockWindow::AlarmDockWindow()
   bool autostart = config.readEntry( "Autostart", true );
   bool alarmsEnabled = config.readEntry( "Enabled", true );
 
-  mName = i18n( "KOrganizer Reminder Daemon" );
+  mName = i18nc( "@title:window", "KOrganizer Reminder Daemon" );
   setToolTip( mName );
 
   // Set up icons
@@ -75,18 +75,22 @@ AlarmDockWindow::AlarmDockWindow()
   setIcon( alarmsEnabled ? mIconEnabled : mIconDisabled );
 
   // Set up the context menu
-  mSuspendAll = contextMenu()->addAction( i18n( "Suspend All" ),
-                                          this, SLOT(slotSuspendAll()) );
-  mDismissAll = contextMenu()->addAction( i18n( "Dismiss All" ),
-                                          this, SLOT(slotDismissAll()) );
+  mSuspendAll =
+    contextMenu()->addAction( i18nc( "@action:inmenu", "Suspend All" ), this,
+                              SLOT(slotSuspendAll()) );
+  mDismissAll =
+    contextMenu()->addAction( i18nc( "@action:inmenu", "Dismiss All" ), this,
+                              SLOT(slotDismissAll()) );
   mSuspendAll->setEnabled( false );
   mDismissAll->setEnabled( false );
 
   contextMenu()->addSeparator();
-  mAlarmsEnabled = contextMenu()->addAction( i18n( "Reminders Enabled" ), this,
-                                             SLOT(toggleAlarmsEnabled()) );
-  mAutostart = contextMenu()->addAction( i18n( "Start Reminder Daemon at Login" ),
-                                         this, SLOT(toggleAutostart()) );
+  mAlarmsEnabled =
+    contextMenu()->addAction( i18nc( "@action:inmenu", "Reminders Enabled" ),
+                              this, SLOT(toggleAlarmsEnabled()) );
+  mAutostart =
+    contextMenu()->addAction( i18nc( "@action:inmenu", "Start Reminder Daemon at Login" ),
+                              this, SLOT(toggleAutostart()) );
   mAutostart->setEnabled( autostart );
   mAlarmsEnabled->setEnabled( alarmsEnabled );
 
@@ -117,8 +121,9 @@ void AlarmDockWindow::slotUpdate( int reminders )
   mSuspendAll->setEnabled( reminders > 0 );
   mDismissAll->setEnabled( reminders > 0 );
   if ( reminders > 0 ) {
-    setToolTip( i18np( "There is 1 active reminder.",
-                       "There are %1 active reminders.", reminders ) );
+    setToolTip( i18ncp( "@info:tooltip",
+                        "There is 1 active reminder.",
+                        "There are %1 active reminders.", reminders ) );
   } else {
     setToolTip( mName );
   }
@@ -174,10 +179,12 @@ void AlarmDockWindow::slotQuit()
 {
   int result = KMessageBox::questionYesNoCancel(
     parentWidget(),
-    i18n( "Do you want to start the KOrganizer reminder daemon at login "
+    i18nc( "@info", "Do you want to start the KOrganizer reminder daemon at login "
           "(note that you will not get reminders whilst the daemon is not running)?" ),
-    i18n( "Close KOrganizer Reminder Daemon" ),
-    KGuiItem( i18nc( "@action:button start the reminder daemon", "Start" ) ), KGuiItem( i18nc( "@action:button do not start the reminder daemon", "Do Not Start" ) ), KStandardGuiItem::cancel(),
+    i18nc( "@title:window", "Close KOrganizer Reminder Daemon" ),
+    KGuiItem( i18nc( "@action:button start the reminder daemon", "Start" ) ),
+    KGuiItem( i18nc( "@action:button do not start the reminder daemon", "Do Not Start" ) ),
+    KStandardGuiItem::cancel(),
     QString::fromLatin1( "AskForStartAtLogin" ) );
 
   bool autostart = true;
