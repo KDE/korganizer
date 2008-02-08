@@ -36,8 +36,8 @@ class AlarmDialog;
 class AlarmDockWindow;
 
 namespace KCal {
-class CalendarResources;
-class Incidence;
+  class CalendarResources;
+  class Incidence;
 }
 
 class KOAlarmClient : public QObject, public KSessionManager

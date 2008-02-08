@@ -1,31 +1,31 @@
 /*
-    KOrganizer Alarm Daemon Client.
+  KOrganizer Alarm Daemon Client.
 
-    This file is part of KOrganizer.
+  This file is part of KOrganizer.
 
-    Copyright (c) 2002,2003 Cornelius Schumacher <schumacher@kde.org>
+  Copyright (c) 2002,2003 Cornelius Schumacher <schumacher@kde.org>
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-    GNU General Public License for more details.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-    As a special exception, permission is given to link this program
-    with any edition of Qt, and distribute the resulting executable,
-    without including the source code for Qt in the source distribution.
+  As a special exception, permission is given to link this program
+  with any edition of Qt, and distribute the resulting executable,
+  without including the source code for Qt in the source distribution.
 */
 
 #include "koalarmclient.h"
-
+#include "korgacadaptor.h"
 #include "alarmdockwindow.h"
 #include "alarmdialog.h"
 
@@ -38,19 +38,18 @@
 #include <kapplication.h>
 #include <kwindowsystem.h>
 #include <kconfiggroup.h>
+#include <kglobal.h>
 
 #include <QPushButton>
-#include <kglobal.h>
-#include "korgacadaptor.h"
 #include <QtDBus/QtDBus>
 
 KOAlarmClient::KOAlarmClient( QObject *parent )
   : QObject( parent ),
     mDialog( 0 )
 {
-  new KOrgacAdaptor(this);
-  QDBusConnection::sessionBus().registerObject("/ac", this);
-  kDebug(5890) <<"KOAlarmClient::KOAlarmClient()";
+  new KOrgacAdaptor( this );
+  QDBusConnection::sessionBus().registerObject( "/ac", this );
+  kDebug();
 
   mDocker = new AlarmDockWindow;
   mDocker->show();
@@ -60,7 +59,7 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
   KConfig c( KStandardDirs::locate( "config", "korganizerrc" ) );
   KConfigGroup cg( &c, "Time & Date" );
   QString tz = cg.readEntry( "TimeZoneId" );
-  kDebug(5890) <<"TimeZone:" << tz;
+  kDebug() << "TimeZone:" << tz;
 
   mCalendar = new CalendarResources( tz );
   mCalendar->readConfig();
@@ -68,28 +67,27 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
 
   connect( &mCheckTimer, SIGNAL( timeout() ), SLOT( checkAlarms() ) );
 
-  KConfigGroup config(KGlobal::config(), "Alarms");
-  int interval = config.readEntry( "Interval", 60 );
-  kDebug(5890) <<"KOAlarmClient check interval:" << interval << "seconds.";
-  mLastChecked = config.readEntry( "CalendarsLastChecked", QDateTime() );
+  KConfigGroup alarmGroup( KGlobal::config(), "Alarms" );
+  int interval = alarmGroup.readEntry( "Interval", 60 );
+  kDebug() << "KOAlarmClient check interval:" << interval << "seconds.";
+  mLastChecked = alarmGroup.readEntry( "CalendarsLastChecked", QDateTime() );
 
   // load reminders that were active when quitting
-  config.changeGroup( "General" );
-  int numReminders = config.readEntry( "Reminders", 0 );
-  for ( int i=1; i<=numReminders; ++i )
-  {
+  KConfigGroup genGroup( KGlobal::config(), "General" );
+  int numReminders = genGroup.readEntry( "Reminders", 0 );
+  for ( int i=1; i<=numReminders; ++i ) {
     QString group( QString( "Incidence-%1" ).arg( i ) );
-    config.changeGroup( group );
-    QString uid = config.readEntry( "UID" );
-    QDateTime dt = config.readEntry( "RemindAt", QDateTime() );
-    if ( !uid.isEmpty() )
+    KConfigGroup *incGroup = new KConfigGroup( KGlobal::config(), group );
+    QString uid = incGroup->readEntry( "UID" );
+    QDateTime dt = incGroup->readEntry( "RemindAt", QDateTime() );
+    if ( !uid.isEmpty() ) {
       createReminder( mCalendar->incidence( uid ), dt );
-    config.deleteGroup();
+    }
+    delete incGroup;
   }
-  config.changeGroup( "General" );
-  if (numReminders) {
-     config.writeEntry( "Reminders", 0 );
-     config.sync();
+  if ( numReminders ) {
+     genGroup.writeEntry( "Reminders", 0 );
+     genGroup.sync();
   }
 
   checkAlarms();
@@ -107,18 +105,21 @@ void KOAlarmClient::checkAlarms()
 {
   KConfigGroup cfg( KGlobal::config(), "General" );
 
-  if ( !cfg.readEntry( "Enabled", true ) ) return;
+  if ( !cfg.readEntry( "Enabled", true ) ) {
+    return;
+  }
 
   QDateTime from = mLastChecked.addSecs( 1 );
   mLastChecked = QDateTime::currentDateTime();
 
-  kDebug(5891) <<"Check:" << from.toString() <<" -" << mLastChecked.toString();
+  kDebug(5891) << "Check:" << from.toString() << " -" << mLastChecked.toString();
 
-  QList<Alarm *> alarms = mCalendar->alarms( KDateTime( from, KDateTime::LocalZone ), KDateTime( mLastChecked, KDateTime::LocalZone ) );
+  QList<Alarm *>alarms = mCalendar->alarms( KDateTime( from, KDateTime::LocalZone ),
+                                            KDateTime( mLastChecked, KDateTime::LocalZone ) );
 
   QList<Alarm *>::ConstIterator it;
-  for( it = alarms.begin(); it != alarms.end(); ++it ) {
-    kDebug(5891) <<"REMINDER:" << (*it)->parent()->summary();
+  for ( it = alarms.begin(); it != alarms.end(); ++it ) {
+    kDebug(5891) << "REMINDER:" << (*it)->parent()->summary();
     Incidence *incidence = mCalendar->incidence( (*it)->parent()->uid() );
     createReminder( incidence, QDateTime::currentDateTime() );
   }
@@ -127,8 +128,9 @@ void KOAlarmClient::checkAlarms()
 void KOAlarmClient::createReminder( KCal::Incidence *incidence,
                                     const QDateTime &dt )
 {
-  if ( !incidence )
+  if ( !incidence ) {
     return;
+  }
 
   if ( !mDialog ) {
     mDialog = new AlarmDialog();
@@ -152,18 +154,18 @@ void KOAlarmClient::slotQuit()
 
 void KOAlarmClient::saveLastCheckTime()
 {
-  KConfigGroup cg( KGlobal::config(), "Alarms");
+  KConfigGroup cg( KGlobal::config(), "Alarms" );
   cg.writeEntry( "CalendarsLastChecked", mLastChecked );
   KGlobal::config()->sync();
 }
 
 void KOAlarmClient::quit()
 {
-  kDebug(5890) <<"KOAlarmClient::quit()";
+  kDebug();
   kapp->quit();
 }
 
-bool KOAlarmClient::commitData( QSessionManager& )
+bool KOAlarmClient::commitData( QSessionManager & )
 {
   emit saveAllSignal();
   saveLastCheckTime();
@@ -182,7 +184,7 @@ void KOAlarmClient::dumpDebug()
 
   QDateTime lastChecked = cfg.readEntry( "CalendarsLastChecked", QDateTime() );
 
-  kDebug(5890) <<"Last Check:" << lastChecked;
+  kDebug() << "Last Check:" << lastChecked;
 }
 
 QStringList KOAlarmClient::dumpAlarms()
@@ -193,15 +195,14 @@ QStringList KOAlarmClient::dumpAlarms()
 
   QStringList lst;
   // Don't translate, this is for debugging purposes.
-  lst << QString("AlarmDeamon::dumpAlarms() from ") + start.toString()+ " to " +
+  lst << QString( "AlarmDeamon::dumpAlarms() from " ) + start.toString() + " to " +
          end.toString();
 
-  QList<Alarm*> alarms = mCalendar->alarms( start, end );
-  QList<Alarm*>::ConstIterator it;
-  for( it = alarms.begin(); it != alarms.end(); ++it ) {
+  QList<Alarm *> alarms = mCalendar->alarms( start, end );
+  QList<Alarm *>::ConstIterator it;
+  for ( it = alarms.begin(); it != alarms.end(); ++it ) {
     Alarm *a = *it;
-    lst << QString("  ") + a->parent()->summary() + " ("
-              + a->time().toString() + ')';
+    lst << QString( "  " ) + a->parent()->summary() + " (" + a->time().toString() + ')';
   }
 
   return lst;

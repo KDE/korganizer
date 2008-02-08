@@ -1,3 +1,5 @@
+remove_definitions(-DKDE_DEFAULT_DEBUG_AREA=5850) #remove korganizer debug area
+add_definitions(-DKDE_DEFAULT_DEBUG_AREA=5890)
 
 add_subdirectory( pixmaps ) 
 add_subdirectory( tests ) 

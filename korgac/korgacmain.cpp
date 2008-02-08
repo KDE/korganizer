@@ -1,28 +1,28 @@
 /*
-    This file is part of the KOrganizer alarm client.
+  This file is part of the KOrganizer alarm client.
 
-    Copyright (c) 2003 Cornelius Schumacher <schumacher@kde.org>
+  Copyright (c) 2003 Cornelius Schumacher <schumacher@kde.org>
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-    GNU General Public License for more details.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-    As a special exception, permission is given to link this program
-    with any edition of Qt, and distribute the resulting executable,
-    without including the source code for Qt in the source distribution.
+  As a special exception, permission is given to link this program
+  with any edition of Qt, and distribute the resulting executable,
+  without including the source code for Qt in the source distribution.
 */
 
-#include <stdlib.h>
+#include "koalarmclient.h"
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -30,16 +30,18 @@
 #include <kaboutdata.h>
 #include <kuniqueapplication.h>
 
-#include "koalarmclient.h"
+#include <stdlib.h>
 
-class MyApp : public KUniqueApplication
+class ReminderDaemonApp : public KUniqueApplication
 {
   public:
-    MyApp() : mClient( 0 ) {}
+    ReminderDaemonApp() : mClient( 0 ) {}
     int newInstance()
     {
       // Check if we already have a running alarm daemon widget
-      if ( mClient ) return 0;
+      if ( mClient ) {
+        return 0;
+      }
 
       mClient = new KOAlarmClient;
 
@@ -50,21 +52,22 @@ class MyApp : public KUniqueApplication
     KOAlarmClient *mClient;
 };
 
-
 static const char korgacVersion[] = "0.9";
 
 int main( int argc, char **argv )
 {
   KLocale::setMainCatalog( "korganizer" );
-  KAboutData aboutData( "korgac", 0, ki18n("KOrganizer Reminder Daemon"),
-                        korgacVersion, ki18n("KOrganizer Reminder Daemon"),
+  KAboutData aboutData( "korgac", 0, ki18n( "KOrganizer Reminder Daemon" ),
+                        korgacVersion, ki18n( "KOrganizer Reminder Daemon" ),
                         KAboutData::License_GPL,
-                        ki18n("(c) 2003 Cornelius Schumacher"),
+                        ki18n( "(c) 2003 Cornelius Schumacher" ),
                         KLocalizedString(), "http://pim.kde.org" );
-  aboutData.addAuthor( ki18n("Cornelius Schumacher"), ki18n("Maintainer"),
+  aboutData.addAuthor( ki18n( "Cornelius Schumacher" ), ki18n( "Former Maintainer" ),
                        "schumacher@kde.org" );
-  aboutData.addAuthor( ki18n("Reinhold Kainhofer"), ki18n("Maintainer"),
+  aboutData.addAuthor( ki18n( "Reinhold Kainhofer" ), ki18n ( "Former Maintainer" ),
                        "kainhofer@kde.org" );
+  aboutData.addAuthor( ki18n( "Allen Winter" ),ki18n( "Janitorial Staff" ),
+                       "winter@kde.org" );
 
   KCmdLineArgs::init( argc, argv, &aboutData );
 
@@ -72,9 +75,11 @@ int main( int argc, char **argv )
   KCmdLineArgs::addCmdLineOptions( options );
   KUniqueApplication::addCmdLineOptions();
 
-  if ( !MyApp::start() ) exit( 0 );
+  if ( !ReminderDaemonApp::start() ) {
+    exit( 0 );
+  }
 
-  MyApp app;
+  ReminderDaemonApp app;
   app.disableSessionManagement();
 
   return app.exec();

@@ -96,7 +96,7 @@ AlarmDockWindow::AlarmDockWindow()
   const char *quitName = KStandardAction::name( KStandardAction::Quit );
   QAction *quit = ac->action( quitName );
   if ( !quit ) {
-    kDebug(5890) << "No Quit standard action.";
+    kDebug() << "No Quit standard action.";
   } else {
     quit->disconnect( SIGNAL(triggered(bool)), this, SLOT(maybeQuit()) );
     connect( quit, SIGNAL(activated()), SLOT(slotQuit()) );
@@ -126,7 +126,7 @@ void AlarmDockWindow::slotUpdate( int reminders )
 
 void AlarmDockWindow::toggleAlarmsEnabled()
 {
-  kDebug(5890) << "AlarmDockWindow::toggleAlarmsEnabled()";
+  kDebug();
 
   KConfigGroup config( KGlobal::config(), "General" );
 
