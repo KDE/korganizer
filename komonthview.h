@@ -3,6 +3,7 @@
 
   Copyright (c) 2000,2001 Cornelius Schumacher <schumacher@kde.org>
   Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+  Copyright (C) 2008      Thomas Thrainer <tom_t@gmx.at>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -37,16 +38,28 @@
 #include <QPixmap>
 #include <QResizeEvent>
 
-class KNoScrollListBox: public QListWidget
+class CaptureClickListBox: public QListWidget
 {
   Q_OBJECT
   public:
-    explicit KNoScrollListBox( QWidget *parent=0 );
-    ~KNoScrollListBox() {}
+    explicit CaptureClickListBox( QWidget *parent=0 );
+    ~CaptureClickListBox() {}
 
-    void setBackground( bool primary, bool workday );
+  protected:
+    virtual void mousePressEvent( QMouseEvent * );
+
+  signals:
+    /** Emitted when the list box is clicked anywhere.
+     * 
+     *  This signal is not only emitted when the user
+     *  clicks on an item like clicked() but also when
+     *  only the backgroud is clicked.
+     *  clicked() is emitted separately.
+    */
+    void listBoxPressed();
 };
 
+/** This class represents one item in the list of events of a day */
 class MonthViewItem: public QListWidgetItem
 {
   public:
@@ -69,13 +82,13 @@ class MonthViewItem: public QListWidgetItem
 
     void setResourceColor( QColor &color ) { mResourceColor = color; }
     QColor &resourceColor() { return mResourceColor; }
+
+    /** Update the items appearance (icons and colors) */
     void drawIt();
 
   protected:
     virtual int height( const QListWidget * ) const;
     virtual int width( const QListWidget * ) const;
-    //Color of the resource
-    QColor mResourceColor;
 
   private:
     bool mEvent;
@@ -96,6 +109,9 @@ class MonthViewItem: public QListWidgetItem
     QPixmap mReplyPixmap;
     QPixmap mHolidayPixmap;
 
+    //Color of the resource, overrides the palette color if valid.
+    QColor mResourceColor;
+    //The palette to draw the item. The category color is in there.
     QPalette mPalette;
     KDateTime mDateTime;
 
@@ -111,6 +127,15 @@ class KOMonthView;
 class MonthViewCell : public QWidget
 {
   Q_OBJECT
+  Q_PROPERTY( QDate date READ date WRITE setDate )
+  Q_PROPERTY( bool evenMonth READ isEvenMonth )
+  Q_PROPERTY( bool firstDay READ isFirstDay )
+  Q_PROPERTY( bool today READ isToday )
+  Q_PROPERTY( bool workday READ isWorkday )
+  Q_PROPERTY( bool holiday READ holiday WRITE setHoliday )
+  Q_PROPERTY( QString holidayString READ holidayString WRITE setHolidayString )
+  Q_PROPERTY( bool selected READ isSelected WRITE setSelected )
+      
   public:
     explicit MonthViewCell( KOMonthView * );
 
@@ -118,26 +143,27 @@ class MonthViewCell : public QWidget
     void setDate( const QDate & );
 
     /** @return Date of cell */
-    QDate date() const;
+    QDate date() const { return mDate; }
 
-    /**
-      Set this cell as primary if @p primary is true. A primary cell belongs
-      to the current month. A non-primary cell belongs to the month before or
-      after the current month.
-      @param primary If true, the cell will be set as primary. Else it will be
-      set as non-primary.
-     */
-    void setPrimary( bool primary );
+    /** @return true if this cell is in an even month */
+    bool isEvenMonth() const { return mEvenMonth; }
 
-    /**
-       @return True if this cell is primary, else false.
-    */
-    bool isPrimary() const;
-
+    /** @return true if this cell is the first day of the month */
+    bool isFirstDay() const { return mFirstDay; }
+    
+    /** @return true if this cell's date is today */
+    bool isToday() const { return mToday; }
+    
+    /** @return true if this cell is a workday */
+    bool isWorkday() const { return mWorkday; }
+    
     /** Make this cell show as a holiday
       @param isHoliday Whether this day is a holiday or not
     */
     void setHoliday( bool isHoliday );
+
+    /** @return true if this cell represents a holiday */
+    bool holiday() const { return mHoliday; }
 
     /**
       Sets the holiday name to this cell. This will not call
@@ -146,6 +172,22 @@ class MonthViewCell : public QWidget
     */
     void setHolidayString( const QString &name );
 
+    /** @return The current holiday string */
+    QString holidayString() const { return mHolidayString; }
+
+    /**
+       Sets the selection status of the cell
+       @param selected Whether this day is selected of not
+    */
+    void setSelected( bool selected );
+
+    /** @return true if this cell is selected */
+    bool isSelected() { return mSelected; }
+
+    /**
+       Initializes the day to only display the current
+       holiday if set.
+     */
     void updateCell();
 
     /** Adds an incidence to the cell.
@@ -156,20 +198,22 @@ class MonthViewCell : public QWidget
     */
     void addIncidence( Incidence *, int multDay=0 );
 
-    /** Removes an incidence from the cell.
-        @return True if successful, false if deletion failed
-       (e.g. when given incidence doesn't exist in the cell.
-    */
+    /** Removes an incidence from the cell. */
     void removeIncidence( Incidence * );
 
+    /**
+       Forces reapplying the stylesheet for this day.
+
+       This method should be called whenever the status of the cell changes
+       (selected, date, holiday, etc.)
+     */
+    void updateStyles();
     void updateConfig();
 
-    void enableScrollBars( bool );
-
+    /** @return A pointer to the selected incidence or 0 is no selection */
     Incidence *selectedIncidence();
+    /** @return The date of the selected incidence of QDate() if no selection */
     QDate selectedIncidenceDate();
-
-    void deselect();
 
     void setCalendar( Calendar *cal ) { mCalendar = cal; }
   signals:
@@ -182,11 +226,14 @@ class MonthViewCell : public QWidget
     void newEventSignal( const QDate & );
 
   public slots:
+    /** Set this cell as selected. Calls setSelected( true ) */
     void select();
 
   protected:
-    void setFrameWidth();
+    void enableScrollBars( bool );
     void resizeEvent( QResizeEvent * );
+    virtual void mousePressEvent( QMouseEvent * );
+    virtual void paintEvent( QPaintEvent * );
 
   protected slots:
     void defaultAction( QListWidgetItem * );
@@ -195,23 +242,26 @@ class MonthViewCell : public QWidget
   private:
     class CreateItemVisitor;
     KOMonthView *mMonthView;
-  // We need the calendar for paint the ResourceColor
+    // We need the calendar to paint the ResourceColor
     Calendar *mCalendar;
 
     QDate mDate;
-    bool mPrimary;
+    bool mEvenMonth;
+    bool mFirstDay;
+    bool mToday;
+    bool mWorkday;
     bool mHoliday;
+    bool mSelected;
     QString mHolidayString;
 
     QLabel *mLabel;
-    KNoScrollListBox *mItemList;
+    CaptureClickListBox *mItemList;
 
     QSize mLabelSize;
-//    QPalette mOriginalPalette;
-    QPalette mHolidayPalette;
-    QPalette mStandardPalette;
-    QPalette mTodayPalette;
 };
+
+// forward declaration for KOMonthView
+class QGridLayout;
 
 /**
   The class KOMonthView represents the monthly view in KOrganizer.
@@ -248,23 +298,39 @@ class KOMonthView: public KOEventView
     virtual void showIncidences( const Incidence::List &incidenceList );
 
     void changeIncidenceDisplay( Incidence *, int );
-    void changeIncidenceDisplayAdded( Incidence * );
-
-    void clearSelection();
+    void changeIncidenceDisplayAdded( Incidence *,
+                                      int start = -1, int end = -1 );
 
     void showEventContextMenu( Incidence *, const QDate & );
     void showGeneralContextMenu();
 
+    /** Called by MonthViewCell to indicate a new selection. */
     void setSelectedCell( MonthViewCell * );
+    /** Deselects all selected cells. */
+    void clearSelection();
 
   protected slots:
     void processSelectionChange();
+    void moveBackMonth();
+    void moveBackWeek();
+    void moveFwdWeek();
+    void moveFwdMonth();
 
   protected:
     void resizeEvent( QResizeEvent * );
 
     void viewChanged();
     void updateDayLabels();
+
+    void swapCells( int srcRow, int srcCol, int dstRow, int dstCol );
+    void moveStartDate( int weeks, int months );
+    void setStartDate( const QDate &start );
+
+    void updateView( int start, int end );
+    void updateCells( int start, int end );
+
+    virtual void wheelEvent( QWheelEvent *event );
+    virtual void keyPressEvent( QKeyEvent *event );
 
   private:
     class GetDateVisitor;
@@ -274,16 +340,19 @@ class KOMonthView: public KOEventView
     int mWeekStartDay;
 
     QVector<MonthViewCell*> mCells;
-    QMap<QDate, MonthViewCell *>mDateToCell;
+    MonthViewCell *getCell( const QDate &date );
+    
     QVector<QLabel*> mDayLabels;
 
     bool mShortDayLabels;
     int mWidthLongDayLabel;
 
     QDate mStartDate;
+
+    /* TODO: add support for selecting a range of dates, not only one */
     QDate mSelectedDate;
 
-    MonthViewCell *mSelectedCell;
+    QGridLayout *mDayLayout;
 
     KOEventPopupMenu *mEventContextMenu;
     KHBox *mTopBox;

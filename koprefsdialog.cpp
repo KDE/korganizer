@@ -571,11 +571,14 @@ class KOPrefsDialogViews : public KPrefsModule
       monthLayout->addWidget(
         addWidBool( KOPrefs::instance()->enableMonthScrollItem() )->checkBox() );
       monthLayout->addWidget(
+        addWidBool( KOPrefs::instance()->enableMonthItemIconsItem() )->checkBox() );
+      monthLayout->addWidget(
         addWidBool( KOPrefs::instance()->fullViewMonthItem() )->checkBox() );
       monthLayout->addWidget(
         addWidBool( KOPrefs::instance()->monthViewUsesCategoryColorItem() )->checkBox() );
       monthLayout->addWidget(
         addWidBool( KOPrefs::instance()->monthViewUsesResourceColorItem() )->checkBox() );
+
       monthLayout->addStretch( 1 );
 
       QFrame *todoFrame = new QFrame( this );
