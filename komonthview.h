@@ -50,7 +50,7 @@ class CaptureClickListBox: public QListWidget
 
   signals:
     /** Emitted when the list box is clicked anywhere.
-     * 
+     *
      *  This signal is not only emitted when the user
      *  clicks on an item like clicked() but also when
      *  only the backgroud is clicked.
@@ -135,7 +135,7 @@ class MonthViewCell : public QWidget
   Q_PROPERTY( bool holiday READ holiday WRITE setHoliday )
   Q_PROPERTY( QString holidayString READ holidayString WRITE setHolidayString )
   Q_PROPERTY( bool selected READ isSelected WRITE setSelected )
-      
+
   public:
     explicit MonthViewCell( KOMonthView * );
 
@@ -150,13 +150,13 @@ class MonthViewCell : public QWidget
 
     /** @return true if this cell is the first day of the month */
     bool isFirstDay() const { return mFirstDay; }
-    
+
     /** @return true if this cell's date is today */
     bool isToday() const { return mToday; }
-    
+
     /** @return true if this cell is a workday */
     bool isWorkday() const { return mWorkday; }
-    
+
     /** Make this cell show as a holiday
       @param isHoliday Whether this day is a holiday or not
     */
@@ -341,7 +341,7 @@ class KOMonthView: public KOEventView
 
     QVector<MonthViewCell*> mCells;
     MonthViewCell *getCell( const QDate &date );
-    
+
     QVector<QLabel*> mDayLabels;
 
     bool mShortDayLabels;
