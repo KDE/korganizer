@@ -74,7 +74,8 @@ KOPrefs::KOPrefs() :
 
   mDefaultMonthViewFont = KGlobalSettings::generalFont();
   // make it a bit smaller
-  mDefaultMonthViewFont.setPointSize( mDefaultMonthViewFont.pointSize() - 2 );
+  mDefaultMonthViewFont.setPointSize(
+    qMax( mDefaultMonthViewFont.pointSize() - 2, 6 ) );
 
   KConfigSkeleton::setCurrentGroup( "General" );
 
@@ -118,7 +119,7 @@ void KOPrefs::usrSetDefaults()
   fillMailDefaults();
 
   setAgendaTimeLabelsFont( mDefaultAgendaTimeLabelsFont );
-  mMonthViewFont = mDefaultMonthViewFont;
+  setMonthViewFont( mDefaultMonthViewFont );
 
   setTimeZoneDefault();
 
