@@ -59,7 +59,7 @@ KOTodoListViewQuickSearch::KOTodoListViewQuickSearch( QWidget *parent,
   QHBoxLayout *layout = new QHBoxLayout( this );
 
   mQuickSearchLine = new KOTodoListViewQuickSearchLine( this, listViews );
-  mQuickSearchLine->setClickMessage( i18nc( "@label in QuickSearchLine", "Search") );
+  mQuickSearchLine->setClickMessage( i18nc( "@label in QuickSearchLine", "Search" ) );
   layout->addWidget( mQuickSearchLine );
   layout->setContentsMargins( 0, 0, 0, 0 );
 
@@ -69,8 +69,8 @@ KOTodoListViewQuickSearch::KOTodoListViewQuickSearch( QWidget *parent,
   layout->addWidget( mCategoryCombo );
 
   mCategoryCombo->setCurrentIndex( 0 );
-  connect( mCategoryCombo, SIGNAL ( activated( int ) ),
-           this, SLOT( slotCategoryChanged( int ) ) );
+  connect( mCategoryCombo, SIGNAL(activated(int)),
+           this, SLOT(slotCategoryChanged(int)) );
 
 }
 
@@ -78,19 +78,19 @@ KOTodoListViewQuickSearch::~KOTodoListViewQuickSearch()
 {
 }
 
-bool KOTodoListViewQuickSearchLine::itemMatches(const Q3ListViewItem *item,
-                                                const QString &s)
-const
+bool KOTodoListViewQuickSearchLine::itemMatches( const Q3ListViewItem *item,
+                                                 const QString &s ) const
 {
   while ( item ) {
     const Todo *todo = static_cast<const KOTodoViewItem *>( item )->todo();
     if ( ( mCategory.isNull() ||
            todo->categories().indexOf( QRegExp( QString( "^" ) +
-           QRegExp::escape( mCategory ) ) ) >= 0 ) &&
-           K3ListViewSearchLine::itemMatches(item, s) )
+                                                QRegExp::escape( mCategory ) ) ) >= 0 ) &&
+         K3ListViewSearchLine::itemMatches( item, s ) ) {
       return true;
-    else
+    } else {
       item = item->parent(); // children of passed items also pass
+    }
   }
   return false;
 }
@@ -105,17 +105,18 @@ void KOTodoListViewQuickSearch::reset()
 
 void KOTodoListViewQuickSearch::slotCategoryChanged( int index )
 {
-  if ( index == 0 )
+  if ( index == 0 ) {
     mQuickSearchLine->setCategory( QString() );
-  else
+  } else {
     mQuickSearchLine->setCategory( categoryList[index - 1] );
+  }
   mQuickSearchLine->updateSearch();
 }
 
 void KOTodoListViewQuickSearch::fillCategories()
 {
   QString current = mCategoryCombo->currentIndex() > 0 ?
-    categoryList[mCategoryCombo->currentIndex() - 1] : QString();
+                    categoryList[mCategoryCombo->currentIndex() - 1] : QString();
   QStringList categories;
 
   CalFilter *filter = mCalendar->filter();
@@ -130,14 +131,16 @@ void KOTodoListViewQuickSearch::fillCategories()
 
     QStringList::Iterator it = categories.begin();
     QStringList::Iterator jt = filterCategories.begin();
-    while ( it != categories.end() && jt != filterCategories.end() )
+    while ( it != categories.end() && jt != filterCategories.end() ) {
       if ( *it == *jt ) {
         it = categories.erase( it );
         jt++;
-      } else if ( *it < *jt )
+      } else if ( *it < *jt ) {
         it++;
-      else if ( *it > *jt )
+      } else if ( *it > *jt ) {
         jt++;
+      }
+    }
   }
 
   CategoryHierarchyReaderQComboBox( mCategoryCombo ).read( categories );
@@ -149,13 +152,13 @@ void KOTodoListViewQuickSearch::fillCategories()
   if ( current.isNull() ) {
     mCategoryCombo->setCurrentIndex( 0 );
   } else {
-    for ( int i = 0; i < categoryList.count(); ++i )
+    for ( int i = 0; i < categoryList.count(); ++i ) {
       if ( categoryList[i] == current ) {
         mCategoryCombo->setCurrentIndex( i + 1 );
         break;
       }
+    }
   }
-
 }
 
 void KOTodoListViewQuickSearch::setCalendar( Calendar *calendar )
@@ -191,9 +194,9 @@ void KOTodoListViewQuickSearch::hideEvent( QHideEvent *e )
 }
 
 KOTodoListViewQuickSearchContainer::KOTodoListViewQuickSearchContainer(
-                               QWidget *parent,
-                               QList<K3ListView*> listViews,
-                               Calendar *calendar)
+  QWidget *parent,
+  QList<K3ListView*> listViews,
+  Calendar *calendar )
   : QWidget( parent ),
     mQuickSearch( new KOTodoListViewQuickSearch( this, listViews, calendar ) )
 {
@@ -226,16 +229,15 @@ QSize KOTodoListViewQuickSearchContainer::minimumSizeHint() const
                 mQuickSearch->minimumSizeHint().height() );
 }
 
-KOTodoListViewQuickSearch *KOTodoListViewQuickSearchContainer::quickSearch()
-                                                                          const
+KOTodoListViewQuickSearch *KOTodoListViewQuickSearchContainer::quickSearch() const
 {
   return mQuickSearch;
 }
 
-void KOTodoListViewQuickSearchContainer::resizeEvent ( QResizeEvent * /*e*/ )
+void KOTodoListViewQuickSearchContainer::resizeEvent ( QResizeEvent *e )
 {
+  Q_UNUSED( e );
   mQuickSearch->setGeometry( QRect( QPoint( 0, 0 ), size() ) );
 }
-
 
 #include "kotodoviewquicksearch.moc"

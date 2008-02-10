@@ -27,7 +27,6 @@
 #define KOTODOVIEWQUICKSEARCH_H
 
 #include <k3listviewsearchline.h>
-#include <QToolBar>
 #include <QVector>
 
 class KAction;
@@ -36,8 +35,8 @@ class KComboBox;
 class QResizeEvent;
 class QLabel;
 class QShowEvent;
-namespace KCal { class Calendar; }
 
+namespace KCal { class Calendar; }
 using namespace KCal;
 
 class KOTodoListViewQuickSearchLine : public K3ListViewSearchLine
@@ -51,8 +50,9 @@ class KOTodoListViewQuickSearchLine : public K3ListViewSearchLine
 
     void setCategory( const QString &category ) { mCategory = category; }
     const QString &category() const { return mCategory; }
+
   protected:
-    virtual bool itemMatches(const Q3ListViewItem *item, const QString &s) const;
+    virtual bool itemMatches( const Q3ListViewItem *item, const QString &s ) const;
   private:
     QString mCategory;
 };
@@ -85,7 +85,7 @@ class KOTodoListViewQuickSearch : public QWidget
 
   private:
     /** Helper method for the filling of the category combo. */
-    void insertCategory(QString which);
+    void insertCategory( QString which );
     KComboBox *mCategoryCombo;
     QVector<QString> categoryList;
     Calendar *mCalendar;
@@ -98,8 +98,8 @@ class KOTodoListViewQuickSearchContainer : public QWidget
   Q_OBJECT
   public:
     KOTodoListViewQuickSearchContainer( QWidget *parent,
-                               QList<K3ListView*> listViews,
-                               Calendar *calendar);
+                                        QList<K3ListView*> listViews,
+                                        Calendar *calendar );
     virtual ~KOTodoListViewQuickSearchContainer();
 
     QSize sizeHint() const;
