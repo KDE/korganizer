@@ -46,7 +46,7 @@ bool UriHandler::process( const QString &uri )
 
   if ( uri.startsWith( KDEPIMPROTOCOL_EMAIL ) ) {
     // make sure kmail is running or the part is shown
-    KToolInvocation::startServiceByDesktopPath("kmail");
+    KToolInvocation::startServiceByDesktopPath( "kmail" );
 
     // parse string, show
     int colon = uri.indexOf( ':' );
@@ -54,45 +54,50 @@ bool UriHandler::process( const QString &uri )
     QString serialNumberStr = uri.mid( colon + 1 );
     serialNumberStr = serialNumberStr.left( serialNumberStr.indexOf( '/' ) );
 
-    org::kde::kmail::kmail kmail("org.kde.kmail", "/KMail", QDBusConnection::sessionBus());
+    org::kde::kmail::kmail kmail(
+      "org.kde.kmail", "/KMail", QDBusConnection::sessionBus() );
     kmail.showMail( serialNumberStr.toUInt(), QString() );
     return true;
   } else if ( uri.startsWith( "mailto:" ) ) {
     KToolInvocation::invokeMailer( uri.mid(7), QString() );
     return true;
   } else if ( uri.startsWith( KDEPIMPROTOCOL_CONTACT ) ) {
-    if (QDBusConnection::sessionBus().interface()->isServiceRegistered("org.kde.kaddressbook") ) {
-      kapp->updateRemoteUserTimestamp("org.kde.kaddressbook");
-      org::kde::KAddressbook::Core kaddressbook("org.kde.kaddressbook", "/KAddressBook", QDBusConnection::sessionBus());
-      kaddressbook.showContactEditor(uri.mid( ::qstrlen( KDEPIMPROTOCOL_CONTACT ) ) );
+    if ( QDBusConnection::sessionBus().interface()->isServiceRegistered(
+           "org.kde.kaddressbook" ) ) {
+      kapp->updateRemoteUserTimestamp( "org.kde.kaddressbook" );
+      org::kde::KAddressbook::Core kaddressbook(
+        "org.kde.kaddressbook", "/KAddressBook", QDBusConnection::sessionBus() );
+      kaddressbook.showContactEditor( uri.mid( ::qstrlen( KDEPIMPROTOCOL_CONTACT ) ) );
       return true;
     } else {
       /*
-        KaddressBook is not already running.  Pass it the UID of the contact via the command line while starting it - its neater.
+        KaddressBook is not already running.  Pass it the UID of the contact via
+        the command line while starting it - its neater.
         We start it without its main interface
       */
-      QString iconPath = KIconLoader::global()->iconPath( "go", KIconLoader::Small );
+      QString iconPath = KIconLoader::global()->iconPath( "view-pim-contacts", KIconLoader::Small );
       QString tmpStr = "kaddressbook --editor-only --uid ";
-      tmpStr += KShell::quoteArg( uri.mid( ::qstrlen( KDEPIMPROTOCOL_CONTACT ) )
-      );
+      tmpStr += KShell::quoteArg( uri.mid( ::qstrlen( KDEPIMPROTOCOL_CONTACT ) ) );
       KRun::runCommand( tmpStr, "KAddressBook", iconPath, 0 );
       return true;
     }
   } else if ( uri.startsWith( KDEPIMPROTOCOL_INCIDENCE ) ) {
     // make sure korganizer is running or the part is shown
-    KToolInvocation::startServiceByDesktopPath("korganizer");
+    KToolInvocation::startServiceByDesktopPath( "korganizer" );
 
     // we must work around KUrl breakage (it doesn't know about URNs)
     QString uid = KUrl::fromPercentEncoding( uri.toLatin1() ).mid( 11 );
-    OrgKdeKorganizerKorganizerInterface korganizerIface("org.kde.korganizer", "/Korganizer", QDBusConnection::sessionBus() );
+    OrgKdeKorganizerKorganizerInterface korganizerIface(
+      "org.kde.korganizer", "/Korganizer", QDBusConnection::sessionBus() );
 
     return korganizerIface.showIncidence( uid );
   } else if ( uri.startsWith( KDEPIMPROTOCOL_NEWSARTICLE ) ) {
     KToolInvocation::startServiceByDesktopPath( "knode" );
-    org::kde::knode knode("org.kde.knode", "/KNode", QDBusConnection::sessionBus());
-    knode.openURL(uri);
+    org::kde::knode knode(
+      "org.kde.knode", "/KNode", QDBusConnection::sessionBus() );
+    knode.openURL( uri );
   } else {  // no special URI, let KDE handle it
-    new KRun(KUrl( uri ),0);
+    new KRun( KUrl( uri ), 0 );
   }
 
   return false;
