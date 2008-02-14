@@ -1533,3 +1533,15 @@ bool KOEditorRecurrence::recurs()
 {
   return mEnabledCheck->isChecked();
 }
+
+
+KOEditorRecurrenceDialog::KOEditorRecurrenceDialog(QWidget * parent) :
+    KDialog( parent )
+{
+  setModal( false );
+  setCaption( i18n("Recurrence") );
+  setButtons( Ok );
+
+  mRecurrence = new KOEditorRecurrence( this );
+  setMainWidget( mRecurrence );
+}

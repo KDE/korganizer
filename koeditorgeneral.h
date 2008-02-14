@@ -44,9 +44,12 @@ class KComboBox;
 class KLineEdit;
 class KTextEdit;
 class KSqueezedTextLabel;
+class KUrl;
+class KOEditorAttachments;
 
 namespace KCal {
   class Incidence;
+class Calendar;
 }
 using namespace KCal;
 
@@ -73,18 +76,17 @@ class KOEditorGeneral : public QObject
     explicit KOEditorGeneral( QObject *parent=0 );
     virtual ~KOEditorGeneral();
 
-    void initHeader( QWidget *, QBoxLayout * );
+    void initHeader( QWidget *parent, QBoxLayout *topLayout );
     void initDescription( QWidget *, QBoxLayout * );
     void initSecrecy( QWidget *, QBoxLayout * );
-    void initCategories( QWidget *, QBoxLayout * );
     void initAlarm( QWidget *, QBoxLayout * );
+    void initAttachments(QWidget *,QBoxLayout *);
 
     /** Set widgets to default values */
     void setDefaults( bool allDay );
 
     /** Read event object and setup widgets accordingly */
-    void readIncidence( Incidence * );
-
+    void readIncidence( Incidence *event, Calendar *calendar );
     /** Write event settings to event object */
     void writeIncidence( Incidence * );
 
@@ -101,11 +103,16 @@ class KOEditorGeneral : public QObject
   public slots:
     void setCategories( const QStringList &categories );
     void selectCategories();
+    void addAttachments( const QStringList &attachments,
+                         const QStringList& mimeTypes = QStringList(),
+                         bool inlineAttachment = false );
+
 
   protected slots:
     void editAlarms();
     void updateAlarmWidgets();
     void updateDefaultAlarmTime();
+    void updateAttendeeSummary( int count );
     void toggleDescriptionBold();
     void toggleDescriptionItalic();
     void toggleDescriptionUnderline();
@@ -121,7 +128,7 @@ class KOEditorGeneral : public QObject
     void openCategoryDialog();
     void updateCategoryConfig();
     void focusReceivedSignal();
-
+    void openURL( const KUrl & );
   protected:
     Alarm *alarmFromSimplePage() const;
     void setAlignment( Qt::Alignment alignment );
@@ -129,6 +136,7 @@ class KOEditorGeneral : public QObject
 
     KLineEdit               *mSummaryEdit;
     KLineEdit               *mLocationEdit;
+    QLabel                  *mAttendeeSummaryLabel;
     QLabel                  *mAlarmBell;
     QStackedWidget          *mAlarmStack;
     QLabel                  *mAlarmInfoLabel;
@@ -151,6 +159,8 @@ class KOEditorGeneral : public QObject
     QPushButton             *mDescriptionUnorderedListButton;
     QPushButton             *mDescriptionOrderedListButton;
     QCheckBox               *mRichDescription;
+    KOEditorAttachments     *mAttachments;
+    QLabel                  *mResourceLabel;
 
     enum AlarmStackPages {
       SimpleAlarmPage,

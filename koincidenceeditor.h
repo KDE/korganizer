@@ -37,7 +37,7 @@ class EmbeddedURLPage;
 namespace KOrg { class IncidenceChangerBase; }
 
 class KOEditorDetails;
-class KOEditorAttachments;
+class KOAttendeeEditor;
 
 namespace KCal {
 class Calendar;
@@ -70,7 +70,7 @@ class KOIncidenceEditor : public KPageDialog
 
   public slots:
     /** Edit an existing todo. */
-    virtual void editIncidence(Incidence *) = 0;
+    virtual void editIncidence(Incidence *, Calendar *) = 0;
     virtual void setIncidenceChanger( IncidenceChangerBase *changer ) {
         mChanger = changer; }
     /** Initialize editor. This function creates the tab widgets. */
@@ -96,6 +96,10 @@ class KOIncidenceEditor : public KPageDialog
     void editCanceled( Incidence * );
 
     void deleteIncidenceSignal( Incidence * );
+    void signalAddAttachments( const QStringList &attachments,
+                               const QStringList& mimeTypes = QStringList(),
+                               bool inlineAttachment = false );
+
 
   protected slots:
     void slotApply();
@@ -115,7 +119,6 @@ class KOIncidenceEditor : public KPageDialog
     virtual void loadTemplate( CalendarLocal & ) = 0;
 
     void setupAttendeesTab();
-    void setupAttachmentsTab();
     void setupDesignerTabs( const QString &type );
 
     void saveAsTemplate( Incidence *, const QString &name );
@@ -141,7 +144,7 @@ class KOIncidenceEditor : public KPageDialog
     Calendar *mCalendar;
 
     KOEditorDetails *mDetails;
-    KOEditorAttachments *mAttachments;
+    KOAttendeeEditor *mAttendeeEditor;
     KOrg::IncidenceChangerBase *mChanger;
 
     QList<KPIM::DesignerFields*> mDesignerFields;

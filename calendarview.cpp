@@ -1953,7 +1953,7 @@ bool CalendarView::editIncidence( Incidence *incidence )
   connectIncidenceEditor( incidenceEditor );
 
   mDialogList.insert( incidence, incidenceEditor );
-  incidenceEditor->editIncidence( incidence );
+  incidenceEditor->editIncidence( incidence, mCalendar );
   incidenceEditor->show();
   return true;
 }

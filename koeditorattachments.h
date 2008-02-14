@@ -50,6 +50,10 @@ class K3IconView;
 class KMenu;
 class KUrlRequester;
 class QCheckBox;
+class AttachmentIconView;
+class QMimeSource;
+class QPushButton;
+class KAction;
 
 namespace KIO {
 class Job;
@@ -115,9 +119,14 @@ class KOEditorAttachments : public QWidget
     void dragEnterEvent( QDragEnterEvent *event );
     void dropEvent( QDropEvent *event );
     void slotItemRenamed ( Q3IconViewItem * item, const QString & text );
-    void showAttachmentContextMenu( Q3IconViewItem *item, const QPoint &pos );
     void dropped ( QDropEvent * e, const Q3ValueList<Q3IconDragItem> & lst );
     void copyComplete( KJob *job );
+    void slotCopy();
+    void slotCut();
+    void slotPaste();
+    void selectionChanged();
+    void contextMenu( Q3IconViewItem* item, const QPoint &pos );
+
   protected:
     QString generateLocalAttachmentPath( const QString &filename,
                                          const KMimeType::Ptr mimeType ) const;
@@ -126,11 +135,16 @@ class KOEditorAttachments : public QWidget
     void openURL( const KUrl &url );
 
   private:
-    K3IconView *mAttachments;
-    KMenu *mPopupMenu, *mPopupNew;
+    void handlePasteOrDrop( const QMimeData* mimeData );
+
+    AttachmentIconView *mAttachments;
+    KMenu *mPopupMenu;
     QString mUid; // used only to generate attachments' filenames
     KUrl::List mDeferredDelete;
     KUrl::List mDeferredCopy;
+    QPushButton *mRemoveBtn;
+    KAction *mOpenAction, *mCopyAction, *mCutAction,
+            *mDeleteAction, *mEditAction;
 };
 
 #endif

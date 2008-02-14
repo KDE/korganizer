@@ -25,6 +25,7 @@
 #define _KOEDITORDETAILS_H
 
 #include "customlistviewitem.h"
+#include "koattendeeeditor.h"
 
 #include <k3listview.h>
 #include <kvbox.h>
@@ -35,6 +36,8 @@
 #include <QEvent>
 #include <QDropEvent>
 #include <QList>
+
+#include <kcal/attendee.h>
 
 class QPushButton;
 class QCheckBox;
@@ -51,10 +54,6 @@ using namespace KCal;
 
 namespace KPIM {
   class AddresseeLineEdit;
-}
-
-namespace KABC {
-    class Addressee;
 }
 
 typedef CustomListViewItem<KCal::Attendee *> AttendeeListItem;
@@ -82,7 +81,7 @@ class KOAttendeeListView : public K3ListView
     void dropped( Attendee * );
 };
 
-class KOEditorDetails : public QWidget
+class KOEditorDetails : public KOAttendeeEditor
 {
   Q_OBJECT
   public:
@@ -98,64 +97,29 @@ class KOEditorDetails : public QWidget
     /** Write settings to incidence */
     void writeIncidence( Incidence * );
 
-    /** return a clone of the incidence with attendees to be canceled */
-    void cancelAttendeeIncidence( Incidence * );
-
     /** Check if the input is valid. */
     bool validateInput();
-
-    /** Set the gantt view */
-    void setFreeBusyWidget( KOEditorFreeBusy * );
 
     /** Returns whether at least one attendee was added */
     bool hasAttendees();
 
-  public slots:
-    void insertAttendee( Attendee * );
-
-   /** Reads values from a KABC::Addressee and inserts a new Attendee
-     * item into the listview with those items. Used when adding attendees
-     * from the addressbook and expanding distribution lists. 
-     * The optional Attendee parameter can be used to pass in default values
-     * to be used by the new Attendee. */
-    void insertAttendeeFromAddressee( const KABC::Addressee& , const Attendee* at=0 );
+    void insertAttendee( Attendee*, bool goodEmailAddress = true );
 
   protected slots:
-    void addNewAttendee();
     void removeAttendee();
-    void openAddressBook();
-    void updateAttendeeInput();
-    void clearAttendeeInput();
-    void fillAttendeeInput( AttendeeListItem * );
-    void updateAttendeeItem();
-    void setEnableAttendeeInput( bool );
+    void slotInsertAttendee( Attendee *a );
 
   protected:
-    virtual bool eventFilter( QObject *, QEvent * );
-    void fillOrganizerCombo();
+    void changeStatusForMe( Attendee::PartStat status );
 
-    void insertAttendee( Attendee *, bool goodEmailAddress );
+    KCal::Attendee* currentAttendee() const;
+    void updateCurrentItem();
 
   private:
     bool mDisableItemUpdate;
 
-    KPIM::AddresseeLineEdit *mNameEdit;
-    QString mUid;
     K3ListView *mListView;
-    KComboBox *mRoleCombo;
-    QCheckBox *mRsvpButton;
-    KComboBox *mStatusCombo;
-    KHBox *mOrganizerHBox;
-    KComboBox *mOrganizerCombo; // either we organize it (combo shown)
-    QLabel *mOrganizerLabel; // or someone else does (just a label is shown)
-
-    QPushButton *mAddButton;
-    QPushButton *mRemoveButton;
-    QPushButton *mAddressBookButton;
-
-    QList<Attendee *> mdelAttendees;
-
-    KOEditorFreeBusy *mFreeBusy;
+//     KOEditorFreeBusy *mFreeBusy;
 };
 
 #endif

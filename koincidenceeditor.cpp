@@ -26,7 +26,6 @@
 #include "koprefs.h"
 #include "koglobals.h"
 #include "koeditordetails.h"
-#include "koeditorattachments.h"
 #include "koeditoralarms.h"
 #include "urihandler.h"
 #include "templatemanagementdialog.h"
@@ -57,7 +56,7 @@
 KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
                                       Calendar *calendar, QWidget *parent )
   : KPageDialog( parent ),
-    mDetails( 0 ), mAttachments( 0 ), mIsCounter( false )
+    mAttendeeEditor( 0 ), mIsCounter( false )
 {
   setFaceType( KPageDialog::Tabbed );
   setCaption( caption );
@@ -101,38 +100,17 @@ void KOIncidenceEditor::setupAttendeesTab()
 
   QBoxLayout *topLayout = new QVBoxLayout( topFrame );
 
-  mDetails = new KOEditorDetails( spacingHint(), topFrame );
+  mAttendeeEditor = mDetails = new KOEditorDetails( spacingHint(), topFrame );
   topLayout->addWidget( mDetails );
-}
-
-void KOIncidenceEditor::setupAttachmentsTab()
-{
-  QFrame *topFrame = new QFrame( this );
-  addPage( topFrame, i18n("Attach&ments") );
-  topFrame->setWhatsThis(
-                   i18n("The Attachments tab allows you to add or remove "
-                        "files, emails, contacts, and other items "
-                        "associated with this event or to-do.") );
-
-  QBoxLayout *topLayout = new QVBoxLayout( topFrame );
-
-  mAttachments = new KOEditorAttachments( spacingHint(), topFrame );
-  connect( mAttachments, SIGNAL( openURL( const KUrl & ) ) ,
-           this, SLOT( openURL( const KUrl & ) ) );
-  topLayout->addWidget( mAttachments );
 }
 
 void KOIncidenceEditor::slotApply()
 {
-  if ( mAttachments )
-    mAttachments->applyChanges();
   processInput();
 }
 
 void KOIncidenceEditor::slotOk()
 {
-  if ( mAttachments )
-    mAttachments->applyChanges();
   // "this" can be deleted before processInput() returns (processInput() opens
   // a non-modal dialog when Kolab is used). So accept should only be executed
   // when "this" is still valid
@@ -157,7 +135,7 @@ void KOIncidenceEditor::cancelRemovedAttendees( Incidence *incidence )
   if ( KOPrefs::instance()->thatIsMe( incidence->organizer().email() ) ) {
     Incidence *inc = incidence->clone();
     inc->registerObserver( 0 );
-    mDetails->cancelAttendeeIncidence( inc );
+    mAttendeeEditor->cancelAttendeeEvent( inc );
     if ( inc->attendeeCount() > 0 ) {
       emit deleteAttendee( inc );
     }
@@ -392,29 +370,7 @@ void KOIncidenceEditor::addAttachments( const QStringList &attachments,
                                         const QStringList &mimeTypes,
                                         bool inlineAttachments )
 {
-  QStringList::ConstIterator it;
-  int i = 0;
-  for ( it = attachments.begin(); it != attachments.end(); ++it, ++i ) {
-    QString mimeType;
-    if ( mimeTypes.count() > i )
-      mimeType = mimeTypes[ i ];
-    if ( !inlineAttachments ) {
-      mAttachments->addAttachment( *it, mimeType, *it );
-    } else {
-      QString tmpFile;
-      if ( KIO::NetAccess::download( *it, tmpFile, this ) ) {
-        QFile f( tmpFile );
-        if ( !f.open( QFile::ReadOnly ) )
-          return;
-        QByteArray data = f.readAll();
-        f.close();
-        if ( mimeType.isEmpty() )
-          mimeType = KIO::NetAccess::mimetype( *it, this );
-        mAttachments->addAttachment( data.toBase64(), mimeType, f.fileName() );
-        KIO::NetAccess::removeTempFile( tmpFile );
-      }
-    }
-  }
+  emit signalAddAttachments( attachments, mimeTypes, inlineAttachments );
 }
 
 void KOIncidenceEditor::addAttendees( const QStringList &attendees )
@@ -423,7 +379,7 @@ void KOIncidenceEditor::addAttendees( const QStringList &attendees )
   for ( it = attendees.begin(); it != attendees.end(); ++it ) {
     QString name, email;
     KABC::Addressee::parseEmailAddress( *it, name, email );
-    mDetails->insertAttendee( new Attendee( name, email ) );
+    mAttendeeEditor->insertAttendee( new Attendee( name, email ) );
   }
 }
 

@@ -29,6 +29,7 @@
 
 class KOEditorGeneralEvent;
 class KOEditorRecurrence;
+class KOEditorRecurrenceDialog;
 class KOEditorFreeBusy;
 
 class KOEditorFreeBusy;
@@ -74,7 +75,7 @@ class KOEventEditor : public KOIncidenceEditor
     /**
       Edit an existing event.
     */
-    void editIncidence( Incidence * );
+    void editIncidence( Incidence *incidence, Calendar *calendar );
 
     /**
       Set widgets to the given date/time values
@@ -89,8 +90,7 @@ class KOEventEditor : public KOIncidenceEditor
       @param tmpl If true, the event is treated as a template, so the currently
       set time is preserved in the editor dialog.
     */
-    void readEvent( Event *event, bool tmpl = false );
-
+    void readEvent( Event *event, Calendar *calendar, bool tmpl = false );
     /**
       Write event settings to event object
     */
@@ -106,6 +106,7 @@ class KOEventEditor : public KOIncidenceEditor
     void deleteEvent();
 
     void slotSaveTemplate( const QString & );
+    void updateRecurrenceSummary();
 
   protected:
     QString type() { return "Event"; }
@@ -125,8 +126,10 @@ class KOEventEditor : public KOIncidenceEditor
 
   private:
     Event *mEvent;
+    Calendar* mCalendar;
 
     KOEditorGeneralEvent *mGeneral;
+    KOEditorRecurrenceDialog *mRecurrenceDialog;
     KOEditorRecurrence   *mRecurrence;
     KOEditorFreeBusy     *mFreeBusy;
 };

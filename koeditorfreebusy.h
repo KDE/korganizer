@@ -24,6 +24,8 @@
 #ifndef KOEDITORFREEBUSY_H
 #define KOEDITORFREEBUSY_H
 
+#include "koattendeeeditor.h"
+
 #include <QWidget>
 #include <QDateTime>
 #include <QTimer>
@@ -43,7 +45,7 @@ namespace KCal {
   class Attendee;
 }
 
-class KOEditorFreeBusy : public QWidget
+class KOEditorFreeBusy : public KOAttendeeEditor
 {
   Q_OBJECT
   public:
@@ -53,12 +55,12 @@ class KOEditorFreeBusy : public QWidget
     void setUpdateEnabled( bool enabled );
     bool updateEnabled() const;
 
-    void insertAttendee( KCal::Attendee *, bool readFBList );
+    void insertAttendee( KCal::Attendee *, bool readFBList = true );
     void removeAttendee( KCal::Attendee * );
-    void updateAttendee( KCal::Attendee * );
     void clearAttendees();
 
     void readEvent( KCal::Event * );
+    void writeEvent( KCal::Event *event );
 
     void triggerReload();
     void cancelReload();
@@ -79,6 +81,7 @@ class KOEditorFreeBusy : public QWidget
     void slotCenterOnStart() ;
     void slotZoomToTime();
     void slotPickDate();
+    void showAttendeeStatusMenu();
 
     // Force the download of FB information
     void manualReload();
@@ -87,8 +90,15 @@ class KOEditorFreeBusy : public QWidget
 
     void slotIntervalColorRectangleMoved( const QDateTime &start, const QDateTime &end );
 
+    void removeAttendee();
+    void listViewClicked( int button, KDGanttViewItem* item );
+
   protected:
     void timerEvent( QTimerEvent * );
+    KCal::Attendee* currentAttendee() const;
+    void updateCurrentItem();
+    void clearSelection() const;
+    void changeStatusForMe( KCal::Attendee::PartStat status );
 
   private:
     void updateFreeBusyData( FreeBusyItem * );

@@ -197,6 +197,7 @@ set(korganizerprivate_LIB_SRCS
    kocorehelper.cpp
    incidencechanger.cpp
    kotimelineview.cpp
+   koattendeeeditor.cpp
    templatemanagementdialog.cpp )
 
 

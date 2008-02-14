@@ -30,6 +30,7 @@
 #include <libkdepim/ktimezonecombobox.h>
 
 #include <kcal/event.h>
+#include <kcal/incidenceformatter.h>
 
 #include <kdebug.h>
 #include <kglobal.h>
@@ -108,6 +109,7 @@ void KOEditorGeneralEvent::initTime( QWidget *parent, QBoxLayout *topLayout )
 
   mStartDateLabel = new QLabel( i18n( "&Start:" ), timeGroupBox );
   layoutTimeBox->addWidget( mStartDateLabel, 0, 0 );
+  layoutTimeBox->setColStretch( 3, 1 );
 
   mStartDateEdit = new KPIM::KDateEdit( timeGroupBox );
   layoutTimeBox->addWidget( mStartDateEdit, 0, 1 );
@@ -140,20 +142,12 @@ void KOEditorGeneralEvent::initTime( QWidget *parent, QBoxLayout *topLayout )
   mEndTimeEdit = new KPIM::KTimeEdit( timeGroupBox );
   layoutTimeBox->addWidget( mEndTimeEdit, 1, 2 );
 
-  QHBoxLayout *flagsBox = new QHBoxLayout();
-
   mHasTimeCheckbox = new QCheckBox( i18n( "T&ime associated" ), timeGroupBox );
-  flagsBox->addWidget( mHasTimeCheckbox );
+  layoutTimeBox->addWidget( mHasTimeCheckbox, 0, 4 );
   connect( mHasTimeCheckbox, SIGNAL(toggled(bool)), SLOT(slotHasTimeCheckboxToggled(bool)) );
 
   mDurationLabel = new QLabel( timeGroupBox );
-  if ( KOPrefs::instance()->mCompactDialogs ) {
-    layoutTimeBox->addWidget( mDurationLabel, 3, 0, 1, 5 );
-  } else {
-    flagsBox->addWidget( mDurationLabel, 0, Qt::AlignRight );
-  }
-
-  layoutTimeBox->addLayout( flagsBox, 2, 0, 1, 5 );
+  layoutTimeBox->addWidget( mDurationLabel, 1, 4 );
 
   // time widgets are checked if they contain a valid time
   connect( mStartTimeEdit, SIGNAL(timeChanged(QTime)),
@@ -171,6 +165,30 @@ void KOEditorGeneralEvent::initTime( QWidget *parent, QBoxLayout *topLayout )
            this, SLOT(startSpecChanged()) );
   connect( mTimeZoneComboEnd, SIGNAL(currentIndexChanged(int)),
            this, SLOT(endSpecChanged()) );
+
+  QBoxLayout *recLayout = new QHBoxLayout();
+  layoutTimeBox->addMultiCellLayout( recLayout, 2, 2, 1, 4 );
+  mRecurrenceSummary = new QLabel( QString(), timeGroupBox );
+  recLayout->addWidget( mRecurrenceSummary );
+  QPushButton *recEditButton = new QPushButton( i18n("Edit..."), timeGroupBox );
+  recLayout->addWidget( recEditButton );
+  connect( recEditButton, SIGNAL(clicked()), SIGNAL(editRecurrence()) );
+  recLayout->addStretch( 1 );
+
+  QLabel *label = new QLabel( i18n("Reminder:"), timeGroupBox );
+  layoutTimeBox->addWidget( label, 3, 0 );
+  QBoxLayout *alarmLineLayout = new QHBoxLayout();
+  layoutTimeBox->addMultiCellLayout( alarmLineLayout, 3, 3, 1, 3 );
+  initAlarm( timeGroupBox, alarmLineLayout);
+  alarmLineLayout->addStretch( 1 );
+
+  QBoxLayout *secLayout = new QHBoxLayout();
+  layoutTimeBox->addLayout( secLayout, 0, 5 );
+  initSecrecy( timeGroupBox, secLayout );
+
+  QBoxLayout *classLayout = new QHBoxLayout();
+  layoutTimeBox->addLayout( classLayout, 1, 5 );
+  initClass( timeGroupBox, classLayout );
 }
 
 void KOEditorGeneralEvent::initClass( QWidget *parent, QBoxLayout *topLayout )
@@ -191,6 +209,29 @@ void KOEditorGeneralEvent::initClass( QWidget *parent, QBoxLayout *topLayout )
   mFreeTimeCombo->addItem( i18nc( "show event as free time", "Free" ) );
   classLayout->addWidget( mFreeTimeCombo );
   freeTimeLabel->setBuddy( mFreeTimeCombo );
+}
+
+void KOEditorGeneralEvent::initInvitationBar(QWidget * parent, QBoxLayout * layout)
+{
+  QBoxLayout *topLayout = new QHBoxLayout( layout );
+  mInvitationBar = new QFrame( parent );
+  topLayout->addWidget( mInvitationBar );
+
+  QBoxLayout *barLayout = new QHBoxLayout( mInvitationBar );
+  barLayout->setSpacing( layout->spacing() );
+  QLabel *label = new QLabel( i18n("You have not yet definitely responded to this invitation." ), mInvitationBar );
+  barLayout->addWidget( label );
+  barLayout->addStretch( 1 );
+  QPushButton *button = new QPushButton( i18n("Accept"), mInvitationBar );
+  connect( button, SIGNAL(clicked()), SIGNAL(acceptInvitation()) );
+  connect( button, SIGNAL(clicked()), mInvitationBar, SLOT(hide()) );
+  barLayout->addWidget( button );
+  button = new QPushButton( i18n("Decline"), mInvitationBar );
+  connect( button, SIGNAL(clicked()), SIGNAL(declineInvitation()) );
+  connect( button, SIGNAL(clicked()), mInvitationBar, SLOT(hide()) );
+  barLayout->addWidget( button );
+
+  mInvitationBar->hide();
 }
 
 void KOEditorGeneralEvent::setTimeEditorsEnabled( bool enabled )
@@ -331,7 +372,7 @@ void KOEditorGeneralEvent::setDefaults( const QDateTime &from,
   setDateTimes( from, to );
 }
 
-void KOEditorGeneralEvent::readEvent( Event *event, bool isTemplate )
+void KOEditorGeneralEvent::readEvent( Event *event, Calendar *calendar, bool isTemplate )
 {
   mHasTimeCheckbox->setChecked( !event->allDay() );
   setTimeEditorsEnabled( !event->allDay() );
@@ -350,7 +391,17 @@ void KOEditorGeneralEvent::readEvent( Event *event, bool isTemplate )
     break;
   }
 
-  readIncidence(event);
+  mRecurrenceSummary->setText( IncidenceFormatter::recurrenceString( event ) );
+
+  Attendee *me = event->attendeeByMails( KOPrefs::instance()->allEmails() );
+  if ( me && (me->status() == Attendee::NeedsAction || me->status() == Attendee::Tentative ||
+       me->status() == Attendee::InProcess) ) {
+    mInvitationBar->show();
+  } else {
+    mInvitationBar->hide();
+  }
+
+  readIncidence(event, calendar);
 }
 
 void KOEditorGeneralEvent::writeEvent( Event *event )
@@ -514,4 +565,9 @@ bool KOEditorGeneralEvent::validateInput()
   }
 
   return KOEditorGeneral::validateInput();
+}
+
+void KOEditorGeneralEvent::updateRecurrenceSummary(const QString & summary)
+{
+  mRecurrenceSummary->setText( summary );
 }

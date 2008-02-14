@@ -60,7 +60,6 @@ void KOJournalEditor::init()
 {
   setupGeneral();
   setupAttendeesTab();
-  setupAttachmentsTab();
 }
 
 void KOJournalEditor::reload()
@@ -91,7 +90,7 @@ void KOJournalEditor::setupGeneral()
   mGeneral->finishSetup();
 }
 
-void KOJournalEditor::editIncidence( Incidence *incidence )
+void KOJournalEditor::editIncidence( Incidence *incidence, Calendar * )
 {
   Journal *journal=dynamic_cast<Journal*>( incidence );
   if ( journal ) {
@@ -182,14 +181,12 @@ void KOJournalEditor::readJournal( Journal *journal )
 {
   mGeneral->readJournal( journal );
   mDetails->readIncidence( journal );
-  mAttachments->readIncidence( journal );
 }
 
 void KOJournalEditor::writeJournal( Journal *journal )
 {
   mGeneral->writeJournal( journal );
   mDetails->writeIncidence( journal );
-  mAttachments->writeIncidence( journal );
 }
 
 bool KOJournalEditor::validateInput()
