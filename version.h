@@ -53,6 +53,6 @@
     3.2 alpha1
 */
 
-static const char korgVersion[] = "3.5.9 (enterprise 0.20080208.772312)";
+static const char korgVersion[] = "3.5.9 (enterprise 0.20080215.775206)";
 
 #endif
