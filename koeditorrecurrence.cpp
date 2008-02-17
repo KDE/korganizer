@@ -1536,9 +1536,8 @@ bool KOEditorRecurrence::recurs()
   return mEnabledCheck->isChecked();
 }
 
-
-KOEditorRecurrenceDialog::KOEditorRecurrenceDialog(QWidget * parent) :
-    KDialog( parent )
+KOEditorRecurrenceDialog::KOEditorRecurrenceDialog( QWidget *parent )
+  : KDialog( parent )
 {
   setModal( false );
   setCaption( i18nc( "@title:window", "Recurrence" ) );
