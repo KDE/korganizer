@@ -49,7 +49,7 @@ class KOEditorAttachments;
 
 namespace KCal {
   class Incidence;
-class Calendar;
+  class Calendar;
 }
 using namespace KCal;
 
@@ -80,7 +80,7 @@ class KOEditorGeneral : public QObject
     void initDescription( QWidget *, QBoxLayout * );
     void initSecrecy( QWidget *, QBoxLayout * );
     void initAlarm( QWidget *, QBoxLayout * );
-    void initAttachments(QWidget *,QBoxLayout *);
+    void initAttachments( QWidget *, QBoxLayout * );
 
     /** Set widgets to default values */
     void setDefaults( bool allDay );
@@ -104,9 +104,8 @@ class KOEditorGeneral : public QObject
     void setCategories( const QStringList &categories );
     void selectCategories();
     void addAttachments( const QStringList &attachments,
-                         const QStringList& mimeTypes = QStringList(),
+                         const QStringList &mimeTypes = QStringList(),
                          bool inlineAttachment = false );
-
 
   protected slots:
     void editAlarms();

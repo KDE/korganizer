@@ -99,11 +99,6 @@ void KOEditorGeneral::initHeader( QWidget *parent, QBoxLayout *topLayout )
   headerLayout->setSpacing( topLayout->spacing() );
   topLayout->addLayout( headerLayout );
 
-#if 0
-  mOwnerLabel = new QLabel(i18n("Owner:"),parent);
-  headerLayout->addMultiCellWidget(mOwnerLabel,0,0,0,1);
-#endif
-
   QString whatsThis = i18n( "Sets the Title of this event or to-do." );
   QLabel *summaryLabel = new QLabel( i18nc( "event or to-do title", "T&itle:" ), parent );
   summaryLabel->setWhatsThis( whatsThis );
@@ -140,8 +135,9 @@ void KOEditorGeneral::initHeader( QWidget *parent, QBoxLayout *topLayout )
   mResourceLabel->hide();
   thirdLineLayout->addWidget( mResourceLabel );
 
-  whatsThis = i18n("Allows you to select the categories that this event or to-do belongs to.");
-  QLabel *categoriesLabel = new QLabel( i18n("Categories:"), parent );
+  whatsThis = i18nc( "@info:whatsthis",
+                     "Allows you to select the categories that this event or to-do belongs to." );
+  QLabel *categoriesLabel = new QLabel( i18n( "Categories:" ), parent );
   categoriesLabel->setWhatsThis( whatsThis );
   thirdLineLayout->addWidget( categoriesLabel );
   mCategoriesLabel = new KSqueezedTextLabel( parent );
@@ -318,14 +314,14 @@ void KOEditorGeneral::initAlarm( QWidget *parent, QBoxLayout *topLayout )
 
   mAlarmEditButton = new QPushButton( i18nc( "advanced alarm settings", "Advanced" ), parent );
   alarmLayout->addWidget( mAlarmEditButton );
-  connect( mAlarmEditButton, SIGNAL( clicked() ), SLOT( editAlarms() ) );
+  connect( mAlarmEditButton, SIGNAL(clicked()), SLOT(editAlarms()) );
 }
 
-void KOEditorGeneral::initAttachments(QWidget *parent,QBoxLayout *topLayout)
+void KOEditorGeneral::initAttachments( QWidget *parent, QBoxLayout *topLayout )
 {
   mAttachments = new KOEditorAttachments( KDialog::spacingHint(), parent );
-  connect( mAttachments, SIGNAL( openURL( const KUrl & ) ) ,
-           this, SIGNAL( openURL( const KUrl & ) ) );
+  connect( mAttachments, SIGNAL(openURL(const KUrl &)),
+           this, SIGNAL(openURL(const KUrl &)) );
   topLayout->addWidget( mAttachments, 1 );
 }
 
@@ -337,8 +333,9 @@ void KOEditorGeneral::addAttachments( const QStringList &attachments,
   uint i = 0;
   for ( it = attachments.begin(); it != attachments.end(); ++it, ++i ) {
     QString mimeType;
-    if ( mimeTypes.count() > i )
+    if ( mimeTypes.count() > i ) {
       mimeType = mimeTypes[ i ];
+    }
     mAttachments->addAttachment( *it, mimeType, QString(), !inlineAttachments );
   }
 }
@@ -351,7 +348,7 @@ void KOEditorGeneral::selectCategories()
   categoryDialog->setSelected( mCategories );
 
   connect( categoryDialog, SIGNAL(editCategories()), this, SIGNAL(openCategoryDialog()) );
-  connect(this, SIGNAL(updateCategoryConfig()), categoryDialog, SLOT(updateCategoryConfig()));
+  connect( this, SIGNAL(updateCategoryConfig()), categoryDialog, SLOT(updateCategoryConfig()) );
 
   if ( categoryDialog->exec() ) {
     setCategories( categoryDialog->selectedCategories() );
@@ -697,10 +694,11 @@ QTextList *KOEditorGeneral::createList( QTextListFormat::Style style )
   return cursor.createList( style );
 }
 
-void KOEditorGeneral::updateAttendeeSummary(int count)
+void KOEditorGeneral::updateAttendeeSummary( int count )
 {
-  if ( count <= 0 )
+  if ( count <= 0 ) {
     mAttendeeSummaryLabel->setText( "No attendees" );
-  else
+  } else {
     mAttendeeSummaryLabel->setText( i18np( "One attendee", "%1 attendees", count ) );
+  }
 }
