@@ -449,13 +449,15 @@ void ActionManager::initActions()
   /************************** Actions MENU *********************************/
   bool isRTL = QApplication::isRightToLeft();
 
-  action = new KAction( KIcon( "go-jump-today" ), i18nc( "@action Jump to today", "To &today" ), this );
+  action = new KAction( KIcon( "go-jump-today" ),
+                        i18nc( "@action Jump to today", "To &today" ), this );
   action->setIconText( i18n( "Today" ) );
   action->setToolTip( i18n( "Scroll to Today" ) );
   mACollection->addAction( "go_today", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(goToday()) );
 
-  action = new KAction( KIcon( isRTL ? "go-next" : "go-previous" ), i18nc( "scroll backward", "&Backward" ), this );
+  action = new KAction( KIcon( isRTL ? "go-next" : "go-previous" ),
+                        i18nc( "scroll backward", "&Backward" ), this );
   action->setIconText( i18nc( "scroll backward", "Back" ) );
   action->setToolTip( i18n( "Scroll Backward" ) );
   mACollection->addAction( "go_previous", action );
@@ -469,7 +471,8 @@ void ActionManager::initActions()
   connect( mCalendarView, SIGNAL(changeNavStringPrev(const QString &)),
            this, SLOT(dumpText(const QString &)) );*/
 
-  action = new KAction( KIcon( isRTL ? "go-previous" : "go-next" ), i18nc( "scroll forward", "&Forward" ), this );
+  action = new KAction( KIcon( isRTL ? "go-previous" : "go-next" ),
+                        i18nc( "scroll forward", "&Forward" ), this );
   action->setIconText( i18nc( "scoll forward", "Forward" ) );
   action->setToolTip( i18n( "Scroll Forward" ) );
   mACollection->addAction( "go_next", action );
@@ -481,7 +484,7 @@ void ActionManager::initActions()
 
   /************************** Actions MENU *********************************/
   action = new KAction( KIcon( "appointment-new" ), i18n( "New E&vent..." ), this );
-  action->setIconText( i18n( "Event" ) );
+  action->setIconText( i18nc( "@action:intoolbar create a new event", "Event" ) );
   action->setToolTip( i18n( "Create a new Event" ) );
   mACollection->addAction( "new_event", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView,
@@ -1879,16 +1882,15 @@ void ActionManager::goDate( const QString &date )
   goDate( KGlobal::locale()->readDate( date ) );
 }
 
-void ActionManager::showDate(const QDate & date)
+void ActionManager::showDate( const QDate &date )
 {
   mCalendarView->showDate( date );
 }
 
-
 void ActionManager::updateUndoAction( const QString &text )
 {
   mUndoAction->setText( i18n( "Undo" ) );
-    if ( text.isNull() ) {
+  if ( text.isNull() ) {
     mUndoAction->setEnabled( false );
   } else {
     mUndoAction->setEnabled( true );
