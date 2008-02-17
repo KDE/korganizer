@@ -58,8 +58,6 @@
 #include <kaction.h>
 #include <kstdaction.h>
 #include <kactioncollection.h>
-#include <kstdaction.h>
-#include <kactioncollection.h>
 
 #include <QCheckBox>
 #include <QCursor>
@@ -79,8 +77,6 @@
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 #include <QDragEnterEvent>
-#include <qapplication.h>
-#include <qclipboard.h>
 #include <qapplication.h>
 #include <qclipboard.h>
 
@@ -330,7 +326,7 @@ class AttachmentIconView : public K3IconView
       setMode( K3IconView::Select );
       setItemTextPos( Q3IconView::Right );
       setArrangement( Q3IconView::LeftToRight );
-      setMaxItemWidth( QMAX(maxItemWidth(), 250) );
+      setMaxItemWidth( qMax(maxItemWidth(), 250) );
     }
 
   protected:
@@ -387,7 +383,7 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent )
   QBoxLayout *topLayout = new QHBoxLayout( this );
   topLayout->setSpacing( spacing );
 
-  QLabel *label = new QLabel( i18n("Attachments:"), this );
+  QLabel *label = new QLabel( i18nc( "@label", "Attachments:" ), this );
   topLayout->addWidget( label );
 
   mAttachments = new AttachmentIconView( this );
@@ -857,7 +853,7 @@ void KOEditorAttachments::applyChanges()
 
 void KOEditorAttachments::slotCopy()
 {
-    QApplication::clipboard()->setData( mAttachments->dragObject(), QClipboard::Clipboard );
+  QApplication::clipboard()->setData( mAttachments->dragObject(), QClipboard::Clipboard );
 }
 
 void KOEditorAttachments::slotCut()
