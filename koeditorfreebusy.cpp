@@ -294,7 +294,7 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent )
   topLayout->setStretchFactor( mGanttView, 100 );
   // Remove the predefined "Task Name" column
   mGanttView->removeColumn( 0 );
-  mGanttView->addColumn( i18n("Attendee") );
+  mGanttView->addColumn( i18nc( "@title:column attendee name", "Attendee" ) );
   if ( KOPrefs::instance()->mCompactDialogs ) {
     mGanttView->setFixedHeight( 78 );
   }
@@ -773,9 +773,13 @@ void KOEditorFreeBusy::writeEvent( Incidence *incidence )
     } else {
       bool skip = false;
       if ( attendee->email().endsWith( "example.net" ) ) {
-        if ( KMessageBox::warningYesNo( this, i18n("%1 does not look like a valid email address. "
-                "Are you sure you want to invite this participant?").arg( attendee->email() ),
-              i18n("Invalid email address") ) != KMessageBox::Yes ) {
+        if ( KMessageBox::warningYesNo(
+               this,
+               i18nc( "@info",
+                      "%1 does not look like a valid email address. "
+                      "Are you sure you want to invite this participant?",
+                      attendee->email() ),
+               i18nc( "@title:window", "Invalid email address" ) ) != KMessageBox::Yes ) {
           skip = true;
         }
       }
