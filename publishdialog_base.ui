@@ -23,12 +23,12 @@
     <widget class="Q3ListView" name="mAddressListView" >
      <column>
       <property name="text" >
-       <string>Name</string>
+       <string comment="addressee name">Name</string>
       </property>
      </column>
      <column>
       <property name="text" >
-       <string>Email</string>
+       <string comment="addressee email">Email</string>
       </property>
      </column>
     </widget>
@@ -36,14 +36,14 @@
    <item row="4" column="0" >
     <widget class="QLabel" name="TextLabel1" >
      <property name="text" >
-      <string>Name:</string>
+      <string comment="addressee name">Name:</string>
      </property>
     </widget>
    </item>
    <item row="5" column="0" >
     <widget class="QLabel" name="TextLabel2" >
      <property name="text" >
-      <string>Email:</string>
+      <string comment="addressee email">Email:</string>
      </property>
     </widget>
    </item>

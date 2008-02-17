@@ -258,7 +258,7 @@ Here is a Kolab2 server URL example: "webdavs://kolab2.com/freebusy/joe@kolab2.c
 A Kolab2 server specificity: Registered your UID (Unique IDentifier). By default your UID would be your email address on the Kolab2 server but it may also be different. In the last case enter your UID.</string>
             </property>
             <property name="text" >
-             <string>Username:</string>
+             <string comment="login name on the Kolab server">Username:</string>
             </property>
             <property name="buddy" >
              <cstring>publishUserNameED</cstring>
