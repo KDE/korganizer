@@ -90,7 +90,7 @@ void KOAttendeeEditor::initEditWidgets(QWidget * parent, QBoxLayout * layout)
                            "in the list.");
   QLabel *attendeeLabel = new QLabel( parent );
   attendeeLabel->setWhatsThis( whatsThis );
-  attendeeLabel->setText( i18n("Na&me:") );
+  attendeeLabel->setText( i18nc( "@label attendee's name", "Na&me:") );
   topLayout->addWidget( attendeeLabel, 0, 0 );
 
   mNameEdit = new KPIM::AddresseeLineEdit( parent );
@@ -157,7 +157,7 @@ void KOAttendeeEditor::initEditWidgets(QWidget * parent, QBoxLayout * layout)
   QWidget *buttonBox = new QWidget( parent );
   QVBoxLayout *buttonLayout = new QVBoxLayout( buttonBox );
 
-  mAddButton = new QPushButton( i18n("&New"), buttonBox );
+  mAddButton = new QPushButton( i18nc( "@action:button new attendee", "&New" ), buttonBox );
   mAddButton->setWhatsThis(
 		   i18n("Adds a new attendee to the list. Once the "
 		   	"attendee is added, you will be able to "
@@ -259,8 +259,8 @@ void KOAttendeeEditor::fillOrganizerCombo()
 
 void KOAttendeeEditor::addNewAttendee()
 {
-  Attendee *a = new Attendee( i18n("Firstname Lastname"),
-                              i18n("name") + "@example.net", true );
+  Attendee *a = new Attendee( i18nc( "sample attendee name", "Firstname Lastname"),
+                              i18nc( "sample attendee email name", "name") + "@example.net", true );
   insertAttendee( a, false );
   updateAttendeeInput();
   // We don't want the hint again
