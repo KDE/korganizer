@@ -182,8 +182,8 @@ void KOGroupware::incomingDirChanged( const QString &path )
   KCal::ScheduleMessage::Status status = message->status();
   KCal::Incidence *incidence = dynamic_cast<KCal::Incidence*>( message->event() );
   KCal::MailScheduler scheduler( mCalendar );
-  if ( action.startsWith( "accepted" ) || action.startsWith( "tentative" )
-       || action.startsWith( "delegated" ) || action.startsWith( "counter" ) ) {
+  if ( action.startsWith( "accepted" ) || action.startsWith( "tentative" ) ||
+       action.startsWith( "delegated" ) || action.startsWith( "counter" ) ) {
     // Find myself and set my status. This can't be done in the scheduler,
     // since this does not know the choice I made in the KMail bpf
     KCal::Attendee::List attendees = incidence->attendees();
@@ -265,11 +265,11 @@ bool KOGroupware::sendICalMessage( QWidget *parent,
          incidence->attendees().first()->email() != incidence->organizer().email() ) {
       QString type;
       if ( incidence->type() == "Event" ) {
-        type = i18n( "event" );
+        type = i18nc( "incidence type is event", "event" );
       } else if ( incidence->type() == "Todo" ) {
-        type = i18n( "task" );
+        type = i18nc( "incidence type is to-do/task", "task" );
       } else if ( incidence->type() == "Journal" ) {
-        type = i18n( "journal entry" );
+        type = i18nc( "incidence type is journal", "journal entry" );
       } else {
         type = incidence->type();
       }

@@ -91,8 +91,8 @@ class KOGroupware : public QObject
     /** Updates some slot connections when the view incidence changer changes */
     void slotViewNewIncidenceChanger( IncidenceChangerBase *changer );
 
-
     void initialCheckForChanges();
+
   protected:
     KOGroupware( CalendarView *, KCal::CalendarResources * );
 
