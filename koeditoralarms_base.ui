@@ -58,17 +58,17 @@
          <widget class="QComboBox" name="mOffsetUnit" >
           <item>
            <property name="text" >
-            <string>Minutes</string>
+            <string comment="@item:inlistbox alarm offset expressed in minutes">Minutes</string>
            </property>
           </item>
           <item>
            <property name="text" >
-            <string>Hours</string>
+            <string comment="@item:inlistbox alarm offset expressed in hours">Hours</string>
            </property>
           </item>
           <item>
            <property name="text" >
-            <string>Days</string>
+            <string comment="@item:inlistbox alarm offset expressed in days">Days</string>
            </property>
           </item>
          </widget>
@@ -178,10 +178,10 @@
            <bool>false</bool>
           </property>
           <property name="suffix" >
-           <string> Minute(s)</string>
+           <string comment="@label:spinbox repeat interval expressed in minutes"> Minute(s)</string>
           </property>
           <property name="prefix" >
-           <string>every </string>
+           <string comment="repeat every X minutes">every </string>
           </property>
           <property name="maximum" >
            <number>999</number>
