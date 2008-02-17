@@ -94,8 +94,10 @@ class AttachmentIconItem : public K3IconViewItem
       readAttachment();
     }
     ~AttachmentIconItem() { delete mAttachment; }
-    KCal::Attachment *attachment() const { return mAttachment; }
-
+    KCal::Attachment *attachment() const
+    {
+      return mAttachment;
+    }
     const QString uri() const
     {
       return mAttachment->uri();
@@ -247,8 +249,8 @@ AttachmentEditDialog::AttachmentEditDialog( AttachmentIconItem *item,
     grid->addWidget( label, 4, 0 );
     mURLRequester = new KUrlRequester( item->uri(), page );
     grid->addWidget( mURLRequester, 4, 2 );
-    connect( mURLRequester, SIGNAL(urlSelected(const KUrl&)),
-             SLOT(urlChanged(const KUrl&)) );
+    connect( mURLRequester, SIGNAL(urlSelected(const KUrl &)),
+             SLOT(urlChanged(const KUrl &)) );
   } else {
     if ( item->isLocal() ) {
       grid->addWidget( new QLabel( i18nc( "@label", "Size:" ), page ), 4, 0 );
@@ -258,10 +260,10 @@ AttachmentEditDialog::AttachmentEditDialog( AttachmentIconItem *item,
                     arg( KIO::convertSize( size ) ).
                     arg( KGlobal::locale()->formatNumber( size, 0 ) ), page ), 4, 2 );
     } else {
-      grid->addWidget(
-        new QLabel( QString::fromLatin1( "%1 (%2)" ).
-                    arg( KIO::convertSize( item->attachment()->size() ) ).
-                    arg( KGlobal::locale()->formatNumber( item->attachment()->size(), 0 ) ), page ), 4, 2 );
+      grid->addWidget( new QLabel( QString::fromLatin1( "%1 (%2)" ).
+                                   arg( KIO::convertSize( item->attachment()->size() ) ).
+                                   arg( KGlobal::locale()->formatNumber(
+                                          item->attachment()->size(), 0 ) ), page ), 4, 2 );
     }
   }
   vbl->addStretch( 10 );
@@ -326,12 +328,12 @@ class AttachmentIconView : public K3IconView
       setMode( K3IconView::Select );
       setItemTextPos( Q3IconView::Right );
       setArrangement( Q3IconView::LeftToRight );
-      setMaxItemWidth( qMax(maxItemWidth(), 250) );
+      setMaxItemWidth( qMax( maxItemWidth(), 250 ) );
     }
 
   protected:
 #ifdef __GNUC__
-#warning Port this to QDrag instead of Q3DragObject once we have proted the view from K3IconView to some Qt4 class
+#warning Port to QDrag instead of Q3DragObject once we port the view from K3IconView
 #endif
 #if 0
     virtual Q3DragObject *dragObject ()
@@ -393,23 +395,24 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent )
   mAttachments->setItemsMovable( false );
   mAttachments->setSelectionMode( Q3IconView::Extended );
   topLayout->addWidget( mAttachments );
-  connect( mAttachments, SIGNAL(executed(Q3IconViewItem*)),
-           SLOT(showAttachment(Q3IconViewItem*)) );
-  connect( mAttachments, SIGNAL(itemRenamed(Q3IconViewItem*,const QString&)),
-           SLOT(slotItemRenamed(Q3IconViewItem*,const QString&)) );
-  connect( mAttachments, SIGNAL(dropped(QDropEvent*,const Q3ValueList<Q3IconDragItem>&)),
-           SLOT(dropped(QDropEvent*,const Q3ValueList<Q3IconDragItem>&)) );
+  connect( mAttachments, SIGNAL(executed(Q3IconViewItem *)),
+           SLOT(showAttachment(Q3IconViewItem *)) );
+  connect( mAttachments, SIGNAL(itemRenamed(Q3IconViewItem *,const QString &)),
+           SLOT(slotItemRenamed(Q3IconViewItem *,const QString &)) );
+  connect( mAttachments, SIGNAL(dropped(QDropEvent *,const Q3ValueList<Q3IconDragItem> &)),
+           SLOT(dropped(QDropEvent *,const Q3ValueList<Q3IconDragItem> &)) );
   connect( mAttachments, SIGNAL(selectionChanged()),
            SLOT(selectionChanged()) );
-  connect( mAttachments, SIGNAL(contextMenuRequested(Q3IconViewItem*,const QPoint&)),
-           SLOT(contextMenu(Q3IconViewItem*,const QPoint&)) );
+  connect( mAttachments, SIGNAL(contextMenuRequested(Q3IconViewItem *,const QPoint &)),
+           SLOT(contextMenu(Q3IconViewItem *,const QPoint &)) );
 
   QPushButton *addButton = new QPushButton( this );
   addButton->setIcon( KIcon( "list-add" ) );
-  addButton->setToolTip( i18nc("@action:button", "&Add...") );
+  addButton->setToolTip( i18nc( "@action:button", "&Add..." ) );
   addButton->setWhatsThis( i18nc( "@info",
-                             "Shows a dialog used to select an attachment "
-                             "to add to this event or to-do as link or as inline data.") );
+                                  "Shows a dialog used to select an attachment "
+                                  "to add to this event or to-do as link or as "
+                                  "inline data." ) );
   topLayout->addWidget( addButton );
   connect( addButton, SIGNAL(clicked()), SLOT(slotAdd()) );
 
@@ -417,44 +420,41 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent )
   mRemoveBtn->setIcon( KIcon( "list-remove" ) );
   mRemoveBtn->setToolTip( i18nc( "@action:button", "&Remove" ) );
   mRemoveBtn->setWhatsThis( i18nc( "@info",
-                               "Removes the attachment selected in the list above "
-                               "from this event or to-do." ) );
+                                   "Removes the attachment selected in the "
+                                   "list above from this event or to-do." ) );
   topLayout->addWidget( mRemoveBtn );
   connect( mRemoveBtn, SIGNAL(clicked()), SLOT(slotRemove()) );
 
-  KActionCollection* ac = new KActionCollection( this );
+  KActionCollection *ac = new KActionCollection( this );
   ac->addAssociatedWidget( this );
 
   mPopupMenu = new KMenu( this );
 
-  mOpenAction = new KAction( i18nc("@action:inmenu open the attachment in a viewer",
-                                   "&Open"), this );
-  connect( mOpenAction, SIGNAL( triggered(bool) ),
-           this, SLOT( slotShow() ) );
+  mOpenAction = new KAction( i18nc( "@action:inmenu open the attachment in a viewer",
+                                    "&Open" ), this );
+  connect( mOpenAction, SIGNAL(triggered(bool)), this, SLOT(slotShow()) );
   ac->addAction( "view", mOpenAction );
   mPopupMenu->addAction( mOpenAction );
   mPopupMenu->addSeparator();
 
-  mCopyAction = KStandardAction::copy(this, SLOT(slotCopy( ) ), ac );
+  mCopyAction = KStandardAction::copy( this, SLOT(lotCopy()), ac );
   mPopupMenu->addAction( mCopyAction );
-  mCutAction = KStandardAction::cut(this, SLOT(slotCut( ) ), ac );
+  mCutAction = KStandardAction::cut( this, SLOT(slotCut()), ac );
   mPopupMenu->addAction( mCutAction );
-  KAction *action = KStandardAction::paste(this, SLOT(slotPaste( ) ), ac );
+  KAction *action = KStandardAction::paste( this, SLOT(slotPaste()), ac );
   mPopupMenu->addAction( action );
   mPopupMenu->addSeparator();
 
   mDeleteAction = new KAction( i18nc( "@action:inmenu remove the attachment",
                                       "&Delete" ), this );
-  connect( mDeleteAction, SIGNAL( triggered(bool) ),
-           this, SLOT( slotRemove() ) );
+  connect( mDeleteAction, SIGNAL(triggered(bool)), this, SLOT(slotRemove()) );
   ac->addAction( "remove", mDeleteAction );
   mPopupMenu->addAction( mDeleteAction );
   mPopupMenu->addSeparator();
 
   mEditAction = new KAction( i18nc( "@action:inmenu show a dialog used to edit the attachment",
                                     "&Properties..." ), this );
-  connect( mEditAction, SIGNAL( triggered(bool) ),
-           this, SLOT( slotEdit() ) );
+  connect( mEditAction, SIGNAL(triggered(bool)), this, SLOT(slotEdit()) );
   ac->addAction( "edit", mEditAction );
   mPopupMenu->addAction( mEditAction );
 
@@ -594,12 +594,11 @@ void KOEditorAttachments::handlePasteOrDrop( const QMimeData *mimeData )
             it != urls.constEnd(); ++it ) {
 #if 0 // binary attachments are unimplemented yet
         KIO::Job *job = KIO::storedGet( *it );
-        connect( job, SIGNAL( result( KJob * ) ),
-                SLOT( downloadComplete( KJob * ) ) );
+        connect( job, SIGNAL(result(KJob *)), SLOT(downloadComplete(KJob *)) );
 #endif
         KIO::Job *job = KIO::copy(
           *it, generateLocalAttachmentPath( ( *it ).fileName(), KMimeType::findByUrl( *it ) ) );
-        connect( job, SIGNAL(result(KJob*)), SLOT(copyComplete(KJob*)) );
+        connect( job, SIGNAL(result(KJob *)), SLOT(copyComplete(KJob *)) );
       }
     } else { // we take anything
       KMimeType::Ptr mimeType = KMimeType::mimeType( mimeData->formats().first() );
@@ -879,7 +878,7 @@ void KOEditorAttachments::selectionChanged()
   mRemoveBtn->setEnabled( selected );
 }
 
-void KOEditorAttachments::contextMenu(Q3IconViewItem * item, const QPoint & pos)
+void KOEditorAttachments::contextMenu( Q3IconViewItem *item, const QPoint &pos )
 {
   const bool enable = item != 0;
   mOpenAction->setEnabled( enable );

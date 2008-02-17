@@ -26,18 +26,19 @@
 #ifndef KOEDITORATTACHMENTS_H
 #define KOEDITORATTACHMENTS_H
 
+#include <kdialog.h>
+#include <kmimetype.h>
+#include <kurl.h>
+
 #include <QWidget>
 #include <QDragEnterEvent>
 #include <Q3ValueList>
 #include <QLabel>
 #include <QDropEvent>
-#include <kdialog.h>
-#include <kmimetype.h>
-#include <kurl.h>
 
 namespace KCal {
-class Incidence;
-class Attachment;
+  class Incidence;
+  class Attachment;
 }
 
 class KJob;
@@ -56,7 +57,7 @@ class QPushButton;
 class KAction;
 
 namespace KIO {
-class Job;
+  class Job;
 }
 
 class AttachmentEditDialog : public KDialog
@@ -125,7 +126,7 @@ class KOEditorAttachments : public QWidget
     void slotCut();
     void slotPaste();
     void selectionChanged();
-    void contextMenu( Q3IconViewItem* item, const QPoint &pos );
+    void contextMenu( Q3IconViewItem *item, const QPoint &pos );
 
   protected:
     QString generateLocalAttachmentPath( const QString &filename,
@@ -135,7 +136,7 @@ class KOEditorAttachments : public QWidget
     void openURL( const KUrl &url );
 
   private:
-    void handlePasteOrDrop( const QMimeData* mimeData );
+    void handlePasteOrDrop( const QMimeData *mimeData );
 
     AttachmentIconView *mAttachments;
     KMenu *mPopupMenu;
