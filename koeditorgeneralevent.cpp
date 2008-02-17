@@ -107,7 +107,7 @@ void KOEditorGeneralEvent::initTime( QWidget *parent, QBoxLayout *topLayout )
   QGridLayout *layoutTimeBox = new QGridLayout( timeGroupBox );
   layoutTimeBox->setSpacing( KDialog::spacingHint() );
 
-  mStartDateLabel = new QLabel( i18n( "&Start:" ), timeGroupBox );
+  mStartDateLabel = new QLabel( i18nc( "@label event start time", "&Start:" ), timeGroupBox );
   layoutTimeBox->addWidget( mStartDateLabel, 0, 0 );
   layoutTimeBox->setColStretch( 3, 1 );
 
