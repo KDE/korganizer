@@ -172,11 +172,19 @@ void KOPrefs::setCategoryDefaults()
 {
   mCustomCategories.clear();
 
-  mCustomCategories << i18n("Appointment") << i18n("Business")
-      << i18n("Meeting") << i18n("Phone Call") << i18n("Education")
-      << i18n("Holiday") << i18n("Vacation") << i18n("Special Occasion")
-      << i18n("Personal") << i18n("Travel") << i18n("Miscellaneous")
-      << i18n("Birthday");
+  mCustomCategories
+    << i18nc( "incidence category: appointment", "Appointment" )
+    << i18nc( "incidence category: ", "Business" )
+    << i18nc( "incidence category", "Meeting" )
+    << i18nc( "incidence category: phone call","Phone Call" )
+    << i18nc( "incidence category", "Education" )
+    << i18nc( "incidence category", "Holiday" )
+    << i18nc( "incidence category", "Vacation" )
+    << i18nc( "incidence category", "Special Occasion" )
+    << i18nc( "incidence category", "Personal" )
+    << i18nc( "incidence category", "Travel" )
+    << i18nc( "incidence category", "Miscellaneous" )
+    << i18nc( "incidence category", "Birthday" );
 }
 
 void KOPrefs::usrReadConfig()
