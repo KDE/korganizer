@@ -109,9 +109,9 @@ void KOAttendeeEditor::initEditWidgets(QWidget * parent, QBoxLayout * layout)
   attendeeRoleLabel->setText( i18n("Ro&le:") );
   topLayout->addWidget( attendeeRoleLabel, 1, 0 );
 
-  mRoleCombo = new QComboBox( false, parent );
+  mRoleCombo = new QComboBox( parent );
   mRoleCombo->setWhatsThis( whatsThis );
-  mRoleCombo->insertStringList( Attendee::roleList() );
+  mRoleCombo->addItems( Attendee::roleList() );
   attendeeRoleLabel->setBuddy( mRoleCombo );
   connect( mRoleCombo, SIGNAL( activated( int ) ),
            SLOT( updateAttendee() ) );
@@ -127,16 +127,16 @@ void KOAttendeeEditor::initEditWidgets(QWidget * parent, QBoxLayout * layout)
   statusLabel->setText( i18n("Stat&us:") );
   topLayout->addWidget( statusLabel, 2, 0 );
 
-  mStatusCombo = new QComboBox( false, parent );
+  mStatusCombo = new QComboBox( parent );
   mStatusCombo->setWhatsThis( whatsThis );
-//   mStatusCombo->insertStringList( Attendee::statusList() );
-  mStatusCombo->insertItem( SmallIcon( "help-about" ), Attendee::statusName( Attendee::NeedsAction ) );
-  mStatusCombo->insertItem( KOGlobals::self()->smallIcon( "dialog-ok-apply" ), Attendee::statusName( Attendee::Accepted ) );
-  mStatusCombo->insertItem( KOGlobals::self()->smallIcon( "dialog-cancel" ), Attendee::statusName( Attendee::Declined ) );
-  mStatusCombo->insertItem( KOGlobals::self()->smallIcon( "dialog-ok" ), Attendee::statusName( Attendee::Tentative ) );
-  mStatusCombo->insertItem( KOGlobals::self()->smallIcon( "mail-forward" ), Attendee::statusName( Attendee::Delegated ) );
-  mStatusCombo->insertItem( Attendee::statusName( Attendee::Completed ) );
-  mStatusCombo->insertItem( KOGlobals::self()->smallIcon( "help-about" ), Attendee::statusName( Attendee::InProcess ) );
+//   mStatusCombo->addItems( Attendee::statusList() );
+  mStatusCombo->addItem( SmallIcon( "help-about" ), Attendee::statusName( Attendee::NeedsAction ) );
+  mStatusCombo->addItem( KOGlobals::self()->smallIcon( "dialog-ok-apply" ), Attendee::statusName( Attendee::Accepted ) );
+  mStatusCombo->addItem( KOGlobals::self()->smallIcon( "dialog-cancel" ), Attendee::statusName( Attendee::Declined ) );
+  mStatusCombo->addItem( KOGlobals::self()->smallIcon( "dialog-ok" ), Attendee::statusName( Attendee::Tentative ) );
+  mStatusCombo->addItem( KOGlobals::self()->smallIcon( "mail-forward" ), Attendee::statusName( Attendee::Delegated ) );
+  mStatusCombo->addItem( Attendee::statusName( Attendee::Completed ) );
+  mStatusCombo->addItem( KOGlobals::self()->smallIcon( "help-about" ), Attendee::statusName( Attendee::InProcess ) );
 
   statusLabel->setBuddy( mStatusCombo );
   connect( mStatusCombo, SIGNAL( activated( int ) ),
@@ -251,10 +251,10 @@ void KOAttendeeEditor::fillOrganizerCombo()
   const QStringList lst = KOPrefs::instance()->fullEmails();
   QStringList uniqueList;
   for( QStringList::ConstIterator it = lst.begin(); it != lst.end(); ++it ) {
-    if ( uniqueList.find( *it ) == uniqueList.end() )
+    if ( !uniqueList.contains( *it ) )
       uniqueList << *it;
   }
-  mOrganizerCombo->insertStringList( uniqueList );
+  mOrganizerCombo->addItems( uniqueList );
 }
 
 void KOAttendeeEditor::addNewAttendee()
@@ -282,15 +282,15 @@ void KOAttendeeEditor::readEvent(KCal::Incidence * incidence)
     int found = -1;
     QString fullOrganizer = incidence->organizer().fullName();
     for ( int i = 0 ; i < mOrganizerCombo->count(); ++i ) {
-      if ( mOrganizerCombo->text( i ) == fullOrganizer ) {
+      if ( mOrganizerCombo->itemText( i ) == fullOrganizer ) {
         found = i;
-        mOrganizerCombo->setCurrentItem( i );
+        mOrganizerCombo->setCurrentIndex( i );
         break;
       }
     }
     if ( found < 0 ) {
-      mOrganizerCombo->insertItem( fullOrganizer, 0 );
-      mOrganizerCombo->setCurrentItem( 0 );
+      mOrganizerCombo->addItem( fullOrganizer, 0 );
+      mOrganizerCombo->setCurrentIndex( 0 );
     }
   } else { // someone else is the organizer
     if ( mOrganizerCombo ) {
@@ -328,8 +328,8 @@ void KOAttendeeEditor::clearAttendeeInput()
 {
   mNameEdit->setText("");
   mUid = QString();
-  mRoleCombo->setCurrentItem(0);
-  mStatusCombo->setCurrentItem(0);
+  mRoleCombo->setCurrentIndex(0);
+  mStatusCombo->setCurrentIndex(0);
   mRsvpButton->setChecked(true);
   setEnableAttendeeInput( false );
   mDelegateLabel->setText( QString() );
@@ -353,12 +353,12 @@ void KOAttendeeEditor::updateAttendee()
     bool wasMyself =
       KPIMUtils::compareEmail( a->email(), mOrganizerCombo->currentText(), false );
     if ( myself ) {
-      mStatusCombo->setCurrentItem( KCal::Attendee::Accepted );
+      mStatusCombo->setCurrentIndex( KCal::Attendee::Accepted );
       mRsvpButton->setChecked( false );
       mRsvpButton->setEnabled( false );
     } else if ( wasMyself ) {
       // this was me, but is no longer, reset
-      mStatusCombo->setCurrentItem( KCal::Attendee::NeedsAction );
+      mStatusCombo->setCurrentIndex( KCal::Attendee::NeedsAction );
       mRsvpButton->setChecked( true );
       mRsvpButton->setEnabled( true );
     }
@@ -366,8 +366,8 @@ void KOAttendeeEditor::updateAttendee()
   a->setName( name );
   a->setUid( mUid );
   a->setEmail( email );
-  a->setRole( Attendee::Role( mRoleCombo->currentItem() ) );
-  a->setStatus( Attendee::PartStat( mStatusCombo->currentItem() ) );
+  a->setRole( Attendee::Role( mRoleCombo->currentIndex() ) );
+  a->setStatus( Attendee::PartStat( mStatusCombo->currentIndex() ) );
   a->setRSVP( mRsvpButton->isChecked() );
 
   updateCurrentItem();
@@ -384,8 +384,8 @@ void KOAttendeeEditor::fillAttendeeInput( KCal::Attendee *a )
   }
   mNameEdit->setText(name);
   mUid = a->uid();
-  mRoleCombo->setCurrentItem(a->role());
-  mStatusCombo->setCurrentItem(a->status());
+  mRoleCombo->setCurrentIndex(a->role());
+  mStatusCombo->setCurrentIndex(a->status());
   mRsvpButton->setChecked(a->RSVP());
 
   mDisableItemUpdate = false;
