@@ -103,7 +103,7 @@ class KOrganizer : public KPartsMainWindow, public KOrgMainWindow
     /** write current state to config file. */
     void writeSettings();
 
-    void statusBarPressed( int );
+    void statusBarPressed( int id );
 
     /** Sets title of window according to filename and modification state */
     void setTitle();
@@ -121,15 +121,21 @@ class KOrganizer : public KPartsMainWindow, public KOrgMainWindow
     bool queryExit();
 
     /* Session management */
-    void saveProperties( KConfigGroup& );
-    void readProperties( const KConfigGroup& );
+    void saveProperties( KConfigGroup & );
+    void readProperties( const KConfigGroup & );
 
   private:
     CalendarView *mCalendarView;  // Main view widget
     KOrg::Part::List mParts; // List of parts loaded
 
     // status bar ids
-    enum { ID_HISTORY, ID_GENERAL, ID_ACTIVE, ID_MESSAGES_IN, ID_MESSAGES_OUT };
+    enum {
+      ID_HISTORY,
+      ID_GENERAL,
+      ID_ACTIVE,
+      ID_MESSAGES_IN,
+      ID_MESSAGES_OUT
+    };
     ActionManager *mActionManager;
 };
 

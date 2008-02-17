@@ -29,7 +29,6 @@
 */
 
 #include "korganizer.h"
-
 #include "komailclient.h"
 #include "calendarview.h"
 #include "koviewmanager.h"
@@ -52,6 +51,8 @@
 #include <kcal/calendarresources.h>
 #include <kcal/resourcecalendar.h>
 
+#include <kio/netaccess.h>
+
 #include <kglobal.h>
 #include <kdebug.h>
 #include <kiconloader.h>
@@ -63,38 +64,39 @@
 #include <kstandardaction.h>
 #include <kedittoolbar.h>
 #include <ktemporaryfile.h>
-#include <kio/netaccess.h>
 #include <kmessagebox.h>
 #include <kwindowsystem.h>
 #include <ktip.h>
 #include <KStandardGuiItem>
 #include <kstatusbar.h>
 #include <kshortcutsdialog.h>
+#include <krecentfilesaction.h>
+
 #include <QCursor>
 #include <QTimer>
 #include <QFile>
 #include <QLabel>
 #include <QLayout>
-#include <krecentfilesaction.h>
+
 #include <stdlib.h>
 
 using namespace KParts;
 #include "korganizer.moc"
 using namespace KOrg;
 
-KOrganizer::KOrganizer() : KParts::MainWindow(  ), KOrg::MainWindow()
+KOrganizer::KOrganizer() : KParts::MainWindow(), KOrg::MainWindow()
 {
   // Set this to be the group leader for all subdialogs - this means
   // modal subdialogs will only affect this dialog, not the other windows
   setAttribute( Qt::WA_GroupLeader );
 
-  kDebug(5850) <<"KOrganizer::KOrganizer()";
+  kDebug(5850);
   KOCore::self()->addXMLGUIClient( this, this );
 //  setMinimumSize(600,400);  // make sure we don't get resized too small...
 
   mCalendarView = new CalendarView( this );
   mCalendarView->setObjectName( "KOrganizer::CalendarView" );
-  setCentralWidget(mCalendarView);
+  setCentralWidget( mCalendarView );
 
   mActionManager = new ActionManager( this, mCalendarView, this, this, false );
   (void)new KOrganizerIfaceImpl( mActionManager, this, "IfaceImpl" );
@@ -109,8 +111,7 @@ KOrganizer::~KOrganizer()
 
 void KOrganizer::init( bool document )
 {
-  kDebug(5850) <<"KOrganizer::init()"
-            << ( document ? "hasDocument" : "resources" );
+  kDebug(5850) << ( document ? "hasDocument" : "resources" );
 
   setHasDocument( document );
 
@@ -151,7 +152,7 @@ void KOrganizer::init( bool document )
   setStandardToolBarMenuEnabled( true );
   setTitle();
 
-  kDebug(5850) <<"KOrganizer::KOrganizer() done";
+  kDebug(5850) << "done";
 }
 
 void KOrganizer::newMainWindow( const KUrl &url )
@@ -182,17 +183,15 @@ void KOrganizer::readSettings()
   config->sync();
 }
 
-
 void KOrganizer::writeSettings()
 {
-  kDebug(5850) <<"KOrganizer::writeSettings";
+  kDebug(5850);
 
   KConfig *config = KOGlobals::self()->config();
 
   mActionManager->writeSettings();
   config->sync();
 }
-
 
 void KOrganizer::initActions()
 {
@@ -203,9 +202,9 @@ void KOrganizer::initActions()
   setStandardToolBarMenuEnabled( true );
   createStandardStatusBarAction();
 
-  KStandardAction::keyBindings(this, SLOT(slotEditKeys()), actionCollection());
-  KStandardAction::configureToolbars(this, SLOT(configureToolbars() ), actionCollection());
-  KStandardAction::quit( this, SLOT( close() ), actionCollection() );
+  KStandardAction::keyBindings( this, SLOT(slotEditKeys()), actionCollection() );
+  KStandardAction::configureToolbars( this, SLOT(configureToolbars()), actionCollection() );
+  KStandardAction::quit( this, SLOT(close()), actionCollection() );
 
   createGUI( 0 );
 
@@ -220,13 +219,15 @@ void KOrganizer::slotEditKeys()
 
 bool KOrganizer::queryClose()
 {
-  kDebug(5850) <<"KOrganizer::queryClose()";
+  kDebug(5850);
 
   bool close = mActionManager->queryClose();
 
   // Write configuration. I don't know if it really makes sense doing it this
   // way, when having opened multiple calendars in different CalendarViews.
-  if ( close ) writeSettings();
+  if ( close ) {
+    writeSettings();
+  }
 
   return close;
 }
@@ -239,8 +240,9 @@ bool KOrganizer::queryExit()
   return true;
 }
 
-void KOrganizer::statusBarPressed( int /*id*/ )
+void KOrganizer::statusBarPressed( int id )
 {
+  Q_UNUSED( id );
 }
 
 void KOrganizer::showStatusMessage( const QString &message )
@@ -285,23 +287,24 @@ KOrg::CalendarViewBase *KOrganizer::view() const
 
 void KOrganizer::setTitle()
 {
-//  kDebug(5850) <<"KOrganizer::setTitle";
-
   QString title;
   if ( !hasDocument() ) {
-    title = i18n("Calendar");
+    title = i18n( "Calendar" );
   } else {
     KUrl url = mActionManager->url();
 
     if ( !url.isEmpty() ) {
-      if ( url.isLocalFile() ) title = url.fileName();
-      else title = url.prettyUrl();
+      if ( url.isLocalFile() ) {
+        title = url.fileName();
+      } else {
+        title = url.prettyUrl();
+      }
     } else {
-      title = i18n("New Calendar");
+      title = i18n( "New Calendar" );
     }
 
     if ( mCalendarView->isReadOnly() ) {
-      title += " [" + i18n("read-only") + ']';
+      title += " [" + i18nc( "the calendar is read-only", "read-only" ) + ']';
     }
   }
 
