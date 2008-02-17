@@ -1,21 +1,21 @@
 /*
-    Copyright (c) 2000,2001 Cornelius Schumacher <schumacher@kde.org>
-    Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
-    Copyright (c) 2007 Volker Krause <vkrause@kde.org>
+  Copyright (c) 2000,2001 Cornelius Schumacher <schumacher@kde.org>
+  Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+  Copyright (c) 2007 Volker Krause <vkrause@kde.org>
 
-        This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-    GNU General Public License for more details.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
 #ifndef KOATTENDEEEDITOR_H
@@ -52,7 +52,7 @@ class KOAttendeeEditor : public QWidget
   public:
     KOAttendeeEditor( QWidget *parent );
 
-    virtual void insertAttendee( KCal::Attendee* attendee, bool fetchFB = true ) = 0;
+    virtual void insertAttendee( KCal::Attendee *attendee, bool fetchFB = true ) = 0;
 
     virtual void readEvent( KCal::Incidence *incidence );
     virtual void writeEvent( KCal::Incidence *incidence );
@@ -76,16 +76,16 @@ class KOAttendeeEditor : public QWidget
      * from the addressbook and expanding distribution lists.
      * The optional Attendee parameter can be used to pass in default values
      * to be used by the new Attendee. */
-    void insertAttendeeFromAddressee( const KABC::Addressee &a, const KCal::Attendee* at=0 );
+    void insertAttendeeFromAddressee( const KABC::Addressee &a, const KCal::Attendee *at=0 );
 
     void fillOrganizerCombo();
 
-    virtual KCal::Attendee* currentAttendee() const = 0;
+    virtual KCal::Attendee *currentAttendee() const = 0;
     virtual void updateCurrentItem() = 0;
 
     virtual void changeStatusForMe( KCal::Attendee::PartStat status ) = 0;
 
-    virtual bool eventFilter( QObject *, QEvent *);
+    virtual bool eventFilter( QObject *, QEvent * );
 
   protected slots:
     void addNewAttendee();
@@ -100,19 +100,19 @@ class KOAttendeeEditor : public QWidget
   protected:
     KPIM::AddresseeLineEdit *mNameEdit;
     QString mUid;
-    QComboBox* mRoleCombo;
-    QCheckBox* mRsvpButton;
-    QComboBox* mStatusCombo;
+    QComboBox *mRoleCombo;
+    QCheckBox *mRsvpButton;
+    QComboBox *mStatusCombo;
 
-    Q3HBox* mOrganizerHBox;
+    Q3HBox *mOrganizerHBox;
     QComboBox *mOrganizerCombo; // either we organize it (combo shown)
     QLabel *mOrganizerLabel; // or someone else does (just a label is shown)
 
-    QLabel* mDelegateLabel;
+    QLabel *mDelegateLabel;
 
-    QPushButton* mAddButton;
-    QPushButton* mRemoveButton;
-    QPushButton* mAddressBookButton;
+    QPushButton *mAddButton;
+    QPushButton *mRemoveButton;
+    QPushButton *mAddressBookButton;
 
     QList<KCal::Attendee*> mdelAttendees;
 
