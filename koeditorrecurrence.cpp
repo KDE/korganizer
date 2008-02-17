@@ -30,6 +30,7 @@
 
 #include <kcal/todo.h>
 
+#include <KComboBox>
 #include <kdialog.h>
 #include <kglobal.h>
 #include <klocale.h>

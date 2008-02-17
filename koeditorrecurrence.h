@@ -26,16 +26,16 @@
 
 #include <kcal/incidencebase.h>
 
-#include <kdialog.h>
-#include <KComboBox>
+#include <KDialog>
 
 #include <QDateTime>
 #include <QWidget>
 #include <QBitArray>
-#include <QBoxLayout>
-#include <QLabel>
 
+class KComboBox;
+class QBoxLayout;
 class QCheckBox;
+class QLabel;
 class QListWidget;
 class QGroupBox;
 class QRadioButton;
@@ -68,7 +68,7 @@ class RecurBase : public QWidget
     static KComboBox *createWeekdayCombo( QWidget *parent=0 );
     static KComboBox *createMonthNameCombo( QWidget *parent=0 );
     QBoxLayout *createFrequencySpinBar( QWidget *parent, QLayout *layout,
-    const QString &everyText, const QString &unitText );
+                                        const QString &everyText, const QString &unitText );
 
   private:
     QSpinBox *mFrequencyEdit;
@@ -367,7 +367,7 @@ class KOEditorRecurrenceDialog : public KDialog
   Q_OBJECT
   public:
     KOEditorRecurrenceDialog( QWidget *parent );
-    KOEditorRecurrence* editor() const { return mRecurrence; }
+    KOEditorRecurrence *editor() const { return mRecurrence; }
 
   private:
     KOEditorRecurrence *mRecurrence;
