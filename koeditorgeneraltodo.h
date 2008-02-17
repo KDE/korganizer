@@ -27,10 +27,11 @@
 #include "koeditorgeneral.h"
 
 #include <QDateTime>
-#include <QLabel>
 #include <QBoxLayout>
 
 class KComboBox;
+class QBoxLayout;
+class QLabel;
 
 namespace KPIM {
   class KDateEdit;
@@ -61,10 +62,10 @@ class KOEditorGeneralTodo : public KOEditorGeneral
     void setDefaults( const QDateTime &due, bool allDay );
 
     /** Read todo object and setup widgets accordingly */
-    void readTodo(Todo *todo, Calendar *calendar);
+    void readTodo( Todo *todo, Calendar *calendar );
 
     /** Write todo settings to event object */
-    void writeTodo(Todo *);
+    void writeTodo( Todo * );
 
     /** Check if the input is valid. */
     bool validateInput();
@@ -90,7 +91,7 @@ class KOEditorGeneralTodo : public KOEditorGeneral
   protected:
     void setCompletedDate();
 
- private:
+  private:
     KPIM::KTimeZoneComboBox *mTimeZoneComboStart;
     KPIM::KTimeZoneComboBox *mTimeZoneComboDue;
     KDateTime::Spec         mStartSpec;
