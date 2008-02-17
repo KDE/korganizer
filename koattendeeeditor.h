@@ -24,8 +24,8 @@
 #include <QWidget>
 #include <kcal/attendee.h>
 
+class KComboBox;
 class QBoxLayout;
-class QComboBox;
 class QCheckBox;
 class QLabel;
 class QPushButton;
@@ -100,12 +100,12 @@ class KOAttendeeEditor : public QWidget
   protected:
     KPIM::AddresseeLineEdit *mNameEdit;
     QString mUid;
-    QComboBox *mRoleCombo;
+    KComboBox *mRoleCombo;
     QCheckBox *mRsvpButton;
-    QComboBox *mStatusCombo;
+    KComboBox *mStatusCombo;
 
     Q3HBox *mOrganizerHBox;
-    QComboBox *mOrganizerCombo; // either we organize it (combo shown)
+    KComboBox *mOrganizerCombo; // either we organize it (combo shown)
     QLabel *mOrganizerLabel; // or someone else does (just a label is shown)
 
     QLabel *mDelegateLabel;

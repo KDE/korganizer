@@ -31,11 +31,11 @@
 #include <kcal/incidence.h>
 #include <kpimutils/email.h>
 
+#include <KComboBox>
 #include <kiconloader.h>
 #include <klocale.h>
 
 #include <QCheckBox>
-#include <QComboBox>
 #include <Q3HBox>
 #include <QLabel>
 #include <QLayout>
@@ -70,7 +70,7 @@ void KOAttendeeEditor::initOrganizerWidgets( QWidget *parent, QBoxLayout *layout
                             "Control Center' in the 'Personal' section of the "
                             "KOrganizer configuration." );
   mOrganizerLabel = new QLabel( i18n( "Identity as organizer:" ), mOrganizerHBox );
-  mOrganizerCombo = new QComboBox( mOrganizerHBox );
+  mOrganizerCombo = new KComboBox( mOrganizerHBox );
   mOrganizerLabel->setWhatsThis( whatsThis );
   mOrganizerCombo->setWhatsThis( whatsThis );
   fillOrganizerCombo();
@@ -104,7 +104,7 @@ void KOAttendeeEditor::initEditWidgets( QWidget *parent, QBoxLayout *layout )
   attendeeRoleLabel->setText( i18n( "Ro&le:" ) );
   topLayout->addWidget( attendeeRoleLabel, 1, 0 );
 
-  mRoleCombo = new QComboBox( parent );
+  mRoleCombo = new KComboBox( parent );
   mRoleCombo->setWhatsThis( whatsThis );
   mRoleCombo->addItems( Attendee::roleList() );
   attendeeRoleLabel->setBuddy( mRoleCombo );
@@ -121,7 +121,7 @@ void KOAttendeeEditor::initEditWidgets( QWidget *parent, QBoxLayout *layout )
   statusLabel->setText( i18n( "Stat&us:" ) );
   topLayout->addWidget( statusLabel, 2, 0 );
 
-  mStatusCombo = new QComboBox( parent );
+  mStatusCombo = new KComboBox( parent );
   mStatusCombo->setWhatsThis( whatsThis );
   //TODO: the icons below aren't exactly correct
 //   mStatusCombo->addItems( Attendee::statusList() );
@@ -255,7 +255,7 @@ void KOAttendeeEditor::readEvent( KCal::Incidence *incidence )
   mdelAttendees.clear();
   if ( KOPrefs::instance()->thatIsMe( incidence->organizer().email() ) ) {
     if ( !mOrganizerCombo ) {
-      mOrganizerCombo = new QComboBox( mOrganizerHBox );
+      mOrganizerCombo = new KComboBox( mOrganizerHBox );
       fillOrganizerCombo();
     }
     mOrganizerLabel->setText( i18n( "Identity as organizer:" ) );
