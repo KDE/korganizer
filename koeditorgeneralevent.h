@@ -27,8 +27,6 @@
 #include "koeditorgeneral.h"
 
 #include <QDateTime>
-#include <QLabel>
-#include <QBoxLayout>
 
 class QLabel;
 class QCheckBox;
@@ -55,7 +53,7 @@ class KOEditorGeneralEvent : public KOEditorGeneral
 
     void initTime( QWidget *, QBoxLayout * );
     void initClass( QWidget *, QBoxLayout * );
-    void initInvitationBar( QWidget* parent, QBoxLayout *layout );
+    void initInvitationBar( QWidget *parent, QBoxLayout *layout );
 
     void finishSetup();
 
