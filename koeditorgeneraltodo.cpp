@@ -114,7 +114,8 @@ void KOEditorGeneralTodo::initTime( QWidget *parent, QBoxLayout *topLayout )
   mTimeZoneComboDue->setWhatsThis( whatsThis );
 
   whatsThis = i18n( "Sets the start date for this to-do" );
-  mStartCheck = new QCheckBox( i18n( "Sta&rt:" ), timeGroupBox );
+  mStartCheck = new QCheckBox( i18nc( "@option:check to-do start datetime",
+                                      "Sta&rt:" ), timeGroupBox );
   mStartCheck->setWhatsThis( whatsThis );
   layoutTimeBox->addWidget( mStartCheck, 0, 0 );
   connect( mStartCheck, SIGNAL(toggled(bool)), SLOT(enableStartEdit(bool)) );
@@ -521,7 +522,8 @@ void KOEditorGeneralTodo::dateChanged()
   QString dateTimeStr = "";
 
   if ( mStartCheck->isChecked() ) {
-    dateTimeStr += i18n( "Start: %1", l->formatDate( mStartDateEdit->date() ) );
+    dateTimeStr += i18nc( "to-do start datetime",
+                          "Start: %1", l->formatDate( mStartDateEdit->date() ) );
     if ( mTimeButton->isChecked() ) {
       dateTimeStr += QString( " %1" ).arg( l->formatTime( mStartTimeEdit->getTime() ) );
 
