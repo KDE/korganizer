@@ -150,7 +150,7 @@ void KOEditorGeneral::initHeader( QWidget *parent, QBoxLayout *topLayout )
   thirdLineLayout->addWidget( mCategoriesLabel );
 
   mCategoriesButton = new QPushButton( parent );
-  mCategoriesButton->setText(i18n("&Select..."));
+  mCategoriesButton->setText( i18nc( "@action:button select a category", "&Select..." ) );
   mCategoriesButton->setWhatsThis( whatsThis );
   connect( mCategoriesButton, SIGNAL(clicked()), SLOT(selectCategories()) );
   thirdLineLayout->addWidget( mCategoriesButton );
@@ -305,9 +305,9 @@ void KOEditorGeneral::initAlarm( QWidget *parent, QBoxLayout *topLayout )
 
   mAlarmIncrCombo = new KComboBox();
   mAlarmIncrCombo->setWhatsThis( whatsThis );
-  mAlarmIncrCombo->addItem( i18n( "minute(s)" ) );
-  mAlarmIncrCombo->addItem( i18n( "hour(s)" ) );
-  mAlarmIncrCombo->addItem( i18n( "day(s)" ) );
+  mAlarmIncrCombo->addItem( i18nc( "@item:inlistbox alarm expressed in minutes", "minute(s)" ) );
+  mAlarmIncrCombo->addItem( i18nc( "@item:inlistbox alarm expressed in hours", "hour(s)" ) );
+  mAlarmIncrCombo->addItem( i18nc( "@item:inlistbox alarm expressed in days", "day(s)" ) );
 //  mAlarmIncrCombo->setMinimumHeight(20);
   connect( mAlarmButton, SIGNAL(toggled(bool)), mAlarmTimeEdit, SLOT(setEnabled(bool)) );
   connect( mAlarmButton, SIGNAL(toggled(bool)), mAlarmIncrCombo, SLOT(setEnabled(bool)) );
