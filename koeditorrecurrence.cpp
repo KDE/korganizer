@@ -175,7 +175,8 @@ RecurDaily::RecurDaily( QWidget *parent ) : RecurBase( parent )
   topLayout->setSpacing( KDialog::spacingHint() );
 
   createFrequencySpinBar( this, topLayout,
-                          i18nc( "@label", "&Recur every" ), i18nc( "@label", "day(s)" ) );
+                          i18nc( "@label", "&Recur every" ),
+                          i18nc( "@label recurrence expressed in days", "day(s)" ) );
 }
 
 /////////////////////////// RecurWeekly ///////////////////////////////
@@ -1539,7 +1540,7 @@ KOEditorRecurrenceDialog::KOEditorRecurrenceDialog(QWidget * parent) :
     KDialog( parent )
 {
   setModal( false );
-  setCaption( i18n("Recurrence") );
+  setCaption( i18nc( "@title:window", "Recurrence" ) );
   setButtons( Ok );
 
   mRecurrence = new KOEditorRecurrence( this );
