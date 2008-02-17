@@ -99,7 +99,8 @@ class KORGANIZERPRIVATE_EXPORT KOPrefs : public KOPrefsBase
     QString mRetrievePassword;
 
     QStringList timeScaleTimezones();
-    void setTimeScaleTimezones( const QStringList& list );
+    void setTimeScaleTimezones( const QStringList &list );
+
   private:
     QHash<QString,QColor> mCategoryColors;
     QColor mDefaultCategoryColor;
@@ -113,6 +114,7 @@ class KORGANIZERPRIVATE_EXPORT KOPrefs : public KOPrefsBase
     KDateTime::Spec mTimeSpec;
 
     QStringList mTimeScaleTimeZones;
+
   public: // Do not use - except in KOPrefsDialogMain
     QString mName;
     QString mEmail;

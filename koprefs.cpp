@@ -28,7 +28,6 @@
 
 #include <kpimidentities/identitymanager.h>
 #include <kpimidentities/identity.h>
-
 #include <kpimutils/email.h>
 #include <kabc/stdaddressbook.h>
 
@@ -89,7 +88,7 @@ KOPrefs::KOPrefs() :
 
 KOPrefs::~KOPrefs()
 {
-  kDebug(5850) <<"KOPrefs::~KOPrefs()";
+  kDebug(5850);
 }
 
 KOPrefs *KOPrefs::instance()
@@ -145,18 +144,18 @@ void KOPrefs::setTimeZoneDefault()
 {
   KTimeZone zone = KSystemTimeZones::local();
   if ( !zone.isValid() ) {
-    kError() <<"KSystemTimeZones::local() return 0";
+    kError() << "KSystemTimeZones::local() return 0";
     return;
   }
 
-  kDebug (5850) <<"----- time zone:" << zone.name();
+  kDebug (5850) << "----- time zone:" << zone.name();
 
   mTimeSpec = zone;
 }
 
 KDateTime::Spec KOPrefs::timeSpec()
 {
-  if (!mTimeSpec.isValid()) {
+  if ( !mTimeSpec.isValid() ) {
     // Read time zone from config file
     mTimeSpec = KPimPrefs::timeSpec();
   }
@@ -197,7 +196,7 @@ void KOPrefs::usrReadConfig()
 
   // old category colors, ignore if they have the old default
   // should be removed a few versions after 3.2...
-  KConfigGroup colorsConfig( config(), "Category Colors");
+  KConfigGroup colorsConfig( config(), "Category Colors" );
   QList<QColor> oldCategoryColors;
   QStringList::Iterator it;
   for ( it = mCustomCategories.begin();it != mCustomCategories.end();++it ) {
@@ -207,32 +206,32 @@ void KOPrefs::usrReadConfig()
   }
 
   // new category colors
-  KConfigGroup colors2Config( config(), "Category Colors2");
+  KConfigGroup colors2Config( config(), "Category Colors2" );
   QList<QColor>::Iterator it2;
-  for (it = mCustomCategories.begin(), it2 = oldCategoryColors.begin();
-       it != mCustomCategories.end(); ++it, ++it2 ) {
-      QColor c = config()->group(QString()).readEntry(*it, *it2);
-      if ( c != mDefaultCategoryColor )
-          setCategoryColor(*it,c);
+  for ( it = mCustomCategories.begin(), it2 = oldCategoryColors.begin();
+        it != mCustomCategories.end(); ++it, ++it2 ) {
+      QColor c = config()->group( QString() ).readEntry( *it, *it2 );
+      if ( c != mDefaultCategoryColor ) {
+          setCategoryColor( *it, c );
+      }
   }
 
-  KConfigGroup rColorsConfig( config(), "Resources Colors");
+  KConfigGroup rColorsConfig( config(), "Resources Colors" );
   const QStringList colorKeyList = rColorsConfig.keyList();
 
   QStringList::ConstIterator it3;
   for ( it3 = colorKeyList.begin(); it3 != colorKeyList.end(); ++it3 ) {
     QColor color = rColorsConfig.readEntry( *it3, mDefaultResourceColor );
-    kDebug(5850)<<"KOPrefs::usrReadConfig: key:" << (*it3) << "value:"
-                << color;
+    kDebug(5850) << "key:" << (*it3) << "value:" << color;
     setResourceColor( *it3, color );
   }
 
-  if (!mTimeSpec.isValid()) {
+  if ( !mTimeSpec.isValid() ) {
     setTimeZoneDefault();
   }
 
 #if 0
-  config()->setGroup("FreeBusy");
+  config()->setGroup( "FreeBusy" );
   if ( mRememberRetrievePw ) {
     mRetrievePassword =
       KStringHandler::obscure( config()->readEntry( "Retrieve Server Password" ) );
@@ -241,17 +240,16 @@ void KOPrefs::usrReadConfig()
   KConfigGroup timeScaleConfig( config(), "Timescale" );
   setTimeScaleTimezones( timeScaleConfig.readEntry( "Timescale Timezones", QStringList() ) );
 
-
   KPimPrefs::usrReadConfig();
   fillMailDefaults();
 }
 
 void KOPrefs::usrWriteConfig()
 {
-  KConfigGroup generalConfig( config(), "General");
+  KConfigGroup generalConfig( config(), "General" );
   generalConfig.writeEntry( "Custom Categories", mCustomCategories );
 
-  KConfigGroup colors2Config( config(), "Category Colors2");
+  KConfigGroup colors2Config( config(), "Category Colors2" );
   QHash<QString, QColor>::const_iterator i = mCategoryColors.constBegin();
   while ( i != mCategoryColors.constEnd() ) {
     colors2Config.writeEntry( i.key(), i.value() );
@@ -260,7 +258,7 @@ void KOPrefs::usrWriteConfig()
 
   KConfigGroup rColorsConfig( config(), "Resources Colors" );
   i = mResourceColors.constBegin();
-  while (i != mResourceColors.constEnd()) {
+  while ( i != mResourceColors.constEnd() ) {
     rColorsConfig.writeEntry( i.key(), i.value() );
     ++i;
   }
@@ -311,16 +309,14 @@ QColor KOPrefs::categoryColor( const QString &cat ) const
   }
 }
 
-
-bool KOPrefs::hasCategoryColor( const QString& cat ) const
+bool KOPrefs::hasCategoryColor( const QString &cat ) const
 {
     return mCategoryColors[ cat ].isValid();
 }
 
 void KOPrefs::setResourceColor ( const QString &cal, const QColor &color )
 {
-  kDebug(5850)<<"KOPrefs::setResourceColor:" << cal << "color:" <<
-    color.name();
+  kDebug(5850) << cal << "color:" << color.name();
   mResourceColors.insert( cal, color );
 }
 
@@ -334,13 +330,14 @@ QColor KOPrefs::resourceColor( const QString &cal )
   // assign default color if enabled
   if ( !cal.isEmpty() && !color.isValid() && assignDefaultResourceColors() ) {
     QColor defColor( 0x37, 0x7A, 0xBC );
-    if ( defaultResourceColorSeed() > 0 && defaultResourceColorSeed() - 1 < (int)defaultResourceColors().size() ) {
+    if ( defaultResourceColorSeed() > 0 &&
+         defaultResourceColorSeed() - 1 < (int)defaultResourceColors().size() ) {
         defColor = QColor( defaultResourceColors()[defaultResourceColorSeed()-1] );
     } else {
         int h, s, v;
         defColor.getHsv( &h, &s, &v );
         h = ( defaultResourceColorSeed() % 12 ) * 30;
-        s -= s * ( (defaultResourceColorSeed() / 12) % 2 ) * 0.5;
+        s -= s * ( ( defaultResourceColorSeed() / 12 ) % 2 ) * 0.5;
         defColor.setHsv( h, s, v );
     }
     setDefaultResourceColorSeed( defaultResourceColorSeed() + 1 );
@@ -378,7 +375,8 @@ QString KOPrefs::email()
 QStringList KOPrefs::allEmails()
 {
   // Grab emails from the email identities
-  kDebug(5850)<<" KOCore::self()->identityManager() :"<<KOCore::self()->identityManager();
+  kDebug(5850) << " KOCore::self()->identityManager() :"
+               << KOCore::self()->identityManager();
   QStringList lst = KOCore::self()->identityManager()->allEmails();
   // Add emails configured in korganizer
   lst += mAdditionalMails;
@@ -395,20 +393,20 @@ QStringList KOPrefs::fullEmails()
 {
   QStringList fullEmails;
   // The user name and email from the config dialog:
-  fullEmails << QString("%1 <%2>").arg( fullName() ).arg( email() );
+  fullEmails << QString( "%1 <%2>" ).arg( fullName() ).arg( email() );
 
   QStringList::Iterator it;
   // Grab emails from the email identities
   KPIMIdentities::IdentityManager *idmanager = KOCore::self()->identityManager();
   QStringList lst = idmanager->identities();
   KPIMIdentities::IdentityManager::ConstIterator it1;
-  for ( it1 = idmanager->begin() ; it1 != idmanager->end() ; ++it1 ) {
+  for ( it1 = idmanager->begin(); it1 != idmanager->end(); ++it1 ) {
     fullEmails << (*it1).fullEmailAddr();
   }
   // Add emails configured in korganizer
   lst = mAdditionalMails;
   for ( it = lst.begin(); it != lst.end(); ++it ) {
-    fullEmails << QString("%1 <%2>").arg( fullName() ).arg( *it );
+    fullEmails << QString( "%1 <%2>" ).arg( fullName() ).arg( *it );
   }
   // Add emails from the user's kaddressbook entry
   KABC::Addressee me = KABC::StdAddressBook::self( true )->whoAmI();
