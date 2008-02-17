@@ -330,7 +330,7 @@ void KOEditorGeneral::addAttachments( const QStringList &attachments,
                                       bool inlineAttachments )
 {
   QStringList::ConstIterator it;
-  uint i = 0;
+  int i = 0;
   for ( it = attachments.begin(); it != attachments.end(); ++it, ++i ) {
     QString mimeType;
     if ( mimeTypes.count() > i ) {
