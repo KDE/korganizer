@@ -26,18 +26,18 @@
 
 #include "koattendeeeditor.h"
 
-#include <QWidget>
 #include <QDateTime>
 #include <QTimer>
 
+class FreeBusyItem;
 class KDIntervalColorRectangle;
 class KComboBox;
-class QLabel;
-class QTimerEvent;
 class KDateTime;
 class KDGanttView;
 class KDGanttViewItem;
-class FreeBusyItem;
+class QLabel;
+class QTimerEvent;
+class QWidget;
 
 namespace KCal {
   class Event;
@@ -91,11 +91,11 @@ class KOEditorFreeBusy : public KOAttendeeEditor
     void slotIntervalColorRectangleMoved( const QDateTime &start, const QDateTime &end );
 
     void removeAttendee();
-    void listViewClicked( int button, KDGanttViewItem* item );
+    void listViewClicked( int button, KDGanttViewItem *item );
 
   protected:
     void timerEvent( QTimerEvent * );
-    KCal::Attendee* currentAttendee() const;
+    KCal::Attendee *currentAttendee() const;
     void updateCurrentItem();
     void clearSelection() const;
     void changeStatusForMe( KCal::Attendee::PartStat status );
