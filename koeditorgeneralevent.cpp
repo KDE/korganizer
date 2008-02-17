@@ -170,16 +170,16 @@ void KOEditorGeneralEvent::initTime( QWidget *parent, QBoxLayout *topLayout )
   layoutTimeBox->addMultiCellLayout( recLayout, 2, 2, 1, 4 );
   mRecurrenceSummary = new QLabel( QString(), timeGroupBox );
   recLayout->addWidget( mRecurrenceSummary );
-  QPushButton *recEditButton = new QPushButton( i18n("Edit..."), timeGroupBox );
+  QPushButton *recEditButton = new QPushButton( i18n( "Edit..." ), timeGroupBox );
   recLayout->addWidget( recEditButton );
   connect( recEditButton, SIGNAL(clicked()), SIGNAL(editRecurrence()) );
   recLayout->addStretch( 1 );
 
-  QLabel *label = new QLabel( i18n("Reminder:"), timeGroupBox );
+  QLabel *label = new QLabel( i18n( "Reminder:" ), timeGroupBox );
   layoutTimeBox->addWidget( label, 3, 0 );
   QBoxLayout *alarmLineLayout = new QHBoxLayout();
   layoutTimeBox->addMultiCellLayout( alarmLineLayout, 3, 3, 1, 3 );
-  initAlarm( timeGroupBox, alarmLineLayout);
+  initAlarm( timeGroupBox, alarmLineLayout );
   alarmLineLayout->addStretch( 1 );
 
   QBoxLayout *secLayout = new QHBoxLayout();
@@ -211,7 +211,7 @@ void KOEditorGeneralEvent::initClass( QWidget *parent, QBoxLayout *topLayout )
   freeTimeLabel->setBuddy( mFreeTimeCombo );
 }
 
-void KOEditorGeneralEvent::initInvitationBar(QWidget * parent, QBoxLayout * layout)
+void KOEditorGeneralEvent::initInvitationBar( QWidget *parent, QBoxLayout *layout )
 {
   QBoxLayout *topLayout = new QHBoxLayout( layout );
   mInvitationBar = new QFrame( parent );
@@ -219,14 +219,16 @@ void KOEditorGeneralEvent::initInvitationBar(QWidget * parent, QBoxLayout * layo
 
   QBoxLayout *barLayout = new QHBoxLayout( mInvitationBar );
   barLayout->setSpacing( layout->spacing() );
-  QLabel *label = new QLabel( i18n("You have not yet definitely responded to this invitation." ), mInvitationBar );
+  QLabel *label =
+    new QLabel( i18n( "You have not yet definitely responded to this invitation." ),
+                mInvitationBar );
   barLayout->addWidget( label );
   barLayout->addStretch( 1 );
-  QPushButton *button = new QPushButton( i18n("Accept"), mInvitationBar );
+  QPushButton *button = new QPushButton( i18n( "Accept" ), mInvitationBar );
   connect( button, SIGNAL(clicked()), SIGNAL(acceptInvitation()) );
   connect( button, SIGNAL(clicked()), mInvitationBar, SLOT(hide()) );
   barLayout->addWidget( button );
-  button = new QPushButton( i18n("Decline"), mInvitationBar );
+  button = new QPushButton( i18n( "Decline" ), mInvitationBar );
   connect( button, SIGNAL(clicked()), SIGNAL(declineInvitation()) );
   connect( button, SIGNAL(clicked()), mInvitationBar, SLOT(hide()) );
   barLayout->addWidget( button );
@@ -394,14 +396,16 @@ void KOEditorGeneralEvent::readEvent( Event *event, Calendar *calendar, bool isT
   mRecurrenceSummary->setText( IncidenceFormatter::recurrenceString( event ) );
 
   Attendee *me = event->attendeeByMails( KOPrefs::instance()->allEmails() );
-  if ( me && (me->status() == Attendee::NeedsAction || me->status() == Attendee::Tentative ||
-       me->status() == Attendee::InProcess) ) {
+  if ( me &&
+       ( me->status() == Attendee::NeedsAction ||
+         me->status() == Attendee::Tentative ||
+         me->status() == Attendee::InProcess ) ) {
     mInvitationBar->show();
   } else {
     mInvitationBar->hide();
   }
 
-  readIncidence(event, calendar);
+  readIncidence( event, calendar );
 }
 
 void KOEditorGeneralEvent::writeEvent( Event *event )
@@ -567,7 +571,7 @@ bool KOEditorGeneralEvent::validateInput()
   return KOEditorGeneral::validateInput();
 }
 
-void KOEditorGeneralEvent::updateRecurrenceSummary(const QString & summary)
+void KOEditorGeneralEvent::updateRecurrenceSummary( const QString &summary )
 {
   mRecurrenceSummary->setText( summary );
 }
