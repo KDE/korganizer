@@ -297,7 +297,7 @@ void KOAttendeeEditor::readEvent(KCal::Incidence * incidence)
       delete mOrganizerCombo;
       mOrganizerCombo = 0;
     }
-    mOrganizerLabel->setText( i18n( "Organizer: %1" ).arg( incidence->organizer().fullName() ) );
+    mOrganizerLabel->setText( i18n( "Organizer: %1", incidence->organizer().fullName() ) );
   }
 
   Attendee::List al = incidence->attendees();
@@ -327,7 +327,7 @@ void KOAttendeeEditor::setEnableAttendeeInput(bool enabled)
 void KOAttendeeEditor::clearAttendeeInput()
 {
   mNameEdit->setText("");
-  mUid = QString::null;
+  mUid = QString();
   mRoleCombo->setCurrentItem(0);
   mStatusCombo->setCurrentItem(0);
   mRsvpButton->setChecked(true);
@@ -378,9 +378,9 @@ void KOAttendeeEditor::fillAttendeeInput( KCal::Attendee *a )
   mDisableItemUpdate = true;
 
   QString name = a->name();
-  if (!a->email().isEmpty()) {
+  if ( !a->email().isEmpty() ) {
     name = KPIMUtils::quoteNameIfNecessary( name );
-    name += " <" + a->email() + ">";
+    name += " <" + a->email() + '>';
   }
   mNameEdit->setText(name);
   mUid = a->uid();
@@ -393,9 +393,9 @@ void KOAttendeeEditor::fillAttendeeInput( KCal::Attendee *a )
 
   if ( a->status() == Attendee::Delegated ) {
     if ( !a->delegate().isEmpty() )
-      mDelegateLabel->setText( i18n( "Delegated to %1" ).arg( a->delegate() ) );
+      mDelegateLabel->setText( i18n( "Delegated to %1", a->delegate() ) );
     else if ( !a->delegator().isEmpty() )
-      mDelegateLabel->setText( i18n( "Delegated from %1" ).arg( a->delegator() ) );
+      mDelegateLabel->setText( i18n( "Delegated from %1", a->delegator() ) );
     else
       mDelegateLabel->setText( i18n( "Not delegated" ) );
   }
