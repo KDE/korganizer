@@ -118,6 +118,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase, pub
         bool visit( Event *event ) { return mView->deleteEvent( event ); }
         bool visit( Todo *todo ) { return mView->deleteTodo( todo ); }
         bool visit( Journal *journal ) { return mView->deleteJournal( journal ); }
+        bool visit( FreeBusy * ) { return false; }
     };
 
     void setCalendar( Calendar * );
