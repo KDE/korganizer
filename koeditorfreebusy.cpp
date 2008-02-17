@@ -793,7 +793,7 @@ void KOEditorFreeBusy::writeEvent( Incidence *incidence )
 
   // cleanup
   QVector<FreeBusyItem*>::iterator it;
-  for( it = toBeDeleted.begin(); it != toBeDeleted.end(); ++it ) {
+  for ( it = toBeDeleted.begin(); it != toBeDeleted.end(); ++it ) {
     delete *it;
   }
 }
@@ -802,8 +802,9 @@ KCal::Attendee * KOEditorFreeBusy::currentAttendee() const
 {
   KDGanttViewItem *item = mGanttView->selectedItem();
   FreeBusyItem *aItem = static_cast<FreeBusyItem*>( item );
-  if ( !aItem )
+  if ( !aItem ) {
     return 0;
+  }
   return aItem->attendee();
 }
 
@@ -820,8 +821,9 @@ void KOEditorFreeBusy::updateCurrentItem()
 void KOEditorFreeBusy::removeAttendee()
 {
   FreeBusyItem *item = static_cast<FreeBusyItem*>( mGanttView->selectedItem() );
-  if ( !item )
+  if ( !item ) {
     return;
+  }
 
   Attendee *delA = new Attendee( item->attendee()->name(), item->attendee()->email(),
                                  item->attendee()->RSVP(), item->attendee()->status(),
@@ -837,19 +839,20 @@ void KOEditorFreeBusy::removeAttendee()
 void KOEditorFreeBusy::clearSelection() const
 {
   KDGanttViewItem *item = mGanttView->selectedItem();
-  if ( item )
+  if ( item ) {
     mGanttView->setSelected( item, false );
+  }
   mGanttView->repaint();
   item->repaint();
 }
 
-void KOEditorFreeBusy::changeStatusForMe(KCal::Attendee::PartStat status)
+void KOEditorFreeBusy::changeStatusForMe( KCal::Attendee::PartStat status )
 {
   const QStringList myEmails = KOPrefs::instance()->allEmails();
-  for ( FreeBusyItem *item = static_cast<FreeBusyItem *>( mGanttView->firstChild() ); item;
-        item = static_cast<FreeBusyItem*>( item->nextSibling() ) )
-  {
-    for ( QStringList::ConstIterator it2( myEmails.begin() ), end( myEmails.end() ); it2 != end; ++it2 ) {
+  for ( FreeBusyItem *item = static_cast<FreeBusyItem *>( mGanttView->firstChild() );
+        item; item = static_cast<FreeBusyItem*>( item->nextSibling() ) ) {
+    for ( QStringList::ConstIterator it2( myEmails.begin() ), end( myEmails.end() );
+          it2 != end; ++it2 ) {
       if ( item->attendee()->email() == *it2 ) {
         item->attendee()->setStatus( status );
         item->updateItem();
@@ -860,29 +863,39 @@ void KOEditorFreeBusy::changeStatusForMe(KCal::Attendee::PartStat status)
 
 void KOEditorFreeBusy::showAttendeeStatusMenu()
 {
-  if ( mGanttView->mapFromGlobal( QCursor::pos() ).x() > 22 )
+  if ( mGanttView->mapFromGlobal( QCursor::pos() ).x() > 22 ) {
     return;
+  }
+
   QPopupMenu popup;
-  popup.insertItem( SmallIcon( "help-about" ), Attendee::statusName( Attendee::NeedsAction ), Attendee::NeedsAction );
-  popup.insertItem( KOGlobals::self()->smallIcon( "dialog-ok-apply" ), Attendee::statusName( Attendee::Accepted ), Attendee::Accepted );
-  popup.insertItem( KOGlobals::self()->smallIcon( "dialog-cancel" ), Attendee::statusName( Attendee::Declined ), Attendee::Declined );
-  popup.insertItem( KOGlobals::self()->smallIcon( "dialog-ok" ), Attendee::statusName( Attendee::Tentative ), Attendee::Tentative );
-  popup.insertItem( KOGlobals::self()->smallIcon( "mail-forward" ), Attendee::statusName( Attendee::Delegated ), Attendee::Delegated );
-  popup.insertItem( Attendee::statusName( Attendee::Completed ), Attendee::Completed );
-  popup.insertItem( KOGlobals::self()->smallIcon( "help-about" ), Attendee::statusName( Attendee::InProcess ), Attendee::InProcess );
+  popup.insertItem( KOGlobals::self()->smallIcon( "help-about" ),
+                    Attendee::statusName( Attendee::NeedsAction ), Attendee::NeedsAction );
+  popup.insertItem( KOGlobals::self()->smallIcon( "dialog-ok-apply" ),
+                    Attendee::statusName( Attendee::Accepted ), Attendee::Accepted );
+  popup.insertItem( KOGlobals::self()->smallIcon( "dialog-cancel" ),
+                    Attendee::statusName( Attendee::Declined ), Attendee::Declined );
+  popup.insertItem( KOGlobals::self()->smallIcon( "dialog-ok" ),
+                    Attendee::statusName( Attendee::Tentative ), Attendee::Tentative );
+  popup.insertItem( KOGlobals::self()->smallIcon( "mail-forward" ),
+                    Attendee::statusName( Attendee::Delegated ), Attendee::Delegated );
+  popup.insertItem( KOGlobals::self()->smallIcon( "mail-mark-read" ),
+                    Attendee::statusName( Attendee::Completed ), Attendee::Completed );
+  popup.insertItem( KOGlobals::self()->smallIcon( "help-about" ),
+                    Attendee::statusName( Attendee::InProcess ), Attendee::InProcess );
   popup.setItemChecked( currentAttendee()->status(), true );
   int status = popup.exec( QCursor::pos() );
   if ( status >= 0 ) {
-    currentAttendee()->setStatus( (Attendee::PartStat)status );
+    currentAttendee()->setStatus( static_cast<Attendee::PartStat>( status ) );
     updateCurrentItem();
     updateAttendeeInput();
   }
 }
 
-void KOEditorFreeBusy::listViewClicked(int button, KDGanttViewItem * item)
+void KOEditorFreeBusy::listViewClicked( int button, KDGanttViewItem *item )
 {
-  if ( button == Qt::LeftButton && item == 0 )
+  if ( button == Qt::LeftButton && item == 0 ) {
     addNewAttendee();
+  }
 }
 
 #include "koeditorfreebusy.moc"
