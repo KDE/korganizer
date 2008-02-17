@@ -123,8 +123,9 @@ void KOAttendeeEditor::initEditWidgets( QWidget *parent, QBoxLayout *layout )
 
   mStatusCombo = new QComboBox( parent );
   mStatusCombo->setWhatsThis( whatsThis );
+  //TODO: the icons below aren't exactly correct
 //   mStatusCombo->addItems( Attendee::statusList() );
-  mStatusCombo->addItem( SmallIcon( "help-about" ),
+  mStatusCombo->addItem( KOGlobals::self()->smallIcon( "help-about" ),
                          Attendee::statusName( Attendee::NeedsAction ) );
   mStatusCombo->addItem( KOGlobals::self()->smallIcon( "dialog-ok-apply" ),
                          Attendee::statusName( Attendee::Accepted ) );
@@ -134,7 +135,8 @@ void KOAttendeeEditor::initEditWidgets( QWidget *parent, QBoxLayout *layout )
                          Attendee::statusName( Attendee::Tentative ) );
   mStatusCombo->addItem( KOGlobals::self()->smallIcon( "mail-forward" ),
                          Attendee::statusName( Attendee::Delegated ) );
-  mStatusCombo->addItem( Attendee::statusName( Attendee::Completed ) );
+  mStatusCombo->addItem( KOGlobals::self()->smallIcon( "mail-mark-read" ),
+                         Attendee::statusName( Attendee::Completed ) ),
   mStatusCombo->addItem( KOGlobals::self()->smallIcon( "help-about" ),
                          Attendee::statusName( Attendee::InProcess ) );
 
