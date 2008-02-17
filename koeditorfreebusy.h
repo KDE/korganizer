@@ -59,8 +59,8 @@ class KOEditorFreeBusy : public KOAttendeeEditor
     void removeAttendee( KCal::Attendee * );
     void clearAttendees();
 
-    void readEvent( KCal::Event * );
-    void writeEvent( KCal::Event *event );
+    void readEvent( KCal::Incidence *incidence );
+    void writeEvent( KCal::Incidence *incidence );
 
     void triggerReload();
     void cancelReload();

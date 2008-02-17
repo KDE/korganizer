@@ -402,19 +402,19 @@ bool KOEditorFreeBusy::updateEnabled() const
   return mGanttView->getUpdateEnabled();
 }
 
-void KOEditorFreeBusy::readEvent( Event *event )
+void KOEditorFreeBusy::readEvent( Incidence *incidence )
 {
   bool block = updateEnabled();
   setUpdateEnabled( false );
   clearAttendees();
 
   KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
-  setDateTimes( event->dtStart().toTimeSpec( timeSpec ).dateTime(),
-                event->dtEnd().toTimeSpec( timeSpec ).dateTime() );
-  mIsOrganizer = KOPrefs::instance()->thatIsMe( event->organizer().email() );
+  setDateTimes( incidence->dtStart().toTimeSpec( timeSpec ).dateTime(),
+                incidence->dtEnd().toTimeSpec( timeSpec ).dateTime() );
+  mIsOrganizer = KOPrefs::instance()->thatIsMe( incidence->organizer().email() );
   updateStatusSummary();
   clearSelection();
-  KOAttendeeEditor::readEvent( event );
+  KOAttendeeEditor::readEvent( incidence );
 
   setUpdateEnabled( block );
   emit updateAttendeeSummary( mGanttView->childCount() );
@@ -745,9 +745,9 @@ void KOEditorFreeBusy::editFreeBusyUrl( KDGanttViewItem *i )
   dialog.exec();
 }
 
-void KOEditorFreeBusy::writeEvent(KCal::Event * event)
+void KOEditorFreeBusy::writeEvent( Incidence *incidence )
 {
-  event->clearAttendees();
+  incidence->clearAttendees();
   QVector<FreeBusyItem*> toBeDeleted;
   for ( FreeBusyItem *item = static_cast<FreeBusyItem *>( mGanttView->firstChild() ); item;
         item = static_cast<FreeBusyItem*>( item->nextSibling() ) )
@@ -780,12 +780,12 @@ void KOEditorFreeBusy::writeEvent(KCal::Event * event)
         }
       }
       if ( !skip ) {
-        event->addAttendee( new Attendee( *attendee ) );
+        incidence->addAttendee( new Attendee( *attendee ) );
       }
     }
   }
 
-  KOAttendeeEditor::writeEvent( event );
+  KOAttendeeEditor::writeEvent( incidence );
 
   // cleanup
   QVector<FreeBusyItem*>::iterator it;
