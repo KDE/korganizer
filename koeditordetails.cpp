@@ -321,10 +321,8 @@ void KOEditorDetails::writeIncidence( Incidence *incidence )
   KOAttendeeEditor::writeEvent( incidence );
 
   // cleanup
-  QVector<Q3ListViewItem*>::iterator it;
-  for( it = toBeDeleted.begin(); it != toBeDeleted.end(); ++it ) {
-    delete *it;
-  }
+  qDeleteAll( toBeDeleted );
+  toBeDeleted.clear();
 }
 
 bool KOEditorDetails::validateInput()

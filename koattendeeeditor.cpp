@@ -309,7 +309,7 @@ void KOAttendeeEditor::setEnableAttendeeInput( bool enabled )
 void KOAttendeeEditor::clearAttendeeInput()
 {
   mNameEdit->setText( "" );
-  mUid = QString();
+  mUid.clear();
   mRoleCombo->setCurrentIndex( 0 );
   mStatusCombo->setCurrentIndex( 0 );
   mRsvpButton->setChecked( true );

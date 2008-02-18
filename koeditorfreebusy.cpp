@@ -792,10 +792,8 @@ void KOEditorFreeBusy::writeEvent( Incidence *incidence )
   KOAttendeeEditor::writeEvent( incidence );
 
   // cleanup
-  QVector<FreeBusyItem*>::iterator it;
-  for ( it = toBeDeleted.begin(); it != toBeDeleted.end(); ++it ) {
-    delete *it;
-  }
+  qDeleteAll( toBeDeleted );
+  toBeDeleted.clear();
 }
 
 KCal::Attendee * KOEditorFreeBusy::currentAttendee() const
