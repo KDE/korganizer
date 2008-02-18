@@ -23,8 +23,8 @@
 #include "themeimporter.h"
 #include "koprefs.h"
 
-#include <kdebug.h>
 #include <KIO/NetAccess>
+#include <KDebug>
 #include <KMimeType>
 #include <KStandardDirs>
 #include <KZip>
@@ -37,14 +37,15 @@ using namespace KOrg;
 
 void Theme::useThemeFrom( const KUrl &url )
 {
-  if ( url.isEmpty() )
+  if ( url.isEmpty() ) {
     return;
+  }
 
-  QFile* file = new QFile( url.path() ); // FIXME: does it work with remote URLs?
-  kDebug(5850) << file->fileName();
-  if ( ( ! file->open(QFile::ReadOnly | QFile::Text) ) || ( ! url.isLocalFile() ) ) {
+  QFile *file = new QFile( url.path() ); // FIXME: does it work with remote URLs?
+  kDebug() << file->fileName();
+  if ( ( !file->open( QFile::ReadOnly | QFile::Text ) ) || ( !url.isLocalFile() ) ) {
     //TODO: KMessageBox "invalid file"
-    kDebug(5850) <<"Theme: can't import: invalid file: (1)" << url.path();
+    kDebug() << "can't import: invalid file: (1)" << url.path();
     return;
   }
 
@@ -54,30 +55,30 @@ void Theme::useThemeFrom( const KUrl &url )
   if ( mimeType->name() == "application/zip" ) {
     KZip *zip = new KZip( url.path() );
 
-    if ( ! zip->open(QIODevice::ReadOnly) ) {
+    if ( !zip->open( QIODevice::ReadOnly ) ) {
       //TODO: KMessageBox "invalid file"
-      kDebug(5850) <<"Theme: can't import: invalid file: (3)" << url.path();
+      kDebug() << "can't import: invalid file: (3)" << url.path();
       return;
     }
 
     const KArchiveDirectory *dir = zip->directory();
     if ( dir == 0 ) {
       //TODO: KMessageBox "invalid file"
-      kDebug(5850) <<"Theme: can't import: invalid file: (4)" << url.path();
+      kDebug() << "can't import: invalid file: (4)" << url.path();
       return;
     }
 
     if ( ! KIO::NetAccess::del( KUrl::fromPath( storageDir().absolutePath() ),
                                 0 ) ) {
-      kWarning() <<"Theme: could not delete stale theme files";
+      kWarning() << "could not delete stale theme files";
     }
     dir->copyTo( storageDir().path() );
 
     file = new QFile( storageDir().path() + "/theme.xml" );
 
-    if ( ! file->open(QFile::ReadOnly | QFile::Text) ) {
+    if ( !file->open( QFile::ReadOnly | QFile::Text ) ) {
       //TODO: KMessageBox "invalid file"
-      kDebug(5850) <<"Theme: can't import: invalid file: (5)" << url.path();
+      kDebug() << "can't import: invalid file: (5)" << url.path();
       return;
     }
 
@@ -85,18 +86,16 @@ void Theme::useThemeFrom( const KUrl &url )
     mimeType = KMimeType::findByUrl( storageDir().path() + "/theme.xml" );
     if ( mimeType->name() != "application/xml" ) {
       //TODO: KMessageBox "invalid file"
-      kDebug(5850) <<"Theme: can't import: invalid file: (6)" << url.path();
+      kDebug() << "can't import: invalid file: (6)" << url.path();
       return;
     }
   } else if ( mimeType->name() == "application/xml" ) {
-    KIO::NetAccess::file_copy( url.path(),
-                               storageDir().path() + '/', 0 );
+    KIO::NetAccess::file_copy( url.path(), storageDir().path() + '/', 0 );
   } else {
     //TODO: KMessageBox "invalid file"
-    kDebug(5850) <<"Theme: can't import: invalid file: (2)" << url.path();
+    kDebug() << "can't import: invalid file: (2)" << url.path();
     return;
   }
-
 
   clearCurrentTheme();
   ThemeImporter reader( file );
@@ -106,19 +105,19 @@ void Theme::saveThemeTo( const KUrl &url )
 {
   KZip *zip = new KZip( url.path() );
 
-  if ( ! zip->open(QIODevice::WriteOnly) ) {
+  if ( ! zip->open( QIODevice::WriteOnly ) ) {
       //TODO: KMessageBox "no write permission"
-    kDebug(5850) <<"Theme: can't export: no write permission:" << url.path();
+    kDebug() << "can't export: no write permission:" << url.path();
     return;
   }
   if ( ! zip->addLocalDirectory( storageDir().absolutePath(), QString() ) ) {
       //TODO: KMessageBox "could not add theme files"
-    kDebug(5850) <<"Theme: can't export: could not add theme files to:" << url.path();
+    kDebug() << "can't export: could not add theme files to:" << url.path();
     return;
   }
   if ( ! zip->close() ) {
       //TODO: KMessageBox "could not write theme file"
-    kDebug(5850) <<"Theme: can't export: could not close theme file:" << url.path();
+    kDebug() << "can't export: could not close theme file:" << url.path();
     return;
   }
 }
@@ -145,11 +144,9 @@ const QStringList Theme::themableViews( const QString &viewType )
   // TODO:  TodoView?
   if ( l.contains( viewType ) ) {
     return QStringList( viewType );
-  }
-  else if ( viewType.isEmpty() ) {
+  } else if ( viewType.isEmpty() ) {
     return l;
-  }
-  else {
+  } else {
     return QStringList();
   }
 }

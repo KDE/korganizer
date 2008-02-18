@@ -88,29 +88,27 @@ bool MailScheduler::performTransaction( IncidenceBase *incidence,
 QList<ScheduleMessage*> MailScheduler::retrieveTransactions()
 {
   QString incomingDirName = KStandardDirs::locateLocal( "data", "korganizer/income" );
-  kDebug(5850) <<"MailScheduler::retrieveTransactions: dir:"
-                << incomingDirName;
+  kDebug() << "dir:" << incomingDirName;
 
   QList<ScheduleMessage*> messageList;
 
   QDir incomingDir( incomingDirName );
   QStringList incoming = incomingDir.entryList( QDir::Files );
   QStringList::ConstIterator it;
-  for( it = incoming.begin(); it != incoming.end(); ++it ) {
-    kDebug(5850) <<"-- File:" << (*it);
+  for ( it = incoming.begin(); it != incoming.end(); ++it ) {
+    kDebug() << "-- File:" << (*it);
 
     QFile f( incomingDirName + '/' + (*it) );
     bool inserted = false;
-    QMap<IncidenceBase*, QString>::Iterator iter;
+    QMap<IncidenceBase *, QString>::Iterator iter;
     for ( iter = mEventMap.begin(); iter != mEventMap.end(); ++iter ) {
-      if ( iter.value() == incomingDirName + '/' + (*it) )
+      if ( iter.value() == incomingDirName + '/' + (*it) ) {
         inserted = true;
+      }
     }
     if ( !inserted ) {
       if ( !f.open( QIODevice::ReadOnly ) ) {
-        kDebug(5850)
-          << "MailScheduler::retrieveTransactions(): Can't open file'"
-          << (*it) << "'";
+        kDebug() << "Can't open file'" << (*it) << "'";
       } else {
         QTextStream t( &f );
         t.setCodec( "ISO 8859-1" );
@@ -119,10 +117,8 @@ QList<ScheduleMessage*> MailScheduler::retrieveTransactions()
         messageString = QString::fromUtf8( messageString.toLatin1() );
         ScheduleMessage *mess = mFormat->parseScheduleMessage( mCalendar,
                                                                messageString );
-        if ( mess) {
-          kDebug(5850)
-            << "MailScheduler::retrieveTransactions: got message '"
-            << (*it) << "'";
+        if ( mess ) {
+          kDebug() << "got message '" << (*it) << "'";
           messageList.append( mess );
           mEventMap[ mess->event() ] = incomingDirName + '/' + (*it);
         } else {
@@ -130,9 +126,7 @@ QList<ScheduleMessage*> MailScheduler::retrieveTransactions()
           if ( mFormat->exception() ) {
             errorMessage = mFormat->exception()->message();
           }
-          kDebug(5850)
-            << "MailScheduler::retrieveTransactions() Error parsing message:"
-            << errorMessage;
+          kDebug() << "Error parsing message:" << errorMessage;
         }
         f.close();
       }
