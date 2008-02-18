@@ -34,14 +34,17 @@
 #include <kmessagebox.h>
 #include <klocale.h>
 
-bool IncidenceChanger::beginChange( Incidence * incidence )
+bool IncidenceChanger::beginChange( Incidence *incidence )
 {
-  if ( !incidence ) return false;
-  kDebug(5850)<<"IncidenceChanger::beginChange for incidence \""<<incidence->summary()<<"\"";
+  if ( !incidence ) {
+    return false;
+  }
+  kDebug() << "for incidence \"" << incidence->summary() << "\"";
   return mCalendar->beginChange( incidence );
 }
 
-bool IncidenceChanger::sendGroupwareMessage( Incidence *incidence, KCal::iTIPMethod method, bool deleting )
+bool IncidenceChanger::sendGroupwareMessage( Incidence *incidence,
+                                             KCal::iTIPMethod method, bool deleting )
 {
   if ( KOPrefs::instance()->thatIsMe( incidence->organizer().email() ) &&
        incidence->attendeeCount() > 0 &&
@@ -58,9 +61,12 @@ bool IncidenceChanger::sendGroupwareMessage( Incidence *incidence, KCal::iTIPMet
 void IncidenceChanger::cancelAttendees( Incidence *incidence )
 {
   if ( KOPrefs::instance()->mUseGroupwareCommunication ) {
-    if ( KMessageBox::questionYesNo( 0, i18n("Some attendees were removed "
-       "from the incidence. Shall cancel messages be sent to these attendees?"),
-       i18n( "Attendees Removed" ), KGuiItem(i18n("Send Messages")), KGuiItem(i18n("Do Not Send")) ) == KMessageBox::Yes ) {
+    if ( KMessageBox::questionYesNo(
+           0,
+           i18n( "Some attendees were removed from the incidence. "
+                 "Shall cancel messages be sent to these attendees?" ),
+           i18n( "Attendees Removed" ), KGuiItem( i18n( "Send Messages" ) ),
+           KGuiItem( i18n( "Do Not Send" ) ) ) == KMessageBox::Yes ) {
       // don't use KOGroupware::sendICalMessage here, because that asks just
       // a very general question "Other people are involved, send message to
       // them?", which isn't helpful at all in this situation. Afterwards, it
@@ -85,7 +91,7 @@ bool IncidenceChanger::endChange( Incidence *incidence )
     return false;
   }
 
-  kDebug(5850) << "\"" << incidence->summary() << "\"";
+  kDebug() << "\"" << incidence->summary() << "\"";
   return mCalendar->endChange( incidence );
 }
 
@@ -95,7 +101,7 @@ bool IncidenceChanger::deleteIncidence( Incidence *incidence )
     return true;
   }
 
-  kDebug(5850) << "\"" << incidence->summary() << "\"";
+  kDebug() << "\"" << incidence->summary() << "\"";
   bool doDelete = sendGroupwareMessage( incidence, KCal::iTIPCancel );
   if( doDelete ) {
     // @TODO: let Calendar::deleteIncidence do the locking...
@@ -112,7 +118,7 @@ bool IncidenceChanger::cutIncidence( Incidence *incidence )
     return true;
   }
 
-  kDebug(5850) << "\"" << incidence->summary() << "\"";
+  kDebug() << "\"" << incidence->summary() << "\"";
   bool doDelete = sendGroupwareMessage( incidence, KCal::iTIPCancel );
   if( doDelete ) {
     // @TODO: the factory needs to do the locking!
@@ -131,11 +137,13 @@ class IncidenceChanger::ComparisonVisitor : public IncidenceBase::Visitor
     bool act( IncidenceBase *incidence, IncidenceBase *inc2 )
     {
       mIncidence2 = inc2;
-      if ( incidence )
+      if ( incidence ) {
         return incidence->accept( *this );
-      else
-        return (inc2 == 0);
+      } else {
+        return inc2 == 0;
+      }
     }
+
   protected:
     bool visit( Event *event )
     {
@@ -144,7 +152,7 @@ class IncidenceChanger::ComparisonVisitor : public IncidenceBase::Visitor
         return *event == *ev2;
       } else {
         // either both 0, or return false;
-        return ( ev2 == event );
+        return ev2 == event;
       }
     }
     bool visit( Todo *todo )
@@ -154,7 +162,7 @@ class IncidenceChanger::ComparisonVisitor : public IncidenceBase::Visitor
         return *todo == *to2;
       } else {
         // either both 0, or return false;
-        return ( todo == to2 );
+        return todo == to2;
       }
     }
     bool visit( Journal *journal )
@@ -164,7 +172,7 @@ class IncidenceChanger::ComparisonVisitor : public IncidenceBase::Visitor
         return *journal == *j2;
       } else {
         // either both 0, or return false;
-        return ( journal == j2 );
+        return journal == j2;
       }
     }
     bool visit( FreeBusy *fb )
@@ -174,7 +182,7 @@ class IncidenceChanger::ComparisonVisitor : public IncidenceBase::Visitor
         return *fb == *fb2;
       } else {
         // either both 0, or return false;
-        return ( fb2 == fb );
+        return fb2 == fb;
       }
     }
 
@@ -189,10 +197,11 @@ class IncidenceChanger::AssignmentVisitor : public IncidenceBase::Visitor
     bool act( IncidenceBase *incidence, IncidenceBase *inc2 )
     {
       mIncidence2 = inc2;
-      if ( incidence )
+      if ( incidence ) {
         return incidence->accept( *this );
-      else
+      } else {
         return false;
+      }
     }
   protected:
     bool visit( Event *event )
@@ -267,18 +276,18 @@ bool IncidenceChanger::myAttendeeStatusChanged( Incidence *oldInc, Incidence *ne
 bool IncidenceChanger::changeIncidence( Incidence *oldinc, Incidence *newinc,
                                         int action, bool counter )
 {
-  kDebug(5850) << "for incidence \"" << newinc->summary()
-               << "\" ( old one was \"" << oldinc->summary() << "\")";
+  kDebug() << "for incidence \"" << newinc->summary()
+           << "\" ( old one was \"" << oldinc->summary() << "\")";
 
   if ( incidencesEqual( newinc, oldinc ) ) {
     // Don't do anything
-    kDebug(5850) << "Incidence not changed";
+    kDebug() << "Incidence not changed";
     if ( counter ) {
       KCal::MailScheduler scheduler( mCalendar );
       scheduler.performTransaction( newinc, KCal::iTIPReply );
     }
   } else {
-    kDebug(5850) << "Changing incidence";
+    kDebug() << "Changing incidence";
     bool statusChanged = myAttendeeStatusChanged( oldinc, newinc );
     int revision = newinc->revision();
     newinc->setRevision( revision + 1 );
@@ -303,14 +312,15 @@ bool IncidenceChanger::changeIncidence( Incidence *oldinc, Incidence *newinc,
       // pseudo counter as done by outlook
       Event *e = dynamic_cast<Event*>( newinc );
       if ( e ) {
-        Incidence* tmp = oldinc->clone();
+        Incidence *tmp = oldinc->clone();
         tmp->setSummary( i18n( "Counter proposal: %1", e->summary() ) );
         tmp->setDescription( e->description() );
-        tmp->addComment( i18n( "Proposed new meeting time: %1 - %2", e->dtStartStr(), e->dtEndStr() ) );
+        tmp->addComment( i18n( "Proposed new meeting time: %1 - %2",
+                               e->dtStartStr(), e->dtEndStr() ) );
         KCal::MailScheduler scheduler( mCalendar );
         scheduler.performTransaction( tmp, KCal::iTIPReply );
       } else {
-        kWarning(5850) << k_funcinfo << "Counter proposals only supported for events" << endl;
+        kWarning() << "Counter proposals only supported for events" << endl;
       }
     }
 
@@ -324,7 +334,7 @@ bool IncidenceChanger::changeIncidence( Incidence *oldinc, Incidence *newinc,
 
 bool IncidenceChanger::addIncidence( Incidence *incidence, QWidget *parent )
 {
-  kDebug(5850) << "\"" << incidence->summary() << "\"";
+  kDebug() << "\"" << incidence->summary() << "\"";
   if ( KOPrefs::instance()->mUseGroupwareCommunication ) {
     if ( !KOGroupware::instance()->sendICalMessage( parent,
                                                     KCal::iTIPRequest,
@@ -349,10 +359,10 @@ bool IncidenceChanger::addIncidence( Incidence *incidence, QWidget *parent )
     stdcal->setDialogParentWidget( tmpparent );
   }
   if ( !success ) {
-    kDebug(5850) << "failed";
+    kDebug() << "failed";
     KMessageBox::sorry( parent,
                         i18n( "Unable to save %1 \"%2\".",
-                              i18n( incidence->type() ) ,
+                              i18n( incidence->type() ),
                               incidence->summary() ) );
     return false;
   }
