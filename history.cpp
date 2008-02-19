@@ -1,26 +1,26 @@
 /*
-    This file is part of KOrganizer.
+  This file is part of KOrganizer.
 
-    Copyright (c) 2003 Cornelius Schumacher <schumacher@kde.org>
-    Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+  Copyright (c) 2003 Cornelius Schumacher <schumacher@kde.org>
+  Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-    GNU General Public License for more details.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-    As a special exception, permission is given to link this program
-    with any edition of Qt, and distribute the resulting executable,
-    without including the source code for Qt in the source distribution.
+  As a special exception, permission is given to link this program
+  with any edition of Qt, and distribute the resulting executable,
+  without including the source code for Qt in the source distribution.
 */
 
 #include "history.h"
@@ -29,23 +29,25 @@
 #include <kcal/incidence.h>
 
 #include <klocale.h>
-#include <kdebug.h>
-#include <QList>
 
 using namespace KCal;
 using namespace KOrg;
 
-History::History( KCal::Calendar *calendar )
+History::History( Calendar *calendar )
   : mCalendar( calendar ), mCurrentMultiEntry( 0 )
 {
 }
 
 void History::undo()
 {
-  if ( mUndoEntries.isEmpty() ) return;
+  if ( mUndoEntries.isEmpty() ) {
+    return;
+  }
 
   Entry *entry = mUndoEntries.pop();
-  if ( !entry ) return;
+  if ( !entry ) {
+    return;
+  }
 
   entry->undo();
   mRedoEntries.push( entry );
@@ -58,16 +60,24 @@ void History::undo()
     // to pop it from the stack to be able to investigate it, and then re-add it.
     entry = mUndoEntries.pop();
     mUndoEntries.push( entry );
-    emit undoAvailable( (entry)?(entry->text()):QString() );
-  } else emit undoAvailable( QString() );
+    emit undoAvailable( entry ? entry->text() : QString() );
+  } else {
+    emit undoAvailable( QString() );
+  }
 }
 
 void History::redo()
 {
-  if ( mRedoEntries.isEmpty() ) return;
-  if ( mCurrentMultiEntry ) mCurrentMultiEntry = 0;
+  if ( mRedoEntries.isEmpty() ) {
+    return;
+  }
+  if ( mCurrentMultiEntry ) {
+    mCurrentMultiEntry = 0;
+  }
   Entry *entry = mRedoEntries.pop();
-  if ( !entry ) return;
+  if ( !entry ) {
+    return;
+  }
 
   emit undoAvailable( entry->text() );
 
@@ -80,8 +90,10 @@ void History::redo()
     // to pop it from the stack to be able to investigate it, and then re-add it.
     entry = mRedoEntries.pop();
     mRedoEntries.push( entry );
-    emit redoAvailable( (entry)?(entry->text()):QString() );
-  } else emit redoAvailable( QString() );
+    emit redoAvailable( entry ? entry->text() : QString() );
+  } else {
+    emit redoAvailable( QString() );
+  }
 }
 
 void History::truncate()
@@ -91,9 +103,9 @@ void History::truncate()
   emit redoAvailable( QString() );
 }
 
-void History::addEntry( Entry* entry )
+void History::addEntry( Entry *entry )
 {
-  if (mCurrentMultiEntry) {
+  if ( mCurrentMultiEntry ) {
     mCurrentMultiEntry->appendEntry( entry );
   } else {
     truncate();
@@ -101,7 +113,6 @@ void History::addEntry( Entry* entry )
     emit undoAvailable( entry->text() );
   }
 }
-
 
 void History::recordDelete( Incidence *incidence )
 {
@@ -132,8 +143,7 @@ void History::endMultiModify()
   mCurrentMultiEntry = 0;
 }
 
-
-History::Entry::Entry( KCal::Calendar *calendar )
+History::Entry::Entry( Calendar *calendar )
   : mCalendar( calendar )
 {
 }
@@ -166,9 +176,8 @@ void History::EntryDelete::redo()
 
 QString History::EntryDelete::text()
 {
-  return i18n("Delete %1", QString::fromLatin1( mIncidence->type() ) );
+  return i18n( "Delete %1", QString::fromLatin1( mIncidence->type() ) );
 }
-
 
 History::EntryAdd::EntryAdd( Calendar *calendar, Incidence *incidence )
   : Entry( calendar ), mIncidence( incidence->clone() )
@@ -183,8 +192,9 @@ History::EntryAdd::~EntryAdd()
 void History::EntryAdd::undo()
 {
   Incidence *incidence = mCalendar->incidence( mIncidence->uid() );
-  if ( incidence )
+  if ( incidence ) {
     mCalendar->deleteIncidence( incidence );
+  }
 }
 
 void History::EntryAdd::redo()
@@ -195,9 +205,8 @@ void History::EntryAdd::redo()
 
 QString History::EntryAdd::text()
 {
-  return i18n("Add %1", QString::fromLatin1( mIncidence->type() ) );
+  return i18n( "Add %1", QString::fromLatin1( mIncidence->type() ) );
 }
-
 
 History::EntryEdit::EntryEdit( Calendar *calendar, Incidence *oldIncidence,
                                Incidence *newIncidence )
@@ -215,8 +224,9 @@ History::EntryEdit::~EntryEdit()
 void History::EntryEdit::undo()
 {
   Incidence *incidence = mCalendar->incidence( mNewIncidence->uid() );
-  if ( incidence )
-      mCalendar->deleteIncidence( incidence );
+  if ( incidence ) {
+    mCalendar->deleteIncidence( incidence );
+  }
   // TODO: Use the proper resource instead of asking again
   mCalendar->addIncidence( mOldIncidence->clone() );
 }
@@ -224,15 +234,16 @@ void History::EntryEdit::undo()
 void History::EntryEdit::redo()
 {
   Incidence *incidence = mCalendar->incidence( mOldIncidence->uid() );
-  if ( incidence )
-      mCalendar->deleteIncidence( incidence );
+  if ( incidence ) {
+    mCalendar->deleteIncidence( incidence );
+  }
   // TODO: Use the proper resource instead of asking again
   mCalendar->addIncidence( mNewIncidence->clone() );
 }
 
 QString History::EntryEdit::text()
 {
-  return i18n("Edit %1", QString::fromLatin1( mNewIncidence->type() ) );
+  return i18n( "Edit %1", QString::fromLatin1( mNewIncidence->type() ) );
 }
 
 History::MultiEntry::MultiEntry( Calendar *calendar, const QString &text )
@@ -245,7 +256,7 @@ History::MultiEntry::~MultiEntry()
   qDeleteAll( mEntries );
 }
 
-void History::MultiEntry::appendEntry( Entry* entry )
+void History::MultiEntry::appendEntry( Entry *entry )
 {
   mEntries.append( entry );
 }
@@ -253,15 +264,18 @@ void History::MultiEntry::appendEntry( Entry* entry )
 void History::MultiEntry::undo()
 {
   for ( int i = mEntries.size()-1; i>=0; --i ) {
-    Entry* entry = mEntries.at( i );
-    if ( entry ) entry->undo();
+    Entry *entry = mEntries.at( i );
+    if ( entry ) {
+      entry->undo();
+    }
   }
 }
 
 void History::MultiEntry::redo()
 {
-  foreach( Entry* entry, mEntries ) 
+  foreach ( Entry *entry, mEntries ) {
     entry->redo();
+  }
 }
 
 QString History::MultiEntry::text()

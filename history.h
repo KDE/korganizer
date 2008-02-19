@@ -29,8 +29,8 @@
 #include <QList>
 
 namespace KCal {
-class Calendar;
-class Incidence;
+  class Calendar;
+  class Incidence;
 }
 
 namespace KOrg {
@@ -64,7 +64,7 @@ class History : public QObject
 
   protected:
     void truncate();
-    void addEntry( Entry* entry );
+    void addEntry( Entry *entry );
 
   private:
 
@@ -136,7 +136,7 @@ class History : public QObject
         MultiEntry( KCal::Calendar *calendar, const QString &text );
         ~MultiEntry();
 
-        void appendEntry( Entry* entry );
+        void appendEntry( Entry *entry );
         void undo();
         void redo();
 
