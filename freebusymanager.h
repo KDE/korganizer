@@ -35,22 +35,26 @@
 #ifndef FREEBUSYMANAGER_H
 #define FREEBUSYMANAGER_H
 
-#include <kurl.h>
 #include <kcal/icalformat.h>
 #include <kcal/freebusycache.h>
-#include <QString>
-#include <QObject>
-//Added by qt3to4:
-#include <QTimerEvent>
-#include <QByteArray>
 
-namespace KIO { class Job; }
+#include <KUrl>
+
+#include <QByteArray>
+#include <QObject>
+#include <QString>
+
+namespace KIO {
+  class Job;
+}
 namespace KCal {
-class Calendar;
-class FreeBusy;
+  class Calendar;
+  class FreeBusy;
 }
 class FreeBusyManager;
 class KJob;
+class QTimerEvent;
+
 /**
  * Class for downloading FreeBusy Lists
  */
@@ -65,10 +69,10 @@ class FreeBusyDownloadJob : public QObject
 
   protected slots:
     void slotResult( KJob * );
-    void slotData(  KIO::Job *, const QByteArray &data );
+    void slotData( KIO::Job *, const QByteArray &data );
 
   signals:
-    void freeBusyDownloaded( KCal::FreeBusy *, const QString& );
+    void freeBusyDownloaded( KCal::FreeBusy *, const QString & );
 
   private:
     FreeBusyManager *mManager;
@@ -140,7 +144,7 @@ class FreeBusyManager : public QObject, public KCal::FreeBusyCache
     void freeBusyRetrieved( KCal::FreeBusy *, const QString &email );
 
   protected:
-    void timerEvent( QTimerEvent* );
+    void timerEvent( QTimerEvent * );
 
     /**
       Return free/busy list of calendar owner as iCalendar string.

@@ -24,13 +24,13 @@
 #ifndef FREEBUSYURLDIALOG_H
 #define FREEBUSYURLDIALOG_H
 
-#include <kdialog.h>
+#include <KDialog>
 
 class FreeBusyUrlWidget;
 class KLineEdit;
 
 namespace KCal {
-class Attendee;
+  class Attendee;
 }
 
 class FreeBusyUrlDialog : public KDialog

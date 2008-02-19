@@ -86,7 +86,7 @@ FreeBusyUrlWidget::~FreeBusyUrlWidget()
 
 void FreeBusyUrlWidget::loadConfig()
 {
-  kDebug(5850);
+  kDebug();
 
   QString url = KCal::FreeBusyUrlStore::self()->readUrl( mAttendee->email() );
   mUrlEdit->setText( url );
@@ -94,7 +94,7 @@ void FreeBusyUrlWidget::loadConfig()
 
 void FreeBusyUrlWidget::saveConfig()
 {
-  kDebug(5850);
+  kDebug();
 
   QString url = mUrlEdit->text();
   KCal::FreeBusyUrlStore::self()->writeUrl( mAttendee->email(), url );
