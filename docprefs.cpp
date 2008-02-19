@@ -27,43 +27,43 @@
 #include <kconfig.h>
 #include <kconfiggroup.h>
 #include <kstandarddirs.h>
-#include <kdebug.h>
 
 KConfig *DocPrefs::mConfig = 0;
 
 DocPrefs::DocPrefs( const QString &type )
 {
-    if ( !mConfig ) {
-        mConfig = new KConfig( KStandardDirs::locateLocal( "data", "korganizer/docprefs." + type + ".kconfig" ) );
-    }
+  if ( !mConfig ) {
+    mConfig = new KConfig(
+      KStandardDirs::locateLocal( "data", "korganizer/docprefs." + type + ".kconfig" ) );
+  }
 }
 
 DocPrefs::~DocPrefs()
 {
-    mConfig->sync();
+  mConfig->sync();
 }
 
 void DocPrefs::setDoc( const QString &identifier )
 {
-    mDocId = identifier;
+  mDocId = identifier;
 }
 
 QString DocPrefs::doc() const
 {
-    return mDocId;
+  return mDocId;
 }
 
 bool DocPrefs::readBoolEntry( const QString &id ) const
 {
-    KConfigGroup docConfig( mConfig, mDocId );
-    bool result = docConfig.readEntry( id, false );
-    return result;
+  KConfigGroup docConfig( mConfig, mDocId );
+  bool result = docConfig.readEntry( id, false );
+  return result;
 }
 
 void DocPrefs::writeBoolEntry( const QString &id, bool value )
 {
-    KConfigGroup docConfig( mConfig, mDocId );
-    docConfig.writeEntry( id, value );
+  KConfigGroup docConfig( mConfig, mDocId );
+  docConfig.writeEntry( id, value );
 }
 
 int DocPrefs::readNumEntry( const QString &id ) const

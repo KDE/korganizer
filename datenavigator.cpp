@@ -1,33 +1,31 @@
 /*
-    This file is part of KOrganizer.
-    Copyright (c) 2002 Cornelius Schumacher <schumacher@kde.org>
-    Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+  This file is part of KOrganizer.
+  Copyright (c) 2002 Cornelius Schumacher <schumacher@kde.org>
+  Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-    GNU General Public License for more details.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-    As a special exception, permission is given to link this program
-    with any edition of Qt, and distribute the resulting executable,
-    without including the source code for Qt in the source distribution.
+  As a special exception, permission is given to link this program
+  with any edition of Qt, and distribute the resulting executable,
+  without including the source code for Qt in the source distribution.
 */
 
 #include "datenavigator.h"
-
 #include "koglobals.h"
 
 #include <kcalendarsystem.h>
-
 #include <kdebug.h>
 #include <kglobal.h>
 #include <klocale.h>
@@ -53,11 +51,10 @@ int DateNavigator::datesCount() const
   return mSelectedDates.count();
 }
 
-void DateNavigator::selectDates( const DateList& dateList )
+void DateNavigator::selectDates( const DateList &dateList )
 {
-  if (dateList.count() > 0) {
+  if ( dateList.count() > 0 ) {
     mSelectedDates = dateList;
-
     emitSelected();
   }
 }
@@ -67,7 +64,7 @@ void DateNavigator::selectDate( const QDate &date )
   QDate d = date;
 
   if ( !d.isValid() ) {
-    kDebug(5850) <<"DateNavigator::selectDates(QDate): an invalid date was passed as a parameter!";
+    kDebug() << "an invalid date was passed as a parameter!";
     d = QDate::currentDate();
   }
 
@@ -87,12 +84,11 @@ void DateNavigator::selectDates( const QDate &d, int count )
   DateList dates;
 
   int i;
-  for( i = 0; i < count; ++i ) {
+  for ( i = 0; i < count; ++i ) {
     dates.append( d.addDays( i ) );
   }
 
   mSelectedDates = dates;
-
   emitSelected();
 }
 
@@ -243,7 +239,7 @@ void DateNavigator::selectNext()
   selectDates( mSelectedDates.first().addDays( offset ), datesCount() );
 }
 
-void DateNavigator::selectMonth(int month)
+void DateNavigator::selectMonth( int month )
 {
   QDate firstSelected = mSelectedDates.first();
   int weekDay = firstSelected.dayOfWeek();
@@ -254,7 +250,9 @@ void DateNavigator::selectMonth(int month)
   int days = calSys->daysInMonth( firstSelected );
   // As day we use either the selected date, or if the month has less days
   // than that, we use the max day of that month
-  if ( day > days ) day = days;
+  if ( day > days ) {
+    day = days;
+  }
   calSys->setYMD( firstSelected, calSys->year( firstSelected ), month, day );
 
   selectWeekByDay( weekDay, firstSelected );

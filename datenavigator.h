@@ -72,7 +72,7 @@ class DateNavigator : public QObject
     void selectPrevious();
     void selectNext();
 
-    void selectMonth(int month);
+    void selectMonth( int month );
 
   signals:
     void datesSelected( const KCal::DateList & );

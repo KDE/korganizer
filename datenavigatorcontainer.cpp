@@ -87,7 +87,11 @@ void DateNavigatorContainer::setCalendar( Calendar *cal )
 {
   mCalendar = cal;
   mNavigatorView->setCalendar( cal );
-  foreach( KDateNavigator *n, mExtraViews ) { if (n) n->setCalendar( cal ); }
+  foreach ( KDateNavigator *n, mExtraViews ) {
+    if ( n ) {
+      n->setCalendar( cal );
+    }
+  }
 }
 
 // TODO_Recurrence: let the navigators update just once, and tell them that
@@ -96,25 +100,41 @@ void DateNavigatorContainer::setCalendar( Calendar *cal )
 void DateNavigatorContainer::updateDayMatrix()
 {
   mNavigatorView->updateDayMatrix();
-  foreach ( KDateNavigator *n, mExtraViews ) { if (n) n->updateDayMatrix(); }
+  foreach ( KDateNavigator *n, mExtraViews ) {
+    if ( n ) {
+      n->updateDayMatrix();
+    }
+  }
 }
 
 void DateNavigatorContainer::updateToday()
 {
   mNavigatorView->updateToday();
-  foreach ( KDateNavigator *n, mExtraViews ) { if (n) n->updateToday(); }
+  foreach ( KDateNavigator *n, mExtraViews ) {
+    if ( n ) {
+      n->updateToday();
+    }
+  }
 }
 
 void DateNavigatorContainer::updateView()
 {
   mNavigatorView->updateView();
-  foreach ( KDateNavigator *n, mExtraViews ) { if (n) n->updateView(); }
+  foreach ( KDateNavigator *n, mExtraViews ) {
+    if ( n ) {
+      n->updateView();
+    }
+  }
 }
 
 void DateNavigatorContainer::updateConfig()
 {
   mNavigatorView->updateConfig();
-  foreach ( KDateNavigator *n, mExtraViews ) { if (n) n->updateConfig(); }
+  foreach ( KDateNavigator *n, mExtraViews ) {
+    if ( n ) {
+      n->updateConfig();
+    }
+  }
 }
 
 void DateNavigatorContainer::selectDates( const DateList &dateList )
@@ -132,16 +152,18 @@ void DateNavigatorContainer::selectDates( const DateList &dateList )
       navlast = mNavigatorView->endDate();
       navsecond = navfirst;
     }
-    if ( start < navfirst // <- start should always be visible
+    if ( start < navfirst || // <- start should always be visible
          // end is not visible and we have a spare month at the beginning:
-         || ( end > navlast && start >= navsecond ) ) {
+         ( end > navlast && start >= navsecond ) ) {
       // Change the shown months so that the beginning of the date list is visible
       setBaseDates( start );
     }
 
     mNavigatorView->selectDates( dateList );
     foreach ( KDateNavigator *n, mExtraViews ) {
-      if (n) n->selectDates( dateList );
+      if ( n ) {
+        n->selectDates( dateList );
+      }
     }
   }
 }
@@ -159,11 +181,11 @@ void DateNavigatorContainer::setBaseDates( const QDate &start )
 void DateNavigatorContainer::resizeEvent( QResizeEvent * )
 {
 #if 0
-  kDebug(5850) <<"DateNavigatorContainer::resizeEvent()";
-  kDebug(5850) <<"  CURRENT SIZE:" << size();
-  kDebug(5850) <<"  MINIMUM SIZEHINT:" << minimumSizeHint();
-  kDebug(5850) <<"  SIZEHINT:" << sizeHint();
-  kDebug(5850) <<"  MINIMUM SIZE:" << minimumSize();
+  kDebug() << "DateNavigatorContainer::resizeEvent()";
+  kDebug() << "  CURRENT SIZE:" << size();
+  kDebug() << "  MINIMUM SIZEHINT:" << minimumSizeHint();
+  kDebug() << "  SIZEHINT:" << sizeHint();
+  kDebug() << "  MINIMUM SIZE:" << minimumSize();
 #endif
   QTimer::singleShot( 0, this, SLOT( resizeAllContents() ) );
 }
@@ -172,16 +194,17 @@ void DateNavigatorContainer::resizeAllContents()
 {
   QSize minSize = mNavigatorView->minimumSizeHint();
 
-//  kDebug(5850) <<"  NAVIGATORVIEW minimumSizeHint:" << minSize;
+//  kDebug() << "  NAVIGATORVIEW minimumSizeHint:" << minSize;
 
   int margin = KDialog::spacingHint();
-  int verticalCount = ( size().height() - margin*2 ) / minSize.height();
-  int horizontalCount = ( size().width() - margin*2 ) / minSize.width();
+  int verticalCount = ( size().height() - margin * 2 ) / minSize.height();
+  int horizontalCount = ( size().width() - margin * 2 ) / minSize.width();
 
-  if ( horizontalCount != mHorizontalCount ||
-       verticalCount != mVerticalCount ) {
+  if ( horizontalCount != mHorizontalCount || verticalCount != mVerticalCount ) {
     int count = horizontalCount * verticalCount;
-    if ( count == 0 ) return;
+    if ( count == 0 ) {
+      return;
+    }
 
     while ( count > ( mExtraViews.count() + 1 ) ) {
       KDateNavigator *n = new KDateNavigator( this );
@@ -199,33 +222,44 @@ void DateNavigatorContainer::resizeAllContents()
     mVerticalCount = verticalCount;
     setBaseDates( mNavigatorView->selectedDates().first() );
     selectDates( mNavigatorView->selectedDates() );
-    foreach( KDateNavigator *n, mExtraViews ) { if ( n ) n->show(); }
+    foreach ( KDateNavigator *n, mExtraViews ) {
+      if ( n ) {
+        n->show();
+      }
+    }
   }
 
-  int height = (size().height() - margin*2) / verticalCount;
-  int width = (size().width() - margin*2) / horizontalCount;
+  int height = ( size().height() - margin * 2 ) / verticalCount;
+  int width = ( size().width() - margin * 2 ) / horizontalCount;
 
   NavigatorBar *bar = mNavigatorView->navigatorBar();
-  if ( horizontalCount > 1 ) bar->showButtons( true, false );
-  else bar->showButtons( true, true );
+  if ( horizontalCount > 1 ) {
+    bar->showButtons( true, false );
+  } else {
+    bar->showButtons( true, true );
+  }
 
-  mNavigatorView->setGeometry(
-      ( ( (KOGlobals::self()->reverseLayout())?(horizontalCount-1):0) * width ) + margin,
-        margin, width, height );
-  for( int i = 0; i < mExtraViews.count(); ++i ) {
+  mNavigatorView->setGeometry( ( ( ( KOGlobals::self()->reverseLayout() ) ?
+                                   ( horizontalCount - 1 ) : 0 ) * width ) + margin,
+                               margin, width, height );
+  for ( int i = 0; i < mExtraViews.count(); ++i ) {
     int x = ( i + 1 ) % horizontalCount;
     int y = ( i + 1 ) / horizontalCount;
 
     KDateNavigator *view = mExtraViews.at( i );
     bar = view->navigatorBar();
-    if ( y > 0 ) bar->showButtons( false, false );
-    else {
-        if ( x + 1 == horizontalCount ) bar->showButtons( false, true );
-        else bar->showButtons( false, false );
+    if ( y > 0 ) {
+      bar->showButtons( false, false );
+    } else {
+      if ( x + 1 == horizontalCount ) {
+        bar->showButtons( false, true );
+      } else {
+        bar->showButtons( false, false );
+      }
     }
-    view->setGeometry(
-        ( ( (KOGlobals::self()->reverseLayout())?(horizontalCount-1-x):x) * width ) + margin,
-          ( y * height ) + margin, width, height );
+    view->setGeometry( ( ( ( KOGlobals::self()->reverseLayout() ) ?
+                           ( horizontalCount - 1 - x ) : x ) * width ) + margin,
+                       ( y * height ) + margin, width, height );
   }
 }
 

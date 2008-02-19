@@ -29,10 +29,10 @@
 using namespace KCal;
 
 #include <QFrame>
-#include <QResizeEvent>
 #include <QList>
 
 class KDateNavigator;
+class QResizeEvent;
 
 class DateNavigatorContainer: public QFrame
 {
