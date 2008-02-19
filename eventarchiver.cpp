@@ -37,31 +37,30 @@
 #include <ktemporaryfile.h>
 #include <kmessagebox.h>
 
-EventArchiver::EventArchiver( QObject* parent, const char* name )
+EventArchiver::EventArchiver( QObject *parent )
  : QObject( parent )
 {
-  setObjectName( name );
 }
 
 EventArchiver::~EventArchiver()
 {
 }
 
-void EventArchiver::runOnce( Calendar* calendar, const QDate& limitDate, QWidget* widget )
+void EventArchiver::runOnce( Calendar *calendar, const QDate &limitDate, QWidget *widget )
 {
   run( calendar, limitDate, widget, true, true );
 }
 
-void EventArchiver::runAuto( Calendar* calendar, QWidget* widget, bool withGUI )
+void EventArchiver::runAuto( Calendar *calendar, QWidget *widget, bool withGUI )
 {
   QDate limitDate( QDate::currentDate() );
   int expiryTime = KOPrefs::instance()->mExpiryTime;
-  switch (KOPrefs::instance()->mExpiryUnit) {
+  switch ( KOPrefs::instance()->mExpiryUnit ) {
   case KOPrefs::UnitDays: // Days
     limitDate = limitDate.addDays( -expiryTime );
     break;
   case KOPrefs::UnitWeeks: // Weeks
-    limitDate = limitDate.addDays( -expiryTime*7 );
+    limitDate = limitDate.addDays( -expiryTime * 7 );
     break;
   case KOPrefs::UnitMonths: // Months
     limitDate = limitDate.addMonths( -expiryTime );
@@ -72,7 +71,8 @@ void EventArchiver::runAuto( Calendar* calendar, QWidget* widget, bool withGUI )
   run( calendar, limitDate, widget, withGUI, false );
 }
 
-void EventArchiver::run( Calendar* calendar, const QDate& limitDate, QWidget* widget, bool withGUI, bool errorIfNone )
+void EventArchiver::run( Calendar *calendar, const QDate &limitDate, QWidget *widget,
+                         bool withGUI, bool errorIfNone )
 {
   // We need to use rawEvents, otherwise events hidden by filters will not be archived.
   Incidence::List incidences;
@@ -91,7 +91,7 @@ void EventArchiver::run( Calendar* calendar, const QDate& limitDate, QWidget* wi
   if ( KOPrefs::instance()->mArchiveTodos ) {
     Todo::List t = calendar->rawTodos();
     Todo::List::ConstIterator it;
-    for( it = t.begin(); it != t.end(); ++it ) {
+    for ( it = t.begin(); it != t.end(); ++it ) {
       if ( (*it) && ( (*it)->isCompleted() ) &&  ( (*it)->completed().date() < limitDate ) ) {
         todos.append( *it );
       }
@@ -100,16 +100,17 @@ void EventArchiver::run( Calendar* calendar, const QDate& limitDate, QWidget* wi
 
   incidences = Calendar::mergeIncidenceList( events, todos, journals );
 
-
-  kDebug(5850) <<"EventArchiver: archiving incidences before" << limitDate <<" ->" << incidences.count() <<" incidences found.";
+  kDebug() << "archiving incidences before" << limitDate
+           << " ->" << incidences.count() <<" incidences found.";
   if ( incidences.isEmpty() ) {
-    if ( withGUI && errorIfNone )
-      KMessageBox::information( widget, i18n("There are no items before %1",
-                           KGlobal::locale()->formatDate(limitDate)),
-                          "ArchiverNoIncidences" );
+    if ( withGUI && errorIfNone ) {
+      KMessageBox::information( widget,
+                                i18n( "There are no items before %1",
+                                      KGlobal::locale()->formatDate( limitDate ) ),
+                                "ArchiverNoIncidences" );
+    }
     return;
   }
-
 
   switch ( KOPrefs::instance()->mArchiveAction ) {
   case KOPrefs::actionDelete:
@@ -121,31 +122,38 @@ void EventArchiver::run( Calendar* calendar, const QDate& limitDate, QWidget* wi
   }
 }
 
-void EventArchiver::deleteIncidences( Calendar* calendar, const QDate& limitDate, QWidget* widget, const Incidence::List& incidences, bool withGUI )
+void EventArchiver::deleteIncidences( Calendar *calendar, const QDate &limitDate, QWidget *widget,
+                                      const Incidence::List &incidences, bool withGUI )
 {
   QStringList incidenceStrs;
   Incidence::List::ConstIterator it;
-  for( it = incidences.begin(); it != incidences.end(); ++it ) {
+  for ( it = incidences.begin(); it != incidences.end(); ++it ) {
     incidenceStrs.append( (*it)->summary() );
   }
 
   if ( withGUI ) {
     int result = KMessageBox::warningContinueCancelList(
-      widget, i18n("Delete all items before %1 without saving?\n"
-                 "The following items will be deleted:",
-       KGlobal::locale()->formatDate(limitDate)), incidenceStrs,
-		 i18n("Delete Old Items"),KStandardGuiItem::del());
-    if (result != KMessageBox::Continue)
+      widget,
+      i18n( "Delete all items before %1 without saving?\n"
+            "The following items will be deleted:",
+            KGlobal::locale()->formatDate( limitDate ) ),
+      incidenceStrs,
+      i18n( "Delete Old Items" ), KStandardGuiItem::del() );
+    if ( result != KMessageBox::Continue ) {
       return;
+    }
   }
-  for( it = incidences.begin(); it != incidences.end(); ++it ) {
+  for ( it = incidences.begin(); it != incidences.end(); ++it ) {
     calendar->deleteIncidence( *it );
   }
   emit eventsDeleted();
 }
 
-void EventArchiver::archiveIncidences( Calendar* calendar, const QDate& /*limitDate*/, QWidget* widget, const Incidence::List& incidences, bool /*withGUI*/)
+void EventArchiver::archiveIncidences( Calendar *calendar, const QDate &limitDate, QWidget *widget,
+                                       const Incidence::List &incidences, bool withGUI )
 {
+  Q_UNUSED( limitDate );
+  Q_UNUSED( withGUI );
   FileStorage storage( calendar );
 
   // Save current calendar to disk
@@ -153,7 +161,7 @@ void EventArchiver::archiveIncidences( Calendar* calendar, const QDate& /*limitD
   tmpFile.open();
   storage.setFileName( tmpFile.fileName() );
   if ( !storage.save() ) {
-    kDebug(5850) <<"EventArchiver::archiveEvents(): Can't save calendar to temp file";
+    kDebug() << "Can't save calendar to temp file";
     return;
   }
 
@@ -165,8 +173,8 @@ void EventArchiver::archiveIncidences( Calendar* calendar, const QDate& /*limitD
 
   FileStorage archiveStore( &archiveCalendar );
   archiveStore.setFileName( tmpFile.fileName() );
-  if (!archiveStore.load()) {
-    kDebug(5850) <<"EventArchiver::archiveEvents(): Can't load calendar from temp file";
+  if ( !archiveStore.load() ) {
+    kDebug() << "Can't load calendar from temp file";
     return;
   }
 
@@ -175,10 +183,10 @@ void EventArchiver::archiveIncidences( Calendar* calendar, const QDate& /*limitD
   QStringList uids;
   Incidence::List allIncidences = archiveCalendar.rawIncidences();
   Incidence::List::ConstIterator it;
-  for( it = incidences.begin(); it != incidences.end(); ++it ) {
+  for ( it = incidences.begin(); it != incidences.end(); ++it ) {
     uids << (*it)->uid();
   }
-  for( it = allIncidences.begin(); it != allIncidences.end(); ++it ) {
+  for ( it = allIncidences.begin(); it != allIncidences.end(); ++it ) {
     if ( !uids.contains( (*it)->uid() ) ) {
       archiveCalendar.deleteIncidence( *it );
     }
@@ -190,13 +198,13 @@ void EventArchiver::archiveIncidences( Calendar* calendar, const QDate& /*limitD
 
   if ( KIO::NetAccess::exists( archiveURL, KIO::NetAccess::SourceSide, widget ) ) {
     if( !KIO::NetAccess::download( archiveURL, archiveFile, widget ) ) {
-      kDebug(5850) <<"EventArchiver::archiveEvents(): Can't download archive file";
+      kDebug() << "Can't download archive file";
       return;
     }
     // Merge with events to be archived.
     archiveStore.setFileName( archiveFile );
     if ( !archiveStore.load() ) {
-      kDebug(5850) <<"EventArchiver::archiveEvents(): Can't merge with archive file";
+      kDebug() << "Can't merge with archive file";
       return;
     }
   } else {
@@ -205,24 +213,24 @@ void EventArchiver::archiveIncidences( Calendar* calendar, const QDate& /*limitD
 
   // Save archive calendar
   if ( !archiveStore.save() ) {
-    KMessageBox::error(widget,i18n("Cannot write archive file %1.", archiveStore.fileName() ));
+    KMessageBox::error( widget, i18n( "Cannot write archive file %1.", archiveStore.fileName() ) );
     return;
   }
 
   // Upload if necessary
   KUrl srcUrl;
-  srcUrl.setPath(archiveFile);
-  if (srcUrl != archiveURL) {
+  srcUrl.setPath( archiveFile );
+  if ( srcUrl != archiveURL ) {
     if ( !KIO::NetAccess::upload( archiveFile, archiveURL, widget ) ) {
-      KMessageBox::error(widget,i18n("Cannot write archive to final destination."));
+      KMessageBox::error( widget, i18n( "Cannot write archive to final destination." ) );
       return;
     }
   }
 
-  KIO::NetAccess::removeTempFile(archiveFile);
+  KIO::NetAccess::removeTempFile( archiveFile );
 
   // Delete archived events from calendar
-  for( it = incidences.begin(); it != incidences.end(); ++it ) {
+  for ( it = incidences.begin(); it != incidences.end(); ++it ) {
     calendar->deleteIncidence( *it );
   }
   emit eventsDeleted();

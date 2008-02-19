@@ -127,7 +127,7 @@ void ExportWebDialog::slotOk()
 
 void ExportWebDialog::slotDefault()
 {
-  kDebug(5850);
+  kDebug();
 
   if ( KMessageBox::warningContinueCancel(
          this,

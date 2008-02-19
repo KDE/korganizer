@@ -29,11 +29,12 @@
 #include <kcal/event.h>
 
 #include <QObject>
-#include <QDateTime>
+
+class QDate;
 
 namespace KCal {
-class Calendar;
-class Event;
+  class Calendar;
+  class Event;
 }
 using namespace KCal;
 
@@ -50,7 +51,7 @@ class EventArchiver : public QObject
 {
   Q_OBJECT
   public:
-    explicit EventArchiver( QObject* parent = 0, const char* name = 0 );
+    explicit EventArchiver( QObject *parent = 0 );
     virtual ~EventArchiver();
 
     /**
@@ -60,26 +61,30 @@ class EventArchiver : public QObject
      * @param widget parent widget for message boxes
      * Confirmation and "no events to process" dialogs will be shown
      */
-    void runOnce( Calendar* calendar, const QDate& limitDate, QWidget* widget  );
+    void runOnce( Calendar *calendar, const QDate &limitDate, QWidget *widget );
 
     /**
-     * Delete or archive events. This is called regularly, when auto-archiving is enabled
+     * Delete or archive events. This is called regularly, when auto-archiving
+     * is enabled
      * @param calendar the calendar to archive
      * @param widget parent widget for message boxes
      * @param withGUI whether this is called from the dialog, so message boxes should be shown.
      * Note that error dialogs like "cannot save" are shown even if from this method, so widget
      * should be set in all cases.
      */
-    void runAuto( Calendar* calendar, QWidget* widget, bool withGUI );
+    void runAuto( Calendar *calendar, QWidget *widget, bool withGUI );
 
   signals:
     void eventsDeleted();
 
   private:
-    void run( Calendar* calendar, const QDate& limitDate, QWidget* widget, bool withGUI, bool errorIfNone );
+    void run( Calendar *calendar, const QDate &limitDate, QWidget *widget,
+              bool withGUI, bool errorIfNone );
 
-    void deleteIncidences( Calendar* calendar, const QDate& limitDate, QWidget* widget, const Incidence::List& incidences, bool withGUI );
-    void archiveIncidences( Calendar* calendar, const QDate& limitDate, QWidget* widget, const Incidence::List& incidences, bool withGUI );
+    void deleteIncidences( Calendar *calendar, const QDate &limitDate, QWidget *widget,
+                           const Incidence::List &incidences, bool withGUI );
+    void archiveIncidences( Calendar *calendar, const QDate &limitDate, QWidget *widget,
+                            const Incidence::List &incidences, bool withGUI );
 };
 
 #endif /* EVENTARCHIVER_H */

@@ -47,7 +47,7 @@ class ExportWebDialog : public KPageDialog, public KPrefsWidManager
     virtual ~ExportWebDialog();
 
   public slots:
-    void slotTextChanged( const QString & _text);
+    void slotTextChanged( const QString & _text );
 
   protected:
     void setupGeneralPage();
@@ -64,7 +64,7 @@ class ExportWebDialog : public KPageDialog, public KPrefsWidManager
 
   signals:
     void configChanged();
-    void exportHTML( HTMLExportSettings* );
+    void exportHTML( HTMLExportSettings * );
 
   protected slots:
     void slotOk();
