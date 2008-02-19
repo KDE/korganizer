@@ -115,7 +115,7 @@ CalendarView::CalendarView( QWidget *parent )
     mCalendar( CalendarNull::self() ),
     mChanger( 0 )
 {
-  kDebug(5850) << "CalendarView::CalendarView( Calendar )";
+  kDebug();
 
   mViewManager = new KOViewManager( this );
   mDialogManager = new KODialogManager( this );
@@ -247,12 +247,12 @@ CalendarView::CalendarView( QWidget *parent )
   disconnect( mTodoList, SIGNAL( incidenceSelected( Incidence * ) ),
            this, SLOT( processMainViewSelection( Incidence * ) ) );
 
-  kDebug(5850) << "CalendarView::CalendarView() done";
+  kDebug() << "done";
 }
 
 CalendarView::~CalendarView()
 {
-  kDebug(5850) << "~CalendarView()";
+  kDebug();
 
   mCalendar->unregisterObserver( this );
   qDeleteAll( mFilters );
@@ -261,12 +261,12 @@ CalendarView::~CalendarView()
   delete mDialogManager;
   delete mViewManager;
   delete mEventViewer;
-  kDebug(5850) << "~CalendarView() done";
+  kDebug() << "done";
 }
 
 void CalendarView::setCalendar( Calendar *cal )
 {
-  kDebug(5850) << "CalendarView::setCalendar";
+  kDebug();
   mCalendar = cal;
 
   delete mHistory;
@@ -350,16 +350,15 @@ void CalendarView::createPrinter()
 
 bool CalendarView::openCalendar( const QString &filename, bool merge )
 {
-  kDebug(5850) << "CalendarView::openCalendar():" << filename;
+  kDebug() << filename;
 
   if ( filename.isEmpty() ) {
-    kDebug(5850) << "CalendarView::openCalendar(): Error! Empty filename.";
+    kDebug() << "Error! Empty filename.";
     return false;
   }
 
   if ( !QFile::exists( filename ) ) {
-    kDebug(5850) << "CalendarView::openCalendar(): Error! File '" << filename
-                 << "' doesn't exist.";
+    kDebug() << "Error! File '" << filename << "' doesn't exist.";
   }
 
   bool loadedSuccesfully = true;
@@ -405,7 +404,7 @@ bool CalendarView::openCalendar( const QString &filename, bool merge )
 
 bool CalendarView::saveCalendar( const QString &filename )
 {
-  kDebug(5850) << "CalendarView::saveCalendar():" << filename;
+  kDebug() << filename;
 
   // Store back all unsaved data into calendar object
   mViewManager->currentView()->flushView();
@@ -419,7 +418,7 @@ bool CalendarView::saveCalendar( const QString &filename )
 
 void CalendarView::closeCalendar()
 {
-  kDebug(5850) << "CalendarView::closeCalendar()";
+  kDebug();
 
   // child windows no longer valid
   emit closingDown();
@@ -558,13 +557,14 @@ void CalendarView::goDate( const QDate &date )
   mNavigator->selectDate( date );
 }
 
-void CalendarView::showDate(const QDate & date)
+void CalendarView::showDate( const QDate &date )
 {
   int dateCount = mNavigator->datesCount();
-  if ( dateCount == 7 )
+  if ( dateCount == 7 ) {
     mNavigator->selectWeek( date );
-  else
+  } else {
     mNavigator->selectDates( date, dateCount );
+  }
 }
 
 void CalendarView::goToday()
@@ -595,7 +595,7 @@ void CalendarView::updateConfig( const QByteArray &receiver )
   if ( receiver != "korganizer" ) {
     return;
   }
-  kDebug(5850) << "CalendarView::updateConfig()";
+  kDebug();
 
   KOGlobals::self()->setHolidays( new KHolidays( KOPrefs::instance()->mHolidays ) );
 
@@ -650,7 +650,7 @@ void CalendarView::incidenceChanged( Incidence *oldIncidence,
   // FIXME: Make use of the what flag, which indicates which parts of the incidence have changed!
   KOIncidenceEditor *tmp = editorDialog( newIncidence );
   if ( tmp ) {
-    kDebug(5850) << "Incidence modified and open";
+    kDebug() << "Incidence modified and open";
     tmp->modified( what );
   }
   setModified( true );
@@ -709,7 +709,7 @@ void CalendarView::incidenceToBeDeleted( Incidence *incidence )
 {
   KOIncidenceEditor *tmp = editorDialog( incidence );
   if (tmp) {
-    kDebug(5850) << "Incidence to be deleted and open in editor";
+    kDebug() << "Incidence to be deleted and open in editor";
     tmp->delayedDestruct();
   }
   setModified( true );
@@ -926,7 +926,7 @@ KOEventEditor *CalendarView::newEventEditor( const QDateTime &startDtParam,
 
 void CalendarView::newEvent()
 {
-  kDebug(5850) << "CalendarView::newEvent()";
+  kDebug();
   newEvent( QDateTime(), QDateTime() );
 }
 
@@ -1002,7 +1002,7 @@ void CalendarView::newTodo( const QDate &date )
 
 void CalendarView::newJournal()
 {
-  kDebug(5850) << "CalendarView::newJournal()";
+  kDebug();
   newJournal( QString(), QDate() );
 }
 
@@ -1023,10 +1023,8 @@ void CalendarView::newJournal( const QString &text, const QDate &date )
   journalEditor->setDate( journalDate );
   if ( !text.isEmpty() ) {
     journalEditor->setTexts( text );
-  }
-  else {
-    journalEditor->setTexts( "Journal for " +
-        journalDate.toString( Qt::LocaleDate ) );
+  } else {
+    journalEditor->setTexts( "Journal for " + journalDate.toString( Qt::LocaleDate ) );
   }
   journalEditor->show();
 }
@@ -1059,7 +1057,7 @@ void CalendarView::newFloatingEvent()
 
 bool CalendarView::addIncidence( const QString &ical )
 {
-  kDebug(5850) << "CalendarView::addIncidence:" << ical;
+  kDebug() << ical;
   ICalFormat format;
   format.setTimeSpec( mCalendar->timeSpec() );
   Incidence *incidence = format.fromString( ical );
@@ -1182,12 +1180,12 @@ bool CalendarView::deleteIncidence( const QString &uid, bool force )
 void CalendarView::toggleAlarm( Incidence *incidence )
 {
   if ( !incidence || !mChanger ) {
-    kDebug(5850) << "CalendarView::toggleAlarm() called without having a clicked item";
+    kDebug() << "called without having a clicked item";
     return;
   }
   Incidence *oldincidence = incidence->clone();
   if ( !mChanger->beginChange( incidence ) ) {
-    kDebug(5850) << "Unable to lock incidence";
+    kDebug() << "Unable to lock incidence";
     delete oldincidence;
     return;
   }
@@ -1210,11 +1208,11 @@ void CalendarView::toggleAlarm( Incidence *incidence )
 void CalendarView::dissociateOccurrence( Incidence *incidence, const QDate &date )
 {
   if ( !incidence || !mChanger ) {
-    kDebug(5850) << "CalendarView::toggleAlarm() called without having a clicked item";
+    kDebug() << "toggleAlarm() called without having a clicked item";
     return;
   }
   if ( !mChanger->beginChange( incidence ) ) {
-    kDebug(5850) << "Unable to lock incidence";
+    kDebug() << "Unable to lock incidence";
     return;
   }
   startMultiModify( i18n( "Dissociate occurrence" ) );
@@ -1239,11 +1237,11 @@ void CalendarView::dissociateOccurrence( Incidence *incidence, const QDate &date
 void CalendarView::dissociateFutureOccurrence( Incidence *incidence, const QDate &date )
 {
   if ( !incidence || !mChanger ) {
-    kDebug(5850) << "CalendarView::toggleAlarm() called without having a clicked item";
+    kDebug() << "toggleAlarm() called without having a clicked item";
     return;
   }
   if ( !mChanger->beginChange( incidence ) ) {
-    kDebug(5850) << "Unable to lock incidence";
+    kDebug() << "Unable to lock incidence";
     return;
   }
   startMultiModify( i18n( "Dissociate future occurrences" ) );
@@ -1373,9 +1371,8 @@ void CalendarView::mailFreeBusy( int daysToPublish )
   freebusy->setOrganizer( Person( KOPrefs::instance()->fullName(),
                                   KOPrefs::instance()->email() ) );
 
-  kDebug(5850) << "calendarview: schedule_publish_freebusy: startDate:"
-               << KGlobal::locale()->formatDateTime( start ) << "End Date:"
-               << KGlobal::locale()->formatDateTime( end );
+  kDebug() << "Start Date:" << KGlobal::locale()->formatDateTime( start )
+           << "End Date:" << KGlobal::locale()->formatDateTime( end );
 
   PublishDialog *publishdlg = new PublishDialog();
   if ( publishdlg->exec() == QDialog::Accepted ) {
@@ -1618,10 +1615,10 @@ void CalendarView::checkClipboard()
 {
 #ifndef KORG_NODND
   if ( ICalDrag::canDecode( QApplication::clipboard()->mimeData() ) ) {
-    kDebug(5850) << "CalendarView::checkClipboard() true";
+    kDebug() << "true";
     emit pasteEnabled( true );
   } else {
-    kDebug(5850) << "CalendarView::checkClipboard() false";
+    kDebug() << "false";
     emit pasteEnabled( false );
   }
 #endif
@@ -1638,11 +1635,11 @@ void CalendarView::showDates( const DateList &selectedDates )
 
 void CalendarView::editFilters()
 {
-  kDebug(5850) << "CalendarView::editFilters()";
+  kDebug();
 
   foreach ( CalFilter *filter, mFilters ) {
     if ( filter ) {
-      kDebug(5850) << " Filter:" << filter->name();
+      kDebug() << " Filter:" << filter->name();
     }
   }
 
@@ -1729,7 +1726,7 @@ void CalendarView::takeOverCalendar()
 
 void CalendarView::showIntro()
 {
-  kDebug(5850) << "To be implemented.";
+  kDebug() << "To be implemented.";
 }
 
 void CalendarView::showDateNavigator( bool show )
@@ -1848,7 +1845,7 @@ void CalendarView::editIncidence()
 
 bool CalendarView::editIncidence( const QString &uid )
 {
-  kDebug(5850) << "CalendarView::editIncidence()";
+  kDebug();
   return editIncidence( mCalendar->incidence( uid ) );
 }
 
@@ -1922,7 +1919,7 @@ void CalendarView::showIncidenceContext( Incidence *incidence )
 
 bool CalendarView::editIncidence( Incidence *incidence )
 {
-  kDebug(5850) << "CalendarView::editEvent()";
+  kDebug();
 
   if ( !incidence || !mChanger ) {
     KNotification::beep();
@@ -1930,7 +1927,7 @@ bool CalendarView::editIncidence( Incidence *incidence )
   }
   KOIncidenceEditor *tmp = editorDialog( incidence );
   if ( tmp ) {
-    kDebug(5850) << "CalendarView::editIncidence() in List";
+    kDebug() << "in List";
     tmp->reload();
     tmp->raise();
     tmp->show();
@@ -1948,7 +1945,7 @@ bool CalendarView::editIncidence( Incidence *incidence )
     return false;
   }
 
-  kDebug(5850) << "CalendarView::editIncidence() new IncidenceEditor";
+  kDebug() << "new IncidenceEditor";
   KOIncidenceEditor *incidenceEditor = mDialogManager->getEditor( incidence );
   connectIncidenceEditor( incidenceEditor );
 
@@ -2059,11 +2056,11 @@ void CalendarView::deleteIncidence( Incidence *incidence, bool force )
 
   if ( incidence->recurs() ) {
     QDate itemDate = mViewManager->currentSelectionDate();
-    kDebug(5850) << "Recurrence-Date:" << itemDate.toString();
+    kDebug() << "Recurrence-Date:" << itemDate.toString();
     int km = KMessageBox::Ok;
     if ( !force ) {
       if ( !itemDate.isValid() ) {
-        kDebug(5850) << "Date Not Valid";
+        kDebug() << "Date Not Valid";
         km = KMessageBox::warningContinueCancel(
           this,
           i18n( "The calendar item \"%1\" recurs over multiple dates; "
@@ -2203,7 +2200,7 @@ void CalendarView::purgeCompleted()
 
 void CalendarView::slotCalendarChanged()
 {
-  kDebug(5850) << "CalendarView::slotCalendarChanged()";
+  kDebug();
   updateView();
 }
 

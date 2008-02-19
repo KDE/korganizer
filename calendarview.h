@@ -36,13 +36,7 @@
 
 #include <QWidget>
 #include <QMap>
-#include <QByteArray>
 #include <QList>
-
-class QStackedWidget;
-class QSplitter;
-
-class KVBox;
 
 class CalPrinter;
 class KOViewManager;
@@ -54,6 +48,12 @@ class DateNavigator;
 class KOIncidenceEditor;
 class NavigatorBar;
 class DateChecker;
+
+class KVBox;
+
+class QByteArray;
+class QStackedWidget;
+class QSplitter;
 
 namespace KOrg {
   class History;
@@ -88,7 +88,8 @@ class CalendarViewExtension : public QWidget
   @short main calendar view widget
   @author Cornelius Schumacher
 */
-class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::CalendarObserver
+class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
+                                              public Calendar::CalendarObserver
 {
   Q_OBJECT
   public:
@@ -124,7 +125,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase, pub
     void setCalendar( Calendar * );
     Calendar *calendar();
 
-    KOrg::History *history() const { return mHistory; }
+    History *history() const { return mHistory; }
 
     KOViewManager *viewManager() const { return mViewManager; }
     KODialogManager *dialogManager() const { return mDialogManager; }
