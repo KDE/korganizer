@@ -23,6 +23,7 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
+//krazy:excludeall=kdebug because we use the korgac(check) debug area in here
 
 #include "koalarmclient.h"
 #include "korgacadaptor.h"
