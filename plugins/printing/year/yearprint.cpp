@@ -110,7 +110,7 @@ void CalPrintYear::loadConfig()
 
 void CalPrintYear::saveConfig()
 {
-  kDebug(5850) <<"CalPrintYear::saveConfig()";
+  kDebug();
 
   readSettingsWidget();
   if ( mConfig ) {
@@ -141,9 +141,9 @@ void CalPrintYear::setDateRange( const QDate& from, const QDate& to )
 
 void CalPrintYear::print( QPainter &p, int width, int height )
 {
-kDebug()<<"CalPrintYear::print, width:"<<width<<", height:"<<height;
+  kDebug() << "width:" << width << ", height:" << height;
   QRect headerBox( 0, 0, width, headerHeight() );
-kDebug()<<"headerBox:"<<headerBox;
+  kDebug() << "headerBox:" << headerBox;
   const KCalendarSystem *calsys = calendarSystem();
   KLocale *locale = KGlobal::locale();
   if ( !calsys || !locale ) return;
