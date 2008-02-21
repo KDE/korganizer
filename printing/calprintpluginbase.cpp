@@ -172,7 +172,7 @@ void CalPrintPluginBase::doLoadConfig()
     setUseColors( mUseColors );
     loadConfig();
   } else {
-    kDebug(5850) << "No config available in loadConfig!!!!";
+    kDebug() << "No config available in loadConfig!!!!";
   }
 }
 
@@ -186,7 +186,7 @@ void CalPrintPluginBase::doSaveConfig()
     group.writeEntry( "UseColors", mUseColors );
     mConfig->sync();
   } else {
-    kDebug(5850) << "No config available in saveConfig!!!!";
+    kDebug() << "No config available in saveConfig!!!!";
   }
 }
 
@@ -953,7 +953,7 @@ void CalPrintPluginBase::drawIncidence( QPainter &p, const QRect &dayBox,
                                         const QString &time,
                                         const QString &summary, int &textY )
 {
-  kDebug(5850) << "summary =" << summary;
+  kDebug() << "summary =" << summary;
 
   int flags = Qt::AlignLeft;
   QFontMetrics fm = p.fontMetrics();
