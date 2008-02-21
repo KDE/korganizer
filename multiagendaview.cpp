@@ -28,12 +28,6 @@
 #include <KVBox>
 #include <Q3ScrollView>
 
-#define FOREACH_VIEW(av) \
-for(QList<KOAgendaView*>::ConstIterator it = mAgendaViews.constBegin(); \
-  it != mAgendaViews.constEnd();) \
-  for(KOAgendaView* av = (it != mAgendaViews.constEnd() ? (*it) : 0); \
-      it != mAgendaViews.constEnd(); ++it, av = (*it)  )
-
 using namespace KOrg;
 
 MultiAgendaView::MultiAgendaView(Calendar * cal, QWidget * parent ) :
@@ -93,7 +87,7 @@ void MultiAgendaView::deleteViews()
 
 void MultiAgendaView::setupViews()
 {
-  FOREACH_VIEW( agenda ) {
+  foreach ( KOAgendaView *agenda, mAgendaViews ) {
     connect( agenda, SIGNAL( newEventSignal() ),
              SIGNAL( newEventSignal() ) );
     connect( agenda, SIGNAL( editIncidenceSignal( Incidence * ) ),
@@ -138,7 +132,7 @@ void MultiAgendaView::setupViews()
 
   }
 
-  FOREACH_VIEW( agenda ) {
+  foreach ( KOAgendaView *agenda, mAgendaViews ) {
     agenda->readSettings();
   }
 }
@@ -150,7 +144,7 @@ MultiAgendaView::~ MultiAgendaView()
 Incidence::List MultiAgendaView::selectedIncidences()
 {
   Incidence::List list;
-  FOREACH_VIEW(agendaView) {
+  foreach ( KOAgendaView *agendaView, mAgendaViews ) {
     list += agendaView->selectedIncidences();
   }
   return list;
@@ -159,7 +153,7 @@ Incidence::List MultiAgendaView::selectedIncidences()
 DateList MultiAgendaView::selectedDates()
 {
   DateList list;
-  FOREACH_VIEW(agendaView) {
+  foreach ( KOAgendaView *agendaView, mAgendaViews ) {
     list += agendaView->selectedDates();
   }
   return list;
@@ -167,7 +161,7 @@ DateList MultiAgendaView::selectedDates()
 
 int MultiAgendaView::currentDateCount()
 {
-  FOREACH_VIEW( agendaView )
+  foreach ( KOAgendaView *agendaView, mAgendaViews )
     return agendaView->currentDateCount();
   return 0;
 }
@@ -175,39 +169,39 @@ int MultiAgendaView::currentDateCount()
 void MultiAgendaView::showDates(const QDate & start, const QDate & end)
 {
   recreateViews();
-  FOREACH_VIEW( agendaView )
+  foreach ( KOAgendaView *agendaView, mAgendaViews )
     agendaView->showDates( start, end );
 }
 
 void MultiAgendaView::showIncidences(const Incidence::List & incidenceList)
 {
-  FOREACH_VIEW( agendaView )
+  foreach ( KOAgendaView *agendaView, mAgendaViews )
     agendaView->showIncidences( incidenceList );
 }
 
 void MultiAgendaView::updateView()
 {
   recreateViews();
-  FOREACH_VIEW( agendaView )
+  foreach ( KOAgendaView *agendaView, mAgendaViews )
     agendaView->updateView();
 }
 
 void MultiAgendaView::changeIncidenceDisplay(Incidence * incidence, int mode)
 {
-  FOREACH_VIEW( agendaView )
+  foreach ( KOAgendaView *agendaView, mAgendaViews )
     agendaView->changeIncidenceDisplay( incidence, mode );
 }
 
 int MultiAgendaView::maxDatesHint()
 {
-  FOREACH_VIEW( agendaView )
+  foreach ( KOAgendaView *agendaView, mAgendaViews )
     return agendaView->maxDatesHint();
   return 0;
 }
 
 void MultiAgendaView::slotSelectionChanged()
 {
-  FOREACH_VIEW( agenda ) {
+  foreach ( KOAgendaView *agenda, mAgendaViews ) {
     if ( agenda != sender() )
       agenda->clearSelection();
   }
@@ -215,7 +209,7 @@ void MultiAgendaView::slotSelectionChanged()
 
 bool MultiAgendaView::eventDurationHint(QDateTime & startDt, QDateTime & endDt, bool & allDay)
 {
-  FOREACH_VIEW( agenda ) {
+  foreach ( KOAgendaView *agenda, mAgendaViews ) {
     bool valid = agenda->eventDurationHint( startDt, endDt, allDay );
     if ( valid )
       return true;
@@ -225,7 +219,7 @@ bool MultiAgendaView::eventDurationHint(QDateTime & startDt, QDateTime & endDt, 
 
 void MultiAgendaView::slotClearTimeSpanSelection()
 {
-  FOREACH_VIEW( agenda ) {
+  foreach ( KOAgendaView *agenda, mAgendaViews ) {
     if ( agenda != sender() )
       agenda->clearTimeSpanSelection();
   }
@@ -233,13 +227,13 @@ void MultiAgendaView::slotClearTimeSpanSelection()
 
 void MultiAgendaView::setTypeAheadReceiver(QObject * o)
 {
-  FOREACH_VIEW( agenda )
+  foreach ( KOAgendaView *agenda, mAgendaViews )
     agenda->setTypeAheadReceiver( o );
 }
 
 void MultiAgendaView::finishTypeAhead()
 {
-  FOREACH_VIEW( agenda )
+  foreach ( KOAgendaView *agenda, mAgendaViews )
     agenda->finishTypeAhead();
 }
 
@@ -275,7 +269,7 @@ void MultiAgendaView::resizeScrollView(const QSize & size)
 void MultiAgendaView::setIncidenceChanger(IncidenceChangerBase * changer)
 {
   AgendaView::setIncidenceChanger( changer );
-  FOREACH_VIEW( agenda )
+  foreach ( KOAgendaView *agenda, mAgendaViews )
     agenda->setIncidenceChanger( changer );
 }
 

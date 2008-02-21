@@ -184,7 +184,7 @@ void MarcusBains::updateLocation( bool recalculate )
 KOAgenda::KOAgenda( int columns, int rows, int rowSize, QWidget *parent,
                     Qt::WFlags f )
 // TODO_QT4: Use constructor without *name=0 param
-  : Q3ScrollView( parent, /*name*/0, f ), mChanger( 0 )
+  : Q3ScrollView( parent, /*name*/0, f ), mHolidayMask( 0 ), mChanger( 0 )
 {
   mColumns = columns;
   mRows = rows;
@@ -1377,7 +1377,7 @@ void KOAgenda::drawContents( QPainter* p, int cx, int cy, int cw, int ch )
   double lGridSpacingY = mGridSpacingY*2;
 
   // Highlight working hours
-  if ( mWorkingHoursEnable ) {
+  if ( mWorkingHoursEnable && mHolidayMask ) {
     QPoint pt1( cx, mWorkingHoursYTop );
     QPoint pt2( cx+cw, mWorkingHoursYBottom );
     if ( pt2.x() >= pt1.x() /*&& pt2.y() >= pt1.y()*/) {

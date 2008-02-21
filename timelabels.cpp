@@ -302,7 +302,9 @@ void TimeLabels::paintEvent(QPaintEvent*)
   // this is another hack!
 //  QPainter painter(this);
   //QString c
-  repaintContents(contentsX(), contentsY(), visibleWidth(), visibleHeight());
+
+  QPainter painter( this );
+  drawContents(&painter, contentsX(), contentsY(), visibleWidth(), visibleHeight());
 }
 
 void TimeLabels::contextMenuEvent( QContextMenuEvent *event )

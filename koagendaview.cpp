@@ -84,6 +84,7 @@ using namespace KOrg;
 EventIndicator::EventIndicator( Location loc, QWidget *parent ) : QFrame( parent )
 {
   mColumns = 1;
+  mEnabled.resize( mColumns );
   mTopBox = 0;
   mLocation = loc;
   mTopLayout = 0;
