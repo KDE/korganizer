@@ -177,6 +177,13 @@ void FreeBusyItem::setFreeBusyPeriods( FreeBusy *fb )
       newSubItem->setStartTime( (*it).start().toTimeSpec( timeSpec ).dateTime() );
       newSubItem->setEndTime( (*it).end().toTimeSpec( timeSpec ).dateTime() );
       newSubItem->setColors( Qt::red, Qt::red, Qt::red );
+      QString toolTip;
+      if ( !(*it).summary().isEmpty() )
+        toolTip += "<b>" + (*it).summary() + "</b><br/>";
+      if ( !(*it).location().isEmpty() )
+        toolTip += i18n( "Location: %1" ).arg( (*it).location() );
+      if ( !toolTip.isEmpty() )
+        newSubItem->setTooltipText( toolTip );
     }
     setFreeBusy( fb );
     setShowNoInformation( false );
