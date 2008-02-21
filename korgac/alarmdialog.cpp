@@ -255,7 +255,8 @@ void AlarmDialog::setTimer()
 
   if ( nextReminderAt >= 0 ) {
     mSuspendTimer.stop();
-    mSuspendTimer.start( 1000 * ( nextReminderAt + 1 ), true );
+    mSuspendTimer.start( 1000 * ( nextReminderAt + 1 ) );
+    mSuspendTimer.setSingleShot( true );
   }
 }
 
