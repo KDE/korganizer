@@ -42,6 +42,7 @@
 #include <ktoolinvocation.h>
 #include <kglobal.h>
 #include <kvbox.h>
+#include <kdatetime.h>
 
 #include <QLabel>
 #include <QFile>
@@ -160,7 +161,13 @@ void AlarmDialog::addIncidence( Incidence *incidence, const QDateTime &reminderA
   Todo *todo;
   if ( dynamic_cast<Event*>( incidence ) ) {
     item->setIcon( 0, SmallIcon( "view-calendar-day" ) );
-    item->setText( 1, incidence->dtStartStr() );
+    if ( incidence->recurs() ) {
+      KDateTime nextStart = incidence->recurrence()->getNextDateTime( KDateTime( reminderAt, KDateTime::Spec::LocalZone() ) );
+      if ( nextStart.isValid() )
+        item->setText( 1, KGlobal::locale()->formatDateTime( nextStart ) );
+    }
+    if ( item->text( 1 ).isEmpty() )
+      item->setText( 1, incidence->dtStartStr() );
   } else if ( ( todo = dynamic_cast<Todo*>( incidence ) ) ) {
     item->setIcon( 0, SmallIcon( "view-calendar-tasks" ) );
     item->setText( 1, todo->dtDueStr() );
