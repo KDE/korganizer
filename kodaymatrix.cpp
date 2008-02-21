@@ -275,7 +275,7 @@ void KODayMatrix::updateEvents()
 const QDate &KODayMatrix::getDate( int offset ) const
 {
   if ( offset < 0 || offset > NUMDAYS - 1 ) {
-    kDebug(5850) << "Wrong offset (" << offset << ") in KODayMatrix::getDate(int)";
+    kDebug() << "Wrong offset " << offset;
     return mDays[0];
   }
   return mDays[offset];
@@ -284,7 +284,7 @@ const QDate &KODayMatrix::getDate( int offset ) const
 QString KODayMatrix::getHolidayLabel( int offset ) const
 {
   if ( offset < 0 || offset > NUMDAYS - 1 ) {
-    kDebug(5850) << "Wrong offset (" << offset << ") in KODayMatrix::getHolidayLabel(int)";
+    kDebug() << "Wrong offset " << offset;
     return 0;
   }
   return mHolidays[offset];

@@ -84,11 +84,11 @@ QMenu *KOEventView::newEventPopup()
 {
   KXMLGUIClient *client = KOCore::self()->xmlguiClient( this );
   if ( !client ) {
-    kError() <<"KOEventView::newEventPopup(): no xmlGuiClient.";
+    kError() << "no xmlGuiClient.";
     return 0;
   }
   if ( !client->factory() ) {
-    kError() <<"KOEventView::newEventPopup(): no factory";
+    kError() << "no factory";
     return 0; // can happen if called too early
   }
 
@@ -136,7 +136,7 @@ void KOEventView::showNewEventPopup()
 {
   QMenu *popup = newEventPopup();
   if ( !popup ) {
-    kError() <<"KOEventView::showNewEventPopup(): popup creation failed";
+    kError() << "popup creation failed";
     return;
   }
 
@@ -147,16 +147,19 @@ void KOEventView::showNewEventPopup()
 
 void KOEventView::defaultAction( Incidence *incidence )
 {
-  kDebug(5850) <<"KOEventView::defaultAction()";
+  kDebug();
 
-  if ( !incidence ) return;
+  if ( !incidence ) {
+    return;
+  }
 
-  kDebug(5850) <<"  type:" << incidence->type();
+  kDebug() << "  type:" << incidence->type();
 
-  if ( incidence->isReadOnly() )
+  if ( incidence->isReadOnly() ) {
     emit showIncidenceSignal(incidence);
-  else
+  } else {
     emit editIncidenceSignal(incidence);
+  }
 }
 
 //---------------------------------------------------------------------------

@@ -99,7 +99,7 @@ void KOEventPopupMenu::showIncidencePopup( Incidence *incidence, const QDate &qd
     }
     popup( QCursor::pos() );
   } else {
-    kDebug(5850) << "KOEventPopupMenu::showEventPopup(): No event selected";
+    kDebug() << "No event selected";
   }
 }
 
@@ -187,7 +187,7 @@ void KOEventPopupMenu::forward()
   if ( action ) {
     action->trigger();
   } else {
-    kError(5850) << "What happened to the schedule_forward action?";
+    kError() << "What happened to the schedule_forward action?";
   }
 }
 

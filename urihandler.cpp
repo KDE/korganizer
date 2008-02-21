@@ -42,7 +42,7 @@
 
 bool UriHandler::process( const QString &uri )
 {
-  kDebug(5850) <<"UriHandler::process():" << uri;
+  kDebug() << uri;
 
   if ( uri.startsWith( KDEPIMPROTOCOL_EMAIL ) ) {
     // make sure kmail is running or the part is shown

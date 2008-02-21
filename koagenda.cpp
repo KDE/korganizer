@@ -344,14 +344,16 @@ void KOAgenda::clearSelection()
 
 void KOAgenda::marcus_bains()
 {
-    if(mMarcusBains) mMarcusBains->updateLocation(true);
+    if ( mMarcusBains ) {
+      mMarcusBains->updateLocation( true );
+    }
 }
 
 
-void KOAgenda::changeColumns(int columns)
+void KOAgenda::changeColumns( int columns )
 {
-  if (columns == 0) {
-    kDebug(5850) <<"KOAgenda::changeColumns() called with argument 0";
+  if ( columns == 0 ) {
+    kDebug() << "called with argument 0";
     return;
   }
 
@@ -1186,7 +1188,7 @@ void KOAgenda::endItemAction()
 
   if ( multiModify ) emit endMultiModify();
 
-  kDebug(5850) <<"KOAgenda::endItemAction() done";
+  kDebug() << "done";
 }
 
 void KOAgenda::setActionCursor( int actionType, bool acting )
@@ -1584,12 +1586,12 @@ KOAgendaItem *KOAgenda::insertItem( Incidence *incidence, const QDate &qd, int X
                                     int YTop, int YBottom )
 {
 #if 0
-  kDebug(5850) <<"KOAgenda::insertItem:" << event->summary() <<"-"
-                << qd.toString() << ";top, bottom:" << YTop << "," << YBottom;
+  kDebug() << event->summary() << "-" << qd.toString()
+           << ";top, bottom:" << YTop << "," << YBottom;
 #endif
 
   if ( mAllDayMode ) {
-    kDebug(5850) <<"KOAgenda: calling insertItem in all-day mode is illegal.";
+    kDebug() << "using this in all-day mode is illegal.";
     return 0;
   }
 
@@ -1603,7 +1605,7 @@ KOAgendaItem *KOAgenda::insertItem( Incidence *incidence, const QDate &qd, int X
            SLOT( showAgendaItem( KOAgendaItem * ) ) );
 
   if ( YBottom <= YTop ) {
-    kDebug(5850) <<"KOAgenda::insertItem(): Text:" << agendaItem->text() <<" YSize<0";
+    kDebug() << "Text:" << agendaItem->text() << " YSize<0";
     YBottom = YTop;
   }
 
@@ -1635,7 +1637,7 @@ KOAgendaItem *KOAgenda::insertAllDayItem( Incidence *event, const QDate &qd,
                                           int XBegin, int XEnd )
 {
   if ( !mAllDayMode ) {
-    kDebug(5850) <<"KOAgenda: calling insertAllDayItem in non all-day mode is illegal.";
+    kDebug() << "using this in non all-day mode is illegal.";
     return 0;
   }
 
@@ -1669,15 +1671,15 @@ KOAgendaItem *KOAgenda::insertAllDayItem( Incidence *event, const QDate &qd,
 }
 
 
-void KOAgenda::insertMultiItem (Event *event,const QDate &qd,int XBegin,int XEnd,
-                                int YTop,int YBottom)
+void KOAgenda::insertMultiItem( Event *event, const QDate &qd, int XBegin,
+                                int XEnd, int YTop, int YBottom )
 {
-  if (mAllDayMode) {
-    kDebug(5850) <<"KOAgenda: calling insertMultiItem in all-day mode is illegal.";
+  if ( mAllDayMode ) {
+    kDebug() << "using this in all-day mode is illegal.";
     return;
   }
-  mActionType = NOP;
 
+  mActionType = NOP;
   int cellX,cellYTop,cellYBottom;
   QString newtext;
   int width = XEnd - XBegin + 1;
@@ -2008,7 +2010,7 @@ void KOAgenda::setHolidayMask(QVector<bool> *mask)
 
 void KOAgenda::contentsMousePressEvent ( QMouseEvent *event )
 {
-  kDebug(5850) <<"KOagenda::contentsMousePressEvent(): type:" << event->type();
+  kDebug() << "type:" << event->type();
   Q3ScrollView::contentsMousePressEvent(event);
 }
 

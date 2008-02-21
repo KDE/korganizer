@@ -125,7 +125,7 @@ bool KOMailClient::mailTo(IncidenceBase *incidence,const QString &recipients,
   }
   QString body = IncidenceFormatter::mailBodyString(incidence);
   bool bcc = KOPrefs::instance()->mBcc;
-  kDebug (5850) <<"KOMailClient::mailTo" << recipients;
+  kDebug() << recipients;
   return send(from,recipients,subject,body,bcc,attachment);
 }
 
@@ -133,9 +133,9 @@ bool KOMailClient::send(const QString &from,const QString &to,
                         const QString &subject,const QString &body,bool bcc,
                         const QString &attachment)
 {
-  kDebug(5850) <<"KOMailClient::sendMail():\nFrom:" << from <<"\nTo:" << to
-               << "\nSubject:" << subject << "\nBody: \n" << body
-               << "\nAttachment:\n" << attachment;
+  kDebug() << "\nFrom:" << from <<"\nTo:" << to
+           << "\nSubject:" << subject << "\nBody: \n" << body
+           << "\nAttachment:\n" << attachment;
 
   if (KOPrefs::instance()->mMailClient == KOPrefs::MailClientSendmail) {
     bool needHeaders = true;

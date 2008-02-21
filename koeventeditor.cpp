@@ -109,7 +109,7 @@ void KOEventEditor::init()
 
 void KOEventEditor::reload()
 {
-  kDebug(5850) << "KOEventEditor::reload()" << endl;
+  kDebug();
 
   if ( mEvent ) {
     readEvent( mEvent, mCalendar );
@@ -290,9 +290,9 @@ bool KOEventEditor::processInput()
 
     if ( *event == *mEvent ) {
       // Don't do anything
-      kDebug(5850) << "Event not changed";
+      kDebug() << "Event not changed";
     } else {
-      kDebug(5850) << "Event changed";
+      kDebug() << "Event changed";
       //IncidenceChanger::assignIncidence( mEvent, event );
       writeEvent( mEvent );
       mChanger->changeIncidence( oldEvent, mEvent, -1, mIsCounter );

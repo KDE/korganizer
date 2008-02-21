@@ -187,7 +187,7 @@ void KOJournalView::changeIncidenceDisplay(Incidence *incidence, int action)
         emit journalDeleted( journal );
         break;
       default:
-        kDebug(5850) <<"KOListView::changeIncidenceDisplay(): Illegal action" << action;
+        kDebug() << "Illegal action" << action;
     }
   }
 }

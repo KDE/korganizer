@@ -391,15 +391,16 @@ void KOAgendaView::zoomOutHorizontally( const QDate &date )
     count = ndays+3;
   }
 
-  if ( abs( count ) >= 31 )
-    kDebug(5850) << "change to the month view?";
-  else
+  if ( abs( count ) >= 31 ) {
+    kDebug() << "change to the month view?";
+  } else {
     //We want to center the date
     emit zoomViewHorizontally( newBegin, count );
+  }
 }
 
 void KOAgendaView::zoomView( const int delta, const QPoint &pos,
-  const Qt::Orientation orient )
+                             const Qt::Orientation orient )
 {
   static QDate zoomDate;
   static QTimer t( this );
@@ -527,8 +528,9 @@ void KOAgendaView::createDayLabels()
           decoHBox->setMinimumWidth( 1 );
 
           foreach ( CalendarDecoration::Element* it, elements ) {
-            kDebug(5850) << "adding Element " << it->id() << " of Decoration "
-                         << deco->info() << " to the top of the agenda view";
+            kDebug() << "adding Element " << it->id()
+                     << " of Decoration " << deco->info()
+                     << " to the top of the agenda view";
             KODecorationLabel *label = new KODecorationLabel( it, decoHBox );
             label->setAlignment( Qt::AlignBottom );
             label->setMinimumWidth( 1 );
@@ -551,8 +553,9 @@ void KOAgendaView::createDayLabels()
           decoHBox->setMinimumWidth( 1 );
 
           foreach ( CalendarDecoration::Element* it, elements ) {
-            kDebug(5850) << "adding Element " << it->id() << " of Decoration "
-                         << deco->info() << " to the bottom of the agenda view";
+            kDebug() << "adding Element " << it->id()
+                     << " of Decoration " << deco->info()
+                     << " to the bottom of the agenda view";
             KODecorationLabel *label = new KODecorationLabel( it, decoHBox );
             label->setAlignment( Qt::AlignBottom );
             label->setMinimumWidth( 1 );
@@ -579,8 +582,9 @@ void KOAgendaView::createDayLabels()
         decoHBox->setMinimumWidth( 1 );
 
         foreach ( CalendarDecoration::Element* it, elements ) {
-          kDebug(5850) << "adding Element " << it->id() << " of Decoration "
-                       << deco->info() << " to the week part of the agenda view";
+          kDebug() << "adding Element " << it->id()
+                   << " of Decoration " << deco->info()
+                   << " to the week part of the agenda view";
           KODecorationLabel *label = new KODecorationLabel( it, decoHBox );
           label->setAlignment( Qt::AlignBottom );
           label->setMinimumWidth( 1 );
@@ -602,8 +606,9 @@ void KOAgendaView::createDayLabels()
         decoHBox->setMinimumWidth( 1 );
 
         foreach ( CalendarDecoration::Element* it, elements ) {
-          kDebug(5850) << "adding Element " << it->id() << " of Decoration "
-                       << deco->info() << " to the week part of the agenda view";
+          kDebug() << "adding Element " << it->id()
+                   << " of Decoration " << deco->info()
+                   << " to the week part of the agenda view";
           KODecorationLabel *label = new KODecorationLabel( it, decoHBox );
           label->setAlignment( Qt::AlignBottom );
           label->setMinimumWidth( 1 );
@@ -756,7 +761,7 @@ void KOAgendaView::updateTimeBarWidth()
 
 void KOAgendaView::updateEventDates( KOAgendaItem *item )
 {
-  kDebug(5850) << "KOAgendaView::updateEventDates():" << item->text();
+  kDebug() << item->text();
 
   KDateTime startDt,endDt;
 
@@ -1377,7 +1382,7 @@ void KOAgendaView::slotTodoDropped( Todo *todo, const QPoint &gpos, bool allDay 
   if ( todo ) {
     Todo *existingTodo = calendar()->todo( todo->uid() );
     if ( existingTodo ) {
-      kDebug(5850) << "Drop existing Todo";
+      kDebug() << "Drop existing Todo";
       Todo *oldTodo = existingTodo->clone();
       if ( mChanger && mChanger->beginChange( existingTodo ) ) {
         existingTodo->setDtDue( newTime );
@@ -1391,7 +1396,7 @@ void KOAgendaView::slotTodoDropped( Todo *todo, const QPoint &gpos, bool allDay 
       }
       delete oldTodo;
     } else {
-      kDebug(5850) << "Drop new Todo";
+      kDebug() << "Drop new Todo";
       todo->setDtDue( newTime );
       todo->setAllDay( allDay );
       todo->setHasDueDate( true );
@@ -1408,7 +1413,7 @@ void KOAgendaView::startDrag( Incidence *incidence )
   DndFactory factory( calendar() );
   QDrag *drag = factory.createDrag( incidence, this );
   if ( drag->start() ) {
-    kDebug(5850) << "KOAgendaView::startDrag(): Delete drag source";
+    kDebug() << "Delete drag source";
   }
 #endif
 }

@@ -69,7 +69,7 @@ void KOEventViewer::readSettings( KConfig *config )
 void KOEventViewer::writeSettings( KConfig *config )
 {
   if ( config ) {
-    kDebug(5850) << " KOEventViewer: saving the zoomFactor:" << fontPointSize();
+    kDebug() << "saving the zoomFactor:" << fontPointSize();
     KConfigGroup configGroup( config, QString( "EventViewer-%1" ).arg( objectName() ) );
     configGroup.writeEntry( "ZoomFactor", fontPointSize() );
   }

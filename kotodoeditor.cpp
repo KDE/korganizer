@@ -66,7 +66,7 @@ KOTodoEditor::~KOTodoEditor()
 
 void KOTodoEditor::init()
 {
-  kDebug(5850) ;
+  kDebug() ;
   setupGeneral();
   setupRecurrence();
   setupAttendeesTab();
@@ -181,7 +181,7 @@ void KOTodoEditor::setupRecurrence()
 
 void KOTodoEditor::editIncidence( Incidence *incidence, Calendar *calendar )
 {
-  kDebug(5850);
+  kDebug();
   Todo *todo = dynamic_cast<Todo*>( incidence );
   if ( todo ) {
     init();
@@ -196,7 +196,7 @@ void KOTodoEditor::editIncidence( Incidence *incidence, Calendar *calendar )
 
 void KOTodoEditor::newTodo()
 {
-  kDebug(5850);
+  kDebug();
   init();
   mTodo = 0;
   mCalendar = 0;
@@ -218,7 +218,7 @@ void KOTodoEditor::setTexts( const QString &summary, const QString &description,
 
 void KOTodoEditor::loadDefaults()
 {
-  kDebug(5850);
+  kDebug();
   setDates( QDateTime::currentDateTime().addDays(7), true, 0 );
 }
 
@@ -233,15 +233,15 @@ bool KOTodoEditor::processInput()
     Todo *oldTodo = mTodo->clone();
     Todo *todo = mTodo->clone();
 
-    kDebug(5850) << "Write event.";
+    kDebug() << "Write event.";
     writeTodo( todo );
-    kDebug(5850) << "event written.";
+    kDebug() << "event written.";
 
     if( *mTodo == *todo ) {
       // Don't do anything
-      kDebug(5850) << "Todo not changed";
+      kDebug() << "Todo not changed";
     } else {
-      kDebug(5850) << "Todo changed";
+      kDebug() << "Todo changed";
       //IncidenceChanger::assignIncidence( mTodo, todo );
       writeTodo( mTodo );
       mChanger->changeIncidence( oldTodo, mTodo );
@@ -308,7 +308,7 @@ void KOTodoEditor::readTodo( Todo *todo, Calendar *calendar )
     return;
   }
 
-  kDebug(5850);
+  kDebug();
 
   mGeneral->readTodo( todo, calendar );
   mDetails->readIncidence( todo );

@@ -90,7 +90,7 @@ KOrganizer::KOrganizer() : KParts::MainWindow(), KOrg::MainWindow()
   // modal subdialogs will only affect this dialog, not the other windows
   setAttribute( Qt::WA_GroupLeader );
 
-  kDebug(5850);
+  kDebug();
   KOCore::self()->addXMLGUIClient( this, this );
 //  setMinimumSize(600,400);  // make sure we don't get resized too small...
 
@@ -111,7 +111,7 @@ KOrganizer::~KOrganizer()
 
 void KOrganizer::init( bool document )
 {
-  kDebug(5850) << ( document ? "hasDocument" : "resources" );
+  kDebug() << ( document ? "hasDocument" : "resources" );
 
   setHasDocument( document );
 
@@ -152,7 +152,7 @@ void KOrganizer::init( bool document )
   setStandardToolBarMenuEnabled( true );
   setTitle();
 
-  kDebug(5850) << "done";
+  kDebug() << "done";
 }
 
 void KOrganizer::newMainWindow( const KUrl &url )
@@ -185,7 +185,7 @@ void KOrganizer::readSettings()
 
 void KOrganizer::writeSettings()
 {
-  kDebug(5850);
+  kDebug();
 
   KConfig *config = KOGlobals::self()->config();
 
@@ -219,7 +219,7 @@ void KOrganizer::slotEditKeys()
 
 bool KOrganizer::queryClose()
 {
-  kDebug(5850);
+  kDebug();
 
   bool close = mActionManager->queryClose();
 

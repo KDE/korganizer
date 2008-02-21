@@ -277,7 +277,7 @@ void JournalView::setJournal(Journal *journal)
 void JournalView::setDirty()
 {
   mDirty = true;
-  kDebug(5850) <<"JournalView::setDirty()";
+  kDebug();
 }
 
 bool JournalView::eventFilter( QObject *o, QEvent *e )

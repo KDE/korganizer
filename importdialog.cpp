@@ -86,7 +86,7 @@ ImportDialog::~ImportDialog()
 
 void ImportDialog::slotOk()
 {
-  kDebug(5850) <<"Adding resource for url '" << mUrl <<"'";
+  kDebug() << "Adding resource for url '" << mUrl <<"'";
 
   if ( mAddButton->isChecked() ) {
     emit addResource( mUrl );

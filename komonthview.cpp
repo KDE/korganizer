@@ -1072,9 +1072,9 @@ void KOMonthView::updateCells( int start, int end )
         decoHBox->setMinimumWidth( 1 );
 
         foreach ( CalendarDecoration::Element *it, elements ) {
-          kDebug(5850) << "adding Element " << it->id()
-                       << " of Decoration " << deco->info()
-                       << " to the top of the month view";
+          kDebug() << "adding Element " << it->id()
+                   << " of Decoration " << deco->info()
+                   << " to the top of the month view";
           KODecorationLabel *label = new KODecorationLabel( it, decoHBox );
           label->setAlignment( Qt::AlignBottom );
         }
@@ -1111,7 +1111,7 @@ void KOMonthView::updateCells( int start, int end )
 
 void KOMonthView::showIncidences( const Incidence::List & )
 {
-  kDebug(5850) << "KOMonthView::showIncidences( const Incidence::List & ) is not implemented yet.";
+  kDebug() << "not implemented yet.";
 }
 
 class KOMonthView::GetDateVisitor : public IncidenceBase::Visitor

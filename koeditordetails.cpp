@@ -132,7 +132,7 @@ void KOAttendeeListView::dragEnterEvent( QDragEnterEvent *e )
 
 void KOAttendeeListView::addAttendee( const QString &newAttendee )
 {
-  kDebug(5850) << " Email:" << newAttendee;
+  kDebug() << " Email:" << newAttendee;
   QString name;
   QString email;
   KPIMUtils::extractEmailAddressAndName( newAttendee, email, name );
@@ -166,7 +166,7 @@ void KOAttendeeListView::dropEvent( QDropEvent *e )
 #endif // KORG_NOKABC
   if ( md->hasText() ) {
     QString text = md->text();
-    kDebug(5850) << "Dropped :" << text;
+    kDebug() << "Dropped :" << text;
     QStringList emails = text.split( ",", QString::SkipEmptyParts );
     for ( QStringList::ConstIterator it = emails.begin(); it != emails.end(); ++it ) {
       addAttendee( *it );

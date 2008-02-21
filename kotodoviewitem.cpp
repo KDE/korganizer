@@ -164,14 +164,16 @@ void KOTodoViewItem::construct()
 void KOTodoViewItem::stateChange( bool state )
 {
   // do not change setting on startup or if no valid todo item is given
-  if ( m_init || !mTodo ) return;
+  if ( m_init || !mTodo ) {
+    return;
+  }
 
   if ( mTodo->isReadOnly() ) {
     setOn( mTodo->isCompleted() );
     return;
   }
 
-  kDebug(5850) <<"State changed, modified" << state;
+  kDebug() << "State changed, modified" << state;
   mTodoView->setNewPercentageDelayed( this, state ? 100 : 0 );
 }
 
@@ -179,36 +181,31 @@ bool KOTodoViewItem::isAlternate()
 {
 #ifndef KORG_NOLVALTERNATION
   KOTodoListView *lv = static_cast<KOTodoListView *>(listView());
-  if (lv && lv->alternateBackground().isValid())
-  {
+  if ( lv && lv->alternateBackground().isValid() ) {
     KOTodoViewItem *above = 0;
-    above = dynamic_cast<KOTodoViewItem *>(itemAbove());
+    above = dynamic_cast<KOTodoViewItem *>( itemAbove() );
     m_known = above ? above->m_known : true;
-    if (m_known)
-    {
-       m_odd = above ? !above->m_odd : false;
+    if ( m_known ) {
+      m_odd = above ? !above->m_odd : false;
     } else {
-       KOTodoViewItem *item;
-       bool previous = true;
-       if (Q3ListViewItem::parent())
-       {
-          item = dynamic_cast<KOTodoViewItem *>(Q3ListViewItem::parent());
-          if (item)
-             previous = item->m_odd;
-          item = dynamic_cast<KOTodoViewItem *>(Q3ListViewItem::parent()->firstChild());
-       }
-       else
-       {
-          item = dynamic_cast<KOTodoViewItem *>(lv->firstChild());
-       }
+      KOTodoViewItem *item;
+      bool previous = true;
+      if ( Q3ListViewItem::parent() ) {
+        item = dynamic_cast<KOTodoViewItem *>( Q3ListViewItem::parent() );
+        if ( item ) {
+          previous = item->m_odd;
+        }
+        item = dynamic_cast<KOTodoViewItem *>(Q3ListViewItem::parent()->firstChild());
+      } else {
+        item = dynamic_cast<KOTodoViewItem *>(lv->firstChild());
+      }
 
-       while(item)
-       {
-          previous = (!previous);
-          item->m_odd = previous;
-          item->m_known = true;
-          item = dynamic_cast<KOTodoViewItem *>(item->nextSibling());
-       }
+      while ( item ) {
+        previous = (!previous);
+        item->m_odd = previous;
+        item->m_known = true;
+        item = dynamic_cast<KOTodoViewItem *>(item->nextSibling());
+      }
     }
     return m_odd;
   }

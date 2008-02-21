@@ -320,7 +320,7 @@ bool IncidenceChanger::changeIncidence( Incidence *oldinc, Incidence *newinc,
         KCal::MailScheduler scheduler( mCalendar );
         scheduler.performTransaction( tmp, KCal::iTIPReply );
       } else {
-        kWarning() << "Counter proposals only supported for events" << endl;
+        kWarning() << "Counter proposals only supported for events";
       }
     }
 

@@ -146,7 +146,7 @@ void KOIncidenceEditor::cancelRemovedAttendees( Incidence *incidence )
 
 void KOIncidenceEditor::slotManageTemplates()
 {
-  kDebug(5850);
+  kDebug();
 
   QString tp = type();
 

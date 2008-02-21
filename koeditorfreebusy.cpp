@@ -86,7 +86,10 @@ class FreeBusyItem : public KDGanttViewTaskItem
 
     Attendee *attendee() const { return mAttendee; }
     void setFreeBusy( KCal::FreeBusy *fb ) { mFreeBusy = fb; }
-    KCal::FreeBusy *freeBusy() const { return mFreeBusy; }
+    KCal::FreeBusy *freeBusy() const
+    {
+      return mFreeBusy;
+    }
 
     void setFreeBusyPeriods( FreeBusy *fb );
 
@@ -803,7 +806,7 @@ void KOEditorFreeBusy::writeEvent( Incidence *incidence )
   toBeDeleted.clear();
 }
 
-KCal::Attendee * KOEditorFreeBusy::currentAttendee() const
+KCal::Attendee *KOEditorFreeBusy::currentAttendee() const
 {
   KDGanttViewItem *item = mGanttView->selectedItem();
   FreeBusyItem *aItem = static_cast<FreeBusyItem*>( item );

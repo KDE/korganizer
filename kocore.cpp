@@ -97,7 +97,7 @@ KService::List KOCore::availablePrintPlugins()
 
 KOrg::Plugin *KOCore::loadPlugin( KService::Ptr service )
 {
-  kDebug(5850) << "loadPlugin: library:" << service->library();
+  kDebug() << service->library();
 
   if ( !service->hasServiceType( KOrg::Plugin::serviceType() ) ) {
     return 0;
@@ -107,14 +107,14 @@ KOrg::Plugin *KOCore::loadPlugin( KService::Ptr service )
   KPluginFactory *factory = loader.factory();
 
   if ( !factory ) {
-    kDebug(5850) << "KOCore::loadPlugin(): Factory creation failed";
+    kDebug() << "Factory creation failed";
     return 0;
   }
 
   KOrg::PluginFactory *pluginFactory = static_cast<KOrg::PluginFactory *>( factory );
 
   if ( !pluginFactory ) {
-    kDebug(5850) << "KOCore::loadPlugin(): Cast to KOrg::PluginFactory failed";
+    kDebug() << "Cast failed";
     return 0;
   }
 
@@ -135,13 +135,13 @@ KOrg::Plugin *KOCore::loadPlugin( const QString &name )
 
 KOrg::CalendarDecoration::Decoration *KOCore::loadCalendarDecoration( KService::Ptr service )
 {
-  kDebug(5850) << "loadCalendarDecoration: library:" << service->library();
+  kDebug() << service->library();
 
   KPluginLoader loader( *service );
   KPluginFactory *factory = loader.factory();
 
   if ( !factory ) {
-    kDebug(5850) << "KOCore::loadCalendarDecoration(): Factory creation failed";
+    kDebug() << "Factory creation failed";
     return 0;
   }
 
@@ -149,7 +149,7 @@ KOrg::CalendarDecoration::Decoration *KOCore::loadCalendarDecoration( KService::
       static_cast<KOrg::CalendarDecoration::DecorationFactory *>( factory );
 
   if ( !pluginFactory ) {
-    kDebug(5850) << "KOCore::loadCalendarDecoration(): Cast failed";
+    kDebug() << "Cast failed";
     return 0;
   }
 
@@ -170,7 +170,7 @@ KOrg::CalendarDecoration::Decoration *KOCore::loadCalendarDecoration( const QStr
 
 KOrg::Part *KOCore::loadPart( KService::Ptr service, KOrg::MainWindow *parent )
 {
-  kDebug(5850) << "loadPart: library:" << service->library();
+  kDebug() << service->library();
 
   if ( !service->hasServiceType( KOrg::Part::serviceType() ) ) {
     return 0;
@@ -180,7 +180,7 @@ KOrg::Part *KOCore::loadPart( KService::Ptr service, KOrg::MainWindow *parent )
   KPluginFactory *factory = loader.factory();
 
   if ( !factory ) {
-    kDebug(5850) << "KOCore::loadPart(): Factory creation failed";
+    kDebug() << "Factory creation failed";
     return 0;
   }
 
@@ -188,7 +188,7 @@ KOrg::Part *KOCore::loadPart( KService::Ptr service, KOrg::MainWindow *parent )
       static_cast<KOrg::PartFactory *>( factory );
 
   if ( !pluginFactory ) {
-    kDebug(5850) << "KOCore::loadPart(): Cast failed";
+    kDebug() << "Cast failed";
     return 0;
   }
 
@@ -197,7 +197,7 @@ KOrg::Part *KOCore::loadPart( KService::Ptr service, KOrg::MainWindow *parent )
 
 KOrg::PrintPlugin *KOCore::loadPrintPlugin( KService::Ptr service )
 {
-  kDebug(5850) << "loadPart: print plugin in library:" << service->library();
+  kDebug() << service->library();
 
   if ( !service->hasServiceType( KOrg::PrintPlugin::serviceType() ) ) {
     return 0;
@@ -207,7 +207,7 @@ KOrg::PrintPlugin *KOCore::loadPrintPlugin( KService::Ptr service )
   KPluginFactory *factory = loader.factory();
 
   if ( !factory ) {
-    kDebug(5850) << "KOCore::loadPrintPlugin(): Factory creation failed";
+    kDebug() << "Factory creation failed";
     return 0;
   }
 
@@ -215,7 +215,7 @@ KOrg::PrintPlugin *KOCore::loadPrintPlugin( KService::Ptr service )
       static_cast<KOrg::PrintPluginFactory *>( factory );
 
   if ( !pluginFactory ) {
-    kDebug(5850) << "KOCore::loadPrintPlugins(): Cast failed";
+    kDebug() << "Cast failed";
     return 0;
   }
 
@@ -303,7 +303,7 @@ KOrg::Part::List KOCore::loadParts( KOrg::MainWindow *parent )
       KOrg::Part *part = loadPart( *it, parent );
       if ( part ) {
         if ( !parent->mainGuiClient() ) {
-          kError() << "KOCore::loadParts(): parent has no mainGuiClient.";
+          kError() << "parent has no mainGuiClient.";
         } else {
           parent->mainGuiClient()->insertChildClient( part );
           parts.append( part );

@@ -65,7 +65,7 @@ KOrganizerApp::~KOrganizerApp()
 
 int KOrganizerApp::newInstance()
 {
-  kDebug(5850) <<"KOApp::newInstance()";
+  kDebug();
   static bool first = true;
   if ( isSessionRestored() && first ) {
      KOrg::MainWindow *korg = ActionManager::findInstance( KUrl() );
@@ -118,7 +118,7 @@ int KOrganizerApp::newInstance()
     }
   }
 
-  kDebug(5850) <<"KOApp::newInstance() done";
+  kDebug() << "done";
 
   return 0;
 }
@@ -133,8 +133,7 @@ void KOrganizerApp::processCalendar( const KUrl &url )
     korg->init( hasDocument );
     korg->topLevelWidget()->show();
 
-    kDebug(5850) <<"KOrganizerApp::processCalendar(): '" << url.url()
-                  << "'";
+    kDebug() << url.url();
 
     if ( hasDocument )
       korg->openURL( url );
