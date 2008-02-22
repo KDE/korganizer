@@ -83,7 +83,7 @@ class KOViewManager : public QObject
     void raiseCurrentView();
 
     void connectView( KOrg::BaseView * );
-    void addView( KOrg::BaseView * );
+    void addView( KOrg::BaseView *, bool isTab = false );
 
     KCal::Incidence *currentSelection();
     QDate currentSelectionDate();

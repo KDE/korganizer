@@ -152,7 +152,11 @@ void KOViewManager::raiseCurrentView()
     mMainView->showLeftFrame( true );
     mMainView->navigatorBar()->hide();
   }
-  mMainView->viewStack()->setCurrentWidget(mCurrentView);
+  if ( !mAgendaViewTabs || (mCurrentView != mAgendaView && mCurrentView != mAgendaSideBySideView) ) {
+    mMainView->viewStack()->setCurrentWidget(mCurrentView);
+  } else {
+    mMainView->viewStack()->setCurrentWidget( mAgendaViewTabs );
+  }
 }
 
 void KOViewManager::updateView()
@@ -259,10 +263,11 @@ void KOViewManager::zoomOutVertically()
   if( mAgendaView== mCurrentView ) mAgendaView->zoomOutVertically();
 }
 
-void KOViewManager::addView(KOrg::BaseView *view)
+void KOViewManager::addView(KOrg::BaseView *view, bool isTab )
 {
   connectView( view );
-  mMainView->viewStack()->addWidget( view );
+  if ( !isTab )
+    mMainView->viewStack()->addWidget( view );
 }
 
 void KOViewManager::showTimeSpentView()
@@ -307,13 +312,14 @@ void KOViewManager::showAgendaView()
     connect( mAgendaViewTabs, SIGNAL( currentChanged( QWidget* ) ),
              this, SLOT( currentAgendaViewTabChanged( QWidget* ) ) );
     parent = mAgendaViewTabs;
+    mMainView->viewStack()->addWidget( mAgendaViewTabs );
   }
 
   if ( !mAgendaView && showMerged ) {
     mAgendaView = new KOAgendaView(mMainView->calendar(), parent);
     mAgendaView->setObjectName("KOViewManager::AgendaView");
 
-    addView(mAgendaView);
+    addView( mAgendaView, mAgendaViewTabs );
 
     connect( mAgendaView,SIGNAL( zoomViewHorizontally(const QDate &, int )),
              mMainView->dateNavigator(),SLOT( selectDates( const QDate &, int ) ) );
@@ -326,7 +332,7 @@ void KOViewManager::showAgendaView()
     mAgendaSideBySideView =
       new MultiAgendaView( mMainView->calendar(), parent );
     mAgendaSideBySideView->setObjectName("KOViewManager::AgendaSideBySideView");
-    addView(mAgendaSideBySideView);
+    addView( mAgendaSideBySideView, mAgendaViewTabs );
 
 /*
     connect( mAgendaSideBySideView,SIGNAL( zoomViewHorizontally(const QDate &, int )),
