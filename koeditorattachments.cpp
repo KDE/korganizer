@@ -332,11 +332,8 @@ class AttachmentIconView : public K3IconView
     }
 
   protected:
-#ifdef __GNUC__
-#warning Port to QDrag instead of Q3DragObject once we port the view from K3IconView
-#endif
-#if 0
-    virtual Q3DragObject *dragObject ()
+
+    QMimeData* mimeData()
     {
       // create a list of the URL:s that we want to drag
       KUrl::List urls;
@@ -355,8 +352,28 @@ class AttachmentIconView : public K3IconView
           labels.append( KUrl::toPercentEncoding( item->label() ) );
         }
       }
+
+      QMap<QString, QString> metadata;
+      metadata["labels"] = labels.join( ":" );
+
+      QMimeData *mimeData = new QMimeData;
+      urls.populateMimeData( mimeData, metadata );
+      return mimeData;
+    }
+
+#ifdef __GNUC__
+#warning Port to QDrag instead of Q3DragObject once we port the view from K3IconView
+#endif
+    virtual Q3DragObject *dragObject ()
+    {
+      int count = 0;
+      for ( Q3IconViewItem *it = firstItem(); it; it = it->nextItem() ) {
+        if ( it->isSelected() )
+          ++count;
+      }
+
       QPixmap pixmap;
-      if ( urls.count() > 1 ) {
+      if ( count > 1 ) {
         pixmap = KIconLoader::global()->loadIcon( "mail-attachment", KIconLoader::Desktop );
       }
       if ( pixmap.isNull() ) {
@@ -364,19 +381,15 @@ class AttachmentIconView : public K3IconView
       }
 
       QPoint hotspot( pixmap.width() / 2, pixmap.height() / 2 );
-      QMap<QString, QString> metadata;
-      metadata["labels"] = labels.join( ":" );
 
       QDrag *drag = new QDrag( this );
-      QMimeData *mimeData = new QMimeData;
-      drag->setMimeData( mimeData );
-      urls.populateMimeData( mimeData, metadata );
+      drag->setMimeData( mimeData() );
 
       drag->setPixmap( pixmap );
       drag->setHotSpot( hotspot );
-      return drag;
+      drag->exec( Qt::CopyAction );
+      return 0;
     }
-  #endif
 };
 
 KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent )
@@ -854,7 +867,7 @@ void KOEditorAttachments::applyChanges()
 
 void KOEditorAttachments::slotCopy()
 {
-  QApplication::clipboard()->setData( mAttachments->dragObject(), QClipboard::Clipboard );
+  QApplication::clipboard()->setMimeData( mAttachments->mimeData(), QClipboard::Clipboard );
 }
 
 void KOEditorAttachments::slotCut()
