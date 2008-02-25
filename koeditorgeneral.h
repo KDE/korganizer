@@ -94,6 +94,7 @@ class KOEditorGeneral : public QObject
     bool validateInput() { return true; }
 
     void enableAlarm( bool enable );
+    void toggleAlarm( bool on );
 
     void setSummary( const QString & );
     void setDescription( const QString &, bool isRich );

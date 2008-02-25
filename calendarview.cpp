@@ -967,7 +967,6 @@ void CalendarView::newTodo( const QString &summary, const QString &description,
   KOTodoEditor *todoEditor = mDialogManager->getTodoEditor();
   connectIncidenceEditor( todoEditor );
   todoEditor->newTodo();
-  todoEditor->setDates( QDateTime(), false );
   todoEditor->setTexts( summary, description );
   todoEditor->addAttachments( attachments, attachmentMimetypes, inlineAttachment );
   todoEditor->addAttendees( attendees );

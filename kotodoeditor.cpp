@@ -28,7 +28,6 @@
 #include "koeditorgeneraltodo.h"
 #include "koeditordetails.h"
 #include "koeditorrecurrence.h"
-#include "koeditoralarms.h"
 #include "koprefs.h"
 #include "koeditorattachments.h"
 #include "kogroupware.h"
@@ -122,7 +121,6 @@ void KOTodoEditor::setupGeneral()
     mGeneral->initCompletion( topFrame2, completionLayout );
 
     mGeneral->initAlarm( topFrame, topLayout );
-    mGeneral->enableAlarm( false );
 
     mGeneral->initSecrecy( topFrame2, topLayout2 );
     mGeneral->initDescription( topFrame2, topLayout2 );
@@ -141,7 +139,6 @@ void KOTodoEditor::setupGeneral()
     alarmLineLayout->setSpacing( spacingHint() );
     topLayout->addItem( alarmLineLayout );
     mGeneral->initAlarm( topFrame, alarmLineLayout );
-    mGeneral->enableAlarm( false );
     alarmLineLayout->addStretch( 1 );
 
     mGeneral->initDescription( topFrame, topLayout );
@@ -156,10 +153,7 @@ void KOTodoEditor::setupGeneral()
     connect( this, SIGNAL( signalAddAttachments( const QStringList&, const QStringList&, bool ) ),
              mGeneral, SLOT( addAttachments( const QStringList&, const QStringList&, bool ) ) );
   }
-
-  // By default, the To-do has no time associated and
-  // neither a start nor end time.
-  mGeneral->setDefaults( QDateTime(), false );
+  mGeneral->enableAlarm( true );
 
   mGeneral->finishSetup();
 }
@@ -201,6 +195,7 @@ void KOTodoEditor::newTodo()
   mTodo = 0;
   mCalendar = 0;
   setCaption( i18nc( "@title:window", "New To-do" ) );
+  loadDefaults();
 }
 
 void KOTodoEditor::setTexts( const QString &summary, const QString &description,
@@ -220,6 +215,7 @@ void KOTodoEditor::loadDefaults()
 {
   kDebug();
   setDates( QDateTime::currentDateTime().addDays(7), true, 0 );
+  mGeneral->toggleAlarm( true );
 }
 
 bool KOTodoEditor::processInput()
@@ -312,7 +308,6 @@ void KOTodoEditor::readTodo( Todo *todo, Calendar *calendar )
 
   mGeneral->readTodo( todo, calendar );
   mDetails->readIncidence( todo );
-//  mAlarms->readIncidence( todo );
   mRecurrence->readIncidence( todo );
 
   createEmbeddedURLPages( todo );
