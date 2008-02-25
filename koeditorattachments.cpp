@@ -395,7 +395,9 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent )
   mAttachments->setItemsMovable( false );
   mAttachments->setSelectionMode( Q3IconView::Extended );
   topLayout->addWidget( mAttachments );
-  connect( mAttachments, SIGNAL(executed(Q3IconViewItem *)),
+  connect( mAttachments, SIGNAL(returnPressed(Q3IconViewItem *)),
+           SLOT(showAttachment(Q3IconViewItem *)) );
+  connect( mAttachments, SIGNAL(doubleClicked(Q3IconViewItem *)),
            SLOT(showAttachment(Q3IconViewItem *)) );
   connect( mAttachments, SIGNAL(itemRenamed(Q3IconViewItem *,const QString &)),
            SLOT(slotItemRenamed(Q3IconViewItem *,const QString &)) );
@@ -437,7 +439,7 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent )
   mPopupMenu->addAction( mOpenAction );
   mPopupMenu->addSeparator();
 
-  mCopyAction = KStandardAction::copy( this, SLOT(lotCopy()), ac );
+  mCopyAction = KStandardAction::copy( this, SLOT(slotCopy()), ac );
   mPopupMenu->addAction( mCopyAction );
   mCutAction = KStandardAction::cut( this, SLOT(slotCut()), ac );
   mPopupMenu->addAction( mCutAction );
