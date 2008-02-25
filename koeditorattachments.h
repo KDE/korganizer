@@ -121,7 +121,7 @@ class KOEditorAttachments : public QWidget
     void dropEvent( QDropEvent *event );
     void slotItemRenamed ( Q3IconViewItem * item, const QString & text );
     void dropped ( QDropEvent * e, const Q3ValueList<Q3IconDragItem> & lst );
-    void copyComplete( KJob *job );
+    void downloadComplete( KJob *job );
     void slotCopy();
     void slotCut();
     void slotPaste();

@@ -607,29 +607,13 @@ void KOEditorAttachments::handlePasteOrDrop( const QMimeData *mimeData )
     if ( probablyWeHaveUris ) {
       for ( KUrl::List::ConstIterator it = urls.constBegin();
             it != urls.constEnd(); ++it ) {
-#if 0 // binary attachments are unimplemented yet
         KIO::Job *job = KIO::storedGet( *it );
         connect( job, SIGNAL(result(KJob *)), SLOT(downloadComplete(KJob *)) );
-#endif
-        KIO::Job *job = KIO::copy(
-          *it, generateLocalAttachmentPath( ( *it ).fileName(), KMimeType::findByUrl( *it ) ) );
-        connect( job, SIGNAL(result(KJob *)), SLOT(copyComplete(KJob *)) );
       }
     } else { // we take anything
-      KMimeType::Ptr mimeType = KMimeType::mimeType( mimeData->formats().first() );
-      QString path = generateLocalAttachmentPath( QString(), mimeType );
-      QFile file( path );
-      file.open( QIODevice::WriteOnly );
-      QDataStream stream( &file );
-      stream << mimeData->data( mimeData->formats().first() );
-      file.close();
-      addAttachment( path, mimeType->name(), mimeType->comment(), true );
-      mDeferredCopy.append( path );
+      addAttachment( mimeData->data( mimeData->formats().first() ), mimeData->formats().first(),
+                     KMimeType::mimeType( mimeData->formats().first() )->name() );
     }
-#if 0 // binary attachments are unimplemented yet
-    addAttachment( mimeData->data( mimeData->formats().first() ), mimeData->formats().first(),
-                   KMimeType::mimeType( mimeData->formats().first() )->name() );
-#endif
   }
 }
 
@@ -638,30 +622,15 @@ void KOEditorAttachments::dropEvent( QDropEvent *event )
   handlePasteOrDrop( event->mimeData() );
 }
 
-#if 0 // binary attachments are unimplemented yet
 void KOEditorAttachments::downloadComplete( KJob *job )
-{
-  if ( job->error() ) {
-    job->showErrorDialog( this );
-  } else {
-    addAttachment( static_cast<KIO::StoredTransferJob *>( job )->data(),
-                   QString(),
-                   static_cast<KIO::SimpleJob *>( job )->url().fileName() );
-  }
-}
-#endif
-
-void KOEditorAttachments::copyComplete( KJob *job )
 {
   if ( job->error() ) {
     static_cast<KIO::Job*>(job)->ui()->setWindow( this );
     static_cast<KIO::Job*>(job)->ui()->showErrorMessage();
   } else {
-    addAttachment( static_cast<KIO::CopyJob *>( job )->destUrl().url(),
+    addAttachment( static_cast<KIO::StoredTransferJob *>( job )->data(),
                    QString(),
-                   static_cast<KIO::CopyJob *>( job )->srcUrls().first().fileName(),
-                   true );
-    mDeferredCopy.append( static_cast<KIO::CopyJob *>( job )->destUrl() );
+                   static_cast<KIO::SimpleJob *>( job )->url().fileName() );
   }
 }
 
