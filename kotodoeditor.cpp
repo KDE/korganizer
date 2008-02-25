@@ -143,10 +143,6 @@ void KOTodoEditor::setupGeneral()
 
     mGeneral->initDescription( topFrame, topLayout );
 
-    QBoxLayout *detailsLayout = new QHBoxLayout();
-    detailsLayout->setSpacing( spacingHint() );
-    topLayout->addItem( detailsLayout );
-    mGeneral->initSecrecy( topFrame, detailsLayout );
     mGeneral->initAttachments(topFrame,topLayout);
     connect( mGeneral, SIGNAL( openURL( const KUrl& ) ),
              this, SLOT( openURL( const KUrl& ) ) );
