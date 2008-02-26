@@ -331,6 +331,24 @@ class AttachmentIconView : public K3IconView
       setMaxItemWidth( qMax( maxItemWidth(), 250 ) );
     }
 
+    KUrl tempFileForAttachment( KCal::Attachment* attachment )
+    {
+      if ( mTempFiles.contains( attachment ) )
+        return mTempFiles.value( attachment );
+      KTemporaryFile *file = new KTemporaryFile();
+      file->setParent( this );
+      file->setSuffix(
+        QString( KMimeType::mimeType( attachment->mimeType() )->patterns().first() ).replace( "*", "" ) );
+      file->setAutoRemove( true );
+      file->open();
+      // read-only not to give the idea that it could be written to
+      file->setPermissions( QFile::ReadUser );
+      file->write( QByteArray::fromBase64( attachment->data() ) );
+      mTempFiles.insert( attachment, file->fileName() );
+      file->close();
+      return mTempFiles.value( attachment );
+    }
+
   protected:
 
     QMimeData* mimeData()
@@ -341,7 +359,11 @@ class AttachmentIconView : public K3IconView
       for ( Q3IconViewItem *it = firstItem(); it; it = it->nextItem() ) {
         if ( it->isSelected() ) {
           AttachmentIconItem *item = static_cast<AttachmentIconItem *>( it );
-          urls.append( item->uri() );
+          if ( item->isBinary() ) {
+            urls.append( tempFileForAttachment( item->attachment() ) );
+          } else {
+            urls.append( item->uri() );
+          }
           labels.append( KUrl::toPercentEncoding( item->label() ) );
         }
       }
@@ -390,6 +412,9 @@ class AttachmentIconView : public K3IconView
       drag->exec( Qt::CopyAction );
       return 0;
     }
+
+  private:
+    QHash<KCal::Attachment*, KUrl> mTempFiles;
 };
 
 KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent )
@@ -651,17 +676,7 @@ void KOEditorAttachments::showAttachment( Q3IconViewItem *item )
   if ( att->isUri() ) {
     emit openURL( att->uri() );
   } else {
-    // read-only not to give the idea that it could be written to
-    KTemporaryFile file;
-    file.setSuffix(
-      QString( KMimeType::mimeType( att->mimeType() )->patterns().first() ).replace( "*", "" ) );
-    file.setAutoRemove( false );
-    file.open();
-    file.setPermissions( QFile::ReadUser );
-    file.write( QByteArray::fromBase64( att->data() ) );
-    file.flush();
-    KRun::runUrl( KUrl( file.fileName() ), att->mimeType(), 0, true );
-    file.close();
+    KRun::runUrl( mAttachments->tempFileForAttachment( att ), att->mimeType(), 0, true );
   }
 }
 
