@@ -134,27 +134,18 @@ class AttachmentIconItem : public K3IconViewItem
     {
       return mAttachment->isBinary();
     }
-    const bool isLocal() const
-    {
-      return mAttachment->isLocal();
-    }
-    void setLocal( bool local )
-    {
-      mAttachment->setLocal( local );
-      readAttachment();
-    }
     QPixmap icon() const
     {
       return icon( KMimeType::mimeType( mAttachment->mimeType() ),
-                   mAttachment->uri(), mAttachment->isLocal() );
+                   mAttachment->uri(), mAttachment->isBinary() );
     }
     static QPixmap icon( KMimeType::Ptr mimeType, const QString &uri,
-                         bool local = false )
+                         bool binary = false )
     {
       QString iconStr = mimeType->iconName( uri );
       QStringList overlays;
-      if ( !uri.isNull() && !local ) {
-        overlays << "link";
+      if ( !uri.isNull() && !binary ) {
+        overlays << "emblem-link";
       }
 
       return KIconLoader::global()->loadIcon( iconStr, KIconLoader::Desktop, 0,
@@ -244,7 +235,7 @@ AttachmentEditDialog::AttachmentEditDialog( AttachmentIconItem *item,
   grid->addWidget( mInline, 3, 0, 1, 3 );
   mInline->setChecked( item->isBinary() );
 
-  if ( item->attachment()->isUri() && !item->isLocal() ) {
+  if ( item->attachment()->isUri() ) {
     label = new QLabel( i18nc( "@label", "Location:" ), page );
     grid->addWidget( label, 4, 0 );
     mURLRequester = new KUrlRequester( item->uri(), page );
@@ -252,19 +243,11 @@ AttachmentEditDialog::AttachmentEditDialog( AttachmentIconItem *item,
     connect( mURLRequester, SIGNAL(urlSelected(const KUrl &)),
              SLOT(urlChanged(const KUrl &)) );
   } else {
-    if ( item->isLocal() ) {
-      grid->addWidget( new QLabel( i18nc( "@label", "Size:" ), page ), 4, 0 );
-      uint size = QFileInfo( KUrl( item->uri() ).path() ).size();
-      grid->addWidget(
-        new QLabel( QString::fromLatin1( "%1 (%2)" ).
-                    arg( KIO::convertSize( size ) ).
-                    arg( KGlobal::locale()->formatNumber( size, 0 ) ), page ), 4, 2 );
-    } else {
-      grid->addWidget( new QLabel( QString::fromLatin1( "%1 (%2)" ).
-                                   arg( KIO::convertSize( item->attachment()->size() ) ).
-                                   arg( KGlobal::locale()->formatNumber(
-                                          item->attachment()->size(), 0 ) ), page ), 4, 2 );
-    }
+    grid->addWidget( new QLabel( i18nc( "@label", "Size:" ), page ), 4, 0 );
+    grid->addWidget( new QLabel( QString::fromLatin1( "%1 (%2)" ).
+                                 arg( KIO::convertSize( item->attachment()->size() ) ).
+                                 arg( KGlobal::locale()->formatNumber(
+                                        item->attachment()->size(), 0 ) ), page ), 4, 2 );
   }
   vbl->addStretch( 10 );
   connect( this, SIGNAL(applyClicked()), this, SLOT(slotApply()) );
@@ -504,12 +487,6 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent )
 
 KOEditorAttachments::~KOEditorAttachments()
 {
-  // delete any previously copied files that weren't accepted
-  for ( KUrl::List::ConstIterator it = mDeferredCopy.constBegin();
-        it != mDeferredCopy.constEnd(); ++it ) {
-    Q_ASSERT( ( *it ).isLocalFile() );
-    QFile::remove( ( *it ).path() );
-  }
 }
 
 bool KOEditorAttachments::hasAttachments()
@@ -521,48 +498,6 @@ void KOEditorAttachments::dragEnterEvent( QDragEnterEvent *event )
 {
   const QMimeData *md = event->mimeData();
   event->setAccepted( KUrl::List::canDecode( md ) || md->hasText() );
-}
-
-QString KOEditorAttachments::generateLocalAttachmentPath( const QString &filename,
-                                                          const KMimeType::Ptr mimeType ) const
-{
-  QString pathBegin = "korganizer/attachments/";
-  if ( mUid.isEmpty() ) {
-    pathBegin += KRandom::randomString( 10 ); // arbitrary
-  } else {
-    pathBegin += mUid;
-  }
-  pathBegin += '/';
-
-  QString fname = filename;
-  if ( fname.isEmpty() ) {
-    fname = KRandom::randomString( 10 ) +
-            QString( mimeType->patterns().first() ).replace( "*", "" );
-  } else {
-    // we need to determine if there is a correct extension
-    bool correctExtension = false;
-    for ( QStringList::ConstIterator it = mimeType->patterns().constBegin();
-          it != mimeType->patterns().constEnd(); ++it ) {
-      QRegExp re( *it );
-      re.setPatternSyntax( QRegExp::Wildcard );
-      if ( ( correctExtension = re.exactMatch( fname ) ) ) {
-        break;
-      }
-    }
-    if ( !correctExtension ) {
-      // we take the first one
-      fname += QString( mimeType->patterns().first() ).replace( "*", "" );
-    }
-  }
-
-  QString path = KStandardDirs::locateLocal( "data", pathBegin + fname );
-
-  while ( QFile::exists( path ) ) {
-    // no need to worry much about races here, I guess
-    path = KStandardDirs::locateLocal( "data", pathBegin + KRandom::randomString( 6 ) + fname );
-  }
-
-  return path;
 }
 
 void KOEditorAttachments::handlePasteOrDrop( const QMimeData *mimeData )
@@ -728,9 +663,6 @@ void KOEditorAttachments::slotRemove()
                     "The item labeled \"%1\" will be permanently deleted.", item->label() ),
              i18nc( "@title:window", "KOrganizer Confirmation" ),
              KStandardGuiItem::del() ) == KMessageBox::Continue ) {
-        if ( item->isLocal() ) {
-          mDeferredDelete.append( item->uri() );
-        }
         toDelete.append( it );
       }
     }
@@ -759,27 +691,39 @@ void KOEditorAttachments::setDefaults()
 void KOEditorAttachments::addAttachment( const QString &uri,
                                          const QString &mimeType,
                                          const QString &label,
-                                         bool local )
+                                         bool binary )
 {
-  AttachmentIconItem *item = new AttachmentIconItem( 0, mAttachments );
-  item->setUri( uri );
-  item->setLabel( label );
-  if ( mimeType.isEmpty() ) {
-    if ( uri.startsWith( KDEPIMPROTOCOL_CONTACT ) ) {
-      item->setMimeType( "text/directory" );
-    } else if ( uri.startsWith( KDEPIMPROTOCOL_EMAIL ) ) {
-      item->setMimeType( "message/rfc822" );
-    } else if ( uri.startsWith( KDEPIMPROTOCOL_INCIDENCE ) ) {
-      item->setMimeType( "text/calendar" );
-    } else if ( uri.startsWith( KDEPIMPROTOCOL_NEWSARTICLE ) ) {
-      item->setMimeType( "message/news" );
+  if ( !binary ) {
+    AttachmentIconItem *item = new AttachmentIconItem( 0, mAttachments );
+    item->setUri( uri );
+    item->setLabel( label );
+    if ( mimeType.isEmpty() ) {
+      if ( uri.startsWith( KDEPIMPROTOCOL_CONTACT ) ) {
+        item->setMimeType( "text/directory" );
+      } else if ( uri.startsWith( KDEPIMPROTOCOL_EMAIL ) ) {
+        item->setMimeType( "message/rfc822" );
+      } else if ( uri.startsWith( KDEPIMPROTOCOL_INCIDENCE ) ) {
+        item->setMimeType( "text/calendar" );
+      } else if ( uri.startsWith( KDEPIMPROTOCOL_NEWSARTICLE ) ) {
+        item->setMimeType( "message/news" );
+      } else {
+        item->setMimeType( KMimeType::findByUrl( uri )->name() );
+      }
     } else {
-      item->setMimeType( KMimeType::findByUrl( uri )->name() );
+      QString tmpFile;
+      if ( KIO::NetAccess::download( uri, tmpFile, this ) ) {
+        QFile f( tmpFile );
+        if ( !f.open( QIODevice::ReadOnly ) ) {
+          return;
+        }
+        const QByteArray data = f.readAll();
+        f.close();
+        addAttachment( data, mimeType, label );
+      }
+      KIO::NetAccess::removeTempFile( tmpFile );
     }
   } else {
-    item->setMimeType( mimeType );
   }
-  item->setLocal( local );
 }
 
 void KOEditorAttachments::addAttachment( const QByteArray &data,
@@ -839,14 +783,6 @@ void KOEditorAttachments::slotItemRenamed ( Q3IconViewItem *item, const QString 
 
 void KOEditorAttachments::applyChanges()
 {
-  for ( KUrl::List::ConstIterator it = mDeferredDelete.constBegin();
-        it != mDeferredDelete.constEnd(); ++it ) {
-    Q_ASSERT( ( *it ).isLocalFile() );
-    QFile::remove( ( *it ).path() );
-  }
-  mDeferredDelete.clear();
-
-  mDeferredCopy.clear(); // files are already copied
 }
 
 void KOEditorAttachments::slotCopy()

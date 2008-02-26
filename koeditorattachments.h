@@ -92,7 +92,7 @@ class KOEditorAttachments : public QWidget
     void addAttachment( const QString &uri,
                         const QString &mimeType = QString(),
                         const QString &label = QString(),
-                        bool local = false );
+                        bool binary = false );
     void addAttachment( KCal::Attachment *attachment );
     void addAttachment( const QByteArray &data,
                         const QString &mimeType = QString(),
@@ -128,10 +128,6 @@ class KOEditorAttachments : public QWidget
     void selectionChanged();
     void contextMenu( Q3IconViewItem *item, const QPoint &pos );
 
-  protected:
-    QString generateLocalAttachmentPath( const QString &filename,
-                                         const KMimeType::Ptr mimeType ) const;
-
   signals:
     void openURL( const KUrl &url );
 
@@ -141,8 +137,6 @@ class KOEditorAttachments : public QWidget
     AttachmentIconView *mAttachments;
     KMenu *mPopupMenu;
     QString mUid; // used only to generate attachments' filenames
-    KUrl::List mDeferredDelete;
-    KUrl::List mDeferredCopy;
     QPushButton *mRemoveBtn;
     KAction *mOpenAction, *mCopyAction, *mCutAction,
             *mDeleteAction, *mEditAction;
