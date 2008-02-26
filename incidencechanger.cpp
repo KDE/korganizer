@@ -234,7 +234,6 @@ class IncidenceChanger::AssignmentVisitor : public IncidenceBase::Visitor
         return false;
       }
     }
-#if 0 //disabled, FreeBusy doesn't have an assignment operator
     bool visit( FreeBusy *fb )
     {
       FreeBusy *fb2 = dynamic_cast<FreeBusy*>( mIncidence2 );
@@ -245,7 +244,6 @@ class IncidenceChanger::AssignmentVisitor : public IncidenceBase::Visitor
         return false;
       }
     }
-#endif
   protected:
     IncidenceBase *mIncidence2;
 };
