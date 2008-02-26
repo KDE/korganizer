@@ -54,6 +54,7 @@
 #include <qcursor.h>
 #include <kpopupmenu.h>
 #include <X11/Xlib.h>
+#undef FocusIn
 #undef KeyPress
 #undef None
 #undef Status
