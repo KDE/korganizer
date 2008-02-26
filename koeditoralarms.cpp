@@ -366,7 +366,7 @@ void KOEditorAlarms::writeAlarm( KCal::Alarm *alarm )
     QStringList addresses = KPIMUtils::splitAddressList( mWidget.mEmailAddress->text() );
     QList<KCal::Person> add;
     for ( QStringList::Iterator it = addresses.begin(); it != addresses.end(); ++it ) {
-      add << KCal::Person( *it );
+      add << KCal::Person::fromFullName( *it );
     }
     // TODO: Add a subject line and possibilities for attachments
     alarm->setEmailAlarm( QString(), mWidget.mEmailText->toPlainText(), add );
