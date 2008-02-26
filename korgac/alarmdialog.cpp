@@ -352,7 +352,7 @@ void AlarmDialog::eventNotification()
       if ( alarm->type() == Alarm::Procedure ) {
         // FIXME: Add a message box asking whether the procedure should really be executed
       kDebug() << "Starting program: '" << alarm->programFile() << "'";
-      QProcess::startDetached( QFile::encodeName( alarm->programFile() ) );
+      QProcess::startDetached( alarm->programFile() );
       } else if ( alarm->type() == Alarm::Audio ) {
         beeped = true;
         Phonon::MediaObject *player =
