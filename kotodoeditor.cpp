@@ -47,7 +47,6 @@
 #include "koeditorgeneraltodo.h"
 #include "koeditordetails.h"
 #include "koeditorrecurrence.h"
-#include "koeditoralarms.h"
 
 #include "kotodoeditor.h"
 #include "kocore.h"
@@ -117,8 +116,7 @@ void KOTodoEditor::setupGeneral()
     mGeneral->initCompletion(topFrame2,completionLayout);
 
     mGeneral->initAlarm(topFrame,topLayout);
-    mGeneral->enableAlarm( false );
-
+ 
     mGeneral->initSecrecy( topFrame2, topLayout2 );
     mGeneral->initDescription(topFrame2,topLayout2);
   } else {
@@ -132,7 +130,6 @@ void KOTodoEditor::setupGeneral()
     mGeneral->initStatus(topFrame,topLayout);
     QBoxLayout *alarmLineLayout = new QHBoxLayout(topLayout);
     mGeneral->initAlarm(topFrame,alarmLineLayout);
-    mGeneral->enableAlarm( false );
     alarmLineLayout->addStretch( 1 );
     mGeneral->initDescription(topFrame,topLayout);
     mGeneral->initAttachments(topFrame,topLayout);
@@ -141,9 +138,7 @@ void KOTodoEditor::setupGeneral()
     connect( this, SIGNAL( signalAddAttachments( const QStringList&, const QStringList&, bool ) ),
              mGeneral, SLOT( addAttachments( const QStringList&, const QStringList&, bool ) ) );
   }
-  // By default, the To-do has no time associated and
-  // neither a start nor end time.
-  mGeneral->setDefaults( QDateTime(), false );
+  mGeneral->enableAlarm( true );
 
   mGeneral->finishSetup();
 }
@@ -185,6 +180,7 @@ void KOTodoEditor::newTodo()
   mTodo = 0;
   mCalendar = 0;
   setCaption( i18n("New To-do") );
+  loadDefaults();
 }
 
 void KOTodoEditor::setTexts( const QString &summary, const QString &description )
@@ -205,6 +201,7 @@ void KOTodoEditor::loadDefaults()
 {
   kdDebug(5850) << k_funcinfo << endl;
   setDates( QDateTime::currentDateTime().addDays(7), true, 0 );
+  mGeneral->toggleAlarm( true );
 }
 
 bool KOTodoEditor::processInput()
@@ -287,7 +284,6 @@ void KOTodoEditor::readTodo( Todo *todo, Calendar *calendar )
   kdDebug(5850)<<"read todo"<<endl;
   mGeneral->readTodo( todo, calendar );
   mDetails->readEvent( todo );
-//  mAlarms->readIncidence( todo );
   mRecurrence->readIncidence( todo );
 
   createEmbeddedURLPages( todo );

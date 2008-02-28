@@ -304,6 +304,12 @@ void KOEditorGeneral::enableAlarm( bool enable )
   mAlarmEditButton->setEnabled( enable );
 }
 
+
+void KOEditorGeneral::toggleAlarm( bool on )
+{
+    mAlarmButton->setChecked( on );
+}
+
 void KOEditorGeneral::setCategories( const QStringList &categories )
 {
   mCategoriesLabel->setText( categories.join(",") );
