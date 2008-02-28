@@ -173,8 +173,8 @@ void FreeBusyItem::setFreeBusyPeriods( FreeBusy *fb )
     }
 
     // Evaluate free/busy information
-    QList<KCal::Period> busyPeriods = fb->busyPeriods();
-    for ( QList<KCal::Period>::Iterator it = busyPeriods.begin();
+    QList<KCal::FreeBusyPeriod> busyPeriods = fb->fullBusyPeriods();
+    for ( QList<KCal::FreeBusyPeriod>::Iterator it = busyPeriods.begin();
           it != busyPeriods.end(); ++it ) {
       KDGanttViewTaskItem *newSubItem = new KDGanttViewTaskItem( this );
       newSubItem->setStartTime( (*it).start().toTimeSpec( timeSpec ).dateTime() );
