@@ -90,11 +90,29 @@ bool IncidenceChanger::deleteIncidence( Incidence *incidence )
 {
   if ( !incidence ) return true;
 kdDebug(5850)<<"IncidenceChanger::deleteIncidence for incidence \""<<incidence->summary()<<"\""<<endl;
-  bool doDelete = sendGroupwareMessage( incidence, KCal::Scheduler::Cancel );
+  bool doDelete = sendGroupwareMessage( incidence, KCal::Scheduler::Cancel, true );
   if( doDelete ) {
     // @TODO: let Calendar::deleteIncidence do the locking...
+    Incidence* tmp = incidence->clone();
     emit incidenceToBeDeleted( incidence );
     doDelete = mCalendar->deleteIncidence( incidence );
+    const QStringList myEmails = KOPrefs::instance()->allEmails();
+    bool notifyOrganizer = false;
+    for ( QStringList::ConstIterator it = myEmails.begin(); it != myEmails.end(); ++it ) {
+        QString email = *it;
+        Attendee *me = tmp->attendeeByMail(email);
+        if ( me ) {
+            if ( me->status()==KCal::Attendee::Accepted || me->status()==KCal::Attendee::Delegated ) {
+                notifyOrganizer = true;
+            }
+            me->setStatus( KCal::Attendee::Declined );
+        }
+    }
+
+    if ( notifyOrganizer ) {
+        KCal::MailScheduler scheduler( mCalendar );
+        scheduler.performTransaction( tmp, Scheduler::Reply );
+    }
     emit incidenceDeleted( incidence );
   }
   return doDelete;
