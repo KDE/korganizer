@@ -261,7 +261,7 @@
             <bool>false</bool>
            </property>
            <property name="text" >
-            <string>Send Email</string>
+            <string>Send email</string>
            </property>
           </widget>
          </item>
@@ -473,7 +473,7 @@
      <item row="2" column="1" >
       <widget class="QPushButton" name="mRemoveButton" >
        <property name="text" >
-        <string>&amp;Remove...</string>
+        <string>&amp;Remove</string>
        </property>
       </widget>
      </item>

@@ -516,11 +516,11 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent)
   action = mItemPopupMenu->addAction(i18n("New Su&b-to-do..."), this, SLOT (newSubTodo()));
   mActionsOnSelection.append( action );
 
-  mMakeThisTodoIndependent = mItemPopupMenu->addAction( i18n("&Make this To-do Independent"), this,
+  mMakeThisTodoIndependent = mItemPopupMenu->addAction( i18n("&Make This To-do Independent"), this,
       SIGNAL( unSubTodoSignal() ) );
   mActionsOnSelection.append( mMakeThisTodoIndependent );
 
-  mMakeChildTodosIndependent = mItemPopupMenu->addAction( i18n("Make all Sub-to-dos &Independent"), this,
+  mMakeChildTodosIndependent = mItemPopupMenu->addAction( i18n("Make All Sub-to-dos &Independent"), this,
       SIGNAL( unAllSubTodoSignal() ) );
   mActionsOnSelection.append( mMakeChildTodosIndependent );
 

@@ -538,7 +538,7 @@ void ResourceView::showContextMenu( const QPoint &pos )
     //FIXME: This is better on the resource dialog
     if ( KOPrefs::instance()->agendaViewColors() != KOPrefs::CategoryOnly ) {
       QMenu *assignMenu = menu->addMenu( i18n( "Resource Colors" ) );
-      assignMenu->addAction( i18n( "&Assign Color" ), this, SLOT(assignColor()) );
+      assignMenu->addAction( i18n( "&Assign Color..." ), this, SLOT(assignColor()) );
       if ( item->resourceColor().isValid() ) {
         assignMenu->addAction( i18n( "&Disable Color" ), this, SLOT(disableColor()) );
       }

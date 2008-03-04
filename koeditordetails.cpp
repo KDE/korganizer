@@ -198,8 +198,8 @@ KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent )
   mListView->addColumn( i18nc( "@title:column attendee role", "Role" ), 80 );
   mListView->addColumn( i18nc( "@title:column attendee status", "Status" ), 100 );
   mListView->addColumn( i18nc( "@title:column attendee has RSVPed?", "RSVP" ), 55 );
-  mListView->addColumn( i18nc( "@title:column attendee delegated to", "Delegated to" ), 120 );
-  mListView->addColumn( i18nc( "@title:column attendee delegated from", "Delegated from" ), 120 );
+  mListView->addColumn( i18nc( "@title:column attendee delegated to", "Delegated To" ), 120 );
+  mListView->addColumn( i18nc( "@title:column attendee delegated from", "Delegated From" ), 120 );
   mListView->setResizeMode( Q3ListView::LastColumn );
   if ( KOPrefs::instance()->mCompactDialogs ) {
     mListView->setFixedHeight( 78 );
@@ -308,7 +308,7 @@ void KOEditorDetails::writeIncidence( Incidence *incidence )
                 "%1 does not look like a valid email address. "
                 "Are you sure you want to invite this participant?",
                 attendee->email() ),
-              i18nc( "@title", "Invalid email address" ) ) != KMessageBox::Yes ) {
+              i18nc( "@title", "Invalid Email Address" ) ) != KMessageBox::Yes ) {
           skip = true;
         }
       }

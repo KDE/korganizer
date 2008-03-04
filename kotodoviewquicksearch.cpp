@@ -144,7 +144,7 @@ void KOTodoListViewQuickSearch::fillCategories()
   }
 
   CategoryHierarchyReaderQComboBox( mCategoryCombo ).read( categories );
-  mCategoryCombo->insertItem( 0, i18nc( "@item:inlistbox", "Any category" ) );
+  mCategoryCombo->insertItem( 0, i18nc( "@item:inlistbox", "Any Category" ) );
 
   categoryList.resize( categories.count() );
   qCopy( categories.begin(), categories.end(), categoryList.begin() );

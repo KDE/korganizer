@@ -729,7 +729,7 @@
 
   <group name="Kontact">
     <entry type="Enum" name="DefaultEmailAttachMethod">
-      <label>Default email attachment method</label>
+      <label>Default Email Attachment Method</label>
       <whatsthis>The default way of attaching dropped emails to an event</whatsthis>
       <choices>
         <choice name="Ask">

@@ -28,7 +28,7 @@
    <item row="1" column="1" >
     <widget class="QPushButton" name="m_buttonAdd" >
      <property name="text" >
-      <string>&amp;New</string>
+      <string>&amp;New...</string>
      </property>
     </widget>
    </item>

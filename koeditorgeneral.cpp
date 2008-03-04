@@ -180,7 +180,7 @@ void KOEditorGeneral::initDescription( QWidget *parent, QBoxLayout *topLayout )
 {
   QBoxLayout *htmlLayout = new QHBoxLayout();
   topLayout->addItem( htmlLayout );
-  mRichDescription = new QCheckBox( i18n( "Rich Text" ), parent );
+  mRichDescription = new QCheckBox( i18n( "Rich text" ), parent );
   mRichDescription->setToolTip( i18n( "Toggle Rich Text" ) );
   connect( mRichDescription, SIGNAL(toggled(bool)),
            this, SLOT(setDescriptionRich(bool)) );

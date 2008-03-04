@@ -75,7 +75,7 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
     showButton( Apply, false );
     showButton( Default, false );
   } else {
-    setButtonText( Default, i18n("&Templates...") );
+    setButtonText( Default, i18n("Manage &Templates...") );
   }
 
   connect( this, SIGNAL( defaultClicked() ), SLOT( slotManageTemplates() ) );

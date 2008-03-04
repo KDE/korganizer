@@ -92,7 +92,7 @@ KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *paren
   personalLayout->addWidget( emailControlCenter->checkBox() );
 
   mUserEmailSettings =
-    new QGroupBox( i18nc( "@title:group email settings", "Email settings" ), personalFrame );
+    new QGroupBox( i18nc( "@title:group email settings", "Email Settings" ), personalFrame );
 
   personalLayout->addWidget( mUserEmailSettings );
   QVBoxLayout *emailSettingsLayout = new QVBoxLayout( mUserEmailSettings );
@@ -358,7 +358,7 @@ class KOPrefsDialogTime : public KPrefsModule
 
       QFrame *defaultPage = new QFrame( parent );
       tabWidget->addTab( defaultPage, KIcon( "draw-eraser" ),
-                         i18nc( "@title:tab", "Default values" ) );
+                         i18nc( "@title:tab", "Default Values" ) );
       QGridLayout *defaultLayout = new QGridLayout( defaultPage );
       defaultLayout->setSpacing( KDialog::spacingHint() );
 
@@ -1264,13 +1264,13 @@ void KOPrefsDialogPlugins::usrReadConfig()
 
   QTreeWidgetItem *decorations =
     new QTreeWidgetItem( mTreeWidget, QStringList(
-                           i18nc( "@title:group", "Calendar decorations" ) ) );
+                           i18nc( "@title:group", "Calendar Decorations" ) ) );
   QTreeWidgetItem *printPlugins =
     new QTreeWidgetItem( mTreeWidget, QStringList(
-                           i18nc( "@title:group", "Print plugins" ) ) );
+                           i18nc( "@title:group", "Print Plugins" ) ) );
   QTreeWidgetItem *others =
     new QTreeWidgetItem( mTreeWidget, QStringList(
-                           i18nc( "@title:group", "Other plugins" ) ) );
+                           i18nc( "@title:group", "Other Plugins" ) ) );
 
   KService::List::ConstIterator it;
   for ( it = plugins.begin(); it != plugins.end(); ++it ) {

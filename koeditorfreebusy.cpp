@@ -792,7 +792,7 @@ void KOEditorFreeBusy::writeEvent( Incidence *incidence )
                       "%1 does not look like a valid email address. "
                       "Are you sure you want to invite this participant?",
                       attendee->email() ),
-               i18nc( "@title:window", "Invalid email address" ) ) != KMessageBox::Yes ) {
+               i18nc( "@title:window", "Invalid Email Address" ) ) != KMessageBox::Yes ) {
           skip = true;
         }
       }
