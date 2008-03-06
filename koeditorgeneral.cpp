@@ -312,7 +312,7 @@ void KOEditorGeneral::initAlarm( QWidget *parent, QBoxLayout *topLayout )
   mAlarmTimeEdit->setEnabled( false );
   mAlarmIncrCombo->setEnabled( false );
 
-  mAlarmEditButton = new QPushButton( i18nc( "advanced alarm settings", "Advanced" ), parent );
+  mAlarmEditButton = new QPushButton( i18nc( "advanced alarm settings", "Advanced..." ), parent );
   alarmLayout->addWidget( mAlarmEditButton );
   connect( mAlarmEditButton, SIGNAL(clicked()), SLOT(editAlarms()) );
 }
