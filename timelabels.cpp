@@ -312,8 +312,8 @@ void TimeLabels::contextMenuEvent( QContextMenuEvent *event )
   Q_UNUSED( event );
 
   QMenu popup( this );
-  QAction *editTimeZones = popup.addAction( KIcon( "document-properties" ), i18n( "&Edit timezones" ) );
-  QAction *removeTimeZone = popup.addAction( KIcon( "edit-delete" ), i18n( "&Remove %1 timezone", mSpec.timeZone().name() ) );
+  QAction *editTimeZones = popup.addAction( KIcon( "document-properties" ), i18n( "&Edit Timezones..." ) );
+  QAction *removeTimeZone = popup.addAction( KIcon( "edit-delete" ), i18n( "&Remove %1 Timezone", mSpec.timeZone().name() ) );
   if ( !mSpec.isValid() || !KOPrefs::instance()->timeScaleTimezones().count() || mSpec == KOPrefs::instance()->timeSpec() ) {
     removeTimeZone->setEnabled( false );
   }
