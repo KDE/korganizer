@@ -35,6 +35,7 @@
 #include "kojournalview.h"
 #include "kotimelineview.h"
 #include "kotimespentview.h"
+#include "views/monthview/monthview.h"
 #include "koprefs.h"
 #include "koglobals.h"
 #include "navigatorbar.h"
@@ -64,6 +65,7 @@ KOViewManager::KOViewManager( CalendarView *mainView ) :
   mTimelineView = 0;
   mAgendaViewTabs = 0;
   mTimeSpentView = 0;
+  mNewMonthView = 0;
 }
 
 KOViewManager::~KOViewManager()
@@ -88,6 +90,7 @@ void KOViewManager::readSettings(KConfig *config)
   else if (view == QLatin1String("Todo")) showTodoView();
   else if (view == "Timeline") showTimeLineView();
   else if (view == "TimeSpent") showTimeSpentView();
+  else if (view == "NewMonth") showNewMonthView();
   else showAgendaView();
 }
 
@@ -103,6 +106,7 @@ void KOViewManager::writeSettings(KConfig *config)
   else if (mCurrentView == mTodoView) view = "Todo";
   else if (mCurrentView == mTimelineView) view = "Timeline";
   else if (mCurrentView == mTimeSpentView) view = "TimeSpent";
+  else if (mCurrentView == mNewMonthView) view = "NewMonth";
   else view = "Agenda";
 
   generalConfig.writeEntry("Current View",view);
@@ -278,6 +282,16 @@ void KOViewManager::showTimeSpentView()
     addView( mTimeSpentView );
   }
   showView( mTimeSpentView );
+}
+
+void KOViewManager::showNewMonthView()
+{
+  if ( !mNewMonthView ) {
+    mNewMonthView = new KOrg::KONewMonthView( mMainView->calendar(), mMainView->viewStack() );
+    mNewMonthView->setObjectName( "KOViewManager::NewMonthView" );
+    addView( mNewMonthView );
+  }
+  showView( mNewMonthView );
 }
 
 void KOViewManager::showWhatsNextView()

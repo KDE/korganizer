@@ -38,6 +38,7 @@
       <Action name="view_workweek"/>
       <Action name="view_week"/>
       <Action name="view_month"/>
+      <Action name="view_newmonth"/>
       <Separator/>
       <Action name="view_list"/>
       <Action name="view_todo"/>
