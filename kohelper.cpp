@@ -30,6 +30,8 @@
 #include <kcal/calendarresources.h>
 #include <kcal/resourcecalendar.h>
 
+#include <kdatetime.h>
+
 #include <kdebug.h>
 
 #include <QColor>
@@ -68,6 +70,19 @@ QColor KOHelper::resourceColor( KCal::Calendar *calendar,
   return resourceColor;
 }
 
+
+KDateTime KOHelper::toTimeSpec( const KDateTime& dt, KCal::Calendar *calendar )
+{
+  if ( dt.isDateOnly() )
+    return dt;
+
+  if ( calendar )
+    return dt.toTimeSpec( calendar->timeSpec() );
+
+  return dt.toTimeSpec( KOPrefs::instance()->timeSpec() );
+}
+
+
 QString KOHelper::resourceLabel(KCal::Calendar * calendar, KCal::Incidence * incidence)
 {
   KCal::CalendarResources *calendarResource = dynamic_cast<KCal::CalendarResources*>( calendar );
@@ -87,3 +102,4 @@ QString KOHelper::resourceLabel(KCal::Calendar * calendar, KCal::Incidence * inc
 
   return QString();
 }
+
