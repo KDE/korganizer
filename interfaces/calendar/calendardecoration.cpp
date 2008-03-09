@@ -20,7 +20,6 @@
 */
 
 #include "calendardecoration.h"
-
 #include "calendardecoration.moc"
 
 using namespace KOrg::CalendarDecoration;
@@ -61,7 +60,7 @@ QString Element::extensiveText()
   return QString();
 }
 
-QPixmap Element::pixmap( const QSize & )
+QPixmap Element::newPixmap( const QSize & )
 {
   return QPixmap();
 }

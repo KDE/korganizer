@@ -21,14 +21,14 @@
 #ifndef KORG_CALENDARDECORATION_H
 #define KORG_CALENDARDECORATION_H
 
+#include "plugin.h"
+
+#include <kurl.h>
+
 #include <QtCore/QString>
 #include <QtCore/QDateTime>
 #include <QtCore/QList>
 #include <QtGui/QPixmap>
-
-#include <kurl.h>
-
-#include "plugin.h"
 
 namespace KOrg {
 
@@ -44,7 +44,7 @@ namespace CalendarDecoration {
  */
 class Element : public QObject
 {
-    Q_OBJECT
+  Q_OBJECT
 
   public:
     typedef QList<Element *> List;
@@ -56,37 +56,40 @@ class Element : public QObject
       Return a name for easy identification.
       This will be used for example for internal configuration (position, etc.),
       so don't i18n it and make it unique for your decoration.
-     */
+    */
     virtual QString id() const;
+
     /**
       Description of element.
-     */
+    */
     virtual QString elementInfo() const;
 
     /**
       Return a short text for a given date,
       usually only a few words.
-     */
+    */
     virtual QString shortText();
+
     /**
       Return a long text for a given date.
       This text can be of any length,
       but usually it will have one or a few lines.
 
       Can for example be used as a tool tip.
-     */
+    */
     virtual QString longText();
+
     /**
       Return an extensive text for a given date.
       This text can be of any length,
       but usually it will have one or a few paragraphs.
-     */
+    */
     virtual QString extensiveText();
 
     /**
       Return a pixmap for a given date and a given size.
-     */
-    virtual QPixmap pixmap( const QSize & );
+    */
+    virtual QPixmap newPixmap( const QSize & );
 
     /**
       Return a URL pointing to more information about the content of the
@@ -143,7 +146,6 @@ class StoredElement : public Element
     KUrl mUrl;
 };
 
-
 /**
   @class Decoration
 
@@ -156,7 +158,7 @@ class Decoration : public Plugin
 {
   public:
     static int interfaceVersion() { return 2; }
-    static QString serviceType() { return QLatin1String("Calendar/Decoration"); }
+    static QString serviceType() { return QLatin1String( "Calendar/Decoration" ); }
 
     typedef QList<Decoration*> List;
 
