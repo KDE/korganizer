@@ -1,28 +1,27 @@
 /*
-    This file is part of KOrganizer.
-    Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
-    Copyright (c) 2007 Loïc Corbasson <loic.corbasson@gmail.com>
+  This file is part of KOrganizer.
+  Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
+  Copyright (c) 2007 Loïc Corbasson <loic.corbasson@gmail.com>
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-    GNU General Public License for more details.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 #ifndef KORG_PICOFTHEDAY_H
 #define KORG_PICOFTHEDAY_H
 
+#include "calendar/calendardecoration.h"
 #include <KIO/Job>
-
-#include <calendar/calendardecoration.h>
 
 using namespace KOrg::CalendarDecoration;
 
@@ -42,7 +41,6 @@ class Picoftheday : public Decoration
     QSize mThumbSize;
 };
 
-
 class POTDElement : public StoredElement
 {
     Q_OBJECT
@@ -54,7 +52,7 @@ class POTDElement : public StoredElement
 
     void setDate( const QDate &date );
     void setThumbnailSize( const QSize &size );
-    QPixmap pixmap( const QSize &size );
+    /** @reimp from Element */QPixmap newPixmap( const QSize &size );
     KUrl thumbnailUrl( const KUrl &fullSizeUrl, const int width = 0 ) const;
 
   signals:
@@ -92,10 +90,10 @@ class POTDElement : public StoredElement
     QTimer *mTimer;
 
   private slots:
-    void step1Result( KJob* job );
-    void step1BisResult( KJob* job );
-    void step2Result( KJob* job );
-    void step3Result( KJob* job );
+    void step1Result( KJob *job );
+    void step1BisResult( KJob *job );
+    void step2Result( KJob *job );
+    void step3Result( KJob *job );
 };
 
 #endif
