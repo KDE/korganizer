@@ -25,10 +25,10 @@
 
 #include "kodecorationlabel.h"
 
+#include <KToolInvocation>
+
 #include <QtGui/QMouseEvent>
 #include <QtGui/QResizeEvent>
-
-#include <KToolInvocation>
 
 #include "kodecorationlabel.moc"
 
@@ -38,7 +38,7 @@ KODecorationLabel::KODecorationLabel( KOrg::CalendarDecoration::Element *e,
     mShortText( e->shortText() ), mLongText( e->longText() ),
     mExtensiveText( e->extensiveText() )
 {
-  mPixmap = e->pixmap( size() );
+  mPixmap = e->newPixmap( size() );
   mUrl = e->url();
   setUrl( e->url() );
 
@@ -94,7 +94,7 @@ void KODecorationLabel::mouseReleaseEvent( QMouseEvent *event )
 
 void KODecorationLabel::resizeEvent( QResizeEvent *event )
 {
-  mPixmap = mDecorationElement->pixmap( event->size() );
+  mPixmap = mDecorationElement->newPixmap( event->size() );
   QLabel::resizeEvent( event );
   squeezeContentsToLabel();
 }
@@ -146,8 +146,9 @@ void KODecorationLabel::setUrl( const KUrl &url )
 
 void KODecorationLabel::squeezeContentsToLabel()
 {
-  if ( !mAutomaticSqueeze )  // The content type to use has been set manually
+  if ( !mAutomaticSqueeze ) { // The content type to use has been set manually
     return;
+  }
 
   QFontMetrics fm( fontMetrics() );
 
@@ -157,11 +158,9 @@ void KODecorationLabel::squeezeContentsToLabel()
 
   if ( ! mPixmap.isNull() ) {
     usePixmap( true );
-  } else if ( ( !mExtensiveText.isEmpty() )
-              && ( extensiveTextWidth <= labelWidth ) ) {
+  } else if ( ( !mExtensiveText.isEmpty() ) && ( extensiveTextWidth <= labelWidth ) ) {
     useExtensiveText( true );
-  } else if ( ( !mLongText.isEmpty() )
-              && ( longTextWidth <= labelWidth ) ) {
+  } else if ( ( !mLongText.isEmpty() ) && ( longTextWidth <= labelWidth ) ) {
     useLongText( true );
   } else {
     useShortText( true );

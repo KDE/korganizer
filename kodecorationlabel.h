@@ -26,15 +26,15 @@
 #ifndef KODECORATIONLABEL_H
 #define KODECORATIONLABEL_H
 
-#include <QtGui/QLabel>
+#include "calendar/calendardecoration.h"
 
 #include <KUrl>
 
-#include <calendar/calendardecoration.h>
+#include <QtGui/QLabel>
 
 class KODecorationLabel : public QLabel
 {
-    Q_OBJECT
+  Q_OBJECT
 
   public:
     explicit KODecorationLabel( KOrg::CalendarDecoration::Element *e,
