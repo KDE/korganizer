@@ -396,6 +396,17 @@ class MonthViewCell::CreateItemVisitor
         KOPrefs::instance()->monthCalendarItemsToDosBackgroundColor() ) );
       return true;
     }
+    bool visit( Journal *journal ) {
+      //TODO: maybe monthview should show journals?
+      Q_UNUSED( journal );
+      return true;
+    }
+    bool visit( FreeBusy *freebusy ) {
+      //For completeness and to inhibit compile warnings
+      Q_UNUSED( freebusy );
+      return true;
+    }
+
   protected:
     MonthViewItem *mItem;
     QDate mDate;
@@ -923,6 +934,7 @@ void KOMonthView::updateDayLabels()
 
 void KOMonthView::showDates( const QDate &start, const QDate &end )
 {
+  Q_UNUSED( end );
   // show first day of month on top for readability issues
   QDate tmp = start.addDays( -start.day() + 1 );
   setStartDate( tmp );
@@ -1146,6 +1158,12 @@ class KOMonthView::GetDateVisitor : public IncidenceBase::Visitor
       mEndDate = journal->dtStart();
       return true;
     }
+    bool visit( FreeBusy *freebusy ) {
+      //For completeness and to inhibit compile warnings
+      Q_UNUSED( freebusy );
+      return true;
+    }
+
   protected:
     KDateTime mStartDate;
     KDateTime mEndDate;
