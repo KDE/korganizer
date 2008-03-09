@@ -54,12 +54,12 @@ class KORGANIZERPRIVATE_EXPORT KOHelper
                                  KCal::Incidence *incidence );
 
     /**
-       This method converts the date time to the calendar timespec if a calendar is 
-       specified. Else it converts it to preferences timespec.
-       
+       This method converts the date time to the calendar timespec if a calendar
+       is specified. Else it converts it to preferences timespec.
+
        If @param dt is dateOnly(), it wont be converted and just returned.
     */
-    static KDateTime toTimeSpec( const KDateTime& dt, KCal::Calendar *calendar = 0 );
+    static KDateTime toTimeSpec( const KDateTime &dt, KCal::Calendar *calendar = 0 );
 
     /**
       Returns the resource label the given incidence belongs to.
