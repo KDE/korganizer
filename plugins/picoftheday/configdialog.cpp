@@ -39,12 +39,12 @@
 
 #include "configdialog.moc"
 
-ConfigDialog::ConfigDialog(QWidget *parent)
-  : KDialog(parent)
+ConfigDialog::ConfigDialog( QWidget *parent )
+  : KDialog( parent )
 {
-  setCaption( i18n("Configure Picture of the Day") );
+  setCaption( i18n( "Configure Picture of the Day" ) );
   setButtons( Ok|Cancel );
-  setDefaultButton(  Ok );
+  setDefaultButton( Ok );
   setModal( true );
   QFrame *topFrame = new QFrame( this );
   setMainWidget( topFrame );
@@ -52,33 +52,32 @@ ConfigDialog::ConfigDialog(QWidget *parent)
   topLayout->setSpacing( spacingHint() );
   topLayout->setMargin( 0 );
 
-  QGroupBox *aspectRatioBox 
-    = new QGroupBox( i18n("Thumbnail Aspect Ratio Mode"), topFrame );
+  QGroupBox *aspectRatioBox = new QGroupBox( i18n( "Thumbnail Aspect Ratio Mode" ), topFrame );
   topLayout->addWidget( aspectRatioBox );
   QVBoxLayout *groupLayout = new QVBoxLayout( aspectRatioBox );
 
   QRadioButton *btn;
   mAspectRatioGroup = new QButtonGroup( this );
-  btn = new QRadioButton( i18n("Ignore aspect ratio"), aspectRatioBox );
-  btn->setWhatsThis( i18n("The thumbnail will be scaled freely. "
-                          "The aspect ratio will not be preserved.") );
-  mAspectRatioGroup->addButton( btn, int(Qt::IgnoreAspectRatio) );
+  btn = new QRadioButton( i18n( "Ignore aspect ratio" ), aspectRatioBox );
+  btn->setWhatsThis( i18n( "The thumbnail will be scaled freely. "
+                           "The aspect ratio will not be preserved." ) );
+  mAspectRatioGroup->addButton( btn, int( Qt::IgnoreAspectRatio ) );
   groupLayout->addWidget( btn );
-  btn = new QRadioButton( i18n("Keep aspect ratio"), aspectRatioBox );
-  btn->setWhatsThis( i18n("The thumbnail will be scaled to a rectangle "
-                          "as large as possible inside a given rectangle, "
-                          "preserving the aspect ratio.") );
-  mAspectRatioGroup->addButton( btn, int(Qt::KeepAspectRatio) );
+  btn = new QRadioButton( i18n( "Keep aspect ratio" ), aspectRatioBox );
+  btn->setWhatsThis( i18n( "The thumbnail will be scaled to a rectangle "
+                           "as large as possible inside a given rectangle, "
+                           "preserving the aspect ratio." ) );
+  mAspectRatioGroup->addButton( btn, int( Qt::KeepAspectRatio ) );
   groupLayout->addWidget( btn );
-  btn = new QRadioButton( i18n("Keep aspect ratio by expanding"), 
+  btn = new QRadioButton( i18n( "Keep aspect ratio by expanding" ),
                           aspectRatioBox );
-  btn->setWhatsThis( i18n("The thumbnail will be scaled to a rectangle "
-                          "as small as possible outside a given rectangle, "
-                          "preserving the aspect ratio.") );
-  mAspectRatioGroup->addButton( btn, int(Qt::KeepAspectRatioByExpanding) );
+  btn->setWhatsThis( i18n( "The thumbnail will be scaled to a rectangle "
+                           "as small as possible outside a given rectangle, "
+                           "preserving the aspect ratio." ) );
+  mAspectRatioGroup->addButton( btn, int( Qt::KeepAspectRatioByExpanding ) );
   groupLayout->addWidget( btn );
 
-  connect(this, SIGNAL(okClicked()), this, SLOT(slotOk()));
+  connect( this, SIGNAL(okClicked()), this, SLOT(slotOk()) );
 
   load();
 }
@@ -89,25 +88,26 @@ ConfigDialog::~ConfigDialog()
 
 void ConfigDialog::load()
 {
-  KConfig _config( "korganizerrc", KConfig::NoGlobals  );
-  KConfigGroup config(&_config, "Calendar/Picoftheday Plugin");
+  KConfig _config( "korganizerrc", KConfig::NoGlobals );
+  KConfigGroup config( &_config, "Calendar/Picoftheday Plugin" );
   int datenum = config.readEntry( "AspectRatioMode", 0 );
   QAbstractButton *btn = mAspectRatioGroup->button( datenum );
-  if (!btn) btn = mAspectRatioGroup->button( 0 );
+  if ( !btn ) {
+    btn = mAspectRatioGroup->button( 0 );
+  }
   btn->setChecked( true );
 }
 
 void ConfigDialog::save()
 {
-  KConfig _config( "korganizerrc", KConfig::NoGlobals  );
-  KConfigGroup config(&_config, "Calendar/Picoftheday Plugin");
-  config.writeEntry("AspectRatioMode", mAspectRatioGroup->checkedId() );
+  KConfig _config( "korganizerrc", KConfig::NoGlobals );
+  KConfigGroup config( &_config, "Calendar/Picoftheday Plugin" );
+  config.writeEntry( "AspectRatioMode", mAspectRatioGroup->checkedId() );
   config.sync();
 }
 
 void ConfigDialog::slotOk()
 {
   save();
-
   accept();
 }
