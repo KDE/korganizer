@@ -144,6 +144,10 @@ set(korganizerprivate_LIB_SRCS
    views/monthview/monthview.cpp
    views/monthview/monthitem.cpp
    views/monthview/monthscene.cpp
+   views/todoview/kotodomodel.cpp
+   views/todoview/kotododelegates.cpp
+   views/todoview/kotodoview.cpp
+   views/todoview/kotodoviewquicksearch.cpp
    searchdialog.cpp
    calendarview.cpp
    koviewmanager.cpp
@@ -151,9 +155,6 @@ set(korganizerprivate_LIB_SRCS
    archivedialog.cpp
    kohelper.cpp
    komailclient.cpp
-   kotodoview.cpp
-   kotodoviewitem.cpp
-   kotodoviewquicksearch.cpp
    kolistview.cpp
    koincidenceeditor.cpp
    koeventeditor.cpp

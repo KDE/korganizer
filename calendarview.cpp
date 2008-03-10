@@ -46,7 +46,7 @@
 #include "kodialogmanager.h"
 #include "statusdialog.h"
 #include "datenavigatorcontainer.h"
-#include "kotodoview.h"
+//#include "kotodoview.h"
 #include "datenavigator.h"
 #include "resourceview.h"
 #include "navigatorbar.h"
@@ -147,8 +147,8 @@ CalendarView::CalendarView( QWidget *parent )
 //  mLeftSplitter->setResizeMode( mDateNavigator, QSplitter::Stretch );
   mLeftSplitter->setCollapsible( mLeftSplitter->indexOf(mDateNavigator), true );
 
-  mTodoList = new KOTodoView( CalendarNull::self(), mLeftSplitter );
-  mTodoList->setObjectName( "todolist" );
+//  mTodoList = new KOTodoView( CalendarNull::self(), mLeftSplitter );
+//  mTodoList->setObjectName( "todolist" );
 
   mEventViewerBox = new KVBox( mLeftSplitter );
   mEventViewerBox->setMargin( KDialog::marginHint() );
@@ -208,8 +208,8 @@ CalendarView::CalendarView( QWidget *parent )
   connect( mDateNavigator, SIGNAL(incidenceDroppedMove(Incidence*,const QDate&)),
            SLOT( moveIncidenceTo( Incidence *, const QDate & ) ) );
 
-  connect( mDateChecker, SIGNAL( dayPassed( const QDate & ) ),
-           mTodoList, SLOT( dayPassed( const QDate & ) ) );
+//  connect( mDateChecker, SIGNAL( dayPassed( const QDate & ) ),
+//           mTodoList, SLOT( dayPassed( const QDate & ) ) );
   connect( mDateChecker, SIGNAL( dayPassed( const QDate & ) ),
            SIGNAL( dayPassed( const QDate & ) ) );
   connect( mDateChecker, SIGNAL( dayPassed( const QDate & ) ),
@@ -233,8 +233,8 @@ CalendarView::CalendarView( QWidget *parent )
                          "selected in KOrganizer's main view here." ) );
   mEventViewer->setIncidence( 0 );
 
-  mViewManager->connectTodoView( mTodoList );
-  mViewManager->connectView( mTodoList );
+//  mViewManager->connectTodoView( mTodoList );
+//  mViewManager->connectView( mTodoList );
 
   KOGlobals::self()->
       setHolidays( new KHolidays( KOPrefs::instance()->mHolidays ) );
@@ -242,10 +242,10 @@ CalendarView::CalendarView( QWidget *parent )
   connect( QApplication::clipboard(), SIGNAL( dataChanged() ),
            SLOT( checkClipboard() ) );
 
-  connect( mTodoList, SIGNAL( incidenceSelected( Incidence * ) ),
-           SLOT( processTodoListSelection( Incidence * ) ) );
-  disconnect( mTodoList, SIGNAL( incidenceSelected( Incidence * ) ),
-           this, SLOT( processMainViewSelection( Incidence * ) ) );
+//  connect( mTodoList, SIGNAL( incidenceSelected( Incidence * ) ),
+//           SLOT( processTodoListSelection( Incidence * ) ) );
+//  disconnect( mTodoList, SIGNAL( incidenceSelected( Incidence * ) ),
+//           this, SLOT( processMainViewSelection( Incidence * ) ) );
 
   kDebug() << "done";
 }
@@ -283,7 +283,7 @@ void CalendarView::setCalendar( Calendar *cal )
 
   mDateNavigator->setCalendar( mCalendar );
 
-  mTodoList->setCalendar( mCalendar );
+//  mTodoList->setCalendar( mCalendar );
 }
 
 void CalendarView::setIncidenceChanger( IncidenceChangerBase *changer )
@@ -386,7 +386,7 @@ bool CalendarView::openCalendar( const QString &filename, bool merge )
     } else {
       setModified( false );
       mViewManager->setDocumentId( filename );
-      mTodoList->setDocumentId( filename );
+//      mTodoList->setDocumentId( filename );
     }
     updateCategories();
     updateView();
@@ -458,7 +458,7 @@ void CalendarView::readSettings()
 
   mEventViewer->readSettings( config );
   mViewManager->readSettings( config );
-  mTodoList->restoreLayout( config, QString( "Todo View" ) );
+//  mTodoList->restoreLayout( config, QString( "Todo View" ) );
 
   readFilterSettings( config );
 
@@ -485,7 +485,7 @@ void CalendarView::writeSettings()
 
   mEventViewer->writeSettings( config );
   mViewManager->writeSettings( config );
-  mTodoList->saveLayout( config, QString( "Todo View" ) );
+  // mTodoList->saveLayout( config, QString( "Todo View" ) );
 
   KOPrefs::instance()->writeConfig();
 
@@ -757,21 +757,21 @@ void CalendarView::changeIncidenceDisplay( Incidence *incidence, int action )
   if ( incidence ) {
     // If there is an event view visible update the display
     mViewManager->currentView()->changeIncidenceDisplay( incidence, action );
-    if ( mTodoList ) {
-      mTodoList->changeIncidenceDisplay( incidence, action );
-    }
+//    if ( mTodoList ) {
+//      mTodoList->changeIncidenceDisplay( incidence, action );
+//    }
     mEventViewer->changeIncidenceDisplay( incidence, action );
   } else {
     mViewManager->currentView()->updateView();
-    if ( mTodoList ) {
-      mTodoList->updateView();
-    }
+//    if ( mTodoList ) {
+//      mTodoList->updateView();
+//    }
   }
 }
 
 void CalendarView::updateView( const QDate &start, const QDate &end )
 {
-  mTodoList->updateView();
+//  mTodoList->updateView();
   mViewManager->updateView( start, end );
   mDateNavigator->updateView();
 }
@@ -1568,7 +1568,7 @@ void CalendarView::adaptNavigationUnits()
 void CalendarView::processMainViewSelection( Incidence *incidence )
 {
   if ( incidence ) {
-    mTodoList->clearSelection();
+//    mTodoList->clearSelection();
   }
   processIncidenceSelection( incidence );
 }
@@ -1740,9 +1740,9 @@ void CalendarView::showDateNavigator( bool show )
 void CalendarView::showTodoView( bool show )
 {
   if ( show ) {
-    mTodoList->show();
+//    mTodoList->show();
   } else {
-    mTodoList->hide();
+//    mTodoList->hide();
   }
 }
 
@@ -1797,7 +1797,7 @@ Todo *CalendarView::selectedTodo()
   }
   incidence = 0;
 
-  Incidence::List selectedIncidences = mTodoList->selectedIncidences();
+  Incidence::List selectedIncidences;// = mTodoList->selectedIncidences();
   if ( !selectedIncidences.isEmpty() ) {
     incidence = selectedIncidences.first();
   }
@@ -1824,7 +1824,7 @@ Incidence *CalendarView::selectedIncidence()
 {
   Incidence *incidence = currentSelection();
   if ( !incidence ) {
-    Incidence::List selectedIncidences = mTodoList->selectedIncidences();
+    Incidence::List selectedIncidences;// = mTodoList->selectedIncidences();
     if ( !selectedIncidences.isEmpty() ) {
       incidence = selectedIncidences.first();
     }

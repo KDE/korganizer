@@ -27,7 +27,6 @@
 #include <qtabwidget.h>
 #include "calendarview.h"
 #include "datenavigator.h"
-#include "kotodoview.h"
 #include "koagendaview.h"
 #include "komonthview.h"
 #include "kolistview.h"
@@ -36,6 +35,7 @@
 #include "kotimelineview.h"
 #include "kotimespentview.h"
 #include "views/monthview/monthview.h"
+#include "views/todoview/kotodoview.h"
 #include "koprefs.h"
 #include "koglobals.h"
 #include "navigatorbar.h"
