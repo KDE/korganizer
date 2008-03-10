@@ -39,13 +39,8 @@
 
 #include <QButtonGroup>
 
-class WhatsNextPrintFactory : public KOrg::PrintPluginFactory {
-  public:
-    KOrg::PrintPlugin *createPluginFactory() { return new CalPrintWhatsNext; }
-};
-
-K_EXPORT_COMPONENT_FACTORY( korg_whatsnextprint, WhatsNextPrintFactory )
-
+K_PLUGIN_FACTORY(WhatsNextPrintFactory, registerPlugin<CalPrintWhatsNext>();)
+K_EXPORT_PLUGIN(WhatsNextPrintFactory( "korg_whatsnextprint" ))
 
 /**************************************************************
  *           Print What's Next

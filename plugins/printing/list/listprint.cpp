@@ -39,14 +39,8 @@
 
 #include <QButtonGroup>
 
-class ListPrintFactory : public KOrg::PrintPluginFactory {
-  public:
-    KOrg::PrintPlugin *createPluginFactory() { return new CalPrintList; }
-};
-
-K_EXPORT_COMPONENT_FACTORY( korg_listprint, ListPrintFactory )
-
-
+K_PLUGIN_FACTORY(ListPrintFactory, registerPlugin<CalPrintList>();)
+K_EXPORT_PLUGIN(ListPrintFactory( "korg_listprint" ))
 
 /**************************************************************
  *           Print Day

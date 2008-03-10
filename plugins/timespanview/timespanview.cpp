@@ -34,16 +34,8 @@
 using namespace KOrg;
 #include "timespanview.moc"
 
-class TimespanViewFactory : public KOrg::PartFactory {
-  public:
-    KOrg::Part *createPluginFactory( KOrg::MainWindow *parent )
-    {
-      return new TimespanView( parent );
-    }
-};
-
-K_EXPORT_COMPONENT_FACTORY( korg_timespanview, TimespanViewFactory )
-
+K_PLUGIN_FACTORY(TimespanViewFactory, registerPlugin<TimespanView>();)
+K_EXPORT_PLUGIN(TimespanViewFactory( "korg_timespanview" ))
 
 TimespanView::TimespanView(KOrg::MainWindow *parent ) : KOrg::Part(parent), mView(0)
 {

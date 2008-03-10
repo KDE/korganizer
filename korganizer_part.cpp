@@ -59,11 +59,11 @@
 //Added by qt3to4:
 #include <QVBoxLayout>
 
-typedef KParts::GenericFactory< KOrganizerPart > KOrganizerFactory;
-K_EXPORT_COMPONENT_FACTORY( korganizerpart, KOrganizerFactory )
+K_PLUGIN_FACTORY(KOrganizerFactory, registerPlugin<KOrganizerPart>();)
+K_EXPORT_PLUGIN(KOrganizerFactory( "korganizerpart" ))
 
 KOrganizerPart::KOrganizerPart( QWidget *parentWidget, QObject *parent,
-                                const QStringList & ) :
+                                const QVariantList & ) :
   KParts::ReadOnlyPart(parent), mTopLevelWidget( parentWidget->topLevelWidget() )
 {
   KGlobal::locale()->insertCatalog( "libkcal" );

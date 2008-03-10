@@ -52,7 +52,7 @@ class KOrganizerPart: public KParts::ReadOnlyPart,
 {
   Q_OBJECT
   public:
-    KOrganizerPart( QWidget *parentWidget, QObject *parent, const QStringList & );
+    KOrganizerPart( QWidget *parentWidget, QObject *parent, const QVariantList & );
     virtual ~KOrganizerPart();
 
     static KAboutData *createAboutData();
