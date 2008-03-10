@@ -44,8 +44,8 @@ int KOMessageBox::fourBtnMsgBox( QWidget *parent, QMessageBox::Icon type,
   dialog->setButtonGuiItem( KDialog::Ok, button3 );
   dialog->setButtonGuiItem( KDialog::Yes, button1 );
   dialog->setButtonGuiItem( KDialog::No, button2 );
-  QObject::connect( dialog, SIGNAL( yesClicked() ), dialog, SLOT(slotYes()));
-  QObject::connect( dialog, SIGNAL( noClicked() ), dialog, SLOT(slotNo()));
+//  QObject::connect( dialog, SIGNAL( yesClicked() ), dialog, SLOT(slotYes()));
+//  QObject::connect( dialog, SIGNAL( noClicked() ), dialog, SLOT(slotNo()));
 
 
   bool checkboxResult = false;
