@@ -27,10 +27,11 @@
 #ifndef KOTODOVIEW_H
 #define KOTODOVIEW_H
 
-#include <QDate>
+#include "korganizer/baseview.h"
 
 #include <kcal/todo.h>
-#include <korganizer/baseview.h>
+
+#include <QDate>
 
 namespace KCal {
   class Incidence;
@@ -62,7 +63,7 @@ class KOTodoView : public BaseView
     virtual DateList selectedDates();
     virtual int currentDateCount() { return 0; }
 
-    void setDocumentId( const QString & ) {};
+    void setDocumentId( const QString & ) {}
 
     void saveLayout( KConfig *config, const QString &group ) const;
     void restoreLayout( KConfig *config, const QString &group );

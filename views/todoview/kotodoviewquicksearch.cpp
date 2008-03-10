@@ -25,8 +25,7 @@
   without including the source code for Qt in the source distribution.
 */
 
-#include "views/todoview/kotodoviewquicksearch.h"
-
+#include "kotodoviewquicksearch.h"
 #include "koprefs.h"
 
 #include <libkdepim/categoryhierarchyreader.h>
@@ -42,26 +41,23 @@
 using namespace KCal;
 using namespace KPIM;
 
-
-KOTodoViewQuickSearch::KOTodoViewQuickSearch( Calendar *calendar,
-                                              QWidget *parent )
+KOTodoViewQuickSearch::KOTodoViewQuickSearch( Calendar *calendar, QWidget *parent )
   : QWidget( parent ), mCalendar( calendar )
 {
   QHBoxLayout *layout = new QHBoxLayout( this );
 
   mSearchLine = new KLineEdit( this );
-  mSearchLine->setClickMessage( i18nc( "@label in QuickSearchLine",
-                                         "Search" ) );
-  mSearchLine->setClearButtonShown(true);
-  connect( mSearchLine, SIGNAL( textChanged( const QString & ) ),
-           this, SIGNAL( searchTextChanged( const QString & ) ) );
+  mSearchLine->setClickMessage( i18nc( "@label in QuickSearchLine", "Search" ) );
+  mSearchLine->setClearButtonShown( true );
+  connect( mSearchLine, SIGNAL(textChanged(const QString &)),
+           this, SIGNAL(searchTextChanged(const QString &)) );
 
   layout->addWidget( mSearchLine, 3 );
 
   mCategoryCombo = new KComboBox( this );
 
-  connect( mCategoryCombo, SIGNAL( currentIndexChanged( int ) ),
-           this, SLOT( slotCategoryChanged( int ) ) );
+  connect( mCategoryCombo, SIGNAL(currentIndexChanged(int)),
+           this, SLOT(slotCategoryChanged(int)) );
 
   layout->addWidget( mCategoryCombo, 1 );
   fillCategories();
@@ -139,6 +135,5 @@ void KOTodoViewQuickSearch::setCalendar( Calendar *calendar )
   mCalendar = calendar;
   fillCategories();
 }
-
 
 #include "kotodoviewquicksearch.moc"

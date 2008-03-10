@@ -42,7 +42,7 @@ class KOTodoViewQuickSearch : public QWidget
 
   public:
     KOTodoViewQuickSearch( Calendar *calendar, QWidget *parent );
-    virtual ~KOTodoViewQuickSearch() {};
+    virtual ~KOTodoViewQuickSearch() {}
 
     void setCalendar( Calendar *calendar );
 

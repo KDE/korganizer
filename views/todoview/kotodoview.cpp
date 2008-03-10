@@ -25,12 +25,10 @@
   without including the source code for Qt in the source distribution.
 */
 
-#include "views/todoview/kotodoview.h"
-
-#include "views/todoview/kotodoviewquicksearch.h"
-#include "views/todoview/kotodomodel.h"
-#include "views/todoview/kotododelegates.h"
-
+#include "kotodoview.h"
+#include "kotodoviewquicksearch.h"
+#include "kotodomodel.h"
+#include "kotododelegates.h"
 #include "koprefs.h"
 #include "koglobals.h"
 
@@ -53,12 +51,10 @@ using namespace KCal;
 using namespace KOrg;
 using namespace KPIM;
 
-
 KOTodoView::KOTodoView( Calendar *cal, QWidget *parent )
   : BaseView( cal, parent )
 {
   mQuickSearch = new KOTodoViewQuickSearch( calendar(), this );
-
 
   mModel = new KOTodoModel( calendar(), this );
   mProxyModel = new QSortFilterProxyModel( this );
@@ -67,8 +63,8 @@ KOTodoView::KOTodoView( Calendar *cal, QWidget *parent )
   mProxyModel->setFilterKeyColumn( KOTodoModel::SummaryColumn );
   mProxyModel->setFilterCaseSensitivity( Qt::CaseInsensitive );
 
-  connect( mQuickSearch, SIGNAL( searchTextChanged( const QString & ) ),
-           mProxyModel, SLOT( setFilterRegExp( const QString & ) ) );
+  connect( mQuickSearch, SIGNAL(searchTextChanged(const QString &)),
+           mProxyModel, SLOT(setFilterRegExp(const QString &)) );
 
   mView = new QTreeView( this );
   mView->setModel( mProxyModel );
@@ -80,24 +76,22 @@ KOTodoView::KOTodoView( Calendar *cal, QWidget *parent )
   mView->setEditTriggers( QAbstractItemView::SelectedClicked |
                           QAbstractItemView::EditKeyPressed );
 
-
   KOTodoPriorityDelegate *priorityDelegate = new KOTodoPriorityDelegate( mView );
   mView->setItemDelegateForColumn( KOTodoModel::PriorityColumn, priorityDelegate );
   KOTodoCompleteDelegate *completeDelegate = new KOTodoCompleteDelegate( mView );
   mView->setItemDelegateForColumn( KOTodoModel::PercentColumn, completeDelegate );
 
   mView->setContextMenuPolicy( Qt::CustomContextMenu );
-  connect( mView, SIGNAL( customContextMenuRequested( const QPoint & ) ),
-           this, SLOT( contextMenu( const QPoint & ) ) );
+  connect( mView, SIGNAL(customContextMenuRequested(const QPoint &)),
+           this, SLOT(contextMenu(const QPoint &)) );
 
-
-  mQuickAdd = new KLineEdit( this);
-  mQuickAdd->setClickMessage(i18n( "Click to add a new to-do" ));
-  mQuickAdd->setClearButtonShown(true);
-  if ( !KOPrefs::instance()->mEnableQuickTodo ) mQuickAdd->hide();
-  connect( mQuickAdd, SIGNAL( returnPressed() ),
-           SLOT( addQuickTodo() ) );
-
+  mQuickAdd = new KLineEdit( this );
+  mQuickAdd->setClickMessage( i18n( "Click to add a new to-do" ) );
+  mQuickAdd->setClearButtonShown( true );
+  if ( !KOPrefs::instance()->mEnableQuickTodo ) {
+    mQuickAdd->hide();
+  }
+  connect( mQuickAdd, SIGNAL(returnPressed()), SLOT(addQuickTodo()) );
 
   QVBoxLayout *layout = new QVBoxLayout( this );
   layout->addWidget( mQuickSearch );
@@ -108,25 +102,25 @@ KOTodoView::KOTodoView( Calendar *cal, QWidget *parent )
 
   // ---------------- POPUP-MENUS -----------------------
   mItemPopupMenu = new QMenu( this );
-  mItemPopupMenu->addAction( i18n( "&Show" ), this, SLOT( showTodo() ) );
-  mItemPopupMenu->addAction( i18n( "&Edit..." ), this, SLOT( editTodo() ) );
+  mItemPopupMenu->addAction( i18n( "&Show" ), this, SLOT(showTodo()) );
+  mItemPopupMenu->addAction( i18n( "&Edit..." ), this, SLOT(editTodo()) );
 #ifndef KORG_NOPRINTER
   mItemPopupMenu->addAction( KOGlobals::self()->smallIcon( "document-print" ),
-                             i18n( "&Print..." ), this, SLOT( printTodo() ) );
+                             i18n( "&Print..." ), this, SLOT(printTodo()) );
 #endif
   mItemPopupMenu->addAction( KOGlobals::self()->smallIconSet( "edit-delete" ),
-                             i18n( "&Delete" ), this, SLOT( deleteTodo() ) );
+                             i18n( "&Delete" ), this, SLOT(deleteTodo()) );
 
   mItemPopupMenu->addSeparator();
 
-  mItemPopupMenu->addAction( KOGlobals::self()->smallIconSet("view-calendar-tasks"),
-                             i18n( "New &To-do..." ), this, SLOT( newTodo() ) );
-  mItemPopupMenu->addAction( i18n( "New Su&b-to-do..." ), this, SLOT( newSubTodo() ) );
+  mItemPopupMenu->addAction( KOGlobals::self()->smallIconSet( "view-calendar-tasks" ),
+                             i18n( "New &To-do..." ), this, SLOT(newTodo()) );
+  mItemPopupMenu->addAction( i18n( "New Su&b-to-do..." ), this, SLOT(newSubTodo()) );
 
   mItemPopupMenu->addAction( i18n( "&Make this To-do Independent" ), this,
-                             SLOT( unSubTodo() ) );
+                             SLOT(unSubTodo()) );
   mItemPopupMenu->addAction( i18n( "Make all Sub-to-dos &Independent" ), this,
-                             SLOT( unAllSubTodo() ) );
+                             SLOT(unAllSubTodo()) );
 
   mItemPopupMenu->addSeparator();
 
@@ -135,23 +129,23 @@ KOTodoView::KOTodoView( Calendar *cal, QWidget *parent )
                                           KDatePickerPopup::DatePicker |
                                           KDatePickerPopup::Words,
                                           QDate::currentDate(), this );
-  mMovePopupMenu->setTitle( i18n("&Move To") );
+  mMovePopupMenu->setTitle( i18n( "&Move To" ) );
   KDatePickerPopup *mCopyPopupMenu = new KDatePickerPopup(
                                           KDatePickerPopup::NoDate |
                                           KDatePickerPopup::DatePicker |
                                           KDatePickerPopup::Words,
                                           QDate::currentDate(), this );
-  mCopyPopupMenu->setTitle( i18n("&Copy To") );
+  mCopyPopupMenu->setTitle( i18n( "&Copy To" ) );
 
-  connect( mMovePopupMenu, SIGNAL( dateChanged( const QDate& )),
-           SLOT( moveTodoToDate( const QDate& ) ) );
-  connect( mCopyPopupMenu, SIGNAL( dateChanged( const QDate& )),
-           SLOT( copyTodoToDate( const QDate& ) ) );
+  connect( mMovePopupMenu, SIGNAL(dateChanged(const QDate &)),
+           SLOT(moveTodoToDate(const QDate&)) );
+  connect( mCopyPopupMenu, SIGNAL(dateChanged(const QDate &)),
+           SLOT(copyTodoToDate(const QDate&)) );
 
-  connect( mMovePopupMenu, SIGNAL( dateChanged( QDate ) ),
-           mItemPopupMenu, SLOT( hide() ) );
-  connect( mCopyPopupMenu, SIGNAL( dateChanged( QDate ) ),
-           mItemPopupMenu, SLOT( hide() ) );
+  connect( mMovePopupMenu, SIGNAL(dateChanged(QDate)),
+           mItemPopupMenu, SLOT(hide()) );
+  connect( mCopyPopupMenu, SIGNAL(dateChanged(QDate)),
+           mItemPopupMenu, SLOT(hide()) );
 
   mItemPopupMenu->insertMenu( 0, mCopyPopupMenu );
   mItemPopupMenu->insertMenu( 0, mMovePopupMenu );
@@ -159,13 +153,13 @@ KOTodoView::KOTodoView( Calendar *cal, QWidget *parent )
   mItemPopupMenu->addSeparator();
 
   mItemPopupMenu->addAction( i18nc( "delete completed to-dos", "Pur&ge Completed" ),
-                             this, SLOT( purgeCompleted() ) );
+                             this, SLOT(purgeCompleted()) );
 
   mPopupMenu = new QMenu( this );
   mPopupMenu->addAction( KOGlobals::self()->smallIconSet( "view-calendar-tasks" ),
-                         i18n( "&New To-do..." ), this, SLOT( newTodo() ) );
+                         i18n( "&New To-do..." ), this, SLOT(newTodo()) );
   mPopupMenu->addAction( i18nc( "delete completed to-dos", "Pur&ge Completed" ),
-                         this, SLOT( purgeCompleted() ) );
+                         this, SLOT(purgeCompleted()) );
 }
 
 KOTodoView::~KOTodoView()
@@ -230,11 +224,11 @@ void KOTodoView::restoreLayout( KConfig *config, const QString &group )
 
   QStringList columnOrder = cfgGroup.readEntry( "ColumnOrder", QStringList() );
   QStringList columnWidths = cfgGroup.readEntry( "ColumnWidths", QStringList() );
-  for ( int i = 0; i < header->count() &&
-                   i < columnOrder.size() &&
-                   i < columnWidths.size(); i++ ) {
-    int width = columnWidths[ i ].toInt();
-    int order = columnOrder[ i ].toInt();
+  for ( int i = 0;
+        i < header->count() && i < columnOrder.size() && i < columnWidths.size();
+        i++ ) {
+    int width = columnWidths[i].toInt();
+    int order = columnOrder[i].toInt();
     header->resizeSection( i, width );
     header->moveSection( header->visualIndex( i ), order );
   }
@@ -305,11 +299,11 @@ void KOTodoView::selectionChanged( const QItemSelection &selected,
 {
   Q_UNUSED( deselected );
   QModelIndexList selection = selected.indexes();
-  if ( selection.isEmpty() ) return;
+  if ( selection.isEmpty() ) {
+    return;
+  }
 
-  Todo *todo = static_cast<Todo *>( selection[ 0 ].
-                                      data( KOTodoModel::TodoRole ).
-                                        value<void *>() );
+  Todo *todo = static_cast<Todo *>( selection[0].data( KOTodoModel::TodoRole ).value<void *>() );
 
   emit incidenceSelected( todo );
 }
@@ -317,11 +311,11 @@ void KOTodoView::selectionChanged( const QItemSelection &selected,
 void KOTodoView::showTodo()
 {
   QModelIndexList selection = mView->selectionModel()->selectedRows();
-  if ( selection.size() != 1 ) return;
+  if ( selection.size() != 1 ) {
+    return;
+  }
 
-  Todo *todo = static_cast<Todo *>( selection[ 0 ].
-                                      data( KOTodoModel::TodoRole ).
-                                        value<void *>() );
+  Todo *todo = static_cast<Todo *>( selection[0].data( KOTodoModel::TodoRole ).value<void *>() );
 
   emit showIncidenceSignal( todo );
 }
@@ -329,11 +323,11 @@ void KOTodoView::showTodo()
 void KOTodoView::editTodo()
 {
   QModelIndexList selection = mView->selectionModel()->selectedRows();
-  if ( selection.size() != 1 ) return;
+  if ( selection.size() != 1 ) {
+    return;
+  }
 
-  Todo *todo = static_cast<Todo *>( selection[ 0 ].
-                                      data( KOTodoModel::TodoRole ).
-                                        value<void *>() );
+  Todo *todo = static_cast<Todo *>( selection[0].data( KOTodoModel::TodoRole ).value<void *>() );
 
   emit editIncidenceSignal( todo );
 }
@@ -347,11 +341,11 @@ void KOTodoView::printTodo()
 void KOTodoView::deleteTodo()
 {
   QModelIndexList selection = mView->selectionModel()->selectedRows();
-  if ( selection.size() != 1 ) return;
+  if ( selection.size() != 1 ) {
+    return;
+  }
 
-  Todo *todo = static_cast<Todo *>( selection[ 0 ].
-                                      data( KOTodoModel::TodoRole ).
-                                        value<void *>() );
+  Todo *todo = static_cast<Todo *>( selection[0].data( KOTodoModel::TodoRole ).value<void *>() );
 
   emit deleteIncidenceSignal( todo );
 }
@@ -364,36 +358,41 @@ void KOTodoView::newTodo()
 void KOTodoView::newSubTodo()
 {
   QModelIndexList selection = mView->selectionModel()->selectedRows();
-  if ( selection.size() != 1 ) return;
+  if ( selection.size() != 1 ) {
+    return;
+  }
 
-  Todo *todo = static_cast<Todo *>( selection[ 0 ].
-                                    data( KOTodoModel::TodoRole ).
-                                      value<void *>() );
+  Todo *todo = static_cast<Todo *>( selection[0].data( KOTodoModel::TodoRole ).value<void *>() );
 
   emit newSubTodoSignal( todo );
 }
 
-void KOTodoView::unSubTodo() {
+void KOTodoView::unSubTodo()
+{
   //TODO
   kDebug() << "this is a stub";
 }
 
-void KOTodoView::unAllSubTodo() {
+void KOTodoView::unAllSubTodo()
+{
   //TODO
   kDebug() << "this is a stub";
 }
 
-void KOTodoView::moveTodoToDate( const QDate &date ) {
+void KOTodoView::moveTodoToDate( const QDate &date )
+{
   //TODO
   kDebug() << "this is a stub";
 }
 
-void KOTodoView::copyTodoToDate( const QDate &date ) {
+void KOTodoView::copyTodoToDate( const QDate &date )
+{
   //TODO
   kDebug() << "this is a stub";
 }
 
-void KOTodoView::purgeCompleted() {
+void KOTodoView::purgeCompleted()
+{
   //TODO
   kDebug() << "this is a stub";
 }

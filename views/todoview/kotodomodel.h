@@ -84,7 +84,7 @@ class KOTodoModel : public QAbstractItemModel
     void processChange( Incidence *incidence, int action );
 
     /** Creates a new todo with the given text as summary */
-    void addTodo( const QString& summary );
+    void addTodo( const QString &summary );
 
     /** Sets the incidence changer used to edit incidences (todos)
      *
@@ -93,34 +93,34 @@ class KOTodoModel : public QAbstractItemModel
     void setIncidenceChanger( IncidenceChangerBase *changer )
     { mChanger = changer; }
 
-    virtual Qt::ItemFlags flags( const QModelIndex& index ) const;
+    virtual Qt::ItemFlags flags( const QModelIndex &index ) const;
 
-    virtual QModelIndex index( int row, int column, const QModelIndex& parent ) const;
-    virtual QModelIndex parent( const QModelIndex& child ) const;
+    virtual QModelIndex index( int row, int column, const QModelIndex &parent ) const;
+    virtual QModelIndex parent( const QModelIndex &child ) const;
 
-    virtual int columnCount( const QModelIndex& parent ) const;
-    virtual int rowCount( const QModelIndex& parent ) const;
+    virtual int columnCount( const QModelIndex &parent ) const;
+    virtual int rowCount( const QModelIndex &parent ) const;
 
-    virtual QVariant data( const QModelIndex& index, int role) const;
-    virtual QVariant headerData( int section, Qt::Orientation /*orientation*/,
+    virtual QVariant data( const QModelIndex &index, int role ) const;
+    virtual QVariant headerData( int section, Qt::Orientation,
                                  int role ) const;
 
-    virtual bool setData( const QModelIndex& index, const QVariant& value,
+    virtual bool setData( const QModelIndex &index, const QVariant &value,
                           int role );
 
 #ifndef KORG_NODND
     virtual Qt::DropActions supportedDropActions() const;
     virtual QStringList mimeTypes() const;
-    virtual QMimeData* mimeData( const QModelIndexList& indexes ) const;
-    virtual bool dropMimeData( const QMimeData* data, Qt::DropAction action,
-                               int row, int column, const QModelIndex& parent );
+    virtual QMimeData *mimeData( const QModelIndexList &indexes ) const;
+    virtual bool dropMimeData( const QMimeData *data, Qt::DropAction action,
+                               int row, int column, const QModelIndex &parent );
 #endif
 
   private:
     struct TodoTreeNode;
 
     /** Create a model index for a given todo tree node. */
-    QModelIndex getModelIndex( TodoTreeNode* todoTree ) const;
+    QModelIndex getModelIndex( TodoTreeNode *todoTree ) const;
 
    /** Recursively find a todo.
     *

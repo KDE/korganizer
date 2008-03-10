@@ -22,8 +22,7 @@
   without including the source code for Qt in the source distribution.
 */
 
-#include "views/todoview/kotodomodel.h"
-
+#include "kotodomodel.h"
 #include "koprefs.h"
 #include "koglobals.h"
 #include "kodialogmanager.h"
@@ -34,13 +33,13 @@
 #include <kcal/incidenceformatter.h>
 #include <kcal/todo.h>
 
-#include <kpimutils/email.h>
-
 #ifndef KORG_NODND
   #include <kcal/icaldrag.h>
   #include <kcal/vcaldrag.h>
   #include <kcal/dndfactory.h>
 #endif
+
+#include <kpimutils/email.h>
 
 #include <kmessagebox.h>
 #include <kdebug.h>
@@ -75,7 +74,9 @@ struct KOTodoModel::TodoTreeNode
   TodoTreeNode *find( const Todo *todo )
   {
     Q_ASSERT( todo );
-    if ( mTodo && todo->uid() == mTodo->uid() ) return this;
+    if ( mTodo && todo->uid() == mTodo->uid() ) {
+      return this;
+    }
     Q_FOREACH ( TodoTreeNode *node, mChildren ) {
       TodoTreeNode *tmp = node->find( todo );
       if ( tmp ) {
@@ -96,7 +97,7 @@ struct KOTodoModel::TodoTreeNode
   QList<TodoTreeNode*> mChildren;
 };
 
-KOTodoModel::KOTodoModel( Calendar *cal, QObject* parent )
+KOTodoModel::KOTodoModel( Calendar *cal, QObject *parent )
   : QAbstractItemModel( parent ), mColumnCount( DescriptionColumn + 1 ),
     mCalendar( cal )
 {
@@ -138,7 +139,7 @@ void KOTodoModel::reloadTodos()
 
   Todo::List todoList = mCalendar->todos();
   Todo::List::ConstIterator it;
-  for( it = todoList.begin(); it != todoList.end(); ++it ) {
+  for ( it = todoList.begin(); it != todoList.end(); ++it ) {
     if ( !findTodo( *it ) ) {
       insertTodo( *it );
     }
@@ -147,7 +148,9 @@ void KOTodoModel::reloadTodos()
 
 void KOTodoModel::processChange( Incidence *incidence, int action )
 {
-  if ( incidence->type() != "Todo" ) return;
+  if ( incidence->type() != "Todo" ) {
+    return;
+  }
 
   kDebug() << "incidence->uid() = " << incidence->uid() << " action = " << action;
 
@@ -171,9 +174,9 @@ void KOTodoModel::processChange( Incidence *incidence, int action )
     }
 
     // check if the relation to the parent has changed
-    if ( !(( newParent && ttOldParent->mTodo &&
-             newParent->uid() == ttOldParent->mTodo->uid() ) ||
-           ( newParent == 0 && ttOldParent->mTodo == 0 )) ) {
+    if ( !( ( newParent && ttOldParent->mTodo &&
+              newParent->uid() == ttOldParent->mTodo->uid() ) ||
+            ( newParent == 0 && ttOldParent->mTodo == 0 ) ) ) {
       emit layoutAboutToBeChanged();
       QModelIndexList from, to;
       // create a list of all model indexes which will be changed
@@ -222,8 +225,7 @@ void KOTodoModel::processChange( Incidence *incidence, int action )
       // force the view to redraw the moved element, because we can't be sure
       // that only the relationship changed
       emit dataChanged( miMoved,
-                        miMoved.sibling( miMoved.row(),
-                                         mColumnCount - 1) );
+                        miMoved.sibling( miMoved.row(), mColumnCount - 1 ) );
     } else {
       // not the relationship changed, but something else. just force the view
       // to redraw the item.
@@ -257,7 +259,8 @@ void KOTodoModel::processChange( Incidence *incidence, int action )
   }
 }
 
-void KOTodoModel::addTodo( const QString& summary ) {
+void KOTodoModel::addTodo( const QString &summary )
+{
   if ( !summary.trimmed().isEmpty() ) {
     Todo *todo = new Todo();
     todo->setSummary( summary.trimmed() );
@@ -271,7 +274,7 @@ void KOTodoModel::addTodo( const QString& summary ) {
   }
 }
 
-QModelIndex KOTodoModel::getModelIndex( TodoTreeNode* node ) const
+QModelIndex KOTodoModel::getModelIndex( TodoTreeNode *node ) const
 {
   Q_ASSERT( node );
   if ( node == mRootNode ) {
@@ -311,9 +314,8 @@ KOTodoModel::TodoTreeNode *KOTodoModel::insertTodo( Todo *todo,
       }
     }
 
-    // if the parent is not already in the tree, we have to insert it first
-    // that's neccessary because we can't rely on todos comming in a
-    // defined order.
+    // if the parent is not already in the tree, we have to insert it first.
+    // necessary because we can't rely on todos coming in a defined order.
     TodoTreeNode *parent = findTodo( relatedTodo );
     if ( !parent ) {
       parent = insertTodo( relatedTodo, checkRelated, informView );
@@ -353,7 +355,9 @@ Qt::ItemFlags KOTodoModel::flags( const QModelIndex &index ) const
 {
   Qt::ItemFlags ret = QAbstractItemModel::flags( index );
 
-  if ( !index.isValid() ) return ret | Qt::ItemIsDropEnabled;
+  if ( !index.isValid() ) {
+    return ret | Qt::ItemIsDropEnabled;
+  }
 
   ret |= Qt::ItemIsDragEnabled;
 
@@ -361,13 +365,13 @@ Qt::ItemFlags KOTodoModel::flags( const QModelIndex &index ) const
   if ( !todo->isReadOnly() ) {
     // the following columns are editable:
     switch ( index.column() ) {
-      case SummaryColumn:
-      case PriorityColumn:
-      case PercentColumn:
-      case DueDateColumn:
-      case CategoriesColumn:
-      case DescriptionColumn:
-        ret |= Qt::ItemIsEditable;
+    case SummaryColumn:
+    case PriorityColumn:
+    case PercentColumn:
+    case DueDateColumn:
+    case CategoriesColumn:
+    case DescriptionColumn:
+      ret |= Qt::ItemIsEditable;
     }
   }
 
@@ -401,7 +405,9 @@ QModelIndex KOTodoModel::index( int row, int column,
 
 QModelIndex KOTodoModel::parent( const QModelIndex &child ) const
 {
-  if ( !child.isValid() ) return QModelIndex();
+  if ( !child.isValid() ) {
+    return QModelIndex();
+  }
 
   TodoTreeNode *node = static_cast<TodoTreeNode *>( child.internalPointer() );
   // every model index given out by us has a valid internal pointer, so
@@ -433,72 +439,74 @@ int KOTodoModel::rowCount( const QModelIndex &parent ) const
 
 QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
 {
-  if ( !index.isValid() ) return QVariant();
+  if ( !index.isValid() ) {
+    return QVariant();
+  }
 
   TodoTreeNode *node = static_cast<TodoTreeNode *>( index.internalPointer() );
   Todo *todo = node->mTodo;
 
   if ( role == Qt::DisplayRole ) {
     switch ( index.column() ) {
-      case SummaryColumn:
-        return QVariant( todo->summary() );
-      case PriorityColumn:
-        if ( todo->priority() == 0 ) {
-          return QVariant( QString::fromAscii( "--" ) );
-        }
-        return QVariant( todo->priority() );
-      case PercentColumn:
-        return QVariant( todo->percentComplete() );
-      case DueDateColumn:
-        if ( todo->hasDueDate() ) {
-          QString dtStr = todo->dtDueDateStr();
-          if (!todo->allDay()) {
-            dtStr += ' ' + todo->dtDueTimeStr();
-          }
-          return QVariant( dtStr );
-        } else {
-          return QVariant();
-        }
-      case CategoriesColumn:
-      {
-        QString categories = todo->categories().join(
-            i18nc( "delimiter for joining category names", "," ) );
-        return QVariant( categories );
+    case SummaryColumn:
+      return QVariant( todo->summary() );
+    case PriorityColumn:
+      if ( todo->priority() == 0 ) {
+        return QVariant( QString::fromAscii( "--" ) );
       }
-      case DescriptionColumn:
-        return QVariant( todo->description() );
+      return QVariant( todo->priority() );
+    case PercentColumn:
+      return QVariant( todo->percentComplete() );
+    case DueDateColumn:
+      if ( todo->hasDueDate() ) {
+        QString dtStr = todo->dtDueDateStr();
+        if ( !todo->allDay() ) {
+          dtStr += ' ' + todo->dtDueTimeStr();
+        }
+        return QVariant( dtStr );
+      } else {
+        return QVariant();
+      }
+    case CategoriesColumn:
+    {
+      QString categories = todo->categories().join(
+        i18nc( "delimiter for joining category names", "," ) );
+      return QVariant( categories );
+    }
+    case DescriptionColumn:
+      return QVariant( todo->description() );
     }
     return QVariant();
   }
 
   if ( role == Qt::EditRole ) {
     switch ( index.column() ) {
-      case SummaryColumn:
-        return QVariant( todo->summary() );
-      case RecurColumn:
-        return QVariant( todo->recurs() );
-      case PriorityColumn:
-        return QVariant( todo->priority() );
-      case PercentColumn:
-        return QVariant( todo->percentComplete() );
-      case DueDateColumn:
-        if ( todo->hasDueDate() ) {
-          QString dtStr = todo->dtDueDateStr();
-          if (!todo->allDay()) {
-            dtStr += ' ' + todo->dtDueTimeStr();
-          }
-          return QVariant( dtStr );
-        } else {
-          return QVariant();
+    case SummaryColumn:
+      return QVariant( todo->summary() );
+    case RecurColumn:
+      return QVariant( todo->recurs() );
+    case PriorityColumn:
+      return QVariant( todo->priority() );
+    case PercentColumn:
+      return QVariant( todo->percentComplete() );
+    case DueDateColumn:
+      if ( todo->hasDueDate() ) {
+        QString dtStr = todo->dtDueDateStr();
+        if ( !todo->allDay() ) {
+          dtStr += ' ' + todo->dtDueTimeStr();
         }
-      case CategoriesColumn:
-      {
-        QString categories = todo->categories().join(
-            i18nc( "delimiter for joining category names", "," ) );
-        return QVariant( categories );
+        return QVariant( dtStr );
+      } else {
+        return QVariant();
       }
-      case DescriptionColumn:
-        return QVariant( todo->description() );
+    case CategoriesColumn:
+    {
+      QString categories = todo->categories().join(
+        i18nc( "delimiter for joining category names", "," ) );
+      return QVariant( categories );
+    }
+    case DescriptionColumn:
+      return QVariant( todo->description() );
     }
     return QVariant();
   }
@@ -534,26 +542,25 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
   return QVariant();
 }
 
-QVariant KOTodoModel::headerData( int column, Qt::Orientation /*orientation*/,
-                                  int role ) const
+QVariant KOTodoModel::headerData( int column, Qt::Orientation, int role ) const
 {
   Q_ASSERT( column >= 0 && column < mColumnCount );
   if ( role == Qt::DisplayRole ) {
     switch ( column ) {
-      case SummaryColumn:
-        return QVariant( i18n("Summary") );
-      case RecurColumn:
-        return QVariant( i18n("Recurs") );
-      case PriorityColumn:
-        return QVariant( i18n("Priority") );
-      case PercentColumn:
-        return QVariant( i18nc("@title:column percent complete", "Complete") );
-      case DueDateColumn:
-        return QVariant( i18n("Due Date/Time") );
-      case CategoriesColumn:
-        return QVariant( i18n("Categories") );
-      case DescriptionColumn:
-        return QVariant( i18n("Description") );
+    case SummaryColumn:
+      return QVariant( i18n( "Summary" ) );
+    case RecurColumn:
+      return QVariant( i18n( "Recurs" ) );
+    case PriorityColumn:
+      return QVariant( i18n( "Priority" ) );
+    case PercentColumn:
+      return QVariant( i18nc( "@title:column percent complete", "Complete" ) );
+    case DueDateColumn:
+      return QVariant( i18n( "Due Date/Time" ) );
+    case CategoriesColumn:
+      return QVariant( i18n( "Categories" ) );
+    case DescriptionColumn:
+      return QVariant( i18n( "Description" ) );
     }
   }
 
@@ -569,10 +576,11 @@ QVariant KOTodoModel::headerData( int column, Qt::Orientation /*orientation*/,
   return QVariant();
 }
 
-bool KOTodoModel::setData( const QModelIndex &index, const QVariant &value,
-                           int role )
+bool KOTodoModel::setData( const QModelIndex &index, const QVariant &value, int role )
 {
-  if ( !mChanger || !index.isValid() ) return false;
+  if ( !mChanger || !index.isValid() ) {
+    return false;
+  }
 
   Todo *todo = static_cast<TodoTreeNode *>( index.internalPointer() )->mTodo;
 
@@ -663,9 +671,12 @@ QMimeData *KOTodoModel::mimeData( const QModelIndexList &indexes ) const
 }
 
 bool KOTodoModel::dropMimeData( const QMimeData *data, Qt::DropAction action,
-                                int /*row*/, int /*column*/,
+                                int row, int column,
                                 const QModelIndex &parent )
 {
+  Q_UNUSED( row );
+  Q_UNUSED( column );
+
   if ( action != Qt::MoveAction ) {
     kDebug() << "No action other than MoveAction currently supported!"; //TODO
     return false;
@@ -690,11 +701,12 @@ bool KOTodoModel::dropMimeData( const QMimeData *data, Qt::DropAction action,
       }
 
       Incidence *tmp = destTodo;
-      while( tmp ) {
+      while ( tmp ) {
         if ( *tmp == *todo ) {
-          KMessageBox::information( 0,
-                                    i18n("Cannot move to-do to itself or a child of itself."),
-                                    i18n("Drop To-do"), "NoDropTodoOntoItself" );
+          KMessageBox::information(
+            0,
+            i18n( "Cannot move to-do to itself or a child of itself." ),
+            i18n( "Drop To-do" ), "NoDropTodoOntoItself" );
           return false;
         }
         tmp = tmp->relatedTo();
@@ -734,8 +746,8 @@ bool KOTodoModel::dropMimeData( const QMimeData *data, Qt::DropAction action,
             destTodo->addAttachment( new Attachment( text ) );
           } else {
             QStringList emails = KPIMUtils::splitAddressList( text );
-            for( QStringList::ConstIterator it = emails.begin();
-                 it!=emails.end(); ++it ) {
+            for ( QStringList::ConstIterator it = emails.begin();
+                  it != emails.end(); ++it ) {
               QString name, email, comment;
               if ( KPIMUtils::splitAddress( *it, name, email, comment ) ==
                    KPIMUtils::AddressOk ) {

@@ -32,11 +32,12 @@ class QPainter;
 class QStyleOptionViewItem;
 class QSize;
 
-/** This delegate is responsible for displaying progess bars for the completion
-    status of indivitual todos. It also provides a slider to change the completion
-    status of the todo when in editing mode.
+/**
+  This delegate is responsible for displaying progress bars for the completion
+  status of indivitual todos. It also provides a slider to change the completion
+  status of the todo when in editing mode.
 
-	@author Thomas Thrainer
+  @author Thomas Thrainer
 */
 class KOTodoCompleteDelegate : public QItemDelegate
 {
@@ -52,20 +53,21 @@ class KOTodoCompleteDelegate : public QItemDelegate
                     const QModelIndex &index ) const;
 
     QWidget *createEditor( QWidget *parent, const QStyleOptionViewItem &option,
-                           const QModelIndex &index) const;
-    void setEditorData(QWidget *editor, const QModelIndex &index) const;
-    void setModelData(QWidget *editor, QAbstractItemModel *model,
-                      const QModelIndex &index) const;
-    void updateEditorGeometry(QWidget *editor,
-                              const QStyleOptionViewItem &option,
-                              const QModelIndex &index) const;
+                           const QModelIndex &index ) const;
+    void setEditorData( QWidget *editor, const QModelIndex &index ) const;
+    void setModelData( QWidget *editor, QAbstractItemModel *model,
+                       const QModelIndex &index ) const;
+    void updateEditorGeometry( QWidget *editor,
+                               const QStyleOptionViewItem &option,
+                               const QModelIndex &index ) const;
 };
 
-/** This delegate is responsible for displaying the priority of todos.
-    It also provides a combo box to change the priority of the todo
-    when in editing mode.
+/**
+  This delegate is responsible for displaying the priority of todos.
+  It also provides a combo box to change the priority of the todo
+  when in editing mode.
 
-	@author Thomas Thrainer
+  @author Thomas Thrainer
  */
 class KOTodoPriorityDelegate : public QItemDelegate
 {
@@ -81,13 +83,13 @@ class KOTodoPriorityDelegate : public QItemDelegate
                     const QModelIndex &index ) const;
 
     QWidget *createEditor( QWidget *parent, const QStyleOptionViewItem &option,
-                           const QModelIndex &index) const;
-    void setEditorData(QWidget *editor, const QModelIndex &index) const;
-    void setModelData(QWidget *editor, QAbstractItemModel *model,
-                      const QModelIndex &index) const;
-    void updateEditorGeometry(QWidget *editor,
-                              const QStyleOptionViewItem &option,
-                              const QModelIndex &index) const;
+                           const QModelIndex &index ) const;
+    void setEditorData( QWidget *editor, const QModelIndex &index ) const;
+    void setModelData( QWidget *editor, QAbstractItemModel *model,
+                       const QModelIndex &index ) const;
+    void updateEditorGeometry( QWidget *editor,
+                               const QStyleOptionViewItem &option,
+                               const QModelIndex &index ) const;
 };
 
 #endif

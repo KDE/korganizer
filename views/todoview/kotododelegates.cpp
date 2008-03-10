@@ -22,8 +22,7 @@
   without including the source code for Qt in the source distribution.
 */
 
-#include "views/todoview/kotododelegates.h"
-
+#include "kotododelegates.h"
 #include "koprefs.h"
 
 #include <kcolorscheme.h>
@@ -92,9 +91,9 @@ QSize KOTodoCompleteDelegate::sizeHint( const QStyleOptionViewItem &option,
   return QSize( 80, 20 );
 }
 
-QWidget *KOTodoCompleteDelegate::createEditor(QWidget *parent,
-                                              const QStyleOptionViewItem &option,
-                                              const QModelIndex &index) const
+QWidget *KOTodoCompleteDelegate::createEditor( QWidget *parent,
+                                               const QStyleOptionViewItem &option,
+                                               const QModelIndex &index ) const
 {
   QSlider *slider = new QSlider( parent );
 
@@ -109,26 +108,26 @@ QWidget *KOTodoCompleteDelegate::createEditor(QWidget *parent,
   return slider;
 }
 
-void KOTodoCompleteDelegate::setEditorData(QWidget *editor,
-                                           const QModelIndex &index) const
+void KOTodoCompleteDelegate::setEditorData( QWidget *editor,
+                                            const QModelIndex &index ) const
 {
   QSlider *slider = static_cast<QSlider *>( editor );
 
   slider->setValue( index.data( Qt::EditRole ).toInt() );
 }
 
-void KOTodoCompleteDelegate::setModelData(QWidget *editor,
-                                          QAbstractItemModel *model,
-                                          const QModelIndex &index) const
+void KOTodoCompleteDelegate::setModelData( QWidget *editor,
+                                           QAbstractItemModel *model,
+                                           const QModelIndex &index ) const
 {
   QSlider *slider = static_cast<QSlider *>( editor );
 
   model->setData( index, slider->value() );
 }
 
-void KOTodoCompleteDelegate::updateEditorGeometry(QWidget *editor,
-                                                  const QStyleOptionViewItem &option,
-                                                  const QModelIndex &index) const
+void KOTodoCompleteDelegate::updateEditorGeometry( QWidget *editor,
+                                                   const QStyleOptionViewItem &option,
+                                                   const QModelIndex &index ) const
 {
   editor->setGeometry( option.rect );
 }
@@ -159,15 +158,15 @@ QSize KOTodoPriorityDelegate::sizeHint( const QStyleOptionViewItem &option,
   QItemDelegate::sizeHint( option, index );
 }
 
-QWidget *KOTodoPriorityDelegate::createEditor(QWidget *parent,
-                                              const QStyleOptionViewItem &option,
-                                              const QModelIndex &index) const
+QWidget *KOTodoPriorityDelegate::createEditor( QWidget *parent,
+                                               const QStyleOptionViewItem &option,
+                                               const QModelIndex &index ) const
 {
 //TODO use a KComboBox???????????
   QComboBox *combo = new QComboBox( parent );
 
-  combo->addItem( i18nc("Unspecified priority", "unspecified") );
-  combo->addItem( i18nc( "@action:inmenu highest priority", "1 (highest)") );
+  combo->addItem( i18nc( "Unspecified priority", "unspecified" ) );
+  combo->addItem( i18nc( "@action:inmenu highest priority", "1 (highest)" ) );
   combo->addItem( i18n( "2" ) );
   combo->addItem( i18n( "3" ) );
   combo->addItem( i18n( "4" ) );
@@ -180,26 +179,26 @@ QWidget *KOTodoPriorityDelegate::createEditor(QWidget *parent,
   return combo;
 }
 
-void KOTodoPriorityDelegate::setEditorData(QWidget *editor,
-                                           const QModelIndex &index) const
+void KOTodoPriorityDelegate::setEditorData( QWidget *editor,
+                                            const QModelIndex &index ) const
 {
   QComboBox *combo = static_cast<QComboBox *>( editor );
 
   combo->setCurrentIndex( index.data( Qt::EditRole ).toInt() );
 }
 
-void KOTodoPriorityDelegate::setModelData(QWidget *editor,
-                                          QAbstractItemModel *model,
-                                          const QModelIndex &index) const
+void KOTodoPriorityDelegate::setModelData( QWidget *editor,
+                                           QAbstractItemModel *model,
+                                           const QModelIndex &index ) const
 {
   QComboBox *combo = static_cast<QComboBox *>( editor );
 
   model->setData( index, combo->currentIndex() );
 }
 
-void KOTodoPriorityDelegate::updateEditorGeometry(QWidget *editor,
-                                                  const QStyleOptionViewItem &option,
-                                                  const QModelIndex &index) const
+void KOTodoPriorityDelegate::updateEditorGeometry( QWidget *editor,
+                                                   const QStyleOptionViewItem &option,
+                                                   const QModelIndex &index ) const
 {
   editor->setGeometry( option.rect );
 }
