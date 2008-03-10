@@ -25,7 +25,7 @@
 #ifndef VIEW_H
 #define VIEW_H
 
-#include <koeventview.h>
+#include "koeventview.h"
 
 class KOEventPopupMenu;
 
@@ -45,25 +45,29 @@ class KONewMonthView : public KOEventView
     ~KONewMonthView();
 
     virtual int currentDateCount();
-    virtual Incidence::List selectedIncidences() { return Incidence::List(); }
+    virtual Incidence::List selectedIncidences()
+    { return Incidence::List(); }
 
     /** Returns dates of the currently selected events */
     virtual DateList selectedDates();
 
-    virtual bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay);
+    virtual bool eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &allDay );
 
     QDate startDate() const { return mStartDate; }
     QDate endDate() const { return mEndDate; }
+
   public slots:
     virtual void updateView();
-    virtual void showDates(const QDate &start, const QDate &end);
+    virtual void showDates( const QDate &start, const QDate &end );
     virtual void showIncidences( const Incidence::List &incidenceList );
 
-    void changeIncidenceDisplay(Incidence *, int);
+    void changeIncidenceDisplay( Incidence *, int );
+
   protected:
     int maxDatesHint();
+
   private:
-    void addIncidence( Incidence* incidence );
+    void addIncidence( Incidence *incidence );
     // Compute and update the whole view
     void reloadIncidences();
 
@@ -76,11 +80,10 @@ class KONewMonthView : public KOEventView
     int mCurrentMonth;
 
     KOEventPopupMenu *mViewPopup;
-  
+
     friend class MonthScene;
     friend class MonthGraphicsView;
 };
-
 
 }
 

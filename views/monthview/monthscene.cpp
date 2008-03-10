@@ -23,18 +23,16 @@
 */
 
 #include "monthscene.h"
-
 #include "monthitem.h"
 #include "monthview.h"
+#include "koprefs.h"
+#include "koglobals.h"
+
+#include <kcal/incidence.h>
 
 #include <QPaintEvent>
 #include <QGraphicsSceneWheelEvent>
 #include <QGraphicsSceneMouseEvent>
-
-#include "kcal/incidence.h"
-
-#include "koprefs.h"
-#include "koglobals.h"
 
 using namespace KOrg;
 
@@ -44,8 +42,8 @@ MonthGraphicsView::MonthGraphicsView( KONewMonthView *parent, Calendar *calendar
   setMouseTracking( true );
 }
 
-MonthScene::MonthScene( KONewMonthView *parent, Calendar *calendar ) :
-    QGraphicsScene( parent ),
+MonthScene::MonthScene( KONewMonthView *parent, Calendar *calendar )
+  : QGraphicsScene( parent ),
     mMonthView( parent ),
     mInitialized( false ),
     mCalendar( calendar ),
@@ -73,27 +71,25 @@ MonthCell *MonthScene::selectedCell() const
   return mMonthCellMap.value( mSelectedCellDate );
 }
 
-// Get the space on the right of the cell associated to the date @p date
-int MonthScene::getRightSpan( const QDate& date ) const
+int MonthScene::getRightSpan( const QDate &date ) const
 {
   MonthCell *cell = mMonthCellMap.value( date );
-  if ( !cell )
+  if ( !cell ) {
     return 0;
+  }
 
   return 7 - cell->x() - 1;
 }
 
-// Get the space on the left of the cell associated to the date @p date
-int MonthScene::getLeftSpan( const QDate& date ) const
+int MonthScene::getLeftSpan( const QDate &date ) const
 {
   MonthCell *cell = mMonthCellMap.value( date );
-  if ( !cell )
+  if ( !cell ) {
     return 0;
+  }
 
   return cell->x();
 }
-
-
 
 int MonthScene::maxRowCount()
 {
@@ -105,12 +101,13 @@ int MonthScene::itemHeight()
   return MonthCell::topMargin();
 }
 
-MonthCell* MonthScene::firstCellForMonthItem( MonthItem *manager )
+MonthCell *MonthScene::firstCellForMonthItem( MonthItem *manager )
 {
-  for( QDate d = manager->startDate(); d <= manager->endDate(); d = d.addDays( 1 ) ) {
+  for ( QDate d = manager->startDate(); d <= manager->endDate(); d = d.addDays( 1 ) ) {
     MonthCell *monthCell = mMonthCellMap.value( d );
-    if ( monthCell )
+    if ( monthCell ) {
       return monthCell;
+    }
   }
 
   return 0;
@@ -118,15 +115,14 @@ MonthCell* MonthScene::firstCellForMonthItem( MonthItem *manager )
 
 void MonthScene::updateGeometry()
 {
-  foreach( MonthItem *manager, mManagerList )
+  foreach ( MonthItem *manager, mManagerList ) {
     manager->updateGeometry();
+  }
 }
-
 
 int MonthScene::availableWidth() const
 {
   return sceneRect().width();
-
 }
 
 int MonthScene::availableHeight() const
@@ -149,33 +145,30 @@ void MonthGraphicsView::drawBackground( QPainter *p, const QRectF & rect )
   p->setFont( KOPrefs::instance()->mMonthViewFont );
   p->fillRect( rect, Qt::white );
 
-    int columnWidth = mScene->columnWidth();
-    int rowHeight = mScene->rowHeight();
+  int columnWidth = mScene->columnWidth();
+  int rowHeight = mScene->rowHeight();
 
-    for ( QDate d = mMonthView->mStartDate;
-          d <= mMonthView->mEndDate;
-          d = d.addDays( 1 ) ) {
-      MonthCell *cell = mScene->mMonthCellMap[ d ];
+  for ( QDate d = mMonthView->mStartDate; d <= mMonthView->mEndDate; d = d.addDays( 1 ) ) {
+    MonthCell *cell = mScene->mMonthCellMap[ d ];
 
-      QColor color;
-      if ( KOGlobals::self()->isWorkDay( d ) ) {
-        color = KOPrefs::instance()->monthGridWorkHoursBackgroundColor();
-      } else {
-        color = KOPrefs::instance()->monthGridBackgroundColor();
-      }
-      if ( cell == mScene->selectedCell() ) {
-        color = color.dark( 115 );
-      }
-      if ( cell->date() == QDate::currentDate() ) {
-        color = color.dark( 140 );
-      }
+    QColor color;
+    if ( KOGlobals::self()->isWorkDay( d ) ) {
+      color = KOPrefs::instance()->monthGridWorkHoursBackgroundColor();
+    } else {
+      color = KOPrefs::instance()->monthGridBackgroundColor();
+    }
+    if ( cell == mScene->selectedCell() ) {
+      color = color.dark( 115 );
+    }
+    if ( cell->date() == QDate::currentDate() ) {
+      color = color.dark( 140 );
+    }
 
-
-      // Draw cell
+    // Draw cell
     p->setPen( KOPrefs::instance()->monthGridBackgroundColor().dark( 150 ) );
     p->setBrush( color );
     p->drawRect( QRect( cell->x() * columnWidth, cell->y() * rowHeight,
-                       columnWidth, rowHeight ) );
+                        columnWidth, rowHeight ) );
 
     // Draw cell header
     int cellHeaderX = cell->x() * columnWidth + 1;
@@ -193,72 +186,67 @@ void MonthGraphicsView::drawBackground( QPainter *p, const QRectF & rect )
     p->setPen( Qt::NoPen );
     p->drawRect( QRect( cellHeaderX, cellHeaderY,
                        cellHeaderWidth, cellHeaderHeight ) );
+  }
+
+  QFont font = KOPrefs::instance()->mMonthViewFont;
+  font.setPixelSize( MonthCell::topMargin() - 4 );
+
+  p->setFont( font );
+
+  QPen oldPen =  KOPrefs::instance()->monthGridBackgroundColor().dark( 150 );
+  QFontMetrics fm = p->fontMetrics();
+  int numberWidth = fm.boundingRect( "OO" ).width(); // biggest width
+
+  // Draw dates
+  for ( QDate d = mMonthView->mStartDate; d <= mMonthView->mEndDate; d = d.addDays( 1 ) ) {
+    MonthCell *cell = mScene->mMonthCellMap.value( d );
+
+    QFont font = p->font();
+    if ( cell->date() == QDate::currentDate() ) {
+      font.setBold( true );
+    } else {
+      font.setBold( false );
     }
-
-
-    QFont font = KOPrefs::instance()->mMonthViewFont;
-    font.setPixelSize( MonthCell::topMargin() - 4 );
-
     p->setFont( font );
 
-    QPen oldPen =  KOPrefs::instance()->monthGridBackgroundColor().dark( 150 );
-    QFontMetrics fm = p->fontMetrics();
-    int numberWidth = fm.boundingRect( "OO" ).width(); // biggest width
-
-    // Draw dates
-    for ( QDate d = mMonthView->mStartDate;
-          d <= mMonthView->mEndDate;
-          d = d.addDays( 1 ) ) {
-      MonthCell *cell = mScene->mMonthCellMap.value( d );
-
-      QFont font = p->font();
-      if ( cell->date() == QDate::currentDate() ) {
-        font.setBold( true );
-      } else {
-        font.setBold( false );
-      }
-      p->setFont( font );
-
-      if ( d.month() == mMonthView->mCurrentMonth )
-        p->setPen( QPalette::Text );
-      else
-        p->setPen( oldPen );
-
-      if ( mScene->startHeight() != 0 && cell->hasEventBelow( mScene->startHeight() ) )
-      {
-        int arrowCenter = cell->x() * columnWidth + 5;
-        int arrowHead = MonthCell::topMargin() / 2 - 3;
-        QPolygon upArrow( 3 );
-        upArrow.setPoint( 0, arrowCenter, cell->y() * rowHeight + arrowHead );
-        upArrow.setPoint( 1, arrowCenter + 2, cell->y() * rowHeight + arrowHead + 2 );
-        upArrow.setPoint( 2, arrowCenter - 2, cell->y() * rowHeight+ arrowHead + 2 );
-        p->setBrush( Qt::black );
-        p->drawPolygon( upArrow );
-     }
-
-      if ( !mScene->lastItemFit( cell ) )
-      {
-        int arrowCenter = cell->x() * columnWidth + 5;
-        int arrowHead = MonthCell::topMargin() / 2 + 3;
-        QPolygon downArrow( 3 );
-        downArrow.setPoint( 0, arrowCenter, cell->y() * rowHeight + arrowHead );
-        downArrow.setPoint( 1, arrowCenter + 2, cell->y() * rowHeight + arrowHead - 2 );
-        downArrow.setPoint( 2, arrowCenter - 2, cell->y() * rowHeight + arrowHead - 2 );
-        p->setBrush( Qt::black );
-        p->drawPolygon( downArrow );
-      }
-
-      QString dayText = QString::number( d.day() );
-      p->drawText( QRect( cell->x() * columnWidth + columnWidth - numberWidth - 2,            // top right
-                         cell->y() * rowHeight + 2,     // of the cell
-                         numberWidth,
-                         cell->topMargin() ),
-                  Qt::AlignRight,
-                  dayText );
+    if ( d.month() == mMonthView->mCurrentMonth ) {
+      p->setPen( QPalette::Text );
+    } else {
+      p->setPen( oldPen );
     }
 
+    if ( mScene->startHeight() != 0 && cell->hasEventBelow( mScene->startHeight() ) ) {
+      int arrowCenter = cell->x() * columnWidth + 5;
+      int arrowHead = MonthCell::topMargin() / 2 - 3;
+      QPolygon upArrow( 3 );
+      upArrow.setPoint( 0, arrowCenter, cell->y() * rowHeight + arrowHead );
+      upArrow.setPoint( 1, arrowCenter + 2, cell->y() * rowHeight + arrowHead + 2 );
+      upArrow.setPoint( 2, arrowCenter - 2, cell->y() * rowHeight+ arrowHead + 2 );
+      p->setBrush( Qt::black );
+      p->drawPolygon( upArrow );
+    }
 
-    // ...
+    if ( !mScene->lastItemFit( cell ) ) {
+      int arrowCenter = cell->x() * columnWidth + 5;
+      int arrowHead = MonthCell::topMargin() / 2 + 3;
+      QPolygon downArrow( 3 );
+      downArrow.setPoint( 0, arrowCenter, cell->y() * rowHeight + arrowHead );
+      downArrow.setPoint( 1, arrowCenter + 2, cell->y() * rowHeight + arrowHead - 2 );
+      downArrow.setPoint( 2, arrowCenter - 2, cell->y() * rowHeight + arrowHead - 2 );
+      p->setBrush( Qt::black );
+      p->drawPolygon( downArrow );
+    }
+
+    QString dayText = QString::number( d.day() );
+    p->drawText( QRect( cell->x() * columnWidth + columnWidth - numberWidth - 2, // top right
+                        cell->y() * rowHeight + 2,     // of the cell
+                        numberWidth,
+                        cell->topMargin() ),
+                 Qt::AlignRight,
+                 dayText );
+  }
+
+  // ...
 }
 
 void MonthScene::resetAll()
@@ -282,60 +270,61 @@ QDate MonthScene::firstDateOnRow( int row ) const
 
 bool MonthScene::lastItemFit( MonthCell *cell )
 {
-  if ( cell->firstFreeSpace() > maxRowCount() + startHeight() )
+  if ( cell->firstFreeSpace() > maxRowCount() + startHeight() ) {
     return false;
-  else
+  } else {
     return true;
+  }
 }
 
 int MonthScene::totalHeight()
 {
   int max = 0;
-    for ( QDate d = mMonthView->mStartDate;
-          d <= mMonthView->mEndDate;
-          d = d.addDays( 1 ) ) {
-      int c = mMonthCellMap[ d ]->firstFreeSpace();
-      if ( c > max )
-        max = c;
+  for ( QDate d = mMonthView->mStartDate; d <= mMonthView->mEndDate; d = d.addDays( 1 ) ) {
+    int c = mMonthCellMap[ d ]->firstFreeSpace();
+    if ( c > max ) {
+      max = c;
     }
+  }
 
-    return max;
+  return max;
 }
-
 
 bool MonthScene::eventFilter( QObject *object, QEvent *event )
 {
   switch( event->type() ) {
-   case QEvent::GraphicsSceneMouseMove:
-   case QEvent::GraphicsSceneMouseRelease:
-   case QEvent::GraphicsSceneMousePress:
-   case QEvent::GraphicsSceneMouseDoubleClick:
-     return eventFilterMouse( object, static_cast<QGraphicsSceneMouseEvent*>( event ) );
-   case QEvent::GraphicsSceneWheel:
-     return eventFilterWheel( object, static_cast<QGraphicsSceneWheelEvent *>( event ) );
-   default:
-     return false;
-   }
+  case QEvent::GraphicsSceneMouseMove:
+  case QEvent::GraphicsSceneMouseRelease:
+  case QEvent::GraphicsSceneMousePress:
+  case QEvent::GraphicsSceneMouseDoubleClick:
+    return eventFilterMouse( object, static_cast<QGraphicsSceneMouseEvent*>( event ) );
+  case QEvent::GraphicsSceneWheel:
+    return eventFilterWheel( object, static_cast<QGraphicsSceneWheelEvent *>( event ) );
+  default:
+    return false;
+  }
 }
 
-bool MonthScene::eventFilterWheel( QObject *object, QGraphicsSceneWheelEvent* event )
+bool MonthScene::eventFilterWheel( QObject *object, QGraphicsSceneWheelEvent *event )
 {
   int numDegrees = -event->delta() / 8;
   int numSteps = numDegrees / 15;
 
-  if ( startHeight() + numSteps < 0 )
+  if ( startHeight() + numSteps < 0 ) {
     return true;
+  }
 
   int newHeight;
   int maxStartHeight = qMax( 0, totalHeight() - maxRowCount() );
-  if ( numSteps > 0  && startHeight() + numSteps >= maxStartHeight )
+  if ( numSteps > 0  && startHeight() + numSteps >= maxStartHeight ) {
     newHeight = maxStartHeight;
-  else
+  } else {
     newHeight = startHeight() + numSteps;
+  }
 
   setStartHeight( newHeight );
 
-  foreach( MonthItem *manager, mManagerList ) {
+  foreach ( MonthItem *manager, mManagerList ) {
     manager->updateGeometry();
   }
 
@@ -344,15 +333,14 @@ bool MonthScene::eventFilterWheel( QObject *object, QGraphicsSceneWheelEvent* ev
   return true;
 }
 
-bool MonthScene::eventFilterMouse( QObject *object, QGraphicsSceneMouseEvent* event )
+bool MonthScene::eventFilterMouse( QObject *object, QGraphicsSceneMouseEvent *event )
 {
   QPointF pos = event->scenePos();
 
   // Check the type and do the correct action
   switch ( event->type() )  {
   case QEvent::GraphicsSceneMouseDoubleClick:
-    if ( itemAt( pos ) )
-    {
+    if ( itemAt( pos ) ) {
       MonthGraphicsItem *iItem = dynamic_cast<MonthGraphicsItem*>( itemAt( pos ) );
       if ( iItem->monthItem() ) {
         selectItem( iItem->monthItem() );
@@ -361,16 +349,15 @@ bool MonthScene::eventFilterMouse( QObject *object, QGraphicsSceneMouseEvent* ev
     }
     return true;
   case QEvent::GraphicsSceneMousePress:
-    if ( itemAt( pos ) )
-    {
+    if ( itemAt( pos ) ) {
       MonthGraphicsItem *iItem = dynamic_cast<MonthGraphicsItem*>( itemAt( pos ) );
       mClickedItem = 0;
-      if ( iItem )
+      if ( iItem ) {
         mClickedItem = iItem->monthItem();
+      }
 
       selectItem( mClickedItem ); // if clickedItem is null, the item will be deselected
-      if ( event->button() == Qt::RightButton )
-      {
+      if ( event->button() == Qt::RightButton ) {
         emit showIncidencePopupSignal( mClickedItem->incidence(),
                                        mClickedItem->startDate() ); // FIXME ?
       }
@@ -384,12 +371,13 @@ bool MonthScene::eventFilterMouse( QObject *object, QGraphicsSceneMouseEvent* ev
         mActionInitiated = false;
 
         // Move or resize ?
-        if ( iItem->monthItem()->incidence()->type() != "Todo"
-             && iItem->isBeginItem() && iItem->mapFromScene( pos ).x() <= 10 ) {
+        if ( iItem->monthItem()->incidence()->type() != "Todo" &&
+             iItem->isBeginItem() && iItem->mapFromScene( pos ).x() <= 10 ) {
           mActionType = Resize;
           mResizeType = ResizeLeft;
-        } else if ( iItem->monthItem()->incidence()->type() != "Todo"
-                    && iItem->isEndItem() && iItem->mapFromScene( pos ).x() >= iItem->boundingRect().width() - 10 ) {
+        } else if ( iItem->monthItem()->incidence()->type() != "Todo" &&
+                    iItem->isEndItem() &&
+                    iItem->mapFromScene( pos ).x() >= iItem->boundingRect().width() - 10 ) {
           mActionType = Resize;
           mResizeType = ResizeRight;
         } else {
@@ -415,10 +403,11 @@ bool MonthScene::eventFilterMouse( QObject *object, QGraphicsSceneMouseEvent* ev
       if ( currentCell != mStartCell ) { // We want to act if a move really happened
         mMovingMonthGraphicsItem = 0;
         //mActionItem->move( false );
-        if ( mActionType == Resize )
+        if ( mActionType == Resize ) {
           mActionItem->resize( false );
-        else if ( mActionType == Move )
+        } else if ( mActionType == Move ) {
           mActionItem->move( false );
+        }
       }
 
       mActionItem = 0;
@@ -439,11 +428,12 @@ bool MonthScene::eventFilterMouse( QObject *object, QGraphicsSceneMouseEvent* ev
         MonthGraphicsItem *iItem = dynamic_cast<MonthGraphicsItem*>( itemAt( pos ) );
 
         if ( iItem ) {
-          if ( iItem->monthItem()->incidence()->type() != "Todo"
-               && iItem->isBeginItem() && iItem->mapFromScene( pos ).x() <= 10 ) {
+          if ( iItem->monthItem()->incidence()->type() != "Todo" &&
+               iItem->isBeginItem() && iItem->mapFromScene( pos ).x() <= 10 ) {
             static_cast<MonthGraphicsView*>( views().first() )->setActionCursor( Resize );
-          } else if ( iItem->monthItem()->incidence()->type() != "Todo"
-                      && iItem->isEndItem() && iItem->mapFromScene( pos ).x() >= iItem->boundingRect().width() - 10 ) {
+          } else if ( iItem->monthItem()->incidence()->type() != "Todo" &&
+                      iItem->isEndItem() &&
+                      iItem->mapFromScene( pos ).x() >= iItem->boundingRect().width() - 10 ) {
             static_cast<MonthGraphicsView*>( views().first() )->setActionCursor( Resize );
           } else {
             static_cast<MonthGraphicsView*>( views().first() )->setActionCursor( None );
@@ -455,7 +445,6 @@ bool MonthScene::eventFilterMouse( QObject *object, QGraphicsSceneMouseEvent* ev
         return true;
       }
     }
-
 
     // If an item was selected during the click, we maybe have an item to move !
     if ( mActionItem ) {
@@ -483,7 +472,7 @@ bool MonthScene::eventFilterMouse( QObject *object, QGraphicsSceneMouseEvent* ev
         }
 
         mPreviousCell = currentCell;
-	mActionItem->updateGeometry();
+        mActionItem->updateGeometry();
         update();
       }
       return true;
@@ -497,19 +486,19 @@ bool MonthScene::eventFilterMouse( QObject *object, QGraphicsSceneMouseEvent* ev
   return false;
 }
 
-MonthCell *MonthScene::getCellFromPos( const QPointF& pos )
+MonthCell *MonthScene::getCellFromPos( const QPointF &pos )
 {
   int id = ( int )( pos.y() / rowHeight() ) * 7 + ( int )( pos.x() / columnWidth() );
   return mMonthCellMap.value( mMonthView->mStartDate.addDays( id ) );
 }
 
-
 void MonthScene::selectItem( MonthItem *item )
 {
-  if ( mSelectedItem == item )
+  if ( mSelectedItem == item ) {
     return;
+  }
 
-  if (item == 0) {
+  if ( item == 0 ) {
     mSelectedItem = 0;
     emit incidenceSelected( 0 );
     return;
@@ -525,14 +514,14 @@ void MonthGraphicsView::setActionCursor( MonthScene::ActionType actionType )
 {
    switch ( actionType ) {
    case MonthScene::Move:
-      setCursor( Qt::ArrowCursor );
-      break;
+     setCursor( Qt::ArrowCursor );
+     break;
    case MonthScene::Resize:
-      setCursor( Qt::SizeHorCursor );
-      break;
-    default:
-      setCursor( Qt::ArrowCursor );
-  }
+     setCursor( Qt::SizeHorCursor );
+     break;
+   default:
+     setCursor( Qt::ArrowCursor );
+   }
 }
 
 void MonthGraphicsView::setScene( MonthScene *scene )

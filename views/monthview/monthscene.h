@@ -25,17 +25,17 @@
 #ifndef MONTHSCENE_H
 #define MONTHSCENE_H
 
+#include "monthitem.h"
+
 #include <QGraphicsScene>
 #include <QGraphicsView>
-
-#include "monthitem.h"
 
 class QResizeEvent;
 class QGraphicsSceneMouseEvent;
 class QGraphicsSceneWheelEvent;
 namespace KCal {
-class Incidence;
-class Calendar;
+  class Incidence;
+  class Calendar;
 }
 using namespace KCal;
 
@@ -49,154 +49,167 @@ class KONewMonthView;
 class MonthScene : public QGraphicsScene
 {
   Q_OBJECT
-    
-    enum ActionType { None, Move, Resize };
-  
-public:
-  enum ResizeType { ResizeLeft, ResizeRight };
-  
-  MonthScene( KONewMonthView *parent, Calendar *calendar );
-  ~MonthScene();
 
-  int columnWidth() const;
-  int rowHeight() const;
-  int availableWidth() const;
-  int availableHeight() const;
+  enum ActionType {
+    None,
+    Move,
+    Resize
+  };
 
-  MonthCell* firstCellForMonthItem( MonthItem *manager );
-  int height( MonthItem *manager );
-  int itemHeight();
-  MonthItem::List mManagerList;
-  KONewMonthView *mMonthView;
+  public:
+    enum ResizeType {
+      ResizeLeft,
+      ResizeRight
+    };
 
-  QMap<QDate, MonthCell*> mMonthCellMap;
+    MonthScene( KONewMonthView *parent, Calendar *calendar );
+    ~MonthScene();
 
-  bool initialized() { return mInitialized; }
-  void setInitialized( bool i ) { mInitialized = i; }
-  void resetAll();
-  Calendar *calendar() { return mCalendar; }
+    int columnWidth() const;
+    int rowHeight() const;
+    int availableWidth() const;
+    int availableHeight() const;
 
-  virtual bool eventFilter ( QObject *, QEvent * );
+    MonthCell *firstCellForMonthItem( MonthItem *manager );
+    int height( MonthItem *manager );
+    int itemHeight();
+    MonthItem::List mManagerList;
+    KONewMonthView *mMonthView;
 
-  int totalHeight();
+    QMap<QDate, MonthCell*> mMonthCellMap;
 
-  /**
-     Select item. If the argument is 0, the currently selected item gets
-     deselected. This function emits the itemSelected(bool) signal to inform
-     about selection/deselection of events.
-  */
-  void selectItem( MonthItem * );
-  int maxRowCount();
-  
-  MonthCell *selectedCell() const;
+    bool initialized() { return mInitialized; }
+    void setInitialized( bool i ) { mInitialized = i; }
+    void resetAll();
+    Calendar *calendar() { return mCalendar; }
 
-  int getRightSpan( const QDate& date ) const;
-  int getLeftSpan( const QDate& date ) const;
-  /** Returns the date in the first column of the row given by @p row */
-  QDate firstDateOnRow( int row ) const;
-  
-  /**
-   * Calls updateGeometry() on each MonthItem
-   */
-  void updateGeometry();
+    virtual bool eventFilter ( QObject *, QEvent * );
 
-  /**
-   * Returns the first height. Used for scrolling
-   *
-   * See MonthItem::height()
-   */
-  int startHeight() { return mStartHeight; }
+    int totalHeight();
 
-  /**
-   * Set the current height using @p height.
-   * 
-   * If height = 0, then the view is not scrolled. Else it will be scrolled
-   * by step of one item.
-   */
-  void setStartHeight( int height ) { mStartHeight = height; }
+    /**
+      Select item. If the argument is 0, the currently selected item gets
+      deselected. This function emits the itemSelected(bool) signal to inform
+      about selection/deselection of events.
+    */
+    void selectItem( MonthItem * );
+    int maxRowCount();
 
-  /**
-   * @returns the MonthGraphicsItem being moved
-   */
-  MonthGraphicsItem *movingMonthGraphicsItem() { return mMovingMonthGraphicsItem; }
-  
-  /**
-   * Sets the MonthGraphicsItem being moved to @p incidenceItem
-   */
-  void setMovingMonthGraphicsItem( MonthGraphicsItem *incidenceItem ) { mMovingMonthGraphicsItem = incidenceItem; }
+    MonthCell *selectedCell() const;
 
-  /**
-   * Returns the resize type
-   */
-  ResizeType resizeType() { return mResizeType; }
+    /**
+      Get the space on the right of the cell associated to the date @p date.
+    */
+    int getRightSpan( const QDate &date ) const;
 
+    /**
+      Get the space on the left of the cell associated to the date @p date.
+    */
+    int getLeftSpan( const QDate &date ) const;
 
-  /**
-   * @returns the currently selected item
-   */
-  MonthItem *selectedItem() { return mSelectedItem; }
- 
-signals:
-  void incidenceSelected( Incidence *incidence );
-  void showIncidencePopupSignal( Incidence *, const QDate &);
-  void showNewEventPopupSignal();
-  
-protected:
-    
-  /** 
-   * Handles mouse events. Called from eventFilter
-   */
-  virtual bool eventFilterMouse ( QObject *, QGraphicsSceneMouseEvent * );
-  
-  /** 
-   * Handles mousewheel events. Called from eventFilter
-     */
-  virtual bool eventFilterWheel ( QObject *, QGraphicsSceneWheelEvent * );
-  
-  /**
-   * Handles drag and drop events. Called from eventFilter 
-   */
-// virtual bool eventFilter_drag( QObject *, QDropEvent * );
-  
-  /**
-   * @returns true if the last item is visible in the given @p cell.
-   */
-  bool lastItemFit( MonthCell *cell );
-  
-private:
-  // Returns the cell containing @p pos
-  MonthCell *getCellFromPos( const QPointF& pos );
+    /**
+      Returns the date in the first column of the row given by @p row.
+    */
+    QDate firstDateOnRow( int row ) const;
 
-  bool mInitialized;
+    /**
+      Calls updateGeometry() on each MonthItem
+    */
+    void updateGeometry();
 
-  // Calendar associated to the view
-  Calendar *mCalendar;
-  
-  /*
-   * User interaction
-   */
-  MonthItem *mClickedItem; // todo ini in ctor
-  MonthItem *mActionItem;
-  bool mActionInitiated;
-  
-  MonthItem *mSelectedItem;
-  QDate mSelectedCellDate;
-  MonthCell *mStartCell; // start cell when dragging
-  MonthCell *mPreviousCell; // the cell before that one during dragging
-  
-  MonthGraphicsItem *mMovingMonthGraphicsItem;
-  MonthGraphicsItem *mActionMonthGraphicsItem;
-    
-  ActionType mActionType;
-  ResizeType mResizeType;
-  
-  // The item height at the top of the cell. This is generally 0 unless
-  // the user scroll the view when there are too many items.
-  int mStartHeight;
-    
-  
+    /**
+      Returns the first height. Used for scrolling
 
-  friend class MonthGraphicsView;
+      @see MonthItem::height()
+    */
+    int startHeight() { return mStartHeight; }
+
+    /**
+      Set the current height using @p height.
+      If height = 0, then the view is not scrolled. Else it will be scrolled
+      by step of one item.
+    */
+    void setStartHeight( int height ) { mStartHeight = height; }
+
+    /**
+      Returns the MonthGraphicsItem being moved.
+    */
+    MonthGraphicsItem *movingMonthGraphicsItem()
+    { return mMovingMonthGraphicsItem; }
+
+    /**
+      Sets the MonthGraphicsItem being moved to @p incidenceItem.
+    */
+    void setMovingMonthGraphicsItem( MonthGraphicsItem *incidenceItem )
+    { mMovingMonthGraphicsItem = incidenceItem; }
+
+    /**
+      Returns the resize type.
+    */
+    ResizeType resizeType() { return mResizeType; }
+
+    /**
+      Returns the currently selected item.
+    */
+    MonthItem *selectedItem() { return mSelectedItem; }
+
+  signals:
+    void incidenceSelected( Incidence *incidence );
+    void showIncidencePopupSignal( Incidence *, const QDate &);
+    void showNewEventPopupSignal();
+
+  protected:
+
+    /**
+      Handles mouse events. Called from eventFilter.
+    */
+    virtual bool eventFilterMouse ( QObject *, QGraphicsSceneMouseEvent * );
+
+    /**
+      Handles mousewheel events. Called from eventFilter.
+    */
+    virtual bool eventFilterWheel ( QObject *, QGraphicsSceneWheelEvent * );
+
+    /**
+      Handles drag and drop events. Called from eventFilter.
+    */
+//    virtual bool eventFilter_drag( QObject *, QDropEvent * );
+
+    /**
+      Returns true if the last item is visible in the given @p cell.
+    */
+    bool lastItemFit( MonthCell *cell );
+
+  private:
+    // Returns the cell containing @p pos.
+    MonthCell *getCellFromPos( const QPointF &pos );
+
+    bool mInitialized;
+
+    // Calendar associated to the view
+    Calendar *mCalendar;
+
+    // User interaction.
+    MonthItem *mClickedItem; // todo ini in ctor
+    MonthItem *mActionItem;
+    bool mActionInitiated;
+
+    MonthItem *mSelectedItem;
+    QDate mSelectedCellDate;
+    MonthCell *mStartCell; // start cell when dragging
+    MonthCell *mPreviousCell; // the cell before that one during dragging
+
+    MonthGraphicsItem *mMovingMonthGraphicsItem;
+    MonthGraphicsItem *mActionMonthGraphicsItem;
+
+    ActionType mActionType;
+    ResizeType mResizeType;
+
+    // The item height at the top of the cell. This is generally 0 unless
+    // the user scroll the view when there are too many items.
+    int mStartHeight;
+
+    friend class MonthGraphicsView;
 };
 
 /**
@@ -204,27 +217,27 @@ private:
  */
 class MonthGraphicsView : public QGraphicsView
 {
-public:
-  MonthGraphicsView( KONewMonthView *parent, Calendar *calendar );
-  
-  /**
-   * Draws the cells
-   */
-  void drawBackground( QPainter * painter, const QRectF & rect );
+  public:
+    MonthGraphicsView( KONewMonthView *parent, Calendar *calendar );
 
-  void setScene( MonthScene *scene );
-  
-  /**
-   * Change the cursor according to @p actionType
-   */
-  void setActionCursor( MonthScene::ActionType actionType );
+    /**
+      Draws the cells.
+    */
+    void drawBackground( QPainter *painter, const QRectF &rect );
 
-protected:
-  virtual void resizeEvent( QResizeEvent * );
+    void setScene( MonthScene *scene );
 
-private:
-  MonthScene *mScene;
-  KONewMonthView *mMonthView;
+    /**
+      Change the cursor according to @p actionType.
+    */
+    void setActionCursor( MonthScene::ActionType actionType );
+
+  protected:
+    virtual void resizeEvent( QResizeEvent * );
+
+  private:
+    MonthScene *mScene;
+    KONewMonthView *mMonthView;
 };
 
 }

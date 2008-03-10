@@ -24,22 +24,21 @@
 
 #include "monthview.h"
 #include "monthscene.h"
-
-#include <QVBoxLayout>
-#include <QDate>
-
-#include <kcal/incidence.h>
-#include <kcal/calendar.h>
-
 #include "koglobals.h"
 #include "koprefs.h"
 #include "koeventpopupmenu.h"
 #include "kohelper.h"
 
+#include <kcal/incidence.h>
+#include <kcal/calendar.h>
+
+#include <QVBoxLayout>
+#include <QDate>
+
 using namespace KOrg;
 
 KONewMonthView::KONewMonthView( Calendar *calendar, QWidget *parent )
-  : KOEventView( calendar, parent)
+  : KOEventView( calendar, parent )
 {
   mView = new MonthGraphicsView( this, calendar );
   mScene = new MonthScene( this, calendar );
@@ -70,19 +69,19 @@ int KONewMonthView::currentDateCount()
 
 int KONewMonthView::maxDatesHint()
 {
-  return 6*7;
+  return 6 * 7;
 }
 
 DateList KONewMonthView::selectedDates()
 {
   DateList list;
 
-   if ( mScene->selectedCell() )
-     list << mScene->selectedCell()->date();
+  if ( mScene->selectedCell() ) {
+    list << mScene->selectedCell()->date();
+  }
 
   return list;
 }
-
 
 bool KONewMonthView::eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &allDay )
 {
@@ -95,7 +94,6 @@ bool KONewMonthView::eventDurationHint( QDateTime &startDt, QDateTime &endDt, bo
 
   return false;
 }
-
 
 void KONewMonthView::showIncidences( const Incidence::List & )
 {
@@ -115,7 +113,7 @@ void KONewMonthView::changeIncidenceDisplay( Incidence *incidence, int action )
   }
 }
 
-void KONewMonthView::addIncidence( Incidence* incidence )
+void KONewMonthView::addIncidence( Incidence *incidence )
 {
   reloadIncidences();
 }
@@ -129,7 +127,7 @@ void KONewMonthView::showDates( const QDate &start, const QDate &end )
 {
   mCurrentMonth = start.month();
 
-  QDate firstOfMonth = QDate(start.year(), start.month(), 1 );
+  QDate firstOfMonth = QDate( start.year(), start.month(), 1 );
 
   mStartDate = firstOfMonth.addDays( - ( firstOfMonth.dayOfWeek() - 1 ) );
   mEndDate = mStartDate.addDays( 6 * 7 - 1 );
@@ -161,26 +159,24 @@ void KONewMonthView::reloadIncidences()
   Incidence::List incidences = calendar()->incidences();
 
   // remove incidences which are not in the good timespan
-  foreach( Incidence *incidence, incidences ) {
+  foreach ( Incidence *incidence, incidences ) {
     if ( incidence->type() == "Event" ) {
       Event *event = static_cast<Event*>( incidence );
-      if ( mEndDate < KOHelper::toTimeSpec( event->dtStart() ).date()
-           || KOHelper::toTimeSpec( event->dtEnd() ).date() < mStartDate ) {
+      if ( mEndDate < KOHelper::toTimeSpec( event->dtStart() ).date() ||
+           KOHelper::toTimeSpec( event->dtEnd() ).date() < mStartDate ) {
         incidences.removeAll( incidence );
       }
-    }
-    else if ( incidence->type() == "Todo" ) {
+    } else if ( incidence->type() == "Todo" ) {
       Todo *todo = dynamic_cast<Todo*>( incidence );
-      if ( KOHelper::toTimeSpec( todo->dtDue() ).date() < mStartDate
-           || KOHelper::toTimeSpec( todo->dtDue() ).date() > mEndDate )
-      {
+      if ( KOHelper::toTimeSpec( todo->dtDue() ).date() < mStartDate ||
+           KOHelper::toTimeSpec( todo->dtDue() ).date() > mEndDate ) {
         incidences.removeAll( incidence );
       }
 
     }
   }
 
-  foreach( Incidence *incidence, incidences ) {
+  foreach ( Incidence *incidence, incidences ) {
     MonthItem *manager = new MonthItem( mScene, incidence );
     mScene->mManagerList << manager;
   }
@@ -190,26 +186,27 @@ void KONewMonthView::reloadIncidences()
          MonthItem::greaterThan );
 
   // build each month's cell event list
-  foreach( MonthItem *manager, mScene->mManagerList ) {
+  foreach ( MonthItem *manager, mScene->mManagerList ) {
     for ( QDate d = manager->startDate(); d <= manager->endDate(); d = d.addDays( 1 ) ) {
       MonthCell *cell = mScene->mMonthCellMap.value( d );
-      if ( cell )
-	cell->mMonthItemList << manager;
+      if ( cell ) {
+        cell->mMonthItemList << manager;
+      }
     }
   }
 
-  foreach( MonthItem *manager, mScene->mManagerList ) {
+  foreach ( MonthItem *manager, mScene->mManagerList ) {
     manager->updateMonthGraphicsItems();
     manager->updateHeight();
   }
 
-  foreach( MonthItem *manager, mScene->mManagerList ) {
+  foreach ( MonthItem *manager, mScene->mManagerList ) {
     manager->updateGeometry();
   }
 
   // If there was an item selected before, reselect it.
   if ( incidenceSelected ) {
-    foreach( MonthItem *manager, mScene->mManagerList ) {
+    foreach ( MonthItem *manager, mScene->mManagerList ) {
       if ( manager->incidence() == incidenceSelected ) {
         mScene->selectItem( manager );
         break;
