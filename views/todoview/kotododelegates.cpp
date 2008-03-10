@@ -26,11 +26,11 @@
 #include "koprefs.h"
 
 #include <kcolorscheme.h>
+#include <kcombobox.h>
 #include <kdebug.h>
 
 #include <QApplication>
 #include <QSlider>
-#include <QComboBox>
 #include <QPainter>
 #include <QPen>
 #include <QBrush>
@@ -162,8 +162,7 @@ QWidget *KOTodoPriorityDelegate::createEditor( QWidget *parent,
                                                const QStyleOptionViewItem &option,
                                                const QModelIndex &index ) const
 {
-//TODO use a KComboBox???????????
-  QComboBox *combo = new QComboBox( parent );
+  KComboBox *combo = new KComboBox( parent );
 
   combo->addItem( i18nc( "@action:inmenu Unspecified priority", "unspecified" ) );
   combo->addItem( i18nc( "@action:inmenu highest priority", "1 (highest)" ) );
@@ -182,7 +181,7 @@ QWidget *KOTodoPriorityDelegate::createEditor( QWidget *parent,
 void KOTodoPriorityDelegate::setEditorData( QWidget *editor,
                                             const QModelIndex &index ) const
 {
-  QComboBox *combo = static_cast<QComboBox *>( editor );
+  KComboBox *combo = static_cast<KComboBox *>( editor );
 
   combo->setCurrentIndex( index.data( Qt::EditRole ).toInt() );
 }
@@ -191,7 +190,7 @@ void KOTodoPriorityDelegate::setModelData( QWidget *editor,
                                            QAbstractItemModel *model,
                                            const QModelIndex &index ) const
 {
-  QComboBox *combo = static_cast<QComboBox *>( editor );
+  KComboBox *combo = static_cast<KComboBox *>( editor );
 
   model->setData( index, combo->currentIndex() );
 }
