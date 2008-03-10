@@ -165,15 +165,15 @@ QWidget *KOTodoPriorityDelegate::createEditor( QWidget *parent,
 //TODO use a KComboBox???????????
   QComboBox *combo = new QComboBox( parent );
 
-  combo->addItem( i18nc( "Unspecified priority", "unspecified" ) );
+  combo->addItem( i18nc( "@action:inmenu Unspecified priority", "unspecified" ) );
   combo->addItem( i18nc( "@action:inmenu highest priority", "1 (highest)" ) );
-  combo->addItem( i18n( "2" ) );
-  combo->addItem( i18n( "3" ) );
-  combo->addItem( i18n( "4" ) );
+  combo->addItem( i18nc( "@action:inmenu", "2" ) );
+  combo->addItem( i18nc( "@action:inmenu", "3" ) );
+  combo->addItem( i18nc( "@action:inmenu", "4" ) );
   combo->addItem( i18nc( "@action:inmenu medium priority", "5 (medium)" ) );
-  combo->addItem( i18n( "6" ) );
-  combo->addItem( i18n( "7" ) );
-  combo->addItem( i18n( "8" ) );
+  combo->addItem( i18nc( "@action:inmenu", "6" ) );
+  combo->addItem( i18nc( "@action:inmenu", "7" ) );
+  combo->addItem( i18nc( "@action:inmenu", "8" ) );
   combo->addItem( i18nc( "@action:inmenu lowest priority", "9 (lowest)" ) );
 
   return combo;
