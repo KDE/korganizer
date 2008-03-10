@@ -155,7 +155,7 @@ void KOTodoPriorityDelegate::paint( QPainter *painter,
 QSize KOTodoPriorityDelegate::sizeHint( const QStyleOptionViewItem &option,
                                         const QModelIndex &index ) const
 {
-  QItemDelegate::sizeHint( option, index );
+  return QItemDelegate::sizeHint( option, index );
 }
 
 QWidget *KOTodoPriorityDelegate::createEditor( QWidget *parent,
