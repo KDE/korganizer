@@ -25,7 +25,7 @@
 namespace KOrg {
 
 BaseView::BaseView( Calendar *cal, QWidget *parent )
-      : QWidget( parent ), mCalendar( cal ), mChanger( 0 )
+  : QWidget( parent ), mCalendar( cal ), mChanger( 0 )
 {}
 
 BaseView::~BaseView()
@@ -41,7 +41,7 @@ CalPrinterBase::PrintType BaseView::printType()
   return CalPrinterBase::Month;
 }
 
-Calendar* BaseView::calendar()
+Calendar *BaseView::calendar()
 {
   return mCalendar;
 }
@@ -70,8 +70,11 @@ void BaseView::updateConfig()
 void BaseView::clearSelection()
 {}
 
-bool BaseView::eventDurationHint(QDateTime &/*startDt*/, QDateTime &/*endDt*/, bool &/*allDay*/)
+bool BaseView::eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &allDay )
 {
+  Q_UNUSED( startDt );
+  Q_UNUSED( endDt );
+  Q_UNUSED( allDay );
   return false;
 }
 

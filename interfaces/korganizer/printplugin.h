@@ -23,7 +23,8 @@
 
 #ifndef KORG_NOPRINTER
 
-#include <calendar/plugin.h>
+#include "calendar/plugin.h"
+
 #include <kcal/incidence.h>
 
 #include <QtCore/QPointer>
@@ -46,7 +47,14 @@ class CoreHelper;
 class CalPrinterBase
 {
   public:
-    enum PrintType { Incidence = 100, Day=200, Week=300, Month=400, Todolist=1000, Journallist=2000 };
+    enum PrintType {
+      Incidence = 100,
+      Day=200,
+      Week=300,
+      Month=400,
+      Todolist=1000,
+      Journallist=2000
+    };
 };
 
 /**
@@ -62,14 +70,22 @@ class PrintPlugin : public KOrg::Plugin
 
     typedef QList<PrintPlugin*> List;
     static int interfaceVersion() { return 2; }
-    static QString serviceType() { return QLatin1String( "KOrganizer/PrintPlugin" ); }
 
-    virtual void setKOrgCoreHelper( KOrg::CoreHelper*helper ) { mCoreHelper = helper; }
+    static QString serviceType()
+    { return QLatin1String( "KOrganizer/PrintPlugin" ); }
+
+    virtual void setKOrgCoreHelper( KOrg::CoreHelper *helper )
+    { mCoreHelper = helper; }
+
     virtual void setConfig( KConfig *cfg ) { mConfig = cfg; }
-    virtual void setCalendar( KCal::Calendar *cal ) { mCalendar = cal; }
-    virtual void setSelectedIncidences( KCal::Incidence::List inc ) { mSelectedIncidences = inc; }
-    virtual KCal::Incidence::List selectedIncidences() const { return mSelectedIncidences; }
 
+    virtual void setCalendar( KCal::Calendar *cal ) { mCalendar = cal; }
+
+    virtual void setSelectedIncidences( KCal::Incidence::List inc )
+    { mSelectedIncidences = inc; }
+
+    virtual KCal::Incidence::List selectedIncidences() const
+    { return mSelectedIncidences; }
 
     /**
       Returns short description of print format.
@@ -118,7 +134,8 @@ class PrintPlugin : public KOrg::Plugin
       config settings), implement this function in your subclass and
       return the desired orientation.
     */
-    virtual QPrinter::Orientation defaultOrientation() { return QPrinter::Portrait; }
+    virtual QPrinter::Orientation defaultOrientation()
+    { return QPrinter::Portrait; }
 
     /**
       Load complete config.
@@ -129,12 +146,12 @@ class PrintPlugin : public KOrg::Plugin
     */
     virtual void doSaveConfig() {}
 
-
   public:
     /**
       Read settings from configuration widget and apply them to current object.
     */
     virtual void readSettingsWidget() {}
+
     /**
       Set configuration widget to reflect settings of current object.
     */

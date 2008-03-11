@@ -158,7 +158,7 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
       Sets the default start/end date/time for new events.
       Return true if anything was changed
     */
-    virtual bool eventDurationHint(QDateTime &/*startDt*/, QDateTime &/*endDt*/, bool &/*allDay*/);
+    virtual bool eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &allDay );
 
   Q_SIGNALS:
     void incidenceSelected( Incidence * );

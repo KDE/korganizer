@@ -21,7 +21,7 @@
 #ifndef KORG_PART_H
 #define KORG_PART_H
 
-#include <korganizer/mainwindow.h>
+#include "korganizer/mainwindow.h"
 
 #include <kparts/part.h>
 #include <kpluginfactory.h>
@@ -35,12 +35,12 @@ class Part : public KParts::Part
 {
   public:
     static int interfaceVersion() { return 2; }
-    static QString serviceType() { return QLatin1String("KOrganizer/Part"); }
+    static QString serviceType() { return QLatin1String( "KOrganizer/Part" ); }
 
     typedef QList<Part*> List;
 
     explicit Part( MainWindow *parent )
-      : KParts::Part( parent?(parent->topLevelWidget()):0 ), mMainWindow( parent ) {}
+      : KParts::Part( parent ? ( parent->topLevelWidget() ) : 0 ), mMainWindow( parent ) {}
 
     virtual ~Part() {}
 
@@ -60,8 +60,7 @@ class PartFactory : public KPluginFactory
     virtual Part *createPluginFactory( MainWindow *parent ) = 0;
 
   protected:
-    virtual QObject *createObject( QObject *, const char *, const QStringList &
-)
+    virtual QObject *createObject( QObject *, const char *, const QStringList & )
     {
       return 0;
     }

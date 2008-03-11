@@ -23,8 +23,8 @@
 
 namespace KOrg {
 
-IncidenceChangerBase::IncidenceChangerBase( Calendar*cal, QObject *parent) :
-        QObject( parent ), mCalendar( cal )
+IncidenceChangerBase::IncidenceChangerBase( Calendar *cal, QObject *parent )
+  : QObject( parent ), mCalendar( cal )
 {}
 
 IncidenceChangerBase::~IncidenceChangerBase()
