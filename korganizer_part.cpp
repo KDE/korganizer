@@ -60,7 +60,7 @@
 #include <QVBoxLayout>
 
 K_PLUGIN_FACTORY(KOrganizerFactory, registerPlugin<KOrganizerPart>();)
-K_EXPORT_PLUGIN(KOrganizerFactory( "korganizerpart" ))
+K_EXPORT_PLUGIN(KOrganizerFactory( "korganizer" ))
 
 KOrganizerPart::KOrganizerPart( QWidget *parentWidget, QObject *parent,
                                 const QVariantList & ) :
