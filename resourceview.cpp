@@ -285,7 +285,9 @@ void ResourceView::addResource()
 {
   bool ok = false;
   KCal::CalendarResourceManager *manager = mCalendar->resourceManager();
-  ResourceItem *i = static_cast<ResourceItem*>( mListView->selectedItems().first() );
+  ResourceItem *i = 0;
+  if ( !mListView->selectedItems().isEmpty() )
+    i = static_cast<ResourceItem*>( mListView->selectedItems().first() );
   if ( i && ( i->isSubresource() || i->resource()->canHaveSubresources() ) ) {
     const QString folderName =
       KInputDialog::getText( i18n( "Add Subresource" ),
