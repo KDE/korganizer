@@ -916,7 +916,7 @@ void KOAgenda::performItemAction(const QPoint& viewportPos)
       return;
     }
   } else {
-    setActionCursor( mActionType );
+    setActionCursor( mActionType, true );
   }
 
   // Scroll if item was moved to upper or lower end of agenda.
