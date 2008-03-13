@@ -261,6 +261,8 @@ void KOTodoModel::processChange( Incidence *incidence, int action )
 
 void KOTodoModel::addTodo( const QString &summary )
 {
+  if ( !mChanger ) return;
+
   if ( !summary.trimmed().isEmpty() ) {
     Todo *todo = new Todo();
     todo->setSummary( summary.trimmed() );
@@ -269,8 +271,26 @@ void KOTodoModel::addTodo( const QString &summary )
     if ( !mChanger->addIncidence( todo ) ) {
       KODialogManager::errorSaveIncidence( 0, todo );
       delete todo;
-      return;
     }
+  }
+}
+
+void KOTodoModel::copyTodo( const QModelIndex &index, const QDate &date )
+{
+  if ( !mChanger || !index.isValid() ) return;
+
+  TodoTreeNode *node = static_cast<TodoTreeNode *>( index.internalPointer() );
+  Todo *todo = node->mTodo->clone();
+
+  todo->setUid( QString() );
+
+  KDateTime due = todo->dtDue();
+  due.setDate( date );
+  todo->setDtDue( due );
+
+  if ( !mChanger->addIncidence( todo ) ) {
+    KODialogManager::errorSaveIncidence( 0, todo );
+    delete todo;
   }
 }
 

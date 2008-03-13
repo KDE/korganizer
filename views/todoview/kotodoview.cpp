@@ -124,12 +124,6 @@ KOTodoView::KOTodoView( Calendar *cal, QWidget *parent )
 
   mItemPopupMenu->addSeparator();
 
-  KDatePickerPopup *mMovePopupMenu = new KDatePickerPopup(
-                                          KDatePickerPopup::NoDate |
-                                          KDatePickerPopup::DatePicker |
-                                          KDatePickerPopup::Words,
-                                          QDate::currentDate(), this );
-  mMovePopupMenu->setTitle( i18n( "&Move To" ) );
   KDatePickerPopup *mCopyPopupMenu = new KDatePickerPopup(
                                           KDatePickerPopup::NoDate |
                                           KDatePickerPopup::DatePicker |
@@ -137,18 +131,13 @@ KOTodoView::KOTodoView( Calendar *cal, QWidget *parent )
                                           QDate::currentDate(), this );
   mCopyPopupMenu->setTitle( i18n( "&Copy To" ) );
 
-  connect( mMovePopupMenu, SIGNAL(dateChanged(const QDate &)),
-           SLOT(moveTodoToDate(const QDate&)) );
   connect( mCopyPopupMenu, SIGNAL(dateChanged(const QDate &)),
            SLOT(copyTodoToDate(const QDate&)) );
 
-  connect( mMovePopupMenu, SIGNAL(dateChanged(QDate)),
-           mItemPopupMenu, SLOT(hide()) );
   connect( mCopyPopupMenu, SIGNAL(dateChanged(QDate)),
            mItemPopupMenu, SLOT(hide()) );
 
   mItemPopupMenu->insertMenu( 0, mCopyPopupMenu );
-  mItemPopupMenu->insertMenu( 0, mMovePopupMenu );
 
   mItemPopupMenu->addSeparator();
 
@@ -379,16 +368,14 @@ void KOTodoView::unAllSubTodo()
   kDebug() << "this is a stub";
 }
 
-void KOTodoView::moveTodoToDate( const QDate &date )
-{
-  //TODO
-  kDebug() << "this is a stub";
-}
-
 void KOTodoView::copyTodoToDate( const QDate &date )
 {
-  //TODO
-  kDebug() << "this is a stub";
+  QModelIndexList selection = mView->selectionModel()->selectedRows();
+  if ( selection.size() != 1 ) {
+    return;
+  }
+
+  mModel->copyTodo( mProxyModel->mapToSource( selection[0] ), date );
 }
 
 void KOTodoView::purgeCompleted()

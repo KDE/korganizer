@@ -85,6 +85,8 @@ class KOTodoModel : public QAbstractItemModel
 
     /** Creates a new todo with the given text as summary */
     void addTodo( const QString &summary );
+    /** Copy the todo with the given index to the given date */
+    void copyTodo( const QModelIndex &index, const QDate &date );
 
     /** Sets the incidence changer used to edit incidences (todos)
      *

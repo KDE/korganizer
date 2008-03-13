@@ -94,7 +94,6 @@ class KOTodoView : public BaseView
     void newSubTodo();
     void unSubTodo();
     void unAllSubTodo();
-    void moveTodoToDate( const QDate &date );
     void copyTodoToDate( const QDate &date );
     void purgeCompleted();
 
