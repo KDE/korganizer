@@ -95,10 +95,10 @@ MonthViewItem::MonthViewItem( Incidence *incidence,
 
   mEventPixmap     = KOGlobals::self()->smallIcon( "view-calendar-day" );
   mTodoPixmap      = KOGlobals::self()->smallIcon( "view-calendar-tasks" );
-  mTodoDonePixmap  = KOGlobals::self()->smallIcon( "checkedbox" );
+  mTodoDonePixmap  = KOGlobals::self()->smallIcon( "task-complete" );
   mJournalPixmap   = KOGlobals::self()->smallIcon( "view-pim-journal" );
-  mAlarmPixmap     = KOGlobals::self()->smallIcon( "bell" );
-  mRecurPixmap     = KOGlobals::self()->smallIcon( "recur" );
+  mAlarmPixmap     = KOGlobals::self()->smallIcon( "appointment-reminder" );
+  mRecurPixmap     = KOGlobals::self()->smallIcon( "appointment-recurring" );
   mReplyPixmap     = KOGlobals::self()->smallIcon( "mail-reply-sender" );
   mHolidayPixmap   = KOGlobals::self()->smallIcon( "emblem-favorite" );
 

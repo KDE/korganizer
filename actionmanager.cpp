@@ -362,7 +362,7 @@ void ActionManager::initActions()
   connect( mNextXDays, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
            SLOT(showNextXView()) );
   mNextXDays->setText( i18np( "&Next Day", "&Next %1 Days", KOPrefs::instance()->mNextXDays ) );
-  action = new KAction( KIcon( "month" ), i18n("&New Month View"), this );
+  action = new KAction( KIcon( "view-calendar-month" ), i18n("&New Month View"), this );
   mACollection->addAction("view_newmonth", action );
   connect(action, SIGNAL(triggered(bool) ), mCalendarView->viewManager(), SLOT( showNewMonthView() ));
 

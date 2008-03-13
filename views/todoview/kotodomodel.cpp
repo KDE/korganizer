@@ -527,7 +527,7 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
 
   if ( role == Qt::DecorationRole && index.column() == RecurColumn ) {
     if ( todo->recurs() ) {
-      return QVariant( QIcon( KOGlobals::self()->smallIcon( "recur" ) ) );
+      return QVariant( QIcon( KOGlobals::self()->smallIcon( "task-recurring" ) ) );
     } else {
       return QVariant();
     }

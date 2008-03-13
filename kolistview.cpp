@@ -98,7 +98,7 @@ bool KOListView::ListItemVisitor::visit( Event *e )
 {
   mItem->setText(0,e->summary());
   if ( e->isAlarmEnabled() ) {
-    static const QPixmap alarmPxmp = KOGlobals::self()->smallIcon("bell");
+    static const QPixmap alarmPxmp = KOGlobals::self()->smallIcon("appointment-reminder");
     mItem->setPixmap(1,alarmPxmp);
     mItem->setSortKey(1,"1");
   }
@@ -106,7 +106,7 @@ bool KOListView::ListItemVisitor::visit( Event *e )
     mItem->setSortKey(1,"0");
 
   if ( e->recurs() ) {
-    static const QPixmap recurPxmp = KOGlobals::self()->smallIcon("recur");
+    static const QPixmap recurPxmp = KOGlobals::self()->smallIcon("appointment-recurring");
     mItem->setPixmap(2,recurPxmp);
     mItem->setSortKey(2,"1");
   }
@@ -136,11 +136,11 @@ bool KOListView::ListItemVisitor::visit( Event *e )
 bool KOListView::ListItemVisitor::visit(Todo *t)
 {
   static const QPixmap todoPxmp = KOGlobals::self()->smallIcon( "view-calendar-tasks" );
-  static const QPixmap todoDonePxmp = KOGlobals::self()->smallIcon("checkedbox");
+  static const QPixmap todoDonePxmp = KOGlobals::self()->smallIcon("task-complete");
   mItem->setPixmap(0, t->isCompleted() ? todoDonePxmp : todoPxmp );
   mItem->setText(0,t->summary());
   if ( t->isAlarmEnabled() ) {
-    static const QPixmap alarmPxmp = KOGlobals::self()->smallIcon("bell");
+    static const QPixmap alarmPxmp = KOGlobals::self()->smallIcon("appointment-reminder");
     mItem->setPixmap(1,alarmPxmp);
     mItem->setSortKey(1, "1");
   }
@@ -148,7 +148,7 @@ bool KOListView::ListItemVisitor::visit(Todo *t)
     mItem->setSortKey(1, "0");
 
   if ( t->recurs() ) {
-    static const QPixmap recurPxmp = KOGlobals::self()->smallIcon("recur");
+    static const QPixmap recurPxmp = KOGlobals::self()->smallIcon("appointment-recurring");
     mItem->setPixmap(2,recurPxmp);
     mItem->setSortKey(2, "1");
   }

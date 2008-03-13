@@ -69,7 +69,7 @@ KOEventPopupMenu::KOEventPopupMenu()
                                     this, SLOT(popupDelete()) ) );
   //------------------------------------------------------------------------
   mEditOnlyItems.append( addSeparator() );
-  mEditOnlyItems.append( addAction( QIcon( KOGlobals::self()->smallIcon( "bell" ) ),
+  mEditOnlyItems.append( addAction( QIcon( KOGlobals::self()->smallIcon( "appointment-reminder" ) ),
                                     i18n( "&Toggle Reminder" ), this, SLOT(popupAlarm())) );
   //------------------------------------------------------------------------
   mRecurrenceItems.append( addSeparator() );

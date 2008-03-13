@@ -218,6 +218,8 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     static QPixmap *groupPxmp;
     static QPixmap *groupPxmpTentative;
     static QPixmap *organizerPxmp;
+    static QPixmap *todoPxmp;
+    static QPixmap *completedPxmp;
 };
 
 #endif

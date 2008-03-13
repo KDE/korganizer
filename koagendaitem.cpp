@@ -67,6 +67,8 @@ QPixmap *KOAgendaItem::replyPxmp = 0;
 QPixmap *KOAgendaItem::groupPxmp = 0;
 QPixmap *KOAgendaItem::groupPxmpTentative = 0;
 QPixmap *KOAgendaItem::organizerPxmp = 0;
+QPixmap *KOAgendaItem::todoPxmp = 0;
+QPixmap *KOAgendaItem::completedPxmp = 0;
 
 //-----------------------------------------------------------------------------
 
@@ -659,14 +661,12 @@ static void conditionalPaint( QPainter *p, bool condition, int &x, int y, int ft
 void KOAgendaItem::paintTodoIcon( QPainter *p, int &x, int y, int ft )
 {
   if ( !mIncidence ) return;
-  static const QPixmap todoPxmp = KOGlobals::self()->smallIcon("view-calendar-tasks");
-  static const QPixmap completedPxmp = KOGlobals::self()->smallIcon("checkedbox");
 
   if ( mIncidence->type() != "Todo" ) return;
 
   bool b = ( static_cast<Todo *>( mIncidence ) )->isCompleted();
-  conditionalPaint( p, !b, x, y, ft, todoPxmp );
-  conditionalPaint( p, b, x, y, ft, completedPxmp );
+  conditionalPaint( p, !b, x, y, ft, *todoPxmp );
+  conditionalPaint( p, b, x, y, ft, *completedPxmp );
 }
 
 void KOAgendaItem::paintIcons( QPainter *p, int &x, int y, int ft )
@@ -699,13 +699,15 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
   // Also look at #17984
 
   if ( !alarmPxmp ) {
-    alarmPxmp          = new QPixmap( KOGlobals::self()->smallIcon( "bell" ) );
-    recurPxmp          = new QPixmap( KOGlobals::self()->smallIcon( "recur" ) );
+    alarmPxmp          = new QPixmap( KOGlobals::self()->smallIcon( "task-reminder" ) );
+    recurPxmp          = new QPixmap( KOGlobals::self()->smallIcon( "appointment-recurring" ) );
     readonlyPxmp       = new QPixmap( KOGlobals::self()->smallIcon( "object-locked" ) );
     replyPxmp          = new QPixmap( KOGlobals::self()->smallIcon( "mail-reply-sender" ) );
-    groupPxmp          = new QPixmap( KOGlobals::self()->smallIcon( "groupevent" ) );
-    groupPxmpTentative = new QPixmap( KOGlobals::self()->smallIcon( "groupeventtentative" ) );
-    organizerPxmp      = new QPixmap( KOGlobals::self()->smallIcon( "organizer" ) );
+    groupPxmp          = new QPixmap( KOGlobals::self()->smallIcon( "meeting-attending" ) );
+    groupPxmpTentative = new QPixmap( KOGlobals::self()->smallIcon( "meeting-attending-tentative" ) );
+    organizerPxmp      = new QPixmap( KOGlobals::self()->smallIcon( "meeting-organizer" ) );
+    todoPxmp           = new QPixmap( KOGlobals::self()->smallIcon( "view-calendar-tasks" ) );
+    completedPxmp      = new QPixmap( KOGlobals::self()->smallIcon( "task-complete" ) );
   }
 
   QColor bgColor;
@@ -920,7 +922,7 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
 
     txtWidth = width() - margin - x;
     eventX = x;
-    paintIcons( &p, x, margin, ft );
+    paintIcons( &p, x, margin / 2, ft );
     hTxtWidth = width() - margin - x;
   }
 

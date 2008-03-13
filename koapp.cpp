@@ -47,6 +47,7 @@
 #include <klocale.h>
 #include <kwindowsystem.h>
 #include <kurl.h>
+#include <kstandarddirs.h>
 
 #include <stdlib.h>
 #include <iostream>
@@ -57,6 +58,9 @@ KOrganizerApp::KOrganizerApp() : KUniqueApplication()
 {
   QString prodId = "-//K Desktop Environment//NONSGML KOrganizer %1//EN";
   CalFormat::setApplication( "KOrganizer", prodId.arg( korgVersion ) );
+
+  // icons shared by the KDE PIM applications
+  KGlobal::dirs()->addResourceType("appicon", "data", "/kdepim/icons/");
 }
 
 KOrganizerApp::~KOrganizerApp()

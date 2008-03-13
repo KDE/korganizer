@@ -272,7 +272,7 @@ void KOEditorGeneral::initAlarm( QWidget *parent, QBoxLayout *topLayout )
   topLayout->addItem( alarmLayout );
 
   mAlarmBell = new QLabel( parent );
-  mAlarmBell->setPixmap( KOGlobals::self()->smallIcon( "preferences-desktop-notification-bell" ) );
+  mAlarmBell->setPixmap( KOGlobals::self()->smallIcon( "task-reminder" ) );
   alarmLayout->addWidget( mAlarmBell );
 
   mAlarmStack = new QStackedWidget( parent );
@@ -314,6 +314,7 @@ void KOEditorGeneral::initAlarm( QWidget *parent, QBoxLayout *topLayout )
 
   mAlarmEditButton = new QPushButton( i18nc( "advanced alarm settings", "Advanced..." ), parent );
   alarmLayout->addWidget( mAlarmEditButton );
+  alarmLayout->addStretch();
   connect( mAlarmEditButton, SIGNAL(clicked()), SLOT(editAlarms()) );
 }
 
