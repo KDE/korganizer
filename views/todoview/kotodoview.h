@@ -68,16 +68,17 @@ class KOTodoView : public BaseView
     void saveLayout( KConfig *config, const QString &group ) const;
     void restoreLayout( KConfig *config, const QString &group );
 
-  public slots:
+  public Q_SLOTS:
     virtual void setIncidenceChanger( IncidenceChangerBase *changer );
     virtual void showDates( const QDate &start, const QDate &end );
     virtual void showIncidences( const Incidence::List &incidenceList );
     virtual void updateView();
+    void updateCategories();
     virtual void changeIncidenceDisplay( Incidence *incidence, int action );
     virtual void updateConfig();
     virtual void clearSelection();
 
-  protected slots:
+  protected Q_SLOTS:
     void addQuickTodo();
 
     void contextMenu( const QPoint &pos );
@@ -92,10 +93,12 @@ class KOTodoView : public BaseView
     void deleteTodo();
     void newTodo();
     void newSubTodo();
-    void unSubTodo();
-    void unAllSubTodo();
     void copyTodoToDate( const QDate &date );
-    void purgeCompleted();
+
+  Q_SIGNALS:
+    void purgeCompletedSignal();
+    void unSubTodoSignal();
+    void unAllSubTodoSignal();
 
   private:
     QTreeView *mView;

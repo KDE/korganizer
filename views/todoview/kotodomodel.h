@@ -140,8 +140,7 @@ class KOTodoModel : public QAbstractItemModel
      *                     recursively linked todos.
      * @return Pointer to the newly inserted TodoTreeNode node.
      */
-    TodoTreeNode *insertTodo( Todo *todo, bool checkRelated = true,
-                              bool informView = false );
+    TodoTreeNode *insertTodo( Todo *todo, bool checkRelated = true );
 
     const int mColumnCount;
 

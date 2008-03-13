@@ -98,10 +98,10 @@ struct KOTodoModel::TodoTreeNode
 };
 
 KOTodoModel::KOTodoModel( Calendar *cal, QObject *parent )
-  : QAbstractItemModel( parent ), mColumnCount( DescriptionColumn + 1 ),
-    mCalendar( cal )
+  : QAbstractItemModel( parent ), mColumnCount( DescriptionColumn + 1 )
 {
   mRootNode = new TodoTreeNode( 0, 0 );
+  setCalendar( cal );
 
 #ifndef KORG_NODND
   mDndFactory = new DndFactory( cal );
@@ -125,12 +125,10 @@ void KOTodoModel::setCalendar( Calendar *cal )
 
 void KOTodoModel::clearTodos()
 {
-  // inform all views that we are about to do a radical change
-  reset();
-
   delete mRootNode;
-
   mRootNode = new TodoTreeNode( 0, 0 );
+  // inform all views that we cleared our internal list
+  reset();
 }
 
 void KOTodoModel::reloadTodos()
@@ -177,17 +175,9 @@ void KOTodoModel::processChange( Incidence *incidence, int action )
     if ( !( ( newParent && ttOldParent->mTodo &&
               newParent->uid() == ttOldParent->mTodo->uid() ) ||
             ( newParent == 0 && ttOldParent->mTodo == 0 ) ) ) {
-      emit layoutAboutToBeChanged();
-      QModelIndexList from, to;
-      // create a list of all model indexes which will be changed
-      for ( int r = miChanged.row(); r < ttOldParent->mChildren.size(); ++r ) {
-        kDebug() << "going to change " << r << " p=" << ttOldParent->mChildren[ r ];
-        for ( int c = 0; c < mColumnCount; ++c ) {
-          from << createIndex( r, c, ttOldParent->mChildren[ r ] );
-        }
-      }
-
+      beginRemoveRows( miChanged.parent(), miChanged.row(), miChanged.row() );
       ttOldParent->mChildren.removeAt( miChanged.row() );
+      endRemoveRows();
 
       // find the node and model index of the new parent
       TodoTreeNode *ttNewParent;
@@ -199,28 +189,13 @@ void KOTodoModel::processChange( Incidence *incidence, int action )
       QModelIndex miNewParent = getModelIndex( ttNewParent );
 
       // insert the changed todo
+      beginInsertRows( miNewParent, ttNewParent->mChildren.size(),
+                                    ttNewParent->mChildren.size() );
       ttNewParent->mChildren.append( ttTodo );
       ttTodo->mParent = ttNewParent;
+      endInsertRows();
 
       QModelIndex miMoved = getModelIndex( ttTodo );
-
-      // create a list of all changed model indexes
-      kDebug() << "change with " << miMoved.row() << " p=" << ttTodo;
-      for ( int c = 0; c < mColumnCount; ++c ) {
-        to << createIndex( miMoved.row(), c, ttTodo );
-      }
-      for ( int r = miChanged.row(); r < ttOldParent->mChildren.size(); ++r ) {
-        kDebug() << "change with" << r << " p=" << ttOldParent->mChildren[ r ];
-        for ( int c = 0; c < mColumnCount; ++c ) {
-          to << createIndex( r, c, ttOldParent->mChildren[ r ] );
-        }
-      }
-      // update the persistend model indexes
-      kDebug() << "size of persistent index list " << persistentIndexList().size();
-      changePersistentIndexList( from, to );
-      kDebug() << "size of persistent index list " << persistentIndexList().size();
-
-      emit layoutChanged();
 
       // force the view to redraw the moved element, because we can't be sure
       // that only the relationship changed
@@ -237,7 +212,7 @@ void KOTodoModel::processChange( Incidence *incidence, int action )
     // the todo should not be in our tree...
     Q_ASSERT( !findTodo( todo ) );
 
-    insertTodo( todo, true, true );
+    insertTodo( todo );
   } else if ( action == KOGlobals::INCIDENCEDELETED ) {
     TodoTreeNode *ttTodo = findTodo( todo );
     // we can only delete todo's which are in the tree
@@ -311,8 +286,7 @@ KOTodoModel::TodoTreeNode *KOTodoModel::findTodo( const Todo *todo )
 }
 
 KOTodoModel::TodoTreeNode *KOTodoModel::insertTodo( Todo *todo,
-                                                    bool checkRelated,
-                                                    bool informView )
+                                                    bool checkRelated )
 {
   Incidence *incidence = todo->relatedTo();
   if ( checkRelated && incidence && incidence->type() == "Todo" ) {
@@ -324,7 +298,7 @@ KOTodoModel::TodoTreeNode *KOTodoModel::insertTodo( Todo *todo,
     while ( tmp ) {
       if ( tmp->uid() == todo->uid() ) {
         // recursion detected, break recursion
-        return insertTodo( todo, false, informView );
+        return insertTodo( todo, false );
       }
       incidence = tmp->relatedTo();
       if ( incidence && incidence->type() == "Todo" ) {
@@ -338,35 +312,28 @@ KOTodoModel::TodoTreeNode *KOTodoModel::insertTodo( Todo *todo,
     // necessary because we can't rely on todos coming in a defined order.
     TodoTreeNode *parent = findTodo( relatedTodo );
     if ( !parent ) {
-      parent = insertTodo( relatedTodo, checkRelated, informView );
+      parent = insertTodo( relatedTodo, checkRelated );
     }
 
-    if ( informView ) {
-      beginInsertRows( getModelIndex( parent ), parent->mChildren.size(),
-                                                parent->mChildren.size() );
-    }
+    beginInsertRows( getModelIndex( parent ), parent->mChildren.size(),
+                                              parent->mChildren.size() );
 
     // add the todo under it's parent
     TodoTreeNode *ret = new TodoTreeNode( todo, parent );
     parent->mChildren.append( ret );
 
-    if ( informView ) {
-      endInsertRows();
-    }
+    endInsertRows();
+
     return ret;
   } else {
-    if ( informView ) {
-      beginInsertRows( getModelIndex( mRootNode ), mRootNode->mChildren.size(),
-                                                   mRootNode->mChildren.size() );
-    }
+    beginInsertRows( getModelIndex( mRootNode ), mRootNode->mChildren.size(),
+                                                  mRootNode->mChildren.size() );
 
     // add the todo as root item
     TodoTreeNode *ret = new TodoTreeNode( todo, mRootNode );
     mRootNode->mChildren.append( ret );
 
-    if ( informView ) {
-      endInsertRows();
-    }
+    endInsertRows();
     return ret;
   }
 }

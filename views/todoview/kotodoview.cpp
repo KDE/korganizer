@@ -118,9 +118,9 @@ KOTodoView::KOTodoView( Calendar *cal, QWidget *parent )
   mItemPopupMenu->addAction( i18n( "New Su&b-to-do..." ), this, SLOT(newSubTodo()) );
 
   mItemPopupMenu->addAction( i18n( "&Make this To-do Independent" ), this,
-                             SLOT(unSubTodo()) );
+                             SIGNAL(unSubTodoSignal()) );
   mItemPopupMenu->addAction( i18n( "Make all Sub-to-dos &Independent" ), this,
-                             SLOT(unAllSubTodo()) );
+                             SIGNAL(unAllSubTodoSignal()) );
 
   mItemPopupMenu->addSeparator();
 
@@ -142,13 +142,13 @@ KOTodoView::KOTodoView( Calendar *cal, QWidget *parent )
   mItemPopupMenu->addSeparator();
 
   mItemPopupMenu->addAction( i18nc( "delete completed to-dos", "Pur&ge Completed" ),
-                             this, SLOT(purgeCompleted()) );
+                             this, SIGNAL(purgeCompletedSignal()) );
 
   mPopupMenu = new QMenu( this );
   mPopupMenu->addAction( KOGlobals::self()->smallIconSet( "view-calendar-tasks" ),
                          i18n( "&New To-do..." ), this, SLOT(newTodo()) );
   mPopupMenu->addAction( i18nc( "delete completed to-dos", "Pur&ge Completed" ),
-                         this, SLOT(purgeCompleted()) );
+                         this, SIGNAL(purgeCompletedSignal()) );
 }
 
 KOTodoView::~KOTodoView()
@@ -248,6 +248,12 @@ void KOTodoView::showIncidences( const Incidence::List &incidenceList )
 void KOTodoView::updateView()
 {
   mModel->reloadTodos();
+}
+
+void KOTodoView::updateCategories()
+{
+  // TODO: update the categories of the filter
+  kDebug() << "this is a stub";
 }
 
 void KOTodoView::changeIncidenceDisplay( Incidence *incidence, int action )
@@ -356,18 +362,6 @@ void KOTodoView::newSubTodo()
   emit newSubTodoSignal( todo );
 }
 
-void KOTodoView::unSubTodo()
-{
-  //TODO
-  kDebug() << "this is a stub";
-}
-
-void KOTodoView::unAllSubTodo()
-{
-  //TODO
-  kDebug() << "this is a stub";
-}
-
 void KOTodoView::copyTodoToDate( const QDate &date )
 {
   QModelIndexList selection = mView->selectionModel()->selectedRows();
@@ -376,12 +370,6 @@ void KOTodoView::copyTodoToDate( const QDate &date )
   }
 
   mModel->copyTodo( mProxyModel->mapToSource( selection[0] ), date );
-}
-
-void KOTodoView::purgeCompleted()
-{
-  //TODO
-  kDebug() << "this is a stub";
 }
 
 #include "kotodoview.moc"
