@@ -188,9 +188,9 @@ void ResourceItem::stateChange( bool active )
     }
 
     setExpanded( mResource->isActive() && childCount() > 0 );
-    setGuiState();
   }
 
+  setGuiState();
   mView->emitResourcesChanged();
 }
 
