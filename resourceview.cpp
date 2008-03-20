@@ -456,7 +456,13 @@ void ResourceView::removeResource()
   }
 #endif
   if ( item->isSubresource() ) {
-    // FIXME delete the folder in KMail
+    if ( !item->resource()->removeSubresource( item->resourceIdentifier() ) )
+      KMessageBox::sorry( this,
+              i18n ("<qt>Failed to remove the subresource <b>%1</b>. The "
+                  "reason could be that it is a built-in one which cannot "
+                  "be removed, or that the removal of the underlying storage "
+                  "folder failed.</qt>", item->text( 0 ) ) );
+    return;
   } else {
     mCalendar->resourceManager()->remove( item->resource() );
     delete item;
