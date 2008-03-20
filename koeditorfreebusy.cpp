@@ -254,13 +254,6 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent,
   connect( button, SIGNAL( clicked() ), SLOT( slotCenterOnStart() ) );
   controlLayout->addWidget( button );
 
-  button = new QPushButton( i18n( "Zoom to Fit" ), this );
-  QWhatsThis::add( button,
-		   i18n("Zooms the Gantt chart so that you can see the "
-			"entire duration of the event on it.") );
-  connect( button, SIGNAL( clicked() ), SLOT( slotZoomToTime() ) );
-  controlLayout->addWidget( button );
-
   controlLayout->addStretch( 1 );
 
   button = new QPushButton( i18n( "Pick Date" ), this );
@@ -294,7 +287,7 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent,
   }
   mGanttView->setHeaderVisible( true );
   mGanttView->setScale( KDGanttView::Hour );
-  mGanttView->setShowHeaderPopupMenu( true, true, true, false, false, true );
+  mGanttView->setShowHeaderPopupMenu( false, false, false, false, false, false );
   // Initially, show 15 days back and forth
   // set start to even hours, i.e. to 12:AM 0 Min 0 Sec
   QDateTime horizonStart = QDateTime( QDateTime::currentDateTime()
