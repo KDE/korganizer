@@ -503,7 +503,7 @@ ResourceItem *ResourceView::findItem( ResourceCalendar *r )
 
 ResourceItem *ResourceView::findItemByIdentifier( const QString &id )
 {
-  QList<QTreeWidgetItem *> items = mListView->findItems( "*", Qt::MatchWildcard );
+  QList<QTreeWidgetItem *> items = mListView->findItems( "*", Qt::MatchWildcard | Qt::MatchRecursive );
   foreach ( QTreeWidgetItem *i, items ) {
     ResourceItem *item = static_cast<ResourceItem *>( i );
     if ( item->resourceIdentifier() == id ) {
