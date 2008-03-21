@@ -60,6 +60,7 @@ AlarmDockWindow::AlarmDockWindow()
 
   // Set up icons
   KIconLoader::global()->addAppDir( "korgac" );
+  KIconLoader::global()->addAppDir( "kdepim" );
   mIconEnabled  = loadIcon( "korgac" );
   if ( mIconEnabled.isNull() ) {
     KMessageBox::sorry( parentWidget(),
