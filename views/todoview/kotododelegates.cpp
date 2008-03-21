@@ -44,7 +44,7 @@
 // ---------------------------------------------------------------
 
 KOTodoCompleteDelegate::KOTodoCompleteDelegate( QObject *parent )
- : QItemDelegate( parent )
+ : QStyledItemDelegate( parent )
 {
 }
 
@@ -56,17 +56,14 @@ void KOTodoCompleteDelegate::paint( QPainter *painter,
                                     const QStyleOptionViewItem &option,
                                     const QModelIndex &index ) const
 {
-  QRect rect = option.rect;
+  QStyle *style = QApplication::style();
 
-  if ( option.state & QStyle::State_Selected ) {
-    painter->fillRect( rect, option.palette.highlight() );
-  } else {
-    painter->fillRect( rect, option.palette.base() );
-  }
+  style->drawPrimitive( QStyle::PE_PanelItemViewItem, &option, painter );
+
+  QRect rect = option.rect;
 
   rect.adjust( 4, 3, -6, -3 );
 
-  QStyle *style = QApplication::style();
   QStyleOptionProgressBar pbOption;
 
   pbOption.palette = option.palette;
@@ -136,7 +133,7 @@ void KOTodoCompleteDelegate::updateEditorGeometry( QWidget *editor,
 // ---------------------------------------------------------------
 
 KOTodoPriorityDelegate::KOTodoPriorityDelegate( QObject *parent )
-  : QItemDelegate( parent )
+  : QStyledItemDelegate( parent )
 {
 }
 
@@ -149,13 +146,13 @@ void KOTodoPriorityDelegate::paint( QPainter *painter,
                                     const QModelIndex &index ) const
 {
   //TODO paint different priorities differently
-  QItemDelegate::paint( painter, option, index );
+  QStyledItemDelegate::paint( painter, option, index );
 }
 
 QSize KOTodoPriorityDelegate::sizeHint( const QStyleOptionViewItem &option,
                                         const QModelIndex &index ) const
 {
-  return QItemDelegate::sizeHint( option, index );
+  return QStyledItemDelegate::sizeHint( option, index );
 }
 
 QWidget *KOTodoPriorityDelegate::createEditor( QWidget *parent,

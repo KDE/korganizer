@@ -36,6 +36,9 @@
 #include <KComboBox>
 #include <KLineEdit>
 
+#include <QModelIndex>
+#include <QStandardItemModel>
+#include <QStandardItem>
 #include <QHBoxLayout>
 
 using namespace KCal;
@@ -65,6 +68,17 @@ KOTodoViewQuickSearch::KOTodoViewQuickSearch( Calendar *calendar, QWidget *paren
   setLayout( layout );
 }
 
+void KOTodoViewQuickSearch::setCalendar( Calendar *calendar )
+{
+  mCalendar = calendar;
+  fillCategories();
+}
+
+void KOTodoViewQuickSearch::updateCategories()
+{
+  fillCategories();
+}
+
 void KOTodoViewQuickSearch::reset()
 {
   mSearchLine->clear();
@@ -86,6 +100,7 @@ void KOTodoViewQuickSearch::fillCategories()
   if ( mCategoryCombo->currentIndex() != 0 ) {
     current = mCategoryCombo->currentText();
   }
+  mCategoryCombo->clear();
 
   QStringList categories;
 
@@ -118,22 +133,22 @@ void KOTodoViewQuickSearch::fillCategories()
   CategoryHierarchyReaderQComboBox( mCategoryCombo ).read( categories );
   mCategoryCombo->insertItem( 0, i18nc( "@item:inlistbox", "Any Category" ) );
 
-  if ( current.isNull() ) {
-    mCategoryCombo->setCurrentIndex( 0 );
-  } else {
-    for ( int i = 1; i < mCategoryCombo->count(); ++i ) {
-      if ( mCategoryCombo->itemText( i ) == current ) {
-        mCategoryCombo->setCurrentIndex( i );
-        break;
-      }
-    }
+  QStandardItemModel *model =
+      qobject_cast<QStandardItemModel *>( mCategoryCombo->model() );
+  Q_ASSERT( model );
+  for ( int r = 0; r < model->rowCount(); ++r ) {
+    QStandardItem *item = model->item( r );
+    item->setCheckable( true );
   }
-}
 
-void KOTodoViewQuickSearch::setCalendar( Calendar *calendar )
-{
-  mCalendar = calendar;
-  fillCategories();
+/* TODO: make the formerly active elements active again
+  mCategoryCombo->setCurrentIndex( 0 );
+  for ( int i = 1; i < mCategoryCombo->count(); ++i ) {
+    if ( mCategoryCombo->itemText( i ) == current ) {
+      mCategoryCombo->setCurrentIndex( i );
+      break;
+    }
+  }*/
 }
 
 #include "kotodoviewquicksearch.moc"

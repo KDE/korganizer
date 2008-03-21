@@ -124,6 +124,12 @@ class KOTodoModel : public QAbstractItemModel
     /** Create a model index for a given todo tree node. */
     QModelIndex getModelIndex( TodoTreeNode *todoTree ) const;
 
+    /** Move the TodoTreeNode if the relationship of the todo's parent has
+     *  changed and return a model index to the current node.
+     */
+    QModelIndex moveIfParentChanged( TodoTreeNode *curNode, Todo *todo,
+                                     bool addParentIfMissing );
+
    /** Recursively find a todo.
     *
     * @param todo Pointer to the todo to find.

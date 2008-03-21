@@ -25,7 +25,7 @@
 #ifndef KOTODODELEGATES_H
 #define KOTODODELEGATES_H
 
-#include <QItemDelegate>
+#include <QStyledItemDelegate>
 #include <QModelIndex>
 
 class QPainter;
@@ -39,7 +39,7 @@ class QSize;
 
   @author Thomas Thrainer
 */
-class KOTodoCompleteDelegate : public QItemDelegate
+class KOTodoCompleteDelegate : public QStyledItemDelegate
 {
   Q_OBJECT
   public:
@@ -69,7 +69,7 @@ class KOTodoCompleteDelegate : public QItemDelegate
 
   @author Thomas Thrainer
  */
-class KOTodoPriorityDelegate : public QItemDelegate
+class KOTodoPriorityDelegate : public QStyledItemDelegate
 {
   Q_OBJECT
   public:

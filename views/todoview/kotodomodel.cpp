@@ -57,7 +57,7 @@
 struct KOTodoModel::TodoTreeNode
 {
   TodoTreeNode( Todo *todo, TodoTreeNode *parent )
-    : mTodo( todo ), mParent( parent ) {}
+    : mTodo( todo ), mParent( parent ), mToDelete( false ) {}
   /** Recursively delete all TodoTreeNodes which are children of this one. */
   ~TodoTreeNode()
   {
@@ -86,6 +86,37 @@ struct KOTodoModel::TodoTreeNode
     return 0;
   }
 
+  /** Recursively set mToDelete to true for all todos.
+   *
+   *  Used in reloadTodos to mark all todos for possible deletion.
+   */
+  void setToDelete()
+  {
+    Q_FOREACH ( TodoTreeNode *node, mChildren ) {
+      node->setToDelete();
+    }
+    mToDelete = true;
+  }
+
+  /** Recursively delete all nodes which are marked for deletion. */
+  void deleteMarked( KOTodoModel *model )
+  {
+    Q_FOREACH ( TodoTreeNode *node, mChildren ) {
+      node->deleteMarked( model );
+    }
+    if ( mToDelete ) {
+      // all children should be deleted by now
+      Q_ASSERT ( mChildren.isEmpty() );
+      QModelIndex tmp = model->getModelIndex( this );
+      model->beginRemoveRows( model->getModelIndex( mParent ),
+                              tmp.row(), tmp.row() );
+      mParent->mChildren.removeAt( tmp.row() );
+      model->endRemoveRows();
+
+      delete this;
+    }
+  }
+
   /** Point to the todo this TodoTreeNode node represents.
    *  Note: public field for performance reason, and because this
    *  class is only used internally from KOTodoModel
@@ -95,6 +126,8 @@ struct KOTodoModel::TodoTreeNode
   TodoTreeNode *mParent;
   /** List of pointer to the child nodes. */
   QList<TodoTreeNode*> mChildren;
+  /** Used during reloadTodos to indicate if the todo should be deleted later */
+  bool mToDelete;
 };
 
 KOTodoModel::KOTodoModel( Calendar *cal, QObject *parent )
@@ -133,15 +166,40 @@ void KOTodoModel::clearTodos()
 
 void KOTodoModel::reloadTodos()
 {
-  clearTodos();
+  // don't remove and reload all todos, this would invalidate all
+  // model indexes, and the view could not maintain their status
+  // (expanded / collapsed)
+
+  // mark all current TodoTreeNodes as canditates for deletion
+  mRootNode->setToDelete();
+  // never delete the root node
+  mRootNode->mToDelete = false;
 
   Todo::List todoList = mCalendar->todos();
   Todo::List::ConstIterator it;
   for ( it = todoList.begin(); it != todoList.end(); ++it ) {
-    if ( !findTodo( *it ) ) {
+    TodoTreeNode *tmp = findTodo( *it );
+    if ( !tmp ) {
       insertTodo( *it );
+    } else {
+      // update pointer to the todo
+      // apparently this is necessary because undo's and redo's don't modify
+      // the modified todos but replace pointers to them with others
+      // TODO check if that's true, and if this is OK
+      tmp->mTodo = *it;
+      // move the todo if it changed its place in the hirarchy
+      QModelIndex miChanged = moveIfParentChanged( tmp, *it, true );
+      // force the views to reload the whole todo
+      emit dataChanged( miChanged,
+                        miChanged.sibling( miChanged.row(), mColumnCount - 1 ) );
+
+      // the todo is still in the calendar, we don't delete it
+      tmp->mToDelete = false;
     }
   }
+
+  // delete all TodoTreeNodes which are still marked for deletion
+  mRootNode->deleteMarked( this );
 }
 
 void KOTodoModel::processChange( Incidence *incidence, int action )
@@ -158,56 +216,12 @@ void KOTodoModel::processChange( Incidence *incidence, int action )
     TodoTreeNode *ttTodo = findTodo( todo );
     Q_ASSERT( ttTodo );
 
-    // find the model index of the changed incidence
-    QModelIndex miChanged = getModelIndex( ttTodo );
+    QModelIndex miChanged = moveIfParentChanged( ttTodo, todo, false );
 
-    // get the current parent
-    TodoTreeNode *ttOldParent = ttTodo->mParent;
-
-    // get the new parent
-    Incidence *inc = todo->relatedTo();
-    Todo *newParent = 0;
-    if ( inc && inc->type() == "Todo" ) {
-      newParent = static_cast<Todo *>( inc );
-    }
-
-    // check if the relation to the parent has changed
-    if ( !( ( newParent && ttOldParent->mTodo &&
-              newParent->uid() == ttOldParent->mTodo->uid() ) ||
-            ( newParent == 0 && ttOldParent->mTodo == 0 ) ) ) {
-      beginRemoveRows( miChanged.parent(), miChanged.row(), miChanged.row() );
-      ttOldParent->mChildren.removeAt( miChanged.row() );
-      endRemoveRows();
-
-      // find the node and model index of the new parent
-      TodoTreeNode *ttNewParent;
-      if ( newParent ) {
-        ttNewParent = findTodo( newParent );
-      } else {
-        ttNewParent = mRootNode;
-      }
-      QModelIndex miNewParent = getModelIndex( ttNewParent );
-
-      // insert the changed todo
-      beginInsertRows( miNewParent, ttNewParent->mChildren.size(),
-                                    ttNewParent->mChildren.size() );
-      ttNewParent->mChildren.append( ttTodo );
-      ttTodo->mParent = ttNewParent;
-      endInsertRows();
-
-      QModelIndex miMoved = getModelIndex( ttTodo );
-
-      // force the view to redraw the moved element, because we can't be sure
-      // that only the relationship changed
-      emit dataChanged( miMoved,
-                        miMoved.sibling( miMoved.row(), mColumnCount - 1 ) );
-    } else {
-      // not the relationship changed, but something else. just force the view
-      // to redraw the item.
-      emit dataChanged( miChanged,
-                        miChanged.sibling( miChanged.row(),
-                                           mColumnCount - 1 ) );
-    }
+    // force the view to redraw the element even if the parent relationship
+    // changed, because we can't be sure that only the relationship changed
+    emit dataChanged( miChanged,
+                      miChanged.sibling( miChanged.row(), mColumnCount - 1 ) );
   } else if ( action == KOGlobals::INCIDENCEADDED ) {
     // the todo should not be in our tree...
     Q_ASSERT( !findTodo( todo ) );
@@ -278,6 +292,77 @@ QModelIndex KOTodoModel::getModelIndex( TodoTreeNode *node ) const
   int r = node->mParent->mChildren.indexOf( node );
 
   return createIndex( r, 0, node );
+}
+
+QModelIndex KOTodoModel::moveIfParentChanged( TodoTreeNode *curNode, Todo *todo,
+                                              bool addParentIfMissing )
+{
+  // find the model index of the changed incidence
+  QModelIndex miChanged = getModelIndex( curNode );
+
+  // get the current parent
+  TodoTreeNode *ttOldParent = curNode->mParent;
+
+  // get the new parent
+  Incidence *inc = todo->relatedTo();
+  Todo *newParent = 0;
+  if ( inc && inc->type() == "Todo" ) {
+    newParent = static_cast<Todo *>( inc );
+  }
+
+  // check if the relation to the parent has changed
+  if ( ( newParent == 0 && ttOldParent->mTodo != 0 ) ||
+       ( newParent != 0 && ttOldParent->mTodo == 0 ) ||
+       ( newParent != 0 && ttOldParent->mTodo != 0 &&
+         newParent->uid() != ttOldParent->mTodo->uid() ) ) {
+    // find the node and model index of the new parent
+    TodoTreeNode *ttNewParent = 0;
+    if ( newParent ) {
+      ttNewParent = findTodo( newParent );
+      if ( !ttNewParent && addParentIfMissing ) {
+        ttNewParent = insertTodo( newParent );
+      }
+    } else {
+      ttNewParent = mRootNode;
+    }
+    Q_ASSERT( ttNewParent );
+    QModelIndex miNewParent = getModelIndex( ttNewParent );
+
+    emit layoutAboutToBeChanged();
+    // create a list of all model indexes which will be changed
+    QModelIndexList indexListFrom, indexListTo;
+    for ( int r = miChanged.row(); r < ttOldParent->mChildren.size(); ++r ) {
+      for ( int c = 0; c < mColumnCount; ++c ) {
+        indexListFrom << createIndex( r, c, ttOldParent->mChildren[ r ] );
+      }
+    }
+
+    ttOldParent->mChildren.removeAt( miChanged.row() );
+
+    // insert the changed todo
+    ttNewParent->mChildren.append( curNode );
+    curNode->mParent = ttNewParent;
+
+    QModelIndex miMoved = getModelIndex( curNode );
+
+    // create a list of all changed model indexes
+    for ( int c = 0; c < mColumnCount; ++c ) {
+      indexListTo << createIndex( miMoved.row(), c, curNode );
+    }
+    for ( int r = miChanged.row(); r < ttOldParent->mChildren.size(); ++r ) {
+      for ( int c = 0; c < mColumnCount; ++c ) {
+        indexListTo << createIndex( r, c, ttOldParent->mChildren[ r ] );
+      }
+    }
+      // update the persistend model indexes
+    changePersistentIndexList( indexListFrom, indexListTo );
+
+    emit layoutChanged();
+
+    miChanged = miMoved;
+  }
+
+  return miChanged;
 }
 
 KOTodoModel::TodoTreeNode *KOTodoModel::findTodo( const Todo *todo )

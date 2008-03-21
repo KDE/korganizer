@@ -252,8 +252,8 @@ void KOTodoView::updateView()
 
 void KOTodoView::updateCategories()
 {
-  // TODO: update the categories of the filter
-  kDebug() << "this is a stub";
+  mQuickSearch->updateCategories();
+  // TODO check if we have to do something with the category delegate
 }
 
 void KOTodoView::changeIncidenceDisplay( Incidence *incidence, int action )

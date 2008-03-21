@@ -45,6 +45,7 @@ class KOTodoViewQuickSearch : public QWidget
     virtual ~KOTodoViewQuickSearch() {}
 
     void setCalendar( Calendar *calendar );
+    void updateCategories();
 
   Q_SIGNALS:
     void searchTextChanged( const QString & );
