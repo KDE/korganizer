@@ -33,4 +33,4 @@ install(TARGETS korgac  DESTINATION ${BIN_INSTALL_DIR} )
 ########### install files ###############
 
 install( FILES korgac.desktop  DESTINATION ${AUTOSTART_INSTALL_DIR} )
-install( FILES org.kde.korganizer.KOrgac.xml DESTINATION ${DBUS_INTERFACES_INSTALL_DIR} )
+install( FILES org.kde.korganizer.KOrgac.xml DESTINATION ${KDE4_DBUS_INTERFACES_DIR} )
