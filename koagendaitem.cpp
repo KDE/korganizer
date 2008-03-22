@@ -712,7 +712,7 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
 
   QColor bgColor;
 
-  if ( mIncidence->type() == "Todo" ) {
+  if ( mIncidence->type() == "Todo" && !KOPrefs::instance()->todosUseCategoryColors() ) {
     if ( static_cast<Todo*>(mIncidence)->isOverdue() )
       bgColor = KOPrefs::instance()->agendaCalendarItemsToDosOverdueBackgroundColor();
     else if ( static_cast<Todo*>(mIncidence)->dtDue().date() ==

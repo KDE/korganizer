@@ -502,6 +502,10 @@ class KOPrefsDialogViews : public KPrefsModule
         addWidBool( KOPrefs::instance()->showAllDayTodoItem(), topFrame );
       generalLayout->addWidget( showTodosAgenda->checkBox() );
 
+      KPrefsWidBool *todosUseCategoryColors =
+        addWidBool( KOPrefs::instance()->todosUseCategoryColorsItem(), topFrame );
+      generalLayout->addWidget( todosUseCategoryColors->checkBox() );
+
       QGroupBox *dateNavGroup =
         new QGroupBox( i18nc( "@title:group", "Date Navigator" ), topFrame );
       generalLayout->addWidget( dateNavGroup );
