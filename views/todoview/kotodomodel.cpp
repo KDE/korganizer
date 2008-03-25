@@ -588,6 +588,15 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
     return QVariant( IncidenceFormatter::toolTipString( todo ) );
   }
 
+  // background colour for todos due today or overdue todos
+  if ( role == Qt::BackgroundRole ) {
+    if ( todo->isOverdue() ) {
+      return QVariant( QBrush( KOPrefs::instance()->agendaCalendarItemsToDosOverdueBackgroundColor() ) );
+    } else if ( todo->dtDue().date() == QDate::currentDate() ) {
+      return QVariant( QBrush( KOPrefs::instance()->agendaCalendarItemsToDosDueTodayBackgroundColor() ) );
+    }
+  }
+
   // indicate if a row is checket (=completed) only in the first column
   if ( role == Qt::CheckStateRole && index.column() == 0 ) {
     if ( todo->isCompleted() ) {
@@ -597,11 +606,18 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
     }
   }
 
+  // item for recurring todos
   if ( role == Qt::DecorationRole && index.column() == RecurColumn ) {
     if ( todo->recurs() ) {
       return QVariant( QIcon( KOGlobals::self()->smallIcon( "task-recurring" ) ) );
-    } else {
-      return QVariant();
+    }
+  }
+
+  // category colour
+  if ( role == Qt::DecorationRole && index.column() == SummaryColumn ) {
+    QStringList categories = todo->categories();
+    if ( !categories.isEmpty() ) {
+      return QVariant( KOPrefs::instance()->categoryColor( categories.first() ) );
     }
   }
 
