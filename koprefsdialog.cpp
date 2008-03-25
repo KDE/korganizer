@@ -215,8 +215,8 @@ class KOPrefsDialogTime : public KPrefsModule
       // Read all system time zones
       QStringList list;
       const KTimeZones::ZoneMap timezones = KSystemTimeZones::zones();
-      for ( KTimeZones::ZoneMap::ConstIterator it = timezones.begin();
-            it != timezones.end();  ++it ) {
+      for ( KTimeZones::ZoneMap::ConstIterator it = timezones.constBegin();
+            it != timezones.constEnd();  ++it ) {
         list.append( i18n( it.key().toUtf8() ) );
         tzonenames << it.key();
       }
@@ -257,11 +257,10 @@ class KOPrefsDialogTime : public KPrefsModule
       QString currentHolidayName;
       QStringList holidayList;
       QStringList countryList = KHolidays::locations();
-      QStringList::ConstIterator it;
 
-      for ( it = countryList.begin(); it != countryList.end(); ++it ) {
+      foreach ( const QString& country, countryList ) {
         QString countryFile = KStandardDirs::locate( "locale",
-                                      "l10n/" + (*it) + "/entry.desktop" );
+                                      "l10n/" + country + "/entry.desktop" );
         QString regionName;
         if ( !countryFile.isEmpty() ) {
           KConfig _cfg( countryFile, KConfig::SimpleConfig );
@@ -269,14 +268,14 @@ class KOPrefsDialogTime : public KPrefsModule
           regionName = cfg.readEntry( "Name" );
         }
         if ( regionName.isEmpty() ) {
-          regionName = (*it);
+          regionName = country;
         }
 
         holidayList << regionName;
-        mRegionMap[regionName] = (*it); //store region for saving to config file
+        mRegionMap[regionName] = country; //store region for saving to config file
 
         if ( KOGlobals::self()->holidays() &&
-             ( (*it) == KOGlobals::self()->holidays()->location() ) ) {
+             ( country == KOGlobals::self()->holidays()->location() ) ) {
           currentHolidayName = regionName;
         }
       }
@@ -1390,9 +1389,9 @@ void KOPrefsDialogPlugins::positioningChanged()
 void KOPrefsDialogPlugins::selectionChanged()
 {
   mPositioningGroupBox->hide();
-  mPositionMonthTop->setChecked( Qt::Unchecked );
-  mPositionAgendaTop->setChecked( Qt::Unchecked );
-  mPositionAgendaBottom->setChecked( Qt::Unchecked );
+  mPositionMonthTop->setChecked( false );
+  mPositionAgendaTop->setChecked( false );
+  mPositionAgendaBottom->setChecked( false );
 
   if ( mTreeWidget->selectedItems().count() != 1 ) {
     mConfigureButton->setEnabled( false );
@@ -1420,13 +1419,13 @@ void KOPrefsDialogPlugins::selectionChanged()
   if ( item->service()->hasServiceType( KOrg::CalendarDecoration::Decoration::serviceType() ) ) {
     QString decoration = item->service()->desktopEntryName();
     if ( mDecorationsAtMonthViewTop.contains( decoration ) ) {
-      mPositionMonthTop->setChecked( Qt::Checked );
+      mPositionMonthTop->setChecked( true );
     }
     if ( mDecorationsAtAgendaViewTop.contains( decoration ) ) {
-      mPositionAgendaTop->setChecked( Qt::Checked );
+      mPositionAgendaTop->setChecked( true );
     }
     if ( mDecorationsAtAgendaViewBottom.contains( decoration ) ) {
-      mPositionAgendaBottom->setChecked( Qt::Checked );
+      mPositionAgendaBottom->setChecked( true );
     }
     mPositioningGroupBox->show();
   }
