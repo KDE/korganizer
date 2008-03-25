@@ -4,6 +4,7 @@ Name[ga]=Comhéadan Maisíochta Féilire
 Name[km]=ចំណុច​ប្រទាក់​តុបតែង​ប្រតិទិន
 Name[pt]=Interface de Decoração do Calendário
 Name[pt_BR]=Interface para Decoração do Calendário
+Name[x-test]=xxCalendar Decoration Interfacexx
 Name[zh_TW]=行事曆裝飾介面
 Type=ServiceType
 X-KDE-ServiceType=Calendar/Decoration

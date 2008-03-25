@@ -4,6 +4,7 @@ Name[ga]=Comhéadan Breiseáin Féilire
 Name[km]=ប្រតិទិន​កម្មវិធី​ជំនួយ​ប្រតិទិន
 Name[pt]=Interface do 'Plugin' de Calendário
 Name[pt_BR]=Interface do Plug-in de Calendário
+Name[x-test]=xxCalendar Plugin Interfacexx
 Name[zh_TW]=行事曆外掛程式介面
 Type=ServiceType
 X-KDE-ServiceType=Calendar/Plugin
