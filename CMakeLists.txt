@@ -31,6 +31,8 @@ set(korganizer_SRCS
    koapp.cpp
 )
 
+# todo: move to Oxygen icon
+kde4_add_app_icon(korganizer_SRCS "hi*-app-korganizer.png")
 
 kde4_add_executable(korganizer ${korganizer_SRCS})
 
