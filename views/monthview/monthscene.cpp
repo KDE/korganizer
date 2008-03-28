@@ -295,10 +295,22 @@ void MonthGraphicsView::drawBackground( QPainter *p, const QRectF & rect )
       p->drawPolygon( downArrow );
     }
 
-    QString dayText = QString::number( d.day() );
-    p->drawText( QRect( mScene->cellHorizontalPos( cell ) + columnWidth - numberWidth - 2, // top right
-                        mScene->cellVerticalPos( cell ) + 2,     // of the cell
-                        numberWidth,
+    const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
+
+    QString dayText;
+    // Prepend month name if d is the first or last day of month
+    if ( calSys->day( d ) == 1                     // d is the first day of month
+         || calSys->day( d.addDays( 1 ) ) == 1 ) {  // d is the last day of month
+      dayText = i18nc( "'Month day' for month view cells", "%1 %2",
+                  calSys->monthName( d, KCalendarSystem::ShortName ),
+                  calSys->day( d ) );
+    } else {
+      dayText = QString::number( calSys->day( d ) );
+    }
+
+    p->drawText( QRect( mScene->cellHorizontalPos( cell ), // top right
+                        mScene->cellVerticalPos( cell ),     // of the cell
+                        mScene->columnWidth() - 2,
                         cell->topMargin() ),
                  Qt::AlignRight,
                  dayText );
