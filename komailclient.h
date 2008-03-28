@@ -37,9 +37,9 @@ class KOMailClient
   public:
     KOMailClient();
     virtual ~KOMailClient();
-    
+
     bool mailAttendees(IncidenceBase *,const QString &attachment=QString::null);
-    bool mailOrganizer(IncidenceBase *,const QString &attachment=QString::null);
+    bool mailOrganizer(IncidenceBase *,const QString &attachment=QString::null, const QString &sub = QString::null);
     bool mailTo(IncidenceBase *,const QString &recipients,const QString &attachment=QString::null);
 
   protected:

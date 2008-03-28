@@ -87,16 +87,17 @@ bool KOMailClient::mailAttendees(IncidenceBase *incidence,const QString &attachm
   return send(from,to,subject,body,bcc,attachment);
 }
 
-bool KOMailClient::mailOrganizer(IncidenceBase *incidence,const QString &attachment)
+bool KOMailClient::mailOrganizer(IncidenceBase *incidence,const QString &attachment, const QString &sub)
 {
   QString to = incidence->organizer().fullName();
 
   QString from = KOPrefs::instance()->email();
 
-  QString subject;
+  QString subject = sub;
   if(incidence->type()!="FreeBusy") {
     Incidence *inc = static_cast<Incidence *>(incidence);
-    subject = inc->summary();
+    if ( subject.isEmpty() )
+      subject = inc->summary();
   } else {
     subject = "Free Busy Message";
   }

@@ -26,6 +26,7 @@
 #include <qfile.h>
 #include <qregexp.h>
 
+#include <klocale.h>
 #include <kstandarddirs.h>
 #include <kdebug.h>
 
@@ -80,7 +81,11 @@ bool MailScheduler::performTransaction( IncidenceBase *incidence,
        method == Declinecounter ) {
     status = mailer.mailAttendees( incidence, messageText );
   } else {
-    status = mailer.mailOrganizer( incidence, messageText );
+    QString subject;
+    Incidence *inc = dynamic_cast<Incidence*>( incidence );
+    if ( inc && method == Counter )
+      subject = i18n( "Counter proposal: %1" ).arg( inc->summary() );
+    status = mailer.mailOrganizer( incidence, messageText, subject );
   }
   return status;
 }
