@@ -29,6 +29,7 @@
 #include "koglobals.h"
 
 #include <kcal/incidence.h>
+#include <kcalendarsystem.h>
 
 #include <QPaintEvent>
 #include <QGraphicsSceneWheelEvent>
@@ -127,7 +128,7 @@ int MonthScene::availableWidth() const
 
 int MonthScene::availableHeight() const
 {
-  return sceneRect().height();
+  return sceneRect().height() - headerHeight();
 }
 
 int MonthScene::columnWidth() const
@@ -140,11 +141,68 @@ int MonthScene::rowHeight() const
   return ( availableHeight() - 1 ) / 6.;
 }
 
+int MonthScene::headerHeight() const
+{
+  return 50;
+}
+
+int MonthScene::cellVerticalPos( const MonthCell *cell ) const
+{
+  return headerHeight() + cell->y() * rowHeight();
+}
+
+int MonthScene::cellHorizontalPos( const MonthCell *cell ) const
+{
+  return cell->x() * columnWidth();
+}
+
+int MonthScene::sceneYToMonthGridY( int yScene )
+{
+  return yScene - headerHeight();
+}
+
+int MonthScene::sceneXToMonthGridX( int xScene )
+{
+  return xScene;
+}
+
 void MonthGraphicsView::drawBackground( QPainter *p, const QRectF & rect )
 {
   p->setFont( KOPrefs::instance()->mMonthViewFont );
   p->fillRect( rect, Qt::white );
 
+  /*
+    Headers
+  */
+  QFont font = KOPrefs::instance()->mMonthViewFont;
+  font.setBold( true );
+  font.setPointSize( 15 );
+  p->setFont( font );
+  const int dayLabelsHeight = 20;
+  const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
+  p->drawText( QRect( 0,  0, // top right
+                      mScene->sceneRect().width(), mScene->headerHeight() - dayLabelsHeight ),
+               Qt::AlignCenter,
+               i18nc( "monthname year", "%1 %2",
+                      calSys->monthName( mMonthView->averageDate() ),
+                      calSys->yearString( mMonthView->averageDate() ) ) );
+
+
+  font.setPixelSize( dayLabelsHeight - 10 );
+  p->setFont( font );
+  for ( QDate d = mMonthView->mStartDate; d <= mMonthView->mStartDate.addDays( 6 ); d = d.addDays( 1 ) ) {
+    MonthCell *cell = mScene->mMonthCellMap[ d ];
+    p->drawText( QRect( mScene->cellHorizontalPos( cell ),
+                        mScene->cellVerticalPos( cell ) - 15,
+                        mScene->columnWidth(),
+                        15 ),
+                 Qt::AlignCenter,
+                 calSys->weekDayName( d,  KCalendarSystem::LongDayName ) );
+  }
+
+  /*
+    Month grid
+  */
   int columnWidth = mScene->columnWidth();
   int rowHeight = mScene->rowHeight();
 
@@ -167,12 +225,12 @@ void MonthGraphicsView::drawBackground( QPainter *p, const QRectF & rect )
     // Draw cell
     p->setPen( KOPrefs::instance()->monthGridBackgroundColor().dark( 150 ) );
     p->setBrush( color );
-    p->drawRect( QRect( cell->x() * columnWidth, cell->y() * rowHeight,
+    p->drawRect( QRect( mScene->cellHorizontalPos( cell ), mScene->cellVerticalPos( cell ),
                         columnWidth, rowHeight ) );
 
     // Draw cell header
-    int cellHeaderX = cell->x() * columnWidth + 1;
-    int cellHeaderY = cell->y() * rowHeight + 1;
+    int cellHeaderX = mScene->cellHorizontalPos( cell ) + 1;
+    int cellHeaderY = mScene->cellVerticalPos( cell ) + 1;
     int cellHeaderWidth = columnWidth - 2;
     int cellHeaderHeight = cell->topMargin() - 2;
     QLinearGradient bgGradient( QPointF( cellHeaderX, cellHeaderY ),
@@ -188,7 +246,7 @@ void MonthGraphicsView::drawBackground( QPainter *p, const QRectF & rect )
                        cellHeaderWidth, cellHeaderHeight ) );
   }
 
-  QFont font = KOPrefs::instance()->mMonthViewFont;
+  font = KOPrefs::instance()->mMonthViewFont;
   font.setPixelSize( MonthCell::topMargin() - 4 );
 
   p->setFont( font );
@@ -216,30 +274,30 @@ void MonthGraphicsView::drawBackground( QPainter *p, const QRectF & rect )
     }
 
     if ( mScene->startHeight() != 0 && cell->hasEventBelow( mScene->startHeight() ) ) {
-      int arrowCenter = cell->x() * columnWidth + 5;
+      int arrowCenter = mScene->cellHorizontalPos( cell ) + 5;
       int arrowHead = MonthCell::topMargin() / 2 - 3;
       QPolygon upArrow( 3 );
-      upArrow.setPoint( 0, arrowCenter, cell->y() * rowHeight + arrowHead );
-      upArrow.setPoint( 1, arrowCenter + 2, cell->y() * rowHeight + arrowHead + 2 );
-      upArrow.setPoint( 2, arrowCenter - 2, cell->y() * rowHeight+ arrowHead + 2 );
+      upArrow.setPoint( 0, arrowCenter, mScene->cellVerticalPos( cell ) + arrowHead );
+      upArrow.setPoint( 1, arrowCenter + 2, mScene->cellVerticalPos( cell ) + arrowHead + 2 );
+      upArrow.setPoint( 2, arrowCenter - 2, mScene->cellVerticalPos( cell )+ arrowHead + 2 );
       p->setBrush( Qt::black );
       p->drawPolygon( upArrow );
     }
 
     if ( !mScene->lastItemFit( cell ) ) {
-      int arrowCenter = cell->x() * columnWidth + 5;
+      int arrowCenter = mScene->cellHorizontalPos( cell ) + 5;
       int arrowHead = MonthCell::topMargin() / 2 + 3;
       QPolygon downArrow( 3 );
-      downArrow.setPoint( 0, arrowCenter, cell->y() * rowHeight + arrowHead );
-      downArrow.setPoint( 1, arrowCenter + 2, cell->y() * rowHeight + arrowHead - 2 );
-      downArrow.setPoint( 2, arrowCenter - 2, cell->y() * rowHeight + arrowHead - 2 );
+      downArrow.setPoint( 0, arrowCenter, mScene->cellVerticalPos( cell ) + arrowHead );
+      downArrow.setPoint( 1, arrowCenter + 2, mScene->cellVerticalPos( cell ) + arrowHead - 2 );
+      downArrow.setPoint( 2, arrowCenter - 2, mScene->cellVerticalPos( cell ) + arrowHead - 2 );
       p->setBrush( Qt::black );
       p->drawPolygon( downArrow );
     }
 
     QString dayText = QString::number( d.day() );
-    p->drawText( QRect( cell->x() * columnWidth + columnWidth - numberWidth - 2, // top right
-                        cell->y() * rowHeight + 2,     // of the cell
+    p->drawText( QRect( mScene->cellHorizontalPos( cell ) + columnWidth - numberWidth - 2, // top right
+                        mScene->cellVerticalPos( cell ) + 2,     // of the cell
                         numberWidth,
                         cell->topMargin() ),
                  Qt::AlignRight,
@@ -486,9 +544,12 @@ bool MonthScene::eventFilterMouse( QObject *object, QGraphicsSceneMouseEvent *ev
   return false;
 }
 
+// The function converts the coordinates to the month grid coordinates to
+// be able to locate the cell.
 MonthCell *MonthScene::getCellFromPos( const QPointF &pos )
 {
-  int id = ( int )( pos.y() / rowHeight() ) * 7 + ( int )( pos.x() / columnWidth() );
+  int id = ( int )( sceneYToMonthGridY( pos.y() ) / rowHeight() ) * 7
+           + ( int )( sceneXToMonthGridX( pos.x() ) / columnWidth() );
   return mMonthCellMap.value( mMonthView->mStartDate.addDays( id ) );
 }
 

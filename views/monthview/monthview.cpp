@@ -218,3 +218,8 @@ void KONewMonthView::reloadIncidences()
   mView->update();
   mScene->update();
 }
+
+QDate KONewMonthView::averageDate() const
+{
+  return startDate().addDays( startDate().daysTo( endDate() ) / 2 );
+}

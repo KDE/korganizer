@@ -150,18 +150,20 @@ void MonthGraphicsItem::paint( QPainter *p, const QStyleOptionGraphicsItem *, QW
   pen.setWidth( ft );
   p->setPen( pen );
 
+  // Add a gradient at extremities to show whether the item continues on a new line or not.
+  QColor gradientCenterColor = mMonthItem->selected() ? bgColor.lighter( 130 ) : bgColor;
   QLinearGradient bgGradient( QPointF( 0, 0 ), QPointF( boundingRect().width(), 0 ) ) ;
   if ( !isBeginItem() ) {
     bgGradient.setColorAt( 0, frameColor );
-    bgGradient.setColorAt( 0.05, bgColor );
+    bgGradient.setColorAt( 0.05, gradientCenterColor );
   } else {
-    bgGradient.setColorAt( 0, bgColor );
+    bgGradient.setColorAt( 0, gradientCenterColor );
   }
   if ( !isEndItem() ) {
-    bgGradient.setColorAt( 0.95, bgColor );
+    bgGradient.setColorAt( 0.95, gradientCenterColor );
     bgGradient.setColorAt( 1, frameColor );
   } else {
-    bgGradient.setColorAt( 1, bgColor );
+    bgGradient.setColorAt( 1, gradientCenterColor );
   }
   p->setBrush( bgGradient );
 
@@ -648,8 +650,8 @@ void MonthGraphicsItem::updateGeometry()
 
   prepareGeometryChange();
 
-  int beginX = 1 + cell->x() * mMonthScene->columnWidth();
-  int beginY = 1 + cell->topMargin() + cell->y() * mMonthScene->rowHeight();
+  int beginX = 1 + mMonthScene->cellHorizontalPos( cell );
+  int beginY = 1 + cell->topMargin() + mMonthScene->cellVerticalPos( cell );
 
   beginY += mMonthItem->height() * mMonthScene->itemHeight() -
             mMonthScene->startHeight() * mMonthScene->itemHeight(); // scrolling

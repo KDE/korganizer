@@ -56,6 +56,11 @@ class KONewMonthView : public KOEventView
     QDate startDate() const { return mStartDate; }
     QDate endDate() const { return mEndDate; }
 
+    /**
+     * Returns the average date in the view
+     */
+    QDate averageDate() const;
+
   public slots:
     virtual void updateView();
     virtual void showDates( const QDate &start, const QDate &end );

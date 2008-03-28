@@ -67,8 +67,6 @@ class MonthScene : public QGraphicsScene
 
     int columnWidth() const;
     int rowHeight() const;
-    int availableWidth() const;
-    int availableHeight() const;
 
     MonthCell *firstCellForMonthItem( MonthItem *manager );
     int height( MonthItem *manager );
@@ -86,6 +84,17 @@ class MonthScene : public QGraphicsScene
     virtual bool eventFilter ( QObject *, QEvent * );
 
     int totalHeight();
+
+    /**
+     * Returns the vertical position where the top of the cell should be painted
+     * taking in account margins, rowHeight
+     */
+    int cellVerticalPos( const MonthCell *cell ) const;
+    
+    /**
+     * Idem, for the horizontal position
+     */
+    int cellHorizontalPos( const MonthCell *cell ) const;
 
     /**
       Select item. If the argument is 0, the currently selected item gets
@@ -181,7 +190,34 @@ class MonthScene : public QGraphicsScene
     bool lastItemFit( MonthCell *cell );
 
   private:
-    // Returns the cell containing @p pos.
+    /**
+     * Returns the height of the header of the view
+     */
+    int headerHeight() const;
+
+    int availableWidth() const;
+
+    /**
+     * Height available to draw the cells. Doesn't include header.
+     */
+    int availableHeight() const;
+
+    /**
+     * Removes all the margins, frames, etc. to give the 
+     * X coordinate in the MonthGrid.
+     */ 
+    int sceneXToMonthGridX( int xScene );
+    
+    /**     
+     * Removes all the margins, frames, headers etc. to give the 
+     * Y coordinate in the MonthGrid.
+     */
+    int sceneYToMonthGridY( int yScene );
+
+    /**
+     * Given a pos in the scene coordinates, 
+     * returns the cell containing @p pos.
+     */
     MonthCell *getCellFromPos( const QPointF &pos );
 
     bool mInitialized;
