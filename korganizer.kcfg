@@ -353,6 +353,11 @@
     <entry type="StringList" name="AdditionalMails">
     </entry>
 
+    <entry name="OutlookCompatCounterProposals" type="Bool">
+      <label>Send Outlook-like pseudo counter proposals</label>
+      <default>false</default>
+    </entry>
+
   </group>
 
   <group name="Colors">

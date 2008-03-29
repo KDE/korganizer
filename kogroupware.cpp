@@ -190,7 +190,9 @@ void KOGroupware::incomingDirChanged( const QString& path )
       if( (*it)->email() == receiver ) {
         if ( action.startsWith( "accepted" ) )
           (*it)->setStatus( KCal::Attendee::Accepted );
-        else if ( action.startsWith( "tentative" ) || action.startsWith( "counter" ) )
+        else if ( action.startsWith( "tentative" ) )
+          (*it)->setStatus( KCal::Attendee::Tentative );
+        else if ( KOPrefs::instance()->outlookCompatCounterProposals() && action.startsWith( "counter" ) )
           (*it)->setStatus( KCal::Attendee::Tentative );
         else if ( action.startsWith( "delegated" ) )
           (*it)->setStatus( KCal::Attendee::Delegated );
@@ -201,9 +203,13 @@ void KOGroupware::incomingDirChanged( const QString& path )
   } else if ( action.startsWith( "cancel" ) )
     // Delete the old incidence, if one is present
     scheduler.acceptTransaction( incidence, KCal::Scheduler::Cancel, status );
-  else if ( action.startsWith( "reply" ) )
-    scheduler.acceptTransaction( incidence, method, status );
-  else
+  else if ( action.startsWith( "reply" ) ) {
+    scheduler.acceptTransaction( incidence, method == Scheduler::Counter ? Scheduler::Request : method, status );
+    if ( method == Scheduler::Counter ) {
+      // send update to all attendees
+      sendICalMessage( mView, Scheduler::Request, incidence );
+    }
+  } else
     kdError(5850) << "Unknown incoming action " << action << endl;
 
   if ( action.startsWith( "counter" ) ) {

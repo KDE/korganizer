@@ -308,12 +308,18 @@ kdDebug(5850)<<"IncidenceChanger::changeIncidence for incidence \""<<newinc->sum
       // pseudo counter as done by outlook
       Event *e = dynamic_cast<Event*>( newinc );
       if ( e ) {
-        Incidence* tmp = oldinc->clone();
-        tmp->setSummary( i18n("Counter proposal: %1").arg( e->summary() ) );
-        tmp->setDescription( e->description() );
-        tmp->addComment( i18n("Proposed new meeting time: %1 - %2").arg( e->dtStartStr() ).arg( e->dtEndStr() ) );
-        KCal::MailScheduler scheduler( mCalendar );
-        scheduler.performTransaction( tmp, Scheduler::Reply );
+        if ( KOPrefs::instance()->outlookCompatCounterProposals() ) {
+          Incidence* tmp = oldinc->clone();
+          tmp->setSummary( i18n("Counter proposal: %1").arg( e->summary() ) );
+          tmp->setDescription( e->description() );
+          tmp->addComment( i18n("Proposed new meeting time: %1 - %2").arg( e->dtStartStr() ).arg( e->dtEndStr() ) );
+          KCal::MailScheduler scheduler( mCalendar );
+          scheduler.performTransaction( tmp, Scheduler::Reply );
+        } else {
+          Incidence *tmp = newinc->clone();
+          KCal::MailScheduler scheduler( mCalendar );
+          scheduler.performTransaction( tmp, Scheduler::Counter );
+        }
       } else {
         kdWarning(5850) << k_funcinfo << "Counter proposals only supported for events" << endl;
       }
