@@ -1,5 +1,5 @@
 /*
-  This file is part of the KDE alarm daemon.
+  This file is part of the KDE reminder daemon.
 
   Copyright (c) 2000 Cornelius Schumacher <schumacher@kde.org>
 
@@ -33,11 +33,11 @@
 
 using namespace KCal;
 
+class ReminderListItem;
 class KOEventViewer;
-class QSpinBox;
 class KComboBox;
 class QTreeWidget;
-class AlarmListItem;
+class QSpinBox;
 
 class AlarmDialog : public KDialog
 {
@@ -66,16 +66,17 @@ class AlarmDialog : public KDialog
     void reminderCount( int count );
 
   private Q_SLOTS:
-    void updateButtons();
-    void showDetails();
+    void update();
 
   private:
     bool startKOrganizer();
     void setTimer();
-    int activeCount();
-    QList<AlarmListItem *> selectedItems() const;
+    int enabledItems();
+    QList<ReminderListItem *> selectedItems() const;
+    void updateButtons();
+    void showDetails();
 
-    QTreeWidget *mIncidenceListView;
+    QTreeWidget *mIncidenceTree;
     KOEventViewer *mDetailView;
 
     QSpinBox *mSuspendSpin;

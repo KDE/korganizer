@@ -25,6 +25,7 @@
 #include "alarmdialog.h"
 
 #include <kcal/event.h>
+#include <kcal/todo.h>
 using namespace KCal;
 
 #include <kaboutdata.h>
@@ -42,18 +43,23 @@ int main( int argc, char **argv )
 
   KApplication app;
 
-  Event *e = new Event;
-  e->setSummary( "This is a summary." );
+  Event *e1 = new Event;
+  e1->setSummary( "This is a summary." );
   KDateTime now = KDateTime::currentLocalDateTime();
-  e->setDtStart( now );
-  e->setDtEnd( now.addDays( 1 ) );
-
-  Alarm *a = e->newAlarm();
+  e1->setDtStart( now );
+  e1->setDtEnd( now.addDays( 1 ) );
+  Alarm *a = e1->newAlarm();
 //  a->setProcedureAlarm( "/usr/X11R6/bin/xeyes" );
   a->setAudioAlarm( "/opt/kde/share/apps/korganizer/sounds/spinout.wav" );
 
+  Todo *t1 = new Todo;
+  t1->setSummary( "To-do A" );
+  t1->setDtDue( now );
+  t1->newAlarm();
+
   AlarmDialog dlg;
-  dlg.addIncidence( e, QDateTime::currentDateTime() );
+  dlg.addIncidence( e1, QDateTime::currentDateTime() );
+  dlg.addIncidence( t1, QDateTime::currentDateTime() );
   dlg.show();
   dlg.eventNotification();
 
