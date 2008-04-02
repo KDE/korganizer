@@ -87,13 +87,17 @@ AlarmDockWindow::AlarmDockWindow()
 
   contextMenu()->addSeparator();
   mAlarmsEnabled =
-    contextMenu()->addAction( i18nc( "@action:inmenu", "Reminders Enabled" ),
-                              this, SLOT(toggleAlarmsEnabled()) );
+    contextMenu()->addAction( i18nc( "@action:inmenu", "Enable Reminders" ) );
+  connect( mAlarmsEnabled, SIGNAL(toggled(bool)), SLOT(toggleAlarmsEnabled(bool)) );
+  mAlarmsEnabled->setCheckable( true );
+
   mAutostart =
-    contextMenu()->addAction( i18nc( "@action:inmenu", "Start Reminder Daemon at Login" ),
-                              this, SLOT(toggleAutostart()) );
-  mAutostart->setEnabled( autostart );
-  mAlarmsEnabled->setEnabled( alarmsEnabled );
+    contextMenu()->addAction( i18nc( "@action:inmenu", "Start Reminder Daemon at Login" ) );
+  connect( mAutostart, SIGNAL(toggled(bool )), SLOT(toggleAutostart(bool)) );
+  mAutostart->setCheckable( true );
+
+  mAlarmsEnabled->setChecked( alarmsEnabled );
+  mAutostart->setChecked( autostart );
 
   // Disable standard quit behaviour. We have to intercept the quit even, if the
   // main window is hidden.
@@ -130,24 +134,21 @@ void AlarmDockWindow::slotUpdate( int reminders )
   }
 }
 
-void AlarmDockWindow::toggleAlarmsEnabled()
+void AlarmDockWindow::toggleAlarmsEnabled( bool checked )
 {
   kDebug();
 
+  setIcon( checked ? mIconEnabled : mIconDisabled );
+
   KConfigGroup config( KGlobal::config(), "General" );
-
-  bool enabled = !mAlarmsEnabled->isChecked();
-  mAlarmsEnabled->setChecked( enabled );
-  setIcon( enabled ? mIconEnabled : mIconDisabled );
-
-  config.writeEntry( "Enabled", enabled );
+  config.writeEntry( "Enabled", checked );
   config.sync();
 }
 
-void AlarmDockWindow::toggleAutostart()
+void AlarmDockWindow::toggleAutostart( bool checked )
 {
-  bool autostart = !mAutostart->isChecked();
-  enableAutostart( autostart );
+  kDebug();
+  enableAutostart( checked );
 }
 
 void AlarmDockWindow::slotSuspendAll()
@@ -165,8 +166,6 @@ void AlarmDockWindow::enableAutostart( bool enable )
   KConfigGroup config( KGlobal::config(), "General" );
   config.writeEntry( "Autostart", enable );
   config.sync();
-
-  mAutostart->setChecked( enable );
 }
 
 void AlarmDockWindow::slotActivated( QSystemTrayIcon::ActivationReason reason )
