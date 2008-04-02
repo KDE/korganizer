@@ -81,6 +81,7 @@ KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *paren
   QTabWidget *tabWidget = new QTabWidget( this );
   topTopLayout->addWidget( tabWidget );
 
+  // Personal Settings
   QFrame *personalFrame = new QFrame( this );
   QVBoxLayout *personalLayout = new QVBoxLayout( personalFrame );
   tabWidget->addTab( personalFrame, KIcon( "preferences-desktop-personal" ),
@@ -109,12 +110,14 @@ KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *paren
   personalLayout->addWidget( defaultEmailAttachMethod->groupBox() );
   personalLayout->addStretch( 1 );
 
+  // Save Settings
   QFrame *saveFrame = new QFrame( this );
   tabWidget->addTab( saveFrame, KIcon( "document-save" ),
                      i18nc( "@title:tab", "Save" ) );
   QVBoxLayout *saveLayout = new QVBoxLayout( saveFrame );
 
-  QGroupBox *saveGroupBox = new QGroupBox( i18nc( "@title:group", "Saving Calendar" ), saveFrame );
+  QGroupBox *saveGroupBox =
+    new QGroupBox( i18nc( "@title:group", "Saving Calendar" ), saveFrame );
   saveLayout->addWidget( saveGroupBox );
   QVBoxLayout *saveGroupLayout = new QVBoxLayout;
   saveGroupBox->setLayout( saveGroupLayout );
@@ -146,6 +149,27 @@ KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *paren
     addWidRadios( KOPrefs::instance()->destinationItem(), saveFrame );
   saveLayout->addWidget( destinationItem->groupBox() );
   saveLayout->addStretch( 1 );
+
+  // System Tray Settings
+  QFrame *systrayFrame = new QFrame( this );
+  QVBoxLayout *systrayLayout = new QVBoxLayout( personalFrame );
+  tabWidget->addTab( systrayFrame, KIcon( "preferences-other" ),
+                     i18nc( "@title:tab systray settings", "System Tray" ) );
+
+  QGroupBox *systrayGroupBox =
+    new QGroupBox( i18nc( "@title:group", "Show/Hide Options" ), systrayFrame );
+  systrayLayout->addWidget( systrayGroupBox );
+  QVBoxLayout *systrayGroupLayout = new QVBoxLayout;
+  systrayGroupBox->setLayout( systrayGroupLayout );
+
+  KPrefsWidBool *showReminderDaemonItem =
+    addWidBool( KOPrefs::instance()->showReminderDaemonItem(), systrayGroupBox );
+  systrayGroupLayout->addWidget( showReminderDaemonItem->checkBox() );
+  showReminderDaemonItem->checkBox()->setToolTip(
+    i18nc( "@info:tooltip", "Enable this setting to show the KOrganizer "
+           "reminder daemon in your system tray (recommended)." ) );
+
+  systrayLayout->addStretch( 1 );
 
   load();
 }
@@ -258,7 +282,7 @@ class KOPrefsDialogTime : public KPrefsModule
       QStringList holidayList;
       QStringList countryList = KHolidays::locations();
 
-      foreach ( const QString& country, countryList ) {
+      foreach ( const QString &country, countryList ) {
         QString countryFile = KStandardDirs::locate( "locale",
                                       "l10n/" + country + "/entry.desktop" );
         QString regionName;
@@ -658,13 +682,15 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
 
   // Todo due today color
   KPrefsWidColor *todoDueTodayColor =
-    addWidColor( KOPrefs::instance()->agendaCalendarItemsToDosDueTodayBackgroundColorItem(), colorFrame );
+    addWidColor(
+      KOPrefs::instance()->agendaCalendarItemsToDosDueTodayBackgroundColorItem(), colorFrame );
   colorLayout->addWidget( todoDueTodayColor->label(), 5, 0 );
   colorLayout->addWidget( todoDueTodayColor->button(), 5, 1 );
 
   // Todo overdue color
   KPrefsWidColor *todoOverdueColor =
-    addWidColor( KOPrefs::instance()->agendaCalendarItemsToDosOverdueBackgroundColorItem(), colorFrame );
+    addWidColor(
+      KOPrefs::instance()->agendaCalendarItemsToDosOverdueBackgroundColorItem(), colorFrame );
   colorLayout->addWidget( todoOverdueColor->label(), 6, 0 );
   colorLayout->addWidget( todoOverdueColor->button(), 6, 1 );
 
