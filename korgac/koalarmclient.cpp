@@ -52,14 +52,20 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
   QDBusConnection::sessionBus().registerObject( "/ac", this );
   kDebug();
 
+  KConfig korgConfig( KStandardDirs::locate( "config", "korganizerrc" ) );
+  KConfigGroup generalGroup(  &korgConfig,  "General" );
+  bool showDock = generalGroup.readEntry( "ShowReminderDaemon", true );
+
   mDocker = new AlarmDockWindow;
-  mDocker->show();
+  if ( showDock ) {
+    mDocker->show();
+  }
+
   connect( this, SIGNAL( reminderCount( int ) ), mDocker, SLOT( slotUpdate( int ) ) );
   connect( mDocker, SIGNAL( quitSignal() ), SLOT( slotQuit() ) );
 
-  KConfig c( KStandardDirs::locate( "config", "korganizerrc" ) );
-  KConfigGroup cg( &c, "Time & Date" );
-  QString tz = cg.readEntry( "TimeZoneId" );
+  KConfigGroup timedateGroup( &korgConfig, "Time & Date" );
+  QString tz = timedateGroup.readEntry( "TimeZoneId" );
   kDebug() << "TimeZone:" << tz;
 
   mCalendar = new CalendarResources( tz );
