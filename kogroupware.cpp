@@ -199,7 +199,8 @@ void KOGroupware::incomingDirChanged( const QString& path )
         break;
       }
     }
-    scheduler.acceptTransaction( incidence, method, status );
+    if ( KOPrefs::instance()->outlookCompatCounterProposals() || !action.startsWith( "counter" ) )
+      scheduler.acceptTransaction( incidence, method, status );
   } else if ( action.startsWith( "cancel" ) )
     // Delete the old incidence, if one is present
     scheduler.acceptTransaction( incidence, KCal::Scheduler::Cancel, status );
@@ -213,7 +214,7 @@ void KOGroupware::incomingDirChanged( const QString& path )
     kdError(5850) << "Unknown incoming action " << action << endl;
 
   if ( action.startsWith( "counter" ) ) {
-    mView->editIncidence( incidence );
+    mView->editIncidence( incidence, true );
     KOIncidenceEditor *tmp = mView->editorDialog( incidence );
     tmp->selectInvitationCounterProposal( true );
   }
