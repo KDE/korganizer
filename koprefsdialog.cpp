@@ -51,6 +51,7 @@ using namespace LibKHolidays;
 #include <kconfig.h>
 #include <KLineEdit>
 #include <KComboBox>
+#include <KTabWidget>
 
 #include <q3grid.h>
 #include <QLayout>
@@ -62,7 +63,6 @@ using namespace LibKHolidays;
 #include <QRadioButton>
 #include <QPushButton>
 #include <q3listview.h>
-#include <QTabWidget>
 #include <q3buttongroup.h>
 #include <QTextStream>
 #include <QGridLayout>
@@ -78,7 +78,7 @@ KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *paren
   : KPrefsModule( KOPrefs::instance(), inst, parent )
 {
   QBoxLayout *topTopLayout = new QVBoxLayout( this );
-  QTabWidget *tabWidget = new QTabWidget( this );
+  KTabWidget *tabWidget = new KTabWidget( this );
   topTopLayout->addWidget( tabWidget );
 
   // Personal Settings
@@ -205,7 +205,7 @@ class KOPrefsDialogTime : public KPrefsModule
       : KPrefsModule( KOPrefs::instance(), inst, parent )
     {
       QVBoxLayout *layout = new QVBoxLayout( this );
-      QTabWidget *tabWidget = new QTabWidget( this );
+      KTabWidget *tabWidget = new KTabWidget( this );
       layout->addWidget( tabWidget );
 
       QFrame *regionalPage = new QFrame( parent );
@@ -508,7 +508,7 @@ class KOPrefsDialogViews : public KPrefsModule
       : KPrefsModule( KOPrefs::instance(), inst, parent )
     {
       QBoxLayout *topTopLayout = new QVBoxLayout( this );
-      QTabWidget *tabWidget = new QTabWidget( this );
+      KTabWidget *tabWidget = new KTabWidget( this );
       topTopLayout->addWidget( tabWidget );
 
       QFrame *topFrame = new QFrame( this );
@@ -638,11 +638,11 @@ extern "C"
 
 KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &inst,
                                                           QWidget *parent )
-      : KPrefsModule( KOPrefs::instance(), inst, parent )
+  : KPrefsModule( KOPrefs::instance(), inst, parent )
 {
-      QBoxLayout *topTopLayout = new QVBoxLayout( this );
-      QTabWidget *tabWidget = new QTabWidget( this );
-      topTopLayout->addWidget( tabWidget );
+  QBoxLayout *topTopLayout = new QVBoxLayout( this );
+  KTabWidget *tabWidget = new KTabWidget( this );
+  topTopLayout->addWidget( tabWidget );
 
   QWidget *colorFrame = new QWidget( this );
   topTopLayout->addWidget( colorFrame );
