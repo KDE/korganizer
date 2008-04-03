@@ -152,7 +152,7 @@ KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *paren
 
   // System Tray Settings
   QFrame *systrayFrame = new QFrame( this );
-  QVBoxLayout *systrayLayout = new QVBoxLayout( personalFrame );
+  QVBoxLayout *systrayLayout = new QVBoxLayout( systrayFrame );
   tabWidget->addTab( systrayFrame, KIcon( "preferences-other" ),
                      i18nc( "@title:tab systray settings", "System Tray" ) );
 
@@ -1205,7 +1205,8 @@ class PluginItem : public QTreeWidgetItem
       : QTreeWidgetItem( parent, QStringList( service->name() ) ),
         mService( service ) {}
 
-    KService::Ptr service() { return mService; }
+    KService::Ptr service()
+    { return mService; }
 
   private:
     KService::Ptr mService;
