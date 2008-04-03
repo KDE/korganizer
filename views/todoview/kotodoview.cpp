@@ -44,6 +44,7 @@
 #include <QMenu>
 #include <QContextMenuEvent>
 #include <QTreeView>
+#include <QModelIndex>
 #include <QHeaderView>
 #include <QSortFilterProxyModel>
 
@@ -86,6 +87,8 @@ KOTodoView::KOTodoView( Calendar *cal, QWidget *parent )
   mView->setContextMenuPolicy( Qt::CustomContextMenu );
   connect( mView, SIGNAL(customContextMenuRequested(const QPoint &)),
            this, SLOT(contextMenu(const QPoint &)) );
+  connect( mView, SIGNAL(doubleClicked(const QModelIndex &)),
+           this, SLOT(itemDoubleClicked(const QModelIndex &)) );
   connect( mView->selectionModel(),
            SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
            this,
@@ -378,6 +381,17 @@ void KOTodoView::copyTodoToDate( const QDate &date )
   }
 
   mModel->copyTodo( mProxyModel->mapToSource( selection[0] ), date );
+}
+
+void KOTodoView::itemDoubleClicked( const QModelIndex &index )
+{
+  if ( index.isValid() ) {
+    if ( index.flags() & Qt::ItemIsEditable ) {
+      editTodo();
+    } else {
+      showTodo();
+    }
+  }
 }
 
 #include "kotodoview.moc"

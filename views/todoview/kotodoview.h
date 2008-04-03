@@ -33,6 +33,8 @@
 
 #include <QDate>
 
+class KLineEdit;
+
 namespace KCal {
   class Incidence;
   class Calendar;
@@ -42,13 +44,14 @@ using namespace KOrg;
 
 class QMenu;
 class QContextMenuEvent;
-class QTreeView;
 class QItemSelection;
+class QTreeView;
+class QModelIndex;
+class QSortFilterProxyModel;
+
 class KOTodoModel;
 class KOTodoCategoriesDelegate;
-class QSortFilterProxyModel;
 class KOTodoViewQuickSearch;
-class KLineEdit;
 
 class KOTodoView : public BaseView
 {
@@ -95,6 +98,9 @@ class KOTodoView : public BaseView
     void newTodo();
     void newSubTodo();
     void copyTodoToDate( const QDate &date );
+
+  private Q_SLOTS:
+    void itemDoubleClicked( const QModelIndex &index );
 
   Q_SIGNALS:
     void purgeCompletedSignal();
