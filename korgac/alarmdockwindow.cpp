@@ -77,10 +77,10 @@ AlarmDockWindow::AlarmDockWindow()
 
   // Set up the context menu
   mSuspendAll =
-    contextMenu()->addAction( i18nc( "@action:inmenu", "Suspend All" ), this,
+    contextMenu()->addAction( i18nc( "@action:inmenu", "Suspend All Reminders" ), this,
                               SLOT(slotSuspendAll()) );
   mDismissAll =
-    contextMenu()->addAction( i18nc( "@action:inmenu", "Dismiss All" ), this,
+    contextMenu()->addAction( i18nc( "@action:inmenu", "Dismiss All Reminders" ), this,
                               SLOT(slotDismissAll()) );
   mSuspendAll->setEnabled( false );
   mDismissAll->setEnabled( false );
@@ -130,7 +130,7 @@ void AlarmDockWindow::slotUpdate( int reminders )
                         "There is 1 active reminder.",
                         "There are %1 active reminders.", reminders ) );
   } else {
-    setToolTip( mName );
+    setToolTip( i18nc( "@info:tooltip", "No active reminders." ) );
   }
 }
 
