@@ -24,8 +24,9 @@
 
 #include "koglobals.h"
 #include "koprefs.h"
-#include "alarmclient.h"
 #include "korganizer_part.h"
+
+#include <libkdepim/alarmclient.h>
 
 #include <kdebug.h>
 #include <kglobal.h>
@@ -44,15 +45,6 @@ using namespace LibKHolidays;
 #include <QApplication>
 #include <QPixmap>
 #include <QIcon>
-
-#if 0 // unused
-class NopAlarmClient : public AlarmClient
-{
-  public:
-    void startDaemon() {}
-    void stopDaemon() {}
-};
-#endif
 
 KOGlobals *KOGlobals::mSelf = 0;
 
@@ -73,10 +65,10 @@ KOGlobals::KOGlobals()
 {
   KIconLoader::global()->addAppDir( "kdepim" );
 
-  mAlarmClient = new AlarmClient;
+  mAlarmClient = new KPIM::AlarmClient;
 }
 
-KConfig* KOGlobals::config() const
+KConfig *KOGlobals::config() const
 {
   KSharedConfig::Ptr c = mOwnInstance.config();
   return c.data();
@@ -93,7 +85,7 @@ const KCalendarSystem *KOGlobals::calendarSystem() const
   return KGlobal::locale()->calendar();
 }
 
-AlarmClient *KOGlobals::alarmClient() const
+KPIM::AlarmClient *KOGlobals::alarmClient() const
 {
   return mAlarmClient;
 }
@@ -119,7 +111,9 @@ void KOGlobals::fitDialogToScreen( QWidget *wid, bool force )
   if ( resized || force ) {
     wid->resize( w, h );
     wid->move( desk.x(), desk.y()+15 );
-    if ( force ) wid->setFixedSize( w, h );
+    if ( force ) {
+      wid->setFixedSize( w, h );
+    }
   }
 }
 
@@ -128,12 +122,12 @@ bool KOGlobals::reverseLayout()
   return QApplication::isRightToLeft();
 }
 
-QPixmap KOGlobals::smallIcon( const QString& name ) const
+QPixmap KOGlobals::smallIcon( const QString &name ) const
 {
   return SmallIcon( name );
 }
 
-QIcon KOGlobals::smallIconSet( const QString& name, int size ) const
+QIcon KOGlobals::smallIconSet( const QString &name, int size ) const
 {
   return SmallIconSet( name, size );
 }
@@ -142,7 +136,9 @@ QStringList KOGlobals::holiday( const QDate &date ) const
 {
   QStringList hdays;
 
-  if ( !mHolidays ) return hdays;
+  if ( !mHolidays ) {
+    return hdays;
+  }
   Q3ValueList<KHoliday> list = mHolidays->getHolidays( date );
   Q3ValueList<KHoliday>::ConstIterator it = list.begin();
   for ( ; it != list.end(); ++it ) {
@@ -160,8 +156,7 @@ bool KOGlobals::isWorkDay( const QDate &date ) const
     Q3ValueList<KHoliday> list = mHolidays->getHolidays( date );
     Q3ValueList<KHoliday>::ConstIterator it = list.begin();
     for ( ; it != list.end(); ++it ) {
-      nonWorkDay = nonWorkDay
-               || ( (*it).Category == KHolidays::HOLIDAY );
+      nonWorkDay = nonWorkDay || ( (*it).Category == KHolidays::HOLIDAY );
     }
   }
   return !nonWorkDay;

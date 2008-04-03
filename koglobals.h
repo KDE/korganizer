@@ -25,16 +25,16 @@
 #define KOGLOBALS_H
 
 #include "korganizer_export.h"
-#include <alarmclient.h>
 #include <kcomponentdata.h>
 #include <QPixmap>
 
+class KCalendarSystem;
+class KConfig;
 class QPixmap;
 class QIcon;
-class KCalendarSystem;
-using KPIM::AlarmClient;
-
-class KConfig;
+namespace KPIM {
+  class AlarmClient;
+}
 namespace LibKHolidays {
   class KHolidays;
 }
@@ -44,11 +44,25 @@ class KORGANIZERPRIVATE_EXPORT KOGlobals
   public:
     static KOGlobals *self();
 
-    enum { INCIDENCEADDED, INCIDENCEEDITED, INCIDENCEDELETED };
-    enum { PRIORITY_MODIFIED, COMPLETION_MODIFIED, CATEGORY_MODIFIED,
-           DATE_MODIFIED, RELATION_MODIFIED, ALARM_MODIFIED,
-           DESCRIPTION_MODIFIED, SUMMARY_MODIFIED,
-           COMPLETION_MODIFIED_WITH_RECURRENCE, UNKNOWN_MODIFIED };
+    enum
+    {
+      INCIDENCEADDED,
+      INCIDENCEEDITED,
+      INCIDENCEDELETED
+    };
+    enum
+    {
+      PRIORITY_MODIFIED,
+      COMPLETION_MODIFIED,
+      CATEGORY_MODIFIED,
+      DATE_MODIFIED,
+      RELATION_MODIFIED,
+      ALARM_MODIFIED,
+      DESCRIPTION_MODIFIED,
+      SUMMARY_MODIFIED,
+      COMPLETION_MODIFIED_WITH_RECURRENCE,
+      UNKNOWN_MODIFIED
+    };
 
     static void fitDialogToScreen( QWidget *widget, bool force=false );
     KConfig *config() const;
@@ -57,7 +71,7 @@ class KORGANIZERPRIVATE_EXPORT KOGlobals
 
     const KCalendarSystem *calendarSystem() const;
 
-    AlarmClient *alarmClient() const;
+    KPIM::AlarmClient *alarmClient() const;
 
     ~KOGlobals();
 
@@ -89,7 +103,7 @@ class KORGANIZERPRIVATE_EXPORT KOGlobals
 
     KComponentData mOwnInstance;
 
-    AlarmClient *mAlarmClient;
+    KPIM::AlarmClient *mAlarmClient;
 
     LibKHolidays::KHolidays *mHolidays;
 };
