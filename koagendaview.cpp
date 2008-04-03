@@ -1680,8 +1680,8 @@ void KOAgendaView::newTimeSpanSelected( const QPoint &start, const QPoint &end )
 
   mTimeSpanInAllDay = false;
 
-  QDate dayStart = mSelectedDates[start.x()];
-  QDate dayEnd = mSelectedDates[end.x()];
+  QDate dayStart = mSelectedDates[ kClamp( start.x(), 0, (int)mSelectedDates.size() - 1 ) ];
+  QDate dayEnd = mSelectedDates[ kClamp( end.x(), 0, (int)mSelectedDates.size() - 1 ) ];
 
   QTime timeStart = mAgenda->gyToTime(start.y());
   QTime timeEnd = mAgenda->gyToTime( end.y() + 1 );
