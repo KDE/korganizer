@@ -28,13 +28,15 @@
 #define KOTODOVIEWQUICKSEARCH_H
 
 #include <QWidget>
-#include <QString>
 
 namespace KCal { class Calendar; }
 using namespace KCal;
 
-class KComboBox;
+class KCheckComboBox;
 class KLineEdit;
+
+class QString;
+class QStringList;
 
 class KOTodoViewQuickSearch : public QWidget
 {
@@ -49,13 +51,10 @@ class KOTodoViewQuickSearch : public QWidget
 
   Q_SIGNALS:
     void searchTextChanged( const QString & );
-    void searchCategoryChanged( const QString & );
+    void searchCategoryChanged( const QStringList & );
 
   public Q_SLOTS:
     void reset();
-
-  private Q_SLOTS:
-    void slotCategoryChanged( int index );
 
   private:
     /** Helper method for the filling of the category combo. */
@@ -64,7 +63,7 @@ class KOTodoViewQuickSearch : public QWidget
     Calendar *mCalendar;
 
     KLineEdit *mSearchLine;
-    KComboBox *mCategoryCombo;
+    KCheckComboBox *mCategoryCombo;
 };
 
 #endif

@@ -41,8 +41,8 @@
 
 #include <kpimutils/email.h>
 
-#include <kmessagebox.h>
-#include <kdebug.h>
+#include <KMessageBox>
+#include <KDebug>
 
 #include <QString>
 #include <QIcon>
@@ -573,9 +573,7 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
       }
     case CategoriesColumn:
     {
-      QString categories = todo->categories().join(
-        i18nc( "delimiter for joining category names", "," ) );
-      return QVariant( categories );
+      return QVariant( todo->categories() );
     }
     case DescriptionColumn:
       return QVariant( todo->description() );
@@ -677,7 +675,8 @@ bool KOTodoModel::setData( const QModelIndex &index, const QVariant &value, int 
     int modified = KOGlobals::UNKNOWN_MODIFIED;
 
     if ( role == Qt::CheckStateRole && index.column() == 0 ) {
-      todo->setCompleted( value.toBool() );
+      todo->setCompleted( static_cast<Qt::CheckState>( value.toInt() ) == Qt::Checked ?
+                          true : false );
       if ( todo->recurs() ) {
         modified = KOGlobals::COMPLETION_MODIFIED_WITH_RECURRENCE;
       } else {
@@ -703,7 +702,8 @@ bool KOTodoModel::setData( const QModelIndex &index, const QVariant &value, int 
           //TODO
           break;
         case CategoriesColumn:
-          //TODO
+          todo->setCategories( value.toStringList() );
+          modified = KOGlobals::CATEGORY_MODIFIED;
           break;
         case DescriptionColumn:
           todo->setDescription( value.toString() );

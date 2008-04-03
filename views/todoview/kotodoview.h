@@ -45,6 +45,7 @@ class QContextMenuEvent;
 class QTreeView;
 class QItemSelection;
 class KOTodoModel;
+class KOTodoCategoriesDelegate;
 class QSortFilterProxyModel;
 class KOTodoViewQuickSearch;
 class KLineEdit;
@@ -104,6 +105,7 @@ class KOTodoView : public BaseView
     QTreeView *mView;
     KOTodoModel *mModel;
     QSortFilterProxyModel *mProxyModel;
+    KOTodoCategoriesDelegate *mCategoriesDelegate;
 
     KOTodoViewQuickSearch *mQuickSearch;
     KLineEdit *mQuickAdd;

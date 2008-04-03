@@ -25,6 +25,13 @@
 #include "kotododelegates.h"
 #include "koprefs.h"
 
+#include "kcheckcombobox.h"
+
+#include <libkdepim/categoryhierarchyreader.h>
+
+#include <kcal/calendar.h>
+#include <kcal/calfilter.h>
+
 #include <kcolorscheme.h>
 #include <kcombobox.h>
 #include <kdebug.h>
@@ -39,6 +46,11 @@
 #include <QStyleOptionViewItem>
 #include <QStyleOptionProgressBar>
 #include <QSize>
+#include <QEvent>
+#include <QPaintEvent>
+
+using namespace KCal;
+using namespace KPIM;
 
 // ---------------- COMPLETION DELEGATE --------------------------
 // ---------------------------------------------------------------
@@ -56,35 +68,49 @@ void KOTodoCompleteDelegate::paint( QPainter *painter,
                                     const QStyleOptionViewItem &option,
                                     const QModelIndex &index ) const
 {
-  QStyle *style = QApplication::style();
+  QStyle *style;
+
+  if ( const QStyleOptionViewItemV3 *optionV3 =
+            qstyleoption_cast<const QStyleOptionViewItemV3 *>( &option ) ) {
+    style = optionV3->widget ? optionV3->widget->style() : QApplication::style();
+  } else {
+    style = QApplication::style();
+  }
 
   style->drawPrimitive( QStyle::PE_PanelItemViewItem, &option, painter );
 
-  QRect rect = option.rect;
+  // TODO QTreeView does not set State_Editing. Qt task id 205051
+  // check if a newer version of Qt fixes this
+  if ( !(option.state & QStyle::State_Editing) ) {
+    QRect rect = option.rect;
 
-  rect.adjust( 4, 3, -6, -3 );
+    rect.adjust( 4, 3, -6, -3 );
 
-  QStyleOptionProgressBar pbOption;
+    QStyleOptionProgressBar pbOption;
 
-  pbOption.palette = option.palette;
-  pbOption.state = option.state;
-  pbOption.direction = option.direction;
-  pbOption.fontMetrics = option.fontMetrics;
+    pbOption.palette = option.palette;
+    pbOption.state = option.state;
+    pbOption.direction = option.direction;
+    pbOption.fontMetrics = option.fontMetrics;
 
-  pbOption.rect = rect;
-  pbOption.maximum = 100;
-  pbOption.minimum = 0;
-  pbOption.progress = index.data().toInt();
-  pbOption.text = index.data().toString() + QString::fromAscii( "%" );
-  pbOption.textAlignment = Qt::AlignCenter;
-  pbOption.textVisible = true;
+    pbOption.rect = rect;
+    pbOption.maximum = 100;
+    pbOption.minimum = 0;
+    pbOption.progress = index.data().toInt();
+    pbOption.text = index.data().toString() + QString::fromAscii( "%" );
+    pbOption.textAlignment = Qt::AlignCenter;
+    pbOption.textVisible = true;
 
-  style->drawControl( QStyle::CE_ProgressBar, &pbOption, painter );
+    style->drawControl( QStyle::CE_ProgressBar, &pbOption, painter );
+  }
 }
 
 QSize KOTodoCompleteDelegate::sizeHint( const QStyleOptionViewItem &option,
                                         const QModelIndex &index ) const
 {
+  Q_UNUSED( option );
+  Q_UNUSED( index );
+
   return QSize( 80, 20 );
 }
 
@@ -92,15 +118,13 @@ QWidget *KOTodoCompleteDelegate::createEditor( QWidget *parent,
                                                const QStyleOptionViewItem &option,
                                                const QModelIndex &index ) const
 {
+  Q_UNUSED( option );
+  Q_UNUSED( index );
+
   QSlider *slider = new QSlider( parent );
 
   slider->setRange( 0, 100 );
   slider->setOrientation( Qt::Horizontal );
-
-  QPalette palette = slider->palette();
-  palette.setColor( QPalette::Base, palette.highlight().color() );
-  slider->setPalette( palette );
-  slider->setAutoFillBackground( true );
 
   return slider;
 }
@@ -126,6 +150,9 @@ void KOTodoCompleteDelegate::updateEditorGeometry( QWidget *editor,
                                                    const QStyleOptionViewItem &option,
                                                    const QModelIndex &index ) const
 {
+  Q_UNUSED( option );
+  Q_UNUSED( index );
+
   editor->setGeometry( option.rect );
 }
 
@@ -159,6 +186,9 @@ QWidget *KOTodoPriorityDelegate::createEditor( QWidget *parent,
                                                const QStyleOptionViewItem &option,
                                                const QModelIndex &index ) const
 {
+  Q_UNUSED( option );
+  Q_UNUSED( index );
+
   KComboBox *combo = new KComboBox( parent );
 
   combo->addItem( i18nc( "@action:inmenu Unspecified priority", "unspecified" ) );
@@ -196,7 +226,99 @@ void KOTodoPriorityDelegate::updateEditorGeometry( QWidget *editor,
                                                    const QStyleOptionViewItem &option,
                                                    const QModelIndex &index ) const
 {
+  Q_UNUSED( option );
+  Q_UNUSED( index );
+
   editor->setGeometry( option.rect );
+}
+
+
+// ---------------- CATEGORIES DELEGATE --------------------------
+// ---------------------------------------------------------------
+
+KOTodoCategoriesDelegate::KOTodoCategoriesDelegate( Calendar *cal, QObject *parent )
+  : QStyledItemDelegate( parent )
+{
+  setCalendar( cal );
+}
+
+KOTodoCategoriesDelegate::~KOTodoCategoriesDelegate()
+{
+}
+
+QWidget *KOTodoCategoriesDelegate::createEditor( QWidget *parent,
+                                                 const QStyleOptionViewItem &option,
+                                                 const QModelIndex &index ) const
+{
+  Q_UNUSED( option );
+  Q_UNUSED( index );
+
+  KCheckComboBox *combo = new KCheckComboBox( parent );
+  QStringList categories;
+
+  if ( mCalendar ) {
+    CalFilter *filter = mCalendar->filter();
+    if ( filter->criteria() & CalFilter::ShowCategories ) {
+      categories = filter->categoryList();
+      categories.sort();
+    } else {
+      categories = KOPrefs::instance()->mCustomCategories;
+      QStringList filterCategories = filter->categoryList();
+      categories.sort();
+      filterCategories.sort();
+
+      QStringList::Iterator it = categories.begin();
+      QStringList::Iterator jt = filterCategories.begin();
+      while ( it != categories.end() && jt != filterCategories.end() ) {
+        if ( *it == *jt ) {
+          it = categories.erase( it );
+          jt++;
+        } else if ( *it < *jt ) {
+          it++;
+        } else if ( *it > *jt ) {
+          jt++;
+        }
+      }
+    }
+  }
+
+  CategoryHierarchyReaderQComboBox( combo ).read( categories );
+  // TODO test again with newer version of Qt, it it manages then to move
+  // the popup together with the combobox.
+  //combo->showPopup();
+  return combo;
+}
+
+void KOTodoCategoriesDelegate::setEditorData( QWidget *editor,
+                                              const QModelIndex &index ) const
+{
+  KCheckComboBox *combo = static_cast<KCheckComboBox *>( editor );
+
+  combo->setCheckedItems( index.data( Qt::EditRole ).toStringList() );
+}
+
+void KOTodoCategoriesDelegate::setModelData( QWidget *editor,
+                                             QAbstractItemModel *model,
+                                             const QModelIndex &index ) const
+{
+  KCheckComboBox *combo = static_cast<KCheckComboBox *>( editor );
+
+  model->setData( index, combo->checkedItems() );
+}
+
+void KOTodoCategoriesDelegate::updateEditorGeometry( QWidget *editor,
+                                                     const QStyleOptionViewItem &option,
+                                                     const QModelIndex &index ) const
+{
+  Q_UNUSED( option );
+  Q_UNUSED( index );
+
+  editor->setGeometry( option.rect );
+}
+
+void KOTodoCategoriesDelegate::setCalendar( Calendar *cal )
+{
+  mCalendar = cal;
 }
 
 #include "kotododelegates.moc"

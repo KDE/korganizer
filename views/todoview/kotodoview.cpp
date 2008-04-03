@@ -80,10 +80,16 @@ KOTodoView::KOTodoView( Calendar *cal, QWidget *parent )
   mView->setItemDelegateForColumn( KOTodoModel::PriorityColumn, priorityDelegate );
   KOTodoCompleteDelegate *completeDelegate = new KOTodoCompleteDelegate( mView );
   mView->setItemDelegateForColumn( KOTodoModel::PercentColumn, completeDelegate );
+  mCategoriesDelegate = new KOTodoCategoriesDelegate( cal, mView );
+  mView->setItemDelegateForColumn( KOTodoModel::CategoriesColumn, mCategoriesDelegate );
 
   mView->setContextMenuPolicy( Qt::CustomContextMenu );
   connect( mView, SIGNAL(customContextMenuRequested(const QPoint &)),
            this, SLOT(contextMenu(const QPoint &)) );
+  connect( mView->selectionModel(),
+           SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
+           this,
+           SLOT(selectionChanged(const QItemSelection&, const QItemSelection&)) );
 
   mQuickAdd = new KLineEdit( this );
   mQuickAdd->setClickMessage( i18n( "Click to add a new to-do" ) );
@@ -159,6 +165,7 @@ void KOTodoView::setCalendar( Calendar *cal )
 {
   BaseView::setCalendar( cal );
   mQuickSearch->setCalendar( cal );
+  mCategoriesDelegate->setCalendar( cal );
   mModel->setCalendar( cal );
 }
 
@@ -294,7 +301,8 @@ void KOTodoView::selectionChanged( const QItemSelection &selected,
 {
   Q_UNUSED( deselected );
   QModelIndexList selection = selected.indexes();
-  if ( selection.isEmpty() ) {
+  if ( selection.isEmpty() || !selection[0].isValid() ) {
+    emit incidenceSelected( 0 );
     return;
   }
 

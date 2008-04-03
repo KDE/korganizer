@@ -33,12 +33,15 @@
 #include <kcal/calendar.h>
 #include <kcal/calfilter.h>
 
-#include <KComboBox>
+#include "kcheckcombobox.h"
 #include <KLineEdit>
 
+#include <QString>
+#include <QStringList>
 #include <QModelIndex>
 #include <QStandardItemModel>
 #include <QStandardItem>
+#include <QAbstractItemView>
 #include <QHBoxLayout>
 
 using namespace KCal;
@@ -57,10 +60,12 @@ KOTodoViewQuickSearch::KOTodoViewQuickSearch( Calendar *calendar, QWidget *paren
 
   layout->addWidget( mSearchLine, 3 );
 
-  mCategoryCombo = new KComboBox( this );
+  mCategoryCombo = new KCheckComboBox( this );
+  mCategoryCombo->setDefaultText( i18nc( "@item:inlistbox", "Select Categories" ) );
+  mCategoryCombo->setSeparator( i18nc( "delimiter for joining category names", "," ) );
 
-  connect( mCategoryCombo, SIGNAL(currentIndexChanged(int)),
-           this, SLOT(slotCategoryChanged(int)) );
+  connect( mCategoryCombo, SIGNAL(checkedItemsChanged(const QStringList &)),
+           this, SIGNAL(searchCategoryChanged(const QStringList &)) );
 
   layout->addWidget( mCategoryCombo, 1 );
   fillCategories();
@@ -85,21 +90,9 @@ void KOTodoViewQuickSearch::reset()
   mCategoryCombo->setCurrentIndex( 0 );
 }
 
-void KOTodoViewQuickSearch::slotCategoryChanged( int index )
-{
-  if ( index <= 0 ) {
-    emit searchCategoryChanged( QString() );
-  } else {
-    emit searchCategoryChanged( mCategoryCombo->currentText() );
-  }
-}
-
 void KOTodoViewQuickSearch::fillCategories()
 {
-  QString current;
-  if ( mCategoryCombo->currentIndex() != 0 ) {
-    current = mCategoryCombo->currentText();
-  }
+  QStringList currentCategories = mCategoryCombo->checkedItems();
   mCategoryCombo->clear();
 
   QStringList categories;
@@ -131,7 +124,6 @@ void KOTodoViewQuickSearch::fillCategories()
   }
 
   CategoryHierarchyReaderQComboBox( mCategoryCombo ).read( categories );
-  mCategoryCombo->insertItem( 0, i18nc( "@item:inlistbox", "Any Category" ) );
 
   QStandardItemModel *model =
       qobject_cast<QStandardItemModel *>( mCategoryCombo->model() );
@@ -140,15 +132,7 @@ void KOTodoViewQuickSearch::fillCategories()
     QStandardItem *item = model->item( r );
     item->setCheckable( true );
   }
-
-/* TODO: make the formerly active elements active again
-  mCategoryCombo->setCurrentIndex( 0 );
-  for ( int i = 1; i < mCategoryCombo->count(); ++i ) {
-    if ( mCategoryCombo->itemText( i ) == current ) {
-      mCategoryCombo->setCurrentIndex( i );
-      break;
-    }
-  }*/
+  mCategoryCombo->setCheckedItems( currentCategories );
 }
 
 #include "kotodoviewquicksearch.moc"
