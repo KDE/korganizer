@@ -5,6 +5,12 @@
   <method name="quit">
   <annotation name="org.freedesktop.DBus.Method.NoReply" value="true"/>
   </method>
+  <method name="hide">
+  <annotation name="org.freedesktop.DBus.Method.NoReply" value="true"/>
+  </method>
+  <method name="show">
+  <annotation name="org.freedesktop.DBus.Method.NoReply" value="true"/>
+  </method>
   <method name="forceAlarmCheck">
   <annotation name="org.freedesktop.DBus.Method.NoReply" value="true"/>
   </method>

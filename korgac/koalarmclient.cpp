@@ -53,16 +53,18 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
   kDebug();
 
   KConfig korgConfig( KStandardDirs::locate( "config", "korganizerrc" ) );
-  KConfigGroup generalGroup(  &korgConfig,  "General" );
+  KConfigGroup generalGroup( &korgConfig, "General" );
   bool showDock = generalGroup.readEntry( "ShowReminderDaemon", true );
 
   mDocker = new AlarmDockWindow;
   if ( showDock ) {
     mDocker->show();
+  } else {
+    mDocker->hide();
   }
 
-  connect( this, SIGNAL( reminderCount( int ) ), mDocker, SLOT( slotUpdate( int ) ) );
-  connect( mDocker, SIGNAL( quitSignal() ), SLOT( slotQuit() ) );
+  connect( this, SIGNAL(reminderCount(int)), mDocker, SLOT(slotUpdate(int)) );
+  connect( mDocker, SIGNAL(quitSignal()), SLOT(slotQuit()) );
 
   KConfigGroup timedateGroup( &korgConfig, "Time & Date" );
   QString tz = timedateGroup.readEntry( "TimeZoneId" );
@@ -72,7 +74,7 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
   mCalendar->readConfig();
   mCalendar->load();
 
-  connect( &mCheckTimer, SIGNAL( timeout() ), SLOT( checkAlarms() ) );
+  connect( &mCheckTimer, SIGNAL(timeout()), SLOT(checkAlarms()) );
 
   KConfigGroup alarmGroup( KGlobal::config(), "Alarms" );
   int interval = alarmGroup.readEntry( "Interval", 60 );
@@ -144,7 +146,7 @@ void KOAlarmClient::createReminder( KCal::Incidence *incidence,
     connect( mDialog, SIGNAL(reminderCount(int)), mDocker, SLOT(slotUpdate(int)) );
     connect( mDocker, SIGNAL(suspendAllSignal()), mDialog, SLOT(suspendAll()) );
     connect( mDocker, SIGNAL(dismissAllSignal()), mDialog, SLOT(dismissAll()) );
-    connect( this, SIGNAL( saveAllSignal() ), mDialog, SLOT( slotSave() ) );
+    connect( this, SIGNAL(saveAllSignal()), mDialog, SLOT(slotSave()) );
   }
 
   mDialog->addIncidence( incidence, dt );
@@ -218,6 +220,16 @@ QStringList KOAlarmClient::dumpAlarms()
 void KOAlarmClient::debugShowDialog()
 {
 //   showAlarmDialog();
+}
+
+void KOAlarmClient::hide()
+{
+  mDocker->hide();
+}
+
+void KOAlarmClient::show()
+{
+  mDocker->show();
 }
 
 #include "koalarmclient.moc"

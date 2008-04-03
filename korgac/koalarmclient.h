@@ -51,6 +51,8 @@ class KOAlarmClient : public QObject, public KSessionManager
 
     // DBUS interface
     void quit();
+    void hide();
+    void show();
     void forceAlarmCheck();
     void dumpDebug();
     QStringList dumpAlarms();
