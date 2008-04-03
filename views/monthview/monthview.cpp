@@ -172,8 +172,14 @@ void KONewMonthView::reloadIncidences()
            KOHelper::toTimeSpec( todo->dtDue() ).date() > mEndDate ) {
         incidences.removeAll( incidence );
       }
-
+    } else if ( incidence->type() == "Journal" ) {
+      Journal *todo = dynamic_cast<Journal*>( incidence );
+      if ( KOHelper::toTimeSpec( todo->dtStart() ).date() < mStartDate ||
+           KOHelper::toTimeSpec( todo->dtStart() ).date() > mEndDate ) {
+        incidences.removeAll( incidence );
+      }
     }
+
   }
 
   foreach ( Incidence *incidence, incidences ) {

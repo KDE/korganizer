@@ -441,11 +441,11 @@ bool MonthScene::eventFilterMouse( QObject *object, QGraphicsSceneMouseEvent *ev
         mActionInitiated = false;
 
         // Move or resize ?
-        if ( iItem->monthItem()->incidence()->type() != "Todo" &&
+        if ( !iItem->monthItem()->isResizable() &&
              iItem->isBeginItem() && iItem->mapFromScene( pos ).x() <= 10 ) {
           mActionType = Resize;
           mResizeType = ResizeLeft;
-        } else if ( iItem->monthItem()->incidence()->type() != "Todo" &&
+        } else if ( !iItem->monthItem()->isResizable() &&
                     iItem->isEndItem() &&
                     iItem->mapFromScene( pos ).x() >= iItem->boundingRect().width() - 10 ) {
           mActionType = Resize;
@@ -456,11 +456,13 @@ bool MonthScene::eventFilterMouse( QObject *object, QGraphicsSceneMouseEvent *ev
       }
       return true;
     } else {
-      mSelectedCellDate = getCellFromPos( pos )->date();
-
-      update();
-      if ( event->button() == Qt::RightButton ) {
-        emit showNewEventPopupSignal();
+      MonthCell *cell = getCellFromPos( pos );
+      if ( cell ) {
+        mSelectedCellDate = cell->date();
+        update();
+        if ( event->button() == Qt::RightButton ) {
+          emit showNewEventPopupSignal();
+        }
       }
       return true;
     }
@@ -470,7 +472,7 @@ bool MonthScene::eventFilterMouse( QObject *object, QGraphicsSceneMouseEvent *ev
 
     if ( mActionItem ) {
       MonthCell *currentCell = getCellFromPos( pos );
-      if ( currentCell != mStartCell ) { // We want to act if a move really happened
+      if ( currentCell && currentCell != mStartCell ) { // We want to act if a move really happened
         mMovingMonthGraphicsItem = 0;
         //mActionItem->move( false );
         if ( mActionType == Resize ) {
@@ -498,10 +500,10 @@ bool MonthScene::eventFilterMouse( QObject *object, QGraphicsSceneMouseEvent *ev
         MonthGraphicsItem *iItem = dynamic_cast<MonthGraphicsItem*>( itemAt( pos ) );
 
         if ( iItem ) {
-          if ( iItem->monthItem()->incidence()->type() != "Todo" &&
+          if ( !iItem->monthItem()->isResizable() &&
                iItem->isBeginItem() && iItem->mapFromScene( pos ).x() <= 10 ) {
             static_cast<MonthGraphicsView*>( views().first() )->setActionCursor( Resize );
-          } else if ( iItem->monthItem()->incidence()->type() != "Todo" &&
+          } else if ( !iItem->monthItem()->isResizable() &&
                       iItem->isEndItem() &&
                       iItem->mapFromScene( pos ).x() >= iItem->boundingRect().width() - 10 ) {
             static_cast<MonthGraphicsView*>( views().first() )->setActionCursor( Resize );
@@ -556,12 +558,23 @@ bool MonthScene::eventFilterMouse( QObject *object, QGraphicsSceneMouseEvent *ev
   return false;
 }
 
+// returns true if the point is in the monthgrid (allows to avoid selecting a cell when
+// a click is outside the month grid
+bool MonthScene::isInMonthGrid( int x, int y ) {
+  return x >= 0 && y >= 0 && x <= availableWidth() && y <= availableHeight();
+}
+
 // The function converts the coordinates to the month grid coordinates to
 // be able to locate the cell.
 MonthCell *MonthScene::getCellFromPos( const QPointF &pos )
 {
-  int id = ( int )( sceneYToMonthGridY( pos.y() ) / rowHeight() ) * 7
-           + ( int )( sceneXToMonthGridX( pos.x() ) / columnWidth() );
+  int y = sceneYToMonthGridY( pos.y() );
+  int x = sceneXToMonthGridX( pos.x() );
+  if ( !isInMonthGrid( x, y ) ) {
+    return 0;
+  }
+  int id = ( int )( y / rowHeight() ) * 7 + ( int )( x / columnWidth() );
+
   return mMonthCellMap.value( mMonthView->mStartDate.addDays( id ) );
 }
 

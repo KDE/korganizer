@@ -29,6 +29,7 @@
 #include "kohelper.h"
 
 #include <kcal/todo.h>
+#include <kcal/journal.h>
 #include <kcal/event.h>
 #include <kcal/incidence.h>
 
@@ -234,6 +235,12 @@ void MonthItem::updateSelection( Incidence *incidence )
   }
 }
 
+bool MonthItem::isResizable() const
+{
+  return incidence()->type() != "Todo"
+    && incidence()->type() != "Journal";
+}
+
 void MonthItem::deleteAll()
 {
   foreach ( MonthGraphicsItem *item, mMonthGraphicsItemList ) {
@@ -367,6 +374,9 @@ void MonthItem::move( bool move )
       if ( mIncidence->type() == "Todo" ) {
         Todo *todo = static_cast<Todo*>( mIncidence );
         todo->setDtDue( todo->dtDue().addDays( offset ) );
+      } else if ( mIncidence->type() == "Journal" ) {
+        Journal *journal = static_cast<Journal*>( mIncidence );
+        journal->setDtStart( journal->dtStart().addDays( offset ) );
       } else if ( mIncidence->type() == "Event" ) {
         Event *event = static_cast<Event*>( mIncidence );
         event->setDtStart( event->dtStart().addDays( offset ) );

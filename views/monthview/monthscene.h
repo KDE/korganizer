@@ -220,6 +220,11 @@ class MonthScene : public QGraphicsScene
      */
     MonthCell *getCellFromPos( const QPointF &pos );
 
+    /**
+       Returns true if (x, y) is in the monthgrid, false else.
+     */
+    bool isInMonthGrid( int x, int y );
+
     bool mInitialized;
 
     // Calendar associated to the view

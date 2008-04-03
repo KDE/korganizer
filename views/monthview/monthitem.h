@@ -249,6 +249,12 @@ class MonthItem : public QObject
     bool isResizing() const { return mResizing; }
 
     /**
+      Returns true if the item can be resized. Typically, events can
+      be resized but to-dos and journals can't.
+     */
+    bool isResizable() const;    
+
+    /**
       Deletes all MonthGraphicsItem this item handles. Clear the list.
     */
     void deleteAll( );
