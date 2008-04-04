@@ -168,9 +168,11 @@ KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *paren
     i18nc( "@info:tooltip", "Enable this setting to show the KOrganizer "
            "reminder daemon in your system tray (recommended)." ) );
 
-  //TODO: korgac hide/show via the D-Bus interface
-  //TODO: add a note here saying that changing the systray visibility
-  //      will cause reminder daemon to be restarted
+  QLabel *note = new QLabel(
+    i18nc( "@info",
+           "<note>The daemon will continue running even if it is not shown "
+           "in the system tray.</note>" ) );
+  systrayGroupLayout->addWidget( note );
 
   systrayLayout->addStretch( 1 );
 
