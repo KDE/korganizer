@@ -38,7 +38,6 @@
 #include "kocore.h"
 #include "actionmanager.h"
 #include "koglobals.h"
-#include "alarmclient.h"
 #include "resourceview.h"
 #include "korganizerifaceimpl.h"
 

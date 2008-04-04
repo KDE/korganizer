@@ -29,7 +29,7 @@
 #include "actionmanager.h"
 #include "calendaradaptor.h"
 
-#include "alarmclient.h"
+#include "reminderclient.h"
 #include "calendarview.h"
 #include "kocore.h"
 #include "kodialogmanager.h"
@@ -1329,6 +1329,13 @@ void ActionManager::updateConfig()
                               KOPrefs::instance()->mNextXDays ) );
 
   KOCore::self()->reloadPlugins();
+
+  /* Hide/Show the Reminder Daemon */
+//  if ( !KOPrefs::instance()->mReminderDialogVisible ) {
+//    reminderclient->hide();
+//  } else {
+//    reminderclient->show();
+//  }
 
 // Commented out because it crashes KOrganizer.
 //  mParts = KOCore::self()->reloadParts( mMainWindow, mParts );

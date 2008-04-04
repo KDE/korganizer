@@ -28,13 +28,14 @@
 #include "korganizer.h"
 #include "koprefs.h"
 #include "version.h"
-#include "alarmclient.h"
 #include "koglobals.h"
 #include "actionmanager.h"
 #include "importdialog.h"
 #include "kocore.h"
 #include "calendarview.h"
 #include "stdcalendar.h"
+
+#include <libkdepim/reminderclient.h>
 
 #include <kcal/calformat.h>
 #include <kcal/calendarresources.h>
@@ -85,7 +86,7 @@ int KOrganizerApp::newInstance()
 
   KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
 
-  KOGlobals::self()->alarmClient()->startDaemon();
+  KOGlobals::self()->reminderClient()->startDaemon();
 
   // No filenames given => all other args are meaningless, show main Window
   if ( args->count() <= 0 ) {

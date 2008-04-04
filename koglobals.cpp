@@ -26,7 +26,7 @@
 #include "koprefs.h"
 #include "korganizer_part.h"
 
-#include <libkdepim/alarmclient.h>
+#include <libkdepim/reminderclient.h>
 
 #include <kdebug.h>
 #include <kglobal.h>
@@ -65,7 +65,7 @@ KOGlobals::KOGlobals()
 {
   KIconLoader::global()->addAppDir( "kdepim" );
 
-  mAlarmClient = new KPIM::AlarmClient;
+  mReminderClient = new KPIM::ReminderClient;
 }
 
 KConfig *KOGlobals::config() const
@@ -76,7 +76,7 @@ KConfig *KOGlobals::config() const
 
 KOGlobals::~KOGlobals()
 {
-  delete mAlarmClient;
+  delete mReminderClient;
   delete mHolidays;
 }
 
@@ -85,9 +85,9 @@ const KCalendarSystem *KOGlobals::calendarSystem() const
   return KGlobal::locale()->calendar();
 }
 
-KPIM::AlarmClient *KOGlobals::alarmClient() const
+KPIM::ReminderClient *KOGlobals::reminderClient() const
 {
-  return mAlarmClient;
+  return mReminderClient;
 }
 
 void KOGlobals::fitDialogToScreen( QWidget *wid, bool force )

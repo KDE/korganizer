@@ -1,30 +1,29 @@
 /*
-    This file is part of KOrganizer.
+  This file is part of KOrganizer.
 
-    Copyright (c) 2000 Cornelius Schumacher <schumacher@kde.org>
-    Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+  Copyright (c) 2000 Cornelius Schumacher <schumacher@kde.org>
+  Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-    GNU General Public License for more details.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-    As a special exception, permission is given to link this program
-    with any edition of Qt, and distribute the resulting executable,
-    without including the source code for Qt in the source distribution.
+  As a special exception, permission is given to link this program
+  with any edition of Qt, and distribute the resulting executable,
+  without including the source code for Qt in the source distribution.
 */
 
 #include "korganizer_part.h"
-
 #include "calendarview.h"
 #include "actionmanager.h"
 #include "koglobals.h"
@@ -34,12 +33,13 @@
 #include "kocore.h"
 #include "korganizerifaceimpl.h"
 #include "stdcalendar.h"
-#include "alarmclient.h"
 
 #include <kcal/calendarlocal.h>
 #include <kcal/calendarresources.h>
 #include <kcal/resourcecalendar.h>
 
+#include <kparts/genericfactory.h>
+#include <kparts/statusbarextension.h>
 #include <kmenu.h>
 #include <kcomponentdata.h>
 #include <klocale.h>
@@ -49,22 +49,17 @@
 #include <kconfig.h>
 #include <ktemporaryfile.h>
 #include <kstatusbar.h>
-#include <kparts/genericfactory.h>
-
-#include <kparts/statusbarextension.h>
 
 #include <QFile>
 #include <QTimer>
 #include <QLayout>
-//Added by qt3to4:
 #include <QVBoxLayout>
 
-K_PLUGIN_FACTORY(KOrganizerFactory, registerPlugin<KOrganizerPart>();)
-K_EXPORT_PLUGIN(KOrganizerFactory( "korganizer" ))
+K_PLUGIN_FACTORY( KOrganizerFactory, registerPlugin<KOrganizerPart>(); )
+K_EXPORT_PLUGIN( KOrganizerFactory( "korganizer" ) )
 
-KOrganizerPart::KOrganizerPart( QWidget *parentWidget, QObject *parent,
-                                const QVariantList & ) :
-  KParts::ReadOnlyPart(parent), mTopLevelWidget( parentWidget->topLevelWidget() )
+KOrganizerPart::KOrganizerPart( QWidget *parentWidget, QObject *parent, const QVariantList & )
+  : KParts::ReadOnlyPart(parent), mTopLevelWidget( parentWidget->topLevelWidget() )
 {
   KGlobal::locale()->insertCatalog( "libkcal" );
   KGlobal::locale()->insertCatalog( "libkdepim" );
@@ -159,7 +154,9 @@ ActionManager *KOrganizerPart::actionManager()
 void KOrganizerPart::showStatusMessage( const QString &message )
 {
   KStatusBar *statusBar = mStatusBarExtension->statusBar();
-  if ( statusBar ) statusBar->showMessage( message );
+  if ( statusBar ) {
+    statusBar->showMessage( message );
+  }
 }
 
 KOrg::CalendarViewBase *KOrganizerPart::view() const

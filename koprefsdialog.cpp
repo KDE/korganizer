@@ -53,7 +53,8 @@ using namespace LibKHolidays;
 #include <KComboBox>
 #include <KTabWidget>
 
-#include <q3grid.h>
+#include <q3listview.h>
+#include <q3buttongroup.h>
 #include <QLayout>
 #include <QLabel>
 #include <QSlider>
@@ -62,8 +63,6 @@ using namespace LibKHolidays;
 #include <QCheckBox>
 #include <QRadioButton>
 #include <QPushButton>
-#include <q3listview.h>
-#include <q3buttongroup.h>
 #include <QTextStream>
 #include <QGridLayout>
 #include <QBoxLayout>
@@ -168,6 +167,10 @@ KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *paren
   showReminderDaemonItem->checkBox()->setToolTip(
     i18nc( "@info:tooltip", "Enable this setting to show the KOrganizer "
            "reminder daemon in your system tray (recommended)." ) );
+
+  //TODO: korgac hide/show via the D-Bus interface
+  //TODO: add a note here saying that changing the systray visibility
+  //      will cause reminder daemon to be restarted
 
   systrayLayout->addStretch( 1 );
 

@@ -33,7 +33,7 @@ class KConfig;
 class QPixmap;
 class QIcon;
 namespace KPIM {
-  class AlarmClient;
+  class ReminderClient;
 }
 namespace LibKHolidays {
   class KHolidays;
@@ -71,7 +71,7 @@ class KORGANIZERPRIVATE_EXPORT KOGlobals
 
     const KCalendarSystem *calendarSystem() const;
 
-    KPIM::AlarmClient *alarmClient() const;
+    KPIM::ReminderClient *reminderClient() const;
 
     ~KOGlobals();
 
@@ -103,7 +103,7 @@ class KORGANIZERPRIVATE_EXPORT KOGlobals
 
     KComponentData mOwnInstance;
 
-    KPIM::AlarmClient *mAlarmClient;
+    KPIM::ReminderClient *mReminderClient;
 
     LibKHolidays::KHolidays *mHolidays;
 };
