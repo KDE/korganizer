@@ -67,7 +67,8 @@ class KOTodoModel : public QAbstractItemModel
 
     /** This enum defines the user defined roles of the items in this model */
     enum {
-      TodoRole = Qt::UserRole
+      TodoRole = Qt::UserRole + 1,
+      IsRichDescriptionRole
     };
 
   public:

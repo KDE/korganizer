@@ -83,6 +83,8 @@ KOTodoView::KOTodoView( Calendar *cal, QWidget *parent )
   mView->setItemDelegateForColumn( KOTodoModel::PercentColumn, completeDelegate );
   mCategoriesDelegate = new KOTodoCategoriesDelegate( cal, mView );
   mView->setItemDelegateForColumn( KOTodoModel::CategoriesColumn, mCategoriesDelegate );
+  KOTodoDescriptionDelegate *descriptionDelegate = new KOTodoDescriptionDelegate( mView );
+  mView->setItemDelegateForColumn( KOTodoModel::DescriptionColumn, descriptionDelegate );
 
   mView->setContextMenuPolicy( Qt::CustomContextMenu );
   connect( mView, SIGNAL(customContextMenuRequested(const QPoint &)),

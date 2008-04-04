@@ -625,6 +625,10 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
     return ret;
   }
 
+  if ( role == IsRichDescriptionRole ) {
+    return QVariant( todo->descriptionIsRich() );
+  }
+
   return QVariant();
 }
 

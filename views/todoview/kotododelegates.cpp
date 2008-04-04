@@ -23,9 +23,11 @@
 */
 
 #include "kotododelegates.h"
+
 #include "koprefs.h"
 
 #include "kcheckcombobox.h"
+#include "kotodomodel.h"
 
 #include <libkdepim/categoryhierarchyreader.h>
 
@@ -48,6 +50,9 @@
 #include <QSize>
 #include <QEvent>
 #include <QPaintEvent>
+#include <QTextDocument>
+#include <QFont>
+#include <QFontMetrics>
 
 using namespace KCal;
 using namespace KPIM;
@@ -320,5 +325,80 @@ void KOTodoCategoriesDelegate::setCalendar( Calendar *cal )
 {
   mCalendar = cal;
 }
+
+// ---------------- DESCRIPTION DELEGATE -------------------------
+// ---------------------------------------------------------------
+
+KOTodoDescriptionDelegate::KOTodoDescriptionDelegate( QObject *parent )
+  : QStyledItemDelegate( parent )
+{
+}
+
+KOTodoDescriptionDelegate::~KOTodoDescriptionDelegate()
+{
+}
+
+void KOTodoDescriptionDelegate::paint( QPainter *painter,
+                                       const QStyleOptionViewItem &option,
+                                       const QModelIndex &index ) const
+{
+  if ( index.data( KOTodoModel::IsRichDescriptionRole ).toBool() ) {
+    QStyle *style;
+
+    if ( const QStyleOptionViewItemV3 *optionV3 =
+            qstyleoption_cast<const QStyleOptionViewItemV3 *>( &option ) ) {
+      style = optionV3->widget ? optionV3->widget->style() : QApplication::style();
+    } else {
+      style = QApplication::style();
+    }
+    style->drawPrimitive( QStyle::PE_PanelItemViewItem, &option, painter );
+
+    painter->save();
+    QTextDocument tmp;
+    tmp.setHtml( index.data().toString() );
+
+    painter->translate( option.rect.topLeft() );
+    QRect rect = option.rect;
+    rect.moveTo( 0, 0 );
+    tmp.setTextWidth( rect.width() );
+    tmp.drawContents( painter, rect );
+
+    painter->restore();
+  } else {
+    QStyledItemDelegate::paint( painter, option, index );
+  }
+}
+
+QSize KOTodoDescriptionDelegate::sizeHint( const QStyleOptionViewItem &option,
+                                        const QModelIndex &index ) const
+{
+  QSize ret;
+  if ( index.data( KOTodoModel::IsRichDescriptionRole ).toBool() ) {
+    QTextDocument tmp;
+    tmp.setHtml( index.data().toString() );
+    ret = tmp.size().toSize();
+  } else {
+    ret = QStyledItemDelegate::sizeHint( option, index );
+  }
+  // limit height to max. 2 lines
+  // TODO add graphical hint when truncating! make configurable height?
+  if ( ret.height() > option.fontMetrics.height() * 2 ) {
+    ret.setHeight( option.fontMetrics.height() * 2 );
+  }
+  return ret;
+}
+
+QWidget *KOTodoDescriptionDelegate::createEditor( QWidget *parent,
+                                                  const QStyleOptionViewItem &option,
+                                                  const QModelIndex &index ) const
+{
+  if ( index.data( KOTodoModel::IsRichDescriptionRole ).toBool() ) {
+    // rich text can't be edited inline
+    return 0;
+  } else {
+    return QStyledItemDelegate::createEditor( parent, option, index );
+  }
+}
+
 
 #include "kotododelegates.moc"

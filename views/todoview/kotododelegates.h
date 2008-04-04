@@ -125,4 +125,26 @@ class KOTodoCategoriesDelegate : public QStyledItemDelegate
     Calendar *mCalendar;
 };
 
+/**
+  This delegate is responsible for displaying the description of a todo.
+
+  @author Thomas Thrainer
+ */
+class KOTodoDescriptionDelegate : public QStyledItemDelegate
+{
+  Q_OBJECT
+  public:
+    KOTodoDescriptionDelegate( QObject *parent = 0 );
+
+    ~KOTodoDescriptionDelegate();
+
+    void paint( QPainter *painter, const QStyleOptionViewItem &option,
+                const QModelIndex &index ) const;
+    QSize sizeHint( const QStyleOptionViewItem &option,
+                    const QModelIndex &index ) const;
+
+    QWidget *createEditor( QWidget *parent, const QStyleOptionViewItem &option,
+                           const QModelIndex &index ) const;
+};
+
 #endif
