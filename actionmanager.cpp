@@ -1331,11 +1331,11 @@ void ActionManager::updateConfig()
   KOCore::self()->reloadPlugins();
 
   /* Hide/Show the Reminder Daemon */
-//  if ( !KOPrefs::instance()->mReminderDialogVisible ) {
-//    reminderclient->hide();
-//  } else {
-//    reminderclient->show();
-//  }
+  if ( !KOPrefs::instance()->mShowReminderDaemon ) {
+    KOGlobals::self()->reminderClient()->hideDaemon();
+  } else {
+    KOGlobals::self()->reminderClient()->showDaemon();
+  }
 
 // Commented out because it crashes KOrganizer.
 //  mParts = KOCore::self()->reloadParts( mMainWindow, mParts );
