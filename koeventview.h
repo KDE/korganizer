@@ -23,8 +23,8 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef _KOEVENTVIEW_H
-#define _KOEVENTVIEW_H
+#ifndef KOEVENTVIEW_H
+#define KOEVENTVIEW_H
 
 #include <kcal/incidencebase.h>
 

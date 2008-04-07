@@ -21,8 +21,8 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef _KOEDITORDETAILS_H
-#define _KOEDITORDETAILS_H
+#ifndef KOEDITORDETAILS_H
+#define KOEDITORDETAILS_H
 
 #include "customlistviewitem.h"
 #include "koattendeeeditor.h"

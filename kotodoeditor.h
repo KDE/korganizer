@@ -23,8 +23,8 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef _KOTODOEDITOR_H
-#define _KOTODOEDITOR_H
+#ifndef KOTODOEDITOR_H
+#define KOTODOEDITOR_H
 
 #include "koincidenceeditor.h"
 #include <kcal/todo.h>

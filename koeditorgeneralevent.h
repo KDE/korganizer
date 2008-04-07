@@ -21,8 +21,8 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef _KOEDITORGENERALEVENT_H
-#define _KOEDITORGENERALEVENT_H
+#ifndef KOEDITORGENERALEVENT_H
+#define KOEDITORGENERALEVENT_H
 
 #include "koeditorgeneral.h"
 

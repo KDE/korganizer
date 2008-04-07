@@ -24,8 +24,8 @@
   without including the source code for Qt in the source distribution.
 */
 
-#ifndef _KOMONTHVIEW_H
-#define _KOMONTHVIEW_H
+#ifndef KOMONTHVIEW_H
+#define KOMONTHVIEW_H
 
 #include "koeventview.h"
 

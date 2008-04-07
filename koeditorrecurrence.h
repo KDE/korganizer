@@ -21,8 +21,8 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef _KOEDITORRECURRENCE_H
-#define _KOEDITORRECURRENCE_H
+#ifndef KOEDITORRECURRENCE_H
+#define KOEDITORRECURRENCE_H
 
 #include <kcal/incidencebase.h>
 

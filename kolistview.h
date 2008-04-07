@@ -23,8 +23,8 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-#ifndef _KOLISTVIEW_H
-#define _KOLISTVIEW_H
+#ifndef KOLISTVIEW_H
+#define KOLISTVIEW_H
 
 #include <q3dict.h>
 
