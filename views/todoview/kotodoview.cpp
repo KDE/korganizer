@@ -253,6 +253,7 @@ void KOTodoView::showDates( const QDate &start, const QDate &end )
 
 void KOTodoView::showIncidences( const Incidence::List &incidenceList )
 {
+  Q_UNUSED( incidenceList );
   // TODO: hmm, not sure how to do this...
   kDebug() << "this is a stub";
 }

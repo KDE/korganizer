@@ -75,28 +75,25 @@ void KOTodoCompleteDelegate::paint( QPainter *painter,
 {
   QStyle *style;
 
-  if ( const QStyleOptionViewItemV3 *optionV3 =
-            qstyleoption_cast<const QStyleOptionViewItemV3 *>( &option ) ) {
-    style = optionV3->widget ? optionV3->widget->style() : QApplication::style();
-  } else {
-    style = QApplication::style();
-  }
+  QStyleOptionViewItemV4 opt = option;
+  initStyleOption( &opt, index );
 
-  style->drawPrimitive( QStyle::PE_PanelItemViewItem, &option, painter );
+  style = opt.widget ? opt.widget->style() : QApplication::style();
+  style->drawPrimitive( QStyle::PE_PanelItemViewItem, &opt, painter );
 
   // TODO QTreeView does not set State_Editing. Qt task id 205051
   // check if a newer version of Qt fixes this
-  if ( !(option.state & QStyle::State_Editing) ) {
-    QRect rect = option.rect;
+  if ( !(opt.state & QStyle::State_Editing) ) {
+    QRect rect = opt.rect;
 
     rect.adjust( 4, 3, -6, -3 );
 
     QStyleOptionProgressBar pbOption;
 
-    pbOption.palette = option.palette;
-    pbOption.state = option.state;
-    pbOption.direction = option.direction;
-    pbOption.fontMetrics = option.fontMetrics;
+    pbOption.palette = opt.palette;
+    pbOption.state = opt.state;
+    pbOption.direction = opt.direction;
+    pbOption.fontMetrics = opt.fontMetrics;
 
     pbOption.rect = rect;
     pbOption.maximum = 100;
@@ -345,20 +342,18 @@ void KOTodoDescriptionDelegate::paint( QPainter *painter,
   if ( index.data( KOTodoModel::IsRichDescriptionRole ).toBool() ) {
     QStyle *style;
 
-    if ( const QStyleOptionViewItemV3 *optionV3 =
-            qstyleoption_cast<const QStyleOptionViewItemV3 *>( &option ) ) {
-      style = optionV3->widget ? optionV3->widget->style() : QApplication::style();
-    } else {
-      style = QApplication::style();
-    }
-    style->drawPrimitive( QStyle::PE_PanelItemViewItem, &option, painter );
+    QStyleOptionViewItemV4 opt = option;
+    initStyleOption( &opt, index );
+
+    style = opt.widget ? opt.widget->style() : QApplication::style();
+    style->drawPrimitive( QStyle::PE_PanelItemViewItem, &opt, painter );
 
     painter->save();
     QTextDocument tmp;
     tmp.setHtml( index.data().toString() );
 
-    painter->translate( option.rect.topLeft() );
-    QRect rect = option.rect;
+    painter->translate( opt.rect.topLeft() );
+    QRect rect = opt.rect;
     rect.moveTo( 0, 0 );
     tmp.setTextWidth( rect.width() );
     tmp.drawContents( painter, rect );
