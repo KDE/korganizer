@@ -78,13 +78,15 @@ void KOEventViewer::writeSettings( KConfig *config )
 void KOEventViewer::setSource( const QUrl &name )
 {
   QString uri = name.toString();
-  // QTextBrowser for some reason insists on putting // in links,
+  // QTextBrowser for some reason insists on putting // or / in links,
   // this is a crude workaround
   if ( uri.startsWith( KDEPIMPROTOCOL_CONTACT ) ||
        uri.startsWith( KDEPIMPROTOCOL_EMAIL ) ||
        uri.startsWith( QString( KDEPIMPROTOCOL_INCIDENCE ).section( ':', 0, 0 ) ) ||
-       uri.startsWith( KDEPIMPROTOCOL_NEWSARTICLE ) ) {
-    uri.replace( QRegExp( "^([^:]*:)//" ), "\\1" );
+       uri.startsWith( KDEPIMPROTOCOL_NEWSARTICLE ) ||
+       uri.startsWith( "mailto:" ) )
+  {
+    uri.replace( QRegExp( "^([^:]+:)/+" ), "\\1" );
   }
 
   UriHandler::process( uri );
