@@ -33,6 +33,7 @@
 #include <libkdepim/designerfields.h>
 #include <libkdepim/embeddedurlpage.h>
 
+#include <kabc/addressee.h>
 #include <kcal/calendarlocal.h>
 #include <kcal/incidence.h>
 #include <kcal/icalformat.h>
@@ -43,7 +44,6 @@
 #include <kmessagebox.h>
 #include <kinputdialog.h>
 #include <kio/netaccess.h>
-#include <kabc/addressee.h>
 
 #include <QPixmap>
 #include <QPointer>
@@ -75,7 +75,7 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
     showButton( Apply, false );
     showButton( Default, false );
   } else {
-    setButtonText( Default, i18n("Manage &Templates...") );
+    setButtonText( Default, i18n( "Manage &Templates..." ) );
   }
 
   connect( this, SIGNAL( defaultClicked() ), SLOT( slotManageTemplates() ) );
@@ -93,10 +93,10 @@ KOIncidenceEditor::~KOIncidenceEditor()
 void KOIncidenceEditor::setupAttendeesTab()
 {
   QFrame *topFrame = new QFrame( this );
-  addPage( topFrame, i18n("Atte&ndees") );
+  addPage( topFrame, i18n( "Atte&ndees" ) );
   topFrame->setWhatsThis(
-                   i18n("The Attendees tab allows you to Add or Remove "
-                        "Attendees to/from this event or to-do.") );
+    i18n( "The Attendees tab allows you to Add or Remove "
+          "Attendees to/from this event or to-do." ) );
 
   QBoxLayout *topLayout = new QVBoxLayout( topFrame );
 
@@ -115,7 +115,9 @@ void KOIncidenceEditor::slotOk()
   // a non-modal dialog when Kolab is used). So accept should only be executed
   // when "this" is still valid
   QPointer<QWidget> ptr( this );
-  if ( processInput() && ptr ) accept();
+  if ( processInput() && ptr ) {
+    accept();
+  }
 }
 
 void KOIncidenceEditor::slotCancel()
@@ -135,7 +137,7 @@ void KOIncidenceEditor::cancelRemovedAttendees( Incidence *incidence )
   if ( KOPrefs::instance()->thatIsMe( incidence->organizer().email() ) ) {
     Incidence *inc = incidence->clone();
     inc->registerObserver( 0 );
-    mAttendeeEditor->cancelAttendeeEvent( inc );
+    mAttendeeEditor->cancelAttendeeIncidence( inc );
     if ( inc->attendeeCount() > 0 ) {
       emit deleteAttendee( inc );
     }
@@ -161,10 +163,11 @@ void KOIncidenceEditor::slotManageTemplates()
   return;
 }
 
-void KOIncidenceEditor::saveAsTemplate( Incidence *incidence,
-                                        const QString &templateName )
+void KOIncidenceEditor::saveAsTemplate( Incidence *incidence, const QString &templateName )
 {
-  if ( !incidence || templateName.isEmpty() ) return;
+  if ( !incidence || templateName.isEmpty() ) {
+    return;
+  }
 
   QString fileName = "templates/" + incidence->type();
   fileName.append( '/' + templateName );
@@ -176,27 +179,25 @@ void KOIncidenceEditor::saveAsTemplate( Incidence *incidence,
   format.save( &cal, fileName );
 }
 
-void KOIncidenceEditor::slotLoadTemplate( const QString& templateName )
+void KOIncidenceEditor::slotLoadTemplate( const QString &templateName )
 {
   CalendarLocal cal( KOPrefs::instance()->timeSpec() );
   QString fileName = KStandardDirs::locateLocal( "data", "korganizer/templates/" + type() + '/' +
       templateName );
 
   if ( fileName.isEmpty() ) {
-    KMessageBox::error( this, i18n("Unable to find template '%1'.",
-          fileName ) );
+    KMessageBox::error( this, i18n( "Unable to find template '%1'.", fileName ) );
   } else {
     ICalFormat format;
     if ( !format.load( &cal, fileName ) ) {
-      KMessageBox::error( this, i18n("Error loading template file '%1'.",
-            fileName ) );
+      KMessageBox::error( this, i18n( "Error loading template file '%1'.", fileName ) );
       return;
     }
   }
   loadTemplate( cal );
 }
 
-void KOIncidenceEditor::slotTemplatesChanged( const QStringList& newTemplates )
+void KOIncidenceEditor::slotTemplatesChanged( const QStringList &newTemplates )
 {
   templates() = newTemplates;
 }
@@ -205,8 +206,10 @@ void KOIncidenceEditor::setupDesignerTabs( const QString &type )
 {
   QStringList activePages = KOPrefs::instance()->activeDesignerFields();
 
-  QStringList list = KGlobal::dirs()->findAllResources( "data",
-    "korganizer/designer/" + type + "/*.ui",  KStandardDirs::Recursive |KStandardDirs::NoDuplicates);
+  QStringList list = KGlobal::dirs()->findAllResources(
+    "data",
+    "korganizer/designer/" + type + "/*.ui",
+    KStandardDirs::Recursive |KStandardDirs::NoDuplicates );
 
   for ( QStringList::iterator it = list.begin(); it != list.end(); ++it ) {
     const QString &fn = (*it).mid( (*it).lastIndexOf('/') + 1 );
@@ -296,7 +299,6 @@ void KOIncidenceEditor::writeDesignerFields( Incidence *i )
   }
 }
 
-
 void KOIncidenceEditor::setupEmbeddedURLPage( const QString &label,
                                  const QString &url, const QString &mimetype )
 {
@@ -352,8 +354,7 @@ void KOIncidenceEditor::createEmbeddedURLPages( Incidence *i )
         }
       } else*/
       // TODO: Enable that check again!
-      if ( a->mimeType() == QLatin1String("text/html") )
-      {
+      if ( a->mimeType() == QLatin1String( "text/html" ) ) {
         setupEmbeddedURLPage( a->label(), a->uri(), a->mimeType() );
       }
     }
@@ -383,7 +384,7 @@ void KOIncidenceEditor::addAttendees( const QStringList &attendees )
   }
 }
 
-void KOIncidenceEditor::selectInvitationCounterProposal(bool enable)
+void KOIncidenceEditor::selectInvitationCounterProposal( bool enable )
 {
   mIsCounter = enable;
   if ( mIsCounter ) {
@@ -392,6 +393,5 @@ void KOIncidenceEditor::selectInvitationCounterProposal(bool enable)
     enableButtonApply( false );
   }
 }
-
 
 #include "koincidenceeditor.moc"

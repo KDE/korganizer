@@ -72,26 +72,26 @@ void KOEventEditor::init()
   setupDesignerTabs( "event" );
 
   // Propagate date time settings to recurrence tab
-  connect( mGeneral, SIGNAL( dateTimesChanged( const QDateTime &, const QDateTime & ) ),
-           mRecurrence, SLOT( setDateTimes( const QDateTime &, const QDateTime &) ) );
-  connect( mGeneral, SIGNAL( dateTimeStrChanged( const QString & ) ),
-           mRecurrence, SLOT( setDateTimeStr( const QString & ) ) );
-  connect( mFreeBusy, SIGNAL( dateTimesChanged( const QDateTime &, const QDateTime & ) ),
-           mRecurrence, SLOT( setDateTimes( const QDateTime &, const QDateTime & ) ) );
+  connect( mGeneral, SIGNAL(dateTimesChanged(const QDateTime&,const QDateTime& )),
+           mRecurrence, SLOT(setDateTimes(const QDateTime&,const QDateTime&)) );
+  connect( mGeneral, SIGNAL(dateTimeStrChanged(const QString&)),
+           mRecurrence, SLOT(setDateTimeStr(const QString&)) );
+  connect( mFreeBusy, SIGNAL(dateTimesChanged(const QDateTime&,const QDateTime&)),
+           mRecurrence, SLOT(setDateTimes(const QDateTime&,const QDateTime&)) );
 
   // Propagate date time settings to gantt tab and back
-  connect( mGeneral, SIGNAL( dateTimesChanged( const QDateTime &, const QDateTime & ) ),
-           mFreeBusy, SLOT( slotUpdateGanttView( const QDateTime &, const QDateTime & ) ) );
-  connect( mFreeBusy, SIGNAL( dateTimesChanged( const QDateTime &, const QDateTime & ) ),
-           mGeneral, SLOT( setDateTimes( const QDateTime &, const QDateTime & ) ) );
+  connect( mGeneral, SIGNAL(dateTimesChanged(const QDateTime&,const QDateTime&)),
+           mFreeBusy, SLOT(slotUpdateGanttView(const QDateTime&,const QDateTime&)) );
+  connect( mFreeBusy, SIGNAL(dateTimesChanged(const QDateTime&,const QDateTime&)),
+           mGeneral, SLOT(setDateTimes(const QDateTime&,const QDateTime&)) );
 
-  connect( mGeneral, SIGNAL( focusReceivedSignal() ),
-           SIGNAL( focusReceivedSignal() ) );
+  connect( mGeneral, SIGNAL(focusReceivedSignal()),
+           SIGNAL(focusReceivedSignal()) );
 
-  connect( mGeneral, SIGNAL( openCategoryDialog() ),
-           SIGNAL( editCategories() ) );
-  connect( this, SIGNAL( updateCategoryConfig() ),
-           mGeneral, SIGNAL( updateCategoryConfig() ) );
+  connect( mGeneral, SIGNAL(openCategoryDialog()),
+           SIGNAL(editCategories()) );
+  connect( this, SIGNAL(updateCategoryConfig()),
+           mGeneral, SIGNAL(updateCategoryConfig()) );
 
   connect( mFreeBusy, SIGNAL(updateAttendeeSummary(int)),
            mGeneral, SLOT(updateAttendeeSummary(int)) );
@@ -158,13 +158,13 @@ void KOEventEditor::setupGeneral()
 
     mGeneral->initInvitationBar( topFrame, topLayout );
     mGeneral->initHeader( topFrame, topLayout );
-    mGeneral->initTime(topFrame,topLayout);
-    mGeneral->initDescription(topFrame,topLayout);
-    mGeneral->initAttachments(topFrame,topLayout);
-    connect( mGeneral, SIGNAL( openURL( const KUrl& ) ),
-             this, SLOT( openURL( const KUrl& ) ) );
-    connect( this, SIGNAL( signalAddAttachments( const QStringList&, const QStringList&, bool ) ),
-             mGeneral, SLOT( addAttachments( const QStringList&, const QStringList&, bool ) ) );
+    mGeneral->initTime( topFrame, topLayout );
+    mGeneral->initDescription( topFrame, topLayout );
+    mGeneral->initAttachments( topFrame, topLayout );
+    connect( mGeneral, SIGNAL(openURL(const KUrl&)),
+             this, SLOT(openURL(const KUrl&)) );
+    connect( this, SIGNAL(signalAddAttachments(const QStringList&,const QStringList&,bool)),
+             mGeneral, SLOT(addAttachments(const QStringList&,const QStringList&,bool)) );
   }
 
   mGeneral->finishSetup();
@@ -324,7 +324,9 @@ void KOEventEditor::processCancel()
   if ( mFreeBusy ) {
     mFreeBusy->cancelReload();
   }
-  if ( mIsCounter ) deleteEvent();
+  if ( mIsCounter ) {
+    deleteEvent();
+  }
 }
 
 void KOEventEditor::deleteEvent()
@@ -343,7 +345,7 @@ void KOEventEditor::readEvent( Event *event, Calendar *calendar, bool tmpl )
   mRecurrence->readIncidence( event );
 //  mAlarms->readIncidence( event );
   if ( mFreeBusy ) {
-    mFreeBusy->readEvent( event );
+    mFreeBusy->readIncidence( event );
     mFreeBusy->triggerReload();
   }
 
@@ -354,8 +356,9 @@ void KOEventEditor::readEvent( Event *event, Calendar *calendar, bool tmpl )
 void KOEventEditor::writeEvent( Event *event )
 {
   mGeneral->writeEvent( event );
-  if ( mFreeBusy )
-    mFreeBusy->writeEvent( event );
+  if ( mFreeBusy ) {
+    mFreeBusy->writeIncidence( event );
+  }
 
   cancelRemovedAttendees( event );
 

@@ -415,7 +415,7 @@ bool KOEditorFreeBusy::updateEnabled() const
   return mGanttView->getUpdateEnabled();
 }
 
-void KOEditorFreeBusy::readEvent( Incidence *incidence )
+void KOEditorFreeBusy::readIncidence( Incidence *incidence )
 {
   bool block = updateEnabled();
   setUpdateEnabled( false );
@@ -427,7 +427,7 @@ void KOEditorFreeBusy::readEvent( Incidence *incidence )
   mIsOrganizer = KOPrefs::instance()->thatIsMe( incidence->organizer().email() );
   updateStatusSummary();
   clearSelection();
-  KOAttendeeEditor::readEvent( incidence );
+  KOAttendeeEditor::readIncidence( incidence );
 
   setUpdateEnabled( block );
   emit updateAttendeeSummary( mGanttView->childCount() );
@@ -758,7 +758,7 @@ void KOEditorFreeBusy::editFreeBusyUrl( KDGanttViewItem *i )
   dialog.exec();
 }
 
-void KOEditorFreeBusy::writeEvent( Incidence *incidence )
+void KOEditorFreeBusy::writeIncidence( Incidence *incidence )
 {
   incidence->clearAttendees();
   QVector<FreeBusyItem*> toBeDeleted;
@@ -802,7 +802,7 @@ void KOEditorFreeBusy::writeEvent( Incidence *incidence )
     }
   }
 
-  KOAttendeeEditor::writeEvent( incidence );
+  KOAttendeeEditor::writeIncidence( incidence );
 
   // cleanup
   qDeleteAll( toBeDeleted );

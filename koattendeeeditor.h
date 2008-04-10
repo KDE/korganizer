@@ -21,8 +21,8 @@
 #ifndef KOATTENDEEEDITOR_H
 #define KOATTENDEEEDITOR_H
 
-#include <QWidget>
 #include <kcal/attendee.h>
+#include <QWidget>
 
 class KComboBox;
 class QBoxLayout;
@@ -54,11 +54,11 @@ class KOAttendeeEditor : public QWidget
 
     virtual void insertAttendee( KCal::Attendee *attendee, bool fetchFB = true ) = 0;
 
-    virtual void readEvent( KCal::Incidence *incidence );
-    virtual void writeEvent( KCal::Incidence *incidence );
+    virtual void readIncidence( KCal::Incidence *incidence );
+    virtual void writeIncidence( KCal::Incidence *incidence );
 
-    /** return a clone of the event with attendees to be canceld*/
-    void cancelAttendeeEvent( KCal::Incidence *incidence );
+    /** return a clone of the incidence with attendees to be canceld*/
+    void cancelAttendeeIncidence( KCal::Incidence *incidence );
 
   public slots:
     void acceptForMe();

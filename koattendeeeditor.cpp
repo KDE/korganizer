@@ -54,9 +54,9 @@ void KOAttendeeEditor::initOrganizerWidgets( QWidget *parent, QBoxLayout *layout
   layout->addWidget( mOrganizerHBox );
   // If creating a new event, then the user is the organizer -> show the
   // identity combo
-  // readEvent will delete it and set another label text instead, if the user
-  // isn't the organizer.
-  // Note that the i18n text below is duplicated in readEvent
+  // readIncidence will delete it and set another label text instead,
+  // if the user isn't the organizer.
+  // Note that the i18n text below is duplicated in readIncidence
   QString whatsThis = i18n( "Sets the identity corresponding to "
                             "the organizer of this to-do or event. "
                             "Identities can be set in the 'Personal' section "
@@ -250,7 +250,7 @@ void KOAttendeeEditor::addNewAttendee()
   QTimer::singleShot( 0, mNameEdit, SLOT(selectAll()) );
 }
 
-void KOAttendeeEditor::readEvent( KCal::Incidence *incidence )
+void KOAttendeeEditor::readIncidence( KCal::Incidence *incidence )
 {
   mdelAttendees.clear();
   if ( KOPrefs::instance()->thatIsMe( incidence->organizer().email() ) ) {
@@ -288,7 +288,7 @@ void KOAttendeeEditor::readEvent( KCal::Incidence *incidence )
   }
 }
 
-void KOAttendeeEditor::writeEvent( KCal::Incidence *incidence )
+void KOAttendeeEditor::writeIncidence( KCal::Incidence *incidence )
 {
   if ( mOrganizerCombo ) {
     // TODO: Don't take a string and split it up... Is there a better way?
@@ -395,7 +395,7 @@ void KOAttendeeEditor::updateAttendeeInput()
   }
 }
 
-void KOAttendeeEditor::cancelAttendeeEvent( KCal::Incidence *incidence )
+void KOAttendeeEditor::cancelAttendeeIncidence( KCal::Incidence *incidence )
 {
   incidence->clearAttendees();
   foreach ( Attendee *att, mdelAttendees ) {

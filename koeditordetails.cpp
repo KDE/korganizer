@@ -162,7 +162,7 @@ void KOAttendeeListView::dropEvent( QDropEvent *e )
       }
       addAttendee( em );
     }
-  } else
+  }
 #endif // KORG_NOKABC
   if ( md->hasText() ) {
     QString text = md->text();
@@ -266,7 +266,7 @@ void KOEditorDetails::setDefaults()
 void KOEditorDetails::readIncidence( Incidence *event )
 {
   mListView->clear();
-  KOAttendeeEditor::readEvent( event );
+  KOAttendeeEditor::readIncidence( event );
 
   mListView->setSelected( mListView->firstChild(), true );
 
@@ -318,7 +318,7 @@ void KOEditorDetails::writeIncidence( Incidence *incidence )
     }
   }
 
-  KOAttendeeEditor::writeEvent( incidence );
+  KOAttendeeEditor::writeIncidence( incidence );
 
   // cleanup
   qDeleteAll( toBeDeleted );
@@ -330,33 +330,36 @@ bool KOEditorDetails::validateInput()
   return true;
 }
 
-KCal::Attendee * KOEditorDetails::currentAttendee() const
+KCal::Attendee *KOEditorDetails::currentAttendee() const
 {
   Q3ListViewItem *item = mListView->selectedItem();
   AttendeeListItem *aItem = static_cast<AttendeeListItem *>( item );
-  if ( !aItem )
+  if ( !aItem ) {
     return 0;
+  }
   return aItem->data();
 }
 
 void KOEditorDetails::updateCurrentItem()
 {
   AttendeeListItem *item = static_cast<AttendeeListItem*>( mListView->selectedItem() );
-  if ( item )
+  if ( item ) {
     item->updateItem();
+  }
 }
 
-void KOEditorDetails::slotInsertAttendee(Attendee * a)
+void KOEditorDetails::slotInsertAttendee( Attendee *a )
 {
   insertAttendee( a );
 }
 
-void KOEditorDetails::changeStatusForMe(Attendee::PartStat status)
+void KOEditorDetails::changeStatusForMe( Attendee::PartStat status )
 {
   const QStringList myEmails = KOPrefs::instance()->allEmails();
   for ( Q3ListViewItemIterator it( mListView ); it.current(); ++it ) {
     AttendeeListItem *item = static_cast<AttendeeListItem*>( it.current() );
-    for ( QStringList::ConstIterator it2( myEmails.begin() ), end( myEmails.end() ); it2 != end; ++it2 ) {
+    for ( QStringList::ConstIterator it2( myEmails.begin() ), end( myEmails.end() );
+          it2 != end; ++it2 ) {
       if ( item->data()->email() == *it2 ) {
         item->data()->setStatus( status );
         item->updateItem();
