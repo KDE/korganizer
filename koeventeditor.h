@@ -126,12 +126,12 @@ class KOEventEditor : public KOIncidenceEditor
 
   private:
     Event *mEvent;
-    Calendar* mCalendar;
+    Calendar *mCalendar;
 
     KOEditorGeneralEvent *mGeneral;
     KOEditorRecurrenceDialog *mRecurrenceDialog;
-    KOEditorRecurrence   *mRecurrence;
-    KOEditorFreeBusy     *mFreeBusy;
+    KOEditorRecurrence *mRecurrence;
+    KOEditorFreeBusy *mFreeBusy;
 };
 
 #endif

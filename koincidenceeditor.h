@@ -30,19 +30,21 @@
 #include <QList>
 
 namespace KPIM {
-class DesignerFields;
-class EmbeddedURLPage;
+  class DesignerFields;
+  class EmbeddedURLPage;
 }
 
-namespace KOrg { class IncidenceChangerBase; }
+namespace KOrg {
+  class IncidenceChangerBase;
+}
 
 class KOEditorDetails;
 class KOAttendeeEditor;
 
 namespace KCal {
-class Calendar;
-class CalendarLocal;
-class Incidence;
+  class Calendar;
+  class CalendarLocal;
+  class Incidence;
 }
 using namespace KCal;
 using namespace KOrg;
@@ -62,7 +64,7 @@ class KOIncidenceEditor : public KPageDialog
     virtual ~KOIncidenceEditor();
 
     /** This incidence has been modified externally */
-    virtual void modified (int /*change*/=0) {}
+    virtual void modified( int /*change*/= 0 ) {}
 
     virtual void reload() = 0;
 
@@ -70,22 +72,24 @@ class KOIncidenceEditor : public KPageDialog
 
   public slots:
     /** Edit an existing todo. */
-    virtual void editIncidence(Incidence *, Calendar *) = 0;
-    virtual void setIncidenceChanger( IncidenceChangerBase *changer ) {
-        mChanger = changer; }
+    virtual void editIncidence( Incidence *, Calendar * ) = 0;
+    virtual void setIncidenceChanger( IncidenceChangerBase *changer )
+    { mChanger = changer; }
+
     /** Initialize editor. This function creates the tab widgets. */
     virtual void init() = 0;
+
     /**
       Adds attachments to the editor
     */
     void addAttachments( const QStringList &attachments,
-                         const QStringList& mimeTypes = QStringList(),
+                         const QStringList &mimeTypes = QStringList(),
                          bool inlineAttachment = false );
+
     /**
       Adds attendees to the editor
     */
     void addAttendees( const QStringList &attendees );
-
 
   signals:
     void deleteAttendee( Incidence * );
@@ -97,9 +101,8 @@ class KOIncidenceEditor : public KPageDialog
 
     void deleteIncidenceSignal( Incidence * );
     void signalAddAttachments( const QStringList &attachments,
-                               const QStringList& mimeTypes = QStringList(),
+                               const QStringList &mimeTypes = QStringList(),
                                bool inlineAttachment = false );
-
 
   protected slots:
     void slotApply();
@@ -110,12 +113,12 @@ class KOIncidenceEditor : public KPageDialog
     virtual void slotManageTemplates();
 
     virtual void slotSaveTemplate( const QString & ) = 0;
-    virtual void slotLoadTemplate( const QString& );
-    virtual void slotTemplatesChanged( const QStringList& );
+    virtual void slotLoadTemplate( const QString & );
+    virtual void slotTemplatesChanged( const QStringList & );
 
   protected:
     virtual QString type() { return QString(); }
-    virtual QStringList& templates() const = 0;
+    virtual QStringList &templates() const = 0;
     virtual void loadTemplate( CalendarLocal & ) = 0;
 
     void setupAttendeesTab();
@@ -125,6 +128,7 @@ class KOIncidenceEditor : public KPageDialog
 
     void readDesignerFields( Incidence *i );
     void writeDesignerFields( Incidence *i );
+
     // Returns the page widget. To remove the tab, just delete that one.
     QWidget *addDesignerTab( const QString &uifile );
 
@@ -133,7 +137,8 @@ class KOIncidenceEditor : public KPageDialog
     void createEmbeddedURLPages( Incidence *i );
 
     /**
-      Process user input and create or update event. Returns false if input is invalid.
+      Process user input and create or update event.
+      @return false if input is invalid.
     */
     virtual bool processInput() { return false; }
 
@@ -155,5 +160,3 @@ class KOIncidenceEditor : public KPageDialog
 };
 
 #endif
-
-

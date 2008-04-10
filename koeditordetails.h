@@ -27,6 +27,8 @@
 #include "customlistviewitem.h"
 #include "koattendeeeditor.h"
 
+#include <kcal/attendee.h>
+
 #include <k3listview.h>
 #include <kvbox.h>
 
@@ -36,8 +38,6 @@
 #include <QEvent>
 #include <QDropEvent>
 #include <QList>
-
-#include <kcal/attendee.h>
 
 class QPushButton;
 class QCheckBox;
@@ -103,7 +103,7 @@ class KOEditorDetails : public KOAttendeeEditor
     /** Returns whether at least one attendee was added */
     bool hasAttendees();
 
-    void insertAttendee( Attendee*, bool goodEmailAddress = true );
+    void insertAttendee( Attendee *, bool goodEmailAddress=true );
 
   protected slots:
     void removeAttendee();
@@ -112,7 +112,7 @@ class KOEditorDetails : public KOAttendeeEditor
   protected:
     void changeStatusForMe( Attendee::PartStat status );
 
-    KCal::Attendee* currentAttendee() const;
+    KCal::Attendee *currentAttendee() const;
     void updateCurrentItem();
 
   private:
