@@ -31,8 +31,8 @@ set(korganizer_SRCS
    koapp.cpp
 )
 
-# todo: move to Oxygen icon
-kde4_add_app_icon(korganizer_SRCS "hi*-app-korganizer.png")
+# todo: use KOrganizer icon
+kde4_add_app_icon(korganizer_SRCS "${KDE4_ICON_DIR}/oxygen/*/apps/office-calendar.png")
 
 kde4_add_executable(korganizer ${korganizer_SRCS})
 
