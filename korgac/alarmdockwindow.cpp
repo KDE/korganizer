@@ -61,7 +61,8 @@ AlarmDockWindow::AlarmDockWindow()
   // Set up icons
   KIconLoader::global()->addAppDir( "korgac" );
   KIconLoader::global()->addAppDir( "kdepim" );
-  mIconEnabled  = loadIcon( "korgac" );
+  QString iconPath = KIconLoader::global()->iconPath( "korgac", KIconLoader::Panel );
+  mIconEnabled  = loadIcon( iconPath );
   if ( mIconEnabled.isNull() ) {
     KMessageBox::sorry( parentWidget(),
                         i18nc( "@info", "Cannot load system tray icon." ) );
