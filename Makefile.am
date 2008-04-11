@@ -109,7 +109,8 @@ libkorganizer_la_SOURCES = komessagebox.cpp \
 	agendaview.cpp multiagendaview.cpp \
 	timelineitem.cpp \
 	kotimelineview.cpp \
-	koattendeeeditor.cpp
+	koattendeeeditor.cpp \
+	timelabels.cpp
 
 
 libkorganizer_eventviewer_la_LDFLAGS = $(all_libraries) $(KDE_RPATH) \

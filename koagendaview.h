@@ -38,6 +38,7 @@ class QBoxLayout;
 
 class KOAgenda;
 class KOAgendaItem;
+class TimeLabels;
 class KConfig;
 
 namespace KCal {
@@ -47,50 +48,6 @@ namespace KCal {
 namespace KOrg {
   class IncidenceChangerBase;
 }
-
-class TimeLabels : public QScrollView
-{
-    Q_OBJECT
-  public:
-    TimeLabels( int rows, QWidget *parent = 0, const char *name = 0,
-                WFlags f = 0 );
-
-    /** Calculates the minimum width */
-    virtual int minimumWidth() const;
-
-    /** updates widget's internal state */
-    void updateConfig();
-
-    /**  */
-    void setAgenda( KOAgenda *agenda );
-
-    /**  */
-    virtual void paintEvent( QPaintEvent *e );
-
-  public slots:
-    /** update time label positions */
-    void positionChanged();
-
-  protected:
-    void drawContents( QPainter *p, int cx, int cy, int cw, int ch );
-
-  private slots:
-    /** update the position of the marker showing the mouse position */
-    void mousePosChanged(const QPoint &pos);
-
-    void showMousePos();
-    void hideMousePos();
-
-    void setCellHeight( double height );
-
-  private:
-    int mRows;
-    double mCellHeight;
-    int mMiniWidth;
-    KOAgenda* mAgenda;
-
-    QFrame *mMousePos;  // shows a marker for the current mouse position in y direction
-};
 
 class EventIndicator : public QFrame
 {
@@ -110,8 +67,6 @@ class EventIndicator : public QFrame
 
   private:
     int mColumns;
-    QHBox *mTopBox;
-    QBoxLayout *mTopLayout;
     Location mLocation;
     QPixmap mPixmap;
     QMemArray<bool> mEnabled;
@@ -150,7 +105,7 @@ class KOAgendaView : public KOrg::AgendaView
 {
     Q_OBJECT
   public:
-    KOAgendaView( Calendar *cal, QWidget *parent = 0, const char *name = 0 );
+    KOAgendaView( Calendar *cal, QWidget *parent = 0, const char *name = 0, bool isSideBySide = false );
     virtual ~KOAgendaView();
 
 
@@ -190,6 +145,9 @@ class KOAgendaView : public KOrg::AgendaView
 
     /** Show only incidences from the given resource. */
     void setResource( KCal::ResourceCalendar *res, const QString &subResource = QString::null );
+
+    KOAgenda* agenda() const { return mAgenda; }
+    QSplitter* splitter() const { return mSplitterAgenda; }
 
   public slots:
     virtual void updateView();
@@ -319,6 +277,8 @@ class KOAgendaView : public KOrg::AgendaView
 
     KCal::ResourceCalendar *mResource;
     QString mSubResource;
+
+    bool mIsSideBySide;
 };
 
 #endif
