@@ -142,10 +142,10 @@ bool KOMailClient::send(const QString &from,const QString &to,
 
     QString command = KStandardDirs::findExe(QString::fromLatin1("sendmail"),
         QString::fromLatin1("/sbin:/usr/sbin:/usr/lib"));
-    if (!command.isNull()) command += QString::fromLatin1(" -oi -t");
+    if (!command.isEmpty()) command += QString::fromLatin1(" -oi -t");
     else {
       command = KStandardDirs::findExe(QString::fromLatin1("mail"));
-      if (command.isNull()) return false; // give up
+      if (command.isEmpty()) return false; // give up
 
       command.append(QString::fromLatin1(" -s "));
       command.append(KShell::quoteArg(subject));

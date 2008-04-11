@@ -144,7 +144,7 @@ class AttachmentIconItem : public K3IconViewItem
     {
       QString iconStr = mimeType->iconName( uri );
       QStringList overlays;
-      if ( !uri.isNull() && !binary ) {
+      if ( !uri.isEmpty() && !binary ) {
         overlays << "emblem-link";
       }
 

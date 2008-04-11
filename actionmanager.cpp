@@ -1902,7 +1902,7 @@ void ActionManager::showDate( const QDate &date )
 void ActionManager::updateUndoAction( const QString &text )
 {
   mUndoAction->setText( i18n( "Undo" ) );
-  if ( text.isNull() ) {
+  if ( text.isEmpty() ) {
     mUndoAction->setEnabled( false );
   } else {
     mUndoAction->setEnabled( true );
@@ -1915,7 +1915,7 @@ void ActionManager::updateUndoAction( const QString &text )
 
 void ActionManager::updateRedoAction( const QString &text )
 {
-  if ( text.isNull() ) {
+  if ( text.isEmpty() ) {
     mRedoAction->setEnabled( false );
     mRedoAction->setText( i18n( "Redo" ) );
   } else {

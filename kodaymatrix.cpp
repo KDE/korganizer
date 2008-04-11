@@ -239,7 +239,7 @@ void KODayMatrix::updateView( const QDate &actdate )
       if ( !holidays.isEmpty() ) {
         holiStr = holidays.join( i18nc( "delimiter for joining holiday names", "," ) );
       }
-      if ( holiStr.isNull() ) {
+      if ( holiStr.isEmpty() ) {
         holiStr = "";
       }
     }
