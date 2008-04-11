@@ -522,6 +522,8 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
     switch ( index.column() ) {
     case SummaryColumn:
       return QVariant( todo->summary() );
+    case RecurColumn:
+      return QVariant( todo->recurs() ? i18n("Yes") : i18n("No") );
     case PriorityColumn:
       if ( todo->priority() == 0 ) {
         return QVariant( QString::fromAscii( "--" ) );
@@ -530,7 +532,7 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
     case PercentColumn:
       return QVariant( todo->percentComplete() );
     case DueDateColumn:
-      if ( todo->hasDueDate() ) {
+      if ( todo->hasDueDate() && todo->dtDue().isValid() ) {
         QString dtStr = todo->dtDueDateStr();
         if ( !todo->allDay() ) {
           dtStr += ' ' + todo->dtDueTimeStr();
@@ -562,7 +564,7 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
     case PercentColumn:
       return QVariant( todo->percentComplete() );
     case DueDateColumn:
-      if ( todo->hasDueDate() ) {
+      if ( todo->hasDueDate() && todo->dtDue().isValid() ) {
         QString dtStr = todo->dtDueDateStr();
         if ( !todo->allDay() ) {
           dtStr += ' ' + todo->dtDueTimeStr();
