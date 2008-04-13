@@ -532,12 +532,8 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
     case PercentColumn:
       return QVariant( todo->percentComplete() );
     case DueDateColumn:
-      if ( todo->hasDueDate() && todo->dtDue().isValid() ) {
-        QString dtStr = todo->dtDueDateStr();
-        if ( !todo->allDay() ) {
-          dtStr += ' ' + todo->dtDueTimeStr();
-        }
-        return QVariant( dtStr );
+      if ( todo->hasDueDate() && todo->dtDue().date().isValid() ) {
+        return QVariant( todo->dtDueStr() );
       } else {
         return QVariant();
       }
@@ -564,19 +560,9 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
     case PercentColumn:
       return QVariant( todo->percentComplete() );
     case DueDateColumn:
-      if ( todo->hasDueDate() && todo->dtDue().isValid() ) {
-        QString dtStr = todo->dtDueDateStr();
-        if ( !todo->allDay() ) {
-          dtStr += ' ' + todo->dtDueTimeStr();
-        }
-        return QVariant( dtStr );
-      } else {
-        return QVariant();
-      }
+      return QVariant( todo->dtDue().date() );
     case CategoriesColumn:
-    {
       return QVariant( todo->categories() );
-    }
     case DescriptionColumn:
       return QVariant( todo->description() );
     }
@@ -705,7 +691,12 @@ bool KOTodoModel::setData( const QModelIndex &index, const QVariant &value, int 
           modified = KOGlobals::COMPLETION_MODIFIED;
           break;
         case DueDateColumn:
-          //TODO
+          {
+            KDateTime tmp = todo->dtDue();
+            tmp.setDate( value.toDate() );
+            todo->setDtDue( tmp );
+            modified = KOGlobals::DATE_MODIFIED;
+          }
           break;
         case CategoriesColumn:
           todo->setCategories( value.toStringList() );

@@ -79,10 +79,16 @@ KOTodoView::KOTodoView( Calendar *cal, QWidget *parent )
 
   KOTodoPriorityDelegate *priorityDelegate = new KOTodoPriorityDelegate( mView );
   mView->setItemDelegateForColumn( KOTodoModel::PriorityColumn, priorityDelegate );
+
+  KOTodoDueDateDelegate *dueDateDelegate = new KOTodoDueDateDelegate( mView );
+  mView->setItemDelegateForColumn( KOTodoModel::DueDateColumn, dueDateDelegate );
+
   KOTodoCompleteDelegate *completeDelegate = new KOTodoCompleteDelegate( mView );
   mView->setItemDelegateForColumn( KOTodoModel::PercentColumn, completeDelegate );
+
   mCategoriesDelegate = new KOTodoCategoriesDelegate( cal, mView );
   mView->setItemDelegateForColumn( KOTodoModel::CategoriesColumn, mCategoriesDelegate );
+
   KOTodoDescriptionDelegate *descriptionDelegate = new KOTodoDescriptionDelegate( mView );
   mView->setItemDelegateForColumn( KOTodoModel::DescriptionColumn, descriptionDelegate );
 

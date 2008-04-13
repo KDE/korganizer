@@ -97,6 +97,31 @@ class KOTodoPriorityDelegate : public QStyledItemDelegate
 };
 
 /**
+  This delegate is responsible for displaying the due date of todos.
+  It also provides a combo box to change the due date of the todo
+  when in editing mode.
+
+  @author Thomas Thrainer
+ */
+class KOTodoDueDateDelegate : public QStyledItemDelegate
+{
+  Q_OBJECT
+  public:
+    KOTodoDueDateDelegate( QObject *parent = 0 );
+
+    ~KOTodoDueDateDelegate();
+
+    QWidget *createEditor( QWidget *parent, const QStyleOptionViewItem &option,
+                           const QModelIndex &index ) const;
+    void setEditorData( QWidget *editor, const QModelIndex &index ) const;
+    void setModelData( QWidget *editor, QAbstractItemModel *model,
+                       const QModelIndex &index ) const;
+    void updateEditorGeometry( QWidget *editor,
+                               const QStyleOptionViewItem &option,
+                               const QModelIndex &index ) const;
+};
+
+/**
   This delegate is responsible for displaying the categories of todos.
   It also provides a combo box to change the categories of the todo
   when in editing mode.

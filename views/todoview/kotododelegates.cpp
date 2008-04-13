@@ -29,6 +29,7 @@
 #include "kcheckcombobox.h"
 #include "kotodomodel.h"
 
+#include <libkdepim/kdateedit.h>
 #include <libkdepim/categoryhierarchyreader.h>
 
 #include <kcal/calendar.h>
@@ -227,6 +228,58 @@ void KOTodoPriorityDelegate::setModelData( QWidget *editor,
 void KOTodoPriorityDelegate::updateEditorGeometry( QWidget *editor,
                                                    const QStyleOptionViewItem &option,
                                                    const QModelIndex &index ) const
+{
+  Q_UNUSED( option );
+  Q_UNUSED( index );
+
+  editor->setGeometry( option.rect );
+}
+
+
+// ---------------- DUE DATE DELEGATE ----------------------------
+// ---------------------------------------------------------------
+
+KOTodoDueDateDelegate::KOTodoDueDateDelegate( QObject *parent )
+  : QStyledItemDelegate( parent )
+{
+}
+
+KOTodoDueDateDelegate::~KOTodoDueDateDelegate()
+{
+}
+
+QWidget *KOTodoDueDateDelegate::createEditor( QWidget *parent,
+                                              const QStyleOptionViewItem &option,
+                                              const QModelIndex &index ) const
+{
+  Q_UNUSED( option );
+  Q_UNUSED( index );
+
+  KDateEdit *dateEdit = new KDateEdit( parent );
+
+  return dateEdit;
+}
+
+void KOTodoDueDateDelegate::setEditorData( QWidget *editor,
+                                           const QModelIndex &index ) const
+{
+  KDateEdit *dateEdit = static_cast<KDateEdit *>( editor );
+
+  dateEdit->setDate( index.data( Qt::EditRole ).toDate() );
+}
+
+void KOTodoDueDateDelegate::setModelData( QWidget *editor,
+                                          QAbstractItemModel *model,
+                                          const QModelIndex &index ) const
+{
+  KDateEdit *dateEdit = static_cast<KDateEdit *>( editor );
+
+  model->setData( index, dateEdit->date() );
+}
+
+void KOTodoDueDateDelegate::updateEditorGeometry( QWidget *editor,
+                                                  const QStyleOptionViewItem &option,
+                                                  const QModelIndex &index ) const
 {
   Q_UNUSED( option );
   Q_UNUSED( index );
