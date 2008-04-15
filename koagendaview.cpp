@@ -565,7 +565,8 @@ void KOAgendaView::createDayLabels()
 
   mDayLabels = new QFrame (mDayLabelsFrame);
   mLayoutDayLabels = new QHBoxLayout(mDayLabels);
-  mLayoutDayLabels->addSpacing(mTimeLabels->width());
+  if ( !mIsSideBySide )
+    mLayoutDayLabels->addSpacing(mTimeLabels->width());
 
   const KCalendarSystem*calsys=KOGlobals::self()->calendarSystem();
 
@@ -629,7 +630,8 @@ void KOAgendaView::createDayLabels()
 #endif
   }
 
-  mLayoutDayLabels->addSpacing(mAgenda->verticalScrollBar()->width());
+  if ( !mIsSideBySide )
+    mLayoutDayLabels->addSpacing(mAgenda->verticalScrollBar()->width());
   mDayLabels->show();
 }
 
