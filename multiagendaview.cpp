@@ -120,7 +120,7 @@ void MultiAgendaView::recreateViews()
     }
   }
   setupViews();
-  resizeScrollView( size() );
+  QTimer::singleShot( 0, this, SLOT(slotResizeScrollView()) );
   mTimeLabels->updateConfig();
 
   QScrollBar *scrollBar = mAgendaViews.first()->agenda()->verticalScrollBar();
@@ -440,6 +440,11 @@ void MultiAgendaView::installSplitterEventFilter(QSplitter * splitter)
     ++it;
   }
   delete objlist;
+}
+
+void MultiAgendaView::slotResizeScrollView()
+{
+  resizeScrollView( size() );
 }
 
 #include "multiagendaview.moc"
