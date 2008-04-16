@@ -61,7 +61,7 @@ MultiAgendaView::MultiAgendaView(Calendar * cal, QWidget * parent, const char *n
   mTimeLabels = new TimeLabels( 24, sideBox );
   eiSpacer = new EventIndicator( EventIndicator::Bottom, sideBox );
   eiSpacer->changeColumns( 0 );
-  mLeftBottomSpacer = new QWidget( sideBox );
+  mLeftBottomSpacer = new QWidget( topSideBox );
   topLevelLayout->addWidget( topSideBox );
 
   mScrollView = new QScrollView( this );
@@ -86,7 +86,7 @@ MultiAgendaView::MultiAgendaView(Calendar * cal, QWidget * parent, const char *n
   eiSpacer = new EventIndicator( EventIndicator::Bottom, sideBox );
   eiSpacer->setFixedHeight( eiSpacer->minimumHeight() );
   eiSpacer->changeColumns( 0 );
-  mRightBottomSpacer = new QWidget( sideBox );
+  mRightBottomSpacer = new QWidget( topSideBox );
   topLevelLayout->addWidget( topSideBox );
 
   recreateViews();
