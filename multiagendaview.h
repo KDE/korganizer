@@ -23,7 +23,10 @@
 
 class Q3ScrollView;
 class KHBox;
+class QSplitter;
 class KOAgendaView;
+class TimeLabelsZone;
+class QScrollBar;
 
 namespace KCal {
   class ResourceCalendar;
@@ -55,6 +58,7 @@ class MultiAgendaView : public AgendaView
     void showIncidences( const Incidence::List &incidenceList );
     void updateView();
     void changeIncidenceDisplay( Incidence *incidence, int mode );
+    void updateConfig();
 
     void setIncidenceChanger( IncidenceChangerBase *changer );
 
@@ -73,12 +77,18 @@ class MultiAgendaView : public AgendaView
   private slots:
     void slotSelectionChanged();
     void slotClearTimeSpanSelection();
+    void resizeSplitters();
+    void zoomView( const int delta, const QPoint &pos, const Qt::Orientation ori );
 
   private:
     QList<KOAgendaView*> mAgendaViews;
     QList<QWidget*> mAgendaWidgets;
     KHBox *mTopBox;
     Q3ScrollView *mScrollView;
+    TimeLabelsZone *mTimeLabelsZone;
+    QSplitter *mLeftSplitter, *mRightSplitter;
+    QScrollBar *mScrollBar;
+    QWidget *mLeftBottomSpacer, *mRightBottomSpacer;
 };
 
 }

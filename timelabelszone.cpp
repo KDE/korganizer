@@ -32,8 +32,8 @@
 
 using namespace KOrg;
 
-TimeLabelsZone::TimeLabelsZone( KOAgendaView *parent, KOAgenda *agenda)
-  : QWidget( parent ), mAgenda( agenda ),  mParent( parent )
+TimeLabelsZone::TimeLabelsZone( QWidget *parent, KOAgenda *agenda)
+  : QWidget( parent ), mAgenda( agenda ),  mParent( dynamic_cast<KOAgendaView*>( parent ) )
 {
   mTimeLabelsLayout = new QHBoxLayout( this );
   mTimeLabelsLayout->setMargin( 0 );
@@ -54,8 +54,10 @@ void TimeLabelsZone::reset()
 
   // Update some related geometry from the agenda view
   updateAll();
-  mParent->createDayLabels();
-  mParent->updateTimeBarWidth();
+  if ( mParent ) {
+    mParent->createDayLabels();
+    mParent->updateTimeBarWidth();
+  }
 }
 
 void TimeLabelsZone::init()
@@ -79,11 +81,14 @@ void TimeLabelsZone::addTimeLabels( const KDateTime::Spec &spec )
 
 void TimeLabelsZone::setupTimeLabel( TimeLabels* timeLabel )
 {
-  timeLabel->setAgenda( mAgenda );
-  connect( mAgenda->verticalScrollBar(), SIGNAL( valueChanged(int) ),
-           timeLabel, SLOT( positionChanged() ) );
-  connect( timeLabel->verticalScrollBar(), SIGNAL( valueChanged(int) ),
-           mParent, SLOT( setContentsPos(int) ) );
+  if ( mAgenda ) {
+    timeLabel->setAgenda( mAgenda );
+    connect( mAgenda->verticalScrollBar(), SIGNAL( valueChanged(int) ),
+            timeLabel, SLOT( positionChanged() ) );
+  }
+  if ( mParent )
+    connect( timeLabel->verticalScrollBar(), SIGNAL( valueChanged(int) ),
+             mParent, SLOT( setContentsPos(int) ) );
 }
 
 int TimeLabelsZone::timeLabelsWidth()
@@ -114,6 +119,14 @@ void TimeLabelsZone::setTimeLabelsWidth( int width )
 TimeLabels::List TimeLabelsZone::timeLabels() const
 {
   return mTimeLabelsList;
+}
+
+void TimeLabelsZone::setAgendaView( KOAgendaView * agenda )
+{
+  mAgenda = agenda->agenda();
+  mParent = agenda;
+  foreach ( TimeLabels *timeLabel, mTimeLabelsList )
+    setupTimeLabel( timeLabel );
 }
 
 #include "timelabelszone.moc"

@@ -51,6 +51,7 @@ class QListWidget;
 class KOAgendaView;
 class KOAgenda;
 class KOAgendaItem;
+class TimeLabels;
 class KConfig;
 
 namespace KCal {
@@ -78,8 +79,6 @@ class EventIndicator : public QFrame
 
   private:
     int mColumns;
-    KHBox *mTopBox;
-    QBoxLayout *mTopLayout;
     Location mLocation;
     QPixmap mPixmap;
     QVector<bool> mEnabled;
@@ -93,7 +92,7 @@ class KOAgendaView : public KOrg::AgendaView
 {
   Q_OBJECT
   public:
-    explicit KOAgendaView( Calendar *cal, QWidget *parent = 0 );
+    explicit KOAgendaView( Calendar *cal, QWidget *parent = 0, bool isSideBySide = false );
     virtual ~KOAgendaView();
 
     /** Returns maximum number of days supported by the koagendaview */
@@ -131,6 +130,9 @@ class KOAgendaView : public KOrg::AgendaView
 
     /** Show only incidences from the given resource. */
     void setResource( KCal::ResourceCalendar *res, const QString &subResource = QString() );
+
+    KOAgenda* agenda() const { return mAgenda; }
+    QSplitter* splitter() const { return mSplitterAgenda; }
 
   public slots:
     virtual void updateView();
@@ -222,7 +224,7 @@ class KOAgendaView : public KOrg::AgendaView
     bool filterByResource( Incidence *incidence );
     void setupTimeLabel( TimeLabels *timeLabel );
     int timeLabelsWidth();
-  
+
   private:
     // view widgets
     QGridLayout *mTopLayout;
@@ -266,6 +268,8 @@ class KOAgendaView : public KOrg::AgendaView
 
     KCal::ResourceCalendar *mResource;
     QString mSubResource;
+
+    bool mIsSideBySide;
 };
 
 #endif

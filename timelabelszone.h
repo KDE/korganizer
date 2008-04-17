@@ -40,7 +40,7 @@ class TimeLabelsZone : public QWidget
 {
     Q_OBJECT
   public:
-    TimeLabelsZone( KOAgendaView *parent, KOAgenda *agenda );
+    explicit TimeLabelsZone( QWidget *parent, KOAgenda *agenda = 0 );
 
     /** Add a new time label with the given spec.
         If spec is not valid, use the display timespec.
@@ -51,6 +51,7 @@ class TimeLabelsZone : public QWidget
     void updateAll();
     void reset();
     void init();
+    void setAgendaView( KOAgendaView *agenda );
 
     TimeLabels::List timeLabels() const;
 

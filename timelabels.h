@@ -45,7 +45,7 @@ class TimeLabels : public Q3ScrollView
     Q_OBJECT
   public:
     typedef QList<TimeLabels *> List;
-  
+
     explicit TimeLabels( const KDateTime::Spec &spec, int rows, TimeLabelsZone *parent = 0, Qt::WFlags f = 0 );
 
     /** Calculates the minimum width */
@@ -79,6 +79,8 @@ class TimeLabels : public Q3ScrollView
   public slots:
     /** update time label positions */
     void positionChanged();
+    /** update time label positions */
+    void positionChanged( int pos );
 
   protected:
     void drawContents( QPainter *p, int cx, int cy, int cw, int ch );

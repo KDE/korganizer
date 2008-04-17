@@ -208,6 +208,7 @@ KOAgenda::KOAgenda( int columns, QWidget *parent, Qt::WFlags f )
   mRows = 1;
   mGridSpacingY = 24;
   mAllDayMode = true;
+  setVScrollBarMode( AlwaysOff );
 
   init();
 }
@@ -1811,7 +1812,8 @@ void KOAgenda::resizeEvent ( QResizeEvent *ev )
     mGridSpacingX = double( newSize.width() - 2 * frameWidth() ) / (double)mColumns;
     mGridSpacingY = newSize.height() - 2 * frameWidth();
   } else {
-    mGridSpacingX = double( newSize.width() - verticalScrollBar()->width() - 2 * frameWidth()) / double(mColumns);
+    int scrollbarWidth = vScrollBarMode() != AlwaysOff ? verticalScrollBar()->width() : 0;
+    mGridSpacingX = double( newSize.width() - scrollbarWidth - 2 * frameWidth()) / double(mColumns);
     // make sure that there are not more than 24 per day
     mGridSpacingY = double(newSize.height() - 2 * frameWidth()) / double(mRows);
     if ( mGridSpacingY < mDesiredGridSpacingY )

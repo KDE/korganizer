@@ -280,7 +280,14 @@ void TimeLabels::updateConfig()
 void TimeLabels::positionChanged()
 {
   int adjustment = mAgenda->contentsY();
-  setContentsPos(0, adjustment);
+  if ( adjustment != contentsY() )
+    setContentsPos(0, adjustment);
+}
+
+void TimeLabels::positionChanged( int pos )
+{
+  if ( pos != contentsY() )
+    setContentsPos( 0, pos );
 }
 
 /**  */

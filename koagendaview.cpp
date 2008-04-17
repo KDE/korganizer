@@ -85,9 +85,7 @@ EventIndicator::EventIndicator( Location loc, QWidget *parent ) : QFrame( parent
 {
   mColumns = 1;
   mEnabled.resize( mColumns );
-  mTopBox = 0;
   mLocation = loc;
-  mTopLayout = 0;
 
   if (mLocation == Top) {
     mPixmap = KOGlobals::self()->smallIcon( "arrow-up-double" );
@@ -137,12 +135,13 @@ void EventIndicator::enableColumn(int column, bool enable)
 ////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////
 
-KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
+KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent, bool isSideBySide ) :
   KOrg::AgendaView( cal, parent ),
   mTimeLabelsZone( 0 ),
   mAllowAgendaUpdate( true ),
   mUpdateItem( 0 ),
-  mResource( 0 )
+  mResource( 0 ),
+  mIsSideBySide( isSideBySide )
 {
   mSelectedDates.append( QDate::currentDate() );
 
@@ -188,6 +187,8 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
   mAgendaLayout->setMargin( 0 );
   mAgendaLayout->setHorizontalSpacing( 2 );
   mAgendaLayout->setVerticalSpacing( 0 );
+  if ( isSideBySide )
+    mTimeBarHeaderFrame->hide();
 
   // Create event indicator bars
   mEventIndicatorTop = new EventIndicator( EventIndicator::Top, agendaFrame );
@@ -222,12 +223,19 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent ) :
            SLOT( updateEventIndicatorTop(int) ) );
   connect( mAgenda, SIGNAL( upperYChanged(int) ),
            SLOT( updateEventIndicatorBottom(int) ) );
+  if ( isSideBySide )
+    mTimeLabelsZone->hide();
 
 
   /* Create a frame at the bottom which may be used by decorations */
   mBottomDayLabelsFrame = new KHBox( mSplitterAgenda );
   mBottomDayLabelsFrame->setSpacing( 2 );
 
+  if ( !isSideBySide ) {
+    // these blank widgets make the All Day Event box line up with the agenda
+    dummyAllDayRight->setFixedWidth(mAgenda->verticalScrollBar()->width());
+    dummyAgendaRight->setFixedWidth(mAgenda->verticalScrollBar()->width());
+  }
 
   /* Make the all-day and normal agendas line up with each other */
   dummyAllDayRight->setFixedWidth( mAgenda->verticalScrollBar()->width()
@@ -313,7 +321,8 @@ void KOAgendaView::connectAgenda( KOAgenda *agenda, QMenu *popup,
 
 void KOAgendaView::zoomInVertically( )
 {
-  KOPrefs::instance()->mHourSize++;
+  if ( !mIsSideBySide )
+    KOPrefs::instance()->mHourSize++;
   mAgenda->updateConfig();
   mAgenda->checkScrollBoundaries();
 
@@ -326,9 +335,10 @@ void KOAgendaView::zoomInVertically( )
 void KOAgendaView::zoomOutVertically( )
 {
 
-  if ( KOPrefs::instance()->mHourSize > 4 ) {
+  if ( KOPrefs::instance()->mHourSize > 4 || mIsSideBySide ) {
 
-    KOPrefs::instance()->mHourSize--;
+    if ( !mIsSideBySide )
+      KOPrefs::instance()->mHourSize--;
     mAgenda->updateConfig();
     mAgenda->checkScrollBoundaries();
 
@@ -403,7 +413,7 @@ void KOAgendaView::zoomView( const int delta, const QPoint &pos,
                              const Qt::Orientation orient )
 {
   static QDate zoomDate;
-  static QTimer t( this );
+  static QTimer *t = new QTimer( this );
 
 
   //Zoom to the selected incidence, on the other way
@@ -413,11 +423,11 @@ void KOAgendaView::zoomView( const int delta, const QPoint &pos,
     if ( date.isValid() )
       zoomDate=date;
     else{
-      if ( !t.isActive() ) {
+      if ( !t->isActive() ) {
         zoomDate= mSelectedDates[pos.x()];
       }
-      t.setSingleShot( true );
-      t.start ( 1000 );
+      t->setSingleShot( true );
+      t->start ( 1000 );
     }
     if ( delta > 0 )
       zoomOutHorizontally( zoomDate );
@@ -1462,7 +1472,8 @@ void KOAgendaView::setHolidayMasks()
 
 void KOAgendaView::setContentsPos( int y )
 {
-  mAgenda->setContentsPos( 0, y );
+  if ( y != mAgenda->contentsY() )
+    mAgenda->setContentsPos( 0, y );
 }
 
 void KOAgendaView::clearSelection()
