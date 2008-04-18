@@ -56,7 +56,7 @@ MultiAgendaView::MultiAgendaView(Calendar * cal, QWidget * parent ) :
   mTimeLabelsZone = new TimeLabelsZone( sideBox );
   eiSpacer = new EventIndicator( EventIndicator::Bottom, sideBox );
   eiSpacer->changeColumns( 0 );
-  mLeftBottomSpacer = new QWidget( sideBox );
+  mLeftBottomSpacer = new QWidget( topSideBox );
   topLevelLayout->addWidget( topSideBox );
 
   mScrollView = new Q3ScrollView( this );
@@ -81,7 +81,7 @@ MultiAgendaView::MultiAgendaView(Calendar * cal, QWidget * parent ) :
   eiSpacer = new EventIndicator( EventIndicator::Bottom, sideBox );
   eiSpacer->setFixedHeight( eiSpacer->minimumHeight() );
   eiSpacer->changeColumns( 0 );
-  mRightBottomSpacer = new QWidget( sideBox );
+  mRightBottomSpacer = new QWidget( topSideBox );
   topLevelLayout->addWidget( topSideBox );
 
   recreateViews();
@@ -115,7 +115,7 @@ void MultiAgendaView::recreateViews()
     }
   }
   setupViews();
-  resizeScrollView( size() );
+  QTimer::singleShot( 0, this, SLOT(slotResizeScrollView()) );
   mTimeLabelsZone->updateAll();
 
   QScrollBar *scrollBar = mAgendaViews.first()->agenda()->verticalScrollBar();
@@ -401,6 +401,11 @@ void MultiAgendaView::zoomView( const int delta, const QPoint & pos, const Qt::O
     agenda->zoomView( delta, pos, ori );
 
   mTimeLabelsZone->updateAll();
+}
+
+void MultiAgendaView::slotResizeScrollView()
+{
+  resizeScrollView( size() );
 }
 
 #include "multiagendaview.moc"

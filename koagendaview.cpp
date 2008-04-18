@@ -232,14 +232,12 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent, bool isSideBySide ) 
   mBottomDayLabelsFrame->setSpacing( 2 );
 
   if ( !isSideBySide ) {
-    // these blank widgets make the All Day Event box line up with the agenda
-    dummyAllDayRight->setFixedWidth(mAgenda->verticalScrollBar()->width());
+    /* Make the all-day and normal agendas line up with each other */
+    dummyAllDayRight->setFixedWidth( mAgenda->verticalScrollBar()->width()
+                                   - mAgendaLayout->horizontalSpacing() );
     dummyAgendaRight->setFixedWidth(mAgenda->verticalScrollBar()->width());
   }
 
-  /* Make the all-day and normal agendas line up with each other */
-  dummyAllDayRight->setFixedWidth( mAgenda->verticalScrollBar()->width()
-                                   - mAgendaLayout->horizontalSpacing() );
   updateTimeBarWidth();
 
 
@@ -461,6 +459,8 @@ void KOAgendaView::createDayLabels()
   mLayoutDayLabels->addWidget( weekLabelBox );
   weekLabelBox->setFixedWidth( mTimeLabelsZone->width()
                                - mAgendaLayout->horizontalSpacing() );
+  if ( mIsSideBySide )
+    weekLabelBox->hide();
 
   mBottomDayLabels = new QFrame (mBottomDayLabelsFrame);
   mBottomDayLabelsFrame->setStretchFactor(mBottomDayLabels, 1);
@@ -628,9 +628,11 @@ void KOAgendaView::createDayLabels()
   }
 #endif
 
-  mLayoutDayLabels->addSpacing(mAgenda->verticalScrollBar()->width());
+  if ( !mIsSideBySide ) {
+    mLayoutDayLabels->addSpacing(mAgenda->verticalScrollBar()->width());
+    mLayoutBottomDayLabels->addSpacing(mAgenda->verticalScrollBar()->width());
+  }
   mDayLabels->show();
-  mLayoutBottomDayLabels->addSpacing(mAgenda->verticalScrollBar()->width());
   mBottomDayLabels->show();
 }
 
