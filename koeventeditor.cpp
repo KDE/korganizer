@@ -105,6 +105,8 @@ void KOEventEditor::init()
            mFreeBusy, SLOT(acceptForMe()) );
   connect( mGeneral, SIGNAL(declineInvitation()),
            mFreeBusy, SLOT(declineForMe()) );
+
+  updateRecurrenceSummary();
 }
 
 void KOEventEditor::reload()
