@@ -441,11 +441,11 @@ bool MonthScene::eventFilterMouse( QObject *object, QGraphicsSceneMouseEvent *ev
         mActionInitiated = false;
 
         // Move or resize ?
-        if ( !iItem->monthItem()->isResizable() &&
+        if ( iItem->monthItem()->isResizable() &&
              iItem->isBeginItem() && iItem->mapFromScene( pos ).x() <= 10 ) {
           mActionType = Resize;
           mResizeType = ResizeLeft;
-        } else if ( !iItem->monthItem()->isResizable() &&
+        } else if ( iItem->monthItem()->isResizable() &&
                     iItem->isEndItem() &&
                     iItem->mapFromScene( pos ).x() >= iItem->boundingRect().width() - 10 ) {
           mActionType = Resize;
@@ -500,10 +500,10 @@ bool MonthScene::eventFilterMouse( QObject *object, QGraphicsSceneMouseEvent *ev
         MonthGraphicsItem *iItem = dynamic_cast<MonthGraphicsItem*>( itemAt( pos ) );
 
         if ( iItem ) {
-          if ( !iItem->monthItem()->isResizable() &&
+          if ( iItem->monthItem()->isResizable() &&
                iItem->isBeginItem() && iItem->mapFromScene( pos ).x() <= 10 ) {
             static_cast<MonthGraphicsView*>( views().first() )->setActionCursor( Resize );
-          } else if ( !iItem->monthItem()->isResizable() &&
+          } else if ( iItem->monthItem()->isResizable() &&
                       iItem->isEndItem() &&
                       iItem->mapFromScene( pos ).x() >= iItem->boundingRect().width() - 10 ) {
             static_cast<MonthGraphicsView*>( views().first() )->setActionCursor( Resize );
