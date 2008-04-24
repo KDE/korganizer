@@ -59,7 +59,8 @@ KOEventEditor::KOEventEditor( Calendar *calendar, QWidget *parent )
 
 KOEventEditor::~KOEventEditor()
 {
-  emit dialogClose( mEvent );
+  if ( !mIsCounter )
+    emit dialogClose( mEvent );
 }
 
 void KOEventEditor::init()
@@ -284,7 +285,14 @@ bool KOEventEditor::processInput()
       kdDebug(5850) << "Event changed\n";
       //IncidenceChanger::assignIncidence( mEvent, event );
       writeEvent( mEvent );
-      mChanger->changeIncidence( oldEvent, mEvent, -1, mIsCounter );
+      if ( mIsCounter ) {
+        Event *event = mEvent->clone();
+        event->clearAttendees();
+        event->setSummary( i18n("My counter proposal for: %1").arg( mEvent->summary() ) );
+        mChanger->changeIncidence( oldEvent, event, -1, mIsCounter );
+      } else {
+        mChanger->changeIncidence( oldEvent, mEvent, -1, mIsCounter );
+      }
     }
     delete event;
     delete oldEvent;
@@ -312,7 +320,6 @@ void KOEventEditor::processCancel()
   kdDebug(5850) << "KOEventEditor::processCancel()" << endl;
 
   if ( mFreeBusy ) mFreeBusy->cancelReload();
-  if ( mIsCounter ) deleteEvent();
 }
 
 void KOEventEditor::deleteEvent()
@@ -337,6 +344,9 @@ void KOEventEditor::readEvent( Event *event, Calendar *calendar, bool tmpl )
 
   createEmbeddedURLPages( event );
   readDesignerFields( event );
+
+  if ( mIsCounter )
+    mGeneral->invitationBar()->hide();
 }
 
 void KOEventEditor::writeEvent( Event *event )
@@ -404,6 +414,13 @@ void KOEventEditor::updateRecurrenceSummary()
   writeEvent( ev );
   mGeneral->updateRecurrenceSummary( IncidenceFormatter::recurrenceString( ev ) );
   delete ev;
+}
+
+void KOEventEditor::selectInvitationCounterProposal(bool enable)
+{
+  KOIncidenceEditor::selectInvitationCounterProposal( enable );
+  if ( enable )
+    mGeneral->invitationBar()->hide();
 }
 
 #include "koeventeditor.moc"
