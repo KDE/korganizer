@@ -148,6 +148,7 @@ set(korganizerprivate_LIB_SRCS
    views/monthview/monthscene.cpp
    views/todoview/kotodomodel.cpp
    views/todoview/kotododelegates.cpp
+   views/todoview/kotodoviewsortfilterproxymodel.cpp
    views/todoview/kotodoview.cpp
    views/todoview/kotodoviewquicksearch.cpp
    views/todoview/kcheckcombobox.cpp

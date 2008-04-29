@@ -90,7 +90,7 @@ void KCheckComboBox::setCheckedItems( const QStringList& items )
   for ( int r = 0; r < model()->rowCount( rootModelIndex() ); ++r ) {
     QModelIndex indx = model()->index( r, modelColumn(), rootModelIndex() );
     QString text = indx.data().toString();
-    bool found = items.indexOf( text ) == -1 ? false : true;
+    bool found = items.contains( text );
     model()->setData( indx, found ? Qt::Checked : Qt::Unchecked, Qt::CheckStateRole );
   }
   updateCheckedItems();
@@ -166,10 +166,8 @@ void KCheckComboBox::updateCheckedItems( const QModelIndex &topLeft,
     text = items.join( mSeparator );
   }
 
-  if ( text != lineEdit()->text() ) {
-    setEditText( text );
-    emit checkedItemsChanged( items );
-  }
+  setEditText( text );
+  emit checkedItemsChanged( items );
 }
 
 void KCheckComboBox::toggleCheckState( int index )

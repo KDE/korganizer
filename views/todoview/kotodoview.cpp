@@ -28,6 +28,7 @@
 #include "kotodoview.h"
 #include "kotodoviewquicksearch.h"
 #include "kotodomodel.h"
+#include "kotodoviewsortfilterproxymodel.h"
 #include "kotododelegates.h"
 #include "koprefs.h"
 #include "koglobals.h"
@@ -46,7 +47,6 @@
 #include <QTreeView>
 #include <QModelIndex>
 #include <QHeaderView>
-#include <QSortFilterProxyModel>
 
 using namespace KCal;
 using namespace KOrg;
@@ -58,7 +58,7 @@ KOTodoView::KOTodoView( Calendar *cal, QWidget *parent )
   mQuickSearch = new KOTodoViewQuickSearch( calendar(), this );
 
   mModel = new KOTodoModel( calendar(), this );
-  mProxyModel = new QSortFilterProxyModel( this );
+  mProxyModel = new KOTodoViewSortFilterProxyModel( this );
   mProxyModel->setSourceModel( mModel );
   mProxyModel->setDynamicSortFilter( true );
   mProxyModel->setFilterKeyColumn( KOTodoModel::SummaryColumn );
@@ -66,6 +66,8 @@ KOTodoView::KOTodoView( Calendar *cal, QWidget *parent )
 
   connect( mQuickSearch, SIGNAL(searchTextChanged(const QString &)),
            mProxyModel, SLOT(setFilterRegExp(const QString &)) );
+  connect( mQuickSearch, SIGNAL(searchCategoryChanged(const QStringList &)),
+           mProxyModel, SLOT(setCategoryFilter(const QStringList &)) );
 
   mView = new QTreeView( this );
   mView->setModel( mProxyModel );
