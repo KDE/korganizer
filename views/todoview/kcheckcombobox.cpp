@@ -31,7 +31,7 @@
 #include <QLineEdit>
 #include <QKeyEvent>
 
-KCheckComboBox::KCheckComboBox( QWidget* parent ) : QComboBox( parent )
+KCheckComboBox::KCheckComboBox( QWidget *parent ) : QComboBox( parent )
 {
   mSeparator = QLatin1String( "," );
   mIgnoreHide = false;
@@ -53,11 +53,14 @@ KCheckComboBox::KCheckComboBox( QWidget* parent ) : QComboBox( parent )
 }
 
 KCheckComboBox::~KCheckComboBox()
-{}
+{
+}
 
 void KCheckComboBox::hidePopup()
 {
-  if (!mIgnoreHide) QComboBox::hidePopup();
+  if ( !mIgnoreHide ) {
+    QComboBox::hidePopup();
+  }
   mIgnoreHide = false;
 }
 
@@ -78,14 +81,14 @@ QStringList KCheckComboBox::checkedItems() const
     QModelIndex index = model()->index( 0, modelColumn(), rootModelIndex() );
     QModelIndexList indexes = model()->match( index, Qt::CheckStateRole,
                                               Qt::Checked, -1, Qt::MatchExactly );
-    foreach ( const QModelIndex& index, indexes ) {
+    foreach ( const QModelIndex &index, indexes ) {
       items += index.data().toString();
     }
   }
   return items;
 }
 
-void KCheckComboBox::setCheckedItems( const QStringList& items )
+void KCheckComboBox::setCheckedItems( const QStringList &items )
 {
   for ( int r = 0; r < model()->rowCount( rootModelIndex() ); ++r ) {
     QModelIndex indx = model()->index( r, modelColumn(), rootModelIndex() );
@@ -101,7 +104,7 @@ QString KCheckComboBox::defaultText() const
   return mDefaultText;
 }
 
-void KCheckComboBox::setDefaultText( const QString& text )
+void KCheckComboBox::setDefaultText( const QString &text )
 {
   if ( mDefaultText != text ) {
     mDefaultText = text;
@@ -114,7 +117,7 @@ QString KCheckComboBox::separator() const
   return mSeparator;
 }
 
-void KCheckComboBox::setSeparator( const QString& separator )
+void KCheckComboBox::setSeparator( const QString &separator )
 {
   if ( mSeparator != separator ) {
     mSeparator = separator;
@@ -122,16 +125,15 @@ void KCheckComboBox::setSeparator( const QString& separator )
   }
 }
 
-bool KCheckComboBox::eventFilter( QObject* receiver, QEvent* event )
+bool KCheckComboBox::eventFilter( QObject *receiver, QEvent *event )
 {
-  switch ( event->type() )
-  {
+  switch ( event->type() ) {
     case QEvent::KeyPress:
     case QEvent::KeyRelease:
     {
       QKeyEvent* keyEvent = static_cast<QKeyEvent*>( event );
       if ( receiver == this &&
-           (keyEvent->key() == Qt::Key_Up || keyEvent->key() == Qt::Key_Down) ) {
+           ( keyEvent->key() == Qt::Key_Up || keyEvent->key() == Qt::Key_Down ) ) {
         showPopup();
         return true;
       }

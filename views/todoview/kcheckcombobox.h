@@ -37,29 +37,29 @@ class KCheckComboBox : public QComboBox
   Q_PROPERTY( QStringList checkedItems READ checkedItems WRITE setCheckedItems )
 
   public:
-    explicit KCheckComboBox( QWidget* parent = 0 );
+    explicit KCheckComboBox( QWidget *parent = 0 );
     virtual ~KCheckComboBox();
 
     virtual void hidePopup();
 
     QString defaultText() const;
-    void setDefaultText( const QString& text );
+    void setDefaultText( const QString &text );
 
     Qt::CheckState itemCheckState( int index ) const;
     void setItemCheckState( int index, Qt::CheckState state );
 
     QString separator() const;
-    void setSeparator( const QString& separator );
+    void setSeparator( const QString &separator );
 
     QStringList checkedItems() const;
 
-    virtual bool eventFilter( QObject* receiver, QEvent* event );
+    virtual bool eventFilter( QObject *receiver, QEvent *event );
 
   public Q_SLOTS:
-    void setCheckedItems( const QStringList& items );
+    void setCheckedItems( const QStringList &items );
 
   Q_SIGNALS:
-    void checkedItemsChanged( const QStringList& items );
+    void checkedItemsChanged( const QStringList &items );
 
   private Q_SLOTS:
     void updateCheckedItems( const QModelIndex &topLeft = QModelIndex(),

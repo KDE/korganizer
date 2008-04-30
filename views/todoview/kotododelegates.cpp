@@ -84,7 +84,7 @@ void KOTodoCompleteDelegate::paint( QPainter *painter,
 
   // TODO QTreeView does not set State_Editing. Qt task id 205051
   // check if a newer version of Qt fixes this
-  if ( !(opt.state & QStyle::State_Editing) ) {
+  if ( !( opt.state & QStyle::State_Editing ) ) {
     QRect rect = opt.rect;
 
     rect.adjust( 4, 3, -6, -3 );
@@ -235,7 +235,6 @@ void KOTodoPriorityDelegate::updateEditorGeometry( QWidget *editor,
   editor->setGeometry( option.rect );
 }
 
-
 // ---------------- DUE DATE DELEGATE ----------------------------
 // ---------------------------------------------------------------
 
@@ -286,7 +285,6 @@ void KOTodoDueDateDelegate::updateEditorGeometry( QWidget *editor,
 
   editor->setGeometry( option.rect );
 }
-
 
 // ---------------- CATEGORIES DELEGATE --------------------------
 // ---------------------------------------------------------------
@@ -447,6 +445,5 @@ QWidget *KOTodoDescriptionDelegate::createEditor( QWidget *parent,
     return QStyledItemDelegate::createEditor( parent, option, index );
   }
 }
-
 
 #include "kotododelegates.moc"
