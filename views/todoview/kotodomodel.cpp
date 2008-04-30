@@ -250,7 +250,9 @@ void KOTodoModel::processChange( Incidence *incidence, int action )
 
 void KOTodoModel::addTodo( const QString &summary )
 {
-  if ( !mChanger ) return;
+  if ( !mChanger ) {
+    return;
+  }
 
   if ( !summary.trimmed().isEmpty() ) {
     Todo *todo = new Todo();
@@ -266,7 +268,9 @@ void KOTodoModel::addTodo( const QString &summary )
 
 void KOTodoModel::copyTodo( const QModelIndex &index, const QDate &date )
 {
-  if ( !mChanger || !index.isValid() ) return;
+  if ( !mChanger || !index.isValid() ) {
+    return;
+  }
 
   TodoTreeNode *node = static_cast<TodoTreeNode *>( index.internalPointer() );
   Todo *todo = node->mTodo->clone();
@@ -523,7 +527,9 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
     case SummaryColumn:
       return QVariant( todo->summary() );
     case RecurColumn:
-      return QVariant( todo->recurs() ? i18n("Yes") : i18n("No") );
+      return QVariant( todo->recurs() ?
+                       i18nc( "yes, recurring to-do", "Yes" ) :
+                       i18nc( "no, not a recurring to-do", "No" ) );
     case PriorityColumn:
       if ( todo->priority() == 0 ) {
         return QVariant( QString::fromAscii( "--" ) );
@@ -577,9 +583,11 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
   // background colour for todos due today or overdue todos
   if ( role == Qt::BackgroundRole ) {
     if ( todo->isOverdue() ) {
-      return QVariant( QBrush( KOPrefs::instance()->agendaCalendarItemsToDosOverdueBackgroundColor() ) );
+      return QVariant(
+        QBrush( KOPrefs::instance()->agendaCalendarItemsToDosOverdueBackgroundColor() ) );
     } else if ( todo->dtDue().date() == QDate::currentDate() ) {
-      return QVariant( QBrush( KOPrefs::instance()->agendaCalendarItemsToDosDueTodayBackgroundColor() ) );
+      return QVariant(
+        QBrush( KOPrefs::instance()->agendaCalendarItemsToDosDueTodayBackgroundColor() ) );
     }
   }
 
