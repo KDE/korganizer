@@ -187,17 +187,17 @@ void MonthGraphicsView::drawBackground( QPainter *p, const QRectF & rect )
                       calSys->monthName( mMonthView->averageDate() ),
                       calSys->yearString( mMonthView->averageDate() ) ) );
 
-
   font.setPixelSize( dayLabelsHeight - 10 );
   p->setFont( font );
-  for ( QDate d = mMonthView->mStartDate; d <= mMonthView->mStartDate.addDays( 6 ); d = d.addDays( 1 ) ) {
+  for ( QDate d = mMonthView->mStartDate;
+        d <= mMonthView->mStartDate.addDays( 6 ); d = d.addDays( 1 ) ) {
     MonthCell *cell = mScene->mMonthCellMap[ d ];
     p->drawText( QRect( mScene->cellHorizontalPos( cell ),
                         mScene->cellVerticalPos( cell ) - 15,
                         mScene->columnWidth(),
                         15 ),
                  Qt::AlignCenter,
-                 calSys->weekDayName( d,  KCalendarSystem::LongDayName ) );
+                 calSys->weekDayName( d, KCalendarSystem::LongDayName ) );
   }
 
   /*
@@ -299,8 +299,8 @@ void MonthGraphicsView::drawBackground( QPainter *p, const QRectF & rect )
 
     QString dayText;
     // Prepend month name if d is the first or last day of month
-    if ( calSys->day( d ) == 1                     // d is the first day of month
-         || calSys->day( d.addDays( 1 ) ) == 1 ) {  // d is the last day of month
+    if ( calSys->day( d ) == 1 ||                // d is the first day of month
+         calSys->day( d.addDays( 1 ) ) == 1 ) {  // d is the last day of month
       dayText = i18nc( "'Month day' for month view cells", "%1 %2",
                   calSys->monthName( d, KCalendarSystem::ShortName ),
                   calSys->day( d ) );

@@ -109,7 +109,8 @@ void MonthGraphicsItem::paint( QPainter *p, const QStyleOptionGraphicsItem *, QW
   int textMargin = 10;
 
   QColor bgColor = QColor();
-  if ( mMonthItem->incidence()->type() == "Todo" && !KOPrefs::instance()->todosUseCategoryColors() ) {
+  if ( mMonthItem->incidence()->type() == "Todo" &&
+       !KOPrefs::instance()->todosUseCategoryColors() ) {
     if ( static_cast<Todo*>( mMonthItem->incidence() )->isOverdue() ) {
       bgColor = KOPrefs::instance()->agendaCalendarItemsToDosOverdueBackgroundColor();
     } else if ( static_cast<Todo*>( mMonthItem->incidence() )->dtDue().date() ==

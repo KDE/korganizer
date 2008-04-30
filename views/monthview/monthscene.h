@@ -90,7 +90,7 @@ class MonthScene : public QGraphicsScene
      * taking in account margins, rowHeight
      */
     int cellVerticalPos( const MonthCell *cell ) const;
-    
+
     /**
      * Idem, for the horizontal position
      */
@@ -203,19 +203,19 @@ class MonthScene : public QGraphicsScene
     int availableHeight() const;
 
     /**
-     * Removes all the margins, frames, etc. to give the 
+     * Removes all the margins, frames, etc. to give the
      * X coordinate in the MonthGrid.
-     */ 
+     */
     int sceneXToMonthGridX( int xScene );
-    
-    /**     
-     * Removes all the margins, frames, headers etc. to give the 
+
+    /**
+     * Removes all the margins, frames, headers etc. to give the
      * Y coordinate in the MonthGrid.
      */
     int sceneYToMonthGridY( int yScene );
 
     /**
-     * Given a pos in the scene coordinates, 
+     * Given a pos in the scene coordinates,
      * returns the cell containing @p pos.
      */
     MonthCell *getCellFromPos( const QPointF &pos );
