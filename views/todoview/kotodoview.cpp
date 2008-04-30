@@ -29,6 +29,7 @@
 #include "kotodoviewquicksearch.h"
 #include "kotodomodel.h"
 #include "kotodoviewsortfilterproxymodel.h"
+#include "kotodoviewview.h"
 #include "kotododelegates.h"
 #include "koprefs.h"
 #include "koglobals.h"
@@ -44,7 +45,6 @@
 #include <QVBoxLayout>
 #include <QMenu>
 #include <QContextMenuEvent>
-#include <QTreeView>
 #include <QModelIndex>
 #include <QHeaderView>
 
@@ -69,7 +69,7 @@ KOTodoView::KOTodoView( Calendar *cal, QWidget *parent )
   connect( mQuickSearch, SIGNAL(searchCategoryChanged(const QStringList &)),
            mProxyModel, SLOT(setCategoryFilter(const QStringList &)) );
 
-  mView = new QTreeView( this );
+  mView = new KOTodoViewView( this );
   mView->setModel( mProxyModel );
 
   mView->setSortingEnabled( true );

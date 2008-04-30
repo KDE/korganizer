@@ -434,16 +434,4 @@ QSize KOTodoDescriptionDelegate::sizeHint( const QStyleOptionViewItem &option,
   return ret;
 }
 
-QWidget *KOTodoDescriptionDelegate::createEditor( QWidget *parent,
-                                                  const QStyleOptionViewItem &option,
-                                                  const QModelIndex &index ) const
-{
-  if ( index.data( KOTodoModel::IsRichDescriptionRole ).toBool() ) {
-    // rich text can't be edited inline
-    return 0;
-  } else {
-    return QStyledItemDelegate::createEditor( parent, option, index );
-  }
-}
-
 #include "kotododelegates.moc"

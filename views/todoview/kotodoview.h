@@ -45,11 +45,11 @@ using namespace KOrg;
 class QMenu;
 class QContextMenuEvent;
 class QItemSelection;
-class QTreeView;
 class QModelIndex;
 class QSortFilterProxyModel;
 
 class KOTodoModel;
+class KOTodoViewView;
 class KOTodoCategoriesDelegate;
 class KOTodoViewQuickSearch;
 
@@ -108,7 +108,7 @@ class KOTodoView : public BaseView
     void unAllSubTodoSignal();
 
   private:
-    QTreeView *mView;
+    KOTodoViewView *mView;
     KOTodoModel *mModel;
     QSortFilterProxyModel *mProxyModel;
     KOTodoCategoriesDelegate *mCategoriesDelegate;

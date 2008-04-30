@@ -446,8 +446,13 @@ Qt::ItemFlags KOTodoModel::flags( const QModelIndex &index ) const
     case PercentColumn:
     case DueDateColumn:
     case CategoriesColumn:
-    case DescriptionColumn:
       ret |= Qt::ItemIsEditable;
+      break;
+    case DescriptionColumn:
+      if ( !todo->descriptionIsRich() ) {
+        ret |= Qt::ItemIsEditable;
+      }
+      break;
     }
   }
 

@@ -149,6 +149,7 @@ set(korganizerprivate_LIB_SRCS
    views/todoview/kotodomodel.cpp
    views/todoview/kotododelegates.cpp
    views/todoview/kotodoviewsortfilterproxymodel.cpp
+   views/todoview/kotodoviewview.cpp
    views/todoview/kotodoview.cpp
    views/todoview/kotodoviewquicksearch.cpp
    views/todoview/kcheckcombobox.cpp
