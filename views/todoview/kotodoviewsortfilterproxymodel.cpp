@@ -23,12 +23,10 @@
   without including the source code for Qt in the source distribution.
 */
 
-#include <KDebug>
-
 #include "kotodoviewsortfilterproxymodel.h"
-
 #include "kotodomodel.h"
 
+#include <KDebug>
 #include <QModelIndex>
 
 KOTodoViewSortFilterProxyModel::KOTodoViewSortFilterProxyModel( QObject *parent )
@@ -42,19 +40,23 @@ bool KOTodoViewSortFilterProxyModel::filterAcceptsRow(
   bool ret = QSortFilterProxyModel::filterAcceptsRow( source_row, source_parent );
 
   if ( ret && !mCategories.isEmpty() ) {
-    QStringList categories = sourceModel()->index( source_row, KOTodoModel::CategoriesColumn, source_parent )
-                                              .data( Qt::EditRole ).toStringList();
+    QStringList categories =
+      sourceModel()->index( source_row, KOTodoModel::CategoriesColumn, source_parent ).
+      data( Qt::EditRole ).toStringList();
     foreach ( const QString &category, categories ) {
-      if ( mCategories.contains(category) ) return true;
+      if ( mCategories.contains( category ) ) {
+        return true;
+      }
     }
     ret = false;
   }
 
   // check if one of the children is accepted, and accept this node too if so
-  QModelIndex cur = sourceModel()->index( source_row, KOTodoModel::SummaryColumn,
-                                          source_parent );
+  QModelIndex cur = sourceModel()->index( source_row, KOTodoModel::SummaryColumn, source_parent );
   for ( int r = 0; r < cur.model()->rowCount( cur ); ++r ) {
-    if ( filterAcceptsRow( r, cur ) ) return true;
+    if ( filterAcceptsRow( r, cur ) ) {
+      return true;
+    }
   }
 
   return ret;
