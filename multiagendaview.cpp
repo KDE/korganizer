@@ -41,7 +41,8 @@ using namespace KOrg;
 
 MultiAgendaView::MultiAgendaView(Calendar * cal, QWidget * parent, const char *name ) :
     AgendaView( cal, parent, name ),
-    mLastMovedSplitter( 0 )
+    mLastMovedSplitter( 0 ),
+    mUpdateOnShow( false )
 {
   QBoxLayout *topLevelLayout = new QHBoxLayout( this );
 
@@ -244,6 +245,8 @@ int MultiAgendaView::currentDateCount()
 
 void MultiAgendaView::showDates(const QDate & start, const QDate & end)
 {
+  mStartDate = start;
+  mEndDate = end;
   recreateViews();
   FOREACH_VIEW( agendaView )
     agendaView->showDates( start, end );
@@ -432,6 +435,10 @@ void MultiAgendaView::zoomView( const int delta, const QPoint & pos, const Qt::O
 void MultiAgendaView::installSplitterEventFilter(QSplitter * splitter)
 {
   QObjectList *objlist = splitter->queryList( "QSplitterHandle" );
+  // HACK: when not being visible, the splitter handle is sometimes not found
+  // for unknown reasons, so trigger an update when we are shown again
+  if ( objlist->count() == 0 && !isVisible() )
+    mUpdateOnShow = true;
   QObjectListIt it( *objlist );
   QObject *obj;
   while ( (obj = it.current()) != 0 ) {
@@ -445,6 +452,15 @@ void MultiAgendaView::installSplitterEventFilter(QSplitter * splitter)
 void MultiAgendaView::slotResizeScrollView()
 {
   resizeScrollView( size() );
+}
+
+void MultiAgendaView::show()
+{
+  AgendaView::show();
+  if ( mUpdateOnShow ) {
+    mUpdateOnShow = false;
+    showDates( mStartDate, mEndDate );
+  }
 }
 
 #include "multiagendaview.moc"
