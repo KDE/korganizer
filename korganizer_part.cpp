@@ -55,8 +55,15 @@
 #include <QLayout>
 #include <QVBoxLayout>
 
+
+static KAboutData createAboutData()
+{
+  static KOrg::AboutData about;
+  return about;
+}
+
 K_PLUGIN_FACTORY( KOrganizerFactory, registerPlugin<KOrganizerPart>(); )
-K_EXPORT_PLUGIN( KOrganizerFactory( "korganizer" ) )
+K_EXPORT_PLUGIN( KOrganizerFactory( createAboutData() ) )
 
 KOrganizerPart::KOrganizerPart( QWidget *parentWidget, QObject *parent, const QVariantList & )
   : KParts::ReadOnlyPart(parent), mTopLevelWidget( parentWidget->topLevelWidget() )
@@ -124,11 +131,6 @@ KOrganizerPart::~KOrganizerPart()
   closeUrl();
 
   KOCore::self()->removeXMLGUIClient( mTopLevelWidget );
-}
-
-KAboutData *KOrganizerPart::createAboutData()
-{
-  return new KOrg::AboutData;
 }
 
 void KOrganizerPart::slotChangeInfo( Incidence *incidence )

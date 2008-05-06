@@ -30,8 +30,6 @@
 
 #include <korganizer/mainwindow.h>
 
-class KAboutData;
-
 class CalendarView;
 class ActionManager;
 
@@ -54,8 +52,6 @@ class KOrganizerPart: public KParts::ReadOnlyPart,
   public:
     KOrganizerPart( QWidget *parentWidget, QObject *parent, const QVariantList & );
     virtual ~KOrganizerPart();
-
-    static KAboutData *createAboutData();
 
     virtual KOrg::CalendarViewBase *view() const;
 
