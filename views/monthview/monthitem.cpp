@@ -533,6 +533,8 @@ int MonthItem::daySpan() const
   if ( end.isValid() ) {
     return start.daysTo( end );
   }
+
+  return 0;
 }
 
 // Find the smaller possible height for this item
