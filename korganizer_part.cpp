@@ -56,7 +56,7 @@
 #include <QVBoxLayout>
 
 
-static KAboutData createAboutData()
+static const KAboutData &createAboutData()
 {
   static KOrg::AboutData about;
   return about;
