@@ -35,6 +35,18 @@ KOTodoViewView::KOTodoViewView( QWidget *parent )
 {
 }
 
+#if QT_VERSION >= 0x040500
+#ifdef __GNUC__
+#warning QTreeView should now set State_Editing correctly, remove the workaround
+#endif
+#endif
+bool KOTodoViewView::isEditing( const QModelIndex &index ) const
+{
+  return state() & QAbstractItemView::EditingState &&
+         currentIndex() == index;
+}
+
+
 QModelIndex KOTodoViewView::moveCursor( CursorAction cursorAction,
                                         Qt::KeyboardModifiers modifiers )
 {
@@ -83,7 +95,7 @@ QModelIndex KOTodoViewView::moveCursor( CursorAction cursorAction,
     {
       // try to find an editable item left of the current one
       QModelIndex tmp = getNextEditableIndex(
-                                             current.sibling( current.row(), current.column() - 1), -1 );
+                          current.sibling( current.row(), current.column() - 1), -1 );
       if ( tmp.isValid() ) {
         return tmp;
       }

@@ -37,6 +37,13 @@ class KOTodoViewView : public QTreeView
   public:
     KOTodoViewView( QWidget *parent = 0 );
 
+#if QT_VERSION >= 0x040500
+#ifdef __GNUC__
+#warning QTreeView should now set State_Editing correctly, remove the workaround
+#endif
+#endif
+    bool isEditing( const QModelIndex &index ) const;
+
   protected:
     virtual QModelIndex moveCursor( CursorAction cursorAction, Qt::KeyboardModifiers modifiers );
 

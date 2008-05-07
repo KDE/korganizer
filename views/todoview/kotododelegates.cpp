@@ -28,6 +28,7 @@
 
 #include "kcheckcombobox.h"
 #include "kotodomodel.h"
+#include "kotodoviewview.h"
 
 #include <libkdepim/kdateedit.h>
 #include <libkdepim/categoryhierarchyreader.h>
@@ -82,9 +83,20 @@ void KOTodoCompleteDelegate::paint( QPainter *painter,
   style = opt.widget ? opt.widget->style() : QApplication::style();
   style->drawPrimitive( QStyle::PE_PanelItemViewItem, &opt, painter );
 
+#if QT_VERSION >= 0x040500
+#ifdef __GNUC__
+#warning QTreeView should now set State_Editing correctly, remove the workaround
+#endif
+#endif
+  bool isEditing = false;
+  KOTodoViewView *view = qobject_cast<KOTodoViewView*>( parent() );
+  if ( view ) {
+    isEditing = view->isEditing( index );
+  }
+
   // TODO QTreeView does not set State_Editing. Qt task id 205051
-  // check if a newer version of Qt fixes this
-  if ( !( opt.state & QStyle::State_Editing ) ) {
+  // should be fixed with Qt 4.5
+  if ( !( opt.state & QStyle::State_Editing ) && !isEditing ) {
     QRect rect = opt.rect;
 
     rect.adjust( 4, 3, -6, -3 );
