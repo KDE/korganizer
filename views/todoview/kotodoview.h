@@ -43,6 +43,7 @@ using namespace KCal;
 using namespace KOrg;
 
 class QMenu;
+class QAction;
 class QContextMenuEvent;
 class QItemSelection;
 class QModelIndex;
@@ -117,7 +118,8 @@ class KOTodoView : public BaseView
     KLineEdit *mQuickAdd;
 
     QMenu *mItemPopupMenu;
-    QMenu *mPopupMenu;
+    QMenu *mCopyPopupMenu;
+    QList<QAction*> mItemPopupMenuItemOnlyEntries;
 };
 
 #endif /*KOTODOVIEW_H*/

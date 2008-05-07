@@ -23,12 +23,12 @@
   without including the source code for Qt in the source distribution.
 */
 
-#include <KDebug>
-
 #include "kotodoviewview.h"
 
 #include <QWidget>
 #include <QModelIndex>
+
+#include <KDebug>
 
 KOTodoViewView::KOTodoViewView( QWidget *parent )
   : QTreeView( parent )

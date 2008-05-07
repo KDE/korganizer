@@ -44,6 +44,7 @@
 
 #include <QVBoxLayout>
 #include <QMenu>
+#include <QList>
 #include <QContextMenuEvent>
 #include <QModelIndex>
 #include <QHeaderView>
@@ -121,33 +122,39 @@ KOTodoView::KOTodoView( Calendar *cal, QWidget *parent )
 
   // ---------------- POPUP-MENUS -----------------------
   mItemPopupMenu = new QMenu( this );
-  mItemPopupMenu->addAction( i18n( "&Show" ), this, SLOT(showTodo()) );
-  mItemPopupMenu->addAction( i18n( "&Edit..." ), this, SLOT(editTodo()) );
+  mItemPopupMenuItemOnlyEntries <<
+    mItemPopupMenu->addAction( i18n( "&Show" ), this, SLOT(showTodo()) );
+  mItemPopupMenuItemOnlyEntries <<
+    mItemPopupMenu->addAction( i18n( "&Edit..." ), this, SLOT(editTodo()) );
 #ifndef KORG_NOPRINTER
-  mItemPopupMenu->addAction( KOGlobals::self()->smallIcon( "document-print" ),
-                             i18n( "&Print..." ), this, SLOT(printTodo()) );
+  mItemPopupMenuItemOnlyEntries <<
+    mItemPopupMenu->addAction( KOGlobals::self()->smallIcon( "document-print" ),
+                               i18n( "&Print..." ), this, SLOT(printTodo()) );
 #endif
-  mItemPopupMenu->addAction( KOGlobals::self()->smallIconSet( "edit-delete" ),
-                             i18n( "&Delete" ), this, SLOT(deleteTodo()) );
+  mItemPopupMenuItemOnlyEntries <<
+    mItemPopupMenu->addAction( KOGlobals::self()->smallIconSet( "edit-delete" ),
+                               i18n( "&Delete" ), this, SLOT(deleteTodo()) );
 
   mItemPopupMenu->addSeparator();
 
   mItemPopupMenu->addAction( KOGlobals::self()->smallIconSet( "view-calendar-tasks" ),
                              i18n( "New &To-do..." ), this, SLOT(newTodo()) );
-  mItemPopupMenu->addAction( i18n( "New Su&b-to-do..." ), this, SLOT(newSubTodo()) );
+  mItemPopupMenuItemOnlyEntries <<
+    mItemPopupMenu->addAction( i18n( "New Su&b-to-do..." ), this, SLOT(newSubTodo()) );
 
-  mItemPopupMenu->addAction( i18n( "&Make this To-do Independent" ), this,
-                             SIGNAL(unSubTodoSignal()) );
-  mItemPopupMenu->addAction( i18n( "Make all Sub-to-dos &Independent" ), this,
-                             SIGNAL(unAllSubTodoSignal()) );
+  mItemPopupMenuItemOnlyEntries <<
+    mItemPopupMenu->addAction( i18n( "&Make this To-do Independent" ), this,
+                               SIGNAL(unSubTodoSignal()) );
+  mItemPopupMenuItemOnlyEntries <<
+    mItemPopupMenu->addAction( i18n( "Make all Sub-to-dos &Independent" ), this,
+                               SIGNAL(unAllSubTodoSignal()) );
 
   mItemPopupMenu->addSeparator();
 
-  KDatePickerPopup *mCopyPopupMenu = new KDatePickerPopup(
-                                          KDatePickerPopup::NoDate |
-                                          KDatePickerPopup::DatePicker |
-                                          KDatePickerPopup::Words,
-                                          QDate::currentDate(), this );
+  mCopyPopupMenu = new KDatePickerPopup( KDatePickerPopup::NoDate |
+                                         KDatePickerPopup::DatePicker |
+                                         KDatePickerPopup::Words,
+                                         QDate::currentDate(), this );
   mCopyPopupMenu->setTitle( i18n( "&Copy To" ) );
 
   connect( mCopyPopupMenu, SIGNAL(dateChanged(const QDate &)),
@@ -162,12 +169,6 @@ KOTodoView::KOTodoView( Calendar *cal, QWidget *parent )
 
   mItemPopupMenu->addAction( i18nc( "delete completed to-dos", "Pur&ge Completed" ),
                              this, SIGNAL(purgeCompletedSignal()) );
-
-  mPopupMenu = new QMenu( this );
-  mPopupMenu->addAction( KOGlobals::self()->smallIconSet( "view-calendar-tasks" ),
-                         i18n( "&New To-do..." ), this, SLOT(newTodo()) );
-  mPopupMenu->addAction( i18nc( "delete completed to-dos", "Pur&ge Completed" ),
-                         this, SIGNAL(purgeCompletedSignal()) );
 }
 
 KOTodoView::~KOTodoView()
@@ -284,9 +285,8 @@ void KOTodoView::changeIncidenceDisplay( Incidence *incidence, int action )
 
 void KOTodoView::updateConfig()
 {
-  // TODO: hmm, not sure how to do this... there is nothing configurable here yet...
-  // maybe just call updateView, to be sure??
-  kDebug() << "this is a stub";
+  // there is nothing configurable here yet... call updateView to be sure
+  updateView();
 }
 
 void KOTodoView::clearSelection()
@@ -302,12 +302,14 @@ void KOTodoView::addQuickTodo()
 
 void KOTodoView::contextMenu( const QPoint &pos )
 {
-  QModelIndex index = mView->indexAt( pos );
-  if ( index.isValid() ) {
-    mItemPopupMenu->popup( mView->viewport()->mapToGlobal( pos ) );
-  } else {
-    mPopupMenu->popup( mView->viewport()->mapToGlobal( pos ) );
+  bool enable = mView->indexAt( pos ).isValid();
+
+  Q_FOREACH( QAction* entry, mItemPopupMenuItemOnlyEntries ) {
+    entry->setEnabled( enable );
   }
+  mCopyPopupMenu->setEnabled( enable );
+
+  mItemPopupMenu->popup( mView->viewport()->mapToGlobal( pos ) );
 }
 
 void KOTodoView::selectionChanged( const QItemSelection &selected,
