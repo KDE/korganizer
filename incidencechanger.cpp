@@ -277,16 +277,12 @@ bool IncidenceChanger::myAttendeeStatusChanged( Incidence *oldInc, Incidence *ne
 }
 
 bool IncidenceChanger::changeIncidence( Incidence *oldinc, Incidence *newinc,
-                                        int action, bool counter )
+                                        int action )
 {
 kdDebug(5850)<<"IncidenceChanger::changeIncidence for incidence \""<<newinc->summary()<<"\" ( old one was \""<<oldinc->summary()<<"\")"<<endl;
   if( incidencesEqual( newinc, oldinc ) ) {
     // Don't do anything
     kdDebug(5850) << "Incidence not changed\n";
-    if ( counter ) {
-      KCal::MailScheduler scheduler( mCalendar );
-      scheduler.performTransaction( newinc, Scheduler::Reply );
-    }
   } else {
     kdDebug(5850) << "Incidence changed\n";
     bool statusChanged = myAttendeeStatusChanged( oldinc, newinc );
@@ -297,7 +293,7 @@ kdDebug(5850)<<"IncidenceChanger::changeIncidence for incidence \""<<newinc->sum
     //        it wants with the event. If no groupware is used,use the null
     //        pattern...
     bool revert = KOPrefs::instance()->mUseGroupwareCommunication;
-    if ( !counter && revert &&
+    if ( revert &&
         KOGroupware::instance()->sendICalMessage( 0,
                                                   KCal::Scheduler::Request,
                                                   newinc, false, statusChanged ) ) {
@@ -308,26 +304,6 @@ kdDebug(5850)<<"IncidenceChanger::changeIncidence for incidence \""<<newinc->sum
         emit incidenceChanged( oldinc, newinc, action );
       }
       revert = false;
-    }
-    if ( counter && revert ) {
-      // pseudo counter as done by outlook
-      Event *e = dynamic_cast<Event*>( newinc );
-      if ( e ) {
-        if ( KOPrefs::instance()->outlookCompatCounterProposals() ) {
-          Incidence* tmp = oldinc->clone();
-          tmp->setSummary( i18n("Counter proposal: %1").arg( e->summary() ) );
-          tmp->setDescription( e->description() );
-          tmp->addComment( i18n("Proposed new meeting time: %1 - %2").arg( e->dtStartStr() ).arg( e->dtEndStr() ) );
-          KCal::MailScheduler scheduler( mCalendar );
-          scheduler.performTransaction( tmp, Scheduler::Reply );
-        } else {
-          Incidence *tmp = newinc->clone();
-          KCal::MailScheduler scheduler( mCalendar );
-          scheduler.performTransaction( tmp, Scheduler::Counter );
-        }
-      } else {
-        kdWarning(5850) << k_funcinfo << "Counter proposals only supported for events" << endl;
-      }
     }
 
     if ( revert ) {
