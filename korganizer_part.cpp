@@ -55,7 +55,6 @@
 #include <QLayout>
 #include <QVBoxLayout>
 
-
 static const KAboutData &createAboutData()
 {
   static KOrg::AboutData about;
@@ -74,11 +73,6 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, QObject *parent, const QV
 
   KOCore::self()->addXMLGUIClient( mTopLevelWidget, this );
 
-#ifdef __GNUC__
-#warning Port me!
-#endif
-//  QString pname( name );
-
   // create a canvas to insert our widget
   QWidget *canvas = new QWidget( parentWidget );
   canvas->setFocusPolicy( Qt::ClickFocus );
@@ -88,18 +82,15 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, QObject *parent, const QV
   mActionManager = new ActionManager( this, mView, this, this, true );
   (void)new KOrganizerIfaceImpl( mActionManager, this, "IfaceImpl" );
 
-#ifdef __GNUC__
-#warning Port me!
-#endif
-//  if ( pname == QLatin1String("kontact") ) {
+  if ( KGlobal::mainComponent().componentName() == QLatin1String( "kontact" ) ) {
     mActionManager->createCalendarResources();
     setHasDocument( false );
     KOrg::StdCalendar::self()->load();
     mView->updateCategories();
-//  } else {
-//    mActionManager->createCalendarLocal();
-//    setHasDocument( true );
-//  }
+  } else {
+    mActionManager->createCalendarLocal();
+    setHasDocument( true );
+  }
 
   mStatusBarExtension = new KParts::StatusBarExtension( this );
 
