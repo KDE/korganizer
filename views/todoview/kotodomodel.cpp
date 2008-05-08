@@ -582,7 +582,11 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
 
   // set the tooltip for every item
   if ( role == Qt::ToolTipRole ) {
-    return QVariant( IncidenceFormatter::toolTipString( todo ) );
+    if ( KOPrefs::instance()->enableToolTips() ) {
+      return QVariant( IncidenceFormatter::toolTipString( todo ) );
+    } else {
+      return QVariant();
+    }
   }
 
   // background colour for todos due today or overdue todos

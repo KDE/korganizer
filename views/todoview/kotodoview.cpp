@@ -57,8 +57,6 @@ using namespace KPIM;
 KOTodoView::KOTodoView( Calendar *cal, QWidget *parent )
   : BaseView( cal, parent )
 {
-  mQuickSearch = new KOTodoViewQuickSearch( calendar(), this );
-
   mModel = new KOTodoModel( calendar(), this );
   mProxyModel = new KOTodoViewSortFilterProxyModel( this );
   mProxyModel->setSourceModel( mModel );
@@ -66,6 +64,8 @@ KOTodoView::KOTodoView( Calendar *cal, QWidget *parent )
   mProxyModel->setFilterKeyColumn( KOTodoModel::SummaryColumn );
   mProxyModel->setFilterCaseSensitivity( Qt::CaseInsensitive );
 
+  mQuickSearch = new KOTodoViewQuickSearch( calendar(), this );
+  mQuickSearch->setVisible( KOPrefs::instance()->enableTodoQuickSearch() );
   connect( mQuickSearch, SIGNAL(searchTextChanged(const QString &)),
            mProxyModel, SLOT(setFilterRegExp(const QString &)) );
   connect( mQuickSearch, SIGNAL(searchCategoryChanged(const QStringList &)),
@@ -109,9 +109,7 @@ KOTodoView::KOTodoView( Calendar *cal, QWidget *parent )
   mQuickAdd = new KLineEdit( this );
   mQuickAdd->setClickMessage( i18n( "Click to add a new to-do" ) );
   mQuickAdd->setClearButtonShown( true );
-  if ( !KOPrefs::instance()->mEnableQuickTodo ) {
-    mQuickAdd->hide();
-  }
+  mQuickAdd->setVisible( KOPrefs::instance()->enableQuickTodo() );
   connect( mQuickAdd, SIGNAL(returnPressed()), SLOT(addQuickTodo()) );
 
   QVBoxLayout *layout = new QVBoxLayout( this );
@@ -292,7 +290,9 @@ void KOTodoView::changeIncidenceDisplay( Incidence *incidence, int action )
 
 void KOTodoView::updateConfig()
 {
-  // there is nothing configurable here yet... call updateView to be sure
+  mQuickSearch->setVisible( KOPrefs::instance()->enableTodoQuickSearch() );
+  mQuickAdd->setVisible( KOPrefs::instance()->enableQuickTodo() );
+
   updateView();
 }
 
