@@ -75,7 +75,8 @@ bool UriHandler::process( const QString &uri )
         the command line while starting it - its neater.
         We start it without its main interface
       */
-      QString iconPath = KIconLoader::global()->iconPath( "view-pim-contacts", KIconLoader::Small );
+      QString iconPath =
+        KIconLoader::global()->iconPath( "view-pim-contacts", KIconLoader::SizeSmall );
       QString tmpStr = "kaddressbook --editor-only --uid ";
       tmpStr += KShell::quoteArg( uri.mid( ::qstrlen( KDEPIMPROTOCOL_CONTACT ) ) );
       KRun::runCommand( tmpStr, "KAddressBook", iconPath, 0 );
