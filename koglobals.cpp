@@ -28,13 +28,13 @@
 
 #include <libkdepim/reminderclient.h>
 
+#include <k3staticdeleter.h>
 #include <kdebug.h>
 #include <kglobal.h>
 #include <kconfig.h>
 #include <kstandarddirs.h>
 #include <kglobalsettings.h>
 #include <klocale.h>
-#include <k3staticdeleter.h>
 #include <kiconloader.h>
 #include <kcomponentdata.h>
 #include <kcalendarsystem.h>
@@ -60,8 +60,7 @@ KOGlobals *KOGlobals::self()
 }
 
 KOGlobals::KOGlobals()
-  : mOwnInstance( "korganizer" ),
-  mHolidays(0)
+  : mOwnInstance( "korganizer" ), mHolidays( 0 )
 {
   KIconLoader::global()->addAppDir( "kdepim" );
 
@@ -125,11 +124,6 @@ bool KOGlobals::reverseLayout()
 QPixmap KOGlobals::smallIcon( const QString &name ) const
 {
   return SmallIcon( name );
-}
-
-QIcon KOGlobals::smallIconSet( const QString &name, int size ) const
-{
-  return SmallIconSet( name, size );
 }
 
 QStringList KOGlobals::holiday( const QDate &date ) const

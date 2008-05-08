@@ -37,10 +37,11 @@
 #include <kcal/todo.h>
 #include <kcal/incidence.h>
 
-#include <klineedit.h>
-#include <kdatepickerpopup.h>
 #include <kconfig.h>
 #include <kconfiggroup.h>
+#include <kdatepickerpopup.h>
+#include <kiconloader.h>
+#include <klineedit.h>
 
 #include <QVBoxLayout>
 #include <QMenu>
@@ -122,32 +123,38 @@ KOTodoView::KOTodoView( Calendar *cal, QWidget *parent )
 
   // ---------------- POPUP-MENUS -----------------------
   mItemPopupMenu = new QMenu( this );
-  mItemPopupMenuItemOnlyEntries <<
-    mItemPopupMenu->addAction( i18n( "&Show" ), this, SLOT(showTodo()) );
-  mItemPopupMenuItemOnlyEntries <<
-    mItemPopupMenu->addAction( i18n( "&Edit..." ), this, SLOT(editTodo()) );
+
+  mItemPopupMenuItemOnlyEntries << mItemPopupMenu->addAction(
+    i18n( "&Show" ), this, SLOT(showTodo()) );
+
+  mItemPopupMenuItemOnlyEntries << mItemPopupMenu->addAction(
+    i18n( "&Edit..." ), this, SLOT(editTodo()) );
+
 #ifndef KORG_NOPRINTER
-  mItemPopupMenuItemOnlyEntries <<
-    mItemPopupMenu->addAction( KOGlobals::self()->smallIcon( "document-print" ),
-                               i18n( "&Print..." ), this, SLOT(printTodo()) );
+  mItemPopupMenuItemOnlyEntries << mItemPopupMenu->addAction(
+    KOGlobals::self()->smallIcon( "document-print" ),
+    i18n( "&Print..." ), this, SLOT(printTodo()) );
 #endif
-  mItemPopupMenuItemOnlyEntries <<
-    mItemPopupMenu->addAction( KOGlobals::self()->smallIconSet( "edit-delete" ),
-                               i18n( "&Delete" ), this, SLOT(deleteTodo()) );
+
+  mItemPopupMenuItemOnlyEntries << mItemPopupMenu->addAction(
+    KIconLoader::global()->loadIcon( "edit-delete", KIconLoader::NoGroup, KIconLoader::SizeSmall ),
+    i18n( "&Delete" ), this, SLOT(deleteTodo()) );
 
   mItemPopupMenu->addSeparator();
 
-  mItemPopupMenu->addAction( KOGlobals::self()->smallIconSet( "view-calendar-tasks" ),
-                             i18n( "New &To-do..." ), this, SLOT(newTodo()) );
-  mItemPopupMenuItemOnlyEntries <<
-    mItemPopupMenu->addAction( i18n( "New Su&b-to-do..." ), this, SLOT(newSubTodo()) );
+  mItemPopupMenu->addAction(
+    KIconLoader::global()->loadIcon(
+      "view-calendar-tasks", KIconLoader::NoGroup, KIconLoader::SizeSmall ),
+    i18n( "New &To-do..." ), this, SLOT(newTodo()) );
 
-  mItemPopupMenuItemOnlyEntries <<
-    mItemPopupMenu->addAction( i18n( "&Make this To-do Independent" ), this,
-                               SIGNAL(unSubTodoSignal()) );
-  mItemPopupMenuItemOnlyEntries <<
-    mItemPopupMenu->addAction( i18n( "Make all Sub-to-dos &Independent" ), this,
-                               SIGNAL(unAllSubTodoSignal()) );
+  mItemPopupMenuItemOnlyEntries << mItemPopupMenu->addAction(
+    i18n( "New Su&b-to-do..." ), this, SLOT(newSubTodo()) );
+
+  mItemPopupMenuItemOnlyEntries << mItemPopupMenu->addAction(
+    i18n( "&Make this To-do Independent" ), this, SIGNAL(unSubTodoSignal()) );
+
+  mItemPopupMenuItemOnlyEntries << mItemPopupMenu->addAction(
+    i18n( "Make all Sub-to-dos &Independent" ), this, SIGNAL(unAllSubTodoSignal()) );
 
   mItemPopupMenu->addSeparator();
 
@@ -304,7 +311,7 @@ void KOTodoView::contextMenu( const QPoint &pos )
 {
   bool enable = mView->indexAt( pos ).isValid();
 
-  Q_FOREACH( QAction* entry, mItemPopupMenuItemOnlyEntries ) {
+  Q_FOREACH( QAction *entry, mItemPopupMenuItemOnlyEntries ) {
     entry->setEnabled( enable );
   }
   mCopyPopupMenu->setEnabled( enable );

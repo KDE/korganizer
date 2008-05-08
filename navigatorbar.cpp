@@ -62,7 +62,7 @@ NavigatorBar::NavigatorBar( QWidget *parent )
 
   mPrevYear = createNavigationButton(
     isRTL ? "arrow-right-double" : "arrow-left-double",
-    i18n("Scroll backward to the previous year") );
+    i18n( "Scroll backward to the previous year" ) );
 
   mPrevMonth = createNavigationButton(
     isRTL ? "arrow-right" : "arrow-left",
@@ -182,7 +182,8 @@ QPushButton *NavigatorBar::createNavigationButton( const QString &icon,
 {
   QPushButton *button = new QPushButton( this );
 
-  button->setIcon( KOGlobals::self()->smallIconSet( icon ) );
+  button->setIcon(
+    KIconLoader::global()->loadIcon( icon, KIconLoader::Desktop, KIconLoader::SizeSmall ) );
 
   // By the default the button has a very wide minimum size (for whatever
   // reasons). Override this, so that the date navigator doesn't need to be

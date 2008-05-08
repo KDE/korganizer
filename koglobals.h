@@ -76,7 +76,6 @@ class KORGANIZERPRIVATE_EXPORT KOGlobals
     ~KOGlobals();
 
     QPixmap smallIcon( const QString &name ) const;
-    QIcon smallIconSet( const QString &name, int size = 0 ) const;
 
     QStringList holiday( const QDate &qd ) const;
     bool isWorkDay( const QDate &qd ) const;
