@@ -747,7 +747,8 @@ bool KOTodoModel::setData( const QModelIndex &index, const QVariant &value, int 
 #ifndef KORG_NODND
 Qt::DropActions KOTodoModel::supportedDropActions() const
 {
-  return Qt::CopyAction | Qt::MoveAction;
+  // Qt::CopyAction not supported yet
+  return Qt::MoveAction;
 }
 
 QStringList KOTodoModel::mimeTypes() const
