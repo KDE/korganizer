@@ -205,8 +205,11 @@ void KOGroupware::incomingDirChanged( const QString& path )
     // Delete the old incidence, if one is present
     scheduler.acceptTransaction( incidence, KCal::Scheduler::Cancel, status );
   else if ( action.startsWith( "reply" ) ) {
-    scheduler.acceptTransaction( incidence, method == Scheduler::Counter ? Scheduler::Request : method, status );
-    if ( method == Scheduler::Counter ) {
+    if ( method != Scheduler::Counter ) {
+      scheduler.acceptTransaction( incidence, method, status );
+    } else {
+      // accept counter proposal
+      scheduler.acceptCounterProposal( incidence );
       // send update to all attendees
       sendICalMessage( mView, Scheduler::Request, incidence );
     }

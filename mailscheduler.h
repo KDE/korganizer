@@ -52,7 +52,10 @@ class MailScheduler : public IMIPScheduler
 
     /** Returns the directory where the free-busy information is stored */
     virtual QString freeBusyDir();
-  
+
+    /** Accepts a counter proposal */
+    bool acceptCounterProposal( Incidence *incidence );
+
   private:
     QMap<IncidenceBase *, QString> mEventMap;
 };

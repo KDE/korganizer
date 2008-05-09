@@ -30,10 +30,12 @@
 #include <kstandarddirs.h>
 #include <kdebug.h>
 
+#include <libkcal/calendar.h>
 #include <libkcal/event.h>
 #include <libkcal/icalformat.h>
 
 #include "komailclient.h"
+#include "incidencechanger.h"
 
 #include "mailscheduler.h"
 
@@ -162,4 +164,29 @@ bool MailScheduler::deleteTransaction( IncidenceBase *incidence )
 QString MailScheduler::freeBusyDir()
 {
   return locateLocal( "data", "korganizer/freebusy" );
+}
+
+bool MailScheduler::acceptCounterProposal( Incidence *incidence )
+{
+  if ( !incidence )
+    return false;
+
+  Incidence *exInc = mCalendar->incidence( incidence->uid() );
+  if ( !exInc )
+    exInc = mCalendar->incidenceFromSchedulingID( incidence->uid() );
+  incidence->setRevision( incidence->revision() + 1 );
+  if ( exInc ) {
+    incidence->setRevision( QMAX( incidence->revision(), exInc->revision() + 1 ) );
+    // some stuff we don't want to change, just to be safe
+    incidence->setSchedulingID( exInc->schedulingID() );
+    incidence->setUid( exInc->uid() );
+
+    mCalendar->beginChange( exInc );
+    IncidenceChanger::assignIncidence( exInc, incidence );
+    exInc->updated();
+    mCalendar->endChange( exInc );
+  } else {
+    mCalendar->addIncidence( incidence );
+  }
+  return true;
 }
