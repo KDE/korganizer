@@ -39,6 +39,7 @@ class KOTodoViewSortFilterProxyModel : public QSortFilterProxyModel
 
   protected:
     bool filterAcceptsRow( int source_row, const QModelIndex &source_parent ) const;
+    bool lessThan( const QModelIndex &left, const QModelIndex &right ) const;
 
   public Q_SLOTS:
     void setCategoryFilter( const QStringList &categories );

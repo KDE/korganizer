@@ -25,6 +25,7 @@
 
 #include "kotodoviewsortfilterproxymodel.h"
 #include "kotodomodel.h"
+#include "koprefs.h"
 
 #include <KDebug>
 #include <QModelIndex>
@@ -60,6 +61,24 @@ bool KOTodoViewSortFilterProxyModel::filterAcceptsRow(
   }
 
   return ret;
+}
+
+bool KOTodoViewSortFilterProxyModel::lessThan( const QModelIndex &left,
+                                               const QModelIndex &right ) const
+{
+  if ( KOPrefs::instance()->sortCompletedTodosSeperately() ) {
+    QModelIndex cLeft = left.sibling( left.row(), KOTodoModel::PercentColumn );
+    QModelIndex cRight = right.sibling( right.row(), KOTodoModel::PercentColumn );
+
+    if ( cRight.data( Qt::EditRole ).toInt() == 100 &&
+         cLeft.data( Qt::EditRole ).toInt() != 100 ) {
+      return false;
+    } else if ( cRight.data( Qt::EditRole ).toInt() != 100 &&
+                cLeft.data( Qt::EditRole ).toInt() == 100 ) {
+      return true;
+    }
+  }
+  return QSortFilterProxyModel::lessThan( left, right );
 }
 
 void KOTodoViewSortFilterProxyModel::setCategoryFilter( const QStringList &categories )

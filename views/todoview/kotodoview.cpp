@@ -74,8 +74,11 @@ KOTodoView::KOTodoView( Calendar *cal, QWidget *parent )
   mView = new KOTodoViewView( this );
   mView->setModel( mProxyModel );
 
+  mView->setContextMenuPolicy( Qt::CustomContextMenu );
+
   mView->setSortingEnabled( true );
 
+  mView->setAutoExpandDelay( 250 );
   mView->setDragDropMode( QAbstractItemView::DragDrop );
 
   mView->setExpandsOnDoubleClick( false );
@@ -97,7 +100,6 @@ KOTodoView::KOTodoView( Calendar *cal, QWidget *parent )
   KOTodoDescriptionDelegate *descriptionDelegate = new KOTodoDescriptionDelegate( mView );
   mView->setItemDelegateForColumn( KOTodoModel::DescriptionColumn, descriptionDelegate );
 
-  mView->setContextMenuPolicy( Qt::CustomContextMenu );
   connect( mView, SIGNAL(customContextMenuRequested(const QPoint &)),
            this, SLOT(contextMenu(const QPoint &)) );
   connect( mView, SIGNAL(doubleClicked(const QModelIndex &)),
@@ -228,9 +230,11 @@ void KOTodoView::saveLayout( KConfig *config, const QString &group ) const
   cfgGroup.writeEntry( "ColumnWidths", columnWidths );
 
   cfgGroup.writeEntry( "SortAscending", (int)header->sortIndicatorOrder() );
-  cfgGroup.writeEntry( "SortColumn", header->sortIndicatorSection() );
-
-  cfgGroup.sync();
+  if ( header->isSortIndicatorShown() ) {
+    cfgGroup.writeEntry( "SortColumn", header->sortIndicatorSection() );
+  } else {
+    cfgGroup.writeEntry( "SortColumn", -1 );
+  }
 }
 
 void KOTodoView::restoreLayout( KConfig *config, const QString &group )
@@ -249,8 +253,10 @@ void KOTodoView::restoreLayout( KConfig *config, const QString &group )
     header->moveSection( header->visualIndex( i ), order );
   }
   int sortOrder = cfgGroup.readEntry( "SortAscending", (int)Qt::AscendingOrder );
-  int sortColumn = cfgGroup.readEntry( "SortColumn", 0 );
-  header->setSortIndicator( sortColumn, (Qt::SortOrder)sortOrder );
+  int sortColumn = cfgGroup.readEntry( "SortColumn", -1 );
+  if ( sortColumn >= 0 ) {
+    mView->sortByColumn( sortColumn, (Qt::SortOrder)sortOrder );
+  }
 }
 
 void KOTodoView::setIncidenceChanger( IncidenceChangerBase *changer )

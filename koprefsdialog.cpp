@@ -622,6 +622,8 @@ class KOPrefsDialogViews : public KPrefsModule
         addWidBool( KOPrefs::instance()->fullViewTodoItem() )->checkBox() );
       todoLayout->addWidget(
         addWidBool( KOPrefs::instance()->recordTodosInJournalsItem() )->checkBox() );
+      todoLayout->addWidget(
+        addWidBool( KOPrefs::instance()->sortCompletedTodosSeperatelyItem() )->checkBox() );
       todoLayout->addStretch( 1 );
 
       load();
