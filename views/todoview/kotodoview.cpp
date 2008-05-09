@@ -78,6 +78,7 @@ KOTodoView::KOTodoView( Calendar *cal, QWidget *parent )
 
   mView->setDragDropMode( QAbstractItemView::DragDrop );
 
+  mView->setExpandsOnDoubleClick( false );
   mView->setEditTriggers( QAbstractItemView::SelectedClicked |
                           QAbstractItemView::EditKeyPressed );
 
