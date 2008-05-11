@@ -66,7 +66,7 @@ bool KOTodoViewSortFilterProxyModel::filterAcceptsRow(
 bool KOTodoViewSortFilterProxyModel::lessThan( const QModelIndex &left,
                                                const QModelIndex &right ) const
 {
-  if ( KOPrefs::instance()->sortCompletedTodosSeperately() ) {
+  if ( KOPrefs::instance()->sortCompletedTodosSeparately() ) {
     QModelIndex cLeft = left.sibling( left.row(), KOTodoModel::PercentColumn );
     QModelIndex cRight = right.sibling( right.row(), KOTodoModel::PercentColumn );
 
