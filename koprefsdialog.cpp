@@ -271,17 +271,12 @@ class KOPrefsDialogTime : public KPrefsModule
 
       QLabel *holidayLabel = new QLabel(
         i18nc( "@label", "Use holiday region:" ), holidayRegBox );
-      whatsThis = i18nc( "@info:whatsthis",
-                         "Select from which region you want to use the "
-                         "holidays here. Defined holidays are shown as "
-                         "non-working days in the date navigator, the "
-                         "agenda view, etc." );
-      holidayLabel->setWhatsThis( whatsThis );
+      holidayLabel->setWhatsThis( KOPrefs::instance()->holidaysItem()->whatsThis() );
 
       mHolidayCombo = new KComboBox( holidayRegBox );
       connect( mHolidayCombo, SIGNAL(activated(int)), SLOT(slotWidChanged()) );
 
-      mHolidayCombo->setWhatsThis( whatsThis );
+      mHolidayCombo->setWhatsThis( KOPrefs::instance()->holidaysItem()->whatsThis() );
 
       QString currentHolidayName;
       QStringList holidayList;
@@ -408,13 +403,9 @@ class KOPrefsDialogTime : public KPrefsModule
                 << i18nc( "@item:inlistbox", "30 minutes" );
       QLabel *alarmLabel = new QLabel( i18nc( "@label", "Default reminder time:" ), defaultPage );
       defaultLayout->addWidget( alarmLabel, 2, 0 );
-      alarmLabel->setWhatsThis(
-        i18nc( "@info:whatsthis",
-               "Enter the default reminder time here." ) );
+      alarmLabel->setWhatsThis( KOPrefs::instance()->alarmTimeItem()->whatsThis() );
       mAlarmTimeCombo = new KComboBox( defaultPage );
-      mAlarmTimeCombo->setWhatsThis(
-        i18nc( "@info:whatsthis",
-               "Enter the default reminder time here." ) );
+      mAlarmTimeCombo->setWhatsThis( KOPrefs::instance()->alarmTimeItem()->whatsThis() );
       connect( mAlarmTimeCombo, SIGNAL(activated(int)), SLOT(slotWidChanged()) );
       mAlarmTimeCombo->addItems( alarmList );
       defaultLayout->addWidget( mAlarmTimeCombo, 2, 1 );
