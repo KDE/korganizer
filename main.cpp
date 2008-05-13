@@ -46,7 +46,7 @@ int main ( int argc, char **argv )
   if ( !KOrganizerApp::start() ) return 0;
 
   KOrganizerApp app;
-  QApplication::setWindowIcon( KIcon( "office-calendar" ) );
+  QApplication::setWindowIcon( KIcon( "korganizer" ) );
 
   KGlobal::locale()->insertCatalog( "libkcal" );
   KGlobal::locale()->insertCatalog( "libkdepim" );
