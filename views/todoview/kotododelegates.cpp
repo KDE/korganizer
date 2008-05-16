@@ -50,11 +50,13 @@
 #include <QStyleOptionViewItem>
 #include <QStyleOptionProgressBar>
 #include <QSize>
+#include <QPoint>
 #include <QEvent>
 #include <QPaintEvent>
 #include <QTextDocument>
 #include <QFont>
 #include <QFontMetrics>
+#include <QToolTip>
 
 using namespace KCal;
 using namespace KPIM;
@@ -99,7 +101,7 @@ void KOTodoCompleteDelegate::paint( QPainter *painter,
   if ( !( opt.state & QStyle::State_Editing ) && !isEditing ) {
     QRect rect = opt.rect;
 
-    rect.adjust( 4, 3, -6, -3 );
+    rect.adjust( 0, 1, 0, -1 );
 
     QStyleOptionProgressBar pbOption;
 
@@ -112,7 +114,7 @@ void KOTodoCompleteDelegate::paint( QPainter *painter,
     pbOption.maximum = 100;
     pbOption.minimum = 0;
     pbOption.progress = index.data().toInt();
-    pbOption.text = index.data().toString() + QString::fromAscii( "%" );
+    pbOption.text = index.data().toString() + QChar::fromAscii( '%' );
     pbOption.textAlignment = Qt::AlignCenter;
     pbOption.textVisible = true;
 
@@ -123,10 +125,9 @@ void KOTodoCompleteDelegate::paint( QPainter *painter,
 QSize KOTodoCompleteDelegate::sizeHint( const QStyleOptionViewItem &option,
                                         const QModelIndex &index ) const
 {
-  Q_UNUSED( option );
   Q_UNUSED( index );
 
-  return QSize( 80, 20 );
+  return option.fontMetrics.size( 0, "100%" ) + QSize( 0, 2 );
 }
 
 QWidget *KOTodoCompleteDelegate::createEditor( QWidget *parent,
@@ -136,7 +137,7 @@ QWidget *KOTodoCompleteDelegate::createEditor( QWidget *parent,
   Q_UNUSED( option );
   Q_UNUSED( index );
 
-  QSlider *slider = new QSlider( parent );
+  KOTodoCompleteSlider *slider = new KOTodoCompleteSlider( parent );
 
   slider->setRange( 0, 100 );
   slider->setOrientation( Qt::Horizontal );
@@ -165,11 +166,29 @@ void KOTodoCompleteDelegate::updateEditorGeometry( QWidget *editor,
                                                    const QStyleOptionViewItem &option,
                                                    const QModelIndex &index ) const
 {
-  Q_UNUSED( option );
   Q_UNUSED( index );
 
   editor->setGeometry( option.rect );
 }
+
+KOTodoCompleteSlider::KOTodoCompleteSlider( QWidget *parent )
+  : QSlider( parent)
+{
+  connect( this, SIGNAL(valueChanged(int)),
+            this, SLOT(updateTip(int)) );
+}
+
+void KOTodoCompleteSlider::updateTip( int value )
+{
+  QPoint p;
+  p.setY( height()/2 );
+  p.setX( style()->sliderPositionFromValue ( minimum(), maximum(),
+                                              value, width() ) );
+
+  QString text = QString::fromAscii( "%1%" ).arg( value );
+  QToolTip::showText( mapToGlobal( p ), text, this );
+}
+
 
 // ---------------- PRIORITY DELEGATE ----------------------------
 // ---------------------------------------------------------------
@@ -241,7 +260,6 @@ void KOTodoPriorityDelegate::updateEditorGeometry( QWidget *editor,
                                                    const QStyleOptionViewItem &option,
                                                    const QModelIndex &index ) const
 {
-  Q_UNUSED( option );
   Q_UNUSED( index );
 
   editor->setGeometry( option.rect );
@@ -263,7 +281,6 @@ QWidget *KOTodoDueDateDelegate::createEditor( QWidget *parent,
                                               const QStyleOptionViewItem &option,
                                               const QModelIndex &index ) const
 {
-  Q_UNUSED( option );
   Q_UNUSED( index );
 
   KDateEdit *dateEdit = new KDateEdit( parent );
@@ -292,7 +309,6 @@ void KOTodoDueDateDelegate::updateEditorGeometry( QWidget *editor,
                                                   const QStyleOptionViewItem &option,
                                                   const QModelIndex &index ) const
 {
-  Q_UNUSED( option );
   Q_UNUSED( index );
 
   editor->setGeometry( option.rect );
@@ -375,7 +391,6 @@ void KOTodoCategoriesDelegate::updateEditorGeometry( QWidget *editor,
                                                      const QStyleOptionViewItem &option,
                                                      const QModelIndex &index ) const
 {
-  Q_UNUSED( option );
   Q_UNUSED( index );
 
   editor->setGeometry( option.rect );

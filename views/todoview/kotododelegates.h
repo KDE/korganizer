@@ -27,10 +27,12 @@
 
 #include <QStyledItemDelegate>
 #include <QModelIndex>
+#include <QSlider>
 
 namespace KCal { class Calendar; }
 using namespace KCal;
 
+class QWidget;
 class QPainter;
 class QStyleOptionViewItem;
 class QSize;
@@ -64,6 +66,17 @@ class KOTodoCompleteDelegate : public QStyledItemDelegate
     void updateEditorGeometry( QWidget *editor,
                                const QStyleOptionViewItem &option,
                                const QModelIndex &index ) const;
+};
+
+class KOTodoCompleteSlider : public QSlider
+{
+  Q_OBJECT
+
+  public:
+    explicit KOTodoCompleteSlider( QWidget *parent );
+
+  private Q_SLOTS:
+    void updateTip( int value );
 };
 
 /**
