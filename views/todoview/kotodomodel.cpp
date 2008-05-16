@@ -730,6 +730,7 @@ bool KOTodoModel::setData( const QModelIndex &index, const QVariant &value, int 
             KDateTime tmp = todo->dtDue();
             tmp.setDate( value.toDate() );
             todo->setDtDue( tmp );
+            todo->setHasDueDate( value.toDate().isValid() );
             modified = KOGlobals::DATE_MODIFIED;
           }
           break;
