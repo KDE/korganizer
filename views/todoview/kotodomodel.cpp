@@ -248,10 +248,11 @@ void KOTodoModel::processChange( Incidence *incidence, int action )
   }
 }
 
-void KOTodoModel::addTodo( const QString &summary )
+QModelIndex KOTodoModel::addTodo( const QString &summary,
+                                  const QModelIndex &parent )
 {
   if ( !mChanger ) {
-    return;
+    return QModelIndex();
   }
 
   if ( !summary.trimmed().isEmpty() ) {
@@ -259,11 +260,21 @@ void KOTodoModel::addTodo( const QString &summary )
     todo->setSummary( summary.trimmed() );
     todo->setOrganizer( Person( KOPrefs::instance()->fullName(),
                                 KOPrefs::instance()->email() ) );
+    if ( parent.isValid() ) {
+      todo->setRelatedTo(
+              static_cast<TodoTreeNode *>( parent.internalPointer() )->mTodo );
+    }
+
     if ( !mChanger->addIncidence( todo ) ) {
       KODialogManager::errorSaveIncidence( 0, todo );
       delete todo;
+      return QModelIndex();
     }
+
+    return getModelIndex( findTodo( todo ) );
   }
+
+  return QModelIndex();
 }
 
 void KOTodoModel::copyTodo( const QModelIndex &index, const QDate &date )
@@ -416,7 +427,7 @@ KOTodoModel::TodoTreeNode *KOTodoModel::insertTodo( Todo *todo,
     return ret;
   } else {
     beginInsertRows( getModelIndex( mRootNode ), mRootNode->mChildren.size(),
-                                                  mRootNode->mChildren.size() );
+                                                 mRootNode->mChildren.size() );
 
     // add the todo as root item
     TodoTreeNode *ret = new TodoTreeNode( todo, mRootNode );

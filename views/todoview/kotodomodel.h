@@ -84,8 +84,9 @@ class KOTodoModel : public QAbstractItemModel
     /** Reloads only the specified todo (if the incidence is a todo) */
     void processChange( Incidence *incidence, int action );
 
-    /** Creates a new todo with the given text as summary */
-    void addTodo( const QString &summary );
+    /** Creates a new todo with the given text as summary under the given parent */
+    QModelIndex addTodo( const QString &summary,
+                         const QModelIndex &parent = QModelIndex() );
     /** Copy the todo with the given index to the given date */
     void copyTodo( const QModelIndex &index, const QDate &date );
 

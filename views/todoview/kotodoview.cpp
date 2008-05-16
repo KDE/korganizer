@@ -27,6 +27,7 @@
 
 #include "kotodoview.h"
 #include "kotodoviewquicksearch.h"
+#include "kotodoviewquickaddline.h"
 #include "kotodomodel.h"
 #include "kotodoviewsortfilterproxymodel.h"
 #include "kotodoviewview.h"
@@ -109,11 +110,12 @@ KOTodoView::KOTodoView( Calendar *cal, QWidget *parent )
            this,
            SLOT(selectionChanged(const QItemSelection&, const QItemSelection&)) );
 
-  mQuickAdd = new KLineEdit( this );
+  mQuickAdd = new KOTodoViewQuickAddLine( this );
   mQuickAdd->setClickMessage( i18n( "Click to add a new to-do" ) );
   mQuickAdd->setClearButtonShown( true );
   mQuickAdd->setVisible( KOPrefs::instance()->enableQuickTodo() );
-  connect( mQuickAdd, SIGNAL(returnPressed()), SLOT(addQuickTodo()) );
+  connect( mQuickAdd, SIGNAL(returnPressed(Qt::KeyboardModifiers)),
+           this, SLOT(addQuickTodo(Qt::KeyboardModifiers)) );
 
   QVBoxLayout *layout = new QVBoxLayout( this );
   layout->addWidget( mQuickSearch );
@@ -308,9 +310,28 @@ void KOTodoView::clearSelection()
   mView->selectionModel()->clearSelection();
 }
 
-void KOTodoView::addQuickTodo()
+void KOTodoView::addQuickTodo( Qt::KeyboardModifiers modifiers )
 {
-  mModel->addTodo( mQuickAdd->text() );
+  if ( modifiers == Qt::NoModifier ) {
+    QModelIndex index = mModel->addTodo( mQuickAdd->text() );
+
+    QModelIndexList selection = mView->selectionModel()->selectedRows();
+    if ( selection.size() <= 1 ) {
+      // don't destroy complex selections, not applicable now (only single
+      // selection allowed), but for the future...
+      mView->selectionModel()->select( mProxyModel->mapFromSource( index ),
+                                       QItemSelectionModel::ClearAndSelect |
+                                       QItemSelectionModel::Rows );
+    }
+  } else if ( modifiers == Qt::ControlModifier ) {
+    QModelIndexList selection = mView->selectionModel()->selectedRows();
+    if ( selection.size() != 1 ) {
+      return;
+    }
+    mModel->addTodo( mQuickAdd->text(), mProxyModel->mapToSource( selection[0] ) );
+  } else {
+    return;
+  }
   mQuickAdd->setText( QString() );
 }
 

@@ -151,6 +151,7 @@ set(korganizerprivate_LIB_SRCS
    views/todoview/kotodoviewview.cpp
    views/todoview/kotodoview.cpp
    views/todoview/kotodoviewquicksearch.cpp
+   views/todoview/kotodoviewquickaddline.cpp
    views/todoview/kcheckcombobox.cpp
    searchdialog.cpp
    calendarview.cpp

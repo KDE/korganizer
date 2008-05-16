@@ -53,6 +53,7 @@ class KOTodoModel;
 class KOTodoViewView;
 class KOTodoCategoriesDelegate;
 class KOTodoViewQuickSearch;
+class KOTodoViewQuickAddLine;
 
 class KOTodoView : public BaseView
 {
@@ -84,7 +85,7 @@ class KOTodoView : public BaseView
     virtual void clearSelection();
 
   protected Q_SLOTS:
-    void addQuickTodo();
+    void addQuickTodo( Qt::KeyboardModifiers modifier );
 
     void contextMenu( const QPoint &pos );
 
@@ -115,7 +116,7 @@ class KOTodoView : public BaseView
     KOTodoCategoriesDelegate *mCategoriesDelegate;
 
     KOTodoViewQuickSearch *mQuickSearch;
-    KLineEdit *mQuickAdd;
+    KOTodoViewQuickAddLine *mQuickAdd;
 
     QMenu *mItemPopupMenu;
     QMenu *mCopyPopupMenu;
