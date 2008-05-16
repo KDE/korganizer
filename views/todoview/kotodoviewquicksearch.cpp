@@ -51,7 +51,6 @@ KOTodoViewQuickSearch::KOTodoViewQuickSearch( Calendar *calendar, QWidget *paren
   : QWidget( parent ), mCalendar( calendar )
 {
   QHBoxLayout *layout = new QHBoxLayout( this );
-  layout->setSpacing( 0 );
   // no special margin because it is added by the view
   layout->setContentsMargins( 0, 0, 0, 0 );
 

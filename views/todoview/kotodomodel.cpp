@@ -648,9 +648,16 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
   return QVariant();
 }
 
-QVariant KOTodoModel::headerData( int column, Qt::Orientation, int role ) const
+QVariant KOTodoModel::headerData( int column,
+                                  Qt::Orientation orientation,
+                                  int role ) const
 {
   Q_ASSERT( column >= 0 && column < mColumnCount );
+
+  if ( orientation != Qt::Horizontal ) {
+    return QVariant();
+  }
+
   if ( role == Qt::DisplayRole ) {
     switch ( column ) {
     case SummaryColumn:

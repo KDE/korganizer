@@ -78,6 +78,8 @@ KOTodoView::KOTodoView( Calendar *cal, QWidget *parent )
   mView->setContextMenuPolicy( Qt::CustomContextMenu );
 
   mView->setSortingEnabled( true );
+  // I have no idea why, but without this sorting does not work
+  mView->header()->setMovable( false );
 
   mView->setAutoExpandDelay( 250 );
   mView->setDragDropMode( QAbstractItemView::DragDrop );
