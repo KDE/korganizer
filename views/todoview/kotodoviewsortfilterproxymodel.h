@@ -27,6 +27,7 @@
 
 #include <QSortFilterProxyModel>
 #include <QStringList>
+#include <Qt>
 
 class QModelIndex;
 
@@ -37,6 +38,8 @@ class KOTodoViewSortFilterProxyModel : public QSortFilterProxyModel
   public:
     KOTodoViewSortFilterProxyModel( QObject *parent = 0 );
 
+    void sort( int column, Qt::SortOrder order = Qt::AscendingOrder);
+
   protected:
     bool filterAcceptsRow( int source_row, const QModelIndex &source_parent ) const;
     bool lessThan( const QModelIndex &left, const QModelIndex &right ) const;
@@ -46,6 +49,7 @@ class KOTodoViewSortFilterProxyModel : public QSortFilterProxyModel
 
   private:
     QStringList mCategories;
+    Qt::SortOrder mSortOrder;
 };
 
 #endif

@@ -35,6 +35,13 @@ KOTodoViewSortFilterProxyModel::KOTodoViewSortFilterProxyModel( QObject *parent 
 {
 }
 
+void KOTodoViewSortFilterProxyModel::sort( int column,
+                                           Qt::SortOrder order)
+{
+  mSortOrder = order;
+  QSortFilterProxyModel::sort( column, order );
+}
+
 bool KOTodoViewSortFilterProxyModel::filterAcceptsRow(
                   int source_row, const QModelIndex &source_parent ) const
 {
@@ -72,10 +79,10 @@ bool KOTodoViewSortFilterProxyModel::lessThan( const QModelIndex &left,
 
     if ( cRight.data( Qt::EditRole ).toInt() == 100 &&
          cLeft.data( Qt::EditRole ).toInt() != 100 ) {
-      return false;
+      return mSortOrder == Qt::AscendingOrder ? true : false;
     } else if ( cRight.data( Qt::EditRole ).toInt() != 100 &&
                 cLeft.data( Qt::EditRole ).toInt() == 100 ) {
-      return true;
+      return mSortOrder == Qt::AscendingOrder ? false : true;
     }
   }
   return QSortFilterProxyModel::lessThan( left, right );
