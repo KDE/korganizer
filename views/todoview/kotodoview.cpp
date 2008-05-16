@@ -436,7 +436,8 @@ void KOTodoView::copyTodoToDate( const QDate &date )
 void KOTodoView::itemDoubleClicked( const QModelIndex &index )
 {
   if ( index.isValid() ) {
-    if ( index.flags() & Qt::ItemIsEditable ) {
+    QModelIndex summary = index.sibling( index.row(), KOTodoModel::SummaryColumn);
+    if ( summary.flags() & Qt::ItemIsEditable ) {
       editTodo();
     } else {
       showTodo();
