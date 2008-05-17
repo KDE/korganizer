@@ -46,6 +46,8 @@
 
 #include <QString>
 #include <QIcon>
+#include <QHash>
+#include <QList>
 #include <QtAlgorithms>
 
 #ifndef KORG_NODND
@@ -57,10 +59,17 @@
 struct KOTodoModel::TodoTreeNode
 {
   TodoTreeNode( Todo *todo, TodoTreeNode *parent )
-    : mTodo( todo ), mParent( parent ), mToDelete( false ) {}
+    : mTodo( todo ), mParent( parent ),
+      mParentListPos( 0 ), mToDelete( false ) {}
   /** Recursively delete all TodoTreeNodes which are children of this one. */
   ~TodoTreeNode()
   {
+    if ( mTodo ) {
+      mTodoHash.remove( mTodo->uid() );
+    } else {
+      // root node gets deleted, clear the whole hash
+      mTodoHash.clear();
+    }
     qDeleteAll( mChildren );
   }
 
@@ -71,19 +80,10 @@ struct KOTodoModel::TodoTreeNode
    * @return Pointer to the TodoTreeNode node which represents the todo
    *         searched for.
    */
-  TodoTreeNode *find( const Todo *todo )
+  static TodoTreeNode *find( const Todo *todo )
   {
     Q_ASSERT( todo );
-    if ( mTodo && todo->uid() == mTodo->uid() ) {
-      return this;
-    }
-    Q_FOREACH ( TodoTreeNode *node, mChildren ) {
-      TodoTreeNode *tmp = node->find( todo );
-      if ( tmp ) {
-        return tmp;
-      }
-    }
-    return 0;
+    return mTodoHash.value( todo->uid() );
   }
 
   /** Recursively set mToDelete to true for all todos.
@@ -106,11 +106,11 @@ struct KOTodoModel::TodoTreeNode
     }
     if ( mToDelete ) {
       // all children should be deleted by now
-      Q_ASSERT ( mChildren.isEmpty() );
+      Q_ASSERT ( !hasChildren() );
       QModelIndex tmp = model->getModelIndex( this );
       model->beginRemoveRows( model->getModelIndex( mParent ),
                               tmp.row(), tmp.row() );
-      mParent->mChildren.removeAt( tmp.row() );
+      mParent->removeChild( tmp.row() );
       model->endRemoveRows();
 
       delete this;
@@ -124,11 +124,47 @@ struct KOTodoModel::TodoTreeNode
   Todo *mTodo;
   /** Pointer to the parent TodoTreeNode. Only the root element has no parent. */
   TodoTreeNode *mParent;
-  /** List of pointer to the child nodes. */
-  QList<TodoTreeNode*> mChildren;
+  /** Position of this TodoTreeNode in it's parents children list */
+  int mParentListPos;
+
   /** Used during reloadTodos to indicate if the todo should be deleted later */
   bool mToDelete;
+
+  /** Add a new child to this TodoTreeNode */
+  void addChild( TodoTreeNode *node )
+  {
+    node->mParentListPos = childrenCount();
+    mChildren.append( node );
+    mTodoHash[ node->mTodo->uid() ] = node;
+  }
+
+  /** Remove the child at the specified position */
+  void removeChild( int pos )
+  {
+    Q_ASSERT( pos >= 0 && pos < childrenCount() );
+    for ( int i = pos+1; i < childrenCount(); ++i ) {
+      childAt( i )->mParentListPos--;
+    }
+    mTodoHash.remove( childAt( pos )->mTodo->uid() );
+    mChildren.removeAt( pos );
+  }
+
+  /** Returns true if this TodoTreeNode has children */
+  bool hasChildren() const { return !mChildren.isEmpty(); }
+
+  /** Returns the count of children of this TodoTreeNode */
+  int childrenCount() const { return mChildren.count(); }
+
+  /** Returns the child at the given position */
+  TodoTreeNode *childAt( int pos ) const { return mChildren[ pos ]; }
+
+  private:
+    /** List of pointer to the child nodes. */
+    QList<TodoTreeNode*> mChildren;
+    /** Hash used to quickly search todos by their uid */
+    static QHash<QString, TodoTreeNode*> mTodoHash;
 };
+QHash<QString, KOTodoModel::TodoTreeNode*> KOTodoModel::TodoTreeNode::mTodoHash;
 
 KOTodoModel::KOTodoModel( Calendar *cal, QObject *parent )
   : QAbstractItemModel( parent ), mColumnCount( DescriptionColumn + 1 )
@@ -211,8 +247,6 @@ void KOTodoModel::processChange( Incidence *incidence, int action )
     return;
   }
 
-  kDebug() << "incidence->uid() = " << incidence->uid() << " action = " << action;
-
   Todo *todo = static_cast<Todo *>( incidence );
 
   if ( action == KOGlobals::INCIDENCEEDITED ) {
@@ -236,13 +270,13 @@ void KOTodoModel::processChange( Incidence *incidence, int action )
     Q_ASSERT( ttTodo );
     // somebody should assure that all todo's which relate to this one
     // are un-linked before deleting this one
-    Q_ASSERT( ttTodo->mChildren.isEmpty() );
+    Q_ASSERT( !ttTodo->hasChildren() );
 
     // find the model index of the deleted incidence
     QModelIndex miDeleted = getModelIndex( ttTodo );
 
     beginRemoveRows( miDeleted.parent(), miDeleted.row(), miDeleted.row() );
-    ttTodo->mParent->mChildren.removeAt( miDeleted.row() );
+    ttTodo->mParent->removeChild( miDeleted.row() );
     delete ttTodo;
     endRemoveRows();
   } else {
@@ -307,9 +341,8 @@ QModelIndex KOTodoModel::getModelIndex( TodoTreeNode *node ) const
   if ( node == mRootNode ) {
     return QModelIndex();
   }
-  int r = node->mParent->mChildren.indexOf( node );
 
-  return createIndex( r, 0, node );
+  return createIndex( node->mParentListPos, 0, node );
 }
 
 QModelIndex KOTodoModel::moveIfParentChanged( TodoTreeNode *curNode, Todo *todo,
@@ -353,16 +386,16 @@ QModelIndex KOTodoModel::moveIfParentChanged( TodoTreeNode *curNode, Todo *todo,
     emit layoutAboutToBeChanged();
     // create a list of all model indexes which will be changed
     QModelIndexList indexListFrom, indexListTo;
-    for ( int r = miChanged.row(); r < ttOldParent->mChildren.size(); ++r ) {
+    for ( int r = miChanged.row(); r < ttOldParent->childrenCount(); ++r ) {
       for ( int c = 0; c < mColumnCount; ++c ) {
-        indexListFrom << createIndex( r, c, ttOldParent->mChildren[ r ] );
+        indexListFrom << createIndex( r, c, ttOldParent->childAt( r ) );
       }
     }
 
-    ttOldParent->mChildren.removeAt( miChanged.row() );
+    ttOldParent->removeChild( miChanged.row() );
 
     // insert the changed todo
-    ttNewParent->mChildren.append( curNode );
+    ttNewParent->addChild( curNode );
     curNode->mParent = ttNewParent;
 
     QModelIndex miMoved = getModelIndex( curNode );
@@ -371,9 +404,9 @@ QModelIndex KOTodoModel::moveIfParentChanged( TodoTreeNode *curNode, Todo *todo,
     for ( int c = 0; c < mColumnCount; ++c ) {
       indexListTo << createIndex( miMoved.row(), c, curNode );
     }
-    for ( int r = miChanged.row(); r < ttOldParent->mChildren.size(); ++r ) {
+    for ( int r = miChanged.row(); r < ttOldParent->childrenCount(); ++r ) {
       for ( int c = 0; c < mColumnCount; ++c ) {
-        indexListTo << createIndex( r, c, ttOldParent->mChildren[ r ] );
+        indexListTo << createIndex( r, c, ttOldParent->childAt( r ) );
       }
     }
       // update the persistend model indexes
@@ -389,7 +422,7 @@ QModelIndex KOTodoModel::moveIfParentChanged( TodoTreeNode *curNode, Todo *todo,
 
 KOTodoModel::TodoTreeNode *KOTodoModel::findTodo( const Todo *todo )
 {
-  return mRootNode->find( todo );
+  return TodoTreeNode::find( todo );
 }
 
 KOTodoModel::TodoTreeNode *KOTodoModel::insertTodo( Todo *todo,
@@ -423,23 +456,23 @@ KOTodoModel::TodoTreeNode *KOTodoModel::insertTodo( Todo *todo,
       parent = insertTodo( relatedTodo, checkRelated );
     }
 
-    beginInsertRows( getModelIndex( parent ), parent->mChildren.size(),
-                                              parent->mChildren.size() );
+    beginInsertRows( getModelIndex( parent ), parent->childrenCount(),
+                                              parent->childrenCount() );
 
     // add the todo under it's parent
     TodoTreeNode *ret = new TodoTreeNode( todo, parent );
-    parent->mChildren.append( ret );
+    parent->addChild( ret );
 
     endInsertRows();
 
     return ret;
   } else {
-    beginInsertRows( getModelIndex( mRootNode ), mRootNode->mChildren.size(),
-                                                 mRootNode->mChildren.size() );
+    beginInsertRows( getModelIndex( mRootNode ), mRootNode->childrenCount(),
+                                                 mRootNode->childrenCount() );
 
     // add the todo as root item
     TodoTreeNode *ret = new TodoTreeNode( todo, mRootNode );
-    mRootNode->mChildren.append( ret );
+    mRootNode->addChild( ret );
 
     endInsertRows();
     return ret;
@@ -506,10 +539,10 @@ QModelIndex KOTodoModel::index( int row, int column,
   Q_ASSERT( column >= 0 && column < mColumnCount );
 
   if ( !parent.isValid() ) {
-    return createIndex( row, column, mRootNode->mChildren[ row ] );
+    return createIndex( row, column, mRootNode->childAt( row ) );
   } else {
     TodoTreeNode *node = static_cast<TodoTreeNode *>( parent.internalPointer() );
-    return createIndex( row, column, node->mChildren[ row ] );
+    return createIndex( row, column, node->childAt( row ) );
   }
 }
 
@@ -535,13 +568,13 @@ int KOTodoModel::columnCount( const QModelIndex &/*parent*/ ) const
 int KOTodoModel::rowCount( const QModelIndex &parent ) const
 {
   if ( !parent.isValid() ) {
-    return mRootNode->mChildren.size();
+    return mRootNode->childrenCount();
   }
 
   if ( parent.column() == 0 ) {
     // only items in the first column have children
     TodoTreeNode *node = static_cast<TodoTreeNode *>( parent.internalPointer() );
-    return node->mChildren.size();
+    return node->childrenCount();
   } else {
     return 0;
   }
