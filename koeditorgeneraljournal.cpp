@@ -41,6 +41,7 @@
 #include <klocale.h>
 #include <kmessagebox.h>
 #include <KSqueezedTextLabel>
+#include <KRichTextWidget>
 
 #include <q3groupbox.h>
 #include <QDateTime>

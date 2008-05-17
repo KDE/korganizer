@@ -41,6 +41,7 @@
 #include <kstandarddirs.h>
 #include <ktextedit.h>
 #include <KComboBox>
+#include <KRichTextWidget>
 
 #include <QLayout>
 #include <QSpinBox>

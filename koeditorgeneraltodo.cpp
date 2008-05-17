@@ -39,6 +39,7 @@
 #include <kfiledialog.h>
 #include <ktextedit.h>
 #include <KComboBox>
+#include <KRichTextWidget>
 
 #include <QLayout>
 #include <QDateTime>

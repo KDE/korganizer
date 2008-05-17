@@ -42,7 +42,8 @@
 #include <kfiledialog.h>
 #include <ksqueezedtextlabel.h>
 #include <kstandarddirs.h>
-#include <ktextedit.h>
+#include <KRichTextWidget>
+#include <KActionCollection>
 #include <krestrictedline.h>
 #include <kvbox.h>
 #include <KLineEdit>
@@ -63,6 +64,7 @@
 #include <QBoxLayout>
 #include <QTextCharFormat>
 #include <QTextList>
+#include <QToolButton>
 
 #include "koeditorattachments.h"
 #include "koeditorgeneral.moc"
@@ -184,60 +186,44 @@ void KOEditorGeneral::initDescription( QWidget *parent, QBoxLayout *topLayout )
   mRichDescription->setToolTip( i18n( "Toggle Rich Text" ) );
   connect( mRichDescription, SIGNAL(toggled(bool)),
            this, SLOT(setDescriptionRich(bool)) );
-  mDescriptionBoldButton = new QPushButton( parent );
-  mDescriptionBoldButton->setIcon( KIcon( "format-text-bold" ) );
-  mDescriptionBoldButton->setToolTip( i18n( "Bold text" ) );
-  connect( mDescriptionBoldButton, SIGNAL(clicked()),
-           this, SLOT(toggleDescriptionBold()) );
 
-  mDescriptionItalicButton = new QPushButton( parent );
-  mDescriptionItalicButton->setIcon( KIcon( "format-text-italic" ) );
-  mDescriptionItalicButton->setToolTip( i18n( "Italicize text" ) );
-  connect( mDescriptionItalicButton, SIGNAL(clicked()),
-           this, SLOT(toggleDescriptionItalic()) );
+  KActionCollection* collection = new KActionCollection(this);
+  mDescriptionEdit = new KRichTextWidget( parent );
+  mDescriptionEdit->setRichTextSupport( KRichTextWidget::SupportBold |
+    KRichTextWidget::SupportItalic |
+    KRichTextWidget::SupportUnderline |
+    KRichTextWidget::SupportStrikeOut |
+    KRichTextWidget::SupportAlignment |
+    KRichTextWidget::SupportChangeListStyle
+  );
 
-  mDescriptionUnderlineButton = new QPushButton( parent );
-  mDescriptionUnderlineButton->setIcon( KIcon( "format-text-underline" ) );
-  mDescriptionUnderlineButton->setToolTip( i18n( "Underline text" ) );
-  connect( mDescriptionUnderlineButton, SIGNAL(clicked()),
-           this, SLOT(toggleDescriptionUnderline()) );
+  mDescriptionEdit->createActions( collection );
 
-  mDescriptionStrikethroughButton = new QPushButton( parent );
-  mDescriptionStrikethroughButton->setIcon( KIcon( "format-text-strikethrough" ) );
-  mDescriptionStrikethroughButton->setToolTip( i18n( "Strike-through text" ) );
-  connect( mDescriptionStrikethroughButton, SIGNAL(clicked()),
-           this, SLOT(toggleDescriptionStrikethrough()) );
+  mDescriptionBoldButton = new QToolButton( parent );
+  mDescriptionBoldButton->setDefaultAction( collection->action( "format_text_bold" ) );
 
-  mDescriptionLeftAlignButton = new QPushButton( parent );
-  mDescriptionLeftAlignButton->setIcon( KIcon( "format-justify-left" ) );
-  mDescriptionLeftAlignButton->setToolTip( i18n( "Left-justify text" ) );
-  connect( mDescriptionLeftAlignButton, SIGNAL(clicked()),
-           this, SLOT(toggleDescriptionLeftAlign()) );
+  mDescriptionItalicButton = new QToolButton( parent );
+  mDescriptionItalicButton->setDefaultAction( collection->action( "format_text_italic" ) );
 
-  mDescriptionCentreAlignButton = new QPushButton( parent );
-  mDescriptionCentreAlignButton->setIcon( KIcon( "format-justify-center" ) );
-  mDescriptionCentreAlignButton->setToolTip( i18n( "Center text" ) );
-  connect( mDescriptionCentreAlignButton, SIGNAL(clicked()),
-           this, SLOT(toggleDescriptionCentreAlign()) );
+  mDescriptionUnderlineButton = new QToolButton( parent );
+  mDescriptionUnderlineButton->setDefaultAction( collection->action( "format_text_underline" ) );
 
-  mDescriptionRightAlignButton = new QPushButton( parent );
-  mDescriptionRightAlignButton->setIcon( KIcon( "format-justify-right" ) );
-  mDescriptionRightAlignButton->setToolTip( i18n( "Right-justify text" ) );
-  connect( mDescriptionRightAlignButton, SIGNAL(clicked()),
-           this, SLOT(toggleDescriptionRightAlign()) );
+  mDescriptionStrikethroughButton = new QToolButton( parent );
+  mDescriptionStrikethroughButton->setDefaultAction( collection->action( "format_text_strikeout" ) );
 
-  mDescriptionUnorderedListButton = new QPushButton( parent );
-  mDescriptionUnorderedListButton->setIcon( KIcon( "format-list-unordered" ) );
-  mDescriptionUnorderedListButton->setToolTip( i18n( "Unordered-list item" ) );
-  connect( mDescriptionUnorderedListButton, SIGNAL(clicked()),
-           this, SLOT(toggleDescriptionUnorderedList()) );
+  mDescriptionLeftAlignButton = new QToolButton( parent );
+  mDescriptionLeftAlignButton->setDefaultAction( collection->action( "format_align_left" ) );
 
-  mDescriptionOrderedListButton = new QPushButton( parent );
-  mDescriptionOrderedListButton->setIcon( KIcon( "format-list-ordered" ) );
-  mDescriptionOrderedListButton->setToolTip( i18n( "Ordered-list item" ) );
-  connect( mDescriptionOrderedListButton, SIGNAL(clicked()),
-           this, SLOT(toggleDescriptionOrderedList()) );
+  mDescriptionCentreAlignButton = new QToolButton( parent );
+  mDescriptionCentreAlignButton->setDefaultAction( collection->action( "format_align_center" ) );
 
+  mDescriptionRightAlignButton = new QToolButton( parent );
+  mDescriptionRightAlignButton->setDefaultAction( collection->action( "format_align_right" ) );
+
+  mDescriptionListButton = new QToolButton( parent );
+  mDescriptionListButton->setDefaultAction( collection->action( "format_list_style" ) );
+
+  htmlLayout->setSpacing(5);
   htmlLayout->addWidget( mRichDescription );
   htmlLayout->addWidget( mDescriptionBoldButton );
   htmlLayout->addWidget( mDescriptionItalicButton );
@@ -246,11 +232,9 @@ void KOEditorGeneral::initDescription( QWidget *parent, QBoxLayout *topLayout )
   htmlLayout->addWidget( mDescriptionLeftAlignButton );
   htmlLayout->addWidget( mDescriptionCentreAlignButton );
   htmlLayout->addWidget( mDescriptionRightAlignButton );
-  htmlLayout->addWidget( mDescriptionUnorderedListButton );
-  htmlLayout->addWidget( mDescriptionOrderedListButton );
+  htmlLayout->addWidget( mDescriptionListButton );
   htmlLayout->addStretch();
 
-  mDescriptionEdit = new KTextEdit( parent );
   mDescriptionEdit->setWhatsThis(
     i18n( "Sets the description for this event, to-do or journal. "
           "This will be displayed in a reminder if one is set, "
@@ -581,95 +565,6 @@ QObject *KOEditorGeneral::typeAheadReceiver() const
   return mSummaryEdit;
 }
 
-void KOEditorGeneral::toggleDescriptionBold()
-{
-  mRichDescription->setChecked( true );
-  QTextCursor cursor( mDescriptionEdit->textCursor() );
-  if ( cursor.selectionStart() == cursor.selectionEnd() ) {
-    cursor.select( QTextCursor::WordUnderCursor );
-  }
-  QTextCharFormat text;
-  if ( cursor.charFormat().fontWeight() == QFont::Bold ) {
-    text.setFontWeight( QFont::Normal );
-  } else {
-    text.setFontWeight( QFont::Bold );
-  }
-  cursor.mergeCharFormat( text );
-}
-
-void KOEditorGeneral::toggleDescriptionItalic()
-{
-  mRichDescription->setChecked( true );
-  QTextCursor cursor( mDescriptionEdit->textCursor() );
-  if ( cursor.selectionStart() == cursor.selectionEnd() ) {
-    cursor.select( QTextCursor::WordUnderCursor );
-  }
-  QTextCharFormat text;
-  text.setFontItalic( !cursor.charFormat().fontItalic() );
-  cursor.mergeCharFormat( text );
-}
-
-void KOEditorGeneral::toggleDescriptionUnderline()
-{
-  mRichDescription->setChecked( true );
-  QTextCursor cursor( mDescriptionEdit->textCursor() );
-  if ( cursor.selectionStart() == cursor.selectionEnd() ) {
-    cursor.select( QTextCursor::WordUnderCursor );
-  }
-  QTextCharFormat text;
-  text.setFontUnderline( !cursor.charFormat().fontUnderline() );
-  cursor.mergeCharFormat( text );
-}
-
-void KOEditorGeneral::toggleDescriptionStrikethrough()
-{
-  mRichDescription->setChecked( true );
-  QTextCursor cursor( mDescriptionEdit->textCursor() );
-  if ( cursor.selectionStart() == cursor.selectionEnd() ) {
-    cursor.select( QTextCursor::WordUnderCursor );
-  }
-  QTextCharFormat text;
-  text.setFontStrikeOut( !cursor.charFormat().fontStrikeOut() );
-  cursor.mergeCharFormat( text );
-}
-
-void KOEditorGeneral::toggleDescriptionLeftAlign()
-{
-  setAlignment( Qt::AlignLeft );
-}
-
-void KOEditorGeneral::toggleDescriptionCentreAlign()
-{
-  setAlignment( Qt::AlignHCenter );
-}
-
-void KOEditorGeneral::toggleDescriptionRightAlign()
-{
-  setAlignment( Qt::AlignRight );
-}
-
-void KOEditorGeneral::setAlignment( Qt::Alignment alignment )
-{
-  mRichDescription->setChecked( true );
-  QTextCursor cursor( mDescriptionEdit->textCursor() );
-  cursor.select( QTextCursor::LineUnderCursor );
-  QTextBlockFormat text;
-  if ( alignment != cursor.blockFormat().alignment() ) {
-    text.setAlignment( alignment );
-    cursor.mergeBlockFormat( text );
-  }
-}
-
-void KOEditorGeneral::toggleDescriptionOrderedList()
-{
-  createList( QTextListFormat::ListDecimal );
-}
-
-void KOEditorGeneral::toggleDescriptionUnorderedList()
-{
-  createList( QTextListFormat::ListDisc );
-}
-
 void KOEditorGeneral::toggleDescriptionRichButtons( bool rich )
 {
   mDescriptionBoldButton->setEnabled( rich );
@@ -679,26 +574,18 @@ void KOEditorGeneral::toggleDescriptionRichButtons( bool rich )
   mDescriptionLeftAlignButton->setEnabled( rich );
   mDescriptionCentreAlignButton->setEnabled( rich );
   mDescriptionRightAlignButton->setEnabled( rich );
-  mDescriptionUnorderedListButton->setEnabled( rich );
-  mDescriptionOrderedListButton->setEnabled( rich );
+  mDescriptionListButton->setEnabled( rich );
 }
 
 void KOEditorGeneral::setDescriptionRich( bool rich )
 {
   toggleDescriptionRichButtons( rich );
   if ( !rich ) {
-    QTextCursor cursor( mDescriptionEdit->textCursor() );
-    cursor.select( QTextCursor::Document );
-    cursor.setCharFormat( QTextCharFormat() );
-    mDescriptionEdit->setPlainText( mDescriptionEdit->toPlainText() );
+    mDescriptionEdit->switchToPlainText();
   }
-}
-
-QTextList *KOEditorGeneral::createList( QTextListFormat::Style style )
-{
-  mRichDescription->setChecked( true );
-  QTextCursor cursor( mDescriptionEdit->textCursor() );
-  return cursor.createList( style );
+  else {
+    mDescriptionEdit->enableRichTextMode();
+  }
 }
 
 void KOEditorGeneral::updateAttendeeSummary( int count )

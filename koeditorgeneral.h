@@ -40,9 +40,10 @@ class QCheckBox;
 class QStackedWidget;
 class QSpinBox;
 class QPushButton;
+class QToolButton;
 class KComboBox;
 class KLineEdit;
-class KTextEdit;
+class KRichTextWidget;
 class KSqueezedTextLabel;
 class KUrl;
 class KOEditorAttachments;
@@ -113,15 +114,6 @@ class KOEditorGeneral : public QObject
     void updateAlarmWidgets();
     void updateDefaultAlarmTime();
     void updateAttendeeSummary( int count );
-    void toggleDescriptionBold();
-    void toggleDescriptionItalic();
-    void toggleDescriptionUnderline();
-    void toggleDescriptionStrikethrough();
-    void toggleDescriptionLeftAlign();
-    void toggleDescriptionCentreAlign();
-    void toggleDescriptionRightAlign();
-    void toggleDescriptionOrderedList();
-    void toggleDescriptionUnorderedList();
     void setDescriptionRich( bool rich );
 
   signals:
@@ -131,8 +123,6 @@ class KOEditorGeneral : public QObject
     void openURL( const KUrl & );
   protected:
     Alarm *alarmFromSimplePage() const;
-    void setAlignment( Qt::Alignment alignment );
-    QTextList *createList( QTextListFormat::Style style );
 
     KLineEdit               *mSummaryEdit;
     KLineEdit               *mLocationEdit;
@@ -144,20 +134,19 @@ class KOEditorGeneral : public QObject
     QSpinBox                *mAlarmTimeEdit;
     KComboBox               *mAlarmIncrCombo;
     QPushButton             *mAlarmEditButton;
-    KTextEdit               *mDescriptionEdit;
+    KRichTextWidget         *mDescriptionEdit;
     QLabel                  *mOwnerLabel;
     KComboBox               *mSecrecyCombo;
     QPushButton             *mCategoriesButton;
     KSqueezedTextLabel      *mCategoriesLabel;
-    QPushButton             *mDescriptionBoldButton;
-    QPushButton             *mDescriptionItalicButton;
-    QPushButton             *mDescriptionUnderlineButton;
-    QPushButton             *mDescriptionStrikethroughButton;
-    QPushButton             *mDescriptionLeftAlignButton;
-    QPushButton             *mDescriptionCentreAlignButton;
-    QPushButton             *mDescriptionRightAlignButton;
-    QPushButton             *mDescriptionUnorderedListButton;
-    QPushButton             *mDescriptionOrderedListButton;
+    QToolButton             *mDescriptionBoldButton;
+    QToolButton             *mDescriptionItalicButton;
+    QToolButton             *mDescriptionUnderlineButton;
+    QToolButton             *mDescriptionStrikethroughButton;
+    QToolButton             *mDescriptionLeftAlignButton;
+    QToolButton             *mDescriptionCentreAlignButton;
+    QToolButton             *mDescriptionRightAlignButton;
+    QToolButton             *mDescriptionListButton;
     QCheckBox               *mRichDescription;
     KOEditorAttachments     *mAttachments;
     QLabel                  *mResourceLabel;
