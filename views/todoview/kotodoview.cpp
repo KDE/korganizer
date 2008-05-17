@@ -44,7 +44,8 @@
 #include <kiconloader.h>
 #include <klineedit.h>
 
-#include <QVBoxLayout>
+#include <QGridLayout>
+#include <QCheckBox>
 #include <QMenu>
 #include <QList>
 #include <QContextMenuEvent>
@@ -119,10 +120,20 @@ KOTodoView::KOTodoView( Calendar *cal, QWidget *parent )
   connect( mQuickAdd, SIGNAL(returnPressed(Qt::KeyboardModifiers)),
            this, SLOT(addQuickTodo(Qt::KeyboardModifiers)) );
 
-  QVBoxLayout *layout = new QVBoxLayout( this );
-  layout->addWidget( mQuickSearch );
-  layout->addWidget( mView, 1 );
-  layout->addWidget( mQuickAdd );
+  mFlatView = new QCheckBox( i18nc( "Checkbox to display todos not hirarchical",
+                                    "Flat View" ), this );
+  mFlatView->setToolTip( i18n( "Display to-dos as list rather than as tree\n"
+                               "(i.e. without parental relationship displayed)" )
+                       );
+  connect( mFlatView, SIGNAL(toggled(bool)),
+           mModel, SLOT(setFlatView(bool)) );
+
+  QGridLayout *layout = new QGridLayout( this );
+  layout->addWidget( mQuickSearch, 0, 0, 1, 2 );
+  layout->addWidget( mView, 1, 0, 1, 2 );
+  layout->setRowStretch( 1, 1 );
+  layout->addWidget( mQuickAdd, 2, 0 );
+  layout->addWidget( mFlatView, 2, 1 );
 
   setLayout( layout );
 
@@ -239,6 +250,8 @@ void KOTodoView::saveLayout( KConfig *config, const QString &group ) const
   } else {
     cfgGroup.writeEntry( "SortColumn", -1 );
   }
+
+  cfgGroup.writeEntry( "FlatView", mFlatView->isChecked() );
 }
 
 void KOTodoView::restoreLayout( KConfig *config, const QString &group )
@@ -261,6 +274,8 @@ void KOTodoView::restoreLayout( KConfig *config, const QString &group )
   if ( sortColumn >= 0 ) {
     mView->sortByColumn( sortColumn, (Qt::SortOrder)sortOrder );
   }
+
+  mFlatView->setChecked( cfgGroup.readEntry( "FlatView", false ) );
 }
 
 void KOTodoView::setIncidenceChanger( IncidenceChangerBase *changer )

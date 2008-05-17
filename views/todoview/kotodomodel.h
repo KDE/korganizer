@@ -120,6 +120,17 @@ class KOTodoModel : public QAbstractItemModel
                                int row, int column, const QModelIndex &parent );
 #endif
 
+  public Q_SLOTS:
+    /** Sets if the model should provide a hirarchical view on todos or not.
+     *
+     * If this is set to true, no parental relationship will be generated. All
+     * todos will be in a single list. If this is false, todos are grouped
+     * under their parents.
+     *
+     * @param flatView Wether to display todos as list or as tree.
+     */
+    void setFlatView( bool flatView );
+
   private:
     struct TodoTreeNode;
 
@@ -150,13 +161,19 @@ class KOTodoModel : public QAbstractItemModel
      */
     TodoTreeNode *insertTodo( Todo *todo, bool checkRelated = true );
 
+    /** Count of columns each item has */
     const int mColumnCount;
 
+    /** Calendar to get data from */
     Calendar *mCalendar;
     /** Root elements of the todo tree. */
     TodoTreeNode *mRootNode;
 
+    /** This IncidenceChanger is used to change todos */
     IncidenceChangerBase *mChanger;
+
+    /** Display the todos without hirarchy? */
+    bool mFlatView;
 
 #ifndef KORG_NODND
     DndFactory *mDndFactory;

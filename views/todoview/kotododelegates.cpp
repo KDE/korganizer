@@ -281,6 +281,7 @@ QWidget *KOTodoDueDateDelegate::createEditor( QWidget *parent,
                                               const QStyleOptionViewItem &option,
                                               const QModelIndex &index ) const
 {
+  Q_UNUSED( option );
   Q_UNUSED( index );
 
   KDateEdit *dateEdit = new KDateEdit( parent );

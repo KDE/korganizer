@@ -44,6 +44,7 @@ using namespace KOrg;
 
 class QMenu;
 class QAction;
+class QCheckBox;
 class QContextMenuEvent;
 class QItemSelection;
 class QModelIndex;
@@ -117,6 +118,7 @@ class KOTodoView : public BaseView
 
     KOTodoViewQuickSearch *mQuickSearch;
     KOTodoViewQuickAddLine *mQuickAdd;
+    QCheckBox *mFlatView;
 
     QMenu *mItemPopupMenu;
     QMenu *mCopyPopupMenu;

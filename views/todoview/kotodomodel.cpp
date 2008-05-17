@@ -134,6 +134,7 @@ KOTodoModel::KOTodoModel( Calendar *cal, QObject *parent )
   : QAbstractItemModel( parent ), mColumnCount( DescriptionColumn + 1 )
 {
   mRootNode = new TodoTreeNode( 0, 0 );
+  mFlatView = false;
   setCalendar( cal );
 
 #ifndef KORG_NODND
@@ -153,6 +154,8 @@ KOTodoModel::~KOTodoModel()
 void KOTodoModel::setCalendar( Calendar *cal )
 {
   mCalendar = cal;
+  // old todos might no longer be valid, so clear them
+  clearTodos();
   reloadTodos();
 }
 
@@ -319,10 +322,14 @@ QModelIndex KOTodoModel::moveIfParentChanged( TodoTreeNode *curNode, Todo *todo,
   TodoTreeNode *ttOldParent = curNode->mParent;
 
   // get the new parent
-  Incidence *inc = todo->relatedTo();
   Todo *newParent = 0;
-  if ( inc && inc->type() == "Todo" ) {
-    newParent = static_cast<Todo *>( inc );
+
+  if ( !mFlatView ) {
+    // in flat view, no todo has a parent
+    Incidence *inc = todo->relatedTo();
+    if ( inc && inc->type() == "Todo" ) {
+      newParent = static_cast<Todo *>( inc );
+    }
   }
 
   // check if the relation to the parent has changed
@@ -389,7 +396,8 @@ KOTodoModel::TodoTreeNode *KOTodoModel::insertTodo( Todo *todo,
                                                     bool checkRelated )
 {
   Incidence *incidence = todo->relatedTo();
-  if ( checkRelated && incidence && incidence->type() == "Todo" ) {
+  if ( !mFlatView && checkRelated &&
+       incidence && incidence->type() == "Todo" ) {
     // Use static_cast, checked for type already
     Todo *relatedTodo = static_cast<Todo *>(incidence);
 
@@ -436,6 +444,16 @@ KOTodoModel::TodoTreeNode *KOTodoModel::insertTodo( Todo *todo,
     endInsertRows();
     return ret;
   }
+}
+
+void KOTodoModel::setFlatView( bool flatView )
+{
+  if ( mFlatView == flatView ) {
+    return;
+  }
+
+  mFlatView = flatView;
+  reloadTodos();
 }
 
 Qt::ItemFlags KOTodoModel::flags( const QModelIndex &index ) const
