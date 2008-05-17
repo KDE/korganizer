@@ -121,6 +121,7 @@ class KOEditorGeneral : public QObject
     void updateCategoryConfig();
     void focusReceivedSignal();
     void openURL( const KUrl & );
+
   protected:
     Alarm *alarmFromSimplePage() const;
 
@@ -142,7 +143,7 @@ class KOEditorGeneral : public QObject
     QToolButton             *mDescriptionBoldButton;
     QToolButton             *mDescriptionItalicButton;
     QToolButton             *mDescriptionUnderlineButton;
-    QToolButton             *mDescriptionStrikethroughButton;
+    QToolButton             *mDescriptionStrikeoutButton;
     QToolButton             *mDescriptionLeftAlignButton;
     QToolButton             *mDescriptionCentreAlignButton;
     QToolButton             *mDescriptionRightAlignButton;

@@ -187,15 +187,15 @@ void KOEditorGeneral::initDescription( QWidget *parent, QBoxLayout *topLayout )
   connect( mRichDescription, SIGNAL(toggled(bool)),
            this, SLOT(setDescriptionRich(bool)) );
 
-  KActionCollection* collection = new KActionCollection(this);
+  KActionCollection *collection = new KActionCollection( this );
   mDescriptionEdit = new KRichTextWidget( parent );
-  mDescriptionEdit->setRichTextSupport( KRichTextWidget::SupportBold |
+  mDescriptionEdit->setRichTextSupport(
+    KRichTextWidget::SupportBold |
     KRichTextWidget::SupportItalic |
     KRichTextWidget::SupportUnderline |
     KRichTextWidget::SupportStrikeOut |
     KRichTextWidget::SupportAlignment |
-    KRichTextWidget::SupportChangeListStyle
-  );
+    KRichTextWidget::SupportChangeListStyle );
 
   mDescriptionEdit->createActions( collection );
 
@@ -208,8 +208,8 @@ void KOEditorGeneral::initDescription( QWidget *parent, QBoxLayout *topLayout )
   mDescriptionUnderlineButton = new QToolButton( parent );
   mDescriptionUnderlineButton->setDefaultAction( collection->action( "format_text_underline" ) );
 
-  mDescriptionStrikethroughButton = new QToolButton( parent );
-  mDescriptionStrikethroughButton->setDefaultAction( collection->action( "format_text_strikeout" ) );
+  mDescriptionStrikeoutButton = new QToolButton( parent );
+  mDescriptionStrikeoutButton->setDefaultAction( collection->action( "format_text_strikeout" ) );
 
   mDescriptionLeftAlignButton = new QToolButton( parent );
   mDescriptionLeftAlignButton->setDefaultAction( collection->action( "format_align_left" ) );
@@ -228,7 +228,7 @@ void KOEditorGeneral::initDescription( QWidget *parent, QBoxLayout *topLayout )
   htmlLayout->addWidget( mDescriptionBoldButton );
   htmlLayout->addWidget( mDescriptionItalicButton );
   htmlLayout->addWidget( mDescriptionUnderlineButton );
-  htmlLayout->addWidget( mDescriptionStrikethroughButton );
+  htmlLayout->addWidget( mDescriptionStrikeoutButton );
   htmlLayout->addWidget( mDescriptionLeftAlignButton );
   htmlLayout->addWidget( mDescriptionCentreAlignButton );
   htmlLayout->addWidget( mDescriptionRightAlignButton );
@@ -362,7 +362,6 @@ void KOEditorGeneral::enableAlarm( bool enable )
   mAlarmStack->setEnabled( enable );
   mAlarmEditButton->setEnabled( enable );
 }
-
 
 void KOEditorGeneral::toggleAlarm( bool on )
 {
@@ -570,7 +569,7 @@ void KOEditorGeneral::toggleDescriptionRichButtons( bool rich )
   mDescriptionBoldButton->setEnabled( rich );
   mDescriptionItalicButton->setEnabled( rich );
   mDescriptionUnderlineButton->setEnabled( rich );
-  mDescriptionStrikethroughButton->setEnabled( rich );
+  mDescriptionStrikeoutButton->setEnabled( rich );
   mDescriptionLeftAlignButton->setEnabled( rich );
   mDescriptionCentreAlignButton->setEnabled( rich );
   mDescriptionRightAlignButton->setEnabled( rich );
@@ -582,8 +581,7 @@ void KOEditorGeneral::setDescriptionRich( bool rich )
   toggleDescriptionRichButtons( rich );
   if ( !rich ) {
     mDescriptionEdit->switchToPlainText();
-  }
-  else {
+  } else {
     mDescriptionEdit->enableRichTextMode();
   }
 }
