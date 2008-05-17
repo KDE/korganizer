@@ -61,10 +61,15 @@ class KCheckComboBox : public QComboBox
   Q_SIGNALS:
     void checkedItemsChanged( const QStringList &items );
 
+  protected:
+    void keyPressEvent( QKeyEvent *event );
+    void wheelEvent( QWheelEvent *event );
+
   private Q_SLOTS:
     void updateCheckedItems( const QModelIndex &topLeft = QModelIndex(),
                              const QModelIndex &bottomRight = QModelIndex() );
-    void toggleCheckState( int index );
+    void toggleCheckState( int pos );
+    void toggleCheckState( const QModelIndex &index );
 
   private:
     QString mSeparator;

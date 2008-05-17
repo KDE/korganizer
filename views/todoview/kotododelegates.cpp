@@ -365,7 +365,7 @@ QWidget *KOTodoCategoriesDelegate::createEditor( QWidget *parent,
   }
 
   CategoryHierarchyReaderQComboBox( combo ).read( categories );
-  // TODO test again with newer version of Qt, it it manages then to move
+  // TODO test again with newer version of Qt, if it manages then to move
   // the popup together with the combobox.
   //combo->showPopup();
   return combo;

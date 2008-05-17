@@ -47,7 +47,6 @@ KCheckComboBox::KCheckComboBox( QWidget *parent ) : QComboBox( parent )
 
   view()->installEventFilter( this );
   view()->viewport()->installEventFilter( this );
-  this->installEventFilter( this );
 
   updateCheckedItems();
 }
@@ -125,28 +124,58 @@ void KCheckComboBox::setSeparator( const QString &separator )
   }
 }
 
+void KCheckComboBox::keyPressEvent( QKeyEvent *event )
+{
+  switch ( event->key() ) {
+    case Qt::Key_Up:
+    case Qt::Key_Down:
+      showPopup();
+      event->accept();
+      break;
+    case Qt::Key_Return:
+    case Qt::Key_Enter:
+    case Qt::Key_Escape:
+      hidePopup();
+      event->accept();
+      break;
+    default:
+      break;
+  }
+  // don't call base class implementation, we don't need all that stuff in there
+}
+
+void KCheckComboBox::wheelEvent( QWheelEvent *event )
+{
+  // discard mouse wheel events on the combo box
+  event->accept();
+}
+
 bool KCheckComboBox::eventFilter( QObject *receiver, QEvent *event )
 {
   switch ( event->type() ) {
     case QEvent::KeyPress:
     case QEvent::KeyRelease:
+    case QEvent::ShortcutOverride:
     {
-      QKeyEvent* keyEvent = static_cast<QKeyEvent*>( event );
-      if ( receiver == this &&
-           ( keyEvent->key() == Qt::Key_Up || keyEvent->key() == Qt::Key_Down ) ) {
-        showPopup();
-        return true;
+      switch ( static_cast<QKeyEvent *>( event )->key() ) {
+        case Qt::Key_Space:
+          if ( event->type() == QEvent::KeyPress ) {
+            toggleCheckState( view()->currentIndex() );
+            return true;
+          }
+          break;
+        case Qt::Key_Return:
+        case Qt::Key_Enter:
+        case Qt::Key_Escape:
+          // ignore Enter keys, they would normally select items.
+          // but we select with Space, because multiple selection is possible
+          // we simply close the popup on Enter/Escape
+          hidePopup();
+          return true;
       }
-      break;
     }
     case QEvent::MouseButtonRelease:
-      mIgnoreHide = receiver == view() || receiver == view()->viewport();
-      break;
-    case QEvent::Wheel:
-      if ( receiver == this ) {
-        // discard mouse wheel events on the combo box
-        return true;
-      }
+      mIgnoreHide = true;
       break;
     default:
       break;
@@ -172,13 +201,19 @@ void KCheckComboBox::updateCheckedItems( const QModelIndex &topLeft,
   emit checkedItemsChanged( items );
 }
 
-void KCheckComboBox::toggleCheckState( int index )
+void KCheckComboBox::toggleCheckState( const QModelIndex &index )
 {
-  QVariant value = itemData( index, Qt::CheckStateRole );
+  QVariant value = index.data( Qt::CheckStateRole );
   if ( value.isValid() ) {
     Qt::CheckState state = static_cast<Qt::CheckState>( value.toInt() );
-    setItemData( index, state == Qt::Unchecked ? Qt::Checked : Qt::Unchecked, Qt::CheckStateRole );
+    model()->setData( index, state == Qt::Unchecked ? Qt::Checked : Qt::Unchecked,
+                      Qt::CheckStateRole );
   }
+}
+
+void KCheckComboBox::toggleCheckState( int pos )
+{
+  toggleCheckState( view()->currentIndex() );
 }
 
 #include "kcheckcombobox.moc"
