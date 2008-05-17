@@ -127,7 +127,7 @@ class KOTodoModel : public QAbstractItemModel
      * todos will be in a single list. If this is false, todos are grouped
      * under their parents.
      *
-     * @param flatView Wether to display todos as list or as tree.
+     * @param flatView Whether to display todos as list or as tree.
      */
     void setFlatView( bool flatView );
 

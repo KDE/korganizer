@@ -35,8 +35,7 @@ KOTodoViewSortFilterProxyModel::KOTodoViewSortFilterProxyModel( QObject *parent 
 {
 }
 
-void KOTodoViewSortFilterProxyModel::sort( int column,
-                                           Qt::SortOrder order)
+void KOTodoViewSortFilterProxyModel::sort( int column, Qt::SortOrder order )
 {
   mSortOrder = order;
   QSortFilterProxyModel::sort( column, order );

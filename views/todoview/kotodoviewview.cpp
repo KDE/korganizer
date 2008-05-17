@@ -46,7 +46,6 @@ bool KOTodoViewView::isEditing( const QModelIndex &index ) const
          currentIndex() == index;
 }
 
-
 QModelIndex KOTodoViewView::moveCursor( CursorAction cursorAction,
                                         Qt::KeyboardModifiers modifiers )
 {
@@ -60,7 +59,7 @@ QModelIndex KOTodoViewView::moveCursor( CursorAction cursorAction,
     {
       // try to find an editable item right of the current one
       QModelIndex tmp = getNextEditableIndex(
-                          current.sibling( current.row(), current.column() + 1), 1 );
+        current.sibling( current.row(), current.column() + 1 ), 1 );
       if ( tmp.isValid() ) {
         return tmp;
       }
@@ -95,7 +94,7 @@ QModelIndex KOTodoViewView::moveCursor( CursorAction cursorAction,
     {
       // try to find an editable item left of the current one
       QModelIndex tmp = getNextEditableIndex(
-                          current.sibling( current.row(), current.column() - 1), -1 );
+        current.sibling( current.row(), current.column() - 1 ), -1 );
       if ( tmp.isValid() ) {
         return tmp;
       }
@@ -137,8 +136,7 @@ QModelIndex KOTodoViewView::getNextEditableIndex( const QModelIndex &cur, int in
 
   for ( int c = cur.column(); c != end; c += inc ) {
     tmp = cur.sibling( cur.row(), c );
-    if ( (tmp.flags() & Qt::ItemIsEditable) &&
-          !isIndexHidden( tmp ) ) {
+    if ( ( tmp.flags() & Qt::ItemIsEditable ) && !isIndexHidden( tmp ) ) {
       return tmp;
     }
   }

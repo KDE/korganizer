@@ -172,23 +172,22 @@ void KOTodoCompleteDelegate::updateEditorGeometry( QWidget *editor,
 }
 
 KOTodoCompleteSlider::KOTodoCompleteSlider( QWidget *parent )
-  : QSlider( parent)
+  : QSlider( parent )
 {
   connect( this, SIGNAL(valueChanged(int)),
-            this, SLOT(updateTip(int)) );
+           this, SLOT(updateTip(int)) );
 }
 
 void KOTodoCompleteSlider::updateTip( int value )
 {
   QPoint p;
-  p.setY( height()/2 );
+  p.setY( height() / 2 );
   p.setX( style()->sliderPositionFromValue ( minimum(), maximum(),
-                                              value, width() ) );
+                                             value, width() ) );
 
   QString text = QString::fromAscii( "%1%" ).arg( value );
   QToolTip::showText( mapToGlobal( p ), text, this );
 }
-
 
 // ---------------- PRIORITY DELEGATE ----------------------------
 // ---------------------------------------------------------------

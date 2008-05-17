@@ -123,8 +123,7 @@ KOTodoView::KOTodoView( Calendar *cal, QWidget *parent )
   mFlatView = new QCheckBox( i18nc( "Checkbox to display todos not hirarchical",
                                     "Flat View" ), this );
   mFlatView->setToolTip( i18n( "Display to-dos as list rather than as tree\n"
-                               "(i.e. without parental relationship displayed)" )
-                       );
+                               "(i.e. without parental relationship displayed)" ) );
   connect( mFlatView, SIGNAL(toggled(bool)),
            mModel, SLOT(setFlatView(bool)) );
 
@@ -451,7 +450,7 @@ void KOTodoView::copyTodoToDate( const QDate &date )
 void KOTodoView::itemDoubleClicked( const QModelIndex &index )
 {
   if ( index.isValid() ) {
-    QModelIndex summary = index.sibling( index.row(), KOTodoModel::SummaryColumn);
+    QModelIndex summary = index.sibling( index.row(), KOTodoModel::SummaryColumn );
     if ( summary.flags() & Qt::ItemIsEditable ) {
       editTodo();
     } else {
