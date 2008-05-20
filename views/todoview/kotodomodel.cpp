@@ -58,32 +58,25 @@
 /** This class represents a node in the todo-tree. */
 struct KOTodoModel::TodoTreeNode
 {
-  TodoTreeNode( Todo *todo, TodoTreeNode *parent )
-    : mTodo( todo ), mParent( parent ),
-      mParentListPos( 0 ), mToDelete( false ) {}
+  TodoTreeNode( Todo *todo, TodoTreeNode *parent, KOTodoModel *model )
+    : mTodo( todo ), mParent( parent ), mParentListPos( 0 ),
+      mToDelete( false ), mModel( model )
+  {
+    if ( mTodo ) {
+      mModel->mTodoHash[ mTodo->uid() ] = this;
+    }
+  }
+
   /** Recursively delete all TodoTreeNodes which are children of this one. */
   ~TodoTreeNode()
   {
     if ( mTodo ) {
-      mTodoHash.remove( mTodo->uid() );
+      mModel->mTodoHash.remove( mTodo->uid() );
     } else {
       // root node gets deleted, clear the whole hash
-      mTodoHash.clear();
+      mModel->mTodoHash.clear();
     }
     qDeleteAll( mChildren );
-  }
-
-  /** Recursively find a todo.
-   *
-   * @param todo Pointer to the todo to find. This only finds exactly the
-   *             same todo when their pointers are equal.
-   * @return Pointer to the TodoTreeNode node which represents the todo
-   *         searched for.
-   */
-  static TodoTreeNode *find( const Todo *todo )
-  {
-    Q_ASSERT( todo );
-    return mTodoHash.value( todo->uid() );
   }
 
   /** Recursively set mToDelete to true for all todos.
@@ -99,19 +92,19 @@ struct KOTodoModel::TodoTreeNode
   }
 
   /** Recursively delete all nodes which are marked for deletion. */
-  void deleteMarked( KOTodoModel *model )
+  void deleteMarked()
   {
     Q_FOREACH ( TodoTreeNode *node, mChildren ) {
-      node->deleteMarked( model );
+      node->deleteMarked();
     }
     if ( mToDelete ) {
       // all children should be deleted by now
       Q_ASSERT ( !hasChildren() );
-      QModelIndex tmp = model->getModelIndex( this );
-      model->beginRemoveRows( model->getModelIndex( mParent ),
-                              tmp.row(), tmp.row() );
+      QModelIndex tmp = mModel->getModelIndex( this );
+      mModel->beginRemoveRows( mModel->getModelIndex( mParent ),
+                               tmp.row(), tmp.row() );
       mParent->removeChild( tmp.row() );
-      model->endRemoveRows();
+      mModel->endRemoveRows();
 
       delete this;
     }
@@ -135,7 +128,6 @@ struct KOTodoModel::TodoTreeNode
   {
     node->mParentListPos = childrenCount();
     mChildren.append( node );
-    mTodoHash[ node->mTodo->uid() ] = node;
   }
 
   /** Remove the child at the specified position */
@@ -145,7 +137,6 @@ struct KOTodoModel::TodoTreeNode
     for ( int i = pos+1; i < childrenCount(); ++i ) {
       childAt( i )->mParentListPos--;
     }
-    mTodoHash.remove( childAt( pos )->mTodo->uid() );
     mChildren.removeAt( pos );
   }
 
@@ -161,15 +152,14 @@ struct KOTodoModel::TodoTreeNode
   private:
     /** List of pointer to the child nodes. */
     QList<TodoTreeNode*> mChildren;
-    /** Hash used to quickly search todos by their uid */
-    static QHash<QString, TodoTreeNode*> mTodoHash;
+    /** Pointer to the KOTodoModel owning this object */
+    KOTodoModel *mModel;
 };
-QHash<QString, KOTodoModel::TodoTreeNode*> KOTodoModel::TodoTreeNode::mTodoHash;
 
 KOTodoModel::KOTodoModel( Calendar *cal, QObject *parent )
   : QAbstractItemModel( parent ), mColumnCount( DescriptionColumn + 1 )
 {
-  mRootNode = new TodoTreeNode( 0, 0 );
+  mRootNode = new TodoTreeNode( 0, 0, this );
   mFlatView = false;
   setCalendar( cal );
 
@@ -198,7 +188,7 @@ void KOTodoModel::setCalendar( Calendar *cal )
 void KOTodoModel::clearTodos()
 {
   delete mRootNode;
-  mRootNode = new TodoTreeNode( 0, 0 );
+  mRootNode = new TodoTreeNode( 0, 0, this );
   // inform all views that we cleared our internal list
   reset();
 }
@@ -238,7 +228,7 @@ void KOTodoModel::reloadTodos()
   }
 
   // delete all TodoTreeNodes which are still marked for deletion
-  mRootNode->deleteMarked( this );
+  mRootNode->deleteMarked();
 }
 
 void KOTodoModel::processChange( Incidence *incidence, int action )
@@ -422,7 +412,8 @@ QModelIndex KOTodoModel::moveIfParentChanged( TodoTreeNode *curNode, Todo *todo,
 
 KOTodoModel::TodoTreeNode *KOTodoModel::findTodo( const Todo *todo )
 {
-  return TodoTreeNode::find( todo );
+  Q_ASSERT( todo );
+  return mTodoHash.value( todo->uid() );
 }
 
 KOTodoModel::TodoTreeNode *KOTodoModel::insertTodo( Todo *todo,
@@ -460,7 +451,7 @@ KOTodoModel::TodoTreeNode *KOTodoModel::insertTodo( Todo *todo,
                                               parent->childrenCount() );
 
     // add the todo under it's parent
-    TodoTreeNode *ret = new TodoTreeNode( todo, parent );
+    TodoTreeNode *ret = new TodoTreeNode( todo, parent, this );
     parent->addChild( ret );
 
     endInsertRows();
@@ -471,7 +462,7 @@ KOTodoModel::TodoTreeNode *KOTodoModel::insertTodo( Todo *todo,
                                                  mRootNode->childrenCount() );
 
     // add the todo as root item
-    TodoTreeNode *ret = new TodoTreeNode( todo, mRootNode );
+    TodoTreeNode *ret = new TodoTreeNode( todo, mRootNode, this );
     mRootNode->addChild( ret );
 
     endInsertRows();

@@ -27,6 +27,8 @@
 
 #include <QAbstractItemModel>
 #include <QWidget>
+#include <QString>
+#include <QHash>
 
 namespace KCal
 {
@@ -168,6 +170,8 @@ class KOTodoModel : public QAbstractItemModel
     Calendar *mCalendar;
     /** Root elements of the todo tree. */
     TodoTreeNode *mRootNode;
+    /** Hash to speed up searching todo by their uid */
+    QHash<QString, TodoTreeNode*> mTodoHash;
 
     /** This IncidenceChanger is used to change todos */
     IncidenceChangerBase *mChanger;
