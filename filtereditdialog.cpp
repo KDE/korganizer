@@ -224,6 +224,7 @@ void FilterEdit::filterSelected( CalFilter *filter )
 
 void FilterEdit::bNewPressed()
 {
+  saveChanges();
   CalFilter *newFilter = new CalFilter( i18n( "New Filter %1", mFilters->count() ) );
   mFilters->append( newFilter );
   updateFilterList();
@@ -240,6 +241,8 @@ void FilterEdit::bDeletePressed()
     return;
   }
 
+  //TODO: change text to read something like
+  //"You are about to permanently remove filter current->name(). Are you sure?"
   int result = KMessageBox::warningContinueCancel(
     this,
     i18n( "This item will be permanently deleted." ),
