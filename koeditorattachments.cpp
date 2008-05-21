@@ -314,14 +314,15 @@ class AttachmentIconView : public K3IconView
       setMaxItemWidth( qMax( maxItemWidth(), 250 ) );
     }
 
-    KUrl tempFileForAttachment( KCal::Attachment* attachment )
+    KUrl tempFileForAttachment( KCal::Attachment *attachment )
     {
-      if ( mTempFiles.contains( attachment ) )
+      if ( mTempFiles.contains( attachment ) ) {
         return mTempFiles.value( attachment );
+      }
       KTemporaryFile *file = new KTemporaryFile();
       file->setParent( this );
       file->setSuffix(
-        QString( KMimeType::mimeType( attachment->mimeType() )->patterns().first() ).replace( "*", "" ) );
+        QString( KMimeType::mimeType( attachment->mimeType() )->patterns().first() ).remove( "*" ) );
       file->setAutoRemove( true );
       file->open();
       // read-only not to give the idea that it could be written to
@@ -334,7 +335,7 @@ class AttachmentIconView : public K3IconView
 
   protected:
 
-    QMimeData* mimeData()
+    QMimeData *mimeData()
     {
       // create a list of the URL:s that we want to drag
       KUrl::List urls;
@@ -373,8 +374,9 @@ class AttachmentIconView : public K3IconView
     {
       int count = 0;
       for ( Q3IconViewItem *it = firstItem(); it; it = it->nextItem() ) {
-        if ( it->isSelected() )
+        if ( it->isSelected() ) {
           ++count;
+        }
       }
 
       QPixmap pixmap;
