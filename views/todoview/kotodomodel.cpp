@@ -63,7 +63,8 @@ struct KOTodoModel::TodoTreeNode
       mToDelete( false ), mModel( model )
   {
     if ( mTodo ) {
-      mModel->mTodoHash[ mTodo->uid() ] = this;
+      mUid = mTodo->uid();
+      mModel->mTodoHash[ mUid ] = this;
     }
   }
 
@@ -71,7 +72,7 @@ struct KOTodoModel::TodoTreeNode
   ~TodoTreeNode()
   {
     if ( mTodo ) {
-      mModel->mTodoHash.remove( mTodo->uid() );
+      mModel->mTodoHash.remove( mUid );
     } else {
       // root node gets deleted, clear the whole hash
       mModel->mTodoHash.clear();
@@ -154,6 +155,8 @@ struct KOTodoModel::TodoTreeNode
     QList<TodoTreeNode*> mChildren;
     /** Pointer to the KOTodoModel owning this object */
     KOTodoModel *mModel;
+    /** The uid of the Todo object, needed in the dtor where mTodo might be invalid already. */
+    QString mUid;
 };
 
 KOTodoModel::KOTodoModel( Calendar *cal, QObject *parent )
@@ -217,10 +220,7 @@ void KOTodoModel::reloadTodos()
       // TODO check if that's true, and if this is OK
       tmp->mTodo = *it;
       // move the todo if it changed its place in the hirarchy
-      QModelIndex miChanged = moveIfParentChanged( tmp, *it, true );
-      // force the views to reload the whole todo
-      emit dataChanged( miChanged,
-                        miChanged.sibling( miChanged.row(), mColumnCount - 1 ) );
+      moveIfParentChanged( tmp, *it, true );
 
       // the todo is still in the calendar, we don't delete it
       tmp->mToDelete = false;
@@ -229,6 +229,8 @@ void KOTodoModel::reloadTodos()
 
   // delete all TodoTreeNodes which are still marked for deletion
   mRootNode->deleteMarked();
+
+  reset();
 }
 
 void KOTodoModel::processChange( Incidence *incidence, int action )
