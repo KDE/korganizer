@@ -29,14 +29,14 @@
 #include <QList>
 
 namespace KCal {
-class CalFilter;
-class Incidence;
+  class CalFilter;
+  class Incidence;
 }
 class CalendarView;
 class KCMultiDialog;
 class KConfigureDialog;
 namespace KPIM {
-class CategoryEditDialog;
+  class CategoryEditDialog;
 }
 class KOIncidenceEditor;
 class KOEventEditor;
@@ -45,7 +45,9 @@ class KOJournalEditor;
 class SearchDialog;
 class ArchiveDialog;
 class FilterEditDialog;
-namespace KOrg { class AgendaView; }
+namespace KOrg {
+  class AgendaView;
+}
 
 /**
   This class manages the dialogs used by the calendar view. It owns the objects
@@ -60,13 +62,17 @@ class KODialogManager : public QObject
 
     /** Get the appropriate editor for the given incidence */
     KOIncidenceEditor *getEditor( KCal::Incidence * );
+
     /** Get an editor dialog for an Event. */
     KOEventEditor *getEventEditor();
+
     /** Get an editor dialog for a Todo. */
     KOTodoEditor *getTodoEditor();
+
     /** Get an editor dialog for a Journal. */
     KOJournalEditor *getJournalEditor();
-    void connectEditor( KOIncidenceEditor*editor );
+
+    void connectEditor( KOIncidenceEditor *editor );
 
     void updateSearchDialog();
 
@@ -79,7 +85,7 @@ class KODialogManager : public QObject
     void showCategoryEditDialog();
     void showSearchDialog();
     void showArchiveDialog();
-    void showFilterEditDialog(QList<KCal::CalFilter*> *filters);
+    void showFilterEditDialog( QList<KCal::CalFilter*> *filters );
 
   private:
     class DialogManagerVisitor;

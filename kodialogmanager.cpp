@@ -50,8 +50,8 @@
 
 #include "kodialogmanager.moc"
 
-// FIXME: Handle KOEventViewerDialogs in dialog manager. Pass
-// KOPrefs::mCompactDialog.
+// FIXME: Handle KOEventViewerDialogs in dialog manager.
+// Pass KOPrefs::mCompactDialog.
 
 class KODialogManager::DialogManagerVisitor : public IncidenceBase::Visitor
 {
@@ -74,17 +74,33 @@ class KODialogManager::EditorDialogVisitor :
   public:
     EditorDialogVisitor() : DialogManagerVisitor(), mEditor( 0 ) {}
     KOIncidenceEditor *editor() const { return mEditor; }
+
   protected:
-    bool visit( Event * ) { mEditor = mDialogManager->getEventEditor(); return mEditor; }
-    bool visit( Todo * ) { mEditor = mDialogManager->getTodoEditor(); return mEditor; }
-    bool visit( Journal * ) { mEditor = mDialogManager->getJournalEditor(); return mEditor; }
-  protected:
+    bool visit( Event * )
+    {
+      mEditor = mDialogManager->getEventEditor();
+      return mEditor;
+    }
+    bool visit( Todo * )
+    {
+      mEditor = mDialogManager->getTodoEditor();
+      return mEditor;
+    }
+    bool visit( Journal * )
+    {
+      mEditor = mDialogManager->getJournalEditor();
+      return mEditor;
+    }
+    bool visit( FreeBusy * ) // to inhibit hidden virtual compile warning
+    {
+      return 0;
+    }
+
     KOIncidenceEditor *mEditor;
 };
 
-
-KODialogManager::KODialogManager( CalendarView *mainView ) :
-  QObject(), mMainView( mainView )
+KODialogManager::KODialogManager( CalendarView *mainView )
+  : QObject(), mMainView( mainView )
 {
   mOptionsDialog = 0;
   mSearchDialog = 0;
@@ -92,12 +108,12 @@ KODialogManager::KODialogManager( CalendarView *mainView ) :
   mFilterEditDialog = 0;
 
   mCategoryEditDialog = new KPIM::CategoryEditDialog( KOPrefs::instance(), mMainView, true );
-  mCategoryEditDialog->setHelp(QString(), "korganizer");
+  mCategoryEditDialog->setHelp( QString(), "korganizer" );
   KWindowSystem::setMainWindow( mCategoryEditDialog, 0 );
-  connect( mainView, SIGNAL( categoriesChanged() ),
-           mCategoryEditDialog, SLOT( reload() ) );
-  connect( mCategoryEditDialog, SIGNAL( categoryConfigChanged() ), mainView,
-           SIGNAL( categoryConfigChanged() ) );
+  connect( mainView, SIGNAL(categoriesChanged()),
+           mCategoryEditDialog, SLOT(reload()) );
+  connect( mCategoryEditDialog, SIGNAL(categoryConfigChanged()),
+           mainView, SIGNAL(categoryConfigChanged()) );
   KOGlobals::fitDialogToScreen( mCategoryEditDialog );
 }
 
@@ -113,17 +129,17 @@ KODialogManager::~KODialogManager()
 
 void KODialogManager::errorSaveIncidence( QWidget *parent, Incidence *incidence )
 {
-  KMessageBox::sorry( parent, i18n("Unable to save %1 \"%2\".",
-                        i18n( incidence->type() ) ,
-                        incidence->summary() ) );
+  KMessageBox::sorry( parent,
+                      i18n( "Unable to save %1 \"%2\".",
+                            i18n( incidence->type() ), incidence->summary() ) );
 }
 
 void KODialogManager::showOptionsDialog()
 {
-  if (!mOptionsDialog) {
+  if ( !mOptionsDialog ) {
     mOptionsDialog = new KCMultiDialog( mMainView );
-    connect( mOptionsDialog, SIGNAL( configCommitted( const QByteArray & ) ),
-             mMainView, SLOT( updateConfig( const QByteArray& ) ) );
+    connect( mOptionsDialog, SIGNAL(configCommitted(const QByteArray&)),
+             mMainView, SLOT(updateConfig(const QByteArray&)) );
     QStringList modules;
 
     modules.append( "korganizer_configmain.desktop" );
@@ -137,8 +153,9 @@ void KODialogManager::showOptionsDialog()
 
     // add them all
     QStringList::iterator mit;
-    for ( mit = modules.begin(); mit != modules.end(); ++mit )
+    for ( mit = modules.begin(); mit != modules.end(); ++mit ) {
       mOptionsDialog->addModule( *mit );
+    }
   }
 
   mOptionsDialog->show();
@@ -152,15 +169,15 @@ void KODialogManager::showCategoryEditDialog()
 
 void KODialogManager::showSearchDialog()
 {
-  if (!mSearchDialog) {
-    mSearchDialog = new SearchDialog(mMainView->calendar(),mMainView);
-    connect(mSearchDialog,SIGNAL(showIncidenceSignal(Incidence *)),
-            mMainView,SLOT(showIncidence(Incidence *)));
-    connect(mSearchDialog,SIGNAL(editIncidenceSignal(Incidence *)),
-            mMainView,SLOT(editIncidence(Incidence *)));
-    connect(mSearchDialog,SIGNAL(deleteIncidenceSignal(Incidence *)),
-            mMainView, SLOT(deleteIncidence(Incidence *)));
-    connect(mMainView,SIGNAL(closingDown()),mSearchDialog,SLOT(reject()));
+  if ( !mSearchDialog ) {
+    mSearchDialog = new SearchDialog( mMainView->calendar(), mMainView );
+    connect( mSearchDialog, SIGNAL(showIncidenceSignal(Incidence *)),
+             mMainView, SLOT(showIncidence(Incidence *)) );
+    connect( mSearchDialog, SIGNAL(editIncidenceSignal(Incidence *)),
+             mMainView, SLOT(editIncidence(Incidence *)) );
+    connect( mSearchDialog, SIGNAL(deleteIncidenceSignal(Incidence *)),
+             mMainView, SLOT(deleteIncidence(Incidence *)) );
+    connect( mMainView, SIGNAL(closingDown()),mSearchDialog,SLOT(reject()) );
   }
   // make sure the widget is on top again
   mSearchDialog->show();
@@ -170,12 +187,12 @@ void KODialogManager::showSearchDialog()
 void KODialogManager::showArchiveDialog()
 {
 #ifndef KORG_NOARCHIVE
-  if (!mArchiveDialog) {
-    mArchiveDialog = new ArchiveDialog(mMainView->calendar(),mMainView);
-    connect(mArchiveDialog,SIGNAL(eventsDeleted()),
-            mMainView,SLOT(updateView()));
-    connect(mArchiveDialog,SIGNAL(autoArchivingSettingsModified()),
-            mMainView,SLOT(slotAutoArchivingSettingsModified()));
+  if ( !mArchiveDialog ) {
+    mArchiveDialog = new ArchiveDialog( mMainView->calendar(), mMainView );
+    connect( mArchiveDialog, SIGNAL(eventsDeleted()),
+             mMainView, SLOT(updateView()) );
+    connect( mArchiveDialog, SIGNAL(autoArchivingSettingsModified()),
+             mMainView, SLOT(slotAutoArchivingSettingsModified()) );
   }
   mArchiveDialog->show();
   mArchiveDialog->raise();
@@ -189,12 +206,12 @@ void KODialogManager::showFilterEditDialog( QList<CalFilter*> *filters )
 {
   if ( !mFilterEditDialog ) {
     mFilterEditDialog = new FilterEditDialog( filters, mMainView );
-    connect( mFilterEditDialog, SIGNAL( filterChanged() ),
-             mMainView, SLOT( updateFilter() ) );
-    connect( mFilterEditDialog, SIGNAL( editCategories() ),
-             mCategoryEditDialog, SLOT( show() ) );
-    connect( mCategoryEditDialog, SIGNAL( categoryConfigChanged() ),
-             mFilterEditDialog, SLOT( updateCategoryConfig() ) );
+    connect( mFilterEditDialog, SIGNAL(filterChanged()),
+             mMainView, SLOT(updateFilter()) );
+    connect( mFilterEditDialog, SIGNAL(editCategories()),
+             mCategoryEditDialog, SLOT(show()) );
+    connect( mCategoryEditDialog, SIGNAL(categoryConfigChanged()),
+             mFilterEditDialog, SLOT(updateCategoryConfig()) );
   }
   mFilterEditDialog->show();
   mFilterEditDialog->raise();
@@ -202,50 +219,52 @@ void KODialogManager::showFilterEditDialog( QList<CalFilter*> *filters )
 
 KOIncidenceEditor *KODialogManager::getEditor( Incidence *incidence )
 {
-  if ( !incidence ) return 0;
+  if ( !incidence ) {
+    return 0;
+  }
+
   EditorDialogVisitor v;
   if ( v.act( incidence, this ) ) {
     return v.editor();
-  } else
+  } else {
     return 0;
+  }
 }
 
 KOEventEditor *KODialogManager::getEventEditor()
 {
-  KOEventEditor *eventEditor = new KOEventEditor( mMainView->calendar(),
-                                                  mMainView );
+  KOEventEditor *eventEditor = new KOEventEditor( mMainView->calendar(), mMainView );
   connectEditor( eventEditor );
   return eventEditor;
 }
 
-void KODialogManager::connectTypeAhead( KOEventEditor *editor,
-                                        KOrg::AgendaView *agenda )
+void KODialogManager::connectTypeAhead( KOEventEditor *editor, KOrg::AgendaView *agenda )
 {
   if ( editor && agenda ) {
     agenda->setTypeAheadReceiver( editor->typeAheadReceiver() );
-    connect( editor, SIGNAL( focusReceivedSignal() ),
-             agenda, SLOT( finishTypeAhead() ) );
+    connect( editor, SIGNAL(focusReceivedSignal()),
+             agenda, SLOT(finishTypeAhead()) );
   }
 }
 
-void KODialogManager::connectEditor( KOIncidenceEditor*editor )
+void KODialogManager::connectEditor( KOIncidenceEditor *editor )
 {
-  connect( editor, SIGNAL( deleteIncidenceSignal( Incidence * ) ),
-           mMainView, SLOT( deleteIncidence( Incidence * ) ) );
+  connect( editor, SIGNAL(deleteIncidenceSignal(Incidence *)),
+           mMainView, SLOT(deleteIncidence(Incidence *)) );
 
-  connect( mCategoryEditDialog, SIGNAL( categoryConfigChanged() ),
-           editor, SIGNAL( updateCategoryConfig() ) );
-  connect( editor, SIGNAL( editCategories() ),
-           mCategoryEditDialog, SLOT( show() ) );
+  connect( mCategoryEditDialog, SIGNAL(categoryConfigChanged()),
+           editor, SIGNAL(updateCategoryConfig()) );
+  connect( editor, SIGNAL(editCategories()),
+           mCategoryEditDialog, SLOT(show()) );
 
-  connect( editor, SIGNAL( dialogClose( Incidence * ) ),
-           mMainView, SLOT( dialogClosing( Incidence * ) ) );
-  connect( editor, SIGNAL( editCanceled( Incidence * ) ),
-           mMainView, SLOT( editCanceled( Incidence * ) ) );
-  connect( mMainView, SIGNAL( closingDown() ), editor, SLOT( reject() ) );
+  connect( editor, SIGNAL(dialogClose(Incidence *)),
+           mMainView, SLOT(dialogClosing(Incidence *)) );
+  connect( editor, SIGNAL(editCanceled(Incidence *)),
+           mMainView, SLOT(editCanceled(Incidence *)) );
+  connect( mMainView, SIGNAL(closingDown()), editor, SLOT(reject()) );
 
-  connect( editor, SIGNAL( deleteAttendee( Incidence * ) ),
-           mMainView, SIGNAL( cancelAttendees( Incidence * ) ) );
+  connect( editor, SIGNAL(deleteAttendee(Incidence *)),
+           mMainView, SIGNAL(cancelAttendees(Incidence *)) );
 }
 
 KOTodoEditor *KODialogManager::getTodoEditor()
