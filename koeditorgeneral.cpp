@@ -47,6 +47,7 @@
 #include <krestrictedline.h>
 #include <kvbox.h>
 #include <KLineEdit>
+#include <KToolBar>
 #include <KComboBox>
 
 #include <q3buttongroup.h>
@@ -180,8 +181,21 @@ void KOEditorGeneral::initSecrecy( QWidget *parent, QBoxLayout *topLayout )
 
 void KOEditorGeneral::initDescription( QWidget *parent, QBoxLayout *topLayout )
 {
-  QBoxLayout *htmlLayout = new QHBoxLayout();
-  topLayout->addItem( htmlLayout );
+//   QBoxLayout *htmlLayout = new QHBoxLayout();
+//   topLayout->addItem( htmlLayout );
+
+//   htmlLayout->setSpacing(5);
+
+  mEditToolBar = new KToolBar( parent );
+  mEditToolBar->setToolButtonStyle( Qt::ToolButtonIconOnly );
+//   htmlLayout->addWidget( mEditToolBar, 0 );
+
+//   mFormatToolBar = new KToolBar( parent );
+//   mFormatToolBar->setToolButtonStyle( Qt::ToolButtonIconOnly );
+//   htmlLayout->addWidget( mFormatToolBar, 1 );
+
+//   htmlLayout->addStretch();
+
   mRichDescription = new QCheckBox( i18n( "Rich text" ), parent );
   mRichDescription->setToolTip( i18n( "Toggle Rich Text" ) );
   connect( mRichDescription, SIGNAL(toggled(bool)),
@@ -189,51 +203,38 @@ void KOEditorGeneral::initDescription( QWidget *parent, QBoxLayout *topLayout )
 
   KActionCollection *collection = new KActionCollection( this );
   mDescriptionEdit = new KRichTextWidget( parent );
-  mDescriptionEdit->setRichTextSupport(
-    KRichTextWidget::SupportBold |
-    KRichTextWidget::SupportItalic |
-    KRichTextWidget::SupportUnderline |
-    KRichTextWidget::SupportStrikeOut |
-    KRichTextWidget::SupportAlignment |
-    KRichTextWidget::SupportChangeListStyle );
+  mDescriptionEdit->setRichTextSupport( KRichTextWidget::SupportBold |
+        KRichTextWidget::SupportBold |
+        KRichTextWidget::SupportItalic |
+        KRichTextWidget::SupportUnderline |
+        KRichTextWidget::SupportStrikeOut |
+        KRichTextWidget::SupportChangeListStyle |
+        KRichTextWidget::SupportAlignment |
+        KRichTextWidget::SupportFormatPainting );
 
   mDescriptionEdit->createActions( collection );
 
-  mDescriptionBoldButton = new QToolButton( parent );
-  mDescriptionBoldButton->setDefaultAction( collection->action( "format_text_bold" ) );
+  mEditToolBar->addWidget( mRichDescription );
 
-  mDescriptionItalicButton = new QToolButton( parent );
-  mDescriptionItalicButton->setDefaultAction( collection->action( "format_text_italic" ) );
+  mEditToolBar->addAction( collection->action( "format_text_bold" ) );
+  mEditToolBar->addAction( collection->action( "format_text_italic" ) );
+  mEditToolBar->addAction( collection->action( "format_text_underline" ) );
+  mEditToolBar->addAction( collection->action( "format_text_strikeout" ) );
+  mEditToolBar->addSeparator();
 
-  mDescriptionUnderlineButton = new QToolButton( parent );
-  mDescriptionUnderlineButton->setDefaultAction( collection->action( "format_text_underline" ) );
+  mEditToolBar->addAction( collection->action( "format_list_style" ) );
+  mEditToolBar->addSeparator();
 
-  mDescriptionStrikeoutButton = new QToolButton( parent );
-  mDescriptionStrikeoutButton->setDefaultAction( collection->action( "format_text_strikeout" ) );
+  mEditToolBar->addAction( collection->action( "format_align_left" ) );
+  mEditToolBar->addAction( collection->action( "format_align_center" ) );
+  mEditToolBar->addAction( collection->action( "format_align_right" ) );
+  mEditToolBar->addAction( collection->action( "format_align_justify" ) );
+  mEditToolBar->addSeparator();
 
-  mDescriptionLeftAlignButton = new QToolButton( parent );
-  mDescriptionLeftAlignButton->setDefaultAction( collection->action( "format_align_left" ) );
+  mEditToolBar->addAction( collection->action( "format_painter" ) );
 
-  mDescriptionCentreAlignButton = new QToolButton( parent );
-  mDescriptionCentreAlignButton->setDefaultAction( collection->action( "format_align_center" ) );
+  topLayout->addWidget( mEditToolBar, 0 );
 
-  mDescriptionRightAlignButton = new QToolButton( parent );
-  mDescriptionRightAlignButton->setDefaultAction( collection->action( "format_align_right" ) );
-
-  mDescriptionListButton = new QToolButton( parent );
-  mDescriptionListButton->setDefaultAction( collection->action( "format_list_style" ) );
-
-  htmlLayout->setSpacing(5);
-  htmlLayout->addWidget( mRichDescription );
-  htmlLayout->addWidget( mDescriptionBoldButton );
-  htmlLayout->addWidget( mDescriptionItalicButton );
-  htmlLayout->addWidget( mDescriptionUnderlineButton );
-  htmlLayout->addWidget( mDescriptionStrikeoutButton );
-  htmlLayout->addWidget( mDescriptionLeftAlignButton );
-  htmlLayout->addWidget( mDescriptionCentreAlignButton );
-  htmlLayout->addWidget( mDescriptionRightAlignButton );
-  htmlLayout->addWidget( mDescriptionListButton );
-  htmlLayout->addStretch();
 
   mDescriptionEdit->setWhatsThis(
     i18n( "Sets the description for this event, to-do or journal. "
@@ -566,14 +567,7 @@ QObject *KOEditorGeneral::typeAheadReceiver() const
 
 void KOEditorGeneral::toggleDescriptionRichButtons( bool rich )
 {
-  mDescriptionBoldButton->setEnabled( rich );
-  mDescriptionItalicButton->setEnabled( rich );
-  mDescriptionUnderlineButton->setEnabled( rich );
-  mDescriptionStrikeoutButton->setEnabled( rich );
-  mDescriptionLeftAlignButton->setEnabled( rich );
-  mDescriptionCentreAlignButton->setEnabled( rich );
-  mDescriptionRightAlignButton->setEnabled( rich );
-  mDescriptionListButton->setEnabled( rich );
+  mDescriptionEdit->setActionsEnabled( rich );
 }
 
 void KOEditorGeneral::setDescriptionRich( bool rich )
