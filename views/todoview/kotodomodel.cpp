@@ -209,6 +209,7 @@ void KOTodoModel::reloadTodos()
 
   Todo::List todoList = mCalendar->todos();
   Todo::List::ConstIterator it;
+  QModelIndexList changedIndexes;
   for ( it = todoList.begin(); it != todoList.end(); ++it ) {
     TodoTreeNode *tmp = findTodo( *it );
     if ( !tmp ) {
@@ -220,7 +221,7 @@ void KOTodoModel::reloadTodos()
       // TODO check if that's true, and if this is OK
       tmp->mTodo = *it;
       // move the todo if it changed its place in the hirarchy
-      moveIfParentChanged( tmp, *it, true );
+      changedIndexes << moveIfParentChanged( tmp, *it, true );
 
       // the todo is still in the calendar, we don't delete it
       tmp->mToDelete = false;
@@ -230,7 +231,8 @@ void KOTodoModel::reloadTodos()
   // delete all TodoTreeNodes which are still marked for deletion
   mRootNode->deleteMarked();
 
-  reset();
+  Q_FOREACH ( const QModelIndex &index, changedIndexes )
+    emit dataChanged( index, index.sibling( index.row(), mColumnCount - 1 ) );
 }
 
 void KOTodoModel::processChange( Incidence *incidence, int action )
