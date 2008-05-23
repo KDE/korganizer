@@ -40,6 +40,7 @@
 #include <QLabel>
 #include <QLayout>
 #include <QPushButton>
+#include <QTimer>
 
 using namespace KCal;
 

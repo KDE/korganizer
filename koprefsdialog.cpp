@@ -69,6 +69,7 @@ using namespace LibKHolidays;
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 #include <QGroupBox>
+#include <QTimeEdit>
 #include <QTreeWidget>
 
 #include "ui_kogroupwareprefspage.h"
