@@ -45,7 +45,10 @@ class AlarmListViewItem : public QTreeWidgetItem
   public:
     AlarmListViewItem( QTreeWidget *parent, KCal::Alarm *alarm );
     virtual ~AlarmListViewItem();
-    KCal::Alarm *alarm() const { return mAlarm; }
+    KCal::Alarm *alarm() const
+    {
+      return mAlarm;
+    }
     void construct();
     enum AlarmViewColumns {
       ColAlarmType=0,
@@ -100,24 +103,24 @@ void AlarmListViewItem::construct()
       offset = mAlarm->startOffset().asSeconds();
       if ( offset < 0 ) {
         offsetstr =
-          ki18nc( "@info N days/hours/minutes before/after the start/end",
+          ki18nc( "@item@intable N days/hours/minutes before/after the start/end",
                   "%1 before the start" );
         offset = -offset;
       } else {
         offsetstr =
-          ki18nc( "@info N days/hours/minutes before/after the start/end",
+          ki18nc( "@item@intable N days/hours/minutes before/after the start/end",
                   "%1 after the start" );
       }
     } else if ( mAlarm->hasEndOffset() ) {
       offset = mAlarm->endOffset().asSeconds();
       if ( offset < 0 ) {
         offsetstr =
-          ki18nc( "@info N days/hours/minutes before/after the start/end",
+          ki18nc( "@item@intable N days/hours/minutes before/after the start/end",
                   "%1 before the end" );
         offset = -offset;
       } else {
         offsetstr =
-          ki18nc( "@info N days/hours/minutes before/after the start/end",
+          ki18nc( "@item@intable N days/hours/minutes before/after the start/end",
                   "%1 after the end" );
       }
     }
@@ -128,24 +131,24 @@ void AlarmListViewItem::construct()
     if ( offset % ( 24 * 60 ) == 0 && offset > 0 ) { // divides evenly into days?
       useoffset = offset / ( 24 * 60 );
       offsetstr =
-        offsetstr.subs( i18ncp( "@info alarm offset specified in days",
+        offsetstr.subs( i18ncp( "@item@intable alarm offset specified in days",
                                 "1 day", "%1 days", useoffset ) );
     } else if ( offset % 60 == 0 && offset > 0 ) { // divides evenly into hours?
       useoffset = offset / 60;
       offsetstr =
-        offsetstr.subs( i18ncp( "@info alarm offset specified in hours",
+        offsetstr.subs( i18ncp( "@item@intable alarm offset specified in hours",
                                 "1 hour", "%1 hours", useoffset ) );
     } else {
       useoffset = offset;
       offsetstr =
-        offsetstr.subs( i18ncp( "@info alarm offset specified in minutes",
+        offsetstr.subs( i18ncp( "@item@intable alarm offset specified in minutes",
                                 "1 minute", "%1 minutes", useoffset ) );
     }
     setText( ColAlarmOffset, offsetstr.toString() );
 
     // Alarm repeat
     if ( mAlarm->repeatCount() > 0 ) {
-      setText( ColAlarmRepeat, i18nc( "@info yes, the alarm repeats", "Yes" ) );
+      setText( ColAlarmRepeat, i18nc( "@item@intable yes, the alarm repeats", "Yes" ) );
     }
   }
 }
