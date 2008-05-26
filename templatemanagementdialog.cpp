@@ -65,6 +65,9 @@ TemplateManagementDialog::TemplateManagementDialog(QWidget *parent, const QStrin
   connect( m_base.m_buttonApply, SIGNAL( clicked() ),
            SLOT( slotApplyTemplate() ) );
   connect( this, SIGNAL( okClicked() ), SLOT( slotOk() ) );
+  
+  if (m_templates.isEmpty())
+    m_base.m_buttonApply->setEnabled( false );
 
 }
 
@@ -107,6 +110,9 @@ void TemplateManagementDialog::slotDeleteTemplate()
   m_base.m_listBox->removeItem( m_base.m_listBox->currentItem() );
   m_changed = true;
   m_base.m_listBox->setSelected(qMax(current -1, 0), true);
+
+  if (m_templates.isEmpty())
+    m_base.m_buttonApply->setEnabled( false );
 }
 
 void TemplateManagementDialog::slotUpdateDeleteButton( Q3ListBoxItem *item )
