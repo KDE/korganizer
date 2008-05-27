@@ -145,7 +145,6 @@ class KOEditorGeneral : public QObject
     KToolBar                *mFormatToolBar;
     QCheckBox               *mRichDescription;
     KOEditorAttachments     *mAttachments;
-    QLabel                  *mResourceLabel;
 
     enum AlarmStackPages {
       SimpleAlarmPage,

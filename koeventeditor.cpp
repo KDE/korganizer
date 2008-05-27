@@ -31,6 +31,7 @@
 #include "koeditordetails.h"
 #include "koeditorfreebusy.h"
 #include "kogroupware.h"
+#include "kohelper.h"
 #include "kodialogmanager.h"
 #include "incidencechanger.h"
 
@@ -227,7 +228,8 @@ void KOEventEditor::editIncidence( Incidence *incidence, Calendar *calendar )
     readEvent( mEvent, mCalendar );
   }
 
-  setCaption( i18nc( "@title:window", "Edit Event" ) );
+  setCaption( i18nc( "@title:window",
+                     "Edit Event : %1", KOHelper::resourceLabel( calendar, incidence ) ) );
 }
 
 void KOEventEditor::newEvent()

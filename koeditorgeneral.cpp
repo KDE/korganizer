@@ -69,7 +69,6 @@
 
 #include "koeditorattachments.h"
 #include "koeditorgeneral.moc"
-#include "kohelper.h"
 
 KOEditorGeneral::KOEditorGeneral( QObject *parent )
   : QObject( parent ), mAttachments(0)
@@ -133,10 +132,6 @@ void KOEditorGeneral::initHeader( QWidget *parent, QBoxLayout *topLayout )
 
   QBoxLayout *thirdLineLayout = new QHBoxLayout();
   headerLayout->addMultiCellLayout( thirdLineLayout, 3, 3, 0, 2 );
-
-  mResourceLabel = new QLabel( parent );
-  mResourceLabel->hide();
-  thirdLineLayout->addWidget( mResourceLabel );
 
   whatsThis = i18nc( "@info:whatsthis",
                      "Allows you to select the categories that this event or to-do belongs to." );
@@ -234,7 +229,6 @@ void KOEditorGeneral::initDescription( QWidget *parent, QBoxLayout *topLayout )
   mEditToolBar->addAction( collection->action( "format_painter" ) );
 
   topLayout->addWidget( mEditToolBar, 0 );
-
 
   mDescriptionEdit->setWhatsThis(
     i18n( "Sets the description for this event, to-do or journal. "
@@ -474,12 +468,6 @@ void KOEditorGeneral::readIncidence( Incidence *incidence, Calendar *calendar )
   setCategories( incidence->categories() );
 
   mAttachments->readIncidence( incidence );
-
-  QString resLabel = KOHelper::resourceLabel( calendar, incidence );
-  if ( !resLabel.isEmpty() ) {
-    mResourceLabel->setText( i18n( "Calendar: %1", resLabel ) );
-    mResourceLabel->show();
-  }
 }
 
 Alarm *KOEditorGeneral::alarmFromSimplePage() const
