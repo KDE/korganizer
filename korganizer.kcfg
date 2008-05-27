@@ -536,6 +536,7 @@
     </entry>
 
     <entry key="Agenda MarcusBainsLine Line Color" type="Color">
+      <default>255,0,0</default>
     </entry>
     <entry key="Agenda MarcusBainsLine Font" type="Font">
       <label>Current-time line</label>
