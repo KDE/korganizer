@@ -1048,7 +1048,7 @@ void KOPrefsDialogGroupScheduling::updateItem()
 
 void KOPrefsDialogGroupScheduling::checkEmptyMail()
 {
-  if ( aEmailsEdit->text() == "" ) {
+  if ( aEmailsEdit->text().isEmpty() ) {
     removeItem();
   };
 }
