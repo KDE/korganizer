@@ -55,7 +55,7 @@
 
 using namespace std;
 
-KOrganizerApp::KOrganizerApp() : KUniqueApplication()
+KOrganizerApp::KOrganizerApp() : KPIM::PimApplication()
 {
   QString prodId = "-//K Desktop Environment//NONSGML KOrganizer %1//EN";
   CalFormat::setApplication( "KOrganizer", prodId.arg( korgVersion ) );
