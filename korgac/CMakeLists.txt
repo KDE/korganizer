@@ -29,7 +29,7 @@ kde4_add_executable(korgac ${korgac_SRCS})
 
 target_link_libraries(korgac  ${KDE4_KDEUI_LIBS} ${KDE4_PHONON_LIBS} korganizer_eventviewer)
 
-install(TARGETS korgac  DESTINATION ${BIN_INSTALL_DIR} )
+install(TARGETS korgac  ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
 
 ########### install files ###############
