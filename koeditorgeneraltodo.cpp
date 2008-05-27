@@ -192,6 +192,11 @@ void KOEditorGeneralTodo::initCompletion( QWidget *parent, QBoxLayout *topLayout
   topLayout->addWidget( mCompletionDateEdit );
   mCompletionTimeEdit = new KPIM::KTimeEdit( parent, QTime() );
   topLayout->addWidget( mCompletionTimeEdit );
+  if ( !(mCompletedCombo->currentIndex() == 10 && mCompleted.isValid() )) {
+    mCompletedLabel->setText( i18nc( "to-do completed", "co&mpleted" ) );
+    mCompletionDateEdit->hide();
+    mCompletionTimeEdit->hide();
+  }
 }
 
 void KOEditorGeneralTodo::initPriority( QWidget *parent, QBoxLayout *topLayout )
