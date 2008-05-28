@@ -978,6 +978,7 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( const KComponentData
   connect( add, SIGNAL(clicked()), this, SLOT(addItem()) );
   connect( del, SIGNAL(clicked()), this, SLOT(removeItem()) );
   connect( aEmailsEdit, SIGNAL(textChanged(const QString&)), this, SLOT(updateItem()) );
+  connect( aEmailsEdit, SIGNAL(lostFocus()), this, SLOT(checkEmptyMail()) );
   connect( mAMails, SIGNAL(selectionChanged(Q3ListViewItem *)), SLOT(updateInput()) );
 
   load();
@@ -1043,6 +1044,13 @@ void KOPrefsDialogGroupScheduling::updateItem()
   }
   item->setText( 0, aEmailsEdit->text() );
   slotWidChanged();
+}
+
+void KOPrefsDialogGroupScheduling::checkEmptyMail()
+{
+  if ( aEmailsEdit->text().isEmpty() ) {
+    removeItem();
+  };
 }
 
 void KOPrefsDialogGroupScheduling::updateInput()

@@ -108,6 +108,7 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogGroupScheduling : public KPrefsModule
     void addItem();
     void removeItem();
     void updateItem();
+    void checkEmptyMail();
     void updateInput();
 
   private:
