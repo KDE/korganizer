@@ -140,9 +140,10 @@ void MarcusBains::updateLocation( bool recalculate )
   // It seems logical to adjust the line width with the label's font weight
   int fw = KOPrefs::instance()->agendaMarcusBainsLineFont().weight();
   setLineWidth( 1 + abs(fw - QFont::Normal)/QFont::Light );
-  setFrameStyle( QFrame::HLine );
+  setFrameStyle( QFrame::HLine | QFrame::Plain );
   QPalette pal = palette();
-  pal.setColor( QPalette::Dark, color );
+  pal.setColor( QPalette::Window, color ); // for Oxygen
+  pal.setColor( QPalette::WindowText, color ); // for Plastique
   setPalette( pal );
   if ( recalculate )
     setFixedSize( int( mAgenda->gridSpacingX() ), 1 );

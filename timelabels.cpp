@@ -85,6 +85,7 @@ TimeLabels::TimeLabels( const KDateTime::Spec &spec, int rows, TimeLabelsZone *p
 
   setHScrollBarMode(AlwaysOff);
   setVScrollBarMode(AlwaysOff);
+  setFrameStyle( Plain );
 
   resizeContents(50, int(mRows * mCellHeight) );
 
@@ -93,11 +94,11 @@ TimeLabels::TimeLabels( const KDateTime::Spec &spec, int rows, TimeLabelsZone *p
 
   mMousePos = new QFrame(this);
   mMousePos->setLineWidth( 1 );
-  mMousePos->setFrameStyle( QFrame::HLine );
+  mMousePos->setFrameStyle( QFrame::HLine | QFrame::Plain );
 //  mMousePos->setMargin(0);
   QPalette pal;
-  pal.setColor( QPalette::Dark,
-                KOPrefs::instance()->agendaMarcusBainsLineLineColor() );
+  pal.setColor( QPalette::Window, KOPrefs::instance()->agendaMarcusBainsLineLineColor() ); //  for Oxygen
+  pal.setColor( QPalette::WindowText, KOPrefs::instance()->agendaMarcusBainsLineLineColor() ); // for Plastique
   mMousePos->setPalette( pal );
   mMousePos->setFixedSize(width(), 1);
   addChild(mMousePos, 0, 0);
@@ -147,8 +148,8 @@ void TimeLabels::drawContents( QPainter *p, int cx, int cy, int cw, int ch )
                  / ( 60 * 60 );
 
 
-  p->setBrush( palette().background() ); // TODO: theming, see if we want sth here...
-  p->drawRect( cx, cy, cw, ch);
+  p->setBrush( palette().window() ); // TODO: theming, see if we want sth here...
+  p->fillRect( cx, cy, cw, ch, p->brush() );
 
   // bug:  the parameters cx and cw are the areas that need to be
   //       redrawn, not the area of the widget.  unfortunately, this
