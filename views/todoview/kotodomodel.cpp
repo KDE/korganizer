@@ -80,6 +80,12 @@ struct KOTodoModel::TodoTreeNode
     qDeleteAll( mChildren );
   }
 
+  /** Checks if it's save to access the todo-pointer of this node. */
+  bool isValid()
+  {
+    return mTodo && !mToDelete;
+  }
+
   /** Recursively set mToDelete to true for all todos.
    *
    *  Used in reloadTodos to mark all todos for possible deletion.
@@ -95,12 +101,19 @@ struct KOTodoModel::TodoTreeNode
   /** Recursively delete all nodes which are marked for deletion. */
   void deleteMarked()
   {
-    Q_FOREACH ( TodoTreeNode *node, mChildren ) {
-      node->deleteMarked();
-    }
     if ( mToDelete ) {
-      // all children should be deleted by now
-      Q_ASSERT ( !hasChildren() );
+#ifndef NDEBUG
+      // all sub-todos should be marked for delete too, otherwise there is
+      // something wrong
+      QList<TodoTreeNode*> toCheck;
+      toCheck << mChildren;
+      while ( !toCheck.isEmpty() ) {
+        TodoTreeNode *node = toCheck.takeFirst();
+        Q_ASSERT ( node->mToDelete );
+        toCheck << node->mChildren;
+      }
+#endif
+
       QModelIndex tmp = mModel->getModelIndex( this );
       mModel->beginRemoveRows( mModel->getModelIndex( mParent ),
                                tmp.row(), tmp.row() );
@@ -108,6 +121,10 @@ struct KOTodoModel::TodoTreeNode
       mModel->endRemoveRows();
 
       delete this;
+    } else {
+      Q_FOREACH ( TodoTreeNode *node, mChildren ) {
+        node->deleteMarked();
+      }
     }
   }
 
@@ -495,9 +512,15 @@ Qt::ItemFlags KOTodoModel::flags( const QModelIndex &index ) const
     return ret | Qt::ItemIsDropEnabled;
   }
 
+  TodoTreeNode *node = static_cast<TodoTreeNode *>( index.internalPointer() );
+  if ( !node->isValid()) {
+    return ret;
+  }
+
   ret |= Qt::ItemIsDragEnabled;
 
-  Todo *todo = static_cast<TodoTreeNode *>( index.internalPointer() )->mTodo;
+  Todo *todo = node->mTodo;
+
   if ( !todo->isReadOnly() ) {
     // the following columns are editable:
     switch ( index.column() ) {
@@ -585,6 +608,10 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
   }
 
   TodoTreeNode *node = static_cast<TodoTreeNode *>( index.internalPointer() );
+  if ( !node->isValid()) {
+    return QVariant();
+  }
+
   Todo *todo = node->mTodo;
 
   if ( role == Qt::DisplayRole ) {
