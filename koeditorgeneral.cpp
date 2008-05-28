@@ -66,6 +66,7 @@
 #include <QTextCharFormat>
 #include <QTextList>
 #include <QToolButton>
+#include <QTimer>
 
 #include "koeditorattachments.h"
 #include "koeditorgeneral.moc"
@@ -81,16 +82,15 @@ KOEditorGeneral::~KOEditorGeneral()
 }
 
 FocusLineEdit::FocusLineEdit( QWidget *parent )
-  : KLineEdit( parent ), mSkipFirst( true )
+  : KLineEdit( parent ), mFirst( true )
 {
 }
 
 void FocusLineEdit::focusInEvent ( QFocusEvent *e )
 {
-  if ( !mSkipFirst ) {
+  if ( mFirst ) {
     emit focusReceivedSignal();
-  } else {
-    mSkipFirst = false;
+    mFirst = false;
   }
   KLineEdit::focusInEvent( e );
 }
@@ -113,6 +113,7 @@ void KOEditorGeneral::initHeader( QWidget *parent, QBoxLayout *topLayout )
   mSummaryEdit->setWhatsThis( whatsThis );
   connect( mSummaryEdit, SIGNAL( focusReceivedSignal() ),
            SIGNAL( focusReceivedSignal() ) );
+  QTimer::singleShot( 0, mSummaryEdit, SLOT(setFocus()) );
   headerLayout->addWidget( mSummaryEdit, 1, 1 );
   summaryLabel->setBuddy( mSummaryEdit );
 
