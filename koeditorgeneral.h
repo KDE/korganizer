@@ -68,7 +68,7 @@ class FocusLineEdit : public KLineEdit
     void focusInEvent ( QFocusEvent *e );
 
   private:
-    bool mSkipFirst;
+    bool mFirst;
 };
 
 class KOEditorGeneral : public QObject
