@@ -513,7 +513,7 @@ Qt::ItemFlags KOTodoModel::flags( const QModelIndex &index ) const
   }
 
   TodoTreeNode *node = static_cast<TodoTreeNode *>( index.internalPointer() );
-  if ( !node->isValid()) {
+  if ( !node->isValid() ) {
     return ret;
   }
 
@@ -608,7 +608,7 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
   }
 
   TodoTreeNode *node = static_cast<TodoTreeNode *>( index.internalPointer() );
-  if ( !node->isValid()) {
+  if ( !node->isValid() ) {
     return QVariant();
   }
 
@@ -670,7 +670,8 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
   // set the tooltip for every item
   if ( role == Qt::ToolTipRole ) {
     if ( KOPrefs::instance()->enableToolTips() ) {
-      return QVariant( IncidenceFormatter::toolTipString( todo ) );
+      return QVariant( IncidenceFormatter::toolTipString( todo, true ).
+                       replace( "&amp;nbsp;", " " ) ); // Qt doesn't convert
     } else {
       return QVariant();
     }
