@@ -670,8 +670,7 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
   // set the tooltip for every item
   if ( role == Qt::ToolTipRole ) {
     if ( KOPrefs::instance()->enableToolTips() ) {
-      return QVariant( IncidenceFormatter::toolTipString( todo, true ).
-                       replace( "&amp;nbsp;", " " ) ); // Qt doesn't convert
+      return QVariant( IncidenceFormatter::toolTipString( todo, true ) );
     } else {
       return QVariant();
     }
