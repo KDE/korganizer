@@ -39,7 +39,7 @@
                             <cstring>TextLabel1</cstring>
                         </property>
                         <property name="text">
-                            <string>By publishing Free/Busy information, you allow others to take your calendar into account when inviting you for a meeting. Only the times you have already busy are published, not why they are busy.</string>
+                            <string>By publishing Free/Busy information, you allow others to take your calendar into account when inviting you for a meeting. Only the times you have already busy are published, not why they are busy. For Kolab2 Server leave this disabled (the information is generated on the server).</string>
                         </property>
                         <property name="alignment">
                             <set>WordBreak|AlignVCenter</set>
@@ -182,8 +182,7 @@ Note: If KOrganizer is acting as a KDE Kolab client, this is not required, as th
                                 </property>
                                 <property name="whatsThis" stdset="0">
                                     <string>Enter the URL for the server on which your Free/Busy information shall be published here.
-Ask the server administrator for this information.
-Here is a Kolab2 server URL example: "webdavs://kolab2.com/freebusy/joe@kolab2.com.ifb"</string>
+Ask the server administrator for this information.</string>
                                 </property>
                             </widget>
                             <widget class="QCheckBox" row="7" column="0" rowspan="1" colspan="2">
@@ -278,8 +277,7 @@ A Kolab2 server specificity: Registered your UID (Unique IDentifier). By default
                                 </property>
                                 <property name="whatsThis" stdset="0">
                                     <string>Enter the URL for the server on which your Free/Busy information shall be published here.
-Ask the server administrator for this information.
-Here is a Kolab2 server URL example: "webdavs://kolab2.com/freebusy/joe@kolab2.com.ifb"</string>
+Ask the server administrator for this information.</string>
                                 </property>
                             </widget>
                         </grid>
@@ -385,7 +383,7 @@ Here is a Kolab2 server URL example: "webdavs://kolab2.com/freebusy/joe@kolab2.c
                                         <property name="whatsThis" stdset="0">
                                             <string>Enter the URL for the server on which the Free/Busy information is published here.
 Ask the server administrator for this information.
-Here is a Kolab2 server URL example: "webdavs://kolab2.com/freebusy/"</string>
+Here is a Kolab2 Server URL example: "https://kolab2.example.com/freebusy/"</string>
                                         </property>
                                     </widget>
                                     <widget class="QLineEdit">
@@ -398,7 +396,7 @@ Here is a Kolab2 server URL example: "webdavs://kolab2.com/freebusy/"</string>
                                         <property name="whatsThis" stdset="0">
                                             <string>Enter the URL for the server on which the Free/Busy information is published here.
 Ask the server administrator for this information.
-Here is a Kolab2 server URL example: "webdavs://kolab2.com/freebusy/"</string>
+Here is a Kolab2 Server URL example: "https://kolab2.example.com/freebusy/"</string>
                                         </property>
                                     </widget>
                                 </hbox>
