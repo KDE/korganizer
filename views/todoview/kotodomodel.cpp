@@ -556,8 +556,10 @@ QModelIndex KOTodoModel::index( int row, int column,
   // NOTE: we use a pointer to the correponding TodoTreeNode node as
   // internal data for each model index.
 
-  Q_ASSERT( row >= 0 );
-  Q_ASSERT( column >= 0 && column < mColumnCount );
+  if ( row < 0 || row >= rowCount( parent ) ||
+       column < 0 || column >= mColumnCount) {
+    return QModelIndex();
+  }
 
   if ( !parent.isValid() ) {
     return createIndex( row, column, mRootNode->childAt( row ) );
@@ -633,7 +635,7 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
       if ( todo->hasDueDate() && todo->dtDue().date().isValid() ) {
         return QVariant( todo->dtDueStr() );
       } else {
-        return QVariant();
+        return QVariant( QString() );
       }
     case CategoriesColumn:
     {
