@@ -122,19 +122,19 @@ void KOrganizer::init( bool document )
     mActionManager->createCalendarResources();
   }
 
+  initActions();
   mActionManager->init();
-  connect( mActionManager, SIGNAL( actionNew( const KUrl & ) ),
-           SLOT( newMainWindow( const KUrl & ) ) );
+  connect( mActionManager, SIGNAL(actionNew(const KUrl&)),
+           SLOT(newMainWindow(const KUrl&)) );
 
   mActionManager->loadParts();
 
-  initActions();
   readSettings();
 
   KStatusBar *bar = statusBar();
 
   bar->insertItem( "", ID_GENERAL, 10 );
-  connect( bar, SIGNAL( pressed( int ) ), SLOT( statusBarPressed( int ) ) );
+  connect( bar, SIGNAL(pressed(int)), SLOT(statusBarPressed(int)) );
 
   KPIM::ProgressDialog *progressDialog = new KPIM::ProgressDialog( bar, this );
   progressDialog->hide();
@@ -145,8 +145,8 @@ void KOrganizer::init( bool document )
 
   bar->addPermanentWidget( progressWidget );
 
-  connect( mActionManager->view(), SIGNAL( statusMessage( const QString & ) ),
-           SLOT( showStatusMessage( const QString & ) ) );
+  connect( mActionManager->view(), SIGNAL(statusMessage(const QString&)),
+           SLOT(showStatusMessage(const QString&)) );
 
   setStandardToolBarMenuEnabled( true );
   setTitle();
@@ -194,7 +194,6 @@ void KOrganizer::writeSettings()
 
 void KOrganizer::initActions()
 {
-
   setComponentData( KGlobal::mainComponent() );
 
   setXMLFile( "korganizerui.rc" );
