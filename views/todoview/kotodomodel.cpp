@@ -557,7 +557,7 @@ QModelIndex KOTodoModel::index( int row, int column,
   // internal data for each model index.
 
   if ( row < 0 || row >= rowCount( parent ) ||
-       column < 0 || column >= mColumnCount) {
+       column < 0 || column >= mColumnCount ) {
     return QModelIndex();
   }
 
