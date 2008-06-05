@@ -417,6 +417,7 @@ void KOEditorAlarms::slotAdd()
 {
   mCurrentItem = new AlarmListViewItem( mWidget.mAlarmList, 0 );
   mWidget.mAlarmList->setCurrentItem( mCurrentItem );
+  changed();
 //   selectionChanged( mCurrentItem );
 }
 
