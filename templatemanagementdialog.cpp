@@ -111,8 +111,10 @@ void TemplateManagementDialog::slotDeleteTemplate()
   m_changed = true;
   m_base.m_listBox->setSelected(qMax(current -1, 0), true);
 
-  if (m_templates.isEmpty())
+  if (m_templates.isEmpty()){
     m_base.m_buttonApply->setEnabled( false );
+    m_base.m_buttonDelete->setEnabled( false );
+  }
 }
 
 void TemplateManagementDialog::slotUpdateDeleteButton( Q3ListBoxItem *item )
