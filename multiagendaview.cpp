@@ -174,6 +174,8 @@ void MultiAgendaView::setupViews()
              SIGNAL(cutIncidenceSignal(Incidence*)) );
     connect( agenda, SIGNAL(copyIncidenceSignal(Incidence*)),
              SIGNAL(copyIncidenceSignal(Incidence*)) );
+    connect( agenda, SIGNAL(pasteIncidenceSignal()),
+             SIGNAL(pasteIncidenceSignal()) );
     connect( agenda, SIGNAL(toggleAlarmSignal(Incidence*)),
              SIGNAL(toggleAlarmSignal(Incidence*)) );
     connect( agenda, SIGNAL(dissociateOccurrenceSignal(Incidence*, const QDate&)),
