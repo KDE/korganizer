@@ -45,6 +45,8 @@
 #include <kdgantt1/KDGanttViewTaskItem.h>
 #include <kdgantt1/KDGanttViewSubwidgets.h>
 
+#include <kpimutils/email.h>
+
 #include <klocale.h>
 #include <kiconloader.h>
 #include <kmessagebox.h>
@@ -364,6 +366,10 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent )
   initEditWidgets( this, topLayout );
   connect( mRemoveButton, SIGNAL(clicked()),
            SLOT(removeAttendee()) );
+
+  slotOrganizerChanged( mOrganizerCombo->currentText() );
+  connect( mOrganizerCombo, SIGNAL( activated(const QString&) ),
+           this, SLOT( slotOrganizerChanged(const QString&) ) );
 }
 
 KOEditorFreeBusy::~KOEditorFreeBusy()
@@ -907,6 +913,58 @@ void KOEditorFreeBusy::listViewClicked( int button, KDGanttViewItem *item )
   if ( button == Qt::LeftButton && item == 0 ) {
     addNewAttendee();
   }
+}
+
+void KOEditorFreeBusy::slotOrganizerChanged(const QString & newOrganizer)
+{
+  if ( newOrganizer == mCurrentOrganizer )
+    return;
+
+  QString name;
+  QString email;
+  bool success = KPIMUtils::extractEmailAddressAndName( newOrganizer, email, name );
+
+  if ( !success )
+    return;
+
+  Attendee *currentOrganizerAttendee = 0;
+  Attendee *newOrganizerAttendee = 0;
+
+  FreeBusyItem *anItem = static_cast<FreeBusyItem *>( mGanttView->firstChild() );
+  while( anItem ) {
+    Attendee *attendee = anItem->attendee();
+    if( attendee->fullName() == mCurrentOrganizer )
+      currentOrganizerAttendee = attendee;
+
+    if( attendee->fullName() == newOrganizer )
+      newOrganizerAttendee = attendee;
+
+    anItem = static_cast<FreeBusyItem *>( anItem->nextSibling() );
+  }
+
+  int answer = KMessageBox::No;
+  if ( currentOrganizerAttendee ) {
+    answer = KMessageBox::questionYesNo( this, i18n("You are changing the organiser of "
+                                                    "this event, who is also attending, "
+                                                    "do you want to change that attendee "
+                                                    "as well?") );
+  } else {
+    answer = KMessageBox::Yes;
+  }
+
+  if ( answer == KMessageBox::Yes ) {
+    if ( currentOrganizerAttendee ) {
+      removeAttendee( currentOrganizerAttendee );
+    }
+
+    if ( !newOrganizerAttendee ) {
+      Attendee *a = new Attendee( name, email, true );
+      insertAttendee( a, false );
+      updateAttendee();
+    }
+  }
+
+  mCurrentOrganizer = newOrganizer;
 }
 
 #include "koeditorfreebusy.moc"
