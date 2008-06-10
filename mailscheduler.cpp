@@ -29,6 +29,7 @@
 #include <kcal/icalformat.h>
 
 #include <kdebug.h>
+#include <klocale.h>
 #include <kstandarddirs.h>
 
 #include <QDir>
@@ -80,7 +81,11 @@ bool MailScheduler::performTransaction( IncidenceBase *incidence,
        method == iTIPDeclineCounter ) {
     status = mailer.mailAttendees( incidence, messageText );
   } else {
-    status = mailer.mailOrganizer( incidence, messageText );
+    QString subject;
+    Incidence *inc = dynamic_cast<Incidence*>( incidence );
+    if ( inc && method == iTIPCounter )
+      subject = i18n( "Counter proposal: %1", inc->summary() );
+    status = mailer.mailOrganizer( incidence, messageText, subject );
   }
   return status;
 }
