@@ -328,13 +328,19 @@ bool IncidenceChanger::changeIncidence( Incidence *oldinc, Incidence *newinc,
       // pseudo counter as done by outlook
       Event *e = dynamic_cast<Event*>( newinc );
       if ( e ) {
-        Incidence *tmp = oldinc->clone();
-        tmp->setSummary( i18n( "Counter proposal: %1", e->summary() ) );
-        tmp->setDescription( e->description() );
-        tmp->addComment( i18n( "Proposed new meeting time: %1 - %2",
-                               e->dtStartStr(), e->dtEndStr() ) );
-        KCal::MailScheduler scheduler( mCalendar );
-        scheduler.performTransaction( tmp, KCal::iTIPReply );
+        if ( KOPrefs::instance()->outlookCompatCounterProposals() ) {
+          Incidence *tmp = oldinc->clone();
+          tmp->setSummary( i18n( "Counter proposal: %1", e->summary() ) );
+          tmp->setDescription( e->description() );
+          tmp->addComment( i18n( "Proposed new meeting time: %1 - %2",
+                                 e->dtStartStr(), e->dtEndStr() ) );
+          KCal::MailScheduler scheduler( mCalendar );
+          scheduler.performTransaction( tmp, KCal::iTIPReply );
+        } else {
+          Incidence *tmp = newinc->clone();
+          KCal::MailScheduler scheduler( mCalendar );
+          scheduler.performTransaction( tmp, iTIPCounter );
+        }
       } else {
         kWarning() << "Counter proposals only supported for events";
       }
