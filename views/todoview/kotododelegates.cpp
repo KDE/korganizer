@@ -99,24 +99,9 @@ void KOTodoCompleteDelegate::paint( QPainter *painter,
   // TODO QTreeView does not set State_Editing. Qt task id 205051
   // should be fixed with Qt 4.5
   if ( !( opt.state & QStyle::State_Editing ) && !isEditing ) {
-    QRect rect = opt.rect;
-
-    rect.adjust( 0, 1, 0, -1 );
-
     QStyleOptionProgressBar pbOption;
-
-    pbOption.palette = opt.palette;
-    pbOption.state = opt.state;
-    pbOption.direction = opt.direction;
-    pbOption.fontMetrics = opt.fontMetrics;
-
-    pbOption.rect = rect;
-    pbOption.maximum = 100;
-    pbOption.minimum = 0;
-    pbOption.progress = index.data().toInt();
-    pbOption.text = index.data().toString() + QChar::fromAscii( '%' );
-    pbOption.textAlignment = Qt::AlignCenter;
-    pbOption.textVisible = true;
+    pbOption.QStyleOption::operator=( option );
+    initStyleOptionProgressBar( &pbOption, index );
 
     style->drawControl( QStyle::CE_ProgressBar, &pbOption, painter );
   }
@@ -125,9 +110,30 @@ void KOTodoCompleteDelegate::paint( QPainter *painter,
 QSize KOTodoCompleteDelegate::sizeHint( const QStyleOptionViewItem &option,
                                         const QModelIndex &index ) const
 {
-  Q_UNUSED( index );
+  QStyleOptionViewItemV4 opt = option;
+  initStyleOption( &opt, index );
 
-  return option.fontMetrics.size( 0, "100%" ) + QSize( 0, 2 );
+  QStyle *style = opt.widget ? opt.widget->style() : QApplication::style();
+
+  QStyleOptionProgressBar pbOption;
+  pbOption.QStyleOption::operator=( option );
+  initStyleOptionProgressBar( &pbOption, index );
+
+  return style->sizeFromContents( QStyle::CT_ProgressBar, &pbOption,
+                                  QSize(), opt.widget );
+}
+
+void KOTodoCompleteDelegate::initStyleOptionProgressBar(
+                                QStyleOptionProgressBar *option,
+                                const QModelIndex &index ) const
+{
+  option->rect.adjust( 0, 1, 0, -1 );
+  option->maximum = 100;
+  option->minimum = 0;
+  option->progress = index.data().toInt();
+  option->text = index.data().toString() + QChar::fromAscii( '%' );
+  option->textAlignment = Qt::AlignCenter;
+  option->textVisible = true;
 }
 
 QWidget *KOTodoCompleteDelegate::createEditor( QWidget *parent,
@@ -199,20 +205,6 @@ KOTodoPriorityDelegate::KOTodoPriorityDelegate( QObject *parent )
 
 KOTodoPriorityDelegate::~KOTodoPriorityDelegate()
 {
-}
-
-void KOTodoPriorityDelegate::paint( QPainter *painter,
-                                    const QStyleOptionViewItem &option,
-                                    const QModelIndex &index ) const
-{
-  //TODO paint different priorities differently
-  QStyledItemDelegate::paint( painter, option, index );
-}
-
-QSize KOTodoPriorityDelegate::sizeHint( const QStyleOptionViewItem &option,
-                                        const QModelIndex &index ) const
-{
-  return QStyledItemDelegate::sizeHint( option, index );
 }
 
 QWidget *KOTodoPriorityDelegate::createEditor( QWidget *parent,
@@ -401,40 +393,117 @@ void KOTodoCategoriesDelegate::setCalendar( Calendar *cal )
   mCalendar = cal;
 }
 
-// ---------------- DESCRIPTION DELEGATE -------------------------
+// ---------------- RICH TEXT DELEGATE ---------------------------
 // ---------------------------------------------------------------
 
-KOTodoDescriptionDelegate::KOTodoDescriptionDelegate( QObject *parent )
+KOTodoRichTextDelegate::KOTodoRichTextDelegate( QObject *parent )
   : QStyledItemDelegate( parent )
 {
 }
 
-KOTodoDescriptionDelegate::~KOTodoDescriptionDelegate()
+KOTodoRichTextDelegate::~KOTodoRichTextDelegate()
 {
 }
 
-void KOTodoDescriptionDelegate::paint( QPainter *painter,
-                                       const QStyleOptionViewItem &option,
-                                       const QModelIndex &index ) const
+void KOTodoRichTextDelegate::paint( QPainter *painter,
+                                    const QStyleOptionViewItem &option,
+                                    const QModelIndex &index ) const
 {
-  if ( index.data( KOTodoModel::IsRichDescriptionRole ).toBool() ) {
-    QStyle *style;
-
+  if ( index.data( KOTodoModel::IsRichTextRole ).toBool() ) {
     QStyleOptionViewItemV4 opt = option;
     initStyleOption( &opt, index );
 
-    style = opt.widget ? opt.widget->style() : QApplication::style();
-    style->drawPrimitive( QStyle::PE_PanelItemViewItem, &opt, painter );
+    const QWidget *widget = opt.widget;
+    QStyle *style = widget ? widget->style() : QApplication::style();
 
+    // Unfortunately, I had to duplicate quite some code from
+    // QCommonStyle here
     painter->save();
+    painter->setClipRect(opt.rect);
+
+    QRect checkRect = style->subElementRect( QStyle::SE_ItemViewItemCheckIndicator,
+                                             &opt, widget );
+    QRect iconRect = style->subElementRect( QStyle::SE_ItemViewItemDecoration,
+                                            &opt, widget );
+    QRect textRect = style->subElementRect( QStyle::SE_ItemViewItemText,
+                                            &opt, widget );
+
+    // draw the background
+    style->drawPrimitive( QStyle::PE_PanelItemViewItem, &opt, painter, widget );
+
+    // draw the check mark
+    if ( checkRect.isValid() ) {
+      QStyleOptionViewItemV4 o( opt );
+      o.rect = checkRect;
+      o.state = o.state & ~QStyle::State_HasFocus;
+
+      switch ( opt.checkState ) {
+        case Qt::Unchecked:
+          o.state |= QStyle::State_Off;
+          break;
+        case Qt::PartiallyChecked:
+          o.state |= QStyle::State_NoChange;
+          break;
+        case Qt::Checked:
+          o.state |= QStyle::State_On;
+          break;
+      }
+      style->drawPrimitive( QStyle::PE_IndicatorViewItemCheck, &o, painter, widget );
+    }
+
+    // draw the icon
+    QIcon::Mode mode = QIcon::Normal;
+    if ( !( opt.state & QStyle::State_Enabled ) )
+      mode = QIcon::Disabled;
+    else if ( opt.state & QStyle::State_Selected )
+      mode = QIcon::Selected;
+    QIcon::State state = opt.state & QStyle::State_Open ? QIcon::On : QIcon::Off;
+    opt.icon.paint( painter, iconRect, opt.decorationAlignment, mode, state );
+
+    // draw the text (rich text)
+    QPalette::ColorGroup cg = opt.state & QStyle::State_Enabled
+                              ? QPalette::Normal : QPalette::Disabled;
+    if ( cg == QPalette::Normal && !( opt.state & QStyle::State_Active ) )
+      cg = QPalette::Inactive;
+
+    if ( opt.state & QStyle::State_Selected ) {
+      painter->setPen(
+        QPen( opt.palette.brush( cg, QPalette::HighlightedText ), 0 ) );
+    } else {
+      painter->setPen(
+        QPen( opt.palette.brush( cg, QPalette::Text ), 0 ) );
+    }
+    if ( opt.state & QStyle::State_Editing ) {
+      painter->setPen( QPen( opt.palette.brush( cg, QPalette::Text ), 0 ) );
+      painter->drawRect( textRect.adjusted( 0, 0, -1, -1 ) );
+    }
+
     QTextDocument tmp;
     tmp.setHtml( index.data().toString() );
 
-    painter->translate( opt.rect.topLeft() );
-    QRect rect = opt.rect;
-    rect.moveTo( 0, 0 );
-    tmp.setTextWidth( rect.width() );
-    tmp.drawContents( painter, rect );
+    painter->save();
+    painter->translate( textRect.topLeft() );
+
+    QRect tmpRect = textRect;
+    tmpRect.moveTo( 0, 0 );
+    tmp.setTextWidth( tmpRect.width() );
+    tmp.drawContents( painter, tmpRect );
+
+    painter->restore();
+
+    // draw the focus rect
+    if ( opt.state & QStyle::State_HasFocus ) {
+      QStyleOptionFocusRect o;
+      o.QStyleOption::operator=( opt );
+      o.rect = style->subElementRect( QStyle::SE_ItemViewItemFocusRect, &opt, widget );
+      o.state |= QStyle::State_KeyboardFocusChange;
+      o.state |= QStyle::State_Item;
+      QPalette::ColorGroup cg = ( opt.state & QStyle::State_Enabled )
+                                  ? QPalette::Normal : QPalette::Disabled;
+      o.backgroundColor = opt.palette.color( cg, (opt.state & QStyle::State_Selected)
+                                             ? QPalette::Highlight : QPalette::Window );
+      style->drawPrimitive( QStyle::PE_FrameFocusRect, &o, painter, widget );
+    }
 
     painter->restore();
   } else {
@@ -442,16 +511,14 @@ void KOTodoDescriptionDelegate::paint( QPainter *painter,
   }
 }
 
-QSize KOTodoDescriptionDelegate::sizeHint( const QStyleOptionViewItem &option,
+QSize KOTodoRichTextDelegate::sizeHint( const QStyleOptionViewItem &option,
                                         const QModelIndex &index ) const
 {
-  QSize ret;
-  if ( index.data( KOTodoModel::IsRichDescriptionRole ).toBool() ) {
+  QSize ret = QStyledItemDelegate::sizeHint( option, index );
+  if ( index.data( KOTodoModel::IsRichTextRole ).toBool() ) {
     QTextDocument tmp;
     tmp.setHtml( index.data().toString() );
-    ret = tmp.size().toSize();
-  } else {
-    ret = QStyledItemDelegate::sizeHint( option, index );
+    ret = ret.expandedTo( tmp.size().toSize() );
   }
   // limit height to max. 2 lines
   // TODO add graphical hint when truncating! make configurable height?

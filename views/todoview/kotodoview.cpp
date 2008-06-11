@@ -87,6 +87,10 @@ KOTodoView::KOTodoView( Calendar *cal, QWidget *parent )
   mView->setEditTriggers( QAbstractItemView::SelectedClicked |
                           QAbstractItemView::EditKeyPressed );
 
+  KOTodoRichTextDelegate *richTextDelegate = new KOTodoRichTextDelegate( mView );
+  mView->setItemDelegateForColumn( KOTodoModel::SummaryColumn, richTextDelegate );
+  mView->setItemDelegateForColumn( KOTodoModel::DescriptionColumn, richTextDelegate );
+
   KOTodoPriorityDelegate *priorityDelegate = new KOTodoPriorityDelegate( mView );
   mView->setItemDelegateForColumn( KOTodoModel::PriorityColumn, priorityDelegate );
 
@@ -98,9 +102,6 @@ KOTodoView::KOTodoView( Calendar *cal, QWidget *parent )
 
   mCategoriesDelegate = new KOTodoCategoriesDelegate( cal, mView );
   mView->setItemDelegateForColumn( KOTodoModel::CategoriesColumn, mCategoriesDelegate );
-
-  KOTodoDescriptionDelegate *descriptionDelegate = new KOTodoDescriptionDelegate( mView );
-  mView->setItemDelegateForColumn( KOTodoModel::DescriptionColumn, descriptionDelegate );
 
   connect( mView, SIGNAL(customContextMenuRequested(const QPoint &)),
            this, SLOT(contextMenu(const QPoint &)) );

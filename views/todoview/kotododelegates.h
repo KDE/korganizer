@@ -35,6 +35,7 @@ using namespace KCal;
 class QWidget;
 class QPainter;
 class QStyleOptionViewItem;
+class QStyleOptionProgressBar;
 class QSize;
 class QEvent;
 
@@ -66,6 +67,10 @@ class KOTodoCompleteDelegate : public QStyledItemDelegate
     void updateEditorGeometry( QWidget *editor,
                                const QStyleOptionViewItem &option,
                                const QModelIndex &index ) const;
+
+  private:
+    void initStyleOptionProgressBar( QStyleOptionProgressBar *option,
+                                     const QModelIndex &index ) const;
 };
 
 class KOTodoCompleteSlider : public QSlider
@@ -93,11 +98,6 @@ class KOTodoPriorityDelegate : public QStyledItemDelegate
     KOTodoPriorityDelegate( QObject *parent = 0 );
 
     ~KOTodoPriorityDelegate();
-
-    void paint( QPainter *painter, const QStyleOptionViewItem &option,
-                const QModelIndex &index ) const;
-    QSize sizeHint( const QStyleOptionViewItem &option,
-                    const QModelIndex &index ) const;
 
     QWidget *createEditor( QWidget *parent, const QStyleOptionViewItem &option,
                            const QModelIndex &index ) const;
@@ -164,17 +164,18 @@ class KOTodoCategoriesDelegate : public QStyledItemDelegate
 };
 
 /**
-  This delegate is responsible for displaying the description of a todo.
+  This delegate is responsible for displaying possible rich text elements
+  of a todo. That's the summary and the description.
 
   @author Thomas Thrainer
  */
-class KOTodoDescriptionDelegate : public QStyledItemDelegate
+class KOTodoRichTextDelegate : public QStyledItemDelegate
 {
   Q_OBJECT
   public:
-    KOTodoDescriptionDelegate( QObject *parent = 0 );
+    KOTodoRichTextDelegate( QObject *parent = 0 );
 
-    ~KOTodoDescriptionDelegate();
+    ~KOTodoRichTextDelegate();
 
     void paint( QPainter *painter, const QStyleOptionViewItem &option,
                 const QModelIndex &index ) const;

@@ -719,8 +719,14 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
     return ret;
   }
 
-  if ( role == IsRichDescriptionRole ) {
-    return QVariant( todo->descriptionIsRich() );
+  if ( role == IsRichTextRole ) {
+    if ( index.column() == SummaryColumn ) {
+      return QVariant( todo->summaryIsRich() );
+    } else if ( index.column() == DescriptionColumn ) {
+      return QVariant( todo->descriptionIsRich() );
+    } else {
+      return QVariant();
+    }
   }
 
   return QVariant();
