@@ -107,23 +107,28 @@ bool IncidenceChanger::deleteIncidence( Incidence *incidence )
     // @TODO: let Calendar::deleteIncidence do the locking...
     Incidence* tmp = incidence->clone();
     emit incidenceToBeDeleted( incidence );
-    doDelete = mCalendar->deleteIncidence( incidence );
-    const QStringList myEmails = KOPrefs::instance()->allEmails();
-    bool notifyOrganizer = false;
-    for ( QStringList::ConstIterator it = myEmails.begin(); it != myEmails.end(); ++it ) {
+    doDelete = mCalendar->deleteIncidence( tmp );
+    if ( !KOPrefs::instance()->thatIsMe( tmp->organizer().email() ) ) {
+      const QStringList myEmails = KOPrefs::instance()->allEmails();
+      bool notifyOrganizer = false;
+      for ( QStringList::ConstIterator it = myEmails.begin(); it != myEmails.end(); ++it ) {
         QString email = *it;
         Attendee *me = tmp->attendeeByMail(email);
         if ( me ) {
-            if ( me->status()==KCal::Attendee::Accepted || me->status()==KCal::Attendee::Delegated ) {
-                notifyOrganizer = true;
-            }
-            me->setStatus( KCal::Attendee::Declined );
+          if ( me->status() == KCal::Attendee::Accepted || me->status() == KCal::Attendee::Delegated )
+            notifyOrganizer = true;
+          Attendee *newMe = new Attendee( *me );
+          newMe->setStatus( KCal::Attendee::Declined );
+          tmp->clearAttendees();
+          tmp->addAttendee( newMe );
+          break;
         }
-    }
+      }
 
-    if ( notifyOrganizer ) {
+      if ( notifyOrganizer ) {
         KCal::MailScheduler scheduler( mCalendar );
         scheduler.performTransaction( tmp, KCal::iTIPReply );
+      }
     }
     emit incidenceDeleted( incidence );
   }
