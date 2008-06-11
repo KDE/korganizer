@@ -98,6 +98,8 @@ class KOEventEditor : public KOIncidenceEditor
 
     QObject *typeAheadReceiver() const;
 
+    void selectInvitationCounterProposal( bool enable );
+
   signals:
     void focusReceivedSignal();
 

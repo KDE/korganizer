@@ -329,7 +329,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     void showIncidenceContext( Incidence *incidence );
 
     /** Create an editor for the supplied incidence. It calls the correct editXXX method*/
-    bool editIncidence( Incidence * );
+    bool editIncidence( Incidence *incidence, bool isCounter = false );
 
     /**
       Delete the supplied incidence. It calls the correct deleteXXX method
