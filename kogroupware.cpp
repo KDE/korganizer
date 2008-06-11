@@ -360,4 +360,23 @@ bool KOGroupware::sendICalMessage( QWidget *parent,
   }
 }
 
+void KOGroupware::sendCounterProposal(KCal::Calendar *calendar, KCal::Event * oldEvent, KCal::Event * newEvent) const
+{
+  if ( !oldEvent || !newEvent || *oldEvent == *newEvent || !KOPrefs::instance()->mUseGroupwareCommunication )
+    return;
+  if ( KOPrefs::instance()->outlookCompatCounterProposals() ) {
+    Incidence* tmp = oldEvent->clone();
+    tmp->setSummary( i18n( "Counter proposal: %1", newEvent->summary() ) );
+    tmp->setDescription( newEvent->description() );
+    tmp->addComment( i18n( "Proposed new meeting time: %1 - %2",
+                           newEvent->dtStartStr(), newEvent->dtEndStr() ) );
+    KCal::MailScheduler scheduler( calendar );
+    scheduler.performTransaction( tmp, KCal::iTIPReply );
+    delete tmp;
+  } else {
+    KCal::MailScheduler scheduler( calendar );
+    scheduler.performTransaction( newEvent, iTIPCounter );
+  }
+}
+
 #include "kogroupware.moc"

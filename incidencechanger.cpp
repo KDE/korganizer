@@ -295,7 +295,7 @@ bool IncidenceChanger::myAttendeeStatusChanged( Incidence *oldInc, Incidence *ne
 }
 
 bool IncidenceChanger::changeIncidence( Incidence *oldinc, Incidence *newinc,
-                                        int action, bool counter )
+                                        int action )
 {
   kDebug() << "for incidence \"" << newinc->summary()
            << "\" ( old one was \"" << oldinc->summary() << "\")";
@@ -303,10 +303,6 @@ bool IncidenceChanger::changeIncidence( Incidence *oldinc, Incidence *newinc,
   if ( incidencesEqual( newinc, oldinc ) ) {
     // Don't do anything
     kDebug() << "Incidence not changed";
-    if ( counter ) {
-      KCal::MailScheduler scheduler( mCalendar );
-      scheduler.performTransaction( newinc, KCal::iTIPReply );
-    }
   } else {
     kDebug() << "Changing incidence";
     bool statusChanged = myAttendeeStatusChanged( oldinc, newinc );
@@ -317,7 +313,7 @@ bool IncidenceChanger::changeIncidence( Incidence *oldinc, Incidence *newinc,
     //        it wants with the event. If no groupware is used,use the null
     //        pattern...
     bool revert = KOPrefs::instance()->mUseGroupwareCommunication;
-    if ( !counter && revert &&
+    if ( revert &&
         KOGroupware::instance()->sendICalMessage( 0,
                                                   KCal::iTIPRequest,
                                                   newinc, false, statusChanged ) ) {
@@ -328,27 +324,6 @@ bool IncidenceChanger::changeIncidence( Incidence *oldinc, Incidence *newinc,
         emit incidenceChanged( oldinc, newinc, action );
       }
       revert = false;
-    }
-    if ( counter && revert ) {
-      // pseudo counter as done by outlook
-      Event *e = dynamic_cast<Event*>( newinc );
-      if ( e ) {
-        if ( KOPrefs::instance()->outlookCompatCounterProposals() ) {
-          Incidence *tmp = oldinc->clone();
-          tmp->setSummary( i18n( "Counter proposal: %1", e->summary() ) );
-          tmp->setDescription( e->description() );
-          tmp->addComment( i18n( "Proposed new meeting time: %1 - %2",
-                                 e->dtStartStr(), e->dtEndStr() ) );
-          KCal::MailScheduler scheduler( mCalendar );
-          scheduler.performTransaction( tmp, KCal::iTIPReply );
-        } else {
-          Incidence *tmp = newinc->clone();
-          KCal::MailScheduler scheduler( mCalendar );
-          scheduler.performTransaction( tmp, iTIPCounter );
-        }
-      } else {
-        kWarning() << "Counter proposals only supported for events";
-      }
     }
 
     if ( revert ) {
