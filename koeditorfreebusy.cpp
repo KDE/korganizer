@@ -967,4 +967,16 @@ void KOEditorFreeBusy::slotOrganizerChanged(const QString & newOrganizer)
   mCurrentOrganizer = newOrganizer;
 }
 
+bool KOEditorFreeBusy::hasExampleAttendee() const
+{
+  for ( FreeBusyItem *item = static_cast<FreeBusyItem *>( mGanttView->firstChild() ); item;
+        item = static_cast<FreeBusyItem*>( item->nextSibling() ) ) {
+    Attendee *attendee = item->attendee();
+    Q_ASSERT( attendee );
+    if ( isExampleAttendee( attendee ) )
+        return true;
+  }
+  return false;
+}
+
 #include "koeditorfreebusy.moc"

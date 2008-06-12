@@ -34,6 +34,7 @@
 #include <KComboBox>
 #include <kiconloader.h>
 #include <klocale.h>
+#include <kmessagebox.h>
 
 #include <QCheckBox>
 #include <Q3HBox>
@@ -240,6 +241,14 @@ void KOAttendeeEditor::fillOrganizerCombo()
 
 void KOAttendeeEditor::addNewAttendee()
 {
+  // check if there's still an unchanged example entry, and if so
+  // suggest to edit that first
+  if ( hasExampleAttendee() ) {
+      KMessageBox::information( this,
+          i18n( "Please edit the example attendee, before adding more." ), QString::null,
+          "EditExistingExampleAttendeeFirst" );
+      return;
+  }
   Attendee *a =
     new Attendee( i18nc( "sample attendee name", "Firstname Lastname" ),
                   i18nc( "sample attendee email name", "name" ) + "@example.net", true );
@@ -434,6 +443,16 @@ bool KOAttendeeEditor::eventFilter( QObject *watched, QEvent *ev )
   }
 
   return QWidget::eventFilter( watched, ev );
+}
+
+bool KOAttendeeEditor::isExampleAttendee( const KCal::Attendee* attendee ) const
+{
+    if ( !attendee ) return false;
+    if ( attendee->name() == i18nc( "sample attendee name", "Firstname Lastname" )
+        && attendee->email().endsWith( "example.net" ) ) {
+        return true;
+    }
+    return false;
 }
 
 #include "koattendeeeditor.moc"
