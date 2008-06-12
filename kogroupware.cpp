@@ -207,8 +207,11 @@ void KOGroupware::incomingDirChanged( const QString &path )
     // Delete the old incidence, if one is present
     scheduler.acceptTransaction( incidence, KCal::iTIPCancel, status );
   } else if ( action.startsWith( "reply" ) ) {
-    scheduler.acceptTransaction( incidence, method == iTIPCounter ? iTIPRequest : method, status );
-    if ( method == iTIPCounter ) {
+    if ( method != iTIPCounter ) {
+      scheduler.acceptTransaction( incidence, method, status );
+    } else {
+      // accept counter proposal
+      scheduler.acceptCounterProposal( incidence );
       // send update to all attendees
       sendICalMessage( mView, iTIPRequest, incidence );
     }
