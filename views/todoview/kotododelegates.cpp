@@ -416,53 +416,16 @@ void KOTodoRichTextDelegate::paint( QPainter *painter,
     const QWidget *widget = opt.widget;
     QStyle *style = widget ? widget->style() : QApplication::style();
 
-    // Unfortunately, I had to duplicate quite some code from
-    // QCommonStyle here
-    painter->save();
-    painter->setClipRect(opt.rect);
-
-    QRect checkRect = style->subElementRect( QStyle::SE_ItemViewItemCheckIndicator,
-                                             &opt, widget );
-    QRect iconRect = style->subElementRect( QStyle::SE_ItemViewItemDecoration,
-                                            &opt, widget );
     QRect textRect = style->subElementRect( QStyle::SE_ItemViewItemText,
                                             &opt, widget );
 
-    // draw the background
-    style->drawPrimitive( QStyle::PE_PanelItemViewItem, &opt, painter, widget );
-
-    // draw the check mark
-    if ( checkRect.isValid() ) {
-      QStyleOptionViewItemV4 o( opt );
-      o.rect = checkRect;
-      o.state = o.state & ~QStyle::State_HasFocus;
-
-      switch ( opt.checkState ) {
-        case Qt::Unchecked:
-          o.state |= QStyle::State_Off;
-          break;
-        case Qt::PartiallyChecked:
-          o.state |= QStyle::State_NoChange;
-          break;
-        case Qt::Checked:
-          o.state |= QStyle::State_On;
-          break;
-      }
-      style->drawPrimitive( QStyle::PE_IndicatorViewItemCheck, &o, painter, widget );
-    }
-
-    // draw the icon
-    QIcon::Mode mode = QIcon::Normal;
-    if ( !( opt.state & QStyle::State_Enabled ) )
-      mode = QIcon::Disabled;
-    else if ( opt.state & QStyle::State_Selected )
-      mode = QIcon::Selected;
-    QIcon::State state = opt.state & QStyle::State_Open ? QIcon::On : QIcon::Off;
-    opt.icon.paint( painter, iconRect, opt.decorationAlignment, mode, state );
+    // draw the item without text
+    opt.text = QString();
+    style->drawControl( QStyle::CE_ItemViewItem, &opt, painter, widget );
 
     // draw the text (rich text)
-    QPalette::ColorGroup cg = opt.state & QStyle::State_Enabled
-                              ? QPalette::Normal : QPalette::Disabled;
+    QPalette::ColorGroup cg = opt.state & QStyle::State_Enabled ?
+                                QPalette::Normal : QPalette::Disabled;
     if ( cg == QPalette::Normal && !( opt.state & QStyle::State_Active ) )
       cg = QPalette::Inactive;
 
@@ -488,22 +451,6 @@ void KOTodoRichTextDelegate::paint( QPainter *painter,
     tmpRect.moveTo( 0, 0 );
     tmp.setTextWidth( tmpRect.width() );
     tmp.drawContents( painter, tmpRect );
-
-    painter->restore();
-
-    // draw the focus rect
-    if ( opt.state & QStyle::State_HasFocus ) {
-      QStyleOptionFocusRect o;
-      o.QStyleOption::operator=( opt );
-      o.rect = style->subElementRect( QStyle::SE_ItemViewItemFocusRect, &opt, widget );
-      o.state |= QStyle::State_KeyboardFocusChange;
-      o.state |= QStyle::State_Item;
-      QPalette::ColorGroup cg = ( opt.state & QStyle::State_Enabled )
-                                  ? QPalette::Normal : QPalette::Disabled;
-      o.backgroundColor = opt.palette.color( cg, (opt.state & QStyle::State_Selected)
-                                             ? QPalette::Highlight : QPalette::Window );
-      style->drawPrimitive( QStyle::PE_FrameFocusRect, &o, painter, widget );
-    }
 
     painter->restore();
   } else {
