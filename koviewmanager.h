@@ -28,9 +28,8 @@
 #include <QObject>
 #include <QDate>
 
-class QTabWidget;
-
 class KConfig;
+class KTabWidget;
 
 class CalendarView;
 class KOListView;
@@ -127,20 +126,20 @@ class KOViewManager : public QObject
     QWidget *widgetForView( KOrg::BaseView * ) const;
     CalendarView *mMainView;
 
-    KOAgendaView    *mAgendaView;
+    KOAgendaView *mAgendaView;
     KOrg::MultiAgendaView *mAgendaSideBySideView;
-    KOListView      *mListView;
-    KOMonthView     *mMonthView;
-    KOTodoView      *mTodoView;
+    KOListView *mListView;
+    KOMonthView *mMonthView;
+    KOTodoView *mTodoView;
     KOWhatsNextView *mWhatsNextView;
-    KOJournalView   *mJournalView;
-    KOTimelineView  *mTimelineView;
-    KOTimeSpentView   *mTimeSpentView;
+    KOJournalView *mJournalView;
+    KOTimelineView *mTimelineView;
+    KOTimeSpentView *mTimeSpentView;
     KOrg::KONewMonthView *mNewMonthView;
     KOrg::BaseView *mCurrentView;
 
     KOrg::BaseView *mLastEventView;
-    QTabWidget *mAgendaViewTabs;
+    KTabWidget *mAgendaViewTabs;
 };
 
 #endif

@@ -40,11 +40,11 @@
 #include "views/monthview/monthview.h"
 #include "views/todoview/kotodoview.h"
 
-#include <kconfig.h>
-#include <kglobal.h>
+#include <KConfig>
+#include <KGlobal>
+#include <KTabWidget>
 
 #include <QStackedWidget>
-#include <QTabWidget>
 
 #include "koviewmanager.moc"
 
@@ -367,7 +367,7 @@ void KOViewManager::showAgendaView()
 
   QWidget *parent = mMainView->viewStack();
   if ( !mAgendaViewTabs && showBoth ) {
-    mAgendaViewTabs = new QTabWidget( mMainView->viewStack() ); //krazy:exclude=qclasses
+    mAgendaViewTabs = new KTabWidget( mMainView->viewStack() );
     connect( mAgendaViewTabs, SIGNAL(currentChanged(QWidget *)),
              this, SLOT(currentAgendaViewTabChanged(QWidget *)) );
     parent = mAgendaViewTabs;
@@ -402,7 +402,7 @@ void KOViewManager::showAgendaView()
   }
 
   if ( mAgendaViewTabs ) {
-    showView( static_cast<KOrg::BaseView*>( mAgendaViewTabs->currentPage() ) );
+    showView( static_cast<KOrg::BaseView*>( mAgendaViewTabs->currentWidget() ) );
   } else if ( mAgendaView ) {
     showView( mAgendaView );
   } else if ( mAgendaSideBySideView ) {
