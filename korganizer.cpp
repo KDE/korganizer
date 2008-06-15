@@ -122,13 +122,15 @@ void KOrganizer::init( bool document )
     mActionManager->createCalendarResources();
   }
 
-  initActions();
+  setComponentData( KGlobal::mainComponent() );
+
   mActionManager->init();
   connect( mActionManager, SIGNAL(actionNew(const KUrl&)),
            SLOT(newMainWindow(const KUrl&)) );
 
   mActionManager->loadParts();
 
+  initActions();
   readSettings();
 
   KStatusBar *bar = statusBar();
@@ -194,8 +196,6 @@ void KOrganizer::writeSettings()
 
 void KOrganizer::initActions()
 {
-  setComponentData( KGlobal::mainComponent() );
-
   setXMLFile( "korganizerui.rc" );
   setStandardToolBarMenuEnabled( true );
   createStandardStatusBarAction();
@@ -212,7 +212,7 @@ void KOrganizer::initActions()
 void KOrganizer::slotEditKeys()
 {
   KShortcutsDialog::configure( actionCollection(),
-    KShortcutsEditor::LetterShortcutsDisallowed );
+  KShortcutsEditor::LetterShortcutsDisallowed );
 }
 
 bool KOrganizer::queryClose()
