@@ -53,7 +53,7 @@
 #include "history.h"
 #include "kogroupware.h"
 #include "freebusymanager.h"
-#include "komonthview.h"
+#include "views/oldmonthview/komonthview.h"
 #include "datechecker.h"
 #include "komessagebox.h"
 #include "exportwebdialog.h"

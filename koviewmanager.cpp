@@ -27,7 +27,7 @@
 #include "calendarview.h"
 #include "datenavigator.h"
 #include "koagendaview.h"
-#include "komonthview.h"
+#include "views/oldmonthview/komonthview.h"
 #include "kolistview.h"
 #include "kowhatsnextview.h"
 #include "kojournalview.h"
@@ -57,13 +57,13 @@ KOViewManager::KOViewManager( CalendarView *mainView )
   mTodoView = 0;
   mAgendaView = 0;
   mAgendaSideBySideView = 0;
-  mMonthView = 0;
+  mOldMonthView = 0;
   mListView = 0;
   mJournalView = 0;
   mTimelineView = 0;
   mAgendaViewTabs = 0;
   mTimeSpentView = 0;
-  mNewMonthView = 0;
+  mMonthView = 0;
 }
 
 KOViewManager::~KOViewManager()
@@ -82,8 +82,8 @@ void KOViewManager::readSettings( KConfig *config )
 
   if ( view == QLatin1String( "WhatsNext" ) ) {
     showWhatsNextView();
-  } else if ( view == QLatin1String( "Month" ) ) {
-    showMonthView();
+  } else if ( view == QLatin1String( "OldMonth" ) ) {
+    showOldMonthView();
   } else if ( view == QLatin1String( "List" ) ) {
     showListView();
   } else if ( view == QLatin1String( "Journal" ) ) {
@@ -94,8 +94,8 @@ void KOViewManager::readSettings( KConfig *config )
     showTimeLineView();
   } else if ( view == "TimeSpent" ) {
     showTimeSpentView();
-  } else if ( view == "NewMonth" ) {
-    showNewMonthView();
+  } else if ( view == "Month" ) {
+    showMonthView();
   } else {
     showAgendaView();
   }
@@ -108,8 +108,8 @@ void KOViewManager::writeSettings( KConfig *config )
   QString view;
   if ( mCurrentView == mWhatsNextView ) {
     view = "WhatsNext";
-  } else if ( mCurrentView == mMonthView ) {
-    view = "Month";
+  } else if ( mCurrentView == mOldMonthView ) {
+    view = "OldMonth";
   } else if ( mCurrentView == mListView ) {
     view = "List";
   } else if ( mCurrentView == mJournalView ) {
@@ -120,8 +120,8 @@ void KOViewManager::writeSettings( KConfig *config )
     view = "Timeline";
   } else if ( mCurrentView == mTimeSpentView ) {
     view = "TimeSpent";
-  } else if ( mCurrentView == mNewMonthView ) {
-    view = "NewMonth";
+  } else if ( mCurrentView == mMonthView ) {
+    view = "Month";
   } else {
     view = "Agenda";
   }
@@ -324,14 +324,14 @@ void KOViewManager::showTimeSpentView()
   showView( mTimeSpentView );
 }
 
-void KOViewManager::showNewMonthView()
+void KOViewManager::showMonthView()
 {
-  if ( !mNewMonthView ) {
-    mNewMonthView = new KOrg::KONewMonthView( mMainView->calendar(), mMainView->viewStack() );
-    mNewMonthView->setObjectName( "KOViewManager::NewMonthView" );
-    addView( mNewMonthView );
+  if ( !mMonthView ) {
+    mMonthView = new KOrg::MonthView( mMainView->calendar(), mMainView->viewStack() );
+    mMonthView->setObjectName( "KOViewManager::MonthView" );
+    addView( mMonthView );
   }
-  showView( mNewMonthView );
+  showView( mMonthView );
 }
 
 void KOViewManager::showWhatsNextView()
@@ -433,15 +433,15 @@ void KOViewManager::showNextXView()
                                            KOPrefs::instance()->mNextXDays );
 }
 
-void KOViewManager::showMonthView()
+void KOViewManager::showOldMonthView()
 {
-  if ( !mMonthView ) {
-    mMonthView = new KOMonthView( mMainView->calendar(), mMainView->viewStack() );
-    mMonthView->setObjectName( "KOViewManager::MonthView" );
-    addView( mMonthView );
+  if ( !mOldMonthView ) {
+    mOldMonthView = new KOMonthView( mMainView->calendar(), mMainView->viewStack() );
+    mMonthView->setObjectName( "KOViewManager::OldMonthView" );
+    addView( mOldMonthView );
   }
 
-  showView( mMonthView );
+  showView( mOldMonthView );
 }
 
 void KOViewManager::showTodoView()

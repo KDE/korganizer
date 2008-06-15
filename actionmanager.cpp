@@ -362,10 +362,10 @@ void ActionManager::initActions()
   connect( mNextXDays, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
            SLOT(showNextXView()) );
   mNextXDays->setText( i18np( "&Next Day", "&Next %1 Days", KOPrefs::instance()->mNextXDays ) );
-  action = new KAction( KIcon( "view-calendar-month" ), i18n( "&New Month View" ), this );
-  mACollection->addAction( "view_newmonth", action );
+  action = new KAction( KIcon( "view-calendar-month" ), i18n( "&Month" ), this );
+  mACollection->addAction( "view_month", action );
   connect( action, SIGNAL(triggered(bool)),
-           mCalendarView->viewManager(), SLOT(showNewMonthView()) );
+           mCalendarView->viewManager(), SLOT(showMonthView()) );
 
   action = new KAction( KIcon( "view-calendar-workweek" ), i18n( "W&ork Week" ), this );
   mACollection->addAction( "view_workweek", action );
@@ -378,9 +378,9 @@ void ActionManager::initActions()
            SLOT(showWeekView()) );
 
   action = new KAction( KIcon( "view-calendar-month" ), i18n( "&Month" ), this );
-  mACollection->addAction( "view_month", action );
+  mACollection->addAction( "view_oldmonth", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
-           SLOT(showMonthView()) );
+           SLOT(showOldMonthView()) );
 
   action = new KAction( KIcon( "view-calendar-list" ), i18n( "&Event List" ), this );
   mACollection->addAction( "view_list", action );

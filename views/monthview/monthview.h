@@ -37,12 +37,12 @@ class MonthScene;
 /**
   New month view.
 */
-class KONewMonthView : public KOEventView
+class MonthView : public KOEventView
 {
   Q_OBJECT
   public:
-    explicit KONewMonthView( Calendar *calendar, QWidget *parent = 0 );
-    ~KONewMonthView();
+    explicit MonthView( Calendar *calendar, QWidget *parent = 0 );
+    ~MonthView();
 
     virtual int currentDateCount();
     virtual Incidence::List selectedIncidences()
