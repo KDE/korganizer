@@ -37,7 +37,7 @@
 
 using namespace KOrg;
 
-KONewMonthView::KONewMonthView( Calendar *calendar, QWidget *parent )
+MonthView::MonthView( Calendar *calendar, QWidget *parent )
   : KOEventView( calendar, parent )
 {
   mView = new MonthGraphicsView( this, calendar );
@@ -58,21 +58,21 @@ KONewMonthView::KONewMonthView( Calendar *calendar, QWidget *parent )
 
 }
 
-KONewMonthView::~KONewMonthView()
+MonthView::~MonthView()
 {
 }
 
-int KONewMonthView::currentDateCount()
+int MonthView::currentDateCount()
 {
   return mStartDate.daysTo( mEndDate );
 }
 
-int KONewMonthView::maxDatesHint()
+int MonthView::maxDatesHint()
 {
   return 6 * 7;
 }
 
-DateList KONewMonthView::selectedDates()
+DateList MonthView::selectedDates()
 {
   DateList list;
 
@@ -83,7 +83,7 @@ DateList KONewMonthView::selectedDates()
   return list;
 }
 
-bool KONewMonthView::eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &allDay )
+bool MonthView::eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &allDay )
 {
   if ( mScene->selectedCell() ) {
     startDt.setDate( mScene->selectedCell()->date() );
@@ -95,11 +95,11 @@ bool KONewMonthView::eventDurationHint( QDateTime &startDt, QDateTime &endDt, bo
   return false;
 }
 
-void KONewMonthView::showIncidences( const Incidence::List & )
+void MonthView::showIncidences( const Incidence::List & )
 {
 }
 
-void KONewMonthView::changeIncidenceDisplay( Incidence *incidence, int action )
+void MonthView::changeIncidenceDisplay( Incidence *incidence, int action )
 {
   switch(action) {
     case KOGlobals::INCIDENCEADDED:
@@ -113,17 +113,17 @@ void KONewMonthView::changeIncidenceDisplay( Incidence *incidence, int action )
   }
 }
 
-void KONewMonthView::addIncidence( Incidence *incidence )
+void MonthView::addIncidence( Incidence *incidence )
 {
   reloadIncidences();
 }
 
-void KONewMonthView::updateView()
+void MonthView::updateView()
 {
   mView->update();
 }
 
-void KONewMonthView::showDates( const QDate &start, const QDate &end )
+void MonthView::showDates( const QDate &start, const QDate &end )
 {
   mCurrentMonth = start.month();
 
@@ -137,7 +137,7 @@ void KONewMonthView::showDates( const QDate &start, const QDate &end )
   reloadIncidences();
 }
 
-void KONewMonthView::reloadIncidences()
+void MonthView::reloadIncidences()
 {
   // keep selection if it exists
   Incidence *incidenceSelected = 0;
@@ -225,7 +225,7 @@ void KONewMonthView::reloadIncidences()
   mScene->update();
 }
 
-QDate KONewMonthView::averageDate() const
+QDate MonthView::averageDate() const
 {
   return startDate().addDays( startDate().daysTo( endDate() ) / 2 );
 }

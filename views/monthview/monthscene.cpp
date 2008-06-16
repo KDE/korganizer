@@ -37,13 +37,13 @@
 
 using namespace KOrg;
 
-MonthGraphicsView::MonthGraphicsView( KONewMonthView *parent, Calendar *calendar )
+MonthGraphicsView::MonthGraphicsView( MonthView *parent, Calendar *calendar )
   : QGraphicsView( parent ), mMonthView( parent )
 {
   setMouseTracking( true );
 }
 
-MonthScene::MonthScene( KONewMonthView *parent, Calendar *calendar )
+MonthScene::MonthScene( MonthView *parent, Calendar *calendar )
   : QGraphicsScene( parent ),
     mMonthView( parent ),
     mInitialized( false ),

@@ -44,7 +44,7 @@ namespace KOrg {
 class MonthGraphicsItem;
 class MonthGraphicsView;
 class MonthCell;
-class KONewMonthView;
+class MonthView;
 
 class MonthScene : public QGraphicsScene
 {
@@ -62,7 +62,7 @@ class MonthScene : public QGraphicsScene
       ResizeRight
     };
 
-    MonthScene( KONewMonthView *parent, Calendar *calendar );
+    MonthScene( MonthView *parent, Calendar *calendar );
     ~MonthScene();
 
     int columnWidth() const;
@@ -72,7 +72,7 @@ class MonthScene : public QGraphicsScene
     int height( MonthItem *manager );
     int itemHeight();
     MonthItem::List mManagerList;
-    KONewMonthView *mMonthView;
+    MonthView *mMonthView;
 
     QMap<QDate, MonthCell*> mMonthCellMap;
 
@@ -259,7 +259,7 @@ class MonthScene : public QGraphicsScene
 class MonthGraphicsView : public QGraphicsView
 {
   public:
-    MonthGraphicsView( KONewMonthView *parent, Calendar *calendar );
+    MonthGraphicsView( MonthView *parent, Calendar *calendar );
 
     /**
       Draws the cells.
@@ -278,7 +278,7 @@ class MonthGraphicsView : public QGraphicsView
 
   private:
     MonthScene *mScene;
-    KONewMonthView *mMonthView;
+    MonthView *mMonthView;
 };
 
 }

@@ -141,7 +141,7 @@ set(korganizerprivate_LIB_SRCS
    kdatenavigator.cpp
    datenavigatorcontainer.cpp
    datechecker.cpp
-   komonthview.cpp
+   views/oldmonthview/komonthview.cpp
    views/monthview/monthview.cpp
    views/monthview/monthitem.cpp
    views/monthview/monthscene.cpp
