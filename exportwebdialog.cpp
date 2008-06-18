@@ -143,13 +143,13 @@ void ExportWebDialog::setupGeneralPage()
 {
   mGeneralPage = new QFrame( this );
   addPage( mGeneralPage, i18nc( "general settings for html export", "General" ) );
-  QVBoxLayout *topLayout = new QVBoxLayout(mGeneralPage);
+  QVBoxLayout *topLayout = new QVBoxLayout( mGeneralPage );
   topLayout->setSpacing(10);
 
   QGroupBox *rangeGroup = new QGroupBox( i18n( "Date Range" ), mGeneralPage );
   topLayout->addWidget( rangeGroup );
 
-  QBoxLayout *rangeLayout = new QVBoxLayout( rangeGroup );
+  QHBoxLayout *rangeLayout = new QHBoxLayout( rangeGroup );
 
   KPrefsWidDate *dateStart = addWidDate( mSettings->dateStartItem() );
   rangeLayout->addWidget( dateStart->label() );
