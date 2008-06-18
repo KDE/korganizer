@@ -185,8 +185,10 @@ void KOEditorGeneralTodo::initCompletion(QWidget *parent, QBoxLayout *topLayout)
   topLayout->addWidget(mCompletedLabel);
   mCompletedLabel->setBuddy( mCompletedCombo );
   mCompletionDateEdit = new KDateEdit( parent );
+  mCompletionDateEdit->hide();
   topLayout->addWidget( mCompletionDateEdit );
   mCompletionTimeEdit = new KTimeEdit( parent, QTime() );
+  mCompletionTimeEdit->hide();
   topLayout->addWidget( mCompletionTimeEdit );
 }
 
