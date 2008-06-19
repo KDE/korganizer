@@ -27,6 +27,7 @@
 
 #include <QObject>
 #include <QGraphicsItem>
+#include <QPixmap>
 #include <QHash>
 #include <QDate>
 

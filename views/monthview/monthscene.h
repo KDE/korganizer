@@ -29,6 +29,7 @@
 
 #include <QGraphicsScene>
 #include <QGraphicsView>
+#include <QPixmap>
 
 class QResizeEvent;
 class QGraphicsSceneMouseEvent;
@@ -261,7 +262,18 @@ class MonthScene : public QGraphicsScene
     // the user scroll the view when there are too many items.
     int mStartHeight;
 
+    // icons to draw in front of the events
+    QPixmap mEventPixmap;
+    QPixmap mTodoPixmap;
+    QPixmap mTodoDonePixmap;
+    QPixmap mJournalPixmap;
+    QPixmap mAlarmPixmap;
+    QPixmap mRecurPixmap;
+    QPixmap mReplyPixmap;
+    QPixmap mHolidayPixmap;
+
     friend class MonthGraphicsView;
+    friend class MonthGraphicsItem;
 };
 
 /**

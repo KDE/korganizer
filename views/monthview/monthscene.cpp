@@ -56,8 +56,15 @@ MonthScene::MonthScene( MonthView *parent, Calendar *calendar )
     mMovingMonthGraphicsItem( 0 ),
     mStartHeight( 0 ),
     mActionType( None )
-
 {
+  mEventPixmap     = KOGlobals::self()->smallIcon( "view-calendar-day" );
+  mTodoPixmap      = KOGlobals::self()->smallIcon( "view-calendar-tasks" );
+  mTodoDonePixmap  = KOGlobals::self()->smallIcon( "task-complete" );
+  mJournalPixmap   = KOGlobals::self()->smallIcon( "view-pim-journal" );
+  mAlarmPixmap     = KOGlobals::self()->smallIcon( "appointment-reminder" );
+  mRecurPixmap     = KOGlobals::self()->smallIcon( "appointment-recurring" );
+  mReplyPixmap     = KOGlobals::self()->smallIcon( "mail-reply-sender" );
+  mHolidayPixmap   = KOGlobals::self()->smallIcon( "emblem-favorite" );
 }
 
 MonthScene::~MonthScene()
