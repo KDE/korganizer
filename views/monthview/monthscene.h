@@ -71,6 +71,7 @@ class MonthScene : public QGraphicsScene
     MonthCell *firstCellForMonthItem( MonthItem *manager );
     int height( MonthItem *manager );
     int itemHeight();
+    int itemHeightIncludingSpacing();
     MonthItem::List mManagerList;
     MonthView *mMonthView;
 
@@ -171,6 +172,28 @@ class MonthScene : public QGraphicsScene
     virtual void mousePressEvent( QGraphicsSceneMouseEvent *mouseEvent );
     virtual void mouseReleaseEvent( QGraphicsSceneMouseEvent *mouseEvent );
     virtual void wheelEvent( QGraphicsSceneWheelEvent *wheelEvent );
+
+    /**
+       Scrolls all incidences in cells up
+     */
+    virtual void scrollCellsUp();
+
+    /**
+       Scrolls all incidences in cells down
+     */
+    virtual void scrollCellsDown();
+
+    /**
+       A click on a scroll indicator has occured
+       TODO : move this handler to the scrollindicator
+     */
+    virtual void clickOnScrollIndicator( ScrollIndicator *scrollItem );
+
+
+    /**
+      Handles drag and drop events. Called from eventFilter.
+    */
+//    virtual bool eventFilter_drag( QObject *, QDropEvent * );
 
     /**
       Returns true if the last item is visible in the given @p cell.

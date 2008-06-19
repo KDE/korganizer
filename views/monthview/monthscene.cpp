@@ -93,7 +93,12 @@ int MonthScene::getLeftSpan( const QDate &date ) const
 
 int MonthScene::maxRowCount()
 {
-  return ( rowHeight() - MonthCell::topMargin() ) / itemHeight();
+  return ( rowHeight() - MonthCell::topMargin() ) / itemHeightIncludingSpacing();
+}
+
+int MonthScene::itemHeightIncludingSpacing()
+{
+  return MonthCell::topMargin() + 2;
 }
 
 int MonthScene::itemHeight()
@@ -270,26 +275,26 @@ void MonthGraphicsView::drawBackground( QPainter *p, const QRectF & rect )
       p->setPen( oldPen );
     }
 
+    /*
+      Draw arrows if all items won't fit
+    */
+
+    // Up arrow if first item is above cell top
     if ( mScene->startHeight() != 0 && cell->hasEventBelow( mScene->startHeight() ) ) {
-      int arrowCenter = mScene->cellHorizontalPos( cell ) + 5;
-      int arrowHead = MonthCell::topMargin() / 2 - 3;
-      QPolygon upArrow( 3 );
-      upArrow.setPoint( 0, arrowCenter, mScene->cellVerticalPos( cell ) + arrowHead );
-      upArrow.setPoint( 1, arrowCenter + 2, mScene->cellVerticalPos( cell ) + arrowHead + 2 );
-      upArrow.setPoint( 2, arrowCenter - 2, mScene->cellVerticalPos( cell )+ arrowHead + 2 );
-      p->setBrush( Qt::black );
-      p->drawPolygon( upArrow );
+      cell->upArrow()->setPos( mScene->cellHorizontalPos( cell ) + columnWidth / 2,
+                               mScene->cellVerticalPos( cell ) + cell->upArrow()->boundingRect().height() / 2 + 2 );
+      cell->upArrow()->show();
+    } else {
+      cell->upArrow()->hide();
     }
 
+    // Down arrow if last item is below cell bottom
     if ( !mScene->lastItemFit( cell ) ) {
-      int arrowCenter = mScene->cellHorizontalPos( cell ) + 5;
-      int arrowHead = MonthCell::topMargin() / 2 + 3;
-      QPolygon downArrow( 3 );
-      downArrow.setPoint( 0, arrowCenter, mScene->cellVerticalPos( cell ) + arrowHead );
-      downArrow.setPoint( 1, arrowCenter + 2, mScene->cellVerticalPos( cell ) + arrowHead - 2 );
-      downArrow.setPoint( 2, arrowCenter - 2, mScene->cellVerticalPos( cell ) + arrowHead - 2 );
-      p->setBrush( Qt::black );
-      p->drawPolygon( downArrow );
+      cell->downArrow()->setPos( mScene->cellHorizontalPos( cell ) + columnWidth / 2,
+                                 mScene->cellVerticalPos( cell ) + rowHeight - cell->downArrow()->boundingRect().height() /2 - 2 );
+      cell->downArrow()->show();
+    } else {
+      cell->downArrow()->hide();
     }
 
     const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
@@ -359,7 +364,7 @@ int MonthScene::totalHeight()
 
 void MonthScene::wheelEvent( QGraphicsSceneWheelEvent *event )
 {
-  int numDegrees = -event->delta() / 8;
+/*  int numDegrees = -event->delta() / 8;
   int numSteps = numDegrees / 15;
 
   if ( startHeight() + numSteps < 0 ) {
@@ -398,6 +403,40 @@ void MonthScene::wheelEvent( QGraphicsSceneWheelEvent *event )
   invalidate( QRectF(), BackgroundLayer );
 
   event->accept();
+*/
+}
+
+void MonthScene::scrollCellsDown()
+{
+  int newHeight = startHeight() + 1;
+  setStartHeight( newHeight );
+
+  foreach ( MonthItem *manager, mManagerList ) {
+    manager->updateGeometry();
+  }
+
+  invalidate( QRectF(), BackgroundLayer );
+}
+
+void MonthScene::scrollCellsUp()
+{
+  int newHeight = startHeight() - 1;
+  setStartHeight( newHeight );
+
+  foreach ( MonthItem *manager, mManagerList ) {
+    manager->updateGeometry();
+  }
+
+  invalidate( QRectF(), BackgroundLayer );
+}
+
+void MonthScene::clickOnScrollIndicator( ScrollIndicator *scrollItem )
+{
+  if ( scrollItem->direction() == ScrollIndicator::UpArrow ) {
+    scrollCellsUp();
+  } else if ( scrollItem->direction() == ScrollIndicator::DownArrow ) {
+    scrollCellsDown();
+  }
 }
 
 void MonthScene::mouseDoubleClickEvent ( QGraphicsSceneMouseEvent * mouseEvent )
@@ -515,6 +554,8 @@ void MonthScene::mousePressEvent ( QGraphicsSceneMouseEvent * mouseEvent )
       }
     }
     mouseEvent->accept();
+  } else if ( ScrollIndicator *scrollItem = dynamic_cast<ScrollIndicator*>( itemAt( pos ) ) ) {
+    clickOnScrollIndicator( scrollItem );
   } else {
     MonthCell *cell = getCellFromPos( pos );
     if ( cell ) {

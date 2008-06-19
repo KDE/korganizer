@@ -39,7 +39,60 @@
 
 using namespace KOrg;
 
-static const int ft = 2; // frame thickness
+static const int ft = 1; // frame thickness
+
+//-------------------------------------------------------------
+ScrollIndicator::ScrollIndicator( ScrollIndicator::ArrowDirection dir )
+  : mDirection( dir )
+{
+  setZValue( 200 ); // on top of everything
+  hide();
+}
+
+QRectF ScrollIndicator::boundingRect() const
+{
+  return QRectF( - mWidth / 2, - mHeight / 2, mWidth, mHeight );
+}
+
+void ScrollIndicator::paint( QPainter *painter, const QStyleOptionGraphicsItem *option,
+                             QWidget *widget )
+{
+  painter->setRenderHint( QPainter::Antialiasing );
+
+  QPolygon arrow( 3 );
+  if ( mDirection == ScrollIndicator::UpArrow ) {
+    arrow.setPoint( 0, 0, - mHeight / 2 );
+    arrow.setPoint( 1, mWidth / 2, mHeight / 2 );
+    arrow.setPoint( 2, - mWidth / 2, mHeight / 2 );
+  } else if ( mDirection == ScrollIndicator::DownArrow ) { // down
+    arrow.setPoint( 1, mWidth / 2, - mHeight / 2 );
+    arrow.setPoint( 2, - mWidth / 2,  - mHeight / 2 );
+    arrow.setPoint( 0, 0, mHeight / 2 );
+  }
+  QColor color( Qt::black );
+  color.setAlpha( 155 );
+  painter->setBrush( color );
+  painter->setPen( color );
+  painter->drawPolygon( arrow );
+}
+
+//-------------------------------------------------------------
+MonthCell::MonthCell( int id, QDate date, QGraphicsScene *scene )
+  : mId( id ), mDate( date ), mScene( scene )
+{
+  mUpArrow = new ScrollIndicator( ScrollIndicator::UpArrow );
+  mDownArrow = new ScrollIndicator( ScrollIndicator::DownArrow );
+  mScene->addItem( mUpArrow );
+  mScene->addItem( mDownArrow );
+}
+
+MonthCell::~MonthCell()
+{
+  mScene->removeItem( mUpArrow );
+  mScene->removeItem( mDownArrow );
+  delete mUpArrow; // we've taken ownership, so this is safe
+  delete mDownArrow;
+}
 
 bool MonthCell::hasEventBelow( int height )
 {
@@ -90,6 +143,7 @@ MonthItem::MonthItem( MonthScene *monthScene, Incidence *incidence )
            this, SLOT(updateSelection(Incidence* )) );
 
   installEventFilter( monthScene );
+
 }
 
 QRectF MonthGraphicsItem::boundingRect() const
@@ -594,8 +648,8 @@ QPainterPath MonthGraphicsItem::widgetPath( bool mask ) const
   int m = mask ? 1 : 0;
   int x0 = ft / 2 - m;
   int y0 = ft / 2 - m;
-  int height = boundingRect().height() - ft + 2 * m;
-  int width = boundingRect().width() - 1 - ft + 2 * m;
+  int height = boundingRect().height() - ft / 2 + 2 * m;
+  int width = boundingRect().width() - 1 - ft / 2 + 2 * m;
   int x1 = boundingRect().width() - 1 - ft / 2 + m;
   int y1 = boundingRect().height() - ft / 2 + m;
   int beginRound = boundingRect().height() / 3 + m;
@@ -666,8 +720,8 @@ void MonthGraphicsItem::updateGeometry()
   int beginX = 1 + mMonthScene->cellHorizontalPos( cell );
   int beginY = 1 + cell->topMargin() + mMonthScene->cellVerticalPos( cell );
 
-  beginY += mMonthItem->height() * mMonthScene->itemHeight() -
-            mMonthScene->startHeight() * mMonthScene->itemHeight(); // scrolling
+  beginY += mMonthItem->height() * mMonthScene->itemHeightIncludingSpacing() -
+            mMonthScene->startHeight() * mMonthScene->itemHeightIncludingSpacing(); // scrolling
 
   setPos( beginX, beginY );
 
@@ -685,6 +739,9 @@ MonthGraphicsItem::MonthGraphicsItem( MonthScene *monthScene, MonthItem *manager
     mMonthItem( manager ),
     mMonthScene( monthScene )
 {
+  QTransform transform;
+  transform = transform.translate( 0.5, 0.5 );
+  setTransform( transform );
 }
 
 MonthGraphicsItem::~MonthGraphicsItem()

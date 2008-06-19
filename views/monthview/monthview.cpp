@@ -47,9 +47,9 @@ MonthView::MonthView( Calendar *calendar, QWidget *parent )
   QHBoxLayout *topLayout = new QHBoxLayout( this );
 
   mView = new MonthGraphicsView( this );
+
   mScene = new MonthScene( this, calendar );
   mView->setScene( mScene );
-
   topLayout->addWidget( mView );
 
   QVBoxLayout *rightLayout = new QVBoxLayout( );
@@ -259,7 +259,7 @@ void MonthView::reloadIncidences()
   // build monthcells hash
   int i = 0;
   for ( QDate d = mStartDate; d <= mEndDate; d = d.addDays( 1 ) ) {
-    mScene->mMonthCellMap[ d ] = new MonthCell( i, d );
+    mScene->mMonthCellMap[ d ] = new MonthCell( i, d, mScene );
     i ++;
   }
 
