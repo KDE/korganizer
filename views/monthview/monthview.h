@@ -29,6 +29,9 @@
 
 class KOEventPopupMenu;
 
+class QWheelEvent;
+class QKeyEvent;
+
 namespace KOrg {
 
 class MonthGraphicsView;
@@ -68,11 +71,22 @@ class MonthView : public KOEventView
 
     void changeIncidenceDisplay( Incidence *, int );
 
+  protected slots:
+    void moveBackMonth();
+    void moveBackWeek();
+    void moveFwdWeek();
+    void moveFwdMonth();
+
   protected:
     int maxDatesHint();
 
+    virtual void wheelEvent( QWheelEvent *event );
+    virtual void keyPressEvent( QKeyEvent *event );
+
   private:
     void addIncidence( Incidence *incidence );
+    void moveStartDate( int weeks, int months );
+    void setStartDate( const QDate &start );
     // Compute and update the whole view
     void reloadIncidences();
 

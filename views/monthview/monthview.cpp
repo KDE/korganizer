@@ -33,6 +33,10 @@
 #include <kcal/calendar.h>
 
 #include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QToolButton>
+#include <QWheelEvent>
+#include <QKeyEvent>
 #include <QDate>
 
 using namespace KOrg;
@@ -40,13 +44,55 @@ using namespace KOrg;
 MonthView::MonthView( Calendar *calendar, QWidget *parent )
   : KOEventView( calendar, parent )
 {
-  mView = new MonthGraphicsView( this, calendar );
+  QHBoxLayout *topLayout = new QHBoxLayout( this );
+
+  mView = new MonthGraphicsView( this );
   mScene = new MonthScene( this, calendar );
   mView->setScene( mScene );
-  mView->setHorizontalScrollBarPolicy( Qt::ScrollBarAlwaysOff );
-  mView->setVerticalScrollBarPolicy( Qt::ScrollBarAlwaysOff );
-  QBoxLayout *topLayout = new QVBoxLayout( this );
+
   topLayout->addWidget( mView );
+
+  QVBoxLayout *rightLayout = new QVBoxLayout( );
+  rightLayout->setSpacing( 0 );
+  rightLayout->setMargin( 0 );
+
+  // push buttons to the bottom
+  rightLayout->addStretch( 1 );
+
+  QToolButton *minusMonth = new QToolButton( this );
+  minusMonth->setIcon( KIcon( "arrow-up-double" ) );
+  minusMonth->setToolTip( i18n( "Go back one month" ) );
+  minusMonth->setAutoRaise( true );
+  connect( minusMonth, SIGNAL( clicked() ),
+           this, SLOT( moveBackMonth() ) );
+
+  QToolButton *minusWeek = new QToolButton( this );
+  minusWeek->setIcon( KIcon( "arrow-up" ) );
+  minusWeek->setToolTip( i18n( "Go back one week" ) );
+  minusWeek->setAutoRaise( true );
+  connect( minusWeek, SIGNAL( clicked() ),
+           this, SLOT( moveBackWeek() ) );
+
+  QToolButton *plusWeek = new QToolButton( this );
+  plusWeek->setIcon( KIcon( "arrow-down" ) );
+  plusWeek->setToolTip( i18n( "Go forward one week" ) );
+  plusWeek->setAutoRaise( true );
+  connect( plusWeek, SIGNAL( clicked() ),
+           this, SLOT( moveFwdWeek() ) );
+
+  QToolButton *plusMonth = new QToolButton( this );
+  plusMonth->setIcon( KIcon( "arrow-down-double" ) );
+  plusMonth->setToolTip( i18n( "Go forward one month" ) );
+  plusMonth->setAutoRaise( true );
+  connect( plusMonth, SIGNAL( clicked() ),
+           this, SLOT( moveFwdMonth() ) );
+
+  rightLayout->addWidget( minusMonth );
+  rightLayout->addWidget( minusWeek );
+  rightLayout->addWidget( plusWeek );
+  rightLayout->addWidget( plusMonth );
+
+  topLayout->addLayout( rightLayout );
 
   mViewPopup = eventPopup();
 
@@ -123,16 +169,79 @@ void MonthView::updateView()
   mView->update();
 }
 
+void MonthView::wheelEvent( QWheelEvent *event )
+{
+  // invert direction to get scroll-like behaviour
+  if ( event->delta() > 0 ) {
+    moveStartDate( -1, 0 );
+  } else if ( event->delta() < 0 ) {
+    moveStartDate( 1, 0 );
+  }
+
+  // call accept in every case, we do not want anybody else to react
+  event->accept();
+}
+
+void MonthView::keyPressEvent( QKeyEvent *event )
+{
+  if ( event->key() == Qt::Key_PageUp ) {
+    moveStartDate( 0, -1 );
+    event->accept();
+  } else if ( event->key() == Qt::Key_PageDown ) {
+    moveStartDate( 0, 1 );
+    event->accept();
+  } else {
+    event->ignore();
+  }
+}
+
+void MonthView::moveBackMonth()
+{
+  moveStartDate( 0, -1 );
+}
+
+void MonthView::moveBackWeek()
+{
+  moveStartDate( -1, 0 );
+}
+
+void MonthView::moveFwdWeek()
+{
+  moveStartDate( 1, 0 );
+}
+
+void MonthView::moveFwdMonth()
+{
+  moveStartDate( 0, 1 );
+}
+
+void MonthView::moveStartDate( int weeks, int months )
+{
+  QDate startDate;
+  if ( weeks != 0 ) {
+    startDate = mStartDate.addDays( weeks * 7 );
+  }
+  if ( months != 0 ) {
+    startDate = mStartDate.addMonths( months );
+  }
+
+  setStartDate( startDate );
+}
+
 void MonthView::showDates( const QDate &start, const QDate &end )
 {
-  mCurrentMonth = start.month();
+  Q_UNUSED( end );
 
-  QDate firstOfMonth = QDate( start.year(), start.month(), 1 );
+  setStartDate( start );
+}
 
-  mStartDate = firstOfMonth.addDays( - ( firstOfMonth.dayOfWeek() - 1 ) );
+void MonthView::setStartDate( const QDate &start )
+{
+  mStartDate = start.addDays( - ( start.dayOfWeek() - 1 ) );
   mEndDate = mStartDate.addDays( 6 * 7 - 1 );
 
-  // TODO check that dates different from old ones.
+  // take "middle" day's month as current month
+  mCurrentMonth = mStartDate.addDays( (6 * 7) / 2 ).month();
 
   reloadIncidences();
 }

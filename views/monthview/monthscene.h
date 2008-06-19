@@ -81,8 +81,6 @@ class MonthScene : public QGraphicsScene
     void resetAll();
     Calendar *calendar() { return mCalendar; }
 
-    virtual bool eventFilter ( QObject *, QEvent * );
-
     int totalHeight();
 
     /**
@@ -168,21 +166,11 @@ class MonthScene : public QGraphicsScene
     void showNewEventPopupSignal();
 
   protected:
-
-    /**
-      Handles mouse events. Called from eventFilter.
-    */
-    virtual bool eventFilterMouse ( QObject *, QGraphicsSceneMouseEvent * );
-
-    /**
-      Handles mousewheel events. Called from eventFilter.
-    */
-    virtual bool eventFilterWheel ( QObject *, QGraphicsSceneWheelEvent * );
-
-    /**
-      Handles drag and drop events. Called from eventFilter.
-    */
-//    virtual bool eventFilter_drag( QObject *, QDropEvent * );
+    virtual void mouseDoubleClickEvent( QGraphicsSceneMouseEvent *mouseEvent );
+    virtual void mouseMoveEvent( QGraphicsSceneMouseEvent *mouseEvent );
+    virtual void mousePressEvent( QGraphicsSceneMouseEvent *mouseEvent );
+    virtual void mouseReleaseEvent( QGraphicsSceneMouseEvent *mouseEvent );
+    virtual void wheelEvent( QGraphicsSceneWheelEvent *wheelEvent );
 
     /**
       Returns true if the last item is visible in the given @p cell.
@@ -259,7 +247,7 @@ class MonthScene : public QGraphicsScene
 class MonthGraphicsView : public QGraphicsView
 {
   public:
-    MonthGraphicsView( MonthView *parent, Calendar *calendar );
+    MonthGraphicsView( MonthView *parent );
 
     /**
       Draws the cells.
