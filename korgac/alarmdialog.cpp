@@ -124,11 +124,16 @@ AlarmDialog::AlarmDialog( QWidget *parent )
   mIncidenceTree->setAllColumnsShowFocus( true );
   mIncidenceTree->setSelectionMode( QAbstractItemView::ExtendedSelection );
   topLayout->addWidget( mIncidenceTree );
-  connect( mIncidenceTree, SIGNAL(currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)), SLOT(update()) );
-  connect( mIncidenceTree, SIGNAL(itemActivated(QTreeWidgetItem*,int)), SLOT(update()) );
-  connect( mIncidenceTree, SIGNAL(itemClicked(QTreeWidgetItem*,int)), SLOT(update()) );
-  connect( mIncidenceTree, SIGNAL(itemDoubleClicked(QTreeWidgetItem*,int)), SLOT(slotUser2()) );
-  connect( mIncidenceTree, SIGNAL(itemSelectionChanged()), SLOT(update()) );
+  connect( mIncidenceTree, SIGNAL(currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)),
+           SLOT(update()) );
+  connect( mIncidenceTree, SIGNAL(itemActivated(QTreeWidgetItem*,int)),
+           SLOT(update()) );
+  connect( mIncidenceTree, SIGNAL(itemClicked(QTreeWidgetItem*,int)),
+           SLOT(update()) );
+  connect( mIncidenceTree, SIGNAL(itemDoubleClicked(QTreeWidgetItem*,int)),
+           SLOT(slotUser2()) );
+  connect( mIncidenceTree, SIGNAL(itemSelectionChanged()),
+           SLOT(update()) );
 
   mDetailView = new KOEventViewer( topBox );
   QString s;
@@ -521,4 +526,9 @@ void AlarmDialog::update()
 {
   updateButtons();
   showDetails();
+}
+
+void AlarmDialog::accept()
+{
+  hide();
 }

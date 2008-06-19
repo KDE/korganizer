@@ -61,6 +61,8 @@ class AlarmDialog : public KDialog
     void suspend();
     void suspendAll();
     void dismissAll();
+    /*reimp*/
+    void accept();
 
   signals:
     void reminderCount( int count );
