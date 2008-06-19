@@ -488,8 +488,8 @@ void MonthScene::mouseMoveEvent ( QGraphicsSceneMouseEvent * mouseEvent )
 
     // Initiate action if not already done
     if ( !mActionInitiated && mActionType != None ) {
-      mMovingMonthGraphicsItem = mActionMonthGraphicsItem; // todo rename used by both actions
       if ( mActionType == Move ) {
+        mMovingMonthGraphicsItem = mActionMonthGraphicsItem; // todo rename used by both actions
         mActionItem->move( true );
       } else if ( mActionType == Resize ) {
         mActionItem->resize( true );
@@ -501,13 +501,16 @@ void MonthScene::mouseMoveEvent ( QGraphicsSceneMouseEvent * mouseEvent )
     // Move or resize action
     if ( currentCell && currentCell != mPreviousCell ) {
 
+      bool ok = true;
       if ( mActionType == Move ) {
         mActionItem->moving( mPreviousCell->date().daysTo( currentCell->date() ) );
       } else if ( mActionType == Resize ) {
-        mActionItem->resizing( mPreviousCell->date().daysTo( currentCell->date() ) );
+        ok = mActionItem->resizing( mPreviousCell->date().daysTo( currentCell->date() ) );
       }
 
-      mPreviousCell = currentCell;
+      if ( ok ) {
+        mPreviousCell = currentCell;
+      }
       mActionItem->updateGeometry();
       update();
     }
@@ -576,9 +579,10 @@ void MonthScene::mouseReleaseEvent ( QGraphicsSceneMouseEvent * mouseEvent )
   static_cast<MonthGraphicsView*>( views().first() )->setActionCursor( None );
 
   if ( mActionItem ) {
+    mMovingMonthGraphicsItem = 0;
+
     MonthCell *currentCell = getCellFromPos( pos );
     if ( currentCell && currentCell != mStartCell ) { // We want to act if a move really happened
-      mMovingMonthGraphicsItem = 0;
       if ( mActionType == Resize ) {
         mActionItem->resize( false );
       } else if ( mActionType == Move ) {

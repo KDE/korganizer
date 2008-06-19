@@ -231,7 +231,7 @@ class MonthItem : public QObject
     /**
       Called during resize to rezie the item a bit, relative to the previous resize step.
     */
-    void resizing( int offsetFromPreviousDate );
+    bool resizing( int offsetFromPreviousDate );
 
     /**
       Sets the value of all MonthGraphicsItem to @param z.

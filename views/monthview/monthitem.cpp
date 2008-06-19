@@ -33,9 +33,10 @@
 #include <kcal/event.h>
 #include <kcal/incidence.h>
 
+#include <KDebug>
+
 #include <QDate>
 #include <QObject>
-#include <QDebug>
 
 using namespace KOrg;
 
@@ -366,7 +367,7 @@ void MonthItem::updateMonthGraphicsItems()
   }
 
   if ( movingItem && !movingItemAdded ) {
-    qDebug() << "DELETING MOVING ITEM - SHOULD NOT HAPPEN";
+    kDebug() << "DELETING MOVING ITEM - SHOULD NOT HAPPEN";
     delete mMonthScene->movingMonthGraphicsItem();
   }
 }
@@ -447,22 +448,29 @@ void MonthItem::move( bool move )
 
 // If @p begin is true, the resizing is done at the beginning of the item, else
 // it is done at the other extremity.
-void MonthItem::resizing( int offsetToPreviousDate )
+bool MonthItem::resizing( int offsetToPreviousDate )
 {
-  // save dayspan
   int span = daySpan();
   QDate start = startDate();
 
-  movingOrResizing( offsetToPreviousDate );
-
+  bool ret = false;
   if ( mMonthScene->resizeType() == MonthScene::ResizeLeft ) {
-    mResizingStartDate = start.addDays( offsetToPreviousDate );
-    setResizingDaySpan( span - offsetToPreviousDate );
+    if ( span - offsetToPreviousDate >= 0 ) {
+      mResizingStartDate = start.addDays( offsetToPreviousDate );
+      setResizingDaySpan( span - offsetToPreviousDate );
+      ret = true;
+    }
   } else if ( mMonthScene->resizeType() == MonthScene::ResizeRight ) {
-    setResizingDaySpan( span + offsetToPreviousDate );
+    if ( span + offsetToPreviousDate >= 0 ) {
+      setResizingDaySpan( span + offsetToPreviousDate );
+      ret = true;
+    }
   }
 
-  updateMonthGraphicsItems();
+  if ( ret ) {
+    updateMonthGraphicsItems();
+  }
+  return ret;
 }
 
 void MonthItem::movingOrResizing( int offsetToPreviousDate )
