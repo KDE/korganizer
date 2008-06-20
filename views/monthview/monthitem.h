@@ -27,6 +27,7 @@
 
 #include <QObject>
 #include <QGraphicsItem>
+#include <QPixmap>
 #include <QHash>
 #include <QDate>
 
@@ -231,7 +232,7 @@ class MonthItem : public QObject
     /**
       Called during resize to rezie the item a bit, relative to the previous resize step.
     */
-    void resizing( int offsetFromPreviousDate );
+    bool resizing( int offsetFromPreviousDate );
 
     /**
       Sets the value of all MonthGraphicsItem to @param z.
@@ -303,13 +304,34 @@ class MonthItem : public QObject
 };
 
 /**
+ * Graphics items which indicates that the view can be scrolled to display more events
+ */
+class ScrollIndicator : public QGraphicsItem
+{
+public:
+  enum ArrowDirection { UpArrow, DownArrow };
+
+  ScrollIndicator( ArrowDirection direction );
+
+  QRectF boundingRect() const;
+  void paint( QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget );
+
+  ArrowDirection direction() { return mDirection; }
+private:
+  ArrowDirection mDirection;
+
+  static const int mWidth = 30;
+  static const int mHeight = 10;
+};
+
+/**
  * Keeps information about a month cell.
  */
 class MonthCell
 {
   public:
-    MonthCell( int id, QDate date ) : mId( id ), mDate( date ) {}
-
+  MonthCell( int id, QDate date, QGraphicsScene *scene );
+  ~MonthCell();
     /**
       This is used to get the height of the minimum height (vertical position)
       in the month cells.
@@ -336,9 +358,18 @@ class MonthCell
     // returns true if the cell contains events below the height @p height
     bool hasEventBelow( int height );
 
+    // TODO : move this to a new GUI class (monthcell could be GraphicsItems)
+    ScrollIndicator *upArrow() { return mUpArrow; }
+    ScrollIndicator *downArrow() { return mDownArrow; }
+
   private:
     int mId;
     QDate mDate;
+
+    QGraphicsScene *mScene;
+
+    ScrollIndicator *mUpArrow;
+    ScrollIndicator *mDownArrow;
 };
 
 }

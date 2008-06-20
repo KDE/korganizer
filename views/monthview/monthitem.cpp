@@ -27,19 +27,74 @@
 #include "monthview.h"
 #include "koprefs.h"
 #include "kohelper.h"
+#include "koglobals.h"
 
 #include <kcal/todo.h>
 #include <kcal/journal.h>
 #include <kcal/event.h>
 #include <kcal/incidence.h>
 
+#include <KDebug>
+
 #include <QDate>
 #include <QObject>
-#include <QDebug>
 
 using namespace KOrg;
 
-static const int ft = 2; // frame thickness
+static const int ft = 1; // frame thickness
+
+//-------------------------------------------------------------
+ScrollIndicator::ScrollIndicator( ScrollIndicator::ArrowDirection dir )
+  : mDirection( dir )
+{
+  setZValue( 200 ); // on top of everything
+  hide();
+}
+
+QRectF ScrollIndicator::boundingRect() const
+{
+  return QRectF( - mWidth / 2, - mHeight / 2, mWidth, mHeight );
+}
+
+void ScrollIndicator::paint( QPainter *painter, const QStyleOptionGraphicsItem *option,
+                             QWidget *widget )
+{
+  painter->setRenderHint( QPainter::Antialiasing );
+
+  QPolygon arrow( 3 );
+  if ( mDirection == ScrollIndicator::UpArrow ) {
+    arrow.setPoint( 0, 0, - mHeight / 2 );
+    arrow.setPoint( 1, mWidth / 2, mHeight / 2 );
+    arrow.setPoint( 2, - mWidth / 2, mHeight / 2 );
+  } else if ( mDirection == ScrollIndicator::DownArrow ) { // down
+    arrow.setPoint( 1, mWidth / 2, - mHeight / 2 );
+    arrow.setPoint( 2, - mWidth / 2,  - mHeight / 2 );
+    arrow.setPoint( 0, 0, mHeight / 2 );
+  }
+  QColor color( Qt::black );
+  color.setAlpha( 155 );
+  painter->setBrush( color );
+  painter->setPen( color );
+  painter->drawPolygon( arrow );
+}
+
+//-------------------------------------------------------------
+MonthCell::MonthCell( int id, QDate date, QGraphicsScene *scene )
+  : mId( id ), mDate( date ), mScene( scene )
+{
+  mUpArrow = new ScrollIndicator( ScrollIndicator::UpArrow );
+  mDownArrow = new ScrollIndicator( ScrollIndicator::DownArrow );
+  mScene->addItem( mUpArrow );
+  mScene->addItem( mDownArrow );
+}
+
+MonthCell::~MonthCell()
+{
+  mScene->removeItem( mUpArrow );
+  mScene->removeItem( mDownArrow );
+  delete mUpArrow; // we've taken ownership, so this is safe
+  delete mDownArrow;
+}
 
 bool MonthCell::hasEventBelow( int height )
 {
@@ -90,131 +145,6 @@ MonthItem::MonthItem( MonthScene *monthScene, Incidence *incidence )
            this, SLOT(updateSelection(Incidence* )) );
 
   installEventFilter( monthScene );
-}
-
-QRectF MonthGraphicsItem::boundingRect() const
-{
-  return QRectF( 0,  0, ( daySpan() + 1 ) * mMonthScene->columnWidth(),
-                 mMonthScene->itemHeight() );
-}
-
-void MonthGraphicsItem::paint( QPainter *p, const QStyleOptionGraphicsItem *, QWidget * )
-{
-  if ( !mMonthScene->initialized() ) {
-    return;
-  }
-
-  p->setRenderHint( QPainter::Antialiasing );
-
-  int textMargin = 10;
-
-  QColor bgColor = QColor();
-  if ( mMonthItem->incidence()->type() == "Todo" &&
-       !KOPrefs::instance()->todosUseCategoryColors() ) {
-    if ( static_cast<Todo*>( mMonthItem->incidence() )->isOverdue() ) {
-      bgColor = KOPrefs::instance()->agendaCalendarItemsToDosOverdueBackgroundColor();
-    } else if ( static_cast<Todo*>( mMonthItem->incidence() )->dtDue().date() ==
-                QDateTime::currentDateTime().date() ) {
-      bgColor = KOPrefs::instance()->agendaCalendarItemsToDosDueTodayBackgroundColor();
-    }
-  }
-
-  if ( !bgColor.isValid() ) {
-    QStringList categories = mMonthItem->incidence()->categories();
-    QString cat;
-    if ( !categories.isEmpty() ) {
-      cat = categories.first();
-    }
-    if ( cat.isEmpty() ) {
-      bgColor = KOPrefs::instance()->monthCalendarItemsEventsBackgroundColor();
-    } else {
-      bgColor = KOPrefs::instance()->categoryColor(cat);
-    }
-  }
-  QColor resourceColor = KOHelper::resourceColor( mMonthScene->calendar(),
-                                                  mMonthItem->incidence() );
-  QColor frameColor = Qt::black;
-  if (/* KOPrefs::instance()->agendaViewUsesResourceColor()
-         && */ resourceColor.isValid() ) {
-    frameColor = mMonthItem->selected() ? QColor( 85 + resourceColor.red() * 2 / 3,
-                                     85 + resourceColor.green() * 2 / 3,
-                                     85 + resourceColor.blue() * 2 / 3 )
-                 : resourceColor;
-  } else {
-    frameColor = mMonthItem->selected() ? QColor( 85 + bgColor.red() * 2 / 3,
-                                     85 + bgColor.green() * 2 / 3,
-                                     85 + bgColor.blue() * 2 / 3 )
-                 : bgColor.dark(115);
-  }
-  QColor textColor = getTextColor(bgColor);
-
-  QPen pen( frameColor );
-  pen.setWidth( ft );
-  p->setPen( pen );
-
-  // Add a gradient at extremities to show whether the item continues on a new line or not.
-  QColor gradientCenterColor = mMonthItem->selected() ? bgColor.lighter( 130 ) : bgColor;
-  QLinearGradient bgGradient( QPointF( 0, 0 ), QPointF( boundingRect().width(), 0 ) ) ;
-  if ( !isBeginItem() ) {
-    bgGradient.setColorAt( 0, frameColor );
-    bgGradient.setColorAt( 0.05, gradientCenterColor );
-  } else {
-    bgGradient.setColorAt( 0, gradientCenterColor );
-  }
-  if ( !isEndItem() ) {
-    bgGradient.setColorAt( 0.95, gradientCenterColor );
-    bgGradient.setColorAt( 1, frameColor );
-  } else {
-    bgGradient.setColorAt( 1, gradientCenterColor );
-  }
-  p->setBrush( bgGradient );
-
-  // Rounded rect
-  p->drawPath( widgetPath() );
-
-  p->setPen( textColor );
-//  p->drawText( textMargin, 10, mMonthItem->incidence()->summary() );
-
-  int alignFlag = Qt::AlignVCenter;
-  if ( isBeginItem() ) {
-    alignFlag |= Qt::AlignLeft;
-  } else if ( isEndItem() ) {
-    alignFlag |= Qt::AlignRight;
-  } else {
-    alignFlag |= Qt::AlignCenter;
-  }
-
-  QString textHour;
-  if ( !incidence()->allDay() ) { // Prepend the time str to the text
-    QTime time;
-    if ( mMonthItem->incidence()->type() == "Todo" ) {
-      Todo *todo = static_cast<Todo*>( mMonthItem->incidence() );
-      time = todo->dtDue().time();
-    } else {
-      if ( isBeginItem() ) {
-        time = mMonthItem->incidence()->dtStart().time();
-      } else {
-        time = mMonthItem->incidence()->dtEnd().time();
-      }
-    }
-    textHour = KGlobal::locale()->formatTime( time );
-  }
-  QString text;
-  if ( isBeginItem() ) {
-    text = textHour + ' ' + mMonthItem->incidence()->summary();
-  } else {
-    text = mMonthItem->incidence()->summary() + ' ' + textHour;
-  }
-
-  QFont font  = p->font();
-  font.setPixelSize( boundingRect().height() - 7 );
-  p->setFont( font );
-  QRect textRect = QRect( textMargin, 1,
-                          boundingRect().width() - 2 * textMargin, mMonthScene->itemHeight() - 2 );
-  text = p->fontMetrics().elidedText( text, Qt::ElideRight, textRect.width() );
-  // Uncomment to draw text bounding rect
-  //  p->drawRect( textRect );
-  p->drawText( textRect, alignFlag, text );
 
 }
 
@@ -312,7 +242,7 @@ void MonthItem::updateMonthGraphicsItems()
   }
 
   if ( movingItem && !movingItemAdded ) {
-    qDebug() << "DELETING MOVING ITEM - SHOULD NOT HAPPEN";
+    kDebug() << "DELETING MOVING ITEM - SHOULD NOT HAPPEN";
     delete mMonthScene->movingMonthGraphicsItem();
   }
 }
@@ -393,22 +323,29 @@ void MonthItem::move( bool move )
 
 // If @p begin is true, the resizing is done at the beginning of the item, else
 // it is done at the other extremity.
-void MonthItem::resizing( int offsetToPreviousDate )
+bool MonthItem::resizing( int offsetToPreviousDate )
 {
-  // save dayspan
   int span = daySpan();
   QDate start = startDate();
 
-  movingOrResizing( offsetToPreviousDate );
-
+  bool ret = false;
   if ( mMonthScene->resizeType() == MonthScene::ResizeLeft ) {
-    mResizingStartDate = start.addDays( offsetToPreviousDate );
-    setResizingDaySpan( span - offsetToPreviousDate );
+    if ( span - offsetToPreviousDate >= 0 ) {
+      mResizingStartDate = start.addDays( offsetToPreviousDate );
+      setResizingDaySpan( span - offsetToPreviousDate );
+      ret = true;
+    }
   } else if ( mMonthScene->resizeType() == MonthScene::ResizeRight ) {
-    setResizingDaySpan( span + offsetToPreviousDate );
+    if ( span + offsetToPreviousDate >= 0 ) {
+      setResizingDaySpan( span + offsetToPreviousDate );
+      ret = true;
+    }
   }
 
-  updateMonthGraphicsItems();
+  if ( ret ) {
+    updateMonthGraphicsItems();
+  }
+  return ret;
 }
 
 void MonthItem::movingOrResizing( int offsetToPreviousDate )
@@ -562,6 +499,24 @@ void MonthItem::updateHeight()
 
   mHeight = firstFreeSpace;
 }
+
+//-------------------------------------------------------------
+// MONTHGRAPHICSITEM
+MonthGraphicsItem::MonthGraphicsItem( MonthScene *monthScene, MonthItem *manager )
+  : QGraphicsItem( 0, monthScene ),
+                   mMonthItem( manager ),
+                   mMonthScene( monthScene )
+{
+  QTransform transform;
+  transform = transform.translate( 0.5, 0.5 );
+  setTransform( transform );
+}
+
+MonthGraphicsItem::~MonthGraphicsItem()
+{
+}
+
+
 bool MonthGraphicsItem::isMoving() const
 {
   return mMonthItem->isMoving();
@@ -594,8 +549,8 @@ QPainterPath MonthGraphicsItem::widgetPath( bool mask ) const
   int m = mask ? 1 : 0;
   int x0 = ft / 2 - m;
   int y0 = ft / 2 - m;
-  int height = boundingRect().height() - ft + 2 * m;
-  int width = boundingRect().width() - 1 - ft + 2 * m;
+  int height = boundingRect().height() - ft / 2 + 2 * m;
+  int width = boundingRect().width() - 1 - ft / 2 + 2 * m;
   int x1 = boundingRect().width() - 1 - ft / 2 + m;
   int y1 = boundingRect().height() - ft / 2 + m;
   int beginRound = boundingRect().height() / 3 + m;
@@ -621,6 +576,220 @@ QPainterPath MonthGraphicsItem::widgetPath( bool mask ) const
   path.closeSubpath();
 
   return path;
+}
+
+QRectF MonthGraphicsItem::boundingRect() const
+{
+  return QRectF( 0,  0, ( daySpan() + 1 ) * mMonthScene->columnWidth(),
+                 mMonthScene->itemHeight() );
+}
+
+void MonthGraphicsItem::paint( QPainter *p, const QStyleOptionGraphicsItem *, QWidget * )
+{
+  if ( !mMonthScene->initialized() ) {
+    return;
+  }
+
+  Incidence *inc = mMonthItem->incidence();
+
+  p->setRenderHint( QPainter::Antialiasing );
+
+  int textMargin = 10;
+
+  QColor bgColor = QColor();
+  if ( inc->type() == "Todo" &&
+       !KOPrefs::instance()->todosUseCategoryColors() ) {
+    if ( static_cast<Todo*>( inc )->isOverdue() ) {
+      bgColor = KOPrefs::instance()->agendaCalendarItemsToDosOverdueBackgroundColor();
+    } else if ( static_cast<Todo*>( inc )->dtDue().date() ==
+                QDateTime::currentDateTime().date() ) {
+      bgColor = KOPrefs::instance()->agendaCalendarItemsToDosDueTodayBackgroundColor();
+    }
+  }
+
+  if ( !bgColor.isValid() ) {
+    QStringList categories = inc->categories();
+    QString cat;
+    if ( !categories.isEmpty() ) {
+      cat = categories.first();
+    }
+    if ( cat.isEmpty() ) {
+      bgColor = KOPrefs::instance()->monthCalendarItemsEventsBackgroundColor();
+    } else {
+      bgColor = KOPrefs::instance()->categoryColor(cat);
+    }
+  }
+  QColor resourceColor = KOHelper::resourceColor( mMonthScene->calendar(),
+      mMonthItem->incidence() );
+  QColor frameColor = Qt::black;
+  if (/* KOPrefs::instance()->agendaViewUsesResourceColor()
+      && */ resourceColor.isValid() ) {
+    frameColor = mMonthItem->selected() ? QColor( 85 + resourceColor.red() * 2 / 3,
+                                          85 + resourceColor.green() * 2 / 3,
+                                          85 + resourceColor.blue() * 2 / 3 )
+          : resourceColor;
+  } else {
+    frameColor = mMonthItem->selected() ? QColor( 85 + bgColor.red() * 2 / 3,
+                                          85 + bgColor.green() * 2 / 3,
+                                          85 + bgColor.blue() * 2 / 3 )
+      : bgColor.dark(115);
+  }
+  QColor textColor = getTextColor(bgColor);
+
+  QPen pen( frameColor );
+  pen.setWidth( ft );
+  p->setPen( pen );
+
+  // Add a gradient at extremities to show whether the item continues on a new line or not.
+  QColor gradientCenterColor = mMonthItem->selected() ? bgColor.lighter( 130 ) : bgColor;
+  QLinearGradient bgGradient( QPointF( 0, 0 ), QPointF( boundingRect().width(), 0 ) ) ;
+  if ( !isBeginItem() ) {
+    bgGradient.setColorAt( 0, frameColor );
+    bgGradient.setColorAt( 0.05, gradientCenterColor );
+  } else {
+    bgGradient.setColorAt( 0, gradientCenterColor );
+  }
+  if ( !isEndItem() ) {
+    bgGradient.setColorAt( 0.95, gradientCenterColor );
+    bgGradient.setColorAt( 1, frameColor );
+  } else {
+    bgGradient.setColorAt( 1, gradientCenterColor );
+  }
+  p->setBrush( bgGradient );
+
+  // Rounded rect
+  p->drawPath( widgetPath() );
+
+  p->setPen( textColor );
+
+  int alignFlag = Qt::AlignVCenter;
+  if ( isBeginItem() ) {
+    alignFlag |= Qt::AlignLeft;
+  } else if ( isEndItem() ) {
+    alignFlag |= Qt::AlignRight;
+  } else {
+    alignFlag |= Qt::AlignHCenter;
+  }
+
+  QString text = inc->summary();
+  if ( !inc->allDay() ) { // Prepend the time str to the text
+    QTime time;
+    if ( inc->type() == "Todo" ) {
+      Todo *todo = static_cast<Todo*>( inc );
+      time = todo->dtDue().time();
+    } else {
+      if ( isBeginItem() ) {
+        time = inc->dtStart().time();
+      } else {
+        time = inc->dtEnd().time();
+      }
+    }
+    if ( isBeginItem() ) {
+      text = KGlobal::locale()->formatTime( time ) + ' ' + text;
+    } else if ( isEndItem() ) {
+      text = text + ' ' + KGlobal::locale()->formatTime( time );
+    }
+  }
+
+  QFont font  = p->font();
+  font.setPixelSize( boundingRect().height() - 7 );
+  p->setFont( font );
+  QRect textRect = QRect( textMargin, 1,
+                          boundingRect().width() - 2 * textMargin, mMonthScene->itemHeight() - 2 );
+
+  if ( KOPrefs::instance()->enableMonthItemIcons() ) {
+    int iconWidths = 0;
+    bool pEvent = false, pTodo = false, pTodoDone = false, pJournal = false,
+    pAlarm = false, pRecur = false, pReply = false, pHoliday = false;
+    if ( inc->type() == "Event" ) {
+      pEvent = true;
+      iconWidths += mMonthScene->mEventPixmap.width();
+    } else if ( inc->type() == "Todo" ) {
+      if ( static_cast< Todo* >( inc )->isCompleted() ) {
+        pTodoDone = true;
+        iconWidths += mMonthScene->mTodoDonePixmap.width();
+      } else {
+        pTodo = true;
+        iconWidths += mMonthScene->mTodoPixmap.width();
+      }
+    } else if ( inc->type() == "Journal" ) {
+      pJournal = true;
+      iconWidths += mMonthScene->mJournalPixmap.width();
+    }
+    if ( inc->isAlarmEnabled() ) {
+      pAlarm = true;
+      iconWidths += mMonthScene->mAlarmPixmap.width();
+    }
+    if ( inc->recurs() ) {
+      pRecur = true;
+      iconWidths += mMonthScene->mRecurPixmap.width();
+    }
+    //TODO: check what to do with Reply and Holiday
+
+    if ( iconWidths > 0 ) {
+      // add some margin between the icons and the text
+      iconWidths += textMargin / 2;
+    }
+
+    int textWidth = p->fontMetrics().size( 0, text ).width();
+    if ( textWidth + iconWidths > textRect.width() ) {
+      textWidth = textRect.width() - iconWidths;
+      text = p->fontMetrics().elidedText( text, Qt::ElideRight, textWidth );
+    }
+
+    int curXPos = textRect.left();
+    if ( alignFlag & Qt::AlignRight ) {
+        curXPos += textRect.width() - textWidth - iconWidths ;
+    } else if ( alignFlag & Qt::AlignHCenter ) {
+        curXPos += ( textRect.width() - textWidth - iconWidths ) / 2;
+    }
+    alignFlag &= ~( Qt::AlignRight | Qt::AlignCenter );
+    alignFlag |= Qt::AlignLeft;
+
+    // update the rect, where the text will be displayed
+    textRect.setLeft( curXPos + iconWidths );
+
+    // assume that all pixmaps have the same height
+    int pixYPos = ( textRect.height() - mMonthScene->mEventPixmap.height() ) / 2;
+
+    if ( pEvent ) {
+      p->drawPixmap( curXPos, pixYPos, mMonthScene->mEventPixmap );
+      curXPos += mMonthScene->mEventPixmap.width();
+    }
+    if ( pTodo ) {
+      p->drawPixmap( curXPos, pixYPos, mMonthScene->mTodoPixmap );
+      curXPos += mMonthScene->mTodoPixmap.width();
+    }
+    if ( pTodoDone ) {
+      p->drawPixmap( curXPos, pixYPos, mMonthScene->mTodoDonePixmap );
+      curXPos += mMonthScene->mTodoDonePixmap.width();
+    }
+    if ( pJournal ) {
+      p->drawPixmap( curXPos, pixYPos, mMonthScene->mJournalPixmap );
+      curXPos += mMonthScene->mJournalPixmap.width();
+    }
+    if ( pAlarm ) {
+      p->drawPixmap( curXPos, pixYPos, mMonthScene->mAlarmPixmap );
+      curXPos += mMonthScene->mAlarmPixmap.width();
+    }
+    if ( pRecur ) {
+      p->drawPixmap( curXPos, pixYPos, mMonthScene->mRecurPixmap );
+      curXPos += mMonthScene->mRecurPixmap.width();
+    }
+    if ( pReply ) {
+      p->drawPixmap( curXPos, pixYPos, mMonthScene->mReplyPixmap );
+      curXPos += mMonthScene->mRecurPixmap.width();
+    }
+    if ( pHoliday ) {
+      p->drawPixmap( curXPos, pixYPos, mMonthScene->mHolidayPixmap );
+      curXPos += mMonthScene->mHolidayPixmap.width();
+    }
+
+    p->drawText( textRect, alignFlag, text );
+  } else {
+    text = p->fontMetrics().elidedText( text, Qt::ElideRight, textRect.width() );
+    p->drawText( textRect, alignFlag, text );
+  }
 }
 
 void MonthGraphicsItem::setStartDate( const QDate &date )
@@ -666,8 +835,8 @@ void MonthGraphicsItem::updateGeometry()
   int beginX = 1 + mMonthScene->cellHorizontalPos( cell );
   int beginY = 1 + cell->topMargin() + mMonthScene->cellVerticalPos( cell );
 
-  beginY += mMonthItem->height() * mMonthScene->itemHeight() -
-            mMonthScene->startHeight() * mMonthScene->itemHeight(); // scrolling
+  beginY += mMonthItem->height() * mMonthScene->itemHeightIncludingSpacing() -
+            mMonthScene->startHeight() * mMonthScene->itemHeightIncludingSpacing(); // scrolling
 
   setPos( beginX, beginY );
 
@@ -678,15 +847,4 @@ void MonthGraphicsItem::updateGeometry()
     show();
     update();
   }
-}
-
-MonthGraphicsItem::MonthGraphicsItem( MonthScene *monthScene, MonthItem *manager )
-  : QGraphicsItem( 0, monthScene ),
-    mMonthItem( manager ),
-    mMonthScene( monthScene )
-{
-}
-
-MonthGraphicsItem::~MonthGraphicsItem()
-{
 }

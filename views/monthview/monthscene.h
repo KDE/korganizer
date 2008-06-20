@@ -29,6 +29,7 @@
 
 #include <QGraphicsScene>
 #include <QGraphicsView>
+#include <QPixmap>
 
 class QResizeEvent;
 class QGraphicsSceneMouseEvent;
@@ -71,6 +72,7 @@ class MonthScene : public QGraphicsScene
     MonthCell *firstCellForMonthItem( MonthItem *manager );
     int height( MonthItem *manager );
     int itemHeight();
+    int itemHeightIncludingSpacing();
     MonthItem::List mManagerList;
     MonthView *mMonthView;
 
@@ -80,8 +82,6 @@ class MonthScene : public QGraphicsScene
     void setInitialized( bool i ) { mInitialized = i; }
     void resetAll();
     Calendar *calendar() { return mCalendar; }
-
-    virtual bool eventFilter ( QObject *, QEvent * );
 
     int totalHeight();
 
@@ -168,16 +168,28 @@ class MonthScene : public QGraphicsScene
     void showNewEventPopupSignal();
 
   protected:
+    virtual void mouseDoubleClickEvent( QGraphicsSceneMouseEvent *mouseEvent );
+    virtual void mouseMoveEvent( QGraphicsSceneMouseEvent *mouseEvent );
+    virtual void mousePressEvent( QGraphicsSceneMouseEvent *mouseEvent );
+    virtual void mouseReleaseEvent( QGraphicsSceneMouseEvent *mouseEvent );
+    virtual void wheelEvent( QGraphicsSceneWheelEvent *wheelEvent );
 
     /**
-      Handles mouse events. Called from eventFilter.
-    */
-    virtual bool eventFilterMouse ( QObject *, QGraphicsSceneMouseEvent * );
+       Scrolls all incidences in cells up
+     */
+    virtual void scrollCellsUp();
 
     /**
-      Handles mousewheel events. Called from eventFilter.
-    */
-    virtual bool eventFilterWheel ( QObject *, QGraphicsSceneWheelEvent * );
+       Scrolls all incidences in cells down
+     */
+    virtual void scrollCellsDown();
+
+    /**
+       A click on a scroll indicator has occured
+       TODO : move this handler to the scrollindicator
+     */
+    virtual void clickOnScrollIndicator( ScrollIndicator *scrollItem );
+
 
     /**
       Handles drag and drop events. Called from eventFilter.
@@ -250,7 +262,18 @@ class MonthScene : public QGraphicsScene
     // the user scroll the view when there are too many items.
     int mStartHeight;
 
+    // icons to draw in front of the events
+    QPixmap mEventPixmap;
+    QPixmap mTodoPixmap;
+    QPixmap mTodoDonePixmap;
+    QPixmap mJournalPixmap;
+    QPixmap mAlarmPixmap;
+    QPixmap mRecurPixmap;
+    QPixmap mReplyPixmap;
+    QPixmap mHolidayPixmap;
+
     friend class MonthGraphicsView;
+    friend class MonthGraphicsItem;
 };
 
 /**
@@ -259,7 +282,7 @@ class MonthScene : public QGraphicsScene
 class MonthGraphicsView : public QGraphicsView
 {
   public:
-    MonthGraphicsView( MonthView *parent, Calendar *calendar );
+    MonthGraphicsView( MonthView *parent );
 
     /**
       Draws the cells.
