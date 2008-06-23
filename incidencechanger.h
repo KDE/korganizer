@@ -40,7 +40,7 @@ class KORGANIZERPRIVATE_EXPORT IncidenceChanger : public KOrg::IncidenceChangerB
     bool endChange( Incidence *incidence );
 
     bool addIncidence( Incidence *incidence, QWidget *parent = 0 );
-    bool changeIncidence( Incidence *oldinc, Incidence *newinc, int action = -1,
+    bool changeIncidence( Incidence *newinc, Incidence *oldinc, int action = -1,
                           bool counter = false );
     bool deleteIncidence( Incidence *incidence );
 
@@ -52,7 +52,7 @@ class KORGANIZERPRIVATE_EXPORT IncidenceChanger : public KOrg::IncidenceChangerB
     void cancelAttendees( Incidence *incidence );
 
   protected:
-    bool myAttendeeStatusChanged( Incidence *oldInc, Incidence *newInc );
+    bool myAttendeeStatusChanged( Incidence *newInc, Incidence *oldInc );
 
   private:
     class ComparisonVisitor;
