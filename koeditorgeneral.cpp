@@ -572,7 +572,7 @@ void KOEditorGeneral::setDescriptionRich( bool rich )
 void KOEditorGeneral::updateAttendeeSummary( int count )
 {
   if ( count <= 0 ) {
-    mAttendeeSummaryLabel->setText( "No attendees" );
+    mAttendeeSummaryLabel->setText( i18n( "No attendees") );
   } else {
     mAttendeeSummaryLabel->setText( i18np( "One attendee", "%1 attendees", count ) );
   }
