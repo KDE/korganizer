@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=KOrganizer Print Plugin Interface
 Name[ca]=Interfície de connector d'impressió del KOrganizer
+Name[da]=Grænseflade til KOrganizer print-plugin
 Name[de]=KOrganizer-Druckschnittstelle
 Name[el]=Διασύνδεση προσθέτου εκτύπωσης KOrganizer
 Name[et]=KOrganizeri trükkimisplugina liides
@@ -27,7 +28,6 @@ Comment[bg]=Модул KOrganizer
 Comment[br]=Perzh KOrganizer
 Comment[ca]=Part de KOrganizer
 Comment[cy]=KTrefnydd Part
-Comment[da]=KOrganizer-del
 Comment[de]=KOrganizer-Komponente
 Comment[eo]=Organizilo-parto
 Comment[es]=Parte de KOrganizer
