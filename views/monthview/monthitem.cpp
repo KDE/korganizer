@@ -276,7 +276,8 @@ void MonthItem::updatePosition()
 //-----------------------------------------------------------------
 // INCIDENCEMONTHITEM
 IncidenceMonthItem::IncidenceMonthItem( MonthScene *monthScene,
-                                        Incidence *incidence )
+                                        Incidence *incidence,
+                                        const QDate &recurStartDate )
   : MonthItem( monthScene), mIncidence( incidence )
 {
   mIsEvent = mIncidence->type() == "Event";
@@ -285,6 +286,12 @@ IncidenceMonthItem::IncidenceMonthItem( MonthScene *monthScene,
 
   connect( monthScene, SIGNAL(incidenceSelected(Incidence* )),
            this, SLOT(updateSelection(Incidence* )) );
+
+  // first set to 0, because it's used in startDate()
+  mRecurDayOffset = 0;
+  if ( recurStartDate.isValid() ) {
+    mRecurDayOffset = startDate().daysTo( recurStartDate );
+  }
 }
 
 IncidenceMonthItem::~IncidenceMonthItem()
@@ -318,11 +325,14 @@ QDate IncidenceMonthItem::realStartDate() const
     dt = static_cast< Todo* >( mIncidence )->dtDue();
   }
 
+  QDate start;
   if ( dt.isDateOnly() ) {
-    return dt.date();
+    start = dt.date();
   } else {
-    return dt.toTimeSpec( KOPrefs::instance()->timeSpec() ).date();
+    start = dt.toTimeSpec( KOPrefs::instance()->timeSpec() ).date();
   }
+
+  return start.addDays( mRecurDayOffset );
 }
 QDate IncidenceMonthItem::realEndDate() const
 {
@@ -333,11 +343,14 @@ QDate IncidenceMonthItem::realEndDate() const
     dt = static_cast< Todo* >( mIncidence )->dtDue();
   }
 
+  QDate end;
   if ( dt.isDateOnly() ) {
-    return dt.date();
+    end = dt.date();
   } else {
-    return dt.toTimeSpec( KOPrefs::instance()->timeSpec() ).date();
+    end = dt.toTimeSpec( KOPrefs::instance()->timeSpec() ).date();
   }
+
+  return end.addDays( mRecurDayOffset );
 }
 bool IncidenceMonthItem::allDay() const
 {
@@ -363,30 +376,23 @@ void IncidenceMonthItem::finalizeMove( const QDate &newStartDate )
     return;
   }
 
-  // we have to keep a copy of mIncidence locally, because this object
-  // will be destroyed before the end of this method :-(
-  // FIXME: find a better solution for this (in MonthView::changeIncidenceDisplay)
-  Incidence *inc = mIncidence;
-  Incidence *oldInc = inc->clone();
+  Incidence *oldInc = mIncidence->clone();
 
   int offset = startDate().daysTo( newStartDate );
 
   if ( mIsTodo ) {
-    Todo *todo = static_cast< Todo* >( inc );
+    Todo *todo = static_cast< Todo* >( mIncidence );
     todo->setDtDue( todo->dtDue().addDays( offset ) );
   } else {
-    inc->setDtStart( inc->dtStart().addDays( offset ) );
+    mIncidence->setDtStart( mIncidence->dtStart().addDays( offset ) );
     if ( mIsEvent ) {
-      Event *event = static_cast< Event* >( inc );
+      Event *event = static_cast< Event* >( mIncidence );
       event->setDtEnd( event->dtEnd().addDays( offset ) );
     }
   }
 
-  // Here, in changeIncidence, MonthView::changeIncidenceDisplay is called,
-  // which in turn deletes this object. So it's only safe to access local
-  // variables after this point.
-  changer->changeIncidence( inc, oldInc, KOGlobals::DATE_MODIFIED );
-  changer->endChange( inc );
+  changer->changeIncidence( mIncidence, oldInc, KOGlobals::DATE_MODIFIED );
+  changer->endChange( mIncidence );
 
   delete oldInc;
 }
@@ -401,26 +407,18 @@ void IncidenceMonthItem::finalizeResize( const QDate &newStartDate,
     return;
   }
 
-  // we have to keep a copy of mIncidence locally, because this object
-  // will be destroyed before the end of this method :-(
-  // FIXME: find a better solution for this (in MonthView::changeIncidenceDisplay)
-  Incidence *inc = mIncidence;
-  Incidence *oldInc = inc->clone();
+  Incidence *oldInc = mIncidence->clone();
 
-  Event *event = static_cast< Event* >( inc );
+  Event *event = static_cast< Event* >( mIncidence );
 
-  KDateTime tmp = event->dtStart();
-  tmp.setDate( newStartDate );
-  event->setDtStart( tmp );
-  tmp = event->dtEnd();
-  tmp.setDate( newEndDate );
-  event->setDtEnd( tmp );
+  int offset = startDate().daysTo( newStartDate );
+  event->setDtStart( event->dtStart().addDays( offset ) );
 
-  // Here, in changeIncidence, MonthView::changeIncidenceDisplay is called,
-  // which in turn deletes this object. So it's only safe to access local
-  // variables after this point.
-  changer->changeIncidence( inc, oldInc, KOGlobals::DATE_MODIFIED );
-  changer->endChange( inc );
+  offset = endDate().daysTo( newEndDate );
+  event->setDtEnd( event->dtEnd().addDays( offset ) );
+
+  changer->changeIncidence( mIncidence, oldInc, KOGlobals::DATE_MODIFIED );
+  changer->endChange( mIncidence );
 
   delete oldInc;
 }

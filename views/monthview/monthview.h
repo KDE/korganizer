@@ -83,12 +83,14 @@ class MonthView : public KOEventView
     virtual void wheelEvent( QWheelEvent *event );
     virtual void keyPressEvent( QKeyEvent *event );
 
+  private slots:
+    // Compute and update the whole view
+    void reloadIncidences();
+
   private:
     void addIncidence( Incidence *incidence );
     void moveStartDate( int weeks, int months );
     void setStartDate( const QDate &start );
-    // Compute and update the whole view
-    void reloadIncidences();
 
     MonthGraphicsView *mView;
     MonthScene *mScene;
