@@ -350,7 +350,7 @@ bool IncidenceMonthItem::isMoveable() const
 }
 bool IncidenceMonthItem::isResizable() const
 {
-  return !mIncidence->isReadOnly();
+  return mIsEvent && !mIncidence->isReadOnly();
 }
 
 void IncidenceMonthItem::finalizeMove( const QDate &newStartDate )
