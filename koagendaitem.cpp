@@ -766,7 +766,7 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
     bgColor = categoryColor;
 
   if ( mSelected )
-    bgColor = bgColor.light(110);
+    bgColor = bgColor.light(110); // keep this in sync with month view
 
   QColor textColor = getTextColor(bgColor);
   p.setPen( textColor );

@@ -26,12 +26,13 @@
 #define MONTHITEM_H
 
 #include <QObject>
-#include <QGraphicsItem>
-#include <QPixmap>
+#include <QList>
 #include <QHash>
 #include <QDate>
 
-class QPaintEvent;
+class QPixmap;
+class QColor;
+class QString;
 
 namespace KCal {
   class Incidence;
@@ -41,106 +42,8 @@ using namespace KCal;
 
 namespace KOrg {
 
-class MonthScene;
 class MonthGraphicsItem;
-class MonthItem;
-
-/**
- * A MonthGraphicsItem representing a part of an event. There should be one part
- * per row = week
- */
-class MonthGraphicsItem : public QObject, public QGraphicsItem
-{
-  Q_OBJECT
-
-  public:
-    typedef QList<MonthGraphicsItem *> List;
-
-    MonthGraphicsItem( MonthScene *monthWidget, MonthItem *manager );
-    ~MonthGraphicsItem();
-
-    /**
-      Change QGraphicsItem pos and boundingRect in the scene
-      according to the incidence start and end date.
-    */
-    void updateGeometry();
-
-    /**
-      Returns the associated MonthItem.
-    */
-    MonthItem *monthItem() const { return mMonthItem; }
-
-    /**
-      Shortcut for monthItem()->incidence().
-    */
-    Incidence *incidence() const;
-
-    /**
-      Returns the starting date of this item.
-    */
-    QDate startDate() const;
-
-    /**
-      Returns the number of day this item spans on minus one
-      to be compatible with QDate::addDays().
-    */
-    int daySpan() const;
-
-    /**
-      Computed from startDate() and daySpan().
-    */
-    QDate endDate() const;
-
-    void setStartDate( const QDate &d );
-    void setDaySpan( int span );
-
-    /**
-      Returns true if this item is currently being moved (ie. the
-      associated MonthItem is being moved).
-    */
-    bool isMoving() const;
-
-    /**
-      Returns true if this item is currently being resized (ie. the
-      associated MonthItem is being moved).
-    */
-    bool isResizing() const;
-
-    /**
-      Returns true if this MonthGraphicsItem is the first one of the
-      MonthItem ones.
-    */
-    bool isBeginItem() const;
-
-    /**
-      Returns true if this MonthGraphicsItem is the last one of the
-      MonthItem ones.
-    */
-    bool isEndItem() const;
-
-    /**
-      Reimplemented from QGraphicsItem
-    */
-    virtual QRectF boundingRect() const;
-    virtual void paint( QPainter *, const QStyleOptionGraphicsItem *, QWidget * );
-    virtual QPainterPath shape() const;
-
-  private:
-    // Shape of the item, see shape()
-    QPainterPath widgetPath( bool mask = false ) const;
-
-    // MonthScene this item is being drawn on
-    MonthScene *mMonthScene;
-
-    // See startDate()
-    QDate mStartDate;
-
-    // See daySpan()
-    int mDaySpan;
-
-    // The current item is part of a MonthItem
-    MonthItem *mMonthItem;
-};
+class MonthScene;
 
 /**
  * A month item manages different MonthGraphicsItems.
@@ -150,10 +53,8 @@ class MonthItem : public QObject
   Q_OBJECT
 
   public:
-    typedef QList<MonthItem*> List;
-
-    MonthItem( MonthScene *monthWidget, Incidence *e );
-    ~MonthItem();
+    MonthItem( MonthScene *monthWidget );
+    virtual ~MonthItem();
 
     /**
       Compares two events
@@ -168,22 +69,38 @@ class MonthItem : public QObject
     static bool greaterThan( const MonthItem *e1, const MonthItem *e2 );
 
     /**
-      The start date of the incidence, generally the event->dtStart(). But it
-      reflect changes, even during move. Generally, you want to use this one.
+      Compare this event with a second one, if the former function is not
+      able to sort them.
+    */
+    virtual bool greaterThanFallback( const MonthItem *other ) const;
+
+    /**
+      The start date of the incidence, generally realStartDate. But it
+      reflect changes, even during move.
     */
     QDate startDate() const;
-
     /**
-      This is the real start date, the incidence start date.
-    */
-    QDate realStartDate() const;
-
-    /**
-      The end date from the event : start date + day span.
+      The end date of the incidence, generally realEndDate. But it
+      reflect changes, even during move.
      */
     QDate endDate() const;
-
+    /**
+      The number of days this item spans.
+    */
     int daySpan() const;
+
+    /**
+      This is the real start date, usually the start date of the incidence.
+    */
+    virtual QDate realStartDate() const = 0;
+    /**
+      This is the real end date, usually the end date of the incidence.
+    */
+    virtual QDate realEndDate() const = 0;
+    /**
+      True if this item last all the day.
+    */
+    virtual bool allDay() const = 0;
 
     /**
       Updates geometry of all MonthGraphicsItems.
@@ -191,53 +108,55 @@ class MonthItem : public QObject
     void updateGeometry();
 
     /**
-      Find the lower possible height for this event.
+      Find the lowest possible position for this item.
 
-      Height of an event in a cell : its vertical position. This is used
-      to avoid overlapping of items. An item keeps the same height in every
-      it crosses. Height is from top to bottom.
+      The position of an item in a cell is it's vertical position. This is used
+      to avoid overlapping of items. An item keeps the same position in every
+      cell it crosses. The position is measured from top to bottom.
     */
-    void updateHeight();
-
-    /**
-      Returns the incidence associated with this item.
-    */
-    Incidence *incidence() const { return mIncidence; }
+    void updatePosition();
 
     /**
       Returns true if this item is selected.
     */
-    bool selected() { return mSelected; }
+    bool selected() const { return mSelected; }
 
     /**
-      Returns the height of the item ( > 0 ).
+      Returns the position of the item ( > 0 ).
     */
-    int height() const;
+    int position() const { return mPosition; }
 
     /**
-      If @p move is true, begin the move, else end the move.
+      Returns the associated month scene to this item.
     */
-    void move( bool move );
+    MonthScene *monthScene() const { return mMonthScene; }
 
     /**
-      If @p resize is true, begin the resize, else end the resize.
+      Begin a move.
     */
-    void resize( bool resize );
+    void beginMove();
+    /**
+      End a move.
+    */
+    void endMove();
+
+    /**
+      Begin a resize.
+    */
+    void beginResize();
+    /**
+      End a resize.
+    */
+    void endResize();
 
     /**
       Called during move to move the item a bit, relative to the previous move step.
     */
-    void moving( int offsetFromPreviousDate );
-
+    void moveBy( int offsetFromPreviousDate );
     /**
       Called during resize to rezie the item a bit, relative to the previous resize step.
     */
-    bool resizing( int offsetFromPreviousDate );
-
-    /**
-      Sets the value of all MonthGraphicsItem to @param z.
-    */
-    void setZValue( qreal z );
+    bool resizeBy( int offsetFromPreviousDate );
 
     /**
       Returns true if the item is being moved.
@@ -250,10 +169,13 @@ class MonthItem : public QObject
     bool isResizing() const { return mResizing; }
 
     /**
-      Returns true if the item can be resized. Typically, events can
-      be resized but to-dos and journals can't.
-     */
-    bool isResizable() const;
+      Returns true if the item can be moved.
+    */
+    virtual bool isMoveable() const = 0;
+    /**
+      Returns true if the item can be resized.
+    */
+    virtual bool isResizable() const = 0;
 
     /**
       Deletes all MonthGraphicsItem this item handles. Clear the list.
@@ -264,112 +186,146 @@ class MonthItem : public QObject
       Update the monthgraphicsitems
 
       This basically deletes and rebuild all the MonthGraphicsItems but tries
-      to do it wisely:
+        to do it wisely:
       - If there is a moving item, it won't be deleted because then the new item
-      won't receive anymore the MouseMove events.
+        won't receive anymore the MouseMove events.
       - If there is an item on a line where the new state needs an item,
-      it is used and not deleted. This will avoid flickers.
+        it is used and not deleted. This will avoid flickers.
     */
     void updateMonthGraphicsItems();
 
-  protected slots:
     /**
-      Update the selected state of this item.
-      If will be selected if incidence is the incidence managed by this item.
-      Else it will be deselected.
+      Sets the selection state of this item.
     */
-    void updateSelection( Incidence *incidence );
+    void setSelected( bool selected ) { mSelected = selected; }
+
+
+    // METHODS NEEDED TO PAINT ITEMS
+    /**
+      Returns the text to draw in an item.
+
+     @param end True if the text at the end of an item should be returned.
+    */
+    virtual QString text( bool end ) const = 0;
+
+    /**
+      Returns the background color of the item.
+    */
+    virtual QColor bgColor() const = 0;
+    /**
+      Returns the frame color of the item.
+    */
+    virtual QColor frameColor( const QColor &bgColor ) const = 0;
+
+    /**
+      Returns a list of pixmaps to draw next to the items.
+    */
+    virtual QList< QPixmap* > icons() const = 0;
+
+  protected:
+    /**
+      Called after a move operation.
+    */
+    virtual void finalizeMove( const QDate &newStartDate ) = 0;
+    /**
+      Called after a resize operation.
+    */
+    virtual void finalizeResize( const QDate &newStartDate,
+                                 const QDate &newEndDate ) = 0;
 
   private:
-    // Factorized function shared by moving() and resizing()
-    void movingOrResizing( int offsetFromPreviousDate );
+    /**
+    Sets the value of all MonthGraphicsItem to @param z.
+     */
+    void setZValue( qreal z );
 
-    // Sets the resizing dayspan.
-    void setResizingDaySpan( int daySpan ) { mResizingDaySpan = daySpan; }
-
-    MonthGraphicsItem::List mMonthGraphicsItemList;
+    QList< MonthGraphicsItem* > mMonthGraphicsItemList;
 
     MonthScene *mMonthScene;
-    Incidence *mIncidence;
 
     bool mSelected;
     bool mMoving; // during move
-    QDate mMovingStartDate;
-
     bool mResizing; // during resize
-    QDate mResizingStartDate;
-    int mResizingDaySpan;
+    QDate mOverrideStartDate;
+    int mOverrideDaySpan;
 
-    int mHeight;
+    int mPosition;
 };
 
-/**
- * Graphics items which indicates that the view can be scrolled to display more events
- */
-class ScrollIndicator : public QGraphicsItem
+class IncidenceMonthItem : public MonthItem
 {
-public:
-  enum ArrowDirection { UpArrow, DownArrow };
+  Q_OBJECT
 
-  ScrollIndicator( ArrowDirection direction );
-
-  QRectF boundingRect() const;
-  void paint( QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget );
-
-  ArrowDirection direction() { return mDirection; }
-private:
-  ArrowDirection mDirection;
-
-  static const int mWidth = 30;
-  static const int mHeight = 10;
-};
-
-/**
- * Keeps information about a month cell.
- */
-class MonthCell
-{
   public:
-  MonthCell( int id, QDate date, QGraphicsScene *scene );
-  ~MonthCell();
+    IncidenceMonthItem( MonthScene *monthScene, Incidence *incidence );
+    virtual ~IncidenceMonthItem();
+
+    Incidence *incidence() const { return mIncidence; }
+
+    virtual bool greaterThanFallback( const MonthItem *other ) const;
+
+    virtual QDate realStartDate() const;
+    virtual QDate realEndDate() const;
+    virtual bool allDay() const;
+
+    virtual bool isMoveable() const;
+    virtual bool isResizable() const;
+
+    QString text( bool end ) const;
+
+    QColor bgColor() const;
+    QColor frameColor( const QColor &bgColor ) const;
+
+    QList< QPixmap* > icons() const;
+  protected:
+    virtual void finalizeMove( const QDate &newStartDate );
+    virtual void finalizeResize( const QDate &newStartDate,
+                                 const QDate &newEndDate );
+
+  protected slots:
     /**
-      This is used to get the height of the minimum height (vertical position)
-      in the month cells.
-    */
-    MonthItem::List mMonthItemList;
-
-    QHash<int, MonthItem*> mHeightHash;
-
-    int firstFreeSpace();
-    void addMonthItem( MonthItem *manager, int height );
-
-    int id() const { return mId; }
-    QDate date() const { return mDate; }
-
-    int x() const {
-      return mId % 7;
-    }
-
-    int y() const {
-      return mId / 7;
-    }
-
-    static int topMargin();
-    // returns true if the cell contains events below the height @p height
-    bool hasEventBelow( int height );
-
-    // TODO : move this to a new GUI class (monthcell could be GraphicsItems)
-    ScrollIndicator *upArrow() { return mUpArrow; }
-    ScrollIndicator *downArrow() { return mDownArrow; }
+    Update the selected state of this item.
+    If will be selected if incidence is the incidence managed by this item.
+    Else it will be deselected.
+     */
+    void updateSelection( Incidence *incidence );
 
   private:
-    int mId;
+    Incidence *mIncidence;
+    bool mIsEvent, mIsTodo, mIsJournal;
+};
+
+class HolidayMonthItem : public MonthItem
+{
+  Q_OBJECT
+
+  public:
+    HolidayMonthItem( MonthScene *monthScene, const QDate &date, const QString &name );
+    virtual ~HolidayMonthItem();
+
+    virtual bool greaterThanFallback( const MonthItem *other ) const;
+
+    virtual QDate realStartDate() const { return mDate; }
+    virtual QDate realEndDate() const { return mDate; }
+    virtual bool allDay() const { return true; }
+
+    virtual bool isMoveable() const { return false; }
+    virtual bool isResizable() const { return false; }
+
+    QString text( bool end ) const { return mName; }
+
+    QColor bgColor() const;
+    QColor frameColor( const QColor &bgColor ) const;
+
+    QList< QPixmap* > icons() const;
+  protected:
+    virtual void finalizeMove( const QDate &newStartDate );
+    virtual void finalizeResize( const QDate &newStartDate,
+                                 const QDate &newEndDate );
+
+  private:
     QDate mDate;
-
-    QGraphicsScene *mScene;
-
-    ScrollIndicator *mUpArrow;
-    ScrollIndicator *mDownArrow;
+    QString mName;
 };
 
 }
