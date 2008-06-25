@@ -53,6 +53,7 @@ AlarmDockWindow::AlarmDockWindow()
 {
   // Read the autostart status from the config file
   KConfigGroup config( KGlobal::config(), "General" );
+  bool autostartSet = config.hasKey( "Autostart" );
   bool autostart = config.readEntry( "Autostart", true );
   bool alarmsEnabled = config.readEntry( "Enabled", true );
 
@@ -101,8 +102,8 @@ AlarmDockWindow::AlarmDockWindow()
   mAlarmsEnabled->setChecked( alarmsEnabled );
   mAutostart->setChecked( autostart );
 
-  // Disable standard quit behaviour. We have to intercept the quit even, if the
-  // main window is hidden.
+  // Disable standard quit behaviour. We have to intercept the quit even,
+  // if the main window is hidden.
   KActionCollection *ac = actionCollection();
   const char *quitName = KStandardAction::name( KStandardAction::Quit );
   QAction *quit = ac->action( quitName );
@@ -117,6 +118,7 @@ AlarmDockWindow::AlarmDockWindow()
            SLOT(slotActivated( QSystemTrayIcon::ActivationReason )) );
 
   setToolTip( mName );
+  mAutostartSet = autostartSet;
 }
 
 AlarmDockWindow::~AlarmDockWindow()
@@ -150,6 +152,7 @@ void AlarmDockWindow::toggleAlarmsEnabled( bool checked )
 void AlarmDockWindow::toggleAutostart( bool checked )
 {
   kDebug();
+  mAutostartSet = true;
   enableAutostart( checked );
 }
 
@@ -179,24 +182,36 @@ void AlarmDockWindow::slotActivated( QSystemTrayIcon::ActivationReason reason )
 
 void AlarmDockWindow::slotQuit()
 {
-  int result = KMessageBox::questionYesNoCancel(
-    parentWidget(),
-    i18nc( "@info", "Do you want to start the KOrganizer reminder daemon at login "
-          "(note that you will not get reminders whilst the daemon is not running)?" ),
-    i18nc( "@title:window", "Close KOrganizer Reminder Daemon" ),
-    KGuiItem( i18nc( "@action:button start the reminder daemon", "Start" ) ),
-    KGuiItem( i18nc( "@action:button do not start the reminder daemon", "Do Not Start" ) ),
-    KStandardGuiItem::cancel(),
-    QString::fromLatin1( "AskForStartAtLogin" ) );
+  if ( mAutostartSet == true ) {
+    int result = KMessageBox::questionYesNo(
+      parentWidget(),
+      i18nc( "@info", "Do you want to quit the KOrganizer reminder daemon "
+             "(note that you will not get reminders whilst the daemon is not running)?" ),
+      i18nc( "@title:window", "Close KOrganizer Reminder Daemon" ) );
 
-  bool autostart = true;
-  if ( result == KMessageBox::No ) {
-    autostart = false;
-  }
-  enableAutostart( autostart );
+    if ( result == KMessageBox::Yes ) {
+      emit quitSignal();
+    }
+  } else {
+    int result = KMessageBox::questionYesNoCancel(
+      parentWidget(),
+      i18nc( "@info", "Do you want to start the KOrganizer reminder daemon at login "
+             "(note that you will not get reminders whilst the daemon is not running)?" ),
+      i18nc( "@title:window", "Close KOrganizer Reminder Daemon" ),
+      KGuiItem( i18nc( "@action:button start the reminder daemon", "Start" ) ),
+      KGuiItem( i18nc( "@action:button do not start the reminder daemon", "Do Not Start" ) ),
+      KStandardGuiItem::cancel(),
+      QString::fromLatin1( "AskForStartAtLogin" ) );
 
-  if ( result != KMessageBox::Cancel ) {
-    emit quitSignal();
+    bool autostart = true;
+    if ( result == KMessageBox::No ) {
+      autostart = false;
+    }
+    enableAutostart( autostart );
+
+    if ( result != KMessageBox::Cancel ) {
+      emit quitSignal();
+    }
   }
 }
 
