@@ -35,7 +35,11 @@
 class ReminderDaemonApp : public KUniqueApplication
 {
   public:
-    ReminderDaemonApp() : mClient( 0 ) {}
+    ReminderDaemonApp() : mClient( 0 )
+    {
+      setQuitOnLastWindowClosed( false );
+    }
+
     int newInstance()
     {
       // Check if we already have a running alarm daemon widget
