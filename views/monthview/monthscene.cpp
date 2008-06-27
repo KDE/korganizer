@@ -248,7 +248,7 @@ void MonthGraphicsView::drawBackground( QPainter *p, const QRectF & rect )
 
     p->setPen( Qt::NoPen );
     p->drawRect( QRect( cellHeaderX, cellHeaderY,
-                       cellHeaderWidth, cellHeaderHeight ) );
+                        cellHeaderWidth, cellHeaderHeight ) );
   }
 
   font = KOPrefs::instance()->mMonthViewFont;
@@ -282,8 +282,9 @@ void MonthGraphicsView::drawBackground( QPainter *p, const QRectF & rect )
 
     // Up arrow if first item is above cell top
     if ( mScene->startHeight() != 0 && cell->hasEventBelow( mScene->startHeight() ) ) {
-      cell->upArrow()->setPos( mScene->cellHorizontalPos( cell ) + columnWidth / 2,
-                               mScene->cellVerticalPos( cell ) + cell->upArrow()->boundingRect().height() / 2 + 2 );
+      cell->upArrow()->setPos(
+        mScene->cellHorizontalPos( cell ) + columnWidth / 2,
+        mScene->cellVerticalPos( cell ) + cell->upArrow()->boundingRect().height() / 2 + 2 );
       cell->upArrow()->show();
     } else {
       cell->upArrow()->hide();
@@ -291,8 +292,10 @@ void MonthGraphicsView::drawBackground( QPainter *p, const QRectF & rect )
 
     // Down arrow if last item is below cell bottom
     if ( !mScene->lastItemFit( cell ) ) {
-      cell->downArrow()->setPos( mScene->cellHorizontalPos( cell ) + columnWidth / 2,
-                                 mScene->cellVerticalPos( cell ) + rowHeight - cell->downArrow()->boundingRect().height() /2 - 2 );
+      cell->downArrow()->setPos(
+        mScene->cellHorizontalPos( cell ) + columnWidth / 2,
+        mScene->cellVerticalPos( cell ) + rowHeight -
+        cell->downArrow()->boundingRect().height() / 2 - 2 );
       cell->downArrow()->show();
     } else {
       cell->downArrow()->hide();
@@ -369,6 +372,8 @@ int MonthScene::totalHeight()
 
 void MonthScene::wheelEvent( QGraphicsSceneWheelEvent *event )
 {
+  Q_UNUSED( event ); // until we figure out what to do in here
+
 /*  int numDegrees = -event->delta() / 8;
   int numSteps = numDegrees / 15;
 
@@ -444,14 +449,14 @@ void MonthScene::clickOnScrollIndicator( ScrollIndicator *scrollItem )
   }
 }
 
-void MonthScene::mouseDoubleClickEvent ( QGraphicsSceneMouseEvent * mouseEvent )
+void MonthScene::mouseDoubleClickEvent ( QGraphicsSceneMouseEvent *mouseEvent )
 {
   QPointF pos = mouseEvent->scenePos();
 
   MonthGraphicsItem *iItem;
   if ( ( iItem = dynamic_cast<MonthGraphicsItem*>( itemAt( pos ) ) ) ) {
     if ( iItem->monthItem() ) {
-      IncidenceMonthItem *tmp = dynamic_cast< IncidenceMonthItem* >( iItem->monthItem() );
+      IncidenceMonthItem *tmp = dynamic_cast<IncidenceMonthItem *>( iItem->monthItem() );
       if ( tmp ) {
         selectItem( iItem->monthItem() );
         mMonthView->defaultAction( tmp->incidence() );
@@ -462,7 +467,7 @@ void MonthScene::mouseDoubleClickEvent ( QGraphicsSceneMouseEvent * mouseEvent )
   }
 }
 
-void MonthScene::mouseMoveEvent ( QGraphicsSceneMouseEvent * mouseEvent )
+void MonthScene::mouseMoveEvent ( QGraphicsSceneMouseEvent *mouseEvent )
 {
   QPointF pos = mouseEvent->scenePos();
 
@@ -525,7 +530,7 @@ void MonthScene::mouseMoveEvent ( QGraphicsSceneMouseEvent * mouseEvent )
   }
 }
 
-void MonthScene::mousePressEvent ( QGraphicsSceneMouseEvent * mouseEvent )
+void MonthScene::mousePressEvent ( QGraphicsSceneMouseEvent *mouseEvent )
 {
   QPointF pos = mouseEvent->scenePos();
 
@@ -537,7 +542,7 @@ void MonthScene::mousePressEvent ( QGraphicsSceneMouseEvent * mouseEvent )
 
     selectItem( mClickedItem );
     if ( mouseEvent->button() == Qt::RightButton ) {
-      IncidenceMonthItem *tmp = dynamic_cast< IncidenceMonthItem* >( mClickedItem );
+      IncidenceMonthItem *tmp = dynamic_cast<IncidenceMonthItem *>( mClickedItem );
       if ( tmp ) {
         emit showIncidencePopupSignal( tmp->incidence(),
                                        mClickedItem->startDate() ); // FIXME ?
@@ -584,7 +589,7 @@ void MonthScene::mousePressEvent ( QGraphicsSceneMouseEvent * mouseEvent )
   }
 }
 
-void MonthScene::mouseReleaseEvent ( QGraphicsSceneMouseEvent * mouseEvent )
+void MonthScene::mouseReleaseEvent ( QGraphicsSceneMouseEvent *mouseEvent )
 {
   QPointF pos = mouseEvent->scenePos();
 
@@ -639,7 +644,7 @@ void MonthScene::selectItem( MonthItem *item )
     return;
   }
 
-  IncidenceMonthItem *tmp = dynamic_cast< IncidenceMonthItem* >( item );
+  IncidenceMonthItem *tmp = dynamic_cast<IncidenceMonthItem *>( item );
 
   if ( !tmp ) {
     mSelectedItem = 0;
@@ -652,7 +657,6 @@ void MonthScene::selectItem( MonthItem *item )
 
   emit incidenceSelected( tmp->incidence() );
 }
-
 
 //----------------------------------------------------------
 MonthGraphicsView::MonthGraphicsView( MonthView *parent )

@@ -78,7 +78,7 @@ class MonthScene : public QGraphicsScene
     int height( MonthItem *manager );
     int itemHeight();
     int itemHeightIncludingSpacing();
-    QList< MonthItem* > mManagerList;
+    QList<MonthItem *> mManagerList;
     MonthView *mMonthView;
 
     QMap<QDate, MonthCell*> mMonthCellMap;
@@ -92,8 +92,8 @@ class MonthScene : public QGraphicsScene
     int totalHeight();
 
     /**
-     * Returns the vertical position where the top of the cell should be painted
-     * taking in account margins, rowHeight
+     * Returns the vertical position where the top of the cell should be
+     * painted taking in account margins, rowHeight
      */
     int cellVerticalPos( const MonthCell *cell ) const;
 
@@ -165,7 +165,6 @@ class MonthScene : public QGraphicsScene
     QPixmap *replyPixmap() { return &mReplyPixmap; }
     QPixmap *holidayPixmap() { return &mHolidayPixmap; }
 
-
   signals:
     void incidenceSelected( Incidence *incidence );
     void showIncidencePopupSignal( Incidence *, const QDate &);
@@ -185,15 +184,14 @@ class MonthScene : public QGraphicsScene
 
     /**
        Scrolls all incidences in cells down
-     */
+    */
     virtual void scrollCellsDown();
 
     /**
-       A click on a scroll indicator has occured
+       A click on a scroll indicator has occurred
        TODO : move this handler to the scrollindicator
-     */
+    */
     virtual void clickOnScrollIndicator( ScrollIndicator *scrollItem );
-
 
     /**
       Handles drag and drop events. Called from eventFilter.
@@ -238,7 +236,7 @@ class MonthScene : public QGraphicsScene
 
     /**
        Returns true if (x, y) is in the monthgrid, false else.
-     */
+    */
     bool isInMonthGrid( int x, int y );
 
     bool mInitialized;
