@@ -27,36 +27,37 @@
 #include <kcal/incidence.h>
 
 #include <q3scrollview.h>
-#include <QTimer>
-#include <QPointer>
-#include <QWheelEvent>
-#include <QVector>
-#include <QList>
-#include <QEvent>
-#include <QKeyEvent>
 #include <QFrame>
-#include <QDropEvent>
-#include <QLabel>
-#include <QResizeEvent>
-#include <QMouseEvent>
+#include <QList>
+#include <QPointer>
+#include <QTimer>
+#include <QVector>
 
-class QTime;
-class QLabel;
 class KOAgenda;
 class KOAgendaItem;
 
+class QDropEvent;
+class QEvent;
+class QKeyEvent;
+class QLabel;
+class QMouseEvent;
+class QResizeEvent;
+class QTime;
+class QWheelEvent;
+
 namespace KOrg {
-class IncidenceChangerBase;
+  class IncidenceChangerBase;
 }
 
 using namespace KCal;
 namespace KCal {
-class Event;
-class Todo;
-class Calendar;
+  class Event;
+  class Todo;
+  class Calendar;
 }
 
-class MarcusBains : public QFrame {
+class MarcusBains : public QFrame
+{
   Q_OBJECT
   public:
     MarcusBains( KOAgenda *agenda = 0 );
@@ -148,7 +149,8 @@ class KOAgenda : public Q3ScrollView
     QObject *typeAheadReceiver() const;
     void finishTypeAhead();
 
-    void setCalendar( Calendar*cal ) { mCalendar = cal; }
+    void setCalendar( Calendar *cal )
+    { mCalendar = cal; }
     void setIncidenceChanger( KOrg::IncidenceChangerBase *changer )
     { mChanger = changer; }
 
@@ -176,7 +178,7 @@ class KOAgenda : public Q3ScrollView
       @param uid the UID of the item that should be selected. If no such
       item exists, the selection is not changed.
     */
-    void selectItemByUID( const QString& uid );
+    void selectItemByUID( const QString &uid );
     bool removeAgendaItem( KOAgendaItem *item );
     void showAgendaItem( KOAgendaItem *item );
 
@@ -199,29 +201,40 @@ class KOAgenda : public Q3ScrollView
     void lowerYChanged( int );
     void upperYChanged( int );
 
-    void startDragSignal(Incidence *);
-    void droppedToDo( Todo*todo, const QPoint &gpos, bool allDay );
+    void startDragSignal( Incidence * );
+    void droppedToDo( Todo *todo, const QPoint &gpos, bool allDay );
 
     void enableAgendaUpdate( bool enable );
     void zoomView( const int delta, const QPoint &pos, const Qt::Orientation );
 
-    void mousePosSignal(const QPoint &pos);
+    void mousePosSignal( const QPoint &pos );
     void enterAgenda();
     void leaveAgenda();
 
     void gridSpacingYChanged( double );
 
   private:
-    enum MouseActionType { NOP, MOVE, SELECT,
-                           RESIZETOP, RESIZEBOTTOM, RESIZELEFT, RESIZERIGHT };
+    enum MouseActionType {
+      NOP,
+      MOVE,
+      SELECT,
+      RESIZETOP,
+      RESIZEBOTTOM,
+      RESIZELEFT,
+      RESIZERIGHT
+    };
 
   protected:
     /**
-      Draw the background grid of the agenda.
+      Reimp from Q3ScrollView: Draw the background grid of the agenda.
       @p cw grid width
       @p ch grid height
     */
     void drawContents( QPainter *p, int cx, int cy, int cw, int ch );
+    //the following line is here to shutup gcc warning:
+    //‘virtual void Q3ScrollView::drawContents(QPainter*)’ was hidden
+    void drawContents( QPainter * ) {}
+
     int columnWidth( int column ) const;
     virtual void resizeEvent ( QResizeEvent * );
 
@@ -251,7 +264,6 @@ class KOAgenda : public Q3ScrollView
     */
     bool ptInSelection( const QPoint &gpos ) const;
 
-
     /** Start selecting time span. */
     void startSelectAction( const QPoint &viewportPos );
 
@@ -262,10 +274,10 @@ class KOAgenda : public Q3ScrollView
     void endSelectAction( const QPoint &viewportPos );
 
     /** Start moving/resizing agenda item */
-    void startItemAction(const QPoint& viewportPos);
+    void startItemAction( const QPoint &viewportPos );
 
     /** Move/resize agenda item */
-    void performItemAction(const QPoint& viewportPos);
+    void performItemAction( const QPoint &viewportPos );
 
     /** End moving/resizing agenda item */
     void endItemAction();
@@ -273,11 +285,11 @@ class KOAgenda : public Q3ScrollView
     /** Set cursor, when no item action is in progress */
     void setNoActionCursor( KOAgendaItem *moveItem, const QPoint &viewportPos );
     /** Sets the cursor according to the given action type.
-          @param actionType The type of action for which the cursor should be set.
-          @param acting If true, the corresponding action is running (e.g. the
-                        item is currently being moved by the user). If false the
-                        cursor should just indicate that the corresponding
-                        action is possible */
+        @param actionType The type of action for which the cursor should be set.
+        @param acting If true, the corresponding action is running (e.g. the
+        item is currently being moved by the user). If false the
+        cursor should just indicate that the corresponding
+        action is possible */
     void setActionCursor( int actionType, bool acting=false );
 
     /** calculate the width of the column subcells of the given item */
