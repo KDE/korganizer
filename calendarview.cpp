@@ -1023,7 +1023,7 @@ void CalendarView::newJournal( const QString &text, const QDate &date )
   if ( !text.isEmpty() ) {
     journalEditor->setTexts( text );
   } else {
-    journalEditor->setTexts( i18n("Journal for %1",journalDate.toString( Qt::LocaleDate ) ));
+    journalEditor->setTexts( i18n( "Journal for %1", journalDate.toString( Qt::LocaleDate ) ) );
   }
   journalEditor->show();
 }
@@ -1146,7 +1146,9 @@ bool CalendarView::makeSubTodosIndependents ( )
 
 bool CalendarView::makeSubTodosIndependents ( Todo *todo )
 {
-  if( !todo || todo->relations().isEmpty() ) return false;
+  if ( !todo || todo->relations().isEmpty() ) {
+    return false;
+  }
 
   startMultiModify ( i18n( "Make sub-to-dos independent" ) );
   Incidence::List subTodos( todo->relations() );
@@ -1889,6 +1891,12 @@ void CalendarView::showIncidence( Incidence *incidence )
 {
   KOEventViewerDialog *eventViewer = new KOEventViewerDialog( this );
   eventViewer->setIncidence( incidence );
+
+  // Disable the Edit button for read-only Incidences.
+  if ( incidence->isReadOnly() ) {
+    eventViewer->enableButton( KDialog::User1, false );
+  }
+
   eventViewer->show();
 }
 
@@ -1956,7 +1964,9 @@ bool CalendarView::editIncidence( Incidence *incidence )
 
 void CalendarView::deleteSubTodosIncidence ( Todo *todo )
 {
-  if( !todo ) return;
+  if ( !todo ) {
+    return;
+  }
 
   Incidence::List subTodos( todo->relations() );
   Incidence::List::Iterator it;
