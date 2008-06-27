@@ -426,8 +426,9 @@ void KOTodoRichTextDelegate::paint( QPainter *painter,
     // draw the text (rich text)
     QPalette::ColorGroup cg = opt.state & QStyle::State_Enabled ?
                                 QPalette::Normal : QPalette::Disabled;
-    if ( cg == QPalette::Normal && !( opt.state & QStyle::State_Active ) )
+    if ( cg == QPalette::Normal && !( opt.state & QStyle::State_Active ) ) {
       cg = QPalette::Inactive;
+    }
 
     if ( opt.state & QStyle::State_Selected ) {
       painter->setPen(
