@@ -233,7 +233,7 @@ class KOAgenda : public Q3ScrollView
     void drawContents( QPainter *p, int cx, int cy, int cw, int ch );
     //the following line is here to shutup gcc warning:
     //‘virtual void Q3ScrollView::drawContents(QPainter*)’ was hidden
-    void drawContents( QPainter * ) {}
+    using Q3Frame::drawContents;
 
     int columnWidth( int column ) const;
     virtual void resizeEvent ( QResizeEvent * );
