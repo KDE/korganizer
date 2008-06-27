@@ -260,7 +260,7 @@ bool IncidenceChanger::assignIncidence( Incidence *inc1, Incidence *inc2 )
   return v.act( inc1, inc2 );
 }
 
-bool IncidenceChanger::myAttendeeStatusChanged( Incidence *newInc, Incidence *oldInc )
+bool IncidenceChanger::myAttendeeStatusChanged( Incidence *oldInc, Incidence *newInc )
 {
   Attendee *oldMe = oldInc->attendeeByMails( KOPrefs::instance()->allEmails() );
   Attendee *newMe = newInc->attendeeByMails( KOPrefs::instance()->allEmails() );
@@ -271,7 +271,7 @@ bool IncidenceChanger::myAttendeeStatusChanged( Incidence *newInc, Incidence *ol
   return false;
 }
 
-bool IncidenceChanger::changeIncidence( Incidence *newinc, Incidence *oldinc,
+bool IncidenceChanger::changeIncidence( Incidence *oldinc, Incidence *newinc,
                                         int action, bool counter )
 {
   kDebug() << "for incidence \"" << newinc->summary()
@@ -286,7 +286,7 @@ bool IncidenceChanger::changeIncidence( Incidence *newinc, Incidence *oldinc,
     }
   } else {
     kDebug() << "Changing incidence";
-    bool statusChanged = myAttendeeStatusChanged( newinc, oldinc );
+    bool statusChanged = myAttendeeStatusChanged( oldinc, newinc );
     int revision = newinc->revision();
     newinc->setRevision( revision + 1 );
     // FIXME: Use a generic method for this! Ideally, have an interface class
