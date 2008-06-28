@@ -391,7 +391,7 @@ void IncidenceMonthItem::finalizeMove( const QDate &newStartDate )
     }
   }
 
-  changer->changeIncidence( mIncidence, oldInc, KOGlobals::DATE_MODIFIED );
+  changer->changeIncidence( oldInc, mIncidence, KOGlobals::DATE_MODIFIED );
   changer->endChange( mIncidence );
 
   delete oldInc;
@@ -417,7 +417,7 @@ void IncidenceMonthItem::finalizeResize( const QDate &newStartDate,
   offset = endDate().daysTo( newEndDate );
   event->setDtEnd( event->dtEnd().addDays( offset ) );
 
-  changer->changeIncidence( mIncidence, oldInc, KOGlobals::DATE_MODIFIED );
+  changer->changeIncidence( oldInc, mIncidence, KOGlobals::DATE_MODIFIED );
   changer->endChange( mIncidence );
 
   delete oldInc;
