@@ -273,7 +273,7 @@ void KOTodoView::restoreLayout( KConfig *config, const QString &group )
 
     header->resizeSection( i, width );
     header->moveSection( header->visualIndex( i ), order );
-    if ( !visible ) {
+    if ( i != 0 && !visible ) {
       mView->hideColumn( i );
     }
   }
