@@ -233,12 +233,15 @@ void KOTodoView::saveLayout( KConfig *config, const QString &group ) const
   KConfigGroup cfgGroup = config->group( group );
   QHeaderView *header = mView->header();
 
-  QStringList columnOrder;
-  QStringList columnWidths;
+  QVariantList columnVisibility;
+  QVariantList columnOrder;
+  QVariantList columnWidths;
   for ( int i = 0; i < header->count(); i++ ) {
-    columnWidths << QString::number( header->sectionSize( i ) );
-    columnOrder << QString::number( header->visualIndex( i ) );
+    columnVisibility << QVariant( !mView->isColumnHidden( i ) );
+    columnWidths << QVariant( header->sectionSize( i ) );
+    columnOrder << QVariant( header->visualIndex( i ) );
   }
+  cfgGroup.writeEntry( "ColumnVisibility", columnVisibility );
   cfgGroup.writeEntry( "ColumnOrder", columnOrder );
   cfgGroup.writeEntry( "ColumnWidths", columnWidths );
 
@@ -257,15 +260,22 @@ void KOTodoView::restoreLayout( KConfig *config, const QString &group )
   KConfigGroup cfgGroup = config->group( group );
   QHeaderView *header = mView->header();
 
-  QStringList columnOrder = cfgGroup.readEntry( "ColumnOrder", QStringList() );
-  QStringList columnWidths = cfgGroup.readEntry( "ColumnWidths", QStringList() );
+  QVariantList columnVisibility = cfgGroup.readEntry( "ColumnVisibility", QVariantList() );
+  QVariantList columnOrder = cfgGroup.readEntry( "ColumnOrder", QVariantList() );
+  QVariantList columnWidths = cfgGroup.readEntry( "ColumnWidths", QVariantList() );
   for ( int i = 0;
-        i < header->count() && i < columnOrder.size() && i < columnWidths.size();
+        i < header->count() && i < columnOrder.size() &&
+            i < columnWidths.size() && i < columnVisibility.size();
         i++ ) {
+    bool visible = columnVisibility[i].toBool();
     int width = columnWidths[i].toInt();
     int order = columnOrder[i].toInt();
+
     header->resizeSection( i, width );
     header->moveSection( header->visualIndex( i ), order );
+    if ( !visible ) {
+      mView->hideColumn( i );
+    }
   }
   int sortOrder = cfgGroup.readEntry( "SortAscending", (int)Qt::AscendingOrder );
   int sortColumn = cfgGroup.readEntry( "SortColumn", -1 );

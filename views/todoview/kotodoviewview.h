@@ -26,9 +26,13 @@
 #define KOTODOVIEWVIEW_H
 
 #include <QTreeView>
+#include <QList>
 
 class QWidget;
+class QEvent;
 class QModelIndex;
+class KMenu;
+class QAction;
 
 class KOTodoViewView : public QTreeView
 {
@@ -44,11 +48,19 @@ class KOTodoViewView : public QTreeView
 #endif
     bool isEditing( const QModelIndex &index ) const;
 
+    virtual bool eventFilter( QObject *watched, QEvent *event );
+
   protected:
     virtual QModelIndex moveCursor( CursorAction cursorAction, Qt::KeyboardModifiers modifiers );
 
   private:
     QModelIndex getNextEditableIndex( const QModelIndex &cur, int inc );
+
+    KMenu *mHeaderPopup;
+    QList< QAction* > mColumnActions;
+
+  private slots:
+    void toggleColumnHidden( QAction* action );
 };
 
 #endif

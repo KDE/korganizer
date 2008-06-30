@@ -27,12 +27,20 @@
 
 #include <QWidget>
 #include <QModelIndex>
+#include <QHeaderView>
+#include <QEvent>
+#include <QContextMenuEvent>
+#include <QAction>
+#include <QVariant>
 
+#include <KMenu>
+#include <KLocalizedString>
 #include <KDebug>
 
 KOTodoViewView::KOTodoViewView( QWidget *parent )
-  : QTreeView( parent )
+  : QTreeView( parent ), mHeaderPopup( 0 )
 {
+  header()->installEventFilter( this );
 }
 
 #if QT_VERSION >= 0x040500
@@ -44,6 +52,54 @@ bool KOTodoViewView::isEditing( const QModelIndex &index ) const
 {
   return state() & QAbstractItemView::EditingState &&
          currentIndex() == index;
+}
+
+bool KOTodoViewView::eventFilter( QObject *watched, QEvent *event )
+{
+  Q_UNUSED( watched );
+  if ( event->type() == QEvent::ContextMenu ) {
+    QContextMenuEvent *e = static_cast< QContextMenuEvent* >( event );
+
+    if ( !mHeaderPopup ) {
+      mHeaderPopup = new KMenu( this );
+      mHeaderPopup->addTitle( i18n("View Columns") );
+      // First entry can't be disabled
+      for( int i = 1; i < model()->columnCount(); ++i ) {
+        QAction *tmp = mHeaderPopup->addAction(
+                        model()->headerData( i, Qt::Horizontal ).toString() );
+        tmp->setData( QVariant( i ) );
+        tmp->setCheckable( true );
+        mColumnActions << tmp;
+      }
+
+      connect( mHeaderPopup, SIGNAL( triggered( QAction* ) ),
+               this, SLOT( toggleColumnHidden( QAction* ) ) );
+    }
+
+    foreach( QAction* action, mColumnActions ) {
+      int column = action->data().toInt();
+      action->setChecked( !isColumnHidden( column ) );
+    }
+
+    mHeaderPopup->popup( mapToGlobal( e->pos() ) );
+    return true;
+  }
+
+  return false;
+}
+
+void KOTodoViewView::toggleColumnHidden( QAction *action )
+{
+  if ( action->isChecked() ) {
+    showColumn( action->data().toInt() );
+    if ( columnWidth( action->data().toInt() == 0 ) ) {
+      // the column width can be 0 if it was hidden, stored in the config as 0
+      // (width of hidden columns), and then restored from config
+      resizeColumnToContents( action->data().toInt() );
+    }
+  } else {
+    hideColumn( action->data().toInt() );
+  }
 }
 
 QModelIndex KOTodoViewView::moveCursor( CursorAction cursorAction,
