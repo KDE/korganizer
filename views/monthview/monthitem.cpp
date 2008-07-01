@@ -37,6 +37,7 @@
 #include <kcal/journal.h>
 #include <kcal/event.h>
 #include <kcal/incidence.h>
+#include <kcal/incidenceformatter.h>
 
 #include <KDebug>
 
@@ -453,6 +454,11 @@ QString IncidenceMonthItem::text( bool end ) const
   }
 
   return ret;
+}
+
+QString IncidenceMonthItem::toolTipText() const
+{
+  return IncidenceFormatter::toolTipString( mIncidence );
 }
 
 QList<QPixmap *> IncidenceMonthItem::icons() const
