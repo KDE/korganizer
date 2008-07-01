@@ -934,7 +934,7 @@ void KOAgenda::performItemAction( const QPoint &viewportPos )
       if ( !mChanger || !mChanger->beginChange( mActionItem->incidence() ) ) {
         KMessageBox::information( this,
                                   i18n( "Unable to lock item for modification "
-                                        "You cannot change make any changes." ),
+                                        "You cannot make any changes." ),
                                   i18n( "Locking Failed" ), "AgendaLockingFailed" );
         mScrollUpTimer.stop();
         mScrollDownTimer.stop();
