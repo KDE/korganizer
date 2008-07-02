@@ -162,6 +162,7 @@ class MonthScene : public QGraphicsScene
     QPixmap *journalPixmap() { return &mJournalPixmap; }
     QPixmap *alarmPixmap() { return &mAlarmPixmap; }
     QPixmap *recurPixmap() { return &mRecurPixmap; }
+    QPixmap *readonlyPixmap() { return &mReadonlyPixmap; }
     QPixmap *replyPixmap() { return &mReplyPixmap; }
     QPixmap *holidayPixmap() { return &mHolidayPixmap; }
 
@@ -268,6 +269,7 @@ class MonthScene : public QGraphicsScene
     QPixmap mJournalPixmap;
     QPixmap mAlarmPixmap;
     QPixmap mRecurPixmap;
+    QPixmap mReadonlyPixmap;
     QPixmap mReplyPixmap;
     QPixmap mHolidayPixmap;
 

@@ -333,8 +333,12 @@ class HolidayMonthItem : public MonthItem
     virtual bool isMoveable() const { return false; }
     virtual bool isResizable() const { return false; }
 
-    QString text(bool end ) const { Q_UNUSED( end ); return mName; }
-    QString toolTipText() const { return mName; };
+    QString text( bool end ) const
+    {
+      Q_UNUSED( end );
+      return mName;
+    }
+    QString toolTipText() const { return mName; }
 
     QColor bgColor() const;
     QColor frameColor( const QColor &bgColor ) const;
