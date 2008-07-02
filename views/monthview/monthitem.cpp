@@ -594,20 +594,11 @@ QColor IncidenceMonthItem::frameColor( const QColor &bgColor ) const
 {
   QColor resourceColor = KOHelper::resourceColor( monthScene()->calendar(),
                                                   mIncidence );
-  QColor ret = Qt::black;
-  if ( resourceColor.isValid() ) {
-    ret = selected() ? QColor( 85 + resourceColor.red() * 2 / 3,
-                               85 + resourceColor.green() * 2 / 3,
-                               85 + resourceColor.blue() * 2 / 3 )
-                      : resourceColor;
-  } else {
-    ret = selected() ? QColor( 85 + bgColor.red() * 2 / 3,
-                               85 + bgColor.green() * 2 / 3,
-                               85 + bgColor.blue() * 2 / 3 )
-                      : bgColor.dark(115);
+  if ( !resourceColor.isValid() ) {
+    return bgColor.dark( 130 );
   }
 
-  return ret;
+  return resourceColor;
 }
 
 //-----------------------------------------------------------------
