@@ -64,7 +64,7 @@ KOPrefs::KOPrefs() :
   KOPrefsBase()
 {
   mDefaultCategoryColor = QColor( 151, 235, 121 );
-  mDefaultResourceColor = QColor();//Default is a color invalid
+  mDefaultResourceColor = QColor(); //Default is a color invalid
 
   mDefaultAgendaTimeLabelsFont = KGlobalSettings::generalFont();
   // make a large default time bar font, at least 16 points.
@@ -194,28 +194,20 @@ void KOPrefs::usrReadConfig()
     setCategoryDefaults();
   }
 
-  // old category colors, ignore if they have the old default
-  // should be removed a few versions after 3.2...
-  KConfigGroup colorsConfig( config(), "Category Colors" );
-  QList<QColor> oldCategoryColors;
+  // Note that the [Category Colors] group was removed after 3.2 due to
+  // an algorithm change. That's why we now use [Category Colors2]
+
+  // Category colors
+  KConfigGroup colorsConfig( config(), "Category Colors2" );
   QStringList::Iterator it;
-  for ( it = mCustomCategories.begin();it != mCustomCategories.end();++it ) {
+  for ( it = mCustomCategories.begin(); it != mCustomCategories.end(); ++it ) {
     QColor c = colorsConfig.readEntry( *it, mDefaultCategoryColor );
-    oldCategoryColors.append( ( c == QColor( 196, 196, 196 ) ) ?
-                              mDefaultCategoryColor : c );
+    if ( c != mDefaultCategoryColor ) {
+      setCategoryColor( *it, c );
+    }
   }
 
-  // new category colors
-  KConfigGroup colors2Config( config(), "Category Colors2" );
-  QList<QColor>::Iterator it2;
-  for ( it = mCustomCategories.begin(), it2 = oldCategoryColors.begin();
-        it != mCustomCategories.end(); ++it, ++it2 ) {
-      QColor c = config()->group( QString() ).readEntry( *it, *it2 );
-      if ( c != mDefaultCategoryColor ) {
-          setCategoryColor( *it, c );
-      }
-  }
-
+  // Resource colors
   KConfigGroup rColorsConfig( config(), "Resources Colors" );
   const QStringList colorKeyList = rColorsConfig.keyList();
 
@@ -249,10 +241,10 @@ void KOPrefs::usrWriteConfig()
   KConfigGroup generalConfig( config(), "General" );
   generalConfig.writeEntry( "Custom Categories", mCustomCategories );
 
-  KConfigGroup colors2Config( config(), "Category Colors2" );
+  KConfigGroup colorsConfig( config(), "Category Colors2" );
   QHash<QString, QColor>::const_iterator i = mCategoryColors.constBegin();
   while ( i != mCategoryColors.constEnd() ) {
-    colors2Config.writeEntry( i.key(), i.value() );
+    colorsConfig.writeEntry( i.key(), i.value() );
     ++i;
   }
 
