@@ -106,7 +106,7 @@ class KOEditorDetails : public KOAttendeeEditor
 
     KCal::Attendee* currentAttendee() const;
     /* reimpl */
-    bool hasExampleAttendee() const;
+    QListViewItem* hasExampleAttendee() const;
     void updateCurrentItem();
 
   private:

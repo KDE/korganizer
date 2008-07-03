@@ -928,16 +928,16 @@ bool KOEditorFreeBusy::eventFilter( QObject *watched, QEvent *event )
   }
 }
 
-bool KOEditorFreeBusy::hasExampleAttendee() const
+QListViewItem* KOEditorFreeBusy::hasExampleAttendee() const
 {
   for ( FreeBusyItem *item = static_cast<FreeBusyItem *>( mGanttView->firstChild() ); item;
         item = static_cast<FreeBusyItem*>( item->nextSibling() ) ) {
     Attendee *attendee = item->attendee();
     Q_ASSERT( attendee );
     if ( isExampleAttendee( attendee ) )
-        return true;
+        return item;
   }
-  return false;
+  return 0;
 }
 
 #include "koeditorfreebusy.moc"
