@@ -420,7 +420,7 @@ void KOTodoRichTextDelegate::paint( QPainter *painter,
                                             &opt, widget );
 
     // draw the item without text
-    opt.text = QString();
+    opt.text.clear();
     style->drawControl( QStyle::CE_ItemViewItem, &opt, painter, widget );
 
     // draw the text (rich text)
