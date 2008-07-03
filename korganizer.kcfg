@@ -240,7 +240,7 @@
           <label>Only calendar</label>
         </choice>
       </choices>
-      <default>ResourceInsideCategoryOutside</default>
+      <default>CategoryInsideResourceOutside</default>
     </entry>
 
     <entry type="Enum" name="AgendaViewCalendarDisplay">
