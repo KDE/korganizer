@@ -196,7 +196,6 @@ void KOrganizer::writeSettings()
 
 void KOrganizer::initActions()
 {
-  setXMLFile( "korganizerui.rc", true );
   setStandardToolBarMenuEnabled( true );
   createStandardStatusBarAction();
 
@@ -204,6 +203,7 @@ void KOrganizer::initActions()
   KStandardAction::configureToolbars( this, SLOT(configureToolbars()), actionCollection() );
   KStandardAction::quit( this, SLOT(close()), actionCollection() );
 
+  setXMLFile( "korganizerui.rc", true );
   createGUI( 0 );
 
   setAutoSaveSettings();
