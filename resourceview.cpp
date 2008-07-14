@@ -286,8 +286,9 @@ void ResourceView::addResource()
   bool ok = false;
   KCal::CalendarResourceManager *manager = mCalendar->resourceManager();
   ResourceItem *i = 0;
-  if ( !mListView->selectedItems().isEmpty() )
+  if ( !mListView->selectedItems().isEmpty() ) {
     i = static_cast<ResourceItem*>( mListView->selectedItems().first() );
+  }
   if ( i && ( i->isSubresource() || i->resource()->canHaveSubresources() ) ) {
     const QString folderName =
       KInputDialog::getText( i18n( "Add Subresource" ),
@@ -442,8 +443,8 @@ void ResourceView::removeResource()
   int km =
     KMessageBox::warningContinueCancel(
       this,
-      i18n( "<qt>Do you really want to delete the resource <b>%1</b>?</qt>",
-            item->text( 0 ) ), "", KStandardGuiItem::del() );
+      i18n( "<qt>Do you really want to remove the resource <b>%1</b>?</qt>",
+            item->text( 0 ) ), "", KStandardGuiItem::remove() );
   if ( km == KMessageBox::Cancel ) {
     return;
   }
@@ -451,17 +452,19 @@ void ResourceView::removeResource()
 // Don't be so restricitve
 #if 0
   if ( item->resource() == mCalendar->resourceManager()->standardResource() ) {
-    KMessageBox::sorry( this, i18n( "You cannot delete your standard resource." ) );
+    KMessageBox::sorry( this, i18n( "You cannot remove your standard resource." ) );
     return;
   }
 #endif
   if ( item->isSubresource() ) {
-    if ( !item->resource()->removeSubresource( item->resourceIdentifier() ) )
-      KMessageBox::sorry( this,
-              i18n ("<qt>Failed to remove the subresource <b>%1</b>. The "
-                  "reason could be that it is a built-in one which cannot "
-                  "be removed, or that the removal of the underlying storage "
-                  "folder failed.</qt>", item->text( 0 ) ) );
+    if ( !item->resource()->removeSubresource( item->resourceIdentifier() ) ) {
+      KMessageBox::sorry(
+        this,
+        i18n ( "<qt>Failed to remove the subresource <b>%1</b>. The "
+               "reason could be that it is a built-in one which cannot "
+               "be removed, or that the removal of the underlying storage "
+               "folder failed.</qt>", item->text( 0 ) ) );
+    }
     return;
   } else {
     mCalendar->resourceManager()->remove( item->resource() );
@@ -503,7 +506,8 @@ ResourceItem *ResourceView::findItem( ResourceCalendar *r )
 
 ResourceItem *ResourceView::findItemByIdentifier( const QString &id )
 {
-  QList<QTreeWidgetItem *> items = mListView->findItems( "*", Qt::MatchWildcard | Qt::MatchRecursive );
+  QList<QTreeWidgetItem *>items = mListView->findItems(
+    "*", Qt::MatchWildcard | Qt::MatchRecursive );
   foreach ( QTreeWidgetItem *i, items ) {
     ResourceItem *item = static_cast<ResourceItem *>( i );
     if ( item->resourceIdentifier() == id ) {
