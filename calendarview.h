@@ -662,13 +662,11 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     QDate mSaveSingleDate;
 
     Incidence *mSelectedIncidence;
-
-    // Why does the CalendarView have a TodoView? Todo views are
-    // managed like the other views in KOViewManager
-    //KOTodoView *mTodoList;
+    KOTodoView *mTodoList;
     QMap<Incidence*,KOIncidenceEditor*> mDialogList;
 
     KOrg::IncidenceChangerBase *mChanger;
 };
 
 #endif
+

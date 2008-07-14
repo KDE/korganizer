@@ -46,14 +46,12 @@
 #include "kodialogmanager.h"
 #include "statusdialog.h"
 #include "datenavigatorcontainer.h"
-//#include "kotodoview.h"
 #include "datenavigator.h"
 #include "resourceview.h"
 #include "navigatorbar.h"
 #include "history.h"
 #include "kogroupware.h"
 #include "freebusymanager.h"
-#include "views/oldmonthview/komonthview.h"
 #include "datechecker.h"
 #include "komessagebox.h"
 #include "exportwebdialog.h"
@@ -62,6 +60,8 @@
 #include "kholidays.h"
 #include "mailscheduler.h"
 #include "komailclient.h"
+#include "views/todoview/kotodoview.h"
+#include "views/monthview/monthview.h"
 
 #include <kcal/vcaldrag.h>
 #include <kcal/icaldrag.h>
@@ -147,8 +147,8 @@ CalendarView::CalendarView( QWidget *parent )
 //  mLeftSplitter->setResizeMode( mDateNavigator, QSplitter::Stretch );
   mLeftSplitter->setCollapsible( mLeftSplitter->indexOf(mDateNavigator), true );
 
-//  mTodoList = new KOTodoView( CalendarNull::self(), mLeftSplitter );
-//  mTodoList->setObjectName( "todolist" );
+  mTodoList = new KOTodoView( CalendarNull::self(), mLeftSplitter );
+  mTodoList->setObjectName( "todolist" );
 
   mEventViewerBox = new KVBox( mLeftSplitter );
   mEventViewerBox->setMargin( KDialog::marginHint() );
@@ -162,64 +162,64 @@ CalendarView::CalendarView( QWidget *parent )
 
   mLeftFrame = mLeftSplitter;
 
-  connect( mNavigator, SIGNAL( datesSelected( const KCal::DateList & ) ),
-           SLOT( showDates( const KCal::DateList & ) ) );
-  connect( mNavigator, SIGNAL( datesSelected( const KCal::DateList & ) ),
-           mDateNavigator, SLOT( selectDates( const KCal::DateList & ) ) );
+  connect( mNavigator, SIGNAL(datesSelected(const KCal::DateList &)),
+           SLOT(showDates(const KCal::DateList &)) );
+  connect( mNavigator, SIGNAL(datesSelected(const KCal::DateList &)),
+           mDateNavigator, SLOT(selectDates(const KCal::DateList &)) );
 
-  connect( mNavigatorBar, SIGNAL( goPrevYear() ),
-           mNavigator, SLOT( selectPreviousYear() ) );
-  connect( mNavigatorBar, SIGNAL( goNextYear() ),
-           mNavigator, SLOT( selectNextYear() ) );
-  connect( mNavigatorBar, SIGNAL( goPrevMonth() ),
-           mNavigator, SLOT( selectPreviousMonth() ) );
-  connect( mNavigatorBar, SIGNAL( goNextMonth() ),
-           mNavigator, SLOT( selectNextMonth() ) );
-  connect( mNavigatorBar, SIGNAL( goMonth(int) ),
-           mNavigator, SLOT( selectMonth(int) ) );
+  connect( mNavigatorBar, SIGNAL(goPrevYear()),
+           mNavigator, SLOT(selectPreviousYear()) );
+  connect( mNavigatorBar, SIGNAL(goNextYear()),
+           mNavigator, SLOT(selectNextYear()) );
+  connect( mNavigatorBar, SIGNAL(goPrevMonth()),
+           mNavigator, SLOT(selectPreviousMonth()) );
+  connect( mNavigatorBar, SIGNAL(goNextMonth()),
+           mNavigator, SLOT(selectNextMonth()) );
+  connect( mNavigatorBar, SIGNAL(goMonth(int)),
+           mNavigator, SLOT(selectMonth(int)) );
 
-  connect( mNavigator, SIGNAL( datesSelected( const KCal::DateList & ) ),
-           mNavigatorBar, SLOT( selectDates( const KCal::DateList & ) ) );
+  connect( mNavigator, SIGNAL(datesSelected(const KCal::DateList &)),
+           mNavigatorBar, SLOT(selectDates(const KCal::DateList &)) );
 
-  connect( mDateNavigator, SIGNAL( weekClicked( const QDate & ) ),
-           mNavigator, SLOT( selectWeek( const QDate & ) ) );
+  connect( mDateNavigator, SIGNAL(weekClicked(const QDate &)),
+           mNavigator, SLOT(selectWeek(const QDate &)) );
 
-  connect( mDateNavigator, SIGNAL( goPrevYear() ),
-           mNavigator, SLOT( selectPreviousYear() ) );
-  connect( mDateNavigator, SIGNAL( goNextYear() ),
-           mNavigator, SLOT( selectNextYear() ) );
-  connect( mDateNavigator, SIGNAL( goPrevMonth() ),
-           mNavigator, SLOT( selectPreviousMonth() ) );
-  connect( mDateNavigator, SIGNAL( goNextMonth() ),
-           mNavigator, SLOT( selectNextMonth() ) );
-  connect( mDateNavigator, SIGNAL( goMonth(int) ),
-           mNavigator, SLOT( selectMonth(int) ) );
+  connect( mDateNavigator, SIGNAL(goPrevYear()),
+           mNavigator, SLOT(selectPreviousYear()) );
+  connect( mDateNavigator, SIGNAL(goNextYear()),
+           mNavigator, SLOT(selectNextYear()) );
+  connect( mDateNavigator, SIGNAL(goPrevMonth()),
+           mNavigator, SLOT(selectPreviousMonth()) );
+  connect( mDateNavigator, SIGNAL(goNextMonth()),
+           mNavigator, SLOT(selectNextMonth()) );
+  connect( mDateNavigator, SIGNAL(goMonth(int)),
+           mNavigator, SLOT(selectMonth(int)) );
 
-  connect( mDateNavigator, SIGNAL( goPrevious() ),
-           mNavigator, SLOT( selectPrevious() ) );
-  connect( mDateNavigator, SIGNAL( goNext() ),
-           mNavigator, SLOT( selectNext() ) );
+  connect( mDateNavigator, SIGNAL(goPrevious()),
+           mNavigator, SLOT(selectPrevious()) );
+  connect( mDateNavigator, SIGNAL(goNext()),
+           mNavigator, SLOT(selectNext()) );
 
-  connect( mDateNavigator, SIGNAL( datesSelected( const KCal::DateList & ) ),
-           mNavigator, SLOT( selectDates( const KCal::DateList & ) ) );
+  connect( mDateNavigator, SIGNAL(datesSelected(const KCal::DateList &)),
+           mNavigator, SLOT(selectDates(const KCal::DateList &)) );
 
   connect( mDateNavigator, SIGNAL(incidenceDropped(Incidence*, const QDate&)),
-           SLOT( addIncidenceOn( Incidence *, const QDate & ) ) );
-  connect( mDateNavigator, SIGNAL(incidenceDroppedMove(Incidence*,const QDate&)),
-           SLOT( moveIncidenceTo( Incidence *, const QDate & ) ) );
+           SLOT(addIncidenceOn(Incidence *,const QDate &)) );
+  connect( mDateNavigator, SIGNAL(incidenceDroppedMove(Incidence *,const QDate &)),
+           SLOT(moveIncidenceTo(Incidence *,const QDate &)) );
 
-//  connect( mDateChecker, SIGNAL( dayPassed( const QDate & ) ),
-//           mTodoList, SLOT( dayPassed( const QDate & ) ) );
-  connect( mDateChecker, SIGNAL( dayPassed( const QDate & ) ),
-           SIGNAL( dayPassed( const QDate & ) ) );
-  connect( mDateChecker, SIGNAL( dayPassed( const QDate & ) ),
-           mDateNavigator, SLOT( updateToday() ) );
+  connect( mDateChecker, SIGNAL(dayPassed(const QDate &)),
+           mTodoList, SLOT(dayPassed(const QDate &)) );
+  connect( mDateChecker, SIGNAL(dayPassed(const QDate &)),
+           SIGNAL(dayPassed(const QDate &)) );
+  connect( mDateChecker, SIGNAL(dayPassed(const QDate &)),
+           mDateNavigator, SLOT(updateToday()) );
 
-  connect( this, SIGNAL( configChanged() ),
-           mDateNavigator, SLOT( updateConfig() ) );
+  connect( this, SIGNAL(configChanged()),
+           mDateNavigator, SLOT(updateConfig()) );
 
-  connect( this, SIGNAL( incidenceSelected(Incidence *) ),
-           mEventViewer, SLOT ( setIncidence (Incidence *) ) );
+  connect( this, SIGNAL(incidenceSelected(Incidence *)),
+           mEventViewer, SLOT(setIncidence(Incidence *)) );
 
   //TODO: do a pretty Summary,
   QString s;
@@ -233,19 +233,19 @@ CalendarView::CalendarView( QWidget *parent )
                          "selected in KOrganizer's main view here." ) );
   mEventViewer->setIncidence( 0 );
 
-//  mViewManager->connectTodoView( mTodoList );
-//  mViewManager->connectView( mTodoList );
+  mViewManager->connectTodoView( mTodoList );
+  mViewManager->connectView( mTodoList );
 
   KOGlobals::self()->
       setHolidays( new KHolidays( KOPrefs::instance()->mHolidays ) );
 
-  connect( QApplication::clipboard(), SIGNAL( dataChanged() ),
-           SLOT( checkClipboard() ) );
+  connect( QApplication::clipboard(), SIGNAL(dataChanged()),
+           SLOT(checkClipboard()) );
 
-//  connect( mTodoList, SIGNAL( incidenceSelected( Incidence * ) ),
-//           SLOT( processTodoListSelection( Incidence * ) ) );
-//  disconnect( mTodoList, SIGNAL( incidenceSelected( Incidence * ) ),
-//           this, SLOT( processMainViewSelection( Incidence * ) ) );
+  connect( mTodoList, SIGNAL(incidenceSelected(Incidence *)),
+           SLOT(processTodoListSelection(Incidence *)) );
+  disconnect( mTodoList, SIGNAL(incidenceSelected(Incidence *)),
+              this, SLOT(processMainViewSelection(Incidence *)) );
 
   kDebug() << "done";
 }
@@ -271,8 +271,8 @@ void CalendarView::setCalendar( Calendar *cal )
 
   delete mHistory;
   mHistory = new History( mCalendar );
-  connect( mHistory, SIGNAL( undone() ), SLOT( updateView() ) );
-  connect( mHistory, SIGNAL( redone() ), SLOT( updateView() ) );
+  connect( mHistory, SIGNAL(undone()), SLOT(updateView()) );
+  connect( mHistory, SIGNAL(redone()), SLOT(updateView()) );
 
   if ( mChanger ) {
     delete mChanger;
@@ -283,29 +283,29 @@ void CalendarView::setCalendar( Calendar *cal )
 
   mDateNavigator->setCalendar( mCalendar );
 
-//  mTodoList->setCalendar( mCalendar );
+  mTodoList->setCalendar( mCalendar );
 }
 
 void CalendarView::setIncidenceChanger( IncidenceChangerBase *changer )
 {
   mChanger = changer;
   emit newIncidenceChanger( mChanger );
-  connect( mChanger, SIGNAL( incidenceAdded( Incidence* ) ),
-           this, SLOT( incidenceAdded( Incidence* ) ) );
-  connect( mChanger, SIGNAL( incidenceChanged( Incidence*, Incidence*, int ) ),
-           this, SLOT( incidenceChanged( Incidence*, Incidence*, int ) ) );
-  connect( mChanger, SIGNAL( incidenceChanged( Incidence*, Incidence* ) ),
-           this, SLOT( incidenceChanged( Incidence*, Incidence* ) ) );
-  connect( mChanger, SIGNAL( incidenceToBeDeleted( Incidence * ) ),
-           this, SLOT( incidenceToBeDeleted( Incidence * ) ) );
-  connect( mChanger, SIGNAL( incidenceDeleted( Incidence * ) ),
-           this, SLOT( incidenceDeleted( Incidence * ) ) );
+  connect( mChanger, SIGNAL(incidenceAdded(Incidence *)),
+           this, SLOT(incidenceAdded(Incidence *)) );
+  connect( mChanger, SIGNAL(incidenceChanged(Incidence *,Incidence *,int)),
+           this, SLOT(incidenceChanged(Incidence *,Incidence *,int)) );
+  connect( mChanger, SIGNAL(incidenceChanged(Incidence *,Incidence *)),
+           this, SLOT(incidenceChanged(Incidence *,Incidence *)) );
+  connect( mChanger, SIGNAL(incidenceToBeDeleted(Incidence *)),
+           this, SLOT(incidenceToBeDeleted(Incidence *)) );
+  connect( mChanger, SIGNAL(incidenceDeleted(Incidence *)),
+           this, SLOT(incidenceDeleted(Incidence *)) );
 
-  connect( mChanger, SIGNAL( schedule( iTIPMethod, Incidence*) ),
-           this, SLOT( schedule( iTIPMethod, Incidence*) ) );
+  connect( mChanger, SIGNAL(schedule(iTIPMethod,Incidence *)),
+           this, SLOT(schedule(iTIPMethod,Incidence *)) );
 
-  connect( this, SIGNAL( cancelAttendees( Incidence * ) ),
-           mChanger, SLOT( cancelAttendees( Incidence * ) ) );
+  connect( this, SIGNAL(cancelAttendees(Incidence *)),
+           mChanger, SLOT(cancelAttendees(Incidence *)) );
 }
 
 Calendar *CalendarView::calendar()
@@ -386,7 +386,7 @@ bool CalendarView::openCalendar( const QString &filename, bool merge )
     } else {
       setModified( false );
       mViewManager->setDocumentId( filename );
-//      mTodoList->setDocumentId( filename );
+      mTodoList->setDocumentId( filename );
     }
     updateCategories();
     updateView();
@@ -458,7 +458,7 @@ void CalendarView::readSettings()
 
   mEventViewer->readSettings( config );
   mViewManager->readSettings( config );
-//  mTodoList->restoreLayout( config, QString( "Todo View" ) );
+  mTodoList->restoreLayout( config, QString( "Todo View" ) );
 
   readFilterSettings( config );
 
@@ -485,7 +485,7 @@ void CalendarView::writeSettings()
 
   mEventViewer->writeSettings( config );
   mViewManager->writeSettings( config );
-  // mTodoList->saveLayout( config, QString( "Todo View" ) );
+  mTodoList->saveLayout( config, QString( "Todo View" ) );
 
   KOPrefs::instance()->writeConfig();
 
@@ -574,7 +574,7 @@ void CalendarView::goToday()
 
 void CalendarView::goNext()
 {
-  if ( dynamic_cast<KOMonthView*>( mViewManager->currentView() ) ) {
+  if ( dynamic_cast<MonthView*>( mViewManager->currentView() ) ) {
     mNavigator->selectNextMonth();
   } else {
     mNavigator->selectNext();
@@ -583,7 +583,7 @@ void CalendarView::goNext()
 
 void CalendarView::goPrevious()
 {
-  if ( dynamic_cast<KOMonthView*>( mViewManager->currentView() ) ) {
+  if ( dynamic_cast<MonthView*>( mViewManager->currentView() ) ) {
     mNavigator->selectPreviousMonth();
   } else {
     mNavigator->selectPrevious();
@@ -757,21 +757,21 @@ void CalendarView::changeIncidenceDisplay( Incidence *incidence, int action )
   if ( incidence ) {
     // If there is an event view visible update the display
     mViewManager->currentView()->changeIncidenceDisplay( incidence, action );
-//    if ( mTodoList ) {
-//      mTodoList->changeIncidenceDisplay( incidence, action );
-//    }
+    if ( mTodoList ) {
+      mTodoList->changeIncidenceDisplay( incidence, action );
+    }
     mEventViewer->changeIncidenceDisplay( incidence, action );
   } else {
     mViewManager->currentView()->updateView();
-//    if ( mTodoList ) {
-//      mTodoList->updateView();
-//    }
+    if ( mTodoList ) {
+      mTodoList->updateView();
+    }
   }
 }
 
 void CalendarView::updateView( const QDate &start, const QDate &end )
 {
-//  mTodoList->updateView();
+  mTodoList->updateView();
   mViewManager->updateView( start, end );
   mDateNavigator->updateView();
 }
@@ -1570,7 +1570,7 @@ void CalendarView::adaptNavigationUnits()
 void CalendarView::processMainViewSelection( Incidence *incidence )
 {
   if ( incidence ) {
-//    mTodoList->clearSelection();
+    mTodoList->clearSelection();
   }
   processIncidenceSelection( incidence );
 }
@@ -1742,9 +1742,9 @@ void CalendarView::showDateNavigator( bool show )
 void CalendarView::showTodoView( bool show )
 {
   if ( show ) {
-//    mTodoList->show();
+    mTodoList->show();
   } else {
-//    mTodoList->hide();
+    mTodoList->hide();
   }
 }
 
@@ -1799,7 +1799,7 @@ Todo *CalendarView::selectedTodo()
   }
   incidence = 0;
 
-  Incidence::List selectedIncidences;// = mTodoList->selectedIncidences();
+  Incidence::List selectedIncidences = mTodoList->selectedIncidences();
   if ( !selectedIncidences.isEmpty() ) {
     incidence = selectedIncidences.first();
   }
@@ -1826,7 +1826,7 @@ Incidence *CalendarView::selectedIncidence()
 {
   Incidence *incidence = currentSelection();
   if ( !incidence ) {
-    Incidence::List selectedIncidences;// = mTodoList->selectedIncidences();
+    Incidence::List selectedIncidences = mTodoList->selectedIncidences();
     if ( !selectedIncidences.isEmpty() ) {
       incidence = selectedIncidences.first();
     }
@@ -2132,8 +2132,8 @@ void CalendarView::deleteIncidence( Incidence *incidence, bool force )
 
 void CalendarView::connectIncidenceEditor( KOIncidenceEditor *editor )
 {
-  connect( this, SIGNAL( newIncidenceChanger( IncidenceChangerBase* ) ),
-           editor, SLOT( setIncidenceChanger( IncidenceChangerBase* ) ) );
+  connect( this, SIGNAL(newIncidenceChanger(IncidenceChangerBase *)),
+           editor, SLOT(setIncidenceChanger(IncidenceChangerBase *)) );
   editor->setIncidenceChanger( mChanger );
 }
 
