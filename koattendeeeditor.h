@@ -79,7 +79,8 @@ class KOAttendeeEditor : public QWidget
     void insertAttendeeFromAddressee( const KABC::Addressee &a, const KCal::Attendee *at=0 );
 
     void fillOrganizerCombo();
-
+    virtual bool hasExampleAttendee() const = 0;
+    bool isExampleAttendee( const KCal::Attendee* ) const;
     virtual KCal::Attendee *currentAttendee() const = 0;
     virtual void updateCurrentItem() = 0;
 

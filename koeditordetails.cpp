@@ -368,4 +368,16 @@ void KOEditorDetails::changeStatusForMe( Attendee::PartStat status )
   }
 }
 
+bool KOEditorDetails::hasExampleAttendee() const
+{
+  for ( Q3ListViewItemIterator it( mListView ); it.current(); ++it ) {
+    AttendeeListItem *item = static_cast<AttendeeListItem*>( it.current() );
+    Attendee *attendee = item->data();
+    Q_ASSERT( attendee );
+    if ( isExampleAttendee( attendee ) )
+        return true;
+  }
+  return false;
+}
+
 #include "koeditordetails.moc"
