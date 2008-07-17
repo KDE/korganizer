@@ -243,10 +243,13 @@ void KOAttendeeEditor::addNewAttendee()
 {
   // check if there's still an unchanged example entry, and if so
   // suggest to edit that first
-  if ( hasExampleAttendee() ) {
+  if ( Q3ListViewItem* item = hasExampleAttendee() ) {
       KMessageBox::information( this,
           i18n( "Please edit the example attendee, before adding more." ), QString::null,
           "EditExistingExampleAttendeeFirst" );
+      // make sure the example attendee is selected
+      item->setSelected( true );
+      item->listView()->setCurrentItem( item );
       return;
   }
   Attendee *a =
