@@ -76,6 +76,8 @@ class KOEditorGeneralEvent : public KOEditorGeneral
 
     void updateRecurrenceSummary( const QString &summary );
 
+    QFrame* invitationBar() const { return mInvitationBar; }
+
   public slots:
     void setDateTimes( const KDateTime &start, const KDateTime &end );
     void setDateTimes( const QDateTime &start, const QDateTime &end );
