@@ -304,10 +304,24 @@ bool KOGroupware::sendICalMessage( QWidget *parent,
              KGuiItem( i18n( "Send Update" ) ), KGuiItem( i18n( "Do Not Send" ) ) );
     } else {
       if ( isDeleting ) {
-        txt = i18n( "You are not the organizer of this event. "
-                    "Deleting it will bring your calendar out of sync "
-                    "with the organizers calendar. Do you really want "
-                    "to delete it?" );
+        const QStringList myEmails = KOPrefs::instance()->allEmails();
+        bool askConfirmation = false;
+        for ( QStringList::ConstIterator it = myEmails.begin(); it != myEmails.end(); ++it ) {
+          QString email = *it;
+          Attendee *me = incidence->attendeeByMail(email);
+          if (me && (me->status()==KCal::Attendee::Accepted || me->status()==KCal::Attendee::Delegated)) {
+            askConfirmation = true;
+            break;
+          }
+        }
+
+        if ( !askConfirmation ) {
+          return true;
+        }
+
+        txt = i18n( "You are not the organizer of this event, "
+            "but you were supposed to attend. Do you really want "
+            "to delete it and notify the organizer?" );
       } else {
         txt = i18n( "You are not the organizer of this event. "
                     "Editing it will bring your calendar out of sync "
