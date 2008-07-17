@@ -301,6 +301,7 @@ bool KOEventEditor::processInput()
       writeEvent( mEvent );
       if ( mIsCounter ) {
         Event *event = mEvent->clone();
+        event->clearAttendees();
         event->setSummary( i18n("My counter proposal for: %1", mEvent->summary() ) );
         mChanger->addIncidence( event );
       }
