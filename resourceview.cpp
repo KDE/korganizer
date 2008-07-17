@@ -49,6 +49,8 @@
 #include <QPixmap>
 #include <QBoxLayout>
 #include <QVBoxLayout>
+#include <QToolButton>
+#include <QHeaderView>
 
 using namespace KCal;
 
@@ -228,6 +230,10 @@ ResourceView::ResourceView( KCal::CalendarResources *calendar, QWidget *parent )
   QBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->setSpacing( KDialog::spacingHint() );
 
+  QHBoxLayout *buttonBox = new QHBoxLayout();
+  buttonBox->setSpacing( KDialog::spacingHint() );
+  topLayout->addLayout( buttonBox );
+
   mListView = new QTreeWidget( this );
   mListView->setWhatsThis(
     i18n( "<qt><p>Select on this list the active KOrganizer "
@@ -244,17 +250,59 @@ ResourceView::ResourceView( KCal::CalendarResources *calendar, QWidget *parent )
           "to select the resource to use.</p></qt>" ) );
   mListView->setRootIsDecorated( false );
   mListView->setHeaderLabel( i18n( "Calendars" ) );
+  mListView->header()->hide();
   topLayout->addWidget( mListView );
 
   connect( mListView, SIGNAL(itemDoubleClicked(QTreeWidgetItem *,int)),
            SLOT(editResource()) );
+  connect( mListView, SIGNAL(itemClicked(QTreeWidgetItem *,int)),
+           SLOT(slotItemClicked(QTreeWidgetItem *,int)) );
+  connect( mListView, SIGNAL(currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)),
+           SLOT(currentChanged()) );
 
   mListView->setContextMenuPolicy( Qt::CustomContextMenu );
   connect( mListView, SIGNAL(customContextMenuRequested(const QPoint &)),
            SLOT(showContextMenu(const QPoint &)) );
 
-  connect( mListView, SIGNAL(itemClicked(QTreeWidgetItem *,int)),
-           SLOT(slotItemClicked(QTreeWidgetItem *,int)) );
+  QLabel *calLabel = new QLabel( i18n( "Calendar" ), this );
+  buttonBox->addWidget( calLabel );
+  buttonBox->addStretch( 1 );
+
+  mAddButton = new QToolButton( this );
+  mAddButton->setIcon( KIcon( "list-add" ) );
+  buttonBox->addWidget( mAddButton );
+  mAddButton->setToolTip( i18n( "Add calendar" ) );
+  mAddButton->setWhatsThis(
+                   i18n( "<qt><p>Press this button to add a resource to "
+                         "KOrganizer.</p>"
+                         "<p>Events, journal entries and to-dos are retrieved "
+                         "and stored on resources. Available "
+                         "resources include groupware servers, local files, "
+                         "journal entries as blogs on a server, etc... </p>"
+                         "<p>If you have more than one active resource, "
+                         "when creating incidents you will either automatically "
+                         "use the default resource or be prompted "
+                         "to select the resource to use.</p></qt>" ) );
+  mEditButton = new QToolButton( this );
+  mEditButton->setIcon( KIcon( "document-properties" ) );
+  buttonBox->addWidget( mEditButton );
+  mEditButton->setToolTip( i18n( "Edit calendar settings" ) );
+  mEditButton->setWhatsThis(
+                   i18n( "Press this button to edit the resource currently "
+                         "selected on the KOrganizer resources list above." ) );
+  mDeleteButton = new QToolButton( this );
+  mDeleteButton->setIcon( KIcon( "edit-delete" ) );
+  buttonBox->addWidget( mDeleteButton );
+  mDeleteButton->setToolTip( i18n( "Remove calendar" ) );
+  mDeleteButton->setWhatsThis(
+                   i18n( "Press this button to delete the resource currently "
+                         "selected on the KOrganizer resources list above." ) );
+  mDeleteButton->setDisabled( true );
+  mEditButton->setDisabled( true );
+
+  connect( mAddButton, SIGNAL( clicked() ), SLOT( addResource() ) );
+  connect( mDeleteButton, SIGNAL( clicked() ), SLOT( removeResource() ) );
+  connect( mEditButton, SIGNAL( clicked() ), SLOT( editResource() ) );
 
   updateView();
 }
@@ -565,7 +613,7 @@ void ResourceView::showContextMenu( const QPoint &pos )
     menu->addSeparator();
   }
   menu->addAction( i18n( "&Add..." ), this, SLOT(addResource()) );
-  menu->popup( mapToGlobal( pos ) );
+  menu->popup( mListView->mapToGlobal( pos ) );
 }
 
 void ResourceView::assignColor()
@@ -680,6 +728,18 @@ void ResourceView::slotItemClicked( QTreeWidgetItem *i, int )
   ResourceItem *item = static_cast<ResourceItem *>( i );
   if ( item ) {
     item->stateChange( item->checkState( 0 ) == Qt::Checked );
+  }
+}
+
+void ResourceView::currentChanged()
+{
+  ResourceItem *i = currentItem();
+  if ( !i || i->isSubresource() ) {
+    mDeleteButton->setEnabled( false );
+    mEditButton->setEnabled( false );
+  } else {
+    mDeleteButton->setEnabled( true );
+    mEditButton->setEnabled( true );
   }
 }
 

@@ -147,11 +147,13 @@ class ResourceView : public CalendarViewExtension
     void updateResourceList();
 
     void slotItemClicked( QTreeWidgetItem *, int );
+    void currentChanged();
 
   private:
     QTreeWidget *mListView;
     KCal::CalendarResources *mCalendar;
     QList<ResourceCalendar*> mResourcesToClose;
+    QAbstractButton *mAddButton, *mEditButton, *mDeleteButton;
 };
 
 #endif
