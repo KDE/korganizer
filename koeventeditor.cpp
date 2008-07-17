@@ -299,6 +299,11 @@ bool KOEventEditor::processInput()
       kDebug() << "Event changed";
       //IncidenceChanger::assignIncidence( mEvent, event );
       writeEvent( mEvent );
+      if ( mIsCounter ) {
+        Event *event = mEvent->clone();
+        event->setSummary( i18n("My counter proposal for: %1", mEvent->summary() ) );
+        mChanger->addIncidence( event );
+      }
       mChanger->changeIncidence( oldEvent, mEvent, -1, mIsCounter );
     }
     delete event;
