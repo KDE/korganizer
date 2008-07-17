@@ -810,6 +810,7 @@ void CalendarView::edit_cut()
     return;
   }
   mChanger->cutIncidence( incidence );
+  checkClipboard();
 }
 
 void CalendarView::edit_copy()
@@ -824,6 +825,7 @@ void CalendarView::edit_copy()
   if ( !factory.copyIncidence( incidence ) ) {
     KNotification::beep();
   }
+  checkClipboard();
 }
 
 void CalendarView::edit_paste()
@@ -1885,6 +1887,11 @@ void CalendarView::copyIncidence( Incidence *incidence )
 {
   Q_UNUSED( incidence );
   edit_copy();
+}
+
+void CalendarView::pasteIncidence()
+{
+  edit_paste();
 }
 
 void CalendarView::showIncidence( Incidence *incidence )

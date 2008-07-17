@@ -48,6 +48,7 @@ class KOEventPopupMenu : public QMenu
   protected slots:
     void popupShow();
     void popupEdit();
+    void popupPaste();
     void print();
     void popupDelete();
     void popupCut();
@@ -64,6 +65,7 @@ class KOEventPopupMenu : public QMenu
     void deleteIncidenceSignal(Incidence *);
     void cutIncidenceSignal(Incidence *);
     void copyIncidenceSignal(Incidence *);
+    void pasteIncidenceSignal();
     void toggleAlarmSignal(Incidence *);
     void dissociateOccurrenceSignal( Incidence *, const QDate & );
     void dissociateFutureOccurrenceSignal( Incidence *, const QDate & );
