@@ -50,7 +50,7 @@ class KORGANIZER_INTERFACES_EXPORT IncidenceChangerBase : public QObject
 
     virtual bool addIncidence( Incidence *incidence, QWidget *parent = 0 ) = 0;
     virtual bool changeIncidence( Incidence *oldinc, Incidence *newinc,
-                                  int action = -1, bool counter = false ) = 0;
+                                  int action = -1 ) = 0;
     virtual bool deleteIncidence( Incidence *incidence ) = 0;
     virtual bool cutIncidence( Incidence *incidence ) = 0;
 
