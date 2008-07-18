@@ -7,11 +7,11 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>717</width>
-    <height>593</height>
+    <width>500</width>
+    <height>476</height>
    </rect>
   </property>
-  <layout class="QVBoxLayout" >
+  <layout class="QVBoxLayout" name="verticalLayout_2" >
    <item>
     <widget class="QLabel" name="label" >
      <property name="text" >
@@ -84,16 +84,7 @@ p, li { white-space: pre-wrap; }
         <property name="spacing" >
          <number>6</number>
         </property>
-        <property name="leftMargin" >
-         <number>0</number>
-        </property>
-        <property name="topMargin" >
-         <number>0</number>
-        </property>
-        <property name="rightMargin" >
-         <number>0</number>
-        </property>
-        <property name="bottomMargin" >
+        <property name="margin" >
          <number>0</number>
         </property>
         <item>
@@ -104,7 +95,7 @@ p, li { white-space: pre-wrap; }
           <property name="sizeType" >
            <enum>QSizePolicy::Fixed</enum>
           </property>
-          <property name="sizeHint" >
+          <property name="sizeHint" stdset="0" >
            <size>
             <width>16</width>
             <height>20</height>
@@ -155,7 +146,7 @@ p, li { white-space: pre-wrap; }
           </property>
           <item>
            <property name="text" >
-            <string>2008-01-14</string>
+            <string>2008-07-14</string>
            </property>
           </item>
          </widget>
@@ -192,7 +183,7 @@ p, li { white-space: pre-wrap; }
           </property>
           <item>
            <property name="text" >
-            <string>2008-01-14</string>
+            <string>2008-07-14</string>
            </property>
           </item>
          </widget>
@@ -205,7 +196,7 @@ p, li { white-space: pre-wrap; }
           <property name="sizeType" >
            <enum>QSizePolicy::Expanding</enum>
           </property>
-          <property name="sizeHint" >
+          <property name="sizeHint" stdset="0" >
            <size>
             <width>128</width>
             <height>20</height>
@@ -226,8 +217,8 @@ p, li { white-space: pre-wrap; }
      <property name="checkable" >
       <bool>false</bool>
      </property>
-     <layout class="QGridLayout" >
-      <item row="0" column="0" >
+     <layout class="QHBoxLayout" name="horizontalLayout" >
+      <item>
        <widget class="QCheckBox" name="mDescription" >
         <property name="text" >
          <string>&amp;Description</string>
@@ -237,7 +228,17 @@ p, li { white-space: pre-wrap; }
         </property>
        </widget>
       </item>
-      <item row="0" column="1" >
+      <item>
+       <widget class="QCheckBox" name="mPriority" >
+        <property name="text" >
+         <string>&amp;Priority</string>
+        </property>
+        <property name="checked" >
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QCheckBox" name="mDueDate" >
         <property name="text" >
          <string>Due date</string>
@@ -250,17 +251,7 @@ p, li { white-space: pre-wrap; }
         </property>
        </widget>
       </item>
-      <item row="1" column="0" >
-       <widget class="QCheckBox" name="mPriority" >
-        <property name="text" >
-         <string>&amp;Priority</string>
-        </property>
-        <property name="checked" >
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1" >
+      <item>
        <widget class="QCheckBox" name="mPercentComplete" >
         <property name="text" >
          <string>Per&amp;centage completed</string>
@@ -271,6 +262,10 @@ p, li { white-space: pre-wrap; }
        </widget>
       </item>
      </layout>
+     <zorder>mDescription</zorder>
+     <zorder>mDueDate</zorder>
+     <zorder>mPercentComplete</zorder>
+     <zorder>mPriority</zorder>
     </widget>
    </item>
    <item>
@@ -278,8 +273,8 @@ p, li { white-space: pre-wrap; }
      <property name="title" >
       <string>Other Options</string>
      </property>
-     <layout class="QGridLayout" >
-      <item row="0" column="0" >
+     <layout class="QVBoxLayout" name="verticalLayout" >
+      <item>
        <widget class="QCheckBox" name="mConnectSubTodos" >
         <property name="text" >
          <string>Co&amp;nnect sub-to-dos with its parent</string>
@@ -289,7 +284,7 @@ p, li { white-space: pre-wrap; }
         </property>
        </widget>
       </item>
-      <item row="1" column="0" >
+      <item>
        <widget class="QCheckBox" name="mStrikeOutCompleted" >
         <property name="text" >
          <string>Strike &amp;out completed to-do summaries</string>
@@ -307,8 +302,8 @@ p, li { white-space: pre-wrap; }
      <property name="title" >
       <string>Sorting Options</string>
      </property>
-     <layout class="QGridLayout" >
-      <item row="0" column="0" >
+     <layout class="QHBoxLayout" name="horizontalLayout_2" >
+      <item>
        <layout class="QHBoxLayout" >
         <item>
          <widget class="QLabel" name="sortFieldLabel" >
@@ -325,11 +320,17 @@ p, li { white-space: pre-wrap; }
           <property name="enabled" >
            <bool>true</bool>
           </property>
+          <property name="sizePolicy" >
+           <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
+            <horstretch>1</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
          </widget>
         </item>
        </layout>
       </item>
-      <item row="1" column="0" >
+      <item>
        <layout class="QHBoxLayout" >
         <item>
          <widget class="QLabel" name="sortDirectionLabel" >
@@ -345,6 +346,12 @@ p, li { white-space: pre-wrap; }
          <widget class="QComboBox" name="mSortDirection" >
           <property name="enabled" >
            <bool>true</bool>
+          </property>
+          <property name="sizePolicy" >
+           <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
+            <horstretch>1</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
           </property>
          </widget>
         </item>
@@ -374,7 +381,6 @@ p, li { white-space: pre-wrap; }
   <tabstop>mPriority</tabstop>
   <tabstop>mPercentComplete</tabstop>
   <tabstop>mSortField</tabstop>
-  <tabstop>mSortDirection</tabstop>
   <tabstop>mConnectSubTodos</tabstop>
   <tabstop>mStrikeOutCompleted</tabstop>
  </tabstops>

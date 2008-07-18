@@ -8,7 +8,7 @@
     <x>0</x>
     <y>0</y>
     <width>488</width>
-    <height>349</height>
+    <height>248</height>
    </rect>
   </property>
   <widget class="QWidget" name="layoutWidget" >
