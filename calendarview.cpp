@@ -1025,7 +1025,7 @@ void CalendarView::newJournal( const QString &text, const QDate &date )
   if ( !text.isEmpty() ) {
     journalEditor->setTexts( text );
   } else {
-    journalEditor->setTexts( "Journal for " + journalDate.toString( Qt::LocaleDate ) );
+    journalEditor->setTexts( i18n("Journal for ") + journalDate.toString( Qt::LocaleDate ) );
   }
   journalEditor->show();
 }
