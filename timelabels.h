@@ -42,11 +42,12 @@ class TimeLabelsZone;
 
 class TimeLabels : public Q3ScrollView
 {
-    Q_OBJECT
+  Q_OBJECT
   public:
     typedef QList<TimeLabels *> List;
 
-    explicit TimeLabels( const KDateTime::Spec &spec, int rows, TimeLabelsZone *parent = 0, Qt::WFlags f = 0 );
+    explicit TimeLabels( const KDateTime::Spec &spec, int rows,
+                         TimeLabelsZone *parent = 0, Qt::WFlags f = 0 );
 
     /** Calculates the minimum width */
     virtual int minimumWidth() const;
@@ -83,11 +84,15 @@ class TimeLabels : public Q3ScrollView
     void positionChanged( int pos );
 
   protected:
+    /*reimp from Q3ScrollView*/
     void drawContents( QPainter *p, int cx, int cy, int cw, int ch );
+    //the following line is here to shutup gcc warning:
+    //‘virtual void Q3ScrollView::drawContents(QPainter*)’ was hidden
+    void drawContents( QPainter * ) {}
 
   private slots:
     /** update the position of the marker showing the mouse position */
-    void mousePosChanged(const QPoint &pos);
+    void mousePosChanged( const QPoint &pos );
 
     void showMousePos();
     void hideMousePos();
@@ -99,7 +104,7 @@ class TimeLabels : public Q3ScrollView
     int mRows;
     double mCellHeight;
     int mMiniWidth;
-    KOAgenda* mAgenda;
+    KOAgenda *mAgenda;
     TimeLabelsZone *mTimeLabelsZone;
 
     QFrame *mMousePos;  // shows a marker for the current mouse position in y direction

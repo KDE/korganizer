@@ -25,48 +25,48 @@
 #ifndef KOAGENDAVIEW_H
 #define KOAGENDAVIEW_H
 
+#include "agendaview.h"
 #include "calprinter.h"
 
-#include <q3scrollview.h>
-#include <QBoxLayout>
-#include <QLabel>
 #include <QFrame>
-#include <QMenu>
-#include <QPaintEvent>
 #include <QPixmap>
-#include <QResizeEvent>
-#include <QSplitter>
 #include <QVector>
-
-#include "agendaview.h"
 
 class TimeLabels;
 class TimeLabelsZone;
 
-class KHBox;
-class KComboBox;
-class QPushButton;
-class QListWidget;
-
-class KOAgendaView;
 class KOAgenda;
 class KOAgendaItem;
-class TimeLabels;
+class KOAgendaView;
+
+class KComboBox;
 class KConfig;
+class KHBox;
+
+class QBoxLayout;
+class QGridLayout;
+class QListWidget;
+class QMenu;
+class QPaintEvent;
+class QPushButton;
+class QSplitter;
 
 namespace KCal {
   class ResourceCalendar;
 }
 
 namespace KOrg {
-class IncidenceChangerBase;
+  class IncidenceChangerBase;
 }
 
 class EventIndicator : public QFrame
 {
   Q_OBJECT
   public:
-    enum Location { Top, Bottom };
+    enum Location {
+      Top,
+      Bottom
+    };
     explicit EventIndicator( Location loc = Top, QWidget *parent = 0 );
     virtual ~EventIndicator();
 
@@ -85,8 +85,8 @@ class EventIndicator : public QFrame
 };
 
 /**
-  KOAgendaView is the agenda-like view used to display events in a single one or
-  multi-day view.
+  KOAgendaView is the agenda-like view that displays events in a single
+  or multi-day view.
 */
 class KOAgendaView : public KOrg::AgendaView
 {
@@ -108,7 +108,7 @@ class KOAgendaView : public KOrg::AgendaView
     virtual DateList selectedDates();
 
     /** return the default start/end date/time for new events   */
-    virtual bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay);
+    virtual bool eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &allDay );
 
     /** Remove all events from view */
     void clearView();
@@ -131,8 +131,8 @@ class KOAgendaView : public KOrg::AgendaView
     /** Show only incidences from the given resource. */
     void setResource( KCal::ResourceCalendar *res, const QString &subResource = QString() );
 
-    KOAgenda* agenda() const { return mAgenda; }
-    QSplitter* splitter() const { return mSplitterAgenda; }
+    KOAgenda *agenda() const { return mAgenda; }
+    QSplitter *splitter() const { return mSplitterAgenda; }
 
   public slots:
     virtual void updateView();
@@ -156,14 +156,15 @@ class KOAgendaView : public KOrg::AgendaView
 
     void finishTypeAhead();
 
-    /** reschedule the todo  to the given x- and y- coordinates. Third parameter determines all-day (no time specified) */
+    /** reschedule the todo  to the given x- and y- coordinates.
+        Third parameter determines all-day (no time specified) */
     void slotTodoDropped( Todo *, const QPoint &, bool );
 
     void enableAgendaUpdate( bool enable );
     void setIncidenceChanger( KOrg::IncidenceChangerBase *changer );
 
-    void zoomInHorizontally( const QDate& date=QDate() );
-    void zoomOutHorizontally( const QDate& date=QDate() );
+    void zoomInHorizontally( const QDate &date=QDate() );
+    void zoomOutHorizontally( const QDate &date=QDate() );
 
     void zoomInVertically( );
     void zoomOutVertically( );
@@ -181,7 +182,7 @@ class KOAgendaView : public KOrg::AgendaView
     void createTimeBarHeaders();
 
   signals:
-    void zoomViewHorizontally(const QDate &, int count );
+    void zoomViewHorizontally( const QDate &, int count );
 
     void timeSpanSelectionChanged();
 

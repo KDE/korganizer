@@ -25,7 +25,6 @@
 */
 
 #include "timelabels.h"
-
 #include "timelabelszone.h"
 #include "timescaleconfigdialog.h"
 #include "koglobals.h"
@@ -69,9 +68,9 @@
 
 using namespace KOrg;
 
-TimeLabels::TimeLabels( const KDateTime::Spec &spec, int rows, TimeLabelsZone *parent, Qt::WFlags f) :
-// TODO_QT4: Use constructor without *name=0 param
-  Q3ScrollView(parent,/*name*/0,f)
+TimeLabels::TimeLabels( const KDateTime::Spec &spec, int rows,
+                        TimeLabelsZone *parent, Qt::WFlags f )
+  : Q3ScrollView( parent, /*name*/0, f )
 {
   mTimeLabelsZone = parent;
   mSpec = spec;
@@ -79,38 +78,40 @@ TimeLabels::TimeLabels( const KDateTime::Spec &spec, int rows, TimeLabelsZone *p
   mRows = rows;
   mMiniWidth = 0;
 
-  mCellHeight = KOPrefs::instance()->mHourSize*4;
+  mCellHeight = KOPrefs::instance()->mHourSize * 4;
 
-  enableClipper(true);
+  enableClipper( true );
 
-  setHScrollBarMode(AlwaysOff);
-  setVScrollBarMode(AlwaysOff);
+  setHScrollBarMode( AlwaysOff );
+  setVScrollBarMode( AlwaysOff );
   setFrameStyle( Plain );
 
-  resizeContents(50, int(mRows * mCellHeight) );
+  resizeContents( 50, int( mRows * mCellHeight ) );
 
   viewport()->setBackgroundRole( QPalette::Background );
   setBackgroundRole( QPalette::Background );
 
-  mMousePos = new QFrame(this);
+  mMousePos = new QFrame( this );
   mMousePos->setLineWidth( 1 );
   mMousePos->setFrameStyle( QFrame::HLine | QFrame::Plain );
 //  mMousePos->setMargin(0);
   QPalette pal;
-  pal.setColor( QPalette::Window, KOPrefs::instance()->agendaMarcusBainsLineLineColor() ); //  for Oxygen
-  pal.setColor( QPalette::WindowText, KOPrefs::instance()->agendaMarcusBainsLineLineColor() ); // for Plastique
+  pal.setColor( QPalette::Window, // for Oxygen
+                KOPrefs::instance()->agendaMarcusBainsLineLineColor() );
+  pal.setColor( QPalette::WindowText, // for Plastique
+                KOPrefs::instance()->agendaMarcusBainsLineLineColor() );
   mMousePos->setPalette( pal );
-  mMousePos->setFixedSize(width(), 1);
-  addChild(mMousePos, 0, 0);
+  mMousePos->setFixedSize( width(), 1 );
+  addChild( mMousePos, 0, 0 );
 
   if ( mSpec.isValid() ) {
     setToolTip( i18n( "Timezone:" ) + mSpec.timeZone().name() );
   }
 }
 
-void TimeLabels::mousePosChanged(const QPoint &pos)
+void TimeLabels::mousePosChanged( const QPoint &pos )
 {
-  moveChild(mMousePos, 0, pos.y());
+  moveChild( mMousePos, 0, pos.y() );
 
   // The repaint somehow prevents that the red line leaves a black artifact when
   // moved down. It's not a full solution, though.
@@ -127,26 +128,25 @@ void TimeLabels::hideMousePos()
   mMousePos->hide();
 }
 
-void TimeLabels::setCellHeight(double height)
+void TimeLabels::setCellHeight( double height )
 {
   mCellHeight = height;
 }
 
 /*
-  Optimization so that only the "dirty" portion of the scroll view
-  is redrawn.  Unfortunately, this is not called by default paintEvent() method.
+  Optimization so that only the "dirty" portion of the scroll view is redrawn.
+  Unfortunately, this is not called by default paintEvent() method.
 */
 void TimeLabels::drawContents( QPainter *p, int cx, int cy, int cw, int ch )
 {
   int beginning;
 
-  if ( !mSpec.isValid() )
+  if ( !mSpec.isValid() ) {
     beginning = 0;
-  else
-    beginning = ( mSpec.timeZone().currentOffset()
-                 - KOPrefs::instance()->timeSpec().timeZone().currentOffset() )
-                 / ( 60 * 60 );
-
+  } else {
+    beginning = ( mSpec.timeZone().currentOffset() -
+                  KOPrefs::instance()->timeSpec().timeZone().currentOffset() ) / ( 60 * 60 );
+  }
 
   p->setBrush( palette().window() ); // TODO: theming, see if we want sth here...
   p->fillRect( cx, cy, cw, ch, p->brush() );
@@ -156,11 +156,11 @@ void TimeLabels::drawContents( QPainter *p, int cx, int cy, int cw, int ch )
   //       code assumes the latter...
 
   // now, for a workaround...
-  cx = contentsX() + frameWidth()*2;
+  cx = contentsX() + frameWidth() * 2;
   cw = contentsWidth();
 
   // end of workaround
-  int cell = ((int)(cy / mCellHeight)) + beginning;  // indicates which hour we start drawing with
+  int cell = ( (int)( cy / mCellHeight ) ) + beginning;  // the hour we start drawing with
   double y = ( cell - beginning ) * mCellHeight;
   QFontMetrics fm = fontMetrics();
   QString hour;
@@ -173,45 +173,55 @@ void TimeLabels::drawContents( QPainter *p, int cx, int cy, int cw, int ch )
       suffix = "00";
   } else {
     suffix = "am";
-    if (cell > 11) suffix = "pm";
+    if ( cell > 11 ) {
+      suffix = "pm";
+    }
   }
 
   // We adjust the size of the hour font to keep it reasonable
   if ( timeHeight >  mCellHeight ) {
-    timeHeight = int(mCellHeight-1);
+    timeHeight = int( mCellHeight - 1 );
     int pointS = hourFont.pointSize();
     while ( pointS > 4 ) { // TODO: use smallestReadableFont() when added to kdelibs
       hourFont.setPointSize( pointS );
       fm = QFontMetrics( hourFont );
-      if ( fm.ascent() < mCellHeight )
+      if ( fm.ascent() < mCellHeight ) {
         break;
-      -- pointS;
+      }
+      --pointS;
     }
     fm = QFontMetrics( hourFont );
     timeHeight = fm.ascent();
   }
   //timeHeight -= (timeHeight/4-2);
   QFont suffixFont = hourFont;
-  suffixFont.setPointSize( suffixFont.pointSize()/2 );
-  QFontMetrics fmS(  suffixFont );
-  int startW = mMiniWidth - frameWidth()-2 ;
-  int tw2 = fmS.width(suffix);
-  int divTimeHeight = (timeHeight-1) /2 - 1;
+  suffixFont.setPointSize( suffixFont.pointSize() / 2 );
+  QFontMetrics fmS( suffixFont );
+  int startW = mMiniWidth - frameWidth() - 2 ;
+  int tw2 = fmS.width( suffix );
+  int divTimeHeight = ( timeHeight - 1 ) / 2 - 1;
   //testline
   //p->drawLine(0,0,0,contentsHeight());
-  while (y < cy + ch+mCellHeight) {
+  while ( y < cy + ch + mCellHeight ) {
     // hour, full line
-    p->drawLine( cx, int(y), cw+2, int(y) );
+    p->drawLine( cx, int( y ), cw + 2, int( y ) );
 
-    hour.setNum(cell % 24 );
+    hour.setNum( cell % 24 );
     // handle different timezones
-    if ( cell < 0 )
+    if ( cell < 0 ) {
       hour.setNum( cell + 24 );
+    }
     // handle 24h and am/pm time formats
-    if (KGlobal::locale()->use12Clock()) {
-      if (cell == 12) suffix = "pm";
-      if (cell == 0) hour.setNum(12);
-      if (cell > 12) hour.setNum(cell - 12);
+    if ( KGlobal::locale()->use12Clock() ) {
+      if ( cell == 12 ) {
+        suffix = "pm";
+      }
+      if ( cell == 0 ) {
+        hour.setNum( 12 );
+      }
+      if ( cell > 12 ) {
+        hour.setNum( cell - 12 );
+      }
     }
 
     QPen pen;
@@ -223,19 +233,18 @@ void TimeLabels::drawContents( QPainter *p, int cx, int cy, int cw, int ch )
     p->setPen( pen );
 
     // center and draw the time label
-    int timeWidth = fm.width(hour);
+    int timeWidth = fm.width( hour );
     int offset = startW - timeWidth - tw2 -1 ;
     p->setFont( hourFont );
-    p->drawText( offset, int(y+timeHeight), hour);
+    p->drawText( offset, int( y + timeHeight ), hour );
     p->setFont( suffixFont );
     offset = startW - tw2;
-    p->drawText( offset, int(y+timeHeight-divTimeHeight), suffix);
+    p->drawText( offset, int( y + timeHeight - divTimeHeight ), suffix );
 
     // increment indices
     y += mCellHeight;
     cell++;
   }
-
 }
 
 /**
@@ -249,70 +258,71 @@ int TimeLabels::minimumWidth() const
 /** updates widget's internal state */
 void TimeLabels::updateConfig()
 {
-  setFont(KOPrefs::instance()->agendaTimeLabelsFont());
+  setFont( KOPrefs::instance()->agendaTimeLabelsFont() );
 
   QString test = "20";
-  if ( KGlobal::locale()->use12Clock() )
+  if ( KGlobal::locale()->use12Clock() ) {
       test = "12";
+  }
   mMiniWidth = fontMetrics().width( test );
-  if ( KGlobal::locale()->use12Clock() )
-      test = "pm";
-  else {
-      test = "00";
+  if ( KGlobal::locale()->use12Clock() ) {
+    test = "pm";
+  } else {
+    test = "00";
   }
   QFont sFont = font();
-  sFont.setPointSize(  sFont.pointSize()/2 );
-  QFontMetrics fmS(   sFont );
-  mMiniWidth += fmS.width(  test ) + frameWidth()*2+4 ;
+  sFont.setPointSize( sFont.pointSize() / 2 );
+  QFontMetrics fmS( sFont );
+  mMiniWidth += fmS.width( test ) + frameWidth() * 2 + 4 ;
   // update geometry restrictions based on new settings
-  setFixedWidth(  mMiniWidth );
+  setFixedWidth( mMiniWidth );
 
   // update HourSize
-  mCellHeight = KOPrefs::instance()->mHourSize*4;
+  mCellHeight = KOPrefs::instance()->mHourSize * 4;
   // If the agenda is zoomed out so that more then 24 would be shown,
   // the agenda only shows 24 hours, so we need to take the cell height
   // from the agenda, which is larger than the configured one!
-  if ( mCellHeight < 4*mAgenda->gridSpacingY() )
-       mCellHeight = 4*mAgenda->gridSpacingY();
-  resizeContents( mMiniWidth, int(mRows * mCellHeight+1) );
+  if ( mCellHeight < 4 * mAgenda->gridSpacingY() ) {
+       mCellHeight = 4 * mAgenda->gridSpacingY();
+  }
+  resizeContents( mMiniWidth, int( mRows * mCellHeight + 1 ) );
 }
 
 /** update time label positions */
 void TimeLabels::positionChanged()
 {
   int adjustment = mAgenda->contentsY();
-  if ( adjustment != contentsY() )
-    setContentsPos(0, adjustment);
+  if ( adjustment != contentsY() ) {
+    setContentsPos( 0, adjustment );
+  }
 }
 
 void TimeLabels::positionChanged( int pos )
 {
-  if ( pos != contentsY() )
+  if ( pos != contentsY() ) {
     setContentsPos( 0, pos );
+  }
 }
 
 /**  */
-void TimeLabels::setAgenda(KOAgenda* agenda)
+void TimeLabels::setAgenda( KOAgenda *agenda )
 {
   mAgenda = agenda;
 
-  connect(mAgenda, SIGNAL(mousePosSignal(const QPoint &)), this, SLOT(mousePosChanged(const QPoint &)));
-  connect(mAgenda, SIGNAL(enterAgenda()), this, SLOT(showMousePos()));
-  connect(mAgenda, SIGNAL(leaveAgenda()), this, SLOT(hideMousePos()));
-  connect(mAgenda, SIGNAL(gridSpacingYChanged( double ) ), this, SLOT( setCellHeight( double ) ) );
+  connect( mAgenda, SIGNAL(mousePosSignal(const QPoint &)),
+           this, SLOT(mousePosChanged(const QPoint &)) );
+  connect( mAgenda, SIGNAL(enterAgenda()), this, SLOT(showMousePos()) );
+  connect( mAgenda, SIGNAL(leaveAgenda()), this, SLOT(hideMousePos()) );
+  connect( mAgenda, SIGNAL(gridSpacingYChanged(double)),
+           this, SLOT(setCellHeight(double)) );
 }
 
-
 /** This is called in response to repaint() */
-void TimeLabels::paintEvent(QPaintEvent*)
+void TimeLabels::paintEvent( QPaintEvent * )
 {
-//  kDebug(5850) <<"paintevent...";
-  // this is another hack!
-//  QPainter painter(this);
-  //QString c
-
+//  kDebug();
   QPainter painter( this );
-  drawContents(&painter, contentsX(), contentsY(), visibleWidth(), visibleHeight());
+  drawContents( &painter, contentsX(), contentsY(), visibleWidth(), visibleHeight() );
 }
 
 void TimeLabels::contextMenuEvent( QContextMenuEvent *event )
@@ -320,17 +330,23 @@ void TimeLabels::contextMenuEvent( QContextMenuEvent *event )
   Q_UNUSED( event );
 
   QMenu popup( this );
-  QAction *editTimeZones = popup.addAction( KIcon( "document-properties" ), i18n( "&Edit Timezones..." ) );
-  QAction *removeTimeZone = popup.addAction( KIcon( "edit-delete" ), i18n( "&Remove %1 Timezone", mSpec.timeZone().name() ) );
-  if ( !mSpec.isValid() || !KOPrefs::instance()->timeScaleTimezones().count() || mSpec == KOPrefs::instance()->timeSpec() ) {
+  QAction *editTimeZones =
+    popup.addAction( KIcon( "document-properties" ), i18n( "&Edit Timezones..." ) );
+  QAction *removeTimeZone =
+    popup.addAction( KIcon( "edit-delete" ),
+                     i18n( "&Remove %1 Timezone", mSpec.timeZone().name() ) );
+  if ( !mSpec.isValid() ||
+       !KOPrefs::instance()->timeScaleTimezones().count() ||
+       mSpec == KOPrefs::instance()->timeSpec() ) {
     removeTimeZone->setEnabled( false );
   }
 
   QAction *activatedAction = popup.exec( QCursor::pos() );
   if ( activatedAction == editTimeZones ) {
     TimeScaleConfigDialog dialog( this );
-    if ( dialog.exec() == QDialog::Accepted )
+    if ( dialog.exec() == QDialog::Accepted ) {
       mTimeLabelsZone->reset();
+    }
   } else if ( activatedAction == removeTimeZone ) {
     QStringList list = KOPrefs::instance()->timeScaleTimezones();
     list.removeAll( mSpec.timeZone().name() );
@@ -351,7 +367,9 @@ QString TimeLabels::header() const
   KTimeZone tz = mSpec.timeZone();
 
   QString header = tz.countryCode();
-  if( header.isEmpty() ) header = tz.name();
+  if ( header.isEmpty() ) {
+    header = tz.name();
+  }
 
   return header;
 }
@@ -362,20 +380,20 @@ QString TimeLabels::headerToolTip() const
 
   QString toolTip;
   toolTip += "<qt>";
-  toolTip += i18n("Timezone: %1",tz.name() );
+  toolTip += i18n( "Timezone: %1", tz.name() );
   toolTip += "<br/>";
-  toolTip += i18n("Country Code: %1",tz.countryCode() );
+  toolTip += i18n( "Country Code: %1", tz.countryCode() );
   if ( !tz.abbreviations().isEmpty() ) {
     toolTip += "<br/>";
-    toolTip += i18n("Abbreviations:");
-    foreach( QByteArray a, tz.abbreviations() ) {
+    toolTip += i18n( "Abbreviations:" );
+    foreach ( QByteArray a, tz.abbreviations() ) {
       toolTip += "<br/>";
       toolTip += "&nbsp;" + QString::fromLocal8Bit( a );
     }
   }
   if ( !tz.comment().isEmpty() ) {
     toolTip += "<br/>";
-    toolTip += i18n("Comment:<br/>%1",tz.comment() );
+    toolTip += i18n( "Comment:<br/>%1", tz.comment() );
   }
   toolTip += "</qt>";
 
