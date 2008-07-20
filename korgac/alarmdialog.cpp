@@ -220,12 +220,12 @@ void AlarmDialog::slotOk() // Dismiss selected
     delete *it;
   }
 
-  if ( enabledItems() == 0 ) {
+  if ( activeCount() == 0 ) {
     accept();
   } else {
     update();
   }
-  emit reminderCount( enabledItems() );
+  emit reminderCount( activeCount() );
 }
 
 void AlarmDialog::slotUser1() // Dismiss All
@@ -310,7 +310,7 @@ void AlarmDialog::dismissAll()
 {
   QTreeWidgetItemIterator it( mIncidenceTree );
   while ( *it ) {
-    if ( (*it)->isDisabled() ) {
+    if ( (*it)->isDisabled() ) { //do not disable suspended reminders
       continue;
     }
     delete *it;
@@ -318,29 +318,33 @@ void AlarmDialog::dismissAll()
   }
   setTimer();
   accept();
-  emit reminderCount( enabledItems() );
+  emit reminderCount( activeCount() );
 }
 
 void AlarmDialog::suspendAll()
 {
   mIncidenceTree->clearSelection();
   QTreeWidgetItemIterator it( mIncidenceTree );
+
+  // first, select all non-suspended reminders
   while ( *it ) {
-    if ( !(*it)->isDisabled() ) {
+    if ( !(*it)->isDisabled() ) { //do not suspend suspended reminders
       (*it)->setSelected( true );
     }
     ++it;
   }
+
+  //suspend all selected reminders
   suspend();
 }
 
 void AlarmDialog::suspend()
 {
-  if ( !isVisible() ) {
+  if ( !isVisible() ) { //do nothing if the dialog is hidden
     return;
   }
 
-  int unit=1;
+  int unit = 1;
   switch ( mSuspendUnit->currentIndex() ) {
     case 3: // weeks
       unit *=  7;
@@ -356,7 +360,7 @@ void AlarmDialog::suspend()
 
   QTreeWidgetItemIterator it( mIncidenceTree );
   while ( *it ) {
-    if ( (*it)->isSelected() && !(*it)->isDisabled() ) {
+    if ( (*it)->isSelected() && !(*it)->isDisabled() ) { //suspend selected, non-suspended reminders
       (*it)->setSelected( false );
       (*it)->setDisabled( true );
       ReminderListItem *item = static_cast<ReminderListItem *>( *it );
@@ -370,12 +374,12 @@ void AlarmDialog::suspend()
   }
 
   setTimer();
-  if ( enabledItems() == 0 ) {
+  if ( activeCount() == 0 ) {
     accept();
   } else {
     update();
   }
-  emit reminderCount( enabledItems() );
+  emit reminderCount( activeCount() );
 }
 
 void AlarmDialog::eventNotification()
@@ -390,6 +394,7 @@ void AlarmDialog::eventNotification()
     ReminderListItem *item = static_cast<ReminderListItem *>( *it );
     ++it;
     if ( item->isDisabled() || item->mNotified ) {
+      //skip suspended reminders or reminders that have been notified
       continue;
     }
     found = true;
@@ -426,7 +431,7 @@ void AlarmDialog::wakeUp()
   while ( *it ) {
     ReminderListItem *item = static_cast<ReminderListItem *>( *it );
     if ( item->mRemindAt <= QDateTime::currentDateTime() ) {
-      if ( item->isDisabled() ) {
+      if ( item->isDisabled() ) { //do not wakeup non-suspended reminders
         item->setDisabled( false );
         item->setSelected( false );
       }
@@ -442,16 +447,12 @@ void AlarmDialog::wakeUp()
   }
   setTimer();
   showDetails();
-  emit reminderCount( enabledItems() );
+  emit reminderCount( activeCount() );
 }
 
 void AlarmDialog::slotSave()
 {
   KSharedConfig::Ptr config = KGlobal::config();
-  // KLockFile::Ptr lock = config->lockFile();
-  // if ( lock.data()->lock() != KLockFile::LockOK )
-  //   return;
-
   KConfigGroup generalConfig( config, "General" );
   int numReminders = generalConfig.readEntry( "Reminders", 0 );
 
@@ -468,7 +469,6 @@ void AlarmDialog::slotSave()
 
   generalConfig.writeEntry( "Reminders", numReminders );
   config->sync();
-  // lock.data()->unlock();
 }
 
 ReminderList AlarmDialog::selectedItems() const
@@ -477,7 +477,7 @@ ReminderList AlarmDialog::selectedItems() const
 
   QTreeWidgetItemIterator it( mIncidenceTree );
   while ( *it ) {
-    if ( (*it)->isSelected() && !(*it)->isDisabled() ) {
+    if ( (*it)->isSelected() ) {
       list.append( static_cast<ReminderListItem *>( *it ) );
     }
     ++it;
@@ -485,12 +485,12 @@ ReminderList AlarmDialog::selectedItems() const
   return list;
 }
 
-int AlarmDialog::enabledItems()
+int AlarmDialog::activeCount()
 {
   int count = 0;
   QTreeWidgetItemIterator it( mIncidenceTree );
   while ( *it ) {
-    if ( !(*it)->isDisabled() ) {
+    if ( !(*it)->isDisabled() ) { //suspended reminders are non-active
       ++count;
     }
     ++it;
@@ -506,7 +506,6 @@ void AlarmDialog::updateButtons()
   enableButton( Ok, count > 0 );     // enable Dismiss, if >1 selected
   enableButton( User2, count == 1 ); // enable Edit, if only 1 selected
   enableButton( User3, count > 0 );  // enable Suspend, if >1 selected
-  enableButton( User1, count != enabledItems() ); // enable DismissAll unless all are selected
 }
 
 void AlarmDialog::showDetails()
@@ -515,7 +514,7 @@ void AlarmDialog::showDetails()
   mDetailView->clearEvents( true );
   mDetailView->clear();
   ReminderListItem *item = dynamic_cast<ReminderListItem *>( mIncidenceTree->currentItem() );
-  if ( !item || item->isDisabled() ) {
+  if ( !item ) {
     mDetailView->setIncidence( 0 );
   } else {
     mDetailView->setIncidence( item->mIncidence );
@@ -530,5 +529,7 @@ void AlarmDialog::update()
 
 void AlarmDialog::accept()
 {
-  hide();
+  if ( activeCount() == 0 ) {
+    hide();
+  }
 }

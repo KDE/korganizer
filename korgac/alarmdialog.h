@@ -73,7 +73,7 @@ class AlarmDialog : public KDialog
   private:
     bool startKOrganizer();
     void setTimer();
-    int enabledItems();
+    int activeCount();
     QList<ReminderListItem *> selectedItems() const;
     void updateButtons();
     void showDetails();
