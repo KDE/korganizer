@@ -280,8 +280,16 @@ void MonthView::reloadIncidences()
   KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
   Incidence::List incidences = calendar()->incidences();
 
-  for ( QDate d = mStartDate; d <= mEndDate; d = d.addDays( 1 ) ) {
-    foreach ( Incidence *incidence, incidences ) {
+  foreach ( Incidence *incidence, incidences ) {
+    // An event could start before the currently displayed date, so we
+    // have to check at least those dates before the start date, which would
+    // cause the event to span into the displayed date range.
+    int offset = 0;
+    Event *event;
+    if ( ( event = dynamic_cast< Event* >( incidence ) ) ) {
+      offset = event->dtStart().daysTo( event->dtEnd() );
+    }
+    for ( QDate d = mStartDate.addDays( -offset ); d <= mEndDate; d = d.addDays( 1 ) ) {
       if ( incidence->recursOn( d, timeSpec ) ) {
         MonthItem *manager = new IncidenceMonthItem( mScene, incidence, d );
         mScene->mManagerList << manager;
