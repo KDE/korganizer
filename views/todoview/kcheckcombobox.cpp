@@ -213,6 +213,7 @@ void KCheckComboBox::toggleCheckState( const QModelIndex &index )
 
 void KCheckComboBox::toggleCheckState( int pos )
 {
+  Q_UNUSED( pos );
   toggleCheckState( view()->currentIndex() );
 }
 
