@@ -130,7 +130,7 @@ int MonthCell::firstFreeSpace()
 
 //-------------------------------------------------------------
 // MONTHGRAPHICSITEM
-static const int ft = 1; // frame thickness
+static const int ft = 2; // frame thickness
 
 MonthGraphicsItem::MonthGraphicsItem( MonthItem *manager )
   : QGraphicsItem( 0, manager->monthScene() ),
@@ -164,27 +164,26 @@ bool MonthGraphicsItem::isBeginItem() const
 
 QPainterPath MonthGraphicsItem::shape() const
 {
-  return widgetPath( false );
+  return widgetPath( true );
 }
 
 // TODO: remove this method.
-QPainterPath MonthGraphicsItem::widgetPath( bool mask, bool border ) const
+QPainterPath MonthGraphicsItem::widgetPath( bool border ) const
 {
   // If border is set we won't draw all the path. Items spanning on multiple
   // rows won't have borders on their boundaries.
   // If this is the mask, we draw it one pixel bigger
-  int m = mask ? 1 : 0;
-  int x0 = ft / 2 - m;
-  int y0 = ft / 2 - m;
-  int height = boundingRect().height() - ft / 2 + 2 * m;
-  //UNUSED: int width = boundingRect().width() - 1 - ft / 2 + 2 * m;
-  int x1 = boundingRect().width() - 1 - ft / 2 + m;
-  int y1 = boundingRect().height() - ft / 2 + m;
-  int beginRound = boundingRect().height() / 3 + m;
+  int x0 = 0;
+  int y0 = 0;
+  int x1 = boundingRect().width();
+  int y1 = boundingRect().height();
 
-  QPainterPath path( QPoint( beginRound, y0 ) );
+  int height = y1 - y0;
+  int beginRound = height / 3;
+
+  QPainterPath path( QPoint( x0 + beginRound, y0 ) );
   if ( isBeginItem() ) {
-    path.arcTo( QRect( x0, y0, beginRound * 2 + m, height ), +90, +180 );
+    path.arcTo( QRect( x0, y0, beginRound * 2, height ), +90, +180 );
   } else {
     path.lineTo( x0, y0 );
     if ( !border ) {
@@ -197,8 +196,7 @@ QPainterPath MonthGraphicsItem::widgetPath( bool mask, bool border ) const
 
   if ( isEndItem() ) {
     path.lineTo( x1 - beginRound, y1 );
-    path.arcTo( QRect( x1 - 2 * beginRound - m, y0, beginRound * 2 + m, height ), -90, +180 );
-    path.lineTo( x0 + beginRound, y0 );
+    path.arcTo( QRect( x1 - 2 * beginRound, y0, beginRound * 2, height ), -90, +180 );
   } else {
     path.lineTo( x1, y1 );
     if ( !border ) {
@@ -206,19 +204,18 @@ QPainterPath MonthGraphicsItem::widgetPath( bool mask, bool border ) const
     } else {
       path.moveTo( x1, y0 );
     }
-    path.lineTo( x0 + beginRound, y0 );
   }
 
-  if ( !border ) {
-    path.closeSubpath();
-  }
+  // close path
+  path.lineTo( x0 + beginRound, y0 );
 
   return path;
 }
 
 QRectF MonthGraphicsItem::boundingRect() const
 {
-  return QRectF( 0,  0, ( daySpan() + 1 ) * mMonthItem->monthScene()->columnWidth(),
+  // width - 2 because of the cell-dividing line with width == 1 at beginning and end
+  return QRectF( 0,  0, ( daySpan() + 1 ) * mMonthItem->monthScene()->columnWidth() - 2,
                  mMonthItem->monthScene()->itemHeight() );
 }
 
@@ -238,6 +235,7 @@ void MonthGraphicsItem::paint( QPainter *p, const QStyleOptionGraphicsItem *, QW
   // keep this (110) in sync with agendaview
   bgColor = mMonthItem->selected() ? bgColor.lighter( 110 ) : bgColor;
   QColor frameColor = mMonthItem->frameColor( bgColor );
+  frameColor = mMonthItem->selected() ? frameColor.lighter( 110 ) : frameColor;
   QColor textColor = getTextColor(bgColor);
 
   // make moving or resizing items translucent
@@ -245,22 +243,22 @@ void MonthGraphicsItem::paint( QPainter *p, const QStyleOptionGraphicsItem *, QW
     bgColor.setAlphaF( 0.75f );
   }
 
-  QPen pen( Qt::NoPen );
-  pen.setWidth( ft );
-  p->setPen( pen );
-
   QLinearGradient gradient( 0, 0, 0, boundingRect().height() );
   gradient.setColorAt( 0, bgColor );
   gradient.setColorAt( 0.7, bgColor.dark( 110 ) );
   gradient.setColorAt( 1, bgColor.dark( 150 ) );
   QBrush brush( gradient );
   p->setBrush( brush );
-  // Rounded rect
-  p->drawPath( widgetPath() );
+  p->setPen( Qt::NoPen );
+  // Rounded rect without border
+  p->drawPath( widgetPath( false ) );
 
-  // Draw the border
-  p->setPen( frameColor );
-  p->drawPath( widgetPath( false, true ) );
+  // Draw the border without fill
+  QPen pen( frameColor );
+  pen.setWidth( ft );
+  p->setPen( pen );
+  p->setBrush( Qt::NoBrush );
+  p->drawPath( widgetPath( true ) );
 
   p->setPen( textColor );
 
