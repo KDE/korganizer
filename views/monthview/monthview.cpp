@@ -237,7 +237,9 @@ void MonthView::showDates( const QDate &start, const QDate &end )
 
 void MonthView::setStartDate( const QDate &start )
 {
-  mStartDate = start.addDays( - ( start.dayOfWeek() - 1 ) );
+  int weekdayCol = ( start.dayOfWeek() + 7 - KGlobal::locale()->weekStartDay() ) % 7;
+  mStartDate = start.addDays( -weekdayCol );
+
   mEndDate = mStartDate.addDays( 6 * 7 - 1 );
 
   // take "middle" day's month as current month
