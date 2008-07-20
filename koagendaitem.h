@@ -29,15 +29,16 @@
 
 #include <QDateTime>
 #include <QWidget>
-#include <QPixmap>
-#include <QPaintEvent>
 #include <QList>
 
 class QDragEnterEvent;
 class QDropEvent;
+class QPaintEvent;
+class QPainter;
+class QPixmap;
 
 namespace KCal {
-class Incidence;
+  class Incidence;
 }
 using namespace KCal;
 class KOAgendaItem;
@@ -58,11 +59,10 @@ struct MultiItemInfo
   @brief This class describes the widgets that represent the various calendar
          items in the agenda view
 
-  The KOAgendaItem has to make sure that it receives all mouse events, which are
-  to be used for dragging and resizing. That means it has to be installed as
-  event filter for its children, if it has children, and it has to pass mouse
-  events from the children to itself. See eventFilter().
-
+  The KOAgendaItem has to make sure that it receives all mouse events, which
+  are to be used for dragging and resizing. That means it has to be installed
+  as event filter for its children, if it has children, and it has to pass
+  mouse events from the children to itself. See eventFilter().
 
   Some comments on the movement of multi-day items:
   Basically, the agenda items are arranged in two implicit double-linked lists.
@@ -105,7 +105,7 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     /** End the movement (i.e. clean up) */
     void endMove();
 
-    void moveRelative( int dx,int dy );
+    void moveRelative( int dx, int dy );
     void expandTop( int dy );
     void expandBottom( int dy );
     void expandLeft( int dx );
@@ -113,23 +113,33 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
 
     bool isMultiItem();
     KOAgendaItem *prevMoveItem() const
-      { return (mStartMoveInfo)? (mStartMoveInfo->mPrevMultiItem) : 0; }
+    { return (mStartMoveInfo) ? (mStartMoveInfo->mPrevMultiItem) : 0; }
+
     KOAgendaItem *nextMoveItem() const
-      { return (mStartMoveInfo)? (mStartMoveInfo->mNextMultiItem) : 0; }
+    { return (mStartMoveInfo) ? (mStartMoveInfo->mNextMultiItem) : 0; }
+
     MultiItemInfo *moveInfo() const { return mStartMoveInfo; }
+
     void setMultiItem( KOAgendaItem *first,KOAgendaItem *prev,
-                       KOAgendaItem *next, KOAgendaItem *last);
-    KOAgendaItem *prependMoveItem(KOAgendaItem*);
-    KOAgendaItem *appendMoveItem(KOAgendaItem*);
-    KOAgendaItem *removeMoveItem(KOAgendaItem*);
+                       KOAgendaItem *next, KOAgendaItem *last );
+
+    KOAgendaItem *prependMoveItem( KOAgendaItem * );
+
+    KOAgendaItem *appendMoveItem( KOAgendaItem * );
+
+    KOAgendaItem *removeMoveItem( KOAgendaItem * );
+
     KOAgendaItem *firstMultiItem() const
-      { return (mMultiItemInfo)? (mMultiItemInfo->mFirstMultiItem) : 0; }
+    { return (mMultiItemInfo) ? (mMultiItemInfo->mFirstMultiItem) : 0; }
+
     KOAgendaItem *prevMultiItem() const
-      { return (mMultiItemInfo)? (mMultiItemInfo->mPrevMultiItem) : 0; }
+    { return (mMultiItemInfo) ? (mMultiItemInfo->mPrevMultiItem) : 0; }
+
     KOAgendaItem *nextMultiItem() const
-      { return (mMultiItemInfo)? (mMultiItemInfo->mNextMultiItem) : 0; }
+    { return (mMultiItemInfo) ? (mMultiItemInfo->mNextMultiItem) : 0; }
+
     KOAgendaItem *lastMultiItem() const
-      { return (mMultiItemInfo)? (mMultiItemInfo->mLastMultiItem) : 0; }
+    { return (mMultiItemInfo) ? (mMultiItemInfo->mLastMultiItem) : 0; }
 
     bool dissociateFromMultiItem();
 
@@ -156,8 +166,8 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     QColor resourceColor() { return mResourceColor; }
 
   signals:
-    void removeAgendaItem( KOAgendaItem* );
-    void showAgendaItem( KOAgendaItem* );
+    void removeAgendaItem( KOAgendaItem * );
+    void showAgendaItem( KOAgendaItem * );
 
   public slots:
     void updateIcons();
@@ -181,11 +191,10 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     void resetMovePrivate();
     void endMovePrivate();
 
-
   private:
-    void drawRoundedRect( QPainter *p, const QRect& rect, 
-			  bool selected, const QColor& bgcolor,
-			  bool frame, int ft, bool roundTop, bool roundBottom );
+    void drawRoundedRect( QPainter *p, const QRect &rect,
+                          bool selected, const QColor &bgcolor,
+                          bool frame, int ft, bool roundTop, bool roundBottom );
 
     int mCellXLeft, mCellXRight;
     int mCellYTop, mCellYBottom;
@@ -196,18 +205,19 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     QDate mDate; //date this events occurs (for recurrence)
     QString mLabelText;
     bool mIconAlarm, mIconRecur, mIconReadonly;
-    bool mIconReply, mIconGroup, mIconGroupTentative;
+    bool mIconReply, mIconGroup, mIconGroupTent;
     bool mIconOrganizer;
 
     // Multi item pointers
-    MultiItemInfo* mMultiItemInfo;
+    MultiItemInfo *mMultiItemInfo;
+
   protected:
     // Variables to remember start position
-    MultiItemInfo* mStartMoveInfo;
+    MultiItemInfo *mStartMoveInfo;
     //Color of the resource
     QColor mResourceColor;
-  private:
 
+  private:
     bool mSelected;
     QList<KOAgendaItem*> mConflictItems;
 
@@ -216,7 +226,7 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     static QPixmap *readonlyPxmp;
     static QPixmap *replyPxmp;
     static QPixmap *groupPxmp;
-    static QPixmap *groupPxmpTentative;
+    static QPixmap *groupPxmpTent;
     static QPixmap *organizerPxmp;
     static QPixmap *todoPxmp;
     static QPixmap *completedPxmp;
