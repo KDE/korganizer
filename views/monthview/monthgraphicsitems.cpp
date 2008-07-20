@@ -139,6 +139,8 @@ MonthGraphicsItem::MonthGraphicsItem( MonthItem *manager )
   QTransform transform;
   transform = transform.translate( 0.5, 0.5 );
   setTransform( transform );
+
+  setToolTip( mMonthItem->toolTipText() );
 }
 
 MonthGraphicsItem::~MonthGraphicsItem()

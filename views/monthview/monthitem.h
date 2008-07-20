@@ -219,6 +219,11 @@ class MonthItem : public QObject
     virtual QString text( bool end ) const = 0;
 
     /**
+       Returns the text for the tooltip of the item
+     */
+    virtual QString toolTipText() const = 0;
+
+    /**
       Returns the background color of the item.
     */
     virtual QColor bgColor() const = 0;
@@ -285,6 +290,7 @@ class IncidenceMonthItem : public MonthItem
     virtual bool isResizable() const;
 
     QString text( bool end ) const;
+    QString toolTipText() const;
 
     QColor bgColor() const;
     QColor frameColor( const QColor &bgColor ) const;
@@ -327,7 +333,8 @@ class HolidayMonthItem : public MonthItem
     virtual bool isMoveable() const { return false; }
     virtual bool isResizable() const { return false; }
 
-    QString text( bool end ) const { Q_UNUSED( end ); return mName; }
+    QString text(bool end ) const { Q_UNUSED( end ); return mName; }
+    QString toolTipText() const { return mName; };
 
     QColor bgColor() const;
     QColor frameColor( const QColor &bgColor ) const;
