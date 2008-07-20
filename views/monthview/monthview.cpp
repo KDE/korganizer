@@ -40,6 +40,7 @@
 #include <QWheelEvent>
 #include <QKeyEvent>
 #include <QDate>
+#include <QTimer>
 
 using namespace KOrg;
 
@@ -155,7 +156,12 @@ void MonthView::changeIncidenceDisplay( Incidence *incidence, int action )
   Q_UNUSED( action );
 
   //TODO: add some more intelligence here...
-  reloadIncidences();
+
+  // don't call reloadIncidences() directly. It would delete all
+  // MonthItems, but this changeIncidenceDisplay()-method was probably
+  // called by one of the MonthItem objects. So only shedule a reload
+  // as event
+  QTimer::singleShot( 0, this, SLOT( reloadIncidences() ) );
 }
 
 void MonthView::addIncidence( Incidence *incidence )
@@ -274,36 +280,16 @@ void MonthView::reloadIncidences()
   KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
   Incidence::List incidences = calendar()->incidences();
 
-  // remove incidences which are not in the good timespan
-  foreach ( Incidence *incidence, incidences ) {
-    if ( incidence->type() == "Event" ) {
-      Event *event = static_cast<Event*>( incidence );
-      if ( mEndDate < KOHelper::toTimeSpec( event->dtStart() ).date() ||
-           KOHelper::toTimeSpec( event->dtEnd() ).date() < mStartDate ) {
-        incidences.removeAll( incidence );
+  for ( QDate d = mStartDate; d <= mEndDate; d = d.addDays( 1 ) ) {
+    foreach ( Incidence *incidence, incidences ) {
+      if ( incidence->recursOn( d, timeSpec ) ) {
+        MonthItem *manager = new IncidenceMonthItem( mScene, incidence, d );
+        mScene->mManagerList << manager;
+        if ( incidenceSelected == incidence ) {
+          // If there was an item selected before, reselect it.
+          mScene->selectItem( manager );
+        }
       }
-    } else if ( incidence->type() == "Todo" ) {
-      Todo *todo = dynamic_cast<Todo*>( incidence );
-      if ( KOHelper::toTimeSpec( todo->dtDue() ).date() < mStartDate ||
-           KOHelper::toTimeSpec( todo->dtDue() ).date() > mEndDate ) {
-        incidences.removeAll( incidence );
-      }
-    } else if ( incidence->type() == "Journal" ) {
-      Journal *todo = dynamic_cast<Journal*>( incidence );
-      if ( KOHelper::toTimeSpec( todo->dtStart() ).date() < mStartDate ||
-           KOHelper::toTimeSpec( todo->dtStart() ).date() > mEndDate ) {
-        incidences.removeAll( incidence );
-      }
-    }
-
-  }
-
-  foreach ( Incidence *incidence, incidences ) {
-    MonthItem *manager = new IncidenceMonthItem( mScene, incidence );
-    mScene->mManagerList << manager;
-    if ( incidenceSelected == incidence ) {
-      // If there was an item selected before, reselect it.
-      mScene->selectItem( manager );
     }
   }
 

@@ -257,7 +257,8 @@ class IncidenceMonthItem : public MonthItem
   Q_OBJECT
 
   public:
-    IncidenceMonthItem( MonthScene *monthScene, Incidence *incidence );
+    IncidenceMonthItem( MonthScene *monthScene, Incidence *incidence,
+                        const QDate &recurStartDate = QDate() );
     virtual ~IncidenceMonthItem();
 
     Incidence *incidence() const { return mIncidence; }
@@ -292,6 +293,7 @@ class IncidenceMonthItem : public MonthItem
 
   private:
     Incidence *mIncidence;
+    int mRecurDayOffset;
     bool mIsEvent, mIsTodo, mIsJournal;
 };
 
