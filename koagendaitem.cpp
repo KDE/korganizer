@@ -67,7 +67,9 @@ QPixmap *KOAgendaItem::replyPxmp = 0;
 QPixmap *KOAgendaItem::groupPxmp = 0;
 QPixmap *KOAgendaItem::groupPxmpTent = 0;
 QPixmap *KOAgendaItem::organizerPxmp = 0;
+QPixmap *KOAgendaItem::eventPxmp = 0;
 QPixmap *KOAgendaItem::todoPxmp = 0;
+QPixmap *KOAgendaItem::journalPxmp = 0;
 QPixmap *KOAgendaItem::completedPxmp = 0;
 
 //-----------------------------------------------------------------------------
@@ -701,13 +703,17 @@ static void conditionalPaint( QPainter *p, bool condition, int &x, int y,
   x += pxmp.width() + ft;
 }
 
-void KOAgendaItem::paintTodoIcon( QPainter *p, int &x, int y, int ft )
+void KOAgendaItem::paintEventIcon( QPainter *p, int &x, int y, int ft )
 {
   if ( !mIncidence ) {
     return;
   }
+  conditionalPaint( p, mIncidence->type() == "Event", x, y, ft, *eventPxmp );
+}
 
-  if ( mIncidence->type() != "Todo" ) {
+void KOAgendaItem::paintTodoIcon( QPainter *p, int &x, int y, int ft )
+{
+  if ( !mIncidence || mIncidence->type() != "Todo" ) {
     return;
   }
 
@@ -716,11 +722,25 @@ void KOAgendaItem::paintTodoIcon( QPainter *p, int &x, int y, int ft )
   conditionalPaint( p, b, x, y, ft, *completedPxmp );
 }
 
+void KOAgendaItem::paintJournalIcon( QPainter *p, int &x, int y, int ft )
+{
+  if ( !mIncidence ) {
+    return;
+  }
+  conditionalPaint( p, mIncidence->type() == "Journal", x, y, ft, *journalPxmp );
+}
+
 void KOAgendaItem::paintIcons( QPainter *p, int &x, int y, int ft )
 {
+  paintEventIcon( p, x, y, ft );
   paintTodoIcon( p, x, y, ft );
+  paintJournalIcon( p, x, y, ft );
+#if 0
+  /* sorry, this looks too cluttered. disable until we can
+     make something prettier; no idea at this time -- allen */
   conditionalPaint( p, mIconAlarm, x, y, ft, *alarmPxmp );
   conditionalPaint( p, mIconRecur, x, y, ft, *recurPxmp );
+#endif
   conditionalPaint( p, mIconReadonly, x, y, ft, *readonlyPxmp );
   conditionalPaint( p, mIconReply, x, y, ft, *replyPxmp );
   conditionalPaint( p, mIconGroup, x, y, ft, *groupPxmp );
@@ -754,8 +774,10 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
     groupPxmp     = new QPixmap( KOGlobals::self()->smallIcon( "meeting-attending" ) );
     groupPxmpTent = new QPixmap( KOGlobals::self()->smallIcon( "meeting-attending-tentative" ) );
     organizerPxmp = new QPixmap( KOGlobals::self()->smallIcon( "meeting-organizer" ) );
+    eventPxmp     = new QPixmap( KOGlobals::self()->smallIcon( "view-calendar-day" ) );
     todoPxmp      = new QPixmap( KOGlobals::self()->smallIcon( "view-calendar-tasks" ) );
     completedPxmp = new QPixmap( KOGlobals::self()->smallIcon( "task-complete" ) );
+    journalPxmp   = new QPixmap( KOGlobals::self()->smallIcon( "view-pim-journal" ) );
   }
 
   QColor bgColor;

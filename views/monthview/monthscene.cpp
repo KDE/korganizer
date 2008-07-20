@@ -57,6 +57,7 @@ MonthScene::MonthScene( MonthView *parent, Calendar *calendar )
   mJournalPixmap   = KOGlobals::self()->smallIcon( "view-pim-journal" );
   mAlarmPixmap     = KOGlobals::self()->smallIcon( "appointment-reminder" );
   mRecurPixmap     = KOGlobals::self()->smallIcon( "appointment-recurring" );
+  mReadonlyPixmap  = KOGlobals::self()->smallIcon( "object-locked" );
   mReplyPixmap     = KOGlobals::self()->smallIcon( "mail-reply-sender" );
   mHolidayPixmap   = KOGlobals::self()->smallIcon( "favorites" );
 }

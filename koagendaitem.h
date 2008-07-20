@@ -178,11 +178,7 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     bool event( QEvent *event );
     void dragEnterEvent( QDragEnterEvent *e );
     void dropEvent( QDropEvent *e );
-    void paintEvent( QPaintEvent *e );
-    void paintTodoIcon( QPainter *p, int &x, int y, int ft );
-
-    // paint all visible icons
-    void paintIcons( QPainter *p, int &x, int y, int ft );
+    /**reimp*/ void paintEvent( QPaintEvent *e );
 
     /** private movement functions. startMove needs to be called of only one of
      *  the multitems. it will then loop through the whole series using
@@ -192,6 +188,13 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     void endMovePrivate();
 
   private:
+    void paintEventIcon( QPainter *p, int &x, int y, int ft );
+    void paintTodoIcon( QPainter *p, int &x, int y, int ft );
+    void paintJournalIcon( QPainter *p, int &x, int y, int ft );
+
+    // paint all visible icons
+    void paintIcons( QPainter *p, int &x, int y, int ft );
+
     void drawRoundedRect( QPainter *p, const QRect &rect,
                           bool selected, const QColor &bgcolor,
                           bool frame, int ft, bool roundTop, bool roundBottom );
@@ -228,8 +231,10 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     static QPixmap *groupPxmp;
     static QPixmap *groupPxmpTent;
     static QPixmap *organizerPxmp;
+    static QPixmap *eventPxmp;
     static QPixmap *todoPxmp;
     static QPixmap *completedPxmp;
+    static QPixmap *journalPxmp;
 };
 
 #endif

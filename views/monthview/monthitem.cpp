@@ -476,6 +476,12 @@ QList<QPixmap *> IncidenceMonthItem::icons() const
   } else if ( mIsJournal ) {
     ret << monthScene()->journalPixmap();
   }
+  if ( mIncidence->isReadOnly() ) {
+    ret << monthScene()->readonlyPixmap();
+  }
+#if 0
+  /* sorry, this looks too cluttered. disable until we can
+     make something prettier; no idea at this time -- allen */
   if ( mIncidence->isAlarmEnabled() ) {
     ret << monthScene()->alarmPixmap();
   }
@@ -483,7 +489,7 @@ QList<QPixmap *> IncidenceMonthItem::icons() const
     ret << monthScene()->recurPixmap();
   }
   //TODO: check what to do with Reply
-
+#endif
   return ret;
 }
 
