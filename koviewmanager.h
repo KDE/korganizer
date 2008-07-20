@@ -102,7 +102,6 @@ class KOViewManager : public QObject
     void showWorkWeekView();
     void showWeekView();
     void showNextXView();
-    void showOldMonthView();
     void showTodoView();
     void showTimeLineView();
     void showTimeSpentView();
@@ -128,7 +127,6 @@ class KOViewManager : public QObject
     KOAgendaView *mAgendaView;
     KOrg::MultiAgendaView *mAgendaSideBySideView;
     KOListView *mListView;
-    KOMonthView *mOldMonthView;
     KOTodoView *mTodoView;
     KOWhatsNextView *mWhatsNextView;
     KOJournalView *mJournalView;
