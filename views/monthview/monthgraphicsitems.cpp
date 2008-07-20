@@ -27,6 +27,7 @@
 #include "monthitem.h"
 #include "monthscene.h"
 
+#include "koglobals.h"
 #include "koprefs.h"
 #include "kohelper.h"
 
@@ -294,7 +295,11 @@ void MonthGraphicsItem::paint( QPainter *p, const QStyleOptionGraphicsItem *, QW
     int textWidth = p->fontMetrics().size( 0, text ).width();
     if ( textWidth + iconWidths > textRect.width() ) {
       textWidth = textRect.width() - iconWidths;
-      text = p->fontMetrics().elidedText( text, Qt::ElideRight, textWidth );
+      if ( KOGlobals::reverseLayout() ) {
+        text = p->fontMetrics().elidedText( text, Qt::ElideLeft, textWidth );
+      } else {
+        text = p->fontMetrics().elidedText( text, Qt::ElideRight, textWidth );
+      }
     }
 
     int curXPos = textRect.left();
@@ -318,7 +323,11 @@ void MonthGraphicsItem::paint( QPainter *p, const QStyleOptionGraphicsItem *, QW
 
     p->drawText( textRect, alignFlag, text );
   } else {
-    text = p->fontMetrics().elidedText( text, Qt::ElideRight, textRect.width() );
+    if ( KOGlobals::reverseLayout() ) {
+      text = p->fontMetrics().elidedText( text, Qt::ElideLeft, textRect.width() );
+    } else {
+      text = p->fontMetrics().elidedText( text, Qt::ElideRight, textRect.width() );
+    }
     p->drawText( textRect, alignFlag, text );
   }
 
