@@ -64,6 +64,8 @@ class AlarmDockWindow : public KSystemTrayIcon
     QAction *mAutostart;
     QAction *mSuspendAll;
     QAction *mDismissAll;
+
+    bool mAutostartSet;
 };
 
 #endif
