@@ -32,7 +32,9 @@
 #include "koprefs.h"
 #include "kohelper.h"
 #include "koglobals.h"
+#include "komessagebox.h"
 
+#include <kcal/calendar.h>
 #include <kcal/todo.h>
 #include <kcal/journal.h>
 #include <kcal/event.h>
@@ -370,58 +372,126 @@ bool IncidenceMonthItem::isResizable() const
 void IncidenceMonthItem::finalizeMove( const QDate &newStartDate )
 {
   Q_ASSERT( isMoveable() );
-  IncidenceChangerBase *changer = monthScene()->incidenceChanger();
 
-  if ( !changer || !changer->beginChange( mIncidence ) ) {
-    KODialogManager::errorSaveIncidence( 0, mIncidence );
-    return;
-  }
-
-  Incidence *oldInc = mIncidence->clone();
-
-  int offset = startDate().daysTo( newStartDate );
-
-  if ( mIsTodo ) {
-    Todo *todo = static_cast<Todo *>( mIncidence );
-    todo->setDtDue( todo->dtDue().addDays( offset ) );
-  } else {
-    mIncidence->setDtStart( mIncidence->dtStart().addDays( offset ) );
-    if ( mIsEvent ) {
-      Event *event = static_cast<Event *>( mIncidence );
-      event->setDtEnd( event->dtEnd().addDays( offset ) );
-    }
-  }
-
-  changer->changeIncidence( oldInc, mIncidence, KOGlobals::DATE_MODIFIED );
-  changer->endChange( mIncidence );
-
-  delete oldInc;
+  updateDates( startDate().daysTo( newStartDate ),
+               startDate().daysTo( newStartDate ) );
 }
 void IncidenceMonthItem::finalizeResize( const QDate &newStartDate,
                                          const QDate &newEndDate )
 {
   Q_ASSERT( isResizable() );
-  IncidenceChangerBase *changer = monthScene()->incidenceChanger();
 
+  updateDates( startDate().daysTo( newStartDate ),
+               endDate().daysTo( newEndDate ) );
+}
+
+void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
+{
+  if ( startOffset == 0 && endOffset == 0 ) {
+    return;
+  }
+
+  IncidenceChangerBase *changer = monthScene()->incidenceChanger();
   if ( !changer || !changer->beginChange( mIncidence ) ) {
     KODialogManager::errorSaveIncidence( 0, mIncidence );
     return;
   }
 
-  Incidence *oldInc = mIncidence->clone();
+  bool modify = true;
 
-  Event *event = static_cast<Event *>( mIncidence );
+  if ( mIncidence->recurs() ) {
+    int res = KOMessageBox::fourBtnMsgBox( 0, QMessageBox::Question,
+                i18n( "The item you try to change is a recurring item. "
+                      "Shall the changes be applied only to this single occurrence, "
+                      "only to the future items, or to all items in the recurrence?" ),
+                i18n( "Changing Recurring Item" ),
+                KGuiItem( i18n( "Only &This Item" ) ),
+                KGuiItem( i18n( "Only &Future Items" ) ),
+                KGuiItem( i18n( "&All Occurrences" ) ) );
+    switch ( res ) {
+      case KMessageBox::Ok: // All occurrences
+        // Moving the whole sequene of events is handled by the itemModified below.
+        modify = true;
+        break;
+      case KMessageBox::Yes: // Just this occurrence
+      {
+        modify = true;
+        Incidence *oldIncSaved = mIncidence->clone();
+        Incidence *newInc = monthScene()->calendar()->dissociateOccurrence(
+            mIncidence, startDate(), KOPrefs::instance()->timeSpec() );
+        if ( newInc ) {
+          changer->changeIncidence( oldIncSaved, mIncidence );
+          changer->endChange( mIncidence );
 
-  int offset = startDate().daysTo( newStartDate );
-  event->setDtStart( event->dtStart().addDays( offset ) );
+          changer->addIncidence( newInc );
+          // let the standard code change the dates for the new incidence
+          mIncidence = newInc;
+          if ( !changer->beginChange( mIncidence ) ) {
+            KODialogManager::errorSaveIncidence( 0, mIncidence );
+            return;
+          }
+        } else {
+          KMessageBox::sorry( 0,
+                              i18n( "Unable to add the exception item to the calendar. "
+                                    "No change will be done." ),
+                              i18n( "Error Occurred" ) );
+          modify = false;
+        }
+        delete oldIncSaved;
+        break;
+      }
+      case KMessageBox::No: // All future occurences
+      {
+        modify = true;
+        Incidence *oldIncSaved = mIncidence->clone();
+        Incidence *newInc = monthScene()->calendar()->dissociateOccurrence(
+            mIncidence, startDate(), KOPrefs::instance()->timeSpec(), false );
+        if ( newInc ) {
+          changer->changeIncidence( oldIncSaved, mIncidence );
+          changer->endChange( mIncidence );
 
-  offset = endDate().daysTo( newEndDate );
-  event->setDtEnd( event->dtEnd().addDays( offset ) );
+          changer->addIncidence( newInc );
+          // let the standard code change the dates for the new incidence
+          mIncidence = newInc;
+          if ( !changer->beginChange( mIncidence ) ) {
+            KODialogManager::errorSaveIncidence( 0, mIncidence );
+            return;
+          }
+        } else {
+          KMessageBox::sorry( 0,
+                              i18n( "Unable to add the future items to the calendar. "
+                                    "No change will be done." ),
+                              i18n( "Error Occurred" ) );
+          modify = false;
+        }
+        delete oldIncSaved;
+        break;
+      }
+      default:
+        modify = false;
+    }
+  }
 
-  changer->changeIncidence( oldInc, mIncidence, KOGlobals::DATE_MODIFIED );
-  changer->endChange( mIncidence );
+  if ( modify ) {
+    Incidence *oldInc = mIncidence->clone();
 
-  delete oldInc;
+    if ( !mIsTodo ) {
+      mIncidence->setDtStart( mIncidence->dtStart().addDays( startOffset ) );
+
+      if ( mIsEvent ) {
+        Event *event = static_cast<Event *>( mIncidence );
+        event->setDtEnd( event->dtEnd().addDays( endOffset ) );
+      }
+    } else {
+      Todo *todo = static_cast<Todo *>( mIncidence );
+      todo->setDtDue( todo->dtDue().addDays( startOffset ) );
+    }
+
+    changer->changeIncidence( oldInc, mIncidence, KOGlobals::DATE_MODIFIED );
+    changer->endChange( mIncidence );
+
+    delete oldInc;
+  }
 }
 
 void IncidenceMonthItem::updateSelection( Incidence *incidence )

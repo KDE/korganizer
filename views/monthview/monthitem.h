@@ -311,6 +311,8 @@ class IncidenceMonthItem : public MonthItem
     void updateSelection( Incidence *incidence );
 
   private:
+    void updateDates( int startOffset, int endOffset );
+
     Incidence *mIncidence;
     int mRecurDayOffset;
     bool mIsEvent, mIsTodo, mIsJournal;
