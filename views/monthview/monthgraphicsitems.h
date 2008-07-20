@@ -40,12 +40,16 @@ namespace KOrg {
 class MonthItem;
 
 /**
- * Graphics items which indicates that the view can be scrolled to display more events
+ * Graphics items which indicates that the view can be scrolled to display
+ * more events.
  */
 class ScrollIndicator : public QGraphicsItem
 {
   public:
-    enum ArrowDirection { UpArrow, DownArrow };
+    enum ArrowDirection {
+      UpArrow,
+      DownArrow
+    };
 
     ScrollIndicator( ArrowDirection direction );
 
@@ -53,6 +57,7 @@ class ScrollIndicator : public QGraphicsItem
     void paint( QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget );
 
     ArrowDirection direction() { return mDirection; }
+
   private:
     ArrowDirection mDirection;
 
@@ -68,13 +73,14 @@ class MonthCell
   public:
     MonthCell( int id, QDate date, QGraphicsScene *scene );
     ~MonthCell();
-    /**
-    This is used to get the height of the minimum height (vertical position)
-    in the month cells.
-     */
-    QList< MonthItem* > mMonthItemList;
 
-    QHash<int, MonthItem*> mHeightHash;
+    /**
+      This is used to get the height of the minimum height (vertical position)
+      in the month cells.
+    */
+    QList<MonthItem *> mMonthItemList;
+
+    QHash<int, MonthItem *> mHeightHash;
 
     int firstFreeSpace();
     void addMonthItem( MonthItem *manager, int height );
@@ -109,8 +115,8 @@ class MonthCell
 };
 
 /**
- * A MonthGraphicsItem representing a part of an event. There should be one part
- * per row = week
+ * A MonthGraphicsItem representing a part of an event. There should be
+ * one part per row = week
  */
 class MonthGraphicsItem : public QObject, public QGraphicsItem
 {
@@ -123,62 +129,62 @@ class MonthGraphicsItem : public QObject, public QGraphicsItem
     ~MonthGraphicsItem();
 
     /**
-    Change QGraphicsItem pos and boundingRect in the scene
-    according to the incidence start and end date.
-     */
+      Change QGraphicsItem pos and boundingRect in the scene
+      according to the incidence start and end date.
+    */
     void updateGeometry();
 
     /**
-    Returns the associated MonthItem.
-     */
+      Returns the associated MonthItem.
+    */
     MonthItem *monthItem() const { return mMonthItem; }
 
     /**
-    Returns the starting date of this item.
-     */
+      Returns the starting date of this item.
+    */
     QDate startDate() const;
 
     /**
-    Returns the number of day this item spans on minus one
-    to be compatible with QDate::addDays().
-     */
+      Returns the number of day this item spans on minus one
+      to be compatible with QDate::addDays().
+    */
     int daySpan() const;
 
     /**
-    Computed from startDate() and daySpan().
-     */
+      Computed from startDate() and daySpan().
+    */
     QDate endDate() const;
 
     void setStartDate( const QDate &d );
     void setDaySpan( int span );
 
     /**
-    Returns true if this item is currently being moved (ie. the
-    associated MonthItem is being moved).
-     */
+      Returns true if this item is currently being moved (ie. the
+      associated MonthItem is being moved).
+    */
     bool isMoving() const;
 
     /**
-    Returns true if this item is currently being resized (ie. the
-    associated MonthItem is being moved).
-     */
+      Returns true if this item is currently being resized (ie. the
+      associated MonthItem is being moved).
+    */
     bool isResizing() const;
 
     /**
-    Returns true if this MonthGraphicsItem is the first one of the
-    MonthItem ones.
-     */
+      Returns true if this MonthGraphicsItem is the first one of the
+      MonthItem ones.
+    */
     bool isBeginItem() const;
 
     /**
-    Returns true if this MonthGraphicsItem is the last one of the
-    MonthItem ones.
-     */
+      Returns true if this MonthGraphicsItem is the last one of the
+      MonthItem ones.
+    */
     bool isEndItem() const;
 
     /**
-    Reimplemented from QGraphicsItem
-     */
+      Reimplemented from QGraphicsItem
+    */
     virtual QRectF boundingRect() const;
     virtual void paint( QPainter *, const QStyleOptionGraphicsItem *, QWidget * );
     virtual QPainterPath shape() const;

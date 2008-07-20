@@ -244,7 +244,7 @@ bool MonthItem::greaterThan( const MonthItem *e1, const MonthItem *e2 )
 
 bool MonthItem::greaterThanFallback( const MonthItem *other ) const
 {
-  // Yeah, pointer comparision if there is nothing else to compare...
+  // Yeah, pointer comparison if there is nothing else to compare...
   return this < other;
 }
 
@@ -278,7 +278,7 @@ void MonthItem::updatePosition()
 IncidenceMonthItem::IncidenceMonthItem( MonthScene *monthScene,
                                         Incidence *incidence,
                                         const QDate &recurStartDate )
-  : MonthItem( monthScene), mIncidence( incidence )
+  : MonthItem( monthScene ), mIncidence( incidence )
 {
   mIsEvent = mIncidence->type() == "Event";
   mIsJournal = mIncidence->type() == "Journal";
@@ -300,7 +300,7 @@ IncidenceMonthItem::~IncidenceMonthItem()
 
 bool IncidenceMonthItem::greaterThanFallback( const MonthItem *other ) const
 {
-  const IncidenceMonthItem *o = dynamic_cast< const IncidenceMonthItem* >( other );
+  const IncidenceMonthItem *o = dynamic_cast<const IncidenceMonthItem *>( other );
   if ( !o ) {
     return MonthItem::greaterThanFallback( other );
   }
@@ -322,7 +322,7 @@ QDate IncidenceMonthItem::realStartDate() const
   if ( mIsEvent || mIsJournal ) {
     dt = mIncidence->dtStart();
   } else if ( mIsTodo ) {
-    dt = static_cast< Todo* >( mIncidence )->dtDue();
+    dt = static_cast<Todo *>( mIncidence )->dtDue();
   }
 
   QDate start;
@@ -340,7 +340,7 @@ QDate IncidenceMonthItem::realEndDate() const
   if ( mIsEvent || mIsJournal ) {
     dt = mIncidence->dtEnd();
   } else if ( mIsTodo ) {
-    dt = static_cast< Todo* >( mIncidence )->dtDue();
+    dt = static_cast<Todo *>( mIncidence )->dtDue();
   }
 
   QDate end;
@@ -381,12 +381,12 @@ void IncidenceMonthItem::finalizeMove( const QDate &newStartDate )
   int offset = startDate().daysTo( newStartDate );
 
   if ( mIsTodo ) {
-    Todo *todo = static_cast< Todo* >( mIncidence );
+    Todo *todo = static_cast<Todo *>( mIncidence );
     todo->setDtDue( todo->dtDue().addDays( offset ) );
   } else {
     mIncidence->setDtStart( mIncidence->dtStart().addDays( offset ) );
     if ( mIsEvent ) {
-      Event *event = static_cast< Event* >( mIncidence );
+      Event *event = static_cast<Event *>( mIncidence );
       event->setDtEnd( event->dtEnd().addDays( offset ) );
     }
   }
@@ -409,7 +409,7 @@ void IncidenceMonthItem::finalizeResize( const QDate &newStartDate,
 
   Incidence *oldInc = mIncidence->clone();
 
-  Event *event = static_cast< Event* >( mIncidence );
+  Event *event = static_cast<Event *>( mIncidence );
 
   int offset = startDate().daysTo( newStartDate );
   event->setDtStart( event->dtStart().addDays( offset ) );
@@ -455,14 +455,14 @@ QString IncidenceMonthItem::text( bool end ) const
   return ret;
 }
 
-QList< QPixmap* > IncidenceMonthItem::icons() const
+QList<QPixmap *> IncidenceMonthItem::icons() const
 {
-  QList< QPixmap* > ret;
+  QList<QPixmap *> ret;
 
   if ( mIsEvent ) {
     ret << monthScene()->eventPixmap();
   } else if ( mIsTodo ) {
-    if ( static_cast< Todo* >( mIncidence )->isCompleted() ) {
+    if ( static_cast<Todo *>( mIncidence )->isCompleted() ) {
       ret << monthScene()->todoDonePixmap();
     } else {
       ret << monthScene()->todoPixmap();
@@ -542,7 +542,7 @@ HolidayMonthItem::~HolidayMonthItem()
 
 bool HolidayMonthItem::greaterThanFallback( const MonthItem *other ) const
 {
-  const HolidayMonthItem *o = dynamic_cast< const HolidayMonthItem* >( other );
+  const HolidayMonthItem *o = dynamic_cast<const HolidayMonthItem *>( other );
   if ( o ) {
     return MonthItem::greaterThanFallback( other );
   }
@@ -557,16 +557,16 @@ void HolidayMonthItem::finalizeMove( const QDate &newStartDate )
   Q_ASSERT( false );
 }
 void HolidayMonthItem::finalizeResize( const QDate &newStartDate,
-                                         const QDate &newEndDate )
+                                       const QDate &newEndDate )
 {
   Q_UNUSED( newStartDate );
   Q_UNUSED( newEndDate );
   Q_ASSERT( false );
 }
 
-QList< QPixmap* > HolidayMonthItem::icons() const
+QList<QPixmap *> HolidayMonthItem::icons() const
 {
-  QList< QPixmap* > ret;
+  QList<QPixmap *> ret;
   ret << monthScene()->holidayPixmap();
 
   return ret;

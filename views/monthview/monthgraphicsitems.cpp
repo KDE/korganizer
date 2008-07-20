@@ -50,6 +50,9 @@ QRectF ScrollIndicator::boundingRect() const
 void ScrollIndicator::paint( QPainter *painter, const QStyleOptionGraphicsItem *option,
                              QWidget *widget )
 {
+  Q_UNUSED( option );
+  Q_UNUSED( widget );
+
   painter->setRenderHint( QPainter::Antialiasing );
 
   QPolygon arrow( 3 );
@@ -59,7 +62,7 @@ void ScrollIndicator::paint( QPainter *painter, const QStyleOptionGraphicsItem *
     arrow.setPoint( 2, - mWidth / 2, mHeight / 2 );
   } else if ( mDirection == ScrollIndicator::DownArrow ) { // down
     arrow.setPoint( 1, mWidth / 2, - mHeight / 2 );
-    arrow.setPoint( 2, - mWidth / 2,  - mHeight / 2 );
+    arrow.setPoint( 2, - mWidth / 2, - mHeight / 2 );
     arrow.setPoint( 0, 0, mHeight / 2 );
   }
   QColor color( Qt::black );
@@ -165,14 +168,14 @@ QPainterPath MonthGraphicsItem::shape() const
 // TODO: remove this method.
 QPainterPath MonthGraphicsItem::widgetPath( bool mask, bool border ) const
 {
-  // If border is set we won't draw all the path. Items spanning on multiple rows won't
-  // have borders on their boundaries.
+  // If border is set we won't draw all the path. Items spanning on multiple
+  // rows won't have borders on their boundaries.
   // If this is the mask, we draw it one pixel bigger
   int m = mask ? 1 : 0;
   int x0 = ft / 2 - m;
   int y0 = ft / 2 - m;
   int height = boundingRect().height() - ft / 2 + 2 * m;
-  int width = boundingRect().width() - 1 - ft / 2 + 2 * m;
+  //UNUSED: int width = boundingRect().width() - 1 - ft / 2 + 2 * m;
   int x1 = boundingRect().width() - 1 - ft / 2 + m;
   int y1 = boundingRect().height() - ft / 2 + m;
   int beginRound = boundingRect().height() / 3 + m;
@@ -276,10 +279,10 @@ void MonthGraphicsItem::paint( QPainter *p, const QStyleOptionGraphicsItem *, QW
                           boundingRect().width() - 2 * textMargin, scene->itemHeight() );
 
   if ( KOPrefs::instance()->enableMonthItemIcons() ) {
-    QList< QPixmap* > icons = mMonthItem->icons();
+    QList<QPixmap *> icons = mMonthItem->icons();
     int iconWidths = 0;
 
-    foreach( QPixmap *icon, icons ) {
+    foreach ( QPixmap *icon, icons ) {
       iconWidths += icon->width();
     }
 
@@ -308,7 +311,7 @@ void MonthGraphicsItem::paint( QPainter *p, const QStyleOptionGraphicsItem *, QW
 
     // assume that all pixmaps have the same height
     int pixYPos = icons.isEmpty() ? 0 : ( textRect.height() - icons[0]->height() ) / 2;
-    foreach( QPixmap *icon, icons ) {
+    foreach ( QPixmap *icon, icons ) {
       p->drawPixmap( curXPos, pixYPos, *icon );
       curXPos += icon->width();
     }
@@ -350,8 +353,8 @@ void MonthGraphicsItem::updateGeometry()
 {
   MonthCell *cell =  mMonthItem->monthScene()->mMonthCellMap.value( startDate() );
 
-  // If the item is moving and this one is moved outside the view, cell
-  // will be null
+  // If the item is moving and this one is moved outside the view,
+  // cell will be null
   if ( mMonthItem->isMoving() && !cell ) {
     hide();
     return;
@@ -365,9 +368,9 @@ void MonthGraphicsItem::updateGeometry()
   int beginY = 1 + cell->topMargin() + mMonthItem->monthScene()->cellVerticalPos( cell );
 
   beginY += mMonthItem->position() *
-              mMonthItem->monthScene()->itemHeightIncludingSpacing() -
+            mMonthItem->monthScene()->itemHeightIncludingSpacing() -
             mMonthItem->monthScene()->startHeight() *
-              mMonthItem->monthScene()->itemHeightIncludingSpacing(); // scrolling
+            mMonthItem->monthScene()->itemHeightIncludingSpacing(); // scrolling
 
   setPos( beginX, beginY );
 

@@ -66,29 +66,29 @@ MonthView::MonthView( Calendar *calendar, QWidget *parent )
   minusMonth->setIcon( KIcon( "arrow-up-double" ) );
   minusMonth->setToolTip( i18n( "Go back one month" ) );
   minusMonth->setAutoRaise( true );
-  connect( minusMonth, SIGNAL( clicked() ),
-           this, SLOT( moveBackMonth() ) );
+  connect( minusMonth, SIGNAL(clicked()),
+           this, SLOT(moveBackMonth()) );
 
   QToolButton *minusWeek = new QToolButton( this );
   minusWeek->setIcon( KIcon( "arrow-up" ) );
   minusWeek->setToolTip( i18n( "Go back one week" ) );
   minusWeek->setAutoRaise( true );
-  connect( minusWeek, SIGNAL( clicked() ),
-           this, SLOT( moveBackWeek() ) );
+  connect( minusWeek, SIGNAL(clicked()),
+           this, SLOT(moveBackWeek()) );
 
   QToolButton *plusWeek = new QToolButton( this );
   plusWeek->setIcon( KIcon( "arrow-down" ) );
   plusWeek->setToolTip( i18n( "Go forward one week" ) );
   plusWeek->setAutoRaise( true );
-  connect( plusWeek, SIGNAL( clicked() ),
-           this, SLOT( moveFwdWeek() ) );
+  connect( plusWeek, SIGNAL(clicked()),
+           this, SLOT(moveFwdWeek()) );
 
   QToolButton *plusMonth = new QToolButton( this );
   plusMonth->setIcon( KIcon( "arrow-down-double" ) );
   plusMonth->setToolTip( i18n( "Go forward one month" ) );
   plusMonth->setAutoRaise( true );
-  connect( plusMonth, SIGNAL( clicked() ),
-           this, SLOT( moveFwdMonth() ) );
+  connect( plusMonth, SIGNAL(clicked()),
+           this, SLOT(moveFwdMonth()) );
 
   rightLayout->addWidget( minusMonth );
   rightLayout->addWidget( minusWeek );
@@ -99,14 +99,14 @@ MonthView::MonthView( Calendar *calendar, QWidget *parent )
 
   mViewPopup = eventPopup();
 
-  connect( mScene, SIGNAL( showIncidencePopupSignal( Incidence *, const QDate & ) ),
-           mViewPopup, SLOT( showIncidencePopup( Incidence *, const QDate & ) ) );
+  connect( mScene, SIGNAL(showIncidencePopupSignal(Incidence *,const QDate &)),
+           mViewPopup, SLOT(showIncidencePopup(Incidence *,const QDate &)) );
 
-  connect( mScene, SIGNAL( showNewEventPopupSignal() ),
-           SLOT( showNewEventPopup() ) );
+  connect( mScene, SIGNAL(showNewEventPopupSignal()),
+           SLOT(showNewEventPopup()) );
 
-  connect( mScene, SIGNAL( incidenceSelected( Incidence * ) ),
-           this, SIGNAL( incidenceSelected( Incidence * ) ) );
+  connect( mScene, SIGNAL(incidenceSelected(Incidence *)),
+           this, SIGNAL(incidenceSelected(Incidence *)) );
 }
 
 MonthView::~MonthView()
@@ -161,7 +161,7 @@ void MonthView::changeIncidenceDisplay( Incidence *incidence, int action )
   // MonthItems, but this changeIncidenceDisplay()-method was probably
   // called by one of the MonthItem objects. So only shedule a reload
   // as event
-  QTimer::singleShot( 0, this, SLOT( reloadIncidences() ) );
+  QTimer::singleShot( 0, this, SLOT(reloadIncidences()) );
 }
 
 void MonthView::addIncidence( Incidence *incidence )
@@ -251,7 +251,7 @@ void MonthView::setStartDate( const QDate &start )
   mEndDate = mStartDate.addDays( 6 * 7 - 1 );
 
   // take "middle" day's month as current month
-  mCurrentMonth = mStartDate.addDays( (6 * 7) / 2 ).month();
+  mCurrentMonth = mStartDate.addDays( ( 6 * 7 ) / 2 ).month();
 
   reloadIncidences();
 }
@@ -261,7 +261,7 @@ void MonthView::reloadIncidences()
   // keep selection if it exists
   Incidence *incidenceSelected = 0;
   if ( mScene->selectedItem() ) {
-    IncidenceMonthItem *tmp = dynamic_cast< IncidenceMonthItem* >( mScene->selectedItem() );
+    IncidenceMonthItem *tmp = dynamic_cast<IncidenceMonthItem *>( mScene->selectedItem() );
     if ( tmp ) {
       incidenceSelected = tmp->incidence();
     }
@@ -286,7 +286,7 @@ void MonthView::reloadIncidences()
     // cause the event to span into the displayed date range.
     int offset = 0;
     Event *event;
-    if ( ( event = dynamic_cast< Event* >( incidence ) ) ) {
+    if ( ( event = dynamic_cast<Event *>( incidence ) ) ) {
       offset = event->dtStart().daysTo( event->dtEnd() );
     }
     for ( QDate d = mStartDate.addDays( -offset ); d <= mEndDate; d = d.addDays( 1 ) ) {
@@ -305,8 +305,10 @@ void MonthView::reloadIncidences()
   for ( QDate d = mStartDate; d <= mEndDate; d = d.addDays( 1 ) ) {
     QStringList holidays( KOGlobals::self()->holiday( d ) );
     if ( !holidays.isEmpty() ) {
-      MonthItem *holidayItem = new HolidayMonthItem( mScene, d,
-                                    holidays.join( i18nc( "delimiter for joining holiday names", "," ) ) );
+      MonthItem *holidayItem =
+        new HolidayMonthItem(
+          mScene, d,
+          holidays.join( i18nc( "delimiter for joining holiday names", "," ) ) );
       mScene->mManagerList << holidayItem;
     }
   }

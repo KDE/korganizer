@@ -79,11 +79,13 @@ class MonthItem : public QObject
       reflect changes, even during move.
     */
     QDate startDate() const;
+
     /**
       The end date of the incidence, generally realEndDate. But it
       reflect changes, even during move.
      */
     QDate endDate() const;
+
     /**
       The number of days this item spans.
     */
@@ -93,10 +95,12 @@ class MonthItem : public QObject
       This is the real start date, usually the start date of the incidence.
     */
     virtual QDate realStartDate() const = 0;
+
     /**
       This is the real end date, usually the end date of the incidence.
     */
     virtual QDate realEndDate() const = 0;
+
     /**
       True if this item last all the day.
     */
@@ -135,6 +139,7 @@ class MonthItem : public QObject
       Begin a move.
     */
     void beginMove();
+
     /**
       End a move.
     */
@@ -144,17 +149,21 @@ class MonthItem : public QObject
       Begin a resize.
     */
     void beginResize();
+
     /**
       End a resize.
     */
     void endResize();
 
     /**
-      Called during move to move the item a bit, relative to the previous move step.
+      Called during move to move the item a bit, relative to the previous
+      move step.
     */
     void moveBy( int offsetFromPreviousDate );
+
     /**
-      Called during resize to rezie the item a bit, relative to the previous resize step.
+      Called during resize to rezie the item a bit, relative to the previous
+      resize step.
     */
     bool resizeBy( int offsetFromPreviousDate );
 
@@ -172,6 +181,7 @@ class MonthItem : public QObject
       Returns true if the item can be moved.
     */
     virtual bool isMoveable() const = 0;
+
     /**
       Returns true if the item can be resized.
     */
@@ -187,8 +197,8 @@ class MonthItem : public QObject
 
       This basically deletes and rebuild all the MonthGraphicsItems but tries
         to do it wisely:
-      - If there is a moving item, it won't be deleted because then the new item
-        won't receive anymore the MouseMove events.
+      - If there is a moving item, it won't be deleted because then the
+        new item won't receive anymore the MouseMove events.
       - If there is an item on a line where the new state needs an item,
         it is used and not deleted. This will avoid flickers.
     */
@@ -199,8 +209,8 @@ class MonthItem : public QObject
     */
     void setSelected( bool selected ) { mSelected = selected; }
 
-
     // METHODS NEEDED TO PAINT ITEMS
+
     /**
       Returns the text to draw in an item.
 
@@ -212,6 +222,7 @@ class MonthItem : public QObject
       Returns the background color of the item.
     */
     virtual QColor bgColor() const = 0;
+
     /**
       Returns the frame color of the item.
     */
@@ -220,13 +231,14 @@ class MonthItem : public QObject
     /**
       Returns a list of pixmaps to draw next to the items.
     */
-    virtual QList< QPixmap* > icons() const = 0;
+    virtual QList<QPixmap *> icons() const = 0;
 
   protected:
     /**
       Called after a move operation.
     */
     virtual void finalizeMove( const QDate &newStartDate ) = 0;
+
     /**
       Called after a resize operation.
     */
@@ -235,11 +247,11 @@ class MonthItem : public QObject
 
   private:
     /**
-    Sets the value of all MonthGraphicsItem to @param z.
-     */
+      Sets the value of all MonthGraphicsItem to @param z.
+    */
     void setZValue( qreal z );
 
-    QList< MonthGraphicsItem* > mMonthGraphicsItemList;
+    QList<MonthGraphicsItem *> mMonthGraphicsItemList;
 
     MonthScene *mMonthScene;
 
@@ -277,7 +289,8 @@ class IncidenceMonthItem : public MonthItem
     QColor bgColor() const;
     QColor frameColor( const QColor &bgColor ) const;
 
-    QList< QPixmap* > icons() const;
+    QList<QPixmap *> icons() const;
+
   protected:
     virtual void finalizeMove( const QDate &newStartDate );
     virtual void finalizeResize( const QDate &newStartDate,
@@ -285,10 +298,10 @@ class IncidenceMonthItem : public MonthItem
 
   protected slots:
     /**
-    Update the selected state of this item.
-    If will be selected if incidence is the incidence managed by this item.
-    Else it will be deselected.
-     */
+      Update the selected state of this item.
+      If will be selected if incidence is the incidence managed by this item.
+      Else it will be deselected.
+    */
     void updateSelection( Incidence *incidence );
 
   private:
@@ -314,12 +327,13 @@ class HolidayMonthItem : public MonthItem
     virtual bool isMoveable() const { return false; }
     virtual bool isResizable() const { return false; }
 
-    QString text( bool end ) const { return mName; }
+    QString text( bool end ) const { Q_UNUSED( end ); return mName; }
 
     QColor bgColor() const;
     QColor frameColor( const QColor &bgColor ) const;
 
-    QList< QPixmap* > icons() const;
+    QList<QPixmap *> icons() const;
+
   protected:
     virtual void finalizeMove( const QDate &newStartDate );
     virtual void finalizeResize( const QDate &newStartDate,
