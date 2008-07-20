@@ -185,7 +185,7 @@ class MonthGraphicsItem : public QObject, public QGraphicsItem
 
   private:
     // Shape of the item, see shape()
-    QPainterPath widgetPath( bool mask = false ) const;
+    QPainterPath widgetPath( bool mask = false, bool border = false ) const;
 
     // See startDate()
     QDate mStartDate;

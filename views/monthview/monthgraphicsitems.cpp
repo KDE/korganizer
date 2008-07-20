@@ -163,8 +163,10 @@ QPainterPath MonthGraphicsItem::shape() const
 }
 
 // TODO: remove this method.
-QPainterPath MonthGraphicsItem::widgetPath( bool mask ) const
+QPainterPath MonthGraphicsItem::widgetPath( bool mask, bool border ) const
 {
+  // If border is set we won't draw all the path. Items spanning on multiple rows won't
+  // have borders on their boundaries.
   // If this is the mask, we draw it one pixel bigger
   int m = mask ? 1 : 0;
   int x0 = ft / 2 - m;
@@ -175,12 +177,16 @@ QPainterPath MonthGraphicsItem::widgetPath( bool mask ) const
   int y1 = boundingRect().height() - ft / 2 + m;
   int beginRound = boundingRect().height() / 3 + m;
 
-  QPainterPath path( QPoint( beginRound, 0 ) );
+  QPainterPath path( QPoint( beginRound, y0 ) );
   if ( isBeginItem() ) {
     path.arcTo( QRect( x0, y0, beginRound * 2 + m, height ), +90, +180 );
   } else {
     path.lineTo( x0, y0 );
-    path.lineTo( x0, y1 );
+    if ( !border ) {
+      path.lineTo( x0, y1 );
+    } else {
+      path.moveTo( x0, y1 );
+    }
     path.lineTo( x0 + beginRound, y1 );
   }
 
@@ -190,10 +196,17 @@ QPainterPath MonthGraphicsItem::widgetPath( bool mask ) const
     path.lineTo( x0 + beginRound, y0 );
   } else {
     path.lineTo( x1, y1 );
-    path.lineTo( x1, y0 );
+    if ( !border ) {
+      path.lineTo( x1, y0 );
+    } else {
+      path.moveTo( x1, y0 );
+    }
     path.lineTo( x0 + beginRound, y0 );
   }
-  path.closeSubpath();
+
+  if ( !border ) {
+    path.closeSubpath();
+  }
 
   return path;
 }
@@ -227,28 +240,22 @@ void MonthGraphicsItem::paint( QPainter *p, const QStyleOptionGraphicsItem *, QW
     bgColor.setAlphaF( 0.75f );
   }
 
-  QPen pen( frameColor );
+  QPen pen( Qt::NoPen );
   pen.setWidth( ft );
   p->setPen( pen );
 
-  // Add a gradient at extremities to show whether the item continues on a new line or not.
-  QLinearGradient bgGradient( QPointF( 0, 0 ), QPointF( boundingRect().width(), 0 ) ) ;
-  if ( !isBeginItem() ) {
-    bgGradient.setColorAt( 0, frameColor );
-    bgGradient.setColorAt( 0.05, bgColor );
-  } else {
-    bgGradient.setColorAt( 0, bgColor );
-  }
-  if ( !isEndItem() ) {
-    bgGradient.setColorAt( 0.95, bgColor );
-    bgGradient.setColorAt( 1, frameColor );
-  } else {
-    bgGradient.setColorAt( 1, bgColor );
-  }
-  p->setBrush( bgGradient );
-
+  QLinearGradient gradient( 0, 0, 0, boundingRect().height() );
+  gradient.setColorAt( 0, bgColor );
+  gradient.setColorAt( 0.7, bgColor.dark( 110 ) );
+  gradient.setColorAt( 1, bgColor.dark( 150 ) );
+  QBrush brush( gradient );
+  p->setBrush( brush );
   // Rounded rect
   p->drawPath( widgetPath() );
+
+  // Draw the border
+  p->setPen( frameColor );
+  p->drawPath( widgetPath( false, true ) );
 
   p->setPen( textColor );
 
@@ -265,8 +272,8 @@ void MonthGraphicsItem::paint( QPainter *p, const QStyleOptionGraphicsItem *, QW
   QString text = mMonthItem->text( !isBeginItem() );
   p->setFont( KOPrefs::instance()->monthViewFont() );
 
-  QRect textRect = QRect( textMargin, 1,
-                          boundingRect().width() - 2 * textMargin, scene->itemHeight() - 2 );
+  QRect textRect = QRect( textMargin, 0,
+                          boundingRect().width() - 2 * textMargin, scene->itemHeight() );
 
   if ( KOPrefs::instance()->enableMonthItemIcons() ) {
     QList< QPixmap* > icons = mMonthItem->icons();
@@ -311,6 +318,7 @@ void MonthGraphicsItem::paint( QPainter *p, const QStyleOptionGraphicsItem *, QW
     text = p->fontMetrics().elidedText( text, Qt::ElideRight, textRect.width() );
     p->drawText( textRect, alignFlag, text );
   }
+
 }
 
 void MonthGraphicsItem::setStartDate( const QDate &date )
