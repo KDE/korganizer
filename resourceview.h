@@ -27,13 +27,12 @@
 
 #include "calendarview.h"
 
-#include <kcal/resourcecalendar.h>
-
 #include <QTreeWidget>
 #include <QList>
 
 namespace KCal {
   class CalendarResources;
+  class ResourceCalendar;
 }
 using namespace KCal;
 class ResourceView;
@@ -64,7 +63,7 @@ class ResourceItem : public QTreeWidgetItem
                   const QString &label, ResourceView *view,
                   ResourceItem *parent );
 
-    KCal::ResourceCalendar *resource() { return mResource; }
+    ResourceCalendar *resource() { return mResource; }
     const QString &resourceIdentifier() { return mResourceIdentifier; }
     bool isSubresource() const { return mIsSubresource; }
     void createSubresourceItems();
@@ -104,7 +103,7 @@ class ResourceView : public CalendarViewExtension
     explicit ResourceView( KCal::CalendarResources *calendar, QWidget *parent = 0 );
     ~ResourceView();
 
-    KCal::CalendarResources *calendar() const { return mCalendar; }
+    CalendarResources *calendar() const { return mCalendar; }
 
     void updateView();
 
