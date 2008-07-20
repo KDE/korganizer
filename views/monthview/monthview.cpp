@@ -24,6 +24,8 @@
 
 #include "monthview.h"
 #include "monthscene.h"
+#include "monthitem.h"
+#include "monthgraphicsitems.h"
 #include "koglobals.h"
 #include "koprefs.h"
 #include "koeventpopupmenu.h"
@@ -147,20 +149,18 @@ void MonthView::showIncidences( const Incidence::List & )
 
 void MonthView::changeIncidenceDisplay( Incidence *incidence, int action )
 {
-  switch(action) {
-    case KOGlobals::INCIDENCEADDED:
-      //     addIncidence( incidence );
-    case KOGlobals::INCIDENCEEDITED:
-    case KOGlobals::INCIDENCEDELETED:
-      reloadIncidences();
-      break;
-    default:
-      break;
-  }
+  Q_UNUSED( incidence );
+  Q_UNUSED( action );
+
+  //TODO: add some more intelligence here...
+  reloadIncidences();
 }
 
 void MonthView::addIncidence( Incidence *incidence )
 {
+  Q_UNUSED( incidence );
+
+  //TODO: add some more intelligence here...
   reloadIncidences();
 }
 
@@ -251,7 +251,10 @@ void MonthView::reloadIncidences()
   // keep selection if it exists
   Incidence *incidenceSelected = 0;
   if ( mScene->selectedItem() ) {
-    incidenceSelected = mScene->selectedItem()->incidence();
+    IncidenceMonthItem *tmp = dynamic_cast< IncidenceMonthItem* >( mScene->selectedItem() );
+    if ( tmp ) {
+      incidenceSelected = tmp->incidence();
+    }
   }
 
   mScene->resetAll();
@@ -292,9 +295,24 @@ void MonthView::reloadIncidences()
   }
 
   foreach ( Incidence *incidence, incidences ) {
-    MonthItem *manager = new MonthItem( mScene, incidence );
+    MonthItem *manager = new IncidenceMonthItem( mScene, incidence );
     mScene->mManagerList << manager;
+    if ( incidenceSelected == incidence ) {
+      // If there was an item selected before, reselect it.
+      mScene->selectItem( manager );
+    }
   }
+
+  // add holidays
+  for ( QDate d = mStartDate; d <= mEndDate; d = d.addDays( 1 ) ) {
+    QStringList holidays( KOGlobals::self()->holiday( d ) );
+    if ( !holidays.isEmpty() ) {
+      MonthItem *holidayItem = new HolidayMonthItem( mScene, d,
+                                    holidays.join( i18nc( "delimiter for joining holiday names", "," ) ) );
+      mScene->mManagerList << holidayItem;
+    }
+  }
+
   // sort it
   qSort( mScene->mManagerList.begin(),
          mScene->mManagerList.end(),
@@ -312,21 +330,11 @@ void MonthView::reloadIncidences()
 
   foreach ( MonthItem *manager, mScene->mManagerList ) {
     manager->updateMonthGraphicsItems();
-    manager->updateHeight();
+    manager->updatePosition();
   }
 
   foreach ( MonthItem *manager, mScene->mManagerList ) {
     manager->updateGeometry();
-  }
-
-  // If there was an item selected before, reselect it.
-  if ( incidenceSelected ) {
-    foreach ( MonthItem *manager, mScene->mManagerList ) {
-      if ( manager->incidence() == incidenceSelected ) {
-        mScene->selectItem( manager );
-        break;
-      }
-    }
   }
 
   mScene->setInitialized( true );

@@ -654,12 +654,6 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
   colorLayout->addWidget( holidayColor->label(), 0, 0 );
   colorLayout->addWidget( holidayColor->button(), 0, 1 );
 
-  // Highlight Color
-  KPrefsWidColor *highlightColor =
-    addWidColor( KOPrefs::instance()->agendaGridHighlightColorItem(), colorFrame );
-  colorLayout->addWidget( highlightColor->label(), 1, 0 );
-  colorLayout->addWidget( highlightColor->button(), 1, 1 );
-
   KPrefsWidColor *eventColor =
     addWidColor( KOPrefs::instance()->agendaCalendarItemsEventsBackgroundColorItem(), colorFrame );
   colorLayout->addWidget( eventColor->label(), 2, 0 );

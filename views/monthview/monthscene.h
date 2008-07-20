@@ -25,8 +25,8 @@
 #ifndef MONTHSCENE_H
 #define MONTHSCENE_H
 
-#include "monthitem.h"
-
+#include <QMap>
+#include <QDate>
 #include <QGraphicsScene>
 #include <QGraphicsView>
 #include <QPixmap>
@@ -34,6 +34,7 @@
 class QResizeEvent;
 class QGraphicsSceneMouseEvent;
 class QGraphicsSceneWheelEvent;
+
 namespace KCal {
   class Incidence;
   class Calendar;
@@ -42,9 +43,13 @@ using namespace KCal;
 
 namespace KOrg {
 
+class IncidenceChangerBase;
+
+class MonthItem;
 class MonthGraphicsItem;
-class MonthGraphicsView;
+class ScrollIndicator;
 class MonthCell;
+class MonthGraphicsView;
 class MonthView;
 
 class MonthScene : public QGraphicsScene
@@ -73,7 +78,7 @@ class MonthScene : public QGraphicsScene
     int height( MonthItem *manager );
     int itemHeight();
     int itemHeightIncludingSpacing();
-    MonthItem::List mManagerList;
+    QList< MonthItem* > mManagerList;
     MonthView *mMonthView;
 
     QMap<QDate, MonthCell*> mMonthCellMap;
@@ -82,6 +87,7 @@ class MonthScene : public QGraphicsScene
     void setInitialized( bool i ) { mInitialized = i; }
     void resetAll();
     Calendar *calendar() { return mCalendar; }
+    IncidenceChangerBase *incidenceChanger() const;
 
     int totalHeight();
 
@@ -141,18 +147,6 @@ class MonthScene : public QGraphicsScene
     void setStartHeight( int height ) { mStartHeight = height; }
 
     /**
-      Returns the MonthGraphicsItem being moved.
-    */
-    MonthGraphicsItem *movingMonthGraphicsItem()
-    { return mMovingMonthGraphicsItem; }
-
-    /**
-      Sets the MonthGraphicsItem being moved to @p incidenceItem.
-    */
-    void setMovingMonthGraphicsItem( MonthGraphicsItem *incidenceItem )
-    { mMovingMonthGraphicsItem = incidenceItem; }
-
-    /**
       Returns the resize type.
     */
     ResizeType resizeType() { return mResizeType; }
@@ -161,6 +155,16 @@ class MonthScene : public QGraphicsScene
       Returns the currently selected item.
     */
     MonthItem *selectedItem() { return mSelectedItem; }
+
+    QPixmap *eventPixmap() { return &mEventPixmap; }
+    QPixmap *todoPixmap() { return &mTodoPixmap; }
+    QPixmap *todoDonePixmap() { return &mTodoDonePixmap; }
+    QPixmap *journalPixmap() { return &mJournalPixmap; }
+    QPixmap *alarmPixmap() { return &mAlarmPixmap; }
+    QPixmap *recurPixmap() { return &mRecurPixmap; }
+    QPixmap *replyPixmap() { return &mReplyPixmap; }
+    QPixmap *holidayPixmap() { return &mHolidayPixmap; }
+
 
   signals:
     void incidenceSelected( Incidence *incidence );
@@ -252,9 +256,6 @@ class MonthScene : public QGraphicsScene
     MonthCell *mStartCell; // start cell when dragging
     MonthCell *mPreviousCell; // the cell before that one during dragging
 
-    MonthGraphicsItem *mMovingMonthGraphicsItem;
-    MonthGraphicsItem *mActionMonthGraphicsItem;
-
     ActionType mActionType;
     ResizeType mResizeType;
 
@@ -273,7 +274,6 @@ class MonthScene : public QGraphicsScene
     QPixmap mHolidayPixmap;
 
     friend class MonthGraphicsView;
-    friend class MonthGraphicsItem;
 };
 
 /**

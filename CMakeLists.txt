@@ -144,6 +144,7 @@ set(korganizerprivate_LIB_SRCS
    views/oldmonthview/komonthview.cpp
    views/monthview/monthview.cpp
    views/monthview/monthitem.cpp
+   views/monthview/monthgraphicsitems.cpp
    views/monthview/monthscene.cpp
    views/todoview/kotodomodel.cpp
    views/todoview/kotododelegates.cpp

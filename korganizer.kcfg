@@ -394,11 +394,6 @@
       <whatsthis>Select the holiday color here. The holiday color will be used for the holiday name in the month view and the holiday number in the date navigator.</whatsthis>
       <default>255, 100, 100</default>
     </entry>
-    <entry type="Color" key="Highlight Color">
-      <label>Highlight color</label>
-      <whatsthis>Select the highlight color here. The highlight color will be used for marking the currently selected area in your agenda and in the date navigator.</whatsthis>
-      <default>100, 100, 255</default>
-    </entry>
     <entry type="Color" key="AgendaBackgroundColor" name="AgendaBgColor">
       <label>Agenda view background color</label>
       <whatsthis>Select the agenda view background color here.</whatsthis>

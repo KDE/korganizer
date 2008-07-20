@@ -24,6 +24,7 @@
 
 #include "monthscene.h"
 #include "monthitem.h"
+#include "monthgraphicsitems.h"
 #include "monthview.h"
 #include "koprefs.h"
 #include "koglobals.h"
@@ -37,12 +38,6 @@
 
 using namespace KOrg;
 
-MonthGraphicsView::MonthGraphicsView( MonthView *parent )
-  : QGraphicsView( parent ), mMonthView( parent )
-{
-  setMouseTracking( true );
-}
-
 MonthScene::MonthScene( MonthView *parent, Calendar *calendar )
   : QGraphicsScene( parent ),
     mMonthView( parent ),
@@ -53,9 +48,8 @@ MonthScene::MonthScene( MonthView *parent, Calendar *calendar )
     mActionInitiated( false ),
     mSelectedItem( 0 ),
     mStartCell( 0 ),
-    mMovingMonthGraphicsItem( 0 ),
-    mStartHeight( 0 ),
-    mActionType( None )
+    mActionType( None ),
+    mStartHeight( 0 )
 {
   mEventPixmap     = KOGlobals::self()->smallIcon( "view-calendar-day" );
   mTodoPixmap      = KOGlobals::self()->smallIcon( "view-calendar-tasks" );
@@ -337,9 +331,13 @@ void MonthScene::resetAll()
   mManagerList.clear();
 
   mSelectedItem = 0;
-  mMovingMonthGraphicsItem = 0;
   mActionItem = 0;
   mClickedItem = 0;
+}
+
+IncidenceChangerBase *MonthScene::incidenceChanger() const
+{
+  return mMonthView->mChanger;
 }
 
 QDate MonthScene::firstDateOnRow( int row ) const
@@ -453,10 +451,13 @@ void MonthScene::mouseDoubleClickEvent ( QGraphicsSceneMouseEvent * mouseEvent )
   MonthGraphicsItem *iItem;
   if ( ( iItem = dynamic_cast<MonthGraphicsItem*>( itemAt( pos ) ) ) ) {
     if ( iItem->monthItem() ) {
-      selectItem( iItem->monthItem() );
-      mMonthView->defaultAction( iItem->monthItem()->incidence() );
+      IncidenceMonthItem *tmp = dynamic_cast< IncidenceMonthItem* >( iItem->monthItem() );
+      if ( tmp ) {
+        selectItem( iItem->monthItem() );
+        mMonthView->defaultAction( tmp->incidence() );
 
-      mouseEvent->accept();
+        mouseEvent->accept();
+      }
     }
   }
 }
@@ -496,10 +497,9 @@ void MonthScene::mouseMoveEvent ( QGraphicsSceneMouseEvent * mouseEvent )
     // Initiate action if not already done
     if ( !mActionInitiated && mActionType != None ) {
       if ( mActionType == Move ) {
-        mMovingMonthGraphicsItem = mActionMonthGraphicsItem; // todo rename used by both actions
-        mActionItem->move( true );
+        mActionItem->beginMove();
       } else if ( mActionType == Resize ) {
-        mActionItem->resize( true );
+        mActionItem->beginResize();
       }
       mActionInitiated = true;
     }
@@ -510,9 +510,9 @@ void MonthScene::mouseMoveEvent ( QGraphicsSceneMouseEvent * mouseEvent )
 
       bool ok = true;
       if ( mActionType == Move ) {
-        mActionItem->moving( mPreviousCell->date().daysTo( currentCell->date() ) );
+        mActionItem->moveBy( mPreviousCell->date().daysTo( currentCell->date() ) );
       } else if ( mActionType == Resize ) {
-        ok = mActionItem->resizing( mPreviousCell->date().daysTo( currentCell->date() ) );
+        ok = mActionItem->resizeBy( mPreviousCell->date().daysTo( currentCell->date() ) );
       }
 
       if ( ok ) {
@@ -537,14 +537,16 @@ void MonthScene::mousePressEvent ( QGraphicsSceneMouseEvent * mouseEvent )
 
     selectItem( mClickedItem );
     if ( mouseEvent->button() == Qt::RightButton ) {
-      emit showIncidencePopupSignal( mClickedItem->incidence(),
-                                      mClickedItem->startDate() ); // FIXME ?
+      IncidenceMonthItem *tmp = dynamic_cast< IncidenceMonthItem* >( mClickedItem );
+      if ( tmp ) {
+        emit showIncidencePopupSignal( tmp->incidence(),
+                                       mClickedItem->startDate() ); // FIXME ?
+      }
     }
 
     if ( mouseEvent->button() == Qt::LeftButton ) {
       // Basic initialization for resize and move
       mActionItem = mClickedItem;
-      mActionMonthGraphicsItem = iItem;
       mStartCell = getCellFromPos( pos );
       mPreviousCell = mStartCell;
       mActionInitiated = false;
@@ -559,7 +561,7 @@ void MonthScene::mousePressEvent ( QGraphicsSceneMouseEvent * mouseEvent )
                     iItem->mapFromScene( pos ).x() >= iItem->boundingRect().width() - 10 ) {
         mActionType = Resize;
         mResizeType = ResizeRight;
-      } else {
+      } else if ( iItem->monthItem()->isMoveable() ) {
         mActionType = Move;
       }
     }
@@ -567,6 +569,9 @@ void MonthScene::mousePressEvent ( QGraphicsSceneMouseEvent * mouseEvent )
   } else if ( ScrollIndicator *scrollItem = dynamic_cast<ScrollIndicator*>( itemAt( pos ) ) ) {
     clickOnScrollIndicator( scrollItem );
   } else {
+    // unselect items when clicking somewhere else
+    selectItem( 0 );
+
     MonthCell *cell = getCellFromPos( pos );
     if ( cell ) {
       mSelectedCellDate = cell->date();
@@ -586,20 +591,17 @@ void MonthScene::mouseReleaseEvent ( QGraphicsSceneMouseEvent * mouseEvent )
   static_cast<MonthGraphicsView*>( views().first() )->setActionCursor( None );
 
   if ( mActionItem ) {
-    mMovingMonthGraphicsItem = 0;
-
     MonthCell *currentCell = getCellFromPos( pos );
     if ( currentCell && currentCell != mStartCell ) { // We want to act if a move really happened
       if ( mActionType == Resize ) {
-        mActionItem->resize( false );
+        mActionItem->endResize();
       } else if ( mActionType == Move ) {
-        mActionItem->move( false );
+        mActionItem->endMove();
       }
     }
 
     mActionItem = 0;
     mActionType = None;
-    mActionMonthGraphicsItem = 0;
     mStartCell = 0;
 
     // FIXME: WOW, quite heavy if only a move happened...
@@ -637,16 +639,26 @@ void MonthScene::selectItem( MonthItem *item )
     return;
   }
 
-  if ( item == 0 ) {
+  IncidenceMonthItem *tmp = dynamic_cast< IncidenceMonthItem* >( item );
+
+  if ( !tmp ) {
     mSelectedItem = 0;
     emit incidenceSelected( 0 );
     return;
   }
 
   mSelectedItem = item;
-  Q_ASSERT( mSelectedItem->incidence() );
+  Q_ASSERT( tmp->incidence() );
 
-  emit incidenceSelected( mSelectedItem->incidence() );
+  emit incidenceSelected( tmp->incidence() );
+}
+
+
+//----------------------------------------------------------
+MonthGraphicsView::MonthGraphicsView( MonthView *parent )
+  : QGraphicsView( parent ), mMonthView( parent )
+{
+  setMouseTracking( true );
 }
 
 void MonthGraphicsView::setActionCursor( MonthScene::ActionType actionType )
