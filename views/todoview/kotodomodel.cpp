@@ -830,7 +830,7 @@ bool KOTodoModel::setData( const QModelIndex &index, const QVariant &value, int 
     }
 
     if ( modified != KOGlobals::UNKNOWN_MODIFIED ) {
-      mChanger->changeIncidence( todo, oldTodo, modified );
+      mChanger->changeIncidence( oldTodo, todo, modified );
       // changeIncidence will eventually call the view's
       // changeIncidenceDisplay method, which in turn
       // will call processChange. processChange will then emit
@@ -921,7 +921,7 @@ bool KOTodoModel::dropMimeData( const QMimeData *data, Qt::DropAction action,
       if ( mChanger->beginChange( todo ) ) {
         Todo *oldTodo = todo->clone();
         todo->setRelatedTo( destTodo );
-        mChanger->changeIncidence( todo, oldTodo, KOGlobals::RELATION_MODIFIED );
+        mChanger->changeIncidence( oldTodo, todo, KOGlobals::RELATION_MODIFIED );
         mChanger->endChange( todo );
         // again, no need to emit dataChanged, that's done by processChange
 
@@ -961,7 +961,7 @@ bool KOTodoModel::dropMimeData( const QMimeData *data, Qt::DropAction action,
               }
             }
           }
-          mChanger->changeIncidence( destTodo, oldTodo );
+          mChanger->changeIncidence( oldTodo, destTodo );
           mChanger->endChange( destTodo );
 
           delete oldTodo;
