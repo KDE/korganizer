@@ -377,11 +377,6 @@ void ActionManager::initActions()
   connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
            SLOT(showWeekView()) );
 
-  action = new KAction( KIcon( "view-calendar-month" ), i18n( "&Month" ), this );
-  mACollection->addAction( "view_oldmonth", action );
-  connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
-           SLOT(showOldMonthView()) );
-
   action = new KAction( KIcon( "view-calendar-list" ), i18n( "&Event List" ), this );
   mACollection->addAction( "view_list", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
