@@ -97,6 +97,8 @@ class KOEditorFreeBusy : public KOAttendeeEditor
     void clearSelection() const;
     void changeStatusForMe( KCal::Attendee::PartStat status );
 
+  private slots:
+    void slotOrganizerChanged( const QString &newOrganizer );
   private:
     void updateFreeBusyData( FreeBusyItem * );
 
@@ -117,6 +119,8 @@ class KOEditorFreeBusy : public KOAttendeeEditor
     QTimer mReloadTimer;
 
     bool mForceDownload;
+
+    QString mCurrentOrganizer;
 };
 
 #endif
