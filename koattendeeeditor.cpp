@@ -263,6 +263,7 @@ void KOAttendeeEditor::addNewAttendee()
   Attendee *a = new Attendee( i18n("Firstname Lastname"),
                               i18n("name") + "@example.net", true );
   insertAttendee( a, false );
+  mnewAttendees.append(a);
   updateAttendeeInput();
   // We don't want the hint again
   mNameEdit->setClickMessage( "" );
@@ -273,6 +274,7 @@ void KOAttendeeEditor::addNewAttendee()
 void KOAttendeeEditor::readEvent(KCal::Incidence * incidence)
 {
   mdelAttendees.clear();
+  mnewAttendees.clear();
   if ( KOPrefs::instance()->thatIsMe( incidence->organizer().email() ) ) {
     if ( !mOrganizerCombo ) {
       mOrganizerCombo = new QComboBox( mOrganizerHBox );
@@ -418,7 +420,16 @@ void KOAttendeeEditor::cancelAttendeeEvent( KCal::Incidence *incidence )
   incidence->clearAttendees();
   Attendee * att;
   for (att=mdelAttendees.first();att;att=mdelAttendees.next()) {
-    incidence->addAttendee(new Attendee(*att));
+    bool isNewAttendee = false;
+    for (Attendee *newAtt=mnewAttendees.first();newAtt;newAtt=mnewAttendees.next()) {
+      if (*att==*newAtt) {
+        isNewAttendee = true;
+        break;
+      }
+    }
+    if (!isNewAttendee) {
+      incidence->addAttendee(new Attendee(*att));
+    }
   }
   mdelAttendees.clear();
 }

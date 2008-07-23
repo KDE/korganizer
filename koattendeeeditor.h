@@ -115,6 +115,7 @@ class KOAttendeeEditor : public QWidget
     QPushButton* mAddressBookButton;
 
     QPtrList<KCal::Attendee> mdelAttendees;
+    QPtrList<KCal::Attendee> mnewAttendees;
 
   private:
     bool mDisableItemUpdate;
