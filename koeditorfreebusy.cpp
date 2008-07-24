@@ -343,6 +343,9 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent,
   slotOrganizerChanged( mOrganizerCombo->currentText() );
   connect( mOrganizerCombo, SIGNAL( activated(const QString&) ),
            this, SLOT( slotOrganizerChanged(const QString&) ) );
+
+  //suppress the buggy consequences of clicks on the time header widget
+  mGanttView->timeHeaderWidget()->installEventFilter( this );
 }
 
 KOEditorFreeBusy::~KOEditorFreeBusy()
@@ -913,6 +916,16 @@ void KOEditorFreeBusy::slotOrganizerChanged(const QString & newOrganizer)
   }
 
   mCurrentOrganizer = newOrganizer;
+}
+
+bool KOEditorFreeBusy::eventFilter( QObject *watched, QEvent *event )
+{
+  if ( watched == mGanttView->timeHeaderWidget() &&
+       event->type() >= QEvent::MouseButtonPress && event->type() <= QEvent::MouseMove ) {
+    return true;
+  } else {
+    return KOAttendeeEditor::eventFilter( watched, event );
+  }
 }
 
 #include "koeditorfreebusy.moc"
