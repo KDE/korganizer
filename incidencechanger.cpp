@@ -95,7 +95,7 @@ kdDebug(5850)<<"IncidenceChanger::deleteIncidence for incidence \""<<incidence->
     // @TODO: let Calendar::deleteIncidence do the locking...
     Incidence* tmp = incidence->clone();
     emit incidenceToBeDeleted( incidence );
-    doDelete = mCalendar->deleteIncidence( tmp );
+    doDelete = mCalendar->deleteIncidence( incidence );
     if ( !KOPrefs::instance()->thatIsMe( tmp->organizer().email() ) ) {
       const QStringList myEmails = KOPrefs::instance()->allEmails();
       bool notifyOrganizer = false;
