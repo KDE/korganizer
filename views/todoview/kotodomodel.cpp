@@ -683,7 +683,7 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
     if ( todo->isOverdue() ) {
       return QVariant(
         QBrush( KOPrefs::instance()->agendaCalendarItemsToDosOverdueBackgroundColor() ) );
-    } else if ( todo->dtDue().date() == QDate::currentDate() ) {
+    } else if ( !todo->isCompleted() && todo->dtDue().date() == QDate::currentDate() ) {
       return QVariant(
         QBrush( KOPrefs::instance()->agendaCalendarItemsToDosDueTodayBackgroundColor() ) );
     }
