@@ -349,7 +349,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     void copyIncidence( Incidence *);
 
     /**
-      Pastes the curren incidence using the edit_paste() method
+      Pastes the current incidence using the edit_paste() method
     */
     void pasteIncidence();
 

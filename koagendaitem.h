@@ -178,7 +178,7 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     bool event( QEvent *event );
     void dragEnterEvent( QDragEnterEvent *e );
     void dropEvent( QDropEvent *e );
-    /**reimp*/ void paintEvent( QPaintEvent *e );
+    /**reimp*/void paintEvent( QPaintEvent *e );
 
     /** private movement functions. startMove needs to be called of only one of
      *  the multitems. it will then loop through the whole series using
