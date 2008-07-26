@@ -643,7 +643,7 @@ void KOAgendaItem::dropEvent( QDropEvent *e )
   }
 #else
   if( decoded ) {
-    QStringList emails = text.split( ",", QString::SkipEmptyParts );
+    QStringList emails = text.split( ',', QString::SkipEmptyParts );
     for ( QStringList::ConstIterator it = emails.begin(); it != emails.end(); ++it ) {
       addAttendee( *it );
     }

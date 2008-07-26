@@ -1764,13 +1764,13 @@ void KOAgenda::removeIncidence( Incidence *incidence )
   QList<KOAgendaItem*> itemsToRemove;
   KOAgendaItem *item;
 
-  foreach ( item, mItems ) {
+  foreach ( item, mItems ) { //krazy:exclude=foreach
     if ( item && item->incidence() == incidence ) {
       itemsToRemove.append( item );
     }
   }
 
-  foreach ( item, itemsToRemove ) {
+  foreach ( item, itemsToRemove ) { //krazy:exclude=foreach
     removeAgendaItem( item );
   }
 }
@@ -1866,13 +1866,13 @@ void KOAgenda::resizeAllContents()
 {
   double subCellWidth;
   KOAgendaItem *item;
-  if (mAllDayMode) {
-    foreach ( item, mItems ) {
+  if ( mAllDayMode ) {
+    foreach ( item, mItems ) { //krazy:exclude=foreach
       subCellWidth = calcSubCellWidth( item );
       placeAgendaItem( item, subCellWidth );
     }
   } else {
-    foreach ( item, mItems ) {
+    foreach ( item, mItems ) { //krazy:exclude=foreach
       subCellWidth = calcSubCellWidth( item );
       placeAgendaItem( item, subCellWidth );
     }
@@ -1988,8 +1988,7 @@ void KOAgenda::selectItem( KOAgendaItem *item )
 
 void KOAgenda::selectItemByUID( const QString &uid )
 {
-  KOAgendaItem *item;
-  foreach ( item, mItems ) {
+  foreach ( KOAgendaItem *item, mItems ) {
     if( item->incidence() && item->incidence()->uid() == uid ) {
       selectItem( item );
       break;

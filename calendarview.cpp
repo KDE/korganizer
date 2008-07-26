@@ -1652,7 +1652,6 @@ void CalendarView::editFilters()
 void CalendarView::updateFilter()
 {
   QStringList filters;
-  CalFilter *filter;
 
   int pos = mFilters.indexOf( mCurrentFilter );
   if ( pos < 0 ) {
@@ -1660,7 +1659,7 @@ void CalendarView::updateFilter()
   }
 
   filters << i18n( "No filter" );
-  foreach ( filter, mFilters ) {
+  foreach ( CalFilter *filter, mFilters ) {
     if ( filter ) {
       filters << filter->name();
     }

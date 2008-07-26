@@ -81,7 +81,7 @@ class TimeSpentWidget : public QWidget
       int total = 0;
       foreach ( Event *e, mEventList ) {
         if ( e->categories().count() ) {
-          foreach ( QString s, e->categories() ) {
+          foreach ( const QString &s, e->categories() ) {
             secondsSpent[ s ] += e->dtStart().secsTo( e->dtEnd() );
           }
         } else {

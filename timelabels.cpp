@@ -386,7 +386,7 @@ QString TimeLabels::headerToolTip() const
   if ( !tz.abbreviations().isEmpty() ) {
     toolTip += "<br/>";
     toolTip += i18n( "Abbreviations:" );
-    foreach ( QByteArray a, tz.abbreviations() ) {
+    foreach ( const QByteArray &a, tz.abbreviations() ) {
       toolTip += "<br/>";
       toolTip += "&nbsp;" + QString::fromLocal8Bit( a );
     }

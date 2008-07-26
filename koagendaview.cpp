@@ -522,7 +522,7 @@ void KOAgendaView::createDayLabels()
     }
 
 #ifndef KORG_NOPLUGINS
-    foreach ( QString decoName, KOPrefs::instance()->decorationsAtAgendaViewTop() ) {
+    foreach ( const QString &decoName, KOPrefs::instance()->decorationsAtAgendaViewTop() ) {
       if ( KOPrefs::instance()->selectedPlugins().contains( decoName ) ) {
         CalendarDecoration::Decoration *deco = KOCore::self()->loadCalendarDecoration( decoName );
 
@@ -545,7 +545,7 @@ void KOAgendaView::createDayLabels()
       }
     }
 
-    foreach ( QString decoName, KOPrefs::instance()->decorationsAtAgendaViewBottom() ) {
+    foreach ( const QString &decoName, KOPrefs::instance()->decorationsAtAgendaViewBottom() ) {
       if ( KOPrefs::instance()->selectedPlugins().contains( decoName ) ) {
         CalendarDecoration::Decoration *deco = KOCore::self()->loadCalendarDecoration( decoName );
 
@@ -572,7 +572,7 @@ void KOAgendaView::createDayLabels()
 
 #ifndef KORG_NOPLUGINS
   // Week decoration labels
-  foreach ( QString decoName, KOPrefs::instance()->decorationsAtAgendaViewTop() ) {
+  foreach ( const QString &decoName, KOPrefs::instance()->decorationsAtAgendaViewTop() ) {
     if ( KOPrefs::instance()->selectedPlugins().contains( decoName ) ) {
       CalendarDecoration::Decoration *deco = KOCore::self()->loadCalendarDecoration( decoName );
 
@@ -594,7 +594,7 @@ void KOAgendaView::createDayLabels()
       }
     }
   }
-  foreach ( QString decoName, KOPrefs::instance()->decorationsAtAgendaViewBottom() ) {
+  foreach ( const QString &decoName, KOPrefs::instance()->decorationsAtAgendaViewBottom() ) {
     if ( KOPrefs::instance()->selectedPlugins().contains( decoName ) ) {
       CalendarDecoration::Decoration *deco = KOCore::self()->loadCalendarDecoration( decoName );
 

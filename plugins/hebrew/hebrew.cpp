@@ -20,6 +20,10 @@
 */
 
 #include "hebrew.h"
+#include "configdialog.h"
+#include "converter.h"
+#include "holiday.h"
+#include "parsha.h"
 
 #include <kcalendarsystem.h>
 #include <kconfig.h>
@@ -28,14 +32,10 @@
 #include <kpluginfactory.h>
 #include <kpluginloader.h>
 
-#include "configdialog.h"
-#include "converter.h"
-#include "holiday.h"
-#include "parsha.h"
-
 using namespace KOrg::CalendarDecoration;
 
-class HebrewFactory : public DecorationFactory {
+class HebrewFactory : public DecorationFactory
+{
   public:
     Decoration *createPluginFactory() { return new Hebrew; }
 };
@@ -47,9 +47,8 @@ Hebrew::Hebrew()
   KConfig config( "korganizerrc", KConfig::NoGlobals );
 
   KConfigGroup group( &config, "Hebrew Calendar Plugin" );
-  areWeInIsrael = group.readEntry( "UseIsraelSettings",
-                                   ( KGlobal::locale()->country()
-                                          == QLatin1String(".il") ) );
+  areWeInIsrael = group.readEntry(
+    "UseIsraelSettings", ( KGlobal::locale()->country() == QLatin1String( ".il" ) ) );
   showParsha = group.readEntry( "ShowParsha", true );
   showChol = group.readEntry( "ShowChol_HaMoed", true );
   showOmer = group.readEntry( "ShowOmer", true );
@@ -68,25 +67,22 @@ void Hebrew::configure( QWidget *parent )
 Element::List Hebrew::createDayElements( const QDate &date )
 {
   Element::List el;
-
   QString text;
 
-  HebrewDate hd = HebrewDate::fromSecular( date.year(), date.month(),
-                                           date.day() );
+  HebrewDate hd = HebrewDate::fromSecular( date.year(), date.month(), date.day() );
 
   QStringList holidays = Holiday::findHoliday( hd, areWeInIsrael, showParsha,
                                                showChol, showOmer );
 
-  KCalendarSystem *cal = KCalendarSystem::create("hebrew");
+  KCalendarSystem *cal = KCalendarSystem::create( "hebrew" );
   text = cal->dayString( date ) + ' ' + cal->monthName( date );
 
-  foreach( QString holiday, holidays ) {
+  foreach ( const QString &holiday, holidays ) {
     text += "<br/>\n" + holiday;
   }
 
-  text = i18nc("Change the next two strings if emphasis is done differently in "
-               "your language.",
-               "<qt><p align=\"center\"><i>\n%1\n</i></p></qt>", text );
+  text = i18nc( "Change the next two strings if emphasis is done differently in your language.",
+                "<qt><p align=\"center\"><i>\n%1\n</i></p></qt>", text );
   el.append( new StoredElement( "main element", text ) );
 
   return el;
@@ -94,5 +90,5 @@ Element::List Hebrew::createDayElements( const QDate &date )
 
 QString Hebrew::info()
 {
-  return i18n("This plugin provides the date in the Jewish calendar.");
+  return i18n( "This plugin provides the date in the Jewish calendar." );
 }

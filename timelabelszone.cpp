@@ -23,7 +23,6 @@
 */
 
 #include "timelabelszone.h"
-
 #include "koagendaview.h"
 #include "koagenda.h"
 #include "koprefs.h"
@@ -32,8 +31,8 @@
 
 using namespace KOrg;
 
-TimeLabelsZone::TimeLabelsZone( QWidget *parent, KOAgenda *agenda)
-  : QWidget( parent ), mAgenda( agenda ),  mParent( dynamic_cast<KOAgendaView*>( parent ) )
+TimeLabelsZone::TimeLabelsZone( QWidget *parent, KOAgenda *agenda )
+  : QWidget( parent ), mAgenda( agenda ), mParent( dynamic_cast<KOAgendaView*>( parent ) )
 {
   mTimeLabelsLayout = new QHBoxLayout( this );
   mTimeLabelsLayout->setMargin( 0 );
@@ -44,7 +43,7 @@ TimeLabelsZone::TimeLabelsZone( QWidget *parent, KOAgenda *agenda)
 
 void TimeLabelsZone::reset()
 {
-  foreach( TimeLabels* label, mTimeLabelsList ) {
+  foreach ( TimeLabels *label, mTimeLabelsList ) {
     label->hide();
     label->deleteLater();
   }
@@ -64,10 +63,11 @@ void TimeLabelsZone::init()
 {
   addTimeLabels( KOPrefs::instance()->timeSpec() );
 
-  foreach( QString zoneStr, KOPrefs::instance()->timeScaleTimezones() ) {
+  foreach ( const QString &zoneStr, KOPrefs::instance()->timeScaleTimezones() ) {
     KTimeZone zone = KSystemTimeZones::zone( zoneStr );
-    if ( zone.isValid() )
+    if ( zone.isValid() ) {
       addTimeLabels( zone );
+    }
   }
 }
 
@@ -79,30 +79,31 @@ void TimeLabelsZone::addTimeLabels( const KDateTime::Spec &spec )
   setupTimeLabel( labels );
 }
 
-void TimeLabelsZone::setupTimeLabel( TimeLabels* timeLabel )
+void TimeLabelsZone::setupTimeLabel( TimeLabels *timeLabel )
 {
   if ( mAgenda ) {
     timeLabel->setAgenda( mAgenda );
-    connect( mAgenda->verticalScrollBar(), SIGNAL( valueChanged(int) ),
-            timeLabel, SLOT( positionChanged() ) );
+    connect( mAgenda->verticalScrollBar(), SIGNAL(valueChanged(int)),
+            timeLabel, SLOT(positionChanged()) );
   }
-  if ( mParent )
-    connect( timeLabel->verticalScrollBar(), SIGNAL( valueChanged(int) ),
-             mParent, SLOT( setContentsPos(int) ) );
+  if ( mParent ) {
+    connect( timeLabel->verticalScrollBar(), SIGNAL(valueChanged(int)),
+             mParent, SLOT(setContentsPos(int)) );
+  }
 }
 
 int TimeLabelsZone::timeLabelsWidth()
 {
-  if ( mTimeLabelsList.isEmpty() )
+  if ( mTimeLabelsList.isEmpty() ) {
     return 0;
-  else {
+  } else {
     return mTimeLabelsList.first()->width() * mTimeLabelsList.count();
   }
 }
 
 void TimeLabelsZone::updateAll()
 {
-  foreach( TimeLabels* timeLabel, mTimeLabelsList ) {
+  foreach ( TimeLabels *timeLabel, mTimeLabelsList ) {
     timeLabel->updateConfig();
     timeLabel->positionChanged();
     timeLabel->repaint();
@@ -111,7 +112,7 @@ void TimeLabelsZone::updateAll()
 
 void TimeLabelsZone::setTimeLabelsWidth( int width )
 {
-  foreach( TimeLabels* timeLabel, mTimeLabelsList ) {
+  foreach ( TimeLabels *timeLabel, mTimeLabelsList ) {
     timeLabel->setFixedWidth( width / mTimeLabelsList.count() );
   }
 }
@@ -121,12 +122,13 @@ TimeLabels::List TimeLabelsZone::timeLabels() const
   return mTimeLabelsList;
 }
 
-void TimeLabelsZone::setAgendaView( KOAgendaView * agenda )
+void TimeLabelsZone::setAgendaView( KOAgendaView *agenda )
 {
   mAgenda = agenda->agenda();
   mParent = agenda;
-  foreach ( TimeLabels *timeLabel, mTimeLabelsList )
+  foreach ( TimeLabels *timeLabel, mTimeLabelsList ) {
     setupTimeLabel( timeLabel );
+  }
 }
 
 #include "timelabelszone.moc"
