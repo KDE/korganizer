@@ -87,7 +87,6 @@ void ThemeImporter::readElement( const QString &viewType, const int year,
 {
   if ( name() == "view" ) {
     readView( viewType, year, month, day );
-  }
 /***** TODO: Date-dependent themes disabled for now ******
   else if ( name() == "year" || name() == "month" || name() == "day" )
     readDate( viewType, year, month, day );
