@@ -27,7 +27,7 @@
 #include "searchdialog.h"
 #include "koglobals.h"
 #include "koprefs.h"
-#include "kolistview.h"
+#include "views/listview/kolistview.h"
 
 #include <libkdepim/kdateedit.h>
 

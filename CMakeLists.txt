@@ -144,6 +144,7 @@ set(korganizerprivate_LIB_SRCS
    kdatenavigator.cpp
    datenavigatorcontainer.cpp
    datechecker.cpp
+   views/listview/kolistview.cpp
    views/journalview/kojournalview.cpp
    views/journalview/journalview.cpp
    views/monthview/monthview.cpp
@@ -165,7 +166,6 @@ set(korganizerprivate_LIB_SRCS
    archivedialog.cpp
    kohelper.cpp
    komailclient.cpp
-   kolistview.cpp
    koincidenceeditor.cpp
    koeventeditor.cpp
    kotodoeditor.cpp
