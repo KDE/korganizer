@@ -143,7 +143,7 @@ void DateNavigatorContainer::selectDates( const DateList &dateList )
     QDate start( dateList.first() );
     QDate end( dateList.last() );
     QDate navfirst( mNavigatorView->startDate() );
-    QDate navsecond; // start of the second shown month if existant
+    QDate navsecond; // start of the second shown month if existent
     QDate navlast;
     if ( !mExtraViews.isEmpty() ) {
       navlast = mExtraViews.last()->endDate();

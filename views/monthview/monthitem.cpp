@@ -440,7 +440,7 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
         delete oldIncSaved;
         break;
       }
-      case KMessageBox::No: // All future occurences
+      case KMessageBox::No: // All future occurrences
       {
         modify = true;
         Incidence *oldIncSaved = mIncidence->clone();
