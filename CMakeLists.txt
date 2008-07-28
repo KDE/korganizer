@@ -136,7 +136,6 @@ set(korganizerprivate_LIB_SRCS
    timelabels.cpp
    timescaleconfigdialog.cpp
    agendaview.cpp
-   multiagendaview.cpp
    koagenda.cpp
    koagendaitem.cpp
    datenavigator.cpp
@@ -150,6 +149,7 @@ set(korganizerprivate_LIB_SRCS
    views/monthview/monthitem.cpp
    views/monthview/monthgraphicsitems.cpp
    views/monthview/monthscene.cpp
+   views/multiagendaview/multiagendaview.cpp
    views/todoview/kotodomodel.cpp
    views/todoview/kotododelegates.cpp
    views/todoview/kotodoviewsortfilterproxymodel.cpp
