@@ -160,6 +160,7 @@ set(korganizerprivate_LIB_SRCS
    views/todoview/kcheckcombobox.cpp
    views/timelineview/kotimelineview.cpp
    views/timelineview/timelineitem.cpp
+   views/timespentview/kotimespentview.cpp
    views/whatsnextview/kowhatsnextview.cpp
    searchdialog.cpp
    calendarview.cpp
@@ -187,7 +188,6 @@ set(korganizerprivate_LIB_SRCS
    publishdialog.cpp
    koeventview.cpp
    filtereditdialog.cpp
-   kotimespentview.cpp
    kocore.cpp
    mailscheduler.cpp
    kodaymatrix.cpp
