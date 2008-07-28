@@ -18,6 +18,7 @@ add_subdirectory( pixmaps )
 add_subdirectory( sounds )
 add_subdirectory( plugins )
 add_subdirectory( interfaces )
+add_subdirectory( kcmconfigs )
 
 set( PERL ${PERL_EXECUTABLE} )
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/ical2vcal.cmake ${CMAKE_CURRENT_BINARY_DIR}/ical2vcal @ONLY)
@@ -248,15 +249,7 @@ install( FILES korganizer.kcfg  DESTINATION ${KCFG_INSTALL_DIR})
 install( FILES korganizer_part.rc  DESTINATION ${DATA_INSTALL_DIR}/korganizer)
 install( FILES dbuscalendar.desktop  DESTINATION ${SERVICETYPES_INSTALL_DIR})
 install( FILES tips  DESTINATION ${DATA_INSTALL_DIR}/korganizer)
-install( FILES korganizer_configmain.desktop
-               korganizer_configtime.desktop
-               korganizer_configviews.desktop
-               korganizer_configcolorsandfonts.desktop
-               korganizer_configplugins.desktop
-               korganizer_configgroupscheduling.desktop
-               korganizer_configfreebusy.desktop
-               korganizer_configdesignerfields.desktop
-               webcal.protocol  DESTINATION ${SERVICES_INSTALL_DIR})
+install( FILES webcal.protocol  DESTINATION ${SERVICES_INSTALL_DIR})
 install( FILES korganizerui.rc  DESTINATION ${DATA_INSTALL_DIR}/korganizer)
 install( FILES korganizer.upd  DESTINATION ${KCONF_UPDATE_INSTALL_DIR})
 install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/ical2vcal DESTINATION ${BIN_INSTALL_DIR})
