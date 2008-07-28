@@ -24,12 +24,12 @@
 */
 
 #include "koviewmanager.h"
+#include "koglobals.h"
+#include "koprefs.h"
 #include "calendarview.h"
 #include "datenavigator.h"
-#include "koagendaview.h"
-#include "koprefs.h"
-#include "koglobals.h"
 #include "navigatorbar.h"
+#include "views/agendaview/koagendaview.h"
 #include "views/listview/kolistview.h"
 #include "views/journalview/kojournalview.h"
 #include "views/monthview/monthview.h"

@@ -29,12 +29,12 @@
 #include "timescaleconfigdialog.h"
 #include "koglobals.h"
 #include "koprefs.h"
-#include "koagenda.h"
-#include "koagendaitem.h"
 #include "kogroupware.h"
 #include "kodialogmanager.h"
 #include "koeventpopupmenu.h"
 #include "koalternatelabel.h"
+#include "views/agendaview/koagendaitem.h"
+#include "views/agendaview/koagenda.h"
 
 #include <kapplication.h>
 #include <kcalendarsystem.h>

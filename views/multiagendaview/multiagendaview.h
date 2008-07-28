@@ -19,7 +19,7 @@
 #ifndef KORG_MULTIAGENDAVIEW_H_H
 #define KORG_MULTIAGENDAVIEW_H_H
 
-#include "agendaview.h"
+#include "views/agendaview/agendaview.h"
 
 class Q3ScrollView;
 class KHBox;

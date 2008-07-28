@@ -24,13 +24,12 @@
 #ifndef TIMELABELSZONE_H
 #define TIMELABELSZONE_H
 
-#include <QWidget>
-#include <QList>
+#include "timelabels.h"
 
 #include <kdatetime.h>
 
-#include "agendaview.h"
-#include "timelabels.h"
+#include <QWidget>
+#include <QList>
 
 class KOAgendaView;
 class KOAgenda;

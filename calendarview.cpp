@@ -42,7 +42,6 @@
 #include "publishdialog.h"
 #include "koglobals.h"
 #include "koviewmanager.h"
-#include "koagendaview.h"
 #include "kodialogmanager.h"
 #include "statusdialog.h"
 #include "datenavigatorcontainer.h"
@@ -60,6 +59,7 @@
 #include "kholidays.h"
 #include "mailscheduler.h"
 #include "komailclient.h"
+#include "views/agendaview/koagendaview.h"
 #include "views/todoview/kotodoview.h"
 #include "views/monthview/monthview.h"
 

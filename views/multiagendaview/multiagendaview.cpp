@@ -17,10 +17,10 @@
 */
 
 #include "multiagendaview.h"
-#include "koagendaview.h"
-#include "koagenda.h"
 #include "koprefs.h"
 #include "timelabelszone.h"
+#include "views/agendaview/koagenda.h"
+#include "views/agendaview/koagendaview.h"
 
 #include <kcal/calendarresources.h>
 

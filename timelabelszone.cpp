@@ -23,9 +23,9 @@
 */
 
 #include "timelabelszone.h"
-#include "koagendaview.h"
-#include "koagenda.h"
 #include "koprefs.h"
+#include "views/agendaview/koagenda.h"
+#include "views/agendaview/koagendaview.h"
 
 #include <ksystemtimezone.h>
 

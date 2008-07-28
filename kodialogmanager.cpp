@@ -25,6 +25,7 @@
 
 #include "kodialogmanager.h"
 #include "calendarview.h"
+#include "koglobals.h"
 #include "koprefsdialog.h"
 #include "koprefs.h"
 #include "koeventeditor.h"
@@ -36,8 +37,7 @@
 #include "archivedialog.h"
 #endif
 #include "koviewmanager.h"
-#include "koagendaview.h"
-#include "koglobals.h"
+#include "views/agendaview/koagendaview.h"
 
 #include <libkdepim/categoryeditdialog.h>
 

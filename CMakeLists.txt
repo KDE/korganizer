@@ -131,17 +131,17 @@ set(korganizerprivate_LIB_SRCS
    komessagebox.cpp
    koalternatelabel.cpp
    kodecorationlabel.cpp
-   koagendaview.cpp
    timelabelszone.cpp
    timelabels.cpp
    timescaleconfigdialog.cpp
-   agendaview.cpp
-   koagenda.cpp
-   koagendaitem.cpp
    datenavigator.cpp
    kdatenavigator.cpp
    datenavigatorcontainer.cpp
    datechecker.cpp
+   views/agendaview/agendaview.cpp
+   views/agendaview/koagenda.cpp
+   views/agendaview/koagendaitem.cpp
+   views/agendaview/koagendaview.cpp
    views/listview/kolistview.cpp
    views/journalview/kojournalview.cpp
    views/journalview/journalview.cpp
