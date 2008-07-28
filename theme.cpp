@@ -46,6 +46,7 @@ void Theme::useThemeFrom( const KUrl &url )
   if ( ( !file->open( QFile::ReadOnly | QFile::Text ) ) || ( !url.isLocalFile() ) ) {
     //TODO: KMessageBox "invalid file"
     kDebug() << "can't import: invalid file: (1)" << url.path();
+    delete file;
     return;
   }
 
@@ -58,6 +59,8 @@ void Theme::useThemeFrom( const KUrl &url )
     if ( !zip->open( QIODevice::ReadOnly ) ) {
       //TODO: KMessageBox "invalid file"
       kDebug() << "can't import: invalid file: (3)" << url.path();
+      delete zip;
+      delete file;
       return;
     }
 
@@ -65,6 +68,8 @@ void Theme::useThemeFrom( const KUrl &url )
     if ( dir == 0 ) {
       //TODO: KMessageBox "invalid file"
       kDebug() << "can't import: invalid file: (4)" << url.path();
+      delete zip;
+      delete file;
       return;
     }
 
@@ -74,11 +79,15 @@ void Theme::useThemeFrom( const KUrl &url )
     }
     dir->copyTo( storageDir().path() );
 
+    delete file;
+
     file = new QFile( storageDir().path() + "/theme.xml" );
 
     if ( !file->open( QFile::ReadOnly | QFile::Text ) ) {
       //TODO: KMessageBox "invalid file"
       kDebug() << "can't import: invalid file: (5)" << url.path();
+      delete file;
+      delete zip;      
       return;
     }
 
@@ -87,13 +96,17 @@ void Theme::useThemeFrom( const KUrl &url )
     if ( mimeType->name() != "application/xml" ) {
       //TODO: KMessageBox "invalid file"
       kDebug() << "can't import: invalid file: (6)" << url.path();
+      delete zip;
+      delete file;
       return;
     }
   } else if ( mimeType->name() == "application/xml" ) {
     KIO::NetAccess::file_copy( url.path(), storageDir().path() + '/', 0 );
+    delete file;
   } else {
     //TODO: KMessageBox "invalid file"
     kDebug() << "can't import: invalid file: (2)" << url.path();
+    delete file;
     return;
   }
 
