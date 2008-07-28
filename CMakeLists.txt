@@ -159,6 +159,7 @@ set(korganizerprivate_LIB_SRCS
    views/todoview/kotodoviewquicksearch.cpp
    views/todoview/kotodoviewquickaddline.cpp
    views/todoview/kcheckcombobox.cpp
+   views/whatsnextview/kowhatsnextview.cpp
    searchdialog.cpp
    calendarview.cpp
    koviewmanager.cpp
@@ -185,7 +186,6 @@ set(korganizerprivate_LIB_SRCS
    publishdialog.cpp
    koeventview.cpp
    filtereditdialog.cpp
-   kowhatsnextview.cpp
    kotimespentview.cpp
    kocore.cpp
    mailscheduler.cpp
