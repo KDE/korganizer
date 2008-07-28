@@ -139,7 +139,6 @@ set(korganizerprivate_LIB_SRCS
    multiagendaview.cpp
    koagenda.cpp
    koagendaitem.cpp
-   timelineitem.cpp
    datenavigator.cpp
    kdatenavigator.cpp
    datenavigatorcontainer.cpp
@@ -159,6 +158,8 @@ set(korganizerprivate_LIB_SRCS
    views/todoview/kotodoviewquicksearch.cpp
    views/todoview/kotodoviewquickaddline.cpp
    views/todoview/kcheckcombobox.cpp
+   views/timelineview/kotimelineview.cpp
+   views/timelineview/timelineitem.cpp
    views/whatsnextview/kowhatsnextview.cpp
    searchdialog.cpp
    calendarview.cpp
@@ -208,7 +209,6 @@ set(korganizerprivate_LIB_SRCS
    exportwebdialog.cpp
    kocorehelper.cpp
    incidencechanger.cpp
-   kotimelineview.cpp
    koattendeeeditor.cpp
    templatemanagementdialog.cpp )
 

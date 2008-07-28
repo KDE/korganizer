@@ -27,7 +27,6 @@
 #include "calendarview.h"
 #include "datenavigator.h"
 #include "koagendaview.h"
-#include "kotimelineview.h"
 #include "kotimespentview.h"
 #include "koprefs.h"
 #include "koglobals.h"
@@ -38,6 +37,7 @@
 #include "views/monthview/monthview.h"
 #include "views/todoview/kotodoview.h"
 #include "views/whatsnextview/kowhatsnextview.h"
+#include "views/timelineview/kotimelineview.h"
 
 #include <KConfig>
 #include <KGlobal>
