@@ -89,7 +89,7 @@ KOPrefs::KOPrefs() :
   eventColorItem()->setDefaultValue( mDefaultCategoryColor );
 
   // Load it now, not deep within some painting code
-  KABC::StdAddressBook::self();
+  mMyAddrBookMails = KABC::StdAddressBook::self()->whoAmI().emails();
 }
 
 
@@ -342,7 +342,7 @@ QStringList KOPrefs::allEmails()
   // Add emails configured in korganizer
   lst += mAdditionalMails;
   // Add emails from the user's kaddressbook entry
-  lst += KABC::StdAddressBook::self()->whoAmI().emails();
+  lst += mMyAddrBookMails;
   // Add the email entered as the userEmail here
   lst += email();
 
@@ -388,7 +388,7 @@ bool KOPrefs::thatIsMe( const QString& _email )
   QString email = KPIM::getEmailAddress( _email );
   if ( mAdditionalMails.find( email ) != mAdditionalMails.end() )
     return true;
-  QStringList lst = KABC::StdAddressBook::self()->whoAmI().emails();
+  QStringList lst = mMyAddrBookMails;
   if ( lst.find( email ) != lst.end() )
     return true;
   return false;

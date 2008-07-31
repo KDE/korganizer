@@ -106,6 +106,8 @@ class KDE_EXPORT KOPrefs : public KOPrefsBase
     QFont mDefaultTimeBarFont;
     QFont mDefaultMonthViewFont;
 
+    QStringList mMyAddrBookMails;
+
   public: // Do not use - except in KOPrefsDialogMain
     QString mName;
     QString mEmail;
