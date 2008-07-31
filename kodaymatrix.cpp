@@ -100,7 +100,7 @@ const int KODayMatrix::NOSELECTION = -1000;
 const int KODayMatrix::NUMDAYS = 42;
 
 KODayMatrix::KODayMatrix( QWidget *parent, const char *name )
-  : QFrame( parent, name ), mCalendar( 0 ), mStartDate()
+  : QFrame( parent, name ), mCalendar( 0 ), mStartDate(), mPendingChanges( false )
 {
   // initialize dynamic arrays
   mDays = new QDate[ NUMDAYS ];
@@ -116,7 +116,19 @@ KODayMatrix::KODayMatrix( QWidget *parent, const char *name )
 
 void KODayMatrix::setCalendar( Calendar *cal )
 {
+  if ( mCalendar ) {
+    mCalendar->unregisterObserver( this );
+    mCalendar->disconnect( this );
+  }
+
   mCalendar = cal;
+  mCalendar->registerObserver( this );
+  CalendarResources *calres = dynamic_cast<CalendarResources*>( cal );
+  if ( calres ) {
+    connect( calres, SIGNAL(signalResourceAdded(ResourceCalendar *)), SLOT(resourcesChanged()) );
+    connect( calres, SIGNAL(signalResourceModified( ResourceCalendar *)), SLOT(resourcesChanged()) );
+    connect( calres, SIGNAL(signalResourceDeleted(ResourceCalendar *)), SLOT(resourcesChanged()) );
+  }
 
   setAcceptDrops( mCalendar );
 
@@ -139,6 +151,8 @@ QColor KODayMatrix::getShadedColor( const QColor &color )
 
 KODayMatrix::~KODayMatrix()
 {
+  if ( mCalendar )
+    mCalendar->unregisterObserver( this );
   delete [] mDays;
   delete [] mDayLabels;
   delete [] mEvents;
@@ -249,6 +263,11 @@ void KODayMatrix::updateView( const QDate &actdate )
     recalculateToday();
   }
 
+  // the calendar hasn't changed in the meantime and the selected range is still the same
+  // so we can safe the expensive updateEvents() call
+  if ( !daychanged && !mPendingChanges )
+    return;
+
   // TODO_Recurrence: If we just change the selection, but not the data, there's
   // no need to update the whole list of events... This is just a waste of
   // computational power (and it takes forever!)
@@ -270,6 +289,7 @@ void KODayMatrix::updateView( const QDate &actdate )
 
 void KODayMatrix::updateEvents()
 {
+  kdDebug( 5850 ) << k_funcinfo << endl;
   if ( !mCalendar ) return;
 
   for( int i = 0; i < NUMDAYS; i++ ) {
@@ -289,6 +309,8 @@ void KODayMatrix::updateEvents()
     }
     mEvents[ i ] = numEvents;
   }
+
+  mPendingChanges = false;
 }
 
 const QDate& KODayMatrix::getDate( int offset )
@@ -315,6 +337,27 @@ int KODayMatrix::getDayIndexFrom( int x, int y )
          ( KOGlobals::self()->reverseLayout() ?
            6 - x / mDaySize.width() : x / mDaySize.width() );
 }
+
+void KODayMatrix::calendarIncidenceAdded(Incidence * incidence)
+{
+  mPendingChanges = true;
+}
+
+void KODayMatrix::calendarIncidenceChanged(Incidence * incidence)
+{
+  mPendingChanges = true;
+}
+
+void KODayMatrix::calendarIncidenceRemoved(Incidence * incidence)
+{
+  mPendingChanges = true;
+}
+
+void KODayMatrix::resourcesChanged()
+{
+  mPendingChanges = true;
+}
+
 
 // ----------------------------------------------------------------------------
 //  M O U S E   E V E N T   H A N D L I N G
