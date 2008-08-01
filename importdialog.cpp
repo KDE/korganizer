@@ -28,7 +28,8 @@
 #include "koprefs.h"
 #include "stdcalendar.h"
 
-#include <klocale.h>
+#include <KLocale>
+#include <KSqueezedTextLabel>
 
 #include <QLabel>
 #include <QLayout>
@@ -56,10 +57,11 @@ ImportDialog::ImportDialog( const KUrl &url, QWidget *parent )
   topLayout->setSpacing( spacingHint() );
   topLayout->setMargin( 0 );
 
-  QString txt = i18n("Import calendar at '%1' into KOrganizer.",
+  QString txt = i18n( "Please select import method for calendar at\n\n%1.",
                   mUrl.prettyUrl() );
-
-  topLayout->addWidget( new QLabel( txt, topFrame ) );
+  KSqueezedTextLabel *lbl = new KSqueezedTextLabel( txt, topFrame );
+  lbl->setTextElideMode( Qt::ElideMiddle );
+  topLayout->addWidget( lbl );
 
   QGroupBox *radioBox = new QGroupBox( topFrame );
   QBoxLayout *boxLayout = new QVBoxLayout( radioBox );
