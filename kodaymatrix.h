@@ -27,6 +27,7 @@
 #define KODAYMATRIX_H
 
 #include <kcal/incidencebase.h>
+#include <kcal/calendar.h>
 
 #include <QFrame>
 #include <QColor>
@@ -41,8 +42,6 @@ class QMouseEvent;
 class QResizeEvent;
 class QPaintEvent;
 
-class KODayMatrix;
-
 namespace KCal {
   class Incidence;
   class Calendar;
@@ -50,31 +49,39 @@ namespace KCal {
 using namespace KCal;
 
 /**
- *  Replacement for kdpdatebuton.cpp that used 42 widgets for the day matrix to be displayed.
- *  Cornelius thought this was a waste of memory and a lot of overhead.
- *  In addition the selection was not very intuitive so I decided to rewrite it using a QFrame
- *  that draws the labels and allows for dragging selection while maintaining nearly full
- *  compatibility in behavior with its predecessor.
+ *  Replacement for kdpdatebuton.cpp that used 42 widgets for the day
+ *  matrix to be displayed. Cornelius thought this was a waste of memory
+ *  and a lot of overhead. In addition the selection was not very intuitive
+ *  so I decided to rewrite it using a QFrame that draws the labels and
+ *  allows for dragging selection while maintaining nearly full compatibility
+ *  in behavior with its predecessor.
  *
  *  The following functionality has been changed:
  *
- *  o when shifting events in the agenda view from one day to another the day matrix is updated now
- *  o dragging an event to the matrix will MOVE not COPY the event to the new date.
+ *  o when shifting events in the agenda view from one day to another
+ *    the day matrix is updated now
+ *
+ *  o dragging an event to the matrix will MOVE not COPY the event to the
+ *    new date.
+ *
  *  o no support for Ctrl+click to create groups of dates
- *    (This has not really been supported in the predecessor. It was not very intuitive nor was it
- *     user friendly.)
- *    This feature has been replaced with dragging a selection on the matrix. The matrix will
- *    automatically choose the appropriate selection (e.g. you are not any longer able to select
- *    two distinct groups of date selections as in the old class)
- *  o now that you can select more then a week it can happen that not all selected days are
- *    displayed in the matrix. However this is preferred to the alternative which would mean to
- *    adjust the selection and leave some days undisplayed while scrolling through the months
+ *    (This has not really been supported in the predecessor.
+ *    It was not very intuitive nor was it user friendly.)
+ *    This feature has been replaced with dragging a selection on the matrix.
+ *    The matrix will automatically choose the appropriate selection (e.g. you
+ *    are not any longer able to select two distinct groups of date selections
+ *    as in the old class)
+ *
+ *  o now that you can select more then a week it can happen that not all
+ *    selected days are displayed in the matrix. However this is preferred
+ *    to the alternative which would mean to adjust the selection and leave
+ *    some days undisplayed while scrolling through the months
  *
  *  @short day matrix widget of the KDateNavigator
  *
  *  @author Eitzenberger Thomas
  */
-class KODayMatrix: public QFrame
+class KODayMatrix: public QFrame, public KCal::Calendar::CalendarObserver
 {
   Q_OBJECT
   public:
@@ -90,8 +97,8 @@ class KODayMatrix: public QFrame
     ~KODayMatrix();
 
     /**
-      Associate a calendar with this day matrix. If there is a calendar, the day
-      matrix will accept drops and days with events will be highlighted.
+      Associate a calendar with this day matrix. If there is a calendar, the
+      day matrix will accept drops and days with events will be highlighted.
     */
     void setCalendar( Calendar * );
 
@@ -129,8 +136,8 @@ class KODayMatrix: public QFrame
     /** sets the actual to be displayed selection in the day matrix starting
      *  from start and ending with end. Theview must be manually updated by
      *  calling repaint. (?)
-     *    @param start start of the new selection
-     *    @param end end date of the new selection
+     *  @param start start of the new selection
+     *  @param end end date of the new selection
      */
     void setSelectedDaysFrom( const QDate &start, const QDate &end );
 
@@ -154,6 +161,11 @@ class KODayMatrix: public QFrame
     bool isBeginningOfMonth() const { return mToday <= 8; }
     bool isEndOfMonth() const { return mToday >= 27; }
 
+    /* reimplemented from KCal::Calendar::Observer */
+    void calendarIncidenceAdded( Incidence *incidence );
+    void calendarIncidenceChanged( Incidence *incidence );
+    void calendarIncidenceRemoved( Incidence *incidence );
+
   public slots:
     /** Recalculates all the flags of the days in the matrix like holidays or
      *  events on a day (Actually calls above method with the actual startdate).
@@ -161,10 +173,15 @@ class KODayMatrix: public QFrame
     void updateView();
 
     /**
-    * Calculate which square in the matrix should be
-    * hilighted to indicate it's today.
-    */
+     * Calculate which square in the matrix should be
+     * hilighted to indicate it's today.
+     */
     void recalculateToday();
+
+    /**
+     * Handle resource changes.
+     */
+    void resourcesChanged();
 
   signals:
     /** emitted if the user selects a block of days with the mouse by dragging
@@ -267,13 +284,19 @@ class KODayMatrix: public QFrame
     /** index of last selected day. */
     int mSelEnd;
 
-    /** default width of the frame drawn around today if it is visible in the matrix. */
+    /** default width of the frame drawn around today if it is visible
+        in the matrix. */
     int mTodayMarginWidth;
 
     /** stores actual size of each day in the widget so we don't need to
      *  ask on every repaint.
      */
     QRect mDaySize;
+
+    /**
+     * Indicate pending calendar changes.
+     */
+    bool mPendingChanges;
 };
 
 #endif

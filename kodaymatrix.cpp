@@ -75,7 +75,7 @@ const int KODayMatrix::NOSELECTION = -1000;
 const int KODayMatrix::NUMDAYS = 42;
 
 KODayMatrix::KODayMatrix( QWidget *parent )
-  : QFrame( parent ), mCalendar( 0 ), mStartDate()
+  : QFrame( parent ), mCalendar( 0 ), mStartDate(), mPendingChanges( false )
 {
   // initialize dynamic arrays
   mDays = new QDate[NUMDAYS];
@@ -91,8 +91,24 @@ KODayMatrix::KODayMatrix( QWidget *parent )
 
 void KODayMatrix::setCalendar( Calendar *cal )
 {
+  if ( mCalendar ) {
+    mCalendar->unregisterObserver( this );
+    mCalendar->disconnect( this );
+  }
+
   mCalendar = cal;
-  setAcceptDrops( mCalendar!=0 );
+  mCalendar->registerObserver( this );
+  CalendarResources *calres = dynamic_cast<CalendarResources*>( cal );
+  if ( calres ) {
+    connect( calres, SIGNAL(signalResourceAdded(ResourceCalendar *)),
+             SLOT(resourcesChanged()) );
+    connect( calres, SIGNAL(signalResourceModified(ResourceCalendar *)),
+             SLOT(resourcesChanged()) );
+    connect( calres, SIGNAL(signalResourceDeleted(ResourceCalendar *)),
+             SLOT(resourcesChanged()) );
+  }
+
+  setAcceptDrops( mCalendar != 0 );
   updateEvents();
 }
 
@@ -112,6 +128,10 @@ QColor KODayMatrix::getShadedColor( const QColor &color ) const
 
 KODayMatrix::~KODayMatrix()
 {
+  if ( mCalendar ) {
+    mCalendar->unregisterObserver( this );
+  }
+
   delete [] mDays;
   delete [] mDayLabels;
   delete [] mEvents;
@@ -224,9 +244,15 @@ void KODayMatrix::updateView( const QDate &actdate )
     recalculateToday();
   }
 
-  // TODO_Recurrence: If we just change the selection, but not the data, there's
-  // no need to update the whole list of events... This is just a waste of
-  // computational power (and it takes forever!)
+  // The calendar has not changed in the meantime and the selected range
+  // is still the same so we can save the expensive updateEvents() call
+  if ( !daychanged && !mPendingChanges ) {
+    return;
+  }
+
+  // TODO_Recurrence: If we just change the selection, but not the data,
+  // there's no need to update the whole list of events... This is just a
+  // waste of computational power (and it takes forever!)
   updateEvents();
   for ( int i = 0; i < NUMDAYS; i++ ) {
     //if it is a holy day then draw it red. Sundays are consider holidays, too
@@ -270,6 +296,7 @@ void KODayMatrix::updateEvents()
     }
     mEvents[i] = numEvents;
   }
+  mPendingChanges = false;
 }
 
 const QDate &KODayMatrix::getDate( int offset ) const
@@ -295,6 +322,29 @@ int KODayMatrix::getDayIndexFrom( int x, int y ) const
   return 7 * ( y / mDaySize.height() ) +
          ( KOGlobals::self()->reverseLayout() ?
            6 - x / mDaySize.width() : x / mDaySize.width() );
+}
+
+void KODayMatrix::calendarIncidenceAdded( Incidence *incidence )
+{
+  Q_UNUSED( incidence );
+  mPendingChanges = true;
+}
+
+void KODayMatrix::calendarIncidenceChanged( Incidence *incidence )
+{
+  Q_UNUSED( incidence );
+  mPendingChanges = true;
+}
+
+void KODayMatrix::calendarIncidenceRemoved( Incidence *incidence )
+{
+  Q_UNUSED( incidence );
+  mPendingChanges = true;
+}
+
+void KODayMatrix::resourcesChanged()
+{
+  mPendingChanges = true;
 }
 
 // ----------------------------------------------------------------------------
@@ -433,8 +483,9 @@ void KODayMatrix::dragMoveEvent( QDragMoveEvent *e )
 #endif
 }
 
-void KODayMatrix::dragLeaveEvent( QDragLeaveEvent * /*dl*/ )
+void KODayMatrix::dragLeaveEvent( QDragLeaveEvent *dl )
 {
+  Q_UNUSED( dl );
 #ifndef KORG_NODND
 //  setPalette(oldPalette);
 //  update();
