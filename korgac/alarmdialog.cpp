@@ -216,6 +216,7 @@ void AlarmDialog::slotOk() // Dismiss selected
   ReminderList selection = selectedItems();
   for ( ReminderList::Iterator it = selection.begin(); it != selection.end(); ++it ) {
     kDebug() << "removing " << ( *it )->mIncidence->summary();
+    mIncidenceTree->setCurrentItem( mIncidenceTree->itemBelow( *it ) );
     mIncidenceTree->removeItemWidget( *it, 0 );
     delete *it;
   }
@@ -300,6 +301,7 @@ void AlarmDialog::slotUser3() // Suspend selected
 
 void AlarmDialog::show()
 {
+  mIncidenceTree->setCurrentItem( mIncidenceTree->topLevelItem( 0 ) );
   KDialog::show();
   KWindowSystem::setState( winId(), NET::KeepAbove );
   KWindowSystem::setOnAllDesktops( winId(), true );
@@ -313,8 +315,9 @@ void AlarmDialog::dismissAll()
     if ( (*it)->isDisabled() ) { //do not disable suspended reminders
       continue;
     }
-    delete *it;
+    QTreeWidgetItem *item = *it;
     ++it;
+    delete item;
   }
   setTimer();
   accept();
