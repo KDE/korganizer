@@ -184,12 +184,48 @@ KOTodoView::KOTodoView( Calendar *cal, QWidget *parent )
   connect( mCopyPopupMenu, SIGNAL(dateChanged(QDate)),
            mItemPopupMenu, SLOT(hide()) );
 
+  mMovePopupMenu = new KDatePickerPopup( KDatePickerPopup::NoDate |
+                                         KDatePickerPopup::DatePicker |
+                                         KDatePickerPopup::Words,
+                                         QDate::currentDate(), this );
+  mMovePopupMenu->setTitle( i18n( "&Move To" ) );
+
+  connect( mMovePopupMenu, SIGNAL(dateChanged(const QDate &)),
+           SLOT(setNewDate(const QDate&)) );
+
+  connect( mMovePopupMenu, SIGNAL(dateChanged(QDate)),
+           mItemPopupMenu, SLOT(hide()) );
+
   mItemPopupMenu->insertMenu( 0, mCopyPopupMenu );
+  mItemPopupMenu->insertMenu( 0, mMovePopupMenu );
 
   mItemPopupMenu->addSeparator();
 
   mItemPopupMenu->addAction( i18nc( "delete completed to-dos", "Pur&ge Completed" ),
                              this, SIGNAL(purgeCompletedSignal()) );
+
+
+  mPriorityPopupMenu = new QMenu( this );
+  mPriority[ mPriorityPopupMenu->addAction( i18nc("Unspecified priority", "unspecified") ) ] = 0;
+  mPriority[ mPriorityPopupMenu->addAction( i18n( "1 (highest)") ) ] = 1;
+  mPriority[ mPriorityPopupMenu->addAction( i18n( "2" ) ) ] = 2;
+  mPriority[ mPriorityPopupMenu->addAction( i18n( "3" ) ) ] = 3;
+  mPriority[ mPriorityPopupMenu->addAction( i18n( "4" ) ) ] = 4;
+  mPriority[ mPriorityPopupMenu->addAction( i18n( "5 (medium)" ) ) ] = 5;
+  mPriority[ mPriorityPopupMenu->addAction( i18n( "6" ) ) ] = 6;
+  mPriority[ mPriorityPopupMenu->addAction( i18n( "7" ) ) ] = 7;
+  mPriority[ mPriorityPopupMenu->addAction( i18n( "8" ) ) ] = 8;
+  mPriority[ mPriorityPopupMenu->addAction( i18n( "9 (lowest)" ) ) ] = 9;
+  connect( mPriorityPopupMenu, SIGNAL( triggered( QAction* ) ),
+           SLOT( setNewPriority( QAction* ) ));
+
+  mPercentageCompletedPopupMenu = new QMenu(this);
+  for (int i = 0; i <= 100; i+=10) {
+    QString label = QString ("%1 %").arg (i);
+    mPercentage[mPercentageCompletedPopupMenu->addAction (label)] = i;
+  }
+  connect( mPercentageCompletedPopupMenu, SIGNAL( triggered( QAction* ) ),
+           SLOT( setNewPercentage( QAction* ) ) );
 }
 
 KOTodoView::~KOTodoView()
@@ -369,7 +405,27 @@ void KOTodoView::contextMenu( const QPoint &pos )
   }
   mCopyPopupMenu->setEnabled( enable );
 
-  mItemPopupMenu->popup( mView->viewport()->mapToGlobal( pos ) );
+  if (enable) {
+    switch ( mView->indexAt( pos ).column() ) {
+    case ePriorityColumn:
+      mPriorityPopupMenu->popup( mView->viewport()->mapToGlobal( pos ) );
+      break;
+    case ePercentColumn:
+      mPercentageCompletedPopupMenu->popup( mView->viewport()->mapToGlobal( pos ) );
+      break;
+    case eDueDateColumn:
+      mMovePopupMenu->popup( mView->viewport()->mapToGlobal( pos ) );
+      break;
+    case eCategoriesColumn:
+      createCategoryPopupMenu()->popup( mView->viewport()->mapToGlobal( pos ) );
+      break;
+    default:
+      mItemPopupMenu->popup( mView->viewport()->mapToGlobal( pos ) );
+      break;
+    }
+  } else {
+    mItemPopupMenu->popup( mView->viewport()->mapToGlobal( pos ) );
+  }
 }
 
 void KOTodoView::selectionChanged( const QItemSelection &selected,
@@ -465,6 +521,141 @@ void KOTodoView::itemDoubleClicked( const QModelIndex &index )
     } else {
       showTodo();
     }
+  }
+}
+
+QMenu *KOTodoView::createCategoryPopupMenu()
+{
+  QMenu *tempMenu = new QMenu( this );
+
+  QModelIndexList selection = mView->selectionModel()->selectedRows();
+  if ( selection.size() != 1 ) {
+    return tempMenu;
+  }
+
+  Todo *todo = static_cast<Todo *>( selection[0].data( KOTodoModel::TodoRole ).value<void *>() );
+  QStringList checkedCategories = todo->categories();
+
+  QStringList::Iterator it;
+  for ( it = KOPrefs::instance()->mCustomCategories.begin();
+        it != KOPrefs::instance()->mCustomCategories.end();
+        ++it ) {
+    QAction *action = tempMenu->addAction( *it );
+    action->setCheckable(true);
+    mCategory[ action ] = *it;
+    if ( checkedCategories.find( *it ) != checkedCategories.end() )
+      action->setChecked( true );
+  }
+
+  connect ( tempMenu, SIGNAL( triggered( QAction* ) ),
+            SLOT( changedCategories( QAction* ) ) );
+  connect ( tempMenu, SIGNAL( aboutToHide() ),
+            tempMenu, SLOT( deleteLater() ) );
+  return tempMenu;
+}
+
+void KOTodoView::setNewDate( const QDate &date )
+{
+  QModelIndexList selection = mView->selectionModel()->selectedRows();
+  if ( selection.size() != 1 ) {
+    return;
+  }
+
+  Todo *todo = static_cast<Todo *>( selection[0].data( KOTodoModel::TodoRole ).value<void *>() );
+  if ( !todo->isReadOnly() && mChanger->beginChange( todo ) ) {
+    Todo *oldTodo = todo->clone();
+
+    KDateTime dt( date );
+
+    if ( !todo->allDay() )
+      dt.setTime( todo->dtDue().time() );
+
+    if ( date.isNull() )
+      todo->setHasDueDate( false );
+    else if ( !todo->hasDueDate() )
+      todo->setHasDueDate( true );
+    todo->setDtDue( dt );
+
+    mChanger->changeIncidence( oldTodo, todo, KOGlobals::COMPLETION_MODIFIED );
+    mChanger->endChange( todo );
+    delete oldTodo;
+  } else {
+    kDebug() << "No active item, active item is read-only, or locking failed";
+  }
+}
+
+void KOTodoView::setNewPercentage( QAction *action )
+{
+  QModelIndexList selection = mView->selectionModel()->selectedRows();
+  if ( selection.size() != 1 ) {
+    return;
+  }
+
+  Todo *todo = static_cast<Todo *>( selection[0].data( KOTodoModel::TodoRole ).value<void *>() );
+  if ( !todo->isReadOnly () && mChanger->beginChange( todo ) ) {
+    Todo *oldTodo = todo->clone();
+
+    int percentage = mPercentage[action];
+    if ( percentage == 100 ) {
+      todo->setCompleted( KDateTime::currentLocalDateTime() );
+      todo->setPercentComplete( percentage );
+    } else {
+      todo->setCompleted( false );
+      todo->setPercentComplete( percentage );
+    }
+    if ( todo->recurs() && percentage == 100 )
+      mChanger->changeIncidence( oldTodo, todo, KOGlobals::COMPLETION_MODIFIED_WITH_RECURRENCE );
+    else
+      mChanger->changeIncidence( oldTodo, todo, KOGlobals::COMPLETION_MODIFIED );
+    mChanger->endChange( todo );
+    delete oldTodo;
+  } else {
+    kDebug() << "No active item, active item is read-only, or locking failed";
+  }
+}
+
+void KOTodoView::setNewPriority( QAction *action )
+{
+  QModelIndexList selection = mView->selectionModel()->selectedRows();
+  if ( selection.size() != 1 ) {
+    return;
+  }
+
+  Todo *todo = static_cast<Todo *>( selection[0].data( KOTodoModel::TodoRole ).value<void *>() );
+  if ( !todo->isReadOnly () &&
+       mChanger->beginChange( todo ) ) {
+    Todo *oldTodo = todo->clone();
+    todo->setPriority(mPriority[action]);
+
+    mChanger->changeIncidence( oldTodo, todo, KOGlobals::PRIORITY_MODIFIED );
+    mChanger->endChange( todo );
+    delete oldTodo;
+  }
+}
+
+void KOTodoView::changedCategories( QAction *action )
+{
+  QModelIndexList selection = mView->selectionModel()->selectedRows();
+  if ( selection.size() != 1 ) {
+    return;
+  }
+
+  Todo *todo = static_cast<Todo *>( selection[0].data( KOTodoModel::TodoRole ).value<void *>() );
+  if ( !todo->isReadOnly() && mChanger->beginChange( todo ) ) {
+    Todo *oldTodo = todo->clone();
+
+    QStringList categories = todo->categories ();
+    if ( categories.find( mCategory[action] ) != categories.end() )
+      categories.remove( mCategory[action] );
+    else
+      categories.insert( categories.end(), mCategory[action] );
+    categories.sort();
+    todo->setCategories( categories );
+    mChanger->changeIncidence( oldTodo, todo, KOGlobals::CATEGORY_MODIFIED );
+    mChanger->endChange( todo );
+    delete oldTodo;
+  } else {
+    kDebug() << "No active item, active item is read-only, or locking failed";
   }
 }
 

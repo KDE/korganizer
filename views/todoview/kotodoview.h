@@ -104,6 +104,10 @@ class KOTodoView : public BaseView
 
   private Q_SLOTS:
     void itemDoubleClicked( const QModelIndex &index );
+    void setNewDate( const QDate &date );
+    void setNewPercentage( QAction *action );
+    void setNewPriority( QAction *action );
+    void changedCategories( QAction *action );
 
   Q_SIGNALS:
     void purgeCompletedSignal();
@@ -111,6 +115,8 @@ class KOTodoView : public BaseView
     void unAllSubTodoSignal();
 
   private:
+    QMenu *createCategoryPopupMenu();
+
     KOTodoViewView *mView;
     KOTodoModel *mModel;
     QSortFilterProxyModel *mProxyModel;
@@ -122,7 +128,24 @@ class KOTodoView : public BaseView
 
     QMenu *mItemPopupMenu;
     QMenu *mCopyPopupMenu;
+    QMenu *mMovePopupMenu;
+    QMenu *mPriorityPopupMenu;
+    QMenu *mPercentageCompletedPopupMenu;
     QList<QAction*> mItemPopupMenuItemOnlyEntries;
+
+    QMap<QAction*, int> mPercentage;
+    QMap<QAction*, int> mPriority;
+    QMap<QAction*, QString> mCategory;
+
+  enum {
+      eSummaryColumn = 0,
+      eRecurColumn = 1,
+      ePriorityColumn = 2,
+      ePercentColumn = 3,
+      eDueDateColumn = 4,
+      eCategoriesColumn = 5,
+      eDescriptionColumn = 6
+    };
 };
 
 #endif /*KOTODOVIEW_H*/
