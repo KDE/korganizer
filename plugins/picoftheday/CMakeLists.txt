@@ -19,7 +19,7 @@ kde4_add_plugin( korg_picoftheday ${korg_picoftheday_PART_SRCS} )
 
 
 target_link_libraries( korg_picoftheday
-                       ${KDE4_KDECORE_LIBS}
+                       ${KDE4_KIO_LIBS}
                        ${KDE4_KDEUI_LIBS}
                        korganizerprivate )
 
