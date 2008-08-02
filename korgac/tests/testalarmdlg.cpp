@@ -56,10 +56,17 @@ int main( int argc, char **argv )
   t1->setSummary( "To-do A" );
   t1->setDtDue( now );
   t1->newAlarm();
+  
+  Event *e2 = new Event;
+  e2->setSummary( "This is another summary." );
+  e2->setDtStart( now );
+  e2->setDtEnd( now.addDays( 1 ) );
+  e2->newAlarm();
 
   AlarmDialog dlg;
   dlg.addIncidence( e1, QDateTime::currentDateTime() );
   dlg.addIncidence( t1, QDateTime::currentDateTime() );
+  dlg.addIncidence( e2, QDateTime::currentDateTime() );
   dlg.show();
   dlg.eventNotification();
 
