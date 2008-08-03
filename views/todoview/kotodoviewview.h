@@ -57,10 +57,10 @@ class KOTodoViewView : public QTreeView
     QModelIndex getNextEditableIndex( const QModelIndex &cur, int inc );
 
     KMenu *mHeaderPopup;
-    QList< QAction* > mColumnActions;
+    QList<QAction *> mColumnActions;
 
   private slots:
-    void toggleColumnHidden( QAction* action );
+    void toggleColumnHidden( QAction *action );
 };
 
 #endif

@@ -133,9 +133,9 @@ class KOTodoView : public BaseView
     QMenu *mPercentageCompletedPopupMenu;
     QList<QAction*> mItemPopupMenuItemOnlyEntries;
 
-    QMap<QAction*, int> mPercentage;
-    QMap<QAction*, int> mPriority;
-    QMap<QAction*, QString> mCategory;
+    QMap<QAction *,int> mPercentage;
+    QMap<QAction *,int> mPriority;
+    QMap<QAction *,QString> mCategory;
 
   enum {
       eSummaryColumn = 0,

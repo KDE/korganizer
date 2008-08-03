@@ -58,25 +58,25 @@ bool KOTodoViewView::eventFilter( QObject *watched, QEvent *event )
 {
   Q_UNUSED( watched );
   if ( event->type() == QEvent::ContextMenu ) {
-    QContextMenuEvent *e = static_cast< QContextMenuEvent* >( event );
+    QContextMenuEvent *e = static_cast<QContextMenuEvent *>( event );
 
     if ( !mHeaderPopup ) {
       mHeaderPopup = new KMenu( this );
-      mHeaderPopup->addTitle( i18n("View Columns") );
+      mHeaderPopup->addTitle( i18n( "View Columns" ) );
       // First entry can't be disabled
-      for( int i = 1; i < model()->columnCount(); ++i ) {
-        QAction *tmp = mHeaderPopup->addAction(
-                        model()->headerData( i, Qt::Horizontal ).toString() );
+      for ( int i = 1; i < model()->columnCount(); ++i ) {
+        QAction *tmp =
+          mHeaderPopup->addAction( model()->headerData( i, Qt::Horizontal ).toString() );
         tmp->setData( QVariant( i ) );
         tmp->setCheckable( true );
         mColumnActions << tmp;
       }
 
-      connect( mHeaderPopup, SIGNAL( triggered( QAction* ) ),
-               this, SLOT( toggleColumnHidden( QAction* ) ) );
+      connect( mHeaderPopup, SIGNAL(triggered(QAction *)),
+               this, SLOT(toggleColumnHidden(QAction *)) );
     }
 
-    foreach( QAction* action, mColumnActions ) {
+    foreach ( QAction *action, mColumnActions ) {
       int column = action->data().toInt();
       action->setChecked( !isColumnHidden( column ) );
     }
