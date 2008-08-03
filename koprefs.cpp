@@ -26,10 +26,11 @@
 #include "koprefs.h"
 #include "kocore.h"
 
+#include <kabc/stdaddressbook.h>
+#include <kmime/kmime_header_parsing.h>
 #include <kpimidentities/identitymanager.h>
 #include <kpimidentities/identity.h>
 #include <kpimutils/email.h>
-#include <kabc/stdaddressbook.h>
 
 #include <kglobalsettings.h>
 #include <kglobal.h>
@@ -50,6 +51,8 @@
 
 #include <time.h>
 #include <unistd.h>
+
+using namespace KPIMIdentities;
 
 KOPrefs *KOPrefs::mInstance = 0;
 static K3StaticDeleter<KOPrefs> insd;
@@ -390,9 +393,9 @@ QStringList KOPrefs::fullEmails()
 
   QStringList::Iterator it;
   // Grab emails from the email identities
-  KPIMIdentities::IdentityManager *idmanager = KOCore::self()->identityManager();
+  IdentityManager *idmanager = KOCore::self()->identityManager();
   QStringList lst = idmanager->identities();
-  KPIMIdentities::IdentityManager::ConstIterator it1;
+  IdentityManager::ConstIterator it1;
   for ( it1 = idmanager->begin(); it1 != idmanager->end(); ++it1 ) {
     fullEmails << (*it1).fullEmailAddr();
   }
@@ -414,12 +417,35 @@ QStringList KOPrefs::fullEmails()
 
 bool KOPrefs::thatIsMe( const QString &_email )
 {
+  // NOTE: this method is called for every created agenda view item,
+  // so we need to keep performance in mind
+
+  /* identityManager()->thatIsMe() is quite expensive since it does parsing of
+     _email in a way which is unnecessarily complex for what we can have here,
+     so we do that ourselves. This makes sense since this
+
   if ( KOCore::self()->identityManager()->thatIsMe( _email ) ) {
     return true;
   }
+  */
 
-  // in case email contains a full name, strip it out
-  QString email = KPIMUtils::extractEmailAddress( _email );
+  // in case email contains a full name, strip it out.
+  // the below is the simpler but slower version of the following code:
+  // const QString email = KPIM::getEmailAddress( _email );
+  const QByteArray tmp = _email.toUtf8();
+  const char *cursor = tmp.constData();
+  const char *end = tmp.data() + tmp.length();
+  KMime::Types::Mailbox mbox;
+  KMime::HeaderParsing::parseMailbox( cursor, end, mbox );
+  const QString email = mbox.addrSpec().asString();
+
+  for ( IdentityManager::ConstIterator it = KOCore::self()->identityManager()->begin();
+        it != KOCore::self()->identityManager()->end(); ++it ) {
+    if ( email == (*it).emailAddr() ) {
+      return true;
+    }
+  }
+
   if ( mAdditionalMails.contains( email ) ) {
     return true;
   }
