@@ -225,7 +225,8 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name, bool 
   KOrg::AgendaView (cal,parent,name), mExpandButton( 0 ), mAllowAgendaUpdate( true ),
   mUpdateItem( 0 ),
   mResource( 0 ),
-  mIsSideBySide( isSideBySide )
+  mIsSideBySide( isSideBySide ),
+  mPendingChanges( true )
 {
   mSelectedDates.append(QDate::currentDate());
 
@@ -364,11 +365,16 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name, bool 
 
   connectAgenda( mAgenda, mAgendaPopup, mAllDayAgenda );
   connectAgenda( mAllDayAgenda, mAllDayAgendaPopup, mAgenda);
+
+  if ( cal )
+    cal->registerObserver( this );
 }
 
 
 KOAgendaView::~KOAgendaView()
 {
+  if ( calendar() )
+    calendar()->unregisterObserver( this );
   delete mAgendaPopup;
   delete mAllDayAgendaPopup;
 }
@@ -1036,6 +1042,9 @@ void KOAgendaView::doUpdateItem()
 void KOAgendaView::showDates( const QDate &start, const QDate &end )
 {
 //  kdDebug(5850) << "KOAgendaView::selectDates" << endl;
+  if ( !mSelectedDates.isEmpty() && mSelectedDates.first() == start
+        && mSelectedDates.last() == end && !mPendingChanges )
+    return;
 
   mSelectedDates.clear();
 
@@ -1219,6 +1228,8 @@ void KOAgendaView::fillAgenda( const QDate & )
 
 void KOAgendaView::fillAgenda()
 {
+  mPendingChanges = false;
+
   /* Remember the uids of the selected items. In case one of the
    * items was deleted and re-added, we want to reselect it. */
   const QString &selectedAgendaUid = mAgenda->lastSelectedUid();
@@ -1581,4 +1592,27 @@ bool KOAgendaView::filterByResource(Incidence * incidence)
       return false;
   }
   return true;
+}
+
+void KOAgendaView::resourcesChanged()
+{
+  mPendingChanges = true;
+}
+
+void KOAgendaView::calendarIncidenceAdded(Incidence * incidence)
+{
+  Q_UNUSED( incidence );
+  mPendingChanges = true;
+}
+
+void KOAgendaView::calendarIncidenceChanged(Incidence * incidence)
+{
+  Q_UNUSED( incidence );
+  mPendingChanges = true;
+}
+
+void KOAgendaView::calendarIncidenceRemoved(Incidence * incidence)
+{
+  Q_UNUSED( incidence );
+  mPendingChanges = true;
 }

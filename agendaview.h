@@ -34,6 +34,8 @@ class AgendaView : public KOEventView
 
   public slots:
     virtual void finishTypeAhead() = 0;
+
+    virtual void resourcesChanged() = 0;
 };
 
 }

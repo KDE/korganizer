@@ -468,4 +468,10 @@ void MultiAgendaView::show()
   }
 }
 
+void MultiAgendaView::resourcesChanged()
+{
+  FOREACH_VIEW( agenda )
+    agenda->resourcesChanged();
+}
+
 #include "multiagendaview.moc"

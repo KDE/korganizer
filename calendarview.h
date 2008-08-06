@@ -522,6 +522,9 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
     void addIncidenceOn( Incidence *, const QDate & );
     void moveIncidenceTo( Incidence *, const QDate & );
     void filterActivated( int filterNum );
+
+    void resourcesChanged();
+
   protected slots:
     /** Select a view or adapt the current view to display the specified dates. */
     void showDates( const KCal::DateList & );

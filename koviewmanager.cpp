@@ -467,3 +467,11 @@ void KOViewManager::currentAgendaViewTabChanged( QWidget* widget )
 {
   showView( static_cast<KOrg::BaseView*>( widget ) );
 }
+
+void KOViewManager::resourcesChanged()
+{
+  if ( mAgendaView )
+    mAgendaView->resourcesChanged();
+  if ( mAgendaSideBySideView )
+    mAgendaSideBySideView->resourcesChanged();
+}
