@@ -162,8 +162,13 @@ void AlarmDialog::addIncidence( Incidence *incidence, const QDateTime &reminderA
 void AlarmDialog::slotOk()
 {
   ItemList selection = selectedItems();
-  for ( ItemList::Iterator it = selection.begin(); it != selection.end(); ++it )
+  for ( ItemList::Iterator it = selection.begin(); it != selection.end(); ++it ) {
+    if ( (*it)->itemBelow() )
+      (*it)->itemBelow()->setSelected( true );
+    else if ( (*it)->itemAbove() )
+      (*it)->itemAbove()->setSelected( true );
     delete *it;
+  }
   if ( activeCount() == 0 )
     accept();
   else {
@@ -282,10 +287,12 @@ void AlarmDialog::slotUser3()
 
 void AlarmDialog::dismissAll()
 {
-  for ( QListViewItemIterator it( mIncidenceListView ) ; it.current() ; ++it ) {
+  for ( QListViewItemIterator it( mIncidenceListView ) ; it.current() ; ) {
     AlarmListItem *item = static_cast<AlarmListItem*>( it.current() );
-    if ( !item->isVisible() )
+    if ( !item->isVisible() ) {
+      ++it;
       continue;
+    }
     delete item;
   }
   setTimer();
@@ -295,6 +302,10 @@ void AlarmDialog::dismissAll()
 
 void AlarmDialog::show()
 {
+  mIncidenceListView->clearSelection();
+  if ( mIncidenceListView->firstChild() )
+    mIncidenceListView->firstChild()->setSelected( true );
+  updateButtons();
   KDialogBase::show();
   KWin::setState( winId(), NET::KeepAbove );
   KWin::setOnAllDesktops( winId(), true );
