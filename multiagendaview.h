@@ -99,6 +99,7 @@ class MultiAgendaView : public AgendaView
     QWidget *mLeftBottomSpacer, *mRightBottomSpacer;
     QDate mStartDate, mEndDate;
     bool mUpdateOnShow;
+    bool mPendingChanges;
 };
 
 }
