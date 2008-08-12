@@ -65,7 +65,7 @@ CalendarViewExtension *ResourceViewFactory::create( QWidget *parent )
   mResourceView = new ResourceView( mCalendar, parent );
 
   QObject::connect( mResourceView, SIGNAL(resourcesChanged()),
-                    mView, SLOT(updateView()) );
+                    mView, SLOT(resourcesChanged()) );
   QObject::connect( mResourceView, SIGNAL(resourcesChanged()),
                     mView, SLOT(updateCategories()) );
 

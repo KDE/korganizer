@@ -28,6 +28,8 @@
 #include "agendaview.h"
 #include "calprinter.h"
 
+#include <kcal/calendar.h>
+
 #include <QFrame>
 #include <QPixmap>
 #include <QVector>
@@ -88,7 +90,7 @@ class EventIndicator : public QFrame
   KOAgendaView is the agenda-like view that displays events in a single
   or multi-day view.
 */
-class KOAgendaView : public KOrg::AgendaView
+class KOAgendaView : public KOrg::AgendaView, public KCal::Calendar::CalendarObserver
 {
   Q_OBJECT
   public:
@@ -134,6 +136,11 @@ class KOAgendaView : public KOrg::AgendaView
     KOAgenda *agenda() const { return mAgenda; }
     QSplitter *splitter() const { return mSplitterAgenda; }
 
+    /* reimplemented from KCal::Calendar::CalendarObserver */
+    void calendarIncidenceAdded( Incidence *incidence );
+    void calendarIncidenceChanged( Incidence *incidence );
+    void calendarIncidenceRemoved( Incidence *incidence );
+
   public slots:
     virtual void updateView();
     virtual void updateConfig();
@@ -173,6 +180,8 @@ class KOAgendaView : public KOrg::AgendaView
       const Qt::Orientation orient=Qt::Horizontal );
 
     void clearTimeSpanSelection();
+
+    void resourcesChanged();
 
     // Used by the timelabelszone
     void updateTimeBarWidth();
@@ -271,6 +280,7 @@ class KOAgendaView : public KOrg::AgendaView
     QString mSubResource;
 
     bool mIsSideBySide;
+    bool mPendingChanges;
 };
 
 #endif

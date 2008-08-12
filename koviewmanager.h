@@ -117,6 +117,8 @@ class KOViewManager : public QObject
     void zoomInVertically();
     void zoomOutVertically();
 
+    void resourcesChanged();
+
   private slots:
     void currentAgendaViewTabChanged( QWidget * );
 
