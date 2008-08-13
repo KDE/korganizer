@@ -62,6 +62,7 @@
 #include "views/agendaview/koagendaview.h"
 #include "views/todoview/kotodoview.h"
 #include "views/monthview/monthview.h"
+#include "views/multiagendaview/multiagendaview.h"
 
 #include <kcal/vcaldrag.h>
 #include <kcal/icaldrag.h>
@@ -625,6 +626,21 @@ void CalendarView::updateConfig( const QByteArray &receiver )
     }
   }
   emit configChanged();
+
+  // force reload and handle agenda view type switch
+  const bool showMerged =
+    KOPrefs::instance()->agendaViewCalendarDisplay() == KOPrefs::CalendarsMerged;
+  const bool showSideBySide =
+    KOPrefs::instance()->agendaViewCalendarDisplay() == KOPrefs::CalendarsSideBySide;
+  KOrg::BaseView *view = mViewManager->currentView();
+  mViewManager->showAgendaView();
+  if ( view == mViewManager->agendaView() && showSideBySide ) {
+    view = mViewManager->multiAgendaView();
+  } else if ( view == mViewManager->multiAgendaView() && showMerged ) {
+    view = mViewManager->agendaView();
+  }
+  mViewManager->showView( view );
+
   // To make the "fill window" configurations work
   mViewManager->raiseCurrentView();
 }

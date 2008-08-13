@@ -89,6 +89,7 @@ class KOViewManager : public QObject
     QDate currentSelectionDate();
 
     KOAgendaView *agendaView() const { return mAgendaView; }
+    KOrg::MultiAgendaView *multiAgendaView() const { return mAgendaSideBySideView; }
     KOTodoView   *todoView() const { return mTodoView; }
 
   signals:
