@@ -1,12 +1,12 @@
-/*******************************************************************************
+/******************************************************************************
 **
 ** Filename   : templatemanagerdialog.h
 ** Created on : 05 June, 2005
 ** Copyright  : (c) 2005 Till Adam <adam@kde.org>
 **
-*******************************************************************************/
+******************************************************************************/
 
-/*******************************************************************************
+/******************************************************************************
 **
 **   This program is free software; you can redistribute it and/or modify
 **   it under the terms of the GNU General Public License as published by
@@ -18,9 +18,9 @@
 **   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 **   General Public License for more details.
 **
-**   You should have received a copy of the GNU General Public License
-**   along with this program; if not, write to the Free Software
-**   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+**   You should have received a copy of the GNU General Public License along
+**   with this program; if not, write to the Free Software Foundation, Inc.,
+**   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 **
 **   In addition, as a special exception, the copyright holders give
 **   permission to link the code of this program with any edition of
@@ -33,39 +33,47 @@
 **   you do not wish to do so, delete this exception statement from
 **   your version.
 **
-*******************************************************************************/
+******************************************************************************/
 #ifndef TEMPLATEMANAGEMENTDIALOG_H
 #define TEMPLATEMANAGEMENTDIALOG_H
-
-#include <QStringList>
 
 #include "ui_template_management_dialog_base.h"
 
 #include <kdialog.h>
 
-class TemplateManagementDialog: public KDialog {
-Q_OBJECT
+#include <QString>
+
+class TemplateManagementDialog: public KDialog
+{
+  Q_OBJECT
   public:
-    TemplateManagementDialog( QWidget *parent, const QStringList& templates );
+    TemplateManagementDialog( QWidget *parent, const QStringList &templates );
 
   signals:
-    /* Emitted whenever the user hits apply, indicating that the currently selected template
-    should be loaded into to the incidence editor which triggered this. */
-    void loadTemplate( const QString& templateName );
-    /* Emitted whenever the user wants to add teh current incidence as a template
-    with the given name. */
-    void saveTemplate( const QString& templateName );
-    /* Emitted when the dialog changed the list of templates. Calling code can the replace
-       the list that was handed in with the one this signal transports. */
-    void templatesChanged( const QStringList& templates );
-    
+    /* Emitted whenever the user hits apply, indicating that the currently
+       selected template should be loaded into to the incidence editor which
+       triggered this.
+    */
+    void loadTemplate( const QString &templateName );
+
+    /* Emitted whenever the user wants to add the current incidence as a
+       template with the given name.
+    */
+    void saveTemplate( const QString &templateName );
+
+    /* Emitted when the dialog changed the list of templates. Calling code
+       can the replace the list that was handed in with the one this signal
+       transports.
+    */
+    void templatesChanged( const QStringList &templates );
+
   protected slots:
     void slotAddTemplate();
     void slotDeleteTemplate();
     void slotApplyTemplate();
     void slotUpdateDeleteButton( Q3ListBoxItem *item );
     void slotOk();
-    
+
   private:
     Ui::TemplateManagementDialog_base m_base;
     QStringList m_templates;

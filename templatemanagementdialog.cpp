@@ -1,12 +1,12 @@
-/*******************************************************************************
+/******************************************************************************
 **
 ** Filename   : templatemanagementdialog.cpp
 ** Created on : 05 June, 2005
 ** Copyright  : (c) 2005 Till Adam <adam@kde.org>
 **
-*******************************************************************************/
+******************************************************************************/
 
-/*******************************************************************************
+/******************************************************************************
 **
 **   This program is free software; you can redistribute it and/or modify
 **   it under the terms of the GNU General Public License as published by
@@ -18,9 +18,9 @@
 **   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 **   General Public License for more details.
 **
-**   You should have received a copy of the GNU General Public License
-**   along with this program; if not, write to the Free Software
-**   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+**   You should have received a copy of the GNU General Public License along
+**   with this program; if not, write to the Free Software Foundation, Inc.,
+**   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 **
 **   In addition, as a special exception, the copyright holders give
 **   permission to link the code of this program with any edition of
@@ -33,43 +33,45 @@
 **   you do not wish to do so, delete this exception statement from
 **   your version.
 **
-*******************************************************************************/
+******************************************************************************/
 #include "templatemanagementdialog.h"
-
-#include <QStringList>
-#include <QTimer>
 
 #include <kpushbutton.h>
 #include <kinputdialog.h>
 #include <klocale.h>
 #include <kmessagebox.h>
 
-TemplateManagementDialog::TemplateManagementDialog(QWidget *parent, const QStringList &templates )
-    :KDialog( parent),
-      m_templates( templates ), m_newTemplate( QString() ), m_changed( false )
+#include <QStringList>
+#include <QTimer>
+
+TemplateManagementDialog::TemplateManagementDialog( QWidget *parent, const QStringList &templates )
+  :KDialog( parent ),
+   m_templates( templates ), m_newTemplate( QString() ), m_changed( false )
 {
-  setCaption( i18n("Manage Templates") );
-  setButtons(  Ok|Cancel );
+  setCaption( i18n( "Manage Templates" ) );
+  setButtons( Ok | Cancel );
   setObjectName( "template_management_dialog" );
   QWidget *widget = new QWidget( this );
   widget->setObjectName( "template_management_dialog_base" );
   m_base.setupUi( widget );
   setMainWidget( widget );
-  connect( m_base.m_buttonAdd, SIGNAL( clicked() ),
-           SLOT( slotAddTemplate() ) );
-  connect( m_base.m_buttonDelete, SIGNAL( clicked() ),
-           SLOT( slotDeleteTemplate() ) );
+  connect( m_base.m_buttonAdd, SIGNAL(clicked()),
+           SLOT(slotAddTemplate()) );
+  connect( m_base.m_buttonDelete, SIGNAL(clicked()),
+           SLOT(slotDeleteTemplate()) );
+
   m_base.m_listBox->insertStringList( m_templates );
-  connect( m_base.m_listBox, SIGNAL( selectionChanged( Q3ListBoxItem * ) ),
-           SLOT( slotUpdateDeleteButton( Q3ListBoxItem * ) ) );
-  connect( m_base.m_listBox, SIGNAL( doubleClicked( Q3ListBoxItem *) ),
-           SLOT( slotApplyTemplate() ) );
-  connect( m_base.m_buttonApply, SIGNAL( clicked() ),
-           SLOT( slotApplyTemplate() ) );
-  connect( this, SIGNAL( okClicked() ), SLOT( slotOk() ) );
-  
-  if (m_templates.isEmpty())
+  connect( m_base.m_listBox, SIGNAL(selectionChanged(Q3ListBoxItem *)),
+           SLOT(slotUpdateDeleteButton(Q3ListBoxItem *)) );
+  connect( m_base.m_listBox, SIGNAL(doubleClicked(Q3ListBoxItem *)),
+           SLOT(slotApplyTemplate()) );
+  connect( m_base.m_buttonApply, SIGNAL(clicked()),
+           SLOT(slotApplyTemplate()) );
+  connect( this, SIGNAL(okClicked()), SLOT(slotOk()) );
+
+  if ( m_templates.isEmpty() ) {
     m_base.m_buttonApply->setEnabled( false );
+  }
 
 }
 
@@ -77,18 +79,26 @@ void TemplateManagementDialog::slotAddTemplate()
 {
   bool ok;
   bool duplicate = false;
-  const QString newTemplate = KInputDialog::getText( i18n("Template Name"),
-                                       i18n("Please enter a name for the new template:"),
-                                       i18n("New Template"), &ok );
-  if ( newTemplate.isEmpty() || !ok ) return;
+  const QString newTemplate = KInputDialog::getText(
+    i18n( "Template Name" ),
+    i18n( "Please enter a name for the new template:" ),
+    i18n( "New Template" ), &ok );
+  if ( newTemplate.isEmpty() || !ok ) {
+    return;
+  }
+
   if ( m_templates.contains( newTemplate ) ) {
-    int rc = KMessageBox::warningContinueCancel( this, i18n("A template with that name already exists, do you want to overwrite it?."), i18n("Duplicate Template Name"), KGuiItem(i18n("Overwrite")));
+    int rc = KMessageBox::warningContinueCancel(
+      this,
+      i18n( "A template with that name already exists, do you want to overwrite it?" ),
+      i18n( "Duplicate Template Name" ), KGuiItem( i18n( "Overwrite" ) ) );
     if ( rc == KMessageBox::Cancel ) {
-      QTimer::singleShot(0, this, SLOT( slotAddTemplate() ) );
+      QTimer::singleShot( 0, this, SLOT(slotAddTemplate()) );
       return;
     }
     duplicate = true;
   }
+
   if ( !duplicate ) {
     m_templates.append( newTemplate );
     m_base.m_listBox->clear();
@@ -96,8 +106,9 @@ void TemplateManagementDialog::slotAddTemplate()
   }
   m_newTemplate = newTemplate;
   m_changed = true;
-  // From this point on we need to keep the original event around until the user has
-  // closed the dialog, applying a template would make little sense
+
+  // From this point on we need to keep the original event around until the
+  // user has closed the dialog, applying a template would make little sense
   m_base.m_buttonApply->setEnabled( false );
   // neither does adding it again
   m_base.m_buttonAdd->setEnabled( false );
@@ -106,14 +117,16 @@ void TemplateManagementDialog::slotAddTemplate()
 void TemplateManagementDialog::slotDeleteTemplate()
 {
   Q3ListBoxItem *const item = m_base.m_listBox->selectedItem();
-  if ( !item ) return; // can't happen (TM)
+  if ( !item ) {
+    return; // can't happen (TM)
+  }
   int current = m_base.m_listBox->index(item);
   m_templates.removeAll( item->text() );
   m_base.m_listBox->removeItem( m_base.m_listBox->currentItem() );
   m_changed = true;
-  m_base.m_listBox->setSelected(qMax(current -1, 0), true);
+  m_base.m_listBox->setSelected( qMax( current - 1, 0 ), true );
 
-  if (m_templates.isEmpty()){
+  if ( m_templates.isEmpty() ) {
     m_base.m_buttonApply->setEnabled( false );
     m_base.m_buttonDelete->setEnabled( false );
   }
@@ -126,21 +139,24 @@ void TemplateManagementDialog::slotUpdateDeleteButton( Q3ListBoxItem *item )
 
 void TemplateManagementDialog::slotApplyTemplate()
 {
-  // Once the user has applied the current template to the event, it makes no sense to add it again
+  // Once the user has applied the current template to the event,
+  // it makes no sense to add it again
   m_base.m_buttonAdd->setEnabled( false );
   const QString &cur = m_base.m_listBox->currentText();
-  if ( !cur.isEmpty() && cur != m_newTemplate )
+  if ( !cur.isEmpty() && cur != m_newTemplate ) {
     emit loadTemplate( cur );
+  }
 }
 
 void TemplateManagementDialog::slotOk()
 {
   // failure is not an option *cough*
-  if ( !m_newTemplate.isEmpty() )
+  if ( !m_newTemplate.isEmpty() ) {
     emit saveTemplate( m_newTemplate );
-  if ( m_changed )
+  }
+  if ( m_changed ) {
     emit templatesChanged( m_templates );
+  }
 }
-
 
 #include "templatemanagementdialog.moc"
