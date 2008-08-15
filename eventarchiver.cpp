@@ -27,6 +27,7 @@
 #include "koprefs.h"
 
 #include <kio/netaccess.h>
+#include <kcal/icalformat.h>
 #include <kcal/filestorage.h>
 #include <kcal/calendarlocal.h>
 #include <kcal/calendar.h>
@@ -166,13 +167,12 @@ void EventArchiver::archiveIncidences( Calendar *calendar, const QDate &limitDat
   }
 
   // Duplicate current calendar by loading in new calendar object
-#ifdef __GNUC__
-#warning Does the time zone specification serve any purpose?
-#endif
   CalendarLocal archiveCalendar( KOPrefs::instance()->timeSpec() );
 
   FileStorage archiveStore( &archiveCalendar );
   archiveStore.setFileName( tmpFile.fileName() );
+  ICalFormat *format = new ICalFormat();
+  archiveStore.setSaveFormat( format );
   if ( !archiveStore.load() ) {
     kDebug() << "Can't load calendar from temp file";
     return;
@@ -213,7 +213,14 @@ void EventArchiver::archiveIncidences( Calendar *calendar, const QDate &limitDat
 
   // Save archive calendar
   if ( !archiveStore.save() ) {
-    KMessageBox::error( widget, i18n( "Cannot write archive file %1.", archiveStore.fileName() ) );
+    QString errmess;
+    if ( format->exception() ) {
+      errmess = format->exception()->message();
+    } else {
+      errmess = i18nc( "save failure cause unknown", "Reason unknown" );
+    }
+    KMessageBox::error( widget, i18n( "Cannot write archive file %1. %2",
+                                      archiveStore.fileName(), errmess ) );
     return;
   }
 
@@ -222,7 +229,8 @@ void EventArchiver::archiveIncidences( Calendar *calendar, const QDate &limitDat
   srcUrl.setPath( archiveFile );
   if ( srcUrl != archiveURL ) {
     if ( !KIO::NetAccess::upload( archiveFile, archiveURL, widget ) ) {
-      KMessageBox::error( widget, i18n( "Cannot write archive to final destination." ) );
+      KMessageBox::error( widget, i18n( "Cannot write archive. %1",
+                                        KIO::NetAccess::lastErrorString() ) );
       return;
     }
   }
