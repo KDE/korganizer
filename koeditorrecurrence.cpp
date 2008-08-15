@@ -203,16 +203,20 @@ RecurWeekly::RecurWeekly( QWidget *parent ) : RecurBase( parent )
     const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
     QString weekDayName = calSys->weekDayName( ( i + weekStart + 6 ) % 7 + 1,
                                                KCalendarSystem::ShortDayName );
+    QString longDayName = calSys->weekDayName( ( i + weekStart + 6 ) % 7 + 1,
+                                               KCalendarSystem::LongDayName );
     if ( KOPrefs::instance()->mCompactDialogs ) {
       weekDayName = weekDayName.left( 1 );
     }
     mDayBoxes[ ( i + weekStart + 6 ) % 7 ] = new QCheckBox( weekDayName, dayBox );
     mDayBoxes[ ( i + weekStart + 6 ) % 7 ]->setWhatsThis(
       i18nc( "@info:whatsthis",
-             "Day of the week on which this event or to-do should recur." ) );
+             "Set %1 as the day when this event or to-do should recur.", longDayName ) );
+
+    mDayBoxes[ ( i + weekStart + 6 ) % 7 ]->setToolTip(
+      i18nc( "@info:tooltip", "Recur on %1", longDayName ) );
   }
 
-  topLayout->addStretch( 1 );
   topLayout->addStretch( 1 );
 }
 
@@ -727,7 +731,7 @@ ExceptionsDialog::ExceptionsDialog( QWidget *parent ) :
   KDialog( parent )
 {
   setCaption( i18nc( "@title:window", "Edit Exceptions" ) );
-  setButtons( Ok|Cancel );
+  setButtons( Ok | Cancel );
   mExceptions = new ExceptionsWidget( this );
   setMainWidget( mExceptions );
 }
@@ -881,7 +885,7 @@ RecurrenceRangeDialog::RecurrenceRangeDialog( QWidget *parent ) :
   KDialog( parent )
 {
   setCaption( i18nc( "@title:window", "Edit Recurrence Range" ) );
-  setButtons( Ok|Cancel );
+  setButtons( Ok | Cancel );
   mRecurrenceRangeWidget = new RecurrenceRangeWidget( this );
   setMainWidget( mRecurrenceRangeWidget );
 }
