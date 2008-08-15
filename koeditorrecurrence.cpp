@@ -1545,7 +1545,7 @@ KOEditorRecurrenceDialog::KOEditorRecurrenceDialog( QWidget *parent )
 {
   setModal( false );
   setCaption( i18nc( "@title:window", "Recurrence" ) );
-  setButtons( Ok );
+  setButtons( Ok | Cancel );
 
   mRecurrence = new KOEditorRecurrence( this );
   setMainWidget( mRecurrence );
