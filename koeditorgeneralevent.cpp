@@ -293,6 +293,29 @@ void KOEditorGeneralEvent::setDateTimes( const KDateTime &start, const KDateTime
   emitDateTimeStr();
 }
 
+void KOEditorGeneralEvent::setTimes( const QDateTime &start, const QDateTime &end )
+{
+  setDateTimes( KDateTime( start, KOPrefs::instance()->timeSpec() ),
+                KDateTime( end, KOPrefs::instance()->timeSpec() ) );
+}
+
+void KOEditorGeneralEvent::setTimes( const KDateTime &start, const KDateTime &end )
+{
+  // like setDateTimes(), but it set only the start/end time, not the date
+  // it is used while applying a template to an event.
+  mStartTimeEdit->blockSignals( true );
+  mStartTimeEdit->setTime( start.time() );
+  mStartTimeEdit->blockSignals( false );
+
+  mEndTimeEdit->setTime( end.time() );
+
+  mTimeZoneComboStart->selectTimeSpec( start.timeSpec() );
+  mTimeZoneComboEnd->selectTimeSpec( end.timeSpec() );
+
+  setDuration();
+  emitDateTimeStr();
+}
+
 void KOEditorGeneralEvent::startTimeChanged( QTime newtime )
 {
   int secsep = mCurrStartDateTime.secsTo( mCurrEndDateTime );
@@ -383,6 +406,9 @@ void KOEditorGeneralEvent::readEvent( Event *event, Calendar *calendar, bool isT
   if ( !isTemplate ) {
     // the rest is for the events only
     setDateTimes( event->dtStart(), event->dtEnd() );
+  } else {
+    // set the start/end time from the template
+    setTimes( event->dtStart(), event->dtEnd() );
   }
 
   switch( event->transparency() ) {
