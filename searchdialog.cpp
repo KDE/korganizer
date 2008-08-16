@@ -197,5 +197,11 @@ void SearchDialog::search( const QRegExp &re )
         continue;
       }
     }
+    if ( mLocationCheck->isChecked() ) {
+      if ( re.indexIn( ev->location() ) != -1 ) {
+        mMatchedEvents.append( ev );
+        continue;
+      }
+    }
   }
 }
