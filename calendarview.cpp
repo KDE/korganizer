@@ -1895,7 +1895,7 @@ void CalendarView::showIncidence( Incidence *incidence )
   eventViewer->show();
 }
 
-bool CalendarView::editIncidence( Incidence *incidence )
+bool CalendarView::editIncidence( Incidence *incidence, bool isCounter )
 {
   kdDebug(5850) << "CalendarView::editEvent()" << endl;
 
@@ -1917,7 +1917,7 @@ bool CalendarView::editIncidence( Incidence *incidence )
     return true;
   }
 
-  if ( !mChanger->beginChange( incidence ) ) {
+  if ( !isCounter && !mChanger->beginChange( incidence ) ) {
     warningChangeFailed( incidence );
     showIncidence( incidence );
     return false;

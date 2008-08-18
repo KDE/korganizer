@@ -93,8 +93,31 @@ kdDebug(5850)<<"IncidenceChanger::deleteIncidence for incidence \""<<incidence->
   bool doDelete = sendGroupwareMessage( incidence, KCal::Scheduler::Cancel );
   if( doDelete ) {
     // @TODO: let Calendar::deleteIncidence do the locking...
+    Incidence* tmp = incidence->clone();
     emit incidenceToBeDeleted( incidence );
     doDelete = mCalendar->deleteIncidence( incidence );
+    if ( !KOPrefs::instance()->thatIsMe( tmp->organizer().email() ) ) {
+      const QStringList myEmails = KOPrefs::instance()->allEmails();
+      bool notifyOrganizer = false;
+      for ( QStringList::ConstIterator it = myEmails.begin(); it != myEmails.end(); ++it ) {
+        QString email = *it;
+        Attendee *me = tmp->attendeeByMail(email);
+        if ( me ) {
+          if ( me->status() == KCal::Attendee::Accepted || me->status() == KCal::Attendee::Delegated )
+            notifyOrganizer = true;
+          Attendee *newMe = new Attendee( *me );
+          newMe->setStatus( KCal::Attendee::Declined );
+          tmp->clearAttendees();
+          tmp->addAttendee( newMe );
+          break;
+        }
+      }
+
+      if ( notifyOrganizer ) {
+          KCal::MailScheduler scheduler( mCalendar );
+          scheduler.performTransaction( tmp, Scheduler::Reply );
+      }
+    }
     emit incidenceDeleted( incidence );
   }
   return doDelete;
@@ -290,12 +313,18 @@ kdDebug(5850)<<"IncidenceChanger::changeIncidence for incidence \""<<newinc->sum
       // pseudo counter as done by outlook
       Event *e = dynamic_cast<Event*>( newinc );
       if ( e ) {
-        Incidence* tmp = oldinc->clone();
-        tmp->setSummary( i18n("Counter proposal: %1").arg( e->summary() ) );
-        tmp->setDescription( e->description() );
-        tmp->addComment( i18n("Proposed new meeting time: %1 - %2").arg( e->dtStartStr() ).arg( e->dtEndStr() ) );
-        KCal::MailScheduler scheduler( mCalendar );
-        scheduler.performTransaction( tmp, Scheduler::Reply );
+        if ( KOPrefs::instance()->outlookCompatCounterProposals() ) {
+          Incidence* tmp = oldinc->clone();
+          tmp->setSummary( i18n("Counter proposal: %1").arg( e->summary() ) );
+          tmp->setDescription( e->description() );
+          tmp->addComment( i18n("Proposed new meeting time: %1 - %2").arg( e->dtStartStr() ).arg( e->dtEndStr() ) );
+          KCal::MailScheduler scheduler( mCalendar );
+          scheduler.performTransaction( tmp, Scheduler::Reply );
+        } else {
+          Incidence *tmp = newinc->clone();
+          KCal::MailScheduler scheduler( mCalendar );
+          scheduler.performTransaction( tmp, Scheduler::Counter );
+        }
       } else {
         kdWarning(5850) << k_funcinfo << "Counter proposals only supported for events" << endl;
       }

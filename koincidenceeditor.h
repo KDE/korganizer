@@ -68,7 +68,7 @@ class KOIncidenceEditor : public KDialogBase
 
     virtual void reload() = 0;
 
-    void selectInvitationCounterProposal( bool enable );
+    virtual void selectInvitationCounterProposal( bool enable );
 
   public slots:
     /** Edit an existing todo. */
