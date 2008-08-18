@@ -27,6 +27,7 @@
 #define KODAYMATRIX_H
 
 #include <libkcal/incidencebase.h>
+#include <libkcal/calendar.h>
 
 #include <qframe.h>
 #include <qcolor.h>
@@ -101,7 +102,7 @@ class DynamicTip : public QToolTip
  *
  *  @author Eitzenberger Thomas
  */
-class KODayMatrix: public QFrame
+class KODayMatrix: public QFrame, public KCal::Calendar::Observer
 {
     Q_OBJECT
   public:
@@ -178,6 +179,11 @@ class KODayMatrix: public QFrame
     bool isBeginningOfMonth() const { return mToday <= 8; }
     bool isEndOfMonth() const { return mToday >= 27; }
 
+    /* reimplmented from KCal::Calendar::Observer */
+    void calendarIncidenceAdded( Incidence *incidence );
+    void calendarIncidenceChanged( Incidence *incidence );
+    void calendarIncidenceRemoved( Incidence *incidence );
+
   public slots:
     /** Recalculates all the flags of the days in the matrix like holidays or events
      *  on a day (Actually calls above method with the actual startdate).
@@ -189,6 +195,11 @@ class KODayMatrix: public QFrame
     * hilighted to indicate it's today.
     */
     void recalculateToday();
+
+    /**
+     * Handle resource changes.
+     */
+    void resourcesChanged();
 
   signals:
     /** emitted if the user selects a block of days with the mouse by dragging a rectangle
@@ -297,6 +308,11 @@ class KODayMatrix: public QFrame
      *  on every repaint.
      */
     QRect     mDaySize;
+
+    /**
+     * Indicate pending calendar changes.
+     */
+    bool mPendingChanges;
 };
 
 #endif

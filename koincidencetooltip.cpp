@@ -26,6 +26,7 @@
 #include <libkcal/incidenceformatter.h>
 
 #include "koincidencetooltip.h"
+#include "koagendaitem.h"
 
 /**
 @author Reinhold Kainhofer
@@ -39,3 +40,21 @@ void KOIncidenceToolTip::add ( QWidget * widget, Incidence *incidence,
   QToolTip::add(widget, IncidenceFormatter::toolTipString( incidence ), group, longText);
 }
 
+void KOIncidenceToolTip::add(KOAgendaItem * item, Incidence * incidence, QToolTipGroup * group)
+{
+  Q_UNUSED( incidence );
+  Q_UNUSED( group );
+  QToolTip::remove( item );
+  new KOIncidenceToolTip( item );
+}
+
+void KOIncidenceToolTip::maybeTip(const QPoint & pos)
+{
+  Q_UNUSED( pos );
+  KOAgendaItem *item = dynamic_cast<KOAgendaItem*>( parentWidget() );
+  if ( !item )
+    return;
+  if ( mText.isEmpty() )
+    mText = IncidenceFormatter::toolTipString( item->incidence() );
+  tip( QRect( QPoint( 0, 0 ), item->size() ), mText );
+}

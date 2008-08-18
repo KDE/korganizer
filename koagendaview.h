@@ -28,6 +28,8 @@
 #include <qscrollview.h>
 #include <qlabel.h>
 
+#include <libkcal/calendar.h>
+
 #include "calprinter.h"
 
 #include "agendaview.h"
@@ -101,7 +103,7 @@ class KOAlternateLabel : public QLabel
   KOAgendaView is the agenda-like view used to display events in a single one or
   multi-day view.
 */
-class KOAgendaView : public KOrg::AgendaView
+class KOAgendaView : public KOrg::AgendaView, public KCal::Calendar::Observer
 {
     Q_OBJECT
   public:
@@ -149,6 +151,11 @@ class KOAgendaView : public KOrg::AgendaView
     KOAgenda* agenda() const { return mAgenda; }
     QSplitter* splitter() const { return mSplitterAgenda; }
 
+    /* reimplmented from KCal::Calendar::Observer */
+    void calendarIncidenceAdded( Incidence *incidence );
+    void calendarIncidenceChanged( Incidence *incidence );
+    void calendarIncidenceRemoved( Incidence *incidence );
+
   public slots:
     virtual void updateView();
     virtual void updateConfig();
@@ -189,6 +196,9 @@ class KOAgendaView : public KOrg::AgendaView
       const Qt::Orientation orient=Qt::Horizontal );
 
     void clearTimeSpanSelection();
+
+    void resourcesChanged();
+
   signals:
     void toggleExpand();
     void zoomViewHorizontally(const QDate &, int count );
@@ -279,6 +289,7 @@ class KOAgendaView : public KOrg::AgendaView
     QString mSubResource;
 
     bool mIsSideBySide;
+    bool mPendingChanges;
 };
 
 #endif

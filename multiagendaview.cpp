@@ -42,7 +42,8 @@ using namespace KOrg;
 MultiAgendaView::MultiAgendaView(Calendar * cal, QWidget * parent, const char *name ) :
     AgendaView( cal, parent, name ),
     mLastMovedSplitter( 0 ),
-    mUpdateOnShow( false )
+    mUpdateOnShow( false ),
+    mPendingChanges( true )
 {
   QBoxLayout *topLevelLayout = new QHBoxLayout( this );
 
@@ -95,6 +96,10 @@ MultiAgendaView::MultiAgendaView(Calendar * cal, QWidget * parent, const char *n
 
 void MultiAgendaView::recreateViews()
 {
+  if ( !mPendingChanges )
+    return;
+  mPendingChanges = false;
+
   deleteViews();
 
   CalendarResources *calres = dynamic_cast<CalendarResources*>( calendar() );
@@ -464,8 +469,16 @@ void MultiAgendaView::show()
   AgendaView::show();
   if ( mUpdateOnShow ) {
     mUpdateOnShow = false;
+    mPendingChanges = true; // force a full view recreation
     showDates( mStartDate, mEndDate );
   }
+}
+
+void MultiAgendaView::resourcesChanged()
+{
+  mPendingChanges = true;
+  FOREACH_VIEW( agenda )
+    agenda->resourcesChanged();
 }
 
 #include "multiagendaview.moc"

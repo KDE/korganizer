@@ -42,6 +42,8 @@
 #include <kstaticdeleter.h>
 #include <kstringhandler.h>
 
+#include <libkmime/kmime_header_parsing.h>
+
 #include "koprefs.h"
 #include <libkpimidentities/identitymanager.h>
 #include <libkpimidentities/identity.h>
@@ -89,7 +91,7 @@ KOPrefs::KOPrefs() :
   eventColorItem()->setDefaultValue( mDefaultCategoryColor );
 
   // Load it now, not deep within some painting code
-  KABC::StdAddressBook::self();
+  mMyAddrBookMails = KABC::StdAddressBook::self()->whoAmI().emails();
 }
 
 
@@ -342,7 +344,7 @@ QStringList KOPrefs::allEmails()
   // Add emails configured in korganizer
   lst += mAdditionalMails;
   // Add emails from the user's kaddressbook entry
-  lst += KABC::StdAddressBook::self()->whoAmI().emails();
+  lst += mMyAddrBookMails;
   // Add the email entered as the userEmail here
   lst += email();
 
@@ -382,13 +384,36 @@ QStringList KOPrefs::fullEmails()
 
 bool KOPrefs::thatIsMe( const QString& _email )
 {
+  // NOTE: this method is called for every created agenda view item, so we need to keep
+  // performance in mind
+
+  /* identityManager()->thatIsMe() is quite expensive since it does parsing of
+     _email in a way which is unnecessarily complex for what we can have here,
+     so we do that ourselves. This makes sense since this
+
   if ( KOCore::self()->identityManager()->thatIsMe( _email ) )
     return true;
+  */
+
   // in case email contains a full name, strip it out
-  QString email = KPIM::getEmailAddress( _email );
+  // the below is the simpler but slower version of the following KMime code
+  // const QString email = KPIM::getEmailAddress( _email );
+  const QCString tmp = _email.utf8();
+  const char *cursor = tmp.data();
+  const char *end = tmp.data() + tmp.length();
+  KMime::Types::Mailbox mbox;
+  KMime::HeaderParsing::parseMailbox( cursor, end, mbox );
+  const QString email = mbox.addrSpec.asString();
+
+  for ( KPIM::IdentityManager::ConstIterator it = KOCore::self()->identityManager()->begin();
+        it != KOCore::self()->identityManager()->end(); ++it ) {
+    if ( email == (*it).emailAddr() )
+      return true;
+  }
+
   if ( mAdditionalMails.find( email ) != mAdditionalMails.end() )
     return true;
-  QStringList lst = KABC::StdAddressBook::self()->whoAmI().emails();
+  QStringList lst = mMyAddrBookMails;
   if ( lst.find( email ) != lst.end() )
     return true;
   return false;

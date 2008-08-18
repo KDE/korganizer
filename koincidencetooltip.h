@@ -31,6 +31,8 @@ class Incidence;
 }
 using namespace KCal;
 
+class KOAgendaItem;
+
 /**
 @author Reinhold Kainhofer
 */
@@ -43,6 +45,14 @@ class KOIncidenceToolTip : public QToolTip
   public:
     static void add ( QWidget * widget, Incidence *incidence,
         QToolTipGroup * group = 0, const QString & longText = "" );
+    static void add( KOAgendaItem *item, Incidence *incidence = 0,
+                     QToolTipGroup *group = 0 );
+
+    /* reimplmented from QToolTip */
+    void maybeTip( const QPoint &pos );
+
+  private:
+    QString mText;
 };
 
 #endif
