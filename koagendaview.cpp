@@ -63,6 +63,7 @@
 #include "koprefs.h"
 #include "koagenda.h"
 #include "koagendaitem.h"
+#include "timelabels.h"
 
 #include "koincidencetooltip.h"
 #include "kogroupware.h"
@@ -74,206 +75,13 @@
 
 using namespace KOrg;
 
-TimeLabels::TimeLabels(int rows,QWidget *parent,const char *name,WFlags f) :
-  QScrollView(parent,name,f)
-{
-  mRows = rows;
-  mMiniWidth = 0;
-
-  mCellHeight = KOPrefs::instance()->mHourSize*4;
-
-  enableClipper(true);
-
-  setHScrollBarMode(AlwaysOff);
-  setVScrollBarMode(AlwaysOff);
-
-  resizeContents(50, int(mRows * mCellHeight) );
-
-  viewport()->setBackgroundMode( PaletteBackground );
-
-  mMousePos = new QFrame(this);
-  mMousePos->setLineWidth(0);
-  mMousePos->setMargin(0);
-  mMousePos->setBackgroundColor(Qt::red);
-  mMousePos->setFixedSize(width(), 1);
-  addChild(mMousePos, 0, 0);
-}
-
-void TimeLabels::mousePosChanged(const QPoint &pos)
-{
-  moveChild(mMousePos, 0, pos.y());
-}
-
-void TimeLabels::showMousePos()
-{
-  mMousePos->show();
-}
-
-void TimeLabels::hideMousePos()
-{
-  mMousePos->hide();
-}
-
-void TimeLabels::setCellHeight(double height)
-{
-  mCellHeight = height;
-}
-
-/*
-  Optimization so that only the "dirty" portion of the scroll view
-  is redrawn.  Unfortunately, this is not called by default paintEvent() method.
-*/
-void TimeLabels::drawContents(QPainter *p,int cx, int cy, int cw, int ch)
-{
-  // bug:  the parameters cx and cw are the areas that need to be
-  //       redrawn, not the area of the widget.  unfortunately, this
-  //       code assumes the latter...
-
-  // now, for a workaround...
-  cx = contentsX() + frameWidth()*2;
-  cw = contentsWidth() ;
-  // end of workaround
-
-  int cell = ((int)(cy/mCellHeight));
-  double y = cell * mCellHeight;
-  QFontMetrics fm = fontMetrics();
-  QString hour;
-  QString suffix = "am";
-  int timeHeight =  fm.ascent();
-  QFont nFont = font();
-  p->setFont( font() );
-
-  if (!KGlobal::locale()->use12Clock()) {
-      suffix = "00";
-  } else
-      if (cell > 11) suffix = "pm";
-
-  if ( timeHeight >  mCellHeight ) {
-    timeHeight = int(mCellHeight-1);
-    int pointS = nFont.pointSize();
-    while ( pointS > 4 ) {
-      nFont.setPointSize( pointS );
-      fm = QFontMetrics( nFont );
-      if ( fm.ascent() < mCellHeight )
-        break;
-      -- pointS;
-    }
-    fm = QFontMetrics( nFont );
-    timeHeight = fm.ascent();
-  }
-  //timeHeight -= (timeHeight/4-2);
-  QFont sFont = nFont;
-  sFont.setPointSize( sFont.pointSize()/2 );
-  QFontMetrics fmS(  sFont );
-  int startW = mMiniWidth - frameWidth()-2 ;
-  int tw2 = fmS.width(suffix);
-  int divTimeHeight = (timeHeight-1) /2 - 1;
-  //testline
-  //p->drawLine(0,0,0,contentsHeight());
-  while (y < cy + ch+mCellHeight) {
-    // hour, full line
-    p->drawLine( cx, int(y), cw+2, int(y) );
-    hour.setNum(cell);
-    // handle 24h and am/pm time formats
-    if (KGlobal::locale()->use12Clock()) {
-      if (cell == 12) suffix = "pm";
-      if (cell == 0) hour.setNum(12);
-      if (cell > 12) hour.setNum(cell - 12);
-    }
-
-    // center and draw the time label
-    int timeWidth = fm.width(hour);
-    int offset = startW - timeWidth - tw2 -1 ;
-    p->setFont( nFont );
-    p->drawText( offset, int(y+timeHeight), hour);
-    p->setFont( sFont );
-    offset = startW - tw2;
-    p->drawText( offset, int(y+timeHeight-divTimeHeight), suffix);
-
-    // increment indices
-    y += mCellHeight;
-    cell++;
-  }
-
-}
-
-/**
-   Calculates the minimum width.
-*/
-int TimeLabels::minimumWidth() const
-{
-  return mMiniWidth;
-}
-
-/** updates widget's internal state */
-void TimeLabels::updateConfig()
-{
-  setFont(KOPrefs::instance()->mTimeBarFont);
-
-  QString test = "20";
-  if ( KGlobal::locale()->use12Clock() )
-      test = "12";
-  mMiniWidth = fontMetrics().width( test );
-  if ( KGlobal::locale()->use12Clock() )
-      test = "pm";
-  else {
-      test = "00";
-  }
-  QFont sFont = font();
-  sFont.setPointSize(  sFont.pointSize()/2 );
-  QFontMetrics fmS(   sFont );
-  mMiniWidth += fmS.width(  test ) + frameWidth()*2+4 ;
-  // update geometry restrictions based on new settings
-  setFixedWidth(  mMiniWidth );
-
-  // update HourSize
-  mCellHeight = KOPrefs::instance()->mHourSize*4;
-  // If the agenda is zoomed out so that more then 24 would be shown,
-  // the agenda only shows 24 hours, so we need to take the cell height
-  // from the agenda, which is larger than the configured one!
-  if ( mCellHeight < 4*mAgenda->gridSpacingY() )
-       mCellHeight = 4*mAgenda->gridSpacingY();
-  resizeContents( mMiniWidth, int(mRows * mCellHeight+1) );
-}
-
-/** update time label positions */
-void TimeLabels::positionChanged()
-{
-  int adjustment = mAgenda->contentsY();
-  setContentsPos(0, adjustment);
-}
-
-/**  */
-void TimeLabels::setAgenda(KOAgenda* agenda)
-{
-  mAgenda = agenda;
-
-  connect(mAgenda, SIGNAL(mousePosSignal(const QPoint &)), this, SLOT(mousePosChanged(const QPoint &)));
-  connect(mAgenda, SIGNAL(enterAgenda()), this, SLOT(showMousePos()));
-  connect(mAgenda, SIGNAL(leaveAgenda()), this, SLOT(hideMousePos()));
-  connect(mAgenda, SIGNAL(gridSpacingYChanged( double ) ), this, SLOT( setCellHeight( double ) ) );
-}
-
-
-/** This is called in response to repaint() */
-void TimeLabels::paintEvent(QPaintEvent*)
-{
-//  kdDebug(5850) << "paintevent..." << endl;
-  // this is another hack!
-//  QPainter painter(this);
-  //QString c
-  repaintContents(contentsX(), contentsY(), visibleWidth(), visibleHeight());
-}
-
-////////////////////////////////////////////////////////////////////////////
 
 EventIndicator::EventIndicator(Location loc,QWidget *parent,const char *name)
   : QFrame(parent,name)
 {
   mColumns = 1;
-  mTopBox = 0;
+  mEnabled.resize( mColumns );
   mLocation = loc;
-  mTopLayout = 0;
 
   if (mLocation == Top) mPixmap = KOGlobals::self()->smallIcon("upindicator");
   else mPixmap = KOGlobals::self()->smallIcon("downindicator");
@@ -413,10 +221,11 @@ void KOAlternateLabel::setText( const QString &text ) {
 ////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////
 
-KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
+KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name, bool isSideBySide ) :
   KOrg::AgendaView (cal,parent,name), mExpandButton( 0 ), mAllowAgendaUpdate( true ),
   mUpdateItem( 0 ),
-  mResource( 0 )
+  mResource( 0 ),
+  mIsSideBySide( isSideBySide )
 {
   mSelectedDates.append(QDate::currentDate());
 
@@ -467,6 +276,8 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
 
   // Create all-day agenda widget
   mDummyAllDayLeft = new QVBox( mAllDayFrame );
+  if ( isSideBySide )
+    mDummyAllDayLeft->hide();
 
   if ( KOPrefs::instance()->compactDialogs() ) {
     mExpandButton = new QPushButton(mDummyAllDayLeft);
@@ -512,15 +323,19 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
 
   // make connections between dependent widgets
   mTimeLabels->setAgenda(mAgenda);
+  if ( isSideBySide )
+    mTimeLabels->hide();
 
   // Update widgets to reflect user preferences
 //  updateConfig();
 
   createDayLabels();
 
-  // these blank widgets make the All Day Event box line up with the agenda
-  dummyAllDayRight->setFixedWidth(mAgenda->verticalScrollBar()->width());
-  dummyAgendaRight->setFixedWidth(mAgenda->verticalScrollBar()->width());
+  if ( !isSideBySide ) {
+    // these blank widgets make the All Day Event box line up with the agenda
+    dummyAllDayRight->setFixedWidth(mAgenda->verticalScrollBar()->width());
+    dummyAgendaRight->setFixedWidth(mAgenda->verticalScrollBar()->width());
+  }
 
   updateTimeBarWidth();
 
@@ -612,7 +427,8 @@ void KOAgendaView::connectAgenda( KOAgenda *agenda, QPopupMenu *popup,
 
 void KOAgendaView::zoomInVertically( )
 {
-  KOPrefs::instance()->mHourSize++;
+  if ( !mIsSideBySide )
+    KOPrefs::instance()->mHourSize++;
   mAgenda->updateConfig();
   mAgenda->checkScrollBoundaries();
 
@@ -626,9 +442,10 @@ void KOAgendaView::zoomInVertically( )
 void KOAgendaView::zoomOutVertically( )
 {
 
-  if ( KOPrefs::instance()->mHourSize > 4 ) {
+  if ( KOPrefs::instance()->mHourSize > 4 || mIsSideBySide ) {
 
-    KOPrefs::instance()->mHourSize--;
+    if ( !mIsSideBySide )
+      KOPrefs::instance()->mHourSize--;
     mAgenda->updateConfig();
     mAgenda->checkScrollBoundaries();
 
@@ -705,7 +522,7 @@ void KOAgendaView::zoomView( const int delta, const QPoint &pos,
   const Qt::Orientation orient )
 {
   static QDate zoomDate;
-  static QTimer t( this );
+  static QTimer *t = new QTimer( this );
 
 
   //Zoom to the selected incidence, on the other way
@@ -715,10 +532,10 @@ void KOAgendaView::zoomView( const int delta, const QPoint &pos,
     if ( date.isValid() )
       zoomDate=date;
     else{
-      if ( !t.isActive() ) {
+      if ( !t->isActive() ) {
         zoomDate= mSelectedDates[pos.x()];
       }
-      t.start ( 1000,true );
+      t->start ( 1000,true );
     }
     if ( delta > 0 )
       zoomOutHorizontally( zoomDate );
@@ -748,7 +565,8 @@ void KOAgendaView::createDayLabels()
 
   mDayLabels = new QFrame (mDayLabelsFrame);
   mLayoutDayLabels = new QHBoxLayout(mDayLabels);
-  mLayoutDayLabels->addSpacing(mTimeLabels->width());
+  if ( !mIsSideBySide )
+    mLayoutDayLabels->addSpacing(mTimeLabels->width());
 
   const KCalendarSystem*calsys=KOGlobals::self()->calendarSystem();
 
@@ -812,7 +630,8 @@ void KOAgendaView::createDayLabels()
 #endif
   }
 
-  mLayoutDayLabels->addSpacing(mAgenda->verticalScrollBar()->width());
+  if ( !mIsSideBySide )
+    mLayoutDayLabels->addSpacing(mAgenda->verticalScrollBar()->width());
   mDayLabels->show();
 }
 

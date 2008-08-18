@@ -23,7 +23,10 @@
 
 class QScrollView;
 class QHBox;
+class QSplitter;
 class KOAgendaView;
+class TimeLabels;
+class QScrollBar;
 
 namespace KCal {
   class ResourceCalendar;
@@ -55,13 +58,17 @@ class MultiAgendaView : public AgendaView
     void showIncidences( const Incidence::List &incidenceList );
     void updateView();
     void changeIncidenceDisplay( Incidence *incidence, int mode );
+    void updateConfig();
 
     void setIncidenceChanger( IncidenceChangerBase *changer );
 
     void finishTypeAhead();
 
+    void show();
+
   protected:
     void resizeEvent( QResizeEvent *ev );
+    bool eventFilter( QObject *obj, QEvent *event );
 
   private:
     void addView( const QString &label, KCal::ResourceCalendar *res, const QString &subRes = QString::null );
@@ -69,16 +76,27 @@ class MultiAgendaView : public AgendaView
     void recreateViews();
     void setupViews();
     void resizeScrollView( const QSize &size );
+    void installSplitterEventFilter( QSplitter *splitter );
 
   private slots:
     void slotSelectionChanged();
     void slotClearTimeSpanSelection();
+    void resizeSplitters();
+    void zoomView( const int delta, const QPoint &pos, const Qt::Orientation ori );
+    void slotResizeScrollView();
 
   private:
     QValueList<KOAgendaView*> mAgendaViews;
     QValueList<QWidget*> mAgendaWidgets;
     QHBox *mTopBox;
     QScrollView *mScrollView;
+    TimeLabels *mTimeLabels;
+    QSplitter *mLeftSplitter, *mRightSplitter;
+    QSplitter *mLastMovedSplitter;
+    QScrollBar *mScrollBar;
+    QWidget *mLeftBottomSpacer, *mRightBottomSpacer;
+    QDate mStartDate, mEndDate;
+    bool mUpdateOnShow;
 };
 
 }

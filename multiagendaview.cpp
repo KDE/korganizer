@@ -19,8 +19,13 @@
 #include "multiagendaview.h"
 
 #include "koagendaview.h"
+#include "koagenda.h"
+#include "koprefs.h"
+#include "timelabels.h"
 
 #include <libkcal/calendarresources.h>
+
+#include <kglobalsettings.h>
 
 #include <qlayout.h>
 #include <qvbox.h>
@@ -35,16 +40,56 @@ for(QValueList<KOAgendaView*>::ConstIterator it = mAgendaViews.constBegin(); \
 using namespace KOrg;
 
 MultiAgendaView::MultiAgendaView(Calendar * cal, QWidget * parent, const char *name ) :
-    AgendaView( cal, parent, name )
+    AgendaView( cal, parent, name ),
+    mLastMovedSplitter( 0 ),
+    mUpdateOnShow( false )
 {
   QBoxLayout *topLevelLayout = new QHBoxLayout( this );
+
+  QFontMetrics fm( font() );
+  int topLabelHeight = 2 * fm.height();
+
+  QVBox *topSideBox = new QVBox( this );
+  QWidget *topSideSpacer = new QWidget( topSideBox );
+  topSideSpacer->setFixedHeight( topLabelHeight );
+  mLeftSplitter = new QSplitter( Qt::Vertical, topSideBox );
+  mLeftSplitter->setOpaqueResize( KGlobalSettings::opaqueResize() );
+  QLabel *label = new QLabel( i18n("All Day"), mLeftSplitter );
+  label->setAlignment( Qt::AlignRight | Qt::AlignVCenter | Qt::WordBreak );
+  QVBox *sideBox = new QVBox( mLeftSplitter );
+  EventIndicator *eiSpacer = new EventIndicator( EventIndicator::Top, sideBox );
+  eiSpacer->changeColumns( 0 );
+  mTimeLabels = new TimeLabels( 24, sideBox );
+  eiSpacer = new EventIndicator( EventIndicator::Bottom, sideBox );
+  eiSpacer->changeColumns( 0 );
+  mLeftBottomSpacer = new QWidget( topSideBox );
+  topLevelLayout->addWidget( topSideBox );
+
   mScrollView = new QScrollView( this );
   mScrollView->setResizePolicy( QScrollView::Manual );
   mScrollView->setVScrollBarMode( QScrollView::AlwaysOff );
   mScrollView->setFrameShape( QFrame::NoFrame );
-  topLevelLayout->addWidget( mScrollView );
+  topLevelLayout->addWidget( mScrollView, 100 );
   mTopBox = new QHBox( mScrollView->viewport() );
   mScrollView->addChild( mTopBox );
+
+  topSideBox = new QVBox( this );
+  topSideSpacer = new QWidget( topSideBox );
+  topSideSpacer->setFixedHeight( topLabelHeight );
+  mRightSplitter = new QSplitter( Qt::Vertical, topSideBox );
+  mRightSplitter->setOpaqueResize( KGlobalSettings::opaqueResize() );
+  new QWidget( mRightSplitter );
+  sideBox = new QVBox( mRightSplitter );
+  eiSpacer = new EventIndicator( EventIndicator::Top, sideBox );
+  eiSpacer->setFixedHeight( eiSpacer->minimumHeight() );
+  eiSpacer->changeColumns( 0 );
+  mScrollBar = new QScrollBar( Qt::Vertical, sideBox );
+  eiSpacer = new EventIndicator( EventIndicator::Bottom, sideBox );
+  eiSpacer->setFixedHeight( eiSpacer->minimumHeight() );
+  eiSpacer->changeColumns( 0 );
+  mRightBottomSpacer = new QWidget( topSideBox );
+  topLevelLayout->addWidget( topSideBox );
+
   recreateViews();
 }
 
@@ -76,7 +121,23 @@ void MultiAgendaView::recreateViews()
     }
   }
   setupViews();
-  resizeScrollView( size() );
+  QTimer::singleShot( 0, this, SLOT(slotResizeScrollView()) );
+  mTimeLabels->updateConfig();
+
+  QScrollBar *scrollBar = mAgendaViews.first()->agenda()->verticalScrollBar();
+  mScrollBar->setMinValue( scrollBar->minValue() );
+  mScrollBar->setMaxValue( scrollBar->maxValue() );
+  mScrollBar->setLineStep( scrollBar->lineStep() );
+  mScrollBar->setPageStep( scrollBar->pageStep() );
+  mScrollBar->setValue( scrollBar->value() );
+  connect( mTimeLabels->verticalScrollBar(), SIGNAL(valueChanged(int)),
+           mScrollBar, SLOT(setValue(int)) );
+  connect( mScrollBar, SIGNAL(valueChanged(int)),
+           mTimeLabels, SLOT(positionChanged(int)) );
+
+  installSplitterEventFilter( mLeftSplitter );
+  installSplitterEventFilter( mRightSplitter );
+  resizeSplitters();
 }
 
 void MultiAgendaView::deleteViews()
@@ -87,6 +148,7 @@ void MultiAgendaView::deleteViews()
   }
   mAgendaViews.clear();
   mAgendaWidgets.clear();
+  mLastMovedSplitter = 0;
 }
 
 void MultiAgendaView::setupViews()
@@ -136,11 +198,20 @@ void MultiAgendaView::setupViews()
     connect( agenda, SIGNAL(timeSpanSelectionChanged()),
              SLOT(slotClearTimeSpanSelection()) );
 
+    disconnect( agenda->agenda(), SIGNAL(zoomView(const int,const QPoint&,const Qt::Orientation)), agenda, 0 );
+    connect( agenda->agenda(), SIGNAL(zoomView(const int,const QPoint&,const Qt::Orientation)),
+             SLOT(zoomView(const int,const QPoint&,const Qt::Orientation)) );
   }
 
   FOREACH_VIEW( agenda ) {
     agenda->readSettings();
   }
+
+  int minWidth = 0;
+  for ( QValueList<QWidget*>::ConstIterator it = mAgendaWidgets.constBegin(); it != mAgendaWidgets.constEnd(); ++it )
+    minWidth = QMAX( minWidth, (*it)->minimumSizeHint().width() );
+  for ( QValueList<QWidget*>::ConstIterator it = mAgendaWidgets.constBegin(); it != mAgendaWidgets.constEnd(); ++it )
+    (*it)->setMinimumWidth( minWidth );
 }
 
 MultiAgendaView::~ MultiAgendaView()
@@ -174,7 +245,8 @@ int MultiAgendaView::currentDateCount()
 
 void MultiAgendaView::showDates(const QDate & start, const QDate & end)
 {
-  kdDebug() << k_funcinfo << endl;
+  mStartDate = start;
+  mEndDate = end;
   recreateViews();
   FOREACH_VIEW( agendaView )
     agendaView->showDates( start, end );
@@ -188,7 +260,6 @@ void MultiAgendaView::showIncidences(const Incidence::List & incidenceList)
 
 void MultiAgendaView::updateView()
 {
-  kdDebug() << k_funcinfo << endl;
   recreateViews();
   FOREACH_VIEW( agendaView )
     agendaView->updateView();
@@ -250,12 +321,21 @@ void MultiAgendaView::addView( const QString &label, KCal::ResourceCalendar * re
   QVBox *box = new QVBox( mTopBox );
   QLabel *l = new QLabel( label, box );
   l->setAlignment( AlignVCenter | AlignHCenter );
-  KOAgendaView* av = new KOAgendaView( calendar(), box );
+  KOAgendaView* av = new KOAgendaView( calendar(), box, 0, true );
   av->setResource( res, subRes );
   av->setIncidenceChanger( mChanger );
+  av->agenda()->setVScrollBarMode( QScrollView::AlwaysOff );
   mAgendaViews.append( av );
   mAgendaWidgets.append( box );
   box->show();
+  mTimeLabels->setAgenda( av->agenda() );
+
+  connect( av->agenda()->verticalScrollBar(), SIGNAL(valueChanged(int)),
+           mTimeLabels, SLOT(positionChanged(int)) );
+  connect( mTimeLabels->verticalScrollBar(), SIGNAL(valueChanged(int)),
+           av, SLOT(setContentsPos(int)) );
+
+  installSplitterEventFilter( av->splitter() );
 }
 
 void MultiAgendaView::resizeEvent(QResizeEvent * ev)
@@ -266,10 +346,18 @@ void MultiAgendaView::resizeEvent(QResizeEvent * ev)
 
 void MultiAgendaView::resizeScrollView(const QSize & size)
 {
-  int width = QMAX( mTopBox->sizeHint().width(), size.width() );
+  const int widgetWidth = size.width() - mTimeLabels->width() - mScrollBar->width();
+  int width = QMAX( mTopBox->sizeHint().width(), widgetWidth );
   int height = size.height();
-  if ( width > size.width() )
-    height -= mScrollView->horizontalScrollBar()->height();
+  if ( width > widgetWidth ) {
+    const int sbHeight = mScrollView->horizontalScrollBar()->height();
+    height -= sbHeight;
+    mLeftBottomSpacer->setFixedHeight( sbHeight );
+    mRightBottomSpacer->setFixedHeight( sbHeight );
+  } else {
+    mLeftBottomSpacer->setFixedHeight( 0 );
+    mRightBottomSpacer->setFixedHeight( 0 );
+  }
   mScrollView->resizeContents( width, height );
   mTopBox->resize( width, height );
 }
@@ -279,6 +367,100 @@ void MultiAgendaView::setIncidenceChanger(IncidenceChangerBase * changer)
   AgendaView::setIncidenceChanger( changer );
   FOREACH_VIEW( agenda )
     agenda->setIncidenceChanger( changer );
+}
+
+void MultiAgendaView::updateConfig()
+{
+  AgendaView::updateConfig();
+  mTimeLabels->updateConfig();
+  FOREACH_VIEW( agenda )
+    agenda->updateConfig();
+}
+
+// KDE4: not needed anymore, QSplitter has a moved signal there
+bool MultiAgendaView::eventFilter(QObject * obj, QEvent * event)
+{
+  if ( obj->className() == QCString("QSplitterHandle") ) {
+    if ( (event->type() == QEvent::MouseMove && KGlobalSettings::opaqueResize())
+           || event->type() == QEvent::MouseButtonRelease ) {
+      FOREACH_VIEW( agenda ) {
+        if ( agenda->splitter() == obj->parent() )
+          mLastMovedSplitter = agenda->splitter();
+      }
+      if ( mLeftSplitter == obj->parent() )
+        mLastMovedSplitter = mLeftSplitter;
+      else if ( mRightSplitter == obj->parent() )
+        mLastMovedSplitter = mRightSplitter;
+      QTimer::singleShot( 0, this, SLOT(resizeSplitters()) );
+    }
+  }
+  return AgendaView::eventFilter( obj, event );
+}
+
+void MultiAgendaView::resizeSplitters()
+{
+  if ( !mLastMovedSplitter )
+    mLastMovedSplitter = mAgendaViews.first()->splitter();
+  FOREACH_VIEW( agenda ) {
+    if ( agenda->splitter() == mLastMovedSplitter )
+      continue;
+    agenda->splitter()->setSizes( mLastMovedSplitter->sizes() );
+  }
+  if ( mLastMovedSplitter != mLeftSplitter )
+    mLeftSplitter->setSizes( mLastMovedSplitter->sizes() );
+  if ( mLastMovedSplitter != mRightSplitter )
+    mRightSplitter->setSizes( mLastMovedSplitter->sizes() );
+}
+
+void MultiAgendaView::zoomView( const int delta, const QPoint & pos, const Qt::Orientation ori )
+{
+  if ( ori == Qt::Vertical ) {
+    if ( delta > 0 ) {
+      if ( KOPrefs::instance()->mHourSize > 4 )
+        KOPrefs::instance()->mHourSize--;
+    } else {
+      KOPrefs::instance()->mHourSize++;
+    }
+  }
+
+  FOREACH_VIEW( agenda )
+    agenda->zoomView( delta, pos, ori );
+
+  mTimeLabels->updateConfig();
+  mTimeLabels->positionChanged();
+  mTimeLabels->repaint();
+}
+
+// KDE4: not needed, use existing QSplitter signals instead
+void MultiAgendaView::installSplitterEventFilter(QSplitter * splitter)
+{
+  QObjectList *objlist = splitter->queryList( "QSplitterHandle" );
+  // HACK: when not being visible, the splitter handle is sometimes not found
+  // for unknown reasons, so trigger an update when we are shown again
+  if ( objlist->count() == 0 && !isVisible() )
+    mUpdateOnShow = true;
+  QObjectListIt it( *objlist );
+  QObject *obj;
+  while ( (obj = it.current()) != 0 ) {
+    obj->removeEventFilter( this );
+    obj->installEventFilter( this );
+    ++it;
+  }
+  delete objlist;
+}
+
+void MultiAgendaView::slotResizeScrollView()
+{
+  resizeScrollView( size() );
+}
+
+void MultiAgendaView::show()
+{
+  AgendaView::show();
+  if ( mUpdateOnShow ) {
+    mUpdateOnShow = false;
+    showDates( mStartDate, mEndDate );
+  }
 }
 
 #include "multiagendaview.moc"
