@@ -120,6 +120,11 @@ void MultiAgendaView::recreateViews()
       }
     }
   }
+
+  // no resources activated, so stop here to avoid crashing somewhere down the line, TODO: show a nice message instead
+  if ( mAgendaViews.isEmpty() )
+    return;
+
   setupViews();
   QTimer::singleShot( 0, this, SLOT(slotResizeScrollView()) );
   mTimeLabels->updateConfig();

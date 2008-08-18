@@ -76,6 +76,13 @@ class KOGroupware : public QObject
                           Incidence* incidence, bool isDeleting = false,
                           bool statusChanged = false );
 
+    /**
+      Send counter proposal message.
+      @param oldEvent The original event provided in the invitations.
+      @param newEvent The new event as edited by the user.
+    */
+    void sendCounterProposal( KCal::Calendar* calendar, KCal::Event* oldEvent, KCal::Event *newEvent ) const;
+
     // THIS IS THE ACTUAL KM/KO API
     enum EventState { Accepted, ConditionallyAccepted, Declined, Request };
 

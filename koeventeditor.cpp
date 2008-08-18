@@ -278,20 +278,24 @@ bool KOEventEditor::processInput()
     writeEvent( event );
     kdDebug(5850) << "KOEventEditor::processInput() event written." << endl;
 
-    if( *event == *mEvent )
+    if( *event == *mEvent ) {
       // Don't do anything
       kdDebug(5850) << "Event not changed\n";
-    else {
+      if ( mIsCounter )
+        KMessageBox::information( this, i18n("You didn't change the event, thus no counter proposal has been sent to the organizer."), i18n("No changes") );
+    } else {
       kdDebug(5850) << "Event changed\n";
       //IncidenceChanger::assignIncidence( mEvent, event );
       writeEvent( mEvent );
       if ( mIsCounter ) {
+        KOGroupware::instance()->sendCounterProposal( mCalendar, oldEvent, mEvent );
+        // add dummy event at the position of the counter proposal
         Event *event = mEvent->clone();
         event->clearAttendees();
         event->setSummary( i18n("My counter proposal for: %1").arg( mEvent->summary() ) );
         mChanger->addIncidence( event );
       } else {
-        mChanger->changeIncidence( oldEvent, mEvent, -1, mIsCounter );
+        mChanger->changeIncidence( oldEvent, mEvent );
       }
     }
     delete event;
