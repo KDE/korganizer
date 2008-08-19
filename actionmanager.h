@@ -250,6 +250,10 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
 
     bool queryClose();
 
+    void loadProfile( const QString & path );
+
+    void saveToProfile( const QString & path ) const;
+
   signals:
     /**
       Emitted when the "New" action is activated.

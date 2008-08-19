@@ -106,4 +106,14 @@ bool KOrganizerIfaceImpl::showIncidenceContext( const QString &uid )
   return mActionManager->showIncidenceContext( uid );
 }
 
+void KOrganizerIfaceImpl::loadProfile( const QString& path )
+{
+    mActionManager->loadProfile( path );
+}
+
+void KOrganizerIfaceImpl::saveToProfile( const QString& path ) const
+{
+    mActionManager->saveToProfile( path );
+}
+
 #include "korganizerifaceimpl.moc"
