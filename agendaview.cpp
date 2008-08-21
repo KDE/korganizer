@@ -17,12 +17,22 @@
 */
 
 #include "agendaview.h"
+#include <kcal/calendarresources.h>
 
 using namespace KOrg;
 
 AgendaView::AgendaView( Calendar *cal, QWidget *parent )
   : KOEventView( cal, parent )
 {
+  KCal::CalendarResources *calres = dynamic_cast<KCal::CalendarResources *>( cal );
+  if ( calres ) {
+    connect( calres, SIGNAL(signalResourceAdded(ResourceCalendar *)),
+             SLOT(resourcesChanged()) );
+    connect( calres, SIGNAL(signalResourceModified( ResourceCalendar *)),
+             SLOT(resourcesChanged()) );
+    connect( calres, SIGNAL(signalResourceDeleted(ResourceCalendar *)),
+             SLOT(resourcesChanged()) );
+  }
 }
 
 #include "agendaview.moc"

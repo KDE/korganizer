@@ -459,4 +459,11 @@ void MultiAgendaView::show()
   }
 }
 
+void MultiAgendaView::resourcesChanged()
+{
+  foreach ( KOAgendaView *agenda, mAgendaViews ) {
+    agenda->resourcesChanged();
+  }
+}
+
 #include "multiagendaview.moc"

@@ -2345,4 +2345,10 @@ void CalendarView::moveIncidenceTo( Incidence *incmove, const QDate &dt )
   delete oldIncidence;
 }
 
+void CalendarView::resourcesChanged()
+{
+  mViewManager->resourcesChanged();
+  updateView();
+}
+
 #include "calendarview.moc"
