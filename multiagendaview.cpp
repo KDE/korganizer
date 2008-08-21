@@ -35,7 +35,8 @@
 using namespace KOrg;
 
 MultiAgendaView::MultiAgendaView( Calendar *cal, QWidget *parent )
-  : AgendaView( cal, parent )
+  : AgendaView( cal, parent ),
+    mUpdateOnShow( false )
 {
   QBoxLayout *topLevelLayout = new QHBoxLayout( this );
 
@@ -265,6 +266,8 @@ int MultiAgendaView::currentDateCount()
 
 void MultiAgendaView::showDates( const QDate &start, const QDate &end )
 {
+  mStartDate = start;
+  mEndDate = end;
   recreateViews();
   foreach ( KOAgendaView *agendaView, mAgendaViews ) {
     agendaView->showDates( start, end );
@@ -445,6 +448,15 @@ void MultiAgendaView::zoomView( const int delta, const QPoint &pos, const Qt::Or
 void MultiAgendaView::slotResizeScrollView()
 {
   resizeScrollView( size() );
+}
+
+void MultiAgendaView::show()
+{
+  AgendaView::show();
+  if ( mUpdateOnShow ) {
+    mUpdateOnShow = false;
+    showDates( mStartDate, mEndDate );
+  }
 }
 
 #include "multiagendaview.moc"

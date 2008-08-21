@@ -64,6 +64,8 @@ class MultiAgendaView : public AgendaView
 
     void finishTypeAhead();
 
+    void show();
+
   protected:
     void resizeEvent( QResizeEvent *ev );
 
@@ -91,6 +93,8 @@ class MultiAgendaView : public AgendaView
     QSplitter *mLeftSplitter, *mRightSplitter;
     QScrollBar *mScrollBar;
     QWidget *mLeftBottomSpacer, *mRightBottomSpacer;
+    QDate mStartDate, mEndDate;
+    bool mUpdateOnShow;
 };
 
 }
