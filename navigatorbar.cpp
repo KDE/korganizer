@@ -32,15 +32,12 @@
 #include <kglobal.h>
 #include <kiconloader.h>
 
-#include <QString>
-#include <QPushButton>
-#include <QLayout>
-#include <QLabel>
-#include <Q3PopupMenu>
-#include <QMouseEvent>
-#include <QPixmap>
 #include <QHBoxLayout>
-#include <QBoxLayout>
+#include <QLabel>
+#include <QMouseEvent>
+#include <QString>
+#include <QToolButton>
+#include <Q3PopupMenu>
 
 ActiveLabel::ActiveLabel( QWidget *parent ) : QLabel( parent )
 {
@@ -84,9 +81,7 @@ NavigatorBar::NavigatorBar( QWidget *parent )
   mMonth->setToolTip( i18n( "Select a month" ) );
 
   // set up control frame layout
-  QBoxLayout *ctrlLayout = new QHBoxLayout( this );
-  ctrlLayout->setSpacing( 4 );
-  ctrlLayout->setMargin( 0 );
+  QHBoxLayout *ctrlLayout = new QHBoxLayout( this );
   ctrlLayout->addWidget( mPrevYear, 3 );
   ctrlLayout->addWidget( mPrevMonth, 3 );
   ctrlLayout->addWidget( mMonth, 3 );
@@ -177,18 +172,18 @@ void NavigatorBar::selectMonth()
   }
 }
 
-QPushButton *NavigatorBar::createNavigationButton( const QString &icon,
-  const QString &toolTip )
+QToolButton *NavigatorBar::createNavigationButton( const QString &icon,
+                                                   const QString &toolTip )
 {
-  QPushButton *button = new QPushButton( this );
+  QToolButton *button = new QToolButton( this );
 
   button->setIcon(
     KIconLoader::global()->loadIcon( icon, KIconLoader::Desktop, KIconLoader::SizeSmall ) );
 
   // By the default the button has a very wide minimum size (for whatever
   // reasons). Override this, so that the date navigator doesn't need to be
-  // so wide anymore. The minimum size is dominated by the other elements of the
-  // date navigator then.
+  // so wide anymore. The minimum size is dominated by the other elements of
+  // the date navigator then.
   button->setMinimumSize( 10, 10 );
 
   button->setToolTip( toolTip );
