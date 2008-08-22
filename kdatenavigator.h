@@ -27,22 +27,21 @@
 
 #include <QFrame>
 #include <QDateTime>
-#include <QLabel>
-#include <QWheelEvent>
-#include <QEvent>
 
-#include <kcal/incidencebase.h>
-
-class QLabel;
-
-namespace KCal {
-class Calendar;
-class Incidence;
-}
-class NavigatorBar;
-using namespace KCal;
+#include <kcal/incidencebase.h> //for DateList typedef
 
 class KODayMatrix;
+class NavigatorBar;
+
+namespace KCal {
+  class Calendar;
+  class Incidence;
+}
+using namespace KCal;
+
+class QEvent;
+class QLabel;
+class QWheelEvent;
 
 class KDateNavigator: public QFrame
 {
@@ -58,11 +57,18 @@ class KDateNavigator: public QFrame
 
     void setBaseDate( const QDate & );
 
-    KCal::DateList selectedDates() const { return mSelectedDates; }
+    KCal::DateList selectedDates() const
+    {
+      return mSelectedDates;
+    }
 
     QSizePolicy sizePolicy () const;
 
-    NavigatorBar *navigatorBar() const { return mNavigatorBar; }
+    NavigatorBar *navigatorBar() const
+    {
+      return mNavigatorBar;
+    }
+
     QDate startDate() const;
     QDate endDate() const;
 
@@ -88,13 +94,14 @@ class KDateNavigator: public QFrame
     void goPrevYear();
 
     void goMonth( int month );
+    void goYear( int year );
 
   protected:
     void updateDates();
 
     void wheelEvent( QWheelEvent * );
 
-    bool eventFilter( QObject *,QEvent * );
+    bool eventFilter( QObject *, QEvent * );
 
     void setShowWeekNums( bool enabled );
 

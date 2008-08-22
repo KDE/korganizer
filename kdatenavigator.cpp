@@ -48,24 +48,25 @@
 KDateNavigator::KDateNavigator( QWidget *parent )
   : QFrame( parent ), mBaseDate( 1970, 1, 1 )
 {
-  QGridLayout* topLayout = new QGridLayout( this );
-  topLayout->setMargin(0);
-  topLayout->setSpacing(0);
+  QGridLayout *topLayout = new QGridLayout( this );
+  topLayout->setMargin( 0 );
+  topLayout->setSpacing( 0 );
 
   mNavigatorBar = new NavigatorBar( this );
   topLayout->addWidget( mNavigatorBar, 0, 0, 1, 8 );
 
-  connect( mNavigatorBar, SIGNAL( goPrevYear() ), SIGNAL( goPrevYear() ) );
-  connect( mNavigatorBar, SIGNAL( goPrevMonth() ), SIGNAL( goPrevMonth() ) );
-  connect( mNavigatorBar, SIGNAL( goNextMonth() ), SIGNAL( goNextMonth() ) );
-  connect( mNavigatorBar, SIGNAL( goNextYear() ), SIGNAL( goNextYear() ) );
-  connect( mNavigatorBar, SIGNAL( goMonth( int ) ), SIGNAL( goMonth( int ) ) );
+  connect( mNavigatorBar, SIGNAL(goPrevYear()), SIGNAL(goPrevYear()) );
+  connect( mNavigatorBar, SIGNAL(goPrevMonth()), SIGNAL(goPrevMonth()) );
+  connect( mNavigatorBar, SIGNAL(goNextMonth()), SIGNAL(goNextMonth()) );
+  connect( mNavigatorBar, SIGNAL(goNextYear()), SIGNAL(goNextYear()) );
+  connect( mNavigatorBar, SIGNAL(goMonth(int)), SIGNAL(goMonth(int)) );
+  connect( mNavigatorBar, SIGNAL(goYear(int)), SIGNAL(goYear(int)) );
 
   int i;
   QString generalFont = KGlobalSettings::generalFont().family();
 
   // Set up the heading fields.
-  for( i = 0; i < 7; i++ ) {
+  for ( i = 0; i < 7; i++ ) {
     mHeadings[i] = new QLabel( this );
     mHeadings[i]->setFont( QFont( generalFont, 10, QFont::Bold ) );
     mHeadings[i]->setAlignment( Qt::AlignCenter );
@@ -74,7 +75,7 @@ KDateNavigator::KDateNavigator( QWidget *parent )
   }
 
   // Create the weeknumber labels
-  for( i = 0; i < 6; i++ ) {
+  for ( i = 0; i < 6; i++ ) {
     mWeeknos[i] = new QLabel( this );
     mWeeknos[i]->setAlignment( Qt::AlignCenter );
     mWeeknos[i]->setFont( QFont( generalFont, 10 ) );
@@ -86,14 +87,13 @@ KDateNavigator::KDateNavigator( QWidget *parent )
   mDayMatrix = new KODayMatrix( this );
   mDayMatrix->setObjectName( "KDateNavigator::dayMatrix" );
 
-  connect( mDayMatrix, SIGNAL( selected( const KCal::DateList & ) ),
-           SIGNAL( datesSelected( const KCal::DateList & ) ) );
+  connect( mDayMatrix, SIGNAL(selected(const KCal::DateList &)),
+           SIGNAL(datesSelected(const KCal::DateList &)) );
 
-  connect( mDayMatrix, SIGNAL( incidenceDropped( Incidence *, const QDate & ) ),
-           SIGNAL( incidenceDropped( Incidence *, const QDate & ) ) );
-  connect( mDayMatrix, SIGNAL( incidenceDroppedMove( Incidence * , const QDate & ) ),
-           SIGNAL( incidenceDroppedMove( Incidence *, const QDate & ) ) );
-
+  connect( mDayMatrix, SIGNAL(incidenceDropped(Incidence *,const QDate &)),
+           SIGNAL(incidenceDropped(Incidence *,const QDate &)) );
+  connect( mDayMatrix, SIGNAL(incidenceDroppedMove(Incidence *,const QDate &)),
+           SIGNAL(incidenceDroppedMove(Incidence *,const QDate &)) );
 
   topLayout->addWidget( mDayMatrix, 2, 1, 6, 7 );
 
@@ -147,7 +147,6 @@ QDate KDateNavigator::startDate() const
   //int di = d1 - d2 + 1;
   dayone = dayone.addDays( -d2 + 1 );
 
-
   const KCalendarSystem *calsys = KOGlobals::self()->calendarSystem();
   int m_fstDayOfWkCalsys = calsys->dayOfWeek( dayone );
   int weekstart = KGlobal::locale()->weekStartDay();
@@ -165,7 +164,7 @@ QDate KDateNavigator::startDate() const
 }
 QDate KDateNavigator::endDate() const
 {
-  return startDate().addDays( 6*7 );
+  return startDate().addDays( 6 * 7 );
 }
 
 void KDateNavigator::updateDates()
@@ -178,7 +177,7 @@ void KDateNavigator::updateDates()
   const KCalendarSystem *calsys = KOGlobals::self()->calendarSystem();
 
   // set the week numbers.
-  for( int i = 0; i < 6; i++ ) {
+  for ( int i = 0; i < 6; i++ ) {
     // Use QDate's weekNumber method to determine the week number!
     QDate dtStart = mDayMatrix->getDate( i * 7 );
     QDate dtEnd = mDayMatrix->getDate( ( i + 1 ) * 7 - 1 );
@@ -187,8 +186,8 @@ void KDateNavigator::updateDates()
     QString weeknum;
 
     if ( weeknumstart != weeknumend ) {
-      weeknum = i18nc("start/end week number of line in date picker", "%1/%2",
-                  weeknumstart, weeknumend );
+      weeknum = i18nc( "start/end week number of line in date picker", "%1/%2",
+                       weeknumstart, weeknumend );
     } else {
       weeknum.setNum( weeknumstart );
     }
@@ -205,7 +204,6 @@ void KDateNavigator::updateDayMatrix()
   mDayMatrix->repaint();
 }
 
-
 void KDateNavigator::updateView()
 {
 //   kDebug(5850) <<"KDateNavigator::updateView(), view" << this;
@@ -217,11 +215,13 @@ void KDateNavigator::updateConfig()
 {
   int day;
   int weekstart = KGlobal::locale()->weekStartDay();
-  for( int i = 0; i < 7; i++ ) {
+  for ( int i = 0; i < 7; i++ ) {
     day = weekstart + i <= 7 ? weekstart + i : ( weekstart + i ) % 7;
-    QString dayName = KOGlobals::self()->calendarSystem()->weekDayName( day,
-                      KCalendarSystem::ShortDayName );
-    if ( KOPrefs::instance()->mCompactDialogs ) dayName = dayName.left( 1 );
+    QString dayName =
+      KOGlobals::self()->calendarSystem()->weekDayName( day, KCalendarSystem::ShortDayName );
+    if ( KOPrefs::instance()->mCompactDialogs ) {
+      dayName = dayName.left( 1 );
+    }
     mHeadings[i]->setText( dayName );
   }
 
@@ -231,11 +231,12 @@ void KDateNavigator::updateConfig()
 
 void KDateNavigator::setShowWeekNums( bool enabled )
 {
-  for( int i = 0; i < 6; i++ ) {
-    if( enabled )
+  for ( int i = 0; i < 6; i++ ) {
+    if( enabled ) {
       mWeeknos[i]->show();
-    else
+    } else {
       mWeeknos[i]->hide();
+    }
   }
 }
 
@@ -255,9 +256,11 @@ void KDateNavigator::selectDates( const DateList &dateList )
 
 void KDateNavigator::wheelEvent ( QWheelEvent *e )
 {
-  if( e->delta() > 0 ) emit goPrevious();
-  else emit goNext();
-
+  if ( e->delta() > 0 ) {
+    emit goPrevious();
+  } else {
+    emit goNext();
+  }
   e->accept();
 }
 
@@ -265,7 +268,7 @@ bool KDateNavigator::eventFilter ( QObject *o, QEvent *e )
 {
   if ( e->type() == QEvent::MouseButtonPress ) {
     int i;
-    for( i = 0; i < 6; ++i ) {
+    for ( i = 0; i < 6; ++i ) {
       if ( o == mWeeknos[ i ] ) {
         QDate weekstart = mDayMatrix->getDate( i * 7 );
         emit weekClicked( weekstart );

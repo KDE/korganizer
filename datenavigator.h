@@ -73,6 +73,7 @@ class DateNavigator : public QObject
     void selectNext();
 
     void selectMonth( int month );
+    void selectYear( int year );
 
   signals:
     void datesSelected( const KCal::DateList & );

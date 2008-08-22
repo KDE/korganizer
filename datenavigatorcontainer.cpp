@@ -63,24 +63,24 @@ DateNavigatorContainer::~DateNavigatorContainer()
 
 void DateNavigatorContainer::connectNavigatorView( KDateNavigator *v )
 {
-  connect( v, SIGNAL( datesSelected( const KCal::DateList & ) ),
-           SIGNAL( datesSelected( const KCal::DateList & ) ) );
-  connect( v, SIGNAL( incidenceDropped( Incidence *, const QDate & ) ),
-           SIGNAL( incidenceDropped( Incidence *, const QDate & ) ) );
-  connect( v, SIGNAL( incidenceDroppedMove( Incidence *, const QDate & ) ),
-           SIGNAL( incidenceDroppedMove( Incidence *, const QDate & ) ) );
-  connect( v, SIGNAL( weekClicked( const QDate & ) ),
-           SIGNAL( weekClicked( const QDate & ) ) );
+  connect( v, SIGNAL(datesSelected(const KCal::DateList &)),
+           SIGNAL(datesSelected(const KCal::DateList &)) );
+  connect( v, SIGNAL(incidenceDropped(Incidence *,const QDate &)),
+           SIGNAL(incidenceDropped(Incidence *,const QDate &)) );
+  connect( v, SIGNAL(incidenceDroppedMove(Incidence *,const QDate &)),
+           SIGNAL(incidenceDroppedMove(Incidence *,const QDate &)) );
+  connect( v, SIGNAL(weekClicked(const QDate &)),
+           SIGNAL(weekClicked(const QDate &)) );
 
-  connect( v, SIGNAL( goPrevious() ), SIGNAL( goPrevious() ) );
-  connect( v, SIGNAL( goNext() ), SIGNAL( goNext() ) );
+  connect( v, SIGNAL(goPrevious()), SIGNAL(goPrevious()) );
+  connect( v, SIGNAL(goNext()), SIGNAL(goNext()) );
 
-  connect( v, SIGNAL( goNextMonth() ), SIGNAL( goNextMonth() ) );
-  connect( v, SIGNAL( goPrevMonth() ), SIGNAL( goPrevMonth() ) );
-  connect( v, SIGNAL( goNextYear() ), SIGNAL( goNextYear() ) );
-  connect( v, SIGNAL( goPrevYear() ), SIGNAL( goPrevYear() ) );
-
-  connect( v, SIGNAL( goMonth( int ) ), SIGNAL( goMonth( int ) ) );
+  connect( v, SIGNAL(goNextMonth()), SIGNAL(goNextMonth()) );
+  connect( v, SIGNAL(goPrevMonth()), SIGNAL(goPrevMonth()) );
+  connect( v, SIGNAL(goNextYear()), SIGNAL(goNextYear()) );
+  connect( v, SIGNAL(goPrevYear()), SIGNAL(goPrevYear()) );
+  connect( v, SIGNAL(goMonth(int)), SIGNAL(goMonth(int)) );
+  connect( v, SIGNAL(goYear(int)), SIGNAL(goYear(int)) );
 }
 
 void DateNavigatorContainer::setCalendar( Calendar *cal )
@@ -187,7 +187,7 @@ void DateNavigatorContainer::resizeEvent( QResizeEvent * )
   kDebug() << "  SIZEHINT:" << sizeHint();
   kDebug() << "  MINIMUM SIZE:" << minimumSize();
 #endif
-  QTimer::singleShot( 0, this, SLOT( resizeAllContents() ) );
+  QTimer::singleShot( 0, this, SLOT(resizeAllContents()) );
 }
 
 void DateNavigatorContainer::resizeAllContents()

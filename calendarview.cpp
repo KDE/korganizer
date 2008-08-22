@@ -178,6 +178,8 @@ CalendarView::CalendarView( QWidget *parent )
            mNavigator, SLOT(selectNextMonth()) );
   connect( mNavigatorBar, SIGNAL(goMonth(int)),
            mNavigator, SLOT(selectMonth(int)) );
+  connect( mNavigatorBar, SIGNAL(goYear(int)),
+           mNavigator, SLOT(selectYear(int)) );
 
   connect( mNavigator, SIGNAL(datesSelected(const KCal::DateList &)),
            mNavigatorBar, SLOT(selectDates(const KCal::DateList &)) );
@@ -195,6 +197,8 @@ CalendarView::CalendarView( QWidget *parent )
            mNavigator, SLOT(selectNextMonth()) );
   connect( mDateNavigator, SIGNAL(goMonth(int)),
            mNavigator, SLOT(selectMonth(int)) );
+  connect( mDateNavigator, SIGNAL(goYear(int)),
+           mNavigator, SLOT(selectYear(int)) );
 
   connect( mDateNavigator, SIGNAL(goPrevious()),
            mNavigator, SLOT(selectPrevious()) );

@@ -62,12 +62,14 @@ class NavigatorBar: public QWidget
     void goNextYear();
     void goPrevYear();
     void goMonth( int month );
+    void goYear( int year );
 
   protected:
     QToolButton *createNavigationButton( const QString &icon, const QString &toolTip );
 
   private slots:
     void selectMonth();
+    void selectYear();
 
   private:
     bool mHasMinWidth;
@@ -77,6 +79,7 @@ class NavigatorBar: public QWidget
     QToolButton *mPrevYear;
     QToolButton *mPrevMonth;
     ActiveLabel *mMonth;
+    ActiveLabel *mYear;
     QToolButton *mNextMonth;
     QToolButton *mNextYear;
 };

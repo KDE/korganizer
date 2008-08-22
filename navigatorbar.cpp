@@ -80,11 +80,19 @@ NavigatorBar::NavigatorBar( QWidget *parent )
   mMonth->setMinimumHeight( mPrevYear->sizeHint().height() );
   mMonth->setToolTip( i18n( "Select a month" ) );
 
+  // Create year button
+  mYear = new ActiveLabel( this );
+  mYear->setFont( tfont );
+  mYear->setAlignment( Qt::AlignCenter );
+  mYear->setMinimumHeight( mPrevYear->sizeHint().height() );
+  mYear->setToolTip( i18n( "Select a year" ) );
+
   // set up control frame layout
   QHBoxLayout *ctrlLayout = new QHBoxLayout( this );
   ctrlLayout->addWidget( mPrevYear, 3 );
   ctrlLayout->addWidget( mPrevMonth, 3 );
   ctrlLayout->addWidget( mMonth, 3 );
+  ctrlLayout->addWidget( mYear, 3 );
   ctrlLayout->addWidget( mNextMonth, 3 );
   ctrlLayout->addWidget( mNextYear, 3 );
 
@@ -93,6 +101,7 @@ NavigatorBar::NavigatorBar( QWidget *parent )
   connect( mNextMonth, SIGNAL(clicked()), SIGNAL(goNextMonth()) );
   connect( mNextYear, SIGNAL(clicked()), SIGNAL(goNextYear()) );
   connect( mMonth, SIGNAL(clicked()), SLOT(selectMonth()) );
+  connect( mYear, SIGNAL(clicked()), SLOT(selectYear()) );
 }
 
 NavigatorBar::~NavigatorBar()
@@ -133,7 +142,7 @@ void NavigatorBar::selectDates( const KCal::DateList &dateList )
 
       for ( i = 1; i <= calSys->monthsInYear( mDate ); ++i ) {
         QString m = calSys->monthName( i, calSys->year( mDate ) );
-        int w = QFontMetrics( mMonth->font() ).width( QString( "%1 8888" ).arg( m ) );
+        int w = QFontMetrics( mMonth->font() ).width( QString( "%1" ).arg( m ) );
         if ( w > maxwidth ) {
           maxwidth = w;
         }
@@ -144,9 +153,8 @@ void NavigatorBar::selectDates( const KCal::DateList &dateList )
     }
 
     // compute the labels at the top of the navigator
-    mMonth->setText( i18nc( "monthname year", "%1 %2",
-                            calSys->monthName( mDate ),
-                            calSys->yearString( mDate ) ) );
+    mMonth->setText( i18nc( "monthname", "%1", calSys->monthName( mDate ) ) );
+    mYear->setText( i18nc( "4 digit year", "%1", calSys->yearString( mDate ) ) );
   }
 }
 
@@ -164,7 +172,7 @@ void NavigatorBar::selectMonth()
   QList<QAction *>act;
 
   QAction *activateAction = 0;
-  for ( i=1; i <= months; i++ ) {
+  for ( i=1; i <= months; ++i ) {
     QAction *monthAction = menu->addAction( calSys->monthName( i, year ) );
     act.append( monthAction );
     if ( i == month ) {
@@ -180,6 +188,47 @@ void NavigatorBar::selectMonth()
       if ( act[i] == selectedAct ) {
         emit goMonth( i + 1 );
       }
+    }
+  }
+  qDeleteAll( act );
+  act.clear();
+  delete menu;
+}
+
+void NavigatorBar::selectYear()
+{
+  const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
+
+  int i;
+  int year = calSys->year( mDate );
+  int years = 11;  // odd number (show a few years ago -> a few years from now)
+  int minYear = year - ( years / 3 );
+
+  QMenu *menu = new QMenu( mYear );
+  QList<QAction *>act;
+
+  QString yearStr;
+  QAction *activateAction = 0;
+  int y = minYear;
+  for ( i=0; i < years; i++ ) {
+    QAction *yearAction = menu->addAction( yearStr.setNum( y ) );
+    act.append( yearAction );
+    if ( y == year ) {
+      activateAction = yearAction;
+    }
+    y++;
+  }
+  if ( activateAction ) {
+    menu->setActiveAction( activateAction );
+  }
+  QAction *selectedAct = menu->exec( mYear->mapToGlobal( QPoint( 0, 0 ) ) );
+  if ( selectedAct && ( selectedAct != activateAction ) ) {
+    int y = minYear;
+    for ( i=0; i < years; ++i ) {
+      if ( act[i] == selectedAct ) {
+        emit goYear( y );
+      }
+      y++;
     }
   }
   qDeleteAll( act );

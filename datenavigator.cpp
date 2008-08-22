@@ -246,7 +246,7 @@ void DateNavigator::selectMonth( int month )
 
   const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
   int day = calSys->day( firstSelected );
-  calSys->setYMD( firstSelected, calSys->year(firstSelected), month, 1 );
+  calSys->setYMD( firstSelected, calSys->year( firstSelected ), month, 1 );
   int days = calSys->daysInMonth( firstSelected );
   // As day we use either the selected date, or if the month has less days
   // than that, we use the max day of that month
@@ -255,6 +255,16 @@ void DateNavigator::selectMonth( int month )
   }
   calSys->setYMD( firstSelected, calSys->year( firstSelected ), month, day );
 
+  selectWeekByDay( weekDay, firstSelected );
+}
+
+void DateNavigator::selectYear( int year )
+{
+  QDate firstSelected = mSelectedDates.first();
+  int deltaYear = year - KOGlobals::self()->calendarSystem()->year( firstSelected );
+  firstSelected = KOGlobals::self()->calendarSystem()->addYears( firstSelected, deltaYear );
+
+  int weekDay = firstSelected.dayOfWeek();
   selectWeekByDay( weekDay, firstSelected );
 }
 
