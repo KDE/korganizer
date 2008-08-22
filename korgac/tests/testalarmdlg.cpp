@@ -56,7 +56,7 @@ int main( int argc, char **argv )
   t1->setSummary( "To-do A" );
   t1->setDtDue( now );
   t1->newAlarm();
-  
+
   Event *e2 = new Event;
   e2->setSummary( "This is another summary." );
   e2->setDtStart( now );
