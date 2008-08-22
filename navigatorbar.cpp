@@ -59,19 +59,27 @@ NavigatorBar::NavigatorBar( QWidget *parent )
 
   mPrevYear = createNavigationButton(
     isRTL ? "arrow-right-double" : "arrow-left-double",
-    i18n( "Scroll backward to the previous year" ) );
+    i18n( "Scroll backward to the previous year" ),
+    i18n( "Click this button to scroll the display to the "
+          "same approximate day of the previous year" ) );
 
   mPrevMonth = createNavigationButton(
     isRTL ? "arrow-right" : "arrow-left",
-    i18n( "Scroll backward to the previous month" ) );
+    i18n( "Scroll backward to the previous month" ),
+    i18n( "Click this button to scroll the display to the "
+          "same approximate date of the previous month" ) );
 
   mNextMonth = createNavigationButton(
     isRTL ? "arrow-left" : "arrow-right",
-    i18n( "Scroll forward to the next month" ) );
+    i18n( "Scroll forward to the next month" ),
+    i18n( "Click this button to scroll the display to the "
+          "same approximate date of the next month" ) );
 
   mNextYear = createNavigationButton(
     isRTL ? "arrow-left-double" : "arrow-right-double",
-    i18n( "Scroll forward to the next year" ) );
+    i18n( "Scroll forward to the next year" ),
+    i18n( "Click this button to scroll the display to the "
+          "same approximate day of the next year" ) );
 
   // Create month name button
   mMonth = new ActiveLabel( this );
@@ -237,7 +245,8 @@ void NavigatorBar::selectYear()
 }
 
 QToolButton *NavigatorBar::createNavigationButton( const QString &icon,
-                                                   const QString &toolTip )
+                                                   const QString &toolTip,
+                                                   const QString &whatsThis )
 {
   QToolButton *button = new QToolButton( this );
 
@@ -251,6 +260,7 @@ QToolButton *NavigatorBar::createNavigationButton( const QString &icon,
   button->setMinimumSize( 10, 10 );
 
   button->setToolTip( toolTip );
+  button->setWhatsThis( whatsThis );
 
   return button;
 }
