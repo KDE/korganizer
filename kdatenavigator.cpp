@@ -169,7 +169,6 @@ QDate KDateNavigator::endDate() const
 
 void KDateNavigator::updateDates()
 {
-// kDebug(5850) <<"KDateNavigator::updateDates(), this=" << this;
   QDate dayone = startDate();
 
   mDayMatrix->updateView( dayone );
@@ -192,6 +191,10 @@ void KDateNavigator::updateDates()
       weeknum.setNum( weeknumstart );
     }
     mWeeknos[i]->setText( weeknum );
+    mWeeknos[i]->setToolTip( i18n( "Scroll to week number %1", weeknum ) );
+    mWeeknos[i]->setWhatsThis(
+      i18n( "Click here to scroll the display to week number %1 "
+            "of the currently displayed year.", weeknum ) );
   }
 
 // each updateDates is followed by an updateView -> repaint is issued there !
@@ -206,7 +209,6 @@ void KDateNavigator::updateDayMatrix()
 
 void KDateNavigator::updateView()
 {
-//   kDebug(5850) <<"KDateNavigator::updateView(), view" << this;
   updateDayMatrix();
   repaint();
 }
@@ -222,7 +224,11 @@ void KDateNavigator::updateConfig()
     if ( KOPrefs::instance()->mCompactDialogs ) {
       dayName = dayName.left( 1 );
     }
+    QString longDayName =
+      KOGlobals::self()->calendarSystem()->weekDayName( day, KCalendarSystem::LongDayName );
     mHeadings[i]->setText( dayName );
+    mHeadings[i]->setToolTip( i18n( "%1", longDayName ) );
+    mHeadings[i]->setWhatsThis( i18n( "A column header of the %1 dates in the month.", longDayName ) );
   }
 
   // FIXME: Use actual config setting here
