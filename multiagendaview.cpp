@@ -148,6 +148,7 @@ void MultiAgendaView::recreateViews()
   installSplitterEventFilter( mLeftSplitter );
   installSplitterEventFilter( mRightSplitter );
   resizeSplitters();
+  mTimeLabels->positionChanged();
 }
 
 void MultiAgendaView::deleteViews()
