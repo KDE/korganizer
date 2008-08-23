@@ -216,7 +216,10 @@ void AlarmDialog::slotOk() // Dismiss selected
   ReminderList selection = selectedItems();
   for ( ReminderList::Iterator it = selection.begin(); it != selection.end(); ++it ) {
     kDebug() << "removing " << ( *it )->mIncidence->summary();
-    mIncidenceTree->setCurrentItem( mIncidenceTree->itemBelow( *it ) );
+    if ( mIncidenceTree->itemBelow( *it ) )
+      mIncidenceTree->setCurrentItem( mIncidenceTree->itemBelow( *it ) );
+    else if ( mIncidenceTree->itemAbove( *it ) )
+      mIncidenceTree->setCurrentItem( mIncidenceTree->itemAbove( *it ) );
     mIncidenceTree->removeItemWidget( *it, 0 );
     delete *it;
   }
