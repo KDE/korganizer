@@ -112,8 +112,9 @@ class KORGANIZERPRIVATE_EXPORT KOPrefs : public KOPrefsBase
     QFont mDefaultAgendaTimeLabelsFont;
 
     KDateTime::Spec mTimeSpec;
-
     QStringList mTimeScaleTimeZones;
+
+    QStringList mMyAddrBookMails;
 
   public: // Do not use - except in KOPrefsDialogMain
     QString mName;

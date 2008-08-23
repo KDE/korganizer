@@ -84,6 +84,9 @@ KOPrefs::KOPrefs() :
   agendaTimeLabelsFontItem()->setDefaultValue( mDefaultAgendaTimeLabelsFont );
   monthViewFontItem()->setDefaultValue( mDefaultMonthViewFont );
   agendaCalendarItemsEventsBackgroundColorItem()->setDefaultValue( mDefaultCategoryColor );
+
+  // Load it now, not deep within some painting code
+  mMyAddrBookMails = KABC::StdAddressBook::self()->whoAmI().emails();
 }
 
 KOPrefs::~KOPrefs()
@@ -371,7 +374,7 @@ QStringList KOPrefs::allEmails()
   // Add emails configured in korganizer
   lst += mAdditionalMails;
   // Add emails from the user's kaddressbook entry
-  lst += KABC::StdAddressBook::self( true )->whoAmI().emails();
+  lst += mMyAddrBookMails;
   // Add the email entered as the userEmail here
   lst += email();
 
@@ -420,7 +423,7 @@ bool KOPrefs::thatIsMe( const QString &_email )
   if ( mAdditionalMails.contains( email ) ) {
     return true;
   }
-  QStringList lst = KABC::StdAddressBook::self( true )->whoAmI().emails();
+  QStringList lst = mMyAddrBookMails;
   if ( lst.contains( email ) ) {
     return true;
   }
