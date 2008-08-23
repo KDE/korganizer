@@ -81,6 +81,8 @@ class KOEditorGeneralEvent : public KOEditorGeneral
   public slots:
     void setDateTimes( const KDateTime &start, const KDateTime &end );
     void setDateTimes( const QDateTime &start, const QDateTime &end );
+    void setTimes( const KDateTime &start, const KDateTime  &end );
+    void setTimes( const QDateTime &start, const QDateTime &end );
     void setDuration();
 
   protected slots:

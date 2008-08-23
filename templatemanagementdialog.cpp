@@ -62,6 +62,8 @@ TemplateManagementDialog::TemplateManagementDialog(QWidget *parent, const QStrin
   m_base.m_listBox->insertStringList( m_templates );
   connect( m_base.m_listBox, SIGNAL( selectionChanged( Q3ListBoxItem * ) ),
            SLOT( slotUpdateDeleteButton( Q3ListBoxItem * ) ) );
+  connect( m_base.m_listBox, SIGNAL( doubleClicked( Q3ListBoxItem *) ),
+           SLOT( slotApplyTemplate() ) );
   connect( m_base.m_buttonApply, SIGNAL( clicked() ),
            SLOT( slotApplyTemplate() ) );
   connect( this, SIGNAL( okClicked() ), SLOT( slotOk() ) );
