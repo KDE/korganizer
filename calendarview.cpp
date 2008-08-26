@@ -463,7 +463,7 @@ void CalendarView::readSettings()
 
   mEventViewer->readSettings( config );
   mViewManager->readSettings( config );
-  mTodoList->restoreLayout( config, QString( "Todo View" ) );
+  mTodoList->restoreLayout( config, QString( "Sidebar Todo View" ) );
 
   readFilterSettings( config );
 
@@ -490,7 +490,7 @@ void CalendarView::writeSettings()
 
   mEventViewer->writeSettings( config );
   mViewManager->writeSettings( config );
-  mTodoList->saveLayout( config, QString( "Todo View" ) );
+  mTodoList->saveLayout( config, QString( "Sidebar Todo View" ) );
 
   KOPrefs::instance()->writeConfig();
 
