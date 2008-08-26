@@ -30,13 +30,15 @@ set(korganizer_SRCS
    main.cpp
    korganizer.cpp
    koapp.cpp
+   interfaces/korganizer/mainwindow.cpp
+   stdcalendar.cpp
 )
 
 kde4_add_app_icon(korganizer_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/pixmaps/hi*-apps-korganizer.png")
 
 kde4_add_executable(korganizer ${korganizer_SRCS})
 
-target_link_libraries(korganizer ${KDE4_KDECORE_LIBS} korganizerprivate)
+target_link_libraries(korganizer ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBS} ${KDE4_KPARTS_LIBRARY} ${KDE4_KCAL_LIBS} kdepim korganizerprivate)
 
 install(TARGETS korganizer  DESTINATION ${BIN_INSTALL_DIR} )
 
@@ -54,7 +56,7 @@ kde4_add_executable(theme_bin ${theme_bin_SRCS})
 
 set_target_properties(theme_bin  PROPERTIES OUTPUT_NAME thememain)
 
-target_link_libraries(theme_bin ${KDE4_KDECORE_LIBS} korganizerprivate)
+target_link_libraries(theme_bin ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBS} ${KDE4_KIO_LIBS} korganizerprivate)
 
 install(TARGETS theme_bin  DESTINATION ${BIN_INSTALL_DIR} )
 
