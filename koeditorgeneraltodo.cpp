@@ -189,8 +189,10 @@ void KOEditorGeneralTodo::initCompletion( QWidget *parent, QBoxLayout *topLayout
   topLayout->addWidget( mCompletedLabel );
   mCompletedLabel->setBuddy( mCompletedCombo );
   mCompletionDateEdit = new KPIM::KDateEdit( parent );
+  mCompletionDateEdit->hide();
   topLayout->addWidget( mCompletionDateEdit );
   mCompletionTimeEdit = new KPIM::KTimeEdit( parent, QTime() );
+  mCompletionTimeEdit->hide();
   topLayout->addWidget( mCompletionTimeEdit );
   if ( !(mCompletedCombo->currentIndex() == 10 && mCompleted.isValid() )) {
     mCompletedLabel->setText( i18nc( "to-do completed", "co&mpleted" ) );
