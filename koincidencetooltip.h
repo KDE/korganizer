@@ -39,7 +39,7 @@ class KOAgendaItem;
 class KOIncidenceToolTip : public QToolTip
 {
   public:
-    KOIncidenceToolTip(QWidget * widget, QToolTipGroup * group = 0 ):QToolTip (widget, group) {}
+    KOIncidenceToolTip(QWidget * widget, QToolTipGroup * group = 0 ):QToolTip (widget, group),mText(0) {}
 /*    ~KOIncidenceToolTip();*/
 
   public:

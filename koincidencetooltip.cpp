@@ -34,7 +34,7 @@ some improvements by Mikolaj Machowski
 */
 
 void KOIncidenceToolTip::add ( QWidget * widget, Incidence *incidence,
-        QToolTipGroup * group, const QString & longText )
+                               QToolTipGroup * group, const QString & longText )
 {
   if ( !widget || !incidence ) return;
   QToolTip::add(widget, IncidenceFormatter::toolTipString( incidence ), group, longText);
@@ -54,7 +54,7 @@ void KOIncidenceToolTip::maybeTip(const QPoint & pos)
   KOAgendaItem *item = dynamic_cast<KOAgendaItem*>( parentWidget() );
   if ( !item )
     return;
-  if ( mText.isEmpty() )
+  if ( !mText )
     mText = IncidenceFormatter::toolTipString( item->incidence() );
   tip( QRect( QPoint( 0, 0 ), item->size() ), mText );
 }
