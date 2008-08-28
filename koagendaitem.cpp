@@ -55,6 +55,7 @@
 #include <QDropEvent>
 #include <QDragEnterEvent>
 #include <QPixmapCache>
+#include <QToolTip>
 
 #include "koagendaitem.moc"
 
@@ -96,7 +97,6 @@ KOAgendaItem::KOAgendaItem( Incidence *incidence, const QDate &qd, QWidget *pare
   mSelected = true;
   select( false );
 
-  setToolTip( IncidenceFormatter::toolTipString( mIncidence ) );
   setAcceptDrops( true );
 }
 
@@ -1269,6 +1269,11 @@ bool KOAgendaItem::event( QEvent *event )
   if ( event->type() == QEvent::ToolTip ) {
     if( !KOPrefs::instance()->mEnableToolTips ) {
       return true;
+    } else {
+      QHelpEvent *helpEvent = static_cast<QHelpEvent*>( event );
+      QToolTip::showText( helpEvent->globalPos(),
+                          IncidenceFormatter::toolTipString( mIncidence ),
+                          this );
     }
   }
   return QWidget::event( event );

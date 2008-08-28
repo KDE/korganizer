@@ -1045,8 +1045,6 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
   }
   item->setItemDate( startDt.toTimeSpec( KOPrefs::instance()->timeSpec() ).date() );
 
-  item->setToolTip( IncidenceFormatter::toolTipString( incidence ) );
-
   mChanger->changeIncidence( oldIncidence, incidence );
   mChanger->endChange(incidence);
   delete oldIncidence;
