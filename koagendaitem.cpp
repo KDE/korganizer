@@ -748,9 +748,18 @@ void KOAgendaItem::paintIcons( QPainter *p, int &x, int y, int ft )
   conditionalPaint( p, mIconOrganizer, x, y, ft, *organizerPxmp );
 }
 
-void KOAgendaItem::paintEvent( QPaintEvent * )
+void KOAgendaItem::paintEvent( QPaintEvent *ev )
 {
   if ( !mIncidence ) {
+    return;
+  }
+
+  QRect visRect = visibleRegion().boundingRect();
+  // when scrolling horizontally in the side-by-side view, the repainted area is clipped
+  // to the newly visible area, which is a problem since the content changes when visRect
+  // changes, so repaint the full item in that case
+  if ( ev->rect() != visRect && visRect.isValid() && ev->rect().isValid() ) {
+    repaint( visRect );
     return;
   }
 
@@ -919,9 +928,6 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
     paintTodoIcon( &p, x, margin, ft );
     return;
   }
-
-  // Used for multi-day events to make sure the summary is on screen
-  QRect visRect = visibleRegion().boundingRect();
 
   // case 2: draw a single line when no more space
   if ( ( 2 * singleLineHeight ) > ( height() - 2 * margin ) ) {
