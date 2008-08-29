@@ -97,12 +97,12 @@ NavigatorBar::NavigatorBar( QWidget *parent )
 
   // set up control frame layout
   QHBoxLayout *ctrlLayout = new QHBoxLayout( this );
-  ctrlLayout->addWidget( mPrevYear, 3 );
-  ctrlLayout->addWidget( mPrevMonth, 3 );
-  ctrlLayout->addWidget( mMonth, 3 );
-  ctrlLayout->addWidget( mYear, 3 );
-  ctrlLayout->addWidget( mNextMonth, 3 );
-  ctrlLayout->addWidget( mNextYear, 3 );
+  ctrlLayout->addWidget( mPrevYear );
+  ctrlLayout->addWidget( mPrevMonth );
+  ctrlLayout->addWidget( mMonth );
+  ctrlLayout->addWidget( mYear );
+  ctrlLayout->addWidget( mNextMonth );
+  ctrlLayout->addWidget( mNextYear );
 
   connect( mPrevYear, SIGNAL(clicked()), SIGNAL(goPrevYear()) );
   connect( mPrevMonth, SIGNAL(clicked()), SIGNAL(goPrevMonth()) );
@@ -133,7 +133,6 @@ void NavigatorBar::showButtons( bool left, bool right )
     mNextYear->hide();
     mNextMonth->hide();
   }
-
 }
 
 void NavigatorBar::selectDates( const KCal::DateList &dateList )
@@ -160,7 +159,7 @@ void NavigatorBar::selectDates( const KCal::DateList &dateList )
       mHasMinWidth = true;
     }
 
-    // compute the labels at the top of the navigator
+    // set the label text at the top of the navigator
     mMonth->setText( i18nc( "monthname", "%1", calSys->monthName( mDate ) ) );
     mYear->setText( i18nc( "4 digit year", "%1", calSys->yearString( mDate ) ) );
   }
@@ -252,13 +251,8 @@ QToolButton *NavigatorBar::createNavigationButton( const QString &icon,
 
   button->setIcon(
     KIconLoader::global()->loadIcon( icon, KIconLoader::Desktop, KIconLoader::SizeSmall ) );
-
-  // By the default the button has a very wide minimum size (for whatever
-  // reasons). Override this, so that the date navigator doesn't need to be
-  // so wide anymore. The minimum size is dominated by the other elements of
-  // the date navigator then.
-  button->setMinimumSize( 10, 10 );
-
+  button->setIconSize( QSize( KIconLoader::SizeSmall, KIconLoader::SizeSmall ) );
+  button->setToolButtonStyle( Qt::ToolButtonIconOnly );
   button->setToolTip( toolTip );
   button->setWhatsThis( whatsThis );
 
