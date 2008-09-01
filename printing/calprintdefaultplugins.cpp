@@ -50,7 +50,6 @@
 #include <QPrinter>
 #include <QWidget>
 
-
 /**************************************************************
  *           Print Incidence
  **************************************************************/
@@ -297,9 +296,10 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
                                      stringVis.mEndString, captionFont, textFont ), h );
     }
 
-    // Convert recurrence to a string
+    // Recurrence Printing
     if ( (*it)->recurs() ) {
-      QRect recurBox( timesBox.left()+padding(), h+padding(), timesBox.right()-padding(), lineHeight );
+      QRect recurBox( timesBox.left() + padding(), h + padding(),
+                      timesBox.right() - padding(), lineHeight );
       KCal::Recurrence *recurs = (*it)->recurrence();
       // recurrence
       QStringList dayList;
@@ -334,7 +334,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
       dayList << i18n( "3rd Last" );
       dayList << i18n( "2nd Last" );
       dayList << i18nc( "last day of the month", "Last" );
-      dayList << i18nc( "unknown day of the month", "unknown" ); //#31 - zero offset from UI, should not be referenced
+      dayList << i18nc( "unknown day of the month", "unknown" ); //#31 - zero offset from UI
       dayList << i18n( "1st" );
       dayList << i18n( "2nd" );
       dayList << i18n( "3rd" );
@@ -342,83 +342,86 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
       dayList << i18n( "5th" );
       QString recurString;
       const KCalendarSystem *calSys = calendarSystem();
-      switch(recurs->recurrenceType()) {
-        case Recurrence::rNone:
-          recurString = i18nc( "no recurrence", "None" );
-          break;
-        case Recurrence::rDaily:
-          recurString = i18np( "Every day", "Every %1 days", recurs->frequency() );
-          break;
-        case Recurrence::rWeekly:
-        {
-          QString dayNames;
-          // Respect start of week setting
-          int weekStart = KGlobal::locale()->weekStartDay();
-          bool addSpace = false;
-          for ( int i = 0; i < 7; ++i ) {
-            if ( recurs->days().testBit( (i+weekStart+6)%7 )) {
-              if (addSpace) dayNames.append(" ");
-              dayNames.append( calSys->weekDayName( ((i+weekStart+6)%7)+1, KCalendarSystem::ShortDayName ) );
-              addSpace=true;
+      switch( recurs->recurrenceType() ) {
+      case Recurrence::rNone:
+        recurString = i18nc( "no recurrence", "None" );
+        break;
+      case Recurrence::rDaily:
+        recurString = i18np( "Every day", "Every %1 days", recurs->frequency() );
+        break;
+      case Recurrence::rWeekly:
+      {
+        QString dayNames;
+        // Respect start of week setting
+        int weekStart = KGlobal::locale()->weekStartDay();
+        bool addSpace = false;
+        for ( int i = 0; i < 7; ++i ) {
+          if ( recurs->days().testBit( ( i + weekStart + 6 ) % 7 ) ) {
+            if ( addSpace ) {
+              dayNames.append( " " );
             }
+            dayNames.append( calSys->weekDayName( ( ( i + weekStart + 6 ) % 7 ) + 1,
+                                                  KCalendarSystem::ShortDayName ) );
+            addSpace = true;
           }
-          recurString = i18nc( "Every N WEEK[S] on WEEKDAYNAMELIST",
-                               "Every %1 %2 on %3",
-                               recurs->frequency(),
-                               i18np( "week", "weeks", recurs->frequency() ),
-                               dayNames );
-          break;
         }
-        case Recurrence::rMonthlyPos:
-        {
-          KCal::RecurrenceRule::WDayPos rule = recurs->monthPositions()[0];
-          recurString = i18nc( "Every N MONTH[S] on the [2nd|3rd|...] WEEKDAYNAME",
-                               "Every %1 %2 on the %3 %4",
+        recurString = i18nc( "Every N WEEK[S] on WEEKDAYNAMELIST",
+                             "Every %1 %2 on %3",
+                             recurs->frequency(),
+                             i18np( "week", "weeks", recurs->frequency() ),
+                             dayNames );
+        break;
+      }
+      case Recurrence::rMonthlyPos:
+      {
+        KCal::RecurrenceRule::WDayPos rule = recurs->monthPositions()[0];
+        recurString = i18nc( "Every N MONTH[S] on the [2nd|3rd|...] WEEKDAYNAME",
+                             "Every %1 %2 on the %3 %4",
+                             recurs->frequency(),
+                             i18np( "month", "months", recurs->frequency() ),
+                             dayList[rule.pos() + 31],
+                             calSys->weekDayName( rule.day(), KCalendarSystem::LongDayName ) );
+        break;
+      }
+      case Recurrence::rMonthlyDay:
+      {
+        int days = recurs->monthDays()[0];
+        if ( days < 0 ) {
+          recurString = i18nc( "Every N MONTH[S] on the [2nd|3rd|...] day",
+                               "Every %1 %2 on the %3 day",
                                recurs->frequency(),
                                i18np( "month", "months", recurs->frequency() ),
-                               dayList[rule.pos() + 31],
-                               calSys->weekDayName( rule.day(),KCalendarSystem::LongDayName ) );
-          break;
+                               dayList[days + 31] );
+        } else {
+          recurString = i18nc( "Every N MONTH[S] on day N",
+                               "Every %1 %2 on day %3",
+                               recurs->frequency(),
+                               i18np( "month", "months", recurs->frequency() ),
+                               recurs->monthDays()[0] );
         }
-        case Recurrence::rMonthlyDay:
-        {
-          int days = recurs->monthDays()[0];
-          if (days < 0) {
-            recurString = i18nc( "Every N MONTH[S] on the [2nd|3rd|...] day",
-                                 "Every %1 %2 on the %3 day",
-                                 recurs->frequency(),
-                                 i18np( "month", "months", recurs->frequency() ),
-                                 dayList[days + 31] );
-          } else {
-            recurString = i18nc( "Every N MONTH[S] on day N",
-                                 "Every %1 %2 on day %3",
-                                 recurs->frequency(),
-                                 i18np( "month", "months", recurs->frequency() ),
-                                 recurs->monthDays()[0] );
-          }
-          break;
-        }
+        break;
+      }
 
-        case Recurrence::rYearlyMonth:
-          recurString = i18nc( "Every N YEAR[S] on day N of MONTHNAME",
-                               "Every %1 %2 on day %3 of %4",
-                               recurs->frequency(),
-                               i18np( "year", "years", recurs->frequency() ),
-                               recurs->yearDates()[0],
-                               calSys->monthName( recurs->yearMonths()[0], 1960 ) );
-          break;
-        case Recurrence::rYearlyPos:
-        {
-          KCal::RecurrenceRule::WDayPos rule = recurs->yearPositions()[0];
-          recurString = i18nc( "Every N YEAR[S] on the [2nd|3rd|...] WEEKDAYNAME of MONTHNAME",
-                               "Every %1 %2 on the %3 %4 of %5",
-                               recurs->frequency(),
-                               i18np( "year", "years", recurs->frequency() ),
-                               dayList[rule.pos() + 31],
-                               calSys->weekDayName( rule.day(), KCalendarSystem::LongDayName ),
-                               calSys->monthName( recurs->yearMonths()[0], 1960 ) );
-          break;
-        }
+      case Recurrence::rYearlyMonth:
+        recurString = i18nc( "Every N YEAR[S] on day N of MONTHNAME",
+                             "Every %1 %2 on day %3 of %4",
+                             recurs->frequency(),
+                             i18np( "year", "years", recurs->frequency() ),
+                             recurs->yearDates()[0],
+                             calSys->monthName( recurs->yearMonths()[0], 1960 ) );
+        break;
+      case Recurrence::rYearlyPos:
+      {
+        KCal::RecurrenceRule::WDayPos rule = recurs->yearPositions()[0];
+        recurString = i18nc( "Every N YEAR[S] on the [2nd|3rd|...] WEEKDAYNAME of MONTHNAME",
+                             "Every %1 %2 on the %3 %4 of %5",
+                             recurs->frequency(),
+                             i18np( "year", "years", recurs->frequency() ),
+                             dayList[rule.pos() + 31],
+                             calSys->weekDayName( rule.day(), KCalendarSystem::LongDayName ),
+                             calSys->monthName( recurs->yearMonths()[0], 1960 ) );
+        break;
+      }
       case Recurrence::rYearlyDay:
         recurString = i18nc( "Every N YEAR[S] on day N",
                              "Every %1 %2 on day %3",
@@ -426,46 +429,53 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
                              i18np( "year", "years", recurs->frequency() ),
                              recurs->yearDays()[0] );
         break;
-      }
+      } // end switch on recurrence type
+
       // occurrences
       QString occurString;
       switch ( recurs->duration() ) {
-        case 0: // end date set
-          occurString = i18nc( "until DATE",
-                               "until %1",
-                               KGlobal::locale()->formatDate( recurs->endDate(),
-                                                              KLocale::ShortDate ) );
-          break;
-        case -1: // infinite
-          break;
-        default: // number of occurrences
-          occurString = i18nc( "for N %OCCURRENCE[S]",
-                               "for %1 %2",
-                               recurs->duration(),
-                               i18np( "occurrences", "occurrences", recurs->duration() ) );
-          break;
-      }
+      case 0: // end date set
+        occurString = i18nc( "until DATE",
+                             "until %1",
+                             KGlobal::locale()->formatDate( recurs->endDate(),
+                                                            KLocale::ShortDate ) );
+        break;
+      case -1: // infinite
+        break;
+      default: // number of occurrences
+        occurString = i18nc( "for N %OCCURRENCE[S]",
+                             "for %1 %2",
+                             recurs->duration(),
+                             i18np( "occurrences", "occurrences", recurs->duration() ) );
+        break;
+      } // end switch on recurrence duration
+
       // exception dates
       QString exceptString;
       if ( !recurs->exDates().isEmpty() ) {
-        exceptString = i18nc("except for listed dates", "except");
+        exceptString = i18nc( "except for listed dates", "except" );
         for ( int i = 0; i < recurs->exDates().size(); i++ ) {
-          exceptString.append(" ");
-          exceptString.append( KGlobal::locale()->formatDate(recurs->exDates()[i],
-                               KLocale::ShortDate) );
+          exceptString.append( " " );
+          exceptString.append( KGlobal::locale()->formatDate( recurs->exDates()[i],
+                                                              KLocale::ShortDate ) );
         }
       }
       QString displayString;
-      displayString.append(recurString);
-      if (!displayString.endsWith(' '))
-        displayString.append(' ');
-      displayString.append(occurString);
-      if (!displayString.endsWith(' '))
-        displayString.append(' ');
-      displayString.append(exceptString);
-      h = qMax( printCaptionAndText( p, recurBox, i18n( "Repeats: "), displayString, captionFont, textFont ), h );
+      displayString.append( recurString );
+      if ( !displayString.endsWith( ' ' ) ) {
+        displayString.append( ' ' );
+      }
+      displayString.append( occurString );
+      if ( !displayString.endsWith( ' ' ) ) {
+        displayString.append( ' ' );
+      }
+      displayString.append( exceptString );
+      h = qMax( printCaptionAndText( p, recurBox, i18n( "Repeats: " ),
+                                     displayString, captionFont, textFont ),
+                h );
     }
 
+    // Alarms Printing
     QRect alarmBox( timesBox.left() + padding(), h + padding(),
                     timesBox.right() - padding(), lineHeight );
     Alarm::List alarms = (*it)->alarms();
