@@ -408,7 +408,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
                              recurs->frequency(),
                              i18np( "year", "years", recurs->frequency() ),
                              recurs->yearDates()[0],
-                             calSys->monthName( recurs->yearMonths()[0], 1960 ) );
+                             calSys->monthName( recurs->yearMonths()[0], mFromDate.year() ) );
         break;
       case Recurrence::rYearlyPos:
       {
@@ -419,7 +419,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
                              i18np( "year", "years", recurs->frequency() ),
                              dayList[rule.pos() + 31],
                              calSys->weekDayName( rule.day(), KCalendarSystem::LongDayName ),
-                             calSys->monthName( recurs->yearMonths()[0], 1960 ) );
+                             calSys->monthName( recurs->yearMonths()[0], mFromDate.year() ) );
         break;
       }
       case Recurrence::rYearlyDay:
