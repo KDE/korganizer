@@ -365,69 +365,69 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
             addSpace = true;
           }
         }
-        recurString = i18nc( "Every N WEEK[S] on WEEKDAYNAMELIST",
-                             "Every %1 %2 on %3",
-                             recurs->frequency(),
-                             i18np( "week", "weeks", recurs->frequency() ),
-                             dayNames );
+        recurString = i18ncp( "Every N WEEK[S] on WEEKDAYNAMELIST",
+                              "Every week on %2",
+                              "Every %1 weeks on %2",
+                              recurs->frequency(),
+                              dayNames );
         break;
       }
       case Recurrence::rMonthlyPos:
       {
         KCal::RecurrenceRule::WDayPos rule = recurs->monthPositions()[0];
-        recurString = i18nc( "Every N MONTH[S] on the [2nd|3rd|...] WEEKDAYNAME",
-                             "Every %1 %2 on the %3 %4",
-                             recurs->frequency(),
-                             i18np( "month", "months", recurs->frequency() ),
-                             dayList[rule.pos() + 31],
-                             calSys->weekDayName( rule.day(), KCalendarSystem::LongDayName ) );
+        recurString = i18ncp( "Every N MONTH[S] on the [2nd|3rd|...] WEEKDAYNAME",
+                              "Every month on the %2 %3",
+                              "Every %1 months on the %2 %3",
+                              recurs->frequency(),
+                              dayList[rule.pos() + 31],
+                              calSys->weekDayName( rule.day(), KCalendarSystem::LongDayName ) );
         break;
       }
       case Recurrence::rMonthlyDay:
       {
         int days = recurs->monthDays()[0];
         if ( days < 0 ) {
-          recurString = i18nc( "Every N MONTH[S] on the [2nd|3rd|...] day",
-                               "Every %1 %2 on the %3 day",
-                               recurs->frequency(),
-                               i18np( "month", "months", recurs->frequency() ),
-                               dayList[days + 31] );
+          recurString = i18ncp( "Every N MONTH[S] on the [2nd|3rd|...] day",
+                                "Every month on the %2 day",
+                                "Every %1 months on the %2 day",
+                                recurs->frequency(),
+                                dayList[days + 31] );
         } else {
-          recurString = i18nc( "Every N MONTH[S] on day N",
-                               "Every %1 %2 on day %3",
-                               recurs->frequency(),
-                               i18np( "month", "months", recurs->frequency() ),
-                               recurs->monthDays()[0] );
+          recurString = i18ncp( "Every N MONTH[S] on day N",
+                                "Every month on day %2",
+                                "Every %1 months on day %2",
+                                recurs->frequency(),
+                                recurs->monthDays()[0] );
         }
         break;
       }
 
       case Recurrence::rYearlyMonth:
-        recurString = i18nc( "Every N YEAR[S] on day N of MONTHNAME",
-                             "Every %1 %2 on day %3 of %4",
-                             recurs->frequency(),
-                             i18np( "year", "years", recurs->frequency() ),
-                             recurs->yearDates()[0],
-                             calSys->monthName( recurs->yearMonths()[0], mFromDate.year() ) );
+        recurString = i18ncp( "Every N YEAR[S] on day N of MONTHNAME",
+                              "Every year on day %2 of %3",
+                              "Every %1 years on day %2 of %3",
+                              recurs->frequency(),
+                              recurs->yearDates()[0],
+                              calSys->monthName( recurs->yearMonths()[0], mFromDate.year() ) );
         break;
       case Recurrence::rYearlyPos:
       {
         KCal::RecurrenceRule::WDayPos rule = recurs->yearPositions()[0];
-        recurString = i18nc( "Every N YEAR[S] on the [2nd|3rd|...] WEEKDAYNAME of MONTHNAME",
-                             "Every %1 %2 on the %3 %4 of %5",
-                             recurs->frequency(),
-                             i18np( "year", "years", recurs->frequency() ),
-                             dayList[rule.pos() + 31],
-                             calSys->weekDayName( rule.day(), KCalendarSystem::LongDayName ),
-                             calSys->monthName( recurs->yearMonths()[0], mFromDate.year() ) );
+        recurString = i18ncp( "Every N YEAR[S] on the [2nd|3rd|...] WEEKDAYNAME of MONTHNAME",
+                              "Every year on the %2 %3 of %4",
+                              "Every %1 years on the %2 %3 of %4",
+                              recurs->frequency(),
+                              dayList[rule.pos() + 31],
+                              calSys->weekDayName( rule.day(), KCalendarSystem::LongDayName ),
+                              calSys->monthName( recurs->yearMonths()[0], mFromDate.year() ) );
         break;
       }
       case Recurrence::rYearlyDay:
-        recurString = i18nc( "Every N YEAR[S] on day N",
-                             "Every %1 %2 on day %3",
-                             recurs->frequency(),
-                             i18np( "year", "years", recurs->frequency() ),
-                             recurs->yearDays()[0] );
+        recurString = i18ncp( "Every N YEAR[S] on day N",
+                              "Every year on on day %2",
+                              "Every %1 years on day %2",
+                              recurs->frequency(),
+                              recurs->yearDays()[0] );
         break;
       } // end switch on recurrence type
 
