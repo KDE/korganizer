@@ -1267,13 +1267,14 @@ void KOAgendaItem::drawRoundedRect( QPainter *p, const QRect &rect,
 bool KOAgendaItem::event( QEvent *event )
 {
   if ( event->type() == QEvent::ToolTip ) {
-    if ( KOPrefs::instance()->mEnableToolTips ) {
-      QHelpEvent *helpEvent = static_cast<QHelpEvent *>( event );
+    if( !KOPrefs::instance()->mEnableToolTips ) {
+      return true;
+    } else {
+      QHelpEvent *helpEvent = static_cast<QHelpEvent*>( event );
       QToolTip::showText( helpEvent->globalPos(),
                           IncidenceFormatter::toolTipString( mIncidence ),
                           this );
     }
-    return true;
   }
   return QWidget::event( event );
 }
