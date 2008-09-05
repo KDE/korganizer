@@ -222,8 +222,7 @@ Note: If KOrganizer is acting as a KDE Kolab client, this is not required, as th
             </property>
             <property name="whatsThis" >
              <string>Enter the URL for the server on which your Free/Busy information shall be published here.
-Ask the server administrator for this information.
-Here is a Kolab2 server URL example: "webdavs://kolab2.com/freebusy/joe@kolab2.com.ifb"</string>
+Ask the server administrator for this information.</string>
             </property>
            </widget>
           </item>
@@ -295,8 +294,7 @@ For security reasons, it is not recommended to store your password in the config
            <widget class="QLabel" name="TextLabel7" >
             <property name="whatsThis" >
              <string>Enter the URL for the server on which your Free/Busy information shall be published here.
-Ask the server administrator for this information.
-Here is a Kolab2 server URL example: "webdavs://kolab2.com/freebusy/joe@kolab2.com.ifb"</string>
+Ask the server administrator for this information.</string>
             </property>
             <property name="text" >
              <string>Server URL:</string>
@@ -434,7 +432,7 @@ A Kolab2 server specificity: Registered your UID (Unique IDentifier). By default
             <property name="whatsThis" >
              <string>Enter the URL for the server on which the Free/Busy information is published here.
 Ask the server administrator for this information.
-Here is a Kolab2 server URL example: "webdavs://kolab2.com/freebusy/"</string>
+Here is a Kolab2 Server URL example: "https://kolab2.example.com/freebusy/"</string>
             </property>
            </widget>
           </item>
@@ -443,7 +441,7 @@ Here is a Kolab2 server URL example: "webdavs://kolab2.com/freebusy/"</string>
             <property name="whatsThis" >
              <string>Enter the URL for the server on which the Free/Busy information is published here.
 Ask the server administrator for this information.
-Here is a Kolab2 server URL example: "webdavs://kolab2.com/freebusy/"</string>
+Here is a Kolab2 Server URL example: "https://kolab2.example.com/freebusy/"</string>
             </property>
             <property name="text" >
              <string>Server URL:</string>
