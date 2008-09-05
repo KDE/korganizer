@@ -101,6 +101,7 @@ class KOEditorFreeBusy : public KOAttendeeEditor
     void updateCurrentItem();
     void clearSelection() const;
     void changeStatusForMe( KCal::Attendee::PartStat status );
+    virtual bool eventFilter( QObject *watched, QEvent *event );
 
   private slots:
     void slotOrganizerChanged( const QString &newOrganizer );
