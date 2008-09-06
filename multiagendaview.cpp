@@ -138,13 +138,6 @@ void MultiAgendaView::recreateViews()
   QTimer::singleShot( 0, this, SLOT(slotResizeScrollView()) );
   mTimeLabelsZone->updateAll();
 
-  QScrollBar *scrollBar = mAgendaViews.first()->agenda()->verticalScrollBar();
-  mScrollBar->setMinimum( scrollBar->minimum() );
-  mScrollBar->setMaximum( scrollBar->maximum() );
-  mScrollBar->setSingleStep( scrollBar->singleStep() );
-  mScrollBar->setPageStep( scrollBar->pageStep() );
-  mScrollBar->setValue( scrollBar->value() );
-
   TimeLabels *timeLabel = mTimeLabelsZone->timeLabels().first();
   connect( timeLabel->verticalScrollBar(), SIGNAL(valueChanged(int)),
            mScrollBar, SLOT(setValue(int)) );
@@ -153,7 +146,8 @@ void MultiAgendaView::recreateViews()
 
   connect( mLeftSplitter, SIGNAL(splitterMoved(int,int)), SLOT(resizeSplitters()) );
   connect( mRightSplitter, SIGNAL(splitterMoved(int,int)), SLOT(resizeSplitters()) );
-  resizeSplitters();
+  QTimer::singleShot( 0, this, SLOT(resizeSplitters()) );
+  QTimer::singleShot( 0, this, SLOT(setupScrollBar()) );
   foreach ( TimeLabels *label, mTimeLabelsZone->timeLabels() )
     label->positionChanged();
 }
@@ -476,6 +470,16 @@ void MultiAgendaView::resourcesChanged()
   foreach ( KOAgendaView *agenda, mAgendaViews ) {
     agenda->resourcesChanged();
   }
+}
+
+void MultiAgendaView::setupScrollBar()
+{
+  QScrollBar *scrollBar = mAgendaViews.first()->agenda()->verticalScrollBar();
+  mScrollBar->setMinimum( scrollBar->minimum() );
+  mScrollBar->setMaximum( scrollBar->maximum() );
+  mScrollBar->setSingleStep( scrollBar->singleStep() );
+  mScrollBar->setPageStep( scrollBar->pageStep() );
+  mScrollBar->setValue( scrollBar->value() );
 }
 
 #include "multiagendaview.moc"
