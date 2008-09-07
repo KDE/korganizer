@@ -40,6 +40,8 @@ MultiAgendaView::MultiAgendaView( Calendar *cal, QWidget *parent )
     mPendingChanges( true )
 {
   QBoxLayout *topLevelLayout = new QHBoxLayout( this );
+  topLevelLayout->setSpacing( 0 );
+  topLevelLayout->setMargin( 0 );
 
   QFontMetrics fm( font() );
   int topLabelHeight = 2 * fm.height();
