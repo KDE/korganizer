@@ -152,6 +152,8 @@ void MultiAgendaView::recreateViews()
   connect( mLeftSplitter, SIGNAL(splitterMoved(int,int)), SLOT(resizeSplitters()) );
   connect( mRightSplitter, SIGNAL(splitterMoved(int,int)), SLOT(resizeSplitters()) );
   resizeSplitters();
+  foreach ( TimeLabels *label, mTimeLabelsZone->timeLabels() )
+    label->positionChanged();
 }
 
 void MultiAgendaView::deleteViews()
