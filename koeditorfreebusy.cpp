@@ -274,13 +274,6 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent )
   connect( button, SIGNAL( clicked() ), SLOT( slotCenterOnStart() ) );
   controlLayout->addWidget( button );
 
-  button = new QPushButton( i18nc( "@action:button", "Zoom to Fit" ), this );
-  button->setWhatsThis( i18nc( "@info:whatsthis",
-                               "Zooms the Gantt chart so that you can see the "
-                               "entire duration of the event on it." ) );
-  connect( button, SIGNAL( clicked() ), SLOT( slotZoomToTime() ) );
-  controlLayout->addWidget( button );
-
   controlLayout->addStretch( 1 );
 
   button = new QPushButton( i18nc( "@action:button", "Pick Date" ), this );
@@ -315,7 +308,7 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent )
   }
   mGanttView->setHeaderVisible( true );
   mGanttView->setScale( KDGanttView::Hour );
-  mGanttView->setShowHeaderPopupMenu( true, true, true, false, false, true );
+  mGanttView->setShowHeaderPopupMenu( false, false, false, false, false, false );
   // Initially, show 15 days back and forth
   // set start to even hours, i.e. to 12:AM 0 Min 0 Sec
   QDateTime horizonStart =
@@ -370,6 +363,9 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent )
   slotOrganizerChanged( mOrganizerCombo->currentText() );
   connect( mOrganizerCombo, SIGNAL( activated(const QString&) ),
            this, SLOT( slotOrganizerChanged(const QString&) ) );
+
+  //suppress the buggy consequences of clicks on the time header widget
+  mGanttView->timeHeaderWidget()->installEventFilter( this );
 }
 
 KOEditorFreeBusy::~KOEditorFreeBusy()
@@ -977,6 +973,16 @@ Q3ListViewItem* KOEditorFreeBusy::hasExampleAttendee() const
         return item;
   }
   return 0;
+}
+
+bool KOEditorFreeBusy::eventFilter( QObject *watched, QEvent *event )
+{
+  if ( watched == mGanttView->timeHeaderWidget() &&
+       event->type() >= QEvent::MouseButtonPress && event->type() <= QEvent::MouseMove ) {
+    return true;
+  } else {
+    return KOAttendeeEditor::eventFilter( watched, event );
+  }
 }
 
 #include "koeditorfreebusy.moc"
