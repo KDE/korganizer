@@ -735,12 +735,8 @@ void KOAgendaItem::paintIcons( QPainter *p, int &x, int y, int ft )
   paintEventIcon( p, x, y, ft );
   paintTodoIcon( p, x, y, ft );
   paintJournalIcon( p, x, y, ft );
-#if 0
-  /* sorry, this looks too cluttered. disable until we can
-     make something prettier; no idea at this time -- allen */
   conditionalPaint( p, mIconAlarm, x, y, ft, *alarmPxmp );
   conditionalPaint( p, mIconRecur, x, y, ft, *recurPxmp );
-#endif
   conditionalPaint( p, mIconReadonly, x, y, ft, *readonlyPxmp );
   conditionalPaint( p, mIconReply, x, y, ft, *replyPxmp );
   conditionalPaint( p, mIconGroup, x, y, ft, *groupPxmp );
