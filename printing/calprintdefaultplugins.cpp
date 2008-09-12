@@ -363,7 +363,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
             }
           }
           recurString = i18nc( "Every N WEEK[S] on WEEKDAYNAMELIST",
-                               "Every <numid>%1</numid> %2 on %3",
+                               "Every %1 %2 on %3",
                                recurs->frequency(),
                                i18np( "week", "weeks", recurs->frequency() ),
                                dayNames );
@@ -373,7 +373,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
         {
           KCal::RecurrenceRule::WDayPos rule = recurs->monthPositions()[0];
           recurString = i18nc( "Every N MONTH[S] on the [2nd|3rd|...] WEEKDAYNAME",
-                               "Every <numid>%1</numid> %2 on the %3 %4",
+                               "Every %1 %2 on the %3 %4",
                                recurs->frequency(),
                                i18np( "month", "months", recurs->frequency() ),
                                dayList[rule.pos() + 31],
@@ -385,13 +385,13 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
           int days = recurs->monthDays()[0];
           if (days < 0) {
             recurString = i18nc( "Every N MONTH[S] on the [2nd|3rd|...] day",
-                                 "Every <numid>%1<numid> %2 on the %3 day",
+                                 "Every %1 %2 on the %3 day",
                                  recurs->frequency(),
                                  i18np( "month", "months", recurs->frequency() ),
                                  dayList[days + 31] );
           } else {
             recurString = i18nc( "Every N MONTH[S] on day N",
-                                 "Every <numid>%1</numid> %2 on day <numid>%3</numid>",
+                                 "Every %1 %2 on day %3",
                                  recurs->frequency(),
                                  i18np( "month", "months", recurs->frequency() ),
                                  recurs->monthDays()[0] );
@@ -401,7 +401,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
 
         case Recurrence::rYearlyMonth:
           recurString = i18nc( "Every N YEAR[S] on day N of MONTHNAME",
-                               "Every <numid>%1</numid> %2 on day <numid>%3</numid> of %4",
+                               "Every %1 %2 on day %3 of %4",
                                recurs->frequency(),
                                i18np( "year", "years", recurs->frequency() ),
                                recurs->yearDates()[0],
@@ -411,7 +411,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
         {
           KCal::RecurrenceRule::WDayPos rule = recurs->yearPositions()[0];
           recurString = i18nc( "Every N YEAR[S] on the [2nd|3rd|...] WEEKDAYNAME of MONTHNAME",
-                               "Every <numid>%1</numid> %2 on the %3 %4 of %5",
+                               "Every %1 %2 on the %3 %4 of %5",
                                recurs->frequency(),
                                i18np( "year", "years", recurs->frequency() ),
                                dayList[rule.pos() + 31],
@@ -421,7 +421,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
         }
       case Recurrence::rYearlyDay:
         recurString = i18nc( "Every N YEAR[S] on day N",
-                             "Every <numid>%1</numid> %2 on day <numid>%3</numid>",
+                             "Every %1 %2 on day %3",
                              recurs->frequency(),
                              i18np( "year", "years", recurs->frequency() ),
                              recurs->yearDays()[0] );
@@ -431,17 +431,18 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
       QString occurString;
       switch ( recurs->duration() ) {
         case 0: // end date set
-          occurString = i18nc("until DATE", "until %1",
-							                KGlobal::locale()->formatDate(recurs->endDate(),
-							                KLocale::ShortDate) );
+          occurString = i18nc( "until DATE",
+                               "until %1",
+                               KGlobal::locale()->formatDate( recurs->endDate(),
+                                                              KLocale::ShortDate ) );
           break;
         case -1: // infinite
           break;
         default: // number of occurrences
-          occurString = i18nc("for N %OCCURRENCE[S]",
-          					          "for <numid>%1</numid> %2",
-						              	  recurs->duration(),
-						              	  i18np("occurrences", "occurrences", recurs->duration()) );
+          occurString = i18nc( "for N %OCCURRENCE[S]",
+                               "for %1 %2",
+                               recurs->duration(),
+                               i18np( "occurrences", "occurrences", recurs->duration() ) );
           break;
       }
       // exception dates
