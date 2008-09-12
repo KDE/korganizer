@@ -1045,9 +1045,17 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
   }
   item->setItemDate( startDt.toTimeSpec( KOPrefs::instance()->timeSpec() ).date() );
 
-  mChanger->changeIncidence( oldIncidence, incidence );
+  const bool result = mChanger->changeIncidence( oldIncidence, incidence );
   mChanger->endChange(incidence);
   delete oldIncidence;
+
+  // Update the view correctly if an agenda item move was aborted by
+  // cancelling one of the subsequent dialogs.
+  if ( !result ) {
+    mPendingChanges = true;
+    QTimer::singleShot( 0, this, SLOT(updateView()) );
+    return;
+  }
 
   // don't update the agenda as the item already has the correct coordinates.
   // an update would delete the current item and recreate it, but we are still
