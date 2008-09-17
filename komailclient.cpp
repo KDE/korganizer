@@ -34,12 +34,16 @@
 #include <dcopclient.h>
 #include <kprocess.h>
 
+#include <libkpimidentities/identity.h>
+#include <libkpimidentities/identitymanager.h>
+
 #include <libkcal/event.h>
 #include <libkcal/todo.h>
 #include <libkcal/incidenceformatter.h>
 
 #include "version.h"
 #include "koprefs.h"
+#include "kocore.h"
 
 #include "komailclient.h"
 
@@ -205,7 +209,10 @@ bool KOMailClient::send(const QString &from,const QString &to,
       }
       if (!kMailOpenComposer(to,"",bcc ? from : "",subject,body,0,"cal.ics","7bit",
                              attachment.utf8(),"text","calendar","method",meth,
-                             "attachment","utf-8")) return false;
+                             "attachment","utf-8",
+                             KOCore::self()->identityManager()->identityForAddress( from ).uoid())) {
+        return false;
+      }
     }
   }
   return true;
@@ -252,7 +259,7 @@ int KOMailClient::kMailOpenComposer( const QString& arg0, const QString& arg1,
                                      const QCString& arg7, const QCString& arg8,
                                      const QCString& arg9, const QCString& arg10,
                                      const QCString& arg11, const QString& arg12,
-                                     const QCString& arg13, const QCString& arg14 )
+                                     const QCString& arg13, const QCString& arg14, uint identity )
 {
     //kdDebug(5850) << "KOMailClient::kMailOpenComposer( "
     //    << arg0 << " , " << arg1 << arg2 << " , " << arg3
@@ -281,11 +288,12 @@ int KOMailClient::kMailOpenComposer( const QString& arg0, const QString& arg1,
     arg << arg12;
     arg << arg13;
     arg << arg14;
+    arg << identity;
 #if KDE_IS_VERSION( 3, 2, 90 )
     kapp->updateRemoteUserTimestamp("kmail");
 #endif
     if ( kapp->dcopClient()->call("kmail","KMailIface",
-          "openComposer(QString,QString,QString,QString,QString,int,QString,QCString,QCString,QCString,QCString,QCString,QString,QCString,QCString)", data, replyType, replyData ) ) {
+          "openComposer(QString,QString,QString,QString,QString,int,QString,QCString,QCString,QCString,QCString,QCString,QString,QCString,QCString,uint)", data, replyType, replyData ) ) {
         if ( replyType == "int" ) {
             QDataStream _reply_stream( replyData, IO_ReadOnly );
             _reply_stream >> result;
