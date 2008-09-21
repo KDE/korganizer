@@ -102,8 +102,8 @@ void POTDElement::step1StartDownload()
 {
   // Start downloading the picture
   if ( !mFirstStepCompleted && !mFirstStepJob ) {
-    KUrl url = KUrl( "http://commons.wikimedia.org/wiki/Template:Potd/" +
-                     mDate.toString( Qt::ISODate ) + "?action=raw" );
+    KUrl url = KUrl( "http://commons.wikimedia.org/w/index.php?title=Template:Potd/" +
+                     mDate.toString( Qt::ISODate ) + "&action=raw" );
                 // The file at that URL contains the file name for the POTD
 
     mFirstStepJob = KIO::storedGet( url, KIO::NoReload, KIO::HideProgressInfo );
@@ -148,6 +148,7 @@ void POTDElement::step1Result( KJob *job )
   // First step completed: we now know the POTD's file name
   KIO::StoredTransferJob *const transferJob = static_cast<KIO::StoredTransferJob*>( job );
   mFileName = QString::fromUtf8( transferJob->data().data(), transferJob->data().size() );
+  mFileName = mFileName.left( mFileName.indexOf( "<noinclude>" ) );
   kDebug() << "got POTD file name:" << mFileName;
 
   if ( !mFileName.isEmpty() ) {
