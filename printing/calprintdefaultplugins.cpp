@@ -34,6 +34,7 @@
 
 #include <kcal/todo.h>
 #include <kcal/calendar.h>
+#include <kcal/incidenceformatter.h>
 
 #include <klocale.h>
 #include <kdebug.h>
@@ -240,7 +241,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
       mPrinter->newPage();
     }
 
-     // PAGE Layout (same for landscape and portrait! astonishingly, it looks good with both!):
+    //  PAGE Layout (same for landscape and portrait! astonishingly, it looks good with both!):
     //  +-----------------------------------+
     //  | Header:  Summary                  |
     //  +===================================+
@@ -301,178 +302,20 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
       QRect recurBox( timesBox.left() + padding(), h + padding(),
                       timesBox.right() - padding(), lineHeight );
       KCal::Recurrence *recurs = (*it)->recurrence();
-      // recurrence
-      QStringList dayList;
-      dayList.append( i18n( "31st Last" ) );
-      dayList.append( i18n( "30th Last" ) );
-      dayList.append( i18n( "29th Last" ) );
-      dayList.append( i18n( "28th Last" ) );
-      dayList.append( i18n( "27th Last" ) );
-      dayList.append( i18n( "26th Last" ) );
-      dayList.append( i18n( "25th Last" ) );
-      dayList.append( i18n( "24th Last" ) );
-      dayList.append( i18n( "23rd Last" ) );
-      dayList.append( i18n( "22nd Last" ) );
-      dayList.append( i18n( "21st Last" ) );
-      dayList.append( i18n( "20th Last" ) );
-      dayList.append( i18n( "19th Last" ) );
-      dayList.append( i18n( "18th Last" ) );
-      dayList.append( i18n( "17th Last" ) );
-      dayList.append( i18n( "16th Last" ) );
-      dayList.append( i18n( "15th Last" ) );
-      dayList.append( i18n( "14th Last" ) );
-      dayList.append( i18n( "13th Last" ) );
-      dayList.append( i18n( "12th Last" ) );
-      dayList.append( i18n( "11th Last" ) );
-      dayList.append( i18n( "10th Last" ) );
-      dayList.append( i18n( "9th Last" ) );
-      dayList.append( i18n( "8th Last" ) );
-      dayList.append( i18n( "7th Last" ) );
-      dayList.append( i18n( "6th Last" ) );
-      dayList.append( i18n( "5th Last" ) );
-      dayList.append( i18n( "4th Last" ) );
-      dayList.append( i18n( "3rd Last" ) );
-      dayList.append( i18n( "2nd Last" ) );
-      dayList.append( i18nc( "last day of the month", "Last" ) );
-      dayList.append( i18nc( "unknown day of the month", "unknown" ) ); //#31 - zero offset from UI
-      dayList.append( i18n( "1st" ) );
-      dayList.append( i18n( "2nd" ) );
-      dayList.append( i18n( "3rd" ) );
-      dayList.append( i18n( "4th" ) );
-      dayList.append( i18n( "5th" ) );
-      QString recurString;
-      const KCalendarSystem *calSys = calendarSystem();
-      switch( recurs->recurrenceType() ) {
-      case Recurrence::rNone:
-        recurString = i18nc( "no recurrence", "None" );
-        break;
-      case Recurrence::rDaily:
-        recurString = i18np( "Every day", "Every %1 days", recurs->frequency() );
-        break;
-      case Recurrence::rWeekly:
-      {
-        QString dayNames;
-        // Respect start of week setting
-        int weekStart = KGlobal::locale()->weekStartDay();
-        bool addSpace = false;
-        for ( int i = 0; i < 7; ++i ) {
-          if ( recurs->days().testBit( ( i + weekStart + 6 ) % 7 ) ) {
-            if ( addSpace ) {
-              dayNames.append( " " );
-            }
-            dayNames.append( calSys->weekDayName( ( ( i + weekStart + 6 ) % 7 ) + 1,
-                                                  KCalendarSystem::ShortDayName ) );
-            addSpace = true;
-          }
-        }
-        recurString = i18ncp( "Every N WEEK[S] on WEEKDAYNAMELIST",
-                              "Every week on %2",
-                              "Every %1 weeks on %2",
-                              recurs->frequency(),
-                              dayNames );
-        break;
-      }
-      case Recurrence::rMonthlyPos:
-      {
-        KCal::RecurrenceRule::WDayPos rule = recurs->monthPositions()[0];
-        recurString = i18ncp( "Every N MONTH[S] on the [2nd|3rd|...] WEEKDAYNAME",
-                              "Every month on the %2 %3",
-                              "Every %1 months on the %2 %3",
-                              recurs->frequency(),
-                              dayList[rule.pos() + 31],
-                              calSys->weekDayName( rule.day(), KCalendarSystem::LongDayName ) );
-        break;
-      }
-      case Recurrence::rMonthlyDay:
-      {
-        int days = recurs->monthDays()[0];
-        if ( days < 0 ) {
-          recurString = i18ncp( "Every N MONTH[S] on the [2nd|3rd|...] day",
-                                "Every month on the %2 day",
-                                "Every %1 months on the %2 day",
-                                recurs->frequency(),
-                                dayList[days + 31] );
-        } else {
-          recurString = i18ncp( "Every N MONTH[S] on day N",
-                                "Every month on day %2",
-                                "Every %1 months on day %2",
-                                recurs->frequency(),
-                                recurs->monthDays()[0] );
-        }
-        break;
-      }
-
-      case Recurrence::rYearlyMonth:
-        recurString = i18ncp( "Every N YEAR[S] on day N of MONTHNAME",
-                              "Every year on day %2 of %3",
-                              "Every %1 years on day %2 of %3",
-                              recurs->frequency(),
-                              recurs->yearDates()[0],
-                              calSys->monthName( recurs->yearMonths()[0], mFromDate.year() ) );
-        break;
-      case Recurrence::rYearlyPos:
-      {
-        KCal::RecurrenceRule::WDayPos rule = recurs->yearPositions()[0];
-        recurString = i18ncp( "Every N YEAR[S] on the [2nd|3rd|...] WEEKDAYNAME of MONTHNAME",
-                              "Every year on the %2 %3 of %4",
-                              "Every %1 years on the %2 %3 of %4",
-                              recurs->frequency(),
-                              dayList[rule.pos() + 31],
-                              calSys->weekDayName( rule.day(), KCalendarSystem::LongDayName ),
-                              calSys->monthName( recurs->yearMonths()[0], mFromDate.year() ) );
-        break;
-      }
-      case Recurrence::rYearlyDay:
-        recurString = i18ncp( "Every N YEAR[S] on day N",
-                              "Every year on on day %2",
-                              "Every %1 years on day %2",
-                              recurs->frequency(),
-                              recurs->yearDays()[0] );
-        break;
-      } // end switch on recurrence type
-
-      // occurrences
-      QString occurString;
-      switch ( recurs->duration() ) {
-      case 0: // end date set
-        occurString = i18nc( "until DATE",
-                             "until %1",
-                             KGlobal::locale()->formatDate( recurs->endDate(),
-                                                            KLocale::ShortDate ) );
-        break;
-      case -1: // infinite
-        break;
-      default: // number of occurrences
-        occurString = i18nc( "for N %OCCURRENCE[S]",
-                             "for %1 %2",
-                             recurs->duration(),
-                             i18np( "occurrences", "occurrences", recurs->duration() ) );
-        break;
-      } // end switch on recurrence duration
-
+      QString displayString = IncidenceFormatter::recurrenceString((*it));
       // exception dates
       QString exceptString;
       if ( !recurs->exDates().isEmpty() ) {
-        exceptString = i18nc( "except for listed dates", "except" );
+        exceptString = i18nc( "except for listed dates", " except" );
         for ( int i = 0; i < recurs->exDates().size(); i++ ) {
           exceptString.append( " " );
           exceptString.append( KGlobal::locale()->formatDate( recurs->exDates()[i],
                                                               KLocale::ShortDate ) );
         }
       }
-      QString displayString;
-      displayString.append( recurString );
-      if ( !displayString.endsWith( ' ' ) ) {
-        displayString.append( ' ' );
-      }
-      displayString.append( occurString );
-      if ( !displayString.endsWith( ' ' ) ) {
-        displayString.append( ' ' );
-      }
       displayString.append( exceptString );
       h = qMax( printCaptionAndText( p, recurBox, i18n( "Repeats: " ),
-                                     displayString, captionFont, textFont ),
-                h );
+                                    displayString, captionFont, textFont ), h );
     }
 
     // Alarms Printing
@@ -559,9 +402,6 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
 
     QRect attendeesBox( box.left(), categoriesBox.top() - padding() - box.height() / 9,
                         box.width(), box.height() / 9 );
-    if ( !mShowAttendees ) {
-      attendeesBox.setTop( categoriesBox.top() );
-    }
     QRect attachmentsBox( box.left(), attendeesBox.top() - padding() - box.height() / 9,
                           box.width() * 3 / 4 - padding(), box.height() / 9 );
     QRect optionsBox( attachmentsBox.right() + padding(), attachmentsBox.top(), 0, 0 );
@@ -570,18 +410,43 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
     QRect notesBox( optionsBox.left(), locationBox.bottom() + padding(),
                     optionsBox.width(), 0 );
     notesBox.setBottom( optionsBox.top() - padding() );
-
-    // TODO: Adjust boxes depending on the show options...
-//     if ( !mShowOptions ) {
-//       optionsBox.left()
-//     bool mShowOptions;
-// //     bool mShowSubitemsNotes;
-//     bool mShowAttendees;
-//     bool mShowAttachments;
-
     QRect descriptionBox( notesBox );
     descriptionBox.setLeft( box.left() );
-    descriptionBox.setRight( mShowOptions ? attachmentsBox.right() : box.right() );
+    descriptionBox.setRight( attachmentsBox.right() );
+
+    // Adjust boxes depending on the show options...    
+    if (!mShowSubitemsNotes) {
+      descriptionBox.setRight( box.right() );
+    }
+    if (!mShowAttachments || !mShowAttendees) {
+        descriptionBox.setBottom( attachmentsBox.bottom() );
+        optionsBox.setTop( attendeesBox.top() );
+        optionsBox.setBottom( attendeesBox.bottom() );
+        notesBox.setBottom( attachmentsBox.bottom() );
+        if (mShowOptions) {
+          attendeesBox.setRight( attachmentsBox.right() );
+        }
+      if (!mShowAttachments && !mShowAttendees) {
+        if (mShowSubitemsNotes) {
+          descriptionBox.setBottom( attendeesBox.bottom() );  
+        }
+        if (!mShowOptions) {
+          descriptionBox.setBottom( attendeesBox.bottom() );  
+          notesBox.setBottom( attendeesBox.bottom() );
+        }
+      }
+    }
+    if (mShowAttachments) {
+      if (!mShowOptions) {
+        attachmentsBox.setRight( box.right() );        
+        attachmentsBox.setRight( box.right() );
+      }
+      if (!mShowAttendees) {
+        attachmentsBox.setTop( attendeesBox.top() );
+        attachmentsBox.setBottom( attendeesBox.bottom() );
+      }
+    }
+    
     drawBoxWithCaption( p, descriptionBox, i18n( "Description:" ),
                         (*it)->description(), /*sameLine=*/false,
                         /*expand=*/false, captionFont, textFont );
@@ -599,20 +464,109 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
         }
         p.setPen( oldPen );
       } else {
-        int subitemsStart = drawBoxWithCaption( p, notesBox, i18n( "Subitems:" ),
-                            (*it)->description(), /*sameLine=*/false,
+        Incidence::List relations = (*it)->relations();
+        QString subitemCaption;
+        if ( relations.count() == 0 ) {
+          subitemCaption = i18n( "No Subitems" );
+          txt.clear();
+        } else {
+          subitemCaption = i18np( "1 Subitem:", 
+        		                  "%1 Subitems:", 
+        		                  relations.count() );
+        }
+        Incidence::List::ConstIterator rit;
+        QString subitemString;
+        QString statusString;
+        QString datesString;
+        int count = 0;
+        for ( rit = relations.begin(); rit != relations.end(); ++rit ) {
+          ++count;
+          if ( !(*rit) ) { // defensive, skip any zero pointers
+            continue;
+          }
+          // format the status
+          statusString = (*rit)->statusStr();
+          if ( statusString.isEmpty() ) {
+            if ( (*rit)->status() == Incidence::StatusNone ) {
+              statusString = i18nc( "no status", "none" );
+            } else {
+              statusString = i18nc( "unknown status", "unknown" );
+            }
+          }
+          // format the dates if provided
+          datesString.clear();
+          if ( (*rit)->dtStart().isValid() ) {
+        	  datesString += i18nc( 
+        	      "subitem start date", "Start Date: %1\n",
+                KGlobal::locale()->formatDate( (*rit)->dtStart().date(),
+                                               KLocale::ShortDate ) );
+            if ( !(*rit)->allDay() ) {
+              datesString += i18nc( 
+                 "subitem start time", "Start Time: %1\n", 
+                 KGlobal::locale()->formatTime((*rit)->dtStart().time(), 
+                     false, false));
+            }
+          }
+          if ( (*rit)->dtEnd().isValid() ) {
+            subitemString += i18nc( 
+                "subitem due date", "Due Date: %1\n",
+                KGlobal::locale()->formatDate( (*rit)->dtEnd().date(),
+                                               KLocale::ShortDate ) );
+            if ( !(*rit)->allDay() ) {
+              subitemString += i18nc( 
+                  "subitem due time", "Due Time: %1\n",
+                  KGlobal::locale()->formatTime((*rit)->dtEnd().time(), 
+                      false, false));
+            }
+          }
+          subitemString += i18nc("subitem counter", "%1: ", count);
+          subitemString += (*rit)->summary();
+          subitemString += "\n";
+          if ( !datesString.isEmpty() ) {
+            subitemString += datesString;
+            subitemString += "\n";
+          }
+          subitemString += i18nc( "subitem Status: statusString", 
+                                  "Status: %1\n",
+                                   statusString );
+          subitemString += IncidenceFormatter::recurrenceString((*rit)) + "\n";
+          subitemString += i18nc( "subitem Priority: N", 
+                                  "Priority: <numid>%1</numid>\n", 
+                                  (*rit)->priority());
+          subitemString += i18nc( "subitem Secrecy: secrecyString",
+                                  "Secrecy: %1\n", 
+                                  (*rit)->secrecyStr() );
+          subitemString += "\n";
+        }
+        drawBoxWithCaption( p, notesBox, subitemCaption,
+                  subitemString, /*sameLine=*/false,
                             /*expand=*/false, captionFont, textFont );
-        // TODO: Draw subitems
-        Q_UNUSED( subitemsStart );  // until printing subitems is implemented
       }
     }
 
     if ( mShowAttachments ) {
-      int attachStart = drawBoxWithCaption( p, attachmentsBox,
-                        i18n( "Attachments:" ), QString(), /*sameLine=*/false,
-                        /*expand=*/false, captionFont, textFont );
-      // TODO: Print out the attachments somehow
-      Q_UNUSED( attachStart ); // until printing attachments is implemented
+      Attachment::List attachments = (*it)->attachments();
+      QString attachmentCaption;
+      if ( attachments.count() == 0 ) {
+        attachmentCaption = i18n( "No Attachments" );
+        txt.clear();
+      } else {
+        attachmentCaption = i18np( "1 Attachment:", 
+                                   "%1 Attachments:", 
+                                   attachments.count() );
+      }
+      QString attachmentString;
+      Attachment::List::ConstIterator ait = attachments.begin();
+      for ( ; ait != attachments.end(); ++ait ) {
+        if (!attachmentString.isEmpty()) {
+          attachmentString += i18nc( "Spacer for list of attachments", "  " );
+        }
+        attachmentString.append((*ait)->label());
+      }
+      drawBoxWithCaption( p, attachmentsBox,
+                        attachmentCaption, attachmentString, 
+                        /*sameLine=*/false, /*expand=*/false, 
+                        captionFont, textFont );
     }
     if ( mShowAttendees ) {
       Attendee::List attendees = (*it)->attendees();
@@ -620,22 +574,26 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
       if ( attendees.count() == 0 ) {
         attendeeCaption = i18n( "No Attendees" );
       } else {
-        attendeeCaption = i18np( "1 Attendee:", "%1 Attendees:", attendees.count() );
+        attendeeCaption = i18np( "1 Attendee:", 
+                                 "%1 Attendees:", 
+                                 attendees.count() );
       }
-
       QString attendeeString;
-      for ( Attendee::List::ConstIterator ait = attendees.begin(); ait != attendees.end(); ++ait ) {
+      Attendee::List::ConstIterator ait = attendees.begin();
+      for ( ; ait != attendees.end(); ++ait ) {
         if ( !attendeeString.isEmpty() ) {
           attendeeString += '\n';
         }
-        attendeeString += i18nc( "Formatting of an attendee: "
-                                 "'Name (Role): Status', e.g. 'Reinhold Kainhofer "
-                                 "<reinhold@kainhofer.com> (Participant): Awaiting Response'",
-                                 "%1 (%2): %3",
-                                 (*ait)->fullName(), (*ait)->roleStr(), (*ait)->statusStr() );
+        attendeeString += i18nc( 
+                "Formatting of an attendee: "
+                "'Name (Role): Status', e.g. 'Reinhold Kainhofer "
+                "<reinhold@kainhofer.com> (Participant): Awaiting Response'",
+                "%1 (%2): %3",
+                (*ait)->fullName(), (*ait)->roleStr(), (*ait)->statusStr() );
       }
-      drawBoxWithCaption( p, attendeesBox, i18n( "Attendees:" ), attendeeString,
-                          /*sameLine=*/false, /*expand=*/false, captionFont, textFont );
+      drawBoxWithCaption( p, attendeesBox, attendeeCaption, attendeeString,
+                          /*sameLine=*/false, /*expand=*/false, 
+                          captionFont, textFont );
     }
 
     if ( mShowOptions ) {
@@ -666,7 +624,8 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
         //TODO: Anything Journal-specific?
       }
       drawBoxWithCaption( p, optionsBox, i18n( "Settings: " ),
-             optionsString, /*sameLine=*/false, /*expand=*/false, captionFont, textFont );
+             optionsString, /*sameLine=*/false, /*expand=*/false, 
+             captionFont, textFont );
     }
 
     drawBoxWithCaption( p, categoriesBox, i18n( "Categories: " ),
@@ -1131,7 +1090,7 @@ void CalPrintMonth::print( QPainter &p, int width, int height )
   monthBox.setTop( headerBox.bottom() + padding() );
 
   do {
-    QString title( i18nc( "monthname year", "%1 %2",
+    QString title( i18nc( "monthname year", "%1 <numid>%2</numid>",
                           calSys->monthName( curMonth ),
                           curMonth.year() ) );
     QDate tmp( fromMonth );
