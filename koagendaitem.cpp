@@ -755,7 +755,7 @@ void KOAgendaItem::paintEvent( QPaintEvent *ev )
   // to the newly visible area, which is a problem since the content changes when visRect
   // changes, so repaint the full item in that case
   if ( ev->rect() != visRect && visRect.isValid() && ev->rect().isValid() ) {
-    repaint( visRect );
+    update( visRect );
     return;
   }
 
