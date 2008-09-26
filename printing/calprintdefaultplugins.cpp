@@ -443,10 +443,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
       case -1: // infinite
         break;
       default: // number of occurrences
-        occurString = i18nc( "for N %OCCURRENCE[S]",
-                             "for %1 %2",
-                             recurs->duration(),
-                             i18np( "occurrences", "occurrences", recurs->duration() ) );
+        occurString = i18ncp( "for N OCCURRENCE[S]", "for one occurrence", "for %1 occurrences", recurs->duration() );
         break;
       } // end switch on recurrence duration
 
