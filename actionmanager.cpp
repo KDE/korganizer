@@ -449,7 +449,7 @@ void ActionManager::initActions()
   bool isRTL = QApplication::isRightToLeft();
 
   action = new KAction( KIcon( "go-jump-today" ),
-                        i18nc( "@action Jump to today", "To &today" ), this );
+                        i18nc( "@action Jump to today", "To &Today" ), this );
   action->setIconText( i18n( "Today" ) );
   action->setToolTip( i18n( "Scroll to Today" ) );
   mACollection->addAction( "go_today", action );
