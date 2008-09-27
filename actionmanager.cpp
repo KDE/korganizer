@@ -225,14 +225,14 @@ void ActionManager::initCalendar( Calendar *cal )
 
 void ActionManager::initActions()
 {
-  QAction *action;
+  KAction *action;
 
   /*************************** FILE MENU **********************************/
 
   //~~~~~~~~~~~~~~~~~~~~~~~ LOADING / SAVING ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   if ( mIsPart ) {
     if ( mMainWindow->hasDocument() ) {
-      QAction *a = mACollection->addAction( KStandardAction::New, this, SLOT(file_new()) );
+      KAction *a = mACollection->addAction( KStandardAction::New, this, SLOT(file_new()) );
       mACollection->addAction( "korganizer_openNew", a );
 
       a = mACollection->addAction( KStandardAction::Open, this, SLOT(file_open()) );

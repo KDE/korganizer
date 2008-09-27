@@ -418,19 +418,19 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     KToggleAction *mResourceViewShowAction;
     KToggleAction *mEventViewerShowAction;
 
-    QAction *mShowIncidenceAction;
-    QAction *mEditIncidenceAction;
-    QAction *mDeleteIncidenceAction;
+    KAction *mShowIncidenceAction;
+    KAction *mEditIncidenceAction;
+    KAction *mDeleteIncidenceAction;
 
-    QAction *mCutAction;
-    QAction *mCopyAction;
-    QAction *mDeleteAction;
-    QAction *mNextXDays;
-    QAction *mPublishEvent;
+    KAction *mCutAction;
+    KAction *mCopyAction;
+    KAction *mDeleteAction;
+    KAction *mNextXDays;
+    KAction *mPublishEvent;
     KAction *mForwardEvent;
 
-    QAction *mUndoAction;
-    QAction *mRedoAction;
+    KAction *mUndoAction;
+    KAction *mRedoAction;
 
     KSelectAction *mFilterAction;
 
