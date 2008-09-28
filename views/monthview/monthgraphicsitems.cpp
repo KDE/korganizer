@@ -96,7 +96,7 @@ bool MonthCell::hasEventBelow( int height )
     return false;
   }
 
-  for ( int i=0; i<height; i++ ) {
+  for ( int i = 0; i < height; ++i ) {
     if ( mHeightHash.value( i ) != 0 ) {
       return true;
     }
@@ -274,6 +274,9 @@ void MonthGraphicsItem::paint( QPainter *p, const QStyleOptionGraphicsItem *, QW
   // !isBeginItem() is not always isEndItem()
   QString text = mMonthItem->text( !isBeginItem() );
   p->setFont( KOPrefs::instance()->monthViewFont() );
+
+  // Every item should set its own LayoutDirection, or eliding fails miserably
+  p->setLayoutDirection( text.isRightToLeft() ? Qt::RightToLeft : Qt::LeftToRight );
 
   QRect textRect = QRect( textMargin, 0,
                           boundingRect().width() - 2 * textMargin, scene->itemHeight() );
