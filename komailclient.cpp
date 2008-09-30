@@ -32,6 +32,9 @@
 #include <kcal/todo.h>
 #include <kcal/incidenceformatter.h>
 
+#include <kpimidentities/identity.h>
+#include <kpimidentities/identitymanager.h>
+
 #include <klocale.h>
 #include <kstandarddirs.h>
 #include <kdebug.h>
@@ -46,6 +49,7 @@
 
 #include <unistd.h>
 #include <stdio.h>
+#include "kocore.h"
 
 KOMailClient::KOMailClient()
 {
@@ -211,7 +215,7 @@ bool KOMailClient::send(const QString &from,const QString &to,
       return kmail.openComposer
           (to,"",bcc ? from : "",subject,body,false,"cal.ics","7bit",
            attachment.toUtf8(),"text","calendar","method",meth,"attachment",
-           "utf-8").isValid();
+           "utf-8", KOCore::self()->identityManager()->identityForAddress( from ).uoid()).isValid();
     }
   }
   return true;
