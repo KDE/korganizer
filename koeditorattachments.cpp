@@ -524,7 +524,7 @@ void KOEditorAttachments::handlePasteOrDrop( const QMimeData *mimeData )
 
     urls = KUrl::List::fromMimeData( mimeData, &metadata );
     probablyWeHaveUris = true;
-    labels = metadata["labels"].split( ":", QString::SkipEmptyParts );
+    labels = metadata["labels"].split( ':', QString::SkipEmptyParts );
     for ( QStringList::Iterator it = labels.begin(); it != labels.end(); ++it ) {
       *it = KUrl::fromPercentEncoding( (*it).toLatin1() );
     }

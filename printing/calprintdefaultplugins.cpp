@@ -521,22 +521,22 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
           }
           subitemString += i18nc("subitem counter", "%1: ", count);
           subitemString += (*rit)->summary();
-          subitemString += "\n";
+          subitemString += '\n';
           if ( !datesString.isEmpty() ) {
             subitemString += datesString;
-            subitemString += "\n";
+            subitemString += '\n';
           }
           subitemString += i18nc( "subitem Status: statusString", 
                                   "Status: %1\n",
                                    statusString );
-          subitemString += IncidenceFormatter::recurrenceString((*rit)) + "\n";
+          subitemString += IncidenceFormatter::recurrenceString((*rit)) + '\n';
           subitemString += i18nc( "subitem Priority: N", 
                                   "Priority: <numid>%1</numid>\n", 
                                   (*rit)->priority());
           subitemString += i18nc( "subitem Secrecy: secrecyString",
                                   "Secrecy: %1\n", 
                                   (*rit)->secrecyStr() );
-          subitemString += "\n";
+          subitemString += '\n';
         }
         drawBoxWithCaption( p, notesBox, subitemCaption,
                   subitemString, /*sameLine=*/false,

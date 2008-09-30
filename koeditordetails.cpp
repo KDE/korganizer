@@ -167,7 +167,7 @@ void KOAttendeeListView::dropEvent( QDropEvent *e )
   if ( md->hasText() ) {
     QString text = md->text();
     kDebug() << "Dropped :" << text;
-    QStringList emails = text.split( ",", QString::SkipEmptyParts );
+    QStringList emails = text.split( ',', QString::SkipEmptyParts );
     for ( QStringList::ConstIterator it = emails.begin(); it != emails.end(); ++it ) {
       addAttendee( *it );
     }
