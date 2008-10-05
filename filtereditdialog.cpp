@@ -94,7 +94,7 @@ void FilterEditDialog::setDialogConsistent( bool consistent )
 }
 
 FilterEdit::FilterEdit( QList<CalFilter*> *filters, QWidget *parent )
-  : QWidget( parent ), current( 0 ), mCategorySelectDialog( 0 )
+  : QWidget( parent ), mCurrent( 0 ), mCategorySelectDialog( 0 )
 {
   setupUi( this );
   mFilters = filters;
@@ -142,7 +142,7 @@ void FilterEdit::updateFilterList()
     }
     emit( dataConsistent( true ) );
   }
-  if ( mFilters && mFilters->count() > 0 && !current ) {
+  if ( mFilters && mFilters->count() > 0 && !mCurrent ) {
     filterSelected( mFilters->at( 0 ) );
   }
   if ( mFilters ) {
@@ -152,11 +152,11 @@ void FilterEdit::updateFilterList()
 
 void FilterEdit::saveChanges()
 {
-  if ( !current ) {
+  if ( !mCurrent ) {
     return;
   }
 
-  current->setName( mNameLineEdit->text() );
+  mCurrent->setName( mNameLineEdit->text() );
   int criteria = 0;
   if ( mCompletedCheck->isChecked() ) {
     criteria |= CalFilter::HideCompletedTodos;
@@ -173,8 +173,8 @@ void FilterEdit::saveChanges()
   if ( mHideTodosNotAssignedToMeCheck->isChecked() ) {
     criteria |= CalFilter::HideNoMatchingAttendeeTodos;
   }
-  current->setCriteria( criteria );
-  current->setCompletedTimeSpan( mCompletedTimeSpan->value() );
+  mCurrent->setCriteria( criteria );
+  mCurrent->setCompletedTimeSpan( mCompletedTimeSpan->value() );
 
   QStringList categoryList;
   for ( int i = 0; i < mCatList->count(); ++i ) {
@@ -183,7 +183,7 @@ void FilterEdit::saveChanges()
       categoryList.append( item->text() );
     }
   }
-  current->setCategoryList( categoryList );
+  mCurrent->setCategoryList( categoryList );
   emit filterChanged();
 }
 
@@ -196,32 +196,32 @@ void FilterEdit::filterSelected()
 
 void FilterEdit::filterSelected( CalFilter *filter )
 {
-  if( filter == current ) {
+  if( !filter || filter == mCurrent ) {
     return;
   }
   kDebug() << "Selected filter" << filter->name();
   saveChanges();
 
-  current = filter;
+  mCurrent = filter;
   mNameLineEdit->blockSignals( true );
-  mNameLineEdit->setText( current ? current->name() : QString() );
+  mNameLineEdit->setText( mCurrent->name() );
   mNameLineEdit->blockSignals( false );
   mDetailsFrame->setEnabled( true );
-  mCompletedCheck->setChecked( current->criteria() & CalFilter::HideCompletedTodos );
-  mCompletedTimeSpan->setValue( current->completedTimeSpan() );
-  mRecurringCheck->setChecked( current->criteria() & CalFilter::HideRecurring );
+  mCompletedCheck->setChecked( mCurrent->criteria() & CalFilter::HideCompletedTodos );
+  mCompletedTimeSpan->setValue( mCurrent->completedTimeSpan() );
+  mRecurringCheck->setChecked( mCurrent->criteria() & CalFilter::HideRecurring );
   mHideInactiveTodosCheck->setChecked(
-    current->criteria() & CalFilter::HideInactiveTodos );
+    mCurrent->criteria() & CalFilter::HideInactiveTodos );
   mHideTodosNotAssignedToMeCheck->setChecked(
-    current->criteria() & CalFilter::HideNoMatchingAttendeeTodos );
+    mCurrent->criteria() & CalFilter::HideNoMatchingAttendeeTodos );
 
-  if ( current->criteria() & CalFilter::ShowCategories ) {
+  if ( mCurrent->criteria() & CalFilter::ShowCategories ) {
     mCatShowCheck->setChecked( true );
   } else {
     mCatHideCheck->setChecked( true );
   }
   mCatList->clear();
-  mCatList->addItems( current->categoryList() );
+  mCatList->addItems( mCurrent->categoryList() );
 }
 
 void FilterEdit::bNewPressed()
@@ -244,7 +244,7 @@ void FilterEdit::bDeletePressed()
   }
 
   //TODO: change text to read something like
-  //"You are about to permanently remove filter current->name(). Are you sure?"
+  //"You are about to permanently remove filter mCurrent->name(). Are you sure?"
   int result = KMessageBox::warningContinueCancel(
     this,
     i18n( "This item will be permanently deleted." ),
@@ -259,7 +259,7 @@ void FilterEdit::bDeletePressed()
   CalFilter *filter = mFilters->at( selected );
   mFilters->removeAll( filter );
   delete filter;
-  current = 0;
+  mCurrent = 0;
   updateFilterList();
   mRulesList->setCurrentRow( qMin( mRulesList->count() - 1, selected ) );
   emit filterChanged();
@@ -286,7 +286,7 @@ void FilterEdit::updateSelectedName( const QString &newText )
 
 void FilterEdit::editCategorySelection()
 {
-  if( !current ) {
+  if( !mCurrent ) {
     return;
   }
 
@@ -301,7 +301,7 @@ void FilterEdit::editCategorySelection()
   // we need the children not to autoselect or else some unselected
   // children can also become selected
   mCategorySelectDialog->setAutoselectChildren( false );
-  mCategorySelectDialog->setSelected( current->categoryList() );
+  mCategorySelectDialog->setSelected( mCurrent->categoryList() );
   mCategorySelectDialog->setAutoselectChildren( true );
 
   mCategorySelectDialog->show();
@@ -311,7 +311,7 @@ void FilterEdit::updateCategorySelection( const QStringList &categories )
 {
   mCatList->clear();
   mCatList->addItems( categories );
-  current->setCategoryList(categories);
+  mCurrent->setCategoryList( categories );
 }
 
 void FilterEdit::updateCategoryConfig()
