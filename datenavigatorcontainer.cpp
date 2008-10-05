@@ -39,7 +39,8 @@
 
 DateNavigatorContainer::DateNavigatorContainer( QWidget *parent )
   : QFrame( parent ), mCalendar( 0 ),
-    mHorizontalCount( 1 ), mVerticalCount( 1 )
+    mHorizontalCount( 1 ), mVerticalCount( 1 ),
+    mIgnoreNavigatorUpdates( false )
 {
   mNavigatorView = new KDateNavigator( this );
   mNavigatorView->setWhatsThis(
@@ -75,8 +76,8 @@ void DateNavigatorContainer::connectNavigatorView( KDateNavigator *v )
   connect( v, SIGNAL(goPrevious()), SIGNAL(goPrevious()) );
   connect( v, SIGNAL(goNext()), SIGNAL(goNext()) );
 
-  connect( v, SIGNAL(goNextMonth()), SIGNAL(goNextMonth()) );
-  connect( v, SIGNAL(goPrevMonth()), SIGNAL(goPrevMonth()) );
+  connect( v, SIGNAL(goNextMonth()), SLOT(selectNextMonth()) );
+  connect( v, SIGNAL(goPrevMonth()), SLOT(selectPreviousMonth()) );
   connect( v, SIGNAL(goNextYear()), SIGNAL(goNextYear()) );
   connect( v, SIGNAL(goPrevYear()), SIGNAL(goPrevYear()) );
   connect( v, SIGNAL(goMonth(int)), SIGNAL(goMonth(int)) );
@@ -137,6 +138,34 @@ void DateNavigatorContainer::updateConfig()
   }
 }
 
+void DateNavigatorContainer::selectNextMonth()
+{
+  mNavigatorView->selectNextMonth();
+  foreach ( KDateNavigator *n, mExtraViews ) {
+    if ( n ) {
+      n->selectNextMonth();
+    }
+  }
+
+  mIgnoreNavigatorUpdates = true;
+  emit goNextMonth();
+  mIgnoreNavigatorUpdates = false;
+}
+
+void DateNavigatorContainer::selectPreviousMonth()
+{
+  mNavigatorView->selectPreviousMonth();
+  foreach ( KDateNavigator *n, mExtraViews ) {
+    if ( n ) {
+      n->selectPreviousMonth();
+    }
+  }
+
+  mIgnoreNavigatorUpdates = true;
+  emit goPrevMonth();
+  mIgnoreNavigatorUpdates = false;
+}
+
 void DateNavigatorContainer::selectDates( const DateList &dateList )
 {
   if ( !dateList.isEmpty() ) {
@@ -159,10 +188,12 @@ void DateNavigatorContainer::selectDates( const DateList &dateList )
       setBaseDates( start );
     }
 
-    mNavigatorView->selectDates( dateList );
-    foreach ( KDateNavigator *n, mExtraViews ) {
-      if ( n ) {
-        n->selectDates( dateList );
+    if ( !mIgnoreNavigatorUpdates ) {
+      mNavigatorView->selectDates( dateList );
+      foreach ( KDateNavigator *n, mExtraViews ) {
+        if ( n ) {
+          n->selectDates( dateList );
+        }
       }
     }
   }
@@ -171,10 +202,13 @@ void DateNavigatorContainer::selectDates( const DateList &dateList )
 void DateNavigatorContainer::setBaseDates( const QDate &start )
 {
   QDate baseDate = start;
-  mNavigatorView->setBaseDate( baseDate );
+  if ( !mIgnoreNavigatorUpdates )
+    mNavigatorView->setBaseDate( baseDate );
+
   foreach ( KDateNavigator *n, mExtraViews ) {
     baseDate = KOGlobals::self()->calendarSystem()->addMonths( baseDate, 1 );
-    n->setBaseDate( baseDate );
+    if ( !mIgnoreNavigatorUpdates  )
+      n->setBaseDate( baseDate );
   }
 }
 
