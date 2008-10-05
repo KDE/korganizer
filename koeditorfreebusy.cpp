@@ -854,9 +854,9 @@ void KOEditorFreeBusy::clearSelection() const
   KDGanttViewItem *item = mGanttView->selectedItem();
   if ( item ) {
     mGanttView->setSelected( item, false );
+    item->repaint();
   }
   mGanttView->repaint();
-  item->repaint();
 }
 
 void KOEditorFreeBusy::changeStatusForMe( KCal::Attendee::PartStat status )
@@ -911,39 +911,43 @@ void KOEditorFreeBusy::listViewClicked( int button, KDGanttViewItem *item )
   }
 }
 
-void KOEditorFreeBusy::slotOrganizerChanged(const QString & newOrganizer)
+void KOEditorFreeBusy::slotOrganizerChanged( const QString &newOrganizer )
 {
-  if ( newOrganizer == mCurrentOrganizer )
+  if ( newOrganizer == mCurrentOrganizer ) {
     return;
+  }
 
   QString name;
   QString email;
   bool success = KPIMUtils::extractEmailAddressAndName( newOrganizer, email, name );
 
-  if ( !success )
+  if ( !success ) {
     return;
+  }
 
   Attendee *currentOrganizerAttendee = 0;
   Attendee *newOrganizerAttendee = 0;
 
   FreeBusyItem *anItem = static_cast<FreeBusyItem *>( mGanttView->firstChild() );
-  while( anItem ) {
+  while ( anItem ) {
     Attendee *attendee = anItem->attendee();
-    if( attendee->fullName() == mCurrentOrganizer )
+    if( attendee->fullName() == mCurrentOrganizer ) {
       currentOrganizerAttendee = attendee;
+    }
 
-    if( attendee->fullName() == newOrganizer )
+    if( attendee->fullName() == newOrganizer ) {
       newOrganizerAttendee = attendee;
+    }
 
     anItem = static_cast<FreeBusyItem *>( anItem->nextSibling() );
   }
 
   int answer = KMessageBox::No;
   if ( currentOrganizerAttendee ) {
-    answer = KMessageBox::questionYesNo( this, i18n("You are changing the organiser of "
-                                                    "this event, who is also attending, "
-                                                    "do you want to change that attendee "
-                                                    "as well?") );
+    answer = KMessageBox::questionYesNo(
+      this,
+      i18n( "You are changing the organiser of this event, who is also "
+            "attending, do you want to change that attendee as well?" ) );
   } else {
     answer = KMessageBox::Yes;
   }
@@ -963,14 +967,15 @@ void KOEditorFreeBusy::slotOrganizerChanged(const QString & newOrganizer)
   mCurrentOrganizer = newOrganizer;
 }
 
-Q3ListViewItem* KOEditorFreeBusy::hasExampleAttendee() const
+Q3ListViewItem *KOEditorFreeBusy::hasExampleAttendee() const
 {
   for ( FreeBusyItem *item = static_cast<FreeBusyItem *>( mGanttView->firstChild() ); item;
         item = static_cast<FreeBusyItem*>( item->nextSibling() ) ) {
     Attendee *attendee = item->attendee();
     Q_ASSERT( attendee );
-    if ( isExampleAttendee( attendee ) )
+    if ( isExampleAttendee( attendee ) ) {
         return item;
+    }
   }
   return 0;
 }

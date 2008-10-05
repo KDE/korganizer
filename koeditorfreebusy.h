@@ -97,7 +97,7 @@ class KOEditorFreeBusy : public KOAttendeeEditor
     void timerEvent( QTimerEvent * );
     KCal::Attendee *currentAttendee() const;
     /* reimpl */
-    Q3ListViewItem* hasExampleAttendee() const;
+    Q3ListViewItem *hasExampleAttendee() const;
     void updateCurrentItem();
     void clearSelection() const;
     void changeStatusForMe( KCal::Attendee::PartStat status );
