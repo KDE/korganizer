@@ -1433,7 +1433,7 @@ void CalPrintPluginBase::drawTodo( int &count, Todo *todo, QPainter &p,
   startpt.mRect = rect; //save for later
 
   // Connect the dots
-  if ( level > 0 && connectSubTodos ) {
+  if ( r && level > 0 && connectSubTodos ) {
     int bottom;
     int center( r->mRect.left() + ( r->mRect.width() / 2 ) );
     if ( r->mSamePage ) {
@@ -1448,7 +1448,7 @@ void CalPrintPluginBase::drawTodo( int &count, Todo *todo, QPainter &p,
   }
 
   // summary
-  outStr=todo->summary();
+  outStr = todo->summary();
   rect = p.boundingRect( lhs, rect.top(), ( rhs - ( left + rect.width() + 5 ) ),
                          -1, Qt::WordBreak, outStr );
 
