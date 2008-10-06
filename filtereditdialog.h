@@ -95,7 +95,7 @@ class FilterEdit : public QWidget, Ui::FilterEdit_base
     void filterSelected( CalFilter *f );
 
     QList<CalFilter*> *mFilters;
-    CalFilter *current;
+    CalFilter *mCurrent;
     KPIM::CategorySelectDialog *mCategorySelectDialog;
 };
 
