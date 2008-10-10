@@ -372,11 +372,13 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
                       date string or just a short.
       @param printRecurDaily Whether daily recurring incidences should be printed.
       @param printRecurWeekly Whether weekly recurring incidences should be printed.
+      @param singleLineLimit Whether Incidence text wraps or truncates.
     */
     void drawDayBox( QPainter &p, const QDate &qd,
                      const QRect &box,
                      bool fullDate = false, bool printRecurDaily = true,
-                     bool printRecurWeekly = true );
+                     bool printRecurWeekly = true,
+                     bool singleLineLimit = true );
     /**
       Draw the week (filofax) table of the week containing the date qd. The first
       three days of the week will be shown in the first column (using drawDayBox),
@@ -421,7 +423,7 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
       @param box coordinates of the month.
     */
     void drawMonthTable( QPainter &p, const QDate &qd, bool weeknumbers,
-                    bool recurDaily, bool recurWeekly,
+                    bool recurDaily, bool recurWeekly, bool singleLineLimit,
                     const QRect &box );
     /**
       Draw a vertical representation of the month containing the date dt. Each
@@ -511,7 +513,8 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
 
   protected:
     void drawIncidence( QPainter &p, const QRect &dayBox, const QString &time,
-                        const QString &summary, int &textY );
+                        const QString &summary, int &textY,
+                        bool singleLineLimit = true );
 
   protected:
     bool mUseColors;

@@ -212,6 +212,7 @@ class CalPrintMonth : public CalPrintPluginBase
     bool mRecurDaily;
     bool mRecurWeekly;
     bool mIncludeTodos;
+    bool mSingleLineLimit;
 };
 
 class CalPrintTodos : public CalPrintPluginBase

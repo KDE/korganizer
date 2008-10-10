@@ -4,7 +4,7 @@
   Copyright (c) 1998 Preston Brown <pbrown@kde.org>
   Copyright (C) 2003 Reinhold Kainhofer <reinhold@kainhofer.com>
   Copyright (c) 2003 Cornelius Schumacher <schumacher@kde.org>
-  Copyright (c) 2008 Ron Goodheart <ron.goodheart@gmail.com>
+  Copyright (c) 2008 Ron Goodheart <rong.dev@gmail.com>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -1005,6 +1005,7 @@ void CalPrintMonth::readSettingsWidget()
     mRecurDaily = cfg->mRecurDaily->isChecked();
     mRecurWeekly = cfg->mRecurWeekly->isChecked();
     mIncludeTodos = cfg->mIncludeTodos->isChecked();
+    mSingleLineLimit = cfg->mSingleLineLimit->isChecked();
 //    mUseColors = cfg->mColors->isChecked();
   }
 }
@@ -1020,6 +1021,7 @@ void CalPrintMonth::setSettingsWidget()
     cfg->mRecurDaily->setChecked( mRecurDaily );
     cfg->mRecurWeekly->setChecked( mRecurWeekly );
     cfg->mIncludeTodos->setChecked( mIncludeTodos );
+    cfg->mSingleLineLimit->setChecked( mSingleLineLimit );
 //    cfg->mColors->setChecked( mUseColors );
   }
 }
@@ -1032,6 +1034,7 @@ void CalPrintMonth::loadConfig()
     mRecurDaily = grp.readEntry( "Print daily incidences", true );
     mRecurWeekly = grp.readEntry( "Print weekly incidences", true );
     mIncludeTodos = grp.readEntry( "Include todos", false );
+    mSingleLineLimit = grp.readEntry( "Single line limit", false );
   }
   setSettingsWidget();
 }
@@ -1045,6 +1048,7 @@ void CalPrintMonth::saveConfig()
     grp.writeEntry( "Print daily incidences", mRecurDaily );
     grp.writeEntry( "Print weekly incidences", mRecurWeekly );
     grp.writeEntry( "Include todos", mIncludeTodos );
+    grp.writeEntry( "Single line limit", mSingleLineLimit );
   }
 }
 
@@ -1087,7 +1091,7 @@ void CalPrintMonth::print( QPainter &p, int width, int height )
 
   QRect headerBox( 0, 0, width, headerHeight() );
   QRect monthBox( 0, 0, width, height );
-  monthBox.setTop( headerBox.bottom() + padding() );
+  monthBox.setTop( headerBox.bottom() + padding() );  
 
   do {
     QString title( i18nc( "monthname year", "%1 <numid>%2</numid>",
@@ -1099,7 +1103,8 @@ void CalPrintMonth::print( QPainter &p, int width, int height )
 
     drawHeader( p, title, curMonth.addMonths( -1 ), curMonth.addMonths( 1 ),
                 headerBox );
-    drawMonthTable( p, curMonth, mWeekNumbers, mRecurDaily, mRecurWeekly, monthBox );
+    drawMonthTable( p, curMonth, mWeekNumbers, mRecurDaily, mRecurWeekly, 
+                    mSingleLineLimit, monthBox );
     curMonth = curMonth.addDays( curMonth.daysInMonth() );
     if ( curMonth <= toMonth ) {
       mPrinter->newPage();
