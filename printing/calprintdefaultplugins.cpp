@@ -414,11 +414,11 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
     descriptionBox.setLeft( box.left() );
     descriptionBox.setRight( attachmentsBox.right() );
 
-    // Adjust boxes depending on the show options...    
-    if (!mShowSubitemsNotes) {
+    // Adjust boxes depending on the show options...
+    if ( !mShowSubitemsNotes ) {
       descriptionBox.setRight( box.right() );
     }
-    if (!mShowAttachments || !mShowAttendees) {
+    if ( !mShowAttachments || !mShowAttendees ) {
         descriptionBox.setBottom( attachmentsBox.bottom() );
         optionsBox.setTop( attendeesBox.top() );
         optionsBox.setBottom( attendeesBox.bottom() );
@@ -426,27 +426,27 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
         if (mShowOptions) {
           attendeesBox.setRight( attachmentsBox.right() );
         }
-      if (!mShowAttachments && !mShowAttendees) {
-        if (mShowSubitemsNotes) {
-          descriptionBox.setBottom( attendeesBox.bottom() );  
+      if ( !mShowAttachments && !mShowAttendees ) {
+        if ( mShowSubitemsNotes ) {
+          descriptionBox.setBottom( attendeesBox.bottom() );
         }
-        if (!mShowOptions) {
-          descriptionBox.setBottom( attendeesBox.bottom() );  
+        if ( !mShowOptions ) {
+          descriptionBox.setBottom( attendeesBox.bottom() );
           notesBox.setBottom( attendeesBox.bottom() );
         }
       }
     }
-    if (mShowAttachments) {
-      if (!mShowOptions) {
-        attachmentsBox.setRight( box.right() );        
+    if ( mShowAttachments ) {
+      if ( !mShowOptions ) {
+        attachmentsBox.setRight( box.right() );
         attachmentsBox.setRight( box.right() );
       }
-      if (!mShowAttendees) {
+      if ( !mShowAttendees ) {
         attachmentsBox.setTop( attendeesBox.top() );
         attachmentsBox.setBottom( attendeesBox.bottom() );
       }
     }
-    
+
     drawBoxWithCaption( p, descriptionBox, i18n( "Description:" ),
                         (*it)->description(), /*sameLine=*/false,
                         /*expand=*/false, captionFont, textFont );
@@ -470,9 +470,9 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
           subitemCaption = i18n( "No Subitems" );
           txt.clear();
         } else {
-          subitemCaption = i18np( "1 Subitem:", 
-        		                  "%1 Subitems:", 
-        		                  relations.count() );
+          subitemCaption = i18np( "1 Subitem:",
+                                  "%1 Subitems:",
+                                  relations.count() );
         }
         Incidence::List::ConstIterator rit;
         QString subitemString;
@@ -496,45 +496,45 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
           // format the dates if provided
           datesString.clear();
           if ( (*rit)->dtStart().isValid() ) {
-        	  datesString += i18nc( 
-        	      "subitem start date", "Start Date: %1\n",
-                KGlobal::locale()->formatDate( (*rit)->dtStart().date(),
-                                               KLocale::ShortDate ) );
+            datesString += i18nc(
+              "subitem start date", "Start Date: %1\n",
+              KGlobal::locale()->formatDate( (*rit)->dtStart().date(),
+                                             KLocale::ShortDate ) );
             if ( !(*rit)->allDay() ) {
-              datesString += i18nc( 
-                 "subitem start time", "Start Time: %1\n", 
-                 KGlobal::locale()->formatTime((*rit)->dtStart().time(), 
-                     false, false));
+              datesString += i18nc(
+                "subitem start time", "Start Time: %1\n",
+                KGlobal::locale()->formatTime( (*rit)->dtStart().time(),
+                                               false, false ) );
             }
           }
           if ( (*rit)->dtEnd().isValid() ) {
-            subitemString += i18nc( 
-                "subitem due date", "Due Date: %1\n",
-                KGlobal::locale()->formatDate( (*rit)->dtEnd().date(),
-                                               KLocale::ShortDate ) );
+            subitemString += i18nc(
+              "subitem due date", "Due Date: %1\n",
+              KGlobal::locale()->formatDate( (*rit)->dtEnd().date(),
+                                             KLocale::ShortDate ) );
             if ( !(*rit)->allDay() ) {
-              subitemString += i18nc( 
-                  "subitem due time", "Due Time: %1\n",
-                  KGlobal::locale()->formatTime((*rit)->dtEnd().time(), 
-                      false, false));
+              subitemString += i18nc(
+                "subitem due time", "Due Time: %1\n",
+                KGlobal::locale()->formatTime( (*rit)->dtEnd().time(),
+                                               false, false ) );
             }
           }
-          subitemString += i18nc("subitem counter", "%1: ", count);
+          subitemString += i18nc( "subitem counter", "%1: ", count );
           subitemString += (*rit)->summary();
           subitemString += '\n';
           if ( !datesString.isEmpty() ) {
             subitemString += datesString;
             subitemString += '\n';
           }
-          subitemString += i18nc( "subitem Status: statusString", 
+          subitemString += i18nc( "subitem Status: statusString",
                                   "Status: %1\n",
                                    statusString );
           subitemString += IncidenceFormatter::recurrenceString((*rit)) + '\n';
-          subitemString += i18nc( "subitem Priority: N", 
-                                  "Priority: <numid>%1</numid>\n", 
-                                  (*rit)->priority());
+          subitemString += i18nc( "subitem Priority: N",
+                                  "Priority: <numid>%1</numid>\n",
+                                  (*rit)->priority() );
           subitemString += i18nc( "subitem Secrecy: secrecyString",
-                                  "Secrecy: %1\n", 
+                                  "Secrecy: %1\n",
                                   (*rit)->secrecyStr() );
           subitemString += '\n';
         }
@@ -551,22 +551,22 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
         attachmentCaption = i18n( "No Attachments" );
         txt.clear();
       } else {
-        attachmentCaption = i18np( "1 Attachment:", 
-                                   "%1 Attachments:", 
+        attachmentCaption = i18np( "1 Attachment:",
+                                   "%1 Attachments:",
                                    attachments.count() );
       }
       QString attachmentString;
       Attachment::List::ConstIterator ait = attachments.begin();
       for ( ; ait != attachments.end(); ++ait ) {
-        if (!attachmentString.isEmpty()) {
+        if ( !attachmentString.isEmpty() ) {
           attachmentString += i18nc( "Spacer for list of attachments", "  " );
         }
-        attachmentString.append((*ait)->label());
+        attachmentString.append( (*ait)->label() );
       }
       drawBoxWithCaption( p, attachmentsBox,
-                        attachmentCaption, attachmentString, 
-                        /*sameLine=*/false, /*expand=*/false, 
-                        captionFont, textFont );
+                          attachmentCaption, attachmentString,
+                          /*sameLine=*/false, /*expand=*/false,
+                          captionFont, textFont );
     }
     if ( mShowAttendees ) {
       Attendee::List attendees = (*it)->attendees();
@@ -574,8 +574,8 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
       if ( attendees.count() == 0 ) {
         attendeeCaption = i18n( "No Attendees" );
       } else {
-        attendeeCaption = i18np( "1 Attendee:", 
-                                 "%1 Attendees:", 
+        attendeeCaption = i18np( "1 Attendee:",
+                                 "%1 Attendees:",
                                  attendees.count() );
       }
       QString attendeeString;
@@ -584,7 +584,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
         if ( !attendeeString.isEmpty() ) {
           attendeeString += '\n';
         }
-        attendeeString += i18nc( 
+        attendeeString += i18nc(
                 "Formatting of an attendee: "
                 "'Name (Role): Status', e.g. 'Reinhold Kainhofer "
                 "<reinhold@kainhofer.com> (Participant): Awaiting Response'",
@@ -592,7 +592,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
                 (*ait)->fullName(), (*ait)->roleStr(), (*ait)->statusStr() );
       }
       drawBoxWithCaption( p, attendeesBox, attendeeCaption, attendeeString,
-                          /*sameLine=*/false, /*expand=*/false, 
+                          /*sameLine=*/false, /*expand=*/false,
                           captionFont, textFont );
     }
 
@@ -624,7 +624,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
         //TODO: Anything Journal-specific?
       }
       drawBoxWithCaption( p, optionsBox, i18n( "Settings: " ),
-             optionsString, /*sameLine=*/false, /*expand=*/false, 
+             optionsString, /*sameLine=*/false, /*expand=*/false,
              captionFont, textFont );
     }
 
@@ -1091,7 +1091,7 @@ void CalPrintMonth::print( QPainter &p, int width, int height )
 
   QRect headerBox( 0, 0, width, headerHeight() );
   QRect monthBox( 0, 0, width, height );
-  monthBox.setTop( headerBox.bottom() + padding() );  
+  monthBox.setTop( headerBox.bottom() + padding() );
 
   do {
     QString title( i18nc( "monthname year", "%1 <numid>%2</numid>",
@@ -1103,7 +1103,7 @@ void CalPrintMonth::print( QPainter &p, int width, int height )
 
     drawHeader( p, title, curMonth.addMonths( -1 ), curMonth.addMonths( 1 ),
                 headerBox );
-    drawMonthTable( p, curMonth, mWeekNumbers, mRecurDaily, mRecurWeekly, 
+    drawMonthTable( p, curMonth, mWeekNumbers, mRecurDaily, mRecurWeekly,
                     mSingleLineLimit, monthBox );
     curMonth = curMonth.addDays( curMonth.daysInMonth() );
     if ( curMonth <= toMonth ) {

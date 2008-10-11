@@ -511,19 +511,19 @@ int CalPrintPluginBase::drawHeader( QPainter &p, const QString &title,
 
 #if 0
   // current month title left justified, prev month, next month right justified
-  QRect monthbox2( box.right()-10-smallMonthWidth, box.top(), 
+  QRect monthbox2( box.right()-10-smallMonthWidth, box.top(),
                    smallMonthWidth, box.height() );
   if ( month2.isValid() ) {
     drawSmallMonth( p, QDate( month2.year(), month2.month(), 1 ), monthbox2 );
     textRect.setRight( monthbox2.left() );
   }
-  QRect monthbox1( monthbox2.left()-10-smallMonthWidth, box.top(), 
+  QRect monthbox1( monthbox2.left()-10-smallMonthWidth, box.top(),
                    smallMonthWidth, box.height() );
   if ( month1.isValid() ) {
     drawSmallMonth( p, QDate( month1.year(), month1.month(), 1 ), monthbox1 );
     textRect.setRight( monthbox1.left() );
   }
-  
+
   // Set the margins
   p.setFont( newFont );
   textRect.adjust( 5, 0, 0, 0 );
@@ -531,7 +531,7 @@ int CalPrintPluginBase::drawHeader( QPainter &p, const QString &title,
   p.setFont( oldFont );
 #endif
   // prev month left, current month centered, next month right
-  QRect monthbox2( box.right()-10-smallMonthWidth, box.top(), 
+  QRect monthbox2( box.right()-10-smallMonthWidth, box.top(),
                    smallMonthWidth, box.height() );
   if ( month2.isValid() ) {
     drawSmallMonth( p, QDate( month2.year(), month2.month(), 1 ), monthbox2 );
@@ -892,7 +892,7 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
   QString dayNumStr;
   QString ampm;
   const KLocale *local = KGlobal::locale();
-  
+
   // This has to be localized
   if ( fullDate && mCalSys ) {
     dayNumStr = i18nc( "weekday month date", "%1 %2 %3",
@@ -931,7 +931,7 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
 
   int textY = mSubHeaderHeight + 1; // gives the relative y-coord of the next printed entry
   Event::List::ConstIterator it;
-  
+
   for ( it = eventList.begin(); it != eventList.end() && textY<box.height(); ++it ) {
     Event *currEvent = *it;
     if ( ( !printRecurDaily  && currEvent->recurrenceType() == Recurrence::rDaily ) ||
@@ -960,7 +960,7 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
       } else {
         text = "";
       }
-      drawIncidence( p, box, text, i18n( "To-do: %1", todo->summary() ), 
+      drawIncidence( p, box, text, i18n( "To-do: %1", todo->summary() ),
                      textY, singleLineLimit );
     }
   }
@@ -984,18 +984,18 @@ void CalPrintPluginBase::drawIncidence( QPainter &p, const QRect &dayBox,
 
   int summaryWidth = time.isEmpty() ? 0 : timeBound.width() + 3;
   QRect summaryBound = QRect( dayBox.x() + 2 + summaryWidth, dayBox.y() + textY,
-                              dayBox.width() - summaryWidth - 2, 
+                              dayBox.width() - summaryWidth - 2,
                               dayBox.height() - textY );
 
-  int lineCount = 1; 
+  int lineCount = 1;
   if ( singleLineLimit ) {
     p.drawText( summaryBound, flags, summary );
   } else {
     KWordWrap *ww = KWordWrap::formatText( fm, summaryBound, flags, summary );
     QString wrappedString = ww->wrappedString();
     p.drawText( summaryBound, flags, wrappedString );
-    for (int i=0; i<wrappedString.size(); ++i) {
-      if (wrappedString[i] == '\n') {
+    for ( int i=0; i<wrappedString.size(); ++i ) {
+      if ( wrappedString[i] == '\n' ) {
         ++lineCount;
       }
     }
@@ -1360,7 +1360,7 @@ void CalPrintPluginBase::drawMonthTable( QPainter &p, const QDate &qd,
       }
       QRect dayBox( coledges[col], rowedges[row],
           coledges[col + 1] - coledges[col], rowedges[row + 1] - rowedges[row] );
-      drawDayBox( p, monthDate, dayBox, false, 
+      drawDayBox( p, monthDate, dayBox, false,
                   recurDaily, recurWeekly, singleLineLimit );
       if ( darkbg ) {
         p.setBackground( back );
