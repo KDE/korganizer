@@ -445,14 +445,14 @@ void CalendarView::readSettings()
   KConfigGroup geometryConfig( config, "KOrganizer Geometry" );
 
   QList<int> sizes = geometryConfig.readEntry( "Separator1",QList<int>() );
-  if ( sizes.count() != 2 ) {
+  if ( sizes.count() != 2 || sizes.count() == sizes.count( 0 ) ) {
     sizes << mDateNavigator->minimumSizeHint().width();
     sizes << 300;
   }
   mPanner->setSizes( sizes );
 
   sizes = geometryConfig.readEntry( "Separator2", QList<int>() );
-  if ( !sizes.isEmpty() ) {
+  if ( !sizes.isEmpty() && sizes.count() != sizes.count( 0 ) ) {
      mLeftSplitter->setSizes( sizes );
   }
 
@@ -478,10 +478,12 @@ void CalendarView::writeSettings()
   KConfigGroup geometryConfig( config, "KOrganizer Geometry" );
 
   QList<int> list = mPanner->sizes();
-  geometryConfig.writeEntry( "Separator1", list );
+  if ( list.count() != list.count( 0 ) ) // splitter sizes are invalid (all zero) unless we have been shown once
+    geometryConfig.writeEntry( "Separator1", list );
 
   list = mLeftSplitter->sizes();
-  geometryConfig.writeEntry( "Separator2", list );
+  if ( list.count() != list.count( 0 ) )
+    geometryConfig.writeEntry( "Separator2", list );
 
   mEventViewer->writeSettings( config );
   mViewManager->writeSettings( config );
