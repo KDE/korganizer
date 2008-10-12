@@ -68,6 +68,8 @@ class KDateNavigator: public QFrame
 
   public slots:
     void selectDates( const KCal::DateList & );
+    void selectPreviousMonth();
+    void selectNextMonth();
     void updateView();
     void updateConfig();
     void updateDayMatrix();
@@ -99,6 +101,7 @@ class KDateNavigator: public QFrame
     void setShowWeekNums( bool enabled );
 
   private:
+    void selectMonthHelper( int monthDifference );
     NavigatorBar *mNavigatorBar;
 
     QLabel *mHeadings[ 7 ];

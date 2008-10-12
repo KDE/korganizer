@@ -139,6 +139,7 @@ void KDateNavigator::updateToday()
   mDayMatrix->recalculateToday();
   mDayMatrix->repaint();
 }
+
 QDate KDateNavigator::startDate() const
 {
   // Find the first day of the week of the current month.
@@ -163,6 +164,7 @@ QDate KDateNavigator::startDate() const
 
   return dayone;
 }
+
 QDate KDateNavigator::endDate() const
 {
   return startDate().addDays( 6*7 );
@@ -237,6 +239,34 @@ void KDateNavigator::setShowWeekNums( bool enabled )
     else
       mWeeknos[i]->hide();
   }
+}
+
+void KDateNavigator::selectMonthHelper( int monthDifference )
+{
+  QDate baseDateNextMonth = KOGlobals::self()->calendarSystem()->addMonths(
+                                            mBaseDate, monthDifference );
+
+  DateList newSelection = mSelectedDates;
+  for ( int i = 0; i < mSelectedDates.count(); i++ ) {
+    newSelection[i] = KOGlobals::self()->calendarSystem()->addMonths(
+                                      newSelection[i], monthDifference );
+  }
+
+  setBaseDate( baseDateNextMonth );
+  mSelectedDates = newSelection;
+  mDayMatrix->setSelectedDaysFrom( *( newSelection.begin() ),
+                                   *( --newSelection.end() ) );
+  updateView();
+}
+
+void KDateNavigator::selectNextMonth()
+{
+  selectMonthHelper( 1 );
+}
+
+void KDateNavigator::selectPreviousMonth()
+{
+  selectMonthHelper( -1 );
 }
 
 void KDateNavigator::selectDates( const DateList &dateList )
