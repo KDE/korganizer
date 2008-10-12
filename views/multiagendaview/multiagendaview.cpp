@@ -44,7 +44,7 @@ MultiAgendaView::MultiAgendaView( Calendar *cal, QWidget *parent )
   topLevelLayout->setMargin( 0 );
 
   QFontMetrics fm( font() );
-  int topLabelHeight = 2 * fm.height();
+  int topLabelHeight = 2 * fm.lineSpacing() + 6; // 3 * 2: spacing in the KOAgendaView
 
   KVBox *topSideBox = new KVBox( this );
   QWidget *topSideSpacer = new QWidget( topSideBox );
@@ -57,7 +57,9 @@ MultiAgendaView::MultiAgendaView( Calendar *cal, QWidget *parent )
   KVBox *sideBox = new KVBox( mLeftSplitter );
   EventIndicator *eiSpacer = new EventIndicator( EventIndicator::Top, sideBox );
   eiSpacer->changeColumns( 0 );
+  QWidget *timeLabelTopAlignmentSpacer = new QWidget( sideBox ); // compensate for the frame the agenda views but not the timelabels have
   mTimeLabelsZone = new TimeLabelsZone( sideBox );
+  QWidget *timeLabelBotAlignmentSpacer = new QWidget( sideBox );
   eiSpacer = new EventIndicator( EventIndicator::Bottom, sideBox );
   eiSpacer->changeColumns( 0 );
   mLeftBottomSpacer = new QWidget( topSideBox );
@@ -66,6 +68,8 @@ MultiAgendaView::MultiAgendaView( Calendar *cal, QWidget *parent )
   mScrollView = new Q3ScrollView( this );
   mScrollView->setResizePolicy( Q3ScrollView::Manual );
   mScrollView->setVScrollBarMode( Q3ScrollView::AlwaysOff );
+  timeLabelTopAlignmentSpacer->setFixedHeight( mScrollView->frameWidth() - 1 ); // asymetric since the timelabels 
+  timeLabelBotAlignmentSpacer->setFixedHeight( mScrollView->frameWidth() - 2 ); // have 25 horizontal lines
   mScrollView->setFrameShape( QFrame::NoFrame );
   topLevelLayout->addWidget( mScrollView, 100 );
   mTopBox = new KHBox( mScrollView->viewport() );
