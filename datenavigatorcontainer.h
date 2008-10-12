@@ -51,6 +51,8 @@ class DateNavigatorContainer: public QFrame
 
   public slots:
     void selectDates( const KCal::DateList & );
+    void selectNextMonth();
+    void selectPreviousMonth();
     void updateView();
     void updateConfig();
     void updateDayMatrix();
@@ -84,6 +86,7 @@ class DateNavigatorContainer: public QFrame
     void resizeAllContents();
 
   private:
+
     KDateNavigator *mNavigatorView;
 
     KCal::Calendar *mCalendar;
@@ -92,6 +95,8 @@ class DateNavigatorContainer: public QFrame
 
     int mHorizontalCount;
     int mVerticalCount;
+
+    bool mIgnoreNavigatorUpdates;
 };
 
 #endif
