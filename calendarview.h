@@ -666,6 +666,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     QMap<Incidence*,KOIncidenceEditor*> mDialogList;
 
     KOrg::IncidenceChangerBase *mChanger;
+    QList<int> mMainSplitterSizes; // temporary store for main splitter sizes while the left frame is hidden
 };
 
 #endif

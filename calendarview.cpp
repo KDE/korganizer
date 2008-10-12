@@ -477,7 +477,7 @@ void CalendarView::writeSettings()
 
   KConfigGroup geometryConfig( config, "KOrganizer Geometry" );
 
-  QList<int> list = mPanner->sizes();
+  QList<int> list = mMainSplitterSizes.isEmpty() ? mPanner->sizes() : mMainSplitterSizes;
   if ( list.count() != list.count( 0 ) ) // splitter sizes are invalid (all zero) unless we have been shown once
     geometryConfig.writeEntry( "Separator1", list );
 
@@ -1779,9 +1779,14 @@ void CalendarView::addExtension( CalendarViewExtension::Factory *factory )
 void CalendarView::showLeftFrame( bool show )
 {
   if ( show ) {
+    mMainSplitterSizes.clear();
     mLeftFrame->show();
     emit calendarViewExpanded( false );
   } else {
+    // splitter sizes of mPanner are useless if mLeftFrame is hidden, so remember them before we hide it
+    if ( mMainSplitterSizes.isEmpty() )
+      mMainSplitterSizes = mPanner->sizes();
+
     mLeftFrame->hide();
     emit calendarViewExpanded( true );
   }
