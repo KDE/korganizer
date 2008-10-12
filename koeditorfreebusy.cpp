@@ -854,9 +854,9 @@ void KOEditorFreeBusy::clearSelection() const
   KDGanttViewItem *item = mGanttView->selectedItem();
   if ( item ) {
     mGanttView->setSelected( item, false );
+    item->repaint();
   }
   mGanttView->repaint();
-  item->repaint();
 }
 
 void KOEditorFreeBusy::changeStatusForMe( KCal::Attendee::PartStat status )
