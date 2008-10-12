@@ -145,7 +145,9 @@ void FilterEdit::updateFilterList()
   if ( mFilters && mFilters->count() > 0 && !current ) {
     filterSelected( mFilters->at( 0 ) );
   }
-  mDeleteButton->setEnabled( !mFilters->isEmpty() );
+  if ( mFilters ) {
+    mDeleteButton->setEnabled( !mFilters->isEmpty() );
+  }
 }
 
 void FilterEdit::saveChanges()
@@ -289,8 +291,7 @@ void FilterEdit::editCategorySelection()
   }
 
   if ( !mCategorySelectDialog ) {
-    mCategorySelectDialog =
-      new KPIM::CategorySelectDialog( KOPrefs::instance(), this, "filterCatSelect" );
+    mCategorySelectDialog = new KPIM::CategorySelectDialog( KOPrefs::instance(), this );
     connect( mCategorySelectDialog, SIGNAL(categoriesSelected(const QStringList&)),
              SLOT(updateCategorySelection(const QStringList&)) );
     connect( mCategorySelectDialog, SIGNAL(editCategories()),
