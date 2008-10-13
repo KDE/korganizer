@@ -670,21 +670,21 @@ void CalPrintPluginBase::drawTimeLine( QPainter &p, const QTime &fromTime,
         p.drawLine( xcenter, (int)newY, box.right(), (int)newY );
         numStr.setNum( curTime.hour() );
         if ( cellHeight > 30 ) {
-          p.setFont( QFont( "sans-serif", 16, QFont::Bold ) );
+          p.setFont( QFont( "sans-serif", 14, QFont::Bold ) );
         } else {
           p.setFont( QFont( "sans-serif", 12, QFont::Bold ) );
         }
-        p.drawText( box.left() + 2, (int)currY + 2, box.width() / 2 - 2, (int)cellHeight,
+        p.drawText( box.left() + 4, (int)currY + 2, box.width() / 2 - 2, (int)cellHeight,
                   Qt::AlignTop | Qt::AlignRight, numStr );
         p.setFont( QFont( "helvetica", 10, QFont::Normal ) );
-        p.drawText( xcenter, (int)currY+2, box.width() / 2 + 2, (int)( cellHeight / 2 ) - 3,
+        p.drawText( xcenter + 4, (int)currY+2, box.width() / 2 + 2, (int)( cellHeight / 2 ) - 3,
                   Qt::AlignTop | Qt::AlignLeft, "00" );
       } else {
         p.drawLine( box.left(), (int)newY, box.right(), (int)newY );
         QTime time( curTime.hour(), 0 );
         numStr = KGlobal::locale()->formatTime( time );
         if ( box.width() < 60 ) {
-          p.setFont( QFont( "sans-serif", 8, QFont::Bold ) ); // for weekprint
+          p.setFont( QFont( "sans-serif", 7, QFont::Bold ) ); // for weekprint
         } else {
           p.setFont( QFont( "sans-serif", 12, QFont::Bold ) ); // for dayprint
         }
@@ -895,9 +895,10 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
 
   // This has to be localized
   if ( fullDate && mCalSys ) {
-    dayNumStr = i18nc( "weekday month date", "%1 %2 %3",
+    dayNumStr = i18nc( "weekday, shortmonthname daynumber",
+                       "%1, %2 <numid>%3</numid>",
                        mCalSys->weekDayName( qd ),
-                       mCalSys->monthName( qd ),
+                       mCalSys->monthName( qd, KCalendarSystem::ShortName ),
                        qd.day() );
   } else {
     dayNumStr = QString::number( qd.day() );
@@ -1688,23 +1689,24 @@ void CalPrintPluginBase::drawSplitHeaderRight( QPainter &p, const QDate &fd,
     }
   }
 
-  QFont serifFont( "Times", 30 );
+  QFont serifFont( "Times", 28 );
   p.setFont( serifFont );
 
   int lineSpacing = p.fontMetrics().lineSpacing();
-  p.drawText( 0, lineSpacing * 0, width, lineSpacing,
+  p.drawText( 0, 0, width, lineSpacing,
               Qt::AlignRight | Qt::AlignTop, title );
 
   title.truncate(0);
 
   p.setPen( pen );
-  p.drawLine( 300, lineSpacing * 1, width, lineSpacing * 1 );
+  p.drawLine( 300, lineSpacing - 4, width, lineSpacing - 4 );
   p.setPen( oldPen );
 
-  p.setFont( QFont( "Times", 20, QFont::Bold, true ) );
+  p.setFont( QFont( "Times", 18, QFont::Bold, true ) );
   int newlineSpacing = p.fontMetrics().lineSpacing();
+
   title += QString::number( fd.year() );
-  p.drawText( 0, lineSpacing * 1 + 4, width, newlineSpacing,
+  p.drawText( 0, lineSpacing - 2, width, newlineSpacing,
               Qt::AlignRight | Qt::AlignTop, title );
 
   p.setFont( oldFont );
