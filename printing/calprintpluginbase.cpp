@@ -1666,7 +1666,7 @@ void CalPrintPluginBase::drawJournal( Journal * journal, QPainter &p, int x, int
 
 void CalPrintPluginBase::drawSplitHeaderRight( QPainter &p, const QDate &fd,
                                                const QDate &td, const QDate &,
-                                               int width, int )
+                                               int width, int height)
 {
   QFont oldFont( p.font() );
 
@@ -1689,8 +1689,10 @@ void CalPrintPluginBase::drawSplitHeaderRight( QPainter &p, const QDate &fd,
     }
   }
 
-  QFont serifFont( "Times", 28 );
-  p.setFont( serifFont );
+  if ( height < 60 )
+    p.setFont( QFont( "Times", 22 ) );
+  else
+    p.setFont( QFont( "Times", 28 ) );
 
   int lineSpacing = p.fontMetrics().lineSpacing();
   p.drawText( 0, 0, width, lineSpacing,
@@ -1699,14 +1701,17 @@ void CalPrintPluginBase::drawSplitHeaderRight( QPainter &p, const QDate &fd,
   title.truncate(0);
 
   p.setPen( pen );
-  p.drawLine( 300, lineSpacing - 4, width, lineSpacing - 4 );
+  p.drawLine( 300, lineSpacing, width, lineSpacing );
   p.setPen( oldPen );
 
-  p.setFont( QFont( "Times", 18, QFont::Bold, true ) );
+  if ( height < 60 )
+    p.setFont( QFont( "Times", 14, QFont::Bold, true ) );
+  else
+    p.setFont( QFont( "Times", 18, QFont::Bold, true ) );
   int newlineSpacing = p.fontMetrics().lineSpacing();
 
   title += QString::number( fd.year() );
-  p.drawText( 0, lineSpacing - 2, width, newlineSpacing,
+  p.drawText( 0, lineSpacing, width, lineSpacing,
               Qt::AlignRight | Qt::AlignTop, title );
 
   p.setFont( oldFont );
