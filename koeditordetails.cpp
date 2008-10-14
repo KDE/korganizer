@@ -240,6 +240,12 @@ void KOEditorDetails::removeAttendee()
       static_cast<AttendeeListItem *>( mListView->selectedItem() );
   if ( !aItem ) return;
 
+  AttendeeListItem *nextSelectedItem = static_cast<AttendeeListItem*>( aItem->nextSibling() );
+  if( mListView->childCount() == 1 )
+      nextSelectedItem = 0;
+  if( mListView->childCount() > 1 && aItem == mListView->lastItem() )
+      nextSelectedItem = static_cast<AttendeeListItem*>(  mListView->firstChild() );
+
   Attendee *delA = new Attendee( aItem->data()->name(), aItem->data()->email(),
                                  aItem->data()->RSVP(), aItem->data()->status(),
                                  aItem->data()->role(), aItem->data()->uid() );
@@ -247,6 +253,8 @@ void KOEditorDetails::removeAttendee()
 
   delete aItem;
 
+  if( nextSelectedItem )
+      mListView->setSelected( nextSelectedItem, true );
   updateAttendeeInput();
   emit updateAttendeeSummary( mListView->childCount() );
 }
