@@ -279,7 +279,7 @@ void TimeLabels::updateConfig()
 
   // update HourSize
   mCellHeight = KOPrefs::instance()->mHourSize * 4;
-  // If the agenda is zoomed out so that more then 24 would be shown,
+  // If the agenda is zoomed out so that more than 24 would be shown,
   // the agenda only shows 24 hours, so we need to take the cell height
   // from the agenda, which is larger than the configured one!
   if ( mCellHeight < 4 * mAgenda->gridSpacingY() ) {

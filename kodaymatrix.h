@@ -72,7 +72,7 @@ using namespace KCal;
  *    are not any longer able to select two distinct groups of date selections
  *    as in the old class)
  *
- *  o now that you can select more then a week it can happen that not all
+ *  o now that you can select more than a week it can happen that not all
  *    selected days are displayed in the matrix. However this is preferred
  *    to the alternative which would mean to adjust the selection and leave
  *    some days undisplayed while scrolling through the months
