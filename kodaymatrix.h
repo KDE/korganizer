@@ -243,7 +243,7 @@ class KODayMatrix: public QFrame, public KCal::Calendar::CalendarObserver
     QColor getShadedColor( const QColor &color ) const;
 
     /** number of days to be displayed. For now there is no support for any
-        other number then 42. so change it at your own risk :o) */
+        other number than 42. so change it at your own risk :o) */
     static const int NUMDAYS;
 
     /** calendar instance to be queried for holidays, events, ... */

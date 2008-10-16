@@ -315,7 +315,7 @@ void POTDElement::step3GetThumbnail()
   int thumbWidth = mThumbSize.width();
   int thumbHeight = static_cast<int>( thumbWidth * mHWRatio );
   if ( mThumbSize.height() < thumbHeight ) {
-    /* if the requested height is less then the requested width * ratio
+    /* if the requested height is less than the requested width * ratio
        we would download too much, as the downloaded picture would be
        taller than requested, so we adjust the width of the picture to
        be downloaded in consequence */
