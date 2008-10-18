@@ -358,12 +358,14 @@ void KOViewManager::showAgendaView()
     showBoth || KOPrefs::instance()->agendaViewCalendarDisplay() == KOPrefs::CalendarsSideBySide;
 
   QWidget *parent = mMainView->viewStack();
-  if ( !mAgendaViewTabs && showBoth ) {
-    mAgendaViewTabs = new KTabWidget( mMainView->viewStack() );
-    connect( mAgendaViewTabs, SIGNAL(currentChanged(QWidget *)),
-             this, SLOT(currentAgendaViewTabChanged(QWidget *)) );
+  if ( showBoth ) {
+    if ( !mAgendaViewTabs && showBoth ) {
+      mAgendaViewTabs = new KTabWidget( mMainView->viewStack() );
+      connect( mAgendaViewTabs, SIGNAL(currentChanged(QWidget *)),
+              this, SLOT(currentAgendaViewTabChanged(QWidget *)) );
+      mMainView->viewStack()->addWidget( mAgendaViewTabs );
+    }
     parent = mAgendaViewTabs;
-    mMainView->viewStack()->addWidget( mAgendaViewTabs );
   }
 
   if ( showMerged ) {
@@ -371,7 +373,7 @@ void KOViewManager::showAgendaView()
       mAgendaView = new KOAgendaView( mMainView->calendar(), parent );
       mAgendaView->setObjectName( "KOViewManager::AgendaView" );
 
-      addView( mAgendaView, mAgendaViewTabs );
+      addView( mAgendaView, showBoth );
 
       connect( mAgendaView,SIGNAL(zoomViewHorizontally(const QDate &,int)),
                mMainView->dateNavigator(), SLOT(selectDates(const QDate &,int)) );
@@ -389,7 +391,7 @@ void KOViewManager::showAgendaView()
     if ( !mAgendaSideBySideView ) {
       mAgendaSideBySideView = new MultiAgendaView( mMainView->calendar(), parent );
       mAgendaSideBySideView->setObjectName( "KOViewManager::AgendaSideBySideView" );
-      addView( mAgendaSideBySideView, mAgendaViewTabs );
+      addView( mAgendaSideBySideView, showBoth );
 
 /*
     connect( mAgendaSideBySideView,SIGNAL(zoomViewHorizontally(const QDate &,int)),
@@ -515,7 +517,7 @@ void KOViewManager::setDocumentId( const QString &id )
 
 QWidget *KOViewManager::widgetForView( KOrg::BaseView *view ) const
 {
-  if ( mAgendaViewTabs && view->parentWidget() == mAgendaViewTabs ) {
+  if ( mAgendaViewTabs && mAgendaViewTabs->indexOf( view ) >= 0 ) {
     return mAgendaViewTabs;
   }
   return view;
