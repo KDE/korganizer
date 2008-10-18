@@ -64,12 +64,11 @@ class MultiAgendaView : public AgendaView
 
     void finishTypeAhead();
 
-    void show();
-
     void resourcesChanged();
 
   protected:
     void resizeEvent( QResizeEvent *ev );
+    void showEvent( QShowEvent *event );
 
   private:
     void addView( const QString &label, KCal::ResourceCalendar *res,
