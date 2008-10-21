@@ -36,7 +36,7 @@ using namespace KOrg;
 
 MultiAgendaView::MultiAgendaView( Calendar *cal, QWidget *parent )
   : AgendaView( cal, parent ),
-    mUpdateOnShow( false ),
+    mUpdateOnShow( true ),
     mPendingChanges( true )
 {
   QBoxLayout *topLevelLayout = new QHBoxLayout( this );
