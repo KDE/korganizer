@@ -68,7 +68,7 @@ MultiAgendaView::MultiAgendaView( Calendar *cal, QWidget *parent )
   mScrollView = new Q3ScrollView( this );
   mScrollView->setResizePolicy( Q3ScrollView::Manual );
   mScrollView->setVScrollBarMode( Q3ScrollView::AlwaysOff );
-  timeLabelTopAlignmentSpacer->setFixedHeight( mScrollView->frameWidth() - 1 ); // asymetric since the timelabels 
+  timeLabelTopAlignmentSpacer->setFixedHeight( mScrollView->frameWidth() - 1 ); // asymetric since the timelabels
   timeLabelBotAlignmentSpacer->setFixedHeight( mScrollView->frameWidth() - 2 ); // have 25 horizontal lines
   mScrollView->setFrameShape( QFrame::NoFrame );
   topLevelLayout->addWidget( mScrollView, 100 );
@@ -458,9 +458,9 @@ void MultiAgendaView::slotResizeScrollView()
   resizeScrollView( size() );
 }
 
-void MultiAgendaView::show()
+void MultiAgendaView::showEvent( QShowEvent *event )
 {
-  AgendaView::show();
+  AgendaView::showEvent( event );
   if ( mUpdateOnShow ) {
     mUpdateOnShow = false;
     mPendingChanges = true; // force a full view recreation
