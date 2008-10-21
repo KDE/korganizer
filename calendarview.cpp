@@ -114,7 +114,8 @@ CalendarView::CalendarView( QWidget *parent )
   : CalendarViewBase( parent ),
     mHistory( 0 ),
     mCalendar( CalendarNull::self() ),
-    mChanger( 0 )
+    mChanger( 0 ),
+    mSplitterSizesValid( false )
 {
   kDebug();
 
@@ -162,6 +163,7 @@ CalendarView::CalendarView( QWidget *parent )
   rightBox->setStretchFactor( mRightFrame, 1 );
 
   mLeftFrame = mLeftSplitter;
+  mLeftFrame->installEventFilter( this );
 
   connect( mNavigator, SIGNAL(datesSelected(const KCal::DateList &)),
            SLOT(showDates(const KCal::DateList &)) );
@@ -483,11 +485,12 @@ void CalendarView::writeSettings()
   KConfigGroup geometryConfig( config, "KOrganizer Geometry" );
 
   QList<int> list = mMainSplitterSizes.isEmpty() ? mPanner->sizes() : mMainSplitterSizes;
-  if ( list.count() != list.count( 0 ) ) // splitter sizes are invalid (all zero) unless we have been shown once
+  // splitter sizes are invalid (all zero) unless we have been shown once
+  if ( list.count() != list.count( 0 ) && mSplitterSizesValid )
     geometryConfig.writeEntry( "Separator1", list );
 
   list = mLeftSplitter->sizes();
-  if ( list.count() != list.count( 0 ) )
+  if ( list.count() != list.count( 0 ) && mSplitterSizesValid )
     geometryConfig.writeEntry( "Separator2", list );
 
   mEventViewer->writeSettings( config );
@@ -2375,6 +2378,14 @@ void CalendarView::resourcesChanged()
 {
   mViewManager->resourcesChanged();
   updateView();
+}
+
+bool CalendarView::eventFilter(QObject * watched, QEvent * event)
+{
+  if ( watched == mLeftFrame && event->type() == QEvent::Show ) {
+    mSplitterSizesValid = true;
+  }
+  return KOrg::CalendarViewBase::eventFilter( watched, event );
 }
 
 #include "calendarview.moc"

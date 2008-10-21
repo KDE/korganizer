@@ -623,6 +623,8 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
                                    const QDateTime &endDtParam=QDateTime(),
                                    bool allDayParam=false );
 
+    bool eventFilter( QObject *watched, QEvent *event );
+
   private:
     void init();
 
@@ -674,6 +676,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
 
     KOrg::IncidenceChangerBase *mChanger;
     QList<int> mMainSplitterSizes; // temporary store for main splitter sizes while the left frame is hidden
+    bool mSplitterSizesValid;
 };
 
 #endif
