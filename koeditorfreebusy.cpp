@@ -838,6 +838,12 @@ void KOEditorFreeBusy::removeAttendee()
     return;
   }
 
+  FreeBusyItem *nextSelectedItem = static_cast<FreeBusyItem*>( item->nextSibling() );
+  if( mGanttView->childCount() == 1 )
+      nextSelectedItem = 0;
+  if( mGanttView->childCount() > 1 && item == mGanttView->lastItem() )
+      nextSelectedItem = static_cast<FreeBusyItem*>(  mGanttView->firstChild() );
+
   Attendee *delA = new Attendee( item->attendee()->name(), item->attendee()->email(),
                                  item->attendee()->RSVP(), item->attendee()->status(),
                                  item->attendee()->role(), item->attendee()->uid() );
@@ -845,6 +851,8 @@ void KOEditorFreeBusy::removeAttendee()
   delete item;
 
   updateStatusSummary();
+  if( nextSelectedItem )
+      mGanttView->setSelected( nextSelectedItem, true );
   updateAttendeeInput();
   emit updateAttendeeSummary( mGanttView->childCount() );
 }
