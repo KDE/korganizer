@@ -1540,7 +1540,8 @@ void ActionManager::uploadNewStuff()
 
   // FIXME (KNS2): use mCalendarView as parent widget
   if( mCalendarView->saveCalendar( tmpfilename ) ) {
-    KNS::Engine::upload( tmpfilename );
+    //Laurent 2008-10-25: comment until KNS::Engine::upload is implemented otherwise it asserts by default... 
+    //KNS::Engine::upload( tmpfilename );
   } else {
     // FIXME (KNS2): display error here
   }
