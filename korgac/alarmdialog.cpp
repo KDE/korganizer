@@ -466,7 +466,7 @@ void AlarmDialog::slotSave()
   while ( *it ) {
     ReminderListItem *item = static_cast<ReminderListItem *>( *it );
     KConfigGroup incidenceConfig( config,
-                                  QString( "Incidence-%1" ).arg( numReminders ) );
+                                  QString( "Incidence-%1" ).arg( numReminders + 1 ) );
     incidenceConfig.writeEntry( "UID", item->mIncidence->uid() );
     incidenceConfig.writeEntry( "RemindAt", item->mRemindAt );
     ++numReminders;
