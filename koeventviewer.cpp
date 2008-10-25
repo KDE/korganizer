@@ -94,7 +94,7 @@ void KOEventViewer::setSource( const QUrl &name )
 
 bool KOEventViewer::appendIncidence( Incidence *incidence )
 {
-  QString codeForIncidence = IncidenceFormatter::extensiveDisplayString( incidence );
+  QString codeForIncidence = IncidenceFormatter::extensiveDisplayStr( incidence, KDateTime::Spec() );
   addText( codeForIncidence );
   return true;
 }
