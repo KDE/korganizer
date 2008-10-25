@@ -29,6 +29,7 @@
 #include "koglobals.h"
 
 #include <libkdepim/kdepimprotocols.h>
+#include <libkdepim/kpimprefs.h>
 
 #include <kcal/incidence.h>
 #include <kcal/incidenceformatter.h>
@@ -94,8 +95,8 @@ void KOEventViewer::setSource( const QUrl &name )
 
 bool KOEventViewer::appendIncidence( Incidence *incidence )
 {
-  QString codeForIncidence = IncidenceFormatter::extensiveDisplayStr( incidence, KDateTime::Spec() );
-  addText( codeForIncidence );
+  addText( IncidenceFormatter::extensiveDisplayStr(
+             incidence, KPIM::KPimPrefs::timeSpec() ) );
   return true;
 }
 
