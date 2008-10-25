@@ -461,19 +461,20 @@ void AlarmDialog::slotSave()
 {
   KSharedConfig::Ptr config = KGlobal::config();
   KConfigGroup generalConfig( config, "General" );
+  int numReminders = generalConfig.readEntry( "Reminders", 0 );
 
   QTreeWidgetItemIterator it( mIncidenceTree );
-  int num = 0;
   while ( *it ) {
     ReminderListItem *item = static_cast<ReminderListItem *>( *it );
     KConfigGroup incidenceConfig( config,
-                                  QString( "Incidence-%1" ).arg( ++num ) );
+                                  QString( "Incidence-%1" ).arg( numReminders + 1 ) );
     incidenceConfig.writeEntry( "UID", item->mIncidence->uid() );
     incidenceConfig.writeEntry( "RemindAt", item->mRemindAt );
+    ++numReminders;
     ++it;
   }
 
-  generalConfig.writeEntry( "Reminders", num );
+  generalConfig.writeEntry( "Reminders", numReminders );
   config->sync();
 }
 
