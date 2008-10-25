@@ -503,22 +503,23 @@ QString IncidenceMonthItem::text( bool end ) const
 {
   QString ret = mIncidence->summary();
   if ( !allDay() ) { // Prepend the time str to the text
-    QTime time;
+    QString timeStr;
     if ( mIsTodo ) {
       Todo *todo = static_cast<Todo*>( mIncidence );
-      time = todo->dtDue().time();
+      timeStr = todo->dtDueTimeStr( true, KOPrefs::instance()->timeSpec() );
     } else {
       if ( !end ) {
-        time = mIncidence->dtStart().time();
+        timeStr = mIncidence->dtStartTimeStr( true, KOPrefs::instance()->timeSpec() );
       } else {
-        time = mIncidence->dtEnd().time();
+        Event *event = static_cast<Event*>( mIncidence );
+        timeStr = event->dtEndTimeStr( true, KOPrefs::instance()->timeSpec() );
       }
     }
-    if ( time.isValid() ) {
+    if ( !timeStr.isEmpty() ) {
       if ( !end ) {
-        ret = KGlobal::locale()->formatTime( time ) + ' ' + ret;
+        ret = timeStr + ' ' + ret;
       } else {
-        ret = ret + ' ' + KGlobal::locale()->formatTime( time );
+        ret = ret + ' ' + timeStr;
       }
     }
   }
@@ -528,7 +529,8 @@ QString IncidenceMonthItem::text( bool end ) const
 
 QString IncidenceMonthItem::toolTipText() const
 {
-  return IncidenceFormatter::toolTipString( mIncidence );
+  return IncidenceFormatter::toolTipStr(
+    mIncidence, true, KOPrefs::instance()->timeSpec() );
 }
 
 QList<QPixmap *> IncidenceMonthItem::icons() const
