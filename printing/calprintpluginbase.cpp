@@ -848,8 +848,9 @@ void CalPrintPluginBase::drawAgendaDayBox( QPainter &p, Event::List &events,
     KOrg::CellItem::placeItem( cells, placeItem );
   }
 
-  while ( it1.hasNext() ) {
-    PrintCellItem *placeItem = static_cast<PrintCellItem *>( it1.next() );
+  QListIterator<KOrg::CellItem *> it2( cells );
+  while ( it2.hasNext() ) {
+    PrintCellItem *placeItem = static_cast<PrintCellItem *>( it2.next() );
     drawAgendaItem( placeItem, p, startPrintDate, endPrintDate, minlen, box );
   }
 }
@@ -880,7 +881,13 @@ void CalPrintPluginBase::drawAgendaItem( PrintCellItem *item, QPainter &p,
       int( box.top() + startPrintDate.secsTo( endTime ) * minlen / 60. ) - currentYPos;
 
     QRect eventBox( currentX, currentYPos, currentWidth, currentHeight );
-    showEventBox( p, eventBox, event, event->summary() );
+    QString str = i18nc( "starttime - endtime summary, location", 
+                         "%1-%2 %3, %4",
+                         KGlobal::locale()->formatTime( startTime.time() ),
+                         KGlobal::locale()->formatTime( endTime.time() ),
+                         event->summary(),
+                         event->location() );
+    showEventBox( p, eventBox, event, str );
   }
 }
 
@@ -893,7 +900,6 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
   QString ampm;
   const KLocale *local = KGlobal::locale();
 
-  // This has to be localized
   if ( fullDate && mCalSys ) {
     dayNumStr = i18nc( "weekday, shortmonthname daynumber",
                        "%1, %2 <numid>%3</numid>",
@@ -1708,7 +1714,6 @@ void CalPrintPluginBase::drawSplitHeaderRight( QPainter &p, const QDate &fd,
     p.setFont( QFont( "Times", 14, QFont::Bold, true ) );
   else
     p.setFont( QFont( "Times", 18, QFont::Bold, true ) );
-  int newlineSpacing = p.fontMetrics().lineSpacing();
 
   title += QString::number( fd.year() );
   p.drawText( 0, lineSpacing, width, lineSpacing,

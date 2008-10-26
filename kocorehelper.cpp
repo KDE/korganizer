@@ -28,6 +28,9 @@
 
 QColor KOCoreHelper::categoryColor( const QStringList &categories )
 {
+  if ( categories.isEmpty() ) {
+    return defaultEventColor();
+  }
   // FIXME: Correctly treat events with multiple categories
   QString cat = categories.first();
   QColor bgColor;
