@@ -28,7 +28,7 @@ AgendaView::AgendaView( Calendar *cal, QWidget *parent )
   if ( calres ) {
     connect( calres, SIGNAL(signalResourceAdded(ResourceCalendar *)),
              SLOT(resourcesChanged()) );
-    connect( calres, SIGNAL(signalResourceModified( ResourceCalendar *)),
+    connect( calres, SIGNAL(signalResourceModified(ResourceCalendar *)),
              SLOT(resourcesChanged()) );
     connect( calres, SIGNAL(signalResourceDeleted(ResourceCalendar *)),
              SLOT(resourcesChanged()) );
