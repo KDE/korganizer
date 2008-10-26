@@ -759,7 +759,7 @@ void CalPrintWeek::print( QPainter &p, int width, int height )
   // correct begin and end to first and last day of week
   int weekdayCol = weekdayColumn( mFromDate.dayOfWeek() );
   fromWeek = mFromDate.addDays( -weekdayCol );
-  weekdayCol = weekdayColumn( mFromDate.dayOfWeek() );
+  weekdayCol = weekdayColumn( mToDate.dayOfWeek() );
   toWeek = mToDate.addDays( 6 - weekdayCol );
 
   curWeek = fromWeek.addDays( 6 );
