@@ -397,7 +397,7 @@ void ResourceView::addResource()
     if ( resource->isActive() && ( !resource->open() || !resource->load() ) ) {
       // ### There is a resourceLoadError() signal declared in ResourceCalendar
       //     but no subclass seems to make use of it. We could do better.
-      KMessageBox::error( this, i18n("Unable to create the resource.", type ) );
+      KMessageBox::error( this, i18n("Unable to create the resource." ) );
       success = false;
     }
   }
