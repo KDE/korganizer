@@ -161,6 +161,10 @@
       <whatsthis>Enter the reminder time here.</whatsthis>
       <default>3</default>
     </entry>
+    <entry type="Bool" name="ShowTimeZoneSelectorInIncidenceEditor">
+      <label>Show timezone selectors in the event and todo editor dialog.</label>
+      <default>false</default>
+    </entry>
   </group>
 
   <group name="Views">

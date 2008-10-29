@@ -124,6 +124,10 @@ void KOEditorGeneralEvent::initTime( QWidget *parent, QBoxLayout *topLayout )
                             "It will also affect recurrences" );
   mTimeZoneComboStart = new KPIM::KTimeZoneComboBox( timeGroupBox );
   mTimeZoneComboEnd = new KPIM::KTimeZoneComboBox( timeGroupBox );
+  if ( !KOPrefs::instance()->showTimeZoneSelectorInIncidenceEditor() ) {
+    mTimeZoneComboStart->hide();
+    mTimeZoneComboEnd->hide();
+  } 
   layoutTimeBox->addWidget( mTimeZoneComboStart, 0, 3 );
   layoutTimeBox->addWidget( mTimeZoneComboEnd, 1, 3 );
   mTimeZoneComboStart->setWhatsThis( whatsThis );
