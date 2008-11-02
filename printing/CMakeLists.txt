@@ -15,7 +15,7 @@ kde4_add_library(kocorehelper SHARED ${kocorehelper_LIB_SRCS})
 target_link_libraries(kocorehelper  ${KDE4_KDEUI_LIBS} )
 
 set_target_properties(kocorehelper PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
-install(TARGETS kocorehelper  DESTINATION ${LIB_INSTALL_DIR})
+install(TARGETS kocorehelper ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 
 ########### next target ###############
@@ -36,4 +36,4 @@ kde4_add_library(korg_stdprinting SHARED ${korg_stdprinting_LIB_SRCS})
 target_link_libraries(korg_stdprinting ${KDE4_KUTILS_LIBS} kocorehelper kdepim ${KDE4_KCAL_LIBS} ${QT_QT3SUPPORT_LIBRARY})
 
 set_target_properties(korg_stdprinting PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
-install(TARGETS korg_stdprinting  DESTINATION ${LIB_INSTALL_DIR})
+install(TARGETS korg_stdprinting ${INSTALL_TARGETS_DEFAULT_ARGS})

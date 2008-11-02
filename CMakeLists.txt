@@ -40,7 +40,7 @@ kde4_add_executable(korganizer ${korganizer_SRCS})
 
 target_link_libraries(korganizer ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBS} ${KDE4_KPARTS_LIBRARY} ${KDE4_KCAL_LIBS} kdepim korganizerprivate)
 
-install(TARGETS korganizer  DESTINATION ${BIN_INSTALL_DIR} )
+install(TARGETS korganizer ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 
 ########### next target ###############   # FIXME to be removed! (only needed for testing before copying everything to korganizer)
@@ -58,7 +58,7 @@ set_target_properties(theme_bin  PROPERTIES OUTPUT_NAME thememain)
 
 target_link_libraries(theme_bin ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBS} ${KDE4_KIO_LIBS} korganizerprivate)
 
-install(TARGETS theme_bin  DESTINATION ${BIN_INSTALL_DIR} )
+install(TARGETS theme_bin ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 
 ########### next target ###############
@@ -109,7 +109,7 @@ add_dependencies(korganizer_eventviewer kmail_xml)
 target_link_libraries(korganizer_eventviewer ${KDE4_KPARTS_LIBS} ${KDE4_KCAL_LIBS} kdepim)
 
 set_target_properties(korganizer_eventviewer PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
-install(TARGETS korganizer_eventviewer  DESTINATION ${LIB_INSTALL_DIR})
+install(TARGETS korganizer_eventviewer ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 
 ########### next target ###############
@@ -122,7 +122,7 @@ kde4_add_library(korganizer_calendar SHARED ${korganizer_calendar_LIB_SRCS})
 target_link_libraries(korganizer_calendar ${KDE4_KPARTS_LIBS} ${KDE4_KCAL_LIBS} kdepim)
 
 set_target_properties(korganizer_calendar PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
-install(TARGETS korganizer_calendar  DESTINATION ${LIB_INSTALL_DIR})
+install(TARGETS korganizer_calendar ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 
 ########### next target ###############
@@ -239,7 +239,7 @@ target_link_libraries(korganizerprivate ${KDE4_KNEWSTUFF2_LIBS} ${KDE4_KABC_LIBS
 
 set_target_properties(korganizerprivate PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
 
-install(TARGETS korganizerprivate  DESTINATION ${LIB_INSTALL_DIR})
+install(TARGETS korganizerprivate ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 
 ########### install files ###############
