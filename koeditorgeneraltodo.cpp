@@ -109,10 +109,16 @@ void KOEditorGeneralTodo::initTime( QWidget *parent, QBoxLayout *topLayout )
   QString whatsThis = i18n( "Select the timezone for this event. It will also affect recurrences" );
   mTimeZoneComboStart = new KPIM::KTimeZoneComboBox( timeGroupBox );
   mTimeZoneComboDue = new KPIM::KTimeZoneComboBox( timeGroupBox );
+  if ( !KOPrefs::instance()->showTimeZoneSelectorInIncidenceEditor() ) {
+    mTimeZoneComboStart->hide();
+    mTimeZoneComboDue->hide();
+  }
   layoutTimeBox->addWidget( mTimeZoneComboStart, 0, 3 );
   layoutTimeBox->addWidget( mTimeZoneComboDue, 1, 3 );
   mTimeZoneComboStart->setWhatsThis( whatsThis );
   mTimeZoneComboDue->setWhatsThis( whatsThis );
+  mTimeZoneComboStart->selectLocalTimeSpec();
+  mTimeZoneComboDue->selectLocalTimeSpec();
 
   whatsThis = i18n( "Sets the start date for this to-do" );
   mStartCheck = new QCheckBox( i18nc( "@option:check to-do start datetime",
