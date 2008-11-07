@@ -75,7 +75,8 @@ void KOEditorGeneralTodo::finishSetup()
   QWidget::setTabOrder( mDueCheck, mDueDateEdit );
   QWidget::setTabOrder( mDueDateEdit, mDueTimeEdit );
   QWidget::setTabOrder( mDueTimeEdit, mTimeButton );
-  QWidget::setTabOrder( mTimeButton, mCompletedCombo );
+  QWidget::setTabOrder( mTimeButton, mTimeZoneAssociated );
+  QWidget::setTabOrder( mTimeZoneAssociated, mCompletedCombo );
   QWidget::setTabOrder( mCompletedCombo, mPriorityCombo );
   QWidget::setTabOrder( mPriorityCombo, mAlarmButton );
   QWidget::setTabOrder( mAlarmButton, mAlarmTimeEdit );
@@ -106,13 +107,13 @@ void KOEditorGeneralTodo::initTime( QWidget *parent, QBoxLayout *topLayout )
   layoutTimeBox->setSpacing( KDialog::spacingHint() );
 
   // Timezone
+  mTimeZoneAssociated = new QCheckBox( i18n( "Show timezones" ), timeGroupBox );
+  mTimeZoneAssociated->setWhatsThis( i18n( "Show timezone selectors") );
+  layoutTimeBox->addWidget( mTimeZoneAssociated, 2, 3, 1, 2 );
+  connect( mTimeZoneAssociated, SIGNAL( toggled( bool ) ), SLOT(showTimeZones( bool ) ) );
   QString whatsThis = i18n( "Select the timezone for this event. It will also affect recurrences" );
   mTimeZoneComboStart = new KPIM::KTimeZoneComboBox( timeGroupBox );
   mTimeZoneComboDue = new KPIM::KTimeZoneComboBox( timeGroupBox );
-  if ( !KOPrefs::instance()->showTimeZoneSelectorInIncidenceEditor() ) {
-    mTimeZoneComboStart->hide();
-    mTimeZoneComboDue->hide();
-  }
   layoutTimeBox->addWidget( mTimeZoneComboStart, 0, 3 );
   layoutTimeBox->addWidget( mTimeZoneComboDue, 1, 3 );
   mTimeZoneComboStart->setWhatsThis( whatsThis );
@@ -160,7 +161,7 @@ void KOEditorGeneralTodo::initTime( QWidget *parent, QBoxLayout *topLayout )
   mTimeButton = new QCheckBox( i18n( "Ti&me associated" ), timeGroupBox );
   mTimeButton->setWhatsThis(
     i18n( "Set if this to-do's start and due dates have times associated with them." ) );
-  layoutTimeBox->addWidget( mTimeButton, 2, 0, 1, 3 );
+  layoutTimeBox->addWidget( mTimeButton, 2, 0, 1, 2 );
 
   connect( mTimeButton, SIGNAL(toggled(bool)), SLOT(enableTimeEdits(bool)));
   connect( mTimeButton, SIGNAL(toggled(bool)), SLOT(dateChanged()) );
@@ -169,6 +170,13 @@ void KOEditorGeneralTodo::initTime( QWidget *parent, QBoxLayout *topLayout )
            this, SLOT(startDateModified()) );
   connect( mTimeZoneComboDue, SIGNAL(currentIndexChanged(int)),
            this, SLOT(dateChanged()) );
+
+  if( KOPrefs::instance()->showTimeZoneSelectorInIncidenceEditor() ) {
+    mTimeZoneAssociated->setChecked( true );
+    showTimeZones( true );
+  } else {
+    showTimeZones( false );
+  }
 
   // some more layouting
   layoutTimeBox->setColumnStretch( 3, 1 );
@@ -469,6 +477,12 @@ void KOEditorGeneralTodo::enableTimeEdits( bool enable )
     mTimeZoneComboDue->setEnabled( enable );
     mTimeZoneComboDue->setFloating( !enable, mDueSpec );
   }
+}
+
+void KOEditorGeneralTodo::showTimeZones( bool enable )
+{
+  mTimeZoneComboStart->setVisible( enable );
+  mTimeZoneComboDue->setVisible( enable );
 }
 
 void KOEditorGeneralTodo::showAlarm()

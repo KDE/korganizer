@@ -79,7 +79,8 @@ void KOEditorGeneralEvent::finishSetup()
   QWidget::setTabOrder( mStartTimeEdit, mEndDateEdit );
   QWidget::setTabOrder( mEndDateEdit, mEndTimeEdit );
   QWidget::setTabOrder( mEndTimeEdit, mHasTimeCheckbox );
-  QWidget::setTabOrder( mHasTimeCheckbox, mAlarmButton );
+  QWidget::setTabOrder( mHasTimeCheckbox, mTimeZoneAssociated );
+  QWidget::setTabOrder( mTimeZoneAssociated,mAlarmButton );
   QWidget::setTabOrder( mAlarmButton, mAlarmTimeEdit );
   QWidget::setTabOrder( mAlarmTimeEdit, mAlarmIncrCombo );
 //   QWidget::setTabOrder( mAlarmIncrCombo, mAlarmSoundButton );
@@ -124,10 +125,7 @@ void KOEditorGeneralEvent::initTime( QWidget *parent, QBoxLayout *topLayout )
                             "It will also affect recurrences" );
   mTimeZoneComboStart = new KPIM::KTimeZoneComboBox( timeGroupBox );
   mTimeZoneComboEnd = new KPIM::KTimeZoneComboBox( timeGroupBox );
-  if ( !KOPrefs::instance()->showTimeZoneSelectorInIncidenceEditor() ) {
-    mTimeZoneComboStart->hide();
-    mTimeZoneComboEnd->hide();
-  } 
+
   layoutTimeBox->addWidget( mTimeZoneComboStart, 0, 3 );
   layoutTimeBox->addWidget( mTimeZoneComboEnd, 1, 3 );
   mTimeZoneComboStart->setWhatsThis( whatsThis );
@@ -151,8 +149,21 @@ void KOEditorGeneralEvent::initTime( QWidget *parent, QBoxLayout *topLayout )
   layoutTimeBox->addWidget( mHasTimeCheckbox, 0, 4 );
   connect( mHasTimeCheckbox, SIGNAL(toggled(bool)), SLOT(slotHasTimeCheckboxToggled(bool)) );
 
+  mTimeZoneAssociated = new QCheckBox( i18n( "Show timezones"), timeGroupBox );
+  layoutTimeBox->addWidget( mTimeZoneAssociated, 1,4 );
+
+  if ( KOPrefs::instance()->showTimeZoneSelectorInIncidenceEditor() ) {
+    mTimeZoneAssociated->setChecked( true );
+    showTimeZones ( true );
+  } else {
+    mTimeZoneAssociated->setChecked( false );
+    showTimeZones ( false );
+  }
+
   mDurationLabel = new QLabel( timeGroupBox );
-  layoutTimeBox->addWidget( mDurationLabel, 1, 4 );
+  layoutTimeBox->addWidget( mDurationLabel, 2, 0, 1, 2 );
+
+  connect( mTimeZoneAssociated, SIGNAL(toggled(bool)), SLOT(showTimeZones(bool)));
 
   // time widgets are checked if they contain a valid time
   connect( mStartTimeEdit, SIGNAL(timeChanged(QTime)),
@@ -172,7 +183,7 @@ void KOEditorGeneralEvent::initTime( QWidget *parent, QBoxLayout *topLayout )
            this, SLOT(endSpecChanged()) );
 
   QBoxLayout *recLayout = new QHBoxLayout();
-  layoutTimeBox->addMultiCellLayout( recLayout, 2, 2, 1, 4 );
+  layoutTimeBox->addMultiCellLayout( recLayout, 2, 2, 3, 5 );
   mRecurrenceSummary = new QLabel( QString(), timeGroupBox );
   recLayout->addWidget( mRecurrenceSummary );
   QPushButton *recEditButton = new QPushButton( i18n( "Edit..." ), timeGroupBox );
@@ -183,7 +194,7 @@ void KOEditorGeneralEvent::initTime( QWidget *parent, QBoxLayout *topLayout )
   QLabel *label = new QLabel( i18n( "Reminder:" ), timeGroupBox );
   layoutTimeBox->addWidget( label, 3, 0 );
   QBoxLayout *alarmLineLayout = new QHBoxLayout();
-  layoutTimeBox->addMultiCellLayout( alarmLineLayout, 3, 3, 1, 3 );
+  layoutTimeBox->addMultiCellLayout( alarmLineLayout, 3, 3, 1, 5 );
   initAlarm( timeGroupBox, alarmLineLayout );
   alarmLineLayout->addStretch( 1 );
 
@@ -260,6 +271,12 @@ void KOEditorGeneralEvent::setTimeEditorsEnabled( bool enabled )
 
   setDuration();
   emitDateTimeStr();
+}
+
+void KOEditorGeneralEvent::showTimeZones(bool enabled)
+{
+  mTimeZoneComboStart->setVisible( enabled );
+  mTimeZoneComboEnd->setVisible( enabled );
 }
 
 void KOEditorGeneralEvent::slotHasTimeCheckboxToggled( bool checked )
