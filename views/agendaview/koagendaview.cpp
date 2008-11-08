@@ -174,6 +174,7 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent, bool isSideBySide ) 
   mTimeBarHeaderFrame = new KHBox( mAllDayFrame );
 
   // The widget itself
+  QWidget *dummyAllDayLeft = new QWidget( mAllDayFrame );
   mAllDayAgenda = new KOAgenda( 1, mAllDayFrame );
   QWidget *dummyAllDayRight = new QWidget( mAllDayFrame );
 
@@ -238,6 +239,8 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent, bool isSideBySide ) 
   }
 
   updateTimeBarWidth();
+  // resize dummy widget so the allday agenda lines up with the hourly agenda
+  dummyAllDayLeft->setFixedWidth( mTimeLabelsZone->width() - mTimeBarHeaderFrame->width() );
 
   /* Update widgets to reflect user preferences */
 //  updateConfig();
@@ -369,7 +372,7 @@ void KOAgendaView::zoomInHorizontally( const QDate &date )
   if( !dateToZoom.isValid() ) {
     if ( ndays > 1 ) {
       newBegin = begin.addDays(1);
-      count = ndays-1;
+      count = ndays - 1;
       emit zoomViewHorizontally ( newBegin, count );
     }
   } else {
@@ -396,15 +399,15 @@ void KOAgendaView::zoomOutHorizontally( const QDate &date )
 
   // zoom with Action and are there a selected Incidence?, Yes, I zoom out to it.
   if ( ! dateToZoom.isValid () ) {
-    dateToZoom=mAgenda->selectedIncidenceDate();
+    dateToZoom = mAgenda->selectedIncidenceDate();
   }
 
   if ( !dateToZoom.isValid() ) {
     newBegin = begin.addDays( -1 );
-    count = ndays+3 ;
+    count = ndays + 3 ;
   } else {
     newBegin = dateToZoom.addDays( -ndays / 2 - 1 );
-    count = ndays+3;
+    count = ndays + 3;
   }
 
   if ( abs( count ) >= 31 ) {
@@ -460,11 +463,15 @@ void KOAgendaView::createDayLabels()
   delete mBottomDayLabels;
 
   mDayLabels = new QFrame ( mDayLabelsFrame );
+  mDayLabelsFrame->setStretchFactor( mDayLabels, 1 );
   mLayoutDayLabels = new QHBoxLayout( mDayLabels );
   mLayoutDayLabels->setMargin( 0 );
+  // this spacer moves the day labels over to line up with the day columns
+  QSpacerItem *spacer =
+    new QSpacerItem( mTimeLabelsZone->timeLabelsWidth(), 1, QSizePolicy::Fixed );
+  mLayoutDayLabels->addSpacerItem( spacer );
   KVBox *weekLabelBox = new KVBox( mDayLabels );
   mLayoutDayLabels->addWidget( weekLabelBox );
-  weekLabelBox->setFixedWidth( mTimeLabelsZone->width() - mAgendaLayout->horizontalSpacing() );
   if ( mIsSideBySide ) {
     weekLabelBox->hide();
   }
@@ -475,8 +482,6 @@ void KOAgendaView::createDayLabels()
   mLayoutBottomDayLabels->setMargin( 0 );
   KVBox *bottomWeekLabelBox = new KVBox( mBottomDayLabels );
   mLayoutBottomDayLabels->addWidget( bottomWeekLabelBox );
-  bottomWeekLabelBox->setFixedWidth( mTimeLabelsZone->width() -
-                                     mAgendaLayout->horizontalSpacing() );
 
   const KCalendarSystem *calsys = KOGlobals::self()->calendarSystem();
 
