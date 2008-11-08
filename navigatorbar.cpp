@@ -176,7 +176,6 @@ void NavigatorBar::selectMonth()
   // every year can have different month names (in some calendar systems)
   const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
 
-  int i;
   int month = calSys->month( mDate );
   int year = calSys->year( mDate );
   int months = calSys->monthsInYear( mDate );
@@ -185,7 +184,7 @@ void NavigatorBar::selectMonth()
   QList<QAction *>act;
 
   QAction *activateAction = 0;
-  for ( i=1; i <= months; ++i ) {
+  for ( int i=1; i <= months; ++i ) {
     QAction *monthAction = menu->addAction( calSys->monthName( i, year ) );
     act.append( monthAction );
     if ( i == month ) {
@@ -197,7 +196,7 @@ void NavigatorBar::selectMonth()
   }
   QAction *selectedAct = menu->exec( mMonth->mapToGlobal( QPoint( 0, 0 ) ) );
   if ( selectedAct && ( selectedAct != activateAction ) ) {
-    for ( i=0; i < months; i++ ) {
+    for ( int i=0; i < months; i++ ) {
       if ( act[i] == selectedAct ) {
         emit goMonth( i + 1 );
       }
@@ -212,7 +211,6 @@ void NavigatorBar::selectYear()
 {
   const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
 
-  int i;
   int year = calSys->year( mDate );
   int years = 11;  // odd number (show a few years ago -> a few years from now)
   int minYear = year - ( years / 3 );
@@ -223,7 +221,7 @@ void NavigatorBar::selectYear()
   QString yearStr;
   QAction *activateAction = 0;
   int y = minYear;
-  for ( i=0; i < years; i++ ) {
+  for ( int i=0; i < years; i++ ) {
     QAction *yearAction = menu->addAction( yearStr.setNum( y ) );
     act.append( yearAction );
     if ( y == year ) {
@@ -237,7 +235,7 @@ void NavigatorBar::selectYear()
   QAction *selectedAct = menu->exec( mYear->mapToGlobal( QPoint( 0, 0 ) ) );
   if ( selectedAct && ( selectedAct != activateAction ) ) {
     int y = minYear;
-    for ( i=0; i < years; ++i ) {
+    for ( int i=0; i < years; i++ ) {
       if ( act[i] == selectedAct ) {
         emit goYear( y );
       }
