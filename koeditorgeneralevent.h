@@ -96,7 +96,6 @@ class KOEditorGeneralEvent : public KOEditorGeneral
     void startSpecChanged();
     void endSpecChanged();
     void emitDateTimeStr();
-    void showTimeZones(bool enabled);
 
   signals:
     void allDayChanged(bool);
@@ -115,7 +114,6 @@ class KOEditorGeneralEvent : public KOEditorGeneral
     KPIM::KTimeEdit         *mEndTimeEdit;
     QLabel                  *mDurationLabel;
     QCheckBox               *mHasTimeCheckbox;
-    QCheckBox               *mTimeZoneAssociated;
     KComboBox               *mFreeTimeCombo;
     QLabel                  *mRecurrenceSummary;
     KPIM::KTimeZoneComboBox *mTimeZoneComboStart;

@@ -86,7 +86,6 @@ class KOEditorGeneralTodo : public KOEditorGeneral
     void enableDueEdit( bool enable );
     void enableStartEdit( bool enable );
     void enableTimeEdits( bool enable );
-    void showTimeZones( bool enable );
     void showAlarm();
 
   protected:
@@ -105,7 +104,6 @@ class KOEditorGeneralTodo : public KOEditorGeneral
     KPIM::KTimeEdit         *mStartTimeEdit;
     QCheckBox               *mTimeButton;
     QCheckBox               *mDueCheck;
-    QCheckBox               *mTimeZoneAssociated;
     KPIM::KDateEdit         *mDueDateEdit;
     KPIM::KTimeEdit         *mDueTimeEdit;
     KComboBox               *mCompletedCombo;
