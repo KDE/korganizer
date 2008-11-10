@@ -1050,7 +1050,7 @@ void CalendarView::newJournal( const QString &text, const QDate &date )
   if ( !text.isEmpty() ) {
     journalEditor->setTexts( text );
   } else {
-    journalEditor->setTexts( i18n( "Journal for %1", journalDate.toString( Qt::LocaleDate ) ) );
+    journalEditor->setTexts( i18nc( "Journal for DATE", "Journal for %1", journalDate.toString( Qt::LocaleDate ) ) );
   }
   journalEditor->show();
 }
@@ -1448,7 +1448,7 @@ void CalendarView::schedule( iTIPMethod method, Incidence *incidence )
   // Send the mail
   KCal::MailScheduler scheduler( mCalendar );
   if ( !scheduler.performTransaction( incidence, method ) ) {
-    KMessageBox::information( this, i18n( "The groupware message for item '%1'"
+    KMessageBox::information( this, i18n( "The groupware message for item '%1' "
                                           "was successfully sent.\nMethod: %2",
                                           incidence->summary(),
                                           Scheduler::methodName( method ) ),
