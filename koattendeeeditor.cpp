@@ -63,13 +63,13 @@ void KOAttendeeEditor::initOrganizerWidgets( QWidget *parent, QBoxLayout *layout
                             "the organizer of this to-do or event. "
                             "Identities can be set in the 'Personal' section "
                             "of the KOrganizer configuration, or in the "
-                            "'Security & Privacy'->'Password & User Account' "
-                            "section of the KDE Control Center. In addition, "
+                            "'Personal'->'About Me'->'Password & User Account' "
+                            "section of the System Settings. In addition, "
                             "identities are gathered from your KMail settings "
                             "and from your address book. If you choose "
-                            "to set it globally for KDE in the Control Center, "
+                            "to set it globally for KDE in the System Settings, "
                             "be sure to check 'Use email settings from "
-                            "Control Center' in the 'Personal' section of the "
+                            "System Settings' in the 'Personal' section of the "
                             "KOrganizer configuration." );
   mOrganizerLabel = new QLabel( i18n( "Identity as organizer:" ), mOrganizerHBox );
   mOrganizerCombo = new KComboBox( mOrganizerHBox );

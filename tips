@@ -1,6 +1,7 @@
 <tip category="KOrganizer|General">
 <html>
-<p>...that you can select whether the week starts on Monday or on Sunday in the KDE Control Center? KOrganizer uses this setting. Look at Regional & Accessibility->Country/Region & Languages in the KDE Control Center, or select <b>Settings</b>,
+<p>...that you can select whether the week starts on Monday or on Sunday in the System Settings? KOrganizer uses this setting. Look at 
+Regional & Language->Country/Region & Languages in the System Settings, or select <b>Settings</b>,
 <b>Configure Date & Time...</b> from the menu bar. Select the Time & Dates tab.
 </p>
 </html>
