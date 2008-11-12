@@ -881,10 +881,10 @@ void CalPrintPluginBase::drawAgendaItem( PrintCellItem *item, QPainter &p,
       int( box.top() + startPrintDate.secsTo( endTime ) * minlen / 60. ) - currentYPos;
 
     QRect eventBox( currentX, currentYPos, currentWidth, currentHeight );
-    QString str = i18nc( "starttime - endtime summary, location", 
+    QString str = i18nc( "starttime - endtime summary, location",
                          "%1-%2 %3, %4",
-                         KGlobal::locale()->formatTime( startTime.time() ),
-                         KGlobal::locale()->formatTime( endTime.time() ),
+                         KGlobal::locale()->formatTime( startTime.toLocalZone().time() ),
+                         KGlobal::locale()->formatTime( endTime.toLocalZone().time() ),
                          event->summary(),
                          event->location() );
     showEventBox( p, eventBox, event, str );
@@ -948,7 +948,7 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
     if ( currEvent->allDay() || currEvent->isMultiDay() ) {
       text = "";
     } else {
-      text = local->formatTime( currEvent->dtStart().time() ) + ' ';
+      text = local->formatTime( currEvent->dtStart().toLocalZone().time() ) + ' ';
     }
     drawIncidence( p, box, text, currEvent->summary(), textY, singleLineLimit );
   }
@@ -963,7 +963,7 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
         continue;
       }
       if ( todo->hasDueDate() && !todo->allDay() ) {
-        text += KGlobal::locale()->formatTime( todo->dtDue().time() ) + ' ';
+        text += KGlobal::locale()->formatTime( todo->dtDue().toLocalZone().time() ) + ' ';
       } else {
         text = "";
       }
@@ -1519,7 +1519,7 @@ void CalPrintPluginBase::drawTodo( int &count, Todo *todo, QPainter &p,
 
   // due date
   if ( todo->hasDueDate() && posDueDt>=0 ) {
-    outStr = local->formatDate( todo->dtDue().date(), KLocale::ShortDate );
+    outStr = local->formatDate( todo->dtDue().toLocalZone().date(), KLocale::ShortDate );
     rect = p.boundingRect( posDueDt, y, x + width, -1,
                            Qt::AlignTop | Qt::AlignLeft, outStr );
     p.drawText( rect, Qt::AlignTop | Qt::AlignLeft, outStr );
@@ -1636,7 +1636,7 @@ void CalPrintPluginBase::drawJournal( Journal * journal, QPainter &p, int x, int
   p.setFont( QFont( "sans-serif", 15 ) );
   QString headerText;
   QString dateText( KGlobal::locale()->
-        formatDate( journal->dtStart().date(), KLocale::LongDate ) );
+        formatDate( journal->dtStart().toLocalZone().date(), KLocale::LongDate ) );
 
   if ( journal->summary().isEmpty() ) {
     headerText = dateText;
