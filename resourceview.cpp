@@ -25,6 +25,7 @@
 
 #include "resourceview.h"
 
+#include <dcopref.h>
 #include <kcolordialog.h>
 #include <kdialog.h>
 #include <klistview.h>
@@ -37,6 +38,7 @@
 #include <kresources/resource.h>
 #include <kresources/configdialog.h>
 #include <libkcal/calendarresources.h>
+#include <kconfig.h>
 
 #include <qhbox.h>
 #include <qheader.h>
@@ -518,19 +520,41 @@ void ResourceView::removeResource()
 
 void ResourceView::editResource()
 {
+  bool ok = false;
   ResourceItem *item = currentItem();
   if (!item) return;
   ResourceCalendar *resource = item->resource();
 
-  KRES::ConfigDialog dlg( this, QString("calendar"), resource,
+   if ( item->isSubresource() ) {
+     if ( resource->type() == "imap" || resource->type() == "scalix" ) {
+        QString identifier = item->resourceIdentifier();
+        const QString newResourceName = KInputDialog::getText( i18n( "Rename Subresource" ),
+               i18n( "Please enter a new name for the subresource" ), item->text(),
+                    &ok, this );
+        if ( !ok )
+          return;
+
+        DCOPRef ref( "kmail", "KMailICalIface" );
+        DCOPReply reply = ref.call( "changeResourceUIName", identifier, newResourceName );
+        if ( !reply.isValid() ) {
+           kdDebug() << "DCOP Call changeResourceUIName() failed " << endl;
+        }
+     } else {
+           KMessageBox::sorry( this,
+                               i18n ("<qt>Cannot edit the subresource <b>%1</b>.</qt>").arg( item->resource()->name() ) );
+       }
+   } else {
+     KRES::ConfigDialog dlg( this, QString("calendar"), resource,
                           "KRES::ConfigDialog" );
 
-  if ( dlg.exec() ) {
-    item->setText( 0, resource->resourceName() );
+     if ( dlg.exec() ) {
+       item->setText( 0, resource->resourceName() );
 
-    mCalendar->resourceManager()->change( resource );
-  }
-  emitResourcesChanged();
+      mCalendar->resourceManager()->change( resource );
+     }
+   }
+   emitResourcesChanged();
+
 }
 
 void ResourceView::currentChanged( QListViewItem *item )
