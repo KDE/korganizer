@@ -1241,14 +1241,14 @@ KUrl ActionManager::getSaveURL()
 {
   KUrl url =
     KFileDialog::getSaveUrl( KStandardDirs::locateLocal( "data","korganizer/" ),
-                             i18n( "*.vcs *.ics|Calendar Files" ),
+                             i18n( "*.ics *.vcs|Calendar Files" ),
                              dialogParent() );
 
-  if ( url.isEmpty() ) {
+  if ( url == KUrl() ) {
     return url;
   }
 
-  QString filename = url.fileName( false );
+  QString filename = url.fileName();
 
   QString e = filename.right( 4 );
   if ( e != QLatin1String( ".vcs" ) && e != QLatin1String( ".ics" ) ) {
@@ -1540,7 +1540,9 @@ void ActionManager::uploadNewStuff()
 
   // FIXME (KNS2): use mCalendarView as parent widget
   if( mCalendarView->saveCalendar( tmpfilename ) ) {
-    KNS::Engine::upload( tmpfilename );
+    //Laurent 2008-10-25: comment until KNS::Engine::upload is implemented
+    //                    otherwise it asserts by default...
+    //KNS::Engine::upload( tmpfilename );
   } else {
     // FIXME (KNS2): display error here
   }
