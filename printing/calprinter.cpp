@@ -31,7 +31,6 @@
 #include <kvbox.h>
 #include <kconfig.h>
 #include <kdebug.h>
-#include <kdeversion.h>
 #include <kstandardguiitem.h>
 #include <kcombobox.h>
 #include <kprintpreview.h>

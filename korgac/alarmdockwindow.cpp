@@ -28,7 +28,6 @@
 
 #include <kactioncollection.h>
 #include <kdebug.h>
-#include <kdeversion.h>
 #include <klocale.h>
 #include <kiconloader.h>
 #include <kiconeffect.h>

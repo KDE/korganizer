@@ -69,7 +69,6 @@
 #include <kwindowsystem.h>
 #include <knotification.h>
 #include <KStandardGuiItem>
-#include <kdeversion.h>
 #include <ktoggleaction.h>
 #include <krecentfilesaction.h>
 #include <kstandardaction.h>
