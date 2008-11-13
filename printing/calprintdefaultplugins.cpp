@@ -791,13 +791,10 @@ void CalPrintDay::print( QPainter &p, int width, int height )
 
     // TODO: Find a good way to determine the height of the all-day box
     QRect allDayBox( TIMELINE_WIDTH + padding(), headerBox.bottom() + padding(),
-                     0, height / 20 );
+        0, height - headerBox.bottom() - padding() );
     allDayBox.setRight( width );
-    int allDayHeight = drawAllDayBox( p, eventList, curDay, true, allDayBox );
 
     QRect dayBox( allDayBox );
-    dayBox.setTop( allDayHeight );
-    dayBox.setBottom( height );
     drawAgendaDayBox( p, eventList, curDay, mIncludeAllEvents,
                       curStartTime, curEndTime, dayBox );
 
@@ -998,6 +995,7 @@ void CalPrintWeek::print( QPainter &p, int width, int height )
       QDate endLeft( fromWeek.addDays( 3 ) );
       int hh = headerHeight();
 
+      drawSplitHeaderRight( p, fromWeek, curWeek, QDate(), width, hh );
       drawTimeTable( p, fromWeek, endLeft, mStartTime, mEndTime, weekBox );
       mPrinter->newPage();
       drawSplitHeaderRight( p, fromWeek, curWeek, QDate(), width, hh );
