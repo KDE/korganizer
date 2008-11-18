@@ -366,8 +366,10 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name, bool 
   connectAgenda( mAgenda, mAgendaPopup, mAllDayAgenda );
   connectAgenda( mAllDayAgenda, mAllDayAgendaPopup, mAgenda);
 
-  if ( cal )
+  if ( cal ) {
     cal->registerObserver( this );
+    connect( cal, SIGNAL(calendarChanged()), SLOT(resourcesChanged()) );
+  }
 }
 
 
