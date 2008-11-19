@@ -408,7 +408,7 @@ void AlarmDialog::eventNotification()
     item->mNotified = true;
     Alarm::List alarms = item->mIncidence->alarms();
     Alarm::List::ConstIterator ait;
-    for ( ait = alarms.begin(); ait != alarms.end(); ++ait ) {
+    for ( ait = alarms.constBegin(); ait != alarms.constEnd(); ++ait ) {
       Alarm *alarm = *ait;
       // FIXME: Check whether this should be done for all multiple alarms
       if ( alarm->type() == Alarm::Procedure ) {

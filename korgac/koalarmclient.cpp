@@ -127,7 +127,7 @@ void KOAlarmClient::checkAlarms()
                                             KDateTime( mLastChecked, KDateTime::LocalZone ) );
 
   QList<Alarm *>::ConstIterator it;
-  for ( it = alarms.begin(); it != alarms.end(); ++it ) {
+  for ( it = alarms.constBegin(); it != alarms.constEnd(); ++it ) {
     kDebug(5891) << "REMINDER:" << (*it)->parent()->summary();
     Incidence *incidence = mCalendar->incidence( (*it)->parent()->uid() );
     createReminder( incidence, QDateTime::currentDateTime() );
@@ -209,7 +209,7 @@ QStringList KOAlarmClient::dumpAlarms()
 
   QList<Alarm *> alarms = mCalendar->alarms( start, end );
   QList<Alarm *>::ConstIterator it;
-  for ( it = alarms.begin(); it != alarms.end(); ++it ) {
+  for ( it = alarms.constBegin(); it != alarms.constEnd(); ++it ) {
     Alarm *a = *it;
     lst << QString( "  " ) + a->parent()->summary() + " (" + a->time().toString() + ')';
   }
