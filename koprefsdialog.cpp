@@ -1302,7 +1302,7 @@ void KOPrefsDialogPlugins::usrReadConfig()
                            i18nc( "@title:group", "Other Plugins" ) ) );
 
   KService::List::ConstIterator it;
-  for ( it = plugins.begin(); it != plugins.end(); ++it ) {
+  for ( it = plugins.constBegin(); it != plugins.constEnd(); ++it ) {
     QTreeWidgetItem *item;
     if ( (*it)->hasServiceType( KOrg::CalendarDecoration::Decoration::serviceType() ) ) {
       item = new PluginItem( decorations, *it );

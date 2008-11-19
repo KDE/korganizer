@@ -227,7 +227,7 @@ void KOTodoModel::reloadTodos()
   Todo::List todoList = mCalendar->todos();
   Todo::List::ConstIterator it;
   QList<TodoTreeNode*> changedNodes;
-  for ( it = todoList.begin(); it != todoList.end(); ++it ) {
+  for ( it = todoList.constBegin(); it != todoList.constEnd(); ++it ) {
     TodoTreeNode *tmp = findTodo( *it );
     if ( !tmp ) {
       insertTodo( *it );
@@ -952,8 +952,8 @@ bool KOTodoModel::dropMimeData( const QMimeData *data, Qt::DropAction action,
             destTodo->addAttachment( new Attachment( text ) );
           } else {
             QStringList emails = KPIMUtils::splitAddressList( text );
-            for ( QStringList::ConstIterator it = emails.begin();
-                  it != emails.end(); ++it ) {
+            for ( QStringList::ConstIterator it = emails.constBegin();
+                  it != emails.constEnd(); ++it ) {
               QString name, email, comment;
               if ( KPIMUtils::splitAddress( *it, name, email, comment ) ==
                    KPIMUtils::AddressOk ) {

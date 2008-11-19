@@ -312,7 +312,7 @@ void KOEditorGeneral::addAttachments( const QStringList &attachments,
 {
   QStringList::ConstIterator it;
   int i = 0;
-  for ( it = attachments.begin(); it != attachments.end(); ++it, ++i ) {
+  for ( it = attachments.constBegin(); it != attachments.constEnd(); ++it, ++i ) {
     QString mimeType;
     if ( mimeTypes.count() > i ) {
       mimeType = mimeTypes[ i ];
@@ -458,7 +458,7 @@ void KOEditorGeneral::readIncidence( Incidence *incidence, Calendar *calendar )
   mAlarmList.clear();
   Alarm::List::ConstIterator it;
   Alarm::List alarms = incidence->alarms();
-  for ( it = alarms.begin(); it != alarms.end(); ++it ) {
+  for ( it = alarms.constBegin(); it != alarms.constEnd(); ++it ) {
     Alarm *al = new Alarm( *(*it) );
     al->setParent( 0 );
     mAlarmList.append( al );
@@ -523,7 +523,7 @@ void KOEditorGeneral::writeIncidence( Incidence *incidence )
   } else {
     // simply assign the list of alarms
     Alarm::List::ConstIterator it;
-    for ( it = mAlarmList.begin(); it != mAlarmList.end(); ++it ) {
+    for ( it = mAlarmList.constBegin(); it != mAlarmList.constEnd(); ++it ) {
       Alarm *al = new Alarm( *(*it) );
       al->setParent( incidence );
       al->setEnabled( true );

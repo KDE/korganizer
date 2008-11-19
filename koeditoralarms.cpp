@@ -303,8 +303,8 @@ void KOEditorAlarms::readAlarm( KCal::Alarm *alarm )
     mWidget.mTypeEmailRadio->setChecked( true );
     QList<KCal::Person> addresses = alarm->mailAddresses();
     QStringList add;
-    for ( QList<KCal::Person>::ConstIterator it = addresses.begin();
-          it != addresses.end(); ++it ) {
+    for ( QList<KCal::Person>::ConstIterator it = addresses.constBegin();
+          it != addresses.constEnd(); ++it ) {
       add << (*it).fullName();
     }
     mWidget.mEmailAddress->setText( add.join( ", " ) );
@@ -444,7 +444,7 @@ void KOEditorAlarms::init()
 {
   mInitializing = true;
   KCal::Alarm::List::ConstIterator it;
-  for ( it = mAlarms->begin(); it != mAlarms->end(); ++it ) {
+  for ( it = mAlarms->constBegin(); it != mAlarms->constEnd(); ++it ) {
     new AlarmListViewItem( mWidget.mAlarmList, *it );
   }
   if ( mWidget.mAlarmList->topLevelItemCount() > 0 ) {

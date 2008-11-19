@@ -184,7 +184,7 @@ void SearchDialog::search( const QRegExp &re )
 
   mMatchedEvents.clear();
   Incidence::List::ConstIterator it;
-  for ( it = allIncidences.begin(); it != allIncidences.end(); ++it ) {
+  for ( it = allIncidences.constBegin(); it != allIncidences.constEnd(); ++it ) {
     Incidence *ev = *it;
     if ( mSummaryCheck->isChecked() ) {
       if ( re.indexIn( ev->summary() ) != -1 ) {

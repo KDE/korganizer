@@ -517,8 +517,8 @@ void CalendarView::readFilterSettings( KConfig *config )
   QStringList filterList = generalConfig.readEntry( "CalendarFilters", QStringList() );
   QString currentFilter = generalConfig.readEntry( "Current Filter" );
 
-  QStringList::ConstIterator it = filterList.begin();
-  QStringList::ConstIterator end = filterList.end();
+  QStringList::ConstIterator it = filterList.constBegin();
+  QStringList::ConstIterator end = filterList.constEnd();
   while ( it != end ) {
     CalFilter *filter;
     filter = new CalFilter( *it );
@@ -1220,7 +1220,7 @@ void CalendarView::toggleAlarm( Incidence *incidence )
 
   Alarm::List alarms = incidence->alarms();
   Alarm::List::ConstIterator it;
-  for ( it = alarms.begin(); it != alarms.end(); ++it ) {
+  for ( it = alarms.constBegin(); it != alarms.constEnd(); ++it ) {
     (*it)->toggleAlarm();
   }
   if ( alarms.isEmpty() ) {
@@ -1307,7 +1307,7 @@ void CalendarView::schedule_publish( Incidence *incidence )
   if ( incidence->attendeeCount() > 0 ) {
     Attendee::List attendees = incidence->attendees();
     Attendee::List::ConstIterator it;
-    for ( it = attendees.begin(); it != attendees.end(); ++it ) {
+    for ( it = attendees.constBegin(); it != attendees.constEnd(); ++it ) {
       publishdlg->addAttendee( *it );
     }
   }
@@ -2222,14 +2222,14 @@ void CalendarView::purgeCompleted()
     Todo::List todos = calendar()->rawTodos();
     Todo::List rootTodos;
     Todo::List::ConstIterator it;
-    for ( it = todos.begin(); it != todos.end(); ++it ) {
+    for ( it = todos.constBegin(); it != todos.constEnd(); ++it ) {
       Todo *aTodo = *it;
       if ( aTodo && !aTodo->relatedTo() ) {
         rootTodos.append( aTodo );
       }
     }
     // now that we have a list of all root todos, check them and their children
-    for ( it = rootTodos.begin(); it != rootTodos.end(); ++it ) {
+    for ( it = rootTodos.constBegin(); it != rootTodos.constEnd(); ++it ) {
       purgeCompletedSubTodos( *it, allDeleted );
     }
     endMultiModify();

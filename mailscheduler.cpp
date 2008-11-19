@@ -102,7 +102,7 @@ QList<ScheduleMessage*> MailScheduler::retrieveTransactions()
   QDir incomingDir( incomingDirName );
   QStringList incoming = incomingDir.entryList( QDir::Files );
   QStringList::ConstIterator it;
-  for ( it = incoming.begin(); it != incoming.end(); ++it ) {
+  for ( it = incoming.constBegin(); it != incoming.constEnd(); ++it ) {
     kDebug() << "-- File:" << (*it);
 
     QFile f( incomingDirName + '/' + (*it) );

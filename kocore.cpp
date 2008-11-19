@@ -125,7 +125,7 @@ KOrg::Plugin *KOCore::loadPlugin( const QString &name )
 {
   KService::List list = availablePlugins();
   KService::List::ConstIterator it;
-  for ( it = list.begin(); it != list.end(); ++it ) {
+  for ( it = list.constBegin(); it != list.constEnd(); ++it ) {
     if ( (*it)->desktopEntryName() == name ) {
       return loadPlugin( *it );
     }
@@ -160,7 +160,7 @@ KOrg::CalendarDecoration::Decoration *KOCore::loadCalendarDecoration( const QStr
 {
   KService::List list = availableCalendarDecorations();
   KService::List::ConstIterator it;
-  for ( it = list.begin(); it != list.end(); ++it ) {
+  for ( it = list.constBegin(); it != list.constEnd(); ++it ) {
     if ( (*it)->desktopEntryName() == name ) {
       return loadCalendarDecoration( *it );
     }
@@ -236,7 +236,7 @@ KXMLGUIClient *KOCore::xmlguiClient( QWidget *wdg ) const
 {
   QWidget *topLevel = wdg->topLevelWidget();
   QMap<QWidget*, KXMLGUIClient*>::ConstIterator it = mXMLGUIClients.find( topLevel );
-  if ( it != mXMLGUIClients.end() ) {
+  if ( it != mXMLGUIClients.constEnd() ) {
     return it.value();
   }
 
@@ -247,7 +247,7 @@ KOrg::Part *KOCore::loadPart( const QString &name, KOrg::MainWindow *parent )
 {
   KService::List list = availableParts();
   KService::List::ConstIterator it;
-  for ( it = list.begin(); it != list.end(); ++it ) {
+  for ( it = list.constBegin(); it != list.constEnd(); ++it ) {
     if ( (*it)->desktopEntryName() == name ) {
       return loadPart( *it, parent );
     }
@@ -259,7 +259,7 @@ KOrg::PrintPlugin *KOCore::loadPrintPlugin( const QString &name )
 {
   KService::List list = availablePrintPlugins();
   KService::List::ConstIterator it;
-  for ( it = list.begin(); it != list.end(); ++it ) {
+  for ( it = list.constBegin(); it != list.constEnd(); ++it ) {
     if ( (*it)->desktopEntryName() == name ) {
       return loadPrintPlugin( *it );
     }
@@ -275,7 +275,7 @@ KOrg::CalendarDecoration::Decoration::List KOCore::loadCalendarDecorations()
     mCalendarDecorations.clear();
     KService::List plugins = availableCalendarDecorations();
     KService::List::ConstIterator it;
-    for ( it = plugins.begin(); it != plugins.end(); ++it ) {
+    for ( it = plugins.constBegin(); it != plugins.constEnd(); ++it ) {
       if ( (*it)->hasServiceType( KOrg::CalendarDecoration::Decoration::serviceType() ) ) {
         QString name = (*it)->desktopEntryName();
         if ( selectedPlugins.contains( name ) ) {
@@ -298,7 +298,7 @@ KOrg::Part::List KOCore::loadParts( KOrg::MainWindow *parent )
 
   KService::List plugins = availableParts();
   KService::List::ConstIterator it;
-  for ( it = plugins.begin(); it != plugins.end(); ++it ) {
+  for ( it = plugins.constBegin(); it != plugins.constEnd(); ++it ) {
     if ( selectedPlugins.contains( (*it)->desktopEntryName() ) ) {
       KOrg::Part *part = loadPart( *it, parent );
       if ( part ) {
@@ -322,7 +322,7 @@ KOrg::PrintPlugin::List KOCore::loadPrintPlugins()
 
   KService::List plugins = availablePrintPlugins();
   KService::List::ConstIterator it;
-  for ( it = plugins.begin(); it != plugins.end(); ++it ) {
+  for ( it = plugins.constBegin(); it != plugins.constEnd(); ++it ) {
     if ( selectedPlugins.contains( (*it)->desktopEntryName() ) ) {
       KOrg::PrintPlugin *part = loadPrintPlugin( *it );
       if ( part ) {

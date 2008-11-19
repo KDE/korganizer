@@ -531,7 +531,7 @@ void KOEditorAttachments::handlePasteOrDrop( const QMimeData *mimeData )
   } else if ( mimeData->hasText() ) {
     QString text = mimeData->text();
     QStringList lst = text.split( '\n', QString::SkipEmptyParts );
-    for ( QStringList::ConstIterator it = lst.begin(); it != lst.end(); ++it ) {
+    for ( QStringList::ConstIterator it = lst.constBegin(); it != lst.constEnd(); ++it ) {
       urls.append( *it );
     }
     probablyWeHaveUris = true;
@@ -753,7 +753,7 @@ void KOEditorAttachments::readIncidence( KCal::Incidence *i )
 
   KCal::Attachment::List attachments = i->attachments();
   KCal::Attachment::List::ConstIterator it;
-  for ( it = attachments.begin(); it != attachments.end(); ++it ) {
+  for ( it = attachments.constBegin(); it != attachments.constEnd(); ++it ) {
     addAttachment( (*it) );
   }
 

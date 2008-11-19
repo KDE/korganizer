@@ -183,8 +183,8 @@ Decoration::~Decoration()
 Element::List Decoration::dayElements( const QDate &date )
 {
   QMap<QDate,Element::List>::ConstIterator it;
-  it = mDayElements.find( date );
-  if ( it == mDayElements.end() ) {
+  it = mDayElements.constFind( date );
+  if ( it == mDayElements.constEnd() ) {
     return registerDayElements( createDayElements( date ), date );
   } else {
     return *it;
@@ -195,8 +195,8 @@ Element::List Decoration::weekElements( const QDate &d )
 {
   QDate date = weekDate( d );
   QMap<QDate,Element::List>::ConstIterator it;
-  it = mWeekElements.find( date );
-  if ( it == mWeekElements.end() ) {
+  it = mWeekElements.constFind( date );
+  if ( it == mWeekElements.constEnd() ) {
     return registerWeekElements( createWeekElements( date ), date );
   } else {
     return *it;
@@ -207,8 +207,8 @@ Element::List Decoration::monthElements( const QDate &d )
 {
   QDate date = monthDate( d );
   QMap<QDate,Element::List>::ConstIterator it;
-  it = mMonthElements.find( date );
-  if ( it == mMonthElements.end() ) {
+  it = mMonthElements.constFind( date );
+  if ( it == mMonthElements.constEnd() ) {
     return registerMonthElements( createMonthElements( date ), date );
   } else {
     return *it;
@@ -219,8 +219,8 @@ Element::List Decoration::yearElements( const QDate &d )
 {
   QDate date = yearDate( d );
   QMap<QDate,Element::List>::ConstIterator it;
-  it = mYearElements.find( date );
-  if ( it == mYearElements.end() ) {
+  it = mYearElements.constFind( date );
+  if ( it == mYearElements.constEnd() ) {
     return registerYearElements( createYearElements( date ), date );
   } else {
     return *it;

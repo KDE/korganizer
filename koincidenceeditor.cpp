@@ -252,7 +252,7 @@ class KCalStorage : public KPIM::DesignerFields::Storage
 
       QMap<QByteArray, QString> props = mIncidence->customProperties();
       QMap<QByteArray, QString>::ConstIterator it;
-      for( it = props.begin(); it != props.end(); ++it ) {
+      for( it = props.constBegin(); it != props.constEnd(); ++it ) {
         QString customKey = it.key();
         QStringList parts = customKey.split( "-", QString::SkipEmptyParts );
         if ( parts.count() != 4 ) continue;

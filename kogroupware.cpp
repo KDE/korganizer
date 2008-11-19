@@ -187,7 +187,7 @@ void KOGroupware::incomingDirChanged( const QString &path )
     // since this does not know the choice I made in the KMail bpf
     KCal::Attendee::List attendees = incidence->attendees();
     KCal::Attendee::List::ConstIterator it;
-    for ( it = attendees.begin(); it != attendees.end(); ++it ) {
+    for ( it = attendees.constBegin(); it != attendees.constEnd(); ++it ) {
       if ( (*it)->email() == receiver ) {
         if ( action.startsWith( "accepted" ) ) {
           (*it)->setStatus( KCal::Attendee::Accepted );

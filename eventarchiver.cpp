@@ -92,7 +92,7 @@ void EventArchiver::run( Calendar *calendar, const QDate &limitDate, QWidget *wi
   if ( KOPrefs::instance()->mArchiveTodos ) {
     Todo::List t = calendar->rawTodos();
     Todo::List::ConstIterator it;
-    for ( it = t.begin(); it != t.end(); ++it ) {
+    for ( it = t.constBegin(); it != t.constEnd(); ++it ) {
       if ( (*it) && ( (*it)->isCompleted() ) &&  ( (*it)->completed().date() < limitDate ) ) {
         todos.append( *it );
       }
@@ -128,7 +128,7 @@ void EventArchiver::deleteIncidences( Calendar *calendar, const QDate &limitDate
 {
   QStringList incidenceStrs;
   Incidence::List::ConstIterator it;
-  for ( it = incidences.begin(); it != incidences.end(); ++it ) {
+  for ( it = incidences.constBegin(); it != incidences.constEnd(); ++it ) {
     incidenceStrs.append( (*it)->summary() );
   }
 
@@ -144,7 +144,7 @@ void EventArchiver::deleteIncidences( Calendar *calendar, const QDate &limitDate
       return;
     }
   }
-  for ( it = incidences.begin(); it != incidences.end(); ++it ) {
+  for ( it = incidences.constBegin(); it != incidences.constEnd(); ++it ) {
     calendar->deleteIncidence( *it );
   }
   emit eventsDeleted();
@@ -183,10 +183,10 @@ void EventArchiver::archiveIncidences( Calendar *calendar, const QDate &limitDat
   QStringList uids;
   Incidence::List allIncidences = archiveCalendar.rawIncidences();
   Incidence::List::ConstIterator it;
-  for ( it = incidences.begin(); it != incidences.end(); ++it ) {
+  for ( it = incidences.constBegin(); it != incidences.constEnd(); ++it ) {
     uids << (*it)->uid();
   }
-  for ( it = allIncidences.begin(); it != allIncidences.end(); ++it ) {
+  for ( it = allIncidences.constBegin(); it != allIncidences.constEnd(); ++it ) {
     if ( !uids.contains( (*it)->uid() ) ) {
       archiveCalendar.deleteIncidence( *it );
     }
@@ -238,7 +238,7 @@ void EventArchiver::archiveIncidences( Calendar *calendar, const QDate &limitDat
   KIO::NetAccess::removeTempFile( archiveFile );
 
   // Delete archived events from calendar
-  for ( it = incidences.begin(); it != incidences.end(); ++it ) {
+  for ( it = incidences.constBegin(); it != incidences.constEnd(); ++it ) {
     calendar->deleteIncidence( *it );
   }
   emit eventsDeleted();

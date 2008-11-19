@@ -1125,8 +1125,8 @@ void ActionManager::exportHTML( HTMLExportSettings *settings )
   while ( cdate <= qd2 ) {
     QStringList holidays = KOGlobals::self()->holiday( cdate );
     if ( !holidays.isEmpty() ) {
-      QStringList::ConstIterator it = holidays.begin();
-      for ( ; it != holidays.end(); ++it ) {
+      QStringList::ConstIterator it = holidays.constBegin();
+      for ( ; it != holidays.constEnd(); ++it ) {
         mExport.addHoliday( cdate, *it );
       }
     }
@@ -1506,7 +1506,7 @@ void ActionManager::downloadNewStuff()
     QStringList eventList;
 
     Event::List::ConstIterator it;
-    for ( it = events.begin(); it != events.end(); ++it ) {
+    for ( it = events.constBegin(); it != events.constEnd(); ++it ) {
       QString text = (*it)->summary();
       eventList.append( text );
     }

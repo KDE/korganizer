@@ -298,7 +298,7 @@ void KOAttendeeEditor::readIncidence( KCal::Incidence *incidence )
 
   Attendee::List al = incidence->attendees();
   Attendee::List::ConstIterator it;
-  for ( it = al.begin(); it != al.end(); ++it ) {
+  for ( it = al.constBegin(); it != al.constEnd(); ++it ) {
     insertAttendee( new Attendee( **it ), true );
   }
 }

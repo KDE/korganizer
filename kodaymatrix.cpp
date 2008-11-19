@@ -284,7 +284,7 @@ void KODayMatrix::updateEvents()
     Event::List eventlist = mCalendar->events( mDays[i], mCalendar->timeSpec() );
     int numEvents = eventlist.count();
     Event::List::ConstIterator it;
-    for ( it = eventlist.begin(); it != eventlist.end(); ++it ) {
+    for ( it = eventlist.constBegin(); it != eventlist.constEnd(); ++it ) {
       Event *event = *it;
       ushort recurType = event->recurrenceType();
       if ( ( recurType == Recurrence::rDaily &&

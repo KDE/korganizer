@@ -118,7 +118,7 @@ void KOWhatsNextView::updateView()
     mText += i18n( "Events:" ) + "</h2>\n";
     mText += "<table>\n";
     Event::List::ConstIterator it;
-    for ( it = events.begin(); it != events.end(); ++it ) {
+    for ( it = events.constBegin(); it != events.constEnd(); ++it ) {
       Event *ev = *it;
       if ( !ev->recurs() ) {
         appendEvent( ev );
@@ -161,7 +161,7 @@ void KOWhatsNextView::updateView()
     mText += i18n( "To-do:" ) + "</h2>\n";
     mText += "<ul>\n";
     Todo::List::ConstIterator it;
-    for ( it = todos.begin(); it != todos.end(); ++it ) {
+    for ( it = todos.constBegin(); it != todos.constEnd(); ++it ) {
       Todo *todo = *it;
       if ( !todo->isCompleted() && todo->hasDueDate() && todo->dtDue().date() <= mEndDate ) {
         appendTodo( todo );
@@ -170,7 +170,7 @@ void KOWhatsNextView::updateView()
     bool gotone = false;
     int priority = 1;
     while ( !gotone && priority <= 9 ) {
-      for ( it = todos.begin(); it != todos.end(); ++it ) {
+      for ( it = todos.constBegin(); it != todos.constEnd(); ++it ) {
         Todo *todo = *it;
         if ( !todo->isCompleted() && ( todo->priority() == priority ) ) {
           appendTodo( todo );
@@ -186,7 +186,7 @@ void KOWhatsNextView::updateView()
   int replies = 0;
   events = calendar()->events( QDate::currentDate(), QDate( 2975, 12, 6 ), timeSpec );
   Event::List::ConstIterator it2;
-  for ( it2 = events.begin(); it2 != events.end(); ++it2 ) {
+  for ( it2 = events.constBegin(); it2 != events.constEnd(); ++it2 ) {
     Event *ev = *it2;
     Attendee *me = ev->attendeeByMails( myEmails );
     if ( me != 0 ) {
@@ -208,7 +208,7 @@ void KOWhatsNextView::updateView()
   }
   todos = calendar()->todos();
   Todo::List::ConstIterator it3;
-  for ( it3 = todos.begin(); it3 != todos.end(); ++it3 ) {
+  for ( it3 = todos.constBegin(); it3 != todos.constEnd(); ++it3 ) {
     Todo *to = *it3;
     Attendee *me = to->attendeeByMails( myEmails );
     if ( me != 0 ) {
