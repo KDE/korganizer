@@ -144,8 +144,8 @@ void KOJournalView::showDates(const QDate &start, const QDate &end)
   QDate d=start;
   for ( QDate d=end; d>=start; d=d.addDays(-1) ) {
     jnls = calendar()->journals( d );
-    it = jnls.end();
-    while ( it != jnls.begin() ) {
+    it = jnls.constEnd();
+    while ( it != jnls.constBegin() ) {
       --it;
       appendJournal( *it, d );
     }

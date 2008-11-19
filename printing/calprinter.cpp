@@ -101,7 +101,7 @@ void CalPrinter::setDateRange( const QDate &fd, const QDate &td )
 void CalPrinter::print( int type, const QDate &fd, const QDate &td,
                         Incidence::List selectedIncidences, bool preview )
 {
-  KOrg::PrintPlugin::List::Iterator it = mPrintPlugins.begin();
+  KOrg::PrintPlugin::List::Iterator it;
   for ( it = mPrintPlugins.begin(); it != mPrintPlugins.end(); ++it ) {
     (*it)->setSelectedIncidences( selectedIncidences );
   }
@@ -209,7 +209,7 @@ CalPrintDialog::CalPrintDialog( KOrg::PrintPlugin::List plugins, QWidget *parent
   // First insert the config widgets into the widget stack. This possibly assigns
   // proper ids (when two plugins have the same sortID), so store them in a map
   // and use these new IDs to later sort the plugins for the type selection.
-  for ( KOrg::PrintPlugin::List::Iterator it = plugins.begin(); it != plugins.end(); ++it ) {
+  for ( KOrg::PrintPlugin::List::ConstIterator it = plugins.constBegin(); it != plugins.constEnd(); ++it ) {
     int newid = mConfigArea->insertWidget( (*it)->sortID(), (*it)->configWidget( mConfigArea ) );
     mPluginIDs[newid] = (*it);
   }
@@ -217,7 +217,7 @@ CalPrintDialog::CalPrintDialog( KOrg::PrintPlugin::List plugins, QWidget *parent
   QMap<int, KOrg::PrintPlugin*>::ConstIterator mapit;
   int firstButton = true;
   int id = 0;
-  for ( mapit = mPluginIDs.begin(); mapit != mPluginIDs.end(); ++mapit ) {
+  for ( mapit = mPluginIDs.constBegin(); mapit != mPluginIDs.constEnd(); ++mapit ) {
     KOrg::PrintPlugin *p = mapit.value();
     QRadioButton *radioButton = new QRadioButton( p->description() );
     radioButton->setEnabled( p->enabled() );
@@ -276,8 +276,8 @@ void CalPrintDialog::slotOk()
   mOrientation =
     ( CalPrinter::ePrintOrientation )mOrientationSelection->currentIndex();
 
-  QMap<int, KOrg::PrintPlugin*>::Iterator it = mPluginIDs.begin();
-  for ( ; it != mPluginIDs.end(); ++it ) {
+  QMap<int, KOrg::PrintPlugin*>::ConstIterator it = mPluginIDs.constBegin();
+  for ( ; it != mPluginIDs.constEnd(); ++it ) {
     if ( it.value() ) {
       it.value()->readSettingsWidget();
     }

@@ -232,12 +232,12 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
   QString cap, txt;
 
   Incidence::List::ConstIterator it;
-  for ( it = mSelectedIncidences.begin(); it != mSelectedIncidences.end(); ++it ) {
+  for ( it = mSelectedIncidences.constBegin(); it != mSelectedIncidences.constEnd(); ++it ) {
     // don't do anything on a 0-pointer!
     if ( !(*it) ) {
       continue;
     }
-    if ( it != mSelectedIncidences.begin() ) {
+    if ( it != mSelectedIncidences.constBegin() ) {
       mPrinter->newPage();
     }
 
@@ -330,7 +330,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
 
       QStringList alarmStrings;
       KCal::Alarm::List::ConstIterator it;
-      for ( it = alarms.begin(); it != alarms.end(); ++it ) {
+      for ( it = alarms.constBegin(); it != alarms.constEnd(); ++it ) {
         Alarm *alarm = *it;
 
         // Alarm offset, copied from koeditoralarms.cpp:
@@ -479,7 +479,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
         QString statusString;
         QString datesString;
         int count = 0;
-        for ( rit = relations.begin(); rit != relations.end(); ++rit ) {
+        for ( rit = relations.constBegin(); rit != relations.constEnd(); ++rit ) {
           ++count;
           if ( !(*rit) ) { // defensive, skip any zero pointers
             continue;
@@ -556,8 +556,8 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
                                    attachments.count() );
       }
       QString attachmentString;
-      Attachment::List::ConstIterator ait = attachments.begin();
-      for ( ; ait != attachments.end(); ++ait ) {
+      Attachment::List::ConstIterator ait = attachments.constBegin();
+      for ( ; ait != attachments.constEnd(); ++ait ) {
         if ( !attachmentString.isEmpty() ) {
           attachmentString += i18nc( "Spacer for list of attachments", "  " );
         }
@@ -579,8 +579,8 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
                                  attendees.count() );
       }
       QString attendeeString;
-      Attendee::List::ConstIterator ait = attendees.begin();
-      for ( ; ait != attendees.end(); ++ait ) {
+      Attendee::List::ConstIterator ait = attendees.constBegin();
+      for ( ; ait != attendees.constEnd(); ++ait ) {
         if ( !attendeeString.isEmpty() ) {
           attendeeString += '\n';
         }
@@ -1340,7 +1340,7 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
   case TodosAll:
     break;
   case TodosUnfinished:
-    for ( it = todoList.begin(); it != todoList.end(); ++it ) {
+    for ( it = todoList.constBegin(); it != todoList.constEnd(); ++it ) {
       if ( !(*it)->isCompleted() ) {
         tempList.append( *it );
       }
@@ -1348,7 +1348,7 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
     todoList = tempList;
     break;
   case TodosDueRange:
-    for ( it = todoList.begin(); it != todoList.end(); ++it ) {
+    for ( it = todoList.constBegin(); it != todoList.constEnd(); ++it ) {
       if ( (*it)->hasDueDate() ) {
         if ( (*it)->dtDue().date() >= mFromDate && (*it)->dtDue().date() <= mToDate ) {
           tempList.append( *it );
@@ -1363,7 +1363,7 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
 
   // Print to-dos
   int count = 0;
-  for ( it = todoList.begin(); it != todoList.end(); ++it ) {
+  for ( it = todoList.constBegin(); it != todoList.constEnd(); ++it ) {
     Todo *currEvent = *it;
 
     // Skip sub-to-dos. They will be printed recursively in drawTodo()

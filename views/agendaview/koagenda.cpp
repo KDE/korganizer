@@ -96,7 +96,7 @@ int MarcusBains::todayColumn()
   DateList dateList = mAgenda->dateList();
   DateList::ConstIterator it;
   int col = 0;
-  for ( it = dateList.begin(); it != dateList.end(); ++it ) {
+  for ( it = dateList.constBegin(); it != dateList.constEnd(); ++it ) {
     if ( (*it) == currentDate ) {
       return KOGlobals::self()->reverseLayout() ? mAgenda->columns() - 1 - col : col;
     }

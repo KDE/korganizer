@@ -579,8 +579,8 @@ KConfigGroup *ThemeImporter::configGroup( const QString &viewType )
 {
   QMap<QString, KConfigGroup*>::ConstIterator it;
   KConfigGroup *g;
-  it = mPerViewConfigGroups.find( viewType );
-  if ( it == mPerViewConfigGroups.end() ) {
+  it = mPerViewConfigGroups.constFind( viewType );
+  if ( it == mPerViewConfigGroups.constEnd() ) {
     g = registerPerViewConfigGroup( createPerViewConfigGroup( viewType ), viewType );
   } else {
     g = *it;

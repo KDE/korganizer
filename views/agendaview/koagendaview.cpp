@@ -501,7 +501,7 @@ void KOAgendaView::createDayLabels()
 #endif
 
   DateList::ConstIterator dit;
-  for ( dit = mSelectedDates.begin(); dit != mSelectedDates.end(); ++dit ) {
+  for ( dit = mSelectedDates.constBegin(); dit != mSelectedDates.constEnd(); ++dit ) {
     QDate date = *dit;
     KVBox *dayLabelBox = new KVBox( mDayLabels );
     mLayoutDayLabels->addWidget( dayLabelBox );
@@ -527,8 +527,8 @@ void KOAgendaView::createDayLabels()
 
     // if a holiday region is selected, show the holiday name
     QStringList texts = KOGlobals::self()->holiday( date );
-    QStringList::ConstIterator textit = texts.begin();
-    for ( ; textit != texts.end(); ++textit ) {
+    QStringList::ConstIterator textit = texts.constBegin();
+    for ( ; textit != texts.constEnd(); ++textit ) {
       // use a KOAlternateLabel so when the text doesn't fit any more a tooltip is used
       KOAlternateLabel *label =
         new KOAlternateLabel( (*textit), (*textit), QString(), dayLabelBox );
@@ -1266,7 +1266,7 @@ void KOAgendaView::changeIncidenceDisplayAdded( Incidence *incidence )
   if ( incidence->recurs() ) {
     DateList::ConstIterator dit;
     QDate curDate;
-    for ( dit = mSelectedDates.begin(); dit != mSelectedDates.end(); ++dit ) {
+    for ( dit = mSelectedDates.constBegin(); dit != mSelectedDates.constEnd(); ++dit ) {
       curDate = *dit;
 // FIXME: This breaks with recurring multi-day events!
       if ( incidence->recursOn( curDate, KOPrefs::instance()->timeSpec() ) ) {
@@ -1371,7 +1371,7 @@ void KOAgendaView::fillAgenda()
   bool somethingReselected = false;
   DateList::ConstIterator dit;
   int curCol = 0;
-  for ( dit = mSelectedDates.begin(); dit != mSelectedDates.end(); ++dit ) {
+  for ( dit = mSelectedDates.constBegin(); dit != mSelectedDates.constEnd(); ++dit ) {
     QDate currentDate = *dit;
     dayEvents = calendar()->events( currentDate, KOPrefs::instance()->timeSpec(),
                                     EventSortStartDate,

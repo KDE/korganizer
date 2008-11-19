@@ -784,7 +784,7 @@ void CalPrintPluginBase::drawAgendaDayBox( QPainter &p, Event::List &events,
   if ( expandable ) {
     // Adapt start/end times to include complete events
     Event::List::ConstIterator it;
-    for ( it = events.begin(); it != events.end(); ++it ) {
+    for ( it = events.constBegin(); it != events.constEnd(); ++it ) {
       event = *it;
       if ( event->dtStart().time() < fromTime ) {
         fromTime = event->dtStart().time();
@@ -834,10 +834,10 @@ void CalPrintPluginBase::drawAgendaDayBox( QPainter &p, Event::List &events,
   QList<KOrg::CellItem *> cells;
 
   Event::List::ConstIterator itEvents;
-  for ( itEvents = events.begin(); itEvents != events.end(); ++itEvents ) {
+  for ( itEvents = events.constBegin(); itEvents != events.constEnd(); ++itEvents ) {
     QList<KDateTime> times = (*itEvents)->startDateTimesForDate( qd );
-    for ( QList<KDateTime>::ConstIterator it = times.begin();
-          it != times.end(); ++it ) {
+    for ( QList<KDateTime>::ConstIterator it = times.constBegin();
+          it != times.constEnd(); ++it ) {
       cells.append( new PrintCellItem( *itEvents, (*it), (*itEvents)->endDateForStart( *it ) ) );
     }
   }
@@ -939,7 +939,7 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
   int textY = mSubHeaderHeight + 1; // gives the relative y-coord of the next printed entry
   Event::List::ConstIterator it;
 
-  for ( it = eventList.begin(); it != eventList.end() && textY<box.height(); ++it ) {
+  for ( it = eventList.constBegin(); it != eventList.constEnd() && textY<box.height(); ++it ) {
     Event *currEvent = *it;
     if ( ( !printRecurDaily  && currEvent->recurrenceType() == Recurrence::rDaily ) ||
          ( !printRecurWeekly && currEvent->recurrenceType() == Recurrence::rWeekly ) ) {
@@ -956,7 +956,7 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
   if ( textY < box.height() ) {
     Todo::List todos = mCalendar->todos( qd );
     Todo::List::ConstIterator it2;
-    for ( it2 = todos.begin(); it2 != todos.end() && textY<box.height(); ++it2 ) {
+    for ( it2 = todos.constBegin(); it2 != todos.constEnd() && textY<box.height(); ++it2 ) {
       Todo *todo = *it2;
       if ( ( !printRecurDaily  && todo->recurrenceType() == Recurrence::rDaily ) ||
            ( !printRecurWeekly && todo->recurrenceType() == Recurrence::rWeekly ) ) {
@@ -1194,7 +1194,7 @@ void CalPrintPluginBase::drawMonth( QPainter &p, const QDate &dt,
 
   //FIXME: KOPrefs::instance()->timeSpec()?
   KDateTime::Spec timeSpec = KPIM::KPimPrefs::timeSpec();
-  for ( Event::List::ConstIterator evit = events.begin(); evit != events.end(); ++evit ) {
+  for ( Event::List::ConstIterator evit = events.constBegin(); evit != events.constEnd(); ++evit ) {
     Event *e = (*evit);
     if ( !e ) {
       continue;
@@ -1204,8 +1204,8 @@ void CalPrintPluginBase::drawMonth( QPainter &p, const QDate &dt,
         // This occurrence has possibly started before the beginning of the
         // month, so obtain the start date before the beginning of the month
         QList<KDateTime> starttimes = e->startDateTimesForDate( start );
-        QList<KDateTime>::ConstIterator it = starttimes.begin();
-        for ( ; it != starttimes.end(); ++it ) {
+        QList<KDateTime>::ConstIterator it = starttimes.constBegin();
+        for ( ; it != starttimes.constEnd(); ++it ) {
           monthentries.append( MonthEventStruct( *it, e->endDateForStart( *it ), e ) );
         }
       }
@@ -1218,8 +1218,8 @@ void CalPrintPluginBase::drawMonth( QPainter &p, const QDate &dt,
       while ( d1 <= end ) {
         if ( recur->recursOn( d1, timeSpec ) ) {
           TimeList times( recur->recurTimesOn( d1, timeSpec ) );
-          for ( TimeList::ConstIterator it = times.begin();
-                it != times.end(); ++it ) {
+          for ( TimeList::ConstIterator it = times.constBegin();
+                it != times.constEnd(); ++it ) {
             KDateTime d1start( d1, *it, timeSpec );
             monthentries.append( MonthEventStruct( d1start, e->endDateForStart( d1start ), e ) );
           }
@@ -1235,10 +1235,10 @@ void CalPrintPluginBase::drawMonth( QPainter &p, const QDate &dt,
 #endif
 //  qSort( monthentries.begin(), monthentries.end() );
 
-  QList<MonthEventStruct>::ConstIterator mit = monthentries.begin();
+  QList<MonthEventStruct>::ConstIterator mit = monthentries.constBegin();
   KDateTime endofmonth( end, QTime( 0, 0, 0 ) );
   endofmonth = endofmonth.addDays(1);
-  for ( ; mit != monthentries.end(); ++mit ) {
+  for ( ; mit != monthentries.constEnd(); ++mit ) {
     if ( (*mit).start.date() == (*mit).end.date() ) {
       // Show also single-day events as time line boxes
       if ( subDailyFlags & TimeBoxes ) {
@@ -1581,7 +1581,7 @@ void CalPrintPluginBase::drawTodo( int &count, Todo *todo, QPainter &p,
   Todo::List t;
   Incidence::List l = todo->relations();
   Incidence::List::ConstIterator it;
-  for ( it = l.begin(); it != l.end(); ++it ) {
+  for ( it = l.constBegin(); it != l.constEnd(); ++it ) {
     // In the future, to-dos might also be related to events
     // Manually check if the sub-to-do is in the list of to-dos to print
     // The problem is that relations() does not apply filters, so
@@ -1596,7 +1596,7 @@ void CalPrintPluginBase::drawTodo( int &count, Todo *todo, QPainter &p,
   Todo::List sl = mCalendar->sortTodos( &t, sortField, sortDir );
   Todo::List::ConstIterator isl;
   startPoints.append( &startpt );
-  for ( isl = sl.begin(); isl != sl.end(); ++isl ) {
+  for ( isl = sl.constBegin(); isl != sl.constEnd(); ++isl ) {
     count++;
     drawTodo( count, ( *isl ), p, sortField, sortDir,
               connectSubTodos, strikeoutCompleted,
