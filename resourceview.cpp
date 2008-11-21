@@ -26,6 +26,7 @@
 #include "resourceview.h"
 #include "koprefs.h"
 
+#include <kconfig.h>
 #include <kresources/resource.h>
 #include <kresources/configdialog.h>
 #include <kcal/calendarresources.h>
@@ -51,6 +52,10 @@
 #include <QVBoxLayout>
 #include <QToolButton>
 #include <QHeaderView>
+
+#include <QDBusConnection>
+#include <QDBusReply>
+#include <QDBusInterface>
 
 using namespace KCal;
 
@@ -541,18 +546,45 @@ void ResourceView::removeResource()
 
 void ResourceView::editResource()
 {
+  bool ok = false;
   ResourceItem *item = currentItem();
   if ( !item ) {
     return;
   }
   ResourceCalendar *resource = item->resource();
 
-  KRES::ConfigDialog dlg( this, QString( "calendar" ), resource );
+  if ( item->isSubresource() ) {
+    if ( resource->type() == "imap" || resource->type() == "scalix" ) {
+      QString identifier = item->resourceIdentifier();
+      const QString newResourceName = KInputDialog::getText( i18n( "Rename Subresource" ),
+          i18n( "Please enter a new name for the subresource" ), item->text(0),
+                &ok, this );
+      if ( !ok )
+        return;
 
-  if ( dlg.exec() ) {
-    item->setText( 0, resource->resourceName() );
+      QDBusConnection bus = QDBusConnection::sessionBus();
+      QDBusInterface *interface = new QDBusInterface("org.kde.kmail",
+          "/Groupware",
+          "org.kde.kmail.groupware",
+          bus,
+          this);
 
-    mCalendar->resourceManager()->change( resource );
+      QDBusReply<int> reply = interface->call( "changeResourceUIName", identifier, newResourceName );
+      if ( !reply.isValid() ) {
+        kDebug() << "DBUS Call changeResourceUIName() failed " << endl;
+      }
+    } else {
+      KMessageBox::sorry( this,
+                          i18n ("<qt>Cannot edit the subresource <b>%1</b>.</qt>").arg( item->resource()->objectName() ) );
+    }
+  } else {
+    KRES::ConfigDialog dlg( this, QString("calendar"), resource );
+
+    if ( dlg.exec() ) {
+      item->setText( 0, resource->resourceName() );
+
+      mCalendar->resourceManager()->change( resource );
+    }
   }
   emitResourcesChanged();
 }
