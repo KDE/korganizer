@@ -90,7 +90,8 @@ class KOEventEditor : public KOIncidenceEditor
       @param tmpl If true, the event is treated as a template, so the currently
       set time is preserved in the editor dialog.
     */
-    void readEvent( Event *event, Calendar *calendar, bool tmpl = false );
+    void readEvent( Event *event, bool tmpl = false );
+
     /**
       Write event settings to event object
     */
