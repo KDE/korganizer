@@ -31,6 +31,7 @@
 #include "koprefs.h"
 #include "koeditorattachments.h"
 #include "kogroupware.h"
+#include "kohelper.h"
 #include "kodialogmanager.h"
 #include "incidencechanger.h"
 
@@ -50,12 +51,10 @@
 #include <QHBoxLayout>
 #include <QBoxLayout>
 
-KOTodoEditor::KOTodoEditor( Calendar *calendar, QWidget *parent ) :
-  KOIncidenceEditor( QString(), calendar, parent )
+KOTodoEditor::KOTodoEditor( Calendar *calendar, QWidget *parent )
+  : KOIncidenceEditor( QString(), calendar, parent ),
+    mTodo( 0 ), mCalendar( 0 ), mRelatedTodo( 0 )
 {
-  mTodo = 0;
-  mCalendar = 0;
-  mRelatedTodo = 0;
 }
 
 KOTodoEditor::~KOTodoEditor()
@@ -65,14 +64,12 @@ KOTodoEditor::~KOTodoEditor()
 
 void KOTodoEditor::init()
 {
-  kDebug() ;
   setupGeneral();
   setupRecurrence();
   setupAttendeesTab();
-//  setupAttachmentsTab();
 
   connect( mGeneral, SIGNAL(dateTimeStrChanged(const QString&)),
-           mRecurrence, SLOT(setDateTimeStr(const QString &)) );
+           mRecurrence, SLOT(setDateTimeStr(const QString&)) );
   connect( mGeneral, SIGNAL(signalDateTimeChanged(const QDateTime&,const QDateTime&)),
            mRecurrence, SLOT(setDateTimes(const QDateTime&,const QDateTime&)) );
 
@@ -86,13 +83,13 @@ void KOTodoEditor::init()
 void KOTodoEditor::reload()
 {
   if ( mTodo ) {
-    readTodo( mTodo, mCalendar );
+    readTodo( mTodo, true );
   }
 }
 
 void KOTodoEditor::setupGeneral()
 {
-  mGeneral = new KOEditorGeneralTodo( this );
+  mGeneral = new KOEditorGeneralTodo( mCalendar, this );
 
   if ( KOPrefs::instance()->mCompactDialogs ) {
     QFrame *topFrame = new QFrame();
@@ -143,11 +140,11 @@ void KOTodoEditor::setupGeneral()
 
     mGeneral->initDescription( topFrame, topLayout );
 
-    mGeneral->initAttachments(topFrame,topLayout);
-    connect( mGeneral, SIGNAL( openURL( const KUrl& ) ),
-             this, SLOT( openURL( const KUrl& ) ) );
-    connect( this, SIGNAL( signalAddAttachments( const QStringList&, const QStringList&, bool ) ),
-             mGeneral, SLOT( addAttachments( const QStringList&, const QStringList&, bool ) ) );
+    mGeneral->initAttachments( topFrame, topLayout );
+    connect( mGeneral, SIGNAL(openURL(const KUrl&)),
+             this, SLOT(openURL(const KUrl&)) );
+    connect( this, SIGNAL(signalAddAttachments(const QStringList&,const QStringList&,bool)),
+             mGeneral, SLOT(addAttachments(const QStringList&,const QStringList&,bool)) );
   }
   mGeneral->enableAlarm( true );
 
@@ -171,22 +168,21 @@ void KOTodoEditor::setupRecurrence()
 
 void KOTodoEditor::editIncidence( Incidence *incidence, Calendar *calendar )
 {
-  kDebug();
   Todo *todo = dynamic_cast<Todo*>( incidence );
   if ( todo ) {
     init();
 
     mTodo = todo;
     mCalendar = calendar;
-    readTodo( mTodo, mCalendar );
+    readTodo( mTodo, false );
   }
 
-  setCaption( i18nc( "@title:window", "Edit To-do" ) );
+  setCaption( i18nc( "@title:window",
+                     "Edit To-do : %1", KOHelper::resourceLabel( calendar, incidence ) ) );
 }
 
 void KOTodoEditor::newTodo()
 {
-  kDebug();
   init();
   mTodo = 0;
   mCalendar = 0;
@@ -209,7 +205,6 @@ void KOTodoEditor::setTexts( const QString &summary, const QString &description,
 
 void KOTodoEditor::loadDefaults()
 {
-  kDebug();
   setDates( QDateTime::currentDateTime().addDays(7), true, 0 );
   mGeneral->toggleAlarm( true );
 }
@@ -225,15 +220,11 @@ bool KOTodoEditor::processInput()
     Todo *oldTodo = mTodo->clone();
     Todo *todo = mTodo->clone();
 
-    kDebug() << "Write event.";
     writeTodo( todo );
-    kDebug() << "event written.";
 
     if( *mTodo == *todo ) {
       // Don't do anything
-      kDebug() << "Todo not changed";
     } else {
-      kDebug() << "Todo changed";
       //IncidenceChanger::assignIncidence( mTodo, todo );
       writeTodo( mTodo );
       mChanger->changeIncidence( oldTodo, mTodo );
@@ -244,8 +235,7 @@ bool KOTodoEditor::processInput()
 
   } else {
     mTodo = new Todo;
-    mTodo->setOrganizer( Person( KOPrefs::instance()->fullName(),
-                         KOPrefs::instance()->email() ) );
+    mTodo->setOrganizer( Person( KOPrefs::instance()->fullName(), KOPrefs::instance()->email() ) );
 
     writeTodo( mTodo );
 
@@ -294,15 +284,13 @@ void KOTodoEditor::setDates( const QDateTime &due, bool allDay, Todo *relatedEve
   }
 }
 
-void KOTodoEditor::readTodo( Todo *todo, Calendar *calendar )
+void KOTodoEditor::readTodo( Todo *todo, bool tmpl )
 {
   if ( !todo ) {
     return;
   }
 
-  kDebug();
-
-  mGeneral->readTodo( todo, calendar );
+  mGeneral->readTodo( todo, tmpl );
   mDetails->readIncidence( todo );
   mRecurrence->readIncidence( todo );
 
@@ -361,8 +349,8 @@ void KOTodoEditor::modified( int modification )
 {
   Q_UNUSED( modification );
 
-  // Play dumb, just reload the todo. This dialog has become so complicated that
-  // there is no point in trying to be smart here...
+  // Play dumb, just reload the todo. This dialog has become so complicated
+  // that there is no point in trying to be smart here...
   reload();
 }
 
@@ -372,7 +360,7 @@ void KOTodoEditor::loadTemplate( CalendarLocal &cal )
   if ( todos.count() == 0 ) {
     KMessageBox::error( this, i18nc( "@info", "Template does not contain a valid to-do." ) );
   } else {
-    readTodo( todos.first(), 0 );
+    readTodo( todos.first(), true );
   }
 }
 
