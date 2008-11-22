@@ -322,7 +322,8 @@ class AttachmentIconView : public K3IconView
       KTemporaryFile *file = new KTemporaryFile();
       file->setParent( this );
       file->setSuffix(
-        QString( KMimeType::mimeType( attachment->mimeType() )->patterns().first() ).remove( '*' ) );
+        QString(
+          KMimeType::mimeType( attachment->mimeType() )->patterns().first() ).remove( '*' ) );
       file->setAutoRemove( true );
       file->open();
       // read-only not to give the idea that it could be written to
@@ -399,7 +400,7 @@ class AttachmentIconView : public K3IconView
     }
 
   private:
-    QHash<KCal::Attachment*, KUrl> mTempFiles;
+    QHash<KCal::Attachment *, KUrl> mTempFiles;
 };
 
 KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent )
