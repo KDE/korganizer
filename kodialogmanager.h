@@ -88,6 +88,7 @@ class KODialogManager : public QObject
     void showFilterEditDialog( QList<KCal::CalFilter*> *filters );
 
   private:
+    void createCategoryEditor();
     class DialogManagerVisitor;
     class EditorDialogVisitor;
 

@@ -106,15 +106,7 @@ KODialogManager::KODialogManager( CalendarView *mainView )
   mSearchDialog = 0;
   mArchiveDialog = 0;
   mFilterEditDialog = 0;
-
-  mCategoryEditDialog = new KPIM::CategoryEditDialog( KOPrefs::instance(), mMainView, true );
-  mCategoryEditDialog->setHelp( QString(), "korganizer" );
-  KWindowSystem::setMainWindow( mCategoryEditDialog, 0 );
-  connect( mainView, SIGNAL(categoriesChanged()),
-           mCategoryEditDialog, SLOT(reload()) );
-  connect( mCategoryEditDialog, SIGNAL(categoryConfigChanged()),
-           mainView, SIGNAL(categoryConfigChanged()) );
-  KOGlobals::fitDialogToScreen( mCategoryEditDialog );
+  mCategoryEditDialog = 0;
 }
 
 KODialogManager::~KODialogManager()
@@ -129,9 +121,10 @@ KODialogManager::~KODialogManager()
 
 void KODialogManager::errorSaveIncidence( QWidget *parent, Incidence *incidence )
 {
-  KMessageBox::sorry( parent,
-                      i18n( "Unable to save %1 \"%2\".",
-                            i18n( incidence->type() ), incidence->summary() ) );
+  KMessageBox::sorry(
+    parent,
+    i18n( "Unable to save %1 \"%2\".",
+          i18n( incidence->type() ), incidence->summary() ) );
 }
 
 void KODialogManager::showOptionsDialog()
@@ -164,7 +157,8 @@ void KODialogManager::showOptionsDialog()
 
 void KODialogManager::showCategoryEditDialog()
 {
-  mCategoryEditDialog->show();
+  createCategoryEditor();
+  mCategoryEditDialog->exec();
 }
 
 void KODialogManager::showSearchDialog()
@@ -204,6 +198,7 @@ void KODialogManager::showArchiveDialog()
 
 void KODialogManager::showFilterEditDialog( QList<CalFilter*> *filters )
 {
+  createCategoryEditor();
   if ( !mFilterEditDialog ) {
     mFilterEditDialog = new FilterEditDialog( filters, mMainView );
     connect( mFilterEditDialog, SIGNAL(filterChanged()),
@@ -249,6 +244,7 @@ void KODialogManager::connectTypeAhead( KOEventEditor *editor, KOrg::AgendaView 
 
 void KODialogManager::connectEditor( KOIncidenceEditor *editor )
 {
+  createCategoryEditor();
   connect( editor, SIGNAL(deleteIncidenceSignal(Incidence *)),
            mMainView, SLOT(deleteIncidence(Incidence *)) );
 
@@ -284,6 +280,22 @@ KOJournalEditor *KODialogManager::getJournalEditor()
 
 void KODialogManager::updateSearchDialog()
 {
-  if (mSearchDialog) mSearchDialog->updateView();
+  if ( mSearchDialog ) {
+    mSearchDialog->updateView();
+  }
 }
 
+void KODialogManager::createCategoryEditor()
+{
+  if ( mCategoryEditDialog == 0 ) {
+    mCategoryEditDialog =
+      new KPIM::CategoryEditDialog( KOPrefs::instance(), mMainView );
+    mCategoryEditDialog->setModal( true );
+    mCategoryEditDialog->setHelp( i18n( "categories-view" ), "korganizer" );
+    connect( mMainView, SIGNAL(categoriesChanged()),
+             mCategoryEditDialog, SLOT(reload()) );
+    connect( mCategoryEditDialog, SIGNAL(categoryConfigChanged()),
+             mMainView, SIGNAL(categoryConfigChanged()) );
+    KOGlobals::fitDialogToScreen( mCategoryEditDialog );
+  }
+}
