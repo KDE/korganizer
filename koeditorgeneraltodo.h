@@ -27,7 +27,6 @@
 #include "koeditorgeneral.h"
 
 #include <QDateTime>
-#include <QBoxLayout>
 
 class KComboBox;
 class QBoxLayout;
@@ -40,6 +39,7 @@ namespace KPIM {
 }
 
 namespace KCal {
+  class Calendar;
   class Todo;
 }
 using namespace KCal;
@@ -48,7 +48,7 @@ class KOEditorGeneralTodo : public KOEditorGeneral
 {
   Q_OBJECT
   public:
-    explicit KOEditorGeneralTodo( QObject *parent = 0 );
+    explicit KOEditorGeneralTodo( Calendar *calendar, QObject *parent = 0 );
     virtual ~KOEditorGeneralTodo();
 
     void initTime( QWidget *, QBoxLayout * );
@@ -62,7 +62,7 @@ class KOEditorGeneralTodo : public KOEditorGeneral
     void setDefaults( const QDateTime &due, bool allDay );
 
     /** Read todo object and setup widgets accordingly */
-    void readTodo( Todo *todo, Calendar *calendar );
+    void readTodo( Todo *todo, bool tmpl = false );
 
     /** Write todo settings to event object */
     void writeTodo( Todo * );

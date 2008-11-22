@@ -43,27 +43,26 @@
 #include <KComboBox>
 #include <KRichTextWidget>
 
-#include <QLayout>
-#include <QSpinBox>
-#include <QDateTime>
-#include <QLabel>
-#include <QCheckBox>
-#include <QPushButton>
-#include <QGroupBox>
-#include <QGridLayout>
-#include <QFrame>
-#include <QHBoxLayout>
 #include <QBoxLayout>
+#include <QCheckBox>
+#include <QDateTime>
+#include <QFrame>
+#include <QGridLayout>
+#include <QGroupBox>
+#include <QHBoxLayout>
+#include <QLabel>
+#include <QPushButton>
+#include <QSpinBox>
 #include <QVBoxLayout>
 
 #include "koeditorgeneralevent.moc"
 
-KOEditorGeneralEvent::KOEditorGeneralEvent( QObject *parent )
-  : KOEditorGeneral( parent )
+KOEditorGeneralEvent::KOEditorGeneralEvent( Calendar *calendar, QObject *parent )
+  : KOEditorGeneral( calendar, parent )
 {
-  connect( this, SIGNAL(dateTimesChanged(const QDateTime &, const QDateTime &)),
+  connect( this, SIGNAL(dateTimesChanged(const QDateTime &,const QDateTime &)),
            SLOT(setDuration()) );
-  connect( this, SIGNAL(dateTimesChanged(const QDateTime &, const QDateTime &)),
+  connect( this, SIGNAL(dateTimesChanged(const QDateTime &,const QDateTime &)),
            SLOT(emitDateTimeStr()) );
 }
 
@@ -122,12 +121,12 @@ void KOEditorGeneralEvent::initTime( QWidget *parent, QBoxLayout *topLayout )
   // Timezone
   QString whatsThis = i18n( "Select the timezone for this event. "
                             "It will also affect recurrences" );
-  mTimeZoneComboStart = new KPIM::KTimeZoneComboBox( timeGroupBox );
-  mTimeZoneComboEnd = new KPIM::KTimeZoneComboBox( timeGroupBox );
+  mTimeZoneComboStart = new KPIM::KTimeZoneComboBox( mCalendar, timeGroupBox );
+  mTimeZoneComboEnd = new KPIM::KTimeZoneComboBox( mCalendar, timeGroupBox );
   if ( !KOPrefs::instance()->showTimeZoneSelectorInIncidenceEditor() ) {
     mTimeZoneComboStart->hide();
     mTimeZoneComboEnd->hide();
-  } 
+  }
   layoutTimeBox->addWidget( mTimeZoneComboStart, 0, 3 );
   layoutTimeBox->addWidget( mTimeZoneComboEnd, 1, 3 );
   mTimeZoneComboStart->setWhatsThis( whatsThis );
@@ -402,7 +401,7 @@ void KOEditorGeneralEvent::setDefaults( const QDateTime &from,
   setDateTimes( from, to );
 }
 
-void KOEditorGeneralEvent::readEvent( Event *event, Calendar *calendar, bool isTemplate )
+void KOEditorGeneralEvent::readEvent( Event *event, bool isTemplate )
 {
   mHasTimeCheckbox->setChecked( !event->allDay() );
   setTimeEditorsEnabled( !event->allDay() );
@@ -436,7 +435,7 @@ void KOEditorGeneralEvent::readEvent( Event *event, Calendar *calendar, bool isT
     mInvitationBar->hide();
   }
 
-  readIncidence( event, calendar );
+  readIncidence( event );
 }
 
 void KOEditorGeneralEvent::writeEvent( Event *event )

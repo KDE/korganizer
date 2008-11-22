@@ -40,6 +40,7 @@ namespace KPIM {
 }
 
 namespace KCal {
+  class Calendar;
   class Event;
 }
 using namespace KCal;
@@ -48,7 +49,7 @@ class KOEditorGeneralEvent : public KOEditorGeneral
 {
   Q_OBJECT
   public:
-    explicit KOEditorGeneralEvent( QObject *parent = 0 );
+    explicit KOEditorGeneralEvent( Calendar *calendar, QObject *parent = 0 );
     virtual ~KOEditorGeneralEvent();
 
     void initTime( QWidget *, QBoxLayout * );
@@ -67,7 +68,7 @@ class KOEditorGeneralEvent : public KOEditorGeneral
                      date information isn't set and the currently entered
                      time/date in the editor dialog is preserved.
     */
-    void readEvent( Event *event, Calendar *calendar, bool tmpl = false );
+    void readEvent( Event *event, bool tmpl = false );
     /** Write event settings to event object */
     void writeEvent( Event * );
 
@@ -76,7 +77,7 @@ class KOEditorGeneralEvent : public KOEditorGeneral
 
     void updateRecurrenceSummary( const QString &summary );
 
-    QFrame* invitationBar() const { return mInvitationBar; }
+    QFrame *invitationBar() const { return mInvitationBar; }
 
   public slots:
     void setDateTimes( const KDateTime &start, const KDateTime &end );
