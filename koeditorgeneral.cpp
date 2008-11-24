@@ -581,11 +581,10 @@ void KOEditorGeneral::updateAttendeeSummary( int count )
 bool KOEditorGeneral::validateInput()
 {
   // Do not permit an empty summary
-  //TODO(KDE4.3): uncomment when strings are unfrozen
-  //if (  mSummaryEdit->text().isEmpty() ) {
-  //  KMessageBox::sorry( 0, i18n( "The summary is empty." ) );
-  //  return false;
-  //}
+  if ( mSummaryEdit->text().isEmpty() ) {
+    KMessageBox::sorry( 0, i18n( "Please specify a summary." ) );
+    return false;
+  }
 
   return true;
 }
