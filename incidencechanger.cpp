@@ -105,7 +105,7 @@ bool IncidenceChanger::deleteIncidence( Incidence *incidence )
   bool doDelete = sendGroupwareMessage( incidence, KCal::iTIPCancel, true );
   if( doDelete ) {
     // @TODO: let Calendar::deleteIncidence do the locking...
-    Incidence* tmp = incidence->clone();
+    Incidence *tmp = incidence->clone();
     emit incidenceToBeDeleted( incidence );
     doDelete = mCalendar->deleteIncidence( incidence );
     if ( !KOPrefs::instance()->thatIsMe( tmp->organizer().email() ) ) {
@@ -115,8 +115,10 @@ bool IncidenceChanger::deleteIncidence( Incidence *incidence )
         QString email = *it;
         Attendee *me = tmp->attendeeByMail(email);
         if ( me ) {
-          if ( me->status() == KCal::Attendee::Accepted || me->status() == KCal::Attendee::Delegated )
+          if ( me->status() == KCal::Attendee::Accepted ||
+               me->status() == KCal::Attendee::Delegated ) {
             notifyOrganizer = true;
+          }
           Attendee *newMe = new Attendee( *me );
           newMe->setStatus( KCal::Attendee::Declined );
           tmp->clearAttendees();
@@ -297,8 +299,8 @@ bool IncidenceChanger::myAttendeeStatusChanged( Incidence *oldInc, Incidence *ne
 bool IncidenceChanger::changeIncidence( Incidence *oldinc, Incidence *newinc,
                                         int action )
 {
-  kDebug() << "for incidence \"" << newinc->summary()
-           << "\" ( old one was \"" << oldinc->summary() << "\")";
+  kDebug() << "for incidence \"" << newinc->summary() << "\""
+           << "( old one was \"" << oldinc->summary() << "\")";
 
   if ( incidencesEqual( newinc, oldinc ) ) {
     // Don't do anything
@@ -348,7 +350,7 @@ bool IncidenceChanger::addIncidence( Incidence *incidence, QWidget *parent )
   //        resource selection dialog. However, we don't have any UI methods
   //        in the calendar, only in the CalendarResources::DestinationPolicy
   //        So we need to type-cast it and extract it from the CalendarResources
-  CalendarResources *stdcal = dynamic_cast<CalendarResources*>(mCalendar);
+  CalendarResources *stdcal = dynamic_cast<CalendarResources*>( mCalendar );
   QWidget *tmpparent = 0;
   if ( stdcal ) {
     tmpparent = stdcal->dialogParentWidget();
@@ -361,11 +363,14 @@ bool IncidenceChanger::addIncidence( Incidence *incidence, QWidget *parent )
     stdcal->setDialogParentWidget( tmpparent );
   }
   if ( !success ) {
-    kDebug() << "failed";
-    KMessageBox::sorry( parent,
-                        i18n( "Unable to save %1 \"%2\".",
-                              i18n( incidence->type() ),
-                              incidence->summary() ) );
+    // We can have a failure if the user pressed [cancel] in the resource
+    // selectdialog, so check the exception.
+    if ( stdcal->exception()->errorCode() != KCal::ErrorFormat::UserCancel ) {
+      KMessageBox::sorry( parent,
+                          i18n( "Unable to save %1 \"%2\".",
+                                i18n( incidence->type() ),
+                                incidence->summary() ) );
+    }
     return false;
   }
   emit incidenceAdded( incidence );
