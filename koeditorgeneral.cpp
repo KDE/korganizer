@@ -132,7 +132,7 @@ void KOEditorGeneral::initHeader( QWidget *parent, QBoxLayout *topLayout )
   locationLabel->setBuddy( mLocationEdit );
 
   QBoxLayout *thirdLineLayout = new QHBoxLayout();
-  headerLayout->addMultiCellLayout( thirdLineLayout, 3, 3, 0, 2 );
+  headerLayout->addLayout( thirdLineLayout, 3, 0, 1, 3 );
 
   whatsThis = i18nc( "@info:whatsthis",
                      "Allows you to select the categories that this event or to-do belongs to." );
