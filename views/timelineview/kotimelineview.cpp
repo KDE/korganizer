@@ -214,9 +214,11 @@ void KOTimelineView::itemRightClicked( KDGanttViewItem *item )
     showNewEventPopup();
     return;
   }
-  if ( !mEventPopup )
+  if ( !mEventPopup ) {
     mEventPopup = eventPopup();
-  mEventPopup->showIncidencePopup( tlitem->incidence(), QDate() );
+  }
+  mEventPopup->showIncidencePopup(
+    calendar(), tlitem->incidence(), tlitem->incidence()->dtStart().date() );
 }
 
 bool KOTimelineView::eventDurationHint(KDateTime & startDt, KDateTime & endDt, bool & allDay)
