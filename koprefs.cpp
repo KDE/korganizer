@@ -87,9 +87,6 @@ KOPrefs::KOPrefs() :
   agendaTimeLabelsFontItem()->setDefaultValue( mDefaultAgendaTimeLabelsFont );
   monthViewFontItem()->setDefaultValue( mDefaultMonthViewFont );
   agendaCalendarItemsEventsBackgroundColorItem()->setDefaultValue( mDefaultCategoryColor );
-
-  // Load it now, not deep within some painting code
-  mMyAddrBookMails = KABC::StdAddressBook::self()->whoAmI().emails();
 }
 
 KOPrefs::~KOPrefs()
@@ -101,6 +98,14 @@ KOPrefs *KOPrefs::instance()
 {
   if ( !mInstance ) {
     insd.setObject( mInstance, new KOPrefs() );
+
+    // Load it now, not deep within some painting code
+    // Don't load inside constructor since synchronous loading could
+    // require resources to do a nested eventloop or similar and
+    // cause re-entrance, resulting in more than once call to KOPrefs::instance()
+    // before the constructor has finished and thus create more than once instance
+    mInstance->mMyAddrBookMails = KABC::StdAddressBook::self()->whoAmI().emails();
+
     mInstance->readConfig();
   }
 
