@@ -48,7 +48,7 @@ class KOJournalView : public KOrg::BaseView
     virtual int currentDateCount();
     virtual Incidence::List selectedIncidences();
     DateList selectedDates() { return DateList(); }
-    void appendJournal( Journal*journal, const QDate &dt);
+    void appendJournal( Journal *journal, const QDate &dt );
 
   public slots:
     // Don't update the view when midnight passed, otherwise we'll have data loss (bug 79145)
@@ -65,8 +65,8 @@ class KOJournalView : public KOrg::BaseView
   signals:
     void flushEntries();
     void setIncidenceChangerSignal( IncidenceChangerBase * );
-    void journalEdited( Journal* );
-    void journalDeleted( Journal* );
+    void journalEdited( Journal * );
+    void journalDeleted( Journal * );
 
   protected:
     void clearEntries();

@@ -59,22 +59,17 @@
 
 #include "journalview.moc"
 
-JournalDateView::JournalDateView( Calendar *calendar, QWidget *parent ) :
-  KVBox( parent ), mCalendar( calendar )
+JournalDateView::JournalDateView( Calendar *calendar, QWidget *parent )
+  : KVBox( parent ), mCalendar( calendar )
 {
-//kDebug(5850)<<"JournalView::JournalView, parent="<<parent;
   mChanger = 0;
-
-#ifdef __GNUC__
-#warning "kde4: porting"
-#endif
 }
 
 JournalDateView::~JournalDateView()
 {
 }
 
-void JournalDateView::setDate(const QDate &date)
+void JournalDateView::setDate( const QDate &date )
 {
   mDate = date;
   emit setDateSignal( date );
@@ -94,30 +89,33 @@ void JournalDateView::clear()
 // should only be called by the KOJournalView now.
 void JournalDateView::addJournal( Journal *j )
 {
-  QMap<Journal*,JournalView*>::Iterator pos = mEntries.find( j );
-  if ( pos != mEntries.end() ) return;
+  QMap<Journal *,JournalView *>::Iterator pos = mEntries.find( j );
+  if ( pos != mEntries.end() ) {
+    return;
+  }
 
   JournalView *entry = new JournalView( j, this );
   entry->show();
+  entry->setCalendar( mCalendar );
   entry->setDate( mDate );
   entry->setIncidenceChanger( mChanger );
 
   mEntries.insert( j, entry );
-  connect( this, SIGNAL( setIncidenceChangerSignal( IncidenceChangerBase * ) ),
-           entry, SLOT( setIncidenceChanger( IncidenceChangerBase * ) ) );
-  connect( this, SIGNAL( setDateSignal( const QDate & ) ),
-           entry, SLOT( setDate( const QDate & ) ) );
-  connect( entry, SIGNAL( deleteIncidence( Incidence* ) ),
-           this, SIGNAL( deleteIncidence( Incidence* ) ) );
-  connect( entry, SIGNAL( editIncidence( Incidence* ) ),
-           this, SIGNAL( editIncidence( Incidence* ) ) );
+  connect( this, SIGNAL(setIncidenceChangerSignal(IncidenceChangerBase *)),
+           entry, SLOT(setIncidenceChanger(IncidenceChangerBase *)) );
+  connect( this, SIGNAL(setDateSignal(const QDate &)),
+           entry, SLOT(setDate(const QDate &)) );
+  connect( entry, SIGNAL(deleteIncidence(Incidence *)),
+           this, SIGNAL(deleteIncidence(Incidence *)) );
+  connect( entry, SIGNAL(editIncidence(Incidence *)),
+           this, SIGNAL(editIncidence(Incidence *)) );
 }
 
 Journal::List JournalDateView::journals() const
 {
-  QList<Journal*> jList( mEntries.keys() );
+  QList<Journal *> jList( mEntries.keys() );
   Journal::List l;
-  QList<Journal*>::Iterator it = jList.begin();
+  QList<Journal *>::Iterator it = jList.begin();
   for ( ; it != jList.end(); ++it ) {
     l.append( *it );
   }
@@ -137,8 +135,10 @@ void JournalDateView::emitNewJournal()
 
 void JournalDateView::journalEdited( Journal *journal )
 {
-  QMap<Journal*,JournalView*>::Iterator pos = mEntries.find( journal );
-  if ( pos == mEntries.end() ) return;
+  QMap<Journal *,JournalView *>::Iterator pos = mEntries.find( journal );
+  if ( pos == mEntries.end() ) {
+    return;
+  }
 
   pos.value()->setJournal( journal );
 
@@ -146,20 +146,17 @@ void JournalDateView::journalEdited( Journal *journal )
 
 void JournalDateView::journalDeleted( Journal *journal )
 {
-  QMap<Journal*,JournalView*>::Iterator pos = mEntries.find( journal );
-  if ( pos == mEntries.end() ) return;
+  QMap<Journal *,JournalView *>::Iterator pos = mEntries.find( journal );
+  if ( pos == mEntries.end() ) {
+    return;
+  }
 
   delete pos.value();
 }
 
-
-
-
-
-JournalView::JournalView( Journal* j, QWidget *parent ) :
-  QWidget( parent ), mJournal( j )
+JournalView::JournalView( Journal *j, QWidget *parent )
+  : QWidget( parent ), mJournal( j )
 {
-//kDebug(5850)<<"JournalView::JournalView, parent="<<parent;
   mDirty = false;
   mWriteInProgress = false;
   mChanger = 0;
@@ -175,35 +172,35 @@ JournalView::JournalView( Journal* j, QWidget *parent ) :
 
   mEditButton = new QPushButton( this );
   mEditButton->setObjectName( "editButton" );
-  mEditButton->setText( i18n("&Edit") );
+  mEditButton->setText( i18n( "&Edit" ) );
   mEditButton->setIcon( KOGlobals::self()->smallIcon( "document-properties" ) );
   mEditButton->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
-  mEditButton->setToolTip( i18n("Edit this journal entry") );
-  mEditButton->setWhatsThis( i18n("Opens an editor dialog for this journal entry") );
+  mEditButton->setToolTip( i18n( "Edit this journal entry" ) );
+  mEditButton->setWhatsThis( i18n( "Opens an editor dialog for this journal entry" ) );
   mLayout->addWidget( mEditButton, 1, 0 );
-  connect( mEditButton, SIGNAL(clicked()), this, SLOT( editItem() ) );
+  connect( mEditButton, SIGNAL(clicked()), this, SLOT(editItem()) );
 
   mDeleteButton = new QPushButton( this );
   mDeleteButton->setObjectName( "deleteButton" );
-  mDeleteButton->setText( i18n("&Delete") );
+  mDeleteButton->setText( i18n( "&Delete" ) );
   QPixmap pix = KOGlobals::self()->smallIcon( "edit-delete" );
   mDeleteButton->setIcon( pix );
   mDeleteButton->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
-  mDeleteButton->setToolTip( i18n("Delete this journal entry") );
-  mDeleteButton->setWhatsThis( i18n("Delete this journal entry") );
+  mDeleteButton->setToolTip( i18n( "Delete this journal entry" ) );
+  mDeleteButton->setWhatsThis( i18n( "Delete this journal entry" ) );
   mLayout->addWidget( mDeleteButton, 1, 1 );
   connect( mDeleteButton, SIGNAL(pressed()), this, SLOT(deleteItem()) );
 
 #ifndef KORG_NOPRINTER
   mPrintButton = new QPushButton( this );
-  mPrintButton->setText( i18n("&Print") );
+  mPrintButton->setText( i18n( "&Print" ) );
   mPrintButton->setObjectName( "printButton" );
   mPrintButton->setIcon( KOGlobals::self()->smallIcon( "document-print" ) );
   mPrintButton->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
-  mPrintButton->setToolTip( i18n("Print this journal entry") );
-  mPrintButton->setWhatsThis( i18n("Opens a print dialog for this journal entry") );
+  mPrintButton->setToolTip( i18n( "Print this journal entry" ) );
+  mPrintButton->setWhatsThis( i18n( "Opens a print dialog for this journal entry" ) );
   mLayout->addWidget( mPrintButton, 1, 2 );
-  connect( mPrintButton, SIGNAL(clicked()), this, SLOT( printItem() ) );
+  connect( mPrintButton, SIGNAL(clicked()), this, SLOT(printItem()) );
 #endif
 
   readJournal( mJournal );
@@ -229,24 +226,24 @@ void JournalView::deleteItem()
 
 void JournalView::editItem()
 {
-  if ( mJournal )
+  if ( mJournal ) {
     emit editIncidence( mJournal );
+  }
 }
 
 void JournalView::printItem()
 {
 #ifndef KORG_NOPRINTER
   if ( mJournal ) {
-    Calendar *cal = 0;
     KOCoreHelper helper;
-    CalPrinter printer( this, cal, &helper );
+    CalPrinter printer( this, mCalendar, &helper );
     connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
 
     Incidence::List selectedIncidences;
     selectedIncidences.append( mJournal );
 
     printer.print( KOrg::CalPrinterBase::Incidence,
-                 QDate(), QDate(), selectedIncidences );
+                   mDate, mDate, selectedIncidences );
   }
 #endif
 }
@@ -258,15 +255,21 @@ void JournalView::setReadOnly( bool readonly )
   mDeleteButton->setEnabled( !mReadOnly );
 }
 
+void JournalView::setCalendar( Calendar *cal )
+{
+  mCalendar = cal;
+}
 
-void JournalView::setDate(const QDate &date)
+void JournalView::setDate( const QDate &date )
 {
   mDate = date;
 }
 
-void JournalView::setJournal(Journal *journal)
+void JournalView::setJournal( Journal *journal )
 {
-  if ( !journal ) return;
+  if ( !journal ) {
+    return;
+  }
 
   mJournal = journal;
   readJournal( journal );
@@ -309,8 +312,7 @@ void JournalView::readJournal( Journal *j )
   dateFormat.setFontPointSize( baseFontSize + 1 );
   if ( !mJournal->allDay() ) {
     cursor.insertText( mJournal->dtStartStr(), dateFormat );
-  }
-  else {
+  } else {
     cursor.insertText( mJournal->dtStartDateStr(), dateFormat );
   }
   cursor.insertBlock();
@@ -319,8 +321,7 @@ void JournalView::readJournal( Journal *j )
   if ( mJournal->descriptionIsRich() ) {
     QString description = mJournal->description();
     mBrowser->insertHtml( description );
-  }
-  else {
+  } else {
     mBrowser->insertPlainText( mJournal->description() );
   }
   cursor.insertBlock();

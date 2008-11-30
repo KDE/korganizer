@@ -46,25 +46,28 @@ class KTimeEdit;
 class QPushButton;
 
 namespace KOrg {
-class IncidenceChangerBase;
+  class IncidenceChangerBase;
 }
 using namespace KOrg;
+
 namespace KCal {
-class Calendar;
+  class Calendar;
 }
 using namespace KCal;
 
-class JournalView : public QWidget {
+class JournalView : public QWidget
+{
   Q_OBJECT
   public:
     typedef ListBase<JournalView> List;
 
-    JournalView( Journal* j, QWidget *parent );
+    JournalView( Journal *j, QWidget *parent );
     virtual ~JournalView();
 
-    void setJournal(Journal *);
+    void setJournal( Journal * );
     Journal *journal() const { return mJournal; }
 
+    void setCalendar( Calendar *cal );
     QDate date() const { return mDate; }
 
     void clear();
@@ -78,9 +81,10 @@ class JournalView : public QWidget {
     void deleteItem();
     void editItem();
     void printItem();
+
   public slots:
     void setIncidenceChanger( IncidenceChangerBase *changer ) { mChanger = changer; }
-    void setDate(const QDate &);
+    void setDate( const QDate &date );
 
   signals:
     void configChanged();
@@ -93,6 +97,7 @@ class JournalView : public QWidget {
 
   private:
     Journal *mJournal;
+    Calendar *mCalendar;
     QDate mDate;
     bool mReadOnly;
 
@@ -108,8 +113,8 @@ class JournalView : public QWidget {
     IncidenceChangerBase *mChanger;
 };
 
-
-class JournalDateView : public KVBox {
+class JournalDateView : public KVBox
+{
   Q_OBJECT
   public:
     typedef ListBase<JournalDateView> List;
@@ -120,11 +125,10 @@ class JournalDateView : public KVBox {
     void addJournal( Journal * );
     Journal::List journals() const;
 
-    void setDate( const QDate & );
+    void setDate( const QDate &date );
     QDate date() const { return mDate; }
 
     void clear();
-
 
   signals:
     void setIncidenceChangerSignal( IncidenceChangerBase *changer );
@@ -137,13 +141,13 @@ class JournalDateView : public KVBox {
   public slots:
     void emitNewJournal();
     void setIncidenceChanger( IncidenceChangerBase *changer );
-    void journalEdited( Journal* );
-    void journalDeleted( Journal* );
+    void journalEdited( Journal * );
+    void journalDeleted( Journal * );
 
   private:
     Calendar *mCalendar;
     QDate mDate;
-    QMap<Journal*,JournalView*> mEntries;
+    QMap<Journal *,JournalView *> mEntries;
 
     IncidenceChangerBase *mChanger;
 };

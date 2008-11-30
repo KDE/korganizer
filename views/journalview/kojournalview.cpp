@@ -23,7 +23,6 @@
   without including the source code for Qt in the source distribution.
 */
 
-//
 // View of Journal entries
 
 #include "kojournalview.h"
@@ -43,10 +42,10 @@
 
 using namespace KOrg;
 
-KOJournalView::KOJournalView(Calendar *calendar, QWidget *parent )
+KOJournalView::KOJournalView( Calendar *calendar, QWidget *parent )
   : KOrg::BaseView( calendar, parent )
 {
-  QVBoxLayout*topLayout = new QVBoxLayout( this );
+  QVBoxLayout *topLayout = new QVBoxLayout( this );
   mSA = new QScrollArea( this );
   mVBox = new KVBox( mSA->viewport() );
   mSA->setHorizontalScrollBarPolicy( Qt::ScrollBarAlwaysOff );
@@ -59,7 +58,7 @@ KOJournalView::~KOJournalView()
 {
 }
 
-void KOJournalView::appendJournal( Journal*journal, const QDate &dt)
+void KOJournalView::appendJournal( Journal *journal, const QDate &dt )
 {
   JournalDateView *entry = 0;
   if ( mEntries.contains( dt ) ) {
@@ -70,19 +69,19 @@ void KOJournalView::appendJournal( Journal*journal, const QDate &dt)
     entry->setIncidenceChanger( mChanger );
     entry->show();
     connect( this, SIGNAL(flushEntries()), entry, SIGNAL(flushEntries()) );
-    connect( this, SIGNAL(setIncidenceChangerSignal( IncidenceChangerBase * ) ),
-             entry, SLOT(setIncidenceChanger( IncidenceChangerBase * ) ) );
-    connect( this, SIGNAL( journalEdited( Journal* ) ),
-             entry, SLOT( journalEdited( Journal* ) ) );
-    connect( this, SIGNAL( journalDeleted( Journal* ) ),
-             entry, SLOT( journalDeleted( Journal* ) ) );
+    connect( this, SIGNAL(setIncidenceChangerSignal(IncidenceChangerBase *)),
+             entry, SLOT(setIncidenceChanger(IncidenceChangerBase *)) );
+    connect( this, SIGNAL(journalEdited(Journal *)),
+             entry, SLOT(journalEdited(Journal *)) );
+    connect( this, SIGNAL(journalDeleted(Journal *)),
+             entry, SLOT(journalDeleted(Journal *)) );
 
-    connect( entry, SIGNAL( editIncidence( Incidence* ) ),
-             this, SIGNAL( editIncidenceSignal( Incidence* ) ) );
-    connect( entry, SIGNAL( deleteIncidence( Incidence* ) ),
-             this, SIGNAL( deleteIncidenceSignal( Incidence* ) ) );
-    connect( entry, SIGNAL( newJournal( const QDate & ) ),
-             this, SIGNAL( newJournalSignal( const QDate & ) ) );
+    connect( entry, SIGNAL(editIncidence(Incidence *)),
+             this, SIGNAL(editIncidenceSignal(Incidence *)) );
+    connect( entry, SIGNAL(deleteIncidence(Incidence *)),
+             this, SIGNAL(deleteIncidenceSignal(Incidence *)) );
+    connect( entry, SIGNAL(newJournal(const QDate &)),
+             this, SIGNAL(newJournalSignal(const QDate &)) );
     mEntries.insert( dt, entry );
   }
 
@@ -109,7 +108,7 @@ void KOJournalView::clearEntries()
 //  kDebug(5850)<<"KOJournalView::clearEntries()";
   QMap<QDate, JournalDateView*>::Iterator it;
   for ( it = mEntries.begin(); it != mEntries.end(); ++it ) {
-    delete (it.value());
+    delete it.value();
   }
   mEntries.clear();
 }
@@ -129,19 +128,19 @@ void KOJournalView::updateView()
 
 void KOJournalView::flushView()
 {
-//  kDebug(5850) <<"KOJournalView::flushView():";
   emit flushEntries();
 }
 
-void KOJournalView::showDates(const QDate &start, const QDate &end)
+void KOJournalView::showDates( const QDate &start, const QDate &end )
 {
-//  kDebug(5850) <<"KOJournalView::showDates():"<<start.toString().toLatin1()<<" -"<<end.toString().toLatin1();
   clearEntries();
-  if ( end<start ) return;
+  if ( end<start ) {
+    return;
+  }
 
   Journal::List::ConstIterator it;
   Journal::List jnls;
-  QDate d=start;
+  QDate d = start;
   for ( QDate d=end; d>=start; d=d.addDays(-1) ) {
     jnls = calendar()->journals( d );
     it = jnls.constEnd();
@@ -159,35 +158,35 @@ void KOJournalView::showDates(const QDate &start, const QDate &end)
 
 void KOJournalView::showIncidences( const Incidence::List &incidences )
 {
-//  kDebug(5850) <<"KOJournalView::showIncidences():";
   clearEntries();
   Incidence::List::const_iterator it = incidences.constEnd();
   while ( it != incidences.constBegin() ) {
     --it;
     if ((*it) && ( (*it)->type() == "Journal" ) ) {
-      Journal*j = static_cast<Journal*>(*it);
-      if ( j ) appendJournal( j, j->dtStart().date() );
+      Journal *j = static_cast<Journal *>(*it);
+      if ( j ) {
+        appendJournal( j, j->dtStart().date() );
+      }
     }
   }
 }
 
-void KOJournalView::changeIncidenceDisplay(Incidence *incidence, int action)
+void KOJournalView::changeIncidenceDisplay( Incidence *incidence, int action )
 {
-//  kDebug(5850) <<"KOJournalView::changeIncidenceDisplay():";
-  Journal *journal = dynamic_cast<Journal*>(incidence);
-  if (journal) {
+  Journal *journal = dynamic_cast<Journal *>(incidence);
+  if ( journal ) {
     switch(action) {
-      case KOGlobals::INCIDENCEADDED:
-        appendJournal( journal, journal->dtStart().date() );
-        break;
-      case KOGlobals::INCIDENCEEDITED:
-        emit journalEdited( journal );
-        break;
-      case KOGlobals::INCIDENCEDELETED:
-        emit journalDeleted( journal );
-        break;
-      default:
-        kDebug() << "Illegal action" << action;
+    case KOGlobals::INCIDENCEADDED:
+      appendJournal( journal, journal->dtStart().date() );
+      break;
+    case KOGlobals::INCIDENCEEDITED:
+      emit journalEdited( journal );
+      break;
+    case KOGlobals::INCIDENCEDELETED:
+      emit journalDeleted( journal );
+      break;
+    default:
+      kWarning() << "Illegal action" << action;
     }
   }
 }
