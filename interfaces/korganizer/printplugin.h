@@ -52,6 +52,7 @@ class CalPrinterBase
       Day=200,
       Week=300,
       Month=400,
+      Year=900,
       Todolist=1000,
       Journallist=2000
     };
