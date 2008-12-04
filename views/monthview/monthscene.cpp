@@ -546,8 +546,7 @@ void MonthScene::mousePressEvent ( QGraphicsSceneMouseEvent *mouseEvent )
       IncidenceMonthItem *tmp = dynamic_cast<IncidenceMonthItem *>( mClickedItem );
       if ( tmp ) {
         emit showIncidencePopupSignal( mCalendar,
-                                       tmp->incidence(),
-                                       tmp->incidence()->dtStart().date() );
+                                       tmp->incidence(), tmp->realStartDate() );
       }
     }
 
