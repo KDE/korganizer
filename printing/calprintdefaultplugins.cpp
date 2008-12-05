@@ -134,12 +134,14 @@ class TimePrintStringsVisitor : public IncidenceBase::Visitor
     QString mDurationCaption, mDurationString;
 
   protected:
-    bool visit( Event *event ) {
+    bool visit( Event *event )
+    {
+      KDateTime::Spec spec = KPIM::KPimPrefs::timeSpec();
       if ( event->dtStart().isValid() ) {
         mStartCaption =  i18n( "Start date: " );
         // Show date/time or only date, depending on whether it's an all-day event
         mStartString = event->allDay() ?
-                       event->dtStartDateStr( false ) : event->dtStartStr( false );
+                       event->dtStartDateStr( false, spec ) : event->dtStartStr( false, spec );
       } else {
         mStartCaption = i18n( "No start date" );
         mStartString.clear();
@@ -148,7 +150,7 @@ class TimePrintStringsVisitor : public IncidenceBase::Visitor
       if ( event->hasEndDate() ) {
         mEndCaption = i18n( "End date: " );
         mEndString = event->allDay() ?
-                     event->dtEndDateStr( false ) : event->dtEndStr( false );
+                     event->dtEndDateStr( false, spec ) : event->dtEndStr( false, spec );
       } else if ( event->hasDuration() ) {
         mEndCaption = i18n( "Duration: " );
         int mins = event->duration().asSeconds() / 60;
@@ -164,12 +166,14 @@ class TimePrintStringsVisitor : public IncidenceBase::Visitor
       }
       return true;
     }
-    bool visit( Todo *todo ) {
+    bool visit( Todo *todo )
+    {
+      KDateTime::Spec spec = KPIM::KPimPrefs::timeSpec();
       if ( todo->hasStartDate() ) {
         mStartCaption =  i18n( "Start date: " );
         // Show date/time or only date, depending on whether it's an all-day event
         mStartString = todo->allDay() ?
-                       todo->dtStartDateStr( false ) : todo->dtStartStr( false );
+                       todo->dtStartDateStr( false, spec ) : todo->dtStartStr( false, spec );
       } else {
         mStartCaption = i18n( "No start date" );
         mStartString.clear();
@@ -178,22 +182,25 @@ class TimePrintStringsVisitor : public IncidenceBase::Visitor
       if ( todo->hasDueDate() ) {
         mEndCaption = i18n( "Due date: " );
         mEndString = todo->allDay() ?
-                     todo->dtDueDateStr( false ) : todo->dtDueStr( false );
+                     todo->dtDueDateStr( false, spec ) : todo->dtDueStr( false, spec );
       } else {
         mEndCaption = i18n( "No due date" );
         mEndString.clear();
       }
       return true;
     }
-    bool visit( Journal *journal ) {
+    bool visit( Journal *journal )
+    {
+      KDateTime::Spec spec = KPIM::KPimPrefs::timeSpec();
       mStartCaption = i18n( "Start date: " );
       mStartString = journal->allDay() ?
-                     journal->dtStartDateStr( false ) : journal->dtStartStr( false );
+                     journal->dtStartDateStr( false, spec ) : journal->dtStartStr( false, spec );
       mEndCaption.clear();
       mEndString.clear();
       return true;
     }
-    bool visit( FreeBusy *fb ) {
+    bool visit( FreeBusy *fb )
+    {
       Q_UNUSED( fb );
       return true;
     }
