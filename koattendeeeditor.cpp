@@ -410,7 +410,7 @@ void KOAttendeeEditor::cancelAttendeeIncidence( KCal::Incidence *incidence )
       }
     }
     if ( !isNewAttendee ) {
-      incidence->addAttendee( new Attendee( *att ) );
+      incidence->addAttendee( new Attendee( *att ), false );
     }
   }
   mdelAttendees.clear();
