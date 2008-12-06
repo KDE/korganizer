@@ -281,6 +281,10 @@ void MonthView::reloadIncidences()
   Incidence::List incidences = calendar()->incidences();
 
   foreach ( Incidence *incidence, incidences ) {
+    if ( incidence->type() == "Todo" && !KOPrefs::instance()->showAllDayTodo() ) {
+      continue;
+    }
+
     // An event could start before the currently displayed date, so we
     // have to check at least those dates before the start date, which would
     // cause the event to span into the displayed date range.
