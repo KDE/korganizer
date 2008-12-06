@@ -37,6 +37,7 @@
 #include <QMenu>
 #include <QMouseEvent>
 #include <QString>
+#include <QSpacerItem>
 #include <QToolButton>
 
 ActiveLabel::ActiveLabel( QWidget *parent ) : QLabel( parent )
@@ -80,13 +81,18 @@ NavigatorBar::NavigatorBar( QWidget *parent )
   mMonth->setMinimumHeight( mPrevYear->sizeHint().height() );
   mMonth->setToolTip( i18n( "Select a month" ) );
 
+  // Create a horizontal spacer
+  QSpacerItem *spacer = new QSpacerItem( 50, 1, QSizePolicy::Expanding );
+
   // set up control frame layout
   QHBoxLayout *ctrlLayout = new QHBoxLayout( this );
+  ctrlLayout->addSpacerItem( spacer );
   ctrlLayout->addWidget( mPrevYear );
   ctrlLayout->addWidget( mPrevMonth );
   ctrlLayout->addWidget( mMonth );
   ctrlLayout->addWidget( mNextMonth );
   ctrlLayout->addWidget( mNextYear );
+  ctrlLayout->addSpacerItem( spacer );
 
   connect( mPrevYear, SIGNAL(clicked()), SIGNAL(goPrevYear()) );
   connect( mPrevMonth, SIGNAL(clicked()), SIGNAL(goPrevMonth()) );
