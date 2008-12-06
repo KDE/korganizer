@@ -259,6 +259,25 @@ void MonthView::setStartDate( const QDate &start )
   reloadIncidences();
 }
 
+Incidence::List MonthView::selectedIncidences()
+{
+  Incidence *incidenceSelected = 0;
+  Incidence::List selected;
+
+  if ( mScene->selectedItem() ) {
+    IncidenceMonthItem *tmp = dynamic_cast<IncidenceMonthItem *>( mScene->selectedItem() );
+    if ( tmp ) {
+      incidenceSelected = tmp->incidence();
+
+      if ( incidenceSelected ) {
+        selected.append( incidenceSelected );
+      }
+    }
+  }
+
+  return selected;
+}
+
 void MonthView::reloadIncidences()
 {
   // keep selection if it exists

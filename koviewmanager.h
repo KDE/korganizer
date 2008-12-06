@@ -89,7 +89,8 @@ class KOViewManager : public QObject
     QDate currentSelectionDate();
 
     KOAgendaView *agendaView() const { return mAgendaView; }
-    KOTodoView   *todoView() const { return mTodoView; }
+    KOTodoView *todoView() const { return mTodoView; }
+    KOrg::MonthView *monthView() const { return mMonthView; }
 
   signals:
     void configChanged();

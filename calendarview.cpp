@@ -833,7 +833,7 @@ void CalendarView::edit_copy()
 
 void CalendarView::edit_paste()
 {
-// If in agenda view, use the selected time and date from there.
+// If in agenda and month view, use the selected time and date from there.
 // In all other cases, paste the event on the first day of the
 // selection in the day matrix on the left
 
@@ -852,7 +852,14 @@ void CalendarView::edit_paste()
     if ( !aView->selectedIsAllDay() ) {
       time = aView->selectionStart().time();
     }
-  } else {
+  }
+
+  MonthView *mView = mViewManager->monthView();
+  if ( mView && !mView->selectedDates().isEmpty() ) {
+    date = mView->selectedDates().first();
+  }
+
+  if ( !date.isValid() ) {
     date = mNavigator->selectedDates().first();
   }
 
@@ -1786,9 +1793,10 @@ void CalendarView::showLeftFrame( bool show )
     mLeftFrame->show();
     emit calendarViewExpanded( false );
   } else {
-    // splitter sizes of mPanner are useless if mLeftFrame is hidden, so remember them before we hide it
-    if ( mMainSplitterSizes.isEmpty() )
+    // mPanner splitter sizes are useless if mLeftFrame is hidden, so remember them beforehand.
+    if ( mMainSplitterSizes.isEmpty() ) {
       mMainSplitterSizes = mPanner->sizes();
+    }
 
     mLeftFrame->hide();
     emit calendarViewExpanded( true );
@@ -2348,7 +2356,7 @@ void CalendarView::moveIncidenceTo( Incidence *incmove, const QDate &dt )
   delete oldIncidence;
 }
 
-bool CalendarView::eventFilter(QObject * watched, QEvent * event)
+bool CalendarView::eventFilter( QObject *watched, QEvent *event )
 {
   if ( watched == mLeftFrame && event->type() == QEvent::Show ) {
     mSplitterSizesValid = true;
