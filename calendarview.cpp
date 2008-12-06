@@ -858,33 +858,40 @@ void CalendarView::edit_copy()
 void CalendarView::edit_paste()
 {
 // If in agenda and month view, use the selected time and date from there.
-// In all other cases, paste the event on the first day of the
-// selection in the day matrix on the left
+// In all other cases, use the navigator's selected date.
 
-  QDate date;
-  // create an invalid time to check if we got a new time for the eevent
-  QTime time( -1, -1 );
-  QDateTime startDT, endDT;
+  QDate date;          // null dates are invalid, that's what we want
+  QTime time( -1, -1 );// create an invalid time, that's what we want
+  QDateTime endDT;     // null datetimes are invalid, that's what we want
   bool useEndTime = false;
 
+  KOrg::BaseView *curView = mViewManager->currentView();
+  if ( !curView ) {
+    return;
+  }
+
   KOAgendaView *aView = mViewManager->agendaView();
-  if ( aView && aView->selectionStart().isValid() ) {
+  MonthView *mView = mViewManager->monthView();
+
+  if ( curView == aView && aView->selectionStart().isValid() ) {
     date = aView->selectionStart().date();
-    startDT = aView->selectionStart();
     endDT = aView->selectionEnd();
     useEndTime = !aView->selectedIsSingleCell();
     if ( !aView->selectedIsAllDay() ) {
       time = aView->selectionStart().time();
     }
-  }
-
-  MonthView *mView = mViewManager->monthView();
-  if ( mView && !mView->selectedDates().isEmpty() ) {
+  } else if ( curView == mView && !mView->selectedDates().isEmpty() ) {
     date = mView->selectedDates().first();
+  } else {
+    // default to the selected date from the navigator
+    if ( !mNavigator->selectedDates().isEmpty() ) {
+      date = mNavigator->selectedDates().first();
+    }
   }
 
   if ( !date.isValid() ) {
-    date = mNavigator->selectedDates().first();
+    //TODO: KMessageBox::sorry( "cannot paste" )
+    return;
   }
 
   DndFactory factory( mCalendar );
