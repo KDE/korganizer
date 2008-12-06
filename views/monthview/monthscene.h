@@ -170,6 +170,7 @@ class MonthScene : public QGraphicsScene
     void incidenceSelected( Incidence *incidence );
     void showIncidencePopupSignal( Calendar *, Incidence *, const QDate &);
     void showNewEventPopupSignal();
+    void newEventSignal();
 
   protected:
     virtual void mouseDoubleClickEvent( QGraphicsSceneMouseEvent *mouseEvent );

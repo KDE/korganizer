@@ -107,6 +107,9 @@ MonthView::MonthView( Calendar *calendar, QWidget *parent )
 
   connect( mScene, SIGNAL(incidenceSelected(Incidence *)),
            this, SIGNAL(incidenceSelected(Incidence *)) );
+
+  connect( mScene, SIGNAL(newEventSignal()),
+           this, SIGNAL(newEventSignal()) );
 }
 
 MonthView::~MonthView()

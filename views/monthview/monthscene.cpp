@@ -465,6 +465,8 @@ void MonthScene::mouseDoubleClickEvent ( QGraphicsSceneMouseEvent *mouseEvent )
         mouseEvent->accept();
       }
     }
+  } else {
+    emit newEventSignal();
   }
 }
 
