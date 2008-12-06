@@ -560,7 +560,7 @@ void CalPrintDay::loadConfig()
 {
   if ( mConfig ) {
     KConfigGroup grp( mConfig, "General" );
-    QDate dt;
+    QDate dt = QDate::currentDate(); // any valid QDate will do
     QTime tm1( dayStart() );
     QDateTime startTm( dt, tm1 );
     QDateTime endTm( dt, tm1.addSecs( 12 * 60 * 60 ) );
@@ -577,8 +577,11 @@ void CalPrintDay::saveConfig()
   readSettingsWidget();
   if ( mConfig ) {
     KConfigGroup grp( mConfig, "General" );
-    grp.writeEntry( "Start time", QDateTime( QDate(), mStartTime ) );
-    grp.writeEntry( "End time", QDateTime( QDate(), mEndTime ) );
+    QDateTime dt = QDateTime::currentDateTime(); // any valid QDateTime will do
+    dt.setTime( mStartTime );
+    grp.writeEntry( "Start time", dt );
+    dt.setTime( mEndTime );
+    grp.writeEntry( "End time", dt );
     grp.writeEntry( "Include todos", mIncludeTodos );
     grp.writeEntry( "Include all events", mIncludeAllEvents );
   }
@@ -706,7 +709,7 @@ void CalPrintWeek::loadConfig()
 {
   if ( mConfig ) {
     KConfigGroup grp( mConfig, "General" );
-    QDate dt;
+    QDate dt = QDate::currentDate(); // any valid QDate will do
     QTime tm1( dayStart() );
     QDateTime startTm( dt, tm1 );
     QDateTime endTm( dt, tm1.addSecs( 43200 ) );
@@ -722,9 +725,13 @@ void CalPrintWeek::saveConfig()
 {
   readSettingsWidget();
   if ( mConfig ) {
+
     KConfigGroup grp( mConfig, "General" );
-    grp.writeEntry( "Start time", QDateTime( QDate(), mStartTime ) );
-    grp.writeEntry( "End time", QDateTime( QDate(), mEndTime ) );
+    QDateTime dt = QDateTime::currentDateTime(); // any valid QDateTime will do
+    dt.setTime( mStartTime );
+    grp.writeEntry( "Start time", dt );
+    dt.setTime( mEndTime );
+    grp.writeEntry( "End time", dt );
     grp.writeEntry( "Include todos", mIncludeTodos );
     grp.writeEntry( "Print type", int( mWeekPrintType ) );
   }
