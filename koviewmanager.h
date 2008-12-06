@@ -34,7 +34,6 @@ class KTabWidget;
 class CalendarView;
 class KOListView;
 class KOAgendaView;
-class KOMonthView;
 class KOTodoView;
 class KOWhatsNextView;
 class KOJournalView;
@@ -90,7 +89,8 @@ class KOViewManager : public QObject
 
     KOAgendaView *agendaView() const { return mAgendaView; }
     KOrg::MultiAgendaView *multiAgendaView() const { return mAgendaSideBySideView; }
-    KOTodoView   *todoView() const { return mTodoView; }
+    KOTodoView *todoView() const { return mTodoView; }
+    KOrg::MonthView *monthView() const { return mMonthView; }
 
   signals:
     void configChanged();
