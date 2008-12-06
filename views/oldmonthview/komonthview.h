@@ -334,6 +334,7 @@ class KOMonthView: public KOEventView
 
   private:
     class GetDateVisitor;
+    Calendar *mCalendar;
     int mDaysPerWeek;
     int mNumWeeks;
     int mNumCells;

@@ -726,6 +726,7 @@ KOMonthView::KOMonthView( Calendar *calendar, QWidget *parent )
     mDaysPerWeek( 7 ), mNumWeeks( 6 ), mNumCells( mDaysPerWeek * mNumWeeks ),
     mShortDayLabels( false ), mWidthLongDayLabel( 0 ), mSelectedDate()
 {
+  mCalendar = calendar;
   QHBoxLayout *mainLayout = new QHBoxLayout( this );
 
   QWidget *mainWidget = new QWidget( this );
@@ -1295,7 +1296,7 @@ void KOMonthView::resizeEvent( QResizeEvent * )
 
 void KOMonthView::showEventContextMenu( Incidence *incidence, const QDate &qd )
 {
-  mEventContextMenu->showIncidencePopup( incidence, qd );
+  mEventContextMenu->showIncidencePopup( mCalendar, incidence, qd );
 }
 
 void KOMonthView::showGeneralContextMenu()

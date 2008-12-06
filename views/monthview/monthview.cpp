@@ -99,8 +99,8 @@ MonthView::MonthView( Calendar *calendar, QWidget *parent )
 
   mViewPopup = eventPopup();
 
-  connect( mScene, SIGNAL(showIncidencePopupSignal(Incidence *,const QDate &)),
-           mViewPopup, SLOT(showIncidencePopup(Incidence *,const QDate &)) );
+  connect( mScene, SIGNAL(showIncidencePopupSignal(Calendar *,Incidence *,const QDate &)),
+           mViewPopup, SLOT(showIncidencePopup(Calendar *,Incidence *,const QDate &)) );
 
   connect( mScene, SIGNAL(showNewEventPopupSignal()),
            SLOT(showNewEventPopup()) );

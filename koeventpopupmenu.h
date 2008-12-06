@@ -32,6 +32,7 @@
 #include <QDateTime>
 
 namespace KCal {
+  class Calendar;
   class Incidence;
 }
 using namespace KCal;
@@ -43,11 +44,12 @@ class KOEventPopupMenu : public QMenu
     KOEventPopupMenu();
 
   public slots:
-    void showIncidencePopup( Incidence *, const QDate & );
+    void showIncidencePopup( Calendar *, Incidence *, const QDate & );
 
   protected slots:
     void popupShow();
     void popupEdit();
+    void popupPaste();
     void print();
     void popupDelete();
     void popupCut();
@@ -64,11 +66,13 @@ class KOEventPopupMenu : public QMenu
     void deleteIncidenceSignal(Incidence *);
     void cutIncidenceSignal(Incidence *);
     void copyIncidenceSignal(Incidence *);
+    void pasteIncidenceSignal();
     void toggleAlarmSignal(Incidence *);
     void dissociateOccurrenceSignal( Incidence *, const QDate & );
     void dissociateFutureOccurrenceSignal( Incidence *, const QDate & );
 
   private:
+    Calendar *mCalendar;
     Incidence *mCurrentIncidence;
     QDate mCurrentDate;
 

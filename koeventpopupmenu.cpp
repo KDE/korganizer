@@ -32,6 +32,7 @@
 #include "calprinter.h"
 #endif
 
+#include <kcal/calendar.h>
 #include <kcal/event.h>
 
 #include <kactioncollection.h>
@@ -46,6 +47,7 @@
 
 KOEventPopupMenu::KOEventPopupMenu()
 {
+  mCalendar = 0;
   mCurrentIncidence = 0;
   mCurrentDate = QDate();
   mHasAdditionalItems = false;
@@ -64,6 +66,10 @@ KOEventPopupMenu::KOEventPopupMenu()
   mEditOnlyItems.append( addAction( KOGlobals::self()->smallIcon( "edit-copy" ),
                                     i18nc( "copy this event", "&Copy" ),
                                     this, SLOT(popupCopy()) ) );
+  // paste is always possible
+  mEditOnlyItems.append( addAction( KOGlobals::self()->smallIcon( "edit-paste" ),
+                                    i18n("&Paste"),
+                                    this, SLOT(popupPaste()) ) );
   mEditOnlyItems.append( addAction( KOGlobals::self()->smallIcon( "edit-delete" ),
                                     i18nc( "delete this incidence", "&Delete" ),
                                     this, SLOT(popupDelete()) ) );
@@ -83,8 +89,9 @@ KOEventPopupMenu::KOEventPopupMenu()
               this, SLOT(forward()) );
 }
 
-void KOEventPopupMenu::showIncidencePopup( Incidence *incidence, const QDate &qd )
+void KOEventPopupMenu::showIncidencePopup( Calendar *cal, Incidence *incidence, const QDate &qd )
 {
+  mCalendar = cal;
   mCurrentIncidence = incidence;
   mCurrentDate = qd;
 
@@ -120,9 +127,8 @@ void KOEventPopupMenu::popupEdit()
 void KOEventPopupMenu::print()
 {
 #ifndef KORG_NOPRINTER
-  Calendar *cal = 0;
   KOCoreHelper helper;
-  CalPrinter printer( this, cal, &helper );
+  CalPrinter printer( this, mCalendar, &helper );
   connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
 
   Incidence::List selectedIncidences;
@@ -152,6 +158,11 @@ void KOEventPopupMenu::popupCopy()
   if ( mCurrentIncidence ) {
     emit copyIncidenceSignal( mCurrentIncidence );
   }
+}
+
+void KOEventPopupMenu::popupPaste()
+{
+  emit pasteIncidenceSignal();
 }
 
 void KOEventPopupMenu::popupAlarm()
