@@ -494,7 +494,7 @@ bool KOAgenda::eventFilter_key( QObject *, QKeyEvent *ke )
   }
 
   // Ignore all input that does not produce any output
-  if ( ke->text().isEmpty() ) {
+  if ( ke->text().isEmpty() || ( ke->modifiers() & Qt::ControlModifier ) ) {
     return false;
   }
 
