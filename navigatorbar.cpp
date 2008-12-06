@@ -161,22 +161,28 @@ void NavigatorBar::selectMonth()
   int months = calSys->monthsInYear( mDate );
 
   QMenu *menu = new QMenu( mMonth );
-  QAction *act[months+1];
+  QList<QAction *>act;
 
+  QAction *activateAction=0;
   for ( i=1; i <= months; i++ ) {
-    act[i] = menu->addAction( calSys->monthName( i, year ) );
+    QAction *monthAction = menu->addAction( calSys->monthName( i, year ) );
+    act.append(monthAction);
+    if(i == month)
+        activateAction= monthAction;
   }
-  menu->setActiveAction( act[month] );
+  if(activateAction)
+     menu->setActiveAction( activateAction );
   QAction *selectedAct = menu->exec( mMonth->mapToGlobal( QPoint( 0, 0 ) ) );
-  delete menu;
-
-  if ( selectedAct && ( selectedAct != act[month] ) ) {
-    for ( i=1; i <= months; i++ ) {
+  if ( selectedAct && ( selectedAct != activateAction ) ) {
+    for ( i=0; i < months; i++ ) {
       if ( act[i] == selectedAct ) {
         emit goMonth( i );
       }
     }
   }
+  qDeleteAll(act);
+  act.clear();
+  delete menu;
 }
 
 QToolButton *NavigatorBar::createNavigationButton( const QString &icon,
