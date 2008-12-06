@@ -28,10 +28,8 @@
 
 #include <QLabel>
 #include <QMouseEvent>
-#include <QFrame>
 
 class QToolButton;
-class QFrame;
 
 class ActiveLabel : public QLabel
 {
@@ -43,7 +41,7 @@ class ActiveLabel : public QLabel
     void clicked();
 
   protected:
-    void mouseReleaseEvent ( QMouseEvent * e );
+    void mouseReleaseEvent ( QMouseEvent *e );
 };
 
 class NavigatorBar: public QWidget

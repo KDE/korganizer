@@ -34,10 +34,10 @@
 
 #include <QHBoxLayout>
 #include <QLabel>
+#include <QMenu>
 #include <QMouseEvent>
 #include <QString>
 #include <QToolButton>
-#include <Q3PopupMenu>
 
 ActiveLabel::ActiveLabel( QWidget *parent ) : QLabel( parent )
 {
@@ -88,11 +88,11 @@ NavigatorBar::NavigatorBar( QWidget *parent )
   ctrlLayout->addWidget( mNextMonth, 3 );
   ctrlLayout->addWidget( mNextYear, 3 );
 
-  connect( mPrevYear, SIGNAL( clicked() ), SIGNAL( goPrevYear() ) );
-  connect( mPrevMonth, SIGNAL( clicked() ), SIGNAL( goPrevMonth() ) );
-  connect( mNextMonth, SIGNAL( clicked() ), SIGNAL( goNextMonth() ) );
-  connect( mNextYear, SIGNAL( clicked() ), SIGNAL( goNextYear() ) );
-  connect( mMonth, SIGNAL( clicked() ), SLOT( selectMonth() ) );
+  connect( mPrevYear, SIGNAL(clicked()), SIGNAL(goPrevYear()) );
+  connect( mPrevMonth, SIGNAL(clicked()), SIGNAL(goPrevMonth()) );
+  connect( mNextMonth, SIGNAL(clicked()), SIGNAL(goNextMonth()) );
+  connect( mNextYear, SIGNAL(clicked()), SIGNAL(goNextYear()) );
+  connect( mMonth, SIGNAL(clicked()), SLOT(selectMonth()) );
 }
 
 NavigatorBar::~NavigatorBar()
@@ -155,20 +155,27 @@ void NavigatorBar::selectMonth()
   // every year can have different month names (in some calendar systems)
   const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
 
-  int i, month, months = calSys->monthsInYear( mDate );
+  int i;
+  int month = calSys->month( mDate );
+  int year = calSys->year( mDate );
+  int months = calSys->monthsInYear( mDate );
 
-  Q3PopupMenu *popup = new Q3PopupMenu( mMonth );
+  QMenu *menu = new QMenu( mMonth );
+  QAction *act[months+1];
 
-  for ( i = 1; i <= months; i++ ) {
-    popup->insertItem( calSys->monthName( i, calSys->year( mDate ) ), i );
+  for ( i=1; i <= months; i++ ) {
+    act[i] = menu->addAction( calSys->monthName( i, year ) );
   }
-  popup->setActiveItem( calSys->month( mDate ) );
+  menu->setActiveAction( act[month] );
+  QAction *selectedAct = menu->exec( mMonth->mapToGlobal( QPoint( 0, 0 ) ) );
+  delete menu;
 
-  month = popup->exec( mMonth->mapToGlobal( QPoint( 0, 0 ) ), calSys->month( mDate ) - 1 );
-
-  delete popup;
-  if ( month >= 0 ) {
-    emit goMonth( month );
+  if ( selectedAct && ( selectedAct != act[month] ) ) {
+    for ( i=1; i <= months; i++ ) {
+      if ( act[i] == selectedAct ) {
+        emit goMonth( i );
+      }
+    }
   }
 }
 
