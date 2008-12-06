@@ -65,6 +65,7 @@ KOTodoView::KOTodoView( Calendar *cal, QWidget *parent )
   mProxyModel->setDynamicSortFilter( true );
   mProxyModel->setFilterKeyColumn( KOTodoModel::SummaryColumn );
   mProxyModel->setFilterCaseSensitivity( Qt::CaseInsensitive );
+  mProxyModel->setSortRole( Qt::EditRole );
 
   mQuickSearch = new KOTodoViewQuickSearch( calendar(), this );
   mQuickSearch->setVisible( KOPrefs::instance()->enableTodoQuickSearch() );
