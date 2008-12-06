@@ -337,7 +337,7 @@ bool IncidenceChanger::addIncidence( Incidence *incidence, QWidget *parent )
     if ( !KOGroupware::instance()->sendICalMessage( parent,
                                                     KCal::iTIPRequest,
                                                     incidence ) ) {
-      kError() << "sendIcalMessage failed.";
+      return false;
     }
   }
   // FIXME: This is a nasty hack, since we need to set a parent for the
