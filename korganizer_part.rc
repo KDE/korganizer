@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui>
-<kpartgui name="korganizer" version="410">
+<kpartgui name="korganizer" version="414">
 
   <MenuBar>
     <Menu name="file"><text>&amp;File</text>
@@ -139,7 +139,7 @@
     <Action name="new_journal"/>
   </ToolBar>
 
-  <ToolBar name="korganizer_toolbar"><text>Views</text>
+  <ToolBar noMerge="1" name="korganizer_toolbar"><text>Views</text>
     <Action name="view_day"/>
     <Action name="view_week"/>
     <Action name="view_workweek"/>
@@ -150,13 +150,13 @@
     <Merge/>
   </ToolBar>
 
-  <ToolBar name="schedule_toolbar" hidden="true"><text>Schedule</text>
+  <ToolBar noMerge="1" name="schedule_toolbar" hidden="true"><text>Schedule</text>
     <Action name="schedule_publish"/>
     <Action name="schedule_request"/>
     <Action name="schedule_reply"/>
   </ToolBar>
 
-  <ToolBar name="filter_toolbar" hidden="true"><text>Filters Toolbar</text>
+  <ToolBar noMerge="1" name="filter_toolbar" hidden="true"><text>Filters Toolbar</text>
     <Action name="filter_label"/>
     <Action name="filter_select"/>
     <Action name="edit_filters"/>
@@ -167,7 +167,7 @@
     <Action name="new_todo"/>
     <Action name="new_journal"/>
     <Separator/>
-    <Action name="edit_paste"/>
+    <Action name="korganizer_paste"/>
     <Merge/>
   </Menu>
 
