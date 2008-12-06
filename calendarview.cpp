@@ -117,8 +117,6 @@ CalendarView::CalendarView( QWidget *parent )
     mChanger( 0 ),
     mSplitterSizesValid( false )
 {
-  kDebug();
-
   mViewManager = new KOViewManager( this );
   mDialogManager = new KODialogManager( this );
 
@@ -253,14 +251,10 @@ CalendarView::CalendarView( QWidget *parent )
            SLOT(processTodoListSelection(Incidence *)) );
   disconnect( mTodoList, SIGNAL(incidenceSelected(Incidence *)),
               this, SLOT(processMainViewSelection(Incidence *)) );
-
-  kDebug() << "done";
 }
 
 CalendarView::~CalendarView()
 {
-  kDebug();
-
   mCalendar->unregisterObserver( this );
   qDeleteAll( mFilters );
   qDeleteAll( mExtensions );
@@ -268,12 +262,10 @@ CalendarView::~CalendarView()
   delete mDialogManager;
   delete mViewManager;
   delete mEventViewer;
-  kDebug() << "done";
 }
 
 void CalendarView::setCalendar( Calendar *cal )
 {
-  kDebug();
   mCalendar = cal;
 
   delete mHistory;
@@ -357,8 +349,6 @@ void CalendarView::createPrinter()
 
 bool CalendarView::openCalendar( const QString &filename, bool merge )
 {
-  kDebug() << filename;
-
   if ( filename.isEmpty() ) {
     kDebug() << "Error! Empty filename.";
     return false;
@@ -411,8 +401,6 @@ bool CalendarView::openCalendar( const QString &filename, bool merge )
 
 bool CalendarView::saveCalendar( const QString &filename )
 {
-  kDebug() << filename;
-
   // Store back all unsaved data into calendar object
   mViewManager->currentView()->flushView();
 
@@ -425,8 +413,6 @@ bool CalendarView::saveCalendar( const QString &filename )
 
 void CalendarView::closeCalendar()
 {
-  kDebug();
-
   // child windows no longer valid
   emit closingDown();
 
@@ -607,7 +593,6 @@ void CalendarView::updateConfig( const QByteArray &receiver )
   if ( receiver != "korganizer" ) {
     return;
   }
-  kDebug();
 
   KOGlobals::self()->setHolidays( new KHolidays( KOPrefs::instance()->mHolidays ) );
 
@@ -969,7 +954,6 @@ KOEventEditor *CalendarView::newEventEditor( const QDateTime &startDtParam,
 
 void CalendarView::newEvent()
 {
-  kDebug();
   newEvent( QDateTime(), QDateTime() );
 }
 
@@ -997,7 +981,7 @@ void CalendarView::newEvent( const QString &summary, const QString &description,
   KOEventEditor *eventEditor = newEventEditor();
   eventEditor->setTexts( summary, description );
   // if attach or attendee list is empty, these methods don't do anything, so
-  // it's save to call them in every case
+  // it's safe to call them in every case
   eventEditor->addAttachments( attachments, attachmentMimetypes, inlineAttachment );
   eventEditor->addAttendees( attendees );
   eventEditor->show();
@@ -1026,8 +1010,7 @@ void CalendarView::newTodo()
   if ( mViewManager->currentView()->isEventView() ) {
     dtDue.setDate( mNavigator->selectedDates().first() );
     QDateTime dtDummy = QDateTime::currentDateTime();
-    mViewManager->currentView()->
-      eventDurationHint( dtDue, dtDummy, allday );
+    mViewManager->currentView()->eventDurationHint( dtDue, dtDummy, allday );
     todoEditor->setDates( dtDue, allday );
   }
   todoEditor->show();
@@ -1044,7 +1027,6 @@ void CalendarView::newTodo( const QDate &date )
 
 void CalendarView::newJournal()
 {
-  kDebug();
   newJournal( QString(), QDate() );
 }
 
@@ -1100,7 +1082,6 @@ void CalendarView::newFloatingEvent()
 
 bool CalendarView::addIncidence( const QString &ical )
 {
-  kDebug() << ical;
   ICalFormat format;
   format.setTimeSpec( mCalendar->timeSpec() );
   Incidence *incidence = format.fromString( ical );
@@ -1398,7 +1379,6 @@ void CalendarView::schedule_forward( Incidence *incidence )
     QString messageText = format.createScheduleMessage( incidence, iTIPRequest );
     KOMailClient mailer;
     if ( mailer.mailTo( incidence, recipients, messageText ) ) {
-
       KMessageBox::information( this, i18n( "The item information was successfully sent." ),
                                 i18n( "Forwarding" ), "IncidenceForwardSuccess" );
     } else {
@@ -1415,9 +1395,6 @@ void CalendarView::mailFreeBusy( int daysToPublish )
   FreeBusy *freebusy = new FreeBusy( mCalendar, start, end );
   freebusy->setOrganizer( Person( KOPrefs::instance()->fullName(),
                                   KOPrefs::instance()->email() ) );
-
-  kDebug() << "Start Date:" << KGlobal::locale()->formatDateTime( start )
-           << "End Date:" << KGlobal::locale()->formatDateTime( end );
 
   PublishDialog *publishdlg = new PublishDialog();
   if ( publishdlg->exec() == QDialog::Accepted ) {
@@ -1465,20 +1442,20 @@ void CalendarView::schedule( iTIPMethod method, Incidence *incidence )
   // Send the mail
   KCal::MailScheduler scheduler( mCalendar );
   if ( !scheduler.performTransaction( incidence, method ) ) {
-    KMessageBox::information( this, i18n( "The groupware message for item '%1' "
-                                          "was successfully sent.\nMethod: %2",
-                                          incidence->summary(),
-                                          Scheduler::methodName( method ) ),
+    KMessageBox::information( this,
+                              i18n( "The groupware message for item '%1' "
+                                    "was successfully sent.\nMethod: %2",
+                                    incidence->summary(),
+                                    Scheduler::methodName( method ) ),
                               i18n( "Sending Free/Busy" ),
                               "FreeBusyPublishSuccess" );
   } else {
-    KMessageBox::error(
-      this,
-      i18nc( "Groupware message sending failed. "
-             "%2 is request/reply/add/cancel/counter/etc.",
-             "Unable to send the item '%1'.\nMethod: %2",
-             incidence->summary(),
-             Scheduler::methodName( method ) ) );
+    KMessageBox::error( this,
+                        i18nc( "Groupware message sending failed. "
+                               "%2 is request/reply/add/cancel/counter/etc.",
+                               "Unable to send the item '%1'.\nMethod: %2",
+                               incidence->summary(),
+                               Scheduler::methodName( method ) ) );
   }
 }
 
@@ -1660,10 +1637,8 @@ void CalendarView::checkClipboard()
 {
 #ifndef KORG_NODND
   if ( ICalDrag::canDecode( QApplication::clipboard()->mimeData() ) ) {
-    kDebug() << "true";
     emit pasteEnabled( true );
   } else {
-    kDebug() << "false";
     emit pasteEnabled( false );
   }
 #endif
@@ -1680,14 +1655,6 @@ void CalendarView::showDates( const DateList &selectedDates )
 
 void CalendarView::editFilters()
 {
-  kDebug();
-
-  foreach ( CalFilter *filter, mFilters ) {
-    if ( filter ) {
-      kDebug() << " Filter:" << filter->name();
-    }
-  }
-
   mDialogManager->showFilterEditDialog( &mFilters );
 }
 
@@ -1895,7 +1862,6 @@ void CalendarView::editIncidence()
 
 bool CalendarView::editIncidence( const QString &uid )
 {
-  kDebug();
   return editIncidence( mCalendar->incidence( uid ) );
 }
 
@@ -1980,15 +1946,12 @@ void CalendarView::showIncidenceContext( Incidence *incidence )
 
 bool CalendarView::editIncidence( Incidence *incidence, bool isCounter )
 {
-  kDebug();
-
   if ( !incidence || !mChanger ) {
     KNotification::beep();
     return false;
   }
   KOIncidenceEditor *tmp = editorDialog( incidence );
   if ( tmp ) {
-    kDebug() << "in List";
     tmp->reload();
     tmp->raise();
     tmp->show();
@@ -2006,7 +1969,6 @@ bool CalendarView::editIncidence( Incidence *incidence, bool isCounter )
     return false;
   }
 
-  kDebug() << "new IncidenceEditor";
   KOIncidenceEditor *incidenceEditor = mDialogManager->getEditor( incidence );
   connectIncidenceEditor( incidenceEditor );
 
@@ -2092,13 +2054,13 @@ void CalendarView::deleteIncidence( Incidence *incidence, bool force )
   }
   if ( incidence->isReadOnly() ) {
     if ( !force ) {
-      KMessageBox::information(
-        this, i18n( "The item \"%1\" is marked read-only "
-                    "and cannot be deleted; it probably belongs to "
-                    "a read-only calendar resource.",
-                    incidence->summary() ),
-        i18n( "Removing not possible" ),
-        "deleteReadOnlyIncidence" );
+      KMessageBox::information( this,
+                                i18n( "The item \"%1\" is marked read-only "
+                                      "and cannot be deleted; it probably belongs to "
+                                      "a read-only calendar resource.",
+                                      incidence->summary() ),
+                                i18n( "Removing not possible" ),
+                                "deleteReadOnlyIncidence" );
     }
     return;
   }
@@ -2119,7 +2081,6 @@ void CalendarView::deleteIncidence( Incidence *incidence, bool force )
 
   if ( incidence->recurs() ) {
     QDate itemDate = mViewManager->currentSelectionDate();
-    kDebug() << "Recurrence-Date:" << itemDate.toString();
     int km = KMessageBox::Ok;
     if ( !force ) {
       if ( !itemDate.isValid() ) {
@@ -2228,11 +2189,10 @@ bool CalendarView::purgeCompletedSubTodos( Todo *todo, bool &allPurged )
 
 void CalendarView::purgeCompleted()
 {
-  int result = KMessageBox::warningContinueCancel(
-    this,
-    i18n( "Delete all completed to-dos?" ),
-    i18n( "Purge To-dos" ),
-    KGuiItem( i18n( "Purge" ) ) );
+  int result = KMessageBox::warningContinueCancel( this,
+                                                   i18n( "Delete all completed to-dos?" ),
+                                                   i18n( "Purge To-dos" ),
+                                                   KGuiItem( i18n( "Purge" ) ) );
 
   if ( result == KMessageBox::Continue ) {
     bool allDeleted = true;
@@ -2252,18 +2212,16 @@ void CalendarView::purgeCompleted()
     }
     endMultiModify();
     if ( !allDeleted ) {
-      KMessageBox::information(
-        this,
-        i18n( "Unable to purge to-dos with uncompleted children." ),
-        i18n( "Delete To-do" ),
-        "UncompletedChildrenPurgeTodos" );
+      KMessageBox::information( this,
+                                i18n( "Unable to purge to-dos with uncompleted children." ),
+                                i18n( "Delete To-do" ),
+                                "UncompletedChildrenPurgeTodos" );
     }
   }
 }
 
 void CalendarView::slotCalendarChanged()
 {
-  kDebug();
   updateView();
 }
 
@@ -2302,10 +2260,9 @@ void CalendarView::updateCategories()
 void CalendarView::addIncidenceOn( Incidence *incadd, const QDate &dt )
 {
   if ( !incadd || !mChanger ) {
-    KMessageBox::sorry(
-      this,
-      i18n( "Unable to copy the item to %1.", dt.toString() ),
-      i18n( "Copying Failed" ) );
+    KMessageBox::sorry( this,
+                        i18n( "Unable to copy the item to %1.", dt.toString() ),
+                        i18n( "Copying Failed" ) );
     return;
   }
   Incidence *incidence = mCalendar->incidence( incadd->uid() );
@@ -2348,10 +2305,9 @@ void CalendarView::addIncidenceOn( Incidence *incadd, const QDate &dt )
 void CalendarView::moveIncidenceTo( Incidence *incmove, const QDate &dt )
 {
   if ( !incmove || !mChanger ) {
-    KMessageBox::sorry(
-      this,
-      i18n( "Unable to move the item to  %1.", dt.toString() ),
-      i18n( "Moving Failed" ) );
+    KMessageBox::sorry( this,
+                        i18n( "Unable to move the item to  %1.", dt.toString() ),
+                        i18n( "Moving Failed" ) );
     return;
   }
   Incidence *incidence = mCalendar->incidence( incmove->uid() );
