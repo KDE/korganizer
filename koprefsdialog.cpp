@@ -56,6 +56,7 @@ using namespace LibKHolidays;
 #include <q3listview.h>
 #include <q3buttongroup.h>
 #include <QLayout>
+#include <QFormLayout>
 #include <QLabel>
 #include <QSlider>
 #include <QFile>
@@ -82,7 +83,7 @@ KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *paren
   topTopLayout->addWidget( tabWidget );
 
   // Personal Settings
-  QFrame *personalFrame = new QFrame( this );
+  QWidget *personalFrame = new QWidget( this );
   QVBoxLayout *personalLayout = new QVBoxLayout( personalFrame );
   tabWidget->addTab( personalFrame, KIcon( "preferences-desktop-personal" ),
                      i18nc( "@title:tab personal settings", "Personal" ) );
@@ -96,14 +97,12 @@ KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *paren
     new QGroupBox( i18nc( "@title:group email settings", "Email Settings" ), personalFrame );
 
   personalLayout->addWidget( mUserEmailSettings );
-  QVBoxLayout *emailSettingsLayout = new QVBoxLayout( mUserEmailSettings );
-  KHBox *hbox1 = new KHBox( mUserEmailSettings );
-  addWidString( KOPrefs::instance()->userNameItem(), hbox1 );
-  emailSettingsLayout->addWidget( hbox1 );
+  QFormLayout *emailSettingsLayout = new QFormLayout( mUserEmailSettings );
+  KPrefsWidString* s=addWidString( KOPrefs::instance()->userNameItem(), mUserEmailSettings );
+  emailSettingsLayout->addRow ( s->label(),s->lineEdit() );
 
-  KHBox *hbox2 = new KHBox( mUserEmailSettings );
-  addWidString( KOPrefs::instance()->userEmailItem(), hbox2 );
-  emailSettingsLayout->addWidget( hbox2 );
+  s=addWidString( KOPrefs::instance()->userEmailItem(), mUserEmailSettings );
+  emailSettingsLayout->addRow ( s->label(),s->lineEdit() );
 
   KPrefsWidRadios *defaultEmailAttachMethod =
     addWidRadios( KOPrefs::instance()->defaultEmailAttachMethodItem(), personalFrame );
