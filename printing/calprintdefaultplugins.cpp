@@ -97,8 +97,7 @@ void CalPrintIncidence::setSettingsWidget()
 void CalPrintIncidence::loadConfig()
 {
   if ( mConfig ) {
-    KConfigGroup grp( mConfig, "General" );
-    mUseColors = grp.readEntry( "Use Colors", false );
+    KConfigGroup grp( mConfig, description() );
     mShowOptions = grp.readEntry( "Show Options", false );
     mShowSubitemsNotes = grp.readEntry( "Show Subitems and Notes", false );
     mShowAttendees = grp.readEntry( "Use Attendees", false );
@@ -111,8 +110,7 @@ void CalPrintIncidence::saveConfig()
 {
   readSettingsWidget();
   if ( mConfig ) {
-    KConfigGroup grp( mConfig, "General" );
-    grp.writeEntry( "Use Colors", mUseColors );
+    KConfigGroup grp( mConfig, description() );
     grp.writeEntry( "Show Options", mShowOptions );
     grp.writeEntry( "Show Subitems and Notes", mShowSubitemsNotes );
     grp.writeEntry( "Use Attendees", mShowAttendees );
@@ -696,7 +694,7 @@ void CalPrintDay::setSettingsWidget()
 void CalPrintDay::loadConfig()
 {
   if ( mConfig ) {
-    KConfigGroup grp( mConfig, "General" );
+    KConfigGroup grp( mConfig, description() );
     QDate dt = QDate::currentDate(); // any valid QDate will do
     QTime tm1( dayStart() );
     QDateTime startTm( dt, tm1 );
@@ -713,7 +711,7 @@ void CalPrintDay::saveConfig()
 {
   readSettingsWidget();
   if ( mConfig ) {
-    KConfigGroup grp( mConfig, "General" );
+    KConfigGroup grp( mConfig, description() );
     QDateTime dt = QDateTime::currentDateTime(); // any valid QDateTime will do
     dt.setTime( mStartTime );
     grp.writeEntry( "Start time", dt );
@@ -845,7 +843,7 @@ void CalPrintWeek::setSettingsWidget()
 void CalPrintWeek::loadConfig()
 {
   if ( mConfig ) {
-    KConfigGroup grp( mConfig, "General" );
+    KConfigGroup grp( mConfig, description() );
     QDate dt = QDate::currentDate(); // any valid QDate will do
     QTime tm1( dayStart() );
     QDateTime startTm( dt, tm1 );
@@ -863,7 +861,7 @@ void CalPrintWeek::saveConfig()
   readSettingsWidget();
   if ( mConfig ) {
 
-    KConfigGroup grp( mConfig, "General" );
+    KConfigGroup grp( mConfig, description() );
     QDateTime dt = QDateTime::currentDateTime(); // any valid QDateTime will do
     dt.setTime( mStartTime );
     grp.writeEntry( "Start time", dt );
@@ -1018,7 +1016,6 @@ void CalPrintMonth::readSettingsWidget()
     mRecurWeekly = cfg->mRecurWeekly->isChecked();
     mIncludeTodos = cfg->mIncludeTodos->isChecked();
     mSingleLineLimit = cfg->mSingleLineLimit->isChecked();
-//    mUseColors = cfg->mColors->isChecked();
   }
 }
 
@@ -1034,14 +1031,13 @@ void CalPrintMonth::setSettingsWidget()
     cfg->mRecurWeekly->setChecked( mRecurWeekly );
     cfg->mIncludeTodos->setChecked( mIncludeTodos );
     cfg->mSingleLineLimit->setChecked( mSingleLineLimit );
-//    cfg->mColors->setChecked( mUseColors );
   }
 }
 
 void CalPrintMonth::loadConfig()
 {
   if ( mConfig ) {
-    KConfigGroup grp( mConfig, "General" );
+    KConfigGroup grp( mConfig, description() );
     mWeekNumbers = grp.readEntry( "Print week numbers", true );
     mRecurDaily = grp.readEntry( "Print daily incidences", true );
     mRecurWeekly = grp.readEntry( "Print weekly incidences", true );
@@ -1055,7 +1051,7 @@ void CalPrintMonth::saveConfig()
 {
   readSettingsWidget();
   if ( mConfig ) {
-    KConfigGroup grp( mConfig, "General" );
+    KConfigGroup grp( mConfig, description() );
     grp.writeEntry( "Print week numbers", mWeekNumbers );
     grp.writeEntry( "Print daily incidences", mRecurDaily );
     grp.writeEntry( "Print weekly incidences", mRecurWeekly );
@@ -1219,7 +1215,7 @@ void CalPrintTodos::setSettingsWidget()
 void CalPrintTodos::loadConfig()
 {
   if ( mConfig ) {
-    KConfigGroup grp( mConfig, "General" );
+    KConfigGroup grp( mConfig, description() );
     mPageTitle = grp.readEntry( "Page title", i18n( "To-do list" ) );
     mTodoPrintType = (eTodoPrintType)grp.readEntry( "Print type", (int)TodosAll );
     mIncludeDescription = grp.readEntry( "Include description", true );
@@ -1240,7 +1236,7 @@ void CalPrintTodos::saveConfig()
 {
   readSettingsWidget();
   if ( mConfig ) {
-    KConfigGroup grp( mConfig, "General" );
+    KConfigGroup grp( mConfig, description() );
     grp.writeEntry( "Page title", mPageTitle );
     grp.writeEntry( "Print type", int( mTodoPrintType ) );
     grp.writeEntry( "Include description", mIncludeDescription );
