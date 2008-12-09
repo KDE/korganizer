@@ -35,10 +35,12 @@
 #include <kwordwrap.h>
 #include <kconfiggroup.h>
 
-#include <QPainter>
-#include <QLayout>
+#include <QAbstractTextDocumentLayout>
 #include <QFrame>
 #include <QLabel>
+#include <QLayout>
+#include <QPainter>
+#include <QTextDocument>
 #include <QtAlgorithms>
 
 #ifndef KORG_NOPRINTER
@@ -473,7 +475,9 @@ int CalPrintPluginBase::drawBoxWithCaption( QPainter &p, const QRect &allbox,
   p.drawText( captionBox, Qt::AlignLeft | Qt::AlignTop | Qt::SingleLine, caption );
   if ( !contents.isEmpty() ) {
     p.setFont( textFont );
-    p.drawText( textBox, Qt::WordBreak | Qt::AlignTop | Qt::AlignLeft, contents );
+    QTextDocument doc;
+    doc.setHtml( QString( "<b>contents</b>" ) );
+    doc.drawContents( &p, textBox );
   }
   p.setFont( oldFont );
 
@@ -785,15 +789,20 @@ void CalPrintPluginBase::drawAgendaDayBox( QPainter &p, Event::List &events,
   Event *event;
 
   if ( expandable ) {
+    QTime tTime;
+    KDateTime::Spec spec = KPIM::KPimPrefs::timeSpec();
+
     // Adapt start/end times to include complete events
     Event::List::ConstIterator it;
     for ( it = events.constBegin(); it != events.constEnd(); ++it ) {
       event = *it;
-      if ( event->dtStart().time() < fromTime ) {
-        fromTime = event->dtStart().time();
+      tTime = event->dtStart().toTimeSpec( spec ).time();
+      if ( tTime < fromTime ) {
+        fromTime = tTime;
       }
-      if ( event->dtEnd().time() > toTime ) {
-        toTime = event->dtEnd().time();
+      tTime = event->dtEnd().toTimeSpec( spec ).time();
+      if ( tTime > toTime ) {
+        toTime = tTime;
       }
     }
   }
@@ -866,8 +875,9 @@ void CalPrintPluginBase::drawAgendaItem( PrintCellItem *item, QPainter &p,
   Event *event = item->event();
 
   // start/end of print area for event
-  KDateTime startTime = item->start();
-  KDateTime endTime = item->end();
+  KDateTime::Spec timeSpec = KPIM::KPimPrefs::timeSpec();
+  KDateTime startTime = item->start().toTimeSpec( timeSpec );
+  KDateTime endTime = item->end().toTimeSpec( timeSpec );
   if ( ( startTime < endPrintDate && endTime > startPrintDate ) ||
        ( endTime > startPrintDate && startTime < endPrintDate ) ) {
     if ( startTime < startPrintDate ) {
@@ -878,26 +888,33 @@ void CalPrintPluginBase::drawAgendaItem( PrintCellItem *item, QPainter &p,
     }
     int currentWidth = box.width() / item->subCells();
     int currentX = box.left() + item->subCell() * currentWidth;
-    int currentYPos =
-      int( box.top() + startPrintDate.secsTo( startTime ) * minlen / 60. );
-    int currentHeight =
-      int( box.top() + startPrintDate.secsTo( endTime ) * minlen / 60. ) - currentYPos;
+    int currentYPos = int( box.top() + startPrintDate.secsTo( startTime ) * minlen / 60. );
+    int currentHeight = int( box.top() + startPrintDate.secsTo( endTime ) * minlen / 60. ) -
+                        currentYPos;
 
     QRect eventBox( currentX, currentYPos, currentWidth, currentHeight );
-    QString str = i18nc( "starttime - endtime summary, location",
-                         "%1-%2 %3, %4",
-                         KGlobal::locale()->formatTime( startTime.toLocalZone().time() ),
-                         KGlobal::locale()->formatTime( endTime.toLocalZone().time() ),
-                         event->summary(),
-                         event->location() );
+    QString str;
+    if ( !event->location().isEmpty() ) {
+      str = i18nc( "starttime - endtime summary, location",
+                   "%1-%2 %3, %4",
+                   KGlobal::locale()->formatTime( startTime.time() ),
+                   KGlobal::locale()->formatTime( endTime.time() ),
+                   event->summary(),
+                   event->location() );
+    } else {
+      str = i18nc( "starttime - endtime summary",
+                   "%1-%2 %3",
+                   KGlobal::locale()->formatTime( startTime.time() ),
+                   KGlobal::locale()->formatTime( endTime.time() ),
+                   event->summary() );
+    }
     showEventBox( p, eventBox, event, str );
   }
 }
 
-void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
-    const QRect &box,
-    bool fullDate, bool printRecurDaily, bool printRecurWeekly,
-    bool singleLineLimit )
+void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd, const QRect &box,
+                                     bool fullDate, bool printRecurDaily,
+                                     bool printRecurWeekly, bool singleLineLimit )
 {
   QString dayNumStr;
   QString ampm;
@@ -942,7 +959,7 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
   int textY = mSubHeaderHeight + 1; // gives the relative y-coord of the next printed entry
   Event::List::ConstIterator it;
 
-  for ( it = eventList.constBegin(); it != eventList.constEnd() && textY<box.height(); ++it ) {
+  for ( it=eventList.constBegin(); it != eventList.constEnd() && textY < box.height(); ++it ) {
     Event *currEvent = *it;
     if ( ( !printRecurDaily  && currEvent->recurrenceType() == Recurrence::rDaily ) ||
          ( !printRecurWeekly && currEvent->recurrenceType() == Recurrence::rWeekly ) ) {
@@ -951,7 +968,8 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
     if ( currEvent->allDay() || currEvent->isMultiDay() ) {
       text = "";
     } else {
-      text = local->formatTime( currEvent->dtStart().toLocalZone().time() ) + ' ';
+      KDateTime::Spec timeSpec = KPIM::KPimPrefs::timeSpec();
+      text = local->formatTime( currEvent->dtStart().toTimeSpec( timeSpec ).time() ) + ' ';
     }
     drawIncidence( p, box, text, currEvent->summary(), textY, singleLineLimit );
   }
@@ -966,7 +984,8 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
         continue;
       }
       if ( todo->hasDueDate() && !todo->allDay() ) {
-        text += KGlobal::locale()->formatTime( todo->dtDue().toLocalZone().time() ) + ' ';
+        KDateTime::Spec spec = KPIM::KPimPrefs::timeSpec();
+        text += KGlobal::locale()->formatTime( todo->dtDue().toTimeSpec( spec ).time() ) + ' ';
       } else {
         text = "";
       }
@@ -1068,7 +1087,7 @@ void CalPrintPluginBase::drawTimeTable( QPainter &p,
   // draw each day
   QDate curDate(fromDate);
   KDateTime::Spec timeSpec = KPIM::KPimPrefs::timeSpec();
-  int i=0;
+  int i = 0;
   double cellWidth = double( dowBox.width() ) / double( fromDate.daysTo( toDate ) + 1 );
   while ( curDate <= toDate ) {
     QRect allDayBox( dowBox.left()+int( i * cellWidth ), dowBox.bottom() + BOX_BORDER_WIDTH,
@@ -1230,7 +1249,9 @@ void CalPrintPluginBase::drawMonth( QPainter &p, const QDate &dt,
         d1 = d1.addDays(1);
       }
     } else {
-      monthentries.append( MonthEventStruct( e->dtStart(), e->dtEnd(), e ) );
+      KDateTime::Spec spec = KPIM::KPimPrefs::timeSpec();
+      monthentries.append( MonthEventStruct( e->dtStart().toTimeSpec( spec ),
+                                             e->dtEnd().toTimeSpec( spec ), e ) );
     }
   }
 #ifdef __GNUC__
@@ -1411,7 +1432,7 @@ void CalPrintPluginBase::drawTodo( int &count, Todo *todo, QPainter &p,
   }
 
   // size of to-do
-  outStr=todo->summary();
+  outStr = todo->summary();
   int left = posSummary + ( level * 10 );
   rect = p.boundingRect( left, y, ( rhs-left-5 ), -1, Qt::WordBreak, outStr );
   if ( !todo->description().isEmpty() && desc ) {
@@ -1522,14 +1543,14 @@ void CalPrintPluginBase::drawTodo( int &count, Todo *todo, QPainter &p,
 
   // due date
   if ( todo->hasDueDate() && posDueDt>=0 ) {
-    outStr = local->formatDate( todo->dtDue().toLocalZone().date(), KLocale::ShortDate );
-    rect = p.boundingRect( posDueDt, y, x + width, -1,
-                           Qt::AlignTop | Qt::AlignLeft, outStr );
+    KDateTime::Spec spec = KPIM::KPimPrefs::timeSpec();
+    outStr = local->formatDate( todo->dtDue().toTimeSpec( spec ).date(), KLocale::ShortDate );
+    rect = p.boundingRect( posDueDt, y, x + width, -1, Qt::AlignTop | Qt::AlignLeft, outStr );
     p.drawText( rect, Qt::AlignTop | Qt::AlignLeft, outStr );
   }
 
   // percentage completed
-  bool showPercentComplete = posPercentComplete>=0;
+  bool showPercentComplete = ( posPercentComplete >= 0 );
   if ( showPercentComplete ) {
     int lwidth = 24;
     int lheight = 12;
@@ -1616,7 +1637,7 @@ int CalPrintPluginBase::weekdayColumn( int weekday )
 }
 
 void CalPrintPluginBase::drawJournalField( QPainter &p, const QString &entry,
-                                       int x, int &y, int width, int pageHeight )
+                                           int x, int &y, int width, int pageHeight )
 {
   QRect rect( p.boundingRect( x, y, width, -1, Qt::WordBreak, entry ) );
   if ( rect.bottom() > pageHeight ) {
@@ -1632,19 +1653,21 @@ void CalPrintPluginBase::drawJournalField( QPainter &p, const QString &entry,
   y = newrect.bottom() + 7;
 }
 
-void CalPrintPluginBase::drawJournal( Journal * journal, QPainter &p, int x, int &y,
-                                  int width, int pageHeight )
+void CalPrintPluginBase::drawJournal( Journal *journal, QPainter &p, int x, int &y,
+                                      int width, int pageHeight )
 {
+  kDebug();
   QFont oldFont( p.font() );
   p.setFont( QFont( "sans-serif", 15 ) );
   QString headerText;
-  QString dateText( KGlobal::locale()->
-        formatDate( journal->dtStart().toLocalZone().date(), KLocale::LongDate ) );
+  KDateTime::Spec spec = KPIM::KPimPrefs::timeSpec();
+  QString dateText( KGlobal::locale()->formatDate(
+                      journal->dtStart().toTimeSpec( spec ).date(), KLocale::LongDate ) );
 
   if ( journal->summary().isEmpty() ) {
     headerText = dateText;
   } else {
-    headerText = i18nc( "Description - date", "%1 - %2", journal->summary(), dateText );
+    headerText = i18nc( "Summary - date", "%1 - %2", journal->summary(), dateText );
   }
 
   QRect rect( p.boundingRect( x, y, width, -1, Qt::WordBreak, headerText ) );
@@ -1663,11 +1686,11 @@ void CalPrintPluginBase::drawJournal( Journal * journal, QPainter &p, int x, int
   p.drawLine( x + 3, y, x + width - 6, y );
   y += 5;
 
-  if ( !( journal->organizer().fullName().isEmpty() ) ) {
+  if ( !journal->organizer().fullName().isEmpty() ) {
     drawJournalField( p, i18n( "Person: %1", journal->organizer().fullName() ),
                       x, y, width, pageHeight );
   }
-  if ( !( journal->description().isEmpty() ) ) {
+  if ( !journal->description().isEmpty() ) {
     drawJournalField( p, journal->description(), x, y, width, pageHeight );
   }
   y += 10;

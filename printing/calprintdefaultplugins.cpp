@@ -500,27 +500,28 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
           }
           // format the dates if provided
           datesString.clear();
+          KDateTime::Spec spec = KPIM::KPimPrefs::timeSpec();
           if ( (*rit)->dtStart().isValid() ) {
             datesString += i18nc(
               "subitem start date", "Start Date: %1\n",
-              KGlobal::locale()->formatDate( (*rit)->dtStart().date(),
+              KGlobal::locale()->formatDate( (*rit)->dtStart().toTimeSpec( spec ).date(),
                                              KLocale::ShortDate ) );
             if ( !(*rit)->allDay() ) {
               datesString += i18nc(
                 "subitem start time", "Start Time: %1\n",
-                KGlobal::locale()->formatTime( (*rit)->dtStart().time(),
+                KGlobal::locale()->formatTime( (*rit)->dtStart().toTimeSpec( spec ).time(),
                                                false, false ) );
             }
           }
           if ( (*rit)->dtEnd().isValid() ) {
             subitemString += i18nc(
               "subitem due date", "Due Date: %1\n",
-              KGlobal::locale()->formatDate( (*rit)->dtEnd().date(),
+              KGlobal::locale()->formatDate( (*rit)->dtEnd().toTimeSpec( spec ).date(),
                                              KLocale::ShortDate ) );
             if ( !(*rit)->allDay() ) {
               subitemString += i18nc(
                 "subitem due time", "Due Time: %1\n",
-                KGlobal::locale()->formatTime( (*rit)->dtEnd().time(),
+                KGlobal::locale()->formatTime( (*rit)->dtEnd().toTimeSpec( spec ).time(),
                                                false, false ) );
             }
           }
@@ -676,8 +677,7 @@ void CalPrintDay::readSettingsWidget()
 
 void CalPrintDay::setSettingsWidget()
 {
-  CalPrintDayConfig *cfg =
-      dynamic_cast<CalPrintDayConfig *>( ( QWidget* )mConfigWidget );
+  CalPrintDayConfig *cfg = dynamic_cast<CalPrintDayConfig *>( ( QWidget* )mConfigWidget );
   if ( cfg ) {
     cfg->mFromDate->setDate( mFromDate );
     cfg->mToDate->setDate( mToDate );
