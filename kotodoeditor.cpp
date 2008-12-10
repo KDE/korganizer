@@ -178,7 +178,7 @@ void KOTodoEditor::editIncidence( Incidence *incidence, Calendar *calendar )
   }
 
   setCaption( i18nc( "@title:window",
-                     "Edit To-do : %1", KOHelper::resourceLabel( calendar, incidence ) ) );
+                     "Edit To-do: %1", KOHelper::resourceLabel( calendar, incidence ) ) );
 }
 
 void KOTodoEditor::newTodo()
