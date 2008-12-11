@@ -90,7 +90,7 @@ class KOIncidenceEditor : public KPageDialog
       Adds attendees to the editor
     */
     void addAttendees( const QStringList &attendees );
-
+    
   signals:
     void deleteAttendee( Incidence * );
 
@@ -110,6 +110,7 @@ class KOIncidenceEditor : public KPageDialog
     void slotCancel();
     void openURL( const KUrl &url );
 
+    virtual void slotButtonClicked( int button );
     virtual void slotManageTemplates();
 
     virtual void slotSaveTemplate( const QString & ) = 0;

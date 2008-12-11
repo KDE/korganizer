@@ -146,6 +146,16 @@ void KOIncidenceEditor::cancelRemovedAttendees( Incidence *incidence )
 
 }
 
+void KOIncidenceEditor::slotButtonClicked( int button )
+{
+  // kDialog::slotButtonClicked() calls accept() when OK is pressed, we don't want that
+  if ( button == KDialog::Ok ) {
+    emit okClicked();
+  } else {
+    KDialog::slotButtonClicked( button );
+  }
+}
+
 void KOIncidenceEditor::slotManageTemplates()
 {
   kDebug();
