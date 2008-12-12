@@ -491,7 +491,7 @@ QObject *KOEditorGeneral::typeAheadReceiver() const
 void KOEditorGeneral::updateAttendeeSummary(int count)
 {
   if ( count <= 0 )
-    mAttendeeSummaryLabel->setText( "No attendees" );
+    mAttendeeSummaryLabel->setText( i18n("No attendees") );
   else
     mAttendeeSummaryLabel->setText( i18n( "One attendee", "%n attendees", count ) );
 }
