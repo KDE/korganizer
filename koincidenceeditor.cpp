@@ -78,16 +78,41 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
     setButtonText( Default, i18n( "Manage &Templates..." ) );
   }
 
-  connect( this, SIGNAL( defaultClicked() ), SLOT( slotManageTemplates() ) );
-  connect( this, SIGNAL( finished() ), SLOT( delayedDestruct() ) );
-  connect( this, SIGNAL( okClicked()), SLOT(slotOk()));
-  connect( this, SIGNAL( cancelClicked()), SLOT(slotCancel()));
-  connect( this, SIGNAL( applyClicked()),SLOT(slotApply()));
-
+  connect( this, SIGNAL(defaultClicked()), SLOT(slotManageTemplates()) );
+  connect( this, SIGNAL(finished()), SLOT(delayedDestruct()) );
 }
 
 KOIncidenceEditor::~KOIncidenceEditor()
 {
+}
+
+void KOIncidenceEditor::slotButtonClicked( int button )
+{
+  switch( button ) {
+  case KDialog::Ok:
+  {
+    // "this" can be deleted before processInput() returns (processInput()
+    // opens a non-modal dialog when Kolab is used). So accept should only
+    // be executed when "this" is still valid
+    QPointer<QWidget> ptr( this );
+    if ( processInput() && ptr ) {
+      KDialog::accept();
+    }
+    break;
+  }
+  case KDialog::Apply:
+    processInput();
+    break;
+  case KDialog::Cancel:
+    if ( KMessageBox::questionYesNo(
+           this,
+           i18nc( "@info", "Do you really want to cancel?" ),
+           i18nc( "@title:window", "KOrganizer Confirmation" ) ) == KMessageBox::Yes ) {
+      processCancel();
+      KDialog::reject();
+    }
+    break;
+  }
 }
 
 void KOIncidenceEditor::setupAttendeesTab()
@@ -104,26 +129,18 @@ void KOIncidenceEditor::setupAttendeesTab()
   topLayout->addWidget( mDetails );
 }
 
-void KOIncidenceEditor::slotApply()
+void KOIncidenceEditor::accept()
 {
-  processInput();
 }
 
-void KOIncidenceEditor::slotOk()
+void KOIncidenceEditor::reject()
 {
-  // "this" can be deleted before processInput() returns (processInput() opens
-  // a non-modal dialog when Kolab is used). So accept should only be executed
-  // when "this" is still valid
-  QPointer<QWidget> ptr( this );
-  if ( processInput() && ptr ) {
-    accept();
-  }
 }
 
-void KOIncidenceEditor::slotCancel()
+void KOIncidenceEditor::closeEvent( QCloseEvent *event )
 {
-  processCancel();
-  reject();
+  event->ignore();
+  slotButtonClicked( KDialog::Cancel );
 }
 
 void KOIncidenceEditor::cancelRemovedAttendees( Incidence *incidence )
@@ -146,20 +163,8 @@ void KOIncidenceEditor::cancelRemovedAttendees( Incidence *incidence )
 
 }
 
-void KOIncidenceEditor::slotButtonClicked( int button )
-{
-  // kDialog::slotButtonClicked() calls accept() when OK is pressed, we don't want that
-  if ( button == KDialog::Ok ) {
-    emit okClicked();
-  } else {
-    KDialog::slotButtonClicked( button );
-  }
-}
-
 void KOIncidenceEditor::slotManageTemplates()
 {
-  kDebug();
-
   QString tp = type();
 
   TemplateManagementDialog * const d = new TemplateManagementDialog( this, templates() );
@@ -231,8 +236,6 @@ void KOIncidenceEditor::setupDesignerTabs( const QString &type )
 
 QWidget *KOIncidenceEditor::addDesignerTab( const QString &uifile )
 {
-  kDebug(5850) <<"Designer tab:" << uifile;
-
   KPIM::DesignerFields *wid = new KPIM::DesignerFields( uifile, 0 );
   mDesignerFields.append( wid );
 
@@ -298,12 +301,9 @@ void KOIncidenceEditor::readDesignerFields( Incidence *i )
 
 void KOIncidenceEditor::writeDesignerFields( Incidence *i )
 {
-  kDebug(5850) <<"KOIncidenceEditor::writeDesignerFields()";
-
   KCalStorage storage( i );
   foreach ( KPIM::DesignerFields *fields, mDesignerFields ) {
     if ( fields ) {
-      kDebug(5850) <<"Write Field" << fields->title();
       fields->save( &storage );
     }
   }
@@ -312,8 +312,6 @@ void KOIncidenceEditor::writeDesignerFields( Incidence *i )
 void KOIncidenceEditor::setupEmbeddedURLPage( const QString &label,
                                  const QString &url, const QString &mimetype )
 {
-  kDebug(5850) <<"KOIncidenceEditor::setupEmbeddedURLPage()";
-  kDebug(5850) <<"label=" << label <<", url=" << url <<", mimetype=" << mimetype;
   QFrame *topFrame = new QFrame();
   addPage( topFrame, label );
   QBoxLayout *topLayout = new QVBoxLayout( topFrame );
@@ -330,11 +328,8 @@ void KOIncidenceEditor::setupEmbeddedURLPage( const QString &label,
 
 void KOIncidenceEditor::createEmbeddedURLPages( Incidence *i )
 {
-  kDebug(5850) <<"KOIncidenceEditor::createEmbeddedURLPages()";
-
   if ( !i ) return;
   if ( !mEmbeddedURLPages.isEmpty() ) {
-    kDebug(5850) <<"mEmbeddedURLPages are not empty, clearing it!";
     qDeleteAll( mEmbeddedURLPages );
     mEmbeddedURLPages.clear();
   }
@@ -352,8 +347,6 @@ void KOIncidenceEditor::createEmbeddedURLPages( Incidence *i )
   Attachment::List att = i->attachments();
   for ( Attachment::List::Iterator it = att.begin(); it != att.end(); ++it ) {
     Attachment *a = (*it);
-    kDebug(5850) <<"Iterating over the attachments";
-    kDebug(5850) <<"label=" << a->label() <<", url=" << a->uri() <<", mimetype=" << a->mimeType();
     if ( a->showInline() && a->isUri() ) {
       // TODO: Allow more mime-types, but add security checks!
 /*      if ( a->mimeType() == QLatin1String("application/x-designer") ) {

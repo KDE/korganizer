@@ -90,8 +90,9 @@ class KOIncidenceEditor : public KPageDialog
       Adds attendees to the editor
     */
     void addAttendees( const QStringList &attendees );
-    
+
   signals:
+    void buttonClicked( int );
     void deleteAttendee( Incidence * );
 
     void editCategories();
@@ -105,9 +106,9 @@ class KOIncidenceEditor : public KPageDialog
                                bool inlineAttachment = false );
 
   protected slots:
-    void slotApply();
-    void slotOk();
-    void slotCancel();
+    void reject();
+    void accept();
+
     void openURL( const KUrl &url );
 
     virtual void slotButtonClicked( int button );
@@ -118,6 +119,8 @@ class KOIncidenceEditor : public KPageDialog
     virtual void slotTemplatesChanged( const QStringList & );
 
   protected:
+    virtual void closeEvent( QCloseEvent * );
+
     virtual QString type() { return QString(); }
     virtual QStringList &templates() const = 0;
     virtual void loadTemplate( CalendarLocal & ) = 0;
