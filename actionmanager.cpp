@@ -414,7 +414,7 @@ void ActionManager::initActions()
   mFilterAction = new KSelectAction( i18n( "F&ilter" ), this );
   mACollection->addAction( "filter_select", mFilterAction );
   mFilterAction->setEditable( false );
-  connect( mFilterAction, SIGNAL(activated(int)),
+  connect( mFilterAction, SIGNAL(triggered(int)),
            mCalendarView, SLOT(filterActivated(int)) );
   connect( mCalendarView, SIGNAL(newFilterListSignal(const QStringList &)),
            this, SLOT(setItems( const QStringList &)) );
