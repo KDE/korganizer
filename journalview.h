@@ -65,6 +65,7 @@ class JournalView : public QWidget {
     void setJournal(Journal *);
     Journal *journal() const { return mJournal; }
 
+    void setCalendar( Calendar *cal );
     QDate date() const { return mDate; }
 
     void clear();
@@ -93,6 +94,7 @@ class JournalView : public QWidget {
 
   private:
     Journal *mJournal;
+    Calendar *mCalendar;
     QDate mDate;
     bool mReadOnly;
 

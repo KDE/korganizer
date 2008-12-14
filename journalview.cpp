@@ -99,6 +99,7 @@ void JournalDateView::addJournal( Journal *j )
 
   JournalView *entry = new JournalView( j, this );
   entry->show();
+  entry->setCalendar( mCalendar );
   entry->setDate( mDate );
   entry->setIncidenceChanger( mChanger );
 
@@ -237,16 +238,15 @@ void JournalView::printItem()
 {
 #ifndef KORG_NOPRINTER
   if ( mJournal ) {
-    Calendar *cal = 0;
     KOCoreHelper helper;
-    CalPrinter printer( this, cal, &helper );
+    CalPrinter printer( this, mCalendar, &helper );
     connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
 
     Incidence::List selectedIncidences;
     selectedIncidences.append( mJournal );
 
     printer.print( KOrg::CalPrinterBase::Incidence,
-                 QDate(), QDate(), selectedIncidences );
+                   mDate, mDate, selectedIncidences );
   }
 #endif
 }
@@ -258,6 +258,10 @@ void JournalView::setReadOnly( bool readonly )
   mDeleteButton->setEnabled( !mReadOnly );
 }
 
+void JournalView::setCalendar( Calendar *cal )
+{
+  mCalendar = cal;
+}
 
 void JournalView::setDate(const QDate &date)
 {
