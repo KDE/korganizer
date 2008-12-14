@@ -34,13 +34,16 @@
 #include <QSet>
 
 class KLineEdit;
-class QLabel;
 class KComboBox;
 class KColorButton;
 class KPushButton;
-class QColor;
-class Q3ListView;
 class KComponentData;
+
+class Q3ListView;
+class QCheckBox;
+class QColor;
+class QLabel;
+class QRadioButton;
 class QGroupBox;
 class QTreeWidget;
 
@@ -153,8 +156,8 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogPlugins : public KPrefsModule
     KPushButton *mConfigureButton;
     QGroupBox *mPositioningGroupBox;
     QCheckBox *mPositionMonthTop;
-    QCheckBox *mPositionAgendaTop;
-    QCheckBox *mPositionAgendaBottom;
+    QRadioButton *mPositionAgendaTop;
+    QRadioButton *mPositionAgendaBottom;
     QSet<QString> mDecorationsAtMonthViewTop;
     QSet<QString> mDecorationsAtAgendaViewTop;
     QSet<QString> mDecorationsAtAgendaViewBottom;

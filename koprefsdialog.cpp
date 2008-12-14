@@ -1257,9 +1257,9 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins( const KComponentData &inst, QWidget 
   mPositioningGroupBox = new QGroupBox( i18nc( "@title:group", "Position" ), topFrame );
   mPositionMonthTop = new QCheckBox(
     i18nc( "@option:check", "Show in the month view" ), mPositioningGroupBox );
-  mPositionAgendaTop = new QCheckBox(
+  mPositionAgendaTop = new QRadioButton(
     i18nc( "@option:check", "Show at the top of the agenda views" ), mPositioningGroupBox );
-  mPositionAgendaBottom = new QCheckBox(
+  mPositionAgendaBottom = new QRadioButton(
     i18nc( "@option:check", "Show at the bottom of the agenda views" ), mPositioningGroupBox );
   QVBoxLayout *positioningLayout = new QVBoxLayout( mPositioningGroupBox );
   positioningLayout->addWidget( mPositionMonthTop );
@@ -1393,7 +1393,7 @@ void KOPrefsDialogPlugins::positioningChanged()
     mDecorationsAtMonthViewTop.remove( decoration );
   }
 
-  if ( mPositionAgendaTop->checkState() == Qt::Checked ) {
+  if ( mPositionAgendaTop->isChecked() ) {
     if ( !mDecorationsAtAgendaViewTop.contains( decoration ) ) {
       mDecorationsAtAgendaViewTop.insert( decoration );
     }
@@ -1401,7 +1401,7 @@ void KOPrefsDialogPlugins::positioningChanged()
     mDecorationsAtAgendaViewTop.remove( decoration );
   }
 
-  if ( mPositionAgendaBottom->checkState() == Qt::Checked ) {
+  if ( mPositionAgendaBottom->isChecked() ) {
     if ( !mDecorationsAtAgendaViewBottom.contains( decoration ) ) {
       mDecorationsAtAgendaViewBottom.insert( decoration );
     }
