@@ -168,7 +168,7 @@ class MonthScene : public QGraphicsScene
 
   signals:
     void incidenceSelected( Incidence *incidence );
-    void showIncidencePopupSignal( Incidence *, const QDate &);
+    void showIncidencePopupSignal( Calendar *, Incidence *, const QDate &);
     void showNewEventPopupSignal();
 
   protected:

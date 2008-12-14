@@ -545,8 +545,9 @@ void MonthScene::mousePressEvent ( QGraphicsSceneMouseEvent *mouseEvent )
     if ( mouseEvent->button() == Qt::RightButton ) {
       IncidenceMonthItem *tmp = dynamic_cast<IncidenceMonthItem *>( mClickedItem );
       if ( tmp ) {
-        emit showIncidencePopupSignal( tmp->incidence(),
-                                       mClickedItem->startDate() ); // FIXME ?
+        emit showIncidencePopupSignal( mCalendar,
+                                       tmp->incidence(),
+                                       tmp->incidence()->dtStart().date() );
       }
     }
 

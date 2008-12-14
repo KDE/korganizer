@@ -427,9 +427,8 @@ void KOListView::popupMenu(Q3ListViewItem *item,const QPoint &,int)
     Incidence *incidence = mActiveItem->data();
     // FIXME: For recurring incidences we don't know the date of this
     // occurrence, there's no reference to it at all!
-    mPopupMenu->showIncidencePopup( incidence, QDate() );
-  }
-  else {
+    mPopupMenu->showIncidencePopup( calendar(), incidence, incidence->dtStart().date() );
+  } else {
     showNewEventPopup();
   }
 }
