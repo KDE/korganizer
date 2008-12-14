@@ -30,7 +30,7 @@
 #include <QMouseEvent>
 #include <QFrame>
 
-class QPushButton;
+class QToolButton;
 class QFrame;
 
 class ActiveLabel : public QLabel
@@ -66,8 +66,7 @@ class NavigatorBar: public QWidget
     void goMonth( int month );
 
   protected:
-    QPushButton *createNavigationButton( const QString &icon,
-      const QString &toolTip );
+    QToolButton *createNavigationButton( const QString &icon, const QString &toolTip );
 
   private slots:
     void selectMonth();
@@ -77,11 +76,11 @@ class NavigatorBar: public QWidget
 
     QDate mDate;
 
-    QPushButton *mPrevYear;
-    QPushButton *mPrevMonth;
+    QToolButton *mPrevYear;
+    QToolButton *mPrevMonth;
     ActiveLabel *mMonth;
-    QPushButton *mNextMonth;
-    QPushButton *mNextYear;
+    QToolButton *mNextMonth;
+    QToolButton *mNextYear;
 };
 
 #endif
