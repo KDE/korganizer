@@ -1440,7 +1440,12 @@ void KOPrefsDialogPlugins::selectionChanged()
   }
 
   mDescription->setText( item->service()->comment() );
-  mConfigureButton->setEnabled( hasSettings && ( item->checkState(0) == Qt::Checked ) ) ;
+  if ( !hasSettings ) {
+    mConfigureButton->hide();
+  } else {
+    mConfigureButton->show();
+    mConfigureButton->setEnabled( item->checkState(0) == Qt::Checked );
+  }
 
   if ( item->service()->hasServiceType( KOrg::CalendarDecoration::Decoration::serviceType() ) ) {
     QString decoration = item->service()->desktopEntryName();
