@@ -144,6 +144,8 @@ ResourceItem::ResourceItem( KCal::ResourceCalendar *resource,
   mResourceColor = QColor();
   mResourceIdentifier = sub;
   setGuiState();
+
+  treeWidget()->setRootIsDecorated( true );
 }
 
 void ResourceItem::setGuiState()
