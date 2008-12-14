@@ -39,20 +39,20 @@ class CalPrintYear : public CalPrintPluginBase
   public:
     CalPrintYear():CalPrintPluginBase() {}
     virtual ~CalPrintYear() {}
-    virtual QString description() { return i18n("Print &year"); }
-    virtual QString info() { return i18n("Prints a calendar for an entire year"); }
-    virtual int sortID() { return 900; }
+    virtual QString description() { return i18n( "Print &year" ); }
+    virtual QString info() { return i18n( "Prints a calendar for an entire year" ); }
+    virtual int sortID() { return CalPrinterBase::Year; }
     virtual bool enabled() { return true; }
-    virtual QWidget *createConfigWidget( QWidget* );
+    virtual QWidget *createConfigWidget( QWidget * );
     virtual QPrinter::Orientation defaultOrientation();
 
   public:
-    virtual void print(QPainter &p, int width, int height);
+    virtual void print( QPainter &p, int width, int height );
     virtual void readSettingsWidget();
     virtual void setSettingsWidget();
     virtual void loadConfig();
     virtual void saveConfig();
-    virtual void setDateRange( const QDate& from, const QDate& to );
+    virtual void setDateRange( const QDate &from, const QDate &to );
 
   protected:
     int mYear;
@@ -62,10 +62,11 @@ class CalPrintYear : public CalPrintPluginBase
 
 class CalPrintYearConfig : public QWidget, public Ui::CalPrintYearConfig_Base
 {
-public:
-  CalPrintYearConfig( QWidget *parent ) : QWidget( parent ) {
-    setupUi( this );
-  }
+  public:
+    CalPrintYearConfig( QWidget *parent ) : QWidget( parent )
+    {
+      setupUi( this );
+    }
 };
 
 #endif
