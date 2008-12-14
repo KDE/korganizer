@@ -165,9 +165,9 @@ void CalPrintPluginBase::doLoadConfig()
   if ( mConfig ) {
     KConfigGroup group( mConfig, description() );
     mConfig->sync();
-    QDateTime currDate( QDate::currentDate() );
-    mFromDate = group.readEntry( "FromDate", currDate ).date();
-    mToDate = group.readEntry( "ToDate", QDateTime() ).date();
+    QDateTime dt = QDateTime::currentDateTime();
+    mFromDate = group.readEntry( "FromDate", dt ).date();
+    mToDate = group.readEntry( "ToDate", dt ).date();
     mUseColors = group.readEntry( "UseColors", true );
     setUseColors( mUseColors );
     loadConfig();
@@ -181,8 +181,11 @@ void CalPrintPluginBase::doSaveConfig()
   if ( mConfig ) {
     KConfigGroup group( mConfig, description() );
     saveConfig();
-    group.writeEntry( "FromDate", QDateTime( mFromDate ) );
-    group.writeEntry( "ToDate", QDateTime( mToDate ) );
+    QDateTime dt = QDateTime::currentDateTime(); // any valid QDateTime will do
+    dt.setDate( mFromDate );
+    group.writeEntry( "FromDate", dt );
+    dt.setDate( mToDate );
+    group.writeEntry( "ToDate", dt );
     group.writeEntry( "UseColors", mUseColors );
     mConfig->sync();
   } else {
@@ -1640,7 +1643,7 @@ void CalPrintPluginBase::drawJournal( Journal * journal, QPainter &p, int x, int
 
 void CalPrintPluginBase::drawSplitHeaderRight( QPainter &p, const QDate &fd,
                                                const QDate &td, const QDate &,
-                                               int width, int height)
+                                               int width, int height )
 {
   QFont oldFont( p.font() );
 
@@ -1663,10 +1666,11 @@ void CalPrintPluginBase::drawSplitHeaderRight( QPainter &p, const QDate &fd,
     }
   }
 
-  if ( height < 60 )
+  if ( height < 60 ) {
     p.setFont( QFont( "Times", 22 ) );
-  else
+  } else {
     p.setFont( QFont( "Times", 28 ) );
+  }
 
   int lineSpacing = p.fontMetrics().lineSpacing();
   p.drawText( 0, 0, width, lineSpacing,
@@ -1678,10 +1682,11 @@ void CalPrintPluginBase::drawSplitHeaderRight( QPainter &p, const QDate &fd,
   p.drawLine( 300, lineSpacing, width, lineSpacing );
   p.setPen( oldPen );
 
-  if ( height < 60 )
+  if ( height < 60 ) {
     p.setFont( QFont( "Times", 14, QFont::Bold, true ) );
-  else
+  } else {
     p.setFont( QFont( "Times", 18, QFont::Bold, true ) );
+  }
 
   title += QString::number( fd.year() );
   p.drawText( 0, lineSpacing, width, lineSpacing,
