@@ -98,11 +98,11 @@ KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *paren
 
   personalLayout->addWidget( mUserEmailSettings );
   QFormLayout *emailSettingsLayout = new QFormLayout( mUserEmailSettings );
-  KPrefsWidString* s=addWidString( KOPrefs::instance()->userNameItem(), mUserEmailSettings );
-  emailSettingsLayout->addRow ( s->label(),s->lineEdit() );
+  KPrefsWidString *s = addWidString( KOPrefs::instance()->userNameItem(), mUserEmailSettings );
+  emailSettingsLayout->addRow ( s->label(), s->lineEdit() );
 
   s=addWidString( KOPrefs::instance()->userEmailItem(), mUserEmailSettings );
-  emailSettingsLayout->addRow ( s->label(),s->lineEdit() );
+  emailSettingsLayout->addRow ( s->label(), s->lineEdit() );
 
   KPrefsWidRadios *defaultEmailAttachMethod =
     addWidRadios( KOPrefs::instance()->defaultEmailAttachMethodItem(), personalFrame );
@@ -1275,6 +1275,7 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins( const KComponentData &inst, QWidget 
   connect( mPositionAgendaBottom, SIGNAL(clicked()), SLOT(positioningChanged()) );
 
   connect( mTreeWidget, SIGNAL(itemSelectionChanged()), SLOT(selectionChanged()) );
+  connect( mTreeWidget, SIGNAL(itemChanged(QTreeWidgetItem*,int)), SLOT(selectionChanged()) );
   connect( mTreeWidget, SIGNAL(itemClicked(QTreeWidgetItem*,int)), SLOT(slotWidChanged()) );
 
   load();
@@ -1439,7 +1440,7 @@ void KOPrefsDialogPlugins::selectionChanged()
   }
 
   mDescription->setText( item->service()->comment() );
-  mConfigureButton->setEnabled( hasSettings );
+  mConfigureButton->setEnabled( hasSettings && ( item->checkState(0) == Qt::Checked ) ) ;
 
   if ( item->service()->hasServiceType( KOrg::CalendarDecoration::Decoration::serviceType() ) ) {
     QString decoration = item->service()->desktopEntryName();
@@ -1452,6 +1453,7 @@ void KOPrefsDialogPlugins::selectionChanged()
     if ( mDecorationsAtAgendaViewBottom.contains( decoration ) ) {
       mPositionAgendaBottom->setChecked( true );
     }
+    mPositioningGroupBox->setEnabled( item->checkState(0) == Qt::Checked );
     mPositioningGroupBox->show();
   }
 
