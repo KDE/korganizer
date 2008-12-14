@@ -92,7 +92,7 @@ class KOAgenda : public Q3ScrollView
      * reappears, it can be reselected. */
     const QString lastSelectedUid() const;
 
-    virtual bool eventFilter ( QObject *, QEvent * );
+    bool eventFilter ( QObject *, QEvent * );
 
     QPoint contentsToGrid ( const QPoint &pos ) const;
     QPoint gridToContents ( const QPoint &gpos ) const;

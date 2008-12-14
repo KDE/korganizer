@@ -364,8 +364,6 @@ void KOAgenda::changeColumns( int columns )
 */
 bool KOAgenda::eventFilter ( QObject *object, QEvent *event )
 {
-//  kDebug() << int( event->type() );
-
   switch( event->type() ) {
   case QEvent::MouseButtonPress:
   case QEvent::MouseButtonDblClick:
@@ -590,32 +588,31 @@ bool KOAgenda::eventFilter_wheel ( QObject *object, QWheelEvent *e )
 bool KOAgenda::eventFilter_mouse( QObject *object, QMouseEvent *me )
 {
   QPoint viewportPos;
-  if ( object != viewport() ) {
-    viewportPos = ( (QWidget *)object )->mapToParent( me->pos() );
+  if ( object != viewport() && object != this ) {
+    viewportPos = static_cast<QWidget *>( object )->mapToParent( me->pos() );
   } else {
     viewportPos = me->pos();
   }
 
   switch ( me->type() )  {
   case QEvent::MouseButtonPress:
-//      kDebug() << "filtered button press";
     if ( object != viewport() ) {
       if ( me->button() == Qt::RightButton ) {
         mClickedItem = dynamic_cast<KOAgendaItem *>( object );
         if ( mClickedItem ) {
-          selectItem(mClickedItem);
+          selectItem( mClickedItem );
           emit showIncidencePopupSignal( mClickedItem->incidence(),
                                          mClickedItem->itemDate() );
         }
       } else {
-        KOAgendaItem* item = dynamic_cast<KOAgendaItem *>(object);
+        KOAgendaItem *item = dynamic_cast<KOAgendaItem *>(object);
         if (item) {
           Incidence *incidence = item->incidence();
           if ( incidence->isReadOnly() ) {
             mActionItem = 0;
           } else {
             mActionItem = item;
-            startItemAction(viewportPos);
+            startItemAction( viewportPos );
           }
           // Warning: do selectItem() as late as possible, since all
           // sorts of things happen during this call. Some can lead to
@@ -668,7 +665,7 @@ bool KOAgenda::eventFilter_mouse( QObject *object, QMouseEvent *me )
     QPoint indicatorPos = gridToContents( contentsToGrid( viewportToContents( viewportPos ) ) );
     if ( object != viewport() ) {
       KOAgendaItem *moveItem = dynamic_cast<KOAgendaItem *>( object );
-      if ( moveItem && !moveItem->incidence()->isReadOnly() ) {
+      if ( moveItem && moveItem->incidence() && !moveItem->incidence()->isReadOnly() ) {
         if ( !mActionItem ) {
           setNoActionCursor( moveItem, viewportPos );
         } else {
