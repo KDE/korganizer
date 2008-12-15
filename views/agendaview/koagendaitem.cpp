@@ -31,6 +31,7 @@
 
 #include <kcal/icaldrag.h>
 #include <kcal/incidence.h>
+#include <kcal/event.h>
 #include <kcal/todo.h>
 #include <kcal/incidenceformatter.h>
 #include <kcal/vcaldrag.h>
@@ -985,14 +986,33 @@ void KOAgendaItem::paintEvent( QPaintEvent *ev )
   if ( mIncidence->allDay() ) {
     shortH = longH = "";
 
-    if ( ( mIncidence->type() != "Todo" ) &&
-         ( mIncidence->dtStart() != mIncidence->dtEnd() ) ) { // multi days
-      shortH = longH =
-               i18n( "%1 - %2",
-                     KGlobal::locale()->formatDate(
-                       mIncidence->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ).date() ),
-                     KGlobal::locale()->formatDate(
-                       mIncidence->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() ).date() ) );
+    if ( mIncidence->type() == "Event" ) {
+      if ( static_cast<Event*>( mIncidence )->isMultiDay( KOPrefs::instance()->timeSpec() ) ) {
+        // multi-day, all-day event
+        shortH =
+          i18n( "%1 - %2",
+                KGlobal::locale()->formatDate(
+                  mIncidence->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ).date() ),
+                KGlobal::locale()->formatDate(
+                  mIncidence->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() ).date() ) );
+        longH = shortH;
+
+        // paint headline
+        drawRoundedRect(
+          &p,
+          QRect( fmargin, fmargin, width() - fmargin * 2, - fmargin * 2 + margin + hlHeight ),
+          mSelected, frameColor, false, ft, roundTop, false );
+      } else {
+        // single-day, all-day event
+
+        // paint headline
+        drawRoundedRect(
+          &p,
+          QRect( fmargin, fmargin, width() - fmargin * 2, - fmargin * 2 + margin + hlHeight ),
+          mSelected, frameColor, false, ft, roundTop, false );
+      }
+    } else {
+      // to-do
 
       // paint headline
       drawRoundedRect(
