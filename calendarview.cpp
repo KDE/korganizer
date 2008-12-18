@@ -1441,7 +1441,7 @@ void CalendarView::schedule( iTIPMethod method, Incidence *incidence )
 
   // Send the mail
   KCal::MailScheduler scheduler( mCalendar );
-  if ( !scheduler.performTransaction( incidence, method ) ) {
+  if ( scheduler.performTransaction( incidence, method ) ) {
     KMessageBox::information( this, i18n( "The groupware message for item '%1'"
                                           "was successfully sent.\nMethod: %2",
                                           incidence->summary(),
