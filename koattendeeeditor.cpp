@@ -368,7 +368,6 @@ void KOAttendeeEditor::updateAttendee()
     bool wasMyself =
       KPIM::compareEmail( a->email(), mOrganizerCombo->currentText(), false );
     if ( myself ) {
-      mStatusCombo->setCurrentItem( KCal::Attendee::Accepted );
       mRsvpButton->setChecked( false );
       mRsvpButton->setEnabled( false );
     } else if ( wasMyself ) {
