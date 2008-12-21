@@ -259,10 +259,8 @@ class KODayMatrix: public QFrame, public KCal::Calendar::CalendarObserver
         subsequently calling QDate::addDays(). */
     QDate *mDays;
 
-    /** array of storing the number of events on a given day.
-     * used for drawing a bold font if there is at least one event on that day.
-     */
-    int *mEvents;
+    /** List for storing days which should be drawn using bold font. */
+    QList<QDate> mEvents;
 
     /** stores holiday names of the days shown in the matrix. */
     QMap<int,QString> mHolidays;

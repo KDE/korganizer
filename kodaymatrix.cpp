@@ -80,7 +80,6 @@ KODayMatrix::KODayMatrix( QWidget *parent )
   // initialize dynamic arrays
   mDays = new QDate[NUMDAYS];
   mDayLabels = new QString[NUMDAYS];
-  mEvents = new int[NUMDAYS];
 
   mTodayMarginWidth = 2;
   mSelEnd = mSelStart = NOSELECTION;
@@ -134,7 +133,6 @@ KODayMatrix::~KODayMatrix()
 
   delete [] mDays;
   delete [] mDayLabels;
-  delete [] mEvents;
 }
 
 void KODayMatrix::addSelectedDaysTo( DateList &selDays )
@@ -279,22 +277,46 @@ void KODayMatrix::updateEvents()
     return;
   }
 
-  for ( int i = 0; i < NUMDAYS; i++ ) {
-    // if events are set for the day then remember to draw it bold
-    Event::List eventlist = mCalendar->events( mDays[i], mCalendar->timeSpec() );
-    int numEvents = eventlist.count();
-    Event::List::ConstIterator it;
-    for ( it = eventlist.constBegin(); it != eventlist.constEnd(); ++it ) {
-      Event *event = *it;
-      ushort recurType = event->recurrenceType();
-      if ( ( recurType == Recurrence::rDaily &&
-             !KOPrefs::instance()->mDailyRecur ) ||
-           ( recurType == Recurrence::rWeekly &&
-             !KOPrefs::instance()->mWeeklyRecur ) ) {
-        numEvents--;
+  Event::List eventlist = mCalendar->events( mDays[0], mDays[NUMDAYS-1],
+                                             mCalendar->timeSpec());
+  mEvents.clear();
+  Event::List::ConstIterator it;
+
+  for ( it = eventlist.constBegin(); it != eventlist.constEnd(); ++it ) {
+    Event *event = *it;
+    ushort recurType = event->recurrenceType();
+	
+    if ( !( recurType == Recurrence::rDaily  && !KOPrefs::instance()->mDailyRecur ) &&
+         !( recurType == Recurrence::rWeekly && !KOPrefs::instance()->mWeeklyRecur ) ) {
+          
+      DateTimeList timeDateList;
+      
+      if (event->recurs()) {
+        //Its a recurring event, find out in which days it occurs
+      	timeDateList = event->recurrence()->timesInInterval( *new KDateTime( mDays[0],         mCalendar->timeSpec() ),
+                                                             *new KDateTime( mDays[NUMDAYS-1], mCalendar->timeSpec() ) );
+      } else {
+        timeDateList.append( event->dtStart() );
+      }							 
+        
+      const int eventDuration = event->dtStart().daysTo(event->dtEnd())+1;
+
+      DateTimeList::iterator t;
+      for ( t = timeDateList.begin(); t != timeDateList.end(); ++t ) {
+        //This could be a multiday event, so iterate from dtStart() to dtEnd()
+        QDate d = t->date();
+        int j   = 0;
+
+        do {
+                                                                            
+          mEvents.append( d );
+      
+          ++j;
+          d = d.addDays( 1 );
+
+        } while ( j < eventDuration && j < NUMDAYS );
       }
     }
-    mEvents[i] = numEvents;
   }
   mPendingChanges = false;
 }
@@ -689,7 +711,7 @@ void KODayMatrix::paintEvent( QPaintEvent * )
     }
 
     // if any events are on that day then draw it using a bold font
-    if ( mEvents[i] > 0 ) {
+    if ( mEvents.contains(mDays[i]) ) {
       QFont myFont = font();
       myFont.setBold( true );
       p.setFont( myFont );
@@ -718,7 +740,7 @@ void KODayMatrix::paintEvent( QPaintEvent * )
       p.setPen( actcol );
     }
     // reset bold font to plain font
-    if ( mEvents[i] > 0 ) {
+    if ( mEvents.contains(mDays[i]) > 0 ) {
       QFont myFont = font();
       myFont.setBold( false );
       p.setFont( myFont );
