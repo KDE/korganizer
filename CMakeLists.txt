@@ -116,7 +116,7 @@ set(korganizer_calendar_LIB_SRCS stdcalendar.cpp )
 
 kde4_add_library(korganizer_calendar SHARED ${korganizer_calendar_LIB_SRCS})
 
-target_link_libraries(korganizer_calendar ${KDE4_KPARTS_LIBS} ${KDE4_KCAL_LIBS} kdepim)
+target_link_libraries(korganizer_calendar ${KDE4_KPARTS_LIBS} ${KDE4_KCAL_LIBS} kdepim ${KDE4_KDE3SUPPORT_LIBS})
 
 set_target_properties(korganizer_calendar PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
 install(TARGETS korganizer_calendar  DESTINATION ${LIB_INSTALL_DIR})
