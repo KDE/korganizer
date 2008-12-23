@@ -321,9 +321,12 @@ class AttachmentIconView : public K3IconView
       }
       KTemporaryFile *file = new KTemporaryFile();
       file->setParent( this );
-      file->setSuffix(
-        QString(
-          KMimeType::mimeType( attachment->mimeType() )->patterns().first() ).remove( '*' ) );
+
+      QStringList patterns = KMimeType::mimeType( attachment->mimeType() )->patterns();
+
+      if ( !patterns.empty() ) {
+        file->setSuffix( QString( patterns.first() ).remove( '*' ) );  
+      }
       file->setAutoRemove( true );
       file->open();
       // read-only not to give the idea that it could be written to
