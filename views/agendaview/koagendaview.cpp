@@ -559,9 +559,6 @@ void KOAgendaView::createDayLabels()
         decoHBox->setMinimumWidth( 1 );
 
         foreach ( CalendarDecoration::Element *it, elements ) {
-          kDebug() << "adding Element " << it->id()
-                   << " of Decoration " << deco->info()
-                   << " to the top of the agenda view";
           KODecorationLabel *label = new KODecorationLabel( it, decoHBox );
           label->setAlignment( Qt::AlignBottom );
           label->setMinimumWidth( 1 );
@@ -578,9 +575,6 @@ void KOAgendaView::createDayLabels()
         decoHBox->setMinimumWidth( 1 );
 
         foreach ( CalendarDecoration::Element *it, elements ) {
-          kDebug() << "adding Element " << it->id()
-                   << " of Decoration " << deco->info()
-                   << " to the bottom of the agenda view";
           KODecorationLabel *label = new KODecorationLabel( it, decoHBox );
           label->setAlignment( Qt::AlignBottom );
           label->setMinimumWidth( 1 );
@@ -601,9 +595,6 @@ void KOAgendaView::createDayLabels()
       decoHBox->setMinimumWidth( 1 );
 
       foreach ( CalendarDecoration::Element *it, elements ) {
-        kDebug() << "adding Element " << it->id()
-                 << " of Decoration " << deco->info()
-                 << " to the week part of the agenda view";
         KODecorationLabel *label = new KODecorationLabel( it, decoHBox );
         label->setAlignment( Qt::AlignBottom );
         label->setMinimumWidth( 1 );
@@ -620,9 +611,6 @@ void KOAgendaView::createDayLabels()
       decoHBox->setMinimumWidth( 1 );
 
       foreach ( CalendarDecoration::Element *it, elements ) {
-        kDebug() << "adding Element " << it->id()
-                 << " of Decoration " << deco->info()
-                 << " to the week part of the agenda view";
         KODecorationLabel *label = new KODecorationLabel( it, decoHBox );
         label->setAlignment( Qt::AlignBottom );
         label->setMinimumWidth( 1 );
