@@ -143,7 +143,7 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
 
     bool dissociateFromMultiItem();
 
-    bool setIncidence( Incidence *i );
+    void setIncidence( Incidence *incidence );
     Incidence *incidence() const { return mIncidence; }
     QDate itemDate() { return mDate; }
 
@@ -175,6 +175,7 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     void addAttendee( const QString & );
 
   protected:
+    bool eventFilter( QObject *obj, QEvent *event );
     bool event( QEvent *event );
     void dragEnterEvent( QDragEnterEvent *e );
     void dropEvent( QDropEvent *e );
@@ -221,6 +222,7 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     QColor mResourceColor;
 
   private:
+    bool mValid;
     bool mSelected;
     QList<KOAgendaItem*> mConflictItems;
 
