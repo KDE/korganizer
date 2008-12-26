@@ -114,8 +114,6 @@ ActionManager::~ActionManager()
 
   delete mCalendarView;
   delete mCalendar;
-
-  kDebug();
 }
 
 // see the Note: below for why this method is necessary
@@ -411,6 +409,7 @@ void ActionManager::initActions()
 //                     mACollection, "hide_completed_todos" );
 
   mFilterAction = new KSelectAction( i18n( "F&ilter" ), this );
+  mFilterAction->setToolBarMode( KSelectAction::MenuMode );
   mACollection->addAction( "filter_select", mFilterAction );
   mFilterAction->setEditable( false );
   connect( mFilterAction, SIGNAL(triggered(int)),
