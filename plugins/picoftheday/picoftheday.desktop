@@ -46,6 +46,7 @@ Comment[pt_BR]=Este plug-in oferece a Imagem do Dia da Wikipedia
 Comment[sv]=Insticksprogrammet tillhandahåller Wikipedias 'Dagens bild'
 Comment[tr]=Bu eklenti Wikipedia'dan Günün Resmini getirir
 Comment[uk]=Цей додаток працює з «Зображеннями дня» з Вікіпедії
+Comment[x-test]=xxThis plugin provides the Wikipedia Picture of the Dayxx
 Comment[zh_CN]=此插件提供对 Wikipedia 每日图片的支持
 Comment[zh_TW]=此外掛程式提供連結到維基百科中的「本日圖片」。
 X-KDE-ServiceTypes=Calendar/Plugin,Calendar/Decoration
