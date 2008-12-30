@@ -38,6 +38,7 @@ class QStyleOptionViewItem;
 class QStyleOptionProgressBar;
 class QSize;
 class QEvent;
+class QTextDocument;
 
 /**
   This delegate is responsible for displaying progress bars for the completion
@@ -181,6 +182,8 @@ class KOTodoRichTextDelegate : public QStyledItemDelegate
                 const QModelIndex &index ) const;
     QSize sizeHint( const QStyleOptionViewItem &option,
                     const QModelIndex &index ) const;
+  private:
+    QTextDocument *m_textDoc;
 };
 
 #endif
