@@ -443,7 +443,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
 
     void editCanceled( Incidence * );
 
-    void updateView( const QDate &start, const QDate &end );
+    void updateView( const QDate &start, const QDate &end, const bool updateTodos );
     void updateView();
 
     void updateUnmanagedViews();

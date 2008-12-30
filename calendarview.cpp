@@ -804,9 +804,11 @@ void CalendarView::changeIncidenceDisplay( Incidence *incidence, int action )
   }
 }
 
-void CalendarView::updateView( const QDate &start, const QDate &end )
+void CalendarView::updateView( const QDate &start, const QDate &end, const bool updateTodos = true )
 {
-  mTodoList->updateView();
+  if ( updateTodos )
+    mTodoList->updateView();
+
   mViewManager->updateView( start, end );
   mDateNavigator->updateView();
 }
@@ -1672,7 +1674,7 @@ void CalendarView::checkClipboard()
 void CalendarView::showDates( const DateList &selectedDates )
 {
   if ( mViewManager->currentView() ) {
-    updateView( selectedDates.first(), selectedDates.last() );
+    updateView( selectedDates.first(), selectedDates.last(), false );
   } else {
     mViewManager->showAgendaView();
   }
