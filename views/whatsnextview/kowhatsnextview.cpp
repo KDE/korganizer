@@ -336,14 +336,14 @@ void KOWhatsNextView::showIncidence( const QString &uid )
 {
   Incidence *incidence = 0;
 
-  if ( uid.startsWith( "event://" ) ) {
-    incidence = calendar()->incidence( uid.mid( 8 ) );
-  } else if ( uid.startsWith( "todo://" ) ) {
-    incidence = calendar()->incidence( uid.mid( 7 ) );
+  if ( uid.startsWith( "event:" ) ) {
+    incidence = calendar()->incidence( uid.mid( 6 ) );
+  } else if ( uid.startsWith( "todo:" ) ) {
+    incidence = calendar()->incidence( uid.mid( 5 ) );
   }
   if ( incidence ) {
     emit showIncidenceSignal( incidence );
-  }
+  } 
 }
 
 #include "kowhatsnextview.moc"
