@@ -416,20 +416,23 @@ void KOViewManager::showAgendaView()
 
 void KOViewManager::showDayView()
 {
+  QDate date = mMainView->activeDate();
   showAgendaView();
-  mMainView->dateNavigator()->selectDates( 1 );
+  mMainView->dateNavigator()->selectDate( date );
 }
 
 void KOViewManager::showWorkWeekView()
 {
+  QDate date = mMainView->activeDate();
   showAgendaView();
-  mMainView->dateNavigator()->selectWorkWeek();
+  mMainView->dateNavigator()->selectWorkWeek( date );
 }
 
 void KOViewManager::showWeekView()
 {
+  QDate date = mMainView->activeDate();
   showAgendaView();
-  mMainView->dateNavigator()->selectWeek();
+  mMainView->dateNavigator()->selectWeek( date );
 }
 
 void KOViewManager::showNextXView()
