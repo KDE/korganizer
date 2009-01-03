@@ -21,7 +21,6 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
-//krazy:excludeall=qclasses because we subclass from QComboBox
 
 #include "kcheckcombobox.h"
 
@@ -32,7 +31,7 @@
 #include <QLineEdit>
 #include <QKeyEvent>
 
-KCheckComboBox::KCheckComboBox( QWidget *parent ) : QComboBox( parent )
+KCheckComboBox::KCheckComboBox( QWidget *parent ) : KComboBox( parent )
 {
   mSeparator = QLatin1String( "," );
   mIgnoreHide = false;
@@ -44,7 +43,7 @@ KCheckComboBox::KCheckComboBox( QWidget *parent ) : QComboBox( parent )
   // read-only contents
   setEditable( true );
   lineEdit()->setReadOnly( true );
-  setInsertPolicy( QComboBox::NoInsert );
+  setInsertPolicy( KComboBox::NoInsert );
 
   view()->installEventFilter( this );
   view()->viewport()->installEventFilter( this );
@@ -59,7 +58,7 @@ KCheckComboBox::~KCheckComboBox()
 void KCheckComboBox::hidePopup()
 {
   if ( !mIgnoreHide ) {
-    QComboBox::hidePopup();
+    KComboBox::hidePopup();
   }
   mIgnoreHide = false;
 }
@@ -181,7 +180,7 @@ bool KCheckComboBox::eventFilter( QObject *receiver, QEvent *event )
     default:
       break;
   }
-  return QComboBox::eventFilter( receiver, event );
+  return KComboBox::eventFilter( receiver, event );
 }
 
 void KCheckComboBox::updateCheckedItems( const QModelIndex &topLeft,
