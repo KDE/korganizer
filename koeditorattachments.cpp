@@ -195,7 +195,7 @@ AttachmentEditDialog::AttachmentEditDialog( AttachmentIconItem *item,
   setMainWidget( page );
   setCaption( i18nc( "@title", "Properties for %1",
                      item->label().isEmpty() ? item->uri() : item->label() ) );
-  setButtons( KDialog::Ok | KDialog::Cancel | KDialog::Apply );
+  setButtons( KDialog::Ok | KDialog::Cancel );
   setDefaultButton( KDialog::Ok );
   setModal( modal );
   QVBoxLayout *vbl = new QVBoxLayout( page );
@@ -250,7 +250,6 @@ AttachmentEditDialog::AttachmentEditDialog( AttachmentIconItem *item,
                                         item->attachment()->size(), 0 ) ), page ), 4, 2 );
   }
   vbl->addStretch( 10 );
-  connect( this, SIGNAL(applyClicked()), this, SLOT(slotApply()) );
 }
 
 void AttachmentEditDialog::slotApply()
@@ -325,7 +324,7 @@ class AttachmentIconView : public K3IconView
       QStringList patterns = KMimeType::mimeType( attachment->mimeType() )->patterns();
 
       if ( !patterns.empty() ) {
-        file->setSuffix( QString( patterns.first() ).remove( '*' ) );  
+        file->setSuffix( QString( patterns.first() ).remove( '*' ) );
       }
       file->setAutoRemove( true );
       file->open();
@@ -798,13 +797,13 @@ void KOEditorAttachments::slotCopy()
 
 void KOEditorAttachments::slotCut()
 {
-    slotCopy();
-    slotRemove();
+  slotCopy();
+  slotRemove();
 }
 
 void KOEditorAttachments::slotPaste()
 {
-    handlePasteOrDrop( QApplication::clipboard()->mimeData() );
+  handlePasteOrDrop( QApplication::clipboard()->mimeData() );
 }
 
 void KOEditorAttachments::selectionChanged()
