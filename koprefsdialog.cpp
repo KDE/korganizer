@@ -1447,17 +1447,28 @@ void KOPrefsDialogPlugins::selectionChanged()
     mConfigureButton->setEnabled( item->checkState(0) == Qt::Checked );
   }
 
+  bool hasPosition = false;
   if ( item->service()->hasServiceType( KOrg::CalendarDecoration::Decoration::serviceType() ) ) {
     QString decoration = item->service()->desktopEntryName();
     if ( mDecorationsAtMonthViewTop.contains( decoration ) ) {
       mPositionMonthTop->setChecked( true );
+      hasPosition = true;
     }
     if ( mDecorationsAtAgendaViewTop.contains( decoration ) ) {
       mPositionAgendaTop->setChecked( true );
+      hasPosition = true;
     }
     if ( mDecorationsAtAgendaViewBottom.contains( decoration ) ) {
       mPositionAgendaBottom->setChecked( true );
+      hasPosition = true;
     }
+
+    if ( !hasPosition ) {
+      // no position has been selected, so default to Agenda Top
+      mDecorationsAtAgendaViewTop << decoration;
+      mPositionAgendaTop->setChecked( true );
+    }
+
     mPositioningGroupBox->setEnabled( item->checkState(0) == Qt::Checked );
     mPositioningGroupBox->show();
   }
