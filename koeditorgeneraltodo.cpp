@@ -67,26 +67,25 @@ KOEditorGeneralTodo::~KOEditorGeneralTodo()
 void KOEditorGeneralTodo::finishSetup()
 {
   QWidget::setTabOrder( mSummaryEdit, mLocationEdit );
-  QWidget::setTabOrder( mLocationEdit, mStartCheck );
+  QWidget::setTabOrder( mLocationEdit, mCategoriesButton );
+  QWidget::setTabOrder( mCategoriesButton, mStartCheck );
   QWidget::setTabOrder( mStartCheck, mStartDateEdit );
   QWidget::setTabOrder( mStartDateEdit, mStartTimeEdit );
   QWidget::setTabOrder( mStartTimeEdit, mDueCheck );
+  QWidget::setTabOrder( mDueCheck, mTimeZoneComboStart );
+  QWidget::setTabOrder( mTimeZoneComboStart, mDueCheck );
   QWidget::setTabOrder( mDueCheck, mDueDateEdit );
   QWidget::setTabOrder( mDueDateEdit, mDueTimeEdit );
-  QWidget::setTabOrder( mDueTimeEdit, mTimeButton );
-  QWidget::setTabOrder( mTimeButton, mCompletedCombo );
+  QWidget::setTabOrder( mDueTimeEdit, mTimeZoneComboDue );
+  QWidget::setTabOrder( mTimeZoneComboDue, mTimeButton );
+  QWidget::setTabOrder( mTimeButton, mSecrecyCombo );
+  QWidget::setTabOrder( mSecrecyCombo, mCompletedCombo );
   QWidget::setTabOrder( mCompletedCombo, mPriorityCombo );
   QWidget::setTabOrder( mPriorityCombo, mAlarmButton );
   QWidget::setTabOrder( mAlarmButton, mAlarmTimeEdit );
   QWidget::setTabOrder( mAlarmTimeEdit, mAlarmIncrCombo );
-//   QWidget::setTabOrder( mAlarmIncrCombo, mAlarmSoundButton );
   QWidget::setTabOrder( mAlarmIncrCombo, mAlarmEditButton );
-//   QWidget::setTabOrder( mAlarmSoundButton, mAlarmProgramButton );
-//   QWidget::setTabOrder( mAlarmProgramButton, mDescriptionEdit );
   QWidget::setTabOrder( mAlarmEditButton, mDescriptionEdit );
-  QWidget::setTabOrder( mDescriptionEdit, mCategoriesButton );
-  QWidget::setTabOrder( mCategoriesButton, mSecrecyCombo );
-//  QWidget::setTabOrder( mSecrecyCombo, mDescriptionEdit );
 
   mSummaryEdit->setFocus();
 }
