@@ -62,11 +62,10 @@ KDateNavigator::KDateNavigator( QWidget *parent )
   connect( mNavigatorBar, SIGNAL(goMonth(int)), SIGNAL(goMonth(int)) );
   connect( mNavigatorBar, SIGNAL(goYear(int)), SIGNAL(goYear(int)) );
 
-  int i;
   QString generalFont = KGlobalSettings::generalFont().family();
 
   // Set up the heading fields.
-  for ( i = 0; i < 7; i++ ) {
+  for ( int i=0; i < 7; i++ ) {
     mHeadings[i] = new QLabel( this );
     mHeadings[i]->setFont( QFont( generalFont, 10, QFont::Bold ) );
     mHeadings[i]->setAlignment( Qt::AlignCenter );
@@ -75,7 +74,7 @@ KDateNavigator::KDateNavigator( QWidget *parent )
   }
 
   // Create the weeknumber labels
-  for ( i = 0; i < 6; i++ ) {
+  for ( int i=0; i < 6; i++ ) {
     mWeeknos[i] = new QLabel( this );
     mWeeknos[i]->setAlignment( Qt::AlignCenter );
     mWeeknos[i]->setFont( QFont( generalFont, 10 ) );
@@ -145,7 +144,6 @@ QDate KDateNavigator::startDate() const
   // Find the first day of the week of the current month.
   QDate dayone( mBaseDate.year(), mBaseDate.month(), mBaseDate.day() );
   int d2 = KOGlobals::self()->calendarSystem()->day( dayone );
-  //int di = d1 - d2 + 1;
   dayone = dayone.addDays( -d2 + 1 );
 
   const KCalendarSystem *calsys = KOGlobals::self()->calendarSystem();
@@ -178,7 +176,7 @@ void KDateNavigator::updateDates()
   const KCalendarSystem *calsys = KOGlobals::self()->calendarSystem();
 
   // set the week numbers.
-  for ( int i = 0; i < 6; i++ ) {
+  for ( int i=0; i < 6; i++ ) {
     // Use QDate's weekNumber method to determine the week number!
     QDate dtStart = mDayMatrix->getDate( i * 7 );
     QDate dtEnd = mDayMatrix->getDate( ( i + 1 ) * 7 - 1 );
@@ -219,7 +217,7 @@ void KDateNavigator::updateConfig()
 {
   int day;
   int weekstart = KGlobal::locale()->weekStartDay();
-  for ( int i = 0; i < 7; i++ ) {
+  for ( int i=0; i < 7; i++ ) {
     day = weekstart + i <= 7 ? weekstart + i : ( weekstart + i ) % 7;
     QString dayName =
       KOGlobals::self()->calendarSystem()->weekDayName( day, KCalendarSystem::ShortDayName );
@@ -230,7 +228,8 @@ void KDateNavigator::updateConfig()
       KOGlobals::self()->calendarSystem()->weekDayName( day, KCalendarSystem::LongDayName );
     mHeadings[i]->setText( dayName );
     mHeadings[i]->setToolTip( i18n( "%1", longDayName ) );
-    mHeadings[i]->setWhatsThis( i18n( "A column header of the %1 dates in the month.", longDayName ) );
+    mHeadings[i]->setWhatsThis(
+      i18n( "A column header of the %1 dates in the month.", longDayName ) );
   }
 
   // FIXME: Use actual config setting here
@@ -239,7 +238,7 @@ void KDateNavigator::updateConfig()
 
 void KDateNavigator::setShowWeekNums( bool enabled )
 {
-  for ( int i = 0; i < 6; i++ ) {
+  for ( int i=0; i < 6; i++ ) {
     if( enabled ) {
       mWeeknos[i]->show();
     } else {
@@ -254,9 +253,9 @@ void KDateNavigator::selectMonthHelper( int monthDifference )
                                             mBaseDate, monthDifference );
 
   DateList newSelection = mSelectedDates;
-  for ( int i = 0; i < mSelectedDates.count(); i++ ) {
-    newSelection[i] = KOGlobals::self()->calendarSystem()->addMonths(
-                                      newSelection[i], monthDifference );
+  for ( int i=0; i < mSelectedDates.count(); i++ ) {
+    newSelection[i] =
+      KOGlobals::self()->calendarSystem()->addMonths( newSelection[i], monthDifference );
   }
 
   setBaseDate( baseDateNextMonth );
@@ -304,7 +303,7 @@ bool KDateNavigator::eventFilter ( QObject *o, QEvent *e )
 {
   if ( e->type() == QEvent::MouseButtonPress ) {
     int i;
-    for ( i = 0; i < 6; ++i ) {
+    for ( i=0; i < 6; ++i ) {
       if ( o == mWeeknos[ i ] ) {
         QDate weekstart = mDayMatrix->getDate( i * 7 );
         emit weekClicked( weekstart );
