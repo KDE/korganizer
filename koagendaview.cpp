@@ -1040,9 +1040,15 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
 
   // FIXME: use a visitor here
   if ( incidence->type() == "Event" ) {
-    incidence->setDtStart( startDt.toTimeSpec( incidence->dtStart().timeSpec() ) );
+    /* setDtEnd() must be called before setDtStart(), otherwise, when moving events,
+     * CalendarLocal::incidenceUpdated() will not remove the old hash and that causes
+     * the event to be shown in the old date also (bug #179157).
+     *
+     * TODO: We need a better hashing mechanism for CalendarLocal.
+     */
     ( static_cast<Event*>( incidence ) )->setDtEnd(
       endDt.toTimeSpec( incidence->dtEnd().timeSpec() ) );
+    incidence->setDtStart( startDt.toTimeSpec( incidence->dtStart().timeSpec() ) );
   } else if ( incidence->type() == "Todo" ) {
     Todo *td = static_cast<Todo*>( incidence );
     if ( td->hasStartDate() ) {
