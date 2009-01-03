@@ -176,7 +176,7 @@ class KOTodoModel : public QAbstractItemModel
     /** This IncidenceChanger is used to change todos */
     IncidenceChangerBase *mChanger;
 
-    /** Display the todos without hirarchy? */
+    /** Display the todos without hierarchy? */
     bool mFlatView;
 
 #ifndef KORG_NODND

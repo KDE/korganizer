@@ -249,7 +249,7 @@ void KOTodoModel::reloadTodos()
   // delete all TodoTreeNodes which are still marked for deletion
   mRootNode->deleteMarked();
 
-  // move todos if they changed their place in the hirarchy
+  // move todos if they changed their place in the hierarchy
   Q_FOREACH ( TodoTreeNode *tmp, changedNodes ) {
     const QModelIndex miChanged = moveIfParentChanged( tmp, tmp->mTodo, true );
     emit dataChanged( miChanged, miChanged.sibling( miChanged.row(), mColumnCount - 1 ) );
