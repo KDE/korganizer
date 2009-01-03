@@ -107,7 +107,7 @@ void KOEditorGeneralEvent::initTime( QWidget *parent, QBoxLayout *topLayout )
 
   mStartDateLabel = new QLabel( i18nc( "@label event start time", "&Start:" ), timeGroupBox );
   layoutTimeBox->addWidget( mStartDateLabel, 0, 0 );
-  layoutTimeBox->setColStretch( 3, 1 );
+  layoutTimeBox->setColumnStretch( 3, 1 );
 
   mStartDateEdit = new KPIM::KDateEdit( timeGroupBox );
   layoutTimeBox->addWidget( mStartDateEdit, 0, 1 );
@@ -169,7 +169,7 @@ void KOEditorGeneralEvent::initTime( QWidget *parent, QBoxLayout *topLayout )
            this, SLOT(endSpecChanged()) );
 
   QBoxLayout *recLayout = new QHBoxLayout();
-  layoutTimeBox->addMultiCellLayout( recLayout, 2, 2, 1, 4 );
+  layoutTimeBox->addLayout( recLayout, 2, 1, 1, 3 );
   mRecurrenceSummary = new QLabel( QString(), timeGroupBox );
   recLayout->addWidget( mRecurrenceSummary );
   QPushButton *recEditButton = new QPushButton( i18n( "Edit..." ), timeGroupBox );
@@ -180,7 +180,7 @@ void KOEditorGeneralEvent::initTime( QWidget *parent, QBoxLayout *topLayout )
   QLabel *label = new QLabel( i18n( "Reminder:" ), timeGroupBox );
   layoutTimeBox->addWidget( label, 3, 0 );
   QBoxLayout *alarmLineLayout = new QHBoxLayout();
-  layoutTimeBox->addMultiCellLayout( alarmLineLayout, 3, 3, 1, 3 );
+  layoutTimeBox->addLayout( alarmLineLayout, 3, 1, 1, 3 );
   initAlarm( timeGroupBox, alarmLineLayout );
   alarmLineLayout->addStretch( 1 );
 
@@ -215,11 +215,10 @@ void KOEditorGeneralEvent::initClass( QWidget *parent, QBoxLayout *topLayout )
 
 void KOEditorGeneralEvent::initInvitationBar( QWidget *parent, QBoxLayout *layout )
 {
-  QBoxLayout *topLayout = new QHBoxLayout( layout );
   mInvitationBar = new QFrame( parent );
-  topLayout->addWidget( mInvitationBar );
+  layout->addWidget( mInvitationBar );
 
-  QBoxLayout *barLayout = new QHBoxLayout( mInvitationBar );
+  QHBoxLayout *barLayout = new QHBoxLayout( mInvitationBar );
   barLayout->setSpacing( layout->spacing() );
   QLabel *label =
     new QLabel( i18n( "You have not yet definitely responded to this invitation." ),
