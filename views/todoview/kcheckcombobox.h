@@ -21,6 +21,7 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
+//krazy:excludeall=qclasses because we subclass from QComboBox
 
 #ifndef KCHECKCOMBOBOX_H
 #define KCHECKCOMBOBOX_H
