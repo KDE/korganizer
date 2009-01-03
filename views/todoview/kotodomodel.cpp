@@ -29,6 +29,7 @@
 #include "korganizer/incidencechangerbase.h"
 
 #include <kcal/calendar.h>
+#include <kcal/calformat.h>
 #include <kcal/incidence.h>
 #include <kcal/incidenceformatter.h>
 #include <kcal/todo.h>
@@ -337,7 +338,7 @@ void KOTodoModel::copyTodo( const QModelIndex &index, const QDate &date )
   TodoTreeNode *node = static_cast<TodoTreeNode *>( index.internalPointer() );
   Todo *todo = node->mTodo->clone();
 
-  todo->setUid( QString() );
+  todo->setUid( CalFormat::createUniqueId() );
 
   KDateTime due = todo->dtDue();
   due.setDate( date );
