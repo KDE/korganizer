@@ -399,6 +399,7 @@ void KOTodoCategoriesDelegate::setCalendar( Calendar *cal )
 KOTodoRichTextDelegate::KOTodoRichTextDelegate( QObject *parent )
   : QStyledItemDelegate( parent )
 {
+  m_textDoc = new QTextDocument( this );
 }
 
 KOTodoRichTextDelegate::~KOTodoRichTextDelegate()
@@ -442,16 +443,15 @@ void KOTodoRichTextDelegate::paint( QPainter *painter,
       painter->drawRect( textRect.adjusted( 0, 0, -1, -1 ) );
     }
 
-    QTextDocument tmp;
-    tmp.setHtml( index.data().toString() );
+    m_textDoc->setHtml( index.data().toString() );
 
     painter->save();
     painter->translate( textRect.topLeft() );
 
     QRect tmpRect = textRect;
     tmpRect.moveTo( 0, 0 );
-    tmp.setTextWidth( tmpRect.width() );
-    tmp.drawContents( painter, tmpRect );
+    m_textDoc->setTextWidth( tmpRect.width() );
+    m_textDoc->drawContents( painter, tmpRect );
 
     painter->restore();
   } else {
@@ -464,9 +464,8 @@ QSize KOTodoRichTextDelegate::sizeHint( const QStyleOptionViewItem &option,
 {
   QSize ret = QStyledItemDelegate::sizeHint( option, index );
   if ( index.data( KOTodoModel::IsRichTextRole ).toBool() ) {
-    QTextDocument tmp;
-    tmp.setHtml( index.data().toString() );
-    ret = ret.expandedTo( tmp.size().toSize() );
+    m_textDoc->setHtml( index.data().toString() );
+    ret = ret.expandedTo( m_textDoc->size().toSize() );
   }
   // limit height to max. 2 lines
   // TODO add graphical hint when truncating! make configurable height?
