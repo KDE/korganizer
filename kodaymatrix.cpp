@@ -44,7 +44,7 @@
 #include <klocale.h>
 #include <kiconloader.h>
 #include <kcalendarsystem.h>
-#ifndef NODND
+#ifndef KORG_NODND
 #include <kmenu.h>
 #endif
 
@@ -61,7 +61,7 @@
 #include <QDragEnterEvent>
 #include <QMouseEvent>
 #include <QToolTip>
-#ifndef NODND
+#ifndef KORG_NODND
 #include <QCursor>
 #endif
 
