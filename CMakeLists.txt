@@ -1,3 +1,26 @@
+#
+# The following macros can be defined to alter KOrganizer behavior.
+# (if desired, use add_definitions() to define them)
+#
+# KORG_NOARCHIVE - turns-off the Archive Dialog which allows incidences to be
+#                  archived/deleted. No idea why you would want to define this.
+#
+# KORG_NODND     - turns-off the ability to Drag-and-Drop incidences in the
+#                  views or between a view and the navigator. Probably necessary
+#                  if KOrganizer is being used on small form factor devices.
+#
+# KORG_NOKABC    - turns-off using the kabc library for contacts -- so there
+#                  will be no ability to add attendees or send invitations.
+#                  No idea why you wouldn't have access to the kabc library.
+#
+# KORG_NOPLUGINS - turns-off plugins (decoration plugins) in views.
+#                  No idea why you'd want to do this, especially since
+#                  printing and other plugins are used unconditionally.
+#
+# KORG_NOPRINTER - turns-off printing support. Useful if KOrganizer is used
+#                  in a situation where no printers would be accessible.
+#
+
 project(korganizer)
 add_subdirectory( tests )
 
