@@ -26,11 +26,10 @@
 #define KOMAILCLIENT_H
 
 #include <QString>
-#include <QByteArray>
 
 class KUrl;
 namespace KCal {
-class IncidenceBase;
+  class IncidenceBase;
 }
 using namespace KCal;
 
@@ -40,24 +39,26 @@ class KOMailClient
     KOMailClient();
     virtual ~KOMailClient();
 
-    bool mailAttendees(IncidenceBase *,const QString &attachment=QString());
-    bool mailOrganizer(IncidenceBase *, const QString &attachment = QString(), const QString &sub = QString() );
-    bool mailTo(IncidenceBase *,const QString &recipients,const QString &attachment=QString());
+    bool mailAttendees( IncidenceBase *, const QString &attachment=QString() );
+    bool mailOrganizer( IncidenceBase *, const QString &attachment=QString(),
+                        const QString &sub=QString() );
+    bool mailTo( IncidenceBase *, const QString &recipients, const QString &attachment=QString() );
 
   protected:
-    /** Send mail with specified from, to and subject field and body as text. If
-     * bcc is set, send a blind carbon copy to the sender from
-         @param from sender of the mail invitation
-         @param to receiver of the invitation
-         @param subject subject of the invitation (not relevant for
-                        scheduling purposes)
-         @param body Body of the message
-         @param bcc optional bcc for the message
-         @param attachment optional attachment (raw data)
+    /**
+     * Sends mail with specified from, to and subject field and body as text.
+     * If bcc is set, send a blind carbon copy to the sender from
+     * @param from sender of the mail invitation
+     *    @param to receiver of the invitation
+     *   @param subject subject of the invitation (not relevant for
+     *                  scheduling purposes)
+     *   @param body Body of the message
+     *   @param bcc optional bcc for the message
+     *   @param attachment optional attachment (raw data)
      */
-    bool send(const QString &from,const QString &to,const QString &subject,
-              const QString &body,bool bcc=false,
-              const QString &attachment=QString());
+    bool send( const QString &from, const QString &to, const QString &subject,
+               const QString &body, bool bcc=false,
+               const QString &attachment=QString() );
 };
 
 #endif
