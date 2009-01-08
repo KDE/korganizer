@@ -453,17 +453,19 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
     }
 
     int newBottom = drawBoxWithCaption( p, descriptionBox, i18n( "Description:" ),
-                        (*it)->description(), /*sameLine=*/false,
-                        /*expand=*/false, captionFont, textFont );
-    if (mShowNoteLines) 
+                                        (*it)->description(), /*sameLine=*/false,
+                                        /*expand=*/false, captionFont, textFont );
+
+    if ( mShowNoteLines ) {
       drawNoteLines( p, descriptionBox, newBottom );
+    }
 
     if ( mShowSubitemsNotes ) {
       if ( (*it)->relations().isEmpty() || (*it)->type() != "Todo" ) {
         int notesPosition = drawBoxWithCaption( p, notesBox, i18n( "Notes:" ),
-                         QString(), /*sameLine=*/false, /*expand=*/false,
-                         captionFont, textFont );
-          drawNoteLines( p, notesBox, notesPosition );
+                                                QString(), /*sameLine=*/false,
+                                                /*expand=*/false, captionFont, textFont );
+        drawNoteLines( p, notesBox, notesPosition );
       } else {
         Incidence::List relations = (*it)->relations();
         QString subitemCaption;
@@ -777,7 +779,7 @@ void CalPrintDay::print( QPainter &p, int width, int height )
       } else {
         title = i18nc( "date from-\nto", "%1 -\n%2", line1, line2 );
       }
-      drawHeader(p, title, mFromDate, QDate(), headerBox );
+      drawHeader( p, title, mFromDate, QDate(), headerBox );
       drawDays( p, mFromDate, mToDate, daysBox, mSingleLineLimit, mShowNoteLines );
       drawFooter( p, daysBox );
     }

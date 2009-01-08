@@ -409,7 +409,7 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
       @param singleLineLimit Whether Incidence text wraps or truncates.
       @param showNoteLines Whether note lines are printed.
     */
-    void drawDays( QPainter &p, const QDate &start, const QDate& end, const QRect &box,
+    void drawDays( QPainter &p, const QDate &start, const QDate &end, const QRect &box,
                    bool singleLineLimit, bool showNoteLines );
     /**
       Draw the timetable view of the given time range from fromDate to toDate.

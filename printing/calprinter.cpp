@@ -209,7 +209,8 @@ CalPrintDialog::CalPrintDialog( KOrg::PrintPlugin::List plugins, QWidget *parent
   // First insert the config widgets into the widget stack. This possibly assigns
   // proper ids (when two plugins have the same sortID), so store them in a map
   // and use these new IDs to later sort the plugins for the type selection.
-  for ( KOrg::PrintPlugin::List::ConstIterator it = plugins.constBegin(); it != plugins.constEnd(); ++it ) {
+  for ( KOrg::PrintPlugin::List::ConstIterator it=plugins.constBegin();
+        it != plugins.constEnd(); ++it ) {
     int newid = mConfigArea->insertWidget( (*it)->sortID(), (*it)->configWidget( mConfigArea ) );
     mPluginIDs[newid] = (*it);
   }
