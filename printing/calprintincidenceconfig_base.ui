@@ -7,101 +7,98 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>488</width>
-    <height>248</height>
+    <width>442</width>
+    <height>273</height>
    </rect>
   </property>
-  <widget class="QWidget" name="layoutWidget" >
-   <property name="geometry" >
-    <rect>
-     <x>0</x>
-     <y>30</y>
-     <width>481</width>
-     <height>211</height>
-    </rect>
-   </property>
-   <layout class="QGridLayout" >
-    <item row="0" column="0" >
-     <widget class="Q3ButtonGroup" name="mComponentsGroup" >
-      <property name="title" >
-       <string>Include Information</string>
-      </property>
-      <property name="orientation" >
-       <enum>Qt::Vertical</enum>
-      </property>
-      <property name="selectedId" stdset="0" >
-       <number>-1</number>
-      </property>
-      <widget class="QWidget" name="layoutWidget" >
-       <property name="geometry" >
-        <rect>
-         <x>10</x>
-         <y>20</y>
-         <width>311</width>
-         <height>131</height>
-        </rect>
-       </property>
-       <layout class="QGridLayout" >
-        <item row="0" column="0" >
-         <widget class="QCheckBox" name="mShowDetails" >
-          <property name="text" >
-           <string>Detai&amp;ls (visiblility, secrecy, etc.)</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0" >
-         <widget class="QCheckBox" name="mShowAttendees" >
-          <property name="text" >
-           <string>&amp;Attendees</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0" >
-         <widget class="QCheckBox" name="mShowSubitemsNotes" >
-          <property name="text" >
-           <string>&amp;Notes, Subitems</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="0" >
-         <widget class="QCheckBox" name="mShowAttachments" >
-          <property name="text" >
-           <string>Attach&amp;ments</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </widget>
-    </item>
-    <item row="1" column="0" >
-     <widget class="QCheckBox" name="mColors" >
-      <property name="whatsThis" >
-       <string>If you want to use colors to distinguish certain categories on the print, check this option.</string>
-      </property>
-      <property name="text" >
-       <string>&amp;Use colors</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QLabel" name="label" >
-   <property name="geometry" >
-    <rect>
-     <x>10</x>
-     <y>0</y>
-     <width>171</width>
-     <height>18</height>
-    </rect>
-   </property>
-   <property name="text" >
-    <string>&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
+  <layout class="QGridLayout" name="gridLayout" >
+   <item row="0" column="0" >
+    <widget class="QLabel" name="label" >
+     <property name="text" >
+      <string>&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
 p, li { white-space: pre-wrap; }
 &lt;/style>&lt;/head>&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;">
 &lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-weight:600;">Print incidence options:&lt;/span>&lt;/p>&lt;/body>&lt;/html></string>
-   </property>
-  </widget>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" >
+    <widget class="Q3ButtonGroup" name="mComponentsGroup" >
+     <property name="title" >
+      <string>Include Information</string>
+     </property>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="selectedId" stdset="0" >
+      <number>-1</number>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout" >
+      <item>
+       <widget class="QCheckBox" name="mShowDetails" >
+        <property name="text" >
+         <string>Detai&amp;ls (visiblility, secrecy, etc.)</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="mShowAttendees" >
+        <property name="text" >
+         <string>&amp;Attendees</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="mShowSubitemsNotes" >
+        <property name="text" >
+         <string>&amp;Notes, Subitems</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="mShowAttachments" >
+        <property name="text" >
+         <string>Attach&amp;ments</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="2" column="0" >
+    <widget class="QCheckBox" name="mShowNoteLines" >
+     <property name="whatsThis" >
+      <string>Draw note lines in empty area</string>
+     </property>
+     <property name="text" >
+      <string>Show Note &amp;Lines</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0" >
+    <widget class="QCheckBox" name="mColors" >
+     <property name="whatsThis" >
+      <string>If you want to use colors to distinguish certain categories on the print, check this option.</string>
+     </property>
+     <property name="text" >
+      <string>&amp;Use colors</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0" >
+    <spacer name="verticalSpacer" >
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0" >
+      <size>
+       <width>20</width>
+       <height>34</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+  </layout>
  </widget>
  <layoutdefault spacing="6" margin="11" />
  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
@@ -113,6 +110,14 @@ p, li { white-space: pre-wrap; }
    <container>1</container>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>mShowDetails</tabstop>
+  <tabstop>mShowAttendees</tabstop>
+  <tabstop>mShowSubitemsNotes</tabstop>
+  <tabstop>mShowAttachments</tabstop>
+  <tabstop>mShowNoteLines</tabstop>
+  <tabstop>mColors</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

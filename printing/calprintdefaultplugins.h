@@ -3,6 +3,7 @@
 
   Copyright (c) 1998 Preston Brown <pbrown@kde.org>
   Copyright (C) 2003 Reinhold Kainhofer <reinhold@kainhofer.com>
+  Copyright (C) 2008 Ron Goodheart <rong.dev@gmail.com>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -87,6 +88,7 @@ class CalPrintIncidence : public CalPrintPluginBase
     bool mShowSubitemsNotes;
     bool mShowAttendees;
     bool mShowAttachments;
+    bool mShowNoteLines;
 };
 
 class CalPrintDay : public CalPrintPluginBase
@@ -121,7 +123,13 @@ class CalPrintDay : public CalPrintPluginBase
     virtual void setDateRange( const QDate &from, const QDate &to );
 
   protected:
+    enum eDayPrintType {
+      Filofax=0,
+      Timetable
+    } mDayPrintType;
     QTime mStartTime, mEndTime;
+    bool mIncludeDescription;
+    bool mSingleLineLimit;
     bool mIncludeTodos;
     bool mIncludeAllEvents;
 };
@@ -169,6 +177,7 @@ class CalPrintWeek : public CalPrintPluginBase
       SplitWeek
     } mWeekPrintType;
     QTime mStartTime, mEndTime;
+    bool mSingleLineLimit;
     bool mIncludeTodos;
 };
 

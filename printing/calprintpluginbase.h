@@ -3,6 +3,7 @@
 
   Copyright (c) 1998 Preston Brown <pbrown@kde.org>
   Copyright (C) 2003 Reinhold Kainhofer <reinhold@kainhofer.com>
+  Copyright (C) 2008 Ron Goodheart <rong.dev@gmail.com>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -260,13 +261,15 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
       @param box coordinates of the title bar
       @param expand Whether to expand the box vertically to fit the
                     whole title in it.
+      @param backColor background color for the header box.
       @return The bottom of the printed box. If expand==false, this
               is box.bottom, otherwise it is larger than box.bottom
               and matches the y-coordinate of the surrounding rectangle.
     */
     int drawHeader( QPainter &p, const QString &title,
                      const QDate &month1, const QDate &month2,
-                     const QRect &box, bool expand = false );
+                     const QRect &box, bool expand = false,
+                     QColor backColor = QColor() );
     /**
       Draw a small calendar with the days of a month into the given area.
       Used for example in the title bar of the sheet.
@@ -350,16 +353,19 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
       @param toTime End of the time range to be printed. Might be adjusted
                    to include all events if expandable==true
       @param box coordinates of the agenda day box.
+      @param includeDescription Whether to print the event description as well.
     */
     void drawAgendaDayBox( QPainter &p, Event::List &eventList,
                            const QDate &qd, bool expandable,
                            QTime &fromTime, QTime &toTime,
-                           const QRect &box );
+                           const QRect &box,
+                           bool includeDescription );
 
     void drawAgendaItem( PrintCellItem *item, QPainter &p,
                          const KDateTime &startPrintDate,
                          const KDateTime &endPrintDate,
-                         float minlen, const QRect &box );
+                         float minlen, const QRect &box,
+                         bool includeDescription );
 
     /**
       Draw the box containing a list of all events of the given day (with their times,
@@ -373,12 +379,14 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
       @param printRecurDaily Whether daily recurring incidences should be printed.
       @param printRecurWeekly Whether weekly recurring incidences should be printed.
       @param singleLineLimit Whether Incidence text wraps or truncates.
+      @param showNoteLines Whether note lines are printed.
     */
     void drawDayBox( QPainter &p, const QDate &qd,
                      const QRect &box,
                      bool fullDate = false, bool printRecurDaily = true,
                      bool printRecurWeekly = true,
-                     bool singleLineLimit = true );
+                     bool singleLineLimit = true,
+                     bool showNoteLines = false );
     /**
       Draw the week (filofax) table of the week containing the date qd. The first
       three days of the week will be shown in the first column (using drawDayBox),
@@ -387,9 +395,22 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
       @param p QPainter of the printout
       @param qd Arbitrary date within the week to be printed.
       @param box coordinates of the week box.
+      @param singleLineLimit Whether Incidence text wraps or truncates.
+      @param showNoteLines Whether note lines are printed.
     */
     void drawWeek( QPainter &p, const QDate &qd,
-                   const QRect &box );
+                   const QRect &box, bool singleLineLimit, bool showNoteLines );
+    /**
+      Draw the (filofax) table for a bunch of days, using drawDayBox.
+      @param p QPainter of the printout
+      @param start Start date
+      @param end End date
+      @param box coordinates of the week box.
+      @param singleLineLimit Whether Incidence text wraps or truncates.
+      @param showNoteLines Whether note lines are printed.
+    */
+    void drawDays( QPainter &p, const QDate &start, const QDate& end, const QRect &box,
+                   bool singleLineLimit, bool showNoteLines );
     /**
       Draw the timetable view of the given time range from fromDate to toDate.
       On the left side the time scale is printed (using drawTimeLine), then each
@@ -420,11 +441,13 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
       @param recurDaily Whether daily recurring incidences should be printed.
       @param recurWeekly Whether weekly recurring incidences should be printed.
       @param weeknumbers Whether the week numbers are printed left of each row of the matrix
+      @param singleLineLimit Whether Incidence text wraps or truncates.
+      @param showNoteLines Whether note lines are printed.
       @param box coordinates of the month.
     */
     void drawMonthTable( QPainter &p, const QDate &qd, bool weeknumbers,
                     bool recurDaily, bool recurWeekly, bool singleLineLimit,
-                    const QRect &box );
+                    bool showNoteLines, const QRect &box );
     /**
       Draw a vertical representation of the month containing the date dt. Each
       day gets one line.
@@ -511,13 +534,29 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
     void drawSplitHeaderRight( QPainter &p, const QDate &fd, const QDate &td,
                                const QDate &cd, int width, int height );
 
+    /**
+      Draws dotted lines for notes in a box.
+      @param p QPainter of the printout
+      @param box coordinates of the box where the lines will be placed
+      @param startY starting y-coordinate for the first line
+    */
+    void drawNoteLines( QPainter &p, const QRect &box, int startY );
+    /**
+      Draw footer information, date printed, etc.
+      @param p QPainter of the printout
+      @param box coordinates of the box, footer is placed underneath
+    */
+    void drawFooter( QPainter &p, const QRect &box );
+
   protected:
     void drawIncidence( QPainter &p, const QRect &dayBox, const QString &time,
                         const QString &summary, int &textY,
                         bool singleLineLimit = true );
+    QString toPlainText( const QString &htmlText );
 
   protected:
     bool mUseColors;
+    bool mShowNoteLines;
     int mHeaderHeight;
     int mSubHeaderHeight;
     int mMargin;

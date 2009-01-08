@@ -35,20 +35,16 @@
 #include <kwordwrap.h>
 #include <kconfiggroup.h>
 
-#include <QAbstractTextDocumentLayout>
+#include <QPainter>
+#include <QLayout>
 #include <QFrame>
 #include <QLabel>
-#include <QLayout>
-#include <QPainter>
-#include <QTextDocument>
 #include <QtAlgorithms>
+#include <QTextDocumentFragment>
+#include <qmath.h> // qCeil
 
 #ifndef KORG_NOPRINTER
 
-inline int round( const double x )
-{
-  return int( x > 0.0 ? x + 0.5 : x - 0.5 );
-}
 
 /******************************************************************
  **              The Todo positioning structure                  **
@@ -172,7 +168,6 @@ void CalPrintPluginBase::doLoadConfig()
     mFromDate = group.readEntry( "FromDate", dt ).date();
     mToDate = group.readEntry( "ToDate", dt ).date();
     mUseColors = group.readEntry( "UseColors", true );
-    setUseColors( mUseColors );
     loadConfig();
   } else {
     kDebug() << "No config available in loadConfig!!!!";
@@ -352,8 +347,13 @@ void CalPrintPluginBase::drawBox( QPainter &p, int linewidth, const QRect &rect 
 {
   QPen pen( p.pen() );
   QPen oldpen( pen );
+  // no border
+  if ( linewidth >= 0 ) {
   pen.setWidth( linewidth );
   p.setPen( pen );
+  } else {
+    p.setPen( Qt::NoPen );
+  }
   p.drawRect( rect );
   p.setPen( oldpen );
 }
@@ -448,9 +448,11 @@ int CalPrintPluginBase::drawBoxWithCaption( QPainter &p, const QRect &allbox,
     box.setBottom( captionBox.bottom() + padding() );
   }
 
+  QString contentText = toPlainText(contents);
+
   // Bounding rectangle for the contents (if any), word break, clip on the bottom
   QRect textBox( captionBox );
-  if ( !contents.isEmpty() ) {
+  if ( !contentText.isEmpty() ) {
     if ( sameLine ) {
       textBox.setLeft( captionBox.right() + padding() );
     } else {
@@ -459,7 +461,9 @@ int CalPrintPluginBase::drawBoxWithCaption( QPainter &p, const QRect &allbox,
     textBox.setRight( box.right() );
     textBox.setHeight( 0 );
     p.setFont( textFont );
-    textBox = p.boundingRect( textBox, Qt::WordBreak | Qt::AlignTop | Qt::AlignLeft, contents );
+    textBox = p.boundingRect( textBox,
+                              Qt::WordBreak | Qt::AlignTop | Qt::AlignLeft,
+                              contentText );
     p.setFont( oldFont );
     if ( textBox.bottom() + padding() > box.bottom() ) {
       if ( expand ) {
@@ -473,11 +477,9 @@ int CalPrintPluginBase::drawBoxWithCaption( QPainter &p, const QRect &allbox,
   drawBox( p, BOX_BORDER_WIDTH, box );
   p.setFont( captionFont );
   p.drawText( captionBox, Qt::AlignLeft | Qt::AlignTop | Qt::SingleLine, caption );
-  if ( !contents.isEmpty() ) {
+  if ( !contentText.isEmpty() ) {
     p.setFont( textFont );
-    QTextDocument doc;
-    doc.setHtml( QString( "<b>contents</b>" ) );
-    doc.drawContents( &p, textBox );
+    p.drawText( textBox, Qt::WordBreak | Qt::AlignTop | Qt::AlignLeft, contentText );
   }
   p.setFont( oldFont );
 
@@ -489,7 +491,8 @@ int CalPrintPluginBase::drawBoxWithCaption( QPainter &p, const QRect &allbox,
 }
 
 int CalPrintPluginBase::drawHeader( QPainter &p, const QString &title,
-    const QDate &month1, const QDate &month2, const QRect &allbox, bool expand )
+    const QDate &month1, const QDate &month2, const QRect &allbox,
+    bool expand, QColor backColor )
 {
   // print previous month for month view, print current for to-do, day and week
   int smallMonthWidth = ( allbox.width() / 4 ) - 10;
@@ -514,7 +517,10 @@ int CalPrintPluginBase::drawHeader( QPainter &p, const QString &title,
     }
   }
 
-  drawShadedBox( p, BOX_BORDER_WIDTH, QColor( 232, 232, 232 ), box );
+  if ( !backColor.isValid() )
+    backColor = QColor( 232, 232, 232 );
+
+  drawShadedBox( p, BOX_BORDER_WIDTH, backColor, box );
 
 #if 0
   // current month title left justified, prev month, next month right justified
@@ -775,7 +781,8 @@ int CalPrintPluginBase::drawAllDayBox( QPainter &p, Event::List &eventList,
 void CalPrintPluginBase::drawAgendaDayBox( QPainter &p, Event::List &events,
                                            const QDate &qd, bool expandable,
                                            QTime &fromTime, QTime &toTime,
-                                           const QRect &oldbox )
+                                           const QRect &oldbox,
+                                           bool includeDescription )
 {
   if ( !isWorkingDay( qd ) ) {
     drawShadedBox( p, BOX_BORDER_WIDTH, QColor( 232, 232, 232 ), oldbox );
@@ -789,20 +796,18 @@ void CalPrintPluginBase::drawAgendaDayBox( QPainter &p, Event::List &events,
   Event *event;
 
   if ( expandable ) {
-    QTime tTime;
-    KDateTime::Spec spec = KPIM::KPimPrefs::timeSpec();
-
     // Adapt start/end times to include complete events
     Event::List::ConstIterator it;
     for ( it = events.constBegin(); it != events.constEnd(); ++it ) {
       event = *it;
-      tTime = event->dtStart().toTimeSpec( spec ).time();
-      if ( tTime < fromTime ) {
-        fromTime = tTime;
+      // skip items without times so that we do not adjust for all day items
+      if ( event->allDay() )
+        continue;
+      if ( event->dtStart().time() < fromTime ) {
+        fromTime = event->dtStart().time();
       }
-      tTime = event->dtEnd().toTimeSpec( spec ).time();
-      if ( tTime > toTime ) {
-        toTime = tTime;
+      if ( event->dtEnd().time() > toTime ) {
+        toTime = event->dtEnd().time();
       }
     }
   }
@@ -863,21 +868,22 @@ void CalPrintPluginBase::drawAgendaDayBox( QPainter &p, Event::List &events,
   QListIterator<KOrg::CellItem *> it2( cells );
   while ( it2.hasNext() ) {
     PrintCellItem *placeItem = static_cast<PrintCellItem *>( it2.next() );
-    drawAgendaItem( placeItem, p, startPrintDate, endPrintDate, minlen, box );
+    drawAgendaItem( placeItem, p, startPrintDate, endPrintDate, minlen, box,
+                    includeDescription );
   }
 }
 
 void CalPrintPluginBase::drawAgendaItem( PrintCellItem *item, QPainter &p,
                                    const KDateTime &startPrintDate,
                                    const KDateTime &endPrintDate,
-                                   float minlen, const QRect &box )
+                                   float minlen, const QRect &box,
+                                   bool includeDescription )
 {
   Event *event = item->event();
 
   // start/end of print area for event
-  KDateTime::Spec timeSpec = KPIM::KPimPrefs::timeSpec();
-  KDateTime startTime = item->start().toTimeSpec( timeSpec );
-  KDateTime endTime = item->end().toTimeSpec( timeSpec );
+  KDateTime startTime = item->start();
+  KDateTime endTime = item->end();
   if ( ( startTime < endPrintDate && endTime > startPrintDate ) ||
        ( endTime > startPrintDate && startTime < endPrintDate ) ) {
     if ( startTime < startPrintDate ) {
@@ -888,33 +894,39 @@ void CalPrintPluginBase::drawAgendaItem( PrintCellItem *item, QPainter &p,
     }
     int currentWidth = box.width() / item->subCells();
     int currentX = box.left() + item->subCell() * currentWidth;
-    int currentYPos = int( box.top() + startPrintDate.secsTo( startTime ) * minlen / 60. );
-    int currentHeight = int( box.top() + startPrintDate.secsTo( endTime ) * minlen / 60. ) -
-                        currentYPos;
+    int currentYPos =
+      int( box.top() + startPrintDate.secsTo( startTime ) * minlen / 60. );
+    int currentHeight =
+      int( box.top() + startPrintDate.secsTo( endTime ) * minlen / 60. ) - currentYPos;
 
     QRect eventBox( currentX, currentYPos, currentWidth, currentHeight );
     QString str;
-    if ( !event->location().isEmpty() ) {
-      str = i18nc( "starttime - endtime summary, location",
-                   "%1-%2 %3, %4",
-                   KGlobal::locale()->formatTime( startTime.time() ),
-                   KGlobal::locale()->formatTime( endTime.time() ),
-                   event->summary(),
-                   event->location() );
-    } else {
+    if (event->location().isEmpty()) {
       str = i18nc( "starttime - endtime summary",
                    "%1-%2 %3",
-                   KGlobal::locale()->formatTime( startTime.time() ),
-                   KGlobal::locale()->formatTime( endTime.time() ),
+                   KGlobal::locale()->formatTime( startTime.toLocalZone().time() ),
+                   KGlobal::locale()->formatTime( endTime.toLocalZone().time() ),
                    event->summary() );
+    } else {
+      str = i18nc( "starttime - endtime summary, location",
+                   "%1-%2 %3, %4",
+                   KGlobal::locale()->formatTime( startTime.toLocalZone().time() ),
+                   KGlobal::locale()->formatTime( endTime.toLocalZone().time() ),
+                   event->summary(),
+                   event->location() );
+    }
+    if (includeDescription) {
+      str += '\n';
+      str += toPlainText(event->description());
     }
     showEventBox( p, eventBox, event, str );
   }
 }
 
-void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd, const QRect &box,
-                                     bool fullDate, bool printRecurDaily,
-                                     bool printRecurWeekly, bool singleLineLimit )
+void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
+    const QRect &box,
+    bool fullDate, bool printRecurDaily, bool printRecurWeekly,
+    bool singleLineLimit, bool showNoteLines )
 {
   QString dayNumStr;
   QString ampm;
@@ -936,7 +948,7 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd, const QRect &
   drawShadedBox( p, 0, QColor( 232, 232, 232 ), subHeaderBox );
   drawBox( p, BOX_BORDER_WIDTH, box );
   QString hstring( holidayString( qd ) );
-  QFont oldFont( p.font() );
+  const QFont oldFont( p.font() );
 
   QRect headerTextBox( subHeaderBox );
   headerTextBox.setLeft( subHeaderBox.left()+5 );
@@ -953,46 +965,63 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd, const QRect &
                                              EventSortStartDate,
                                              SortDirectionAscending );
 
-  QString text;
+  QString timeText;
   p.setFont( QFont( "sans-serif", 8 ) );
 
-  int textY = mSubHeaderHeight + 1; // gives the relative y-coord of the next printed entry
+  int textY = mSubHeaderHeight; // gives the relative y-coord of the next printed entry
   Event::List::ConstIterator it;
 
-  for ( it=eventList.constBegin(); it != eventList.constEnd() && textY < box.height(); ++it ) {
+  for ( it = eventList.constBegin(); it != eventList.constEnd() && textY<box.height(); ++it ) {
+    if ( textY >= box.height() )
+      break;
     Event *currEvent = *it;
     if ( ( !printRecurDaily  && currEvent->recurrenceType() == Recurrence::rDaily ) ||
          ( !printRecurWeekly && currEvent->recurrenceType() == Recurrence::rWeekly ) ) {
       continue;
     }
     if ( currEvent->allDay() || currEvent->isMultiDay() ) {
-      text = "";
+      timeText.clear();
     } else {
-      KDateTime::Spec timeSpec = KPIM::KPimPrefs::timeSpec();
-      text = local->formatTime( currEvent->dtStart().toTimeSpec( timeSpec ).time() ) + ' ';
+      timeText = local->formatTime( currEvent->dtStart().toLocalZone().time() ) + ' ';
     }
-    drawIncidence( p, box, text, currEvent->summary(), textY, singleLineLimit );
+    p.save();
+    setCategoryColors(p,currEvent);
+    QString descText = currEvent->summary();
+    if (!currEvent->description().isEmpty()) {
+      descText += (( singleLineLimit ) ? ", " : "\n");
+      descText += currEvent->description();
+    }
+    while (descText.endsWith('\n'))
+      descText.resize(descText.length()-1);
+    drawIncidence( p, box, timeText, descText, textY, singleLineLimit );
+    p.restore();
   }
 
   if ( textY < box.height() ) {
     Todo::List todos = mCalendar->todos( qd );
     Todo::List::ConstIterator it2;
     for ( it2 = todos.constBegin(); it2 != todos.constEnd() && textY<box.height(); ++it2 ) {
+      if ( textY >= box.height() )
+        break;
       Todo *todo = *it2;
       if ( ( !printRecurDaily  && todo->recurrenceType() == Recurrence::rDaily ) ||
            ( !printRecurWeekly && todo->recurrenceType() == Recurrence::rWeekly ) ) {
         continue;
       }
       if ( todo->hasDueDate() && !todo->allDay() ) {
-        KDateTime::Spec spec = KPIM::KPimPrefs::timeSpec();
-        text += KGlobal::locale()->formatTime( todo->dtDue().toTimeSpec( spec ).time() ) + ' ';
+        timeText += KGlobal::locale()->formatTime( todo->dtDue().toLocalZone().time() ) + ' ';
       } else {
-        text = "";
+        timeText.clear();
       }
-      drawIncidence( p, box, text, i18n( "To-do: %1", todo->summary() ),
+      p.save();
+      setCategoryColors(p,todo);
+      drawIncidence( p, box, timeText, i18n( "To-do: %1", todo->summary() ),
                      textY, singleLineLimit );
+      p.restore();
     }
   }
+  if (showNoteLines)
+    drawNoteLines( p, box, box.y() + textY );
 
   p.setFont( oldFont );
 }
@@ -1002,42 +1031,83 @@ void CalPrintPluginBase::drawIncidence( QPainter &p, const QRect &dayBox,
                                         const QString &summary, int &textY,
                                         bool singleLineLimit )
 {
-  kDebug() << "summary =" << summary;
+  kDebug() << "summary =" << summary << ", singleLineLimit=" << singleLineLimit;;
 
-  int flags = Qt::AlignLeft;
+  int flags = Qt::AlignLeft | Qt::OpaqueMode;
   QFontMetrics fm = p.fontMetrics();
-  QRect timeBound = p.boundingRect( dayBox.x() + 2, dayBox.y() + textY,
+  const int borderWidth = p.pen().width() + 1;
+  QRect timeBound = p.boundingRect( dayBox.x() + borderWidth,
+                                    dayBox.y() + textY + 1,
                                     dayBox.width() - 10, fm.lineSpacing(),
                                     flags, time );
-  p.drawText( timeBound, flags, time );
 
   int summaryWidth = time.isEmpty() ? 0 : timeBound.width() + 3;
-  QRect summaryBound = QRect( dayBox.x() + 2 + summaryWidth, dayBox.y() + textY,
-                              dayBox.width() - summaryWidth - 2,
+  QRect summaryBound = QRect( dayBox.x() + borderWidth + summaryWidth,
+                              dayBox.y() + textY + 1,
+                              dayBox.width() - summaryWidth - (borderWidth * 2),
                               dayBox.height() - textY );
 
+  QString summaryText = toPlainText(summary);
+
   int lineCount = 1;
+  QString lineText;
   if ( singleLineLimit ) {
-    p.drawText( summaryBound, flags, summary );
+    lineText = summaryText;
   } else {
-    KWordWrap *ww = KWordWrap::formatText( fm, summaryBound, flags, summary );
-    QString wrappedString = ww->wrappedString();
-    p.drawText( summaryBound, flags, wrappedString );
-    for ( int i=0; i<wrappedString.size(); ++i ) {
-      if ( wrappedString[i] == '\n' ) {
+    KWordWrap *ww = KWordWrap::formatText( fm, summaryBound, flags, summaryText );
+    lineText = ww->wrappedString();
+    delete ww;
+    for ( int i=0; i<lineText.size(); ++i ) {
+      if ( lineText[i] == '\n' ) {
         ++lineCount;
       }
     }
-    delete ww;
   }
-  textY += ( fm.height() * lineCount );
+
+  int totalHeight = (fm.lineSpacing() * lineCount) + borderWidth;
+  int textBoxHeight = (totalHeight > (dayBox.height() - textY) ) ?
+                      dayBox.height() - textY : totalHeight;
+  summaryBound.setHeight(textBoxHeight);
+  QRect lineRect( dayBox.x() + borderWidth, dayBox.y() + textY,
+                  dayBox.width() - (borderWidth * 2),
+                  textBoxHeight );
+  drawBox( p, -1, lineRect );
+
+  if ( !time.isEmpty() )
+    p.drawText( timeBound, flags, time );
+
+  p.drawText( summaryBound, flags, lineText );
+
+  QPen oldPen( p.pen() );
+  p.setPen( QPen() );
+  p.drawLine( lineRect.x(), lineRect.y() + textBoxHeight,
+              lineRect.x() + dayBox.width(), lineRect.y() + textBoxHeight );
+  p.setPen( oldPen );
+
+  textY += totalHeight;
+
+  // show that we have overflowed the box
+  if ( textY > dayBox.height() ) {
+    QPolygon poly(3);
+    int x = dayBox.x() + dayBox.width();
+    int y = dayBox.y() + dayBox.height();
+    poly.setPoint( 0, x - 10, y );
+    poly.setPoint( 1, x, y - 10 );
+    poly.setPoint( 2, x, y );
+    QBrush oldBrush( p.brush() );
+    p.setBrush( QBrush( Qt::black ) );
+    p.drawPolygon(poly);
+    p.setBrush( oldBrush );
+  }
 }
 
-void CalPrintPluginBase::drawWeek( QPainter &p, const QDate &qd, const QRect &box )
+void CalPrintPluginBase::drawWeek( QPainter &p, const QDate &qd,
+                                   const QRect &box,
+                                   bool singleLineLimit, bool showNoteLines )
 {
   QDate weekDate = qd;
-  bool portrait = ( box.height() > box.width() );
-  int cellWidth, cellHeight;
+  const bool portrait = ( box.height() > box.width() );
+  int cellWidth;
   int vcells;
   if ( portrait ) {
     cellWidth = box.width() / 2;
@@ -1046,7 +1116,7 @@ void CalPrintPluginBase::drawWeek( QPainter &p, const QDate &qd, const QRect &bo
     cellWidth = box.width() / 6;
     vcells=1;
   }
-  cellHeight = box.height() / vcells;
+  const int cellHeight = box.height() / vcells;
 
   // correct begin of week
   int weekdayCol = weekdayColumn( qd.dayOfWeek() );
@@ -1060,8 +1130,42 @@ void CalPrintPluginBase::drawWeek( QPainter &p, const QDate &qd, const QRect &bo
       box.left() + cellWidth * hpos,
       box.top() + cellHeight * vpos + ( ( i == 6 ) ? ( cellHeight / 2 ) : 0 ),
       cellWidth, ( i < 5 ) ? ( cellHeight ) : ( cellHeight / 2 ) );
-    drawDayBox( p, weekDate, dayBox, true );
+    drawDayBox( p, weekDate, dayBox, true, true, true,
+                singleLineLimit, showNoteLines );
   } // for i through all weekdays
+}
+
+void CalPrintPluginBase::drawDays( QPainter &p, const QDate &start,
+                                   const QDate& end, const QRect &box,
+                                   bool singleLineLimit, bool showNoteLines )
+{
+  const int numberOfDays = start.daysTo(end) + 1;
+  int vcells;
+  const bool portrait = ( box.height() > box.width() );
+  int cellWidth;
+  if (portrait) {
+    // 2 columns
+    vcells = qCeil((double)numberOfDays / 2.0);
+    if ( numberOfDays > 1 )
+      cellWidth = box.width() / 2;
+    else
+      cellWidth = box.width();
+  } else {
+    // landscape: N columns
+    vcells = 1;
+    cellWidth = box.width() / numberOfDays;
+  }
+  const int cellHeight = box.height() / vcells;
+  QDate weekDate = start;
+  for ( int i = 0; i < numberOfDays; ++i, weekDate = weekDate.addDays(1) ) {
+    const int hpos = i / vcells;
+    const int vpos = i % vcells;
+    const QRect dayBox(
+      box.left() + cellWidth * hpos,
+      box.top() + cellHeight * vpos,
+      cellWidth, cellHeight );
+    drawDayBox( p, weekDate, dayBox, true, true, true, singleLineLimit, showNoteLines );
+  } // for i through all selected days
 }
 
 void CalPrintPluginBase::drawTimeTable( QPainter &p,
@@ -1087,7 +1191,7 @@ void CalPrintPluginBase::drawTimeTable( QPainter &p,
   // draw each day
   QDate curDate(fromDate);
   KDateTime::Spec timeSpec = KPIM::KPimPrefs::timeSpec();
-  int i = 0;
+  int i=0;
   double cellWidth = double( dowBox.width() ) / double( fromDate.daysTo( toDate ) + 1 );
   while ( curDate <= toDate ) {
     QRect allDayBox( dowBox.left()+int( i * cellWidth ), dowBox.bottom() + BOX_BORDER_WIDTH,
@@ -1099,7 +1203,8 @@ void CalPrintPluginBase::drawTimeTable( QPainter &p,
                                                EventSortStartDate,
                                                SortDirectionAscending );
     alldayHeight = drawAllDayBox( p, eventList, curDate, false, allDayBox );
-    drawAgendaDayBox( p, eventList, curDate, false, fromTime, toTime, dayBox );
+    drawAgendaDayBox( p, eventList, curDate, false, fromTime, toTime,
+                      dayBox, false /*includeDescription*/ );
     i++;
     curDate=curDate.addDays(1);
   }
@@ -1154,7 +1259,7 @@ void CalPrintPluginBase::drawMonth( QPainter &p, const QDate &dt,
 
   // Fill the remaining space (if a month has less days than others) with a crossed-out pattern
   if ( daysinmonth<maxdays ) {
-    QRect dayBox( box.left(), daysBox.top() + round( dayheight * daysinmonth ), box.width(), 0 );
+    QRect dayBox( box.left(), daysBox.top() + qRound( dayheight * daysinmonth ), box.width(), 0 );
     dayBox.setBottom( daysBox.bottom() );
     p.fillRect( dayBox, Qt::DiagCrossPattern );
   }
@@ -1165,10 +1270,10 @@ void CalPrintPluginBase::drawMonth( QPainter &p, const QDate &dt,
     calsys->setYMD( day, dt.year(), dt.month(), d+1 );
     QRect dayBox(
       daysBox.left()/*+rand()%50*/,
-      daysBox.top() + round( dayheight * d ), daysBox.width()/*-rand()%50*/, 0 );
+      daysBox.top() + qRound( dayheight * d ), daysBox.width()/*-rand()%50*/, 0 );
     // FIXME: When using a border width of 0 for event boxes,
     // don't let the rectangles overlap, i.e. subtract 1 from the top or bottom!
-    dayBox.setBottom( daysBox.top() + round( dayheight * ( d + 1 ) ) - 1 );
+    dayBox.setBottom( daysBox.top() + qRound( dayheight * ( d + 1 ) ) - 1 );
 
     p.setBrush( isWorkingDay( day ) ? workdayColor : holidayColor );
     p.drawRect( dayBox );
@@ -1249,9 +1354,7 @@ void CalPrintPluginBase::drawMonth( QPainter &p, const QDate &dt,
         d1 = d1.addDays(1);
       }
     } else {
-      KDateTime::Spec spec = KPIM::KPimPrefs::timeSpec();
-      monthentries.append( MonthEventStruct( e->dtStart().toTimeSpec( spec ),
-                                             e->dtEnd().toTimeSpec( spec ), e ) );
+      monthentries.append( MonthEventStruct( e->dtStart(), e->dtEnd(), e ) );
     }
   }
 #ifdef __GNUC__
@@ -1304,10 +1407,10 @@ void CalPrintPluginBase::drawMonth( QPainter &p, const QDate &dt,
 
     QRect eventBox(
       xstartcont + placeItem->subCell() * 17,
-      daysBox.top() + round(
+      daysBox.top() + qRound(
         double( minsToStart * daysBox.height() ) / double( maxdays * 24 * 60 ) ), 14, 0 );
     eventBox.setBottom(
-      daysBox.top() + round(
+      daysBox.top() + qRound(
         double( minsToEnd * daysBox.height() ) / double( maxdays * 24 * 60 ) ) );
     drawVerticalBox( p, eventBox, placeItem->event()->summary() );
     newxstartcont = qMax( newxstartcont, eventBox.right() );
@@ -1319,9 +1422,9 @@ void CalPrintPluginBase::drawMonth( QPainter &p, const QDate &dt,
   for ( int d=0; d<daysinmonth; ++d ) {
     QStringList dayEvents( textEvents[d+1] );
     QString txt = dayEvents.join( ", " );
-    QRect dayBox( xstartcont, daysBox.top() + round( dayheight * d ), 0, 0 );
+    QRect dayBox( xstartcont, daysBox.top() + qRound( dayheight * d ), 0, 0 );
     dayBox.setRight( box.right() );
-    dayBox.setBottom( daysBox.top() + round( dayheight * ( d + 1 ) ) );
+    dayBox.setBottom( daysBox.top() + qRound( dayheight * ( d + 1 ) ) );
     printEventString( p, dayBox, txt, Qt::AlignTop | Qt::AlignLeft | Qt::BreakAnywhere );
   }
   p.setFont( oldfont );
@@ -1332,6 +1435,7 @@ void CalPrintPluginBase::drawMonth( QPainter &p, const QDate &dt,
 void CalPrintPluginBase::drawMonthTable( QPainter &p, const QDate &qd,
                                          bool weeknumbers, bool recurDaily,
                                          bool recurWeekly, bool singleLineLimit,
+                                         bool showNoteLines,
                                          const QRect &box )
 {
   int yoffset = mSubHeaderHeight;
@@ -1392,7 +1496,7 @@ void CalPrintPluginBase::drawMonthTable( QPainter &p, const QDate &qd,
       QRect dayBox( coledges[col], rowedges[row],
           coledges[col + 1] - coledges[col], rowedges[row + 1] - rowedges[row] );
       drawDayBox( p, monthDate, dayBox, false,
-                  recurDaily, recurWeekly, singleLineLimit );
+                  recurDaily, recurWeekly, singleLineLimit, showNoteLines );
       if ( darkbg ) {
         p.setBackground( back );
         darkbg = false;
@@ -1432,11 +1536,11 @@ void CalPrintPluginBase::drawTodo( int &count, Todo *todo, QPainter &p,
   }
 
   // size of to-do
-  outStr = todo->summary();
+  outStr=todo->summary();
   int left = posSummary + ( level * 10 );
   rect = p.boundingRect( left, y, ( rhs-left-5 ), -1, Qt::WordBreak, outStr );
   if ( !todo->description().isEmpty() && desc ) {
-    outStr = todo->description();
+    outStr = toPlainText(todo->description());
     rect = p.boundingRect( left + 20, rect.bottom() + 5,
                            width - ( left + 10 - x ), -1, Qt::WordBreak, outStr );
   }
@@ -1543,14 +1647,14 @@ void CalPrintPluginBase::drawTodo( int &count, Todo *todo, QPainter &p,
 
   // due date
   if ( todo->hasDueDate() && posDueDt>=0 ) {
-    KDateTime::Spec spec = KPIM::KPimPrefs::timeSpec();
-    outStr = local->formatDate( todo->dtDue().toTimeSpec( spec ).date(), KLocale::ShortDate );
-    rect = p.boundingRect( posDueDt, y, x + width, -1, Qt::AlignTop | Qt::AlignLeft, outStr );
+    outStr = local->formatDate( todo->dtDue().toLocalZone().date(), KLocale::ShortDate );
+    rect = p.boundingRect( posDueDt, y, x + width, -1,
+                           Qt::AlignTop | Qt::AlignLeft, outStr );
     p.drawText( rect, Qt::AlignTop | Qt::AlignLeft, outStr );
   }
 
   // percentage completed
-  bool showPercentComplete = ( posPercentComplete >= 0 );
+  bool showPercentComplete = posPercentComplete>=0;
   if ( showPercentComplete ) {
     int lwidth = 24;
     int lheight = 12;
@@ -1574,7 +1678,7 @@ void CalPrintPluginBase::drawTodo( int &count, Todo *todo, QPainter &p,
   // description
   if ( !todo->description().isEmpty() && desc ) {
     y = newrect.bottom() + 5;
-    outStr = todo->description();
+    outStr = toPlainText(todo->description());
     rect = p.boundingRect( left + 20, y, x + width - ( left + 10 ), -1, Qt::WordBreak, outStr );
     p.drawText( rect, Qt::WordBreak, outStr, &newrect );
   }
@@ -1653,21 +1757,19 @@ void CalPrintPluginBase::drawJournalField( QPainter &p, const QString &entry,
   y = newrect.bottom() + 7;
 }
 
-void CalPrintPluginBase::drawJournal( Journal *journal, QPainter &p, int x, int &y,
+void CalPrintPluginBase::drawJournal( Journal * journal, QPainter &p, int x, int &y,
                                       int width, int pageHeight )
 {
-  kDebug();
   QFont oldFont( p.font() );
   p.setFont( QFont( "sans-serif", 15 ) );
   QString headerText;
-  KDateTime::Spec spec = KPIM::KPimPrefs::timeSpec();
-  QString dateText( KGlobal::locale()->formatDate(
-                      journal->dtStart().toTimeSpec( spec ).date(), KLocale::LongDate ) );
+  QString dateText( KGlobal::locale()->
+        formatDate( journal->dtStart().toLocalZone().date(), KLocale::LongDate ) );
 
   if ( journal->summary().isEmpty() ) {
     headerText = dateText;
   } else {
-    headerText = i18nc( "Summary - date", "%1 - %2", journal->summary(), dateText );
+    headerText = i18nc( "Description - date", "%1 - %2", journal->summary(), dateText );
   }
 
   QRect rect( p.boundingRect( x, y, width, -1, Qt::WordBreak, headerText ) );
@@ -1686,11 +1788,11 @@ void CalPrintPluginBase::drawJournal( Journal *journal, QPainter &p, int x, int 
   p.drawLine( x + 3, y, x + width - 6, y );
   y += 5;
 
-  if ( !journal->organizer().fullName().isEmpty() ) {
+  if ( !( journal->organizer().fullName().isEmpty() ) ) {
     drawJournalField( p, i18n( "Person: %1", journal->organizer().fullName() ),
                       x, y, width, pageHeight );
   }
-  if ( !journal->description().isEmpty() ) {
+  if ( !( journal->description().isEmpty() ) ) {
     drawJournalField( p, journal->description(), x, y, width, pageHeight );
   }
   y += 10;
@@ -1749,5 +1851,45 @@ void CalPrintPluginBase::drawSplitHeaderRight( QPainter &p, const QDate &fd,
 
   p.setFont( oldFont );
 }
+
+void CalPrintPluginBase::drawNoteLines( QPainter &p,
+                                          const QRect &box,
+                                          int startY )
+{
+  int lineHeight = int(p.fontMetrics().lineSpacing() * 1.5);
+  int linePos = box.y();
+  int startPos = startY;
+  // adjust line to start at multiple from top of box for alignment
+  while ( linePos < startPos )
+    linePos += lineHeight;
+  QPen oldPen( p.pen() );
+  p.setPen( Qt::DotLine );
+  while ( linePos < box.bottom() ) {
+    p.drawLine( box.left() + padding(), linePos,
+                box.right() - padding(), linePos );
+    linePos += lineHeight;
+  }
+  p.setPen( oldPen );
+}
+
+QString CalPrintPluginBase::toPlainText( const QString &htmlText )
+{
+  // this converts possible rich text to plain text
+  return QTextDocumentFragment::fromHtml(htmlText).toPlainText();
+}
+
+void CalPrintPluginBase::drawFooter( QPainter &p, const QRect &box )
+{
+  QFont oldfont( p.font() );
+  p.setFont( QFont( "sans-serif", 6 ) );
+  QFontMetrics fm( p.font() );
+  QRect footerBox( box.left(), box.bottom() + padding(), box.width(), fm.height());
+  QString dateStr = KGlobal::locale()->formatDateTime( QDateTime::currentDateTime() );
+  p.drawText( footerBox, Qt::AlignCenter | Qt::AlignVCenter | Qt::SingleLine,
+              i18nc("print date: formatted-datetime", "printed: %1", dateStr ));
+  p.setFont( oldfont );
+}
+
+
 
 #endif

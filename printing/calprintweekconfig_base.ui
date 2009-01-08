@@ -7,27 +7,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>404</width>
-    <height>330</height>
+    <width>623</width>
+    <height>409</height>
    </rect>
   </property>
-  <layout class="QVBoxLayout" >
-   <property name="spacing" >
-    <number>6</number>
-   </property>
-   <property name="leftMargin" >
-    <number>9</number>
-   </property>
-   <property name="topMargin" >
-    <number>9</number>
-   </property>
-   <property name="rightMargin" >
-    <number>9</number>
-   </property>
-   <property name="bottomMargin" >
-    <number>9</number>
-   </property>
-   <item>
+  <layout class="QGridLayout" name="gridLayout" >
+   <item row="0" column="0" >
     <widget class="QLabel" name="label" >
      <property name="text" >
       <string>&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
@@ -37,7 +22,7 @@ p, li { white-space: pre-wrap; }
      </property>
     </widget>
    </item>
-   <item>
+   <item row="1" column="0" >
     <widget class="QGroupBox" name="mDateRangeGroup" >
      <property name="title" >
       <string>Date &amp;&amp; Time Range</string>
@@ -47,7 +32,7 @@ p, li { white-space: pre-wrap; }
        <number>9</number>
       </property>
       <property name="topMargin" >
-       <number>9</number>
+       <number>0</number>
       </property>
       <property name="rightMargin" >
        <number>9</number>
@@ -55,10 +40,7 @@ p, li { white-space: pre-wrap; }
       <property name="bottomMargin" >
        <number>9</number>
       </property>
-      <property name="horizontalSpacing" >
-       <number>6</number>
-      </property>
-      <property name="verticalSpacing" >
+      <property name="spacing" >
        <number>6</number>
       </property>
       <item row="0" column="4" >
@@ -69,7 +51,7 @@ p, li { white-space: pre-wrap; }
         <property name="sizeType" >
          <enum>QSizePolicy::Expanding</enum>
         </property>
-        <property name="sizeHint" >
+        <property name="sizeHint" stdset="0" >
          <size>
           <width>16</width>
           <height>21</height>
@@ -98,6 +80,11 @@ p, li { white-space: pre-wrap; }
         <property name="whatsThis" >
          <string>Here you can choose which events should be printed based on their date. This check enables you to enter the start date of the date range. Use the &lt;i>End date&lt;/i> to enter the end date of the daterange.</string>
         </property>
+        <item>
+         <property name="text" >
+          <string>2009-01-04</string>
+         </property>
+        </item>
        </widget>
       </item>
       <item row="1" column="2" >
@@ -121,7 +108,7 @@ p, li { white-space: pre-wrap; }
         <property name="sizeType" >
          <enum>QSizePolicy::Expanding</enum>
         </property>
-        <property name="sizeHint" >
+        <property name="sizeHint" stdset="0" >
          <size>
           <width>110</width>
           <height>20</height>
@@ -184,6 +171,11 @@ p, li { white-space: pre-wrap; }
         <property name="whatsThis" >
          <string>Here you can choose which events should be printed based on their date. This check enables you to enter the end date of the date range. Use the &lt;i>Start date&lt;/i> to enter the start date of the daterange.</string>
         </property>
+        <item>
+         <property name="text" >
+          <string>2009-01-04</string>
+         </property>
+        </item>
        </widget>
       </item>
       <item row="1" column="0" >
@@ -202,7 +194,7 @@ p, li { white-space: pre-wrap; }
      </layout>
     </widget>
    </item>
-   <item>
+   <item row="2" column="0" >
     <widget class="QGroupBox" name="mPrintType" >
      <property name="title" >
       <string>Print Layout</string>
@@ -215,7 +207,7 @@ p, li { white-space: pre-wrap; }
        <number>9</number>
       </property>
       <property name="topMargin" >
-       <number>9</number>
+       <number>0</number>
       </property>
       <property name="rightMargin" >
        <number>9</number>
@@ -259,7 +251,7 @@ p, li { white-space: pre-wrap; }
      </layout>
     </widget>
    </item>
-   <item>
+   <item row="3" column="0" >
     <widget class="QCheckBox" name="mIncludeTodos" >
      <property name="enabled" >
       <bool>false</bool>
@@ -272,7 +264,27 @@ p, li { white-space: pre-wrap; }
      </property>
     </widget>
    </item>
-   <item>
+   <item row="4" column="0" >
+    <widget class="QCheckBox" name="mShowNoteLines" >
+     <property name="whatsThis" >
+      <string>Check this option to draw note lines.</string>
+     </property>
+     <property name="text" >
+      <string>Show Note &amp;Lines in Filofax layout</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0" >
+    <widget class="QCheckBox" name="mSingleLineLimit" >
+     <property name="whatsThis" >
+      <string>Check this option to limit events to a single line.</string>
+     </property>
+     <property name="text" >
+      <string>Limit events in each day to a &amp;single line</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0" >
     <widget class="QCheckBox" name="mColors" >
      <property name="whatsThis" >
       <string>The timetable view supports colors. If you want to make use of colors you should check this option. The category colors will be used.</string>
@@ -282,7 +294,7 @@ p, li { white-space: pre-wrap; }
      </property>
     </widget>
    </item>
-   <item>
+   <item row="7" column="0" >
     <spacer>
      <property name="orientation" >
       <enum>Qt::Vertical</enum>
@@ -290,7 +302,7 @@ p, li { white-space: pre-wrap; }
      <property name="sizeType" >
       <enum>QSizePolicy::Expanding</enum>
      </property>
-     <property name="sizeHint" >
+     <property name="sizeHint" stdset="0" >
       <size>
        <width>386</width>
        <height>16</height>
@@ -306,7 +318,7 @@ p, li { white-space: pre-wrap; }
   <customwidget>
    <class>KPIM::KDateEdit</class>
    <extends>QComboBox</extends>
-   <header>kdateedit.h</header>
+   <header>libkdepim/kdateedit.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>
@@ -315,7 +327,11 @@ p, li { white-space: pre-wrap; }
   <tabstop>mToDate</tabstop>
   <tabstop>mToTime</tabstop>
   <tabstop>mPrintTypeFilofax</tabstop>
+  <tabstop>mPrintTypeTimetable</tabstop>
+  <tabstop>mPrintTypeSplitWeek</tabstop>
   <tabstop>mIncludeTodos</tabstop>
+  <tabstop>mShowNoteLines</tabstop>
+  <tabstop>mSingleLineLimit</tabstop>
   <tabstop>mColors</tabstop>
  </tabstops>
  <resources/>

@@ -78,6 +78,7 @@ void CalPrintIncidence::readSettingsWidget()
     mShowSubitemsNotes = cfg->mShowSubitemsNotes->isChecked();
     mShowAttendees = cfg->mShowAttendees->isChecked();
     mShowAttachments = cfg->mShowAttachments->isChecked();
+    mShowNoteLines = cfg->mShowNoteLines->isChecked();
   }
 }
 
@@ -91,6 +92,7 @@ void CalPrintIncidence::setSettingsWidget()
     cfg->mShowSubitemsNotes->setChecked(mShowSubitemsNotes);
     cfg->mShowAttendees->setChecked(mShowAttendees);
     cfg->mShowAttachments->setChecked(mShowAttachments);
+    cfg->mShowNoteLines->setChecked(mShowNoteLines);
   }
 }
 
@@ -98,10 +100,12 @@ void CalPrintIncidence::loadConfig()
 {
   if ( mConfig ) {
     KConfigGroup grp( mConfig, description() );
+    mUseColors = grp.readEntry( "Use Colors", false );
     mShowOptions = grp.readEntry( "Show Options", false );
     mShowSubitemsNotes = grp.readEntry( "Show Subitems and Notes", false );
     mShowAttendees = grp.readEntry( "Use Attendees", false );
     mShowAttachments = grp.readEntry( "Use Attachments", false );
+    mShowNoteLines = grp.readEntry( "Note Lines", false );
   }
   setSettingsWidget();
 }
@@ -115,6 +119,7 @@ void CalPrintIncidence::saveConfig()
     grp.writeEntry( "Show Subitems and Notes", mShowSubitemsNotes );
     grp.writeEntry( "Use Attendees", mShowAttendees );
     grp.writeEntry( "Use Attachments", mShowAttachments );
+    grp.writeEntry( "Note Lines", mShowNoteLines );
   }
 }
 
@@ -132,14 +137,12 @@ class TimePrintStringsVisitor : public IncidenceBase::Visitor
     QString mDurationCaption, mDurationString;
 
   protected:
-    bool visit( Event *event )
-    {
-      KDateTime::Spec spec = KPIM::KPimPrefs::timeSpec();
+    bool visit( Event *event ) {
       if ( event->dtStart().isValid() ) {
         mStartCaption =  i18n( "Start date: " );
         // Show date/time or only date, depending on whether it's an all-day event
         mStartString = event->allDay() ?
-                       event->dtStartDateStr( false, spec ) : event->dtStartStr( false, spec );
+                       event->dtStartDateStr( false ) : event->dtStartStr( false );
       } else {
         mStartCaption = i18n( "No start date" );
         mStartString.clear();
@@ -148,7 +151,7 @@ class TimePrintStringsVisitor : public IncidenceBase::Visitor
       if ( event->hasEndDate() ) {
         mEndCaption = i18n( "End date: " );
         mEndString = event->allDay() ?
-                     event->dtEndDateStr( false, spec ) : event->dtEndStr( false, spec );
+                     event->dtEndDateStr( false ) : event->dtEndStr( false );
       } else if ( event->hasDuration() ) {
         mEndCaption = i18n( "Duration: " );
         int mins = event->duration().asSeconds() / 60;
@@ -164,14 +167,12 @@ class TimePrintStringsVisitor : public IncidenceBase::Visitor
       }
       return true;
     }
-    bool visit( Todo *todo )
-    {
-      KDateTime::Spec spec = KPIM::KPimPrefs::timeSpec();
+    bool visit( Todo *todo ) {
       if ( todo->hasStartDate() ) {
         mStartCaption =  i18n( "Start date: " );
         // Show date/time or only date, depending on whether it's an all-day event
         mStartString = todo->allDay() ?
-                       todo->dtStartDateStr( false, spec ) : todo->dtStartStr( false, spec );
+                       todo->dtStartDateStr( false ) : todo->dtStartStr( false );
       } else {
         mStartCaption = i18n( "No start date" );
         mStartString.clear();
@@ -180,25 +181,22 @@ class TimePrintStringsVisitor : public IncidenceBase::Visitor
       if ( todo->hasDueDate() ) {
         mEndCaption = i18n( "Due date: " );
         mEndString = todo->allDay() ?
-                     todo->dtDueDateStr( false, spec ) : todo->dtDueStr( false, spec );
+                     todo->dtDueDateStr( false ) : todo->dtDueStr( false );
       } else {
         mEndCaption = i18n( "No due date" );
         mEndString.clear();
       }
       return true;
     }
-    bool visit( Journal *journal )
-    {
-      KDateTime::Spec spec = KPIM::KPimPrefs::timeSpec();
+    bool visit( Journal *journal ) {
       mStartCaption = i18n( "Start date: " );
       mStartString = journal->allDay() ?
-                     journal->dtStartDateStr( false, spec ) : journal->dtStartStr( false, spec );
+                     journal->dtStartDateStr( false ) : journal->dtStartStr( false );
       mEndCaption.clear();
       mEndString.clear();
       return true;
     }
-    bool visit( FreeBusy *fb )
-    {
+    bool visit( FreeBusy *fb ) {
       Q_UNUSED( fb );
       return true;
     }
@@ -279,8 +277,10 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
     QRect box( 0, 0, width, height );
     QRect titleBox( box );
     titleBox.setHeight( headerHeight() );
+    QColor headerColor = categoryBgColor( *it );
     // Draw summary as header, no small calendars in title bar, expand height if needed
-    int titleBottom = drawHeader( p, (*it)->summary(), QDate(), QDate(), titleBox, true );
+    int titleBottom = drawHeader( p, (*it)->summary(), QDate(), QDate(),
+                                  titleBox, true, headerColor );
     titleBox.setBottom( titleBottom );
 
     QRect timesBox( titleBox );
@@ -452,22 +452,18 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
       }
     }
 
-    drawBoxWithCaption( p, descriptionBox, i18n( "Description:" ),
+    int newBottom = drawBoxWithCaption( p, descriptionBox, i18n( "Description:" ),
                         (*it)->description(), /*sameLine=*/false,
                         /*expand=*/false, captionFont, textFont );
+    if (mShowNoteLines) 
+      drawNoteLines( p, descriptionBox, newBottom );
 
     if ( mShowSubitemsNotes ) {
       if ( (*it)->relations().isEmpty() || (*it)->type() != "Todo" ) {
         int notesPosition = drawBoxWithCaption( p, notesBox, i18n( "Notes:" ),
                          QString(), /*sameLine=*/false, /*expand=*/false,
                          captionFont, textFont );
-        QPen oldPen( p.pen() );
-        p.setPen( Qt::DotLine );
-        while ( ( notesPosition += int( 1.5 * lineHeight ) ) < notesBox.bottom() ) {
-          p.drawLine( notesBox.left() + padding(), notesPosition,
-                      notesBox.right() - padding(), notesPosition );
-        }
-        p.setPen( oldPen );
+          drawNoteLines( p, notesBox, notesPosition );
       } else {
         Incidence::List relations = (*it)->relations();
         QString subitemCaption;
@@ -637,6 +633,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
     drawBoxWithCaption( p, categoriesBox, i18n( "Categories: " ),
            (*it)->categories().join( i18nc( "Spacer for the joined list of categories", ", " ) ),
            /*sameLine=*/true, /*expand=*/false, captionFont, textFont );
+    drawFooter( p, box );
   }
   p.setFont( oldFont );
 }
@@ -666,12 +663,23 @@ void CalPrintDay::readSettingsWidget()
     mFromDate = cfg->mFromDate->date();
     mToDate = cfg->mToDate->date();
 
+    if ( cfg->mPrintTypeFilofax->isChecked() ) {
+      mDayPrintType = Filofax;
+    } else if ( cfg->mPrintTypeTimetable->isChecked() ) {
+      mDayPrintType = Timetable;
+    } else {
+      mDayPrintType = Timetable;
+    }
+
     mStartTime = cfg->mFromTime->time();
     mEndTime = cfg->mToTime->time();
     mIncludeAllEvents = cfg->mIncludeAllEvents->isChecked();
 
+    mIncludeDescription = cfg->mIncludeDescription->isChecked();
+    mSingleLineLimit = cfg->mSingleLineLimit->isChecked();
     mIncludeTodos = cfg->mIncludeTodos->isChecked();
     mUseColors = cfg->mColors->isChecked();
+    mShowNoteLines = cfg->mShowNoteLines->isChecked();
   }
 }
 
@@ -682,12 +690,18 @@ void CalPrintDay::setSettingsWidget()
     cfg->mFromDate->setDate( mFromDate );
     cfg->mToDate->setDate( mToDate );
 
+    cfg->mPrintTypeFilofax->setChecked( mDayPrintType == Filofax );
+    cfg->mPrintTypeTimetable->setChecked( mDayPrintType == Timetable );
+
     cfg->mFromTime->setTime( mStartTime );
     cfg->mToTime->setTime( mEndTime );
     cfg->mIncludeAllEvents->setChecked( mIncludeAllEvents );
 
+    cfg->mIncludeDescription->setChecked( mIncludeDescription );
+    cfg->mSingleLineLimit->setChecked( mSingleLineLimit );
     cfg->mIncludeTodos->setChecked( mIncludeTodos );
     cfg->mColors->setChecked( mUseColors );
+    cfg->mShowNoteLines->setChecked( mShowNoteLines );
   }
 }
 
@@ -701,8 +715,12 @@ void CalPrintDay::loadConfig()
     QDateTime endTm( dt, tm1.addSecs( 12 * 60 * 60 ) );
     mStartTime = grp.readEntry( "Start time", startTm ).time();
     mEndTime = grp.readEntry( "End time", endTm ).time();
+    mIncludeDescription = grp.readEntry( "Include description", false );
     mIncludeTodos = grp.readEntry( "Include todos", false );
     mIncludeAllEvents = grp.readEntry( "Include all events", false );
+    mDayPrintType = (eDayPrintType)( grp.readEntry( "Print type", (int)Timetable ) );
+    mSingleLineLimit = grp.readEntry( "Single line limit", false );
+    mShowNoteLines = grp.readEntry( "Note Lines", false );
   }
   setSettingsWidget();
 }
@@ -717,8 +735,12 @@ void CalPrintDay::saveConfig()
     grp.writeEntry( "Start time", dt );
     dt.setTime( mEndTime );
     grp.writeEntry( "End time", dt );
+    grp.writeEntry( "Include description", mIncludeDescription );
     grp.writeEntry( "Include todos", mIncludeTodos );
     grp.writeEntry( "Include all events", mIncludeAllEvents );
+    grp.writeEntry( "Print type", int( mDayPrintType ) );
+    grp.writeEntry( "Single line limit", mSingleLineLimit );
+    grp.writeEntry( "Note Lines", mShowNoteLines );
   }
 }
 
@@ -738,6 +760,31 @@ void CalPrintDay::print( QPainter &p, int width, int height )
   QDate curDay( mFromDate );
 
   KDateTime::Spec timeSpec = KPIM::KPimPrefs::timeSpec();
+
+  switch ( mDayPrintType ) {
+  case Filofax:
+    {
+      QString line1, line2, title;
+      QRect headerBox( 0, 0, width, headerHeight() );
+      QRect daysBox( headerBox );
+      KLocale *local = KGlobal::locale();
+      daysBox.setTop( headerBox.bottom() + padding() );
+      daysBox.setBottom( height );
+      line1 = local->formatDate( mFromDate );
+      line2 = local->formatDate( mToDate );
+      if ( orientation() == QPrinter::Landscape ) {
+        title = i18nc( "date from-to", "%1 - %2", line1, line2 );
+      } else {
+        title = i18nc( "date from-\nto", "%1 -\n%2", line1, line2 );
+      }
+      drawHeader(p, title, mFromDate, QDate(), headerBox );
+      drawDays( p, mFromDate, mToDate, daysBox, mSingleLineLimit, mShowNoteLines );
+      drawFooter( p, daysBox );
+    }
+    break;
+
+  case Timetable:
+  default:
   do {
     QTime curStartTime( mStartTime );
     QTime curEndTime( mEndTime );
@@ -766,17 +813,19 @@ void CalPrintDay::print( QPainter &p, int width, int height )
 
     QRect dayBox( allDayBox );
     drawAgendaDayBox( p, eventList, curDay, mIncludeAllEvents,
-                      curStartTime, curEndTime, dayBox );
+                        curStartTime, curEndTime, dayBox, mIncludeDescription );
 
     QRect tlBox( dayBox );
     tlBox.setLeft( 0 );
     tlBox.setWidth( TIMELINE_WIDTH );
     drawTimeLine( p, curStartTime, curEndTime, tlBox );
+    drawFooter( p, dayBox );
     curDay = curDay.addDays( 1 );
     if ( curDay <= mToDate ) {
       mPrinter->newPage();
     }
   } while ( curDay <= mToDate );
+  } //switch
 }
 
 /**************************************************************
@@ -816,6 +865,8 @@ void CalPrintWeek::readSettingsWidget()
     mStartTime = cfg->mFromTime->time();
     mEndTime = cfg->mToTime->time();
 
+    mShowNoteLines = cfg->mShowNoteLines->isChecked();
+    mSingleLineLimit = cfg->mSingleLineLimit->isChecked();
     mIncludeTodos = cfg->mIncludeTodos->isChecked();
     mUseColors = cfg->mColors->isChecked();
   }
@@ -835,6 +886,8 @@ void CalPrintWeek::setSettingsWidget()
     cfg->mFromTime->setTime( mStartTime );
     cfg->mToTime->setTime( mEndTime );
 
+    cfg->mShowNoteLines->setChecked( mShowNoteLines );
+    cfg->mSingleLineLimit->setChecked( mSingleLineLimit );
     cfg->mIncludeTodos->setChecked( mIncludeTodos );
     cfg->mColors->setChecked( mUseColors );
   }
@@ -850,6 +903,8 @@ void CalPrintWeek::loadConfig()
     QDateTime endTm( dt, tm1.addSecs( 43200 ) );
     mStartTime = grp.readEntry( "Start time", startTm ).time();
     mEndTime = grp.readEntry( "End time", endTm ).time();
+    mShowNoteLines = grp.readEntry( "Note Lines", false );
+    mSingleLineLimit = grp.readEntry( "Single line limit", false );
     mIncludeTodos = grp.readEntry( "Include todos", false );
     mWeekPrintType = (eWeekPrintType)( grp.readEntry( "Print type", (int)Filofax ) );
   }
@@ -860,13 +915,14 @@ void CalPrintWeek::saveConfig()
 {
   readSettingsWidget();
   if ( mConfig ) {
-
     KConfigGroup grp( mConfig, description() );
     QDateTime dt = QDateTime::currentDateTime(); // any valid QDateTime will do
     dt.setTime( mStartTime );
     grp.writeEntry( "Start time", dt );
     dt.setTime( mEndTime );
     grp.writeEntry( "End time", dt );
+    grp.writeEntry( "Note Lines", mShowNoteLines );
+    grp.writeEntry( "Single line limit", mSingleLineLimit );
     grp.writeEntry( "Include todos", mIncludeTodos );
     grp.writeEntry( "Print type", int( mWeekPrintType ) );
   }
@@ -924,7 +980,8 @@ void CalPrintWeek::print( QPainter &p, int width, int height )
         title = i18nc( "date from-\nto", "%1 -\n%2", line1, line2 );
       }
       drawHeader( p, title, curWeek.addDays( -6 ), QDate(), headerBox );
-      drawWeek( p, curWeek, weekBox );
+      drawWeek( p, curWeek, weekBox, mSingleLineLimit, mShowNoteLines );
+      drawFooter( p, weekBox );
       curWeek = curWeek.addDays( 7 );
       if ( curWeek <= toWeek ) {
         mPrinter->newPage();
@@ -950,6 +1007,7 @@ void CalPrintWeek::print( QPainter &p, int width, int height )
       weekBox.setTop( headerBox.bottom() + padding() );
       weekBox.setBottom( height );
       drawTimeTable( p, fromWeek, curWeek, mStartTime, mEndTime, weekBox );
+      drawFooter( p, weekBox );
       fromWeek = fromWeek.addDays( 7 );
       curWeek = fromWeek.addDays( 6 );
       if ( curWeek <= toWeek ) {
@@ -1015,7 +1073,9 @@ void CalPrintMonth::readSettingsWidget()
     mRecurDaily = cfg->mRecurDaily->isChecked();
     mRecurWeekly = cfg->mRecurWeekly->isChecked();
     mIncludeTodos = cfg->mIncludeTodos->isChecked();
+    mShowNoteLines = cfg->mShowNoteLines->isChecked();
     mSingleLineLimit = cfg->mSingleLineLimit->isChecked();
+    mUseColors = cfg->mColors->isChecked();
   }
 }
 
@@ -1030,7 +1090,9 @@ void CalPrintMonth::setSettingsWidget()
     cfg->mRecurDaily->setChecked( mRecurDaily );
     cfg->mRecurWeekly->setChecked( mRecurWeekly );
     cfg->mIncludeTodos->setChecked( mIncludeTodos );
+    cfg->mShowNoteLines->setChecked( mShowNoteLines );
     cfg->mSingleLineLimit->setChecked( mSingleLineLimit );
+    cfg->mColors->setChecked( mUseColors );
   }
 }
 
@@ -1043,6 +1105,7 @@ void CalPrintMonth::loadConfig()
     mRecurWeekly = grp.readEntry( "Print weekly incidences", true );
     mIncludeTodos = grp.readEntry( "Include todos", false );
     mSingleLineLimit = grp.readEntry( "Single line limit", false );
+    mShowNoteLines = grp.readEntry( "Note Lines", false );
   }
   setSettingsWidget();
 }
@@ -1057,6 +1120,7 @@ void CalPrintMonth::saveConfig()
     grp.writeEntry( "Print weekly incidences", mRecurWeekly );
     grp.writeEntry( "Include todos", mIncludeTodos );
     grp.writeEntry( "Single line limit", mSingleLineLimit );
+    grp.writeEntry( "Note Lines", mShowNoteLines );
   }
 }
 
@@ -1112,7 +1176,8 @@ void CalPrintMonth::print( QPainter &p, int width, int height )
     drawHeader( p, title, curMonth.addMonths( -1 ), curMonth.addMonths( 1 ),
                 headerBox );
     drawMonthTable( p, curMonth, mWeekNumbers, mRecurDaily, mRecurWeekly,
-                    mSingleLineLimit, monthBox );
+                    mSingleLineLimit, mShowNoteLines, monthBox );
+    drawFooter( p, monthBox );
     curMonth = curMonth.addDays( curMonth.daysInMonth() );
     if ( curMonth <= toMonth ) {
       mPrinter->newPage();
@@ -1253,7 +1318,7 @@ void CalPrintTodos::saveConfig()
 void CalPrintTodos::print( QPainter &p, int width, int height )
 {
   // TODO: Find a good way to guarantee a nicely designed output
-  int pospriority = 10;
+  int pospriority = 0;
   int possummary = 60;
   int posdue = width - 65;
   int poscomplete = posdue - 70; //Complete column is to right of the Due column
@@ -1269,7 +1334,7 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
   QString outStr;
   QFont oldFont( p.font() );
 
-  p.setFont( QFont( "sans-serif", 10, QFont::Bold ) );
+  p.setFont( QFont( "sans-serif", 9, QFont::Bold ) );
   lineSpacing = p.fontMetrics().lineSpacing();
   mCurrentLinePos += lineSpacing;
   if ( mIncludePriority ) {

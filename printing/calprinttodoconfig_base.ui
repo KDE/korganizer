@@ -7,12 +7,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>500</width>
-    <height>476</height>
+    <width>557</width>
+    <height>460</height>
    </rect>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_2" >
-   <item>
+  <layout class="QGridLayout" name="gridLayout" >
+   <item row="0" column="0" >
     <widget class="QLabel" name="label" >
      <property name="text" >
       <string>&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
@@ -22,7 +22,7 @@ p, li { white-space: pre-wrap; }
      </property>
     </widget>
    </item>
-   <item>
+   <item row="1" column="0" >
     <layout class="QHBoxLayout" >
      <item>
       <widget class="QLabel" name="mTitleLabel" >
@@ -43,12 +43,15 @@ p, li { white-space: pre-wrap; }
      </item>
     </layout>
    </item>
-   <item>
+   <item row="2" column="0" >
     <widget class="QGroupBox" name="mPrintType" >
      <property name="title" >
       <string>To-dos to Print</string>
      </property>
      <layout class="QGridLayout" >
+      <property name="topMargin" >
+       <number>0</number>
+      </property>
       <item row="0" column="0" >
        <widget class="QRadioButton" name="mPrintAll" >
         <property name="text" >
@@ -146,7 +149,7 @@ p, li { white-space: pre-wrap; }
           </property>
           <item>
            <property name="text" >
-            <string>2008-07-14</string>
+            <string>2009-01-04</string>
            </property>
           </item>
          </widget>
@@ -183,7 +186,7 @@ p, li { white-space: pre-wrap; }
           </property>
           <item>
            <property name="text" >
-            <string>2008-07-14</string>
+            <string>2009-01-04</string>
            </property>
           </item>
          </widget>
@@ -209,7 +212,7 @@ p, li { white-space: pre-wrap; }
      </layout>
     </widget>
    </item>
-   <item>
+   <item row="3" column="0" >
     <widget class="QGroupBox" name="includeInfoBox" >
      <property name="title" >
       <string>Include Information</string>
@@ -218,6 +221,9 @@ p, li { white-space: pre-wrap; }
       <bool>false</bool>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout" >
+      <property name="topMargin" >
+       <number>0</number>
+      </property>
       <item>
        <widget class="QCheckBox" name="mDescription" >
         <property name="text" >
@@ -268,12 +274,15 @@ p, li { white-space: pre-wrap; }
      <zorder>mPriority</zorder>
     </widget>
    </item>
-   <item>
+   <item row="4" column="0" >
     <widget class="QGroupBox" name="otherOptionsBox" >
      <property name="title" >
       <string>Other Options</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout" >
+      <property name="topMargin" >
+       <number>0</number>
+      </property>
       <item>
        <widget class="QCheckBox" name="mConnectSubTodos" >
         <property name="text" >
@@ -297,12 +306,15 @@ p, li { white-space: pre-wrap; }
      </layout>
     </widget>
    </item>
-   <item>
+   <item row="5" column="0" >
     <widget class="QGroupBox" name="sortingOptionsBox" >
      <property name="title" >
       <string>Sorting Options</string>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_2" >
+      <property name="topMargin" >
+       <number>0</number>
+      </property>
       <item>
        <layout class="QHBoxLayout" >
         <item>
@@ -360,6 +372,19 @@ p, li { white-space: pre-wrap; }
      </layout>
     </widget>
    </item>
+   <item row="6" column="0" >
+    <spacer name="verticalSpacer" >
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0" >
+      <size>
+       <width>20</width>
+       <height>7</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
   </layout>
  </widget>
  <layoutdefault spacing="6" margin="11" />
@@ -374,15 +399,18 @@ p, li { white-space: pre-wrap; }
  <tabstops>
   <tabstop>mTitle</tabstop>
   <tabstop>mPrintAll</tabstop>
+  <tabstop>mPrintUnfinished</tabstop>
+  <tabstop>mPrintDueRange</tabstop>
   <tabstop>mFromDate</tabstop>
   <tabstop>mToDate</tabstop>
   <tabstop>mDescription</tabstop>
-  <tabstop>mDueDate</tabstop>
   <tabstop>mPriority</tabstop>
+  <tabstop>mDueDate</tabstop>
   <tabstop>mPercentComplete</tabstop>
-  <tabstop>mSortField</tabstop>
   <tabstop>mConnectSubTodos</tabstop>
   <tabstop>mStrikeOutCompleted</tabstop>
+  <tabstop>mSortField</tabstop>
+  <tabstop>mSortDirection</tabstop>
  </tabstops>
  <resources/>
  <connections>

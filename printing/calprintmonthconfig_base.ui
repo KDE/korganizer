@@ -7,18 +7,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>527</width>
-    <height>248</height>
+    <width>578</width>
+    <height>384</height>
    </rect>
   </property>
-  <layout class="QVBoxLayout" >
-   <property name="spacing" >
-    <number>6</number>
-   </property>
-   <property name="margin" >
-    <number>9</number>
-   </property>
-   <item>
+  <layout class="QGridLayout" name="gridLayout" >
+   <item row="0" column="0" >
     <widget class="QLabel" name="label" >
      <property name="text" >
       <string>&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
@@ -28,7 +22,7 @@ p, li { white-space: pre-wrap; }
      </property>
     </widget>
    </item>
-   <item>
+   <item row="1" column="0" >
     <widget class="QGroupBox" name="mDateRangeGroup" >
      <property name="title" >
       <string>Date &amp;&amp; Time Range</string>
@@ -37,7 +31,16 @@ p, li { white-space: pre-wrap; }
       <property name="spacing" >
        <number>6</number>
       </property>
-      <property name="margin" >
+      <property name="leftMargin" >
+       <number>9</number>
+      </property>
+      <property name="topMargin" >
+       <number>0</number>
+      </property>
+      <property name="rightMargin" >
+       <number>9</number>
+      </property>
+      <property name="bottomMargin" >
        <number>9</number>
       </property>
       <item>
@@ -122,7 +125,7 @@ p, li { white-space: pre-wrap; }
      </layout>
     </widget>
    </item>
-   <item>
+   <item row="2" column="0" >
     <widget class="QCheckBox" name="mWeekNumbers" >
      <property name="whatsThis" >
       <string>Enable this to print week numbers at the left of each row.</string>
@@ -132,7 +135,7 @@ p, li { white-space: pre-wrap; }
      </property>
     </widget>
    </item>
-   <item>
+   <item row="3" column="0" >
     <widget class="QCheckBox" name="mRecurDaily" >
      <property name="whatsThis" >
       <string>With this option it is possible to leave out the daily recurring to-dos and events in the print. They take a lot of space and make the month view needlessly complicated.</string>
@@ -142,7 +145,7 @@ p, li { white-space: pre-wrap; }
      </property>
     </widget>
    </item>
-   <item>
+   <item row="4" column="0" >
     <widget class="QCheckBox" name="mRecurWeekly" >
      <property name="whatsThis" >
       <string>Similar to "Print daily recurring to-dos and events". Weekly to-dos and events will be omitted when making a print of the selected month.</string>
@@ -152,7 +155,7 @@ p, li { white-space: pre-wrap; }
      </property>
     </widget>
    </item>
-   <item>
+   <item row="5" column="0" >
     <widget class="QCheckBox" name="mIncludeTodos" >
      <property name="enabled" >
       <bool>false</bool>
@@ -165,7 +168,17 @@ p, li { white-space: pre-wrap; }
      </property>
     </widget>
    </item>
-   <item>
+   <item row="6" column="0" >
+    <widget class="QCheckBox" name="mShowNoteLines" >
+     <property name="whatsThis" >
+      <string>Check this option to show note lines.</string>
+     </property>
+     <property name="text" >
+      <string>Show Note &amp;Lines</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0" >
     <widget class="QCheckBox" name="mSingleLineLimit" >
      <property name="whatsThis" >
       <string>Check this option to limit events to a single line.</string>
@@ -175,7 +188,17 @@ p, li { white-space: pre-wrap; }
      </property>
     </widget>
    </item>
-   <item>
+   <item row="8" column="0" >
+    <widget class="QCheckBox" name="mColors" >
+     <property name="whatsThis" >
+      <string>The timetable view supports colors. If you want to make use of colors you should check this option. The category colors will be used.</string>
+     </property>
+     <property name="text" >
+      <string>&amp;Use colors</string>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="0" >
     <spacer>
      <property name="orientation" >
       <enum>Qt::Vertical</enum>
@@ -202,10 +225,17 @@ p, li { white-space: pre-wrap; }
   </customwidget>
  </customwidgets>
  <tabstops>
+  <tabstop>mFromMonth</tabstop>
+  <tabstop>mFromYear</tabstop>
+  <tabstop>mToMonth</tabstop>
+  <tabstop>mToYear</tabstop>
   <tabstop>mWeekNumbers</tabstop>
   <tabstop>mRecurDaily</tabstop>
   <tabstop>mRecurWeekly</tabstop>
   <tabstop>mIncludeTodos</tabstop>
+  <tabstop>mShowNoteLines</tabstop>
+  <tabstop>mSingleLineLimit</tabstop>
+  <tabstop>mColors</tabstop>
  </tabstops>
  <resources/>
  <connections/>
