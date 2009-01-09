@@ -43,15 +43,14 @@
 using namespace KCal;
 
 ImportDialog::ImportDialog( const KUrl &url, QWidget *parent )
-  : KDialog( parent),
-    mUrl( url )
+  : KDialog( parent ), mUrl( url )
 {
-  setCaption( i18n("Import Calendar") );
+  setCaption( i18n( "Import Calendar" ) );
   setButtons( Ok | Cancel );
   setDefaultButton( Ok );
   setModal( true );
   showButtonSeparator( true );
-  QFrame *topFrame = new QFrame(this );
+  QFrame *topFrame = new QFrame( this );
   setMainWidget( topFrame );
   QVBoxLayout *topLayout = new QVBoxLayout( topFrame );
   topLayout->setSpacing( spacingHint() );
@@ -68,18 +67,17 @@ ImportDialog::ImportDialog( const KUrl &url, QWidget *parent )
   radioBox->setFlat( true );
   topLayout->addWidget( radioBox );
 
-  mAddButton = new QRadioButton( i18n("Add as new calendar"), radioBox );
+  mAddButton = new QRadioButton( i18n( "Add as new calendar" ), radioBox );
   boxLayout->addWidget( mAddButton );
 
-  mMergeButton = new QRadioButton( i18n("Merge into existing calendar"),
-                                   radioBox );
+  mMergeButton = new QRadioButton( i18n( "Merge into existing calendar" ), radioBox );
   boxLayout->addWidget( mMergeButton );
 
-  mOpenButton = new QRadioButton( i18n("Open in separate window"), radioBox );
+  mOpenButton = new QRadioButton( i18n( "Open in separate window" ), radioBox );
   boxLayout->addWidget( mOpenButton );
 
   mAddButton->setChecked( true );
-  connect(this,SIGNAL(okClicked()),SLOT(slotOk()));
+  connect( this, SIGNAL(okClicked()), SLOT(slotOk()) );
 }
 
 ImportDialog::~ImportDialog()
@@ -99,12 +97,11 @@ void ImportDialog::slotOk()
     // emit a signal to the action manager to open mUrl in a separate window
     emit newWindow( mUrl );
   } else {
-    kError() <<"ImportDialog: internal error.";
+    kError() << "ImportDialog: internal error.";
   }
 
   emit dialogFinished( this );
   accept();
 }
-
 
 #include "importdialog.moc"

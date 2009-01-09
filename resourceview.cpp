@@ -394,15 +394,16 @@ void ResourceView::addResource()
   KOPrefs::instance()->setResourceColor( resource->identifier(), color );
 
   bool success = true;
-  if ( !dlg || !dlg->exec() )
+  if ( !dlg || !dlg->exec() ) {
     success = false;
+  }
 
   if ( success ) {
     resource->setTimeSpec( KOPrefs::instance()->timeSpec() );
     if ( resource->isActive() && ( !resource->open() || !resource->load() ) ) {
       // ### There is a resourceLoadError() signal declared in ResourceCalendar
       //     but no subclass seems to make use of it. We could do better.
-      KMessageBox::error( this, i18n("Unable to create the resource." ) );
+      KMessageBox::error( this, i18n( "Unable to create the resource." ) );
       success = false;
     }
   }

@@ -41,7 +41,7 @@ class TimeScaleConfigDialog : public QDialog
     void up();
     void down();
     void okClicked();
-   
+
   private:
     QStringList zones();
     Ui::TimeScaleEditDialog ui;

@@ -38,11 +38,11 @@
 
 #include "statusdialog.moc"
 
-StatusDialog::StatusDialog(QWidget* parent) :
-  KDialog(parent)
+StatusDialog::StatusDialog( QWidget *parent )
+  : KDialog( parent )
 {
   setModal( true );
-  setCaption(i18n("Set Your Status"));
+  setCaption( i18n( "Set Your Status" ) );
 
   QBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->setSpacing( spacingHint() );
@@ -51,7 +51,7 @@ StatusDialog::StatusDialog(QWidget* parent) :
   QBoxLayout *statusLayout = new QHBoxLayout();
   topLayout->addItem( statusLayout );
 
-  QLabel *text = new QLabel(i18n("Set your status"),this);
+  QLabel *text = new QLabel( i18n( "Set your status" ), this );
   statusLayout->addWidget( text );
 
   mStatus = new KComboBox( this );
@@ -62,12 +62,12 @@ StatusDialog::StatusDialog(QWidget* parent) :
   QBoxLayout *buttonLayout = new QHBoxLayout();
   topLayout->addItem( buttonLayout );
 
-  QPushButton *ok = new KPushButton(KStandardGuiItem::ok(), this);
-  connect ( ok,SIGNAL(clicked()), this,SLOT(accept()) );
+  QPushButton *ok = new KPushButton( KStandardGuiItem::ok(), this );
+  connect ( ok, SIGNAL(clicked()), this, SLOT(accept()) );
   buttonLayout->addWidget( ok );
 
-  QPushButton *cancel = new KPushButton(KStandardGuiItem::cancel(), this);
-  connect ( cancel,SIGNAL(clicked()), this,SLOT(reject()) );
+  QPushButton *cancel = new KPushButton( KStandardGuiItem::cancel(), this );
+  connect ( cancel, SIGNAL(clicked()), this, SLOT(reject()) );
   buttonLayout->addWidget( cancel );
 }
 

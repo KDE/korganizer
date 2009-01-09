@@ -106,15 +106,14 @@ class KOEventView : public KOrg::BaseView
      * selected dates has changed.
      *   @param datelist the new list of selected dates
      */
-    void datesSelected(const DateList datelist);
+    void datesSelected( const DateList datelist );
 
     //ET CVS MERGE !
     /**
      * Emitted when an event is moved using the mouse in an agenda
      * view (week / month).
      */
-    void shiftedEvent(const QDate& olddate, const QDate& newdate);
-
+    void shiftedEvent( const QDate &olddate, const QDate &ewdate );
 
   protected slots:
     void popupShow();

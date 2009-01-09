@@ -26,13 +26,17 @@
 
 #include "koalternatelabel.moc"
 
-KOAlternateLabel::KOAlternateLabel(const QString &shortlabel, const QString &longlabel,
-    const QString &extensivelabel, QWidget *parent )
+KOAlternateLabel::KOAlternateLabel( const QString &shortlabel,
+                                    const QString &longlabel,
+                                    const QString &extensivelabel,
+                                    QWidget *parent )
   : QLabel( parent ), mTextTypeFixed( false ), mShortText( shortlabel ),
     mLongText( longlabel ), mExtensiveText( extensivelabel )
 {
-  setSizePolicy(QSizePolicy( QSizePolicy::Expanding, QSizePolicy::Fixed ));
-  if (mExtensiveText.isEmpty()) mExtensiveText = mLongText;
+  setSizePolicy( QSizePolicy( QSizePolicy::Expanding, QSizePolicy::Fixed ) );
+  if ( mExtensiveText.isEmpty() ) {
+    mExtensiveText = mLongText;
+  }
   squeezeTextToLabel();
 }
 
@@ -58,7 +62,7 @@ void KOAlternateLabel::useExtensiveText()
 {
   mTextTypeFixed = true;
   QLabel::setText( mExtensiveText );
-  this->setToolTip("");
+  this->setToolTip( "" );
 }
 
 void KOAlternateLabel::useDefaultText()
@@ -69,16 +73,18 @@ void KOAlternateLabel::useDefaultText()
 
 void KOAlternateLabel::squeezeTextToLabel()
 {
-  if (mTextTypeFixed) return;
+  if ( mTextTypeFixed ) {
+    return;
+  }
 
-  QFontMetrics fm(fontMetrics());
+  QFontMetrics fm( fontMetrics() );
   int labelWidth = size().width();
-  int textWidth = fm.width(mLongText);
-  int longTextWidth = fm.width(mExtensiveText);
-  if (longTextWidth <= labelWidth) {
+  int textWidth = fm.width( mLongText );
+  int longTextWidth = fm.width( mExtensiveText );
+  if ( longTextWidth <= labelWidth ) {
     QLabel::setText( mExtensiveText );
-    this->setToolTip("");
-  } else if (textWidth <= labelWidth) {
+    this->setToolTip( "" );
+  } else if ( textWidth <= labelWidth ) {
     QLabel::setText( mLongText );
     this->setToolTip( mExtensiveText );
   } else {
@@ -95,11 +101,12 @@ void KOAlternateLabel::resizeEvent( QResizeEvent * )
 QSize KOAlternateLabel::minimumSizeHint() const
 {
   QSize sh = QLabel::minimumSizeHint();
-  sh.setWidth(-1);
+  sh.setWidth( -1 );
   return sh;
 }
 
-void KOAlternateLabel::setText( const QString &text ) {
+void KOAlternateLabel::setText( const QString &text )
+{
   mLongText = text;
   squeezeTextToLabel();
 }

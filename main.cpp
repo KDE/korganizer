@@ -43,7 +43,9 @@ int main ( int argc, char **argv )
   KCmdLineArgs::addCmdLineOptions( korganizer_options() );
   KUniqueApplication::addCmdLineOptions();
 
-  if ( !KOrganizerApp::start() ) return 0;
+  if ( !KOrganizerApp::start() ) {
+    return 0;
+  }
 
   KOrganizerApp app;
 

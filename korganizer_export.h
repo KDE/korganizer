@@ -25,10 +25,10 @@
 
 #ifndef KORGANIZERPRIVATE_EXPORT
 # if defined(MAKE_KORGANIZERPRIVATE_LIB)
-   /* We are building this library */ 
+   /* We are building this library */
 #  define KORGANIZERPRIVATE_EXPORT KDE_EXPORT
 # else
-   /* We are using this library */ 
+   /* We are using this library */
 #  define KORGANIZERPRIVATE_EXPORT KDE_IMPORT
 # endif
 #endif
@@ -42,7 +42,6 @@
 #  define KORG_STDPRINTING_EXPORT KDE_IMPORT
 # endif
 #endif
-
 
 #ifndef KOCOREHELPER_EXPORT
 # if defined(MAKE_KOCOREHELPER_LIB)
@@ -74,7 +73,6 @@
 # endif
 #endif
 
-
 #ifndef KORGANIZER_CALENDAR_EXPORT
 # if defined(MAKE_KORGANIZER_CALENDAR_LIB)
    /* We are building this library */
@@ -84,7 +82,6 @@
 #  define KORGANIZER_CALENDAR_EXPORT KDE_IMPORT
 # endif
 #endif
-
 
 #ifndef KCM_KORGANIZER_EXPORT
 # if defined(MAKE_KCM_KORGANIZER_LIB)
@@ -108,7 +105,6 @@
 #  define KORG_STDPRINTING_EXPORT_DEPRECATED KDE_DEPRECATED KORG_STDPRINTING_EXPORT
 # endif
 
-
 # ifndef KORGANIZER_EVENTVIEWER_EXPORT_DEPRECATED
 #  define KORGANIZER_EVENTVIEWER_EXPORT_DEPRECATED KDE_DEPRECATED KORGANIZER_EVENTVIEWER_EXPORT
 # endif
@@ -124,6 +120,5 @@
 # ifndef KOCOREHELPER_EXPORT_DEPRECATED
 #  define KOCOREHELPER_EXPORT_DEPRECATED KDE_DEPRECATED KOCOREHELPER_EXPORT
 # endif
-
 
 #endif

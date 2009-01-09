@@ -87,7 +87,7 @@ void Theme::useThemeFrom( const KUrl &url )
       //TODO: KMessageBox "invalid file"
       kDebug() << "can't import: invalid file: (5)" << url.path();
       delete file;
-      delete zip;      
+      delete zip;
       return;
     }
 

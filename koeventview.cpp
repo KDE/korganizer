@@ -43,7 +43,7 @@ using namespace KOrg;
 
 //---------------------------------------------------------------------------
 
-KOEventView::KOEventView(Calendar *cal,QWidget *parent )
+KOEventView::KOEventView( Calendar *cal, QWidget *parent )
   : KOrg::BaseView( cal, parent )
 {
 }
@@ -60,24 +60,24 @@ KOEventPopupMenu *KOEventView::eventPopup()
 {
   KOEventPopupMenu *eventPopup = new KOEventPopupMenu;
 
-  connect(eventPopup,SIGNAL(editIncidenceSignal(Incidence *)),
-                     SIGNAL(editIncidenceSignal(Incidence *)));
-  connect(eventPopup,SIGNAL(showIncidenceSignal(Incidence *)),
-                     SIGNAL(showIncidenceSignal(Incidence *)));
-  connect(eventPopup,SIGNAL(deleteIncidenceSignal(Incidence *)),
-                     SIGNAL(deleteIncidenceSignal(Incidence *)));
-  connect(eventPopup,SIGNAL(cutIncidenceSignal(Incidence *)),
-                     SIGNAL(cutIncidenceSignal(Incidence *)));
-  connect(eventPopup,SIGNAL(copyIncidenceSignal(Incidence *)),
-                     SIGNAL(copyIncidenceSignal(Incidence *)));
-  connect(eventPopup,SIGNAL(pasteIncidenceSignal()),
-                     SIGNAL(pasteIncidenceSignal()));
-  connect(eventPopup,SIGNAL(toggleAlarmSignal(Incidence *)),
-                     SIGNAL(toggleAlarmSignal(Incidence*)));
-  connect(eventPopup,SIGNAL(dissociateOccurrenceSignal( Incidence *, const QDate & )),
-                     SIGNAL(dissociateOccurrenceSignal( Incidence *, const QDate & )));
-  connect(eventPopup,SIGNAL(dissociateFutureOccurrenceSignal( Incidence *, const QDate & )),
-                     SIGNAL(dissociateFutureOccurrenceSignal( Incidence *, const QDate & )));
+  connect( eventPopup, SIGNAL(editIncidenceSignal(Incidence *)),
+           SIGNAL(editIncidenceSignal(Incidence *)));
+  connect( eventPopup, SIGNAL(showIncidenceSignal(Incidence *)),
+           SIGNAL(showIncidenceSignal(Incidence *)));
+  connect( eventPopup, SIGNAL(deleteIncidenceSignal(Incidence *)),
+           SIGNAL(deleteIncidenceSignal(Incidence *)));
+  connect( eventPopup, SIGNAL(cutIncidenceSignal(Incidence *)),
+           SIGNAL(cutIncidenceSignal(Incidence *)));
+  connect( eventPopup, SIGNAL(copyIncidenceSignal(Incidence *)),
+           SIGNAL(copyIncidenceSignal(Incidence *)));
+  connect( eventPopup, SIGNAL(pasteIncidenceSignal()),
+           SIGNAL(pasteIncidenceSignal()));
+  connect( eventPopup, SIGNAL(toggleAlarmSignal(Incidence *)),
+           SIGNAL(toggleAlarmSignal(Incidence*)));
+  connect( eventPopup, SIGNAL(dissociateOccurrenceSignal(Incidence *,const QDate &)),
+           SIGNAL(dissociateOccurrenceSignal(Incidence *,const QDate &)) );
+  connect( eventPopup, SIGNAL(dissociateFutureOccurrenceSignal(Incidence *,const QDate &)),
+           SIGNAL(dissociateFutureOccurrenceSignal(Incidence *,const QDate &)) );
 
   return eventPopup;
 }

@@ -68,7 +68,7 @@ KOEventPopupMenu::KOEventPopupMenu()
                                     this, SLOT(popupCopy()) ) );
   // paste is always possible
   mEditOnlyItems.append( addAction( KOGlobals::self()->smallIcon( "edit-paste" ),
-                                    i18n("&Paste"),
+                                    i18n( "&Paste" ),
                                     this, SLOT(popupPaste()) ) );
   mEditOnlyItems.append( addAction( KOGlobals::self()->smallIcon( "edit-delete" ),
                                     i18nc( "delete this incidence", "&Delete" ),

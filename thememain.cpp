@@ -34,31 +34,30 @@
 
 int main ( int argc, char **argv )
 {
-  KAboutData aboutData("korganizer",
+  KAboutData aboutData( "korganizer",
                         0,
-                        ki18n("KOrganizer Theming Stub"),
+                        ki18n( "KOrganizer Theming Stub" ),
                         "0.001",
-                        ki18n("DO NOT USE - Stub doing various things with KOrganizer themes"),
+                        ki18n( "DO NOT USE - Stub doing various things with KOrganizer themes" ),
                         KAboutData::License_GPL,
-                        ki18n("© 2007 Loïc Corbasson"),
+                        ki18n( "© 2007 Loïc Corbasson" ),
                         KLocalizedString(),
                         "http://blog.loic.corbasson.fr/",
-                        "loic.corbasson@gmail.com");
-  
+                        "loic.corbasson@gmail.com" );
+
   KCmdLineArgs::init( argc, argv, &aboutData );
-  
+
   KCmdLineOptions options;
-  options.add("+[url]", ki18n("Theme to use"));
-  KCmdLineArgs::addCmdLineOptions(options);
-  
+  options.add( "+[url]", ki18n( "Theme to use" ) );
+  KCmdLineArgs::addCmdLineOptions( options );
+
   KApplication app( false );   // no GUI
-  
-  KCmdLineArgs* args = KCmdLineArgs::parsedArgs();
-  if (args->count() > 0) {
-    for (int i = 0; i < args->count(); ++i) {
-      KOrg::Theme::useThemeFrom( args->url(i) );
+
+  KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
+  if ( args->count() > 0 ) {
+    for ( int i=0; i < args->count(); ++i ) {
+      KOrg::Theme::useThemeFrom( args->url( i ) );
     }
   }
   args->clear();
-
 }

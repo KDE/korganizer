@@ -630,7 +630,6 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
   private:
     void init();
 
-
     void createPrinter();
 
     void calendarModified( bool, Calendar * );

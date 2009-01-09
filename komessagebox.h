@@ -30,7 +30,6 @@
 #include <QMessageBox>
 #include <QString>
 
-
 class KOMessageBox
 {
   public:

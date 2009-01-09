@@ -81,7 +81,8 @@ class KOGroupware : public QObject
       @param oldEvent The original event provided in the invitations.
       @param newEvent The new event as edited by the user.
     */
-    void sendCounterProposal( KCal::Calendar* calendar, KCal::Event* oldEvent, KCal::Event *newEvent ) const;
+    void sendCounterProposal( KCal::Calendar *calendar, KCal::Event *oldEvent,
+                              KCal::Event *newEvent ) const;
 
     // THIS IS THE ACTUAL KM/KO API
     enum EventState {

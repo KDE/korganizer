@@ -41,7 +41,7 @@ class KOCounterDialog : public KDialog
 {
   Q_OBJECT
   public:
-    KOCounterDialog(QWidget *parent = 0 );
+    KOCounterDialog( QWidget *parent = 0 );
     virtual ~KOCounterDialog();
 
     void setIncidence( Incidence *incidence );

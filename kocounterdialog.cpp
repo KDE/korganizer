@@ -22,7 +22,6 @@
   without including the source code for Qt in the source distribution.
 */
 
-
 #include "kocounterdialog.h"
 #include "koeventviewer.h"
 
@@ -34,20 +33,20 @@
 #include "kocounterdialog.moc"
 
 KOCounterDialog::KOCounterDialog( QWidget *parent )
-  : KDialog( parent, i18n("Counter-Event Viewer"), User1 | User2 )
+  : KDialog( parent, i18n( "Counter-Event Viewer" ), User1 | User2 )
 #ifdef __GNUC__
 #warning: Use non-modal! modal=false
 #endif
 {
   setDefaultButton( User1 );
-  setGuiItem( User1, i18n("Decline") );
-  setGuiItem( User2, i18n("Accept") );
+  setGuiItem( User1, i18n( "Decline" ) );
+  setGuiItem( User2, i18n( "Accept" ) );
 
   mEventViewer = new KOEventViewer( this );
   setMainWidget( mEventViewer );
 
-  connect( this, SIGNAL( user1Clicked() ), SLOT( slotCancel() ) );
-  connect( this, SIGNAL( user2Clicked() ), SLOT( slotOk( ) ) );
+  connect( this, SIGNAL(user1Clicked()), SLOT(slotCancel()) );
+  connect( this, SIGNAL(user2Clicked()), SLOT(slotOk()) );
 
   // FIXME: Set a sensible size (based on the content?).
   setMinimumSize( 300, 200 );

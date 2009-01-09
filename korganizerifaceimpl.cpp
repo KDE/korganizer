@@ -37,14 +37,14 @@
 #include "korganizeradaptor.h"
 #include <QtDBus/QtDBus>
 
-KOrganizerIfaceImpl::KOrganizerIfaceImpl( ActionManager* actionManager,
-                                          QObject* parent, const char* name )
-  : QObject( parent ),
-    mActionManager( actionManager )
+KOrganizerIfaceImpl::KOrganizerIfaceImpl( ActionManager *actionManager,
+                                          QObject *parent, const char *name )
+  : QObject( parent ), mActionManager( actionManager )
 {
   setObjectName( name );
   new KorganizerAdaptor( this );
-  QDBusConnection::sessionBus().registerObject( "/Korganizer", this, QDBusConnection::ExportAdaptors );
+  QDBusConnection::sessionBus().registerObject(
+    "/Korganizer", this, QDBusConnection::ExportAdaptors );
 }
 
 KOrganizerIfaceImpl::~KOrganizerIfaceImpl()

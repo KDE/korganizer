@@ -98,6 +98,5 @@ class KORGANIZERPRIVATE_EXPORT KOrganizerIfaceImpl : public QObject
     ActionManager *mActionManager;
 };
 
-
 #endif // KORGANIZER_SHARED_H
 
