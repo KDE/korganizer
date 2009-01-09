@@ -555,11 +555,11 @@ void KOAgendaItem::moveRelative( int dx, int dy )
   setCellXRight( newXRight );
 }
 
-void KOAgendaItem::expandTop( int dy )
+void KOAgendaItem::expandTop( int dy, const bool allowOverLimit )
 {
   int newYTop = cellYTop() + dy;
   int newYBottom = cellYBottom();
-  if ( newYTop > newYBottom ) {
+  if ( newYTop > newYBottom && !allowOverLimit ) {
     newYTop = newYBottom;
   }
   setCellY( newYTop, newYBottom );

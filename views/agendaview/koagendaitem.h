@@ -106,7 +106,19 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     void endMove();
 
     void moveRelative( int dx, int dy );
-    void expandTop( int dy );
+
+    /**
+     * Expands the item's top. 
+     *
+     * @param dy             delta y, number of units to be added to mCellYTop 
+     * @param allowOverLimit If false, the new mCellYTop can't be bigger than
+     *                       mCellYBottom, instead, it gets mCellYBottom's value.
+     *                       If true, @p dy is always added, regardless if mCellYTop
+     *                       becomes bigger than mCellYBottom, this is usefull when
+     *                       moving items because it guarantees expandTop and the
+     *                       following expandBottom call add the same value.
+     */
+    void expandTop( int dy, const bool allowOverLimit = false );
     void expandBottom( int dy );
     void expandLeft( int dx );
     void expandRight( int dx );
