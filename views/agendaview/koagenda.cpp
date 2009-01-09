@@ -1006,7 +1006,7 @@ void KOAgenda::performItemAction( const QPoint &viewportPos )
               moveItem->expandTop( rows() - newY );
             }
           } else {
-            moveItem->expandTop( deltapos.y() );
+            moveItem->expandTop( deltapos.y(), true );
           }
           changed=true;
         }
