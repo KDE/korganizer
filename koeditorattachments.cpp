@@ -436,7 +436,8 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent )
 
   QPushButton *addButton = new QPushButton( this );
   addButton->setIcon( KIcon( "list-add" ) );
-  addButton->setToolTip( i18nc( "@action:button", "&Add..." ) );
+  addButton->setToolTip( i18nc( "@action:button",
+                                "Add an attachment" ) );
   addButton->setWhatsThis( i18nc( "@info",
                                   "Shows a dialog used to select an attachment "
                                   "to add to this event or to-do as link or as "
@@ -446,7 +447,8 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent )
 
   mRemoveBtn = new QPushButton( this );
   mRemoveBtn->setIcon( KIcon( "list-remove" ) );
-  mRemoveBtn->setToolTip( i18nc( "@action:button", "&Remove" ) );
+  mRemoveBtn->setToolTip( i18nc( "@action:button",
+                                 "Remove the selected attachment" ) );
   mRemoveBtn->setWhatsThis( i18nc( "@info",
                                    "Removes the attachment selected in the "
                                    "list above from this event or to-do." ) );
