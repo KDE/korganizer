@@ -787,7 +787,7 @@ void KOEditorFreeBusy::writeIncidence( Incidence *incidence )
       }
     } else {
       bool skip = false;
-      if ( attendee->email().endsWith( "example.net" ) ) {
+      if ( attendee->email().endsWith( QLatin1String( "example.net" ) ) ) {
         if ( KMessageBox::warningYesNo(
                this,
                i18nc( "@info",
@@ -839,10 +839,12 @@ void KOEditorFreeBusy::removeAttendee()
   }
 
   FreeBusyItem *nextSelectedItem = static_cast<FreeBusyItem*>( item->nextSibling() );
-  if( mGanttView->childCount() == 1 )
-      nextSelectedItem = 0;
-  if( mGanttView->childCount() > 1 && item == mGanttView->lastItem() )
-      nextSelectedItem = static_cast<FreeBusyItem*>(  mGanttView->firstChild() );
+  if( mGanttView->childCount() == 1 ) {
+    nextSelectedItem = 0;
+  }
+  if( mGanttView->childCount() > 1 && item == mGanttView->lastItem() ) {
+    nextSelectedItem = static_cast<FreeBusyItem*>( mGanttView->firstChild() );
+  }
 
   Attendee *delA = new Attendee( item->attendee()->name(), item->attendee()->email(),
                                  item->attendee()->RSVP(), item->attendee()->status(),
@@ -851,8 +853,9 @@ void KOEditorFreeBusy::removeAttendee()
   delete item;
 
   updateStatusSummary();
-  if( nextSelectedItem )
-      mGanttView->setSelected( nextSelectedItem, true );
+  if( nextSelectedItem ) {
+    mGanttView->setSelected( nextSelectedItem, true );
+  }
   updateAttendeeInput();
   emit updateAttendeeSummary( mGanttView->childCount() );
 }
@@ -954,8 +957,10 @@ void KOEditorFreeBusy::slotOrganizerChanged( const QString &newOrganizer )
   if ( currentOrganizerAttendee ) {
     answer = KMessageBox::questionYesNo(
       this,
-      i18n( "You are changing the organiser of this event, who is also "
-            "attending, do you want to change that attendee as well?" ) );
+      i18nc( "@option",
+             "You are changing the organizer of this event. "
+             "Since the organizer is also attending this event, would you "
+             "like to change the corresponding attendee as well?" ) );
   } else {
     answer = KMessageBox::Yes;
   }
