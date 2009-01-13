@@ -119,7 +119,7 @@ void KOAgendaItem::updateIcons()
   mIconReadonly = mIncidence->isReadOnly();
   mIconRecur = mIncidence->recurs();
   mIconAlarm = mIncidence->isAlarmEnabled();
-  if ( mIncidence->attendeeCount() > 0 ) {
+  if ( mIncidence->attendeeCount() > 1 ) {
     if ( KOPrefs::instance()->thatIsMe( mIncidence->organizer().email() ) ) {
       mIconReply = false;
       mIconGroup = false;
