@@ -243,61 +243,80 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent )
   controlLayout->setSpacing( topLayout->spacing() );
   topLayout->addItem( controlLayout );
 
-  QString whatsThis = i18nc( "@info:whatsthis",
-                             "Sets the zoom level on the Gantt chart. "
-                             "'Hour' shows a range of several hours, "
-                             "'Day' shows a range of a few days, "
-                             "'Week' shows a range of a few months, "
-                             "and 'Month' shows a range of a few years, "
-                             "while 'Automatic' selects the range most "
-                             "appropriate for the current event or to-do." );
   QLabel *label = new QLabel( i18nc( "@label", "Scale: " ), this );
-  label->setWhatsThis( whatsThis );
   controlLayout->addWidget( label );
 
   scaleCombo = new KComboBox( this );
-  scaleCombo->setWhatsThis( whatsThis );
+  scaleCombo->setToolTip(
+    i18nc( "@info:tooltip", "Set the Gantt chart zoom level" ) );
+  scaleCombo->setWhatsThis(
+    i18nc( "@info:whatsthis",
+           "Select the Gantt chart zoom level from one of the following:<nl/>"
+           "'Hour' shows a range of several hours,<nl/>"
+           "'Day' shows a range of a few days,<nl/>"
+           "'Week' shows a range of a few months,<nl/>"
+           "and 'Month' shows a range of a few years,<nl/>"
+           "while 'Automatic' selects the range most "
+           "appropriate for the current event or to-do." ) );
   scaleCombo->addItem( i18nc( "@item:inlistbox range in hours", "Hour" ) );
   scaleCombo->addItem( i18nc( "@item:inlistbox range in days", "Day" ) );
   scaleCombo->addItem( i18nc( "@item:inlistbox range in weeks", "Week" ) );
   scaleCombo->addItem( i18nc( "@item:inlistbox range in months", "Month" ) );
   scaleCombo->addItem( i18nc( "@item:inlistbox range is computed automatically", "Automatic" ) );
   scaleCombo->setCurrentIndex( 0 ); // start with "hour"
-  connect( scaleCombo, SIGNAL( activated( int ) ),
-           SLOT( slotScaleChanged( int ) ) );
+  connect( scaleCombo, SIGNAL(activated(int)),
+           SLOT(slotScaleChanged(int)) );
   controlLayout->addWidget( scaleCombo );
 
   QPushButton *button = new QPushButton( i18nc( "@action:button", "Center on Start" ), this );
-  button->setWhatsThis( i18nc( "@info:whatsthis",
-                               "Centers the Gantt chart on the start time "
-                               "and day of this event." ) );
-  connect( button, SIGNAL( clicked() ), SLOT( slotCenterOnStart() ) );
+  button->setToolTip(
+    i18nc( "@info:tooltip",
+           "Center the Gantt chart on the event start date and time" ) );
+  button->setWhatsThis(
+    i18nc( "@info:whatsthis",
+           "Click this button to center the Gantt chart on the start "
+           "time and day of this event." ) );
+  connect( button, SIGNAL(clicked()), SLOT(slotCenterOnStart()) );
   controlLayout->addWidget( button );
 
   controlLayout->addStretch( 1 );
 
   button = new QPushButton( i18nc( "@action:button", "Pick Date" ), this );
-  button->setWhatsThis( i18nc( "@info:whatsthis",
-                               "Moves the event to a date and time when all "
-                               "the attendees are free." ) );
-  connect( button, SIGNAL( clicked() ), SLOT( slotPickDate() ) );
+  button->setToolTip(
+    i18nc( "@info:tooltip",
+           "Move the event to a date and time when all "
+           "attendees are available" ) );
+  button->setWhatsThis(
+    i18nc( "@info:whatsthis",
+           "Click this button to move the event to a date "
+           "and time when all the attendees have time "
+           "available in their Free/Busy lists." ) );
+  connect( button, SIGNAL(clicked()), SLOT(slotPickDate()) );
   controlLayout->addWidget( button );
 
   controlLayout->addStretch( 1 );
 
   button = new QPushButton( i18nc( "@action:button reload freebusy data", "Reload" ), this );
-  button->setWhatsThis( i18nc( "@info:whatsthis",
-                               "Reloads Free/Busy data for all attendees from "
-                               "the corresponding servers." ) );
+  button->setToolTip(
+    i18nc( "@info:tooltip",
+           "Reload Free/Busy data for all attendees" ) );
+  button->setWhatsThis(
+    i18nc( "@info:whatsthis",
+           "Pressing this button will cause the Free/Busy data for all "
+           "attendees to be reloaded from their corresponding servers." ) );
   controlLayout->addWidget( button );
-  connect( button, SIGNAL( clicked() ), SLOT( manualReload() ) );
+  connect( button, SIGNAL(clicked()), SLOT(manualReload()) );
 
   mGanttView = new KDGanttView( this, "mGanttView" );
-  mGanttView->setWhatsThis( i18nc( "@info:whatsthis",
-                                   "Shows the free/busy status of all attendees. "
-                                   "Double-clicking on an attendees entry in the "
-                                   "list will allow you to enter the location of "
-                                   "their Free/Busy Information." ) );
+  mGanttView->setToolTip(
+    i18nc( "@info:tooltip",
+           "Shows the Free/Busy status of all attendees" ) );
+  mGanttView->setWhatsThis(
+    i18nc( "@info:whatsthis",
+           "Shows the Free/Busy status of all attendees. "
+           "Double-clicking on an attendees entry in the "
+           "list will allow you to enter the location of "
+           "their Free/Busy Information." ) );
   topLayout->addWidget( mGanttView );
   topLayout->setStretchFactor( mGanttView, 100 );
   // Remove the predefined "Task Name" column
@@ -331,14 +350,12 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent )
   mEventRectangle->setColor( Qt::magenta );
   mGanttView->addIntervalBackgroundColor( mEventRectangle );
 
-  connect( mGanttView, SIGNAL ( timeIntervalSelected( const QDateTime &,
-                                                      const QDateTime & ) ),
-           mGanttView, SLOT( zoomToSelection( const QDateTime &,
-                                              const  QDateTime & ) ) );
-  connect( mGanttView, SIGNAL( lvItemDoubleClicked( KDGanttViewItem * ) ),
-           SLOT( editFreeBusyUrl( KDGanttViewItem * ) ) );
-  connect( mGanttView, SIGNAL( intervalColorRectangleMoved( const QDateTime&, const QDateTime& ) ),
-           this, SLOT( slotIntervalColorRectangleMoved( const QDateTime&, const QDateTime& ) ) );
+  connect( mGanttView, SIGNAL(timeIntervalSelected(const QDateTime &,const QDateTime &)),
+           mGanttView, SLOT(zoomToSelection(const QDateTime &,const  QDateTime &)) );
+  connect( mGanttView, SIGNAL(lvItemDoubleClicked(KDGanttViewItem *)),
+           SLOT(editFreeBusyUrl(KDGanttViewItem *)) );
+  connect( mGanttView, SIGNAL(intervalColorRectangleMoved(const QDateTime &,const QDateTime &)),
+           this, SLOT(slotIntervalColorRectangleMoved(const QDateTime &,const QDateTime &)) );
 
   connect( mGanttView, SIGNAL(lvSelectionChanged(KDGanttViewItem*)),
           this, SLOT(updateAttendeeInput()) );
@@ -350,10 +367,10 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent )
            this, SLOT(listViewClicked(int, KDGanttViewItem*)) );
 
   FreeBusyManager *m = KOGroupware::instance()->freeBusyManager();
-  connect( m, SIGNAL( freeBusyRetrieved( KCal::FreeBusy *, const QString & ) ),
-           SLOT( slotInsertFreeBusy( KCal::FreeBusy *, const QString & ) ) );
+  connect( m, SIGNAL(freeBusyRetrieved(KCal::FreeBusy *,const QString &)),
+           SLOT(slotInsertFreeBusy(KCal::FreeBusy *,const QString &)) );
 
-  connect( &mReloadTimer, SIGNAL( timeout() ), SLOT( autoReload() ) );
+  connect( &mReloadTimer, SIGNAL(timeout()), SLOT(autoReload()) );
   mReloadTimer.setSingleShot( true );
 
   initEditWidgets( this, topLayout );
@@ -361,8 +378,8 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent )
            SLOT(removeAttendee()) );
 
   slotOrganizerChanged( mOrganizerCombo->currentText() );
-  connect( mOrganizerCombo, SIGNAL( activated(const QString&) ),
-           this, SLOT( slotOrganizerChanged(const QString&) ) );
+  connect( mOrganizerCombo, SIGNAL(activated(const QString &)),
+           this, SLOT(slotOrganizerChanged(const QString &)) );
 
   //suppress the buggy consequences of clicks on the time header widget
   mGanttView->timeHeaderWidget()->installEventFilter( this );
