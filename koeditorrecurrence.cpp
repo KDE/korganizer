@@ -943,7 +943,7 @@ RecurrenceChooser::RecurrenceChooser( QWidget *parent ) : QWidget( parent )
   } else {
     mTypeCombo = 0;
 
-    QGroupBox *ruleButtonGroup = new QGroupBox( i18nc( "@title:group", "Recurrency Types" ), this );
+    QGroupBox *ruleButtonGroup = new QGroupBox( i18nc( "@title:group", "Recurrence Types" ), this );
     QBoxLayout *buttonLayout = new QVBoxLayout( ruleButtonGroup );
 
     ruleButtonGroup->setFlat( true );
