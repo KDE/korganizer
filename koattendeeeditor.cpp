@@ -59,21 +59,25 @@ void KOAttendeeEditor::initOrganizerWidgets( QWidget *parent, QBoxLayout *layout
   // readIncidence will delete it and set another label text instead,
   // if the user isn't the organizer.
   // Note that the i18n text below is duplicated in readIncidence
-  QString whatsThis = i18n( "Sets the identity corresponding to "
-                            "the organizer of this to-do or event. "
-                            "Identities can be set in the 'Personal' section "
-                            "of the KOrganizer configuration, or in the "
-                            "'Personal'->'About Me'->'Password & User Account' "
-                            "section of the System Settings. In addition, "
-                            "identities are gathered from your KMail settings "
-                            "and from your address book. If you choose "
-                            "to set it globally for KDE in the System Settings, "
-                            "be sure to check 'Use email settings from "
-                            "System Settings' in the 'Personal' section of the "
-                            "KOrganizer configuration." );
+  QString whatsThis =
+    i18nc( "@info:whatsthis",
+           "Sets the identity corresponding to "
+           "the organizer of this to-do or event. "
+           "Identities can be set in the 'Personal' section "
+           "of the KOrganizer configuration, or in the "
+           "'Personal'->'About Me'->'Password & User Account' "
+           "section of the System Settings. In addition, "
+           "identities are gathered from your KMail settings "
+           "and from your address book. If you choose "
+           "to set it globally for KDE in the System Settings, "
+           "be sure to check 'Use email settings from "
+           "System Settings' in the 'Personal' section of the "
+           "KOrganizer configuration." );
   mOrganizerLabel = new QLabel( i18n( "Identity as organizer:" ), mOrganizerHBox );
   mOrganizerCombo = new KComboBox( mOrganizerHBox );
   mOrganizerLabel->setWhatsThis( whatsThis );
+  mOrganizerCombo->setToolTip(
+    i18nc( "@info:tooltip", "Set the organizer identity" ) );
   mOrganizerCombo->setWhatsThis( whatsThis );
   fillOrganizerCombo();
   mOrganizerHBox->setStretchFactor( mOrganizerCombo, 100 );
@@ -100,13 +104,16 @@ void KOAttendeeEditor::initEditWidgets( QWidget *parent, QBoxLayout *layout )
   connect( mNameEdit, SIGNAL(textChanged(const QString &)), SLOT(updateAttendee()) );
   topLayout->addWidget( mNameEdit, 0, 1, 1, 2 );
 
-  whatsThis = i18n( "Edits the role of the attendee selected in the list above." );
+  whatsThis = i18nc( "@info:whatsthis",
+                     "Edits the role of the attendee selected in the list above." );
   QLabel *attendeeRoleLabel = new QLabel( parent );
   attendeeRoleLabel->setWhatsThis( whatsThis );
   attendeeRoleLabel->setText( i18n( "Ro&le:" ) );
   topLayout->addWidget( attendeeRoleLabel, 1, 0 );
 
   mRoleCombo = new KComboBox( parent );
+  mRoleCombo->setToolTip(
+    i18nc( "@info:tooltip", "Select the attendee participation role" ) );
   mRoleCombo->setWhatsThis( whatsThis );
   mRoleCombo->addItems( Attendee::roleList() );
   attendeeRoleLabel->setBuddy( mRoleCombo );
@@ -116,14 +123,17 @@ void KOAttendeeEditor::initEditWidgets( QWidget *parent, QBoxLayout *layout )
   mDelegateLabel = new QLabel( parent );
   topLayout->addWidget( mDelegateLabel, 1, 2 );
 
-  whatsThis = i18n( "Edits the current attendance status of the attendee "
-                    "selected in the list above." );
+  whatsThis = i18nc( "@info:whatsthis",
+                     "Edits the current attendance status of the attendee "
+                     "selected in the list above." );
   QLabel *statusLabel = new QLabel( parent );
   statusLabel->setWhatsThis( whatsThis );
   statusLabel->setText( i18n( "Stat&us:" ) );
   topLayout->addWidget( statusLabel, 2, 0 );
 
   mStatusCombo = new KComboBox( parent );
+  mStatusCombo->setToolTip(
+    i18nc( "@info:tooltip", "Select the attendee participation status" ) );
   mStatusCombo->setWhatsThis( whatsThis );
   //TODO: the icons below aren't exactly correct
   mStatusCombo->addItem( KOGlobals::self()->smallIcon( "help-about" ),
@@ -148,9 +158,13 @@ void KOAttendeeEditor::initEditWidgets( QWidget *parent, QBoxLayout *layout )
   topLayout->setColumnStretch( 2, 1 );
 
   mRsvpButton = new QCheckBox( parent );
-  mRsvpButton->setWhatsThis( i18n( "Edits whether to send an email to the "
-                                   "attendee selected in the list above to "
-                                   "request a response concerning attendance." ) );
+  mRsvpButton->setToolTip(
+    i18nc( "@info:tooltip", "Request a response from the attendee" ) );
+  mRsvpButton->setWhatsThis(
+    i18nc( "@info:whatsthis",
+           "Edits whether to send an email to the "
+           "attendee selected in the list above to "
+           "request a response concerning attendance." ) );
   mRsvpButton->setText( i18n( "Re&quest response" ) );
   connect( mRsvpButton, SIGNAL(clicked()), SLOT(updateAttendee()) );
   topLayout->addWidget( mRsvpButton, 2, 2 );
@@ -159,23 +173,35 @@ void KOAttendeeEditor::initEditWidgets( QWidget *parent, QBoxLayout *layout )
   QVBoxLayout *buttonLayout = new QVBoxLayout( buttonBox );
 
   mAddButton = new QPushButton( i18nc( "@action:button new attendee", "&New" ), buttonBox );
-  mAddButton->setWhatsThis( i18n( "Adds a new attendee to the list. Once the "
-                                  "attendee is added, you will be able to "
-                                  "edit the attendee's name, role, attendance "
-                                  "status, and whether or not the attendee is "
-                                  "required to respond to the invitation. To "
-                                  "select an attendee from your addressbook, "
-                                  "click the 'Select Addressee' button instead." ) );
+  mAddButton->setToolTip(
+    i18nc( "@info:tooltip", "Add an attendee" ) );
+  mAddButton->setWhatsThis(
+    i18nc( "@info:whatsthis",
+           "Adds a new attendee to the list. Once the "
+           "attendee is added, you will be able to "
+           "edit the attendee's name, role, attendance "
+           "status, and whether or not the attendee is "
+           "required to respond to the invitation. To "
+           "select an attendee from your address book, "
+           "click the 'Select Addressee' button instead." ) );
   buttonLayout->addWidget( mAddButton );
   connect( mAddButton, SIGNAL(clicked()), SLOT(addNewAttendee()) );
 
   mRemoveButton = new QPushButton( i18n( "&Remove" ), buttonBox );
-  mRemoveButton->setWhatsThis( i18n( "Removes the attendee selected in the list above." ) );
+  mRemoveButton->setToolTip(
+    i18nc( "@info:tooltip", "Remove the selected attendee" ) );
+  mRemoveButton->setWhatsThis(
+    i18nc( "@info:whatsthis",
+           "Removes the attendee selected in the list above." ) );
   buttonLayout->addWidget( mRemoveButton );
 
   mAddressBookButton = new QPushButton( i18n( "Select Addressee..." ), buttonBox );
-  mAddressBookButton->setWhatsThis( i18n( "Opens your address book, allowing "
-                                          "you to select new attendees from it." ) );
+  mAddressBookButton->setToolTip(
+    i18nc( "@info:tooltip",
+           "Open your address book" ) );
+  mAddressBookButton->setWhatsThis(
+    i18nc( "@info:whatsthis",
+           "Opens your address book, allowing you to select new attendees from it." ) );
   buttonLayout->addWidget( mAddressBookButton );
   connect( mAddressBookButton, SIGNAL(clicked()), SLOT(openAddressBook()) );
 
@@ -270,6 +296,8 @@ void KOAttendeeEditor::readIncidence( KCal::Incidence *incidence )
   mdelAttendees.clear();
   mnewAttendees.clear();
   if ( KOPrefs::instance()->thatIsMe( incidence->organizer().email() ) ) {
+    //TODO: make a new private method for creating the mOrganizerCombo
+    //and use it here and initOrganizerWidgets() above.
     if ( !mOrganizerCombo ) {
       mOrganizerCombo = new KComboBox( mOrganizerHBox );
       fillOrganizerCombo();
