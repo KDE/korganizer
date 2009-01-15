@@ -588,14 +588,14 @@ bool KOEditorGeneralEvent::validateInput()
 {
   if ( mHasTimeCheckbox->isChecked() ) {
     if ( !mStartTimeEdit->inputIsValid() ) {
-      KMessageBox::sorry( 0,
+      KMessageBox::sorry( mParent,
                           i18n( "Please specify a valid start time, for example '%1'.",
                                 KGlobal::locale()->formatTime( QTime::currentTime() ) ) );
       return false;
     }
 
     if ( !mEndTimeEdit->inputIsValid() ) {
-      KMessageBox::sorry( 0,
+      KMessageBox::sorry( mParent,
                           i18n( "Please specify a valid end time, for example '%1'.",
                                 KGlobal::locale()->formatTime( QTime::currentTime() ) ) );
       return false;
@@ -603,14 +603,14 @@ bool KOEditorGeneralEvent::validateInput()
   }
 
   if ( !mStartDateEdit->date().isValid() ) {
-    KMessageBox::sorry( 0,
+    KMessageBox::sorry( mParent,
                         i18n( "Please specify a valid start date, for example '%1'.",
                               KGlobal::locale()->formatDate( QDate::currentDate() ) ) );
     return false;
   }
 
   if ( !mEndDateEdit->date().isValid() ) {
-    KMessageBox::sorry( 0,
+    KMessageBox::sorry( mParent,
                         i18n( "Please specify a valid end date, for example '%1'.",
                               KGlobal::locale()->formatDate( QDate::currentDate() ) ) );
     return false;
@@ -627,8 +627,8 @@ bool KOEditorGeneralEvent::validateInput()
   }
 
   if ( startDt > endDt ) {
-    KMessageBox::sorry( 0, i18n( "The event ends before it starts.\n"
-                                 "Please correct dates and times." ) );
+    KMessageBox::sorry( mParent, i18n( "The event ends before it starts.\n"
+                                       "Please correct dates and times." ) );
     return false;
   }
 

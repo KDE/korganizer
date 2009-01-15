@@ -97,6 +97,8 @@ KOEditorGeneral::~KOEditorGeneral()
 
 void KOEditorGeneral::initHeader( QWidget *parent, QBoxLayout *topLayout )
 {
+  mParent = parent;
+
   QGridLayout *headerLayout = new QGridLayout();
   headerLayout->setSpacing( topLayout->spacing() );
   topLayout->addLayout( headerLayout );
@@ -582,7 +584,7 @@ bool KOEditorGeneral::validateInput()
 {
   // Do not permit an empty summary
   if ( mSummaryEdit->text().isEmpty() ) {
-    KMessageBox::sorry( 0, i18n( "Please specify a summary." ) );
+    KMessageBox::sorry( mParent, i18n( "Please specify a summary." ) );
     return false;
   }
 

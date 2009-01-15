@@ -124,6 +124,7 @@ class KOEditorGeneral : public QObject
   protected:
     Alarm *alarmFromSimplePage() const;
 
+    QWidget                 *mParent;
     KLineEdit               *mSummaryEdit;
     KLineEdit               *mLocationEdit;
     QLabel                  *mAttendeeSummaryLabel;

@@ -335,6 +335,7 @@ class KOEditorRecurrence : public QWidget
     void showRecurrenceRangeDialog();
 
   private:
+    QWidget *mParent;
     QCheckBox *mEnabledCheck;
 
     QGroupBox *mTimeGroupBox;
