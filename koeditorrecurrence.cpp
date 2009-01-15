@@ -1036,6 +1036,8 @@ void RecurrenceChooser::emitChoice()
 
 KOEditorRecurrence::KOEditorRecurrence( QWidget *parent ) : QWidget( parent )
 {
+  mParent = parent;
+
   QGridLayout *topLayout = new QGridLayout( this );
   topLayout->setSpacing( KDialog::spacingHint() );
 
@@ -1487,7 +1489,7 @@ bool KOEditorRecurrence::validateInput()
   if ( mEnabledCheck->isChecked() && ( mRecurrenceRange->duration() == 0 ) &&
        mEventStartDt.isValid() && ( mRecurrenceRange->endDate() < mEventStartDt.date() ) ) {
     KMessageBox::sorry(
-      0,
+      mParent,
       i18nc( "@info",
              "The end date '%1' of the recurrence must be after the start date '%2' of the event.",
              KGlobal::locale()->formatDate( mRecurrenceRange->endDate() ),
@@ -1504,7 +1506,7 @@ bool KOEditorRecurrence::validateInput()
       valid = valid || days.testBit( i );
     }
     if ( !valid ) {
-      KMessageBox::sorry( 0,
+      KMessageBox::sorry( mParent,
         i18nc( "@info",
                "A weekly recurring event or task has to have at least one "
                "weekday associated with it." ) );
