@@ -498,7 +498,7 @@ bool KOAgenda::eventFilter_key( QObject *, QKeyEvent *ke )
     return false;
   }
 
-  if ( ke->type() == QEvent::KeyPress || ke->type() == QEvent::KeyRelease ) {
+  if ( ke->type() == QEvent::KeyPress ) {
     switch ( ke->key() ) {
     case Qt::Key_Escape:
     case Qt::Key_Return:
