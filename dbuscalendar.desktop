@@ -19,6 +19,7 @@ X-KDE-ServiceType=DBUS/Organizer
 Comment=Organizer with a D-BUS interface
 Comment[bg]=Организатор с поддръжка на интерфейс D-BUS
 Comment[ca]=Organitzador amb una interfície DBUS
+Comment[cs]=Organizátor s D-BUS rozhraním
 Comment[da]=Organisator med en D-BUS-grænseflade
 Comment[de]=Organizer mit D-Bus-Schnittstelle
 Comment[el]=Organizer με περιβάλλον χρήσης D-BUS
