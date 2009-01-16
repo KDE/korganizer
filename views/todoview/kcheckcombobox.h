@@ -25,10 +25,10 @@
 #ifndef KCHECKCOMBOBOX_H
 #define KCHECKCOMBOBOX_H
 
-#include <QComboBox>
+#include <KComboBox>
 #include <QModelIndex>
 
-class KCheckComboBox : public QComboBox
+class KCheckComboBox : public KComboBox
 {
   Q_OBJECT
 

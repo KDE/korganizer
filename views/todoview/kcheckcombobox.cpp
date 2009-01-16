@@ -31,7 +31,7 @@
 #include <QLineEdit>
 #include <QKeyEvent>
 
-KCheckComboBox::KCheckComboBox( QWidget *parent ) : QComboBox( parent )
+KCheckComboBox::KCheckComboBox( QWidget *parent ) : KComboBox( parent )
 {
   mSeparator = QLatin1String( "," );
   mIgnoreHide = false;
@@ -43,7 +43,7 @@ KCheckComboBox::KCheckComboBox( QWidget *parent ) : QComboBox( parent )
   // read-only contents
   setEditable( true );
   lineEdit()->setReadOnly( true );
-  setInsertPolicy( QComboBox::NoInsert );
+  setInsertPolicy( KComboBox::NoInsert );
 
   view()->installEventFilter( this );
   view()->viewport()->installEventFilter( this );
@@ -58,7 +58,7 @@ KCheckComboBox::~KCheckComboBox()
 void KCheckComboBox::hidePopup()
 {
   if ( !mIgnoreHide ) {
-    QComboBox::hidePopup();
+    KComboBox::hidePopup();
   }
   mIgnoreHide = false;
 }
@@ -180,7 +180,7 @@ bool KCheckComboBox::eventFilter( QObject *receiver, QEvent *event )
     default:
       break;
   }
-  return QComboBox::eventFilter( receiver, event );
+  return KComboBox::eventFilter( receiver, event );
 }
 
 void KCheckComboBox::updateCheckedItems( const QModelIndex &topLeft,
