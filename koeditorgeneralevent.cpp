@@ -111,15 +111,24 @@ void KOEditorGeneralEvent::initTime( QWidget *parent, QBoxLayout *topLayout )
   layoutTimeBox->setColumnStretch( 3, 1 );
 
   mStartDateEdit = new KPIM::KDateEdit( timeGroupBox );
+  mStartDateEdit->setToolTip(
+    i18nc( "@info:tooltip", "Set the start date" ) );
+  mStartDateEdit->setWhatsThis(
+    i18nc( "@info:whatsthis", "Select the starting date for this event." ) );
   layoutTimeBox->addWidget( mStartDateEdit, 0, 1 );
   mStartDateLabel->setBuddy( mStartDateEdit );
 
   mStartTimeEdit = new KPIM::KTimeEdit( timeGroupBox );
+  mStartTimeEdit->setToolTip(
+    i18nc( "@info:tooltip", "Set the start time" ) );
+  mStartTimeEdit->setWhatsThis(
+    i18nc( "@info:whatsthis", "Select the starting time for this event." ) );
   layoutTimeBox->addWidget( mStartTimeEdit, 0, 2 );
 
   // Timezone
-  QString whatsThis = i18n( "Select the timezone for this event. "
-                            "It will also affect recurrences" );
+  QString whatsThis = i18nc( "@info:whatsthis",
+                             "Select the timezone for this event. "
+                             "It will also affect recurrences" );
   mTimeZoneComboStart = new KPIM::KTimeZoneComboBox( timeGroupBox );
   mTimeZoneComboEnd = new KPIM::KTimeZoneComboBox( timeGroupBox );
   if ( !KOPrefs::instance()->showTimeZoneSelectorInIncidenceEditor() ) {
@@ -128,10 +137,17 @@ void KOEditorGeneralEvent::initTime( QWidget *parent, QBoxLayout *topLayout )
   } 
   layoutTimeBox->addWidget( mTimeZoneComboStart, 0, 3 );
   layoutTimeBox->addWidget( mTimeZoneComboEnd, 1, 3 );
-  mTimeZoneComboStart->setWhatsThis( whatsThis );
-  mTimeZoneComboEnd->setWhatsThis( whatsThis );
+
   mTimeZoneComboStart->selectLocalTimeSpec();
+  mTimeZoneComboStart->setToolTip(
+    i18nc( "@info:tooltip", "Select the timezone for the start date/time" ) );
+  mTimeZoneComboStart->setWhatsThis( whatsThis );
+
   mTimeZoneComboEnd->selectLocalTimeSpec();
+  mTimeZoneComboEnd->setToolTip(
+    i18nc( "@info:tooltip", "Select the timezone for the end date/time" ) );
+  mTimeZoneComboEnd->setWhatsThis( whatsThis );
+
   mStartSpec = mTimeZoneComboStart->selectedTimeSpec();
   mEndSpec = mTimeZoneComboEnd->selectedTimeSpec();
 
@@ -139,10 +155,16 @@ void KOEditorGeneralEvent::initTime( QWidget *parent, QBoxLayout *topLayout )
   layoutTimeBox->addWidget( mEndDateLabel, 1, 0 );
 
   mEndDateEdit = new KPIM::KDateEdit( timeGroupBox );
+  mEndDateEdit->setToolTip( i18nc( "@info:tooltip", "Set the end date" ) );
+  mEndDateEdit->setWhatsThis(
+    i18nc( "@info:whatsthis", "Select the ending date for this event." ) );
   layoutTimeBox->addWidget( mEndDateEdit, 1, 1 );
   mEndDateLabel->setBuddy( mEndDateEdit );
 
   mEndTimeEdit = new KPIM::KTimeEdit( timeGroupBox );
+  mEndTimeEdit->setToolTip( i18nc( "@info:tooltip", "Set the end time" ) );
+  mEndTimeEdit->setWhatsThis(
+    i18nc( "@info:whatsthis", "Select the starting time for this event." ) );
   layoutTimeBox->addWidget( mEndTimeEdit, 1, 2 );
 
   mHasTimeCheckbox = new QCheckBox( i18n( "T&ime associated" ), timeGroupBox );
@@ -201,12 +223,16 @@ void KOEditorGeneralEvent::initClass( QWidget *parent, QBoxLayout *topLayout )
   topLayout->addItem( classLayout );
 
   QLabel *freeTimeLabel = new QLabel( i18n( "S&how time as:" ), parent );
-  QString whatsThis = i18n( "Sets how this time will appear on your Free/Busy information." );
+  QString whatsThis =
+    i18nc( "@info:whatsthis",
+           "Sets how this time will appear on your Free/Busy information." );
   freeTimeLabel->setWhatsThis( whatsThis );
   classLayout->addWidget( freeTimeLabel );
 
   mFreeTimeCombo = new KComboBox( parent );
   mFreeTimeCombo->setEditable( false );
+  mFreeTimeCombo->setToolTip(
+    i18nc( "@info:tooltip", "Set this event as Busy or Free time" ) );
   mFreeTimeCombo->setWhatsThis( whatsThis );
   mFreeTimeCombo->addItem( i18nc( "show event as busy time", "Busy" ) );
   mFreeTimeCombo->addItem( i18nc( "show event as free time", "Free" ) );
@@ -222,15 +248,29 @@ void KOEditorGeneralEvent::initInvitationBar( QWidget *parent, QBoxLayout *layou
   QHBoxLayout *barLayout = new QHBoxLayout( mInvitationBar );
   barLayout->setSpacing( layout->spacing() );
   QLabel *label =
-    new QLabel( i18n( "You have not yet definitely responded to this invitation." ),
+    new QLabel( i18nc(
+                  "@info",
+                  "You have not yet definitely responded to this invitation." ),
                 mInvitationBar );
   barLayout->addWidget( label );
   barLayout->addStretch( 1 );
+
   QPushButton *button = new QPushButton( i18n( "Accept" ), mInvitationBar );
+  button->setToolTip(
+    i18nc( "@info:tooltip", "Accept the invitation" ) );
+  button->setWhatsThis(
+    i18nc( "@info:whatsthis",
+           "Click this button to accept the invitation." ) );
   connect( button, SIGNAL(clicked()), SIGNAL(acceptInvitation()) );
   connect( button, SIGNAL(clicked()), mInvitationBar, SLOT(hide()) );
   barLayout->addWidget( button );
+
   button = new QPushButton( i18n( "Decline" ), mInvitationBar );
+  button->setToolTip(
+    i18nc( "@info:tooltip", "Decline the invitation" ) );
+  button->setWhatsThis(
+    i18nc( "@info:whatsthis",
+           "Click this button to decline the invitation." ) );
   connect( button, SIGNAL(clicked()), SIGNAL(declineInvitation()) );
   connect( button, SIGNAL(clicked()), mInvitationBar, SLOT(hide()) );
   barLayout->addWidget( button );
