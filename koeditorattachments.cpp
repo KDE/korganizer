@@ -195,7 +195,7 @@ AttachmentEditDialog::AttachmentEditDialog( AttachmentIconItem *item,
   setMainWidget( page );
   setCaption( i18nc( "@title", "Properties for %1",
                      item->label().isEmpty() ? item->uri() : item->label() ) );
-  setButtons( KDialog::Ok | KDialog::Cancel | KDialog::Apply );
+  setButtons( KDialog::Ok | KDialog::Cancel );
   setDefaultButton( KDialog::Ok );
   setModal( modal );
   QVBoxLayout *vbl = new QVBoxLayout( page );
@@ -250,7 +250,6 @@ AttachmentEditDialog::AttachmentEditDialog( AttachmentIconItem *item,
                                         item->attachment()->size(), 0 ) ), page ), 4, 2 );
   }
   vbl->addStretch( 10 );
-  connect( this, SIGNAL(applyClicked()), this, SLOT(slotApply()) );
 }
 
 void AttachmentEditDialog::slotApply()
@@ -797,13 +796,13 @@ void KOEditorAttachments::slotCopy()
 
 void KOEditorAttachments::slotCut()
 {
-    slotCopy();
-    slotRemove();
+  slotCopy();
+  slotRemove();
 }
 
 void KOEditorAttachments::slotPaste()
 {
-    handlePasteOrDrop( QApplication::clipboard()->mimeData() );
+  handlePasteOrDrop( QApplication::clipboard()->mimeData() );
 }
 
 void KOEditorAttachments::selectionChanged()
