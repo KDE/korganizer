@@ -98,7 +98,7 @@ void KOAttendeeEditor::initEditWidgets( QWidget *parent, QBoxLayout *layout )
   attendeeLabel->setBuddy( mNameEdit );
   mNameEdit->installEventFilter( this );
   connect( mNameEdit, SIGNAL(textChanged(const QString &)), SLOT(updateAttendee()) );
-  topLayout->addMultiCellWidget( mNameEdit, 0, 0, 1, 2 );
+  topLayout->addWidget( mNameEdit, 0, 1, 1, 2 );
 
   whatsThis = i18n( "Edits the role of the attendee selected in the list above." );
   QLabel *attendeeRoleLabel = new QLabel( parent );
@@ -146,7 +146,7 @@ void KOAttendeeEditor::initEditWidgets( QWidget *parent, QBoxLayout *layout )
   connect( mStatusCombo, SIGNAL(activated(int)), SLOT(updateAttendee()) );
   topLayout->addWidget( mStatusCombo, 2, 1 );
 
-  topLayout->setColStretch( 2, 1 );
+  topLayout->setColumnStretch( 2, 1 );
 
   mRsvpButton = new QCheckBox( parent );
   mRsvpButton->setWhatsThis( i18n( "Edits whether to send an email to the "
@@ -180,7 +180,7 @@ void KOAttendeeEditor::initEditWidgets( QWidget *parent, QBoxLayout *layout )
   buttonLayout->addWidget( mAddressBookButton );
   connect( mAddressBookButton, SIGNAL(clicked()), SLOT(openAddressBook()) );
 
-  topLayout->addMultiCellWidget( buttonBox, 0, 3, 3, 3 );
+  topLayout->addWidget( buttonBox, 0, 4, 3, 1 );
 
 #ifdef KORG_NOKABC
   mAddressBookButton->hide();
