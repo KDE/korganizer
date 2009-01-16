@@ -243,10 +243,12 @@ void KOAttendeeEditor::addNewAttendee()
 {
   // check if there's still an unchanged example entry, and if so
   // suggest to edit that first
-  if ( Q3ListViewItem* item = hasExampleAttendee() ) {
-      KMessageBox::information( this,
-          i18n( "Please edit the example attendee, before adding more." ), QString::null,
-          "EditExistingExampleAttendeeFirst" );
+  if ( Q3ListViewItem *item = hasExampleAttendee() ) {
+      KMessageBox::information(
+        this,
+        i18n( "Please edit the example attendee, before adding more." ),
+        QString(),
+        "EditExistingExampleAttendeeFirst" );
       // make sure the example attendee is selected
       item->setSelected( true );
       item->listView()->setCurrentItem( item );
@@ -447,14 +449,17 @@ bool KOAttendeeEditor::eventFilter( QObject *watched, QEvent *ev )
   return QWidget::eventFilter( watched, ev );
 }
 
-bool KOAttendeeEditor::isExampleAttendee( const KCal::Attendee* attendee ) const
+bool KOAttendeeEditor::isExampleAttendee( const KCal::Attendee *attendee ) const
 {
-    if ( !attendee ) return false;
-    if ( attendee->name() == i18nc( "sample attendee name", "Firstname Lastname" )
-        && attendee->email().endsWith( "example.net" ) ) {
-        return true;
-    }
+  if ( !attendee ) {
     return false;
+  }
+
+  if ( attendee->name() == i18nc( "sample attendee name", "Firstname Lastname" ) &&
+       attendee->email().endsWith( "example.net" ) ) {
+    return true;
+  }
+  return false;
 }
 
 #include "koattendeeeditor.moc"
