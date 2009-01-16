@@ -126,7 +126,6 @@ void KOAttendeeEditor::initEditWidgets( QWidget *parent, QBoxLayout *layout )
   mStatusCombo = new KComboBox( parent );
   mStatusCombo->setWhatsThis( whatsThis );
   //TODO: the icons below aren't exactly correct
-//   mStatusCombo->addItems( Attendee::statusList() );
   mStatusCombo->addItem( KOGlobals::self()->smallIcon( "help-about" ),
                          Attendee::statusName( Attendee::NeedsAction ) );
   mStatusCombo->addItem( KOGlobals::self()->smallIcon( "dialog-ok-apply" ),
@@ -380,11 +379,24 @@ void KOAttendeeEditor::fillAttendeeInput( KCal::Attendee *a )
     name = KPIMUtils::quoteNameIfNecessary( name );
     name += " <" + a->email() + '>';
   }
+
+  bool myself = KOPrefs::instance()->thatIsMe( a->email() );
+  bool sameAsOrganizer = mOrganizerCombo &&
+                         KPIMUtils::compareEmail( a->email(),
+                                                  mOrganizerCombo->currentText(), false );
+  KCal::Attendee::PartStat partStat = a->status();
+  bool rsvp = a->RSVP();
+
+  if ( myself && sameAsOrganizer ) {
+    partStat = KCal::Attendee::Accepted;
+    rsvp = false;
+  }
+
   mNameEdit->setText( name );
   mUid = a->uid();
   mRoleCombo->setCurrentIndex( a->role() );
-  mStatusCombo->setCurrentIndex( a->status() );
-  mRsvpButton->setChecked( a->RSVP() );
+  mStatusCombo->setCurrentIndex( partStat );
+  mRsvpButton->setChecked( rsvp );
 
   mDisableItemUpdate = false;
   setEnableAttendeeInput( true );
@@ -456,7 +468,7 @@ bool KOAttendeeEditor::isExampleAttendee( const KCal::Attendee *attendee ) const
   }
 
   if ( attendee->name() == i18nc( "sample attendee name", "Firstname Lastname" ) &&
-       attendee->email().endsWith( "example.net" ) ) {
+       attendee->email().endsWith( QLatin1String( "example.net" ) ) ) {
     return true;
   }
   return false;
