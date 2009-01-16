@@ -212,7 +212,7 @@ void KOrganizer::initActions()
 void KOrganizer::slotEditKeys()
 {
   KShortcutsDialog::configure( actionCollection(),
-  KShortcutsEditor::LetterShortcutsDisallowed );
+  KShortcutsEditor::LetterShortcutsAllowed );
 }
 
 bool KOrganizer::queryClose()
