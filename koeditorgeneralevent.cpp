@@ -274,8 +274,6 @@ void KOEditorGeneralEvent::setDateTimes( const QDateTime &start, const QDateTime
 
 void KOEditorGeneralEvent::setDateTimes( const KDateTime &start, const KDateTime &end )
 {
-//  kDebug(5850) <<"KOEditorGeneralEvent::setDateTimes(): Start DateTime:" << start.toString();
-
   mStartDateEdit->setDate( start.date() );
   // KTimeEdit seems to emit some signals when setTime() is called.
   mStartTimeEdit->blockSignals( true );
@@ -422,12 +420,11 @@ void KOEditorGeneralEvent::readEvent( Event *event, Calendar *calendar, bool isT
   }
 
   mRecurrenceSummary->setText( IncidenceFormatter::recurrenceString( event ) );
-
   Attendee *me = event->attendeeByMails( KOPrefs::instance()->allEmails() );
-  if ( me &&
-       ( me->status() == Attendee::NeedsAction ||
-         me->status() == Attendee::Tentative ||
-         me->status() == Attendee::InProcess ) ) {
+  if ( event->attendeeCount() > 1 &&
+       me && ( me->status() == Attendee::NeedsAction ||
+               me->status() == Attendee::Tentative ||
+               me->status() == Attendee::InProcess ) ) {
     mInvitationBar->show();
   } else {
     mInvitationBar->hide();
