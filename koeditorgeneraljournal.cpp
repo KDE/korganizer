@@ -207,6 +207,8 @@ void KOEditorGeneralJournal::finishSetup()
   QWidget::setTabOrder( mDateEdit, mTimeCheckBox );
   QWidget::setTabOrder( mTimeCheckBox, mTimeEdit );
   QWidget::setTabOrder( mTimeEdit, mDescriptionEdit );
+  QWidget::setTabOrder( mDescriptionEdit, mCategoriesButton );
+
   mSummaryEdit->setFocus();
 }
 
