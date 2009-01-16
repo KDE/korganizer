@@ -217,6 +217,10 @@ AttachmentEditDialog::AttachmentEditDialog( AttachmentIconItem *item,
   mLabelEdit = new KLineEdit( page );
   mLabelEdit->setText( item->label().isEmpty() ? item->uri() : item->label() );
   mLabelEdit->setClickMessage( i18nc( "@label", "Attachment name" ) );
+  mLabelEdit->setToolTip(
+    i18nc( "@info", "Give the attachment a name" ) );
+  mLabelEdit->setWhatsThis(
+    i18nc( "@info", "Type any string you desire here for the name of the attachment" ) );
   grid->addWidget( mLabelEdit, 0, 2 );
 
   KSeparator *sep = new KSeparator( Qt::Horizontal, page );
@@ -234,11 +238,27 @@ AttachmentEditDialog::AttachmentEditDialog( AttachmentIconItem *item,
   mInline = new QCheckBox( i18nc( "@option:check", "Store attachment inline" ), page );
   grid->addWidget( mInline, 3, 0, 1, 3 );
   mInline->setChecked( item->isBinary() );
+  mInline->setToolTip(
+    i18nc( "@info", "Store the attachment file inside the calendar" ) );
+  mInline->setWhatsThis(
+    i18nc( "@info",
+           "Checking this option will cause the attachment to be stored inside "
+           "your calendar, which can take a lot of space depending on the size "
+           "of the attachment. If this option is not checked, then only a link "
+           "pointing to the attachment will be stored.  Do not use a link for "
+           "attachments that change often or may be moved (or removed) from "
+           "its current location." ) );
 
   if ( item->attachment()->isUri() ) {
     label = new QLabel( i18nc( "@label", "Location:" ), page );
     grid->addWidget( label, 4, 0 );
     mURLRequester = new KUrlRequester( item->uri(), page );
+    mURLRequester->setToolTip(
+      i18nc( "@info", "Provide a location for the attachment file" ) );
+    mURLRequester->setWhatsThis(
+      i18nc( "@info",
+             "Enter the path to the attachment file or use the file browser "
+             "by pressing the adjacent button" ) );
     grid->addWidget( mURLRequester, 4, 2 );
     connect( mURLRequester, SIGNAL(urlSelected(const KUrl &)),
              SLOT(urlChanged(const KUrl &)) );
@@ -435,7 +455,7 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent )
 
   QPushButton *addButton = new QPushButton( this );
   addButton->setIcon( KIcon( "list-add" ) );
-  addButton->setToolTip( i18nc( "@action:button", "&Add..." ) );
+  addButton->setToolTip( i18nc( "@info", "Add an attachment" ) );
   addButton->setWhatsThis( i18nc( "@info",
                                   "Shows a dialog used to select an attachment "
                                   "to add to this event or to-do as link or as "
@@ -445,7 +465,7 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent )
 
   mRemoveBtn = new QPushButton( this );
   mRemoveBtn->setIcon( KIcon( "list-remove" ) );
-  mRemoveBtn->setToolTip( i18nc( "@action:button", "&Remove" ) );
+  mRemoveBtn->setToolTip( i18nc( "@info", "Remove the selected attachment" ) );
   mRemoveBtn->setWhatsThis( i18nc( "@info",
                                    "Removes the attachment selected in the "
                                    "list above from this event or to-do." ) );
