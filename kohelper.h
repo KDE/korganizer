@@ -38,12 +38,16 @@ namespace KCal {
 // Provides static methods that are useful to all views.
 // TODO: replace this class with KOHelper namespace.
 
-class KORGANIZERPRIVATE_EXPORT KOHelper
+class KORGANIZER_CORE_EXPORT KOHelper
 {
   public:
     /**
-      This method returns the proper resource / subresource color for the
-      view.
+      Returns a nice QColor for text, give the input color &c.
+    */
+    static QColor getTextColor( const QColor &c );
+
+    /**
+      This method returns the proper resource / subresource color for the view.
       @return The resource color for the incidence. If the incidence belongs
       to a subresource, the color for the subresource is returned (if set).
       @param calendar the calendar for which the resource color should be obtained
@@ -54,10 +58,10 @@ class KORGANIZERPRIVATE_EXPORT KOHelper
                                  KCal::Incidence *incidence );
 
     /**
-       This method converts the date time to the calendar timespec if a calendar
-       is specified. Else it converts it to preferences timespec.
+      This method converts the date time to the calendar timespec if a calendar
+      is specified. Else it converts it to preferences timespec.
 
-       If @param dt is dateOnly(), it wont be converted and just returned.
+      If @param dt is dateOnly(), it wont be converted and just returned.
     */
     static KDateTime toTimeSpec( const KDateTime &dt, KCal::Calendar *calendar = 0 );
 

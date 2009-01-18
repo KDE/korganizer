@@ -41,7 +41,6 @@ class KOCoreHelper : public KOrg::CoreHelper
     virtual ~KOCoreHelper() {}
 
     virtual QColor defaultEventColor() { return KOPrefs::instance()->agendaCalendarItemsEventsBackgroundColor(); }
-    virtual QColor textColor( const QColor &bgColor ) { return getTextColor( bgColor ); }
     virtual QColor categoryColor( const QStringList &cats );
     virtual QString holidayString( const QDate &dt );
     virtual QTime dayStart() { return KOPrefs::instance()->mDayBegins.time(); }

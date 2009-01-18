@@ -70,13 +70,9 @@ install(TARGETS korganizer ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 set(kcm_korganizer_PART_SRCS koprefsdialog.cpp )
 
-
 kde4_add_plugin(kcm_korganizer ${kcm_korganizer_PART_SRCS})
 
-
-target_link_libraries(kcm_korganizer ${KDE4_KDEUI_LIBS} korganizerprivate kdepim kholidays ${QT_QT3SUPPORT_LIBRARY} ${KDE4_KCAL_LIBS} korganizer_calendar)
-
-kde4_add_kcfg_files(kcm_korganizer_SRCS koprefs_base.kcfgc )
+target_link_libraries(kcm_korganizer ${QT_QT3SUPPORT_LIBRARY} ${KDE4_KDEUI_LIBS} ${KDE4_KCAL_LIBS} korganizerprivate kdepim kholidays korganizer_core korganizer_calendar)
 
 install(TARGETS kcm_korganizer  DESTINATION ${PLUGIN_INSTALL_DIR})
 
@@ -85,15 +81,9 @@ install(TARGETS kcm_korganizer  DESTINATION ${PLUGIN_INSTALL_DIR})
 
 set(korganizerpart_PART_SRCS korganizer_part.cpp )
 
-
 kde4_add_plugin(korganizerpart ${korganizerpart_PART_SRCS})
 
-
-
-target_link_libraries(korganizerpart  ${KDE4_KDECORE_LIBS} ${KDE4_KPARTS_LIBS} korganizerprivate korganizer_calendar 
-   ${KDE4_KCAL_LIBS}
-   korganizer_interfaces
-)
+target_link_libraries(korganizerpart ${KDE4_KDECORE_LIBS} ${KDE4_KPARTS_LIBS} ${KDE4_KCAL_LIBS} korganizerprivate korganizer_core korganizer_calendar korganizer_interfaces)
 
 install(TARGETS korganizerpart  DESTINATION ${PLUGIN_INSTALL_DIR})
 
@@ -121,13 +111,26 @@ install(TARGETS korganizer_eventviewer ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 set(korganizer_calendar_LIB_SRCS stdcalendar.cpp )
 
-
 kde4_add_library(korganizer_calendar SHARED ${korganizer_calendar_LIB_SRCS})
 
 target_link_libraries(korganizer_calendar ${KDE4_KPARTS_LIBS} ${KDE4_KCAL_LIBS} ${KDE4_KDE3SUPPORT_LIBS} kdepim)
 
 set_target_properties(korganizer_calendar PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
 install(TARGETS korganizer_calendar ${INSTALL_TARGETS_DEFAULT_ARGS})
+
+
+########### next target ###############
+
+set(korganizer_core_LIB_SRCS koprefs.cpp kocore.cpp kohelper.cpp koidentitymanager.cpp cellitem.cpp)
+
+kde4_add_kcfg_files(korganizer_core_LIB_SRCS koprefs_base.kcfgc )
+
+kde4_add_library(korganizer_core SHARED ${korganizer_core_LIB_SRCS})
+
+target_link_libraries(korganizer_core ${KDE4_KDE3SUPPORT_LIBS} ${KDE4_KMIME_LIBRARY} kdepim)
+
+set_target_properties(korganizer_core PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
+install(TARGETS korganizer_core ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 
 ########### next target ###############
@@ -175,13 +178,11 @@ set(korganizerprivate_LIB_SRCS
    koviewmanager.cpp
    kodialogmanager.cpp
    archivedialog.cpp
-   kohelper.cpp
    komailclient.cpp
    koincidenceeditor.cpp
    koeventeditor.cpp
    kotodoeditor.cpp
    kojournaleditor.cpp
-   koprefs.cpp
    kowindowlist.cpp
    koeditorgeneral.cpp
    koeditorgeneralevent.cpp
@@ -196,7 +197,6 @@ set(korganizerprivate_LIB_SRCS
    publishdialog.cpp
    koeventview.cpp
    filtereditdialog.cpp
-   kocore.cpp
    mailscheduler.cpp
    kodaymatrix.cpp
    docprefs.cpp
@@ -213,15 +213,12 @@ set(korganizerprivate_LIB_SRCS
    freebusymanager.cpp
    freebusyurldialog.cpp
    eventarchiver.cpp
-   koidentitymanager.cpp
    exportwebdialog.cpp
    kocorehelper.cpp
    incidencechanger.cpp
    koattendeeeditor.cpp
    templatemanagementdialog.cpp )
 
-
-kde4_add_kcfg_files(korganizerprivate_LIB_SRCS koprefs_base.kcfgc )
 
 kde4_add_ui_files(korganizerprivate_LIB_SRCS filteredit_base.ui koeditoralarms_base.ui publishdialog_base.ui template_management_dialog_base.ui kogroupwareprefspage.ui searchdialog_base.ui timescaleedit_base.ui)
 
@@ -236,10 +233,11 @@ kde4_add_library(korganizerprivate SHARED ${korganizerprivate_LIB_SRCS})
 
 add_dependencies(korganizerprivate kmail)
 
-target_link_libraries(korganizerprivate ${KDE4_KNEWSTUFF2_LIBS} ${KDE4_KABC_LIBS} ${KDE4_KUTILS_LIBS} 
-   ${KDE4_KCAL_LIBS} ${KDE4_KPIMIDENTITIES_LIBRARY} ${KDE4_KMIME_LIBRARY}
-   kdepim korganizer_eventviewer korganizer_calendar kocorehelper ${ZLIB_LIBRARY}
-   korg_stdprinting kholidays korganizer_interfaces ${KDE4_KDE3SUPPORT_LIBS}
+target_link_libraries(korganizerprivate
+  ${KDE4_KNEWSTUFF2_LIBS} ${KDE4_KUTILS_LIBS}  ${KDE4_KDE3SUPPORT_LIBS} ${ZLIB_LIBRARY}
+  ${KDE4_KCAL_LIBS} ${KDE4_KABC_LIBS} ${KDE4_KPIMIDENTITIES_LIBRARY} ${KDE4_KMIME_LIBRARY}
+  korganizer_core korganizer_eventviewer korganizer_calendar korganizer_interfaces korg_stdprinting
+  kholidays kdepim
 )
 
 set_target_properties(korganizerprivate PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )

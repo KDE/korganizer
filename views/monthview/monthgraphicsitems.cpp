@@ -236,7 +236,7 @@ void MonthGraphicsItem::paint( QPainter *p, const QStyleOptionGraphicsItem *, QW
   bgColor = mMonthItem->selected() ? bgColor.lighter( 110 ) : bgColor;
   QColor frameColor = mMonthItem->frameColor( bgColor );
   frameColor = mMonthItem->selected() ? frameColor.lighter( 110 ) : frameColor;
-  QColor textColor = getTextColor(bgColor);
+  QColor textColor = KOHelper::getTextColor(bgColor);
 
   // make moving or resizing items translucent
   if ( mMonthItem->isMoving() || mMonthItem->isResizing() ) {

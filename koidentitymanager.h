@@ -25,11 +25,12 @@
 #ifndef KOIDENTITYMANAGER_H
 #define KOIDENTITYMANAGER_H
 
+#include "korganizer_export.h"
 #include <kpimidentities/identitymanager.h>
 
 namespace KOrg {
 
-class IdentityManager : public KPIMIdentities::IdentityManager
+class KORGANIZER_CORE_EXPORT IdentityManager : public KPIMIdentities::IdentityManager
 {
   public:
     explicit IdentityManager( QObject *parent=0, const char *name=0 )

@@ -30,7 +30,7 @@
 
 namespace KOrg {
 
-class KOCOREHELPER_EXPORT CellItem
+class KORGANIZER_CORE_EXPORT CellItem
 {
   public:
     CellItem()

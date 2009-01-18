@@ -121,7 +121,6 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
 
     /** Helper functions to hide the KOrg::CoreHelper */
     QColor categoryBgColor( Incidence *incidence );
-    QColor textColor( const QColor &color );
     QTime dayStart();
     bool isWorkingDay( const QDate &dt );
     QString holidayString( const QDate &dt );

@@ -28,9 +28,9 @@
 #ifndef KORG_NOPRINTER
 
 #include "calprintdefaultplugins.h"
+#include "koprefs.h"
 
 #include <libkdepim/kdateedit.h>
-#include <libkdepim/kpimprefs.h>
 
 #include <kcal/todo.h>
 #include <kcal/calendar.h>
@@ -498,7 +498,7 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
           }
           // format the dates if provided
           datesString.clear();
-          KDateTime::Spec spec = KPIM::KPimPrefs::timeSpec();
+          KDateTime::Spec spec = KOPrefs::instance()->timeSpec();
           if ( (*rit)->dtStart().isValid() ) {
             datesString += i18nc(
               "subitem start date", "Start Date: %1\n",
@@ -761,7 +761,7 @@ void CalPrintDay::print( QPainter &p, int width, int height )
 {
   QDate curDay( mFromDate );
 
-  KDateTime::Spec timeSpec = KPIM::KPimPrefs::timeSpec();
+  KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
 
   switch ( mDayPrintType ) {
   case Filofax:

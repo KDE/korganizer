@@ -26,8 +26,8 @@
 
 #include "calprintpluginbase.h"
 #include "cellitem.h"
-
-#include <libkdepim/kpimprefs.h>
+#include "koprefs.h"
+#include "kohelper.h"
 
 #include <kdebug.h>
 #include <kconfig.h>
@@ -228,7 +228,7 @@ void CalPrintPluginBase::setCategoryColors( QPainter &p, Incidence *incidence )
   if ( bgColor.isValid() ) {
     p.setBrush( bgColor );
   }
-  QColor tColor( textColor( bgColor ) );
+  QColor tColor( KOHelper::getTextColor( bgColor ) );
   if ( tColor.isValid() ) {
     p.setPen( tColor );
   }
@@ -241,11 +241,6 @@ QColor CalPrintPluginBase::categoryBgColor( Incidence *incidence )
   } else {
     return QColor();
   }
-}
-
-QColor CalPrintPluginBase::textColor( const QColor &color )
-{
-  return mCoreHelper ? mCoreHelper->textColor( color ) : QColor();
 }
 
 bool CalPrintPluginBase::isWorkingDay( const QDate &dt )
@@ -262,8 +257,7 @@ Event *CalPrintPluginBase::holiday( const QDate &dt )
 {
   QString hstring( holidayString( dt ) );
   if ( !hstring.isEmpty() ) {
-    //FIXME: KOPrefs::instance()->timeSpec()?
-    KDateTime::Spec timeSpec = KPIM::KPimPrefs::timeSpec();
+    KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
     KDateTime kdt( dt, QTime(), timeSpec );
     Event *holiday = new Event();
     holiday->setSummary( hstring );
@@ -390,7 +384,7 @@ void CalPrintPluginBase::showEventBox( QPainter &p, const QRect &box,
   drawBox( p, EVENT_BORDER_WIDTH, box );
 
   if ( mUseColors && bgColor.isValid() ) {
-    p.setPen( textColor( bgColor ) );
+    p.setPen( KOHelper::getTextColor( bgColor ) );
   }
   printEventString( p, box, str, flags );
   p.setPen( oldpen );
@@ -962,7 +956,7 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
   p.setFont( QFont( "sans-serif", 10, QFont::Bold ) );
   p.drawText( headerTextBox, Qt::AlignRight | Qt::AlignVCenter, dayNumStr );
 
-  Event::List eventList = mCalendar->events( qd, KPIM::KPimPrefs::timeSpec(),
+  Event::List eventList = mCalendar->events( qd, KOPrefs::instance()->timeSpec(),
                                              EventSortStartDate,
                                              SortDirectionAscending );
 
@@ -1197,7 +1191,7 @@ void CalPrintPluginBase::drawTimeTable( QPainter &p,
 
   // draw each day
   QDate curDate(fromDate);
-  KDateTime::Spec timeSpec = KPIM::KPimPrefs::timeSpec();
+  KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
   int i=0;
   double cellWidth = double( dowBox.width() ) / double( fromDate.daysTo( toDate ) + 1 );
   while ( curDate <= toDate ) {
@@ -1326,8 +1320,7 @@ void CalPrintPluginBase::drawMonth( QPainter &p, const QDate &dt,
 
   QList<MonthEventStruct> monthentries;
 
-  //FIXME: KOPrefs::instance()->timeSpec()?
-  KDateTime::Spec timeSpec = KPIM::KPimPrefs::timeSpec();
+  KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
   for ( Event::List::ConstIterator evit = events.constBegin(); evit != events.constEnd(); ++evit ) {
     Event *e = (*evit);
     if ( !e ) {

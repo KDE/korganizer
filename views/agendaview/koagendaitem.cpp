@@ -26,6 +26,7 @@
 #include "koagendaitem.h"
 #include "koprefs.h"
 #include "koglobals.h"
+#include "kohelper.h"
 
 #include <libkdepim/kvcarddrag.h>
 
@@ -876,7 +877,7 @@ void KOAgendaItem::paintEvent( QPaintEvent *ev )
     bgColor = bgColor.light( 110 ); // keep this in sync with month view
   }
 
-  QColor textColor = getTextColor( bgColor );
+  QColor textColor = KOHelper::getTextColor( bgColor );
   p.setPen( textColor );
 
   p.setFont( KOPrefs::instance()->agendaCalendarItemsFont() );
@@ -1073,7 +1074,7 @@ void KOAgendaItem::paintEvent( QPaintEvent *ev )
     x += ( hTxtWidth - hw ) / 2;
   }
   p.setBackground( QBrush( frameColor ) );
-  p.setPen( getTextColor( frameColor ) );
+  p.setPen( KOHelper::getTextColor( frameColor ) );
   KWordWrap::drawFadeoutText( &p, x, ( margin + hlHeight + fm.ascent() ) / 2 - 2,
                               hTxtWidth, headline );
 
