@@ -24,9 +24,7 @@
 #include "publishdialog.h"
 #include "koprefs.h"
 
-#ifndef KORG_NOKABC
 #include <kabc/addresseedialog.h>
-#endif
 #include <kcal/attendee.h>
 
 #include <kdebug.h>
@@ -127,7 +125,6 @@ void PublishDialog::removeItem()
 
 void PublishDialog::openAddressbook()
 {
-#ifndef KORG_NOKABC
   KABC::Addressee::List addressList;
   addressList = KABC::AddresseeDialog::getAddressees( this );
   //KABC::Addressee a = KABC::AddresseeDialog::getAddressee(this);
@@ -147,7 +144,6 @@ void PublishDialog::openAddressbook()
       mUI.mAddressListView->insertItem( item );
     }
   }
-#endif
 }
 
 void PublishDialog::updateItem()

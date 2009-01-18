@@ -22,12 +22,10 @@
 #include "koprefs.h"
 #include "koglobals.h"
 
-#ifndef KORG_NOKABC
-#include <kabc/addresseedialog.h>
 #include <libkdepim/addressesdialog.h>
 #include <libkdepim/addresseelineedit.h>
-#endif
 
+#include <kabc/addresseedialog.h>
 #include <kcal/incidence.h>
 #include <kpimutils/email.h>
 
@@ -207,14 +205,11 @@ void KOAttendeeEditor::initEditWidgets( QWidget *parent, QBoxLayout *layout )
 
   topLayout->addWidget( buttonBox, 0, 4, 3, 1 );
 
-#ifdef KORG_NOKABC
   mAddressBookButton->hide();
-#endif
 }
 
 void KOAttendeeEditor::openAddressBook()
 {
-#ifndef KORG_NOKABC
   KPIM::AddressesDialog *dia = new KPIM::AddressesDialog( this );
   dia->setShowCC( false );
   dia->setShowBCC( false );
@@ -227,7 +222,6 @@ void KOAttendeeEditor::openAddressBook()
   }
   delete dia;
   return;
-#endif
 }
 
 void KOAttendeeEditor::insertAttendeeFromAddressee( const KABC::Addressee &a, const Attendee *at )

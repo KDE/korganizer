@@ -29,22 +29,19 @@
 #include "freebusymanager.h"
 #include "freebusyurldialog.h"
 
-#ifndef KORG_NOKABC
-#include <kabc/addresseedialog.h>
-#include <kabc/vcardconverter.h>
 #include <libkdepim/addressesdialog.h>
 #include <libkdepim/addresseelineedit.h>
 #include <libkdepim/distributionlist.h>
-#include <kabc/stdaddressbook.h>
-#endif
-
-#include <kcal/event.h>
-#include <kcal/freebusy.h>
 
 #include <kdgantt1/KDGanttView.h>
 #include <kdgantt1/KDGanttViewTaskItem.h>
 #include <kdgantt1/KDGanttViewSubwidgets.h>
 
+#include <kabc/addresseedialog.h>
+#include <kabc/vcardconverter.h>
+#include <kabc/stdaddressbook.h>
+#include <kcal/event.h>
+#include <kcal/freebusy.h>
 #include <kpimutils/email.h>
 
 #include <klocale.h>

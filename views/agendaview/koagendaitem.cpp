@@ -30,19 +30,15 @@
 
 #include <libkdepim/kvcarddrag.h>
 
+#include <kabc/addressee.h>
+#include <kabc/vcardconverter.h>
 #include <kcal/icaldrag.h>
 #include <kcal/incidence.h>
 #include <kcal/event.h>
 #include <kcal/todo.h>
 #include <kcal/incidenceformatter.h>
 #include <kcal/vcaldrag.h>
-
 #include <kpimutils/email.h>
-
-#ifndef KORG_NOKABC
-#include <kabc/addressee.h>
-#include <kabc/vcardconverter.h>
-#endif
 
 #include <kiconloader.h>
 #include <kdebug.h>
@@ -651,7 +647,6 @@ void KOAgendaItem::dropEvent( QDropEvent *e )
     return;
   }
 
-#ifndef KORG_NOKABC
   KABC::Addressee::List list;
 
   if ( KPIM::KVCardDrag::fromMimeData( md, list ) ) {
@@ -664,15 +659,6 @@ void KOAgendaItem::dropEvent( QDropEvent *e )
       addAttendee( em );
     }
   }
-#else
-  if( decoded ) {
-    QStringList emails = text.split( ',', QString::SkipEmptyParts );
-    for ( QStringList::ConstIterator it = emails.begin(); it != emails.end(); ++it ) {
-      addAttendee( *it );
-    }
-  }
-#endif // KORG_NOKABC
-
 #endif // KORG_NODND
 }
 

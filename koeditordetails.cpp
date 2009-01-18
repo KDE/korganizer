@@ -29,17 +29,15 @@
 #include "koeditorfreebusy.h"
 #include "kocore.h"
 
-#include <kcal/incidence.h>
-#include <kpimutils/email.h>
-
-#ifndef KORG_NOKABC
-#include <kabc/addresseedialog.h>
-#include <kabc/stdaddressbook.h>
 #include <libkdepim/addressesdialog.h>
 #include <libkdepim/addresseelineedit.h>
 #include <libkdepim/distributionlist.h>
-#endif
 #include <libkdepim/kvcarddrag.h>
+
+#include <kabc/addresseedialog.h>
+#include <kabc/stdaddressbook.h>
+#include <kcal/incidence.h>
+#include <kpimutils/email.h>
 
 #include <KComboBox>
 #include <kdebug.h>
@@ -149,7 +147,6 @@ void KOAttendeeListView::dropEvent( QDropEvent *e )
 #ifndef KORG_NODND
   const QMimeData *md = e->mimeData();
 
-#ifndef KORG_NOKABC
   if ( KPIM::KVCardDrag::canDecode( md ) ) {
     KABC::Addressee::List list;
     KPIM::KVCardDrag::fromMimeData( md, list );
@@ -163,7 +160,7 @@ void KOAttendeeListView::dropEvent( QDropEvent *e )
       addAttendee( em );
     }
   }
-#endif // KORG_NOKABC
+
   if ( md->hasText() ) {
     QString text = md->text();
     kDebug() << "Dropped :" << text;

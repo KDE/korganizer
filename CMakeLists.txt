@@ -9,10 +9,6 @@
 #                  views or between a view and the navigator. Probably necessary
 #                  if KOrganizer is being used on small form factor devices.
 #
-# KORG_NOKABC    - turns-off using the kabc library for contacts -- so there
-#                  will be no ability to add attendees or send invitations.
-#                  No idea why you wouldn't have access to the kabc library.
-#
 # KORG_NOPLUGINS - turns-off plugins (decoration plugins) in views.
 #                  No idea why you'd want to do this, especially since
 #                  printing and other plugins are used unconditionally.
