@@ -291,7 +291,7 @@ void KODialogManager::createCategoryEditor()
     mCategoryEditDialog =
       new KPIM::CategoryEditDialog( KOPrefs::instance(), mMainView );
     mCategoryEditDialog->setModal( true );
-    mCategoryEditDialog->setHelp( i18n( "categories-view" ), "korganizer" );
+    mCategoryEditDialog->setHelp( "categories-view", "korganizer" );
     connect( mMainView, SIGNAL(categoriesChanged()),
              mCategoryEditDialog, SLOT(reload()) );
     connect( mCategoryEditDialog, SIGNAL(categoryConfigChanged()),
