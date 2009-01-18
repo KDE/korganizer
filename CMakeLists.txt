@@ -135,6 +135,22 @@ install(TARGETS korganizer_core ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 ########### next target ###############
 
+set(libkdgantt1_SRCS
+  ${CMAKE_SOURCE_DIR}/kdgantt1/KDGanttView.cpp
+  ${CMAKE_SOURCE_DIR}/kdgantt1/KDGanttViewEventItem.cpp
+  ${CMAKE_SOURCE_DIR}/kdgantt1/KDGanttViewItem.cpp
+  ${CMAKE_SOURCE_DIR}/kdgantt1/KDGanttViewItemDrag.cpp
+  ${CMAKE_SOURCE_DIR}/kdgantt1/KDGanttViewSubwidgets.cpp
+  ${CMAKE_SOURCE_DIR}/kdgantt1/KDGanttViewSummaryItem.cpp
+  ${CMAKE_SOURCE_DIR}/kdgantt1/KDGanttViewTaskItem.cpp
+  ${CMAKE_SOURCE_DIR}/kdgantt1/KDGanttViewTaskLink.cpp
+  ${CMAKE_SOURCE_DIR}/kdgantt1/KDGanttViewTaskLinkGroup.cpp
+  ${CMAKE_SOURCE_DIR}/kdgantt1/KDGanttMinimizeSplitter.cpp
+  ${CMAKE_SOURCE_DIR}/kdgantt1/KDGanttSemiSizingControl.cpp
+  ${CMAKE_SOURCE_DIR}/kdgantt1/KDGanttSizingControl.cpp
+  ${CMAKE_SOURCE_DIR}/kdgantt1/KDGanttXMLTools.cpp
+)
+
 set(korganizerprivate_LIB_SRCS
    ${libkdgantt1_SRCS}
    themeimporter.cpp
@@ -217,8 +233,8 @@ set(korganizerprivate_LIB_SRCS
    kocorehelper.cpp
    incidencechanger.cpp
    koattendeeeditor.cpp
-   templatemanagementdialog.cpp )
-
+   templatemanagementdialog.cpp 
+)
 
 kde4_add_ui_files(korganizerprivate_LIB_SRCS filteredit_base.ui koeditoralarms_base.ui publishdialog_base.ui template_management_dialog_base.ui kogroupwareprefspage.ui searchdialog_base.ui timescaleedit_base.ui)
 
