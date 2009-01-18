@@ -341,8 +341,10 @@ void KOEditorGeneralEvent::readEvent( Event *event, Calendar *calendar, bool tmp
   mRecurrenceSummary->setText( IncidenceFormatter::recurrenceString( event ) );
 
   Attendee *me = event->attendeeByMails( KOPrefs::instance()->allEmails() );
-  if ( me && (me->status() == Attendee::NeedsAction || me->status() == Attendee::Tentative ||
-       me->status() == Attendee::InProcess) ) {
+  if ( event->attendeeCount() > 1 &&
+       me && ( me->status() == Attendee::NeedsAction ||
+       me->status() == Attendee::Tentative ||
+       me->status() == Attendee::InProcess ) ) {
     mInvitationBar->show();
   } else {
     mInvitationBar->hide();

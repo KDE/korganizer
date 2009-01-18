@@ -396,11 +396,24 @@ void KOAttendeeEditor::fillAttendeeInput( KCal::Attendee *a )
     name = KPIM::quoteNameIfNecessary( name );
     name += " <" + a->email() + ">";
   }
+
+  bool myself = KOPrefs::instance()->thatIsMe( a->email() );
+  bool sameAsOrganizer = mOrganizerCombo &&
+          KPIM::compareEmail( a->email(),
+                                   mOrganizerCombo->currentText(), false );
+  KCal::Attendee::PartStat partStat = a->status();
+  bool rsvp = a->RSVP();
+
+  if ( myself && sameAsOrganizer ) {
+      partStat = KCal::Attendee::Accepted;
+      rsvp = false;
+  }
+
   mNameEdit->setText(name);
   mUid = a->uid();
   mRoleCombo->setCurrentItem(a->role());
-  mStatusCombo->setCurrentItem(a->status());
-  mRsvpButton->setChecked(a->RSVP());
+  mStatusCombo->setCurrentItem( partStat );
+  mRsvpButton->setChecked( rsvp );
 
   mDisableItemUpdate = false;
   setEnableAttendeeInput( true );
