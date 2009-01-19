@@ -682,6 +682,7 @@ void CalPrintDay::readSettingsWidget()
     mIncludeTodos = cfg->mIncludeTodos->isChecked();
     mUseColors = cfg->mColors->isChecked();
     mShowNoteLines = cfg->mShowNoteLines->isChecked();
+    mExcludeTime = cfg->mExcludeTime->isChecked();
   }
 }
 
@@ -704,6 +705,7 @@ void CalPrintDay::setSettingsWidget()
     cfg->mIncludeTodos->setChecked( mIncludeTodos );
     cfg->mColors->setChecked( mUseColors );
     cfg->mShowNoteLines->setChecked( mShowNoteLines );
+    cfg->mExcludeTime->setChecked( mExcludeTime );
   }
 }
 
@@ -723,6 +725,7 @@ void CalPrintDay::loadConfig()
     mDayPrintType = (eDayPrintType)( grp.readEntry( "Print type", (int)Timetable ) );
     mSingleLineLimit = grp.readEntry( "Single line limit", false );
     mShowNoteLines = grp.readEntry( "Note Lines", false );
+    mExcludeTime = grp.readEntry( "Exclude time", false );
   }
   setSettingsWidget();
 }
@@ -743,6 +746,7 @@ void CalPrintDay::saveConfig()
     grp.writeEntry( "Print type", int( mDayPrintType ) );
     grp.writeEntry( "Single line limit", mSingleLineLimit );
     grp.writeEntry( "Note Lines", mShowNoteLines );
+    grp.writeEntry( "Exclude time", mExcludeTime );
   }
 }
 
@@ -780,7 +784,8 @@ void CalPrintDay::print( QPainter &p, int width, int height )
         title = i18nc( "date from-\nto", "%1 -\n%2", line1, line2 );
       }
       drawHeader( p, title, mFromDate, QDate(), headerBox );
-      drawDays( p, mFromDate, mToDate, daysBox, mSingleLineLimit, mShowNoteLines );
+      drawDays( p, mFromDate, mToDate, daysBox, mSingleLineLimit,
+                mShowNoteLines, mIncludeDescription );
       drawFooter( p, daysBox );
     }
     break;
@@ -815,7 +820,8 @@ void CalPrintDay::print( QPainter &p, int width, int height )
 
     QRect dayBox( allDayBox );
     drawAgendaDayBox( p, eventList, curDay, mIncludeAllEvents,
-                        curStartTime, curEndTime, dayBox, mIncludeDescription );
+                        curStartTime, curEndTime, dayBox,
+                        mIncludeDescription, mExcludeTime );
 
     QRect tlBox( dayBox );
     tlBox.setLeft( 0 );
@@ -871,6 +877,8 @@ void CalPrintWeek::readSettingsWidget()
     mSingleLineLimit = cfg->mSingleLineLimit->isChecked();
     mIncludeTodos = cfg->mIncludeTodos->isChecked();
     mUseColors = cfg->mColors->isChecked();
+    mIncludeDescription = cfg->mIncludeDescription->isChecked();
+    mExcludeTime = cfg->mExcludeTime->isChecked();
   }
 }
 
@@ -892,6 +900,8 @@ void CalPrintWeek::setSettingsWidget()
     cfg->mSingleLineLimit->setChecked( mSingleLineLimit );
     cfg->mIncludeTodos->setChecked( mIncludeTodos );
     cfg->mColors->setChecked( mUseColors );
+    cfg->mIncludeDescription->setChecked( mIncludeDescription );
+    cfg->mExcludeTime->setChecked( mExcludeTime );
   }
 }
 
@@ -909,6 +919,8 @@ void CalPrintWeek::loadConfig()
     mSingleLineLimit = grp.readEntry( "Single line limit", false );
     mIncludeTodos = grp.readEntry( "Include todos", false );
     mWeekPrintType = (eWeekPrintType)( grp.readEntry( "Print type", (int)Filofax ) );
+    mIncludeDescription = grp.readEntry( "Include Description", false );
+    mExcludeTime = grp.readEntry( "Exclude Time", false );
   }
   setSettingsWidget();
 }
@@ -927,6 +939,8 @@ void CalPrintWeek::saveConfig()
     grp.writeEntry( "Single line limit", mSingleLineLimit );
     grp.writeEntry( "Include todos", mIncludeTodos );
     grp.writeEntry( "Print type", int( mWeekPrintType ) );
+    grp.writeEntry( "Include Description", mIncludeDescription );
+    grp.writeEntry( "Exclude Time", mExcludeTime );
   }
 }
 
@@ -982,7 +996,8 @@ void CalPrintWeek::print( QPainter &p, int width, int height )
         title = i18nc( "date from-\nto", "%1 -\n%2", line1, line2 );
       }
       drawHeader( p, title, curWeek.addDays( -6 ), QDate(), headerBox );
-      drawWeek( p, curWeek, weekBox, mSingleLineLimit, mShowNoteLines );
+      drawWeek( p, curWeek, weekBox, mSingleLineLimit,
+                mShowNoteLines, mIncludeDescription );
       drawFooter( p, weekBox );
       curWeek = curWeek.addDays( 7 );
       if ( curWeek <= toWeek ) {
@@ -1008,7 +1023,8 @@ void CalPrintWeek::print( QPainter &p, int width, int height )
       QRect weekBox( headerBox );
       weekBox.setTop( headerBox.bottom() + padding() );
       weekBox.setBottom( height );
-      drawTimeTable( p, fromWeek, curWeek, mStartTime, mEndTime, weekBox );
+      drawTimeTable( p, fromWeek, curWeek, mStartTime, mEndTime, weekBox,
+                     mIncludeDescription, mExcludeTime );
       drawFooter( p, weekBox );
       fromWeek = fromWeek.addDays( 7 );
       curWeek = fromWeek.addDays( 6 );
@@ -1030,11 +1046,12 @@ void CalPrintWeek::print( QPainter &p, int width, int height )
       int hh = headerHeight();
 
       drawSplitHeaderRight( p, fromWeek, curWeek, QDate(), width, hh );
-      drawTimeTable( p, fromWeek, endLeft, mStartTime, mEndTime, weekBox );
+      drawTimeTable( p, fromWeek, endLeft, mStartTime, mEndTime, weekBox,
+                     mIncludeDescription, mExcludeTime );
       mPrinter->newPage();
       drawSplitHeaderRight( p, fromWeek, curWeek, QDate(), width, hh );
-      drawTimeTable( p, endLeft.addDays( 1 ), curWeek, mStartTime, mEndTime, weekBox1 );
-
+      drawTimeTable( p, endLeft.addDays( 1 ), curWeek, mStartTime, mEndTime,
+                     weekBox1, mIncludeDescription, mExcludeTime );
       fromWeek = fromWeek.addDays( 7 );
       curWeek = fromWeek.addDays( 6 );
       if ( curWeek <= toWeek ) {
@@ -1078,6 +1095,7 @@ void CalPrintMonth::readSettingsWidget()
     mShowNoteLines = cfg->mShowNoteLines->isChecked();
     mSingleLineLimit = cfg->mSingleLineLimit->isChecked();
     mUseColors = cfg->mColors->isChecked();
+    mIncludeDescription = cfg->mIncludeDescription->isChecked();
   }
 }
 
@@ -1095,6 +1113,7 @@ void CalPrintMonth::setSettingsWidget()
     cfg->mShowNoteLines->setChecked( mShowNoteLines );
     cfg->mSingleLineLimit->setChecked( mSingleLineLimit );
     cfg->mColors->setChecked( mUseColors );
+    cfg->mIncludeDescription->setChecked( mIncludeDescription );
   }
 }
 
@@ -1108,6 +1127,7 @@ void CalPrintMonth::loadConfig()
     mIncludeTodos = grp.readEntry( "Include todos", false );
     mSingleLineLimit = grp.readEntry( "Single line limit", false );
     mShowNoteLines = grp.readEntry( "Note Lines", false );
+    mIncludeDescription = grp.readEntry( "Include description", false );
   }
   setSettingsWidget();
 }
@@ -1123,6 +1143,7 @@ void CalPrintMonth::saveConfig()
     grp.writeEntry( "Include todos", mIncludeTodos );
     grp.writeEntry( "Single line limit", mSingleLineLimit );
     grp.writeEntry( "Note Lines", mShowNoteLines );
+    grp.writeEntry( "Include description", mIncludeDescription );
   }
 }
 
@@ -1178,7 +1199,8 @@ void CalPrintMonth::print( QPainter &p, int width, int height )
     drawHeader( p, title, curMonth.addMonths( -1 ), curMonth.addMonths( 1 ),
                 headerBox );
     drawMonthTable( p, curMonth, mWeekNumbers, mRecurDaily, mRecurWeekly,
-                    mSingleLineLimit, mShowNoteLines, monthBox );
+                    mSingleLineLimit, mShowNoteLines, mIncludeDescription,
+                    monthBox );
     drawFooter( p, monthBox );
     curMonth = curMonth.addDays( curMonth.daysInMonth() );
     if ( curMonth <= toMonth ) {

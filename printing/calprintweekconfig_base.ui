@@ -7,8 +7,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>623</width>
-    <height>409</height>
+    <width>626</width>
+    <height>470</height>
    </rect>
   </property>
   <layout class="QGridLayout" name="gridLayout" >
@@ -82,7 +82,7 @@ p, li { white-space: pre-wrap; }
         </property>
         <item>
          <property name="text" >
-          <string>2009-01-04</string>
+          <string>2009-01-19</string>
          </property>
         </item>
        </widget>
@@ -173,7 +173,7 @@ p, li { white-space: pre-wrap; }
         </property>
         <item>
          <property name="text" >
-          <string>2009-01-04</string>
+          <string>2009-01-19</string>
          </property>
         </item>
        </widget>
@@ -252,6 +252,16 @@ p, li { white-space: pre-wrap; }
     </widget>
    </item>
    <item row="3" column="0" >
+    <widget class="QCheckBox" name="mExcludeTime" >
+     <property name="whatsThis" >
+      <string>Check this option to exclude the time in description box</string>
+     </property>
+     <property name="text" >
+      <string>Exclude t&amp;ime from timetable detail display items</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0" >
     <widget class="QCheckBox" name="mIncludeTodos" >
      <property name="enabled" >
       <bool>false</bool>
@@ -264,7 +274,17 @@ p, li { white-space: pre-wrap; }
      </property>
     </widget>
    </item>
-   <item row="4" column="0" >
+   <item row="5" column="0" >
+    <widget class="QCheckBox" name="mIncludeDescription" >
+     <property name="whatsThis" >
+      <string>Check this option to include the more detailed description for each event.</string>
+     </property>
+     <property name="text" >
+      <string>Include &amp;Descriptions</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0" >
     <widget class="QCheckBox" name="mShowNoteLines" >
      <property name="whatsThis" >
       <string>Check this option to draw note lines.</string>
@@ -274,7 +294,7 @@ p, li { white-space: pre-wrap; }
      </property>
     </widget>
    </item>
-   <item row="5" column="0" >
+   <item row="7" column="0" >
     <widget class="QCheckBox" name="mSingleLineLimit" >
      <property name="whatsThis" >
       <string>Check this option to limit events to a single line.</string>
@@ -284,7 +304,7 @@ p, li { white-space: pre-wrap; }
      </property>
     </widget>
    </item>
-   <item row="6" column="0" >
+   <item row="8" column="0" >
     <widget class="QCheckBox" name="mColors" >
      <property name="whatsThis" >
       <string>The timetable view supports colors. If you want to make use of colors you should check this option. The category colors will be used.</string>
@@ -294,7 +314,7 @@ p, li { white-space: pre-wrap; }
      </property>
     </widget>
    </item>
-   <item row="7" column="0" >
+   <item row="9" column="0" >
     <spacer>
      <property name="orientation" >
       <enum>Qt::Vertical</enum>

@@ -132,6 +132,7 @@ class CalPrintDay : public CalPrintPluginBase
     bool mSingleLineLimit;
     bool mIncludeTodos;
     bool mIncludeAllEvents;
+    bool mExcludeTime;
 };
 
 class CalPrintWeek : public CalPrintPluginBase
@@ -179,6 +180,8 @@ class CalPrintWeek : public CalPrintPluginBase
     QTime mStartTime, mEndTime;
     bool mSingleLineLimit;
     bool mIncludeTodos;
+    bool mIncludeDescription;
+    bool mExcludeTime;
 };
 
 class CalPrintMonth : public CalPrintPluginBase
@@ -222,6 +225,7 @@ class CalPrintMonth : public CalPrintPluginBase
     bool mRecurWeekly;
     bool mIncludeTodos;
     bool mSingleLineLimit;
+    bool mIncludeDescription;
 };
 
 class CalPrintTodos : public CalPrintPluginBase

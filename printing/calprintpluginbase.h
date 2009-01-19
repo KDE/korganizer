@@ -353,18 +353,19 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
                    to include all events if expandable==true
       @param box coordinates of the agenda day box.
       @param includeDescription Whether to print the event description as well.
+      @param excludeTime Whether the time is printed in the detail area.
     */
     void drawAgendaDayBox( QPainter &p, Event::List &eventList,
                            const QDate &qd, bool expandable,
                            QTime &fromTime, QTime &toTime,
                            const QRect &box,
-                           bool includeDescription );
+                           bool includeDescription, bool excludeTime );
 
     void drawAgendaItem( PrintCellItem *item, QPainter &p,
                          const KDateTime &startPrintDate,
                          const KDateTime &endPrintDate,
                          float minlen, const QRect &box,
-                         bool includeDescription );
+                         bool includeDescription, bool excludeTime );
 
     /**
       Draw the box containing a list of all events of the given day (with their times,
@@ -379,13 +380,15 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
       @param printRecurWeekly Whether weekly recurring incidences should be printed.
       @param singleLineLimit Whether Incidence text wraps or truncates.
       @param showNoteLines Whether note lines are printed.
+      @param includeDescription Whether to print the event description as well.
     */
     void drawDayBox( QPainter &p, const QDate &qd,
                      const QRect &box,
                      bool fullDate = false, bool printRecurDaily = true,
                      bool printRecurWeekly = true,
                      bool singleLineLimit = true,
-                     bool showNoteLines = false );
+                     bool showNoteLines = false,
+                     bool includeDescription = false );
     /**
       Draw the week (filofax) table of the week containing the date qd. The first
       three days of the week will be shown in the first column (using drawDayBox),
@@ -396,9 +399,11 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
       @param box coordinates of the week box.
       @param singleLineLimit Whether Incidence text wraps or truncates.
       @param showNoteLines Whether note lines are printed.
+      @param includeDescription Whether to print the event description as well.
     */
     void drawWeek( QPainter &p, const QDate &qd,
-                   const QRect &box, bool singleLineLimit, bool showNoteLines );
+                   const QRect &box, bool singleLineLimit,
+                   bool showNoteLines, bool includeDescription );
     /**
       Draw the (filofax) table for a bunch of days, using drawDayBox.
       @param p QPainter of the printout
@@ -407,9 +412,11 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
       @param box coordinates of the week box.
       @param singleLineLimit Whether Incidence text wraps or truncates.
       @param showNoteLines Whether note lines are printed.
+      @param includeDescription Whether to print the event description as well.
     */
-    void drawDays( QPainter &p, const QDate &start, const QDate &end, const QRect &box,
-                   bool singleLineLimit, bool showNoteLines );
+    void drawDays( QPainter &p, const QDate &start, const QDate &end,
+                   const QRect &box, bool singleLineLimit, bool showNoteLines,
+                   bool includeDescription );
     /**
       Draw the timetable view of the given time range from fromDate to toDate.
       On the left side the time scale is printed (using drawTimeLine), then each
@@ -424,10 +431,13 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
       @param fromTime Start time of the displayed time range
       @param toTime End time of the displayed time range
       @param box coordinates of the time table.
+      @param includeDescription Whether to print the event description as well.
+      @param excludeTime Whether the time is printed in the detail area.
     */
     void drawTimeTable( QPainter &p, const QDate &fromDate, const QDate &toDate,
                         QTime &fromTime, QTime &toTime,
-                        const QRect &box );
+                        const QRect &box, bool includeDescription,
+                        bool excludeTime );
 
     /**
       Draw the month table of the month containing the date qd. Each day gets one
@@ -442,11 +452,12 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
       @param weeknumbers Whether the week numbers are printed left of each row of the matrix
       @param singleLineLimit Whether Incidence text wraps or truncates.
       @param showNoteLines Whether note lines are printed.
+      @param includeDescription Whether descriptions are printed.
       @param box coordinates of the month.
     */
     void drawMonthTable( QPainter &p, const QDate &qd, bool weeknumbers,
                     bool recurDaily, bool recurWeekly, bool singleLineLimit,
-                    bool showNoteLines, const QRect &box );
+                    bool showNoteLines, bool includeDescription, const QRect &box );
     /**
       Draw a vertical representation of the month containing the date dt. Each
       day gets one line.
@@ -549,8 +560,9 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
 
   protected:
     void drawIncidence( QPainter &p, const QRect &dayBox, const QString &time,
-                        const QString &summary, int &textY,
-                        bool singleLineLimit = true );
+                        const QString &summary, const QString &description,
+                        int &textY, bool singleLineLimit,
+                        bool includeDescription );
     QString toPlainText( const QString &htmlText );
 
   protected:
