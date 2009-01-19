@@ -24,6 +24,7 @@
   without including the source code for Qt in the source distribution.
 */
 
+
 #include "calprintpluginbase.h"
 #include "cellitem.h"
 #include "koprefs.h"
@@ -237,7 +238,13 @@ void CalPrintPluginBase::setCategoryColors( QPainter &p, Incidence *incidence )
 QColor CalPrintPluginBase::categoryBgColor( Incidence *incidence )
 {
   if ( mCoreHelper && incidence ) {
-    return mCoreHelper->categoryColor( incidence->categories() );
+    QColor backColor = mCoreHelper->categoryColor( incidence->categories() );
+    if ( incidence->type() == "Todo" ) {
+      if ( static_cast<Todo*>( incidence )->isOverdue() ) {
+        backColor = KOPrefs::instance()->todoOverdueColor();
+      }
+    }
+    return backColor;
   } else {
     return QColor();
   }
