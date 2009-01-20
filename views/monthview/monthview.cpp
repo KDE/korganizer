@@ -315,14 +315,38 @@ void MonthView::reloadIncidences()
     if ( ( event = dynamic_cast<Event *>( incidence ) ) ) {
       offset = event->dtStart().daysTo( event->dtEnd() );
     }
-    for ( QDate d = mStartDate.addDays( -offset ); d <= mEndDate; d = d.addDays( 1 ) ) {
-      if ( incidence->recursOn( d, timeSpec ) ) {
-        MonthItem *manager = new IncidenceMonthItem( mScene, incidence, d );
-        mScene->mManagerList << manager;
-        if ( incidenceSelected == incidence ) {
-          // If there was an item selected before, reselect it.
-          mScene->selectItem( manager );
+    
+    KDateTime startDateTime( mStartDate.addDays( - offset ), timeSpec );
+    KDateTime endDateTime( mEndDate, timeSpec );
+
+    DateTimeList dateTimeList;
+
+    if ( incidence->recurs() ) {
+      // Get a list of all dates that the recurring event will happen
+      dateTimeList = incidence->recurrence()->timesInInterval( startDateTime, endDateTime );
+    } else {
+      KDateTime dateToAdd;
+
+      if ( incidence->type() == "Todo" ) {
+        Todo *todo = dynamic_cast<Todo *>( incidence );
+        if ( todo->hasDueDate() ) {
+          dateToAdd = todo->dtDue();
         }
+      } else {
+        dateToAdd = incidence->dtStart();
+      }
+    
+      if ( dateToAdd >= startDateTime && dateToAdd <= endDateTime ) {
+        dateTimeList += dateToAdd;
+      }
+    }
+    DateTimeList::iterator t;
+    for ( t = dateTimeList.begin(); t != dateTimeList.end(); ++t ) {
+      MonthItem *manager = new IncidenceMonthItem( mScene, incidence, t->date() );
+      mScene->mManagerList << manager;
+      if ( incidenceSelected == incidence ) {
+        // If there was an item selected before, reselect it.
+        mScene->selectItem( manager );
       }
     }
   }
