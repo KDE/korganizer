@@ -683,6 +683,8 @@ void CalPrintDay::readSettingsWidget()
     mUseColors = cfg->mColors->isChecked();
     mShowNoteLines = cfg->mShowNoteLines->isChecked();
     mExcludeTime = cfg->mExcludeTime->isChecked();
+    mExcludeConfidential = cfg->mExcludeConfidential->isChecked();
+    mExcludePrivate = cfg->mExcludePrivate->isChecked();
   }
 }
 
@@ -706,6 +708,8 @@ void CalPrintDay::setSettingsWidget()
     cfg->mColors->setChecked( mUseColors );
     cfg->mShowNoteLines->setChecked( mShowNoteLines );
     cfg->mExcludeTime->setChecked( mExcludeTime );
+    cfg->mExcludeConfidential->setChecked( mExcludeConfidential );
+    cfg->mExcludePrivate->setChecked( mExcludePrivate );
   }
 }
 
@@ -785,7 +789,8 @@ void CalPrintDay::print( QPainter &p, int width, int height )
       }
       drawHeader( p, title, mFromDate, QDate(), headerBox );
       drawDays( p, mFromDate, mToDate, daysBox, mSingleLineLimit,
-                mShowNoteLines, mIncludeDescription );
+                mShowNoteLines, mIncludeDescription,
+                mExcludeConfidential, mExcludePrivate );
       drawFooter( p, daysBox );
     }
     break;
@@ -821,7 +826,8 @@ void CalPrintDay::print( QPainter &p, int width, int height )
     QRect dayBox( allDayBox );
     drawAgendaDayBox( p, eventList, curDay, mIncludeAllEvents,
                         curStartTime, curEndTime, dayBox,
-                        mIncludeDescription, mExcludeTime );
+                        mIncludeDescription, mExcludeTime,
+                        mExcludeConfidential, mExcludePrivate );
 
     QRect tlBox( dayBox );
     tlBox.setLeft( 0 );
@@ -879,6 +885,8 @@ void CalPrintWeek::readSettingsWidget()
     mUseColors = cfg->mColors->isChecked();
     mIncludeDescription = cfg->mIncludeDescription->isChecked();
     mExcludeTime = cfg->mExcludeTime->isChecked();
+    mExcludeConfidential = cfg->mExcludeConfidential->isChecked();
+    mExcludePrivate = cfg->mExcludePrivate->isChecked();
   }
 }
 
@@ -902,6 +910,8 @@ void CalPrintWeek::setSettingsWidget()
     cfg->mColors->setChecked( mUseColors );
     cfg->mIncludeDescription->setChecked( mIncludeDescription );
     cfg->mExcludeTime->setChecked( mExcludeTime );
+    cfg->mExcludeConfidential->setChecked( mExcludeConfidential );
+    cfg->mExcludePrivate->setChecked( mExcludePrivate );
   }
 }
 
@@ -997,7 +1007,8 @@ void CalPrintWeek::print( QPainter &p, int width, int height )
       }
       drawHeader( p, title, curWeek.addDays( -6 ), QDate(), headerBox );
       drawWeek( p, curWeek, weekBox, mSingleLineLimit,
-                mShowNoteLines, mIncludeDescription );
+                mShowNoteLines, mIncludeDescription,
+                mExcludeConfidential, mExcludePrivate );
       drawFooter( p, weekBox );
       curWeek = curWeek.addDays( 7 );
       if ( curWeek <= toWeek ) {
@@ -1024,7 +1035,8 @@ void CalPrintWeek::print( QPainter &p, int width, int height )
       weekBox.setTop( headerBox.bottom() + padding() );
       weekBox.setBottom( height );
       drawTimeTable( p, fromWeek, curWeek, mStartTime, mEndTime, weekBox,
-                     mIncludeDescription, mExcludeTime );
+                     mIncludeDescription, mExcludeTime, mExcludeConfidential,
+                     mExcludePrivate );
       drawFooter( p, weekBox );
       fromWeek = fromWeek.addDays( 7 );
       curWeek = fromWeek.addDays( 6 );
@@ -1047,11 +1059,13 @@ void CalPrintWeek::print( QPainter &p, int width, int height )
 
       drawSplitHeaderRight( p, fromWeek, curWeek, QDate(), width, hh );
       drawTimeTable( p, fromWeek, endLeft, mStartTime, mEndTime, weekBox,
-                     mIncludeDescription, mExcludeTime );
+                     mIncludeDescription, mExcludeTime,
+                     mExcludeConfidential, mExcludePrivate );
       mPrinter->newPage();
       drawSplitHeaderRight( p, fromWeek, curWeek, QDate(), width, hh );
       drawTimeTable( p, endLeft.addDays( 1 ), curWeek, mStartTime, mEndTime,
-                     weekBox1, mIncludeDescription, mExcludeTime );
+                     weekBox1, mIncludeDescription, mExcludeTime,
+                     mExcludeConfidential, mExcludePrivate );
       fromWeek = fromWeek.addDays( 7 );
       curWeek = fromWeek.addDays( 6 );
       if ( curWeek <= toWeek ) {
@@ -1096,6 +1110,8 @@ void CalPrintMonth::readSettingsWidget()
     mSingleLineLimit = cfg->mSingleLineLimit->isChecked();
     mUseColors = cfg->mColors->isChecked();
     mIncludeDescription = cfg->mIncludeDescription->isChecked();
+    mExcludeConfidential = cfg->mExcludeConfidential->isChecked();
+    mExcludePrivate = cfg->mExcludePrivate->isChecked();
   }
 }
 
@@ -1114,6 +1130,8 @@ void CalPrintMonth::setSettingsWidget()
     cfg->mSingleLineLimit->setChecked( mSingleLineLimit );
     cfg->mColors->setChecked( mUseColors );
     cfg->mIncludeDescription->setChecked( mIncludeDescription );
+    cfg->mExcludeConfidential->setChecked( mExcludeConfidential );
+    cfg->mExcludePrivate->setChecked( mExcludePrivate );
   }
 }
 
@@ -1200,7 +1218,7 @@ void CalPrintMonth::print( QPainter &p, int width, int height )
                 headerBox );
     drawMonthTable( p, curMonth, mWeekNumbers, mRecurDaily, mRecurWeekly,
                     mSingleLineLimit, mShowNoteLines, mIncludeDescription,
-                    monthBox );
+                    mExcludeConfidential, mExcludePrivate, monthBox );
     drawFooter( p, monthBox );
     curMonth = curMonth.addDays( curMonth.daysInMonth() );
     if ( curMonth <= toMonth ) {
@@ -1255,6 +1273,8 @@ void CalPrintTodos::readSettingsWidget()
     mIncludePercentComplete = cfg->mPercentComplete->isChecked();
     mConnectSubTodos = cfg->mConnectSubTodos->isChecked();
     mStrikeOutCompleted = cfg->mStrikeOutCompleted->isChecked();
+    mExcludeConfidential = cfg->mExcludeConfidential->isChecked();
+    mExcludePrivate = cfg->mExcludePrivate->isChecked();
 
     mTodoSortField = (eTodoSortField)cfg->mSortField->currentIndex();
     mTodoSortDirection = (eTodoSortDirection)cfg->mSortDirection->currentIndex();
@@ -1281,6 +1301,8 @@ void CalPrintTodos::setSettingsWidget()
     cfg->mPercentComplete->setChecked( mIncludePercentComplete );
     cfg->mConnectSubTodos->setChecked( mConnectSubTodos );
     cfg->mStrikeOutCompleted->setChecked( mStrikeOutCompleted );
+    cfg->mExcludeConfidential->setChecked( mExcludeConfidential );
+    cfg->mExcludePrivate->setChecked( mExcludePrivate );
 
     if ( mTodoSortField != TodoFieldUnset ) {
       // do not insert if already done so.
@@ -1464,7 +1486,10 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
   int count = 0;
   for ( it = todoList.constBegin(); it != todoList.constEnd(); ++it ) {
     Todo *currEvent = *it;
-
+    if ( ( mExcludeConfidential && currEvent->secrecy() == Incidence::SecrecyConfidential ) ||
+         ( mExcludePrivate      && currEvent->secrecy() == Incidence::SecrecyPrivate ) ) {
+      continue;
+    }
     // Skip sub-to-dos. They will be printed recursively in drawTodo()
     if ( !currEvent->relatedTo() ) {
       count++;

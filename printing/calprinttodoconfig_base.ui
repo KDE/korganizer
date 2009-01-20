@@ -7,8 +7,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>557</width>
-    <height>460</height>
+    <width>648</width>
+    <height>566</height>
    </rect>
   </property>
   <layout class="QGridLayout" name="gridLayout" >
@@ -149,7 +149,7 @@ p, li { white-space: pre-wrap; }
           </property>
           <item>
            <property name="text" >
-            <string>2009-01-04</string>
+            <string>2009-01-19</string>
            </property>
           </item>
          </widget>
@@ -186,7 +186,7 @@ p, li { white-space: pre-wrap; }
           </property>
           <item>
            <property name="text" >
-            <string>2009-01-04</string>
+            <string>2009-01-19</string>
            </property>
           </item>
          </widget>
@@ -307,6 +307,38 @@ p, li { white-space: pre-wrap; }
     </widget>
    </item>
    <item row="5" column="0" >
+    <widget class="QGroupBox" name="mSecurity" >
+     <property name="title" >
+      <string>Security Exclusions</string>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_4" >
+      <property name="topMargin" >
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QCheckBox" name="mExcludeConfidential" >
+        <property name="whatsThis" >
+         <string>Check this option to exclude confidential events.</string>
+        </property>
+        <property name="text" >
+         <string>Exclude c&amp;onfidential</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="mExcludePrivate" >
+        <property name="whatsThis" >
+         <string>Check this option to exclude private events</string>
+        </property>
+        <property name="text" >
+         <string>Exclude pri&amp;vate</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="6" column="0" >
     <widget class="QGroupBox" name="sortingOptionsBox" >
      <property name="title" >
       <string>Sorting Options</string>
@@ -372,7 +404,7 @@ p, li { white-space: pre-wrap; }
      </layout>
     </widget>
    </item>
-   <item row="6" column="0" >
+   <item row="7" column="0" >
     <spacer name="verticalSpacer" >
      <property name="orientation" >
       <enum>Qt::Vertical</enum>

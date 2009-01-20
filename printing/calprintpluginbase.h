@@ -329,11 +329,14 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
              allowed for all events, and the events are displayed in one cell,
              with their summaries concatenated by ", ".
       @param box coordinates of the all day box.
+      @param excludeConfidential Whether to exclude Incidence marked confidential.
+      @param excludePrivate Whether to exclude Incidence marked private.
       @return The height used for the all-day box.
     */
     int drawAllDayBox( QPainter &p, Event::List &eventList,
                         const QDate &qd, bool expandable,
-                        const QRect &box );
+                        const QRect &box,
+                        bool mExcludeConfidential, bool mExcludePrivate );
     /**
       Draw the agenda box for the day print style (the box showing all events of that day).
       Also draws a grid with half-hour spacing of the grid lines.
@@ -354,12 +357,15 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
       @param box coordinates of the agenda day box.
       @param includeDescription Whether to print the event description as well.
       @param excludeTime Whether the time is printed in the detail area.
+      @param excludeConfidential Whether to exclude Incidence marked confidential.
+      @param excludePrivate Whether to exclude Incidence marked private.
     */
     void drawAgendaDayBox( QPainter &p, Event::List &eventList,
                            const QDate &qd, bool expandable,
                            QTime &fromTime, QTime &toTime,
                            const QRect &box,
-                           bool includeDescription, bool excludeTime );
+                           bool includeDescription, bool excludeTime,
+                           bool mExcludeConfidential, bool mExcludePrivate );
 
     void drawAgendaItem( PrintCellItem *item, QPainter &p,
                          const KDateTime &startPrintDate,
@@ -381,6 +387,8 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
       @param singleLineLimit Whether Incidence text wraps or truncates.
       @param showNoteLines Whether note lines are printed.
       @param includeDescription Whether to print the event description as well.
+      @param excludeConfidential Whether to exclude Incidence marked confidential.
+      @param excludePrivate Whether to exclude Incidence marked private.
     */
     void drawDayBox( QPainter &p, const QDate &qd,
                      const QRect &box,
@@ -388,7 +396,9 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
                      bool printRecurWeekly = true,
                      bool singleLineLimit = true,
                      bool showNoteLines = false,
-                     bool includeDescription = false );
+                     bool includeDescription = false,
+                     bool excludeDescription = true,
+                     bool excludePrivate = true );
     /**
       Draw the week (filofax) table of the week containing the date qd. The first
       three days of the week will be shown in the first column (using drawDayBox),
@@ -400,10 +410,13 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
       @param singleLineLimit Whether Incidence text wraps or truncates.
       @param showNoteLines Whether note lines are printed.
       @param includeDescription Whether to print the event description as well.
+      @param excludeConfidential Whether to exclude Incidence marked confidential.
+      @param excludePrivate Whether to exclude Incidence marked private.
     */
     void drawWeek( QPainter &p, const QDate &qd,
                    const QRect &box, bool singleLineLimit,
-                   bool showNoteLines, bool includeDescription );
+                   bool showNoteLines, bool includeDescription,
+                   bool excludeConfidential, bool excludePrivate );
     /**
       Draw the (filofax) table for a bunch of days, using drawDayBox.
       @param p QPainter of the printout
@@ -413,10 +426,13 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
       @param singleLineLimit Whether Incidence text wraps or truncates.
       @param showNoteLines Whether note lines are printed.
       @param includeDescription Whether to print the event description as well.
+      @param excludeConfidential Whether to exclude Incidence marked confidential.
+      @param excludePrivate Whether to exclude Incidence marked private.
     */
     void drawDays( QPainter &p, const QDate &start, const QDate &end,
                    const QRect &box, bool singleLineLimit, bool showNoteLines,
-                   bool includeDescription );
+                   bool includeDescription, bool excludeConfidential,
+                   bool excludePrivate );
     /**
       Draw the timetable view of the given time range from fromDate to toDate.
       On the left side the time scale is printed (using drawTimeLine), then each
@@ -433,11 +449,14 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
       @param box coordinates of the time table.
       @param includeDescription Whether to print the event description as well.
       @param excludeTime Whether the time is printed in the detail area.
+      @param excludeConfidential Whether to exclude Incidence marked confidential.
+      @param excludePrivate Whether to exclude Incidence marked private.
     */
     void drawTimeTable( QPainter &p, const QDate &fromDate, const QDate &toDate,
                         QTime &fromTime, QTime &toTime,
                         const QRect &box, bool includeDescription,
-                        bool excludeTime );
+                        bool excludeTime, bool excludeConfidential,
+                        bool excludePrivate );
 
     /**
       Draw the month table of the month containing the date qd. Each day gets one
@@ -453,11 +472,15 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
       @param singleLineLimit Whether Incidence text wraps or truncates.
       @param showNoteLines Whether note lines are printed.
       @param includeDescription Whether descriptions are printed.
+      @param excludeConfidential Whether to exclude Incidence marked confidential.
+      @param excludePrivate Whether to exclude Incidence marked private.
       @param box coordinates of the month.
     */
     void drawMonthTable( QPainter &p, const QDate &qd, bool weeknumbers,
                     bool recurDaily, bool recurWeekly, bool singleLineLimit,
-                    bool showNoteLines, bool includeDescription, const QRect &box );
+                    bool showNoteLines, bool includeDescription,
+                    bool excludeConfidential, bool excludePrivate,
+                    const QRect &box );
     /**
       Draw a vertical representation of the month containing the date dt. Each
       day gets one line.
@@ -568,6 +591,8 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
   protected:
     bool mUseColors;
     bool mShowNoteLines;
+    bool mExcludeConfidential;
+    bool mExcludePrivate;
     int mHeaderHeight;
     int mSubHeaderHeight;
     int mMargin;

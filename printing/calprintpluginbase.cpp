@@ -168,6 +168,8 @@ void CalPrintPluginBase::doLoadConfig()
     mFromDate = group.readEntry( "FromDate", dt ).date();
     mToDate = group.readEntry( "ToDate", dt ).date();
     mUseColors = group.readEntry( "UseColors", true );
+    mExcludeConfidential = group.readEntry( "Exclude confidential", true );
+    mExcludePrivate = group.readEntry( "Exclude private", true );
     loadConfig();
   } else {
     kDebug() << "No config available in loadConfig!!!!";
@@ -185,6 +187,8 @@ void CalPrintPluginBase::doSaveConfig()
     dt.setDate( mToDate );
     group.writeEntry( "ToDate", dt );
     group.writeEntry( "UseColors", mUseColors );
+    group.writeEntry( "Exclude confidential", mExcludeConfidential );
+    group.writeEntry( "Exclude private", mExcludePrivate );
     mConfig->sync();
   } else {
     kDebug() << "No config available in saveConfig!!!!";
@@ -724,7 +728,9 @@ void CalPrintPluginBase::drawTimeLine( QPainter &p, const QTime &fromTime,
 */
 int CalPrintPluginBase::drawAllDayBox( QPainter &p, Event::List &eventList,
                                        const QDate &qd, bool expandable,
-                                       const QRect &box )
+                                       const QRect &box,
+                                       bool excludeConfidential,
+                                       bool excludePrivate )
 {
   Event::List::Iterator it, itold;
   int offset = box.top();
@@ -742,6 +748,10 @@ int CalPrintPluginBase::drawAllDayBox( QPainter &p, Event::List &eventList,
     currEvent = *it;
     itold = it;
     ++it;
+    if ( ( excludeConfidential && currEvent->secrecy() == Incidence::SecrecyConfidential ) ||
+         ( excludePrivate      && currEvent->secrecy() == Incidence::SecrecyPrivate ) ) {
+      continue;
+    }
     if ( currEvent && currEvent->allDay() ) {
       // set the colors according to the categories
       if ( expandable ) {
@@ -784,7 +794,9 @@ void CalPrintPluginBase::drawAgendaDayBox( QPainter &p, Event::List &events,
                                            QTime &fromTime, QTime &toTime,
                                            const QRect &oldbox,
                                            bool includeDescription,
-                                           bool excludeTime )
+                                           bool excludeTime,
+                                           bool excludeConfidential,
+                                           bool excludePrivate )
 {
   if ( !isWorkingDay( qd ) ) {
     drawShadedBox( p, BOX_BORDER_WIDTH, QColor( 232, 232, 232 ), oldbox );
@@ -802,6 +814,10 @@ void CalPrintPluginBase::drawAgendaDayBox( QPainter &p, Event::List &events,
     Event::List::ConstIterator it;
     for ( it = events.constBegin(); it != events.constEnd(); ++it ) {
       event = *it;
+      if ( ( excludeConfidential && event->secrecy() == Incidence::SecrecyConfidential ) ||
+           ( excludePrivate      && event->secrecy() == Incidence::SecrecyPrivate ) ) {
+        continue;
+      }
       // skip items without times so that we do not adjust for all day items
       if ( event->allDay() ) {
         continue;
@@ -940,7 +956,9 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
                                      const QRect &box, bool fullDate,
                                      bool printRecurDaily, bool printRecurWeekly,
                                      bool singleLineLimit, bool showNoteLines,
-                                     bool includeDescription )
+                                     bool includeDescription,
+                                     bool excludeConfidential,
+                                     bool excludePrivate )
 {
   QString dayNumStr;
   QString ampm;
@@ -995,6 +1013,10 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
          ( !printRecurWeekly && currEvent->recurrenceType() == Recurrence::rWeekly ) ) {
       continue;
     }
+    if ( ( excludeConfidential && currEvent->secrecy() == Incidence::SecrecyConfidential ) ||
+         ( excludePrivate      && currEvent->secrecy() == Incidence::SecrecyPrivate ) ) {
+      continue;
+    }
     if ( currEvent->allDay() || currEvent->isMultiDay() ) {
       timeText.clear();
     } else {
@@ -1018,6 +1040,10 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
       Todo *todo = *it2;
       if ( ( !printRecurDaily  && todo->recurrenceType() == Recurrence::rDaily ) ||
            ( !printRecurWeekly && todo->recurrenceType() == Recurrence::rWeekly ) ) {
+        continue;
+      }
+      if ( ( excludeConfidential && todo->secrecy() == Incidence::SecrecyConfidential ) ||
+           ( excludePrivate      && todo->secrecy() == Incidence::SecrecyPrivate ) ) {
         continue;
       }
       if ( todo->hasDueDate() && !todo->allDay() ) {
@@ -1129,7 +1155,9 @@ void CalPrintPluginBase::drawIncidence( QPainter &p, const QRect &dayBox,
 void CalPrintPluginBase::drawWeek( QPainter &p, const QDate &qd,
                                    const QRect &box,
                                    bool singleLineLimit, bool showNoteLines,
-                                   bool includeDescription )
+                                   bool includeDescription,
+                                   bool excludeConfidential,
+                                   bool excludePrivate )
 {
   QDate weekDate = qd;
   const bool portrait = ( box.height() > box.width() );
@@ -1157,14 +1185,16 @@ void CalPrintPluginBase::drawWeek( QPainter &p, const QDate &qd,
       box.top() + cellHeight * vpos + ( ( i == 6 ) ? ( cellHeight / 2 ) : 0 ),
       cellWidth, ( i < 5 ) ? ( cellHeight ) : ( cellHeight / 2 ) );
     drawDayBox( p, weekDate, dayBox, true, true, true,
-                singleLineLimit, showNoteLines, includeDescription );
+                singleLineLimit, showNoteLines, includeDescription,
+                excludeConfidential, excludePrivate );
   } // for i through all weekdays
 }
 
 void CalPrintPluginBase::drawDays( QPainter &p, const QDate &start,
                                    const QDate &end, const QRect &box,
                                    bool singleLineLimit, bool showNoteLines,
-                                   bool includeDescription )
+                                   bool includeDescription,
+                                   bool excludeConfidential, bool excludePrivate )
 {
   const int numberOfDays = start.daysTo( end ) + 1;
   int vcells;
@@ -1193,7 +1223,8 @@ void CalPrintPluginBase::drawDays( QPainter &p, const QDate &start,
       box.top() + cellHeight * vpos,
       cellWidth, cellHeight );
     drawDayBox( p, weekDate, dayBox, true, true, true, singleLineLimit,
-                showNoteLines, includeDescription );
+                showNoteLines, includeDescription, excludeConfidential,
+                excludePrivate );
   } // for i through all selected days
 }
 
@@ -1203,7 +1234,9 @@ void CalPrintPluginBase::drawTimeTable( QPainter &p,
                                         QTime &fromTime, QTime &toTime,
                                         const QRect &box,
                                         bool includeDescription,
-                                        bool excludeTime )
+                                        bool excludeTime,
+                                        bool excludeConfidential,
+                                        bool excludePrivate )
 {
   // timeline is 1 hour:
   int alldayHeight = (int)( 3600. * box.height() / ( fromTime.secsTo( toTime ) + 3600. ) );
@@ -1233,9 +1266,11 @@ void CalPrintPluginBase::drawTimeTable( QPainter &p,
     Event::List eventList = mCalendar->events( curDate, timeSpec,
                                                EventSortStartDate,
                                                SortDirectionAscending );
-    alldayHeight = drawAllDayBox( p, eventList, curDate, false, allDayBox );
+    alldayHeight = drawAllDayBox( p, eventList, curDate, false, allDayBox,
+                                  excludeConfidential, excludePrivate );
     drawAgendaDayBox( p, eventList, curDate, false, fromTime, toTime,
-                      dayBox, includeDescription, excludeTime );
+                      dayBox, includeDescription, excludeTime,
+                      excludeConfidential, excludePrivate );
     i++;
     curDate=curDate.addDays(1);
   }
@@ -1467,6 +1502,8 @@ void CalPrintPluginBase::drawMonthTable( QPainter &p, const QDate &qd,
                                          bool recurWeekly, bool singleLineLimit,
                                          bool showNoteLines,
                                          bool includeDescription,
+                                         bool excludeConfidential,
+                                         bool excludePrivate,
                                          const QRect &box )
 {
   int yoffset = mSubHeaderHeight;
@@ -1528,7 +1565,7 @@ void CalPrintPluginBase::drawMonthTable( QPainter &p, const QDate &qd,
           coledges[col + 1] - coledges[col], rowedges[row + 1] - rowedges[row] );
       drawDayBox( p, monthDate, dayBox, false,
                   recurDaily, recurWeekly, singleLineLimit, showNoteLines,
-                  includeDescription );
+                  includeDescription, excludeConfidential, excludePrivate );
       if ( darkbg ) {
         p.setBackground( back );
         darkbg = false;
