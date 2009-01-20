@@ -487,14 +487,27 @@ void KOAgendaView::createDayLabels()
   const KCalendarSystem *calsys = KOGlobals::self()->calendarSystem();
 
 #ifndef KORG_NOPLUGINS
+  QList<CalendarDecoration::Decoration *> topDecos;
   if ( KOPrefs::instance()->decorationsAtAgendaViewTop().count() > 0 ) {
     mDayLabelsFrame->setParent( mSplitterAgenda );
+    foreach ( const QString &decoName, KOPrefs::instance()->decorationsAtAgendaViewTop() ) {
+      if ( KOPrefs::instance()->selectedPlugins().contains( decoName ) ) {
+        topDecos << KOCore::self()->loadCalendarDecoration( decoName );
+      }
+    }
   } else {
     mDayLabelsFrame->setParent( this );
     mTopLayout->addWidget( mDayLabelsFrame, 0, 0 );
   }
+
+  QList<CalendarDecoration::Decoration *> botDecos;
   if ( KOPrefs::instance()->decorationsAtAgendaViewBottom().count() > 0 ) {
     mBottomDayLabelsFrame->setParent( mSplitterAgenda );
+    foreach ( const QString &decoName, KOPrefs::instance()->decorationsAtAgendaViewBottom() ) {
+      if ( KOPrefs::instance()->selectedPlugins().contains( decoName ) ) {
+        botDecos << KOCore::self()->loadCalendarDecoration( decoName );
+      }
+    }
   } else {
     mBottomDayLabelsFrame->setParent( this );
     mTopLayout->addWidget( mBottomDayLabelsFrame, 0, 0 );
@@ -538,48 +551,39 @@ void KOAgendaView::createDayLabels()
     }
 
 #ifndef KORG_NOPLUGINS
-    foreach ( QString decoName, KOPrefs::instance()->decorationsAtAgendaViewTop() ) {
-      if ( KOPrefs::instance()->selectedPlugins().contains( decoName ) ) {
-        CalendarDecoration::Decoration *deco = KOCore::self()->loadCalendarDecoration( decoName );
+    foreach ( CalendarDecoration::Decoration *deco, topDecos ) {
+      CalendarDecoration::Element::List elements;
+      elements = deco->dayElements( date );
+      if ( elements.count() > 0 ) {
+        KHBox *decoHBox = new KHBox( dayLabelBox );
+        decoHBox->setFrameShape( QFrame::StyledPanel );
+        decoHBox->setMinimumWidth( 1 );
 
-        CalendarDecoration::Element::List elements;
-        elements = deco->dayElements( date );
-        if ( elements.count() > 0 ) {
-          KHBox *decoHBox = new KHBox( dayLabelBox );
-          decoHBox->setFrameShape( QFrame::StyledPanel );
-          decoHBox->setMinimumWidth( 1 );
-
-          foreach ( CalendarDecoration::Element *it, elements ) {
-            kDebug() << "adding Element " << it->id()
-                     << " of Decoration " << deco->info()
-                     << " to the top of the agenda view";
-            KODecorationLabel *label = new KODecorationLabel( it, decoHBox );
-            label->setAlignment( Qt::AlignBottom );
-            label->setMinimumWidth( 1 );
-          }
+        foreach ( CalendarDecoration::Element *it, elements ) {
+          kDebug() << "adding Element " << it->id()
+                   << " of Decoration " << deco->info()
+                   << " to the top of the agenda view";
+          KODecorationLabel *label = new KODecorationLabel( it, decoHBox );
+          label->setAlignment( Qt::AlignBottom );
+          label->setMinimumWidth( 1 );
         }
       }
     }
+    foreach ( CalendarDecoration::Decoration *deco, botDecos ) {
+      CalendarDecoration::Element::List elements;
+      elements = deco->dayElements( date );
+      if ( elements.count() > 0 ) {
+        KHBox *decoHBox = new KHBox( bottomDayLabelBox );
+        decoHBox->setFrameShape( QFrame::StyledPanel );
+        decoHBox->setMinimumWidth( 1 );
 
-    foreach ( QString decoName, KOPrefs::instance()->decorationsAtAgendaViewBottom() ) {
-      if ( KOPrefs::instance()->selectedPlugins().contains( decoName ) ) {
-        CalendarDecoration::Decoration *deco = KOCore::self()->loadCalendarDecoration( decoName );
-
-        CalendarDecoration::Element::List elements;
-        elements = deco->dayElements( date );
-        if ( elements.count() > 0 ) {
-          KHBox *decoHBox = new KHBox( bottomDayLabelBox );
-          decoHBox->setFrameShape( QFrame::StyledPanel );
-          decoHBox->setMinimumWidth( 1 );
-
-          foreach ( CalendarDecoration::Element *it, elements ) {
-            kDebug() << "adding Element " << it->id()
-                     << " of Decoration " << deco->info()
-                     << " to the bottom of the agenda view";
-            KODecorationLabel *label = new KODecorationLabel( it, decoHBox );
-            label->setAlignment( Qt::AlignBottom );
-            label->setMinimumWidth( 1 );
-          }
+        foreach ( CalendarDecoration::Element *it, elements ) {
+          kDebug() << "adding Element " << it->id()
+                   << " of Decoration " << deco->info()
+                   << " to the bottom of the agenda view";
+          KODecorationLabel *label = new KODecorationLabel( it, decoHBox );
+          label->setAlignment( Qt::AlignBottom );
+          label->setMinimumWidth( 1 );
         }
       }
     }
@@ -588,47 +592,40 @@ void KOAgendaView::createDayLabels()
 
 #ifndef KORG_NOPLUGINS
   // Week decoration labels
-  foreach ( QString decoName, KOPrefs::instance()->decorationsAtAgendaViewTop() ) {
-    if ( KOPrefs::instance()->selectedPlugins().contains( decoName ) ) {
-      CalendarDecoration::Decoration *deco = KOCore::self()->loadCalendarDecoration( decoName );
+  foreach ( CalendarDecoration::Decoration *deco, topDecos ) {
+    CalendarDecoration::Element::List elements;
+    elements = deco->weekElements( mSelectedDates.first() );
+    if ( elements.count() > 0 ) {
+      KHBox *decoHBox = new KHBox( weekLabelBox );
+      decoHBox->setFrameShape( QFrame::StyledPanel );
+      decoHBox->setMinimumWidth( 1 );
 
-      CalendarDecoration::Element::List elements;
-      elements = deco->weekElements( mSelectedDates.first() );
-      if ( elements.count() > 0 ) {
-        KHBox *decoHBox = new KHBox( weekLabelBox );
-        decoHBox->setFrameShape( QFrame::StyledPanel );
-        decoHBox->setMinimumWidth( 1 );
-
-        foreach ( CalendarDecoration::Element *it, elements ) {
-          kDebug() << "adding Element " << it->id()
-                   << " of Decoration " << deco->info()
-                   << " to the week part of the agenda view";
-          KODecorationLabel *label = new KODecorationLabel( it, decoHBox );
-          label->setAlignment( Qt::AlignBottom );
-          label->setMinimumWidth( 1 );
-        }
+      foreach ( CalendarDecoration::Element *it, elements ) {
+        kDebug() << "adding Element " << it->id()
+                 << " of Decoration " << deco->info()
+                 << " to the week part of the agenda view";
+        KODecorationLabel *label = new KODecorationLabel( it, decoHBox );
+        label->setAlignment( Qt::AlignBottom );
+        label->setMinimumWidth( 1 );
       }
     }
   }
-  foreach ( QString decoName, KOPrefs::instance()->decorationsAtAgendaViewBottom() ) {
-    if ( KOPrefs::instance()->selectedPlugins().contains( decoName ) ) {
-      CalendarDecoration::Decoration *deco = KOCore::self()->loadCalendarDecoration( decoName );
 
-      CalendarDecoration::Element::List elements;
-      elements = deco->weekElements( mSelectedDates.first() );
-      if ( elements.count() > 0 ) {
-        KHBox *decoHBox = new KHBox( bottomWeekLabelBox );
-        decoHBox->setFrameShape( QFrame::StyledPanel );
-        decoHBox->setMinimumWidth( 1 );
+  foreach ( CalendarDecoration::Decoration *deco, botDecos ) {
+    CalendarDecoration::Element::List elements;
+    elements = deco->weekElements( mSelectedDates.first() );
+    if ( elements.count() > 0 ) {
+      KHBox *decoHBox = new KHBox( bottomWeekLabelBox );
+      decoHBox->setFrameShape( QFrame::StyledPanel );
+      decoHBox->setMinimumWidth( 1 );
 
-        foreach ( CalendarDecoration::Element *it, elements ) {
-          kDebug() << "adding Element " << it->id()
-                   << " of Decoration " << deco->info()
-                   << " to the week part of the agenda view";
-          KODecorationLabel *label = new KODecorationLabel( it, decoHBox );
-          label->setAlignment( Qt::AlignBottom );
-          label->setMinimumWidth( 1 );
-        }
+      foreach ( CalendarDecoration::Element *it, elements ) {
+        kDebug() << "adding Element " << it->id()
+                 << " of Decoration " << deco->info()
+                 << " to the week part of the agenda view";
+        KODecorationLabel *label = new KODecorationLabel( it, decoHBox );
+        label->setAlignment( Qt::AlignBottom );
+        label->setMinimumWidth( 1 );
       }
     }
   }
