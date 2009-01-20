@@ -317,7 +317,7 @@ void MonthView::reloadIncidences()
     }
     
     KDateTime startDateTime( mStartDate.addDays( - offset ), timeSpec );
-    KDateTime endDateTime( mEndDate, timeSpec );
+    KDateTime endDateTime( mEndDate, QTime( 23, 59 ), timeSpec );
 
     DateTimeList dateTimeList;
 
