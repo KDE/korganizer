@@ -1609,8 +1609,8 @@ void KOAgenda::setStartTime( const QTime &startHour )
 /*
   Insert KOAgendaItem into agenda.
 */
-KOAgendaItem *KOAgenda::insertItem( Incidence *incidence, const QDate &qd, int X,
-                                    int YTop, int YBottom )
+KOAgendaItem *KOAgenda::insertItem( Incidence *incidence, const QDate &qd,
+                                    int X, int YTop, int YBottom )
 {
   if ( mAllDayMode ) {
     kDebug() << "using this in all-day mode is illegal.";

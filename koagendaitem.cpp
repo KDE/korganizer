@@ -77,13 +77,23 @@ QPixmap *KOAgendaItem::completedPxmp = 0;
 //-----------------------------------------------------------------------------
 
 KOAgendaItem::KOAgendaItem( Incidence *incidence, const QDate &qd, QWidget *parent )
-  : QWidget( parent ), mIncidence( incidence ), mDate( qd ),
-    mLabelText( mIncidence->summary() ), mIconAlarm( false ),
-    mIconRecur( false ), mIconReadonly( false ), mIconReply( false ),
-    mIconGroup( false ), mIconGroupTent( false ), mIconOrganizer( false ),
-    mMultiItemInfo( 0 ), mStartMoveInfo( 0 )
+  : QWidget( parent ), mIncidence( incidence ), mDate( qd ), mValid( true )
 {
-  kDebug() << "Incidence Type is " << mIncidence->type();
+  if ( !mIncidence ) {
+    mValid = false;
+    return;
+  }
+  mLabelText = mIncidence->summary();
+  mIconAlarm = false;
+  mIconRecur = false;
+  mIconReadonly = false;
+  mIconReply = false;
+  mIconGroup = false;
+  mIconGroupTent = false;
+  mIconOrganizer = false;
+  mMultiItemInfo = 0;
+  mStartMoveInfo = 0;
+
   QPalette pal = palette();
   pal.setColor( QPalette::Window, Qt::transparent );
   setPalette( pal );
@@ -103,7 +113,7 @@ KOAgendaItem::KOAgendaItem( Incidence *incidence, const QDate &qd, QWidget *pare
 
 void KOAgendaItem::updateIcons()
 {
-  if ( !mIncidence ) {
+  if ( !mValid ) {
     return;
   }
   mIconReadonly = mIncidence->isReadOnly();
@@ -185,11 +195,14 @@ bool KOAgendaItem::dissociateFromMultiItem()
   return true;
 }
 
-bool KOAgendaItem::setIncidence( Incidence *i )
+void KOAgendaItem::setIncidence( Incidence *incidence )
 {
-  mIncidence = i;
-  updateIcons();
-  return true;
+  mValid = false;
+  if ( incidence ) {
+    mValid = true;
+    mIncidence = incidence;
+    updateIcons();
+  }
 }
 
 /*
@@ -601,6 +614,10 @@ void KOAgendaItem::dragEnterEvent( QDragEnterEvent *e )
 
 void KOAgendaItem::addAttendee( const QString &newAttendee )
 {
+  if ( !mValid ) {
+    return;
+  }
+
   QString name, email;
   KPIMUtils::extractEmailAddressAndName( newAttendee, email, name );
   if ( !( name.isEmpty() && email.isEmpty() ) ) {
@@ -620,11 +637,15 @@ void KOAgendaItem::dropEvent( QDropEvent *e )
   // otherwise check for attendees, then if the data is binary,
   // add a binary attachment.
 #ifndef KORG_NODND
+  if ( !mValid ) {
+    return;
+  }
+
   const QMimeData *md = e->mimeData();
 
   bool decoded = md->hasText();
   QString text = md->text();
-  if ( decoded && text.startsWith( "file:" ) ) {
+  if ( decoded && text.startsWith( QLatin1String( "file:" ) ) ) {
     mIncidence->addAttachment( new Attachment( text ) );
     return;
   }
@@ -706,7 +727,7 @@ static void conditionalPaint( QPainter *p, bool condition, int &x, int y,
 
 void KOAgendaItem::paintEventIcon( QPainter *p, int &x, int y, int ft )
 {
-  if ( !mIncidence ) {
+  if ( !mValid ) {
     return;
   }
   conditionalPaint( p, mIncidence->type() == "Event", x, y, ft, *eventPxmp );
@@ -714,7 +735,7 @@ void KOAgendaItem::paintEventIcon( QPainter *p, int &x, int y, int ft )
 
 void KOAgendaItem::paintTodoIcon( QPainter *p, int &x, int y, int ft )
 {
-  if ( !mIncidence || mIncidence->type() != "Todo" ) {
+  if ( !mValid || mIncidence->type() != "Todo" ) {
     return;
   }
 
@@ -725,7 +746,7 @@ void KOAgendaItem::paintTodoIcon( QPainter *p, int &x, int y, int ft )
 
 void KOAgendaItem::paintJournalIcon( QPainter *p, int &x, int y, int ft )
 {
-  if ( !mIncidence ) {
+  if ( !mValid ) {
     return;
   }
   conditionalPaint( p, mIncidence->type() == "Journal", x, y, ft, *journalPxmp );
@@ -747,7 +768,7 @@ void KOAgendaItem::paintIcons( QPainter *p, int &x, int y, int ft )
 
 void KOAgendaItem::paintEvent( QPaintEvent *ev )
 {
-  if ( !mIncidence ) {
+  if ( !mValid ) {
     return;
   }
 
@@ -1070,8 +1091,14 @@ void KOAgendaItem::paintEvent( QPaintEvent *ev )
 
 void KOAgendaItem::drawRoundedRect( QPainter *p, const QRect &rect,
                                     bool selected, const QColor &bgColor,
-                                    bool frame, int/*ft*/, bool roundTop, bool roundBottom )
+                                    bool frame, int ft, bool roundTop,
+                                    bool roundBottom )
 {
+  Q_UNUSED( ft );
+  if ( !mValid ) {
+    return;
+  }
+
   QRect r = rect;
   r.adjust( 0, 0, 1, 1 );
 
@@ -1277,6 +1304,16 @@ void KOAgendaItem::drawRoundedRect( QPainter *p, const QRect &rect,
                  8 - rw, 8 - bh, rw, 8 );
 
   p->restore();
+}
+
+bool KOAgendaItem::eventFilter( QObject *obj, QEvent *event )
+{
+  if ( event->type() == QEvent::Paint ) {
+    return mValid;
+  } else {
+    // standard event processing
+    return QObject::eventFilter( obj, event );
+  }
 }
 
 bool KOAgendaItem::event( QEvent *event )
