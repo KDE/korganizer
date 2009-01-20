@@ -594,30 +594,27 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     void showDates( const KCal::DateList & );
 
   public:
-    // show a standard warning
-    // returns KMsgBox::yesNoCancel()
     int msgCalModified();
 
-    /** Adapt navigation units corresponding to step size of navigation of the
-     * current view.
-     */
+    /**
+      Adapts navigation units according to the current view's navigation step size.
+    */
     void adaptNavigationUnits();
-
-    //Attendee* getYourAttendee( Event *event );
 
   protected:
     void setIncidenceChanger( IncidenceChangerBase *changer );
 
-//     // returns KMsgBox::OKCancel()
     int msgItemDelete( Incidence *incidence );
 
     Todo *selectedTodo();
 
     void warningChangeFailed( Incidence * );
     void checkForFilteredChange( Incidence *incidence );
-    /** Adjust the given date/times by valid defaults (selection or configured
-        defaults, if invalid values are given) and allow the view to adjust the
-        type. */
+
+    /**
+      Adjust the given date/times by valid defaults (selection or configured
+      defaults, if invalid values are given) and allow the view to adjust the type.
+    */
     void dateTimesForNewEvent( QDateTime &startDt, QDateTime &endDt, bool &allDay );
     KOEventEditor *newEventEditor( const QDateTime &startDtParam=QDateTime(),
                                    const QDateTime &endDtParam=QDateTime(),
@@ -628,9 +625,15 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
   private:
     void init();
 
+    /**
+      Returns the best guess at the current active date in the view.
+    */
+    QDate activeDate();
+
     void createPrinter();
 
     void calendarModified( bool, Calendar * );
+
     // Helper function for purgeCompleted that recursively purges a todo and
     // its subitems. If it cannot delete a completed todo (because it has
     // uncompleted subitems), notAllPurged is set to true.
@@ -675,7 +678,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     QMap<Incidence*,KOIncidenceEditor*> mDialogList;
 
     KOrg::IncidenceChangerBase *mChanger;
-    QList<int> mMainSplitterSizes; // temporary store for main splitter sizes while the left frame is hidden
+    QList<int> mMainSplitterSizes; // temp store for main splitter sizes while left frame is hidden
     bool mSplitterSizesValid;
 };
 
