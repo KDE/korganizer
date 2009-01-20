@@ -229,7 +229,7 @@ kde4_add_library(korganizerprivate SHARED ${korganizerprivate_LIB_SRCS})
 add_dependencies(korganizerprivate kmail)
 
 target_link_libraries(korganizerprivate ${KDE4_KNEWSTUFF2_LIBS} ${KDE4_KABC_LIBS} ${KDE4_KUTILS_LIBS} 
-   ${KDE4_KCAL_LIBS} ${KDE4_KPIMIDENTITIES_LIBRARY} ${KDE4_KMIME_LIBRARY}
+   ${KDE4_KCAL_LIBS} ${KDE4_KPIMIDENTITIES_LIBRARY} ${KDE4_KMIME_LIBRARY} ${KDE4_KPIMUTILS_LIBS}
    kdepim korganizer_eventviewer korganizer_calendar kocorehelper ${ZLIB_LIBRARY}
    korg_stdprinting kholidays korganizer_interfaces ${KDE4_KDE3SUPPORT_LIBS}
 )
