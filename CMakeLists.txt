@@ -40,24 +40,6 @@ target_link_libraries(korganizer ${KDE4_KDECORE_LIBS} korganizerprivate)
 install(TARGETS korganizer  DESTINATION ${BIN_INSTALL_DIR} )
 
 
-########### next target ###############   # FIXME to be removed! (only needed for testing before copying everything to korganizer)
-
-set(theme_bin_SRCS
-   thememain.cpp
-   themeimporter.cpp
-   theme.cpp
-)
-
-
-kde4_add_executable(theme_bin ${theme_bin_SRCS})
-
-set_target_properties(theme_bin  PROPERTIES OUTPUT_NAME thememain)
-
-target_link_libraries(theme_bin ${KDE4_KDECORE_LIBS} korganizerprivate)
-
-install(TARGETS theme_bin  DESTINATION ${BIN_INSTALL_DIR} )
-
-
 ########### next target ###############
 
 set(kcm_korganizer_PART_SRCS koprefsdialog.cpp )
