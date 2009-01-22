@@ -97,6 +97,8 @@ void FocusLineEdit::focusInEvent ( QFocusEvent *e )
 
 void KOEditorGeneral::initHeader( QWidget *parent, QBoxLayout *topLayout )
 {
+  mParent = parent;
+
   QGridLayout *headerLayout = new QGridLayout();
   headerLayout->setSpacing( topLayout->spacing() );
   topLayout->addLayout( headerLayout );

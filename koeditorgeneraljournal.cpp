@@ -215,7 +215,7 @@ void KOEditorGeneralJournal::finishSetup()
 bool KOEditorGeneralJournal::validateInput()
 {
   if ( !mDateEdit->date().isValid() ) {
-    KMessageBox::sorry( 0,
+    KMessageBox::sorry( mParent,
                         i18n( "Please specify a valid date, for example '%1'.",
                               KGlobal::locale()->formatDate( QDate::currentDate() ) ) );
     return false;

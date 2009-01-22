@@ -479,12 +479,14 @@ bool KOEditorGeneralTodo::validateInput()
 {
   if ( mDueCheck->isChecked() ) {
     if ( !mDueDateEdit->date().isValid() ) {
-      KMessageBox::sorry( 0, i18n( "Please specify a valid due date." ) );
+      KMessageBox::sorry( mParent,
+                          i18n( "Please specify a valid due date." ) );
       return false;
     }
     if ( mTimeButton->isChecked() ) {
       if ( !mDueTimeEdit->inputIsValid() ) {
-        KMessageBox::sorry( 0, i18n( "Please specify a valid due time." ) );
+        KMessageBox::sorry( mParent,
+                            i18n( "Please specify a valid due time." ) );
         return false;
       }
     }
@@ -492,12 +494,14 @@ bool KOEditorGeneralTodo::validateInput()
 
   if ( mStartCheck->isChecked() ) {
     if ( !mStartDateEdit->date().isValid() ) {
-      KMessageBox::sorry( 0, i18n( "Please specify a valid start date." ) );
+      KMessageBox::sorry( mParent,
+                          i18n( "Please specify a valid start date." ) );
       return false;
     }
     if ( mTimeButton->isChecked() ) {
       if ( !mStartTimeEdit->inputIsValid() ) {
-        KMessageBox::sorry( 0, i18n( "Please specify a valid start time." ) );
+        KMessageBox::sorry( mParent,
+                            i18n( "Please specify a valid start time." ) );
         return false;
       }
     }
@@ -513,7 +517,8 @@ bool KOEditorGeneralTodo::validateInput()
       dueDate.setTime( mDueTimeEdit->getTime() );
     }
     if ( startDate > dueDate ) {
-      KMessageBox::sorry( 0, i18n( "The start date cannot be after the due date." ) );
+      KMessageBox::sorry( mParent,
+                          i18n( "The start date cannot be after the due date." ) );
       return false;
     }
   }
