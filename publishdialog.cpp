@@ -1,6 +1,7 @@
 /*
   This file is part of KOrganizer.
   Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
+  Copyright (c) 2009 Allen Winter <winter@kde.org>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -21,45 +22,58 @@
   without including the source code for Qt in the source distribution.
 */
 
+// TODO: validate hand-entered email addresses
+// TODO: don't allow duplicates; at least remove dupes when passing back
+// TODO: the list in PublishDialog::addresses()
+
 #include "publishdialog.h"
-#include "koprefs.h"
 
 #include <kabc/addresseedialog.h>
 #include <kcal/attendee.h>
+#include <kcal/person.h>
+#include <kpimutils/email.h>
 
-#include <kdebug.h>
-#include <kglobal.h>
+#include <klineedit.h>
 #include <klocale.h>
 
-#include <q3listview.h>
-#include <QLineEdit>
-#include <QPushButton>
-
-PublishDialog::PublishDialog( QWidget* parent, bool modal )
+PublishDialog::PublishDialog( QWidget *parent )
   : KDialog( parent )
 {
-  setCaption( i18n("Select Addresses") );
+  setCaption( i18n( "Select Addresses" ) );
   setButtons( Ok|Cancel|Help );
-  setHelp(QString(), "korganizer");
-  setModal( modal );
+  setHelp( "group-scheduling", "korganizer" );
   QWidget *widget = new QWidget( this );
   widget->setObjectName( "PublishFreeBusy" );
   mUI.setupUi( widget );
   setMainWidget( widget );
+  mUI.mListWidget->setSelectionMode( QAbstractItemView::SingleSelection );
   mUI.mNameLineEdit->setEnabled( false );
   mUI.mEmailLineEdit->setEnabled( false );
-  connect( mUI.mAddressListView, SIGNAL( selectionChanged(Q3ListViewItem *) ),
-           SLOT(updateInput()));
-  connect( mUI.mNew, SIGNAL( clicked() ),
-           SLOT( addItem() ) );
-  connect( mUI.mRemove, SIGNAL( clicked() ),
-           SLOT( removeItem() ) );
-  connect( mUI.mSelectAddressee, SIGNAL( clicked() ),
-           SLOT( openAddressbook() ) );
-  connect( mUI.mNameLineEdit, SIGNAL( textChanged(const QString&) ),
-           SLOT( updateItem() ) );
-  connect( mUI.mEmailLineEdit, SIGNAL( textChanged(const QString&) ),
-           SLOT( updateItem() ) );
+
+  setButtonToolTip( Ok, i18n( "Send email to these recipients" ) );
+  setButtonWhatsThis( Ok, i18n( "Clicking the <b>Ok</b> button will cause"
+                                "an email to be sent to the recipients you "
+                                "have entered." ) );
+  setButtonToolTip( Cancel, i18n( "Cancel recipient selection and the email" ) );
+  setButtonWhatsThis( Cancel, i18n( "Clicking the <b>Cancel</b> button will "
+                                    "cause the email operation to be terminated." ) );
+
+  setButtonWhatsThis( Help, i18n( "Click the <b>Help</b> button to read "
+                                  "more information about Group Scheduling." ) );
+
+  mUI.mRemove->setEnabled( false );
+  connect( mUI.mListWidget, SIGNAL(itemSelectionChanged()),
+           SLOT(updateInput()) );
+  connect( mUI.mNew, SIGNAL(clicked()),
+           SLOT(addItem()) );
+  connect( mUI.mRemove, SIGNAL(clicked()),
+           SLOT(removeItem()) );
+  connect( mUI.mSelectAddressee, SIGNAL(clicked()),
+           SLOT(openAddressbook()) );
+  connect( mUI.mNameLineEdit, SIGNAL(textChanged(const QString &)),
+           SLOT(updateItem()) );
+  connect( mUI.mEmailLineEdit, SIGNAL(textChanged(const QString &)),
+           SLOT(updateItem()) );
 }
 
 PublishDialog::~PublishDialog()
@@ -70,22 +84,22 @@ void PublishDialog::addAttendee( Attendee *attendee )
 {
   mUI.mNameLineEdit->setEnabled( true );
   mUI.mEmailLineEdit->setEnabled( true );
-  Q3ListViewItem *item = new Q3ListViewItem( mUI.mAddressListView );
-  item->setText( 0, attendee->name() );
-  item->setText( 1, attendee->email() );
-  mUI.mAddressListView->insertItem( item );
+  QListWidgetItem *item = new QListWidgetItem( mUI.mListWidget );
+  Person person( attendee->name(), attendee->email() );
+  item->setText( person.fullName() );
+  mUI.mListWidget->addItem( item );
+  mUI.mRemove->setEnabled( true );
 }
 
 QString PublishDialog::addresses()
 {
   QString to = "";
-  Q3ListViewItem *item;
+  QListWidgetItem *item;
   int i, count;
-  count = mUI.mAddressListView->childCount();
+  count = mUI.mListWidget->count();
   for ( i=0; i<count; i++ ) {
-    item = mUI.mAddressListView->firstChild();
-    mUI.mAddressListView->takeItem( item );
-    to += item->text( 1 );
+    item = mUI.mListWidget->takeItem( i );
+    to += item->text();
     if ( i < count-1 ) {
       to += ", ";
     }
@@ -97,39 +111,48 @@ void PublishDialog::addItem()
 {
   mUI.mNameLineEdit->setEnabled( true );
   mUI.mEmailLineEdit->setEnabled( true );
-  Q3ListViewItem *item = new Q3ListViewItem( mUI.mAddressListView );
-  mUI.mAddressListView->insertItem( item );
-  mUI.mAddressListView->setSelected( item, true );
-  mUI.mNameLineEdit->setText( i18n("(EmptyName)") );
-  mUI.mEmailLineEdit->setText( i18n("(EmptyEmail)") );
+  QListWidgetItem *item = new QListWidgetItem( mUI.mListWidget );
+  mUI.mListWidget->addItem( item );
+  mUI.mListWidget->setItemSelected( item, true );
+  mUI.mNameLineEdit->setText( i18n( "(EmptyName)" ) );
+  mUI.mEmailLineEdit->setText( i18n( "(EmptyEmail)" ) );
+
+  mUI.mRemove->setEnabled( true );
 }
 
 void PublishDialog::removeItem()
 {
-  Q3ListViewItem *item;
-  item = mUI.mAddressListView->selectedItem();
-  if (!item) return;
-  mUI.mAddressListView->takeItem( item );
-  item = mUI.mAddressListView->selectedItem();
+  QListWidgetItem *item;
+  item = mUI.mListWidget->selectedItems().first();
   if ( !item ) {
-    mUI.mNameLineEdit->setText( "" );
-    mUI.mEmailLineEdit->setText( "" );
-    mUI.mNameLineEdit->setEnabled( false );
-    mUI.mEmailLineEdit->setEnabled( false );
+    return;
   }
-  if ( mUI.mAddressListView->childCount() == 0 ) {
+
+  int row = mUI.mListWidget->row( item );
+  mUI.mListWidget->takeItem( row );
+
+  if ( !mUI.mListWidget->count() ) {
+    mUI.mNameLineEdit->setText( QString() );
     mUI.mNameLineEdit->setEnabled( false );
+    mUI.mEmailLineEdit->setText( QString() );
     mUI.mEmailLineEdit->setEnabled( false );
+    mUI.mRemove->setEnabled( false );
+    return;
   }
+  if ( row > 0 ) {
+    row--;
+  }
+
+  mUI.mListWidget->setCurrentRow( row );
 }
 
 void PublishDialog::openAddressbook()
 {
-  KABC::Addressee::List addressList;
-  addressList = KABC::AddresseeDialog::getAddressees( this );
-  //KABC::Addressee a = KABC::AddresseeDialog::getAddressee(this);
-  if( addressList.isEmpty())
+  KABC::Addressee::List addressList = KABC::AddresseeDialog::getAddressees( this );
+  if( addressList.isEmpty() ) {
      return;
+  }
+
   KABC::Addressee a = addressList.first();
   if ( !a.isEmpty() ) {
     int i;
@@ -137,33 +160,40 @@ void PublishDialog::openAddressbook()
       a = addressList[i];
       mUI.mNameLineEdit->setEnabled( true );
       mUI.mEmailLineEdit->setEnabled( true );
-      Q3ListViewItem *item = new Q3ListViewItem( mUI.mAddressListView );
-      mUI.mAddressListView->setSelected( item, true );
+      QListWidgetItem *item = new QListWidgetItem( mUI.mListWidget );
+      mUI.mListWidget->setItemSelected( item, true );
       mUI.mNameLineEdit->setText( a.realName() );
       mUI.mEmailLineEdit->setText( a.preferredEmail() );
-      mUI.mAddressListView->insertItem( item );
+      mUI.mListWidget->addItem( item );
     }
+    mUI.mRemove->setEnabled( true );
   }
 }
 
 void PublishDialog::updateItem()
 {
-  Q3ListViewItem *item;
-  item = mUI.mAddressListView->selectedItem();
-  if (!item) return;
-  item->setText( 0, mUI.mNameLineEdit->text() );
-  item->setText( 1, mUI.mEmailLineEdit->text() );
+  if ( !mUI.mListWidget->selectedItems().count() ) {
+    return;
+  }
+
+  Person person( mUI.mNameLineEdit->text(), mUI.mEmailLineEdit->text() );
+  QListWidgetItem *item = mUI.mListWidget->selectedItems().first();
+  item->setText( person.fullName() );
 }
 
 void PublishDialog::updateInput()
 {
-  Q3ListViewItem *item;
-  item = mUI.mAddressListView->selectedItem();
-  if (!item) return;
+  if ( !mUI.mListWidget->selectedItems().count() ) {
+    return;
+  }
+
   mUI.mNameLineEdit->setEnabled( true );
   mUI.mEmailLineEdit->setEnabled( true );
-  QString mail = item->text( 1 );
-  mUI.mNameLineEdit->setText( item->text( 0 ) );
+
+  QListWidgetItem *item = mUI.mListWidget->selectedItems().first();
+  QString mail, name;
+  KPIMUtils::extractEmailAddressAndName( item->text(), mail, name );
+  mUI.mNameLineEdit->setText( name );
   mUI.mEmailLineEdit->setText( mail );
 }
 

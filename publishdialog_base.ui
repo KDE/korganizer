@@ -1,98 +1,125 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>PublishDialog_base</class>
  <widget class="QWidget" name="PublishDialog_base" >
   <property name="geometry" >
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>420</width>
-    <height>379</height>
+    <width>428</width>
+    <height>374</height>
    </rect>
   </property>
-  <layout class="QGridLayout" >
-   <property name="margin" >
-    <number>0</number>
-   </property>
-   <property name="spacing" >
-    <number>6</number>
-   </property>
-   <item rowspan="4" row="0" column="0" colspan="2" >
-    <widget class="Q3ListView" name="mAddressListView" >
-     <column>
-      <property name="text" >
-       <string comment="addressee name">Name</string>
-      </property>
-     </column>
-     <column>
-      <property name="text" >
-       <string comment="addressee email">Email</string>
-      </property>
-     </column>
-    </widget>
+  <layout class="QGridLayout" name="gridLayout" >
+   <item rowspan="3" row="0" column="1" >
+    <layout class="QVBoxLayout" name="verticalLayout_2" >
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout" >
+       <item>
+        <widget class="QPushButton" name="mNew" >
+         <property name="toolTip" >
+          <string>Create a new recipient</string>
+         </property>
+         <property name="whatsThis" >
+          <string>Click this button and you will be able to enter a name and email for a new addressee to add to the recipients list</string>
+         </property>
+         <property name="text" >
+          <string>&amp;New</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="mRemove" >
+         <property name="toolTip" >
+          <string>Remove the recipient currently selected</string>
+         </property>
+         <property name="whatsThis" >
+          <string>Click this button to remove the recipient currently selected from the list</string>
+         </property>
+         <property name="text" >
+          <string>&amp;Remove</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="mSelectAddressee" >
+         <property name="toolTip" >
+          <string>Select a recipient from your address book</string>
+         </property>
+         <property name="whatsThis" >
+          <string>Click this buttong to show another dialog where you will be able to select a recipient from your address booko</string>
+         </property>
+         <property name="text" >
+          <string>Select &amp;Addressee...</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" stdset="0" >
+        <size>
+         <width>14</width>
+         <height>258</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
    </item>
-   <item row="4" column="0" >
-    <widget class="QLabel" name="TextLabel1" >
-     <property name="text" >
-      <string comment="addressee name">Name:</string>
-     </property>
-    </widget>
+   <item row="1" column="0" >
+    <layout class="QHBoxLayout" name="horizontalLayout" >
+     <item>
+      <widget class="QLabel" name="TextLabel1" >
+       <property name="text" >
+        <string comment="recipient name" >Name:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="KLineEdit" name="mNameLineEdit" >
+       <property name="toolTip" >
+        <string>The recipient's name</string>
+       </property>
+       <property name="whatsThis" >
+        <string>This field contains the name of the recipient</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
-   <item row="5" column="0" >
-    <widget class="QLabel" name="TextLabel2" >
-     <property name="text" >
-      <string comment="addressee email">Email:</string>
-     </property>
-    </widget>
+   <item row="2" column="0" >
+    <layout class="QHBoxLayout" name="horizontalLayout_2" >
+     <item>
+      <widget class="QLabel" name="TextLabel2" >
+       <property name="text" >
+        <string comment="recipient email" >Email:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="KLineEdit" name="mEmailLineEdit" >
+       <property name="toolTip" >
+        <string>The recipient's email address</string>
+       </property>
+       <property name="whatsThis" >
+        <string>This field contains the email address of the recipient</string>
+       </property>
+       <property name="text" >
+        <string/>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
-   <item row="5" column="1" >
-    <widget class="QLineEdit" name="mEmailLineEdit" >
-     <property name="text" >
-      <string/>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="1" >
-    <widget class="QLineEdit" name="mNameLineEdit" />
-   </item>
-   <item row="0" column="2" >
-    <widget class="QPushButton" name="mNew" >
-     <property name="text" >
-      <string>&amp;New</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="2" >
-    <widget class="QPushButton" name="mSelectAddressee" >
-     <property name="text" >
-      <string>Select &amp;Addressee...</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="2" >
-    <widget class="QPushButton" name="mRemove" >
-     <property name="text" >
-      <string>&amp;Remove</string>
-     </property>
-    </widget>
-   </item>
-   <item rowspan="3" row="3" column="2" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeType" >
-      <enum>QSizePolicy::Expanding</enum>
-     </property>
-     <property name="sizeHint" >
-      <size>
-       <width>20</width>
-       <height>241</height>
-      </size>
-     </property>
-    </spacer>
+   <item row="0" column="0" >
+    <widget class="QListWidget" name="mListWidget" />
    </item>
   </layout>
  </widget>
@@ -100,15 +127,12 @@
  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>Q3ListView</class>
-   <extends></extends>
-   <header>q3listview.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
+   <class>KLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>klineedit.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>
-  <tabstop>mAddressListView</tabstop>
   <tabstop>mNameLineEdit</tabstop>
   <tabstop>mEmailLineEdit</tabstop>
   <tabstop>mNew</tabstop>

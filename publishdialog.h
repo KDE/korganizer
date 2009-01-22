@@ -27,7 +27,7 @@
 #include "ui_publishdialog_base.h"
 
 namespace KCal {
-class Attendee;
+  class Attendee;
 }
 using namespace KCal;
 
@@ -37,7 +37,7 @@ class PublishDialog : public KDialog
 {
   Q_OBJECT
   public:
-    explicit PublishDialog( QWidget *parent=0, bool modal = true );
+    explicit PublishDialog( QWidget *parent=0 );
     ~PublishDialog();
 
     void addAttendee( Attendee *attendee );
@@ -52,6 +52,7 @@ class PublishDialog : public KDialog
     void openAddressbook();
     void updateItem();
     void updateInput();
+
   protected:
     Ui::PublishDialog_base mUI;
 };
