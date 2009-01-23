@@ -305,8 +305,9 @@ void KOrganizer::setTitle()
       title += " [" + i18nc( "the calendar is read-only", "read-only" ) + ']';
     }
   }
-
-  title += " - <" + mCalendarView->currentFilterName() + "> ";
+  if ( mCalendarView->isFiltered() ) {
+    title += " - <" + mCalendarView->currentFilterName() + "> ";
+  }
 
   setCaption( title, !mCalendarView->isReadOnly() &&
                       mCalendarView->isModified() );

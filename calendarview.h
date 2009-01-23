@@ -157,6 +157,9 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
         is no selection, return the selected todo from the todo list on the left */
     Incidence *selectedIncidence();
 
+    /** Returns true if there's a filter applied */
+    bool isFiltered() const;
+
     /** Returns the name of the current filter */
     QString currentFilterName() const;
 
