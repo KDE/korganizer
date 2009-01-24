@@ -83,7 +83,6 @@ KODayMatrix::KODayMatrix( QWidget *parent )
 
   mTodayMarginWidth = 2;
   mSelEnd = mSelStart = NOSELECTION;
-  setAttribute( Qt::WA_NoSystemBackground, true );
 
   recalculateToday();
 }
@@ -278,39 +277,40 @@ void KODayMatrix::updateEvents()
   }
 
   Event::List eventlist = mCalendar->events( mDays[0], mDays[NUMDAYS-1],
-                                             mCalendar->timeSpec());
+                                             mCalendar->timeSpec() );
   mEvents.clear();
   Event::List::ConstIterator it;
 
-  for ( it = eventlist.constBegin(); it != eventlist.constEnd(); ++it ) {
+  for ( it=eventlist.constBegin(); it != eventlist.constEnd(); ++it ) {
     Event *event = *it;
     ushort recurType = event->recurrenceType();
-	
+
     if ( !( recurType == Recurrence::rDaily  && !KOPrefs::instance()->mDailyRecur ) &&
          !( recurType == Recurrence::rWeekly && !KOPrefs::instance()->mWeeklyRecur ) ) {
-          
+
       DateTimeList timeDateList;
-      
-      if (event->recurs()) {
+
+      if ( event->recurs() ) {
         //Its a recurring event, find out in which days it occurs
-      	timeDateList = event->recurrence()->timesInInterval( *new KDateTime( mDays[0],         mCalendar->timeSpec() ),
-                                                             *new KDateTime( mDays[NUMDAYS-1], mCalendar->timeSpec() ) );
+        timeDateList = event->recurrence()->timesInInterval(
+          *new KDateTime( mDays[0], mCalendar->timeSpec() ),
+          *new KDateTime( mDays[NUMDAYS-1], mCalendar->timeSpec() ) );
       } else {
         timeDateList.append( event->dtStart() );
-      }							 
-        
-      const int eventDuration = event->dtStart().daysTo(event->dtEnd())+1;
+      }
+
+      const int eventDuration = event->dtStart().daysTo( event->dtEnd() ) + 1;
 
       DateTimeList::iterator t;
-      for ( t = timeDateList.begin(); t != timeDateList.end(); ++t ) {
+      for ( t=timeDateList.begin(); t != timeDateList.end(); ++t ) {
         //This could be a multiday event, so iterate from dtStart() to dtEnd()
         QDate d = t->date();
         int j   = 0;
 
         do {
-                                                                            
+
           mEvents.append( d );
-      
+
           ++j;
           d = d.addDays( 1 );
 
@@ -611,6 +611,9 @@ void KODayMatrix::paintEvent( QPaintEvent * )
 
   p.begin( this );
 
+  // draw background
+  p.fillRect( 0, 0, sz.width(), sz.height(), QBrush( pal.color( QPalette::Base ) ) );
+
   // draw topleft frame
   p.setPen( pal.color( QPalette::Mid ) );
   p.drawRect( 0, 0, sz.width() - 1, sz.height() - 1 );
@@ -661,9 +664,9 @@ void KODayMatrix::paintEvent( QPaintEvent * )
   QColor textColor = pal.color( QPalette::Text );
   QColor textColorShaded = getShadedColor( textColor );
   QColor actcol = textColorShaded;
-  p.setPen(actcol);
+  p.setPen( actcol );
   QPen tmppen;
-  for ( int i = 0; i < NUMDAYS; ++i ) {
+  for ( int i=0; i<NUMDAYS; ++i ) {
     row = i / 7;
     col = isRTL ? 6 - ( i - row * 7 ) : i - row * 7;
 
@@ -711,7 +714,7 @@ void KODayMatrix::paintEvent( QPaintEvent * )
     }
 
     // if any events are on that day then draw it using a bold font
-    if ( mEvents.contains(mDays[i]) ) {
+    if ( mEvents.contains( mDays[i] ) ) {
       QFont myFont = font();
       myFont.setBold( true );
       p.setFont( myFont );
@@ -740,7 +743,7 @@ void KODayMatrix::paintEvent( QPaintEvent * )
       p.setPen( actcol );
     }
     // reset bold font to plain font
-    if ( mEvents.contains(mDays[i]) > 0 ) {
+    if ( mEvents.contains( mDays[i] ) > 0 ) {
       QFont myFont = font();
       myFont.setBold( false );
       p.setFont( myFont );
