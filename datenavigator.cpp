@@ -241,8 +241,9 @@ void DateNavigator::selectNext()
 
 void DateNavigator::selectMonth( int month )
 {
-  QDate firstSelected = mSelectedDates.first();
-  int weekDay = firstSelected.dayOfWeek();
+  // always display starting at the first week of the specified month
+
+  QDate firstSelected = QDate( mSelectedDates.first().year(), month, 1 );
 
   const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
   int day = calSys->day( firstSelected );
@@ -255,7 +256,7 @@ void DateNavigator::selectMonth( int month )
   }
   calSys->setYMD( firstSelected, calSys->year( firstSelected ), month, day );
 
-  selectWeekByDay( weekDay, firstSelected );
+  selectWeekByDay( 1, firstSelected );
 }
 
 void DateNavigator::selectYear( int year )
