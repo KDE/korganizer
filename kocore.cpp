@@ -135,8 +135,6 @@ KOrg::Plugin *KOCore::loadPlugin( const QString &name )
 
 KOrg::CalendarDecoration::Decoration *KOCore::loadCalendarDecoration( KService::Ptr service )
 {
-  kDebug() << service->library();
-
   KPluginLoader loader( *service );
   KPluginFactory *factory = loader.factory();
 
