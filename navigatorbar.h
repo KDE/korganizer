@@ -70,8 +70,8 @@ class NavigatorBar: public QWidget
                                          const QString &whatsThis );
 
   private slots:
-    void selectMonth();
-    void selectYear();
+    void selectMonthFromMenu();
+    void selectYearFromMenu();
 
   private:
     bool mHasMinWidth;

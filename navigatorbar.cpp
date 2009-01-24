@@ -115,8 +115,8 @@ NavigatorBar::NavigatorBar( QWidget *parent )
   connect( mPrevMonth, SIGNAL(clicked()), SIGNAL(goPrevMonth()) );
   connect( mNextMonth, SIGNAL(clicked()), SIGNAL(goNextMonth()) );
   connect( mNextYear, SIGNAL(clicked()), SIGNAL(goNextYear()) );
-  connect( mMonth, SIGNAL(clicked()), SLOT(selectMonth()) );
-  connect( mYear, SIGNAL(clicked()), SLOT(selectYear()) );
+  connect( mMonth, SIGNAL(clicked()), SLOT(selectMonthFromMenu()) );
+  connect( mYear, SIGNAL(clicked()), SLOT(selectYearFromMenu()) );
 }
 
 NavigatorBar::~NavigatorBar()
@@ -172,7 +172,7 @@ void NavigatorBar::selectDates( const KCal::DateList &dateList )
   }
 }
 
-void NavigatorBar::selectMonth()
+void NavigatorBar::selectMonthFromMenu()
 {
   // every year can have different month names (in some calendar systems)
   const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
@@ -195,20 +195,25 @@ void NavigatorBar::selectMonth()
   if ( activateAction ) {
     menu->setActiveAction( activateAction );
   }
+  month = 0;
   QAction *selectedAct = menu->exec( mMonth->mapToGlobal( QPoint( 0, 0 ) ) );
   if ( selectedAct && ( selectedAct != activateAction ) ) {
     for ( int i=0; i < months; i++ ) {
       if ( act[i] == selectedAct ) {
-        emit goMonth( i + 1 );
+        month = i + 1;
       }
     }
   }
   qDeleteAll( act );
   act.clear();
   delete menu;
+
+  if ( month > 0 ) {
+    emit goMonth( month );
+  }
 }
 
-void NavigatorBar::selectYear()
+void NavigatorBar::selectYearFromMenu()
 {
   const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
 
@@ -233,12 +238,13 @@ void NavigatorBar::selectYear()
   if ( activateAction ) {
     menu->setActiveAction( activateAction );
   }
+  year = 0;
   QAction *selectedAct = menu->exec( mYear->mapToGlobal( QPoint( 0, 0 ) ) );
   if ( selectedAct && ( selectedAct != activateAction ) ) {
     int y = minYear;
     for ( int i=0; i < years; i++ ) {
       if ( act[i] == selectedAct ) {
-        emit goYear( y );
+        year = y;
       }
       y++;
     }
@@ -246,6 +252,10 @@ void NavigatorBar::selectYear()
   qDeleteAll( act );
   act.clear();
   delete menu;
+
+  if ( year > 0 ) {
+    emit goYear( year );
+  }
 }
 
 QToolButton *NavigatorBar::createNavigationButton( const QString &icon,
