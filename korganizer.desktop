@@ -135,4 +135,4 @@ X-KDE-ServiceTypes=DBUS/Organizer
 X-KDE-StartupNotify=true
 X-DBUS-StartupType=Unique
 X-DBUS-ServiceName=org.kde.korganizer
-Categories=Qt;KDE;Office;
+Categories=Qt;KDE;Office;Calendar;
