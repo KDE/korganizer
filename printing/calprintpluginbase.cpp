@@ -452,7 +452,7 @@ int CalPrintPluginBase::drawBoxWithCaption( QPainter &p, const QRect &allbox,
     box.setBottom( captionBox.bottom() + padding() );
   }
 
-  QString contentText = toPlainText(contents);
+  QString contentText = contents;
 
   // Bounding rectangle for the contents (if any), word break, clip on the bottom
   QRect textBox( captionBox );
