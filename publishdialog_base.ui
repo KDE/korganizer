@@ -52,7 +52,7 @@
           <string>Click this buttong to show another dialog where you will be able to select a recipient from your address booko</string>
          </property>
          <property name="text" >
-          <string>Select &amp;Addressee...</string>
+          <string>&amp;Select...</string>
          </property>
         </widget>
        </item>
