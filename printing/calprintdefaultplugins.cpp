@@ -1067,11 +1067,13 @@ void CalPrintWeek::print( QPainter &p, int width, int height )
       drawTimeTable( p, fromWeek, endLeft, mStartTime, mEndTime, weekBox,
                      mIncludeDescription, mExcludeTime,
                      mExcludeConfidential, mExcludePrivate );
+      drawFooter( p, weekBox1 );
       mPrinter->newPage();
       drawSplitHeaderRight( p, fromWeek, curWeek, QDate(), width, hh );
       drawTimeTable( p, endLeft.addDays( 1 ), curWeek, mStartTime, mEndTime,
                      weekBox1, mIncludeDescription, mExcludeTime,
                      mExcludeConfidential, mExcludePrivate );
+      drawFooter( p, weekBox1 );
       fromWeek = fromWeek.addDays( 7 );
       curWeek = fromWeek.addDays( 6 );
       if ( curWeek <= toWeek ) {
