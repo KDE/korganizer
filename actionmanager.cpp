@@ -675,13 +675,6 @@ void ActionManager::initActions()
                                         SLOT(showTip()) );
   mACollection->addAction( "help_tipofday", a );
 
-  /************************* TOOLBAR ACTIONS *******************************/
-  QLabel *filterLabel = new QLabel( i18n( "Filter: " ), mCalendarView );
-  filterLabel->hide();
-  QWidgetAction *act = new QWidgetAction( this );
-  act->setText( i18n( "Filter: " ) );
-  mACollection->addAction( "filter_label", act );
-  act->setDefaultWidget( filterLabel );
 }
 
 void ActionManager::slotChangeComboActionItem( int index )

@@ -149,7 +149,6 @@
   </ToolBar>
 
   <ToolBar noMerge="1" name="filter_toolbar" hidden="true"><text>Filters Toolbar</text>
-    <Action name="filter_label"/>
     <Action name="filter_select"/>
     <Action name="edit_filters"/>
   </ToolBar>
