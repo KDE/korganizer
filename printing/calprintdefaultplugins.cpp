@@ -613,8 +613,8 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
         optionsString += '\n';
       }
       if ( !(*it)->secrecyStr().isEmpty() ) {
-        optionsString += i18n( "Secrecy: %1\n", (*it)->secrecyStr() );
-//        optionsString += " \n";
+        optionsString += i18n( "Secrecy: %1", (*it)->secrecyStr() );
+        optionsString += '\n';
       }
       if ( (*it)->type() == "Event" ) {
         Event *e = static_cast<Event*>(*it);
