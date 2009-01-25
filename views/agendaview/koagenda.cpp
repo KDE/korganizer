@@ -1398,7 +1398,7 @@ void KOAgenda::drawContents( QPainter *p, int cx, int cy, int cw, int ch )
 //    QPixmap bgImage( KOPrefs::instance()->agendaGridBackgroundImage() );
 //    dbp.drawPixmap( 0, 0, cw, ch, bgImage ); FIXME
 //  }
-  dbp.fillRect( cx, cy, cw, ch,
+  dbp.fillRect( 0, 0, cw, ch,
                 KOPrefs::instance()->agendaGridBackgroundColor() );
   dbp.translate( -cx, -cy );
 
