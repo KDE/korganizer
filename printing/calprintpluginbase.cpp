@@ -946,7 +946,11 @@ void CalPrintPluginBase::drawAgendaItem( PrintCellItem *item, QPainter &p,
     }
     if ( includeDescription ) {
       str += '\n';
-      str += toPlainText( event->description() );
+      if ( event->descriptionIsRich() ) {
+        str += toPlainText( event->description() );
+      } else {
+        str += event->description();
+      }
     }
     showEventBox( p, eventBox, event, str );
   }
@@ -1024,8 +1028,14 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
     }
     p.save();
     setCategoryColors( p, currEvent );
+    QString description;
+    if ( currEvent->descriptionIsRich() ) {
+      description = toPlainText( currEvent->description() );
+    } else {
+      description = currEvent->description();
+    }
     drawIncidence( p, box, timeText,
-                   currEvent->summary(), currEvent->description(),
+                   currEvent->summary(), description,
                    textY, singleLineLimit, includeDescription );
     p.restore();
   }
@@ -1053,8 +1063,14 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
       }
       p.save();
       setCategoryColors( p, todo );
+      QString description;
+      if ( todo->descriptionIsRich() ) {
+        description = toPlainText( todo->description() );
+      } else {
+        description = todo->description();
+      }
       drawIncidence( p, box, timeText,
-                     i18n( "To-do: %1", todo->summary() ), todo->description(),
+                     i18n( "To-do: %1", todo->summary() ), description,
                      textY, singleLineLimit, includeDescription );
       p.restore();
     }
@@ -1100,7 +1116,7 @@ void CalPrintPluginBase::drawIncidence( QPainter &p, const QRect &dayBox,
     }
   } else {
     if ( includeDescription ) {
-      summaryText += " \n" + toPlainText( description );
+      summaryText += " \n" + description;
     }
     while ( summaryText.endsWith( '\n' ) ) {
       summaryText.resize( summaryText.length() - 1 );
@@ -1609,7 +1625,11 @@ void CalPrintPluginBase::drawTodo( int &count, Todo *todo, QPainter &p,
   int left = posSummary + ( level * 10 );
   rect = p.boundingRect( left, y, ( rhs-left-5 ), -1, Qt::WordBreak, outStr );
   if ( !todo->description().isEmpty() && desc ) {
-    outStr = toPlainText( todo->description() );
+    if ( todo->descriptionIsRich() ) {
+      outStr = toPlainText( todo->description() );
+    } else {
+      outStr = todo->description();
+    }
     rect = p.boundingRect( left + 20, rect.bottom() + 5,
                            width - ( left + 10 - x ), -1, Qt::WordBreak, outStr );
   }
@@ -1747,7 +1767,11 @@ void CalPrintPluginBase::drawTodo( int &count, Todo *todo, QPainter &p,
   // description
   if ( !todo->description().isEmpty() && desc ) {
     y = newrect.bottom() + 5;
-    outStr = toPlainText( todo->description() );
+    if ( todo->descriptionIsRich() ) {
+      outStr = toPlainText( todo->description() );
+    } else {
+      outStr = todo->description();
+    }
     rect = p.boundingRect( left + 20, y, x + width - ( left + 10 ), -1, Qt::WordBreak, outStr );
     p.drawText( rect, Qt::WordBreak, outStr, &newrect );
   }
