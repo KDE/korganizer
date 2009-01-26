@@ -147,7 +147,7 @@ class KOAgendaView : public KOrg::AgendaView, public KCal::Calendar::CalendarObs
     virtual void showDates( const QDate &start, const QDate &end );
     virtual void showIncidences( const Incidence::List &incidenceList );
 
-    void insertIncidence( Incidence *incidence, const QDate &curDate, int curCol = -1 );
+    void insertIncidence( Incidence *incidence, const QDate &curDate );
     void changeIncidenceDisplayAdded( Incidence *incidence );
     void changeIncidenceDisplay( Incidence *incidence, int mode );
 
