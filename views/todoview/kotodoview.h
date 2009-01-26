@@ -97,6 +97,7 @@ class KOTodoView : public BaseView
     void showTodo();
     void editTodo();
     void printTodo();
+    void printPreviewTodo();
     void deleteTodo();
     void newTodo();
     void newSubTodo();

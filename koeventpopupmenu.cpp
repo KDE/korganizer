@@ -55,8 +55,11 @@ KOEventPopupMenu::KOEventPopupMenu()
   addAction( i18n( "&Show" ), this, SLOT( popupShow() ) );
   mEditOnlyItems.append( addAction( i18n( "&Edit..." ), this, SLOT( popupEdit() ) ) );
 #ifndef KORG_NOPRINTER
+  mEditOnlyItems.append( addSeparator() );
   addAction( KOGlobals::self()->smallIcon( "document-print" ), i18n( "&Print..." ),
              this, SLOT( print() ) );
+  addAction( KOGlobals::self()->smallIcon( "document-print-preview" ), i18n( "Print Previe&w..." ),
+             this, SLOT( printPreview() ) );
 #endif
   //------------------------------------------------------------------------
   mEditOnlyItems.append( addSeparator() );
@@ -135,7 +138,22 @@ void KOEventPopupMenu::print()
   selectedIncidences.append( mCurrentIncidence );
 
   printer.print( KOrg::CalPrinterBase::Incidence,
-                 mCurrentDate, mCurrentDate, selectedIncidences );
+                 mCurrentDate, mCurrentDate, selectedIncidences, false );
+#endif
+}
+
+void KOEventPopupMenu::printPreview()
+{
+#ifndef KORG_NOPRINTER
+  KOCoreHelper helper;
+  CalPrinter printer( this, mCalendar, &helper );
+  connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
+
+  Incidence::List selectedIncidences;
+  selectedIncidences.append( mCurrentIncidence );
+
+  printer.print( KOrg::CalPrinterBase::Incidence,
+                 mCurrentDate, mCurrentDate, selectedIncidences, true );
 #endif
 }
 

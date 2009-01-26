@@ -51,6 +51,7 @@ class KOEventPopupMenu : public QMenu
     void popupEdit();
     void popupPaste();
     void print();
+    void printPreview();
     void popupDelete();
     void popupCut();
     void popupCopy();

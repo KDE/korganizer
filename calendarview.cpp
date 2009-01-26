@@ -1540,6 +1540,25 @@ void CalendarView::print()
 #endif
 }
 
+void CalendarView::printPreview()
+{
+#ifndef KORG_NOPRINTER
+  createPrinter();
+
+  KOrg::BaseView *currentView = mViewManager->currentView();
+
+  CalPrinter::PrintType printType = CalPrinter::Month;
+
+  if ( currentView ) {
+    printType = currentView->printType();
+  }
+
+  DateList tmpDateList = mNavigator->selectedDates();
+  mCalPrinter->print( printType, tmpDateList.first(), tmpDateList.last(),
+                      Incidence::List(), true );
+#endif
+}
+
 void CalendarView::exportWeb()
 {
   // FIXME: Get rid of the settings object. When can I delete it???

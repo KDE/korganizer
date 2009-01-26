@@ -36,8 +36,6 @@
 #include "koglobals.h"
 
 #include "kocorehelper.h"
-//#include "korganizer/baseview.h"
-//#include "actionmanager.h"
 #ifndef KORG_NOPRINTER
 #include "calprinter.h"
 #endif
@@ -153,11 +151,17 @@ KOTodoView::KOTodoView( Calendar *cal, QWidget *parent )
     i18n( "&Edit..." ), this, SLOT(editTodo()) );
 
 #ifndef KORG_NOPRINTER
+  mItemPopupMenu->addSeparator();
   mItemPopupMenuItemOnlyEntries << mItemPopupMenu->addAction(
     KOGlobals::self()->smallIcon( "document-print" ),
     i18n( "&Print..." ), this, SLOT(printTodo()) );
+
+  mItemPopupMenuItemOnlyEntries << mItemPopupMenu->addAction(
+    KOGlobals::self()->smallIcon( "document-print-preview" ),
+    i18n( "Print Previe&w..." ), this, SLOT(printPreviewTodo()) );
 #endif
 
+  mItemPopupMenu->addSeparator();
   mItemPopupMenuItemOnlyEntries << mItemPopupMenu->addAction(
     KIconLoader::global()->loadIcon( "edit-delete", KIconLoader::NoGroup, KIconLoader::SizeSmall ),
     i18n( "&Delete" ), this, SLOT(deleteTodo()) );
@@ -500,6 +504,36 @@ void KOTodoView::printTodo()
 
   printer.print( KOrg::CalPrinterBase::Incidence,
                  todoDate.date(), todoDate.date(), selectedIncidences, false );
+
+#endif
+}
+
+void KOTodoView::printPreviewTodo()
+{
+#ifndef KORG_NOPRINTER
+  QModelIndexList selection = mView->selectionModel()->selectedRows();
+  if ( selection.size() != 1 ) {
+    return;
+  }
+
+  Todo *todo = static_cast<Todo *>( selection[0].data( KOTodoModel::TodoRole ).value<void *>() );
+
+  KOCoreHelper helper;
+  CalPrinter printer( this, BaseView::calendar(), &helper );
+  connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
+
+  Incidence::List selectedIncidences;
+  selectedIncidences.append( todo );
+
+  KDateTime todoDate;
+  if ( todo->hasStartDate() ) {
+    todoDate = todo->dtStart();
+  } else {
+    todoDate = todo->dtDue();
+  }
+
+  printer.print( KOrg::CalPrinterBase::Incidence,
+                 todoDate.date(), todoDate.date(), selectedIncidences, true );
 
 #endif
 }

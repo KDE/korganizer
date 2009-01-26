@@ -6,6 +6,7 @@
       <Merge/>
       <Action name="print_setup" append="print_merge"/>
       <Action name="korganizer_print"/>
+      <Action name="korganizer_print_preview"/>
       <Action name="korganizer_quickprint"/>
       <Separator/>
       <Menu name="import"><text>&amp;Import</text>

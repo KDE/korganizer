@@ -468,6 +468,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
       parameters.
     */
     void print();
+    void printPreview();
 
     /** Export as HTML file */
     void exportWeb();

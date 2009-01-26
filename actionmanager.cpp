@@ -250,6 +250,8 @@ void ActionManager::initActions()
 
     QAction *a = mACollection->addAction( KStandardAction::Print, mCalendarView, SLOT(print()) );
     mACollection->addAction( "korganizer_print", a );
+    a = mACollection->addAction( KStandardAction::PrintPreview, mCalendarView, SLOT(print()) );
+    mACollection->addAction( "korganizer_print_preview", a );
   } else {
     KStandardAction::openNew( this, SLOT(file_new()), mACollection );
     KStandardAction::open( this, SLOT(file_open()), mACollection );
@@ -260,6 +262,7 @@ void ActionManager::initActions()
       KStandardAction::save( this, SLOT(file_save()), mACollection );
     }
     KStandardAction::print( mCalendarView, SLOT(print()), mACollection );
+    KStandardAction::printPreview( mCalendarView, SLOT(printPreview()), mACollection );
   }
 
   //~~~~~~~~~~~~~~~~~~~~~~~~ IMPORT / EXPORT ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
