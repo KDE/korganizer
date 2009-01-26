@@ -168,6 +168,13 @@ CalendarView::CalendarView( QWidget *parent )
   connect( mNavigator, SIGNAL(datesSelected(const KCal::DateList &)),
            mDateNavigator, SLOT(selectDates(const KCal::DateList &)) );
 
+  connect( mDateNavigator, SIGNAL(newEventSignal(const QDate &)),
+           SLOT(newEvent(const QDate &)) );
+  connect( mDateNavigator, SIGNAL(newTodoSignal(const QDate &)),
+           SLOT(newTodo(const QDate &)) );
+  connect( mDateNavigator, SIGNAL(newJournalSignal(const QDate &)),
+           SLOT(newJournal(const QDate &)) );
+
   connect( mNavigatorBar, SIGNAL(goPrevYear()),
            mNavigator, SLOT(selectPreviousYear()) );
   connect( mNavigatorBar, SIGNAL(goNextYear()),
@@ -806,8 +813,9 @@ void CalendarView::changeIncidenceDisplay( Incidence *incidence, int action )
 
 void CalendarView::updateView( const QDate &start, const QDate &end, const bool updateTodos = true )
 {
-  if ( updateTodos )
+  if ( updateTodos ) {
     mTodoList->updateView();
+  }
 
   mViewManager->updateView( start, end );
   mDateNavigator->updateView();
@@ -1747,7 +1755,8 @@ void CalendarView::filterActivated( int filterNo )
   emit filterChanged();
 }
 
-bool CalendarView::isFiltered() const {
+bool CalendarView::isFiltered() const
+{
   return mCurrentFilter != 0;
 }
 

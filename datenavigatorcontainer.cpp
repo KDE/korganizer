@@ -66,10 +66,19 @@ void DateNavigatorContainer::connectNavigatorView( KDateNavigator *v )
 {
   connect( v, SIGNAL(datesSelected(const KCal::DateList &)),
            SIGNAL(datesSelected(const KCal::DateList &)) );
+
   connect( v, SIGNAL(incidenceDropped(Incidence *,const QDate &)),
            SIGNAL(incidenceDropped(Incidence *,const QDate &)) );
   connect( v, SIGNAL(incidenceDroppedMove(Incidence *,const QDate &)),
            SIGNAL(incidenceDroppedMove(Incidence *,const QDate &)) );
+
+  connect( v, SIGNAL(newEventSignal(const QDate &)),
+           SIGNAL(newEventSignal(const QDate &)) );
+  connect( v, SIGNAL(newTodoSignal(const QDate &)),
+           SIGNAL(newTodoSignal(const QDate &)) );
+  connect( v, SIGNAL(newJournalSignal(const QDate &)),
+           SIGNAL(newJournalSignal(const QDate &)) );
+
   connect( v, SIGNAL(weekClicked(const QDate &)),
            SIGNAL(weekClicked(const QDate &)) );
 
@@ -202,13 +211,15 @@ void DateNavigatorContainer::selectDates( const DateList &dateList )
 void DateNavigatorContainer::setBaseDates( const QDate &start )
 {
   QDate baseDate = start;
-  if ( !mIgnoreNavigatorUpdates )
+  if ( !mIgnoreNavigatorUpdates ) {
     mNavigatorView->setBaseDate( baseDate );
+  }
 
   foreach ( KDateNavigator *n, mExtraViews ) {
     baseDate = KOGlobals::self()->calendarSystem()->addMonths( baseDate, 1 );
-    if ( !mIgnoreNavigatorUpdates  )
+    if ( !mIgnoreNavigatorUpdates ) {
       n->setBaseDate( baseDate );
+    }
   }
 }
 

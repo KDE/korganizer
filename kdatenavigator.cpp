@@ -94,6 +94,13 @@ KDateNavigator::KDateNavigator( QWidget *parent )
   connect( mDayMatrix, SIGNAL(incidenceDroppedMove(Incidence *,const QDate &)),
            SIGNAL(incidenceDroppedMove(Incidence *,const QDate &)) );
 
+  connect( mDayMatrix, SIGNAL(newEventSignal(const QDate &)),
+           SIGNAL(newEventSignal(const QDate &)) );
+  connect( mDayMatrix, SIGNAL(newTodoSignal(const QDate &)),
+           SIGNAL(newTodoSignal(const QDate &)) );
+  connect( mDayMatrix, SIGNAL(newJournalSignal(const QDate &)),
+           SIGNAL(newJournalSignal(const QDate &)) );
+
   topLayout->addWidget( mDayMatrix, 2, 1, 6, 7 );
 
   // read settings from configuration file.

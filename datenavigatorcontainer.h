@@ -62,6 +62,9 @@ class DateNavigatorContainer: public QFrame
     void datesSelected( const KCal::DateList & );
     void incidenceDropped( Incidence *, const QDate & );
     void incidenceDroppedMove( Incidence *, const QDate & );
+    void newEventSignal( const QDate & );
+    void newTodoSignal( const QDate & );
+    void newJournalSignal( const QDate & );
     void weekClicked( const QDate &);
 
     void goPrevious();

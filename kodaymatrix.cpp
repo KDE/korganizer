@@ -397,14 +397,43 @@ bool KODayMatrix::event( QEvent *event )
 void KODayMatrix::mousePressEvent( QMouseEvent *e )
 {
   mSelStart = getDayIndexFrom( e->x(), e->y() );
-  if ( mSelStart > NUMDAYS - 1 ) {
-    mSelStart = NUMDAYS - 1;
+  if ( e->button() == Qt::RightButton ) {
+    popupMenu( mDays[mSelStart] ) ;
+  } else if ( e->button() == Qt::LeftButton ) {
+    if ( mSelStart > NUMDAYS - 1 ) {
+      mSelStart = NUMDAYS - 1;
+    }
+    mSelInit = mSelStart;
   }
-  mSelInit = mSelStart;
+}
+
+void KODayMatrix::popupMenu( const QDate &date )
+{
+  KMenu popup( this );
+  popup.addTitle( date.toString() );
+  QAction *newEventAction = popup.addAction(
+    KIcon( "appointment-new" ), i18n( "New E&vent..." ) );
+  QAction *newTodoAction = popup.addAction(
+    KIcon( "task-new" ), i18n( "New &To-do..." ) );
+  QAction *newJournalAction = popup.addAction(
+    KIcon( "journal-new" ), i18n( "New &Journal..." ) );
+
+  QAction *ret = popup.exec( QCursor::pos() );
+  if ( ret == newEventAction ) {
+    emit newEventSignal( date );
+  } else if ( ret == newTodoAction ) {
+    emit newTodoSignal( date );
+  } else if ( ret == newJournalAction ) {
+    emit newJournalSignal( date );
+  }
 }
 
 void KODayMatrix::mouseReleaseEvent( QMouseEvent *e )
 {
+  if ( e->button() != Qt::LeftButton ) {
+    return;
+  }
+
   int tmp = getDayIndexFrom( e->x(), e->y() );
   if ( tmp > NUMDAYS - 1 ) {
     tmp = NUMDAYS - 1;

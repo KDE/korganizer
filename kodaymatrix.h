@@ -191,6 +191,10 @@ class KODayMatrix: public QFrame, public KCal::Calendar::CalendarObserver
      */
     void selected( const KCal::DateList &daylist );
 
+    void newEventSignal( const QDate &date );
+    void newTodoSignal( const QDate &date );
+    void newJournalSignal( const QDate &date );
+
     /** emitted if the user has dropped an incidence (event or todo) inside the matrix
      *
      *  @param incidence the dropped calendar incidence
@@ -228,6 +232,11 @@ class KODayMatrix: public QFrame, public KCal::Calendar::CalendarObserver
     void resizeEvent( QResizeEvent * );
 
   private:
+    /**
+     * Pop-up a context menu for creating a new Event, To-do, or Journal.
+     */
+    void popupMenu( const QDate &date );
+
     /** returns the index of the day located at the matrix's widget (x,y) position.
      *
      *  @param x horizontal coordinate
