@@ -35,6 +35,13 @@
 #include "koprefs.h"
 #include "koglobals.h"
 
+#include "kocorehelper.h"
+//#include "korganizer/baseview.h"
+//#include "actionmanager.h"
+#ifndef KORG_NOPRINTER
+#include "calprinter.h"
+#endif
+
 #include <kcal/todo.h>
 #include <kcal/incidence.h>
 
@@ -469,8 +476,32 @@ void KOTodoView::editTodo()
 
 void KOTodoView::printTodo()
 {
-  //TODO
-  kDebug() << "this is a stub";
+#ifndef KORG_NOPRINTER
+  QModelIndexList selection = mView->selectionModel()->selectedRows();
+  if ( selection.size() != 1 ) {
+    return;
+  }
+
+  Todo *todo = static_cast<Todo *>( selection[0].data( KOTodoModel::TodoRole ).value<void *>() );
+
+  KOCoreHelper helper;
+  CalPrinter printer( this, BaseView::calendar(), &helper );
+  connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
+
+  Incidence::List selectedIncidences;
+  selectedIncidences.append( todo );
+
+  KDateTime todoDate;
+  if ( todo->hasStartDate() ) {
+    todoDate = todo->dtStart();
+  } else {
+    todoDate = todo->dtDue();
+  }
+
+  printer.print( KOrg::CalPrinterBase::Incidence,
+                 todoDate.date(), todoDate.date(), selectedIncidences, false );
+
+#endif
 }
 
 void KOTodoView::deleteTodo()
