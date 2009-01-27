@@ -164,7 +164,7 @@ class KODayMatrix: public QFrame, public KCal::Calendar::CalendarObserver
     /* reimplemented from KCal::Calendar::Observer */
     void calendarIncidenceAdded( Incidence *incidence );
     void calendarIncidenceChanged( Incidence *incidence );
-    void calendarIncidenceRemoved( Incidence *incidence );
+    void calendarIncidenceDeleted( Incidence *incidence );
 
   public slots:
     /** Recalculates all the flags of the days in the matrix like holidays or
