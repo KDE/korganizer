@@ -29,7 +29,6 @@
 #include "freebusymanager.h"
 #include "freebusyurldialog.h"
 
-#include <libkdepim/addressesdialog.h>
 #include <libkdepim/addresseelineedit.h>
 #include <libkdepim/distributionlist.h>
 
