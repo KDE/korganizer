@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=Calendar Decoration Interface
 Name[ca]=Interfície de decoració del calendari
+Name[cs]=Rozhraní dekorace kalendáře
 Name[da]=Kalenderdekorations-plugin
 Name[de]=Dekoration für den Kalender
 Name[el]=Διασύνδεση διακόσμησης ημερολογίου
@@ -18,6 +19,7 @@ Name[nb]=Calendar dekorasjonsgrensesnitt
 Name[nds]=Kalennerdekoratschoon-Koppelsteed
 Name[nl]=Agendadecoratie-uiterlijk
 Name[nn]=Grensesnitt til kalenderpynt
+Name[pa]=ਕੈਲੰਡਰ ਸਜਾਵਟ ਇੰਟਰਫੇਸ
 Name[pl]=Interfejs do dekoracji kalendarza
 Name[pt]=Interface de Decoração do Calendário
 Name[pt_BR]=Interface de decoração do calendário
@@ -55,7 +57,7 @@ Comment[he]=תוסף קישוטי לוח שנה
 Comment[hr]=Dodatak za dekoraciju kalendara
 Comment[hu]=Naptármegjelenési bővítőmodul
 Comment[is]=Íforrit til að skreyta texta dagatals
-Comment[it]=Plugin di decorazione del calendario
+Comment[it]=Estensione di decorazione del calendario
 Comment[ja]=カレンダー装飾プラグイン
 Comment[ka]=კალენდრის გაფორმების მოდული
 Comment[kk]=Күнтізбені безендіру модулі
