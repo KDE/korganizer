@@ -1397,6 +1397,11 @@ void CalendarView::schedule_forward( Incidence *incidence )
   PublishDialog publishdlg;
   if ( publishdlg.exec() == QDialog::Accepted ) {
     QString recipients = publishdlg.addresses();
+    if ( incidence->organizer().isEmpty() ) {
+      incidence->setOrganizer( Person( KOPrefs::instance()->fullName(),
+                                       KOPrefs::instance()->email() ) );
+    }
+
     ICalFormat format;
     QString messageText = format.createScheduleMessage( incidence, iTIPRequest );
     KOMailClient mailer;
