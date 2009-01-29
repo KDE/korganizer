@@ -134,10 +134,9 @@ QStringList KOGlobals::holiday( const QDate &date ) const
   if ( !mHolidays ) {
     return hdays;
   }
-  Q3ValueList<KHoliday> list = mHolidays->getHolidays( date );
-  Q3ValueList<KHoliday>::ConstIterator it = list.begin();
-  for ( ; it != list.end(); ++it ) {
-    hdays.append( (*it).text );
+  const KHoliday::List list = mHolidays->holidays( date );
+  for ( int i = 0; i < list.count(); ++i ) {
+    hdays.append( list.at( i ).text() );
   }
   return hdays;
 }
@@ -148,10 +147,9 @@ bool KOGlobals::isWorkDay( const QDate &date ) const
 
   bool nonWorkDay = ( mask & ( 1 << ( date.dayOfWeek() - 1 ) ) );
   if ( KOPrefs::instance()->mExcludeHolidays && mHolidays ) {
-    Q3ValueList<KHoliday> list = mHolidays->getHolidays( date );
-    Q3ValueList<KHoliday>::ConstIterator it = list.begin();
-    for ( ; it != list.end(); ++it ) {
-      nonWorkDay = nonWorkDay || ( (*it).Category == KHolidays::HOLIDAY );
+    const KHoliday::List list = mHolidays->holidays( date );
+    for ( int i = 0; i < list.count(); ++i ) {
+      nonWorkDay = nonWorkDay || ( list.at( i ).dayType() == KHoliday::Holiday );
     }
   }
   return !nonWorkDay;
