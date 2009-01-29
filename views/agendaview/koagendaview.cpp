@@ -43,6 +43,7 @@
 #include <kcal/calfilter.h>
 #include <kcal/incidence.h>
 #include <kcal/incidenceformatter.h>
+#include <kholidays/kholidays.h>
 
 #include <kapplication.h>
 #include <kcalendarsystem.h>
@@ -53,7 +54,6 @@
 #include <kconfig.h>
 #include <kglobal.h>
 #include <kglobalsettings.h>
-#include <kholidays.h>
 #include <kvbox.h>
 #include <ksystemtimezone.h>
 #include <kpushbutton.h>

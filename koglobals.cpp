@@ -28,6 +28,9 @@
 
 #include <libkdepim/reminderclient.h>
 
+#include <kholidays/kholidays.h>
+using namespace LibKHolidays;
+
 #include <k3staticdeleter.h>
 #include <kdebug.h>
 #include <kglobal.h>
@@ -38,8 +41,6 @@
 #include <kiconloader.h>
 #include <kcomponentdata.h>
 #include <kcalendarsystem.h>
-#include <kholidays.h>
-using namespace LibKHolidays;
 
 #include <Q3ValueList>
 #include <QApplication>

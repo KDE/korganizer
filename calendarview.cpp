@@ -56,7 +56,6 @@
 #include "exportwebdialog.h"
 #include "kocorehelper.h"
 #include "incidencechanger.h"
-#include "kholidays.h"
 #include "mailscheduler.h"
 #include "komailclient.h"
 #include "views/agendaview/koagendaview.h"
@@ -79,6 +78,7 @@
 #include <kcal/calendarresources.h>
 #include <kcal/calendarnull.h>
 #include <kcal/htmlexportsettings.h>
+#include <kholidays/kholidays.h>
 
 #include <kglobal.h>
 #include <kdebug.h>

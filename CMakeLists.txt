@@ -22,7 +22,6 @@ add_subdirectory( tests )
 
 add_definitions(-DKDE_DEFAULT_DEBUG_AREA=5850)
 include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/interfaces
-                     ${CMAKE_SOURCE_DIR}/libkholidays
                      ${CMAKE_SOURCE_DIR}/mimelib
                      ${CMAKE_SOURCE_DIR}/korganizer/printing
                      ${CMAKE_SOURCE_DIR}/kdgantt1
@@ -66,7 +65,7 @@ set(kcm_korganizer_PART_SRCS koprefsdialog.cpp )
 
 kde4_add_plugin(kcm_korganizer ${kcm_korganizer_PART_SRCS})
 
-target_link_libraries(kcm_korganizer ${QT_QT3SUPPORT_LIBRARY} ${KDE4_KDEUI_LIBS} ${KDE4_KCAL_LIBS} korganizerprivate kdepim kholidays korganizer_core korganizer_calendar)
+target_link_libraries(kcm_korganizer ${QT_QT3SUPPORT_LIBRARY} ${KDE4_KDEUI_LIBS} ${KDE4_KCAL_LIBS} ${KDE4_KHOLIDAYS_LIBS} korganizerprivate kdepim korganizer_core korganizer_calendar)
 
 install(TARGETS kcm_korganizer  DESTINATION ${PLUGIN_INSTALL_DIR})
 

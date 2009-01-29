@@ -31,7 +31,7 @@
 #include "calendar/calendardecoration.h"
 #include "korganizer/printplugin.h"
 
-#include <kholidays.h>
+#include <kholidays/kholidays.h>
 using namespace LibKHolidays;
 
 #include <kcal/calendarresources.h>

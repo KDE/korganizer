@@ -36,6 +36,8 @@
 #include "views/agendaview/koagendaitem.h"
 #include "views/agendaview/koagenda.h"
 
+#include <kholidays/kholidays.h>
+
 #include <kapplication.h>
 #include <kcalendarsystem.h>
 #include <kdebug.h>
@@ -45,7 +47,6 @@
 #include <kconfig.h>
 #include <kglobal.h>
 #include <kglobalsettings.h>
-#include <kholidays.h>
 #include <KVBox>
 #include <ksystemtimezone.h>
 #include <kpushbutton.h>
