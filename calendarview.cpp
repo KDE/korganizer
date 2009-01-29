@@ -1738,6 +1738,10 @@ void CalendarView::filterActivated( int filterNo )
   emit filterChanged();
 }
 
+bool CalendarView::isFiltered() const {
+  return mCurrentFilter != 0;
+}
+
 QString CalendarView::currentFilterName() const
 {
   if ( mCurrentFilter ) {
