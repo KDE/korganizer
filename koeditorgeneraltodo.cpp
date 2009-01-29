@@ -349,6 +349,9 @@ void KOEditorGeneralTodo::writeTodo( Todo *todo )
   QDate tmpSDate, tmpDDate;
   QTime tmpSTime, tmpDTime;
   KDateTime tmpStartDT, tmpDueDT;
+  tmpDueDT.setTimeSpec( dueSpec );
+  tmpStartDT.setTimeSpec( startSpec );
+
   if ( mTimeButton->isChecked() ) {
     todo->setAllDay( false );
 
@@ -357,7 +360,6 @@ void KOEditorGeneralTodo::writeTodo( Todo *todo )
     tmpDTime = mDueTimeEdit->getTime();
     tmpDueDT.setDate( tmpDDate );
     tmpDueDT.setTime( tmpDTime );
-    tmpDueDT.setTimeSpec( dueSpec );
 
     // set start date/time
     if ( mStartCheck->isChecked() ) {
@@ -365,7 +367,6 @@ void KOEditorGeneralTodo::writeTodo( Todo *todo )
       tmpSTime = mStartTimeEdit->getTime();
       tmpStartDT.setDate( tmpSDate );
       tmpStartDT.setTime( tmpSTime );
-      tmpStartDT.setTimeSpec( startSpec );
     } else {
       tmpStartDT = tmpDueDT;
     }
