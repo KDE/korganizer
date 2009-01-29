@@ -636,14 +636,10 @@ bool KOAgenda::eventFilter_mouse( QObject *object, QMouseEvent *me )
         }
         showNewEventPopupSignal();
       } else {
-        // if mouse pointer is in selection, don't change selection
-        QPoint gpos = contentsToGrid( viewportToContents( viewportPos ) );
-        if ( !ptInSelection( gpos ) ) {
-          selectItem( 0 );
-          mActionItem = 0;
-          setCursor( Qt::ArrowCursor );
-          startSelectAction( viewportPos );
-        }
+        selectItem( 0 );
+        mActionItem = 0;
+        setCursor( Qt::ArrowCursor );
+        startSelectAction( viewportPos );
       }
     }
     break;
