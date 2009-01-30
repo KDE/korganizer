@@ -108,7 +108,7 @@
 #include <assert.h>
 
 using namespace KOrg;
-using namespace LibKHolidays;
+using namespace KHolidays;
 
 CalendarView::CalendarView( QWidget *parent )
   : CalendarViewBase( parent ),
@@ -249,7 +249,7 @@ CalendarView::CalendarView( QWidget *parent )
   mViewManager->connectView( mTodoList );
 
   KOGlobals::self()->
-      setHolidays( new KHolidays( KOPrefs::instance()->mHolidays ) );
+      setHolidays( new KHolidayRegion( KOPrefs::instance()->mHolidays ) );
 
   connect( QApplication::clipboard(), SIGNAL(dataChanged()),
            SLOT(checkClipboard()) );
@@ -624,7 +624,7 @@ void CalendarView::updateConfig( const QByteArray &receiver )
     return;
   }
 
-  KOGlobals::self()->setHolidays( new KHolidays( KOPrefs::instance()->mHolidays ) );
+  KOGlobals::self()->setHolidays( new KHolidayRegion( KOPrefs::instance()->mHolidays ) );
 
   // Only set a new time zone if it changed. This prevents the window
   // from being modified on start

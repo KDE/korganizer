@@ -29,7 +29,7 @@
 #include <libkdepim/reminderclient.h>
 
 #include <kholidays/kholidays.h>
-using namespace LibKHolidays;
+using namespace KHolidays;
 
 #include <k3staticdeleter.h>
 #include <kdebug.h>
@@ -160,13 +160,13 @@ int KOGlobals::getWorkWeekMask()
   return KOPrefs::instance()->mWorkWeekMask;
 }
 
-void KOGlobals::setHolidays( KHolidays *h )
+void KOGlobals::setHolidays( KHolidayRegion *h )
 {
   delete mHolidays;
   mHolidays = h;
 }
 
-KHolidays *KOGlobals::holidays() const
+KHolidayRegion *KOGlobals::holidays() const
 {
   return mHolidays;
 }

@@ -35,8 +35,8 @@ class QIcon;
 namespace KPIM {
   class ReminderClient;
 }
-namespace LibKHolidays {
-  class KHolidays;
+namespace KHolidays {
+  class KHolidayRegion;
 }
 
 class KORGANIZERPRIVATE_EXPORT KOGlobals
@@ -86,11 +86,11 @@ class KORGANIZERPRIVATE_EXPORT KOGlobals
        @param h a KHolidays object initialized with the desired locale.
        We capture this object, so you must not delete it.
     */
-    void setHolidays( LibKHolidays::KHolidays *h );
+    void setHolidays( KHolidays::KHolidayRegion *h );
 
     /** return the KHolidays object or 0 if none has been defined
     */
-    LibKHolidays::KHolidays *holidays() const;
+    KHolidays::KHolidayRegion *holidays() const;
 
     const KComponentData &componentData() const { return mOwnInstance; }
 
@@ -104,7 +104,7 @@ class KORGANIZERPRIVATE_EXPORT KOGlobals
 
     KPIM::ReminderClient *mReminderClient;
 
-    LibKHolidays::KHolidays *mHolidays;
+    KHolidays::KHolidayRegion *mHolidays;
 };
 
 #endif
