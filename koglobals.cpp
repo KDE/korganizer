@@ -28,7 +28,7 @@
 
 #include <libkdepim/reminderclient.h>
 
-#include <kholidays/kholidays.h>
+#include <kholidays/holidays.h>
 using namespace KHolidays;
 
 #include <k3staticdeleter.h>
@@ -134,7 +134,7 @@ QStringList KOGlobals::holiday( const QDate &date ) const
   if ( !mHolidays ) {
     return hdays;
   }
-  const KHoliday::List list = mHolidays->holidays( date );
+  const Holiday::List list = mHolidays->holidays( date );
   for ( int i = 0; i < list.count(); ++i ) {
     hdays.append( list.at( i ).text() );
   }
@@ -147,9 +147,9 @@ bool KOGlobals::isWorkDay( const QDate &date ) const
 
   bool nonWorkDay = ( mask & ( 1 << ( date.dayOfWeek() - 1 ) ) );
   if ( KOPrefs::instance()->mExcludeHolidays && mHolidays ) {
-    const KHoliday::List list = mHolidays->holidays( date );
+    const Holiday::List list = mHolidays->holidays( date );
     for ( int i = 0; i < list.count(); ++i ) {
-      nonWorkDay = nonWorkDay || ( list.at( i ).dayType() == KHoliday::Holiday );
+      nonWorkDay = nonWorkDay || ( list.at( i ).dayType() == Holiday::NonWorkday );
     }
   }
   return !nonWorkDay;
@@ -160,13 +160,13 @@ int KOGlobals::getWorkWeekMask()
   return KOPrefs::instance()->mWorkWeekMask;
 }
 
-void KOGlobals::setHolidays( KHolidayRegion *h )
+void KOGlobals::setHolidays( HolidayRegion *h )
 {
   delete mHolidays;
   mHolidays = h;
 }
 
-KHolidayRegion *KOGlobals::holidays() const
+HolidayRegion *KOGlobals::holidays() const
 {
   return mHolidays;
 }

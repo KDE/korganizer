@@ -36,7 +36,7 @@ namespace KPIM {
   class ReminderClient;
 }
 namespace KHolidays {
-  class KHolidayRegion;
+  class HolidayRegion;
 }
 
 class KORGANIZERPRIVATE_EXPORT KOGlobals
@@ -83,14 +83,14 @@ class KORGANIZERPRIVATE_EXPORT KOGlobals
 
     /**
        Set which holidays the user wants to use.
-       @param h a KHolidays object initialized with the desired locale.
+       @param h a HolidayRegion object initialized with the desired locale.
        We capture this object, so you must not delete it.
     */
-    void setHolidays( KHolidays::KHolidayRegion *h );
+    void setHolidays( KHolidays::HolidayRegion *h );
 
-    /** return the KHolidays object or 0 if none has been defined
+    /** return the HolidayRegion object or 0 if none has been defined
     */
-    KHolidays::KHolidayRegion *holidays() const;
+    KHolidays::HolidayRegion *holidays() const;
 
     const KComponentData &componentData() const { return mOwnInstance; }
 
@@ -104,7 +104,7 @@ class KORGANIZERPRIVATE_EXPORT KOGlobals
 
     KPIM::ReminderClient *mReminderClient;
 
-    KHolidays::KHolidayRegion *mHolidays;
+    KHolidays::HolidayRegion *mHolidays;
 };
 
 #endif

@@ -31,7 +31,7 @@
 #include "calendar/calendardecoration.h"
 #include "korganizer/printplugin.h"
 
-#include <kholidays/kholidays.h>
+#include <kholidays/holidays.h>
 using namespace KHolidays;
 
 #include <kcal/calendarresources.h>
@@ -280,7 +280,7 @@ class KOPrefsDialogTime : public KPrefsModule
 
       QString currentHolidayName;
       QStringList holidayList;
-      QStringList countryList = KHolidayRegion::locations();
+      QStringList countryList = HolidayRegion::locations();
 
       foreach ( const QString &country, countryList ) {
         QString countryFile = KStandardDirs::locate( "locale",
