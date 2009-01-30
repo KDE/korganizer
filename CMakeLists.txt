@@ -229,8 +229,9 @@ add_dependencies(korganizerprivate kmail)
 target_link_libraries(korganizerprivate
   ${KDE4_KNEWSTUFF2_LIBS} ${KDE4_KUTILS_LIBS}  ${KDE4_KDE3SUPPORT_LIBS} ${ZLIB_LIBRARY}
   ${KDE4_KCAL_LIBS} ${KDE4_KABC_LIBS} ${KDE4_KPIMIDENTITIES_LIBRARY} ${KDE4_KMIME_LIBRARY}
+  ${KDE4_KHOLIDAYS_LIBS}
   korganizer_core korganizer_eventviewer korganizer_calendar korganizer_interfaces korg_stdprinting
-  kholidays kdepim
+  kdepim
 )
 
 set_target_properties(korganizerprivate PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
