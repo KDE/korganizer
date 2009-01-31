@@ -452,14 +452,14 @@ void ActionManager::initActions()
   action = new KAction( KIcon( "go-jump-today" ),
                         i18nc( "@action Jump to today", "To &Today" ), this );
   action->setIconText( i18n( "Today" ) );
-  action->setToolTip( i18n( "Scroll to Today" ) );
+  action->setStatusTip( i18n( "Scroll to Today" ) );
   mACollection->addAction( "go_today", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(goToday()) );
 
   action = new KAction( KIcon( isRTL ? "go-next" : "go-previous" ),
                         i18nc( "scroll backward", "&Backward" ), this );
   action->setIconText( i18nc( "scroll backward", "Back" ) );
-  action->setToolTip( i18n( "Scroll Backward" ) );
+  action->setStatusTip( i18n( "Scroll Backward" ) );
   mACollection->addAction( "go_previous", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(goPrevious()) );
 
@@ -474,7 +474,7 @@ void ActionManager::initActions()
   action = new KAction( KIcon( isRTL ? "go-previous" : "go-next" ),
                         i18nc( "scroll forward", "&Forward" ), this );
   action->setIconText( i18nc( "scoll forward", "Forward" ) );
-  action->setToolTip( i18n( "Scroll Forward" ) );
+  action->setStatusTip( i18n( "Scroll Forward" ) );
   mACollection->addAction( "go_next", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(goNext()) );
   /*
@@ -485,14 +485,14 @@ void ActionManager::initActions()
   /************************** Actions MENU *********************************/
   action = new KAction( KIcon( "appointment-new" ), i18n( "New E&vent..." ), this );
   action->setIconText( i18nc( "@action:intoolbar create a new event", "Event" ) );
-  action->setToolTip( i18n( "Create a new Event" ) );
+  action->setStatusTip( i18n( "Create a new Event" ) );
   mACollection->addAction( "new_event", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView,
            SLOT(newEvent()) );
 
   action = new KAction( KIcon( "task-new" ), i18n( "New &To-do..." ), this );
   action->setIconText( i18n( "To-do" ) );
-  action->setToolTip( i18n( "Create a new To-do" ) );
+  action->setStatusTip( i18n( "Create a new To-do" ) );
   mACollection->addAction( "new_todo", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView,
            SLOT(newTodo()) );
@@ -507,7 +507,7 @@ void ActionManager::initActions()
 
   action = new KAction( KIcon( "journal-new" ), i18n( "New &Journal..." ), this );
   action->setIconText( i18n( "Journal" ) );
-  action->setToolTip( i18n( "Create a new Journal" ) );
+  action->setStatusTip( i18n( "Create a new Journal" ) );
   mACollection->addAction( "new_journal", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView,
            SLOT(newJournal()) );
