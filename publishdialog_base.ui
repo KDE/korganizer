@@ -49,7 +49,7 @@
           <string>Select a recipient from your address book</string>
          </property>
          <property name="whatsThis" >
-          <string>Click this buttong to show another dialog where you will be able to select a recipient from your address booko</string>
+          <string>Click this button to show another dialog where you will be able to select a recipient from your address book</string>
          </property>
          <property name="text" >
           <string>&amp;Select...</string>

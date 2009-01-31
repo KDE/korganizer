@@ -51,7 +51,7 @@ PublishDialog::PublishDialog( QWidget *parent )
   mUI.mEmailLineEdit->setEnabled( false );
 
   setButtonToolTip( Ok, i18n( "Send email to these recipients" ) );
-  setButtonWhatsThis( Ok, i18n( "Clicking the <b>Ok</b> button will cause"
+  setButtonWhatsThis( Ok, i18n( "Clicking the <b>Ok</b> button will cause "
                                 "an email to be sent to the recipients you "
                                 "have entered." ) );
   setButtonToolTip( Cancel, i18n( "Cancel recipient selection and the email" ) );
