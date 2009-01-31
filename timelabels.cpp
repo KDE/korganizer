@@ -36,7 +36,7 @@
 #include "views/agendaview/koagendaitem.h"
 #include "views/agendaview/koagenda.h"
 
-#include <kholidays/kholidays.h>
+#include <kholidays/holidays.h>
 
 #include <kapplication.h>
 #include <kcalendarsystem.h>

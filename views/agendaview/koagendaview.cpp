@@ -43,7 +43,7 @@
 #include <kcal/calfilter.h>
 #include <kcal/incidence.h>
 #include <kcal/incidenceformatter.h>
-#include <kholidays/kholidays.h>
+#include <kholidays/holidays.h>
 
 #include <kapplication.h>
 #include <kcalendarsystem.h>
