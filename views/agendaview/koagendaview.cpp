@@ -788,7 +788,14 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
     thisDate = mSelectedDates[ item->cellXLeft() ];
   }
   QDate oldThisDate( item->itemDate() );
-  int daysOffset = oldThisDate.daysTo( thisDate );
+  int daysOffset = 0;
+
+  // daysOffset should only be calculated if item->cellXLeft() is positive which doesn't happen
+  // if the event's start isn't visible.
+  if ( item->cellXLeft() >= 0 ) {
+    daysOffset = oldThisDate.daysTo( thisDate );
+  }
+
   int daysLength = 0;
 //  startDt.setDate( startDate );
 
