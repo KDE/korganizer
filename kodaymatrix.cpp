@@ -296,10 +296,13 @@ void KODayMatrix::updateEvents()
           *new KDateTime( mDays[0], mCalendar->timeSpec() ),
           *new KDateTime( mDays[NUMDAYS-1], mCalendar->timeSpec() ) );
       } else {
-        timeDateList.append( event->dtStart() );
+        if ( event->dtStart().date() >= mDays[0] ) {
+          timeDateList.append( event->dtStart() );
+        } else {
+          // The event starts in another month (not visible))
+          timeDateList.append( KDateTime( mDays[0], mCalendar->timeSpec() ) );
+        }
       }
-
-      const int eventDuration = event->dtStart().daysTo( event->dtEnd() ) + 1;
 
       DateTimeList::iterator t;
       for ( t=timeDateList.begin(); t != timeDateList.end(); ++t ) {
@@ -314,7 +317,7 @@ void KODayMatrix::updateEvents()
           ++j;
           d = d.addDays( 1 );
 
-        } while ( j < eventDuration && j < NUMDAYS );
+        } while ( d <= event->dtEnd().date() && j < NUMDAYS );
       }
     }
   }
