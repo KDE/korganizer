@@ -891,8 +891,8 @@ void KOAgenda::performItemAction( const QPoint &viewportPos )
 
   // Cursor left active agenda area.
   // This starts a drag.
-  if ( clipperPos.y() < 0 || clipperPos.y() > visibleHeight() ||
-       clipperPos.x() < 0 || clipperPos.x() > visibleWidth() ) {
+  if ( clipperPos.y() < 0 || clipperPos.y() >= visibleHeight() ||
+       clipperPos.x() < 0 || clipperPos.x() >= visibleWidth() ) {
     if ( mActionType == MOVE ) {
       mScrollUpTimer.stop();
       mScrollDownTimer.stop();
