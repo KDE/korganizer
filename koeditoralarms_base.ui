@@ -451,7 +451,7 @@
              <string>&amp;To:</string>
             </property>
             <property name="buddy" >
-             <cstring>unnamed</cstring>
+             <cstring>mEmailAddress</cstring>
             </property>
            </widget>
           </item>
