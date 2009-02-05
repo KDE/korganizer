@@ -382,7 +382,7 @@ void AlarmDialog::slotSave()
 
   for ( QListViewItemIterator it( mIncidenceListView ) ; it.current() ; ++it ) {
     AlarmListItem * item = static_cast<AlarmListItem*>( it.current() );
-    config->setGroup( QString("Incidence-%1").arg(numReminders) );
+    config->setGroup( QString("Incidence-%1").arg(numReminders + 1) );
     config->writeEntry( "UID", item->mIncidence->uid() );
     config->writeEntry( "RemindAt", item->mRemindAt );
     ++numReminders;
