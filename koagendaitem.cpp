@@ -691,7 +691,7 @@ void KOAgendaItem::setConflictItems( QList<KOAgendaItem*> ci )
 
 void KOAgendaItem::addConflictItem( KOAgendaItem *ci )
 {
-  if ( mConflictItems.contains( ci ) ) {
+  if ( !mConflictItems.contains( ci ) ) {
     mConflictItems.append( ci );
   }
 }

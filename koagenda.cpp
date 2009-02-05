@@ -1797,6 +1797,10 @@ bool KOAgenda::removeAgendaItem( KOAgendaItem *item )
 
   QList<KOAgendaItem*>::iterator it;
   for ( it = conflictItems.begin(); it != conflictItems.end(); ++it ) {
+      (*it)->setSubCells( ( *it )->subCells()-1 );
+  }
+
+  for ( it = conflictItems.begin(); it != conflictItems.end(); ++it ) {
     // the item itself is also in its own conflictItems list!
     if ( *it != thisItem ) {
       placeSubCells( *it );
