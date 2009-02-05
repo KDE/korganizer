@@ -38,6 +38,7 @@
 #include <Q3HBox>
 #include <QLabel>
 #include <QLayout>
+#include <Q3ListViewItem>
 #include <QPushButton>
 #include <QTimer>
 
