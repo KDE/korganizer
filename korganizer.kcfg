@@ -229,19 +229,26 @@
 
     <entry type="Enum" key="AgendaViewColors">
       <label>Colors used in agenda view</label>
-      <whatsthis>Choose the colors of the agenda view items.</whatsthis>
       <choices>
         <choice name="CategoryInsideResourceOutside">
           <label>Category inside, calendar outside</label>
+          <whatsthis>Select the "Category inside, calendar outside" option if you would like to draw calendar items in their associated category color, with the item's border drawn in the color of its calendar resource.  Please use the Colors and Fonts configuration page for setting these colors.</whatsthis>
+          <tooltip>Draw agenda items in their category color inside and calendar resource color for their border</tooltip>
         </choice>
         <choice name="ResourceInsideCategoryOutside">
           <label>Calendar inside, category outside</label>
+          <whatsthis>Select the "Calendar inside, category outside" option if you would like to draw calendar items in their associated calendar resource color, with the item's border drawn in the color of its category.  Please use the Colors and Fonts configuration page for setting these colors.</whatsthis>
+          <tooltip>Draw agenda items in their calendar resource color inside and category color for their border</tooltip>
         </choice>
         <choice name="CategoryOnly">
           <label>Only category</label>
+          <whatsthis>Select the "Only category" option if you would like to draw calendar items (both inside and border) in the color of their associated category.  Please use the Colors and Fonts configuration page for setting these colors.</whatsthis>
+          <tooltip>Draw agenda items using their category color for the inside and border</tooltip>
         </choice>
         <choice name="ResourceOnly">
           <label>Only calendar</label>
+          <whatsthis>Select the "Only calendar" option if you would like to draw calendar items (both inside and border) in the color of their calendar resource.  Please use the Colors and Fonts configuration page for setting these colors.</whatsthis>
+          <tooltip>Draw agenda items using their calendar resource color for the inside and border</tooltip>
         </choice>
       </choices>
       <default>CategoryInsideResourceOutside</default>
