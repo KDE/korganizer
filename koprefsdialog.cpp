@@ -578,10 +578,11 @@ class KOPrefsDialogViews : public KPrefsModule
       agendaLayout->addWidget( marcusBainsShowSeconds->checkBox() );
       agendaLayout->addWidget(
         addWidBool( KOPrefs::instance()->selectionStartsEditorItem() )->checkBox() );
+
       agendaLayout->addWidget(
-        addWidCombo( KOPrefs::instance()->agendaViewColorsItem() )->comboBox() );
+        addWidRadios( KOPrefs::instance()->agendaViewColorsItem() )->groupBox() );
       agendaLayout->addWidget(
-        addWidCombo( KOPrefs::instance()->agendaViewCalendarDisplayItem() )->comboBox() );
+        addWidRadios( KOPrefs::instance()->agendaViewCalendarDisplayItem() )->groupBox() );
 
       agendaLayout->addStretch( 1 );
 
