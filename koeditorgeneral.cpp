@@ -411,7 +411,7 @@ void KOEditorGeneral::updateAlarmWidgets()
                                      mAlarmList.count() ) );
   } else {
     Alarm *alarm = mAlarmList.first();
-    // Check if its the trivial type of alarm, which can be
+    // Check if it is the trivial type of alarm, which can be
     // configured with a simply spin box...
 
     if ( alarm->type() == Alarm::Display && alarm->text().isEmpty() &&

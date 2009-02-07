@@ -72,7 +72,7 @@ bool UriHandler::process( const QString &uri )
     } else {
       /*
         KaddressBook is not already running.  Pass it the UID of the contact via
-        the command line while starting it - its neater.
+        the command line while starting it - it is neater.
         We start it without its main interface
       */
       QString iconPath =
