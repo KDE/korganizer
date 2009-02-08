@@ -1164,8 +1164,9 @@ void KOAgendaView::insertIncidence( Incidence *incidence, const QDate &curDate )
   int curCol = mSelectedDates.first().daysTo( curDate );
 
   // In case incidence->dtStart() isn't visible (crosses bounderies)
-  if ( curCol < 0 )
+  if ( curCol < 0 ) {
     curCol = 0;
+  }
 
   // The date for the event is not displayed, just ignore it
   if ( curCol >= mSelectedDates.count() ) {
@@ -1389,19 +1390,21 @@ void KOAgendaView::fillAgenda()
     firstVisibleDateTime.setTime( QTime( 0, 0 ) );
     DateTimeList dateTimeList;
 
-    if ( todo && ( !KOPrefs::instance()->showAllDayTodo()
-                   || !todo->hasDueDate() ) ) {
+    if ( todo &&
+         ( !KOPrefs::instance()->showAllDayTodo() || !todo->hasDueDate() ) ) {
       continue;
     }
 
     if ( incidence->recurs() ) {
       int eventDuration = incidence->dtStart().daysTo( incidence->dtEnd() );
 
-      /* if there's a multiday event that starts before firstVisibleDateTime but ends after
-       * lets include it. timesInInterval() ignores incidences that aren't totaly inside
-       * the range */
+      // if there's a multiday event that starts before firstVisibleDateTime
+      // but ends after, let's include it. timesInInterval() ignores incidences
+      // that aren't totally inside the range.
       KDateTime startDateTimeWithOffset = firstVisibleDateTime.addDays( -eventDuration );
-      dateTimeList = incidence->recurrence()->timesInInterval( startDateTimeWithOffset, lastVisibleDateTime );
+      dateTimeList =
+        incidence->recurrence()->timesInInterval( startDateTimeWithOffset,
+                                                  lastVisibleDateTime );
     } else {
       KDateTime dateToAdd; // date to add to our date list
       KDateTime incidenceStart;
@@ -1428,10 +1431,10 @@ void KOAgendaView::fillAgenda()
 
     // ToDo items shall be displayed today if they are already overdude
     KDateTime dateTimeToday = KDateTime( today, KOPrefs::instance()->timeSpec() );
-    if ( todo
-         && todo->isOverdue()
-         && dateTimeToday >= firstVisibleDateTime
-         && dateTimeToday <= lastVisibleDateTime ) {
+    if ( todo &&
+         todo->isOverdue() &&
+         dateTimeToday >= firstVisibleDateTime &&
+         dateTimeToday <= lastVisibleDateTime ) {
 
       bool doAdd = true;
 
@@ -1446,8 +1449,9 @@ void KOAgendaView::fillAgenda()
         }
       }
 
-      if ( doAdd )
+      if ( doAdd ) {
         dateTimeList += dateTimeToday;
+      }
     }
 
     for ( t = dateTimeList.begin(); t != dateTimeList.end(); ++t ) {
