@@ -577,8 +577,9 @@ void ResourceView::editResource()
         kDebug() << "DBUS Call changeResourceUIName() failed " << endl;
       }
     } else {
+      const QString subResourceName = resource->labelForSubresource( item->resourceIdentifier() );
       KMessageBox::sorry( this,
-                          i18n ("<qt>Cannot edit the subresource <b>%1</b>.</qt>").arg( item->resource()->objectName() ) );
+                          i18n ("<qt>Cannot edit the subresource <b>%1</b>.</qt>", subResourceName ) );
     }
   } else {
     KRES::ConfigDialog dlg( this, QString("calendar"), resource );
