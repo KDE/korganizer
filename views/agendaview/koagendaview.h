@@ -234,6 +234,7 @@ class KOAgendaView : public KOrg::AgendaView, public KCal::Calendar::CalendarObs
     bool filterByResource( Incidence *incidence );
     void setupTimeLabel( TimeLabels *timeLabel );
     int timeLabelsWidth();
+    void displayIncidence( Incidence *incidence );
 
   private:
     // view widgets
