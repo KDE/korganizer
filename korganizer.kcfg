@@ -334,7 +334,7 @@
 
     <entry type="Bool" key="Sort Completed Todos Separately">
       <label>Always display completed to-dos at the bottom of the list</label>
-      <whatsthis>Check this box if you want that all completed to-dos are always grouped at the bottom of the to-do list.</whatsthis>
+      <whatsthis>Check this box if you want all completed to-dos to be always grouped at the bottom of the to-do list.</whatsthis>
       <default>true</default>
     </entry>
 

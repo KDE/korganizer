@@ -335,7 +335,7 @@ bool KOGroupware::sendICalMessage( QWidget *parent,
       } else {
         txt = i18n( "You are not the organizer of this event. "
                     "Editing it will bring your calendar out of sync "
-                    "with the organizers calendar. Do you really want "
+                    "with the organizer's calendar. Do you really want "
                     "to edit it?" );
       }
       rc = KMessageBox::warningYesNo( parent, txt );
