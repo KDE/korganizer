@@ -228,7 +228,7 @@
     </entry>
 
     <entry type="Enum" key="AgendaViewColors">
-      <label>Colors used in agenda view</label>
+      <label>Color Usage</label>
       <choices>
         <choice name="CategoryInsideResourceOutside">
           <label>Category inside, calendar outside</label>
@@ -255,16 +255,22 @@
     </entry>
 
     <entry type="Enum" name="AgendaViewCalendarDisplay">
-      <label>Agenda View Calendar Display</label>
+      <label>Calendar Display</label>
       <choices>
         <choice name="CalendarsMerged">
-            <label>Merge all calendars into one view</label>
+          <label>Merge all calendars into one view</label>
+          <whatsthis>Select the "Merge all calendars into one view" option if you would like all your calendar resources to be shown together in one agenda view.</whatsthis>
+          <tooltip>Show all calendar resources together</tooltip>
         </choice>
         <choice name="CalendarsSideBySide">
-            <label>Show calendars side by side</label>
+          <label>Show calendars side by side</label>
+          <whatsthis>Select the "Show calendars side by side" option if you would like to see two calendar resources at once, in a side-by-side view.</whatsthis>
+          <tooltip>Show two calendars side-by-side</tooltip>
         </choice>
         <choice name="AllCalendarViews">
-            <label>Switch between views with tabs</label>
+          <label>Switch between views with tabs</label>
+          <whatsthis>Select "Switch between views with tabs" if you would like to alternate between calendar resources using the tab key.</whatsthis>
+          <tooltip>Tab through calendars</tooltip>
         </choice>
       </choices>
       <default>CalendarsMerged</default>
