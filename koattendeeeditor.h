@@ -29,7 +29,7 @@ class QBoxLayout;
 class QCheckBox;
 class QLabel;
 class QPushButton;
-class Q3HBox;
+class KHBox;
 class Q3ListViewItem;
 
 namespace KPIM {
@@ -106,7 +106,7 @@ class KOAttendeeEditor : public QWidget
     QCheckBox *mRsvpButton;
     KComboBox *mStatusCombo;
 
-    Q3HBox *mOrganizerHBox;
+    KHBox *mOrganizerHBox;
     KComboBox *mOrganizerCombo; // either we organize it (combo shown)
     QLabel *mOrganizerLabel; // or someone else does (just a label is shown)
 

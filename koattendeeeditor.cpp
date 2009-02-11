@@ -35,7 +35,7 @@
 #include <kmessagebox.h>
 
 #include <QCheckBox>
-#include <Q3HBox>
+#include <KHBox>
 #include <QLabel>
 #include <QLayout>
 #include <Q3ListViewItem>
@@ -51,7 +51,7 @@ KOAttendeeEditor::KOAttendeeEditor( QWidget *parent )
 
 void KOAttendeeEditor::initOrganizerWidgets( QWidget *parent, QBoxLayout *layout )
 {
-  mOrganizerHBox = new Q3HBox( parent );
+  mOrganizerHBox = new KHBox( parent );
   layout->addWidget( mOrganizerHBox );
   // If creating a new event, then the user is the organizer -> show the
   // identity combo
