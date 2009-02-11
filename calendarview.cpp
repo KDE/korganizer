@@ -1539,12 +1539,14 @@ void CalendarView::exportWeb()
 void CalendarView::exportICalendar()
 {
   QString filename = KFileDialog::getSaveFileName("icalout.ics",i18n("*.ics|ICalendars"),this);
+  if ( !filename.isEmpty() )
+  {
+    // Force correct extension
+    if (filename.right(4) != ".ics") filename += ".ics";
 
-  // Force correct extension
-  if (filename.right(4) != ".ics") filename += ".ics";
-
-  FileStorage storage( mCalendar, filename, new ICalFormat );
-  storage.save();
+    FileStorage storage( mCalendar, filename, new ICalFormat );
+    storage.save();
+  }
 }
 
 void CalendarView::exportVCalendar()
@@ -1558,13 +1560,15 @@ void CalendarView::exportVCalendar()
   }
 
   QString filename = KFileDialog::getSaveFileName("vcalout.vcs",i18n("*.vcs|vCalendars"),this);
+  if ( !filename.isEmpty() )
+  {
+    // TODO: I don't like forcing extensions:
+    // Force correct extension
+    if (filename.right(4) != ".vcs") filename += ".vcs";
 
-	// TODO: I don't like forcing extensions:
-  // Force correct extension
-  if (filename.right(4) != ".vcs") filename += ".vcs";
-
-  FileStorage storage( mCalendar, filename, new VCalFormat );
-  storage.save();
+    FileStorage storage( mCalendar, filename, new VCalFormat );
+    storage.save();
+  }
 }
 
 void CalendarView::eventUpdated(Incidence *)
