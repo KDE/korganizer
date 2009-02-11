@@ -1440,7 +1440,7 @@ bool KOEditorRecurrence::doesRecur()
 
 
 KOEditorRecurrenceDialog::KOEditorRecurrenceDialog(QWidget * parent) :
-    KDialogBase( parent, 0, false, i18n("Recurrence"), Ok )
+    KDialogBase( parent, 0, false, i18n("Recurrence"), Ok|Cancel )
 {
   mRecurrence = new KOEditorRecurrence( this );
   setMainWidget( mRecurrence );
