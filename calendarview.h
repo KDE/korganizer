@@ -581,8 +581,6 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
 
     void purgeCompleted();
 
-    void slotCalendarChanged();
-
     void slotAutoArchivingSettingsModified() { emit autoArchivingSettingsModified(); }
 
     void showErrorMessage( const QString & );

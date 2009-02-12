@@ -260,7 +260,6 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent, bool isSideBySide ) 
 
   if ( cal ) {
     cal->registerObserver( this );
-    connect( cal, SIGNAL(calendarChanged()), SLOT(resourcesChanged()) );
   }
 }
 
