@@ -161,8 +161,12 @@ void ResourceItem::stateChange( bool active )
           createSubresourceItems();
       }
     } else {
-      if ( mResource->save() ) mResource->setActive( false );
+      // mView->requestClose must be called before mResource->save() because
+      // save causes closeResource do be called.
       mView->requestClose( mResource );
+      if ( mResource->save() ) {
+        mResource->setActive( false );
+      }
     }
 
     setOpen( mResource->isActive() && childCount() > 0 );
