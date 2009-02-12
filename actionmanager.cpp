@@ -203,7 +203,7 @@ void ActionManager::createCalendarResources()
   mResourceView = factory.resourceView();
 
   connect( mCalendarResources, SIGNAL(calendarChanged()),
-           mCalendarView, SLOT(slotCalendarChanged()) );
+           mCalendarView, SLOT(resourcesChanged()) );
   connect( mCalendarResources, SIGNAL(signalErrorMessage(const QString &)),
            mCalendarView, SLOT(showErrorMessage(const QString &)) );
 
