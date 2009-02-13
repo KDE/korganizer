@@ -2160,13 +2160,6 @@ void CalendarView::purgeCompleted()
   }
 }
 
-void CalendarView::slotCalendarChanged()
-{
-  kdDebug(5850) << "CalendarView::slotCalendarChanged()" << endl;
-
-  updateView();
-}
-
 void CalendarView::warningChangeFailed( Incidence * )
 {
   KMessageBox::sorry( this, i18n("Unable to edit item: "
