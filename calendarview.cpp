@@ -2274,12 +2274,6 @@ void CalendarView::purgeCompleted()
   }
 }
 
-void CalendarView::slotCalendarChanged()
-{
-  kDebug();
-  updateView();
-}
-
 void CalendarView::warningChangeFailed( Incidence *incidence )
 {
   Q_UNUSED( incidence );
