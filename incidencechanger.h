@@ -55,7 +55,6 @@ class KORGANIZERPRIVATE_EXPORT IncidenceChanger : public KOrg::IncidenceChangerB
 
   private:
     class ComparisonVisitor;
-    class AssignmentVisitor;
 };
 
 #endif

@@ -27,6 +27,7 @@
 #include "kogroupware.h"
 #include "mailscheduler.h"
 
+#include <kcal/assignmentvisitor.h>
 #include <kcal/freebusy.h>
 #include <kcal/dndfactory.h>
 
@@ -215,64 +216,6 @@ class IncidenceChanger::ComparisonVisitor : public IncidenceBase::Visitor
     IncidenceBase *mIncidence2;
 };
 
-class IncidenceChanger::AssignmentVisitor : public IncidenceBase::Visitor
-{
-  public:
-    AssignmentVisitor() {}
-    bool act( IncidenceBase *incidence, IncidenceBase *inc2 )
-    {
-      mIncidence2 = inc2;
-      if ( incidence ) {
-        return incidence->accept( *this );
-      } else {
-        return false;
-      }
-    }
-  protected:
-    bool visit( Event *event )
-    {
-      Event *ev2 = dynamic_cast<Event*>( mIncidence2 );
-      if ( event && ev2 ) {
-        *event = *ev2;
-        return true;
-      } else {
-        return false;
-      }
-    }
-    bool visit( Todo *todo )
-    {
-      Todo *to2 = dynamic_cast<Todo*>( mIncidence2 );
-      if ( todo && to2 ) {
-        *todo = *to2;
-        return true;
-      } else {
-        return false;
-      }
-    }
-    bool visit( Journal *journal )
-    {
-      Journal *j2 = dynamic_cast<Journal*>(mIncidence2);
-      if ( journal && j2 ) {
-        *journal = *j2;
-        return true;
-      } else {
-        return false;
-      }
-    }
-    bool visit( FreeBusy *fb )
-    {
-      FreeBusy *fb2 = dynamic_cast<FreeBusy*>( mIncidence2 );
-      if ( fb && fb2 ) {
-        *fb = *fb2;
-        return true;
-      } else {
-        return false;
-      }
-    }
-  protected:
-    IncidenceBase *mIncidence2;
-};
-
 bool IncidenceChanger::incidencesEqual( Incidence *inc1, Incidence *inc2 )
 {
   ComparisonVisitor v;
@@ -281,8 +224,11 @@ bool IncidenceChanger::incidencesEqual( Incidence *inc1, Incidence *inc2 )
 
 bool IncidenceChanger::assignIncidence( Incidence *inc1, Incidence *inc2 )
 {
+  if ( !inc1 || !inc2 )
+    return false;
+
   AssignmentVisitor v;
-  return v.act( inc1, inc2 );
+  return v.assign( inc1, inc2 );
 }
 
 bool IncidenceChanger::myAttendeeStatusChanged( Incidence *oldInc, Incidence *newInc )
