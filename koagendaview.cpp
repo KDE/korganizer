@@ -1180,7 +1180,7 @@ void KOAgendaView::insertIncidence( Incidence *incidence, const QDate &curDate )
     curCol = 0;
 
   // The date for the event is not displayed, just ignore it
-  if ( curCol > int( mSelectedDates.size() ) ) {
+  if ( curCol >= mSelectedDates.count() ) {
     return;
   }
 
@@ -1209,7 +1209,7 @@ void KOAgendaView::insertIncidence( Incidence *incidence, const QDate &curDate )
     }
     columnDate = curDate;
     beginX = endX = curCol;
-    
+
   } else {
     return;
   }
@@ -1227,7 +1227,7 @@ void KOAgendaView::insertIncidence( Incidence *incidence, const QDate &curDate )
     int endY = mAgenda->timeToY( endtime ) - 1;
     if ( ( beginX <= 0 && curCol == 0 ) || beginX == curCol ) {
       mAgenda->insertMultiItem( event, columnDate, beginX, endX, startY, endY );
-      
+
     }
     if ( beginX == curCol ) {
       mMaxY[curCol] = mAgenda->timeToY( QTime( 23, 59 ) );
@@ -1400,7 +1400,7 @@ void KOAgendaView::fillAgenda()
     lastVisibleDateTime.setTime( QTime( 23, 59 ) );
     firstVisibleDateTime.setTime( QTime( 0, 0 ) );
     DateTimeList dateTimeList;
-    
+
     if ( todo && ( !KOPrefs::instance()->showAllDayTodo()
                    || !todo->hasDueDate() ) ) {
       continue;
@@ -1416,7 +1416,7 @@ void KOAgendaView::fillAgenda()
       dateTimeList = incidence->recurrence()->timesInInterval( startDateTimeWithOffset, lastVisibleDateTime );
     } else {
       KDateTime dateToAdd; // date to add to our date list
-      KDateTime incidenceStart; 
+      KDateTime incidenceStart;
       KDateTime incidenceEnd;
 
       if ( todo && todo->hasDueDate() && !todo->isOverdue() ) {
@@ -1435,7 +1435,7 @@ void KOAgendaView::fillAgenda()
 
       if  ( dateToAdd <= lastVisibleDateTime && incidenceEnd >= firstVisibleDateTime ) {
         dateTimeList += dateToAdd;
-      } 
+      }
     }
 
     // ToDo items shall be displayed today if they are already overdude
@@ -1448,7 +1448,7 @@ void KOAgendaView::fillAgenda()
       bool doAdd = true;
 
       if ( todo->recurs() ) {
-        /* If there's a recurring instance showing up today don't add "today" again 
+        /* If there's a recurring instance showing up today don't add "today" again
          * we don't want the event to appear duplicated */
         for ( t = dateTimeList.begin(); t != dateTimeList.end(); ++t ) {
           if ( t->date() == today ) {
