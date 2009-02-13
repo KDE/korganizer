@@ -35,6 +35,7 @@
 #include <qbuttongroup.h>
 #include <qtextedit.h>
 #include <qwidgetstack.h>
+#include <qradiobutton.h>
 
 #include <kurlrequester.h>
 #include <klocale.h>
@@ -171,6 +172,7 @@ KOEditorAlarms::KOEditorAlarms( KCal::Alarm::List *alarms, QWidget *parent,
   connect( mWidget->mEmailText, SIGNAL( textChanged() ), SLOT( changed() ) );
 
   init();
+  mWidget->mTypeEmailRadio->hide();
 }
 
 KOEditorAlarms::~KOEditorAlarms()
