@@ -111,6 +111,9 @@ void KOIncidenceEditor::slotButtonClicked( int button )
       KDialog::reject();
     }
     break;
+  default:
+    KPageDialog::slotButtonClicked( button );
+    break;
   }
 }
 
