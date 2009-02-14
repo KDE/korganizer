@@ -29,13 +29,13 @@
 QColor KOCoreHelper::categoryColor( const QStringList &categories )
 {
   if ( categories.isEmpty() ) {
-    return KOPrefs::instance()->defaultCategoryColor();
+    return KOPrefs::instance()->unsetCategoryColor();
   }
   // FIXME: Correctly treat events with multiple categories
   QString cat = categories.first();
   QColor bgColor;
   if ( cat.isEmpty() ) {
-    bgColor = KOPrefs::instance()->defaultCategoryColor();
+    bgColor = KOPrefs::instance()->unsetCategoryColor();
   } else {
     bgColor = KOPrefs::instance()->categoryColor( cat );
   }

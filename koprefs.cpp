@@ -293,11 +293,6 @@ void KOPrefs::usrWriteConfig()
   KPimPrefs::usrWriteConfig();
 }
 
-QColor KOPrefs::defaultCategoryColor() const
-{
-  return mDefaultCategoryColor;
-}
-
 void KOPrefs::setCategoryColor( const QString &cat, const QColor &color )
 {
   mCategoryColors.insert( cat, color );
