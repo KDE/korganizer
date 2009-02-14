@@ -545,13 +545,13 @@ class KOPrefsDialogViews : public KPrefsModule
       QVBoxLayout *displayLayout = new QVBoxLayout;
       QGroupBox *displayBox = new QGroupBox( i18nc( "@title:group", "Display Options" ) );
 
-      QBoxLayout *hourSizeLayout = new QHBoxLayout;
+      QHBoxLayout *hourSizeLayout = new QHBoxLayout;
       displayLayout->addLayout( hourSizeLayout );
 
       KPrefsWidInt *hourSize =
         addWidInt( KOPrefs::instance()->hourSizeItem() );
       hourSize->spinBox()->setSuffix(
-        i18nc( "@label suffix in the hour size spin box", " pixel" ) );
+        i18nc( "@label suffix in the hour size spin box", " pixels" ) );
 
       hourSizeLayout->addWidget( hourSize->label() );
       hourSizeLayout->addWidget( hourSize->spinBox() );
@@ -568,6 +568,9 @@ class KOPrefsDialogViews : public KPrefsModule
       nextDaysLayout->addWidget( nextDays->label() );
       nextDaysLayout->addWidget( nextDays->spinBox() );
       nextDaysLayout->addStretch( 1 );
+
+      displayLayout->addWidget(
+        addWidBool( KOPrefs::instance()->enableAgendaItemIconsItem() )->checkBox() );
 
       KPrefsWidBool *marcusBainsEnabled =
         addWidBool( KOPrefs::instance()->marcusBainsEnabledItem() );
@@ -727,7 +730,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
   QBoxLayout *resourceLayout = new QHBoxLayout;
   resourceGroup->setLayout( resourceLayout );
 
-  mResourceCombo = new KComboBox(resourceGroup);
+  mResourceCombo = new KComboBox( resourceGroup );
   mResourceCombo->setWhatsThis(
     i18nc( "@info:whatsthis",
            "Select here resource you want to modify. "

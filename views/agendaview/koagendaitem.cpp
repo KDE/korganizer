@@ -741,6 +741,10 @@ void KOAgendaItem::paintJournalIcon( QPainter *p, int &x, int y, int ft )
 
 void KOAgendaItem::paintIcons( QPainter *p, int &x, int y, int ft )
 {
+  if ( !KOPrefs::instance()->enableAgendaItemIcons() ) {
+    return;
+  }
+
   paintEventIcon( p, x, y, ft );
   paintTodoIcon( p, x, y, ft );
   paintJournalIcon( p, x, y, ft );

@@ -206,10 +206,19 @@
       <default>false</default>
     </entry>
     <entry type="Bool" key="Show Icons in Month View" name="EnableMonthItemIcons">
-      <label>Enable icons in events in month view cells</label>
-      <whatsthis>Check this box to display icons (alarm, recursion, etc.) in month view cells.</whatsthis>
+      <label>Enable icons for month view items</label>
+      <whatsthis>Check this box to display icons (alarm, recursion, etc.) in month view items.</whatsthis>
+      <tooltip>Display icons in month view items</tooltip>
       <default>true</default>
     </entry>
+
+    <entry type="Bool" key="Show Icons in Agenda View" name="EnableAgendaItemIcons">
+      <label>Enable icons for agenda view items</label>
+      <whatsthis>Check this box to display icons (alarm, recursion, etc.) in agenda view items.</whatsthis>
+      <tooltip>Display icons in agenda view items</tooltip>
+      <default>true</default>
+    </entry>
+
     <entry type="Bool" name="SelectionStartsEditor">
       <label>Time range selection in agenda view starts event editor</label>
       <whatsthis>Check this box to start the event editor automatically when you select a time range in the daily and weekly view. To select a time range, drag the mouse from the start time to the end time of the event you are about to plan.</whatsthis>
