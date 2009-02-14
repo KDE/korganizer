@@ -29,13 +29,13 @@
 QColor KOCoreHelper::categoryColor( const QStringList &categories )
 {
   if ( categories.isEmpty() ) {
-    return defaultEventColor();
+    return KOPrefs::instance()->defaultCategoryColor();
   }
   // FIXME: Correctly treat events with multiple categories
   QString cat = categories.first();
   QColor bgColor;
   if ( cat.isEmpty() ) {
-    bgColor = defaultEventColor();
+    bgColor = KOPrefs::instance()->defaultCategoryColor();
   } else {
     bgColor = KOPrefs::instance()->categoryColor( cat );
   }
@@ -45,5 +45,5 @@ QColor KOCoreHelper::categoryColor( const QStringList &categories )
 QString KOCoreHelper::holidayString( const QDate &dt )
 {
   QStringList lst( KOGlobals::self()->holiday( dt ) );
-  return lst.join( i18nc( "delimiter for joining holiday names", "," ) );
+  return lst.join( i18nc( "@item:intext delimiter for joining holiday names", "," ) );
 }
