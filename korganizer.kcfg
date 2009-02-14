@@ -431,11 +431,6 @@
       <whatsthis>Select the to-do overdue color here.</whatsthis>
       <default>255, 100, 100</default>
     </entry>
-    <entry type="Color" key="EventColor">
-      <label>Default event color</label>
-      <whatsthis>Select the default event color here. The default event color will be used for events categories in your agenda. Note that you can specify a separate color for each event category below.</whatsthis>
-      <default>151, 235, 121</default>
-    </entry>
 
     <entry type="Bool" key="AssignDefaultResourceColors">
       <default>true</default>
