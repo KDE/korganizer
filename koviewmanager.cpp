@@ -172,7 +172,7 @@ void KOViewManager::raiseCurrentView()
     mMainView->showLeftFrame( true );
     mMainView->navigatorBar()->hide();
   }
-  mMainView->viewStack()->setCurrentWidget( widgetForView( mCurrentView  ) );
+  mMainView->viewStack()->setCurrentWidget( widgetForView( mCurrentView ) );
 }
 
 void KOViewManager::updateView()
@@ -528,8 +528,9 @@ QWidget *KOViewManager::widgetForView( KOrg::BaseView *view ) const
 
 void KOViewManager::currentAgendaViewTabChanged( QWidget *widget )
 {
-  if ( widget )
+  if ( widget ) {
     showView( static_cast<KOrg::BaseView*>( widget ) );
+  }
 }
 
 void KOViewManager::resourcesChanged()

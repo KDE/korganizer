@@ -1,22 +1,22 @@
 /*
-    This file is part of libkcal.
+  This file is part of libkcal.
 
-    Copyright (c) 2004 Cornelius Schumacher <schumacher@kde.org>
+  Copyright (c) 2004 Cornelius Schumacher <schumacher@kde.org>
 
-    This library is free software; you can redistribute it and/or
-    modify it under the terms of the GNU Library General Public
-    License as published by the Free Software Foundation; either
-    version 2 of the License, or (at your option) any later version.
+  This library is free software; you can redistribute it and/or
+  modify it under the terms of the GNU Library General Public
+  License as published by the Free Software Foundation; either
+  version 2 of the License, or (at your option) any later version.
 
-    This library is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-    Library General Public License for more details.
+  This library is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  Library General Public License for more details.
 
-    You should have received a copy of the GNU Library General Public License
-    along with this library; see the file COPYING.LIB.  If not, write to
-    the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
-    Boston, MA 02110-1301, USA.
+  You should have received a copy of the GNU Library General Public License
+  along with this library; see the file COPYING.LIB.  If not, write to
+  the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+  Boston, MA 02110-1301, USA.
 */
 
 #include "stdcalendar.h"
@@ -63,13 +63,15 @@ StdCalendar::StdCalendar()
       if ( url.isLocalFile() ) {
         kDebug() << "Local resource at" << url;
         defaultResource = manager->createResource( "file" );
-        if ( defaultResource )
+        if ( defaultResource ) {
           defaultResource->setValue( "File", url.path() );
+        }
       } else {
         kDebug() << "Remote Resource at" << url;
         defaultResource = manager->createResource( "remote" );
-        if ( defaultResource )
+        if ( defaultResource ) {
           defaultResource->setValue( "URL", url.url() );
+        }
       }
       resourceName = i18n( "Active Calendar" );
     }
@@ -78,8 +80,9 @@ StdCalendar::StdCalendar()
       fileName = KStandardDirs::locateLocal( "data", "korganizer/std.ics" );
       kDebug() << "Creating new default local resource at" << fileName;
       defaultResource = manager->createResource( "file" );
-      if ( defaultResource )
+      if ( defaultResource ) {
         defaultResource->setValue( "File", fileName );
+      }
       resourceName = i18n( "Default Calendar" );
     }
 
@@ -95,7 +98,7 @@ StdCalendar::StdCalendar()
     if ( bdayResource ) {
       kDebug() << "Adding Birthdays resource";
       bdayResource->setTimeSpec( KPIM::KPimPrefs::timeSpec() );
-      bdayResource->setResourceName( i18n("Birthdays") );
+      bdayResource->setResourceName( i18n( "Birthdays" ) );
       manager->add( bdayResource );
     } else {
       kDebug() << "Unable to add a Birthdays resource";

@@ -224,8 +224,9 @@ bool IncidenceChanger::incidencesEqual( Incidence *inc1, Incidence *inc2 )
 
 bool IncidenceChanger::assignIncidence( Incidence *inc1, Incidence *inc2 )
 {
-  if ( !inc1 || !inc2 )
+  if ( !inc1 || !inc2 ) {
     return false;
+  }
 
   AssignmentVisitor v;
   return v.assign( inc1, inc2 );

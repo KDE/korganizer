@@ -48,8 +48,8 @@ TimeScaleConfigDialog::TimeScaleConfigDialog( QWidget *parent )
 
   QStringList list;
   const KTimeZones::ZoneMap timezones = KSystemTimeZones::zones();
-  for (KTimeZones::ZoneMap::ConstIterator it = timezones.begin();  it != timezones.end();  ++it) {
-    list.append(i18n(it.key().toUtf8()));
+  for ( KTimeZones::ZoneMap::ConstIterator it = timezones.begin();  it != timezones.end();  ++it ) {
+    list.append( i18n( it.key().toUtf8() ) );
   }
   list.sort();
   ui.zoneCombo->addItems( list );
@@ -80,10 +80,10 @@ void TimeScaleConfigDialog::okClicked()
 void TimeScaleConfigDialog::add()
 {
   // Do not add duplicates
-  for ( int i=0; i < ui.listWidget->count(); i++ )
-  {
-    if ( ui.listWidget->item( i )->text() == ui.zoneCombo->currentText() )
+  for ( int i=0; i < ui.listWidget->count(); i++ ) {
+    if ( ui.listWidget->item( i )->text() == ui.zoneCombo->currentText() ) {
       return;
+    }
   }
 
   ui.listWidget->addItem( ui.zoneCombo->currentText() );
@@ -113,8 +113,7 @@ void TimeScaleConfigDialog::down()
 QStringList TimeScaleConfigDialog::zones()
 {
   QStringList list;
-  for ( int i=0; i < ui.listWidget->count(); i++ )
-  {
+  for ( int i=0; i < ui.listWidget->count(); i++ ) {
     list << ui.listWidget->item( i )->text();
   }
   return list;

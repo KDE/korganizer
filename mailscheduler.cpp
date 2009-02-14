@@ -85,8 +85,9 @@ bool MailScheduler::performTransaction( IncidenceBase *incidence,
   } else {
     QString subject;
     Incidence *inc = dynamic_cast<Incidence*>( incidence );
-    if ( inc && method == iTIPCounter )
+    if ( inc && method == iTIPCounter ) {
       subject = i18n( "Counter proposal: %1", inc->summary() );
+    }
     status = mailer.mailOrganizer( incidence, messageText, subject );
   }
   return status;
@@ -162,12 +163,15 @@ QString MailScheduler::freeBusyDir()
 
 bool MailScheduler::acceptCounterProposal( Incidence *incidence )
 {
-  if ( !incidence )
+  if ( !incidence ) {
     return false;
+  }
 
   Incidence *exInc = mCalendar->incidence( incidence->uid() );
-  if ( !exInc )
+  if ( !exInc ) {
     exInc = mCalendar->incidenceFromSchedulingID( incidence->uid() );
+  }
+
   incidence->setRevision( incidence->revision() + 1 );
   if ( exInc ) {
     incidence->setRevision( qMax( incidence->revision(), exInc->revision() + 1 ) );

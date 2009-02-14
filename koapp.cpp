@@ -61,7 +61,7 @@ KOrganizerApp::KOrganizerApp() : KPIM::PimApplication()
   CalFormat::setApplication( "KOrganizer", prodId.arg( korgVersion ) );
 
   // icons shared by the KDE PIM applications
-  KGlobal::dirs()->addResourceType("appicon", "data", "/kdepim/icons/");
+  KGlobal::dirs()->addResourceType( "appicon", "data", "/kdepim/icons/" );
 }
 
 KOrganizerApp::~KOrganizerApp()
@@ -96,7 +96,7 @@ int KOrganizerApp::newInstance()
 
   // If filenames were given as arguments, load them as calendars, one per window.
   if ( args->isSet( "open" ) ) {
-    for( int i = 0; i < args->count(); ++i ) {
+    for ( int i = 0; i < args->count(); ++i ) {
       processCalendar( args->url( i ) );
     }
   } else {
@@ -104,20 +104,20 @@ int KOrganizerApp::newInstance()
     processCalendar( KUrl() );
     KOrg::MainWindow *korg = ActionManager::findInstance( KUrl() );
     if ( !korg ) {
-      kError() <<"Unable to find default calendar resources view.";
+      kError() << "Unable to find default calendar resources view.";
       return -1;
     }
     // Check for import, merge or ask
     if ( args->isSet( "import" ) ) {
-      for( int i = 0; i < args->count(); ++i ) {
+      for ( int i = 0; i < args->count(); ++i ) {
         korg->actionManager()->addResource( args->url( i ) );
       }
     } else if ( args->isSet( "merge" ) ) {
-      for( int i = 0; i < args->count(); ++i ) {
+      for ( int i = 0; i < args->count(); ++i ) {
         korg->actionManager()->mergeURL( args->url( i ).url() );
       }
     } else {
-      for( int i = 0; i < args->count(); ++i ) {
+      for ( int i = 0; i < args->count(); ++i ) {
         korg->actionManager()->importCalendar( args->url( i ) );
       }
     }
@@ -127,7 +127,6 @@ int KOrganizerApp::newInstance()
 
   return 0;
 }
-
 
 void KOrganizerApp::processCalendar( const KUrl &url )
 {
@@ -140,9 +139,9 @@ void KOrganizerApp::processCalendar( const KUrl &url )
 
     kDebug() << url.url();
 
-    if ( hasDocument )
+    if ( hasDocument ) {
       korg->openURL( url );
-    else {
+    } else {
       KOrg::StdCalendar::self()->load();
       korg->view()->updateCategories();
       korg->view()->updateView();

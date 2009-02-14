@@ -234,10 +234,12 @@ void KOEditorDetails::removeAttendee()
   }
 
   AttendeeListItem *nextSelectedItem = static_cast<AttendeeListItem*>( aItem->nextSibling() );
-  if( mListView->childCount() == 1 )
-      nextSelectedItem = 0;
-  if( mListView->childCount() > 1 && aItem == mListView->lastItem() )
-      nextSelectedItem = static_cast<AttendeeListItem*>(  mListView->firstChild() );
+  if ( mListView->childCount() == 1 ) {
+    nextSelectedItem = 0;
+  }
+  if ( mListView->childCount() > 1 && aItem == mListView->lastItem() ) {
+    nextSelectedItem = static_cast<AttendeeListItem*>( mListView->firstChild() );
+  }
 
   Attendee *delA = new Attendee( aItem->data()->name(), aItem->data()->email(),
                                  aItem->data()->RSVP(), aItem->data()->status(),
@@ -246,8 +248,9 @@ void KOEditorDetails::removeAttendee()
 
   delete aItem;
 
-  if( nextSelectedItem )
-      mListView->setSelected( nextSelectedItem, true );
+  if ( nextSelectedItem ) {
+    mListView->setSelected( nextSelectedItem, true );
+  }
   updateAttendeeInput();
   emit updateAttendeeSummary( mListView->childCount() );
 }
@@ -373,14 +376,15 @@ void KOEditorDetails::changeStatusForMe( Attendee::PartStat status )
   }
 }
 
-Q3ListViewItem* KOEditorDetails::hasExampleAttendee() const
+Q3ListViewItem *KOEditorDetails::hasExampleAttendee() const
 {
   for ( Q3ListViewItemIterator it( mListView ); it.current(); ++it ) {
     AttendeeListItem *item = static_cast<AttendeeListItem*>( it.current() );
     Attendee *attendee = item->data();
     Q_ASSERT( attendee );
-    if ( isExampleAttendee( attendee ) )
-        return item;
+    if ( isExampleAttendee( attendee ) ) {
+      return item;
+    }
   }
   return 0;
 }

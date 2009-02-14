@@ -14,9 +14,9 @@
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
   GNU General Public License for more details.
 
-  You should have received a copy of the GNU General Public License
-  along with this program; if not, write to the Free Software
-  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
   As a special exception, permission is given to link this program
   with any edition of Qt, and distribute the resulting executable,
@@ -190,7 +190,7 @@ void ResourceItem::stateChange( bool active )
         }
       }
     } else {
-      // mView->requestClose must be called before mResource->save() because 
+      // mView->requestClose must be called before mResource->save() because
       // save causes closeResource do be called.
       mView->requestClose( mResource );
       if ( mResource->save() ) {
@@ -561,30 +561,36 @@ void ResourceView::editResource()
   if ( item->isSubresource() ) {
     if ( resource->type() == "imap" || resource->type() == "scalix" ) {
       QString identifier = item->resourceIdentifier();
-      const QString newResourceName = KInputDialog::getText( i18n( "Rename Subresource" ),
-          i18n( "Please enter a new name for the subresource" ), item->text(0),
-                &ok, this );
-      if ( !ok )
+      const QString newResourceName =
+        KInputDialog::getText( i18n( "Rename Subresource" ),
+                               i18n( "Please enter a new name for the subresource" ),
+                               item->text(0),
+                               &ok, this );
+      if ( !ok ) {
         return;
+      }
 
       QDBusConnection bus = QDBusConnection::sessionBus();
-      QDBusInterface *interface = new QDBusInterface("org.kde.kmail",
-          "/Groupware",
-          "org.kde.kmail.groupware",
-          bus,
-          this);
+      QDBusInterface *interface =
+        new QDBusInterface( "org.kde.kmail",
+                            "/Groupware",
+                            "org.kde.kmail.groupware",
+                            bus,
+                            this );
 
-      QDBusReply<int> reply = interface->call( "changeResourceUIName", identifier, newResourceName );
+      QDBusReply<int> reply =
+        interface->call( "changeResourceUIName", identifier, newResourceName );
       if ( !reply.isValid() ) {
         kDebug() << "DBUS Call changeResourceUIName() failed " << endl;
       }
     } else {
       const QString subResourceName = resource->labelForSubresource( item->resourceIdentifier() );
       KMessageBox::sorry( this,
-                          i18n ("<qt>Cannot edit the subresource <b>%1</b>.</qt>", subResourceName ) );
+                          i18n ( "<qt>Cannot edit the subresource <b>%1</b>.</qt>",
+                                 subResourceName ) );
     }
   } else {
-    KRES::ConfigDialog dlg( this, QString("calendar"), resource );
+    KRES::ConfigDialog dlg( this, QString( "calendar" ), resource );
 
     if ( dlg.exec() ) {
       item->setText( 0, resource->resourceName() );
@@ -609,8 +615,9 @@ ResourceItem *ResourceView::findItem( ResourceCalendar *r )
 
 ResourceItem *ResourceView::findItemByIdentifier( const QString &id )
 {
-  QList<QTreeWidgetItem *>items = mListView->findItems(
-    "*", Qt::MatchWildcard | Qt::MatchRecursive );
+  QList<QTreeWidgetItem *>items =
+    mListView->findItems( "*", Qt::MatchWildcard | Qt::MatchRecursive );
+
   foreach ( QTreeWidgetItem *i, items ) {
     ResourceItem *item = static_cast<ResourceItem *>( i );
     if ( item->resourceIdentifier() == id ) {
