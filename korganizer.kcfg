@@ -170,7 +170,8 @@
   <group name="Views">
     <entry type="Int" key="Hour Size">
       <label>Hour size</label>
-      <whatsthis>Select on this spin box the height of the hour rows in the schedule view.</whatsthis>
+      <whatsthis>Select the height of the hour rows in the agenda grid, in pixels. Increasing this value will make each row in the agenda grid taller.</whatsthis>
+      <tooltip>Set the height (in pixels) for an hour in the agenda grid</tooltip>
       <default>10</default>
       <min>4</min>
       <max>30</max>
@@ -206,14 +207,14 @@
       <default>false</default>
     </entry>
     <entry type="Bool" key="Show Icons in Month View" name="EnableMonthItemIcons">
-      <label>Enable icons for month view items</label>
+      <label>Show icons in month view items</label>
       <whatsthis>Check this box to display icons (alarm, recursion, etc.) in month view items.</whatsthis>
       <tooltip>Display icons in month view items</tooltip>
       <default>true</default>
     </entry>
 
     <entry type="Bool" key="Show Icons in Agenda View" name="EnableAgendaItemIcons">
-      <label>Enable icons for agenda view items</label>
+      <label>Show icons in agenda view items</label>
       <whatsthis>Check this box to display icons (alarm, recursion, etc.) in agenda view items.</whatsthis>
       <tooltip>Display icons in agenda view items</tooltip>
       <default>true</default>
@@ -222,17 +223,20 @@
     <entry type="Bool" name="SelectionStartsEditor">
       <label>Time range selection in agenda view starts event editor</label>
       <whatsthis>Check this box to start the event editor automatically when you select a time range in the daily and weekly view. To select a time range, drag the mouse from the start time to the end time of the event you are about to plan.</whatsthis>
+      <tooltip>Enable automatic event editor with time range selection</tooltip>
       <default>false</default>
     </entry>
 
     <entry type="Bool" key="Show current-time line" name="MarcusBainsEnabled">
       <label>Show current-time (Marcus Bains) line</label>
-      <whatsthis>Check this box to display a red line in the day or week view indicating the current-time line (Marcus Bains line).</whatsthis>
+      <whatsthis>Check this box to display a line in the day or week view indicating the current-time line (Marcus Bains line).</whatsthis>
+      <tooltip>Display the current-time indicator</tooltip>
       <default>true</default>
     </entry>
     <entry type="Bool" key="Current-time line shows seconds" name="MarcusBainsShowSeconds">
-      <label>Show seconds on current-time line</label>
+      <label>Show seconds on the current-time (Marcus Bains) line</label>
       <whatsthis>Check this box if you want to show seconds on the current-time line.</whatsthis>
+      <tooltip>Display seconds with the current-time indicator</tooltip>
       <default>true</default>
     </entry>
 
@@ -357,7 +361,8 @@
 
     <entry type="Int" key="Next X Days">
       <label>Next x days</label>
-      <whatsthis>Select on this spin box the number of &quot;x&quot; days to be displayed in the next days view. To access the  the next &quot;x&quot; days view, choose the &quot;Next X Days&quot; menu item from the &quot;View&quot; menu.</whatsthis>
+      <whatsthis>Select the number of &quot;x&quot; days to be displayed in the next days view. To access the  the next &quot;x&quot; days view, choose the &quot;Next X Days&quot; menu item from the &quot;View&quot; menu.</whatsthis>
+      <tooltip>Show this many days at a time in the Next &quot;x&quot; days view</tooltip>
       <default>3</default>
     </entry>
 
