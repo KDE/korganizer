@@ -866,9 +866,9 @@ void KOPrefsDialogColorsAndFonts::setResourceColor()
 
 void KOPrefsDialogColorsAndFonts::updateResourceColor()
 {
-  QString res= mResourceIdentifier[mResourceCombo->currentIndex()];
+  QString res = mResourceIdentifier[mResourceCombo->currentIndex()];
   QColor color = mCategoryDict.value( res );
-  if ( color.isValid() )  {
+  if ( !color.isValid() )  {
     color = KOPrefs::instance()->resourceColor( res );
   }
   if ( color.isValid() ) {
