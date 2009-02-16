@@ -242,6 +242,9 @@ AttachmentEditDialog::AttachmentEditDialog( AttachmentIconItem *item,
     grid->addWidget( mURLRequester, 4, 2 );
     connect( mURLRequester, SIGNAL(urlSelected(const KUrl &)),
              SLOT(urlChanged(const KUrl &)) );
+    connect( mURLRequester, SIGNAL( textChanged( const QString& ) ),
+             SLOT( urlChanged( const QString& ) ) );
+    urlChanged(  item->uri() );
   } else {
     grid->addWidget( new QLabel( i18nc( "@label", "Size:" ), page ), 4, 0 );
     grid->addWidget( new QLabel( QString::fromLatin1( "%1 (%2)" ).
@@ -290,6 +293,11 @@ void AttachmentEditDialog::accept()
 {
   slotApply();
   KDialog::accept();
+}
+
+void AttachmentEditDialog::urlChanged( const QString& url )
+{
+  enableButtonOk( !url.isEmpty() );
 }
 
 void AttachmentEditDialog::urlChanged( const KUrl &url )
