@@ -82,6 +82,7 @@ class KORGANIZERPRIVATE_EXPORT KOPrefs : public KOPrefsBase
     /// Return true if the given email belongs to the user
     bool thatIsMe( const QString &email );
 
+    QColor defaultCategoryColor() const;
     void setCategoryColor( const QString &cat, const QColor &color );
     QColor categoryColor( const QString &cat ) const;
     bool hasCategoryColor( const QString &cat ) const;

@@ -561,11 +561,6 @@
     <entry key="Agenda CalendarItems Icon" type="String">
     </entry>
 
-    <entry key="Agenda CalendarItems Events Background Color" type="Color">
-      <label>Default event color</label>
-      <whatsthis>Select the default event color here. The default event color will be used for events categories in your agenda. Note that you can specify a separate color for each event category below.</whatsthis>
-      <default>151, 235, 121</default>
-    </entry>
     <entry key="Agenda CalendarItems Events Background Image" type="String">
     </entry>
     <entry key="Agenda CalendarItems Events Font" type="Font">

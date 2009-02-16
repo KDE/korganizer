@@ -86,7 +86,6 @@ KOPrefs::KOPrefs() :
 
   agendaTimeLabelsFontItem()->setDefaultValue( mDefaultAgendaTimeLabelsFont );
   monthViewFontItem()->setDefaultValue( mDefaultMonthViewFont );
-  agendaCalendarItemsEventsBackgroundColorItem()->setDefaultValue( mDefaultCategoryColor );
 }
 
 KOPrefs::~KOPrefs()
@@ -299,6 +298,11 @@ void KOPrefs::usrWriteConfig()
   timeScaleConfig.writeEntry( "Timescale Timezones", timeScaleTimezones() );
 
   KPimPrefs::usrWriteConfig();
+}
+
+QColor KOPrefs::defaultCategoryColor() const
+{
+  return mDefaultCategoryColor;
 }
 
 void KOPrefs::setCategoryColor( const QString &cat, const QColor &color )
