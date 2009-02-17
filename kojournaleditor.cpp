@@ -30,6 +30,7 @@
 #include "koeditorattachments.h"
 #include "kodialogmanager.h"
 #include "koprefs.h"
+#include "kohelper.h"
 #include "korganizer/baseview.h"
 
 #include <kcal/journal.h>
@@ -46,7 +47,7 @@
 using namespace KCal;
 
 KOJournalEditor::KOJournalEditor( Calendar *calendar, QWidget *parent )
-  : KOIncidenceEditor( i18n( "Edit Journal Entry" ), calendar, parent ),
+  : KOIncidenceEditor( QString(), calendar, parent ),
     mJournal( 0 ), mCalendar( 0 )
 {
 }
@@ -60,12 +61,18 @@ void KOJournalEditor::init()
 {
   setupGeneral();
   setupAttendeesTab();
+
+  connect( mGeneral, SIGNAL(openCategoryDialog()),
+           SIGNAL(editCategories()) );
+
+  connect( mDetails, SIGNAL(updateAttendeeSummary(int)),
+           mGeneral, SLOT(updateAttendeeSummary(int)) );
 }
 
 void KOJournalEditor::reload()
 {
   if ( mJournal ) {
-    readJournal( mJournal );
+    readJournal( mJournal, true );
   }
 }
 
@@ -90,26 +97,32 @@ void KOJournalEditor::setupGeneral()
   mGeneral->finishSetup();
 }
 
-void KOJournalEditor::editIncidence( Incidence *incidence, Calendar * )
+void KOJournalEditor::editIncidence( Incidence *incidence, Calendar *calendar )
 {
-  Journal *journal=dynamic_cast<Journal*>( incidence );
+  Journal *journal = dynamic_cast<Journal*>( incidence );
   if ( journal ) {
     init();
 
     mJournal = journal;
-    readJournal( mJournal );
+    mCalendar = calendar;
+    readJournal( mJournal, false );
   }
+
+  setCaption( i18nc( "@title:window",
+                     "Edit Journal: %1", KOHelper::resourceLabel( calendar, incidence ) ) );
+
 }
 
 void KOJournalEditor::newJournal()
 {
   init();
   mJournal = 0;
+  mCalendar = 0;
   loadDefaults();
+  setCaption( i18nc( "@title:window", "New Journal" ) );
 }
 
-void KOJournalEditor::setTexts( const QString &summary,
-                                const QString &description,
+void KOJournalEditor::setTexts( const QString &summary, const QString &description,
                                 bool richDescription )
 {
   if ( description.isEmpty() && summary.contains( "\n" ) ) {
@@ -130,19 +143,31 @@ void KOJournalEditor::loadDefaults()
 
 bool KOJournalEditor::processInput()
 {
-  if ( !validateInput() ) {
+  if ( !validateInput() || !mChanger ) {
     return false;
   }
 
   if ( mJournal ) {
+    bool rc = true;
     Journal *oldJournal = mJournal->clone();
-    writeJournal( mJournal );
-    mChanger->changeIncidence( oldJournal, mJournal );
+    Journal *journal = mJournal->clone();
+
+    writeJournal( journal );
+
+    if ( *mJournal == *journal ) {
+      // Don't do anything
+    } else {
+      writeJournal( mJournal );
+      mChanger->changeIncidence( oldJournal, mJournal );
+    }
+    delete journal;
     delete oldJournal;
+    return rc;
+
   } else {
     mJournal = new Journal;
     mJournal->setOrganizer( Person( KOPrefs::instance()->fullName(),
-                            KOPrefs::instance()->email() ) );
+                                    KOPrefs::instance()->email() ) );
 
     writeJournal( mJournal );
 
@@ -178,14 +203,11 @@ void KOJournalEditor::setTime( const QTime &time )
 
 void KOJournalEditor::readJournal( Journal *journal, bool tmpl )
 {
-  //TODO: just tmpl variable
-  Q_UNUSED( tmpl );
-
   if ( !journal ) {
     return;
   }
 
-  mGeneral->readJournal( journal );
+  mGeneral->readJournal( journal, tmpl );
   mDetails->readIncidence( journal );
 }
 
@@ -197,22 +219,30 @@ void KOJournalEditor::writeJournal( Journal *journal )
 
 bool KOJournalEditor::validateInput()
 {
-  return mGeneral->validateInput();
+  if ( !mGeneral->validateInput() ) {
+    return false;
+  }
+  if ( !mDetails->validateInput() ) {
+    return false;
+  }
+  return true;
 }
 
 int KOJournalEditor::msgItemDelete()
 {
   return KMessageBox::warningContinueCancel(
     this,
-    i18n( "This journal entry will be permanently deleted." ),
-    i18n( "KOrganizer Confirmation" ),
-    KGuiItem( i18n( "Delete" ), "edit-delete" ) );
+    i18nc( "@info", "This journal entry will be permanently deleted." ),
+    i18nc( "@title:window", "KOrganizer Confirmation" ),
+    KStandardGuiItem::del() );
 }
 
-void KOJournalEditor::modified( int /*modification*/)
+void KOJournalEditor::modified( int modification )
 {
-  // Play dump, just reload the Journal. This dialog has become so complicated that
-  // there is no point in trying to be smart here...
+  Q_UNUSED( modification );
+
+  // Play dumb, just reload the Journal. This dialog has become so complicated
+  // that there is no point in trying to be smart here...
   reload();
 }
 
@@ -220,9 +250,9 @@ void KOJournalEditor::loadTemplate( CalendarLocal &cal )
 {
   Journal::List journals = cal.journals();
   if ( journals.count() == 0 ) {
-    KMessageBox::error( this, i18n( "Template does not contain a valid journal." ) );
+    KMessageBox::error( this, i18nc( "@info", "Template does not contain a valid journal." ) );
   } else {
-    readJournal( journals.first() );
+    readJournal( journals.first(), true );
   }
 }
 

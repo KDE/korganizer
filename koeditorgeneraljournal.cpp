@@ -63,21 +63,23 @@ KOEditorGeneralJournal::~KOEditorGeneralJournal()
 
 void KOEditorGeneralJournal::initTitle( QWidget *parent, QBoxLayout *topLayout )
 {
+  mParent = parent;
+
   QHBoxLayout *hbox = new QHBoxLayout();
   topLayout->addItem( hbox );
 
   QString whatsThis = i18n( "Sets the title of this journal." );
-  QLabel *summaryLabel = new QLabel( i18nc( "journal title", "T&itle:" ), parent );
-  summaryLabel->setWhatsThis( whatsThis );
-  QFont f = summaryLabel->font();
+  QLabel *titleLabel = new QLabel( i18nc( "journal title", "T&itle:" ), parent );
+  titleLabel->setWhatsThis( whatsThis );
+  QFont f = titleLabel->font();
   f.setBold( true );
-  summaryLabel->setFont( f );
-  hbox->addWidget( summaryLabel );
+  titleLabel->setFont( f );
+  hbox->addWidget( titleLabel );
 
-  mSummaryEdit = new FocusLineEdit( parent );
-  mSummaryEdit->setWhatsThis( whatsThis );
-  summaryLabel->setBuddy( mSummaryEdit );
-  hbox->addWidget( mSummaryEdit );
+  mTitleEdit = new FocusLineEdit( parent );
+  mTitleEdit->setWhatsThis( whatsThis );
+  titleLabel->setBuddy( mTitleEdit );
+  hbox->addWidget( mTitleEdit );
 }
 
 void KOEditorGeneralJournal::initDate( QWidget *parent, QBoxLayout *topLayout )
@@ -178,7 +180,7 @@ void KOEditorGeneralJournal::readJournal( Journal *journal, bool tmpl )
 
 void KOEditorGeneralJournal::writeJournal( Journal *journal )
 {
-  journal->setSummary( mSummaryEdit->text() );
+  journal->setSummary( mTitleEdit->text() );
   if ( mRichDescription->isChecked() ) {
     journal->setDescription( mDescriptionEdit->toHtml(),
                              true );
@@ -198,26 +200,33 @@ void KOEditorGeneralJournal::writeJournal( Journal *journal )
 
 void KOEditorGeneralJournal::setSummary( const QString &text )
 {
-  mSummaryEdit->setText( text );
+  mTitleEdit->setText( text );
 }
 
 void KOEditorGeneralJournal::finishSetup()
 {
-  QWidget::setTabOrder( mSummaryEdit, mDateEdit );
+  QWidget::setTabOrder( mTitleEdit, mDateEdit );
   QWidget::setTabOrder( mDateEdit, mTimeCheckBox );
   QWidget::setTabOrder( mTimeCheckBox, mTimeEdit );
   QWidget::setTabOrder( mTimeEdit, mDescriptionEdit );
   QWidget::setTabOrder( mDescriptionEdit, mCategoriesButton );
 
-  mSummaryEdit->setFocus();
+  mTitleEdit->setFocus();
 }
 
 bool KOEditorGeneralJournal::validateInput()
 {
+
   if ( !mDateEdit->date().isValid() ) {
     KMessageBox::sorry( mParent,
                         i18n( "Please specify a valid date, for example '%1'.",
                               KGlobal::locale()->formatDate( QDate::currentDate() ) ) );
+    return false;
+  }
+
+  if ( mTitleEdit->text().isEmpty() ) {
+    KMessageBox::sorry( mParent,
+                        i18nc( "@info", "Please specify a journal title." ) );
     return false;
   }
 

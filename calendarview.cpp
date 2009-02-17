@@ -354,7 +354,7 @@ QDate CalendarView::activeDate( bool fallbackToToday )
   // When all else fails, use the navigator start date, or today.
   if ( fallbackToToday ) {
     return QDate::currentDate();
-  } else {  
+  } else {
     return mNavigator->selectedDates().first();
   }
 
@@ -1087,12 +1087,7 @@ void CalendarView::newJournal( const QString &text, const QDate &date )
     journalDate = activeDate();
   }
   journalEditor->setDate( journalDate );
-  if ( !text.isEmpty() ) {
-    journalEditor->setTexts( text );
-  } else {
-    journalEditor->setTexts( i18nc( "Journal for DATE", "Journal for %1",
-                                    journalDate.toString( Qt::LocaleDate ) ) );
-  }
+  journalEditor->setTexts( text );
   journalEditor->show();
 }
 

@@ -84,17 +84,16 @@ class KOEditorGeneralJournal : public KOEditorGeneral
   signals:
     void openCategoryDialog();
 
-  protected:
-    FocusLineEdit *mSummaryEdit;
-    QLabel *mSummaryLabel;
+  private:
+    QWidget *mParent;
+    FocusLineEdit *mTitleEdit;
+    QLabel *mTitleLabel;
     QLabel *mDateLabel;
     KPIM::KDateEdit *mDateEdit;
     QCheckBox *mTimeCheckBox;
     KPIM::KTimeEdit *mTimeEdit;
     QPushButton *mCategoriesButton;
     KSqueezedTextLabel *mCategoriesLabel;
-
-  private:
     QStringList mCategories;
 };
 
