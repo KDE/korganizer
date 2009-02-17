@@ -1082,6 +1082,9 @@ void KOAgenda::endItemAction()
   // FIXME: do the cloning here...
   Incidence *inc = mActionItem->incidence();
 
+  mItemMoved = mItemMoved && !( mStartCell.x() == mEndCell.x() &&
+                                mStartCell.y() == mEndCell.y() );
+
   if ( mItemMoved ) {
     bool modify = true;
     if ( mActionItem->incidence()->recurs() ) {
