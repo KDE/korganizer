@@ -61,12 +61,6 @@ void KOJournalEditor::init()
 {
   setupGeneral();
   setupAttendeesTab();
-
-  connect( mGeneral, SIGNAL(openCategoryDialog()),
-           SIGNAL(editCategories()) );
-
-  connect( mDetails, SIGNAL(updateAttendeeSummary(int)),
-           mGeneral, SLOT(updateAttendeeSummary(int)) );
 }
 
 void KOJournalEditor::reload()
