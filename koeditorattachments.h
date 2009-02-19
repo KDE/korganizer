@@ -71,7 +71,8 @@ class AttachmentEditDialog : public KDialog
 
   protected slots:
     void urlChanged( const KUrl &url );
-    virtual void slotApply();
+  void urlChanged( const QString & url );
+  virtual void slotApply();
 
   private:
     KMimeType::Ptr mMimeType;
