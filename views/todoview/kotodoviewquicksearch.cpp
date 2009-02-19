@@ -64,7 +64,7 @@ KOTodoViewQuickSearch::KOTodoViewQuickSearch( Calendar *calendar, QWidget *paren
 
   mCategoryCombo = new KCheckComboBox( this );
   mCategoryCombo->setDefaultText( i18nc( "@item:inlistbox", "Select Categories" ) );
-  mCategoryCombo->setSeparator( i18nc( "@info delimiter for joining category names", "," ) );
+  mCategoryCombo->setSeparator( i18nc( "@item delimiter for joining category names", "," ) );
 
   connect( mCategoryCombo, SIGNAL(checkedItemsChanged(const QStringList &)),
            this, SIGNAL(searchCategoryChanged(const QStringList &)) );
