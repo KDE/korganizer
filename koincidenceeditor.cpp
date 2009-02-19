@@ -77,7 +77,6 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
   } else {
     setButtonText( Default, i18n( "Manage &Templates..." ) );
   }
-
   connect( this, SIGNAL( defaultClicked() ), SLOT( slotManageTemplates() ) );
   connect( this, SIGNAL( finished() ), SLOT( delayedDestruct() ) );
   connect( this, SIGNAL( okClicked()), SLOT(slotOk()));
@@ -151,7 +150,6 @@ void KOIncidenceEditor::slotManageTemplates()
   kDebug();
 
   QString tp = type();
-
   TemplateManagementDialog * const d = new TemplateManagementDialog( this, templates() );
   connect( d, SIGNAL( loadTemplate( const QString& ) ),
            this, SLOT( slotLoadTemplate( const QString& ) ) );
@@ -160,7 +158,7 @@ void KOIncidenceEditor::slotManageTemplates()
   connect( d, SIGNAL( saveTemplate( const QString& ) ),
            this, SLOT( slotSaveTemplate( const QString& ) ) );
   d->exec();
-  return;
+  delete d;
 }
 
 void KOIncidenceEditor::saveAsTemplate( Incidence *incidence, const QString &templateName )
