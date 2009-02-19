@@ -340,10 +340,12 @@ QDate IncidenceMonthItem::realStartDate() const
 QDate IncidenceMonthItem::realEndDate() const
 {
   KDateTime dt;
-  if ( mIsEvent || mIsJournal ) {
+  if ( mIsEvent ) {
     dt = mIncidence->dtEnd();
   } else if ( mIsTodo ) {
     dt = static_cast<Todo *>( mIncidence )->dtDue();
+  } else if ( mIsJournal ) {
+    dt = mIncidence->dtStart();
   }
 
   QDate end;
