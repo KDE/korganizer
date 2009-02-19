@@ -207,6 +207,8 @@ void ActionManager::createCalendarResources()
 
   connect( mCalendarResources, SIGNAL(calendarChanged()),
            mCalendarView, SLOT(resourcesChanged()) );
+  connect( mCalendarResources, SIGNAL(calendarLoaded()),
+           mCalendarView, SLOT(resourcesChanged()) );
   connect( mCalendarResources, SIGNAL(signalErrorMessage(const QString &)),
            mCalendarView, SLOT(showErrorMessage(const QString &)) );
 
