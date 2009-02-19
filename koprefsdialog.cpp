@@ -542,8 +542,11 @@ class KOPrefsDialogViews : public KPrefsModule
 
       QBoxLayout *agendaLayout = new QVBoxLayout( agendaFrame );
 
+      QVBoxLayout *displayLayout = new QVBoxLayout;
+      QGroupBox *displayBox = new QGroupBox( i18nc( "@title:group", "Display Options" ) );
+
       QBoxLayout *hourSizeLayout = new QHBoxLayout;
-      agendaLayout->addLayout( hourSizeLayout );
+      displayLayout->addLayout( hourSizeLayout );
 
       KPrefsWidInt *hourSize =
         addWidInt( KOPrefs::instance()->hourSizeItem() );
@@ -555,7 +558,7 @@ class KOPrefsDialogViews : public KPrefsModule
       hourSizeLayout->addStretch( 1 );
 
       QBoxLayout *nextDaysLayout = new QHBoxLayout;
-      agendaLayout->addLayout( nextDaysLayout );
+      displayLayout->addLayout( nextDaysLayout );
 
       KPrefsWidInt *nextDays =
         addWidInt( KOPrefs::instance()->nextXDaysItem() );
@@ -568,17 +571,20 @@ class KOPrefsDialogViews : public KPrefsModule
 
       KPrefsWidBool *marcusBainsEnabled =
         addWidBool( KOPrefs::instance()->marcusBainsEnabledItem() );
-      agendaLayout->addWidget( marcusBainsEnabled->checkBox() );
+      displayLayout->addWidget( marcusBainsEnabled->checkBox() );
 
       KPrefsWidBool *marcusBainsShowSeconds =
         addWidBool( KOPrefs::instance()->marcusBainsShowSecondsItem() );
       connect( marcusBainsEnabled->checkBox(), SIGNAL(toggled(bool)),
                marcusBainsShowSeconds->checkBox(), SLOT(setEnabled(bool)) );
 
-      agendaLayout->addWidget( marcusBainsShowSeconds->checkBox() );
-      agendaLayout->addWidget(
+      displayLayout->addWidget( marcusBainsShowSeconds->checkBox() );
+      displayLayout->addWidget(
         addWidBool( KOPrefs::instance()->selectionStartsEditorItem() )->checkBox() );
 
+      displayBox->setLayout( displayLayout );
+
+      agendaLayout->addWidget( displayBox );
       agendaLayout->addWidget(
         addWidRadios( KOPrefs::instance()->agendaViewColorsItem() )->groupBox() );
       agendaLayout->addWidget(
