@@ -328,7 +328,7 @@ KOIncidenceEditor *CalendarView::editorDialog( Incidence *incidence ) const
   }
 }
 
-QDate CalendarView::activeDate()
+QDate CalendarView::activeDate( bool fallbackToToday )
 {
   KOrg::BaseView *curView = mViewManager->currentView();
   if ( curView ) {
@@ -347,8 +347,13 @@ QDate CalendarView::activeDate()
     }
   }
 
-  // When all else fails, use the navigator start date.
-  return mNavigator->selectedDates().first();
+  // When all else fails, use the navigator start date, or today.
+  if ( fallbackToToday ) {
+    return QDate::currentDate();
+  } else {  
+    return mNavigator->selectedDates().first();
+  }
+
 }
 
 QDate CalendarView::startDate()
@@ -1051,7 +1056,7 @@ void CalendarView::newTodo( const QDate &date )
 
 void CalendarView::newJournal()
 {
-  newJournal( QString(), activeDate() );
+  newJournal( QString(), activeDate( true ) );
 }
 
 void CalendarView::newJournal( const QDate &date )
