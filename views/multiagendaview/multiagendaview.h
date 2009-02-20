@@ -64,7 +64,7 @@ class MultiAgendaView : public AgendaView
 
     void finishTypeAhead();
 
-    void resourcesChanged();
+    void setUpdateNeeded();
 
   protected:
     void resizeEvent( QResizeEvent *ev );

@@ -1756,6 +1756,7 @@ void CalendarView::filterActivated( int filterNo )
   if ( newFilter != mCurrentFilter ) {
     mCurrentFilter = newFilter;
     mCalendar->setFilter( mCurrentFilter );
+    mViewManager->setUpdateNeeded();
     updateView();
   }
   emit filterChanged();
@@ -2415,7 +2416,7 @@ void CalendarView::moveIncidenceTo( Incidence *incmove, const QDate &dt )
 
 void CalendarView::resourcesChanged()
 {
-  mViewManager->resourcesChanged();
+  mViewManager->setUpdateNeeded();
   updateView();
 }
 
