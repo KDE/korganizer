@@ -310,7 +310,7 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent )
   mGanttView->setWhatsThis(
     i18nc( "@info:whatsthis",
            "Shows the Free/Busy status of all attendees. "
-           "Double-clicking on an attendees entry in the "
+           "Double-clicking on an attendee's entry in the "
            "list will allow you to enter the location of "
            "their Free/Busy Information." ) );
   topLayout->addWidget( mGanttView );
