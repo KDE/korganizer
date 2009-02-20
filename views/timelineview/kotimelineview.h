@@ -57,7 +57,7 @@ class KOTimelineView : public KOEventView
     virtual void changeIncidenceDisplay(KCal::Incidence* incidence, int mode);
     virtual int maxDatesHint() { return 0; }
 
-    virtual bool eventDurationHint(KDateTime &startDt, KDateTime &endDt, bool &allDay);
+    virtual bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay);
 
   private:
     KOrg::TimelineItem* calendarItemForIncidence( KCal::Incidence* incidence );
@@ -78,7 +78,7 @@ class KOTimelineView : public KOEventView
     QMap<KCal::ResourceCalendar*, QMap<QString, KOrg::TimelineItem*> > mCalendarItemMap;
     KOEventPopupMenu *mEventPopup;
     QDate mStartDate, mEndDate;
-    KDateTime mHintDate;
+    QDateTime mHintDate;
 };
 
 #endif

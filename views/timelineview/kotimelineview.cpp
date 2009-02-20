@@ -102,7 +102,7 @@ void KOTimelineView::showDates(const QDate& start, const QDate& end)
 {
   mStartDate = start;
   mEndDate = end;
-  mHintDate = KDateTime();
+  mHintDate = QDateTime();
   mGantt->setHorizonStart( QDateTime(start) );
   mGantt->setHorizonEnd( QDateTime(end.addDays(1)) );
   mGantt->setMinorScaleCount( 1 );
@@ -208,7 +208,7 @@ void KOTimelineView::itemDoubleClicked( KDGanttViewItem *item )
 
 void KOTimelineView::itemRightClicked( KDGanttViewItem *item )
 {
-  mHintDate = KDateTime( mGantt->getDateTimeForCoordX( QCursor::pos().x(), true ) );
+  mHintDate = QDateTime( mGantt->getDateTimeForCoordX( QCursor::pos().x(), true ) );
   TimelineSubItem *tlitem = dynamic_cast<TimelineSubItem*>( item );
   if ( !tlitem ) {
     showNewEventPopup();
@@ -221,10 +221,10 @@ void KOTimelineView::itemRightClicked( KDGanttViewItem *item )
     calendar(), tlitem->incidence(), tlitem->incidence()->dtStart().date() );
 }
 
-bool KOTimelineView::eventDurationHint(KDateTime & startDt, KDateTime & endDt, bool & allDay)
+bool KOTimelineView::eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &allDay )
 {
-  startDt = KDateTime(mHintDate);
-  endDt = KDateTime(mHintDate.addSecs( 2 * 60 * 60 ));
+  startDt = QDateTime( mHintDate );
+  endDt = QDateTime( mHintDate.addSecs( 2 * 60 * 60 ) );
   allDay = false;
   return mHintDate.isValid();
 }
@@ -232,7 +232,7 @@ bool KOTimelineView::eventDurationHint(KDateTime & startDt, KDateTime & endDt, b
 //slot
 void KOTimelineView::newEventWithHint( const QDateTime& dt )
 {
-  mHintDate = KDateTime(dt);
+  mHintDate = dt;
   emit newEventSignal( dt );
 }
 
