@@ -26,13 +26,12 @@
 #ifndef KOLISTVIEW_H
 #define KOLISTVIEW_H
 
-#include <q3dict.h>
-
+#include "koeventview.h"
+#include "customlistviewitem.h"
 
 #include <kcal/incidence.h>
 
-#include "koeventview.h"
-#include "customlistviewitem.h"
+#include <q3dict.h>
 
 using namespace KCal;
 
@@ -44,16 +43,15 @@ class KOListView;
 class KOListViewToolTip : public QToolTip
 {
   public:
-    KOListViewToolTip (QWidget* parent, K3ListView* lv );
+    KOListViewToolTip ( QWidget *parent, K3ListView *lv );
 
   protected:
-    void maybeTip( const QPoint & pos);
+    void maybeTip( const QPoint &pos );
 
   private:
-    K3ListView* eventlist;
+    K3ListView *eventlist;
 };
 #endif
-
 
 /**
   This class provides a multi-column list view of events.  It can
@@ -69,7 +67,7 @@ class KOListView : public KOEventView
 {
   Q_OBJECT
   public:
-    explicit KOListView(Calendar *calendar, QWidget *parent = 0 );
+    explicit KOListView( Calendar *calendar, QWidget *parent = 0 );
     ~KOListView();
 
     virtual int maxDatesHint();
@@ -77,10 +75,10 @@ class KOListView : public KOEventView
     virtual Incidence::List selectedIncidences();
     virtual DateList selectedDates();
 
-    void showDates(bool show);
+    void showDates( bool show );
 
-    void readSettings(KConfig *config);
-    void writeSettings(KConfig *config);
+    void readSettings( KConfig *config );
+    void writeSettings( KConfig *config );
 
     void clear();
 
@@ -94,18 +92,18 @@ class KOListView : public KOEventView
     void showDates();
     void hideDates();
 
-    void changeIncidenceDisplay(Incidence *, int);
+    void changeIncidenceDisplay( Incidence *, int );
 
-    void defaultItemAction(Q3ListViewItem *item);
-    void popupMenu(Q3ListViewItem *item,const QPoint &,int);
+    void defaultItemAction( Q3ListViewItem *item );
+    void popupMenu( Q3ListViewItem *item, const QPoint &, int );
 
   protected slots:
     void processSelectionChange();
 
   protected:
     void addIncidences( const Incidence::List & );
-    void addIncidence(Incidence *);
-    KOListViewItem *getItemForIncidence(Incidence *incidence);
+    void addIncidence( Incidence * );
+    KOListViewItem *getItemForIncidence( Incidence *incidence );
 
   private:
     class ListItemVisitor;
