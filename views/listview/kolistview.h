@@ -31,7 +31,7 @@
 
 #include <kcal/incidence.h>
 
-#include <q3dict.h>
+#include <QHash>
 
 using namespace KCal;
 
@@ -110,7 +110,7 @@ class KOListView : public KOEventView
     K3ListView *mListView;
     KOEventPopupMenu *mPopupMenu;
     KOListViewItem *mActiveItem;
-    Q3Dict<Incidence> mUidDict;
+    QHash<QString, Incidence *> mUidHash;
     DateList mSelectedDates;
 };
 

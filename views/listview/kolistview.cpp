@@ -357,14 +357,14 @@ void KOListView::addIncidences( const Incidence::List &incidenceList )
 
 void KOListView::addIncidence( Incidence *incidence )
 {
-  if ( mUidDict.find( incidence->uid() ) ) {
+  if ( mUidHash.contains( incidence->uid() ) ) {
     return;
   }
 
-  mUidDict.insert( incidence->uid(), incidence );
+  mUidHash.insert( incidence->uid(), incidence );
 
   KOListViewItem *item = new KOListViewItem( incidence, mListView );
-  ListItemVisitor v(item);
+  ListItemVisitor v( item );
   if ( incidence->accept( v ) ) {
     return;
   } else {
@@ -408,7 +408,7 @@ void KOListView::changeIncidenceDisplay( Incidence *incidence, int action )
     item = getItemForIncidence( incidence );
     if ( item ) {
       delete item;
-      mUidDict.remove( incidence->uid() );
+      mUidHash.remove( incidence->uid() );
     }
     if ( date >= f && date <= l ) {
       addIncidence( incidence );
@@ -491,5 +491,5 @@ void KOListView::clear()
 {
   mSelectedDates.clear();
   mListView->clear();
-  mUidDict.clear();
+  mUidHash.clear();
 }
