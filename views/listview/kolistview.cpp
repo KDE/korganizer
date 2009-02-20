@@ -89,7 +89,9 @@ class KOListView::ListItemVisitor : public IncidenceBase::Visitor
     bool visit( Event * );
     bool visit( Todo * );
     bool visit( Journal * );
-
+    bool visit( FreeBusy * ) { // to inhibit hidden virtual compile warning
+      return true;
+    };
   private:
     KOListViewItem *mItem;
 };
@@ -192,7 +194,7 @@ bool KOListView::ListItemVisitor::visit( Journal *t )
   static const QPixmap jrnalPxmp = KOGlobals::self()->smallIcon( "view-pim-journal" );
   mItem->setPixmap( 0, jrnalPxmp );
   if ( t->summary().isEmpty() ) {
-    mItem->setText( 0, t->description().section( "\n", 0, 0 ) );
+    mItem->setText( 0, t->description().section( '\n', 0, 0 ) );
   } else {
     mItem->setText( 0, t->summary() );
   }
