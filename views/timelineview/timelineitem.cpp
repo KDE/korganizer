@@ -1,19 +1,19 @@
 /*
-    Copyright (c) 2007 Volker Krause <vkrause@kde.org>
+  Copyright (c) 2007 Volker Krause <vkrause@kde.org>
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-    GNU General Public License for more details.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
 #include "timelineitem.h"
@@ -30,30 +30,40 @@
 using namespace KOrg;
 using namespace KCal;
 
-TimelineItem::TimelineItem( const QString &label, KDGanttView * parent) :
-    KDGanttViewTaskItem( parent )
+TimelineItem::TimelineItem( const QString &label, KDGanttView *parent )
+  : KDGanttViewTaskItem( parent )
 {
   setListViewText( 0, label );
   setDisplaySubitemsAsGroup( true );
-  if ( listView() )
+  if ( listView() ) {
     listView()->setRootIsDecorated( false );
+  }
 }
 
-void TimelineItem::insertIncidence(KCal::Incidence * incidence, const KDateTime & _start, const KDateTime & _end)
+void TimelineItem::insertIncidence( KCal::Incidence *incidence,
+                                    const KDateTime & _start, const KDateTime & _end )
 {
-  KDateTime start = incidence->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ), end = incidence->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() );
-  if ( _start.isValid() )
+  KDateTime start = incidence->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() );
+  KDateTime end = incidence->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() );
+
+  if ( _start.isValid() ) {
     start = _start;
-  if ( _end.isValid() )
+  }
+  if ( _end.isValid() ) {
     end = _end;
-  if ( incidence->allDay() )
+  }
+  if ( incidence->allDay() ) {
     end = end.addDays( 1 );
+  }
 
   typedef QList<TimelineSubItem*> ItemList;
   ItemList list = mItemMap[incidence];
-  for ( ItemList::ConstIterator it = list.constBegin(); it != list.constEnd(); ++it )
-    if ( KDateTime((*it)->startTime()) == start && KDateTime((*it)->endTime()) == end )
+  for ( ItemList::ConstIterator it = list.constBegin(); it != list.constEnd(); ++it ) {
+    if ( KDateTime( (*it)->startTime() ) == start &&
+         KDateTime( (*it)->endTime() ) == end ) {
       return;
+    }
+  }
 
   TimelineSubItem * item = new TimelineSubItem( incidence, this );
   QColor c1, c2, c3;
@@ -67,16 +77,17 @@ void TimelineItem::insertIncidence(KCal::Incidence * incidence, const KDateTime 
   mItemMap[incidence].append( item );
 }
 
-void TimelineItem::removeIncidence(KCal::Incidence * incidence)
+void TimelineItem::removeIncidence( KCal::Incidence *incidence )
 {
   typedef QList<TimelineSubItem*> ItemList;
   ItemList list = mItemMap[incidence];
-  for ( ItemList::ConstIterator it = list.constBegin(); it != list.constEnd(); ++it )
+  for ( ItemList::ConstIterator it = list.constBegin(); it != list.constEnd(); ++it ) {
     delete *it;
+  }
   mItemMap.remove( incidence );
 }
 
-void TimelineItem::moveItems(KCal::Incidence * incidence, int delta, int duration)
+void TimelineItem::moveItems( KCal::Incidence *incidence, int delta, int duration )
 {
   typedef QList<TimelineSubItem*> ItemList;
   ItemList list = mItemMap[incidence];
@@ -89,13 +100,9 @@ void TimelineItem::moveItems(KCal::Incidence * incidence, int delta, int duratio
   }
 }
 
-
-TimelineSubItem::TimelineSubItem(KCal::Incidence * incidence, TimelineItem * parent) :
-    KDGanttViewTaskItem( parent ),
-    mIncidence( incidence ),
-    mLeft( 0 ),
-    mRight( 0 ),
-    mMarkerWidth( 0 )
+TimelineSubItem::TimelineSubItem( KCal::Incidence *incidence, TimelineItem *parent )
+  : KDGanttViewTaskItem( parent ), mIncidence( incidence ),
+    mLeft( 0 ), mRight( 0 ), mMarkerWidth( 0 )
 {
   setTooltipText( IncidenceFormatter::toolTipString( incidence ) );
   if ( !incidence->isReadOnly() ) {
@@ -110,16 +117,17 @@ TimelineSubItem::~TimelineSubItem()
   delete mRight;
 }
 
-void TimelineSubItem::showItem(bool show, int coordY)
+void TimelineSubItem::showItem( bool show, int coordY )
 {
   KDGanttViewTaskItem::showItem( show, coordY );
   int y;
-  if ( coordY != 0 )
+  if ( coordY != 0 ) {
     y = coordY;
-  else
+  } else {
     y = getCoordY();
-  int startX = myGanttView->timeHeaderWidget()->getCoordX(myStartTime);
-  int endX = myGanttView->timeHeaderWidget()->getCoordX(myEndTime);
+  }
+  int startX = myGanttView->timeHeaderWidget()->getCoordX( myStartTime );
+  int endX = myGanttView->timeHeaderWidget()->getCoordX( myEndTime );
 
   const int mw = qMax( 1, qMin( 4, endX - startX ) );
   if ( !mLeft || mw != mMarkerWidth ) {
@@ -128,10 +136,10 @@ void TimelineSubItem::showItem(bool show, int coordY)
       mLeft->setBrush( Qt::black );
     }
     QPointArray a = QPointArray( 4 );
-    a.setPoint( 0, 0, -mw -myItemSize/2 - 2 );
-    a.setPoint( 1, mw, -myItemSize/2 - 2 );
-    a.setPoint( 2, mw, myItemSize/2 + 2 );
-    a.setPoint( 3, 0, myItemSize/2 + mw + 2 );
+    a.setPoint( 0, 0, -mw -myItemSize / 2 - 2 );
+    a.setPoint( 1, mw, -myItemSize / 2 - 2 );
+    a.setPoint( 2, mw, myItemSize / 2 + 2 );
+    a.setPoint( 3, 0, myItemSize / 2 + mw + 2 );
     mLeft->setPoints( a );
   }
   if ( !mRight || mw != mMarkerWidth ) {
@@ -140,10 +148,10 @@ void TimelineSubItem::showItem(bool show, int coordY)
       mRight->setBrush( Qt::black );
     }
     QPointArray a = QPointArray( 4 );
-    a.setPoint( 0, -mw, -myItemSize/2 - 2 );
-    a.setPoint( 1, 0, -myItemSize/2 - mw - 2 );
-    a.setPoint( 2, 0, myItemSize/2 + mw + 2 );
-    a.setPoint( 3, -mw, myItemSize/2 + 2 );
+    a.setPoint( 0, -mw, -myItemSize / 2 - 2 );
+    a.setPoint( 1, 0, -myItemSize / 2 - mw - 2 );
+    a.setPoint( 2, 0, myItemSize / 2 + mw + 2 );
+    a.setPoint( 3, -mw, myItemSize / 2 + 2 );
     mRight->setPoints( a );
   }
   mMarkerWidth = mw;
