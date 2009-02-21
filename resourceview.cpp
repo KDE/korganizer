@@ -581,7 +581,7 @@ void ResourceView::editResource()
       QDBusReply<int> reply =
         interface->call( "changeResourceUIName", identifier, newResourceName );
       if ( !reply.isValid() ) {
-        kDebug() << "DBUS Call changeResourceUIName() failed " << endl;
+        kDebug() << "DBUS Call changeResourceUIName() failed ";
       }
     } else {
       const QString subResourceName = resource->labelForSubresource( item->resourceIdentifier() );
