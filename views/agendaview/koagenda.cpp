@@ -46,7 +46,6 @@
 #include <kglobal.h>
 #include <kmessagebox.h>
 
-#include <q3intdict.h>
 #include <QDateTime>
 #include <QApplication>
 #include <QCursor>

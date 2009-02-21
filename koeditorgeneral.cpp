@@ -49,7 +49,6 @@
 #include <KToolBar>
 #include <KComboBox>
 
-#include <q3buttongroup.h>
 #include <QWidget>
 #include <QLayout>
 #include <QDateTime>
