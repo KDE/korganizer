@@ -64,7 +64,7 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
     showButton( Apply, false );
     showButton( Default, false );
   } else {
-    setButtonText( Default, i18n( "Manage &Templates..." ) );
+    setButtonText( Default, i18nc( "@action:button", "Manage &Templates..." ) );
     setButtonToolTip( Default,
                       i18nc( "@info:tooltip",
                              "Apply or create templates for this item" ) );
@@ -119,10 +119,11 @@ void KOIncidenceEditor::slotButtonClicked( int button )
 void KOIncidenceEditor::setupAttendeesTab()
 {
   QFrame *topFrame = new QFrame( this );
-  addPage( topFrame, i18n( "Atte&ndees" ) );
+  addPage( topFrame, i18nc( "@title:tab", "Atte&ndees" ) );
   topFrame->setWhatsThis(
-    i18n( "The Attendees tab allows you to Add or Remove "
-          "Attendees to/from this event or to-do." ) );
+    i18nc( "@info:whatsthis",
+           "The Attendees tab allows you to Add or Remove "
+           "Attendees to/from this event or to-do." ) );
 
   QBoxLayout *topLayout = new QVBoxLayout( topFrame );
 
@@ -201,11 +202,15 @@ void KOIncidenceEditor::slotLoadTemplate( const QString &templateName )
       templateName );
 
   if ( fileName.isEmpty() ) {
-    KMessageBox::error( this, i18n( "Unable to find template '%1'.", fileName ) );
+    KMessageBox::error(
+      this,
+      i18nc( "@info", "Unable to find template '%1'.", fileName ) );
   } else {
     ICalFormat format;
     if ( !format.load( &cal, fileName ) ) {
-      KMessageBox::error( this, i18n( "Error loading template file '%1'.", fileName ) );
+      KMessageBox::error(
+        this,
+        i18nc( "@info", "Error loading template file '%1'.", fileName ) );
       return;
     }
   }
@@ -227,8 +232,8 @@ void KOIncidenceEditor::setupDesignerTabs( const QString &type )
     KStandardDirs::Recursive |KStandardDirs::NoDuplicates );
 
   for ( QStringList::iterator it = list.begin(); it != list.end(); ++it ) {
-    const QString &fn = (*it).mid( (*it).lastIndexOf('/') + 1 );
-    if ( activePages.contains( fn )  ) {
+    const QString &fn = (*it).mid( (*it).lastIndexOf( '/' ) + 1 );
+    if ( activePages.contains( fn ) ) {
       addDesignerTab( *it );
     }
   }
@@ -246,7 +251,7 @@ QWidget *KOIncidenceEditor::addDesignerTab( const QString &uifile )
 
   wid->setParent( topFrame );
   topLayout->addWidget( wid );
-  mDesignerFieldForWidget[ topFrame ] = wid;
+  mDesignerFieldForWidget[topFrame] = wid;
 
   return topFrame;
 }
@@ -265,12 +270,16 @@ class KCalStorage : public KPIM::DesignerFields::Storage
 
       QMap<QByteArray, QString> props = mIncidence->customProperties();
       QMap<QByteArray, QString>::ConstIterator it;
-      for( it = props.constBegin(); it != props.constEnd(); ++it ) {
+      for ( it = props.constBegin(); it != props.constEnd(); ++it ) {
         QString customKey = it.key();
-        QStringList parts = customKey.split( "-", QString::SkipEmptyParts );
-        if ( parts.count() != 4 ) continue;
-        if ( parts[ 2 ] != "KORGANIZER" ) continue;
-        keys.append( parts[ 3 ] );
+        QStringList parts = customKey.split( '-', QString::SkipEmptyParts );
+        if ( parts.count() != 4 ) {
+          continue;
+        }
+        if ( parts[2] != "KORGANIZER" ) {
+          continue;
+        }
+        keys.append( parts[3] );
       }
 
       return keys;
@@ -294,8 +303,9 @@ void KOIncidenceEditor::readDesignerFields( Incidence *i )
 {
   KCalStorage storage( i );
   foreach ( KPIM::DesignerFields *fields, mDesignerFields ) {
-    if ( fields )
+    if ( fields ) {
       fields->load( &storage );
+    }
   }
 }
 
@@ -310,18 +320,18 @@ void KOIncidenceEditor::writeDesignerFields( Incidence *i )
 }
 
 void KOIncidenceEditor::setupEmbeddedURLPage( const QString &label,
-                                 const QString &url, const QString &mimetype )
+                                              const QString &url,
+                                              const QString &mimetype )
 {
   QFrame *topFrame = new QFrame();
   addPage( topFrame, label );
   QBoxLayout *topLayout = new QVBoxLayout( topFrame );
 
-  KPIM::EmbeddedURLPage *wid = new KPIM::EmbeddedURLPage( url, mimetype,
-                                                          topFrame );
+  KPIM::EmbeddedURLPage *wid = new KPIM::EmbeddedURLPage( url, mimetype, topFrame );
   topLayout->addWidget( wid );
   mEmbeddedURLPages.append( topFrame );
-  connect( wid, SIGNAL( openURL( const KUrl & ) ) ,
-           this, SLOT( openURL( const KUrl & ) ) );
+  connect( wid, SIGNAL(openURL(const KUrl &)),
+           this, SLOT(openURL(const KUrl &)) );
   // TODO: Call this method only when the tab is actually activated!
   wid->loadContents();
 }
@@ -337,7 +347,7 @@ void KOIncidenceEditor::createEmbeddedURLPages( Incidence *i )
     for ( QList<QWidget*>::Iterator it = mAttachedDesignerFields.begin();
           it != mAttachedDesignerFields.end(); ++it ) {
       if ( mDesignerFieldForWidget.contains( *it ) ) {
-        mDesignerFields.removeAll( mDesignerFieldForWidget[ *it ] );
+        mDesignerFields.removeAll( mDesignerFieldForWidget[*it] );
       }
     }
     qDeleteAll( mAttachedDesignerFields );
@@ -349,13 +359,13 @@ void KOIncidenceEditor::createEmbeddedURLPages( Incidence *i )
     Attachment *a = (*it);
     if ( a->showInline() && a->isUri() ) {
       // TODO: Allow more mime-types, but add security checks!
-/*      if ( a->mimeType() == QLatin1String("application/x-designer") ) {
-        QString tmpFile;
-        if ( KIO::NetAccess::download( a->uri(), tmpFile, this ) ) {
-          mAttachedDesignerFields.append( addDesignerTab( tmpFile ) );
-          KIO::NetAccess::removeTempFile( tmpFile );
-        }
-      } else*/
+//       if ( a->mimeType() == QLatin1String("application/x-designer") ) {
+//         QString tmpFile;
+//         if ( KIO::NetAccess::download( a->uri(), tmpFile, this ) ) {
+//           mAttachedDesignerFields.append( addDesignerTab( tmpFile ) );
+//           KIO::NetAccess::removeTempFile( tmpFile );
+//         }
+//       } else
       // TODO: Enable that check again!
       if ( a->mimeType() == QLatin1String( "text/html" ) ) {
         setupEmbeddedURLPage( a->label(), a->uri(), a->mimeType() );
@@ -391,8 +401,8 @@ void KOIncidenceEditor::selectInvitationCounterProposal( bool enable )
 {
   mIsCounter = enable;
   if ( mIsCounter ) {
-    setCaption( i18n( "Counter proposal" ) );
-    setButtonText( KDialog::Ok, i18n( "Counter proposal" ) );
+    setCaption( i18nc( "@title:window", "Counter proposal" ) );
+    setButtonText( KDialog::Ok, i18nc( "@action:button", "Counter proposal" ) );
     enableButtonApply( false );
   }
 }
