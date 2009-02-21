@@ -76,6 +76,7 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
     showButton( Default, false );
   } else {
     setButtonText( Default, i18n( "Manage &Templates..." ) );
+    setButtonToolTip( Default, i18n( "Apply or create templates for this item" ) );
   }
   connect( this, SIGNAL(defaultClicked()), SLOT(slotManageTemplates()) );
   connect( this, SIGNAL(finished()), SLOT(delayedDestruct()) );
