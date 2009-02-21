@@ -46,9 +46,9 @@ using namespace KOrg;
 void WhatsNextTextBrowser::setSource( const QUrl &name )
 {
   QString uri = name.toString();
-  if ( uri.startsWith( "event:" ) ) {
+  if ( uri.startsWith( QLatin1String( "event:" ) ) ) {
     emit showIncidence( uri );
-  } else if ( uri.startsWith( "todo:" ) ) {
+  } else if ( uri.startsWith( QLatin1String( "todo:" ) ) ) {
     emit showIncidence( uri );
   } else {
     KTextBrowser::setSource( uri );
@@ -336,14 +336,14 @@ void KOWhatsNextView::showIncidence( const QString &uid )
 {
   Incidence *incidence = 0;
 
-  if ( uid.startsWith( "event:" ) ) {
+  if ( uid.startsWith( QLatin1String( "event:" ) ) ) {
     incidence = calendar()->incidence( uid.mid( 6 ) );
-  } else if ( uid.startsWith( "todo:" ) ) {
+  } else if ( uid.startsWith( QLatin1String( "todo:" ) ) ) {
     incidence = calendar()->incidence( uid.mid( 5 ) );
   }
   if ( incidence ) {
     emit showIncidenceSignal( incidence );
-  } 
+  }
 }
 
 #include "kowhatsnextview.moc"

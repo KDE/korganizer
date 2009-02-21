@@ -950,7 +950,7 @@ bool KOTodoModel::dropMimeData( const QMimeData *data, Qt::DropAction action,
         if( mChanger->beginChange( destTodo ) ) {
           Todo *oldTodo = destTodo->clone();
 
-          if( text.startsWith( "file:" ) ) {
+          if( text.startsWith( QLatin1String( "file:" ) ) ) {
             destTodo->addAttachment( new Attachment( text ) );
           } else {
             QStringList emails = KPIMUtils::splitAddressList( text );
