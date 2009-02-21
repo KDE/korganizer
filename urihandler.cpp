@@ -58,7 +58,7 @@ bool UriHandler::process( const QString &uri )
       "org.kde.kmail", "/KMail", QDBusConnection::sessionBus() );
     kmail.showMail( serialNumberStr.toUInt(), QString() );
     return true;
-  } else if ( uri.startsWith( "mailto:" ) ) {
+  } else if ( uri.startsWith( QLatin1String( "mailto:" ) ) ) {
     KToolInvocation::invokeMailer( uri.mid(7), QString() );
     return true;
   } else if ( uri.startsWith( KDEPIMPROTOCOL_CONTACT ) ) {

@@ -254,7 +254,8 @@ void POTDElement::step2Result( KJob *job )
   QDomNodeList links = imgPage.elementsByTagName( "a" );
   for ( uint i=0; i<links.length(); i++ ) {
     QString href = links.item(i).attributes().namedItem( "href" ).nodeValue();
-    if ( href.startsWith( "http://upload.wikimedia.org/wikipedia/commons/" ) ) {
+    if ( href.startsWith(
+           QLatin1String( "http://upload.wikimedia.org/wikipedia/commons/" ) ) ) {
       mFullSizeImageUrl = href;
       break;
     }

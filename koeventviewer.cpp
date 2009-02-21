@@ -85,8 +85,7 @@ void KOEventViewer::setSource( const QUrl &name )
        uri.startsWith( KDEPIMPROTOCOL_EMAIL ) ||
        uri.startsWith( QString( KDEPIMPROTOCOL_INCIDENCE ).section( ':', 0, 0 ) ) ||
        uri.startsWith( KDEPIMPROTOCOL_NEWSARTICLE ) ||
-       uri.startsWith( "mailto:" ) )
-  {
+       uri.startsWith( QLatin1String( "mailto:" ) ) ) {
     uri.replace( QRegExp( "^([^:]+:)/+" ), "\\1" );
   }
 
@@ -103,7 +102,7 @@ bool KOEventViewer::appendIncidence( Incidence *incidence )
 void KOEventViewer::setIncidence( Incidence *incidence )
 {
   clearEvents();
-  if( incidence ) {
+  if ( incidence ) {
     appendIncidence( incidence );
     mIncidence = incidence;
   } else {

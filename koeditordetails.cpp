@@ -309,7 +309,7 @@ void KOEditorDetails::writeIncidence( Incidence *incidence )
       }
     } else {
       bool skip = false;
-      if ( attendee->email().endsWith( "example.net" ) ) {
+      if ( attendee->email().endsWith( QLatin1String( "example.net" ) ) ) {
         if ( KMessageBox::warningYesNo(
               this,
               i18nc( "@info",
