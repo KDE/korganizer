@@ -25,16 +25,16 @@
 
 #include "koprefsdialog.h"
 #include "koprefs.h"
-#include "ktimeedit.h"
 #include "koglobals.h"
 #include "stdcalendar.h"
 #include "calendar/calendardecoration.h"
 #include "korganizer/printplugin.h"
 
-#include <kholidays/holidays.h>
-using namespace KHolidays;
+#include <libkdepim/ktimeedit.h>
 
 #include <kcal/calendarresources.h>
+#include <kholidays/holidays.h>
+using namespace KHolidays;
 
 #include <kvbox.h>
 #include <kcolorbutton.h>
@@ -65,12 +65,12 @@ using namespace KHolidays;
 #include <QRadioButton>
 #include <QPushButton>
 #include <QTextStream>
+#include <QTimeEdit>
 #include <QGridLayout>
 #include <QBoxLayout>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 #include <QGroupBox>
-#include <QTimeEdit>
 #include <QTreeWidget>
 
 #include "ui_kogroupwareprefspage.h"

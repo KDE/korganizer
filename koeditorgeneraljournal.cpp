@@ -27,23 +27,20 @@
 
 #include "koeditorgeneraljournal.h"
 #include "koprefs.h"
-#include "koeditorgeneral.h"
 #include "koglobals.h"
 
 #include <libkdepim/categoryselectdialog.h>
+#include <libkdepim/kdateedit.h>
+#include <libkdepim/ktimeedit.h>
 
 #include <kcal/journal.h>
 
-#include <ktextedit.h>
-#include <kdateedit.h>
-#include <ktimeedit.h>
 #include <kglobal.h>
 #include <klocale.h>
 #include <kmessagebox.h>
 #include <KSqueezedTextLabel>
 #include <KRichTextWidget>
 
-#include <q3groupbox.h>
 #include <QDateTime>
 #include <QCheckBox>
 #include <QLabel>

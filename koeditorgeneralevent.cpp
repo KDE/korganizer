@@ -24,9 +24,9 @@
 
 #include "koeditorgeneralevent.h"
 #include "koprefs.h"
-#include "ktimeedit.h"
 
 #include <libkdepim/kdateedit.h>
+#include <libkdepim/ktimeedit.h>
 #include <libkdepim/ktimezonecombobox.h>
 
 #include <kcal/event.h>
