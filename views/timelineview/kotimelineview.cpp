@@ -23,19 +23,18 @@
 */
 
 #include "kotimelineview.h"
-
-#include <kcal/calendar.h>
-#include <kcal/calendarresources.h>
-
-#include <qlayout.h>
-
-#include <kdgantt1/KDGanttViewTaskItem.h>
-#include <kdgantt1/KDGanttViewSubwidgets.h>
-
 #include "koeventpopupmenu.h"
 #include "koglobals.h"
 #include "koprefs.h"
 #include "timelineitem.h"
+
+#include <kdgantt1/KDGanttViewTaskItem.h>
+#include <kdgantt1/KDGanttViewSubwidgets.h>
+
+#include <kcal/calendar.h>
+#include <kcal/calendarresources.h>
+
+#include <QLayout>
 
 using namespace KOrg;
 using namespace KCal;
@@ -298,7 +297,6 @@ void KOTimelineView::insertIncidence( KCal::Incidence *incidence )
   KCal::Event *event = dynamic_cast<KCal::Event *>( incidence );
   if ( !event ) {
     return;
-
   }
 
   if ( incidence->recurs() ) {
@@ -328,10 +326,10 @@ void KOTimelineView::removeIncidence( KCal::Incidence *incidence )
     typedef QMap<KCal::ResourceCalendar *, M2_t> M1_t;
     for ( M1_t::ConstIterator it1 = mCalendarItemMap.constBegin();
           it1 != mCalendarItemMap.constEnd(); ++it1 ) {
-      for ( M2_t::ConstIterator it2 = it1.data().constBegin();
-            it2 != it1.data().constEnd(); ++it2 ) {
-        if ( it2.data() ) {
-          it2.data()->removeIncidence( incidence );
+      for ( M2_t::ConstIterator it2 = it1.value().constBegin();
+            it2 != it1.value().constEnd(); ++it2 ) {
+        if ( it2.value() ) {
+          it2.value()->removeIncidence( incidence );
         }
       }
     }
@@ -375,11 +373,11 @@ void KOTimelineView::itemMoved( KDGanttViewItem *item )
 
 void KOTimelineView::overscale( KDGanttView::Scale scale )
 {
+  Q_UNUSED( scale );
   /* Disabled, looks *really* bogus:
      this triggers and endless rescaling loop; we want to set
      a fixed scale, the Gantt view doesn't like it and rescales
      (emitting a rescaling signal that leads here) and so on...
-  Q_UNUSED( scale );
   //set a relative zoom factor of 1 (?!)
   mGantt->setZoomFactor( 1, false );
   mGantt->setScale( KDGanttView::Hour );

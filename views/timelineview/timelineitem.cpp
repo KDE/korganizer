@@ -18,7 +18,6 @@
 
 #include "timelineitem.h"
 #include "koprefs.h"
-
 #include "kohelper.h"
 
 #include <kdgantt1/KDGanttViewSubwidgets.h>

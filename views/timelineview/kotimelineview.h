@@ -25,8 +25,10 @@
 #define KOTIMELINEVIEW_H
 
 #include <koeventview.h>
+
 #include <kdgantt1/KDGanttView.h>
-#include <qmap.h>
+
+#include <QMap>
 
 class KDGanttViewItem;
 
