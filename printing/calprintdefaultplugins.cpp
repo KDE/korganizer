@@ -32,23 +32,18 @@
 
 #include <libkdepim/kdateedit.h>
 
-#include <kcal/todo.h>
-#include <kcal/calendar.h>
-#include <kcal/incidenceformatter.h>
+#include <KCal/Calendar>
+#include <KCal/Todo>
+#include <KCal/IncidenceFormatter>
 
-#include <klocale.h>
-#include <kdebug.h>
-#include <kconfig.h>
-#include <kcalendarsystem.h>
-#include <knuminput.h>
-#include <kcombobox.h>
+#include <KCalendarSystem>
+#include <KDateTime>
+#include <KConfigGroup>
+#include <KLocale>
 
-#include <QCheckBox>
 #include <QDateTime>
-#include <QLineEdit>
 #include <QPainter>
 #include <QPrinter>
-#include <QWidget>
 
 /**************************************************************
  *           Print Incidence
@@ -223,7 +218,6 @@ int CalPrintIncidence::printCaptionAndText( QPainter &p, const QRect &box,
   return textRect.bottom();
 }
 
-#include <qfontdatabase.h>
 void CalPrintIncidence::print( QPainter &p, int width, int height )
 {
   QFont oldFont( p.font() );

@@ -24,50 +24,34 @@
 */
 #include "koeditorgeneral.h"
 #include "koeditoralarms.h"
+#include "koeditorattachments.h"
 #include "koprefs.h"
 #include "koglobals.h"
 
 #include <libkdepim/kdateedit.h>
 #include <libkdepim/categoryselectdialog.h>
 
-#include <kcal/incidence.h>
+#include <KCal/Incidence>
 
-#include <kglobal.h>
-#include <kdialog.h>
-#include <kdebug.h>
-#include <klocale.h>
-#include <kiconloader.h>
-#include <kmessagebox.h>
-#include <kfiledialog.h>
-#include <ksqueezedtextlabel.h>
-#include <kstandarddirs.h>
-#include <KRichTextWidget>
 #include <KActionCollection>
-#include <krestrictedline.h>
-#include <kvbox.h>
-#include <KLineEdit>
-#include <KToolBar>
 #include <KComboBox>
+#include <KLineEdit>
+#include <KMessageBox>
+#include <KRichTextWidget>
+#include <KSqueezedTextLabel>
+#include <KToolBar>
 
-#include <QWidget>
-#include <QLayout>
-#include <QDateTime>
-#include <QLabel>
+#include <QBoxLayout>
 #include <QCheckBox>
+#include <QFocusEvent>
+#include <QFrame>
+#include <QGridLayout>
+#include <QHBoxLayout>
+#include <QLabel>
 #include <QPushButton>
 #include <QSpinBox>
-#include <QFocusEvent>
-#include <QGridLayout>
-#include <QFrame>
-#include <QHBoxLayout>
-#include <QBoxLayout>
-#include <QTextCharFormat>
-#include <QTextList>
-#include <QToolButton>
 #include <QTimer>
-
-#include "koeditorattachments.h"
-#include "koeditorgeneral.moc"
+#include <QWidget>
 
 FocusLineEdit::FocusLineEdit( QWidget *parent )
   : KLineEdit( parent ), mFirst( true )
@@ -589,3 +573,5 @@ bool KOEditorGeneral::validateInput()
 
   return true;
 }
+
+#include "koeditorgeneral.moc"

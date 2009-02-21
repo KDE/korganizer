@@ -31,20 +31,18 @@
 #include "komessagebox.h"
 #include "incidencechanger.h"
 #include "kohelper.h"
-#include <korganizer/baseview.h>
+#include "korganizer/baseview.h"
 
-#include <kcal/event.h>
-#include <kcal/todo.h>
-#include <kcal/dndfactory.h>
-#include <kcal/icaldrag.h>
-#include <kcal/vcaldrag.h>
-#include <kcal/calendar.h>
-#include <kcal/calendarresources.h>
+#include <KCal/Calendar>
+#include <KCal/DndFactory>
+#include <KCal/ICalDrag>
+#include <KCal/Todo>
+#include <KCal/VCalDrag>
 
-#include <kdebug.h>
-#include <klocale.h>
-#include <kglobal.h>
-#include <kmessagebox.h>
+#include <KDebug>
+#include <KGlobal>
+#include <KLocale>
+#include <KMessageBox>
 
 #include <QDateTime>
 #include <QApplication>
@@ -62,10 +60,7 @@
 #include <QResizeEvent>
 #include <QMouseEvent>
 
-#include <assert.h>
-#include <math.h>
-
-#include "koagenda.moc"
+#include <cmath>
 
 ///////////////////////////////////////////////////////////////////////////////
 MarcusBains::MarcusBains( KOAgenda *agenda )
@@ -1980,7 +1975,7 @@ void KOAgenda::selectItem( KOAgendaItem *item )
   }
   mSelectedItem = item;
   mSelectedItem->select();
-  assert( mSelectedItem->incidence() );
+  Q_ASSERT( mSelectedItem->incidence() );
   mSelectedUid = mSelectedItem->incidence()->uid();
   emit incidenceSelected( mSelectedItem->incidence() );
 }
@@ -2062,3 +2057,5 @@ QObject *KOAgenda::typeAheadReceiver() const
 {
   return mTypeAheadReceiver;
 }
+
+#include "koagenda.moc"
