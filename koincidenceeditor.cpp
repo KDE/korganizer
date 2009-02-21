@@ -24,34 +24,23 @@
 
 #include "koincidenceeditor.h"
 #include "koprefs.h"
-#include "koglobals.h"
 #include "koeditordetails.h"
-#include "koeditoralarms.h"
 #include "urihandler.h"
 #include "templatemanagementdialog.h"
 
 #include <libkdepim/designerfields.h>
 #include <libkdepim/embeddedurlpage.h>
 
-#include <kabc/addressee.h>
-#include <kcal/calendarlocal.h>
-#include <kcal/incidence.h>
-#include <kcal/icalformat.h>
+#include <KABC/Addressee>
+#include <KCal/CalendarLocal>
+#include <KCal/Incidence>
+#include <KCal/ICalFormat>
 
-#include <kdebug.h>
-#include <klocale.h>
-#include <kstandarddirs.h>
-#include <kmessagebox.h>
-#include <kinputdialog.h>
-#include <kio/netaccess.h>
-
-#include <QPixmap>
-#include <QPointer>
-#include <QLayout>
-#include <QDateTime>
-#include <QVBoxLayout>
 #include <QBoxLayout>
 #include <QList>
+#include <KMessageBox>
+#include <QPointer>
+#include <KStandardDirs>
 
 KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
                                       Calendar *calendar, QWidget *parent )
@@ -76,7 +65,16 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
     showButton( Default, false );
   } else {
     setButtonText( Default, i18n( "Manage &Templates..." ) );
-    setButtonToolTip( Default, i18n( "Apply or create templates for this item" ) );
+    setButtonToolTip( Default,
+                      i18nc( "@info:tooltip",
+                             "Apply or create templates for this item" ) );
+    setButtonWhatsThis( Default,
+                        i18nc( "@info:whatsthis",
+                               "Push this button to run a tool that helps "
+                               "you manage a set of templates. Templates "
+                               "can make creating new items easier and faster "
+                               "by putting your favorite default values into "
+                               "the editor automatically." ) );
   }
   connect( this, SIGNAL(defaultClicked()), SLOT(slotManageTemplates()) );
   connect( this, SIGNAL(finished()), SLOT(delayedDestruct()) );
