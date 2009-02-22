@@ -88,7 +88,7 @@ void KOEditorGeneral::initHeader( QWidget *parent, QBoxLayout *topLayout )
 
   QString whatsThis = i18nc( "@info:whatsthis",
                              "Sets the Title of this event or to-do." );
-  QString toolTip = i18nc( "@info:tooltip", "Sets the title" );
+  QString toolTip = i18nc( "@info:tooltip", "Set the title" );
   QLabel *summaryLabel = new QLabel( i18nc( "@label event or to-do title", "T&itle:" ), parent );
   summaryLabel->setWhatsThis( whatsThis );
   summaryLabel->setToolTip( toolTip );
@@ -129,7 +129,7 @@ void KOEditorGeneral::initHeader( QWidget *parent, QBoxLayout *topLayout )
 
   whatsThis = i18nc( "@info:whatsthis",
                      "Allows you to select the categories that this event or to-do belongs to." );
-  toolTip = i18nc( "@info:tooltip", "Sets the categories" );
+  toolTip = i18nc( "@info:tooltip", "Set the categories" );
   QLabel *categoriesLabel = new QLabel( i18nc( "@label", "Categories:" ), parent );
   categoriesLabel->setWhatsThis( whatsThis );
   categoriesLabel->setToolTip( toolTip );
@@ -163,7 +163,7 @@ void KOEditorGeneral::initSecrecy( QWidget *parent, QBoxLayout *topLayout )
                              "on the groupware server. This means that events "
                              "or to-dos marked as private or confidential may "
                              "be visible to others." );
-  QString toolTip = i18nc( "@info:tooltip", "Sets the secrecy level" );
+  QString toolTip = i18nc( "@info:tooltip", "Set the secrecy level" );
   secrecyLabel->setWhatsThis( whatsThis );
   secrecyLabel->setToolTip( toolTip );
   secrecyLayout->addWidget( secrecyLabel );
@@ -267,13 +267,13 @@ void KOEditorGeneral::initAlarm( QWidget *parent, QBoxLayout *topLayout )
   mAlarmButton->setWhatsThis(
     i18nc( "@info:whatsthis",
            "Activates a reminder for this event or to-do." ) );
-  mAlarmButton->setToolTip( i18nc( "@info:tooltip", "Sets a reminder" ) );
+  mAlarmButton->setToolTip( i18nc( "@info:tooltip", "Set a reminder" ) );
   simpleAlarmLayout->addWidget( mAlarmButton );
 
   QString whatsThis =
     i18nc( "@info:whatsthis",
            "Sets how long before the event occurs the reminder will be triggered." );
-  QString toolTip = i18nc( "@info:tooltip", "Sets an alarm" );
+  QString toolTip = i18nc( "@info:tooltip", "Set an alarm" );
   mAlarmTimeEdit = new QSpinBox();
   mAlarmTimeEdit->setRange( 0, 99999 );
   mAlarmTimeEdit->setObjectName( "alarmTimeEdit" );
