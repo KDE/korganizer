@@ -27,11 +27,11 @@ AgendaView::AgendaView( Calendar *cal, QWidget *parent )
   KCal::CalendarResources *calres = dynamic_cast<KCal::CalendarResources *>( cal );
   if ( calres ) {
     connect( calres, SIGNAL(signalResourceAdded(ResourceCalendar *)),
-             SLOT(resourcesChanged()) );
+             SLOT(setUpdateNeeded()) );
     connect( calres, SIGNAL(signalResourceModified(ResourceCalendar *)),
-             SLOT(resourcesChanged()) );
+             SLOT(setUpdateNeeded()) );
     connect( calres, SIGNAL(signalResourceDeleted(ResourceCalendar *)),
-             SLOT(resourcesChanged()) );
+             SLOT(setUpdateNeeded()) );
   }
 }
 

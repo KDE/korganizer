@@ -181,7 +181,8 @@ class KOAgendaView : public KOrg::AgendaView, public KCal::Calendar::CalendarObs
 
     void clearTimeSpanSelection();
 
-    void resourcesChanged();
+    /** Notifies agenda that there are pending changes */ 
+    void setUpdateNeeded();
 
     // Used by the timelabelszone
     void updateTimeBarWidth();
