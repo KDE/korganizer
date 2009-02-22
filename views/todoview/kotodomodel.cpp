@@ -189,6 +189,11 @@ KOTodoModel::KOTodoModel( Calendar *cal, QObject *parent )
 #endif
 }
 
+static bool isDueToday( const Todo *todo )
+{
+  return !todo->isCompleted() && todo->dtDue().date() == QDate::currentDate();
+}
+
 KOTodoModel::~KOTodoModel()
 {
   delete mRootNode;
@@ -435,10 +440,19 @@ QModelIndex KOTodoModel::moveIfParentChanged( TodoTreeNode *curNode, Todo *todo,
   return miChanged;
 }
 
-KOTodoModel::TodoTreeNode *KOTodoModel::findTodo( const Todo *todo )
+KOTodoModel::TodoTreeNode *KOTodoModel::findTodo( const Todo *todo ) const
 {
   Q_ASSERT( todo );
   return mTodoHash.value( todo->uid() );
+}
+
+void KOTodoModel::expandTodoIfNeeded( const Todo *todo )
+{
+  if ( todo->isOverdue() ||
+       isDueToday( todo ) ) {
+    QModelIndex index = getModelIndex( findTodo( todo ) );
+    emit expandIndex( index );
+  }
 }
 
 KOTodoModel::TodoTreeNode *KOTodoModel::insertTodo( Todo *todo,
@@ -480,7 +494,7 @@ KOTodoModel::TodoTreeNode *KOTodoModel::insertTodo( Todo *todo,
     parent->addChild( ret );
 
     endInsertRows();
-
+    expandTodoIfNeeded( todo );
     return ret;
   } else {
     beginInsertRows( getModelIndex( mRootNode ), mRootNode->childrenCount(),
@@ -491,6 +505,7 @@ KOTodoModel::TodoTreeNode *KOTodoModel::insertTodo( Todo *todo,
     mRootNode->addChild( ret );
 
     endInsertRows();
+    expandTodoIfNeeded( todo );
     return ret;
   }
 }
@@ -685,7 +700,7 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
     if ( todo->isOverdue() ) {
       return QVariant(
         QBrush( KOPrefs::instance()->agendaCalendarItemsToDosOverdueBackgroundColor() ) );
-    } else if ( !todo->isCompleted() && todo->dtDue().date() == QDate::currentDate() ) {
+    } else if ( isDueToday( todo ) ) {
       return QVariant(
         QBrush( KOPrefs::instance()->agendaCalendarItemsToDosDueTodayBackgroundColor() ) );
     }

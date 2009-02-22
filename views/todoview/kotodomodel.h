@@ -133,6 +133,15 @@ class KOTodoModel : public QAbstractItemModel
      */
     void setFlatView( bool flatView );
 
+  Q_SIGNALS:
+
+    /**
+     * This signal is emitted when the view should expand all parents of
+     * this item. This is emitted when a todo was added that is overdue
+     * or due today.
+     */
+    void expandIndex( const QModelIndex &index );
+
   private:
     struct TodoTreeNode;
 
@@ -151,7 +160,16 @@ class KOTodoModel : public QAbstractItemModel
     * @return Pointer to the TodoTreeNode node which represents the todo
     *         searched for or 0 if not found.
     */
-    TodoTreeNode *findTodo( const Todo *todo );
+    TodoTreeNode *findTodo( const Todo *todo ) const;
+
+    /**
+     * If the todo is overdue or due today, the expandIndex signal
+     * is emitted so that the view can expand the parents of this
+     * todo.
+     *
+     * @param todo the todo whose parents will be expanded if needed
+     */
+    void expandTodoIfNeeded( const Todo *todo );
 
     /** Insert a todo at the right place in the todo tree.
      *

@@ -40,8 +40,8 @@
 #include "calprinter.h"
 #endif
 
-#include <kcal/todo.h>
-#include <kcal/incidence.h>
+#include <KCal/Todo>
+#include <KCal/Incidence>
 
 #include <kconfig.h>
 #include <kconfiggroup.h>
@@ -65,6 +65,8 @@ KOTodoView::KOTodoView( Calendar *cal, QWidget *parent )
   : BaseView( cal, parent )
 {
   mModel = new KOTodoModel( calendar(), this );
+  connect( mModel, SIGNAL( expandIndex( const QModelIndex& ) ),
+           this, SLOT( expandIndex( const QModelIndex& ) ) );
   mProxyModel = new KOTodoViewSortFilterProxyModel( this );
   mProxyModel->setSourceModel( mModel );
   mProxyModel->setDynamicSortFilter( true );
@@ -241,6 +243,15 @@ KOTodoView::KOTodoView( Calendar *cal, QWidget *parent )
 
 KOTodoView::~KOTodoView()
 {
+}
+
+void KOTodoView::expandIndex( const QModelIndex& index )
+{
+  QModelIndex realIndex = mProxyModel->mapFromSource( index );
+  while ( realIndex.isValid() ) {
+    mView->expand( realIndex );
+    realIndex = mProxyModel->parent( realIndex );
+  }
 }
 
 void KOTodoView::setCalendar( Calendar *cal )
