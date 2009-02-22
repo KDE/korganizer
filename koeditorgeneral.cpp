@@ -86,9 +86,12 @@ void KOEditorGeneral::initHeader( QWidget *parent, QBoxLayout *topLayout )
   headerLayout->setSpacing( topLayout->spacing() );
   topLayout->addLayout( headerLayout );
 
-  QString whatsThis = i18n( "Sets the Title of this event or to-do." );
-  QLabel *summaryLabel = new QLabel( i18nc( "event or to-do title", "T&itle:" ), parent );
+  QString whatsThis = i18nc( "@info:whatsthis",
+                             "Sets the Title of this event or to-do." );
+  QString toolTip = i18nc( "@info:tooltip", "Sets the title" );
+  QLabel *summaryLabel = new QLabel( i18nc( "@label event or to-do title", "T&itle:" ), parent );
   summaryLabel->setWhatsThis( whatsThis );
+  summaryLabel->setToolTip( toolTip );
   QFont f = summaryLabel->font();
   f.setBold( true );
   summaryLabel->setFont( f );
@@ -96,6 +99,7 @@ void KOEditorGeneral::initHeader( QWidget *parent, QBoxLayout *topLayout )
 
   mSummaryEdit = new FocusLineEdit( parent );
   mSummaryEdit->setWhatsThis( whatsThis );
+  mSummaryEdit->setToolTip( toolTip );
   connect( mSummaryEdit, SIGNAL(focusReceivedSignal()),
            SIGNAL(focusReceivedSignal()) );
   QTimer::singleShot( 0, mSummaryEdit, SLOT(setFocus()) );
@@ -106,13 +110,17 @@ void KOEditorGeneral::initHeader( QWidget *parent, QBoxLayout *topLayout )
   updateAttendeeSummary( 0 );
   headerLayout->addWidget( mAttendeeSummaryLabel, 1, 2 );
 
-  whatsThis = i18n( "Sets where the event or to-do will take place." );
-  QLabel *locationLabel = new QLabel( i18n( "&Location:" ), parent );
+  whatsThis = i18nc( "@info:whatsthis",
+                     "Sets where the event or to-do will take place." );
+  toolTip = i18nc( "@info:tooltip", "Set the location" );
+  QLabel *locationLabel = new QLabel( i18nc( "@label", "&Location:" ), parent );
   locationLabel->setWhatsThis( whatsThis );
+  locationLabel->setToolTip( toolTip );
   headerLayout->addWidget( locationLabel, 2, 0 );
 
   mLocationEdit = new KLineEdit( parent );
   mLocationEdit->setWhatsThis( whatsThis );
+  mLocationEdit->setToolTip( toolTip );
   headerLayout->addWidget( mLocationEdit, 2, 1, 1, 1 );
   locationLabel->setBuddy( mLocationEdit );
 
@@ -121,17 +129,21 @@ void KOEditorGeneral::initHeader( QWidget *parent, QBoxLayout *topLayout )
 
   whatsThis = i18nc( "@info:whatsthis",
                      "Allows you to select the categories that this event or to-do belongs to." );
-  QLabel *categoriesLabel = new QLabel( i18n( "Categories:" ), parent );
+  toolTip = i18nc( "@info:tooltip", "Sets the categories" );
+  QLabel *categoriesLabel = new QLabel( i18nc( "@label", "Categories:" ), parent );
   categoriesLabel->setWhatsThis( whatsThis );
+  categoriesLabel->setToolTip( toolTip );
   thirdLineLayout->addWidget( categoriesLabel );
   mCategoriesLabel = new KSqueezedTextLabel( parent );
   mCategoriesLabel->setWhatsThis( whatsThis );
+  mCategoriesLabel->setToolTip( toolTip );
   mCategoriesLabel->setFrameStyle( QFrame::Panel|QFrame::Sunken );
   thirdLineLayout->addWidget( mCategoriesLabel );
 
   mCategoriesButton = new QPushButton( parent );
   mCategoriesButton->setText( i18nc( "@action:button select a category", "&Select..." ) );
   mCategoriesButton->setWhatsThis( whatsThis );
+  mCategoriesButton->setToolTip( toolTip );
   connect( mCategoriesButton, SIGNAL(clicked()), SLOT(selectCategories()) );
   thirdLineLayout->addWidget( mCategoriesButton );
 }
@@ -142,19 +154,23 @@ void KOEditorGeneral::initSecrecy( QWidget *parent, QBoxLayout *topLayout )
   secrecyLayout->setSpacing( topLayout->spacing() );
   topLayout->addItem( secrecyLayout );
 
-  QLabel *secrecyLabel = new QLabel( i18n( "Acc&ess:" ), parent );
-  QString whatsThis = i18n( "Sets whether the access to this event or to-do "
-                            "is restricted. Please note that KOrganizer "
-                            "currently does not use this setting, so the "
-                            "implementation of the restrictions will depend "
-                            "on the groupware server. This means that events "
-                            "or to-dos marked as private or confidential may "
-                            "be visible to others." );
+  QLabel *secrecyLabel = new QLabel( i18nc( "@label", "Acc&ess:" ), parent );
+  QString whatsThis = i18nc( "@info:whatsthis",
+                             "Sets whether the access to this event or to-do "
+                             "is restricted. Please note that KOrganizer "
+                             "currently does not use this setting, so the "
+                             "implementation of the restrictions will depend "
+                             "on the groupware server. This means that events "
+                             "or to-dos marked as private or confidential may "
+                             "be visible to others." );
+  QString toolTip = i18nc( "@info:tooltip", "Sets the secrecy level" );
   secrecyLabel->setWhatsThis( whatsThis );
-  secrecyLayout->addWidget(secrecyLabel);
+  secrecyLabel->setToolTip( toolTip );
+  secrecyLayout->addWidget( secrecyLabel );
 
   mSecrecyCombo = new KComboBox( parent );
   mSecrecyCombo->setWhatsThis( whatsThis );
+  mSecrecyCombo->setToolTip( toolTip );
   mSecrecyCombo->addItems( Incidence::secrecyList() );
   secrecyLayout->addWidget( mSecrecyCombo );
   secrecyLabel->setBuddy( mSecrecyCombo );
@@ -162,36 +178,28 @@ void KOEditorGeneral::initSecrecy( QWidget *parent, QBoxLayout *topLayout )
 
 void KOEditorGeneral::initDescription( QWidget *parent, QBoxLayout *topLayout )
 {
-//   QBoxLayout *htmlLayout = new QHBoxLayout();
-//   topLayout->addItem( htmlLayout );
-
-//   htmlLayout->setSpacing(5);
-
   mEditToolBar = new KToolBar( parent );
   mEditToolBar->setToolButtonStyle( Qt::ToolButtonIconOnly );
-//   htmlLayout->addWidget( mEditToolBar, 0 );
 
-//   mFormatToolBar = new KToolBar( parent );
-//   mFormatToolBar->setToolButtonStyle( Qt::ToolButtonIconOnly );
-//   htmlLayout->addWidget( mFormatToolBar, 1 );
-
-//   htmlLayout->addStretch();
-
-  mRichDescription = new QCheckBox( i18n( "Rich text" ), parent );
-  mRichDescription->setToolTip( i18n( "Toggle Rich Text" ) );
+  mRichDescription = new QCheckBox( i18nc( "@option:check", "Rich text" ), parent );
+  mRichDescription->setWhatsThis(
+    i18nc( "@info:whatsthis",
+           "Select this option if you would like to enter rich text into "
+           "the description field of this event or to-do." ) );
+  mRichDescription->setToolTip( i18nc( "@info:tooltip", "Toggle Rich Text" ) );
   connect( mRichDescription, SIGNAL(toggled(bool)),
            this, SLOT(setDescriptionRich(bool)) );
 
-  KActionCollection *collection = new KActionCollection( this );
+  KActionCollection *collection = new KActionCollection( this ); //krazy:exclude=tipsandthis
   mDescriptionEdit = new KRichTextWidget( parent );
   mDescriptionEdit->setRichTextSupport( KRichTextWidget::SupportBold |
-        KRichTextWidget::SupportBold |
-        KRichTextWidget::SupportItalic |
-        KRichTextWidget::SupportUnderline |
-        KRichTextWidget::SupportStrikeOut |
-        KRichTextWidget::SupportChangeListStyle |
-        KRichTextWidget::SupportAlignment |
-        KRichTextWidget::SupportFormatPainting );
+                                        KRichTextWidget::SupportBold |
+                                        KRichTextWidget::SupportItalic |
+                                        KRichTextWidget::SupportUnderline |
+                                        KRichTextWidget::SupportStrikeOut |
+                                        KRichTextWidget::SupportChangeListStyle |
+                                        KRichTextWidget::SupportAlignment |
+                                        KRichTextWidget::SupportFormatPainting );
 
   mDescriptionEdit->createActions( collection );
 
@@ -216,10 +224,14 @@ void KOEditorGeneral::initDescription( QWidget *parent, QBoxLayout *topLayout )
 
   topLayout->addWidget( mEditToolBar, 0 );
 
+  mDescriptionEdit->setToolTip(
+    i18nc( "@info:tooltip",
+           "Set the description in plain text or rich text" ) );
   mDescriptionEdit->setWhatsThis(
-    i18n( "Sets the description for this event, to-do or journal. "
-          "This will be displayed in a reminder if one is set, "
-          "as well as in a tooltip when you hover over the event." ) );
+    i18nc( "@info:whatsthis",
+           "Sets the description for this event, to-do or journal. "
+           "This will be displayed in a reminder if one is set, "
+           "as well as in a tooltip when you hover over the event." ) );
   mDescriptionEdit->append( "" );
   mDescriptionEdit->setReadOnly( false );
   mDescriptionEdit->setOverwriteMode( false );
@@ -251,21 +263,28 @@ void KOEditorGeneral::initAlarm( QWidget *parent, QBoxLayout *topLayout )
 
   QBoxLayout *simpleAlarmLayout = new QHBoxLayout( simpleAlarmBox );
 
-  mAlarmButton = new QCheckBox( i18n( "&Reminder:" ) );
-  mAlarmButton->setWhatsThis( i18n( "Activates a reminder for this event or to-do." ) );
+  mAlarmButton = new QCheckBox( i18nc( "@option:check", "&Reminder:" ) );
+  mAlarmButton->setWhatsThis(
+    i18nc( "@info:whatsthis",
+           "Activates a reminder for this event or to-do." ) );
+  mAlarmButton->setToolTip( i18nc( "@info:tooltip", "Sets a reminder" ) );
   simpleAlarmLayout->addWidget( mAlarmButton );
 
   QString whatsThis =
-    i18n( "Sets how long before the event occurs the reminder will be triggered." );
+    i18nc( "@info:whatsthis",
+           "Sets how long before the event occurs the reminder will be triggered." );
+  QString toolTip = i18nc( "@info:tooltip", "Sets an alarm" );
   mAlarmTimeEdit = new QSpinBox();
   mAlarmTimeEdit->setRange( 0, 99999 );
   mAlarmTimeEdit->setObjectName( "alarmTimeEdit" );
   mAlarmTimeEdit->setValue( 0 );
   mAlarmTimeEdit->setWhatsThis( whatsThis );
+  mAlarmTimeEdit->setToolTip( toolTip );
   simpleAlarmLayout->addWidget( mAlarmTimeEdit );
 
   mAlarmIncrCombo = new KComboBox();
   mAlarmIncrCombo->setWhatsThis( whatsThis );
+  mAlarmIncrCombo->setToolTip( toolTip );
   mAlarmIncrCombo->addItem( i18nc( "@item:inlistbox alarm expressed in minutes", "minute(s)" ) );
   mAlarmIncrCombo->addItem( i18nc( "@item:inlistbox alarm expressed in hours", "hour(s)" ) );
   mAlarmIncrCombo->addItem( i18nc( "@item:inlistbox alarm expressed in days", "day(s)" ) );
@@ -277,7 +296,12 @@ void KOEditorGeneral::initAlarm( QWidget *parent, QBoxLayout *topLayout )
   mAlarmTimeEdit->setEnabled( false );
   mAlarmIncrCombo->setEnabled( false );
 
-  mAlarmEditButton = new QPushButton( i18nc( "advanced alarm settings", "Advanced..." ), parent );
+  mAlarmEditButton =
+    new QPushButton( i18nc( "@action:button advanced alarm settings", "Advanced..." ), parent );
+  mAlarmEditButton->setWhatsThis(
+    i18nc( "@info:whatsthis",
+           "Push this button to create an advanced alarm for this event or to-do" ) );
+  mAlarmEditButton->setToolTip( i18nc( "@info:tooltip", "Set an advanced alarm" ) );
   alarmLayout->addWidget( mAlarmEditButton );
   alarmLayout->addStretch();
   connect( mAlarmEditButton, SIGNAL(clicked()), SLOT(editAlarms()) );
@@ -389,9 +413,10 @@ void KOEditorGeneral::updateAlarmWidgets()
     mAlarmButton->setChecked( false );
   } else if ( mAlarmList.count() > 1 ) {
     mAlarmStack->setCurrentIndex( AdvancedAlarmLabel );
-    mAlarmInfoLabel->setText( i18np( "1 reminder configured",
-                                     "%1 reminders configured",
-                                     mAlarmList.count() ) );
+    mAlarmInfoLabel->setText( i18ncp( "@label",
+                                      "1 reminder configured",
+                                      "%1 reminders configured",
+                                      mAlarmList.count() ) );
   } else {
     Alarm *alarm = mAlarmList.first();
     // Check if it is the trivial type of alarm, which can be
@@ -416,7 +441,7 @@ void KOEditorGeneral::updateAlarmWidgets()
       mAlarmTimeEdit->setValue( useoffset );
     } else {
       mAlarmStack->setCurrentIndex( AdvancedAlarmLabel );
-      mAlarmInfoLabel->setText( i18n( "1 advanced reminder configured" ) );
+      mAlarmInfoLabel->setText( i18nc( "@label", "1 advanced reminder configured" ) );
     }
   }
 }
@@ -479,13 +504,17 @@ Alarm *KOEditorGeneral::alarmFromSimplePage() const
 void KOEditorGeneral::writeIncidence( Incidence *incidence )
 {
   incidence->setSummary( mSummaryEdit->text() );
+
   incidence->setLocation( mLocationEdit->text() );
+
   if ( mRichDescription->isChecked() ) {
     incidence->setDescription( mDescriptionEdit->toHtml(), true );
   } else {
     incidence->setDescription( mDescriptionEdit->toPlainText(), false );
   }
+
   incidence->setCategories( mCategories );
+
   switch( mSecrecyCombo->currentIndex() ) {
   case 1:
     incidence->setSecrecy( Incidence::SecrecyPrivate );
@@ -557,17 +586,21 @@ void KOEditorGeneral::setDescriptionRich( bool rich )
 void KOEditorGeneral::updateAttendeeSummary( int count )
 {
   if ( count <= 0 ) {
-    mAttendeeSummaryLabel->setText( i18n( "No attendees" ) );
+    mAttendeeSummaryLabel->setText( i18nc( "@label", "No attendees" ) );
   } else {
-    mAttendeeSummaryLabel->setText( i18np( "One attendee", "%1 attendees", count ) );
+    mAttendeeSummaryLabel->setText( i18ncp( "@label",
+                                            "One attendee",
+                                            "%1 attendees",
+                                            count ) );
   }
 }
 
 bool KOEditorGeneral::validateInput()
 {
-  // Do not permit an empty summary
+  // Do not permit an empty title
   if ( mSummaryEdit->text().isEmpty() ) {
-    KMessageBox::sorry( mParent, i18n( "Please specify a summary." ) );
+    KMessageBox::sorry( mParent,
+                        i18nc( "@info", "Please specify a title." ) );
     return false;
   }
 
