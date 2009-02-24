@@ -27,33 +27,29 @@
 #define CALENDARVIEW_H
 
 #include "korganizer_export.h"
-#include <korganizer/koeventviewer.h>
-#include <korganizer/calendarviewbase.h>
+#include "interfaces/korganizer/calendarviewbase.h"
 
-#include <kcal/scheduler.h>
-
-#include <kfile.h>
-
-#include <QWidget>
-#include <QMap>
 #include <QList>
+#include <QMap>
+#include <QWidget>
 
 class CalPrinter;
-class KOViewManager;
-class KODialogManager;
-class KOTodoView;
-class KOEventEditor;
-class DateNavigatorContainer;
-class DateNavigator;
-class KOIncidenceEditor;
-class NavigatorBar;
 class DateChecker;
+class DateNavigator;
+class DateNavigatorContainer;
+class KODialogManager;
+class KOEventEditor;
+class KOEventViewer;
+class KOIncidenceEditor;
+class KOTodoView;
+class KOViewManager;
+class NavigatorBar;
 
 class KVBox;
 
 class QByteArray;
-class QStackedWidget;
 class QSplitter;
+class QStackedWidget;
 
 namespace KOrg {
   class History;
@@ -606,10 +602,9 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     /**
       Returns the best guess at the current active date in the view.
 
-      @param fallbackToToday If guessing doesn't work, some views will prefer 
-                             today to be returned instead of the first select date
-                             in the day matrix, Journal view for example.
-      
+      @param fallbackToToday If guessing doesn't work, some views will prefer
+      today to be returned instead of the first select date in the day matrix,
+      Journal view for example.
     */
     QDate activeDate( bool fallbackToToday = false );
 

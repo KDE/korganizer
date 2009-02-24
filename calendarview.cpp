@@ -30,82 +30,62 @@
 */
 
 #include "calendarview.h"
-
 #ifndef KORG_NOPRINTER
 #include "calprinter.h"
 #endif
-#include "koeventeditor.h"
-#include "kotodoeditor.h"
-#include "kojournaleditor.h"
-#include "koprefs.h"
-#include "koeventviewerdialog.h"
-#include "publishdialog.h"
-#include "koglobals.h"
-#include "koviewmanager.h"
-#include "kodialogmanager.h"
-#include "statusdialog.h"
-#include "datenavigatorcontainer.h"
-#include "datenavigator.h"
-#include "resourceview.h"
-#include "navigatorbar.h"
-#include "history.h"
-#include "kogroupware.h"
-#include "freebusymanager.h"
 #include "datechecker.h"
-#include "komessagebox.h"
+#include "datenavigator.h"
+#include "datenavigatorcontainer.h"
 #include "exportwebdialog.h"
+#include "freebusymanager.h"
+#include "history.h"
 #include "kocorehelper.h"
+#include "kodialogmanager.h"
+#include "koeventeditor.h"
+#include "koeventviewer.h"
+#include "koeventviewerdialog.h"
+#include "koglobals.h"
+#include "kogroupware.h"
+#include "koincidenceeditor.h"
+#include "kojournaleditor.h"
+#include "komailclient.h"
+#include "komessagebox.h"
+#include "koprefs.h"
+#include "kotodoeditor.h"
+#include "koviewmanager.h"
 #include "incidencechanger.h"
 #include "mailscheduler.h"
-#include "komailclient.h"
+#include "navigatorbar.h"
+#include "publishdialog.h"
 #include "views/agendaview/koagendaview.h"
-#include "views/todoview/kotodoview.h"
 #include "views/monthview/monthview.h"
 #include "views/multiagendaview/multiagendaview.h"
+#include "views/todoview/kotodoview.h"
 
-#include <kcal/vcaldrag.h>
-#include <kcal/icaldrag.h>
-#include <kcal/icalformat.h>
-#include <kcal/vcalformat.h>
-#include <kcal/scheduler.h>
-#include <kcal/calendarlocal.h>
-#include <kcal/journal.h>
-#include <kcal/calfilter.h>
-#include <kcal/attendee.h>
-#include <kcal/dndfactory.h>
-#include <kcal/freebusy.h>
-#include <kcal/filestorage.h>
-#include <kcal/calendarresources.h>
-#include <kcal/calendarnull.h>
-#include <kcal/htmlexportsettings.h>
-#include <kholidays/holidays.h>
+#include <KCal/CalendarLocal>
+#include <KCal/CalendarNull>
+#include <KCal/CalendarResources>
+#include <KCal/CalFilter>
+#include <KCal/DndFactory>
+#include <KCal/FileStorage>
+#include <KCal/FreeBusy>
+#include <KCal/ICalDrag>
+#include <KCal/ICalFormat>
+#include <KCal/VCalFormat>
+#include <kcal/htmlexportsettings.h> //krazy:exclude=camelcase. it's generated
 
-#include <kglobal.h>
-#include <kdebug.h>
-#include <kstandarddirs.h>
-#include <kfiledialog.h>
-#include <kmessagebox.h>
-#include <knotification.h>
-#include <kconfig.h>
-#include <krun.h>
-#include <kdirwatch.h>
-#include <kvbox.h>
+#include <KHolidays/Holidays>
+
+#include <KFileDialog>
+#include <KNotification>
+#include <KRun>
+#include <KVBox>
 
 #include <QApplication>
 #include <QClipboard>
-#include <QCursor>
-#include <QTimer>
-#include <QStackedWidget>
-#include <QList>
-#include <QFile>
-#include <QLayout>
 #include <QSplitter>
-#include <QByteArray>
-#include <QBoxLayout>
+#include <QStackedWidget>
 #include <QVBoxLayout>
-
-#include <stdlib.h>
-#include <assert.h>
 
 using namespace KOrg;
 using namespace KHolidays;
@@ -129,8 +109,8 @@ CalendarView::CalendarView( QWidget *parent )
   mNavigator = new DateNavigator( this );
   mDateChecker = new DateChecker( this );
 
-  QBoxLayout *topLayout = new QVBoxLayout( this );
-  topLayout->setMargin(0);
+  QVBoxLayout *topLayout = new QVBoxLayout( this );
+  topLayout->setMargin( 0 );
 
   // create the main layout frames.
   mPanner = new QSplitter( Qt::Horizontal, this );
@@ -139,13 +119,10 @@ CalendarView::CalendarView( QWidget *parent )
 
   mLeftSplitter = new QSplitter( Qt::Vertical, mPanner );
   mLeftSplitter->setObjectName( "CalendarView::LeftFrame" );
-//  mPanner->setResizeMode( mLeftSplitter, QSplitter::Stretch );
+  mLeftSplitter->setCollapsible( mLeftSplitter->indexOf(mDateNavigator), true );
 
   mDateNavigator = new DateNavigatorContainer( mLeftSplitter );
   mDateNavigator->setObjectName( "CalendarView::DateNavigator" );
-
-//  mLeftSplitter->setResizeMode( mDateNavigator, QSplitter::Stretch );
-  mLeftSplitter->setCollapsible( mLeftSplitter->indexOf(mDateNavigator), true );
 
   mTodoList = new KOTodoView( CalendarNull::self(), mLeftSplitter );
   mTodoList->setObjectName( "todolist" );
@@ -401,7 +378,7 @@ bool CalendarView::openCalendar( const QString &filename, bool merge )
       loadedSuccesfully = cl->load( filename );
     } else {
       CalendarResources *cr = dynamic_cast<CalendarResources*>( mCalendar );
-      assert( cr ); // otherwise something is majorly wrong
+      Q_ASSERT( cr ); // otherwise something is majorly wrong
       // openCalendar called without merge and a filename, what should we do?
       return false;
     }
@@ -1587,8 +1564,7 @@ void CalendarView::exportICalendar()
   QString filename = KFileDialog::getSaveFileName( KUrl( "icalout.ics" ),
                                                    i18n( "*.ics|ICalendars" ), this );
 
-  if ( !filename.isEmpty() )
-  {
+  if ( !filename.isEmpty() ) {
     // Force correct extension
     if ( filename.right( 4 ) != ".ics" ) {
       filename += ".ics";
@@ -1617,9 +1593,7 @@ void CalendarView::exportVCalendar()
 
   QString filename = KFileDialog::getSaveFileName( KUrl( "vcalout.vcs" ),
                                                    i18n( "*.vcs|vCalendars" ), this );
-  if ( !filename.isEmpty() )
-  {
-
+  if ( !filename.isEmpty() ) {
     // TODO: I don't like forcing extensions:
     // Force correct extension
     if ( filename.right( 4 ) != ".vcs" ) {
