@@ -26,7 +26,7 @@
 
 #include "timelabels.h"
 
-#include <kdatetime.h>
+#include <KDateTime>
 
 #include <QWidget>
 #include <QList>
@@ -37,7 +37,7 @@ class QHBoxLayout;
 
 class TimeLabelsZone : public QWidget
 {
-    Q_OBJECT
+  Q_OBJECT
   public:
     explicit TimeLabelsZone( QWidget *parent, KOAgenda *agenda = 0 );
 

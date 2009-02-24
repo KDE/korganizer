@@ -27,45 +27,14 @@
 #include "timelabels.h"
 #include "timelabelszone.h"
 #include "timescaleconfigdialog.h"
-#include "koglobals.h"
 #include "koprefs.h"
-#include "kogroupware.h"
-#include "kodialogmanager.h"
-#include "koeventpopupmenu.h"
-#include "koalternatelabel.h"
-#include "views/agendaview/koagendaitem.h"
 #include "views/agendaview/koagenda.h"
 
-#include <kholidays/holidays.h>
+#include <KIcon>
 
-#include <kapplication.h>
-#include <kcalendarsystem.h>
-#include <kdebug.h>
-#include <kstandarddirs.h>
-#include <kiconloader.h>
-#include <klocale.h>
-#include <kconfig.h>
-#include <kglobal.h>
-#include <kglobalsettings.h>
-#include <KVBox>
-#include <ksystemtimezone.h>
-#include <kpushbutton.h>
-#include <kcombobox.h>
-
-#include <QLabel>
-#include <QFrame>
-#include <QLayout>
-#include <QFont>
-#include <QFontMetrics>
+#include <QAction>
 #include <QMenu>
 #include <QPainter>
-#include <QCursor>
-#include <QPaintEvent>
-#include <QGridLayout>
-#include <QBoxLayout>
-#include <QHBoxLayout>
-#include <QResizeEvent>
-#include <QVBoxLayout>
 
 using namespace KOrg;
 

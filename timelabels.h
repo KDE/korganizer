@@ -26,19 +26,15 @@
 #ifndef TIMELABELS_H
 #define TIMELABELS_H
 
-#include <kdatetime.h>
+#include <KDateTime>
 
 #include <q3scrollview.h>
-#include <QBoxLayout>
-#include <QLabel>
-#include <QFrame>
-#include <QPaintEvent>
-#include <QPixmap>
-#include <QVector>
 
 class KOAgenda;
-
 class TimeLabelsZone;
+
+class QFrame;
+class QPaintEvent;
 
 class TimeLabels : public Q3ScrollView
 {

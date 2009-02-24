@@ -29,6 +29,8 @@
 
 #include <ksystemtimezone.h>
 
+#include <QHBoxLayout>
+
 using namespace KOrg;
 
 TimeLabelsZone::TimeLabelsZone( QWidget *parent, KOAgenda *agenda )
