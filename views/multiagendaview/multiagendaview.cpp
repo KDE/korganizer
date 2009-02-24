@@ -29,7 +29,9 @@
 #include <KVBox>
 
 #include <Q3ScrollView>
-#include <QLayout>
+#include <QHBoxLayout>
+#include <QLabel>
+#include <QResizeEvent>
 #include <QSplitter>
 
 using namespace KOrg;
@@ -39,7 +41,7 @@ MultiAgendaView::MultiAgendaView( Calendar *cal, QWidget *parent )
     mUpdateOnShow( true ),
     mPendingChanges( true )
 {
-  QBoxLayout *topLevelLayout = new QHBoxLayout( this );
+  QHBoxLayout *topLevelLayout = new QHBoxLayout( this );
   topLevelLayout->setSpacing( 0 );
   topLevelLayout->setMargin( 0 );
 

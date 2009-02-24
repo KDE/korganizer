@@ -21,12 +21,15 @@
 
 #include "views/agendaview/agendaview.h"
 
-class Q3ScrollView;
-class KHBox;
-class QSplitter;
 class KOAgendaView;
 class TimeLabelsZone;
+
+class KHBox;
+
+class Q3ScrollView;
+class QResizeEvent;
 class QScrollBar;
+class QSplitter;
 
 namespace KCal {
   class ResourceCalendar;
