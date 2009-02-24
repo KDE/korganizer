@@ -513,7 +513,7 @@
     <entry type="Bool" name="FreeBusyCheckHostname">
       <label>Check whether hostname and retrieval email address match</label>
       <whatsthis>With this setting you can configure whether the domain part of the free/busy url has to match the domain part of the user id you are looking for. For example if this option is 'true' then looking for the free/busy data of joe@mydomain.com on the server www.yourdomain.com will fail.</whatsthis>
-      <default>true</default>
+      <default>false</default>
     </entry>
 
     <entry type="Bool" name="FreeBusyFullDomainRetrieval">
