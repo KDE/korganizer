@@ -84,7 +84,7 @@ class KOTodoView : public BaseView
     virtual void changeIncidenceDisplay( Incidence *incidence, int action );
     virtual void updateConfig();
     virtual void clearSelection();
-    void expandIndex( const QModelIndex& index );
+    void expandIndex( const QModelIndex &index );
 
   protected Q_SLOTS:
     void addQuickTodo( Qt::KeyboardModifiers modifier );

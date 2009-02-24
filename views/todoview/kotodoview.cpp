@@ -245,7 +245,7 @@ KOTodoView::~KOTodoView()
 {
 }
 
-void KOTodoView::expandIndex( const QModelIndex& index )
+void KOTodoView::expandIndex( const QModelIndex &index )
 {
   QModelIndex realIndex = mProxyModel->mapFromSource( index );
   while ( realIndex.isValid() ) {
