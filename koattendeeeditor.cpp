@@ -415,7 +415,7 @@ void KOAttendeeEditor::fillAttendeeInput( KCal::Attendee *a )
   KCal::Attendee::PartStat partStat = a->status();
   bool rsvp = a->RSVP();
 
-  if ( myself && sameAsOrganizer ) {
+  if ( myself && sameAsOrganizer && a->status() == KCal::Attendee::None ) {
     partStat = KCal::Attendee::Accepted;
     rsvp = false;
   }
