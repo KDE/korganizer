@@ -1556,9 +1556,7 @@ void KOAgendaView::readSettings( KConfig *config )
   KConfigGroup group = config->group( "Views" );
 
   QList<int> sizes = group.readEntry( "Separator AgendaView", QList<int>() );
-  if ( sizes.count() == 3 ) { // Number of sections divided by separators in the view
-    mSplitterAgenda->setSizes( sizes );
-  }
+  mSplitterAgenda->setSizes( sizes );
 
   updateConfig();
 }
