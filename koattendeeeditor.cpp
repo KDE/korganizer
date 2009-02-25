@@ -205,8 +205,6 @@ void KOAttendeeEditor::initEditWidgets( QWidget *parent, QBoxLayout *layout )
   connect( mAddressBookButton, SIGNAL(clicked()), SLOT(openAddressBook()) );
 
   topLayout->addWidget( buttonBox, 0, 4, 3, 1 );
-
-  mAddressBookButton->hide();
 }
 
 void KOAttendeeEditor::openAddressBook()
