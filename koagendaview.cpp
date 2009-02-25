@@ -1704,7 +1704,7 @@ bool KOAgendaView::filterByResource( Incidence *incidence )
   return true;
 }
 
-void KOAgendaView::resourcesChanged()
+void KOAgendaView::setUpdateNeeded()
 {
   mPendingChanges = true;
 }

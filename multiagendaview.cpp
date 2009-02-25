@@ -468,11 +468,11 @@ void MultiAgendaView::showEvent( QShowEvent *event )
   }
 }
 
-void MultiAgendaView::resourcesChanged()
+void MultiAgendaView::setUpdateNeeded()
 {
   mPendingChanges = true;
   foreach ( KOAgendaView *agenda, mAgendaViews ) {
-    agenda->resourcesChanged();
+    agenda->setUpdateNeeded();
   }
 }
 
