@@ -25,14 +25,14 @@
 #include <libkdepim/addressesdialog.h>
 #include <libkdepim/addresseelineedit.h>
 
-#include <kabc/addresseedialog.h>
-#include <kcal/incidence.h>
-#include <kpimutils/email.h>
+#include <KABC/AddresseeDialog>
+#include <KCal/Incidence>
+#include <KPIMUtils/Email>
 
 #include <KComboBox>
-#include <kiconloader.h>
-#include <klocale.h>
-#include <kmessagebox.h>
+#include <KIconLoader>
+#include <KLocale>
+#include <KMessageBox>
 
 #include <QCheckBox>
 #include <KHBox>
