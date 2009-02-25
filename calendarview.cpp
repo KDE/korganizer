@@ -1285,8 +1285,21 @@ void CalendarView::dissociateFutureOccurrence( Incidence *incidence, const QDate
   startMultiModify( i18n( "Dissociate future occurrences" ) );
   Incidence *oldincidence = incidence->clone();
 
+  KDateTime thisDateTime( date, KOPrefs::instance()->timeSpec() );
+
+  // mCalendar->dissociateOccurrences() dissociates past occurrences
+  // so pass it the next occurrence to dissociate future occurrences.
+  KDateTime nextDateTime = incidence->recurrence()->getNextDateTime( thisDateTime );
+
+  if ( !nextDateTime.isValid() ) {
+    // There aren't any future occurrences, don't do nothing then
+    delete oldincidence;
+    return;
+  }
+
   Incidence *newInc =
-    mCalendar->dissociateOccurrence( incidence, date, KOPrefs::instance()->timeSpec(), true );
+    mCalendar->dissociateOccurrence( incidence, nextDateTime.date(),
+                                     KOPrefs::instance()->timeSpec(), false );
   if ( newInc ) {
     // TODO: Use the same resource instead of asking again!
     mChanger->changeIncidence( oldincidence, incidence );
