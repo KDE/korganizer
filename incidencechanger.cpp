@@ -312,7 +312,8 @@ bool IncidenceChanger::addIncidence( Incidence *incidence, QWidget *parent )
   if ( !success ) {
     // We can have a failure if the user pressed [cancel] in the resource
     // selectdialog, so check the exception.
-    if ( stdcal->exception()->errorCode() != KCal::ErrorFormat::UserCancel ) {
+    ErrorFormat *e = stdcal->exception();
+    if ( !e || ( e && ( e->errorCode() != KCal::ErrorFormat::UserCancel ) ) ) {
       KMessageBox::sorry( parent,
                           i18n( "Unable to save %1 \"%2\".",
                                 i18n( incidence->type() ),
