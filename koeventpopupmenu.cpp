@@ -82,10 +82,8 @@ KOEventPopupMenu::KOEventPopupMenu()
                                     i18n( "&Toggle Reminder" ), this, SLOT(popupAlarm())) );
   //------------------------------------------------------------------------
   mRecurrenceItems.append( addSeparator() );
-  mRecurrenceItems.append( addAction( i18n( "&Dissociate This Occurrence" ),
-                                      this, SLOT(dissociateOccurrence()) ) );
-  mRecurrenceItems.append( addAction( i18n( "Dissociate &Future Occurrences" ),
-                                      this, SLOT(dissociateFutureOccurrence()) ) );
+  mDissociateOccurrences = addAction( i18n( "&Dissociate From Recurrence" ), this, SLOT(dissociateOccurrences()) );
+  mRecurrenceItems.append( mDissociateOccurrences );
 
   addSeparator();
   insertItem( KOGlobals::self()->smallIcon( "mail-forward" ), i18n( "Send as iCalendar..." ),
@@ -99,6 +97,14 @@ void KOEventPopupMenu::showIncidencePopup( Calendar *cal, Incidence *incidence, 
   mCurrentDate = qd;
 
   if ( mCurrentIncidence ) {
+
+    if ( mCurrentIncidence->recurs() ) {
+      KDateTime thisDateTime( qd, KOPrefs::instance()->timeSpec() );
+      bool isLastOccurrence  = !mCurrentIncidence->recurrence()->getNextDateTime    ( thisDateTime ).isValid();
+      bool isFirstOccurrence = !mCurrentIncidence->recurrence()->getPreviousDateTime( thisDateTime ).isValid();
+      mDissociateOccurrences->setEnabled( !( isFirstOccurrence && isLastOccurrence ) );
+    }
+
     // Enable/Disabled menu items only valid for editable events.
     QList<QAction *>::Iterator it;
     for ( it = mEditOnlyItems.begin(); it != mEditOnlyItems.end(); ++it ) {
@@ -190,17 +196,10 @@ void KOEventPopupMenu::popupAlarm()
   }
 }
 
-void KOEventPopupMenu::dissociateOccurrence()
+void KOEventPopupMenu::dissociateOccurrences()
 {
   if ( mCurrentIncidence ) {
-    emit dissociateOccurrenceSignal( mCurrentIncidence, mCurrentDate );
-  }
-}
-
-void KOEventPopupMenu::dissociateFutureOccurrence()
-{
-  if ( mCurrentIncidence ) {
-    emit dissociateFutureOccurrenceSignal( mCurrentIncidence, mCurrentDate );
+    emit dissociateOccurrencesSignal( mCurrentIncidence, mCurrentDate );
   }
 }
 

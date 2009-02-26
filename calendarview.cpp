@@ -1243,12 +1243,56 @@ void CalendarView::toggleAlarm( Incidence *incidence )
   delete oldincidence;
 }
 
-void CalendarView::dissociateOccurrence( Incidence *incidence, const QDate &date )
+void CalendarView::dissociateOccurrences( Incidence *incidence, const QDate &date )
 {
+
   if ( !incidence || !mChanger ) {
-    kDebug() << "toggleAlarm() called without having a clicked item";
+    kError() << "Called without having a clicked item";
     return;
   }
+
+  KDateTime thisDateTime( date, KOPrefs::instance()->timeSpec() );
+  bool isFirstOccurrence = !incidence->recurrence()->getPreviousDateTime( thisDateTime ).isValid();
+
+  int answer;
+  bool doOnlyThis = false;
+  bool doFuture   = false;
+
+  if ( isFirstOccurrence ) {
+    answer = KMessageBox::questionYesNo( this,
+                                         i18n( "Do you want to dissociate "
+                                               "the occurrence at %1 "
+                                               "from the recurrence?",
+                                                KGlobal::locale()->formatDate( date ) ),
+                                                i18n( "KOrganizer Confirmation" ),                                                
+                                                KGuiItem( i18n( "&Dissociate" ) ),
+                                                KGuiItem( i18n( "&Cancel" ) ) );
+
+                                                
+    doOnlyThis = ( answer == KMessageBox::Yes );
+  } else {
+    answer = KMessageBox::questionYesNoCancel( this,
+                                               i18n( "Do you want to dissociate "
+                                                     "the occurrence at %1 "
+                                                     "from the recurrence or also "
+                                                     "dissociate future ones?",
+                                                     KGlobal::locale()->formatDate( date ) ),
+                                               i18n( "KOrganizer Confirmation" ),
+                                               KGuiItem( i18n( "&Only Dissociate This One" ) ),
+                                               KGuiItem( i18n( "&Also Dissociate Future Ones" ) ) );
+
+    doOnlyThis = ( answer == KMessageBox::Yes );
+    doFuture   = ( answer == KMessageBox::No );
+  }
+
+  if ( doOnlyThis ) {
+    dissociateOccurrence( incidence, date );
+  } else if ( doFuture ) {
+    dissociateFutureOccurrence( incidence, date );
+  }
+}
+void CalendarView::dissociateOccurrence( Incidence *incidence, const QDate &date )
+{
   if ( !mChanger->beginChange( incidence ) ) {
     kDebug() << "Unable to lock incidence";
     return;
@@ -1274,10 +1318,6 @@ void CalendarView::dissociateOccurrence( Incidence *incidence, const QDate &date
 
 void CalendarView::dissociateFutureOccurrence( Incidence *incidence, const QDate &date )
 {
-  if ( !incidence || !mChanger ) {
-    kDebug() << "toggleAlarm() called without having a clicked item";
-    return;
-  }
   if ( !mChanger->beginChange( incidence ) ) {
     kDebug() << "Unable to lock incidence";
     return;
@@ -1285,20 +1325,8 @@ void CalendarView::dissociateFutureOccurrence( Incidence *incidence, const QDate
   startMultiModify( i18n( "Dissociate future occurrences" ) );
   Incidence *oldincidence = incidence->clone();
 
-  KDateTime thisDateTime( date, KOPrefs::instance()->timeSpec() );
-
-  // mCalendar->dissociateOccurrences() dissociates past occurrences
-  // so pass it the next occurrence to dissociate future occurrences.
-  KDateTime nextDateTime = incidence->recurrence()->getNextDateTime( thisDateTime );
-
-  if ( !nextDateTime.isValid() ) {
-    // There aren't any future occurrences, don't do nothing then
-    delete oldincidence;
-    return;
-  }
-
   Incidence *newInc =
-    mCalendar->dissociateOccurrence( incidence, nextDateTime.date(),
+    mCalendar->dissociateOccurrence( incidence, date,
                                      KOPrefs::instance()->timeSpec(), false );
   if ( newInc ) {
     // TODO: Use the same resource instead of asking again!

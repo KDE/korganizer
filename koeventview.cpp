@@ -74,10 +74,8 @@ KOEventPopupMenu *KOEventView::eventPopup()
            SIGNAL(pasteIncidenceSignal()));
   connect( eventPopup, SIGNAL(toggleAlarmSignal(Incidence *)),
            SIGNAL(toggleAlarmSignal(Incidence*)));
-  connect( eventPopup, SIGNAL(dissociateOccurrenceSignal(Incidence *,const QDate &)),
-           SIGNAL(dissociateOccurrenceSignal(Incidence *,const QDate &)) );
-  connect( eventPopup, SIGNAL(dissociateFutureOccurrenceSignal(Incidence *,const QDate &)),
-           SIGNAL(dissociateFutureOccurrenceSignal(Incidence *,const QDate &)) );
+  connect( eventPopup, SIGNAL(dissociateOccurrencesSignal(Incidence *,const QDate &)),
+           SIGNAL(dissociateOccurrencesSignal(Incidence *,const QDate &)) );
 
   return eventPopup;
 }

@@ -402,8 +402,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     void newJournal( const QString &text, const QDate &date=QDate() );
 
     void toggleAlarm( Incidence * );
-    void dissociateOccurrence( Incidence *, const QDate & );
-    void dissociateFutureOccurrence( Incidence *, const QDate & );
+    void dissociateOccurrences( Incidence *incidence, const QDate &date );
 
     /**
       Check if clipboard contains vCalendar event. The signal pasteEnabled() is
@@ -633,6 +632,9 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     void init();
 
     void createPrinter();
+
+    void dissociateOccurrence( Incidence *, const QDate & );
+    void dissociateFutureOccurrence( Incidence *, const QDate & );
 
     void calendarModified( bool, Calendar * );
 

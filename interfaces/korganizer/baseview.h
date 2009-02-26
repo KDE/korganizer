@@ -201,12 +201,12 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
      * instructs the receiver to toggle the alarms of the Incidence.
      */
     void toggleAlarmSignal(Incidence *);
+
     /** Dissociate from a recurring incidence the occurrence on the given
-        date to a new incidence */
-    void dissociateOccurrenceSignal( Incidence *, const QDate & );
-    /** Dissociate from a recurring incidence all occurrences after the given
-        date to a new incidence */
-    void dissociateFutureOccurrenceSignal( Incidence *, const QDate & );
+     *  date to a new incidence or dissociate all occurrences from the
+     *  given date onwards.
+     */
+    void dissociateOccurrencesSignal( Incidence *, const QDate & );
 
     void startMultiModify( const QString & );
     void endMultiModify();

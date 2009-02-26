@@ -56,8 +56,7 @@ class KOEventPopupMenu : public QMenu
     void popupCut();
     void popupCopy();
     void popupAlarm();
-    void dissociateOccurrence();
-    void dissociateFutureOccurrence();
+    void dissociateOccurrences();
     void forward();
 
   signals:
@@ -69,8 +68,7 @@ class KOEventPopupMenu : public QMenu
     void copyIncidenceSignal(Incidence *);
     void pasteIncidenceSignal();
     void toggleAlarmSignal(Incidence *);
-    void dissociateOccurrenceSignal( Incidence *, const QDate & );
-    void dissociateFutureOccurrenceSignal( Incidence *, const QDate & );
+    void dissociateOccurrencesSignal( Incidence *, const QDate & );
 
   private:
     Calendar *mCalendar;
@@ -80,6 +78,7 @@ class KOEventPopupMenu : public QMenu
     bool mHasAdditionalItems;
     QList<QAction *> mEditOnlyItems;
     QList<QAction *> mRecurrenceItems;
+    QAction *mDissociateOccurrences;
 };
 
 #endif
