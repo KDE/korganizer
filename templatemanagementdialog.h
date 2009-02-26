@@ -3,6 +3,7 @@
 ** Filename   : templatemanagerdialog.h
 ** Created on : 05 June, 2005
 ** Copyright  : (c) 2005 Till Adam <adam@kde.org>
+** Copyright (C) 2009  Allen Winter <winter@kde.org>
 **
 ******************************************************************************/
 
@@ -39,15 +40,18 @@
 
 #include "ui_template_management_dialog_base.h"
 
-#include <kdialog.h>
+#include <KDialog>
 
 #include <QString>
+
+class QListWidgetItem;
 
 class TemplateManagementDialog: public KDialog
 {
   Q_OBJECT
   public:
-    TemplateManagementDialog( QWidget *parent, const QStringList &templates );
+    TemplateManagementDialog( QWidget *parent, const QStringList &templates,
+                              const QString &incidenceType );
 
   signals:
     /* Emitted whenever the user hits apply, indicating that the currently
@@ -68,15 +72,17 @@ class TemplateManagementDialog: public KDialog
     void templatesChanged( const QStringList &templates );
 
   protected slots:
+    void slotItemSelected();
     void slotAddTemplate();
-    void slotDeleteTemplate();
+    void slotRemoveTemplate();
     void slotApplyTemplate();
-    void slotUpdateDeleteButton( Q3ListBoxItem *item );
     void slotOk();
 
   private:
+    void updateButtons();
     Ui::TemplateManagementDialog_base m_base;
     QStringList m_templates;
+    QString m_type;
     QString m_newTemplate;
     bool m_changed;
 };

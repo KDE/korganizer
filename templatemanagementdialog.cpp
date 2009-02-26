@@ -3,6 +3,8 @@
 ** Filename   : templatemanagementdialog.cpp
 ** Created on : 05 June, 2005
 ** Copyright  : (c) 2005 Till Adam <adam@kde.org>
+** Copyright (C) 2009  Allen Winter <winter@kde.org>
+**
 **
 ******************************************************************************/
 
@@ -34,45 +36,53 @@
 **   your version.
 **
 ******************************************************************************/
+
 #include "templatemanagementdialog.h"
 
-#include <kpushbutton.h>
-#include <kinputdialog.h>
-#include <klocale.h>
-#include <kmessagebox.h>
+#include <KInputDialog>
+#include <KLocale>
+#include <KMessageBox>
 
 #include <QStringList>
 #include <QTimer>
 
-TemplateManagementDialog::TemplateManagementDialog( QWidget *parent, const QStringList &templates )
-  :KDialog( parent ),
-   m_templates( templates ), m_newTemplate( QString() ), m_changed( false )
+TemplateManagementDialog::TemplateManagementDialog(
+  QWidget *parent, const QStringList &templates, const QString &type )
+  : KDialog( parent ), m_templates( templates ), m_type( type ), m_changed( false )
 {
-  setCaption( i18n( "Manage Templates" ) );
-  setButtons( Ok | Cancel );
+  setCaption( i18n( "Manage %1 Templates", m_type ) );
+  setButtons( Ok | Cancel | Help );
   setObjectName( "template_management_dialog" );
+  setHelp( "entering-data-events-template-buttons", "korganizer" );
   QWidget *widget = new QWidget( this );
   widget->setObjectName( "template_management_dialog_base" );
   m_base.setupUi( widget );
   setMainWidget( widget );
+
+  m_base.m_listBox->addItems( m_templates );
+  m_base.m_listBox->setSelectionMode( QAbstractItemView::SingleSelection );
+
   connect( m_base.m_buttonAdd, SIGNAL(clicked()),
            SLOT(slotAddTemplate()) );
-  connect( m_base.m_buttonDelete, SIGNAL(clicked()),
-           SLOT(slotDeleteTemplate()) );
-
-  m_base.m_listBox->insertStringList( m_templates );
-  connect( m_base.m_listBox, SIGNAL(selectionChanged(Q3ListBoxItem *)),
-           SLOT(slotUpdateDeleteButton(Q3ListBoxItem *)) );
-  connect( m_base.m_listBox, SIGNAL(doubleClicked(Q3ListBoxItem *)),
-           SLOT(slotApplyTemplate()) );
+  connect( m_base.m_buttonRemove, SIGNAL(clicked()),
+           SLOT(slotRemoveTemplate()) );
   connect( m_base.m_buttonApply, SIGNAL(clicked()),
+           SLOT(slotApplyTemplate()) );
+
+  connect( m_base.m_listBox, SIGNAL(itemSelectionChanged()),
+           SLOT(slotItemSelected()) );
+  connect( m_base.m_listBox, SIGNAL(itemDoubleClicked(QListWidgetItem *)),
            SLOT(slotApplyTemplate()) );
   connect( this, SIGNAL(okClicked()), SLOT(slotOk()) );
 
-  if ( m_templates.isEmpty() ) {
-    m_base.m_buttonApply->setEnabled( false );
-  }
+  m_base.m_buttonRemove->setEnabled( false );
+  m_base.m_buttonApply->setEnabled( false );
+}
 
+void TemplateManagementDialog::slotItemSelected()
+{
+  m_base.m_buttonRemove->setEnabled( true );
+  m_base.m_buttonApply->setEnabled( true );
 }
 
 void TemplateManagementDialog::slotAddTemplate()
@@ -82,7 +92,7 @@ void TemplateManagementDialog::slotAddTemplate()
   const QString newTemplate = KInputDialog::getText(
     i18n( "Template Name" ),
     i18n( "Please enter a name for the new template:" ),
-    i18n( "New Template" ), &ok );
+    i18n( "New %1 Template", m_type ), &ok );
   if ( newTemplate.isEmpty() || !ok ) {
     return;
   }
@@ -100,41 +110,56 @@ void TemplateManagementDialog::slotAddTemplate()
   }
 
   if ( !duplicate ) {
+    int count = m_base.m_listBox->count();
     m_templates.append( newTemplate );
-    m_base.m_listBox->clear();
-    m_base.m_listBox->insertStringList( m_templates );
+    m_base.m_listBox->addItem( newTemplate );
+    QListWidgetItem *item = m_base.m_listBox->item( count );
+    m_base.m_listBox->setItemSelected( item, true );
   }
   m_newTemplate = newTemplate;
   m_changed = true;
 
   // From this point on we need to keep the original event around until the
   // user has closed the dialog, applying a template would make little sense
-  m_base.m_buttonApply->setEnabled( false );
+  enableButtonApply( false );
   // neither does adding it again
   m_base.m_buttonAdd->setEnabled( false );
 }
 
-void TemplateManagementDialog::slotDeleteTemplate()
+void TemplateManagementDialog::slotRemoveTemplate()
 {
-  Q3ListBoxItem *const item = m_base.m_listBox->selectedItem();
+  QListWidgetItem *const item = m_base.m_listBox->selectedItems().first();
   if ( !item ) {
     return; // can't happen (TM)
   }
-  int current = m_base.m_listBox->index(item);
-  m_templates.removeAll( item->text() );
-  m_base.m_listBox->removeItem( m_base.m_listBox->currentItem() );
-  m_changed = true;
-  m_base.m_listBox->setSelected( qMax( current - 1, 0 ), true );
 
-  if ( m_templates.isEmpty() ) {
-    m_base.m_buttonApply->setEnabled( false );
-    m_base.m_buttonDelete->setEnabled( false );
+  int rc = KMessageBox::warningContinueCancel(
+    this,
+    i18n( "Are you sure that you want to remove the template <b>%1</b>?", item->text() ),
+    i18n( "Remove Template" ), KGuiItem( i18n( "Remove" ) ) );
+
+  if ( rc == KMessageBox::Cancel ) {
+    return;
   }
+
+  int current = m_base.m_listBox->row( item );
+
+  m_templates.removeAll( item->text() );
+  m_base.m_listBox->takeItem( current );
+
+  m_base.m_listBox->setItemSelected(
+    m_base.m_listBox->item( qMax( current - 1, 0 ) ), true );
+
+  updateButtons();
+
+  m_changed = true;
 }
 
-void TemplateManagementDialog::slotUpdateDeleteButton( Q3ListBoxItem *item )
+void TemplateManagementDialog::updateButtons()
 {
-  m_base.m_buttonDelete->setEnabled( item != 0 );
+  m_base.m_buttonAdd->setEnabled( true );
+  m_base.m_buttonRemove->setEnabled( m_base.m_listBox->count() != 0 );
+  m_base.m_buttonApply->setEnabled( m_base.m_listBox->count() != 0 );
 }
 
 void TemplateManagementDialog::slotApplyTemplate()
@@ -142,7 +167,7 @@ void TemplateManagementDialog::slotApplyTemplate()
   // Once the user has applied the current template to the event,
   // it makes no sense to add it again
   m_base.m_buttonAdd->setEnabled( false );
-  const QString &cur = m_base.m_listBox->currentText();
+  const QString &cur = m_base.m_listBox->currentItem()->text();
   if ( !cur.isEmpty() && cur != m_newTemplate ) {
     emit loadTemplate( cur );
   }
