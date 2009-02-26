@@ -1,57 +1,71 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>PublishDialog_base</class>
- <widget class="QWidget" name="PublishDialog_base" >
-  <property name="geometry" >
+ <widget class="QWidget" name="PublishDialog_base">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>568</width>
-    <height>406</height>
+    <width>403</width>
+    <height>326</height>
    </rect>
   </property>
-  <layout class="QGridLayout" name="gridLayout" >
-   <item row="0" column="0" >
-    <widget class="QListWidget" name="mListWidget" />
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QListWidget" name="mListWidget">
+     <property name="minimumSize">
+      <size>
+       <width>300</width>
+       <height>250</height>
+      </size>
+     </property>
+     <property name="toolTip">
+      <string>The list of addressees to receive the invitation</string>
+     </property>
+     <property name="whatsThis">
+      <string>This is a list of all the addresses you have currently selected to receive the iCalendar invitation.</string>
+     </property>
+    </widget>
    </item>
-   <item rowspan="3" row="0" column="1" >
-    <layout class="QVBoxLayout" name="verticalLayout_2" >
+   <item row="0" column="1" rowspan="3">
+    <layout class="QVBoxLayout" name="verticalLayout_2">
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout" >
+      <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <widget class="QPushButton" name="mNew" >
-         <property name="toolTip" >
+        <widget class="QPushButton" name="mNew">
+         <property name="toolTip">
           <string>Create a new recipient</string>
          </property>
-         <property name="whatsThis" >
+         <property name="whatsThis">
           <string>Click this button and you will be able to enter a name and email for a new addressee to add to the recipients list</string>
          </property>
-         <property name="text" >
+         <property name="text">
           <string>&amp;New</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="mRemove" >
-         <property name="toolTip" >
+        <widget class="QPushButton" name="mRemove">
+         <property name="toolTip">
           <string>Remove the recipient currently selected</string>
          </property>
-         <property name="whatsThis" >
+         <property name="whatsThis">
           <string>Click this button to remove the recipient currently selected from the list</string>
          </property>
-         <property name="text" >
+         <property name="text">
           <string>&amp;Remove</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="mSelectAddressee" >
-         <property name="toolTip" >
+        <widget class="QPushButton" name="mSelectAddressee">
+         <property name="toolTip">
           <string>Select a recipient from your address book</string>
          </property>
-         <property name="whatsThis" >
+         <property name="whatsThis">
           <string>Click this button to show another dialog where you will be able to select a recipient from your address book</string>
          </property>
-         <property name="text" >
+         <property name="text">
           <string>&amp;Select...</string>
          </property>
         </widget>
@@ -60,13 +74,13 @@
      </item>
      <item>
       <spacer>
-       <property name="orientation" >
+       <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
-       <property name="sizeType" >
+       <property name="sizeType">
         <enum>QSizePolicy::Expanding</enum>
        </property>
-       <property name="sizeHint" stdset="0" >
+       <property name="sizeHint" stdset="0">
         <size>
          <width>14</width>
          <height>258</height>
@@ -76,45 +90,45 @@
      </item>
     </layout>
    </item>
-   <item row="1" column="0" >
-    <layout class="QHBoxLayout" name="horizontalLayout" >
+   <item row="1" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QLabel" name="TextLabel1" >
-       <property name="text" >
-        <string comment="recipient name" >Name:</string>
+      <widget class="QLabel" name="TextLabel1">
+       <property name="text">
+        <string comment="recipient name">Name:</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="KLineEdit" name="mNameLineEdit" >
-       <property name="toolTip" >
+      <widget class="KLineEdit" name="mNameLineEdit">
+       <property name="toolTip">
         <string>The recipient's name</string>
        </property>
-       <property name="whatsThis" >
+       <property name="whatsThis">
         <string>This field contains the name of the recipient</string>
        </property>
       </widget>
      </item>
     </layout>
    </item>
-   <item row="2" column="0" >
-    <layout class="QHBoxLayout" name="horizontalLayout_2" >
+   <item row="2" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
-      <widget class="QLabel" name="TextLabel2" >
-       <property name="text" >
-        <string comment="recipient email" >Email:</string>
+      <widget class="QLabel" name="TextLabel2">
+       <property name="text">
+        <string comment="recipient email">Email:</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="KLineEdit" name="mEmailLineEdit" >
-       <property name="toolTip" >
+      <widget class="KLineEdit" name="mEmailLineEdit">
+       <property name="toolTip">
         <string>The recipient's email address</string>
        </property>
-       <property name="whatsThis" >
+       <property name="whatsThis">
         <string>This field contains the email address of the recipient</string>
        </property>
-       <property name="text" >
+       <property name="text">
         <string/>
        </property>
       </widget>
@@ -123,7 +137,7 @@
    </item>
   </layout>
  </widget>
- <layoutdefault spacing="6" margin="11" />
+ <layoutdefault spacing="6" margin="11"/>
  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
  <customwidgets>
   <customwidget>
