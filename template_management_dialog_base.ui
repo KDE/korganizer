@@ -66,7 +66,7 @@ p, li { white-space: pre-wrap; }
           <string>Create a new template from the current settings</string>
          </property>
          <property name="whatsThis">
-          <string>Clicking this button to create a new template. The current settings in the editor will be created a template which you can use to quickly add new items in the future.</string>
+          <string>Click on this button to create a new template based on the current settings in the editor. You can use this template to quickly add new items in the future.</string>
          </property>
          <property name="text">
           <string>&amp;New...</string>
