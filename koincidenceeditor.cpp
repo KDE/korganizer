@@ -167,8 +167,7 @@ void KOIncidenceEditor::cancelRemovedAttendees( Incidence *incidence )
 
 void KOIncidenceEditor::slotManageTemplates()
 {
-  QString tp = type();
-  TemplateManagementDialog * const d = new TemplateManagementDialog( this, templates() );
+  TemplateManagementDialog *const d = new TemplateManagementDialog( this, templates(), type() );
   connect( d, SIGNAL( loadTemplate( const QString& ) ),
            this, SLOT( slotLoadTemplate( const QString& ) ) );
   connect( d, SIGNAL( templatesChanged( const QStringList& ) ),
