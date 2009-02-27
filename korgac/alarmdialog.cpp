@@ -316,12 +316,10 @@ void AlarmDialog::dismissAll()
 {
   QTreeWidgetItemIterator it( mIncidenceTree );
   while ( *it ) {
-    if ( (*it)->isDisabled() ) { //do not disable suspended reminders
-      continue;
+    if ( !(*it)->isDisabled() ) { //do not disable suspended reminders
+      delete *it;
     }
-    QTreeWidgetItem *item = *it;
     ++it;
-    delete item;
   }
   setTimer();
   accept();
