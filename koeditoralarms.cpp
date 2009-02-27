@@ -199,6 +199,7 @@ KOEditorAlarms::KOEditorAlarms( KCal::Alarm::List *alarms, QWidget *parent )
   connect( this, SIGNAL(okClicked()), SLOT(slotOk()) );
   connect( this, SIGNAL(applyClicked()), SLOT(slotApply()) );
   init();
+  mWidget.mTypeEmailRadio->hide();
 }
 
 KOEditorAlarms::~KOEditorAlarms()
