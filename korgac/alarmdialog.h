@@ -28,16 +28,21 @@
 
 #include <kdialog.h>
 
-#include <QTimer>
 #include <QDateTime>
+#include <QPoint>
+#include <QTimer>
 
 using namespace KCal;
 
 class ReminderListItem;
 class KOEventViewer;
+
 class KComboBox;
+
 class QTreeWidget;
+class QTreeWidgetItem;
 class QSpinBox;
+class QVBoxLayout;
 
 class AlarmDialog : public KDialog
 {
@@ -46,7 +51,8 @@ class AlarmDialog : public KDialog
     AlarmDialog( QWidget *parent = 0 );
     virtual ~AlarmDialog();
 
-    void addIncidence( Incidence *incidence, const QDateTime &reminderAt );
+    void addIncidence( Incidence *incidence, const QDateTime &reminderAt,
+                       const QString &displayText );
     void setRemindAt( const QDateTime &dt );
     void eventNotification();
 
@@ -69,6 +75,7 @@ class AlarmDialog : public KDialog
 
   private Q_SLOTS:
     void update();
+    void toggleDetails( QTreeWidgetItem *item, int column );
 
   private:
     bool startKOrganizer();
@@ -78,9 +85,11 @@ class AlarmDialog : public KDialog
     void updateButtons();
     void showDetails();
 
+    QVBoxLayout *mTopLayout;
     QTreeWidget *mIncidenceTree;
     KOEventViewer *mDetailView;
 
+    QPoint mPos;
     QSpinBox *mSuspendSpin;
     KComboBox *mSuspendUnit;
     QTimer mSuspendTimer;

@@ -27,8 +27,9 @@
 #include "koeventviewer.h"
 #include <korganizer_interface.h>
 
-#include <kcal/event.h>
-#include <kcal/todo.h>
+#include <KCal/Event>
+#include <KCal/Todo>
+#include <KCal/IncidenceFormatter>
 
 #include <kconfig.h>
 #include <kiconloader.h>
@@ -47,12 +48,12 @@
 
 #include <QLabel>
 #include <QFile>
+#include <QFrame>
 #include <QSpinBox>
 #include <QLayout>
 #include <QPushButton>
 #include <QDataStream>
 #include <QVBoxLayout>
-#include <QBoxLayout>
 #include <QTreeWidget>
 #include <QtDBus/QtDBus>
 #include <QProcess>
@@ -74,6 +75,7 @@ class ReminderListItem : public QTreeWidgetItem
       delete mIncidence;
     }
 
+    QString mDisplayText;
     Incidence *mIncidence;
     QDateTime mRemindAt;
     bool mNotified;
@@ -86,7 +88,15 @@ AlarmDialog::AlarmDialog( QWidget *parent )
 {
   KIconLoader::global()->addAppDir( "korgac" );
 
+  KSharedConfig::Ptr config = KGlobal::config();
+  KConfigGroup generalConfig( config, "General" );
+  QPoint pos = generalConfig.readEntry( "Position", QPoint( 0, 0 ) );
+
   QWidget *topBox = new QWidget( this );
+  if ( !pos.isNull() ) {
+    mPos = pos;
+    topBox->move( mPos );
+  }
   setMainWidget( topBox );
   setCaption( i18nc( "@title:window", "Reminders" ) );
   setWindowIcon( KIcon( "korgac" ) );
@@ -105,29 +115,40 @@ AlarmDialog::AlarmDialog( QWidget *parent )
   setButtonToolTip( User3, i18nc( "@info:tooltip",
                                   "Suspend the reminders for the selected incidences "
                                   "by the specified interval" ) );
-  QBoxLayout *topLayout = new QVBoxLayout( topBox );
-  topLayout->setSpacing( spacingHint() );
 
-  QLabel *label =
-    new QLabel( i18nc( "@label",
-                       "The following events or to-dos triggered reminders:" ), topBox );
-  topLayout->addWidget( label );
+  // Try to keep the dialog small and non-obtrusive.
+  setMinimumWidth( 575 );
+  setMinimumHeight( 300 );
+
+  QVBoxLayout *mTopLayout = new QVBoxLayout( topBox );
+
+  QLabel *label = new QLabel(
+    i18nc( "@label",
+           "<emphasis>Reminders</emphasis> "
+           "Click on a title to toggle the details viewer for that item" ),
+    topBox );
+  mTopLayout->addWidget( label );
 
   mIncidenceTree = new QTreeWidget( topBox );
   mIncidenceTree->setColumnCount( 3 );
   mIncidenceTree->setSortingEnabled( false );
   QStringList headerLabels =
-    ( QStringList( i18nc( "@title:column reminder summary", "Summary" ) )
-      << i18nc( "@title:column reminder date/time", "Reminder Date/Time" )
-      << i18nc( "@title:column trigger date/time", "Trigger Date/Time" ) );
+    ( QStringList( i18nc( "@title:column reminder title", "Title" ) )
+      << i18nc( "@title:column reminder date/time", "Reminder" )
+      << i18nc( "@title:column trigger date/time", "Trigger" ) );
   mIncidenceTree->setHeaderLabels( headerLabels );
+  mIncidenceTree->setWordWrap( true );
   mIncidenceTree->setAllColumnsShowFocus( true );
   mIncidenceTree->setSelectionMode( QAbstractItemView::ExtendedSelection );
-  topLayout->addWidget( mIncidenceTree );
+
+  mTopLayout->addWidget( mIncidenceTree );
+
   connect( mIncidenceTree, SIGNAL(currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)),
            SLOT(update()) );
   connect( mIncidenceTree, SIGNAL(itemActivated(QTreeWidgetItem*,int)),
            SLOT(update()) );
+  connect( mIncidenceTree, SIGNAL(itemClicked(QTreeWidgetItem*,int)),
+           SLOT(toggleDetails(QTreeWidgetItem*,int)) );
   connect( mIncidenceTree, SIGNAL(itemClicked(QTreeWidgetItem*,int)),
            SLOT(update()) );
   connect( mIncidenceTree, SIGNAL(itemDoubleClicked(QTreeWidgetItem*,int)),
@@ -142,11 +163,12 @@ AlarmDialog::AlarmDialog( QWidget *parent )
              "to view its details here.</emphasis>" );
   mDetailView->setDefaultText( s );
   mDetailView->setIncidence( 0 );
-  topLayout->addWidget( mDetailView );
+  mTopLayout->addWidget( mDetailView );
+  mDetailView->hide();
 
   KHBox *suspendBox = new KHBox( topBox );
   suspendBox->setSpacing( spacingHint() );
-  topLayout->addWidget( suspendBox );
+  mTopLayout->addWidget( suspendBox );
 
   QLabel *l = new QLabel( i18nc( "@label:spinbox", "Suspend &duration:" ), suspendBox );
   QString tip( i18nc( "@info:tooltip",
@@ -167,8 +189,6 @@ AlarmDialog::AlarmDialog( QWidget *parent )
   mSuspendUnit->addItem( i18nc( "@item:inlistbox suspend in terms of weeks", "week(s)" ) );
   connect( &mSuspendTimer, SIGNAL(timeout()), SLOT(wakeUp()) );
 
-  setMinimumSize( 300, 200 );
-
   connect( this, SIGNAL(okClicked()), this, SLOT(slotOk()) );
   connect( this, SIGNAL(user1Clicked()), this, SLOT(slotUser1()) );
   connect( this, SIGNAL(user2Clicked()), this, SLOT(slotUser2()) );
@@ -180,12 +200,17 @@ AlarmDialog::~AlarmDialog()
   mIncidenceTree->clear();
 }
 
-void AlarmDialog::addIncidence( Incidence *incidence, const QDateTime &reminderAt )
+void AlarmDialog::addIncidence( Incidence *incidence,
+                                const QDateTime &reminderAt,
+                                const QString &displayText )
 {
   ReminderListItem *item = new ReminderListItem( incidence, mIncidenceTree );
   kDebug() << "adding incidence " << incidence->summary();
-  item->setText( 0, incidence->summary() );
+  QString summStr = incidence->summary();
+  summStr.truncate( 30 );
+  item->setText( 0, summStr );
   item->mRemindAt = reminderAt;
+  item->mDisplayText = displayText;
   QString triggerStr = KGlobal::locale()->formatDateTime(
     KDateTime::currentDateTime( KDateTime::Spec::LocalZone() ) );
   Todo *todo;
@@ -206,6 +231,14 @@ void AlarmDialog::addIncidence( Incidence *incidence, const QDateTime &reminderA
     item->setText( 1, todo->dtDueStr() );
   }
   item->setText( 2, triggerStr );
+
+  QString tip = IncidenceFormatter::toolTipStr( incidence, true,
+                                                KDateTime::Spec::LocalZone() );
+  if ( !item->mDisplayText.isEmpty() ) {
+    tip += "<br>" + item->mDisplayText;
+  }
+  item->setToolTip( 0, tip );
+  item->setData( 0, QTreeWidgetItem::UserType, false );
 
   mIncidenceTree->setCurrentItem( item );
   showDetails();
@@ -306,7 +339,14 @@ void AlarmDialog::slotUser3() // Suspend selected
 void AlarmDialog::show()
 {
   mIncidenceTree->setCurrentItem( mIncidenceTree->topLevelItem( 0 ) );
+  mIncidenceTree->resizeColumnToContents( 0 );
+  mIncidenceTree->resizeColumnToContents( 1 );
+  mIncidenceTree->resizeColumnToContents( 2 );
+
   KDialog::show();
+  if ( !mPos.isNull() ) {
+    KDialog::move( mPos );
+  }
   KWindowSystem::setState( winId(), NET::KeepAbove );
   KWindowSystem::setOnAllDesktops( winId(), true );
   eventNotification();
@@ -473,6 +513,8 @@ void AlarmDialog::slotSave()
   }
 
   generalConfig.writeEntry( "Reminders", numReminders );
+  kDebug() << "writing positing" << pos();
+  generalConfig.writeEntry( "Position", pos() );
   config->sync();
 }
 
@@ -513,16 +555,30 @@ void AlarmDialog::updateButtons()
   enableButton( User3, count > 0 );  // enable Suspend, if >1 selected
 }
 
+void AlarmDialog::toggleDetails( QTreeWidgetItem *item, int column )
+{
+  if ( item->data( column, QTreeWidgetItem::UserType ).toBool() ) {
+    mDetailView->hide();
+    item->setData( column, QTreeWidgetItem::UserType, false );
+  } else {
+    mDetailView->show();
+    item->setData( column, QTreeWidgetItem::UserType, true );
+  }
+}
+
 void AlarmDialog::showDetails()
 {
-
   mDetailView->clearEvents( true );
   mDetailView->clear();
   ReminderListItem *item = dynamic_cast<ReminderListItem *>( mIncidenceTree->currentItem() );
   if ( !item ) {
     mDetailView->setIncidence( 0 );
   } else {
-    mDetailView->setIncidence( item->mIncidence );
+    if ( !item->mDisplayText.isEmpty() ) {
+      QString txt = "<qt><p><b>" + item->mDisplayText + "</b></p></qt>";
+      mDetailView->addText( txt );
+    }
+    mDetailView->appendIncidence( item->mIncidence );
   }
 }
 
@@ -535,6 +591,7 @@ void AlarmDialog::update()
 void AlarmDialog::accept()
 {
   if ( activeCount() == 0 ) {
+    mPos = pos();
     hide();
   }
 }
