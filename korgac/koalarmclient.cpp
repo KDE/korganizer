@@ -26,27 +26,21 @@
 //krazy:excludeall=kdebug because we use the korgac(check) debug area in here
 
 #include "koalarmclient.h"
-#include "korgacadaptor.h"
-#include "alarmdockwindow.h"
 #include "alarmdialog.h"
+#include "alarmdockwindow.h"
+#include "korgacadaptor.h"
 
-#include <kcal/calendarresources.h>
+#include <KCal/CalendarResources>
+using namespace KCal;
 
-#include <kstandarddirs.h>
-#include <kdebug.h>
-#include <klocale.h>
-#include <kdatetime.h>
-#include <kapplication.h>
-#include <kwindowsystem.h>
-#include <kconfiggroup.h>
-#include <kglobal.h>
-
-#include <QPushButton>
-#include <QtDBus/QtDBus>
+#include <KApplication>
+#include <KConfig>
+#include <KConfigGroup>
+#include <KDebug>
+#include <KStandardDirs>
 
 KOAlarmClient::KOAlarmClient( QObject *parent )
-  : QObject( parent ),
-    mDialog( 0 )
+  : QObject( parent ), mDialog( 0 )
 {
   new KOrgacAdaptor( this );
   QDBusConnection::sessionBus().registerObject( "/ac", this );

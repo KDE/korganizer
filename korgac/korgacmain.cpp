@@ -24,13 +24,9 @@
 
 #include "koalarmclient.h"
 
-#include <kdebug.h>
-#include <klocale.h>
-#include <kcmdlineargs.h>
-#include <kaboutdata.h>
-#include <kuniqueapplication.h>
-
-#include <stdlib.h>
+#include <KAboutData>
+#include <KCmdLineArgs>
+#include <KUniqueApplication>
 
 class ReminderDaemonApp : public KUniqueApplication
 {

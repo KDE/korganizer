@@ -25,41 +25,28 @@
 
 #include "alarmdialog.h"
 #include "koeventviewer.h"
-#include <korganizer_interface.h>
+#include "korganizer_interface.h"
 
 #include <KCal/Event>
-#include <KCal/Todo>
+#include <KCal/Incidence>
 #include <KCal/IncidenceFormatter>
+#include <KCal/Todo>
 
-#include <kconfig.h>
-#include <kiconloader.h>
-#include <klocale.h>
-#include <kdebug.h>
-#include <kmessagebox.h>
-#include <knotification.h>
-#include <kcombobox.h>
-#include <kwindowsystem.h>
-#include <klockfile.h>
-#include <kpushbutton.h>
-#include <ktoolinvocation.h>
-#include <kglobal.h>
-#include <kdatetime.h>
-#include <kvbox.h>
+#include <KComboBox>
+#include <KDebug>
+#include <KHBox>
+#include <KLocale>
+#include <KMessageBox>
+#include <KNotification>
+#include <KSharedConfig>
+#include <KToolInvocation>
+#include <KWindowSystem>
 
 #include <QLabel>
-#include <QFile>
-#include <QFrame>
 #include <QSpinBox>
-#include <QLayout>
-#include <QPushButton>
-#include <QDataStream>
-#include <QVBoxLayout>
 #include <QTreeWidget>
-#include <QtDBus/QtDBus>
-#include <QProcess>
+#include <QVBoxLayout>
 #include <Phonon/MediaObject>
-
-#include "alarmdialog.moc"
 
 class ReminderListItem : public QTreeWidgetItem
 {
@@ -595,3 +582,5 @@ void AlarmDialog::accept()
     hide();
   }
 }
+
+#include "alarmdialog.moc"

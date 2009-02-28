@@ -26,8 +26,7 @@
 #ifndef KOALARMCLIENT_H
 #define KOALARMCLIENT_H
 
-#include <kapplication.h>
-#include <ksessionmanager.h>
+#include <KSessionManager>
 
 #include <QTimer>
 #include <QDateTime>
