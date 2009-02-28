@@ -111,7 +111,7 @@ AlarmDialog::AlarmDialog( QWidget *parent )
 
   QLabel *label = new QLabel(
     i18nc( "@label",
-           "<emphasis>Reminders</emphasis> "
+           "Reminders: "
            "Click on a title to toggle the details viewer for that item" ),
     topBox );
   mTopLayout->addWidget( label );
