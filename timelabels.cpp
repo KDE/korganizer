@@ -138,6 +138,8 @@ void TimeLabels::drawContents( QPainter *p, int cx, int cy, int cw, int ch )
   QFont hourFont = KOPrefs::instance()->agendaTimeLabelsFont();
   p->setFont( font() );
 
+  //TODO: rewrite this using KLocale's time formats. "am/pm" doesn't make sense
+  // in some locale's
   QString suffix;
   if ( ! KGlobal::locale()->use12Clock() ) {
       suffix = "00";
