@@ -184,7 +184,8 @@ void AlarmDockWindow::slotQuit()
   if ( mAutostartSet == true ) {
     int result = KMessageBox::questionYesNo(
       parentWidget(),
-      i18nc( "@info", "Do you want to quit the KOrganizer reminder daemon? "
+      i18nc( "@info",
+             "Do you want to quit the KOrganizer reminder daemon?<nl/>"
              "<note> you will not get calendar reminders unless the daemon is running.</note>" ),
       i18nc( "@title:window", "Close KOrganizer Reminder Daemon" ) );
 
@@ -194,7 +195,8 @@ void AlarmDockWindow::slotQuit()
   } else {
     int result = KMessageBox::questionYesNoCancel(
       parentWidget(),
-      i18nc( "@info", "Do you want to start the KOrganizer reminder daemon at login? "
+      i18nc( "@info",
+             "Do you want to start the KOrganizer reminder daemon at login?<nl/>"
              "<note> you will not get calendar reminders unless the daemon is running.</note>" ),
       i18nc( "@title:window", "Close KOrganizer Reminder Daemon" ),
       KGuiItem( i18nc( "@action:button start the reminder daemon", "Start" ) ),
