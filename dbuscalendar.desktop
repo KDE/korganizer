@@ -17,6 +17,7 @@ Name[zh_TW]=DBUS行事曆
 Type=ServiceType
 X-KDE-ServiceType=DBUS/Organizer
 Comment=Organizer with a D-Bus interface
+Comment[el]=Οργανωτής με διασύνδεση D-Bus
 Comment[en_GB]=Organiser with a D-Bus interface
 Comment[et]=Korraldaja D-Busi liidesega
 Comment[ga]=Eagraí a bhfuil comhéadan D-Bus aige
