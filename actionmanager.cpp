@@ -2007,9 +2007,11 @@ bool ActionManager::saveResourceCalendar()
       int result = KMessageBox::warningContinueCancel(
         view(),
         i18n( "Saving of '%1' failed. Check that the resource is "
-              "properly configured.\nIgnore problem and continue without "
-              "saving or cancel save?", (*it)->resourceName() ),
-        i18n( "Save Error" ), KStandardGuiItem::dontSave() );
+              "properly configured.\nIgnore problem and save remaining "
+              "resources or cancel save?", (*it)->resourceName() ),
+        i18n( "Save Error" ),
+        KGuiItem( i18n( "Continue Save" ) ),
+        KGuiItem( i18n( "Cancel Save" ) ) );
       if ( result == KMessageBox::Cancel ) {
         return false;
       }
