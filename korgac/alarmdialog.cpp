@@ -413,8 +413,17 @@ void AlarmDialog::eventNotification()
       // FIXME: Check whether this should be done for all multiple alarms
       if ( alarm->type() == Alarm::Procedure ) {
         // FIXME: Add a message box asking whether the procedure should really be executed
-      kDebug() << "Starting program: '" << alarm->programFile() << "'";
-      QProcess::startDetached( alarm->programFile() );
+        kDebug() << "Starting program: '" << alarm->programFile() << "'";
+
+        QString program = alarm->programFile();
+
+        // if the program name contains spaces escape it
+        if ( program.contains( " " )   &&
+             !( program.startsWith( "\"" ) && program.endsWith( "\"" ) ) ) {
+          program = "\"" + program + "\"";
+        }
+
+        QProcess::startDetached( program + " " + alarm->programArguments() );
       } else if ( alarm->type() == Alarm::Audio ) {
         beeped = true;
         Phonon::MediaObject *player =
