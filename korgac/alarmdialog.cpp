@@ -158,15 +158,19 @@ AlarmDialog::AlarmDialog( QWidget *parent )
   mTopLayout->addWidget( suspendBox );
 
   QLabel *l = new QLabel( i18nc( "@label:spinbox", "Suspend &duration:" ), suspendBox );
-  QString tip( i18nc( "@info:tooltip",
-                      "Suspend the reminders for the selected incidences "
-                      "by this amount of time" ) );
-  l->setToolTip( tip );
 
   mSuspendSpin = new QSpinBox( suspendBox );
   mSuspendSpin->setRange( 1, 9999 );
   mSuspendSpin->setValue( 5 );  // default suspend duration
-  mSuspendSpin->setToolTip( tip );
+  mSuspendSpin->setToolTip(
+    i18nc( "@info:tooltip",
+           "Suspend the reminders by this amount of time" ) );
+  mSuspendSpin->setWhatsThis(
+    i18nc( "@info:whatsthis",
+           "Each reminder for the selected incidences will be suspended "
+           "by this number of time units. You can choose the time units "
+           "(typically minutes) in the adjacent selector." ) );
+
   l->setBuddy( mSuspendSpin );
 
   mSuspendUnit = new KComboBox( suspendBox );
@@ -174,6 +178,15 @@ AlarmDialog::AlarmDialog( QWidget *parent )
   mSuspendUnit->addItem( i18nc( "@item:inlistbox suspend in terms of hours", "hour(s)" ) );
   mSuspendUnit->addItem( i18nc( "@item:inlistbox suspend in terms of days", "day(s)" ) );
   mSuspendUnit->addItem( i18nc( "@item:inlistbox suspend in terms of weeks", "week(s)" ) );
+  mSuspendUnit->setToolTip(
+    i18nc( "@info:tooltip",
+           "Suspend the reminders using this time unit" ) );
+  mSuspendUnit->setWhatsThis(
+    i18nc( "@info:whatsthis",
+           "Each reminder for the selected incidences will be suspended "
+           "using this time unit. You can set the number of time units "
+           "in the adjacent number entry input." ) );
+
   connect( &mSuspendTimer, SIGNAL(timeout()), SLOT(wakeUp()) );
 
   connect( this, SIGNAL(okClicked()), this, SLOT(slotOk()) );
