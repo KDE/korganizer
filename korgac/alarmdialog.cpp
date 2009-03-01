@@ -545,9 +545,11 @@ void AlarmDialog::updateButtons()
 void AlarmDialog::toggleDetails( QTreeWidgetItem *item, int column )
 {
   if ( item->data( column, QTreeWidgetItem::UserType ).toBool() ) {
+    resize( size().width(), size().height() - mDetailView->height() - 50 );
     mDetailView->hide();
     item->setData( column, QTreeWidgetItem::UserType, false );
   } else {
+    resize( size().width(), size().height() + mDetailView->height() + 50 );
     mDetailView->show();
     item->setData( column, QTreeWidgetItem::UserType, true );
   }
