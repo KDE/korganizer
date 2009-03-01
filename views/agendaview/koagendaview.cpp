@@ -1244,8 +1244,15 @@ void KOAgendaView::insertIncidence( Incidence *incidence, const QDate &curDate )
     }
     if ( todo ) {
       QTime t = todo->dtDue().toTimeSpec( KOPrefs::instance()->timeSpec() ).time();
-      endY = mAgenda->timeToY( t ) - 1;
-      startY = mAgenda->timeToY( t.addSecs( -1800 ) );
+
+      int halfHour = 1800;
+      if ( t.addSecs( -halfHour ) < t ) {
+        startY = mAgenda->timeToY( t.addSecs( -halfHour ) );
+        endY   = mAgenda->timeToY( t ) - 1;
+      } else {
+        startY = 0;
+        endY   = mAgenda->timeToY( t.addSecs( halfHour ) ) - 1;
+      }
     }
     if ( endY < startY ) {
       endY = startY;
