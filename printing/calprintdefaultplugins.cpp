@@ -94,7 +94,6 @@ void CalPrintIncidence::loadConfig()
 {
   if ( mConfig ) {
     KConfigGroup grp( mConfig, description() );
-    mUseColors = grp.readEntry( "Use Colors", false );
     mShowOptions = grp.readEntry( "Show Options", false );
     mShowSubitemsNotes = grp.readEntry( "Show Subitems and Notes", false );
     mShowAttendees = grp.readEntry( "Use Attendees", false );
@@ -444,17 +443,10 @@ void CalPrintIncidence::print( QPainter &p, int width, int height )
         attachmentsBox.setBottom( attendeesBox.bottom() );
       }
     }
-
-    QString description;
-    if ( (*it)->descriptionIsRich() ) {
-      description = toPlainText( (*it)->description() );
-    } else {
-      description = (*it)->description();
-    }
     int newBottom = drawBoxWithCaption( p, descriptionBox, i18n( "Description:" ),
-                                        description, /*sameLine=*/false,
-                                        /*expand=*/false, captionFont, textFont );
-
+                                        (*it)->description(), /*sameLine=*/false,
+                                        /*expand=*/false, captionFont, textFont,
+                                        (*it)->descriptionIsRich() );
     if ( mShowNoteLines ) {
       drawNoteLines( p, descriptionBox, newBottom );
     }

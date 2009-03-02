@@ -42,6 +42,9 @@
 #include <QLabel>
 #include <QtAlgorithms>
 #include <QTextDocumentFragment>
+#include <QTextDocument>
+#include <QTextCursor>
+#include <QAbstractTextDocumentLayout>
 #include <qmath.h> // qCeil
 
 #ifndef KORG_NOPRINTER
@@ -430,7 +433,8 @@ int CalPrintPluginBase::drawBoxWithCaption( QPainter &p, const QRect &allbox,
                                             const QString &contents,
                                             bool sameLine, bool expand,
                                             const QFont &captionFont,
-                                            const QFont &textFont )
+                                            const QFont &textFont,
+                                            bool richContents )
 {
   QFont oldFont( p.font() );
 //   QFont captionFont( "sans-serif", 11, QFont::Bold );
@@ -443,7 +447,9 @@ int CalPrintPluginBase::drawBoxWithCaption( QPainter &p, const QRect &allbox,
   // Bounding rectangle for caption, single-line, clip on the right
   QRect captionBox( box.left() + padding(), box.top() + padding(), 0, 0 );
   p.setFont( captionFont );
-  captionBox = p.boundingRect( captionBox, Qt::AlignLeft | Qt::AlignTop | Qt::SingleLine, caption );
+  captionBox = p.boundingRect( captionBox,
+                               Qt::AlignLeft | Qt::AlignTop | Qt::SingleLine,
+                               caption );
   p.setFont( oldFont );
   if ( captionBox.right() > box.right() ) {
     captionBox.setRight( box.right() );
@@ -452,38 +458,49 @@ int CalPrintPluginBase::drawBoxWithCaption( QPainter &p, const QRect &allbox,
     box.setBottom( captionBox.bottom() + padding() );
   }
 
-  QString contentText = contents;
-
   // Bounding rectangle for the contents (if any), word break, clip on the bottom
   QRect textBox( captionBox );
-  if ( !contentText.isEmpty() ) {
+  if ( !contents.isEmpty() ) {
     if ( sameLine ) {
       textBox.setLeft( captionBox.right() + padding() );
     } else {
       textBox.setTop( captionBox.bottom() + padding() );
     }
     textBox.setRight( box.right() );
-    textBox.setHeight( 0 );
-    p.setFont( textFont );
-    textBox = p.boundingRect( textBox,
-                              Qt::WordBreak | Qt::AlignTop | Qt::AlignLeft,
-                              contentText );
-    p.setFont( oldFont );
-    if ( textBox.bottom() + padding() > box.bottom() ) {
-      if ( expand ) {
-        box.setBottom( textBox.bottom() + padding() );
-      } else {
-        textBox.setBottom( box.bottom() );
-      }
-    }
   }
-
   drawBox( p, BOX_BORDER_WIDTH, box );
   p.setFont( captionFont );
-  p.drawText( captionBox, Qt::AlignLeft | Qt::AlignTop | Qt::SingleLine, caption );
-  if ( !contentText.isEmpty() ) {
-    p.setFont( textFont );
-    p.drawText( textBox, Qt::WordBreak | Qt::AlignTop | Qt::AlignLeft, contentText );
+  p.drawText( captionBox, Qt::AlignLeft | Qt::AlignTop | Qt::SingleLine,
+              caption );
+
+  if ( !contents.isEmpty() ) {
+    if ( sameLine ) {
+      QString contentText = toPlainText( contents );
+      p.setFont( textFont );
+      p.drawText( textBox, Qt::AlignLeft | Qt::AlignTop | Qt::SingleLine,
+                  contents );
+    } else {
+      QTextDocument rtb;
+      int borderWidth = 2 * BOX_BORDER_WIDTH;
+      if ( richContents ) {
+        rtb.setHtml( contents );
+      } else {
+        rtb.setPlainText( contents );
+      }
+      int boxHeight = allbox.height();
+      if ( !sameLine ) {
+        boxHeight -= captionBox.height();
+      }
+      rtb.setPageSize( QSize( textBox.width(), boxHeight ) );
+      rtb.setDefaultFont( textFont );
+      p.save();
+      p.translate( textBox.x() - borderWidth, textBox.y() );
+      QRect clipBox( 0, 0, box.width(), boxHeight );
+      rtb.drawContents( &p, clipBox );
+      p.restore();
+      textBox.setBottom( textBox.y() +
+                         rtb.documentLayout()->documentSize().height() );
+    }
   }
   p.setFont( oldFont );
 
@@ -582,7 +599,7 @@ void CalPrintPluginBase::drawSmallMonth( QPainter &p, const QDate &qd, const QRe
   // 3 Pixel after month name, 2 after day names, 1 after the calendar
   double cellHeight = ( box.height() - 5 ) / rownr;
   QFont oldFont( p.font() );
-  p.setFont( QFont( "sans-serif", int(cellHeight-1), QFont::Normal ) );
+  p.setFont( QFont( "sans-serif", int(cellHeight-2), QFont::Normal ) );
 
   // draw the title
   if ( mCalSys ) {
@@ -1008,10 +1025,6 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
   Event::List::ConstIterator it;
 
   for ( it=eventList.constBegin(); it != eventList.constEnd() && textY < box.height(); ++it ) {
-    if ( textY >= box.height() ) {
-      break;
-    }
-
     Event *currEvent = *it;
     if ( ( !printRecurDaily  && currEvent->recurrenceType() == Recurrence::rDaily ) ||
          ( !printRecurWeekly && currEvent->recurrenceType() == Recurrence::rWeekly ) ) {
@@ -1028,15 +1041,10 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
     }
     p.save();
     setCategoryColors( p, currEvent );
-    QString description;
-    if ( currEvent->descriptionIsRich() ) {
-      description = toPlainText( currEvent->description() );
-    } else {
-      description = currEvent->description();
-    }
     drawIncidence( p, box, timeText,
-                   currEvent->summary(), description,
-                   textY, singleLineLimit, includeDescription );
+                   currEvent->summary(), currEvent->description(),
+                   textY, singleLineLimit, includeDescription,
+                   currEvent->descriptionIsRich() );
     p.restore();
   }
 
@@ -1044,9 +1052,6 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
     Todo::List todos = mCalendar->todos( qd );
     Todo::List::ConstIterator it2;
     for ( it2=todos.constBegin(); it2 != todos.constEnd() && textY < box.height(); ++it2 ) {
-      if ( textY >= box.height() ) {
-        break;
-      }
       Todo *todo = *it2;
       if ( ( !printRecurDaily  && todo->recurrenceType() == Recurrence::rDaily ) ||
            ( !printRecurWeekly && todo->recurrenceType() == Recurrence::rWeekly ) ) {
@@ -1063,15 +1068,10 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
       }
       p.save();
       setCategoryColors( p, todo );
-      QString description;
-      if ( todo->descriptionIsRich() ) {
-        description = toPlainText( todo->description() );
-      } else {
-        description = todo->description();
-      }
       drawIncidence( p, box, timeText,
-                     i18n( "To-do: %1", todo->summary() ), description,
-                     textY, singleLineLimit, includeDescription );
+                     i18n( "To-do: %1", todo->summary() ), todo->description(),
+                     textY, singleLineLimit, includeDescription,
+                     todo->descriptionIsRich() );
       p.restore();
     }
   }
@@ -1087,7 +1087,8 @@ void CalPrintPluginBase::drawIncidence( QPainter &p, const QRect &dayBox,
                                         const QString &summary,
                                         const QString &description,
                                         int &textY,  bool singleLineLimit,
-                                        bool includeDescription )
+                                        bool includeDescription,
+                                        bool richDescription )
 {
   kDebug() << "summary =" << summary << ", singleLineLimit=" << singleLineLimit;
 
@@ -1095,8 +1096,8 @@ void CalPrintPluginBase::drawIncidence( QPainter &p, const QRect &dayBox,
   QFontMetrics fm = p.fontMetrics();
   const int borderWidth = p.pen().width() + 1;
   QRect timeBound = p.boundingRect( dayBox.x() + borderWidth,
-                                    dayBox.y() + textY + 1,
-                                    dayBox.width()/* - 10*/, fm.lineSpacing(),
+                                    dayBox.y() + textY,
+                                    dayBox.width(), fm.lineSpacing(),
                                     flags, time );
 
   int summaryWidth = time.isEmpty() ? 0 : timeBound.width() + 3;
@@ -1106,55 +1107,82 @@ void CalPrintPluginBase::drawIncidence( QPainter &p, const QRect &dayBox,
                               dayBox.height() - textY );
 
   QString summaryText = summary;
+  bool boxOverflow = false;
 
-  int lineCount = 1;
-  QString lineText;
   if ( singleLineLimit ) {
+    QString lineText;
     lineText = summaryText;
     if ( includeDescription ) {
-      lineText += ", " + description;
+      lineText += ", " + toPlainText( description );
     }
+    int totalHeight = fm.lineSpacing() + borderWidth;
+    int textBoxHeight = ( totalHeight > ( dayBox.height() - textY ) ) ?
+                        dayBox.height() - textY : totalHeight;
+    summaryBound.setHeight(textBoxHeight);
+    QRect lineRect( dayBox.x() + borderWidth, dayBox.y() + textY,
+                    dayBox.width() - ( borderWidth * 2 ), textBoxHeight );
+    drawBox( p, -1, lineRect );
+    if ( !time.isEmpty() ) {
+      p.drawText( timeBound, flags, time );
+    }
+    p.drawText( summaryBound, flags, lineText );
   } else {
-    if ( includeDescription ) {
-      summaryText += " \n" + description;
-    }
-    while ( summaryText.endsWith( '\n' ) ) {
-      summaryText.resize( summaryText.length() - 1 );
-    }
-    KWordWrap *ww = KWordWrap::formatText( fm, summaryBound, flags, summaryText );
-    lineText = ww->wrappedString();
-    delete ww;
-    for ( int i=0; i<lineText.size(); ++i ) {
-      if ( lineText[i] == '\n' ) {
-        ++lineCount;
+    QTextDocument textDoc;
+    QTextCursor textCursor( &textDoc );
+    if ( richDescription ) {
+      QTextCursor textCursor( &textDoc );
+      textCursor.insertText( summaryText );
+      if ( includeDescription ) {
+        textCursor.insertText( "\n" );
+        textCursor.insertHtml( description );
+      }
+    } else {
+      textCursor.insertText( summaryText );
+      if ( includeDescription ) {
+        textCursor.insertText( "\n" );
+        textCursor.insertText( description );
       }
     }
+    textDoc.setPageSize( QSize( summaryBound.width(), summaryBound.height() ) );
+    p.save();
+    QRect clipBox( 0, 0, summaryBound.width(), summaryBound.height() );
+    p.setFont( p.font() );
+    p.translate( summaryBound.x(), summaryBound.y() - 6 );
+    textDoc.drawContents( &p, clipBox );
+    summaryBound.setHeight( textDoc.documentLayout()->documentSize().height()- 9 );
+    if ( summaryBound.bottom() > dayBox.bottom() ) {
+      summaryBound.setBottom( dayBox.bottom() );
+    }
+    clipBox.setHeight( summaryBound.height() );
+    p.restore();
+
+    p.save();
+    QRect backBox( timeBound.x(), timeBound.y(),
+                   dayBox.width() - ( borderWidth * 2 ), clipBox.height() );
+    drawBox( p, -1, backBox );
+
+    if ( !time.isEmpty() ) {
+      if ( timeBound.bottom() > dayBox.bottom() ) {
+        timeBound.setBottom( dayBox.bottom() );
+      }
+      p.drawText( timeBound, flags, time );
+    }
+    p.translate( summaryBound.x(), summaryBound.y() - 6 );
+    textDoc.drawContents( &p, clipBox );
+    p.restore();
+    boxOverflow = textDoc.pageCount() > 1;
   }
-
-  int totalHeight = ( fm.lineSpacing() * lineCount ) + borderWidth;
-  int textBoxHeight = ( totalHeight > ( dayBox.height() - textY ) ) ?
-                      dayBox.height() - textY : totalHeight;
-  summaryBound.setHeight(textBoxHeight);
-  QRect lineRect( dayBox.x() + borderWidth, dayBox.y() + textY,
-                  dayBox.width() - ( borderWidth * 2 ), textBoxHeight );
-  drawBox( p, -1, lineRect );
-
-  if ( !time.isEmpty() ) {
-    p.drawText( timeBound, flags, time );
+  if ( summaryBound.bottom() < dayBox.bottom() ) {
+    QPen oldPen( p.pen() );
+    p.setPen( QPen() );
+    p.drawLine( dayBox.x(), summaryBound.bottom(),
+                dayBox.x() + dayBox.width(), summaryBound.bottom() );
+    p.setPen( oldPen );
   }
-
-  p.drawText( summaryBound, flags, lineText );
-
-  QPen oldPen( p.pen() );
-  p.setPen( QPen() );
-  p.drawLine( lineRect.x(), lineRect.y() + textBoxHeight,
-              lineRect.x() + dayBox.width(), lineRect.y() + textBoxHeight );
-  p.setPen( oldPen );
-
-  textY += totalHeight;
+  textY += summaryBound.height();
 
   // show that we have overflowed the box
-  if ( textY > dayBox.height() ) {
+  if ( boxOverflow ) {
     QPolygon poly(3);
     int x = dayBox.x() + dayBox.width();
     int y = dayBox.y() + dayBox.height();
@@ -1165,6 +1193,7 @@ void CalPrintPluginBase::drawIncidence( QPainter &p, const QRect &dayBox,
     p.setBrush( QBrush( Qt::black ) );
     p.drawPolygon(poly);
     p.setBrush( oldBrush );
+    textY = dayBox.height();
   }
 }
 

@@ -226,6 +226,7 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
                       next line (no indentation of the contents)
       @param expand Whether to expand the box vertically to fit the
                     whole text in it.
+      @param rickContents Whether contents contains rich text. 
       @return The bottom of the printed box. If expand==true, the bottom of
               the drawn box is returned, if expand==false, the vertical
               end of the printed contents inside the box is returned.
@@ -235,7 +236,8 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
     */
     int drawBoxWithCaption( QPainter &p, const QRect &box, const QString &caption,
                             const QString &contents, bool sameLine, bool expand,
-                            const QFont &captionFont, const QFont &textFont );
+                            const QFont &captionFont, const QFont &textFont,
+                            bool richContents = false );
 
     /**
       Draw the gray header bar of the printout to the QPainter.
@@ -585,7 +587,7 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
     void drawIncidence( QPainter &p, const QRect &dayBox, const QString &time,
                         const QString &summary, const QString &description,
                         int &textY, bool singleLineLimit,
-                        bool includeDescription );
+                        bool includeDescription, bool richDescription );
     QString toPlainText( const QString &htmlText );
 
   protected:
