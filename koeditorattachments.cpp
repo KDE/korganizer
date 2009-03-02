@@ -247,7 +247,7 @@ AttachmentEditDialog::AttachmentEditDialog( AttachmentIconItem *item,
            "of the attachment. If this option is not checked, then only a link "
            "pointing to the attachment will be stored.  Do not use a link for "
            "attachments that change often or may be moved (or removed) from "
-           "its current location." ) );
+           "their current location." ) );
 
   if ( item->attachment()->isUri() ) {
     label = new QLabel( i18nc( "@label", "Location:" ), page );
