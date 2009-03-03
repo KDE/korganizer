@@ -1265,11 +1265,11 @@ void CalendarView::dissociateOccurrences( Incidence *incidence, const QDate &dat
                                                "the occurrence at %1 "
                                                "from the recurrence?",
                                                 KGlobal::locale()->formatDate( date ) ),
-                                                i18n( "KOrganizer Confirmation" ),                                                
+                                                i18n( "KOrganizer Confirmation" ),
                                                 KGuiItem( i18n( "&Dissociate" ) ),
                                                 KGuiItem( i18n( "&Cancel" ) ) );
 
-                                                
+
     doOnlyThis = ( answer == KMessageBox::Yes );
   } else {
     answer = KMessageBox::questionYesNoCancel( this,
@@ -1604,7 +1604,7 @@ void CalendarView::exportWeb()
 void CalendarView::exportICalendar()
 {
   QString filename = KFileDialog::getSaveFileName( KUrl( "icalout.ics" ),
-                                                   i18n( "*.ics|ICalendars" ), this );
+                                                   i18n( "*.ics|iCalendars" ), this );
 
   if ( !filename.isEmpty() ) {
     // Force correct extension
@@ -1612,8 +1612,20 @@ void CalendarView::exportICalendar()
       filename += ".ics";
     }
 
-    FileStorage storage( mCalendar, filename, new ICalFormat );
-    storage.save();
+    ICalFormat *format = new ICalFormat;
+    FileStorage storage( mCalendar, filename, format );
+    if ( !storage.save() ) {
+      QString errmess;
+      if ( format->exception() ) {
+        errmess = format->exception()->message();
+      } else {
+        errmess = i18nc( "save failure cause unknown", "Reason unknown" );
+      }
+      KMessageBox::error( this,
+                          i18nc( "@info",
+                                 "Cannot write iCalendar file %1. %2",
+                                 filename, errmess ) );
+    }
   }
 }
 
@@ -1636,14 +1648,25 @@ void CalendarView::exportVCalendar()
   QString filename = KFileDialog::getSaveFileName( KUrl( "vcalout.vcs" ),
                                                    i18n( "*.vcs|vCalendars" ), this );
   if ( !filename.isEmpty() ) {
-    // TODO: I don't like forcing extensions:
     // Force correct extension
     if ( filename.right( 4 ) != ".vcs" ) {
       filename += ".vcs";
     }
 
-    FileStorage storage( mCalendar, filename, new VCalFormat );
-    storage.save();
+    VCalFormat *format = new VCalFormat;
+    FileStorage storage( mCalendar, filename, format );
+    if ( !storage.save() ) {
+      QString errmess;
+      if ( format->exception() ) {
+        errmess = format->exception()->message();
+      } else {
+        errmess = i18nc( "save failure cause unknown", "Reason unknown" );
+      }
+      KMessageBox::error( this,
+                          i18nc( "@info",
+                                 "Cannot write vCalendar file %1. %2",
+                                 filename, errmess ) );
+    }
   }
 }
 
