@@ -268,13 +268,23 @@ void ActionManager::initActions()
   }
 
   //~~~~~~~~~~~~~~~~~~~~~~~~ IMPORT / EXPORT ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  action = new KAction( i18n( "Import &Calendar..." ), this );
-  mACollection->addAction( "import_icalendar", action );
-  connect( action, SIGNAL(triggered(bool)), SLOT(file_merge()) );
+  KAction *mergeAction = new KAction( i18n( "Import &Calendar..." ), this );
+  mergeAction->setHelpText(
+    i18n( "Merge the contents of another iCalendar" ) );
+  mergeAction->setWhatsThis(
+    i18n( "Select this menu entry if you would like to merge the contents "
+          "of another iCalendar into your current calendar." ) );
+  mACollection->addAction( "import_icalendar", mergeAction );
+  connect( mergeAction, SIGNAL(triggered(bool)), SLOT(file_merge()) );
 
-  action = new KAction( i18n( "&Import From UNIX Ical tool" ), this );
-  mACollection->addAction( "import_ical", action );
-  connect( action, SIGNAL(triggered(bool)), SLOT(file_icalimport()) );
+  KAction *importAction = new KAction( i18n( "&Import From UNIX Ical tool" ), this );
+  importAction->setHelpText(
+    i18n( "Import a calendar in another format" ) );
+  importAction->setWhatsThis(
+    i18n( "Select this menu entry if you would like to import the contents "
+          "of a non-iCalendar formatted file into your current calendar." ) );
+  mACollection->addAction( "import_ical", importAction );
+  connect( importAction, SIGNAL(triggered(bool)), SLOT(file_icalimport()) );
 
   action = new KAction( i18n( "Get &Hot New Stuff..." ), this );
   mACollection->addAction( "downloadnewstuff", action );
@@ -454,14 +464,14 @@ void ActionManager::initActions()
   action = new KAction( KIcon( "go-jump-today" ),
                         i18nc( "@action Jump to today", "To &Today" ), this );
   action->setIconText( i18n( "Today" ) );
-  action->setStatusTip( i18n( "Scroll to Today" ) );
+  action->setHelpText( i18n( "Scroll to Today" ) );
   mACollection->addAction( "go_today", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(goToday()) );
 
   action = new KAction( KIcon( isRTL ? "go-next" : "go-previous" ),
                         i18nc( "scroll backward", "&Backward" ), this );
   action->setIconText( i18nc( "scroll backward", "Back" ) );
-  action->setStatusTip( i18n( "Scroll Backward" ) );
+  action->setHelpText( i18n( "Scroll Backward" ) );
   mACollection->addAction( "go_previous", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(goPrevious()) );
 
@@ -476,7 +486,7 @@ void ActionManager::initActions()
   action = new KAction( KIcon( isRTL ? "go-previous" : "go-next" ),
                         i18nc( "scroll forward", "&Forward" ), this );
   action->setIconText( i18nc( "scoll forward", "Forward" ) );
-  action->setStatusTip( i18n( "Scroll Forward" ) );
+  action->setHelpText( i18n( "Scroll Forward" ) );
   mACollection->addAction( "go_next", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(goNext()) );
   /*
@@ -487,14 +497,14 @@ void ActionManager::initActions()
   /************************** Actions MENU *********************************/
   action = new KAction( KIcon( "appointment-new" ), i18n( "New E&vent..." ), this );
   action->setIconText( i18nc( "@action:intoolbar create a new event", "Event" ) );
-  action->setStatusTip( i18n( "Create a new Event" ) );
+  action->setHelpText( i18n( "Create a new Event" ) );
   mACollection->addAction( "new_event", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView,
            SLOT(newEvent()) );
 
   action = new KAction( KIcon( "task-new" ), i18n( "New &To-do..." ), this );
   action->setIconText( i18n( "To-do" ) );
-  action->setStatusTip( i18n( "Create a new To-do" ) );
+  action->setHelpText( i18n( "Create a new To-do" ) );
   mACollection->addAction( "new_todo", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView,
            SLOT(newTodo()) );
@@ -509,7 +519,7 @@ void ActionManager::initActions()
 
   action = new KAction( KIcon( "journal-new" ), i18n( "New &Journal..." ), this );
   action->setIconText( i18n( "Journal" ) );
-  action->setStatusTip( i18n( "Create a new Journal" ) );
+  action->setHelpText( i18n( "Create a new Journal" ) );
   mACollection->addAction( "new_journal", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView,
            SLOT(newJournal()) );
