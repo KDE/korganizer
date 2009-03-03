@@ -164,7 +164,10 @@ bool MonthGraphicsItem::isBeginItem() const
 
 QPainterPath MonthGraphicsItem::shape() const
 {
-  return widgetPath( true );
+  // The returned shape must be a closed path,
+  // otherwise MonthScene:itemAt( pos ) can have
+  // problems detecting the item
+  return widgetPath( false );
 }
 
 // TODO: remove this method.
