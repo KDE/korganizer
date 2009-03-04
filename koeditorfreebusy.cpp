@@ -693,6 +693,7 @@ void KOEditorFreeBusy::updateStatusSummary()
     case Attendee::Delegated:
     case Attendee::Completed:
     case Attendee::InProcess:
+    case Attendee::None:
       /* just to shut up the compiler */
       break;
     }
