@@ -102,7 +102,7 @@ void KOEventPopupMenu::showIncidencePopup( Calendar *cal, Incidence *incidence, 
       KDateTime thisDateTime( qd, KOPrefs::instance()->timeSpec() );
       bool isLastOccurrence  = !mCurrentIncidence->recurrence()->getNextDateTime    ( thisDateTime ).isValid();
       bool isFirstOccurrence = !mCurrentIncidence->recurrence()->getPreviousDateTime( thisDateTime ).isValid();
-      mDissociateOccurrences->setEnabled( !( isFirstOccurrence && isLastOccurrence ) );
+      mDissociateOccurrences->setEnabled( !( isFirstOccurrence && isLastOccurrence ) && !mCurrentIncidence->isReadOnly() );
     }
 
     // Enable/Disabled menu items only valid for editable events.
