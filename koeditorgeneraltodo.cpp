@@ -319,6 +319,7 @@ void KOEditorGeneralTodo::readTodo( Todo *todo, bool tmpl )
     mStartDateEdit->setDate( QDate::currentDate() );
     mStartTimeEdit->setTime( QTime::currentTime() );
     mStartCheck->setChecked( false );
+    mTimeZoneComboStart->setEnabled( false );
   }
 
   mTimeButton->setChecked( !todo->allDay() );
