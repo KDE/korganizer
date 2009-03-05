@@ -69,7 +69,7 @@ class KOEditorGeneralJournal : public KOEditorGeneral
     /** Read journal object and setup widgets accordingly */
     void readJournal( Journal *, bool tmpl = false );
     /** Write journal settings to event object */
-    void writeJournal( Journal * );
+    void fillJournal( Journal * );
 
     /** Check if the input is valid. */
     bool validateInput();

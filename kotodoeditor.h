@@ -82,7 +82,7 @@ class KOTodoEditor : public KOIncidenceEditor
     void readTodo( Todo *todo, bool tmpl = false );
 
     /** Write To-do settings to todo object */
-    void writeTodo( Todo *todo );
+    void fillTodo( Todo *todo );
 
     /** Check if the input is valid. */
     bool validateInput();
@@ -108,6 +108,7 @@ class KOTodoEditor : public KOIncidenceEditor
     void setupGeneral();
     void setupRecurrence();
     int msgItemDelete();
+    bool incidenceModified();
 
   private:
     Todo *mTodo;

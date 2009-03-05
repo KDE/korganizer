@@ -133,6 +133,11 @@ class KOIncidenceEditor : public KPageDialog
     void readDesignerFields( Incidence *i );
     void writeDesignerFields( Incidence *i );
 
+    /**
+      Returns true if the user made any alteration
+    */
+    virtual bool incidenceModified();
+
     // Returns the page widget. To remove the tab, just delete that one.
     QWidget *addDesignerTab( const QString &uifile );
 

@@ -1407,7 +1407,7 @@ void KOEditorRecurrence::readIncidence( Incidence *incidence )
   mExceptions->setDates( incidence->recurrence()->exDates() );
 }
 
-void KOEditorRecurrence::writeIncidence( Incidence *incidence )
+void KOEditorRecurrence::fillIncidence( Incidence *incidence )
 {
   if ( !mEnabledCheck->isChecked() || !isEnabled() ) {
     if ( incidence->recurs() ) {

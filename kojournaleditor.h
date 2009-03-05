@@ -97,7 +97,7 @@ class KOJournalEditor : public KOIncidenceEditor
     void readJournal( Journal *journal, bool tmpl = false );
 
     /** Write Journal settings to journal object */
-    void writeJournal( Journal * );
+    void fillJournal( Journal * );
 
     int msgItemDelete();
 
@@ -123,6 +123,7 @@ class KOJournalEditor : public KOIncidenceEditor
     void setupGeneral();
     void loadTemplate( CalendarLocal & );
     QStringList &templates() const;
+    bool incidenceModified();
 
   private:
     Journal *mJournal;

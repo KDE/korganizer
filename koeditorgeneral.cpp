@@ -501,7 +501,7 @@ Alarm *KOEditorGeneral::alarmFromSimplePage() const
   }
 }
 
-void KOEditorGeneral::writeIncidence( Incidence *incidence )
+void KOEditorGeneral::fillIncidence( Incidence *incidence )
 {
   incidence->setSummary( mSummaryEdit->text() );
 
@@ -544,7 +544,7 @@ void KOEditorGeneral::writeIncidence( Incidence *incidence )
       incidence->addAlarm( al );
     }
   }
-  mAttachments->writeIncidence( incidence );
+  mAttachments->fillIncidence( incidence );
 }
 
 void KOEditorGeneral::setSummary( const QString &text )

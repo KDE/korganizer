@@ -70,7 +70,7 @@ class KOEditorGeneralEvent : public KOEditorGeneral
     */
     void readEvent( Event *event, bool tmpl = false );
     /** Write event settings to event object */
-    void writeEvent( Event * );
+    void fillEvent( Event * );
 
     /** Check if the input is valid. */
     bool validateInput();

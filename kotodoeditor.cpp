@@ -62,6 +62,16 @@ KOTodoEditor::~KOTodoEditor()
   emit dialogClose( mTodo );
 }
 
+bool KOTodoEditor::incidenceModified() {
+  Todo *newTodo = 0;
+
+  if ( mTodo ) {
+    newTodo = mTodo->clone();
+    fillTodo( newTodo );
+  }
+  return mTodo && !( *newTodo == *mTodo );
+}
+
 void KOTodoEditor::init()
 {
   setupGeneral();
@@ -220,13 +230,13 @@ bool KOTodoEditor::processInput()
     Todo *oldTodo = mTodo->clone();
     Todo *todo = mTodo->clone();
 
-    writeTodo( todo );
+    fillTodo( todo );
 
     if( *mTodo == *todo ) {
       // Don't do anything
     } else {
       //IncidenceChanger::assignIncidence( mTodo, todo );
-      writeTodo( mTodo );
+      fillTodo( mTodo );
       mChanger->changeIncidence( oldTodo, mTodo );
     }
     delete todo;
@@ -237,7 +247,7 @@ bool KOTodoEditor::processInput()
     mTodo = new Todo;
     mTodo->setOrganizer( Person( KOPrefs::instance()->fullName(), KOPrefs::instance()->email() ) );
 
-    writeTodo( mTodo );
+    fillTodo( mTodo );
 
     if ( !mChanger->addIncidence( mTodo, this ) ) {
       delete mTodo;
@@ -298,13 +308,13 @@ void KOTodoEditor::readTodo( Todo *todo, bool tmpl )
   readDesignerFields( todo );
 }
 
-void KOTodoEditor::writeTodo( Todo *todo )
+void KOTodoEditor::fillTodo( Todo *todo )
 {
   Incidence *oldIncidence = todo->clone();
 
-  mGeneral->writeTodo( todo );
-  mDetails->writeIncidence( todo );
-  mRecurrence->writeIncidence( todo );
+  mGeneral->fillTodo( todo );
+  mDetails->fillIncidence( todo );
+  mRecurrence->fillIncidence( todo );
 
   if ( *( oldIncidence->recurrence() ) != *( todo->recurrence() ) ) {
     todo->setDtDue( todo->dtDue(), true );
@@ -367,7 +377,7 @@ void KOTodoEditor::loadTemplate( CalendarLocal &cal )
 void KOTodoEditor::slotSaveTemplate( const QString &templateName )
 {
   Todo *todo = new Todo;
-  writeTodo( todo );
+  fillTodo( todo );
   saveAsTemplate( todo, templateName );
 }
 

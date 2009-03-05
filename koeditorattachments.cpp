@@ -795,7 +795,7 @@ void KOEditorAttachments::readIncidence( KCal::Incidence *i )
   }
 }
 
-void KOEditorAttachments::writeIncidence( KCal::Incidence *i )
+void KOEditorAttachments::fillIncidence( KCal::Incidence *i )
 {
   i->clearAttachments();
 

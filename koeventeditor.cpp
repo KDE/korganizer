@@ -66,6 +66,16 @@ KOEventEditor::~KOEventEditor()
   }
 }
 
+bool KOEventEditor::incidenceModified() {
+  Event *newEvent = 0;
+
+  if ( mEvent ) {
+    newEvent = mEvent->clone();
+    fillEvent( newEvent );
+  }
+  return mEvent && !( *newEvent == *mEvent );
+}
+
 void KOEventEditor::init()
 {
   setupGeneral();
@@ -288,7 +298,7 @@ bool KOEventEditor::processInput()
     Event *oldEvent = mEvent->clone();
     Event *event = mEvent->clone();
 
-    writeEvent( event );
+    fillEvent( event );
 
     if ( *event == *mEvent ) {
       // Don't do anything
@@ -301,7 +311,7 @@ bool KOEventEditor::processInput()
       }
     } else {
       //IncidenceChanger::assignIncidence( mEvent, event );
-      writeEvent( mEvent );
+      fillEvent( mEvent );
       if ( mIsCounter ) {
         KOGroupware::instance()->sendCounterProposal( mCalendar, oldEvent, mEvent );
         // add dummy event at the position of the counter proposal
@@ -320,7 +330,7 @@ bool KOEventEditor::processInput()
     mEvent = new Event;
     mEvent->setOrganizer( Person( KOPrefs::instance()->fullName(),
                           KOPrefs::instance()->email() ) );
-    writeEvent( mEvent );
+    fillEvent( mEvent );
     if ( !mChanger->addIncidence( mEvent, this ) ) {
       delete mEvent;
       mEvent = 0;
@@ -373,16 +383,16 @@ void KOEventEditor::readEvent( Event *event, bool tmpl )
   }
 }
 
-void KOEventEditor::writeEvent( Event *event )
+void KOEventEditor::fillEvent( Event *event )
 {
-  mGeneral->writeEvent( event );
+  mGeneral->fillEvent( event );
   if ( mFreeBusy ) {
-    mFreeBusy->writeIncidence( event );
+    mFreeBusy->fillIncidence( event );
   }
 
   cancelRemovedAttendees( event );
 
-  mRecurrence->writeIncidence( event );
+  mRecurrence->fillIncidence( event );
 
   writeDesignerFields( event );
 }
@@ -429,7 +439,7 @@ QStringList &KOEventEditor::templates() const
 void KOEventEditor::slotSaveTemplate( const QString &templateName )
 {
   Event *event = new Event;
-  writeEvent( event );
+  fillEvent( event );
   saveAsTemplate( event, templateName );
 }
 
@@ -441,7 +451,7 @@ QObject *KOEventEditor::typeAheadReceiver() const
 void KOEventEditor::updateRecurrenceSummary()
 {
   Event *ev =  new Event();
-  writeEvent( ev );
+  fillEvent( ev );
   mGeneral->updateRecurrenceSummary( IncidenceFormatter::recurrenceString( ev ) );
   delete ev;
 }

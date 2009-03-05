@@ -84,8 +84,13 @@ KOIncidenceEditor::~KOIncidenceEditor()
 {
 }
 
+bool KOIncidenceEditor::incidenceModified() {
+  return true;
+}
+
 void KOIncidenceEditor::slotButtonClicked( int button )
 {
+  bool dontQuit = false;
   switch( button ) {
   case KDialog::Ok:
   {
@@ -102,13 +107,16 @@ void KOIncidenceEditor::slotButtonClicked( int button )
     processInput();
     break;
   case KDialog::Cancel:
-    if ( KMessageBox::questionYesNo(
-           this,
-           i18nc( "@info", "Do you really want to cancel?" ),
-           i18nc( "@title:window", "KOrganizer Confirmation" ) ) == KMessageBox::Yes ) {
-      processCancel();
-      KDialog::reject();
-    }
+    dontQuit = incidenceModified() &&
+               KMessageBox::questionYesNo(
+                 this,
+                 i18nc( "@info", "Do you really want to cancel?" ),
+                 i18nc( "@title:window", "KOrganizer Confirmation" ) ) == KMessageBox::No;
+
+    if ( !dontQuit ) {
+       processCancel();
+       KDialog::reject();
+     }
     break;
   default:
     KPageDialog::slotButtonClicked( button );

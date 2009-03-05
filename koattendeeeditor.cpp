@@ -325,7 +325,7 @@ void KOAttendeeEditor::readIncidence( KCal::Incidence *incidence )
   }
 }
 
-void KOAttendeeEditor::writeIncidence( KCal::Incidence *incidence )
+void KOAttendeeEditor::fillIncidence( KCal::Incidence *incidence )
 {
   if ( mOrganizerCombo ) {
     // TODO: Don't take a string and split it up... Is there a better way?
