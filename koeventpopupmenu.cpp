@@ -103,6 +103,7 @@ void KOEventPopupMenu::showIncidencePopup( Calendar *cal, Incidence *incidence, 
     }
     for ( it = mRecurrenceItems.begin(); it != mRecurrenceItems.end(); ++it ) {
       (*it)->setVisible( mCurrentIncidence->recurs() );
+      (*it)->setEnabled( !mCurrentIncidence->isReadOnly() );
     }
     popup( QCursor::pos() );
   } else {
