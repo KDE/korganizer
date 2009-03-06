@@ -1251,6 +1251,7 @@ void CalendarView::toggleAlarm( Incidence *incidence )
   if ( alarms.isEmpty() ) {
     // Add an alarm if it didn't have one
     Alarm *alm = incidence->newAlarm();
+    alm->setType( Alarm::Display );
     alm->setEnabled( true );
   }
   mChanger->changeIncidence( oldincidence, incidence, KOGlobals::ALARM_MODIFIED );
