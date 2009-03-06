@@ -104,9 +104,9 @@ void KOWhatsNextView::updateView()
 
   Event::List events;
   KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
-  for ( QDate date = mStartDate; date <= mEndDate; date = date.addDays( 1 ) ) {
-    events += calendar()->events( date, timeSpec, EventSortStartDate, SortDirectionAscending );
-  }
+
+  events = calendar()->events( mStartDate, mEndDate, timeSpec, false );
+  calendar()->sortEvents( &events, EventSortStartDate, SortDirectionAscending );
 
   if ( events.count() > 0 ) {
     mText += "<p></p>";
