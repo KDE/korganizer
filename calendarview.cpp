@@ -119,7 +119,6 @@ CalendarView::CalendarView( QWidget *parent )
 
   mLeftSplitter = new QSplitter( Qt::Vertical, mPanner );
   mLeftSplitter->setObjectName( "CalendarView::LeftFrame" );
-  mLeftSplitter->setCollapsible( mLeftSplitter->indexOf(mDateNavigator), true );
 
   mDateNavigator = new DateNavigatorContainer( mLeftSplitter );
   mDateNavigator->setObjectName( "CalendarView::DateNavigator" );
