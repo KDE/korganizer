@@ -65,7 +65,7 @@ class KOEditorGeneralTodo : public KOEditorGeneral
     void readTodo( Todo *todo, bool tmpl = false );
 
     /** Write todo settings to event object */
-    void writeTodo( Todo * );
+    void fillTodo( Todo * );
 
     /** Check if the input is valid. */
     bool validateInput();

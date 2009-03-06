@@ -104,7 +104,7 @@ class KOEditorAttachments : public QWidget
     /** Read event object and setup widgets accordingly */
     void readIncidence( KCal::Incidence * );
     /** Write event settings to event object */
-    void writeIncidence( KCal::Incidence * );
+    void fillIncidence( KCal::Incidence * );
 
     bool hasAttachments();
 

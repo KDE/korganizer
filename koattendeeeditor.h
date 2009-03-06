@@ -56,7 +56,7 @@ class KOAttendeeEditor : public QWidget
     virtual void insertAttendee( KCal::Attendee *attendee, bool fetchFB = true ) = 0;
 
     virtual void readIncidence( KCal::Incidence *incidence );
-    virtual void writeIncidence( KCal::Incidence *incidence );
+    virtual void fillIncidence( KCal::Incidence *incidence );
 
     /** return a clone of the incidence with attendees to be canceld*/
     void cancelAttendeeIncidence( KCal::Incidence *incidence );

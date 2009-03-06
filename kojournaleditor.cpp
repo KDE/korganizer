@@ -136,7 +136,7 @@ bool KOJournalEditor::processInput()
 
   if ( mJournal ) {
     Journal *oldJournal = mJournal->clone();
-    writeJournal( mJournal );
+    fillJournal( mJournal );
     mChanger->changeIncidence( oldJournal, mJournal );
     delete oldJournal;
   } else {
@@ -144,7 +144,7 @@ bool KOJournalEditor::processInput()
     mJournal->setOrganizer( Person( KOPrefs::instance()->fullName(),
                             KOPrefs::instance()->email() ) );
 
-    writeJournal( mJournal );
+    fillJournal( mJournal );
 
     if ( !mChanger->addIncidence( mJournal, this ) ) {
       delete mJournal;
@@ -176,6 +176,16 @@ void KOJournalEditor::setTime( const QTime &time )
   mGeneral->setTime( time );
 }
 
+bool KOJournalEditor::incidenceModified() {
+  Journal *newJournal = 0;
+
+  if ( mJournal ) {
+    newJournal = mJournal->clone();
+    fillJournal( newJournal );
+  }
+  return mJournal && !( *newJournal == *mJournal );
+}
+
 void KOJournalEditor::readJournal( Journal *journal, bool tmpl )
 {
   //TODO: just tmpl variable
@@ -189,10 +199,10 @@ void KOJournalEditor::readJournal( Journal *journal, bool tmpl )
   mDetails->readIncidence( journal );
 }
 
-void KOJournalEditor::writeJournal( Journal *journal )
+void KOJournalEditor::fillJournal( Journal *journal )
 {
-  mGeneral->writeJournal( journal );
-  mDetails->writeIncidence( journal );
+  mGeneral->fillJournal( journal );
+  mDetails->fillIncidence( journal );
 }
 
 bool KOJournalEditor::validateInput()
@@ -229,7 +239,7 @@ void KOJournalEditor::loadTemplate( CalendarLocal &cal )
 void KOJournalEditor::slotSaveTemplate( const QString &templateName )
 {
   Journal *journal = new Journal;
-  writeJournal( journal );
+  fillJournal( journal );
   saveAsTemplate( journal, templateName );
 }
 

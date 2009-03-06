@@ -432,9 +432,9 @@ void KOEditorGeneralEvent::readEvent( Event *event, bool isTemplate )
   readIncidence( event );
 }
 
-void KOEditorGeneralEvent::writeEvent( Event *event )
+void KOEditorGeneralEvent::fillEvent( Event *event )
 {
-  writeIncidence( event );
+  fillIncidence( event );
 
   QDate tmpDate;
   QTime tmpTime;

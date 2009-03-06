@@ -95,7 +95,7 @@ class KOEventEditor : public KOIncidenceEditor
     /**
       Write event settings to event object
     */
-    void writeEvent( Event * );
+    void fillEvent( Event * );
 
     QObject *typeAheadReceiver() const;
 
@@ -126,6 +126,7 @@ class KOEventEditor : public KOIncidenceEditor
     int msgItemDelete();
     void loadTemplate( CalendarLocal & );
     QStringList &templates() const;
+    bool incidenceModified();
 
   private:
     Event *mEvent;

@@ -60,7 +60,7 @@ class KOEditorFreeBusy : public KOAttendeeEditor
     void clearAttendees();
 
     void readIncidence( KCal::Incidence *incidence );
-    void writeIncidence( KCal::Incidence *incidence );
+    void fillIncidence( KCal::Incidence *incidence );
 
     void triggerReload();
     void cancelReload();

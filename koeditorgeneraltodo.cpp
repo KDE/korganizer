@@ -337,9 +337,9 @@ void KOEditorGeneralTodo::readTodo( Todo *todo, bool tmpl )
   mStartDateModified = false;
 }
 
-void KOEditorGeneralTodo::writeTodo( Todo *todo )
+void KOEditorGeneralTodo::fillTodo( Todo *todo )
 {
-  KOEditorGeneral::writeIncidence( todo );
+  KOEditorGeneral::fillIncidence( todo );
 
   // temp. until something better happens.
   QString tmpStr;

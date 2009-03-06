@@ -760,7 +760,7 @@ void KOEditorFreeBusy::editFreeBusyUrl( KDGanttViewItem *i )
   dialog.exec();
 }
 
-void KOEditorFreeBusy::writeIncidence( Incidence *incidence )
+void KOEditorFreeBusy::fillIncidence( Incidence *incidence )
 {
   incidence->clearAttendees();
   QVector<FreeBusyItem*> toBeDeleted;
@@ -804,7 +804,7 @@ void KOEditorFreeBusy::writeIncidence( Incidence *incidence )
     }
   }
 
-  KOAttendeeEditor::writeIncidence( incidence );
+  KOAttendeeEditor::fillIncidence( incidence );
 
   // cleanup
   qDeleteAll( toBeDeleted );

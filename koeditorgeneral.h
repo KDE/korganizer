@@ -88,7 +88,7 @@ class KOEditorGeneral : public QObject
     void readIncidence( Incidence *incidence );
 
     /** Write event settings to event object */
-    void writeIncidence( Incidence * );
+    void fillIncidence( Incidence * );
 
     /** Check if the input is valid. */
     bool validateInput();

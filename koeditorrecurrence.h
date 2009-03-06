@@ -314,7 +314,7 @@ class KOEditorRecurrence : public QWidget
     void readIncidence( Incidence * );
 
     /** Write event settings to event object */
-    void writeIncidence( Incidence * );
+    void fillIncidence( Incidence * );
 
     /** Check if the input is valid. */
     bool validateInput();

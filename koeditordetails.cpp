@@ -281,7 +281,7 @@ void KOEditorDetails::readIncidence( Incidence *event )
   emit updateAttendeeSummary( mListView->childCount() );
 }
 
-void KOEditorDetails::writeIncidence( Incidence *incidence )
+void KOEditorDetails::fillIncidence( Incidence *incidence )
 {
   incidence->clearAttendees();
   QVector<Q3ListViewItem*> toBeDeleted;
@@ -326,7 +326,7 @@ void KOEditorDetails::writeIncidence( Incidence *incidence )
     }
   }
 
-  KOAttendeeEditor::writeIncidence( incidence );
+  KOAttendeeEditor::fillIncidence( incidence );
 
   // cleanup
   qDeleteAll( toBeDeleted );

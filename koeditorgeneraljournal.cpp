@@ -176,7 +176,7 @@ void KOEditorGeneralJournal::readJournal( Journal *journal, bool tmpl )
   setCategories( journal->categories() );
 }
 
-void KOEditorGeneralJournal::writeJournal( Journal *journal )
+void KOEditorGeneralJournal::fillJournal( Journal *journal )
 {
   journal->setSummary( mSummaryEdit->text() );
   if ( mRichDescription->isChecked() ) {

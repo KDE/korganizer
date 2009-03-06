@@ -95,7 +95,7 @@ class KOEditorDetails : public KOAttendeeEditor
     void readIncidence( Incidence * );
 
     /** Write settings to incidence */
-    void writeIncidence( Incidence * );
+    void fillIncidence( Incidence * );
 
     /** Check if the input is valid. */
     bool validateInput();
