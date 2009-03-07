@@ -313,6 +313,8 @@ ResourceView::ResourceView( KCal::CalendarResources *calendar, QWidget *parent )
   connect( mDeleteButton, SIGNAL( clicked() ), SLOT( removeResource() ) );
   connect( mEditButton, SIGNAL( clicked() ), SLOT( editResource() ) );
 
+  setMinimumHeight( 50 );
+
   updateView();
 }
 
