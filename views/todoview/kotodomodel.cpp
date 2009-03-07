@@ -815,8 +815,10 @@ bool KOTodoModel::setData( const QModelIndex &index, const QVariant &value, int 
     if ( role == Qt::EditRole ) {
       switch ( index.column() ) {
         case SummaryColumn:
-          todo->setSummary( value.toString() );
-          modified = KOGlobals::SUMMARY_MODIFIED;
+          if ( !value.toString().isEmpty() ) {
+            todo->setSummary( value.toString() );
+            modified = KOGlobals::SUMMARY_MODIFIED;
+          }
           break;
         case PriorityColumn:
           todo->setPriority( value.toInt() );
