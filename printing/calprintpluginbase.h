@@ -564,7 +564,8 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
     void drawJournal( Journal * journal, QPainter &p, int x, int &y,
                       int width, int pageHeight );
     void drawJournalField( QPainter &p, const QString &entry,
-                           int x, int &y, int width, int pageHeight );
+                           int x, int &y, int width, int pageHeight,
+                           bool richTextEntry );
 
     void drawSplitHeaderRight( QPainter &p, const QDate &fd, const QDate &td,
                                const QDate &cd, int width, int height );

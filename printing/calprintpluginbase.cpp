@@ -1863,20 +1863,32 @@ int CalPrintPluginBase::weekdayColumn( int weekday )
 }
 
 void CalPrintPluginBase::drawJournalField( QPainter &p, const QString &entry,
-                                           int x, int &y, int width, int pageHeight )
+                                           int x, int &y, int width,
+                                           int pageHeight, bool richTextEntry )
 {
-  QRect rect( p.boundingRect( x, y, width, -1, Qt::WordBreak, entry ) );
-  if ( rect.bottom() > pageHeight ) {
-    // Start new page...
-    // FIXME: If it's a multi-line text, draw a few lines on this page, and the
-    // remaining lines on the next page.
-    y = 0;
-    mPrinter->newPage();
-    rect = p.boundingRect( x, y, width, -1, Qt::WordBreak, entry );
+  QString plainEntry = ( richTextEntry ) ? toPlainText( entry ) : entry;
+
+  QRect textrect(0,0,width,-1);
+  int flags = Qt::AlignLeft;
+  QFontMetrics fm = p.fontMetrics();
+
+  QStringList lines = plainEntry.split( '\n' );
+  for ( int currentLine = 0; currentLine < lines.count(); currentLine++ ) {
+    // split paragraphs into lines
+    KWordWrap *ww = KWordWrap::formatText( fm, textrect, flags, lines[currentLine] );
+    QStringList textLine = ww->wrappedString().split( '\n' );
+    delete ww;
+    // print each individual line
+    for ( int lineCount = 0; lineCount < textLine.count(); lineCount++ ) {
+      if ( y >= pageHeight ) {
+        y = 0;
+        mPrinter->newPage();
+      }
+      y += fm.height();
+      p.drawText( x, y, textLine[ lineCount ] );
+    }
   }
-  QRect newrect;
-  p.drawText( rect, Qt::WordBreak, entry, &newrect );
-  y = newrect.bottom() + 7;
+  y += 7;
 }
 
 void CalPrintPluginBase::drawJournal( Journal * journal, QPainter &p, int x, int &y,
@@ -1909,13 +1921,13 @@ void CalPrintPluginBase::drawJournal( Journal * journal, QPainter &p, int x, int
 
   p.drawLine( x + 3, y, x + width - 6, y );
   y += 5;
-
   if ( !( journal->organizer().fullName().isEmpty() ) ) {
     drawJournalField( p, i18n( "Person: %1", journal->organizer().fullName() ),
-                      x, y, width, pageHeight );
+                      x, y, width, pageHeight, false );
   }
   if ( !( journal->description().isEmpty() ) ) {
-    drawJournalField( p, journal->description(), x, y, width, pageHeight );
+    drawJournalField( p, journal->description(), x, y, width, pageHeight,
+                      journal->descriptionIsRich() );
   }
   y += 10;
 }
