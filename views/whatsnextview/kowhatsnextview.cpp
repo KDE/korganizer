@@ -28,6 +28,7 @@
 #include "koeventviewerdialog.h"
 
 #include <kcal/calendar.h>
+#include <kcal/incidenceformatter.h>
 
 #include <kglobal.h>
 #include <klocale.h>
@@ -326,7 +327,7 @@ void KOWhatsNextView::appendTodo( Incidence *incidence )
     Todo *todo = static_cast<Todo*>( incidence );
     if ( todo->hasDueDate() ) {
       mText += i18nc( "to-do due date", "  (Due: %1)",
-                     todo->allDay() ? todo->dtDueDateStr() : todo->dtDueStr() );
+                      IncidenceFormatter::dateTimeToString( todo->dtDue(), todo->allDay() ) );
     }
   }
   mText += "</li>\n";

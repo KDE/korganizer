@@ -36,6 +36,7 @@
 
 #include <kcal/calendarlocal.h>
 #include <kcal/calendarresources.h>
+#include <kcal/incidenceformatter.h>
 #include <kcal/resourcecalendar.h>
 
 #include <kparts/genericfactory.h>
@@ -129,7 +130,7 @@ void KOrganizerPart::slotChangeInfo( Incidence *incidence )
 {
   if ( incidence ) {
     emit textChanged( incidence->summary() + " / " +
-                      incidence->dtStartTimeStr() );
+                      IncidenceFormatter::timeToString( incidence->dtStart() ) );
   } else {
     emit textChanged( QString() );
   }

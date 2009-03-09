@@ -133,9 +133,8 @@ class TimePrintStringsVisitor : public IncidenceBase::Visitor
     bool visit( Event *event ) {
       if ( event->dtStart().isValid() ) {
         mStartCaption =  i18n( "Start date: " );
-        // Show date/time or only date, depending on whether it's an all-day event
-        mStartString = event->allDay() ?
-                       event->dtStartDateStr( false ) : event->dtStartStr( false );
+        mStartString = IncidenceFormatter::dateTimeToString(
+          event->dtStart(), event->allDay(), false );
       } else {
         mStartCaption = i18n( "No start date" );
         mStartString.clear();
@@ -143,8 +142,8 @@ class TimePrintStringsVisitor : public IncidenceBase::Visitor
 
       if ( event->hasEndDate() ) {
         mEndCaption = i18n( "End date: " );
-        mEndString = event->allDay() ?
-                     event->dtEndDateStr( false ) : event->dtEndStr( false );
+        mEndString = IncidenceFormatter::dateTimeToString(
+          event->dtEnd(), event->allDay(), false );
       } else if ( event->hasDuration() ) {
         mEndCaption = i18n( "Duration: " );
         int mins = event->duration().asSeconds() / 60;
@@ -163,9 +162,8 @@ class TimePrintStringsVisitor : public IncidenceBase::Visitor
     bool visit( Todo *todo ) {
       if ( todo->hasStartDate() ) {
         mStartCaption =  i18n( "Start date: " );
-        // Show date/time or only date, depending on whether it's an all-day event
-        mStartString = todo->allDay() ?
-                       todo->dtStartDateStr( false ) : todo->dtStartStr( false );
+        mStartString = IncidenceFormatter::dateTimeToString(
+          todo->dtStart(), todo->allDay(), false );
       } else {
         mStartCaption = i18n( "No start date" );
         mStartString.clear();
@@ -173,8 +171,8 @@ class TimePrintStringsVisitor : public IncidenceBase::Visitor
 
       if ( todo->hasDueDate() ) {
         mEndCaption = i18n( "Due date: " );
-        mEndString = todo->allDay() ?
-                     todo->dtDueDateStr( false ) : todo->dtDueStr( false );
+        mEndString = IncidenceFormatter::dateTimeToString(
+          todo->dtDue(), todo->allDay(), false );
       } else {
         mEndCaption = i18n( "No due date" );
         mEndString.clear();
@@ -183,8 +181,8 @@ class TimePrintStringsVisitor : public IncidenceBase::Visitor
     }
     bool visit( Journal *journal ) {
       mStartCaption = i18n( "Start date: " );
-      mStartString = journal->allDay() ?
-                     journal->dtStartDateStr( false ) : journal->dtStartStr( false );
+      mStartString = IncidenceFormatter::dateTimeToString(
+        journal->dtStart(), journal->allDay(), false );
       mEndCaption.clear();
       mEndString.clear();
       return true;

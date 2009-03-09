@@ -508,13 +508,13 @@ QString IncidenceMonthItem::text( bool end ) const
     QString timeStr;
     if ( mIsTodo ) {
       Todo *todo = static_cast<Todo*>( mIncidence );
-      timeStr = todo->dtDueTimeStr( true, KOPrefs::instance()->timeSpec() );
+      timeStr = IncidenceFormatter::timeToString( todo->dtDue(), true, KOPrefs::instance()->timeSpec() );
     } else {
       if ( !end ) {
-        timeStr = mIncidence->dtStartTimeStr( true, KOPrefs::instance()->timeSpec() );
+        timeStr = IncidenceFormatter::timeToString( mIncidence->dtStart(), true, KOPrefs::instance()->timeSpec() );
       } else {
         Event *event = static_cast<Event*>( mIncidence );
-        timeStr = event->dtEndTimeStr( true, KOPrefs::instance()->timeSpec() );
+        timeStr = IncidenceFormatter::timeToString( event->dtEnd(), true, KOPrefs::instance()->timeSpec() );
       }
     }
     if ( !timeStr.isEmpty() ) {

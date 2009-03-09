@@ -224,11 +224,11 @@ void AlarmDialog::addIncidence( Incidence *incidence,
       }
     }
     if ( item->text( 1 ).isEmpty() ) {
-      item->setText( 1, incidence->dtStartStr() );
+      item->setText( 1, IncidenceFormatter::dateToString( incidence->dtStart() ) );
     }
   } else if ( ( todo = dynamic_cast<Todo *>( incidence ) ) ) {
     item->setIcon( 0, SmallIcon( "view-calendar-tasks" ) );
-    item->setText( 1, todo->dtDueStr() );
+    item->setText( 1, IncidenceFormatter::dateToString( todo->dtDue() ) );
   }
   item->setText( 2, triggerStr );
 

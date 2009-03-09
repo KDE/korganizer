@@ -649,7 +649,7 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
       return QVariant( todo->percentComplete() );
     case DueDateColumn:
       if ( todo->hasDueDate() && todo->dtDue().date().isValid() ) {
-        return QVariant( todo->dtDueStr() );
+        return QVariant( IncidenceFormatter::dateToString( todo->dtDue() ) );
       } else {
         return QVariant( QString() );
       }
