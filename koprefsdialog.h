@@ -27,24 +27,24 @@
 
 #include "korganizer_export.h"
 
-#include <libkdepim/kprefsdialog.h>
 #include <libkdepim/kcmdesignerfields.h>
+#include <libkdepim/kprefsdialog.h>
 
 #include <QHash>
 #include <QSet>
 
-class KLineEdit;
-class KComboBox;
 class KColorButton;
-class KPushButton;
+class KComboBox;
 class KComponentData;
+class KLineEdit;
+class KPushButton;
 
 class Q3ListView;
 class QCheckBox;
 class QColor;
+class QGroupBox;
 class QLabel;
 class QRadioButton;
-class QGroupBox;
 class QTreeWidget;
 
 using namespace KPIM;

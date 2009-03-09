@@ -24,57 +24,44 @@
 */
 
 #include "koprefsdialog.h"
-#include "koprefs.h"
+#include "kocore.h"
 #include "koglobals.h"
+#include "koprefs.h"
 #include "stdcalendar.h"
-#include "calendar/calendardecoration.h"
-#include "korganizer/printplugin.h"
+#include "ui_kogroupwareprefspage.h"
 
 #include <libkdepim/ktimeedit.h>
 
-#include <kcal/calendarresources.h>
-#include <kholidays/holidays.h>
+#include <KCal/CalendarResources>
+
+#include <KHolidays/Holidays>
 using namespace KHolidays;
 
-#include <kvbox.h>
-#include <kcolorbutton.h>
-#include <klocale.h>
-#include <kglobal.h>
-#include <kmessagebox.h>
-#include <kiconloader.h>
-#include <kemailsettings.h>
-#include <kcalendarsystem.h>
-#include <ksystemtimezone.h>
-#include <kpushbutton.h>
-#include <kocore.h>
-#include <kstandarddirs.h>
-#include <kconfig.h>
-#include <KLineEdit>
+#include <KCalendarSystem>
+#include <KColorButton>
 #include <KComboBox>
-#include <KTabWidget>
+#include <KHBox>
 #include <KIntSpinBox>
+#include <KLocale>
+#include <KMessageBox>
+#include <KPushButton>
+#include <KService>
+#include <KStandardDirs>
+#include <KSystemTimeZones>
+#include <KTabWidget>
 
-#include <q3listview.h>
-#include <q3buttongroup.h>
-#include <QLayout>
-#include <QFormLayout>
-#include <QLabel>
-#include <QSlider>
-#include <QFile>
-#include <QSpinBox>
-#include <QCheckBox>
-#include <QRadioButton>
-#include <QPushButton>
-#include <QTextStream>
-#include <QTimeEdit>
-#include <QGridLayout>
+#include <Q3ButtonGroup>
+#include <Q3ListView>
 #include <QBoxLayout>
-#include <QHBoxLayout>
-#include <QVBoxLayout>
+#include <QFormLayout>
+#include <QGridLayout>
 #include <QGroupBox>
+#include <QLabel>
+#include <QPushButton>
+#include <QRadioButton>
+#include <QTimeEdit>
 #include <QTreeWidget>
-
-#include "ui_kogroupwareprefspage.h"
+#include <QVBoxLayout>
 
 KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *parent )
   : KPrefsModule( KOPrefs::instance(), inst, parent )
