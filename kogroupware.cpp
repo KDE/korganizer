@@ -35,23 +35,22 @@
 */
 
 #include "kogroupware.h"
-#include "freebusymanager.h"
 #include "calendarview.h"
-#include "mailscheduler.h"
-#include "koincidenceeditor.h"
+#include "freebusymanager.h"
 #include "koprefs.h"
-#include <kpimutils/email.h>
-#include <kcal/attendee.h>
-#include <kcal/journal.h>
-#include <kcal/incidenceformatter.h>
-#include <kdebug.h>
-#include <kmessagebox.h>
-#include <kstandarddirs.h>
-#include <kdirwatch.h>
-#include <QFile>
-#include <QRegExp>
+#include "koincidenceeditor.h"
+#include "mailscheduler.h"
+
+#include <KCal/CalendarResources>
+#include <KCal/IncidenceFormatter>
+#include <KPIMUtils/Email>
+
+#include <KDirWatch>
+#include <KMessageBox>
+#include <KStandardDirs>
+
 #include <QDir>
-#include <QTextStream>
+#include <QFile>
 #include <QTimer>
 
 FreeBusyManager *KOGroupware::mFreeBusyManager = 0;
@@ -181,32 +180,37 @@ void KOGroupware::incomingDirChanged( const QString &path )
   KCal::ScheduleMessage::Status status = message->status();
   KCal::Incidence *incidence = dynamic_cast<KCal::Incidence*>( message->event() );
   KCal::MailScheduler scheduler( mCalendar );
-  if ( action.startsWith( "accepted" ) || action.startsWith( "tentative" ) ||
-       action.startsWith( "delegated" ) || action.startsWith( "counter" ) ) {
+  if ( action.startsWith( QLatin1String( "accepted" ) ) ||
+       action.startsWith( QLatin1String( "tentative" ) ) ||
+       action.startsWith( QLatin1String( "delegated" ) ) ||
+       action.startsWith( QLatin1String( "counter" ) ) ) {
     // Find myself and set my status. This can't be done in the scheduler,
     // since this does not know the choice I made in the KMail bpf
     KCal::Attendee::List attendees = incidence->attendees();
     KCal::Attendee::List::ConstIterator it;
     for ( it = attendees.constBegin(); it != attendees.constEnd(); ++it ) {
       if ( (*it)->email() == receiver ) {
-        if ( action.startsWith( "accepted" ) ) {
+        if ( action.startsWith( QLatin1String( "accepted" ) ) ) {
           (*it)->setStatus( KCal::Attendee::Accepted );
-        } else if ( action.startsWith( "tentative" ) ) {
+        } else if ( action.startsWith( QLatin1String( "tentative" ) ) ) {
           (*it)->setStatus( KCal::Attendee::Tentative );
-        } else if ( KOPrefs::instance()->outlookCompatCounterProposals() && action.startsWith( "counter" ) ) {
+        } else if ( KOPrefs::instance()->outlookCompatCounterProposals() &&
+                    action.startsWith( QLatin1String( "counter" ) ) ) {
           (*it)->setStatus( KCal::Attendee::Tentative );
-        } else if ( action.startsWith( "delegated" ) ) {
+        } else if ( action.startsWith( QLatin1String( "delegated" ) ) ) {
           (*it)->setStatus( KCal::Attendee::Delegated );
         }
         break;
       }
     }
-    if ( KOPrefs::instance()->outlookCompatCounterProposals() || !action.startsWith( "counter" ) )
+    if ( KOPrefs::instance()->outlookCompatCounterProposals() ||
+         !action.startsWith( QLatin1String( "counter" ) ) ) {
       scheduler.acceptTransaction( incidence, method, status );
-  } else if ( action.startsWith( "cancel" ) ) {
+    }
+  } else if ( action.startsWith( QLatin1String( "cancel" ) ) ) {
     // Delete the old incidence, if one is present
     scheduler.acceptTransaction( incidence, KCal::iTIPCancel, status );
-  } else if ( action.startsWith( "reply" ) ) {
+  } else if ( action.startsWith( QLatin1String( "reply" ) ) ) {
     if ( method != iTIPCounter ) {
       scheduler.acceptTransaction( incidence, method, status );
     } else {
@@ -219,7 +223,7 @@ void KOGroupware::incomingDirChanged( const QString &path )
     kError() << "Unknown incoming action" << action;
   }
 
-  if ( action.startsWith( "counter" ) ) {
+  if ( action.startsWith( QLatin1String( "counter" ) ) ) {
     mView->editIncidence( incidence, true );
     KOIncidenceEditor *tmp = mView->editorDialog( incidence );
     tmp->selectInvitationCounterProposal( true );
@@ -319,7 +323,9 @@ bool KOGroupware::sendICalMessage( QWidget *parent,
         for ( QStringList::ConstIterator it = myEmails.begin(); it != myEmails.end(); ++it ) {
           QString email = *it;
           Attendee *me = incidence->attendeeByMail(email);
-          if (me && (me->status()==KCal::Attendee::Accepted || me->status()==KCal::Attendee::Delegated)) {
+          if ( me &&
+               ( me->status() == KCal::Attendee::Accepted ||
+                 me->status() == KCal::Attendee::Delegated ) ) {
             askConfirmation = true;
             break;
           }
@@ -363,12 +369,16 @@ bool KOGroupware::sendICalMessage( QWidget *parent,
   }
 }
 
-void KOGroupware::sendCounterProposal(KCal::Calendar *calendar, KCal::Event * oldEvent, KCal::Event * newEvent) const
+void KOGroupware::sendCounterProposal( KCal::Calendar *calendar,
+                                       KCal::Event *oldEvent,
+                                       KCal::Event *newEvent ) const
 {
-  if ( !oldEvent || !newEvent || *oldEvent == *newEvent || !KOPrefs::instance()->mUseGroupwareCommunication )
+  if ( !oldEvent || !newEvent || *oldEvent == *newEvent ||
+       !KOPrefs::instance()->mUseGroupwareCommunication ) {
     return;
+  }
   if ( KOPrefs::instance()->outlookCompatCounterProposals() ) {
-    Incidence* tmp = oldEvent->clone();
+    Incidence *tmp = oldEvent->clone();
     tmp->setSummary( i18n( "Counter proposal: %1", newEvent->summary() ) );
     tmp->setDescription( newEvent->description() );
     tmp->addComment( i18n( "Proposed new meeting time: %1 - %2",

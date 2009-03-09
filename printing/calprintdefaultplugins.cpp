@@ -30,8 +30,6 @@
 #include "calprintdefaultplugins.h"
 #include "koprefs.h"
 
-#include <libkdepim/kdateedit.h>
-
 #include <KCal/Calendar>
 #include <KCal/Todo>
 #include <KCal/IncidenceFormatter>
@@ -39,7 +37,6 @@
 #include <KCalendarSystem>
 #include <KDateTime>
 #include <KConfigGroup>
-#include <KLocale>
 
 #include <QDateTime>
 #include <QPainter>

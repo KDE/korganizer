@@ -25,24 +25,27 @@
 #ifndef KORGANIZER_PART_H
 #define KORGANIZER_PART_H
 
-#include <kurl.h>
-#include <kparts/part.h>
+#include "korganizer/mainwindow.h"
 
-#include <korganizer/mainwindow.h>
+#include <KUrl>
+#include <KParts/Part>
 
 class CalendarView;
 class ActionManager;
 
+namespace KOrg {
+  class CalendarViewBase;
+}
+using namespace KOrg;
+
 namespace KCal {
-    class Calendar;
+  class Calendar;
   class Incidence;
 }
 using namespace KCal;
+
 namespace KParts {
-class StatusBarExtension;
-}
-namespace KOrg {
-class CalendarViewBase;
+  class StatusBarExtension;
 }
 
 class KOrganizerPart: public KParts::ReadOnlyPart,

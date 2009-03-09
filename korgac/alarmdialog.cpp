@@ -456,12 +456,12 @@ void AlarmDialog::eventNotification()
         QString program = alarm->programFile();
 
         // if the program name contains spaces escape it
-        if ( program.contains( " " )   &&
-             !( program.startsWith( "\"" ) && program.endsWith( "\"" ) ) ) {
-          program = "\"" + program + "\"";
+        if ( program.contains( ' ' )   &&
+             !( program.startsWith( '\"' ) && program.endsWith( '\"' ) ) ) {
+          program = '\"' + program + '\"';
         }
 
-        QProcess::startDetached( program + " " + alarm->programArguments() );
+        QProcess::startDetached( program + ' ' + alarm->programArguments() );
       } else if ( alarm->type() == Alarm::Audio ) {
         beeped = true;
         Phonon::MediaObject *player =

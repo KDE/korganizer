@@ -27,7 +27,6 @@
 
 #include <QObject>
 #include <QList>
-#include <QHash>
 #include <QDate>
 
 class QPixmap;
@@ -37,7 +36,6 @@ class QString;
 namespace KCal {
   class Incidence;
 }
-
 using namespace KCal;
 
 namespace KOrg {

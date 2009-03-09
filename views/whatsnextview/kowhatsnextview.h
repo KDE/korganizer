@@ -24,8 +24,11 @@
 #ifndef KOWHATSNEXTVIEW_H
 #define KOWHATSNEXTVIEW_H
 
-#include <korganizer/baseview.h>
-#include <ktextbrowser.h>
+#include "korganizer/baseview.h"
+using namespace KOrg;
+
+#include <KTextBrowser>
+
 class QUrl;
 
 class WhatsNextTextBrowser : public KTextBrowser

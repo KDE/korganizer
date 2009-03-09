@@ -25,24 +25,12 @@
 #include "kowhatsnextview.h"
 #include "koglobals.h"
 #include "koprefs.h"
-#include "koeventviewerdialog.h"
 
-#include <kcal/calendar.h>
-#include <kcal/incidenceformatter.h>
+#include <KCal/Calendar>
+#include <KCal/IncidenceFormatter>
+#include <KCal/Todo>
 
-#include <kglobal.h>
-#include <klocale.h>
-#include <kiconloader.h>
-#include <kmessagebox.h>
-
-#include <QLayout>
-#include <QTextCodec>
-#include <QFileInfo>
-#include <QLabel>
-#include <QVBoxLayout>
 #include <QBoxLayout>
-
-using namespace KOrg;
 
 void WhatsNextTextBrowser::setSource( const QUrl &name )
 {

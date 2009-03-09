@@ -23,30 +23,19 @@
 */
 
 #include "monthitem.h"
+#include "kodialogmanager.h"
+#include "koglobals.h"
+#include "kohelper.h"
+#include "komessagebox.h"
+#include "koprefs.h"
 #include "monthgraphicsitems.h"
 #include "monthscene.h"
 #include "monthview.h"
-#include "kodialogmanager.h"
-#include "korganizer/incidencechangerbase.h"
 
-#include "koprefs.h"
-#include "kohelper.h"
-#include "koglobals.h"
-#include "komessagebox.h"
-
-#include <kcal/calendar.h>
-#include <kcal/todo.h>
-#include <kcal/journal.h>
-#include <kcal/event.h>
-#include <kcal/incidence.h>
-#include <kcal/incidenceformatter.h>
-
-#include <KDebug>
-
-#include <QDate>
-#include <QColor>
-#include <QPixmap>
-#include <QObject>
+#include <KCal/Calendar>
+#include <KCal/Incidence>
+#include <KCal/IncidenceFormatter>
+#include <KCal/Todo>
 
 using namespace KOrg;
 
@@ -508,13 +497,16 @@ QString IncidenceMonthItem::text( bool end ) const
     QString timeStr;
     if ( mIsTodo ) {
       Todo *todo = static_cast<Todo*>( mIncidence );
-      timeStr = IncidenceFormatter::timeToString( todo->dtDue(), true, KOPrefs::instance()->timeSpec() );
+      timeStr = IncidenceFormatter::timeToString(
+        todo->dtDue(), true, KOPrefs::instance()->timeSpec() );
     } else {
       if ( !end ) {
-        timeStr = IncidenceFormatter::timeToString( mIncidence->dtStart(), true, KOPrefs::instance()->timeSpec() );
+        timeStr = IncidenceFormatter::timeToString(
+          mIncidence->dtStart(), true, KOPrefs::instance()->timeSpec() );
       } else {
         Event *event = static_cast<Event*>( mIncidence );
-        timeStr = IncidenceFormatter::timeToString( event->dtEnd(), true, KOPrefs::instance()->timeSpec() );
+        timeStr = IncidenceFormatter::timeToString(
+          event->dtEnd(), true, KOPrefs::instance()->timeSpec() );
       }
     }
     if ( !timeStr.isEmpty() ) {

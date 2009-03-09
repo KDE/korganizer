@@ -29,7 +29,7 @@
 #include "koeventview.h"
 #include "customlistviewitem.h"
 
-#include <kcal/incidence.h>
+#include <KCal/Incidence>
 
 #include <QHash>
 

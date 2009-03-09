@@ -24,36 +24,20 @@
 */
 
 #include "korganizer_part.h"
-#include "calendarview.h"
-#include "actionmanager.h"
-#include "koglobals.h"
-#include "koprefs.h"
-#include "resourceview.h"
 #include "aboutdata.h"
+#include "actionmanager.h"
+#include "calendarview.h"
 #include "kocore.h"
 #include "korganizerifaceimpl.h"
 #include "stdcalendar.h"
 
-#include <kcal/calendarlocal.h>
-#include <kcal/calendarresources.h>
-#include <kcal/incidenceformatter.h>
-#include <kcal/resourcecalendar.h>
+#include <KCal/IncidenceFormatter>
 
-#include <kparts/genericfactory.h>
-#include <kparts/statusbarextension.h>
-#include <kmenu.h>
-#include <kcomponentdata.h>
-#include <klocale.h>
-#include <kaction.h>
-#include <kdebug.h>
-#include <kstandarddirs.h>
-#include <kconfig.h>
-#include <ktemporaryfile.h>
-#include <kstatusbar.h>
+#include <KAboutData>
+#include <KStatusBar>
+#include <KParts/GenericFactory>
+#include <KParts/StatusBarExtension>
 
-#include <QFile>
-#include <QTimer>
-#include <QLayout>
 #include <QVBoxLayout>
 
 static const KAboutData &createAboutData()

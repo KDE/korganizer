@@ -23,37 +23,32 @@
 */
 
 #include "kotodomodel.h"
-#include "koprefs.h"
-#include "koglobals.h"
 #include "kodialogmanager.h"
+#include "koglobals.h"
+#include "koprefs.h"
 #include "korganizer/incidencechangerbase.h"
 
-#include <kcal/calendar.h>
-#include <kcal/calformat.h>
-#include <kcal/incidence.h>
-#include <kcal/incidenceformatter.h>
-#include <kcal/todo.h>
-
+#include <KCal/Calendar>
+#include <KCal/CalFormat>
+#include <KCal/Incidence>
+#include <KCal/IncidenceFormatter>
+#include <KCal/Todo>
 #ifndef KORG_NODND
-  #include <kcal/icaldrag.h>
-  #include <kcal/vcaldrag.h>
-  #include <kcal/dndfactory.h>
+#include <KCal/DndFactory>
+#include <KCal/ICalDrag>
+#include <KCal/VCalDrag>
 #endif
 
-#include <kpimutils/email.h>
+#include <KPIMUtils/Email>
 
-#include <KMessageBox>
 #include <KDebug>
+#include <KLocale>
+#include <KMessageBox>
 
-#include <QString>
+#include <QBrush>
 #include <QIcon>
-#include <QHash>
-#include <QList>
-#include <QtAlgorithms>
-
 #ifndef KORG_NODND
-  #include <QDrag>
-  #include <QMimeData>
+#include <QMimeData>
 #endif
 
 /** This class represents a node in the todo-tree. */

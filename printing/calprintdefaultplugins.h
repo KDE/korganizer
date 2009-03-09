@@ -34,7 +34,7 @@
 #include "ui_calprintmonthconfig_base.h"
 #include "ui_calprinttodoconfig_base.h"
 
-#include <klocale.h>
+#include <KLocale>
 
 #ifndef KORG_NOPRINTER
 using namespace KCal;

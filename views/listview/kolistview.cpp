@@ -25,26 +25,16 @@
 */
 
 #include "kolistview.h"
+#include "koeventpopupmenu.h"
 #include "koglobals.h"
 #include "koprefs.h"
-#include "koeventpopupmenu.h"
 
-#include <kcal/calendar.h>
-#include <kcal/incidenceformatter.h>
+#include <KCal/IncidenceFormatter>
+#include <KCal/Calendar>
+#include <KCal/Todo>
+#include <KCal/Journal>
 
-#include <klocale.h>
-#include <kdebug.h>
-#include <kiconloader.h>
-#include <kglobal.h>
-
-#include <q3listview.h>
-#include <QLayout>
-#include <QCursor>
-#include <QPixmap>
-#include <QVBoxLayout>
 #include <QBoxLayout>
-
-#include "kolistview.moc"
 
 #ifdef __GNUC__
 #warning Port me!
@@ -117,23 +107,27 @@ bool KOListView::ListItemVisitor::visit( Event *e )
   static const QPixmap eventPxmp = KOGlobals::self()->smallIcon( "view-calendar-day" );
   mItem->setPixmap( 0, eventPxmp );
 
-  mItem->setText( 3, IncidenceFormatter::dateToString( e->dtStart(), true, KOPrefs::instance()->timeSpec() ) );
+  mItem->setText( 3, IncidenceFormatter::dateToString(
+                    e->dtStart(), true, KOPrefs::instance()->timeSpec() ) );
   mItem->setSortKey( 3, e->dtStart().toTimeSpec(
                        KOPrefs::instance()->timeSpec() ).toString( KDateTime::ISODate ) );
   if ( e->allDay() ) {
     mItem->setText( 4, "---" );
   } else {
-    mItem->setText( 4, IncidenceFormatter::timeToString( e->dtStart(), true, KOPrefs::instance()->timeSpec() ) );
+    mItem->setText( 4, IncidenceFormatter::timeToString(
+                      e->dtStart(), true, KOPrefs::instance()->timeSpec() ) );
     mItem->setSortKey( 4, e->dtStart().toTimeSpec(
                          KOPrefs::instance()->timeSpec() ).time().toString( Qt::ISODate ) );
   }
-  mItem->setText( 5, IncidenceFormatter::dateToString( e->dtEnd(), true, KOPrefs::instance()->timeSpec() ) );
+  mItem->setText( 5, IncidenceFormatter::dateToString(
+                    e->dtEnd(), true, KOPrefs::instance()->timeSpec() ) );
   mItem->setSortKey( 5, e->dtEnd().toTimeSpec(
                        KOPrefs::instance()->timeSpec() ).toString( KDateTime::ISODate ) );
   if ( e->allDay() ) {
     mItem->setText( 6, "---" );
   } else {
-    mItem->setText( 6, IncidenceFormatter::timeToString( e->dtEnd(), true, KOPrefs::instance()->timeSpec() ) );
+    mItem->setText( 6, IncidenceFormatter::timeToString(
+                      e->dtEnd(), true, KOPrefs::instance()->timeSpec() ) );
     mItem->setSortKey( 6, e->dtEnd().toTimeSpec(
                          KOPrefs::instance()->timeSpec() ).time().toString( Qt::ISODate ) );
   }
@@ -165,13 +159,15 @@ bool KOListView::ListItemVisitor::visit( Todo *t )
   }
 
   if ( t->hasStartDate() ) {
-    mItem->setText( 3, IncidenceFormatter::dateToString( t->dtStart(), true, KOPrefs::instance()->timeSpec() ) );
+    mItem->setText( 3, IncidenceFormatter::dateToString(
+                      t->dtStart(), true, KOPrefs::instance()->timeSpec() ) );
     mItem->setSortKey( 3, t->dtStart().toTimeSpec(
                          KOPrefs::instance()->timeSpec() ).toString( KDateTime::ISODate ) );
     if ( t->allDay() ) {
       mItem->setText( 4, "---" );
     } else {
-      mItem->setText( 4, IncidenceFormatter::timeToString( t->dtStart(), true, KOPrefs::instance()->timeSpec() ) );
+      mItem->setText( 4, IncidenceFormatter::timeToString(
+                        t->dtStart(), true, KOPrefs::instance()->timeSpec() ) );
       mItem->setSortKey( 4, t->dtStart().toTimeSpec(
                            KOPrefs::instance()->timeSpec() ).time().toString( Qt::ISODate ) );
     }
@@ -181,13 +177,15 @@ bool KOListView::ListItemVisitor::visit( Todo *t )
   }
 
   if ( t->hasDueDate() ) {
-    mItem->setText( 5, IncidenceFormatter::dateToString( t->dtDue(), true, KOPrefs::instance()->timeSpec() ) );
+    mItem->setText( 5, IncidenceFormatter::dateToString(
+                      t->dtDue(), true, KOPrefs::instance()->timeSpec() ) );
     mItem->setSortKey( 5, t->dtDue().toTimeSpec(
                          KOPrefs::instance()->timeSpec() ).toString( KDateTime::ISODate ) );
     if ( t->allDay() ) {
       mItem->setText( 6, "---" );
     } else {
-      mItem->setText( 6, IncidenceFormatter::timeToString( t->dtDue(), true, KOPrefs::instance()->timeSpec() ) );
+      mItem->setText( 6, IncidenceFormatter::timeToString(
+                        t->dtDue(), true, KOPrefs::instance()->timeSpec() ) );
       mItem->setSortKey( 6, t->dtDue().time().toString( Qt::ISODate ) );
     }
   } else {
@@ -208,7 +206,8 @@ bool KOListView::ListItemVisitor::visit( Journal *t )
   } else {
     mItem->setText( 0, t->summary() );
   }
-  mItem->setText( 3, IncidenceFormatter::dateToString( t->dtStart(), true, KOPrefs::instance()->timeSpec() ) );
+  mItem->setText( 3, IncidenceFormatter::dateToString(
+                    t->dtStart(), true, KOPrefs::instance()->timeSpec() ) );
   mItem->setSortKey( 3, t->dtStart().toString( KDateTime::ISODate ) );
 
   return true;
@@ -493,3 +492,5 @@ void KOListView::clear()
   mListView->clear();
   mUidHash.clear();
 }
+
+#include "kolistview.moc"

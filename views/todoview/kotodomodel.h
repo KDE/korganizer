@@ -26,26 +26,22 @@
 #define KOTODOMODEL_H
 
 #include <QAbstractItemModel>
-#include <QWidget>
 #include <QString>
 #include <QHash>
 
-namespace KCal
-{
-class Calendar;
-class Incidence;
-class Todo;
-
+namespace KCal {
+  class Calendar;
+  class Incidence;
+  class Todo;
 #ifndef KORG_NODND
-class DndFactory;
+  class DndFactory;
 #endif
 }
-namespace KOrg
-{
-class IncidenceChangerBase;
-}
-
 using namespace KCal;
+
+namespace KOrg {
+  class IncidenceChangerBase;
+}
 using namespace KOrg;
 
 /**
