@@ -67,14 +67,14 @@ int KOWhatsNextView::currentDateCount()
 void KOWhatsNextView::updateView()
 {
   KIconLoader kil( "korganizer" );
-  QString *ipath = new QString();
+  QString ipath;
   kil.loadIcon( "office-calendar", KIconLoader::NoGroup, 32,
-                KIconLoader::DefaultState, QStringList(), ipath );
+                KIconLoader::DefaultState, QStringList(), &ipath );
 
   mText = "<table width=\"100%\">\n";
   mText += "<tr bgcolor=\"#3679AD\"><td><h1>";
   mText += "<img src=\"";
-  mText += *ipath;
+  mText += ipath;
   mText += "\">";
   mText += "<font color=\"white\"> ";
   mText += i18n( "What's Next?" ) + "</font></h1>";
@@ -100,9 +100,9 @@ void KOWhatsNextView::updateView()
   if ( events.count() > 0 ) {
     mText += "<p></p>";
     kil.loadIcon( "view-calendar-day", KIconLoader::NoGroup, 22,
-                  KIconLoader::DefaultState, QStringList(), ipath );
+                  KIconLoader::DefaultState, QStringList(), &ipath );
     mText += "<h2><img src=\"";
-    mText += *ipath;
+    mText += ipath;
     mText += "\">";
     mText += i18n( "Events:" ) + "</h2>\n";
     mText += "<table>\n";
@@ -143,9 +143,9 @@ void KOWhatsNextView::updateView()
   Todo::List todos = calendar()->todos( TodoSortDueDate, SortDirectionAscending );
   if ( todos.count() > 0 ) {
     kil.loadIcon( "view-calendar-tasks", KIconLoader::NoGroup, 22,
-                  KIconLoader::DefaultState, QStringList(), ipath );
+                  KIconLoader::DefaultState, QStringList(), &ipath );
     mText += "<h2><img src=\"";
-    mText += *ipath;
+    mText += ipath;
     mText += "\">";
     mText += i18n( "To-do:" ) + "</h2>\n";
     mText += "<ul>\n";
@@ -183,9 +183,9 @@ void KOWhatsNextView::updateView()
         if ( replies == 0 ) {
           mText += "<p></p>";
           kil.loadIcon( "mail-reply", KIconLoader::NoGroup, 22,
-                        KIconLoader::DefaultState, QStringList(), ipath );
+                        KIconLoader::DefaultState, QStringList(), &ipath );
           mText += "<h2><img src=\"";
-          mText += *ipath;
+          mText += ipath;
           mText += "\">";
           mText += i18n( "Events and to-dos that need a reply:" ) + "</h2>\n";
           mText += "<table>\n";
@@ -205,9 +205,9 @@ void KOWhatsNextView::updateView()
         if ( replies == 0 ) {
           mText += "<p></p>";
           kil.loadIcon( "mail-reply", KIconLoader::NoGroup, 22,
-                        KIconLoader::DefaultState, QStringList(), ipath );
+                        KIconLoader::DefaultState, QStringList(), &ipath );
           mText += "<h2><img src=\"";
-          mText += *ipath;
+          mText += ipath;
           mText += "\">";
           mText += i18n( "Events and to-dos that need a reply:" ) + "</h2>\n";
           mText += "<table>\n";
@@ -222,8 +222,6 @@ void KOWhatsNextView::updateView()
   }
 
   mText += "</td></tr>\n</table>\n";
-
-  delete ipath;
 
   mView->setText(mText);
 }
