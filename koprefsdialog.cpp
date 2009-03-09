@@ -391,7 +391,7 @@ class KOPrefsDialogTime : public KPrefsModule
       defaultLayout->addWidget( defaultTime->timeEdit(), 0, 1 );
 
       KPrefsWidDuration *defaultDuration =
-        addWidDuration( KOPrefs::instance()->defaultDurationItem(), defaultPage );
+        addWidDuration( KOPrefs::instance()->defaultDurationItem(), "hh:mm", defaultPage );
       defaultLayout->addWidget( defaultDuration->label(), 1, 0 );
       defaultLayout->addWidget( defaultDuration->timeEdit(), 1, 1 );
 
