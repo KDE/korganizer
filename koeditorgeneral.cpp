@@ -393,17 +393,13 @@ void KOEditorGeneral::setDefaults( bool allDay )
 
 void KOEditorGeneral::updateDefaultAlarmTime()
 {
-  // FIXME: Implement a KPrefsComboItem to solve this in a clean way.
-// FIXME: Use an int value for minutes instead of 5 hardcoded values
-  int alarmTime;
-  int a[] = { 1, 5, 10, 15, 30 };
-  int index = KOPrefs::instance()->mAlarmTime;
-  if ( index < 0 || index > 4 ) {
-    alarmTime = 0;
-  } else {
-    alarmTime = a[index];
+  int reminderTime = KOPrefs::instance()->mReminderTime;
+  int index = KOPrefs::instance()->mReminderTimeUnits;
+  if ( index < 0 || index > 2 ) {
+    index = 0;
   }
-  mAlarmTimeEdit->setValue( alarmTime );
+  mAlarmTimeEdit->setValue( reminderTime );
+  mAlarmIncrCombo->setCurrentIndex( index );
 }
 
 void KOEditorGeneral::updateAlarmWidgets()
