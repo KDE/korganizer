@@ -23,17 +23,19 @@
 */
 
 #include "incidencechanger.h"
-#include "koprefs.h"
 #include "kogroupware.h"
+#include "koprefs.h"
 #include "mailscheduler.h"
 
-#include <kcal/assignmentvisitor.h>
-#include <kcal/freebusy.h>
-#include <kcal/dndfactory.h>
+#include <KCal/AssignmentVisitor>
+#include <KCal/CalendarResources>
+#include <KCal/DndFactory>
+#include <KCal/FreeBusy>
+#include <KCal/Incidence>
 
-#include <kdebug.h>
-#include <kmessagebox.h>
-#include <klocale.h>
+#include <KDebug>
+#include <KLocale>
+#include <KMessageBox>
 
 bool IncidenceChanger::beginChange( Incidence *incidence )
 {
@@ -44,7 +46,7 @@ bool IncidenceChanger::beginChange( Incidence *incidence )
   return mCalendar->beginChange( incidence );
 }
 
-bool IncidenceChanger::sendGroupwareMessage( Incidence *incidence,
+bool IncidenceChanger::sendGroupwareMessage( KCal::Incidence *incidence,
                                              KCal::iTIPMethod method, bool deleting )
 {
   if ( KOPrefs::instance()->thatIsMe( incidence->organizer().email() ) &&

@@ -36,28 +36,25 @@
 #ifndef KOGROUPWARE_H
 #define KOGROUPWARE_H
 
-#include <kcal/calendarresources.h>
-#include <kcal/icalformat.h>
-#include <kcal/scheduler.h>
+#include <KCal/ICalFormat>
 
-#include <kio/job.h>
-
-#include <QString>
-
-using namespace KCal;
-
-namespace KCal {
-  class Calendar;
-  class Event;
-}
 class CalendarView;
 class FreeBusyManager;
 
 namespace KOrg {
   class IncidenceChangerBase;
 }
-
 using namespace KOrg;
+
+namespace KCal {
+  class Calendar;
+  class CalendarResources;
+  class Event;
+  class Incidence;
+}
+using namespace KCal;
+
+class QString;
 
 class KOGroupware : public QObject
 {
@@ -70,10 +67,10 @@ class KOGroupware : public QObject
 
     /** Send iCal messages after asking the user
          Returns false if the user cancels the dialog, and true if the
-         user presses Yes og or No.
+         user presses Yes or No.
     */
     bool sendICalMessage( QWidget *parent, KCal::iTIPMethod method,
-                          Incidence *incidence, bool isDeleting = false,
+                          KCal::Incidence *incidence, bool isDeleting = false,
                           bool statusChanged = false );
 
     /**
@@ -97,7 +94,7 @@ class KOGroupware : public QObject
     void incomingDirChanged( const QString &path );
 
     /** Updates some slot connections when the view incidence changer changes */
-    void slotViewNewIncidenceChanger( IncidenceChangerBase *changer );
+    void slotViewNewIncidenceChanger( KOrg::IncidenceChangerBase *changer );
 
     void initialCheckForChanges();
 

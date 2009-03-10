@@ -268,7 +268,7 @@ void CalendarView::setCalendar( Calendar *cal )
   mTodoList->setCalendar( mCalendar );
 }
 
-void CalendarView::setIncidenceChanger( IncidenceChangerBase *changer )
+void CalendarView::setIncidenceChanger( KOrg::IncidenceChangerBase *changer )
 {
   mChanger = changer;
   emit newIncidenceChanger( mChanger );
@@ -1267,7 +1267,6 @@ void CalendarView::dissociateOccurrences( Incidence *incidence, const QDate &dat
                                                 i18n( "KOrganizer Confirmation" ),
                                                 KGuiItem( i18n( "&Dissociate" ) ),
                                                 KGuiItem( i18n( "&Cancel" ) ) );
-
 
     doOnlyThis = ( answer == KMessageBox::Yes );
   } else {

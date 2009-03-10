@@ -132,7 +132,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     DateNavigator *dateNavigator() const { return mNavigator; }
 
     KOIncidenceEditor *editorDialog( Incidence *incidence ) const;
-    IncidenceChangerBase *incidenceChanger() const { return mChanger; }
+    KOrg::IncidenceChangerBase *incidenceChanger() const { return mChanger; }
 
     QDate startDate();
     QDate endDate();
@@ -227,7 +227,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     /** Emitted when auto-archiving options were modified */
     void autoArchivingSettingsModified();
 
-    void newIncidenceChanger( IncidenceChangerBase * );
+    void newIncidenceChanger( KOrg::IncidenceChangerBase * );
     void exportHTML( HTMLExportSettings * );
 
     void newFilterListSignal( const QStringList & );
@@ -608,7 +608,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     QDate activeDate( bool fallbackToToday = false );
 
   protected:
-    void setIncidenceChanger( IncidenceChangerBase *changer );
+    void setIncidenceChanger( KOrg::IncidenceChangerBase *changer );
 
     int msgItemDelete( Incidence *incidence );
 

@@ -37,6 +37,8 @@
 #include "koalternatelabel.h"
 #include "timelabelszone.h"
 
+#include <KCal/CalendarResources>
+
 #include <kcal/calendar.h>
 #include <kcal/icaldrag.h>
 #include <kcal/dndfactory.h>
@@ -1375,8 +1377,8 @@ void KOAgendaView::fillAgenda()
   }
 }
 
-void KOAgendaView::displayIncidence( Incidence *incidence ) {
-
+void KOAgendaView::displayIncidence( Incidence *incidence )
+{
   QDate today = QDate::currentDate();
   DateTimeList::iterator t;
 
@@ -1408,7 +1410,7 @@ void KOAgendaView::displayIncidence( Incidence *incidence ) {
                                                 lastVisibleDateTime );
   } else {
     KDateTime dateToAdd; // date to add to our date list
-    KDateTime incidenceStart; 
+    KDateTime incidenceStart;
     KDateTime incidenceEnd;
 
     if ( todo && todo->hasDueDate() && !todo->isOverdue() ) {
@@ -1427,7 +1429,7 @@ void KOAgendaView::displayIncidence( Incidence *incidence ) {
 
     if  ( dateToAdd <= lastVisibleDateTime && incidenceEnd >= firstVisibleDateTime ) {
       dateTimeList += dateToAdd;
-    } 
+    }
   }
 
   // ToDo items shall be displayed today if they are already overdude
@@ -1440,7 +1442,7 @@ void KOAgendaView::displayIncidence( Incidence *incidence ) {
     bool doAdd = true;
 
     if ( todo->recurs() ) {
-      /* If there's a recurring instance showing up today don't add "today" again 
+      /* If there's a recurring instance showing up today don't add "today" again
        * we don't want the event to appear duplicated */
       for ( t = dateTimeList.begin(); t != dateTimeList.end(); ++t ) {
         if ( t->date() == today ) {
@@ -1660,7 +1662,7 @@ void KOAgendaView::updateEventIndicators()
   updateEventIndicatorBottom( mAgenda->visibleContentsYMax() );
 }
 
-void KOAgendaView::setIncidenceChanger( IncidenceChangerBase *changer )
+void KOAgendaView::setIncidenceChanger( KOrg::IncidenceChangerBase *changer )
 {
   mChanger = changer;
   mAgenda->setIncidenceChanger( changer );

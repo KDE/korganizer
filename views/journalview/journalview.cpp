@@ -35,8 +35,9 @@
 #include "calprinter.h"
 #endif
 
-#include <kcal/journal.h>
 #include <kcal/calendar.h>
+#include <kcal/incidenceformatter.h>
+#include <kcal/journal.h>
 
 #include <kdebug.h>
 #include <kdialog.h>
@@ -310,11 +311,8 @@ void JournalView::readJournal( Journal *j )
   QTextCharFormat dateFormat = bodyFormat;
   dateFormat.setFontWeight( QFont::Bold );
   dateFormat.setFontPointSize( baseFontSize + 1 );
-  if ( !mJournal->allDay() ) {
-    cursor.insertText( mJournal->dtStartStr(), dateFormat );
-  } else {
-    cursor.insertText( mJournal->dtStartDateStr(), dateFormat );
-  }
+  cursor.insertText( IncidenceFormatter::dateTimeToString(
+                       mJournal->dtStart(), mJournal->allDay() ), dateFormat );
   cursor.insertBlock();
   cursor.insertBlock();
   cursor.setBlockCharFormat( bodyFormat );
