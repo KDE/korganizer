@@ -103,7 +103,8 @@ TimelineSubItem::TimelineSubItem( KCal::Incidence *incidence, TimelineItem *pare
   : KDGanttViewTaskItem( parent ), mIncidence( incidence ),
     mLeft( 0 ), mRight( 0 ), mMarkerWidth( 0 )
 {
-  setTooltipText( IncidenceFormatter::toolTipString( incidence ) );
+  setTooltipText( IncidenceFormatter::toolTipStr(
+                    incidence, true, KOPrefs::instance()->timeSpec() ) );
   if ( !incidence->isReadOnly() ) {
     setMoveable( true );
     setResizeable( true );
