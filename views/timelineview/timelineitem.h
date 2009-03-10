@@ -30,10 +30,9 @@ class KDGanttView;
 class KDCanvasPolygon;
 
 namespace KCal {
-  class Calendar;
-  class ResourceCalendar;
   class Incidence;
 }
+using namespace KCal;
 
 namespace KOrg {
 

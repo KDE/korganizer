@@ -18,16 +18,12 @@
 
 #include "timelineitem.h"
 #include "koprefs.h"
-#include "kohelper.h"
+using namespace KOrg;
+
+#include <KCal/Incidence>
+#include <KCal/IncidenceFormatter>
 
 #include <kdgantt1/KDGanttViewSubwidgets.h>
-
-#include <kcal/calendar.h>
-#include <kcal/incidenceformatter.h>
-#include <kcal/resourcecalendar.h>
-
-using namespace KOrg;
-using namespace KCal;
 
 TimelineItem::TimelineItem( const QString &label, KDGanttView *parent )
   : KDGanttViewTaskItem( parent )
