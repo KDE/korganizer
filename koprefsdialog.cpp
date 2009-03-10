@@ -385,26 +385,38 @@ class KOPrefsDialogTime : public KPrefsModule
       QGridLayout *defaultLayout = new QGridLayout( defaultPage );
       defaultLayout->setSpacing( KDialog::spacingHint() );
 
+      QGroupBox *timesGroupBox =
+        new QGroupBox( i18nc( "@title:group", "Appointments" ), defaultPage );
+      defaultLayout->addWidget( timesGroupBox, 0, 0 );
+
+      QGridLayout *timesLayout = new QGridLayout( timesGroupBox );
+
       KPrefsWidTime *defaultTime =
         addWidTime( KOPrefs::instance()->startTimeItem(), defaultPage );
-      defaultLayout->addWidget( defaultTime->label(), 0, 0 );
-      defaultLayout->addWidget( defaultTime->timeEdit(), 0, 1 );
+      timesLayout->addWidget( defaultTime->label(), 0, 0 );
+      timesLayout->addWidget( defaultTime->timeEdit(), 0, 1 );
 
       KPrefsWidDuration *defaultDuration =
         addWidDuration( KOPrefs::instance()->defaultDurationItem(), "hh:mm", defaultPage );
 
-      defaultLayout->addWidget( defaultDuration->label(), 1, 0 );
-      defaultLayout->addWidget( defaultDuration->timeEdit(), 1, 1 );
+      timesLayout->addWidget( defaultDuration->label(), 1, 0 );
+      timesLayout->addWidget( defaultDuration->timeEdit(), 1, 1 );
+
+      QGroupBox *remindersGroupBox =
+        new QGroupBox( i18nc( "@title:group", "Reminders" ), defaultPage );
+      defaultLayout->addWidget( remindersGroupBox, 1, 0 );
+
+      QGridLayout *remindersLayout = new QGridLayout( remindersGroupBox );
 
       QLabel *reminderLabel =
         new QLabel( i18nc( "@label", "Default reminder time:" ), defaultPage );
-      defaultLayout->addWidget( reminderLabel, 2, 0 );
+      remindersLayout->addWidget( reminderLabel, 0, 0 );
       reminderLabel->setWhatsThis( KOPrefs::instance()->reminderTimeItem()->whatsThis() );
       mReminderTimeSpin  = new KIntSpinBox( defaultPage );
       mReminderTimeSpin->setWhatsThis( KOPrefs::instance()->reminderTimeItem()->whatsThis() );
       mReminderTimeSpin->setToolTip( KOPrefs::instance()->reminderTimeItem()->toolTip() );
       connect( mReminderTimeSpin, SIGNAL(valueChanged(int)), SLOT(slotWidChanged()) );
-      defaultLayout->addWidget( mReminderTimeSpin, 2, 1 );
+      remindersLayout->addWidget( mReminderTimeSpin, 0, 1 );
 
       mReminderUnitsCombo = new KComboBox( defaultPage );
       mReminderUnitsCombo->setToolTip(
@@ -418,7 +430,7 @@ class KOPrefsDialogTime : public KPrefsModule
         i18nc( "@item:inlistbox reminder time units in hours", "hour(s)" ) );
       mReminderUnitsCombo->addItem(
         i18nc( "@item:inlistbox reminder time units in days", "day(s)" ) );
-      defaultLayout->addWidget( mReminderUnitsCombo, 2, 2 );
+      remindersLayout->addWidget( mReminderUnitsCombo, 0, 2 );
 
       defaultLayout->setRowStretch( 3, 1 );
       load();
