@@ -320,8 +320,27 @@ void KOAttendeeEditor::readIncidence( KCal::Incidence *incidence )
 
   Attendee::List al = incidence->attendees();
   Attendee::List::ConstIterator it;
-  for ( it = al.constBegin(); it != al.constEnd(); ++it ) {
-    insertAttendee( new Attendee( **it ), true );
+  Attendee *first = 0;
+  for( it = al.constBegin(); it != al.constEnd(); ++it ) {
+    Attendee *a = new Attendee( **it );
+    if ( !first ) {
+      first = a;
+    }
+    insertAttendee( a, true );
+  }
+
+  // Set the initial editing values to the first attendee in the list.
+  if ( first ) {
+    mNameEdit->setText( first->fullName() );
+    mUid = first->uid();
+    mRoleCombo->setCurrentIndex( first->role() );
+    if ( first->status() != KCal::Attendee::None ) {
+      mStatusCombo->setCurrentIndex( first->status() );
+    } else {
+      mStatusCombo->setCurrentIndex( KCal::Attendee::NeedsAction );
+    }
+    mRsvpButton->setChecked( first->RSVP() );
+    mRsvpButton->setEnabled( true );
   }
 }
 
@@ -416,7 +435,11 @@ void KOAttendeeEditor::fillAttendeeInput( KCal::Attendee *a )
   mNameEdit->setText( name );
   mUid = a->uid();
   mRoleCombo->setCurrentIndex( a->role() );
-  mStatusCombo->setCurrentIndex( partStat );
+  if ( partStat != KCal::Attendee::None ) {
+    mStatusCombo->setCurrentIndex( partStat );
+  } else {
+    mStatusCombo->setCurrentIndex( KCal::Attendee::NeedsAction );
+  }
   mRsvpButton->setChecked( rsvp );
 
   mDisableItemUpdate = false;
