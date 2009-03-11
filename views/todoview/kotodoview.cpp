@@ -234,6 +234,8 @@ KOTodoView::KOTodoView( Calendar *cal, QWidget *parent )
   }
   connect( mPercentageCompletedPopupMenu, SIGNAL( triggered( QAction* ) ),
            SLOT( setNewPercentage( QAction* ) ) );
+
+  setMinimumHeight( 50 );
 }
 
 KOTodoView::~KOTodoView()

@@ -45,6 +45,7 @@ KOEventViewer::KOEventViewer( QWidget *parent )
 {
   mIncidence = 0;
   setNotifyClick( true );
+  setMinimumHeight( 1 );
 }
 
 KOEventViewer::~KOEventViewer()
