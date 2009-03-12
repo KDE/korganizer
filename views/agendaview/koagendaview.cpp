@@ -456,6 +456,51 @@ void KOAgendaView::zoomView( const int delta, const QPoint &pos, const Qt::Orien
   }
 }
 
+#ifndef KORG_NOPLUGINS
+
+bool KOAgendaView::loadDecorations( const QStringList &decorations, DecorationList &decoList )
+{
+  foreach ( const QString &decoName, decorations ) {
+    if ( KOPrefs::instance()->selectedPlugins().contains( decoName ) ) {
+      decoList << KOCore::self()->loadCalendarDecoration( decoName );
+    }
+  }
+  return ( decorations.count() > 0 );
+}
+
+void KOAgendaView::placeDecorationsFrame( KHBox *frame, bool decorationsFound )
+{
+  if ( decorationsFound ) {
+    frame->setParent( mSplitterAgenda );
+  }
+  else {
+    frame->setParent( this );
+    mTopLayout->addWidget( frame, 0, 0 );
+  }
+}
+
+void KOAgendaView::placeDecorations( DecorationList &decoList, const QDate &date,
+                                     KHBox *labelBox, bool forWeek )
+{
+  foreach ( CalendarDecoration::Decoration *deco, decoList ) {
+    CalendarDecoration::Element::List elements;
+    elements = forWeek ? deco->weekElements( date ) : deco->dayElements( date );
+    if ( elements.count() > 0 ) {
+      KHBox *decoHBox = new KHBox( labelBox );
+      decoHBox->setFrameShape( QFrame::StyledPanel );
+      decoHBox->setMinimumWidth( 1 );
+
+      foreach ( CalendarDecoration::Element *it, elements ) {
+        KODecorationLabel *label = new KODecorationLabel( it, decoHBox );
+        label->setAlignment( Qt::AlignBottom );
+        label->setMinimumWidth( 1 );
+      }
+    }
+  }
+}
+
+#endif // KORG_NOPLUGINS
+
 void KOAgendaView::createDayLabels()
 {
   // ### Before deleting and recreating we could check if mSelectedDates changed...
@@ -491,30 +536,12 @@ void KOAgendaView::createDayLabels()
 
 #ifndef KORG_NOPLUGINS
   QList<CalendarDecoration::Decoration *> topDecos;
-  if ( KOPrefs::instance()->decorationsAtAgendaViewTop().count() > 0 ) {
-    mDayLabelsFrame->setParent( mSplitterAgenda );
-    foreach ( const QString &decoName, KOPrefs::instance()->decorationsAtAgendaViewTop() ) {
-      if ( KOPrefs::instance()->selectedPlugins().contains( decoName ) ) {
-        topDecos << KOCore::self()->loadCalendarDecoration( decoName );
-      }
-    }
-  } else {
-    mDayLabelsFrame->setParent( this );
-    mTopLayout->addWidget( mDayLabelsFrame, 0, 0 );
-  }
+  QStringList topStrDecos = KOPrefs::instance()->decorationsAtAgendaViewTop();
+  placeDecorationsFrame( mDayLabelsFrame, loadDecorations( topStrDecos, topDecos ) );
 
   QList<CalendarDecoration::Decoration *> botDecos;
-  if ( KOPrefs::instance()->decorationsAtAgendaViewBottom().count() > 0 ) {
-    mBottomDayLabelsFrame->setParent( mSplitterAgenda );
-    foreach ( const QString &decoName, KOPrefs::instance()->decorationsAtAgendaViewBottom() ) {
-      if ( KOPrefs::instance()->selectedPlugins().contains( decoName ) ) {
-        botDecos << KOCore::self()->loadCalendarDecoration( decoName );
-      }
-    }
-  } else {
-    mBottomDayLabelsFrame->setParent( this );
-    mTopLayout->addWidget( mBottomDayLabelsFrame, 0, 0 );
-  }
+  QStringList botStrDecos = KOPrefs::instance()->decorationsAtAgendaViewBottom();
+  placeDecorationsFrame( mBottomDayLabelsFrame, loadDecorations( botStrDecos, botDecos ) );
 #endif
 
   DateList::ConstIterator dit;
@@ -555,73 +582,16 @@ void KOAgendaView::createDayLabels()
     }
 
 #ifndef KORG_NOPLUGINS
-    foreach ( CalendarDecoration::Decoration *deco, topDecos ) {
-      CalendarDecoration::Element::List elements;
-      elements = deco->dayElements( date );
-      if ( elements.count() > 0 ) {
-        KHBox *decoHBox = new KHBox( dayLabelBox );
-        decoHBox->setFrameShape( QFrame::StyledPanel );
-        decoHBox->setMinimumWidth( 1 );
-
-        foreach ( CalendarDecoration::Element *it, elements ) {
-          KODecorationLabel *label = new KODecorationLabel( it, decoHBox );
-          label->setAlignment( Qt::AlignBottom );
-          label->setMinimumWidth( 1 );
-        }
-      }
-    }
-
-    foreach ( CalendarDecoration::Decoration *deco, botDecos ) {
-      CalendarDecoration::Element::List elements;
-      elements = deco->dayElements( date );
-      if ( elements.count() > 0 ) {
-        KHBox *decoHBox = new KHBox( bottomDayLabelBox );
-        decoHBox->setFrameShape( QFrame::StyledPanel );
-        decoHBox->setMinimumWidth( 1 );
-
-        foreach ( CalendarDecoration::Element *it, elements ) {
-          KODecorationLabel *label = new KODecorationLabel( it, decoHBox );
-          label->setAlignment( Qt::AlignBottom );
-          label->setMinimumWidth( 1 );
-        }
-      }
-    }
+    // Day decoration labels
+    placeDecorations( topDecos, date, dayLabelBox, false );
+    placeDecorations( botDecos, date, bottomDayLabelBox, false );
 #endif
   }
 
 #ifndef KORG_NOPLUGINS
   // Week decoration labels
-  foreach ( CalendarDecoration::Decoration *deco, topDecos ) {
-    CalendarDecoration::Element::List elements;
-    elements = deco->weekElements( mSelectedDates.first() );
-    if ( elements.count() > 0 ) {
-      KHBox *decoHBox = new KHBox( weekLabelBox );
-      decoHBox->setFrameShape( QFrame::StyledPanel );
-      decoHBox->setMinimumWidth( 1 );
-
-      foreach ( CalendarDecoration::Element *it, elements ) {
-        KODecorationLabel *label = new KODecorationLabel( it, decoHBox );
-        label->setAlignment( Qt::AlignBottom );
-        label->setMinimumWidth( 1 );
-      }
-    }
-  }
-
-  foreach ( CalendarDecoration::Decoration *deco, botDecos ) {
-    CalendarDecoration::Element::List elements;
-    elements = deco->weekElements( mSelectedDates.first() );
-    if ( elements.count() > 0 ) {
-      KHBox *decoHBox = new KHBox( bottomWeekLabelBox );
-      decoHBox->setFrameShape( QFrame::StyledPanel );
-      decoHBox->setMinimumWidth( 1 );
-
-      foreach ( CalendarDecoration::Element *it, elements ) {
-        KODecorationLabel *label = new KODecorationLabel( it, decoHBox );
-        label->setAlignment( Qt::AlignBottom );
-        label->setMinimumWidth( 1 );
-      }
-    }
-  }
+  placeDecorations( topDecos, mSelectedDates.first(), weekLabelBox, true );
+  placeDecorations( botDecos, mSelectedDates.first(), bottomWeekLabelBox, true );
 #endif
 
   if ( !mIsSideBySide ) {

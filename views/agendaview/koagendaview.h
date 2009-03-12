@@ -58,6 +58,11 @@ namespace KCal {
 }
 
 namespace KOrg {
+#ifndef KORG_NOPLUGINS
+  namespace CalendarDecoration {
+    class Decoration;
+  }
+#endif
   class IncidenceChangerBase;
 }
 
@@ -232,10 +237,19 @@ class KOAgendaView : public KOrg::AgendaView, public KCal::Calendar::CalendarObs
     void newTimeSpanSelectedAllDay( const QPoint &start, const QPoint &end );
 
   private:
+
     bool filterByResource( Incidence *incidence );
     void setupTimeLabel( TimeLabels *timeLabel );
     int timeLabelsWidth();
     void displayIncidence( Incidence *incidence );
+#ifndef KORG_NOPLUGINS
+    typedef QList<KOrg::CalendarDecoration::Decoration *> DecorationList;
+    bool loadDecorations( const QStringList &decorations, DecorationList &decoList );
+    void placeDecorationsFrame( KHBox *frame, bool decorationsFound );
+    void placeDecorations( DecorationList &decoList, const QDate &date,
+                           KHBox *labelBox, bool forWeek );
+#endif
+
 
   private:
     // view widgets
