@@ -289,8 +289,10 @@ void KODayMatrix::updateEvents()
          !( recurType == Recurrence::rWeekly && !KOPrefs::instance()->mWeeklyRecur ) ) {
 
       DateTimeList timeDateList;
+      bool isRecurrent = event->recurs();
+      int eventDuration = event->dtStart().daysTo( event->dtEnd() );
 
-      if ( event->recurs() ) {
+      if ( isRecurrent ) {
         //Its a recurring event, find out in which days it occurs
         timeDateList = event->recurrence()->timesInInterval(
           *new KDateTime( mDays[0], mCalendar->timeSpec() ),
@@ -310,6 +312,13 @@ void KODayMatrix::updateEvents()
         QDate d = t->date();
         int j   = 0;
 
+        QDate occurrenceEnd;
+        if ( isRecurrent ) {
+          occurrenceEnd = d.addDays( eventDuration );
+        } else {
+          occurrenceEnd = event->dtEnd().date();
+        }
+
         do {
 
           mEvents.append( d );
@@ -317,7 +326,7 @@ void KODayMatrix::updateEvents()
           ++j;
           d = d.addDays( 1 );
 
-        } while ( d <= event->dtEnd().date() && j < NUMDAYS );
+        } while ( d <= occurrenceEnd && j < NUMDAYS );
       }
     }
   }
