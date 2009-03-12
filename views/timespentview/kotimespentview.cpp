@@ -79,16 +79,62 @@ class TimeSpentWidget : public QWidget
       QMap<QString, int> secondsSpent;
 
       int total = 0;
+
       foreach ( Event *e, mEventList ) {
-        if ( e->categories().count() ) {
-          foreach ( const QString &s, e->categories() ) {
-            secondsSpent[ s ] += e->dtStart().secsTo( e->dtEnd() );
+
+        KDateTime selectedStart( mTimeSpentView->mStartDate,
+                                 QTime( 0, 0 ),
+                                 e->dtStart().timeSpec() );
+
+        KDateTime selectedEnd( mTimeSpentView->mEndDate.addDays( 1 ),
+                               QTime( 0, 0 ),
+                               e->dtEnd().timeSpec() );
+
+        KDateTime start;
+        KDateTime end;
+
+        // duration of all occurrences added
+        int totalDuration = 0;
+
+        if ( e->recurs() ) {
+          int eventDuration = e->dtStart().secsTo( e->dtEnd() );
+
+          // timesInInterval only return events that have their start inside the interval
+          // so we resize the interval by -eventDuration
+          DateTimeList times = e->recurrence()->timesInInterval( selectedStart.addSecs( -eventDuration ), selectedEnd );
+
+          foreach ( KDateTime kdt, times ) {
+            // either the event's start or the event's end must be in the view's interval
+            if ( kdt >= selectedStart ||
+                 kdt.addSecs( eventDuration ) >= selectedStart ) {
+
+              start = kdt > selectedStart ? kdt : selectedStart;
+              end   = kdt.addSecs( eventDuration ) < selectedEnd ? kdt.addSecs( eventDuration ) : selectedEnd;
+              totalDuration += start.secsTo( end );
+            }
           }
+
         } else {
-          secondsSpent[ i18n( "No category" ) ] += e->dtStart().secsTo( e->dtEnd() );
+          // The event's start can be before the view's start date or end after the view's end
+          start  = e->dtStart() > selectedStart ? e->dtStart() : selectedStart;
+          end    = e->dtEnd()   < selectedEnd   ? e->dtEnd()   : selectedEnd;
+
+          totalDuration += start.secsTo( end );
         }
 
-        total += e->dtStart().secsTo( e->dtEnd() );
+        if ( totalDuration == 0 ) {
+          continue;
+        }
+
+        if ( e->categories().count() ) {
+          foreach ( const QString &s, e->categories() ) {
+            secondsSpent[ s ] += totalDuration;
+          }
+        } else {
+          secondsSpent[ i18n( "No category" ) ] += totalDuration;
+        }
+
+        total += totalDuration;
       }
 
       QMapIterator<QString, int> i( secondsSpent );
@@ -201,14 +247,9 @@ void KOTimeSpentView::updateView()
   }
   text+="</h2>\n";
   */
-  Event::List events;
-  KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
-  for ( QDate date = mStartDate; date <= mEndDate; date = date.addDays( 1 ) ) {
-    events += calendar()->events( date, timeSpec,
-                                  EventSortStartDate, SortDirectionAscending );
-  }
 
-  mView->mEventList = events;
+  KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
+  mView->mEventList = calendar()->events( mStartDate, mEndDate, timeSpec );
   mView->repaint();
 }
 
