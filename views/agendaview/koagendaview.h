@@ -26,9 +26,11 @@
 #define KOAGENDAVIEW_H
 
 #include "agendaview.h"
+#ifndef KORG_NOPRINTER
 #include "calprinter.h"
+#endif
 
-#include <kcal/calendar.h>
+#include <KCal/Calendar>
 
 #include <QFrame>
 #include <QPixmap>
@@ -120,7 +122,9 @@ class KOAgendaView : public KOrg::AgendaView, public KCal::Calendar::CalendarObs
     /** Remove all events from view */
     void clearView();
 
+#ifndef KORG_NOPRINTER
     CalPrinter::PrintType printType();
+#endif
 
     /** start-datetime of selection */
     QDateTime selectionStart() { return mTimeSpanBegin; }
@@ -250,13 +254,12 @@ class KOAgendaView : public KOrg::AgendaView, public KCal::Calendar::CalendarObs
                            KHBox *labelBox, bool forWeek );
 #endif
 
-
   private:
     // view widgets
-    QGridLayout *mTopLayout;
-    QFrame *mDayLabels;
-    KHBox *mDayLabelsFrame;
-    QBoxLayout *mLayoutDayLabels;
+    QGridLayout *mGridLayout;
+    QFrame *mTopDayLabels;
+    KHBox *mTopDayLabelsFrame;
+    QBoxLayout *mLayoutTopDayLabels;
     QFrame *mBottomDayLabels;
     KHBox *mBottomDayLabelsFrame;
     QBoxLayout *mLayoutBottomDayLabels;

@@ -23,66 +23,34 @@
 */
 
 #include "koagendaview.h"
-#include "koglobals.h"
+#include "koagenda.h"
+#include "koagendaitem.h"
+#include "koalternatelabel.h"
 #ifndef KORG_NOPLUGINS
 #include "kocore.h"
 #include "kodecorationlabel.h"
 #endif
-#include "koprefs.h"
-#include "koagenda.h"
-#include "koagendaitem.h"
-#include "kogroupware.h"
 #include "kodialogmanager.h"
 #include "koeventpopupmenu.h"
-#include "koalternatelabel.h"
+#include "koglobals.h"
+#include "koprefs.h"
 #include "timelabelszone.h"
+using namespace KOrg;
 
+#include <KCal/CalFilter>
+#include <KCal/DndFactory>
 #include <KCal/CalendarResources>
 
-#include <kcal/calendar.h>
-#include <kcal/icaldrag.h>
-#include <kcal/dndfactory.h>
-#include <kcal/calfilter.h>
-#include <kcal/incidence.h>
-#include <kcal/incidenceformatter.h>
-#include <kholidays/holidays.h>
+#include <KCalendarSystem>
+#include <KGlobalSettings>
+#include <KHBox>
+#include <KVBox>
 
-#include <kapplication.h>
-#include <kcalendarsystem.h>
-#include <kdebug.h>
-#include <kstandarddirs.h>
-#include <kiconloader.h>
-#include <klocale.h>
-#include <kconfig.h>
-#include <kglobal.h>
-#include <kglobalsettings.h>
-#include <kvbox.h>
-#include <ksystemtimezone.h>
-#include <kpushbutton.h>
-#include <kcombobox.h>
-#include <kwordwrap.h>
-
-#include <QLabel>
-#include <QFrame>
-#include <QLayout>
-#include <QSplitter>
-#include <QFont>
-#include <QFontMetrics>
-#include <QMenu>
-#include <QPainter>
-#include <QPushButton>
-#include <QToolButton>
-#include <QCursor>
-#include <QBitArray>
-#include <QPaintEvent>
+#include <QDrag>
 #include <QGridLayout>
-#include <QBoxLayout>
-#include <QHBoxLayout>
-#include <QResizeEvent>
-#include <QVBoxLayout>
-#include <QListWidget>
-
-using namespace KOrg;
+#include <QPainter>
+#include <QSplitter>
+#include <KWordWrap>
 
 EventIndicator::EventIndicator( Location loc, QWidget *parent )
   : QFrame( parent )
@@ -150,24 +118,24 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent, bool isSideBySide ) 
 {
   mSelectedDates.append( QDate::currentDate() );
 
-  mLayoutDayLabels = 0;
-  mDayLabelsFrame = 0;
-  mDayLabels = 0;
+  mLayoutTopDayLabels = 0;
+  mTopDayLabelsFrame = 0;
+  mTopDayLabels = 0;
   mLayoutBottomDayLabels = 0;
   mBottomDayLabelsFrame = 0;
   mBottomDayLabels = 0;
 
-  mTopLayout = new QGridLayout( this );
-  mTopLayout->setMargin( 0 );
+  mGridLayout = new QGridLayout( this );
+  mGridLayout->setMargin( 0 );
 
   /* Create agenda splitter */
   mSplitterAgenda = new QSplitter( Qt::Vertical, this );
-  mTopLayout->addWidget( mSplitterAgenda, 1, 0 );
+  mGridLayout->addWidget( mSplitterAgenda, 1, 0 );
   mSplitterAgenda->setOpaqueResize( KGlobalSettings::opaqueResize() );
 
   /* Create day name labels for agenda columns */
-  mDayLabelsFrame = new KHBox( mSplitterAgenda );
-  mDayLabelsFrame->setSpacing( 2 );
+  mTopDayLabelsFrame = new KHBox( mSplitterAgenda );
+  mTopDayLabelsFrame->setSpacing( 2 );
 
   /* Create all-day agenda widget */
   mAllDayFrame = new KHBox( mSplitterAgenda );
@@ -472,10 +440,9 @@ void KOAgendaView::placeDecorationsFrame( KHBox *frame, bool decorationsFound )
 {
   if ( decorationsFound ) {
     frame->setParent( mSplitterAgenda );
-  }
-  else {
+  } else {
     frame->setParent( this );
-    mTopLayout->addWidget( frame, 0, 0 );
+    mGridLayout->addWidget( frame, 0, 0 );
   }
 }
 
@@ -506,23 +473,23 @@ void KOAgendaView::createDayLabels()
   // ### Before deleting and recreating we could check if mSelectedDates changed...
   // It would remove some flickering and gain speed (since this is called by
   // each updateView() call)
-  delete mDayLabels;
+  delete mTopDayLabels;
   delete mBottomDayLabels;
 
   QFontMetrics fm = fontMetrics();
 
-  mDayLabels = new QFrame ( mDayLabelsFrame );
-  mDayLabelsFrame->setStretchFactor( mDayLabels, 1 );
-  mLayoutDayLabels = new QHBoxLayout( mDayLabels );
-  mLayoutDayLabels->setMargin( 0 );
+  mTopDayLabels = new QFrame ( mTopDayLabelsFrame );
+  mTopDayLabelsFrame->setStretchFactor( mTopDayLabels, 1 );
+  mLayoutTopDayLabels = new QHBoxLayout( mTopDayLabels );
+  mLayoutTopDayLabels->setMargin( 0 );
   // this spacer moves the day labels over to line up with the day columns
   QSpacerItem *spacer =
     new QSpacerItem( mTimeLabelsZone->timeLabelsWidth(), 1, QSizePolicy::Fixed );
-  mLayoutDayLabels->addSpacerItem( spacer );
-  KVBox *weekLabelBox = new KVBox( mDayLabels );
-  mLayoutDayLabels->addWidget( weekLabelBox );
+  mLayoutTopDayLabels->addSpacerItem( spacer );
+  KVBox *topWeekLabelBox = new KVBox( mTopDayLabels );
+  mLayoutTopDayLabels->addWidget( topWeekLabelBox );
   if ( mIsSideBySide ) {
-    weekLabelBox->hide();
+    topWeekLabelBox->hide();
   }
 
   mBottomDayLabels = new QFrame( mBottomDayLabelsFrame );
@@ -537,7 +504,7 @@ void KOAgendaView::createDayLabels()
 #ifndef KORG_NOPLUGINS
   QList<CalendarDecoration::Decoration *> topDecos;
   QStringList topStrDecos = KOPrefs::instance()->decorationsAtAgendaViewTop();
-  placeDecorationsFrame( mDayLabelsFrame, loadDecorations( topStrDecos, topDecos ) );
+  placeDecorationsFrame( mTopDayLabelsFrame, loadDecorations( topStrDecos, topDecos ) );
 
   QList<CalendarDecoration::Decoration *> botDecos;
   QStringList botStrDecos = KOPrefs::instance()->decorationsAtAgendaViewBottom();
@@ -547,8 +514,8 @@ void KOAgendaView::createDayLabels()
   DateList::ConstIterator dit;
   for ( dit = mSelectedDates.constBegin(); dit != mSelectedDates.constEnd(); ++dit ) {
     QDate date = *dit;
-    KVBox *dayLabelBox = new KVBox( mDayLabels );
-    mLayoutDayLabels->addWidget( dayLabelBox );
+    KVBox *topDayLabelBox = new KVBox( mTopDayLabels );
+    mLayoutTopDayLabels->addWidget( topDayLabelBox );
     KVBox *bottomDayLabelBox = new KVBox( mBottomDayLabels );
     mLayoutBottomDayLabels->addWidget( bottomDayLabelBox );
 
@@ -560,7 +527,7 @@ void KOAgendaView::createDayLabels()
     QString shortstr = QString::number( calsys->day( date ) );
 
     KOAlternateLabel *dayLabel =
-      new KOAlternateLabel( shortstr, longstr, veryLongStr, dayLabelBox );
+      new KOAlternateLabel( shortstr, longstr, veryLongStr, topDayLabelBox );
     dayLabel->setMinimumWidth( 1 );
     dayLabel->setAlignment( Qt::AlignHCenter );
     if ( date == QDate::currentDate() ) {
@@ -574,31 +541,31 @@ void KOAgendaView::createDayLabels()
     QStringList::ConstIterator textit = texts.constBegin();
     for ( ; textit != texts.constEnd(); ++textit ) {
       // Compute a small version of the holiday string for KOAlternateLabel
-      KWordWrap *ww = KWordWrap::formatText( fm, dayLabelBox->rect(), 0, (*textit), -1 );
+      KWordWrap *ww = KWordWrap::formatText( fm, topDayLabelBox->rect(), 0, (*textit), -1 );
       KOAlternateLabel *label =
-        new KOAlternateLabel( ww->truncatedString(), (*textit), (*textit), dayLabelBox );
+        new KOAlternateLabel( ww->truncatedString(), (*textit), (*textit), topDayLabelBox );
       label->setMinimumWidth( 1 );
       label->setAlignment( Qt::AlignCenter );
     }
 
 #ifndef KORG_NOPLUGINS
     // Day decoration labels
-    placeDecorations( topDecos, date, dayLabelBox, false );
+    placeDecorations( topDecos, date, topDayLabelBox, false );
     placeDecorations( botDecos, date, bottomDayLabelBox, false );
 #endif
   }
 
 #ifndef KORG_NOPLUGINS
   // Week decoration labels
-  placeDecorations( topDecos, mSelectedDates.first(), weekLabelBox, true );
+  placeDecorations( topDecos, mSelectedDates.first(), topWeekLabelBox, true );
   placeDecorations( botDecos, mSelectedDates.first(), bottomWeekLabelBox, true );
 #endif
 
   if ( !mIsSideBySide ) {
-    mLayoutDayLabels->addSpacing( mAgenda->verticalScrollBar()->width() );
+    mLayoutTopDayLabels->addSpacing( mAgenda->verticalScrollBar()->width() );
     mLayoutBottomDayLabels->addSpacing( mAgenda->verticalScrollBar()->width() );
   }
-  mDayLabels->show();
+  mTopDayLabels->show();
   mBottomDayLabels->show();
 }
 
@@ -1438,6 +1405,7 @@ void KOAgendaView::clearView()
   mAgenda->clear();
 }
 
+#ifndef KORG_NOPRINTER
 CalPrinter::PrintType KOAgendaView::printType()
 {
   if ( currentDateCount() == 1 ) {
@@ -1446,6 +1414,7 @@ CalPrinter::PrintType KOAgendaView::printType()
     return CalPrinter::Week;
   }
 }
+#endif
 
 void KOAgendaView::updateEventIndicatorTop( int newY )
 {
