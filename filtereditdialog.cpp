@@ -292,6 +292,8 @@ void FilterEdit::editCategorySelection()
 
   if ( !mCategorySelectDialog ) {
     mCategorySelectDialog = new KPIM::CategorySelectDialog( KOPrefs::instance(), this );
+    mCategorySelectDialog->setHelp( "categories-view", "korganizer" );
+    mCategorySelectDialog->setButtons( KDialog::Ok | KDialog::Cancel | KDialog::Help );
     connect( mCategorySelectDialog, SIGNAL(categoriesSelected(const QStringList&)),
              SLOT(updateCategorySelection(const QStringList&)) );
     connect( mCategorySelectDialog, SIGNAL(editCategories()),
