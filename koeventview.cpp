@@ -1,7 +1,7 @@
 /*
   This file is part of KOrganizer.
 
-  Copyright (c) 2000, 2001 Cornelius Schumacher <schumacher@kde.org>
+  Copyright (c) 2000,2001 Cornelius Schumacher <schumacher@kde.org>
   Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
 
   This program is free software; you can redistribute it and/or modify
@@ -27,19 +27,10 @@
 #include "kocore.h"
 #include "koeventpopupmenu.h"
 
-#include <kcal/calendar.h>
-
-#include <klocale.h>
-#include <kdebug.h>
-#include <kiconloader.h>
-#include <kmessagebox.h>
-#include <kxmlguiclient.h>
-#include <kxmlguifactory.h>
+#include <KXMLGUIClient>
+#include <KXMLGUIFactory>
 
 #include <QMenu>
-#include <QCursor>
-
-using namespace KOrg;
 
 //---------------------------------------------------------------------------
 

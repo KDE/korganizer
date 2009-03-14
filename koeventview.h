@@ -26,13 +26,10 @@
 #ifndef KOEVENTVIEW_H
 #define KOEVENTVIEW_H
 
-#include <kcal/incidencebase.h>
-
-#include <korganizer/baseview.h>
-#include <QMenu>
+#include "korganizer/baseview.h"
 
 namespace KCal {
-class Incidence;
+  class Incidence;
 }
 using namespace KCal;
 
