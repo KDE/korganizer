@@ -24,26 +24,17 @@
 */
 
 #include "koeventpopupmenu.h"
-#include "koglobals.h"
-#include "kocorehelper.h"
-#include "korganizer/baseview.h"
 #include "actionmanager.h"
 #ifndef KORG_NOPRINTER
 #include "calprinter.h"
 #endif
+#include "kocorehelper.h"
+#include "koglobals.h"
 
-#include <kcal/calendar.h>
-#include <kcal/event.h>
+#include <KCal/Incidence>
 
-#include <kactioncollection.h>
-#include <klocale.h>
-#include <kdebug.h>
-#include <kiconloader.h>
-#include <kurl.h>
-
-#include <QCursor>
-
-#include "koeventpopupmenu.moc"
+#include <KActionCollection>
+#include <KLocale>
 
 KOEventPopupMenu::KOEventPopupMenu()
 {
@@ -238,3 +229,5 @@ void KOEventPopupMenu::toggleTodoCompleted()
     emit toggleTodoCompletedSignal( mCurrentIncidence );
   }
 }
+
+#include "koeventpopupmenu.moc"

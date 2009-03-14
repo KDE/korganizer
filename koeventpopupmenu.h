@@ -22,14 +22,12 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
+
 #ifndef KOEVENTPOPUPMENU_H
 #define KOEVENTPOPUPMENU_H
-//
-// Context menu for event views with standard event actions
-//
 
+#include <QDate>
 #include <QMenu>
-#include <QDateTime>
 
 namespace KCal {
   class Calendar;
@@ -37,6 +35,9 @@ namespace KCal {
 }
 using namespace KCal;
 
+/**
+ * Context menu for event views with standard event actions.
+*/
 class KOEventPopupMenu : public QMenu
 {
   Q_OBJECT
