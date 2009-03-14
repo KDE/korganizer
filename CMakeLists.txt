@@ -1,24 +1,32 @@
+project(korganizer)
+
 #
 # The following macros can be defined to alter KOrganizer behavior.
 # (if desired, use add_definitions() to define them)
 #
-# KORG_NOARCHIVE - turns-off the Archive Dialog which allows incidences to be
+# KORG_NOARCHIVE - turns-off the Archive dialog which allows incidences to be
 #                  archived/deleted. No idea why you would want to define this.
 #
-# KORG_NODND     - turns-off the ability to Drag-and-Drop incidences in the
+option(KORG_NOARCHIVE "Turn-off the Archive dialog which allows incidences to be archived/deleted." FALSE)
+# KORG_NODND     - turns-off the ability to drag-and-drop incidences in the
 #                  views or between a view and the navigator. Probably necessary
 #                  if KOrganizer is being used on small form factor devices.
+option(KORG_NODND "Turn-off the ability to drag-and-drop incidences in the views or between a view and the date navigator." FALSE)
 #
 # KORG_NODECOS - turns-off decoration plugins in views.
 #                No idea why you would want to define this, perhaps to save
 #                screen real estate? But there are a config options for that.
+option(KORG_NODECOS "Turn-off decoration plugins in views." FALSE)
 #
 # KORG_NOPRINTER - turns-off printing support. Useful if KOrganizer is used
 #                  in a situation where no printers would be accessible.
 #
-project(korganizer)
+option(KORG_NOPRINTER "Turn-off printing support." FALSE)
+
 
 if(KMAIL_SUPPORTED)
+#TODO: make korganizer buildable without kmail (i.e. w/o the kmail dbus stuff)
+#TODO: in this case, pass -DKORG_NOKMAIL_DBUS. course, this reduces functionality
 
   add_subdirectory( tests )
 
