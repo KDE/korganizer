@@ -9,9 +9,9 @@
 #                  views or between a view and the navigator. Probably necessary
 #                  if KOrganizer is being used on small form factor devices.
 #
-# KORG_NOPLUGINS - turns-off plugins (decoration plugins) in views.
-#                  No idea why you'd want to do this, especially since
-#                  printing and other plugins are used unconditionally.
+# KORG_NODECOS - turns-off decoration plugins in views.
+#                No idea why you would want to define this, perhaps to save
+#                screen real estate? But there are a config options for that.
 #
 # KORG_NOPRINTER - turns-off printing support. Useful if KOrganizer is used
 #                  in a situation where no printers would be accessible.

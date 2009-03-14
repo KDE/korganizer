@@ -26,7 +26,7 @@
 #include "koagenda.h"
 #include "koagendaitem.h"
 #include "koalternatelabel.h"
-#ifndef KORG_NOPLUGINS
+#ifndef KORG_NODECOS
 #include "kocore.h"
 #include "kodecorationlabel.h"
 #endif
@@ -424,7 +424,7 @@ void KOAgendaView::zoomView( const int delta, const QPoint &pos, const Qt::Orien
   }
 }
 
-#ifndef KORG_NOPLUGINS
+#ifndef KORG_NODECOS
 
 bool KOAgendaView::loadDecorations( const QStringList &decorations, DecorationList &decoList )
 {
@@ -466,7 +466,7 @@ void KOAgendaView::placeDecorations( DecorationList &decoList, const QDate &date
   }
 }
 
-#endif // KORG_NOPLUGINS
+#endif // KORG_NODECOS
 
 void KOAgendaView::createDayLabels()
 {
@@ -501,7 +501,7 @@ void KOAgendaView::createDayLabels()
 
   const KCalendarSystem *calsys = KOGlobals::self()->calendarSystem();
 
-#ifndef KORG_NOPLUGINS
+#ifndef KORG_NODECOS
   QList<CalendarDecoration::Decoration *> topDecos;
   QStringList topStrDecos = KOPrefs::instance()->decorationsAtAgendaViewTop();
   placeDecorationsFrame( mTopDayLabelsFrame, loadDecorations( topStrDecos, topDecos ) );
@@ -548,14 +548,14 @@ void KOAgendaView::createDayLabels()
       label->setAlignment( Qt::AlignCenter );
     }
 
-#ifndef KORG_NOPLUGINS
+#ifndef KORG_NODECOS
     // Day decoration labels
     placeDecorations( topDecos, date, topDayLabelBox, false );
     placeDecorations( botDecos, date, bottomDayLabelBox, false );
 #endif
   }
 
-#ifndef KORG_NOPLUGINS
+#ifndef KORG_NODECOS
   // Week decoration labels
   placeDecorations( topDecos, mSelectedDates.first(), topWeekLabelBox, true );
   placeDecorations( botDecos, mSelectedDates.first(), bottomWeekLabelBox, true );

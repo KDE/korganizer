@@ -60,7 +60,7 @@ namespace KCal {
 }
 
 namespace KOrg {
-#ifndef KORG_NOPLUGINS
+#ifndef KORG_NODECOS
   namespace CalendarDecoration {
     class Decoration;
   }
@@ -246,7 +246,7 @@ class KOAgendaView : public KOrg::AgendaView, public KCal::Calendar::CalendarObs
     void setupTimeLabel( TimeLabels *timeLabel );
     int timeLabelsWidth();
     void displayIncidence( Incidence *incidence );
-#ifndef KORG_NOPLUGINS
+#ifndef KORG_NODECOS
     typedef QList<KOrg::CalendarDecoration::Decoration *> DecorationList;
     bool loadDecorations( const QStringList &decorations, DecorationList &decoList );
     void placeDecorationsFrame( KHBox *frame, bool decorationsFound );
