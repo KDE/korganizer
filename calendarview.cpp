@@ -2233,6 +2233,8 @@ void CalendarView::deleteIncidence( Incidence *incidence, bool force )
             KGuiItem ( i18n( "Delete C&urrent" ) ),
             itemFuture,
             KGuiItem( i18n( "Delete &All" ) ) );
+        } else {
+          km = msgItemDelete( incidence );
         }
       }
     }
