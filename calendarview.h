@@ -401,7 +401,8 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     void newJournal( const QDate &date );
     void newJournal( const QString &text, const QDate &date=QDate() );
 
-    void toggleAlarm( Incidence * );
+    void toggleAlarm( Incidence *incidence );
+    void toggleTodoCompleted( Incidence *incidence );
     void dissociateOccurrences( Incidence *incidence, const QDate &date );
 
     /**

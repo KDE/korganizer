@@ -55,19 +55,21 @@ class KOEventPopupMenu : public QMenu
     void popupDelete();
     void popupCut();
     void popupCopy();
-    void popupAlarm();
+    void toggleAlarm();
+    void toggleTodoCompleted();
     void dissociateOccurrences();
     void forward();
 
   signals:
     void configChanged();
-    void editIncidenceSignal(Incidence *);
-    void showIncidenceSignal(Incidence *);
-    void deleteIncidenceSignal(Incidence *);
-    void cutIncidenceSignal(Incidence *);
-    void copyIncidenceSignal(Incidence *);
+    void editIncidenceSignal( Incidence * );
+    void showIncidenceSignal( Incidence * );
+    void deleteIncidenceSignal( Incidence * );
+    void cutIncidenceSignal( Incidence * );
+    void copyIncidenceSignal( Incidence * );
     void pasteIncidenceSignal();
-    void toggleAlarmSignal(Incidence *);
+    void toggleAlarmSignal( Incidence * );
+    void toggleTodoCompletedSignal( Incidence * );
     void dissociateOccurrencesSignal( Incidence *, const QDate & );
 
   private:
@@ -77,6 +79,7 @@ class KOEventPopupMenu : public QMenu
 
     bool mHasAdditionalItems;
     QList<QAction *> mEditOnlyItems;
+    QList<QAction *> mTodoOnlyItems;
     QList<QAction *> mRecurrenceItems;
     QAction *mDissociateOccurrences;
 };

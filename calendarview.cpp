@@ -1243,6 +1243,36 @@ void CalendarView::toggleAlarm( Incidence *incidence )
   delete oldincidence;
 }
 
+void CalendarView::toggleTodoCompleted( Incidence *incidence )
+{
+  if ( !incidence || !mChanger ) {
+    kDebug() << "called without having a clicked item";
+    return;
+  }
+  if ( incidence->type() != "Todo" ) {
+    kDebug() << "called for a non-Todo incidence";
+    return;
+  }
+
+  Todo *todo = static_cast<Todo *>( incidence );
+  Todo *oldtodo = todo->clone();
+  if ( !mChanger->beginChange( todo ) ) {
+    kDebug() << "Unable to lock todo";
+    delete oldtodo;
+    return;
+  }
+
+  if ( todo->isCompleted() ) {
+    todo->setPercentComplete( 0 );
+  } else {
+    todo->setCompleted( KDateTime::currentDateTime( KOPrefs::instance()->timeSpec() ) );
+  }
+
+  mChanger->changeIncidence( oldtodo, todo, KOGlobals::COMPLETION_MODIFIED );
+  mChanger->endChange( todo );
+  delete oldtodo;
+}
+
 void CalendarView::dissociateOccurrences( Incidence *incidence, const QDate &date )
 {
 

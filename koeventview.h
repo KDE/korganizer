@@ -108,7 +108,11 @@ class KOEventView : public KOrg::BaseView
      */
     void datesSelected( const DateList datelist );
 
-    //ET CVS MERGE !
+    /**
+     * Emitted when receiving toggleTodoCompletedSignal from a KOEventPopupMenu.
+     */
+    void toggleTodoCompletedSignal( Incidence * );
+
     /**
      * Emitted when an event is moved using the mouse in an agenda
      * view (week / month).

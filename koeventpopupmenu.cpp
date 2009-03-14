@@ -78,16 +78,21 @@ KOEventPopupMenu::KOEventPopupMenu()
                                     this, SLOT(popupDelete()) ) );
   //------------------------------------------------------------------------
   mEditOnlyItems.append( addSeparator() );
+  mTodoOnlyItems.append( addAction( KOGlobals::self()->smallIcon( "task-complete" ),
+                                    i18n( "Togg&le To-do Completed" ),
+                                    this, SLOT(toggleTodoCompleted()) ) );
   mEditOnlyItems.append( addAction( QIcon( KOGlobals::self()->smallIcon( "appointment-reminder" ) ),
-                                    i18n( "&Toggle Reminder" ), this, SLOT(popupAlarm())) );
+                                    i18n( "&Toggle Reminder" ), this, SLOT(toggleAlarm())) );
   //------------------------------------------------------------------------
   mRecurrenceItems.append( addSeparator() );
-  mDissociateOccurrences = addAction( i18n( "&Dissociate From Recurrence" ), this, SLOT(dissociateOccurrences()) );
+  mDissociateOccurrences = addAction( i18n( "&Dissociate From Recurrence" ),
+                                      this, SLOT(dissociateOccurrences()) );
   mRecurrenceItems.append( mDissociateOccurrences );
 
   addSeparator();
-  insertItem( KOGlobals::self()->smallIcon( "mail-forward" ), i18n( "Send as iCalendar..." ),
-              this, SLOT(forward()) );
+  addAction( KOGlobals::self()->smallIcon( "mail-forward" ),
+             i18n( "Send as iCalendar..." ),
+             this, SLOT(forward()) );
 }
 
 void KOEventPopupMenu::showIncidencePopup( Calendar *cal, Incidence *incidence, const QDate &qd )
@@ -100,9 +105,13 @@ void KOEventPopupMenu::showIncidencePopup( Calendar *cal, Incidence *incidence, 
 
     if ( mCurrentIncidence->recurs() ) {
       KDateTime thisDateTime( qd, KOPrefs::instance()->timeSpec() );
-      bool isLastOccurrence  = !mCurrentIncidence->recurrence()->getNextDateTime    ( thisDateTime ).isValid();
-      bool isFirstOccurrence = !mCurrentIncidence->recurrence()->getPreviousDateTime( thisDateTime ).isValid();
-      mDissociateOccurrences->setEnabled( !( isFirstOccurrence && isLastOccurrence ) && !mCurrentIncidence->isReadOnly() );
+      bool isLastOccurrence =
+        !mCurrentIncidence->recurrence()->getNextDateTime( thisDateTime ).isValid();
+      bool isFirstOccurrence =
+        !mCurrentIncidence->recurrence()->getPreviousDateTime( thisDateTime ).isValid();
+      mDissociateOccurrences->setEnabled(
+        !( isFirstOccurrence && isLastOccurrence ) &&
+        !mCurrentIncidence->isReadOnly() );
     }
 
     // Enable/Disabled menu items only valid for editable events.
@@ -112,6 +121,10 @@ void KOEventPopupMenu::showIncidencePopup( Calendar *cal, Incidence *incidence, 
     }
     for ( it = mRecurrenceItems.begin(); it != mRecurrenceItems.end(); ++it ) {
       (*it)->setVisible( mCurrentIncidence->recurs() );
+    }
+    for ( it = mTodoOnlyItems.begin(); it != mTodoOnlyItems.end(); ++it ) {
+      (*it)->setVisible( mCurrentIncidence->type() == "Todo" );
+      (*it)->setEnabled( !mCurrentIncidence->isReadOnly() );
     }
     popup( QCursor::pos() );
   } else {
@@ -173,7 +186,7 @@ void KOEventPopupMenu::popupDelete()
 void KOEventPopupMenu::popupCut()
 {
   if ( mCurrentIncidence ) {
-    emit cutIncidenceSignal(mCurrentIncidence);
+    emit cutIncidenceSignal( mCurrentIncidence );
   }
 }
 
@@ -189,7 +202,7 @@ void KOEventPopupMenu::popupPaste()
   emit pasteIncidenceSignal();
 }
 
-void KOEventPopupMenu::popupAlarm()
+void KOEventPopupMenu::toggleAlarm()
 {
   if ( mCurrentIncidence ) {
     emit toggleAlarmSignal( mCurrentIncidence );
@@ -219,3 +232,9 @@ void KOEventPopupMenu::forward()
   }
 }
 
+void KOEventPopupMenu::toggleTodoCompleted()
+{
+  if ( mCurrentIncidence && mCurrentIncidence->type() == "Todo" ) {
+    emit toggleTodoCompletedSignal( mCurrentIncidence );
+  }
+}
