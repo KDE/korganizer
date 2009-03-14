@@ -26,40 +26,29 @@
 */
 
 #include "kotodoview.h"
-#include "kotodoviewquicksearch.h"
-#include "kotodoviewquickaddline.h"
-#include "kotodomodel.h"
-#include "kotodoviewsortfilterproxymodel.h"
-#include "kotodoviewview.h"
-#include "kotododelegates.h"
-#include "koprefs.h"
-#include "koglobals.h"
-
-#include "kocorehelper.h"
 #ifndef KORG_NOPRINTER
 #include "calprinter.h"
 #endif
+#include "kocorehelper.h"
+#include "koglobals.h"
+#include "koprefs.h"
+#include "kotododelegates.h"
+#include "kotodomodel.h"
+#include "kotodoviewquickaddline.h"
+#include "kotodoviewquicksearch.h"
+#include "kotodoviewsortfilterproxymodel.h"
+#include "kotodoviewview.h"
 
-#include <KCal/Todo>
+#include <libkdepim/kdatepickerpopup.h>
+using namespace KPIM;
+
 #include <KCal/Incidence>
-
-#include <kconfig.h>
-#include <kconfiggroup.h>
-#include <kdatepickerpopup.h>
-#include <kiconloader.h>
-#include <klineedit.h>
+#include <KCal/Todo>
 
 #include <QCheckBox>
-#include <QContextMenuEvent>
 #include <QGridLayout>
 #include <QHeaderView>
-#include <QList>
 #include <QMenu>
-#include <QModelIndex>
-
-using namespace KCal;
-using namespace KOrg;
-using namespace KPIM;
 
 KOTodoView::KOTodoView( Calendar *cal, QWidget *parent )
   : BaseView( cal, parent )

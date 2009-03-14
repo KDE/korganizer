@@ -29,10 +29,6 @@
 
 #include "korganizer/baseview.h"
 
-#include <kcal/todo.h>
-
-#include <QDate>
-
 class KLineEdit;
 
 namespace KCal {
@@ -45,6 +41,7 @@ using namespace KOrg;
 class QMenu;
 class QAction;
 class QCheckBox;
+class QDate;
 class QContextMenuEvent;
 class QItemSelection;
 class QModelIndex;
@@ -76,7 +73,7 @@ class KOTodoView : public BaseView
     void restoreLayout( KConfig *config, const QString &group );
 
   public Q_SLOTS:
-    virtual void setIncidenceChanger( IncidenceChangerBase *changer );
+    virtual void setIncidenceChanger( KOrg::IncidenceChangerBase *changer );
     virtual void showDates( const QDate &start, const QDate &end );
     virtual void showIncidences( const Incidence::List &incidenceList );
     virtual void updateView();
