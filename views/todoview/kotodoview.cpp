@@ -118,8 +118,14 @@ KOTodoView::KOTodoView( Calendar *cal, QWidget *parent )
 
   mFlatView = new QCheckBox( i18nc( "Checkbox to display todos not hirarchical",
                                     "Flat View" ), this );
-  mFlatView->setToolTip( i18n( "Display to-dos as list rather than as tree\n"
-                               "(i.e. without parental relationship displayed)" ) );
+  mFlatView->setToolTip(
+    i18nc( "@info:tooltip",
+           "Display to-dos in flat list instead of a tree" ) );
+  mFlatView->setWhatsThis(
+    i18nc( "@info:whatsthis",
+           "Checking this option will cause the to-dos to be displayed as a "
+           "flat list instead of a hierarchical tree; the parental "
+           "relationships are removed in the display." ) );
   connect( mFlatView, SIGNAL(toggled(bool)),
            mModel, SLOT(setFlatView(bool)) );
 
