@@ -54,15 +54,17 @@ class KOCoreHelper : public KOrg::CoreHelper
       return KOGlobals::self()->calendarSystem();
     }
 
-    virtual KOrg::PrintPlugin::List loadPrintPlugins()
-    {
-      return KOCore::self()->loadPrintPlugins();
-    }
-
     virtual bool isWorkingDay( const QDate &dt )
     {
       return KOGlobals::self()->isWorkDay( dt );
     }
+
+#ifndef KORG_NOPRINTER
+    virtual KOrg::PrintPlugin::List loadPrintPlugins()
+    {
+      return KOCore::self()->loadPrintPlugins();
+    }
+#endif
 };
 
 #endif
