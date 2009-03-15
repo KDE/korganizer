@@ -23,6 +23,20 @@ option(KORG_NODECOS "Turn-off decoration plugins in views." FALSE)
 #
 option(KORG_NOPRINTER "Turn-off printing support." FALSE)
 
+# add C++ macro definitions for options passed to CMake
+if(KORG_NOARCHIVE)
+  add_definitions(-DKORG_NOARCHIVE)
+endif(KORG_NOARCHIVE)
+if(KORG_NODND)
+  add_definitions(-DKORG_NODND)
+endif(KORG_NODND)
+if(KORG_NODECOS)
+  add_definitions(-DKORG_NODECOS)
+endif(KORG_NODECOS)
+if(KORG_NOPRINTER)
+  add_definitions(-DKORG_NOPRINTER)
+endif(KORG_NOPRINTER)
+
 
 if(KMAIL_SUPPORTED)
 #TODO: make korganizer buildable without kmail (i.e. w/o the kmail dbus stuff)
