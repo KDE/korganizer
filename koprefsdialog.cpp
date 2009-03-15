@@ -220,8 +220,14 @@ class KOPrefsDialogTime : public KPrefsModule
       QGridLayout *regionalLayout = new QGridLayout( regionalPage );
       regionalLayout->setSpacing( KDialog::spacingHint() );
 
+      QGroupBox *datetimeGroupBox =
+        new QGroupBox( i18nc( "@title:group", "General Time and Date" ), regionalPage );
+      regionalLayout->addWidget( datetimeGroupBox, 0, 0 );
+
+      QGridLayout *datetimeLayout = new QGridLayout( datetimeGroupBox );
+
       KHBox *timeZoneBox = new KHBox( regionalPage );
-      regionalLayout->addWidget( timeZoneBox, 0, 0, 1, 2 );
+      datetimeLayout->addWidget( timeZoneBox, 0, 0, 1, 2 );
 
       QLabel *timeZoneLabel = new QLabel( i18nc( "@label", "Time zone:" ), timeZoneBox );
       QString whatsThis = i18nc( "@info:whatsthis",
@@ -265,9 +271,20 @@ class KOPrefsDialogTime : public KPrefsModule
       mTimeZoneCombo->setCurrentIndex( nCurrentlySet );
       mTimeZoneCombo->setWhatsThis( whatsThis );
 
+      KPrefsWidTime *dayBegins =
+        addWidTime( KOPrefs::instance()->dayBeginsItem(), regionalPage );
+      datetimeLayout->addWidget( dayBegins->label(), 1, 0 );
+      datetimeLayout->addWidget( dayBegins->timeEdit(), 1, 1 );
+
+      QGroupBox *holidaysGroupBox =
+        new QGroupBox( i18nc( "@title:group", "Holidays" ), regionalPage );
+      regionalLayout->addWidget( holidaysGroupBox, 1, 0 );
+
+      QGridLayout *holidaysLayout = new QGridLayout( holidaysGroupBox );
+
       // holiday region selection
       KHBox *holidayRegBox = new KHBox( regionalPage );
-      regionalLayout->addWidget( holidayRegBox, 1, 0, 1, 2 );
+      holidaysLayout->addWidget( holidayRegBox, 1, 0, 1, 2 );
 
       QLabel *holidayLabel = new QLabel(
         i18nc( "@label", "Use holiday region:" ), holidayRegBox );
@@ -316,14 +333,9 @@ class KOPrefsDialogTime : public KPrefsModule
         }
       }
 
-      KPrefsWidTime *dayBegins =
-        addWidTime( KOPrefs::instance()->dayBeginsItem(), regionalPage );
-      regionalLayout->addWidget( dayBegins->label(), 2, 0 );
-      regionalLayout->addWidget( dayBegins->timeEdit(), 2, 1 );
-
       QGroupBox *workingHoursGroupBox =
         new QGroupBox( i18nc( "@title:group", "Working Hours" ), regionalPage );
-      regionalLayout->addWidget( workingHoursGroupBox, 3, 0, 1, 2 );
+      regionalLayout->addWidget( workingHoursGroupBox, 2, 0 );
 
       QBoxLayout *workingHoursLayout = new QVBoxLayout( workingHoursGroupBox );
 
