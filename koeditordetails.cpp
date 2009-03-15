@@ -24,42 +24,30 @@
 */
 
 #include "koeditordetails.h"
-#include "koprefs.h"
 #include "koglobals.h"
-#include "koeditorfreebusy.h"
-#include "kocore.h"
+#include "koprefs.h"
 
-#include <libkdepim/addressesdialog.h>
-#include <libkdepim/addresseelineedit.h>
 #include <libkdepim/distributionlist.h>
 #include <libkdepim/kvcarddrag.h>
 
-#include <kabc/addresseedialog.h>
-#include <kabc/stdaddressbook.h>
-#include <kcal/incidence.h>
-#include <kpimutils/email.h>
+#include <KABC/StdAddressBook>
+#include <KCal/Incidence>
+#include <KPIMUtils/Email>
 
-#include <KComboBox>
-#include <kdebug.h>
-#include <klocale.h>
-#include <kiconloader.h>
-#include <kmessagebox.h>
-#include <kvbox.h>
+#include <KDebug>
+#include <KLocale>
+#include <KMessageBox>
 
+#include <QBoxLayout>
 #include <QCheckBox>
-#include <QDateTime>
-#include <QLabel>
-#include <QLayout>
-#include <QLineEdit>
+#include <QMimeData>
 #include <QPushButton>
-#include <QRadioButton>
-#include <QRegExp>
-#include <QGridLayout>
-#include <QDragMoveEvent>
-#include <QEvent>
-#include <QDropEvent>
 #include <QVBoxLayout>
+
+#ifndef KORG_NODND
 #include <QDragEnterEvent>
+#include <QDragMoveEvent>
+#endif
 
 template <>
 CustomListViewItem<KCal::Attendee *>::~CustomListViewItem()

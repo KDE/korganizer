@@ -27,36 +27,13 @@
 #include "customlistviewitem.h"
 #include "koattendeeeditor.h"
 
-#include <kcal/attendee.h>
-
-#include <k3listview.h>
-#include <kvbox.h>
-
-#ifndef KORG_NODND
-#include <QDragEnterEvent>
-#include <QDragMoveEvent>
-#include <QDropEvent>
-#endif
-#include <QLabel>
-#include <QEvent>
-#include <QList>
-
-class QPushButton;
-class QCheckBox;
-class QLabel;
-class KComboBox;
-class KHBox;
-class KOEditorFreeBusy;
+#include <K3ListView>
 
 namespace KCal {
   class Attendee;
   class Incidence;
 }
 using namespace KCal;
-
-namespace KPIM {
-  class AddresseeLineEdit;
-}
 
 typedef CustomListViewItem<KCal::Attendee *> AttendeeListItem;
 
@@ -96,10 +73,10 @@ class KOEditorDetails : public KOAttendeeEditor
     void setDefaults();
 
     /** Read incidence and setup widgets accordingly */
-    void readIncidence( Incidence * );
+    void readIncidence( Incidence *incidence );
 
     /** Write settings to incidence */
-    void fillIncidence( Incidence * );
+    void fillIncidence( Incidence *incidence );
 
     /** Check if the input is valid. */
     bool validateInput();
@@ -125,7 +102,6 @@ class KOEditorDetails : public KOAttendeeEditor
     bool mDisableItemUpdate;
 
     K3ListView *mListView;
-//     KOEditorFreeBusy *mFreeBusy;
 };
 
 #endif
