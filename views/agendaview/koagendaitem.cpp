@@ -870,16 +870,7 @@ void KOAgendaItem::paintEvent( QPaintEvent *ev )
   QColor textColor = KOHelper::getTextColor( bgColor );
   p.setPen( textColor );
 
-  p.setFont( KOPrefs::instance()->agendaCalendarItemsFont() );
-  if ( mIncidence ) {
-    if ( mIncidence->type() == "Event" ) {
-      p.setFont( KOPrefs::instance()->agendaCalendarItemsEventsFont() );
-    }
-    if ( mIncidence->type() == "Todo" ) {
-      p.setFont( KOPrefs::instance()->agendaCalendarItemsToDosFont() );
-    }
-  }
-
+  p.setFont( KOPrefs::instance()->agendaViewFont() );
   QFontMetrics fm = p.fontMetrics();
 
   int singleLineHeight = fm.boundingRect( mLabelText ).height();
