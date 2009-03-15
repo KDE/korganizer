@@ -27,27 +27,36 @@
 */
 
 #include "kodaymatrix.h"
-#include "koprefs.h"
 #include "koglobals.h"
+#include "koprefs.h"
+
+#include <KCal/CalendarResources>
+#include <KCal/DndFactory>
+#include <KCal/ICalDrag>
+#include <KCal/VCalDrag>
+
+#include <KCalendarSystem>
+#include <KIcon>
+#include <KLocale>
+#include <KMenu>
+
+#include <QMouseEvent>
+#include <QPainter>
+#include <QPen>
+#include <QToolTip>
+
+#if 0
 #include "kodialogmanager.h"
 
-#include <kcal/vcaldrag.h>
-#include <kcal/icaldrag.h>
-#include <kcal/dndfactory.h>
-#include <kcal/calendarresources.h>
 #include <kcal/resourcecalendar.h>
 
 #include <kaction.h>
 #include <kstandardaction.h>
 #include <kglobal.h>
 #include <kdebug.h>
-#include <klocale.h>
 #include <kiconloader.h>
-#include <kcalendarsystem.h>
-#include <kmenu.h>
 
 #include <QEvent>
-#include <QPainter>
 #include <QPixmap>
 #include <QApplication>
 #include <QDragLeaveEvent>
@@ -57,11 +66,8 @@
 #include <QDropEvent>
 #include <QResizeEvent>
 #include <QDragEnterEvent>
-#include <QMouseEvent>
-#include <QToolTip>
 #include <QCursor>
-
-#include "kodaymatrix.moc"
+#endif
 
 // ============================================================================
 //  K O D A Y M A T R I X
@@ -798,3 +804,5 @@ void KODayMatrix::resizeEvent( QResizeEvent * )
   mDaySize.setHeight( sz.height() * 7 / NUMDAYS );
   mDaySize.setWidth( sz.width() / 7 );
 }
+
+#include "kodaymatrix.moc"

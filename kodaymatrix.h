@@ -26,27 +26,28 @@
 #ifndef KODAYMATRIX_H
 #define KODAYMATRIX_H
 
-#include <kcal/incidencebase.h>
-#include <kcal/calendar.h>
+#include <KCal/Calendar>
 
-#include <QFrame>
 #include <QColor>
+#include <QFrame>
 #include <QMap>
 
+namespace KCal {
+  class Incidence;
+}
+using namespace KCal;
+
 class QEvent;
-class QDragEnterEvent;
-class QDragMoveEvent;
-class QDragLeaveEvent;
-class QDropEvent;
 class QMouseEvent;
 class QResizeEvent;
 class QPaintEvent;
 
-namespace KCal {
-  class Incidence;
-  class Calendar;
-}
-using namespace KCal;
+#ifndef KORG_NODND
+class QDragEnterEvent;
+class QDragMoveEvent;
+class QDragLeaveEvent;
+class QDropEvent;
+#endif
 
 /**
  *  Replacement for kdpdatebuton.cpp that used 42 widgets for the day
@@ -118,26 +119,30 @@ class KODayMatrix: public QFrame, public KCal::Calendar::CalendarObserver
     */
     void updateEvents();
 
-    /** returns the QDate object associated with day indexed by the
-     *  supplied offset.
+    /**
+     * Returns the QDate object associated with day indexed by the supplied
+     * offset.
      */
     const QDate &getDate( int offset ) const;
 
-    /** returns the official name of this holy day or 0 if there is no label
-     *  for this day.
+    /**
+     * Returns the official name of this holy day or 0 if there is no label
+     * for this day.
      */
     QString getHolidayLabel( int offset ) const;
 
-    /** adds all actual selected days from mSelStart to mSelEnd to the supplied
-     *  DateList.
+    /**
+     * Adds all actual selected days from mSelStart to mSelEnd to the supplied
+     * DateList.
      */
     void addSelectedDaysTo( DateList & );
 
-    /** sets the actual to be displayed selection in the day matrix starting
-     *  from start and ending with end. Theview must be manually updated by
-     *  calling repaint. (?)
-     *  @param start start of the new selection
-     *  @param end end date of the new selection
+    /**
+     * Sets the actual to be displayed selection in the day matrix starting
+     * from start and ending with end. Theview must be manually updated by
+     * calling repaint. (?)
+     * @param start start of the new selection
+     * @param end end date of the new selection
      */
     void setSelectedDaysFrom( const QDate &start, const QDate &end );
 
@@ -167,14 +172,15 @@ class KODayMatrix: public QFrame, public KCal::Calendar::CalendarObserver
     void calendarIncidenceDeleted( Incidence *incidence );
 
   public slots:
-    /** Recalculates all the flags of the days in the matrix like holidays or
-     *  events on a day (Actually calls above method with the actual startdate).
+    /**
+     * Recalculates all the flags of the days in the matrix like holidays or
+     * events on a day (Actually calls above method with the actual startdate).
      */
     void updateView();
 
     /**
-     * Calculate which square in the matrix should be
-     * hilighted to indicate it's today.
+     * Calculates which square in the matrix should be hiighted to indicate
+     * the square is on "today".
      */
     void recalculateToday();
 
@@ -184,10 +190,11 @@ class KODayMatrix: public QFrame, public KCal::Calendar::CalendarObserver
     void resourcesChanged();
 
   signals:
-    /** emitted if the user selects a block of days with the mouse by dragging
-     *  a rectangle inside the matrix
+    /**
+     * Emitted if the user selects a block of days with the mouse by dragging
+     * a rectangle inside the matrix
      *
-     *  @param daylist list of days that have been selected by the user
+     * @param daylist list of days that have been selected by the user
      */
     void selected( const KCal::DateList &daylist );
 
@@ -195,18 +202,21 @@ class KODayMatrix: public QFrame, public KCal::Calendar::CalendarObserver
     void newTodoSignal( const QDate &date );
     void newJournalSignal( const QDate &date );
 
-    /** emitted if the user has dropped an incidence (event or todo) inside the matrix
+    /**
+     * Emitted if the user has dropped an incidence (event or todo) inside
+     * the matrix.
      *
-     *  @param incidence the dropped calendar incidence
-     *  @param dt QDate that has been selected
+     * @param incidence the dropped calendar incidence
+     * @param dt QDate that has been selected
      */
     void incidenceDropped( Incidence *incidence, const QDate &dt );
 
-    /** emitted if the user has dropped an event inside the matrix and chose
+    /**
+     * Emitted if the user has dropped an event inside the matrix and chose
      * to move it instead of copy
      *
-     *  @param oldincidence the new calendar incidence
-     *  @param dt QDate that has been selected
+     * @param oldincidence the new calendar incidence
+     * @param dt QDate that has been selected
      */
     void incidenceDroppedMove( Incidence *oldincidence, const QDate &dt );
 
