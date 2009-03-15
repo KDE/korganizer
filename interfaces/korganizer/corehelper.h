@@ -26,6 +26,8 @@
 
 #include "printplugin.h"
 
+#include <KCalendarSystem>
+
 #include <QtCore/QString>
 #include <QtCore/QDateTime>
 #include <QtGui/QColor>
@@ -42,8 +44,10 @@ class CoreHelper
     virtual QString holidayString( const QDate &dt ) = 0;
     virtual QTime dayStart() = 0;
     virtual const KCalendarSystem *calendarSystem() = 0;
-    virtual KOrg::PrintPlugin::List loadPrintPlugins() = 0;
     virtual bool isWorkingDay( const QDate &dt ) = 0;
+#ifndef KORG_NOPRINTER
+    virtual KOrg::PrintPlugin::List loadPrintPlugins() = 0;
+#endif
 };
 
 }

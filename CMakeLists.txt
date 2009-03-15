@@ -54,7 +54,9 @@ if(KMAIL_SUPPORTED)
 
   add_definitions (-DQT3_SUPPORT -DQT3_SUPPORT_WARNINGS)
 
+if(NOT KORG_NOPRINTER)
   add_subdirectory( printing )
+endif(NOT KORG_NOPRINTER)
   add_subdirectory( korgac )
   add_subdirectory( pixmaps )
   add_subdirectory( sounds )

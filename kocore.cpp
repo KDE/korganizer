@@ -1,26 +1,26 @@
 /*
-    This file is part of KOrganizer.
+  This file is part of KOrganizer.
 
-    Copyright (c) 2001,2003 Cornelius Schumacher <schumacher@kde.org>
-    Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+  Copyright (c) 2001,2003 Cornelius Schumacher <schumacher@kde.org>
+  Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-    GNU General Public License for more details.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-    As a special exception, permission is given to link this program
-    with any edition of Qt, and distribute the resulting executable,
-    without including the source code for Qt in the source distribution.
+  As a special exception, permission is given to link this program
+  with any edition of Qt, and distribute the resulting executable,
+  without including the source code for Qt in the source distribution.
 */
 
 #include "kocore.h"
@@ -89,11 +89,13 @@ KService::List KOCore::availableParts()
   return availablePlugins( KOrg::Part::serviceType(), KOrg::Part::interfaceVersion() );
 }
 
+#ifndef KORG_NOPRINTER
 KService::List KOCore::availablePrintPlugins()
 {
   return
     availablePlugins( KOrg::PrintPlugin::serviceType(), KOrg::PrintPlugin::interfaceVersion() );
 }
+#endif
 
 KOrg::Plugin *KOCore::loadPlugin( KService::Ptr service )
 {
@@ -193,6 +195,7 @@ KOrg::Part *KOCore::loadPart( KService::Ptr service, KOrg::MainWindow *parent )
   return pluginFactory->createPluginFactory( parent );
 }
 
+#ifndef KORG_NOPRINTER
 KOrg::PrintPlugin *KOCore::loadPrintPlugin( KService::Ptr service )
 {
   kDebug() << service->library();
@@ -219,6 +222,7 @@ KOrg::PrintPlugin *KOCore::loadPrintPlugin( KService::Ptr service )
 
   return pluginFactory->createPluginFactory();
 }
+#endif
 
 void KOCore::addXMLGUIClient( QWidget *wdg, KXMLGUIClient *guiclient )
 {
@@ -253,6 +257,7 @@ KOrg::Part *KOCore::loadPart( const QString &name, KOrg::MainWindow *parent )
   return 0;
 }
 
+#ifndef KORG_NOPRINTER
 KOrg::PrintPlugin *KOCore::loadPrintPlugin( const QString &name )
 {
   KService::List list = availablePrintPlugins();
@@ -264,6 +269,7 @@ KOrg::PrintPlugin *KOCore::loadPrintPlugin( const QString &name )
   }
   return 0;
 }
+#endif
 
 KOrg::CalendarDecoration::Decoration::List KOCore::loadCalendarDecorations()
 {
@@ -312,6 +318,7 @@ KOrg::Part::List KOCore::loadParts( KOrg::MainWindow *parent )
   return parts;
 }
 
+#ifndef KORG_NOPRINTER
 KOrg::PrintPlugin::List KOCore::loadPrintPlugins()
 {
   KOrg::PrintPlugin::List loadedPlugins;
@@ -330,6 +337,7 @@ KOrg::PrintPlugin::List KOCore::loadPrintPlugins()
   }
   return loadedPlugins;
 }
+#endif
 
 void KOCore::unloadPlugins()
 {

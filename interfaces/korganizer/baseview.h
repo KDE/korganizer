@@ -89,7 +89,9 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
     */
     virtual DateList selectedDates() = 0;
 
+#ifndef KORG_NOPRINTER
     virtual CalPrinterBase::PrintType printType();
+#endif
 
     /**
       Returns the number of currently shown dates.
