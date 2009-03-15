@@ -105,7 +105,7 @@ void History::truncate()
 
 void History::addEntry( Entry *entry )
 {
-  if ( mCurrentMultiEntry ) {
+  if ( mCurrentMultiEntry && mCurrentMultiEntry != entry ) {
     mCurrentMultiEntry->appendEntry( entry );
   } else {
     truncate();
