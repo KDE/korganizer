@@ -29,43 +29,31 @@
 #define KORG_ACTIONMANAGER_H
 
 #include "korganizer_export.h"
-#include <korganizer/part.h>
+#include "korganizer/part.h"
 
-#include <kurl.h>
+#include <KUrl>
 
-#include <QObject>
 #include <QDateTime>
+#include <QObject>
 
-namespace KCal
-{
+class CalendarView;
+class ImportDialog;
+class KOWindowList;
+class ResourceView;
+
+namespace KCal {
   class Calendar;
   class CalendarResources;
+  class HTMLExportSettings;
   class Incidence;
   class ResourceCalendar;
 }
-namespace KOrg
-{
-  class MainWindow;
-}
+using namespace KCal;
 
-class KAction;
-class KActionCollection;
 class KRecentFilesAction;
 class KSelectAction;
-class KToggleAction;
-class KConfigGroup;
 class KTemporaryFile;
-class KXMLGUIClient;
-class CalendarView;
-class KOrganizer;
-class KOWindowList;
-class ImportDialog;
-class ResourceView;
-namespace KCal {
-  class HTMLExportSettings;
-}
-
-using namespace KCal;
+class KToggleAction;
 
 /**
   The ActionManager creates all the actions in KOrganizer. This class

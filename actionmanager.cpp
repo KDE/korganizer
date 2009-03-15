@@ -28,59 +28,48 @@
 
 #include "actionmanager.h"
 #include "calendaradaptor.h"
-
-#include "reminderclient.h"
 #include "calendarview.h"
+#include "eventarchiver.h"
+#include "freebusymanager.h"
+#include "history.h"
+#include "importdialog.h"
 #include "kocore.h"
 #include "kodialogmanager.h"
 #include "koglobals.h"
+#include "kogroupware.h"
 #include "koprefs.h"
 #include "koviewmanager.h"
 #include "kowindowlist.h"
-#include "history.h"
-#include "kogroupware.h"
+#include "reminderclient.h"
 #include "resourceview.h"
-#include "importdialog.h"
-#include "eventarchiver.h"
 #include "stdcalendar.h"
-#include "freebusymanager.h"
 
-#include <kcal/calendarlocal.h>
-#include <kcal/calendarresources.h>
-#include <kcal/filestorage.h>
-#include <kcal/htmlexport.h>
-#include <kcal/htmlexportsettings.h>
-
+#include <KCal/CalendarLocal>
+#include <KCal/FileStorage>
+#include <KCal/HtmlExport>
+#include <kcal/htmlexportsettings.h> //krazy:exclude=camelcase. it's generated
 #include <kmime/kmime_message.h>
 
-#include <KIcon>
-#include <KStandardGuiItem>
-
-#include <kaction.h>
-#include <kactioncollection.h>
-#include <kfiledialog.h>
-#include <kiconloader.h>
-#include <kio/netaccess.h>
-#include <kshortcutsdialog.h>
-#include <kmenu.h>
-#include <kstandarddirs.h>
-#include <ktip.h>
-#include <ktemporaryfile.h>
-#include <kprocess.h>
-#include <kxmlguiclient.h>
-#include <kwindowsystem.h>
-#include <knotification.h>
-#include <ktoggleaction.h>
-#include <krecentfilesaction.h>
-#include <kstandardaction.h>
-
-#include <knewstuff2/engine.h>
-#include <knewstuff2/core/entry.h>
+#include <KAction>
+#include <KActionCollection>
+#include <KFileDialog>
+#include <KMenu>
+#include <KNotification>
+#include <KProcess>
+#include <KRecentFilesAction>
+#include <KSelectAction>
+#include <KShortcutsDialog>
+#include <KStandardAction>
+#include <KStandardDirs>
+#include <KTemporaryFile>
+#include <KTipDialog>
+#include <KToggleAction>
+#include <KWindowSystem>
+#include <KIO/NetAccess>
+#include <KNS/Engine>
 
 #include <QApplication>
 #include <QTimer>
-#include <QLabel>
-#include <QtDBus/QtDBus>
 
 // FIXME: Several places in the file don't use KConfigXT yet!
 KOWindowList *ActionManager::mWindowList = 0;
