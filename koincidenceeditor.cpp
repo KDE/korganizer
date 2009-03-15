@@ -37,6 +37,7 @@
 #include <KCal/ICalFormat>
 
 #include <QBoxLayout>
+#include <QCloseEvent>
 #include <QList>
 #include <KMessageBox>
 #include <QPointer>

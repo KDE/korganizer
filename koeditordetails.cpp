@@ -99,34 +99,36 @@ KOAttendeeListView::~KOAttendeeListView()
 {
 }
 
+#ifndef KORG_NODND
 void KOAttendeeListView::contentsDragEnterEvent( QDragEnterEvent *e )
 {
-  dragEnterEvent(e);
+  dragEnterEvent( e );
 }
+#endif
 
+#ifndef KORG_NODND
 void KOAttendeeListView::contentsDragMoveEvent( QDragMoveEvent *e )
 {
-#ifndef KORG_NODND
   const QMimeData *md = e->mimeData();
   if ( KPIM::KVCardDrag::canDecode( md ) || md->hasText() ) {
     e->accept();
   } else {
     e->ignore();
   }
-#endif
 }
+#endif
 
+#ifndef KORG_NODND
 void KOAttendeeListView::dragEnterEvent( QDragEnterEvent *e )
 {
-#ifndef KORG_NODND
   const QMimeData *md = e->mimeData();
   if ( KPIM::KVCardDrag::canDecode( md ) || md->hasText() ) {
     e->accept();
   } else {
     e->ignore();
   }
-#endif
 }
+#endif
 
 void KOAttendeeListView::addAttendee( const QString &newAttendee )
 {
@@ -134,17 +136,21 @@ void KOAttendeeListView::addAttendee( const QString &newAttendee )
   QString name;
   QString email;
   KPIMUtils::extractEmailAddressAndName( newAttendee, email, name );
+#ifndef KORG_NODND
   emit dropped( new Attendee( name, email, true ) );
+#endif
 }
 
+#ifndef KORG_NODND
 void KOAttendeeListView::contentsDropEvent( QDropEvent *e )
 {
   dropEvent( e );
 }
+#endif
 
+#ifndef KORG_NODND
 void KOAttendeeListView::dropEvent( QDropEvent *e )
 {
-#ifndef KORG_NODND
   const QMimeData *md = e->mimeData();
 
   if ( KPIM::KVCardDrag::canDecode( md ) ) {
@@ -169,8 +175,8 @@ void KOAttendeeListView::dropEvent( QDropEvent *e )
       addAttendee( *it );
     }
   }
-#endif //KORG_NODND
 }
+#endif
 
 KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent )
   : KOAttendeeEditor( parent ), mDisableItemUpdate( false )

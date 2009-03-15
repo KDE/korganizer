@@ -221,15 +221,17 @@ class KODayMatrix: public QFrame, public KCal::Calendar::CalendarObserver
 
     void mouseMoveEvent( QMouseEvent *e );
 
-    void dragEnterEvent( QDragEnterEvent * );
-
-    void dragMoveEvent( QDragMoveEvent * );
-
-    void dragLeaveEvent( QDragLeaveEvent * );
-
-    void dropEvent( QDropEvent * );
-
     void resizeEvent( QResizeEvent * );
+
+#ifndef KORG_NODND
+    void dragEnterEvent( QDragEnterEvent *e );
+
+    void dragMoveEvent( QDragMoveEvent *e );
+
+    void dragLeaveEvent( QDragLeaveEvent *e );
+
+    void dropEvent( QDropEvent *e );
+#endif
 
   private:
     /**

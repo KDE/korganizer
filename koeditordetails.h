@@ -32,11 +32,13 @@
 #include <k3listview.h>
 #include <kvbox.h>
 
+#ifndef KORG_NODND
 #include <QDragEnterEvent>
-#include <QLabel>
 #include <QDragMoveEvent>
-#include <QEvent>
 #include <QDropEvent>
+#endif
+#include <QLabel>
+#include <QEvent>
 #include <QList>
 
 class QPushButton;
@@ -70,6 +72,7 @@ class KOAttendeeListView : public K3ListView
     virtual ~KOAttendeeListView();
     virtual void addAttendee( const QString &newAttendee );
 
+#ifndef KORG_NODND
   public slots:
     virtual void contentsDragEnterEvent( QDragEnterEvent *e );
     virtual void dragEnterEvent( QDragEnterEvent *e );
@@ -79,6 +82,7 @@ class KOAttendeeListView : public K3ListView
 
   signals:
     void dropped( Attendee * );
+#endif
 };
 
 class KOEditorDetails : public KOAttendeeEditor

@@ -44,9 +44,7 @@
 #include <klocale.h>
 #include <kiconloader.h>
 #include <kcalendarsystem.h>
-#ifndef KORG_NODND
 #include <kmenu.h>
-#endif
 
 #include <QEvent>
 #include <QPainter>
@@ -61,9 +59,7 @@
 #include <QDragEnterEvent>
 #include <QMouseEvent>
 #include <QToolTip>
-#ifndef KORG_NODND
 #include <QCursor>
-#endif
 
 #include "kodaymatrix.moc"
 
@@ -514,10 +510,10 @@ enum {
   DRAG_CANCEL = 2
 };
 
+#ifndef KORG_NODND
 void KODayMatrix::dragEnterEvent( QDragEnterEvent *e )
 {
   e->acceptProposedAction();
-#ifndef KORG_NODND
   const QMimeData *md = e->mimeData();
   if ( !ICalDrag::canDecode( md ) && !VCalDrag::canDecode( md ) ) {
     e->ignore();
@@ -528,34 +524,33 @@ void KODayMatrix::dragEnterEvent( QDragEnterEvent *e )
 //  oldPalette = palette();
 //  setPalette(my_HilitePalette);
 //  update();
-#endif
 }
+#endif
 
+#ifndef KORG_NODND
 void KODayMatrix::dragMoveEvent( QDragMoveEvent *e )
 {
-#ifndef KORG_NODND
   const QMimeData *md = e->mimeData();
   if ( !ICalDrag::canDecode( md ) && !VCalDrag::canDecode( md ) ) {
     e->ignore();
     return;
   }
-
   e->accept();
-#endif
 }
+#endif
 
+#ifndef KORG_NODND
 void KODayMatrix::dragLeaveEvent( QDragLeaveEvent *dl )
 {
   Q_UNUSED( dl );
-#ifndef KORG_NODND
 //  setPalette(oldPalette);
 //  update();
-#endif
 }
+#endif
 
+#ifndef KORG_NODND
 void KODayMatrix::dropEvent( QDropEvent *e )
 {
-#ifndef KORG_NODND
   if ( !mCalendar ) {
     e->ignore();
     return;
@@ -631,8 +626,8 @@ void KODayMatrix::dropEvent( QDropEvent *e )
   }
   delete event;
   delete todo;
-#endif
 }
+#endif
 
 // ----------------------------------------------------------------------------
 //  P A I N T   E V E N T   H A N D L I N G
