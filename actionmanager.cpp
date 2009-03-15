@@ -53,7 +53,9 @@
 
 #include <kmime/kmime_message.h>
 
-#include <k3popupmenu.h>
+#include <KIcon>
+#include <KStandardGuiItem>
+
 #include <kaction.h>
 #include <kactioncollection.h>
 #include <kfiledialog.h>
@@ -68,16 +70,16 @@
 #include <kxmlguiclient.h>
 #include <kwindowsystem.h>
 #include <knotification.h>
-#include <KStandardGuiItem>
 #include <ktoggleaction.h>
 #include <krecentfilesaction.h>
 #include <kstandardaction.h>
+
 #include <knewstuff2/engine.h>
 #include <knewstuff2/core/entry.h>
+
 #include <QApplication>
 #include <QTimer>
 #include <QLabel>
-#include <kicon.h>
 #include <QtDBus/QtDBus>
 
 // FIXME: Several places in the file don't use KConfigXT yet!
@@ -1573,7 +1575,8 @@ class ActionManager::ActionStringsVisitor : public IncidenceBase::Visitor
     }
 
   protected:
-    bool visit( Event * ) {
+    bool visit( Event * )
+    {
       if ( mShow ) {
         mShow->setText( i18n( "&Show Event" ) );
       }
@@ -1585,7 +1588,8 @@ class ActionManager::ActionStringsVisitor : public IncidenceBase::Visitor
       }
       return true;
     }
-    bool visit( Todo * ) {
+    bool visit( Todo * )
+    {
       if ( mShow ) {
         mShow->setText( i18n( "&Show To-do" ) );
       }
@@ -1597,7 +1601,14 @@ class ActionManager::ActionStringsVisitor : public IncidenceBase::Visitor
       }
       return true;
     }
-    bool visit( Journal * ) { return assignDefaultStrings(); }
+    bool visit( Journal * )
+    {
+      return assignDefaultStrings();
+    }
+    bool visit( FreeBusy * ) // to inhibit hidden virtual compile warning
+    {
+      return false;
+    }
 
   protected:
     bool assignDefaultStrings() {
@@ -1723,22 +1734,31 @@ void ActionManager::openEventEditor( const QString &summary,
   if ( attachmentMimetype != "message/rfc822" ) {
     action = KOPrefs::Link;
   } else if ( KOPrefs::instance()->defaultEmailAttachMethod() == KOPrefs::Ask ) {
-    K3PopupMenu *menu = new K3PopupMenu( 0 );
-    menu->insertItem( i18n( "Attach as &link" ), KOPrefs::Link );
-    menu->insertItem( i18n( "Attach &inline" ), KOPrefs::InlineFull );
-    menu->insertItem( i18n( "Attach inline &without attachments" ), KOPrefs::InlineBody );
+    KMenu *menu = new KMenu( 0 );
+    QAction *attachLink = menu->addAction( i18n( "Attach as &link" ) );
+    QAction *attachInline = menu->addAction( i18n( "Attach &inline" ) );
+    QAction *attachBody = menu->addAction( i18n( "Attach inline &without attachments" ) );
     menu->addSeparator();
-    menu->insertItem( KIcon( "dialog-cancel" ), i18n( "C&ancel" ), KOPrefs::Ask );
-    action = menu->exec( QCursor::pos(), 0 );
+    menu->addAction( KIcon( "dialog-cancel" ), i18n( "C&ancel" ) );
+
+    QAction *ret = menu->exec( QCursor::pos() );
     delete menu;
+
+    if ( ret == attachLink ) {
+      action = KOPrefs::Link;
+    } else if ( ret == attachInline ) {
+      action = KOPrefs::InlineFull;
+    } else if ( ret == attachBody ) {
+      action = KOPrefs::InlineBody;
+    } else {
+      return;
+    }
   }
 
   QString attData;
   KTemporaryFile tf;
   tf.setAutoRemove( true );
   switch ( action ) {
-    case KOPrefs::Ask:
-      return;
     case KOPrefs::Link:
       attData = uri;
       break;
@@ -1780,7 +1800,6 @@ void ActionManager::openEventEditor( const QString &summary,
       break;
     }
     default:
-      // menu could have been closed by cancel, if so, do nothing
       return;
   }
 
@@ -1820,19 +1839,26 @@ void ActionManager::openTodoEditor( const QString &summary,
   if ( attachmentMimetype != "message/rfc822" ) {
     action = KOPrefs::TodoAttachLink;
   } else if ( KOPrefs::instance()->defaultTodoAttachMethod() == KOPrefs::TodoAttachAsk ) {
-    K3PopupMenu *menu = new K3PopupMenu( 0 );
-    menu->insertItem( i18n( "Attach as &link" ), KOPrefs::TodoAttachLink );
-    menu->insertItem( i18n( "Attach &inline" ), KOPrefs::TodoAttachInlineFull );
+    KMenu *menu = new KMenu( 0 );
+    QAction *attachLink = menu->addAction( i18n( "Attach as &link" ) );
+    QAction *attachInline = menu->addAction( i18n( "Attach &inline" ) );
     menu->addSeparator();
-    menu->insertItem( KIcon( "dialog-cancel" ), i18n( "C&ancel" ), KOPrefs::TodoAttachAsk );
-    action = menu->exec( QCursor::pos(), 0 );
+    menu->addAction( KIcon( "dialog-cancel" ), i18n( "C&ancel" ) );
+
+    QAction *ret = menu->exec( QCursor::pos() );
     delete menu;
+
+    if ( ret == attachLink ) {
+      action = KOPrefs::TodoAttachLink;
+    } else if ( ret == attachInline ) {
+      action = KOPrefs::TodoAttachInlineFull;
+    } else {
+      return;
+    }
   }
 
   QString attData;
   switch ( action ) {
-    case KOPrefs::TodoAttachAsk:
-      return;
     case KOPrefs::TodoAttachLink:
       attData = uri;
       break;
@@ -1840,7 +1866,6 @@ void ActionManager::openTodoEditor( const QString &summary,
       attData = file;
       break;
     default:
-      // menu could have been closed by cancel, if so, do nothing
       return;
   }
 
