@@ -314,21 +314,22 @@ bool IncidenceChanger::changeIncidence( Incidence *oldinc, Incidence *newinc,
     //        for group cheduling. Each implementation could then just do what
     //        it wants with the event. If no groupware is used,use the null
     //        pattern...
-    bool revert = KOPrefs::instance()->mUseGroupwareCommunication;
-    if ( revert &&
-        KOGroupware::instance()->sendICalMessage( 0,
-                                                  KCal::iTIPRequest,
-                                                  newinc, false, statusChanged ) ) {
+    bool success = true;
+    if ( KOPrefs::instance()->mUseGroupwareCommunication ) {
+      success = KOGroupware::instance()->sendICalMessage( 0,
+                                                          KCal::iTIPRequest,
+                                                          newinc, false, statusChanged );
+    }
+
+    if ( success ) {
       // Accept the event changes
       if ( action < 0 ) {
         emit incidenceChanged( oldinc, newinc );
       } else {
         emit incidenceChanged( oldinc, newinc, action );
       }
-      revert = false;
-    }
-
-    if ( revert ) {
+    } else {
+      // revert changes
       assignIncidence( newinc, oldinc );
       return false;
     }
