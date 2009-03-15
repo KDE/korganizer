@@ -150,13 +150,15 @@ void Converter::gregorian_from_absolute( long date, int *yearp, int *monthp,
 {
   int year, month, day;
 
-  for (year = date / 366; date >= absolute_from_gregorian(year + 1, 1, 1);
-       ++year);
-  for (month = 1; (month <= 11)
-                  && (date >= absolute_from_gregorian(year, 1 + month, 1));
-       ++month);
+  for ( year = date / 366;
+        date >= absolute_from_gregorian( year + 1, 1, 1 ); ++year ) {}
 
-  day = 1 + date - absolute_from_gregorian(year, month, 1);
+  for (month = 1;
+       ( month <= 11 ) &&
+               ( date >= absolute_from_gregorian( year, 1 + month, 1 ) );
+       ++month ) {}
+
+  day = 1 + date - absolute_from_gregorian( year, month, 1 );
   *yearp = year;
   *monthp = month;
   *dayp = day;
@@ -168,15 +170,17 @@ void Converter::hebrew_from_absolute( long date, int *yearp, int *monthp,
 {
   int year, month, day, gyear, gmonth, gday, months;
 
-  gregorian_from_absolute(date, &gyear, &gmonth, &gday);
+  gregorian_from_absolute( date, &gyear, &gmonth, &gday );
   year = gyear + 3760;
-  while (date >= absolute_from_hebrew(1 + year, 7, 1))
+  while ( date >= absolute_from_hebrew( 1 + year, 7, 1 ) ) {
     year++;
+  }
   months = hebrew_months_in_year(year);
-  for (month = 7; date > absolute_from_hebrew(year, month,
-                                              hebrew_month_length(year, month));
-       month = 1 + (month % months));
-  day = 1 + date - absolute_from_hebrew(year, month, 1);
+  for ( month = 7;
+        date > absolute_from_hebrew( year, month,
+                                     hebrew_month_length( year, month ) );
+        month = 1 + ( month % months ) ) {}
+  day = 1 + date - absolute_from_hebrew( year, month, 1 );
   *yearp = year;
   *monthp = month;
   *dayp = day;
