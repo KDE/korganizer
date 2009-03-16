@@ -25,8 +25,11 @@
 
 #include "koeventview.h"
 #include "kocore.h"
+#include "koprefs.h"
 #include "koeventpopupmenu.h"
+#include "komessagebox.h"
 
+#include <KCal/Incidence>
 #include <KXMLGUIClient>
 #include <KXMLGUIFactory>
 
@@ -156,6 +159,42 @@ void KOEventView::defaultAction( Incidence *incidence )
 }
 
 //---------------------------------------------------------------------------
+int KOEventView::showMoveRecurDialog( Incidence *inc, const QDate &date ) {
+
+  int answer = KMessageBox::Ok;
+  KGuiItem itemFuture( i18n( "Also &Future Items" ) );
+
+  KDateTime dateTime( date, KOPrefs::instance()->timeSpec() );
+  bool isFirst = !inc->recurrence()->getPreviousDateTime( dateTime ).isValid();
+  bool isLast  = !inc->recurrence()->getNextDateTime( dateTime ).isValid();
+
+  QString message;
+
+  if ( !isFirst && !isLast ) {
+    itemFuture.setEnabled( true );
+    message = i18n( "The item you try to change is a recurring item. "
+                    "Shall the changes be applied only to this single occurrence, "
+                    "also to future items, or to all items in the recurrence?" );
+  } else {
+    itemFuture.setEnabled( false );
+    message = i18n( "The item you try to change is a recurring item. "
+                    "Shall the changes be applied only to this single occurrence "
+                    "or to all items in the recurrence?" );
+  }
+
+  if ( !(isFirst && isLast) ) {
+    answer = KOMessageBox::fourBtnMsgBox( this,
+                                          QMessageBox::Question,
+                                          message,
+                                          i18n( "Changing Recurring Item" ),
+                                          KGuiItem( i18n( "Only &This Item" ) ),
+                                          itemFuture,
+                                          KGuiItem( i18n( "&All Occurrences" ) ) );
+
+  }
+
+  return answer;
+}
 
 #include "koeventview.moc"
 

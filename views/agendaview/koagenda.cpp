@@ -177,9 +177,9 @@ void MarcusBains::updateLocation( bool recalculate )
 /*
   Create an agenda widget with rows rows and columns columns.
 */
-KOAgenda::KOAgenda( int columns, int rows, int rowSize, QWidget *parent,
+KOAgenda::KOAgenda( KOEventView *eventView, int columns, int rows, int rowSize, QWidget *parent,
                     Qt::WFlags f )
-  : Q3ScrollView( parent, /*name*/0, f ), mHolidayMask( 0 ), mChanger( 0 )
+  : mEventView( eventView ), Q3ScrollView( parent, /*name*/0, f ), mHolidayMask( 0 ), mChanger( 0 )
 {
   mColumns = columns;
   mRows = rows;
@@ -195,8 +195,8 @@ KOAgenda::KOAgenda( int columns, int rows, int rowSize, QWidget *parent,
   Create an agenda widget with columns columns and one row. This is used for
   all-day events.
 */
-KOAgenda::KOAgenda( int columns, QWidget *parent, Qt::WFlags f )
-  : Q3ScrollView( parent, /*name*/0, f )
+KOAgenda::KOAgenda( KOEventView *eventView, int columns, QWidget *parent, Qt::WFlags f )
+  : mEventView( eventView ), Q3ScrollView( parent, /*name*/0, f )
 {
   mColumns = columns;
   mRows = 1;
@@ -1082,15 +1082,8 @@ void KOAgenda::endItemAction()
   if ( mItemMoved ) {
     bool modify = true;
     if ( mActionItem->incidence()->recurs() ) {
-      int res = KOMessageBox::fourBtnMsgBox(
-        this, QMessageBox::Question,
-        i18n( "The item you try to change is a recurring item. "
-              "Shall the changes be applied only to this single occurrence, "
-              "only to the future items, or to all items in the recurrence?" ),
-        i18n( "Changing Recurring Item" ),
-        KGuiItem( i18n( "Only &This Item" ) ),
-        KGuiItem( i18n( "Only &Future Items" ) ),
-        KGuiItem( i18n( "&All Occurrences" ) ) );
+      int res = mEventView->showMoveRecurDialog( mActionItem->incidence(),
+                                                 mActionItem->itemDate() );
       switch ( res ) {
       case KMessageBox::Ok: // All occurrences
         // Moving the whole sequene of events is handled by the itemModified below.

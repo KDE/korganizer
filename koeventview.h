@@ -86,6 +86,8 @@ class KOEventView : public KOrg::BaseView
     /** This view is an view for displaying events. */
     bool isEventView() { return true; }
 
+    int showMoveRecurDialog( Incidence *inc, const QDate &date );
+
   public slots:
 
     /**

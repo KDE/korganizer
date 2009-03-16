@@ -146,7 +146,7 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent, bool isSideBySide ) 
 
   // The widget itself
   QWidget *dummyAllDayLeft = new QWidget( mAllDayFrame );
-  mAllDayAgenda = new KOAgenda( 1, mAllDayFrame );
+  mAllDayAgenda = new KOAgenda( this,  1, mAllDayFrame );
   QWidget *dummyAllDayRight = new QWidget( mAllDayFrame );
 
   // Create the event context menu for the all-day agenda
@@ -173,7 +173,7 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent, bool isSideBySide ) 
   mAgendaLayout->addWidget( dummyAgendaRight, 0, 2 );
 
   // Create agenda
-  mAgenda = new KOAgenda( 1, 96, KOPrefs::instance()->mHourSize, agendaFrame );
+  mAgenda = new KOAgenda( this, 1, 96, KOPrefs::instance()->mHourSize, agendaFrame );
   mAgendaLayout->addWidget( mAgenda, 1, 1, 1, 2 );
   mAgendaLayout->setColumnStretch( 1, 1 );
 

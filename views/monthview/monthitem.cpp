@@ -391,17 +391,9 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
   bool modify = true;
 
   if ( mIncidence->recurs() ) {
-    int res = KOMessageBox::fourBtnMsgBox( 0, QMessageBox::Question,
-                i18n( "The item you try to change is a recurring item. "
-                      "Shall the changes be applied only to this single occurrence, "
-                      "only to the future items, or to all items in the recurrence?" ),
-                i18n( "Changing Recurring Item" ),
-                KGuiItem( i18n( "Only &This Item" ) ),
-                KGuiItem( i18n( "Only &Future Items" ) ),
-                KGuiItem( i18n( "&All Occurrences" ) ) );
+    int res = monthScene()->mMonthView->showMoveRecurDialog( mIncidence, startDate() );
     switch ( res ) {
       case KMessageBox::Ok: // All occurrences
-        // Moving the whole sequene of events is handled by the itemModified below.
         modify = true;
         break;
       case KMessageBox::Yes: // Just this occurrence

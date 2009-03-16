@@ -24,6 +24,7 @@
 #ifndef KOAGENDA_H
 #define KOAGENDA_H
 
+#include "koeventview.h"
 #include <kcal/incidence.h>
 
 #include <q3scrollview.h>
@@ -79,9 +80,9 @@ class KOAgenda : public Q3ScrollView
 {
   Q_OBJECT
   public:
-    KOAgenda ( int columns, int rows, int columnSize, QWidget *parent=0,
+    KOAgenda ( KOEventView *eventView, int columns, int rows, int columnSize, QWidget *parent=0,
                Qt::WFlags f = 0 );
-    explicit KOAgenda ( int columns, QWidget *parent = 0, Qt::WFlags f = 0 );
+    explicit KOAgenda ( KOEventView *eventView, int columns, QWidget *parent = 0, Qt::WFlags f = 0 );
     virtual ~KOAgenda();
 
     Incidence *selectedIncidence() const;
@@ -403,6 +404,8 @@ class KOAgenda : public Q3ScrollView
 
     bool mReturnPressed;
     KOrg::IncidenceChangerBase *mChanger;
+
+    KOEventView *mEventView;
 };
 
 #endif // KOAGENDA_H
