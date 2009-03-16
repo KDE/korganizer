@@ -561,12 +561,14 @@ class KOPrefsDialogViews : public KPrefsModule
 
       generalLayout->addStretch( 1 );
 
+      // Tab: Views->Agenda View
       QFrame *agendaFrame = new QFrame( this );
       tabWidget->addTab( agendaFrame, KIcon( "view-calendar-workweek" ),
                          i18nc( "@title:tab", "Agenda View" ) );
 
       QBoxLayout *agendaLayout = new QVBoxLayout( agendaFrame );
 
+      // GroupBox: Views->Agenda View->Display Options
       QVBoxLayout *displayLayout = new QVBoxLayout;
       QGroupBox *displayBox = new QGroupBox( i18nc( "@title:group", "Display Options" ) );
 
@@ -611,34 +613,49 @@ class KOPrefsDialogViews : public KPrefsModule
         addWidBool( KOPrefs::instance()->selectionStartsEditorItem() )->checkBox() );
 
       displayBox->setLayout( displayLayout );
-
       agendaLayout->addWidget( displayBox );
+
+      // GroupBox: Views->Agenda View->Color Usage
       agendaLayout->addWidget(
         addWidRadios( KOPrefs::instance()->agendaViewColorsItem() )->groupBox() );
+
+      // GroupBox: Views->Agenda View->Multiple Calendars
       agendaLayout->addWidget(
         addWidRadios( KOPrefs::instance()->agendaViewCalendarDisplayItem() )->groupBox() );
 
       agendaLayout->addStretch( 1 );
 
+      // Tab: Views->Month View
       QFrame *monthFrame = new QFrame( this );
       tabWidget->addTab( monthFrame, KIcon( "view-calendar-month" ),
                          i18nc( "@title:tab", "Month View" ) );
 
       QBoxLayout *monthLayout = new QVBoxLayout( monthFrame );
 
-      monthLayout->addWidget(
+      // GroupBox: Views->Month View->Display Options
+      QVBoxLayout *mdisplayLayout = new QVBoxLayout;
+      QGroupBox *mdisplayBox = new QGroupBox( i18nc( "@title:group", "Display Options" ) );
+      mdisplayLayout->addWidget(
         addWidBool( KOPrefs::instance()->enableMonthScrollItem() )->checkBox() );
-      monthLayout->addWidget(
+      mdisplayLayout->addWidget(
         addWidBool( KOPrefs::instance()->enableMonthItemIconsItem() )->checkBox() );
-      monthLayout->addWidget(
+      mdisplayLayout->addWidget(
         addWidBool( KOPrefs::instance()->fullViewMonthItem() )->checkBox() );
-      monthLayout->addWidget(
-        addWidBool( KOPrefs::instance()->monthViewUsesCategoryColorItem() )->checkBox() );
-      monthLayout->addWidget(
-        addWidBool( KOPrefs::instance()->monthViewUsesResourceColorItem() )->checkBox() );
+      mdisplayBox->setLayout( mdisplayLayout );
+      monthLayout->addWidget( mdisplayBox );
 
+      // GroupBox: Views->Month View->Color Usage
+      QVBoxLayout *mcolorsLayout = new QVBoxLayout;
+      QGroupBox *mcolorsBox = new QGroupBox( i18nc( "@title:group", "Color Usage" ) );
+      mcolorsLayout->addWidget(
+        addWidBool( KOPrefs::instance()->monthViewUsesCategoryColorItem() )->checkBox() );
+      mcolorsLayout->addWidget(
+        addWidBool( KOPrefs::instance()->monthViewUsesResourceColorItem() )->checkBox() );
+      mcolorsBox->setLayout( mcolorsLayout );
+      monthLayout->addWidget( mcolorsBox );
       monthLayout->addStretch( 1 );
 
+      // Tab: Views->Todo View
       QFrame *todoFrame = new QFrame( this );
       tabWidget->addTab( todoFrame, KIcon( "view-calendar-tasks" ),
                          i18nc( "@title:tab", "Todo View" ) );
