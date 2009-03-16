@@ -47,6 +47,7 @@
 #include <kiconloader.h>
 #include <kmessagebox.h>
 #include <KComboBox>
+#include <KMenu>
 
 #include <QToolTip>
 #include <QLayout>
@@ -901,32 +902,50 @@ void KOEditorFreeBusy::changeStatusForMe( KCal::Attendee::PartStat status )
 
 void KOEditorFreeBusy::showAttendeeStatusMenu()
 {
-  if ( mGanttView->mapFromGlobal( QCursor::pos() ).x() > 22 ) {
+  KMenu *menu = new KMenu( 0 );
+  QAction *needsaction =
+    menu->addAction( KOGlobals::self()->smallIcon( "help-about" ),
+                     Attendee::statusName( Attendee::NeedsAction ) );
+  QAction *accepted =
+    menu->addAction( KOGlobals::self()->smallIcon( "dialog-ok-apply" ),
+                     Attendee::statusName( Attendee::Accepted ) );
+  QAction *declined =
+    menu->addAction( KOGlobals::self()->smallIcon( "dialog-cancel" ),
+                     Attendee::statusName( Attendee::Declined ) );
+  QAction *tentative =
+    menu->addAction( KOGlobals::self()->smallIcon( "dialog-ok" ),
+                     Attendee::statusName( Attendee::Tentative ) );
+  QAction *delegated =
+    menu->addAction( KOGlobals::self()->smallIcon( "mail-forward" ),
+                     Attendee::statusName( Attendee::Delegated ) );
+  QAction *completed =
+    menu->addAction( KOGlobals::self()->smallIcon( "mail-mark-read" ),
+                     Attendee::statusName( Attendee::Completed ) );
+  QAction *inprocess =
+    menu->addAction( KOGlobals::self()->smallIcon( "help-about" ),
+                     Attendee::statusName( Attendee::InProcess ) );
+  QAction *ret = menu->exec( QCursor::pos() );
+  delete menu;
+
+  if ( ret == needsaction ) {
+    currentAttendee()->setStatus( Attendee::NeedsAction );
+  } else if ( ret == accepted ) {
+    currentAttendee()->setStatus( Attendee::Accepted );
+  } else if ( ret == declined ) {
+    currentAttendee()->setStatus( Attendee::Declined );
+  } else if ( ret == tentative ) {
+    currentAttendee()->setStatus( Attendee::Tentative );
+  } else if ( ret == delegated ) {
+    currentAttendee()->setStatus( Attendee::Delegated );
+  } else if ( ret == completed ) {
+    currentAttendee()->setStatus( Attendee::Completed );
+  } else if ( ret == inprocess ) {
+    currentAttendee()->setStatus( Attendee::InProcess );
+  } else {
     return;
   }
-
-  QPopupMenu popup;
-  popup.insertItem( KOGlobals::self()->smallIcon( "help-about" ),
-                    Attendee::statusName( Attendee::NeedsAction ), Attendee::NeedsAction );
-  popup.insertItem( KOGlobals::self()->smallIcon( "dialog-ok-apply" ),
-                    Attendee::statusName( Attendee::Accepted ), Attendee::Accepted );
-  popup.insertItem( KOGlobals::self()->smallIcon( "dialog-cancel" ),
-                    Attendee::statusName( Attendee::Declined ), Attendee::Declined );
-  popup.insertItem( KOGlobals::self()->smallIcon( "dialog-ok" ),
-                    Attendee::statusName( Attendee::Tentative ), Attendee::Tentative );
-  popup.insertItem( KOGlobals::self()->smallIcon( "mail-forward" ),
-                    Attendee::statusName( Attendee::Delegated ), Attendee::Delegated );
-  popup.insertItem( KOGlobals::self()->smallIcon( "mail-mark-read" ),
-                    Attendee::statusName( Attendee::Completed ), Attendee::Completed );
-  popup.insertItem( KOGlobals::self()->smallIcon( "help-about" ),
-                    Attendee::statusName( Attendee::InProcess ), Attendee::InProcess );
-  popup.setItemChecked( currentAttendee()->status(), true );
-  int status = popup.exec( QCursor::pos() );
-  if ( status >= 0 ) {
-    currentAttendee()->setStatus( static_cast<Attendee::PartStat>( status ) );
-    updateCurrentItem();
-    updateAttendeeInput();
-  }
+  updateCurrentItem();
+  updateAttendeeInput();
 }
 
 void KOEditorFreeBusy::listViewClicked( int button, KDGanttViewItem *item )
