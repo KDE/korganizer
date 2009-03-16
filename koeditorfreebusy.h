@@ -29,21 +29,20 @@
 #include <QDateTime>
 #include <QTimer>
 
-class FreeBusyItem;
-class KDIntervalColorRectangle;
 class KComboBox;
 class KDateTime;
+
 class KDGanttView;
 class KDGanttViewItem;
-class QLabel;
-class QTimerEvent;
-class QWidget;
+class KDIntervalColorRectangle;
+class FreeBusyItem;
 
 namespace KCal {
-  class Event;
-  class FreeBusy;
   class Attendee;
+  class FreeBusy;
+  class Incidence;
 }
+using namespace KCal;
 
 class KOEditorFreeBusy : public KOAttendeeEditor
 {
@@ -105,6 +104,7 @@ class KOEditorFreeBusy : public KOAttendeeEditor
 
   private slots:
     void slotOrganizerChanged( const QString &newOrganizer );
+
   private:
     void updateFreeBusyData( FreeBusyItem * );
 

@@ -23,40 +23,33 @@
 */
 
 #include "koeditorfreebusy.h"
-#include "koprefs.h"
-#include "koglobals.h"
-#include "kogroupware.h"
 #include "freebusymanager.h"
 #include "freebusyurldialog.h"
-
-#include <libkdepim/addresseelineedit.h>
-#include <libkdepim/distributionlist.h>
+#include "koglobals.h"
+#include "kogroupware.h"
+#include "koprefs.h"
 
 #include <kdgantt1/KDGanttView.h>
-#include <kdgantt1/KDGanttViewTaskItem.h>
 #include <kdgantt1/KDGanttViewSubwidgets.h>
+#include <kdgantt1/KDGanttViewTaskItem.h>
 
-#include <kabc/addresseedialog.h>
-#include <kabc/vcardconverter.h>
-#include <kabc/stdaddressbook.h>
-#include <kcal/event.h>
-#include <kcal/freebusy.h>
-#include <kpimutils/email.h>
+#include <libkdepim/distributionlist.h>
 
-#include <klocale.h>
-#include <kiconloader.h>
-#include <kmessagebox.h>
+#include <KABC/StdAddressBook>
+#include <KCal/FreeBusy>
+#include <KPIMUtils/Email>
+
 #include <KComboBox>
-#include <KMenu>
+#include <KLocale>
+#include <KMessageBox>
 
-#include <QToolTip>
-#include <QLayout>
-#include <QLabel>
-#include <QPushButton>
-#include <QFrame>
-#include <QHBoxLayout>
 #include <QBoxLayout>
-#include <QTimerEvent>
+#include <QDateTime>
+#include <QFrame>
+#include <QLabel>
+#include <KMenu>
+#include <QPushButton>
+#include <QToolTip>
 #include <QVBoxLayout>
 
 // The FreeBusyItem is the whole line for a given attendee.
