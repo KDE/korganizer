@@ -226,6 +226,13 @@
       <default>true</default>
     </entry>
 
+    <entry type="Bool" name="ShowJournalsMonthView">
+      <label>Show journals</label>
+      <whatsthis>Check this box to display journals in the month view.</whatsthis>
+      <tooltip>Display journals in the month view</tooltip>
+      <default>true</default>
+    </entry>
+
     <entry type="Bool" name="SelectionStartsEditor">
       <label>Time range selection in agenda view starts event editor</label>
       <whatsthis>Check this box to start the event editor automatically when you select a time range in the daily and weekly view. To select a time range, drag the mouse from the start time to the end time of the event you are about to plan.</whatsthis>

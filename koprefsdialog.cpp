@@ -640,6 +640,8 @@ class KOPrefsDialogViews : public KPrefsModule
       mdisplayLayout->addWidget(
         addWidBool( KOPrefs::instance()->enableMonthItemIconsItem() )->checkBox() );
       mdisplayLayout->addWidget(
+        addWidBool( KOPrefs::instance()->showJournalsMonthViewItem() )->checkBox() );
+      mdisplayLayout->addWidget(
         addWidBool( KOPrefs::instance()->fullViewMonthItem() )->checkBox() );
       mdisplayBox->setLayout( mdisplayLayout );
       monthLayout->addWidget( mdisplayBox );

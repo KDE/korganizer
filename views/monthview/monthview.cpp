@@ -306,6 +306,9 @@ void MonthView::reloadIncidences()
     if ( incidence->type() == "Todo" && !KOPrefs::instance()->showAllDayTodo() ) {
       continue;
     }
+    if ( incidence->type() == "Journal" && !KOPrefs::instance()->showJournalsMonthView() ) {
+      continue;
+    }
 
     // An event could start before the currently displayed date, so we
     // have to check at least those dates before the start date, which would
@@ -315,7 +318,7 @@ void MonthView::reloadIncidences()
     if ( ( event = dynamic_cast<Event *>( incidence ) ) ) {
       offset = event->dtStart().daysTo( event->dtEnd() );
     }
-    
+
     KDateTime startDateTime( mStartDate.addDays( - offset ), timeSpec );
     KDateTime endDateTime( mEndDate, QTime( 23, 59 ), timeSpec );
 
@@ -335,7 +338,7 @@ void MonthView::reloadIncidences()
       } else {
         dateToAdd = incidence->dtStart();
       }
-    
+
       if ( dateToAdd >= startDateTime && dateToAdd <= endDateTime ) {
         dateTimeList += dateToAdd;
       }
