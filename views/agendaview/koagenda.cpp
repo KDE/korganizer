@@ -179,12 +179,13 @@ void MarcusBains::updateLocation( bool recalculate )
 */
 KOAgenda::KOAgenda( KOEventView *eventView, int columns, int rows, int rowSize, QWidget *parent,
                     Qt::WFlags f )
-  : mEventView( eventView ), Q3ScrollView( parent, /*name*/0, f ), mHolidayMask( 0 ), mChanger( 0 )
+  : Q3ScrollView( parent, /*name*/0, f ), mHolidayMask( 0 ), mChanger( 0 )
 {
   mColumns = columns;
   mRows = rows;
   mGridSpacingY = rowSize;
   mAllDayMode = false;
+  mEventView = eventView;
 
   init();
 
@@ -196,13 +197,14 @@ KOAgenda::KOAgenda( KOEventView *eventView, int columns, int rows, int rowSize, 
   all-day events.
 */
 KOAgenda::KOAgenda( KOEventView *eventView, int columns, QWidget *parent, Qt::WFlags f )
-  : mEventView( eventView ), Q3ScrollView( parent, /*name*/0, f )
+  : Q3ScrollView( parent, /*name*/0, f )
 {
   mColumns = columns;
   mRows = 1;
   mGridSpacingY = 24;
   mAllDayMode = true;
   setVScrollBarMode( AlwaysOff );
+  mEventView = eventView;
 
   init();
 }
