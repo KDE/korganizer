@@ -58,6 +58,7 @@ class QSplitter;
 namespace KCal {
   class ResourceCalendar;
 }
+using namespace KCal;
 
 namespace KOrg {
 #ifndef KORG_NODECOS
@@ -67,6 +68,7 @@ namespace KOrg {
 #endif
   class IncidenceChangerBase;
 }
+using namespace KOrg;
 
 class EventIndicator : public QFrame
 {
@@ -177,7 +179,7 @@ class KOAgendaView : public KOrg::AgendaView, public KCal::Calendar::CalendarObs
     void slotTodoDropped( Todo *, const QPoint &, bool );
 
     void enableAgendaUpdate( bool enable );
-    void setIncidenceChanger( KOrg::IncidenceChangerBase *changer );
+    void setIncidenceChanger( IncidenceChangerBase *changer );
 
     void zoomInHorizontally( const QDate &date=QDate() );
     void zoomOutHorizontally( const QDate &date=QDate() );

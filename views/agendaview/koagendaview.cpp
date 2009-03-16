@@ -1601,7 +1601,7 @@ void KOAgendaView::updateEventIndicators()
   updateEventIndicatorBottom( mAgenda->visibleContentsYMax() );
 }
 
-void KOAgendaView::setIncidenceChanger( KOrg::IncidenceChangerBase *changer )
+void KOAgendaView::setIncidenceChanger( IncidenceChangerBase *changer )
 {
   mChanger = changer;
   mAgenda->setIncidenceChanger( changer );

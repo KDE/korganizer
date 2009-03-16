@@ -268,7 +268,7 @@ void CalendarView::setCalendar( Calendar *cal )
   mTodoList->setCalendar( mCalendar );
 }
 
-void CalendarView::setIncidenceChanger( KOrg::IncidenceChangerBase *changer )
+void CalendarView::setIncidenceChanger( IncidenceChangerBase *changer )
 {
   mChanger = changer;
   emit newIncidenceChanger( mChanger );

@@ -94,7 +94,7 @@ class KOGroupware : public QObject
     void incomingDirChanged( const QString &path );
 
     /** Updates some slot connections when the view incidence changer changes */
-    void slotViewNewIncidenceChanger( KOrg::IncidenceChangerBase *changer );
+    void slotViewNewIncidenceChanger( IncidenceChangerBase *changer );
 
     void initialCheckForChanges();
 

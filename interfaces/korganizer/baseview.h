@@ -204,6 +204,12 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
      */
     void toggleAlarmSignal(Incidence *);
 
+    /**
+     * instructs the receiver to toggle the completion state of the Incidence
+     * (which must be a  Todo type).
+     */
+    void toggleTodoCompletedSignal( Incidence * );
+
     /** Dissociate from a recurring incidence the occurrence on the given
      *  date to a new incidence or dissociate all occurrences from the
      *  given date onwards.

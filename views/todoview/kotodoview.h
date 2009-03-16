@@ -73,7 +73,7 @@ class KOTodoView : public BaseView
     void restoreLayout( KConfig *config, const QString &group );
 
   public Q_SLOTS:
-    virtual void setIncidenceChanger( KOrg::IncidenceChangerBase *changer );
+    virtual void setIncidenceChanger( IncidenceChangerBase *changer );
     virtual void showDates( const QDate &start, const QDate &end );
     virtual void showIncidences( const Incidence::List &incidenceList );
     virtual void updateView();

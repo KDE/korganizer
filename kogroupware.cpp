@@ -106,7 +106,7 @@ void KOGroupware::initialCheckForChanges()
     mFreeBusyManager->setCalendar( mCalendar );
     connect( mCalendar, SIGNAL(calendarChanged()),
              mFreeBusyManager, SLOT(slotPerhapsUploadFB()) );
-    connect( mView, SIGNAL(newIncidenceChanger( IncidenceChangerBase*)),
+    connect( mView, SIGNAL(newIncidenceChanger(IncidenceChangerBase*)),
              this, SLOT(slotViewNewIncidenceChanger(IncidenceChangerBase*)) );
     slotViewNewIncidenceChanger( mView->incidenceChanger() );
   }

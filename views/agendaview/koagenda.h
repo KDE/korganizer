@@ -49,13 +49,14 @@ class QWheelEvent;
 namespace KOrg {
   class IncidenceChangerBase;
 }
+using namespace KOrg;
 
-using namespace KCal;
 namespace KCal {
   class Event;
   class Todo;
   class Calendar;
 }
+using namespace KCal;
 
 class MarcusBains : public QFrame
 {
@@ -152,7 +153,7 @@ class KOAgenda : public Q3ScrollView
 
     void setCalendar( Calendar *cal )
     { mCalendar = cal; }
-    void setIncidenceChanger( KOrg::IncidenceChangerBase *changer )
+    void setIncidenceChanger( IncidenceChangerBase *changer )
     { mChanger = changer; }
 
   public slots:

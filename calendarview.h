@@ -227,7 +227,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     /** Emitted when auto-archiving options were modified */
     void autoArchivingSettingsModified();
 
-    void newIncidenceChanger( KOrg::IncidenceChangerBase * );
+    void newIncidenceChanger( IncidenceChangerBase * );
     void exportHTML( HTMLExportSettings * );
 
     void newFilterListSignal( const QStringList & );
@@ -609,7 +609,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     QDate activeDate( bool fallbackToToday = false );
 
   protected:
-    void setIncidenceChanger( KOrg::IncidenceChangerBase *changer );
+    void setIncidenceChanger( IncidenceChangerBase *changer );
 
     int msgItemDelete( Incidence *incidence );
 
