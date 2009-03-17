@@ -431,8 +431,15 @@ void KOEditorFreeBusy::readIncidence( Incidence *incidence )
   clearAttendees();
 
   KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
+  QDateTime endDateTime = incidence->dtEnd().toTimeSpec( timeSpec ).dateTime();
+
+  // in kcal, all day events have an inclusive dtEnd()
+  if ( incidence->allDay() ) {
+    endDateTime = endDateTime.addDays( 1 );
+  }
+
   setDateTimes( incidence->dtStart().toTimeSpec( timeSpec ).dateTime(),
-                incidence->dtEnd().toTimeSpec( timeSpec ).dateTime() );
+                endDateTime );
   mIsOrganizer = KOPrefs::instance()->thatIsMe( incidence->organizer().email() );
   updateStatusSummary();
   clearSelection();
