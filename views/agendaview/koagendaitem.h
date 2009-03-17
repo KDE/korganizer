@@ -31,6 +31,8 @@
 #include <QWidget>
 #include <QList>
 
+class KOAgendaItem;
+
 class QDragEnterEvent;
 class QDropEvent;
 class QPaintEvent;
@@ -41,7 +43,6 @@ namespace KCal {
   class Incidence;
 }
 using namespace KCal;
-class KOAgendaItem;
 
 struct MultiItemInfo
 {
@@ -108,9 +109,9 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     void moveRelative( int dx, int dy );
 
     /**
-     * Expands the item's top. 
+     * Expands the item's top.
      *
-     * @param dy             delta y, number of units to be added to mCellYTop 
+     * @param dy             delta y, number of units to be added to mCellYTop
      * @param allowOverLimit If false, the new mCellYTop can't be bigger than
      *                       mCellYBottom, instead, it gets mCellYBottom's value.
      *                       If true, @p dy is always added, regardless if mCellYTop
@@ -203,7 +204,6 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
   private:
     void paintEventIcon( QPainter *p, int &x, int y, int ft );
     void paintTodoIcon( QPainter *p, int &x, int y, int ft );
-    void paintJournalIcon( QPainter *p, int &x, int y, int ft );
 
     // paint all visible icons
     void paintIcons( QPainter *p, int &x, int y, int ft );
@@ -248,7 +248,6 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     static QPixmap *eventPxmp;
     static QPixmap *todoPxmp;
     static QPixmap *completedPxmp;
-    static QPixmap *journalPxmp;
 };
 
 #endif

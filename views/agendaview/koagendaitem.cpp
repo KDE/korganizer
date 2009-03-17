@@ -68,7 +68,6 @@ QPixmap *KOAgendaItem::groupPxmpTent = 0;
 QPixmap *KOAgendaItem::organizerPxmp = 0;
 QPixmap *KOAgendaItem::eventPxmp = 0;
 QPixmap *KOAgendaItem::todoPxmp = 0;
-QPixmap *KOAgendaItem::journalPxmp = 0;
 QPixmap *KOAgendaItem::completedPxmp = 0;
 
 //-----------------------------------------------------------------------------
@@ -731,14 +730,6 @@ void KOAgendaItem::paintTodoIcon( QPainter *p, int &x, int y, int ft )
   conditionalPaint( p, b, x, y, ft, *completedPxmp );
 }
 
-void KOAgendaItem::paintJournalIcon( QPainter *p, int &x, int y, int ft )
-{
-  if ( !mValid ) {
-    return;
-  }
-  conditionalPaint( p, mIncidence->type() == "Journal", x, y, ft, *journalPxmp );
-}
-
 void KOAgendaItem::paintIcons( QPainter *p, int &x, int y, int ft )
 {
   if ( !KOPrefs::instance()->enableAgendaItemIcons() ) {
@@ -747,7 +738,6 @@ void KOAgendaItem::paintIcons( QPainter *p, int &x, int y, int ft )
 
   paintEventIcon( p, x, y, ft );
   paintTodoIcon( p, x, y, ft );
-  paintJournalIcon( p, x, y, ft );
 #if 0
   /* sorry, this looks too cluttered. disable until we can
      make something prettier; no idea at this time -- allen */
@@ -799,7 +789,6 @@ void KOAgendaItem::paintEvent( QPaintEvent *ev )
     eventPxmp     = new QPixmap( KOGlobals::self()->smallIcon( "view-calendar-day" ) );
     todoPxmp      = new QPixmap( KOGlobals::self()->smallIcon( "view-calendar-tasks" ) );
     completedPxmp = new QPixmap( KOGlobals::self()->smallIcon( "task-complete" ) );
-    journalPxmp   = new QPixmap( KOGlobals::self()->smallIcon( "view-pim-journal" ) );
   }
 
   QColor bgColor;
