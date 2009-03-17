@@ -146,7 +146,7 @@ KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent, bool isSideBySide ) 
 
   // The widget itself
   QWidget *dummyAllDayLeft = new QWidget( mAllDayFrame );
-  mAllDayAgenda = new KOAgenda( this,  1, mAllDayFrame );
+  mAllDayAgenda = new KOAgenda( this, 1, mAllDayFrame );
   QWidget *dummyAllDayRight = new QWidget( mAllDayFrame );
 
   // Create the event context menu for the all-day agenda
@@ -1211,7 +1211,7 @@ void KOAgendaView::changeIncidenceDisplayAdded( Incidence *incidence )
   Todo *todo = dynamic_cast<Todo *>(incidence);
   CalFilter *filter = calendar()->filter();
   if ( ( filter && !filter->filterIncidence( incidence ) ) ||
-       ( ( todo && !KOPrefs::instance()->showAllDayTodo() ) ) ) {
+       ( ( todo && !KOPrefs::instance()->showTodosAgendaView() ) ) ) {
     return;
   }
 
@@ -1331,7 +1331,7 @@ void KOAgendaView::displayIncidence( Incidence *incidence )
   DateTimeList dateTimeList;
 
   if ( todo &&
-       ( !KOPrefs::instance()->showAllDayTodo() || !todo->hasDueDate() ) ) {
+       ( !KOPrefs::instance()->showTodosAgendaView() || !todo->hasDueDate() ) ) {
     return;
   }
 

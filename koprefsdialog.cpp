@@ -542,10 +542,6 @@ class KOPrefsDialogViews : public KPrefsModule
         addWidBool( KOPrefs::instance()->enableToolTipsItem(), topFrame );
       generalLayout->addWidget( enableToolTips->checkBox() );
 
-      KPrefsWidBool *showTodosAgenda =
-        addWidBool( KOPrefs::instance()->showAllDayTodoItem(), topFrame );
-      generalLayout->addWidget( showTodosAgenda->checkBox() );
-
       KPrefsWidBool *todosUseCategoryColors =
         addWidBool( KOPrefs::instance()->todosUseCategoryColorsItem(), topFrame );
       generalLayout->addWidget( todosUseCategoryColors->checkBox() );
@@ -598,7 +594,8 @@ class KOPrefsDialogViews : public KPrefsModule
 
       displayLayout->addWidget(
         addWidBool( KOPrefs::instance()->enableAgendaItemIconsItem() )->checkBox() );
-
+      displayLayout->addWidget(
+        addWidBool( KOPrefs::instance()->showTodosAgendaViewItem() )->checkBox() );
       KPrefsWidBool *marcusBainsEnabled =
         addWidBool( KOPrefs::instance()->marcusBainsEnabledItem() );
       displayLayout->addWidget( marcusBainsEnabled->checkBox() );
@@ -639,6 +636,8 @@ class KOPrefsDialogViews : public KPrefsModule
         addWidBool( KOPrefs::instance()->enableMonthScrollItem() )->checkBox() );
       mdisplayLayout->addWidget(
         addWidBool( KOPrefs::instance()->enableMonthItemIconsItem() )->checkBox() );
+      mdisplayLayout->addWidget(
+        addWidBool( KOPrefs::instance()->showTodosMonthViewItem() )->checkBox() );
       mdisplayLayout->addWidget(
         addWidBool( KOPrefs::instance()->showJournalsMonthViewItem() )->checkBox() );
       mdisplayLayout->addWidget(

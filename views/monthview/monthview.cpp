@@ -303,7 +303,7 @@ void MonthView::reloadIncidences()
   Incidence::List incidences = calendar()->incidences();
 
   foreach ( Incidence *incidence, incidences ) {
-    if ( incidence->type() == "Todo" && !KOPrefs::instance()->showAllDayTodo() ) {
+    if ( incidence->type() == "Todo" && !KOPrefs::instance()->showTodosMonthView() ) {
       continue;
     }
     if ( incidence->type() == "Journal" && !KOPrefs::instance()->showJournalsMonthView() ) {

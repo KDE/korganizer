@@ -44,3 +44,12 @@ File=korganizerrc
 Group=Calendar/Holiday Plugin,Time & Date
 Key=Holidays
 RemoveGroup=Calendar/Holiday Plugin
+#
+#
+#
+Id=korganizer_4.3_ShowTodos
+File=korganizerrc
+Group=Views
+Key=ShowAllDayTodo,ShowTodosAgendaView
+Key=ShowAllDayTodo,ShowTodosMonthView
+RemoveKey=ShowAllDayTodo

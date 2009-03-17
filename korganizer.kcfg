@@ -197,11 +197,6 @@
       <whatsthis>Check this box to display summary tooltips when hovering the mouse over an event or a to-do.</whatsthis>
       <default>true</default>
     </entry>
-    <entry type="Bool" name="ShowAllDayTodo">
-      <label>Show to-dos in day, week and month views</label>
-      <whatsthis>Check this box to display to-dos in the day, week, and month view. This is helpful when you have a lot of (recurring) to-dos.</whatsthis>
-      <default>true</default>
-    </entry>
     <entry type="Bool" key="TodosUseCategoryColors">
       <label>To-dos use category colors</label>
       <whatsthis>Check this box so that to-dos will use category colors and not colors specific to their due, due today or overdue state</whatsthis>
@@ -223,6 +218,20 @@
       <label>Show icons in agenda view items</label>
       <whatsthis>Check this box to display icons (alarm, recursion, etc.) in agenda view items.</whatsthis>
       <tooltip>Display icons in agenda view items</tooltip>
+      <default>true</default>
+    </entry>
+
+    <entry type="Bool" name="ShowTodosAgendaView">
+      <label>Show to-dos</label>
+      <whatsthis>Check this box to display to-dos in the agenda view.</whatsthis>
+      <tooltip>Display to-dos in the agenda view</tooltip>
+      <default>true</default>
+    </entry>
+
+    <entry type="Bool" name="ShowTodosMonthView">
+      <label>Show to-dos</label>
+      <whatsthis>Check this box to display to-dos in the month view.</whatsthis>
+      <tooltip>Display to-dos in the month view</tooltip>
       <default>true</default>
     </entry>
 
