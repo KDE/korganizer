@@ -397,15 +397,27 @@ class KOPrefsDialogTime : public KPrefsModule
       QGridLayout *defaultLayout = new QGridLayout( defaultPage );
       defaultLayout->setSpacing( KDialog::spacingHint() );
 
+      QGroupBox *timesGroupBox =
+        new QGroupBox( i18nc( "@title:group", "Appointments" ), defaultPage );
+      defaultLayout->addWidget( timesGroupBox, 0, 0 );
+
+      QGridLayout *timesLayout = new QGridLayout( timesGroupBox );
+
       KPrefsWidTime *defaultTime =
         addWidTime( KOPrefs::instance()->startTimeItem(), defaultPage );
-      defaultLayout->addWidget( defaultTime->label(), 0, 0 );
-      defaultLayout->addWidget( defaultTime->timeEdit(), 0, 1 );
+      timesLayout->addWidget( defaultTime->label(), 0, 0 );
+      timesLayout->addWidget( defaultTime->timeEdit(), 0, 1 );
 
       KPrefsWidDuration *defaultDuration =
         addWidDuration( KOPrefs::instance()->defaultDurationItem(), defaultPage );
-      defaultLayout->addWidget( defaultDuration->label(), 1, 0 );
-      defaultLayout->addWidget( defaultDuration->timeEdit(), 1, 1 );
+      timesLayout->addWidget( defaultDuration->label(), 1, 0 );
+      timesLayout->addWidget( defaultDuration->timeEdit(), 1, 1 );
+
+      QGroupBox *remindersGroupBox =
+        new QGroupBox( i18nc( "@title:group", "Reminders" ), defaultPage );
+      defaultLayout->addWidget( remindersGroupBox, 1, 0 );
+
+      QGridLayout *remindersLayout = new QGridLayout( remindersGroupBox );
 
       QStringList alarmList;
       alarmList << i18nc( "@item:inlistbox", "1 minute" )
@@ -414,13 +426,13 @@ class KOPrefsDialogTime : public KPrefsModule
                 << i18nc( "@item:inlistbox", "15 minutes" )
                 << i18nc( "@item:inlistbox", "30 minutes" );
       QLabel *alarmLabel = new QLabel( i18nc( "@label", "Default reminder time:" ), defaultPage );
-      defaultLayout->addWidget( alarmLabel, 2, 0 );
+      remindersLayout->addWidget( alarmLabel, 0, 0 );
       alarmLabel->setWhatsThis( KOPrefs::instance()->alarmTimeItem()->whatsThis() );
       mAlarmTimeCombo = new KComboBox( defaultPage );
       mAlarmTimeCombo->setWhatsThis( KOPrefs::instance()->alarmTimeItem()->whatsThis() );
       connect( mAlarmTimeCombo, SIGNAL(activated(int)), SLOT(slotWidChanged()) );
       mAlarmTimeCombo->addItems( alarmList );
-      defaultLayout->addWidget( mAlarmTimeCombo, 2, 1 );
+      remindersLayout->addWidget( mAlarmTimeCombo, 0, 1 );
 
       defaultLayout->setRowStretch( 3, 1 );
       load();
