@@ -663,12 +663,24 @@ class KOPrefsDialogViews : public KPrefsModule
                          i18nc( "@title:tab", "Todo View" ) );
 
       QBoxLayout *todoLayout = new QVBoxLayout( todoFrame );
-      todoLayout->addWidget(
-        addWidBool( KOPrefs::instance()->fullViewTodoItem() )->checkBox() );
-      todoLayout->addWidget(
-        addWidBool( KOPrefs::instance()->recordTodosInJournalsItem() )->checkBox() );
-      todoLayout->addWidget(
+
+      // GroupBox: Views->Todo View->Display Options
+      QVBoxLayout *tdisplayLayout = new QVBoxLayout;
+      QGroupBox *tdisplayBox = new QGroupBox( i18nc( "@title:group", "Display Options" ) );
+      tdisplayLayout->addWidget(
         addWidBool( KOPrefs::instance()->sortCompletedTodosSeparatelyItem() )->checkBox() );
+      tdisplayLayout->addWidget(
+        addWidBool( KOPrefs::instance()->fullViewTodoItem() )->checkBox() );
+      tdisplayBox->setLayout( tdisplayLayout );
+      todoLayout->addWidget( tdisplayBox );
+
+      // GroupBox: Views->Todo View->Other
+      QVBoxLayout *otherLayout = new QVBoxLayout;
+      QGroupBox *otherBox = new QGroupBox( i18nc( "@title:group", "Other Options" ) );
+      otherLayout->addWidget(
+        addWidBool( KOPrefs::instance()->recordTodosInJournalsItem() )->checkBox() );
+      otherBox->setLayout( otherLayout );
+      todoLayout->addWidget( otherBox );
       todoLayout->addStretch( 1 );
 
       load();
