@@ -532,29 +532,30 @@ class KOPrefsDialogViews : public KPrefsModule
       KTabWidget *tabWidget = new KTabWidget( this );
       topTopLayout->addWidget( tabWidget );
 
-      QFrame *topFrame = new QFrame( this );
-      tabWidget->addTab( topFrame, KIcon( "view-choose" ),
+      // Tab: Views->General
+      QFrame *generalFrame = new QFrame( this );
+      tabWidget->addTab( generalFrame, KIcon( "view-choose" ),
                          i18nc( "@title:tab general settings", "General" ) );
-      QBoxLayout *generalLayout = new QVBoxLayout( topFrame );
-      generalLayout->setSpacing( KDialog::spacingHint() );
 
-      KPrefsWidBool *enableToolTips =
-        addWidBool( KOPrefs::instance()->enableToolTipsItem(), topFrame );
-      generalLayout->addWidget( enableToolTips->checkBox() );
+      QBoxLayout *generalLayout = new QVBoxLayout( generalFrame );
 
-      KPrefsWidBool *todosUseCategoryColors =
-        addWidBool( KOPrefs::instance()->todosUseCategoryColorsItem(), topFrame );
-      generalLayout->addWidget( todosUseCategoryColors->checkBox() );
+      // GroupBox: Views->General->Display Options
+      QVBoxLayout *gdisplayLayout = new QVBoxLayout;
+      QGroupBox *gdisplayBox = new QGroupBox( i18nc( "@title:group", "Display Options" ) );
+      gdisplayLayout->addWidget(
+        addWidBool( KOPrefs::instance()->enableToolTipsItem() )->checkBox() );
+      gdisplayLayout->addWidget(
+        addWidBool( KOPrefs::instance()->todosUseCategoryColorsItem() )->checkBox() );
+      gdisplayBox->setLayout( gdisplayLayout );
+      generalLayout->addWidget( gdisplayBox );
 
-      QGroupBox *dateNavGroup =
-        new QGroupBox( i18nc( "@title:group", "Date Navigator" ), topFrame );
-      generalLayout->addWidget( dateNavGroup );
-
-      QBoxLayout *dateNavLayout = new QVBoxLayout( dateNavGroup );
-
-      dateNavLayout->addWidget( addWidBool( KOPrefs::instance()->dailyRecurItem() )->checkBox() );
-      dateNavLayout->addWidget( addWidBool( KOPrefs::instance()->weeklyRecurItem() )->checkBox() );
-
+      // GroupBox: Views->General->Date Navigator
+      QVBoxLayout *datenavLayout = new QVBoxLayout;
+      QGroupBox *datenavBox = new QGroupBox( i18nc( "@title:group", "Date Navigator" ) );
+      datenavLayout->addWidget( addWidBool( KOPrefs::instance()->dailyRecurItem() )->checkBox() );
+      datenavLayout->addWidget( addWidBool( KOPrefs::instance()->weeklyRecurItem() )->checkBox() );
+      datenavBox->setLayout( datenavLayout );
+      generalLayout->addWidget( datenavBox );
       generalLayout->addStretch( 1 );
 
       // Tab: Views->Agenda View
@@ -565,11 +566,11 @@ class KOPrefsDialogViews : public KPrefsModule
       QBoxLayout *agendaLayout = new QVBoxLayout( agendaFrame );
 
       // GroupBox: Views->Agenda View->Display Options
-      QVBoxLayout *displayLayout = new QVBoxLayout;
-      QGroupBox *displayBox = new QGroupBox( i18nc( "@title:group", "Display Options" ) );
+      QVBoxLayout *adisplayLayout = new QVBoxLayout;
+      QGroupBox *adisplayBox = new QGroupBox( i18nc( "@title:group", "Display Options" ) );
 
       QHBoxLayout *hourSizeLayout = new QHBoxLayout;
-      displayLayout->addLayout( hourSizeLayout );
+      adisplayLayout->addLayout( hourSizeLayout );
 
       KPrefsWidInt *hourSize =
         addWidInt( KOPrefs::instance()->hourSizeItem() );
@@ -581,7 +582,7 @@ class KOPrefsDialogViews : public KPrefsModule
       hourSizeLayout->addStretch( 1 );
 
       QBoxLayout *nextDaysLayout = new QHBoxLayout;
-      displayLayout->addLayout( nextDaysLayout );
+      adisplayLayout->addLayout( nextDaysLayout );
 
       KPrefsWidInt *nextDays =
         addWidInt( KOPrefs::instance()->nextXDaysItem() );
@@ -592,25 +593,25 @@ class KOPrefsDialogViews : public KPrefsModule
       nextDaysLayout->addWidget( nextDays->spinBox() );
       nextDaysLayout->addStretch( 1 );
 
-      displayLayout->addWidget(
+      adisplayLayout->addWidget(
         addWidBool( KOPrefs::instance()->enableAgendaItemIconsItem() )->checkBox() );
-      displayLayout->addWidget(
+      adisplayLayout->addWidget(
         addWidBool( KOPrefs::instance()->showTodosAgendaViewItem() )->checkBox() );
       KPrefsWidBool *marcusBainsEnabled =
         addWidBool( KOPrefs::instance()->marcusBainsEnabledItem() );
-      displayLayout->addWidget( marcusBainsEnabled->checkBox() );
+      adisplayLayout->addWidget( marcusBainsEnabled->checkBox() );
 
       KPrefsWidBool *marcusBainsShowSeconds =
         addWidBool( KOPrefs::instance()->marcusBainsShowSecondsItem() );
       connect( marcusBainsEnabled->checkBox(), SIGNAL(toggled(bool)),
                marcusBainsShowSeconds->checkBox(), SLOT(setEnabled(bool)) );
 
-      displayLayout->addWidget( marcusBainsShowSeconds->checkBox() );
-      displayLayout->addWidget(
+      adisplayLayout->addWidget( marcusBainsShowSeconds->checkBox() );
+      adisplayLayout->addWidget(
         addWidBool( KOPrefs::instance()->selectionStartsEditorItem() )->checkBox() );
 
-      displayBox->setLayout( displayLayout );
-      agendaLayout->addWidget( displayBox );
+      adisplayBox->setLayout( adisplayLayout );
+      agendaLayout->addWidget( adisplayBox );
 
       // GroupBox: Views->Agenda View->Color Usage
       agendaLayout->addWidget(
