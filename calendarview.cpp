@@ -146,8 +146,6 @@ CalendarView::CalendarView( QWidget *parent )
   mDateNavigator->setObjectName( "CalendarView::DateNavigator" );
 
 //  mLeftSplitter->setResizeMode( mDateNavigator, QSplitter::Stretch );
-  mLeftSplitter->setCollapsible( mLeftSplitter->indexOf(mDateNavigator), true );
-
   mTodoList = new KOTodoView( CalendarNull::self(), mLeftSplitter );
   mTodoList->setObjectName( "todolist" );
 
@@ -2158,18 +2156,26 @@ void CalendarView::deleteIncidence( Incidence *incidence, bool force )
           i18n( "KOrganizer Confirmation" ),
           KGuiItem( i18n( "Delete All" ) ) );
       } else {
-        km = KOMessageBox::fourBtnMsgBox(
-          this,
-          QMessageBox::Warning,
-          i18n( "The calendar item \"%1\" recurs over multiple dates. "
-                "Do you want to delete only the current one on %2, only all "
-                "future recurrences, or all its recurrences?",
-                incidence->summary(),
-                KGlobal::locale()->formatDate( itemDate ) ),
-          i18n( "KOrganizer Confirmation" ),
-          KGuiItem( i18n( "Delete C&urrent" ) ),
-          KGuiItem( i18n( "Delete &Future" ) ),
-          KGuiItem( i18n( "Delete &All" ) ) );
+        KDateTime itemDateTime( itemDate, KOPrefs::instance()->timeSpec() );
+        bool isFirst = !incidence->recurrence()->getPreviousDateTime( itemDateTime ).isValid();
+        bool isLast  = !incidence->recurrence()->getNextDateTime( itemDateTime ).isValid();
+        KGuiItem itemFuture( i18n( "Delete &Future" ) );
+        itemFuture.setEnabled( !isFirst && !isLast );
+
+        if ( !( isFirst && isLast ) ) {
+          km = KOMessageBox::fourBtnMsgBox(
+            this,
+            QMessageBox::Warning,
+            i18n( "The calendar item \"%1\" recurs over multiple dates. "
+                  "Do you want to delete only the current one on %2, only all "
+                  "future recurrences, or all its recurrences?",
+                  incidence->summary(),
+                  KGlobal::locale()->formatDate( itemDate ) ),
+            i18n( "KOrganizer Confirmation" ),
+            KGuiItem( i18n( "Delete C&urrent" ) ),
+            itemFuture,
+            KGuiItem( i18n( "Delete &All" ) ) );
+        }
       }
     }
     switch( km ) {
