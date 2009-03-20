@@ -175,6 +175,14 @@ void TimeLabels::drawContents( QPainter *p, int cx, int cy, int cw, int ch )
   //testline
   //p->drawLine(0,0,0,contentsHeight());
   while ( y < cy + ch + mCellHeight ) {
+    QPen pen;
+    if ( cell < 0 || cell >= 24 ) {
+      pen.setColor( QColor( 150, 150, 150 ) );
+    } else {
+      pen.setColor( palette().color( QPalette::WindowText ) );
+    }
+    p->setPen( pen );
+
     // hour, full line
     p->drawLine( cx, int( y ), cw + 2, int( y ) );
 
@@ -195,14 +203,6 @@ void TimeLabels::drawContents( QPainter *p, int cx, int cy, int cw, int ch )
         hour.setNum( cell - 12 );
       }
     }
-
-    QPen pen;
-    if ( cell < 0 || cell >= 24 ) {
-      pen.setColor( QColor( 150, 150, 150 ) );
-    } else {
-      pen.setColor( QPalette::Text );
-    }
-    p->setPen( pen );
 
     // center and draw the time label
     int timeWidth = fm.width( hour );
