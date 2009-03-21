@@ -374,9 +374,12 @@ QModelIndex KOTodoModel::moveIfParentChanged( TodoTreeNode *curNode, Todo *todo,
 
   if ( !mFlatView ) {
     // in flat view, no todo has a parent
-    Incidence *inc = todo->relatedTo();
-    if ( inc && inc->type() == "Todo" ) {
-      newParent = static_cast<Todo *>( inc );
+
+    if ( !isInHierarchyLoop( todo ) ) {
+      Incidence *inc = todo->relatedTo();
+      if ( inc && inc->type() == "Todo" ) {
+        newParent = static_cast<Todo *>( inc );
+      }
     }
   }
 
@@ -450,6 +453,40 @@ void KOTodoModel::expandTodoIfNeeded( const Todo *todo )
   }
 }
 
+bool KOTodoModel::isInHierarchyLoop( const Todo *todo ) const {
+
+  if ( !todo ) {
+    return false;
+  }
+
+  Incidence *i = todo->relatedTo();
+  QList<Incidence *> processedParents;
+
+  // Lets iterate through all parents, if we find one with the same
+  // uid then there's a loop.
+  while ( i ) {
+    if ( i->uid() == todo->uid() ) {
+      // loop detected!
+      return true;
+    } else {
+      if ( !processedParents.contains( i ) ) {
+        processedParents.append( i );
+        // Next parent
+        i = i->relatedTo();
+      } else {
+        // There's a loop but this to-do isn't in it
+        // the loop is at a higher level, e.g:
+        // t1->t2->t3->t4->t3->t4->t3->t4->t3..
+        // t1 and t2 can be added as sons of t3 without
+        // danger of inifinit looping
+        return false;
+      }
+    }
+  }
+
+  return false;
+}
+
 KOTodoModel::TodoTreeNode *KOTodoModel::insertTodo( Todo *todo,
                                                     bool checkRelated )
 {
@@ -460,18 +497,10 @@ KOTodoModel::TodoTreeNode *KOTodoModel::insertTodo( Todo *todo,
     Todo *relatedTodo = static_cast<Todo *>(incidence);
 
     // check if there are recursively linked todos
-    Todo *tmp = relatedTodo;
-    while ( tmp ) {
-      if ( tmp->uid() == todo->uid() ) {
-        // recursion detected, break recursion
-        return insertTodo( todo, false );
-      }
-      incidence = tmp->relatedTo();
-      if ( incidence && incidence->type() == "Todo" ) {
-        tmp = static_cast<Todo *>(incidence);
-      } else {
-        tmp = 0;
-      }
+
+    if ( isInHierarchyLoop( todo ) ) {
+      // recursion detected, break recursion
+      return insertTodo( todo, false );
     }
 
     // if the parent is not already in the tree, we have to insert it first.
