@@ -114,10 +114,10 @@ class KODayMatrix: public QFrame, public KCal::Calendar::CalendarObserver
     void updateView( const QDate &actdate );
 
     /**
-      Update event states of dates. Depending of the preferences days with
-      events are highlighted in some way.
+      Update incidence states of dates. Depending of the preferences days with
+      incidences are highlighted in some way.
     */
-    void updateEvents();
+    void updateIncidences();
 
     /**
      * Returns the QDate object associated with day indexed by the supplied
@@ -170,6 +170,11 @@ class KODayMatrix: public QFrame, public KCal::Calendar::CalendarObserver
     void calendarIncidenceAdded( Incidence *incidence );
     void calendarIncidenceChanged( Incidence *incidence );
     void calendarIncidenceDeleted( Incidence *incidence );
+
+    /** Sets which incidences should be highlighted */
+    void setHighlightMode( bool highlightEvents,
+                           bool highlightTodos,
+                           bool highlightJournals );
 
   public slots:
     /**
@@ -263,6 +268,15 @@ class KODayMatrix: public QFrame, public KCal::Calendar::CalendarObserver
      */
     QColor getShadedColor( const QColor &color ) const;
 
+    /** updates mEvent list with all days that have events */
+    void updateEvents();
+
+    /** updates mEvent list with all days that have to-dos with due date */
+    void updateTodos();
+
+    /** updates mEvent list with all days that have journals */
+    void updateJournals();
+
     /** number of days to be displayed. For now there is no support for any
         other number than 42. so change it at your own risk :o) */
     static const int NUMDAYS;
@@ -316,6 +330,15 @@ class KODayMatrix: public QFrame, public KCal::Calendar::CalendarObserver
      * Indicate pending calendar changes.
      */
     bool mPendingChanges;
+
+    /** Whether days with events are highlighted */
+    bool mHighlightEvents;
+
+    /** Whether days with to-dos (with due date) are highlighted */
+    bool mHighlightTodos;
+
+    /** Whether days with journals are highlighted */
+    bool mHighlightJournals;
 };
 
 #endif

@@ -29,6 +29,7 @@
 #include "calendarview.h"
 #include "datenavigator.h"
 #include "navigatorbar.h"
+#include "datenavigatorcontainer.h"
 #include "views/agendaview/koagendaview.h"
 #include "views/listview/kolistview.h"
 #include "views/journalview/kojournalview.h"
@@ -315,7 +316,8 @@ void KOViewManager::showTimeSpentView()
     mTimeSpentView->setObjectName( "KOViewManager::TimeSpentView" );
     addView( mTimeSpentView );
   }
-  showView( mTimeSpentView );
+  mMainView->dateNavigatorContainer()->setHighlightMode( true, false, false );
+  showView( mTimeSpentView );  
 }
 
 void KOViewManager::showMonthView()
@@ -325,7 +327,8 @@ void KOViewManager::showMonthView()
     mMonthView->setObjectName( "KOViewManager::MonthView" );
     addView( mMonthView );
   }
-  showView( mMonthView );
+  mMainView->dateNavigatorContainer()->setHighlightMode( true, false, false );
+  showView( mMonthView );  
 }
 
 void KOViewManager::showWhatsNextView()
@@ -335,7 +338,8 @@ void KOViewManager::showWhatsNextView()
     mWhatsNextView->setObjectName( "KOViewManager::WhatsNextView" );
     addView( mWhatsNextView );
   }
-  showView( mWhatsNextView );
+  mMainView->dateNavigatorContainer()->setHighlightMode( true, false, false );
+  showView( mWhatsNextView );  
 }
 
 void KOViewManager::showListView()
@@ -345,7 +349,8 @@ void KOViewManager::showListView()
     mListView->setObjectName( "KOViewManager::ListView" );
     addView( mListView );
   }
-  showView( mListView );
+  mMainView->dateNavigatorContainer()->setHighlightMode( true, false, false );
+  showView( mListView );  
 }
 
 void KOViewManager::showAgendaView()
@@ -405,13 +410,15 @@ void KOViewManager::showAgendaView()
     }
   }
 
+  mMainView->dateNavigatorContainer()->setHighlightMode( true, false, false );
+
   if ( showBoth ) {
     showView( static_cast<KOrg::BaseView*>( mAgendaViewTabs->currentWidget() ) );
   } else if ( showMerged ) {
     showView( mAgendaView );
   } else if ( showSideBySide ) {
     showView( mAgendaSideBySideView );
-  }
+  }  
 }
 
 void KOViewManager::showDayView()
@@ -454,6 +461,7 @@ void KOViewManager::showTodoView()
     KConfig *config = KOGlobals::self()->config();
     mTodoView->restoreLayout( config, "Todo View" );
   }
+  mMainView->dateNavigatorContainer()->setHighlightMode( true, false, false );
   showView( mTodoView );
 }
 
@@ -464,7 +472,8 @@ void KOViewManager::showJournalView()
     mJournalView->setObjectName( "KOViewManager::JournalView" );
     addView( mJournalView );
   }
-  showView( mJournalView );
+  mMainView->dateNavigatorContainer()->setHighlightMode( true, false, false );
+  showView( mJournalView );  
 }
 
 void KOViewManager::showTimeLineView()
@@ -474,16 +483,19 @@ void KOViewManager::showTimeLineView()
     mTimelineView->setObjectName( "KOViewManager::TimelineView" );
     addView( mTimelineView );
   }
-  showView( mTimelineView );
+
+  mMainView->dateNavigatorContainer()->setHighlightMode( true, false, false );
+  showView( mTimelineView );  
 }
 
 void KOViewManager::showEventView()
 {
   if ( mLastEventView ) {
+    mMainView->dateNavigatorContainer()->setHighlightMode( true, false, false );
     showView( mLastEventView );
   } else {
     showWeekView();
-  }
+  }  
 }
 
 Incidence *KOViewManager::currentSelection()

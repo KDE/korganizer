@@ -87,6 +87,10 @@ KODayMatrix::KODayMatrix( QWidget *parent )
   mSelEnd = mSelStart = NOSELECTION;
 
   recalculateToday();
+
+  mHighlightEvents   = true;
+  mHighlightTodos    = false;
+  mHighlightJournals = false;
 }
 
 void KODayMatrix::setCalendar( Calendar *cal )
@@ -109,7 +113,7 @@ void KODayMatrix::setCalendar( Calendar *cal )
   }
 
   setAcceptDrops( mCalendar != 0 );
-  updateEvents();
+  updateIncidences();
 }
 
 QColor KODayMatrix::getShadedColor( const QColor &color ) const
@@ -244,15 +248,15 @@ void KODayMatrix::updateView( const QDate &actdate )
   }
 
   // The calendar has not changed in the meantime and the selected range
-  // is still the same so we can save the expensive updateEvents() call
+  // is still the same so we can save the expensive updateIncidences() call
   if ( !daychanged && !mPendingChanges ) {
     return;
   }
 
   // TODO_Recurrence: If we just change the selection, but not the data,
-  // there's no need to update the whole list of events... This is just a
-  // waste of computational power (and it takes forever!)
-  updateEvents();
+  // there's no need to update the whole list of incidences... This is just a
+  // waste of computational power
+  updateIncidences();
   for ( int i = 0; i < NUMDAYS; i++ ) {
     //if it is a holy day then draw it red. Sundays are consider holidays, too
     QStringList holidays = KOGlobals::self()->holiday( mDays[i] );
@@ -272,15 +276,66 @@ void KODayMatrix::updateView( const QDate &actdate )
   }
 }
 
-void KODayMatrix::updateEvents()
-{
+void KODayMatrix::updateIncidences() {
+
   if ( !mCalendar ) {
     return;
   }
 
+  mEvents.clear();
+
+  if ( mHighlightEvents ) {
+    updateEvents();
+  }
+
+  if ( mHighlightTodos ) {
+    updateTodos();
+  }
+
+  if ( mHighlightJournals ) {
+    updateJournals();
+  }
+
+  mPendingChanges = false;
+}
+
+void KODayMatrix::updateJournals() {
+
+  Incidence::List incidences = mCalendar->incidences();
+
+  foreach ( Incidence *inc, incidences ) {
+    QDate d = inc->dtStart().date();
+    if ( inc->type() == "Journal" &&
+         d >= mDays[0] &&
+         d <= mDays[NUMDAYS-1] &&
+         !mEvents.contains( d ) ) {
+      mEvents.append( d );
+    }
+  }
+}
+
+void KODayMatrix::updateTodos() {
+
+  Incidence::List incidences = mCalendar->incidences();
+  QDate d;
+  foreach ( Incidence *inc, incidences ) {
+    if ( inc->type() == "Todo" ) {
+      Todo *t = dynamic_cast<Todo *>( inc );
+      if ( t->hasDueDate() ) {
+        d = t->dtDue().date();
+        if ( d >= mDays[0] && d <= mDays[NUMDAYS-1] && !mEvents.contains( d ) ) {
+          mEvents.append( d );
+        }
+      }
+    }
+  }
+}
+
+void KODayMatrix::updateEvents()
+{
   Event::List eventlist = mCalendar->events( mDays[0], mDays[NUMDAYS-1],
                                              mCalendar->timeSpec() );
-  mEvents.clear();
+
   Event::List::ConstIterator it;
 
   for ( it=eventlist.constBegin(); it != eventlist.constEnd(); ++it ) {
@@ -373,6 +428,16 @@ void KODayMatrix::calendarIncidenceChanged( Incidence *incidence )
 void KODayMatrix::calendarIncidenceDeleted( Incidence *incidence )
 {
   Q_UNUSED( incidence );
+  mPendingChanges = true;
+}
+
+void KODayMatrix::setHighlightMode( bool highlightEvents,
+                                    bool highlightTodos,
+                                    bool highlightJournals ) {
+
+  mHighlightEvents   = highlightEvents;
+  mHighlightTodos    = highlightTodos;
+  mHighlightJournals = highlightJournals;
   mPendingChanges = true;
 }
 

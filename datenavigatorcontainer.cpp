@@ -320,4 +320,18 @@ QSize DateNavigatorContainer::sizeHint() const
   return mNavigatorView->sizeHint() + QSize( margin, margin );
 }
 
+void DateNavigatorContainer::setHighlightMode( bool highlightEvents,
+                                               bool highlightTodos,
+                                               bool highlightJournals ) const {
+
+  mNavigatorView->setHighlightMode( highlightEvents, highlightTodos, highlightJournals );
+
+  foreach ( KDateNavigator *n, mExtraViews ) {
+    if ( n ) {
+      n->setHighlightMode( highlightEvents, highlightTodos, highlightJournals );
+    }
+  }
+
+}
+
 #include "datenavigatorcontainer.moc"

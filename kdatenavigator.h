@@ -71,6 +71,9 @@ class KDateNavigator: public QFrame
 
     QDate startDate() const;
     QDate endDate() const;
+    void setHighlightMode( bool highlightEvents,
+                           bool highlightTodos,
+                           bool highlightJournals ) const;
 
   public slots:
     void selectDates( const KCal::DateList & );
