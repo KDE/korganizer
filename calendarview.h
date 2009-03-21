@@ -130,6 +130,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     QWidget *leftFrame() const { return mLeftFrame; }
     NavigatorBar *navigatorBar() const { return mNavigatorBar; }
     DateNavigator *dateNavigator() const { return mNavigator; }
+    DateNavigatorContainer *dateNavigatorContainer() const { return mDateNavigatorContainer; }
 
     KOIncidenceEditor *editorDialog( Incidence *incidence ) const;
     KOrg::IncidenceChangerBase *incidenceChanger() const { return mChanger; }
@@ -655,7 +656,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
 
     NavigatorBar *mNavigatorBar;
 
-    DateNavigatorContainer *mDateNavigator;
+    DateNavigatorContainer *mDateNavigatorContainer;
 
     QList<CalendarViewExtension*> mExtensions;
 
