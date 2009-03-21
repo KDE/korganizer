@@ -107,6 +107,7 @@ class KOTodoView : public BaseView
     void setNewPercentage( QAction *action );
     void setNewPriority( QAction *action );
     void changedCategories( QAction *action );
+    void setFlatView( bool flatView );
 
   Q_SIGNALS:
     void purgeCompletedSignal();

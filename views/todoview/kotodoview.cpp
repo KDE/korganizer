@@ -127,7 +127,7 @@ KOTodoView::KOTodoView( Calendar *cal, QWidget *parent )
            "flat list instead of a hierarchical tree; the parental "
            "relationships are removed in the display." ) );
   connect( mFlatView, SIGNAL(toggled(bool)),
-           mModel, SLOT(setFlatView(bool)) );
+           this, SLOT(setFlatView(bool)) );
 
   QGridLayout *layout = new QGridLayout( this );
   layout->addWidget( mQuickSearch, 0, 0, 1, 2 );
@@ -735,6 +735,11 @@ void KOTodoView::changedCategories( QAction *action )
   } else {
     kDebug() << "No active item, active item is read-only, or locking failed";
   }
+}
+
+void KOTodoView::setFlatView( bool flatView ) {
+  mView->setRootIsDecorated( !flatView );
+  mModel->setFlatView( flatView );
 }
 
 #include "kotodoview.moc"
