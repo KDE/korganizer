@@ -55,10 +55,11 @@
 class CalPrintPluginBase::TodoParentStart
 {
   public:
-    TodoParentStart( QRect pt = QRect(), bool page = true )
-      : mRect( pt ), mSamePage( page ) {}
+    TodoParentStart( QRect pt = QRect(), bool hasLine = false, bool page = true )
+      : mRect( QRect() ), mHasLine( false), mSamePage( true ) {}
 
     QRect mRect;
+    bool mHasLine;
     bool mSamePage;
 };
 
@@ -1620,6 +1621,56 @@ void CalPrintPluginBase::drawMonthTable( QPainter &p, const QDate &qd,
   }
 }
 
+
+void CalPrintPluginBase::drawTodoLines( QPainter &p,
+                                        const QString &entry,
+                                        int x, int &y, int width,
+                                        int pageHeight, bool richTextEntry,
+                                        QList<TodoParentStart *> &startPoints,
+                                        int level, bool connectSubTodos )
+{
+  QString plainEntry = ( richTextEntry ) ? toPlainText( entry ) : entry;
+
+  QRect textrect(0,0,width,-1);
+  int flags = Qt::AlignLeft;
+  QFontMetrics fm = p.fontMetrics();
+
+  QStringList lines = plainEntry.split( '\n' );
+  for ( int currentLine = 0; currentLine < lines.count(); currentLine++ ) {
+    // split paragraphs into lines
+    KWordWrap *ww = KWordWrap::formatText( fm, textrect, flags, lines[currentLine] );
+    QStringList textLine = ww->wrappedString().split( '\n' );
+    delete ww;
+
+    // print each individual line
+    for ( int lineCount = 0; lineCount < textLine.count(); lineCount++ ) {
+      if ( y >= pageHeight ) {
+        if ( connectSubTodos ) {
+          for ( int i = 0; i < startPoints.size(); ++i ) {
+            TodoParentStart *rct;
+            rct = startPoints.at( i );
+            int start = rct->mRect.bottom() + 1;
+            int center = rct->mRect.left() + ( rct->mRect.width() / 2 );
+            int to = y;
+            if ( !rct->mSamePage ) {
+              start = 0;
+            }
+            if ( rct->mHasLine ) {
+              p.drawLine( center, start, center, to );
+            }
+            rct->mSamePage = false;
+          }
+        }
+        y = 0;
+        mPrinter->newPage();
+      }
+      y += fm.height();
+      p.drawText( x, y, textLine[ lineCount ] );
+    }
+  }
+}
+
+
 void CalPrintPluginBase::drawTodo( int &count, Todo *todo, QPainter &p,
                                TodoSortField sortField, SortDirection sortDir,
                                bool connectSubTodos, bool strikeoutCompleted,
@@ -1627,7 +1678,8 @@ void CalPrintPluginBase::drawTodo( int &count, Todo *todo, QPainter &p,
                                int posDueDt, int posPercentComplete,
                                int level, int x, int &y, int width,
                                int pageHeight, const Todo::List &todoList,
-                               TodoParentStart *r )
+                               TodoParentStart *r, bool excludeConfidential,
+                               bool excludePrivate )
 {
   QString outStr;
   const KLocale *local = KGlobal::locale();
@@ -1640,6 +1692,8 @@ void CalPrintPluginBase::drawTodo( int &count, Todo *todo, QPainter &p,
     startPoints.clear();
   }
 
+  y += 10;
+
   // Compute the right hand side of the to-do box
   int rhs = posPercentComplete;
   if ( rhs < 0 ) {
@@ -1649,43 +1703,7 @@ void CalPrintPluginBase::drawTodo( int &count, Todo *todo, QPainter &p,
     rhs = x + width;  //not printing due dates either
   }
 
-  // size of to-do
-  outStr=todo->summary();
   int left = posSummary + ( level * 10 );
-  rect = p.boundingRect( left, y, ( rhs-left-5 ), -1, Qt::WordBreak, outStr );
-  if ( !todo->description().isEmpty() && desc ) {
-    if ( todo->descriptionIsRich() ) {
-      outStr = toPlainText( todo->description() );
-    } else {
-      outStr = todo->description();
-    }
-    rect = p.boundingRect( left + 20, rect.bottom() + 5,
-                           width - ( left + 10 - x ), -1, Qt::WordBreak, outStr );
-  }
-  // if too big make new page
-  if ( rect.bottom() > pageHeight ) {
-    // first draw the connection lines from parent to-dos:
-    if ( level > 0 && connectSubTodos ) {
-      TodoParentStart *rct;
-      for ( int i = 0; i < startPoints.size(); ++i ) {
-        rct = startPoints.at( i );
-        int start;
-        int center = rct->mRect.left() + ( rct->mRect.width() / 2 );
-        int to = p.viewport().bottom();
-
-        // draw either from start point of parent or from top of the page
-        if ( rct->mSamePage ) {
-          start = rct->mRect.bottom() + 1;
-        } else {
-          start = p.viewport().top();
-        }
-        p.drawLine( center, start, center, to );
-        rct->mSamePage = false;
-      }
-    }
-    y = 0;
-    mPrinter->newPage();
-  }
 
   // If this is a sub-to-do, r will not be 0, and we want the LH side
   // of the priority line up to the RH side of the parent to-do's priority
@@ -1721,15 +1739,15 @@ void CalPrintPluginBase::drawTodo( int &count, Todo *todo, QPainter &p,
   if ( r && level > 0 && connectSubTodos ) {
     int bottom;
     int center( r->mRect.left() + ( r->mRect.width() / 2 ) );
-    if ( r->mSamePage ) {
+    int to( rect.top() + ( rect.height() / 2 ) );
+    int endx( rect.left() );
+    p.drawLine( center, to, endx, to );  // side connector
+    if ( r->mSamePage ) { 
       bottom = r->mRect.bottom() + 1;
     } else {
       bottom = 0;
     }
-    int to( rect.top() + ( rect.height() / 2 ) );
-    int endx( rect.left() );
     p.drawLine( center, bottom, center, to );
-    p.drawLine( center, to, endx, to );
   }
 
   // summary
@@ -1738,33 +1756,16 @@ void CalPrintPluginBase::drawTodo( int &count, Todo *todo, QPainter &p,
                          -1, Qt::WordBreak, outStr );
 
   QRect newrect;
-  //FIXME: the following code prints underline rather than strikeout text
-#if 0
-  QFont f( p.font() );
+  QFont newFont( p.font() );
+  QFont oldFont( p.font() );
   if ( todo->isCompleted() && strikeoutCompleted ) {
-    f.setStrikeOut( true );
-    p.setFont( f );
+    newFont.setStrikeOut( true );
+    p.setFont( newFont );
   }
   p.drawText( rect, Qt::WordBreak, outStr, &newrect );
-  f.setStrikeOut( false );
-  p.setFont( f );
-#endif
-  //TODO: Remove this section when the code above is fixed
-  p.drawText( rect, Qt::WordBreak, outStr, &newrect );
-  if ( todo->isCompleted() && strikeoutCompleted ) {
-    // strike out the summary text if to-do is complete
-    // Note: we tried to use a strike-out font and for unknown reasons the
-    // result was underline instead of strike-out, so draw the lines ourselves.
-    int delta = p.fontMetrics().lineSpacing();
-    int lines = ( rect.height() / delta ) + 1;
-    for ( int i=0; i<lines; i++ ) {
-      p.drawLine( rect.left(),  rect.top() + ( delta / 2 ) + ( i * delta ),
-                  rect.right(), rect.top() + ( delta / 2 ) + ( i * delta ) );
-    }
-  }
-
+  p.setFont( oldFont );
   // due date
-  if ( todo->hasDueDate() && posDueDt>=0 ) {
+  if ( todo->hasDueDate() && posDueDt >= 0 ) {
     outStr = local->formatDate( todo->dtDue().toLocalZone().date(), KLocale::ShortDate );
     rect = p.boundingRect( posDueDt, y, x + width, -1,
                            Qt::AlignTop | Qt::AlignLeft, outStr );
@@ -1772,7 +1773,7 @@ void CalPrintPluginBase::drawTodo( int &count, Todo *todo, QPainter &p,
   }
 
   // percentage completed
-  bool showPercentComplete = posPercentComplete>=0;
+  bool showPercentComplete = posPercentComplete >= 0;
   if ( showPercentComplete ) {
     int lwidth = 24;
     int lheight = 12;
@@ -1793,40 +1794,8 @@ void CalPrintPluginBase::drawTodo( int &count, Todo *todo, QPainter &p,
     p.drawText( rect, Qt::AlignTop | Qt::AlignLeft, outStr );
   }
 
-  // description
-  if ( !todo->description().isEmpty() && desc ) {
-    y = newrect.bottom() + 5;
-    if ( todo->descriptionIsRich() ) {
-      outStr = toPlainText( todo->description() );
-    } else {
-      outStr = todo->description();
-    }
-    rect = p.boundingRect( left + 20, y, x + width - ( left + 10 ), -1, Qt::WordBreak, outStr );
-    p.drawText( rect, Qt::WordBreak, outStr, &newrect );
-  }
+  y += 10;
 
-  // Set the new line position - 1
-  y = newrect.bottom() + 10; //set the line position
-
-  // If the to-do has sub-to-dos, we need to call ourselves recursively
-#if 0
-  Incidence::List l = todo->relations();
-  Incidence::List::ConstIterator it;
-  startPoints.append( &startpt );
-  for ( it = l.begin(); it != l.end(); ++it ) {
-    count++;
-    // In the future, to-dos might also be related to events
-    // Manually check if the sub-to-do is in the list of to-dos to print
-    // The problem is that relations() does not apply filters, so
-    // we need to compare manually with the complete filtered list!
-    Todo* subtodo = dynamic_cast<Todo *>( *it );
-    if ( subtodo && todoList.contains( subtodo ) ) {
-      drawTodo( count, subtodo, p, connectSubTodos, strikeoutCompleted,
-                desc, posPriority, posSummary, posDueDt, posPercentComplete,
-                level+1, x, y, width, pageHeight, todoList, &startpt );
-    }
-  }
-#endif
   // Make a list of all the sub-to-dos related to this to-do.
   Todo::List t;
   Incidence::List l = todo->relations();
@@ -1838,20 +1807,45 @@ void CalPrintPluginBase::drawTodo( int &count, Todo *todo, QPainter &p,
     // we need to compare manually with the complete filtered list!
     Todo* subtodo = dynamic_cast<Todo *>( *it );
     if ( subtodo && todoList.contains( subtodo ) ) {
+      if ( ( excludeConfidential &&
+          subtodo->secrecy() == Incidence::SecrecyConfidential ) ||
+          ( excludePrivate      &&
+          subtodo->secrecy() == Incidence::SecrecyPrivate ) ) {
+        continue;
+      }
       t.append( subtodo );
     }
   }
 
-  // Sort the sub-to-dos and then print them
+  // has sub-todos?
+  startpt.mHasLine = ( l.size() > 0 );
+  startPoints.append( &startpt );
+
+  // description
+  if ( !todo->description().isEmpty() && desc ) {
+    y = newrect.bottom() + 5;
+    drawTodoLines( p, todo->description(), left, y,
+                   width - ( left + 10 - x ), pageHeight,
+                   todo->descriptionIsRich(),
+                   startPoints, level, connectSubTodos );
+  } else {
+    y += 10;
+  }
+
+  // Sort the sub-to-dos and print them
   Todo::List sl = mCalendar->sortTodos( &t, sortField, sortDir );
   Todo::List::ConstIterator isl;
-  startPoints.append( &startpt );
+  int subcount = 0;
   for ( isl = sl.constBegin(); isl != sl.constEnd(); ++isl ) {
     count++;
+    if ( ++subcount == sl.size() ) {
+      startpt.mHasLine = false;
+    }
     drawTodo( count, ( *isl ), p, sortField, sortDir,
               connectSubTodos, strikeoutCompleted,
               desc, posPriority, posSummary, posDueDt, posPercentComplete,
-              level+1, x, y, width, pageHeight, todoList, &startpt );
+              level+1, x, y, width, pageHeight, todoList, &startpt,
+              excludeConfidential, excludePrivate );
   }
   startPoints.removeAll( &startpt );
 }
@@ -1862,7 +1856,7 @@ int CalPrintPluginBase::weekdayColumn( int weekday )
   return w % 7;
 }
 
-void CalPrintPluginBase::drawJournalField( QPainter &p, const QString &entry,
+void CalPrintPluginBase::drawTextLines( QPainter &p, const QString &entry,
                                            int x, int &y, int width,
                                            int pageHeight, bool richTextEntry )
 {
@@ -1888,7 +1882,6 @@ void CalPrintPluginBase::drawJournalField( QPainter &p, const QString &entry,
       p.drawText( x, y, textLine[ lineCount ] );
     }
   }
-  y += 7;
 }
 
 void CalPrintPluginBase::drawJournal( Journal * journal, QPainter &p, int x, int &y,
@@ -1922,12 +1915,14 @@ void CalPrintPluginBase::drawJournal( Journal * journal, QPainter &p, int x, int
   p.drawLine( x + 3, y, x + width - 6, y );
   y += 5;
   if ( !( journal->organizer().fullName().isEmpty() ) ) {
-    drawJournalField( p, i18n( "Person: %1", journal->organizer().fullName() ),
+    drawTextLines( p, i18n( "Person: %1", journal->organizer().fullName() ),
                       x, y, width, pageHeight, false );
+    y += 7;
   }
   if ( !( journal->description().isEmpty() ) ) {
-    drawJournalField( p, journal->description(), x, y, width, pageHeight,
+    drawTextLines( p, journal->description(), x, y, width, pageHeight,
                       journal->descriptionIsRich() );
+    y += 7;
   }
   y += 10;
 }

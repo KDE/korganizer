@@ -549,7 +549,8 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
                    int posPriority, int posSummary, int posDueDt,
                    int posPercentComplete, int level, int x, int &y,
                    int width, int pageHeight,
-                   const Todo::List &todoList, TodoParentStart *r = 0 );
+                   const Todo::List &todoList, TodoParentStart *r,
+                   bool excludeConfidential, bool excludePrivate );
 
     /**
       Draws single journal item.
@@ -563,9 +564,18 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
     */
     void drawJournal( Journal * journal, QPainter &p, int x, int &y,
                       int width, int pageHeight );
-    void drawJournalField( QPainter &p, const QString &entry,
-                           int x, int &y, int width, int pageHeight,
-                           bool richTextEntry );
+    /**
+      Draws text lines splitting on page boundaries.
+      @param p QPainter of the printout
+      @param x x-coordinate of the upper left coordinate of the first item
+      @param y y-coordinate of the upper left coordinate of the first item
+      @param width width of the whole list
+      @param pageHeight size of the page. A new page is started when the
+             text reaches the end of the page.
+    */
+    void drawTextLines( QPainter &p, const QString &entry,
+                        int x, int &y, int width, int pageHeight,
+                        bool richTextEntry );
 
     void drawSplitHeaderRight( QPainter &p, const QDate &fd, const QDate &td,
                                const QDate &cd, int width, int height );
@@ -590,6 +600,10 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
                         int &textY, bool singleLineLimit,
                         bool includeDescription, bool richDescription );
     QString toPlainText( const QString &htmlText );
+    void drawTodoLines( QPainter &p, const QString &entry,
+                        int x, int &y, int width, int pageHeight,
+                        bool richTextEntry, QList<TodoParentStart *> &startPoints,
+                        int level, bool connectSubTodos );
 
   protected:
     bool mUseColors;
