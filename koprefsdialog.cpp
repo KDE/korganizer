@@ -647,14 +647,8 @@ class KOPrefsDialogViews : public KPrefsModule
       monthLayout->addWidget( mdisplayBox );
 
       // GroupBox: Views->Month View->Color Usage
-      QVBoxLayout *mcolorsLayout = new QVBoxLayout;
-      QGroupBox *mcolorsBox = new QGroupBox( i18nc( "@title:group", "Color Usage" ) );
-      mcolorsLayout->addWidget(
-        addWidBool( KOPrefs::instance()->monthViewUsesCategoryColorItem() )->checkBox() );
-      mcolorsLayout->addWidget(
-        addWidBool( KOPrefs::instance()->monthViewUsesResourceColorItem() )->checkBox() );
-      mcolorsBox->setLayout( mcolorsLayout );
-      monthLayout->addWidget( mcolorsBox );
+      monthLayout->addWidget(
+        addWidRadios( KOPrefs::instance()->monthViewColorsItem() )->groupBox() );
       monthLayout->addStretch( 1 );
 
       // Tab: Views->Todo View

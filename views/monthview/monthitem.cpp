@@ -551,42 +551,65 @@ QList<QPixmap *> IncidenceMonthItem::icons() const
   return ret;
 }
 
-QColor IncidenceMonthItem::bgColor() const
+QColor IncidenceMonthItem::catColor() const
 {
-  QColor ret = QColor();
-  if ( mIsTodo && !KOPrefs::instance()->todosUseCategoryColors() ) {
-    if ( static_cast<Todo*>( mIncidence )->isOverdue() ) {
-      ret = KOPrefs::instance()->agendaCalendarItemsToDosOverdueBackgroundColor();
-    } else if ( static_cast<Todo*>( mIncidence )->dtDue().date() == QDate::currentDate() ) {
-      ret = KOPrefs::instance()->agendaCalendarItemsToDosDueTodayBackgroundColor();
-    }
+  QColor retColor;
+  QStringList categories = mIncidence->categories();
+  QString cat;
+  if ( !categories.isEmpty() ) {
+    cat = categories.first();
   }
-
-  if ( !ret.isValid() ) {
-    QStringList categories = mIncidence->categories();
-    QString cat;
-    if ( !categories.isEmpty() ) {
-      cat = categories.first();
-    }
-    if ( cat.isEmpty() ) {
-      ret = KOPrefs::instance()->monthCalendarItemsEventsBackgroundColor();
-    } else {
-      ret = KOPrefs::instance()->categoryColor( cat );
-    }
+  if ( cat.isEmpty() ) {
+    retColor = KOPrefs::instance()->unsetCategoryColor();
+  } else {
+    retColor = KOPrefs::instance()->categoryColor( cat );
   }
-
-  return ret;
+  return retColor;
 }
 
-QColor IncidenceMonthItem::frameColor( const QColor &bgColor ) const
+QColor IncidenceMonthItem::bgColor() const
 {
-  QColor resourceColor = KOHelper::resourceColor( monthScene()->calendar(),
-                                                  mIncidence );
-  if ( !resourceColor.isValid() ) {
-    return bgColor.dark( 130 );
+  QColor bgColor = QColor(); // Default invalid color;
+
+  if ( mIsTodo && !KOPrefs::instance()->todosUseCategoryColors() ) {
+    if ( static_cast<Todo*>( mIncidence )->isOverdue() ) {
+      bgColor = KOPrefs::instance()->agendaCalendarItemsToDosOverdueBackgroundColor();
+    } else if ( static_cast<Todo*>( mIncidence )->dtDue().date() == QDate::currentDate() ) {
+      bgColor = KOPrefs::instance()->agendaCalendarItemsToDosDueTodayBackgroundColor();
+    }
   }
 
-  return resourceColor;
+  if ( !bgColor.isValid() ) {
+    if ( KOPrefs::instance()->monthViewColors() == KOPrefs::ResourceOnly ||
+         KOPrefs::instance()->monthViewColors() == KOPrefs::ResourceInsideCategoryOutside ) {
+      bgColor = KOHelper::resourceColor( monthScene()->calendar(), mIncidence );
+    } else {
+      bgColor = catColor();
+    }
+  }
+
+  if ( !bgColor.isValid() ) {
+    bgColor = Qt::white;
+  }
+
+  return bgColor;
+}
+
+QColor IncidenceMonthItem::frameColor() const
+{
+  QColor frameColor;
+  if ( KOPrefs::instance()->monthViewColors() == KOPrefs::ResourceOnly ||
+       KOPrefs::instance()->monthViewColors() == KOPrefs::CategoryInsideResourceOutside ) {
+    frameColor = KOHelper::resourceColor( monthScene()->calendar(), mIncidence );
+  } else {
+    frameColor = catColor();
+  }
+
+  if ( !frameColor.isValid() ) {
+    frameColor = Qt::black;
+  }
+
+  return frameColor;
 }
 
 //-----------------------------------------------------------------
@@ -641,8 +664,7 @@ QColor HolidayMonthItem::bgColor() const
   return KOPrefs::instance()->agendaHolidaysBackgroundColor();
 }
 
-QColor HolidayMonthItem::frameColor( const QColor &bgColor ) const
+QColor HolidayMonthItem::frameColor() const
 {
-  Q_UNUSED( bgColor );
   return Qt::black;
 }

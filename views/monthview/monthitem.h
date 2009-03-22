@@ -229,7 +229,7 @@ class MonthItem : public QObject
     /**
       Returns the frame color of the item.
     */
-    virtual QColor frameColor( const QColor &bgColor ) const = 0;
+    virtual QColor frameColor() const = 0;
 
     /**
       Returns a list of pixmaps to draw next to the items.
@@ -291,7 +291,7 @@ class IncidenceMonthItem : public MonthItem
     QString toolTipText() const;
 
     QColor bgColor() const;
-    QColor frameColor( const QColor &bgColor ) const;
+    QColor frameColor() const;
 
     QList<QPixmap *> icons() const;
 
@@ -310,6 +310,11 @@ class IncidenceMonthItem : public MonthItem
 
   private:
     void updateDates( int startOffset, int endOffset );
+
+    /**
+      Returns the category color for this incidence.
+    */
+    QColor catColor() const;
 
     Incidence *mIncidence;
     int mRecurDayOffset;
@@ -341,7 +346,7 @@ class HolidayMonthItem : public MonthItem
     QString toolTipText() const { return mName; }
 
     QColor bgColor() const;
-    QColor frameColor( const QColor &bgColor ) const;
+    QColor frameColor() const;
 
     QList<QPixmap *> icons() const;
 
