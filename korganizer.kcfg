@@ -8,77 +8,64 @@
   <include>klocale.h</include>
   <kcfgfile name="korganizerrc"/>
 
-  <group name="General">
+<!-- PREFERENCES DIALOG -->
+
+<!-- General Page: Personal Tab -->
+  <group name="Personal Settings">
+    <entry type="Bool" key="Use Control Center Email" name="EmailControlCenter">
+      <label>Use email settings from System Settings</label>
+      <whatsthis>Check this box to use the KDE-wide e-mail settings, which are defined using the System Settings &quot;About Me&quot; Module. Uncheck this box to be able to specify your full name and e-mail.</whatsthis>
+      <default>true</default>
+    </entry>
+
+    <entry type="Enum" name="DefaultEmailAttachMethod">
+      <label>Default Email Attachment Method</label>
+      <whatsthis>The default way of attaching dropped emails to an event</whatsthis>
+      <choices>
+        <choice name="Ask">
+          <label>Always ask</label>
+        </choice>
+        <choice name="Link">
+          <label>Only attach link to message</label>
+        </choice>
+        <choice name="InlineFull">
+          <label>Attach complete message</label>
+        </choice>
+        <choice name="InlineBody">
+          <label>Attach message without attachments</label>
+        </choice>
+      </choices>
+      <default>Ask</default>
+    </entry>
+  </group>
+
+<!-- General Page: Save Tab -->
+  <group name="Save Settings">
+    <entry type="Bool" key="Html With Save">
+      <label>Export to HTML with every save</label>
+      <whatsthis>Check this box to export the calendar to a HTML-file every time you save it. By default, this file will be called calendar.html and placed in the user home folder.</whatsthis>
+      <default>false</default>
+    </entry>
+
     <entry type="Bool" key="Auto Save">
       <label>Enable automatic saving of manually opened calendar files</label>
       <whatsthis>Check this box to save your calendar file automatically when you exit KOrganizer without asking and periodically, as you work. This setting does not affect the automatic saving of the standard calendar, which is automatically saved after each change.</whatsthis>
       <default>true</default>
     </entry>
+
     <entry type="Int" key="Auto Save Interval">
       <label>Save &amp;interval in minutes</label>
       <whatsthis>Set the interval between automatic saving of calendar events in minutes here. This setting only applies to files that are opened manually. The standard KDE-wide calendar is automatically saved after each change.</whatsthis>
       <default>10</default>
       <min>1</min>
     </entry>
+
     <entry type="Bool" key="Confirm Deletes" name="Confirm">
       <label>Confirm deletes</label>
       <whatsthis>Check this box to display a confirmation dialog when deleting items.</whatsthis>
       <default>true</default>
     </entry>
 
-    <entry type="Bool" key="Archive Events">
-      <label>Archive events</label>
-      <default>true</default>
-    </entry>
-    <entry type="Bool" key="Archive Todos">
-      <label>Archive to-dos</label>
-      <default>true</default>
-    </entry>
-
-    <entry type="Bool" key="Auto Archive">
-      <label>Regularly archive events</label>
-      <default>false</default>
-    </entry>
-    <entry type="Enum" key="Archive Action">
-      <label>What to do when archiving</label>
-      <choices>
-        <choice name="actionDelete">
-          <label>Delete old events</label>
-        </choice>
-        <choice name="actionArchive">
-          <label>Archive old events to a separate file</label>
-        </choice>
-      </choices>
-      <default>actionArchive</default>
-    </entry>
-    <entry type="Int" key="Expiry Time">
-      <label>If auto-archiving is enabled, events older than this amount will be archived. The unit of this value is specified in another field.</label>
-      <default>1</default>
-    </entry>
-    <entry type="Enum" key="Expiry Unit" name="ExpiryUnit">
-      <label>The unit in which the expiry time is expressed.</label>
-      <choices>
-        <choice name="UnitDays">
-          <label>In days</label>
-        </choice>
-        <choice name="UnitWeeks">
-          <label>In weeks</label>
-        </choice>
-        <choice name="UnitMonths">
-          <label>In months</label>
-        </choice>
-      </choices>
-      <default>UnitMonths</default>
-    </entry>
-    <entry type="String" key="Archive File">
-      <label>URL of the file where old events should be archived</label>
-    </entry>
-
-    <entry type="Bool" key="Html With Save">
-      <label>Export to HTML with every save</label>
-      <whatsthis>Check this box to export the calendar to a HTML-file every time you save it. By default, this file will be called calendar.html and placed in the user home folder.</whatsthis>
-      <default>false</default>
-    </entry>
     <entry type="Enum" key="Destination" name="Destination">
       <label>New Events, To-dos and Journal Entries Should</label>
       <choices>
@@ -93,7 +80,10 @@
       </choices>
       <default>askDestination</default>
     </entry>
+  </group>
 
+<!-- General Page: System Tray Tab -->
+  <group name="System Tray">
     <entry type="Bool" key="ShowReminderDaemon">
       <label>Show Reminder Daemon in the System Tray</label>
       <whatsthis>Check this box to show the KOrganizer reminder daemon in the system tray.</whatsthis>
@@ -101,79 +91,99 @@
     </entry>
   </group>
 
-  <group name="Personal Settings">
-    <entry type="Bool" key="Bcc">
-      <label>Send copy to owner when mailing events</label>
-      <whatsthis>Check this box to get a copy of all e-mail messages that KOrganizer sends at your request to event attendees.</whatsthis>
-      <default>false</default>
-    </entry>
-    <entry type="Bool" key="Use Control Center Email" name="EmailControlCenter">
-      <label>Use email settings from System Settings</label>
-      <whatsthis>Check this box to use the KDE-wide e-mail settings, which are defined using the System Settings &quot;About Me&quot; Module. Uncheck this box to be able to specify your full name and e-mail.</whatsthis>
-      <default>true</default>
-    </entry>
-    <entry type="String" key="user_name" name="UserName">
-      <label>Full &amp;name</label>
-      <whatsthis>Enter your full name here. This name will be displayed as "Organizer" in to-dos and events you create.</whatsthis>
-      <default code="true">i18n(&quot;Anonymous&quot;)</default>
-    </entry>
-    <entry type="String" key="user_email" name="UserEmail">
-      <label>E&amp;mail address</label>
-      <whatsthis>Enter here your e-mail address. This e-mail address will be used to identify the owner of the calendar, and displayed in events and to-dos you create.</whatsthis>
-      <default code="true">i18n(&quot;nobody@nowhere&quot;)</default>
-    </entry>
-    <entry type="Enum" key="Mail Client">
-      <label>Mail Client</label>
-      <choices>
-        <choice name="MailClientKMail">
-          <label>KMail</label>
-          <whatsthis>Select this option to use KMail as the mail transport. The mail transport is used for groupware functionality.</whatsthis>
-        </choice>
-        <choice name="MailClientSendmail">
-          <label>Sendmail</label>
-          <whatsthis>Select this option to use sendmail as the mail transport. The mail transport is used for groupware functionality. Please check if you have sendmail installed before selecting this option.</whatsthis>
-        </choice>
-      </choices>
-      <default>MailClientKMail</default>
-    </entry>
-  </group>
-
+<!-- Time&Date Page: Regional Tab -->
   <group name="Time &amp; Date">
     <entry type="String" name="TimeZoneId">
       <whatsthis>Select your timezone from the list of locations on this drop down box. If your city is not listed, select one which shares the same timezone. KOrganizer will automatically adjust for daylight savings.</whatsthis>
     </entry>
+
+    <entry type="DateTime" name="DayBegins">
+      <label>Day begins at</label>
+      <whatsthis>Enter the start time for events here. This time should be the earliest time that you use for events, as it will be displayed at the top.</whatsthis>
+      <default>QDateTime(QDate(1752,1,1), QTime(7,0))</default>
+    </entry>
+
     <entry type="String" name="Holidays">
       <label>Use holiday region:</label>
       <whatsthis>Select from which region you want to use the holidays here. Defined holidays are shown as non-working days in the date navigator, the agenda view, etc.</whatsthis>
     </entry>
+
+    <entry type="DateTime" name="WorkingHoursStart">
+      <label>Daily starting hour</label>
+      <whatsthis>Enter the start time for the working hours here. The working hours will be marked with color by KOrganizer.</whatsthis>
+      <default>QDateTime(QDate(1752,1,1), QTime(8,0))</default>
+    </entry>
+
+    <entry type="DateTime" name="WorkingHoursEnd">
+      <label>Daily ending hour</label>
+      <whatsthis>Enter the ending time for the working hours here. The working hours will be marked with color by KOrganizer.</whatsthis>
+      <default>QDateTime(QDate(1752,1,1), QTime(17,0))</default>
+    </entry>
+
+    <entry type="Bool" key="Exclude Holidays">
+      <label>Exclude holidays</label>
+      <whatsthis>Check this box to prevent KOrganizer from marking the working hours on holidays.</whatsthis>
+      <default>true</default>
+    </entry>
+  </group>
+
+<!-- Time&Date Page: Default Values Tab -->
+  <group name="Default Datetimes">
     <entry type="DateTime" name="StartTime">
       <label>Default appointment time</label>
       <whatsthis>Enter the default time for events here. The default is used if you do not supply a start time.</whatsthis>
       <default>QDateTime(QDate(1752,1,1), QTime(10,0))</default>
     </entry>
+
     <entry type="DateTime" name="DefaultDuration">
       <label>Default duration of new appointment (HH:MM)</label>
       <whatsthis>Enter default duration for events here. The default is used if you do not supply an end time.</whatsthis>
       <default>QDateTime(QDate(1752,1,1), QTime(2,0))</default>
     </entry>
+
     <entry type="Int" key="Default Reminder Time" name="ReminderTime">
       <label>Default reminder time</label>
       <whatsthis>Enter the default reminder time for all newly created items. The time unit is specified in the adjacent combobox.</whatsthis>
       <tooltip>Default time for reminders</tooltip>
       <default>15</default>
     </entry>
+
     <entry type="Int" key="Default Reminder Time Units" name="ReminderTimeUnits">
       <whatsthis>Enter the default reminder time units for all newly created items. The time is specified in the adjacent spinbox.</whatsthis>
       <tooltip>Default time unit for reminders</tooltip>
       <default>0</default>
     </entry>
-    <entry type="Bool" name="ShowTimeZoneSelectorInIncidenceEditor">
-      <label>Show timezone selectors in the event and todo editor dialog.</label>
+  </group>
+
+<!-- Views Page: General Tab -->
+  <group name="General View">
+    <entry type="Bool" key="Enable ToolTips">
+      <label>Enable tooltips for displaying summaries</label>
+      <whatsthis>Check this box to display summary tooltips when hovering the mouse over an event or a to-do.</whatsthis>
+      <default>true</default>
+    </entry>
+
+    <entry type="Bool" key="TodosUseCategoryColors">
+      <label>To-dos use category colors</label>
+      <whatsthis>Check this box so that to-dos will use category colors and not colors specific to their due, due today or overdue state</whatsthis>
+      <default>false</default>
+    </entry>
+
+    <entry type="Bool" key="Show Daily Recurrences" name="DailyRecur">
+      <label>Show events that recur daily in date navigator</label>
+      <whatsthis>Check this box to show the days containing daily recurring events in bold typeface in the Date Navigator, or uncheck it to give more prominence to other (non daily recurring) events.</whatsthis>
+      <default>true</default>
+    </entry>
+
+    <entry type="Bool" key="Show Weekly Recurrences" name="WeeklyRecur">
+      <label>Show events that recur weekly in date navigator</label>
+      <whatsthis>Check this box to show the days containing weekly recurring events in bold typeface in the Date Navigator, or uncheck it to give more prominence to other (non weekly recurring) events.</whatsthis>
       <default>true</default>
     </entry>
   </group>
 
-  <group name="Views">
+<!-- Views Page: Agenda View Tab -->
+  <group name="Agenda View">
     <entry type="Int" key="Hour Size">
       <label>Hour size</label>
       <whatsthis>Select the height of the hour rows in the agenda grid, in pixels. Increasing this value will make each row in the agenda grid taller.</whatsthis>
@@ -182,36 +192,12 @@
       <min>4</min>
       <max>30</max>
     </entry>
-    <entry type="Bool" key="Show Daily Recurrences" name="DailyRecur">
-      <label>Show events that recur daily in date navigator</label>
-      <whatsthis>Check this box to show the days containing daily recurring events in bold typeface in the Date Navigator, or uncheck it to give more prominence to other (non daily recurring) events.</whatsthis>
-      <default>true</default>
-    </entry>
-    <entry type="Bool" key="Show Weekly Recurrences" name="WeeklyRecur">
-      <label>Show events that recur weekly in date navigator</label>
-      <whatsthis>Check this box to show the days containing weekly recurring events in bold typeface in the Date Navigator, or uncheck it to give more prominence to other (non weekly recurring) events.</whatsthis>
-      <default>true</default>
-    </entry>
-    <entry type="Bool" key="Enable ToolTips">
-      <label>Enable tooltips for displaying summaries</label>
-      <whatsthis>Check this box to display summary tooltips when hovering the mouse over an event or a to-do.</whatsthis>
-      <default>true</default>
-    </entry>
-    <entry type="Bool" key="TodosUseCategoryColors">
-      <label>To-dos use category colors</label>
-      <whatsthis>Check this box so that to-dos will use category colors and not colors specific to their due, due today or overdue state</whatsthis>
-      <default>false</default>
-    </entry>
-    <entry type="Bool" key="Enable Month-View Scrollbars" name="EnableMonthScroll">
-      <label>Enable scrollbars in month view cells</label>
-      <whatsthis>Check this box to display scrollbars when clicking on a cell in the month view; they will only appear when needed though.</whatsthis>
-      <default>false</default>
-    </entry>
-    <entry type="Bool" key="Show Icons in Month View" name="EnableMonthItemIcons">
-      <label>Show icons in month view items</label>
-      <whatsthis>Check this box to display icons (alarm, recursion, etc.) in month view items.</whatsthis>
-      <tooltip>Display icons in month view items</tooltip>
-      <default>true</default>
+
+    <entry type="Int" key="Next X Days">
+      <label>Next x days</label>
+      <whatsthis>Select the number of &quot;x&quot; days to be displayed in the next days view. To access the  the next &quot;x&quot; days view, choose the &quot;Next X Days&quot; menu item from the &quot;View&quot; menu.</whatsthis>
+      <tooltip>Show this many days at a time in the Next &quot;x&quot; days view</tooltip>
+      <default>3</default>
     </entry>
 
     <entry type="Bool" key="Show Icons in Agenda View" name="EnableAgendaItemIcons">
@@ -228,17 +214,17 @@
       <default>true</default>
     </entry>
 
-    <entry type="Bool" name="ShowTodosMonthView">
-      <label>Show to-dos</label>
-      <whatsthis>Check this box to display to-dos in the month view.</whatsthis>
-      <tooltip>Display to-dos in the month view</tooltip>
+    <entry type="Bool" key="Show current-time line" name="MarcusBainsEnabled">
+      <label>Show current-time (Marcus Bains) line</label>
+      <whatsthis>Check this box to display a line in the day or week view indicating the current-time line (Marcus Bains line).</whatsthis>
+      <tooltip>Display the current-time indicator</tooltip>
       <default>true</default>
     </entry>
 
-    <entry type="Bool" name="ShowJournalsMonthView">
-      <label>Show journals</label>
-      <whatsthis>Check this box to display journals in the month view.</whatsthis>
-      <tooltip>Display journals in the month view</tooltip>
+    <entry type="Bool" key="Current-time line shows seconds" name="MarcusBainsShowSeconds">
+      <label>Show seconds on the current-time (Marcus Bains) line</label>
+      <whatsthis>Check this box if you want to show seconds on the current-time line.</whatsthis>
+      <tooltip>Display seconds with the current-time indicator</tooltip>
       <default>true</default>
     </entry>
 
@@ -247,19 +233,6 @@
       <whatsthis>Check this box to start the event editor automatically when you select a time range in the daily and weekly view. To select a time range, drag the mouse from the start time to the end time of the event you are about to plan.</whatsthis>
       <tooltip>Enable automatic event editor with time range selection</tooltip>
       <default>false</default>
-    </entry>
-
-    <entry type="Bool" key="Show current-time line" name="MarcusBainsEnabled">
-      <label>Show current-time (Marcus Bains) line</label>
-      <whatsthis>Check this box to display a line in the day or week view indicating the current-time line (Marcus Bains line).</whatsthis>
-      <tooltip>Display the current-time indicator</tooltip>
-      <default>true</default>
-    </entry>
-    <entry type="Bool" key="Current-time line shows seconds" name="MarcusBainsShowSeconds">
-      <label>Show seconds on the current-time (Marcus Bains) line</label>
-      <whatsthis>Check this box if you want to show seconds on the current-time line.</whatsthis>
-      <tooltip>Display seconds with the current-time indicator</tooltip>
-      <default>true</default>
     </entry>
 
     <entry type="Enum" key="AgendaViewColors">
@@ -310,32 +283,41 @@
       </choices>
       <default>CalendarsMerged</default>
     </entry>
+  </group>
 
-
-
-    <entry type="DateTime" name="DayBegins">
-      <label>Day begins at</label>
-      <whatsthis>Enter the start time for events here. This time should be the earliest time that you use for events, as it will be displayed at the top.</whatsthis>
-      <default>QDateTime(QDate(1752,1,1), QTime(7,0))</default>
+<!-- Views Page: Month View Tab -->
+  <group name="Month View">
+    <entry type="Bool" key="Enable Month-View Scrollbars" name="EnableMonthScroll">
+      <label>Enable scrollbars in month view cells</label>
+      <whatsthis>Check this box to display scrollbars when clicking on a cell in the month view; they will only appear when needed though.</whatsthis>
+      <default>false</default>
     </entry>
 
-    <entry type="DateTime" name="WorkingHoursStart">
-      <label>Daily starting hour</label>
-      <whatsthis>Enter the start time for the working hours here. The working hours will be marked with color by KOrganizer.</whatsthis>
-      <default>QDateTime(QDate(1752,1,1), QTime(8,0))</default>
-    </entry>
-    <entry type="DateTime" name="WorkingHoursEnd">
-      <label>Daily ending hour</label>
-      <whatsthis>Enter the ending time for the working hours here. The working hours will be marked with color by KOrganizer.</whatsthis>
-      <default>QDateTime(QDate(1752,1,1), QTime(17,0))</default>
-    </entry>
-    <entry type="Int" key="Work Week Mask" name="WorkWeekMask">
-      <default>31</default>
-    </entry>
-    <entry type="Bool" key="Exclude Holidays">
-      <label>Exclude holidays</label>
-      <whatsthis>Check this box to prevent KOrganizer from marking the working hours on holidays.</whatsthis>
+    <entry type="Bool" key="Show Icons in Month View" name="EnableMonthItemIcons">
+      <label>Show icons in month view items</label>
+      <whatsthis>Check this box to display icons (alarm, recursion, etc.) in month view items.</whatsthis>
+      <tooltip>Display icons in month view items</tooltip>
       <default>true</default>
+    </entry>
+
+    <entry type="Bool" name="ShowTodosMonthView">
+      <label>Show to-dos</label>
+      <whatsthis>Check this box to display to-dos in the month view.</whatsthis>
+      <tooltip>Display to-dos in the month view</tooltip>
+      <default>true</default>
+    </entry>
+
+    <entry type="Bool" name="ShowJournalsMonthView">
+      <label>Show journals</label>
+      <whatsthis>Check this box to display journals in the month view.</whatsthis>
+      <tooltip>Display journals in the month view</tooltip>
+      <default>true</default>
+    </entry>
+
+    <entry type="Bool" key="Full View Month">
+      <label>Month view uses full window</label>
+      <whatsthis>Check this box to use the full KOrganizer window when displaying the month view. If this box is checked, you will gain some space for the monthly view, but other widgets, such as the date navigator, the item details and the resources list, will not be displayed.</whatsthis>
+      <default>false</default>
     </entry>
 
     <entry type="Bool" key="Month View Uses Category Color">
@@ -349,12 +331,16 @@
       <whatsthis>Check this box to make the month view use the resource colors of an item.</whatsthis>
       <default>true</default>
     </entry>
+  </group>
 
-    <entry type="Bool" key="Full View Month">
-      <label>Month view uses full window</label>
-      <whatsthis>Check this box to use the full KOrganizer window when displaying the month view. If this box is checked, you will gain some space for the monthly view, but other widgets, such as the date navigator, the item details and the resources list, will not be displayed.</whatsthis>
-      <default>false</default>
+<!-- Views Page: Todo View Tab -->
+  <group name="Todo View">
+    <entry type="Bool" key="Sort Completed Todos Separately">
+      <label>Always display completed to-dos at the bottom of the list</label>
+      <whatsthis>Check this box if you want all completed to-dos to be always grouped at the bottom of the to-do list.</whatsthis>
+      <default>true</default>
     </entry>
+
     <entry type="Bool" key="Full View Todo">
       <label>To-do list view uses full window</label>
       <whatsthis>Check this box to use the full KOrganizer window when displaying the to-do list view. If this box is checked, you will gain some space for the to-do list view, but other widgets, such as the date navigator, the to-do details and the resources list, will not be displayed.</whatsthis>
@@ -366,102 +352,34 @@
       <whatsthis>Check this box to record the completion of a to-do in a new entry of your journal automatically.</whatsthis>
       <default>false</default>
     </entry>
-
-    <entry type="Bool" key="Sort Completed Todos Separately">
-      <label>Always display completed to-dos at the bottom of the list</label>
-      <whatsthis>Check this box if you want all completed to-dos to be always grouped at the bottom of the to-do list.</whatsthis>
-      <default>true</default>
-    </entry>
-
-   <entry type="Bool" key="Quick Todo" name="EnableQuickTodo">
-      <default>true</default>
-    </entry>
-
-    <entry type="Bool" key="Todo Quick Search" name="EnableTodoQuickSearch">
-      <default>true</default>
-    </entry>
-
-    <entry type="Int" key="Next X Days">
-      <label>Next x days</label>
-      <whatsthis>Select the number of &quot;x&quot; days to be displayed in the next days view. To access the  the next &quot;x&quot; days view, choose the &quot;Next X Days&quot; menu item from the &quot;View&quot; menu.</whatsthis>
-      <tooltip>Show this many days at a time in the Next &quot;x&quot; days view</tooltip>
-      <default>3</default>
-    </entry>
-
   </group>
 
-  <group name="Layout">
-    <entry type="Bool" key="CompactDialogs">
-      <default>false</default>
-    </entry>
-    <entry type="Bool" key="VerticalScreen">
-      <default>false</default>
-    </entry>
-  </group>
-
-  <group name="KOrganizer Plugins">
-    <entry type="StringList" name="SelectedPlugins">
-      <default></default>
-    </entry>
-  </group>
-
-  <group name="Editors">
-    <entry type="StringList" name="EventTemplates">
-    </entry>
-    <entry type="StringList" name="TodoTemplates">
-    </entry>
-    <entry type="StringList" name="JournalTemplates">
-    </entry>
-
-    <entry type="StringList" name="ActiveDesignerFields">
-    </entry>
-  </group>
-
-  <group name="Group Scheduling">
-    <entry type="Enum" name="IMIPScheduler">
-      <choices>
-        <choice name="IMIPDummy"/>
-        <choice name="IMIPKMail"/>
-      </choices>
-      <default>IMIPKMail</default>
-    </entry>
-    <entry type="Bool" key="Use Groupware Communication">
-      <label>Use Groupware communication</label>
-      <whatsthis>Check this box to enable automatic generation of mails when creating, updating or deleting events (or to-dos) involving other attendees. You should check this box if you want to use the groupware functionality (e.g. Configuring Kontact as a KDE Kolab client).</whatsthis>
-      <default>true</default>
-    </entry>
-
-    <entry type="StringList" name="AdditionalMails">
-    </entry>
-
-    <entry name="OutlookCompatCounterProposals" type="Bool">
-      <label>Send Outlook-like pseudo counter proposals</label>
-      <default>false</default>
-    </entry>
-
-  </group>
-
+<!-- Colors and Fonts Page: Colors Tab -->
   <group name="Colors">
     <entry type="Color" key="Holiday Color">
       <label>Holiday color</label>
       <whatsthis>Select the holiday color here. The holiday color will be used for the holiday name in the month view and the holiday number in the date navigator.</whatsthis>
       <default>255, 100, 100</default>
     </entry>
+
     <entry type="Color" key="AgendaBackgroundColor" name="AgendaBgColor">
       <label>Agenda view background color</label>
       <whatsthis>Select the agenda view background color here.</whatsthis>
       <default>255, 255, 255</default>
     </entry>
+
     <entry type="Color" key="WorkingHoursColor">
       <label>Working hours color</label>
       <whatsthis>Select the working hours color for the agenda view here.</whatsthis>
       <default>255, 235, 154</default>
     </entry>
+
     <entry type="Color" key="Todo due today Color" name="TodoDueTodayColor">
       <label>To-do due today color</label>
       <whatsthis>Select the to-do due today color here.</whatsthis>
       <default>255, 200, 50</default>
     </entry>
+
     <entry type="Color" key="Todo overdue Color" name="TodoOverdueColor">
       <label>To-do overdue color</label>
       <whatsthis>Select the to-do overdue color here.</whatsthis>
@@ -474,32 +392,66 @@
       <tooltip>Use this color when drawing items without a category</tooltip>
       <default>151, 235, 121</default>
     </entry>
-
-    <entry type="Bool" key="AssignDefaultResourceColors">
-      <default>true</default>
-    </entry>
-    <entry type="Int" key="DefaultResourceColorSeed">
-      <default>0</default>
-    </entry>
-    <entry type="StringList" key="DefaultResourceColors">
-        <default>#c1d4e7,#d0e7c1,#e3e7c1,#e7c1e6,#a1b1c1</default>
-    </entry>
-
   </group>
 
+<!-- Colors and Fonts Page: Fonts Tab -->
   <group name="Fonts">
-    <entry type="Font" key="AgendaView Font">
-      <label>Agenda view</label>
-      <whatsthis>Press this button to configure the agenda view font. This button will open the &quot;Select Font&quot; dialog, allowing you to choose the font for the events in the agenda view.</whatsthis>
+    <entry key="Agenda TimeLabels Font" type="Font">
+      <label>Time bar</label>
+      <whatsthis>Press this button to configure the time bar font. The time bar is the widget that shows the hours in the agenda view. This button will open the &quot;Select Font&quot; dialog, allowing you to choose the hour font for the time bar.</whatsthis>
     </entry>
+
     <entry type="Font" key="MonthView Font">
       <label>Month view</label>
       <whatsthis>Press this button to configure the month view font. This button will open the &quot;Select Font&quot; dialog, allowing you to choose the font for the items in the month view.</whatsthis>
     </entry>
+
+    <entry type="Font" key="AgendaView Font">
+      <label>Agenda view</label>
+      <whatsthis>Press this button to configure the agenda view font. This button will open the &quot;Select Font&quot; dialog, allowing you to choose the font for the events in the agenda view.</whatsthis>
+    </entry>
+
+    <entry key="Agenda MarcusBainsLine Font" type="Font">
+      <label>Current-time line</label>
+      <whatsthis>Press this button to configure the current-time line font. This button will open the &quot;Select Font&quot; dialog, allowing you to choose the font for the current-time line in the agenda view.</whatsthis>
+    </entry>
   </group>
 
-  <group name="FreeBusy">
+<!-- Group Scheduling Page -->
+  <group name="Group Scheduling">
+    <entry type="Bool" key="Use Groupware Communication">
+      <label>Use Groupware communication</label>
+      <whatsthis>Check this box to enable automatic generation of mails when creating, updating or deleting events (or to-dos) involving other attendees. You should check this box if you want to use the groupware functionality (e.g. Configuring Kontact as a KDE Kolab client).</whatsthis>
+      <default>true</default>
+    </entry>
 
+    <entry type="Bool" key="Bcc">
+      <label>Send copy to owner when mailing events</label>
+      <whatsthis>Check this box to get a copy of all e-mail messages that KOrganizer sends at your request to event attendees.</whatsthis>
+      <default>false</default>
+    </entry>
+
+    <entry type="Enum" key="Mail Client">
+      <label>Mail Client</label>
+      <choices>
+        <choice name="MailClientKMail">
+          <label>KMail</label>
+          <whatsthis>Select this option to use KMail as the mail transport. The mail transport is used for groupware functionality.</whatsthis>
+        </choice>
+        <choice name="MailClientSendmail">
+          <label>Sendmail</label>
+          <whatsthis>Select this option to use sendmail as the mail transport. The mail transport is used for groupware functionality. Please check if you have sendmail installed before selecting this option.</whatsthis>
+        </choice>
+      </choices>
+      <default>MailClientKMail</default>
+    </entry>
+
+    <entry type="StringList" name="AdditionalMails">
+    </entry>
+  </group>
+
+<!-- Free/Busy Page: Publish Tab -->
+  <group name="FreeBusy Publish">
     <entry type="Bool" name="FreeBusyPublishAuto">
       <default>false</default>
     </entry>
@@ -507,6 +459,7 @@
     <entry type="Int" name="FreeBusyPublishDelay">
       <default>5</default>
     </entry>
+
     <entry type="Int" key="FreeBusyPublishDays">
       <default>60</default>
     </entry>
@@ -515,26 +468,26 @@
       <label>Free/Busy Publish URL</label>
       <whatsthis>URL for publishing free/busy information</whatsthis>
     </entry>
+
     <entry type="String" name="FreeBusyPublishUser">
       <label>Free/Busy Publish Username</label>
       <whatsthis>Username for publishing free/busy information</whatsthis>
     </entry>
+
     <entry type="Password" name="FreeBusyPublishPassword">
       <label>Free/Busy Publish Password</label>
       <whatsthis>Password for publishing free/busy information</whatsthis>
     </entry>
+
     <entry type="Bool" name="FreeBusyPublishSavePassword">
       <default>false</default>
     </entry>
+  </group>
 
+<!-- Free/Busy Page: Retrieve Tab -->
+  <group name="FreeBusy Retrieve">
     <entry type="Bool" name="FreeBusyRetrieveAuto">
       <label>Enable Automatic Free/Busy Retrieval</label>
-      <default>false</default>
-    </entry>
-
-    <entry type="Bool" name="FreeBusyCheckHostname">
-      <label>Check whether hostname and retrieval email address match</label>
-      <whatsthis>With this setting you can configure whether the domain part of the free/busy url has to match the domain part of the user id you are looking for. For example if this option is 'true' then looking for the free/busy data of joe@mydomain.com on the server www.yourdomain.com will fail.</whatsthis>
       <default>false</default>
     </entry>
 
@@ -547,22 +500,205 @@
     <entry type="String" name="FreeBusyRetrieveUrl">
       <label>Free/Busy Retrieval URL</label>
     </entry>
+
     <entry type="String" name="FreeBusyRetrieveUser">
       <label>Free/Busy Retrieval Username</label>
     </entry>
+
     <entry type="Password" name="FreeBusyRetrievePassword">
       <label>Free/Busy Retrieval Password</label>
       <whatsthis>Password for retrieving free/busy information</whatsthis>
     </entry>
+
     <entry type="Bool" name="FreeBusyRetrieveSavePassword">
       <default>false</default>
     </entry>
-
   </group>
 
+<!-- Plugins Page -->
+  <group name="KOrganizer Plugins">
+    <entry type="StringList" name="SelectedPlugins">
+      <default></default>
+    </entry>
+  </group>
+
+<!-- Custom Pages Page -->
 
 
-  <group name="Theme/Agenda view">
+
+<!-- ARCHIVE DIALOG -->
+  <group name="Archive Dialog">
+    <entry type="Bool" key="Auto Archive">
+      <label>Regularly archive events</label>
+      <default>false</default>
+    </entry>
+
+    <entry type="Int" key="Expiry Time">
+      <label>If auto-archiving is enabled, events older than this amount will be archived. The unit of this value is specified in another field.</label>
+      <default>1</default>
+    </entry>
+
+    <entry type="Enum" key="Expiry Unit" name="ExpiryUnit">
+      <label>The unit in which the expiry time is expressed.</label>
+      <choices>
+        <choice name="UnitDays">
+          <label>In days</label>
+        </choice>
+        <choice name="UnitWeeks">
+          <label>In weeks</label>
+        </choice>
+        <choice name="UnitMonths">
+          <label>In months</label>
+        </choice>
+      </choices>
+      <default>UnitMonths</default>
+    </entry>
+
+    <entry type="String" key="Archive File">
+      <label>URL of the file where old events should be archived</label>
+    </entry>
+
+    <entry type="Bool" key="Archive Events">
+      <label>Archive events</label>
+      <default>true</default>
+    </entry>
+
+    <entry type="Bool" key="Archive Todos">
+      <label>Archive to-dos</label>
+      <default>true</default>
+    </entry>
+
+    <entry type="Enum" key="Archive Action">
+      <label>What to do when archiving</label>
+      <choices>
+        <choice name="actionDelete">
+          <label>Delete old events</label>
+        </choice>
+        <choice name="actionArchive">
+          <label>Archive old events to a separate file</label>
+        </choice>
+      </choices>
+      <default>actionArchive</default>
+    </entry>
+  </group>
+
+<!-- Options currently not visible in the GUI -->
+  <group name="Hidden Options">
+   <entry type="Bool" key="Quick Todo" name="EnableQuickTodo">
+      <default>true</default>
+    </entry>
+
+    <entry type="Bool" key="Todo Quick Search" name="EnableTodoQuickSearch">
+      <default>true</default>
+    </entry>
+
+    <entry type="Enum" name="DefaultTodoAttachMethod">
+      <label>Default todo attachment method</label>
+      <whatsthis>The default way of attaching dropped emails to a task</whatsthis>
+      <choices>
+        <choice name="TodoAttachAsk">
+          <label>Always ask</label>
+        </choice>
+        <choice name="TodoAttachLink">
+          <label>Only attach link to message</label>
+        </choice>
+        <choice name="TodoAttachInlineFull">
+          <label>Attach complete message</label>
+        </choice>
+      </choices>
+      <default>TodoAttachInlineFull</default>
+    </entry>
+
+    <entry type="Bool" name="ShowTimeZoneSelectorInIncidenceEditor">
+      <label>Show timezone selectors in the event and todo editor dialog.</label>
+      <default>true</default>
+    </entry>
+
+    <entry type="Bool" key="CompactDialogs">
+      <default>false</default>
+    </entry>
+
+    <entry name="OutlookCompatCounterProposals" type="Bool">
+      <label>Send Outlook-like pseudo counter proposals</label>
+      <default>false</default>
+    </entry>
+
+    <entry type="Bool" name="FreeBusyCheckHostname">
+      <label>Check whether hostname and retrieval email address match</label>
+      <whatsthis>With this setting you can configure whether the domain part of the free/busy url has to match the domain part of the user id you are looking for. For example if this option is 'true' then looking for the free/busy data of joe@mydomain.com on the server www.yourdomain.com will fail.</whatsthis>
+      <default>false</default>
+    </entry>
+
+    <entry key="Agenda MarcusBainsLine Line Color" type="Color">
+      <default>255,0,0</default>
+    </entry>
+  </group>
+
+<!-- INTERNAL SETTINGS: Not for users to change -->
+  <group name="Internal Settings">
+    <entry type="String" key="user_name" name="UserName">
+      <label>Full &amp;name</label>
+      <whatsthis>Enter your full name here. This name will be displayed as "Organizer" in to-dos and events you create.</whatsthis>
+      <default code="true">i18n(&quot;Anonymous&quot;)</default>
+    </entry>
+
+    <entry type="String" key="user_email" name="UserEmail">
+      <label>E&amp;mail address</label>
+      <whatsthis>Enter here your e-mail address. This e-mail address will be used to identify the owner of the calendar, and displayed in events and to-dos you create.</whatsthis>
+      <default code="true">i18n(&quot;nobody@nowhere&quot;)</default>
+    </entry>
+
+    <entry type="Int" key="Work Week Mask" name="WorkWeekMask">
+      <default>31</default>
+    </entry>
+
+    <entry type="Int" key="DefaultResourceColorSeed">
+      <default>0</default>
+    </entry>
+
+    <entry type="StringList" key="DefaultResourceColors">
+        <default>#c1d4e7,#d0e7c1,#e3e7c1,#e7c1e6,#a1b1c1</default>
+    </entry>
+
+    <entry type="Bool" key="AssignDefaultResourceColors">
+      <default>true</default>
+    </entry>
+
+    <entry type="StringList" name="EventTemplates">
+    </entry>
+
+    <entry type="StringList" name="TodoTemplates">
+    </entry>
+
+    <entry type="StringList" name="JournalTemplates">
+    </entry>
+
+    <entry key="Decorations At Month View Top" type="StringList">
+    </entry>
+
+    <entry key="Decorations At Agenda View Top" type="StringList">
+    </entry>
+
+    <entry key="Decorations At Agenda View Bottom" type="StringList">
+    </entry>
+
+    <entry type="StringList" name="ActiveDesignerFields">
+    </entry>
+  </group>
+
+<!-- The following are known to be unused -->
+  <group name="UNUSED STUFF">
+    <entry type="Enum" name="IMIPScheduler">
+      <choices>
+        <choice name="IMIPDummy"/>
+        <choice name="IMIPKMail"/>
+      </choices>
+      <default>IMIPKMail</default>
+    </entry>
+  </group>
+
+<!-- Theming settings (not implemented yet) -->
+  <group name="Theming">
     <!-- BEGIN: These entries are the same for the agenda and month views, please keep them in sync -->
     <entry key="Agenda Grid Background Color" type="Color">
       <label>Agenda view background color</label>
@@ -585,18 +721,6 @@
     </entry>
     <!-- END:   These entries are the same for the agenda and month views, please keep them in sync -->
 
-    <entry key="Agenda TimeLabels Font" type="Font">
-      <label>Time bar</label>
-      <whatsthis>Press this button to configure the time bar font. The time bar is the widget that shows the hours in the agenda view. This button will open the &quot;Select Font&quot; dialog, allowing you to choose the hour font for the time bar.</whatsthis>
-    </entry>
-
-    <entry key="Agenda MarcusBainsLine Line Color" type="Color">
-      <default>255,0,0</default>
-    </entry>
-    <entry key="Agenda MarcusBainsLine Font" type="Font">
-      <label>Current-time line</label>
-      <whatsthis>Press this button to configure the current-time line font. This button will open the &quot;Select Font&quot; dialog, allowing you to choose the font for the current-time line in the agenda view.</whatsthis>
-    </entry>
 
     <!-- BEGIN: These entries are the same for the agenda and month views, please keep them in sync -->
     <entry key="Agenda CalendarItems Background Color" type="Color">
@@ -776,54 +900,5 @@
     <entry key="Month Holidays Background Image" type="String">
     </entry>
     <!-- END:   These entries are the same for the Month and month views, please keep them in sync -->
-  </group>
-
-
-  <group name="Decorations">
-    <entry key="Decorations At Month View Top" type="StringList">
-    </entry>
-    <entry key="Decorations At Agenda View Top" type="StringList">
-    </entry>
-    <entry key="Decorations At Agenda View Bottom" type="StringList">
-    </entry>
-  </group>
-
-
-  <group name="Kontact">
-    <entry type="Enum" name="DefaultEmailAttachMethod">
-      <label>Default Email Attachment Method</label>
-      <whatsthis>The default way of attaching dropped emails to an event</whatsthis>
-      <choices>
-        <choice name="Ask">
-          <label>Always ask</label>
-        </choice>
-        <choice name="Link">
-          <label>Only attach link to message</label>
-        </choice>
-        <choice name="InlineFull">
-          <label>Attach complete message</label>
-        </choice>
-        <choice name="InlineBody">
-          <label>Attach message without attachments</label>
-        </choice>
-      </choices>
-      <default>Ask</default>
-    </entry>
-    <entry type="Enum" name="DefaultTodoAttachMethod">
-      <label>Default todo attachment method</label>
-      <whatsthis>The default way of attaching dropped emails to a task</whatsthis>
-      <choices>
-        <choice name="TodoAttachAsk">
-          <label>Always ask</label>
-        </choice>
-        <choice name="TodoAttachLink">
-          <label>Only attach link to message</label>
-        </choice>
-        <choice name="TodoAttachInlineFull">
-          <label>Attach complete message</label>
-        </choice>
-      </choices>
-      <default>TodoAttachInlineFull</default>
-    </entry>
   </group>
 </kcfg>
