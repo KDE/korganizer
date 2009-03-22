@@ -32,7 +32,7 @@
 
 namespace KCal {
   class Incidence;
-};
+}
 using namespace KCal;
 
 /*
