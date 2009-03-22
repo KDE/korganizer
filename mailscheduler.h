@@ -24,21 +24,22 @@
 #ifndef MAILSCHEDULER_H
 #define MAILSCHEDULER_H
 
+#include <KCal/Scheduler>
+
 #include <QList>
 #include <QMap>
 #include <QString>
 
-#include <kcal/imipscheduler.h>
-
 namespace KCal {
-
-class Incidence;
+  class Incidence;
+};
+using namespace KCal;
 
 /*
   This class implements the iTIP interface using the email interface specified
   as Mail.
 */
-class MailScheduler : public IMIPScheduler
+class MailScheduler : public Scheduler
 {
   public:
     explicit MailScheduler( Calendar * );
@@ -61,7 +62,5 @@ class MailScheduler : public IMIPScheduler
   private:
     QMap<IncidenceBase *, QString> mEventMap;
 };
-
-}
 
 #endif

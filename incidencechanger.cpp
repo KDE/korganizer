@@ -77,7 +77,7 @@ void IncidenceChanger::cancelAttendees( Incidence *incidence )
       // manually.
       // FIXME: Groupware schedulling should be factored out to it's own class
       //        anyway
-      KCal::MailScheduler scheduler( mCalendar );
+      MailScheduler scheduler( mCalendar );
       scheduler.performTransaction( incidence, iTIPCancel );
     }
   }
@@ -131,7 +131,7 @@ bool IncidenceChanger::deleteIncidence( Incidence *incidence )
       }
 
       if ( notifyOrganizer ) {
-        KCal::MailScheduler scheduler( mCalendar );
+        MailScheduler scheduler( mCalendar );
         scheduler.performTransaction( tmp, KCal::iTIPReply );
       }
     }

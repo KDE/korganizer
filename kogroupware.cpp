@@ -179,7 +179,7 @@ void KOGroupware::incomingDirChanged( const QString &path )
   KCal::iTIPMethod method = static_cast<KCal::iTIPMethod>( message->method() );
   KCal::ScheduleMessage::Status status = message->status();
   KCal::Incidence *incidence = dynamic_cast<KCal::Incidence*>( message->event() );
-  KCal::MailScheduler scheduler( mCalendar );
+  MailScheduler scheduler( mCalendar );
   if ( action.startsWith( QLatin1String( "accepted" ) ) ||
        action.startsWith( QLatin1String( "tentative" ) ) ||
        action.startsWith( QLatin1String( "delegated" ) ) ||
@@ -359,7 +359,7 @@ bool KOGroupware::sendICalMessage( QWidget *parent,
       incidence->setSummary( i18n( "<placeholder>No summary given</placeholder>" ) );
     }
     // Send the mail
-    KCal::MailScheduler scheduler( mCalendar );
+    MailScheduler scheduler( mCalendar );
     scheduler.performTransaction( incidence, method );
     return true;
   } else if ( rc == KMessageBox::No ) {
@@ -384,11 +384,11 @@ void KOGroupware::sendCounterProposal( KCal::Calendar *calendar,
     tmp->addComment( i18n( "Proposed new meeting time: %1 - %2",
                            IncidenceFormatter::dateToString( newEvent->dtStart() ),
                            IncidenceFormatter::dateToString( newEvent->dtEnd() ) ) );
-    KCal::MailScheduler scheduler( calendar );
+    MailScheduler scheduler( calendar );
     scheduler.performTransaction( tmp, KCal::iTIPReply );
     delete tmp;
   } else {
-    KCal::MailScheduler scheduler( calendar );
+    MailScheduler scheduler( calendar );
     scheduler.performTransaction( newEvent, iTIPCounter );
   }
 }

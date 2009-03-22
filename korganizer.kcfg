@@ -686,17 +686,6 @@
     </entry>
   </group>
 
-<!-- The following are known to be unused -->
-  <group name="UNUSED STUFF">
-    <entry type="Enum" name="IMIPScheduler">
-      <choices>
-        <choice name="IMIPDummy"/>
-        <choice name="IMIPKMail"/>
-      </choices>
-      <default>IMIPKMail</default>
-    </entry>
-  </group>
-
 <!-- Theming settings (not implemented yet) -->
   <group name="Theming">
     <!-- BEGIN: These entries are the same for the agenda and month views, please keep them in sync -->

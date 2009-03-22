@@ -40,10 +40,8 @@
 #include <QTextStream>
 #include <QList>
 
-using namespace KCal;
-
 MailScheduler::MailScheduler( Calendar *calendar )
-  : IMIPScheduler( calendar )
+  : Scheduler( calendar )
 {
 }
 

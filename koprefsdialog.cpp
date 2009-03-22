@@ -979,16 +979,6 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( const KComponentData
     addWidRadios( KOPrefs::instance()->mailClientItem(), topFrame );
   topLayout->addWidget( mailClientGroup->groupBox(), 2, 0, 1, 2 );
 
-#if 0
-  KPrefsWidRadios *schedulerGroup =
-    addWidRadios(
-      i18nc( "@title", "Scheduler Mail Client" ), KOPrefs::instance()->mIMIPScheduler, topFrame );
-  schedulerGroup->addRadio( "Dummy" ); // Only for debugging
-  schedulerGroup->addRadio( i18nc( "@option:radio", "Mail client" ) );
-
-  topLayout->addWidget( schedulerGroup->groupBox(), 0, 0, 1, 2 );
-#endif
-
   QLabel *aMailsLabel = new QLabel(
     i18nc( "@label", "Additional email addresses:" ), topFrame );
   QString whatsThis = i18nc( "@info:whatsthis",
