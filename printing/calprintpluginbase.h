@@ -603,7 +603,7 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
     void drawTodoLines( QPainter &p, const QString &entry,
                         int x, int &y, int width, int pageHeight,
                         bool richTextEntry, QList<TodoParentStart *> &startPoints,
-                        int level, bool connectSubTodos );
+                        bool connectSubTodos );
 
   protected:
     bool mUseColors;

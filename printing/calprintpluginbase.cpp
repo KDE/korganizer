@@ -56,7 +56,7 @@ class CalPrintPluginBase::TodoParentStart
 {
   public:
     TodoParentStart( QRect pt = QRect(), bool hasLine = false, bool page = true )
-      : mRect( QRect() ), mHasLine( false), mSamePage( true ) {}
+      : mRect( pt ), mHasLine( hasLine ), mSamePage( page ) {}
 
     QRect mRect;
     bool mHasLine;
@@ -1627,7 +1627,7 @@ void CalPrintPluginBase::drawTodoLines( QPainter &p,
                                         int x, int &y, int width,
                                         int pageHeight, bool richTextEntry,
                                         QList<TodoParentStart *> &startPoints,
-                                        int level, bool connectSubTodos )
+                                        bool connectSubTodos )
 {
   QString plainEntry = ( richTextEntry ) ? toPlainText( entry ) : entry;
 
@@ -1827,7 +1827,7 @@ void CalPrintPluginBase::drawTodo( int &count, Todo *todo, QPainter &p,
     drawTodoLines( p, todo->description(), left, y,
                    width - ( left + 10 - x ), pageHeight,
                    todo->descriptionIsRich(),
-                   startPoints, level, connectSubTodos );
+                   startPoints, connectSubTodos );
   } else {
     y += 10;
   }
