@@ -67,11 +67,8 @@ class MonthView : public KOEventView
     virtual void updateView();
 
     /**
-     * Tells the month view which 42 days should be displayed.
-     * The first line to be displayed will be the one containing "start".
-     *
-     * "start" won't be the first day displayed, unless it's a Sunday
-     * or whatever's configured to be the first day of the week.
+     * Tells the month view which month should be displayed.
+     * "start" is used to get the month
      *
      * "end" is never used.
      */
