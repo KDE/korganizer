@@ -334,7 +334,7 @@ void MonthView::reloadIncidences()
       KDateTime dateToAdd;
 
       if ( incidence->type() == "Todo" ) {
-        Todo *todo = dynamic_cast<Todo *>( incidence );
+        Todo *todo = static_cast<Todo *>( incidence );
         if ( todo->hasDueDate() ) {
           dateToAdd = todo->dtDue();
         }
