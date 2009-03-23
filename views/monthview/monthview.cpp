@@ -243,7 +243,10 @@ void MonthView::showDates( const QDate &start, const QDate &end )
 {
   Q_UNUSED( end );
 
-  setStartDate( start );
+  QDate dayOne( start );
+  dayOne.setDate( start.year(), start.month(), 1 );
+
+  setStartDate( dayOne );
 }
 
 void MonthView::setStartDate( const QDate &start )
