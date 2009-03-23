@@ -166,7 +166,10 @@ class KODayMatrix: public QFrame, public KCal::Calendar::CalendarObserver
     bool isBeginningOfMonth() const { return mToday <= 8; }
     bool isEndOfMonth() const { return mToday >= 27; }
 
-    /* reimplemented from KCal::Calendar::Observer */
+    /**
+     *  Reimplemented from KCal::Calendar::Observer
+     *  They set mPendingChanges to true
+     */
     void calendarIncidenceAdded( Incidence *incidence );
     void calendarIncidenceChanged( Incidence *incidence );
     void calendarIncidenceDeleted( Incidence *incidence );

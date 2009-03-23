@@ -28,6 +28,7 @@
 #include "kojournalview.h"
 #include "journalview.h"
 #include "koglobals.h"
+#include "koprefs.h"
 
 #include <kcal/calendar.h>
 
@@ -200,6 +201,15 @@ void KOJournalView::setIncidenceChanger( IncidenceChangerBase *changer )
 void KOJournalView::newJournal()
 {
   emit newJournalSignal( QDate::currentDate() );
+}
+
+
+void KOJournalView::getHighlightMode( bool &highlightEvents,
+                                      bool &highlightTodos,
+                                      bool &highlightJournals ) {
+  highlightJournals = KOPrefs::instance()->mHighlightJournals;
+  highlightTodos    = false;
+  highlightEvents   = !highlightJournals;
 }
 
 #include "kojournalview.moc"

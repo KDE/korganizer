@@ -742,4 +742,12 @@ void KOTodoView::setFlatView( bool flatView ) {
   mModel->setFlatView( flatView );
 }
 
+void KOTodoView::getHighlightMode( bool &highlightEvents,
+                                   bool &highlightTodos,
+                                   bool &highlightJournals ) {
+  highlightTodos    = KOPrefs::instance()->mHighlightTodos;
+  highlightEvents   = !highlightTodos;
+  highlightJournals = false;
+}
+
 #include "kotodoview.moc"

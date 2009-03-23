@@ -554,6 +554,8 @@ class KOPrefsDialogViews : public KPrefsModule
       QGroupBox *datenavBox = new QGroupBox( i18nc( "@title:group", "Date Navigator" ) );
       datenavLayout->addWidget( addWidBool( KOPrefs::instance()->dailyRecurItem() )->checkBox() );
       datenavLayout->addWidget( addWidBool( KOPrefs::instance()->weeklyRecurItem() )->checkBox() );
+      datenavLayout->addWidget( addWidBool( KOPrefs::instance()->highlightTodosItem() )->checkBox() );
+      datenavLayout->addWidget( addWidBool( KOPrefs::instance()->highlightJournalsItem() )->checkBox() );
       datenavBox->setLayout( datenavLayout );
       generalLayout->addWidget( datenavBox );
       generalLayout->addStretch( 1 );

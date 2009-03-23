@@ -130,10 +130,16 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     QWidget *leftFrame() const { return mLeftFrame; }
     NavigatorBar *navigatorBar() const { return mNavigatorBar; }
     DateNavigator *dateNavigator() const { return mNavigator; }
-    DateNavigatorContainer *dateNavigatorContainer() const { return mDateNavigatorContainer; }
 
     KOIncidenceEditor *editorDialog( Incidence *incidence ) const;
     KOrg::IncidenceChangerBase *incidenceChanger() const { return mChanger; }
+
+    /*
+     * Informs the date navigator which incidence types should be used
+     * to embolden days, this function is mainly called when the view changes
+     * or when the config changes.
+     */
+    void updateHighlightModes();
 
     QDate startDate();
     QDate endDate();

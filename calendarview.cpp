@@ -632,6 +632,11 @@ void CalendarView::updateConfig( const QByteArray &receiver )
       mCalendar->shiftTimes( mCalendar->viewTimeSpec(), newTimeSpec );
     }
   }
+
+  // config changed lets tell the date navigator the new modes
+  // if there weren't changed they are ignored
+  updateHighlightModes();
+
   emit configChanged();
 
   // force reload and handle agenda view type switch
@@ -1908,7 +1913,7 @@ void CalendarView::showEventViewer( bool show )
 }
 
 void CalendarView::addView( KOrg::BaseView *view )
-{
+{  
   mViewManager->addView( view );
 }
 
@@ -2520,4 +2525,18 @@ bool CalendarView::eventFilter( QObject *watched, QEvent *event )
   return KOrg::CalendarViewBase::eventFilter( watched, event );
 }
 
+void CalendarView::updateHighlightModes() {
+
+  KOrg::BaseView *view = mViewManager->currentView();
+  if ( view ) {
+    bool hiEvents;
+    bool hiTodos;
+    bool hiJournals;
+
+    view->getHighlightMode( hiEvents, hiTodos, hiJournals );
+    mDateNavigatorContainer->setHighlightMode( hiEvents,
+                                               hiTodos,
+                                               hiJournals );
+  }
+}
 #include "calendarview.moc"

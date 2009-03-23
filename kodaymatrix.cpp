@@ -314,6 +314,15 @@ void KODayMatrix::updateJournals() {
   }
 }
 
+/**
+  * Although updateTodos() is simpler it has some similarities with updateEvent()
+  * but don't bother refactoring them so they share code, there's a bigger fish:
+  * Try to refactor updateTodos(), updateEvent(), updateJournals(), monthview,
+  * agenda view, timespent view, timeline view, event list view and todo list view
+  * all these 9 places have incidence listing code in common, maybe it could go
+  * to kcal. Ah, and then there's kontact's summary view which still uses
+  * the old CPU consuming code.
+  */
 void KODayMatrix::updateTodos() {
 
   Incidence::List incidences = mCalendar->incidences();
@@ -322,9 +331,28 @@ void KODayMatrix::updateTodos() {
     if ( inc->type() == "Todo" ) {
       Todo *t = dynamic_cast<Todo *>( inc );
       if ( t->hasDueDate() ) {
-        d = t->dtDue().date();
-        if ( d >= mDays[0] && d <= mDays[NUMDAYS-1] && !mEvents.contains( d ) ) {
-          mEvents.append( d );
+        ushort recurType = t->recurrenceType();
+
+        if ( t->recurs() &&
+             !( recurType == Recurrence::rDaily && !KOPrefs::instance()->mDailyRecur ) &&
+             !( recurType == Recurrence::rWeekly && !KOPrefs::instance()->mWeeklyRecur ) )  {
+
+          // It's a recurring todo, find out in which days it occurs
+          DateTimeList timeDateList = t->recurrence()->timesInInterval(
+                                       *new KDateTime( mDays[0], mCalendar->timeSpec() ),
+                                       *new KDateTime( mDays[NUMDAYS-1], mCalendar->timeSpec() ) );
+
+          foreach( KDateTime dt, timeDateList ) {
+            if ( !mEvents.contains( dt.date() ) ) {
+              mEvents.append( dt.date() );
+            }
+          }
+
+        } else {
+          d = t->dtDue().date();
+          if ( d >= mDays[0] && d <= mDays[NUMDAYS-1] && !mEvents.contains( d ) ) {
+            mEvents.append( d );
+          }
         }
       }
     }
@@ -377,12 +405,9 @@ void KODayMatrix::updateEvents()
         }
 
         do {
-
           mEvents.append( d );
-
           ++j;
           d = d.addDays( 1 );
-
         } while ( d <= occurrenceEnd && j < NUMDAYS );
       }
     }
@@ -435,10 +460,15 @@ void KODayMatrix::setHighlightMode( bool highlightEvents,
                                     bool highlightTodos,
                                     bool highlightJournals ) {
 
-  mHighlightEvents   = highlightEvents;
-  mHighlightTodos    = highlightTodos;
-  mHighlightJournals = highlightJournals;
-  mPendingChanges = true;
+  // don't set mPendingChanges to true if nothing changed
+  if ( highlightTodos    != mHighlightTodos    ||
+       highlightEvents   != mHighlightEvents   ||
+       highlightJournals != mHighlightJournals ) {
+    mHighlightEvents   = highlightEvents;
+    mHighlightTodos    = highlightTodos;
+    mHighlightJournals = highlightJournals;
+    mPendingChanges = true;
+  }
 }
 
 void KODayMatrix::resourcesChanged()

@@ -80,6 +80,14 @@ bool BaseView::eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &al
   return false;
 }
 
+void BaseView::getHighlightMode( bool &highlightEvents,
+                                 bool &highlightTodos,
+                                 bool &highlightJournals ) {
+  highlightEvents   = true;
+  highlightTodos    = false;
+  highlightJournals = false;
+}
+
 } //namespace KOrg
 
 #include "baseview.moc"

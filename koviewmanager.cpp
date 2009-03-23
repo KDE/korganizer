@@ -144,6 +144,7 @@ void KOViewManager::showView( KOrg::BaseView *view )
   }
 
   mCurrentView = view;
+  mMainView->updateHighlightModes();
 
   if ( mCurrentView && mCurrentView->isEventView() ) {
     mLastEventView = mCurrentView;
@@ -316,7 +317,6 @@ void KOViewManager::showTimeSpentView()
     mTimeSpentView->setObjectName( "KOViewManager::TimeSpentView" );
     addView( mTimeSpentView );
   }
-  mMainView->dateNavigatorContainer()->setHighlightMode( true, false, false );
   showView( mTimeSpentView );  
 }
 
@@ -327,7 +327,6 @@ void KOViewManager::showMonthView()
     mMonthView->setObjectName( "KOViewManager::MonthView" );
     addView( mMonthView );
   }
-  mMainView->dateNavigatorContainer()->setHighlightMode( true, false, false );
   showView( mMonthView );  
 }
 
@@ -338,7 +337,6 @@ void KOViewManager::showWhatsNextView()
     mWhatsNextView->setObjectName( "KOViewManager::WhatsNextView" );
     addView( mWhatsNextView );
   }
-  mMainView->dateNavigatorContainer()->setHighlightMode( true, false, false );
   showView( mWhatsNextView );  
 }
 
@@ -349,7 +347,6 @@ void KOViewManager::showListView()
     mListView->setObjectName( "KOViewManager::ListView" );
     addView( mListView );
   }
-  mMainView->dateNavigatorContainer()->setHighlightMode( true, false, false );
   showView( mListView );  
 }
 
@@ -410,8 +407,6 @@ void KOViewManager::showAgendaView()
     }
   }
 
-  mMainView->dateNavigatorContainer()->setHighlightMode( true, false, false );
-
   if ( showBoth ) {
     showView( static_cast<KOrg::BaseView*>( mAgendaViewTabs->currentWidget() ) );
   } else if ( showMerged ) {
@@ -461,7 +456,6 @@ void KOViewManager::showTodoView()
     KConfig *config = KOGlobals::self()->config();
     mTodoView->restoreLayout( config, "Todo View" );
   }
-  mMainView->dateNavigatorContainer()->setHighlightMode( true, false, false );
   showView( mTodoView );
 }
 
@@ -472,7 +466,6 @@ void KOViewManager::showJournalView()
     mJournalView->setObjectName( "KOViewManager::JournalView" );
     addView( mJournalView );
   }
-  mMainView->dateNavigatorContainer()->setHighlightMode( true, false, false );
   showView( mJournalView );  
 }
 
@@ -483,15 +476,12 @@ void KOViewManager::showTimeLineView()
     mTimelineView->setObjectName( "KOViewManager::TimelineView" );
     addView( mTimelineView );
   }
-
-  mMainView->dateNavigatorContainer()->setHighlightMode( true, false, false );
   showView( mTimelineView );  
 }
 
 void KOViewManager::showEventView()
 {
   if ( mLastEventView ) {
-    mMainView->dateNavigatorContainer()->setHighlightMode( true, false, false );
     showView( mLastEventView );
   } else {
     showWeekView();

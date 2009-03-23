@@ -104,6 +104,22 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
     */
     virtual bool isEventView();
 
+    /**
+     * Returns which incidence types should used to embolden
+     * day numbers in the date navigator when this view is selected.
+     *
+     * BaseView provides a default implementation that only highlights
+     * events because that's how the behaviour has always been, and
+     * most views are event orientated, even one or two
+     * which don't inherit KOEventView are about events (timespent).
+     *
+     * This function writes to these 3 parameters the result,
+     * the original value is ignored
+     */
+    virtual void getHighlightMode( bool &highlightEvents,
+                                   bool &highlightTodos,
+                                   bool &highlightJournals );
+
   public Q_SLOTS:
     /**
       Show incidences for the given date range. The date range actually shown
