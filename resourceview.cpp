@@ -330,8 +330,10 @@ void ResourceView::updateView()
 
   KCal::CalendarResourceManager::Iterator it;
   for ( it = manager->begin(); it != manager->end(); ++it ) {
-    addResourceItem( *it );
+    addResourceItem( *it, false );
   }
+
+  emit emitResourcesChanged();
 }
 
 void ResourceView::emitResourcesChanged()
@@ -430,7 +432,7 @@ void ResourceView::addResource()
   emitResourcesChanged();
 }
 
-void ResourceView::addResourceItem( ResourceCalendar *resource )
+void ResourceView::addResourceItem( ResourceCalendar *resource, bool emitSignal )
 {
   ResourceItem *item = new ResourceItem( resource, this, mListView );
 
@@ -454,7 +456,9 @@ void ResourceView::addResourceItem( ResourceCalendar *resource )
            SLOT(closeResource(ResourceCalendar *)) );
 
   updateResourceList();
-  emit resourcesChanged();
+  if ( emitSignal ) {
+    emit resourcesChanged();
+  }
 }
 
 // Add a new entry
