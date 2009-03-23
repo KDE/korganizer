@@ -65,7 +65,18 @@ class MonthView : public KOEventView
 
   public slots:
     virtual void updateView();
+
+    /**
+     * Tells the month view which 42 days should be displayed.
+     * The first line to be displayed will be the one containing "start".
+     *
+     * "start" won't be the first day displayed, unless it's a Sunday
+     * or whatever's configured to be the first day of the week.
+     *
+     * "end" is never used.
+     */
     virtual void showDates( const QDate &start, const QDate &end );
+
     virtual void showIncidences( const Incidence::List &incidenceList );
 
     void changeIncidenceDisplay( Incidence *, int );
