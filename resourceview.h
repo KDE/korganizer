@@ -112,7 +112,7 @@ class ResourceView : public CalendarViewExtension
     void requestClose( ResourceCalendar * );
 
   public slots:
-    void addResourceItem( ResourceCalendar * );
+    void addResourceItem( ResourceCalendar *, bool emitSignal = true );
     void updateResourceItem( ResourceCalendar * );
 
   signals:
