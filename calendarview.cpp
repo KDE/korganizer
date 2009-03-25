@@ -931,6 +931,8 @@ void CalendarView::edit_paste()
       pastedTodo->setRelatedTo( _selectedTodo );
     }
     mChanger->addIncidence( pastedTodo, this );
+  } else if ( pastedIncidence->type() == "Journal" ) {
+    mChanger->addIncidence( pastedIncidence, this );
   }
 }
 
