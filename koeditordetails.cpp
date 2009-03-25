@@ -145,8 +145,8 @@ void KOAttendeeListView::dropEvent( QDropEvent *e )
     KABC::Addressee::List list;
     KPIM::KVCardDrag::fromMimeData( md, list );
 
-    KABC::Addressee::List::Iterator it;
-    for ( it = list.begin(); it != list.end(); ++it ) {
+    KABC::Addressee::List::ConstIterator it;
+    for ( it = list.constBegin(); it != list.constEnd(); ++it ) {
       QString em( (*it).fullEmail() );
       if ( em.isEmpty() ) {
         em = (*it).realName();

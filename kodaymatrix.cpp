@@ -329,7 +329,7 @@ void KODayMatrix::updateTodos() {
   QDate d;
   foreach ( Incidence *inc, incidences ) {
     if ( inc->type() == "Todo" ) {
-      Todo *t = dynamic_cast<Todo *>( inc );
+      Todo *t = static_cast<Todo *>( inc );
       if ( t->hasDueDate() ) {
         ushort recurType = t->recurrenceType();
 

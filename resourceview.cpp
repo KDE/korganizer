@@ -121,7 +121,7 @@ void ResourceItem::createSubresourceItems()
     setExpanded( true );
     // This resource has subresources
     QStringList::ConstIterator it;
-    for ( it = subresources.begin(); it != subresources.end(); ++it ) {
+    for ( it = subresources.constBegin(); it != subresources.constEnd(); ++it ) {
       ResourceItem *item = new ResourceItem( mResource, *it, mResource->labelForSubresource( *it ),
                                              mView, this );
       QColor resourceColor = KOPrefs::instance()->resourceColor( *it );
