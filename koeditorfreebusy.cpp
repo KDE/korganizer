@@ -902,8 +902,10 @@ void KOEditorFreeBusy::changeStatusForMe( KCal::Attendee::PartStat status )
 
 void KOEditorFreeBusy::showAttendeeStatusMenu()
 {
-  if(!currentAttendee())
+  if( !currentAttendee() ) {
      return;
+  }
+
   KMenu *menu = new KMenu( 0 );
   QAction *needsaction =
     menu->addAction( KOGlobals::self()->smallIcon( "help-about" ),

@@ -342,7 +342,7 @@ void KODayMatrix::updateTodos() {
                                        *new KDateTime( mDays[0], mCalendar->timeSpec() ),
                                        *new KDateTime( mDays[NUMDAYS-1], mCalendar->timeSpec() ) );
 
-          foreach( KDateTime dt, timeDateList ) {
+          foreach ( KDateTime dt, timeDateList ) {
             if ( !mEvents.contains( dt.date() ) ) {
               mEvents.append( dt.date() );
             }

@@ -1647,11 +1647,10 @@ void CalendarView::exportICalendar()
       filename += ".ics";
     }
 
-    if( QFile(filename).exists())
-    {
-      if(KMessageBox::Yes == KMessageBox::warningYesNo(this,
-                                                       i18n("Do you want overwrite %1 ?", filename)))
-      {
+    if ( QFile( filename ).exists() ) {
+      if ( KMessageBox::Yes == KMessageBox::warningYesNo(
+             this,
+             i18n( "Do you want overwrite %1 ?", filename ) ) ) {
 
         ICalFormat *format = new ICalFormat;
         FileStorage storage( mCalendar, filename, format );
@@ -1663,9 +1662,9 @@ void CalendarView::exportICalendar()
             errmess = i18nc( "save failure cause unknown", "Reason unknown" );
           }
           KMessageBox::error( this,
-                          i18nc( "@info",
-                                 "Cannot write iCalendar file %1. %2",
-                                 filename, errmess ) );
+                              i18nc( "@info",
+                                     "Cannot write iCalendar file %1. %2",
+                                     filename, errmess ) );
         }
       }
     }
@@ -1695,11 +1694,10 @@ void CalendarView::exportVCalendar()
     if ( filename.right( 4 ) != ".vcs" ) {
       filename += ".vcs";
     }
-    if( QFile(filename).exists())
-    {
-      if(KMessageBox::Yes == KMessageBox::warningYesNo(this,
-                                                       i18n("Do you want overwrite %1 ?", filename)))
-      {
+    if ( QFile( filename ).exists() ) {
+      if ( KMessageBox::Yes == KMessageBox::warningYesNo(
+             this,
+             i18n( "Do you want overwrite %1 ?", filename ) ) ) {
         VCalFormat *format = new VCalFormat;
         FileStorage storage( mCalendar, filename, format );
         if ( !storage.save() ) {
