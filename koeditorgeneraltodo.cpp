@@ -547,7 +547,7 @@ void KOEditorGeneralTodo::dateChanged()
                           "Start: %1", l->formatDate( mStartDateEdit->date() ) );
     if ( mTimeButton->isChecked() ) {
       dateTimeStr += QString( " %1" ).arg( l->formatTime( mStartTimeEdit->getTime() ) );
-
+      dateTimeStr += ' ';
       dateTimeStr += mTimeZoneComboStart->selectedTimeSpec().timeZone().name();
     }
   }
@@ -557,6 +557,7 @@ void KOEditorGeneralTodo::dateChanged()
                           l->formatDate( mDueDateEdit->date() ) );
     if ( mTimeButton->isChecked() ) {
       dateTimeStr += QString( " %1" ).arg( l->formatTime( mDueTimeEdit->getTime() ) );
+      dateTimeStr += ' ';
       dateTimeStr += mTimeZoneComboDue->selectedTimeSpec().timeZone().name();
     }
   }
