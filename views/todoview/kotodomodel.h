@@ -153,6 +153,14 @@ class KOTodoModel : public QAbstractItemModel
     */
     TodoTreeNode *findTodo( const Todo *todo );
 
+    /**
+     * Returns true if there's a loop, e.g.: t1 is parent of
+     * t2 which is parent of t3 which is parent of t1
+     *
+     * @param todo the todo that will be checked
+     */
+    bool isInHierarchyLoop( const Todo *todo ) const;
+
     /** Insert a todo at the right place in the todo tree.
      *
      * @param todo The todo to insert in the tree.
