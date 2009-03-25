@@ -292,9 +292,10 @@ void ActionManager::initActions()
   mACollection->addAction( "export_vcalendar", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(exportVCalendar()) );
 
-  action = new KAction( i18n( "Upload &Hot New Stuff..." ), this );
-  mACollection->addAction( "uploadnewstuff", action );
-  connect( action, SIGNAL(triggered(bool)), SLOT(uploadNewStuff()) );
+  //Laurent: 2009-03-24 comment it until upload will implement
+  //action = new KAction( i18n( "Upload &Hot New Stuff..." ), this );
+  //mACollection->addAction( "uploadnewstuff", action );
+  //connect( action, SIGNAL(triggered(bool)), SLOT(uploadNewStuff()) );
 
   action = new KAction( i18n( "Archive O&ld Entries..." ), this );
   mACollection->addAction( "file_archive", action );
