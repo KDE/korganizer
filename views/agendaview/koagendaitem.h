@@ -115,7 +115,7 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
      * @param allowOverLimit If false, the new mCellYTop can't be bigger than
      *                       mCellYBottom, instead, it gets mCellYBottom's value.
      *                       If true, @p dy is always added, regardless if mCellYTop
-     *                       becomes bigger than mCellYBottom, this is usefull when
+     *                       becomes bigger than mCellYBottom, this is useful when
      *                       moving items because it guarantees expandTop and the
      *                       following expandBottom call add the same value.
      */
