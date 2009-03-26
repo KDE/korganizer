@@ -1650,7 +1650,7 @@ void CalendarView::exportICalendar()
     if ( QFile( filename ).exists() ) {
       if ( KMessageBox::Yes == KMessageBox::warningYesNo(
              this,
-             i18n( "Do you want overwrite %1 ?", filename ) ) ) {
+             i18n( "Do you want to overwrite %1?", filename ) ) ) {
 
         ICalFormat *format = new ICalFormat;
         FileStorage storage( mCalendar, filename, format );
@@ -1697,7 +1697,7 @@ void CalendarView::exportVCalendar()
     if ( QFile( filename ).exists() ) {
       if ( KMessageBox::Yes == KMessageBox::warningYesNo(
              this,
-             i18n( "Do you want overwrite %1 ?", filename ) ) ) {
+             i18n( "Do you want to overwrite %1?", filename ) ) ) {
         VCalFormat *format = new VCalFormat;
         FileStorage storage( mCalendar, filename, format );
         if ( !storage.save() ) {
