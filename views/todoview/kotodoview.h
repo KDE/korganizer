@@ -75,6 +75,8 @@ class KOTodoView : public BaseView
     void saveLayout( KConfig *config, const QString &group ) const;
     void restoreLayout( KConfig *config, const QString &group );
 
+    bool usesFullWindow();
+
   public Q_SLOTS:
     virtual void setIncidenceChanger( IncidenceChangerBase *changer );
     virtual void showDates( const QDate &start, const QDate &end );

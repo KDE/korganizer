@@ -102,6 +102,12 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
     */
     virtual bool isEventView();
 
+    /**
+     * returns whether this view should be displayed full window.
+     * Base implementation returns false.
+     */
+    virtual bool usesFullWindow();
+
   public Q_SLOTS:
     /**
       Show incidences for the given date range. The date range actually shown
