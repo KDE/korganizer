@@ -750,4 +750,9 @@ void KOTodoView::getHighlightMode( bool &highlightEvents,
   highlightJournals = false;
 }
 
+bool KOTodoView::usesFullWindow()
+{
+  return KOPrefs::instance()->mFullViewTodo;
+}
+
 #include "kotodoview.moc"

@@ -77,6 +77,8 @@ class KOTodoView : public BaseView
                            bool &highlightTodos,
                            bool &highlightJournals );
 
+    bool usesFullWindow();
+
   public Q_SLOTS:
     virtual void setIncidenceChanger( IncidenceChangerBase *changer );
     virtual void showDates( const QDate &start, const QDate &end );

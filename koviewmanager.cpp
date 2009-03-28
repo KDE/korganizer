@@ -162,8 +162,7 @@ void KOViewManager::showView( KOrg::BaseView *view )
 
 void KOViewManager::raiseCurrentView()
 {
-  if ( ( mMonthView && KOPrefs::instance()->mFullViewMonth && mCurrentView == mMonthView ) ||
-       ( mTodoView && KOPrefs::instance()->mFullViewTodo && mCurrentView == mTodoView ) ) {
+  if ( mCurrentView && mCurrentView->usesFullWindow() ) {
     mMainView->showLeftFrame( false );
     if ( mCurrentView == mTodoView ) {
       mMainView->navigatorBar()->hide();

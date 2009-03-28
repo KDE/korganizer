@@ -88,6 +88,11 @@ void BaseView::getHighlightMode( bool &highlightEvents,
   highlightJournals = false;
 }
 
+bool BaseView::usesFullWindow()
+{
+  return false;
+}
+
 } //namespace KOrg
 
 #include "baseview.moc"
