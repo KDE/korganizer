@@ -395,6 +395,13 @@
       <default>255, 255, 255</default>
     </entry>
 
+    <entry type="Color" key="Agenda MarcusBainsLine Line Color">
+      <label>Agenda View current-time line color</label>
+      <whatsthis>Select a color to use for the current-time (Marcus Bains) line.</whatsthis>
+      <tooltip>Use this color for the Agenda View current-time (Marcus Bains) line</tooltip>
+      <default>255,0,0</default>
+    </entry>
+
     <entry type="Color" key="WorkingHoursColor">
       <label>Working hours color</label>
       <whatsthis>Select the working hours color for the agenda view here.</whatsthis>
@@ -654,10 +661,6 @@
       <label>Check whether hostname and retrieval email address match</label>
       <whatsthis>With this setting you can configure whether the domain part of the free/busy url has to match the domain part of the user id you are looking for. For example if this option is 'true' then looking for the free/busy data of joe@mydomain.com on the server www.yourdomain.com will fail.</whatsthis>
       <default>false</default>
-    </entry>
-
-    <entry key="Agenda MarcusBainsLine Line Color" type="Color">
-      <default>255,0,0</default>
     </entry>
   </group>
 
