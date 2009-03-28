@@ -64,14 +64,8 @@ TimeLabels::TimeLabels( const KDateTime::Spec &spec, int rows,
   mMousePos = new QFrame( this );
   mMousePos->setLineWidth( 1 );
   mMousePos->setFrameStyle( QFrame::HLine | QFrame::Plain );
-//  mMousePos->setMargin(0);
-  QPalette pal;
-  pal.setColor( QPalette::Window, // for Oxygen
-                KOPrefs::instance()->agendaMarcusBainsLineLineColor() );
-  pal.setColor( QPalette::WindowText, // for Plastique
-                KOPrefs::instance()->agendaMarcusBainsLineLineColor() );
-  mMousePos->setPalette( pal );
   mMousePos->setFixedSize( width(), 1 );
+  colorMousePos();
   addChild( mMousePos, 0, 0 );
 
   if ( mSpec.isValid() ) {
@@ -81,6 +75,7 @@ TimeLabels::TimeLabels( const KDateTime::Spec &spec, int rows,
 
 void TimeLabels::mousePosChanged( const QPoint &pos )
 {
+  colorMousePos();
   moveChild( mMousePos, 0, pos.y() );
 
   // The repaint somehow prevents that the red line leaves a black artifact when
@@ -96,6 +91,16 @@ void TimeLabels::showMousePos()
 void TimeLabels::hideMousePos()
 {
   mMousePos->hide();
+}
+
+void TimeLabels::colorMousePos()
+{
+  QPalette pal;
+  pal.setColor( QPalette::Window, // for Oxygen
+                KOPrefs::instance()->agendaMarcusBainsLineLineColor() );
+  pal.setColor( QPalette::WindowText, // for Plastique
+                KOPrefs::instance()->agendaMarcusBainsLineLineColor() );
+  mMousePos->setPalette( pal );
 }
 
 void TimeLabels::setCellHeight( double height )

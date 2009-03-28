@@ -96,6 +96,7 @@ class TimeLabels : public Q3ScrollView
     void setCellHeight( double height );
 
   private:
+    void colorMousePos();
     KDateTime::Spec mSpec;
     int mRows;
     double mCellHeight;
