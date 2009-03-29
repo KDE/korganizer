@@ -63,6 +63,11 @@ class KORGANIZERPRIVATE_EXPORT KOGlobals
       COMPLETION_MODIFIED_WITH_RECURRENCE,
       UNKNOWN_MODIFIED
     };
+    enum
+    {
+      // This value is passed to QColor's lighter(int factor) for selected events
+      BRIGHTNESS_FACTOR = 125
+    };
 
     static void fitDialogToScreen( QWidget *widget, bool force=false );
     KConfig *config() const;
