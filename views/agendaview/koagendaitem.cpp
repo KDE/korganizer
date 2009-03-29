@@ -853,7 +853,7 @@ void KOAgendaItem::paintEvent( QPaintEvent *ev )
   }
 
   if ( mSelected ) {
-    bgColor = bgColor.light( 110 ); // keep this in sync with month view
+    bgColor = bgColor.light( KOGlobals::BRIGHTNESS_FACTOR );
   }
 
   QColor textColor = KOHelper::getTextColor( bgColor );
