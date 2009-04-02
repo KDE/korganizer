@@ -88,7 +88,6 @@ KOPrefs::KOPrefs() :
 
   timeBarFontItem()->setDefaultValue( mDefaultTimeBarFont );
   monthViewFontItem()->setDefaultValue( mDefaultMonthViewFont );
-  eventColorItem()->setDefaultValue( mDefaultCategoryColor );
 
   // Load it now, not deep within some painting code
   mMyAddrBookMails = KABC::StdAddressBook::self()->whoAmI().emails();

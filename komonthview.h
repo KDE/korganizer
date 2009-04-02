@@ -117,6 +117,7 @@ class MonthViewItem: public QListBoxItem
     QDateTime mDateTime;
 
     Incidence *mIncidence;
+    QColor catColor() const;
 };
 
 
@@ -207,7 +208,7 @@ class MonthViewCell : public QWidget
 
   private:
     KOMonthView *mMonthView;
-  // We need the calendar for paint the ResourceColor
+   // We need the calendar for paint the ResourceColor
     Calendar *mCalendar;
 
     QDate mDate;

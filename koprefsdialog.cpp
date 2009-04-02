@@ -521,9 +521,7 @@ class KOPrefsDialogViews : public KPrefsModule
                                              topFrame );
       addWidBool( KOPrefs::instance()->enableMonthScrollItem(), monthGroup );
       addWidBool( KOPrefs::instance()->fullViewMonthItem(), monthGroup );
-      addWidBool( KOPrefs::instance()->monthViewUsesCategoryColorItem(),
-                      monthGroup );
-      addWidBool( KOPrefs::instance()->monthViewUsesResourceColorItem(), monthGroup );
+      addWidCombo( KOPrefs::instance()->monthItemColorsItem(), monthGroup );
       hbox->addWidget( monthGroup );
 
 
@@ -633,39 +631,41 @@ KOPrefsDialogColors::KOPrefsDialogColors( QWidget *parent, const char *name )
   topLayout->addWidget(highlightColor->label(),1,0);
   topLayout->addWidget(highlightColor->button(),1,1);
 
-  KPrefsWidColor *eventColor =
-      addWidColor( KOPrefs::instance()->eventColorItem(), topFrame );
-  topLayout->addWidget(eventColor->label(),2,0);
-  topLayout->addWidget(eventColor->button(),2,1);
-
   // agenda view background color
   KPrefsWidColor *agendaBgColor =
       addWidColor( KOPrefs::instance()->agendaBgColorItem(), topFrame );
-  topLayout->addWidget(agendaBgColor->label(),3,0);
-  topLayout->addWidget(agendaBgColor->button(),3,1);
+  topLayout->addWidget(agendaBgColor->label(),2,0);
+  topLayout->addWidget(agendaBgColor->button(),2,1);
 
   // working hours color
   KPrefsWidColor *workingHoursColor =
       addWidColor( KOPrefs::instance()->workingHoursColorItem(), topFrame );
-  topLayout->addWidget(workingHoursColor->label(),4,0);
-  topLayout->addWidget(workingHoursColor->button(),4,1);
+  topLayout->addWidget(workingHoursColor->label(),3,0);
+  topLayout->addWidget(workingHoursColor->button(),3,1);
 
   // Todo due today color
   KPrefsWidColor *todoDueTodayColor =
       addWidColor( KOPrefs::instance()->todoDueTodayColorItem(), topFrame );
-  topLayout->addWidget(todoDueTodayColor->label(),5,0);
-  topLayout->addWidget(todoDueTodayColor->button(),5,1);
+  topLayout->addWidget(todoDueTodayColor->label(),4,0);
+  topLayout->addWidget(todoDueTodayColor->button(),4,1);
 
   // Todo overdue color
   KPrefsWidColor *todoOverdueColor =
       addWidColor( KOPrefs::instance()->todoOverdueColorItem(), topFrame );
-  topLayout->addWidget(todoOverdueColor->label(),6,0);
-  topLayout->addWidget(todoOverdueColor->button(),6,1);
+  topLayout->addWidget(todoOverdueColor->label(),5,0);
+  topLayout->addWidget(todoOverdueColor->button(),5,1);
+
+  // "No Category" color
+  KPrefsWidColor *unsetCategoryColor =
+    addWidColor( KOPrefs::instance()->unsetCategoryColorItem(), topFrame );
+  topLayout->addWidget( unsetCategoryColor->label(), 6, 0 );
+  topLayout->addWidget( unsetCategoryColor->button(), 6, 1 );
 
   // categories colors
   QGroupBox *categoryGroup = new QGroupBox(1,Horizontal,i18n("Categories"),
                                            topFrame);
   topLayout->addMultiCellWidget(categoryGroup,7,7,0,1);
+
 
   mCategoryCombo = new QComboBox(categoryGroup);
   mCategoryCombo->insertStringList(KOPrefs::instance()->mCustomCategories);

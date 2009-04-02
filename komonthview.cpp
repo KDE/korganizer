@@ -205,13 +205,28 @@ MonthViewItem::MonthViewItem( Incidence *incidence, const QDateTime &qd,
   mRecurPixmap     = KOGlobals::self()->smallIcon( "recur" );
   mReplyPixmap     = KOGlobals::self()->smallIcon( "mail_reply" );
 
-  mResourceColor = QColor();
   mEvent     = false;
   mTodo      = false;
   mTodoDone  = false;
   mRecur     = false;
   mAlarm     = false;
   mReply     = false;
+}
+
+QColor MonthViewItem::catColor() const
+{
+  QColor retColor;
+  QStringList categories = mIncidence->categories();
+  QString cat;
+  if ( !categories.isEmpty() ) {
+    cat = categories.first();
+  }
+  if ( cat.isEmpty() ) {
+    retColor = KOPrefs::instance()->unsetCategoryColor();
+  } else {
+    retColor = *( KOPrefs::instance()->categoryColor( cat ) );
+  }
+  return retColor;
 }
 
 void MonthViewItem::paint( QPainter *p )
@@ -222,19 +237,51 @@ void MonthViewItem::paint( QPainter *p )
   bool sel = selected();
 #endif
 
-  QColor bgColor = palette().color( QPalette::Normal,
-            sel ? QColorGroup::Highlight : QColorGroup::Background );
-  int offset=0;
-  if ( KOPrefs::instance()->monthViewUsesResourceColor() &&
-    mResourceColor.isValid() ) {
-    p->setBackgroundColor( mResourceColor );
-    p->eraseRect( 0, 0, listBox()->maxItemWidth(), height( listBox() ) );
-    offset=2;
+  QColor bgColor = QColor(); // Default invalid color;
+  if ( mTodo ) {
+    if ( static_cast<Todo*>( mIncidence )->isOverdue() ) {
+      bgColor = KOPrefs::instance()->todoOverdueColor();
+    } else if ( static_cast<Todo*>( mIncidence )->dtDue().date() == QDate::currentDate() ) {
+      bgColor = KOPrefs::instance()->todoDueTodayColor();
+    }
   }
-  if ( KOPrefs::instance()->monthViewUsesCategoryColor() ) {
-    p->setBackgroundColor( bgColor );
-    p->eraseRect( offset, offset, listBox()->maxItemWidth()-2*offset, height( listBox() )-2*offset );
+
+  if ( !bgColor.isValid() ) {
+    if ( KOPrefs::instance()->monthItemColors() == KOPrefs::ResourceOnly ||
+         KOPrefs::instance()->monthItemColors() == KOPrefs::ResourceInsideCategoryOutside ) {
+      bgColor = resourceColor();
+    } else {
+      bgColor = catColor();
+    }
+
+    if ( !bgColor.isValid() ) {
+      bgColor = palette().color( QPalette::Normal,
+                                 sel ? QColorGroup::Highlight :
+                                       QColorGroup::Background );
+    }
   }
+
+  QColor frameColor;
+  if ( KOPrefs::instance()->monthItemColors() == KOPrefs::ResourceOnly ||
+       KOPrefs::instance()->monthItemColors() == KOPrefs::CategoryInsideResourceOutside ) {
+    frameColor = resourceColor();
+  } else {
+    frameColor = catColor();
+  }
+
+  if ( !frameColor.isValid() ) {
+    frameColor = palette().color( QPalette::Normal,
+                                  sel ? QColorGroup::Highlight :
+                                        QColorGroup::Foreground );
+  }
+
+  // draw the box for the item
+  p->setBackgroundColor( frameColor );
+  p->eraseRect( 0, 0, listBox()->maxItemWidth(), height( listBox() ) );
+  int offset = 2;
+  p->setBackgroundColor( bgColor );
+  p->eraseRect( offset, offset, listBox()->maxItemWidth()-2*offset, height( listBox() )-2*offset );
+
   int x = 3;
 // Do NOT put on the event pixmap because it takes up too much space
 //  if ( mEvent ) {
@@ -490,13 +537,16 @@ class MonthViewCell::CreateItemVisitor :
 
       mItem = new MonthViewItem( event, dt, text );
       mItem->setEvent( true );
-      if (KOPrefs::instance()->monthViewUsesCategoryColor()) {
+      if ( KOPrefs::instance()->monthItemColors() == KOPrefs::CategoryOnly ||
+           KOPrefs::instance()->monthItemColors() == KOPrefs::CategoryInsideResourceOutside ) {
         QStringList categories = event->categories();
         QString cat = categories.first();
         if (cat.isEmpty()) {
-          mItem->setPalette(QPalette(KOPrefs::instance()->mEventColor, KOPrefs::instance()->mEventColor));
+          mItem->setPalette(QPalette(KOPrefs::instance()->unsetCategoryColor(),
+                                     KOPrefs::instance()->unsetCategoryColor()) );
         } else {
-          mItem->setPalette(QPalette(*(KOPrefs::instance()->categoryColor(cat)), *(KOPrefs::instance()->categoryColor(cat))));
+          mItem->setPalette(QPalette(*(KOPrefs::instance()->categoryColor(cat)),
+                                     *(KOPrefs::instance()->categoryColor(cat))));
         }
       } else {
         mItem->setPalette( mStandardPalette );
@@ -549,7 +599,7 @@ void MonthViewCell::addIncidence( Incidence *incidence, CreateItemVisitor& v, in
 
       QColor resourceColor = KOHelper::resourceColor( mCalendar, incidence );
       if ( !resourceColor.isValid() )
-        resourceColor = KOPrefs::instance()->mEventColor;
+        resourceColor = KOPrefs::instance()->unsetCategoryColor();
       item->setResourceColor( resourceColor );
 
       // FIXME: Find the correct position (time-wise) to insert the item.

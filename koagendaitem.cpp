@@ -762,16 +762,13 @@ void KOAgendaItem::paintEvent( QPaintEvent *ev )
   QStringList categories = mIncidence->categories();
   QString cat = categories.first();
   if (cat.isEmpty())
-    categoryColor = KOPrefs::instance()->mEventColor;
+    categoryColor = KOPrefs::instance()->unsetCategoryColor();
   else
     categoryColor = *(KOPrefs::instance()->categoryColor(cat));
 
   QColor resourceColor = mResourceColor;
   if ( !resourceColor.isValid() )
     resourceColor = categoryColor;
-
-  if (!KOPrefs::instance()->hasCategoryColor(cat))
-      categoryColor = resourceColor;
 
   QColor frameColor;
   if ( KOPrefs::instance()->agendaViewColors() == KOPrefs::ResourceOnly ||

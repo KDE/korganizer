@@ -26,13 +26,17 @@
 #include "koglobals.h"
 
 
-QColor KOCoreHelper::categoryColor( const QStringList &categories ) 
+QColor KOCoreHelper::categoryColor( const QStringList &categories )
 {
+  if ( categories.isEmpty() ) {
+    return KOPrefs::instance()->unsetCategoryColor();
+  }
+
   // FIXME: Correctly treat events with multiple categories
   QString cat = categories.first();
   QColor bgColor;
   if (cat.isEmpty())
-    bgColor = defaultEventColor();
+    bgColor = KOPrefs::instance()->unsetCategoryColor();
   else
     bgColor = *( KOPrefs::instance()->categoryColor( cat ) );
   return bgColor;
