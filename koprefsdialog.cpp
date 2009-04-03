@@ -714,10 +714,17 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
   QGroupBox *categoryGroup = new QGroupBox( i18nc( "@title:group", "Categories" ), colorFrame );
   colorLayout->addWidget( categoryGroup, 7, 0, 1, 2 );
 
-  QBoxLayout *categoryLayout = new QHBoxLayout;
+  QGridLayout *categoryLayout = new QGridLayout;
   categoryGroup->setLayout( categoryLayout );
 
-  mCategoryCombo = new KComboBox(categoryGroup);
+  KPrefsWidColor *unsetCategoryColor =
+    addWidColor( KOPrefs::instance()->unsetCategoryColorItem(), categoryGroup );
+  categoryLayout->addWidget( unsetCategoryColor->label(), 0, 0 );
+  categoryLayout->addWidget( unsetCategoryColor->button(), 0, 1 );
+  unsetCategoryColor->label()->setWhatsThis( unsetCategoryColor->button()->whatsThis() );
+  unsetCategoryColor->label()->setToolTip( unsetCategoryColor->button()->toolTip() );
+
+  mCategoryCombo = new KComboBox( categoryGroup );
   mCategoryCombo->addItems( KOPrefs::instance()->mCustomCategories );
   mCategoryCombo->setWhatsThis(
     i18nc( "@info:whatsthis",
@@ -725,7 +732,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
            "You can change the selected category color using "
            "the button below." ) );
   connect( mCategoryCombo, SIGNAL(activated(int)), SLOT(updateCategoryColor()) );
-  categoryLayout->addWidget( mCategoryCombo );
+  categoryLayout->addWidget( mCategoryCombo, 1, 0 );
 
   mCategoryButton = new KColorButton( categoryGroup );
   mCategoryButton->setWhatsThis(
@@ -733,7 +740,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
            "Choose here the color of the event category selected "
            "using the combo box above." ) );
   connect( mCategoryButton, SIGNAL(changed(const QColor &)), SLOT(setCategoryColor()) );
-  categoryLayout->addWidget( mCategoryButton );
+  categoryLayout->addWidget( mCategoryButton, 1, 1 );
 
   updateCategoryColor();
 

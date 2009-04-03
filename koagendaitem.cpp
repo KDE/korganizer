@@ -825,7 +825,7 @@ void KOAgendaItem::paintEvent( QPaintEvent *ev )
     cat = categories.first();
   }
   if ( cat.isEmpty() ) {
-    categoryColor = KOPrefs::instance()->defaultCategoryColor();
+    categoryColor = KOPrefs::instance()->unsetCategoryColor();
   } else {
     categoryColor = KOPrefs::instance()->categoryColor( cat );
   }
