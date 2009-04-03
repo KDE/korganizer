@@ -290,16 +290,31 @@
       <default>true</default>
     </entry>
 
-    <entry type="Bool" key="Month View Uses Category Color">
-      <label>Month view uses category colors</label>
-      <whatsthis>Check this box to make the month view use the category colors of an item.</whatsthis>
-      <default>true</default>
-    </entry>
-
-    <entry type="Bool" key="Month View Uses Resource Color">
-      <label>Month view uses resource colors</label>
-      <whatsthis>Check this box to make the month view use the resource colors of an item.</whatsthis>
-      <default>true</default>
+    <entry type="Enum" key="MonthViewColors">
+      <label>Color Usage</label>
+      <choices>
+        <choice name="MonthItemCategoryInsideResourceOutside">
+          <label>Category inside, calendar outside</label>
+          <whatsthis>Select the "Category inside, calendar outside" option if you would like to draw calendar items in their associated category color, with the item's border drawn in the color of its calendar resource.  Please use the Colors and Fonts configuration page for setting these colors.</whatsthis>
+          <tooltip>Draw month items in their category color inside and calendar resource color for their border</tooltip>
+        </choice>
+        <choice name="MonthItemResourceInsideCategoryOutside">
+          <label>Calendar inside, category outside</label>
+          <whatsthis>Select the "Calendar inside, category outside" option if you would like to draw calendar items in their associated calendar resource color, with the item's border drawn in the color of its category.  Please use the Colors and Fonts configuration page for setting these colors.</whatsthis>
+          <tooltip>Draw month items in their calendar resource color inside and category color for their border</tooltip>
+        </choice>
+        <choice name="MonthIthemCategoryOnly">
+          <label>Only category</label>
+          <whatsthis>Select the "Only category" option if you would like to draw calendar items (both inside and border) in the color of their associated category.  Please use the Colors and Fonts configuration page for setting these colors.</whatsthis>
+          <tooltip>Draw month items using their category color for the inside and border</tooltip>
+        </choice>
+        <choice name="MonthItemResourceOnly">
+          <label>Only calendar</label>
+          <whatsthis>Select the "Only calendar" option if you would like to draw calendar items (both inside and border) in the color of their calendar resource.  Please use the Colors and Fonts configuration page for setting these colors.</whatsthis>
+          <tooltip>Draw month items using their calendar resource color for the inside and border</tooltip>
+        </choice>
+      </choices>
+      <default>MonthItemCategoryInsideResourceOutside</default>
     </entry>
 
     <entry type="Bool" key="Full View Month">
@@ -310,7 +325,7 @@
     <entry type="Bool" key="Full View Todo">
       <label>To-do list view uses full window</label>
       <whatsthis>Check this box to use the full KOrganizer window when displaying the to-do list view. If this box is checked, you will gain some space for the to-do list view, but other widgets, such as the date navigator, the to-do details and the resources list, will not be displayed.</whatsthis>
-      <default>true</default>
+      <default>false</default>
     </entry>
 
     <entry type="Bool" key="Record Todos In Journals">

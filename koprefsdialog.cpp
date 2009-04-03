@@ -628,11 +628,10 @@ class KOPrefsDialogViews : public KPrefsModule
         addWidBool( KOPrefs::instance()->enableMonthItemIconsItem() )->checkBox() );
       monthLayout->addWidget(
         addWidBool( KOPrefs::instance()->fullViewMonthItem() )->checkBox() );
-      monthLayout->addWidget(
-        addWidBool( KOPrefs::instance()->monthViewUsesCategoryColorItem() )->checkBox() );
-      monthLayout->addWidget(
-        addWidBool( KOPrefs::instance()->monthViewUsesResourceColorItem() )->checkBox() );
 
+      // GroupBox: Views->Month View->Color Usage
+      monthLayout->addWidget(
+        addWidRadios( KOPrefs::instance()->monthViewColorsItem() )->groupBox() );
       monthLayout->addStretch( 1 );
 
       QFrame *todoFrame = new QFrame( this );
