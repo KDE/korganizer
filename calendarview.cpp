@@ -1571,7 +1571,13 @@ void CalendarView::exportICalendar()
     if ( filename.right( 4 ) != ".ics" ) {
       filename += ".ics";
     }
-
+    if ( QFile( filename ).exists() ) {
+      if ( KMessageBox::No == KMessageBox::warningYesNo(
+             this,
+             i18n( "Do you want to overwrite %1?").arg(filename) ) ) {
+	      return;
+      }
+    }
     FileStorage storage( mCalendar, filename, new ICalFormat );
     storage.save();
   }
@@ -1603,7 +1609,13 @@ void CalendarView::exportVCalendar()
     if ( filename.right( 4 ) != ".vcs" ) {
       filename += ".vcs";
     }
-
+    if ( QFile( filename ).exists() ) {
+      if ( KMessageBox::No == KMessageBox::warningYesNo(
+             this,
+             i18n( "Do you want to overwrite %1?").arg(filename ) ) ) {
+             return;
+      }
+    }
     FileStorage storage( mCalendar, filename, new VCalFormat );
     storage.save();
   }
