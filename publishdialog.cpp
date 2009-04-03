@@ -103,9 +103,11 @@ QString PublishDialog::addresses()
   count = mUI.mListWidget->count();
   for ( i=0; i<count; ++i ) {
     item = mUI.mListWidget->item( i );
-    to += item->text();
-    if ( i < count-1 ) {
-      to += ", ";
+    if( !item->text().isEmpty() ) {
+      to += item->text();
+      if ( i < count-1 ) {
+        to += ", ";
+      }
     }
   }
   return to;
