@@ -1648,25 +1648,26 @@ void CalendarView::exportICalendar()
     }
 
     if ( QFile( filename ).exists() ) {
-      if ( KMessageBox::Yes == KMessageBox::warningYesNo(
+      if ( KMessageBox::No == KMessageBox::warningYesNo(
              this,
              i18n( "Do you want to overwrite %1?", filename ) ) ) {
-
-        ICalFormat *format = new ICalFormat;
-        FileStorage storage( mCalendar, filename, format );
-        if ( !storage.save() ) {
-          QString errmess;
-          if ( format->exception() ) {
-            errmess = format->exception()->message();
-          } else {
-            errmess = i18nc( "save failure cause unknown", "Reason unknown" );
-          }
-          KMessageBox::error( this,
-                              i18nc( "@info",
-                                     "Cannot write iCalendar file %1. %2",
-                                     filename, errmess ) );
-        }
+        return;
       }
+    }
+    ICalFormat *format = new ICalFormat;
+    FileStorage storage( mCalendar, filename, format );
+    if ( !storage.save() ) {
+      QString errmess;
+      if ( format->exception() ) {
+        errmess = format->exception()->message();
+      } else {
+        errmess = i18nc( "save failure cause unknown", "Reason unknown" );
+      }
+      KMessageBox::error( this,
+                          i18nc( "@info",
+                                 "Cannot write iCalendar file %1. %2",
+                                 filename, errmess ) );
+
     }
   }
 }
@@ -1695,24 +1696,25 @@ void CalendarView::exportVCalendar()
       filename += ".vcs";
     }
     if ( QFile( filename ).exists() ) {
-      if ( KMessageBox::Yes == KMessageBox::warningYesNo(
+      if ( KMessageBox::No == KMessageBox::warningYesNo(
              this,
              i18n( "Do you want to overwrite %1?", filename ) ) ) {
-        VCalFormat *format = new VCalFormat;
-        FileStorage storage( mCalendar, filename, format );
-        if ( !storage.save() ) {
-          QString errmess;
-          if ( format->exception() ) {
-            errmess = format->exception()->message();
-          } else {
-            errmess = i18nc( "save failure cause unknown", "Reason unknown" );
-          }
-          KMessageBox::error( this,
-                              i18nc( "@info",
-                                     "Cannot write vCalendar file %1. %2",
-                                     filename, errmess ) );
-        }
+        return;
       }
+    }
+    VCalFormat *format = new VCalFormat;
+    FileStorage storage( mCalendar, filename, format );
+    if ( !storage.save() ) {
+      QString errmess;
+      if ( format->exception() ) {
+        errmess = format->exception()->message();
+      } else {
+        errmess = i18nc( "save failure cause unknown", "Reason unknown" );
+      }
+      KMessageBox::error( this,
+                          i18nc( "@info",
+                                 "Cannot write vCalendar file %1. %2",
+                                 filename, errmess ) );
     }
   }
 }
