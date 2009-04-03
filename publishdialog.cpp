@@ -101,8 +101,8 @@ QString PublishDialog::addresses()
   QListWidgetItem *item;
   int i, count;
   count = mUI.mListWidget->count();
-  for ( i=0; i<count; i++ ) {
-    item = mUI.mListWidget->takeItem( i );
+  for ( i=0; i<count; ++i ) {
+    item = mUI.mListWidget->item( i );
     to += item->text();
     if ( i < count-1 ) {
       to += ", ";
