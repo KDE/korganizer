@@ -951,7 +951,7 @@ bool KOTodoModel::dropMimeData( const QMimeData *data, Qt::DropAction action,
 
       Incidence *tmp = destTodo;
       while ( tmp ) {
-        if ( *tmp == *todo ) {
+        if ( tmp->uid() == todo->uid() ) {
           KMessageBox::information(
             0,
             i18n( "Cannot move to-do to itself or a child of itself." ),
