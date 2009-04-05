@@ -23,7 +23,7 @@ QT4_ADD_DBUS_INTERFACE( korgac_SRCS ${korganizer_xml} korganizer_interface )
 qt4_add_dbus_adaptor(korgac_SRCS org.kde.korganizer.KOrgac.xml koalarmclient.h KOAlarmClient )
 
 
-kde4_add_app_icon(korgac_SRCS "${KDE4_ICON_DIR}/oxygen/*/apps/preferences-desktop-notification-bell.png")
+kde4_add_app_icon(korgac_SRCS "${KDE4_ICON_DIR}/oxygen/*/apps/korgac.png")
 
 kde4_add_executable(korgac ${korgac_SRCS})
 
