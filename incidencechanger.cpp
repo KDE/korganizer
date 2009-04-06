@@ -312,7 +312,7 @@ bool IncidenceChanger::addIncidence( Incidence *incidence, QWidget *parent )
     // widgets sooner or later
     stdcal->setDialogParentWidget( tmpparent );
   }
-  if ( !success ) {
+  if ( !success && stdcal ) {
     // We can have a failure if the user pressed [cancel] in the resource
     // selectdialog, so check the exception.
     ErrorFormat *e = stdcal->exception();
