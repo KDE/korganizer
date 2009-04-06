@@ -78,7 +78,7 @@ ArchiveDialog::ArchiveDialog( Calendar *cal, QWidget *parent )
            "then deletes them in the current calendar. If the archive file "
            "already exists they will be added. "
            "(<link url=\"whatsthis:In order to add an archive "
-           "to your calendar, use the &quot;Merge Calendar&quot; function. "
+           "to your calendar, use the Merge Calendar function. "
            "You can view an archive by opening it in KOrganizer like any "
            "other calendar. It is not saved in a special format, but as "
            "vCalendar.\">How to restore</link>)" ) );
