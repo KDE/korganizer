@@ -179,6 +179,10 @@ void KOGroupware::incomingDirChanged( const QString& path )
   KCal::ScheduleMessage::Status status = message->status();
   KCal::Incidence* incidence =
     dynamic_cast<KCal::Incidence*>( message->event() );
+  if(!incidence) {
+    delete message;
+    return;
+  }
   KCal::MailScheduler scheduler( mCalendar );
   if ( action.startsWith( "accepted" ) || action.startsWith( "tentative" )
        || action.startsWith( "delegated" ) || action.startsWith( "counter" ) ) {
