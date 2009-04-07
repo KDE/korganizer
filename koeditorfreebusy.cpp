@@ -349,8 +349,6 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent )
 
   connect( mGanttView, SIGNAL(lvSelectionChanged(KDGanttViewItem*)),
           this, SLOT(updateAttendeeInput()) );
-  connect( mGanttView, SIGNAL(lvItemLeftClicked(KDGanttViewItem*)),
-           this, SLOT(showAttendeeStatusMenu()) );
   connect( mGanttView, SIGNAL(lvItemRightClicked(KDGanttViewItem*)),
            this, SLOT(showAttendeeStatusMenu()) );
   connect( mGanttView, SIGNAL(lvMouseButtonClicked(int, KDGanttViewItem*, const QPoint&, int)),
