@@ -410,6 +410,9 @@ void KOAttendeeEditor::fillAttendeeInput( KCal::Attendee *a )
       mDelegateLabel->setText( i18n( "Not delegated" ) );
     }
   }
+  if( myself )
+    mRsvpButton->setEnabled( false );
+
 }
 
 void KOAttendeeEditor::updateAttendeeInput()
