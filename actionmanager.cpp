@@ -605,7 +605,7 @@ void ActionManager::initActions()
   action->setEnabled( true );
 
   if ( !mIsPart ) {
-    action = new KAction( KIcon( "help-contents" ), i18n( "&Addressbook" ), this );
+    action = new KAction( KIcon( "help-contents" ), i18n( "&Address Book" ), this );
     mACollection->addAction( "addressbook", action );
     connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(openAddressbook()) );
   }
