@@ -179,6 +179,8 @@ void KOGroupware::incomingDirChanged( const QString &path )
   KCal::iTIPMethod method = static_cast<KCal::iTIPMethod>( message->method() );
   KCal::ScheduleMessage::Status status = message->status();
   KCal::Incidence *incidence = dynamic_cast<KCal::Incidence*>( message->event() );
+  if( !incidence )
+      return;
   MailScheduler scheduler( mCalendar );
   if ( action.startsWith( QLatin1String( "accepted" ) ) ||
        action.startsWith( QLatin1String( "tentative" ) ) ||
