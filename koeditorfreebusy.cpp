@@ -902,7 +902,7 @@ void KOEditorFreeBusy::changeStatusForMe( KCal::Attendee::PartStat status )
 
 void KOEditorFreeBusy::showAttendeeStatusMenu()
 {
-  if( !currentAttendee() ) {
+  if( !currentAttendee() || mGanttView->selectedItem() == hasExampleAttendee() ) {
      return;
   }
 
