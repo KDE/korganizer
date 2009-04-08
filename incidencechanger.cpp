@@ -316,6 +316,11 @@ kdDebug(5850)<<"IncidenceChanger::changeIncidence for incidence \""<<newinc->sum
 
 bool IncidenceChanger::addIncidence( Incidence *incidence, QWidget *parent )
 {
+  CalendarResources *stdcal = dynamic_cast<CalendarResources*>( mCalendar );                                                               
+  if( stdcal && !stdcal->hasCalendarResources() ) {                                                                                        
+    KMessageBox::sorry( parent, i18n( "No resources found. We can not add event." ));                                                      
+    return false;                                                                                                                          
+  }  
 kdDebug(5850)<<"IncidenceChanger::addIncidence for incidence \""<<incidence->summary()<<"\""<<endl;
   if ( KOPrefs::instance()->mUseGroupwareCommunication ) {
     if ( !KOGroupware::instance()->sendICalMessage( parent,
@@ -328,7 +333,6 @@ kdDebug(5850)<<"IncidenceChanger::addIncidence for incidence \""<<incidence->sum
   //        resource selection dialog. However, we don't have any UI methods
   //        in the calendar, only in the CalendarResources::DestinationPolicy
   //        So we need to type-cast it and extract it from the CalendarResources
-  CalendarResources *stdcal = dynamic_cast<CalendarResources*>(mCalendar);
   QWidget *tmpparent = 0;
   if ( stdcal ) {
     tmpparent = stdcal->dialogParentWidget();
