@@ -193,11 +193,8 @@ void MultiAgendaView::setupViews()
              SIGNAL(pasteIncidenceSignal()) );
     connect( agenda, SIGNAL(toggleAlarmSignal(Incidence*)),
              SIGNAL(toggleAlarmSignal(Incidence*)) );
-    connect( agenda, SIGNAL(dissociateOccurrenceSignal(Incidence*, const QDate&)),
-             SIGNAL(dissociateOccurrenceSignal(Incidence*, const QDate&)) );
-    connect( agenda, SIGNAL(dissociateFutureOccurrenceSignal(Incidence*, const QDate&)),
-             SIGNAL(dissociateFutureOccurrenceSignal(Incidence*, const QDate&)) );
-
+    connect( agenda, SIGNAL(dissociateOccurrencesSignal(Incidence*, const QDate&)),
+             SIGNAL(dissociateOccurrencesSignal(Incidence*, const QDate&)) );
     connect( agenda, SIGNAL(newEventSignal(const QDate&)),
              SIGNAL(newEventSignal(const QDate&)) );
     connect( agenda, SIGNAL(newEventSignal(const QDateTime&)),
