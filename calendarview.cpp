@@ -1479,6 +1479,7 @@ void CalendarView::schedule_forward( Incidence *incidence )
       KMessageBox::error( this, i18n( "Unable to forward the item '%1'", incidence->summary() ) );
     }
   }
+  delete publishdlg;
 }
 
 void CalendarView::mailFreeBusy( int daysToPublish )
