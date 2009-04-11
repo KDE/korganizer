@@ -389,8 +389,6 @@ void ResourceView::addResource()
 
   resource->setResourceName( i18n( "%1 resource", type ) );
 
-  KRES::ConfigDialog *dlg = new KRES::ConfigDialog( this, QString( "calendar" ), resource );
-
   // TODO: Add a fallback (KColorCollection::setName() broken?)
   KColorCollection collection( "Oxygen.colors" );
   // TODO: Be smarter than this
@@ -400,9 +398,13 @@ void ResourceView::addResource()
   KOPrefs::instance()->setResourceColor( resource->identifier(), color );
 
   bool success = true;
-  if ( !dlg || !dlg->exec() ) {
+  QPointer<KRES::ConfigDialog> dlg =
+    new KRES::ConfigDialog( this, QString( "calendar" ), resource );
+
+  if ( dlg->exec() != QDialog::Accepted ) {
     success = false;
   }
+  delete dlg;
 
   if ( success ) {
     resource->setTimeSpec( KOPrefs::instance()->timeSpec() );
@@ -426,7 +428,6 @@ void ResourceView::addResource()
     delete resource;
     resource = 0;
   }
-  delete dlg;
 
   //### maybe only do this if ( success )
   emitResourcesChanged();
@@ -537,6 +538,7 @@ void ResourceView::removeResource()
     return;
   }
 #endif
+
   if ( item->isSubresource() ) {
     if ( !item->resource()->removeSubresource( item->resourceIdentifier() ) ) {
       KMessageBox::sorry(
@@ -596,13 +598,13 @@ void ResourceView::editResource()
                                  subResourceName ) );
     }
   } else {
-    KRES::ConfigDialog dlg( this, QString( "calendar" ), resource );
-
-    if ( dlg.exec() ) {
+    QPointer<KRES::ConfigDialog> dlg =
+      new KRES::ConfigDialog( this, QString( "calendar" ), resource );
+    if ( dlg->exec() ) {
       item->setText( 0, resource->resourceName() );
-
       mCalendar->resourceManager()->change( resource );
     }
+    delete dlg;
   }
   emitResourcesChanged();
 }
