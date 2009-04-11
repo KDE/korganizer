@@ -1390,7 +1390,7 @@ void CalendarView::schedule_publish( Incidence *incidence )
     return;
   }
 
-  PublishDialog *publishdlg = new PublishDialog();
+  QPointer<PublishDialog> publishdlg = new PublishDialog();
   if ( incidence->attendeeCount() > 0 ) {
     Attendee::List attendees = incidence->attendees();
     Attendee::List::ConstIterator it;
@@ -1461,9 +1461,9 @@ void CalendarView::schedule_forward( Incidence *incidence )
     return;
   }
 
-  PublishDialog publishdlg;
-  if ( publishdlg.exec() == QDialog::Accepted ) {
-    QString recipients = publishdlg.addresses();
+  QPointer<PublishDialog> publishdlg = new PublishDialog;
+  if ( publishdlg->exec() == QDialog::Accepted ) {
+    QString recipients = publishdlg->addresses();
     if ( incidence->organizer().isEmpty() ) {
       incidence->setOrganizer( Person( KOPrefs::instance()->fullName(),
                                        KOPrefs::instance()->email() ) );
@@ -1490,7 +1490,7 @@ void CalendarView::mailFreeBusy( int daysToPublish )
   freebusy->setOrganizer( Person( KOPrefs::instance()->fullName(),
                                   KOPrefs::instance()->email() ) );
 
-  PublishDialog *publishdlg = new PublishDialog();
+  QPointer<PublishDialog> publishdlg = new PublishDialog();
   if ( publishdlg->exec() == QDialog::Accepted ) {
     // Send the mail
     MailScheduler scheduler( mCalendar );
