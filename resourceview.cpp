@@ -26,38 +26,29 @@
 #include "resourceview.h"
 #include "koprefs.h"
 
-#include <kconfig.h>
-#include <kresources/resource.h>
-#include <kresources/configdialog.h>
-#include <kcal/calendarresources.h>
+#include <KCal/CalendarResources>
+#include <KCal/ResourceCalendar>
+#include <KResources/ConfigDialog>
 
-#include <kcolordialog.h>
-#include <kdialog.h>
-#include <klocale.h>
-#include <kdebug.h>
-#include <kglobal.h>
-#include <kmessagebox.h>
-#include <kinputdialog.h>
-#include <kvbox.h>
-#include <krandom.h>
-#include <kcolorcollection.h>
+#include <KColorCollection>
+#include <KColorDialog>
+#include <KDebug>
+#include <KDialog>
+#include <KInputDialog>
+#include <KLocale>
+#include <KMessageBox>
+#include <KRandom>
 
-#include <QLayout>
+#include <QHBoxLayout>
+#include <QHeaderView>
 #include <QLabel>
-#include <QPainter>
-#include <QPushButton>
 #include <QMenu>
 #include <QPixmap>
-#include <QBoxLayout>
-#include <QVBoxLayout>
 #include <QToolButton>
-#include <QHeaderView>
+#include <QVBoxLayout>
 
-#include <QDBusConnection>
-#include <QDBusReply>
 #include <QDBusInterface>
-
-using namespace KCal;
+#include <QDBusReply>
 
 ResourceViewFactory::ResourceViewFactory( KCal::CalendarResources *calendar,
                                           CalendarView *view )
@@ -236,7 +227,7 @@ void ResourceItem::setStandardResource( bool std )
 ResourceView::ResourceView( KCal::CalendarResources *calendar, QWidget *parent )
   : CalendarViewExtension( parent ), mCalendar( calendar )
 {
-  QBoxLayout *topLayout = new QVBoxLayout( this );
+  QVBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->setSpacing( KDialog::spacingHint() );
 
   QHBoxLayout *buttonBox = new QHBoxLayout();
