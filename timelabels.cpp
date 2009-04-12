@@ -320,10 +320,11 @@ void TimeLabels::contextMenuEvent( QContextMenuEvent *event )
 
   QAction *activatedAction = popup.exec( QCursor::pos() );
   if ( activatedAction == editTimeZones ) {
-    TimeScaleConfigDialog dialog( this );
-    if ( dialog.exec() == QDialog::Accepted ) {
+    QPointer<TimeScaleConfigDialog> dialog = new TimeScaleConfigDialog( this );
+    if ( dialog->exec() == QDialog::Accepted ) {
       mTimeLabelsZone->reset();
     }
+    delete dialog;
   } else if ( activatedAction == removeTimeZone ) {
     QStringList list = KOPrefs::instance()->timeScaleTimezones();
     list.removeAll( mSpec.timeZone().name() );
