@@ -23,41 +23,30 @@
 */
 
 #include "koeditorrecurrence.h"
-#include "koprefs.h"
 #include "koglobals.h"
+#include "koprefs.h"
 
 #include <libkdepim/kdateedit.h>
 
-#include <kcal/todo.h>
+#include <KCal/Todo>
 
+#include <KCalendarSystem>
 #include <KComboBox>
-#include <kdialog.h>
-#include <kglobal.h>
-#include <klocale.h>
-#include <kiconloader.h>
-#include <knumvalidator.h>
-#include <kcalendarsystem.h>
-#include <kmessagebox.h>
-#include <kvbox.h>
+#include <KHBox>
+#include <KLocale>
+#include <KMessageBox>
 
-#include <QLayout>
-#include <QGroupBox>
-#include <QStackedWidget>
-#include <QDateTime>
-#include <QListWidget>
-#include <QSpinBox>
-#include <QCheckBox>
-#include <QRadioButton>
-#include <QLabel>
-#include <QPushButton>
-#include <QGridLayout>
-#include <QFrame>
-#include <QHBoxLayout>
 #include <QBoxLayout>
-#include <QVBoxLayout>
 #include <QButtonGroup>
-
-#include "koeditorrecurrence.moc"
+#include <QCheckBox>
+#include <QGridLayout>
+#include <QGroupBox>
+#include <QLabel>
+#include <QListWidget>
+#include <QPushButton>
+#include <QRadioButton>
+#include <QSpinBox>
+#include <QStackedWidget>
 
 /////////////////////////// RecurBase ///////////////////////////////
 
@@ -1519,8 +1508,7 @@ bool KOEditorRecurrence::validateInput()
 void KOEditorRecurrence::showExceptionsDialog()
 {
   DateList dates = mExceptions->dates();
-  int result = mExceptionsDialog->exec();
-  if ( result == QDialog::Rejected ) {
+  if ( mExceptionsDialog->exec() == QDialog::Rejected ) {
     mExceptions->setDates( dates );
   }
 }
@@ -1530,8 +1518,7 @@ void KOEditorRecurrence::showRecurrenceRangeDialog()
   int duration = mRecurrenceRange->duration();
   QDate endDate = mRecurrenceRange->endDate();
 
-  int result = mRecurrenceRangeDialog->exec();
-  if ( result == QDialog::Rejected ) {
+  if ( mRecurrenceRangeDialog->exec() == QDialog::Rejected ) {
     mRecurrenceRange->setDuration( duration );
     mRecurrenceRange->setEndDate( endDate );
   }
@@ -1552,3 +1539,5 @@ KOEditorRecurrenceDialog::KOEditorRecurrenceDialog( QWidget *parent )
   mRecurrence = new KOEditorRecurrence( this );
   setMainWidget( mRecurrence );
 }
+
+#include "koeditorrecurrence.moc"

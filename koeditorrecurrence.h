@@ -24,32 +24,36 @@
 #ifndef KOEDITORRECURRENCE_H
 #define KOEDITORRECURRENCE_H
 
-#include <kcal/incidencebase.h>
+#include <KCal/Recurrence> //for DateList typedef
 
 #include <KDialog>
 
-#include <QDateTime>
-#include <QWidget>
 #include <QBitArray>
+#include <QDateTime>
 #include <QPointer>
-
-class KComboBox;
-class QBoxLayout;
-class QCheckBox;
-class QLabel;
-class QListWidget;
-class QGroupBox;
-class QRadioButton;
-class QSpinBox;
-class QStackedWidget;
+#include <QWidget>
 
 namespace KPIM {
   class KDateEdit;
 }
+using namespace KPIM;
+
 namespace KCal {
   class Incidence;
 }
 using namespace KCal;
+
+class KComboBox;
+
+class QBoxLayout;
+class QCheckBox;
+class QGroupBox;
+class QLabel;
+class QListWidget;
+class QPushButton;
+class QRadioButton;
+class QSpinBox;
+class QStackedWidget;
 
 class RecurBase : public QWidget
 {
