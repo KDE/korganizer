@@ -502,7 +502,7 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent )
   mPopupMenu->addSeparator();
 
   mDeleteAction = new KAction( i18nc( "@action:inmenu remove the attachment",
-                                      "&Delete" ), this );
+                                      "&Remove" ), this );
   connect( mDeleteAction, SIGNAL(triggered(bool)), this, SLOT(slotRemove()) );
   ac->addAction( "remove", mDeleteAction );
   mPopupMenu->addAction( mDeleteAction );
@@ -688,12 +688,11 @@ void KOEditorAttachments::slotRemove()
         continue;
       }
 
-      if ( KMessageBox::warningContinueCancel(
+      if ( KMessageBox::questionYesNo(
              this,
              i18nc( "@info",
-                    "The item labeled \"%1\" will be permanently deleted.", item->label() ),
-             i18nc( "@title:window", "KOrganizer Confirmation" ),
-             KStandardGuiItem::del() ) == KMessageBox::Continue ) {
+                    "Do you really want to remove the attachment labeled \"%1\"?", item->label() ),
+             i18nc( "@title:window", "Remove Attachment?" ) ) == KMessageBox::Yes ) {
         toDelete.append( it );
       }
     }
