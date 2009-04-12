@@ -26,59 +26,40 @@
 
 #include "koeditorattachments.h"
 
-#include <kcal/incidence.h>
-
 #include <libkdepim/kdepimprotocols.h>
 #include <libkdepim/kvcarddrag.h>
 
-#include <kio/job.h>
-#include <kio/copyjob.h>
-#include <kio/jobclasses.h>
-#include <kio/jobuidelegate.h>
-#include <kio/netaccess.h>
+#include <KCal/Attachment>
+#include <KCal/Incidence>
 
-#include <k3iconview.h>
-#include <klocale.h>
-#include <kdebug.h>
-#include <kdialog.h>
-#include <kglobal.h>
-#include <kiconloader.h>
-#include <klineedit.h>
-#include <kmessagebox.h>
-#include <kmimetype.h>
-#include <kmenu.h>
-#include <kprotocolmanager.h>
-#include <krecentdocument.h>
-#include <krun.h>
-#include <kseparator.h>
-#include <kstandarddirs.h>
-#include <ktemporaryfile.h>
-#include <kurlrequester.h>
-#include <krandom.h>
-#include <kaction.h>
-#include <kstdaction.h>
-#include <kactioncollection.h>
+#include <K3IconView>
+#include <KAction>
+#include <KActionCollection>
+#include <KLineEdit>
+#include <KLocale>
+#include <KMenu>
+#include <KMessageBox>
+#include <KRun>
+#include <KSeparator>
+#include <KTemporaryFile>
+#include <KUrlRequester>
+#include <KIO/Job>
+#include <KIO/JobUiDelegate>
+#include <KIO/NetAccess>
 
+#include <Q3IconViewItem>
+#include <QApplication>
 #include <QCheckBox>
-#include <QCursor>
-#include <QFile>
-#include <QFileInfo>
-#include <QLabel>
-#include <QLayout>
-#include <QPushButton>
-#include <QRegExp>
-#include <QString>
-#include <QStringList>
-#include <QStyle>
-#include <QPixmap>
-#include <QGridLayout>
-#include <QBoxLayout>
-#include <QDropEvent>
-#include <QHBoxLayout>
-#include <QVBoxLayout>
+#include <QClipboard>
+#include <QDrag>
 #include <QDragEnterEvent>
-#include <qapplication.h>
-#include <qclipboard.h>
+#include <QGridLayout>
+#include <QLabel>
+#include <KProtocolManager>
+#include <QSpacerItem>
+#include <QStyle>
+#include <QTimer>
+#include <QVBoxLayout>
 
 class AttachmentIconItem : public K3IconViewItem
 {

@@ -26,39 +26,34 @@
 #ifndef KOEDITORATTACHMENTS_H
 #define KOEDITORATTACHMENTS_H
 
-#include <kdialog.h>
-#include <kmimetype.h>
-#include <kurl.h>
+#include <KDialog>
+#include <KMimeType>
 
-#include <QWidget>
-#include <QDragEnterEvent>
 #include <Q3ValueList>
-#include <QLabel>
-#include <QDropEvent>
+
+class AttachmentIconItem;
+class AttachmentIconView;
 
 namespace KCal {
-  class Incidence;
   class Attachment;
+  class Incidence;
 }
+using namespace KCal;
 
+class KAction;
 class KJob;
-class AttachmentIconItem;
-class Q3IconDragItem;
-class Q3IconViewItem;
-class QLabel;
 class KLineEdit;
-class K3IconView;
 class KMenu;
 class KUrlRequester;
-class QCheckBox;
-class AttachmentIconView;
-class QMimeSource;
-class QPushButton;
-class KAction;
 
-namespace KIO {
-  class Job;
-}
+class Q3IconDragItem;
+class Q3IconView;
+class Q3IconViewItem;
+class QCheckBox;
+class QDragEnterEvent;
+class QDropEvent;
+class QLabel;
+class QPushButton;
 
 class AttachmentEditDialog : public KDialog
 {
@@ -71,8 +66,8 @@ class AttachmentEditDialog : public KDialog
 
   protected slots:
     void urlChanged( const KUrl &url );
-  void urlChanged( const QString & url );
-  virtual void slotApply();
+    void urlChanged( const QString & url );
+    virtual void slotApply();
 
   private:
     KMimeType::Ptr mMimeType;
@@ -139,8 +134,11 @@ class KOEditorAttachments : public QWidget
     KMenu *mPopupMenu;
     QString mUid; // used only to generate attachments' filenames
     QPushButton *mRemoveBtn;
-    KAction *mOpenAction, *mCopyAction, *mCutAction,
-            *mDeleteAction, *mEditAction;
+    KAction *mOpenAction;
+    KAction *mCopyAction;
+    KAction *mCutAction;
+    KAction *mDeleteAction;
+    KAction *mEditAction;
 };
 
 #endif
