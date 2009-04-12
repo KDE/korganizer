@@ -63,6 +63,7 @@
 #include <kstandardaction.h>
 #include <kedittoolbar.h>
 #include <ktemporaryfile.h>
+#include <kmenubar.h>
 #include <kmessagebox.h>
 #include <kwindowsystem.h>
 #include <ktip.h>
@@ -97,7 +98,7 @@ KOrganizer::KOrganizer() : KParts::MainWindow(), KOrg::MainWindow()
   mCalendarView->setObjectName( "KOrganizer::CalendarView" );
   setCentralWidget( mCalendarView );
 
-  mActionManager = new ActionManager( this, mCalendarView, this, this, false );
+  mActionManager = new ActionManager( this, mCalendarView, this, this, false, menuBar() );
   (void)new KOrganizerIfaceImpl( mActionManager, this, "IfaceImpl" );
 }
 

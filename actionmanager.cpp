@@ -76,7 +76,7 @@ KOWindowList *ActionManager::mWindowList = 0;
 
 ActionManager::ActionManager( KXMLGUIClient *client, CalendarView *widget,
                               QObject *parent, KOrg::MainWindow *mainWindow,
-                              bool isPart )
+                              bool isPart, KMenuBar *menuBar )
   : QObject( parent ), mRecent( 0 ),
     mResourceViewShowAction( 0 ), mCalendar( 0 ),
     mCalendarResources( 0 ), mResourceView( 0 ), mIsClosing( false )
@@ -91,6 +91,7 @@ ActionManager::ActionManager( KXMLGUIClient *client, CalendarView *widget,
   mTempFile = 0;
   mHtmlExportSync = false;
   mMainWindow = mainWindow;
+  mMenuBar = menuBar;
 }
 
 ActionManager::~ActionManager()
@@ -107,6 +108,24 @@ ActionManager::~ActionManager()
   delete mCalendar;
 }
 
+void ActionManager::toggleMenubar( bool dontShowWarning )
+{
+  if ( mMenuBar ) {
+    if ( mHideMenuBarAction->isChecked() ) {
+      mMenuBar->show();
+    } else {
+      if ( !dontShowWarning ) {
+        QString accel = mHideMenuBarAction->shortcut().toString();
+        KMessageBox::information( mCalendarView,
+                                  i18n( "<qt>This will hide the menu bar completely."
+                                        " You can show it again by typing %1.</qt>", accel ),
+                                  "Hide menu bar", "HideMenuBarWarning" );
+      }
+      mMenuBar->hide();
+    }
+    KOPrefs::instance()->setShowMenuBar( mHideMenuBarAction->isChecked() );
+  }
+}
 // see the Note: below for why this method is necessary
 void ActionManager::init()
 {
@@ -645,6 +664,9 @@ void ActionManager::initActions()
   }
 
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SIDEBAR ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  mHideMenuBarAction = KStandardAction::showMenubar( this, SLOT(toggleMenubar()), mACollection );
+  mHideMenuBarAction->setChecked( KOPrefs::instance()->showMenuBar() );
+  toggleMenubar( true );
 
   action = new KAction( i18n( "Configure &Date && Time..." ), this );
   mACollection->addAction( "conf_datetime", action );

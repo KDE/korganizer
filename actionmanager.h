@@ -30,6 +30,7 @@
 
 #include "korganizer_export.h"
 #include "korganizer/part.h"
+#include <KMenuBar>
 
 #include <KUrl>
 
@@ -67,7 +68,7 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
   public:
     ActionManager( KXMLGUIClient *client, CalendarView *widget,
                    QObject *parent, KOrg::MainWindow *mainWindow,
-                   bool isPart );
+                   bool isPart, KMenuBar *menuBar = 0);
     virtual ~ActionManager();
 
     /** Peform initialization that requires this* to be full constructed */
@@ -123,6 +124,7 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
 
     void exportHTML();
     void exportHTML( HTMLExportSettings * );
+    void toggleMenubar( bool dontShowWarning = false );
 
   public:
     /** Get current URL */
@@ -243,7 +245,7 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
       Emitted when the "New" action is activated.
     */
     void actionNew( const KUrl &url = KUrl() );
-
+    void toggleMenuBar();
     /**
       When change is made to options dialog, the topwidget will catch this
       and emit this signal which notifies all widgets which have registered
@@ -406,6 +408,8 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     KToggleAction *mResourceViewShowAction;
     KToggleAction *mEventViewerShowAction;
 
+    KToggleAction *mHideMenuBarAction;
+
     KAction *mShowIncidenceAction;
     KAction *mEditIncidenceAction;
     KAction *mDeleteIncidenceAction;
@@ -419,6 +423,7 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
 
     KAction *mUndoAction;
     KAction *mRedoAction;
+    KMenuBar *mMenuBar;
 
     KSelectAction *mFilterAction;
 

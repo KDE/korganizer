@@ -662,6 +662,13 @@
       <whatsthis>With this setting you can configure whether the domain part of the free/busy url has to match the domain part of the user id you are looking for. For example if this option is 'true' then looking for the free/busy data of joe@mydomain.com on the server www.yourdomain.com will fail.</whatsthis>
       <default>false</default>
     </entry>
+
+    <entry key="ShowMenuBar" type="Bool">     
+      <default>true</default>
+       <!-- label and whatsthis are already provided by KStandardAction::showMenubar -->
+      <label></label>
+      <whatsthis></whatsthis>
+    </entry>
   </group>
 
 <!-- INTERNAL SETTINGS: Not for users to change -->
