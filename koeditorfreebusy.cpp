@@ -769,8 +769,9 @@ void KOEditorFreeBusy::editFreeBusyUrl( KDGanttViewItem *i )
 
   Attendee *attendee = item->attendee();
 
-  FreeBusyUrlDialog dialog( attendee, this );
-  dialog.exec();
+  QPointer<FreeBusyUrlDialog> dialog = new FreeBusyUrlDialog( attendee, this );
+  dialog->exec();
+  delete dialog;
 }
 
 void KOEditorFreeBusy::fillIncidence( Incidence *incidence )
