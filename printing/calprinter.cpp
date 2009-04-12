@@ -147,9 +147,10 @@ void CalPrinter::doPrint( KOrg::PrintPlugin *selectedStyle,
   }
 
   if ( preview ) {
-    KPrintPreview printPreview( &printer );
+    QPointer<KPrintPreview> printPreview = new KPrintPreview( &printer );
     selectedStyle->doPrint( &printer );
-    printPreview.exec();
+    printPreview->exec();
+    delete printPreview;
   } else {
     QPointer<QPrintDialog> printDialog = new QPrintDialog( &printer, mParent );
     if ( printDialog->exec() == QDialog::Accepted ) {
