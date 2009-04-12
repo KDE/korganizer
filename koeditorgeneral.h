@@ -24,8 +24,7 @@
 #ifndef KOEDITORGENERAL_H
 #define KOEDITORGENERAL_H
 
-#include <kcal/alarm.h>
-
+#include <KCal/Alarm>
 #include <KLineEdit>
 
 class KOEditorAttachments;
