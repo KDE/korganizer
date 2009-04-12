@@ -358,10 +358,11 @@ void KOEditorGeneral::editAlarms()
     }
   }
 
-  KOEditorAlarms *dlg = new KOEditorAlarms( &mAlarmList, mAlarmEditButton );
+  QPointer<KOEditorAlarms> dlg = new KOEditorAlarms( &mAlarmList, mAlarmEditButton );
   if ( dlg->exec() != KDialog::Cancel ) {
     updateAlarmWidgets();
   }
+  delete dlg;
 }
 
 void KOEditorGeneral::enableAlarm( bool enable )
