@@ -651,15 +651,13 @@ void KOEditorAttachments::showAttachment( Q3IconViewItem *item )
 void KOEditorAttachments::slotAdd()
 {
   AttachmentIconItem *item = new AttachmentIconItem( 0, mAttachments );
-  AttachmentEditDialog *dlg = new AttachmentEditDialog( item, mAttachments );
 
+  QPointer<AttachmentEditDialog> dlg = new AttachmentEditDialog( item, mAttachments );
   dlg->setCaption( i18nc( "@title", "Add Attachment" ) );
-  dlg->exec();
-
-  if ( dlg->result() == KDialog::Rejected ) {
-    delete dlg; // delete it first, as it hold item
+  if ( dlg->exec() == KDialog::Rejected ) {
     delete item;
   }
+  delete dlg;
 }
 
 void KOEditorAttachments::slotEdit()
