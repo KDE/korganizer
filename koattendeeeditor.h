@@ -21,28 +21,32 @@
 #ifndef KOATTENDEEEDITOR_H
 #define KOATTENDEEEDITOR_H
 
-#include <kcal/attendee.h>
+#include <KCal/Attendee>
 #include <QWidget>
-
-class KComboBox;
-class QBoxLayout;
-class QCheckBox;
-class QLabel;
-class QPushButton;
-class KHBox;
-class Q3ListViewItem;
 
 namespace KPIM {
   class AddresseeLineEdit;
 }
+using namespace KPIM;
 
 namespace KABC {
   class Addressee;
 }
+using namespace KABC;
 
 namespace KCal {
   class Incidence;
 }
+using namespace KCal;
+
+class KComboBox;
+class KHBox;
+
+class Q3ListViewItem;
+class QBoxLayout;
+class QCheckBox;
+class QLabel;
+class QPushButton;
 
 /**
   Common base class for attendee editor and free busy view.

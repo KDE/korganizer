@@ -19,8 +19,8 @@
 */
 
 #include "koattendeeeditor.h"
-#include "koprefs.h"
 #include "koglobals.h"
+#include "koprefs.h"
 
 #include <libkdepim/addressesdialog.h>
 #include <libkdepim/addresseelineedit.h>
@@ -30,19 +30,16 @@
 #include <KPIMUtils/Email>
 
 #include <KComboBox>
-#include <KIconLoader>
+#include <KHBox>
 #include <KLocale>
 #include <KMessageBox>
 
-#include <QCheckBox>
-#include <KHBox>
-#include <QLabel>
-#include <QLayout>
 #include <Q3ListViewItem>
+#include <QBoxLayout>
+#include <QCheckBox>
+#include <QLabel>
 #include <QPushButton>
 #include <QTimer>
-
-using namespace KCal;
 
 KOAttendeeEditor::KOAttendeeEditor( QWidget *parent )
   : QWidget( parent ), mDisableItemUpdate( true )
