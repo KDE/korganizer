@@ -105,22 +105,24 @@ void CalPrinter::print( int type, const QDate &fd, const QDate &td,
   for ( it = mPrintPlugins.begin(); it != mPrintPlugins.end(); ++it ) {
     (*it)->setSelectedIncidences( selectedIncidences );
   }
-  CalPrintDialog printDialog( mPrintPlugins, mParent );
+  QPointer<CalPrintDialog> printDialog = new CalPrintDialog( mPrintPlugins, mParent );
   KConfigGroup grp( mConfig, "" ); //orientation setting isn't in a group
-  printDialog.setOrientation( CalPrinter::ePrintOrientation( grp.readEntry( "Orientation", 1 ) ) );
-  printDialog.setPreview( preview );
-  printDialog.setPrintType( type );
+  printDialog->setOrientation( CalPrinter::ePrintOrientation( grp.readEntry( "Orientation", 1 ) ) );
+  printDialog->setPreview( preview );
+  printDialog->setPrintType( type );
   setDateRange( fd, td );
 
-  if ( printDialog.exec() == QDialog::Accepted ) {
-    grp.writeEntry( "Orientation", (int)printDialog.orientation() );
+  if ( printDialog->exec() == QDialog::Accepted ) {
+    grp.writeEntry( "Orientation", (int)printDialog->orientation() );
 
     // Save all changes in the dialog
     for ( it = mPrintPlugins.begin(); it != mPrintPlugins.end(); ++it ) {
       (*it)->doSaveConfig();
     }
-    doPrint( printDialog.selectedPlugin(), printDialog.orientation(), preview );
+    doPrint( printDialog->selectedPlugin(), printDialog->orientation(), preview );
   }
+  delete printDialog;
+
   for ( it = mPrintPlugins.begin(); it != mPrintPlugins.end(); ++it ) {
     (*it)->setSelectedIncidences( Incidence::List() );
   }
@@ -157,10 +159,11 @@ void CalPrinter::doPrint( KOrg::PrintPlugin *selectedStyle,
     selectedStyle->doPrint( &printer );
     printPreview.exec();
   } else {
-    QPrintDialog printDialog( &printer, mParent );
-    if ( printDialog.exec() == QDialog::Accepted ) {
+    QPointer<QPrintDialog> printDialog = new QPrintDialog( &printer, mParent );
+    if ( printDialog->exec() == QDialog::Accepted ) {
       selectedStyle->doPrint( &printer );
     }
+    delete printDialog;
   }
 }
 
