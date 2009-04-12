@@ -31,6 +31,7 @@
 #include <QDateTime>
 #include <QWidget>
 #include <QBitArray>
+#include <QPointer>
 
 class KComboBox;
 class QBoxLayout;
@@ -352,11 +353,11 @@ class KOEditorRecurrence : public QWidget
 
     RecurrenceRangeBase *mRecurrenceRange;
     RecurrenceRangeWidget *mRecurrenceRangeWidget;
-    RecurrenceRangeDialog *mRecurrenceRangeDialog;
+    QPointer<RecurrenceRangeDialog> mRecurrenceRangeDialog;
     QPushButton *mRecurrenceRangeButton;
 
     ExceptionsBase *mExceptions;
-    ExceptionsDialog *mExceptionsDialog;
+    QPointer<ExceptionsDialog> mExceptionsDialog;
     ExceptionsWidget *mExceptionsWidget;
     QPushButton *mExceptionsButton;
 
