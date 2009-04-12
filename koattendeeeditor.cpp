@@ -209,10 +209,10 @@ void KOAttendeeEditor::initEditWidgets( QWidget *parent, QBoxLayout *layout )
 
 void KOAttendeeEditor::openAddressBook()
 {
-  KPIM::AddressesDialog *dia = new KPIM::AddressesDialog( this );
+  QPointer<KPIM::AddressesDialog> dia = new KPIM::AddressesDialog( this );
   dia->setShowCC( false );
   dia->setShowBCC( false );
-  if ( dia->exec() ) {
+  if ( dia->exec() == QDialog::Accepted ) {
     KABC::Addressee::List aList = dia->allToAddressesNoDuplicates();
     for ( KABC::Addressee::List::iterator itr = aList.begin();
           itr != aList.end(); ++itr ) {
@@ -321,7 +321,7 @@ void KOAttendeeEditor::readIncidence( KCal::Incidence *incidence )
   Attendee::List al = incidence->attendees();
   Attendee::List::ConstIterator it;
   Attendee *first = 0;
-  for( it = al.constBegin(); it != al.constEnd(); ++it ) {
+  for ( it = al.constBegin(); it != al.constEnd(); ++it ) {
     Attendee *a = new Attendee( **it );
     if ( !first ) {
       first = a;
@@ -454,9 +454,9 @@ void KOAttendeeEditor::fillAttendeeInput( KCal::Attendee *a )
       mDelegateLabel->setText( i18n( "Not delegated" ) );
     }
   }
-  if( myself )
+  if ( myself ) {
     mRsvpButton->setEnabled( false );
-
+  }
 }
 
 void KOAttendeeEditor::updateAttendeeInput()
