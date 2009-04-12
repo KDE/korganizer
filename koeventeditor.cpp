@@ -73,7 +73,11 @@ bool KOEventEditor::incidenceModified() {
     newEvent = mEvent->clone();
     fillEvent( newEvent );
   }
-  return mEvent && !( *newEvent == *mEvent );
+
+  // If mEvent is 0 then it's a newly created event, lets count that as a modification
+  // else, compare it with what the user entered in the editor
+
+  return !mEvent || !( *newEvent == *mEvent );
 }
 
 void KOEventEditor::init()
