@@ -25,30 +25,22 @@
 
 #include "calprinter.h"
 #include "calprintdefaultplugins.h"
-
 #include "korganizer/corehelper.h"
 
-#include <kvbox.h>
-#include <kconfig.h>
-#include <kdebug.h>
-#include <kstandardguiitem.h>
-#include <kcombobox.h>
-#include <kprintpreview.h>
+#include <KMessageBox>
+#include <KPrintPreview>
+#include <KStandardGuiItem>
+#include <KVBox>
 
 #include <QButtonGroup>
-#include <QLabel>
-#include <QLayout>
 #include <QGridLayout>
 #include <QGroupBox>
-#include <QPushButton>
-#include <QRadioButton>
+#include <QPrintDialog>
 #include <QSplitter>
 #include <QStackedWidget>
-#include <QPrintDialog>
-#include <QPrinter>
+#include <QVBoxLayout>
 
 #ifndef KORG_NOPRINTER
-#include "calprinter.moc"
 
 CalPrinter::CalPrinter( QWidget *parent, Calendar *calendar, KOrg::CoreHelper *helper )
   : QObject( parent )
@@ -287,5 +279,7 @@ void CalPrintDialog::slotOk()
     }
   }
 }
+
+#include "calprinter.moc"
 
 #endif

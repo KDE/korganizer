@@ -28,20 +28,19 @@
 #ifndef KORG_NOPRINTER
 
 #include "korganizer/korganizer_export.h"
-#include "korganizer/baseview.h"
 #include "korganizer/printplugin.h"
-#include <kdialog.h>
 
-namespace KOrg {
-class CoreHelper;
+#include <KComboBox>
+#include <KDialog>
+
+namespace KCal {
+  class Calendar;
+  class Incidence;
 }
 using namespace KCal;
 
 class QButtonGroup;
 class QStackedWidget;
-class CalPrintDialog;
-class KConfig;
-class KComboBox;
 
 /**
   CalPrinter is a class for printing Calendars.  It can print in several
