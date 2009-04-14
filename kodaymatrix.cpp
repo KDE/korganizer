@@ -276,8 +276,8 @@ void KODayMatrix::updateView( const QDate &actdate )
   }
 }
 
-void KODayMatrix::updateIncidences() {
-
+void KODayMatrix::updateIncidences()
+{
   if ( !mCalendar ) {
     return;
   }
@@ -299,8 +299,8 @@ void KODayMatrix::updateIncidences() {
   mPendingChanges = false;
 }
 
-void KODayMatrix::updateJournals() {
-
+void KODayMatrix::updateJournals()
+{
   Incidence::List incidences = mCalendar->incidences();
 
   foreach ( Incidence *inc, incidences ) {
@@ -323,8 +323,8 @@ void KODayMatrix::updateJournals() {
   * to kcal. Ah, and then there's kontact's summary view which still uses
   * the old CPU consuming code.
   */
-void KODayMatrix::updateTodos() {
-
+void KODayMatrix::updateTodos()
+{
   Incidence::List incidences = mCalendar->incidences();
   QDate d;
   foreach ( Incidence *inc, incidences ) {

@@ -1623,7 +1623,8 @@ class ActionManager::ActionStringsVisitor : public IncidenceBase::Visitor
     }
 
   protected:
-    bool assignDefaultStrings() {
+    bool assignDefaultStrings()
+    {
       if ( mShow ) {
         mShow->setText( i18n( "&Show" ) );
       }
