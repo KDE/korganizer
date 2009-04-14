@@ -367,7 +367,7 @@ bool IncidenceChanger::addIncidence( Incidence *incidence, QWidget *parent )
     // widgets sooner or later
     stdcal->setDialogParentWidget( tmpparent );
   }
-  if ( !success ) {
+  if ( !success && stdcal ) {
     kDebug() << "failed";
     KMessageBox::sorry( parent,
                         i18n( "Unable to save %1 \"%2\".",
