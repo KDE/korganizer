@@ -376,8 +376,8 @@ bool CalendarView::openCalendar( const QString &filename, bool merge )
     if ( cl ) {
       loadedSuccesfully = cl->load( filename );
     } else {
-      CalendarResources *cr = dynamic_cast<CalendarResources*>( mCalendar );
-      Q_ASSERT( cr ); // otherwise something is majorly wrong
+      // otherwise something is majorly wrong
+      Q_ASSERT( dynamic_cast<CalendarResources*>( mCalendar ) );
       // openCalendar called without merge and a filename, what should we do?
       return false;
     }
