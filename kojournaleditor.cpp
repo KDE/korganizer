@@ -195,14 +195,25 @@ void KOJournalEditor::setTime( const QTime &time )
   mGeneral->setTime( time );
 }
 
-bool KOJournalEditor::incidenceModified() {
+bool KOJournalEditor::incidenceModified()
+{
   Journal *newJournal = 0;
+  Journal *oldJournal = 0;
+  bool modified;
 
-  if ( mJournal ) {
-    newJournal = mJournal->clone();
-    fillJournal( newJournal );
+  if ( mJournal ) { // modification
+    oldJournal = mJournal;
+  } else { // new one
+    oldJournal = &mInitialJournal;
   }
-  return mJournal && !( *newJournal == *mJournal );
+
+  newJournal = oldJournal->clone();
+  fillJournal( newJournal );
+  modified = !( *newJournal == *oldJournal );
+
+  delete newJournal;
+
+  return modified;
 }
 
 void KOJournalEditor::readJournal( Journal *journal, bool tmpl )
@@ -270,6 +281,12 @@ void KOJournalEditor::slotSaveTemplate( const QString &templateName )
 QStringList &KOJournalEditor::templates() const
 {
   return KOPrefs::instance()->mJournalTemplates;
+}
+
+void KOJournalEditor::show()
+{
+  mGeneral->fillJournal( &mInitialJournal );
+  KOIncidenceEditor::show();
 }
 
 #include "kojournaleditor.moc"

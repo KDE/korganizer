@@ -96,6 +96,9 @@ class KOTodoEditor : public KOIncidenceEditor
     /** This todo has been modified externally */
     void modified( int change=0 );
 
+  public slots:
+    void show();
+
   protected slots:
     void loadDefaults();
     void deleteTodo();
@@ -114,7 +117,12 @@ class KOTodoEditor : public KOIncidenceEditor
     Todo *mTodo;
     Calendar *mCalendar;
 
-    Todo *mRelatedTodo;
+    // Todo which represents the initial dialog setup when creating a new todo.
+    // If cancel is pressed and the dialog has different information than
+    // this todo then the user will be asked if he really wants to cancel
+    Todo mInitialTodo;
+
+    Todo *mRelatedTodo;    
 
     KOEditorGeneralTodo *mGeneral;
     KOEditorRecurrence *mRecurrence;

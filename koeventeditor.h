@@ -27,6 +27,8 @@
 
 #include "koincidenceeditor.h"
 
+#include <KCal/Event>
+
 class KOEditorGeneralEvent;
 class KOEditorRecurrence;
 class KOEditorRecurrenceDialog;
@@ -104,6 +106,9 @@ class KOEventEditor : public KOIncidenceEditor
   signals:
     void focusReceivedSignal();
 
+  public slots:
+    void show();
+
   protected slots:
     void loadDefaults();
     void deleteEvent();
@@ -130,6 +135,12 @@ class KOEventEditor : public KOIncidenceEditor
 
   private:
     Event *mEvent;
+
+    // Event which represents the initial dialog setup when creating a new event.
+    // If cancel is pressed and the dialog has different information than
+    // this event then the user will be asked if he really wants to cancel
+    Event mInitialEvent;
+
     Calendar *mCalendar;
 
     KOEditorGeneralEvent *mGeneral;

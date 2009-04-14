@@ -28,6 +28,7 @@
 
 #include "koincidenceeditor.h"
 
+#include <KCal/Journal>
 #include <QDateTime>
 
 class QDateTime;
@@ -113,6 +114,9 @@ class KOJournalEditor : public KOIncidenceEditor
     /** This Journal has been modified externally */
     void modified( int change=0 );
 
+  public slots:
+    void show();
+
   protected slots:
     void loadDefaults();
     void deleteJournal();
@@ -128,6 +132,11 @@ class KOJournalEditor : public KOIncidenceEditor
   private:
     Journal *mJournal;
     Calendar *mCalendar;
+
+    // Journal which represents the initial dialog setup when creating a new journal.
+    // If cancel is pressed and the dialog has different information than
+    // this journal then the user will be asked if he really wants to cancel
+    Journal mInitialJournal;
 
     KOEditorGeneralJournal *mGeneral;
 };

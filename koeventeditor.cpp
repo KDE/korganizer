@@ -66,18 +66,26 @@ KOEventEditor::~KOEventEditor()
   }
 }
 
-bool KOEventEditor::incidenceModified() {
+bool KOEventEditor::incidenceModified()
+{
   Event *newEvent = 0;
+  Event *oldEvent = 0;
+  bool modified;
 
-  if ( mEvent ) {
-    newEvent = mEvent->clone();
-    fillEvent( newEvent );
+  if ( mEvent ) { // modification    
+    oldEvent = mEvent;
+  } else { // new one
+    oldEvent = &mInitialEvent;
   }
 
-  // If mEvent is 0 then it's a newly created event, lets count that as a modification
-  // else, compare it with what the user entered in the editor
+  newEvent = oldEvent->clone();
+  fillEvent( newEvent );  
 
-  return !mEvent || !( *newEvent == *mEvent );
+  modified = !( *newEvent == *oldEvent );
+
+  delete newEvent;
+
+  return modified;
 }
 
 void KOEventEditor::init()
@@ -466,6 +474,12 @@ void KOEventEditor::selectInvitationCounterProposal( bool enable )
   if ( enable ) {
     mGeneral->invitationBar()->hide();
   }
+}
+
+void KOEventEditor::show()
+{
+  mGeneral->fillEvent( &mInitialEvent );
+  KOIncidenceEditor::show();
 }
 
 #include "koeventeditor.moc"

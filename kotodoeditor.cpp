@@ -62,14 +62,30 @@ KOTodoEditor::~KOTodoEditor()
   emit dialogClose( mTodo );
 }
 
-bool KOTodoEditor::incidenceModified() {
+bool KOTodoEditor::incidenceModified()
+{
   Todo *newTodo = 0;
+  Todo *oldTodo = 0;
+  bool modified;
 
-  if ( mTodo ) {
-    newTodo = mTodo->clone();
-    fillTodo( newTodo );
+  if ( mTodo ) { // modification
+    oldTodo = mTodo->clone();
+  } else { // new one
+    // don't remove .clone(), it's on purpose, clone() strips relation attributes
+    // if you compare a non-cloned parent to-do with a cloned to-do you will always
+    // get false, so we use clone() in both cases.
+    oldTodo = mInitialTodo.clone();
   }
-  return mTodo && !( *newTodo == *mTodo );
+
+  newTodo = oldTodo->clone();
+  fillTodo( newTodo );
+
+  modified = !( *newTodo == *oldTodo );
+
+  delete newTodo;
+  delete oldTodo;
+
+  return modified;
 }
 
 void KOTodoEditor::init()
@@ -387,5 +403,12 @@ QStringList &KOTodoEditor::templates() const
 {
   return KOPrefs::instance()->mTodoTemplates;
 }
+
+void KOTodoEditor::show()
+{
+  mGeneral->fillTodo( &mInitialTodo );
+  KOIncidenceEditor::show();
+}
+
 
 #include "kotodoeditor.moc"
