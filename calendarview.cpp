@@ -1574,7 +1574,7 @@ void CalendarView::exportICalendar()
     if ( QFile( filename ).exists() ) {
       if ( KMessageBox::No == KMessageBox::warningYesNo(
              this,
-             i18n( "Do you want to overwrite %1?").arg(filename) ) ) {
+             i18n( "Do you want to overwrite %1?", filename ) ) ) {
 	      return;
       }
     }
@@ -1612,7 +1612,7 @@ void CalendarView::exportVCalendar()
     if ( QFile( filename ).exists() ) {
       if ( KMessageBox::No == KMessageBox::warningYesNo(
              this,
-             i18n( "Do you want to overwrite %1?").arg(filename ) ) ) {
+             i18n( "Do you want to overwrite %1?", filename ) ) ) {
              return;
       }
     }
