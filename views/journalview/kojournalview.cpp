@@ -206,7 +206,8 @@ void KOJournalView::newJournal()
 
 void KOJournalView::getHighlightMode( bool &highlightEvents,
                                       bool &highlightTodos,
-                                      bool &highlightJournals ) {
+                                      bool &highlightJournals )
+{
   highlightJournals = KOPrefs::instance()->mHighlightJournals;
   highlightTodos    = false;
   highlightEvents   = !highlightJournals;

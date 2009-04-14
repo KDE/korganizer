@@ -737,14 +737,16 @@ void KOTodoView::changedCategories( QAction *action )
   }
 }
 
-void KOTodoView::setFlatView( bool flatView ) {
+void KOTodoView::setFlatView( bool flatView )
+{
   mView->setRootIsDecorated( !flatView );
   mModel->setFlatView( flatView );
 }
 
 void KOTodoView::getHighlightMode( bool &highlightEvents,
                                    bool &highlightTodos,
-                                   bool &highlightJournals ) {
+                                   bool &highlightJournals )
+{
   highlightTodos    = KOPrefs::instance()->mHighlightTodos;
   highlightEvents   = !highlightTodos;
   highlightJournals = false;
