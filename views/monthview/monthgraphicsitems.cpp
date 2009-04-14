@@ -27,6 +27,7 @@
 #include "monthitem.h"
 #include "monthscene.h"
 
+#include "koglobals.h"
 #include "koprefs.h"
 #include "kohelper.h"
 
@@ -235,10 +236,9 @@ void MonthGraphicsItem::paint( QPainter *p, const QStyleOptionGraphicsItem *, QW
   int textMargin = 10;
 
   QColor bgColor = mMonthItem->bgColor();
-  // keep this (110) in sync with agendaview
-  bgColor = mMonthItem->selected() ? bgColor.lighter( 110 ) : bgColor;
+  bgColor = mMonthItem->selected() ? bgColor.lighter( KOGlobals::BRIGHTNESS_FACTOR ) : bgColor;
   QColor frameColor = mMonthItem->frameColor();
-  frameColor = mMonthItem->selected() ? frameColor.lighter( 110 ) : frameColor;
+  frameColor = mMonthItem->selected() ? frameColor.lighter( KOGlobals::BRIGHTNESS_FACTOR ) : frameColor;
   QColor textColor = getTextColor( bgColor );
 
   // make moving or resizing items translucent
