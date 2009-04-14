@@ -87,9 +87,11 @@ QString PublishDialog::addresses()
   for ( i=0; i<count; i++ ) {
     item = mUI.mAddressListView->firstChild();
     mUI.mAddressListView->takeItem( item );
-    to += item->text( 1 );
-    if ( i < count-1 ) {
-      to += ", ";
+    if( !item->text( 1 ).isEmpty() ) {
+      to += item->text( 1 );
+      if ( i < count-1 ) {
+        to += ", ";
+      }
     }
   }
   return to;
