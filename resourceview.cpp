@@ -523,7 +523,7 @@ void ResourceView::removeResource()
   }
 
 // Don't be so restricitve
-#if 0
+#if 1
   if ( item->resource() == mCalendar->resourceManager()->standardResource() ) {
     KMessageBox::sorry( this, i18n( "You cannot remove your standard resource." ) );
     return;
