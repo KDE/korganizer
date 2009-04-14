@@ -399,3 +399,8 @@ QDate MonthView::averageDate() const
 {
   return startDate().addDays( startDate().daysTo( endDate() ) / 2 );
 }
+
+bool MonthView::usesFullWindow()
+{
+  return KOPrefs::instance()->mFullViewMonth;
+}

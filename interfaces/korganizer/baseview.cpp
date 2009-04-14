@@ -78,6 +78,11 @@ bool BaseView::eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &al
   return false;
 }
 
+bool BaseView::usesFullWindow()
+{
+  return false;
+}
+
 } //namespace KOrg
 
 #include "baseview.moc"

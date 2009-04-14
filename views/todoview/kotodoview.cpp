@@ -698,4 +698,9 @@ void KOTodoView::setFlatView( bool flatView ) {
   mModel->setFlatView( flatView );
 }
 
+bool KOTodoView::usesFullWindow()
+{
+  return KOPrefs::instance()->mFullViewTodo;
+}
+
 #include "kotodoview.moc"

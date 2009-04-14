@@ -63,6 +63,8 @@ class MonthView : public KOEventView
      */
     QDate averageDate() const;
 
+    bool usesFullWindow();
+
   public slots:
     virtual void updateView();
     virtual void showDates( const QDate &start, const QDate &end );
