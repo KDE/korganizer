@@ -57,7 +57,7 @@
 #endif
 
 /** This class represents a node in the todo-tree. */
-struct KOTodoModel::TodoTreeNode
+struct KOTodoModel::TodoTreeNode : QObject
 {
   TodoTreeNode( Todo *todo, TodoTreeNode *parent, KOTodoModel *model )
     : mTodo( todo ), mParent( parent ), mParentListPos( 0 ),
@@ -110,7 +110,7 @@ struct KOTodoModel::TodoTreeNode
       toCheck << mChildren;
       while ( !toCheck.isEmpty() ) {
         TodoTreeNode *node = toCheck.takeFirst();
-        Q_ASSERT ( node->mToDelete );
+        Q_ASSERT ( node->mToDelete || !node->mTodo->relatedTo() );
         toCheck << node->mChildren;
       }
 #endif
@@ -121,7 +121,7 @@ struct KOTodoModel::TodoTreeNode
       mParent->removeChild( tmp.row() );
       mModel->endRemoveRows();
 
-      delete this;
+      deleteLater();
     } else {
       Q_FOREACH ( TodoTreeNode *node, mChildren ) {
         node->deleteMarked();
