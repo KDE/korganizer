@@ -45,6 +45,7 @@
 #include <QCheckBox>
 #include <QLabel>
 #include <QLayout>
+#include <QTimer>
 #include <QHBoxLayout>
 #include <QBoxLayout>
 #include <QPushButton>
@@ -74,6 +75,9 @@ void KOEditorGeneralJournal::initTitle( QWidget *parent, QBoxLayout *topLayout )
   hbox->addWidget( titleLabel );
 
   mTitleEdit = new FocusLineEdit( parent );
+  connect( mTitleEdit, SIGNAL(focusReceivedSignal()),
+           SIGNAL(focusReceivedSignal()) );
+  QTimer::singleShot( 0, mTitleEdit, SLOT(setFocus()) );
   mTitleEdit->setWhatsThis( whatsThis );
   titleLabel->setBuddy( mTitleEdit );
   hbox->addWidget( mTitleEdit );
