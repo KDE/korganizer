@@ -25,26 +25,18 @@
 */
 
 #include "kojournaleditor.h"
-#include "koeditorgeneraljournal.h"
 #include "koeditordetails.h"
-#include "koeditorattachments.h"
-#include "kodialogmanager.h"
-#include "koprefs.h"
+#include "koeditorgeneraljournal.h"
 #include "kohelper.h"
+#include "koprefs.h"
 #include "korganizer/baseview.h"
 
-#include <kcal/journal.h>
-#include <kcal/calendarlocal.h>
+#include <KCal/CalendarLocal>
 
-#include <kmessagebox.h>
-#include <klocale.h>
+#include <KLocale>
+#include <KMessageBox>
 
-#include <QLayout>
 #include <QVBoxLayout>
-#include <QFrame>
-#include <QBoxLayout>
-
-using namespace KCal;
 
 KOJournalEditor::KOJournalEditor( Calendar *calendar, QWidget *parent )
   : KOIncidenceEditor( QString(), calendar, parent ),
@@ -85,7 +77,7 @@ void KOJournalEditor::setupGeneral()
   QFrame *topFrame = new QFrame();
   addPage( topFrame, i18nc( "@title general journal settings", "General" ) );
 
-  QBoxLayout *topLayout = new QVBoxLayout( topFrame );
+  QVBoxLayout *topLayout = new QVBoxLayout( topFrame );
   if ( KOPrefs::instance()->mCompactDialogs ) {
     topLayout->setMargin( marginHint() );
   }

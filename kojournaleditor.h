@@ -29,17 +29,13 @@
 #include "koincidenceeditor.h"
 
 #include <KCal/Journal>
-#include <QDateTime>
-
-class QDateTime;
-namespace KCal {
-  class Calendar;
-  class Journal;
-  class Incidence;
-}
-using namespace KCal;
 
 class KOEditorGeneralJournal;
+
+namespace KCal {
+  class Calendar;
+}
+using namespace KCal;
 
 /**
   This class provides a dialog for editing a Journal.
