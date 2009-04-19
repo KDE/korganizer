@@ -305,6 +305,7 @@ ResourceView::ResourceView( KCal::CalendarResources *calendar, QWidget *parent )
   connect( mEditButton, SIGNAL( clicked() ), SLOT( editResource() ) );
 
   setMinimumHeight( 50 );
+  mListView->setSortingEnabled( true );
 
   updateView();
 }
@@ -323,6 +324,8 @@ void ResourceView::updateView()
   for ( it = manager->begin(); it != manager->end(); ++it ) {
     addResourceItem( *it, false );
   }
+
+  mListView->sortItems( 0, Qt::AscendingOrder );
 
   emit emitResourcesChanged();
 }
