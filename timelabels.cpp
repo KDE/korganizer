@@ -68,6 +68,8 @@ TimeLabels::TimeLabels( const KDateTime::Spec &spec, int rows,
   colorMousePos();
   addChild( mMousePos, 0, 0 );
 
+  mAgenda = 0;
+
   if ( mSpec.isValid() ) {
     setToolTip( i18n( "Timezone:" ) + mSpec.timeZone().name() );
   }
@@ -235,6 +237,11 @@ int TimeLabels::minimumWidth() const
 /** updates widget's internal state */
 void TimeLabels::updateConfig()
 {
+  /** Can happen if all resources are disabled */
+  if ( !mAgenda ) {
+    return;
+  }
+
   setFont( KOPrefs::instance()->agendaTimeLabelsFont() );
 
   QString test = "20";
@@ -268,9 +275,11 @@ void TimeLabels::updateConfig()
 /** update time label positions */
 void TimeLabels::positionChanged()
 {
-  int adjustment = mAgenda->contentsY();
-  if ( adjustment != contentsY() ) {
-    setContentsPos( 0, adjustment );
+  if ( mAgenda ) {
+    int adjustment = mAgenda->contentsY();
+    if ( adjustment != contentsY() ) {
+      setContentsPos( 0, adjustment );
+    }
   }
 }
 
@@ -297,7 +306,6 @@ void TimeLabels::setAgenda( KOAgenda *agenda )
 /** This is called in response to repaint() */
 void TimeLabels::paintEvent( QPaintEvent * )
 {
-//  kDebug();
   QPainter painter( this );
   drawContents( &painter, contentsX(), contentsY(), visibleWidth(), visibleHeight() );
 }
