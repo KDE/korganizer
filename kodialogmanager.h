@@ -25,8 +25,9 @@
 #ifndef KODIALOGMANAGER_H
 #define KODIALOGMANAGER_H
 
-#include <QObject>
 #include <QList>
+#include <QObject>
+#include <QPointer>
 
 namespace KCal {
   class CalFilter;
@@ -95,7 +96,7 @@ class KODialogManager : public QObject
     CalendarView *mMainView;
 
     KCMultiDialog *mOptionsDialog;
-    KPIM::CategoryEditDialog *mCategoryEditDialog;
+    QPointer<KPIM::CategoryEditDialog> mCategoryEditDialog;
     SearchDialog *mSearchDialog;
     ArchiveDialog *mArchiveDialog;
     FilterEditDialog *mFilterEditDialog;
