@@ -26,29 +26,33 @@
 #define KODIALOGMANAGER_H
 
 #include <QList>
-#include <QObject>
 #include <QPointer>
+
+class ArchiveDialog;
+class CalendarView;
+class FilterEditDialog;
+class KCMultiDialog;
+class KOEventEditor;
+class KOIncidenceEditor;
+class KOJournalEditor;
+class KOTodoEditor;
+class SearchDialog;
+
+namespace KOrg {
+  class AgendaView;
+}
+using namespace KOrg;
+
+namespace KPIM {
+  class CategoryEditDialog;
+}
+using namespace KPIM;
 
 namespace KCal {
   class CalFilter;
   class Incidence;
 }
-class CalendarView;
-class KCMultiDialog;
-class KConfigureDialog;
-namespace KPIM {
-  class CategoryEditDialog;
-}
-class KOIncidenceEditor;
-class KOEventEditor;
-class KOTodoEditor;
-class KOJournalEditor;
-class SearchDialog;
-class ArchiveDialog;
-class FilterEditDialog;
-namespace KOrg {
-  class AgendaView;
-}
+using namespace KCal;
 
 /**
   This class manages the dialogs used by the calendar view. It owns the objects

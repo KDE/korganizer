@@ -24,31 +24,26 @@
 */
 
 #include "kodialogmanager.h"
-#include "calendarview.h"
-#include "koglobals.h"
-#include "koprefsdialog.h"
-#include "koprefs.h"
-#include "koeventeditor.h"
-#include "kotodoeditor.h"
-#include "kojournaleditor.h"
-#include "searchdialog.h"
-#include "filtereditdialog.h"
 #ifndef KORG_NOARCHIVE
 #include "archivedialog.h"
 #endif
-#include "koviewmanager.h"
+#include "calendarview.h"
+#include "koeventeditor.h"
+#include "koglobals.h"
+#include "kojournaleditor.h"
+#include "koprefs.h"
+#include "kotodoeditor.h"
+#include "filtereditdialog.h"
+#include "searchdialog.h"
 #include "views/agendaview/koagendaview.h"
 
 #include <libkdepim/categoryeditdialog.h>
 
-#include <kcmultidialog.h>
-#include <ksettings/dialog.h>
-#include <kwindowsystem.h>
+#include <KCal/IncidenceBase>
 
-#include <QByteArray>
-#include <QList>
-
-#include "kodialogmanager.moc"
+#include <KCMultiDialog>
+#include <KLocale>
+#include <KMessageBox>
 
 // FIXME: Handle KOEventViewerDialogs in dialog manager.
 // Pass KOPrefs::mCompactDialog.
@@ -113,10 +108,9 @@ KODialogManager::~KODialogManager()
 {
   delete mOptionsDialog;
   delete mSearchDialog;
-#ifndef KORG_NOARCHIVE
   delete mArchiveDialog;
-#endif
   delete mFilterEditDialog;
+  delete mCategoryEditDialog;
 }
 
 void KODialogManager::errorSaveIncidence( QWidget *parent, Incidence *incidence )
@@ -299,3 +293,5 @@ void KODialogManager::createCategoryEditor()
     KOGlobals::fitDialogToScreen( mCategoryEditDialog );
   }
 }
+
+#include "kodialogmanager.moc"
