@@ -314,7 +314,7 @@
           <tooltip>Draw month items using their calendar resource color for the inside and border</tooltip>
         </choice>
       </choices>
-      <default>MonthItemCategoryInsideResourceOutside</default>
+      <default>MonthItemResourceInsideCategoryOutside</default>
     </entry>
 
     <entry type="Bool" key="Full View Month">
