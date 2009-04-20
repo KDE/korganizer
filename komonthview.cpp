@@ -237,6 +237,8 @@ void MonthViewItem::paint( QPainter *p )
   bool sel = selected();
 #endif
 
+  if( !mIncidence )
+    return;
   QColor bgColor = QColor(); // Default invalid color;
   if ( mTodo ) {
     if ( static_cast<Todo*>( mIncidence )->isOverdue() ) {
