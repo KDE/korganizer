@@ -283,7 +283,7 @@
           <label>Only calendar</label>
         </choice>
       </choices>
-      <default>MonthItemCategoryInsideResourceOutside</default>
+      <default>MonthItemResourceInsideCategoryOutside</default>
     </entry>
 
     <entry type="Bool" key="Full View Month">
