@@ -1,7 +1,4 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>FilterEdit_base</class>
  <widget class="QWidget" name="FilterEdit_base" >
   <property name="geometry" >
@@ -262,8 +259,6 @@ Only to-dos which have least one attendee will be checked.  If you are not in th
    </item>
   </layout>
  </widget>
- <layoutdefault spacing="6" margin="11" />
- <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
  <customwidgets>
   <customwidget>
    <class>KIntNumInput</class>

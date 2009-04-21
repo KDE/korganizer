@@ -1,7 +1,6 @@
 <ui version="4.0" >
  <author>Reinhold Kainhofer &lt;reinhold@kainhofer.com></author>
  <comment>Configuration page for the print whatsnext mode.</comment>
- <exportmacro></exportmacro>
  <class>CalPrintWhatsNextConfig_Base</class>
  <widget class="QWidget" name="CalPrintWhatsNextConfig_Base" >
   <property name="geometry" >
@@ -118,8 +117,6 @@
    </item>
   </layout>
  </widget>
- <layoutdefault spacing="6" margin="11" />
- <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
    <class>KDateEdit</class>

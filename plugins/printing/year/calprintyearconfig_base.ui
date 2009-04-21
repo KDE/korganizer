@@ -1,7 +1,6 @@
 <ui version="4.0" stdsetdef="1" >
   <author>Reinhold Kainhofer &lt;reinhold@kainhofer.com></author>
   <comment>Configuration page for the yearly print mode.</comment>
-  <exportmacro></exportmacro>
   <class>CalPrintYearConfig_Base</class>
   <widget class="QWidget" name="CalPrintYearConfig_Base" >
     <property name="geometry" >
@@ -186,6 +185,4 @@
       </item>
     </layout>
   </widget>
-  <layoutdefault spacing="6" margin="11" />
-  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
 </ui>
