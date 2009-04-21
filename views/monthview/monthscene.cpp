@@ -198,6 +198,13 @@ void MonthGraphicsView::drawBackground( QPainter *p, const QRectF & rect )
   for ( QDate d = mMonthView->mStartDate;
         d <= mMonthView->mStartDate.addDays( 6 ); d = d.addDays( 1 ) ) {
     MonthCell *cell = mScene->mMonthCellMap[ d ];
+
+    if ( !cell ) {
+      // This means drawBackground() is being called before reloadIncidences(). Can happen with some
+      // themes. Bug  #190191
+      return;
+    }
+
     p->drawText( QRect( mScene->cellHorizontalPos( cell ),
                         mScene->cellVerticalPos( cell ) - 15,
                         mScene->columnWidth(),
