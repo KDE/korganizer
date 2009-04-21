@@ -271,10 +271,18 @@ void MonthViewItem::paint( QPainter *p )
     frameColor = catColor();
   }
 
+  if ( KOPrefs::instance()->beautifyFrames() &&
+       KOPrefs::instance()->agendaViewColors() == KOPrefs::ResourceInsideCategoryOutside &&
+       mIncidence->categories().isEmpty() ) {
+    frameColor = bgColor;
+  }
+
   if ( !frameColor.isValid() ) {
     frameColor = palette().color( QPalette::Normal,
                                   sel ? QColorGroup::Highlight :
                                         QColorGroup::Foreground );
+  } else {
+    frameColor = frameColor.dark( 115 );
   }
 
   // draw the box for the item

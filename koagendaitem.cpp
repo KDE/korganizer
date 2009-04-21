@@ -787,6 +787,12 @@ void KOAgendaItem::paintEvent( QPaintEvent *ev )
     }
   }
 
+  if ( KOPrefs::instance()->beautifyFrames() &&
+       KOPrefs::instance()->agendaViewColors() == KOPrefs::ResourceInsideCategoryOutside &&
+       cat.isEmpty() ) {
+    frameColor = bgColor;
+  }
+
   if ( mSelected ) {
     frameColor = QColor( 85 + frameColor.red() * 2/3,
                         85 + frameColor.green() * 2/3,
