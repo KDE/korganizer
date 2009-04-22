@@ -343,7 +343,7 @@
 
   <group name="Layout">
     <entry type="Bool" key="CompactDialogs">
-      <default>false</default>
+      <default>true</default>
     </entry>
     <entry type="Bool" key="VerticalScreen">
       <default>false</default>
