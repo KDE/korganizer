@@ -322,13 +322,6 @@ bool IncidenceChanger::addIncidence( Incidence *incidence, QWidget *parent )
     return false;                                                                                                                          
   }  
 kdDebug(5850)<<"IncidenceChanger::addIncidence for incidence \""<<incidence->summary()<<"\""<<endl;
-  if ( KOPrefs::instance()->mUseGroupwareCommunication ) {
-    if ( !KOGroupware::instance()->sendICalMessage( parent,
-                                                    KCal::Scheduler::Request,
-                                                    incidence ) ) {
-      kdError() << "sendIcalMessage failed." << endl;
-    }
-  }
   // FIXME: This is a nasty hack, since we need to set a parent for the
   //        resource selection dialog. However, we don't have any UI methods
   //        in the calendar, only in the CalendarResources::DestinationPolicy
@@ -350,6 +343,15 @@ kdDebug(5850)<<"IncidenceChanger::addIncidence for incidence \""<<incidence->sum
                         .arg( incidence->summary() ) );
     return false;
   }
+
+  if ( KOPrefs::instance()->mUseGroupwareCommunication ) {
+    if ( !KOGroupware::instance()->sendICalMessage( parent,
+                                                    KCal::Scheduler::Request,
+                                                    incidence ) ) {
+      kdError() << "sendIcalMessage failed." << endl;
+    }
+  }
+
   emit incidenceAdded( incidence );
   return true;
 }
