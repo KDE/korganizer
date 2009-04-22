@@ -48,6 +48,7 @@
 #include <QCheckBox>
 #include <QLabel>
 #include <QLayout>
+#include <QTimer>
 #include <QHBoxLayout>
 #include <QBoxLayout>
 #include <QPushButton>
@@ -75,6 +76,9 @@ void KOEditorGeneralJournal::initTitle( QWidget *parent, QBoxLayout *topLayout )
   hbox->addWidget( summaryLabel );
 
   mSummaryEdit = new FocusLineEdit( parent );
+  connect( mSummaryEdit, SIGNAL(focusReceivedSignal()),
+           SIGNAL(focusReceivedSignal()) );
+  QTimer::singleShot( 0, mSummaryEdit, SLOT(setFocus()) );
   mSummaryEdit->setWhatsThis( whatsThis );
   summaryLabel->setBuddy( mSummaryEdit );
   hbox->addWidget( mSummaryEdit );
