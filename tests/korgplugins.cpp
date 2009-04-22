@@ -41,7 +41,7 @@ int main(int argc,char **argv)
 
   KService::List plugins = KOCore::self()->availablePlugins();
   KService::List::ConstIterator it;
-  for(it = plugins.begin(); it != plugins.end(); ++it) {
+  for(it = plugins.constBegin(); it != plugins.constEnd(); ++it) {
     kDebug() << "Plugin:" << (*it)->desktopEntryName() << "("
              << (*it)->name() << ")";
     KOrg::Plugin *p = KOCore::self()->loadPlugin(*it);
@@ -54,7 +54,7 @@ int main(int argc,char **argv)
 
 #ifndef KORG_NOPRINTER
   plugins = KOCore::self()->availablePrintPlugins();
-  for(it = plugins.begin(); it != plugins.end(); ++it) {
+  for(it = plugins.constBegin(); it != plugins.constEnd(); ++it) {
     kDebug() << "Print plugin:" << (*it)->desktopEntryName() << "("
              << (*it)->name() << ")";
     KOrg::PrintPlugin *p = KOCore::self()->loadPrintPlugin(*it);
@@ -67,7 +67,7 @@ int main(int argc,char **argv)
 #endif
 
   plugins = KOCore::self()->availableParts();
-  for(it = plugins.begin(); it != plugins.end(); ++it) {
+  for(it = plugins.constBegin(); it != plugins.constEnd(); ++it) {
     kDebug() << "Part:" << (*it)->desktopEntryName() << "("
              << (*it)->name() << ")";
     KOrg::Part *p = KOCore::self()->loadPart(*it,0);
@@ -79,7 +79,7 @@ int main(int argc,char **argv)
   }
 
   plugins = KOCore::self()->availableCalendarDecorations();
-  for(it = plugins.begin(); it != plugins.end(); ++it) {
+  for(it = plugins.constBegin(); it != plugins.constEnd(); ++it) {
     kDebug() << "CalendarDecoration:" << (*it)->desktopEntryName() << "("
              << (*it)->name() << ")";
     KOrg::CalendarDecoration::Decoration *p = KOCore::self()->loadCalendarDecoration(*it);
