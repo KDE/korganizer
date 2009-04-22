@@ -371,7 +371,7 @@
     <entry type="Bool" key="Full View Todo">
       <label>To-do list view uses full window</label>
       <whatsthis>Check this box to use the full KOrganizer window when displaying the to-do list view. If this box is checked, you will gain some space for the to-do list view, but other widgets, such as the date navigator, the to-do details and the resources list, will not be displayed.</whatsthis>
-      <default>false</default>
+      <default>true</default>
     </entry>
 
     <entry type="Bool" key="Record Todos In Journals">
