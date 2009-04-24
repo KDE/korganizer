@@ -271,10 +271,14 @@ void MonthViewItem::paint( QPainter *p )
     frameColor = catColor();
   }
 
-  if ( KOPrefs::instance()->beautifyFrames() &&
-       KOPrefs::instance()->agendaViewColors() == KOPrefs::ResourceInsideCategoryOutside &&
-       mIncidence->categories().isEmpty() ) {
+  if ( mIncidence->categories().isEmpty() &&
+       KOPrefs::instance()->agendaViewColors() == KOPrefs::ResourceInsideCategoryOutside ) {
     frameColor = bgColor;
+  }
+
+  if ( mIncidence->categories().isEmpty() &&
+       KOPrefs::instance()->agendaViewColors() == KOPrefs::CategoryInsideResourceOutside ) {
+    bgColor = frameColor;
   }
 
   if ( !frameColor.isValid() ) {

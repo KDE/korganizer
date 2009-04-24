@@ -398,8 +398,8 @@
       <default>255, 100, 100</default>
     </entry>
     <entry type="Color" key="Unset Category Color">
-      <label>No (unset) category color</label>
-      <whatsthis>Select a color to use for the "no category" or "unset category" situation, when an item does not belong to any category. This color is used mainly when drawing items in the agenda or month views.</whatsthis>
+      <label>"No category" color (for "Only category" drawing schemes)</label>
+      <whatsthis>Select a color to use for the "no category" or "unset category" situation, when an item does not belong to any category. This color is used when drawing items in the agenda or month views using the "Only category" scheme.</whatsthis>
       <default>151, 235, 121</default>
     </entry>
 
