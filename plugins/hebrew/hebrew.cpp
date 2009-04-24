@@ -55,7 +55,7 @@ QString Hebrew::shortText(const QDate & date)
   Holiday::ParshaP = config.readBoolEntry("Parsha", true);
   Holiday::CholP = config.readBoolEntry("Chol_HaMoed", true);
   Holiday::OmerP = config.readBoolEntry("Omer", true);
-  QString *label_text = new QString();
+  QString label_text;
 
   int day = date.day();
   int month = date.month();
@@ -81,7 +81,7 @@ QString Hebrew::shortText(const QDate & date)
                          hebrew_day_number, hebrew_year);
 
   KCalendarSystem *cal = KCalendarSystemFactory::create("hebrew");
-  *label_text = QString("%1 %2").arg(cal->dayString(date, false))
+  label_text = QString("%1 %2").arg(cal->dayString(date, false))
                                 .arg(cal->monthName(date));
 
   if (holidays.count())
@@ -90,11 +90,11 @@ QString Hebrew::shortText(const QDate & date)
 
         for (int h = 0; h <= count; ++h)
             {
-              *label_text += "\n" + holidays[h];
+              label_text += "\n" + holidays[h];
             }
       }
 
-  return *label_text;
+  return label_text;
 }
 
 QString Hebrew::info()
