@@ -77,7 +77,6 @@
       <Action name="go_next"/>
       <Separator/>
       <Action name="go_today"/>
-      <Action name="go_select"/>
     </Menu>
     <Menu name="actions"><text>&amp;Actions</text>
       <Action name="new_event"/>
@@ -130,7 +129,7 @@
     </Menu>
   </MenuBar>
 
-  <ToolBar noMerge="1" name="mainToolBar" fullWidth="true"><text>Main</text>
+  <ToolBar noMerge="1" name="mainToolBar" fullWidth="true"><text context="main toolbar">Main</text>
     <Action name="go_previous"/>
     <Action name="go_today"/>
     <Action name="go_next"/>
