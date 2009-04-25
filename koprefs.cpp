@@ -341,7 +341,7 @@ QColor KOPrefs::resourceColor( const QString &cal )
         int h, s, v;
         defColor.getHsv( &h, &s, &v );
         h = ( defaultResourceColorSeed() % 12 ) * 30;
-        s -= s * ( ( defaultResourceColorSeed() / 12 ) % 2 ) * 0.5;
+        s -= s * static_cast<int>( ( ( defaultResourceColorSeed() / 12 ) % 2 ) * 0.5 );
         defColor.setHsv( h, s, v );
     }
     setDefaultResourceColorSeed( defaultResourceColorSeed() + 1 );
