@@ -110,6 +110,7 @@ class ResourceView : public CalendarViewExtension
     void emitResourcesChanged();
 
     void requestClose( ResourceCalendar * );
+    ResourceItem *findItemByIdentifier( const QString &id );
 
   public slots:
     void addResourceItem( ResourceCalendar *, bool emitSignal = true );
@@ -120,7 +121,6 @@ class ResourceView : public CalendarViewExtension
 
   protected:
     ResourceItem *findItem( ResourceCalendar * );
-    ResourceItem *findItemByIdentifier( const QString &id );
     ResourceItem *currentItem();
 
   protected slots:

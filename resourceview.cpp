@@ -117,10 +117,12 @@ void ResourceItem::createSubresourceItems()
     // This resource has subresources
     QStringList::ConstIterator it;
     for ( it = subresources.begin(); it != subresources.end(); ++it ) {
-      ResourceItem *item = new ResourceItem( mResource, *it, mResource->labelForSubresource( *it ),
-                                             mView, this );
-      QColor resourceColor = KOPrefs::instance()->resourceColor( *it );
-      item->setResourceColor( resourceColor );
+      if ( !mView->findItemByIdentifier( *it ) ) {
+        ResourceItem *item = new ResourceItem( mResource, *it, mResource->labelForSubresource( *it ),
+                                               mView, this );
+        QColor resourceColor = KOPrefs::instance()->resourceColor( *it );
+        item->setResourceColor( resourceColor );
+      }
     }
   }
   mSubItemsCreated = true;
@@ -467,14 +469,12 @@ void ResourceView::slotSubresourceAdded( ResourceCalendar *calendar,
   Q_UNUSED( type );
   QList<QTreeWidgetItem *> items =
     mListView->findItems( calendar->resourceName(), Qt::MatchExactly, 0 );
-  if ( items.isEmpty() ) {
-    // Not found
-    return;
-  }
 
-  ResourceItem *item = static_cast<ResourceItem *>( items.first() );
-  ( void )new ResourceItem( calendar, resource, label, this, item );
-  emitResourcesChanged();
+  if ( !items.isEmpty() && !findItemByIdentifier( resource ) ) {
+    ResourceItem *item = static_cast<ResourceItem *>( items.first() );
+    ( void )new ResourceItem( calendar, resource, label, this, item );
+    emitResourcesChanged();
+  }
 }
 
 // Remove an entry
