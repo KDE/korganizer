@@ -413,6 +413,7 @@ void KOTodoView::contextMenu( const QPoint &pos )
     entry->setEnabled( enable );
   }
   mCopyPopupMenu->setEnabled( enable );
+  mMovePopupMenu->setEnabled( enable );
 
   if ( enable ) {
     switch ( mView->indexAt( pos ).column() ) {
