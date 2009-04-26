@@ -345,7 +345,7 @@
           <whatsthis>Select the "Calendar inside, category outside" option if you would like to draw calendar items in their associated calendar resource color, with the item's border drawn in the color of its category.  Please use the Colors and Fonts configuration page for setting these colors.</whatsthis>
           <tooltip>Draw month items in their calendar resource color inside and category color for their border</tooltip>
         </choice>
-        <choice name="MonthIthemCategoryOnly">
+        <choice name="MonthItemCategoryOnly">
           <label>Only category</label>
           <whatsthis>Select the "Only category" option if you would like to draw calendar items (both inside and border) in the color of their associated category.  Please use the Colors and Fonts configuration page for setting these colors.</whatsthis>
           <tooltip>Draw month items using their category color for the inside and border</tooltip>
