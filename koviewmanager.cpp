@@ -26,10 +26,12 @@
 #include "koviewmanager.h"
 #include "koglobals.h"
 #include "koprefs.h"
+#include "actionmanager.h"
 #include "calendarview.h"
 #include "datenavigator.h"
 #include "navigatorbar.h"
 #include "datenavigatorcontainer.h"
+#include "korganizer/mainwindow.h"
 #include "views/agendaview/koagendaview.h"
 #include "views/listview/kolistview.h"
 #include "views/journalview/kojournalview.h"
@@ -40,6 +42,7 @@
 #include "views/timelineview/kotimelineview.h"
 #include "views/timespentview/kotimespentview.h"
 
+#include <KActionCollection>
 #include <KConfig>
 #include <KGlobal>
 #include <KTabWidget>
@@ -158,6 +161,29 @@ void KOViewManager::showView( KOrg::BaseView *view )
   mMainView->processIncidenceSelection( 0 );
   mMainView->updateView();
   mMainView->adaptNavigationUnits();
+}
+
+void KOViewManager::goMenu( bool enable )
+{
+  KOrg::MainWindow *w = ActionManager::findInstance( KUrl() );
+  if ( w ) {
+    KActionCollection *ac = w->getActionCollection();
+    if ( ac ) {
+      QAction *action;
+      action = ac->action( "go_today" );
+      if ( action ) {
+        action->setEnabled( enable );
+      }
+      action = ac->action( "go_previous" );
+      if ( action ) {
+        action->setEnabled( enable );
+      }
+      action = ac->action( "go_next" );
+      if ( action ) {
+        action->setEnabled( enable );
+      }
+    }
+  }
 }
 
 void KOViewManager::raiseCurrentView()
@@ -316,7 +342,8 @@ void KOViewManager::showTimeSpentView()
     mTimeSpentView->setObjectName( "KOViewManager::TimeSpentView" );
     addView( mTimeSpentView );
   }
-  showView( mTimeSpentView );  
+  goMenu( true );
+  showView( mTimeSpentView );
 }
 
 void KOViewManager::showMonthView()
@@ -326,7 +353,8 @@ void KOViewManager::showMonthView()
     mMonthView->setObjectName( "KOViewManager::MonthView" );
     addView( mMonthView );
   }
-  showView( mMonthView );  
+  goMenu( true );
+  showView( mMonthView );
 }
 
 void KOViewManager::showWhatsNextView()
@@ -336,7 +364,8 @@ void KOViewManager::showWhatsNextView()
     mWhatsNextView->setObjectName( "KOViewManager::WhatsNextView" );
     addView( mWhatsNextView );
   }
-  showView( mWhatsNextView );  
+  goMenu( true );
+  showView( mWhatsNextView );
 }
 
 void KOViewManager::showListView()
@@ -346,7 +375,8 @@ void KOViewManager::showListView()
     mListView->setObjectName( "KOViewManager::ListView" );
     addView( mListView );
   }
-  showView( mListView );  
+  goMenu( true );
+  showView( mListView );
 }
 
 void KOViewManager::showAgendaView()
@@ -406,13 +436,14 @@ void KOViewManager::showAgendaView()
     }
   }
 
+  goMenu( true );
   if ( showBoth ) {
     showView( static_cast<KOrg::BaseView*>( mAgendaViewTabs->currentWidget() ) );
   } else if ( showMerged ) {
     showView( mAgendaView );
   } else if ( showSideBySide ) {
     showView( mAgendaSideBySideView );
-  }  
+  }
 }
 
 void KOViewManager::showDayView()
@@ -455,6 +486,7 @@ void KOViewManager::showTodoView()
     KConfig *config = KOGlobals::self()->config();
     mTodoView->restoreLayout( config, "Todo View" );
   }
+  goMenu( false );
   showView( mTodoView );
 }
 
@@ -465,7 +497,8 @@ void KOViewManager::showJournalView()
     mJournalView->setObjectName( "KOViewManager::JournalView" );
     addView( mJournalView );
   }
-  showView( mJournalView );  
+  goMenu( true );
+  showView( mJournalView );
 }
 
 void KOViewManager::showTimeLineView()
@@ -475,16 +508,18 @@ void KOViewManager::showTimeLineView()
     mTimelineView->setObjectName( "KOViewManager::TimelineView" );
     addView( mTimelineView );
   }
-  showView( mTimelineView );  
+  goMenu( true );
+  showView( mTimelineView );
 }
 
 void KOViewManager::showEventView()
 {
   if ( mLastEventView ) {
+    goMenu( true );
     showView( mLastEventView );
   } else {
     showWeekView();
-  }  
+  }
 }
 
 Incidence *KOViewManager::currentSelection()
@@ -530,6 +565,7 @@ QWidget *KOViewManager::widgetForView( KOrg::BaseView *view ) const
 void KOViewManager::currentAgendaViewTabChanged( QWidget *widget )
 {
   if ( widget ) {
+    goMenu( true );
     showView( static_cast<KOrg::BaseView*>( widget ) );
   }
 }
