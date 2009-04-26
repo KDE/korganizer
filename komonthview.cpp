@@ -249,8 +249,8 @@ void MonthViewItem::paint( QPainter *p )
   }
 
   if ( !bgColor.isValid() ) {
-    if ( KOPrefs::instance()->monthItemColors() == KOPrefs::ResourceOnly ||
-         KOPrefs::instance()->monthItemColors() == KOPrefs::ResourceInsideCategoryOutside ) {
+    if ( KOPrefs::instance()->monthItemColors() == KOPrefs::MonthItemResourceOnly ||
+         KOPrefs::instance()->monthItemColors() == KOPrefs::MonthItemResourceInsideCategoryOutside ) {
       bgColor = resourceColor();
     } else {
       bgColor = catColor();
@@ -264,20 +264,20 @@ void MonthViewItem::paint( QPainter *p )
   }
 
   QColor frameColor;
-  if ( KOPrefs::instance()->monthItemColors() == KOPrefs::ResourceOnly ||
-       KOPrefs::instance()->monthItemColors() == KOPrefs::CategoryInsideResourceOutside ) {
+  if ( KOPrefs::instance()->monthItemColors() == KOPrefs::MonthItemResourceOnly ||
+       KOPrefs::instance()->monthItemColors() == KOPrefs::MonthItemCategoryInsideResourceOutside ) {
     frameColor = resourceColor();
   } else {
     frameColor = catColor();
   }
 
   if ( mIncidence->categories().isEmpty() &&
-       KOPrefs::instance()->agendaViewColors() == KOPrefs::ResourceInsideCategoryOutside ) {
+       KOPrefs::instance()->monthItemColors() == KOPrefs::MonthItemResourceInsideCategoryOutside ) {
     frameColor = bgColor;
   }
 
   if ( mIncidence->categories().isEmpty() &&
-       KOPrefs::instance()->agendaViewColors() == KOPrefs::CategoryInsideResourceOutside ) {
+       KOPrefs::instance()->monthItemColors() == KOPrefs::MonthItemCategoryInsideResourceOutside ) {
     bgColor = frameColor;
   }
 
@@ -551,8 +551,8 @@ class MonthViewCell::CreateItemVisitor :
 
       mItem = new MonthViewItem( event, dt, text );
       mItem->setEvent( true );
-      if ( KOPrefs::instance()->monthItemColors() == KOPrefs::CategoryOnly ||
-           KOPrefs::instance()->monthItemColors() == KOPrefs::CategoryInsideResourceOutside ) {
+      if ( KOPrefs::instance()->monthItemColors() == KOPrefs::MonthItemCategoryOnly ||
+           KOPrefs::instance()->monthItemColors() == KOPrefs::MonthItemCategoryInsideResourceOutside ) {
         QStringList categories = event->categories();
         QString cat = categories.first();
         if (cat.isEmpty()) {
