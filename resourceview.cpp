@@ -636,7 +636,7 @@ void ResourceView::showContextMenu( const QPoint &pos )
   if ( !i ) { // No item clicked.
     // Creation of menu entries not specific to one item
     QMenu *menu = new QMenu( this );
-    menu->addAction( i18n( "&Add..." ), this, SLOT(addResource()) );
+    menu->addAction( i18n( "&Add Resource..." ), this, SLOT(addResource()) );
     menu->popup( mapToGlobal( pos ) );
 
     return;
@@ -676,7 +676,15 @@ void ResourceView::showContextMenu( const QPoint &pos )
     }
     menu->addSeparator();
   }
-  menu->addAction( i18n( "&Add..." ), this, SLOT(addResource()) );
+
+  QString label;
+  if ( item->isSubresource() || item->resource()->canHaveSubresources() ) {    
+    label = i18n( "&Add Subresource..." );
+  } else {
+    label = i18n( "&Add Resource..." );
+  }
+
+  menu->addAction( label, this, SLOT(addResource()) );
   menu->popup( mListView->mapToGlobal( pos ) );
 }
 
