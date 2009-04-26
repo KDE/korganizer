@@ -580,8 +580,8 @@ QColor IncidenceMonthItem::bgColor() const
   }
 
   if ( !bgColor.isValid() ) {
-    if ( KOPrefs::instance()->monthViewColors() == KOPrefs::ResourceOnly ||
-         KOPrefs::instance()->monthViewColors() == KOPrefs::ResourceInsideCategoryOutside ) {
+    if ( KOPrefs::instance()->monthViewColors() == KOPrefs::MonthItemResourceOnly ||
+         KOPrefs::instance()->monthViewColors() == KOPrefs::MonthItemResourceInsideCategoryOutside ) {
       bgColor = KOHelper::resourceColor( monthScene()->calendar(), mIncidence );
     } else {
       bgColor = catColor();
@@ -598,8 +598,8 @@ QColor IncidenceMonthItem::bgColor() const
 QColor IncidenceMonthItem::frameColor() const
 {
   QColor frameColor;
-  if ( KOPrefs::instance()->monthViewColors() == KOPrefs::ResourceOnly ||
-       KOPrefs::instance()->monthViewColors() == KOPrefs::CategoryInsideResourceOutside ) {
+  if ( KOPrefs::instance()->monthViewColors() == KOPrefs::MonthItemResourceOnly ||
+       KOPrefs::instance()->monthViewColors() == KOPrefs::MonthItemCategoryInsideResourceOutside ) {
     frameColor = KOHelper::resourceColor( monthScene()->calendar(), mIncidence );
   } else {
     frameColor = catColor();
