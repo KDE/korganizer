@@ -80,6 +80,7 @@ class KOViewManager : public QObject
     void updateView();
     void updateView( const QDate &start, const QDate &end );
 
+    void goMenu( bool enable );
     void raiseCurrentView();
 
     void connectView( KOrg::BaseView * );
