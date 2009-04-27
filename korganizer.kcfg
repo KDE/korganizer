@@ -441,12 +441,6 @@
       <default>151, 235, 121</default>
     </entry>
 
-    <entry type="Bool" key="Item Frame Uses Unset Category Color" name="BeautifyFrames">
-      <label>Beautify frames for items without a category</label>
-      <whatsthis>For items without a category, use a dark version of the calendar color for the frame instead of the unset category color setting. This can make the display more pleasing depending on your color settings.</whatsthis>
-      <default>true</default>
-    </entry>
-  
     <entry type="Bool" key="AssignDefaultResourceColors">
       <default>true</default>
     </entry>
