@@ -26,9 +26,11 @@
 #include <qwidgetstack.h>
 #include <qtabwidget.h>
 
+#include <kactioncollection.h>
 #include <kconfig.h>
 #include <kglobal.h>
 
+#include "actionmanager.h"
 #include "calendarview.h"
 #include "datenavigator.h"
 #include "kotodoview.h"
@@ -42,6 +44,7 @@
 #include "koglobals.h"
 #include "navigatorbar.h"
 #include "multiagendaview.h"
+#include <korganizer/mainwindow.h>
 
 #include "koviewmanager.h"
 #include "koviewmanager.moc"
@@ -127,11 +130,35 @@ void KOViewManager::showView(KOrg::BaseView *view)
   if ( mAgendaView ) mAgendaView->deleteSelectedDateTime();
 
   raiseCurrentView();
+
   mMainView->processIncidenceSelection( 0 );
 
   mMainView->updateView();
 
   mMainView->adaptNavigationUnits();
+}
+
+void KOViewManager::goMenu( bool enable )
+{
+  KOrg::MainWindow *w = ActionManager::findInstance( KURL() );
+  if ( w ) {
+    KActionCollection *ac = w->getActionCollection();
+    if ( ac ) {
+      KAction *action;
+      action = ac->action( "go_today" );
+      if ( action ) {
+        action->setEnabled( enable );
+      }
+      action = ac->action( "go_previous" );
+      if ( action ) {
+        action->setEnabled( enable );
+      }
+      action = ac->action( "go_next" );
+      if ( action ) {
+        action->setEnabled( enable );
+      }
+    }
+  }
 }
 
 void KOViewManager::raiseCurrentView()
@@ -272,6 +299,7 @@ void KOViewManager::showWhatsNextView()
                                          "KOViewManager::WhatsNextView");
     addView(mWhatsNextView);
   }
+  goMenu( true );
   showView(mWhatsNextView);
 }
 
@@ -281,6 +309,7 @@ void KOViewManager::showListView()
     mListView = new KOListView(mMainView->calendar(), mMainView->viewStack(), "KOViewManager::ListView");
     addView(mListView);
   }
+  goMenu( true );
   showView(mListView);
 }
 
@@ -341,6 +370,7 @@ void KOViewManager::showAgendaView()
       mMainView->viewStack()->addWidget( mAgendaSideBySideView );
   }
 
+  goMenu( true );
   if ( mAgendaViewTabs && showBoth )
     showView( static_cast<KOrg::BaseView*>( mAgendaViewTabs->currentPage() ) );
   else if ( mAgendaView && showMerged )
@@ -381,6 +411,7 @@ void KOViewManager::showMonthView()
     addView(mMonthView);
   }
 
+  goMenu( true );
   showView(mMonthView);
 }
 
@@ -397,6 +428,7 @@ void KOViewManager::showTodoView()
     mTodoView->restoreLayout( config, "Todo View" );
   }
 
+  goMenu( false );
   showView( mTodoView );
 }
 
@@ -408,6 +440,7 @@ void KOViewManager::showJournalView()
     addView(mJournalView);
   }
 
+  goMenu( true );
   showView(mJournalView);
 }
 
@@ -419,13 +452,18 @@ void KOViewManager::showTimelineView()
                                      "KOViewManager::TimelineView");
     addView(mTimelineView);
   }
+  goMenu( true );
   showView(mTimelineView);
 }
 
 void KOViewManager::showEventView()
 {
-  if ( mLastEventView ) showView( mLastEventView );
-  else showWeekView();
+  if ( mLastEventView ) {
+    goMenu( true );
+    showView( mLastEventView );
+  } else {
+    showWeekView();
+  }
 }
 
 Incidence *KOViewManager::currentSelection()
@@ -465,6 +503,7 @@ QWidget* KOViewManager::widgetForView( KOrg::BaseView* view ) const
 
 void KOViewManager::currentAgendaViewTabChanged( QWidget* widget )
 {
+  goMenu( true );
   showView( static_cast<KOrg::BaseView*>( widget ) );
 }
 
