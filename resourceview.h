@@ -136,6 +136,8 @@ class ResourceView : public CalendarViewExtension
 
     void showContextMenu( const QPoint &pos );
 
+    void slotAddButtonClicked();
+
     void assignColor();
     void disableColor();
     void showInfo();
@@ -150,6 +152,15 @@ class ResourceView : public CalendarViewExtension
     void currentChanged();
 
   private:
+
+    /*
+     * Holds:
+     * the ResourceItem that's selected when adding a resource,
+     * 0 if no item is selected,
+     * 0 if an item is selected but the user pressed RMB in the blank space
+     */
+    ResourceItem *mSelectedParent;
+
     QTreeWidget *mListView;
     KCal::CalendarResources *mCalendar;
     QList<ResourceCalendar*> mResourcesToClose;
