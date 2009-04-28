@@ -892,8 +892,10 @@ void KOEditorFreeBusy::showAttendeeStatusMenu()
   if ( mGanttView->mapFromGlobal( QCursor::pos() ).x() > 22 ) {
     return;
   }
-  if( !currentAttendee() )
+  if( !currentAttendee() || mGanttView->selectedItem() == hasExampleAttendee() ) {
       return;
+  }
+
   QPopupMenu popup;
   popup.insertItem( KOGlobals::self()->smallIcon( "help-about" ),
                     Attendee::statusName( Attendee::NeedsAction ), Attendee::NeedsAction );
