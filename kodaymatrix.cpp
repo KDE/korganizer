@@ -339,8 +339,8 @@ void KODayMatrix::updateTodos()
 
           // It's a recurring todo, find out in which days it occurs
           DateTimeList timeDateList = t->recurrence()->timesInInterval(
-                                       *new KDateTime( mDays[0], mCalendar->timeSpec() ),
-                                       *new KDateTime( mDays[NUMDAYS-1], mCalendar->timeSpec() ) );
+                                            KDateTime( mDays[0], mCalendar->timeSpec() ),
+                                            KDateTime( mDays[NUMDAYS-1], mCalendar->timeSpec() ) );
 
           foreach ( const KDateTime &dt, timeDateList ) {
             if ( !mEvents.contains( dt.date() ) ) {
