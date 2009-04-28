@@ -545,11 +545,12 @@ void KOAgendaView::createDayLabels()
     QStringList::ConstIterator textit = texts.constBegin();
     for ( ; textit != texts.constEnd(); ++textit ) {
       // Compute a small version of the holiday string for KOAlternateLabel
-      KWordWrap *ww = KWordWrap::formatText( fm, dayLabelBox->rect(), 0, (*textit), -1 );
+      const KWordWrap *ww = KWordWrap::formatText( fm, dayLabelBox->rect(), 0, (*textit), -1 );
       KOAlternateLabel *label =
         new KOAlternateLabel( ww->truncatedString(), (*textit), (*textit), dayLabelBox );
       label->setMinimumWidth( 1 );
       label->setAlignment( Qt::AlignCenter );
+      delete ww;
     }
 
 #ifndef KORG_NOPLUGINS
