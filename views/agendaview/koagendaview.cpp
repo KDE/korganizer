@@ -436,10 +436,17 @@ bool KOAgendaView::loadDecorations( const QStringList &decorations, DecorationLi
   return ( decorations.count() > 0 );
 }
 
-void KOAgendaView::placeDecorationsFrame( KHBox *frame, bool decorationsFound )
+void KOAgendaView::placeDecorationsFrame( KHBox *frame, bool decorationsFound, bool isTop )
 {
   if ( decorationsFound ) {
-    frame->setParent( mSplitterAgenda );
+
+    if ( isTop ) {
+      // inserts in the first position
+      mSplitterAgenda->insertWidget( 0, frame );
+    } else {
+      // inserts in the last position
+      frame->setParent( mSplitterAgenda );
+    }
   } else {
     frame->setParent( this );
     mGridLayout->addWidget( frame, 0, 0 );
@@ -504,11 +511,11 @@ void KOAgendaView::createDayLabels()
 #ifndef KORG_NODECOS
   QList<CalendarDecoration::Decoration *> topDecos;
   QStringList topStrDecos = KOPrefs::instance()->decorationsAtAgendaViewTop();
-  placeDecorationsFrame( mTopDayLabelsFrame, loadDecorations( topStrDecos, topDecos ) );
+  placeDecorationsFrame( mTopDayLabelsFrame, loadDecorations( topStrDecos, topDecos ), true );
 
   QList<CalendarDecoration::Decoration *> botDecos;
   QStringList botStrDecos = KOPrefs::instance()->decorationsAtAgendaViewBottom();
-  placeDecorationsFrame( mBottomDayLabelsFrame, loadDecorations( botStrDecos, botDecos ) );
+  placeDecorationsFrame( mBottomDayLabelsFrame, loadDecorations( botStrDecos, botDecos ), false );
 #endif
 
   DateList::ConstIterator dit;
