@@ -260,6 +260,7 @@ CalendarView::~CalendarView()
   delete mDialogManager;
   delete mViewManager;
   delete mEventViewer;
+  delete mHistory;
 }
 
 void CalendarView::setCalendar( Calendar *cal )
@@ -271,9 +272,7 @@ void CalendarView::setCalendar( Calendar *cal )
   connect( mHistory, SIGNAL(undone()), SLOT(updateView()) );
   connect( mHistory, SIGNAL(redone()), SLOT(updateView()) );
 
-  if ( mChanger ) {
-    delete mChanger;
-  }
+  delete mChanger;
   setIncidenceChanger( new IncidenceChanger( mCalendar, this ) );
 
   mCalendar->registerObserver( this );
