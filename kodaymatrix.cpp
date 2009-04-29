@@ -295,8 +295,8 @@ void KODayMatrix::updateEvents()
       if ( isRecurrent ) {
         //Its a recurring event, find out in which days it occurs
         timeDateList = event->recurrence()->timesInInterval(
-          *new KDateTime( mDays[0], mCalendar->timeSpec() ),
-          *new KDateTime( mDays[NUMDAYS-1], mCalendar->timeSpec() ) );
+          KDateTime( mDays[0], mCalendar->timeSpec() ),
+          KDateTime( mDays[NUMDAYS-1], mCalendar->timeSpec() ) );
       } else {
         if ( event->dtStart().date() >= mDays[0] ) {
           timeDateList.append( event->dtStart() );
