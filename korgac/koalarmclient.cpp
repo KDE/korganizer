@@ -60,11 +60,8 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
   connect( this, SIGNAL(reminderCount(int)), mDocker, SLOT(slotUpdate(int)) );
   connect( mDocker, SIGNAL(quitSignal()), SLOT(slotQuit()) );
 
-  KConfigGroup timedateGroup( &korgConfig, "Time & Date" );
-  QString tz = timedateGroup.readEntry( "TimeZoneId" );
-  kDebug() << "TimeZone:" << tz;
-
-  mCalendar = new CalendarResources( tz );
+  const KTimeZone zone = KSystemTimeZones::local();
+  mCalendar = new CalendarResources( zone.isValid() ? KDateTime::Spec( zone ) : KDateTime::ClockTime );
   mCalendar->readConfig();
   mCalendar->load();
 
