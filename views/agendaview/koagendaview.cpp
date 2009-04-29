@@ -490,7 +490,8 @@ void KOAgendaView::createDayLabels()
 #ifndef KORG_NOPLUGINS
   QList<CalendarDecoration::Decoration *> topDecos;
   if ( KOPrefs::instance()->decorationsAtAgendaViewTop().count() > 0 ) {
-    mDayLabelsFrame->setParent( mSplitterAgenda );
+    // inserts in the first position
+    mSplitterAgenda->insertWidget( 0, mDayLabelsFrame );
     foreach ( const QString &decoName, KOPrefs::instance()->decorationsAtAgendaViewTop() ) {
       if ( KOPrefs::instance()->selectedPlugins().contains( decoName ) ) {
         topDecos << KOCore::self()->loadCalendarDecoration( decoName );
