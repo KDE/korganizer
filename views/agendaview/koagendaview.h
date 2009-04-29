@@ -251,7 +251,7 @@ class KOAgendaView : public KOrg::AgendaView, public KCal::Calendar::CalendarObs
 #ifndef KORG_NODECOS
     typedef QList<KOrg::CalendarDecoration::Decoration *> DecorationList;
     bool loadDecorations( const QStringList &decorations, DecorationList &decoList );
-    void placeDecorationsFrame( KHBox *frame, bool decorationsFound, bool isTop);
+    void placeDecorationsFrame( KHBox *frame, bool decorationsFound, bool isTop );
     void placeDecorations( DecorationList &decoList, const QDate &date,
                            KHBox *labelBox, bool forWeek );
 #endif
