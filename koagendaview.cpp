@@ -491,7 +491,8 @@ void KOAgendaView::createDayLabels()
 #ifndef KORG_NOPLUGINS
   QList<CalendarDecoration::Decoration *> topDecos;
   if ( KOPrefs::instance()->decorationsAtAgendaViewTop().count() > 0 ) {
-    mDayLabelsFrame->setParent( mSplitterAgenda );
+    // inserts in the first position
+    mSplitterAgenda->insertWidget( 0, mDayLabelsFrame );
     foreach ( const QString &decoName, KOPrefs::instance()->decorationsAtAgendaViewTop() ) {
       if ( KOPrefs::instance()->selectedPlugins().contains( decoName ) ) {
         topDecos << KOCore::self()->loadCalendarDecoration( decoName );
@@ -504,6 +505,7 @@ void KOAgendaView::createDayLabels()
 
   QList<CalendarDecoration::Decoration *> botDecos;
   if ( KOPrefs::instance()->decorationsAtAgendaViewBottom().count() > 0 ) {
+    // inserts in the last position
     mBottomDayLabelsFrame->setParent( mSplitterAgenda );
     foreach ( const QString &decoName, KOPrefs::instance()->decorationsAtAgendaViewBottom() ) {
       if ( KOPrefs::instance()->selectedPlugins().contains( decoName ) ) {
@@ -1420,7 +1422,7 @@ void KOAgendaView::displayIncidence( Incidence *incidence ) {
                                                 lastVisibleDateTime );
   } else {
     KDateTime dateToAdd; // date to add to our date list
-    KDateTime incidenceStart; 
+    KDateTime incidenceStart;
     KDateTime incidenceEnd;
 
     if ( todo && todo->hasDueDate() && !todo->isOverdue() ) {
@@ -1439,7 +1441,7 @@ void KOAgendaView::displayIncidence( Incidence *incidence ) {
 
     if  ( dateToAdd <= lastVisibleDateTime && incidenceEnd >= firstVisibleDateTime ) {
       dateTimeList += dateToAdd;
-    } 
+    }
   }
 
   // ToDo items shall be displayed today if they are already overdude
@@ -1452,7 +1454,7 @@ void KOAgendaView::displayIncidence( Incidence *incidence ) {
     bool doAdd = true;
 
     if ( todo->recurs() ) {
-      /* If there's a recurring instance showing up today don't add "today" again 
+      /* If there's a recurring instance showing up today don't add "today" again
        * we don't want the event to appear duplicated */
       for ( t = dateTimeList.begin(); t != dateTimeList.end(); ++t ) {
         if ( t->date() == today ) {
