@@ -38,8 +38,7 @@ using namespace KCal;
 #include <KConfigGroup>
 #include <KDebug>
 #include <KStandardDirs>
-#include <KSystemTimezones>
-
+#include <KSystemTimeZones>
 KOAlarmClient::KOAlarmClient( QObject *parent )
   : QObject( parent ), mDialog( 0 )
 {
