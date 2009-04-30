@@ -264,6 +264,8 @@ ResourceView::ResourceView( KCal::CalendarResources *calendar, QWidget *parent )
   mListView->header()->hide();
   topLayout->addWidget( mListView );
 
+  mSelectedParent = 0;
+
   connect( mListView, SIGNAL(itemDoubleClicked(QTreeWidgetItem *,int)),
            SLOT(editResource()) );
   connect( mListView, SIGNAL(itemClicked(QTreeWidgetItem *,int)),
@@ -311,7 +313,7 @@ ResourceView::ResourceView( KCal::CalendarResources *calendar, QWidget *parent )
   mDeleteButton->setDisabled( true );
   mEditButton->setDisabled( true );
 
-  connect( mAddButton, SIGNAL( clicked() ), SLOT( addResource() ) );
+  connect( mAddButton, SIGNAL( clicked() ), SLOT( slotAddButtonClicked() ) );
   connect( mDeleteButton, SIGNAL( clicked() ), SLOT( removeResource() ) );
   connect( mEditButton, SIGNAL( clicked() ), SLOT( editResource() ) );
 
@@ -347,14 +349,23 @@ void ResourceView::emitResourcesChanged()
   emit resourcesChanged();
 }
 
+void ResourceView::slotAddButtonClicked()
+{
+  if ( !mListView->selectedItems().isEmpty() ) {
+    mSelectedParent = static_cast<ResourceItem*>( mListView->selectedItems().first() );
+  } else {
+    mSelectedParent = 0;
+  }
+
+  addResource();
+}
+
 void ResourceView::addResource()
 {
   bool ok = false;
   KCal::CalendarResourceManager *manager = mCalendar->resourceManager();
-  ResourceItem *i = 0;
-  if ( !mListView->selectedItems().isEmpty() ) {
-    i = static_cast<ResourceItem*>( mListView->selectedItems().first() );
-  }
+  ResourceItem *i = mSelectedParent;
+
   if ( i && ( i->isSubresource() || i->resource()->canHaveSubresources() ) ) {
     const QString folderName =
       KInputDialog::getText( i18n( "Add Subresource" ),
@@ -637,12 +648,14 @@ void ResourceView::showContextMenu( const QPoint &pos )
     QMenu *menu = new QMenu( this );
     menu->addAction( i18n( "&Add..." ), this, SLOT(addResource()) );
     menu->popup( mapToGlobal( pos ) );
+    mSelectedParent = 0;
 
     return;
   }
 
   KCal::CalendarResourceManager *manager = mCalendar->resourceManager();
   ResourceItem *item = static_cast<ResourceItem *>( i );
+  mSelectedParent = item;
 
   QMenu *menu = new QMenu( this );
   connect( menu, SIGNAL(aboutToHide()), menu, SLOT(deleteLater()) );
