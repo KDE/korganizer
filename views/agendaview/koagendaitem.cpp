@@ -836,10 +836,14 @@ void KOAgendaItem::paintEvent( QPaintEvent *ev )
     }
   }
 
-  if ( KOPrefs::instance()->beautifyFrames() &&
-       KOPrefs::instance()->agendaViewColors() == KOPrefs::ResourceInsideCategoryOutside &&
-       cat.isEmpty() ) {
+  if ( cat.isEmpty() &&
+       KOPrefs::instance()->agendaViewColors() == KOPrefs::ResourceInsideCategoryOutside ) {
     frameColor = bgColor;
+  }
+
+  if ( cat.isEmpty() &&
+       KOPrefs::instance()->agendaViewColors() == KOPrefs::CategoryInsideResourceOutside ) {
+    bgColor = frameColor;
   }
 
   if ( mSelected ) {
