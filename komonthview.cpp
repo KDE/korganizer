@@ -361,7 +361,7 @@ int MonthViewItem::width( const QListBox *lb ) const
 
 MonthViewCell::MonthViewCell( KOMonthView *parent)
   : QWidget( parent ),
-    mMonthView( parent ), mPrimary( false ), mHoliday( false )
+    mMonthView( parent ), mPrimary( false ), mHoliday( false ), mHolidayEvent( 0 )
 {
   QVBoxLayout *topLayout = new QVBoxLayout( this );
 
@@ -395,6 +395,11 @@ MonthViewCell::MonthViewCell( KOMonthView *parent)
            SLOT( contextMenu( QListBoxItem * ) ) );
   connect( mItemList, SIGNAL( clicked( QListBoxItem * ) ),
            SLOT( select() ) );
+}
+
+MonthViewCell::~MonthViewCell()
+{
+  delete mHolidayEvent;
 }
 
 void MonthViewCell::setDate( const QDate &date )
@@ -494,8 +499,14 @@ void MonthViewCell::updateCell()
   mItemList->clear();
 
   if ( !mHolidayString.isEmpty() ) {
-    MonthViewItem *item = new MonthViewItem( 0, QDateTime( mDate ), mHolidayString );
-    item->setPalette( mHolidayPalette );
+    mHolidayEvent = new Event;
+    mHolidayEvent->setSummary( mHolidayString );
+    mHolidayEvent->setDtStart( mDate );
+    MonthViewItem *item = new MonthViewItem( mHolidayEvent, QDateTime( mDate ), mHolidayString );
+    QPalette pal = mStandardPalette;
+    pal.setColor( QColorGroup::Text, getTextColor( KOPrefs::instance()->holidayColor() ) );
+    pal.setColor( QColorGroup::Background, KOPrefs::instance()->holidayColor() );
+    item->setPalette( pal );
     mItemList->insertItem( item );
   }
 }

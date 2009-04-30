@@ -133,6 +133,7 @@ class MonthViewCell : public QWidget
   public:
     class CreateItemVisitor;
     MonthViewCell( KOMonthView * );
+    ~MonthViewCell();
 
     /** Sets the date of the cell */
     void setDate( const QDate & );
@@ -215,6 +216,7 @@ class MonthViewCell : public QWidget
     bool mPrimary;
     bool mHoliday;
     QString mHolidayString;
+    Event *mHolidayEvent;
 
     QLabel *mLabel;
     KNoScrollListBox *mItemList;
