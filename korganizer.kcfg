@@ -435,6 +435,12 @@
       <whatsthis>Press this button to configure the time bar font. The time bar is the widget that shows the hours in the agenda view. This button will open the &quot;Select Font&quot; dialog, allowing you to choose the hour font for the time bar.</whatsthis>
     </entry>
 
+    <entry type="Bool" key="Item Frame Uses Unset Category Color" name="BeautifyFrames">
+      <label>Beautify frames for items without a category</label>
+      <whatsthis>For items without a category, use a dark version of the calendar color for the frame instead of the unset category color setting. This can make the display more pleasing depending on your color settings.</whatsthis>
+      <default>true</default>
+    </entry>
+
     <entry type="Font" key="MonthView Font">
       <label>Month view</label>
       <whatsthis>Press this button to configure the month view font. This button will open the &quot;Select Font&quot; dialog, allowing you to choose the font for the items in the month view.</whatsthis>
