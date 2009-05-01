@@ -129,22 +129,22 @@ void MonthScene::updateGeometry()
 
 int MonthScene::availableWidth() const
 {
-  return sceneRect().width();
+  return static_cast<int> ( sceneRect().width() );
 }
 
 int MonthScene::availableHeight() const
 {
-  return sceneRect().height() - headerHeight();
+  return static_cast<int> ( sceneRect().height() - headerHeight() );
 }
 
 int MonthScene::columnWidth() const
 {
-  return ( availableWidth() - 1 ) / 7.;
+  return static_cast<int> ( ( availableWidth() - 1 ) / 7. );
 }
 
 int MonthScene::rowHeight() const
 {
-  return ( availableHeight() - 1 ) / 6.;
+  return static_cast<int> ( ( availableHeight() - 1 ) / 6. );
 }
 
 int MonthScene::headerHeight() const
@@ -187,7 +187,8 @@ void MonthGraphicsView::drawBackground( QPainter *p, const QRectF & rect )
   const int dayLabelsHeight = 20;
   const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
   p->drawText( QRect( 0,  0, // top right
-                      mScene->sceneRect().width(), mScene->headerHeight() - dayLabelsHeight ),
+                      static_cast<int> ( mScene->sceneRect().width() ),
+                      static_cast<int> ( mScene->headerHeight() - dayLabelsHeight ) ),
                Qt::AlignCenter,
                i18nc( "monthname year", "%1 %2",
                       calSys->monthName( mMonthView->averageDate() ),
@@ -638,8 +639,8 @@ bool MonthScene::isInMonthGrid( int x, int y ) {
 // be able to locate the cell.
 MonthCell *MonthScene::getCellFromPos( const QPointF &pos )
 {
-  int y = sceneYToMonthGridY( pos.y() );
-  int x = sceneXToMonthGridX( pos.x() );
+  int y = sceneYToMonthGridY( static_cast<int> ( pos.y() ) );
+  int x = sceneXToMonthGridX( static_cast<int> ( pos.x() ) );
   if ( !isInMonthGrid( x, y ) ) {
     return 0;
   }

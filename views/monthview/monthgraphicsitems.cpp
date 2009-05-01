@@ -179,8 +179,8 @@ QPainterPath MonthGraphicsItem::widgetPath( bool border ) const
   // If this is the mask, we draw it one pixel bigger
   int x0 = 0;
   int y0 = 0;
-  int x1 = boundingRect().width();
-  int y1 = boundingRect().height();
+  int x1 = static_cast<int> ( boundingRect().width() );
+  int y1 = static_cast<int> ( boundingRect().height() );
 
   int height = y1 - y0;
   int beginRound = height / 3;
@@ -282,7 +282,7 @@ void MonthGraphicsItem::paint( QPainter *p, const QStyleOptionGraphicsItem *, QW
   p->setLayoutDirection( text.isRightToLeft() ? Qt::RightToLeft : Qt::LeftToRight );
 
   QRect textRect = QRect( textMargin, 0,
-                          boundingRect().width() - 2 * textMargin, scene->itemHeight() );
+                          static_cast<int> ( boundingRect().width() - 2 * textMargin ), scene->itemHeight() );
 
   if ( KOPrefs::instance()->enableMonthItemIcons() ) {
     QList<QPixmap *> icons = mMonthItem->icons();
