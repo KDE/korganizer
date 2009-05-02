@@ -25,6 +25,8 @@
 #ifndef KODIALOGMANAGER_H
 #define KODIALOGMANAGER_H
 
+#include "koeventview.h"
+
 #include <QList>
 #include <QPointer>
 
@@ -81,7 +83,7 @@ class KODialogManager : public QObject
 
     void updateSearchDialog();
 
-    void connectTypeAhead( KOEventEditor *editor, KOrg::AgendaView *agenda );
+    void connectTypeAhead( KOEventEditor *editor, KOEventView *view );
 
     static void errorSaveIncidence( QWidget *parent, KCal::Incidence *incidence );
 

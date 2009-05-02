@@ -83,12 +83,30 @@ class KOEventView : public KOrg::BaseView
      */
     QMenu *newEventPopup();
 
-    /** This view is an view for displaying events. */
+    /** This view is a view for displaying events. */
     bool isEventView() { return true; }
 
     int showMoveRecurDialog( Incidence *inc, const QDate &date );
 
+    /**
+     * Handles key events, opens the new event dialog when enter is pressed, activates
+     * type ahead.
+     */
+    bool processKeyEvent( QKeyEvent * );
+
+    /*
+     * Sets the QObject that will receive key events that were made
+     * while the new event dialog was still being created.
+     */
+    void setTypeAheadReceiver( QObject *o ) { mTypeAheadReceiver = o; }
+
   public slots:
+
+    /*
+     * This is called when the new event dialog is shown. It sends
+     * all events in mTypeAheadEvents to the receiver.
+     */
+    void finishTypeAhead();
 
     /**
      Perform the default action for an incidence, e.g. open the event editor,
@@ -123,6 +141,11 @@ class KOEventView : public KOrg::BaseView
 
   protected:
     Incidence *mCurrentIncidence;  // Incidence selected e.g. for a context menu
+
+  private:
+    bool mTypeAhead;
+    QObject *mTypeAheadReceiver;
+    QList<QEvent*> mTypeAheadEvents;
 };
 
 #endif

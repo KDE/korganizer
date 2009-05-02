@@ -227,12 +227,12 @@ KOEventEditor *KODialogManager::getEventEditor()
   return eventEditor;
 }
 
-void KODialogManager::connectTypeAhead( KOEventEditor *editor, KOrg::AgendaView *agenda )
+void KODialogManager::connectTypeAhead( KOEventEditor *editor, KOEventView *view )
 {
-  if ( editor && agenda ) {
-    agenda->setTypeAheadReceiver( editor->typeAheadReceiver() );
+  if ( editor && view ) {
+    view->setTypeAheadReceiver( editor->typeAheadReceiver() );
     connect( editor, SIGNAL(focusReceivedSignal()),
-             agenda, SLOT(finishTypeAhead()) );
+             view, SLOT(finishTypeAhead()) );
   }
 }
 

@@ -1581,18 +1581,6 @@ void KOAgendaView::deleteSelectedDateTime()
   mTimeSpanInAllDay = false;
 }
 
-void KOAgendaView::setTypeAheadReceiver( QObject *o )
-{
-  mAgenda->setTypeAheadReceiver( o );
-  mAllDayAgenda->setTypeAheadReceiver( o );
-}
-
-void KOAgendaView::finishTypeAhead()
-{
-  mAgenda->finishTypeAhead();
-  mAllDayAgenda->finishTypeAhead();
-}
-
 void KOAgendaView::removeIncidence( Incidence *incidence )
 {
   mAgenda->removeIncidence( incidence );

@@ -91,6 +91,7 @@ class MonthView : public KOEventView
 
     virtual void wheelEvent( QWheelEvent *event );
     virtual void keyPressEvent( QKeyEvent *event );
+    virtual void keyReleaseEvent( QKeyEvent *event );
 
   private slots:
     // Compute and update the whole view

@@ -298,12 +298,7 @@ void KOAgenda::init()
   } else {
     mMarcusBains = new MarcusBains( this );
     addChild( mMarcusBains );
-  }
-
-  mTypeAhead = false;
-  mTypeAheadReceiver = 0;
-
-  mReturnPressed = false;
+  }  
 }
 
 void KOAgenda::clear()
@@ -469,84 +464,6 @@ bool KOAgenda::eventFilter_drag( QObject *object, QDropEvent *de )
   return false;
 }
 
-bool KOAgenda::eventFilter_key( QObject *, QKeyEvent *ke )
-{
-  // kDebug() << ke->type();
-
-  // If Return is pressed bring up an editor for the current selected time span.
-  if ( ke->key() == Qt::Key_Return ) {
-    if ( ke->type() == QEvent::KeyPress ) {
-      mReturnPressed = true;
-    } else if ( ke->type() == QEvent::KeyRelease ) {
-      if ( mReturnPressed ) {
-        emitNewEventForSelection();
-        mReturnPressed = false;
-        return true;
-      } else {
-        mReturnPressed = false;
-      }
-    }
-  }
-
-  // Ignore all input that does not produce any output
-  if ( ke->text().isEmpty() || ( ke->modifiers() & Qt::ControlModifier ) ) {
-    return false;
-  }
-
-  if ( ke->type() == QEvent::KeyPress ) {
-    switch ( ke->key() ) {
-    case Qt::Key_Escape:
-    case Qt::Key_Return:
-    case Qt::Key_Enter:
-    case Qt::Key_Tab:
-    case Qt::Key_Backtab:
-    case Qt::Key_Left:
-    case Qt::Key_Right:
-    case Qt::Key_Up:
-    case Qt::Key_Down:
-    case Qt::Key_Backspace:
-    case Qt::Key_Delete:
-    case Qt::Key_PageUp:
-    case Qt::Key_PageDown:
-    case Qt::Key_Home:
-    case Qt::Key_End:
-    case Qt::Key_Control:
-    case Qt::Key_Meta:
-    case Qt::Key_Alt:
-      break;
-    default:
-      mTypeAheadEvents.append( new QKeyEvent( ke->type(), ke->key(),
-                                              ke->modifiers(),
-                                              ke->text(), ke->isAutoRepeat(),
-                                              ke->count() ) );
-      if ( !mTypeAhead ) {
-        mTypeAhead = true;
-        emitNewEventForSelection();
-      }
-      return true;
-    }
-  }
-  return false;
-}
-
-void KOAgenda::emitNewEventForSelection()
-{
-  emit newEventSignal();
-}
-
-void KOAgenda::finishTypeAhead()
-{
-//  kDebug();
-  if ( typeAheadReceiver() ) {
-    foreach ( QEvent *e, mTypeAheadEvents ) {
-      QApplication::sendEvent( typeAheadReceiver(), e );
-    }
-  }
-  qDeleteAll( mTypeAheadEvents );
-  mTypeAheadEvents.clear();
-  mTypeAhead = false;
-}
-
 #ifndef QT_NO_WHEELEVENT
 bool KOAgenda::eventFilter_wheel ( QObject *object, QWheelEvent *e )
 {
@@ -580,6 +497,12 @@ bool KOAgenda::eventFilter_wheel ( QObject *object, QWheelEvent *e )
   return accepted;
 }
 #endif
+
+bool KOAgenda::eventFilter_key( QObject *, QKeyEvent *ke )
+{
+  return mEventView->processKeyEvent( ke );
+}
+
 bool KOAgenda::eventFilter_mouse( QObject *object, QMouseEvent *me )
 {
   QPoint viewportPos;
@@ -796,7 +719,7 @@ void KOAgenda::endSelectAction( const QPoint &currentPos )
   if ( KOPrefs::instance()->mSelectionStartsEditor ) {
     if ( ( mSelectionStartPoint - currentPos ).manhattanLength() >
          QApplication::startDragDistance() ) {
-       emitNewEventForSelection();
+       emit newEventSignal();
     }
   }
 }
@@ -2043,14 +1966,5 @@ void KOAgenda::contentsMousePressEvent ( QMouseEvent *event )
   Q3ScrollView::contentsMousePressEvent( event );
 }
 
-void KOAgenda::setTypeAheadReceiver( QObject *o )
-{
-  mTypeAheadReceiver = o;
-}
-
-QObject *KOAgenda::typeAheadReceiver() const
-{
-  return mTypeAheadReceiver;
-}
 
 #include "koagenda.moc"

@@ -139,8 +139,6 @@ class KOAgendaView : public KOrg::AgendaView, public KCal::Calendar::CalendarObs
     /** returns if only a single cell is selected, or a range of cells */
     bool selectedIsSingleCell();
 
-    void setTypeAheadReceiver( QObject * );
-
     /** Show only incidences from the given resource. */
     void setResource( KCal::ResourceCalendar *res, const QString &subResource = QString() );
 
@@ -171,8 +169,6 @@ class KOAgendaView : public KOrg::AgendaView, public KCal::Calendar::CalendarObs
     void writeSettings( KConfig * );
 
     void setContentsPos( int y );
-
-    void finishTypeAhead();
 
     /** reschedule the todo  to the given x- and y- coordinates.
         Third parameter determines all-day (no time specified) */

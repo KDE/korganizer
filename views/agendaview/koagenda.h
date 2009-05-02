@@ -147,10 +147,6 @@ class KOAgenda : public Q3ScrollView
     void setDateList( const DateList &selectedDates );
     DateList dateList() const;
 
-    void setTypeAheadReceiver( QObject * );
-    QObject *typeAheadReceiver() const;
-    void finishTypeAhead();
-
     void setCalendar( Calendar *cal )
     { mCalendar = cal; }
     void setIncidenceChanger( IncidenceChangerBase *changer )
@@ -398,10 +394,6 @@ class KOAgenda : public Q3ScrollView
 
     int mOldLowerScrollValue;
     int mOldUpperScrollValue;
-
-    bool mTypeAhead;
-    QObject *mTypeAheadReceiver;
-    QList<QEvent*> mTypeAheadEvents;
 
     bool mReturnPressed;
     KOrg::IncidenceChangerBase *mChanger;

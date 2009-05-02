@@ -30,10 +30,7 @@ class AgendaView : public KOEventView
   public:
     explicit AgendaView( Calendar *cal, QWidget *parent = 0 );
 
-    virtual void setTypeAheadReceiver( QObject * ) = 0;
-
   public slots:
-    virtual void finishTypeAhead() = 0;
     virtual void setUpdateNeeded() = 0;
 };
 

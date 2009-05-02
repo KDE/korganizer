@@ -29,6 +29,8 @@
 #include "koeventpopupmenu.h"
 #include "komessagebox.h"
 
+#include <QApplication>
+#include <QKeyEvent>
 #include <KCal/Incidence>
 #include <KXMLGUIClient>
 #include <KXMLGUIFactory>
@@ -40,6 +42,8 @@
 KOEventView::KOEventView( Calendar *cal, QWidget *parent )
   : KOrg::BaseView( cal, parent )
 {
+  mTypeAhead = false;
+  mTypeAheadReceiver = 0;
 }
 
 //---------------------------------------------------------------------------
@@ -159,7 +163,8 @@ void KOEventView::defaultAction( Incidence *incidence )
 }
 
 //---------------------------------------------------------------------------
-int KOEventView::showMoveRecurDialog( Incidence *inc, const QDate &date ) {
+int KOEventView::showMoveRecurDialog( Incidence *inc, const QDate &date )
+{
 
   int answer = KMessageBox::Ok;
   KGuiItem itemFuture( i18n( "Also &Future Items" ) );
@@ -194,6 +199,69 @@ int KOEventView::showMoveRecurDialog( Incidence *inc, const QDate &date ) {
   }
 
   return answer;
+}
+
+bool KOEventView::processKeyEvent( QKeyEvent *ke )
+{
+  // If Return is pressed bring up an editor for the current selected time span.
+  if ( ke->key() == Qt::Key_Return && ke->type() == QEvent::KeyRelease ) {
+    emit newEventSignal();
+    return true;
+  }
+
+  // Ignore all input that does not produce any output
+  if ( ke->text().isEmpty() || ( ke->modifiers() & Qt::ControlModifier ) ) {
+    return false;
+  }
+
+  if ( ke->type() == QEvent::KeyPress ) {
+    switch ( ke->key() ) {
+    case Qt::Key_Escape:
+    case Qt::Key_Return:
+    case Qt::Key_Enter:
+    case Qt::Key_Tab:
+    case Qt::Key_Backtab:
+    case Qt::Key_Left:
+    case Qt::Key_Right:
+    case Qt::Key_Up:
+    case Qt::Key_Down:
+    case Qt::Key_Backspace:
+    case Qt::Key_Delete:
+    case Qt::Key_PageUp:
+    case Qt::Key_PageDown:
+    case Qt::Key_Home:
+    case Qt::Key_End:
+    case Qt::Key_Control:
+    case Qt::Key_Meta:
+    case Qt::Key_Alt:
+      break;
+    default:
+      mTypeAheadEvents.append( new QKeyEvent( ke->type(),
+                                              ke->key(),
+                                              ke->modifiers(),
+                                              ke->text(),
+                                              ke->isAutoRepeat(),
+                                              ke->count() ) );
+      if ( !mTypeAhead ) {
+        mTypeAhead = true;
+        emit newEventSignal();
+      }
+      return true;
+    }
+  }
+  return false;
+}
+
+void KOEventView::finishTypeAhead()
+{
+  if ( mTypeAheadReceiver ) {
+    foreach ( QEvent *e, mTypeAheadEvents ) {
+      QApplication::sendEvent( mTypeAheadReceiver, e );
+    }
+  }
+  qDeleteAll( mTypeAheadEvents );
+  mTypeAheadEvents.clear();
+  mTypeAhead = false;
 }
 
 #include "koeventview.moc"

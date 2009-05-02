@@ -340,20 +340,6 @@ void MultiAgendaView::slotClearTimeSpanSelection()
   }
 }
 
-void MultiAgendaView::setTypeAheadReceiver( QObject *o )
-{
-  foreach ( KOAgendaView *agenda, mAgendaViews ) {
-    agenda->setTypeAheadReceiver( o );
-  }
-}
-
-void MultiAgendaView::finishTypeAhead()
-{
-  foreach ( KOAgendaView *agenda, mAgendaViews ) {
-    agenda->finishTypeAhead();
-  }
-}
-
 void MultiAgendaView::addView( const QString &label, KCal::ResourceCalendar *res,
                                const QString &subResource )
 {

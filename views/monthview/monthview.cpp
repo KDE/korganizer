@@ -201,6 +201,17 @@ void MonthView::keyPressEvent( QKeyEvent *event )
   } else if ( event->key() == Qt::Key_PageDown ) {
     moveStartDate( 0, 1 );
     event->accept();
+  } else if ( processKeyEvent( event ) ) {
+    event->accept();
+  } else {
+    event->ignore();
+  }
+}
+
+void MonthView::keyReleaseEvent( QKeyEvent *event )
+{
+  if ( processKeyEvent( event ) ) {
+    event->accept();
   } else {
     event->ignore();
   }
