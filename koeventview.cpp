@@ -42,6 +42,7 @@
 KOEventView::KOEventView( Calendar *cal, QWidget *parent )
   : KOrg::BaseView( cal, parent )
 {
+  mReturnPressed = false;
   mTypeAhead = false;
   mTypeAheadReceiver = 0;
 }
@@ -204,9 +205,18 @@ int KOEventView::showMoveRecurDialog( Incidence *inc, const QDate &date )
 bool KOEventView::processKeyEvent( QKeyEvent *ke )
 {
   // If Return is pressed bring up an editor for the current selected time span.
-  if ( ke->key() == Qt::Key_Return && ke->type() == QEvent::KeyRelease ) {
-    emit newEventSignal();
-    return true;
+  if ( ke->key() == Qt::Key_Return ) {
+    if ( ke->type() == QEvent::KeyPress ) {
+      mReturnPressed = true;
+    } else if ( ke->type() == QEvent::KeyRelease ) {
+      if ( mReturnPressed ) {
+        emit newEventSignal();
+        mReturnPressed = false;
+        return true;
+      } else {
+        mReturnPressed = false;
+      }
+    }
   }
 
   // Ignore all input that does not produce any output

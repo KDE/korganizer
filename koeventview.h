@@ -143,6 +143,13 @@ class KOEventView : public KOrg::BaseView
     Incidence *mCurrentIncidence;  // Incidence selected e.g. for a context menu
 
   private:
+
+    /* When we receive a QEvent with a key_Return release
+     * we will only show a new event dialog if we previously received a
+     * key_Return press, otherwise a new event dialog appears when
+     * you hit return in some yes/no dialog */
+    bool mReturnPressed;
+
     bool mTypeAhead;
     QObject *mTypeAheadReceiver;
     QList<QEvent*> mTypeAheadEvents;
