@@ -51,7 +51,7 @@ p, li { white-space: pre-wrap; }
       <item>
        <widget class="QCheckBox" name="mShowSubitemsNotes" >
         <property name="text" >
-         <string>&amp;Notes, Subitems</string>
+         <string>&amp;Notes, subitems</string>
         </property>
        </widget>
       </item>
@@ -71,7 +71,7 @@ p, li { white-space: pre-wrap; }
       <string>Draw note lines in empty area</string>
      </property>
      <property name="text" >
-      <string>Show Note &amp;Lines</string>
+      <string>Show note &amp;lines</string>
      </property>
     </widget>
    </item>

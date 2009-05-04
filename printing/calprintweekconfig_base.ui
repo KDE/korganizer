@@ -312,7 +312,7 @@ p, li { white-space: pre-wrap; }
       <string>Check this option to include the more detailed description for each event.</string>
      </property>
      <property name="text" >
-      <string>Include &amp;Descriptions</string>
+      <string>Include &amp;descriptions</string>
      </property>
     </widget>
    </item>
@@ -322,7 +322,7 @@ p, li { white-space: pre-wrap; }
       <string>Check this option to draw note lines.</string>
      </property>
      <property name="text" >
-      <string>Show Note &amp;Lines in Filofax layout</string>
+      <string>Show note &amp;lines in Filofax layout</string>
      </property>
     </widget>
    </item>
