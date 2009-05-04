@@ -38,7 +38,7 @@
 #include <KToolInvocation>
 
 AlarmDockWindow::AlarmDockWindow()
-  : KSystemTrayIcon( 0 )
+  : KNotificationItem( 0 )
 {
   // Read the autostart status from the config file
   KConfigGroup config( KGlobal::config(), "General" );
@@ -47,15 +47,16 @@ AlarmDockWindow::AlarmDockWindow()
   bool alarmsEnabled = config.readEntry( "Enabled", true );
 
   mName = i18nc( "@title:window", "KOrganizer Reminder Daemon" );
-  setToolTip( mName );
+  setToolTipTitle( mName );
+  setToolTipIcon( "korgac" );
 
   // Set up icons
   KIconLoader::global()->addAppDir( "korgac" );
   KIconLoader::global()->addAppDir( "kdepim" );
   QString iconPath = KIconLoader::global()->iconPath( "korgac", KIconLoader::Panel );
-  mIconEnabled  = loadIcon( iconPath );
+  QIcon mIconEnabled  = QIcon(iconPath);
   if ( mIconEnabled.isNull() ) {
-    KMessageBox::sorry( parentWidget(),
+    KMessageBox::sorry( associatedWidget(),
                         i18nc( "@info", "Cannot load system tray icon." ) );
   } else {
     KIconLoader loader;
@@ -65,7 +66,11 @@ AlarmDockWindow::AlarmDockWindow()
     mIconDisabled = QIcon( QPixmap::fromImage( iconDisabled ) );
   }
 
-  setIcon( alarmsEnabled ? mIconEnabled : mIconDisabled );
+  if (alarmsEnabled){
+    setIcon( "korgac" );
+  }else{
+    setImage( mIconDisabled.pixmap(22, 22) );
+  }
 
   // Set up the context menu
   mSuspendAll =
@@ -103,10 +108,6 @@ AlarmDockWindow::AlarmDockWindow()
     connect( quit, SIGNAL(activated()), SLOT(slotQuit()) );
   }
 
-  connect( this, SIGNAL(activated( QSystemTrayIcon::ActivationReason )),
-           SLOT(slotActivated( QSystemTrayIcon::ActivationReason )) );
-
-  setToolTip( mName );
   mAutostartSet = autostartSet;
 }
 
@@ -120,11 +121,11 @@ void AlarmDockWindow::slotUpdate( int reminders )
   mSuspendAll->setEnabled( actif );
   mDismissAll->setEnabled( actif );
   if ( actif ) {
-    setToolTip( i18ncp( "@info:tooltip",
+    setToolTip( "korgac", mName, i18ncp( "@info:tooltip",
                         "There is 1 active reminder.",
                         "There are %1 active reminders.", reminders ) );
   } else {
-    setToolTip( i18nc( "@info:tooltip", "No active reminders." ) );
+    setToolTip( "korgac", mName, i18nc( "@info:tooltip", "No active reminders." ) );
   }
 }
 
@@ -132,7 +133,11 @@ void AlarmDockWindow::toggleAlarmsEnabled( bool checked )
 {
   kDebug();
 
-  setIcon( checked ? mIconEnabled : mIconDisabled );
+  if (checked){
+    setIcon( "korgac" );
+  }else{
+    setImage( mIconDisabled.pixmap(22, 22) );
+  }
 
   KConfigGroup config( KGlobal::config(), "General" );
   config.writeEntry( "Enabled", checked );
@@ -163,18 +168,18 @@ void AlarmDockWindow::enableAutostart( bool enable )
   config.sync();
 }
 
-void AlarmDockWindow::slotActivated( QSystemTrayIcon::ActivationReason reason )
+void AlarmDockWindow::activate(const QPoint &pos)
 {
-  if ( reason == QSystemTrayIcon::Trigger ) {
+    Q_UNUSED(pos)
+
     KToolInvocation::startServiceByDesktopName( "korganizer", QString() );
-  }
 }
 
 void AlarmDockWindow::slotQuit()
 {
   if ( mAutostartSet == true ) {
     int result = KMessageBox::questionYesNo(
-      parentWidget(),
+      associatedWidget(),
       i18nc( "@info",
              "Do you want to quit the KOrganizer reminder daemon?<nl/>"
              "<note> you will not get calendar reminders unless the daemon is running.</note>" ),
@@ -185,7 +190,7 @@ void AlarmDockWindow::slotQuit()
     }
   } else {
     int result = KMessageBox::questionYesNoCancel(
-      parentWidget(),
+      associatedWidget(),
       i18nc( "@info",
              "Do you want to start the KOrganizer reminder daemon at login?<nl/>"
              "<note> you will not get calendar reminders unless the daemon is running.</note>" ),

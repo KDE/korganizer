@@ -1,6 +1,8 @@
 remove_definitions(-DKDE_DEFAULT_DEBUG_AREA=5850) #remove korganizer debug area
 add_definitions(-DKDE_DEFAULT_DEBUG_AREA=5890)
 
+find_package(LibKNotificationItem-1 REQUIRED)
+
 add_subdirectory( pixmaps ) 
 add_subdirectory( tests ) 
 
@@ -27,7 +29,7 @@ kde4_add_app_icon(korgac_SRCS "${KDE4_ICON_DIR}/oxygen/*/apps/korgac.png")
 
 kde4_add_executable(korgac ${korgac_SRCS})
 
-target_link_libraries(korgac  ${KDE4_KDEUI_LIBS} ${KDE4_PHONON_LIBS} ${KDE4_KCAL_LIBS} korganizer_eventviewer)
+target_link_libraries(korgac knotificationitem-1 ${KDE4_KDEUI_LIBS} ${KDE4_PHONON_LIBS} ${KDE4_KCAL_LIBS} korganizer_eventviewer)
 
 install(TARGETS korgac  ${INSTALL_TARGETS_DEFAULT_ARGS} )
 

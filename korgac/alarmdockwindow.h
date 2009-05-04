@@ -25,11 +25,14 @@
 #ifndef ALARMDOCKWINDOW_H
 #define ALARMDOCKWINDOW_H
 
-#include <KSystemTrayIcon>
+#include <knotificationitem-1/knotificationitem.h>
 
+#include <QAction>
 #include <QIcon>
 
-class AlarmDockWindow : public KSystemTrayIcon
+using namespace Experimental;
+
+class AlarmDockWindow : public KNotificationItem
 {
   Q_OBJECT
   public:
@@ -49,13 +52,12 @@ class AlarmDockWindow : public KSystemTrayIcon
     void dismissAllSignal();
 
   protected slots:
-    void slotActivated( QSystemTrayIcon::ActivationReason reason );
+    virtual void activate(const QPoint &pos);
     void slotQuit();
     void slotSuspendAll();
     void slotDismissAll();
 
   private:
-    QIcon mIconEnabled;
     QIcon mIconDisabled;
     QString mName;
 

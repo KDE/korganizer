@@ -51,11 +51,14 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
   bool showDock = generalGroup.readEntry( "ShowReminderDaemon", true );
 
   mDocker = new AlarmDockWindow;
+  //TODO: what I should do here?
+/*
   if ( showDock ) {
     mDocker->show();
   } else {
     mDocker->hide();
   }
+*/
 
   connect( this, SIGNAL(reminderCount(int)), mDocker, SLOT(slotUpdate(int)) );
   connect( mDocker, SIGNAL(quitSignal()), SLOT(slotQuit()) );
@@ -214,14 +217,16 @@ void KOAlarmClient::debugShowDialog()
 //   showAlarmDialog();
 }
 
+//TODO: what I should do here?
 void KOAlarmClient::hide()
 {
-  mDocker->hide();
+  //mDocker->hide();
 }
 
+//TODO: what I should do here?
 void KOAlarmClient::show()
 {
-  mDocker->show();
+  //mDocker->show();
 }
 
 #include "koalarmclient.moc"
