@@ -140,6 +140,9 @@ class KOTodoView : public BaseView
     QMenu *mPercentageCompletedPopupMenu;
     QList<QAction*> mItemPopupMenuItemOnlyEntries;
 
+    QAction *mMakeTodoIndependent;
+    QAction *mMakeSubtodosIndependent;
+
     QMap<QAction *,int> mPercentage;
     QMap<QAction *,int> mPriority;
     QMap<QAction *,QString> mCategory;

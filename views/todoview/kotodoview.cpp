@@ -173,11 +173,15 @@ KOTodoView::KOTodoView( Calendar *cal, QWidget *parent )
   mItemPopupMenuItemOnlyEntries << mItemPopupMenu->addAction(
     i18n( "New Su&b-to-do..." ), this, SLOT(newSubTodo()) );
 
-  mItemPopupMenuItemOnlyEntries << mItemPopupMenu->addAction(
-    i18n( "&Make this To-do Independent" ), this, SIGNAL(unSubTodoSignal()) );
+  mMakeTodoIndependent = mItemPopupMenu->addAction( i18n( "&Make this To-do Independent" ),
+                                                    this, SIGNAL(unSubTodoSignal()) );
 
-  mItemPopupMenuItemOnlyEntries << mItemPopupMenu->addAction(
-    i18n( "Make all Sub-to-dos &Independent" ), this, SIGNAL(unAllSubTodoSignal()) );
+  mMakeSubtodosIndependent = mItemPopupMenu->addAction( i18n( "Make all Sub-to-dos &Independent" ),
+                                                        this, SIGNAL(unAllSubTodoSignal()) );
+
+  mItemPopupMenuItemOnlyEntries << mMakeTodoIndependent;
+
+  mItemPopupMenuItemOnlyEntries << mMakeSubtodosIndependent;
 
   mItemPopupMenu->addSeparator();
 
@@ -426,6 +430,12 @@ void KOTodoView::contextMenu( const QPoint &pos )
   mMovePopupMenu->setEnabled( enable );
 
   if ( enable ) {
+    Incidence::List incidences = selectedIncidences();
+    if ( !incidences.isEmpty() ) {
+      mMakeSubtodosIndependent->setEnabled( !incidences[0]->relations().isEmpty() );
+      mMakeTodoIndependent->setEnabled( incidences[0]->relatedTo() );
+    }
+
     switch ( mView->indexAt( pos ).column() ) {
     case ePriorityColumn:
       mPriorityPopupMenu->popup( mView->viewport()->mapToGlobal( pos ) );
