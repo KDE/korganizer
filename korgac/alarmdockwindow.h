@@ -25,7 +25,7 @@
 #ifndef ALARMDOCKWINDOW_H
 #define ALARMDOCKWINDOW_H
 
-#include <knotificationitem-1/knotificationitem.h>
+#include <knotificationitem.h>
 
 #include <QAction>
 #include <QIcon>
