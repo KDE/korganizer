@@ -3,8 +3,7 @@ add_definitions(-DKDE_DEFAULT_DEBUG_AREA=5890)
 
 add_subdirectory( pixmaps ) 
 add_subdirectory( tests ) 
-
-include_directories( ${CMAKE_SOURCE_DIR}/korganizer  )
+include_directories( ${CMAKE_SOURCE_DIR}/korganizer ${KNOTIFICATIONITEM_INCLUDE_DIR} )
 
 
 ########### next target ###############
