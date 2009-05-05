@@ -26,7 +26,7 @@ kde4_add_app_icon(korgac_SRCS "${KDE4_ICON_DIR}/oxygen/*/apps/korgac.png")
 
 kde4_add_executable(korgac ${korgac_SRCS})
 
-target_link_libraries(korgac knotificationitem-1 ${KDE4_KDEUI_LIBS} ${KDE4_PHONON_LIBS} ${KDE4_KCAL_LIBS} korganizer_eventviewer)
+target_link_libraries(korgac ${KNOTIFICATIONITEM_LIBRARIES} ${KDE4_KDEUI_LIBS} ${KDE4_PHONON_LIBS} ${KDE4_KCAL_LIBS} korganizer_eventviewer)
 
 install(TARGETS korgac  ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
