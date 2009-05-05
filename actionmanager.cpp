@@ -287,7 +287,7 @@ void ActionManager::initActions()
   mACollection->addAction( "import_icalendar", mergeAction );
   connect( mergeAction, SIGNAL(triggered(bool)), SLOT(file_merge()) );
 
-  KAction *importAction = new KAction( i18n( "&Import From UNIX Ical tool" ), this );
+  KAction *importAction = new KAction( i18n( "&Import From UNIX Ical Tool" ), this );
   importAction->setHelpText(
     i18n( "Import a calendar in another format" ) );
   importAction->setWhatsThis(

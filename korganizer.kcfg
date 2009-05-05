@@ -396,7 +396,7 @@
     </entry>
 
     <entry type="Color" key="Agenda MarcusBainsLine Line Color">
-      <label>Agenda View current-time line color</label>
+      <label>Agenda view current-time line color</label>
       <whatsthis>Select a color to use for the current-time (Marcus Bains) line.</whatsthis>
       <tooltip>Use this color for the Agenda View current-time (Marcus Bains) line</tooltip>
       <default>255,0,0</default>
