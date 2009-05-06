@@ -810,13 +810,9 @@ void ResourceView::slotItemClicked( QTreeWidgetItem *i, int )
 void ResourceView::currentChanged()
 {
   ResourceItem *i = currentItem();
-  if ( !i || i->isSubresource() ) {
-    mDeleteButton->setEnabled( false );
-    mEditButton->setEnabled( false );
-  } else {
-    mDeleteButton->setEnabled( true );
-    mEditButton->setEnabled( true );
-  }
+
+  mDeleteButton->setEnabled( i != 0 );
+  mEditButton->setEnabled( i != 0 );
 }
 
 #include "resourceview.moc"
