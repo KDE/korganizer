@@ -322,7 +322,13 @@ QString KOPrefs::fullName()
     KEMailSettings settings;
     return settings.getSetting( KEMailSettings::RealName );
   } else {
-    return userName();
+    // the username as it might contain commas and other quotable chars.
+    QString tusername = KPIM::quoteNameIfNecessary( userName() );
+
+    QString tname, temail;
+    KPIM::getNameAndMail( tusername, tname, temail ); // ignore return value
+                                                      // which is always false
+    return tname;
   }
 }
 
