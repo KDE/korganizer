@@ -503,10 +503,7 @@ void MonthViewCell::updateCell()
     mHolidayEvent->setSummary( mHolidayString );
     mHolidayEvent->setDtStart( mDate );
     MonthViewItem *item = new MonthViewItem( mHolidayEvent, QDateTime( mDate ), mHolidayString );
-    QPalette pal = mStandardPalette;
-    pal.setColor( QColorGroup::Text, getTextColor( KOPrefs::instance()->holidayColor() ) );
-    pal.setColor( QColorGroup::Background, KOPrefs::instance()->holidayColor() );
-    item->setPalette( pal );
+    item->setPalette( mHolidayPalette );
     mItemList->insertItem( item );
   }
 }
