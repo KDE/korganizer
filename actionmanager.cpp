@@ -1109,6 +1109,10 @@ void ActionManager::exportHTML( HTMLExportSettings *settings )
   if ( !settings || settings->outputFile().isEmpty() ) {
     return;
   }
+  if ( QFileInfo( settings->outputFile() ).exists() ) {
+    if(KMessageBox::questionYesNo( dialogParent(), i18n("Do you want to overwrite file \"%1\"", settings->outputFile()) ) == KMessageBox::No)
+      return;
+  }
   settings->setEMail( KOPrefs::instance()->email() );
   settings->setName( KOPrefs::instance()->fullName() );
 
