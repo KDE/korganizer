@@ -168,9 +168,8 @@ void PublishDialog::updateInput()
   if (!item) return;
   mUI.mNameLineEdit->setEnabled( true );
   mUI.mEmailLineEdit->setEnabled( true );
-  QString mail = item->text( 1 );
   mUI.mNameLineEdit->setText( item->text( 0 ) );
-  mUI.mEmailLineEdit->setText( mail );
+  mUI.mEmailLineEdit->setText( item->text( 1 ) );
 }
 
 #include "publishdialog.moc"
