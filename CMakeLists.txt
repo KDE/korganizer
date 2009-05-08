@@ -80,7 +80,7 @@ endif(NOT KORG_NOPRINTER)
 
   kde4_add_executable(korganizer ${korganizer_SRCS})
 
-  target_link_libraries(korganizer ${KDE4_KDEUI_LIBS} ${KDE4_KDE3SUPPORT_LIBRARY} ${KDE4_KPARTS_LIBRARY} ${KDE4_KCAL_LIBS} ${KDE4_KHOLIDAYS_LIBS} kdepim korganizerprivate korganizer_core korganizer_calendar korganizer_interfaces)
+  target_link_libraries(korganizer ${KDE4_KDEUI_LIBS} ${KDE4_KDE3SUPPORT_LIBRARY} ${KDE4_KPARTS_LIBRARY} ${KDEPIMLIBS_KCAL_LIBS} ${KDEPIMLIBS_KHOLIDAYS_LIBS} kdepim korganizerprivate korganizer_core korganizer_calendar korganizer_interfaces)
 
   install(TARGETS korganizer ${INSTALL_TARGETS_DEFAULT_ARGS})
 
@@ -91,7 +91,7 @@ endif(NOT KORG_NOPRINTER)
 
   kde4_add_plugin(kcm_korganizer ${kcm_korganizer_PART_SRCS})
 
-  target_link_libraries(kcm_korganizer ${QT_QT3SUPPORT_LIBRARY} ${KDE4_KDEUI_LIBS} ${KDE4_KCAL_LIBS} ${KDE4_KHOLIDAYS_LIBS} korganizerprivate kdepim korganizer_core korganizer_calendar)
+  target_link_libraries(kcm_korganizer ${QT_QT3SUPPORT_LIBRARY} ${KDE4_KDEUI_LIBS} ${KDEPIMLIBS_KCAL_LIBS} ${KDEPIMLIBS_KHOLIDAYS_LIBS} korganizerprivate kdepim korganizer_core korganizer_calendar)
 
   install(TARGETS kcm_korganizer  DESTINATION ${PLUGIN_INSTALL_DIR})
 
@@ -102,7 +102,7 @@ endif(NOT KORG_NOPRINTER)
 
   kde4_add_plugin(korganizerpart ${korganizerpart_PART_SRCS})
 
-  target_link_libraries(korganizerpart ${KDE4_KDECORE_LIBS} ${KDE4_KPARTS_LIBS} ${KDE4_KCAL_LIBS} korganizerprivate korganizer_core korganizer_calendar korganizer_interfaces)
+  target_link_libraries(korganizerpart ${KDE4_KDECORE_LIBS} ${KDE4_KPARTS_LIBS} ${KDEPIMLIBS_KCAL_LIBS} korganizerprivate korganizer_core korganizer_calendar korganizer_interfaces)
 
   install(TARGETS korganizerpart  DESTINATION ${PLUGIN_INSTALL_DIR})
 
@@ -120,7 +120,7 @@ endif(NOT KORG_NOPRINTER)
   kde4_add_library(korganizer_eventviewer SHARED ${korganizer_eventviewer_LIB_SRCS})
   add_dependencies(korganizer_eventviewer kmail_xml)
 
-  target_link_libraries(korganizer_eventviewer ${KDE4_KPARTS_LIBS} ${KDE4_KCAL_LIBS} kdepim)
+  target_link_libraries(korganizer_eventviewer ${KDE4_KPARTS_LIBS} ${KDEPIMLIBS_KCAL_LIBS} kdepim)
 
   set_target_properties(korganizer_eventviewer PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
   install(TARGETS korganizer_eventviewer ${INSTALL_TARGETS_DEFAULT_ARGS})
@@ -132,7 +132,7 @@ endif(NOT KORG_NOPRINTER)
 
   kde4_add_library(korganizer_calendar SHARED ${korganizer_calendar_LIB_SRCS})
 
-  target_link_libraries(korganizer_calendar ${KDE4_KPARTS_LIBS} ${KDE4_KCAL_LIBS} ${KDE4_KDE3SUPPORT_LIBS} kdepim)
+  target_link_libraries(korganizer_calendar ${KDE4_KPARTS_LIBS} ${KDEPIMLIBS_KCAL_LIBS} ${KDE4_KDE3SUPPORT_LIBS} kdepim)
 
   set_target_properties(korganizer_calendar PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
   install(TARGETS korganizer_calendar ${INSTALL_TARGETS_DEFAULT_ARGS})
@@ -254,8 +254,8 @@ endif(NOT KORG_NOPRINTER)
 
   target_link_libraries(korganizerprivate
     ${KDE4_KNEWSTUFF2_LIBS} ${KDE4_KUTILS_LIBS}  ${KDE4_KDE3SUPPORT_LIBS} ${ZLIB_LIBRARY}
-    ${KDE4_KCAL_LIBS} ${KDE4_KABC_LIBS} ${KDE4_KPIMIDENTITIES_LIBRARY} ${KDE4_KMIME_LIBRARY}
-    ${KDE4_KHOLIDAYS_LIBS}
+    ${KDEPIMLIBS_KCAL_LIBS} ${KDEPIMLIBS_KABC_LIBS} ${KDEPIMLIBS_KPIMIDENTITIES_LIBRARY} ${KDE4_KMIME_LIBRARY}
+    ${KDEPIMLIBS_KHOLIDAYS_LIBS}
     korganizer_core korganizer_eventviewer korganizer_calendar korganizer_interfaces korg_stdprinting
     kdepim
   )

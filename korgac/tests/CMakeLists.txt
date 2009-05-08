@@ -12,5 +12,5 @@ QT4_ADD_DBUS_INTERFACE( testalarmdlg_SRCS ${korganizer_xml} korganizer_interface
 
 kde4_add_executable(testalarmdlg TEST ${testalarmdlg_SRCS})
 
-target_link_libraries(testalarmdlg  ${KDE4_KDEUI_LIBS} ${KDE4_PHONON_LIBS} ${KDE4_KCAL_LIBS} korganizer_eventviewer)
+target_link_libraries(testalarmdlg  ${KDE4_KDEUI_LIBS} ${KDE4_PHONON_LIBS} ${KDEPIMLIBS_KCAL_LIBS} korganizer_eventviewer)
 
