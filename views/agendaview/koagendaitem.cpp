@@ -731,6 +731,11 @@ void KOAgendaItem::paintTodoIcon( QPainter *p, int &x, int y, int ft )
                                 QTime( 0, 0 ),
                                 KOPrefs::instance()->timeSpec() );
 
+  if ( !todo->allDay() ) {
+    agendaItemDateTime.setTime( todo->dtDue().toTimeSpec(
+                                      KOPrefs::instance()->timeSpec() ).time() );
+  }
+
   bool isCompleted = todo->isCompleted() ||
                      ( todo->recurs() &&
                        agendaItemDateTime < todo->dtDue( false ) );
