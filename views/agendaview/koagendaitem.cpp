@@ -725,9 +725,18 @@ void KOAgendaItem::paintTodoIcon( QPainter *p, int &x, int y, int ft )
     return;
   }
 
-  bool b = ( static_cast<Todo *>( mIncidence ) )->isCompleted();
-  conditionalPaint( p, !b, x, y, ft, *todoPxmp );
-  conditionalPaint( p, b, x, y, ft, *completedPxmp );
+  Todo *todo = static_cast<Todo *>( mIncidence );
+
+  KDateTime agendaItemDateTime( mDate,
+                                QTime( 0, 0 ),
+                                KOPrefs::instance()->timeSpec() );
+
+  bool isCompleted = todo->isCompleted() ||
+                     ( todo->recurs() &&
+                       agendaItemDateTime < todo->dtDue( false ) );
+
+  conditionalPaint( p, !isCompleted, x, y, ft, *todoPxmp );
+  conditionalPaint( p, isCompleted, x, y, ft, *completedPxmp );
 }
 
 void KOAgendaItem::paintIcons( QPainter *p, int &x, int y, int ft )
