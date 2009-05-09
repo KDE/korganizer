@@ -58,6 +58,8 @@ class AlarmDockWindow : public KNotificationItem
     void slotDismissAll();
 
   private:
+    void changeSystrayIcon( bool alarmsEnabled );
+
     QIcon mIconDisabled;
     QString mName;
 

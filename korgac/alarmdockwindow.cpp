@@ -66,11 +66,7 @@ AlarmDockWindow::AlarmDockWindow()
     mIconDisabled = QIcon( QPixmap::fromImage( iconDisabled ) );
   }
 
-  if ( alarmsEnabled ) {
-    setIcon( "korgac" );
-  } else {
-    setImage( mIconDisabled.pixmap( 22, 22 ) );
-  }
+  changeSystrayIcon( alarmsEnabled );
 
   // Set up the context menu
   mSuspendAll =
@@ -131,13 +127,7 @@ void AlarmDockWindow::slotUpdate( int reminders )
 
 void AlarmDockWindow::toggleAlarmsEnabled( bool checked )
 {
-  kDebug();
-
-  if ( checked ) {
-    setIcon( "korgac" );
-  }else{
-    setImage( mIconDisabled.pixmap( 22, 22 ) );
-  }
+  changeSystrayIcon( checked );
 
   KConfigGroup config( KGlobal::config(), "General" );
   config.writeEntry( "Enabled", checked );
@@ -209,6 +199,15 @@ void AlarmDockWindow::slotQuit()
     if ( result != KMessageBox::Cancel ) {
       emit quitSignal();
     }
+  }
+}
+
+void AlarmDockWindow::changeSystrayIcon( bool alarmsEnabled )
+{
+  if ( alarmsEnabled ) {
+    setIcon( "korgac" );
+  } else {
+    setImage( mIconDisabled.pixmap( 22, 22 ) );
   }
 }
 
