@@ -304,7 +304,7 @@ void KODayMatrix::updateJournals()
   Incidence::List incidences = mCalendar->incidences();
 
   foreach ( Incidence *inc, incidences ) {
-    QDate d = inc->dtStart().date();
+    QDate d = inc->dtStart().toTimeSpec( mCalendar->timeSpec() ).date();
     if ( inc->type() == "Journal" &&
          d >= mDays[0] &&
          d <= mDays[NUMDAYS-1] &&
@@ -343,13 +343,14 @@ void KODayMatrix::updateTodos()
                                             KDateTime( mDays[NUMDAYS-1], mCalendar->timeSpec() ) );
 
           foreach ( const KDateTime &dt, timeDateList ) {
-            if ( !mEvents.contains( dt.date() ) ) {
-              mEvents.append( dt.date() );
+            d = dt.toTimeSpec( mCalendar->timeSpec() ).date();
+            if ( !mEvents.contains( d ) ) {
+              mEvents.append( d );
             }
           }
 
         } else {
-          d = t->dtDue().date();
+          d = t->dtDue().toTimeSpec( mCalendar->timeSpec() ).date();
           if ( d >= mDays[0] && d <= mDays[NUMDAYS-1] && !mEvents.contains( d ) ) {
             mEvents.append( d );
           }
@@ -370,21 +371,24 @@ void KODayMatrix::updateEvents()
     Event *event = *it;
     ushort recurType = event->recurrenceType();
 
+    KDateTime dtStart = event->dtStart().toTimeSpec( mCalendar->timeSpec() );
+    KDateTime dtEnd   = event->dtEnd().toTimeSpec( mCalendar->timeSpec() );
+
     if ( !( recurType == Recurrence::rDaily  && !KOPrefs::instance()->mDailyRecur ) &&
          !( recurType == Recurrence::rWeekly && !KOPrefs::instance()->mWeeklyRecur ) ) {
 
       DateTimeList timeDateList;
       bool isRecurrent = event->recurs();
-      int eventDuration = event->dtStart().daysTo( event->dtEnd() );
+      int eventDuration = dtStart.daysTo( dtEnd );
 
       if ( isRecurrent ) {
         //Its a recurring event, find out in which days it occurs
         timeDateList = event->recurrence()->timesInInterval(
-          *new KDateTime( mDays[0], mCalendar->timeSpec() ),
-          *new KDateTime( mDays[NUMDAYS-1], mCalendar->timeSpec() ) );
+               KDateTime( mDays[0], mCalendar->timeSpec() ),
+               KDateTime( mDays[NUMDAYS-1], mCalendar->timeSpec() ) );
       } else {
-        if ( event->dtStart().date() >= mDays[0] ) {
-          timeDateList.append( event->dtStart() );
+        if ( dtStart.date() >= mDays[0] ) {
+          timeDateList.append( dtStart );
         } else {
           // The event starts in another month (not visible))
           timeDateList.append( KDateTime( mDays[0], mCalendar->timeSpec() ) );
@@ -394,14 +398,14 @@ void KODayMatrix::updateEvents()
       DateTimeList::iterator t;
       for ( t=timeDateList.begin(); t != timeDateList.end(); ++t ) {
         //This could be a multiday event, so iterate from dtStart() to dtEnd()
-        QDate d = t->date();
+        QDate d = t->toTimeSpec( mCalendar->timeSpec() ).date();
         int j   = 0;
 
         QDate occurrenceEnd;
         if ( isRecurrent ) {
           occurrenceEnd = d.addDays( eventDuration );
         } else {
-          occurrenceEnd = event->dtEnd().date();
+          occurrenceEnd = dtEnd.date();
         }
 
         do {

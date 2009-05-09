@@ -324,13 +324,16 @@ void MonthView::reloadIncidences()
       continue;
     }
 
+    KDateTime incDtStart = incidence->dtStart().toTimeSpec( timeSpec );
+    KDateTime incDtEnd   = incidence->dtEnd().toTimeSpec( timeSpec );;
+
     // An event could start before the currently displayed date, so we
     // have to check at least those dates before the start date, which would
     // cause the event to span into the displayed date range.
     int offset = 0;
     Event *event;
     if ( ( event = dynamic_cast<Event *>( incidence ) ) ) {
-      offset = event->dtStart().daysTo( event->dtEnd() );
+      offset = incDtStart.daysTo( incDtEnd );
     }
 
     KDateTime startDateTime( mStartDate.addDays( - offset ), timeSpec );
@@ -350,7 +353,7 @@ void MonthView::reloadIncidences()
           dateToAdd = todo->dtDue();
         }
       } else {
-        dateToAdd = incidence->dtStart();
+        dateToAdd = incDtStart;
       }
 
       if ( dateToAdd >= startDateTime && dateToAdd <= endDateTime ) {
@@ -359,7 +362,9 @@ void MonthView::reloadIncidences()
     }
     DateTimeList::iterator t;
     for ( t = dateTimeList.begin(); t != dateTimeList.end(); ++t ) {
-      MonthItem *manager = new IncidenceMonthItem( mScene, incidence, t->date() );
+      MonthItem *manager = new IncidenceMonthItem( mScene,
+                                                   incidence,
+                                                   t->toTimeSpec( timeSpec ).date() );
       mScene->mManagerList << manager;
       if ( incidenceSelected == incidence ) {
         // If there was an item selected before, reselect it.
