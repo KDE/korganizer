@@ -95,13 +95,13 @@ ResourceItem::ResourceItem( ResourceCalendar *resource, ResourceView *view,
   : QTreeWidgetItem( parent ),
     mResource( resource ), mView( view ), mBlockStateChange( false ),
     mIsSubresource( false ), mResourceIdentifier( QString() ),
-    mSubItemsCreated( false ), mIsStandardResource( false )
+    mSubItemsCreated( false ), mIsStandardResource( false ),
+    mIsReloading( false )
 {
   setFlags( flags() | Qt::ItemIsUserCheckable );
 
   setText( 0, resource->resourceName() );
-
-  mResourceColor = QColor();
+  mResourceColor = KOPrefs::instance()->resourceColor( resource->identifier() );
   setGuiState();
 
   if ( mResource->isActive() ) {
@@ -118,14 +118,33 @@ void ResourceItem::createSubresourceItems()
     QStringList::ConstIterator it;
     for ( it = subresources.begin(); it != subresources.end(); ++it ) {
       if ( !mView->findItemByIdentifier( *it ) ) {
-        ResourceItem *item = new ResourceItem( mResource, *it, mResource->labelForSubresource( *it ),
-                                               mView, this );
-        QColor resourceColor = KOPrefs::instance()->resourceColor( *it );
-        item->setResourceColor( resourceColor );
+        new ResourceItem( mResource, *it, mResource->labelForSubresource( *it ),
+                          mView, this );
       }
     }
   }
   mSubItemsCreated = true;
+}
+
+bool ResourceItem::useColors() const
+{
+  // assign a color, but only if this is a resource that actually
+  // hold items at top level
+  return KOPrefs::instance()->agendaViewColors() != KOPrefs::CategoryOnly  &&
+         ( mIsSubresource || ( !mIsReloading && mResource->subresources().isEmpty() ) ||
+           !mResource->canHaveSubresources() );
+}
+
+QVariant ResourceItem::data( int column, int role ) const
+{
+  if ( column == 0 &&
+       role == Qt::DecorationRole &&
+       mResourceColor.isValid() &&
+       useColors() ) {
+    return QVariant( mResourceColor );
+  } else {
+    return QTreeWidgetItem::data( column, role );
+  }
 }
 
 ResourceItem::ResourceItem( KCal::ResourceCalendar *resource,
@@ -134,11 +153,12 @@ ResourceItem::ResourceItem( KCal::ResourceCalendar *resource,
 
   : QTreeWidgetItem( parent ), mResource( resource ),
     mView( view ), mBlockStateChange( false ), mIsSubresource( true ),
-    mSubItemsCreated( false ), mIsStandardResource( false ), mActive( false )
+    mSubItemsCreated( false ), mIsStandardResource( false ), mActive( false ),
+    mIsReloading( false )
 {
   setFlags( flags() | Qt::ItemIsUserCheckable );
   setText( 0, label );
-  mResourceColor = QColor();
+  mResourceColor = KOPrefs::instance()->resourceColor( sub );
   mResourceIdentifier = sub;
   setGuiState();
 
@@ -209,18 +229,7 @@ void ResourceItem::update()
 
 void ResourceItem::setResourceColor( QColor &color )
 {
-  if ( color.isValid() ) {
-    if ( mResourceColor != color ) {
-      int height = treeWidget()->visualItemRect(this).height();
-      QPixmap px( height - 4, height - 4 );
-      mResourceColor = color;
-      px.fill(color);
-      setData( 0, Qt::DecorationRole, px );
-    }
-  } else {
-    mResourceColor = color ;
-    setData( 0, Qt::DecorationRole, QPixmap() );
-  }
+  mResourceColor = color ;
 }
 
 void ResourceItem::setStandardResource( bool std )
@@ -444,15 +453,7 @@ void ResourceView::addResource()
 
 void ResourceView::addResourceItem( ResourceCalendar *resource, bool emitSignal )
 {
-  ResourceItem *item = new ResourceItem( resource, this, mListView );
-
-  // assign a color, but only if this is a resource that actually
-  // hold items at top level
-  if ( !resource->canHaveSubresources() || resource->subresources().isEmpty() ) {
-    QColor resourceColor = KOPrefs::instance()->resourceColor( resource->identifier() );
-    item->setResourceColor( resourceColor );
-    item->update();
-  }
+  new ResourceItem( resource, this, mListView );
 
   connect( resource,
            SIGNAL(signalSubresourceAdded(ResourceCalendar *,const QString &,const QString &,const QString &)),
@@ -721,9 +722,9 @@ void ResourceView::reloadResource()
   if ( !item ) {
     return;
   }
-
-  ResourceCalendar *r = item->resource();
-  r->load();
+  item->setIsReloading( true );
+  item->resource()->load();
+  item->setIsReloading( false );
 }
 
 void ResourceView::saveResource()

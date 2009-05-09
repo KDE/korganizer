@@ -76,6 +76,10 @@ class ResourceItem : public QTreeWidgetItem
 
     void stateChange( bool active );
 
+    virtual QVariant data( int column, int role ) const;
+
+    void setIsReloading( bool value ) { mIsReloading = value; };
+
   protected:
     void setGuiState();
     QColor mResourceColor;
@@ -83,6 +87,11 @@ class ResourceItem : public QTreeWidgetItem
     void setOn( bool checked );
 
   private:
+    /*
+     * Returns if this item uses colors
+     */
+    bool useColors() const;
+
     KCal::ResourceCalendar *mResource;
     ResourceView *mView;
     bool mBlockStateChange;
@@ -91,6 +100,7 @@ class ResourceItem : public QTreeWidgetItem
     bool mSubItemsCreated;
     bool mIsStandardResource;
     bool mActive;
+    bool mIsReloading;
 };
 
 /**
