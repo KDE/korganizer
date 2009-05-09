@@ -52,7 +52,7 @@ class AlarmDockWindow : public KNotificationItem
     void dismissAllSignal();
 
   protected slots:
-    virtual void activate(const QPoint &pos);
+    virtual void activate( const QPoint &pos );
     void slotQuit();
     void slotSuspendAll();
     void slotDismissAll();

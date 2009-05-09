@@ -54,22 +54,22 @@ AlarmDockWindow::AlarmDockWindow()
   KIconLoader::global()->addAppDir( "korgac" );
   KIconLoader::global()->addAppDir( "kdepim" );
   QString iconPath = KIconLoader::global()->iconPath( "korgac", KIconLoader::Panel );
-  QIcon mIconEnabled  = QIcon(iconPath);
-  if ( mIconEnabled.isNull() ) {
+  QIcon iconEnabled  = QIcon( iconPath );
+  if ( iconEnabled.isNull() ) {
     KMessageBox::sorry( associatedWidget(),
                         i18nc( "@info", "Cannot load system tray icon." ) );
   } else {
     KIconLoader loader;
     QImage iconDisabled =
-      mIconEnabled.pixmap( loader.currentSize( KIconLoader::Panel ) ).toImage();
+      iconEnabled.pixmap( loader.currentSize( KIconLoader::Panel ) ).toImage();
     KIconEffect::toGray( iconDisabled, 1.0 );
     mIconDisabled = QIcon( QPixmap::fromImage( iconDisabled ) );
   }
 
-  if (alarmsEnabled){
+  if ( alarmsEnabled ) {
     setIcon( "korgac" );
-  }else{
-    setImage( mIconDisabled.pixmap(22, 22) );
+  } else {
+    setImage( mIconDisabled.pixmap( 22, 22 ) );
   }
 
   // Set up the context menu
@@ -133,10 +133,10 @@ void AlarmDockWindow::toggleAlarmsEnabled( bool checked )
 {
   kDebug();
 
-  if (checked){
+  if ( checked ) {
     setIcon( "korgac" );
   }else{
-    setImage( mIconDisabled.pixmap(22, 22) );
+    setImage( mIconDisabled.pixmap( 22, 22 ) );
   }
 
   KConfigGroup config( KGlobal::config(), "General" );
