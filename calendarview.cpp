@@ -257,7 +257,6 @@ void CalendarView::setCalendar( Calendar *cal )
   connect( mHistory, SIGNAL(undone()), SLOT(updateView()) );
   connect( mHistory, SIGNAL(redone()), SLOT(updateView()) );
 
-  delete mChanger;
   setIncidenceChanger( new IncidenceChanger( mCalendar, this ) );
 
   mCalendar->registerObserver( this );
@@ -269,6 +268,7 @@ void CalendarView::setCalendar( Calendar *cal )
 
 void CalendarView::setIncidenceChanger( IncidenceChangerBase *changer )
 {
+  delete mChanger;
   mChanger = changer;
   emit newIncidenceChanger( mChanger );
   connect( mChanger, SIGNAL(incidenceAdded(Incidence *)),
