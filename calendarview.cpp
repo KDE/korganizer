@@ -1625,7 +1625,7 @@ void CalendarView::exportWeb()
 {
   // FIXME: Get rid of the settings object. When can I delete it???
   HTMLExportSettings *settings = new HTMLExportSettings( "KOrganizer" );
-  // Manually read in the config, because parametrized kconfigxt objects don't
+  // Manually read in the config, because parameterized kconfigxt objects don't
   // seem to load the config theirselves
   if ( settings ) {
     settings->readConfig();
