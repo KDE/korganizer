@@ -216,6 +216,10 @@ MonthViewItem::MonthViewItem( Incidence *incidence, const QDateTime &qd,
 QColor MonthViewItem::catColor() const
 {
   QColor retColor;
+  if ( !mIncidence ) {
+    return retColor;
+  }
+
   QStringList categories = mIncidence->categories();
   QString cat;
   if ( !categories.isEmpty() ) {
@@ -237,10 +241,8 @@ void MonthViewItem::paint( QPainter *p )
   bool sel = selected();
 #endif
 
-  if( !mIncidence )
-    return;
   QColor bgColor = QColor(); // Default invalid color;
-  if ( mTodo ) {
+  if ( mIncidence && mTodo ) {
     if ( static_cast<Todo*>( mIncidence )->isOverdue() ) {
       bgColor = KOPrefs::instance()->todoOverdueColor();
     } else if ( static_cast<Todo*>( mIncidence )->dtDue().date() == QDate::currentDate() ) {
@@ -271,14 +273,16 @@ void MonthViewItem::paint( QPainter *p )
     frameColor = catColor();
   }
 
-  if ( mIncidence->categories().isEmpty() &&
-       KOPrefs::instance()->monthItemColors() == KOPrefs::MonthItemResourceInsideCategoryOutside ) {
-    frameColor = bgColor;
-  }
+  if ( mIncidence ) {
+    if ( mIncidence->categories().isEmpty() &&
+         KOPrefs::instance()->monthItemColors() == KOPrefs::MonthItemResourceInsideCategoryOutside ) {
+      frameColor = bgColor;
+    }
 
-  if ( mIncidence->categories().isEmpty() &&
-       KOPrefs::instance()->monthItemColors() == KOPrefs::MonthItemCategoryInsideResourceOutside ) {
-    bgColor = frameColor;
+    if ( mIncidence->categories().isEmpty() &&
+         KOPrefs::instance()->monthItemColors() == KOPrefs::MonthItemCategoryInsideResourceOutside ) {
+      bgColor = frameColor;
+    }
   }
 
   if ( !frameColor.isValid() ) {
@@ -361,7 +365,7 @@ int MonthViewItem::width( const QListBox *lb ) const
 
 MonthViewCell::MonthViewCell( KOMonthView *parent)
   : QWidget( parent ),
-    mMonthView( parent ), mPrimary( false ), mHoliday( false ), mHolidayEvent( 0 )
+    mMonthView( parent ), mPrimary( false ), mHoliday( false )
 {
   QVBoxLayout *topLayout = new QVBoxLayout( this );
 
@@ -395,11 +399,6 @@ MonthViewCell::MonthViewCell( KOMonthView *parent)
            SLOT( contextMenu( QListBoxItem * ) ) );
   connect( mItemList, SIGNAL( clicked( QListBoxItem * ) ),
            SLOT( select() ) );
-}
-
-MonthViewCell::~MonthViewCell()
-{
-  delete mHolidayEvent;
 }
 
 void MonthViewCell::setDate( const QDate &date )
@@ -499,10 +498,7 @@ void MonthViewCell::updateCell()
   mItemList->clear();
 
   if ( !mHolidayString.isEmpty() ) {
-    mHolidayEvent = new Event;
-    mHolidayEvent->setSummary( mHolidayString );
-    mHolidayEvent->setDtStart( mDate );
-    MonthViewItem *item = new MonthViewItem( mHolidayEvent, QDateTime( mDate ), mHolidayString );
+    MonthViewItem *item = new MonthViewItem( 0, QDateTime( mDate ), mHolidayString );
     item->setPalette( mHolidayPalette );
     mItemList->insertItem( item );
   }
