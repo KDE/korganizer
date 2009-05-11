@@ -1393,13 +1393,16 @@ void KOAgendaView::displayIncidence( Incidence *incidence ) {
   firstVisibleDateTime.setTime( QTime( 0, 0 ) );
   DateTimeList dateTimeList;
 
+  KDateTime incDtStart = incidence->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() );
+  KDateTime incDtEnd   = incidence->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() );
+
   if ( todo &&
        ( !KOPrefs::instance()->showAllDayTodo() || !todo->hasDueDate() ) ) {
     return;
   }
 
   if ( incidence->recurs() ) {
-    int eventDuration = incidence->dtStart().daysTo( incidence->dtEnd() );
+    int eventDuration = incDtStart.daysTo( incDtEnd );
 
     // if there's a multiday event that starts before firstVisibleDateTime but ends after
     // lets include it. timesInInterval() ignores incidences that aren't totaly inside
@@ -1415,11 +1418,11 @@ void KOAgendaView::displayIncidence( Incidence *incidence ) {
 
     if ( todo && todo->hasDueDate() && !todo->isOverdue() ) {
       // If it's not overdue it will be shown at the original date (not today)
-      dateToAdd = todo->dtDue();
+      dateToAdd = todo->dtDue().toTimeSpec( KOPrefs::instance()->timeSpec() );
       incidenceEnd = dateToAdd;
     } else if ( event ) {
-      dateToAdd = incidence->dtStart();
-      incidenceEnd = incidence->dtEnd();
+      dateToAdd = incDtStart;
+      incidenceEnd = incDtEnd;
 
       if ( dateToAdd.isDateOnly() ) {
         // so comparisons with < > actually work
@@ -1445,7 +1448,7 @@ void KOAgendaView::displayIncidence( Incidence *incidence ) {
       /* If there's a recurring instance showing up today don't add "today" again 
        * we don't want the event to appear duplicated */
       for ( t = dateTimeList.begin(); t != dateTimeList.end(); ++t ) {
-        if ( t->date() == today ) {
+        if ( t->toTimeSpec( KOPrefs::instance()->timeSpec() ).date() == today ) {
           doAdd = false;
           break;
         }
@@ -1458,7 +1461,7 @@ void KOAgendaView::displayIncidence( Incidence *incidence ) {
   }
 
   for ( t = dateTimeList.begin(); t != dateTimeList.end(); ++t ) {
-    insertIncidence( incidence, t->date() );
+    insertIncidence( incidence, t->toTimeSpec( KOPrefs::instance()->timeSpec() ).date() );
   }
 }
 
