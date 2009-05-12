@@ -59,8 +59,6 @@ void KOJournalEditor::init()
   connect( this, SIGNAL(updateCategoryConfig()),
            mGeneral, SIGNAL(updateCategoryConfig()) );
 
-  connect( mDetails, SIGNAL(updateAttendeeSummary(int)),
-           mGeneral, SLOT(updateAttendeeSummary(int)) );
 }
 
 void KOJournalEditor::reload()
