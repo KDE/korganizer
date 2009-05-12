@@ -88,6 +88,11 @@ class KOViewManager : public QObject
     void addView( KOrg::BaseView *, bool isTab = false );
 
     KCal::Incidence *currentSelection();
+
+    /**
+     * If there's a selected incidence, it's date is returned, otherwise
+     * an invalid QDate is returned.
+     */
     QDate currentSelectionDate();
 
     KOAgendaView *agendaView() const { return mAgendaView; }
