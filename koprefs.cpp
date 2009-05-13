@@ -370,20 +370,22 @@ QColor KOPrefs::resourceColor( const QString &cal )
 
 QString KOPrefs::fullName()
 {
+  QString tusername;
   if ( mEmailControlCenter ) {
     KEMailSettings settings;
-    return settings.getSetting( KEMailSettings::RealName );
+    tusername = settings.getSetting( KEMailSettings::RealName );
   } else {
-    // the username as it might contain commas and other quotable chars.
-    QString tusername = KPIMUtils::quoteNameIfNecessary( userName() );
-
-    QString tname, temail;
-    // ignore the return value from extractEmailAddressAndName() because
-    // it will always be false since tusername does not contain "@domain".
-    KPIMUtils::extractEmailAddressAndName( tusername, temail, tname );
-
-    return tname;
+    tusername = userName();
   }
+
+  // Quote the username as it might contain commas and other quotable chars.
+  tusername = KPIMUtils::quoteNameIfNecessary( tusername );
+
+  QString tname, temail;
+  // ignore the return value from extractEmailAddressAndName() because
+  // it will always be false since tusername does not contain "@domain".
+  KPIMUtils::extractEmailAddressAndName( tusername, temail, tname );
+  return tname;
 }
 
 QString KOPrefs::email()
