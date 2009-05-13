@@ -362,7 +362,15 @@ QString KOPrefs::fullName()
     KEMailSettings settings;
     return settings.getSetting( KEMailSettings::RealName );
   } else {
-    return userName();
+    // the username as it might contain commas and other quotable chars.
+    QString tusername = KPIMUtils::quoteNameIfNecessary( userName() );
+
+    QString tname, temail;
+    // ignore the return value from extractEmailAddressAndName() because
+    // it will always be false since tusername does not contain "@domain".
+    KPIMUtils::extractEmailAddressAndName( tusername, temail, tname );
+
+    return tname;
   }
 }
 
