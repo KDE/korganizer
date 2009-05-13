@@ -672,7 +672,7 @@ void KOEditorAttachments::slotEdit()
 
       AttachmentEditDialog *dialog = new AttachmentEditDialog( attitem, mAttachments, false );
       dialog->setModal( false );
-      connect( dialog, SIGNAL(hidden()), dialog, SLOT(slotDelayedDestruct()) );
+      connect( dialog, SIGNAL(hidden()), dialog, SLOT(delayedDestruct()) );
       dialog->show();
     }
   }
