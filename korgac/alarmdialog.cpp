@@ -88,7 +88,7 @@ AlarmDialog::AlarmDialog( QWidget *parent )
   setCaption( i18nc( "@title:window", "Reminders" ) );
   setWindowIcon( KIcon( "korgac" ) );
   setButtons( Ok | User1 | User2 | User3 );
-  setDefaultButton( User1 );
+  setDefaultButton( User3 );
   setButtonText( Ok, i18nc( "@action:button", "Dismiss" ) );
   setButtonToolTip( Ok, i18nc( "@info:tooltip",
                                "Dismiss the reminders for the selected incidences" ) );
