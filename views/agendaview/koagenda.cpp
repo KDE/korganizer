@@ -1877,7 +1877,17 @@ void KOAgenda::deselectItem()
   if ( mSelectedItem.isNull() ) {
     return;
   }
-  mSelectedItem->select(false);
+
+  Incidence *selectedInc = mSelectedItem->incidence();
+
+  foreach ( KOAgendaItem *item, mItems ) {
+    Incidence *itemInc = item->incidence();
+    if( itemInc && selectedInc &&
+        itemInc->uid() == selectedInc->uid() ) {
+      item->select( false );
+    }
+  }
+
   mSelectedItem = 0;
 }
 
@@ -1895,6 +1905,13 @@ void KOAgenda::selectItem( KOAgendaItem *item )
   mSelectedItem->select();
   Q_ASSERT( mSelectedItem->incidence() );
   mSelectedUid = mSelectedItem->incidence()->uid();
+
+  foreach ( KOAgendaItem *item, mItems ) {
+    if( item->incidence() && item->incidence()->uid() == mSelectedUid ) {
+      item->select();
+    }
+  }
+
   emit incidenceSelected( mSelectedItem->incidence() );
 }
 
