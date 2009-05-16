@@ -130,8 +130,11 @@ DateList MonthView::selectedDates()
 {
   DateList list;
 
-  if ( mScene->selectedCell() ) {
-    list << mScene->selectedCell()->date();
+  if ( mScene->selectedItem() ) {
+    IncidenceMonthItem *tmp = dynamic_cast<IncidenceMonthItem *>( mScene->selectedItem() );
+    if ( tmp ) {
+      list << tmp->realStartDate();
+    }
   }
 
   return list;
@@ -296,10 +299,15 @@ void MonthView::reloadIncidences()
 {
   // keep selection if it exists
   Incidence *incidenceSelected = 0;
+
+  MonthItem *itemToReselect = 0;
+  QDate selectedItemDate;
+
   if ( mScene->selectedItem() ) {
     IncidenceMonthItem *tmp = dynamic_cast<IncidenceMonthItem *>( mScene->selectedItem() );
     if ( tmp ) {
       incidenceSelected = tmp->incidence();
+      selectedItemDate = tmp->realStartDate();
     }
   }
 
@@ -325,7 +333,7 @@ void MonthView::reloadIncidences()
     }
 
     KDateTime incDtStart = incidence->dtStart().toTimeSpec( timeSpec );
-    KDateTime incDtEnd   = incidence->dtEnd().toTimeSpec( timeSpec );;
+    KDateTime incDtEnd   = incidence->dtEnd().toTimeSpec( timeSpec );
 
     // An event could start before the currently displayed date, so we
     // have to check at least those dates before the start date, which would
@@ -366,11 +374,16 @@ void MonthView::reloadIncidences()
                                                    incidence,
                                                    t->toTimeSpec( timeSpec ).date() );
       mScene->mManagerList << manager;
-      if ( incidenceSelected == incidence ) {
-        // If there was an item selected before, reselect it.
-        mScene->selectItem( manager );
+      if ( incidenceSelected == incidence &&
+           manager->realStartDate() == selectedItemDate ) {
+        // only select it outside the loop because we are still creating items
+        itemToReselect = manager;
       }
     }
+  }
+
+  if ( itemToReselect ) {
+    mScene->selectItem( itemToReselect );
   }
 
   // add holidays
