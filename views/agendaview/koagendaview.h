@@ -115,7 +115,7 @@ class KOAgendaView : public KOrg::AgendaView, public KCal::Calendar::CalendarObs
     /** returns the currently selected events */
     virtual Incidence::List selectedIncidences();
 
-    /** returns the currently selected events */
+    /** returns the currently selected incidence's dates */
     virtual DateList selectedDates();
 
     /** return the default start/end date/time for new events   */
@@ -129,9 +129,11 @@ class KOAgendaView : public KOrg::AgendaView, public KCal::Calendar::CalendarObs
 #endif
 
     /** start-datetime of selection */
-    QDateTime selectionStart() { return mTimeSpanBegin; }
+    virtual QDateTime selectionStart() { return mTimeSpanBegin; }
+
     /** end-datetime of selection */
-    QDateTime selectionEnd() { return mTimeSpanEnd; }
+    virtual QDateTime selectionEnd() { return mTimeSpanEnd; }
+
     /** returns true if selection is for whole day */
     bool selectedIsAllDay() { return mTimeSpanInAllDay; }
     /** make selected start/end invalid */

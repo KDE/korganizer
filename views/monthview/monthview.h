@@ -53,6 +53,10 @@ class MonthView : public KOEventView
     /** Returns dates of the currently selected events */
     virtual DateList selectedDates();
 
+    virtual QDateTime selectionStart();
+
+    virtual QDateTime selectionEnd();
+
     virtual bool eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &allDay );
 
     QDate startDate() const { return mStartDate; }

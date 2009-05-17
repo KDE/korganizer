@@ -89,6 +89,18 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
     */
     virtual DateList selectedDates() = 0;
 
+    /**
+       Returns the start of the selection, or an invalid QDateTime if there is no selection
+       or the view doesn't support selecting cells.
+     */
+    virtual QDateTime selectionStart() { return QDateTime(); };
+
+    /**
+       Returns the end of the selection, or an invalid QDateTime if there is no selection
+       or the view doesn't support selecting cells.
+     */
+    virtual QDateTime selectionEnd() { return QDateTime(); };
+
 #ifndef KORG_NOPRINTER
     virtual CalPrinterBase::PrintType printType();
 #endif
