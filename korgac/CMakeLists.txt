@@ -3,7 +3,7 @@ add_definitions(-DKDE_DEFAULT_DEBUG_AREA=5890)
 
 add_subdirectory( pixmaps ) 
 add_subdirectory( tests ) 
-include_directories( ${CMAKE_SOURCE_DIR}/korganizer ${KNOTIFICATIONITEM_INCLUDE_DIR} )
+include_directories( ${CMAKE_SOURCE_DIR}/korganizer ${LIBKNOTIFICATIONITEM-1_INCLUDE_DIR} )
 
 
 ########### next target ###############
@@ -26,7 +26,7 @@ kde4_add_app_icon(korgac_SRCS "${KDE4_ICON_DIR}/oxygen/*/apps/korgac.png")
 
 kde4_add_executable(korgac ${korgac_SRCS})
 
-target_link_libraries(korgac ${KNOTIFICATIONITEM_LIBRARIES} ${KDE4_KDEUI_LIBS} ${KDE4_PHONON_LIBS} ${KDEPIMLIBS_KCAL_LIBS} korganizer_eventviewer)
+target_link_libraries(korgac ${LIBKNOTIFICATIONITEM-1_LIBRARIES} ${KDE4_KDEUI_LIBS} ${KDE4_PHONON_LIBS} ${KDEPIMLIBS_KCAL_LIBS} korganizer_eventviewer)
 
 install(TARGETS korgac  ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
