@@ -667,7 +667,7 @@ void ResourceView::showContextMenu( const QPoint &pos )
 
     QAction *saveAction = menu->addAction(
       i18nc( "save the resource", "&Save" ), this, SLOT(saveResource()) );
-    saveAction->setEnabled( item->resource()->isActive() );
+    saveAction->setEnabled( item->resource()->isActive() && !item->resource()->readOnly() );
 
     menu->addSeparator();
 
