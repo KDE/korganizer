@@ -18,6 +18,7 @@ Name[zh_TW]=DBUS行事曆
 Type=ServiceType
 X-KDE-ServiceType=DBUS/Organizer
 Comment=Organizer with a D-Bus interface
+Comment[da]=Planlægningskalender med en D-BUS-grænseflade
 Comment[de]=Organizer mit D-Bus-Schnittstelle
 Comment[el]=Οργανωτής με διασύνδεση D-Bus
 Comment[en_GB]=Organiser with a D-Bus interface
