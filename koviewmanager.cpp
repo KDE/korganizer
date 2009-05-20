@@ -452,9 +452,13 @@ void KOViewManager::showDayView()
 
 void KOViewManager::showWorkWeekView()
 {
-  QDate date = mMainView->activeDate();
-  showAgendaView();
-  mMainView->dateNavigator()->selectWorkWeek( date );
+  if ( KOGlobals::self()->getWorkWeekMask() != 0 ) {
+    QDate date = mMainView->activeDate();
+    showAgendaView();
+    mMainView->dateNavigator()->selectWorkWeek( date );
+  } else {
+    // TODO: tell the user he must configure work days
+  }
 }
 
 void KOViewManager::showWeekView()
