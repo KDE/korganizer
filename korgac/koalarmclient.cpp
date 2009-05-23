@@ -39,8 +39,9 @@ using namespace KCal;
 #include <KDebug>
 #include <KStandardDirs>
 #include <KSystemTimeZones>
+
 KOAlarmClient::KOAlarmClient( QObject *parent )
-  : QObject( parent ), mDialog( 0 )
+  : QObject( parent ), mDocker( 0 ), mDialog( 0 )
 {
   new KOrgacAdaptor( this );
   QDBusConnection::sessionBus().registerObject( "/ac", this );
@@ -50,21 +51,17 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
   KConfigGroup generalGroup( &korgConfig, "General" );
   bool showDock = generalGroup.readEntry( "ShowReminderDaemon", true );
 
-  mDocker = new AlarmDockWindow;
-  //TODO: what I should do here?
-/*
   if ( showDock ) {
-    mDocker->show();
-  } else {
-    mDocker->hide();
-  }
-*/
+    mDocker = new AlarmDockWindow;
 
-  connect( this, SIGNAL(reminderCount(int)), mDocker, SLOT(slotUpdate(int)) );
-  connect( mDocker, SIGNAL(quitSignal()), SLOT(slotQuit()) );
+    connect( this, SIGNAL(reminderCount(int)), mDocker, SLOT(slotUpdate(int)) );
+    connect( mDocker, SIGNAL(quitSignal()), SLOT(slotQuit()) );
+  }
 
   const KTimeZone zone = KSystemTimeZones::local();
-  mCalendar = new CalendarResources( zone.isValid() ? KDateTime::Spec( zone ) : KDateTime::ClockTime );
+  mCalendar = new CalendarResources( zone.isValid() ?
+                                     KDateTime::Spec( zone ) :
+                                     KDateTime::ClockTime );
   mCalendar->readConfig();
   mCalendar->load();
 
@@ -138,10 +135,15 @@ void KOAlarmClient::createReminder( KCal::Incidence *incidence,
 
   if ( !mDialog ) {
     mDialog = new AlarmDialog();
-    connect( mDialog, SIGNAL(reminderCount(int)), mDocker, SLOT(slotUpdate(int)) );
-    connect( mDocker, SIGNAL(suspendAllSignal()), mDialog, SLOT(suspendAll()) );
-    connect( mDocker, SIGNAL(dismissAllSignal()), mDialog, SLOT(dismissAll()) );
     connect( this, SIGNAL(saveAllSignal()), mDialog, SLOT(slotSave()) );
+    if ( mDocker ) {
+      connect( mDialog, SIGNAL(reminderCount(int)),
+               mDocker, SLOT(slotUpdate(int)) );
+      connect( mDocker, SIGNAL(suspendAllSignal()),
+               mDialog, SLOT(suspendAll()) );
+      connect( mDocker, SIGNAL(dismissAllSignal()),
+               mDialog, SLOT(dismissAll()) );
+    }
   }
 
   mDialog->addIncidence( incidence, dt, displayText );
@@ -217,16 +219,29 @@ void KOAlarmClient::debugShowDialog()
 //   showAlarmDialog();
 }
 
-//TODO: what I should do here?
 void KOAlarmClient::hide()
 {
-  //mDocker->hide();
+  delete mDocker;
+  mDocker = 0;
 }
 
-//TODO: what I should do here?
 void KOAlarmClient::show()
 {
-  //mDocker->show();
+  if ( !mDocker ) {
+    mDocker = new AlarmDockWindow;
+
+    connect( this, SIGNAL(reminderCount(int)), mDocker, SLOT(slotUpdate(int)) );
+    connect( mDocker, SIGNAL(quitSignal()), SLOT(slotQuit()) );
+
+    if ( mDialog ) {
+      connect( mDialog, SIGNAL(reminderCount(int)),
+               mDocker, SLOT(slotUpdate(int)) );
+      connect( mDocker, SIGNAL(suspendAllSignal()),
+               mDialog, SLOT(suspendAll()) );
+      connect( mDocker, SIGNAL(dismissAllSignal()),
+               mDialog, SLOT(dismissAll()) );
+    }
+  }
 }
 
 #include "koalarmclient.moc"
