@@ -144,6 +144,7 @@ class KOEditorGeneral : public QObject
     QCheckBox               *mRichDescription;
     KOEditorAttachments     *mAttachments;
     Calendar                *mCalendar;
+    QStringList              mCategories;
 
     enum AlarmStackPages {
       SimpleAlarmPage,
@@ -152,7 +153,6 @@ class KOEditorGeneral : public QObject
 
   private:
     void toggleDescriptionRichButtons( bool rich );
-    QStringList mCategories;
     KCal::Alarm::List mAlarmList;
 };
 
