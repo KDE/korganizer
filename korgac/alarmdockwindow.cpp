@@ -158,11 +158,10 @@ void AlarmDockWindow::enableAutostart( bool enable )
   config.sync();
 }
 
-void AlarmDockWindow::activate(const QPoint &pos)
+void AlarmDockWindow::activate( const QPoint &pos )
 {
-    Q_UNUSED(pos)
-
-    KToolInvocation::startServiceByDesktopName( "korganizer", QString() );
+  Q_UNUSED( pos );
+  KToolInvocation::startServiceByDesktopName( "korganizer", QString() );
 }
 
 void AlarmDockWindow::slotQuit()
