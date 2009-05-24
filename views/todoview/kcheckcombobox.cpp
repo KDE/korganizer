@@ -24,12 +24,9 @@
 
 #include "kcheckcombobox.h"
 
-#include <KDebug>
-
-#include <QListView>
-#include <QStyledItemDelegate>
-#include <QLineEdit>
+#include <QAbstractItemView>
 #include <QKeyEvent>
+#include <QLineEdit>
 
 KCheckComboBox::KCheckComboBox( QWidget *parent ) : KComboBox( parent )
 {
