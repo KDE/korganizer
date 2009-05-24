@@ -24,19 +24,13 @@
 
 #include "navigatorbar.h"
 #include "koglobals.h"
-#include "koprefs.h"
 
-#include <kdebug.h>
-#include <kcalendarsystem.h>
-#include <klocale.h>
-#include <kglobal.h>
-#include <kiconloader.h>
+#include <KCalendarSystem>
+#include <KIconLoader>
+#include <KLocale>
 
 #include <QHBoxLayout>
-#include <QLabel>
 #include <QMenu>
-#include <QMouseEvent>
-#include <QString>
 #include <QSpacerItem>
 #include <QToolButton>
 

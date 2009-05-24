@@ -24,10 +24,11 @@
 #ifndef NAVIGATORBAR_H
 #define NAVIGATORBAR_H
 
-#include <kcal/incidencebase.h>
+#include <KCal/IncidenceBase>
+using namespace KCal;
 
+#include <QDate>
 #include <QLabel>
-#include <QMouseEvent>
 
 class QToolButton;
 
