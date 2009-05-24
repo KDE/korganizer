@@ -44,6 +44,17 @@ ActiveLabel::ActiveLabel( QWidget *parent ) : QLabel( parent )
 {
 }
 
+void ActiveLabel::enterEvent( QEvent * )
+{
+  setFrameStyle( QFrame::Panel | QFrame::Raised );
+  setLineWidth( 1 );
+}
+
+void ActiveLabel::leaveEvent( QEvent * )
+{
+  setFrameStyle( QFrame::NoFrame );
+}
+
 void ActiveLabel::mouseReleaseEvent( QMouseEvent * )
 {
   emit clicked();
