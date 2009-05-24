@@ -28,24 +28,9 @@
 using namespace KCal;
 
 #include <QDate>
-#include <QLabel>
+#include <QWidget>
 
 class QToolButton;
-
-class ActiveLabel : public QLabel
-{
-  Q_OBJECT
-  public:
-    explicit ActiveLabel( QWidget *parent );
-
-  signals:
-    void clicked();
-
-  protected:
-    void enterEvent( QEvent * );
-    void leaveEvent( QEvent * );
-    void mouseReleaseEvent ( QMouseEvent * );
-};
 
 class NavigatorBar: public QWidget
 {
@@ -77,14 +62,12 @@ class NavigatorBar: public QWidget
     void selectYearFromMenu();
 
   private:
-    bool mHasMinWidth;
-
     QDate mDate;
 
     QToolButton *mPrevYear;
     QToolButton *mPrevMonth;
-    ActiveLabel *mMonth;
-    ActiveLabel *mYear;
+    QToolButton *mMonth;
+    QToolButton *mYear;
     QToolButton *mNextMonth;
     QToolButton *mNextYear;
 };
