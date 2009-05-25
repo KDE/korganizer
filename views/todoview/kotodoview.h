@@ -70,7 +70,8 @@ class KOTodoView : public BaseView
     void setDocumentId( const QString & ) {}
 
     void saveLayout( KConfig *config, const QString &group ) const;
-    void restoreLayout( KConfig *config, const QString &group );
+
+    void restoreLayout( KConfig *config, const QString &group, bool minimalDefaults );
 
     /** documentation in baseview.h */
     void getHighlightMode( bool &highlightEvents,

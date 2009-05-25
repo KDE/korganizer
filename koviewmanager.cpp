@@ -488,7 +488,7 @@ void KOViewManager::showTodoView()
     connectTodoView( mTodoView );
 
     KConfig *config = KOGlobals::self()->config();
-    mTodoView->restoreLayout( config, "Todo View" );
+    mTodoView->restoreLayout( config, "Todo View", false );
   }
   goMenu( false );
   showView( mTodoView );

@@ -740,7 +740,7 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
   }
 
   // item for recurring todos
-  if ( role == Qt::DecorationRole && index.column() == RecurColumn ) {
+  if ( role == Qt::DecorationRole && index.column() == DueDateColumn ) {
     if ( todo->recurs() ) {
       return QVariant( QIcon( KOGlobals::self()->smallIcon( "task-recurring" ) ) );
     }

@@ -457,7 +457,7 @@ void CalendarView::readSettings()
 
   mEventViewer->readSettings( config );
   mViewManager->readSettings( config );
-  mTodoList->restoreLayout( config, QString( "Sidebar Todo View" ) );
+  mTodoList->restoreLayout( config, QString( "Sidebar Todo View" ), true );
 
   readFilterSettings( config );
 
