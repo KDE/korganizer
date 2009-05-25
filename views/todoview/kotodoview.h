@@ -110,6 +110,7 @@ class KOTodoView : public BaseView
     void copyTodoToDate( const QDate &date );
 
   private Q_SLOTS:
+    void resizeColumnsToContent();
     void itemDoubleClicked( const QModelIndex &index );
     void setNewDate( const QDate &date );
     void setNewPercentage( QAction *action );
