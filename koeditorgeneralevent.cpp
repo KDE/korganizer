@@ -29,33 +29,21 @@
 #include <libkdepim/ktimeedit.h>
 #include <libkdepim/ktimezonecombobox.h>
 
-#include <kcal/event.h>
-#include <kcal/incidenceformatter.h>
+#include <KCal/Event>
+#include <KCal/IncidenceFormatter>
 
-#include <kdebug.h>
-#include <kglobal.h>
-#include <klocale.h>
-#include <kiconloader.h>
-#include <kmessagebox.h>
-#include <kfiledialog.h>
-#include <kstandarddirs.h>
-#include <ktextedit.h>
-#include <KComboBox>
+#include <KDialog>
+#include <KMessageBox>
 #include <KRichTextWidget>
 
 #include <QBoxLayout>
 #include <QCheckBox>
-#include <QDateTime>
-#include <QFrame>
 #include <QGridLayout>
 #include <QGroupBox>
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QPushButton>
 #include <QSpinBox>
-#include <QVBoxLayout>
-
-#include "koeditorgeneralevent.moc"
 
 KOEditorGeneralEvent::KOEditorGeneralEvent( Calendar *calendar, QObject *parent )
   : KOEditorGeneral( calendar, parent )
@@ -641,3 +629,5 @@ void KOEditorGeneralEvent::updateRecurrenceSummary( const QString &summary )
 {
   mRecurrenceSummary->setText( summary );
 }
+
+#include "koeditorgeneralevent.moc"
