@@ -41,7 +41,9 @@ class ActiveLabel : public QLabel
     void clicked();
 
   protected:
-    void mouseReleaseEvent ( QMouseEvent *e );
+    void enterEvent( QEvent * );
+    void leaveEvent( QEvent * );
+    void mouseReleaseEvent ( QMouseEvent * );
 };
 
 class NavigatorBar: public QWidget
