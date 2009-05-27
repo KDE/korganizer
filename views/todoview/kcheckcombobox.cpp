@@ -197,7 +197,9 @@ void KCheckComboBox::updateCheckedItems( const QModelIndex &topLeft,
     text = items.join( mSeparator );
   }
 
-  setEditText( text );
+  setEditText( fontMetrics().elidedText( text, Qt::ElideRight, width() ) );
+  setToolTip( text );
+
   emit checkedItemsChanged( items );
 }
 
