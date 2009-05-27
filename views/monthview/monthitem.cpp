@@ -524,7 +524,15 @@ QList<QPixmap *> IncidenceMonthItem::icons() const
   QList<QPixmap *> ret;
 
   if ( mIsEvent ) {
-    ret << monthScene()->eventPixmap();
+
+   // smartins: Disabling the event Pixmap because:
+   // 1. Save precious space so we can read the event's title better.
+   // 2. We don't need a pixmap to tell us an item is an event we
+   //    only need one to tell us it's not, as month view was designed for events.
+   // 3. If only to-dos and journals have a pixmap they will be distinguished
+   //    from event's much easier.
+
+   // ret << monthScene()->eventPixmap();
   } else if ( mIsTodo ) {
 
     Todo *todo = static_cast<Todo *>( mIncidence );
