@@ -152,6 +152,7 @@ AlarmDialog::AlarmDialog( QWidget *parent )
   mDetailView->setIncidence( 0 );
   mTopLayout->addWidget( mDetailView );
   mDetailView->hide();
+  mLastItem = 0;
 
   KHBox *suspendBox = new KHBox( topBox );
   suspendBox->setSpacing( spacingHint() );
@@ -566,15 +567,17 @@ void AlarmDialog::updateButtons()
 
 void AlarmDialog::toggleDetails( QTreeWidgetItem *item, int column )
 {
-  if ( item->data( column, QTreeWidgetItem::UserType ).toBool() ) {
-    resize( size().width(), size().height() - mDetailView->height() - 50 );
-    mDetailView->hide();
-    item->setData( column, QTreeWidgetItem::UserType, false );
+  Q_UNUSED( column );
+  if ( !mDetailView->isHidden() ) {
+    if ( mLastItem == item ) {
+      resize( size().width(), size().height() - mDetailView->height() - 50 );
+      mDetailView->hide();
+    }
   } else {
     resize( size().width(), size().height() + mDetailView->height() + 50 );
     mDetailView->show();
-    item->setData( column, QTreeWidgetItem::UserType, true );
   }
+  mLastItem = item;
 }
 
 void AlarmDialog::showDetails()

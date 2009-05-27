@@ -93,6 +93,7 @@ class AlarmDialog : public KDialog
     QSpinBox *mSuspendSpin;
     KComboBox *mSuspendUnit;
     QTimer mSuspendTimer;
+    QTreeWidgetItem *mLastItem;
 };
 
 #endif
