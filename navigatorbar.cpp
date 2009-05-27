@@ -175,6 +175,7 @@ QToolButton *NavigatorBar::createNavigationButton( const QString &icon,
     KIconLoader::global()->loadIcon( icon, KIconLoader::Desktop, KIconLoader::SizeSmall ) );
   button->setIconSize( QSize( KIconLoader::SizeSmall, KIconLoader::SizeSmall ) );
   button->setToolButtonStyle( Qt::ToolButtonIconOnly );
+  button->setAutoRaise( true );
   button->setToolTip( toolTip );
 
   return button;
