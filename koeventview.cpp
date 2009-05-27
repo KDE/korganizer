@@ -166,5 +166,26 @@ void KOEventView::defaultAction( Incidence *incidence )
 
 //---------------------------------------------------------------------------
 
+bool KOEventView::usesCompletedTodoPixmap( Todo *todo, const QDate &date )
+{
+  if ( todo->isCompleted() ) {
+    return true;
+  } else if ( todo->recurs() ) {
+    QTime time;
+    if ( todo->allDay() ) {
+      time = QTime( 0, 0 );
+    } else {
+      time = todo->dtDue().toTimeSpec( KOPrefs::instance()->timeSpec() ).time();
+    }
+
+    KDateTime itemDateTime( date, time, KOPrefs::instance()->timeSpec() );
+
+    return itemDateTime < todo->dtDue( false );
+
+  } else {
+    return false;
+  }
+}
+
 #include "koeventview.moc"
 

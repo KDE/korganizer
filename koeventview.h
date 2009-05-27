@@ -26,6 +26,9 @@
 #ifndef KOEVENTVIEW_H
 #define KOEVENTVIEW_H
 
+#include "koprefs.h"
+
+#include <kcal/todo.h>
 #include <kcal/incidencebase.h>
 
 #include <korganizer/baseview.h>
@@ -88,6 +91,18 @@ class KOEventView : public KOrg::BaseView
 
     /** This view is an view for displaying events. */
     bool isEventView() { return true; }
+
+    /*
+     * Returns true if the view item, that represents a to-do, should use the "completed"
+     * pixmap.
+     *
+     * @param todo The to-do associated with the view item.
+     * @param date The date in which the item appears in the view, for non recuring to-dos
+     * this is the same as the start date, but, for recurring to-dos this is the date of
+     * a particular occurrence.
+     *
+     */
+    static bool usesCompletedTodoPixmap( Todo *todo, const QDate &date );
 
   public slots:
 

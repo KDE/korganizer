@@ -543,13 +543,9 @@ QList<QPixmap *> IncidenceMonthItem::icons() const
 
     Todo *todo = static_cast<Todo *>( mIncidence );
 
-    KDateTime monthItemDateTime( realStartDate(),
-                                 QTime( 0, 0 ),
-                                 KOPrefs::instance()->timeSpec() );
+    bool isCompleted = KOEventView::usesCompletedTodoPixmap( todo, realStartDate() );
 
-    if ( todo->isCompleted() ||
-         ( todo->recurs() &&
-           monthItemDateTime < todo->dtDue( false ) ) ) {
+    if ( isCompleted ) {
       ret << monthScene()->todoDonePixmap();
     } else {
       ret << monthScene()->todoPixmap();

@@ -26,6 +26,7 @@
 #include "koagendaitem.h"
 #include "koprefs.h"
 #include "koglobals.h"
+#include "koeventview.h"
 
 #include <libkdepim/kvcarddrag.h>
 
@@ -741,13 +742,7 @@ void KOAgendaItem::paintTodoIcon( QPainter *p, int &x, int y, int ft )
 
   Todo *todo = static_cast<Todo *>( mIncidence );
 
-  KDateTime agendaItemDateTime( mDate,
-                                QTime( 0, 0 ),
-                                KOPrefs::instance()->timeSpec() );
-
-  bool isCompleted = todo->isCompleted() ||
-                     ( todo->recurs() &&
-                       agendaItemDateTime < todo->dtDue( false ) );
+  bool isCompleted = KOEventView::usesCompletedTodoPixmap( todo, mDate );
 
   conditionalPaint( p, !isCompleted, x, y, ft, *todoPxmp );
   conditionalPaint( p, isCompleted, x, y, ft, *completedPxmp );
