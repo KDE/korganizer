@@ -182,7 +182,7 @@ void KOWhatsNextView::updateView()
       if ( me->status() == Attendee::NeedsAction && me->RSVP() ) {
         if ( replies == 0 ) {
           mText += "<p></p>";
-          kil.loadIcon( "mail-reply", KIconLoader::NoGroup, 22,
+          kil.loadIcon( "mail-reply-sender", KIconLoader::NoGroup, 22,
                         KIconLoader::DefaultState, QStringList(), &ipath );
           mText += "<h2><img src=\"";
           mText += ipath;
@@ -204,7 +204,7 @@ void KOWhatsNextView::updateView()
       if ( me->status() == Attendee::NeedsAction && me->RSVP() ) {
         if ( replies == 0 ) {
           mText += "<p></p>";
-          kil.loadIcon( "mail-reply", KIconLoader::NoGroup, 22,
+          kil.loadIcon( "mail-reply-sender", KIconLoader::NoGroup, 22,
                         KIconLoader::DefaultState, QStringList(), &ipath );
           mText += "<h2><img src=\"";
           mText += ipath;
