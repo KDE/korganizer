@@ -300,7 +300,7 @@ void ActionManager::initActions()
   mACollection->addAction( "downloadnewstuff", action );
   connect( action, SIGNAL(triggered(bool)), SLOT(downloadNewStuff()) );
 
-  action = new KAction( KIcon( "document-export-html" ), i18n( "Export &Web Page..." ), this );
+  action = new KAction( KIcon( "document-export" ), i18n( "Export &Web Page..." ), this );
   mACollection->addAction( "export_web", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(exportWeb()) );
 
