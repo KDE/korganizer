@@ -140,6 +140,21 @@ DateList MonthView::selectedDates()
   return list;
 }
 
+QDateTime MonthView::selectionStart()
+{
+  if ( mScene->selectedCell() ) {
+    return QDateTime( mScene->selectedCell()->date() );
+  } else {
+    return QDateTime();
+  }
+}
+
+QDateTime MonthView::selectionEnd()
+{
+  // Only one cell can be selected (for now)
+  return selectionStart();
+}
+
 bool MonthView::eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &allDay )
 {
   if ( mScene->selectedCell() ) {
