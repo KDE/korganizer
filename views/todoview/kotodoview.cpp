@@ -312,7 +312,7 @@ void KOTodoView::saveLayout( KConfig *config, const QString &group ) const
   cfgGroup.writeEntry( "FlatView", mFlatView->isChecked() );
 }
 
-void KOTodoView::restoreLayout( KConfig *config, const QString &group )
+void KOTodoView::restoreLayout( KConfig *config, const QString &group, bool minimalDefaults )
 {
   KConfigGroup cfgGroup = config->group( group );
   QHeaderView *header = mView->header();
@@ -320,20 +320,34 @@ void KOTodoView::restoreLayout( KConfig *config, const QString &group )
   QVariantList columnVisibility = cfgGroup.readEntry( "ColumnVisibility", QVariantList() );
   QVariantList columnOrder = cfgGroup.readEntry( "ColumnOrder", QVariantList() );
   QVariantList columnWidths = cfgGroup.readEntry( "ColumnWidths", QVariantList() );
-  for ( int i = 0;
-        i < header->count() && i < columnOrder.size() &&
-            i < columnWidths.size() && i < columnVisibility.size();
-        i++ ) {
-    bool visible = columnVisibility[i].toBool();
-    int width = columnWidths[i].toInt();
-    int order = columnOrder[i].toInt();
 
-    header->resizeSection( i, width );
-    header->moveSection( header->visualIndex( i ), order );
-    if ( i != 0 && !visible ) {
-      mView->hideColumn( i );
+  if ( columnVisibility.isEmpty() ) {
+    // if config is empty then use default settings
+    mView->hideColumn( eRecurColumn );
+
+    if ( minimalDefaults ) {
+      mView->hideColumn( ePriorityColumn );
+      mView->hideColumn( ePercentColumn );
+      mView->hideColumn( eDescriptionColumn );
+    }
+
+  } else {
+      for ( int i = 0; i < header->count()     &&
+                       i < columnOrder.size()  &&
+                       i < columnWidths.size() &&
+                       i < columnVisibility.size(); i++ ) {
+      bool visible = columnVisibility[i].toBool();
+      int width = columnWidths[i].toInt();
+      int order = columnOrder[i].toInt();
+
+      header->resizeSection( i, width );
+      header->moveSection( header->visualIndex( i ), order );
+      if ( i != 0 && !visible ) {
+        mView->hideColumn( i );
+      }
     }
   }
+
   int sortOrder = cfgGroup.readEntry( "SortAscending", (int)Qt::AscendingOrder );
   int sortColumn = cfgGroup.readEntry( "SortColumn", -1 );
   if ( sortColumn >= 0 ) {
