@@ -40,28 +40,7 @@
 #include <QSpacerItem>
 #include <QToolButton>
 
-ActiveLabel::ActiveLabel( QWidget *parent ) : QLabel( parent )
-{
-}
-
-void ActiveLabel::enterEvent( QEvent * )
-{
-  setFrameStyle( QFrame::Panel | QFrame::Raised );
-  setLineWidth( 1 );
-}
-
-void ActiveLabel::leaveEvent( QEvent * )
-{
-  setFrameStyle( QFrame::NoFrame );
-}
-
-void ActiveLabel::mouseReleaseEvent( QMouseEvent * )
-{
-  emit clicked();
-}
-
-NavigatorBar::NavigatorBar( QWidget *parent )
-  : QWidget( parent ), mHasMinWidth( false )
+NavigatorBar::NavigatorBar( QWidget *parent ) : QWidget( parent )
 {
   QFont tfont = font();
   tfont.setPointSize( 10 );
@@ -90,10 +69,10 @@ NavigatorBar::NavigatorBar( QWidget *parent )
     i18n( "Scroll forward to the next year" ) );
 
   // Create month name button
-  mMonth = new ActiveLabel( this );
+  mMonth = new QToolButton( this );
+  mMonth->setPopupMode( QToolButton::InstantPopup );
+  mMonth->setAutoRaise( true );
   mMonth->setFont( tfont );
-  mMonth->setAlignment( Qt::AlignCenter );
-  mMonth->setMinimumHeight( mPrevYear->sizeHint().height() );
   mMonth->setToolTip( i18n( "Select a month" ) );
 
   // set up control frame layout
@@ -142,23 +121,6 @@ void NavigatorBar::selectDates( const KCal::DateList &dateList )
     mDate = dateList.first();
 
     const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
-
-    if ( !mHasMinWidth ) {
-      // Set minimum width to width of widest month name label
-      int i;
-      int maxwidth = 0;
-
-      for ( i = 1; i <= calSys->monthsInYear( mDate ); ++i ) {
-        QString m = calSys->monthName( i, calSys->year( mDate ) );
-        int w = QFontMetrics( mMonth->font() ).width( QString( "%1 8888" ).arg( m ) );
-        if ( w > maxwidth ) {
-          maxwidth = w;
-        }
-      }
-      mMonth->setMinimumWidth( maxwidth );
-
-      mHasMinWidth = true;
-    }
 
     // set the label text at the top of the navigator
     mMonth->setText( i18nc( "monthname year", "%1 %2",

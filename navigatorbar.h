@@ -26,25 +26,10 @@
 
 #include <kcal/incidencebase.h>
 
-#include <QLabel>
+#include <QWidget>
 #include <QMouseEvent>
 
 class QToolButton;
-
-class ActiveLabel : public QLabel
-{
-  Q_OBJECT
-  public:
-    explicit ActiveLabel( QWidget *parent );
-
-  signals:
-    void clicked();
-
-  protected:
-    void enterEvent( QEvent * );
-    void leaveEvent( QEvent * );
-    void mouseReleaseEvent ( QMouseEvent * );
-};
 
 class NavigatorBar: public QWidget
 {
@@ -72,13 +57,11 @@ class NavigatorBar: public QWidget
     void selectMonth();
 
   private:
-    bool mHasMinWidth;
-
     QDate mDate;
 
     QToolButton *mPrevYear;
     QToolButton *mPrevMonth;
-    ActiveLabel *mMonth;
+    QToolButton *mMonth;
     QToolButton *mNextMonth;
     QToolButton *mNextYear;
 };
