@@ -144,26 +144,6 @@ void KOEditorGeneralJournal::initCategories( QWidget *parent, QBoxLayout *topLay
   categoriesLayout->addWidget( mCategoriesLabel, 1 );
 }
 
-void KOEditorGeneralJournal::setCategories( const QStringList &categories )
-{
-  mCategoriesLabel->setText( categories.join( "," ) );
-  mCategories = categories;
-}
-
-void KOEditorGeneralJournal::selectCategories()
-{
-  KPIM::CategorySelectDialog *categoryDialog =
-    new KPIM::CategorySelectDialog( KOPrefs::instance(), mCategoriesButton );
-  KOGlobals::fitDialogToScreen( categoryDialog );
-  categoryDialog->setSelected( mCategories );
-
-  connect( categoryDialog, SIGNAL(editCategories()), this, SIGNAL(openCategoryDialog()) );
-
-  if ( categoryDialog->exec() ) {
-    setCategories( categoryDialog->selectedCategories() );
-  }
-  delete categoryDialog;
-}
 
 void KOEditorGeneralJournal::readJournal( Journal *journal, bool tmpl )
 {
@@ -196,7 +176,7 @@ void KOEditorGeneralJournal::writeJournal( Journal *journal )
   if ( hasTime ) {
     tmpDT.setTime( mTimeEdit->getTime() );
   }
-  journal->setDtStart(tmpDT);
+  journal->setDtStart( tmpDT );
   journal->setCategories( mCategories );
 }
 
