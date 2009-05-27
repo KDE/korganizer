@@ -446,8 +446,10 @@ void KOEditorGeneralEvent::readEvent( Event *event, Calendar *calendar, bool isT
     // the rest is for the events only
     setDateTimes( event->dtStart(), event->dtEnd() );
   } else {
-    // set the start/end time from the template
-    setTimes( event->dtStart(), event->dtEnd() );
+    // set the start/end time from the template, only as a last resort #190545
+    if ( !event->dtStart().isValid() || !event->dtEnd().isValid() ) {
+      setTimes( event->dtStart(), event->dtEnd() );
+    }
   }
 
   switch( event->transparency() ) {
