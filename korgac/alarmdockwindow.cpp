@@ -48,7 +48,7 @@ AlarmDockWindow::AlarmDockWindow()
 
   mName = i18nc( "@title:window", "KOrganizer Reminder Daemon" );
   setToolTipTitle( mName );
-  setToolTipIcon( "korgac" );
+  setToolTipIconByName( "korgac" );
 
   // Set up icons
   KIconLoader::global()->addAppDir( "korgac" );
@@ -204,9 +204,9 @@ void AlarmDockWindow::slotQuit()
 void AlarmDockWindow::changeSystrayIcon( bool alarmsEnabled )
 {
   if ( alarmsEnabled ) {
-    setIcon( "korgac" );
+    setIconByName( "korgac" );
   } else {
-    setImage( mIconDisabled.pixmap( 22, 22 ) );
+    setIconByPixmap( mIconDisabled.pixmap( 22, 22 ) );
   }
 }
 
