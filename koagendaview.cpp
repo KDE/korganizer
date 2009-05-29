@@ -1571,8 +1571,9 @@ void KOAgendaView::readSettings( KConfig *config )
   QList<int> sizes = group.readEntry( "Separator AgendaView", QList<int>() );
 
   // the size depends on the number of plugins used
-  if ( sizes.count() >= 2 ) {
-    mSplitterAgenda->setSizes( sizes );
+  // we don't want to read invalid/corrupted settings or else agenda becomes invisible
+  if ( sizes.count() >= 2 && !sizes.contains( 0 ) ) {
+      mSplitterAgenda->setSizes( sizes );
   }
 
   updateConfig();
