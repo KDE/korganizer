@@ -84,6 +84,18 @@ bool KOTodoViewSortFilterProxyModel::lessThan( const QModelIndex &left,
       return mSortOrder == Qt::AscendingOrder ? false : true;
     }
   }
+
+  // To-dos without due date should appear last when sorting ascending,
+  // so you can see the most urgent tasks first. (bug #174763)
+  if ( right.column() == KOTodoModel::DueDateColumn ) {
+    bool leftIsEmpty  = sourceModel()->data( left  ).toString().isEmpty();
+    bool rightIsEmpty = sourceModel()->data( right ).toString().isEmpty();
+
+    if ( leftIsEmpty || rightIsEmpty ) {
+      return rightIsEmpty;
+    }
+  }
+
   return QSortFilterProxyModel::lessThan( left, right );
 }
 
