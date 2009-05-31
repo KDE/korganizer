@@ -214,4 +214,12 @@ bool KOEditorGeneralJournal::validateInput()
   return true;
 }
 
+bool KOEditorGeneralJournal::setAlarmOffset( Alarm *alarm, int value ) const
+{
+  Q_UNUSED( alarm );
+  Q_UNUSED( value );
+  // journals don't have alarms
+  return false;
+}
+
 #include "koeditorgeneraljournal.moc"

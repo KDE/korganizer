@@ -493,8 +493,12 @@ Alarm *KOEditorGeneral::alarmFromSimplePage() const
     } else if ( mAlarmIncrCombo->currentIndex() == 2 ) {
       j = j * ( 60 * 24 );
     }
-    alarm->setStartOffset( j );
-    return alarm;
+
+    if ( setAlarmOffset( alarm, j ) ) {
+      return alarm;
+    } else {
+      return 0;
+    }
   } else {
     return 0;
   }

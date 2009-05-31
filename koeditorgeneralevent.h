@@ -100,6 +100,9 @@ class KOEditorGeneralEvent : public KOEditorGeneral
     void acceptInvitation();
     void declineInvitation();
 
+  protected:
+    virtual bool setAlarmOffset( Alarm *alarm, int value ) const;
+
   private:
     QLabel                  *mStartDateLabel;
     QLabel                  *mEndDateLabel;

@@ -80,6 +80,9 @@ class KOEditorGeneralJournal : public KOEditorGeneral
   signals:
     void openCategoryDialog();
 
+  protected:
+    virtual bool setAlarmOffset( Alarm *alarm, int value ) const;
+
   private:
     QWidget *mParent;
     FocusLineEdit *mTitleEdit;

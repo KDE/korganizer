@@ -595,6 +595,20 @@ void KOEditorGeneralTodo::setCompletedDate()
   }
 }
 
+bool KOEditorGeneralTodo::setAlarmOffset( Alarm *alarm, int value ) const
+{
+  if ( mDueDateEdit->isEnabled() ) {
+    alarm->setEndOffset( value );
+    return true;
+  } else if ( mStartDateEdit->isEnabled() ) {
+    alarm->setStartOffset( value );
+    return true;
+  } else {
+    // Can't have alarms
+    return false;
+  }
+}
+
 void KOEditorGeneralTodo::modified( Todo *todo, int modification )
 {
   switch ( modification ) {

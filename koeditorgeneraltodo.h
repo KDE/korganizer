@@ -90,6 +90,7 @@ class KOEditorGeneralTodo : public KOEditorGeneral
 
   protected:
     void setCompletedDate();
+    virtual bool setAlarmOffset( Alarm *alarm, int value ) const;
 
   private:
     KPIM::KTimeZoneComboBox *mTimeZoneComboStart;

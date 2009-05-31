@@ -123,6 +123,8 @@ class KOEditorGeneral : public QObject
   protected:
     Alarm *alarmFromSimplePage() const;
 
+    virtual bool setAlarmOffset( Alarm *alarm, int value ) const = 0;
+
     QWidget                 *mParent;
     KLineEdit               *mSummaryEdit;
     KLineEdit               *mLocationEdit;

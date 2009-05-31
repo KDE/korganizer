@@ -625,6 +625,12 @@ bool KOEditorGeneralEvent::validateInput()
   return KOEditorGeneral::validateInput();
 }
 
+bool KOEditorGeneralEvent::setAlarmOffset( Alarm *alarm, int value ) const
+{
+  alarm->setStartOffset( value );
+  return true;
+}
+
 void KOEditorGeneralEvent::updateRecurrenceSummary( const QString &summary )
 {
   mRecurrenceSummary->setText( summary );
