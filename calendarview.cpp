@@ -912,7 +912,8 @@ void CalendarView::edit_paste()
     if ( aView && endDT.isValid() && useEndTime ) {
       if ( ( pastedEvent->allDay() && aView->selectedIsAllDay() ) ||
            ( !pastedEvent->allDay() && !aView->selectedIsAllDay() ) ) {
-        pastedEvent->setDtEnd( KDateTime( endDT, KOPrefs::instance()->timeSpec() ) );
+        KDateTime kdt( endDT, KOPrefs::instance()->timeSpec() );
+        pastedEvent->setDtEnd( kdt.toTimeSpec( pastedIncidence->dtEnd().timeSpec() ) );
       }
     }
     mChanger->addIncidence( pastedEvent, this );
