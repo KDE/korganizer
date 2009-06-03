@@ -175,7 +175,7 @@ class IncidenceChanger::ComparisonVisitor : public IncidenceBase::Visitor
   protected:
     bool visit( Event *event )
     {
-      Event *ev2 = dynamic_cast<Event*>(mIncidence2);
+      Event *ev2 = dynamic_cast<Event*>( mIncidence2 );
       if ( event && ev2 ) {
         return *event == *ev2;
       } else {
