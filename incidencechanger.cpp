@@ -116,7 +116,7 @@ bool IncidenceChanger::deleteIncidence( Incidence *incidence )
       bool notifyOrganizer = false;
       for ( QStringList::ConstIterator it = myEmails.begin(); it != myEmails.end(); ++it ) {
         QString email = *it;
-        Attendee *me = tmp->attendeeByMail(email);
+        Attendee *me = tmp->attendeeByMail( email );
         if ( me ) {
           if ( me->status() == KCal::Attendee::Accepted ||
                me->status() == KCal::Attendee::Delegated ) {
