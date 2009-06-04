@@ -94,6 +94,15 @@ bool KOTodoViewSortFilterProxyModel::lessThan( const QModelIndex &left,
     if ( leftIsEmpty || rightIsEmpty ) {
       return rightIsEmpty;
     }
+  } else if ( right.column() == KOTodoModel::PriorityColumn ) {
+    bool leftIsString   = sourceModel()->data( left  ).type() == QVariant::String;
+    bool rightIsString  = sourceModel()->data( right ).type() == QVariant::String;
+
+    // unspecified priority is a low priority, so, if we don't have two QVariant:Ints
+    // we return true if right is a string
+    if ( leftIsString || rightIsString ) {
+      return rightIsString;
+    }
   }
 
   return QSortFilterProxyModel::lessThan( left, right );
