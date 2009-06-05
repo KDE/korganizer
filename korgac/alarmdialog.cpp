@@ -195,7 +195,7 @@ void AlarmDialog::addIncidence( Incidence *incidence, const QDateTime &reminderA
       KDateTime nextStart = incidence->recurrence()->getNextDateTime(
         KDateTime( reminderAt, KDateTime::Spec::LocalZone() ) );
       if ( nextStart.isValid() ) {
-        item->setText( 1, KGlobal::locale()->formatDateTime( nextStart ) );
+        item->setText( 1, KGlobal::locale()->formatDateTime( nextStart.toLocalZone() ) );
       }
     }
     if ( item->text( 1 ).isEmpty() ) {
