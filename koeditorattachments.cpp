@@ -148,10 +148,9 @@ class AttachmentIconItem : public K3IconViewItem
 
       setRenameEnabled( true );
 
-      KMimeType::Ptr mimeType;
-      if ( !mAttachment->mimeType().isEmpty() ) {
-        mimeType = KMimeType::mimeType( mAttachment->mimeType() );
-      } else {
+      if ( mAttachment->mimeType().isEmpty() ||
+           !( KMimeType::mimeType( mAttachment->mimeType() ) ) ) {
+        KMimeType::Ptr mimeType;
         if ( mAttachment->isUri() ) {
           mimeType = KMimeType::findByUrl( mAttachment->uri() );
         } else {
