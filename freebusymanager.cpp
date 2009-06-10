@@ -85,10 +85,7 @@ FreeBusyDownloadJob::~FreeBusyDownloadJob()
 
 void FreeBusyDownloadJob::slotData( KIO::Job *, const QByteArray &data )
 {
-  QByteArray tmp = data;
-  tmp.resize( tmp.size() + 1 );
-  tmp[tmp.size()-1] = 0;
-  mFreeBusyData += tmp;
+  mFreeBusyData += data;
 }
 
 void FreeBusyDownloadJob::slotResult( KJob *job )
