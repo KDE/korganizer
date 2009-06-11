@@ -197,7 +197,7 @@ KOAgenda::KOAgenda( KOEventView *eventView, int columns, int rows, int rowSize, 
   all-day events.
 */
 KOAgenda::KOAgenda( KOEventView *eventView, int columns, QWidget *parent, Qt::WFlags f )
-  : Q3ScrollView( parent, /*name*/0, f )
+  : Q3ScrollView( parent, /*name*/0, f ), mHolidayMask( 0 ), mChanger( 0 )
 {
   mColumns = columns;
   mRows = 1;
