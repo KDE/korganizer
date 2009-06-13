@@ -478,7 +478,7 @@ void KOEventEditor::selectInvitationCounterProposal( bool enable )
 
 void KOEventEditor::show()
 {
-  mGeneral->fillEvent( &mInitialEvent );
+  fillEvent( &mInitialEvent );
   KOIncidenceEditor::show();
 }
 

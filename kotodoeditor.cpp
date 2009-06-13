@@ -406,7 +406,7 @@ QStringList &KOTodoEditor::templates() const
 
 void KOTodoEditor::show()
 {
-  mGeneral->fillTodo( &mInitialTodo );
+  fillTodo( &mInitialTodo );
   KOIncidenceEditor::show();
 }
 

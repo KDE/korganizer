@@ -283,7 +283,7 @@ QStringList &KOJournalEditor::templates() const
 
 void KOJournalEditor::show()
 {
-  mGeneral->fillJournal( &mInitialJournal );
+  fillJournal( &mInitialJournal );
   KOIncidenceEditor::show();
 }
 
