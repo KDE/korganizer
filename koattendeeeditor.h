@@ -81,7 +81,7 @@ class KOAttendeeEditor : public QWidget
      * from the addressbook and expanding distribution lists.
      * The optional Attendee parameter can be used to pass in default values
      * to be used by the new Attendee. */
-    void insertAttendeeFromAddressee( const KABC::Addressee &a, const KCal::Attendee *at=0 );
+    void insertAttendeeFromAddressee( const KABC::Addressee &a, const KCal::Attendee *at = 0 );
 
     void fillOrganizerCombo();
     virtual Q3ListViewItem *hasExampleAttendee() const = 0;
@@ -120,8 +120,8 @@ class KOAttendeeEditor : public QWidget
     QPushButton *mRemoveButton;
     QPushButton *mAddressBookButton;
 
-    QList<KCal::Attendee*> mdelAttendees;
-    QList<KCal::Attendee*> mnewAttendees;
+    QList<KCal::Attendee*> mDelAttendees;
+    QList<KCal::Attendee*> mNewAttendees;
 
   private:
     bool mDisableItemUpdate;

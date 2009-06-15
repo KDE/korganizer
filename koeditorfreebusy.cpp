@@ -863,7 +863,7 @@ void KOEditorFreeBusy::removeAttendee()
   Attendee *delA = new Attendee( item->attendee()->name(), item->attendee()->email(),
                                  item->attendee()->RSVP(), item->attendee()->status(),
                                  item->attendee()->role(), item->attendee()->uid() );
-  mdelAttendees.append( delA );
+  mDelAttendees.append( delA );
   delete item;
 
   updateStatusSummary();

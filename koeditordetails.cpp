@@ -238,7 +238,7 @@ void KOEditorDetails::removeAttendee()
   Attendee *delA = new Attendee( aItem->data()->name(), aItem->data()->email(),
                                  aItem->data()->RSVP(), aItem->data()->status(),
                                  aItem->data()->role(), aItem->data()->uid() );
-  mdelAttendees.append( delA );
+  mDelAttendees.append( delA );
 
   delete aItem;
 
