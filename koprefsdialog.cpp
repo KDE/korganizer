@@ -1319,14 +1319,14 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins( const KComponentData &inst, QWidget 
   topLayout->addWidget( buttonRow );
 
   mPositioningGroupBox = new QGroupBox( i18nc( "@title:group", "Position" ), topFrame );
-  mPositionMonthTop = new QCheckBox(
-    i18nc( "@option:check", "Show in the month view" ), mPositioningGroupBox );
+  //mPositionMonthTop = new QCheckBox(
+  //i18nc( "@option:check", "Show in the month view" ), mPositioningGroupBox );
   mPositionAgendaTop = new QRadioButton(
     i18nc( "@option:check", "Show at the top of the agenda views" ), mPositioningGroupBox );
   mPositionAgendaBottom = new QRadioButton(
     i18nc( "@option:check", "Show at the bottom of the agenda views" ), mPositioningGroupBox );
   QVBoxLayout *positioningLayout = new QVBoxLayout( mPositioningGroupBox );
-  positioningLayout->addWidget( mPositionMonthTop );
+  //positioningLayout->addWidget( mPositionMonthTop );
   positioningLayout->addWidget( mPositionAgendaTop );
   positioningLayout->addWidget( mPositionAgendaBottom );
   positioningLayout->addStretch( 1 );
@@ -1334,7 +1334,7 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins( const KComponentData &inst, QWidget 
 
   connect( mConfigureButton, SIGNAL(clicked()), SLOT(configure()) );
 
-  connect( mPositionMonthTop, SIGNAL(clicked()), SLOT(positioningChanged()) );
+  //connect( mPositionMonthTop, SIGNAL(clicked()), SLOT(positioningChanged()) );
   connect( mPositionAgendaTop, SIGNAL(clicked()), SLOT(positioningChanged()) );
   connect( mPositionAgendaBottom, SIGNAL(clicked()), SLOT(positioningChanged()) );
 
@@ -1455,13 +1455,13 @@ void KOPrefsDialogPlugins::positioningChanged()
 
   QString decoration = item->service()->desktopEntryName();
 
-  if ( mPositionMonthTop->checkState() == Qt::Checked ) {
+  /*if ( mPositionMonthTop->checkState() == Qt::Checked ) {
     if ( !mDecorationsAtMonthViewTop.contains( decoration ) ) {
       mDecorationsAtMonthViewTop.insert( decoration );
     }
   } else {
     mDecorationsAtMonthViewTop.remove( decoration );
-  }
+  }*/
 
   if ( mPositionAgendaTop->isChecked() ) {
     if ( !mDecorationsAtAgendaViewTop.contains( decoration ) ) {
@@ -1485,7 +1485,7 @@ void KOPrefsDialogPlugins::positioningChanged()
 void KOPrefsDialogPlugins::selectionChanged()
 {
   mPositioningGroupBox->hide();
-  mPositionMonthTop->setChecked( false );
+  //mPositionMonthTop->setChecked( false );
   mPositionAgendaTop->setChecked( false );
   mPositionAgendaBottom->setChecked( false );
 
@@ -1520,10 +1520,10 @@ void KOPrefsDialogPlugins::selectionChanged()
   bool hasPosition = false;
   if ( item->service()->hasServiceType( KOrg::CalendarDecoration::Decoration::serviceType() ) ) {
     QString decoration = item->service()->desktopEntryName();
-    if ( mDecorationsAtMonthViewTop.contains( decoration ) ) {
+    /*if ( mDecorationsAtMonthViewTop.contains( decoration ) ) {
       mPositionMonthTop->setChecked( true );
       hasPosition = true;
-    }
+    }*/
     if ( mDecorationsAtAgendaViewTop.contains( decoration ) ) {
       mPositionAgendaTop->setChecked( true );
       hasPosition = true;
