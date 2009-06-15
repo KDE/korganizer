@@ -62,7 +62,7 @@ class KOAttendeeEditor : public QWidget
     virtual void readIncidence( KCal::Incidence *incidence );
     virtual void fillIncidence( KCal::Incidence *incidence );
 
-    /** return a clone of the incidence with attendees to be canceld*/
+    /** return a clone of the incidence with attendees to be canceled */
     void cancelAttendeeIncidence( KCal::Incidence *incidence );
 
   public slots:
