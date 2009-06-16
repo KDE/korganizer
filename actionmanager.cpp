@@ -1133,6 +1133,8 @@ void ActionManager::exportHTML( HTMLExportSettings *settings )
   if ( !settings || settings->outputFile().isEmpty() ) {
     return;
   }
+
+  QApplication::setOverrideCursor( QCursor ( Qt::WaitCursor ) );
   settings->setEMail( KOPrefs::instance()->email() );
   settings->setName( KOPrefs::instance()->fullName() );
 
@@ -1167,6 +1169,7 @@ void ActionManager::exportHTML( HTMLExportSettings *settings )
                              i18n( "Could not upload file." ) );
     }
   }
+  QApplication::restoreOverrideCursor();
 }
 
 bool ActionManager::saveAsURL( const KUrl &url )
