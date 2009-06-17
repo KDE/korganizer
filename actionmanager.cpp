@@ -1113,6 +1113,8 @@ void ActionManager::exportHTML( HTMLExportSettings *settings )
     if(KMessageBox::questionYesNo( dialogParent(), i18n("Do you want to overwrite file \"%1\"", settings->outputFile()) ) == KMessageBox::No)
       return;
   }
+
+  QApplication::setOverrideCursor( QCursor ( Qt::WaitCursor ) );
   settings->setEMail( KOPrefs::instance()->email() );
   settings->setName( KOPrefs::instance()->fullName() );
 
@@ -1147,6 +1149,7 @@ void ActionManager::exportHTML( HTMLExportSettings *settings )
                              i18n( "Could not upload file." ) );
     }
   }
+  QApplication::restoreOverrideCursor();
 }
 
 bool ActionManager::saveAsURL( const KUrl &url )
