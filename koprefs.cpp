@@ -453,6 +453,10 @@ bool KOPrefs::thatIsMe( const QString &_email )
   KMime::HeaderParsing::parseMailbox( cursor, end, mbox );
   const QString email = mbox.addrSpec().asString();
 
+  if ( this->email() == email ) {
+    return true;
+  }
+
   for ( IdentityManager::ConstIterator it = KOCore::self()->identityManager()->begin();
         it != KOCore::self()->identityManager()->end(); ++it ) {
     if ( email == (*it).emailAddr() ) {
