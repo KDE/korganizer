@@ -243,6 +243,7 @@ endif(NOT KORG_NOPRINTER)
     koattendeeeditor.cpp
     templatemanagementdialog.cpp
     akonadicalendar.cpp
+    akonadicollectionview.cpp
   )
 
 
