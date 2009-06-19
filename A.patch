@@ -1,0 +1,1792 @@
+Index: actionmanager.h
+===================================================================
+--- actionmanager.h	(revision 983695)
++++ actionmanager.h	(working copy)
+@@ -37,18 +37,18 @@
+ #include <QDateTime>
+ #include <QObject>
+ 
+-class CalendarView;
+-class ImportDialog;
+-class KOWindowList;
+-class ResourceView;
+-
+ namespace KCal {
+   class Calendar;
+-  class CalendarResources;
+   class HTMLExportSettings;
+   class Incidence;
+-  class ResourceCalendar;
++  class AkonadiCalendar;
+ }
++
++class AkonadiCollectionView;
++class CalendarView;
++class ImportDialog;
++class KOWindowList;
++
+ using namespace KCal;
+ 
+ class KRecentFilesAction;
+@@ -259,8 +259,10 @@
+     */
+     void closingDown();
+ 
++#if 0 //sebsauer
+     /** Indicates that a new resource was added */
+     void resourceAdded( ResourceCalendar * );
++#endif
+ 
+   public slots:
+     /**
+@@ -437,9 +439,13 @@
+ 
+     // Either mCalendar *or* mCalendarResources is set.
+     Calendar *mCalendar;
++#if 0 //sebsauer
+     CalendarResources *mCalendarResources;
+-
+     ResourceView *mResourceView;
++#else
++    AkonadiCalendar *mCalendarResources;
++    AkonadiCollectionView *mResourceView;
++#endif
+ 
+     bool mIsClosing;
+ };
+Index: stdcalendar.h
+===================================================================
+--- stdcalendar.h	(revision 983695)
++++ stdcalendar.h	(working copy)
+@@ -22,16 +22,18 @@
+ #define KORG_STDCALENDAR_H
+ 
+ #include "korganizer_export.h"
+-#include <kcal/calendarresources.h>
++#include "akonadicalendar.h"
+ 
+ namespace KOrg {
+ 
+-class KORGANIZER_CALENDAR_EXPORT StdCalendar : public KCal::CalendarResources
++class KORGANIZER_CALENDAR_EXPORT StdCalendar : public KCal::AkonadiCalendar
+ {
+   public:
+     static StdCalendar *self();
+     ~StdCalendar();
+ 
++    void load();
++
+   private:
+     StdCalendar();
+ 
+Index: korganizer.cpp
+===================================================================
+--- korganizer.cpp	(revision 983695)
++++ korganizer.cpp	(working copy)
+@@ -38,7 +38,7 @@
+ #include "kocore.h"
+ #include "actionmanager.h"
+ #include "koglobals.h"
+-#include "resourceview.h"
++#include "akonadicollectionview.h"
+ #include "korganizerifaceimpl.h"
+ 
+ #include <korganizer/part.h>
+@@ -47,8 +47,6 @@
+ #include <libkdepim/progressdialog.h>
+ 
+ #include <kcal/calendarlocal.h>
+-#include <kcal/calendarresources.h>
+-#include <kcal/resourcecalendar.h>
+ 
+ #include <kio/netaccess.h>
+ 
+Index: koeventeditor.cpp
+===================================================================
+--- koeventeditor.cpp	(revision 983695)
++++ koeventeditor.cpp	(working copy)
+@@ -35,8 +35,6 @@
+ #include "kodialogmanager.h"
+ #include "incidencechanger.h"
+ 
+-#include <kcal/calendarresources.h>
+-#include <kcal/resourcecalendar.h>
+ #include <kcal/incidenceformatter.h>
+ #include <kcal/calendarlocal.h>
+ 
+Index: akonadicollectionview.h
+===================================================================
+--- akonadicollectionview.h	(revision 983823)
++++ akonadicollectionview.h	(working copy)
+@@ -110,11 +110,12 @@
+   public:
+     explicit AkonadiCollectionView( KCal::AkonadiCalendar *calendar, QWidget *parent = 0 );
+     ~AkonadiCollectionView();
++    AkonadiCalendar *calendar() const { return mCalendar; }
+ 
+-    AkonadiCalendar *calendar() const { return mCalendar; }
+-#if 0
+     void updateView();
+ 
++#if 0
++
+     void emitResourcesChanged();
+ 
+     void requestClose( ResourceCalendar * );
+Index: kohelper.cpp
+===================================================================
+--- kohelper.cpp	(revision 983695)
++++ kohelper.cpp	(working copy)
+@@ -24,11 +24,10 @@
+ 
+ #include "kohelper.h"
+ #include "koprefs.h"
++#include "akonadicalendar.h"
+ 
+ #include <kcal/incidence.h>
+ #include <kcal/calendar.h>
+-#include <kcal/calendarresources.h>
+-#include <kcal/resourcecalendar.h>
+ 
+ #include <kdatetime.h>
+ #include <kdebug.h>
+@@ -47,12 +46,11 @@
+   QColor resourceColor = QColor(); //Default invalid color
+   //FIXME: dynamic_cast are dirty, Better We implements interface to get
+   // the color from the calendar
+-  KCal::CalendarResources *calendarResource =
+-    dynamic_cast<KCal::CalendarResources*>( calendar );
++  KCal::AkonadiCalendar *calendarResource = dynamic_cast<KCal::AkonadiCalendar*>( calendar );
+ 
+   if ( calendarResource ) {
+-    KCal::ResourceCalendar *resourceCalendar =
+-      calendarResource->resource( incidence );
++#if 0 //sebsauer
++    KCal::ResourceCalendar *resourceCalendar = calendarResource->resource( incidence );
+ 
+     if ( resourceCalendar ) {
+       QString identifier = resourceCalendar->identifier();
+@@ -70,7 +68,10 @@
+       }
+     }
+ //   } else {
+-//     kDebug(5850) <<"resourceColor: Calendar is not a CalendarResources";
++//     kDebug(5850) <<"resourceColor: Calendar is not a AkonadiCalendar";
++#else
++    kWarning()<<"TODO";
++#endif
+   }
+   return resourceColor;
+ }
+@@ -90,11 +91,11 @@
+ 
+ QString KOHelper::resourceLabel( KCal::Calendar *calendar, KCal::Incidence *incidence )
+ {
+-  KCal::CalendarResources *calendarResource = dynamic_cast<KCal::CalendarResources*>( calendar );
++  KCal::AkonadiCalendar *calendarResource = dynamic_cast<KCal::AkonadiCalendar*>( calendar );
+   if ( !calendarResource || ! incidence ) {
+     return QString();
+   }
+-
++#if 0 //sebsauer
+   KCal::ResourceCalendar *resourceCalendar = calendarResource->resource( incidence );
+   if ( resourceCalendar ) {
+     if ( !resourceCalendar->subresources().isEmpty() ) {
+@@ -107,7 +108,9 @@
+     }
+     return resourceCalendar->resourceName();
+   }
+-
++#else
++  kWarning()<<"TODO";
++#endif
+   return QString();
+ }
+ 
+Index: actionmanager.cpp
+===================================================================
+--- actionmanager.cpp	(revision 983695)
++++ actionmanager.cpp	(working copy)
+@@ -41,8 +41,9 @@
+ #include "koviewmanager.h"
+ #include "kowindowlist.h"
+ #include "reminderclient.h"
+-#include "resourceview.h"
+ #include "stdcalendar.h"
++#include "akonadicalendar.h"
++#include "akonadicollectionview.h"
+ 
+ #include <KCal/CalendarLocal>
+ #include <KCal/FileStorage>
+@@ -129,8 +130,12 @@
+ // see the Note: below for why this method is necessary
+ void ActionManager::init()
+ {
++#if 0 //sebsauer
+   // Construct the groupware object
+   KOGroupware::create( mCalendarView, mCalendarResources );
++#else
++  kWarning()<<"TODO";
++#endif
+ 
+   // add this instance of the window to the static list.
+   if ( !mWindowList ) {
+@@ -193,7 +198,7 @@
+ void ActionManager::createCalendarResources()
+ {
+   mCalendarResources = KOrg::StdCalendar::self();
+-
++#if 0 //sebsauer
+   CalendarResourceManager *manager = mCalendarResources->resourceManager();
+ 
+   kDebug() << "CalendarResources used by KOrganizer:";
+@@ -202,16 +207,20 @@
+     kDebug() << (*it)->resourceName();
+     (*it)->setResolveConflict( true );
+   }
+-
++#endif
+   setDestinationPolicy();
+ 
+   mCalendarView->setCalendar( mCalendarResources );
+   mCalendarView->readSettings();
+-
++#if 0 //sebsauer
+   ResourceViewFactory factory( mCalendarResources, mCalendarView );
+   mCalendarView->addExtension( &factory );
+   mResourceView = factory.resourceView();
+-
++#else
++  AkonadiCollectionViewFactory factory( mCalendarResources, mCalendarView );
++  mCalendarView->addExtension( &factory );
++  mResourceView = factory.collectionView();
++#endif
+   connect( mCalendarResources, SIGNAL(calendarChanged()),
+            mCalendarView, SLOT(resourcesChanged()) );
+   connect( mCalendarResources, SIGNAL(calendarLoaded()),
+@@ -758,7 +767,9 @@
+   config.sync();
+ 
+   if ( mCalendarResources ) {
++#if 0 //sebsauer
+     mCalendarResources->resourceManager()->writeConfig();
++#endif
+   }
+ }
+ 
+@@ -986,6 +997,7 @@
+ 
+ bool ActionManager::addResource( const KUrl &mUrl )
+ {
++#if 0 //sebsauer
+   CalendarResources *cr = KOrg::StdCalendar::self();
+   CalendarResourceManager *manager = cr->resourceManager();
+   ResourceCalendar *resource = 0;
+@@ -1025,6 +1037,9 @@
+                         name );
+     KMessageBox::error( dialogParent(), msg );
+   }
++#else
++  kWarning()<<"TODO";
++#endif
+   return true;
+ }
+ 
+@@ -1370,6 +1385,7 @@
+ 
+ void ActionManager::setDestinationPolicy()
+ {
++#if 0 //sebsauer
+   if ( mCalendarResources ) {
+     if ( KOPrefs::instance()->mDestination == KOPrefs::askDestination ) {
+       mCalendarResources->setAskDestinationPolicy();
+@@ -1377,6 +1393,7 @@
+       mCalendarResources->setStandardDestinationPolicy();
+     }
+   }
++#endif
+ }
+ 
+ void ActionManager::configureDateTime()
+@@ -2047,7 +2064,7 @@
+   if ( !mCalendarResources ) {
+     return false;
+   }
+-
++#if 0 //sebsauer
+   CalendarResourceManager *m = mCalendarResources->resourceManager();
+   CalendarResourceManager::ActiveIterator it;
+   for ( it = m->activeBegin(); it != m->activeEnd(); ++it ) {
+@@ -2068,6 +2085,9 @@
+       }
+     }
+   }
++#else
++  kWarning()<<"TODO";
++#endif
+   return true;
+ }
+ 
+Index: stdcalendar.cpp
+===================================================================
+--- stdcalendar.cpp	(revision 983695)
++++ stdcalendar.cpp	(working copy)
+@@ -20,6 +20,7 @@
+ */
+ 
+ #include "stdcalendar.h"
++#include "akonadicalendar.h"
+ 
+ #include <kcal/resourcecalendar.h>
+ #include <libkdepim/kpimprefs.h>
+@@ -45,10 +46,10 @@
+ }
+ 
+ StdCalendar::StdCalendar()
+-  : CalendarResources( KPIM::KPimPrefs::timeSpec() )
++  : KCal::AkonadiCalendar( KPIM::KPimPrefs::timeSpec() )
+ {
++#if 0 //sebsauer
+   readConfig();
+-
+   KCal::CalendarResourceManager *manager = resourceManager();
+   if ( manager->isEmpty() ) {
+     KConfig _config( "korganizerrc" );
+@@ -104,9 +105,16 @@
+       kDebug() << "Unable to add a Birthdays resource";
+     }
+   }
++#endif
+ }
+ 
+ StdCalendar::~StdCalendar()
+ {
+   mSelf = 0;
+ }
++
++void StdCalendar::load()
++{
++  //sebsauer
++  kWarning()<<"TODO";
++}
+Index: kotodoeditor.cpp
+===================================================================
+--- kotodoeditor.cpp	(revision 983695)
++++ kotodoeditor.cpp	(working copy)
+@@ -36,8 +36,6 @@
+ #include "incidencechanger.h"
+ 
+ #include <kcal/calendarlocal.h>
+-#include <kcal/calendarresources.h>
+-#include <kcal/resourcecalendar.h>
+ 
+ #include <kiconloader.h>
+ #include <klocale.h>
+Index: kodaymatrix.cpp
+===================================================================
+--- kodaymatrix.cpp	(revision 983695)
++++ kodaymatrix.cpp	(working copy)
+@@ -29,8 +29,8 @@
+ #include "kodaymatrix.h"
+ #include "koglobals.h"
+ #include "koprefs.h"
++#include "akonadicalendar.h"
+ 
+-#include <KCal/CalendarResources>
+ #include <KCal/DndFactory>
+ #include <KCal/ICalDrag>
+ #include <KCal/VCalDrag>
+@@ -102,8 +102,9 @@
+ 
+   mCalendar = cal;
+   mCalendar->registerObserver( this );
+-  CalendarResources *calres = dynamic_cast<CalendarResources*>( cal );
++  AkonadiCalendar *calres = dynamic_cast<AkonadiCalendar*>( cal );
+   if ( calres ) {
++//sebsauer; needed?
+     connect( calres, SIGNAL(signalResourceAdded(ResourceCalendar *)),
+              SLOT(resourcesChanged()) );
+     connect( calres, SIGNAL(signalResourceModified(ResourceCalendar *)),
+Index: views/timelineview/kotimelineview.cpp
+===================================================================
+--- views/timelineview/kotimelineview.cpp	(revision 983695)
++++ views/timelineview/kotimelineview.cpp	(working copy)
+@@ -27,12 +27,12 @@
+ #include "koglobals.h"
+ #include "koprefs.h"
+ #include "timelineitem.h"
++#include "akonadicalendar.h"
+ 
+ #include <kdgantt1/KDGanttViewTaskItem.h>
+ #include <kdgantt1/KDGanttViewSubwidgets.h>
+ 
+ #include <kcal/calendar.h>
+-#include <kcal/calendarresources.h>
+ 
+ #include <QLayout>
+ 
+@@ -114,14 +114,14 @@
+ 
+   // item for every calendar
+   TimelineItem *item = 0;
+-  CalendarResources *calres = dynamic_cast<CalendarResources *>( calendar() );
++  AkonadiCalendar *calres = dynamic_cast<AkonadiCalendar *>( calendar() );
+   if ( !calres ) {
+     item = new TimelineItem( i18n( "Calendar" ), mGantt );
+     mCalendarItemMap[0][QString()] = item;
+   } else {
++#if 0 
+     CalendarResourceManager *manager = calres->resourceManager();
+-    for ( CalendarResourceManager::ActiveIterator it = manager->activeBegin();
+-          it != manager->activeEnd(); ++it ) {
++    for ( CalendarResourceManager::ActiveIterator it = manager->activeBegin(); it != manager->activeEnd(); ++it ) {
+       QColor resourceColor = KOPrefs::instance()->resourceColor( (*it)->identifier() );
+       if ( (*it)->canHaveSubresources() ) {
+         QStringList subResources = (*it)->subresources();
+@@ -151,6 +151,10 @@
+         mCalendarItemMap[*it][QString()] = item;
+       }
+     }
++#else
++    //TODO
++    kWarning();
++#endif
+   }
+ 
+   // add incidences
+@@ -246,11 +250,12 @@
+ 
+ TimelineItem *KOTimelineView::calendarItemForIncidence( KCal::Incidence *incidence )
+ {
+-  CalendarResources *calres = dynamic_cast<CalendarResources *>( calendar() );
++  AkonadiCalendar *calres = dynamic_cast<AkonadiCalendar *>( calendar() );
+   TimelineItem *item = 0;
+   if ( !calres ) {
+     item = mCalendarItemMap[0][QString()];
+   } else {
++#if 0 //sebsauer
+     ResourceCalendar *res = calres->resource( incidence );
+     if ( !res ) {
+       return 0;
+@@ -261,6 +266,9 @@
+     } else {
+       item = mCalendarItemMap[res][QString()];
+     }
++#else
++    kWarning()<<"TODO";
++#endif
+   }
+   return item;
+ }
+Index: views/multiagendaview/multiagendaview.cpp
+===================================================================
+--- views/multiagendaview/multiagendaview.cpp	(revision 983695)
++++ views/multiagendaview/multiagendaview.cpp	(working copy)
+@@ -21,9 +21,8 @@
+ #include "timelabelszone.h"
+ #include "views/agendaview/koagenda.h"
+ #include "views/agendaview/koagendaview.h"
++#include "akonadicalendar.h"
+ 
+-#include <kcal/calendarresources.h>
+-
+ #include <KGlobalSettings>
+ #include <KHBox>
+ #include <KVBox>
+@@ -106,7 +105,7 @@
+ 
+   deleteViews();
+ 
+-  CalendarResources *calres = dynamic_cast<CalendarResources*>( calendar() );
++  AkonadiCalendar *calres = dynamic_cast<AkonadiCalendar*>( calendar() );
+   if ( !calres ) {
+     // fallback to single-agenda
+     KOAgendaView *av = new KOAgendaView( calendar(), mTopBox );
+@@ -114,16 +113,15 @@
+     mAgendaWidgets.append( av );
+     av->show();
+   } else {
++#if 0 //sebsauer
+     CalendarResourceManager *manager = calres->resourceManager();
+-    for ( CalendarResourceManager::ActiveIterator it = manager->activeBegin();
+-          it != manager->activeEnd(); ++it ) {
++    for ( CalendarResourceManager::ActiveIterator it = manager->activeBegin(); it != manager->activeEnd(); ++it ) {
+       if ( (*it)->canHaveSubresources() ) {
+         QStringList subResources = (*it)->subresources();
+         for ( QStringList::ConstIterator subit = subResources.constBegin();
+               subit != subResources.constEnd(); ++subit ) {
+           QString type = (*it)->subresourceType( *subit );
+-          if ( !(*it)->subresourceActive( *subit ) ||
+-               ( !type.isEmpty() && type != "event" ) ) {
++          if ( !(*it)->subresourceActive( *subit ) || ( !type.isEmpty() && type != "event" ) ) {
+             continue;
+           }
+           addView( (*it)->labelForSubresource( *subit ), *it, *subit );
+@@ -132,6 +130,9 @@
+         addView( (*it)->resourceName(), *it );
+       }
+     }
++#else
++    kWarning()<<"TODO";
++#endif
+   }
+ 
+   // no resources activated, so stop here to avoid crashing somewhere down the line
+Index: views/multiagendaview/multiagendaview.h
+===================================================================
+--- views/multiagendaview/multiagendaview.h	(revision 983695)
++++ views/multiagendaview/multiagendaview.h	(working copy)
+@@ -71,8 +71,7 @@
+     void showEvent( QShowEvent *event );
+ 
+   private:
+-    void addView( const QString &label, KCal::ResourceCalendar *res,
+-                  const QString &subRes = QString() );
++    void addView( const QString &label, KCal::ResourceCalendar *res, const QString &subRes = QString() );
+     void deleteViews();
+     void recreateViews();
+     void setupViews();
+Index: views/agendaview/koagendaview.cpp
+===================================================================
+--- views/agendaview/koagendaview.cpp	(revision 983695)
++++ views/agendaview/koagendaview.cpp	(working copy)
+@@ -35,11 +35,12 @@
+ #include "koglobals.h"
+ #include "koprefs.h"
+ #include "timelabelszone.h"
++#include "akonadicalendar.h"
++
+ using namespace KOrg;
+ 
+ #include <KCal/CalFilter>
+ #include <KCal/DndFactory>
+-#include <KCal/CalendarResources>
+ 
+ #include <KCalendarSystem>
+ #include <KGlobalSettings>
+@@ -1627,11 +1628,12 @@
+     return true;
+   }
+ 
+-  CalendarResources *calRes = dynamic_cast<CalendarResources*>( calendar() );
++  AkonadiCalendar *calRes = dynamic_cast<AkonadiCalendar*>( calendar() );
+   if ( !calRes ) {
+     return true;
+   }
+ 
++#if 0 //sebsauer
+   if ( calRes->resource( incidence ) != mResource ) {
+     return false;
+   }
+@@ -1641,6 +1643,9 @@
+       return false;
+     }
+   }
++#else
++  kWarning()<<"TODO";
++#endif
+   return true;
+ }
+ 
+Index: views/agendaview/agendaview.cpp
+===================================================================
+--- views/agendaview/agendaview.cpp	(revision 983695)
++++ views/agendaview/agendaview.cpp	(working copy)
+@@ -17,15 +17,16 @@
+ */
+ 
+ #include "agendaview.h"
+-#include <kcal/calendarresources.h>
++#include "akonadicalendar.h"
+ 
+ using namespace KOrg;
+ 
+ AgendaView::AgendaView( Calendar *cal, QWidget *parent )
+   : KOEventView( cal, parent )
+ {
+-  KCal::CalendarResources *calres = dynamic_cast<KCal::CalendarResources *>( cal );
++  KCal::AkonadiCalendar *calres = dynamic_cast<KCal::AkonadiCalendar *>( cal );
+   if ( calres ) {
++//sebsauer; needed?
+     connect( calres, SIGNAL(signalResourceAdded(ResourceCalendar *)),
+              SLOT(setUpdateNeeded()) );
+     connect( calres, SIGNAL(signalResourceModified(ResourceCalendar *)),
+Index: akonadicollectionview.cpp
+===================================================================
+--- akonadicollectionview.cpp	(revision 983823)
++++ akonadicollectionview.cpp	(working copy)
+@@ -322,8 +322,6 @@
+ 
+   setMinimumHeight( 50 );
+   mListView->setSortingEnabled( true );
+-
+-  updateView();
+ #else
+   Akonadi::CollectionModel *collectionmodel = new Akonadi::CollectionModel( this );
+   Akonadi::CollectionFilterProxyModel *collectionproxymodel = new Akonadi::CollectionFilterProxyModel( this );
+@@ -341,15 +339,16 @@
+   
+   topLayout->addWidget( collectionview );
+ #endif
++  updateView();
+ }
+ 
+ AkonadiCollectionView::~AkonadiCollectionView()
+ {
+ }
+ 
+-#if 0
+ void AkonadiCollectionView::updateView()
+ {
++#if 0
+   mListView->clear();
+ 
+   KCal::CalendarResourceManager *manager = mCalendar->resourceManager();
+@@ -362,8 +361,10 @@
+   mListView->sortItems( 0, Qt::AscendingOrder );
+ 
+   emit emitResourcesChanged();
++#endif
+ }
+ 
++#if 0
+ void AkonadiCollectionView::emitResourcesChanged()
+ {
+   mCalendar->resourceManager()->writeConfig();
+Index: resourceview.cpp
+===================================================================
+--- resourceview.cpp	(revision 983695)
++++ resourceview.cpp	(working copy)
+@@ -1,829 +0,0 @@
+-/*
+-  This file is part of KOrganizer.
+-
+-  Copyright (c) 2003,2004 Cornelius Schumacher <schumacher@kde.org>
+-  Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+-
+-  This program is free software; you can redistribute it and/or modify
+-  it under the terms of the GNU General Public License as published by
+-  the Free Software Foundation; either version 2 of the License, or
+-  (at your option) any later version.
+-
+-  This program is distributed in the hope that it will be useful,
+-  but WITHOUT ANY WARRANTY; without even the implied warranty of
+-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+-  GNU General Public License for more details.
+-
+-  You should have received a copy of the GNU General Public License along
+-  with this program; if not, write to the Free Software Foundation, Inc.,
+-  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+-
+-  As a special exception, permission is given to link this program
+-  with any edition of Qt, and distribute the resulting executable,
+-  without including the source code for Qt in the source distribution.
+-*/
+-
+-#include "resourceview.h"
+-#include "koprefs.h"
+-
+-#include <KCal/CalendarResources>
+-#include <KCal/ResourceCalendar>
+-#include <KResources/ConfigDialog>
+-
+-#include <KColorCollection>
+-#include <KColorDialog>
+-#include <KDebug>
+-#include <KDialog>
+-#include <KInputDialog>
+-#include <KLocale>
+-#include <KMessageBox>
+-#include <KRandom>
+-
+-#include <QHBoxLayout>
+-#include <QHeaderView>
+-#include <QLabel>
+-#include <QMenu>
+-#include <QPixmap>
+-#include <QToolButton>
+-#include <QVBoxLayout>
+-
+-#include <QDBusInterface>
+-#include <QDBusReply>
+-
+-ResourceViewFactory::ResourceViewFactory( KCal::CalendarResources *calendar,
+-                                          CalendarView *view )
+-  : mCalendar( calendar ), mView( view ), mResourceView( 0 )
+-{
+-}
+-
+-CalendarViewExtension *ResourceViewFactory::create( QWidget *parent )
+-{
+-  mResourceView = new ResourceView( mCalendar, parent );
+-
+-  QObject::connect( mResourceView, SIGNAL(resourcesChanged()),
+-                    mView, SLOT(resourcesChanged()) );
+-  QObject::connect( mResourceView, SIGNAL(resourcesChanged()),
+-                    mView, SLOT(updateCategories()) );
+-
+-  QObject::connect( mCalendar,
+-                    SIGNAL(signalResourceAdded(ResourceCalendar *)),
+-                    mResourceView,
+-                    SLOT(addResourceItem(ResourceCalendar *)) );
+-  QObject::connect( mCalendar,
+-                    SIGNAL(signalResourceModified(ResourceCalendar *)),
+-                    mResourceView,
+-                    SLOT(updateResourceItem(ResourceCalendar *)) );
+-  QObject::connect( mCalendar, SIGNAL(signalResourceAdded(ResourceCalendar *)),
+-                    mView, SLOT(updateCategories()) );
+-  QObject::connect( mCalendar, SIGNAL(signalResourceModified(ResourceCalendar *)),
+-                    mView, SLOT(updateCategories()) );
+-
+-  return mResourceView;
+-}
+-
+-ResourceView *ResourceViewFactory::resourceView() const
+-{
+-  return mResourceView;
+-}
+-
+-ResourceItem::ResourceItem( ResourceCalendar *resource, ResourceView *view,
+-                            QTreeWidget *parent )
+-  : QTreeWidgetItem( parent ),
+-    mResource( resource ), mView( view ), mBlockStateChange( false ),
+-    mIsSubresource( false ), mResourceIdentifier( QString() ),
+-    mSubItemsCreated( false ), mIsStandardResource( false ),
+-    mIsReloading( false )
+-{
+-  setFlags( flags() | Qt::ItemIsUserCheckable );
+-
+-  setText( 0, resource->resourceName() );
+-  mResourceColor = KOPrefs::instance()->resourceColor( resource->identifier() );
+-  setGuiState();
+-
+-  if ( mResource->isActive() ) {
+-    createSubresourceItems();
+-  }
+-}
+-
+-void ResourceItem::createSubresourceItems()
+-{
+-  const QStringList subresources = mResource->subresources();
+-  if ( !subresources.isEmpty() ) {
+-    setExpanded( true );
+-    // This resource has subresources
+-    QStringList::ConstIterator it;
+-    for ( it = subresources.constBegin(); it != subresources.constEnd(); ++it ) {
+-      if ( !mView->findItemByIdentifier( *it ) ) {
+-        new ResourceItem( mResource, *it, mResource->labelForSubresource( *it ),
+-                          mView, this );
+-      }
+-    }
+-  }
+-  mSubItemsCreated = true;
+-}
+-
+-bool ResourceItem::useColors() const
+-{
+-  // assign a color, but only if this is a resource that actually
+-  // hold items at top level
+-  return ( KOPrefs::instance()->agendaViewColors() != KOPrefs::CategoryOnly ||
+-           KOPrefs::instance()->monthViewColors()  != KOPrefs::MonthItemCategoryOnly )  &&
+-         ( mIsSubresource || ( !mIsReloading && mResource->subresources().isEmpty() ) ||
+-           !mResource->canHaveSubresources() );
+-}
+-
+-QVariant ResourceItem::data( int column, int role ) const
+-{
+-  if ( column == 0 &&
+-       role == Qt::DecorationRole &&
+-       mResourceColor.isValid() &&
+-       useColors() ) {
+-    return QVariant( mResourceColor );
+-  } else {
+-    return QTreeWidgetItem::data( column, role );
+-  }
+-}
+-
+-ResourceItem::ResourceItem( KCal::ResourceCalendar *resource,
+-                            const QString &sub, const QString &label,
+-                            ResourceView *view, ResourceItem *parent )
+-
+-  : QTreeWidgetItem( parent ), mResource( resource ),
+-    mView( view ), mBlockStateChange( false ), mIsSubresource( true ),
+-    mSubItemsCreated( false ), mIsStandardResource( false ), mActive( false ),
+-    mIsReloading( false )
+-{
+-  setFlags( flags() | Qt::ItemIsUserCheckable );
+-  setText( 0, label );
+-  mResourceColor = KOPrefs::instance()->resourceColor( sub );
+-  mResourceIdentifier = sub;
+-  setGuiState();
+-
+-  treeWidget()->setRootIsDecorated( true );
+-}
+-
+-void ResourceItem::setGuiState()
+-{
+-  mBlockStateChange = true;
+-  if ( mIsSubresource ) {
+-    setOn( mResource->subresourceActive( mResourceIdentifier ) );
+-  } else {
+-    setOn( mResource->isActive() );
+-  }
+-  mBlockStateChange = false;
+-}
+-
+-void ResourceItem::setOn( bool checked )
+-{
+-  if ( checked ) {
+-    setCheckState( 0, Qt::Checked );
+-  } else {
+-    setCheckState( 0, Qt::Unchecked );
+-  }
+-  mActive = checked;
+-}
+-
+-void ResourceItem::stateChange( bool active )
+-{
+-  if ( mActive == active ) {
+-    return;
+-  }
+-
+-  if ( mBlockStateChange ) {
+-    return;
+-  }
+-
+-  if ( mIsSubresource ) {
+-    mResource->setSubresourceActive( mResourceIdentifier, active );
+-  } else {
+-    if ( active ) {
+-      if ( mResource->load() ) {
+-        mResource->setActive( true );
+-        if ( !mSubItemsCreated ) {
+-          createSubresourceItems();
+-        }
+-      }
+-    } else {
+-      // mView->requestClose must be called before mResource->save() because
+-      // save causes closeResource do be called.
+-      mView->requestClose( mResource );
+-      if ( mResource->save() ) {
+-        mResource->setActive( false );
+-      }
+-    }
+-
+-    setExpanded( mResource->isActive() && childCount() > 0 );
+-  }
+-
+-  setGuiState();
+-  mView->emitResourcesChanged();
+-}
+-
+-void ResourceItem::update()
+-{
+-  setGuiState();
+-}
+-
+-void ResourceItem::setResourceColor( QColor &color )
+-{
+-  mResourceColor = color ;
+-}
+-
+-void ResourceItem::setStandardResource( bool std )
+-{
+-  QFont font = qvariant_cast<QFont>( data( 0, Qt::FontRole ) );
+-  font.setBold( std );
+-  setData( 0, Qt::FontRole, font );
+-}
+-
+-ResourceView::ResourceView( KCal::CalendarResources *calendar, QWidget *parent )
+-  : CalendarViewExtension( parent ), mCalendar( calendar )
+-{
+-  QVBoxLayout *topLayout = new QVBoxLayout( this );
+-  topLayout->setSpacing( KDialog::spacingHint() );
+-
+-  QHBoxLayout *buttonBox = new QHBoxLayout();
+-  buttonBox->setSpacing( KDialog::spacingHint() );
+-  topLayout->addLayout( buttonBox );
+-
+-  mListView = new QTreeWidget( this );
+-  mListView->setWhatsThis(
+-    i18n( "<qt><p>Select on this list the active KOrganizer "
+-          "resources. Check the resource box to make it "
+-          "active. Use the context menu to add, remove or edit "
+-          "resources in the list.</p>"
+-          "<p>Events, journal entries and to-dos are retrieved "
+-          "and stored on resources. Available "
+-          "resources include groupware servers, local files, "
+-          "journal entries as blogs on a server, etc...</p>"
+-          "<p>If you have more than one active resource, "
+-          "when creating incidents you will either automatically "
+-          "use the default resource or be prompted "
+-          "to select the resource to use.</p></qt>" ) );
+-  mListView->setRootIsDecorated( false );
+-  mListView->setHeaderLabel( i18n( "Calendars" ) );
+-  mListView->header()->hide();
+-  topLayout->addWidget( mListView );
+-
+-  mSelectedParent = 0;
+-
+-  connect( mListView, SIGNAL(itemDoubleClicked(QTreeWidgetItem *,int)),
+-           SLOT(editResource()) );
+-  connect( mListView, SIGNAL(itemClicked(QTreeWidgetItem *,int)),
+-           SLOT(slotItemClicked(QTreeWidgetItem *,int)) );
+-  connect( mListView, SIGNAL(currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)),
+-           SLOT(currentChanged()) );
+-
+-  mListView->setContextMenuPolicy( Qt::CustomContextMenu );
+-  connect( mListView, SIGNAL(customContextMenuRequested(const QPoint &)),
+-           SLOT(showContextMenu(const QPoint &)) );
+-
+-  QLabel *calLabel = new QLabel( i18n( "Calendar" ), this );
+-  buttonBox->addWidget( calLabel );
+-  buttonBox->addStretch( 1 );
+-
+-  mAddButton = new QToolButton( this );
+-  mAddButton->setIcon( KIcon( "list-add" ) );
+-  buttonBox->addWidget( mAddButton );
+-  mAddButton->setToolTip( i18n( "Add calendar" ) );
+-  mAddButton->setWhatsThis(
+-                   i18n( "<qt><p>Press this button to add a resource to "
+-                         "KOrganizer.</p>"
+-                         "<p>Events, journal entries and to-dos are retrieved "
+-                         "and stored on resources. Available "
+-                         "resources include groupware servers, local files, "
+-                         "journal entries as blogs on a server, etc... </p>"
+-                         "<p>If you have more than one active resource, "
+-                         "when creating incidents you will either automatically "
+-                         "use the default resource or be prompted "
+-                         "to select the resource to use.</p></qt>" ) );
+-  mEditButton = new QToolButton( this );
+-  mEditButton->setIcon( KIcon( "document-properties" ) );
+-  buttonBox->addWidget( mEditButton );
+-  mEditButton->setToolTip( i18n( "Edit calendar settings" ) );
+-  mEditButton->setWhatsThis(
+-                   i18n( "Press this button to edit the resource currently "
+-                         "selected on the KOrganizer resources list above." ) );
+-  mDeleteButton = new QToolButton( this );
+-  mDeleteButton->setIcon( KIcon( "edit-delete" ) );
+-  buttonBox->addWidget( mDeleteButton );
+-  mDeleteButton->setToolTip( i18n( "Remove calendar" ) );
+-  mDeleteButton->setWhatsThis(
+-                   i18n( "Press this button to delete the resource currently "
+-                         "selected on the KOrganizer resources list above." ) );
+-  mDeleteButton->setDisabled( true );
+-  mEditButton->setDisabled( true );
+-
+-  connect( mAddButton, SIGNAL( clicked() ), SLOT( slotAddButtonClicked() ) );
+-  connect( mDeleteButton, SIGNAL( clicked() ), SLOT( removeResource() ) );
+-  connect( mEditButton, SIGNAL( clicked() ), SLOT( editResource() ) );
+-
+-  setMinimumHeight( 50 );
+-  mListView->setSortingEnabled( true );
+-
+-  updateView();
+-}
+-
+-ResourceView::~ResourceView()
+-{
+-}
+-
+-void ResourceView::updateView()
+-{
+-  mListView->clear();
+-
+-  KCal::CalendarResourceManager *manager = mCalendar->resourceManager();
+-
+-  KCal::CalendarResourceManager::Iterator it;
+-  for ( it = manager->begin(); it != manager->end(); ++it ) {
+-    addResourceItem( *it, false );
+-  }
+-
+-  mListView->sortItems( 0, Qt::AscendingOrder );
+-
+-  emit emitResourcesChanged();
+-}
+-
+-void ResourceView::emitResourcesChanged()
+-{
+-  mCalendar->resourceManager()->writeConfig();
+-  emit resourcesChanged();
+-}
+-
+-void ResourceView::slotAddButtonClicked()
+-{
+-  if ( !mListView->selectedItems().isEmpty() ) {
+-    mSelectedParent = static_cast<ResourceItem*>( mListView->selectedItems().first() );
+-  } else {
+-    mSelectedParent = 0;
+-  }
+-
+-  addResource();
+-}
+-
+-void ResourceView::addResource()
+-{
+-  bool ok = false;
+-  KCal::CalendarResourceManager *manager = mCalendar->resourceManager();
+-  ResourceItem *i = mSelectedParent;
+-
+-  if ( i && ( i->isSubresource() || i->resource()->canHaveSubresources() ) ) {
+-    const QString folderName =
+-      KInputDialog::getText( i18n( "Add Subresource" ),
+-                             i18n( "Please enter a name for the new subresource" ),
+-                             QString(), &ok, this );
+-    if ( !ok ) {
+-      return;
+-    }
+-
+-    const QString parentId = i->isSubresource() ? i->resourceIdentifier() : QString:: null;
+-    if ( !i->resource()->addSubresource( folderName, parentId ) ) {
+-      KMessageBox::error( this,
+-                          i18n( "<qt>Unable to create subresource <b>%1</b>.</qt>", folderName ) );
+-    }
+-    return;
+-  }
+-
+-  QStringList types = manager->resourceTypeNames();
+-  QStringList descs = manager->resourceTypeDescriptions();
+-  QString desc =
+-    KInputDialog::getItem( i18n( "Resource Configuration" ),
+-                           i18n( "Please select type of the new resource:" ),
+-                           descs, 0, false, &ok, this );
+-  if ( !ok ) {
+-    return;
+-  }
+-
+-  QString type = types.at( descs.indexOf( desc ) );
+-
+-  // Create new resource
+-  ResourceCalendar *resource = manager->createResource( type );
+-  if( !resource ) {
+-    KMessageBox::error( this,
+-                        i18n( "<qt>Unable to create resource of type <b>%1</b>.</qt>", type ) );
+-    return;
+-  }
+-
+-  resource->setResourceName( i18n( "%1 resource", type ) );
+-
+-  // TODO: Add a fallback (KColorCollection::setName() broken?)
+-  KColorCollection collection( "Oxygen.colors" );
+-  // TODO: Be smarter than this
+-  int rand = ( KRandom::random() % collection.count() ) + 1;
+-  QColor color = collection.color( rand );
+-
+-  KOPrefs::instance()->setResourceColor( resource->identifier(), color );
+-
+-  bool success = true;
+-  QPointer<KRES::ConfigDialog> dlg =
+-    new KRES::ConfigDialog( this, QString( "calendar" ), resource );
+-
+-  if ( dlg->exec() != QDialog::Accepted ) {
+-    success = false;
+-  }
+-  delete dlg;
+-
+-  if ( success ) {
+-    resource->setTimeSpec( KOPrefs::instance()->timeSpec() );
+-    if ( resource->isActive() && ( !resource->open() || !resource->load() ) ) {
+-      // ### There is a resourceLoadError() signal declared in ResourceCalendar
+-      //     but no subclass seems to make use of it. We could do better.
+-      KMessageBox::error( this, i18n( "Unable to create the resource." ) );
+-      success = false;
+-    }
+-  }
+-
+-  if ( success ) {
+-    manager->add( resource );
+-    // we have to call resourceAdded manually, because for in-process changes
+-    // the dcop signals are not connected, so the resource's signals would not
+-    // be connected otherwise
+-    mCalendar->resourceAdded( resource );
+-  }
+-
+-  if ( !success ) {
+-    delete resource;
+-    resource = 0;
+-  }
+-
+-  //### maybe only do this if ( success )
+-  emitResourcesChanged();
+-}
+-
+-void ResourceView::addResourceItem( ResourceCalendar *resource, bool emitSignal )
+-{
+-  new ResourceItem( resource, this, mListView );
+-
+-  connect( resource,
+-           SIGNAL(signalSubresourceAdded(ResourceCalendar *,const QString &,const QString &,const QString &)),
+-           SLOT(slotSubresourceAdded(ResourceCalendar *,const QString &,const QString &,const QString &)) );
+-
+-  connect( resource,
+-           SIGNAL(signalSubresourceRemoved(ResourceCalendar *,const QString &,const QString &)),
+-           SLOT(slotSubresourceRemoved(ResourceCalendar *,const QString &,const QString &)) );
+-
+-  connect( resource, SIGNAL(resourceSaved(ResourceCalendar *)),
+-           SLOT(closeResource(ResourceCalendar *)) );
+-
+-  updateResourceList();
+-  if ( emitSignal ) {
+-    emit resourcesChanged();
+-  }
+-}
+-
+-// Add a new entry
+-void ResourceView::slotSubresourceAdded( ResourceCalendar *calendar,
+-                                         const QString &type,
+-                                         const QString &resource,
+-                                         const QString &label )
+-{
+-  Q_UNUSED( type );
+-  QList<QTreeWidgetItem *> items =
+-    mListView->findItems( calendar->resourceName(), Qt::MatchExactly, 0 );
+-
+-  if ( !items.isEmpty() && !findItemByIdentifier( resource ) ) {
+-    ResourceItem *item = static_cast<ResourceItem *>( items.first() );
+-    ( void )new ResourceItem( calendar, resource, label, this, item );
+-    emitResourcesChanged();
+-  }
+-}
+-
+-// Remove an entry
+-void ResourceView::slotSubresourceRemoved( ResourceCalendar *calendar,
+-                                           const QString &type,
+-                                           const QString &resource )
+-{
+-  Q_UNUSED( calendar );
+-  Q_UNUSED( type );
+-  delete findItemByIdentifier( resource );
+-  emit resourcesChanged();
+-}
+-
+-void ResourceView::closeResource( ResourceCalendar *r )
+-{
+-  if ( mResourcesToClose.contains( r ) ) {
+-    r->close();
+-    mResourcesToClose.removeAll( r );
+-  }
+-}
+-
+-void ResourceView::updateResourceItem( ResourceCalendar *resource )
+-{
+-  ResourceItem *item = findItem( resource );
+-  if ( item ) {
+-    item->update();
+-  }
+-}
+-
+-ResourceItem *ResourceView::currentItem()
+-{
+-  QTreeWidgetItem *item = mListView->currentItem();
+-  ResourceItem *rItem = static_cast<ResourceItem *>( item );
+-  return rItem;
+-}
+-
+-void ResourceView::removeResource()
+-{
+-  ResourceItem *item = currentItem();
+-  if ( !item ) {
+-    return;
+-  }
+-
+-  int km =
+-    KMessageBox::warningContinueCancel(
+-      this,
+-      i18n( "<qt>Do you really want to remove the resource <b>%1</b>?</qt>",
+-            item->text( 0 ) ), "", KStandardGuiItem::remove() );
+-  if ( km == KMessageBox::Cancel ) {
+-    return;
+-  }
+-
+-// Don't be so restricitve
+-#if 1
+-  if ( item->resource() == mCalendar->resourceManager()->standardResource() ) {
+-    KMessageBox::sorry( this, i18n( "You cannot remove your standard resource." ) );
+-    return;
+-  }
+-#endif
+-
+-  if ( item->isSubresource() ) {
+-    if ( !item->resource()->removeSubresource( item->resourceIdentifier() ) ) {
+-      KMessageBox::sorry(
+-        this,
+-        i18n ( "<qt>Failed to remove the subresource <b>%1</b>. The "
+-               "reason could be that it is a built-in one which cannot "
+-               "be removed, or that the removal of the underlying storage "
+-               "folder failed.</qt>", item->text( 0 ) ) );
+-    }
+-    return;
+-  } else {
+-    mCalendar->resourceManager()->remove( item->resource() );
+-    delete item;
+-  }
+-  updateResourceList();
+-  emit resourcesChanged();
+-}
+-
+-void ResourceView::editResource()
+-{
+-  bool ok = false;
+-  ResourceItem *item = currentItem();
+-  if ( !item ) {
+-    return;
+-  }
+-  ResourceCalendar *resource = item->resource();
+-
+-  if ( item->isSubresource() ) {
+-    if ( resource->type() == "imap" || resource->type() == "scalix" ) {
+-      QString identifier = item->resourceIdentifier();
+-      const QString newResourceName =
+-        KInputDialog::getText( i18n( "Rename Subresource" ),
+-                               i18n( "Please enter a new name for the subresource" ),
+-                               item->text(0),
+-                               &ok, this );
+-      if ( !ok ) {
+-        return;
+-      }
+-
+-      QDBusConnection bus = QDBusConnection::sessionBus();
+-      QDBusInterface *interface =
+-        new QDBusInterface( "org.kde.kmail",
+-                            "/Groupware",
+-                            "org.kde.kmail.groupware",
+-                            bus,
+-                            this );
+-
+-      QDBusReply<int> reply =
+-        interface->call( "changeResourceUIName", identifier, newResourceName );
+-      if ( !reply.isValid() ) {
+-        kDebug() << "DBUS Call changeResourceUIName() failed ";
+-      }
+-    } else {
+-      const QString subResourceName = resource->labelForSubresource( item->resourceIdentifier() );
+-      KMessageBox::sorry( this,
+-                          i18n ( "<qt>Cannot edit the subresource <b>%1</b>.</qt>",
+-                                 subResourceName ) );
+-    }
+-  } else {
+-    QPointer<KRES::ConfigDialog> dlg =
+-      new KRES::ConfigDialog( this, QString( "calendar" ), resource );
+-    if ( dlg->exec() ) {
+-      item->setText( 0, resource->resourceName() );
+-      mCalendar->resourceManager()->change( resource );
+-    }
+-    delete dlg;
+-  }
+-  emitResourcesChanged();
+-}
+-
+-ResourceItem *ResourceView::findItem( ResourceCalendar *r )
+-{
+-  QList<QTreeWidgetItem *> items = mListView->findItems( "*", Qt::MatchWildcard );
+-  foreach ( QTreeWidgetItem *i, items ) {
+-    ResourceItem *item = static_cast<ResourceItem *>( i );
+-    if ( item->resource() == r ) {
+-      return item;
+-    }
+-  }
+-  return 0;
+-}
+-
+-ResourceItem *ResourceView::findItemByIdentifier( const QString &id )
+-{
+-  QList<QTreeWidgetItem *>items =
+-    mListView->findItems( "*", Qt::MatchWildcard | Qt::MatchRecursive );
+-
+-  foreach ( QTreeWidgetItem *i, items ) {
+-    ResourceItem *item = static_cast<ResourceItem *>( i );
+-    if ( item->resourceIdentifier() == id ) {
+-      return item;
+-    }
+-  }
+-  return 0;
+-}
+-
+-void ResourceView::showContextMenu( const QPoint &pos )
+-{
+-  QTreeWidgetItem *i = mListView->itemAt( pos );
+-
+-  if ( !i ) { // No item clicked.
+-    // Creation of menu entries not specific to one item
+-    QMenu *menu = new QMenu( this );
+-    menu->addAction( i18n( "&Add Resource..." ), this, SLOT(addResource()) );
+-    menu->popup( mapToGlobal( pos ) );
+-    mSelectedParent = 0;
+-
+-    return;
+-  }
+-
+-  KCal::CalendarResourceManager *manager = mCalendar->resourceManager();
+-  ResourceItem *item = static_cast<ResourceItem *>( i );
+-  mSelectedParent = item;
+-
+-  QMenu *menu = new QMenu( this );
+-  connect( menu, SIGNAL(aboutToHide()), menu, SLOT(deleteLater()) );
+-  if ( item ) {
+-    QAction *reloadAction = menu->addAction(
+-      i18nc( "reload the resource", "Re&load" ), this, SLOT(reloadResource()) );
+-    reloadAction->setEnabled( item->resource()->isActive() );
+-
+-    QAction *saveAction = menu->addAction(
+-      i18nc( "save the resource", "&Save" ), this, SLOT(saveResource()) );
+-    saveAction->setEnabled( item->resource()->isActive() && !item->resource()->readOnly() );
+-
+-    menu->addSeparator();
+-
+-    menu->addAction( i18n( "Show &Info" ), this, SLOT(showInfo()) );
+-    //FIXME: This is better on the resource dialog
+-    if ( KOPrefs::instance()->agendaViewColors() != KOPrefs::CategoryOnly ) {
+-      QMenu *assignMenu = menu->addMenu( i18n( "Resource Colors" ) );
+-      assignMenu->addAction( i18n( "&Assign Color..." ), this, SLOT(assignColor()) );
+-      if ( item->resourceColor().isValid() ) {
+-        assignMenu->addAction( i18n( "&Disable Color" ), this, SLOT(disableColor()) );
+-      }
+-    }
+-
+-    menu->addAction( i18n( "&Edit..." ), this, SLOT(editResource()) );
+-    menu->addAction( i18n( "&Remove" ), this, SLOT(removeResource()) );
+-    if ( item->resource() != manager->standardResource() ) {
+-      menu->addSeparator();
+-      menu->addAction( i18n( "Use as &Default Calendar" ), this, SLOT(setStandard()) );
+-    }
+-    menu->addSeparator();
+-  }
+-
+-  QString label;
+-  if ( item->isSubresource() || item->resource()->canHaveSubresources() ) {
+-    label = i18n( "&Add Subresource..." );
+-  } else {
+-    label = i18n( "&Add Resource..." );
+-  }
+-
+-  menu->addAction( label, this, SLOT(addResource()) );
+-  menu->popup( mListView->mapToGlobal( pos ) );
+-}
+-
+-void ResourceView::assignColor()
+-{
+-  ResourceItem *item = currentItem();
+-  if ( !item ) {
+-    return;
+-  }
+-
+-  // A color without initialized is a color invalid
+-  QColor myColor;
+-  KCal::ResourceCalendar *cal = item->resource();
+-
+-  QString identifier = cal->identifier();
+-  if ( item->isSubresource() ) {
+-    identifier = item->resourceIdentifier();
+-  }
+-
+-  QColor defaultColor = KOPrefs::instance()->resourceColor( identifier );
+-
+-  int result = KColorDialog::getColor( myColor, defaultColor );
+-  if ( result == KColorDialog::Accepted ) {
+-    KOPrefs::instance()->setResourceColor( identifier, myColor );
+-    item->setResourceColor( myColor );
+-    item->update();
+-    emitResourcesChanged();
+-  }
+-}
+-
+-void ResourceView::disableColor()
+-{
+-  ResourceItem *item = currentItem();
+-  if ( !item ) {
+-    return;
+-  }
+-
+-  QColor colorInvalid;
+-  KCal::ResourceCalendar *cal = item->resource();
+-  QString identifier = cal->identifier();
+-  if ( item->isSubresource() ) {
+-    identifier = item->resourceIdentifier();
+-  }
+-  KOPrefs::instance()->setResourceColor( identifier, colorInvalid );
+-  item->setResourceColor( colorInvalid );
+-  item->update();
+-  emitResourcesChanged();
+-}
+-void ResourceView::showInfo()
+-{
+-  ResourceItem *item = currentItem();
+-  if ( !item ) {
+-    return;
+-  }
+-
+-  QString txt = "<qt>" + item->resource()->infoText() + "</qt>";
+-  KMessageBox::information( this, txt );
+-}
+-
+-void ResourceView::reloadResource()
+-{
+-  ResourceItem *item = currentItem();
+-  if ( !item ) {
+-    return;
+-  }
+-  item->setIsReloading( true );
+-  item->resource()->load();
+-  item->setIsReloading( false );
+-}
+-
+-void ResourceView::saveResource()
+-{
+-  ResourceItem *item = currentItem();
+-  if ( !item ) {
+-    return;
+-  }
+-
+-  ResourceCalendar *r = item->resource();
+-  r->save();
+-}
+-
+-void ResourceView::setStandard()
+-{
+-  ResourceItem *item = currentItem();
+-  if ( !item ) {
+-    return;
+-  }
+-
+-  ResourceCalendar *r = item->resource();
+-  KCal::CalendarResourceManager *manager = mCalendar->resourceManager();
+-  manager->setStandardResource( r );
+-  updateResourceList();
+-}
+-
+-void ResourceView::updateResourceList()
+-{
+-  ResourceCalendar *stdRes = mCalendar->resourceManager()->standardResource();
+-
+-  QList<QTreeWidgetItem *> items = mListView->findItems( "*", Qt::MatchWildcard );
+-  foreach ( QTreeWidgetItem *i, items ) {
+-    ResourceItem *item = static_cast<ResourceItem *>( i );
+-    item->setStandardResource( item->resource() == stdRes );
+-  }
+-}
+-
+-void ResourceView::requestClose( ResourceCalendar *r )
+-{
+-  mResourcesToClose.append( r );
+-}
+-
+-void ResourceView::slotItemClicked( QTreeWidgetItem *i, int )
+-{
+-  ResourceItem *item = static_cast<ResourceItem *>( i );
+-  if ( item ) {
+-    item->stateChange( item->checkState( 0 ) == Qt::Checked );
+-  }
+-}
+-
+-void ResourceView::currentChanged()
+-{
+-  ResourceItem *i = currentItem();
+-
+-  mDeleteButton->setEnabled( i != 0 );
+-  mEditButton->setEnabled( i != 0 );
+-}
+-
+-#include "resourceview.moc"
+Index: CMakeLists.txt
+===================================================================
+--- CMakeLists.txt	(revision 983817)
++++ CMakeLists.txt	(working copy)
+@@ -85,7 +85,7 @@
+ 
+   kde4_add_executable(korganizer ${korganizer_SRCS})
+ 
+-  target_link_libraries(korganizer ${KDE4_KDEUI_LIBS} ${KDE4_KDE3SUPPORT_LIBRARY} ${KDE4_KPARTS_LIBRARY} ${KDEPIMLIBS_KCAL_LIBS} ${KDEPIMLIBS_KHOLIDAYS_LIBS} kdepim korganizerprivate korganizer_core korganizer_calendar korganizer_interfaces)
++  target_link_libraries(korganizer ${KDE4_KDEUI_LIBS} ${KDE4_KDE3SUPPORT_LIBRARY} ${KDE4_KPARTS_LIBRARY} ${KDEPIMLIBS_KCAL_LIBS} ${KDEPIMLIBS_KHOLIDAYS_LIBS} kdepim korganizerprivate korganizer_interfaces)
+ 
+   install(TARGETS korganizer ${INSTALL_TARGETS_DEFAULT_ARGS})
+ 
+@@ -96,7 +96,7 @@
+ 
+   kde4_add_plugin(kcm_korganizer ${kcm_korganizer_PART_SRCS})
+ 
+-  target_link_libraries(kcm_korganizer ${QT_QT3SUPPORT_LIBRARY} ${KDE4_KDEUI_LIBS} ${KDEPIMLIBS_KCAL_LIBS} ${KDEPIMLIBS_KHOLIDAYS_LIBS} korganizerprivate kdepim korganizer_core korganizer_calendar)
++  target_link_libraries(kcm_korganizer ${QT_QT3SUPPORT_LIBRARY} ${KDE4_KDEUI_LIBS} ${KDEPIMLIBS_KCAL_LIBS} ${KDEPIMLIBS_KHOLIDAYS_LIBS} korganizerprivate kdepim )
+ 
+   install(TARGETS kcm_korganizer  DESTINATION ${PLUGIN_INSTALL_DIR})
+ 
+@@ -107,7 +107,7 @@
+ 
+   kde4_add_plugin(korganizerpart ${korganizerpart_PART_SRCS})
+ 
+-  target_link_libraries(korganizerpart ${KDE4_KDECORE_LIBS} ${KDE4_KPARTS_LIBS} ${KDEPIMLIBS_KCAL_LIBS} korganizerprivate korganizer_core korganizer_calendar korganizer_interfaces)
++  target_link_libraries(korganizerpart ${KDE4_KDECORE_LIBS} ${KDE4_KPARTS_LIBS} ${KDEPIMLIBS_KCAL_LIBS} korganizerprivate korganizer_interfaces)
+ 
+   install(TARGETS korganizerpart  DESTINATION ${PLUGIN_INSTALL_DIR})
+ 
+@@ -133,32 +133,6 @@
+ 
+   ########### next target ###############
+ 
+-  set(korganizer_calendar_LIB_SRCS stdcalendar.cpp )
+-
+-  kde4_add_library(korganizer_calendar SHARED ${korganizer_calendar_LIB_SRCS})
+-
+-  target_link_libraries(korganizer_calendar ${KDE4_KPARTS_LIBS} ${KDEPIMLIBS_KCAL_LIBS} ${KDE4_KDE3SUPPORT_LIBS} kdepim)
+-
+-  set_target_properties(korganizer_calendar PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
+-  install(TARGETS korganizer_calendar ${INSTALL_TARGETS_DEFAULT_ARGS})
+-
+-
+-  ########### next target ###############
+-
+-  set(korganizer_core_LIB_SRCS koprefs.cpp kocore.cpp kohelper.cpp koidentitymanager.cpp cellitem.cpp)
+-
+-  kde4_add_kcfg_files(korganizer_core_LIB_SRCS koprefs_base.kcfgc )
+-
+-  kde4_add_library(korganizer_core SHARED ${korganizer_core_LIB_SRCS})
+-
+-  target_link_libraries(korganizer_core ${KDE4_KDE3SUPPORT_LIBS} ${KDE4_KMIME_LIBRARY} kdepim)
+-
+-  set_target_properties(korganizer_core PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
+-  install(TARGETS korganizer_core ${INSTALL_TARGETS_DEFAULT_ARGS})
+-
+-
+-  ########### next target ###############
+-
+   set(korganizerprivate_LIB_SRCS
+     ${libkdgantt1_SRCS}
+     themeimporter.cpp
+@@ -227,7 +201,6 @@
+     statusdialog.cpp
+     koglobals.cpp
+     actionmanager.cpp
+-    resourceview.cpp
+     navigatorbar.cpp
+     kogroupware.cpp
+     history.cpp
+@@ -242,11 +215,13 @@
+     incidencechanger.cpp
+     koattendeeeditor.cpp
+     templatemanagementdialog.cpp
++    stdcalendar.cpp
++    koprefs.cpp kocore.cpp kohelper.cpp koidentitymanager.cpp cellitem.cpp
+     akonadicalendar.cpp
+     akonadicollectionview.cpp
+   )
+ 
+-
++  kde4_add_kcfg_files(korganizerprivate_LIB_SRCS koprefs_base.kcfgc )
+   kde4_add_ui_files(korganizerprivate_LIB_SRCS filteredit_base.ui koeditoralarms_base.ui publishdialog_base.ui template_management_dialog_base.ui kogroupwareprefspage.ui searchdialog_base.ui timescaleedit_base.ui)
+ 
+   qt4_add_resources(korganizerprivate_LIB_SRCS agendaitem_pixmaps/agendaitemtheme.qrc )
+@@ -265,7 +240,7 @@
+     ${KDEPIMLIBS_KCAL_LIBS} ${KDEPIMLIBS_KABC_LIBS} ${KDEPIMLIBS_KPIMIDENTITIES_LIBRARY} ${KDE4_KMIME_LIBRARY}
+     ${KDEPIMLIBS_KHOLIDAYS_LIBS}
+     ${KDEPIMLIBS_AKONADI_LIBS}
+-    korganizer_core korganizer_eventviewer korganizer_calendar korganizer_interfaces korg_stdprinting
++    korganizer_eventviewer korganizer_interfaces korg_stdprinting
+     kdepim
+   )
+ 
+Index: resourceview.h
+===================================================================
+--- resourceview.h	(revision 983695)
++++ resourceview.h	(working copy)
+@@ -1,179 +0,0 @@
+-/*
+-  This file is part of KOrganizer.
+-
+-  Copyright (c) 2003,2004 Cornelius Schumacher <schumacher@kde.org>
+-  Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+-
+-  This program is free software; you can redistribute it and/or modify
+-  it under the terms of the GNU General Public License as published by
+-  the Free Software Foundation; either version 2 of the License, or
+-  (at your option) any later version.
+-
+-  This program is distributed in the hope that it will be useful,
+-  but WITHOUT ANY WARRANTY; without even the implied warranty of
+-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+-  GNU General Public License for more details.
+-
+-  You should have received a copy of the GNU General Public License along
+-  with this program; if not, write to the Free Software Foundation, Inc.,
+-  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+-
+-  As a special exception, permission is given to link this program
+-  with any edition of Qt, and distribute the resulting executable,
+-  without including the source code for Qt in the source distribution.
+-*/
+-#ifndef KORG_RESOURCEVIEW_H
+-#define KORG_RESOURCEVIEW_H
+-
+-#include "calendarview.h"
+-
+-#include <QTreeWidget>
+-#include <QList>
+-
+-namespace KCal {
+-  class CalendarResources;
+-  class ResourceCalendar;
+-}
+-using namespace KCal;
+-class ResourceView;
+-
+-class ResourceViewFactory : public CalendarViewExtension::Factory
+-{
+-  public:
+-    ResourceViewFactory( KCal::CalendarResources *calendar, CalendarView *view );
+-
+-    virtual ~ResourceViewFactory(){}
+-    CalendarViewExtension *create( QWidget * );
+-
+-    ResourceView *resourceView() const;
+-
+-  private:
+-    KCal::CalendarResources *mCalendar;
+-    CalendarView *mView;
+-    ResourceView *mResourceView;
+-};
+-
+-class ResourceItem : public QTreeWidgetItem
+-{
+-  public:
+-    ResourceItem( KCal::ResourceCalendar *resource, ResourceView *view,
+-                  QTreeWidget *parent );
+-    ResourceItem( KCal::ResourceCalendar *resource, const QString &sub,
+-                  const QString &label, ResourceView *view,
+-                  ResourceItem *parent );
+-
+-    ResourceCalendar *resource() { return mResource; }
+-    const QString &resourceIdentifier() { return mResourceIdentifier; }
+-    bool isSubresource() const { return mIsSubresource; }
+-    void createSubresourceItems();
+-    void setStandardResource( bool std );
+-
+-    void update();
+-
+-    void setResourceColor( QColor &color );
+-    QColor &resourceColor() {return mResourceColor;}
+-
+-    void stateChange( bool active );
+-
+-    virtual QVariant data( int column, int role ) const;
+-
+-    void setIsReloading( bool value ) { mIsReloading = value; };
+-
+-  protected:
+-    void setGuiState();
+-    QColor mResourceColor;
+-
+-    void setOn( bool checked );
+-
+-  private:
+-    /*
+-     * Returns if this item uses colors
+-     */
+-    bool useColors() const;
+-
+-    KCal::ResourceCalendar *mResource;
+-    ResourceView *mView;
+-    bool mBlockStateChange;
+-    bool mIsSubresource;
+-    QString mResourceIdentifier;
+-    bool mSubItemsCreated;
+-    bool mIsStandardResource;
+-    bool mActive;
+-    bool mIsReloading;
+-};
+-
+-/**
+-  This class provides a view of calendar resources.
+-*/
+-class ResourceView : public CalendarViewExtension
+-{
+-  Q_OBJECT
+-  public:
+-    explicit ResourceView( KCal::CalendarResources *calendar, QWidget *parent = 0 );
+-    ~ResourceView();
+-
+-    CalendarResources *calendar() const { return mCalendar; }
+-
+-    void updateView();
+-
+-    void emitResourcesChanged();
+-
+-    void requestClose( ResourceCalendar * );
+-    ResourceItem *findItemByIdentifier( const QString &id );
+-
+-  public slots:
+-    void addResourceItem( ResourceCalendar *, bool emitSignal = true );
+-    void updateResourceItem( ResourceCalendar * );
+-
+-  signals:
+-    void resourcesChanged();
+-
+-  protected:
+-    ResourceItem *findItem( ResourceCalendar * );
+-    ResourceItem *currentItem();
+-
+-  protected slots:
+-    void addResource();
+-    void removeResource();
+-    void editResource();
+-
+-    void slotSubresourceAdded( ResourceCalendar *, const QString &,
+-                               const QString &resource, const QString &label );
+-    void slotSubresourceRemoved( ResourceCalendar *, const QString &,
+-                                 const QString & );
+-    void closeResource( ResourceCalendar * );
+-
+-    void showContextMenu( const QPoint &pos );
+-
+-    void slotAddButtonClicked();
+-
+-    void assignColor();
+-    void disableColor();
+-    void showInfo();
+-
+-    void reloadResource();
+-    void saveResource();
+-
+-    void setStandard();
+-    void updateResourceList();
+-
+-    void slotItemClicked( QTreeWidgetItem *, int );
+-    void currentChanged();
+-
+-  private:
+-
+-    /*
+-     * Holds:
+-     * the ResourceItem that's selected when adding a resource,
+-     * 0 if no item is selected,
+-     * 0 if an item is selected but the user pressed RMB in the blank space
+-     */
+-    ResourceItem *mSelectedParent;
+-
+-    QTreeWidget *mListView;
+-    KCal::CalendarResources *mCalendar;
+-    QList<ResourceCalendar*> mResourcesToClose;
+-    QAbstractButton *mAddButton, *mEditButton, *mDeleteButton;
+-};
+-
+-#endif
+Index: koprefsdialog.cpp
+===================================================================
+--- koprefsdialog.cpp	(revision 983695)
++++ koprefsdialog.cpp	(working copy)
+@@ -907,6 +907,7 @@
+   mResourceCombo->clear();
+   mResourceIdentifier.clear();
+ 
++#if 0 //sebsauer
+   KCal::CalendarResourceManager *manager = KOrg::StdCalendar::self()->resourceManager();
+ 
+   KCal::CalendarResourceManager::Iterator it;
+@@ -925,7 +926,9 @@
+     mResourceCombo->addItem( (*it)->resourceName() );
+     mResourceIdentifier.append( (*it)->identifier() );
+   }
+-
++#else
++  kWarning()<<"TODO";
++#endif
+   updateResourceColor();
+ }
+ 
