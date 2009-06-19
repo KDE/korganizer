@@ -1,5 +1,7 @@
 project(korganizer)
 
+find_package( Akonadi REQUIRED )
+
 #
 # The following macros can be defined to alter KOrganizer behavior.
 # (if desired, use add_definitions() to define them)
@@ -37,6 +39,8 @@ if(KORG_NOPRINTER)
   add_definitions(-DKORG_NOPRINTER)
 endif(KORG_NOPRINTER)
 
+# enable exception handling
+set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${KDE4_ENABLE_EXCEPTIONS}" )
 
 if(KMAIL_SUPPORTED)
 #TODO: make korganizer buildable without kmail (i.e. w/o the kmail dbus stuff)
@@ -50,6 +54,7 @@ if(KMAIL_SUPPORTED)
                       ${CMAKE_SOURCE_DIR}/korganizer/printing
                       ${CMAKE_SOURCE_DIR}/kdgantt1
                       ${CMAKE_BINARY_DIR}/libkdepim
+                      ${AKONADI_INCLUDE_DIR}
                       ${QT_INCLUDES} ${ZLIB_INCLUDE_DIR} )
 
   add_definitions (-DQT3_SUPPORT -DQT3_SUPPORT_WARNINGS)
@@ -236,7 +241,9 @@ endif(NOT KORG_NOPRINTER)
     kocorehelper.cpp
     incidencechanger.cpp
     koattendeeeditor.cpp
-    templatemanagementdialog.cpp )
+    templatemanagementdialog.cpp
+    akonadicalendar.cpp
+  )
 
 
   kde4_add_ui_files(korganizerprivate_LIB_SRCS filteredit_base.ui koeditoralarms_base.ui publishdialog_base.ui template_management_dialog_base.ui kogroupwareprefspage.ui searchdialog_base.ui timescaleedit_base.ui)
@@ -256,6 +263,7 @@ endif(NOT KORG_NOPRINTER)
     ${KDE4_KNEWSTUFF2_LIBS} ${KDE4_KUTILS_LIBS}  ${KDE4_KDE3SUPPORT_LIBS} ${ZLIB_LIBRARY}
     ${KDEPIMLIBS_KCAL_LIBS} ${KDEPIMLIBS_KABC_LIBS} ${KDEPIMLIBS_KPIMIDENTITIES_LIBRARY} ${KDE4_KMIME_LIBRARY}
     ${KDEPIMLIBS_KHOLIDAYS_LIBS}
+    ${KDEPIMLIBS_AKONADI_LIBS}
     korganizer_core korganizer_eventviewer korganizer_calendar korganizer_interfaces korg_stdprinting
     kdepim
   )
