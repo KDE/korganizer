@@ -3,6 +3,7 @@
 
   Copyright (c) 2003,2004 Cornelius Schumacher <schumacher@kde.org>
   Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+  Copyright (C) 2009 Sebastian Sauer <sebsauer@kdab.net>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -44,7 +45,7 @@ class AkonadiCollectionViewFactory : public CalendarViewExtension::Factory
     AkonadiCollectionViewFactory( KCal::AkonadiCalendar *calendar, CalendarView *view );
     virtual ~AkonadiCollectionViewFactory(){}
     CalendarViewExtension *create( QWidget * );
-    AkonadiCollectionView *resourceView() const;
+    AkonadiCollectionView *collectionView() const;
 
   private:
     KCal::AkonadiCalendar *mCalendar;

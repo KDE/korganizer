@@ -3,6 +3,7 @@
 
   Copyright (c) 2003,2004 Cornelius Schumacher <schumacher@kde.org>
   Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+  Copyright (C) 2009 Sebastian Sauer <sebsauer@kdab.net>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -35,7 +36,9 @@
 #include <KColorCollection>
 #include <KColorDialog>
 #include <KDebug>
+#endif
 #include <KDialog>
+#if 0
 #include <KInputDialog>
 #include <KLocale>
 #include <KMessageBox>
@@ -47,11 +50,18 @@
 #include <QMenu>
 #include <QPixmap>
 #include <QToolButton>
+#endif
 #include <QVBoxLayout>
-
+#if 0
 #include <QDBusInterface>
 #include <QDBusReply>
 #endif
+
+#include <akonadi/collection.h>
+#include <akonadi/collectionview.h>
+#include <akonadi/collectionfilterproxymodel.h>
+#include <akonadi/collectionmodel.h>
+#include <akonadi/collectionview.h>
 
 AkonadiCollectionViewFactory::AkonadiCollectionViewFactory( KCal::AkonadiCalendar *calendar, CalendarView *view )
   : mCalendar( calendar ) , mView( view ), mAkonadiCollectionView( 0 )
@@ -72,7 +82,7 @@ CalendarViewExtension *AkonadiCollectionViewFactory::create( QWidget *parent )
   return mAkonadiCollectionView;
 }
 
-AkonadiCollectionView *AkonadiCollectionViewFactory::resourceView() const
+AkonadiCollectionView *AkonadiCollectionViewFactory::collectionView() const
 {
   return mAkonadiCollectionView;
 }
@@ -231,10 +241,9 @@ void ResourceItem::setStandardResource( bool std )
 AkonadiCollectionView::AkonadiCollectionView( KCal::AkonadiCalendar *calendar, QWidget *parent )
   : CalendarViewExtension( parent ), mCalendar( calendar )
 {
-#if 0
   QVBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->setSpacing( KDialog::spacingHint() );
-
+#if 0
   QHBoxLayout *buttonBox = new QHBoxLayout();
   buttonBox->setSpacing( KDialog::spacingHint() );
   topLayout->addLayout( buttonBox );
@@ -315,6 +324,22 @@ AkonadiCollectionView::AkonadiCollectionView( KCal::AkonadiCalendar *calendar, Q
   mListView->setSortingEnabled( true );
 
   updateView();
+#else
+  Akonadi::CollectionModel *collectionmodel = new Akonadi::CollectionModel( this );
+  Akonadi::CollectionFilterProxyModel *collectionproxymodel = new Akonadi::CollectionFilterProxyModel( this );
+  collectionproxymodel->setSourceModel( collectionmodel );
+  collectionproxymodel->addMimeTypeFilter( QString::fromLatin1( "text/calendar" ) );
+
+  QSortFilterProxyModel *sortmodel = new QSortFilterProxyModel( this );
+  sortmodel->setDynamicSortFilter( true );
+  sortmodel->setSortCaseSensitivity( Qt::CaseInsensitive );
+  sortmodel->setSourceModel( collectionproxymodel );
+
+  Akonadi::CollectionView *collectionview = new Akonadi::CollectionView();
+  //connect(collectionview, SIGNAL(clicked(const Akonadi::Collection&)), this, SLOT(collectionClicked(const Akonadi::Collection&)));
+  collectionview->setModel(sortmodel);
+  
+  topLayout->addWidget( collectionview );
 #endif
 }
 
