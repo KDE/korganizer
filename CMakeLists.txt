@@ -55,6 +55,7 @@ if(KMAIL_SUPPORTED)
                       ${CMAKE_SOURCE_DIR}/kdgantt1
                       ${CMAKE_BINARY_DIR}/libkdepim
                       ${AKONADI_INCLUDE_DIR}
+                      ${Boost_INCLUDE_DIRS}
                       ${QT_INCLUDES} ${ZLIB_INCLUDE_DIR} )
 
   add_definitions (-DQT3_SUPPORT -DQT3_SUPPORT_WARNINGS)
