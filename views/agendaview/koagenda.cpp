@@ -1852,11 +1852,11 @@ void KOAgenda::checkScrollBoundaries( int v )
 
   if ( yMin != mOldLowerScrollValue ) {
     mOldLowerScrollValue = yMin;
-    emit lowerYChanged(yMin);
+    emit lowerYChanged( yMin );
   }
   if ( yMax != mOldUpperScrollValue ) {
     mOldUpperScrollValue = yMax;
-    emit upperYChanged(yMax);
+    emit upperYChanged( yMax );
   }
 }
 
