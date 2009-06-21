@@ -85,7 +85,7 @@ class KORGANIZER_INTERFACES_EXPORT MainWindow
     */
     virtual KActionCollection *getActionCollection() const = 0;
     /**
-      Show status mesage in status bar.
+      Show status message in status bar.
     */
     virtual void showStatusMessage( const QString &message ) = 0;
 
