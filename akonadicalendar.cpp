@@ -138,7 +138,8 @@ bool AkonadiCalendar::addIncidence( Incidence *incidence )
   }
   // then try to add the incidence
   Akonadi::Item item;
-  item.setMimeType( "text/calendar" );
+  //the sub-mimetype of text/calendar as defined at kdepim/akonadi/kcal/kcalmimetypevisitor.cpp
+  item.setMimeType( QString("application/x-vnd.akonadi.calendar.%1").arg(QString(incidence->type().lower())) );
   KCal::Incidence::Ptr incidencePtr( incidence ); //no clone() needed
   item.setPayload<KCal::Incidence::Ptr>( incidencePtr );
   Akonadi::ItemCreateJob *job = new Akonadi::ItemCreateJob( item, d->m_collection );
@@ -162,7 +163,6 @@ bool AkonadiCalendar::deleteIncidence( Incidence *incidence )
 
 void AkonadiCalendar::incidenceUpdated( IncidenceBase *incidence )
 {
-  kDebug();
 #if 0
   KDateTime nowUTC = KDateTime::currentUtcDateTime();
   incidence->setLastModified( nowUTC );
@@ -201,6 +201,7 @@ void AkonadiCalendar::incidenceUpdated( IncidenceBase *incidence )
   Q_ASSERT( d->m_map.contains(i) );
   kDebug() << "uid=" << i->uid() << "summary=" << i->summary() << "type=" << i->type();
   Akonadi::Item item = d->m_map[i];
+  Q_ASSERT( item.isValid() );
   Akonadi::ItemModifyJob *job = new Akonadi::ItemModifyJob( item );
   connect( job, SIGNAL( result( KJob* ) ), d, SLOT( modifyDone( KJob* ) ) );
 #endif
