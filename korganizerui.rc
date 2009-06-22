@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui>
-<kpartgui name="korganizer" version="411">
+<kpartgui name="korganizer" version="412">
 
   <MenuBar>
     <Menu name="file"><text>&amp;File</text>
@@ -156,6 +156,22 @@
     <Separator/>
     <Action name="edit_paste"/>
     <Merge/>
+  </Menu>
+
+  <Menu name="akonadi_collectionview_contextmenu">
+    <Action name="akonadi_collection_create"/>
+    <Separator/>
+    <Action name="akonadi_collection_copy"/>
+    <Action name="akonadi_paste"/>
+    <Separator/>
+    <Action name="akonadi_collection_delete"/>
+    <Separator/>
+    <Action name="akonadi_collection_sync"/>
+    <Separator/>
+    <Action name="akonadi_collection_properties"/>
+    <Separator/>
+    <Action name="akonadi_addressbook_create"/>
+    <Action name="akonadi_addressbook_delete"/>
   </Menu>
 
 </kpartgui>

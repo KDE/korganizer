@@ -27,6 +27,7 @@
 #include "akonadicollectionview.h"
 #include "akonadicollectionview.moc"
 #include "akonadicalendar.h"
+#include "kocore.h"
 #include "koprefs.h"
 
 #if 0
@@ -38,6 +39,7 @@
 #include <KDebug>
 #endif
 #include <KDialog>
+#include <KAction>
 #if 0
 #include <KInputDialog>
 #include <KLocale>
@@ -62,6 +64,7 @@
 #include <akonadi/collectionfilterproxymodel.h>
 #include <akonadi/collectionmodel.h>
 #include <akonadi/collectionview.h>
+#include <akonadi/standardactionmanager.h>
 
 AkonadiCollectionViewFactory::AkonadiCollectionViewFactory( KCal::AkonadiCalendar *calendar, CalendarView *view )
   : mCalendar( calendar ) , mView( view ), mAkonadiCollectionView( 0 )
@@ -70,7 +73,7 @@ AkonadiCollectionViewFactory::AkonadiCollectionViewFactory( KCal::AkonadiCalenda
 
 CalendarViewExtension *AkonadiCollectionViewFactory::create( QWidget *parent )
 {
-  mAkonadiCollectionView = new AkonadiCollectionView( mCalendar, parent );
+  mAkonadiCollectionView = new AkonadiCollectionView( this, mCalendar, parent );
 #if 0
   QObject::connect( mAkonadiCollectionView, SIGNAL(resourcesChanged()), mView, SLOT(resourcesChanged()) );
   QObject::connect( mAkonadiCollectionView, SIGNAL(resourcesChanged()), mView, SLOT(updateCategories()) );
@@ -82,7 +85,12 @@ CalendarViewExtension *AkonadiCollectionViewFactory::create( QWidget *parent )
   return mAkonadiCollectionView;
 }
 
-AkonadiCollectionView *AkonadiCollectionViewFactory::collectionView() const
+CalendarView* AkonadiCollectionViewFactory::view() const
+{
+  return mView;
+}
+
+AkonadiCollectionView* AkonadiCollectionViewFactory::collectionView() const
 {
   return mAkonadiCollectionView;
 }
@@ -238,8 +246,8 @@ void ResourceItem::setStandardResource( bool std )
 }
 #endif
 
-AkonadiCollectionView::AkonadiCollectionView( KCal::AkonadiCalendar *calendar, QWidget *parent )
-  : CalendarViewExtension( parent ), mCalendar( calendar )
+AkonadiCollectionView::AkonadiCollectionView( AkonadiCollectionViewFactory *factory, KCal::AkonadiCalendar *calendar, QWidget *parent )
+  : CalendarViewExtension( parent ), mFactory(factory), mCalendar( calendar ), mActionManager(0)
 {
   QVBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->setSpacing( KDialog::spacingHint() );
@@ -334,8 +342,24 @@ AkonadiCollectionView::AkonadiCollectionView( KCal::AkonadiCalendar *calendar, Q
   sortmodel->setSourceModel( collectionproxymodel );
 
   Akonadi::CollectionView *collectionview = new Akonadi::CollectionView();
-  connect(collectionview, SIGNAL(clicked(const Akonadi::Collection&)), this, SLOT(collectionClicked(const Akonadi::Collection&)));
   collectionview->setModel(sortmodel);
+  KXMLGUIClient *xmlclient = KOCore::self()->xmlguiClient( mFactory->view() );
+  if( xmlclient ) {
+    collectionview->setXmlGuiClient( xmlclient );
+
+    mActionManager = new Akonadi::StandardActionManager( xmlclient->actionCollection(), collectionview );
+    mActionManager->createAllActions();
+    mActionManager->action( Akonadi::StandardActionManager::CreateCollection )->setText( i18n( "Add Calendar..." ) );
+    mActionManager->setActionText( Akonadi::StandardActionManager::CopyCollections, ki18np( "Copy Calendar", "Copy %1 Calendars" ) );
+    mActionManager->action( Akonadi::StandardActionManager::DeleteCollections )->setText( i18n( "Delete Calendar" ) );
+    mActionManager->action( Akonadi::StandardActionManager::SynchronizeCollections )->setText( i18n( "Reload" ) );
+    mActionManager->action( Akonadi::StandardActionManager::CollectionProperties )->setText( i18n( "Properties..." ) );
+
+    QItemSelectionModel *selectionmodel = collectionview->selectionModel();
+    Q_ASSERT( selectionmodel );
+    mActionManager->setCollectionSelectionModel( selectionmodel );
+  }
+  connect(collectionview, SIGNAL(clicked(const Akonadi::Collection&)), this, SLOT(collectionClicked(const Akonadi::Collection&)));
   
   topLayout->addWidget( collectionview );
 #endif

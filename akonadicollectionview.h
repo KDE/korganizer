@@ -39,6 +39,7 @@ namespace KCal {
 
 namespace Akonadi {
   class Collection;
+  class StandardActionManager;
 }
 
 class AkonadiCollectionView;
@@ -48,8 +49,11 @@ class AkonadiCollectionViewFactory : public CalendarViewExtension::Factory
   public:
     AkonadiCollectionViewFactory( KCal::AkonadiCalendar *calendar, CalendarView *view );
     virtual ~AkonadiCollectionViewFactory(){}
+
+    CalendarView* view() const;
+    AkonadiCollectionView* collectionView() const;
+
     CalendarViewExtension *create( QWidget * );
-    AkonadiCollectionView *collectionView() const;
 
   private:
     KCal::AkonadiCalendar *mCalendar;
@@ -112,7 +116,7 @@ class AkonadiCollectionView : public CalendarViewExtension
 {
   Q_OBJECT
   public:
-    explicit AkonadiCollectionView( KCal::AkonadiCalendar *calendar, QWidget *parent = 0 );
+    AkonadiCollectionView( AkonadiCollectionViewFactory *factory, KCal::AkonadiCalendar *calendar, QWidget *parent = 0 );
     ~AkonadiCollectionView();
     AkonadiCalendar *calendar() const { return mCalendar; }
 
@@ -156,6 +160,7 @@ class AkonadiCollectionView : public CalendarViewExtension
 #endif
 
   private:
+    AkonadiCollectionViewFactory *mFactory;
 #if 0 //sebsauer
     /*
      * Holds:
@@ -167,6 +172,7 @@ class AkonadiCollectionView : public CalendarViewExtension
     QTreeWidget *mListView;
 #endif
     KCal::AkonadiCalendar *mCalendar;
+    Akonadi::StandardActionManager* mActionManager;
 #if 0
     QList<ResourceCalendar*> mResourcesToClose;
     QAbstractButton *mAddButton, *mEditButton, *mDeleteButton;
