@@ -34,22 +34,13 @@
 #include <akonadi/itemfetchjob.h>
 #include <akonadi/itemfetchscope.h>
 #include <akonadi/itemdeletejob.h>
+#include <akonadi/itemcreatejob.h>
 #include <akonadi/monitor.h>
 #include <akonadi/session.h>
 
 #include <KCal/Incidence>
 
 using namespace KCal;
-
-// to provide access to the Item::List instance
-class MyAkonadiItemDeleteJob : public Akonadi::ItemDeleteJob {
-    public:
-        MyAkonadiItemDeleteJob(const Akonadi::Item &item) : Akonadi::ItemDeleteJob(item), m_items(Akonadi::Item::List() << item) {}
-        MyAkonadiItemDeleteJob(const Akonadi::Item::List &items) : Akonadi::ItemDeleteJob(items), m_items(items) {}
-        Akonadi::Item::List items() const { return m_items; }
-    private:
-        Akonadi::Item::List m_items;
-};
 
 class KCal::AkonadiCalendar::Private : public QObject
 {
@@ -128,30 +119,41 @@ class KCal::AkonadiCalendar::Private : public QObject
         emit q->calendarChanged();
     }
 
-    void deletionDone( KJob *job )
+    void createDone( KJob *job )
+    {
+        kDebug();
+        if ( job->error() ) {
+            kWarning( 5250 ) << "Item create failed:" << job->errorString();
+            return;
+        }
+        Akonadi::ItemCreateJob *createjob = static_cast<Akonadi::ItemCreateJob*>( job );
+        const Akonadi::Item item = createjob->item();
+        itemAdded( item );
+    }
+
+    void deleteDone( KJob *job )
     {
         kDebug();
         if ( job->error() ) {
             kWarning( 5250 ) << "Item delete failed:" << job->errorString();
             return;
         }
-        MyAkonadiItemDeleteJob *deletejob = static_cast<MyAkonadiItemDeleteJob*>( job );
-
+        Akonadi::ItemDeleteJob *deletejob = static_cast<Akonadi::ItemDeleteJob*>( job );
         foreach(const Akonadi::Item& item, deletejob->items()) {
           const KCal::Incidence::Ptr incidence = item.payload<KCal::Incidence::Ptr>();
-    
-          mEvents.remove(incidence->uid());
-          mTodos.remove(incidence->uid());
-          mJournals.remove( incidence->uid());
-          m_items.removeAll(item);
+          Q_ASSERT( item.isValid() );
+          Q_ASSERT( item.hasPayload() );
+          mEvents.remove( incidence->uid() );
+          mTodos.remove( incidence->uid() );
+          mJournals.remove( incidence->uid() );
+          m_items.removeAll( item );
         }
-
         emit q->calendarChanged();
     }
 
     void itemChanged( const Akonadi::Item &item, const QSet<QByteArray>& )
     {
-        kDebug();
+        kDebug()<<"TODO";
 #if 0
         int row = rowForItem( item );
         if ( row < 0 ) return;
@@ -181,9 +183,18 @@ class KCal::AkonadiCalendar::Private : public QObject
             Q_ASSERT( item.hasPayload() );
             const KCal::Incidence::Ptr incidence = item.payload<KCal::Incidence::Ptr>();
             kDebug() << "uid=" << incidence->uid() << "summary=" << incidence->summary() << "type=" << incidence->type();
-            q->addIncidence( incidence.get() ); //dispatches to addEvent/addToDo/addJournal
+            //TODO use visitor
+            if( Event *event = dynamic_cast<Event*>( incidence.get() ) )
+                mEvents.insert( incidence->uid(), event );
+            else if( Todo *todo = dynamic_cast<Todo*>( incidence.get() ) )
+                mTodos.insert( incidence->uid(), todo );
+            else if( Journal *journal = dynamic_cast<Journal*>( incidence.get() ) )
+                mJournals.insert( incidence->uid(), journal );
+            else
+                Q_ASSERT(false);
         }
         m_items << list; //keep instance to increment shared_ptr ref-counter
+        emit q->calendarChanged();
     }
 
     void itemAdded( const Akonadi::Item &item )

@@ -46,6 +46,9 @@ class KCAL_EXPORT AkonadiCalendar : public Calendar
     bool save();
     void close();
 
+    bool addIncidence( Incidence *incidence );
+    bool deleteIncidence( Incidence *incidence );
+
     bool addEvent( Event *event );
     bool deleteEvent( Event *event );
     void deleteAllEvents();
@@ -84,6 +87,27 @@ class KCAL_EXPORT AkonadiCalendar : public Calendar
 
   public Q_SLOTS:
     void deleteIncidenceProxyMethod( Incidence *incidence ) { deleteIncidence(incidence); }
+
+  Q_SIGNALS:
+    // Same signals Akonadi::Monitor provides to allow later to refactor code to
+    // use Collection+Monitor+etc direct rather then the AkonadiCalendar class.
+    /*
+    void itemChanged( const Akonadi::Item &item, const QSet<QByteArray> &partIdentifiers );
+    void itemMoved( const Akonadi::Item &item, const Akonadi::Collection &collectionSource, const Akonadi::Collection &collectionDestination );
+    void itemAdded( const Akonadi::Item &item, const Akonadi::Collection &collection );
+    void itemRemoved( const Akonadi::Item &item );
+    void itemLinked( const Akonadi::Item &item, const Akonadi::Collection &collection );
+    void itemUnlinked( const Akonadi::Item &item, const Akonadi::Collection &collection );
+    void collectionAdded( const Akonadi::Collection &collection, const Akonadi::Collection &parent );
+    void collectionChanged( const Akonadi::Collection &collection );
+    void collectionRemoved( const Akonadi::Collection &collection );
+    void collectionStatisticsChanged( Akonadi::Collection::Id id, const Akonadi::CollectionStatistics &statistics );
+    void collectionMonitored( const Akonadi::Collection &collection, bool monitored );
+    void itemMonitored( const Akonadi::Item &item, bool monitored );
+    void resourceMonitored( const QByteArray &identifier, bool monitored );
+    void mimeTypeMonitored( const QString &mimeType, bool monitored );
+    void allMonitored( bool monitored );
+    */
 
   private:
     Q_DISABLE_COPY( AkonadiCalendar )
