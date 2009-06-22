@@ -64,11 +64,10 @@ void AkonadiCalendar::setCollection( const Akonadi::Collection &collection )
 {
   d->m_monitor->setCollectionMonitored( d->m_collection, false );
   d->m_collection = collection;
-  d->m_monitor->setCollectionMonitored( d->m_collection, true );
+  d->m_monitor->setCollectionMonitored( d->m_collection, true ); //TODO move to listingDone(), right?
 
   // the query changed, thus everything we have already is invalid
   d->clear();
-  //reset();
 
   // stop all running jobs
   d->m_session->clear();
@@ -154,16 +153,57 @@ bool AkonadiCalendar::deleteIncidence( Incidence *incidence )
     return false;
   }
   // then try to delete the incidence
-  Akonadi::Item item;
-  foreach(const Akonadi::Item& i, d->m_items)
-    if(i.payload<KCal::Incidence::Ptr>()->uid() == incidence->uid()) {
-      item = i;
-      break;
-    }
-  Q_ASSERT(item.isValid());
+  Q_ASSERT( d->m_map.contains(incidence) );
+  Akonadi::Item item = d->m_map[incidence];
   Akonadi::ItemDeleteJob *job = new Akonadi::ItemDeleteJob( item );
   connect( job, SIGNAL( result( KJob* ) ), d, SLOT( deleteDone( KJob* ) ) );
   return true;
+}
+
+void AkonadiCalendar::incidenceUpdated( IncidenceBase *incidence )
+{
+  kDebug();
+#if 0
+  KDateTime nowUTC = KDateTime::currentUtcDateTime();
+  incidence->setLastModified( nowUTC );
+  // we should probably update the revision number here,
+  // or internally in the Event itself when certain things change.
+  // need to verify with ical documentation.
+
+  if ( incidence->type() == "Event" ) {
+    Event *event = static_cast<Event*>( incidence );
+    removeIncidenceFromMultiHashByUID<Event *>(
+      d->mEventsForDate, event->dtStart().date().toString(), event->uid() );
+    if ( !event->recurs() && !event->isMultiDay() ) {
+      d->mEventsForDate.insert( event->dtStart().date().toString(), event );
+    }
+  } else if ( incidence->type() == "Todo" ) {
+    Todo *todo = static_cast<Todo*>( incidence );
+    removeIncidenceFromMultiHashByUID<Todo *>(
+      d->mTodosForDate, todo->dtDue().date().toString(), todo->uid() );
+    if ( todo->hasDueDate() ) {
+      d->mTodosForDate.insert( todo->dtDue().date().toString(), todo );
+    }
+  } else if ( incidence->type() == "Journal" ) {
+    Journal *journal = static_cast<Journal*>( incidence );
+    removeIncidenceFromMultiHashByUID<Journal *>(
+      d->mJournalsForDate, journal->dtStart().date().toString(), journal->uid() );
+    d->mJournalsForDate.insert( journal->dtStart().date().toString(), journal );
+  } else {
+    Q_ASSERT( false );
+  }
+  // The static_cast is ok as the AkonadiCalendar only observes Incidence objects
+  notifyIncidenceChanged( static_cast<Incidence *>( incidence ) );
+  setModified( true );
+#else
+  KCal::Incidence* i = dynamic_cast<KCal::Incidence*>( incidence );
+  Q_ASSERT( i );
+  Q_ASSERT( d->m_map.contains(i) );
+  kDebug() << "uid=" << i->uid() << "summary=" << i->summary() << "type=" << i->type();
+  Akonadi::Item item = d->m_map[i];
+  Akonadi::ItemModifyJob *job = new Akonadi::ItemModifyJob( item );
+  connect( job, SIGNAL( result( KJob* ) ), d, SLOT( modifyDone( KJob* ) ) );
+#endif
 }
 
 bool AkonadiCalendar::addEvent( Event *event )
@@ -377,46 +417,6 @@ Alarm::List AkonadiCalendar::alarms( const KDateTime &from, const KDateTime &to 
   }
 #endif
   return alarmList;
-}
-
-void AkonadiCalendar::incidenceUpdated( IncidenceBase *incidence )
-{
-  kDebug();
-#if 0
-  KDateTime nowUTC = KDateTime::currentUtcDateTime();
-  incidence->setLastModified( nowUTC );
-  // we should probably update the revision number here,
-  // or internally in the Event itself when certain things change.
-  // need to verify with ical documentation.
-
-  if ( incidence->type() == "Event" ) {
-    Event *event = static_cast<Event*>( incidence );
-    removeIncidenceFromMultiHashByUID<Event *>(
-      d->mEventsForDate, event->dtStart().date().toString(), event->uid() );
-    if ( !event->recurs() && !event->isMultiDay() ) {
-      d->mEventsForDate.insert( event->dtStart().date().toString(), event );
-    }
-  } else if ( incidence->type() == "Todo" ) {
-    Todo *todo = static_cast<Todo*>( incidence );
-    removeIncidenceFromMultiHashByUID<Todo *>(
-      d->mTodosForDate, todo->dtDue().date().toString(), todo->uid() );
-    if ( todo->hasDueDate() ) {
-      d->mTodosForDate.insert( todo->dtDue().date().toString(), todo );
-    }
-  } else if ( incidence->type() == "Journal" ) {
-    Journal *journal = static_cast<Journal*>( incidence );
-    removeIncidenceFromMultiHashByUID<Journal *>(
-      d->mJournalsForDate, journal->dtStart().date().toString(), journal->uid() );
-    d->mJournalsForDate.insert( journal->dtStart().date().toString(), journal );
-  } else {
-    Q_ASSERT( false );
-  }
-
-  // The static_cast is ok as the AkonadiCalendar only observes Incidence objects
-  notifyIncidenceChanged( static_cast<Incidence *>( incidence ) );
-
-  setModified( true );
-#endif
 }
 
 Event::List AkonadiCalendar::rawEventsForDate( const QDate &date,

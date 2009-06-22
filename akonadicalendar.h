@@ -48,6 +48,7 @@ class KCAL_EXPORT AkonadiCalendar : public Calendar
 
     bool addIncidence( Incidence *incidence );
     bool deleteIncidence( Incidence *incidence );
+    void incidenceUpdated( IncidenceBase *incidenceBase );
 
     bool addEvent( Event *event );
     bool deleteEvent( Event *event );
@@ -80,8 +81,6 @@ class KCAL_EXPORT AkonadiCalendar : public Calendar
 
     Alarm::List alarms( const KDateTime &from, const KDateTime &to );
     Alarm::List alarmsTo( const KDateTime &to );
-
-    void incidenceUpdated( IncidenceBase *incidenceBase );
 
     using QObject::event;   // prevent warning about hidden virtual method
 

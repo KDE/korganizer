@@ -35,6 +35,7 @@
 #include <akonadi/itemfetchscope.h>
 #include <akonadi/itemdeletejob.h>
 #include <akonadi/itemcreatejob.h>
+#include <akonadi/itemmodifyjob.h>
 #include <akonadi/monitor.h>
 #include <akonadi/session.h>
 
@@ -79,7 +80,7 @@ class KCal::AkonadiCalendar::Private : public QObject
       mEvents.clear();
       mTodos.clear();
       mJournals.clear();
-      m_items.clear();
+      m_map.clear();
     }
 
 #if 0
@@ -104,7 +105,9 @@ class KCal::AkonadiCalendar::Private : public QObject
     Akonadi::Session *m_session;
     Akonadi::Collection m_collection;
 
-    Akonadi::Item::List m_items;
+    //keep instance to increment shared_ptr ref-counter
+    //Akonadi::Item::List m_items;
+    QMap<Incidence*,Akonadi::Item> m_map;
 
   public Q_SLOTS:
   
@@ -127,8 +130,7 @@ class KCal::AkonadiCalendar::Private : public QObject
             return;
         }
         Akonadi::ItemCreateJob *createjob = static_cast<Akonadi::ItemCreateJob*>( job );
-        const Akonadi::Item item = createjob->item();
-        itemAdded( item );
+        itemAdded( createjob->item() );
     }
 
     void deleteDone( KJob *job )
@@ -139,19 +141,22 @@ class KCal::AkonadiCalendar::Private : public QObject
             return;
         }
         Akonadi::ItemDeleteJob *deletejob = static_cast<Akonadi::ItemDeleteJob*>( job );
-        foreach(const Akonadi::Item& item, deletejob->items()) {
-          const KCal::Incidence::Ptr incidence = item.payload<KCal::Incidence::Ptr>();
-          Q_ASSERT( item.isValid() );
-          Q_ASSERT( item.hasPayload() );
-          mEvents.remove( incidence->uid() );
-          mTodos.remove( incidence->uid() );
-          mJournals.remove( incidence->uid() );
-          m_items.removeAll( item );
+        itemsRemoved( deletejob->items() );
+    }
+
+    void modifyDone( KJob *job )
+    {
+        kDebug();
+        if ( job->error() ) {
+            kWarning( 5250 ) << "Item modify failed:" << job->errorString();
+            return;
         }
+        Akonadi::ItemModifyJob *modifyjob = static_cast<Akonadi::ItemModifyJob*>( job );
+        //TODO
         emit q->calendarChanged();
     }
 
-    void itemChanged( const Akonadi::Item &item, const QSet<QByteArray>& )
+    void itemChanged( const Akonadi::Item&, const QSet<QByteArray>& )
     {
         kDebug()<<"TODO";
 #if 0
@@ -175,10 +180,10 @@ class KCal::AkonadiCalendar::Private : public QObject
             itemAdded( item );
     }
 
-    void itemsAdded( const Akonadi::Item::List &list )
+    void itemsAdded( const Akonadi::Item::List &items )
     {
         kDebug();
-        foreach( const Akonadi::Item &item, list ) {
+        foreach( const Akonadi::Item &item, items ) {
             Q_ASSERT( item.isValid() );
             Q_ASSERT( item.hasPayload() );
             const KCal::Incidence::Ptr incidence = item.payload<KCal::Incidence::Ptr>();
@@ -192,8 +197,10 @@ class KCal::AkonadiCalendar::Private : public QObject
                 mJournals.insert( incidence->uid(), journal );
             else
                 Q_ASSERT(false);
+            incidence->registerObserver(q);
+            m_map[ incidence.get() ] = item;
         }
-        m_items << list; //keep instance to increment shared_ptr ref-counter
+
         emit q->calendarChanged();
     }
 
@@ -203,20 +210,24 @@ class KCal::AkonadiCalendar::Private : public QObject
         itemsAdded( Akonadi::Item::List() << item );
     }
 
-    void itemRemoved( const Akonadi::Item &_item )
+    void itemsRemoved( const Akonadi::Item::List &items ) {
+        kDebug();
+        foreach(const Akonadi::Item& item, items) {
+            Q_ASSERT( item.isValid() );
+            Q_ASSERT( item.hasPayload() );
+            const KCal::Incidence::Ptr incidence = item.payload<KCal::Incidence::Ptr>();
+            mEvents.remove( incidence->uid() );
+            mTodos.remove( incidence->uid() );
+            mJournals.remove( incidence->uid() );
+            m_map.remove( incidence.get() );
+        }
+        emit q->calendarChanged();
+    }
+
+    void itemRemoved( const Akonadi::Item &item )
     {
         kDebug();
-#if 0
-        int row = rowForItem( _item );
-        if ( row < 0 )
-            return;
-        mParent->beginRemoveRows( QModelIndex(), row, row );
-        const Item item = items.at( row )->item;
-        Q_ASSERT( item.isValid() );
-        itemHash.remove( item );
-        delete items.takeAt( row );
-        mParent->endRemoveRows();
-#endif
+        itemsRemoved( Akonadi::Item::List() << item );
     }
   
 };
