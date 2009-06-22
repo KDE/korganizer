@@ -320,6 +320,7 @@ bool KOEventEditor::processInput()
           i18n( "No changes" ) );
       }
     } else {
+      mEvent->startUpdates(); //merge multiple mEvent->updated() calls into one
       //IncidenceChanger::assignIncidence( mEvent, event );
       fillEvent( mEvent );
       if ( mIsCounter ) {
@@ -332,6 +333,7 @@ bool KOEventEditor::processInput()
       } else {
         mChanger->changeIncidence( oldEvent, mEvent );
       }
+      mEvent->endUpdates();
     }
     delete event;
     delete oldEvent;
