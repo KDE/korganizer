@@ -249,11 +249,13 @@ bool KOTodoEditor::processInput()
     fillTodo( todo );
 
     if( *mTodo == *todo ) {
-      // Don't do anything
+      // Don't do anything cause no changes where done
     } else {
+      mTodo->startUpdates(); //merge multiple mTodo->updated() calls into one
       //IncidenceChanger::assignIncidence( mTodo, todo );
       fillTodo( mTodo );
       mChanger->changeIncidence( oldTodo, mTodo );
+      mTodo->endUpdates();
     }
     delete todo;
     delete oldTodo;
