@@ -907,6 +907,7 @@ void KOPrefsDialogColorsAndFonts::updateResources()
   mResourceCombo->clear();
   mResourceIdentifier.clear();
 
+#if 0 //sebsauer
   KCal::CalendarResourceManager *manager = KOrg::StdCalendar::self()->resourceManager();
 
   KCal::CalendarResourceManager::Iterator it;
@@ -925,7 +926,9 @@ void KOPrefsDialogColorsAndFonts::updateResources()
     mResourceCombo->addItem( (*it)->resourceName() );
     mResourceIdentifier.append( (*it)->identifier() );
   }
-
+#else
+  kWarning()<<"TODO";
+#endif
   updateResourceColor();
 }
 

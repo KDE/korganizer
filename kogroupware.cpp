@@ -40,8 +40,8 @@
 #include "koprefs.h"
 #include "koincidenceeditor.h"
 #include "mailscheduler.h"
+#include "akonadicalendar.h"
 
-#include <KCal/CalendarResources>
 #include <KCal/IncidenceFormatter>
 #include <KPIMUtils/Email>
 
@@ -58,7 +58,7 @@ FreeBusyManager *KOGroupware::mFreeBusyManager = 0;
 KOGroupware *KOGroupware::mInstance = 0;
 
 KOGroupware *KOGroupware::create( CalendarView *view,
-                                  KCal::CalendarResources *calendar )
+                                  KCal::AkonadiCalendar *calendar )
 {
   if ( !mInstance ) {
     mInstance = new KOGroupware( view, calendar );
@@ -73,7 +73,7 @@ KOGroupware *KOGroupware::instance()
   return mInstance;
 }
 
-KOGroupware::KOGroupware( CalendarView *view, KCal::CalendarResources *cal )
+KOGroupware::KOGroupware( CalendarView *view, KCal::AkonadiCalendar *cal )
   : QObject( 0 ), mView( view ), mCalendar( cal )
 {
   setObjectName( "kmgroupware_instance" );

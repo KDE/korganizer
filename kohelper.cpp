@@ -24,11 +24,10 @@
 
 #include "kohelper.h"
 #include "koprefs.h"
+#include "akonadicalendar.h"
 
 #include <kcal/incidence.h>
 #include <kcal/calendar.h>
-#include <kcal/calendarresources.h>
-#include <kcal/resourcecalendar.h>
 
 #include <kdatetime.h>
 #include <kdebug.h>
@@ -47,12 +46,11 @@ QColor KOHelper::resourceColor( KCal::Calendar *calendar,
   QColor resourceColor = QColor(); //Default invalid color
   //FIXME: dynamic_cast are dirty, Better We implements interface to get
   // the color from the calendar
-  KCal::CalendarResources *calendarResource =
-    dynamic_cast<KCal::CalendarResources*>( calendar );
+  KCal::AkonadiCalendar *calendarResource = dynamic_cast<KCal::AkonadiCalendar*>( calendar );
 
   if ( calendarResource ) {
-    KCal::ResourceCalendar *resourceCalendar =
-      calendarResource->resource( incidence );
+#if 0 //sebsauer
+    KCal::ResourceCalendar *resourceCalendar = calendarResource->resource( incidence );
 
     if ( resourceCalendar ) {
       QString identifier = resourceCalendar->identifier();
@@ -70,7 +68,10 @@ QColor KOHelper::resourceColor( KCal::Calendar *calendar,
       }
     }
 //   } else {
-//     kDebug(5850) <<"resourceColor: Calendar is not a CalendarResources";
+//     kDebug(5850) <<"resourceColor: Calendar is not a AkonadiCalendar";
+#else
+    kWarning()<<"TODO";
+#endif
   }
   return resourceColor;
 }
@@ -90,11 +91,11 @@ KDateTime KOHelper::toTimeSpec( const KDateTime &dt, KCal::Calendar *calendar )
 
 QString KOHelper::resourceLabel( KCal::Calendar *calendar, KCal::Incidence *incidence )
 {
-  KCal::CalendarResources *calendarResource = dynamic_cast<KCal::CalendarResources*>( calendar );
+  KCal::AkonadiCalendar *calendarResource = dynamic_cast<KCal::AkonadiCalendar*>( calendar );
   if ( !calendarResource || ! incidence ) {
     return QString();
   }
-
+#if 0 //sebsauer
   KCal::ResourceCalendar *resourceCalendar = calendarResource->resource( incidence );
   if ( resourceCalendar ) {
     if ( !resourceCalendar->subresources().isEmpty() ) {
@@ -107,7 +108,9 @@ QString KOHelper::resourceLabel( KCal::Calendar *calendar, KCal::Incidence *inci
     }
     return resourceCalendar->resourceName();
   }
-
+#else
+  kWarning()<<"TODO";
+#endif
   return QString();
 }
 

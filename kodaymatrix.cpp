@@ -29,8 +29,8 @@
 #include "kodaymatrix.h"
 #include "koglobals.h"
 #include "koprefs.h"
+#include "akonadicalendar.h"
 
-#include <KCal/CalendarResources>
 #include <KCal/DndFactory>
 #include <KCal/ICalDrag>
 #include <KCal/VCalDrag>
@@ -102,8 +102,9 @@ void KODayMatrix::setCalendar( Calendar *cal )
 
   mCalendar = cal;
   mCalendar->registerObserver( this );
-  CalendarResources *calres = dynamic_cast<CalendarResources*>( cal );
+  AkonadiCalendar *calres = dynamic_cast<AkonadiCalendar*>( cal );
   if ( calres ) {
+//sebsauer; needed?
     connect( calres, SIGNAL(signalResourceAdded(ResourceCalendar *)),
              SLOT(resourcesChanged()) );
     connect( calres, SIGNAL(signalResourceModified(ResourceCalendar *)),

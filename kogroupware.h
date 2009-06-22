@@ -48,7 +48,7 @@ using namespace KOrg;
 
 namespace KCal {
   class Calendar;
-  class CalendarResources;
+  class AkonadiCalendar;
   class Event;
   class Incidence;
 }
@@ -60,7 +60,7 @@ class KOGroupware : public QObject
 {
   Q_OBJECT
   public:
-    static KOGroupware *create( CalendarView *, KCal::CalendarResources * );
+    static KOGroupware *create( CalendarView *, KCal::AkonadiCalendar * );
     static KOGroupware *instance();
 
     FreeBusyManager *freeBusyManager();
@@ -99,13 +99,13 @@ class KOGroupware : public QObject
     void initialCheckForChanges();
 
   protected:
-    KOGroupware( CalendarView *, KCal::CalendarResources * );
+    KOGroupware( CalendarView *, KCal::AkonadiCalendar * );
 
   private:
     static KOGroupware *mInstance;
     KCal::ICalFormat mFormat;
     CalendarView *mView;
-    KCal::CalendarResources *mCalendar;
+    KCal::AkonadiCalendar *mCalendar;
     static FreeBusyManager *mFreeBusyManager;
 };
 

@@ -21,8 +21,7 @@
 #include "timelabelszone.h"
 #include "views/agendaview/koagenda.h"
 #include "views/agendaview/koagendaview.h"
-
-#include <kcal/calendarresources.h>
+#include "akonadicalendar.h"
 
 #include <KGlobalSettings>
 #include <KHBox>
@@ -106,7 +105,7 @@ void MultiAgendaView::recreateViews()
 
   deleteViews();
 
-  CalendarResources *calres = dynamic_cast<CalendarResources*>( calendar() );
+  AkonadiCalendar *calres = dynamic_cast<AkonadiCalendar*>( calendar() );
   if ( !calres ) {
     // fallback to single-agenda
     KOAgendaView *av = new KOAgendaView( calendar(), mTopBox );
@@ -114,16 +113,15 @@ void MultiAgendaView::recreateViews()
     mAgendaWidgets.append( av );
     av->show();
   } else {
+#if 0 //sebsauer
     CalendarResourceManager *manager = calres->resourceManager();
-    for ( CalendarResourceManager::ActiveIterator it = manager->activeBegin();
-          it != manager->activeEnd(); ++it ) {
+    for ( CalendarResourceManager::ActiveIterator it = manager->activeBegin(); it != manager->activeEnd(); ++it ) {
       if ( (*it)->canHaveSubresources() ) {
         QStringList subResources = (*it)->subresources();
         for ( QStringList::ConstIterator subit = subResources.constBegin();
               subit != subResources.constEnd(); ++subit ) {
           QString type = (*it)->subresourceType( *subit );
-          if ( !(*it)->subresourceActive( *subit ) ||
-               ( !type.isEmpty() && type != "event" ) ) {
+          if ( !(*it)->subresourceActive( *subit ) || ( !type.isEmpty() && type != "event" ) ) {
             continue;
           }
           addView( (*it)->labelForSubresource( *subit ), *it, *subit );
@@ -132,6 +130,9 @@ void MultiAgendaView::recreateViews()
         addView( (*it)->resourceName(), *it );
       }
     }
+#else
+    kWarning()<<"TODO";
+#endif
   }
 
   // no resources activated, so stop here to avoid crashing somewhere down the line

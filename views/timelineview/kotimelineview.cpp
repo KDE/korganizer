@@ -27,12 +27,12 @@
 #include "koglobals.h"
 #include "koprefs.h"
 #include "timelineitem.h"
+#include "akonadicalendar.h"
 
 #include <kdgantt1/KDGanttViewTaskItem.h>
 #include <kdgantt1/KDGanttViewSubwidgets.h>
 
 #include <kcal/calendar.h>
-#include <kcal/calendarresources.h>
 
 #include <QLayout>
 
@@ -114,14 +114,14 @@ void KOTimelineView::showDates( const QDate &start, const QDate &end )
 
   // item for every calendar
   TimelineItem *item = 0;
-  CalendarResources *calres = dynamic_cast<CalendarResources *>( calendar() );
+  AkonadiCalendar *calres = dynamic_cast<AkonadiCalendar *>( calendar() );
   if ( !calres ) {
     item = new TimelineItem( i18n( "Calendar" ), mGantt );
     mCalendarItemMap[0][QString()] = item;
   } else {
+#if 0 
     CalendarResourceManager *manager = calres->resourceManager();
-    for ( CalendarResourceManager::ActiveIterator it = manager->activeBegin();
-          it != manager->activeEnd(); ++it ) {
+    for ( CalendarResourceManager::ActiveIterator it = manager->activeBegin(); it != manager->activeEnd(); ++it ) {
       QColor resourceColor = KOPrefs::instance()->resourceColor( (*it)->identifier() );
       if ( (*it)->canHaveSubresources() ) {
         QStringList subResources = (*it)->subresources();
@@ -151,6 +151,10 @@ void KOTimelineView::showDates( const QDate &start, const QDate &end )
         mCalendarItemMap[*it][QString()] = item;
       }
     }
+#else
+    //TODO
+    kWarning();
+#endif
   }
 
   // add incidences
@@ -246,11 +250,12 @@ void KOTimelineView::newEventWithHint( const QDateTime &dt )
 
 TimelineItem *KOTimelineView::calendarItemForIncidence( KCal::Incidence *incidence )
 {
-  CalendarResources *calres = dynamic_cast<CalendarResources *>( calendar() );
+  AkonadiCalendar *calres = dynamic_cast<AkonadiCalendar *>( calendar() );
   TimelineItem *item = 0;
   if ( !calres ) {
     item = mCalendarItemMap[0][QString()];
   } else {
+#if 0 //sebsauer
     ResourceCalendar *res = calres->resource( incidence );
     if ( !res ) {
       return 0;
@@ -261,6 +266,9 @@ TimelineItem *KOTimelineView::calendarItemForIncidence( KCal::Incidence *inciden
     } else {
       item = mCalendarItemMap[res][QString()];
     }
+#else
+    kWarning()<<"TODO";
+#endif
   }
   return item;
 }

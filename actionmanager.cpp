@@ -41,8 +41,9 @@
 #include "koviewmanager.h"
 #include "kowindowlist.h"
 #include "reminderclient.h"
-#include "resourceview.h"
 #include "stdcalendar.h"
+#include "akonadicalendar.h"
+#include "akonadicollectionview.h"
 
 #include <KCal/CalendarLocal>
 #include <KCal/FileStorage>
@@ -193,7 +194,7 @@ void ActionManager::createCalendarLocal()
 void ActionManager::createCalendarResources()
 {
   mCalendarResources = KOrg::StdCalendar::self();
-
+#if 0 //sebsauer
   CalendarResourceManager *manager = mCalendarResources->resourceManager();
 
   kDebug() << "CalendarResources used by KOrganizer:";
@@ -202,16 +203,20 @@ void ActionManager::createCalendarResources()
     kDebug() << (*it)->resourceName();
     (*it)->setResolveConflict( true );
   }
-
+#endif
   setDestinationPolicy();
 
   mCalendarView->setCalendar( mCalendarResources );
   mCalendarView->readSettings();
-
+#if 0 //sebsauer
   ResourceViewFactory factory( mCalendarResources, mCalendarView );
   mCalendarView->addExtension( &factory );
   mResourceView = factory.resourceView();
-
+#else
+  AkonadiCollectionViewFactory factory( mCalendarResources, mCalendarView );
+  mCalendarView->addExtension( &factory );
+  mResourceView = factory.collectionView();
+#endif
   connect( mCalendarResources, SIGNAL(calendarChanged()),
            mCalendarView, SLOT(resourcesChanged()) );
   connect( mCalendarResources, SIGNAL(calendarLoaded()),
@@ -758,7 +763,9 @@ void ActionManager::writeSettings()
   config.sync();
 
   if ( mCalendarResources ) {
+#if 0 //sebsauer
     mCalendarResources->resourceManager()->writeConfig();
+#endif
   }
 }
 
@@ -986,6 +993,7 @@ bool ActionManager::openURL( const KUrl &url, bool merge )
 
 bool ActionManager::addResource( const KUrl &mUrl )
 {
+#if 0 //sebsauer
   CalendarResources *cr = KOrg::StdCalendar::self();
   CalendarResourceManager *manager = cr->resourceManager();
   ResourceCalendar *resource = 0;
@@ -1025,6 +1033,9 @@ bool ActionManager::addResource( const KUrl &mUrl )
                         name );
     KMessageBox::error( dialogParent(), msg );
   }
+#else
+  kWarning()<<"TODO";
+#endif
   return true;
 }
 
@@ -1370,6 +1381,7 @@ void ActionManager::updateConfig()
 
 void ActionManager::setDestinationPolicy()
 {
+#if 0 //sebsauer
   if ( mCalendarResources ) {
     if ( KOPrefs::instance()->mDestination == KOPrefs::askDestination ) {
       mCalendarResources->setAskDestinationPolicy();
@@ -1377,6 +1389,7 @@ void ActionManager::setDestinationPolicy()
       mCalendarResources->setStandardDestinationPolicy();
     }
   }
+#endif
 }
 
 void ActionManager::configureDateTime()
@@ -2047,7 +2060,7 @@ bool ActionManager::saveResourceCalendar()
   if ( !mCalendarResources ) {
     return false;
   }
-
+#if 0 //sebsauer
   CalendarResourceManager *m = mCalendarResources->resourceManager();
   CalendarResourceManager::ActiveIterator it;
   for ( it = m->activeBegin(); it != m->activeEnd(); ++it ) {
@@ -2068,6 +2081,9 @@ bool ActionManager::saveResourceCalendar()
       }
     }
   }
+#else
+  kWarning()<<"TODO";
+#endif
   return true;
 }
 

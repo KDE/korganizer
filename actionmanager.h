@@ -37,18 +37,18 @@
 #include <QDateTime>
 #include <QObject>
 
+namespace KCal {
+  class Calendar;
+  class HTMLExportSettings;
+  class Incidence;
+  class AkonadiCalendar;
+}
+
+class AkonadiCollectionView;
 class CalendarView;
 class ImportDialog;
 class KOWindowList;
-class ResourceView;
 
-namespace KCal {
-  class Calendar;
-  class CalendarResources;
-  class HTMLExportSettings;
-  class Incidence;
-  class ResourceCalendar;
-}
 using namespace KCal;
 
 class KRecentFilesAction;
@@ -259,8 +259,10 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     */
     void closingDown();
 
+#if 0 //sebsauer
     /** Indicates that a new resource was added */
     void resourceAdded( ResourceCalendar * );
+#endif
 
   public slots:
     /**
@@ -437,9 +439,13 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
 
     // Either mCalendar *or* mCalendarResources is set.
     Calendar *mCalendar;
+#if 0 //sebsauer
     CalendarResources *mCalendarResources;
-
     ResourceView *mResourceView;
+#else
+    AkonadiCalendar *mCalendarResources;
+    AkonadiCollectionView *mResourceView;
+#endif
 
     bool mIsClosing;
 };

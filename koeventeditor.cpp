@@ -35,8 +35,6 @@
 #include "kodialogmanager.h"
 #include "incidencechanger.h"
 
-#include <kcal/calendarresources.h>
-#include <kcal/resourcecalendar.h>
 #include <kcal/incidenceformatter.h>
 #include <kcal/calendarlocal.h>
 

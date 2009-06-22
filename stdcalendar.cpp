@@ -20,6 +20,7 @@
 */
 
 #include "stdcalendar.h"
+#include "akonadicalendar.h"
 
 #include <kcal/resourcecalendar.h>
 #include <libkdepim/kpimprefs.h>
@@ -45,10 +46,10 @@ StdCalendar *StdCalendar::self()
 }
 
 StdCalendar::StdCalendar()
-  : CalendarResources( KPIM::KPimPrefs::timeSpec() )
+  : KCal::AkonadiCalendar( KPIM::KPimPrefs::timeSpec() )
 {
+#if 0 //sebsauer
   readConfig();
-
   KCal::CalendarResourceManager *manager = resourceManager();
   if ( manager->isEmpty() ) {
     KConfig _config( "korganizerrc" );
@@ -104,9 +105,16 @@ StdCalendar::StdCalendar()
       kDebug() << "Unable to add a Birthdays resource";
     }
   }
+#endif
 }
 
 StdCalendar::~StdCalendar()
 {
   mSelf = 0;
+}
+
+void StdCalendar::load()
+{
+  //sebsauer
+  kWarning()<<"TODO";
 }

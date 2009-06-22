@@ -35,11 +35,12 @@
 #include "koglobals.h"
 #include "koprefs.h"
 #include "timelabelszone.h"
+#include "akonadicalendar.h"
+
 using namespace KOrg;
 
 #include <KCal/CalFilter>
 #include <KCal/DndFactory>
-#include <KCal/CalendarResources>
 
 #include <KCalendarSystem>
 #include <KGlobalSettings>
@@ -1627,11 +1628,12 @@ bool KOAgendaView::filterByResource( Incidence *incidence )
     return true;
   }
 
-  CalendarResources *calRes = dynamic_cast<CalendarResources*>( calendar() );
+  AkonadiCalendar *calRes = dynamic_cast<AkonadiCalendar*>( calendar() );
   if ( !calRes ) {
     return true;
   }
 
+#if 0 //sebsauer
   if ( calRes->resource( incidence ) != mResource ) {
     return false;
   }
@@ -1641,6 +1643,9 @@ bool KOAgendaView::filterByResource( Incidence *incidence )
       return false;
     }
   }
+#else
+  kWarning()<<"TODO";
+#endif
   return true;
 }
 

@@ -37,6 +37,10 @@ namespace KCal {
   //class ResourceCalendar;
 }
 
+namespace Akonadi {
+  class Collection;
+}
+
 class AkonadiCollectionView;
 
 class AkonadiCollectionViewFactory : public CalendarViewExtension::Factory
@@ -110,57 +114,49 @@ class AkonadiCollectionView : public CalendarViewExtension
   public:
     explicit AkonadiCollectionView( KCal::AkonadiCalendar *calendar, QWidget *parent = 0 );
     ~AkonadiCollectionView();
-
     AkonadiCalendar *calendar() const { return mCalendar; }
-#if 0
+
     void updateView();
 
+#if 0 //sebsauer
     void emitResourcesChanged();
-
     void requestClose( ResourceCalendar * );
     ResourceItem *findItemByIdentifier( const QString &id );
-
   public slots:
     void addResourceItem( ResourceCalendar *, bool emitSignal = true );
     void updateResourceItem( ResourceCalendar * );
-
   signals:
     void resourcesChanged();
-
   protected:
     ResourceItem *findItem( ResourceCalendar * );
     ResourceItem *currentItem();
-
   protected slots:
     void addResource();
     void removeResource();
     void editResource();
-
     void slotSubresourceAdded( ResourceCalendar *, const QString &,
                                const QString &resource, const QString &label );
     void slotSubresourceRemoved( ResourceCalendar *, const QString &,
                                  const QString & );
     void closeResource( ResourceCalendar * );
-
     void showContextMenu( const QPoint &pos );
-
     void slotAddButtonClicked();
-
     void assignColor();
     void disableColor();
     void showInfo();
-
     void reloadResource();
     void saveResource();
-
     void setStandard();
     void updateResourceList();
-
     void slotItemClicked( QTreeWidgetItem *, int );
     void currentChanged();
+#else
+  private Q_SLOTS:
+    void collectionClicked(const Akonadi::Collection&);
+#endif
 
   private:
-
+#if 0 //sebsauer
     /*
      * Holds:
      * the ResourceItem that's selected when adding a resource,
@@ -168,7 +164,6 @@ class AkonadiCollectionView : public CalendarViewExtension
      * 0 if an item is selected but the user pressed RMB in the blank space
      */
     ResourceItem *mSelectedParent;
-
     QTreeWidget *mListView;
 #endif
     KCal::AkonadiCalendar *mCalendar;

@@ -36,8 +36,6 @@
 #include "incidencechanger.h"
 
 #include <kcal/calendarlocal.h>
-#include <kcal/calendarresources.h>
-#include <kcal/resourcecalendar.h>
 
 #include <kiconloader.h>
 #include <klocale.h>

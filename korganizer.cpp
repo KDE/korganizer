@@ -38,7 +38,7 @@
 #include "kocore.h"
 #include "actionmanager.h"
 #include "koglobals.h"
-#include "resourceview.h"
+#include "akonadicollectionview.h"
 #include "korganizerifaceimpl.h"
 
 #include <korganizer/part.h>
@@ -47,8 +47,6 @@
 #include <libkdepim/progressdialog.h>
 
 #include <kcal/calendarlocal.h>
-#include <kcal/calendarresources.h>
-#include <kcal/resourcecalendar.h>
 
 #include <kio/netaccess.h>
 
