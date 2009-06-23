@@ -59,12 +59,10 @@ class KOCoreHelper : public KOrg::CoreHelper
       return KOGlobals::self()->isWorkDay( dt );
     }
 
-#ifndef KORG_NOPRINTER
     virtual KOrg::PrintPlugin::List loadPrintPlugins()
     {
       return KOCore::self()->loadPrintPlugins();
     }
-#endif
 };
 
 #endif

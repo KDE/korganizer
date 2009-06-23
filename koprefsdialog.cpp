@@ -1361,11 +1361,9 @@ void KOPrefsDialogPlugins::usrReadConfig()
   QTreeWidgetItem *decorations =
     new QTreeWidgetItem( mTreeWidget, QStringList(
                            i18nc( "@title:group", "Calendar Decorations" ) ) );
-#ifndef KORG_NOPRINTER
   QTreeWidgetItem *printPlugins =
     new QTreeWidgetItem( mTreeWidget, QStringList(
                            i18nc( "@title:group", "Print Plugins" ) ) );
-#endif
   QTreeWidgetItem *others =
     new QTreeWidgetItem( mTreeWidget, QStringList(
                            i18nc( "@title:group", "Other Plugins" ) ) );
@@ -1375,10 +1373,8 @@ void KOPrefsDialogPlugins::usrReadConfig()
     QTreeWidgetItem *item;
     if ( (*it)->hasServiceType( KOrg::CalendarDecoration::Decoration::serviceType() ) ) {
       item = new PluginItem( decorations, *it );
-#ifndef KORG_NOPRINTER
     } else if ( (*it)->hasServiceType( KOrg::PrintPlugin::serviceType() ) ){
       item = new PluginItem( printPlugins, *it );
-#endif
     } else {
       item = new PluginItem( others, *it );
     }
@@ -1390,9 +1386,7 @@ void KOPrefsDialogPlugins::usrReadConfig()
   }
 
   decorations->setExpanded( true );
-#ifndef KORG_NOPRINTER
   printPlugins->setExpanded( true );
-#endif
   others->setExpanded( true );
 
   mDecorationsAtMonthViewTop = KOPrefs::instance()->decorationsAtMonthViewTop().toSet();

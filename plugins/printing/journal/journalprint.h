@@ -29,7 +29,6 @@
 
 #include <klocale.h>
 
-#ifndef KORG_NOPRINTER
 namespace KCal {
 }
 
@@ -67,6 +66,4 @@ public:
   }
 };
 
-
-#endif
 #endif

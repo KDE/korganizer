@@ -22,8 +22,6 @@
   without including the source code for Qt in the source distribution.
 */
 
-#ifndef KORG_NOPRINTER
-
 #include "yearprint.h"
 
 #include <kcal/calendar.h>
@@ -202,5 +200,3 @@ void CalPrintYear::print( QPainter &p, int width, int height )
     start = calsys->addMonths( start, monthsPerPage );
   }
 }
-
-#endif

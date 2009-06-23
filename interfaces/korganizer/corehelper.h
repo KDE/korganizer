@@ -45,9 +45,7 @@ class CoreHelper
     virtual QTime dayStart() = 0;
     virtual const KCalendarSystem *calendarSystem() = 0;
     virtual bool isWorkingDay( const QDate &dt ) = 0;
-#ifndef KORG_NOPRINTER
     virtual KOrg::PrintPlugin::List loadPrintPlugins() = 0;
-#endif
 };
 
 }

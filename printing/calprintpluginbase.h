@@ -25,9 +25,6 @@
 */
 #ifndef CALPRINTPLUGINBASE_H
 #define CALPRINTPLUGINBASE_H
-// #define KORG_NOPRINTER
-
-#ifndef KORG_NOPRINTER
 
 #include "korganizer/korganizer_export.h"
 #include "korganizer/printplugin.h"
@@ -619,7 +616,5 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
 
   public:
 };
-
-#endif
 
 #endif

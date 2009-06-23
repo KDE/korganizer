@@ -22,8 +22,6 @@
   without including the source code for Qt in the source distribution.
 */
 
-#ifndef KORG_NOPRINTER
-
 #include "listprint.h"
 #include "calprintpluginbase.h"
 #include "calprinthelper.h"
@@ -106,5 +104,3 @@ void CalPrintList::setDateRange( const QDate& from, const QDate& to )
 void CalPrintList::print( QPainter &p, int width, int height )
 {
 }
-
-#endif

@@ -19,11 +19,6 @@ option(KORG_NODND "Turn-off the ability to drag-and-drop incidences in the views
 #                No idea why you would want to define this, perhaps to save
 #                screen real estate? But there are a config options for that.
 option(KORG_NODECOS "Turn-off decoration plugins in views." FALSE)
-#
-# KORG_NOPRINTER - turns-off printing support. Useful if KOrganizer is used
-#                  in a situation where no printers would be accessible.
-#
-option(KORG_NOPRINTER "Turn-off printing support." FALSE)
 
 # add C++ macro definitions for options passed to CMake
 if(KORG_NOARCHIVE)
@@ -35,9 +30,6 @@ endif(KORG_NODND)
 if(KORG_NODECOS)
   add_definitions(-DKORG_NODECOS)
 endif(KORG_NODECOS)
-if(KORG_NOPRINTER)
-  add_definitions(-DKORG_NOPRINTER)
-endif(KORG_NOPRINTER)
 
 # enable exception handling
 set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${KDE4_ENABLE_EXCEPTIONS}" )
@@ -60,9 +52,6 @@ if(KMAIL_SUPPORTED)
 
   add_definitions (-DQT3_SUPPORT -DQT3_SUPPORT_WARNINGS)
 
-if(NOT KORG_NOPRINTER)
-  add_subdirectory( printing )
-endif(NOT KORG_NOPRINTER)
   add_subdirectory( korgac )
   add_subdirectory( pixmaps )
   add_subdirectory( sounds )
@@ -220,10 +209,16 @@ endif(NOT KORG_NOPRINTER)
     koprefs.cpp kocore.cpp kohelper.cpp koidentitymanager.cpp cellitem.cpp
     akonadicalendar.cpp
     akonadicollectionview.cpp
+    printing/calprinter.cpp
+    printing/calprintpluginbase.cpp
+    printing/calprintdefaultplugins.cpp
   )
 
   kde4_add_kcfg_files(korganizerprivate_LIB_SRCS koprefs_base.kcfgc )
-  kde4_add_ui_files(korganizerprivate_LIB_SRCS filteredit_base.ui koeditoralarms_base.ui publishdialog_base.ui template_management_dialog_base.ui kogroupwareprefspage.ui searchdialog_base.ui timescaleedit_base.ui)
+  kde4_add_ui_files(korganizerprivate_LIB_SRCS
+    filteredit_base.ui koeditoralarms_base.ui publishdialog_base.ui template_management_dialog_base.ui kogroupwareprefspage.ui searchdialog_base.ui timescaleedit_base.ui
+    printing/calprintincidenceconfig_base.ui printing/calprintdayconfig_base.ui printing/calprintmonthconfig_base.ui printing/calprinttodoconfig_base.ui printing/calprintweekconfig_base.ui
+  )
 
   qt4_add_resources(korganizerprivate_LIB_SRCS agendaitem_pixmaps/agendaitemtheme.qrc )
 
@@ -241,7 +236,7 @@ endif(NOT KORG_NOPRINTER)
     ${KDEPIMLIBS_KCAL_LIBS} ${KDEPIMLIBS_KABC_LIBS} ${KDEPIMLIBS_KPIMIDENTITIES_LIBRARY} ${KDE4_KMIME_LIBRARY}
     ${KDEPIMLIBS_KHOLIDAYS_LIBS}
     ${KDEPIMLIBS_AKONADI_LIBS}
-    korganizer_eventviewer korganizer_interfaces korg_stdprinting
+    korganizer_eventviewer korganizer_interfaces
     kdepim
   )
 

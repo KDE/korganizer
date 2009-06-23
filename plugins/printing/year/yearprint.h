@@ -29,8 +29,6 @@
 
 #include <klocale.h>
 
-#ifndef KORG_NOPRINTER
-
 using namespace KCal;
 using namespace KOrg;
 
@@ -69,5 +67,4 @@ class CalPrintYearConfig : public QWidget, public Ui::CalPrintYearConfig_Base
     }
 };
 
-#endif
 #endif

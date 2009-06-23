@@ -13,7 +13,7 @@ kde4_add_plugin(korg_journalprint ${korg_journalprint_PART_SRCS})
 
 
 
-target_link_libraries(korg_journalprint  ${KDE4_KDEUI_LIBS} korg_stdprinting kdepim)
+target_link_libraries(korg_journalprint  ${KDE4_KDEUI_LIBS} korganizerprivate kdepim)
 
 install(TARGETS korg_journalprint  DESTINATION ${PLUGIN_INSTALL_DIR})
 

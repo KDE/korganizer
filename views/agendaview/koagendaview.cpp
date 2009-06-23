@@ -1417,7 +1417,6 @@ void KOAgendaView::clearView()
   mAgenda->clear();
 }
 
-#ifndef KORG_NOPRINTER
 CalPrinter::PrintType KOAgendaView::printType()
 {
   if ( currentDateCount() == 1 ) {
@@ -1426,7 +1425,6 @@ CalPrinter::PrintType KOAgendaView::printType()
     return CalPrinter::Week;
   }
 }
-#endif
 
 void KOAgendaView::updateEventIndicatorTop( int newY )
 {

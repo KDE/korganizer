@@ -101,9 +101,7 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
      */
     virtual QDateTime selectionEnd() { return QDateTime(); };
 
-#ifndef KORG_NOPRINTER
     virtual CalPrinterBase::PrintType printType();
-#endif
 
     /**
       Returns the number of currently shown dates.

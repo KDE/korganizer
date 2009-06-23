@@ -52,7 +52,6 @@ int main(int argc,char **argv)
     }
   }
 
-#ifndef KORG_NOPRINTER
   plugins = KOCore::self()->availablePrintPlugins();
   for(it = plugins.constBegin(); it != plugins.constEnd(); ++it) {
     kDebug() << "Print plugin:" << (*it)->desktopEntryName() << "("
@@ -64,7 +63,6 @@ int main(int argc,char **argv)
       kDebug() << "PRINT PLUGIN INFO:" << p->info();
     }
   }
-#endif
 
   plugins = KOCore::self()->availableParts();
   for(it = plugins.constBegin(); it != plugins.constEnd(); ++it) {

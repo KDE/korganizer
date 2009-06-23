@@ -30,10 +30,8 @@
 #include "kodialogmanager.h"
 #include "incidencechanger.h"
 #include "koglobals.h"
-#ifndef KORG_NOPRINTER
 #include "kocorehelper.h"
 #include "calprinter.h"
-#endif
 
 #include <kcal/calendar.h>
 #include <kcal/incidenceformatter.h>
@@ -192,7 +190,6 @@ JournalView::JournalView( Journal *j, QWidget *parent )
   mLayout->addWidget( mDeleteButton, 1, 1 );
   connect( mDeleteButton, SIGNAL(pressed()), this, SLOT(deleteItem()) );
 
-#ifndef KORG_NOPRINTER
   mPrintButton = new QPushButton( this );
   mPrintButton->setText( i18n( "&Print" ) );
   mPrintButton->setObjectName( "printButton" );
@@ -202,7 +199,6 @@ JournalView::JournalView( Journal *j, QWidget *parent )
   mPrintButton->setWhatsThis( i18n( "Opens a print dialog for this journal entry" ) );
   mLayout->addWidget( mPrintButton, 1, 2 );
   connect( mPrintButton, SIGNAL(clicked()), this, SLOT(printItem()) );
-#endif
 
   readJournal( mJournal );
   mDirty = false;
@@ -234,7 +230,6 @@ void JournalView::editItem()
 
 void JournalView::printItem()
 {
-#ifndef KORG_NOPRINTER
   if ( mJournal ) {
     KOCoreHelper helper;
     CalPrinter printer( this, mCalendar, &helper );
@@ -246,7 +241,6 @@ void JournalView::printItem()
     printer.print( KOrg::CalPrinterBase::Incidence,
                    mDate, mDate, selectedIncidences );
   }
-#endif
 }
 
 void JournalView::setReadOnly( bool readonly )

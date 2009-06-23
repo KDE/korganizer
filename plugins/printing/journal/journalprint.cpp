@@ -22,8 +22,6 @@
   without including the source code for Qt in the source distribution.
 */
 
-#ifndef KORG_NOPRINTER
-
 #include "journalprint.h"
 #include "calprintpluginbase.h"
 
@@ -137,5 +135,3 @@ void CalPrintJournal::print( QPainter &p, int width, int height )
     drawJournal( *it, p, x, y, width, height );
   }
 }
-
-#endif

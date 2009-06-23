@@ -47,8 +47,6 @@
 #include <QAbstractTextDocumentLayout>
 #include <qmath.h> // qCeil
 
-#ifndef KORG_NOPRINTER
-
 /******************************************************************
  **              The Todo positioning structure                  **
  ******************************************************************/
@@ -2017,5 +2015,3 @@ void CalPrintPluginBase::drawFooter( QPainter &p, const QRect &box )
               i18nc( "print date: formatted-datetime", "printed: %1", dateStr ) );
   p.setFont( oldfont );
 }
-
-#endif

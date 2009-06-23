@@ -22,8 +22,6 @@
   without including the source code for Qt in the source distribution.
 */
 
-#ifndef KORG_NOPRINTER
-
 #include "whatsnextprint.h"
 #include "calprintpluginbase.h"
 #include "calprinthelper.h"
@@ -106,5 +104,3 @@ void CalPrintWhatsNext::setDateRange( const QDate& from, const QDate& to )
 void CalPrintWhatsNext::print( QPainter &p, int width, int height )
 {
 }
-
-#endif

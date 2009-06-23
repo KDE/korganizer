@@ -26,9 +26,7 @@
 #define KOAGENDAVIEW_H
 
 #include "agendaview.h"
-#ifndef KORG_NOPRINTER
 #include "calprinter.h"
-#endif
 
 #include <KCal/Calendar>
 
@@ -124,9 +122,7 @@ class KOAgendaView : public KOrg::AgendaView, public KCal::Calendar::CalendarObs
     /** Remove all events from view */
     void clearView();
 
-#ifndef KORG_NOPRINTER
     CalPrinter::PrintType printType();
-#endif
 
     /** start-datetime of selection */
     virtual QDateTime selectionStart() { return mTimeSpanBegin; }

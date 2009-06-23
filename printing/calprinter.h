@@ -25,8 +25,6 @@
 #ifndef _CALPRINTER_H
 #define _CALPRINTER_H
 
-#ifndef KORG_NOPRINTER
-
 #include "korganizer/korganizer_export.h"
 #include "korganizer/printplugin.h"
 
@@ -126,7 +124,5 @@ class CalPrintDialog : public KDialog
 
     CalPrinter::ePrintOrientation mOrientation;
 };
-
-#endif
 
 #endif

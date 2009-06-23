@@ -36,12 +36,10 @@ void BaseView::setCalendar( Calendar *cal )
   mCalendar = cal;
 }
 
-#ifndef KORG_NOPRINTER
 CalPrinterBase::PrintType BaseView::printType()
 {
   return CalPrinterBase::Month;
 }
-#endif
 
 Calendar *BaseView::calendar()
 {
