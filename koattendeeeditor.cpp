@@ -283,7 +283,15 @@ void KOAttendeeEditor::addNewAttendee()
     new Attendee( i18nc( "sample attendee name", "Firstname Lastname" ),
                   i18nc( "sample attendee email name", "name" ) + "@example.net", true );
   insertAttendee( a, false );
-  mnewAttendees.append( a );
+
+  for( int i=0; i<mdelAttendees.count(); ++i ) {
+    if ( *mdelAttendees.value( i ) == *a ) {
+      delete mdelAttendees.value( i );
+      mdelAttendees.removeAt( i );
+      break;
+    }
+  }
+
   updateAttendeeInput();
   // We don't want the hint again
   mNameEdit->setClickMessage( "" );
@@ -293,8 +301,9 @@ void KOAttendeeEditor::addNewAttendee()
 
 void KOAttendeeEditor::readIncidence( KCal::Incidence *incidence )
 {
+  qDeleteAll( mdelAttendees );
   mdelAttendees.clear();
-  mnewAttendees.clear();
+
   if ( KOPrefs::instance()->thatIsMe( incidence->organizer().email() ) ) {
     //TODO: make a new private method for creating the mOrganizerCombo
     //and use it here and initOrganizerWidgets() above.
@@ -480,18 +489,12 @@ void KOAttendeeEditor::updateAttendeeInput()
 void KOAttendeeEditor::cancelAttendeeIncidence( KCal::Incidence *incidence )
 {
   incidence->clearAttendees();
+
   foreach ( Attendee *att, mdelAttendees ) {
-    bool isNewAttendee = false;
-    foreach ( Attendee *newAtt, mnewAttendees ) {
-      if ( *att == *newAtt ) {
-        isNewAttendee = true;
-        break;
-      }
-    }
-    if ( !isNewAttendee ) {
-      incidence->addAttendee( new Attendee( *att ), false );
-    }
+    incidence->addAttendee( new Attendee( *att ), false );
   }
+
+  qDeleteAll( mdelAttendees );
   mdelAttendees.clear();
 }
 
