@@ -1134,6 +1134,11 @@ void ActionManager::exportHTML( HTMLExportSettings *settings )
     return;
   }
 
+  if ( QFileInfo( settings->outputFile() ).exists() ) {
+    if(KMessageBox::questionYesNo( dialogParent(), i18n("Do you want to overwrite file \"%1\"", settings->outputFile()) ) == KMessageBox::No)
+      return;
+  }
+
   QApplication::setOverrideCursor( QCursor ( Qt::WaitCursor ) );
   settings->setEMail( KOPrefs::instance()->email() );
   settings->setName( KOPrefs::instance()->fullName() );
