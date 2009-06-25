@@ -76,7 +76,7 @@ KOEventPopupMenu::KOEventPopupMenu()
                                     i18n( "&Toggle Reminder" ), this, SLOT(toggleAlarm())) );
   //------------------------------------------------------------------------
   mRecurrenceItems.append( addSeparator() );
-  mDissociateOccurrences = addAction( i18n( "&Dissociate From Recurrence" ),
+  mDissociateOccurrences = addAction( i18n( "&Dissociate From Recurrence..." ),
                                       this, SLOT(dissociateOccurrences()) );
   mRecurrenceItems.append( mDissociateOccurrences );
 
