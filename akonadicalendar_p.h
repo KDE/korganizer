@@ -138,17 +138,11 @@ class KCal::AkonadiCalendar::Private : public QObject
 /*
 #if 0
     CalFormat *mFormat;                    // calendar format
-#endif
     QHash<QString, Event *>mEvents;        // hash on uids of all Events
-#if 0
     QMultiHash<QString, Event *>mEventsForDate;// on start dates of non-recurring, single-day Events
-#endif
     QHash<QString, Todo *>mTodos;          // hash on uids of all Todos
-#if 0
     QMultiHash<QString, Todo*>mTodosForDate;// on due dates for all Todos
-#endif
     QHash<QString, Journal *>mJournals;    // hash on uids of all Journals
-#if 0
     QMultiHash<QString, Journal *>mJournalsForDate; // on dates of all Journals
     Incidence::List mDeletedIncidences;    // list of all deleted Incidences
 #endif
