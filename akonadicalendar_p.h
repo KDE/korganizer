@@ -27,6 +27,7 @@
 #include <QObject>
 #include <QCoreApplication>
 
+#include <akonadi/entity.h>
 #include <akonadi/collection.h>
 #include <akonadi/collectionview.h>
 #include <akonadi/collectionfilterproxymodel.h>
@@ -43,6 +44,51 @@
 
 using namespace KCal;
 
+class AkonadiCalendarCollection : public QObject
+{
+    Q_OBJECT
+  public:
+    AkonadiCalendar *m_calendar;
+    Akonadi::Collection m_collection;
+
+    AkonadiCalendarCollection(AkonadiCalendar *calendar, const Akonadi::Collection &collection)
+      : QObject()
+      , m_calendar(calendar)
+      , m_collection(collection)
+    {
+    }
+
+    ~AkonadiCalendarCollection()
+    {
+    }
+};
+
+class AkonadiCalendarItem : public QObject
+{
+    Q_OBJECT
+  public:
+    AkonadiCalendar *m_calendar;
+    Akonadi::Item m_item;
+
+    AkonadiCalendarItem(AkonadiCalendar *calendar, const Akonadi::Item &item)
+      : QObject()
+      , m_calendar(calendar)
+      , m_item(item)
+    {
+    }
+
+    ~AkonadiCalendarItem()
+    {
+    }
+
+    KCal::Incidence::Ptr incidence() const
+    {
+      Q_ASSERT( m_item.hasPayload() );
+      return m_item.payload<KCal::Incidence::Ptr>();
+    }
+
+};
+
 class KCal::AkonadiCalendar::Private : public QObject
 {
     Q_OBJECT
@@ -50,23 +96,25 @@ class KCal::AkonadiCalendar::Private : public QObject
     explicit Private(AkonadiCalendar *q)
       : q(q)
       , m_monitor( new Akonadi::Monitor() )
-      , m_session( new Akonadi::Session( QCoreApplication::instance()->applicationName().toUtf8() + QByteArray("-AkonadiCalendar-") + QByteArray::number(qrand()) ) )
+      , m_session( new Akonadi::Session( QCoreApplication::instance()->applicationName().toUtf8() + QByteArray("-AkonadiCal-") + QByteArray::number(qrand()) ) )
     {
-      m_monitor->ignoreSession( m_session );
       m_monitor->itemFetchScope().fetchFullPayload();
+      m_monitor->ignoreSession( m_session );
 
       connect( m_monitor, SIGNAL(itemChanged( const Akonadi::Item&, const QSet<QByteArray>& )),
                this, SLOT(itemChanged( const Akonadi::Item&, const QSet<QByteArray>& )) );
       connect( m_monitor, SIGNAL(itemMoved( const Akonadi::Item&, const Akonadi::Collection&, const Akonadi::Collection& )),
                this, SLOT(itemMoved( const Akonadi::Item&, const Akonadi::Collection&, const Akonadi::Collection& ) ) );
       connect( m_monitor, SIGNAL(itemAdded( const Akonadi::Item&, const Akonadi::Collection& )),
-               this, SLOT(itemAdded( const Akonadi::Item& )) );
-      connect( m_monitor, SIGNAL(itemRemoved(Akonadi::Item)),
-               this, SLOT(itemRemoved(Akonadi::Item)) );
+               this, SLOT(itemAdded( const Akonadi::Item&, const Akonadi::Collection& )) );
+      connect( m_monitor, SIGNAL(itemRemoved( const Akonadi::Item&, const Akonadi::Collection& )),
+               this, SLOT(itemRemoved( const Akonadi::Item&, const Akonadi::Collection& )) );
+      /*
       connect( m_monitor, SIGNAL(itemLinked(const Akonadi::Item&, const Akonadi::Collection&)),
-               this, SLOT(itemAdded(const Akonadi::Item&)) );
-      connect( m_monitor, SIGNAL(itemUnlinked(const Akonadi::Item&, const Akonadi::Collection&)),
-               this, SLOT(itemRemoved(const Akonadi::Item&)) );
+               this, SLOT(itemAdded(const Akonadi::Item&, const Akonadi::Collection&)) );
+      connect( m_monitor, SIGNAL(itemUnlinked( const Akonadi::Item&, const Akonadi::Collection& )),
+               this, SLOT(itemRemoved( const Akonadi::Item&, const Akonadi::Collection& )) );
+      */
     }
 
     ~Private()
@@ -77,12 +125,17 @@ class KCal::AkonadiCalendar::Private : public QObject
 
     void clear()
     {
+/*
       mEvents.clear();
       mTodos.clear();
       mJournals.clear();
       m_map.clear();
+*/
+      qDeleteAll(m_itemMap);
+      qDeleteAll(m_collectionMap);
     }
 
+/*
 #if 0
     CalFormat *mFormat;                    // calendar format
 #endif
@@ -99,27 +152,29 @@ class KCal::AkonadiCalendar::Private : public QObject
     QMultiHash<QString, Journal *>mJournalsForDate; // on dates of all Journals
     Incidence::List mDeletedIncidences;    // list of all deleted Incidences
 #endif
-
+*/
     AkonadiCalendar *q;
     Akonadi::Monitor *m_monitor;
     Akonadi::Session *m_session;
-    Akonadi::Collection m_collection;
 
     //keep instance to increment shared_ptr ref-counter
     //Akonadi::Item::List m_items;
-    QMap<Incidence*,Akonadi::Item> m_map;
+    //QMap<Incidence*,Akonadi::Item> m_map;
+    //QList<AkonadiCalendarCollection*> m_collectionList;
+    QHash<Akonadi::Entity::Id, AkonadiCalendarCollection*> m_collectionMap;
+    QHash<QString, AkonadiCalendarItem*> m_itemMap; //TODO replace Incidence::uid-QString with Akonadi::Entity::Id-int
 
   public Q_SLOTS:
   
     void listingDone( KJob *job )
     {
         kDebug();
-        //Akonadi::ItemFetchJob *fetchjob = static_cast<Akonadi::ItemFetchJob*>( job );
+        Akonadi::ItemFetchJob *fetchjob = static_cast<Akonadi::ItemFetchJob*>( job );
         if ( job->error() ) {
             kWarning( 5250 ) << "Item query failed:" << job->errorString();
             return;
         }
-        emit q->calendarChanged();
+        itemsAdded( fetchjob->items(), fetchjob->collection() );
     }
 
     void createDone( KJob *job )
@@ -129,8 +184,8 @@ class KCal::AkonadiCalendar::Private : public QObject
             kWarning( 5250 ) << "Item create failed:" << job->errorString();
             return;
         }
-        Akonadi::ItemCreateJob *createjob = static_cast<Akonadi::ItemCreateJob*>( job );
-        itemAdded( createjob->item() );
+        //Akonadi::ItemCreateJob *createjob = static_cast<Akonadi::ItemCreateJob*>( job );
+        //itemAdded( createjob->item(), createjob->collection() ); //done by the monitor
     }
 
     void deleteDone( KJob *job )
@@ -140,8 +195,8 @@ class KCal::AkonadiCalendar::Private : public QObject
             kWarning( 5250 ) << "Item delete failed:" << job->errorString();
             return;
         }
-        Akonadi::ItemDeleteJob *deletejob = static_cast<Akonadi::ItemDeleteJob*>( job );
-        itemsRemoved( deletejob->items() );
+        //Akonadi::ItemDeleteJob *deletejob = static_cast<Akonadi::ItemDeleteJob*>( job );
+        //itemsRemoved( deletejob->items(), deletejob->collection() ); //done by the monitor
     }
 
     void modifyDone( KJob *job )
@@ -174,20 +229,22 @@ class KCal::AkonadiCalendar::Private : public QObject
     void itemMoved( const Akonadi::Item &item, const Akonadi::Collection& colSrc, const Akonadi::Collection& colDst )
     {
         kDebug();
-        if ( colSrc == m_collection && colDst != m_collection )
-            itemRemoved( item );
-        else if ( colDst == m_collection && colSrc != m_collection )
-            itemAdded( item );
+        if( m_collectionMap.contains(colSrc.id()) && ! m_collectionMap.contains(colDst.id()) )
+            itemRemoved( item, colSrc );
+        else if( m_collectionMap.contains(colDst.id()) && ! m_collectionMap.contains(colSrc.id()) )
+            itemAdded( item, colDst );
     }
 
-    void itemsAdded( const Akonadi::Item::List &items )
+    void itemsAdded( const Akonadi::Item::List &items, const Akonadi::Collection &collection )
     {
         kDebug();
+        Q_ASSERT( collection.isValid() );
         foreach( const Akonadi::Item &item, items ) {
             Q_ASSERT( item.isValid() );
             Q_ASSERT( item.hasPayload() );
             const KCal::Incidence::Ptr incidence = item.payload<KCal::Incidence::Ptr>();
-            kDebug() << "uid=" << incidence->uid() << "summary=" << incidence->summary() << "type=" << incidence->type();
+            kDebug() << "Add uid=" << incidence->uid() << "summary=" << incidence->summary() << "type=" << incidence->type();
+#if 0
             //TODO use visitor
             if( Event *event = dynamic_cast<Event*>( incidence.get() ) )
                 mEvents.insert( incidence->uid(), event );
@@ -198,36 +255,49 @@ class KCal::AkonadiCalendar::Private : public QObject
             else
                 Q_ASSERT(false);
             incidence->registerObserver(q);
-            m_map[ incidence.get() ] = item;
+            m_map[ incidence ] = item;
+#else
+            incidence->registerObserver( q );
+
+            Q_ASSERT( ! m_itemMap.contains( incidence->uid() ) );
+            m_itemMap[ incidence->uid() ] = new AkonadiCalendarItem(q, item);
+#endif
         }
 
         emit q->calendarChanged();
     }
 
-    void itemAdded( const Akonadi::Item &item )
+    void itemAdded( const Akonadi::Item &item, const Akonadi::Collection &collection )
     {
         kDebug();
-        itemsAdded( Akonadi::Item::List() << item );
+        Q_ASSERT( item.isValid() );
+        itemsAdded( Akonadi::Item::List() << item, collection );
     }
 
-    void itemsRemoved( const Akonadi::Item::List &items ) {
-        kDebug();
+    void itemsRemoved( const Akonadi::Item::List &items, const Akonadi::Collection &collection ) {
+        kDebug()<<items.count();
         foreach(const Akonadi::Item& item, items) {
             Q_ASSERT( item.isValid() );
             Q_ASSERT( item.hasPayload() );
             const KCal::Incidence::Ptr incidence = item.payload<KCal::Incidence::Ptr>();
+#if 0
             mEvents.remove( incidence->uid() );
             mTodos.remove( incidence->uid() );
             mJournals.remove( incidence->uid() );
             m_map.remove( incidence.get() );
+#else
+            AkonadiCalendarItem *ci = m_itemMap.take( incidence->uid() );
+            kDebug() << "Remove uid=" << incidence->uid() << "summary=" << incidence->summary() << "type=" << incidence->type();
+            delete ci;
+#endif
         }
         emit q->calendarChanged();
     }
 
-    void itemRemoved( const Akonadi::Item &item )
+    void itemRemoved( const Akonadi::Item &item, const Akonadi::Collection &collection )
     {
         kDebug();
-        itemsRemoved( Akonadi::Item::List() << item );
+        itemsRemoved( Akonadi::Item::List() << item, collection );
     }
   
 };

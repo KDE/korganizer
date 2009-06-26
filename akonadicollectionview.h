@@ -40,6 +40,7 @@ namespace KCal {
 namespace Akonadi {
   class Collection;
   class StandardActionManager;
+  class CollectionView;
 }
 
 class AkonadiCollectionView;
@@ -156,7 +157,7 @@ class AkonadiCollectionView : public CalendarViewExtension
     void currentChanged();
 #else
   private Q_SLOTS:
-    void collectionClicked(const Akonadi::Collection&);
+    void collectionClicked(const QModelIndex&);
 #endif
 
   private:
@@ -173,6 +174,7 @@ class AkonadiCollectionView : public CalendarViewExtension
 #endif
     KCal::AkonadiCalendar *mCalendar;
     Akonadi::StandardActionManager* mActionManager;
+    Akonadi::CollectionView *mCollectionview;
 #if 0
     QList<ResourceCalendar*> mResourcesToClose;
     QAbstractButton *mAddButton, *mEditButton, *mDeleteButton;

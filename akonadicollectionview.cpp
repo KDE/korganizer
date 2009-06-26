@@ -247,7 +247,7 @@ void ResourceItem::setStandardResource( bool std )
 #endif
 
 AkonadiCollectionView::AkonadiCollectionView( AkonadiCollectionViewFactory *factory, KCal::AkonadiCalendar *calendar, QWidget *parent )
-  : CalendarViewExtension( parent ), mFactory(factory), mCalendar( calendar ), mActionManager(0)
+  : CalendarViewExtension( parent ), mFactory(factory), mCalendar( calendar ), mActionManager(0), mCollectionview(0)
 {
   QVBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->setSpacing( KDialog::spacingHint() );
@@ -341,27 +341,25 @@ AkonadiCollectionView::AkonadiCollectionView( AkonadiCollectionViewFactory *fact
   sortmodel->setSortCaseSensitivity( Qt::CaseInsensitive );
   sortmodel->setSourceModel( collectionproxymodel );
 
-  Akonadi::CollectionView *collectionview = new Akonadi::CollectionView();
-  collectionview->setModel(sortmodel);
+  mCollectionview = new Akonadi::CollectionView();
+  mCollectionview->setModel(sortmodel);
+  mCollectionview->setSelectionMode( QAbstractItemView::MultiSelection );
   KXMLGUIClient *xmlclient = KOCore::self()->xmlguiClient( mFactory->view() );
   if( xmlclient ) {
-    collectionview->setXmlGuiClient( xmlclient );
+    mCollectionview->setXmlGuiClient( xmlclient );
 
-    mActionManager = new Akonadi::StandardActionManager( xmlclient->actionCollection(), collectionview );
+    mActionManager = new Akonadi::StandardActionManager( xmlclient->actionCollection(), mCollectionview );
     mActionManager->createAllActions();
     mActionManager->action( Akonadi::StandardActionManager::CreateCollection )->setText( i18n( "Add Calendar..." ) );
     mActionManager->setActionText( Akonadi::StandardActionManager::CopyCollections, ki18np( "Copy Calendar", "Copy %1 Calendars" ) );
     mActionManager->action( Akonadi::StandardActionManager::DeleteCollections )->setText( i18n( "Delete Calendar" ) );
     mActionManager->action( Akonadi::StandardActionManager::SynchronizeCollections )->setText( i18n( "Reload" ) );
     mActionManager->action( Akonadi::StandardActionManager::CollectionProperties )->setText( i18n( "Properties..." ) );
-
-    QItemSelectionModel *selectionmodel = collectionview->selectionModel();
-    Q_ASSERT( selectionmodel );
-    mActionManager->setCollectionSelectionModel( selectionmodel );
+    mActionManager->setCollectionSelectionModel( mCollectionview->selectionModel() );
   }
-  connect(collectionview, SIGNAL(clicked(const Akonadi::Collection&)), this, SLOT(collectionClicked(const Akonadi::Collection&)));
+  connect(mCollectionview, SIGNAL(clicked(const QModelIndex&)), this, SLOT(collectionClicked(const QModelIndex&)));
   
-  topLayout->addWidget( collectionview );
+  topLayout->addWidget( mCollectionview );
 #endif
   updateView();
 }
@@ -383,10 +381,17 @@ void AkonadiCollectionView::updateView()
 #endif
 }
 
-void AkonadiCollectionView::collectionClicked(const Akonadi::Collection& collection)
+void AkonadiCollectionView::collectionClicked(const QModelIndex &index)
 {
   kDebug();
-  mCalendar->setCollection( collection );
+  Q_ASSERT( index.isValid() );
+  const Akonadi::Collection collection = index.model()->data( index, Akonadi::CollectionModel::CollectionRole ).value<Akonadi::Collection>();
+  Q_ASSERT( collection.isValid() );
+  if( mCollectionview->selectionModel()->isSelected(index) ) {
+    mCalendar->addCollection( collection );
+  } else {
+    mCalendar->removeCollection( collection );
+  }
 }
 
 #if 0

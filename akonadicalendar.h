@@ -39,8 +39,13 @@ class KCAL_EXPORT AkonadiCalendar : public Calendar
     explicit AkonadiCalendar( const KDateTime::Spec &timeSpec );
     ~AkonadiCalendar();
 
+#if 0
     Akonadi::Collection collection() const;
     void setCollection( const Akonadi::Collection &collection );
+#else
+    void addCollection( const Akonadi::Collection &collection );
+    void removeCollection( const Akonadi::Collection &collection );
+#endif
 
     bool reload();
     bool save();
