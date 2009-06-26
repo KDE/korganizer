@@ -423,7 +423,7 @@ KUrl FreeBusyManager::freeBusyUrl( const QString &email ) const
   if ( !url.isEmpty() ) {
     return KUrl( url );
   }
-  // Try with the url configurated by preferred email in kaddressbook
+  // Try with the url configurated by preferred email in kcontactmanager
   KABC::Addressee::List list= KABC::StdAddressBook::self( true )->findByEmail( email );
   KABC::Addressee::List::Iterator it;
   QString pref;

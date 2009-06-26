@@ -1548,7 +1548,7 @@ void CalendarView::schedule( iTIPMethod method, Incidence *incidence )
 
 void CalendarView::openAddressbook()
 {
-  KRun::runCommand( "kaddressbook", topLevelWidget() );
+  KRun::runCommand( "kcontactmanager", topLevelWidget() );
 }
 
 void CalendarView::setModified( bool modified )

@@ -392,7 +392,7 @@ QStringList KOPrefs::allEmails()
   QStringList lst = KOCore::self()->identityManager()->allEmails();
   // Add emails configured in korganizer
   lst += mAdditionalMails;
-  // Add emails from the user's kaddressbook entry
+  // Add emails from the user's kcontactmanager entry
   lst += mMyAddrBookMails;
   // Add the email entered as the userEmail here
   lst += email();
@@ -420,7 +420,7 @@ QStringList KOPrefs::fullEmails()
   for ( it = lst.begin(); it != lst.end(); ++it ) {
     fullEmails << QString( "%1 <%2>" ).arg( fullName() ).arg( *it );
   }
-  // Add emails from the user's kaddressbook entry
+  // Add emails from the user's kcontactmanager entry
   KABC::Addressee me = KABC::StdAddressBook::self( true )->whoAmI();
   lst = me.emails();
   for ( it = lst.begin(); it != lst.end(); ++it ) {

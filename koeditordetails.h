@@ -38,7 +38,7 @@ using namespace KCal;
 typedef CustomListViewItem<KCal::Attendee *> AttendeeListItem;
 
 /** KOAttendeeListView is a child class of K3ListView  which supports
- *  dropping of attendees (e.g. from kaddressbook) onto it. If an attendeee
+ *  dropping of attendees (e.g. from kcontactmanager) onto it. If an attendeee
  *  was dropped, the signal dropped(Attendee*)  is emitted.
  */
 class KOAttendeeListView : public K3ListView
