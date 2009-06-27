@@ -322,7 +322,7 @@ class KOPrefsDialogTime : public KPrefsModule
       }
 
       QGroupBox *workingHoursGroupBox =
-        new QGroupBox( i18nc( "@title:group", "Working Hours" ), regionalPage );
+        new QGroupBox( i18nc( "@title:group", "Working Period" ), regionalPage );
       regionalLayout->addWidget( workingHoursGroupBox, 2, 0 );
 
       QBoxLayout *workingHoursLayout = new QVBoxLayout( workingHoursGroupBox );
