@@ -388,9 +388,11 @@ void AkonadiCollectionView::collectionClicked(const QModelIndex &index)
   const Akonadi::Collection collection = index.model()->data( index, Akonadi::CollectionModel::CollectionRole ).value<Akonadi::Collection>();
   Q_ASSERT( collection.isValid() );
   if( mCollectionview->selectionModel()->isSelected(index) ) {
-    mCalendar->addCollection( collection );
+    if( ! mCalendar->hasCollection( collection ) )
+      mCalendar->addCollection( collection );
   } else {
-    mCalendar->removeCollection( collection );
+    if( mCalendar->hasCollection( collection ) )
+      mCalendar->removeCollection( collection );
   }
 }
 

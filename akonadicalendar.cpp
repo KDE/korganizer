@@ -56,11 +56,14 @@ AkonadiCalendar::~AkonadiCalendar()
   delete d;
 }
 
+bool AkonadiCalendar::hasCollection( const Akonadi::Collection &collection ) const
+{
+  return d->m_collectionMap.contains( collection.id() );
+}
+
 void AkonadiCalendar::addCollection( const Akonadi::Collection &collection )
 {
   kDebug();
-  if ( d->m_collectionMap.contains( collection.id() ) )
-    return;
   Q_ASSERT( ! d->m_collectionMap.contains( collection.id() ) );
   AkonadiCalendarCollection *c = new AkonadiCalendarCollection( this, collection );
   d->m_collectionMap[ collection.id() ] = c; //TODO remove again if failed!
