@@ -40,6 +40,8 @@
 #endif
 #include <KDialog>
 #include <KAction>
+#include <KActionCollection>
+#include <kjob.h>
 #if 0
 #include <KInputDialog>
 #include <KLocale>
@@ -65,6 +67,12 @@
 #include <akonadi/collectionmodel.h>
 #include <akonadi/collectionview.h>
 #include <akonadi/standardactionmanager.h>
+#include <akonadi/agenttypedialog.h>
+#include <akonadi/agentinstancewidget.h>
+#include <akonadi/agentmanager.h>
+#include <akonadi/agentinstancecreatejob.h>
+#include <akonadi/agentfilterproxymodel.h>
+#include <akonadi/control.h>
 
 AkonadiCollectionViewFactory::AkonadiCollectionViewFactory( KCal::AkonadiCalendar *calendar, CalendarView *view )
   : mCalendar( calendar ) , mView( view ), mAkonadiCollectionView( 0 )
@@ -356,6 +364,20 @@ AkonadiCollectionView::AkonadiCollectionView( AkonadiCollectionViewFactory *fact
     mActionManager->action( Akonadi::StandardActionManager::SynchronizeCollections )->setText( i18n( "Reload" ) );
     mActionManager->action( Akonadi::StandardActionManager::CollectionProperties )->setText( i18n( "Properties..." ) );
     mActionManager->setCollectionSelectionModel( mCollectionview->selectionModel() );
+
+    KAction *createAction = new KAction( mCollectionview );
+    createAction->setIcon( KIcon( "calendar-new" ) );
+    createAction->setText( i18n( "New Calendar..." ) );
+    //action->setWhatsThis( i18n( "Create a new contact<p>You will be presented with a dialog where you can add all data about a person, including addresses and phone numbers.</p>" ) );
+    xmlclient->actionCollection()->addAction( QString::fromLatin1( "akonadi_calendar_create" ), createAction );
+    connect( createAction, SIGNAL( triggered( bool ) ), this, SLOT( newCalendar() ) );
+
+    KAction *deleteAction = new KAction( mCollectionview );
+    deleteAction->setIcon( KIcon( "edit-delete" ) );
+    deleteAction->setText( i18n( "Delete Calendar" ) );
+    //action->setWhatsThis( i18n( "Create a new contact<p>You will be presented with a dialog where you can add all data about a person, including addresses and phone numbers.</p>" ) );
+    xmlclient->actionCollection()->addAction( QString::fromLatin1( "akonadi_calendar_delete" ), deleteAction );
+    connect( deleteAction, SIGNAL( triggered( bool ) ), this, SLOT( deleteCalendar() ) );
   }
   connect(mCollectionview, SIGNAL(clicked(const QModelIndex&)), this, SLOT(collectionClicked(const QModelIndex&)));
   
@@ -394,6 +416,57 @@ void AkonadiCollectionView::collectionClicked(const QModelIndex &index)
     if( mCalendar->hasCollection( collection ) )
       mCalendar->removeCollection( collection );
   }
+}
+
+void AkonadiCollectionView::newCalendar()
+{
+  kDebug();
+  Akonadi::AgentTypeDialog dlg( this );
+  dlg.setWindowTitle( i18n( "Add Calendar" ) );
+  dlg.agentFilterProxyModel()->addMimeTypeFilter( QString::fromLatin1( "text/calendar" ) );
+  //dlg.agentFilterProxyModel()->addCapabilityFilter( "Resource" ); // show only resources, no agents
+  if ( dlg.exec() ) {
+    const Akonadi::AgentType agentType = dlg.agentType();
+    if ( agentType.isValid() ) {
+      Akonadi::AgentInstanceCreateJob *job = new Akonadi::AgentInstanceCreateJob( agentType, this );
+      job->configure( this );
+      connect( job, SIGNAL( result( KJob* ) ), this, SLOT( newCalendarResult( KJob* ) ) );
+      job->start();
+    }
+  }
+}
+
+void AkonadiCollectionView::newCalendarResult( KJob *job )
+{
+  kDebug();
+  Akonadi::AgentInstanceCreateJob *createjob = static_cast<Akonadi::AgentInstanceCreateJob*>( job );
+  if ( job->error() ) {
+      kWarning( 5250 ) << "Add calendar failed:" << job->errorString();
+      return;
+  }
+  //TODO
+}
+
+void AkonadiCollectionView::deleteCalendar()
+{
+  kDebug();
+  //TODO
+  /*
+  const AgentInstance agent = ui.instanceWidget->currentAgentInstance();
+  if ( agent.isValid() ) {
+    if ( KMessageBox::questionYesNo( this,
+                                     i18n( "Do you really want to delete agent instance %1?", agent.name() ),
+                                     i18n( "Agent Deletion" ),
+                                     KStandardGuiItem::del(),
+                                     KStandardGuiItem::cancel(),
+                                     QString(),
+                                     KMessageBox::Dangerous )
+      == KMessageBox::Yes )
+    {
+      AgentManager::self()->removeInstance( agent );
+    }
+  }
+  */
 }
 
 #if 0

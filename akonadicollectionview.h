@@ -43,6 +43,7 @@ namespace Akonadi {
   class CollectionView;
 }
 
+class KJob;
 class AkonadiCollectionView;
 
 class AkonadiCollectionViewFactory : public CalendarViewExtension::Factory
@@ -158,6 +159,11 @@ class AkonadiCollectionView : public CalendarViewExtension
 #else
   private Q_SLOTS:
     void collectionClicked(const QModelIndex&);
+
+    void newCalendar();
+    void newCalendarResult( KJob* );
+
+    void deleteCalendar();
 #endif
 
   private:

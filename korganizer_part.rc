@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui>
-<kpartgui name="korganizer" version="412">
+<kpartgui name="korganizer" version="413">
 
   <MenuBar>
     <Menu name="file"><text>&amp;File</text>
@@ -182,8 +182,8 @@
     <Separator/>
     <Action name="akonadi_collection_properties"/>
     <Separator/>
-    <Action name="akonadi_addressbook_create"/>
-    <Action name="akonadi_addressbook_delete"/>
+    <Action name="akonadi_calendar_create"/>
+    <Action name="akonadi_calendar_delete"/>
   </Menu>
 
 </kpartgui>
