@@ -66,6 +66,7 @@
 #include <akonadi/collectionfilterproxymodel.h>
 #include <akonadi/collectionmodel.h>
 #include <akonadi/collectionview.h>
+#include <akonadi/collectiondeletejob.h>
 #include <akonadi/standardactionmanager.h>
 #include <akonadi/agenttypedialog.h>
 #include <akonadi/agentinstancewidget.h>
@@ -366,7 +367,7 @@ AkonadiCollectionView::AkonadiCollectionView( AkonadiCollectionViewFactory *fact
     mActionManager->setCollectionSelectionModel( mCollectionview->selectionModel() );
 
     KAction *createAction = new KAction( mCollectionview );
-    createAction->setIcon( KIcon( "calendar-new" ) );
+    createAction->setIcon( KIcon( "new" ) );
     createAction->setText( i18n( "New Calendar..." ) );
     //action->setWhatsThis( i18n( "Create a new contact<p>You will be presented with a dialog where you can add all data about a person, including addresses and phone numbers.</p>" ) );
     xmlclient->actionCollection()->addAction( QString::fromLatin1( "akonadi_calendar_create" ), createAction );
@@ -430,18 +431,18 @@ void AkonadiCollectionView::newCalendar()
     if ( agentType.isValid() ) {
       Akonadi::AgentInstanceCreateJob *job = new Akonadi::AgentInstanceCreateJob( agentType, this );
       job->configure( this );
-      connect( job, SIGNAL( result( KJob* ) ), this, SLOT( newCalendarResult( KJob* ) ) );
+      connect( job, SIGNAL( result( KJob* ) ), this, SLOT( newCalendarDone( KJob* ) ) );
       job->start();
     }
   }
 }
 
-void AkonadiCollectionView::newCalendarResult( KJob *job )
+void AkonadiCollectionView::newCalendarDone( KJob *job )
 {
   kDebug();
   Akonadi::AgentInstanceCreateJob *createjob = static_cast<Akonadi::AgentInstanceCreateJob*>( job );
-  if ( job->error() ) {
-      kWarning( 5250 ) << "Add calendar failed:" << job->errorString();
+  if ( createjob->error() ) {
+      kWarning( 5250 ) << "Create calendar failed:" << createjob->errorString();
       return;
   }
   //TODO
@@ -450,23 +451,39 @@ void AkonadiCollectionView::newCalendarResult( KJob *job )
 void AkonadiCollectionView::deleteCalendar()
 {
   kDebug();
-  //TODO
-  /*
-  const AgentInstance agent = ui.instanceWidget->currentAgentInstance();
-  if ( agent.isValid() ) {
-    if ( KMessageBox::questionYesNo( this,
-                                     i18n( "Do you really want to delete agent instance %1?", agent.name() ),
-                                     i18n( "Agent Deletion" ),
-                                     KStandardGuiItem::del(),
-                                     KStandardGuiItem::cancel(),
-                                     QString(),
-                                     KMessageBox::Dangerous )
-      == KMessageBox::Yes )
-    {
-      AgentManager::self()->removeInstance( agent );
-    }
+
+  QModelIndex index = mCollectionview->selectionModel()->currentIndex(); //selectedRows()
+  Q_ASSERT( index.isValid() );
+  const Akonadi::Collection collection = index.model()->data( index, Akonadi::CollectionModel::CollectionRole ).value<Akonadi::Collection>();
+  Q_ASSERT( collection.isValid() );
+  //Q_ASSERT( mCollectionview->selectionModel()->isSelected(index) );
+  
+  QString displayname = index.model()->data( index, Qt::DisplayRole ).value<QString>();
+  Q_ASSERT( ! displayname.isEmpty() );
+
+  if( KMessageBox::questionYesNo( this,
+                                  i18n( "Do you really want to delete calendar %1?", displayname ),
+                                  i18n( "Delete Calendar" ),
+                                  KStandardGuiItem::del(),
+                                  KStandardGuiItem::cancel(),
+                                  QString(),
+                                  KMessageBox::Dangerous )
+    == KMessageBox::Yes )
+  {
+    Akonadi::CollectionDeleteJob *job = new Akonadi::CollectionDeleteJob( collection /* , m_session */ );
+    connect( job, SIGNAL( result( KJob* ) ), this, SLOT( deleteCalendarDone( KJob* ) ) );
   }
-  */
+}
+
+void AkonadiCollectionView::deleteCalendarDone( KJob *job )
+{
+  kDebug();
+  Akonadi::CollectionDeleteJob *createjob = static_cast<Akonadi::CollectionDeleteJob*>( job );
+  if ( createjob->error() ) {
+      kWarning( 5250 ) << "Delete calendar failed:" << createjob->errorString();
+      return;
+  }
+  //TODO
 }
 
 #if 0

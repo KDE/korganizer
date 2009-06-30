@@ -161,9 +161,10 @@ class AkonadiCollectionView : public CalendarViewExtension
     void collectionClicked(const QModelIndex&);
 
     void newCalendar();
-    void newCalendarResult( KJob* );
+    void newCalendarDone( KJob* );
 
     void deleteCalendar();
+    void deleteCalendarDone( KJob* );
 #endif
 
   private:
