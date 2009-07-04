@@ -39,8 +39,8 @@
 
 #include <QButtonGroup>
 
-K_PLUGIN_FACTORY(ListPrintFactory, registerPlugin<CalPrintList>();)
-K_EXPORT_PLUGIN(ListPrintFactory( "korg_listprint" ))
+K_PLUGIN_FACTORY( ListPrintFactory, registerPlugin<CalPrintList>(); )
+K_EXPORT_PLUGIN( ListPrintFactory( "korg_listprint" ) )
 
 /**************************************************************
  *           Print Day
@@ -58,7 +58,7 @@ void CalPrintList::readSettingsWidget()
   if ( cfg ) {
     mFromDate = cfg->mFromDate->date();
     mToDate = cfg->mToDate->date();
-    mUseDateRange = (cfg->mDateRangeGroup->selectedId() == 1);
+    mUseDateRange = ( cfg->mDateRangeGroup->selectedId() == 1 );
   }
 }
 
@@ -92,7 +92,7 @@ void CalPrintList::saveConfig()
   }
 }
 
-void CalPrintList::setDateRange( const QDate& from, const QDate& to )
+void CalPrintList::setDateRange( const QDate &from, const QDate &to )
 {
   CalPrintPluginBase::setDateRange( from, to );
   CalPrintListConfig *cfg =
