@@ -226,7 +226,7 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
                       next line (no indentation of the contents)
       @param expand Whether to expand the box vertically to fit the
                     whole text in it.
-      @param rickContents Whether contents contains rich text. 
+      @param rickContents Whether contents contains rich text.
       @return The bottom of the printed box. If expand==true, the bottom of
               the drawn box is returned, if expand==false, the vertical
               end of the printed contents inside the box is returned.

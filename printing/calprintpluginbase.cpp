@@ -24,7 +24,6 @@
   without including the source code for Qt in the source distribution.
 */
 
-
 #include "calprintpluginbase.h"
 #include "cellitem.h"
 #include "koprefs.h"
@@ -1621,7 +1620,6 @@ void CalPrintPluginBase::drawMonthTable( QPainter &p, const QDate &qd,
   }
 }
 
-
 void CalPrintPluginBase::drawTodoLines( QPainter &p,
                                         const QString &entry,
                                         int x, int &y, int width,
@@ -1631,7 +1629,7 @@ void CalPrintPluginBase::drawTodoLines( QPainter &p,
 {
   QString plainEntry = ( richTextEntry ) ? toPlainText( entry ) : entry;
 
-  QRect textrect(0,0,width,-1);
+  QRect textrect( 0, 0, width, -1 );
   int flags = Qt::AlignLeft;
   QFontMetrics fm = p.fontMetrics();
 
@@ -1670,16 +1668,15 @@ void CalPrintPluginBase::drawTodoLines( QPainter &p,
   }
 }
 
-
 void CalPrintPluginBase::drawTodo( int &count, Todo *todo, QPainter &p,
-                               TodoSortField sortField, SortDirection sortDir,
-                               bool connectSubTodos, bool strikeoutCompleted,
-                               bool desc, int posPriority, int posSummary,
-                               int posDueDt, int posPercentComplete,
-                               int level, int x, int &y, int width,
-                               int pageHeight, const Todo::List &todoList,
-                               TodoParentStart *r, bool excludeConfidential,
-                               bool excludePrivate )
+                                   TodoSortField sortField, SortDirection sortDir,
+                                   bool connectSubTodos, bool strikeoutCompleted,
+                                   bool desc, int posPriority, int posSummary,
+                                   int posDueDt, int posPercentComplete,
+                                   int level, int x, int &y, int width,
+                                   int pageHeight, const Todo::List &todoList,
+                                   TodoParentStart *r, bool excludeConfidential,
+                                   bool excludePrivate )
 {
   QString outStr;
   const KLocale *local = KGlobal::locale();
@@ -1742,7 +1739,7 @@ void CalPrintPluginBase::drawTodo( int &count, Todo *todo, QPainter &p,
     int to( rect.top() + ( rect.height() / 2 ) );
     int endx( rect.left() );
     p.drawLine( center, to, endx, to );  // side connector
-    if ( r->mSamePage ) { 
+    if ( r->mSamePage ) {
       bottom = r->mRect.bottom() + 1;
     } else {
       bottom = 0;
@@ -1862,7 +1859,7 @@ void CalPrintPluginBase::drawTextLines( QPainter &p, const QString &entry,
 {
   QString plainEntry = ( richTextEntry ) ? toPlainText( entry ) : entry;
 
-  QRect textrect(0,0,width,-1);
+  QRect textrect( 0, 0, width, -1 );
   int flags = Qt::AlignLeft;
   QFontMetrics fm = p.fontMetrics();
 
