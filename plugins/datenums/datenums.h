@@ -40,7 +40,7 @@ class Datenums : public Decoration
       DayOfYear = 1,
       DaysRemaining = 2
     };
-    Q_DECLARE_FLAGS(DayNumbers, DayNumber)
+    Q_DECLARE_FLAGS( DayNumbers, DayNumber )
 
     QString info();
 
@@ -48,6 +48,6 @@ class Datenums : public Decoration
     DayNumbers mDisplayedInfo;
 };
 
-Q_DECLARE_OPERATORS_FOR_FLAGS(Datenums::DayNumbers)
+Q_DECLARE_OPERATORS_FOR_FLAGS( Datenums::DayNumbers )
 
 #endif
