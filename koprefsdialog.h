@@ -158,7 +158,7 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogPlugins : public KPrefsModule
 
     //Decorations are not implemented in month view yet
     //QCheckBox *mPositionMonthTop;
-    
+
     QRadioButton *mPositionAgendaTop;
     QRadioButton *mPositionAgendaBottom;
     QSet<QString> mDecorationsAtMonthViewTop;

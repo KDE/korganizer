@@ -72,14 +72,14 @@ bool KOEventEditor::incidenceModified()
   Event *oldEvent = 0;
   bool modified;
 
-  if ( mEvent ) { // modification    
+  if ( mEvent ) { // modification
     oldEvent = mEvent;
   } else { // new one
     oldEvent = &mInitialEvent;
   }
 
   newEvent = oldEvent->clone();
-  fillEvent( newEvent );  
+  fillEvent( newEvent );
 
   modified = !( *newEvent == *oldEvent );
 

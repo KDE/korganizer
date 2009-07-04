@@ -410,5 +410,4 @@ void KOTodoEditor::show()
   KOIncidenceEditor::show();
 }
 
-
 #include "kotodoeditor.moc"

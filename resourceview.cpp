@@ -455,8 +455,8 @@ void ResourceView::addResourceItem( ResourceCalendar *resource, bool emitSignal 
   new ResourceItem( resource, this, mListView );
 
   connect( resource,
-           SIGNAL(signalSubresourceAdded(ResourceCalendar *,const QString &,const QString &,const QString &)),
-           SLOT(slotSubresourceAdded(ResourceCalendar *,const QString &,const QString &,const QString &)) );
+           SIGNAL(signalSubresourceAdded(ResourceCalendar *,const QString &,const QString &,const QString &)), //krazy:exclude=style
+           SLOT(slotSubresourceAdded(ResourceCalendar *,const QString &,const QString &,const QString &)) ); // krazy:exclude=style
 
   connect( resource,
            SIGNAL(signalSubresourceRemoved(ResourceCalendar *,const QString &,const QString &)),

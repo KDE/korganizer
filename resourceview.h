@@ -77,7 +77,7 @@ class ResourceItem : public QTreeWidgetItem
 
     virtual QVariant data( int column, int role ) const;
 
-    void setIsReloading( bool value ) { mIsReloading = value; };
+    void setIsReloading( bool value ) { mIsReloading = value; }
 
   protected:
     void setGuiState();

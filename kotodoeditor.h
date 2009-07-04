@@ -122,7 +122,7 @@ class KOTodoEditor : public KOIncidenceEditor
     // this todo then the user will be asked if he really wants to cancel
     Todo mInitialTodo;
 
-    Todo *mRelatedTodo;    
+    Todo *mRelatedTodo;
 
     KOEditorGeneralTodo *mGeneral;
     KOEditorRecurrence *mRecurrence;
