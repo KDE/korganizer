@@ -32,19 +32,19 @@
 #include <QFile>
 
 using namespace KOrg;
-#include "timespanview.moc"
 
-K_PLUGIN_FACTORY(TimespanViewFactory, registerPlugin<TimespanView>();)
-K_EXPORT_PLUGIN(TimespanViewFactory( "korg_timespanview" ))
+K_PLUGIN_FACTORY( TimespanViewFactory, registerPlugin<TimespanView>(); )
+K_EXPORT_PLUGIN( TimespanViewFactory( "korg_timespanview" ) )
 
-TimespanView::TimespanView(KOrg::MainWindow *parent ) : KOrg::Part(parent), mView(0)
+TimespanView::TimespanView( MainWindow *parent )
+  : Part( parent ), mView( 0 )
 {
   setComponentData( KComponentData( "korganizer" ) );
 
   setXMLFile( "plugins/timespanviewui.rc" );
 
-  new KAction( i18n("&Timespan"), "timespan", 0, this, SLOT( showView() ),
-              actionCollection(), "view_timespan" );
+  new KAction( i18n( "&Timespan" ), "timespan", 0, this, SLOT(showView()),
+               actionCollection(), "view_timespan" );
 }
 
 TimespanView::~TimespanView()
@@ -53,7 +53,7 @@ TimespanView::~TimespanView()
 
 QString TimespanView::info()
 {
-  return i18n("This plugin provides a Gantt-like Timespan view.");
+  return i18n( "This plugin provides a Gantt-like Timespan view." );
 }
 
 QString TimespanView::shortInfo()
@@ -63,10 +63,12 @@ QString TimespanView::shortInfo()
 
 void TimespanView::showView()
 {
-  if (!mView) {
+  if ( !mView ) {
     mView = new KOTimeSpanView( mainWindow()->view()->calendar(),
                                 mainWindow()->view() );
     mainWindow()->view()->addView( mView );
   }
   mainWindow()->view()->showView( mView );
 }
+
+#include "timespanview.moc"

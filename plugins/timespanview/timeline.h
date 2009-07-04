@@ -40,7 +40,7 @@ class TimeLine : public Q3ScrollView
     void setContentsPos( int pos );
 
   protected:
-    void drawContents(QPainter* p, int cx, int cy, int cw, int ch);
+    void drawContents( QPainter *p, int cx, int cy, int cw, int ch );
 
   private:
     QDateTime mStartDate;

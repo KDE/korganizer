@@ -39,7 +39,7 @@ LineView::LineView( QWidget *parent ) : Q3ScrollView( parent )
 
   resizeContents( mPixelWidth, contentsHeight() );
 
-  viewport()->setBackgroundColor(KOPrefs::instance()->mAgendaBgColor);
+  viewport()->setBackgroundColor( KOPrefs::instance()->mAgendaBgColor );
 }
 
 LineView::~LineView()
@@ -55,10 +55,14 @@ void LineView::addLine( int start, int end )
 {
   int count = mLines.count();
 
-  if( start < 0 ) start = 0;
-  if( end > mPixelWidth) end = mPixelWidth;
+  if( start < 0 ) {
+    start = 0;
+  }
+  if ( end > mPixelWidth ) {
+    end = mPixelWidth;
+  }
 
-  kDebug() << "col:" << count <<"start:" << start << "end:" << end;
+  kDebug() << "col:" << count << "start:" << start << "end:" << end;
 
   mLines.append( new Line( count, start, end ) );
 }
@@ -69,7 +73,7 @@ void LineView::clear()
   update();
 }
 
-void LineView::drawContents(QPainter* p, int cx, int cy, int cw, int ch)
+void LineView::drawContents( QPainter *p, int cx, int cy, int cw, int ch )
 {
 //  kDebug();
 
@@ -79,38 +83,48 @@ void LineView::drawContents(QPainter* p, int cx, int cy, int cw, int ch)
 #if 0
   // Draw vertical lines of grid
   //  kDebug() << "cx:" << cx <<" cy:" << cy <<" cw:" << cw <<" ch:" << ch;
-  int x = ((int)(cx/mGridSpacingX))*mGridSpacingX;
-  while (x < cx + cw) {
-    p->drawLine(x,cy,x,cy+ch);
-    x+=mGridSpacingX;
+  int x = ( (int)( cx / mGridSpacingX ) ) * mGridSpacingX;
+  while ( x < cx + cw ) {
+    p->drawLine( x, cy, x, cy + ch );
+    x += mGridSpacingX;
   }
 #endif
 
   // Draw horizontal lines of grid
-  int y = ((int)(cy/mGridSpacingY))*mGridSpacingY + 10;
-  while (y < cy + ch) {
+  int y = ( (int)( cy / mGridSpacingY ) ) * mGridSpacingY + 10;
+  while ( y < cy + ch ) {
 //    kDebug() << " y:" << y;
-    p->drawLine(cx,y,cx+cw,y);
-    y+=mGridSpacingY;
+    p->drawLine( cx, y, cx + cw, y );
+    y += mGridSpacingY;
   }
 
   Line *line;
-  for( line = mLines.first(); line; line = mLines.next() ) {
+  for ( line = mLines.first(); line; line = mLines.next() ) {
     int ctop = line->column * 20 + 10 - 5;
     int cbottom = line->column * 20 + 10 + 5;
     int s = line->start;
     int e = line->end;
 //    kDebug() << "ctop:" << ctop << " cbottom:" << cbottom
 //             << " s:" << s << " e:" << e;
-    if ( ctop <= (cy+ch) && cbottom >= cy &&
-         s <= (cx+cw) && e >= cx ) {
-      if ( s < cx ) s = cx;
-      if ( e > (cx+cw) ) e = cx+cw;
-      if ( ctop < cy ) ctop = cy;
-      if ( cbottom > (cy+ch) ) cbottom = cy+ch;
+    if ( ctop <= ( cy + ch ) &&
+         cbottom >= cy &&
+         s <= ( cx + cw ) &&
+         e >= cx ) {
+      if ( s < cx ) {
+        s = cx;
+      }
+      if ( e > ( cx + cw ) ) {
+        e = cx + cw;
+      }
+      if ( ctop < cy ) {
+        ctop = cy;
+      }
+      if ( cbottom > ( cy + ch ) ) {
+        cbottom = cy + ch;
+      }
 //      kDebug() <<"            ctop:" << ctop <<" cbottom:"
 //                << cbottom << " s:" << s << " e:" << e;
-      p->fillRect( s, ctop, e - s + 1, cbottom - ctop + 1, QBrush("red") );
+      p->fillRect( s, ctop, e - s + 1, cbottom - ctop + 1, QBrush( "red" ) );
     }
   }
 }

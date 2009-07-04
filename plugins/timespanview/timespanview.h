@@ -23,10 +23,11 @@
 #include <korganizer/part.h>
 #include <korganizer/calendarviewbase.h>
 
-class TimespanView : public KOrg::Part {
+class TimespanView : public KOrg::Part
+{
   Q_OBJECT
   public:
-    TimespanView(KOrg::MainWindow *, const char *);
+    TimespanView( KOrg::MainWindow *, const char * );
     ~TimespanView();
 
     QString info();
