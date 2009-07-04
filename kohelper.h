@@ -58,6 +58,6 @@ namespace KOHelper
   */
   KORGANIZER_CORE_EXPORT QString resourceLabel( KCal::Calendar *calendar,
                                                 KCal::Incidence *incidence );
-};
+}
 
 #endif
