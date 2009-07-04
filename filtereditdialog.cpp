@@ -48,7 +48,7 @@
 FilterEditDialog::FilterEditDialog( QList<CalFilter*> *filters, QWidget *parent )
   : KDialog( parent )
 {
-  setCaption( i18n( "Edit Calendar Filters" ) );
+  setCaption( i18nc( "@title::window", "Edit Calendar Filters" ) );
   setButtons( Ok | Apply | Cancel );
   setMainWidget( mFilterEdit = new FilterEdit( filters, this ) );
 
@@ -98,8 +98,12 @@ FilterEdit::FilterEdit( QList<CalFilter*> *filters, QWidget *parent )
 {
   setupUi( this );
   mFilters = filters;
-  mNewButton->setWhatsThis( i18n( "Press this button to define a new filter." ) );
-  mDeleteButton->setWhatsThis( i18n( "Press this button to remove the currently active filter." ) );
+  mNewButton->setWhatsThis(
+    i18nc( "@info:whatsthis",
+           "Press this button to define a new filter." ) );
+  mDeleteButton->setWhatsThis(
+    i18nc( "@info:whatsthis",
+           "Press this button to remove the currently active filter." ) );
 
   connect( mRulesList, SIGNAL(itemSelectionChanged()),
            this, SLOT(filterSelected()) );
@@ -227,7 +231,8 @@ void FilterEdit::filterSelected( CalFilter *filter )
 void FilterEdit::bNewPressed()
 {
   saveChanges();
-  CalFilter *newFilter = new CalFilter( i18n( "New Filter %1", mFilters->count() ) );
+  CalFilter *newFilter = new CalFilter( i18nc( "@label default filter name",
+                                               "New Filter %1", mFilters->count() ) );
   mFilters->append( newFilter );
   updateFilterList();
   mRulesList->setCurrentRow( mRulesList->count() - 1 );
@@ -243,15 +248,11 @@ void FilterEdit::bDeletePressed()
     return;
   }
 
-  //TODO: change text to read something like
-  //"You are about to permanently remove filter mCurrent->name(). Are you sure?"
-  int result = KMessageBox::warningContinueCancel(
-    this,
-    i18n( "This item will be permanently deleted." ),
-    i18n( "Delete Confirmation" ),
-    KGuiItem( i18n( "Delete" ), "edit-delete" ) );
-
-  if ( result != KMessageBox::Continue ) {
+  if ( KMessageBox::questionYesNo(
+         this,
+         i18nc( "@info",
+                "Do you really want to permanently remove the filter \"%1\?", mCurrent->name() ),
+         i18nc( "@title:window", "Delete Filter?" ) ) != KMessageBox::Yes ) {
     return;
   }
 
