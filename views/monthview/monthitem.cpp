@@ -593,8 +593,10 @@ QColor IncidenceMonthItem::bgColor() const
   }
 
   if ( !bgColor.isValid() ) {
-    if ( KOPrefs::instance()->monthViewColors() == KOPrefs::MonthItemResourceOnly ||
-         KOPrefs::instance()->monthViewColors() == KOPrefs::MonthItemResourceInsideCategoryOutside ) {
+    if ( KOPrefs::instance()->monthViewColors() ==
+         KOPrefs::MonthItemResourceOnly ||
+         KOPrefs::instance()->monthViewColors() ==
+         KOPrefs::MonthItemResourceInsideCategoryOutside ) {
       bgColor = KOHelper::resourceColor( monthScene()->calendar(), mIncidence );
     } else {
       bgColor = catColor();

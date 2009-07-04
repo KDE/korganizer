@@ -214,15 +214,9 @@ JournalView::~JournalView()
 
 void JournalView::deleteItem()
 {
-/*  KMessageBox::ButtonCode *code = KMessageBox::warningContinueCancel(this,
-      i18n("The journal \"%1\" on %2 will be permanently deleted.")
-               .arg( mJournal->summary() )
-               .arg( mJournal->dtStartStr() ),
-  i18n("KOrganizer Confirmation"), KStandardGuiItem::del() );
-  if ( code == KMessageBox::Yes ) {*/
-    if ( mJournal )
-      emit deleteIncidence( mJournal );
-//   }
+  if ( mJournal ) {
+    emit deleteIncidence( mJournal );
+  }
 }
 
 void JournalView::editItem()

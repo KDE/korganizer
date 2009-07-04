@@ -298,7 +298,7 @@ void KOAgenda::init()
   } else {
     mMarcusBains = new MarcusBains( this );
     addChild( mMarcusBains );
-  }  
+  }
 }
 
 void KOAgenda::clear()
@@ -1982,6 +1982,5 @@ void KOAgenda::contentsMousePressEvent ( QMouseEvent *event )
   kDebug() << "type:" << event->type();
   Q3ScrollView::contentsMousePressEvent( event );
 }
-
 
 #include "koagenda.moc"

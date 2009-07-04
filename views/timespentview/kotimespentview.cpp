@@ -101,7 +101,8 @@ class TimeSpentWidget : public QWidget
 
           // timesInInterval only return events that have their start inside the interval
           // so we resize the interval by -eventDuration
-          DateTimeList times = e->recurrence()->timesInInterval( selectedStart.addSecs( -eventDuration ), selectedEnd );
+          DateTimeList times = e->recurrence()->timesInInterval(
+            selectedStart.addSecs( -eventDuration ), selectedEnd );
 
           foreach ( const KDateTime &kdt, times ) {
             // either the event's start or the event's end must be in the view's interval
@@ -109,7 +110,8 @@ class TimeSpentWidget : public QWidget
                  kdt.addSecs( eventDuration ) >= selectedStart ) {
 
               start = kdt > selectedStart ? kdt : selectedStart;
-              end   = kdt.addSecs( eventDuration ) < selectedEnd ? kdt.addSecs( eventDuration ) : selectedEnd;
+              end   = kdt.addSecs( eventDuration ) < selectedEnd ?
+                      kdt.addSecs( eventDuration ) : selectedEnd;
               totalDuration += start.secsTo( end );
             }
           }

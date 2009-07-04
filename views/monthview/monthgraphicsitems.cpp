@@ -236,9 +236,11 @@ void MonthGraphicsItem::paint( QPainter *p, const QStyleOptionGraphicsItem *, QW
   int textMargin = 10;
 
   QColor bgColor = mMonthItem->bgColor();
-  bgColor = mMonthItem->selected() ? bgColor.lighter( KOGlobals::BRIGHTNESS_FACTOR ) : bgColor;
+  bgColor = mMonthItem->selected() ?
+            bgColor.lighter( KOGlobals::BRIGHTNESS_FACTOR ) : bgColor;
   QColor frameColor = mMonthItem->frameColor();
-  frameColor = mMonthItem->selected() ? frameColor.lighter( KOGlobals::BRIGHTNESS_FACTOR ) : frameColor;
+  frameColor = mMonthItem->selected() ?
+               frameColor.lighter( KOGlobals::BRIGHTNESS_FACTOR ) : frameColor;
   QColor textColor = KOHelper::getTextColor( bgColor );
 
   // make moving or resizing items translucent
@@ -282,7 +284,8 @@ void MonthGraphicsItem::paint( QPainter *p, const QStyleOptionGraphicsItem *, QW
   p->setLayoutDirection( text.isRightToLeft() ? Qt::RightToLeft : Qt::LeftToRight );
 
   QRect textRect = QRect( textMargin, 0,
-                          static_cast<int> ( boundingRect().width() - 2 * textMargin ), scene->itemHeight() );
+                          static_cast<int> ( boundingRect().width() - 2 * textMargin ),
+                          scene->itemHeight() );
 
   if ( KOPrefs::instance()->enableMonthItemIcons() ) {
     QList<QPixmap *> icons = mMonthItem->icons();

@@ -203,7 +203,6 @@ void KOJournalView::newJournal()
   emit newJournalSignal( QDate::currentDate() );
 }
 
-
 void KOJournalView::getHighlightMode( bool &highlightEvents,
                                       bool &highlightTodos,
                                       bool &highlightJournals )
