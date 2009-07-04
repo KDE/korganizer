@@ -30,10 +30,6 @@
 #include <klocale.h>
 
 #ifndef KORG_NOPRINTER
-namespace KCal {
-}
-
-using namespace KCal;
 using namespace KOrg;
 
 class CalPrintJournal : public CalPrintPluginBase
@@ -41,19 +37,19 @@ class CalPrintJournal : public CalPrintPluginBase
   public:
     CalPrintJournal():CalPrintPluginBase() {}
     virtual ~CalPrintJournal() {}
-    virtual QString description() { return i18n("Print &journal"); }
-    virtual QString info() { return i18n("Prints all journals for a given date range"); }
-    virtual QWidget *createConfigWidget( QWidget* );
+    virtual QString description() { return i18n( "Print &journal" ); }
+    virtual QString info() { return i18n( "Prints all journals for a given date range" ); }
+    virtual QWidget *createConfigWidget( QWidget * );
     virtual int sortID() { return CalPrinterBase::Journallist; }
     virtual bool enabled() { return true; }
 
   public:
-    virtual void print(QPainter &p, int width, int height);
+    virtual void print( QPainter &p, int width, int height );
     virtual void readSettingsWidget();
     virtual void setSettingsWidget();
     virtual void loadConfig();
     virtual void saveConfig();
-    virtual void setDateRange( const QDate& from, const QDate& to );
+    virtual void setDateRange( const QDate &from, const QDate &to );
 
   protected:
     bool mUseDateRange;
@@ -61,12 +57,11 @@ class CalPrintJournal : public CalPrintPluginBase
 
 class CalPrintJournalConfig : public QWidget, public Ui::CalPrintJournalConfig_Base
 {
-public:
-  CalPrintJournalConfig( QWidget *parent ) : QWidget( parent ) {
-    setupUi( this );
-  }
+  public:
+    CalPrintJournalConfig( QWidget *parent ) : QWidget( parent ) {
+      setupUi( this );
+    }
 };
-
 
 #endif
 #endif

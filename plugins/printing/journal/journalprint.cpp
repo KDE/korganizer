@@ -39,7 +39,8 @@
 
 #include <QButtonGroup>
 
-class JournalPrintFactory : public KOrg::PrintPluginFactory {
+class JournalPrintFactory : public KOrg::PrintPluginFactory
+{
   public:
     KOrg::PrintPlugin *createPluginFactory() { return new CalPrintJournal; }
 };
@@ -102,7 +103,7 @@ void CalPrintJournal::saveConfig()
   }
 }
 
-void CalPrintJournal::setDateRange( const QDate& from, const QDate& to )
+void CalPrintJournal::setDateRange( const QDate &from, const QDate &to )
 {
   CalPrintPluginBase::setDateRange( from, to );
   CalPrintJournalConfig *cfg =
@@ -129,7 +130,8 @@ void CalPrintJournal::print( QPainter &p, int width, int height )
     }
   }
 
-  drawHeader( p, i18n("Journal entries"), QDate(), QDate(), QRect( 0, 0, width, headerHeight() ) );
+  drawHeader( p, i18n( "Journal entries" ), QDate(), QDate(),
+              QRect( 0, 0, width, headerHeight() ) );
   y = headerHeight() + 15;
 
   Journal::List::Iterator it = journals.begin();
