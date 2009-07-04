@@ -239,7 +239,7 @@ void FilterEdit::bDeletePressed()
   if ( KMessageBox::questionYesNo(
          this,
          i18nc( "@info",
-                "Do you really want to permanently remove the filter \"%1\?", mCurrent->name() ),
+                "Do you really want to permanently remove the filter \"%1\"?", mCurrent->name() ),
          i18nc( "@title:window", "Delete Filter?" ) ) != KMessageBox::Yes ) {
     return;
   }
