@@ -41,7 +41,7 @@ class KOTodoViewView : public QTreeView
   public:
     KOTodoViewView( QWidget *parent = 0 );
 
-#if QT_VERSION >= 0x040500
+#if QT_VERSION >= 0x040600
 #ifdef __GNUC__
 #warning QTreeView should now set State_Editing correctly, remove the workaround
 #endif
