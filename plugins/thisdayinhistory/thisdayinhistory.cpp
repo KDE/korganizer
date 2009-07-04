@@ -34,7 +34,8 @@
 
 using namespace KOrg::CalendarDecoration;
 
-class ThisDayInHistoryFactory : public DecorationFactory {
+class ThisDayInHistoryFactory : public DecorationFactory
+{
   public:
     Decoration *createPluginFactory() { return new ThisDayInHistory; }
 };
@@ -49,8 +50,8 @@ ThisDayInHistory::ThisDayInHistory()
 
 QString ThisDayInHistory::info()
 {
-  return i18n("This plugin provides links to Wikipedia's "
-              "'This Day in History' pages.");
+  return i18n( "This plugin provides links to Wikipedia's "
+               "'This Day in History' pages." );
 }
 
 Element::List ThisDayInHistory::createDayElements( const QDate &date )
@@ -58,12 +59,12 @@ Element::List ThisDayInHistory::createDayElements( const QDate &date )
   Element::List elements;
 
   StoredElement *element = new StoredElement( "Wikipedia link",
-                                              i18n("This day in history") );
-  element->setUrl( i18nc("Localized Wikipedia website",
-                         "http://en.wikipedia.org/wiki/")
-                   + date.toString( i18nc("Qt date format used by the"
-                                           "localized Wikipedia",
-                                          "MMMM_d") ) );
+                                              i18n( "This day in history" ) );
+  element->setUrl( i18nc( "Localized Wikipedia website",
+                          "http://en.wikipedia.org/wiki/" ) +
+                   date.toString( i18nc( "Qt date format used by the"
+                                         "localized Wikipedia",
+                                         "MMMM_d" ) ) );
 
   elements.append( element );
 
@@ -75,12 +76,12 @@ Element::List ThisDayInHistory::createMonthElements( const QDate &date )
   Element::List elements;
 
   StoredElement *element = new StoredElement( "Wikipedia link",
-                                              i18n("This month in history") );
-  element->setUrl( i18nc("Localized Wikipedia website",
-                         "http://en.wikipedia.org/wiki/")
-                   + date.toString( i18nc("Qt date format used by the "
-                                           "localized Wikipedia",
-                                          "MMMM_yyyy") ) );
+                                              i18n( "This month in history" ) );
+  element->setUrl( i18nc( "Localized Wikipedia website",
+                          "http://en.wikipedia.org/wiki/" ) +
+                   date.toString( i18nc( "Qt date format used by the "
+                                         "localized Wikipedia",
+                                         "MMMM_yyyy" ) ) );
   elements.append( element );
 
   return elements;
