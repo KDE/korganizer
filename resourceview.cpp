@@ -248,18 +248,16 @@ ResourceView::ResourceView( KCal::CalendarResources *calendar, QWidget *parent )
 
   mListView = new QTreeWidget( this );
   mListView->setWhatsThis(
-    i18n( "<qt><p>Select on this list the active KOrganizer "
-          "resources. Check the resource box to make it "
-          "active. Use the context menu to add, remove or edit "
-          "resources in the list.</p>"
-          "<p>Events, journal entries and to-dos are retrieved "
-          "and stored on resources. Available "
-          "resources include groupware servers, local files, "
-          "journal entries as blogs on a server, etc...</p>"
-          "<p>If you have more than one active resource, "
-          "when creating incidents you will either automatically "
-          "use the default resource or be prompted "
-          "to select the resource to use.</p></qt>" ) );
+    i18nc( "@info:whatsthis",
+           "This list shows all the calendars currently known to KOrganizer. "
+           "Use the associated checkboxes to make a calendar active or inactive. "
+           "Use the context menu to add, remove or edit calendars in the list."
+           "<p>Events, journal entries and to-dos are retrieved and stored "
+           "from their respective calendars. Calendars can be accesssed from "
+           "groupware servers, local files, etc...</p>"
+           "<p>If you have more than one active calendar, you will be "
+           "prompted for which calendar to store new items into, unless "
+           "configured to always store to the default calendar.</p>" ) );
   mListView->setRootIsDecorated( false );
   mListView->setHeaderLabel( i18n( "Calendars" ) );
   mListView->header()->hide();
@@ -278,39 +276,39 @@ ResourceView::ResourceView( KCal::CalendarResources *calendar, QWidget *parent )
   connect( mListView, SIGNAL(customContextMenuRequested(const QPoint &)),
            SLOT(showContextMenu(const QPoint &)) );
 
-  QLabel *calLabel = new QLabel( i18n( "Calendar" ), this );
+  QLabel *calLabel = new QLabel( i18n( "Calendars" ), this );
   buttonBox->addWidget( calLabel );
   buttonBox->addStretch( 1 );
 
   mAddButton = new QToolButton( this );
   mAddButton->setIcon( KIcon( "list-add" ) );
   buttonBox->addWidget( mAddButton );
-  mAddButton->setToolTip( i18n( "Add calendar" ) );
+  mAddButton->setToolTip( i18nc( "@info:tooltip", "Add calendar" ) );
   mAddButton->setWhatsThis(
-                   i18n( "<qt><p>Press this button to add a resource to "
-                         "KOrganizer.</p>"
-                         "<p>Events, journal entries and to-dos are retrieved "
-                         "and stored on resources. Available "
-                         "resources include groupware servers, local files, "
-                         "journal entries as blogs on a server, etc... </p>"
-                         "<p>If you have more than one active resource, "
-                         "when creating incidents you will either automatically "
-                         "use the default resource or be prompted "
-                         "to select the resource to use.</p></qt>" ) );
+    i18nc( "@info:whatsthis",
+           "Press this button to add a new calendar to KOrganizer. "
+           "<p>Events, journal entries and to-dos are retrieved and stored "
+           "from their respective calendars. Calendars can be accesssed from "
+           "groupware servers, local files, etc...</p>"
+           "<p>If you have more than one active calendar, you will be "
+           "prompted for which calendar to store new items into, unless "
+           "configured to always store to the default calendar.</p>" ) );
   mEditButton = new QToolButton( this );
   mEditButton->setIcon( KIcon( "document-properties" ) );
   buttonBox->addWidget( mEditButton );
-  mEditButton->setToolTip( i18n( "Edit calendar settings" ) );
+  mEditButton->setToolTip( i18nc( "@info:tooltip", "Edit calendar settings" ) );
   mEditButton->setWhatsThis(
-                   i18n( "Press this button to edit the resource currently "
-                         "selected on the KOrganizer resources list above." ) );
+    i18nc( "@info:whatsthis",
+           "Press this button to edit the calendar currently "
+           "selected in the list above." ) );
   mDeleteButton = new QToolButton( this );
   mDeleteButton->setIcon( KIcon( "edit-delete" ) );
   buttonBox->addWidget( mDeleteButton );
-  mDeleteButton->setToolTip( i18n( "Remove calendar" ) );
+  mDeleteButton->setToolTip( i18nc( "@info:tooltip", "Remove calendar" ) );
   mDeleteButton->setWhatsThis(
-                   i18n( "Press this button to delete the resource currently "
-                         "selected on the KOrganizer resources list above." ) );
+    i18nc( "@info:whatsthis",
+           "Press this button to delete the calendar currently "
+           "selected in the list above." ) );
   mDeleteButton->setDisabled( true );
   mEditButton->setDisabled( true );
 
@@ -369,8 +367,8 @@ void ResourceView::addResource()
 
   if ( i && ( i->isSubresource() || i->resource()->canHaveSubresources() ) ) {
     const QString folderName =
-      KInputDialog::getText( i18n( "Add Subresource" ),
-                             i18n( "Please enter a name for the new subresource" ),
+      KInputDialog::getText( i18n( "Add Calendar Folder" ),
+                             i18n( "Please enter a name for the new calendar folder" ),
                              QString(), &ok, this );
     if ( !ok ) {
       return;
@@ -378,8 +376,10 @@ void ResourceView::addResource()
 
     const QString parentId = i->isSubresource() ? i->resourceIdentifier() : QString:: null;
     if ( !i->resource()->addSubresource( folderName, parentId ) ) {
-      KMessageBox::error( this,
-                          i18n( "<qt>Unable to create subresource <b>%1</b>.</qt>", folderName ) );
+      KMessageBox::error(
+        this,
+        i18n( "<qt>Unable to create the calendar folder <b>%1</b>.</qt>",
+              folderName ) );
     }
     return;
   }
@@ -387,8 +387,8 @@ void ResourceView::addResource()
   QStringList types = manager->resourceTypeNames();
   QStringList descs = manager->resourceTypeDescriptions();
   QString desc =
-    KInputDialog::getItem( i18n( "Resource Configuration" ),
-                           i18n( "Please select type of the new resource:" ),
+    KInputDialog::getItem( i18n( "Calendar Configuration" ),
+                           i18n( "Please select the type of the new calendar:" ),
                            descs, 0, false, &ok, this );
   if ( !ok ) {
     return;
@@ -400,11 +400,11 @@ void ResourceView::addResource()
   ResourceCalendar *resource = manager->createResource( type );
   if( !resource ) {
     KMessageBox::error( this,
-                        i18n( "<qt>Unable to create resource of type <b>%1</b>.</qt>", type ) );
+                        i18n( "<qt>Unable to create a calendar of type <b>%1</b>.</qt>", type ) );
     return;
   }
 
-  resource->setResourceName( i18n( "%1 resource", type ) );
+  resource->setResourceName( i18n( "%1 calendar", type ) );
 
   // TODO: Add a fallback (KColorCollection::setName() broken?)
   KColorCollection collection( "Oxygen.colors" );
@@ -428,7 +428,7 @@ void ResourceView::addResource()
     if ( resource->isActive() && ( !resource->open() || !resource->load() ) ) {
       // ### There is a resourceLoadError() signal declared in ResourceCalendar
       //     but no subclass seems to make use of it. We could do better.
-      KMessageBox::error( this, i18n( "Unable to create the resource." ) );
+      KMessageBox::error( this, i18n( "Unable to create the calendar." ) );
       success = false;
     }
   }
@@ -532,7 +532,7 @@ void ResourceView::removeResource()
   int km =
     KMessageBox::warningContinueCancel(
       this,
-      i18n( "<qt>Do you really want to remove the resource <b>%1</b>?</qt>",
+      i18n( "<qt>Do you really want to remove the calendar <b>%1</b>?</qt>",
             item->text( 0 ) ), "", KStandardGuiItem::remove() );
   if ( km == KMessageBox::Cancel ) {
     return;
@@ -541,7 +541,7 @@ void ResourceView::removeResource()
 // Don't be so restricitve
 #if 1
   if ( item->resource() == mCalendar->resourceManager()->standardResource() ) {
-    KMessageBox::sorry( this, i18n( "You cannot remove your standard resource." ) );
+    KMessageBox::sorry( this, i18n( "You cannot remove your standard calendar." ) );
     return;
   }
 #endif
@@ -550,10 +550,10 @@ void ResourceView::removeResource()
     if ( !item->resource()->removeSubresource( item->resourceIdentifier() ) ) {
       KMessageBox::sorry(
         this,
-        i18n ( "<qt>Failed to remove the subresource <b>%1</b>. The "
-               "reason could be that it is a built-in one which cannot "
-               "be removed, or that the removal of the underlying storage "
-               "folder failed.</qt>", item->text( 0 ) ) );
+        i18n ( "<qt>Failed to remove the calendar folder <b>%1</b>. "
+               "Perhaps it is a built-in folder which cannot be removed, or "
+               "maybe the removal of the underlying storage folder failed.</qt>",
+               item->text( 0 ) ) );
     }
     return;
   } else {
@@ -577,8 +577,8 @@ void ResourceView::editResource()
     if ( resource->type() == "imap" || resource->type() == "scalix" ) {
       QString identifier = item->resourceIdentifier();
       const QString newResourceName =
-        KInputDialog::getText( i18n( "Rename Subresource" ),
-                               i18n( "Please enter a new name for the subresource" ),
+        KInputDialog::getText( i18n( "Rename Calendar Folder" ),
+                               i18n( "Please enter a new name for the calendar folder" ),
                                item->text(0),
                                &ok, this );
       if ( !ok ) {
@@ -601,7 +601,7 @@ void ResourceView::editResource()
     } else {
       const QString subResourceName = resource->labelForSubresource( item->resourceIdentifier() );
       KMessageBox::sorry( this,
-                          i18n ( "<qt>Cannot edit the subresource <b>%1</b>.</qt>",
+                          i18n ( "<qt>Cannot edit the calendar folder <b>%1</b>.</qt>",
                                  subResourceName ) );
     }
   } else {
@@ -649,7 +649,7 @@ void ResourceView::showContextMenu( const QPoint &pos )
   if ( !i ) { // No item clicked.
     // Creation of menu entries not specific to one item
     QMenu *menu = new QMenu( this );
-    menu->addAction( i18n( "&Add Resource..." ), this, SLOT(addResource()) );
+    menu->addAction( i18n( "&Add Calendar..." ), this, SLOT(addResource()) );
     menu->popup( mapToGlobal( pos ) );
     mSelectedParent = 0;
 
@@ -676,7 +676,7 @@ void ResourceView::showContextMenu( const QPoint &pos )
     menu->addAction( i18n( "Show &Info" ), this, SLOT(showInfo()) );
     //FIXME: This is better on the resource dialog
     if ( KOPrefs::instance()->agendaViewColors() != KOPrefs::CategoryOnly ) {
-      QMenu *assignMenu = menu->addMenu( i18n( "Resource Colors" ) );
+      QMenu *assignMenu = menu->addMenu( i18n( "Calendar Colors" ) );
       assignMenu->addAction( i18n( "&Assign Color..." ), this, SLOT(assignColor()) );
       if ( item->resourceColor().isValid() ) {
         assignMenu->addAction( i18n( "&Disable Color" ), this, SLOT(disableColor()) );
@@ -694,9 +694,9 @@ void ResourceView::showContextMenu( const QPoint &pos )
 
   QString label;
   if ( item->isSubresource() || item->resource()->canHaveSubresources() ) {
-    label = i18n( "&Add Subresource..." );
+    label = i18n( "&Add Calendar Folder..." );
   } else {
-    label = i18n( "&Add Resource..." );
+    label = i18n( "&Add Calendar..." );
   }
 
   menu->addAction( label, this, SLOT(addResource()) );

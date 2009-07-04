@@ -25,15 +25,9 @@
 #include "kohelper.h"
 #include "koprefs.h"
 
-#include <kcal/incidence.h>
-#include <kcal/calendar.h>
-#include <kcal/calendarresources.h>
-#include <kcal/resourcecalendar.h>
+#include <KCal/CalendarResources>
 
-#include <kdatetime.h>
-#include <kdebug.h>
-
-#include <QColor>
+#include <KDateTime>
 
 QColor KOHelper::getTextColor( const QColor &c )
 {
@@ -69,8 +63,6 @@ QColor KOHelper::resourceColor( KCal::Calendar *calendar,
         }
       }
     }
-//   } else {
-//     kDebug(5850) <<"resourceColor: Calendar is not a CalendarResources";
   }
   return resourceColor;
 }

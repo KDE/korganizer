@@ -559,7 +559,7 @@ void ActionManager::initActions()
   connect( mCalendarView, SIGNAL(subtodoSelected(bool)), action,
            SLOT(setEnabled(bool)) );
 // TODO: Add item to move the incidence to different resource
-//   mAssignResourceAction = new KAction( i18n( "Assign &Resource..." ), 0,
+//   mAssignResourceAction = new KAction( i18n( "Assign to &Calendar..." ), 0,
 //                                        mCalendarView, SLOT(assignResource()),
 //                                        mACollection, "assign_resource" );
 // TODO: Add item to quickly toggle the reminder of a given incidence
@@ -655,7 +655,7 @@ void ActionManager::initActions()
   toggleEventViewer();
 
   if ( !mMainWindow->hasDocument() ) {
-    mResourceViewShowAction = new KToggleAction( i18n( "Show Resource View" ), this );
+    mResourceViewShowAction = new KToggleAction( i18n( "Show Calendar Manager" ), this );
     mACollection->addAction( "show_resourceview", mResourceViewShowAction );
     connect( mResourceViewShowAction, SIGNAL(triggered(bool)), SLOT(toggleResourceView()) );
     mResourceViewShowAction->setChecked( config.readEntry( "ResourceViewVisible", true ) );
@@ -673,7 +673,7 @@ void ActionManager::initActions()
   connect( action, SIGNAL(triggered(bool)),
            SLOT(configureDateTime()) );
 // TODO: Add an item to show the resource management dlg
-//   new KAction( i18n( "Manage &Resources..." ), 0,
+//   new KAction( i18n( "Manage &Calendars..." ), 0,
 //                     this, SLOT(manageResources()),
 //                     mACollection, "conf_resources" );
 
@@ -784,7 +784,7 @@ void ActionManager::file_open( const KUrl &url )
   }
 
   // is that URL already opened somewhere else? Activate that window
-  KOrg::MainWindow *korg=ActionManager::findInstance( url );
+  KOrg::MainWindow *korg = ActionManager::findInstance( url );
   if ( ( 0 != korg )&&( korg != mMainWindow ) ) {
 #ifdef Q_WS_X11
     KWindowSystem::activateWindow( korg->topLevelWidget()->winId() );
@@ -794,8 +794,8 @@ void ActionManager::file_open( const KUrl &url )
 
   kDebug() << url.prettyUrl();
 
-  // Open the calendar file in the same window only if we have an empty calendar window,
-  // and not the resource calendar.
+  // Open the calendar file in the same window only if we have an empty calendar
+  // window, and not the resource calendar.
   if ( !mCalendarView->isModified() && mFile.isEmpty() && !mCalendarResources ) {
     openURL( url );
   } else {
@@ -1013,7 +1013,7 @@ bool ActionManager::addResource( const KUrl &mUrl )
     resource->setTimeSpec( KOPrefs::instance()->timeSpec() );
     resource->setResourceName( name );
     manager->add( resource );
-    mMainWindow->showStatusMessage( i18n( "Added calendar resource for URL '%1'.", name ) );
+    mMainWindow->showStatusMessage( i18n( "Added calendar for URL '%1'.", name ) );
     // we have to call resourceAdded manually, because for in-process changes
     // the dcop signals are not connected, so the resource's signals would not
     // be connected otherwise
@@ -1021,8 +1021,7 @@ bool ActionManager::addResource( const KUrl &mUrl )
       mCalendarResources->resourceAdded( resource );
     }
   } else {
-    QString msg = i18n( "Unable to create calendar resource '%1'.",
-                        name );
+    QString msg = i18n( "Unable to create calendar '%1'.", name );
     KMessageBox::error( dialogParent(), msg );
   }
   return true;
@@ -1135,8 +1134,12 @@ void ActionManager::exportHTML( HTMLExportSettings *settings )
   }
 
   if ( QFileInfo( settings->outputFile() ).exists() ) {
-    if(KMessageBox::questionYesNo( dialogParent(), i18n("Do you want to overwrite file \"%1\"", settings->outputFile()) ) == KMessageBox::No)
+    if( KMessageBox::questionYesNo(
+          dialogParent(),
+          i18n( "Do you want to overwrite file \"%1\"",
+                settings->outputFile() ) ) == KMessageBox::No ) {
       return;
+    }
   }
 
   QApplication::setOverrideCursor( QCursor ( Qt::WaitCursor ) );
@@ -2062,7 +2065,7 @@ bool ActionManager::saveResourceCalendar()
     if ( !(*it)->save() ) {
       int result = KMessageBox::warningContinueCancel(
         view(),
-        i18n( "Saving of '%1' failed. Check that the resource is "
+        i18n( "Saving of '%1' failed. Check that the calendar is "
               "properly configured.\nIgnore problem and save remaining "
               "resources or cancel save?", (*it)->resourceName() ),
         i18n( "Save Error" ),

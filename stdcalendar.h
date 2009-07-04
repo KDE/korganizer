@@ -1,5 +1,5 @@
 /*
-  This file is part of libkcal.
+  This file is part of KOrganizer.
 
   Copyright (c) 2004 Cornelius Schumacher <schumacher@kde.org>
 
@@ -22,7 +22,7 @@
 #define KORG_STDCALENDAR_H
 
 #include "korganizer_export.h"
-#include <kcal/calendarresources.h>
+#include <KCal/CalendarResources>
 
 namespace KOrg {
 

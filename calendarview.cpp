@@ -2212,8 +2212,8 @@ void CalendarView::deleteIncidence( Incidence *incidence, bool force )
     if ( !force ) {
       KMessageBox::information( this,
                                 i18n( "The item \"%1\" is marked read-only "
-                                      "and cannot be deleted; it probably belongs to "
-                                      "a read-only calendar resource.",
+                                      "and cannot be deleted; it probably "
+                                      "belongs to a read-only calendar.",
                                       incidence->summary() ),
                                 i18n( "Removing not possible" ),
                                 "deleteReadOnlyIncidence" );
