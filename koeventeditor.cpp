@@ -424,15 +424,6 @@ bool KOEventEditor::validateInput()
   return true;
 }
 
-int KOEventEditor::msgItemDelete()
-{
-  return KMessageBox::warningContinueCancel(
-    this,
-    i18nc( "@info", "This item will be permanently deleted." ),
-    i18nc( "@title:window", "KOrganizer Confirmation" ),
-    KGuiItem( i18nc( "@action:button", "Delete" ), "edit-delete" ) );
-}
-
 void KOEventEditor::loadTemplate( CalendarLocal &cal )
 {
   Event::List events = cal.events();

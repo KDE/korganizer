@@ -364,15 +364,6 @@ bool KOTodoEditor::validateInput()
   return true;
 }
 
-int KOTodoEditor::msgItemDelete()
-{
-  return KMessageBox::warningContinueCancel(
-    this,
-    i18nc( "@info", "This item will be permanently deleted." ),
-    i18nc( "@title:window", "KOrganizer Confirmation" ),
-    KStandardGuiItem::del() );
-}
-
 void KOTodoEditor::modified( int modification )
 {
   Q_UNUSED( modification );

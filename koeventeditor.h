@@ -128,7 +128,6 @@ class KOEventEditor : public KOIncidenceEditor
      * is not valid */
     bool processInput();
     void processCancel();
-    int msgItemDelete();
     void loadTemplate( CalendarLocal & );
     QStringList &templates() const;
     bool incidenceModified();

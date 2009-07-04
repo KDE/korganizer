@@ -110,7 +110,6 @@ class KOTodoEditor : public KOIncidenceEditor
     QString type() { return "Todo"; }
     void setupGeneral();
     void setupRecurrence();
-    int msgItemDelete();
     bool incidenceModified();
 
   private:
