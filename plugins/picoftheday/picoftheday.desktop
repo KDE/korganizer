@@ -40,6 +40,7 @@ Name[zh_TW]=行事曆維基「本日圖片」外掛程式
 Type=Service
 Comment=This plugin provides the Wikipedia Picture of the Day
 Comment[ca]=Aquest connector proporciona la imatge del dia de la Viquipèdia
+Comment[cs]=Wikipedia modul 'Obrázek dne'
 Comment[da]=Dette plugin viser Dagens billede fra Wikipedia
 Comment[de]=Dieses Modul stellt das Bild des Tages aus Wikipedia zur Verfügung.
 Comment[el]=Αυτό το πρόσθετο προσφέρει την εικόνα της ημέρας της Wikipedia.
