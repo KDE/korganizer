@@ -30,37 +30,35 @@
 #include <kconfig.h>
 #include <kstandarddirs.h>
 
-#include "configdialog.moc"
-
-ConfigDialog::ConfigDialog(QWidget * parent)
-  :KDialog( parent)
+ConfigDialog::ConfigDialog( QWidget *parent )
+  :KDialog( parent )
 {
-  QFrame *topFrame = new QFrame(this);
+  QFrame *topFrame = new QFrame( this );
   setMainWidget( topFrame );
-  setCaption( i18n("Configure Holidays") );
-  setButtons( Ok|Cancel );
+  setCaption( i18n( "Configure Holidays" ) );
+  setButtons( Ok | Cancel );
   setDefaultButton( Ok );
   setModal( true );
-  QVBoxLayout *topLayout = new QVBoxLayout(topFrame);
+  QVBoxLayout *topLayout = new QVBoxLayout( topFrame );
   topLayout->setMargin( 0 );
   topLayout->setSpacing( spacingHint() );
 
-  mIsraelBox = new QCheckBox(topFrame);
-  mIsraelBox->setText(i18n("Use Israeli holidays"));
-  topLayout->addWidget(mIsraelBox);
+  mIsraelBox = new QCheckBox( topFrame );
+  mIsraelBox->setText( i18n( "Use Israeli holidays" ) );
+  topLayout->addWidget( mIsraelBox );
 
-  mParshaBox = new QCheckBox(topFrame);
-  mParshaBox->setText(i18n("Show weekly parsha"));
-  topLayout->addWidget(mParshaBox);
+  mParshaBox = new QCheckBox( topFrame );
+  mParshaBox->setText( i18n( "Show weekly parsha" ) );
+  topLayout->addWidget( mParshaBox );
 
-  mOmerBox = new QCheckBox(topFrame);
-  mOmerBox->setText(i18n("Show day of Omer"));
-  topLayout->addWidget(mOmerBox);
+  mOmerBox = new QCheckBox( topFrame );
+  mOmerBox->setText( i18n( "Show day of Omer" ) );
+  topLayout->addWidget( mOmerBox );
 
-  mCholBox = new QCheckBox(topFrame);
-  mCholBox->setText(i18n("Show Chol HaMoed"));
-  topLayout->addWidget(mCholBox);
-  connect( this, SIGNAL( okClicked() ),this,SLOT( slotOk() ) );
+  mCholBox = new QCheckBox( topFrame );
+  mCholBox->setText( i18n( "Show Chol HaMoed" ) );
+  topLayout->addWidget( mCholBox );
+  connect( this, SIGNAL(okClicked()), this, SLOT(slotOk()) );
   load();
 }
 
@@ -72,31 +70,30 @@ void ConfigDialog::load()
 {
   KConfig config( "korganizerrc" );
 
-  KConfigGroup group(&config, "Hebrew Calendar Plugin");
-  mIsraelBox->setChecked(group.
-                         readEntry("UseIsraelSettings",
-                                       (KGlobal::locale()->
-                                        country() == QLatin1String(".il"))));
-  mParshaBox->setChecked(group.readEntry("ShowParsha", true));
-  mCholBox->setChecked(group.readEntry("ShowChol_HaMoed", true));
-  mOmerBox->setChecked(group.readEntry("ShowOmer", true));
-
+  KConfigGroup group( &config, "Hebrew Calendar Plugin" );
+  mIsraelBox->setChecked(
+    group.readEntry( "UseIsraelSettings",
+                     ( KGlobal::locale()->country() == QLatin1String( ".il" ) ) ) );
+  mParshaBox->setChecked( group.readEntry( "ShowParsha", true ) );
+  mCholBox->setChecked( group.readEntry( "ShowChol_HaMoed", true ) );
+  mOmerBox->setChecked( group.readEntry( "ShowOmer", true ) );
 }
 
 void ConfigDialog::save()
 {
   KConfig config( "korganizerrc" );
-  KConfigGroup group(&config,"Hebrew Calendar Plugin");
-  group.writeEntry("UseIsraelSettings", mIsraelBox->isChecked());
-  group.writeEntry("ShowParsha", mParshaBox->isChecked());
-  group.writeEntry("ShowChol_HaMoed", mCholBox->isChecked());
-  group.writeEntry("ShowOmer", mOmerBox->isChecked());
+  KConfigGroup group( &config, "Hebrew Calendar Plugin" );
+  group.writeEntry( "UseIsraelSettings", mIsraelBox->isChecked() );
+  group.writeEntry( "ShowParsha", mParshaBox->isChecked() );
+  group.writeEntry( "ShowChol_HaMoed", mCholBox->isChecked() );
+  group.writeEntry( "ShowOmer", mOmerBox->isChecked() );
   group.sync();
 }
 
 void ConfigDialog::slotOk()
 {
   save();
-
   accept();
 }
+
+#include "configdialog.moc"

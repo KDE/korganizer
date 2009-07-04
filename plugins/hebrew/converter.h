@@ -132,7 +132,7 @@ class Converter
     static void gregorian_from_absolute( long date, int *yearp,
                                          int *monthp, int *dayp );
     static void hebrew_from_absolute( long date, int *yearp, int *monthp,
-                                      int *dayp);
+                                      int *dayp );
 
     static int hebrew_months_in_year( int year );
     static int hebrew_month_length( int year, int month );
