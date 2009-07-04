@@ -26,15 +26,19 @@
 #ifndef FILTEREDITDIALOG_H
 #define FILTEREDITDIALOG_H
 
-#include <kdialog.h>
 #include "ui_filteredit_base.h"
-#include <QList>
+#include <KDialog>
 
 class FilterEdit;
 
-namespace KPIM { class CategorySelectDialog; }
-namespace KCal { class CalFilter; }
+namespace KPIM {
+  class CategorySelectDialog;
+}
+using namespace KPIM;
 
+namespace KCal {
+  class CalFilter;
+}
 using namespace KCal;
 
 /**

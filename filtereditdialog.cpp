@@ -26,24 +26,12 @@
 
 #include "filtereditdialog.h"
 #include "koprefs.h"
-#include "ui_filteredit_base.h"
 
 #include <libkdepim/categoryselectdialog.h>
 
-#include <kcal/calfilter.h>
+#include <KCal/CalFilter>
 
-#include <kdebug.h>
-#include <klocale.h>
-#include <kmessagebox.h>
-#include <knuminput.h>
-
-#include <QPushButton>
-#include <QCheckBox>
-#include <QLineEdit>
-#include <QRadioButton>
-#include <QList>
-
-#include "filtereditdialog.moc"
+#include <KMessageBox>
 
 FilterEditDialog::FilterEditDialog( QList<CalFilter*> *filters, QWidget *parent )
   : KDialog( parent )
@@ -323,3 +311,5 @@ void FilterEdit::updateCategoryConfig()
     mCategorySelectDialog->updateCategoryConfig();
   }
 }
+
+#include "filtereditdialog.moc"
