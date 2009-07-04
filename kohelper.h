@@ -28,8 +28,6 @@
 
 #include <QColor>
 
-class KDateTime;
-
 namespace KCal {
   class Calendar;
   class Incidence;
@@ -54,14 +52,6 @@ namespace KOHelper
   */
   KORGANIZER_CORE_EXPORT QColor resourceColor( KCal::Calendar *calendar,
                                                KCal::Incidence *incidence );
-
-  /**
-    This method converts the date time to the calendar timespec if a calendar
-    is specified. Else it converts it to preferences timespec.
-    If @param dt is dateOnly(), it wont be converted and just returned.
-  */
-  KORGANIZER_CORE_EXPORT KDateTime toTimeSpec( const KDateTime &dt,
-                                               KCal::Calendar *calendar = 0 );
 
   /**
     Returns the resource label the given incidence belongs to.
