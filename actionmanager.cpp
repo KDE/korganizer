@@ -425,14 +425,12 @@ void ActionManager::initActions()
   connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
            SLOT(showTimeSpentView()) );
 
-  //~~~~~~~~~~~~~~~~~~~~~~~~~~~ FILTERS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  //~~~~~~~~~~~~~~~~~~~~~~~~~~~ REFRESH ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   action = new KAction( i18n( "&Refresh" ), this );
   mACollection->addAction( "update", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(updateView()) );
-// TODO:
-//   new KAction( i18n( "Hide &Completed To-dos" ), 0,
-//                     mCalendarView, SLOT(toggleHideCompleted()),
-//                     mACollection, "hide_completed_todos" );
+
+  //~~~~~~~~~~~~~~~~~~~~~~~~~~~ FILTER ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   mFilterAction = new KSelectAction( i18n( "F&ilter" ), this );
   mFilterAction->setToolBarMode( KSelectAction::MenuMode );
@@ -1912,14 +1910,6 @@ void ActionManager::openJournalEditor( const QString &text )
 {
   mCalendarView->newJournal( text );
 }
-
-//TODO:
-// void ActionManager::openJournalEditor( const QString &summary,
-//                                        const QString &description,
-//                                        const QStringList &attachments )
-// {
-//   mCalendarView->newJournal( summary, description, attachments );
-// }
 
 void ActionManager::showJournalView()
 {

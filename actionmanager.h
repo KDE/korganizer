@@ -222,10 +222,6 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     void openJournalEditor( const QDate &date );
     void openJournalEditor( const QString &text, const QDate &date );
     void openJournalEditor( const QString &text );
-   //TODO:
-   // void openJournalEditor( const QString &summary,
-   //                         const QString &description,
-   //                         const QStringList &attachments );
 
     void showJournalView();
     void showTodoView();
