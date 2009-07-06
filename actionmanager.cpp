@@ -939,7 +939,7 @@ bool ActionManager::openURL( const KUrl &url, bool merge )
 
   if ( url.isLocalFile() ) {
     mURL = url;
-    mFile = url.path();
+    mFile = url.toLocalFile();
     if ( !KStandardDirs::exists( mFile ) ) {
       mMainWindow->showStatusMessage( i18n( "New calendar '%1'.", url.prettyUrl() ) );
       mCalendarView->setModified();
@@ -996,9 +996,9 @@ bool ActionManager::addResource( const KUrl &mUrl )
     kDebug() << "Local Resource";
     resource = manager->createResource( "file" );
     if ( resource ) {
-      resource->setValue( "File", mUrl.path() );
+      resource->setValue( "File", mUrl.toLocalFile() );
     }
-    name = mUrl.path();
+    name = mUrl.toLocalFile();
   } else {
     kDebug() << "Remote Resource";
     resource = manager->createResource( "remote" );
@@ -1072,7 +1072,7 @@ bool ActionManager::saveURL()
     filename.replace( filename.length() - 4, 4, ".ics" );
     mURL.setFileName( filename );
     if ( mURL.isLocalFile() ) {
-      mFile = mURL.path();
+      mFile = mURL.toLocalFile();
     }
     setTitle();
     if ( mRecent ) {
@@ -1158,7 +1158,7 @@ void ActionManager::exportHTML( HTMLExportSettings *settings )
 
   KUrl dest( settings->outputFile() );
   if ( dest.isLocalFile() ) {
-    mExport.save( dest.path() );
+    mExport.save( dest.toLocalFile() );
   } else {
     KTemporaryFile tf;
     tf.open();
@@ -1190,7 +1190,7 @@ bool ActionManager::saveAsURL( const KUrl &url )
 
   KTemporaryFile *tempFile = 0;
   if ( url.isLocalFile() ) {
-    mFile = url.path();
+    mFile = url.toLocalFile();
   } else {
     tempFile = new KTemporaryFile;
     tempFile->setAutoRemove(false);
