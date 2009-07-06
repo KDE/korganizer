@@ -32,6 +32,7 @@
 #include <akonadi/collectionview.h>
 #include <akonadi/collectionfilterproxymodel.h>
 #include <akonadi/collectionmodel.h>
+#include <akonadi/collectiondialog.h>
 #include <akonadi/itemfetchjob.h>
 #include <akonadi/itemfetchscope.h>
 #include <akonadi/itemdeletejob.h>
@@ -135,6 +136,39 @@ class KCal::AkonadiCalendar::Private : public QObject
       qDeleteAll(m_collectionMap);
     }
 
+    bool addIncidence( Incidence *incidence )
+    {
+      Akonadi::CollectionDialog dlg( 0 );
+      dlg.setMimeTypeFilter( QStringList() << QString::fromLatin1( "text/calendar" ) );
+      if ( ! dlg.exec() ) {
+        return false;
+      }
+      const Akonadi::Collection collection = dlg.selectedCollection();
+      Q_ASSERT( collection.isValid() );
+      //Q_ASSERT( m_collectionMap.contains( collection.id() ) ); //we can add items to collections we don't show yet
+      Q_ASSERT( ! m_itemMap.contains( incidence->uid() ) ); //but we can not have the same incidence in 2 collections
+
+      Akonadi::Item item;
+      //the sub-mimetype of text/calendar as defined at kdepim/akonadi/kcal/kcalmimetypevisitor.cpp
+      item.setMimeType( QString("application/x-vnd.akonadi.calendar.%1").arg(QString(incidence->type().toLower())) );
+      KCal::Incidence::Ptr incidencePtr( incidence ); //no clone() needed
+      item.setPayload<KCal::Incidence::Ptr>( incidencePtr );
+      Akonadi::ItemCreateJob *job = new Akonadi::ItemCreateJob( item, collection );
+      connect( job, SIGNAL( result( KJob* ) ), this, SLOT( createDone( KJob* ) ) );
+      return true;
+    }
+
+    bool deleteIncidence( Incidence *incidence )
+    {
+      Q_ASSERT( m_itemMap.contains( incidence->uid() ) );
+      Akonadi::Item item = m_itemMap[ incidence->uid() ]->m_item;
+      Q_ASSERT( item.isValid() );
+      Q_ASSERT( item.hasPayload() );
+      Akonadi::ItemDeleteJob *job = new Akonadi::ItemDeleteJob( item, m_session );
+      connect( job, SIGNAL( result( KJob* ) ), this, SLOT( deleteDone( KJob* ) ) );
+      return true;
+    }
+
 /*
 #if 0
     CalFormat *mFormat;                    // calendar format
@@ -196,11 +230,11 @@ class KCal::AkonadiCalendar::Private : public QObject
     void modifyDone( KJob *job )
     {
         kDebug();
-        if ( job->error() ) {
+        Akonadi::ItemModifyJob *modifyjob = static_cast<Akonadi::ItemModifyJob*>( job );
+        if ( modifyjob->error() ) {
             kWarning( 5250 ) << "Item modify failed:" << job->errorString();
             return;
         }
-        Akonadi::ItemModifyJob *modifyjob = static_cast<Akonadi::ItemModifyJob*>( job );
         //TODO
         emit q->calendarChanged();
     }
@@ -238,26 +272,10 @@ class KCal::AkonadiCalendar::Private : public QObject
             Q_ASSERT( item.hasPayload() );
             const KCal::Incidence::Ptr incidence = item.payload<KCal::Incidence::Ptr>();
             kDebug() << "Add uid=" << incidence->uid() << "summary=" << incidence->summary() << "type=" << incidence->type();
-#if 0
-            //TODO use visitor
-            if( Event *event = dynamic_cast<Event*>( incidence.get() ) )
-                mEvents.insert( incidence->uid(), event );
-            else if( Todo *todo = dynamic_cast<Todo*>( incidence.get() ) )
-                mTodos.insert( incidence->uid(), todo );
-            else if( Journal *journal = dynamic_cast<Journal*>( incidence.get() ) )
-                mJournals.insert( incidence->uid(), journal );
-            else
-                Q_ASSERT(false);
-            incidence->registerObserver(q);
-            m_map[ incidence ] = item;
-#else
+            Q_ASSERT( ! m_itemMap.contains( incidence->uid() ) ); //uh, 2 incidences with the same uid?
             incidence->registerObserver( q );
-
-            Q_ASSERT( ! m_itemMap.contains( incidence->uid() ) );
             m_itemMap[ incidence->uid() ] = new AkonadiCalendarItem(q, item);
-#endif
         }
-
         emit q->calendarChanged();
     }
 
@@ -269,6 +287,7 @@ class KCal::AkonadiCalendar::Private : public QObject
     }
 
     void itemsRemoved( const Akonadi::Item::List &items, const Akonadi::Collection &collection ) {
+        Q_UNUSED(collection);
         kDebug()<<items.count();
         foreach(const Akonadi::Item& item, items) {
             Q_ASSERT( item.isValid() );
