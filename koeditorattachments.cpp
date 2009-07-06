@@ -33,7 +33,6 @@
 #include <kdebug.h>
 #include <kmdcodec.h>
 #include <kmessagebox.h>
-#include <kiconview.h>
 #include <krun.h>
 #include <kurldrag.h>
 #include <ktempfile.h>
@@ -58,7 +57,6 @@
 #include <qclipboard.h>
 
 #include <cassert>
-#include <set>
 
 class AttachmentListItem : public KIconViewItem
 {
@@ -123,66 +121,84 @@ class AttachmentListItem : public KIconViewItem
     KCal::Attachment *mAttachment;
 };
 
-class AttachmentIconView : public KIconView
+AttachmentIconView::AttachmentIconView( KOEditorAttachments* parent )
+  : KIconView( parent ),
+    mParent( parent )
 {
-    friend class KOEditorAttachments;
-    public:
-        AttachmentIconView( KOEditorAttachments* parent=0 )
-            :KIconView( parent ),
-             mParent( parent )
-        {
-            setAcceptDrops( true );
-            setSelectionMode( QIconView::Extended );
-            setMode( KIconView::Select );
-            setItemTextPos( QIconView::Right );
-            setArrangement( QIconView::LeftToRight );
-            setMaxItemWidth( QMAX(maxItemWidth(), 250) );
-            setMinimumHeight( QMAX(fontMetrics().height(), 16) + 12 );
-        }
-        ~AttachmentIconView()
-        {
-            for ( std::set<KTempDir*>::iterator it = mTempDirs.begin() ; it != mTempDirs.end() ; ++it ) {
-                delete *it;
-            }
-        }
-    protected:
-        QDragObject * dragObject()
-        {
-            KURL::List urls;
-            for ( QIconViewItem *it = firstItem( ); it; it = it->nextItem( ) ) {
-                if ( !it->isSelected() ) continue;
-                AttachmentListItem * item = dynamic_cast<AttachmentListItem*>( it );
-                if ( !item ) return 0;
-                KCal::Attachment * att = item->attachment();
-                assert( att );
-                KURL url;
-                if ( att->isUri() ) {
-                    url.setPath( att->uri() );
-                } else {
-                    KTempDir * tempDir = new KTempDir(); // will be deleted on editor close
-                    tempDir->setAutoDelete( true );
-                    mTempDirs.insert( tempDir );
-                    QByteArray encoded;
-                    encoded.duplicate( att->data(), strlen(att->data()) );
-                    QByteArray decoded;
-                    KCodecs::base64Decode( encoded, decoded );
-                    const QString fileName = tempDir->name( ) + "/" + att->label();
-                    KPIM::kByteArrayToFile( decoded, fileName, false, false, false );
-                    url.setPath( fileName );
-                }
-                urls << url;
-            }
-            KURLDrag *drag  = new KURLDrag( urls, this );
-            return drag;
-        }
-        void contentsDropEvent( QDropEvent* event )
-        {
-          mParent->handlePasteOrDrop( event );
-        }
-    private:
-        std::set<KTempDir*> mTempDirs;
-        KOEditorAttachments* mParent;
-};
+  setSelectionMode( QIconView::Extended );
+  setMode( KIconView::Select );
+  setItemTextPos( QIconView::Right );
+  setArrangement( QIconView::LeftToRight );
+  setMaxItemWidth( QMAX(maxItemWidth(), 250) );
+  setMinimumHeight( QMAX(fontMetrics().height(), 16) + 12 );
+
+  connect( this, SIGNAL( dropped ( QDropEvent *, const QValueList<QIconDragItem> & ) ),
+           this, SLOT( handleDrop( QDropEvent *, const QValueList<QIconDragItem> & ) ) );
+}
+
+AttachmentIconView::~AttachmentIconView()
+{
+  for ( std::set<KTempDir*>::iterator it = mTempDirs.begin() ; it != mTempDirs.end() ; ++it ) {
+    delete *it;
+  }
+}
+
+QDragObject * AttachmentIconView::dragObject()
+{
+  KURL::List urls;
+  for ( QIconViewItem *it = firstItem( ); it; it = it->nextItem( ) ) {
+    if ( !it->isSelected() ) continue;
+    AttachmentListItem * item = dynamic_cast<AttachmentListItem*>( it );
+    if ( !item ) return 0;
+    KCal::Attachment * att = item->attachment();
+    assert( att );
+    KURL url;
+    if ( att->isUri() ) {
+      url.setPath( att->uri() );
+    } else {
+      KTempDir * tempDir = new KTempDir(); // will be deleted on editor close
+      tempDir->setAutoDelete( true );
+      mTempDirs.insert( tempDir );
+      QByteArray encoded;
+      encoded.duplicate( att->data(), strlen(att->data()) );
+      QByteArray decoded;
+      KCodecs::base64Decode( encoded, decoded );
+      const QString fileName = tempDir->name( ) + "/" + att->label();
+      KPIM::kByteArrayToFile( decoded, fileName, false, false, false );
+      url.setPath( fileName );
+    }
+    urls << url;
+  }
+  KURLDrag *drag  = new KURLDrag( urls, this );
+  return drag;
+}
+
+void AttachmentIconView::handleDrop( QDropEvent *event, const QValueList<QIconDragItem> & list )
+{
+  Q_UNUSED( list );
+  mParent->handlePasteOrDrop( event );
+}
+
+
+void AttachmentIconView::dragMoveEvent( QDragMoveEvent *event )
+{
+  mParent->dragMoveEvent( event );
+}
+
+void AttachmentIconView::contentsDragMoveEvent( QDragMoveEvent *event )
+{
+  mParent->dragMoveEvent( event );
+}
+
+void AttachmentIconView::contentsDragEnterEvent( QDragEnterEvent *event )
+{
+  mParent->dragMoveEvent( event );
+}
+
+void AttachmentIconView::dragEnterEvent( QDragEnterEvent *event )
+{
+  mParent->dragEnterEvent( event );
+}
 
 KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent,
                                           const char *name )
@@ -258,9 +274,14 @@ bool KOEditorAttachments::hasAttachments()
   return mAttachments->count() != 0;
 }
 
+void KOEditorAttachments::dragMoveEvent( QDragMoveEvent *event )
+{
+  event->accept( KURLDrag::canDecode( event ) || QTextDrag::canDecode( event ) );
+}
+
 void KOEditorAttachments::dragEnterEvent( QDragEnterEvent* event )
 {
-  event->accept( KURLDrag::canDecode( event ) | QTextDrag::canDecode( event ) );
+  dragMoveEvent( event );
 }
 
 void KOEditorAttachments::handlePasteOrDrop( QMimeSource* source )

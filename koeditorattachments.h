@@ -27,6 +27,9 @@
 
 #include <qwidget.h>
 #include <kurl.h>
+#include <kiconview.h>
+
+#include <set>
 
 namespace KCal {
 class Incidence;
@@ -39,6 +42,7 @@ class QMimeSource;
 class QPushButton;
 class QPopupMenu;
 class KAction;
+class KTempDir;
 
 class KOEditorAttachments : public QWidget
 {
@@ -69,6 +73,7 @@ class KOEditorAttachments : public QWidget
     void slotRemove();
     void slotShow();
     void dragEnterEvent( QDragEnterEvent *event );
+    void dragMoveEvent( QDragMoveEvent *event );
     void dropEvent( QDropEvent *event );
     void slotCopy();
     void slotCut();
@@ -86,6 +91,34 @@ class KOEditorAttachments : public QWidget
     QPushButton *mRemoveBtn;
     QPopupMenu *mContextMenu, *mAddMenu;
     KAction *mOpenAction, *mCopyAction, *mCutAction;
+};
+
+
+class AttachmentIconView : public KIconView
+{
+  Q_OBJECT
+
+  friend class KOEditorAttachments;
+  public:
+    AttachmentIconView( KOEditorAttachments* parent=0 );
+
+    ~AttachmentIconView();
+
+  protected:
+    QDragObject * dragObject();
+
+    void dragMoveEvent( QDragMoveEvent *event );
+    void contentsDragMoveEvent( QDragMoveEvent *event );
+    void contentsDragEnterEvent( QDragEnterEvent *event );
+    void dragEnterEvent( QDragEnterEvent *event );
+
+  protected slots:
+
+    void handleDrop( QDropEvent *event, const QValueList<QIconDragItem> & list );
+
+  private:
+    std::set<KTempDir*> mTempDirs;
+    KOEditorAttachments* mParent;
 };
 
 #endif
