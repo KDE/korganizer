@@ -430,10 +430,16 @@ void KOAttendeeEditor::fillAttendeeInput( KCal::Attendee *a )
 {
   mDisableItemUpdate = true;
 
-  QString name = a->name();
+  QString tname, temail;
+  QString username = a->name();
   if ( !a->email().isEmpty() ) {
-    name = KPIMUtils::quoteNameIfNecessary( name );
-    name += " <" + a->email() + '>';
+    username = KPIMUtils::quoteNameIfNecessary( username );
+
+    // ignore the return value from extractEmailAddressAndName() because
+    // it will always be false since tusername does not contain "@domain".
+    KPIMUtils::extractEmailAddressAndName( username, temail, tname );
+
+    tname += " <" + a->email() + '>';
   }
 
   bool myself = KOPrefs::instance()->thatIsMe( a->email() );
@@ -448,7 +454,7 @@ void KOAttendeeEditor::fillAttendeeInput( KCal::Attendee *a )
     rsvp = false;
   }
 
-  mNameEdit->setText( name );
+  mNameEdit->setText( tname );
   mUid = a->uid();
   mRoleCombo->setCurrentIndex( a->role() );
   if ( partStat != KCal::Attendee::None ) {
