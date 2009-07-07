@@ -411,10 +411,14 @@ void KOAttendeeEditor::fillAttendeeInput( KCal::Attendee *a )
 {
   mDisableItemUpdate = true;
 
-  QString name = a->name();
-  if (!a->email().isEmpty()) {
-    name = KPIM::quoteNameIfNecessary( name );
-    name += " <" + a->email() + ">";
+  QString tname, temail;
+  QString username = a->name();
+  if ( !a->email().isEmpty() ) {
+    username = KPIM::quoteNameIfNecessary( username );
+
+    KPIM::getNameAndMail( username, tname, temail ); // ignore return value
+                                                     // which is always false
+    tname += " <" + a->email() + '>';
   }
 
   bool myself = KOPrefs::instance()->thatIsMe( a->email() );
@@ -429,7 +433,7 @@ void KOAttendeeEditor::fillAttendeeInput( KCal::Attendee *a )
       rsvp = false;
   }
 
-  mNameEdit->setText(name);
+  mNameEdit->setText(tname);
   mUid = a->uid();
   mRoleCombo->setCurrentItem(a->role());
   if ( partStat != KCal::Attendee::None ) {
