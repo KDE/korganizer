@@ -29,11 +29,6 @@
 #include <kcal/incidence.h>
 #include <kcal/calendar.h>
 
-#include <kdatetime.h>
-#include <kdebug.h>
-
-#include <QColor>
-
 QColor KOHelper::getTextColor( const QColor &c )
 {
   float luminance = ( c.red() * 0.299 ) + ( c.green() * 0.587 ) + ( c.blue() * 0.114 );
@@ -74,19 +69,6 @@ QColor KOHelper::resourceColor( KCal::Calendar *calendar,
 #endif
   }
   return resourceColor;
-}
-
-KDateTime KOHelper::toTimeSpec( const KDateTime &dt, KCal::Calendar *calendar )
-{
-  if ( dt.isDateOnly() ) {
-    return dt;
-  }
-
-  if ( calendar ) {
-    return dt.toTimeSpec( calendar->timeSpec() );
-  } else {
-    return dt.toTimeSpec( KOPrefs::instance()->timeSpec() );
-  }
 }
 
 QString KOHelper::resourceLabel( KCal::Calendar *calendar, KCal::Incidence *incidence )

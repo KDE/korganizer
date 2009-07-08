@@ -40,12 +40,12 @@
 
 #include "configdialog.moc"
 
-ConfigDialog::ConfigDialog(QWidget *parent)
-  : KDialog(parent)
+ConfigDialog::ConfigDialog( QWidget *parent )
+  : KDialog( parent )
 {
-  setCaption( i18n("Configure Day Numbers") );
+  setCaption( i18n( "Configure Day Numbers" ) );
   setButtons( Ok | Cancel );
-  setDefaultButton(  Ok );
+  setDefaultButton( Ok );
   setModal( true );
   QFrame *topFrame = new QFrame( this );
   setMainWidget( topFrame );
@@ -53,23 +53,23 @@ ConfigDialog::ConfigDialog(QWidget *parent)
   topLayout->setSpacing( spacingHint() );
   topLayout->setMargin( 0 );
 
-  QGroupBox *dayNumBox = new QGroupBox( i18n("Show Date Number"), topFrame );
+  QGroupBox *dayNumBox = new QGroupBox( i18n( "Show Date Number" ), topFrame );
   topLayout->addWidget( dayNumBox );
   QVBoxLayout *groupLayout = new QVBoxLayout( dayNumBox );
 
   QRadioButton *btn;
   mDayNumGroup = new QButtonGroup( this );
-  btn = new QRadioButton( i18n("Show day number"), dayNumBox );
-  mDayNumGroup->addButton( btn, int(Datenums::DayOfYear) );
+  btn = new QRadioButton( i18n( "Show day number" ), dayNumBox );
+  mDayNumGroup->addButton( btn, int( Datenums::DayOfYear ) );
   groupLayout->addWidget( btn );
-  btn = new QRadioButton( i18n("Show days to end of year"), dayNumBox );
-  mDayNumGroup->addButton( btn, int(Datenums::DaysRemaining) );
+  btn = new QRadioButton( i18n( "Show days to end of year" ), dayNumBox );
+  mDayNumGroup->addButton( btn, int( Datenums::DaysRemaining ) );
   groupLayout->addWidget( btn );
-  btn = new QRadioButton( i18n("Show both"), dayNumBox );
-  mDayNumGroup->addButton( btn, int(Datenums::DayOfYear | Datenums::DaysRemaining) );
+  btn = new QRadioButton( i18n( "Show both" ), dayNumBox );
+  mDayNumGroup->addButton( btn, int( Datenums::DayOfYear | Datenums::DaysRemaining ) );
   groupLayout->addWidget( btn );
 
-  connect(this, SIGNAL(okClicked()), this, SLOT(slotOk()));
+  connect( this, SIGNAL(okClicked()), this, SLOT(slotOk()) );
 
   load();
 }
@@ -80,25 +80,27 @@ ConfigDialog::~ConfigDialog()
 
 void ConfigDialog::load()
 {
-  KConfig _config( "korganizerrc", KConfig::NoGlobals  );
-  KConfigGroup config(&_config, "Calendar/Datenums Plugin");
-  int datenum = config.readEntry( "ShowDayNumbers", int(Datenums::DayOfYear | Datenums::DaysRemaining) );
+  KConfig _config( "korganizerrc", KConfig::NoGlobals );
+  KConfigGroup config( &_config, "Calendar/Datenums Plugin" );
+  int datenum = config.readEntry(
+    "ShowDayNumbers", int( Datenums::DayOfYear | Datenums::DaysRemaining ) );
   QAbstractButton *btn = mDayNumGroup->button( datenum );
-  if (!btn) btn = mDayNumGroup->button( int(Datenums::DayOfYear | Datenums::DaysRemaining) );
+  if ( !btn ) {
+    btn = mDayNumGroup->button( int( Datenums::DayOfYear | Datenums::DaysRemaining ) );
+  }
   btn->setChecked( true );
 }
 
 void ConfigDialog::save()
 {
-  KConfig _config( "korganizerrc", KConfig::NoGlobals  );
-  KConfigGroup config(&_config, "Calendar/Datenums Plugin");
-  config.writeEntry("ShowDayNumbers", mDayNumGroup->checkedId() );
+  KConfig _config( "korganizerrc", KConfig::NoGlobals );
+  KConfigGroup config( &_config, "Calendar/Datenums Plugin" );
+  config.writeEntry( "ShowDayNumbers", mDayNumGroup->checkedId() );
   config.sync();
 }
 
 void ConfigDialog::slotOk()
 {
   save();
-
   accept();
 }

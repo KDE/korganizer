@@ -813,12 +813,13 @@ void CalendarView::updateUnmanagedViews()
 
 int CalendarView::msgItemDelete( Incidence *incidence )
 {
-  return KMessageBox::warningContinueCancel(
+  return KMessageBox::questionYesNo(
     this,
-    i18n( "The item \"%1\" will be permanently deleted.", incidence->summary() ),
-    i18n( "KOrganizer Confirmation" ),
-    KGuiItem( i18n( "&Delete" ),"edit-delete" ),
-    KStandardGuiItem::cancel(),
+    i18nc( "@info",
+           "Do you really want to permanently remove the item \"%1\"?", incidence->summary() ),
+    i18nc( "@title:window", "Delete Item?" ),
+    KStandardGuiItem::yes(),
+    KStandardGuiItem::no(),
     QString(),
     KMessageBox::Notify );
 }
@@ -885,7 +886,8 @@ void CalendarView::edit_paste()
   }
 
   if ( !date.isValid() ) {
-    //TODO: KMessageBox::sorry( "cannot paste" )
+    KMessageBox::sorry( this,
+                        i18n( "Paste failed: unable to determine a valid target date." ) );
     return;
   }
 
@@ -2157,7 +2159,7 @@ void CalendarView::deleteTodoIncidence ( Todo *todo, bool force )
   if ( todo->relations().isEmpty() ) {
     bool doDelete = true;
     if ( !force && KOPrefs::instance()->mConfirm ) {
-      doDelete = ( msgItemDelete( todo ) == KMessageBox::Continue );
+      doDelete = ( msgItemDelete( todo ) == KMessageBox::Yes );
     }
     if ( doDelete ) {
       mChanger->deleteIncidence( todo );
@@ -2204,8 +2206,8 @@ void CalendarView::deleteIncidence( Incidence *incidence, bool force )
     if ( !force ) {
       KMessageBox::information( this,
                                 i18n( "The item \"%1\" is marked read-only "
-                                      "and cannot be deleted; it probably belongs to "
-                                      "a read-only calendar resource.",
+                                      "and cannot be deleted; it probably "
+                                      "belongs to a read-only calendar.",
                                       incidence->summary() ),
                                 i18n( "Removing not possible" ),
                                 "deleteReadOnlyIncidence" );
@@ -2274,7 +2276,8 @@ void CalendarView::deleteIncidence( Incidence *incidence, bool force )
             itemFuture,
             KGuiItem( i18n( "Delete &All" ) ) );
         } else {
-          km = msgItemDelete( incidence );
+          km = ( msgItemDelete( incidence ) == KMessageBox::Yes ?
+                 KMessageBox::Continue : KMessageBox::Cancel );
         }
       }
     }
@@ -2307,7 +2310,7 @@ void CalendarView::deleteIncidence( Incidence *incidence, bool force )
   } else {
     bool doDelete = true;
     if ( !force && KOPrefs::instance()->mConfirm ) {
-      doDelete = ( msgItemDelete( incidence ) == KMessageBox::Continue );
+      doDelete = ( msgItemDelete( incidence ) == KMessageBox::Yes );
     }
     if ( doDelete ) {
       mChanger->deleteIncidence( incidence );

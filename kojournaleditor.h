@@ -96,8 +96,6 @@ class KOJournalEditor : public KOIncidenceEditor
     /** Write Journal settings to journal object */
     void fillJournal( Journal * );
 
-    int msgItemDelete();
-
     /** Check if the input is valid. */
     bool validateInput();
 

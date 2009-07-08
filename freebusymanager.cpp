@@ -339,7 +339,7 @@ void FreeBusyManager::slotUploadFreeBusyResult( KJob *_job )
     KUrl src = job->srcUrl();
     Q_ASSERT( src.isLocalFile() );
     if ( src.isLocalFile() ) {
-      QFile::remove( src.path() );
+      QFile::remove( src.toLocalFile() );
     }
     mUploadingFreeBusy = false;
 }

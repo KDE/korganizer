@@ -188,15 +188,15 @@ int KOEventView::showMoveRecurDialog( Incidence *inc, const QDate &date )
                     "or to all items in the recurrence?" );
   }
 
-  if ( !(isFirst && isLast) ) {
-    answer = KOMessageBox::fourBtnMsgBox( this,
-                                          QMessageBox::Question,
-                                          message,
-                                          i18n( "Changing Recurring Item" ),
-                                          KGuiItem( i18n( "Only &This Item" ) ),
-                                          itemFuture,
-                                          KGuiItem( i18n( "&All Occurrences" ) ) );
-
+  if ( !( isFirst && isLast ) ) {
+    answer = KOMessageBox::fourBtnMsgBox(
+      this,
+      QMessageBox::Question,
+      message,
+      i18n( "Changing Recurring Item" ),
+      KGuiItem( i18n( "Only &This Item" ) ),
+      itemFuture,
+      KGuiItem( i18n( "&All Occurrences" ) ) );
   }
 
   return answer;

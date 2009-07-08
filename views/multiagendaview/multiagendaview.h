@@ -54,7 +54,6 @@ class MultiAgendaView : public AgendaView
 
     bool eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &allDay );
 
-
   public slots:
     void showDates( const QDate &start, const QDate &end );
     void showIncidences( const Incidence::List &incidenceList );

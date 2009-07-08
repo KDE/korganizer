@@ -453,8 +453,8 @@ void KOTodoModel::expandTodoIfNeeded( const Todo *todo )
   }
 }
 
-bool KOTodoModel::isInHierarchyLoop( const Todo *todo ) const {
-
+bool KOTodoModel::isInHierarchyLoop( const Todo *todo ) const
+{
   if ( !todo ) {
     return false;
   }

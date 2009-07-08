@@ -37,8 +37,8 @@
 
 #include "kotimespanview.moc"
 
-KOTimeSpanView::KOTimeSpanView(Calendar *calendar, QWidget *parent) :
-  KOEventView( calendar, parent )
+KOTimeSpanView::KOTimeSpanView( Calendar *calendar, QWidget *parent )
+  : KOEventView( calendar, parent )
 {
   QBoxLayout *topLayout = new QVBoxLayout( this );
 
@@ -56,23 +56,23 @@ void KOTimeSpanView::readSettings()
 {
   kDebug();
 
-  KConfig config( "korganizerrc", true, false); // Open read-only, no kdeglobals
+  KConfig config( "korganizerrc", true, false ); // Open read-only, no kdeglobals
   KConfigGroup viewsConfig( &config, "Views" );
 
-  QList<int> sizes = viewsConfig.readEntry("Separator TimeSpanView",QList<int>());
-  if (sizes.count() == 2) {
-    mTimeSpanWidget->setSplitterSizes(sizes);
+  QList<int> sizes = viewsConfig.readEntry( "Separator TimeSpanView", QList<int>() );
+  if ( sizes.count() == 2 ) {
+    mTimeSpanWidget->setSplitterSizes( sizes );
   }
 }
 
-void KOTimeSpanView::writeSettings(KConfig *config)
+void KOTimeSpanView::writeSettings( KConfig *config )
 {
 //  kDebug();
 
   KConfigGroup viewsConfig( config, "Views" );
 
   QList<int> list = mTimeSpanWidget->splitterSizes();
-  viewsConfig.writeEntry("Separator TimeSpanView",list);
+  viewsConfig.writeEntry( "Separator TimeSpanView", list );
 }
 
 int KOTimeSpanView::maxDatesHint()
@@ -98,7 +98,7 @@ void KOTimeSpanView::updateView()
                mTimeSpanWidget->endDateTime().date() );
 }
 
-void KOTimeSpanView::showDates(const QDate &start, const QDate &end)
+void KOTimeSpanView::showDates( const QDate &start, const QDate &end )
 {
   QDate s = start.addDays( -2 );
   QDate e = end.addDays( 2 );
@@ -106,14 +106,14 @@ void KOTimeSpanView::showDates(const QDate &start, const QDate &end)
   insertItems( s, e );
 }
 
-void KOTimeSpanView::insertItems(const QDate &start, const QDate &end)
+void KOTimeSpanView::insertItems( const QDate &start, const QDate &end )
 {
   mTimeSpanWidget->clear();
   mTimeSpanWidget->setDateRange( start, end );
 
   Event::List events = calendar()->events( start, end, KPimPrefs::timeSpec() );
   Event::List::ConstIterator it;
-  for( it = events.constBegin(); it != events.constEnd(); ++it ) {
+  for ( it = events.constBegin(); it != events.constEnd(); ++it ) {
     mTimeSpanWidget->addItem( *it );
   }
 
@@ -124,6 +124,6 @@ void KOTimeSpanView::showIncidences( const Incidence::List & )
 {
 }
 
-void KOTimeSpanView::changeIncidenceDisplay(Incidence *, int)
+void KOTimeSpanView::changeIncidenceDisplay( Incidence *, int )
 {
 }

@@ -274,7 +274,7 @@ void KOAttendeeEditor::addNewAttendee()
                   i18nc( "sample attendee email name", "name" ) + "@example.net", true );
   insertAttendee( a, false );
 
-  for( int i=0; i<mDelAttendees.count(); ++i ) {
+  for ( int i=0; i<mDelAttendees.count(); ++i ) {
     if ( *mDelAttendees.value( i ) == *a ) {
       delete mDelAttendees.value( i );
       mDelAttendees.removeAt( i );
@@ -483,7 +483,6 @@ void KOAttendeeEditor::cancelAttendeeIncidence( KCal::Incidence *incidence )
   foreach ( Attendee *att, mDelAttendees ) {
     incidence->addAttendee( new Attendee( *att ), false );
   }
-
 
   qDeleteAll( mDelAttendees );
   mDelAttendees.clear();

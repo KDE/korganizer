@@ -37,8 +37,8 @@
 
 #include <QButtonGroup>
 
-K_PLUGIN_FACTORY(WhatsNextPrintFactory, registerPlugin<CalPrintWhatsNext>();)
-K_EXPORT_PLUGIN(WhatsNextPrintFactory( "korg_whatsnextprint" ))
+K_PLUGIN_FACTORY( WhatsNextPrintFactory, registerPlugin<CalPrintWhatsNext>(); )
+K_EXPORT_PLUGIN( WhatsNextPrintFactory( "korg_whatsnextprint" ) )
 
 /**************************************************************
  *           Print What's Next
@@ -56,7 +56,7 @@ void CalPrintWhatsNext::readSettingsWidget()
   if ( cfg ) {
     mFromDate = cfg->mFromDate->date();
     mToDate = cfg->mToDate->date();
-    mUseDateRange = (cfg->mDateRangeGroup->selectedId() == 1);
+    mUseDateRange = ( cfg->mDateRangeGroup->selectedId() == 1 );
   }
 }
 
@@ -90,7 +90,7 @@ void CalPrintWhatsNext::saveConfig()
   }
 }
 
-void CalPrintWhatsNext::setDateRange( const QDate& from, const QDate& to )
+void CalPrintWhatsNext::setDateRange( const QDate &from, const QDate &to )
 {
   CalPrintPluginBase::setDateRange( from, to );
   CalPrintWhatsNextConfig *cfg =

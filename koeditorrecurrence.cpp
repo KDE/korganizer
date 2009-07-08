@@ -395,7 +395,7 @@ int RecurMonthly::count()
   if ( pos <= 4 ) { // positive count
     return pos + 1;
   } else {
-    return -pos + 4;
+    return 4 - pos;
   }
 }
 
@@ -584,7 +584,7 @@ int RecurYearly::posCount()
   if ( pos <= 4 ) { // positive count
     return pos + 1;
   } else {
-    return -pos + 4;
+    return 4 - pos;
   }
 }
 

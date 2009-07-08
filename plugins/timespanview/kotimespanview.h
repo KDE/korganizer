@@ -49,7 +49,7 @@ class KOTimeSpanView : public KOEventView
     virtual void showDates( const QDate &start, const QDate &end );
     virtual void showIncidences( const Incidence::List &incidenceList );
 
-    void changeIncidenceDisplay(Incidence *, int);
+    void changeIncidenceDisplay( Incidence *, int );
 
   private:
     void insertItems( const QDate &start, const QDate & end );

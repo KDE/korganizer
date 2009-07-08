@@ -68,7 +68,7 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
   public:
     ActionManager( KXMLGUIClient *client, CalendarView *widget,
                    QObject *parent, KOrg::MainWindow *mainWindow,
-                   bool isPart, KMenuBar *menuBar = 0);
+                   bool isPart, KMenuBar *menuBar = 0 );
     virtual ~ActionManager();
 
     /** Peform initialization that requires this* to be full constructed */
@@ -222,10 +222,6 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     void openJournalEditor( const QDate &date );
     void openJournalEditor( const QString &text, const QDate &date );
     void openJournalEditor( const QString &text );
-   //TODO:
-   // void openJournalEditor( const QString &summary,
-   //                         const QString &description,
-   //                         const QStringList &attachments );
 
     void showJournalView();
     void showTodoView();

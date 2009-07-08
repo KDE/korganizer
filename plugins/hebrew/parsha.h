@@ -42,7 +42,7 @@ class Parsha
       @p kvia and @p isLeapYear refer to the year type.
     */
     static QString findParshaName( int dayNumber, int kvia, bool isLeapYear,
-                                   bool useIsraelSettings);
+                                   bool useIsraelSettings );
 };
 
 #endif

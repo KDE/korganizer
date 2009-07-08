@@ -110,7 +110,6 @@ class KOTodoEditor : public KOIncidenceEditor
     QString type() { return "Todo"; }
     void setupGeneral();
     void setupRecurrence();
-    int msgItemDelete();
     bool incidenceModified();
 
   private:
@@ -122,7 +121,7 @@ class KOTodoEditor : public KOIncidenceEditor
     // this todo then the user will be asked if he really wants to cancel
     Todo mInitialTodo;
 
-    Todo *mRelatedTodo;    
+    Todo *mRelatedTodo;
 
     KOEditorGeneralTodo *mGeneral;
     KOEditorRecurrence *mRecurrence;

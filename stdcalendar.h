@@ -1,5 +1,5 @@
 /*
-  This file is part of libkcal.
+  This file is part of KOrganizer.
 
   Copyright (c) 2004 Cornelius Schumacher <schumacher@kde.org>
 

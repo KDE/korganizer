@@ -50,7 +50,7 @@ TimeSpanWidget::TimeSpanWidget( QWidget *parent ) : QWidget( parent )
   topLayout->addWidget( mSplitter );
 
   mList = new Q3ListView( mSplitter );
-  mList->addColumn( i18n("Summary") );
+  mList->addColumn( i18n( "Summary" ) );
 
   QWidget *rightPane = new QWidget( mSplitter );
   QBoxLayout *rightPaneLayout = new QVBoxLayout( rightPane );
@@ -65,20 +65,20 @@ TimeSpanWidget::TimeSpanWidget( QWidget *parent ) : QWidget( parent )
   QBoxLayout *buttonLayout = new QHBoxLayout();
   rightPaneLayout->addItem( buttonLayout );
 
-  QPushButton *zoomInButton = new QPushButton( i18n("Zoom In"), rightPane );
-  connect( zoomInButton, SIGNAL( clicked() ), SLOT( zoomIn() ) );
+  QPushButton *zoomInButton = new QPushButton( i18n( "Zoom In" ), rightPane );
+  connect( zoomInButton, SIGNAL(clicked()), SLOT(zoomIn()) );
   buttonLayout->addWidget( zoomInButton );
 
-  QPushButton *zoomOutButton = new QPushButton( i18n("Zoom Out"), rightPane );
-  connect( zoomOutButton, SIGNAL( clicked() ), SLOT( zoomOut() ) );
+  QPushButton *zoomOutButton = new QPushButton( i18n( "Zoom Out" ), rightPane );
+  connect( zoomOutButton, SIGNAL(clicked()), SLOT(zoomOut()) );
   buttonLayout->addWidget( zoomOutButton );
 
-  QPushButton *centerButton = new QPushButton( i18n("Center View"), rightPane );
-  connect( centerButton, SIGNAL( clicked() ), SLOT( centerView() ) );
+  QPushButton *centerButton = new QPushButton( i18n( "Center View" ), rightPane );
+  connect( centerButton, SIGNAL(clicked()), SLOT(centerView()) );
   buttonLayout->addWidget( centerButton );
 
-  connect(mLineView->horizontalScrollBar(),SIGNAL(valueChanged(int)),
-          mTimeLine,SLOT(setContentsPos(int)));
+  connect( mLineView->horizontalScrollBar(), SIGNAL(valueChanged(int)),
+           mTimeLine, SLOT(setContentsPos(int)) );
 }
 
 TimeSpanWidget::~TimeSpanWidget()
@@ -92,8 +92,9 @@ QList<int> TimeSpanWidget::splitterSizes()
 
 void TimeSpanWidget::setSplitterSizes( QList<int> sizes )
 {
-  if( sizes.count() == 2)
+  if ( sizes.count() == 2 ) {
     mSplitter->setSizes( sizes );
+  }
 }
 
 void TimeSpanWidget::addItem( KCal::Event *event )

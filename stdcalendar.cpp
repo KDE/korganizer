@@ -1,5 +1,5 @@
 /*
-  This file is part of libkcal.
+  This file is part of KOrganizer.
 
   Copyright (c) 2004 Cornelius Schumacher <schumacher@kde.org>
 
@@ -22,14 +22,12 @@
 #include "stdcalendar.h"
 #include "akonadicalendar.h"
 
-#include <kcal/resourcecalendar.h>
 #include <libkdepim/kpimprefs.h>
+using namespace KPIM;
 
-#include <k3staticdeleter.h>
-#include <kconfig.h>
-#include <kstandarddirs.h>
-#include <klocale.h>
-#include <kurl.h>
+#include <KDebug>
+#include <K3StaticDeleter>
+#include <KStandardDirs>
 
 using namespace KOrg;
 
@@ -65,7 +63,7 @@ StdCalendar::StdCalendar()
         kDebug() << "Local resource at" << url;
         defaultResource = manager->createResource( "file" );
         if ( defaultResource ) {
-          defaultResource->setValue( "File", url.path() );
+          defaultResource->setValue( "File", url.toLocalFile() );
         }
       } else {
         kDebug() << "Remote Resource at" << url;
@@ -88,7 +86,7 @@ StdCalendar::StdCalendar()
     }
 
     if ( defaultResource ) {
-      defaultResource->setTimeSpec( KPIM::KPimPrefs::timeSpec() );
+      defaultResource->setTimeSpec( KPimPrefs::timeSpec() );
       defaultResource->setResourceName( resourceName );
       manager->add( defaultResource );
       manager->setStandardResource( defaultResource );
@@ -98,11 +96,11 @@ StdCalendar::StdCalendar()
     KCal::ResourceCalendar *bdayResource = manager->createResource( "birthdays" );
     if ( bdayResource ) {
       kDebug() << "Adding Birthdays resource";
-      bdayResource->setTimeSpec( KPIM::KPimPrefs::timeSpec() );
+      bdayResource->setTimeSpec( KPimPrefs::timeSpec() );
       bdayResource->setResourceName( i18n( "Birthdays" ) );
       manager->add( bdayResource );
     } else {
-      kDebug() << "Unable to add a Birthdays resource";
+      kDebug() << "Unable to add a Birthdays calendar";
     }
   }
 #endif

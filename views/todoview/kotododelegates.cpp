@@ -85,7 +85,7 @@ void KOTodoCompleteDelegate::paint( QPainter *painter,
   style = opt.widget ? opt.widget->style() : QApplication::style();
   style->drawPrimitive( QStyle::PE_PanelItemViewItem, &opt, painter );
 
-#if QT_VERSION >= 0x040500
+#if QT_VERSION >= 0x040600
 #ifdef __GNUC__
 #warning QTreeView should now set State_Editing correctly, remove the workaround
 #endif
@@ -97,7 +97,8 @@ void KOTodoCompleteDelegate::paint( QPainter *painter,
   }
 
   // TODO QTreeView does not set State_Editing. Qt task id 205051
-  // should be fixed with Qt 4.5
+  // should be fixed with Qt 4.5, but wasn't. According to the
+  // task tracker the fix arrives in "Some future release".
   if ( !( opt.state & QStyle::State_Editing ) && !isEditing ) {
     QStyleOptionProgressBar pbOption;
     pbOption.QStyleOption::operator=( option );

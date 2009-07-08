@@ -430,14 +430,12 @@ void ActionManager::initActions()
   connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
            SLOT(showTimeSpentView()) );
 
-  //~~~~~~~~~~~~~~~~~~~~~~~~~~~ FILTERS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  //~~~~~~~~~~~~~~~~~~~~~~~~~~~ REFRESH ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   action = new KAction( i18n( "&Refresh" ), this );
   mACollection->addAction( "update", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(updateView()) );
-// TODO:
-//   new KAction( i18n( "Hide &Completed To-dos" ), 0,
-//                     mCalendarView, SLOT(toggleHideCompleted()),
-//                     mACollection, "hide_completed_todos" );
+
+  //~~~~~~~~~~~~~~~~~~~~~~~~~~~ FILTER ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   mFilterAction = new KSelectAction( i18n( "F&ilter" ), this );
   mFilterAction->setToolBarMode( KSelectAction::MenuMode );
@@ -564,7 +562,7 @@ void ActionManager::initActions()
   connect( mCalendarView, SIGNAL(subtodoSelected(bool)), action,
            SLOT(setEnabled(bool)) );
 // TODO: Add item to move the incidence to different resource
-//   mAssignResourceAction = new KAction( i18n( "Assign &Resource..." ), 0,
+//   mAssignResourceAction = new KAction( i18n( "Assign to &Calendar..." ), 0,
 //                                        mCalendarView, SLOT(assignResource()),
 //                                        mACollection, "assign_resource" );
 // TODO: Add item to quickly toggle the reminder of a given incidence
@@ -660,7 +658,7 @@ void ActionManager::initActions()
   toggleEventViewer();
 
   if ( !mMainWindow->hasDocument() ) {
-    mResourceViewShowAction = new KToggleAction( i18n( "Show Resource View" ), this );
+    mResourceViewShowAction = new KToggleAction( i18n( "Show Calendar Manager" ), this );
     mACollection->addAction( "show_resourceview", mResourceViewShowAction );
     connect( mResourceViewShowAction, SIGNAL(triggered(bool)), SLOT(toggleResourceView()) );
     mResourceViewShowAction->setChecked( config.readEntry( "ResourceViewVisible", true ) );
@@ -678,7 +676,7 @@ void ActionManager::initActions()
   connect( action, SIGNAL(triggered(bool)),
            SLOT(configureDateTime()) );
 // TODO: Add an item to show the resource management dlg
-//   new KAction( i18n( "Manage &Resources..." ), 0,
+//   new KAction( i18n( "Manage &Calendars..." ), 0,
 //                     this, SLOT(manageResources()),
 //                     mACollection, "conf_resources" );
 
@@ -791,7 +789,7 @@ void ActionManager::file_open( const KUrl &url )
   }
 
   // is that URL already opened somewhere else? Activate that window
-  KOrg::MainWindow *korg=ActionManager::findInstance( url );
+  KOrg::MainWindow *korg = ActionManager::findInstance( url );
   if ( ( 0 != korg )&&( korg != mMainWindow ) ) {
 #ifdef Q_WS_X11
     KWindowSystem::activateWindow( korg->topLevelWidget()->winId() );
@@ -801,8 +799,8 @@ void ActionManager::file_open( const KUrl &url )
 
   kDebug() << url.prettyUrl();
 
-  // Open the calendar file in the same window only if we have an empty calendar window,
-  // and not the resource calendar.
+  // Open the calendar file in the same window only if we have an empty calendar
+  // window, and not the resource calendar.
   if ( !mCalendarView->isModified() && mFile.isEmpty() && !mCalendarResources ) {
     openURL( url );
   } else {
@@ -946,7 +944,7 @@ bool ActionManager::openURL( const KUrl &url, bool merge )
 
   if ( url.isLocalFile() ) {
     mURL = url;
-    mFile = url.path();
+    mFile = url.toLocalFile();
     if ( !KStandardDirs::exists( mFile ) ) {
       mMainWindow->showStatusMessage( i18n( "New calendar '%1'.", url.prettyUrl() ) );
       mCalendarView->setModified();
@@ -1004,9 +1002,9 @@ bool ActionManager::addResource( const KUrl &mUrl )
     kDebug() << "Local Resource";
     resource = manager->createResource( "file" );
     if ( resource ) {
-      resource->setValue( "File", mUrl.path() );
+      resource->setValue( "File", mUrl.toLocalFile() );
     }
-    name = mUrl.path();
+    name = mUrl.toLocalFile();
   } else {
     kDebug() << "Remote Resource";
     resource = manager->createResource( "remote" );
@@ -1021,7 +1019,7 @@ bool ActionManager::addResource( const KUrl &mUrl )
     resource->setTimeSpec( KOPrefs::instance()->timeSpec() );
     resource->setResourceName( name );
     manager->add( resource );
-    mMainWindow->showStatusMessage( i18n( "Added calendar resource for URL '%1'.", name ) );
+    mMainWindow->showStatusMessage( i18n( "Added calendar for URL '%1'.", name ) );
     // we have to call resourceAdded manually, because for in-process changes
     // the dcop signals are not connected, so the resource's signals would not
     // be connected otherwise
@@ -1029,8 +1027,7 @@ bool ActionManager::addResource( const KUrl &mUrl )
       mCalendarResources->resourceAdded( resource );
     }
   } else {
-    QString msg = i18n( "Unable to create calendar resource '%1'.",
-                        name );
+    QString msg = i18n( "Unable to create calendar '%1'.", name );
     KMessageBox::error( dialogParent(), msg );
   }
 #else
@@ -1083,7 +1080,7 @@ bool ActionManager::saveURL()
     filename.replace( filename.length() - 4, 4, ".ics" );
     mURL.setFileName( filename );
     if ( mURL.isLocalFile() ) {
-      mFile = mURL.path();
+      mFile = mURL.toLocalFile();
     }
     setTitle();
     if ( mRecent ) {
@@ -1146,8 +1143,12 @@ void ActionManager::exportHTML( HTMLExportSettings *settings )
   }
 
   if ( QFileInfo( settings->outputFile() ).exists() ) {
-    if(KMessageBox::questionYesNo( dialogParent(), i18n("Do you want to overwrite file \"%1\"", settings->outputFile()) ) == KMessageBox::No)
+    if( KMessageBox::questionYesNo(
+          dialogParent(),
+          i18n( "Do you want to overwrite file \"%1\"",
+                settings->outputFile() ) ) == KMessageBox::No ) {
       return;
+    }
   }
 
   QApplication::setOverrideCursor( QCursor ( Qt::WaitCursor ) );
@@ -1174,7 +1175,7 @@ void ActionManager::exportHTML( HTMLExportSettings *settings )
 
   KUrl dest( settings->outputFile() );
   if ( dest.isLocalFile() ) {
-    mExport.save( dest.path() );
+    mExport.save( dest.toLocalFile() );
   } else {
     KTemporaryFile tf;
     tf.open();
@@ -1206,7 +1207,7 @@ bool ActionManager::saveAsURL( const KUrl &url )
 
   KTemporaryFile *tempFile = 0;
   if ( url.isLocalFile() ) {
-    mFile = url.path();
+    mFile = url.toLocalFile();
   } else {
     tempFile = new KTemporaryFile;
     tempFile->setAutoRemove(false);
@@ -1923,14 +1924,6 @@ void ActionManager::openJournalEditor( const QString &text )
   mCalendarView->newJournal( text );
 }
 
-//TODO:
-// void ActionManager::openJournalEditor( const QString &summary,
-//                                        const QString &description,
-//                                        const QStringList &attachments )
-// {
-//   mCalendarView->newJournal( summary, description, attachments );
-// }
-
 void ActionManager::showJournalView()
 {
   mCalendarView->viewManager()->showJournalView();
@@ -2075,7 +2068,7 @@ bool ActionManager::saveResourceCalendar()
     if ( !(*it)->save() ) {
       int result = KMessageBox::warningContinueCancel(
         view(),
-        i18n( "Saving of '%1' failed. Check that the resource is "
+        i18n( "Saving of '%1' failed. Check that the calendar is "
               "properly configured.\nIgnore problem and save remaining "
               "resources or cancel save?", (*it)->resourceName() ),
         i18n( "Save Error" ),

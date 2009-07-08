@@ -70,14 +70,14 @@ bool KOEventEditor::incidenceModified()
   Event *oldEvent = 0;
   bool modified;
 
-  if ( mEvent ) { // modification    
+  if ( mEvent ) { // modification
     oldEvent = mEvent;
   } else { // new one
     oldEvent = &mInitialEvent;
   }
 
   newEvent = oldEvent->clone();
-  fillEvent( newEvent );  
+  fillEvent( newEvent );
 
   modified = !( *newEvent == *oldEvent );
 
@@ -422,15 +422,6 @@ bool KOEventEditor::validateInput()
   }
 
   return true;
-}
-
-int KOEventEditor::msgItemDelete()
-{
-  return KMessageBox::warningContinueCancel(
-    this,
-    i18nc( "@info", "This item will be permanently deleted." ),
-    i18nc( "@title:window", "KOrganizer Confirmation" ),
-    KGuiItem( i18nc( "@action:button", "Delete" ), "edit-delete" ) );
 }
 
 void KOEventEditor::loadTemplate( CalendarLocal &cal )

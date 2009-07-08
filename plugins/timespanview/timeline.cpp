@@ -46,19 +46,19 @@ TimeLine::~TimeLine()
 {
 }
 
-void TimeLine::drawContents(QPainter* p, int cx, int cy, int cw, int ch)
+void TimeLine::drawContents( QPainter *p, int cx, int cy, int cw, int ch )
 {
   int spacingX = mDaySpacing;
   int offsetX = mDayOffset;
 
   // Draw vertical lines of grid
 //  kDebug() << "cx:" << cx <<" cy:" << cy <<" cw:" << cw <<" ch:" << ch;
-  int cell = int( (cx - ( spacingX - offsetX ) ) / spacingX );
+  int cell = int( ( cx - ( spacingX - offsetX ) ) / spacingX );
   int x = cell * spacingX + ( spacingX - offsetX );
 //  kDebug() << "  x:" << x;
-  while (x < cx + cw) {
+  while ( x < cx + cw ) {
 //    kDebug() << "    x:" << x;
-    p->drawLine(x,cy,x,cy+ch);
+    p->drawLine( x, cy, x, cy + ch );
     p->drawText( x + 5, 15, QString::number( mStartDate.addDays( cell + 1 ).date().day() ) );
 
     x += spacingX;

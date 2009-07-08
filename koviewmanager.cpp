@@ -460,7 +460,10 @@ void KOViewManager::showWorkWeekView()
     showAgendaView();
     mMainView->dateNavigator()->selectWorkWeek( date );
   } else {
-    // TODO: tell the user he must configure work days
+    KMessageBox::sorry(
+      mMainView,
+      i18n( "Unable to display the work week view since there are no work days configured. "
+            "Please properly configure at least 1 work day in the Time and Date preferences." ) );
   }
 }
 

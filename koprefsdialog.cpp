@@ -322,7 +322,7 @@ class KOPrefsDialogTime : public KPrefsModule
       }
 
       QGroupBox *workingHoursGroupBox =
-        new QGroupBox( i18nc( "@title:group", "Working Hours" ), regionalPage );
+        new QGroupBox( i18nc( "@title:group", "Working Period" ), regionalPage );
       regionalLayout->addWidget( workingHoursGroupBox, 2, 0 );
 
       QBoxLayout *workingHoursLayout = new QVBoxLayout( workingHoursGroupBox );
@@ -795,8 +795,8 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
   mResourceCombo = new KComboBox( resourceGroup );
   mResourceCombo->setWhatsThis(
     i18nc( "@info:whatsthis",
-           "Select here resource you want to modify. "
-           "You can change the selected resource color using "
+           "Select the calendar you want to modify. "
+           "You can change the selected calendar color using "
            "the button below." ) );
   connect( mResourceCombo, SIGNAL(activated(int)), SLOT(updateResourceColor()) );
   resourceLayout->addWidget( mResourceCombo );
@@ -804,7 +804,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
   mResourceButton = new KColorButton( resourceGroup );
   mResourceButton->setWhatsThis(
     i18nc( "@info:whatsthis",
-           "Choose here the color of the resource selected "
+           "Choose here the color of the calendar selected "
            "using the combo box above." ) );
   connect( mResourceButton, SIGNAL(changed(const QColor &)), SLOT(setResourceColor()) );
   resourceLayout->addWidget( mResourceButton );

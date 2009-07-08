@@ -48,41 +48,61 @@ MultiAgendaView::MultiAgendaView( Calendar *cal, QWidget *parent )
   int topLabelHeight = 2 * fm.lineSpacing() + 6; // 3 * 2: spacing in the KOAgendaView
 
   KVBox *topSideBox = new KVBox( this );
+
   QWidget *topSideSpacer = new QWidget( topSideBox );
   topSideSpacer->setFixedHeight( topLabelHeight );
+
   mLeftSplitter = new QSplitter( Qt::Vertical, topSideBox );
   mLeftSplitter->setOpaqueResize( KGlobalSettings::opaqueResize() );
+
   QLabel *label = new QLabel( i18n( "All Day" ), mLeftSplitter );
   label->setAlignment( Qt::AlignRight | Qt::AlignVCenter );
   label->setWordWrap( true );
+
   KVBox *sideBox = new KVBox( mLeftSplitter );
+
   EventIndicator *eiSpacer = new EventIndicator( EventIndicator::Top, sideBox );
   eiSpacer->changeColumns( 0 );
-  QWidget *timeLabelTopAlignmentSpacer = new QWidget( sideBox ); // compensate for the frame the agenda views but not the timelabels have
+
+  // compensate for the frame the agenda views but not the timelabels have
+  QWidget *timeLabelTopAlignmentSpacer = new QWidget( sideBox );
+
   mTimeLabelsZone = new TimeLabelsZone( sideBox );
+
   QWidget *timeLabelBotAlignmentSpacer = new QWidget( sideBox );
+
   eiSpacer = new EventIndicator( EventIndicator::Bottom, sideBox );
   eiSpacer->changeColumns( 0 );
+
   mLeftBottomSpacer = new QWidget( topSideBox );
+
   topLevelLayout->addWidget( topSideBox );
 
   mScrollView = new Q3ScrollView( this );
   mScrollView->setResizePolicy( Q3ScrollView::Manual );
   mScrollView->setVScrollBarMode( Q3ScrollView::AlwaysOff );
-  timeLabelTopAlignmentSpacer->setFixedHeight( mScrollView->frameWidth() - 1 ); // asymetric since the timelabels
-  timeLabelBotAlignmentSpacer->setFixedHeight( mScrollView->frameWidth() - 2 ); // have 25 horizontal lines
+
+  // asymetric since the timelabels
+  timeLabelTopAlignmentSpacer->setFixedHeight( mScrollView->frameWidth() - 1 );
+  // have 25 horizontal lines
+  timeLabelBotAlignmentSpacer->setFixedHeight( mScrollView->frameWidth() - 2 );
+
   mScrollView->setFrameShape( QFrame::NoFrame );
   topLevelLayout->addWidget( mScrollView, 100 );
   mTopBox = new KHBox( mScrollView->viewport() );
   mScrollView->addChild( mTopBox );
 
   topSideBox = new KVBox( this );
+
   topSideSpacer = new QWidget( topSideBox );
   topSideSpacer->setFixedHeight( topLabelHeight );
+
   mRightSplitter = new QSplitter( Qt::Vertical, topSideBox );
   mRightSplitter->setOpaqueResize( KGlobalSettings::opaqueResize() );
+
   new QWidget( mRightSplitter );
   sideBox = new KVBox( mRightSplitter );
+
   eiSpacer = new EventIndicator( EventIndicator::Top, sideBox );
   eiSpacer->setFixedHeight( eiSpacer->minimumHeight() );
   eiSpacer->changeColumns( 0 );
@@ -90,6 +110,7 @@ MultiAgendaView::MultiAgendaView( Calendar *cal, QWidget *parent )
   eiSpacer = new EventIndicator( EventIndicator::Bottom, sideBox );
   eiSpacer->setFixedHeight( eiSpacer->minimumHeight() );
   eiSpacer->changeColumns( 0 );
+
   mRightBottomSpacer = new QWidget( topSideBox );
   topLevelLayout->addWidget( topSideBox );
 
@@ -155,8 +176,9 @@ void MultiAgendaView::recreateViews()
   connect( mRightSplitter, SIGNAL(splitterMoved(int,int)), SLOT(resizeSplitters()) );
   QTimer::singleShot( 0, this, SLOT(resizeSplitters()) );
   QTimer::singleShot( 0, this, SLOT(setupScrollBar()) );
-  foreach ( TimeLabels *label, mTimeLabelsZone->timeLabels() )
+  foreach ( TimeLabels *label, mTimeLabelsZone->timeLabels() ) {
     label->positionChanged();
+  }
 }
 
 void MultiAgendaView::deleteViews()

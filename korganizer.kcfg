@@ -70,12 +70,12 @@
       <label>New Events, To-dos and Journal Entries Should</label>
       <choices>
         <choice name="standardDestination">
-          <label>Be added to the standard resource</label>
-          <whatsthis>Select this option to always record new events, to-dos and journal entries using the standard resource.</whatsthis>
+          <label>Be added to the standard calendar</label>
+          <whatsthis>Select this option to always record new events, to-dos and journal entries using the standard calendar.</whatsthis>
         </choice>
         <choice name="askDestination">
-          <label>Be asked which resource to use</label>
-          <whatsthis>Select this option to choose the resource to be used to record the item each time you create a new event, to-do or journal entry. This choice is recommended if you intend to use the shared folders functionality of the Kolab server or have to manage multiple accounts using Kontact as a KDE Kolab client. </whatsthis>
+          <label>Be asked which calendar to use</label>
+          <whatsthis>Select this option to choose the calendar to be used to record the item each time you create a new event, to-do or journal entry. This choice is recommended if you intend to use the shared folders functionality of the Kolab server or have to manage multiple accounts using Kontact as a KDE Kolab client. </whatsthis>
         </choice>
       </choices>
       <default>askDestination</default>
@@ -252,13 +252,13 @@
       <choices>
         <choice name="CategoryInsideResourceOutside">
           <label>Category inside, calendar outside</label>
-          <whatsthis>Select the "Category inside, calendar outside" option if you would like to draw calendar items in their associated category color, with the item's border drawn in the color of its calendar resource.  Please use the Colors and Fonts configuration page for setting these colors.</whatsthis>
-          <tooltip>Draw agenda items in their category color inside and calendar resource color for their border</tooltip>
+          <whatsthis>Select the "Category inside, calendar outside" option if you would like to draw calendar items in their associated category color, with the item's border drawn in the color of its calendar.  Please use the Colors and Fonts configuration page for setting these colors.</whatsthis>
+          <tooltip>Draw agenda items in their category color inside and calendar color for their border</tooltip>
         </choice>
         <choice name="ResourceInsideCategoryOutside">
           <label>Calendar inside, category outside</label>
-          <whatsthis>Select the "Calendar inside, category outside" option if you would like to draw calendar items in their associated calendar resource color, with the item's border drawn in the color of its category.  Please use the Colors and Fonts configuration page for setting these colors.</whatsthis>
-          <tooltip>Draw agenda items in their calendar resource color inside and category color for their border</tooltip>
+          <whatsthis>Select the "Calendar inside, category outside" option if you would like to draw calendar items in their associated calendar color, with the item's border drawn in the color of its category.  Please use the Colors and Fonts configuration page for setting these colors.</whatsthis>
+          <tooltip>Draw agenda items in their calendar color inside and category color for their border</tooltip>
         </choice>
         <choice name="CategoryOnly">
           <label>Only category</label>
@@ -267,8 +267,8 @@
         </choice>
         <choice name="ResourceOnly">
           <label>Only calendar</label>
-          <whatsthis>Select the "Only calendar" option if you would like to draw calendar items (both inside and border) in the color of their calendar resource.  Please use the Colors and Fonts configuration page for setting these colors.</whatsthis>
-          <tooltip>Draw agenda items using their calendar resource color for the inside and border</tooltip>
+          <whatsthis>Select the "Only calendar" option if you would like to draw calendar items (both inside and border) in the color of their calendar.  Please use the Colors and Fonts configuration page for setting these colors.</whatsthis>
+          <tooltip>Draw agenda items using their calendar color for the inside and border</tooltip>
         </choice>
       </choices>
       <default>CategoryInsideResourceOutside</default>
@@ -279,17 +279,17 @@
       <choices>
         <choice name="CalendarsMerged">
           <label>Merge all calendars into one view</label>
-          <whatsthis>Select the "Merge all calendars into one view" option if you would like all your calendar resources to be shown together in one agenda view.</whatsthis>
-          <tooltip>Show all calendar resources together</tooltip>
+          <whatsthis>Select the "Merge all calendars into one view" option if you would like all your calendars to be shown together in one agenda view.</whatsthis>
+          <tooltip>Show all calendars merged together</tooltip>
         </choice>
         <choice name="CalendarsSideBySide">
           <label>Show calendars side by side</label>
-          <whatsthis>Select the "Show calendars side by side" option if you would like to see two calendar resources at once, in a side-by-side view.</whatsthis>
+          <whatsthis>Select the "Show calendars side by side" option if you would like to see two calendars at once, in a side-by-side view.</whatsthis>
           <tooltip>Show two calendars side-by-side</tooltip>
         </choice>
         <choice name="AllCalendarViews">
           <label>Switch between views with tabs</label>
-          <whatsthis>Select "Switch between views with tabs" if you would like to alternate between calendar resources using the tab key.</whatsthis>
+          <whatsthis>Select "Switch between views with tabs" if you would like to alternate between calendars using the tab key.</whatsthis>
           <tooltip>Tab through calendars</tooltip>
         </choice>
       </choices>
@@ -328,7 +328,7 @@
 
     <entry type="Bool" key="Full View Month">
       <label>Month view uses full window</label>
-      <whatsthis>Check this box to use the full KOrganizer window when displaying the month view. If this box is checked, you will gain some space for the monthly view, but other widgets, such as the date navigator, the item details and the resources list, will not be displayed.</whatsthis>
+      <whatsthis>Check this box to use the full KOrganizer window when displaying the month view. If this box is checked, you will gain some space for the monthly view, but other widgets, such as the date navigator, the item details and the calendars list, will not be displayed.</whatsthis>
       <default>false</default>
     </entry>
 
@@ -337,13 +337,13 @@
       <choices>
         <choice name="MonthItemCategoryInsideResourceOutside">
           <label>Category inside, calendar outside</label>
-          <whatsthis>Select the "Category inside, calendar outside" option if you would like to draw calendar items in their associated category color, with the item's border drawn in the color of its calendar resource.  Please use the Colors and Fonts configuration page for setting these colors.</whatsthis>
-          <tooltip>Draw month items in their category color inside and calendar resource color for their border</tooltip>
+          <whatsthis>Select the "Category inside, calendar outside" option if you would like to draw calendar items in their associated category color, with the item's border drawn in the color of its calendar.  Please use the Colors and Fonts configuration page for setting these colors.</whatsthis>
+          <tooltip>Draw month items in their category color inside and calendar color for their border</tooltip>
         </choice>
         <choice name="MonthItemResourceInsideCategoryOutside">
           <label>Calendar inside, category outside</label>
-          <whatsthis>Select the "Calendar inside, category outside" option if you would like to draw calendar items in their associated calendar resource color, with the item's border drawn in the color of its category.  Please use the Colors and Fonts configuration page for setting these colors.</whatsthis>
-          <tooltip>Draw month items in their calendar resource color inside and category color for their border</tooltip>
+          <whatsthis>Select the "Calendar inside, category outside" option if you would like to draw calendar items in their associated calendar color, with the item's border drawn in the color of its category.  Please use the Colors and Fonts configuration page for setting these colors.</whatsthis>
+          <tooltip>Draw month items in their calendar color inside and category color for their border</tooltip>
         </choice>
         <choice name="MonthItemCategoryOnly">
           <label>Only category</label>
@@ -352,8 +352,8 @@
         </choice>
         <choice name="MonthItemResourceOnly">
           <label>Only calendar</label>
-          <whatsthis>Select the "Only calendar" option if you would like to draw calendar items (both inside and border) in the color of their calendar resource.  Please use the Colors and Fonts configuration page for setting these colors.</whatsthis>
-          <tooltip>Draw month items using their calendar resource color for the inside and border</tooltip>
+          <whatsthis>Select the "Only calendar" option if you would like to draw calendar items (both inside and border) in the color of their calendar.  Please use the Colors and Fonts configuration page for setting these colors.</whatsthis>
+          <tooltip>Draw month items using their calendar color for the inside and border</tooltip>
         </choice>
       </choices>
       <default>MonthItemCategoryInsideResourceOutside</default>
@@ -370,7 +370,7 @@
 
     <entry type="Bool" key="Full View Todo">
       <label>To-do list view uses full window</label>
-      <whatsthis>Check this box to use the full KOrganizer window when displaying the to-do list view. If this box is checked, you will gain some space for the to-do list view, but other widgets, such as the date navigator, the to-do details and the resources list, will not be displayed.</whatsthis>
+      <whatsthis>Check this box to use the full KOrganizer window when displaying the to-do list view. If this box is checked, you will gain some space for the to-do list view, but other widgets, such as the date navigator, the to-do details and the calendars list, will not be displayed.</whatsthis>
       <default>true</default>
     </entry>
 

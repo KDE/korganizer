@@ -81,17 +81,20 @@ class KOAgenda : public Q3ScrollView
 {
   Q_OBJECT
   public:
-    KOAgenda ( KOEventView *eventView, int columns, int rows, int columnSize, QWidget *parent=0,
-               Qt::WFlags f = 0 );
-    explicit KOAgenda ( KOEventView *eventView, int columns, QWidget *parent = 0, Qt::WFlags f = 0 );
+    KOAgenda ( KOEventView *eventView, int columns, int rows, int columnSize,
+               QWidget *parent=0, Qt::WFlags f = 0 );
+    explicit KOAgenda ( KOEventView *eventView, int columns,
+                        QWidget *parent = 0, Qt::WFlags f = 0 );
     virtual ~KOAgenda();
 
     Incidence *selectedIncidence() const;
     QDate selectedIncidenceDate() const;
+
     /**
-     * Returns the uid of the last incidence that was selected. This
-     * persists across reloads and clear, so that if the same uid
-     * reappears, it can be reselected. */
+      Returns the uid of the last incidence that was selected. This
+      persists across reloads and clear, so that if the same uid
+      reappears, it can be reselected.
+    */
     const QString lastSelectedUid() const;
 
     bool eventFilter ( QObject *, QEvent * );

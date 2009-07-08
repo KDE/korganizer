@@ -36,17 +36,17 @@ class CalPrintWhatsNext : public CalPrintPluginBase
   public:
     CalPrintWhatsNext():CalPrintPluginBase() {}
     virtual ~CalPrintWhatsNext() {}
-    virtual QString description() { return i18n("Print What's Next"); }
-    virtual QString info() { return i18n("Prints a list of all upcoming events and todos."); }
-    virtual QWidget *createConfigWidget( QWidget* );
+    virtual QString description() { return i18n( "Print What's Next" ); }
+    virtual QString info() { return i18n( "Prints a list of all upcoming events and todos." ); }
+    virtual QWidget *createConfigWidget( QWidget * );
 
   public:
-    virtual void print(QPainter &p, int width, int height);
+    virtual void print( QPainter &p, int width, int height );
     virtual void readSettingsWidget();
     virtual void setSettingsWidget();
     virtual void loadConfig();
     virtual void saveConfig();
-    virtual void setDateRange( const QDate& from, const QDate& to );
+    virtual void setDateRange( const QDate &from, const QDate &to );
 
   protected:
     bool mUseDateRange;
@@ -54,10 +54,10 @@ class CalPrintWhatsNext : public CalPrintPluginBase
 
 class CalPrintWhatsNextConfig : public QWidget, public Ui::CalPrintWhatsNextConfig_Base
 {
-public:
-  CalPrintWhatsNextConfig( QWidget *parent ) : QWidget( parent ) {
-    setupUi( this );
-  }
+  public:
+    CalPrintWhatsNextConfig( QWidget *parent ) : QWidget( parent ) {
+      setupUi( this );
+    }
 };
 
 #endif

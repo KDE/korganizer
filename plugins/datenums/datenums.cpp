@@ -32,7 +32,8 @@
 
 using namespace KOrg::CalendarDecoration;
 
-class DatenumsFactory : public DecorationFactory {
+class DatenumsFactory : public DecorationFactory
+{
   public:
     Decoration *createPluginFactory() { return new Datenums; }
 };
@@ -43,9 +44,9 @@ Datenums::Datenums()
   : mDisplayedInfo( DayOfYear | DaysRemaining )
 {
   KConfig _config( "korganizerrc", KConfig::NoGlobals );
-  KConfigGroup config(&_config, "Calendar/Datenums Plugin");
-  mDisplayedInfo = (DayNumbers)config.readEntry( "DayNumbers",
-                                                 int(DayOfYear | DaysRemaining) );
+  KConfigGroup config( &_config, "Calendar/Datenums Plugin" );
+  mDisplayedInfo = (DayNumbers)config.readEntry(
+    "DayNumbers", int( DayOfYear | DaysRemaining ) );
 }
 
 void Datenums::configure( QWidget *parent )
@@ -56,7 +57,7 @@ void Datenums::configure( QWidget *parent )
 
 QString Datenums::info()
 {
-  return i18n("This plugin shows information on a day's position in the year.");
+  return i18n( "This plugin shows information on a day's position in the year." );
 }
 
 Element::List Datenums::createDayElements( const QDate &date )
@@ -64,32 +65,32 @@ Element::List Datenums::createDayElements( const QDate &date )
   Element::List result;
 
   const KCalendarSystem *calsys = KOGlobals::self()->calendarSystem();
-  int dayOfYear = calsys->dayOfYear(date);
-  int remainingDays = calsys->daysInYear(date) - dayOfYear;
+  int dayOfYear = calsys->dayOfYear( date );
+  int remainingDays = calsys->daysInYear( date ) - dayOfYear;
 
   StoredElement *e;
   switch ( mDisplayedInfo ) {
-    case DayOfYear: // only day of year
-      e = new StoredElement( "main element", QString::number( dayOfYear ) );
-      break;
-    case DaysRemaining: // only days until end of year
-      e = new StoredElement( "main element", QString::number( remainingDays ),
-                             i18np("1 day before the end of the year",
-                                   "%1 days before the end of the year",
-                                   remainingDays) );
-      break;
-    case DayOfYear + DaysRemaining: // both day of year and days till end of year
-    default:
-      e = new StoredElement( "main element", QString::number( dayOfYear ),
-                             i18nc("dayOfYear / daysTillEndOfYear", "%1 / %2",
-                                   dayOfYear, remainingDays),
-                             i18np("1 day since the beginning of the year,\n",
-                                   "%1 days since the beginning of the year,\n",
-                                   dayOfYear)
-                             + i18np("1 day until the end of the year",
-                                     "%1 days until the end of the year",
-                                     remainingDays) );
-      break;
+  case DayOfYear: // only day of year
+    e = new StoredElement( "main element", QString::number( dayOfYear ) );
+    break;
+  case DaysRemaining: // only days until end of year
+    e = new StoredElement( "main element", QString::number( remainingDays ),
+                           i18np( "1 day before the end of the year",
+                                  "%1 days before the end of the year",
+                                  remainingDays ) );
+    break;
+  case DayOfYear + DaysRemaining: // both day of year and days till end of year
+  default:
+    e = new StoredElement( "main element", QString::number( dayOfYear ),
+                           i18nc( "dayOfYear / daysTillEndOfYear", "%1 / %2",
+                                  dayOfYear, remainingDays ),
+                           i18np( "1 day since the beginning of the year,\n",
+                                  "%1 days since the beginning of the year,\n",
+                                  dayOfYear ) +
+                           i18np( "1 day until the end of the year",
+                                  "%1 days until the end of the year",
+                                  remainingDays ) );
+    break;
   }
   result.append( e );
 
@@ -118,43 +119,46 @@ Element::List Datenums::createWeekElements( const QDate &date )
   remainingWeeks = calsys->weeksInYear( date.year() ) - weekOfYear;
 
   weekOfYearShort = QString::number( weekOfYear );
-  weekOfYearLong = i18nc("Week weekOfYear", "Week %1", weekOfYear );
-  weekOfYearExtensive = i18np("1 week since the beginning of the year",
-                         "%1 weeks since the beginning of the year",
-                         weekOfYear);
+  weekOfYearLong = i18nc( "Week weekOfYear", "Week %1", weekOfYear );
+  weekOfYearExtensive = i18np( "1 week since the beginning of the year",
+                               "%1 weeks since the beginning of the year",
+                               weekOfYear );
 
   if ( yearOfTheWeek ) {  // The week does not belong to this year
 
-    weekOfYearShort = i18nc("weekOfYear (year)", "%1 (%2)", weekOfYear,
-                            *yearOfTheWeek);
-    weekOfYearLong = i18nc("Week weekOfYear (year)", "Week %1 (%2)", weekOfYear,
-                           *yearOfTheWeek);
+    weekOfYearShort = i18nc( "weekOfYear (year)",
+                             "%1 (%2)", weekOfYear, *yearOfTheWeek );
+    weekOfYearLong = i18nc( "Week weekOfYear (year)",
+                            "Week %1 (%2)", weekOfYear, *yearOfTheWeek );
 
-    if ( *yearOfTheWeek == date.year()+1 ) {  // The week belongs to next year
+    if ( *yearOfTheWeek == date.year() + 1 ) {
+      // The week belongs to next year
       remainingWeeks = 0;
 
-    weekOfYearExtensive = i18np("1 week since the beginning of the year",
-                                "%1 weeks since the beginning of the year",
-                                weekOfYear);
+      weekOfYearExtensive = i18np( "1 week since the beginning of the year",
+                                   "%1 weeks since the beginning of the year",
+                                   weekOfYear );
 
-    } else {  // The week belongs to last year
+    } else {
+      // The week belongs to last year
       remainingWeeks = calsys->weeksInYear( date.year() );
 
-    weekOfYearExtensive = i18np("1 week since the beginning of the year",
-                                "%1 weeks since the beginning of the year",
-                                0);
+      weekOfYearExtensive = i18np( "1 week since the beginning of the year",
+                                   "%1 weeks since the beginning of the year",
+                                   0 );
     }
   }
 
   remainingWeeksShort = QString::number( remainingWeeks );
-  remainingWeeksShort = i18np("1 week remaining", "%1 weeks remaining",
-                              remainingWeeks );
-  remainingWeeksExtensive = i18np("1 week until the end of the year",
-                             "%1 weeks until the end of the year",
-                             remainingWeeks);
-  weekOfYearAndRemainingWeeksShort = i18nc("weekOfYear / weeksTillEndOfYear",
-                                           "%1 / %2", weekOfYear,
-                                           remainingWeeks);
+  remainingWeeksShort = i18np( "1 week remaining",
+                               "%1 weeks remaining",
+                               remainingWeeks );
+  remainingWeeksExtensive = i18np( "1 week until the end of the year",
+                                   "%1 weeks until the end of the year",
+                                   remainingWeeks );
+  weekOfYearAndRemainingWeeksShort = i18nc( "weekOfYear / weeksTillEndOfYear",
+                                            "%1 / %2", weekOfYear,
+                                            remainingWeeks );
 
   StoredElement *e;
   switch ( mDisplayedInfo ) {
@@ -170,10 +174,10 @@ Element::List Datenums::createWeekElements( const QDate &date )
     default:
       e = new StoredElement( "main element", weekOfYearShort,
                              weekOfYearAndRemainingWeeksShort,
-                             i18nc("n weeks since the beginning of the year\n"
-                                   "n weeks until the end of the year",
-                                   "%1\n%2", weekOfYearExtensive,
-                                   remainingWeeksExtensive) );
+                             i18nc( "n weeks since the beginning of the year\n"
+                                    "n weeks until the end of the year",
+                                    "%1\n%2", weekOfYearExtensive,
+                                    remainingWeeksExtensive ) );
       break;
   }
   result.append( e );

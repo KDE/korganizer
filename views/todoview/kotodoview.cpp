@@ -341,10 +341,12 @@ void KOTodoView::restoreLayout( KConfig *config, const QString &group, bool mini
     QTimer::singleShot( 0, this, SLOT(resizeColumnsToContent()) );
 
   } else {
-      for ( int i = 0; i < header->count()     &&
-                       i < columnOrder.size()  &&
-                       i < columnWidths.size() &&
-                       i < columnVisibility.size(); i++ ) {
+      for ( int i = 0;
+            i < header->count() &&
+            i < columnOrder.size() &&
+            i < columnWidths.size() &&
+            i < columnVisibility.size();
+            i++ ) {
       bool visible = columnVisibility[i].toBool();
       int width = columnWidths[i].toInt();
       int order = columnOrder[i].toInt();

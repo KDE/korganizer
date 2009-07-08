@@ -243,15 +243,6 @@ bool KOJournalEditor::validateInput()
   return true;
 }
 
-int KOJournalEditor::msgItemDelete()
-{
-  return KMessageBox::warningContinueCancel(
-    this,
-    i18nc( "@info", "This journal entry will be permanently deleted." ),
-    i18nc( "@title:window", "KOrganizer Confirmation" ),
-    KStandardGuiItem::del() );
-}
-
 void KOJournalEditor::modified( int modification )
 {
   Q_UNUSED( modification );
