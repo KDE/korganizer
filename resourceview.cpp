@@ -253,7 +253,7 @@ ResourceView::ResourceView( KCal::CalendarResources *calendar, QWidget *parent )
            "Use the associated checkboxes to make a calendar active or inactive. "
            "Use the context menu to add, remove or edit calendars in the list."
            "<p>Events, journal entries and to-dos are retrieved and stored "
-           "from their respective calendars. Calendars can be accesssed from "
+           "from their respective calendars. Calendars can be accessed from "
            "groupware servers, local files, etc...</p>"
            "<p>If you have more than one active calendar, you will be "
            "prompted for which calendar to store new items into, unless "
@@ -288,7 +288,7 @@ ResourceView::ResourceView( KCal::CalendarResources *calendar, QWidget *parent )
     i18nc( "@info:whatsthis",
            "Press this button to add a new calendar to KOrganizer. "
            "<p>Events, journal entries and to-dos are retrieved and stored "
-           "from their respective calendars. Calendars can be accesssed from "
+           "from their respective calendars. Calendars can be accessed from "
            "groupware servers, local files, etc...</p>"
            "<p>If you have more than one active calendar, you will be "
            "prompted for which calendar to store new items into, unless "
