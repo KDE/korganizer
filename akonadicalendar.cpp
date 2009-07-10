@@ -273,7 +273,6 @@ Event *AkonadiCalendar::event( const QString &uid )
     return 0;
   AkonadiCalendarItem *aci = d->m_itemMap[ uid ];
   Event *event = dynamic_cast<Event*>( aci->incidence().get() );
-  Q_ASSERT( event );
   return event;
 }
 
@@ -342,7 +341,6 @@ Todo *AkonadiCalendar::todo( const QString &uid )
     return 0;
   AkonadiCalendarItem *aci = d->m_itemMap[ uid ];
   Todo *todo = dynamic_cast<Todo*>( aci->incidence().get() );
-  Q_ASSERT( todo );
   return todo;
 }
 
@@ -590,7 +588,6 @@ Journal *AkonadiCalendar::journal( const QString &uid )
     return 0;
   AkonadiCalendarItem *aci = d->m_itemMap[ uid ];
   Journal *journal = dynamic_cast<Journal*>( aci->incidence().get() );
-  Q_ASSERT( journal );
   return journal;
 }
 
