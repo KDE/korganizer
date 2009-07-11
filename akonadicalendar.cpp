@@ -169,13 +169,13 @@ bool AkonadiCalendar::deleteIncidence( Incidence *incidence )
 void AkonadiCalendar::incidenceUpdated( IncidenceBase *incidence )
 {
   kDebug();
-#if 0
+
   KDateTime nowUTC = KDateTime::currentUtcDateTime();
   incidence->setLastModified( nowUTC );
   // we should probably update the revision number here,
   // or internally in the Event itself when certain things change.
   // need to verify with ical documentation.
-
+#if 0
   if ( incidence->type() == "Event" ) {
     Event *event = static_cast<Event*>( incidence );
     removeIncidenceFromMultiHashByUID<Event *>(
@@ -221,10 +221,11 @@ bool AkonadiCalendar::addEvent( Event *event )
   if ( !event->recurs() && !event->isMultiDay() ) {
       mEventsForDate.insert( event->dtStart().date().toString(), event );
   }
+  */
   event->registerObserver( this );
   setModified( true );
   notifyIncidenceAdded( event );
-  */
+
   return d->addIncidence(event);
 }
 
@@ -234,9 +235,10 @@ bool AkonadiCalendar::addEvent( Event *event )
 bool AkonadiCalendar::deleteEvent( Event *event )
 {
   kDebug();
-  /*
+
   setModified( true );
   notifyIncidenceDeleted( event );
+  /*
   d->mDeletedIncidences.append( event );
   if ( !event->recurs() ) {
     removeIncidenceFromMultiHashByUID<Event *>(

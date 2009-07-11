@@ -89,6 +89,7 @@ class KCAL_EXPORT AkonadiCalendar : public Calendar
     void deleteIncidenceProxyMethod( Incidence *incidence ) { deleteIncidence(incidence); }
 
   Q_SIGNALS:
+    void signalErrorMessage( const QString& );
     // Same signals Akonadi::Monitor provides to allow later to refactor code to
     // use Collection+Monitor+etc direct rather then the AkonadiCalendar class.
     /*

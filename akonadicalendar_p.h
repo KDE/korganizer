@@ -200,6 +200,7 @@ class KCal::AkonadiCalendar::Private : public QObject
         Akonadi::ItemFetchJob *fetchjob = static_cast<Akonadi::ItemFetchJob*>( job );
         if ( job->error() ) {
             kWarning( 5250 ) << "Item query failed:" << job->errorString();
+            emit q->signalErrorMessage( job->errorString() );
             return;
         }
         itemsAdded( fetchjob->items(), fetchjob->collection() );
@@ -210,6 +211,7 @@ class KCal::AkonadiCalendar::Private : public QObject
         kDebug();
         if ( job->error() ) {
             kWarning( 5250 ) << "Item create failed:" << job->errorString();
+            emit q->signalErrorMessage( job->errorString() );
             return;
         }
         //Akonadi::ItemCreateJob *createjob = static_cast<Akonadi::ItemCreateJob*>( job );
@@ -221,6 +223,7 @@ class KCal::AkonadiCalendar::Private : public QObject
         kDebug();
         if ( job->error() ) {
             kWarning( 5250 ) << "Item delete failed:" << job->errorString();
+            emit q->signalErrorMessage( job->errorString() );
             return;
         }
         //Akonadi::ItemDeleteJob *deletejob = static_cast<Akonadi::ItemDeleteJob*>( job );
@@ -233,6 +236,7 @@ class KCal::AkonadiCalendar::Private : public QObject
         Akonadi::ItemModifyJob *modifyjob = static_cast<Akonadi::ItemModifyJob*>( job );
         if ( modifyjob->error() ) {
             kWarning( 5250 ) << "Item modify failed:" << job->errorString();
+            emit q->signalErrorMessage( job->errorString() );
             return;
         }
         //TODO
