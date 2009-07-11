@@ -31,12 +31,7 @@
 
 #include <libkdepim/kdateedit.h>
 
-#include <kcal/calendar.h>
-
-#include <klocale.h>
-#include <kmessagebox.h>
-
-#include "searchdialog.moc"
+#include <KCal/Calendar>
 
 SearchDialog::SearchDialog( Calendar *calendar, QWidget *parent )
   : KDialog( parent )
@@ -100,11 +95,11 @@ void SearchDialog::doSearch()
   re.setCaseSensitivity( Qt::CaseInsensitive );
   re.setPattern( mSearchEdit->text() );
   if ( !re.isValid() ) {
-    KMessageBox::sorry( this,
-                        i18n( "Invalid search expression, cannot perform "
-                              "the search. Please enter a search expression "
-                              "using the wildcard characters '*' and '?' "
-                              "where needed." ) );
+    KMessageBox::sorry(
+      this,
+      i18n( "Invalid search expression, cannot perform the search. "
+            "Please enter a search expression using the wildcard characters "
+            "'*' and '?' where needed." ) );
     return;
   }
 
@@ -113,9 +108,10 @@ void SearchDialog::doSearch()
   listView->showIncidences( mMatchedEvents );
 
   if ( mMatchedEvents.count() == 0 ) {
-    KMessageBox::information( this,
-                              i18n( "No events were found matching your search expression." ),
-                              "NoSearchResults" );
+    KMessageBox::information(
+      this,
+      i18n( "No events were found matching your search expression." ),
+      "NoSearchResults" );
   }
 }
 
@@ -216,3 +212,5 @@ void SearchDialog::search( const QRegExp &re )
     }
   }
 }
+
+#include "searchdialog.moc"
