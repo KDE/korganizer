@@ -36,12 +36,14 @@
 SearchDialog::SearchDialog( Calendar *calendar, QWidget *parent )
   : KDialog( parent )
 {
-  setCaption( i18n( "Find Events" ) );
-  setButtons( User1 | Close );
+  setCaption( i18n( "Search Calendar" ) );
+  setButtons( User1 | Cancel );
   setDefaultButton( User1 );
   setModal( false );
   showButtonSeparator( false );
-  setButtonGuiItem( User1, KGuiItem( i18n( "&Find" ), "edit-find" ) );
+  setButtonGuiItem( User1,
+                    KGuiItem( i18nc( "search in calendar", "&Search" ), "edit-find" ) );
+  setButtonToolTip( User1, i18n( "Start searching" ) );
   mCalendar = calendar;
 
   QWidget *mainwidget = new QWidget( this );
@@ -110,7 +112,7 @@ void SearchDialog::doSearch()
   if ( mMatchedEvents.count() == 0 ) {
     KMessageBox::information(
       this,
-      i18n( "No events were found matching your search expression." ),
+      i18n( "No items were found that match your search pattern." ),
       "NoSearchResults" );
   }
 }

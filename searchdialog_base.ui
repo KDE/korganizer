@@ -33,6 +33,12 @@
      </item>
      <item>
       <widget class="KLineEdit" name="mSearchEdit">
+       <property name="toolTip">
+        <string>Search pattern, use wildcards '*' and '?' as desired.</string>
+       </property>
+       <property name="whatsThis">
+        <string>Enter your search pattern here. Wildcards '*' (matches any string) and '?' (matches any character) are supported.  For example, to match any string starting with the letter 'a', use the search pattern a*.</string>
+       </property>
        <property name="text">
         <string>*</string>
        </property>
@@ -48,6 +54,12 @@
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
        <widget class="QCheckBox" name="mEventsCheck">
+        <property name="toolTip">
+         <string>Search for Events with matching criteria</string>
+        </property>
+        <property name="whatsThis">
+         <string>Check this box if you want to search for Event items that match the search criteria.</string>
+        </property>
         <property name="text">
          <string>&amp;Events</string>
         </property>
@@ -58,13 +70,25 @@
       </item>
       <item>
        <widget class="QCheckBox" name="mJournalsCheck">
+        <property name="toolTip">
+         <string>Search for Journals with matching criteria</string>
+        </property>
+        <property name="whatsThis">
+         <string>Check this box if you want to search for Journal items that match the search criteria.</string>
+        </property>
         <property name="text">
-         <string>&amp;Journal entries</string>
+         <string>&amp;Journals</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QCheckBox" name="mTodosCheck">
+        <property name="toolTip">
+         <string>Search for To-dos with matching criteria</string>
+        </property>
+        <property name="whatsThis">
+         <string>Check this box if you want to search To-do items that match the search criteria.</string>
+        </property>
         <property name="text">
          <string>To-&amp;dos</string>
         </property>
@@ -84,6 +108,12 @@
      <layout class="QGridLayout" name="gridLayout">
       <item row="0" column="0">
        <widget class="QCheckBox" name="mCategoryCheck">
+        <property name="toolTip">
+         <string>Include item categories in your search</string>
+        </property>
+        <property name="whatsThis">
+         <string>Check this box if you want to match item categories against your search pattern.</string>
+        </property>
         <property name="text">
          <string>Cate&amp;gories</string>
         </property>
@@ -91,6 +121,12 @@
       </item>
       <item row="0" column="1">
        <widget class="QCheckBox" name="mLocationCheck">
+        <property name="toolTip">
+         <string>Include item locations in your search</string>
+        </property>
+        <property name="whatsThis">
+         <string>Check this box if you want to match item locations against your search pattern.</string>
+        </property>
         <property name="text">
          <string>Locations</string>
         </property>
@@ -98,6 +134,12 @@
       </item>
       <item row="1" column="0">
        <widget class="QCheckBox" name="mDescriptionCheck">
+        <property name="toolTip">
+         <string>Include item descriptions in your search</string>
+        </property>
+        <property name="whatsThis">
+         <string>Check this box if you want to match item descriptions against your search pattern.</string>
+        </property>
         <property name="text">
          <string>Desc&amp;riptions</string>
         </property>
@@ -105,6 +147,12 @@
       </item>
       <item row="1" column="1">
        <widget class="QCheckBox" name="mSummaryCheck">
+        <property name="toolTip">
+         <string>Include item summaries in your search</string>
+        </property>
+        <property name="whatsThis">
+         <string>Check this box if you want to match item summaries against your search pattern.</string>
+        </property>
         <property name="text">
          <string>Su&amp;mmaries</string>
         </property>
@@ -145,6 +193,12 @@
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
+          <property name="toolTip">
+           <string>Include items with a starting date on or after this date</string>
+          </property>
+          <property name="whatsThis">
+           <string>Search for items with a starting date on or after the date you specify here.</string>
+          </property>
           <item>
            <property name="text">
             <string>2008-08-18</string>
@@ -177,6 +231,12 @@
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
+          <property name="toolTip">
+           <string>Include items with ending date on or before this date</string>
+          </property>
+          <property name="whatsThis">
+           <string>Search for items with an ending date on or before the date you specify here.</string>
+          </property>
           <item>
            <property name="text">
             <string>2008-08-18</string>
@@ -188,15 +248,27 @@
       </item>
       <item row="1" column="0" colspan="2">
        <widget class="QCheckBox" name="mInclusiveCheck">
+        <property name="toolTip">
+         <string>Include Events only if their date range falls into the range specified above</string>
+        </property>
+        <property name="whatsThis">
+         <string>Check this box if you want to include Events that occur within the date range specified.  Events that don't fall completely within the date range will be excluded from the search results.</string>
+        </property>
         <property name="text">
-         <string>E&amp;vents have to be completely included</string>
+         <string>Include E&amp;vents within the specified date range</string>
         </property>
        </widget>
       </item>
       <item row="2" column="0" colspan="2">
        <widget class="QCheckBox" name="mIncludeUndatedTodos">
+        <property name="toolTip">
+         <string>Include To-dos in the search that do not have a due date</string>
+        </property>
+        <property name="whatsThis">
+         <string>Check this box to include To-dos without a due date in the search results.</string>
+        </property>
         <property name="text">
-         <string>Include to-dos &amp;without due date</string>
+         <string>Include To-dos &amp;without a due date</string>
         </property>
         <property name="checked">
          <bool>true</bool>
