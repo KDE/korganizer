@@ -61,7 +61,6 @@ SearchDialog::SearchDialog( Calendar *calendar, QWidget *parent )
   listView = new KOListView( mCalendar );
   listView->showDates();
   layout->addWidget( listView );
-  mListViewParent->setLayout( layout );
 
   if ( KOPrefs::instance()->mCompactDialogs ) {
     KOGlobals::fitDialogToScreen( this, true );
