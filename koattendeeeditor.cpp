@@ -36,6 +36,7 @@
 #include <klocale.h>
 #include <kmessagebox.h>
 
+#include <Q3ListViewItem>
 #include <QCheckBox>
 #include <Q3HBox>
 #include <QLabel>
