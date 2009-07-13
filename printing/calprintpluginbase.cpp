@@ -937,7 +937,14 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
     else
       text = local->formatTime( currEvent->dtStart().time() );
 
-    drawIncidence( p, box, text, currEvent->summary(), textY );
+    QString str;
+    if ( !currEvent->location().isEmpty() ) {
+      str = i18n( "summary, location", "%1, %2" ).
+            arg( currEvent->summary() ).arg( currEvent->location() );
+    } else {
+      str = currEvent->summary();
+    }
+    drawIncidence( p, box, text, str, textY );
   }
 
   if ( textY<box.height() ) {
@@ -952,7 +959,14 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
         text += KGlobal::locale()->formatTime(todo->dtDue().time()) + " ";
       else
         text = "";
-      drawIncidence( p, box, text, i18n("To-do: %1").arg(todo->summary()), textY );
+      QString str;
+      if ( !todo->location().isEmpty() ) {
+        str = i18n( "summary, location", "%1, %2" ).
+                    arg( todo->summary() ).arg( todo->location() );
+      } else {
+        str = todo->summary();
+      }
+      drawIncidence( p, box, text, i18n("To-do: %1").arg(str), textY );
     }
   }
 
