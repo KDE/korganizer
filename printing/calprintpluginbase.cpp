@@ -245,9 +245,9 @@ void CalPrintPluginBase::setCategoryColors( QPainter &p, Incidence *incidence )
 
 QColor CalPrintPluginBase::categoryBgColor( Incidence *incidence )
 {
-  if (mCoreHelper && incidence) 
+  if (mCoreHelper && incidence)
     return mCoreHelper->categoryColor( incidence->categories() );
-  else 
+  else
     return QColor();
 }
 
@@ -414,10 +414,10 @@ void CalPrintPluginBase::drawVerticalBox( QPainter &p, const QRect &box, const Q
 
 
 ///////////////////////////////////////////////////////////////////////////////
-// Return value: If expand, bottom of the printed box, otherwise vertical end 
+// Return value: If expand, bottom of the printed box, otherwise vertical end
 // of the printed contents inside the box.
 
-int CalPrintPluginBase::drawBoxWithCaption( QPainter &p, const QRect &allbox, 
+int CalPrintPluginBase::drawBoxWithCaption( QPainter &p, const QRect &allbox,
         const QString &caption, const QString &contents, bool sameLine, bool expand, const QFont &captionFont, const QFont &textFont )
 {
   QFont oldFont( p.font() );
@@ -428,17 +428,17 @@ int CalPrintPluginBase::drawBoxWithCaption( QPainter &p, const QRect &allbox,
 
 
   QRect box( allbox );
-  
+
   // Bounding rectangle for caption, single-line, clip on the right
   QRect captionBox( box.left() + padding(), box.top() + padding(), 0, 0 );
   p.setFont( captionFont );
   captionBox = p.boundingRect( captionBox, Qt::AlignLeft | Qt::AlignTop | Qt::SingleLine, caption );
   p.setFont( oldFont );
-  if ( captionBox.right() > box.right() ) 
+  if ( captionBox.right() > box.right() )
     captionBox.setRight( box.right() );
-  if ( expand && captionBox.bottom() + padding() > box.bottom() ) 
+  if ( expand && captionBox.bottom() + padding() > box.bottom() )
     box.setBottom( captionBox.bottom() + padding() );
-  
+
   // Bounding rectangle for the contents (if any), word break, clip on the bottom
   QRect textBox( captionBox );
   if ( !contents.isEmpty() ) {
@@ -460,7 +460,7 @@ int CalPrintPluginBase::drawBoxWithCaption( QPainter &p, const QRect &allbox,
       }
     }
   }
-  
+
   drawBox( p, BOX_BORDER_WIDTH, box );
   p.setFont( captionFont );
   p.drawText( captionBox, Qt::AlignLeft | Qt::AlignTop | Qt::SingleLine, caption );
@@ -469,7 +469,7 @@ int CalPrintPluginBase::drawBoxWithCaption( QPainter &p, const QRect &allbox,
     p.drawText( textBox, Qt::WordBreak | Qt::AlignTop | Qt::AlignLeft, contents );
   }
   p.setFont( oldFont );
-  
+
   if ( expand ) {
     return box.bottom();
   } else {
@@ -494,8 +494,8 @@ int CalPrintPluginBase::drawHeader( QPainter &p, QString title,
   QRect textRect( allbox );
   textRect.addCoords( 5, 0, 0, 0 );
   textRect.setRight( right );
-  
-  
+
+
   QFont oldFont( p.font() );
   QFont newFont("sans-serif", (textRect.height()<60)?16:18, QFont::Bold);
   if ( expand ) {
@@ -525,7 +525,7 @@ int CalPrintPluginBase::drawHeader( QPainter &p, QString title,
   p.setFont( newFont );
   p.drawText( textRect, Qt::AlignLeft | Qt::AlignVCenter | Qt::WordBreak, title );
   p.setFont( oldFont );
-  
+
   return textRect.bottom();
 }
 
@@ -867,7 +867,13 @@ void CalPrintPluginBase::drawAgendaItem( PrintCellItem *item, QPainter &p,
     int currentHeight = int( box.top() + startPrintDate.secsTo( endTime ) * minlen / 60. ) - currentYPos;
 
     QRect eventBox( currentX, currentYPos, currentWidth, currentHeight );
-    showEventBox( p, eventBox, event, event->summary() );
+    QString str = i18n( "starttime - endtime summary, location",
+                        "%1-%2 %3, %4" ).
+                  arg( KGlobal::locale()->formatTime( startTime.time() ) ).
+                  arg( KGlobal::locale()->formatTime( endTime.time() ) ).
+                  arg( event->summary() ).
+                  arg( event->location() );
+    showEventBox( p, eventBox, event, str );
   }
 }
 
@@ -1088,14 +1094,14 @@ void CalPrintPluginBase::drawMonth( QPainter &p, const QDate &dt, const QRect &b
 
   int daysinmonth = calsys->daysInMonth( dt );
   if ( maxdays <= 0 ) maxdays = daysinmonth;
-  
+
   int d;
   float dayheight = float(daysBox.height()) / float( maxdays );
-  
+
   QColor holidayColor( 240, 240, 240 );
   QColor workdayColor( 255, 255, 255 );
   int dayNrWidth = p.fontMetrics().width( "99" );
-  
+
   // Fill the remaining space (if a month has less days than others) with a crossed-out pattern
   if ( daysinmonth<maxdays ) {
     QRect dayBox( box.left(), daysBox.top() + round(dayheight*daysinmonth), box.width(), 0 );
@@ -1110,12 +1116,12 @@ void CalPrintPluginBase::drawMonth( QPainter &p, const QDate &dt, const QRect &b
     QRect dayBox( daysBox.left()/*+rand()%50*/, daysBox.top() + round(dayheight*d), daysBox.width()/*-rand()%50*/, 0 );
     // FIXME: When using a border width of 0 for event boxes, don't let the rectangles overlap, i.e. subtract 1 from the top or bottom!
     dayBox.setBottom( daysBox.top()+round(dayheight*(d+1)) - 1 );
-    
+
     p.setBrush( isWorkingDay( day )?workdayColor:holidayColor );
     p.drawRect( dayBox );
     QRect dateBox( dayBox );
     dateBox.setWidth( dayNrWidth+3 );
-    p.drawText( dateBox, Qt::AlignRight | Qt::AlignVCenter | Qt::SingleLine, 
+    p.drawText( dateBox, Qt::AlignRight | Qt::AlignVCenter | Qt::SingleLine,
                 QString::number(d+1) );
   }
   p.setBrush( oldbrush );
@@ -1154,16 +1160,16 @@ void CalPrintPluginBase::drawMonth( QPainter &p, const QDate &dt, const QRect &b
       }
     }
   }
-  
+
   QValueList<MonthEventStruct> monthentries;
 
-  for ( Event::List::ConstIterator evit = events.begin(); 
+  for ( Event::List::ConstIterator evit = events.begin();
         evit != events.end(); ++evit ) {
     Event *e = (*evit);
     if (!e) continue;
     if ( e->doesRecur() ) {
       if ( e->recursOn( start ) ) {
-        // This occurrence has possibly started before the beginning of the 
+        // This occurrence has possibly started before the beginning of the
         // month, so obtain the start date before the beginning of the month
         QValueList<QDateTime> starttimes = e->startDateTimesForDate( start );
         QValueList<QDateTime>::ConstIterator it = starttimes.begin();
@@ -1171,8 +1177,8 @@ void CalPrintPluginBase::drawMonth( QPainter &p, const QDate &dt, const QRect &b
           monthentries.append( MonthEventStruct( *it, e->endDateForStart( *it ), e ) );
         }
       }
-      // Loop through all remaining days of the month and check if the event 
-      // begins on that day (don't use Event::recursOn, as that will 
+      // Loop through all remaining days of the month and check if the event
+      // begins on that day (don't use Event::recursOn, as that will
       // also return events that have started earlier. These start dates
       // however, have already been treated!
       Recurrence *recur = e->recurrence();
@@ -1216,7 +1222,7 @@ void CalPrintPluginBase::drawMonth( QPainter &p, const QDate &dt, const QRect &b
       timeboxItems.append( new PrintCellItem( (*mit).event, thisstart, thisend ) );
     }
   }
-  
+
   // For Multi-day events, line them up nicely so that the boxes don't overlap
   QPtrListIterator<KOrg::CellItem> it1( timeboxItems );
   for( it1.toFirst(); it1.current(); ++it1 ) {
@@ -1225,7 +1231,7 @@ void CalPrintPluginBase::drawMonth( QPainter &p, const QDate &dt, const QRect &b
   }
   QDateTime starttime( start, QTime( 0, 0, 0 ) );
   int newxstartcont = xstartcont;
-  
+
   QFont oldfont( p.font() );
   p.setFont( QFont( "sans-serif", 7 ) );
   for( it1.toFirst(); it1.current(); ++it1 ) {
@@ -1233,8 +1239,8 @@ void CalPrintPluginBase::drawMonth( QPainter &p, const QDate &dt, const QRect &b
     int minsToStart = starttime.secsTo( placeItem->start() )/60;
     int minsToEnd = starttime.secsTo( placeItem->end() )/60;
 
-    QRect eventBox( xstartcont + placeItem->subCell()*17, 
-           daysBox.top() + round( double( minsToStart*daysBox.height()) / double(maxdays*24*60) ), 
+    QRect eventBox( xstartcont + placeItem->subCell()*17,
+           daysBox.top() + round( double( minsToStart*daysBox.height()) / double(maxdays*24*60) ),
            14, 0 );
     eventBox.setBottom( daysBox.top() + round( double( minsToEnd*daysBox.height()) / double(maxdays*24*60) ) );
     drawVerticalBox( p, eventBox, placeItem->event()->summary() );
