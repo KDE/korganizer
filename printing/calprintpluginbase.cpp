@@ -868,7 +868,7 @@ void CalPrintPluginBase::drawAgendaItem( PrintCellItem *item, QPainter &p,
       int( box.top() + startPrintDate.secsTo( endTime ) * minlen / 60. ) - currentYPos;
 
     QRect eventBox( currentX, currentYPos, currentWidth, currentHeight );
-    QString str = i18nc( "starttime - endtime summary, location", 
+    QString str = i18nc( "starttime - endtime summary, location",
                          "%1-%2 %3, %4",
                          KGlobal::locale()->formatTime( startTime.time() ),
                          KGlobal::locale()->formatTime( endTime.time() ),
@@ -935,7 +935,14 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
     } else {
       text = local->formatTime( currEvent->dtStart().time() );
     }
-    drawIncidence( p, box, text, currEvent->summary(), textY );
+    QString str;
+    if ( !currEvent->location().isEmpty() ) {
+      str = i18nc( "summary, location", "%1, %2",
+                   currEvent->summary(), currEvent->location() );
+    } else {
+      str = currEvent->summary();
+    }
+    drawIncidence( p, box, text, str, textY );
   }
 
   if ( textY < box.height() ) {
@@ -952,7 +959,14 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
       } else {
         text = "";
       }
-      drawIncidence( p, box, text, i18n( "To-do: %1", todo->summary() ), textY );
+      QString str;
+      if ( !todo->location().isEmpty() ) {
+        str = i18nc( "summary, location", "%1, %2",
+                     todo->summary(), todo->location() );
+      } else {
+        str = todo->summary();
+      }
+      drawIncidence( p, box, text, i18n( "To-do: %1", str ), textY );
     }
   }
 
