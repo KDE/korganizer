@@ -31,27 +31,28 @@
 
 #include <libkdepim/kdateedit.h>
 
-#include <kcal/calendar.h>
-
-#include <klocale.h>
-#include <kmessagebox.h>
-
-#include "searchdialog.moc"
+#include <KCal/Calendar>
 
 SearchDialog::SearchDialog( Calendar *calendar, QWidget *parent )
   : KDialog( parent )
 {
-  setCaption( i18n( "Find Events" ) );
-  setButtons( User1 | Close );
+  setCaption( i18n( "Search Calendar" ) );
+  setButtons( User1 | Cancel );
   setDefaultButton( User1 );
   setModal( false );
   showButtonSeparator( false );
-  setButtonGuiItem( User1, KGuiItem( i18n( "&Find" ), "edit-find" ) );
+  setButtonGuiItem( User1,
+                    KGuiItem( i18nc( "search in calendar", "&Search" ), "edit-find" ) );
+  setButtonToolTip( User1, i18n( "Start searching" ) );
   mCalendar = calendar;
 
   QWidget *mainwidget = new QWidget( this );
   setupUi( mainwidget );
   setMainWidget( mainwidget );
+
+  // Set nice initial start and end dates for the search
+  mStartDate->setDate( QDate::currentDate() );
+  mEndDate->setDate( QDate::currentDate().addYears( 1 ) );
 
   connect( mSearchEdit, SIGNAL(textChanged(const QString &)),
            this, SLOT(searchTextChanged(const QString &)) );
@@ -62,7 +63,7 @@ SearchDialog::SearchDialog( Calendar *calendar, QWidget *parent )
   listView = new KOListView( mCalendar );
   listView->showDates();
   layout->addWidget( listView );
-  mListViewParent->setLayout( layout );
+  mListViewFrame->setLayout( layout );
 
   if ( KOPrefs::instance()->mCompactDialogs ) {
     KOGlobals::fitDialogToScreen( this, true );
@@ -96,11 +97,11 @@ void SearchDialog::doSearch()
   re.setCaseSensitivity( Qt::CaseInsensitive );
   re.setPattern( mSearchEdit->text() );
   if ( !re.isValid() ) {
-    KMessageBox::sorry( this,
-                        i18n( "Invalid search expression, cannot perform "
-                              "the search. Please enter a search expression "
-                              "using the wildcard characters '*' and '?' "
-                              "where needed." ) );
+    KMessageBox::sorry(
+      this,
+      i18n( "Invalid search expression, cannot perform the search. "
+            "Please enter a search expression using the wildcard characters "
+            "'*' and '?' where needed." ) );
     return;
   }
 
@@ -109,9 +110,10 @@ void SearchDialog::doSearch()
   listView->showIncidences( mMatchedEvents );
 
   if ( mMatchedEvents.count() == 0 ) {
-    KMessageBox::information( this,
-                              i18n( "No events were found matching your search expression." ),
-                              "NoSearchResults" );
+    KMessageBox::information(
+      this,
+      i18n( "No items were found that match your search pattern." ),
+      "NoSearchResults" );
   }
 }
 
@@ -212,3 +214,5 @@ void SearchDialog::search( const QRegExp &re )
     }
   }
 }
+
+#include "searchdialog.moc"

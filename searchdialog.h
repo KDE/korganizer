@@ -27,19 +27,16 @@
 #define SEARCHDIALOG_H
 
 #include "ui_searchdialog_base.h"
-
-#include <kcal/incidence.h>
-
-#include <kdialog.h>
-
-#include <QRegExp>
+#include <KCal/Incidence>
+#include <KDialog>
 
 namespace KCal {
   class Calendar;
 }
-class KOListView;
-
 using namespace KCal;
+
+class KOListView;
+class QRegExp;
 
 class SearchDialog : public KDialog, private Ui::SearchDialog
 {
