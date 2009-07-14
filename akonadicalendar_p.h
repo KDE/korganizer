@@ -243,7 +243,7 @@ class KCal::AkonadiCalendar::Private : public QObject
         emit q->calendarChanged();
     }
 
-    void itemChanged( const Akonadi::Item&, const QSet<QByteArray>& )
+    void itemChanged( const Akonadi::Item& item, const QSet<QByteArray>& )
     {
         kDebug()<<"TODO";
 #if 0
@@ -256,6 +256,16 @@ class KCal::AkonadiCalendar::Private : public QObject
         QModelIndex end = mParent->index( row, mParent->columnCount( QModelIndex() ) - 1 , QModelIndex() );
         mParent->dataChanged( start, end );
 #endif
+        Q_ASSERT( item.isValid() );
+        Q_ASSERT( item.hasPayload() );
+        Q_ASSERT( item.hasPayload<KCal::Incidence::Ptr>() );
+        const KCal::Incidence::Ptr incidence = item.payload<KCal::Incidence::Ptr>();
+        Q_ASSERT( incidence );
+        AkonadiCalendarItem *ci = m_itemMap.take( incidence->uid() );
+        kDebug() << "Updating uid=" << incidence->uid() << "summary=" << incidence->summary() << "type=" << incidence->type();
+        delete ci;
+        m_itemMap[ incidence->uid() ] = new AkonadiCalendarItem(q, item);
+        emit q->calendarChanged();
     }
 
     void itemMoved( const Akonadi::Item &item, const Akonadi::Collection& colSrc, const Akonadi::Collection& colDst )
