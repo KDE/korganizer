@@ -226,7 +226,6 @@ class KCal::AkonadiCalendar::Private : public QObject
         if( ! iface.isValid() ) {
             kWarning( 5250 ) << "Failed to obtain D-Bus interface for remote configuration.";
             emit q->signalErrorMessage( "Failed to obtain D-Bus interface for remote configuration." );
-            Q_ASSERT(false);
             return;
         }
         QString path = createjob->property("path").toString();
