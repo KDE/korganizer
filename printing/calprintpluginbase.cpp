@@ -1039,8 +1039,15 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
     }
     p.save();
     setCategoryColors( p, currEvent );
+    QString str;
+    if ( !currEvent->location().isEmpty() ) {
+      str = i18nc( "summary, location", "%1, %2",
+                   currEvent->summary(), currEvent->location() );
+    } else {
+      str = currEvent->summary();
+    }
     drawIncidence( p, box, timeText,
-                   currEvent->summary(), currEvent->description(),
+                   str, currEvent->description(),
                    textY, singleLineLimit, includeDescription,
                    currEvent->descriptionIsRich() );
     p.restore();
@@ -1066,8 +1073,15 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
       }
       p.save();
       setCategoryColors( p, todo );
+      QString str;
+      if ( !todo->location().isEmpty() ) {
+        str = i18nc( "summary, location", "%1, %2",
+                     todo->summary(), todo->location() );
+      } else {
+        str = todo->summary();
+      }
       drawIncidence( p, box, timeText,
-                     i18n( "To-do: %1", todo->summary() ), todo->description(),
+                     i18n( "To-do: %1", str ), todo->description(),
                      textY, singleLineLimit, includeDescription,
                      todo->descriptionIsRich() );
       p.restore();
