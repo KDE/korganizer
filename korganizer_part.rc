@@ -130,13 +130,15 @@
   </MenuBar>
 
   <ToolBar noMerge="1" name="mainToolBar" fullWidth="true"><text context="main toolbar">Main</text>
-    <Action name="go_previous"/>
-    <Action name="go_today"/>
-    <Action name="go_next"/>
-    <Action name="mail_appointment"/>
     <Action name="new_event"/>
     <Action name="new_todo"/>
     <Action name="new_journal"/>
+    <Separator/>
+    <Action name="edit_find"/>
+    <Separator/>
+    <Action name="go_previous"/>
+    <Action name="go_today"/>
+    <Action name="go_next"/>
   </ToolBar>
 
   <ToolBar noMerge="1" name="korganizer_toolbar"><text>Views</text>

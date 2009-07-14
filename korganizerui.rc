@@ -118,8 +118,6 @@
     <Action name="new_event"/>
     <Action name="new_todo"/>
     <Action name="new_journal"/>
-    <Action name="file_print"/>
-    <Action name="mail_appointment"/>
     <Separator/>
     <Action name="edit_find"/>
     <Separator/>

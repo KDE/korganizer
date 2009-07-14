@@ -367,7 +367,7 @@ AkonadiCollectionView::AkonadiCollectionView( AkonadiCollectionViewFactory *fact
     mActionManager->setCollectionSelectionModel( mCollectionview->selectionModel() );
 
     KAction *createAction = new KAction( mCollectionview );
-    createAction->setIcon( KIcon( "new" ) );
+    createAction->setIcon( KIcon( "appointment-new" ) );
     createAction->setText( i18n( "New Calendar..." ) );
     //action->setWhatsThis( i18n( "Create a new contact<p>You will be presented with a dialog where you can add all data about a person, including addresses and phone numbers.</p>" ) );
     xmlclient->actionCollection()->addAction( QString::fromLatin1( "akonadi_calendar_create" ), createAction );
