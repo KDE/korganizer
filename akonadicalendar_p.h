@@ -329,7 +329,9 @@ class KCal::AkonadiCalendar::Private : public QObject
             Q_ASSERT( ! m_itemMap.contains( incidence->uid() ) ); //uh, 2 incidences with the same uid?
             incidence->registerObserver( q );
             m_itemMap[ incidence->uid() ] = new AkonadiCalendarItem(q, item);
+            q->notifyIncidenceAdded( incidence.get() );
         }
+        q->setModified( true );
         emit q->calendarChanged();
     }
 
@@ -349,17 +351,12 @@ class KCal::AkonadiCalendar::Private : public QObject
             Q_ASSERT( item.isValid() );
             Q_ASSERT( item.hasPayload() );
             const KCal::Incidence::Ptr incidence = item.payload<KCal::Incidence::Ptr>();
-#if 0
-            mEvents.remove( incidence->uid() );
-            mTodos.remove( incidence->uid() );
-            mJournals.remove( incidence->uid() );
-            m_map.remove( incidence.get() );
-#else
+            q->notifyIncidenceDeleted( incidence.get() );
             AkonadiCalendarItem *ci = m_itemMap.take( incidence->uid() );
             kDebug() << "Remove uid=" << incidence->uid() << "summary=" << incidence->summary() << "type=" << incidence->type();
             delete ci;
-#endif
         }
+        q->setModified( true );
         emit q->calendarChanged();
     }
 

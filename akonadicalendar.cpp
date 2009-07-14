@@ -235,10 +235,6 @@ bool AkonadiCalendar::addEvent( Event *event )
       mEventsForDate.insert( event->dtStart().date().toString(), event );
   }
   */
-  event->registerObserver( this );
-  setModified( true );
-  notifyIncidenceAdded( event );
-
   return d->addIncidence(event);
 }
 
@@ -248,9 +244,6 @@ bool AkonadiCalendar::addEvent( Event *event )
 bool AkonadiCalendar::deleteEvent( Event *event )
 {
   kDebug();
-
-  setModified( true );
-  notifyIncidenceDeleted( event );
   /*
   d->mDeletedIncidences.append( event );
   if ( !event->recurs() ) {
