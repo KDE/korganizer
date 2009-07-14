@@ -115,7 +115,7 @@ void KOAlarmClient::checkAlarms()
   for( it = alarms.begin(); it != alarms.end(); ++it ) {
     kdDebug(5891) << "REMINDER: " << (*it)->parent()->summary() << endl;
     Incidence *incidence = mCalendar->incidence( (*it)->parent()->uid() );
-    createReminder( incidence, QDateTime::currentDateTime() );
+    createReminder( incidence, from );
   }
 }
 
