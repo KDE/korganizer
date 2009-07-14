@@ -24,6 +24,8 @@
 #include <akonadi/itemfetchjob.h>
 #include <akonadi/itemfetchscope.h>
 #include <akonadi/itemdeletejob.h>
+#include <akonadi/agentmanager.h>
+#include <akonadi/agentinstancecreatejob.h>
 #include <akonadi/monitor.h>
 #include <akonadi/session.h>
 
@@ -150,6 +152,17 @@ void AkonadiCalendar::close()
 #if 0
   setObserversEnabled( true );
 #endif
+}
+
+bool AkonadiCalendar::addAgent( const KUrl &mUrl )
+{
+  kDebug()<<mUrl;
+  Akonadi::AgentType type = Akonadi::AgentManager::self()->type( "akonadi_ical_resource" );
+  Akonadi::AgentInstanceCreateJob *job = new Akonadi::AgentInstanceCreateJob( type );
+  job->setProperty("path", mUrl.path());
+  connect( job, SIGNAL( result( KJob * ) ), d, SLOT( agentCreated( KJob * ) ) );
+  job->start();
+  return true;
 }
 
 bool AkonadiCalendar::addIncidence( Incidence *incidence )

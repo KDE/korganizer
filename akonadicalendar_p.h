@@ -26,6 +26,7 @@
 
 #include <QObject>
 #include <QCoreApplication>
+#include <QDBusInterface>
 
 #include <akonadi/entity.h>
 #include <akonadi/collection.h>
@@ -38,6 +39,10 @@
 #include <akonadi/itemdeletejob.h>
 #include <akonadi/itemcreatejob.h>
 #include <akonadi/itemmodifyjob.h>
+#include <akonadi/agentinstance.h>
+#include <akonadi/agentmanager.h>
+#include <akonadi/agenttype.h>
+#include <akonadi/agentinstancecreatejob.h>
 #include <akonadi/monitor.h>
 #include <akonadi/session.h>
 
@@ -206,6 +211,30 @@ class KCal::AkonadiCalendar::Private : public QObject
         itemsAdded( fetchjob->items(), fetchjob->collection() );
     }
 
+    void agentCreated( KJob *job )
+    {
+        kDebug();
+        Akonadi::AgentInstanceCreateJob *createjob = dynamic_cast<Akonadi::AgentInstanceCreateJob*>( job );
+        if ( createjob->error() ) {
+            kWarning( 5250 ) << "Agent create failed:" << createjob->errorString();
+            emit q->signalErrorMessage( createjob->errorString() );
+            return;
+        }
+        Akonadi::AgentInstance instance = createjob->instance();
+        //instance.setName( CalendarName );
+        QDBusInterface iface("org.freedesktop.Akonadi.Resource." + instance.identifier(), "/Settings");
+        if( ! iface.isValid() ) {
+            kWarning( 5250 ) << "Failed to obtain D-Bus interface for remote configuration.";
+            emit q->signalErrorMessage( "Failed to obtain D-Bus interface for remote configuration." );
+            Q_ASSERT(false);
+            return;
+        }
+        QString path = createjob->property("path").toString();
+        Q_ASSERT( ! path.isEmpty() );
+        iface.call("setPath", path);
+        instance.reconfigure();
+    }
+
     void createDone( KJob *job )
     {
         kDebug();
@@ -309,7 +338,9 @@ class KCal::AkonadiCalendar::Private : public QObject
     {
         kDebug();
         Q_ASSERT( item.isValid() );
-        itemsAdded( Akonadi::Item::List() << item, collection );
+        Q_ASSERT( item.hasPayload() );
+        if( ! m_itemMap.contains( item.payload<KCal::Incidence::Ptr>()->uid() ) )
+          itemsAdded( Akonadi::Item::List() << item, collection );
     }
 
     void itemsRemoved( const Akonadi::Item::List &items, const Akonadi::Collection &collection ) {

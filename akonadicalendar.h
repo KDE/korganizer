@@ -47,6 +47,7 @@ class KCAL_EXPORT AkonadiCalendar : public Calendar
     bool save();
     void close();
 
+    bool addAgent( const KUrl &mUrl );
     bool addIncidence( Incidence *incidence );
     bool deleteIncidence( Incidence *incidence );
     void incidenceUpdated( IncidenceBase *incidenceBase );

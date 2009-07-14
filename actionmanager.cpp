@@ -1030,10 +1030,11 @@ bool ActionManager::addResource( const KUrl &mUrl )
     QString msg = i18n( "Unable to create calendar '%1'.", name );
     KMessageBox::error( dialogParent(), msg );
   }
-#else
-  kWarning()<<"TODO";
-#endif
   return true;
+#else
+  AkonadiCalendar *cr = KOrg::StdCalendar::self();
+  return cr->addAgent(mUrl);
+#endif
 }
 
 void ActionManager::showStatusMessageOpen( const KUrl &url, bool merge )
