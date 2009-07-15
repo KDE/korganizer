@@ -313,8 +313,10 @@ QModelIndex KOTodoModel::addTodo( const QString &summary,
     todo->setOrganizer( Person( KOPrefs::instance()->fullName(),
                                 KOPrefs::instance()->email() ) );
     if ( parent.isValid() ) {
-      todo->setRelatedTo(
-              static_cast<TodoTreeNode *>( parent.internalPointer() )->mTodo );
+      TodoTreeNode *node = static_cast<TodoTreeNode *>( parent.internalPointer() );
+      if ( node->isValid() ) {
+        todo->setRelatedTo( node->mTodo );
+      }
     }
 
     if ( !mChanger->addIncidence( todo ) ) {
@@ -336,6 +338,10 @@ void KOTodoModel::copyTodo( const QModelIndex &index, const QDate &date )
   }
 
   TodoTreeNode *node = static_cast<TodoTreeNode *>( index.internalPointer() );
+  if ( !node->isValid() ) {
+    return;
+  }
+
   Todo *todo = node->mTodo->clone();
 
   todo->setUid( CalFormat::createUniqueId() );
@@ -485,7 +491,7 @@ KOTodoModel::TodoTreeNode *KOTodoModel::insertTodo( Todo *todo,
   if ( !mFlatView && checkRelated &&
        incidence && incidence->type() == "Todo" ) {
     // Use static_cast, checked for type already
-    Todo *relatedTodo = static_cast<Todo *>(incidence);
+    Todo *relatedTodo = static_cast<Todo *>( incidence );
 
     // check if there are recursively linked todos
 
@@ -595,7 +601,11 @@ QModelIndex KOTodoModel::index( int row, int column,
     return createIndex( row, column, mRootNode->childAt( row ) );
   } else {
     TodoTreeNode *node = static_cast<TodoTreeNode *>( parent.internalPointer() );
-    return createIndex( row, column, node->childAt( row ) );
+    if ( node->isValid() ) {
+      return createIndex( row, column, node->childAt( row ) );
+    } else {
+      return QModelIndex();
+    }
   }
 }
 
@@ -627,10 +637,11 @@ int KOTodoModel::rowCount( const QModelIndex &parent ) const
   if ( parent.column() == 0 ) {
     // only items in the first column have children
     TodoTreeNode *node = static_cast<TodoTreeNode *>( parent.internalPointer() );
-    return node->childrenCount();
-  } else {
-    return 0;
+    if ( node->isValid() ) {
+      return node->childrenCount();
+    }
   }
+  return 0;
 }
 
 QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
@@ -809,7 +820,11 @@ bool KOTodoModel::setData( const QModelIndex &index, const QVariant &value, int 
     return false;
   }
 
-  Todo *todo = static_cast<TodoTreeNode *>( index.internalPointer() )->mTodo;
+  TodoTreeNode *node = static_cast<TodoTreeNode *>( index.internalPointer() );
+  if ( !node->isValid() ) {
+    return false;
+  }
+  Todo *todo = node->mTodo;
 
   if ( !todo->isReadOnly() && mChanger->beginChange( todo ) ) {
     Todo *oldTodo = todo->clone();
@@ -898,10 +913,11 @@ QStringList KOTodoModel::mimeTypes() const
 QMimeData *KOTodoModel::mimeData( const QModelIndexList &indexes ) const
 {
   Q_FOREACH ( const QModelIndex &index, indexes ) {
-    Todo *todo = static_cast<TodoTreeNode *>( index.internalPointer() )->mTodo;
-
-    return mDndFactory->createMimeData( todo );
-
+    TodoTreeNode *node = static_cast<TodoTreeNode *>( index.internalPointer() );
+    if ( node->isValid() ) {
+      Todo *todo = node->mTodo;
+      return mDndFactory->createMimeData( todo );
+    }
    //TODO implement dragging of more than one element
   }
 
@@ -935,7 +951,10 @@ bool KOTodoModel::dropMimeData( const QMimeData *data, Qt::DropAction action,
 
       Todo *destTodo = 0;
       if ( parent.isValid() ) {
-        destTodo = static_cast<TodoTreeNode *>( parent.internalPointer() )->mTodo;
+        TodoTreeNode *node = static_cast<TodoTreeNode *>( parent.internalPointer() );
+        if ( node->isValid() ) {
+          destTodo = node->mTodo;
+        }
       }
 
       Incidence *tmp = destTodo;
@@ -972,7 +991,8 @@ bool KOTodoModel::dropMimeData( const QMimeData *data, Qt::DropAction action,
         return false;
       }
 
-      Todo *destTodo = static_cast<TodoTreeNode *>( parent.internalPointer() )->mTodo;
+      TodoTreeNode *node = static_cast<TodoTreeNode *>( parent.internalPointer() );
+      Todo *destTodo = node->mTodo;
 
       if ( data->hasText() ) {
         QString text = data->text();
