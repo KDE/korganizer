@@ -30,6 +30,8 @@
 #include "alarmdockwindow.h"
 #include "korgacadaptor.h"
 
+#include "akonadicalendar.h"
+
 #include <KCal/CalendarResources>
 using namespace KCal;
 
@@ -59,11 +61,9 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
   }
 
   const KTimeZone zone = KSystemTimeZones::local();
-  mCalendar = new CalendarResources( zone.isValid() ?
-                                     KDateTime::Spec( zone ) :
-                                     KDateTime::ClockTime );
-  mCalendar->readConfig();
-  mCalendar->load();
+  mCalendar = new AkonadiCalendar( zone.isValid() ? KDateTime::Spec( zone ) : KDateTime::ClockTime );
+  //mCalendar->readConfig();
+  //mCalendar->load();
 
   connect( &mCheckTimer, SIGNAL(timeout()), SLOT(checkAlarms()) );
 
