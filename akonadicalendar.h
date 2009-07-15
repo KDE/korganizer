@@ -26,6 +26,7 @@
 
 namespace Akonadi {
   class Collection;
+  class Item;
 }
 
 namespace KCal {
@@ -42,6 +43,8 @@ class KCAL_EXPORT AkonadiCalendar : public Calendar
     bool hasCollection( const Akonadi::Collection &collection ) const;
     void addCollection( const Akonadi::Collection &collection );
     void removeCollection( const Akonadi::Collection &collection );
+
+    Akonadi::Item itemForIncidence(Incidence *incidence) const;
 
     bool reload();
     bool save();

@@ -63,6 +63,9 @@ using namespace KHolidays;
 #include <QTreeWidget>
 #include <QVBoxLayout>
 
+#include <akonadi/collectionfilterproxymodel.h>
+#include <akonadi/collectionmodel.h>
+
 KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *parent )
   : KPrefsModule( KOPrefs::instance(), inst, parent )
 {
@@ -801,6 +804,12 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
   connect( mResourceCombo, SIGNAL(activated(int)), SLOT(updateResourceColor()) );
   resourceLayout->addWidget( mResourceCombo );
 
+  Akonadi::CollectionModel *collectionmodel = new Akonadi::CollectionModel( this );
+  Akonadi::CollectionFilterProxyModel *collectionproxymodel = new Akonadi::CollectionFilterProxyModel( this );
+  collectionproxymodel->setSourceModel( collectionmodel );
+  collectionproxymodel->addMimeTypeFilter( QString::fromLatin1( "text/calendar" ) );
+  mResourceCombo->setModel( collectionproxymodel );
+
   mResourceButton = new KColorButton( resourceGroup );
   mResourceButton->setWhatsThis(
     i18nc( "@info:whatsthis",
@@ -809,7 +818,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
   connect( mResourceButton, SIGNAL(changed(const QColor &)), SLOT(setResourceColor()) );
   resourceLayout->addWidget( mResourceButton );
 
-  updateResources();
+  connect(collectionmodel, SIGNAL(listDone()), SLOT(updateResources()));
 
   colorLayout->setRowStretch( 10, 1 );
 
@@ -904,52 +913,31 @@ void KOPrefsDialogColorsAndFonts::updateCategoryColor()
 
 void KOPrefsDialogColorsAndFonts::updateResources()
 {
-  mResourceCombo->clear();
-  mResourceIdentifier.clear();
-
-#if 0 //sebsauer
-  KCal::CalendarResourceManager *manager = KOrg::StdCalendar::self()->resourceManager();
-
-  KCal::CalendarResourceManager::Iterator it;
-  for ( it = manager->begin(); it != manager->end(); ++it ) {
-    if ( !(*it)->subresources().isEmpty() ) {
-      QStringList subresources = (*it)->subresources();
-      for ( int i = 0; i < subresources.count(); ++i ) {
-        QString resource = subresources.at( i );
-        if ( (*it)->subresourceActive( resource ) ) {
-          mResourceCombo->addItem( (*it)->labelForSubresource( resource ) );
-          mResourceIdentifier.append( resource );
-        }
-      }
-    }
-
-    mResourceCombo->addItem( (*it)->resourceName() );
-    mResourceIdentifier.append( (*it)->identifier() );
-  }
-#else
-  kWarning()<<"TODO";
-#endif
   updateResourceColor();
 }
 
 void KOPrefsDialogColorsAndFonts::setResourceColor()
 {
-  mResourceDict.insert( mResourceIdentifier[mResourceCombo->currentIndex()],
-                        mResourceButton->color() );
+  bool ok;
+  QString id = QString::number( mResourceCombo->itemData(mResourceCombo->currentIndex(), Akonadi::CollectionModel::CollectionIdRole).toLongLong(&ok) );
+  if( ! ok ) return;
+  mResourceDict.insert( id, mResourceButton->color() );
   slotWidChanged();
 }
 
 void KOPrefsDialogColorsAndFonts::updateResourceColor()
 {
-  QString res = mResourceIdentifier[mResourceCombo->currentIndex()];
-  QColor color = mCategoryDict.value( res );
-  if ( !color.isValid() )  {
-    color = KOPrefs::instance()->resourceColor( res );
-  }
-  if ( color.isValid() ) {
+  bool ok;
+  QString id = QString::number( mResourceCombo->itemData(mResourceCombo->currentIndex(), Akonadi::CollectionModel::CollectionIdRole).toLongLong(&ok) );
+  if( ! ok ) return;
+  kDebug()<<id<<mResourceCombo->itemText(mResourceCombo->currentIndex());
+  QColor color = mResourceDict.value( id );
+  if( ! color.isValid() )
+    color = KOPrefs::instance()->resourceColor( id );
+  if( color.isValid() )
     mResourceButton->setColor( color );
-  }
 }
+
 extern "C"
 {
   KDE_EXPORT KCModule *create_korganizerconfigcolorsandfonts( QWidget *parent, const char * )

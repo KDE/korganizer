@@ -104,6 +104,16 @@ void AkonadiCalendar::removeCollection( const Akonadi::Collection &collection )
   emit calendarChanged();
 }
 
+Akonadi::Item AkonadiCalendar::itemForIncidence(Incidence *incidence) const
+{
+  const QString uid = incidence->uid();
+  kDebug()<<uid;  
+  if( ! d->m_itemMap.contains( uid ) )
+    return Akonadi::Item();
+  AkonadiCalendarItem *aci = d->m_itemMap[ uid ];
+  return aci->m_item;
+}
+
 bool AkonadiCalendar::reload()
 {
   kDebug();
