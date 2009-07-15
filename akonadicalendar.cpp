@@ -31,20 +31,6 @@
 
 using namespace KCal;
 
-#if 0
-namespace {
-template <typename T> void removeIncidenceFromMultiHashByUID( QMultiHash< QString, T >& container, const QString &key, const QString &uid )
-{
-  const QList<T> values = container.values( key );
-  QListIterator<T> it(values);
-  while ( it.hasNext() ) {
-    T const inc = it.next();
-    if ( inc->uid() == uid ) container.remove( key, inc );
-  }
-}
-}
-#endif
-
 AkonadiCalendar::AkonadiCalendar( const KDateTime::Spec &timeSpec )
   : KCal::Calendar( timeSpec )
   , d( new AkonadiCalendar::Private(this) )
@@ -133,15 +119,10 @@ bool AkonadiCalendar::save()
 {
   kDebug();
 #if 0
-  if ( d->mFileName.isEmpty() ) {
-    return false;
-  }
-  if ( isModified() ) {
-    FileStorage storage( this, d->mFileName, d->mFormat );
-    return storage.save();
-  } else {
-    return true;
-  }
+  if ( d->mFileName.isEmpty() ) return false;
+  if ( ! isModified() ) return true;
+  FileStorage storage( this, d->mFileName, d->mFormat );
+  return storage.save();
 #else
   return true;
 #endif
@@ -150,8 +131,8 @@ bool AkonadiCalendar::save()
 void AkonadiCalendar::close()
 {
   kDebug();
-#if 0
   setObserversEnabled( false );
+#if 0
   d->mFileName.clear();
   deleteAllEvents();
   deleteAllTodos();
@@ -159,16 +140,14 @@ void AkonadiCalendar::close()
   d->mDeletedIncidences.clearAll();
 #endif
   setModified( false );
-#if 0
   setObserversEnabled( true );
-#endif
 }
 
 bool AkonadiCalendar::addAgent( const KUrl &mUrl )
 {
   kDebug()<<mUrl;
   Akonadi::AgentType type = Akonadi::AgentManager::self()->type( "akonadi_ical_resource" );
-  Akonadi::AgentInstanceCreateJob *job = new Akonadi::AgentInstanceCreateJob( type );
+  Akonadi::AgentInstanceCreateJob *job = new Akonadi::AgentInstanceCreateJob( type, d->m_session );
   job->setProperty("path", mUrl.path());
   connect( job, SIGNAL( result( KJob * ) ), d, SLOT( agentCreated( KJob * ) ) );
   job->start();
@@ -201,22 +180,19 @@ void AkonadiCalendar::incidenceUpdated( IncidenceBase *incidence )
 #if 0
   if ( incidence->type() == "Event" ) {
     Event *event = static_cast<Event*>( incidence );
-    removeIncidenceFromMultiHashByUID<Event *>(
-      d->mEventsForDate, event->dtStart().date().toString(), event->uid() );
+    removeIncidenceFromMultiHashByUID<Event *>( d->mEventsForDate, event->dtStart().date().toString(), event->uid() );
     if ( !event->recurs() && !event->isMultiDay() ) {
       d->mEventsForDate.insert( event->dtStart().date().toString(), event );
     }
   } else if ( incidence->type() == "Todo" ) {
     Todo *todo = static_cast<Todo*>( incidence );
-    removeIncidenceFromMultiHashByUID<Todo *>(
-      d->mTodosForDate, todo->dtDue().date().toString(), todo->uid() );
+    removeIncidenceFromMultiHashByUID<Todo *>( d->mTodosForDate, todo->dtDue().date().toString(), todo->uid() );
     if ( todo->hasDueDate() ) {
       d->mTodosForDate.insert( todo->dtDue().date().toString(), todo );
     }
   } else if ( incidence->type() == "Journal" ) {
     Journal *journal = static_cast<Journal*>( incidence );
-    removeIncidenceFromMultiHashByUID<Journal *>(
-      d->mJournalsForDate, journal->dtStart().date().toString(), journal->uid() );
+    removeIncidenceFromMultiHashByUID<Journal *>( d->mJournalsForDate, journal->dtStart().date().toString(), journal->uid() );
     d->mJournalsForDate.insert( journal->dtStart().date().toString(), journal );
   } else {
     Q_ASSERT( false );
@@ -257,31 +233,10 @@ bool AkonadiCalendar::deleteEvent( Event *event )
   /*
   d->mDeletedIncidences.append( event );
   if ( !event->recurs() ) {
-    removeIncidenceFromMultiHashByUID<Event *>(
-      d->mEventsForDate, event->dtStart().date().toString(), event->uid() );
+    removeIncidenceFromMultiHashByUID<Event *>( d->mEventsForDate, event->dtStart().date().toString(), event->uid() );
   }
   */
   return d->deleteIncidence(event);
-}
-
-// hmmm...
-void AkonadiCalendar::deleteAllEvents()
-{
-  kDebug();
-  Q_ASSERT(false);
-#if 0
-  QHashIterator<QString, Event *>i( d->mEvents );
-  while ( i.hasNext() ) {
-    i.next();
-    notifyIncidenceDeleted( i.value() );
-    // suppress update notifications for the relation removal triggered
-    // by the following deletions
-    i.value()->startUpdates();
-  }
-  qDeleteAll( d->mEvents );
-  d->mEvents.clear();
-  d->mEventsForDate.clear();
-#endif
 }
 
 Event *AkonadiCalendar::event( const QString &uid )
@@ -321,8 +276,7 @@ bool AkonadiCalendar::deleteTodo( Todo *todo )
     notifyIncidenceDeleted( todo );
     d->mDeletedIncidences.append( todo );
     if ( todo->hasDueDate() ) {
-      removeIncidenceFromMultiHashByUID<Todo *>(
-        d->mTodosForDate, todo->dtDue().date().toString(), todo->uid() );
+      removeIncidenceFromMultiHashByUID<Todo *>( d->mTodosForDate, todo->dtDue().date().toString(), todo->uid() );
     }
     return true;
   } else {
@@ -331,25 +285,6 @@ bool AkonadiCalendar::deleteTodo( Todo *todo )
   }
   */
   return d->deleteIncidence(todo);
-}
-
-void AkonadiCalendar::deleteAllTodos()
-{
-  kDebug();
-  Q_ASSERT(false);
-#if 0
-  QHashIterator<QString, Todo *>i( d->mTodos );
-  while ( i.hasNext() ) {
-    i.next();
-    notifyIncidenceDeleted( i.value() );
-    // suppress update notifications for the relation removal triggered
-    // by the following deletions
-    i.value()->startUpdates();
-  }
-  qDeleteAll( d->mTodos );
-  d->mTodos.clear();
-  d->mTodosForDate.clear();
-#endif
 }
 
 Todo *AkonadiCalendar::todo( const QString &uid )
@@ -416,11 +351,7 @@ Alarm::List AkonadiCalendar::alarms( const KDateTime &from, const KDateTime &to 
   while ( ie.hasNext() ) {
     ie.next();
     e = ie.value();
-    if ( e->recurs() ) {
-      appendRecurringAlarms( alarmList, e, from, to );
-    } else {
-      appendAlarms( alarmList, e, from, to );
-    }
+    if ( e->recurs() ) appendRecurringAlarms( alarmList, e, from, to ); else appendAlarms( alarmList, e, from, to );
   }
 
   QHashIterator<QString, Todo *>it( d->mTodos );
@@ -428,9 +359,7 @@ Alarm::List AkonadiCalendar::alarms( const KDateTime &from, const KDateTime &to 
   while ( it.hasNext() ) {
     it.next();
     t = it.value();
-    if (! t->isCompleted() ) {
-      appendAlarms( alarmList, t, from, to );
-    }
+    if (! t->isCompleted() ) appendAlarms( alarmList, t, from, to );
   }
 #endif
   return alarmList;
@@ -451,11 +380,7 @@ Event::List AkonadiCalendar::rawEventsForDate( const QDate &date, const KDateTim
   while ( it != d->mEventsForDate.constEnd() && it.key() == dateStr ) {
     ev = it.value();
     KDateTime end( ev->dtEnd().toTimeSpec( ev->dtStart() ) );
-    if ( ev->allDay() ) {
-      end.setDateOnly( true );
-    } else {
-      end = end.addSecs( -1 );
-    }
+    if ( ev->allDay() ) end.setDateOnly( true ); else end = end.addSecs( -1 );
     if ( end >= kdt ) eventList.append( ev );
     ++it;
   }
@@ -569,8 +494,7 @@ bool AkonadiCalendar::deleteJournal( Journal *journal )
     setModified( true );
     notifyIncidenceDeleted( journal );
     d->mDeletedIncidences.append( journal );
-    removeIncidenceFromMultiHashByUID<Journal *>(
-      d->mJournalsForDate, journal->dtStart().date().toString(), journal->uid() );
+    removeIncidenceFromMultiHashByUID<Journal *>( d->mJournalsForDate, journal->dtStart().date().toString(), journal->uid() );
     return true;
   } else {
     kWarning() << "AkonadiCalendar::deleteJournal(): Journal not found.";
@@ -578,25 +502,6 @@ bool AkonadiCalendar::deleteJournal( Journal *journal )
   }
   */
   return d->deleteIncidence(journal);
-}
-
-void AkonadiCalendar::deleteAllJournals()
-{
-  kDebug();
-  Q_ASSERT(false);
-#if 0
-  QHashIterator<QString, Journal *>i( d->mJournals );
-  while ( i.hasNext() ) {
-    i.next();
-    notifyIncidenceDeleted( i.value() );
-    // suppress update notifications for the relation removal triggered
-    // by the following deletions
-    i.value()->startUpdates();
-  }
-  qDeleteAll( d->mJournals );
-  d->mJournals.clear();
-  d->mJournalsForDate.clear();
-#endif
 }
 
 Journal *AkonadiCalendar::journal( const QString &uid )

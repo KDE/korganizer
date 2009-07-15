@@ -158,7 +158,7 @@ class KCal::AkonadiCalendar::Private : public QObject
       item.setMimeType( QString("application/x-vnd.akonadi.calendar.%1").arg(QString(incidence->type().toLower())) );
       KCal::Incidence::Ptr incidencePtr( incidence ); //no clone() needed
       item.setPayload<KCal::Incidence::Ptr>( incidencePtr );
-      Akonadi::ItemCreateJob *job = new Akonadi::ItemCreateJob( item, collection );
+      Akonadi::ItemCreateJob *job = new Akonadi::ItemCreateJob( item, collection, m_session );
       connect( job, SIGNAL( result( KJob* ) ), this, SLOT( createDone( KJob* ) ) );
       return true;
     }
@@ -242,8 +242,8 @@ class KCal::AkonadiCalendar::Private : public QObject
             emit q->signalErrorMessage( job->errorString() );
             return;
         }
-        //Akonadi::ItemCreateJob *createjob = static_cast<Akonadi::ItemCreateJob*>( job );
-        //itemAdded( createjob->item(), createjob->collection() ); //done by the monitor
+        Akonadi::ItemCreateJob *createjob = static_cast<Akonadi::ItemCreateJob*>( job );
+        itemAdded( createjob->item(), createjob->collection() );
     }
 
     void deleteDone( KJob *job )
@@ -254,13 +254,12 @@ class KCal::AkonadiCalendar::Private : public QObject
             emit q->signalErrorMessage( job->errorString() );
             return;
         }
-        //Akonadi::ItemDeleteJob *deletejob = static_cast<Akonadi::ItemDeleteJob*>( job );
-        //itemsRemoved( deletejob->items(), deletejob->collection() ); //done by the monitor
+        Akonadi::ItemDeleteJob *deletejob = static_cast<Akonadi::ItemDeleteJob*>( job );
+        itemsRemoved( deletejob->items(), deletejob->collection() );
     }
 
     void modifyDone( KJob *job )
     {
-        kDebug();
         Akonadi::ItemModifyJob *modifyjob = static_cast<Akonadi::ItemModifyJob*>( job );
         if ( modifyjob->error() ) {
             kWarning( 5250 ) << "Item modify failed:" << job->errorString();
@@ -273,9 +272,9 @@ class KCal::AkonadiCalendar::Private : public QObject
         const KCal::Incidence::Ptr incidence = item.payload<KCal::Incidence::Ptr>();
         Q_ASSERT( incidence );
         const QString uid = incidence->uid();
+        kDebug() << "Item modify done uid=" << uid;
         Q_ASSERT( m_itemMap.contains(uid) );
         m_itemMap[uid]->m_item = item;
-
         q->notifyIncidenceChanged( incidence.get() );
         q->setModified( true );
         emit q->calendarChanged();
@@ -283,26 +282,17 @@ class KCal::AkonadiCalendar::Private : public QObject
 
     void itemChanged( const Akonadi::Item& item, const QSet<QByteArray>& )
     {
-        kDebug()<<"TODO";
-#if 0
-        int row = rowForItem( item );
-        if ( row < 0 ) return;
-        items[ row ]->item = item;
-        itemHash.remove( item );
-        itemHash[ item ] = items[ row ];
-        QModelIndex start = mParent->index( row, 0, QModelIndex() );
-        QModelIndex end = mParent->index( row, mParent->columnCount( QModelIndex() ) - 1 , QModelIndex() );
-        mParent->dataChanged( start, end );
-#endif
         Q_ASSERT( item.isValid() );
         Q_ASSERT( item.hasPayload() );
         Q_ASSERT( item.hasPayload<KCal::Incidence::Ptr>() );
         const KCal::Incidence::Ptr incidence = item.payload<KCal::Incidence::Ptr>();
         Q_ASSERT( incidence );
-        AkonadiCalendarItem *ci = m_itemMap.take( incidence->uid() );
-        kDebug() << "Updating uid=" << incidence->uid() << "summary=" << incidence->summary() << "type=" << incidence->type();
-        delete ci;
-        m_itemMap[ incidence->uid() ] = new AkonadiCalendarItem(q, item);
+        const QString uid = incidence->uid();
+        kDebug() << "Item changed uid=" << uid << "summary=" << incidence->summary() << "type=" << incidence->type();
+        Q_ASSERT( m_itemMap.contains(uid) );
+        m_itemMap[uid]->m_item = item;
+        q->notifyIncidenceChanged( incidence.get() );
+        q->setModified( true );
         emit q->calendarChanged();
     }
 

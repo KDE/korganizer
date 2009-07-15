@@ -46,9 +46,9 @@ class KCAL_EXPORT AkonadiCalendar : public Calendar
 
     Akonadi::Item itemForIncidence(Incidence *incidence) const;
 
-    bool reload();
-    bool save();
-    void close();
+    bool reload(); //TODO remove, atm abstract in Calendar
+    bool save(); //TODO remove, atm abstract in Calendar
+    void close(); //TODO remove, atm abstract in Calendar
 
     bool addAgent( const KUrl &mUrl );
     bool addIncidence( Incidence *incidence );
@@ -57,7 +57,7 @@ class KCAL_EXPORT AkonadiCalendar : public Calendar
 
     bool addEvent( Event *event );
     bool deleteEvent( Event *event );
-    void deleteAllEvents();
+    void deleteAllEvents() { Q_ASSERT(false); } //TODO remove, atm abstract in Calendar
 
     Event::List rawEvents( EventSortField sortField = EventSortUnsorted, SortDirection sortDirection = SortDirectionAscending );
     Event::List rawEvents( const QDate &start, const QDate &end, const KDateTime::Spec &timeSpec = KDateTime::Spec(), bool inclusive = false );
@@ -68,7 +68,7 @@ class KCAL_EXPORT AkonadiCalendar : public Calendar
 
     bool addTodo( Todo *todo );
     bool deleteTodo( Todo *todo );
-    void deleteAllTodos();
+    void deleteAllTodos() { Q_ASSERT(false); } //TODO remove, atm abstract in Calendar
 
     Todo::List rawTodos( TodoSortField sortField = TodoSortUnsorted, SortDirection sortDirection = SortDirectionAscending );
     Todo::List rawTodosForDate( const QDate &date );
@@ -77,7 +77,7 @@ class KCAL_EXPORT AkonadiCalendar : public Calendar
 
     bool addJournal( Journal *journal );
     bool deleteJournal( Journal *journal );
-    void deleteAllJournals();
+    void deleteAllJournals() { Q_ASSERT(false); } //TODO remove, atm abstract in Calendar
 
     Journal::List rawJournals( JournalSortField sortField = JournalSortUnsorted, SortDirection sortDirection = SortDirectionAscending );
     Journal::List rawJournalsForDate( const QDate &date );
