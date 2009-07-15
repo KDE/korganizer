@@ -1106,12 +1106,15 @@ void KOAgenda::endItemAction()
         placeItem = placeItem->nextMultiItem();
       }
 
+      mChanger->endChange( inc );
+
       // Notify about change
       // the agenda view will apply the changes to the actual Incidence*!
       emit itemModified( modif );
+    } else {
+      // FIXME: If the change failed, we need to update the view!
+      mChanger->endChange( inc );
     }
-    // FIXME: If the change failed, we need to update the view!
-    mChanger->endChange( inc );
   }
 
   mActionItem = 0;
