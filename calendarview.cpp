@@ -890,7 +890,8 @@ void CalendarView::edit_paste()
   }
 
   if ( !date.isValid() ) {
-    //TODO: KMessageBox::sorry( "cannot paste" )
+    KMessageBox::sorry( this,
+                        i18n( "Paste failed: unable to determine a valid target date." ) );
     return;
   }
 
