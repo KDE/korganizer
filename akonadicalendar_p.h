@@ -273,13 +273,11 @@ class KCal::AkonadiCalendar::Private : public QObject
         const KCal::Incidence::Ptr incidence = item.payload<KCal::Incidence::Ptr>();
         Q_ASSERT( incidence );
         const QString uid = incidence->uid();
+        Q_ASSERT( m_itemMap.contains(uid) );
+        m_itemMap[uid]->m_item = item;
 
-        kDebug() << "Old incidence: " << uid;
-        AkonadiCalendarItem *ci = m_itemMap.take(uid);
-        Q_ASSERT( ci->incidence().get() == incidence.get() );
-        delete ci;
-        m_itemMap[ incidence->uid() ] = new AkonadiCalendarItem(q, item);
-
+        q->notifyIncidenceChanged( incidence.get() );
+        q->setModified( true );
         emit q->calendarChanged();
     }
 
