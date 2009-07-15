@@ -53,6 +53,10 @@ SearchDialog::SearchDialog(Calendar *calendar,QWidget *parent)
   setupUi( mainwidget );
   setMainWidget( mainwidget );
 
+  // Set nice initial start and end dates for the search
+  mStartDate->setDate( QDate::currentDate() );
+  mEndDate->setDate( QDate::currentDate().addYears( 1 ) );
+
   connect( mSearchEdit, SIGNAL( textChanged( const QString & ) ),
            this, SLOT( searchTextChanged( const QString & ) ) );
 
