@@ -363,9 +363,9 @@ void KOEditorAlarms::writeAlarm( KCal::Alarm *alarm )
   }
 
   if ( mWidget.mTypeSoundRadio->isChecked() ) { // Audio
-    alarm->setAudioAlarm( mWidget.mSoundFile->url().path() );
+    alarm->setAudioAlarm( mWidget.mSoundFile->url().toLocalFile() );
   } else if ( mWidget.mTypeAppRadio->isChecked() ) { // Procedure
-    alarm->setProcedureAlarm( mWidget.mApplication->url().path(),
+    alarm->setProcedureAlarm( mWidget.mApplication->url().toLocalFile(),
                               mWidget.mAppArguments->text() );
   } else if ( mWidget.mTypeEmailRadio->isChecked() ) { // Email
     QStringList addresses = KPIMUtils::splitAddressList( mWidget.mEmailAddress->text() );

@@ -64,7 +64,7 @@ StdCalendar::StdCalendar()
         kDebug() << "Local resource at" << url;
         defaultResource = manager->createResource( "file" );
         if ( defaultResource )
-          defaultResource->setValue( "File", url.path() );
+          defaultResource->setValue( "File", url.toLocalFile() );
       } else {
         kDebug() << "Remote Resource at" << url;
         defaultResource = manager->createResource( "remote" );
