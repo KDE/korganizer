@@ -26,43 +26,41 @@
 #ifndef SEARCHDIALOG_H
 #define SEARCHDIALOG_H
 
-#include <QRegExp>
-
-#include <kdialog.h>
-
-#include <kcal/incidence.h>
 #include "ui_searchdialog_base.h"
+#include <KCal/Incidence>
+#include <KDialog>
 
 namespace KCal {
-class Calendar;
+  class Calendar;
 }
-class KOListView;
-
 using namespace KCal;
+
+class KOListView;
+class QRegExp;
 
 class SearchDialog : public KDialog, private Ui::SearchDialog
 {
   Q_OBJECT
   public:
-    explicit SearchDialog( Calendar *calendar,QWidget *parent =0 );
+    explicit SearchDialog( Calendar *calendar, QWidget *parent=0 );
     virtual ~SearchDialog();
 
     void updateView();
 
   public slots:
-    void changeIncidenceDisplay(Incidence *, int) { updateView(); }
+    void changeIncidenceDisplay( Incidence *, int ) { updateView(); }
 
   protected slots:
     void doSearch();
     void searchTextChanged( const QString &_text );
 
   signals:
-    void showIncidenceSignal(Incidence *);
-    void editIncidenceSignal(Incidence *);
-    void deleteIncidenceSignal(Incidence *);
+    void showIncidenceSignal( Incidence * );
+    void editIncidenceSignal( Incidence * );
+    void deleteIncidenceSignal( Incidence * );
 
   private:
-    void search(const QRegExp &);
+    void search( const QRegExp & );
 
     Calendar *mCalendar;
 
