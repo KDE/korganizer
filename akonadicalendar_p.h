@@ -74,7 +74,7 @@ class AkonadiCalendarItem : public QObject
     Q_OBJECT
   public:
     AkonadiCalendar *m_calendar;
-    Akonadi::Item m_item;
+    Akonadi::Item m_item; //needed to keep an instance to increment shared_ptr ref-counter
 
     AkonadiCalendarItem(AkonadiCalendar *calendar, const Akonadi::Item &item)
       : QObject()
@@ -165,6 +165,7 @@ class KCal::AkonadiCalendar::Private : public QObject
 
     bool deleteIncidence( Incidence *incidence )
     {
+      m_changes.removeAll( incidence->uid() ); //abort changes to this incidence cause we will just delete it
       Q_ASSERT( m_itemMap.contains( incidence->uid() ) );
       Akonadi::Item item = m_itemMap[ incidence->uid() ]->m_item;
       Q_ASSERT( item.isValid() );
@@ -190,12 +191,9 @@ class KCal::AkonadiCalendar::Private : public QObject
     Akonadi::Monitor *m_monitor;
     Akonadi::Session *m_session;
 
-    //keep instance to increment shared_ptr ref-counter
-    //Akonadi::Item::List m_items;
-    //QMap<Incidence*,Akonadi::Item> m_map;
-    //QList<AkonadiCalendarCollection*> m_collectionList;
     QHash<Akonadi::Entity::Id, AkonadiCalendarCollection*> m_collectionMap;
     QHash<QString, AkonadiCalendarItem*> m_itemMap; //TODO replace Incidence::uid-QString with Akonadi::Entity::Id-int
+    QList<QString> m_changes; //list of Incidence->uid() that are modified atm
 
   public Q_SLOTS:
   
@@ -336,7 +334,7 @@ class KCal::AkonadiCalendar::Private : public QObject
 
     void itemsRemoved( const Akonadi::Item::List &items, const Akonadi::Collection &collection ) {
         Q_UNUSED(collection);
-        kDebug()<<items.count();
+        //kDebug()<<items.count();
         foreach(const Akonadi::Item& item, items) {
             Q_ASSERT( item.isValid() );
             Q_ASSERT( item.hasPayload() );

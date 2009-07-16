@@ -104,26 +104,41 @@ Akonadi::Item AkonadiCalendar::itemForIncidence(Incidence *incidence) const
 
 bool AkonadiCalendar::beginChange( Incidence *incidence )
 {
-  return Calendar::beginChange( incidence );
+  if( ! Calendar::beginChange( incidence ) ) {
+    return false;
+  }
+  Q_ASSERT( ! d->m_changes.contains( incidence->uid() ) ); //no nested changes, right?
+  d->m_changes << incidence->uid();
+  return true;
 }
 
 bool AkonadiCalendar::endChange( Incidence *incidence )
 {
+  Q_ASSERT( incidence );
+  const bool isModification = d->m_changes.removeAll( incidence->uid() ) >= 1;
+  const QString uid = incidence->uid();
+
   if( ! Calendar::endChange( incidence ) ) {
+    // should not happen, but well...
+    kDebug() << "Abort modify uid=" << uid << "summary=" << incidence->summary() << "type=" << incidence->type();
     return false;
   }
-  Q_ASSERT( incidence );
 
-  //notifyIncidenceChanged( i );
-  //setModified( true );
+  if( ! isModification ) {
+    // only if beginChange() with the incidence was called then this is a modification else it
+    // is e.g. a new event/todo/journal that was not added yet or an existing one got deleted.
+    kDebug() << "Skipping modify uid=" << uid << "summary=" << incidence->summary() << "type=" << incidence->type();
+    return false;
+  }
 
-  const QString uid = incidence->uid();
+/*
   if( ! d->m_itemMap.contains( uid ) ) {
     // this can happen if we create a new event/todo/journal in which case it's not know yet...
     kDebug() << "unknown uid=" << uid << "summary=" << incidence->summary() << "type=" << incidence->type();
     return false;
   }
-//if( ! d->m_itemMap.contains( uid ) ) return true;
+*/
+Q_ASSERT( d->m_itemMap.contains( uid ) );
   Akonadi::Item item = d->m_itemMap[ uid ]->m_item;
   Q_ASSERT( item.isValid() );
   kDebug() << "modify uid=" << uid << "summary=" << incidence->summary() << "type=" << incidence->type() << "storageCollectionId=" << item.storageCollectionId();
