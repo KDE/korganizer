@@ -93,11 +93,43 @@ void AkonadiCalendar::removeCollection( const Akonadi::Collection &collection )
 Akonadi::Item AkonadiCalendar::itemForIncidence(Incidence *incidence) const
 {
   const QString uid = incidence->uid();
-  kDebug()<<uid;  
-  if( ! d->m_itemMap.contains( uid ) )
+  if( ! d->m_itemMap.contains( uid ) ) {
+    kDebug()<<"uid="<<uid<<"UNKNOWN_UID";
     return Akonadi::Item();
+  }
   AkonadiCalendarItem *aci = d->m_itemMap[ uid ];
+  kDebug()<<"uid="<<uid<<"storageCollectionId="<<aci->m_item.storageCollectionId();
   return aci->m_item;
+}
+
+bool AkonadiCalendar::beginChange( Incidence *incidence )
+{
+  return Calendar::beginChange( incidence );
+}
+
+bool AkonadiCalendar::endChange( Incidence *incidence )
+{
+  if( ! Calendar::endChange( incidence ) ) {
+    return false;
+  }
+  Q_ASSERT( incidence );
+
+  //notifyIncidenceChanged( i );
+  //setModified( true );
+
+  const QString uid = incidence->uid();
+  if( ! d->m_itemMap.contains( uid ) ) {
+    // this can happen if we create a new event/todo/journal in which case it's not know yet...
+    kDebug() << "unknown uid=" << uid << "summary=" << incidence->summary() << "type=" << incidence->type();
+    return false;
+  }
+//if( ! d->m_itemMap.contains( uid ) ) return true;
+  Akonadi::Item item = d->m_itemMap[ uid ]->m_item;
+  Q_ASSERT( item.isValid() );
+  kDebug() << "modify uid=" << uid << "summary=" << incidence->summary() << "type=" << incidence->type() << "storageCollectionId=" << item.storageCollectionId();
+  Akonadi::ItemModifyJob *job = new Akonadi::ItemModifyJob( item, d->m_session );
+  connect( job, SIGNAL( result( KJob* ) ), d, SLOT( modifyDone( KJob* ) ) );
+  return true;
 }
 
 bool AkonadiCalendar::reload()
@@ -168,10 +200,9 @@ bool AkonadiCalendar::deleteIncidence( Incidence *incidence )
   return Calendar::deleteIncidence( incidence );
 }
 
+// This method will be called probably multiple times if a series of changes where done. One finished the endChange() method got called.
 void AkonadiCalendar::incidenceUpdated( IncidenceBase *incidence )
 {
-  kDebug();
-
   KDateTime nowUTC = KDateTime::currentUtcDateTime();
   incidence->setLastModified( nowUTC );
   // we should probably update the revision number here,
@@ -197,18 +228,13 @@ void AkonadiCalendar::incidenceUpdated( IncidenceBase *incidence )
   } else {
     Q_ASSERT( false );
   }
-  // The static_cast is ok as the AkonadiCalendar only observes Incidence objects
-  notifyIncidenceChanged( static_cast<Incidence *>( incidence ) );
-  setModified( true );
 #else
   KCal::Incidence* i = dynamic_cast<KCal::Incidence*>( incidence );
   Q_ASSERT( i );
   Q_ASSERT( d->m_itemMap.contains( i->uid() ) );
-  kDebug() << "Updated uid=" << i->uid() << "summary=" << i->summary() << "type=" << i->type();
   Akonadi::Item item = d->m_itemMap[ i->uid() ]->m_item;
   Q_ASSERT( item.isValid() );
-  Akonadi::ItemModifyJob *job = new Akonadi::ItemModifyJob( item, d->m_session );
-  connect( job, SIGNAL( result( KJob* ) ), d, SLOT( modifyDone( KJob* ) ) );
+  kDebug() << "Updated uid=" << i->uid() << "summary=" << i->summary() << "type=" << i->type() << "storageCollectionId=" << item.storageCollectionId();
 #endif
 }
 

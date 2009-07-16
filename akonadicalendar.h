@@ -46,6 +46,9 @@ class KCAL_EXPORT AkonadiCalendar : public Calendar
 
     Akonadi::Item itemForIncidence(Incidence *incidence) const;
 
+    bool beginChange( Incidence *incidence );
+    bool endChange( Incidence *incidence );
+
     bool reload(); //TODO remove, atm abstract in Calendar
     bool save(); //TODO remove, atm abstract in Calendar
     void close(); //TODO remove, atm abstract in Calendar

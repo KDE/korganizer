@@ -272,8 +272,10 @@ class KCal::AkonadiCalendar::Private : public QObject
         const KCal::Incidence::Ptr incidence = item.payload<KCal::Incidence::Ptr>();
         Q_ASSERT( incidence );
         const QString uid = incidence->uid();
-        kDebug() << "Item modify done uid=" << uid;
+        //kDebug()<<"Old storageCollectionId="<<m_itemMap[uid]->m_item.storageCollectionId();
+        kDebug() << "Item modify done uid=" << uid << "storageCollectionId=" << item.storageCollectionId();
         Q_ASSERT( m_itemMap.contains(uid) );
+        Q_ASSERT( item.storageCollectionId() == m_itemMap[uid]->m_item.storageCollectionId() ); // there was once a bug that resulted in items forget there collectionId...
         m_itemMap[uid]->m_item = item;
         q->notifyIncidenceChanged( incidence.get() );
         q->setModified( true );
@@ -288,7 +290,7 @@ class KCal::AkonadiCalendar::Private : public QObject
         const KCal::Incidence::Ptr incidence = item.payload<KCal::Incidence::Ptr>();
         Q_ASSERT( incidence );
         const QString uid = incidence->uid();
-        kDebug() << "Item changed uid=" << uid << "summary=" << incidence->summary() << "type=" << incidence->type();
+        kDebug() << "Item changed uid=" << uid << "summary=" << incidence->summary() << "type=" << incidence->type() << "storageCollectionId=" << item.storageCollectionId();
         Q_ASSERT( m_itemMap.contains(uid) );
         m_itemMap[uid]->m_item = item;
         q->notifyIncidenceChanged( incidence.get() );
@@ -339,9 +341,9 @@ class KCal::AkonadiCalendar::Private : public QObject
             Q_ASSERT( item.isValid() );
             Q_ASSERT( item.hasPayload() );
             const KCal::Incidence::Ptr incidence = item.payload<KCal::Incidence::Ptr>();
+            kDebug() << "Remove uid=" << incidence->uid() << "summary=" << incidence->summary() << "type=" << incidence->type();
             q->notifyIncidenceDeleted( incidence.get() );
             AkonadiCalendarItem *ci = m_itemMap.take( incidence->uid() );
-            kDebug() << "Remove uid=" << incidence->uid() << "summary=" << incidence->summary() << "type=" << incidence->type();
             delete ci;
         }
         q->setModified( true );

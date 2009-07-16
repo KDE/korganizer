@@ -305,15 +305,15 @@ void ActionManager::initActions()
   mACollection->addAction( "downloadnewstuff", action );
   connect( action, SIGNAL(triggered(bool)), SLOT(downloadNewStuff()) );
 
-  action = new KAction( KIcon( "document-export-html" ), i18n( "Export &Web Page..." ), this );
+  action = new KAction( i18n( "Export &Web Page..." ), this );
   mACollection->addAction( "export_web", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(exportWeb()) );
 
-  action = new KAction( i18n( "&iCalendar..." ), this );
+  action = new KAction( i18n( "Export as &iCalendar..." ), this );
   mACollection->addAction( "export_icalendar", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(exportICalendar()) );
 
-  action = new KAction( i18n( "&vCalendar..." ), this );
+  action = new KAction( i18n( "Export as &vCalendar..." ), this );
   mACollection->addAction( "export_vcalendar", action );
   connect( action, SIGNAL(triggered(bool)), mCalendarView, SLOT(exportVCalendar()) );
 
