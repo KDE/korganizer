@@ -27,7 +27,7 @@
 #define SEARCHDIALOG_H
 
 #include "ui_searchdialog_base.h"
-#include <KCal/Incidence>
+#include <kcal/incidence.h>
 #include <KDialog>
 
 namespace KCal {
