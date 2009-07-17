@@ -48,7 +48,7 @@
 #include <KCal/FileStorage>
 #include <KCal/HtmlExport>
 #include <kcal/htmlexportsettings.h> //krazy:exclude=camelcase. it's generated
-#include <kmime/kmime_message.h>
+#include <KMime/KMimeMessage>
 
 #include <KAction>
 #include <KActionCollection>
