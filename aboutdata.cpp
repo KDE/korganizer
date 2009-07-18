@@ -24,8 +24,6 @@
 
 #include "aboutdata.h"
 #include "version.h"
-#include <klocale.h>
-
 using namespace KOrg;
 
 AboutData::AboutData()

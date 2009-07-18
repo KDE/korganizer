@@ -25,7 +25,7 @@
 #define KORG_ABOUTDATA_H
 
 #include "korganizer_export.h"
-#include <kaboutdata.h>
+#include <KAboutData>
 
 namespace KOrg {
 
