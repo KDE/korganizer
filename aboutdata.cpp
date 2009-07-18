@@ -36,12 +36,12 @@ AboutData::AboutData()
                 KLocalizedString(),
                 "http://korganizer.kde.org" )
 {
+  addAuthor( ki18n( "Allen Winter"),ki18n( "Maintainer" ),
+             "winter@kde.org" );
   addAuthor( ki18n( "Reinhold Kainhofer"),ki18n( "Former Maintainer" ),
              "reinhold@kainhofer.com" );
   addAuthor( ki18n( "Cornelius Schumacher"),ki18n( "Former Maintainer" ),
              "schumacher@kde.org" );
-  addAuthor( ki18n( "Allen Winter"),ki18n( "Janitorial Staff" ),
-             "winter@kde.org" );
   addAuthor( ki18n( "Preston Brown"),ki18n( "Original Author" ),
              "pbrown@kde.org" );
   addCredit( ki18n( "Richard Apodaca" ) );
