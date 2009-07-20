@@ -60,9 +60,11 @@ bool KOTodoViewSortFilterProxyModel::filterAcceptsRow(
 
   // check if one of the children is accepted, and accept this node too if so
   QModelIndex cur = sourceModel()->index( source_row, KOTodoModel::SummaryColumn, source_parent );
-  for ( int r = 0; r < cur.model()->rowCount( cur ); ++r ) {
-    if ( filterAcceptsRow( r, cur ) ) {
-      return true;
+  if ( cur.isValid() ) {
+    for ( int r = 0; r < cur.model()->rowCount( cur ); ++r ) {
+      if ( filterAcceptsRow( r, cur ) ) {
+        return true;
+      }
     }
   }
 
