@@ -66,15 +66,23 @@ class KOTodoEditor : public KOIncidenceEditor
                    bool richDescription = false );
 
     /** Edit an existing todo. */
-    void editIncidence( Incidence *incidence, Calendar* calendar );
+    void editIncidence( Incidence *incidence, Calendar *calendar );
 
     /** Set widgets to default values */
     void setDates( const QDateTime &due, bool allDay = true, Todo *relatedTodo = 0 );
 
-    /** Read event object and setup widgets accordingly */
-    void readTodo( Todo *todo, Calendar *calendar );
-    /** Write event settings to event object */
-    void writeTodo( Todo * );
+   /**
+      Read todo object and setup widgets accordingly. If tmpl is true, the
+      todo is read as template, i.e. the time and date information isn't set.
+
+      @param todo the todo from which the data should be used
+      @param tmpl If true, the todo is treated as a template, so the currently
+      set time is preserved in the editor dialog.
+    */
+    void readTodo( Todo *todo, bool tmpl = false );
+
+    /** Write To-do settings to todo object */
+    void writeTodo( Todo *todo );
 
     /** Check if the input is valid. */
     bool validateInput();
