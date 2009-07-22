@@ -305,7 +305,7 @@ void KOAttendeeEditor::readIncidence( KCal::Incidence *incidence )
   qDeleteAll( mdelAttendees );
   mdelAttendees.clear();
 
-  if ( KOPrefs::instance()->thatIsMe( incidence->organizer().email() ) ) {
+  if ( KOPrefs::instance()->thatIsMe( incidence->organizer().email() ) || incidence->organizer().isEmpty() ) {
     //TODO: make a new private method for creating the mOrganizerCombo
     //and use it here and initOrganizerWidgets() above.
     if ( !mOrganizerCombo ) {
