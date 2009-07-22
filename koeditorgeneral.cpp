@@ -30,8 +30,7 @@
 #include <libkdepim/kdateedit.h>
 #include <libkdepim/categoryselectdialog.h>
 
-#include <kcal/todo.h>
-#include <kcal/event.h>
+#include <kcal/incidence.h>
 
 #include <kglobal.h>
 #include <kdialog.h>
@@ -71,16 +70,6 @@
 #include "koeditorattachments.h"
 #include "koeditorgeneral.moc"
 
-KOEditorGeneral::KOEditorGeneral( QObject *parent )
-  : QObject( parent ), mAttachments(0)
-{
-  mAlarmList.setAutoDelete( true );
-}
-
-KOEditorGeneral::~KOEditorGeneral()
-{
-}
-
 FocusLineEdit::FocusLineEdit( QWidget *parent )
   : KLineEdit( parent ), mFirst( true )
 {
@@ -93,6 +82,17 @@ void FocusLineEdit::focusInEvent ( QFocusEvent *e )
     mFirst = false;
   }
   KLineEdit::focusInEvent( e );
+}
+
+KOEditorGeneral::KOEditorGeneral( Calendar *calendar, QObject *parent )
+  : QObject( parent ), mAttachments( 0 )
+{
+  mAlarmList.setAutoDelete( true );
+  mCalendar = calendar;
+}
+
+KOEditorGeneral::~KOEditorGeneral()
+{
 }
 
 void KOEditorGeneral::initHeader( QWidget *parent, QBoxLayout *topLayout )
@@ -113,8 +113,8 @@ void KOEditorGeneral::initHeader( QWidget *parent, QBoxLayout *topLayout )
 
   mSummaryEdit = new FocusLineEdit( parent );
   mSummaryEdit->setWhatsThis( whatsThis );
-  connect( mSummaryEdit, SIGNAL( focusReceivedSignal() ),
-           SIGNAL( focusReceivedSignal() ) );
+  connect( mSummaryEdit, SIGNAL(focusReceivedSignal()),
+           SIGNAL(focusReceivedSignal()) );
   QTimer::singleShot( 0, mSummaryEdit, SLOT(setFocus()) );
   headerLayout->addWidget( mSummaryEdit, 1, 1 );
   summaryLabel->setBuddy( mSummaryEdit );
@@ -440,7 +440,7 @@ void KOEditorGeneral::updateAlarmWidgets()
   }
 }
 
-void KOEditorGeneral::readIncidence( Incidence *incidence, Calendar *calendar )
+void KOEditorGeneral::readIncidence( Incidence *incidence )
 {
   setSummary( incidence->summary() );
   mLocationEdit->setText( incidence->location() );
@@ -576,8 +576,20 @@ void KOEditorGeneral::setDescriptionRich( bool rich )
 void KOEditorGeneral::updateAttendeeSummary( int count )
 {
   if ( count <= 0 ) {
-    mAttendeeSummaryLabel->setText( i18n( "No attendees") );
+    mAttendeeSummaryLabel->setText( i18n( "No attendees" ) );
   } else {
     mAttendeeSummaryLabel->setText( i18np( "One attendee", "%1 attendees", count ) );
   }
+}
+
+bool KOEditorGeneral::validateInput()
+{
+  // Do not permit an empty summary
+  //TODO(KDE4.3): uncomment when strings are unfrozen
+  //if (  mSummaryEdit->text().isEmpty() ) {
+  //  KMessageBox::sorry( 0, i18n( "The summary is empty." ) );
+  //  return false;
+  //}
+
+  return true;
 }

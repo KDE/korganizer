@@ -28,30 +28,27 @@
 
 #include <KLineEdit>
 
-#include <QLabel>
-#include <QFocusEvent>
-#include <QBoxLayout>
-#include <QTextList>
+class KOEditorAttachments;
 
-class QWidget;
-class QBoxLayout;
-class QLabel;
-class QCheckBox;
-class QStackedWidget;
-class QSpinBox;
-class QPushButton;
-class QToolButton;
 class KComboBox;
-class KLineEdit;
 class KToolBar;
 class KRichTextWidget;
 class KSqueezedTextLabel;
 class KUrl;
-class KOEditorAttachments;
+
+class QBoxLayout;
+class QCheckBox;
+class QFocusEvent;
+class QLabel;
+class QPushButton;
+class QSpinBox;
+class QStackedWidget;
+class QToolButton;
+class QWidget;
 
 namespace KCal {
-  class Incidence;
   class Calendar;
+  class Incidence;
 }
 using namespace KCal;
 
@@ -75,7 +72,7 @@ class KOEditorGeneral : public QObject
 {
   Q_OBJECT
   public:
-    explicit KOEditorGeneral( QObject *parent=0 );
+    explicit KOEditorGeneral( Calendar *calendar, QObject *parent=0 );
     virtual ~KOEditorGeneral();
 
     void initHeader( QWidget *parent, QBoxLayout *topLayout );
@@ -88,12 +85,13 @@ class KOEditorGeneral : public QObject
     void setDefaults( bool allDay );
 
     /** Read event object and setup widgets accordingly */
-    void readIncidence( Incidence *event, Calendar *calendar );
+    void readIncidence( Incidence *incidence );
+
     /** Write event settings to event object */
     void writeIncidence( Incidence * );
 
     /** Check if the input is valid. */
-    bool validateInput() { return true; }
+    bool validateInput();
 
     void enableAlarm( bool enable );
     void toggleAlarm( bool on );
@@ -147,6 +145,7 @@ class KOEditorGeneral : public QObject
     QCheckBox               *mRichDescription;
     KOEditorAttachments     *mAttachments;
     QStringList              mCategories;
+    Calendar                *mCalendar;
 
     enum AlarmStackPages {
       SimpleAlarmPage,
