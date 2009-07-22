@@ -85,6 +85,7 @@ ExportWebDialog::ExportWebDialog( HTMLExportSettings *settings, QWidget *parent,
   connect( this, SIGNAL( cancelClicked() ), SLOT( reject() ) );
 
   readConfig();
+  updateState();
 }
 
 ExportWebDialog::~ExportWebDialog()
@@ -139,16 +140,18 @@ void ExportWebDialog::setupGeneralPage()
   mGeneralPage = addPage( i18n("General") );
   QVBoxLayout *topLayout = new QVBoxLayout(mGeneralPage, 10);
 
-  QGroupBox *rangeGroup = new QHGroupBox( i18n("Date Range"), mGeneralPage );
-  topLayout->addWidget( rangeGroup );
-  addWidDate( mSettings->dateStartItem(), rangeGroup );
-  addWidDate( mSettings->dateEndItem(), rangeGroup );
+  mDateRangeBox = new QHGroupBox( i18n("Date Range"), mGeneralPage );
+  topLayout->addWidget( mDateRangeBox );
+  addWidDate( mSettings->dateStartItem(), mDateRangeBox );
+  addWidDate( mSettings->dateEndItem(), mDateRangeBox );
 
   QButtonGroup *typeGroup = new QVButtonGroup( i18n("View Type"), mGeneralPage );
   topLayout->addWidget( typeGroup );
 //  addWidBool( mSettings->weekViewItem(), typeGroup );
-  addWidBool( mSettings->monthViewItem(), typeGroup );
-  addWidBool( mSettings->eventViewItem(), typeGroup );
+  mMonthViewCheckBox = addWidBool( mSettings->monthViewItem(), typeGroup )->checkBox();
+  connect( mMonthViewCheckBox, SIGNAL(toggled(bool)), SLOT(updateState()) );
+  mEventListCheckBox = addWidBool( mSettings->eventViewItem(), typeGroup )->checkBox();
+  connect( mEventListCheckBox, SIGNAL(toggled(bool)), SLOT(updateState()) );
   addWidBool( mSettings->todoViewItem(), typeGroup );
 //  addWidBool( mSettings->journalViewItem(), typeGroup );
 //  addWidBool( mSettings->freeBusyViewItem(), typeGroup );
@@ -255,3 +258,11 @@ void ExportWebDialog::setupAdvancedPage()
   topLayout->addStretch(1);
 }
 */
+
+void ExportWebDialog::updateState()
+{
+  const bool exportEvents = mMonthViewCheckBox->isChecked() || mEventListCheckBox->isChecked();
+  mDateRangeBox->setEnabled( exportEvents );
+  mEventPage->setEnabled( exportEvents );
+}
+
