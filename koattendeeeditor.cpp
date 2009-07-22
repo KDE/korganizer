@@ -287,7 +287,7 @@ void KOAttendeeEditor::readEvent(KCal::Incidence * incidence)
 {
   mdelAttendees.clear();
   mnewAttendees.clear();
-  if ( KOPrefs::instance()->thatIsMe( incidence->organizer().email() ) ) {
+  if ( KOPrefs::instance()->thatIsMe( incidence->organizer().email() ) || incidence->organizer().isEmpty() ) {
     if ( !mOrganizerCombo ) {
       mOrganizerCombo = new QComboBox( mOrganizerHBox );
       fillOrganizerCombo();
