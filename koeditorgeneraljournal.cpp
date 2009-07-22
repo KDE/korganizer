@@ -53,8 +53,8 @@
 #include <QBoxLayout>
 #include <QPushButton>
 
-KOEditorGeneralJournal::KOEditorGeneralJournal( QObject *parent )
-  : KOEditorGeneral( parent )
+KOEditorGeneralJournal::KOEditorGeneralJournal( Calendar *calendar, QObject *parent )
+  : KOEditorGeneral( calendar, parent )
 {
 }
 

@@ -69,16 +69,16 @@ class KOJournalEditor : public KOIncidenceEditor
       @param summary The summary of the new journal. If description is empty
       and summary contains newlines, the summary will only be the first line
       of the string.
-      @param description The extensive contents of the new journal. If empty and
-      summary contains line breaks, the summary will be used as description and
-      only the first line will be the summary.
+      @param description The extensive contents of the new journal. If empty
+      and summary contains line breaks, the summary will be used as description
+      and only the first line will be the summary.
     */
     void setTexts( const QString &summary,
                    const QString &description = QString(),
                    bool richDescription = false );
 
     /** Edit an existing Journal. */
-    void editIncidence(Incidence *, Calendar *);
+    void editIncidence( Incidence *, Calendar * );
 
     /** Set date widget to default values */
     void setDate( const QDate &date );
@@ -86,10 +86,17 @@ class KOJournalEditor : public KOIncidenceEditor
     /** Set time widget to default values */
     void setTime( const QTime &time );
 
-    /** Read event object and setup widgets accordingly */
-    void readJournal( Journal * );
+    /**
+      Read journal object and setup widgets accordingly. If tmpl is true, the
+      journal is read as template, i.e. the time and date information isn't set.
 
-    /** Write event settings to event object */
+      @param journal the journal from which the data should be used
+      @param tmpl If true, the journal is treated as a template, so the
+      currently set time is preserved in the editor dialog.
+    */
+    void readJournal( Journal *journal, bool tmpl = false );
+
+    /** Write Journal settings to journal object */
     void writeJournal( Journal * );
 
     int msgItemDelete();
@@ -109,19 +116,18 @@ class KOJournalEditor : public KOIncidenceEditor
   protected slots:
     void loadDefaults();
     void deleteJournal();
-
     void slotSaveTemplate( const QString & );
 
   protected:
     QString type() { return "Journal"; }
     void setupGeneral();
-//    int msgItemDelete();
-
     void loadTemplate( CalendarLocal & );
     QStringList &templates() const;
 
   private:
     Journal *mJournal;
+    Calendar *mCalendar;
+
     KOEditorGeneralJournal *mGeneral;
 };
 

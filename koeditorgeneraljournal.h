@@ -28,19 +28,17 @@
 
 #include "koeditorgeneral.h"
 
-#include <QObject>
 #include <QDateTime>
-#include <QLabel>
-#include <QBoxLayout>
 
+class KLineEdit;
+class KSqueezedTextLabel;
 class KTextEdit;
-class QLineEdit;
-class QLabel;
+
 class QBoxLayout;
 class QCheckBox;
-class QWidget;
+class QLabel;
 class QPushButton;
-class KSqueezedTextLabel;
+class QWidget;
 
 namespace KPIM {
   class KDateEdit;
@@ -48,6 +46,7 @@ namespace KPIM {
 }
 
 namespace KCal {
+  class Calendar;
   class Journal;
 }
 using namespace KCal;
@@ -56,7 +55,7 @@ class KOEditorGeneralJournal : public KOEditorGeneral
 {
   Q_OBJECT
   public:
-    KOEditorGeneralJournal ( QObject *parent=0 );
+    explicit KOEditorGeneralJournal ( Calendar *calendar, QObject *parent=0 );
     virtual ~KOEditorGeneralJournal();
 
     void initDate( QWidget *, QBoxLayout * );
@@ -82,11 +81,11 @@ class KOEditorGeneralJournal : public KOEditorGeneral
     void openCategoryDialog();
 
   protected:
-    QLineEdit  *mSummaryEdit;
-    QLabel     *mSummaryLabel;
-    QLabel     *mDateLabel;
+    FocusLineEdit *mSummaryEdit;
+    QLabel *mSummaryLabel;
+    QLabel *mDateLabel;
     KPIM::KDateEdit *mDateEdit;
-    QCheckBox  *mTimeCheckBox;
+    QCheckBox *mTimeCheckBox;
     KPIM::KTimeEdit *mTimeEdit;
 };
 

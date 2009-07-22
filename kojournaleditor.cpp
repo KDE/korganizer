@@ -46,9 +46,9 @@
 using namespace KCal;
 
 KOJournalEditor::KOJournalEditor( Calendar *calendar, QWidget *parent )
-  : KOIncidenceEditor( i18n( "Edit Journal Entry" ), calendar, parent )
+  : KOIncidenceEditor( i18n( "Edit Journal Entry" ), calendar, parent ),
+    mJournal( 0 ), mCalendar( 0 )
 {
-  mJournal = 0;
 }
 
 KOJournalEditor::~KOJournalEditor()
@@ -77,7 +77,7 @@ void KOJournalEditor::reload()
 
 void KOJournalEditor::setupGeneral()
 {
-  mGeneral = new KOEditorGeneralJournal( this );
+  mGeneral = new KOEditorGeneralJournal( mCalendar, this );
 
   QFrame *topFrame = new QFrame();
   addPage( topFrame, i18nc( "@title general journal settings", "General" ) );
@@ -182,8 +182,15 @@ void KOJournalEditor::setTime( const QTime &time )
   mGeneral->setTime( time );
 }
 
-void KOJournalEditor::readJournal( Journal *journal )
+void KOJournalEditor::readJournal( Journal *journal, bool tmpl )
 {
+  //TODO: just tmpl variable
+  Q_UNUSED( tmpl );
+
+  if ( !journal ) {
+    return;
+  }
+
   mGeneral->readJournal( journal );
   mDetails->readIncidence( journal );
 }
