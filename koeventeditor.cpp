@@ -61,14 +61,14 @@ KOEventEditor::KOEventEditor( Calendar *calendar, QWidget *parent )
 
 KOEventEditor::~KOEventEditor()
 {
-  if ( !mIsCounter )
+  if ( !mIsCounter ) {
     emit dialogClose( mEvent );
+  }
 }
 
 void KOEventEditor::init()
 {
   setupGeneral();
-//  setupAlarmsTab();
   setupRecurrence();
   setupFreeBusy();
   setupDesignerTabs( "event" );
@@ -113,16 +113,14 @@ void KOEventEditor::init()
 
 void KOEventEditor::reload()
 {
-  kDebug();
-
   if ( mEvent ) {
-    readEvent( mEvent, mCalendar );
+    readEvent( mEvent, true );
   }
 }
 
 void KOEventEditor::setupGeneral()
 {
-  mGeneral = new KOEditorGeneralEvent( this );
+  mGeneral = new KOEditorGeneralEvent( mCalendar, this );
 
   if( KOPrefs::instance()->mCompactDialogs ) {
     QFrame *topFrame = new QFrame();
@@ -226,7 +224,7 @@ void KOEventEditor::editIncidence( Incidence *incidence, Calendar *calendar )
 
     mEvent = event;
     mCalendar = calendar;
-    readEvent( mEvent, mCalendar );
+    readEvent( mEvent, false );
   }
 
   setCaption( i18nc( "@title:window",
@@ -254,8 +252,7 @@ void KOEventEditor::setDates( const QDateTime &from, const QDateTime &to, bool a
   }
 }
 
-void KOEventEditor::setTexts( const QString &summary,
-                              const QString &description,
+void KOEventEditor::setTexts( const QString &summary, const QString &description,
                               bool richDescription )
 {
   if ( description.isEmpty() && summary.contains( "\n" ) ) {
@@ -295,11 +292,14 @@ bool KOEventEditor::processInput()
 
     if ( *event == *mEvent ) {
       // Don't do anything
-      kDebug() << "Event not changed";
-      if ( mIsCounter )
-        KMessageBox::information( this, i18n("You didn't change the event, thus no counter proposal has been sent to the organizer."), i18n("No changes") );
+      if ( mIsCounter ) {
+        KMessageBox::information(
+          this,
+          i18n( "You didn't change the event, "
+                "thus no counter proposal has been sent to the organizer." ),
+          i18n( "No changes" ) );
+      }
     } else {
-      kDebug() << "Event changed";
       //IncidenceChanger::assignIncidence( mEvent, event );
       writeEvent( mEvent );
       if ( mIsCounter ) {
@@ -307,7 +307,7 @@ bool KOEventEditor::processInput()
         // add dummy event at the position of the counter proposal
         Event *event = mEvent->clone();
         event->clearAttendees();
-        event->setSummary( i18n("My counter proposal for: %1", mEvent->summary() ) );
+        event->setSummary( i18n( "My counter proposal for: %1", mEvent->summary() ) );
         mChanger->addIncidence( event );
       } else {
         mChanger->changeIncidence( oldEvent, mEvent );
@@ -352,11 +352,14 @@ void KOEventEditor::deleteEvent()
   reject();
 }
 
-void KOEventEditor::readEvent( Event *event, Calendar *calendar, bool tmpl )
+void KOEventEditor::readEvent( Event *event, bool tmpl )
 {
-  mGeneral->readEvent( event, calendar, tmpl );
+  if ( !event ) {
+    return;
+  }
+
+  mGeneral->readEvent( event, tmpl );
   mRecurrence->readIncidence( event );
-//  mAlarms->readIncidence( event );
   if ( mFreeBusy ) {
     mFreeBusy->readIncidence( event );
     mFreeBusy->triggerReload();
@@ -365,8 +368,9 @@ void KOEventEditor::readEvent( Event *event, Calendar *calendar, bool tmpl )
   createEmbeddedURLPages( event );
   readDesignerFields( event );
 
-  if ( mIsCounter )
+  if ( mIsCounter ) {
     mGeneral->invitationBar()->hide();
+  }
 }
 
 void KOEventEditor::writeEvent( Event *event )
@@ -413,7 +417,7 @@ void KOEventEditor::loadTemplate( CalendarLocal &cal )
   if ( events.count() == 0 ) {
     KMessageBox::error( this, i18nc( "@info", "Template does not contain a valid event." ) );
   } else {
-    readEvent( events.first(), 0, true );
+    readEvent( events.first(), true );
   }
 }
 
@@ -442,11 +446,12 @@ void KOEventEditor::updateRecurrenceSummary()
   delete ev;
 }
 
-void KOEventEditor::selectInvitationCounterProposal(bool enable)
+void KOEventEditor::selectInvitationCounterProposal( bool enable )
 {
   KOIncidenceEditor::selectInvitationCounterProposal( enable );
-  if ( enable )
+  if ( enable ) {
     mGeneral->invitationBar()->hide();
+  }
 }
 
 #include "koeventeditor.moc"
