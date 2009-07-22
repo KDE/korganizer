@@ -30,34 +30,33 @@
 #include <libkdepim/ktimezonecombobox.h>
 
 #include <kcal/todo.h>
+#include <kcal/incidenceformatter.h>
 
 #include <kglobal.h>
 #include <klocale.h>
 #include <kiconloader.h>
 #include <kmessagebox.h>
 #include <kstandarddirs.h>
-#include <kfiledialog.h>
 #include <ktextedit.h>
 #include <KComboBox>
 #include <KRichTextWidget>
 
-#include <QLayout>
-#include <QDateTime>
-#include <QCheckBox>
-#include <QLabel>
-#include <QSpinBox>
-#include <QPushButton>
-#include <QGroupBox>
-#include <QGridLayout>
-#include <QFrame>
-#include <QHBoxLayout>
 #include <QBoxLayout>
+#include <QCheckBox>
+#include <QDateTime>
+#include <KDialog>
+#include <QGridLayout>
+#include <QGroupBox>
+#include <QHBoxLayout>
+#include <QLabel>
+#include <QPushButton>
+#include <QSpinBox>
 #include <QVBoxLayout>
 
 #include "koeditorgeneraltodo.moc"
 
-KOEditorGeneralTodo::KOEditorGeneralTodo( QObject *parent )
-  : KOEditorGeneral( parent )
+KOEditorGeneralTodo::KOEditorGeneralTodo( Calendar *calendar, QObject *parent )
+  : KOEditorGeneral( calendar, parent )
 {
 }
 
@@ -106,8 +105,8 @@ void KOEditorGeneralTodo::initTime( QWidget *parent, QBoxLayout *topLayout )
 
   // Timezone
   QString whatsThis = i18n( "Select the timezone for this event. It will also affect recurrences" );
-  mTimeZoneComboStart = new KPIM::KTimeZoneComboBox( timeGroupBox );
-  mTimeZoneComboDue = new KPIM::KTimeZoneComboBox( timeGroupBox );
+  mTimeZoneComboStart = new KPIM::KTimeZoneComboBox( mCalendar, timeGroupBox );
+  mTimeZoneComboDue = new KPIM::KTimeZoneComboBox( mCalendar, timeGroupBox );
   if ( !KOPrefs::instance()->showTimeZoneSelectorInIncidenceEditor() ) {
     mTimeZoneComboStart->hide();
     mTimeZoneComboDue->hide();
@@ -199,7 +198,7 @@ void KOEditorGeneralTodo::initCompletion( QWidget *parent, QBoxLayout *topLayout
   mCompletionTimeEdit = new KPIM::KTimeEdit( parent, QTime() );
   mCompletionTimeEdit->hide();
   topLayout->addWidget( mCompletionTimeEdit );
-  if ( !(mCompletedCombo->currentIndex() == 10 && mCompleted.isValid() )) {
+  if ( !( mCompletedCombo->currentIndex() == 10 && mCompleted.isValid() ) ) {
     mCompletedLabel->setText( i18nc( "to-do completed", "co&mpleted" ) );
     mCompletionDateEdit->hide();
     mCompletionTimeEdit->hide();
@@ -281,9 +280,12 @@ void KOEditorGeneralTodo::setDefaults( const QDateTime &due, bool allDay )
   mCompletedCombo->setCurrentIndex( 0 );
 }
 
-void KOEditorGeneralTodo::readTodo( Todo *todo, Calendar *calendar )
+void KOEditorGeneralTodo::readTodo( Todo *todo, bool tmpl )
 {
-  KOEditorGeneral::readIncidence( todo, calendar );
+  //TODO: do something with tmpl
+  Q_UNUSED( tmpl );
+
+  KOEditorGeneral::readIncidence( todo );
 
   QDateTime dueDT;
 
@@ -611,7 +613,7 @@ void KOEditorGeneralTodo::modified( Todo *todo, int modification )
     break;
   case KOGlobals::UNKNOWN_MODIFIED: // fall through
   default:
-    readTodo( todo, 0 );
+    readTodo( todo );
     break;
   }
 }
