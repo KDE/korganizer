@@ -52,8 +52,11 @@ KOEventPopupMenu::KOEventPopupMenu()
   mCurrentDate = QDate();
   mHasAdditionalItems = false;
 
-  addAction( i18n( "&Show" ), this, SLOT( popupShow() ) );
-  mEditOnlyItems.append( addAction( i18n( "&Edit..." ), this, SLOT( popupEdit() ) ) );
+  addAction( KOGlobals::self()->smallIcon( "document-preview" ), i18n( "&Show" ),
+             this, SLOT( popupShow() ) );
+  mEditOnlyItems.append(
+    addAction( KOGlobals::self()->smallIcon( "document-edit" ), i18n( "&Edit..." ),
+               this, SLOT( popupEdit() ) ) );
 #ifndef KORG_NOPRINTER
   addAction( KOGlobals::self()->smallIcon( "document-print" ), i18n( "&Print..." ),
              this, SLOT( print() ) );
