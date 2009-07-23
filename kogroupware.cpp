@@ -206,7 +206,7 @@ void KOGroupware::incomingDirChanged( const QString &path )
       }
     }
     if ( KOPrefs::instance()->outlookCompatCounterProposals() || !action.startsWith( "counter" ) )
-      scheduler.acceptTransaction( incidence, method, status );
+      scheduler.acceptTransaction( incidence, method, status, receiver );
   } else if ( action.startsWith( "cancel" ) ) {
     // Delete the old incidence, if one is present
     scheduler.acceptTransaction( incidence, KCal::iTIPCancel, status );
