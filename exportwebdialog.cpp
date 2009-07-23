@@ -54,6 +54,7 @@
 #include <QPushButton>
 #include <QTextStream>
 #include <QLabel>
+#include <QHBoxLayout>
 #include <QVBoxLayout>
 #include <QGroupBox>
 
@@ -88,6 +89,7 @@ ExportWebDialog::ExportWebDialog( HTMLExportSettings *settings, QWidget *parent 
   connect( this, SIGNAL(defaultClicked()), this, SLOT(slotDefault()) );
   connect( this, SIGNAL(applyClicked()), this, SLOT(slotApply()) );
   readConfig();
+  updateState();
 }
 
 ExportWebDialog::~ExportWebDialog()
@@ -146,10 +148,10 @@ void ExportWebDialog::setupGeneralPage()
   QVBoxLayout *topLayout = new QVBoxLayout( mGeneralPage );
   topLayout->setSpacing(10);
 
-  QGroupBox *rangeGroup = new QGroupBox( i18n( "Date Range" ), mGeneralPage );
-  topLayout->addWidget( rangeGroup );
+  mDateRangeGroup = new QGroupBox( i18n( "Date Range" ), mGeneralPage );
+  topLayout->addWidget( mDateRangeGroup );
 
-  QHBoxLayout *rangeLayout = new QHBoxLayout( rangeGroup );
+  QHBoxLayout *rangeLayout = new QHBoxLayout( mDateRangeGroup );
 
   KPrefsWidDate *dateStart = addWidDate( mSettings->dateStartItem() );
   rangeLayout->addWidget( dateStart->label() );
@@ -163,8 +165,14 @@ void ExportWebDialog::setupGeneralPage()
 
   QBoxLayout *typeLayout = new QVBoxLayout( typeGroup );
 
-  typeLayout->addWidget( addWidBool( mSettings->monthViewItem() )->checkBox() );
-  typeLayout->addWidget( addWidBool( mSettings->eventViewItem() )->checkBox() );
+  mMonthViewCheckBox = addWidBool( mSettings->monthViewItem() )->checkBox();
+  connect( mMonthViewCheckBox, SIGNAL(stateChanged(int)), SLOT(updateState()) );
+  typeLayout->addWidget( mMonthViewCheckBox );
+
+  mEventListCheckBox = addWidBool( mSettings->eventViewItem() )->checkBox();
+  connect( mEventListCheckBox, SIGNAL(stateChanged(int)), SLOT(updateState()) );
+  typeLayout->addWidget( mEventListCheckBox );
+
   typeLayout->addWidget( addWidBool( mSettings->todoViewItem() )->checkBox() );
   typeLayout->addWidget(
     addWidBool( mSettings->excludePrivateItem() )->checkBox() );
@@ -283,3 +291,12 @@ void ExportWebDialog::setupAdvancedPage()
   topLayout->addStretch(1);
 }
 */
+
+void ExportWebDialog::updateState()
+{
+  const bool exportEvents = mMonthViewCheckBox->isChecked() ||
+                            mEventListCheckBox->isChecked();
+  mDateRangeGroup->setEnabled( exportEvents );
+  mEventPage->setEnabled( exportEvents );
+}
+
