@@ -3,16 +3,6 @@ include_directories( ${CMAKE_SOURCE_DIR}/korganizer ${CMAKE_BINARY_DIR}/korganiz
 
 ########### next target ###############
 
-set(timezone_SRCS timezone.cpp )
-
-
-
-kde4_add_executable(timezone TEST ${timezone_SRCS})
-
-target_link_libraries(timezone korganizerprivate ${KDE4_KIO_LIBS})
-
-########### next target ###############
-
 set(korgplugins_SRCS korgplugins.cpp )
 
 
