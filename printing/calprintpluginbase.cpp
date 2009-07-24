@@ -26,13 +26,12 @@
 #include "calprintpluginbase.h"
 #include "cellitem.h"
 
-#include <libkdepim/kpimprefs.h>
-
 #include <kdebug.h>
 #include <kconfig.h>
 #include <kcalendarsystem.h>
 #include <kwordwrap.h>
 #include <kconfiggroup.h>
+#include <ksystemtimezone.h>
 
 #include <QPainter>
 #include <QLayout>
@@ -266,7 +265,7 @@ Event *CalPrintPluginBase::holiday( const QDate &dt )
   QString hstring( holidayString( dt ) );
   if ( !hstring.isEmpty() ) {
     //FIXME: KOPrefs::instance()->timeSpec()?
-    KDateTime::Spec timeSpec = KPIM::KPimPrefs::timeSpec();
+    KDateTime::Spec timeSpec = KSystemTimeZones::local();
     KDateTime kdt( dt, QTime(), timeSpec );
     Event *holiday = new Event();
     holiday->setSummary( hstring );
@@ -915,7 +914,7 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
   p.setFont( QFont( "sans-serif", 10, QFont::Bold ) );
   p.drawText( headerTextBox, Qt::AlignRight | Qt::AlignVCenter, dayNumStr );
 
-  Event::List eventList = mCalendar->events( qd, KPIM::KPimPrefs::timeSpec(),
+  Event::List eventList = mCalendar->events( qd, KSystemTimeZones::local(),
                                              EventSortStartDate,
                                              SortDirectionAscending );
   QString text;
@@ -1051,7 +1050,7 @@ void CalPrintPluginBase::drawTimeTable( QPainter &p,
 
   // draw each day
   QDate curDate(fromDate);
-  KDateTime::Spec timeSpec = KPIM::KPimPrefs::timeSpec();
+  KDateTime::Spec timeSpec = KSystemTimeZones::local();
   int i=0;
   double cellWidth = double( dowBox.width() ) / double( fromDate.daysTo( toDate ) + 1 );
   while ( curDate <= toDate ) {
@@ -1180,7 +1179,7 @@ void CalPrintPluginBase::drawMonth( QPainter &p, const QDate &dt,
   QList<MonthEventStruct> monthentries;
 
   //FIXME: KOPrefs::instance()->timeSpec()?
-  KDateTime::Spec timeSpec = KPIM::KPimPrefs::timeSpec();
+  KDateTime::Spec timeSpec = KSystemTimeZones::local();
   for ( Event::List::ConstIterator evit = events.begin(); evit != events.end(); ++evit ) {
     Event *e = (*evit);
     if ( !e ) {

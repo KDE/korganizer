@@ -165,11 +165,7 @@ void KOPrefs::setTimeZoneDefault()
 
 KDateTime::Spec KOPrefs::timeSpec()
 {
-  if ( !mTimeSpec.isValid() ) {
-    // Read time zone from config file
-    mTimeSpec = KPimPrefs::timeSpec();
-  }
-  return mTimeSpec;
+  return KSystemTimeZones::local();
 }
 
 void KOPrefs::setTimeSpec( const KDateTime::Spec &spec )

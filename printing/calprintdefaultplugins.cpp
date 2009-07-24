@@ -30,7 +30,6 @@
 #include "calprintdefaultplugins.h"
 
 #include <libkdepim/kdateedit.h>
-#include <libkdepim/kpimprefs.h>
 
 #include <kcal/todo.h>
 #include <kcal/calendar.h>
@@ -41,6 +40,7 @@
 #include <kcalendarsystem.h>
 #include <knuminput.h>
 #include <kcombobox.h>
+#include <ksystemtimezone.h>
 
 #include <q3buttongroup.h>
 #include <QCheckBox>
@@ -135,7 +135,7 @@ class TimePrintStringsVisitor : public IncidenceBase::Visitor
   protected:
     bool visit( Event *event )
     {
-      KDateTime::Spec spec = KPIM::KPimPrefs::timeSpec();
+      KDateTime::Spec spec = KSystemTimeZones::local();
       if ( event->dtStart().isValid() ) {
         mStartCaption =  i18n( "Start date: " );
         // Show date/time or only date, depending on whether it's an all-day event
@@ -167,7 +167,7 @@ class TimePrintStringsVisitor : public IncidenceBase::Visitor
     }
     bool visit( Todo *todo )
     {
-      KDateTime::Spec spec = KPIM::KPimPrefs::timeSpec();
+      KDateTime::Spec spec = KSystemTimeZones::local();
       if ( todo->hasStartDate() ) {
         mStartCaption =  i18n( "Start date: " );
         // Show date/time or only date, depending on whether it's an all-day event
@@ -190,7 +190,7 @@ class TimePrintStringsVisitor : public IncidenceBase::Visitor
     }
     bool visit( Journal *journal )
     {
-      KDateTime::Spec spec = KPIM::KPimPrefs::timeSpec();
+      KDateTime::Spec spec = KSystemTimeZones::local();
       mStartCaption = i18n( "Start date: " );
       mStartString = journal->allDay() ?
                      journal->dtStartDateStr( false, spec ) : journal->dtStartStr( false, spec );
@@ -777,7 +777,7 @@ void CalPrintDay::print( QPainter &p, int width, int height )
 {
   QDate curDay( mFromDate );
 
-  KDateTime::Spec timeSpec = KPIM::KPimPrefs::timeSpec();
+  KDateTime::Spec timeSpec = KSystemTimeZones::local();
   do {
     QTime curStartTime( mStartTime );
     QTime curEndTime( mEndTime );
