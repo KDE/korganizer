@@ -43,6 +43,7 @@ namespace Akonadi {
   class CollectionView;
 }
 
+class KAction;
 class KJob;
 class AkonadiCollectionView;
 
@@ -52,6 +53,7 @@ class AkonadiCollectionViewFactory : public CalendarViewExtension::Factory
     AkonadiCollectionViewFactory( KCal::AkonadiCalendar *calendar, CalendarView *view );
     virtual ~AkonadiCollectionViewFactory(){}
 
+    KCal::AkonadiCalendar* calendar() const;
     CalendarView* view() const;
     AkonadiCollectionView* collectionView() const;
 
@@ -62,54 +64,6 @@ class AkonadiCollectionViewFactory : public CalendarViewExtension::Factory
     CalendarView *mView;
     AkonadiCollectionView *mAkonadiCollectionView;
 };
-
-#if 0
-class ResourceItem : public QTreeWidgetItem
-{
-  public:
-    ResourceItem( KCal::ResourceCalendar *resource, AkonadiCollectionView *view, QTreeWidget *parent );
-    ResourceItem( KCal::ResourceCalendar *resource, const QString &sub, const QString &label, AkonadiCollectionView *view, ResourceItem *parent );
-
-    ResourceCalendar *resource() { return mResource; }
-    const QString &resourceIdentifier() { return mResourceIdentifier; }
-    bool isSubresource() const { return mIsSubresource; }
-    void createSubresourceItems();
-    void setStandardResource( bool std );
-
-    void update();
-
-    void setResourceColor( QColor &color );
-    QColor &resourceColor() {return mResourceColor;}
-
-    void stateChange( bool active );
-
-    virtual QVariant data( int column, int role ) const;
-
-    void setIsReloading( bool value ) { mIsReloading = value; };
-
-  protected:
-    void setGuiState();
-    QColor mResourceColor;
-
-    void setOn( bool checked );
-
-  private:
-    /*
-     * Returns if this item uses colors
-     */
-    bool useColors() const;
-
-    KCal::ResourceCalendar *mResource;
-    AkonadiCollectionView *mView;
-    bool mBlockStateChange;
-    bool mIsSubresource;
-    QString mResourceIdentifier;
-    bool mSubItemsCreated;
-    bool mIsStandardResource;
-    bool mActive;
-    bool mIsReloading;
-};
-#endif
 
 /**
   This class provides a view of calendar resources.
@@ -158,7 +112,7 @@ class AkonadiCollectionView : public CalendarViewExtension
     void currentChanged();
 #else
   private Q_SLOTS:
-    void collectionClicked(const QModelIndex&);
+    void selectionChanged();
 
     void newCalendar();
     void newCalendarDone( KJob* );
@@ -186,6 +140,8 @@ class AkonadiCollectionView : public CalendarViewExtension
     QList<ResourceCalendar*> mResourcesToClose;
     QAbstractButton *mAddButton, *mEditButton, *mDeleteButton;
 #endif
+    KAction *mCreateAction;
+    KAction *mDeleteAction;
 };
 
 #endif

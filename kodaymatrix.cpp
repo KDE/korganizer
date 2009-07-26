@@ -104,13 +104,14 @@ void KODayMatrix::setCalendar( Calendar *cal )
   mCalendar->registerObserver( this );
   AkonadiCalendar *calres = dynamic_cast<AkonadiCalendar*>( cal );
   if ( calres ) {
-//sebsauer; needed?
+#if 0 //not needed any longer
     connect( calres, SIGNAL(signalResourceAdded(ResourceCalendar *)),
              SLOT(resourcesChanged()) );
     connect( calres, SIGNAL(signalResourceModified(ResourceCalendar *)),
              SLOT(resourcesChanged()) );
     connect( calres, SIGNAL(signalResourceDeleted(ResourceCalendar *)),
              SLOT(resourcesChanged()) );
+#endif
   }
 
   setAcceptDrops( mCalendar != 0 );

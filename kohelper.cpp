@@ -71,9 +71,14 @@ QString KOHelper::resourceLabel( KCal::Calendar *calendar, KCal::Incidence *inci
     }
     return resourceCalendar->resourceName();
   }
-#else
-  kWarning()<<"TODO";
-#endif
   return QString();
+#else
+  QString label = incidence->uid();
+  if(! incidence->type().isEmpty())
+    label += QString(" (%1)").arg( incidence->type().constData() );
+  if(! incidence->summary().isEmpty())
+    label += QString(": %1").arg( incidence->summary() );
+  return label;
+#endif
 }
 

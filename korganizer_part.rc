@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui>
-<kpartgui name="korganizer" version="413">
+<kpartgui name="korganizer" version="414">
 
   <MenuBar>
     <Menu name="file"><text>&amp;File</text>
@@ -133,8 +133,10 @@
     <Action name="new_event"/>
     <Action name="new_todo"/>
     <Action name="new_journal"/>
+    <!--
     <Separator/>
     <Action name="edit_find"/>
+    -->
     <Separator/>
     <Action name="go_previous"/>
     <Action name="go_today"/>
@@ -173,6 +175,7 @@
   </Menu>
 
   <Menu name="akonadi_collectionview_contextmenu">
+    <!--
     <Action name="akonadi_collection_create"/>
     <Separator/>
     <Action name="akonadi_collection_copy"/>
@@ -182,10 +185,12 @@
     <Separator/>
     <Action name="akonadi_collection_sync"/>
     <Separator/>
-    <Action name="akonadi_collection_properties"/>
-    <Separator/>
+    -->
     <Action name="akonadi_calendar_create"/>
     <Action name="akonadi_calendar_delete"/>
-  </Menu>
+    <Separator/>
+    <Action name="akonadi_collection_properties"/>
+
+</Menu>
 
 </kpartgui>

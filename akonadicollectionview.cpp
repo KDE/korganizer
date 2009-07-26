@@ -30,36 +30,13 @@
 #include "kocore.h"
 #include "koprefs.h"
 
-#if 0
-#include <KCal/ResourceCalendar>
-#include <KResources/ConfigDialog>
-
-#include <KColorCollection>
-#include <KColorDialog>
 #include <KDebug>
-#endif
 #include <KDialog>
 #include <KAction>
 #include <KActionCollection>
 #include <kjob.h>
-#if 0
-#include <KInputDialog>
-#include <KLocale>
-#include <KMessageBox>
-#include <KRandom>
-
-#include <QHBoxLayout>
-#include <QHeaderView>
-#include <QLabel>
-#include <QMenu>
-#include <QPixmap>
-#include <QToolButton>
-#endif
 #include <QVBoxLayout>
-#if 0
-#include <QDBusInterface>
-#include <QDBusReply>
-#endif
+#include <QHeaderView>
 
 #include <akonadi/collection.h>
 #include <akonadi/collectionview.h>
@@ -92,6 +69,11 @@ CalendarViewExtension *AkonadiCollectionViewFactory::create( QWidget *parent )
   QObject::connect( mCalendar, SIGNAL(signalResourceModified(ResourceCalendar *)), mView, SLOT(updateCategories()) );
 #endif
   return mAkonadiCollectionView;
+}
+
+KCal::AkonadiCalendar* AkonadiCollectionViewFactory::calendar() const
+{
+  return mCalendar;
 }
 
 CalendarView* AkonadiCollectionViewFactory::view() const
@@ -255,6 +237,57 @@ void ResourceItem::setStandardResource( bool std )
 }
 #endif
 
+class CollectionProxyModel : public QSortFilterProxyModel
+{
+  public:
+    explicit CollectionProxyModel(AkonadiCollectionView *view) : QSortFilterProxyModel(view), mView(view) {}
+    ~CollectionProxyModel() {}
+
+    virtual Qt::ItemFlags flags(const QModelIndex &index) const
+    {
+      return QSortFilterProxyModel::flags(index) | Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsUserCheckable;
+    }
+
+    virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const
+    {
+      switch(role) {
+        case Qt::CheckStateRole: {
+          Q_ASSERT( index.isValid() );
+          const Akonadi::Collection collection = index.model()->data( index, Akonadi::CollectionModel::CollectionRole ).value<Akonadi::Collection>();
+          Q_ASSERT( collection.isValid() );
+          return mView->calendar()->hasCollection( collection ) ? Qt::Checked : Qt::Unchecked;
+        } break;
+        default:
+          return QSortFilterProxyModel::data(index, role);
+      }
+    }
+
+    virtual bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole)
+    {
+      switch(role) {
+        case Qt::CheckStateRole: {
+          Q_ASSERT( index.isValid() );
+          const Akonadi::Collection collection = index.model()->data( index, Akonadi::CollectionModel::CollectionRole ).value<Akonadi::Collection>();
+          Q_ASSERT( collection.isValid() );
+          //const bool checked = value.toBool();
+          const bool checked = value.toInt() == Qt::Checked;
+          if( checked ) {
+            Q_ASSERT( ! mView->calendar()->hasCollection( collection ) );
+            mView->calendar()->addCollection( collection );
+          } else {
+            Q_ASSERT( mView->calendar()->hasCollection( collection ) );
+            mView->calendar()->removeCollection( collection );
+          }
+        } return true;
+        default:
+          return QSortFilterProxyModel::setData(index, value, role);
+      }
+    }
+
+  private:
+    AkonadiCollectionView *mView;
+};
+
 AkonadiCollectionView::AkonadiCollectionView( AkonadiCollectionViewFactory *factory, KCal::AkonadiCalendar *calendar, QWidget *parent )
   : CalendarViewExtension( parent ), mFactory(factory), mCalendar( calendar ), mActionManager(0), mCollectionview(0)
 {
@@ -345,14 +378,16 @@ AkonadiCollectionView::AkonadiCollectionView( AkonadiCollectionViewFactory *fact
   collectionproxymodel->setSourceModel( collectionmodel );
   collectionproxymodel->addMimeTypeFilter( QString::fromLatin1( "text/calendar" ) );
 
-  QSortFilterProxyModel *sortmodel = new QSortFilterProxyModel( this );
+  CollectionProxyModel *sortmodel = new CollectionProxyModel( this );
   sortmodel->setDynamicSortFilter( true );
   sortmodel->setSortCaseSensitivity( Qt::CaseInsensitive );
   sortmodel->setSourceModel( collectionproxymodel );
 
   mCollectionview = new Akonadi::CollectionView();
-  mCollectionview->setModel(sortmodel);
-  mCollectionview->setSelectionMode( QAbstractItemView::MultiSelection );
+  mCollectionview->header()->hide();
+  mCollectionview->setModel( sortmodel );
+  mCollectionview->setRootIsDecorated( false );
+  //mCollectionview->setSelectionMode( QAbstractItemView::NoSelection );
   KXMLGUIClient *xmlclient = KOCore::self()->xmlguiClient( mFactory->view() );
   if( xmlclient ) {
     mCollectionview->setXmlGuiClient( xmlclient );
@@ -366,21 +401,22 @@ AkonadiCollectionView::AkonadiCollectionView( AkonadiCollectionViewFactory *fact
     mActionManager->action( Akonadi::StandardActionManager::CollectionProperties )->setText( i18n( "Properties..." ) );
     mActionManager->setCollectionSelectionModel( mCollectionview->selectionModel() );
 
-    KAction *createAction = new KAction( mCollectionview );
-    createAction->setIcon( KIcon( "appointment-new" ) );
-    createAction->setText( i18n( "New Calendar..." ) );
-    //action->setWhatsThis( i18n( "Create a new contact<p>You will be presented with a dialog where you can add all data about a person, including addresses and phone numbers.</p>" ) );
-    xmlclient->actionCollection()->addAction( QString::fromLatin1( "akonadi_calendar_create" ), createAction );
-    connect( createAction, SIGNAL( triggered( bool ) ), this, SLOT( newCalendar() ) );
+    mCreateAction = new KAction( mCollectionview );
+    mCreateAction->setIcon( KIcon( "appointment-new" ) );
+    mCreateAction->setText( i18n( "New Calendar..." ) );
+    //mCreateAction->setWhatsThis( i18n( "Create a new contact<p>You will be presented with a dialog where you can add all data about a person, including addresses and phone numbers.</p>" ) );
+    xmlclient->actionCollection()->addAction( QString::fromLatin1( "akonadi_calendar_create" ), mCreateAction );
+    connect( mCreateAction, SIGNAL( triggered( bool ) ), this, SLOT( newCalendar() ) );
 
-    KAction *deleteAction = new KAction( mCollectionview );
-    deleteAction->setIcon( KIcon( "edit-delete" ) );
-    deleteAction->setText( i18n( "Delete Calendar" ) );
-    //action->setWhatsThis( i18n( "Create a new contact<p>You will be presented with a dialog where you can add all data about a person, including addresses and phone numbers.</p>" ) );
-    xmlclient->actionCollection()->addAction( QString::fromLatin1( "akonadi_calendar_delete" ), deleteAction );
-    connect( deleteAction, SIGNAL( triggered( bool ) ), this, SLOT( deleteCalendar() ) );
+    mDeleteAction = new KAction( mCollectionview );
+    mDeleteAction->setIcon( KIcon( "edit-delete" ) );
+    mDeleteAction->setText( i18n( "Delete Calendar" ) );
+    mDeleteAction->setEnabled( false );
+    //mDeleteAction->setWhatsThis( i18n( "Create a new contact<p>You will be presented with a dialog where you can add all data about a person, including addresses and phone numbers.</p>" ) );
+    xmlclient->actionCollection()->addAction( QString::fromLatin1( "akonadi_calendar_delete" ), mDeleteAction );
+    connect( mDeleteAction, SIGNAL( triggered( bool ) ), this, SLOT( deleteCalendar() ) );
   }
-  connect(mCollectionview, SIGNAL(clicked(const QModelIndex&)), this, SLOT(collectionClicked(const QModelIndex&)));
+  connect( mCollectionview->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)), this, SLOT(selectionChanged()) );
   
   topLayout->addWidget( mCollectionview );
 #endif
@@ -404,19 +440,12 @@ void AkonadiCollectionView::updateView()
 #endif
 }
 
-void AkonadiCollectionView::collectionClicked(const QModelIndex &index)
+void AkonadiCollectionView::selectionChanged()
 {
   kDebug();
-  Q_ASSERT( index.isValid() );
-  const Akonadi::Collection collection = index.model()->data( index, Akonadi::CollectionModel::CollectionRole ).value<Akonadi::Collection>();
-  Q_ASSERT( collection.isValid() );
-  if( mCollectionview->selectionModel()->isSelected(index) ) {
-    if( ! mCalendar->hasCollection( collection ) )
-      mCalendar->addCollection( collection );
-  } else {
-    if( mCalendar->hasCollection( collection ) )
-      mCalendar->removeCollection( collection );
-  }
+mCollectionview->reset();
+mCollectionview->model();
+  mDeleteAction->setEnabled( mCollectionview->selectionModel()->hasSelection() );
 }
 
 void AkonadiCollectionView::newCalendar()
@@ -486,387 +515,3 @@ void AkonadiCollectionView::deleteCalendarDone( KJob *job )
   //TODO
 }
 
-#if 0
-void AkonadiCollectionView::emitResourcesChanged()
-{
-  mCalendar->resourceManager()->writeConfig();
-  emit resourcesChanged();
-}
-
-void AkonadiCollectionView::slotAddButtonClicked()
-{
-  if ( !mListView->selectedItems().isEmpty() ) {
-    mSelectedParent = static_cast<ResourceItem*>( mListView->selectedItems().first() );
-  } else {
-    mSelectedParent = 0;
-  }
-  addResource();
-}
-
-void AkonadiCollectionView::addResource()
-{
-  bool ok = false;
-  KCal::CalendarResourceManager *manager = mCalendar->resourceManager();
-  ResourceItem *i = mSelectedParent;
-  if ( i && ( i->isSubresource() || i->resource()->canHaveSubresources() ) ) {
-    const QString folderName =
-      KInputDialog::getText( i18n( "Add Subresource" ),
-                             i18n( "Please enter a name for the new subresource" ),
-                             QString(), &ok, this );
-    if ( !ok )return;
-    const QString parentId = i->isSubresource() ? i->resourceIdentifier() : QString:: null;
-    if ( !i->resource()->addSubresource( folderName, parentId ) ) {
-      KMessageBox::error( this,
-                          i18n( "<qt>Unable to create subresource <b>%1</b>.</qt>", folderName ) );
-    }
-    return;
-  }
-  QStringList types = manager->resourceTypeNames();
-  QStringList descs = manager->resourceTypeDescriptions();
-  QString desc =
-    KInputDialog::getItem( i18n( "Resource Configuration" ),
-                           i18n( "Please select type of the new resource:" ),
-                           descs, 0, false, &ok, this );
-  if ( !ok )return;
-  QString type = types.at( descs.indexOf( desc ) );
-  // Create new resource
-  ResourceCalendar *resource = manager->createResource( type );
-  if( !resource ) {
-    KMessageBox::error( this,
-                        i18n( "<qt>Unable to create resource of type <b>%1</b>.</qt>", type ) );
-    return;
-  }
-  resource->setResourceName( i18n( "%1 resource", type ) );
-  // TODO: Add a fallback (KColorCollection::setName() broken?)
-  KColorCollection collection( "Oxygen.colors" );
-  // TODO: Be smarter than this
-  int rand = ( KRandom::random() % collection.count() ) + 1;
-  QColor color = collection.color( rand );
-  KOPrefs::instance()->setResourceColor( resource->identifier(), color );
-  bool success = true;
-  QPointer<KRES::ConfigDialog> dlg =
-    new KRES::ConfigDialog( this, QString( "calendar" ), resource );
-  if ( dlg->exec() != QDialog::Accepted )success = false;
-  delete dlg;
-  if ( success ) {
-    resource->setTimeSpec( KOPrefs::instance()->timeSpec() );
-    if ( resource->isActive() && ( !resource->open() || !resource->load() ) ) {
-      // ### There is a resourceLoadError() signal declared in ResourceCalendar
-      //     but no subclass seems to make use of it. We could do better.
-      KMessageBox::error( this, i18n( "Unable to create the resource." ) );
-      success = false;
-    }
-  }
-  if ( success ) {
-    manager->add( resource );
-    // we have to call resourceAdded manually, because for in-process changes
-    // the dcop signals are not connected, so the resource's signals would not
-    // be connected otherwise
-    mCalendar->resourceAdded( resource );
-  }
-  if ( !success ) { delete resource; resource = 0; }
-  //### maybe only do this if ( success )
-  emitResourcesChanged();
-}
-
-void AkonadiCollectionView::addResourceItem( ResourceCalendar *resource, bool emitSignal )
-{
-  new ResourceItem( resource, this, mListView );
-  connect( resource,
-           SIGNAL(signalSubresourceAdded(ResourceCalendar *,const QString &,const QString &,const QString &)),
-           SLOT(slotSubresourceAdded(ResourceCalendar *,const QString &,const QString &,const QString &)) );
-  connect( resource,
-           SIGNAL(signalSubresourceRemoved(ResourceCalendar *,const QString &,const QString &)),
-           SLOT(slotSubresourceRemoved(ResourceCalendar *,const QString &,const QString &)) );
-  connect( resource, SIGNAL(resourceSaved(ResourceCalendar *)),
-           SLOT(closeResource(ResourceCalendar *)) );
-  updateResourceList();
-  if ( emitSignal )emit resourcesChanged();
-}
-
-// Add a new entry
-void AkonadiCollectionView::slotSubresourceAdded( ResourceCalendar *calendar, const QString &type, const QString &resource, const QString &label )
-{
-  Q_UNUSED( type );
-  QList<QTreeWidgetItem *> items = mListView->findItems( calendar->resourceName(), Qt::MatchExactly, 0 );
-  if ( !items.isEmpty() && !findItemByIdentifier( resource ) ) {
-    ResourceItem *item = static_cast<ResourceItem *>( items.first() );
-    ( void )new ResourceItem( calendar, resource, label, this, item );
-    emitResourcesChanged();
-  }
-}
-
-// Remove an entry
-void AkonadiCollectionView::slotSubresourceRemoved( ResourceCalendar *calendar, const QString &type, const QString &resource )
-{
-  Q_UNUSED( calendar );
-  Q_UNUSED( type );
-  delete findItemByIdentifier( resource );
-  emit resourcesChanged();
-}
-
-void AkonadiCollectionView::closeResource( ResourceCalendar *r )
-{
-  if ( mResourcesToClose.contains( r ) ) {
-    r->close();
-    mResourcesToClose.removeAll( r );
-  }
-}
-
-void AkonadiCollectionView::updateResourceItem( ResourceCalendar *resource )
-{
-  ResourceItem *item = findItem( resource );
-  if ( item ) item->update();
-}
-
-ResourceItem *AkonadiCollectionView::currentItem()
-{
-  QTreeWidgetItem *item = mListView->currentItem();
-  ResourceItem *rItem = static_cast<ResourceItem *>( item );
-  return rItem;
-}
-
-void AkonadiCollectionView::removeResource()
-{
-  ResourceItem *item = currentItem();
-  if ( !item )return;
-  int km =
-    KMessageBox::warningContinueCancel(
-      this,
-      i18n( "<qt>Do you really want to remove the resource <b>%1</b>?</qt>",
-            item->text( 0 ) ), "", KStandardGuiItem::remove() );
-  if ( km == KMessageBox::Cancel )return;
-// Don't be so restricitve
-#if 1
-  if ( item->resource() == mCalendar->resourceManager()->standardResource() ) {
-    KMessageBox::sorry( this, i18n( "You cannot remove your standard resource." ) );
-    return;
-  }
-#endif
-  if ( item->isSubresource() ) {
-    if ( !item->resource()->removeSubresource( item->resourceIdentifier() ) ) {
-      KMessageBox::sorry(
-        this,
-        i18n ( "<qt>Failed to remove the subresource <b>%1</b>. The "
-               "reason could be that it is a built-in one which cannot "
-               "be removed, or that the removal of the underlying storage "
-               "folder failed.</qt>", item->text( 0 ) ) );
-    }
-    return;
-  } else {
-    mCalendar->resourceManager()->remove( item->resource() );
-    delete item;
-  }
-  updateResourceList();
-  emit resourcesChanged();
-}
-
-void AkonadiCollectionView::editResource()
-{
-  bool ok = false;
-  ResourceItem *item = currentItem();
-  if ( !item ) return;
-  ResourceCalendar *resource = item->resource();
-  if ( item->isSubresource() ) {
-    if ( resource->type() == "imap" || resource->type() == "scalix" ) {
-      QString identifier = item->resourceIdentifier();
-      const QString newResourceName =
-        KInputDialog::getText( i18n( "Rename Subresource" ),
-                               i18n( "Please enter a new name for the subresource" ),
-                               item->text(0),
-                               &ok, this );
-      if ( !ok )return;
-      QDBusConnection bus = QDBusConnection::sessionBus();
-      QDBusInterface *interface =
-        new QDBusInterface( "org.kde.kmail",
-                            "/Groupware",
-                            "org.kde.kmail.groupware",
-                            bus,
-                            this );
-      QDBusReply<int> reply =
-        interface->call( "changeResourceUIName", identifier, newResourceName );
-      if ( !reply.isValid() ) {
-        kDebug() << "DBUS Call changeResourceUIName() failed ";
-      }
-    } else {
-      const QString subResourceName = resource->labelForSubresource( item->resourceIdentifier() );
-      KMessageBox::sorry( this, i18n ( "<qt>Cannot edit the subresource <b>%1</b>.</qt>", subResourceName ) );
-    }
-  } else {
-    QPointer<KRES::ConfigDialog> dlg =
-      new KRES::ConfigDialog( this, QString( "calendar" ), resource );
-    if ( dlg->exec() ) {
-      item->setText( 0, resource->resourceName() );
-      mCalendar->resourceManager()->change( resource );
-    }
-    delete dlg;
-  }
-  emitResourcesChanged();
-}
-
-ResourceItem *AkonadiCollectionView::findItem( ResourceCalendar *r )
-{
-  QList<QTreeWidgetItem *> items = mListView->findItems( "*", Qt::MatchWildcard );
-  foreach ( QTreeWidgetItem *i, items ) {
-    ResourceItem *item = static_cast<ResourceItem *>( i );
-    if ( item->resource() == r )return item;
-  }
-  return 0;
-}
-
-ResourceItem *AkonadiCollectionView::findItemByIdentifier( const QString &id )
-{
-  QList<QTreeWidgetItem *>items = mListView->findItems( "*", Qt::MatchWildcard | Qt::MatchRecursive );
-  foreach ( QTreeWidgetItem *i, items ) {
-    ResourceItem *item = static_cast<ResourceItem *>( i );
-    if ( item->resourceIdentifier() == id )return item;
-  }
-  return 0;
-}
-
-void AkonadiCollectionView::showContextMenu( const QPoint &pos )
-{
-  QTreeWidgetItem *i = mListView->itemAt( pos );
-  if ( !i ) { // No item clicked.
-    // Creation of menu entries not specific to one item
-    QMenu *menu = new QMenu( this );
-    menu->addAction( i18n( "&Add Resource..." ), this, SLOT(addResource()) );
-    menu->popup( mapToGlobal( pos ) );
-    mSelectedParent = 0;
-    return;
-  }
-  KCal::CalendarResourceManager *manager = mCalendar->resourceManager();
-  ResourceItem *item = static_cast<ResourceItem *>( i );
-  mSelectedParent = item;
-  QMenu *menu = new QMenu( this );
-  connect( menu, SIGNAL(aboutToHide()), menu, SLOT(deleteLater()) );
-  if ( item ) {
-    QAction *reloadAction = menu->addAction(
-      i18nc( "reload the resource", "Re&load" ), this, SLOT(reloadResource()) );
-    reloadAction->setEnabled( item->resource()->isActive() );
-    QAction *saveAction = menu->addAction(
-      i18nc( "save the resource", "&Save" ), this, SLOT(saveResource()) );
-    saveAction->setEnabled( item->resource()->isActive() && !item->resource()->readOnly() );
-    menu->addSeparator();
-    menu->addAction( i18n( "Show &Info" ), this, SLOT(showInfo()) );
-    //FIXME: This is better on the resource dialog
-    if ( KOPrefs::instance()->agendaViewColors() != KOPrefs::CategoryOnly ) {
-      QMenu *assignMenu = menu->addMenu( i18n( "Resource Colors" ) );
-      assignMenu->addAction( i18n( "&Assign Color..." ), this, SLOT(assignColor()) );
-      if ( item->resourceColor().isValid() ) {
-        assignMenu->addAction( i18n( "&Disable Color" ), this, SLOT(disableColor()) );
-      }
-    }
-    menu->addAction( i18n( "&Edit..." ), this, SLOT(editResource()) );
-    menu->addAction( i18n( "&Remove" ), this, SLOT(removeResource()) );
-    if ( item->resource() != manager->standardResource() ) {
-      menu->addSeparator();
-      menu->addAction( i18n( "Use as &Default Calendar" ), this, SLOT(setStandard()) );
-    }
-    menu->addSeparator();
-  }
-  QString label;
-  if ( item->isSubresource() || item->resource()->canHaveSubresources() ) {
-    label = i18n( "&Add Subresource..." );
-  } else {
-    label = i18n( "&Add Resource..." );
-  }
-  menu->addAction( label, this, SLOT(addResource()) );
-  menu->popup( mListView->mapToGlobal( pos ) );
-}
-
-void AkonadiCollectionView::assignColor()
-{
-  ResourceItem *item = currentItem();
-  if ( !item )return;
-  // A color without initialized is a color invalid
-  QColor myColor;
-  KCal::ResourceCalendar *cal = item->resource();
-  QString identifier = cal->identifier();
-  if ( item->isSubresource() )identifier = item->resourceIdentifier();
-  QColor defaultColor = KOPrefs::instance()->resourceColor( identifier );
-  int result = KColorDialog::getColor( myColor, defaultColor );
-  if ( result == KColorDialog::Accepted ) {
-    KOPrefs::instance()->setResourceColor( identifier, myColor );
-    item->setResourceColor( myColor );
-    item->update();
-    emitResourcesChanged();
-  }
-}
-
-void AkonadiCollectionView::disableColor()
-{
-  ResourceItem *item = currentItem();
-  if ( !item )return;
-  QColor colorInvalid;
-  KCal::ResourceCalendar *cal = item->resource();
-  QString identifier = cal->identifier();
-  if ( item->isSubresource() )identifier = item->resourceIdentifier();
-  KOPrefs::instance()->setResourceColor( identifier, colorInvalid );
-  item->setResourceColor( colorInvalid );
-  item->update();
-  emitResourcesChanged();
-}
-void AkonadiCollectionView::showInfo()
-{
-  ResourceItem *item = currentItem();
-  if ( !item )return;
-  QString txt = "<qt>" + item->resource()->infoText() + "</qt>";
-  KMessageBox::information( this, txt );
-}
-
-void AkonadiCollectionView::reloadResource()
-{
-  ResourceItem *item = currentItem();
-  if ( !item )return;
-  item->setIsReloading( true );
-  item->resource()->load();
-  item->setIsReloading( false );
-}
-
-void AkonadiCollectionView::saveResource()
-{
-  ResourceItem *item = currentItem();
-  if ( !item )return;
-  ResourceCalendar *r = item->resource();
-  r->save();
-}
-
-void AkonadiCollectionView::setStandard()
-{
-  ResourceItem *item = currentItem();
-  if ( !item )return;
-  ResourceCalendar *r = item->resource();
-  KCal::CalendarResourceManager *manager = mCalendar->resourceManager();
-  manager->setStandardResource( r );
-  updateResourceList();
-}
-
-void AkonadiCollectionView::updateResourceList()
-{
-  ResourceCalendar *stdRes = mCalendar->resourceManager()->standardResource();
-  QList<QTreeWidgetItem *> items = mListView->findItems( "*", Qt::MatchWildcard );
-  foreach ( QTreeWidgetItem *i, items ) {
-    ResourceItem *item = static_cast<ResourceItem *>( i );
-    item->setStandardResource( item->resource() == stdRes );
-  }
-}
-
-void AkonadiCollectionView::requestClose( ResourceCalendar *r )
-{
-  mResourcesToClose.append( r );
-}
-
-void AkonadiCollectionView::slotItemClicked( QTreeWidgetItem *i, int )
-{
-  ResourceItem *item = static_cast<ResourceItem *>( i );
-  if ( item )item->stateChange( item->checkState( 0 ) == Qt::Checked );
-}
-
-void AkonadiCollectionView::currentChanged()
-{
-  ResourceItem *i = currentItem();
-  mDeleteButton->setEnabled( i != 0 );
-  mEditButton->setEnabled( i != 0 );
-}
-#endif

@@ -131,6 +131,7 @@ class KCal::AkonadiCalendar::Private : public QObject
 
     void clear()
     {
+      kDebug();
 /*
       mEvents.clear();
       mTodos.clear();
@@ -143,6 +144,7 @@ class KCal::AkonadiCalendar::Private : public QObject
 
     bool addIncidence( Incidence *incidence )
     {
+      kDebug();
       Akonadi::CollectionDialog dlg( 0 );
       dlg.setMimeTypeFilter( QStringList() << QString::fromLatin1( "text/calendar" ) );
       if ( ! dlg.exec() ) {
@@ -165,6 +167,7 @@ class KCal::AkonadiCalendar::Private : public QObject
 
     bool deleteIncidence( Incidence *incidence )
     {
+      kDebug();
       m_changes.removeAll( incidence->uid() ); //abort changes to this incidence cause we will just delete it
       Q_ASSERT( m_itemMap.contains( incidence->uid() ) );
       Akonadi::Item item = m_itemMap[ incidence->uid() ]->m_item;

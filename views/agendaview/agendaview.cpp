@@ -26,13 +26,14 @@ AgendaView::AgendaView( Calendar *cal, QWidget *parent )
 {
   KCal::AkonadiCalendar *calres = dynamic_cast<KCal::AkonadiCalendar *>( cal );
   if ( calres ) {
-//sebsauer; needed?
+#if 0 //not needed any longer
     connect( calres, SIGNAL(signalResourceAdded(ResourceCalendar *)),
              SLOT(setUpdateNeeded()) );
     connect( calres, SIGNAL(signalResourceModified(ResourceCalendar *)),
              SLOT(setUpdateNeeded()) );
     connect( calres, SIGNAL(signalResourceDeleted(ResourceCalendar *)),
              SLOT(setUpdateNeeded()) );
+#endif
   }
 }
 
