@@ -117,11 +117,11 @@ void AlarmDockWindow::slotUpdate( int reminders )
   mSuspendAll->setEnabled( actif );
   mDismissAll->setEnabled( actif );
   if ( actif ) {
-    setToolTip( "korgac", mName, i18ncp( "@info:tooltip",
+    setToolTip( "korgac", mName, i18ncp( "@info:status",
                         "There is 1 active reminder.",
                         "There are %1 active reminders.", reminders ) );
   } else {
-    setToolTip( "korgac", mName, i18nc( "@info:tooltip", "No active reminders." ) );
+    setToolTip( "korgac", mName, i18nc( "@info:status", "No active reminders." ) );
   }
 }
 

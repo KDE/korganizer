@@ -31,7 +31,7 @@
 
 #include <libkdepim/kdateedit.h>
 
-#include <KCal/Calendar>
+#include <kcal/calendar.h>
 
 SearchDialog::SearchDialog( Calendar *calendar, QWidget *parent )
   : KDialog( parent )

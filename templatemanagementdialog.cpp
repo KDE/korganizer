@@ -50,7 +50,8 @@ TemplateManagementDialog::TemplateManagementDialog(
   QWidget *parent, const QStringList &templates, const QString &type )
   : KDialog( parent ), m_templates( templates ), m_type( type ), m_changed( false )
 {
-  setCaption( i18n( "Manage %1 Templates", m_type ) );
+  QString m_type_translated = i18n( qPrintable( m_type ) );
+  setCaption( i18n( "Manage %1 Templates", m_type_translated ) );
   setButtons( Ok | Cancel | Help );
   setObjectName( "template_management_dialog" );
   setHelp( "entering-data-events-template-buttons", "korganizer" );
@@ -89,10 +90,11 @@ void TemplateManagementDialog::slotAddTemplate()
 {
   bool ok;
   bool duplicate = false;
+  QString m_type_translated = i18n( qPrintable( m_type ) );
   const QString newTemplate = KInputDialog::getText(
     i18n( "Template Name" ),
     i18n( "Please enter a name for the new template:" ),
-    i18n( "New %1 Template", m_type ), &ok );
+    i18n( "New %1 Template", m_type_translated ), &ok );
   if ( newTemplate.isEmpty() || !ok ) {
     return;
   }
