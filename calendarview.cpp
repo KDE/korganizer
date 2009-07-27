@@ -1009,7 +1009,8 @@ void CalendarView::newEvent( const QString &summary, const QString &description,
 
 void CalendarView::newTodo( const QString &summary, const QString &description,
                             const QStringList &attachments, const QStringList &attendees,
-                            const QStringList &attachmentMimetypes, bool inlineAttachment )
+                            const QStringList &attachmentMimetypes,
+                            bool inlineAttachment, bool isTask )
 {
   kdDebug(5850) << k_funcinfo << endl;
   KOTodoEditor *todoEditor = mDialogManager->getTodoEditor();
@@ -1018,6 +1019,7 @@ void CalendarView::newTodo( const QString &summary, const QString &description,
   todoEditor->setTexts( summary, description );
   todoEditor->addAttachments( attachments, attachmentMimetypes, inlineAttachment );
   todoEditor->addAttendees( attendees );
+  todoEditor->selectCreateTask( isTask );
   todoEditor->show();
 }
 

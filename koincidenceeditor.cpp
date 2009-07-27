@@ -58,7 +58,7 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
                                       Calendar *calendar, QWidget *parent )
   : KDialogBase( Tabbed, caption, Ok | Apply | Cancel | Default, Ok,
                  parent, 0, false, false ),
-    mAttendeeEditor( 0 ), mIsCounter( false )
+    mAttendeeEditor( 0 ), mIsCounter( false ), mIsCreateTask( false )
 {
   // Set this to be the group leader for all subdialogs - this means
   // modal subdialogs will only affect this dialog, not the other windows
@@ -369,13 +369,23 @@ void KOIncidenceEditor::addAttendees( const QStringList &attendees )
   }
 }
 
+void KOIncidenceEditor::selectCreateTask( bool enable )
+{
+  mIsCreateTask = enable;
+  if ( mIsCreateTask ) {
+    setCaption( i18n( "Create to-do" ) );
+    setButtonOK( i18n( "Create to-do" ) );
+    showButtonApply( false );
+  }
+}
+
 void KOIncidenceEditor::selectInvitationCounterProposal(bool enable)
 {
   mIsCounter = enable;
   if ( mIsCounter ) {
     setCaption( i18n( "Counter proposal" ) );
     setButtonOK( i18n( "Counter proposal" ) );
-    enableButtonApply( false );
+    showButtonApply( false );
   }
 }
 

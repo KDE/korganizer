@@ -189,7 +189,8 @@ class KDE_EXPORT ActionManager : public QObject, public KCalendarIface
                          const QString& uri,
                          const QString& file,
                          const QStringList& attendees,
-                         const QString& attachmentMimetype );
+                         const QString& attachmentMimetype,
+                         bool isTask );
 
     void openJournalEditor( const QDate& date );
     void openJournalEditor( const QString& text, const QDate& date );
