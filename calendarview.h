@@ -399,7 +399,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
                   const QStringList &attachments=QStringList(),
                   const QStringList &attendees=QStringList(),
                   const QStringList &attachmentMimetypes=QStringList(),
-                  bool inlineAttachment=false );
+                  bool inlineAttachment=false, bool createTask=false );
 
     void newJournal();
     void newJournal( const QDate &date );
@@ -605,10 +605,10 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     /**
       Returns the best guess at the current active date in the view.
 
-      @param fallbackToToday If guessing doesn't work, some views will prefer 
+      @param fallbackToToday If guessing doesn't work, some views will prefer
                              today to be returned instead of the first select date
                              in the day matrix, Journal view for example.
-      
+
     */
     QDate activeDate( bool fallbackToToday = false );
 

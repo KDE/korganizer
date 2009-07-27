@@ -58,6 +58,7 @@
       <arg name="file" type="s" direction="in"/>
       <arg name="attendees" type="as" direction="in"/>
       <arg name="attachmentMimetype" type="s" direction="in"/>
+      <arg name="isTask" type="b" direction="in"/>
     </method>
     <method name="openJournalEditor">
       <arg name="date" type="(iii)" direction="in"/>
