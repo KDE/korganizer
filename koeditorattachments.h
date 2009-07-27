@@ -26,23 +26,56 @@
 #define KOEDITORATTACHMENTS_H
 
 #include <qwidget.h>
+#include <qmap.h>
+#include <kdialogbase.h>
+#include <kmimetype.h>
 #include <kurl.h>
 #include <kiconview.h>
 
 #include <set>
+
+class AttachmentListItem;
+class AttachmentIconView;
 
 namespace KCal {
 class Incidence;
 class Attachment;
 }
 
+class QCheckBox;
 class QIconViewItem;
-class AttachmentIconView;
+class QLabel;
 class QMimeSource;
 class QPushButton;
 class QPopupMenu;
+
 class KAction;
+class KLineEdit;
+class KURLRequester;
 class KTempDir;
+
+class AttachmentEditDialog : public KDialogBase
+{
+  Q_OBJECT
+  public:
+    AttachmentEditDialog( AttachmentListItem *item, QWidget *parent=0 );
+
+    void accept();
+
+  protected slots:
+    void urlSelected( const QString &url );
+    void urlChanged( const QString & url );
+    virtual void slotApply();
+
+  private:
+    friend class KOEditorAttachments;
+    KMimeType::Ptr mMimeType;
+    AttachmentListItem *mItem;
+    QLabel *mTypeLabel, *mIcon;
+    QCheckBox *mInline;
+    KLineEdit *mLabelEdit;
+    KURLRequester *mURLRequester;
+};
 
 class KOEditorAttachments : public QWidget
 {
@@ -52,9 +85,14 @@ class KOEditorAttachments : public QWidget
                          const char *name = 0 );
     ~KOEditorAttachments();
 
-    void addAttachment( const KURL &uri,
-                        const QString &mimeType = QString::null, bool asUri = true );
+    void addAttachment( const QString &uri,
+                        const QString &mimeType = QString(),
+                        const QString &label = QString(),
+                        bool binary = false );
     void addAttachment( KCal::Attachment *attachment );
+    void addAttachment( const QByteArray &data,
+                        const QString &mimeType = QString(),
+                        const QString &label = QString() );
 
     /** Set widgets to default values */
     void setDefaults();
@@ -83,14 +121,22 @@ class KOEditorAttachments : public QWidget
   signals:
     void openURL( const KURL &url );
 
+  protected:
+    enum {
+      DRAG_COPY = 0,
+      DRAG_LINK = 1,
+      DRAG_CANCEL = 2
+    };
+
   private:
     friend class AttachmentIconView;
     void handlePasteOrDrop( QMimeSource* source );
-
+    QString randomString( int length ) const;
     AttachmentIconView *mAttachments;
     QPushButton *mRemoveBtn;
     QPopupMenu *mContextMenu, *mAddMenu;
     KAction *mOpenAction, *mCopyAction, *mCutAction;
+    KAction *mDeleteAction, *mEditAction;
 };
 
 
@@ -101,7 +147,8 @@ class AttachmentIconView : public KIconView
   friend class KOEditorAttachments;
   public:
     AttachmentIconView( KOEditorAttachments* parent=0 );
-
+    KURL tempFileForAttachment( KCal::Attachment *attachment );
+    QDragObject *mimeData();
     ~AttachmentIconView();
 
   protected:
@@ -118,6 +165,7 @@ class AttachmentIconView : public KIconView
 
   private:
     std::set<KTempDir*> mTempDirs;
+    QMap<KCal::Attachment *, KURL> mTempFiles;
     KOEditorAttachments* mParent;
 };
 
