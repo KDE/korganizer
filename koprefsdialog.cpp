@@ -226,51 +226,6 @@ class KOPrefsDialogTime : public KPrefsModule
 
       QGridLayout *datetimeLayout = new QGridLayout( datetimeGroupBox );
 
-      KHBox *timeZoneBox = new KHBox( regionalPage );
-      datetimeLayout->addWidget( timeZoneBox, 0, 0, 1, 2 );
-
-      QLabel *timeZoneLabel = new QLabel( i18nc( "@label", "Time zone:" ), timeZoneBox );
-      QString whatsThis = i18nc( "@info:whatsthis",
-                                 "Select your time zone from the list of "
-                                 "locations on this drop down box. If your "
-                                 "city is not listed, select one which shares "
-                                 "the same time zone. KOrganizer will "
-                                 "automatically adjust for daylight savings." );
-      timeZoneLabel->setWhatsThis( whatsThis );
-      mTimeZoneCombo = new KComboBox( timeZoneBox );
-
-      connect( mTimeZoneCombo, SIGNAL(activated(int)), SLOT(slotWidChanged()) );
-
-      QString sCurrentlySet(
-        i18nc( "@item:inlistbox unknown timezone", "Unknown" ) );
-      KTimeZone zone = KSystemTimeZones::local();
-      if ( zone.isValid() ) {
-        sCurrentlySet = zone.name();
-      }
-      // Read all system time zones
-      QStringList list;
-      const KTimeZones::ZoneMap timezones = KSystemTimeZones::zones();
-      for ( KTimeZones::ZoneMap::ConstIterator it = timezones.constBegin();
-            it != timezones.constEnd();  ++it ) {
-        list.append( i18n( it.key().toUtf8() ) );
-        tzonenames << it.key();
-      }
-      list.sort();
-      mTimeZoneCombo->addItem(
-        i18nc( "@item:inlistbox no timezone selected", "[No selection]" ) );
-      mTimeZoneCombo->addItems( list );
-
-      // find the currently set time zone and select it
-      int nCurrentlySet = 0;
-      for ( int i = 0; i < mTimeZoneCombo->count(); ++i ) {
-        if ( mTimeZoneCombo->itemText(i) == sCurrentlySet ) {
-          nCurrentlySet = i;
-          break;
-        }
-      }
-      mTimeZoneCombo->setCurrentIndex( nCurrentlySet );
-      mTimeZoneCombo->setWhatsThis( whatsThis );
-
       KPrefsWidTime *dayBegins =
         addWidTime( KOPrefs::instance()->dayBeginsItem(), regionalPage );
       datetimeLayout->addWidget( dayBegins->label(), 1, 0 );
@@ -441,11 +396,6 @@ class KOPrefsDialogTime : public KPrefsModule
   protected:
     void usrReadConfig()
     {
-      KTimeZone tz = KOPrefs::instance()->timeSpec().timeZone();
-      if ( tz.isValid() ) {
-        setCombo( mTimeZoneCombo, i18n( tz.name().toUtf8() ) );
-      }
-
       mAlarmTimeCombo->setCurrentIndex( KOPrefs::instance()->mAlarmTime );
       for ( int i = 0; i < 7; ++i ) {
         mWorkDays[i]->setChecked( ( 1 << i ) & ( KOPrefs::instance()->mWorkWeekMask ) );
@@ -454,20 +404,6 @@ class KOPrefsDialogTime : public KPrefsModule
 
     void usrWriteConfig()
     {
-      // Find untranslated selected zone
-      QString selectedZone = mTimeZoneCombo->currentText();
-      QStringList::Iterator tz;
-      for ( tz = tzonenames.begin(); tz != tzonenames.end(); ++tz ) {
-        if ( selectedZone == i18n( (*tz).toUtf8() ) ) {
-          selectedZone = *tz;
-          break;
-        }
-      }
-      KTimeZone zone = KSystemTimeZones::zone( selectedZone );
-      if ( zone.isValid() ) {
-        KOPrefs::instance()->setTimeSpec(zone);
-      }
-
       KOPrefs::instance()->mHolidays = ( mHolidayCombo->currentIndex() == 0 ) ?  // (None)
                                        QString() :
                                        mRegionMap[mHolidayCombo->currentText()];
@@ -501,7 +437,6 @@ class KOPrefsDialogTime : public KPrefsModule
     }
 
   private:
-    KComboBox    *mTimeZoneCombo;
     QStringList   tzonenames;
     KComboBox    *mHolidayCombo;
     QMap<QString,QString> mRegionMap;
