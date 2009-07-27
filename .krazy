@@ -1,1 +1,2 @@
-EXTRA kdebug,style
+EXTRA kdebug,style,tipsandthis,camelcase
+STRICT super
