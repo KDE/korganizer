@@ -1337,7 +1337,7 @@ bool KOAgendaItem::event( QEvent *event )
     } else {
       QHelpEvent *helpEvent = static_cast<QHelpEvent*>( event );
       QToolTip::showText( helpEvent->globalPos(),
-                          IncidenceFormatter::toolTipString( mIncidence ),
+                          IncidenceFormatter::toolTipStr( mIncidence, true /*richtext*/, KOPrefs::instance()->timeSpec() ),
                           this );
     }
   }
