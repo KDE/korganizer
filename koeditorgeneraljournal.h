@@ -30,14 +30,10 @@
 
 #include <QDateTime>
 
-class KLineEdit;
-class KSqueezedTextLabel;
-class KTextEdit;
 
 class QBoxLayout;
 class QCheckBox;
 class QLabel;
-class QPushButton;
 class QWidget;
 
 namespace KPIM {

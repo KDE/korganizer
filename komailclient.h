@@ -27,7 +27,6 @@
 
 #include <QString>
 
-class KUrl;
 namespace KCal {
   class IncidenceBase;
 }

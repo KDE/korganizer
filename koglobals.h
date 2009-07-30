@@ -31,7 +31,6 @@
 class KCalendarSystem;
 class KConfig;
 class QPixmap;
-class QIcon;
 namespace KPIM {
   class ReminderClient;
 }

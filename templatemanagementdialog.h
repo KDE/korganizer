@@ -44,7 +44,6 @@
 
 #include <QString>
 
-class QListWidgetItem;
 
 class TemplateManagementDialog: public KDialog
 {

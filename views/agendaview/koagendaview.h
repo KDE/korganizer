@@ -43,16 +43,13 @@ class KOAgenda;
 class KOAgendaItem;
 class KOAgendaView;
 
-class KComboBox;
 class KConfig;
 class KHBox;
 
 class QBoxLayout;
 class QGridLayout;
-class QListWidget;
 class QMenu;
 class QPaintEvent;
-class QPushButton;
 class QSplitter;
 
 namespace KCal {

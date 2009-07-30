@@ -42,7 +42,6 @@ class QLabel;
 class QPushButton;
 class QSpinBox;
 class QStackedWidget;
-class QToolButton;
 class QWidget;
 
 namespace KCal {
