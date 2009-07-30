@@ -125,7 +125,7 @@ bool IncidenceChanger::deleteIncidence( Incidence *incidence )
         }
       }
 
-      if ( notifyOrganizer ) {
+      if ( !KOGroupware::instance()->doNotNotify() && notifyOrganizer ) {
         KCal::MailScheduler scheduler( mCalendar );
         scheduler.performTransaction( tmp, KCal::iTIPReply );
       }
@@ -338,12 +338,12 @@ bool IncidenceChanger::changeIncidence( Incidence *oldinc, Incidence *newinc,
 bool IncidenceChanger::addIncidence( Incidence *incidence, QWidget *parent )
 {
   kDebug() << "\"" << incidence->summary() << "\"";
-  CalendarResources *stdcal = dynamic_cast<CalendarResources*>( mCalendar );                                                               
-  if( stdcal && !stdcal->hasCalendarResources() ) { 
-    KMessageBox::sorry( parent, i18n( "No resources found. We can not add event." ) );                                                      
+  CalendarResources *stdcal = dynamic_cast<CalendarResources*>( mCalendar );
+  if( stdcal && !stdcal->hasCalendarResources() ) {
+    KMessageBox::sorry( parent, i18n( "No resources found. We can not add event." ) );
 
-    return false;                                                                                                                          
-  }  
+    return false;
+  }
 
   // FIXME: This is a nasty hack, since we need to set a parent for the
   //        resource selection dialog. However, we don't have any UI methods
