@@ -73,8 +73,8 @@ KOGroupware *KOGroupware::instance()
 }
 
 
- KOGroupware::KOGroupware( CalendarView* view, KCal::CalendarResources* cal )
-   : QObject( 0, "kmgroupware_instance" ), mView( view ), mCalendar( cal )
+KOGroupware::KOGroupware( CalendarView* view, KCal::CalendarResources* cal )
+   : QObject( 0, "kmgroupware_instance" ), mView( view ), mCalendar( cal ), mDoNotNotify( false )
 {
   // Set up the dir watch of the three incoming dirs
   KDirWatch* watcher = KDirWatch::self();
@@ -296,9 +296,8 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
   } else if( incidence->type() == "Event" ) {
     QString txt;
     if ( statusChanged && method == Scheduler::Request ) {
-      txt = i18n( "Your status as an attendee of this event "
-          "changed. Do you want to send a status update to the "
-          "organizer of this event?" );
+      txt = i18n( "Your status as an attendee of this event changed. "
+                  "Do you want to send a status update to the event organizer?" );
       method = Scheduler::Reply;
       rc = KMessageBox::questionYesNo( parent, txt, QString::null, i18n("Send Update"), i18n("Do Not Send") );
     } else {
@@ -318,24 +317,27 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
           return true;
         }
 
-        txt = i18n( "You are not the organizer of this event, "
-            "but you were supposed to attend. Do you really want "
-            "to delete it and notify the organizer?" );
+        txt = i18n( "You had previously accepted an invitation to this event. "
+                    "Do you want to send an updated response to the organizer "
+                    "declining the invitation?" );
+        rc = KMessageBox::questionYesNo(
+          parent, txt, i18n( "Group Scheduling Email" ),
+          KGuiItem( i18n( "Send Update" ) ), KGuiItem( i18n( "Do Not Send" ) ) );
+        setDoNotNotify( rc == KMessageBox::No );
       } else {
-        txt = i18n( "You are not the organizer of this event. "
-            "Editing it will bring your calendar out of sync "
-            "with the organizers calendar. Do you really want "
-            "to edit it?" );
+        txt = i18n( "You are not the organizer of this event. Editing it will "
+                    "bring your calendar out of sync with the organizer's calendar. "
+                    "Do you really want to edit it?" );
+        rc = KMessageBox::warningYesNo( parent, txt );
+        return ( rc == KMessageBox::Yes );
       }
-      rc = KMessageBox::warningYesNo( parent, txt );
-      return ( rc == KMessageBox::Yes );
     }
   } else {
     kdWarning(5850) << "Groupware messages for Journals are not implemented yet!" << endl;
     return true;
   }
 
-  if( rc == KMessageBox::Yes ) {
+  if ( rc == KMessageBox::Yes ) {
     // We will be sending out a message here. Now make sure there is
     // some summary
     if( incidence->summary().isEmpty() )
@@ -346,10 +348,11 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
     scheduler.performTransaction( incidence, method );
 
     return true;
-  } else if( rc == KMessageBox::No )
+  } else if ( rc == KMessageBox::No ) {
     return true;
-  else
+  } else {
     return false;
+  }
 }
 
 void KOGroupware::sendCounterProposal(KCal::Calendar *calendar, KCal::Event * oldEvent, KCal::Event * newEvent) const

@@ -33,8 +33,6 @@
 #include <kmessagebox.h>
 #include <klocale.h>
 
-
-
 bool IncidenceChanger::beginChange( Incidence * incidence )
 {
   if ( !incidence ) return false;
@@ -49,7 +47,7 @@ bool IncidenceChanger::sendGroupwareMessage( Incidence *incidence, KCal::Schedul
     emit schedule( method, incidence );
     return true;
   } else if( KOPrefs::instance()->mUseGroupwareCommunication ) {
-  // FIXME: Find a widget to use as parent, instead of 0
+    // FIXME: Find a widget to use as parent, instead of 0
     return KOGroupware::instance()->sendICalMessage( 0, method, incidence, deleting );
   }
   return true;
@@ -113,7 +111,7 @@ kdDebug(5850)<<"IncidenceChanger::deleteIncidence for incidence \""<<incidence->
         }
       }
 
-      if ( notifyOrganizer ) {
+      if ( !KOGroupware::instance()->doNotNotify() && notifyOrganizer ) {
           KCal::MailScheduler scheduler( mCalendar );
           scheduler.performTransaction( tmp, Scheduler::Reply );
       }
@@ -316,11 +314,11 @@ kdDebug(5850)<<"IncidenceChanger::changeIncidence for incidence \""<<newinc->sum
 
 bool IncidenceChanger::addIncidence( Incidence *incidence, QWidget *parent )
 {
-  CalendarResources *stdcal = dynamic_cast<CalendarResources*>( mCalendar );                                                               
-  if( stdcal && !stdcal->hasCalendarResources() ) {                                                                                        
-    KMessageBox::sorry( parent, i18n( "No resources found. We can not add event." ));                                                      
-    return false;                                                                                                                          
-  }  
+  CalendarResources *stdcal = dynamic_cast<CalendarResources*>( mCalendar );
+  if( stdcal && !stdcal->hasCalendarResources() ) {
+    KMessageBox::sorry( parent, i18n( "No resources found. We can not add event." ));
+    return false;
+  }
 kdDebug(5850)<<"IncidenceChanger::addIncidence for incidence \""<<incidence->summary()<<"\""<<endl;
   // FIXME: This is a nasty hack, since we need to set a parent for the
   //        resource selection dialog. However, we don't have any UI methods
