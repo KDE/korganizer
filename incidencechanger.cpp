@@ -115,6 +115,8 @@ kdDebug(5850)<<"IncidenceChanger::deleteIncidence for incidence \""<<incidence->
           KCal::MailScheduler scheduler( mCalendar );
           scheduler.performTransaction( tmp, Scheduler::Reply );
       }
+      //reset the doNotNotify flag
+      KOGroupware::instance()->setDoNotNotify( false );
     }
     emit incidenceDeleted( incidence );
   }
