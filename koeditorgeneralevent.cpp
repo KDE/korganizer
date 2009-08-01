@@ -85,9 +85,10 @@ void KOEditorGeneralEvent::initTime( QWidget *parent, QBoxLayout *topLayout )
   QBoxLayout *timeLayout = new QVBoxLayout();
   topLayout->addItem( timeLayout );
 
-  QGroupBox *timeGroupBox = new QGroupBox( i18n( "Date && Time" ), parent );
+  QGroupBox *timeGroupBox = new QGroupBox( i18nc( "@title:group", "Date && Time" ), parent );
   timeGroupBox->setWhatsThis(
-    i18n( "Sets options related to the date and time of the event or to-do." ) );
+    i18nc( "@info:whatsthis",
+           "Sets options related to the date and time of the event or to-do." ) );
   timeLayout->addWidget( timeGroupBox );
 
   QGridLayout *layoutTimeBox = new QGridLayout( timeGroupBox );
@@ -138,7 +139,7 @@ void KOEditorGeneralEvent::initTime( QWidget *parent, QBoxLayout *topLayout )
   mStartSpec = mTimeZoneComboStart->selectedTimeSpec();
   mEndSpec = mTimeZoneComboEnd->selectedTimeSpec();
 
-  mEndDateLabel = new QLabel( i18n( "&End:" ), timeGroupBox );
+  mEndDateLabel = new QLabel( i18nc( "@label", "&End:" ), timeGroupBox );
   layoutTimeBox->addWidget( mEndDateLabel, 1, 0 );
 
   mEndDateEdit = new KPIM::KDateEdit( timeGroupBox );
@@ -154,7 +155,7 @@ void KOEditorGeneralEvent::initTime( QWidget *parent, QBoxLayout *topLayout )
     i18nc( "@info:whatsthis", "Select the starting time for this event." ) );
   layoutTimeBox->addWidget( mEndTimeEdit, 1, 2 );
 
-  mHasTimeCheckbox = new QCheckBox( i18n( "T&ime associated" ), timeGroupBox );
+  mHasTimeCheckbox = new QCheckBox( i18nc( "@option:check", "T&ime associated" ), timeGroupBox );
   layoutTimeBox->addWidget( mHasTimeCheckbox, 0, 4 );
   connect( mHasTimeCheckbox, SIGNAL(toggled(bool)), SLOT(slotHasTimeCheckboxToggled(bool)) );
 
@@ -182,12 +183,13 @@ void KOEditorGeneralEvent::initTime( QWidget *parent, QBoxLayout *topLayout )
   layoutTimeBox->addLayout( recLayout, 2, 1, 1, 3 );
   mRecurrenceSummary = new QLabel( QString(), timeGroupBox );
   recLayout->addWidget( mRecurrenceSummary );
-  QPushButton *recEditButton = new QPushButton( i18n( "Edit..." ), timeGroupBox );
+  QPushButton *recEditButton =
+    new QPushButton( i18nc( "@action:button", "Edit..." ), timeGroupBox );
   recLayout->addWidget( recEditButton );
   connect( recEditButton, SIGNAL(clicked()), SIGNAL(editRecurrence()) );
   recLayout->addStretch( 1 );
 
-  QLabel *label = new QLabel( i18n( "Reminder:" ), timeGroupBox );
+  QLabel *label = new QLabel( i18nc( "@label", "Reminder:" ), timeGroupBox );
   layoutTimeBox->addWidget( label, 3, 0 );
   QBoxLayout *alarmLineLayout = new QHBoxLayout();
   layoutTimeBox->addLayout( alarmLineLayout, 3, 1, 1, 3 );
@@ -209,7 +211,7 @@ void KOEditorGeneralEvent::initClass( QWidget *parent, QBoxLayout *topLayout )
   classLayout->setSpacing( topLayout->spacing() );
   topLayout->addItem( classLayout );
 
-  QLabel *freeTimeLabel = new QLabel( i18n( "S&how time as:" ), parent );
+  QLabel *freeTimeLabel = new QLabel( i18nc( "@label", "S&how time as:" ), parent );
   QString whatsThis =
     i18nc( "@info:whatsthis",
            "Sets how this time will appear on your Free/Busy information." );
@@ -221,8 +223,8 @@ void KOEditorGeneralEvent::initClass( QWidget *parent, QBoxLayout *topLayout )
   mFreeTimeCombo->setToolTip(
     i18nc( "@info:tooltip", "Set this event as Busy or Free time" ) );
   mFreeTimeCombo->setWhatsThis( whatsThis );
-  mFreeTimeCombo->addItem( i18nc( "show event as busy time", "Busy" ) );
-  mFreeTimeCombo->addItem( i18nc( "show event as free time", "Free" ) );
+  mFreeTimeCombo->addItem( i18nc( "@item:inlistbox show event as busy time", "Busy" ) );
+  mFreeTimeCombo->addItem( i18nc( "@item:inlistbox show event as free time", "Free" ) );
   classLayout->addWidget( mFreeTimeCombo );
   freeTimeLabel->setBuddy( mFreeTimeCombo );
 }
@@ -242,7 +244,8 @@ void KOEditorGeneralEvent::initInvitationBar( QWidget *parent, QBoxLayout *layou
   barLayout->addWidget( label );
   barLayout->addStretch( 1 );
 
-  QPushButton *button = new QPushButton( i18n( "Accept" ), mInvitationBar );
+  QPushButton *button =
+    new QPushButton( i18nc( "@action:button", "Accept" ), mInvitationBar );
   button->setToolTip(
     i18nc( "@info:tooltip", "Accept the invitation" ) );
   button->setWhatsThis(
@@ -252,7 +255,7 @@ void KOEditorGeneralEvent::initInvitationBar( QWidget *parent, QBoxLayout *layou
   connect( button, SIGNAL(clicked()), mInvitationBar, SLOT(hide()) );
   barLayout->addWidget( button );
 
-  button = new QPushButton( i18n( "Decline" ), mInvitationBar );
+  button = new QPushButton( i18nc( "@action:button", "Decline" ), mInvitationBar );
   button->setToolTip(
     i18nc( "@info:tooltip", "Decline the invitation" ) );
   button->setWhatsThis(
@@ -522,8 +525,8 @@ void KOEditorGeneralEvent::setDuration()
 
     if ( !mHasTimeCheckbox->isChecked() ) {
       int daydiff = startDateTime.date().daysTo( endDateTime.date() ) + 1;
-      tmpStr = i18n( "Duration: " );
-      tmpStr.append( i18np( "1 Day", "%1 Days", daydiff ) );
+      tmpStr = i18nc( "@label", "Duration: " );
+      tmpStr.append( i18ncp( "@label", "1 Day", "%1 Days", daydiff ) );
     } else {
       hourdiff = startDateTime.date().daysTo( endDateTime.date() ) * 24;
       hourdiff += endDateTime.time().hour() - startDateTime.time().hour();
@@ -534,16 +537,16 @@ void KOEditorGeneralEvent::setDuration()
         minutediff += 60;
       }
       if ( hourdiff || minutediff ) {
-        tmpStr = i18n( "Duration: " );
+        tmpStr = i18nc( "@label", "Duration: " );
         if ( hourdiff ){
-          catStr = i18np( "1 hour", "%1 hours", hourdiff );
+          catStr = i18ncp( "@label", "1 hour", "%1 hours", hourdiff );
           tmpStr.append( catStr );
         }
         if ( hourdiff && minutediff ) {
-          tmpStr += i18n( ", " );
+          tmpStr += i18nc( "@label", ", " );
         }
         if ( minutediff ){
-          catStr = i18np( "1 minute", "%1 minutes", minutediff );
+          catStr = i18ncp( "@label", "1 minute", "%1 minutes", minutediff );
           tmpStr += catStr;
         }
       } else {
@@ -553,8 +556,9 @@ void KOEditorGeneralEvent::setDuration()
   }
   mDurationLabel->setText( tmpStr );
   mDurationLabel->setWhatsThis(
-    i18n( "Shows the duration of the event or to-do with the "
-          "current start and end dates and times." ) );
+    i18nc( "@info:whatsthis",
+           "Shows the duration of the event or to-do with the "
+           "current start and end dates and times." ) );
 }
 
 void KOEditorGeneralEvent::emitDateTimeStr()
@@ -569,7 +573,9 @@ void KOEditorGeneralEvent::emitDateTimeStr()
     from = l->formatDateTime( mCurrStartDateTime );
     to = l->formatDateTime( mCurrEndDateTime );
   }
-  QString str = i18n( "From: %1   To: %2   %3", from, to, mDurationLabel->text() );
+  QString str = i18nc( "@label",
+                       "From: %1   To: %2   %3",
+                       from, to, mDurationLabel->text() );
 
   emit dateTimeStrChanged( str );
 }
@@ -578,31 +584,39 @@ bool KOEditorGeneralEvent::validateInput()
 {
   if ( mHasTimeCheckbox->isChecked() ) {
     if ( !mStartTimeEdit->inputIsValid() ) {
-      KMessageBox::sorry( mParent,
-                          i18n( "Please specify a valid start time, for example '%1'.",
-                                KGlobal::locale()->formatTime( QTime::currentTime() ) ) );
+      KMessageBox::sorry(
+        mParent,
+        i18nc( "@info",
+               "Please specify a valid start time, for example '%1'.",
+               KGlobal::locale()->formatTime( QTime::currentTime() ) ) );
       return false;
     }
 
     if ( !mEndTimeEdit->inputIsValid() ) {
-      KMessageBox::sorry( mParent,
-                          i18n( "Please specify a valid end time, for example '%1'.",
-                                KGlobal::locale()->formatTime( QTime::currentTime() ) ) );
+      KMessageBox::sorry(
+        mParent,
+        i18nc( "@info",
+               "Please specify a valid end time, for example '%1'.",
+               KGlobal::locale()->formatTime( QTime::currentTime() ) ) );
       return false;
     }
   }
 
   if ( !mStartDateEdit->date().isValid() ) {
-    KMessageBox::sorry( mParent,
-                        i18n( "Please specify a valid start date, for example '%1'.",
-                              KGlobal::locale()->formatDate( QDate::currentDate() ) ) );
+    KMessageBox::sorry(
+      mParent,
+      i18nc( "@info",
+             "Please specify a valid start date, for example '%1'.",
+             KGlobal::locale()->formatDate( QDate::currentDate() ) ) );
     return false;
   }
 
   if ( !mEndDateEdit->date().isValid() ) {
-    KMessageBox::sorry( mParent,
-                        i18n( "Please specify a valid end date, for example '%1'.",
-                              KGlobal::locale()->formatDate( QDate::currentDate() ) ) );
+    KMessageBox::sorry(
+      mParent,
+      i18nc( "@info",
+             "Please specify a valid end date, for example '%1'.",
+             KGlobal::locale()->formatDate( QDate::currentDate() ) ) );
     return false;
   }
 
@@ -617,8 +631,11 @@ bool KOEditorGeneralEvent::validateInput()
   }
 
   if ( startDt > endDt ) {
-    KMessageBox::sorry( mParent, i18n( "The event ends before it starts.\n"
-                                       "Please correct dates and times." ) );
+    KMessageBox::sorry(
+      mParent,
+      i18nc( "@info",
+             "The event ends before it starts.\n"
+             "Please correct dates and times." ) );
     return false;
   }
 

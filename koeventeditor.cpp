@@ -317,9 +317,10 @@ bool KOEventEditor::processInput()
       if ( mIsCounter ) {
         KMessageBox::information(
           this,
-          i18n( "You didn't change the event, "
-                "thus no counter proposal has been sent to the organizer." ),
-          i18n( "No changes" ) );
+          i18nc( "@info",
+                 "You did not modify the event so no counter proposal has "
+                 "been sent to the organizer." ),
+          i18nc( "@title:window", "No Changes" ) );
       }
     } else {
       //IncidenceChanger::assignIncidence( mEvent, event );
@@ -329,7 +330,8 @@ bool KOEventEditor::processInput()
         // add dummy event at the position of the counter proposal
         Event *event = mEvent->clone();
         event->clearAttendees();
-        event->setSummary( i18n( "My counter proposal for: %1", mEvent->summary() ) );
+        event->setSummary( i18nc( "@item",
+                                  "My counter proposal for: %1", mEvent->summary() ) );
         mChanger->addIncidence( event );
       } else {
         mChanger->changeIncidence( oldEvent, mEvent );
