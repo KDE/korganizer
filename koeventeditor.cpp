@@ -24,34 +24,23 @@
 */
 
 #include "koeventeditor.h"
-#include "koprefs.h"
-#include "koeditorgeneralevent.h"
-#include "koeditoralarms.h"
-#include "koeditorrecurrence.h"
+#include "incidencechanger.h"
 #include "koeditordetails.h"
 #include "koeditorfreebusy.h"
-#include "kogroupware.h"
+#include "koeditorgeneralevent.h"
+#include "koeditorrecurrence.h"
 #include "kohelper.h"
-#include "kodialogmanager.h"
-#include "incidencechanger.h"
+#include "kogroupware.h"
+#include "koprefs.h"
 
-#include <kcal/calendarresources.h>
-#include <kcal/resourcecalendar.h>
-#include <kcal/incidenceformatter.h>
-#include <kcal/calendarlocal.h>
+#include <KCal/CalendarLocal>
+#include <KCal/IncidenceFormatter>
 
-#include <kiconloader.h>
-#include <kdebug.h>
-#include <klocale.h>
-#include <kmessagebox.h>
+#include <KMessageBox>
 
-#include <QFrame>
-#include <QPixmap>
-#include <QPointer>
-#include <QLayout>
-#include <QVBoxLayout>
-#include <QHBoxLayout>
 #include <QBoxLayout>
+#include <QFrame>
+#include <QVBoxLayout>
 
 KOEventEditor::KOEventEditor( Calendar *calendar, QWidget *parent )
   : KOIncidenceEditor( QString(), calendar, parent ),
