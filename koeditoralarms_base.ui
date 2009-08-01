@@ -58,7 +58,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="mOffsetUnit" >
+         <widget class="KComboBox" name="mOffsetUnit" >
           <item>
            <property name="text" >
             <string comment="@item:inlistbox alarm offset expressed in minutes">Minutes</string>
@@ -77,7 +77,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="mBeforeAfter" >
+         <widget class="KComboBox" name="mBeforeAfter" >
           <item>
            <property name="text" >
             <string>Before the Start</string>
@@ -404,7 +404,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="mAppArguments" />
+           <widget class="KLineEdit" name="mAppArguments" />
           </item>
           <item>
            <spacer>

@@ -35,7 +35,7 @@ p, li { white-space: pre-wrap; }
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="mTitle" >
+      <widget class="KLineEdit" name="mTitle" >
        <property name="text" >
         <string>To-do List</string>
        </property>
@@ -360,7 +360,7 @@ p, li { white-space: pre-wrap; }
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="mSortField" >
+         <widget class="KComboBox" name="mSortField" >
           <property name="enabled" >
            <bool>true</bool>
           </property>
@@ -387,7 +387,7 @@ p, li { white-space: pre-wrap; }
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="mSortDirection" >
+         <widget class="KComboBox" name="mSortDirection" >
           <property name="enabled" >
            <bool>true</bool>
           </property>
