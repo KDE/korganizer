@@ -44,7 +44,6 @@
 
 #include <QString>
 
-
 class TemplateManagementDialog: public KDialog
 {
   Q_OBJECT

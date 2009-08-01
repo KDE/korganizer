@@ -30,7 +30,6 @@
 
 #include <QDateTime>
 
-
 class QBoxLayout;
 class QCheckBox;
 class QLabel;

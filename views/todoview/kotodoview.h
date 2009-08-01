@@ -29,7 +29,6 @@
 
 #include "korganizer/baseview.h"
 
-
 namespace KCal {
   class Incidence;
   class Calendar;
