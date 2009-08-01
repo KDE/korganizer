@@ -1162,20 +1162,34 @@ void ActionManager::exportHTML( HTMLExportSettings *settings )
     cdate = cdate.addDays( 1 );
   }
 
+  bool saveStatus;
+  QString errorMessage;
   KUrl dest( settings->outputFile() );
   if ( dest.isLocalFile() ) {
-    mExport.save( dest.toLocalFile() );
+    saveStatus = mExport.save( dest.toLocalFile() );
+    errorMessage = i18n( "Unable to write the output file." );
   } else {
     KTemporaryFile tf;
     tf.open();
     QString tfile = tf.fileName();
-    mExport.save( tfile );
+    saveStatus = mExport.save( tfile );
+    errorMessage = i18n( "Unable to write the temporary file for uploading." );
     if ( !KIO::NetAccess::upload( tfile, dest, view() ) ) {
-      KNotification::event ( KNotification::Error,
-                             i18n( "Could not upload file." ) );
+      saveStatus = false;
+      errorMessage = i18n( "Unable to upload the export file." );
     }
   }
+
   QApplication::restoreOverrideCursor();
+
+  QString saveMessage;
+  if ( saveStatus ) {
+    saveMessage = i18n( "Web page successfully written to \"%1\"", dest.url() );
+  } else {
+    saveMessage = i18n( "Export failed. %1", errorMessage );
+  }
+  KMessageBox::information( dialogParent(), saveMessage,
+               i18nc( "@title:window", "Export Status" ) );
 }
 
 bool ActionManager::saveAsURL( const KUrl &url )
