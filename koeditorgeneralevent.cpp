@@ -48,6 +48,7 @@
 KOEditorGeneralEvent::KOEditorGeneralEvent( Calendar *calendar, QObject *parent )
   : KOEditorGeneral( calendar, parent )
 {
+  setType( "Event" );
   connect( this, SIGNAL(dateTimesChanged(const QDateTime &,const QDateTime &)),
            SLOT(setDuration()) );
   connect( this, SIGNAL(dateTimesChanged(const QDateTime &,const QDateTime &)),

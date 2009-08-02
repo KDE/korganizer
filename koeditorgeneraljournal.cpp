@@ -53,6 +53,7 @@
 KOEditorGeneralJournal::KOEditorGeneralJournal( Calendar *calendar, QObject *parent )
   : KOEditorGeneral( calendar, parent )
 {
+  setType( "Journal" );
 }
 
 KOEditorGeneralJournal::~KOEditorGeneralJournal()

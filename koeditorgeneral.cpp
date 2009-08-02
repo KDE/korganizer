@@ -70,6 +70,7 @@ void FocusLineEdit::focusInEvent ( QFocusEvent *e )
 KOEditorGeneral::KOEditorGeneral( Calendar *calendar, QObject *parent )
   : QObject( parent ), mAttachments( 0 )
 {
+  mType = "Event";
   mAlarmList.setAutoDelete( true );
   mCalendar = calendar;
 }
@@ -315,6 +316,12 @@ void KOEditorGeneral::initAttachments( QWidget *parent, QBoxLayout *topLayout )
   topLayout->addWidget( mAttachments, 1 );
 }
 
+void KOEditorGeneral::setType( const QByteArray &type )
+{
+  // must be "Event", "Todo", "Journal", etc.
+  mType = type;
+}
+
 void KOEditorGeneral::addAttachments( const QStringList &attachments,
                                       const QStringList &mimeTypes,
                                       bool inlineAttachments )
@@ -358,7 +365,7 @@ void KOEditorGeneral::editAlarms()
     }
   }
 
-  QPointer<KOEditorAlarms> dlg = new KOEditorAlarms( &mAlarmList, mAlarmEditButton );
+  QPointer<KOEditorAlarms> dlg = new KOEditorAlarms( mType, &mAlarmList, mAlarmEditButton );
   if ( dlg->exec() != KDialog::Cancel ) {
     updateAlarmWidgets();
   }

@@ -58,6 +58,7 @@
 KOEditorGeneralTodo::KOEditorGeneralTodo( Calendar *calendar, QObject *parent )
   : KOEditorGeneral( calendar, parent )
 {
+  setType( "Todo" );
 }
 
 KOEditorGeneralTodo::~KOEditorGeneralTodo()
