@@ -24,39 +24,25 @@
 */
 
 #include "koeditoralarms.h"
-
-#include <KDebug>
-
-#include <QLayout>
-#include <QPushButton>
-#include <QSpinBox>
-#include <QComboBox>
-#include <QCheckBox>
-#include <QTextEdit>
-#include <QRadioButton>
-
-#include <kurlrequester.h>
-#include <klocale.h>
-
-#include <kcal/alarm.h>
-#include <kcal/incidence.h>
-
-#include <kpimutils/email.h>
+#include <KPIMUtils/Email>
+using namespace KPIMUtils;
 
 class AlarmListViewItem : public QTreeWidgetItem
 {
   public:
     AlarmListViewItem( QTreeWidget *parent, KCal::Alarm *alarm );
     virtual ~AlarmListViewItem();
+    void construct();
     KCal::Alarm *alarm() const
     {
       return mAlarm;
     }
-    void construct();
+
     enum AlarmViewColumns {
       ColAlarmType=0,
       ColAlarmOffset,
       ColAlarmRepeat };
+
   protected:
     KCal::Alarm *mAlarm;
 };
