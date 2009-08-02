@@ -35,7 +35,8 @@ class KOEditorAlarms : public KDialog
 {
   Q_OBJECT
   public:
-    explicit KOEditorAlarms( KCal::Alarm::List *alarms, QWidget *parent = 0 );
+    explicit KOEditorAlarms( const QByteArray &type,
+                             KCal::Alarm::List *alarms, QWidget *parent = 0 );
     ~KOEditorAlarms();
 
   protected slots:
@@ -56,6 +57,7 @@ class KOEditorAlarms : public KDialog
     void readAlarm( KCal::Alarm *alarm );
     void writeAlarm( KCal::Alarm *alarm );
   private:
+    QByteArray mType; // as in the Incidence::type
     KCal::Alarm::List *mAlarms;
     Ui::KOEditorAlarms_base mWidget;
     bool mInitializing;
