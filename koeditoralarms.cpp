@@ -469,6 +469,8 @@ void KOEditorAlarms::init()
     mWidget.mAlarmList->setCurrentItem( mWidget.mAlarmList->topLevelItem( 0 ) );
   }
 
+  mWidget.mAlarmOffset->setFocus();
+
   mInitializing = false;
 }
 
