@@ -26,23 +26,16 @@
 
 #include "koeditorgeneral.h"
 
-#include <QDateTime>
-
-class KComboBox;
-class QBoxLayout;
-class QLabel;
+namespace KCal {
+  class Todo;
+}
+using namespace KCal;
 
 namespace KPIM {
   class KDateEdit;
   class KTimeEdit;
   class KTimeZoneComboBox;
 }
-
-namespace KCal {
-  class Calendar;
-  class Todo;
-}
-using namespace KCal;
 
 class KOEditorGeneralTodo : public KOEditorGeneral
 {
