@@ -766,8 +766,20 @@ void KOEditorAttachments::addAttachment( const QByteArray &data,
                                          const QString &label )
 {
   AttachmentListItem *item = new AttachmentListItem( 0, mAttachments );
+
+  QString nlabel = label;
+  if ( mimeType == "message/rfc822" ) {
+    // mail message. try to set the label from the mail Subject:
+    QString line( data );
+    int index = line.find( "Subject:" );
+    if ( index >= 0 ) {
+      nlabel = line.mid( index, 100 ).remove( "Subject:" ).
+               simplifyWhiteSpace().replace( ' ', '_' ).section( '_', 0, 3 );
+    }
+  }
+
   item->setData( data );
-  item->setLabel( label );
+  item->setLabel( nlabel );
   if ( mimeType.isEmpty() ) {
     item->setMimeType( KMimeType::findByContent( data )->name() );
   } else {
