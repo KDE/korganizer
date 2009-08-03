@@ -38,6 +38,7 @@
 #include <kdebug.h>
 #include <ktoolinvocation.h>
 #include <kconfiggroup.h>
+#include <ksystemtimezone.h>
 
 #include <QRegExp>
 
@@ -96,7 +97,7 @@ void KOEventViewer::setSource( const QUrl &name )
 bool KOEventViewer::appendIncidence( Incidence *incidence )
 {
   addText( IncidenceFormatter::extensiveDisplayStr(
-             incidence, KPIM::KPimPrefs::timeSpec() ) );
+             incidence, KSystemTimeZones::local() ) );
   return true;
 }
 

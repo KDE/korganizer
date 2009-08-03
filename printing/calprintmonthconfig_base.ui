@@ -57,7 +57,7 @@ p, li { white-space: pre-wrap; }
        </widget>
       </item>
       <item>
-       <widget class="QComboBox" name="mFromMonth" >
+       <widget class="KComboBox" name="mFromMonth" >
         <property name="whatsThis" >
          <string>When you want to print more months at once, you can define a month range. This option defines the first month to be printed. Use the option &lt;i>End month&lt;/i> to define the last month in this range.</string>
         </property>
@@ -90,7 +90,7 @@ p, li { white-space: pre-wrap; }
        </widget>
       </item>
       <item>
-       <widget class="QComboBox" name="mToMonth" >
+       <widget class="KComboBox" name="mToMonth" >
         <property name="whatsThis" >
          <string>When you want to print more months at once, you can define a month range. This option defines the first month to be printed. Use the option &lt;i>End month&lt;/i> to define the last month in this range.</string>
         </property>

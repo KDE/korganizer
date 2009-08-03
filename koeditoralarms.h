@@ -24,10 +24,12 @@
 #ifndef KOEDITORALARMS_H
 #define KOEDITORALARMS_H
 
-#include <kdialog.h>
-#include <kcal/alarm.h>
-
 #include "ui_koeditoralarms_base.h"
+
+#include <KCal/Alarm>
+using namespace KCal;
+
+#include <KDialog>
 
 class AlarmListViewItem;
 
@@ -35,7 +37,8 @@ class KOEditorAlarms : public KDialog
 {
   Q_OBJECT
   public:
-    explicit KOEditorAlarms( KCal::Alarm::List *alarms, QWidget *parent = 0 );
+    explicit KOEditorAlarms( const QByteArray &type,
+                             Alarm::List *alarms, QWidget *parent = 0 );
     ~KOEditorAlarms();
 
   protected slots:
@@ -53,10 +56,12 @@ class KOEditorAlarms : public KDialog
 
   protected:
     void init();
-    void readAlarm( KCal::Alarm *alarm );
-    void writeAlarm( KCal::Alarm *alarm );
+    void readAlarm( Alarm *alarm );
+    void writeAlarm( Alarm *alarm );
+
   private:
-    KCal::Alarm::List *mAlarms;
+    QByteArray mType; // as in the Incidence::type
+    Alarm::List *mAlarms;
     Ui::KOEditorAlarms_base mWidget;
     bool mInitializing;
     AlarmListViewItem *mCurrentItem;

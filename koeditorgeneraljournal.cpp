@@ -27,32 +27,28 @@
 
 #include "koeditorgeneraljournal.h"
 #include "koprefs.h"
-#include "koglobals.h"
 
-#include <libkdepim/categoryselectdialog.h>
 #include <libkdepim/kdateedit.h>
 #include <libkdepim/ktimeedit.h>
 
-#include <kcal/journal.h>
+#include <KCal/Journal>
 
-#include <kglobal.h>
-#include <klocale.h>
-#include <kmessagebox.h>
-#include <KSqueezedTextLabel>
+#include <KLocale>
+#include <KMessageBox>
 #include <KRichTextWidget>
+#include <KSqueezedTextLabel>
 
-#include <QDateTime>
 #include <QCheckBox>
 #include <QLabel>
-#include <QLayout>
-#include <QTimer>
-#include <QHBoxLayout>
 #include <QBoxLayout>
+#include <QHBoxLayout>
 #include <QPushButton>
+#include <QTimer>
 
 KOEditorGeneralJournal::KOEditorGeneralJournal( Calendar *calendar, QObject *parent )
   : KOEditorGeneral( calendar, parent )
 {
+  setType( "Journal" );
 }
 
 KOEditorGeneralJournal::~KOEditorGeneralJournal()

@@ -46,7 +46,6 @@ namespace KOrg {
 class IncidenceChangerBase;
 
 class MonthItem;
-class MonthGraphicsItem;
 class ScrollIndicator;
 class MonthCell;
 class MonthGraphicsView;

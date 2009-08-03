@@ -46,7 +46,7 @@
 KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
                                       Calendar *calendar, QWidget *parent )
   : KPageDialog( parent ),
-    mAttendeeEditor( 0 ), mIsCounter( false )
+    mAttendeeEditor( 0 ), mIsCounter( false ), mIsCreateTask( false )
 {
   setFaceType( KPageDialog::Tabbed );
   setCaption( caption );
@@ -405,13 +405,23 @@ void KOIncidenceEditor::addAttendees( const QStringList &attendees )
   }
 }
 
+void KOIncidenceEditor::selectCreateTask( bool enable )
+{
+  mIsCreateTask = enable;
+  if ( mIsCreateTask ) {
+    setCaption( i18nc( "@title:window", "Create to-do" ) );
+    setButtonText( KDialog::Ok, i18nc( "@action:button", "Create to-do" ) );
+    showButton( KDialog::Apply, false );
+  }
+}
+
 void KOIncidenceEditor::selectInvitationCounterProposal( bool enable )
 {
   mIsCounter = enable;
   if ( mIsCounter ) {
     setCaption( i18nc( "@title:window", "Counter proposal" ) );
     setButtonText( KDialog::Ok, i18nc( "@action:button", "Counter proposal" ) );
-    enableButtonApply( false );
+    showButton( KDialog::Apply, false );
   }
 }
 

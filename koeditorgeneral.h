@@ -42,7 +42,6 @@ class QLabel;
 class QPushButton;
 class QSpinBox;
 class QStackedWidget;
-class QToolButton;
 class QWidget;
 
 namespace KCal {
@@ -103,6 +102,7 @@ class KOEditorGeneral : public QObject
   public slots:
     void setCategories( const QStringList &categories );
     void selectCategories();
+    void setType( const QByteArray &type );
     void addAttachments( const QStringList &attachments,
                          const QStringList &mimeTypes = QStringList(),
                          bool inlineAttachment = false );
@@ -155,6 +155,7 @@ class KOEditorGeneral : public QObject
 
   private:
     void toggleDescriptionRichButtons( bool rich );
+    QByteArray mType; // as in Incidence::type()
     KCal::Alarm::List mAlarmList;
 };
 

@@ -29,8 +29,6 @@
 
 #include "korganizer/baseview.h"
 
-class KLineEdit;
-
 namespace KCal {
   class Incidence;
   class Calendar;
@@ -42,7 +40,6 @@ class QMenu;
 class QAction;
 class QCheckBox;
 class QDate;
-class QContextMenuEvent;
 class QItemSelection;
 class QModelIndex;
 class QSortFilterProxyModel;

@@ -22,12 +22,12 @@
 #include "stdcalendar.h"
 #include "akonadicalendar.h"
 
-#include <libkdepim/kpimprefs.h>
-using namespace KPIM;
-
 #include <KDebug>
 #include <K3StaticDeleter>
+#include <KConfigGroup>
 #include <KStandardDirs>
+#include <KUrl>
+#include <ksystemtimezone.h>
 
 using namespace KOrg;
 
@@ -44,7 +44,7 @@ StdCalendar *StdCalendar::self()
 }
 
 StdCalendar::StdCalendar()
-  : KCal::AkonadiCalendar( KPIM::KPimPrefs::timeSpec() )
+  : KCal::AkonadiCalendar( KSystemTimeZones::local() )
 {
 #if 0 //sebsauer
   readConfig();
@@ -86,7 +86,7 @@ StdCalendar::StdCalendar()
     }
 
     if ( defaultResource ) {
-      defaultResource->setTimeSpec( KPimPrefs::timeSpec() );
+      defaultResource->setTimeSpec( KSystemTimeZones::local() );
       defaultResource->setResourceName( resourceName );
       manager->add( defaultResource );
       manager->setStandardResource( defaultResource );
@@ -96,7 +96,7 @@ StdCalendar::StdCalendar()
     KCal::ResourceCalendar *bdayResource = manager->createResource( "birthdays" );
     if ( bdayResource ) {
       kDebug() << "Adding Birthdays resource";
-      bdayResource->setTimeSpec( KPimPrefs::timeSpec() );
+      bdayResource->setTimeSpec( KSystemTimeZones::local() );
       bdayResource->setResourceName( i18n( "Birthdays" ) );
       manager->add( bdayResource );
     } else {

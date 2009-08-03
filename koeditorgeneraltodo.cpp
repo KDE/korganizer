@@ -22,42 +22,32 @@
   without including the source code for Qt in the source distribution.
 */
 #include "koeditorgeneraltodo.h"
-#include "koprefs.h"
 #include "koglobals.h"
+#include "koprefs.h"
 
 #include <libkdepim/kdateedit.h>
 #include <libkdepim/ktimeedit.h>
 #include <libkdepim/ktimezonecombobox.h>
 
-#include <kcal/todo.h>
-#include <kcal/incidenceformatter.h>
+#include <KCal/Todo>
 
-#include <kglobal.h>
-#include <klocale.h>
-#include <kiconloader.h>
-#include <kmessagebox.h>
-#include <kstandarddirs.h>
-#include <ktextedit.h>
-#include <KComboBox>
+#include <KDialog>
+#include <KLineEdit>
+#include <KLocale>
+#include <KMessageBox>
 #include <KRichTextWidget>
 
 #include <QBoxLayout>
 #include <QCheckBox>
-#include <QDateTime>
-#include <KDialog>
-#include <QGridLayout>
 #include <QGroupBox>
-#include <QHBoxLayout>
 #include <QLabel>
 #include <QPushButton>
 #include <QSpinBox>
-#include <QVBoxLayout>
-
-#include "koeditorgeneraltodo.moc"
 
 KOEditorGeneralTodo::KOEditorGeneralTodo( Calendar *calendar, QObject *parent )
   : KOEditorGeneral( calendar, parent )
 {
+  setType( "Todo" );
 }
 
 KOEditorGeneralTodo::~KOEditorGeneralTodo()
@@ -631,3 +621,5 @@ void KOEditorGeneralTodo::modified( Todo *todo, int modification )
     break;
   }
 }
+
+#include "koeditorgeneraltodo.moc"

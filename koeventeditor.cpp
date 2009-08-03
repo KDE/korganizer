@@ -24,32 +24,23 @@
 */
 
 #include "koeventeditor.h"
-#include "koprefs.h"
-#include "koeditorgeneralevent.h"
-#include "koeditoralarms.h"
-#include "koeditorrecurrence.h"
+#include "incidencechanger.h"
 #include "koeditordetails.h"
 #include "koeditorfreebusy.h"
-#include "kogroupware.h"
+#include "koeditorgeneralevent.h"
+#include "koeditorrecurrence.h"
 #include "kohelper.h"
-#include "kodialogmanager.h"
-#include "incidencechanger.h"
+#include "kogroupware.h"
+#include "koprefs.h"
 
-#include <kcal/incidenceformatter.h>
-#include <kcal/calendarlocal.h>
+#include <KCal/CalendarLocal>
+#include <KCal/IncidenceFormatter>
 
-#include <kiconloader.h>
-#include <kdebug.h>
-#include <klocale.h>
-#include <kmessagebox.h>
+#include <KMessageBox>
 
-#include <QFrame>
-#include <QPixmap>
-#include <QPointer>
-#include <QLayout>
-#include <QVBoxLayout>
-#include <QHBoxLayout>
 #include <QBoxLayout>
+#include <QFrame>
+#include <QVBoxLayout>
 
 KOEventEditor::KOEventEditor( Calendar *calendar, QWidget *parent )
   : KOIncidenceEditor( QString(), calendar, parent ),
@@ -315,9 +306,10 @@ bool KOEventEditor::processInput()
       if ( mIsCounter ) {
         KMessageBox::information(
           this,
-          i18n( "You didn't change the event, "
-                "thus no counter proposal has been sent to the organizer." ),
-          i18n( "No changes" ) );
+          i18nc( "@info",
+                 "You did not modify the event so no counter proposal has "
+                 "been sent to the organizer." ),
+          i18nc( "@title:window", "No Changes" ) );
       }
     } else {
       mEvent->startUpdates(); //merge multiple mEvent->updated() calls into one
@@ -328,7 +320,8 @@ bool KOEventEditor::processInput()
         // add dummy event at the position of the counter proposal
         Event *event = mEvent->clone();
         event->clearAttendees();
-        event->setSummary( i18n( "My counter proposal for: %1", mEvent->summary() ) );
+        event->setSummary( i18nc( "@item",
+                                  "My counter proposal for: %1", mEvent->summary() ) );
         mChanger->addIncidence( event );
       } else {
         mChanger->changeIncidence( oldEvent, mEvent );

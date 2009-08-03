@@ -37,7 +37,6 @@ class QPainter;
 class QStyleOptionViewItem;
 class QStyleOptionProgressBar;
 class QSize;
-class QEvent;
 class QTextDocument;
 
 /**

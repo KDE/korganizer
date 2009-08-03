@@ -28,19 +28,12 @@
 #include "koincidenceeditor.h"
 
 #include <KCal/Event>
+using namespace KCal;
 
+class KOEditorFreeBusy;
 class KOEditorGeneralEvent;
 class KOEditorRecurrence;
 class KOEditorRecurrenceDialog;
-class KOEditorFreeBusy;
-
-class KOEditorFreeBusy;
-
-namespace KCal {
-  class Calendar;
-  class Event;
-}
-using namespace KCal;
 
 /**
   This class provides a dialog for editing an event.

@@ -28,28 +28,15 @@
 
 #include "koeditorgeneral.h"
 
-#include <QDateTime>
-
-class KLineEdit;
-class KSqueezedTextLabel;
-class KTextEdit;
-
-class QBoxLayout;
-class QCheckBox;
-class QLabel;
-class QPushButton;
-class QWidget;
+namespace KCal {
+  class Journal;
+}
+using namespace KCal;
 
 namespace KPIM {
   class KDateEdit;
   class KTimeEdit;
 }
-
-namespace KCal {
-  class Calendar;
-  class Journal;
-}
-using namespace KCal;
 
 class KOEditorGeneralJournal : public KOEditorGeneral
 {

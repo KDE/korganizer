@@ -24,48 +24,36 @@
 */
 
 #include "koeditoralarms.h"
-
-#include <QLayout>
-#include <QPushButton>
-#include <QSpinBox>
-#include <QComboBox>
-#include <QCheckBox>
-#include <QTextEdit>
-#include <QRadioButton>
-
-#include <kurlrequester.h>
-#include <klocale.h>
-
-#include <kcal/alarm.h>
-#include <kcal/incidence.h>
-
-#include <kpimutils/email.h>
+#include <KPIMUtils/Email>
+using namespace KPIMUtils;
 
 class AlarmListViewItem : public QTreeWidgetItem
 {
   public:
     AlarmListViewItem( QTreeWidget *parent, KCal::Alarm *alarm );
     virtual ~AlarmListViewItem();
+    void construct();
     KCal::Alarm *alarm() const
     {
       return mAlarm;
     }
-    void construct();
+
     enum AlarmViewColumns {
       ColAlarmType=0,
       ColAlarmOffset,
       ColAlarmRepeat };
+
   protected:
-    KCal::Alarm *mAlarm;
+    Alarm *mAlarm;
 };
 
-AlarmListViewItem::AlarmListViewItem( QTreeWidget *parent, KCal::Alarm *alarm )
+AlarmListViewItem::AlarmListViewItem( QTreeWidget *parent, Alarm *alarm )
     : QTreeWidgetItem( parent )
 {
   if ( alarm ) {
-    mAlarm = new KCal::Alarm( *alarm );
+    mAlarm = new Alarm( *alarm );
   } else {
-    mAlarm = new KCal::Alarm( 0 );
+    mAlarm = new Alarm( 0 );
   }
   construct();
 }
@@ -81,16 +69,16 @@ void AlarmListViewItem::construct()
     // Alarm type:
     QString type( i18nc( "@option unknown alarm type", "Unknown" ) );
     switch ( mAlarm->type() ) {
-    case KCal::Alarm::Display:
+    case Alarm::Display:
       type = i18nc( "@option popup reminder dialog", "Reminder Dialog" );
       break;
-    case KCal::Alarm::Procedure:
+    case Alarm::Procedure:
       type = i18nc( "@option run application or script", "Application/Script" );
       break;
-    case KCal::Alarm::Email:
+    case Alarm::Email:
       type = i18nc( "@option send email reminder", "Email" );
       break;
-    case KCal::Alarm::Audio:
+    case Alarm::Audio:
       type = i18nc( "@option play a sound", "Audio" );
       break;
     default: break;
@@ -154,9 +142,14 @@ void AlarmListViewItem::construct()
   }
 }
 
-KOEditorAlarms::KOEditorAlarms( KCal::Alarm::List *alarms, QWidget *parent )
-  : KDialog( parent ), mAlarms( alarms ), mCurrentItem( 0 )
+KOEditorAlarms::KOEditorAlarms( const QByteArray &type,
+                                Alarm::List *alarms, QWidget *parent )
+  : KDialog( parent ), mType( type ), mAlarms( alarms ), mCurrentItem( 0 )
 {
+  if ( mType != "Todo" ) {
+    // only Todos and Events can have reminders
+    mType = "Event";
+  }
   setCaption( i18nc( "@title", "Edit Reminders" ) );
   setButtons( Ok | Apply | Cancel );
   setDefaultButton( Ok );
@@ -239,7 +232,7 @@ void KOEditorAlarms::changed()
   }
 }
 
-void KOEditorAlarms::readAlarm( KCal::Alarm *alarm )
+void KOEditorAlarms::readAlarm( Alarm *alarm )
 {
   if ( !alarm ) {
     return;
@@ -289,23 +282,23 @@ void KOEditorAlarms::readAlarm( KCal::Alarm *alarm )
   int id = 0;
 
   switch ( alarm->type() ) {
-  case KCal::Alarm::Audio:
+  case Alarm::Audio:
     mWidget.mTypeSoundRadio->setChecked( true );
     mWidget.mSoundFile->setUrl( alarm->audioFile() );
     id = 1;
     break;
-  case KCal::Alarm::Procedure:
+  case Alarm::Procedure:
     mWidget.mTypeAppRadio->setChecked( true );
     mWidget.mApplication->setUrl( alarm->programFile() );
     mWidget.mAppArguments->setText( alarm->programArguments() );
     id = 2;
     break;
-  case KCal::Alarm::Email:
+  case Alarm::Email:
   {
     mWidget.mTypeEmailRadio->setChecked( true );
-    QList<KCal::Person> addresses = alarm->mailAddresses();
+    QList<Person> addresses = alarm->mailAddresses();
     QStringList add;
-    for ( QList<KCal::Person>::ConstIterator it = addresses.constBegin();
+    for ( QList<Person>::ConstIterator it = addresses.constBegin();
           it != addresses.constEnd(); ++it ) {
       add << (*it).fullName();
     }
@@ -314,8 +307,8 @@ void KOEditorAlarms::readAlarm( KCal::Alarm *alarm )
     id = 3;
     break;
   }
-  case KCal::Alarm::Display:
-  case KCal::Alarm::Invalid:
+  case Alarm::Display:
+  case Alarm::Invalid:
   default:
     mWidget.mTypeDisplayRadio->setChecked( true );
     mWidget.mDisplayText->setPlainText( alarm->text() );
@@ -327,7 +320,7 @@ void KOEditorAlarms::readAlarm( KCal::Alarm *alarm )
   mInitializing = false;
 }
 
-void KOEditorAlarms::writeAlarm( KCal::Alarm *alarm )
+void KOEditorAlarms::writeAlarm( Alarm *alarm )
 {
   // Offsets
   int offset = mWidget.mAlarmOffset->value() * 60; // minutes
@@ -349,9 +342,9 @@ void KOEditorAlarms::writeAlarm( KCal::Alarm *alarm )
 
   // TODO: Add possibility to specify a given time for the reminder
   if ( beforeafterpos / 2 == 0 ) { // start offset
-    alarm->setStartOffset( KCal::Duration( offset ) );
+    alarm->setStartOffset( Duration( offset ) );
   } else {
-    alarm->setEndOffset( KCal::Duration( offset ) );
+    alarm->setEndOffset( Duration( offset ) );
   }
 
   // Repeating
@@ -369,9 +362,9 @@ void KOEditorAlarms::writeAlarm( KCal::Alarm *alarm )
                               mWidget.mAppArguments->text() );
   } else if ( mWidget.mTypeEmailRadio->isChecked() ) { // Email
     QStringList addresses = KPIMUtils::splitAddressList( mWidget.mEmailAddress->text() );
-    QList<KCal::Person> add;
+    QList<Person> add;
     for ( QStringList::Iterator it = addresses.begin(); it != addresses.end(); ++it ) {
-      add << KCal::Person::fromFullName( *it );
+      add << Person::fromFullName( *it );
     }
     // TODO: Add a subject line and possibilities for attachments
     alarm->setEmailAlarm( QString(), mWidget.mEmailText->toPlainText(), add );
@@ -403,7 +396,7 @@ void KOEditorAlarms::slotApply()
       AlarmListViewItem *item =
         dynamic_cast< AlarmListViewItem *>( mWidget.mAlarmList->topLevelItem( i ) );
       if ( item ) {
-        mAlarms->append( new KCal::Alarm( *( item->alarm() ) ) );
+        mAlarms->append( new Alarm( *( item->alarm() ) ) );
       }
     }
   }
@@ -446,13 +439,38 @@ void KOEditorAlarms::slotRemove()
 void KOEditorAlarms::init()
 {
   mInitializing = true;
-  KCal::Alarm::List::ConstIterator it;
+
+  // Tweak some UI stuff depending on the Incidence type
+  if ( mType == "Todo" ) {
+    // Replace before/after end datetime with before/after due datetime
+    mWidget.mBeforeAfter->setItemText( 0, i18nc( "@item:inlistbox",
+                                                 "before the to-do starts" ) );
+    mWidget.mBeforeAfter->setItemText( 1, i18nc( "@item:inlistbox",
+                                                 "after the to-do starts" ) );
+    mWidget.mBeforeAfter->setItemText( 2, i18nc( "@item:inlistbox",
+                                                 "before the to-do is due" ) );
+    mWidget.mBeforeAfter->setItemText( 3, i18nc( "@item:inlistbox",
+                                                 "after the to-do is due" ) );
+    mWidget.mBeforeAfter->setToolTip(
+      i18nc( "@info:tooltip",
+             "Select the reminder trigger relative to the start or due time" ) );
+    mWidget.mBeforeAfter->setWhatsThis(
+      i18nc( "@info:whatsthis",
+             "Use this combobox to specify if you want the reminder to "
+             "trigger before or after the start or due time." ) );
+  }
+
+  // Fill-in existing alarms
+  Alarm::List::ConstIterator it;
   for ( it = mAlarms->constBegin(); it != mAlarms->constEnd(); ++it ) {
     new AlarmListViewItem( mWidget.mAlarmList, *it );
   }
   if ( mWidget.mAlarmList->topLevelItemCount() > 0 ) {
     mWidget.mAlarmList->setCurrentItem( mWidget.mAlarmList->topLevelItem( 0 ) );
   }
+
+  mWidget.mAlarmOffset->setFocus();
+
   mInitializing = false;
 }
 

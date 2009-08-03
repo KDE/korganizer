@@ -69,7 +69,8 @@ void KOAttendeeEditor::initOrganizerWidgets( QWidget *parent, QBoxLayout *layout
            "be sure to check 'Use email settings from "
            "System Settings' in the 'Personal' section of the "
            "KOrganizer configuration." );
-  mOrganizerLabel = new QLabel( i18n( "Identity as organizer:" ), mOrganizerHBox );
+  mOrganizerLabel = new QLabel(
+    i18nc( "@label", "Identity as organizer:" ), mOrganizerHBox );
   mOrganizerCombo = new KComboBox( mOrganizerHBox );
   mOrganizerLabel->setWhatsThis( whatsThis );
   mOrganizerCombo->setToolTip(
@@ -84,9 +85,10 @@ void KOAttendeeEditor::initEditWidgets( QWidget *parent, QBoxLayout *layout )
   QGridLayout *topLayout = new QGridLayout();
   layout->addLayout( topLayout );
 
-  QString whatsThis = i18n( "Edits the name of the attendee selected in the "
-                            "list above, or adds a new attendee if there are "
-                            "no attendees in the list." );
+  QString whatsThis =
+    i18nc( "@info:whatsthis",
+           "Edits the name of the attendee selected in the list above, "
+           "or adds a new attendee if there are no attendees in the list." );
   QLabel *attendeeLabel = new QLabel( parent );
   attendeeLabel->setWhatsThis( whatsThis );
   attendeeLabel->setText( i18nc( "@label attendee's name", "Na&me:" ) );
@@ -94,17 +96,18 @@ void KOAttendeeEditor::initEditWidgets( QWidget *parent, QBoxLayout *layout )
 
   mNameEdit = new KPIM::AddresseeLineEdit( parent );
   mNameEdit->setWhatsThis( whatsThis );
-  mNameEdit->setClickMessage( i18n( "Click to add a new attendee" ) );
+  mNameEdit->setClickMessage( i18nc( "@label", "Click to add a new attendee" ) );
   attendeeLabel->setBuddy( mNameEdit );
   mNameEdit->installEventFilter( this );
   connect( mNameEdit, SIGNAL(textChanged(const QString &)), SLOT(updateAttendee()) );
   topLayout->addWidget( mNameEdit, 0, 1, 1, 2 );
 
-  whatsThis = i18nc( "@info:whatsthis",
-                     "Edits the role of the attendee selected in the list above." );
+  whatsThis =
+    i18nc( "@info:whatsthis",
+           "Edits the role of the attendee selected in the list above." );
   QLabel *attendeeRoleLabel = new QLabel( parent );
   attendeeRoleLabel->setWhatsThis( whatsThis );
-  attendeeRoleLabel->setText( i18n( "Ro&le:" ) );
+  attendeeRoleLabel->setText( i18nc( "@label", "Ro&le:" ) );
   topLayout->addWidget( attendeeRoleLabel, 1, 0 );
 
   mRoleCombo = new KComboBox( parent );
@@ -124,7 +127,7 @@ void KOAttendeeEditor::initEditWidgets( QWidget *parent, QBoxLayout *layout )
                      "selected in the list above." );
   QLabel *statusLabel = new QLabel( parent );
   statusLabel->setWhatsThis( whatsThis );
-  statusLabel->setText( i18n( "Stat&us:" ) );
+  statusLabel->setText( i18nc( "@label", "Stat&us:" ) );
   topLayout->addWidget( statusLabel, 2, 0 );
 
   mStatusCombo = new KComboBox( parent );
@@ -161,7 +164,7 @@ void KOAttendeeEditor::initEditWidgets( QWidget *parent, QBoxLayout *layout )
            "Edits whether to send an email to the "
            "attendee selected in the list above to "
            "request a response concerning attendance." ) );
-  mRsvpButton->setText( i18n( "Re&quest response" ) );
+  mRsvpButton->setText( i18nc( "@option:check", "Re&quest response" ) );
   connect( mRsvpButton, SIGNAL(clicked()), SLOT(updateAttendee()) );
   topLayout->addWidget( mRsvpButton, 2, 2 );
 
@@ -183,7 +186,7 @@ void KOAttendeeEditor::initEditWidgets( QWidget *parent, QBoxLayout *layout )
   buttonLayout->addWidget( mAddButton );
   connect( mAddButton, SIGNAL(clicked()), SLOT(addNewAttendee()) );
 
-  mRemoveButton = new QPushButton( i18n( "&Remove" ), buttonBox );
+  mRemoveButton = new QPushButton( i18nc( "@action:button", "&Remove" ), buttonBox );
   mRemoveButton->setToolTip(
     i18nc( "@info:tooltip", "Remove the selected attendee" ) );
   mRemoveButton->setWhatsThis(
@@ -191,7 +194,8 @@ void KOAttendeeEditor::initEditWidgets( QWidget *parent, QBoxLayout *layout )
            "Removes the attendee selected in the list above." ) );
   buttonLayout->addWidget( mRemoveButton );
 
-  mAddressBookButton = new QPushButton( i18n( "Select Addressee..." ), buttonBox );
+  mAddressBookButton =
+    new QPushButton( i18nc( "@action:button", "Select Addressee..." ), buttonBox );
   mAddressBookButton->setToolTip(
     i18nc( "@info:tooltip",
            "Open your address book" ) );
@@ -261,7 +265,7 @@ void KOAttendeeEditor::addNewAttendee()
   if ( Q3ListViewItem *item = hasExampleAttendee() ) {
       KMessageBox::information(
         this,
-        i18n( "Please edit the example attendee, before adding more." ),
+        i18nc( "@info", "Please edit the example attendee, before adding more." ),
         QString(),
         "EditExistingExampleAttendeeFirst" );
       // make sure the example attendee is selected
@@ -269,9 +273,9 @@ void KOAttendeeEditor::addNewAttendee()
       item->listView()->setCurrentItem( item );
       return;
   }
-  Attendee *a =
-    new Attendee( i18nc( "sample attendee name", "Firstname Lastname" ),
-                  i18nc( "sample attendee email name", "name" ) + "@example.net", true );
+  Attendee *a = new Attendee(
+    i18nc( "@item:intext sample attendee name", "Firstname Lastname" ),
+    i18nc( "@item:intext sample attendee email name", "name" ) + "@example.net", true );
   insertAttendee( a, false );
 
   for ( int i=0; i<mDelAttendees.count(); ++i ) {
@@ -294,14 +298,19 @@ void KOAttendeeEditor::readIncidence( KCal::Incidence *incidence )
   qDeleteAll( mDelAttendees );
   mDelAttendees.clear();
 
-  if ( KOPrefs::instance()->thatIsMe( incidence->organizer().email() ) ) {
+  if ( KOPrefs::instance()->thatIsMe( incidence->organizer().email() ) ||
+       incidence->organizer().isEmpty() ) {
     //TODO: make a new private method for creating the mOrganizerCombo
     //and use it here and initOrganizerWidgets() above.
     if ( !mOrganizerCombo ) {
       mOrganizerCombo = new KComboBox( mOrganizerHBox );
+      mOrganizerCombo->setToolTip( i18nc( "@info:tooltip", "Select the organizer" ) );
+      mOrganizerCombo->setWhatsThis(
+        i18nc( "@info:whatsthis",
+               "Select the identity to use as the organizer for this incidence." ) );
       fillOrganizerCombo();
     }
-    mOrganizerLabel->setText( i18n( "Identity as organizer:" ) );
+    mOrganizerLabel->setText( i18nc( "@label", "Identity as organizer:" ) );
 
     int found = -1;
     QString fullOrganizer = incidence->organizer().fullName();
@@ -321,7 +330,8 @@ void KOAttendeeEditor::readIncidence( KCal::Incidence *incidence )
       delete mOrganizerCombo;
       mOrganizerCombo = 0;
     }
-    mOrganizerLabel->setText( i18n( "Organizer: %1", incidence->organizer().fullName() ) );
+    mOrganizerLabel->setText( i18nc( "@label", "Organizer: %1",
+                                     incidence->organizer().fullName() ) );
   }
 
   Attendee::List al = incidence->attendees();
@@ -459,11 +469,11 @@ void KOAttendeeEditor::fillAttendeeInput( KCal::Attendee *a )
 
   if ( a->status() == Attendee::Delegated ) {
     if ( !a->delegate().isEmpty() ) {
-      mDelegateLabel->setText( i18n( "Delegated to %1", a->delegate() ) );
+      mDelegateLabel->setText( i18nc( "@label", "Delegated to %1", a->delegate() ) );
     } else if ( !a->delegator().isEmpty() ) {
-      mDelegateLabel->setText( i18n( "Delegated from %1", a->delegator() ) );
+      mDelegateLabel->setText( i18nc( "@label", "Delegated from %1", a->delegator() ) );
     } else {
-      mDelegateLabel->setText( i18n( "Not delegated" ) );
+      mDelegateLabel->setText( i18nc( "@label", "Not delegated" ) );
     }
   }
   if ( myself ) {
@@ -520,7 +530,7 @@ bool KOAttendeeEditor::isExampleAttendee( const KCal::Attendee *attendee ) const
     return false;
   }
 
-  if ( attendee->name() == i18nc( "sample attendee name", "Firstname Lastname" ) &&
+  if ( attendee->name() == i18nc( "@item:intext sample attendee name", "Firstname Lastname" ) &&
        attendee->email().endsWith( QLatin1String( "example.net" ) ) ) {
     return true;
   }

@@ -83,7 +83,7 @@
               </spacer>
             </item>
             <item row="1" column="1" >
-              <widget class="QComboBox" name="mPages" />
+              <widget class="KComboBox" name="mPages" />
             </item>
             <item row="1" column="2" >
               <spacer name="spacer5" >
@@ -134,7 +134,7 @@
               </widget>
             </item>
             <item row="0" column="1" >
-              <widget class="QComboBox" name="mSubDays" >
+              <widget class="KComboBox" name="mSubDays" >
                 <property name="currentIndex" >
                   <number>1</number>
                 </property>
@@ -151,7 +151,7 @@
               </widget>
             </item>
             <item row="1" column="1" >
-              <widget class="QComboBox" name="mHolidays" >
+              <widget class="KComboBox" name="mHolidays" >
                 <item>
                   <property name="text" >
                     <string>Text</string>

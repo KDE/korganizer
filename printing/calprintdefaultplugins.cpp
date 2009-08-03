@@ -35,6 +35,7 @@
 #include <KCalendarSystem>
 #include <KDateTime>
 #include <KConfigGroup>
+#include <ksystemtimezone.h>
 
 #include <QDateTime>
 #include <QPainter>
@@ -753,7 +754,7 @@ void CalPrintDay::print( QPainter &p, int width, int height )
 {
   QDate curDay( mFromDate );
 
-  KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
+  KDateTime::Spec timeSpec = KSystemTimeZones::local();
 
   switch ( mDayPrintType ) {
   case Filofax:

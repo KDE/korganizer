@@ -38,11 +38,8 @@
 #include <QLabel>
 
 class QLabel;
-class QCheckBox;
 class QGridLayout;
-class KLineEdit;
 class KTextBrowser;
-class KTimeEdit;
 class QPushButton;
 
 namespace KOrg {
