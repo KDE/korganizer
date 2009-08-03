@@ -55,8 +55,8 @@ class KOMailClient
          @param bcc optional bcc for the message
          @param attachment optional attachment (raw data)
      */
-    bool send(const QString &from,const QString &to,const QString &subject,
-              const QString &body,bool bcc=false,
+    bool send(const QString &from,const QString &to,const QString &cc,
+              const QString &subject,const QString &body,bool bcc=false,
               const QString &attachment=QString());
 };
 
