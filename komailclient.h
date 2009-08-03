@@ -45,8 +45,8 @@ class KOMailClient
   protected:
     /** Send mail with specified from, to and subject field and body as text. If
      * bcc is set, send a blind carbon copy to the sender from */
-    bool send(const QString &from,const QString &to,const QString &subject,
-              const QString &body,bool bcc=false,
+    bool send(const QString &from,const QString &to,const QString &cc,
+              const QString &subject,const QString &body,bool bcc=false,
               const QString &attachment=QString::null);
 
     int kMailOpenComposer(const QString& to, const QString& cc,

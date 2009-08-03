@@ -34,6 +34,8 @@
 #include <dcopclient.h>
 #include <kprocess.h>
 
+#include <libemailfunctions/email.h>
+
 #include <libkpimidentities/identity.h>
 #include <libkpimidentities/identitymanager.h>
 
@@ -58,23 +60,59 @@ KOMailClient::~KOMailClient()
 bool KOMailClient::mailAttendees(IncidenceBase *incidence,const QString &attachment)
 {
   Attendee::List attendees = incidence->attendees();
-  if (attendees.count() == 0) return false;
+  if ( attendees.count() == 0 ) {
+    return false;
+  }
 
   const QString from = incidence->organizer().fullName();
   const QString organizerEmail = incidence->organizer().email();
+
   QStringList toList;
-  for(uint i=0; i<attendees.count();++i) {
-    const QString email = (*attendees.at(i))->email();
-    // In case we (as one of our identities) are the organizer we are sending this
-    // mail. We could also have added ourselves as an attendee, in which case we
-    // don't want to send ourselves a notification mail.
-    if( organizerEmail !=  email )
-      toList << email;
+  QStringList ccList;
+  for ( uint i=0; i<attendees.count(); ++i ) {
+    Attendee *a = (*attendees.at(i));
+
+    const QString email = a->email();
+    if ( email.isEmpty() ) {
+      continue;
+    }
+
+    // In case we (as one of our identities) are the organizer we are sending
+    // this mail. We could also have added ourselves as an attendee, in which
+    // case we don't want to send ourselves a notification mail.
+    if ( organizerEmail == email ) {
+      continue;
+    }
+
+    // Build a nice address for this attendee including the CN.
+    QString tname, temail;
+    const QString username = KPIM::quoteNameIfNecessary( a->name() );
+    KPIM::getNameAndMail( username, tname, temail ); // ignore return value
+                                                     // which is always false
+    tname += " <" + email + '>';
+
+
+    // Optional Participants and Non-Participants are copied on the email
+    if ( a->role() == Attendee::OptParticipant ||
+         a->role() == Attendee::NonParticipant ) {
+      ccList << tname;
+    } else {
+      toList << tname;
+    }
   }
-  if( toList.count() == 0 )
+
+  if( toList.count() == 0 && ccList.count() == 0 ) {
     // Not really to be called a groupware meeting, eh
     return false;
-  QString to = toList.join( ", " );
+  }
+  QString to;
+  if ( toList.count() > 0 ) {
+    to = toList.join( ", " );
+  }
+  QString cc;
+  if ( ccList.count() > 0 ) {
+    cc = ccList.join( ", " );
+  }
 
   QString subject;
   if(incidence->type()!="FreeBusy") {
@@ -88,7 +126,7 @@ bool KOMailClient::mailAttendees(IncidenceBase *incidence,const QString &attachm
 
   bool bcc = KOPrefs::instance()->mBcc;
 
-  return send(from,to,subject,body,bcc,attachment);
+  return send(from,to,cc,subject,body,bcc,attachment);
 }
 
 bool KOMailClient::mailOrganizer(IncidenceBase *incidence,const QString &attachment, const QString &sub)
@@ -110,7 +148,7 @@ bool KOMailClient::mailOrganizer(IncidenceBase *incidence,const QString &attachm
 
   bool bcc = KOPrefs::instance()->mBcc;
 
-  return send(from,to,subject,body,bcc,attachment);
+  return send(from,to,QString::null,subject,body,bcc,attachment);
 }
 
 bool KOMailClient::mailTo(IncidenceBase *incidence,const QString &recipients,
@@ -127,16 +165,25 @@ bool KOMailClient::mailTo(IncidenceBase *incidence,const QString &recipients,
   QString body = IncidenceFormatter::mailBodyString(incidence);
   bool bcc = KOPrefs::instance()->mBcc;
   kdDebug () << "KOMailClient::mailTo " << recipients << endl;
-  return send(from,recipients,subject,body,bcc,attachment);
+  return send(from,recipients,QString::null,subject,body,bcc,attachment);
 }
 
-bool KOMailClient::send(const QString &from,const QString &to,
+bool KOMailClient::send(const QString &from,const QString &_to,const QString &cc,
                         const QString &subject,const QString &body,bool bcc,
                         const QString &attachment)
 {
-  kdDebug(5850) << "KOMailClient::sendMail():\nFrom: " << from << "\nTo: " << to
-            << "\nSubject: " << subject << "\nBody: \n" << body
-            << "\nAttachment:\n" << attachment << endl;
+  // We must have a recipients list for most MUAs. Thus, if the 'to' list
+  // is empty simply use the 'from' address as the recipient.
+  QString to = _to;
+  if ( to.isEmpty() ) {
+    to = from;
+  }
+
+  kdDebug(5850) << "KOMailClient::sendMail():\nFrom: " << from
+                << "\nTo: " << to
+                << "\nCC: " << cc
+                << "\nSubject: " << subject << "\nBody: \n" << body
+                << "\nAttachment:\n" << attachment << endl;
 
   if (KOPrefs::instance()->mMailClient == KOPrefs::MailClientSendmail) {
     bool needHeaders = true;
@@ -154,6 +201,11 @@ bool KOMailClient::send(const QString &from,const QString &to,
       if (bcc) {
         command.append(QString::fromLatin1(" -b "));
         command.append(KProcess::quote(from));
+      }
+
+      if ( !cc.isEmpty() ) {
+        command.append(" -c ");
+        command.append(KProcess::quote(cc));
       }
 
       command.append(" ");
@@ -174,6 +226,9 @@ bool KOMailClient::send(const QString &from,const QString &to,
     {
       textComplete += QString::fromLatin1("From: ") + from + '\n';
       textComplete += QString::fromLatin1("To: ") + to + '\n';
+      if ( !cc.isEmpty() ) {
+        textComplete += QString::fromLatin1("Cc: " ) + cc + '\n';
+      }
       if (bcc) textComplete += QString::fromLatin1("Bcc: ") + from + '\n';
       textComplete += QString::fromLatin1("Subject: ") + subject + '\n';
       textComplete += QString::fromLatin1("X-Mailer: KOrganizer") + korgVersion + '\n';
@@ -188,14 +243,14 @@ bool KOMailClient::send(const QString &from,const QString &to,
     pclose(fd);
   } else {
     if (!kapp->dcopClient()->isApplicationRegistered("kmail")) {
-                        if (KApplication::startServiceByDesktopName("kmail")) {
+      if (KApplication::startServiceByDesktopName("kmail")) {
         KMessageBox::error(0,i18n("No running instance of KMail found."));
         return false;
-                        }
+      }
     }
 
     if (attachment.isEmpty()) {
-      if (!kMailOpenComposer(to,"",bcc ? from : "",subject,body,0,KURL())) return false;
+      if (!kMailOpenComposer(to,cc,bcc ? from : "",subject,body,0,KURL())) return false;
     } else {
       QString meth;
       int idx = attachment.find("METHOD");
@@ -207,7 +262,7 @@ bool KOMailClient::send(const QString &from,const QString &to,
       } else {
         meth = "publish";
       }
-      if (!kMailOpenComposer(to,"",bcc ? from : "",subject,body,0,"cal.ics","7bit",
+      if (!kMailOpenComposer(to,cc,bcc ? from : "",subject,body,0,"cal.ics","7bit",
                              attachment.utf8(),"text","calendar","method",meth,
                              "attachment","utf-8",
                              KOCore::self()->identityManager()->identityForAddress( from ).uoid())) {
