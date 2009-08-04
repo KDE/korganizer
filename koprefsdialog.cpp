@@ -44,11 +44,13 @@
 #include <qwhatsthis.h>
 
 #include <kcolorbutton.h>
+#include <kcombobox.h>
 #include <kdebug.h>
 #include <klocale.h>
 #include <kglobal.h>
 #include <kmessagebox.h>
 #include <kiconloader.h>
+#include <knuminput.h>
 #include <kemailsettings.h>
 #include <kcalendarsystem.h>
 #include <ktrader.h>
@@ -315,22 +317,24 @@ class KOPrefsDialogTime : public KPrefsModule
       topLayout->addWidget( defaultDuration->label(), 4, 0 );
       topLayout->addWidget( defaultDuration->timeEdit(), 4, 1 );
 
-      QStringList alarmList;
-      alarmList << i18n( "1 minute" ) << i18n( "5 minutes" )
-                << i18n( "10 minutes" ) << i18n( "15 minutes" )
-                << i18n( "30 minutes" );
-      QLabel *alarmLabel = new QLabel( i18n( "Default reminder time:" ), topFrame);
-      topLayout->addWidget( alarmLabel, 5, 0 );
-      QWhatsThis::add( alarmLabel,
-                       i18n( "Enter the default reminder time here." ) );
-      mAlarmTimeCombo = new QComboBox( topFrame );
-      QWhatsThis::add( mAlarmTimeCombo,
-                       i18n( "Enter the default reminder time here." ) );
-      connect( mAlarmTimeCombo, SIGNAL( activated( int ) ),
-               SLOT( slotWidChanged() ) );
-      mAlarmTimeCombo->insertStringList( alarmList );
-      topLayout->addWidget( mAlarmTimeCombo, 5, 1 );
+      QGroupBox *remindersGroupBox = new QGroupBox( 1, Horizontal,
+                                                    i18n( "Reminders" ),
+                                                    topFrame );
+      topLayout->addMultiCellWidget( remindersGroupBox, 5, 5, 0, 1 );
 
+      QHBox *remindersBox = new QHBox( remindersGroupBox );
+
+      QLabel *reminderLabel =
+        new QLabel( i18n( "Default reminder time:" ), remindersBox );
+
+      mReminderTimeSpin  = new KIntSpinBox( remindersBox );
+      connect( mReminderTimeSpin, SIGNAL(valueChanged(int)), SLOT(slotWidChanged()) );
+
+      mReminderUnitsCombo = new KComboBox( remindersBox );
+      connect( mReminderUnitsCombo, SIGNAL(activated(int)), SLOT(slotWidChanged()) );
+      mReminderUnitsCombo->insertItem( i18n( "minute(s)" ) );
+      mReminderUnitsCombo->insertItem( i18n( "hour(s)" ) );
+      mReminderUnitsCombo->insertItem( i18n( "day(s)" ) );
 
       QGroupBox *workingHoursGroup = new QGroupBox(1,Horizontal,
                                                    i18n("Working Hours"),
@@ -380,7 +384,9 @@ class KOPrefsDialogTime : public KPrefsModule
       setCombo( mTimeZoneCombo,
                 i18n( KOPrefs::instance()->mTimeZoneId.utf8() ) );
 
-      mAlarmTimeCombo->setCurrentItem( KOPrefs::instance()->mAlarmTime );
+      mReminderTimeSpin->setValue( KOPrefs::instance()->mReminderTime );
+      mReminderUnitsCombo->setCurrentItem( KOPrefs::instance()->mReminderTimeUnits );
+
       for ( int i = 0; i < 7; ++i ) {
         mWorkDays[i]->setChecked( (1<<i) & (KOPrefs::instance()->mWorkWeekMask) );
       }
@@ -402,7 +408,9 @@ class KOPrefsDialogTime : public KPrefsModule
                                        QString::null :
                                        mRegionMap[mHolidayCombo->currentText()];
 
-      KOPrefs::instance()->mAlarmTime = mAlarmTimeCombo->currentItem();
+      KOPrefs::instance()->mReminderTime = mReminderTimeSpin->value();
+      KOPrefs::instance()->mReminderTimeUnits = mReminderUnitsCombo->currentItem();
+
       int mask = 0;
       for ( int i = 0; i < 7; ++i ) {
         if (mWorkDays[i]->isChecked()) mask = mask | (1<<i);
@@ -432,7 +440,8 @@ class KOPrefsDialogTime : public KPrefsModule
     QStringList   tzonenames;
     QComboBox    *mHolidayCombo;
     QMap<QString,QString> mRegionMap;
-    QComboBox    *mAlarmTimeCombo;
+    KIntSpinBox  *mReminderTimeSpin;
+    KComboBox    *mReminderUnitsCombo;
     QCheckBox    *mWorkDays[7];
 };
 
