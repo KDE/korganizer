@@ -52,6 +52,7 @@ using namespace LibKHolidays;
 #include <KLineEdit>
 #include <KComboBox>
 #include <KTabWidget>
+#include <KIntSpinBox>
 
 #include <q3listview.h>
 #include <q3buttongroup.h>
@@ -374,20 +375,29 @@ class KOPrefsDialogTime : public KPrefsModule
 
       QGridLayout *remindersLayout = new QGridLayout( remindersGroupBox );
 
-      QStringList alarmList;
-      alarmList << i18nc( "@item:inlistbox", "1 minute" )
-                << i18nc( "@item:inlistbox", "5 minutes" )
-                << i18nc( "@item:inlistbox", "10 minutes" )
-                << i18nc( "@item:inlistbox", "15 minutes" )
-                << i18nc( "@item:inlistbox", "30 minutes" );
-      QLabel *alarmLabel = new QLabel( i18nc( "@label", "Default reminder time:" ), defaultPage );
-      remindersLayout->addWidget( alarmLabel, 0, 0 );
-      alarmLabel->setWhatsThis( KOPrefs::instance()->alarmTimeItem()->whatsThis() );
-      mAlarmTimeCombo = new KComboBox( defaultPage );
-      mAlarmTimeCombo->setWhatsThis( KOPrefs::instance()->alarmTimeItem()->whatsThis() );
-      connect( mAlarmTimeCombo, SIGNAL(activated(int)), SLOT(slotWidChanged()) );
-      mAlarmTimeCombo->addItems( alarmList );
-      remindersLayout->addWidget( mAlarmTimeCombo, 0, 1 );
+      QLabel *reminderLabel =
+        new QLabel( i18nc( "@label", "Default reminder time:" ), defaultPage );
+      remindersLayout->addWidget( reminderLabel, 0, 0 );
+      reminderLabel->setWhatsThis( KOPrefs::instance()->reminderTimeItem()->whatsThis() );
+      mReminderTimeSpin  = new KIntSpinBox( defaultPage );
+      mReminderTimeSpin->setWhatsThis( KOPrefs::instance()->reminderTimeItem()->whatsThis() );
+      mReminderTimeSpin->setToolTip( KOPrefs::instance()->reminderTimeItem()->toolTip() );
+      connect( mReminderTimeSpin, SIGNAL(valueChanged(int)), SLOT(slotWidChanged()) );
+      remindersLayout->addWidget( mReminderTimeSpin, 0, 1 );
+
+      mReminderUnitsCombo = new KComboBox( defaultPage );
+      mReminderUnitsCombo->setToolTip(
+        KOPrefs::instance()->reminderTimeUnitsItem()->toolTip() );
+      mReminderUnitsCombo->setWhatsThis(
+        KOPrefs::instance()->reminderTimeUnitsItem()->whatsThis() );
+      connect( mReminderUnitsCombo, SIGNAL(activated(int)), SLOT(slotWidChanged()) );
+      mReminderUnitsCombo->addItem(
+        i18nc( "@item:inlistbox reminder units in minutes", "minute(s)" ) );
+      mReminderUnitsCombo->addItem(
+        i18nc( "@item:inlistbox reminder time units in hours", "hour(s)" ) );
+      mReminderUnitsCombo->addItem(
+        i18nc( "@item:inlistbox reminder time units in days", "day(s)" ) );
+      remindersLayout->addWidget( mReminderUnitsCombo, 0, 2 );
 
       defaultLayout->setRowStretch( 3, 1 );
       load();
@@ -396,7 +406,8 @@ class KOPrefsDialogTime : public KPrefsModule
   protected:
     void usrReadConfig()
     {
-      mAlarmTimeCombo->setCurrentIndex( KOPrefs::instance()->mAlarmTime );
+      mReminderTimeSpin->setValue( KOPrefs::instance()->mReminderTime );
+      mReminderUnitsCombo->setCurrentIndex( KOPrefs::instance()->mReminderTimeUnits );
       for ( int i = 0; i < 7; ++i ) {
         mWorkDays[i]->setChecked( ( 1 << i ) & ( KOPrefs::instance()->mWorkWeekMask ) );
       }
@@ -408,7 +419,8 @@ class KOPrefsDialogTime : public KPrefsModule
                                        QString() :
                                        mRegionMap[mHolidayCombo->currentText()];
 
-      KOPrefs::instance()->mAlarmTime = mAlarmTimeCombo->currentIndex();
+      KOPrefs::instance()->mReminderTime = mReminderTimeSpin->value();
+      KOPrefs::instance()->mReminderTimeUnits = mReminderUnitsCombo->currentIndex();
       int mask = 0;
       for ( int i = 0; i < 7; ++i ) {
         if ( mWorkDays[i]->isChecked() ) {
@@ -440,7 +452,8 @@ class KOPrefsDialogTime : public KPrefsModule
     QStringList   tzonenames;
     KComboBox    *mHolidayCombo;
     QMap<QString,QString> mRegionMap;
-    KComboBox    *mAlarmTimeCombo;
+    KIntSpinBox  *mReminderTimeSpin;
+    KComboBox    *mReminderUnitsCombo;
     QCheckBox    *mWorkDays[7];
 };
 

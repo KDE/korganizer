@@ -156,10 +156,16 @@
       <whatsthis>Enter default duration for events here. The default is used if you do not supply an end time.</whatsthis>
       <default>QDateTime(QDate(1752,1,1), QTime(2,0))</default>
     </entry>
-    <entry type="Int" key="Default Alarm Time" name="AlarmTime">
-      <label>Default Reminder Time</label>
-      <whatsthis>Enter the reminder time here.</whatsthis>
-      <default>3</default>
+    <entry type="Int" key="Default Reminder Time" name="ReminderTime">
+      <label>Default reminder time</label>
+      <whatsthis>Enter the default reminder time for all newly created items. The time unit is specified in the adjacent combobox.</whatsthis>
+      <tooltip>Default time for reminders</tooltip>
+      <default>15</default>
+    </entry>
+    <entry type="Int" key="Default Reminder Time Units" name="ReminderTimeUnits">
+      <whatsthis>Enter the default reminder time units for all newly created items. The time is specified in the adjacent spinbox.</whatsthis>
+      <tooltip>Default time unit for reminders</tooltip>
+      <default>0</default>
     </entry>
     <entry type="Bool" name="ShowTimeZoneSelectorInIncidenceEditor">
       <label>Show timezone selectors in the event and todo editor dialog.</label>
