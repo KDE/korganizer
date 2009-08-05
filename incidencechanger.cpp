@@ -134,6 +134,8 @@ bool IncidenceChanger::deleteIncidence( Incidence *incidence )
         MailScheduler scheduler( mCalendar );
         scheduler.performTransaction( tmp, KCal::iTIPReply );
       }
+      //reset the doNotNotify flag
+      KOGroupware::instance()->setDoNotNotify( false );
     }
     emit incidenceDeleted( incidence );
   }
