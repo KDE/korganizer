@@ -49,6 +49,7 @@ using namespace KHolidays;
 #include <KStandardDirs>
 #include <KSystemTimeZones>
 #include <KTabWidget>
+#include <KIntSpinBox>
 
 #include <Q3ButtonGroup>
 #include <Q3ListView>
