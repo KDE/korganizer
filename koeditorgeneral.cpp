@@ -286,17 +286,24 @@ void KOEditorGeneral::initAlarm( QWidget *parent, QBoxLayout *topLayout )
   mAlarmIncrCombo->addItem( i18nc( "@item:inlistbox alarm expressed in minutes", "minute(s)" ) );
   mAlarmIncrCombo->addItem( i18nc( "@item:inlistbox alarm expressed in hours", "hour(s)" ) );
   mAlarmIncrCombo->addItem( i18nc( "@item:inlistbox alarm expressed in days", "day(s)" ) );
-//  mAlarmIncrCombo->setMinimumHeight(20);
   connect( mAlarmButton, SIGNAL(toggled(bool)), mAlarmTimeEdit, SLOT(setEnabled(bool)) );
   connect( mAlarmButton, SIGNAL(toggled(bool)), mAlarmIncrCombo, SLOT(setEnabled(bool)) );
   simpleAlarmLayout->addWidget( mAlarmIncrCombo );
 
-  mAlarmTimeEdit->setEnabled( false );
-  mAlarmIncrCombo->setEnabled( false );
-
-  mAlarmEditButton = new QPushButton( i18nc( "advanced alarm settings", "Advanced..." ), parent );
+  mAlarmEditButton =
+    new QPushButton( i18nc( "@action:button advanced alarm settings", "Advanced..." ), parent );
+  connect( mAlarmButton, SIGNAL(toggled(bool)), mAlarmEditButton, SLOT(setEnabled(bool)) );
+  mAlarmEditButton->setWhatsThis(
+    i18nc( "@info:whatsthis",
+           "Push this button to create an advanced alarm for this event or to-do" ) );
+  mAlarmEditButton->setToolTip( i18nc( "@info:tooltip", "Set an advanced alarm" ) );
   alarmLayout->addWidget( mAlarmEditButton );
   alarmLayout->addStretch();
+
+  mAlarmTimeEdit->setEnabled( false );
+  mAlarmIncrCombo->setEnabled( false );
+  mAlarmEditButton->setEnabled( false );
+
   connect( mAlarmEditButton, SIGNAL(clicked()), SLOT(editAlarms()) );
 }
 
