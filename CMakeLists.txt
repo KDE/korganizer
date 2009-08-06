@@ -114,7 +114,6 @@ if(KMAIL_SUPPORTED)
   qt4_add_dbus_interfaces(korganizer_eventviewer_LIB_SRCS org.kde.korganizer.Korganizer.xml)
   qt4_add_dbus_interfaces(korganizer_eventviewer_LIB_SRCS ${CMAKE_BINARY_DIR}/kmail/org.kde.kmail.kmail.xml)
   qt4_add_dbus_interfaces(korganizer_eventviewer_LIB_SRCS ${CMAKE_SOURCE_DIR}/knode/org.kde.knode.xml)
-  qt4_add_dbus_interfaces(korganizer_eventviewer_LIB_SRCS ${CMAKE_SOURCE_DIR}/kaddressbook/org.kde.KAddressbook.Core.xml)
 
   kde4_add_library(korganizer_eventviewer SHARED ${korganizer_eventviewer_LIB_SRCS})
   add_dependencies(korganizer_eventviewer kmail_xml)

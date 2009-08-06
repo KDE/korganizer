@@ -89,6 +89,11 @@ class KOGroupware : public QObject
       Request
     };
 
+    // DoNoNotify is a flag indicating that the user does not want
+    // updates sent back to the organizer.
+    void setDoNotNotify( bool notify ) { mDoNotNotify = notify; }
+    bool doNotNotify() { return mDoNotNotify; }
+
   private slots:
     /** Handle iCals given by KMail. */
     void incomingDirChanged( const QString &path );
@@ -107,6 +112,7 @@ class KOGroupware : public QObject
     CalendarView *mView;
     KCal::AkonadiCalendar *mCalendar;
     static FreeBusyManager *mFreeBusyManager;
+    bool mDoNotNotify;
 };
 
 #endif

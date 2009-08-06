@@ -74,7 +74,7 @@ KOGroupware *KOGroupware::instance()
 }
 
 KOGroupware::KOGroupware( CalendarView *view, KCal::AkonadiCalendar *cal )
-  : QObject( 0 ), mView( view ), mCalendar( cal )
+  : QObject( 0 ), mView( view ), mCalendar( cal ), mDoNotNotify( false )
 {
   setObjectName( "kmgroupware_instance" );
   // Set up the dir watch of the three incoming dirs
@@ -313,9 +313,8 @@ bool KOGroupware::sendICalMessage( QWidget *parent,
   } else if ( incidence->type() == "Event" ) {
     QString txt;
     if ( statusChanged && method == iTIPRequest ) {
-      txt = i18n( "Your status as an attendee of this event "
-                  "changed. Do you want to send a status update to the "
-                  "organizer of this event?" );
+      txt = i18n( "Your status as an attendee of this event changed. "
+                  "Do you want to send a status update to the event organizer?" );
       method = iTIPReply;
       rc = KMessageBox::questionYesNo(
              parent, txt, QString(),
@@ -339,17 +338,20 @@ bool KOGroupware::sendICalMessage( QWidget *parent,
           return true;
         }
 
-        txt = i18n( "You are not the organizer of this event, "
-            "but you were supposed to attend. Do you really want "
-            "to delete it and notify the organizer?" );
+        txt = i18n( "You had previously accepted an invitation to this event. "
+                    "Do you want to send an updated response to the organizer "
+                    "declining the invitation?" );
+        rc = KMessageBox::questionYesNo(
+          parent, txt, i18n( "Group Scheduling Email" ),
+          KGuiItem( i18n( "Send Update" ) ), KGuiItem( i18n( "Do Not Send" ) ) );
+        setDoNotNotify( rc == KMessageBox::No );
       } else {
-        txt = i18n( "You are not the organizer of this event. "
-                    "Editing it will bring your calendar out of sync "
-                    "with the organizer's calendar. Do you really want "
-                    "to edit it?" );
+        txt = i18n( "You are not the organizer of this event. Editing it will "
+                    "bring your calendar out of sync with the organizer's calendar. "
+                    "Do you really want to edit it?" );
+        rc = KMessageBox::warningYesNo( parent, txt );
+        return rc == KMessageBox::Yes;
       }
-      rc = KMessageBox::warningYesNo( parent, txt );
-      return rc == KMessageBox::Yes;
     }
   } else {
     kWarning() << "Groupware messages for Journals are not implemented yet!";
