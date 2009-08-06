@@ -23,7 +23,7 @@
    <item row="1" column="0">
     <widget class="QGroupBox" name="mTimeGroup">
      <property name="toolTip">
-      <string>Specify a file containing a sound file to play when the reminder triggers</string>
+      <string>Specify a file containing a sound to play when the reminder triggers</string>
      </property>
      <property name="title">
       <string>Time</string>
@@ -536,7 +536,7 @@
              <string>Specify text of an email message to send when the reminder triggers</string>
             </property>
             <property name="whatsThis">
-             <string>Enter any text you desire for the email message that wil be sent when the alarm triggers.</string>
+             <string>Enter any text you desire for the email message that will be sent when the alarm triggers.</string>
             </property>
            </widget>
           </item>
@@ -546,7 +546,7 @@
              <string>Specify a list of addresses to send email when the reminder triggers</string>
             </property>
             <property name="whatsThis">
-             <string>Enter a list comma-sepatered addresses where an email address will be sent when the reminder triggers</string>
+             <string>Enter a list comma-sepatered addresses where an email will be sent when the reminder triggers</string>
             </property>
            </widget>
           </item>
