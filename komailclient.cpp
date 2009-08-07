@@ -95,7 +95,6 @@ bool KOMailClient::mailAttendees( IncidenceBase *incidence, const QString &attac
     KPIMUtils::extractEmailAddressAndName( username, temail, tname );
     tname += " <" + email + '>';
 
-
     // Optional Participants and Non-Participants are copied on the email
     if ( a->role() == Attendee::OptParticipant ||
          a->role() == Attendee::NonParticipant ) {
@@ -212,8 +211,8 @@ bool KOMailClient::send( const QString &from, const QString &_to, const QString 
       }
 
       if ( !cc.isEmpty() ) {
-        command.append(" -c ");
-        command.append(KShell::quoteArg(cc));
+        command.append( " -c " );
+        command.append( KShell::quoteArg( cc ) );
       }
 
       command.append( " " );
@@ -229,15 +228,15 @@ bool KOMailClient::send( const QString &from, const QString &_to, const QString 
     }
 
     QString textComplete;
-    if ( needHeaders )
-    {
+    if ( needHeaders ) {
       textComplete += QString::fromLatin1( "From: " ) + from + '\n';
       textComplete += QString::fromLatin1( "To: " ) + to + '\n';
       if ( !cc.isEmpty() ) {
         textComplete += QString::fromLatin1( "Cc: " ) + cc + '\n';
       }
-      if ( bcc )
+      if ( bcc ) {
         textComplete += QString::fromLatin1( "Bcc: " ) + from + '\n';
+      }
       textComplete += QString::fromLatin1( "Subject: " ) + subject + '\n';
       textComplete += QString::fromLatin1( "X-Mailer: KOrganizer" ) + korgVersion + '\n';
     }
@@ -271,10 +270,10 @@ bool KOMailClient::send( const QString &from, const QString &_to, const QString 
       } else {
         meth = "publish";
       }
-      return kmail.openComposer
-          ( to, cc, bcc ? from : QString(), subject, body, false, "cal.ics", "7bit",
-            attachment.toUtf8(), "text", "calendar", "method", meth, "attachment",
-            "utf-8", KOCore::self()->identityManager()->identityForAddress( from ).uoid() ).isValid();
+      return kmail.openComposer(
+        to, cc, bcc ? from : QString(), subject, body, false, "cal.ics", "7bit",
+        attachment.toUtf8(), "text", "calendar", "method", meth, "attachment",
+        "utf-8", KOCore::self()->identityManager()->identityForAddress( from ).uoid() ).isValid();
     }
   }
   return true;
