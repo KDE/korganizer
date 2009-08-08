@@ -3,6 +3,7 @@
 
   Copyright (c) 1998 Barry D Benowitz <b.benowitz@telesciences.com>
   Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
+  Copyright (c) 2009 Allen Winter <winter@kde.org>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -25,6 +26,7 @@
 #ifndef KOMAILCLIENT_H
 #define KOMAILCLIENT_H
 
+#include "korganizer_export.h"
 #include <QString>
 
 namespace KCal {
@@ -32,16 +34,28 @@ namespace KCal {
 }
 using namespace KCal;
 
-class KOMailClient
+namespace KPIMIdentities {
+  class Identity;
+}
+using namespace KPIMIdentities;
+
+class KORGANIZER_EVENTVIEWER_EXPORT KOMailClient
 {
   public:
     KOMailClient();
     virtual ~KOMailClient();
 
-    bool mailAttendees( IncidenceBase *, const QString &attachment=QString() );
-    bool mailOrganizer( IncidenceBase *, const QString &attachment=QString(),
-                        const QString &sub=QString() );
-    bool mailTo( IncidenceBase *, const QString &recipients, const QString &attachment=QString() );
+    bool mailAttendees( IncidenceBase *, const Identity &identity, bool bccMe,
+                        const QString &attachment=QString(),
+                        bool useSendmail=false );
+    bool mailOrganizer( IncidenceBase *, const Identity &identity,
+                        const QString &from, bool bccMe,
+                        const QString &attachment=QString(),
+                        const QString &sub=QString(),
+                        bool useSendmail=false );
+    bool mailTo( IncidenceBase *, const Identity &identity,
+                 const QString &from, bool bccMe, const QString &recipients,
+                 const QString &attachment=QString(), bool useSendmail=false );
 
   protected:
     /**
@@ -55,9 +69,10 @@ class KOMailClient
      *   @param bcc optional bcc for the message
      *   @param attachment optional attachment (raw data)
      */
-    bool send( const QString &from, const QString &to, const QString &cc,
-               const QString &subject, const QString &body, bool bcc = false,
-               const QString &attachment = QString() );
+    bool send( const Identity &identity, const QString &from, const QString &to,
+               const QString &cc, const QString &subject, const QString &body,
+               bool bccMe=false, const QString &attachment=QString(),
+               bool useSendmail=false );
 };
 
 #endif
