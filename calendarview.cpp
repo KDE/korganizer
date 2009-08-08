@@ -76,6 +76,8 @@
 
 #include <KHolidays/Holidays>
 
+#include <KPIMIdentities/IdentityManager>
+
 #include <KFileDialog>
 #include <KNotification>
 #include <KRun>
@@ -1470,13 +1472,23 @@ void CalendarView::schedule_forward( Incidence *incidence )
     }
 
     ICalFormat format;
+    QString from = KOPrefs::instance()->email();
+    bool bccMe = KOPrefs::instance()->mBcc;
     QString messageText = format.createScheduleMessage( incidence, iTIPRequest );
+    bool useSendmail = ( KOPrefs::instance()->mMailClient == KOPrefs::MailClientSendmail );
     KOMailClient mailer;
-    if ( mailer.mailTo( incidence, recipients, messageText ) ) {
-      KMessageBox::information( this, i18n( "The item information was successfully sent." ),
-                                i18n( "Forwarding" ), "IncidenceForwardSuccess" );
+    if ( mailer.mailTo(
+           incidence,
+           KOCore::self()->identityManager()->identityForAddress( from ),
+           from, bccMe, recipients, messageText, useSendmail ) ) {
+      KMessageBox::information(
+        this,
+        i18n( "The item information was successfully sent." ),
+        i18n( "Forwarding" ), "IncidenceForwardSuccess" );
     } else {
-      KMessageBox::error( this, i18n( "Unable to forward the item '%1'", incidence->summary() ) );
+      KMessageBox::error(
+        this,
+        i18n( "Unable to forward the item '%1'", incidence->summary() ) );
     }
   }
   delete publishdlg;
