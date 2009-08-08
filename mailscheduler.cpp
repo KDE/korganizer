@@ -23,26 +23,19 @@
 */
 
 #include "mailscheduler.h"
+#include "incidencechanger.h"
 #include "kocore.h"
 #include "komailclient.h"
 #include "koprefs.h"
-#include "incidencechanger.h"
 
-#include <kcal/calendar.h>
-#include <kcal/event.h>
-#include <kcal/icalformat.h>
+#include <KCal/Calendar>
+#include <KCal/ICalFormat>
 
 #include <KPIMIdentities/IdentityManager>
 
-#include <kdebug.h>
-#include <klocale.h>
-#include <kstandarddirs.h>
+#include <KStandardDirs>
 
 #include <QDir>
-#include <QFile>
-#include <QRegExp>
-#include <QTextStream>
-#include <QList>
 
 MailScheduler::MailScheduler( Calendar *calendar )
   : Scheduler( calendar )

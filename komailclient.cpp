@@ -25,31 +25,32 @@
 */
 
 #include "komailclient.h"
-#include "version.h"
 #include "kmailinterface.h" //generated
+#include "version.h"
 
-#include <kcal/event.h>
-#include <kcal/todo.h>
-#include <kcal/incidenceformatter.h>
+#include <KCal/Attendee>
+#include <KCal/Incidence>
+#include <KCal/IncidenceBase>
+#include <KCal/IncidenceFormatter>
 
-#include <kpimutils/email.h>
+#include <KPIMUtils/Email>
 
-#include <kpimidentities/identity.h>
+#include <KPIMIdentities/Identity>
 
-#include <klocale.h>
-#include <kstandarddirs.h>
-#include <kdebug.h>
-#include <kmessagebox.h>
-#include <kurl.h>
-#include <kapplication.h>
-#include <ktoolinvocation.h>
-#include <kshell.h>
-#include <ksystemtimezone.h>
+#include <KApplication>
+#include <KDebug>
+#include <KLocale>
+#include <KMessageBox>
+#include <KShell>
+#include <KStandardDirs>
+#include <KSystemTimeZone>
+#include <KToolInvocation>
 
-#include <QtDBus/QtDBus>
+#if 0
 
 #include <unistd.h>
 #include <stdio.h>
+#endif
 
 KOMailClient::KOMailClient()
 {
@@ -169,7 +170,8 @@ bool KOMailClient::mailTo( IncidenceBase *incidence, const Identity &identity,
   }
   QString body = IncidenceFormatter::mailBodyStr( incidence, KSystemTimeZones::local() );
 
-  return send( identity, from, recipients, QString(), subject, body, bccMe, attachment, useSendmail );
+  return send( identity, from, recipients, QString(), subject, body, bccMe,
+               attachment, useSendmail );
 }
 
 bool KOMailClient::send( const Identity &identity,

@@ -39,6 +39,7 @@
 #include "exportwebdialog.h"
 #include "freebusymanager.h"
 #include "history.h"
+#include "incidencechanger.h"
 #include "kocorehelper.h"
 #include "kodialogmanager.h"
 #include "koeventeditor.h"
@@ -50,10 +51,8 @@
 #include "kojournaleditor.h"
 #include "komailclient.h"
 #include "komessagebox.h"
-#include "koprefs.h"
 #include "kotodoeditor.h"
 #include "koviewmanager.h"
-#include "incidencechanger.h"
 #include "mailscheduler.h"
 #include "navigatorbar.h"
 #include "publishdialog.h"
@@ -75,9 +74,11 @@
 #include <kcal/htmlexportsettings.h> //krazy:exclude=camelcase. it's generated
 
 #include <KHolidays/Holidays>
+using namespace KHolidays;
 
 #include <KPIMIdentities/IdentityManager>
 
+#include <KDialog>
 #include <KFileDialog>
 #include <KNotification>
 #include <KRun>
@@ -85,12 +86,10 @@
 
 #include <QApplication>
 #include <QClipboard>
+#include <QFile>
 #include <QSplitter>
 #include <QStackedWidget>
 #include <QVBoxLayout>
-
-using namespace KOrg;
-using namespace KHolidays;
 
 CalendarView::CalendarView( QWidget *parent )
   : CalendarViewBase( parent ),
@@ -1474,8 +1473,8 @@ void CalendarView::schedule_forward( Incidence *incidence )
     ICalFormat format;
     QString from = KOPrefs::instance()->email();
     bool bccMe = KOPrefs::instance()->mBcc;
-    QString messageText = format.createScheduleMessage( incidence, iTIPRequest );
     bool useSendmail = ( KOPrefs::instance()->mMailClient == KOPrefs::MailClientSendmail );
+    QString messageText = format.createScheduleMessage( incidence, iTIPRequest );
     KOMailClient mailer;
     if ( mailer.mailTo(
            incidence,
