@@ -42,7 +42,6 @@ using namespace KHolidays;
 #include <kcomponentdata.h>
 #include <kcalendarsystem.h>
 
-#include <Q3ValueList>
 #include <QApplication>
 #include <QPixmap>
 #include <QIcon>
