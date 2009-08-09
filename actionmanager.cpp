@@ -1818,6 +1818,7 @@ void ActionManager::openEventEditor( const QString &summary,
                i18n( "Removing attachments from an email might invalidate its signature." ),
                i18n( "Remove Attachments" ), KStandardGuiItem::cont(), KStandardGuiItem::cancel(),
                "BodyOnlyInlineAttachment" ) != KMessageBox::Continue ) {
+          delete msg;
           return;
         }
         KMime::Message *newMsg = new KMime::Message();
