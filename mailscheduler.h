@@ -25,10 +25,7 @@
 #define MAILSCHEDULER_H
 
 #include <KCal/Scheduler>
-
-#include <QList>
 #include <QMap>
-#include <QString>
 
 namespace KCal {
   class Incidence;

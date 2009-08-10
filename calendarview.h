@@ -29,8 +29,7 @@
 #include "korganizer_export.h"
 #include "interfaces/korganizer/calendarviewbase.h"
 
-#include <QList>
-#include <QMap>
+#include <QObject>
 #include <QWidget>
 
 class CalPrinter;
@@ -45,22 +44,20 @@ class KOTodoView;
 class KOViewManager;
 class NavigatorBar;
 
-class KVBox;
-
-class QByteArray;
-class QSplitter;
-class QStackedWidget;
-
-namespace KOrg {
-  class History;
-  class IncidenceChangerBase;
-}
 namespace KCal {
   class HTMLExportSettings;
 }
-
-using namespace KOrg;
 using namespace KCal;
+
+namespace KOrg {
+  class History;
+}
+using namespace KOrg;
+
+class KVBox;
+
+class QSplitter;
+class QStackedWidget;
 
 class CalendarViewExtension : public QWidget
 {

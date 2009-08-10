@@ -23,22 +23,19 @@
 */
 
 #include "mailscheduler.h"
-#include "komailclient.h"
 #include "incidencechanger.h"
+#include "kocore.h"
+#include "komailclient.h"
+#include "koprefs.h"
 
-#include <kcal/calendar.h>
-#include <kcal/event.h>
-#include <kcal/icalformat.h>
+#include <KCal/Calendar>
+#include <KCal/ICalFormat>
 
-#include <kdebug.h>
-#include <klocale.h>
-#include <kstandarddirs.h>
+#include <KPIMIdentities/IdentityManager>
+
+#include <KStandardDirs>
 
 #include <QDir>
-#include <QFile>
-#include <QRegExp>
-#include <QTextStream>
-#include <QList>
 
 MailScheduler::MailScheduler( Calendar *calendar )
   : Scheduler( calendar )
@@ -52,25 +49,40 @@ MailScheduler::~MailScheduler()
 bool MailScheduler::publish( IncidenceBase *incidence,
                              const QString &recipients )
 {
-  QString messageText = mFormat->createScheduleMessage( incidence,
-                                                        iTIPPublish );
+  QString from = KOPrefs::instance()->email();
+  bool bccMe = KOPrefs::instance()->mBcc;
+  bool useSendmail = ( KOPrefs::instance()->mMailClient == KOPrefs::MailClientSendmail );
+  QString messageText = mFormat->createScheduleMessage( incidence, iTIPPublish );
+
   KOMailClient mailer;
-  return mailer.mailTo( incidence, recipients, messageText );
+  return mailer.mailTo(
+    incidence,
+    KOCore::self()->identityManager()->identityForAddress( from ),
+    from, bccMe, recipients, messageText, useSendmail );
 }
 
 bool MailScheduler::performTransaction( IncidenceBase *incidence,
                                         iTIPMethod method,
                                         const QString &recipients )
 {
+  QString from = KOPrefs::instance()->email();
+  bool bccMe = KOPrefs::instance()->mBcc;
+  bool useSendmail = ( KOPrefs::instance()->mMailClient == KOPrefs::MailClientSendmail );
   QString messageText = mFormat->createScheduleMessage( incidence, method );
 
   KOMailClient mailer;
-  return mailer.mailTo( incidence, recipients, messageText );
+  return mailer.mailTo(
+    incidence,
+    KOCore::self()->identityManager()->identityForAddress( from ),
+    from, bccMe, recipients, messageText, useSendmail );
 }
 
 bool MailScheduler::performTransaction( IncidenceBase *incidence,
                                         iTIPMethod method )
 {
+  QString from = KOPrefs::instance()->email();
+  bool bccMe = KOPrefs::instance()->mBcc;
+  bool useSendmail = ( KOPrefs::instance()->mMailClient == KOPrefs::MailClientSendmail );
   QString messageText = mFormat->createScheduleMessage( incidence, method );
 
   KOMailClient mailer;
@@ -79,14 +91,20 @@ bool MailScheduler::performTransaction( IncidenceBase *incidence,
        method == iTIPCancel ||
        method == iTIPAdd ||
        method == iTIPDeclineCounter ) {
-    status = mailer.mailAttendees( incidence, messageText );
+    status = mailer.mailAttendees(
+      incidence,
+      KOCore::self()->identityManager()->identityForAddress( from ),
+      bccMe, messageText, useSendmail );
   } else {
     QString subject;
     Incidence *inc = dynamic_cast<Incidence*>( incidence );
     if ( inc && method == iTIPCounter ) {
       subject = i18n( "Counter proposal: %1", inc->summary() );
     }
-    status = mailer.mailOrganizer( incidence, messageText, subject );
+    status = mailer.mailOrganizer(
+      incidence,
+      KOCore::self()->identityManager()->identityForAddress( from ),
+      from, bccMe, messageText, subject, useSendmail );
   }
   return status;
 }

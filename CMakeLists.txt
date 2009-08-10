@@ -108,7 +108,7 @@ if(KMAIL_SUPPORTED)
 
   ########### next target ###############
 
-  set(korganizer_eventviewer_LIB_SRCS koeventviewer.cpp urihandler.cpp koeventviewerdialog.cpp )
+  set(korganizer_eventviewer_LIB_SRCS koeventviewer.cpp urihandler.cpp koeventviewerdialog.cpp komailclient.cpp)
 
 
   qt4_add_dbus_interfaces(korganizer_eventviewer_LIB_SRCS org.kde.korganizer.Korganizer.xml)
@@ -169,7 +169,6 @@ if(KMAIL_SUPPORTED)
     koviewmanager.cpp
     kodialogmanager.cpp
     archivedialog.cpp
-    komailclient.cpp
     koincidenceeditor.cpp
     koeventeditor.cpp
     kotodoeditor.cpp

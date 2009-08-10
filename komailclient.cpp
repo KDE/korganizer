@@ -3,6 +3,7 @@
 
   Copyright (c) 1998 Barry D Benowitz <b.benowitz@telesciences.com>
   Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
+  Copyright (c) 2009 Allen Winter <winter@kde.org>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -24,33 +25,32 @@
 */
 
 #include "komailclient.h"
-#include "kocore.h"
-#include "koprefs.h"
+#include "kmailinterface.h" //generated
 #include "version.h"
-#include <kmailinterface.h>
 
-#include <kcal/event.h>
-#include <kcal/todo.h>
-#include <kcal/incidenceformatter.h>
+#include <KCal/Attendee>
+#include <KCal/Incidence>
+#include <KCal/IncidenceBase>
+#include <KCal/IncidenceFormatter>
 
-#include <kpimutils/email.h>
+#include <KPIMUtils/Email>
 
-#include <kpimidentities/identity.h>
-#include <kpimidentities/identitymanager.h>
+#include <KPIMIdentities/Identity>
 
-#include <klocale.h>
-#include <kstandarddirs.h>
-#include <kdebug.h>
-#include <kmessagebox.h>
-#include <kurl.h>
-#include <kapplication.h>
-#include <ktoolinvocation.h>
-#include <kshell.h>
+#include <KApplication>
+#include <KDebug>
+#include <KLocale>
+#include <KMessageBox>
+#include <KShell>
+#include <KStandardDirs>
+#include <KSystemTimeZone>
+#include <KToolInvocation>
 
-#include <QtDBus/QtDBus>
+#if 0
 
 #include <unistd.h>
 #include <stdio.h>
+#endif
 
 KOMailClient::KOMailClient()
 {
@@ -60,7 +60,10 @@ KOMailClient::~KOMailClient()
 {
 }
 
-bool KOMailClient::mailAttendees( IncidenceBase *incidence, const QString &attachment )
+bool KOMailClient::mailAttendees( IncidenceBase *incidence,
+                                  const Identity &identity,
+                                  bool bccMe, const QString &attachment,
+                                  bool useSendmail )
 {
   Attendee::List attendees = incidence->attendees();
   if ( attendees.count() == 0 ) {
@@ -95,7 +98,6 @@ bool KOMailClient::mailAttendees( IncidenceBase *incidence, const QString &attac
     KPIMUtils::extractEmailAddressAndName( username, temail, tname );
     tname += " <" + email + '>';
 
-
     // Optional Participants and Non-Participants are copied on the email
     if ( a->role() == Attendee::OptParticipant ||
          a->role() == Attendee::NonParticipant ) {
@@ -125,18 +127,18 @@ bool KOMailClient::mailAttendees( IncidenceBase *incidence, const QString &attac
     subject = "Free Busy Object";
   }
 
-  QString body = IncidenceFormatter::mailBodyStr( incidence, KOPrefs::instance()->timeSpec() );
+  QString body = IncidenceFormatter::mailBodyStr( incidence, KSystemTimeZones::local() );
 
-  bool bcc = KOPrefs::instance()->mBcc;
-
-  return send( from, to, cc, subject, body, bcc, attachment );
+  return send( identity, from, to, cc, subject, body, bccMe, attachment, useSendmail );
 }
 
-bool KOMailClient::mailOrganizer( IncidenceBase *incidence, const QString &attachment,
-                                  const QString &sub )
+bool KOMailClient::mailOrganizer( IncidenceBase *incidence,
+                                  const Identity &identity,
+                                  const QString &from, bool bccMe,
+                                  const QString &attachment,
+                                  const QString &sub, bool useSendmail )
 {
   QString to = incidence->organizer().fullName();
-  QString from = KOPrefs::instance()->email();
 
   QString subject = sub;
   if ( incidence->type() != "FreeBusy" ) {
@@ -148,17 +150,16 @@ bool KOMailClient::mailOrganizer( IncidenceBase *incidence, const QString &attac
     subject = "Free Busy Message";
   }
 
-  QString body = IncidenceFormatter::mailBodyStr( incidence, KOPrefs::instance()->timeSpec() );
+  QString body = IncidenceFormatter::mailBodyStr( incidence, KSystemTimeZones::local() );
 
-  bool bcc = KOPrefs::instance()->mBcc;
-
-  return send( from, to, QString(), subject, body, bcc, attachment );
+  return send( identity, from, to, QString(), subject, body, bccMe, attachment, useSendmail );
 }
 
-bool KOMailClient::mailTo( IncidenceBase *incidence, const QString &recipients,
-                           const QString &attachment )
+bool KOMailClient::mailTo( IncidenceBase *incidence, const Identity &identity,
+                           const QString &from, bool bccMe,
+                           const QString &recipients, const QString &attachment,
+                           bool useSendmail )
 {
-  QString from = KOPrefs::instance()->email();
   QString subject;
 
   if ( incidence->type() != "FreeBusy" ) {
@@ -167,15 +168,17 @@ bool KOMailClient::mailTo( IncidenceBase *incidence, const QString &recipients,
   } else {
     subject = "Free Busy Message";
   }
-  QString body = IncidenceFormatter::mailBodyStr( incidence, KOPrefs::instance()->timeSpec() );
-  bool bcc = KOPrefs::instance()->mBcc;
+  QString body = IncidenceFormatter::mailBodyStr( incidence, KSystemTimeZones::local() );
 
-  return send( from, recipients, QString(), subject, body, bcc, attachment );
+  return send( identity, from, recipients, QString(), subject, body, bccMe,
+               attachment, useSendmail );
 }
 
-bool KOMailClient::send( const QString &from, const QString &_to, const QString &cc,
-                         const QString &subject, const QString &body, bool bcc,
-                         const QString &attachment )
+bool KOMailClient::send( const Identity &identity,
+                         const QString &from, const QString &_to,
+                         const QString &cc, const QString &subject,
+                         const QString &body, bool bccMe,
+                         const QString &attachment, bool useSendmail )
 {
   // We must have a recipients list for most MUAs. Thus, if the 'to' list
   // is empty simply use the 'from' address as the recipient.
@@ -189,7 +192,7 @@ bool KOMailClient::send( const QString &from, const QString &_to, const QString 
            << "\nSubject:" << subject << "\nBody: \n" << body
            << "\nAttachment:\n" << attachment;
 
-  if ( KOPrefs::instance()->mMailClient == KOPrefs::MailClientSendmail ) {
+  if ( useSendmail ) {
     bool needHeaders = true;
 
     QString command = KStandardDirs::findExe(
@@ -206,14 +209,14 @@ bool KOMailClient::send( const QString &from, const QString &_to, const QString 
       command.append( QString::fromLatin1( " -s " ) );
       command.append( KShell::quoteArg( subject ) );
 
-      if ( bcc ) {
+      if ( bccMe ) {
         command.append( QString::fromLatin1( " -b " ) );
         command.append( KShell::quoteArg( from ) );
       }
 
       if ( !cc.isEmpty() ) {
-        command.append(" -c ");
-        command.append(KShell::quoteArg(cc));
+        command.append( " -c " );
+        command.append( KShell::quoteArg( cc ) );
       }
 
       command.append( " " );
@@ -229,15 +232,15 @@ bool KOMailClient::send( const QString &from, const QString &_to, const QString 
     }
 
     QString textComplete;
-    if ( needHeaders )
-    {
+    if ( needHeaders ) {
       textComplete += QString::fromLatin1( "From: " ) + from + '\n';
       textComplete += QString::fromLatin1( "To: " ) + to + '\n';
       if ( !cc.isEmpty() ) {
         textComplete += QString::fromLatin1( "Cc: " ) + cc + '\n';
       }
-      if ( bcc )
+      if ( bccMe ) {
         textComplete += QString::fromLatin1( "Bcc: " ) + from + '\n';
+      }
       textComplete += QString::fromLatin1( "Subject: " ) + subject + '\n';
       textComplete += QString::fromLatin1( "X-Mailer: KOrganizer" ) + korgVersion + '\n';
     }
@@ -259,7 +262,7 @@ bool KOMailClient::send( const QString &from, const QString &_to, const QString 
     org::kde::kmail::kmail kmail( "org.kde.kmail", "/KMail", QDBusConnection::sessionBus() );
     kapp->updateRemoteUserTimestamp( "org.kde.kmail" );
     if ( attachment.isEmpty() ) {
-      return kmail.openComposer( to, cc, bcc ? from : QString(), subject, body, false ).isValid();
+      return kmail.openComposer( to, cc, bccMe ? from : QString(), subject, body, false ).isValid();
     } else {
       QString meth;
       int idx = attachment.indexOf( "METHOD" );
@@ -271,10 +274,10 @@ bool KOMailClient::send( const QString &from, const QString &_to, const QString 
       } else {
         meth = "publish";
       }
-      return kmail.openComposer
-          ( to, cc, bcc ? from : QString(), subject, body, false, "cal.ics", "7bit",
-            attachment.toUtf8(), "text", "calendar", "method", meth, "attachment",
-            "utf-8", KOCore::self()->identityManager()->identityForAddress( from ).uoid() ).isValid();
+      return kmail.openComposer(
+        to, cc, bccMe ? from : QString(), subject, body, false, "cal.ics", "7bit",
+        attachment.toUtf8(), "text", "calendar", "method", meth, "attachment",
+        "utf-8", identity.uoid() ).isValid();
     }
   }
   return true;
