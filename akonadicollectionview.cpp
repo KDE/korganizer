@@ -60,9 +60,9 @@ AkonadiCollectionViewFactory::AkonadiCollectionViewFactory( KCal::AkonadiCalenda
 CalendarViewExtension *AkonadiCollectionViewFactory::create( QWidget *parent )
 {
   mAkonadiCollectionView = new AkonadiCollectionView( this, mCalendar, parent );
+  QObject::connect( mAkonadiCollectionView, SIGNAL(resourcesChanged(bool)), mView, SLOT(resourcesChanged()) );
 #if 0
-  QObject::connect( mAkonadiCollectionView, SIGNAL(resourcesChanged()), mView, SLOT(resourcesChanged()) );
-  QObject::connect( mAkonadiCollectionView, SIGNAL(resourcesChanged()), mView, SLOT(updateCategories()) );
+  QObject::connect( mAkonadiCollectionView, SIGNAL(resourcesChanged(bool)), mView, SLOT(updateCategories()) );
   QObject::connect( mCalendar, SIGNAL(signalResourceAdded(ResourceCalendar *)), mAkonadiCollectionView, SLOT(addResourceItem(ResourceCalendar *)) );
   QObject::connect( mCalendar, SIGNAL(signalResourceModified(ResourceCalendar *)), mAkonadiCollectionView, SLOT(updateResourceItem(ResourceCalendar *)) );
   QObject::connect( mCalendar, SIGNAL(signalResourceAdded(ResourceCalendar *)), mView, SLOT(updateCategories()) );
@@ -144,9 +144,7 @@ QVariant ResourceItem::data( int column, int role ) const
   }
 }
 
-ResourceItem::ResourceItem( KCal::ResourceCalendar *resource,
-                            const QString &sub, const QString &label,
-                            AkonadiCollectionView *view, ResourceItem *parent )
+ResourceItem::ResourceItem( KCal::ResourceCalendar *resource, const QString &sub, const QString &label, AkonadiCollectionView *view, ResourceItem *parent )
 
   : QTreeWidgetItem( parent ), mResource( resource ),
     mView( view ), mBlockStateChange( false ), mIsSubresource( true ),
@@ -158,41 +156,13 @@ ResourceItem::ResourceItem( KCal::ResourceCalendar *resource,
   mResourceColor = KOPrefs::instance()->resourceColor( sub );
   mResourceIdentifier = sub;
   setGuiState();
-
   treeWidget()->setRootIsDecorated( true );
-}
-
-void ResourceItem::setGuiState()
-{
-  mBlockStateChange = true;
-  if ( mIsSubresource ) {
-    setOn( mResource->subresourceActive( mResourceIdentifier ) );
-  } else {
-    setOn( mResource->isActive() );
-  }
-  mBlockStateChange = false;
-}
-
-void ResourceItem::setOn( bool checked )
-{
-  if ( checked ) {
-    setCheckState( 0, Qt::Checked );
-  } else {
-    setCheckState( 0, Qt::Unchecked );
-  }
-  mActive = checked;
 }
 
 void ResourceItem::stateChange( bool active )
 {
-  if ( mActive == active ) {
-    return;
-  }
-
-  if ( mBlockStateChange ) {
-    return;
-  }
-
+  if ( mActive == active ) return;
+  if ( mBlockStateChange ) return;
   if ( mIsSubresource ) {
     mResource->setSubresourceActive( mResourceIdentifier, active );
   } else {
@@ -211,17 +181,10 @@ void ResourceItem::stateChange( bool active )
         mResource->setActive( false );
       }
     }
-
     setExpanded( mResource->isActive() && childCount() > 0 );
   }
-
   setGuiState();
   mView->emitResourcesChanged();
-}
-
-void ResourceItem::update()
-{
-  setGuiState();
 }
 
 void ResourceItem::setResourceColor( QColor &color )
@@ -278,6 +241,7 @@ class CollectionProxyModel : public QSortFilterProxyModel
             Q_ASSERT( mView->calendar()->hasCollection( collection ) );
             mView->calendar()->removeCollection( collection );
           }
+          mView->updateView();
         } return true;
         default:
           return QSortFilterProxyModel::setData(index, value, role);
@@ -378,14 +342,14 @@ AkonadiCollectionView::AkonadiCollectionView( AkonadiCollectionViewFactory *fact
   collectionproxymodel->setSourceModel( collectionmodel );
   collectionproxymodel->addMimeTypeFilter( QString::fromLatin1( "text/calendar" ) );
 
-  CollectionProxyModel *sortmodel = new CollectionProxyModel( this );
-  sortmodel->setDynamicSortFilter( true );
-  sortmodel->setSortCaseSensitivity( Qt::CaseInsensitive );
-  sortmodel->setSourceModel( collectionproxymodel );
+  mProxyModel = new CollectionProxyModel( this );
+  mProxyModel->setDynamicSortFilter( true );
+  mProxyModel->setSortCaseSensitivity( Qt::CaseInsensitive );
+  mProxyModel->setSourceModel( collectionproxymodel );
 
   mCollectionview = new Akonadi::CollectionView();
   mCollectionview->header()->hide();
-  mCollectionview->setModel( sortmodel );
+  mCollectionview->setModel( mProxyModel );
   mCollectionview->setRootIsDecorated( false );
   //mCollectionview->setSelectionMode( QAbstractItemView::NoSelection );
   KXMLGUIClient *xmlclient = KOCore::self()->xmlguiClient( mFactory->view() );
@@ -430,14 +394,12 @@ AkonadiCollectionView::~AkonadiCollectionView()
 void AkonadiCollectionView::updateView()
 {
   kDebug();
-#if 0
-  mListView->clear();
-  KCal::CalendarResourceManager *manager = mCalendar->resourceManager();
-  KCal::CalendarResourceManager::Iterator it;
-  for ( it = manager->begin(); it != manager->end(); ++it )addResourceItem( *it, false );
-  mListView->sortItems( 0, Qt::AscendingOrder );
-  emit emitResourcesChanged();
-#endif
+  bool enabled = false;
+  for(int row = 0; (! enabled) && row < mProxyModel->rowCount(); ++row) {
+    QModelIndex index = mProxyModel->index(row, 0);
+    enabled = mProxyModel->data(index, Qt::CheckStateRole).toBool();
+  }
+  emit resourcesChanged(enabled);
 }
 
 void AkonadiCollectionView::selectionChanged()

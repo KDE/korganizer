@@ -129,18 +129,18 @@ class KCal::AkonadiCalendar::Private : public QObject
       delete m_session;
     }
 
+    /*
     void clear()
     {
       kDebug();
-/*
       mEvents.clear();
       mTodos.clear();
       mJournals.clear();
       m_map.clear();
-*/
       qDeleteAll(m_itemMap);
       qDeleteAll(m_collectionMap);
     }
+    */
 
     bool addIncidence( Incidence *incidence )
     {
@@ -178,8 +178,7 @@ class KCal::AkonadiCalendar::Private : public QObject
       return true;
     }
 
-/*
-#if 0
+    /*
     CalFormat *mFormat;                    // calendar format
     QHash<QString, Event *>mEvents;        // hash on uids of all Events
     QMultiHash<QString, Event *>mEventsForDate;// on start dates of non-recurring, single-day Events
@@ -188,12 +187,11 @@ class KCal::AkonadiCalendar::Private : public QObject
     QHash<QString, Journal *>mJournals;    // hash on uids of all Journals
     QMultiHash<QString, Journal *>mJournalsForDate; // on dates of all Journals
     Incidence::List mDeletedIncidences;    // list of all deleted Incidences
-#endif
-*/
+    */
+
     AkonadiCalendar *q;
     Akonadi::Monitor *m_monitor;
     Akonadi::Session *m_session;
-
     QHash<Akonadi::Entity::Id, AkonadiCalendarCollection*> m_collectionMap;
     QHash<QString, AkonadiCalendarItem*> m_itemMap; //TODO replace Incidence::uid-QString with Akonadi::Entity::Id-int
     QList<QString> m_changes; //list of Incidence->uid() that are modified atm

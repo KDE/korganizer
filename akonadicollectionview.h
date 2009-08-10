@@ -47,6 +47,9 @@ class KAction;
 class KJob;
 class AkonadiCollectionView;
 
+/**
+ * The factory for AkonadiCollectionView instances.
+ */
 class AkonadiCollectionViewFactory : public CalendarViewExtension::Factory
 {
   public:
@@ -66,8 +69,8 @@ class AkonadiCollectionViewFactory : public CalendarViewExtension::Factory
 };
 
 /**
-  This class provides a view of calendar resources.
-*/
+ * This class provides a view of calendar resources.
+ */
 class AkonadiCollectionView : public CalendarViewExtension
 {
   Q_OBJECT
@@ -78,39 +81,9 @@ class AkonadiCollectionView : public CalendarViewExtension
 
     void updateView();
 
-#if 0 //sebsauer
-    void emitResourcesChanged();
-    void requestClose( ResourceCalendar * );
-    ResourceItem *findItemByIdentifier( const QString &id );
-  public slots:
-    void addResourceItem( ResourceCalendar *, bool emitSignal = true );
-    void updateResourceItem( ResourceCalendar * );
   signals:
-    void resourcesChanged();
-  protected:
-    ResourceItem *findItem( ResourceCalendar * );
-    ResourceItem *currentItem();
-  protected slots:
-    void addResource();
-    void removeResource();
-    void editResource();
-    void slotSubresourceAdded( ResourceCalendar *, const QString &,
-                               const QString &resource, const QString &label );
-    void slotSubresourceRemoved( ResourceCalendar *, const QString &,
-                                 const QString & );
-    void closeResource( ResourceCalendar * );
-    void showContextMenu( const QPoint &pos );
-    void slotAddButtonClicked();
-    void assignColor();
-    void disableColor();
-    void showInfo();
-    void reloadResource();
-    void saveResource();
-    void setStandard();
-    void updateResourceList();
-    void slotItemClicked( QTreeWidgetItem *, int );
-    void currentChanged();
-#else
+    void resourcesChanged(bool enabled);
+    
   private Q_SLOTS:
     void selectionChanged();
 
@@ -119,27 +92,15 @@ class AkonadiCollectionView : public CalendarViewExtension
 
     void deleteCalendar();
     void deleteCalendarDone( KJob* );
-#endif
 
   private:
     AkonadiCollectionViewFactory *mFactory;
-#if 0 //sebsauer
-    /*
-     * Holds:
-     * the ResourceItem that's selected when adding a resource,
-     * 0 if no item is selected,
-     * 0 if an item is selected but the user pressed RMB in the blank space
-     */
-    ResourceItem *mSelectedParent;
-    QTreeWidget *mListView;
-#endif
     KCal::AkonadiCalendar *mCalendar;
     Akonadi::StandardActionManager* mActionManager;
     Akonadi::CollectionView *mCollectionview;
-#if 0
-    QList<ResourceCalendar*> mResourcesToClose;
-    QAbstractButton *mAddButton, *mEditButton, *mDeleteButton;
-#endif
+    class CollectionProxyModel *mProxyModel;
+    //QList<ResourceCalendar*> mResourcesToClose;
+    //QAbstractButton *mAddButton, *mEditButton, *mDeleteButton;
     KAction *mCreateAction;
     KAction *mDeleteAction;
 };

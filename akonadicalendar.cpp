@@ -94,9 +94,6 @@ void AkonadiCalendar::removeCollection( const Akonadi::Collection &collection )
   AkonadiCalendarCollection *c = d->m_collectionMap.take( collection.id() );
   delete c;
 
-  //d->clear();
-  //d->m_session->clear();
-
   QHash<QString, AkonadiCalendarItem*>::Iterator it( d->m_itemMap.begin() ), end( d->m_itemMap.end() );
   while( it != end) {
     if( it.value()->m_item.storageCollectionId() == collection.id() ) {
@@ -164,6 +161,10 @@ Q_ASSERT( d->m_itemMap.contains( uid ) );
   Q_ASSERT( item.isValid() );
   kDebug() << "modify uid=" << uid << "summary=" << incidence->summary() << "type=" << incidence->type() << "storageCollectionId=" << item.storageCollectionId();
   Akonadi::ItemModifyJob *job = new Akonadi::ItemModifyJob( item, d->m_session );
+
+  //FIXME make it work
+  job->disableRevisionCheck();
+
   connect( job, SIGNAL( result( KJob* ) ), d, SLOT( modifyDone( KJob* ) ) );
   return true;
 }

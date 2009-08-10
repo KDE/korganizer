@@ -147,7 +147,11 @@ void ActionManager::init()
   // addWindow is called.
   mWindowList->addWindow( mMainWindow );
 
+  // initialize the KAction instances
   initActions();
+
+  // per default (no calendars activated) disable actions
+  slotResourcesChanged( false );
 
   // set up autoSaving stuff
   mAutoSaveTimer = new QTimer( this );
@@ -194,36 +198,22 @@ void ActionManager::createCalendarLocal()
 void ActionManager::createCalendarResources()
 {
   mCalendarResources = KOrg::StdCalendar::self();
-#if 0 //sebsauer
-  CalendarResourceManager *manager = mCalendarResources->resourceManager();
-
-  kDebug() << "CalendarResources used by KOrganizer:";
-  CalendarResourceManager::Iterator it;
-  for ( it = manager->begin(); it != manager->end(); ++it ) {
-    kDebug() << (*it)->resourceName();
-    (*it)->setResolveConflict( true );
-  }
-#endif
   setDestinationPolicy();
 
   mCalendarView->setCalendar( mCalendarResources );
   mCalendarView->readSettings();
-#if 0 //sebsauer
-  ResourceViewFactory factory( mCalendarResources, mCalendarView );
-  mCalendarView->addExtension( &factory );
-  mResourceView = factory.resourceView();
-#else
   AkonadiCollectionViewFactory factory( mCalendarResources, mCalendarView );
   mCalendarView->addExtension( &factory );
+
   mResourceView = factory.collectionView();
-#endif
+  connect( mResourceView, SIGNAL(resourcesChanged(bool)), SLOT(slotResourcesChanged(bool)) );
+
   connect( mCalendarResources, SIGNAL(calendarChanged()),
            mCalendarView, SLOT(resourcesChanged()) );
   connect( mCalendarResources, SIGNAL(calendarLoaded()),
            mCalendarView, SLOT(resourcesChanged()) );
   connect( mCalendarResources, SIGNAL(signalErrorMessage(const QString &)),
            mCalendarView, SLOT(showErrorMessage(const QString &)) );
-
   connect( mCalendarView, SIGNAL(configChanged()), SLOT(updateConfig()) );
 
   initCalendar( mCalendarResources );
@@ -509,33 +499,34 @@ void ActionManager::initActions()
   */
 
   /************************** Actions MENU *********************************/
-  action = new KAction( KIcon( "appointment-new" ), i18n( "New E&vent..." ), this );
-  action->setIconText( i18nc( "@action:intoolbar create a new event", "Event" ) );
-  action->setHelpText( i18n( "Create a new Event" ) );
-  mACollection->addAction( "new_event", action );
-  connect( action, SIGNAL(triggered(bool)), mCalendarView,
+  mNewEventAction = new KAction( KIcon( "appointment-new" ), i18n( "New E&vent..." ), this );
+  mNewEventAction->setIconText( i18nc( "@action:intoolbar create a new event", "Event" ) );
+  mNewEventAction->setHelpText( i18n( "Create a new Event" ) );
+  
+  mACollection->addAction( "new_event", mNewEventAction );
+  connect( mNewEventAction, SIGNAL(triggered(bool)), mCalendarView,
            SLOT(newEvent()) );
 
-  action = new KAction( KIcon( "task-new" ), i18n( "New &To-do..." ), this );
-  action->setIconText( i18n( "To-do" ) );
-  action->setHelpText( i18n( "Create a new To-do" ) );
-  mACollection->addAction( "new_todo", action );
-  connect( action, SIGNAL(triggered(bool)), mCalendarView,
+  mNewTodoAction = new KAction( KIcon( "task-new" ), i18n( "New &To-do..." ), this );
+  mNewTodoAction->setIconText( i18n( "To-do" ) );
+  mNewTodoAction->setHelpText( i18n( "Create a new To-do" ) );
+  mACollection->addAction( "new_todo", mNewTodoAction );
+  connect( mNewTodoAction, SIGNAL(triggered(bool)), mCalendarView,
            SLOT(newTodo()) );
 
-  action = new KAction( i18n( "New Su&b-to-do..." ), this );
-  mACollection->addAction( "new_subtodo", action );
-  connect( action, SIGNAL(triggered(bool)), mCalendarView,
+  mNewSubtodoAction = new KAction( i18n( "New Su&b-to-do..." ), this );
+  mACollection->addAction( "new_subtodo", mNewSubtodoAction );
+  connect( mNewSubtodoAction, SIGNAL(triggered(bool)), mCalendarView,
            SLOT(newSubTodo() ));
-  action->setEnabled( false );
-  connect( mCalendarView,SIGNAL(todoSelected(bool)), action,
+  mNewSubtodoAction->setEnabled( false );
+  connect( mCalendarView,SIGNAL(todoSelected(bool)), mNewSubtodoAction,
            SLOT(setEnabled(bool)) );
 
-  action = new KAction( KIcon( "journal-new" ), i18n( "New &Journal..." ), this );
-  action->setIconText( i18n( "Journal" ) );
-  action->setHelpText( i18n( "Create a new Journal" ) );
-  mACollection->addAction( "new_journal", action );
-  connect( action, SIGNAL(triggered(bool)), mCalendarView,
+  mNewJournalAction = new KAction( KIcon( "journal-new" ), i18n( "New &Journal..." ), this );
+  mNewJournalAction->setIconText( i18n( "Journal" ) );
+  mNewJournalAction->setHelpText( i18n( "Create a new Journal" ) );
+  mACollection->addAction( "new_journal", mNewJournalAction );
+  connect( mNewJournalAction, SIGNAL(triggered(bool)), mCalendarView,
            SLOT(newJournal()) );
 
   mShowIncidenceAction = new KAction( i18n( "&Show" ), this );
@@ -706,7 +697,14 @@ void ActionManager::initActions()
   QAction *a = mACollection->addAction( KStandardAction::TipofDay, this,
                                         SLOT(showTip()) );
   mACollection->addAction( "help_tipofday", a );
+}
 
+void ActionManager::slotResourcesChanged(bool enabled)
+{
+  mNewEventAction->setEnabled(enabled);
+  mNewTodoAction->setEnabled(enabled);
+  mNewSubtodoAction->setEnabled(enabled);
+  mNewJournalAction->setEnabled(enabled);
 }
 
 void ActionManager::slotChangeComboActionItem( int index )
@@ -996,14 +994,12 @@ bool ActionManager::addResource( const KUrl &mUrl )
   CalendarResourceManager *manager = cr->resourceManager();
   ResourceCalendar *resource = 0;
   QString name;
-
   kDebug() << "URL:" << mUrl;
   if ( mUrl.isLocalFile() ) {
     kDebug() << "Local Resource";
     resource = manager->createResource( "file" );
-    if ( resource ) {
+    if ( resource )
       resource->setValue( "File", mUrl.toLocalFile() );
-    }
     name = mUrl.toLocalFile();
   } else {
     kDebug() << "Remote Resource";
@@ -1014,7 +1010,6 @@ bool ActionManager::addResource( const KUrl &mUrl )
     }
     name = mUrl.prettyUrl();
   }
-
   if ( resource ) {
     resource->setTimeSpec( KOPrefs::instance()->timeSpec() );
     resource->setResourceName( name );
@@ -1023,12 +1018,10 @@ bool ActionManager::addResource( const KUrl &mUrl )
     // we have to call resourceAdded manually, because for in-process changes
     // the dcop signals are not connected, so the resource's signals would not
     // be connected otherwise
-    if ( mCalendarResources ) {
+    if ( mCalendarResources )
       mCalendarResources->resourceAdded( resource );
-    }
   } else {
-    QString msg = i18n( "Unable to create calendar '%1'.", name );
-    KMessageBox::error( dialogParent(), msg );
+    KMessageBox::error( dialogParent(), i18n( "Unable to create calendar '%1'.", name ) );
   }
   return true;
 #else
@@ -1174,34 +1167,20 @@ void ActionManager::exportHTML( HTMLExportSettings *settings )
     cdate = cdate.addDays( 1 );
   }
 
-  bool saveStatus;
-  QString errorMessage;
   KUrl dest( settings->outputFile() );
   if ( dest.isLocalFile() ) {
-    saveStatus = mExport.save( dest.toLocalFile() );
-    errorMessage = i18n( "Unable to write the output file." );
+    mExport.save( dest.toLocalFile() );
   } else {
     KTemporaryFile tf;
     tf.open();
     QString tfile = tf.fileName();
-    saveStatus = mExport.save( tfile );
-    errorMessage = i18n( "Unable to write the temporary file for uploading." );
+    mExport.save( tfile );
     if ( !KIO::NetAccess::upload( tfile, dest, view() ) ) {
-      saveStatus = false;
-      errorMessage = i18n( "Unable to upload the export file." );
+      KNotification::event ( KNotification::Error,
+                             i18n( "Could not upload file." ) );
     }
   }
-
   QApplication::restoreOverrideCursor();
-
-  QString saveMessage;
-  if ( saveStatus ) {
-    saveMessage = i18n( "Web page successfully written to \"%1\"", dest.url() );
-  } else {
-    saveMessage = i18n( "Export failed. %1", errorMessage );
-  }
-  KMessageBox::information( dialogParent(), saveMessage,
-               i18nc( "@title:window", "Export Status" ) );
 }
 
 bool ActionManager::saveAsURL( const KUrl &url )
@@ -1431,6 +1410,8 @@ void ActionManager::showTip()
 
 void ActionManager::showTipOnStart()
 {
+  KConfigGroup config( KGlobal::config(), "TipOfDay" );
+  KTipDialog::setShowOnStart( config.readEntry( "RunOnStart", false ) );
   KTipDialog::showTip( dialogParent() );
 }
 
@@ -1832,7 +1813,6 @@ void ActionManager::openEventEditor( const QString &summary,
                i18n( "Removing attachments from an email might invalidate its signature." ),
                i18n( "Remove Attachments" ), KStandardGuiItem::cont(), KStandardGuiItem::cancel(),
                "BodyOnlyInlineAttachment" ) != KMessageBox::Continue ) {
-          delete msg;
           return;
         }
         KMime::Message *newMsg = new KMime::Message();
@@ -1884,8 +1864,7 @@ void ActionManager::openTodoEditor( const QString &summary,
                                     const QString &uri,
                                     const QString &file,
                                     const QStringList &attendees,
-                                    const QString &attachmentMimetype,
-                                    bool isTask )
+                                    const QString &attachmentMimetype )
 {
   int action = KOPrefs::instance()->defaultTodoAttachMethod();
   if ( attachmentMimetype != "message/rfc822" ) {
@@ -1923,7 +1902,7 @@ void ActionManager::openTodoEditor( const QString &summary,
 
   mCalendarView->newTodo( summary, description, QStringList(attData),
                           attendees, QStringList(attachmentMimetype),
-                          action != KOPrefs::Link, isTask );
+                          action != KOPrefs::Link );
 }
 
 void ActionManager::openJournalEditor( const QDate &date )
@@ -2079,9 +2058,8 @@ bool ActionManager::saveResourceCalendar()
   CalendarResourceManager *m = mCalendarResources->resourceManager();
   CalendarResourceManager::ActiveIterator it;
   for ( it = m->activeBegin(); it != m->activeEnd(); ++it ) {
-    if ( (*it)->readOnly() ) {
+    if ( (*it)->readOnly() )
       continue;
-    }
     if ( !(*it)->save() ) {
       int result = KMessageBox::warningContinueCancel(
         view(),
@@ -2091,9 +2069,8 @@ bool ActionManager::saveResourceCalendar()
         i18n( "Save Error" ),
         KGuiItem( i18n( "Continue Save" ) ),
         KGuiItem( i18n( "Cancel Save" ) ) );
-      if ( result == KMessageBox::Cancel ) {
+      if ( result == KMessageBox::Cancel )
         return false;
-      }
     }
   }
 #else

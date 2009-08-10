@@ -33,6 +33,9 @@ namespace KCal {
 
 class CalFormat;
 
+/**
+ * Implements a KCal::Calendar that uses Akonadi as backend.
+ */
 class KCAL_EXPORT AkonadiCalendar : public Calendar
 {
     Q_OBJECT

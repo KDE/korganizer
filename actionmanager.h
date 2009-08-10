@@ -378,6 +378,7 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
   private slots:
     void dumpText( const QString & );  // only for debugging purposes
 
+    void slotResourcesChanged(bool);
     void slotChangeComboActionItem(int);
 
   private:
@@ -409,6 +410,11 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
 
     KToggleAction *mHideMenuBarAction;
 
+    KAction *mNewEventAction;
+    KAction *mNewTodoAction;
+    KAction *mNewSubtodoAction;
+    KAction *mNewJournalAction;
+
     KAction *mShowIncidenceAction;
     KAction *mEditIncidenceAction;
     KAction *mDeleteIncidenceAction;
@@ -434,15 +440,9 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
 
     bool mHtmlExportSync;
 
-    // Either mCalendar *or* mCalendarResources is set.
     Calendar *mCalendar;
-#if 0 //sebsauer
-    CalendarResources *mCalendarResources;
-    ResourceView *mResourceView;
-#else
     AkonadiCalendar *mCalendarResources;
     AkonadiCollectionView *mResourceView;
-#endif
 
     bool mIsClosing;
 };
