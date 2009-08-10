@@ -47,7 +47,7 @@
 #include <KCal/CalendarLocal>
 #include <KCal/FileStorage>
 #include <KCal/HtmlExport>
-#include <kcal/htmlexportsettings.h> //krazy:exclude=camelcase. it's generated
+#include <KCal/HtmlExportSettings>
 #include <KMime/KMimeMessage>
 
 #include <KAction>
