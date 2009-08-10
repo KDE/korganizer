@@ -1167,20 +1167,34 @@ void ActionManager::exportHTML( HTMLExportSettings *settings )
     cdate = cdate.addDays( 1 );
   }
 
+  bool saveStatus;
+  QString errorMessage;
   KUrl dest( settings->outputFile() );
   if ( dest.isLocalFile() ) {
-    mExport.save( dest.toLocalFile() );
+    saveStatus = mExport.save( dest.toLocalFile() );
+    errorMessage = i18n( "Unable to write the output file." );
   } else {
     KTemporaryFile tf;
     tf.open();
     QString tfile = tf.fileName();
-    mExport.save( tfile );
+    saveStatus = mExport.save( tfile );
+    errorMessage = i18n( "Unable to write the temporary file for uploading." );
     if ( !KIO::NetAccess::upload( tfile, dest, view() ) ) {
-      KNotification::event ( KNotification::Error,
-                             i18n( "Could not upload file." ) );
+      saveStatus = false;
+      errorMessage = i18n( "Unable to upload the export file." );
     }
   }
+
   QApplication::restoreOverrideCursor();
+
+  QString saveMessage;
+  if ( saveStatus ) {
+    saveMessage = i18n( "Web page successfully written to \"%1\"", dest.url() );
+  } else {
+    saveMessage = i18n( "Export failed. %1", errorMessage );
+  }
+  KMessageBox::information( dialogParent(), saveMessage,
+               i18nc( "@title:window", "Export Status" ) );
 }
 
 bool ActionManager::saveAsURL( const KUrl &url )
@@ -1813,6 +1827,7 @@ void ActionManager::openEventEditor( const QString &summary,
                i18n( "Removing attachments from an email might invalidate its signature." ),
                i18n( "Remove Attachments" ), KStandardGuiItem::cont(), KStandardGuiItem::cancel(),
                "BodyOnlyInlineAttachment" ) != KMessageBox::Continue ) {
+          delete msg;
           return;
         }
         KMime::Message *newMsg = new KMime::Message();
@@ -1864,7 +1879,8 @@ void ActionManager::openTodoEditor( const QString &summary,
                                     const QString &uri,
                                     const QString &file,
                                     const QStringList &attendees,
-                                    const QString &attachmentMimetype )
+                                    const QString &attachmentMimetype,
+                                    bool isTask )
 {
   int action = KOPrefs::instance()->defaultTodoAttachMethod();
   if ( attachmentMimetype != "message/rfc822" ) {
@@ -1902,7 +1918,7 @@ void ActionManager::openTodoEditor( const QString &summary,
 
   mCalendarView->newTodo( summary, description, QStringList(attData),
                           attendees, QStringList(attachmentMimetype),
-                          action != KOPrefs::Link );
+                          action != KOPrefs::Link, isTask );
 }
 
 void ActionManager::openJournalEditor( const QDate &date )
@@ -2058,8 +2074,9 @@ bool ActionManager::saveResourceCalendar()
   CalendarResourceManager *m = mCalendarResources->resourceManager();
   CalendarResourceManager::ActiveIterator it;
   for ( it = m->activeBegin(); it != m->activeEnd(); ++it ) {
-    if ( (*it)->readOnly() )
+    if ( (*it)->readOnly() ) {
       continue;
+    }
     if ( !(*it)->save() ) {
       int result = KMessageBox::warningContinueCancel(
         view(),
@@ -2069,8 +2086,9 @@ bool ActionManager::saveResourceCalendar()
         i18n( "Save Error" ),
         KGuiItem( i18n( "Continue Save" ) ),
         KGuiItem( i18n( "Cancel Save" ) ) );
-      if ( result == KMessageBox::Cancel )
+      if ( result == KMessageBox::Cancel ) {
         return false;
+      }
     }
   }
 #else
