@@ -68,7 +68,7 @@
 #include <KCal/DndFactory>
 #include <KCal/FileStorage>
 #include <KCal/FreeBusy>
-#include <KCal/HtmlExportSettings>
+#include <KCal/HTMLExportSettings>
 #include <KCal/ICalDrag>
 #include <KCal/ICalFormat>
 #include <KCal/VCalFormat>

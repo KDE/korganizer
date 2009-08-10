@@ -47,7 +47,7 @@
 #include <KCal/CalendarLocal>
 #include <KCal/FileStorage>
 #include <KCal/HtmlExport>
-#include <KCal/HtmlExportSettings>
+#include <KCal/HTMLExportSettings>
 #include <KMime/KMimeMessage>
 
 #include <KAction>
