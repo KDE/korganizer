@@ -66,10 +66,10 @@
 #include <KCal/DndFactory>
 #include <KCal/FileStorage>
 #include <KCal/FreeBusy>
+#include <KCal/HTMLExportSettings>
 #include <KCal/ICalDrag>
 #include <KCal/ICalFormat>
 #include <KCal/VCalFormat>
-#include <kcal/htmlexportsettings.h> //krazy:exclude=camelcase. it's generated
 
 #include <KHolidays/Holidays>
 using namespace KHolidays;
