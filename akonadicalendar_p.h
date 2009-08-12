@@ -153,7 +153,7 @@ class KCal::AkonadiCalendar::Private : public QObject
       const Akonadi::Collection collection = dlg.selectedCollection();
       Q_ASSERT( collection.isValid() );
       //Q_ASSERT( m_collectionMap.contains( collection.id() ) ); //we can add items to collections we don't show yet
-      Q_ASSERT( ! m_itemMap.contains( incidence->uid() ) ); //but we can not have the same incidence in 2 collections
+      Q_ASSERT( ! m_uidToItemId.contains( incidence->uid() ) ); //but we can not have the same incidence in 2 collections
 
       Akonadi::Item item;
       //the sub-mimetype of text/calendar as defined at kdepim/akonadi/kcal/kcalmimetypevisitor.cpp
@@ -169,8 +169,8 @@ class KCal::AkonadiCalendar::Private : public QObject
     {
       kDebug();
       m_changes.removeAll( incidence->uid() ); //abort changes to this incidence cause we will just delete it
-      Q_ASSERT( m_itemMap.contains( incidence->uid() ) );
-      Akonadi::Item item = m_itemMap[ incidence->uid() ]->m_item;
+      Q_ASSERT( m_uidToItemId.contains( incidence->uid() ) );
+      Akonadi::Item item = itemForUid( incidence->uid() )->m_item;
       Q_ASSERT( item.isValid() );
       Q_ASSERT( item.hasPayload() );
       Akonadi::ItemDeleteJob *job = new Akonadi::ItemDeleteJob( item, m_session );
@@ -189,11 +189,22 @@ class KCal::AkonadiCalendar::Private : public QObject
     Incidence::List mDeletedIncidences;    // list of all deleted Incidences
     */
 
+    AkonadiCalendarItem* itemForUid( const QString& uid )
+    {
+      if ( m_uidToItemId.contains( uid ) ) {
+        const Akonadi::Item::Id id = m_uidToItemId[uid];
+        Q_ASSERT( m_itemMap.contains( id ) );
+        return m_itemMap[id];
+      }
+      return 0;
+    }
+
     AkonadiCalendar *q;
     Akonadi::Monitor *m_monitor;
     Akonadi::Session *m_session;
     QHash<Akonadi::Entity::Id, AkonadiCalendarCollection*> m_collectionMap;
-    QHash<QString, AkonadiCalendarItem*> m_itemMap; //TODO replace Incidence::uid-QString with Akonadi::Entity::Id-int
+    QHash<Akonadi::Item::Id, AkonadiCalendarItem*> m_itemMap; // akonadi uid to calendar items
+    QMap<QString, Akonadi::Item::Id> m_uidToItemId;
     QList<QString> m_changes; //list of Incidence->uid() that are modified atm
 
   public Q_SLOTS:
@@ -270,7 +281,7 @@ class KCal::AkonadiCalendar::Private : public QObject
         Q_ASSERT( item.hasPayload<KCal::Incidence::Ptr>() );
         const KCal::Incidence::Ptr incidence = item.payload<KCal::Incidence::Ptr>();
         Q_ASSERT( incidence );
-        const QString uid = incidence->uid();
+        const Akonadi::Item::Id uid = item.id();
         //kDebug()<<"Old storageCollectionId="<<m_itemMap[uid]->m_item.storageCollectionId();
         kDebug() << "Item modify done uid=" << uid << "storageCollectionId=" << item.storageCollectionId();
         Q_ASSERT( m_itemMap.contains(uid) );
@@ -288,7 +299,7 @@ class KCal::AkonadiCalendar::Private : public QObject
         Q_ASSERT( item.hasPayload<KCal::Incidence::Ptr>() );
         const KCal::Incidence::Ptr incidence = item.payload<KCal::Incidence::Ptr>();
         Q_ASSERT( incidence );
-        const QString uid = incidence->uid();
+        const Akonadi::Item::Id uid = item.id();
         kDebug() << "Item changed uid=" << uid << "summary=" << incidence->summary() << "type=" << incidence->type() << "storageCollectionId=" << item.storageCollectionId();
         Q_ASSERT( m_itemMap.contains(uid) );
         m_itemMap[uid]->m_item = item;
@@ -315,9 +326,11 @@ class KCal::AkonadiCalendar::Private : public QObject
             Q_ASSERT( item.hasPayload() );
             const KCal::Incidence::Ptr incidence = item.payload<KCal::Incidence::Ptr>();
             kDebug() << "Add uid=" << incidence->uid() << "summary=" << incidence->summary() << "type=" << incidence->type();
-            Q_ASSERT( ! m_itemMap.contains( incidence->uid() ) ); //uh, 2 incidences with the same uid?
+            const Akonadi::Item::Id uid = item.id();
+            Q_ASSERT( ! m_itemMap.contains( uid ) ); //uh, 2 incidences with the same uid?
             incidence->registerObserver( q );
-            m_itemMap[ incidence->uid() ] = new AkonadiCalendarItem(q, item);
+            m_itemMap[ uid ] = new AkonadiCalendarItem(q, item);
+            m_uidToItemId.insert( incidence->uid(), uid );
             q->notifyIncidenceAdded( incidence.get() );
         }
         q->setModified( true );
@@ -329,7 +342,7 @@ class KCal::AkonadiCalendar::Private : public QObject
         kDebug();
         Q_ASSERT( item.isValid() );
         Q_ASSERT( item.hasPayload() );
-        if( ! m_itemMap.contains( item.payload<KCal::Incidence::Ptr>()->uid() ) )
+        if( ! m_itemMap.contains( item.id() ) )
           itemsAdded( Akonadi::Item::List() << item, collection );
     }
 
@@ -338,12 +351,12 @@ class KCal::AkonadiCalendar::Private : public QObject
         //kDebug()<<items.count();
         foreach(const Akonadi::Item& item, items) {
             Q_ASSERT( item.isValid() );
-            Q_ASSERT( item.hasPayload() );
-            const KCal::Incidence::Ptr incidence = item.payload<KCal::Incidence::Ptr>();
+            std::auto_ptr<AkonadiCalendarItem> ci( m_itemMap.take( item.id() ) );
+            Q_ASSERT( ci->m_item.hasPayload<KCal::Incidence::Ptr>() );
+            const KCal::Incidence::Ptr incidence = ci->m_item.payload<KCal::Incidence::Ptr>();
             kDebug() << "Remove uid=" << incidence->uid() << "summary=" << incidence->summary() << "type=" << incidence->type();
             q->notifyIncidenceDeleted( incidence.get() );
-            AkonadiCalendarItem *ci = m_itemMap.take( incidence->uid() );
-            delete ci;
+            m_uidToItemId.take( incidence->uid() );
         }
         q->setModified( true );
         emit q->calendarChanged();

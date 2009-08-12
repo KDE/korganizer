@@ -94,7 +94,7 @@ void AkonadiCalendar::removeCollection( const Akonadi::Collection &collection )
   AkonadiCalendarCollection *c = d->m_collectionMap.take( collection.id() );
   delete c;
 
-  QHash<QString, AkonadiCalendarItem*>::Iterator it( d->m_itemMap.begin() ), end( d->m_itemMap.end() );
+  QHash<Akonadi::Item::Id, AkonadiCalendarItem*>::Iterator it( d->m_itemMap.begin() ), end( d->m_itemMap.end() );
   while( it != end) {
     if( it.value()->m_item.storageCollectionId() == collection.id() ) {
       AkonadiCalendarItem* i = *it;
@@ -111,11 +111,11 @@ void AkonadiCalendar::removeCollection( const Akonadi::Collection &collection )
 Akonadi::Item AkonadiCalendar::itemForIncidence(Incidence *incidence) const
 {
   const QString uid = incidence->uid();
-  if( ! d->m_itemMap.contains( uid ) ) {
+  if( ! d->m_uidToItemId.contains( uid ) ) {
     kDebug()<<"uid="<<uid<<"UNKNOWN_UID";
     return Akonadi::Item();
   }
-  AkonadiCalendarItem *aci = d->m_itemMap[ uid ];
+  AkonadiCalendarItem *aci = d->itemForUid( uid );
   kDebug()<<"uid="<<uid<<"storageCollectionId="<<aci->m_item.storageCollectionId();
   return aci->m_item;
 }
@@ -156,8 +156,8 @@ bool AkonadiCalendar::endChange( Incidence *incidence )
     return false;
   }
 */
-Q_ASSERT( d->m_itemMap.contains( uid ) );
-  Akonadi::Item item = d->m_itemMap[ uid ]->m_item;
+  Q_ASSERT( d->m_uidToItemId.contains( uid ) );
+  Akonadi::Item item = d->itemForUid( uid )->m_item;
   Q_ASSERT( item.isValid() );
   kDebug() << "modify uid=" << uid << "summary=" << incidence->summary() << "type=" << incidence->type() << "storageCollectionId=" << item.storageCollectionId();
   Akonadi::ItemModifyJob *job = new Akonadi::ItemModifyJob( item, d->m_session );
@@ -268,10 +268,11 @@ void AkonadiCalendar::incidenceUpdated( IncidenceBase *incidence )
 #else
   KCal::Incidence* i = dynamic_cast<KCal::Incidence*>( incidence );
   Q_ASSERT( i );
-  Q_ASSERT( d->m_itemMap.contains( i->uid() ) );
-  Akonadi::Item item = d->m_itemMap[ i->uid() ]->m_item;
+  Q_ASSERT( d->m_uidToItemId.contains( i->uid() ) );
+  Akonadi::Item item = d->itemForUid( i->uid() )->m_item;
   Q_ASSERT( item.isValid() );
   kDebug() << "Updated uid=" << i->uid() << "summary=" << i->summary() << "type=" << i->type() << "storageCollectionId=" << item.storageCollectionId();
+
 #endif
 }
 
@@ -305,9 +306,9 @@ bool AkonadiCalendar::deleteEvent( Event *event )
 Event *AkonadiCalendar::event( const QString &uid )
 {
   kDebug();
-  if( ! d->m_itemMap.contains( uid ) )
+  if( !d->m_uidToItemId.contains( uid ) )
     return 0;
-  AkonadiCalendarItem *aci = d->m_itemMap[ uid ];
+  AkonadiCalendarItem *aci = d->itemForUid( uid );
   Event *event = dynamic_cast<Event*>( aci->incidence().get() );
   return event;
 }
@@ -353,9 +354,9 @@ bool AkonadiCalendar::deleteTodo( Todo *todo )
 Todo *AkonadiCalendar::todo( const QString &uid )
 {
   kDebug();
-  if( ! d->m_itemMap.contains( uid ) )
+  if( ! d->m_uidToItemId.contains( uid ) )
     return 0;
-  AkonadiCalendarItem *aci = d->m_itemMap[ uid ];
+  AkonadiCalendarItem *aci = d->itemForUid( uid );
   Todo *todo = dynamic_cast<Todo*>( aci->incidence().get() );
   return todo;
 }
@@ -364,7 +365,7 @@ Todo::List AkonadiCalendar::rawTodos( TodoSortField sortField, SortDirection sor
 {
   kDebug()<<sortField<<sortDirection;
   Todo::List todoList;
-  QHashIterator<QString, AkonadiCalendarItem*>i( d->m_itemMap );
+  QHashIterator<Akonadi::Item::Id, AkonadiCalendarItem*>i( d->m_itemMap );
   while ( i.hasNext() ) {
     i.next();
     if( Todo *todo = dynamic_cast<Todo*>(i.value()->incidence().get()) )
@@ -387,7 +388,7 @@ Todo::List AkonadiCalendar::rawTodosForDate( const QDate &date )
     ++it;
   }
 #else
-  QHashIterator<QString, AkonadiCalendarItem*>i( d->m_itemMap );
+  QHashIterator<Akonadi::Item::Id, AkonadiCalendarItem*>i( d->m_itemMap );
   while ( i.hasNext() ) {
     i.next();
     if( Todo *todo = dynamic_cast<Todo*>(i.value()->incidence().get()) )
@@ -526,7 +527,7 @@ Event::List AkonadiCalendar::rawEvents( EventSortField sortField, SortDirection 
 {
   kDebug()<<sortField<<sortDirection;
   Event::List eventList;
-  QHashIterator<QString, AkonadiCalendarItem*>i( d->m_itemMap );
+  QHashIterator<Akonadi::Item::Id, AkonadiCalendarItem*>i( d->m_itemMap );
   while ( i.hasNext() ) {
     i.next();
     if( Event *event = dynamic_cast<Event*>(i.value()->incidence().get()) )
@@ -570,9 +571,9 @@ bool AkonadiCalendar::deleteJournal( Journal *journal )
 Journal *AkonadiCalendar::journal( const QString &uid )
 {
   kDebug();
-  if( ! d->m_itemMap.contains( uid ) )
+  if( ! d->m_uidToItemId.contains( uid ) )
     return 0;
-  AkonadiCalendarItem *aci = d->m_itemMap[ uid ];
+  AkonadiCalendarItem *aci = d->itemForUid( uid );
   Journal *journal = dynamic_cast<Journal*>( aci->incidence().get() );
   return journal;
 }
@@ -581,7 +582,7 @@ Journal::List AkonadiCalendar::rawJournals( JournalSortField sortField, SortDire
 {
   kDebug()<<sortField<<sortDirection;
   Journal::List journalList;
-  QHashIterator<QString, AkonadiCalendarItem*>i( d->m_itemMap );
+  QHashIterator<Akonadi::Item::Id, AkonadiCalendarItem*>i( d->m_itemMap );
   while ( i.hasNext() ) {
     i.next();
     if( Journal *journal = dynamic_cast<Journal*>(i.value()->incidence().get()) )
@@ -604,7 +605,7 @@ Journal::List AkonadiCalendar::rawJournalsForDate( const QDate &date )
     ++it;
   }
 #else
-  QHashIterator<QString, AkonadiCalendarItem*>i( d->m_itemMap );
+  QHashIterator<Akonadi::Item::Id, AkonadiCalendarItem*>i( d->m_itemMap );
   while ( i.hasNext() ) {
     i.next();
     if( Journal *journal = dynamic_cast<Journal*>(i.value()->incidence().get()) )
