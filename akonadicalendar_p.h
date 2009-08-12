@@ -179,17 +179,6 @@ class KCal::AkonadiCalendar::Private : public QObject
       return true;
     }
 
-    /*
-    CalFormat *mFormat;                    // calendar format
-    QHash<QString, Event *>mEvents;        // hash on uids of all Events
-    QMultiHash<QString, Event *>mEventsForDate;// on start dates of non-recurring, single-day Events
-    QHash<QString, Todo *>mTodos;          // hash on uids of all Todos
-    QMultiHash<QString, Todo*>mTodosForDate;// on due dates for all Todos
-    QHash<QString, Journal *>mJournals;    // hash on uids of all Journals
-    QMultiHash<QString, Journal *>mJournalsForDate; // on dates of all Journals
-    Incidence::List mDeletedIncidences;    // list of all deleted Incidences
-    */
-
     AkonadiCalendarItem* itemForUid( const QString& uid )
     {
       if ( m_uidToItemId.contains( uid ) ) {
@@ -200,6 +189,18 @@ class KCal::AkonadiCalendar::Private : public QObject
       return 0;
     }
 
+    void removeIncidenceFromMultiHashByUID(const Incidence::Ptr &incidence, const QString &key)
+    {
+      const QList<KCal::Incidence::Ptr> values = m_incidenceForDate.values( key );
+      QListIterator<KCal::Incidence::Ptr> it(values);
+      while( it.hasNext() ) {
+        KCal::Incidence::Ptr inc = it.next();
+        if( inc->uid() == incidence->uid() ) {
+          m_incidenceForDate.remove( key, inc );
+        }
+      }
+    }
+
     AkonadiCalendar *q;
     Akonadi::Monitor *m_monitor;
     Akonadi::Session *m_session;
@@ -208,6 +209,17 @@ class KCal::AkonadiCalendar::Private : public QObject
     QMap<QString, Akonadi::Item::Id> m_uidToItemId;
     QList<QString> m_changes; //list of Incidence->uid() that are modified atm
     KCal::Incidence::Ptr m_incidenceBeingChanged; // clone of the incidence currently being modified, for rollback and to check if something actually changed
+
+    //CalFormat *mFormat;                    // calendar format
+    //QHash<QString, Event *>mEvents;        // hash on uids of all Events
+    QMultiHash<QString, KCal::Incidence::Ptr> m_incidenceForDate;// on start dates of non-recurring, single-day Incidences
+//QMultiHash<QString, Event *>mEventsForDate;// on start dates of non-recurring, single-day Events
+    //QHash<QString, Todo *>mTodos;          // hash on uids of all Todos
+//QMultiHash<QString, Todo*>mTodosForDate;// on due dates for all Todos
+    //QHash<QString, Journal *>mJournals;    // hash on uids of all Journals
+//QMultiHash<QString, Journal *>mJournalsForDate; // on dates of all Journals
+    //Incidence::List mDeletedIncidences;    // list of all deleted Incidences
+
   public Q_SLOTS:
   
     void listingDone( KJob *job )
@@ -329,9 +341,23 @@ class KCal::AkonadiCalendar::Private : public QObject
             kDebug() << "Add uid=" << incidence->uid() << "summary=" << incidence->summary() << "type=" << incidence->type();
             const Akonadi::Item::Id uid = item.id();
             Q_ASSERT( ! m_itemMap.contains( uid ) ); //uh, 2 incidences with the same uid?
-            incidence->registerObserver( q );
+            
+            if( Event *e = dynamic_cast<Event*>(incidence.get()) ) {
+              if ( !e->recurs() && !e->isMultiDay() )
+                m_incidenceForDate.insert( e->dtStart().date().toString(), incidence );
+            } else if( Todo *t = dynamic_cast<Todo*>(incidence.get()) ) {
+              if ( t->hasDueDate() )
+                m_incidenceForDate.insert( t->dtDue().date().toString(), incidence );
+            } else if( Journal *j = dynamic_cast<Journal*>(incidence.get()) ) {
+                m_incidenceForDate.insert( j->dtStart().date().toString(), incidence );
+            } else {
+              Q_ASSERT(false);
+              continue;
+            }
+    
             m_itemMap[ uid ] = new AkonadiCalendarItem(q, item);
-            m_uidToItemId.insert( incidence->uid(), uid );
+            m_incidenceForDate.insert( incidence->dtStart().date().toString(), incidence );
+            incidence->registerObserver( q );
             q->notifyIncidenceAdded( incidence.get() );
         }
         q->setModified( true );
@@ -343,8 +369,9 @@ class KCal::AkonadiCalendar::Private : public QObject
         kDebug();
         Q_ASSERT( item.isValid() );
         Q_ASSERT( item.hasPayload() );
-        if( ! m_itemMap.contains( item.id() ) )
+        if( ! m_itemMap.contains( item.id() ) ) {
           itemsAdded( Akonadi::Item::List() << item, collection );
+        }
     }
 
     void itemsRemoved( const Akonadi::Item::List &items, const Akonadi::Collection &collection ) {
@@ -356,6 +383,21 @@ class KCal::AkonadiCalendar::Private : public QObject
             Q_ASSERT( ci->m_item.hasPayload<KCal::Incidence::Ptr>() );
             const KCal::Incidence::Ptr incidence = ci->m_item.payload<KCal::Incidence::Ptr>();
             kDebug() << "Remove uid=" << incidence->uid() << "summary=" << incidence->summary() << "type=" << incidence->type();
+
+            if( Event *e = dynamic_cast<Event*>(incidence.get()) ) {
+              if ( !e->recurs() )
+                removeIncidenceFromMultiHashByUID( incidence, e->dtStart().date().toString() );
+            } else if( Todo *t = dynamic_cast<Todo*>(incidence.get()) ) {
+              if ( t->hasDueDate() )
+                removeIncidenceFromMultiHashByUID( incidence, t->dtDue().date().toString() );
+            } else if( Journal *j = dynamic_cast<Journal*>(incidence.get()) ) {
+              removeIncidenceFromMultiHashByUID( incidence, j->dtStart().date().toString() );
+            } else {
+              Q_ASSERT(false);
+              continue;
+            }
+
+            //incidence->unregisterObserver( q );
             q->notifyIncidenceDeleted( incidence.get() );
             m_uidToItemId.take( incidence->uid() );
         }
