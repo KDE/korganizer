@@ -27,6 +27,7 @@
 #include <kcal/todo.h>
 #include <kcal/journal.h>
 #include <kcal/filestorage.h>
+#include <kcal/comparisonvisitor.h>
 
 #include <QtCore/QDate>
 #include <QtCore/QHash>
@@ -127,12 +128,14 @@ bool AkonadiCalendar::beginChange( Incidence *incidence )
   }
   Q_ASSERT( ! d->m_changes.contains( incidence->uid() ) ); //no nested changes, right?
   d->m_changes << incidence->uid();
+  d->m_incidenceBeingChanged = KCal::Incidence::Ptr( incidence->clone() );
   return true;
 }
 
 bool AkonadiCalendar::endChange( Incidence *incidence )
 {
   Q_ASSERT( incidence );
+
   const bool isModification = d->m_changes.removeAll( incidence->uid() ) >= 1;
   const QString uid = incidence->uid();
 
@@ -142,7 +145,7 @@ bool AkonadiCalendar::endChange( Incidence *incidence )
     return false;
   }
 
-  if( ! isModification ) {
+  if( ! isModification || !d->m_incidenceBeingChanged ) {
     // only if beginChange() with the incidence was called then this is a modification else it
     // is e.g. a new event/todo/journal that was not added yet or an existing one got deleted.
     kDebug() << "Skipping modify uid=" << uid << "summary=" << incidence->summary() << "type=" << incidence->type();
@@ -159,11 +162,20 @@ bool AkonadiCalendar::endChange( Incidence *incidence )
   Q_ASSERT( d->m_uidToItemId.contains( uid ) );
   Akonadi::Item item = d->itemForUid( uid )->m_item;
   Q_ASSERT( item.isValid() );
+
+  // check if there was an actual change to the incidence since beginChange
+  // if not, don't kick off a modify job. The reason this is useful is that
+  // begin/endChange is used for locking as well, so it is called quite often
+  // without any actual changes happening. Nested modify jobs confuse the
+  // conflict detection in Akonadi, so let's avoid them.
+  ComparisonVisitor v;
+  KCal::Incidence::Ptr incidencePtr( d->m_incidenceBeingChanged );
+  d->m_incidenceBeingChanged = KCal::Incidence::Ptr();
+  if ( v.compare( incidence, incidencePtr.get() ) )
+    return true;
+
   kDebug() << "modify uid=" << uid << "summary=" << incidence->summary() << "type=" << incidence->type() << "storageCollectionId=" << item.storageCollectionId();
   Akonadi::ItemModifyJob *job = new Akonadi::ItemModifyJob( item, d->m_session );
-
-  //FIXME make it work
-  job->disableRevisionCheck();
 
   connect( job, SIGNAL( result( KJob* ) ), d, SLOT( modifyDone( KJob* ) ) );
   return true;

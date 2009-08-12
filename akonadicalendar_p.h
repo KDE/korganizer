@@ -103,6 +103,7 @@ class KCal::AkonadiCalendar::Private : public QObject
       : q(q)
       , m_monitor( new Akonadi::Monitor() )
       , m_session( new Akonadi::Session( QCoreApplication::instance()->applicationName().toUtf8() + QByteArray("-AkonadiCal-") + QByteArray::number(qrand()) ) )
+      , m_incidenceBeingChanged()
     {
       m_monitor->itemFetchScope().fetchFullPayload();
       m_monitor->ignoreSession( m_session );
@@ -206,7 +207,7 @@ class KCal::AkonadiCalendar::Private : public QObject
     QHash<Akonadi::Item::Id, AkonadiCalendarItem*> m_itemMap; // akonadi uid to calendar items
     QMap<QString, Akonadi::Item::Id> m_uidToItemId;
     QList<QString> m_changes; //list of Incidence->uid() that are modified atm
-
+    KCal::Incidence::Ptr m_incidenceBeingChanged; // clone of the incidence currently being modified, for rollback and to check if something actually changed
   public Q_SLOTS:
   
     void listingDone( KJob *job )

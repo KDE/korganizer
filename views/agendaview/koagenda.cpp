@@ -1005,7 +1005,7 @@ void KOAgenda::endItemAction()
                                 mStartCell.y() == mEndCell.y() );
 
   if ( mItemMoved ) {
-    bool modify = true;
+    bool modify = false;
     if ( mActionItem->incidence()->recurs() ) {
       int res = mEventView->showMoveRecurDialog( mActionItem->incidence(),
                                                  mActionItem->itemDate() );
@@ -1112,8 +1112,10 @@ void KOAgenda::endItemAction()
       // the agenda view will apply the changes to the actual Incidence*!
       emit itemModified( modif );
     } else {
-      // FIXME: If the change failed, we need to update the view!
+      // the item was moved, but not further modified, since it's not recurring
+      // make sure the view updates anyhow, with the right item
       mChanger->endChange( inc );
+      emit itemModified( mActionItem );
     }
   }
 
