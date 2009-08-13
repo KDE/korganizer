@@ -160,13 +160,6 @@ bool AkonadiCalendar::endChange( Incidence *incidence )
     return false;
   }
 
-/*
-  if( ! d->m_itemMap.contains( uid ) ) {
-    // this can happen if we create a new event/todo/journal in which case it's not know yet...
-    kDebug() << "unknown uid=" << uid << "summary=" << incidence->summary() << "type=" << incidence->type();
-    return false;
-  }
-*/
   Q_ASSERT( d->m_uidToItemId.contains( uid ) );
   Akonadi::Item item = d->itemForUid( uid )->m_item;
   Q_ASSERT( item.isValid() );

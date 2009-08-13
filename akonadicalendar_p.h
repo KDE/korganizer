@@ -273,7 +273,13 @@ class KCal::AkonadiCalendar::Private : public QObject
             return;
         }
         Akonadi::ItemCreateJob *createjob = static_cast<Akonadi::ItemCreateJob*>( job );
-        itemAdded( createjob->item(), createjob->collection() );
+        if ( m_collectionMap.contains( createjob->collection().id() ) ) {
+          // yes, adding to an un-viewed collection happens
+          itemAdded( createjob->item(), createjob->collection() );
+        } else {
+          // FIXME show dialog indicating that the creation worked, but the incidence will
+          // not show, since the collection isn't
+        }
     }
 
     void deleteDone( KJob *job )
@@ -346,6 +352,7 @@ class KCal::AkonadiCalendar::Private : public QObject
         kDebug();
         assertInvariants();
         Q_ASSERT( collection.isValid() );
+        Q_ASSERT( m_collectionMap.contains( collection.id() ) ); // we should only hear from monitored ones
         foreach( const Akonadi::Item &item, items ) {
             Q_ASSERT( item.isValid() );
             Q_ASSERT( item.hasPayload() );
