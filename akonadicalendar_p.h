@@ -415,7 +415,7 @@ class KCal::AkonadiCalendar::Private : public QObject
 
             //incidence->unregisterObserver( q );
             q->notifyIncidenceDeleted( incidence.get() );
-            m_uidToItemId.take( incidence->uid() );
+            m_uidToItemId.remove( incidence->uid() );
         }
         q->setModified( true );
         emit q->calendarChanged();

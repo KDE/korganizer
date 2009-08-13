@@ -89,6 +89,7 @@ void AkonadiCalendar::addCollection( const Akonadi::Collection &collection )
 void AkonadiCalendar::removeCollection( const Akonadi::Collection &collection )
 {
   kDebug();
+  d->assertInvariants();
   if ( !d->m_collectionMap.contains( collection.id() ) )
     return;
   Q_ASSERT( d->m_collectionMap.contains( collection.id() ) );
@@ -101,11 +102,17 @@ void AkonadiCalendar::removeCollection( const Akonadi::Collection &collection )
     if( it.value()->m_item.storageCollectionId() == collection.id() ) {
       AkonadiCalendarItem* i = *it;
       it = d->m_itemMap.erase(it);
+      Q_ASSERT( i->m_item.hasPayload<KCal::Incidence::Ptr>() );
+      const KCal::Incidence::Ptr incidence = i->m_item.payload<KCal::Incidence::Ptr>();
+      Q_ASSERT( incidence.get() );
+      const QString uid = incidence->uid();
+      d->m_uidToItemId.remove( uid );
       delete i;
     } else {
       ++it;
     }
   }
+  d->assertInvariants();
 
   emit calendarChanged();
 }
