@@ -109,7 +109,7 @@ KOrganizer::~KOrganizer()
 
 void KOrganizer::init( bool document )
 {
-  kDebug() << ( document ? "hasDocument" : "resources" );
+  kDebug() << ( document ? "hasDocument" : "akonadi" );
 
   setHasDocument( document );
 
