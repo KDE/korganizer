@@ -118,7 +118,7 @@ void KOrganizer::init( bool document )
   if ( hasDocument() ) {
     mActionManager->createCalendarLocal();
   } else {
-    mActionManager->createCalendarResources();
+    mActionManager->createCalendarAkonadi();
   }
 
   setComponentData( KGlobal::mainComponent() );

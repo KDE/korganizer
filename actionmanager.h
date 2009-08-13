@@ -82,9 +82,9 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     void createCalendarLocal();
 
     /**
-      Create Calendar object based on the resource framework and set it on the view.
+      Create Calendar object based on the akonadi framework and set it on the view.
     */
-    void createCalendarResources();
+    void createCalendarAkonadi();
 
     /**
       Save calendar to disk.
@@ -441,7 +441,7 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     bool mHtmlExportSync;
 
     Calendar *mCalendar;
-    AkonadiCalendar *mCalendarResources;
+    AkonadiCalendar *mCalendarAkonadi;
     AkonadiCollectionView *mResourceView;
 
     bool mIsClosing;

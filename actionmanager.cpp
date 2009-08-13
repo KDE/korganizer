@@ -80,7 +80,7 @@ ActionManager::ActionManager( KXMLGUIClient *client, CalendarView *widget,
                               bool isPart, KMenuBar *menuBar )
   : QObject( parent ), mRecent( 0 ),
     mResourceViewShowAction( 0 ), mCalendar( 0 ),
-    mCalendarResources( 0 ), mResourceView( 0 ), mIsClosing( false )
+    mCalendarAkonadi( 0 ), mResourceView( 0 ), mIsClosing( false )
 {
   new CalendarAdaptor( this );
   QDBusConnection::sessionBus().registerObject( "/Calendar", this );
@@ -131,7 +131,7 @@ void ActionManager::toggleMenubar( bool dontShowWarning )
 void ActionManager::init()
 {
   // Construct the groupware object
-  KOGroupware::create( mCalendarView, mCalendarResources );
+  KOGroupware::create( mCalendarView, mCalendarAkonadi );
 
   // add this instance of the window to the static list.
   if ( !mWindowList ) {
@@ -195,28 +195,28 @@ void ActionManager::createCalendarLocal()
   initCalendar( mCalendar );
 }
 
-void ActionManager::createCalendarResources()
+void ActionManager::createCalendarAkonadi()
 {
-  mCalendarResources = KOrg::StdCalendar::self();
+  mCalendarAkonadi = KOrg::StdCalendar::self();
   setDestinationPolicy();
 
-  mCalendarView->setCalendar( mCalendarResources );
+  mCalendarView->setCalendar( mCalendarAkonadi );
   mCalendarView->readSettings();
-  AkonadiCollectionViewFactory factory( mCalendarResources, mCalendarView );
+  AkonadiCollectionViewFactory factory( mCalendarAkonadi, mCalendarView );
   mCalendarView->addExtension( &factory );
 
   mResourceView = factory.collectionView();
   connect( mResourceView, SIGNAL(resourcesChanged(bool)), SLOT(slotResourcesChanged(bool)) );
 
-  connect( mCalendarResources, SIGNAL(calendarChanged()),
+  connect( mCalendarAkonadi, SIGNAL(calendarChanged()),
            mCalendarView, SLOT(resourcesChanged()) );
-  connect( mCalendarResources, SIGNAL(calendarLoaded()),
+  connect( mCalendarAkonadi, SIGNAL(calendarLoaded()),
            mCalendarView, SLOT(resourcesChanged()) );
-  connect( mCalendarResources, SIGNAL(signalErrorMessage(const QString &)),
+  connect( mCalendarAkonadi, SIGNAL(signalErrorMessage(const QString &)),
            mCalendarView, SLOT(showErrorMessage(const QString &)) );
   connect( mCalendarView, SIGNAL(configChanged()), SLOT(updateConfig()) );
 
-  initCalendar( mCalendarResources );
+  initCalendar( mCalendarAkonadi );
 }
 
 void ActionManager::initCalendar( Calendar *cal )
@@ -758,9 +758,9 @@ void ActionManager::writeSettings()
 
   config.sync();
 
-  if ( mCalendarResources ) {
+  if ( mCalendarAkonadi ) {
 #if 0 //sebsauer
-    mCalendarResources->resourceManager()->writeConfig();
+    mCalendarAkonadi->resourceManager()->writeConfig();
 #endif
   }
 }
@@ -799,7 +799,7 @@ void ActionManager::file_open( const KUrl &url )
 
   // Open the calendar file in the same window only if we have an empty calendar
   // window, and not the resource calendar.
-  if ( !mCalendarView->isModified() && mFile.isEmpty() && !mCalendarResources ) {
+  if ( !mCalendarView->isModified() && mFile.isEmpty() && !mCalendarAkonadi ) {
     openURL( url );
   } else {
     emit actionNew( url );
@@ -1018,8 +1018,8 @@ bool ActionManager::addResource( const KUrl &mUrl )
     // we have to call resourceAdded manually, because for in-process changes
     // the dcop signals are not connected, so the resource's signals would not
     // be connected otherwise
-    if ( mCalendarResources )
-      mCalendarResources->resourceAdded( resource );
+    if ( mCalendarAkonadi )
+      mCalendarAkonadi->resourceAdded( resource );
   } else {
     KMessageBox::error( dialogParent(), i18n( "Unable to create calendar '%1'.", name ) );
   }
@@ -1349,7 +1349,7 @@ void ActionManager::checkAutoSave()
 
   // has this calendar been saved before? If yes automatically save it.
   if ( KOPrefs::instance()->mAutoSave ) {
-    if ( mCalendarResources || ( mCalendar && !url().isEmpty() ) ) {
+    if ( mCalendarAkonadi || ( mCalendar && !url().isEmpty() ) ) {
       saveCalendar();
     }
   }
@@ -1396,11 +1396,11 @@ void ActionManager::updateConfig()
 void ActionManager::setDestinationPolicy()
 {
 #if 0 //sebsauer
-  if ( mCalendarResources ) {
+  if ( mCalendarAkonadi ) {
     if ( KOPrefs::instance()->mDestination == KOPrefs::askDestination ) {
-      mCalendarResources->setAskDestinationPolicy();
+      mCalendarAkonadi->setAskDestinationPolicy();
     } else {
-      mCalendarResources->setStandardDestinationPolicy();
+      mCalendarAkonadi->setStandardDestinationPolicy();
     }
   }
 #endif
@@ -2019,7 +2019,7 @@ bool ActionManager::queryClose()
     } else {
       close = ( res == KMessageBox::No );
     }
-  } else if ( mCalendarResources ) {
+  } else if ( mCalendarAkonadi ) {
     if ( !mIsClosing ) {
       kDebug() << "!mIsClosing";
       if ( !saveResourceCalendar() ) {
@@ -2029,10 +2029,10 @@ bool ActionManager::queryClose()
       // FIXME: Put main window into a state indicating final saving.
       mIsClosing = true;
 // FIXME: Close main window when save is finished
-//      connect( mCalendarResources, SIGNAL(calendarSaved()),
+//      connect( mCalendarAkonadi, SIGNAL(calendarSaved()),
 //               mMainWindow, SLOT(close()) );
     }
-    if ( mCalendarResources->isSaving() ) {
+    if ( mCalendarAkonadi->isSaving() ) {
       kDebug() << "isSaving";
       close = false;
       KMessageBox::information( dialogParent(),
@@ -2059,19 +2059,19 @@ void ActionManager::saveCalendar()
         saveAsURL( location );
       }
     }
-  } else if ( mCalendarResources ) {
-    mCalendarResources->save();
+  } else if ( mCalendarAkonadi ) {
+    mCalendarAkonadi->save();
     // FIXME: Make sure that asynchronous saves don't fail.
   }
 }
 
 bool ActionManager::saveResourceCalendar()
 {
-  if ( !mCalendarResources ) {
+  if ( !mCalendarAkonadi ) {
     return false;
   }
 #if 0 //sebsauer
-  CalendarResourceManager *m = mCalendarResources->resourceManager();
+  CalendarResourceManager *m = mCalendarAkonadi->resourceManager();
   CalendarResourceManager::ActiveIterator it;
   for ( it = m->activeBegin(); it != m->activeEnd(); ++it ) {
     if ( (*it)->readOnly() ) {
