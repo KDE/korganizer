@@ -83,7 +83,7 @@ AlarmDialog::AlarmDialog( QWidget *parent, const char *name )
                  mSuspendTimer(this)
 {
   KGlobal::iconLoader()->addAppDir( "kdepim" );
-  setButtonOK( i18n( "Dismiss" ) );
+  setButtonOK( i18n( "Dismiss Reminder" ) );
 
   QWidget *topBox = plainPage();
   QBoxLayout *topLayout = new QVBoxLayout( topBox );
