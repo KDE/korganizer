@@ -1,7 +1,9 @@
 /*
     This file is part of Akonadi.
 
-    Copyright (c) 2009 Sebastian Sauer <sebsauer@kdab.net>
+    Copyright (c) 2009 KDAB
+    Authors: Sebastian Sauer <sebsauer@kdab.net>
+             Till Adam <till@kdab.net>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -201,6 +203,11 @@ class KCal::AkonadiCalendar::Private : public QObject
       }
     }
 
+    void assertInvariants() const
+    {
+      Q_ASSERT(  m_itemMap.size() == m_uidToItemId.size() );
+    }
+
     AkonadiCalendar *q;
     Akonadi::Monitor *m_monitor;
     Akonadi::Session *m_session;
@@ -283,6 +290,7 @@ class KCal::AkonadiCalendar::Private : public QObject
 
     void modifyDone( KJob *job )
     {
+        assertInvariants();
         Akonadi::ItemModifyJob *modifyjob = static_cast<Akonadi::ItemModifyJob*>( job );
         if ( modifyjob->error() ) {
             kWarning( 5250 ) << "Item modify failed:" << job->errorString();
@@ -303,10 +311,12 @@ class KCal::AkonadiCalendar::Private : public QObject
         q->notifyIncidenceChanged( incidence.get() );
         q->setModified( true );
         emit q->calendarChanged();
+        assertInvariants();
     }
 
     void itemChanged( const Akonadi::Item& item, const QSet<QByteArray>& )
     {
+        assertInvariants();
         Q_ASSERT( item.isValid() );
         Q_ASSERT( item.hasPayload() );
         Q_ASSERT( item.hasPayload<KCal::Incidence::Ptr>() );
@@ -319,6 +329,7 @@ class KCal::AkonadiCalendar::Private : public QObject
         q->notifyIncidenceChanged( incidence.get() );
         q->setModified( true );
         emit q->calendarChanged();
+        assertInvariants();
     }
 
     void itemMoved( const Akonadi::Item &item, const Akonadi::Collection& colSrc, const Akonadi::Collection& colDst )
@@ -333,6 +344,7 @@ class KCal::AkonadiCalendar::Private : public QObject
     void itemsAdded( const Akonadi::Item::List &items, const Akonadi::Collection &collection )
     {
         kDebug();
+        assertInvariants();
         Q_ASSERT( collection.isValid() );
         foreach( const Akonadi::Item &item, items ) {
             Q_ASSERT( item.isValid() );
@@ -363,6 +375,7 @@ class KCal::AkonadiCalendar::Private : public QObject
         }
         q->setModified( true );
         emit q->calendarChanged();
+        assertInvariants();
     }
 
     void itemAdded( const Akonadi::Item &item, const Akonadi::Collection &collection )
@@ -375,8 +388,10 @@ class KCal::AkonadiCalendar::Private : public QObject
         }
     }
 
-    void itemsRemoved( const Akonadi::Item::List &items, const Akonadi::Collection &collection ) {
+    void itemsRemoved( const Akonadi::Item::List &items, const Akonadi::Collection &collection )
+    {
         Q_UNUSED(collection);
+        assertInvariants();
         //kDebug()<<items.count();
         foreach(const Akonadi::Item& item, items) {
             Q_ASSERT( item.isValid() );
@@ -404,6 +419,7 @@ class KCal::AkonadiCalendar::Private : public QObject
         }
         q->setModified( true );
         emit q->calendarChanged();
+        assertInvariants();
     }
 
     void itemRemoved( const Akonadi::Item &item, const Akonadi::Collection &collection )
