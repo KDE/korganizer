@@ -570,7 +570,6 @@ Event::List AkonadiCalendar::rawEvents( const QDate &start, const QDate &end, co
   }
 #else
   QHashIterator<Akonadi::Item::Id, AkonadiCalendarItem*>i( d->m_itemMap );
-  Event *event;
   while ( i.hasNext() ) {
     i.next();
     if( Event *event = dynamic_cast<Event*>(i.value()->incidence().get()) ) {

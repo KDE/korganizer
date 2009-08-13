@@ -357,6 +357,7 @@ class KCal::AkonadiCalendar::Private : public QObject
     
             m_itemMap[ uid ] = new AkonadiCalendarItem(q, item);
             m_incidenceForDate.insert( incidence->dtStart().date().toString(), incidence );
+            m_uidToItemId.insert( incidence->uid(), uid );
             incidence->registerObserver( q );
             q->notifyIncidenceAdded( incidence.get() );
         }
