@@ -79,7 +79,7 @@ AlarmDialog::AlarmDialog( QWidget *parent, const char *name )
   : KDialogBase( Plain, WType_TopLevel | WStyle_Customize | WStyle_StaysOnTop |
                  WStyle_DialogBorder,
                  parent, name, false, i18n("Reminder"), Ok | User1 | User2 | User3, User1/*3*/,
-                 false, i18n("Dismiss all"), i18n("Edit..."), i18n("Suspend") ),
+                 false, i18n("Dismiss All"), i18n("Edit..."), i18n("Suspend") ),
                  mSuspendTimer(this)
 {
   KGlobal::iconLoader()->addAppDir( "kdepim" );
