@@ -553,7 +553,7 @@ void KOEditorAttachments::handlePasteOrDrop( const QMimeData *mimeData )
 
     urls = KUrl::List::fromMimeData( mimeData, &metadata );
     probablyWeHaveUris = true;
-    labels = metadata["labels"].split( ":", QString::SkipEmptyParts );
+    labels = metadata["labels"].split( ':', QString::SkipEmptyParts );
     for ( QStringList::Iterator it = labels.begin(); it != labels.end(); ++it ) {
       *it = KUrl::fromPercentEncoding( (*it).toLatin1() );
     }
@@ -769,7 +769,9 @@ void KOEditorAttachments::addAttachment( const QByteArray &data,
     QString line( data );
     int index = line.indexOf( "Subject:" );
     if ( index >= 0 ) {
-      nlabel = line.mid( index, 100 ).remove( "Subject:" ).
+      QString substr = line.mid( index, 100 );
+      int len = substr.indexOf( '\n' );
+      nlabel = substr.left( len ).remove( "Subject:" ).
                simplified().replace( ' ', '_' ).section( '_', 0, 3 );
     }
   }
