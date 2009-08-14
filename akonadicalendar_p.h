@@ -279,6 +279,7 @@ class KCal::AkonadiCalendar::Private : public QObject
         } else {
           // FIXME show dialog indicating that the creation worked, but the incidence will
           // not show, since the collection isn't
+          kWarning() << "Collection with id=" << createjob->collection().id() << " not in m_collectionMap";
         }
     }
 
@@ -296,6 +297,9 @@ class KCal::AkonadiCalendar::Private : public QObject
 
     void modifyDone( KJob *job )
     {
+        // we should probably update the revision number here,or internally in the Event
+        // itself when certain things change. need to verify with ical documentation.
+
         assertInvariants();
         Akonadi::ItemModifyJob *modifyjob = static_cast<Akonadi::ItemModifyJob*>( job );
         if ( modifyjob->error() ) {

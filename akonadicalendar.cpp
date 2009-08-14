@@ -255,49 +255,17 @@ void AkonadiCalendar::incidenceUpdated( IncidenceBase *incidence )
 {
   KDateTime nowUTC = KDateTime::currentUtcDateTime();
   incidence->setLastModified( nowUTC );
-  // we should probably update the revision number here,
-  // or internally in the Event itself when certain things change.
-  // need to verify with ical documentation.
-#if 0
-  if ( incidence->type() == "Event" ) {
-    Event *event = static_cast<Event*>( incidence );
-    removeIncidenceFromMultiHashByUID<Event *>( d->mEventsForDate, event->dtStart().date().toString(), event->uid() );
-    if ( !event->recurs() && !event->isMultiDay() ) {
-      d->mEventsForDate.insert( event->dtStart().date().toString(), event );
-    }
-  } else if ( incidence->type() == "Todo" ) {
-    Todo *todo = static_cast<Todo*>( incidence );
-    removeIncidenceFromMultiHashByUID<Todo *>( d->mTodosForDate, todo->dtDue().date().toString(), todo->uid() );
-    if ( todo->hasDueDate() ) {
-      d->mTodosForDate.insert( todo->dtDue().date().toString(), todo );
-    }
-  } else if ( incidence->type() == "Journal" ) {
-    Journal *journal = static_cast<Journal*>( incidence );
-    removeIncidenceFromMultiHashByUID<Journal *>( d->mJournalsForDate, journal->dtStart().date().toString(), journal->uid() );
-    d->mJournalsForDate.insert( journal->dtStart().date().toString(), journal );
-  } else {
-    Q_ASSERT( false );
-  }
-#else
   KCal::Incidence* i = dynamic_cast<KCal::Incidence*>( incidence );
   Q_ASSERT( i );
   Q_ASSERT( d->m_uidToItemId.contains( i->uid() ) );
   Akonadi::Item item = d->itemForUid( i->uid() )->m_item;
   Q_ASSERT( item.isValid() );
   kDebug() << "Updated uid=" << i->uid() << "summary=" << i->summary() << "type=" << i->type() << "storageCollectionId=" << item.storageCollectionId();
-
-#endif
 }
 
 bool AkonadiCalendar::addEvent( Event *event )
 {
   kDebug();
-  /*
-  d->mEvents.insert( uid, event );
-  if ( !event->recurs() && !event->isMultiDay() ) {
-      mEventsForDate.insert( event->dtStart().date().toString(), event );
-  }
-  */
   return d->addIncidence(event);
 }
 
@@ -307,12 +275,6 @@ bool AkonadiCalendar::addEvent( Event *event )
 bool AkonadiCalendar::deleteEvent( Event *event )
 {
   kDebug();
-  /*
-  d->mDeletedIncidences.append( event );
-  if ( !event->recurs() ) {
-    removeIncidenceFromMultiHashByUID<Event *>( d->mEventsForDate, event->dtStart().date().toString(), event->uid() );
-  }
-  */
   return d->deleteIncidence(event);
 }
 
@@ -398,15 +360,6 @@ Todo::List AkonadiCalendar::rawTodosForDate( const QDate &date )
       todoList.append( t );
     ++it;
   }
-  /* OLD STUFF
-  QHashIterator<Akonadi::Item::Id, AkonadiCalendarItem*>i( d->m_itemMap );
-  while ( i.hasNext() ) {
-    i.next();
-    if( Todo *todo = dynamic_cast<Todo*>(i.value()->incidence().get()) )
-      if( todo->dtDue().date().toString() == date.toString() )
-        todoList.append( todo );
-  }
-  */
   return todoList;
 }
 
@@ -448,45 +401,6 @@ Event::List AkonadiCalendar::rawEventsForDate( const QDate &date, const KDateTim
   Event::List eventList;
   // Find the hash for the specified date
   QString dateStr = date.toString();
-#if 0
-  Event *ev = 0;
-  QMultiHash<QString, Event *>::const_iterator it = d->mEventsForDate.constFind( dateStr );
-  // Iterate over all non-recurring, single-day events that start on this date
-  KDateTime::Spec ts = timespec.isValid() ? timespec : timeSpec();
-  KDateTime kdt( date, ts );
-  while ( it != d->mEventsForDate.constEnd() && it.key() == dateStr ) {
-    ev = it.value();
-    KDateTime end( ev->dtEnd().toTimeSpec( ev->dtStart() ) );
-    if ( ev->allDay() ) end.setDateOnly( true ); else end = end.addSecs( -1 );
-    if ( end >= kdt ) eventList.append( ev );
-    ++it;
-  }
-  // Iterate over all events. Look for recurring events that occur on this date
-  QHashIterator<QString, Event *>i( d->mEvents );
-  while ( i.hasNext() ) {
-    i.next();
-    Event *ev = i.value();
-    if ( ev->recurs() ) {
-      if ( ev->isMultiDay() ) {
-        int extraDays = ev->dtStart().date().daysTo( ev->dtEnd().date() );
-        for ( int i = 0; i <= extraDays; ++i ) {
-          if ( ev->recursOn( date.addDays( -i ), ts ) ) {
-            eventList.append( ev );
-            break;
-          }
-        }
-      } else {
-        if ( ev->recursOn( date, ts ) )
-          eventList.append( ev );
-      }
-    } else {
-      if ( ev->isMultiDay() ) {
-        if ( ev->dtStart().date() <= date && ev->dtEnd().date() >= date )
-          eventList.append( ev );
-      }
-    }
-  }
-#else
   // Iterate over all non-recurring, single-day events that start on this date
   QMultiHash<QString, KCal::Incidence::Ptr>::const_iterator it = d->m_incidenceForDate.constFind( dateStr );
   KDateTime::Spec ts = timespec.isValid() ? timespec : timeSpec();
@@ -527,7 +441,6 @@ Event::List AkonadiCalendar::rawEventsForDate( const QDate &date, const KDateTim
       }
     }
   }
-#endif
   return sortEvents( &eventList, sortField, sortDirection );
 }
 
@@ -540,36 +453,6 @@ Event::List AkonadiCalendar::rawEvents( const QDate &start, const QDate &end, co
   KDateTime nd( end, ts );
   KDateTime yesterStart = st.addDays( -1 );
   // Get non-recurring events
-#if 0
-  QHashIterator<QString, Event *>i( d->mEvents );
-  Event *event;
-  while ( i.hasNext() ) {
-    i.next();
-    event = i.value();
-    KDateTime rStart = event->dtStart();
-    if ( nd < rStart ) continue;
-    if ( inclusive && rStart < st ) continue;
-    if ( !event->recurs() ) { // non-recurring events
-      KDateTime rEnd = event->dtEnd();
-      if ( rEnd < st ) continue;
-      if ( inclusive && nd < rEnd ) continue;
-    } else { // recurring events
-      switch( event->recurrence()->duration() ) {
-      case -1: // infinite
-        if ( inclusive ) continue;
-        break;
-      case 0: // end date given
-      default: // count given
-        KDateTime rEnd( event->recurrence()->endDate(), ts );
-        if ( !rEnd.isValid() ) continue;
-        if ( rEnd < st ) continue;
-        if ( inclusive && nd < rEnd ) continue;
-        break;
-      } // switch(duration)
-    } //if(recurs)
-    eventList.append( event );
-  }
-#else
   QHashIterator<Akonadi::Item::Id, AkonadiCalendarItem*>i( d->m_itemMap );
   while ( i.hasNext() ) {
     i.next();
@@ -598,7 +481,6 @@ Event::List AkonadiCalendar::rawEvents( const QDate &start, const QDate &end, co
       eventList.append( event );
     }
   }
-#endif
   return eventList;
 }
 
@@ -624,32 +506,12 @@ Event::List AkonadiCalendar::rawEvents( EventSortField sortField, SortDirection 
 bool AkonadiCalendar::addJournal( Journal *journal )
 {
   kDebug();
-  /*
-  d->mJournals.insert( uid, journal );
-  mJournalsForDate.insert( journal->dtStart().date().toString(), journal );
-  journal->registerObserver( this );
-  setModified( true );
-  notifyIncidenceAdded( journal );
-  */
   return d->addIncidence(journal);
 }
 
 bool AkonadiCalendar::deleteJournal( Journal *journal )
 {
   kDebug();
-  //Q_ASSERT( d->mJournals.contains( journal->uid() ) );
-  /*
-  if ( d->mJournals.remove( journal->uid() ) ) {
-    setModified( true );
-    notifyIncidenceDeleted( journal );
-    d->mDeletedIncidences.append( journal );
-    removeIncidenceFromMultiHashByUID<Journal *>( d->mJournalsForDate, journal->dtStart().date().toString(), journal->uid() );
-    return true;
-  } else {
-    kWarning() << "AkonadiCalendar::deleteJournal(): Journal not found.";
-    return false;
-  }
-  */
   return d->deleteIncidence(journal);
 }
 
@@ -688,14 +550,5 @@ Journal::List AkonadiCalendar::rawJournalsForDate( const QDate &date )
       journalList.append( j );
     ++it;
   }
-  /* OLD STUFF
-  QHashIterator<Akonadi::Item::Id, AkonadiCalendarItem*>i( d->m_itemMap );
-  while ( i.hasNext() ) {
-    i.next();
-    if( Journal *journal = dynamic_cast<Journal*>(i.value()->incidence().get()) )
-      if( journal->dtStart().date().toString() == date.toString() )
-        journalList.append( journal );
-  }
-  */
   return journalList;
 }
