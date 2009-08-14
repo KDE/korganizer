@@ -773,7 +773,9 @@ void KOEditorAttachments::addAttachment( const QByteArray &data,
     QString line( data );
     int index = line.find( "Subject:" );
     if ( index >= 0 ) {
-      nlabel = line.mid( index, 100 ).remove( "Subject:" ).
+      QString substr = line.mid( index, 100 );
+      int len = substr.find( '\n' );
+      nlabel = substr.left( len ).remove( "Subject:" ).
                simplifyWhiteSpace().replace( ' ', '_' ).section( '_', 0, 3 );
     }
   }
