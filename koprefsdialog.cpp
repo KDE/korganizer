@@ -49,7 +49,6 @@ using namespace KHolidays;
 #include <KStandardDirs>
 #include <KSystemTimeZones>
 #include <KTabWidget>
-#include <KIntSpinBox>
 
 #include <Q3ButtonGroup>
 #include <Q3ListView>
@@ -387,6 +386,11 @@ class KOPrefsDialogTime : public KPrefsModule
       mReminderUnitsCombo->addItem(
         i18nc( "@item:inlistbox reminder time units in days", "day(s)" ) );
       remindersLayout->addWidget( mReminderUnitsCombo, 0, 2 );
+
+      remindersLayout->addWidget(
+        addWidBool( KOPrefs::instance()->defaultEventRemindersItem() )->checkBox(), 1, 0 );
+      remindersLayout->addWidget(
+        addWidBool( KOPrefs::instance()->defaultTodoRemindersItem() )->checkBox(), 2, 0 );
 
       defaultLayout->setRowStretch( 3, 1 );
       load();
