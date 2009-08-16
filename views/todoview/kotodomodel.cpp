@@ -281,8 +281,10 @@ void KOTodoModel::processChange( Incidence *incidence, int action )
     insertTodo( todo );
   } else if ( action == KOGlobals::INCIDENCEDELETED ) {
     TodoTreeNode *ttTodo = findTodo( todo );
-    // we can only delete todo's which are in the tree
-    Q_ASSERT( ttTodo );
+    if ( !ttTodo->isValid() ) {
+      return;
+    }
+
     // somebody should assure that all todo's which relate to this one
     // are un-linked before deleting this one
     Q_ASSERT( !ttTodo->hasChildren() );
