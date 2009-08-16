@@ -169,9 +169,12 @@ void TemplateManagementDialog::slotApplyTemplate()
   // Once the user has applied the current template to the event,
   // it makes no sense to add it again
   m_base.m_buttonAdd->setEnabled( false );
-  const QString &cur = m_base.m_listBox->currentItem()->text();
-  if ( !cur.isEmpty() && cur != m_newTemplate ) {
-    emit loadTemplate( cur );
+  QListWidgetItem *item = m_base.m_listBox->currentItem();
+  if ( item ) {
+    const QString &cur = item->text();
+    if ( !cur.isEmpty() && cur != m_newTemplate ) {
+      emit loadTemplate( cur );
+    }
   }
 }
 
