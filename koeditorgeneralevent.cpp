@@ -589,8 +589,9 @@ bool KOEditorGeneralEvent::validateInput()
         mParent,
         i18nc( "@info",
                "Please specify a valid start time, for example '%1'.",
-               KGlobal::locale()->formatTime( QTime::currentTime() ) ) );
-      return false;
+               KGlobal::locale()->formatTime( QTime::currentTime() ) ),
+        i18nc( "@title:window", "Event Entry Validation" ) );
+     return false;
     }
 
     if ( !mEndTimeEdit->inputIsValid() ) {
@@ -598,7 +599,8 @@ bool KOEditorGeneralEvent::validateInput()
         mParent,
         i18nc( "@info",
                "Please specify a valid end time, for example '%1'.",
-               KGlobal::locale()->formatTime( QTime::currentTime() ) ) );
+               KGlobal::locale()->formatTime( QTime::currentTime() ) ),
+        i18nc( "@title:window", "Event Entry Validation" ) );
       return false;
     }
   }
@@ -608,7 +610,8 @@ bool KOEditorGeneralEvent::validateInput()
       mParent,
       i18nc( "@info",
              "Please specify a valid start date, for example '%1'.",
-             KGlobal::locale()->formatDate( QDate::currentDate() ) ) );
+             KGlobal::locale()->formatDate( QDate::currentDate() ) ),
+      i18nc( "@title:window", "Event Entry Validation" ) );
     return false;
   }
 
@@ -617,7 +620,8 @@ bool KOEditorGeneralEvent::validateInput()
       mParent,
       i18nc( "@info",
              "Please specify a valid end date, for example '%1'.",
-             KGlobal::locale()->formatDate( QDate::currentDate() ) ) );
+             KGlobal::locale()->formatDate( QDate::currentDate() ) ),
+      i18nc( "@title:window", "Event Entry Validation" ) );
     return false;
   }
 
@@ -636,8 +640,39 @@ bool KOEditorGeneralEvent::validateInput()
       mParent,
       i18nc( "@info",
              "The event ends before it starts.\n"
-             "Please correct dates and times." ) );
+             "Please correct dates and times." ),
+      i18nc( "@title:window", "Event Entry Validation" ) );
     return false;
+  }
+
+  KDateTime now = KDateTime::currentDateTime( mTimeZoneComboStart->selectedTimeSpec() );
+  if ( startDt < now ) {
+    if ( KMessageBox::warningContinueCancel(
+           mParent,
+           i18nc( "@info",
+                  "You specified a starting date/time in the past '%1'",
+                  startDt.toString( KDateTime::QtTextDate ) ),
+           i18nc( "@title:window", "Event Entry Validation" ),
+           KStandardGuiItem::cont(),
+           KStandardGuiItem::cancel(),
+           "past-event-start-time-valid" ) == KMessageBox::Cancel ) {
+      return false;
+    }
+  }
+
+  now.setTimeSpec( mTimeZoneComboEnd->selectedTimeSpec() );
+  if ( endDt < now ) {
+    if ( KMessageBox::warningContinueCancel(
+           mParent,
+           i18nc( "@info",
+                  "You specified an ending date/time in the past '%1'",
+                  endDt.toString( KDateTime::QtTextDate ) ),
+           i18nc( "@title:window", "Event Entry Validation" ),
+           KStandardGuiItem::cont(),
+           KStandardGuiItem::cancel(),
+           QString( "past-event-end-time-valid" ) ) == KMessageBox::Cancel ) {
+      return false;
+    }
   }
 
   return KOEditorGeneral::validateInput();

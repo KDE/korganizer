@@ -382,7 +382,7 @@ void KOEditorGeneral::enableAlarm( bool enable )
 
 void KOEditorGeneral::toggleAlarm( bool on )
 {
-    mAlarmButton->setChecked( on );
+  mAlarmButton->setChecked( on );
 }
 
 void KOEditorGeneral::setCategories( const QStringList &categories )
@@ -418,7 +418,15 @@ void KOEditorGeneral::updateAlarmWidgets()
 {
   if ( mAlarmList.isEmpty() ) {
     mAlarmStack->setCurrentIndex( SimpleAlarmPage );
-    mAlarmButton->setChecked( false );
+    bool on;
+    if ( mType == "Event" ) {
+      on = KOPrefs::instance()->defaultEventReminders();
+    } else if ( mType == "Todo" ) {
+      on = KOPrefs::instance()->defaultTodoReminders();
+    } else {
+      on = false;
+    }
+    mAlarmButton->setChecked( on );
   } else if ( mAlarmList.count() > 1 ) {
     mAlarmStack->setCurrentIndex( AdvancedAlarmLabel );
     mAlarmInfoLabel->setText( i18ncp( "@label",
