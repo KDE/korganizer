@@ -36,6 +36,8 @@
 #include <qtextedit.h>
 #include <qwidgetstack.h>
 #include <qradiobutton.h>
+#include <qtooltip.h>
+#include <qwhatsthis.h>
 
 #include <kurlrequester.h>
 #include <klocale.h>
@@ -144,10 +146,16 @@ void AlarmListViewItem::construct()
 }
 
 
-KOEditorAlarms::KOEditorAlarms( KCal::Alarm::List *alarms, QWidget *parent,
+KOEditorAlarms::KOEditorAlarms( const QCString &type,
+                                KCal::Alarm::List *alarms, QWidget *parent,
                                 const char *name )
-  : KDialogBase( parent, name, true, i18n("Edit Reminders"), Ok | Cancel ), mAlarms( alarms ),mCurrentItem(0L)
+  : KDialogBase( parent, name, true, i18n("Edit Reminders"), Ok | Cancel ),
+    mType( type ), mAlarms( alarms ),mCurrentItem(0L)
 {
+  if ( mType != "Todo" ) {
+    // only Todos and Events can have reminders
+    mType = "Event";
+  }
   setMainWidget( mWidget = new KOEditorAlarms_base( this ) );
   mWidget->mAlarmList->setColumnWidthMode( 0, QListView::Maximum );
   mWidget->mAlarmList->setColumnWidthMode( 1, QListView::Maximum );
@@ -379,6 +387,25 @@ void KOEditorAlarms::slotRemove()
 void KOEditorAlarms::init()
 {
   mInitializing = true;
+
+  // Tweak some UI stuff depending on the Incidence type
+  if ( mType == "Todo" ) {
+    // Replace before/after end datetime with before/after due datetime
+    mWidget->mBeforeAfter->clear();
+    mWidget->mBeforeAfter->insertItem( i18n( "before the to-do starts" ), 0 );
+    mWidget->mBeforeAfter->insertItem( i18n( "after the to-do starts" ), 1 );
+    mWidget->mBeforeAfter->insertItem( i18n( "before the to-do is due" ), 2 );
+    mWidget->mBeforeAfter->insertItem( i18n( "after the to-do is due" ), 3 );
+    QToolTip::add(
+      mWidget->mBeforeAfter,
+      i18n( "Select the reminder trigger relative to the start or due time" ) );
+    QWhatsThis::add(
+      mWidget->mBeforeAfter,
+      i18n( "Use this combobox to specify if you want the reminder to "
+            "trigger before or after the start or due time." ) );
+  }
+
+  // Fill-in existing alarms
   KCal::Alarm::List::ConstIterator it;
   for ( it = mAlarms->begin(); it != mAlarms->end(); ++it ) {
     new AlarmListViewItem( mWidget->mAlarmList, *it );

@@ -60,6 +60,7 @@ KOEditorGeneralTodo::KOEditorGeneralTodo(QObject* parent,
                                          const char* name)
   : KOEditorGeneral( parent, name)
 {
+  setType( "Todo" );
 }
 
 KOEditorGeneralTodo::~KOEditorGeneralTodo()

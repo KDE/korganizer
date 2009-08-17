@@ -45,10 +45,11 @@
 #include <qwhatsthis.h>
 
 
-KOEditorGeneralJournal::KOEditorGeneralJournal( QObject *parent,
+KOEditorGeneralJournal::KOEditorGeneralJournal( QWidget *parent,
                                                 const char *name )
-  : QObject( parent, name )
+  : KOEditorGeneral( parent, name )
 {
+  setType( "Journal" );
 }
 
 KOEditorGeneralJournal::~KOEditorGeneralJournal()
@@ -58,7 +59,7 @@ KOEditorGeneralJournal::~KOEditorGeneralJournal()
 void KOEditorGeneralJournal::initTitle( QWidget *parent, QBoxLayout *topLayout )
 {
   QHBoxLayout *hbox = new QHBoxLayout( topLayout );
-  
+
   QString whatsThis = i18n("Sets the title of this journal.");
   QLabel *summaryLabel = new QLabel( i18n("T&itle:"), parent );
   QWhatsThis::add( summaryLabel, whatsThis );
@@ -78,19 +79,19 @@ void KOEditorGeneralJournal::initDate( QWidget *parent, QBoxLayout *topLayout )
 {
 //  QBoxLayout *dateLayout = new QVBoxLayout(topLayout);
   QBoxLayout *dateLayout = new QHBoxLayout( topLayout );
-  
+
   mDateLabel = new QLabel( i18n("&Date:"), parent);
   dateLayout->addWidget( mDateLabel );
 
   mDateEdit = new KDateEdit( parent );
   dateLayout->addWidget( mDateEdit );
   mDateLabel->setBuddy( mDateEdit );
-  
+
   dateLayout->addStretch();
-  
+
   mTimeCheckBox = new QCheckBox( i18n("&Time: "), parent );
   dateLayout->addWidget( mTimeCheckBox );
-  
+
   mTimeEdit = new KTimeEdit( parent );
   dateLayout->addWidget( mTimeEdit );
   connect( mTimeCheckBox, SIGNAL(toggled(bool)),
@@ -143,10 +144,10 @@ void KOEditorGeneralJournal::readJournal( Journal *journal, bool tmpl )
     if ( !journal->doesFloat() ) {
 kdDebug()<<"KOEditorGeneralJournal::readJournal, does not float, time="<<(journal->dtStart().time().toString())<<endl;
       setTime( journal->dtStart().time() );
-    } else { 
+    } else {
 kdDebug()<<"KOEditorGeneralJournal::readJournal, does float"<<endl;
       setTime( QTime( -1, -1, -1 ) );
-    } 
+    }
   }
   setDescription( journal->description() );
 }
@@ -156,7 +157,7 @@ void KOEditorGeneralJournal::writeJournal( Journal *journal )
 //  kdDebug(5850) << "KOEditorGeneralJournal::writeIncidence()" << endl;
   journal->setSummary( mSummaryEdit->text() );
   journal->setDescription( mDescriptionEdit->text() );
-  
+
   QDateTime tmpDT( mDateEdit->date(), QTime(0,0,0) );
   bool hasTime = mTimeCheckBox->isChecked();
   journal->setFloats( !hasTime );

@@ -35,7 +35,8 @@ class KOEditorAlarms : public KDialogBase
 {
     Q_OBJECT
   public:
-    KOEditorAlarms( KCal::Alarm::List *alarms, QWidget *parent = 0,
+    KOEditorAlarms( const QCString &type,
+                    KCal::Alarm::List *alarms, QWidget *parent = 0,
                     const char *name = 0 );
     ~KOEditorAlarms();
 
@@ -51,6 +52,7 @@ class KOEditorAlarms : public KDialogBase
     void readAlarm( KCal::Alarm *alarm );
     void writeAlarm( KCal::Alarm *alarm );
   private:
+    QCString mType; // as in the Incidence::type
     KCal::Alarm::List *mAlarms;
     KOEditorAlarms_base *mWidget;
     bool mInitializing;

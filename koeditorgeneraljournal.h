@@ -25,6 +25,8 @@
 #ifndef KOEDITORGENERALJOURNAL_H
 #define KOEDITORGENERALJOURNAL_H
 
+#include "koeditorgeneral.h"
+
 #include <qobject.h>
 #include <qdatetime.h>
 
@@ -43,11 +45,11 @@ class Journal;
 }
 using namespace KCal;
 
-class KOEditorGeneralJournal : public QObject
+class KOEditorGeneralJournal : public KOEditorGeneral
 {
-    Q_OBJECT
+  Q_OBJECT
   public:
-    KOEditorGeneralJournal ( QObject* parent=0, const char* name=0 );
+    KOEditorGeneralJournal ( QWidget *parent=0, const char* name=0 );
     virtual ~KOEditorGeneralJournal();
 
     void initDate( QWidget *, QBoxLayout * );

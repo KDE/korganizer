@@ -96,6 +96,7 @@ class KOEditorGeneral : public QObject
   public slots:
     void setCategories(const QStringList &categories);
     void selectCategories();
+    void setType( const QCString &type );
     void addAttachments( const QStringList &attachments,
                          const QStringList& mimeTypes = QStringList(),
                          bool inlineAttachment = false );
@@ -137,6 +138,7 @@ class KOEditorGeneral : public QObject
 
   private:
     QStringList mCategories;
+    QCString mType; // as in Incidence::type()
     KCal::Alarm::List mAlarmList;
 };
 
