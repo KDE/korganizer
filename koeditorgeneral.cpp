@@ -87,6 +87,7 @@ void FocusLineEdit::focusInEvent ( QFocusEvent *e )
 KOEditorGeneral::KOEditorGeneral( Calendar *calendar, QObject *parent )
   : QObject( parent ), mAttachments( 0 )
 {
+  mType = "Event";
   mAlarmList.setAutoDelete( true );
   mCalendar = calendar;
 }
@@ -315,6 +316,12 @@ void KOEditorGeneral::initAttachments( QWidget *parent, QBoxLayout *topLayout )
   topLayout->addWidget( mAttachments, 1 );
 }
 
+void KOEditorGeneral::setType( const QByteArray &type )
+{
+  // must be "Event", "Todo", "Journal", etc.
+  mType = type;
+}
+
 void KOEditorGeneral::addAttachments( const QStringList &attachments,
                                       const QStringList &mimeTypes,
                                       bool inlineAttachments )
@@ -358,7 +365,7 @@ void KOEditorGeneral::editAlarms()
     }
   }
 
-  KOEditorAlarms *dlg = new KOEditorAlarms( &mAlarmList, mAlarmEditButton );
+  KOEditorAlarms *dlg = new KOEditorAlarms( mType, &mAlarmList, mAlarmEditButton );
   if ( dlg->exec() != KDialog::Cancel ) {
     updateAlarmWidgets();
   }
@@ -372,7 +379,7 @@ void KOEditorGeneral::enableAlarm( bool enable )
 
 void KOEditorGeneral::toggleAlarm( bool on )
 {
-    mAlarmButton->setChecked( on );
+  mAlarmButton->setChecked( on );
 }
 
 void KOEditorGeneral::setCategories( const QStringList &categories )
@@ -408,7 +415,15 @@ void KOEditorGeneral::updateAlarmWidgets()
 {
   if ( mAlarmList.isEmpty() ) {
     mAlarmStack->setCurrentIndex( SimpleAlarmPage );
-    mAlarmButton->setChecked( false );
+    bool on;
+    if ( mType == "Event" ) {
+      on = KOPrefs::instance()->defaultEventReminders();
+    } else if ( mType == "Todo" ) {
+      on = KOPrefs::instance()->defaultTodoReminders();
+    } else {
+      on = false;
+    }
+    mAlarmButton->setChecked( on );
   } else if ( mAlarmList.count() > 1 ) {
     mAlarmStack->setCurrentIndex( AdvancedAlarmLabel );
     mAlarmInfoLabel->setText( i18np( "1 reminder configured",

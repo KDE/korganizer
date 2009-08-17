@@ -154,9 +154,14 @@ void AlarmListViewItem::construct()
   }
 }
 
-KOEditorAlarms::KOEditorAlarms( KCal::Alarm::List *alarms, QWidget *parent )
-  : KDialog( parent ), mAlarms( alarms ), mCurrentItem( 0 )
+KOEditorAlarms::KOEditorAlarms( const QByteArray &type,
+                                KCal::Alarm::List *alarms, QWidget *parent )
+  : KDialog( parent ), mType( type ), mAlarms( alarms ), mCurrentItem( 0 )
 {
+  if ( mType != "Todo" ) {
+    // only Todos and Events can have reminders
+    mType = "Event";
+  }
   setCaption( i18nc( "@title", "Edit Reminders" ) );
   setButtons( Ok | Apply | Cancel );
   setDefaultButton( Ok );
@@ -446,6 +451,28 @@ void KOEditorAlarms::slotRemove()
 void KOEditorAlarms::init()
 {
   mInitializing = true;
+
+  // Tweak some UI stuff depending on the Incidence type
+  if ( mType == "Todo" ) {
+    // Replace before/after end datetime with before/after due datetime
+    mWidget.mBeforeAfter->setItemText( 0, i18nc( "@item:inlistbox",
+                                                 "before the to-do starts" ) );
+    mWidget.mBeforeAfter->setItemText( 1, i18nc( "@item:inlistbox",
+                                                 "after the to-do starts" ) );
+    mWidget.mBeforeAfter->setItemText( 2, i18nc( "@item:inlistbox",
+                                                 "before the to-do is due" ) );
+    mWidget.mBeforeAfter->setItemText( 3, i18nc( "@item:inlistbox",
+                                                 "after the to-do is due" ) );
+    mWidget.mBeforeAfter->setToolTip(
+      i18nc( "@info:tooltip",
+             "Select the reminder trigger relative to the start or due time" ) );
+    mWidget.mBeforeAfter->setWhatsThis(
+      i18nc( "@info:whatsthis",
+             "Use this combobox to specify if you want the reminder to "
+             "trigger before or after the start or due time." ) );
+  }
+
+  // Fill-in existing alarms
   KCal::Alarm::List::ConstIterator it;
   for ( it = mAlarms->begin(); it != mAlarms->end(); ++it ) {
     new AlarmListViewItem( mWidget.mAlarmList, *it );
