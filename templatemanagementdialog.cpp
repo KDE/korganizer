@@ -128,9 +128,12 @@ void TemplateManagementDialog::slotApplyTemplate()
 {
   // Once the user has applied the current template to the event, it makes no sense to add it again
   m_base.m_buttonAdd->setEnabled( false );
-  const QString &cur = m_base.m_listBox->currentText();
-  if ( !cur.isEmpty() && cur != m_newTemplate )
-    emit loadTemplate( cur );
+  const int index = m_base.m_listBox->currentItem();
+  if ( index != -1 ) {
+    const QString &cur = m_base.m_listBox->currentText();
+    if ( !cur.isEmpty() && cur != m_newTemplate )
+      emit loadTemplate( cur );
+  }
 }
 
 void TemplateManagementDialog::slotOk()
