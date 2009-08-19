@@ -91,7 +91,7 @@ class AkonadiCalendarItem : public QObject
 
     KCal::Incidence::Ptr incidence() const
     {
-      Q_ASSERT( m_item.hasPayload() );
+      Q_ASSERT( m_item.hasPayload<KCal::Incidence::Ptr>() );
       return m_item.payload<KCal::Incidence::Ptr>();
     }
 
@@ -175,7 +175,6 @@ class KCal::AkonadiCalendar::Private : public QObject
       Q_ASSERT( m_uidToItemId.contains( incidence->uid() ) );
       Akonadi::Item item = itemForUid( incidence->uid() )->m_item;
       Q_ASSERT( item.isValid() );
-      Q_ASSERT( item.hasPayload() );
       Akonadi::ItemDeleteJob *job = new Akonadi::ItemDeleteJob( item, m_session );
       connect( job, SIGNAL( result( KJob* ) ), this, SLOT( deleteDone( KJob* ) ) );
       return true;
@@ -308,7 +307,6 @@ class KCal::AkonadiCalendar::Private : public QObject
             return;
         }
         Akonadi::Item item = modifyjob->item();
-        Q_ASSERT( item.hasPayload() );
         Q_ASSERT( item.hasPayload<KCal::Incidence::Ptr>() );
         const KCal::Incidence::Ptr incidence = item.payload<KCal::Incidence::Ptr>();
         Q_ASSERT( incidence );
@@ -328,7 +326,6 @@ class KCal::AkonadiCalendar::Private : public QObject
     {
         assertInvariants();
         Q_ASSERT( item.isValid() );
-        Q_ASSERT( item.hasPayload() );
         Q_ASSERT( item.hasPayload<KCal::Incidence::Ptr>() );
         const KCal::Incidence::Ptr incidence = item.payload<KCal::Incidence::Ptr>();
         Q_ASSERT( incidence );
@@ -359,7 +356,8 @@ class KCal::AkonadiCalendar::Private : public QObject
         Q_ASSERT( m_collectionMap.contains( collection.id() ) ); // we should only hear from monitored ones
         foreach( const Akonadi::Item &item, items ) {
             Q_ASSERT( item.isValid() );
-            Q_ASSERT( item.hasPayload() );
+            if ( !item.hasPayload<KCal::Incidence::Ptr>() )
+              continue;
             const KCal::Incidence::Ptr incidence = item.payload<KCal::Incidence::Ptr>();
             kDebug() << "Add uid=" << incidence->uid() << "summary=" << incidence->summary() << "type=" << incidence->type();
             const Akonadi::Item::Id uid = item.id();
@@ -393,7 +391,6 @@ class KCal::AkonadiCalendar::Private : public QObject
     {
         kDebug();
         Q_ASSERT( item.isValid() );
-        Q_ASSERT( item.hasPayload() );
         if( ! m_itemMap.contains( item.id() ) ) {
           itemsAdded( Akonadi::Item::List() << item, collection );
         }
