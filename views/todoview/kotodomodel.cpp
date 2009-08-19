@@ -281,7 +281,7 @@ void KOTodoModel::processChange( Incidence *incidence, int action )
     insertTodo( todo );
   } else if ( action == KOGlobals::INCIDENCEDELETED ) {
     TodoTreeNode *ttTodo = findTodo( todo );
-    if ( !ttTodo->isValid() ) {
+    if ( !ttTodo || !ttTodo->isValid() ) {
       return;
     }
 
