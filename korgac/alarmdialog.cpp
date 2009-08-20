@@ -225,11 +225,13 @@ void AlarmDialog::addIncidence( Incidence *incidence,
       }
     }
     if ( item->text( 1 ).isEmpty() ) {
-      item->setText( 1, IncidenceFormatter::dateToString( incidence->dtStart() ) );
+      item->setText( 1, IncidenceFormatter::dateTimeToString(
+                       incidence->dtStart(), false, true, KDateTime::Spec::LocalZone() ) );
     }
   } else if ( ( todo = dynamic_cast<Todo *>( incidence ) ) ) {
     item->setIcon( 0, SmallIcon( "view-calendar-tasks" ) );
-    item->setText( 1, IncidenceFormatter::dateToString( todo->dtDue() ) );
+    item->setText( 1, IncidenceFormatter::dateTimeToString(
+                     todo->dtDue(), false, true, KDateTime::Spec::LocalZone() ) );
   }
   item->setText( 2, triggerStr );
 
