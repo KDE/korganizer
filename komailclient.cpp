@@ -46,12 +46,6 @@
 #include <KSystemTimeZone>
 #include <KToolInvocation>
 
-#if 0
-
-#include <unistd.h>
-#include <stdio.h>
-#endif
-
 KOMailClient::KOMailClient()
 {
 }
