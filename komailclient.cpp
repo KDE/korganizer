@@ -123,7 +123,8 @@ bool KOMailClient::mailAttendees( IncidenceBase *incidence,
 
   QString body = IncidenceFormatter::mailBodyStr( incidence, KSystemTimeZones::local() );
 
-  return send( identity, from, to, cc, subject, body, bccMe, attachment, useSendmail );
+  return send( identity, from, to, cc, subject, body, false,
+               bccMe, attachment, useSendmail );
 }
 
 bool KOMailClient::mailOrganizer( IncidenceBase *incidence,
@@ -146,7 +147,8 @@ bool KOMailClient::mailOrganizer( IncidenceBase *incidence,
 
   QString body = IncidenceFormatter::mailBodyStr( incidence, KSystemTimeZones::local() );
 
-  return send( identity, from, to, QString(), subject, body, bccMe, attachment, useSendmail );
+  return send( identity, from, to, QString(), subject, body, false,
+               bccMe, attachment, useSendmail );
 }
 
 bool KOMailClient::mailTo( IncidenceBase *incidence, const Identity &identity,
@@ -164,14 +166,14 @@ bool KOMailClient::mailTo( IncidenceBase *incidence, const Identity &identity,
   }
   QString body = IncidenceFormatter::mailBodyStr( incidence, KSystemTimeZones::local() );
 
-  return send( identity, from, recipients, QString(), subject, body, bccMe,
-               attachment, useSendmail );
+  return send( identity, from, recipients, QString(), subject, body, false,
+               bccMe, attachment, useSendmail );
 }
 
 bool KOMailClient::send( const Identity &identity,
                          const QString &from, const QString &_to,
                          const QString &cc, const QString &subject,
-                         const QString &body, bool bccMe,
+                         const QString &body, bool hidden, bool bccMe,
                          const QString &attachment, bool useSendmail )
 {
   // We must have a recipients list for most MUAs. Thus, if the 'to' list
@@ -256,7 +258,8 @@ bool KOMailClient::send( const Identity &identity,
     org::kde::kmail::kmail kmail( "org.kde.kmail", "/KMail", QDBusConnection::sessionBus() );
     kapp->updateRemoteUserTimestamp( "org.kde.kmail" );
     if ( attachment.isEmpty() ) {
-      return kmail.openComposer( to, cc, bccMe ? from : QString(), subject, body, false ).isValid();
+      return kmail.openComposer(
+        to, cc, bccMe ? from : QString(), subject, body, hidden ).isValid();
     } else {
       QString meth;
       int idx = attachment.indexOf( "METHOD" );
@@ -269,9 +272,9 @@ bool KOMailClient::send( const Identity &identity,
         meth = "publish";
       }
       return kmail.openComposer(
-        to, cc, bccMe ? from : QString(), subject, body, false, "cal.ics", "7bit",
-        attachment.toUtf8(), "text", "calendar", "method", meth, "attachment",
-        "utf-8", identity.uoid() ).isValid();
+        to, cc, bccMe ? from : QString(), subject, body, hidden, "cal.ics",
+        "7bit", attachment.toUtf8(), "text", "calendar", "method", meth,
+        "attachment", "utf-8", identity.uoid() ).isValid();
     }
   }
   return true;

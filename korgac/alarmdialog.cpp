@@ -24,13 +24,19 @@
 */
 
 #include "alarmdialog.h"
+#include "kocore.h"
 #include "koeventviewer.h"
+#include "komailclient.h"
+#include "koprefs.h"
 #include "korganizer_interface.h"
 
 #include <KCal/Event>
 #include <KCal/Incidence>
 #include <KCal/IncidenceFormatter>
 #include <KCal/Todo>
+
+#include <KPIMIdentities/Identity>
+#include <KPIMIdentities/IdentityManager>
 
 #include <KComboBox>
 #include <KDebug>
@@ -39,6 +45,7 @@
 #include <KMessageBox>
 #include <KNotification>
 #include <KSharedConfig>
+#include <KSystemTimeZone>
 #include <KToolInvocation>
 #include <KWindowSystem>
 
@@ -362,6 +369,8 @@ void AlarmDialog::show()
   }
   KWindowSystem::setState( winId(), NET::KeepAbove );
   KWindowSystem::setOnAllDesktops( winId(), true );
+
+  // Audio, Procedure, and EMail alarms
   eventNotification();
 }
 
@@ -482,6 +491,44 @@ void AlarmDialog::eventNotification()
         player->setParent( this );
         connect( player, SIGNAL(finished()), player, SLOT(deleteLater()) );
         player->play();
+      } else if ( alarm->type() == Alarm::Email ) {
+        QString from = KOPrefs::instance()->email();
+        Identity id = KOCore::self()->identityManager()->identityForAddress( from );
+        QString to;
+        if ( alarm->mailAddresses().isEmpty() ) {
+          to = from;
+        } else {
+          QList<Person> addresses = alarm->mailAddresses();
+          QStringList add;
+          for ( QList<Person>::ConstIterator it = addresses.constBegin();
+                it != addresses.constEnd(); ++it ) {
+            add << (*it).fullName();
+          }
+          to = add.join( ", " );
+        }
+
+        QString subject;
+        if ( alarm->mailSubject().isEmpty() ) {
+          if ( alarm->parent()->summary().isEmpty() ) {
+            subject = i18nc( "@title", "Reminder" );
+          } else {
+            subject = i18nc( "@title", "Reminder: %1", alarm->parent()->summary() );
+          }
+        } else {
+          subject = i18nc( "@title", "Reminder: %1", alarm->mailSubject() );
+        }
+
+        QString body;
+        if ( alarm->mailText().isEmpty() ) {
+          body = IncidenceFormatter::mailBodyStr(
+            alarm->parent(), KSystemTimeZones::local() );
+        } else {
+          body = alarm->mailText();
+        }
+        //TODO: support attachments
+        //TODO: transport
+        KOMailClient mailer;
+        mailer.send( id, from, to, QString(), subject, body, true );
       }
     }
   }
@@ -535,7 +582,6 @@ void AlarmDialog::slotSave()
   }
 
   generalConfig.writeEntry( "Reminders", numReminders );
-  kDebug() << "writing positing" << pos();
   generalConfig.writeEntry( "Position", pos() );
   config->sync();
 }

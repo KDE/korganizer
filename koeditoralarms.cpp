@@ -193,7 +193,6 @@ KOEditorAlarms::KOEditorAlarms( const QByteArray &type,
   connect( this, SIGNAL(okClicked()), SLOT(slotOk()) );
   connect( this, SIGNAL(applyClicked()), SLOT(slotApply()) );
   init();
-  mWidget.mTypeEmailRadio->hide();
 }
 
 KOEditorAlarms::~KOEditorAlarms()
