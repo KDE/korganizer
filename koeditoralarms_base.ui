@@ -314,7 +314,7 @@
          <item>
           <widget class="QRadioButton" name="mTypeEmailRadio">
            <property name="enabled">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
            <property name="toolTip">
             <string>Send email when the reminder is triggered</string>

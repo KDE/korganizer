@@ -57,21 +57,26 @@ class KORGANIZER_EVENTVIEWER_EXPORT KOMailClient
                  const QString &from, bool bccMe, const QString &recipients,
                  const QString &attachment=QString(), bool useSendmail=false );
 
-  protected:
     /**
-     * Sends mail with specified from, to and subject field and body as text.
-     * If bcc is set, send a blind carbon copy to the sender from
-     * @param from sender of the mail invitation
-     *    @param to receiver of the invitation
-     *   @param subject subject of the invitation (not relevant for
-     *                  scheduling purposes)
-     *   @param body Body of the message
-     *   @param bcc optional bcc for the message
-     *   @param attachment optional attachment (raw data)
-     */
+      Sends mail with specified from, to and subject field and body as text.
+      If bcc is set, send a blind carbon copy to the sender
+
+      @param identity is the Identity of the sender
+      @param from is the address of the sender of the message
+      @param to a list of addresses to receive the message
+      @param cc a list of addresses to receive message carbon copies
+      @param subject is the subject of the message
+      @param body is the boody of the message
+      @param hidden if true and using KMail as the mailer, send the message
+      without opening a composer window.
+      @param bcc if true, send a blind carbon copy to the message sender
+      @param attachment optional attachment (raw data)
+      @param useSendmail if true, use the system's sendmail program to send
+      mail; otherwise, use KMail to send mail.
+    */
     bool send( const Identity &identity, const QString &from, const QString &to,
                const QString &cc, const QString &subject, const QString &body,
-               bool bccMe=false, const QString &attachment=QString(),
+               bool hidden=false, bool bccMe=false, const QString &attachment=QString(),
                bool useSendmail=false );
 };
 
