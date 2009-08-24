@@ -48,6 +48,7 @@
 #include <klockfile.h>
 
 #include <libkcal/event.h>
+#include <libkcal/incidenceformatter.h>
 
 #include "koeventviewer.h"
 
@@ -78,12 +79,18 @@ typedef QValueList<AlarmListItem*> ItemList;
 AlarmDialog::AlarmDialog( QWidget *parent, const char *name )
   : KDialogBase( Plain, WType_TopLevel | WStyle_Customize | WStyle_StaysOnTop |
                  WStyle_DialogBorder,
-                 parent, name, false, i18n("Reminder"), Ok | User1 | User2 | User3, User1/*3*/,
-                 false, i18n("Dismiss All"), i18n("Edit..."), i18n("Suspend") ),
+                 parent, name, false, i18n("Reminder"),
+                 Ok | User1 | User2 | User3, User3,
+                 false, i18n("Edit..."), i18n("Dismiss All"), i18n("Dismiss Reminder") ),
                  mSuspendTimer(this)
 {
+  // User1 => Edit...
+  // User2 => Dismiss All
+  // User3 => Dismiss Selected
+  //    Ok => Suspend
+
   KGlobal::iconLoader()->addAppDir( "kdepim" );
-  setButtonOK( i18n( "Dismiss Reminder" ) );
+  setButtonOK( i18n( "Suspend" ) );
 
   QWidget *topBox = plainPage();
   QBoxLayout *topLayout = new QVBoxLayout( topBox );
@@ -100,7 +107,7 @@ AlarmDialog::AlarmDialog( QWidget *parent, const char *name )
   mIncidenceListView->setSelectionMode( QListView::Extended );
   topLayout->addWidget( mIncidenceListView );
   connect( mIncidenceListView, SIGNAL(selectionChanged()), SLOT(updateButtons()) );
-  connect( mIncidenceListView, SIGNAL(doubleClicked(QListViewItem*)), SLOT(slotUser2()) );
+  connect( mIncidenceListView, SIGNAL(doubleClicked(QListViewItem*)), SLOT(edit()) );
   connect( mIncidenceListView, SIGNAL(currentChanged(QListViewItem*)), SLOT(showDetails()) );
   connect( mIncidenceListView, SIGNAL(selectionChanged()), SLOT(showDetails()) );
 
@@ -122,8 +129,6 @@ AlarmDialog::AlarmDialog( QWidget *parent, const char *name )
   mSuspendUnit->insertItem( i18n("day(s)") );
   mSuspendUnit->insertItem( i18n("week(s)") );
   connect( &mSuspendTimer, SIGNAL(timeout()), SLOT(wakeUp()) );
-
-  // showButton( User2/*3*/, false );
 
   setMinimumSize( 300, 200 );
 }
@@ -147,10 +152,10 @@ void AlarmDialog::addIncidence( Incidence *incidence, const QDateTime &reminderA
         item->setText( 1, KGlobal::locale()->formatDateTime( nextStart ) );
     }
     if ( item->text( 1 ).isEmpty() )
-      item->setText( 1, incidence->dtStartStr() );
+      item->setText( 1, IncidenceFormatter::dateTimeToString( incidence->dtStart(), false, true ) );
   } else if ( (todo = dynamic_cast<Todo*>( incidence )) ) {
     item->setPixmap( 0, SmallIcon( "todo" ) );
-    item->setText( 1, todo->dtDueStr() );
+    item->setText( 1, IncidenceFormatter::dateTimeToString( todo->dtDue(), false, true ) );
   }
   if ( activeCount() == 1 ) {// previously empty
     mIncidenceListView->clearSelection();
@@ -160,6 +165,26 @@ void AlarmDialog::addIncidence( Incidence *incidence, const QDateTime &reminderA
 }
 
 void AlarmDialog::slotOk()
+{
+  suspend();
+}
+
+void AlarmDialog::slotUser1()
+{
+  edit();
+}
+
+void AlarmDialog::slotUser2()
+{
+  dismissAll();
+}
+
+void AlarmDialog::slotUser3()
+{
+  dismissCurrent();
+}
+
+void AlarmDialog::dismissCurrent()
 {
   ItemList selection = selectedItems();
   for ( ItemList::Iterator it = selection.begin(); it != selection.end(); ++it ) {
@@ -178,9 +203,59 @@ void AlarmDialog::slotOk()
   emit reminderCount( activeCount() );
 }
 
-void AlarmDialog::slotUser1()
+void AlarmDialog::dismissAll()
 {
-  dismissAll();
+  for ( QListViewItemIterator it( mIncidenceListView ) ; it.current() ; ) {
+    AlarmListItem *item = static_cast<AlarmListItem*>( it.current() );
+    if ( !item->isVisible() ) {
+      ++it;
+      continue;
+    }
+    delete item;
+  }
+  setTimer();
+  accept();
+  emit reminderCount( activeCount() );
+}
+
+void AlarmDialog::edit()
+{
+  ItemList selection = selectedItems();
+  if ( selection.count() != 1 )
+    return;
+  Incidence *incidence = selection.first()->mIncidence;
+
+  if ( !kapp->dcopClient()->isApplicationRegistered( "korganizer" ) ) {
+    if ( kapp->startServiceByDesktopName( "korganizer", QString::null ) )
+      KMessageBox::error( 0, i18n("Could not start KOrganizer.") );
+  }
+
+  kapp->dcopClient()->send( "korganizer", "KOrganizerIface",
+                            "editIncidence(QString)",
+                             incidence->uid() );
+
+  // get desktop # where korganizer (or kontact) runs
+  QByteArray replyData;
+  QCString object, replyType;
+  object = kapp->dcopClient()->isApplicationRegistered( "kontact" ) ?
+           "kontact-mainwindow#1" : "KOrganizer MainWindow";
+  if (!kapp->dcopClient()->call( "korganizer", object,
+                            "getWinID()", 0, replyType, replyData, true, -1 ) ) {
+  }
+
+  if ( replyType == "int" ) {
+    int desktop, window;
+    QDataStream ds( replyData, IO_ReadOnly );
+    ds >> window;
+    desktop = KWin::windowInfo( window ).desktop();
+
+    if ( KWin::currentDesktop() == desktop ) {
+      KWin::iconifyWindow( winId(), false );
+    } else {
+      KWin::setCurrentDesktop( desktop );
+    }
+    KWin::activateWindow( KWin::transientFor( window ) );
+  }
 }
 
 void AlarmDialog::suspend()
@@ -237,67 +312,6 @@ void AlarmDialog::setTimer()
     mSuspendTimer.stop();
     mSuspendTimer.start( 1000 * (nextReminderAt + 1), true );
   }
-}
-
-void AlarmDialog::slotUser2()
-{
-  ItemList selection = selectedItems();
-  if ( selection.count() != 1 )
-    return;
-  Incidence *incidence = selection.first()->mIncidence;
-
-  if ( !kapp->dcopClient()->isApplicationRegistered( "korganizer" ) ) {
-    if ( kapp->startServiceByDesktopName( "korganizer", QString::null ) )
-      KMessageBox::error( 0, i18n("Could not start KOrganizer.") );
-  }
-
-  kapp->dcopClient()->send( "korganizer", "KOrganizerIface",
-                            "editIncidence(QString)",
-                             incidence->uid() );
-
-  // get desktop # where korganizer (or kontact) runs
-  QByteArray replyData;
-  QCString object, replyType;
-  object = kapp->dcopClient()->isApplicationRegistered( "kontact" ) ?
-           "kontact-mainwindow#1" : "KOrganizer MainWindow";
-  if (!kapp->dcopClient()->call( "korganizer", object,
-                            "getWinID()", 0, replyType, replyData, true, -1 ) ) {
-  }
-
-  if ( replyType == "int" ) {
-    int desktop, window;
-    QDataStream ds( replyData, IO_ReadOnly );
-    ds >> window;
-    desktop = KWin::windowInfo( window ).desktop();
-
-    if ( KWin::currentDesktop() == desktop ) {
-      KWin::iconifyWindow( winId(), false );
-    }
-    else
-      KWin::setCurrentDesktop( desktop );
-
-    KWin::activateWindow( KWin::transientFor( window ) );
-  }
-}
-
-void AlarmDialog::slotUser3()
-{
-  suspend();
-}
-
-void AlarmDialog::dismissAll()
-{
-  for ( QListViewItemIterator it( mIncidenceListView ) ; it.current() ; ) {
-    AlarmListItem *item = static_cast<AlarmListItem*>( it.current() );
-    if ( !item->isVisible() ) {
-      ++it;
-      continue;
-    }
-    delete item;
-  }
-  setTimer();
-  accept();
-  emit reminderCount( activeCount() );
 }
 
 void AlarmDialog::show()
@@ -397,9 +411,9 @@ void AlarmDialog::slotSave()
 void AlarmDialog::updateButtons()
 {
   ItemList selection = selectedItems();
-  enableButton( User2, selection.count() == 1 );
-  enableButton( Ok, selection.count() > 0 );
-  enableButton( User3, selection.count() > 0 );
+  enableButton( User1, selection.count() == 1 ); // can only edit 1 at a time
+  enableButton( User3, selection.count() > 0 );  // dismiss 1 or more
+  enableButton( Ok, selection.count() > 0 );     // suspend 1 or more
 }
 
 QValueList< AlarmListItem * > AlarmDialog::selectedItems() const
