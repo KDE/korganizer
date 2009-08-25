@@ -80,6 +80,11 @@ typedef QList<ReminderListItem *> ReminderList;
 AlarmDialog::AlarmDialog( QWidget *parent )
   : KDialog( parent, Qt::WindowStaysOnTopHint ), mSuspendTimer( this )
 {
+  // User1 => Edit...
+  // User2 => Dismiss All
+  // User3 => Dismiss Selected
+  //    Ok => Suspend
+
   KIconLoader::global()->addAppDir( "korgac" );
 
   KSharedConfig::Ptr config = KGlobal::config();
@@ -96,19 +101,19 @@ AlarmDialog::AlarmDialog( QWidget *parent )
   setWindowIcon( KIcon( "korgac" ) );
   setButtons( Ok | User1 | User2 | User3 );
   setDefaultButton( User3 );
-  setButtonText( Ok, i18nc( "@action:button", "Dismiss Reminder" ) );
-  setButtonToolTip( Ok, i18nc( "@info:tooltip",
-                               "Dismiss the reminders for the selected incidences" ) );
-  setButtonText( User1, i18nc( "@action:button", "Dismiss All" ) );
-  setButtonToolTip( User1, i18nc( "@info:tooltip",
-                                  "Dismiss the reminders for all listed incidences" ) );
-  setButtonText( User2, i18nc( "@action:button", "Edit..." ) );
-  setButtonToolTip( User2, i18nc( "@info:tooltip",
-                                  "Edit the selected incidence" ) );
-  setButtonText( User3, i18nc( "@action:button", "Suspend" ) );
+  setButtonText( User3, i18nc( "@action:button", "Dismiss Reminder" ) );
   setButtonToolTip( User3, i18nc( "@info:tooltip",
-                                  "Suspend the reminders for the selected incidences "
-                                  "by the specified interval" ) );
+                                  "Dismiss the reminders for the selected incidences" ) );
+  setButtonText( User2, i18nc( "@action:button", "Dismiss All" ) );
+  setButtonToolTip( User2, i18nc( "@info:tooltip",
+                                  "Dismiss the reminders for all listed incidences" ) );
+  setButtonText( User1, i18nc( "@action:button", "Edit..." ) );
+  setButtonToolTip( User1, i18nc( "@info:tooltip",
+                                  "Edit the selected incidence" ) );
+  setButtonText( Ok, i18nc( "@action:button", "Suspend" ) );
+  setButtonToolTip( Ok, i18nc( "@info:tooltip",
+                               "Suspend the reminders for the selected incidences "
+                               "by the specified interval" ) );
 
   // Try to keep the dialog small and non-obtrusive.
   setMinimumWidth( 575 );
@@ -156,7 +161,7 @@ AlarmDialog::AlarmDialog( QWidget *parent )
   connect( mIncidenceTree, SIGNAL(itemClicked(QTreeWidgetItem*,int)),
            SLOT(update()) );
   connect( mIncidenceTree, SIGNAL(itemDoubleClicked(QTreeWidgetItem*,int)),
-           SLOT(slotUser2()) );
+           SLOT(edit()) );
   connect( mIncidenceTree, SIGNAL(itemSelectionChanged()),
            SLOT(update()) );
 
@@ -264,7 +269,27 @@ void AlarmDialog::addIncidence( Incidence *incidence,
   showDetails();
 }
 
-void AlarmDialog::slotOk() // Dismiss selected
+void AlarmDialog::slotOk()
+{
+  suspend();
+}
+
+void AlarmDialog::slotUser1()
+{
+  edit();
+}
+
+void AlarmDialog::slotUser2()
+{
+  dismissAll();
+}
+
+void AlarmDialog::slotUser3()
+{
+  dismissCurrent();
+}
+
+void AlarmDialog::dismissCurrent()
 {
   ReminderList selection = selectedItems();
   for ( ReminderList::Iterator it = selection.begin(); it != selection.end(); ++it ) {
@@ -286,33 +311,21 @@ void AlarmDialog::slotOk() // Dismiss selected
   emit reminderCount( activeCount() );
 }
 
-void AlarmDialog::slotUser1() // Dismiss All
+void AlarmDialog::dismissAll()
 {
-  dismissAll();
-}
-
-void AlarmDialog::setTimer()
-{
-  int nextReminderAt = -1;
-
   QTreeWidgetItemIterator it( mIncidenceTree );
   while ( *it ) {
-    ReminderListItem *item = static_cast<ReminderListItem *>( *it );
-    if ( item->mRemindAt > QDateTime::currentDateTime() ) {
-      int secs = QDateTime::currentDateTime().secsTo( item->mRemindAt );
-      nextReminderAt = nextReminderAt <= 0 ? secs : qMin( nextReminderAt, secs );
+    if ( !(*it)->isDisabled() ) { //do not disable suspended reminders
+      delete *it;
     }
     ++it;
   }
-
-  if ( nextReminderAt >= 0 ) {
-    mSuspendTimer.stop();
-    mSuspendTimer.start( 1000 * ( nextReminderAt + 1 ) );
-    mSuspendTimer.setSingleShot( true );
-  }
+  setTimer();
+  accept();
+  emit reminderCount( activeCount() );
 }
 
-void AlarmDialog::slotUser2() // Edit selected 1
+void AlarmDialog::edit()
 {
   if ( !QDBusConnection::sessionBus().interface()->isServiceRegistered( "org.kde.korganizer" ) ) {
     if ( KToolInvocation::startServiceByDesktopName( "korganizer", QString() ) ) {
@@ -349,60 +362,6 @@ void AlarmDialog::slotUser2() // Edit selected 1
     KWindowSystem::activateWindow( KWindowSystem::transientFor( window ) );
   }
 #endif
-}
-
-void AlarmDialog::slotUser3() // Suspend selected
-{
-  suspend();
-}
-
-void AlarmDialog::show()
-{
-  mIncidenceTree->setCurrentItem( mIncidenceTree->topLevelItem( 0 ) );
-  mIncidenceTree->resizeColumnToContents( 0 );
-  mIncidenceTree->resizeColumnToContents( 1 );
-  mIncidenceTree->resizeColumnToContents( 2 );
-
-  KDialog::show();
-  if ( !mPos.isNull() ) {
-    KDialog::move( mPos );
-  }
-  KWindowSystem::setState( winId(), NET::KeepAbove );
-  KWindowSystem::setOnAllDesktops( winId(), true );
-
-  // Audio, Procedure, and EMail alarms
-  eventNotification();
-}
-
-void AlarmDialog::dismissAll()
-{
-  QTreeWidgetItemIterator it( mIncidenceTree );
-  while ( *it ) {
-    if ( !(*it)->isDisabled() ) { //do not disable suspended reminders
-      delete *it;
-    }
-    ++it;
-  }
-  setTimer();
-  accept();
-  emit reminderCount( activeCount() );
-}
-
-void AlarmDialog::suspendAll()
-{
-  mIncidenceTree->clearSelection();
-  QTreeWidgetItemIterator it( mIncidenceTree );
-
-  // first, select all non-suspended reminders
-  while ( *it ) {
-    if ( !(*it)->isDisabled() ) { //do not suspend suspended reminders
-      (*it)->setSelected( true );
-    }
-    ++it;
-  }
-
-  //suspend all selected reminders
-  suspend();
 }
 
 void AlarmDialog::suspend()
@@ -447,6 +406,62 @@ void AlarmDialog::suspend()
     update();
   }
   emit reminderCount( activeCount() );
+}
+
+void AlarmDialog::setTimer()
+{
+  int nextReminderAt = -1;
+
+  QTreeWidgetItemIterator it( mIncidenceTree );
+  while ( *it ) {
+    ReminderListItem *item = static_cast<ReminderListItem *>( *it );
+    if ( item->mRemindAt > QDateTime::currentDateTime() ) {
+      int secs = QDateTime::currentDateTime().secsTo( item->mRemindAt );
+      nextReminderAt = nextReminderAt <= 0 ? secs : qMin( nextReminderAt, secs );
+    }
+    ++it;
+  }
+
+  if ( nextReminderAt >= 0 ) {
+    mSuspendTimer.stop();
+    mSuspendTimer.start( 1000 * ( nextReminderAt + 1 ) );
+    mSuspendTimer.setSingleShot( true );
+  }
+}
+
+void AlarmDialog::show()
+{
+  mIncidenceTree->setCurrentItem( mIncidenceTree->topLevelItem( 0 ) );
+  mIncidenceTree->resizeColumnToContents( 0 );
+  mIncidenceTree->resizeColumnToContents( 1 );
+  mIncidenceTree->resizeColumnToContents( 2 );
+
+  KDialog::show();
+  if ( !mPos.isNull() ) {
+    KDialog::move( mPos );
+  }
+  KWindowSystem::setState( winId(), NET::KeepAbove );
+  KWindowSystem::setOnAllDesktops( winId(), true );
+
+  // Audio, Procedure, and EMail alarms
+  eventNotification();
+}
+
+void AlarmDialog::suspendAll()
+{
+  mIncidenceTree->clearSelection();
+  QTreeWidgetItemIterator it( mIncidenceTree );
+
+  // first, select all non-suspended reminders
+  while ( *it ) {
+    if ( !(*it)->isDisabled() ) { //do not suspend suspended reminders
+      (*it)->setSelected( true );
+    }
+    ++it;
+  }
+
+  //suspend all selected reminders
+  suspend();
 }
 
 void AlarmDialog::eventNotification()
@@ -618,9 +633,9 @@ void AlarmDialog::updateButtons()
 {
   int count = selectedItems().count();
   kDebug() << "selected items=" << count;
-  enableButton( Ok, count > 0 );     // enable Dismiss, if >1 selected
-  enableButton( User2, count == 1 ); // enable Edit, if only 1 selected
-  enableButton( User3, count > 0 );  // enable Suspend, if >1 selected
+  enableButton( User3, count > 0 );  // enable Dismiss, if >1 selected
+  enableButton( User1, count == 1 ); // enable Edit, if only 1 selected
+  enableButton( Ok, count > 0 );     // enable Suspend, if >1 selected
 }
 
 void AlarmDialog::toggleDetails( QTreeWidgetItem *item, int column )

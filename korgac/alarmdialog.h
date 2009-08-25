@@ -57,16 +57,18 @@ class AlarmDialog : public KDialog
     void eventNotification();
 
   public slots:
-    void slotOk();
-    void slotUser1();
-    void slotUser2();
-    void slotUser3();
+    void slotOk();    // suspend
+    void slotUser1(); // edit
+    void slotUser2(); // dismiss all
+    void slotUser3(); // dismiss selected
     void slotSave();
     void wakeUp();
     void show();
+    void edit();
     void suspend();
     void suspendAll();
     void dismissAll();
+    void dismissCurrent();
     /*reimp*/
     void accept();
 
