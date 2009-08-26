@@ -350,7 +350,7 @@ AkonadiCollectionView::AkonadiCollectionView( AkonadiCollectionViewFactory *fact
   mCollectionview = new Akonadi::CollectionView();
   mCollectionview->header()->hide();
   mCollectionview->setModel( mProxyModel );
-  mCollectionview->setRootIsDecorated( false );
+  mCollectionview->setRootIsDecorated( true );
   //mCollectionview->setSelectionMode( QAbstractItemView::NoSelection );
   KXMLGUIClient *xmlclient = KOCore::self()->xmlguiClient( mFactory->view() );
   if( xmlclient ) {
@@ -405,8 +405,6 @@ void AkonadiCollectionView::updateView()
 void AkonadiCollectionView::selectionChanged()
 {
   kDebug();
-mCollectionview->reset();
-mCollectionview->model();
   mDeleteAction->setEnabled( mCollectionview->selectionModel()->hasSelection() );
 }
 
