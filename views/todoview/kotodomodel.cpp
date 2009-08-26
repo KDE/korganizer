@@ -266,7 +266,9 @@ void KOTodoModel::processChange( Incidence *incidence, int action )
 
   if ( action == KOGlobals::INCIDENCEEDITED ) {
     TodoTreeNode *ttTodo = findTodo( todo );
-    Q_ASSERT( ttTodo );
+    if ( !ttTodo || !ttTodo->isValid() ) {
+      return;
+    }
 
     QModelIndex miChanged = moveIfParentChanged( ttTodo, todo, false );
 
