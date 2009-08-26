@@ -203,7 +203,7 @@ void AlarmDialog::addIncidence( Incidence *incidence, const QDateTime &reminderA
       }
     }
     if ( item->text( 1 ).isEmpty() ) {
-      item->setText( 1, IncidenceFormatter::dateTimeToString( incidence->dtStart(), false, true ) );
+      item->setText( 1, IncidenceFormatter::dateTimeToString( incidence->dtStart(), false, true, KDateTime::Spec::LocalZone() ) );
     }
   } else if ( ( todo = dynamic_cast<Todo *>( incidence ) ) ) {
     item->setIcon( 0, SmallIcon( "view-calendar-tasks" ) );
