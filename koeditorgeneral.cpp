@@ -425,11 +425,13 @@ void KOEditorGeneral::updateAlarmWidgets()
     }
     mAlarmButton->setChecked( on );
   } else if ( mAlarmList.count() > 1 ) {
+    mAlarmEditButton->setEnabled( true );
     mAlarmStack->setCurrentIndex( AdvancedAlarmLabel );
     mAlarmInfoLabel->setText( i18np( "1 reminder configured",
                                      "%1 reminders configured",
                                      mAlarmList.count() ) );
   } else {
+    mAlarmEditButton->setEnabled( true );
     Alarm *alarm = mAlarmList.first();
     // Check if its the trivial type of alarm, which can be
     // configured with a simply spin box...
