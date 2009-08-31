@@ -25,9 +25,9 @@
 
 #include "koeventviewerdialog.h"
 #include "koeventviewer.h"
-#include <klocale.h>
+#include <KLocale>
 
-KOEventViewerDialog::KOEventViewerDialog( QWidget *parent, bool compact )
+KOEventViewerDialog::KOEventViewerDialog( Calendar *calendar, QWidget *parent, bool compact )
   : KDialog( parent )
 {
   setCaption( i18n( "Event Viewer" ) );
@@ -35,7 +35,7 @@ KOEventViewerDialog::KOEventViewerDialog( QWidget *parent, bool compact )
   setModal( false );
   setButtonGuiItem( User1, KGuiItem( i18n( "Edit..." ) ) );
   setButtonGuiItem( User2, KGuiItem( i18n( "Show in Context" ) ) );
-  mEventViewer = new KOEventViewer( this );
+  mEventViewer = new KOEventViewer( calendar, this );
   setMainWidget( mEventViewer );
 
   // FIXME: Set a sensible size (based on the content?).
@@ -46,19 +46,25 @@ KOEventViewerDialog::KOEventViewerDialog( QWidget *parent, bool compact )
     setMinimumSize( 300, 200 );
   }
   connect( this, SIGNAL(finished()), this, SLOT(delayedDestruct()) );
-  connect( this, SIGNAL( user1Clicked() ), mEventViewer,
-           SLOT( editIncidence() ) );
-  connect( this, SIGNAL( user2Clicked() ), mEventViewer,
-           SLOT( showIncidenceContext() ) );
+  connect( this, SIGNAL(user1Clicked()), mEventViewer,
+           SLOT(editIncidence()) );
+  connect( this, SIGNAL(user2Clicked()), mEventViewer,
+           SLOT(showIncidenceContext()) );
 }
 
 KOEventViewerDialog::~KOEventViewerDialog()
 {
+  delete mEventViewer;
+}
+
+void KOEventViewerDialog::setCalendar( Calendar *calendar )
+{
+  mEventViewer->setCalendar( calendar );
 }
 
 void KOEventViewerDialog::addText( const QString &text )
 {
-  mEventViewer->addText(text);
+  mEventViewer->addText( text );
 }
 
 #include "koeventviewerdialog.moc"

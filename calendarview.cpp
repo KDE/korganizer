@@ -129,7 +129,7 @@ CalendarView::CalendarView( QWidget *parent )
 
   mEventViewerBox = new KVBox( mLeftSplitter );
   mEventViewerBox->setMargin( KDialog::marginHint() );
-  mEventViewer = new KOEventViewer( mEventViewerBox );
+  mEventViewer = new KOEventViewer( CalendarNull::self(), mEventViewerBox );
   mEventViewer->setObjectName( "EventViewer" );
 
   KVBox *rightBox = new KVBox( mPanner );
@@ -265,6 +265,8 @@ void CalendarView::setCalendar( Calendar *cal )
   mDateNavigatorContainer->setCalendar( mCalendar );
 
   mTodoList->setCalendar( mCalendar );
+
+  mEventViewer->setCalendar( mCalendar );
 }
 
 void CalendarView::setIncidenceChanger( IncidenceChangerBase *changer )
@@ -2080,7 +2082,7 @@ void CalendarView::pasteIncidence()
 
 void CalendarView::showIncidence( Incidence *incidence )
 {
-  KOEventViewerDialog *eventViewer = new KOEventViewerDialog( this );
+  KOEventViewerDialog *eventViewer = new KOEventViewerDialog( calendar(), this );
   eventViewer->setIncidence( incidence );
 
   // Disable the Edit button for read-only Incidences.

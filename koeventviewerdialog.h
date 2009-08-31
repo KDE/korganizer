@@ -26,10 +26,10 @@
 
 #include "korganizer_export.h"
 #include "koeventviewer.h"
-#include <kdialog.h>
+#include <KDialog>
 
 namespace KCal {
-class Incidence;
+  class Incidence;
 }
 using namespace KCal;
 
@@ -42,12 +42,13 @@ class KORGANIZER_EVENTVIEWER_EXPORT KOEventViewerDialog : public KDialog
 {
   Q_OBJECT
   public:
-    explicit KOEventViewerDialog( QWidget *parent = 0, bool compact = false );
+    explicit KOEventViewerDialog( Calendar *calendar, QWidget *parent = 0, bool compact = false );
     virtual ~KOEventViewerDialog();
 
     void setIncidence( Incidence *incidence ) { mEventViewer->setIncidence( incidence ); }
     void appendIncidence( Incidence *incidence ) { mEventViewer->appendIncidence( incidence ); }
 
+    void setCalendar( Calendar *calendar );
     void addText( const QString &text );
 
   private:

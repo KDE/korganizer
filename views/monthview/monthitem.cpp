@@ -516,7 +516,7 @@ QString IncidenceMonthItem::text( bool end ) const
 QString IncidenceMonthItem::toolTipText() const
 {
   return IncidenceFormatter::toolTipStr(
-    mIncidence, true, KOPrefs::instance()->timeSpec() );
+    monthScene()->calendar(), mIncidence, true, KOPrefs::instance()->timeSpec() );
 }
 
 QList<QPixmap *> IncidenceMonthItem::icons() const

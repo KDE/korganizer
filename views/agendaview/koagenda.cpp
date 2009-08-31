@@ -1529,7 +1529,7 @@ KOAgendaItem *KOAgenda::insertItem( Incidence *incidence, const QDate &qd,
 
   mActionType = NOP;
 
-  KOAgendaItem *agendaItem = new KOAgendaItem( incidence, qd, viewport() );
+  KOAgendaItem *agendaItem = new KOAgendaItem( mCalendar, incidence, qd, viewport() );
   connect( agendaItem, SIGNAL(removeAgendaItem(KOAgendaItem *)),
            SLOT(removeAgendaItem(KOAgendaItem *)) );
   connect( agendaItem, SIGNAL(showAgendaItem(KOAgendaItem *)),
@@ -1574,7 +1574,7 @@ KOAgendaItem *KOAgenda::insertAllDayItem( Incidence *event, const QDate &qd,
 
   mActionType = NOP;
 
-  KOAgendaItem *agendaItem = new KOAgendaItem( event, qd, viewport() );
+  KOAgendaItem *agendaItem = new KOAgendaItem( mCalendar, event, qd, viewport() );
   connect( agendaItem, SIGNAL(removeAgendaItem(KOAgendaItem *)),
            SLOT(removeAgendaItem(KOAgendaItem *)) );
   connect( agendaItem, SIGNAL(showAgendaItem(KOAgendaItem *)),

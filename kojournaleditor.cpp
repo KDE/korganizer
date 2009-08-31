@@ -32,6 +32,7 @@
 #include "korganizer/baseview.h"
 
 #include <KCal/CalendarLocal>
+#include <KCal/IncidenceFormatter>
 
 #include <KLocale>
 #include <KMessageBox>
@@ -101,7 +102,8 @@ void KOJournalEditor::editIncidence( Incidence *incidence, Calendar *calendar )
   }
 
   setCaption( i18nc( "@title:window",
-                     "Edit Journal: %1", KOHelper::resourceLabel( calendar, incidence ) ) );
+                     "Edit Journal: %1",
+                     IncidenceFormatter::resourceString( calendar, incidence ) ) );
 
 }
 
