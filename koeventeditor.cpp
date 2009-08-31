@@ -312,18 +312,18 @@ bool KOEventEditor::processInput()
           i18nc( "@title:window", "No Changes" ) );
       }
     } else {
-      //IncidenceChanger::assignIncidence( mEvent, event );
       fillEvent( mEvent );
       if ( mIsCounter ) {
         KOGroupware::instance()->sendCounterProposal( mCalendar, oldEvent, mEvent );
         // add dummy event at the position of the counter proposal
         Event *event = mEvent->clone();
         event->clearAttendees();
-        event->setSummary( i18nc( "@item",
-                                  "My counter proposal for: %1", mEvent->summary() ) );
-        mChanger->addIncidence( event );
+        event->setSummary(
+          i18nc( "@item",
+                 "My counter proposal for: %1", mEvent->summary() ) );
+        rc = mChanger->addIncidence( event );
       } else {
-        mChanger->changeIncidence( oldEvent, mEvent );
+        rc = mChanger->changeIncidence( oldEvent, mEvent );
       }
     }
     delete event;
@@ -333,13 +333,16 @@ bool KOEventEditor::processInput()
     mEvent = new Event;
     mEvent->setOrganizer( Person( KOPrefs::instance()->fullName(),
                           KOPrefs::instance()->email() ) );
+
     fillEvent( mEvent );
+
     if ( !mChanger->addIncidence( mEvent, this ) ) {
       delete mEvent;
       mEvent = 0;
       return false;
     }
   }
+
   // if "this" was deleted, freeBusy is 0 (being a guardedptr)
   if ( freeBusy ) {
     freeBusy->cancelReload();

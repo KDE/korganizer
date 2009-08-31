@@ -253,17 +253,16 @@ bool KOTodoEditor::processInput()
     if( *mTodo == *todo ) {
       // Don't do anything
     } else {
-      //IncidenceChanger::assignIncidence( mTodo, todo );
       fillTodo( mTodo );
-      mChanger->changeIncidence( oldTodo, mTodo );
+      rc = mChanger->changeIncidence( oldTodo, mTodo );
     }
     delete todo;
     delete oldTodo;
     return rc;
-
   } else {
     mTodo = new Todo;
-    mTodo->setOrganizer( Person( KOPrefs::instance()->fullName(), KOPrefs::instance()->email() ) );
+    mTodo->setOrganizer( Person( KOPrefs::instance()->fullName(),
+                                 KOPrefs::instance()->email() ) );
 
     fillTodo( mTodo );
 

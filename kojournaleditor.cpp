@@ -150,12 +150,11 @@ bool KOJournalEditor::processInput()
       // Don't do anything
     } else {
       fillJournal( mJournal );
-      mChanger->changeIncidence( oldJournal, mJournal );
+      rc = mChanger->changeIncidence( oldJournal, mJournal );
     }
     delete journal;
     delete oldJournal;
     return rc;
-
   } else {
     mJournal = new Journal;
     mJournal->setOrganizer( Person( KOPrefs::instance()->fullName(),
