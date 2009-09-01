@@ -32,6 +32,7 @@
 #include "korganizer/baseview.h"
 
 #include <KCal/CalendarLocal>
+#include <KCal/IncidenceFormatter>
 
 #include <KLocale>
 #include <KMessageBox>
@@ -101,7 +102,8 @@ void KOJournalEditor::editIncidence( Incidence *incidence, Calendar *calendar )
   }
 
   setCaption( i18nc( "@title:window",
-                     "Edit Journal: %1", KOHelper::resourceLabel( calendar, incidence ) ) );
+                     "Edit Journal: %1",
+                     IncidenceFormatter::resourceString( calendar, incidence ) ) );
 
 }
 
@@ -151,13 +153,12 @@ bool KOJournalEditor::processInput()
     } else {
       mJournal->startUpdates(); //merge multiple mJournal->updated() calls into one
       fillJournal( mJournal );
-      mChanger->changeIncidence( oldJournal, mJournal );
+      rc = mChanger->changeIncidence( oldJournal, mJournal );
       mJournal->endUpdates();
     }
     delete journal;
     delete oldJournal;
     return rc;
-
   } else {
     mJournal = new Journal;
     mJournal->setOrganizer( Person( KOPrefs::instance()->fullName(),

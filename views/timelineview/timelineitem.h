@@ -30,6 +30,7 @@ class KDGanttView;
 class KDCanvasPolygon;
 
 namespace KCal {
+  class Calendar;
   class Incidence;
 }
 using namespace KCal;
@@ -41,7 +42,7 @@ class TimelineSubItem;
 class TimelineItem : public KDGanttViewTaskItem
 {
   public:
-    TimelineItem( const QString &label, KDGanttView *parent );
+    TimelineItem( const QString &label, KCal::Calendar *calendar, KDGanttView *parent );
 
     void insertIncidence( KCal::Incidence *incidence,
                           const KDateTime &start = KDateTime(),
@@ -51,13 +52,14 @@ class TimelineItem : public KDGanttViewTaskItem
     void moveItems( KCal::Incidence *incidence, int delta, int duration );
 
   private:
+    KCal::Calendar *mCalendar;
     QMap<KCal::Incidence*, QList<TimelineSubItem*> > mItemMap;
 };
 
 class TimelineSubItem : public KDGanttViewTaskItem
 {
   public:
-    TimelineSubItem( KCal::Incidence *incidence, TimelineItem *parent );
+    TimelineSubItem( KCal::Calendar *calendar, KCal::Incidence *incidence, TimelineItem *parent );
     ~TimelineSubItem();
 
     KCal::Incidence *incidence() const { return mIncidence; }

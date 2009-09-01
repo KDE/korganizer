@@ -51,34 +51,3 @@ QColor KOHelper::resourceColor( KCal::Calendar *calendar,
   }
   return resourceColor;
 }
-
-QString KOHelper::resourceLabel( KCal::Calendar *calendar, KCal::Incidence *incidence )
-{
-  KCal::AkonadiCalendar *calendarResource = dynamic_cast<KCal::AkonadiCalendar*>( calendar );
-  if ( !calendarResource || ! incidence ) {
-    return QString();
-  }
-#if 0 //sebsauer
-  KCal::ResourceCalendar *resourceCalendar = calendarResource->resource( incidence );
-  if ( resourceCalendar ) {
-    if ( !resourceCalendar->subresources().isEmpty() ) {
-      QString subRes = resourceCalendar->subresourceIdentifier( incidence );
-      if ( subRes.isEmpty() ) {
-        return resourceCalendar->resourceName();
-      } else {
-        return resourceCalendar->labelForSubresource( subRes );
-      }
-    }
-    return resourceCalendar->resourceName();
-  }
-  return QString();
-#else
-  QString label = incidence->uid();
-  if(! incidence->type().isEmpty())
-    label += QString(" (%1)").arg( incidence->type().constData() );
-  if(! incidence->summary().isEmpty())
-    label += QString(": %1").arg( incidence->summary() );
-  return label;
-#endif
-}
-

@@ -36,6 +36,7 @@
 #include "incidencechanger.h"
 
 #include <kcal/calendarlocal.h>
+#include <KCal/IncidenceFormatter>
 
 #include <kiconloader.h>
 #include <klocale.h>
@@ -204,7 +205,8 @@ void KOTodoEditor::editIncidence( Incidence *incidence, Calendar *calendar )
   }
 
   setCaption( i18nc( "@title:window",
-                     "Edit To-do: %1", KOHelper::resourceLabel( calendar, incidence ) ) );
+                     "Edit To-do: %1",
+                     IncidenceFormatter::resourceString( calendar, incidence ) ) );
 }
 
 void KOTodoEditor::newTodo()
@@ -252,18 +254,17 @@ bool KOTodoEditor::processInput()
       // Don't do anything cause no changes where done
     } else {
       mTodo->startUpdates(); //merge multiple mTodo->updated() calls into one
-      //IncidenceChanger::assignIncidence( mTodo, todo );
       fillTodo( mTodo );
-      mChanger->changeIncidence( oldTodo, mTodo );
+      rc = mChanger->changeIncidence( oldTodo, mTodo );
       mTodo->endUpdates();
     }
     delete todo;
     delete oldTodo;
     return rc;
-
   } else {
     mTodo = new Todo;
-    mTodo->setOrganizer( Person( KOPrefs::instance()->fullName(), KOPrefs::instance()->email() ) );
+    mTodo->setOrganizer( Person( KOPrefs::instance()->fullName(),
+                                 KOPrefs::instance()->email() ) );
 
     fillTodo( mTodo );
 

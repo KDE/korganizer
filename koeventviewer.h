@@ -26,14 +26,14 @@
 #define KOEVENTVIEWER_H
 
 #include "korganizer_export.h"
-#include <ktextbrowser.h>
+#include <KTextBrowser>
 
 class KConfig;
 class QUrl;
 
 namespace KCal {
+  class Calendar;
   class Incidence;
-  class Event;
 }
 using namespace KCal;
 
@@ -44,13 +44,18 @@ class KORGANIZER_EVENTVIEWER_EXPORT KOEventViewer : public KTextBrowser
 {
   Q_OBJECT
   public:
-    KOEventViewer( QWidget *parent = 0 );
+    explicit KOEventViewer( Calendar *calendar, QWidget *parent = 0 );
     virtual ~KOEventViewer();
 
     /** Reimplemented from QTextBrowser to handle links. */
     void setSource( const QUrl &name );
 
     virtual bool appendIncidence( Incidence * );
+
+    /**
+      Set the Calendar associated with this viewer.
+    */
+    void setCalendar ( Calendar *calendar );
 
     /**
       Clear viewer.
@@ -87,6 +92,7 @@ class KORGANIZER_EVENTVIEWER_EXPORT KOEventViewer : public KTextBrowser
     virtual void showIncidenceContext();
 
   private:
+    Calendar *mCalendar;
     Incidence *mIncidence;
     QString mDefaultText;
     QString mText;

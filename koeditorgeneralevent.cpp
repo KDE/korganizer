@@ -646,7 +646,8 @@ bool KOEditorGeneralEvent::validateInput()
   }
 
   KDateTime now = KDateTime::currentDateTime( mTimeZoneComboStart->selectedTimeSpec() );
-  if ( startDt < now ) {
+  if ( ( startDt < now && mHasTimeCheckbox->isChecked() ) ||
+       ( startDt.date() < now.date() && ! mHasTimeCheckbox->isChecked() ) ) {
     if ( KMessageBox::warningContinueCancel(
            mParent,
            i18nc( "@info",
@@ -661,7 +662,8 @@ bool KOEditorGeneralEvent::validateInput()
   }
 
   now.setTimeSpec( mTimeZoneComboEnd->selectedTimeSpec() );
-  if ( endDt < now ) {
+  if ( ( endDt < now && mHasTimeCheckbox->isChecked() ) ||
+       ( endDt.date() < now.date() && ! mHasTimeCheckbox->isChecked() ) ) {
     if ( KMessageBox::warningContinueCancel(
            mParent,
            i18nc( "@info",

@@ -52,12 +52,6 @@ namespace KOHelper
   */
   KORGANIZER_CORE_EXPORT QColor resourceColor( KCal::Calendar *calendar,
                                                KCal::Incidence *incidence );
-
-  /**
-    Returns the resource label the given incidence belongs to.
-  */
-  KORGANIZER_CORE_EXPORT QString resourceLabel( KCal::Calendar *calendar,
-                                                KCal::Incidence *incidence );
 }
 
 #endif

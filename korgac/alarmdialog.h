@@ -30,6 +30,7 @@
 #include <QTimer>
 
 namespace KCal {
+  class Calendar;
   class Incidence;
 }
 
@@ -48,7 +49,7 @@ class AlarmDialog : public KDialog
 {
   Q_OBJECT
   public:
-    AlarmDialog( QWidget *parent = 0 );
+    explicit AlarmDialog( KCal::Calendar *calendar, QWidget *parent = 0 );
     virtual ~AlarmDialog();
 
     void addIncidence( KCal::Incidence *incidence, const QDateTime &reminderAt,
@@ -87,6 +88,7 @@ class AlarmDialog : public KDialog
     void updateButtons();
     void showDetails();
 
+    KCal::Calendar *mCalendar;
     QVBoxLayout *mTopLayout;
     QTreeWidget *mIncidenceTree;
     KOEventViewer *mDetailView;

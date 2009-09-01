@@ -81,7 +81,7 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
     const QString uid = incGroup.readEntry( "UID" );
     const QDateTime dt = incGroup.readEntry( "RemindAt", QDateTime() );
     if ( !uid.isEmpty() ) {
-      createReminder( mCalendar->incidence( uid ), dt, QString() );
+      createReminder( mCalendar, mCalendar->incidence( uid ), dt, QString() );
     }
   }
   if ( numReminders ) {
@@ -120,11 +120,12 @@ void KOAlarmClient::checkAlarms()
   for ( it = alarms.constBegin(); it != alarms.constEnd(); ++it ) {
     kDebug(5891) << "REMINDER:" << (*it)->parent()->summary();
     Incidence *incidence = mCalendar->incidence( (*it)->parent()->uid() );
-    createReminder( incidence, from, (*it)->text() );
+    createReminder( mCalendar, incidence, from, (*it)->text() );
   }
 }
 
-void KOAlarmClient::createReminder( KCal::Incidence *incidence,
+void KOAlarmClient::createReminder( KCal::Calendar *calendar,
+                                    KCal::Incidence *incidence,
                                     const QDateTime &dt,
                                     const QString &displayText )
 {
@@ -133,7 +134,7 @@ void KOAlarmClient::createReminder( KCal::Incidence *incidence,
   }
 
   if ( !mDialog ) {
-    mDialog = new AlarmDialog();
+    mDialog = new AlarmDialog( calendar );
     connect( this, SIGNAL(saveAllSignal()), mDialog, SLOT(slotSave()) );
     if ( mDocker ) {
       connect( mDialog, SIGNAL(reminderCount(int)),
