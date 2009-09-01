@@ -353,7 +353,8 @@ class KCal::AkonadiCalendar::Private : public QObject
         kDebug();
         assertInvariants();
         Q_ASSERT( collection.isValid() );
-        Q_ASSERT( m_collectionMap.contains( collection.id() ) ); // we should only hear from monitored ones
+        if ( !m_collectionMap.contains( collection.id() ) ) // collection got deselected again in the meantime
+          return;
         foreach( const Akonadi::Item &item, items ) {
             Q_ASSERT( item.isValid() );
             if ( !item.hasPayload<KCal::Incidence::Ptr>() )
