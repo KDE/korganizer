@@ -442,8 +442,16 @@ void KOEditorGeneralEvent::readEvent( Event *event, bool isTemplate )
   setTimeEditorsEnabled( !event->allDay() );
 
   if ( !isTemplate ) {
-    // the rest is for the events only
-    setDateTimes( event->dtStart(), event->dtEnd() );
+    // Convert UTC to local timezone, if needed (i.e. for kolab #204059)
+    KDateTime startDT = event->dtStart();
+    KDateTime endDT = event->dtEnd();
+    if ( startDT.isUtc() ) {
+      startDT = startDT.toLocalZone();
+    }
+    if ( endDT.isUtc() ) {
+      endDT = endDT.toLocalZone();
+    }
+    setDateTimes( startDT, endDT );
   } else {
     // set the start/end time from the template, only as a last resort #190545
     if ( !event->dtStart().isValid() || !event->dtEnd().isValid() ) {
