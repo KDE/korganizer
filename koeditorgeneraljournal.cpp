@@ -143,9 +143,13 @@ void KOEditorGeneralJournal::readJournal( Journal *journal, bool tmpl )
 {
   setSummary( journal->summary() );
   if ( !tmpl ) {
-    setDate( journal->dtStart().date() );
+    KDateTime startDT = journal->dtStart();
+    if ( startDT.isUtc() ) {
+      startDT = startDT.toLocalZone();
+    }
+    setDate( startDT.date() );
     if ( !journal->allDay() ) {
-      setTime( journal->dtStart().time() );
+      setTime( startDT.time() );
     } else {
       setTime( QTime( -1, -1, -1 ) );
     }
