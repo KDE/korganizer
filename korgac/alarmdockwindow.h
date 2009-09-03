@@ -25,12 +25,10 @@
 #ifndef ALARMDOCKWINDOW_H
 #define ALARMDOCKWINDOW_H
 
-#include <knotificationitem.h>
+#include <KNotificationItem>
 
 #include <QAction>
 #include <QIcon>
-
-using namespace Experimental;
 
 class AlarmDockWindow : public KNotificationItem
 {

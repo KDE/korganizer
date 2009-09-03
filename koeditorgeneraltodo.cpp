@@ -277,11 +277,12 @@ void KOEditorGeneralTodo::readTodo( Todo *todo, bool tmpl )
 
   KOEditorGeneral::readIncidence( todo );
 
-  QDateTime dueDT;
-
   if ( todo->hasDueDate() ) {
     enableAlarm( true );
-    dueDT = todo->dtDue().dateTime();
+    KDateTime dueDT = todo->dtDue();
+    if ( dueDT.isUtc() ) {
+      dueDT = dueDT.toLocalZone();
+    }
     mDueDateEdit->setDate( dueDT.date() );
     mDueTimeEdit->setTime( dueDT.time() );
     mDueCheck->setChecked( true );
@@ -298,9 +299,12 @@ void KOEditorGeneralTodo::readTodo( Todo *todo, bool tmpl )
   }
 
   if ( todo->hasStartDate() ) {
-    QDateTime start = todo->dtStart().dateTime();
-    mStartDateEdit->setDate( start.date() );
-    mStartTimeEdit->setTime( start.time() );
+    KDateTime startDT = todo->dtStart();
+    if ( startDT.isUtc() ) {
+      startDT = startDT.toLocalZone();
+    }
+    mStartDateEdit->setDate( startDT.date() );
+    mStartTimeEdit->setTime( startDT.time() );
     mStartCheck->setChecked( true );
     mStartSpec = todo->dtStart().timeSpec();
     mTimeZoneComboStart->selectTimeSpec( todo->dtStart().timeSpec() );
@@ -436,11 +440,11 @@ void KOEditorGeneralTodo::enableStartEdit( bool enable )
   if( mDueCheck->isChecked() || mStartCheck->isChecked() ) {
     mTimeButton->setEnabled( true );
   } else {
-    mTimeButton->setEnabled(false);
-    mTimeButton->setChecked(false);
+    mTimeButton->setEnabled( false );
+    mTimeButton->setChecked( false );
   }
 
-  if (enable) {
+  if ( enable ) {
     mStartTimeEdit->setEnabled( mTimeButton->isChecked() );
     mTimeZoneComboStart->setEnabled( mTimeButton->isChecked() );
   } else {
