@@ -116,7 +116,7 @@ void KOTodoEditor::setupGeneral()
     mGeneral->initCompletion(topFrame2,completionLayout);
 
     mGeneral->initAlarm(topFrame,topLayout);
- 
+
     mGeneral->initSecrecy( topFrame2, topLayout2 );
     mGeneral->initDescription(topFrame2,topLayout2);
   } else {
@@ -201,7 +201,7 @@ void KOTodoEditor::loadDefaults()
 {
   kdDebug(5850) << k_funcinfo << endl;
   setDates( QDateTime::currentDateTime().addDays(7), true, 0 );
-  mGeneral->toggleAlarm( true );
+  mGeneral->toggleAlarm( KOPrefs::instance()->defaultTodoReminders() );
 }
 
 bool KOTodoEditor::processInput()
