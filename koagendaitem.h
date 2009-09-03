@@ -34,6 +34,7 @@ class QDragEnterEvent;
 class QDropEvent;
 
 namespace KCal {
+class Calendar;
 class Incidence;
 }
 using namespace KCal;
@@ -75,8 +76,8 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
 {
     Q_OBJECT
   public:
-    KOAgendaItem(Incidence *incidence, const QDate &qd, QWidget *parent, const char *name=0,
-                 WFlags f=0 );
+    KOAgendaItem( Calendar *calendar, Incidence *incidence, const QDate &qd,
+                  QWidget *parent, const char *name=0, WFlags f=0 );
 
     int cellXLeft() const { return mCellXLeft; }
     int cellXRight() const { return mCellXRight; }
@@ -176,6 +177,7 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     int mSubCell;  // subcell number of this item
     int mSubCells;  // Total number of subcells in cell of this item
 
+    Calendar *mCalendar;
     Incidence *mIncidence; // corresponding event or todo
     QDate mDate; //date this events occurs (for recurrence)
     QString mLabelText;

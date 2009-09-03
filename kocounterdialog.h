@@ -27,8 +27,7 @@
 #include <kdialogbase.h>
 
 namespace KCal {
-class Event;
-class Todo;
+class Calendar;
 }
 using namespace KCal;
 
@@ -41,7 +40,7 @@ class KOCounterDialog : public KDialogBase
 {
     Q_OBJECT
   public:
-    KOCounterDialog(QWidget *parent = 0, const char *name = 0 );
+    KOCounterDialog(Calendar *calendar, QWidget *parent = 0, const char *name = 0 );
     virtual ~KOCounterDialog();
 
     void setIncidence( Incidence *incidence );

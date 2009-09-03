@@ -26,13 +26,14 @@
 
 #include "urihandler.h"
 
+#include <libkcal/calendar.h>
 #include <libkcal/incidence.h>
 #include <libkcal/incidenceformatter.h>
 #include <kdebug.h>
 #include <koglobals.h>
 
-KOEventViewer::KOEventViewer( QWidget *parent, const char *name )
-  : QTextBrowser( parent, name ), mDefaultText("")
+KOEventViewer::KOEventViewer( Calendar *calendar, QWidget *parent, const char *name )
+  : QTextBrowser( parent, name ), mCalendar( calendar ), mDefaultText("")
 {
   mIncidence = 0;
 }
@@ -50,7 +51,7 @@ void KOEventViewer::readSettings( KConfig * config )
     config->setGroup( QString("EventViewer-%1").arg( name() )  );
     int zoomFactor = config->readNumEntry("ZoomFactor", pointSize() );
     zoomTo( zoomFactor/2 );
-    kdDebug(5850) << " KOEventViewer: restoring the pointSize:  "<< pointSize() 
+    kdDebug(5850) << " KOEventViewer: restoring the pointSize:  "<< pointSize()
       << ", zoomFactor: " << zoomFactor << endl;
 #endif
   }
@@ -72,8 +73,13 @@ void KOEventViewer::setSource( const QString &n )
 
 bool KOEventViewer::appendIncidence( Incidence *incidence )
 {
-  addText( IncidenceFormatter::extensiveDisplayString( incidence ) );
+  addText( IncidenceFormatter::extensiveDisplayStr( mCalendar, incidence ) );
   return true;
+}
+
+void KOEventViewer::setCalendar( Calendar *calendar )
+{
+  mCalendar = calendar;
 }
 
 void KOEventViewer::setIncidence( Incidence *incidence )
@@ -116,7 +122,7 @@ void KOEventViewer::changeIncidenceDisplay( Incidence *incidence, int action )
       case KOGlobals::INCIDENCEDELETED: {
         setIncidence( 0 );
         break;
-      } 
+      }
     }
   }
 }

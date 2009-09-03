@@ -851,8 +851,9 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
   // functionality will also be available in other views!
   // TODO_Recurrence: This does not belong here, and I'm not really sure
   // how it's supposed to work anyway.
-  Recurrence *recur = incidence->recurrence();
-/*  if ( recur->doesRecur() && daysOffset != 0 ) {
+/*
+    Recurrence *recur = incidence->recurrence();
+    if ( recur->doesRecur() && daysOffset != 0 ) {
     switch ( recur->recurrenceType() ) {
       case Recurrence::rYearlyPos: {
         int freq = recur->frequency();
@@ -1006,7 +1007,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
   item->setItemDate( startDt.date() );
 
   KOIncidenceToolTip::remove( item );
-  KOIncidenceToolTip::add( item, incidence, KOAgendaItem::toolTipGroup() );
+  KOIncidenceToolTip::add( item, calendar(), incidence, KOAgendaItem::toolTipGroup() );
 
   const bool result = mChanger->changeIncidence( oldIncidence, incidence );
   mChanger->endChange(incidence);
@@ -1156,8 +1157,8 @@ void KOAgendaView::changeIncidenceDisplayAdded( Incidence *incidence )
 {
   Todo *todo = dynamic_cast<Todo *>(incidence);
   CalFilter *filter = calendar()->filter();
-  if ( filter && !filter->filterIncidence( incidence ) ||
-     ( todo && !KOPrefs::instance()->showAllDayTodo() ) )
+  if ( ( filter && !filter->filterIncidence( incidence ) ) ||
+       ( todo && !KOPrefs::instance()->showAllDayTodo() ) )
     return;
 
   QDate f = mSelectedDates.first();

@@ -29,10 +29,8 @@
 
 #include <kconfig.h>
 namespace KCal {
+class Calendar;
 class Incidence;
-class Todo;
-class Event;
-class Journal;
 }
 using namespace KCal;
 
@@ -43,16 +41,21 @@ class KDE_EXPORT KOEventViewer : public QTextBrowser
 {
     Q_OBJECT
   public:
-    KOEventViewer( QWidget *parent = 0, const char *name = 0 );
+    explicit KOEventViewer( Calendar *calendar, QWidget *parent = 0, const char *name = 0 );
     virtual ~KOEventViewer();
 
     /**
       Reimplemented from QTextBrowser to handle links.
     */
     void setSource( const QString & );
-    
+
     virtual bool appendIncidence( Incidence * );
-    
+
+    /**
+      Set the Calendar associated with this viewer.
+    */
+    void setCalendar ( Calendar *calendar );
+
     /**
       Clear viewer. If \a now is set to true delete view immediately. If set to
       false delete it with next call to appendIncidence().
@@ -61,26 +64,28 @@ class KDE_EXPORT KOEventViewer : public QTextBrowser
 
     /**
       Add given text to currently shown content.
-    */    
-  
+    */
+
     void addText( const QString &text );
-   
+
     /**
-      Set the default text that is showed when 
+      Set the default text that is showed when
       there aren't a incidence to show
     */
     void setDefaultText( const QString &text );
-    
+
     void readSettings( KConfig *config);
     void writeSettings ( KConfig *config);
-    
+
   public slots:
     /**
       Show given incidence in viewer. Clear all previously shown incidences.
     */
     virtual void setIncidence( Incidence * );
     void changeIncidenceDisplay( Incidence *incidence, int action );
+
   private:
+    Calendar *mCalendar;
     Incidence *mIncidence;
     QTextBrowser *mEventTextView;
     QString mDefaultText;

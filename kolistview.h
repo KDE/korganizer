@@ -43,12 +43,13 @@ class KOListView;
 class KOListViewToolTip : public QToolTip
 {
   public:
-    KOListViewToolTip (QWidget* parent, KListView* lv );
+    KOListViewToolTip (QWidget* parent, Calendar *calendar, KListView* lv );
 
   protected:
     void maybeTip( const QPoint & pos);
 
   private:
+    Calendar *mCalendar;
     KListView* eventlist;
 };
 

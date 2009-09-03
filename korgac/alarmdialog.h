@@ -44,7 +44,7 @@ class AlarmListItem;
 class AlarmDialog : public KDialogBase {
     Q_OBJECT
   public:
-    AlarmDialog( QWidget *parent = 0, const char *name = 0 );
+    explicit AlarmDialog( Calendar *calendar, QWidget *parent = 0, const char *name = 0 );
     virtual ~AlarmDialog();
 
     void addIncidence( Incidence *incidence, const QDateTime &reminderAt );
@@ -77,6 +77,7 @@ class AlarmDialog : public KDialogBase {
     int activeCount();
     QValueList<AlarmListItem*> selectedItems() const;
 
+    Calendar *mCalendar;
     KListView *mIncidenceListView;
     KOEventViewer *mDetailView;
 

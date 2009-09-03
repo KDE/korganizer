@@ -120,7 +120,7 @@ void KOTimelineView::showDates(const QDate& start, const QDate& end)
   TimelineItem *item = 0;
   CalendarResources *calres = dynamic_cast<CalendarResources*>( calendar() );
   if ( !calres ) {
-    item = new TimelineItem( i18n("Calendar"), mGantt );
+    item = new TimelineItem( i18n("Calendar"), calendar(), mGantt );
     mCalendarItemMap[0][QString()] = item;
   } else {
     CalendarResourceManager *manager = calres->resourceManager();
@@ -132,7 +132,7 @@ void KOTimelineView::showDates(const QDate& start, const QDate& end)
           QString type = (*it)->subresourceType( *subit );
           if ( !(*it)->subresourceActive( *subit ) || (!type.isEmpty() && type != "event") )
             continue;
-          item = new TimelineItem( (*it)->labelForSubresource( *subit ), mGantt );
+          item = new TimelineItem( (*it)->labelForSubresource( *subit ), calendar(), mGantt );
           resourceColor = *KOPrefs::instance()->resourceColor( (*it)->identifier() );
           QColor subrescol = *KOPrefs::instance()->resourceColor( *subit );
           if ( subrescol.isValid() )
@@ -142,7 +142,7 @@ void KOTimelineView::showDates(const QDate& start, const QDate& end)
           mCalendarItemMap[*it][*subit] = item;
         }
       } else {
-        item = new TimelineItem( (*it)->resourceName(), mGantt );
+        item = new TimelineItem( (*it)->resourceName(), calendar(), mGantt );
         if ( resourceColor.isValid() )
           item->setColors( resourceColor, resourceColor, resourceColor );
         mCalendarItemMap[*it][QString()] = item;

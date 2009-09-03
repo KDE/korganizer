@@ -47,8 +47,9 @@
 
 
 KOListViewToolTip::KOListViewToolTip( QWidget* parent,
+                                      Calendar *calendar,
                                       KListView* lv )
-  :QToolTip(parent)
+  :QToolTip(parent), mCalendar( calendar )
 {
   eventlist=lv;
 }
@@ -63,7 +64,7 @@ void KOListViewToolTip::maybeTip( const QPoint & pos)
     /* Calculate the rectangle. */
     r=eventlist->itemRect( it );
     /* Show the tip */
-    QString tipText( IncidenceFormatter::toolTipString( i->data() ) );
+    QString tipText( IncidenceFormatter::toolTipStr( mCalendar, i->data() ) );
     if ( !tipText.isEmpty() ) {
       tip(r, tipText);
     }
@@ -241,7 +242,7 @@ KOListView::KOListView( Calendar *calendar, QWidget *parent,
 //  setMinimumSize(100,100);
   mListView->restoreLayout(KOGlobals::self()->config(),"KOListView Layout");
 
-  new KOListViewToolTip( mListView->viewport(), mListView );
+  new KOListViewToolTip( mListView->viewport(), calendar, mListView );
 
   mSelectedDates.append( QDate::currentDate() );
 }

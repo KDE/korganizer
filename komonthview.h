@@ -36,12 +36,13 @@ class KNoScrollListBox;
 class KOMonthCellToolTip : public QToolTip
 {
   public:
-    KOMonthCellToolTip (QWidget* parent, KNoScrollListBox* lv );
+    KOMonthCellToolTip (QWidget* parent, Calendar *calendar, KNoScrollListBox* lv );
 
   protected:
     void maybeTip( const QPoint & pos);
 
   private:
+    Calendar *mCalendar;
     KNoScrollListBox* eventlist;
 };
 
@@ -185,7 +186,8 @@ class MonthViewCell : public QWidget
 
     void deselect();
 
-    void setCalendar( Calendar*cal ) { mCalendar = cal; }
+    void setCalendar( Calendar *cal ) { mCalendar = cal; }
+
   signals:
     void defaultAction( Incidence * );
     /**

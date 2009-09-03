@@ -76,13 +76,13 @@ class AlarmListItem : public KListViewItem
 
 typedef QValueList<AlarmListItem*> ItemList;
 
-AlarmDialog::AlarmDialog( QWidget *parent, const char *name )
+AlarmDialog::AlarmDialog( KCal::Calendar *calendar, QWidget *parent, const char *name )
   : KDialogBase( Plain, WType_TopLevel | WStyle_Customize | WStyle_StaysOnTop |
                  WStyle_DialogBorder,
                  parent, name, false, i18n("Reminder"),
                  Ok | User1 | User2 | User3, User3,
                  false, i18n("Edit..."), i18n("Dismiss All"), i18n("Dismiss Reminder") ),
-                 mSuspendTimer(this)
+                 mCalendar( calendar ), mSuspendTimer(this)
 {
   // User1 => Edit...
   // User2 => Dismiss All
@@ -111,7 +111,7 @@ AlarmDialog::AlarmDialog( QWidget *parent, const char *name )
   connect( mIncidenceListView, SIGNAL(currentChanged(QListViewItem*)), SLOT(showDetails()) );
   connect( mIncidenceListView, SIGNAL(selectionChanged()), SLOT(showDetails()) );
 
-  mDetailView = new KOEventViewer( topBox );
+  mDetailView = new KOEventViewer( mCalendar, topBox );
   topLayout->addWidget( mDetailView );
 
   QHBox *suspendBox = new QHBox( topBox );

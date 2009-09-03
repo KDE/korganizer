@@ -62,13 +62,14 @@
 //--------------------------------------------------------------------------
 
 KOMonthCellToolTip::KOMonthCellToolTip( QWidget *parent,
+                                        Calendar *calendar,
                                         KNoScrollListBox *lv )
-  : QToolTip( parent )
+  : QToolTip( parent ), mCalendar( calendar )
 {
   eventlist = lv;
 }
 
-void KOMonthCellToolTip::maybeTip( const QPoint & pos )
+void KOMonthCellToolTip::maybeTip( const QPoint &pos )
 {
   QRect r;
   QListBoxItem *it = eventlist->itemAt( pos );
@@ -78,7 +79,7 @@ void KOMonthCellToolTip::maybeTip( const QPoint & pos )
     /* Calculate the rectangle. */
     r=eventlist->itemRect( it );
     /* Show the tip */
-    QString tipText( IncidenceFormatter::toolTipString( i->incidence() ) );
+    QString tipText( IncidenceFormatter::toolTipStr( mCalendar, i->incidence() ) );
     if ( !tipText.isEmpty() ) {
       tip( r, tipText );
     }
@@ -380,6 +381,7 @@ MonthViewCell::MonthViewCell( KOMonthView *parent)
   mItemList->setLineWidth( 1 );
 
   new KOMonthCellToolTip( mItemList->viewport(),
+                          mCalendar,
                           static_cast<KNoScrollListBox *>( mItemList ) );
 
   topLayout->addWidget( mItemList );

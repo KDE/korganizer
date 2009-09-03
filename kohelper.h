@@ -42,12 +42,6 @@ class KDE_EXPORT KOHelper
       to a subresource, the color for the subresource is returned (if set).
     */
     static QColor resourceColor( KCal::Calendar*calendar, KCal::Incidence*incidence );
-
-    /**
-      Returns the resource label the given incidence belongs to.
-    */
-    static QString resourceLabel( KCal::Calendar *calendar, KCal::Incidence *incidence );
-
 };
 
 #endif

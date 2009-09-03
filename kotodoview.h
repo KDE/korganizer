@@ -58,12 +58,13 @@ using namespace KOrg;
 class KOTodoListViewToolTip : public QToolTip
 {
   public:
-    KOTodoListViewToolTip( QWidget *parent, KOTodoListView *lv );
+    KOTodoListViewToolTip( QWidget *parent, Calendar *calendar, KOTodoListView *lv );
 
   protected:
     void maybeTip( const QPoint &pos );
 
   private:
+    Calendar *mCalendar;
     KOTodoListView *todolist;
 };
 

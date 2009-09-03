@@ -152,7 +152,7 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
   mLeftSplitter->setCollapsible( mDateNavigator, true );
   mTodoList = new KOTodoView( CalendarNull::self(), mLeftSplitter, "todolist" );
 
-  mEventViewer = new KOEventViewer( mLeftSplitter,"EventViewer" );
+  mEventViewer = new KOEventViewer( CalendarNull::self(), mLeftSplitter,"EventViewer" );
 
   QVBox *rightBox = new QVBox( mPanner );
   mNavigatorBar = new NavigatorBar( rightBox );
@@ -179,7 +179,7 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
                                        QDate::currentDate() );
   mTodoList = new KOTodoView( CalendarNull::self(), leftFrame, "todolist" );
 
-  mEventViewer = new KOEventViewer ( leftFrame, "EventViewer" );
+  mEventViewer = new KOEventViewer ( CalendarNull::self(), leftFrame, "EventViewer" );
 
   QWidget *rightBox = new QWidget( mainBox );
   QBoxLayout *rightLayout = new QVBoxLayout( rightBox );
@@ -316,6 +316,8 @@ void CalendarView::setCalendar( Calendar *cal )
   mDateNavigator->setCalendar( mCalendar );
 
   mTodoList->setCalendar( mCalendar );
+
+  mEventViewer->setCalendar( mCalendar );
 }
 
 void CalendarView::setIncidenceChanger( IncidenceChangerBase *changer )
@@ -1913,7 +1915,7 @@ void CalendarView::pasteIncidence()
 
 void CalendarView::showIncidence( Incidence *incidence )
 {
-  KOEventViewerDialog *eventViewer = new KOEventViewerDialog( this );
+  KOEventViewerDialog *eventViewer = new KOEventViewerDialog( calendar(), this );
   eventViewer->setIncidence( incidence );
   eventViewer->show();
 }

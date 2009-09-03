@@ -63,9 +63,10 @@ using namespace KOrg;
 #include "calprinter.h"
 #endif
 
-KOTodoListViewToolTip::KOTodoListViewToolTip (QWidget* parent,
-                                              KOTodoListView* lv )
-  :QToolTip(parent)
+KOTodoListViewToolTip::KOTodoListViewToolTip (QWidget *parent,
+                                              Calendar *calendar,
+                                              KOTodoListView *lv )
+  :QToolTip(parent), mCalendar( calendar )
 {
   todolist=lv;
 }
@@ -88,7 +89,7 @@ void KOTodoListViewToolTip::maybeTip( const QPoint & pos)
     r.setRight(headerPos + todolist->header()->sectionSize(col));
 
     /* Show the tip */
-    QString tipText( IncidenceFormatter::toolTipString( i->todo() ) );;
+    QString tipText( IncidenceFormatter::toolTipStr( mCalendar, i->todo() ) );;
     if ( !tipText.isEmpty() ) {
       tip(r, tipText);
     }
@@ -105,7 +106,7 @@ KOTodoListView::KOTodoListView( QWidget *parent, const char *name )
   mMousePressed = false;
 
   /* Create a Tooltip */
-  tooltip = new KOTodoListViewToolTip( viewport(), this );
+  tooltip = new KOTodoListViewToolTip( viewport(), mCalendar, this );
 }
 
 KOTodoListView::~KOTodoListView()

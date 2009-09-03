@@ -63,9 +63,10 @@ QPixmap *KOAgendaItem::organizerPxmp = 0;
 
 //--------------------------------------------------------------------------
 
-KOAgendaItem::KOAgendaItem( Incidence *incidence, const QDate &qd, QWidget *parent,
+KOAgendaItem::KOAgendaItem( Calendar *calendar, Incidence *incidence,
+                            const QDate &qd, QWidget *parent,
                             const char *name, WFlags f ) :
-  QWidget( parent, name, f ), mIncidence( incidence ), mDate( qd ),
+  QWidget( parent, name, f ), mCalendar( calendar ), mIncidence( incidence ), mDate( qd ),
   mLabelText( mIncidence->summary() ), mIconAlarm( false ),
   mIconRecur( false ), mIconReadonly( false ), mIconReply( false ),
   mIconGroup( false ), mIconGroupTentative( false ), mIconOrganizer( false ),
@@ -83,7 +84,7 @@ KOAgendaItem::KOAgendaItem( Incidence *incidence, const QDate &qd, QWidget *pare
   mSelected = true;
   select( false );
 
-  KOIncidenceToolTip::add( this, incidence, toolTipGroup() );
+  KOIncidenceToolTip::add( this, mCalendar, incidence, toolTipGroup() );
   setAcceptDrops( true );
 }
 

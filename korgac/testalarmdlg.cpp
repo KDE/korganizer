@@ -59,7 +59,7 @@ int main(int argc,char **argv)
   e2->setDtEnd( now.addDays( 1 ) );
   e2->newAlarm();
 
-  AlarmDialog dlg;
+  AlarmDialog dlg( 0 );
   app.setMainWidget( &dlg );
   dlg.addIncidence( e1, QDateTime::currentDateTime() );
   dlg.addIncidence( t1, QDateTime::currentDateTime() );

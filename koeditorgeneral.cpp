@@ -54,6 +54,7 @@
 
 #include <libkcal/todo.h>
 #include <libkcal/event.h>
+#include <libkcal/incidenceformatter.h>
 
 #include <libkdepim/kdateedit.h>
 #include <libkdepim/categoryselectdialog.h>
@@ -428,7 +429,7 @@ void KOEditorGeneral::readIncidence(Incidence *event, Calendar *calendar)
 
   mAttachments->readIncidence( event );
 
-  QString resLabel = KOHelper::resourceLabel( calendar, event );
+  QString resLabel = IncidenceFormatter::resourceString( calendar, event );
   if ( !resLabel.isEmpty() ) {
     mResourceLabel->setText( i18n( "Calendar: %1" ).arg( resLabel ) );
     mResourceLabel->show();
