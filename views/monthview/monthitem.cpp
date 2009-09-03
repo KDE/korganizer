@@ -530,7 +530,7 @@ QString IncidenceMonthItem::text( bool end ) const
 
 QString IncidenceMonthItem::toolTipText() const
 {
-  return IncidenceFormatter::toolTipString( mIncidence );
+  return IncidenceFormatter::toolTipStr( monthScene()->calendar(), mIncidence );
 }
 
 QList<QPixmap *> IncidenceMonthItem::icons() const

@@ -61,10 +61,6 @@ class KORGANIZERPRIVATE_EXPORT KOHelper
     */
     static KDateTime toTimeSpec( const KDateTime &dt, KCal::Calendar *calendar = 0 );
 
-    /**
-      Returns the resource label the given incidence belongs to.
-    */
-    static QString resourceLabel( KCal::Calendar *calendar, KCal::Incidence *incidence );
 };
 
 #endif

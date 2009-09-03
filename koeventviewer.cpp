@@ -30,6 +30,7 @@
 
 #include <libkdepim/kdepimprotocols.h>
 
+#include <kcal/calendar.h>
 #include <kcal/incidence.h>
 #include <kcal/incidenceformatter.h>
 
@@ -37,11 +38,12 @@
 #include <kdebug.h>
 #include <ktoolinvocation.h>
 #include <kconfiggroup.h>
+#include <ksystemtimezone.h>
 
 #include <QRegExp>
 
-KOEventViewer::KOEventViewer( QWidget *parent )
-  : KTextBrowser( parent ), mDefaultText( "" )
+KOEventViewer::KOEventViewer( Calendar *calendar, QWidget *parent )
+  : KTextBrowser( parent ), mCalendar( calendar ), mDefaultText( "" )
 {
   mIncidence = 0;
   setNotifyClick( true );
@@ -95,9 +97,14 @@ void KOEventViewer::setSource( const QUrl &name )
 
 bool KOEventViewer::appendIncidence( Incidence *incidence )
 {
-  QString codeForIncidence = IncidenceFormatter::extensiveDisplayString( incidence );
-  addText( codeForIncidence );
+  addText( IncidenceFormatter::extensiveDisplayStr(
+             mCalendar, incidence, KSystemTimeZones::local() ) );
   return true;
+}
+
+void KOEventViewer::setCalendar( Calendar *calendar )
+{
+  mCalendar = calendar;
 }
 
 void KOEventViewer::setIncidence( Incidence *incidence )

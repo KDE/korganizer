@@ -34,6 +34,7 @@
 
 #include <kcal/journal.h>
 #include <kcal/calendarlocal.h>
+#include <KCal/IncidenceFormatter>
 
 #include <kmessagebox.h>
 #include <klocale.h>
@@ -96,7 +97,7 @@ void KOJournalEditor::setupGeneral()
   mGeneral->finishSetup();
 }
 
-void KOJournalEditor::editIncidence( Incidence *incidence, Calendar * )
+void KOJournalEditor::editIncidence( Incidence *incidence, Calendar *calendar )
 {
   Journal *journal=dynamic_cast<Journal*>( incidence );
   if ( journal ) {
@@ -105,6 +106,10 @@ void KOJournalEditor::editIncidence( Incidence *incidence, Calendar * )
     mJournal = journal;
     readJournal( mJournal );
   }
+
+  setCaption( i18nc( "@title:window",
+                     "Edit Journal: %1",
+                     IncidenceFormatter::resourceString( calendar, incidence ) ) );
 }
 
 void KOJournalEditor::newJournal()

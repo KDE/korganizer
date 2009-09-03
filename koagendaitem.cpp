@@ -77,8 +77,9 @@ QPixmap *KOAgendaItem::completedPxmp = 0;
 
 //-----------------------------------------------------------------------------
 
-KOAgendaItem::KOAgendaItem( Incidence *incidence, const QDate &qd, QWidget *parent )
-  : QWidget( parent ), mIncidence( incidence ), mDate( qd ), mValid( true )
+KOAgendaItem::KOAgendaItem( Calendar *calendar, Incidence *incidence,
+                            const QDate &qd, QWidget *parent )
+  : QWidget( parent ), mCalendar( calendar ), mIncidence( incidence ), mDate( qd ), mValid( true )
 {
   if ( !mIncidence ) {
     mValid = false;
@@ -1336,9 +1337,12 @@ bool KOAgendaItem::event( QEvent *event )
       return true;
     } else {
       QHelpEvent *helpEvent = static_cast<QHelpEvent*>( event );
-      QToolTip::showText( helpEvent->globalPos(),
-                          IncidenceFormatter::toolTipStr( mIncidence, true /*richtext*/, KOPrefs::instance()->timeSpec() ),
-                          this );
+
+      QToolTip::showText(
+        helpEvent->globalPos(),
+        IncidenceFormatter::toolTipStr(
+          mCalendar, mIncidence, true, KOPrefs::instance()->timeSpec() ),
+        this );
     }
   }
   return QWidget::event( event );

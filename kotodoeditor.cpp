@@ -38,6 +38,7 @@
 #include <kcal/calendarlocal.h>
 #include <kcal/calendarresources.h>
 #include <kcal/resourcecalendar.h>
+#include <KCal/IncidenceFormatter>
 
 #include <kiconloader.h>
 #include <klocale.h>
@@ -180,7 +181,8 @@ void KOTodoEditor::editIncidence( Incidence *incidence, Calendar *calendar )
   }
 
   setCaption( i18nc( "@title:window",
-                     "Edit To-do : %1", KOHelper::resourceLabel( calendar, incidence ) ) );
+                     "Edit To-do: %1",
+                     IncidenceFormatter::resourceString( calendar, incidence ) ) );
 }
 
 void KOTodoEditor::newTodo()

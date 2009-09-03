@@ -228,7 +228,8 @@ void KOEventEditor::editIncidence( Incidence *incidence, Calendar *calendar )
   }
 
   setCaption( i18nc( "@title:window",
-                     "Edit Event : %1", KOHelper::resourceLabel( calendar, incidence ) ) );
+                     "Edit Event : %1",
+                     IncidenceFormatter::resourceString( calendar, incidence ) ) );
 }
 
 void KOEventEditor::newEvent()

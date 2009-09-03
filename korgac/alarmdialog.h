@@ -24,13 +24,15 @@
 #ifndef ALARMDIALOG_H
 #define ALARMDIALOG_H
 
-#include <kcal/incidence.h>
-
-#include <kdialog.h>
+#include <KDialog>
 
 #include <QTimer>
 #include <QDateTime>
 
+namespace KCal {
+  class Calendar;
+  class Incidence;
+}
 using namespace KCal;
 
 class ReminderListItem;
@@ -43,7 +45,7 @@ class AlarmDialog : public KDialog
 {
   Q_OBJECT
   public:
-    AlarmDialog( QWidget *parent = 0 );
+    explicit AlarmDialog( Calendar *calendar, QWidget *parent = 0 );
     virtual ~AlarmDialog();
 
     void addIncidence( Incidence *incidence, const QDateTime &reminderAt );
@@ -80,6 +82,7 @@ class AlarmDialog : public KDialog
     void updateButtons();
     void showDetails();
 
+    Calendar *mCalendar;
     QTreeWidget *mIncidenceTree;
     KOEventViewer *mDetailView;
 

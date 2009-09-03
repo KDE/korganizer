@@ -80,8 +80,9 @@ class ReminderListItem : public QTreeWidgetItem
 
 typedef QList<ReminderListItem *> ReminderList;
 
-AlarmDialog::AlarmDialog( QWidget *parent )
-  : KDialog( parent, Qt::WindowStaysOnTopHint ), mSuspendTimer( this )
+AlarmDialog::AlarmDialog( KCal::Calendar *calendar, QWidget *parent )
+  : KDialog( parent, Qt::WindowStaysOnTopHint ),
+    mCalendar( calendar ), mSuspendTimer( this )
 {
   // User1 => Edit...
   // User2 => Dismiss All
@@ -139,7 +140,7 @@ AlarmDialog::AlarmDialog( QWidget *parent )
   connect( mIncidenceTree, SIGNAL(itemSelectionChanged()),
            SLOT(update()) );
 
-  mDetailView = new KOEventViewer( topBox );
+  mDetailView = new KOEventViewer( mCalendar, topBox );
   QString s;
   s = i18nc( "@info default incidence details string",
              "<emphasis>Select an event or to-do from the list above "
@@ -212,7 +213,7 @@ void AlarmDialog::addIncidence( Incidence *incidence, const QDateTime &reminderA
   }
   item->setText( 2, triggerStr );
 
-  QString tip = IncidenceFormatter::toolTipStr( incidence, true,
+  QString tip = IncidenceFormatter::toolTipStr( mCalendar, incidence, true,
                                                 KDateTime::Spec::LocalZone() );
   item->setToolTip( 0, tip );
 

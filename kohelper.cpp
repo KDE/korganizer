@@ -81,27 +81,3 @@ KDateTime KOHelper::toTimeSpec( const KDateTime &dt, KCal::Calendar *calendar )
     return dt.toTimeSpec( KOPrefs::instance()->timeSpec() );
   }
 }
-
-QString KOHelper::resourceLabel( KCal::Calendar *calendar, KCal::Incidence *incidence )
-{
-  KCal::CalendarResources *calendarResource = dynamic_cast<KCal::CalendarResources*>( calendar );
-  if ( !calendarResource || ! incidence ) {
-    return QString();
-  }
-
-  KCal::ResourceCalendar *resourceCalendar = calendarResource->resource( incidence );
-  if ( resourceCalendar ) {
-    if ( !resourceCalendar->subresources().isEmpty() ) {
-      QString subRes = resourceCalendar->subresourceIdentifier( incidence );
-      if ( subRes.isEmpty() ) {
-        return resourceCalendar->resourceName();
-      } else {
-        return resourceCalendar->labelForSubresource( subRes );
-      }
-    }
-    return resourceCalendar->resourceName();
-  }
-
-  return QString();
-}
-

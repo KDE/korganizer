@@ -36,6 +36,7 @@ class AlarmDialog;
 class AlarmDockWindow;
 
 namespace KCal {
+  class Calendar;
   class CalendarResources;
   class Incidence;
 }
@@ -70,7 +71,7 @@ class KOAlarmClient : public QObject, public KSessionManager
     void saveAllSignal();
 
   private:
-    void createReminder( KCal::Incidence *incidence, const QDateTime &dt );
+    void createReminder( KCal::Calendar *calenar, KCal::Incidence *incidence, const QDateTime &dt );
     void saveLastCheckTime();
 
     AlarmDockWindow *mDocker;  // the panel icon
