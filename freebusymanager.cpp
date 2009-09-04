@@ -39,6 +39,8 @@
 
 #include "koprefs.h"
 #include "mailscheduler.h"
+#include "actionmanager.h"
+#include "korganizer.h"
 
 #include <libkcal/incidencebase.h>
 #include <libkcal/attendee.h>
@@ -74,6 +76,10 @@ FreeBusyDownloadJob::FreeBusyDownloadJob( const QString &email, const KURL &url,
   : QObject( manager, name ), mManager( manager ), mEmail( email )
 {
   KIO::TransferJob *job = KIO::get( url, false, false );
+  //pass the mainwindow to the job so any prompts are active
+  KOrg::MainWindow *korg = ActionManager::findInstance( KURL() );
+  job->setWindow( korg->topLevelWidget() );
+
   connect( job, SIGNAL( result( KIO::Job * ) ),
            SLOT( slotResult( KIO::Job * ) ) );
   connect( job, SIGNAL( data( KIO::Job *, const QByteArray & ) ),
@@ -317,6 +323,10 @@ void FreeBusyManager::publishFreeBusy()
                                      true /*overwrite*/,
                                      false /*don't resume*/,
                                      false /*don't show progress info*/ );
+    //pass the mainwindow to the job so any prompts are active
+    KOrg::MainWindow *korg = ActionManager::findInstance( KURL() );
+    job->setWindow( korg->topLevelWidget() );
+
     connect( job, SIGNAL( result( KIO::Job * ) ),
              SLOT( slotUploadFreeBusyResult( KIO::Job * ) ) );
   }
