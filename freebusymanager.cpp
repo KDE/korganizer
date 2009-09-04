@@ -38,6 +38,8 @@
 #include "freebusymanager.h"
 #include "koprefs.h"
 #include "mailscheduler.h"
+#include "actionmanager.h"
+#include "korganizer.h"
 
 #include <kabc/stdaddressbook.h>
 #include <kabc/addressee.h>
@@ -50,6 +52,7 @@
 #include <kcal/icalformat.h>
 
 #include <kio/job.h>
+#include <kio/jobuidelegate.h>
 #include <kio/netaccess.h>
 #include <kdebug.h>
 #include <kmessagebox.h>
@@ -74,6 +77,11 @@ FreeBusyDownloadJob::FreeBusyDownloadJob( const QString &email, const KUrl &url,
   : QObject( manager ), mManager( manager ), mEmail( email )
 {
   KIO::Job *job = KIO::get( url, KIO::NoReload, KIO::HideProgressInfo );
+
+  //pass the mainwindow to the job so any prompts are active
+  KOrg::MainWindow *korg = ActionManager::findInstance( KUrl() );
+  job->ui()->setWindow( korg->topLevelWidget() );
+
   connect( job, SIGNAL(result(KJob *)), SLOT(slotResult(KJob *)) );
   connect( job, SIGNAL(data(KIO::Job *,const QByteArray &)),
            SLOT(slotData(KIO::Job *,const QByteArray &)) );
@@ -317,6 +325,11 @@ void FreeBusyManager::publishFreeBusy()
     kDebug() << targetURL;
 
     KIO::Job *job = KIO::file_copy( src, targetURL, -1, KIO::Overwrite | KIO::HideProgressInfo );
+
+    //pass the mainwindow to the job so any prompts are active
+    KOrg::MainWindow *korg = ActionManager::findInstance( KUrl() );
+    job->ui()->setWindow( korg->topLevelWidget() );
+
     connect( job, SIGNAL(result(KJob *)), SLOT(slotUploadFreeBusyResult(KJob *)) );
   }
 }
