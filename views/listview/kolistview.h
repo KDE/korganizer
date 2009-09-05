@@ -31,7 +31,7 @@
 
 #include <KCal/Incidence>
 
-#include <QHash>
+#include <QList>
 
 using namespace KCal;
 
@@ -110,7 +110,9 @@ class KOListView : public KOEventView
     K3ListView *mListView;
     KOEventPopupMenu *mPopupMenu;
     KOListViewItem *mActiveItem;
-    QHash<QString, Incidence *> mUidHash;
+    QList<QString> mUidList;
+    QDate mStartDate;
+    QDate mEndDate;
     DateList mSelectedDates;
 };
 

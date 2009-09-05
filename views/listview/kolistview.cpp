@@ -27,6 +27,7 @@
 #include "kolistview.h"
 #include "koeventpopupmenu.h"
 #include "koglobals.h"
+#include "kohelper.h"
 #include "koprefs.h"
 
 #include <KCal/IncidenceFormatter>
@@ -336,6 +337,9 @@ void KOListView::showDates( const QDate &start, const QDate &end )
 {
   clear();
 
+  mStartDate = start;
+  mEndDate = end;
+
   QDate date = start;
   while ( date <= end ) {
     addIncidences( calendar()->incidences( date ) );
@@ -356,15 +360,27 @@ void KOListView::addIncidences( const Incidence::List &incidenceList )
 
 void KOListView::addIncidence( Incidence *incidence )
 {
-  if ( mUidHash.contains( incidence->uid() ) ) {
+  if ( mUidList.contains( incidence->uid() ) ) {
     return;
   }
 
-  mUidHash.insert( incidence->uid(), incidence );
+  mUidList.append( incidence->uid() );
 
-  KOListViewItem *item = new KOListViewItem( incidence, mListView );
+  Incidence *tinc = incidence;
+  if ( tinc->customProperty( "KABC", "BIRTHDAY" ) == "YES" ||
+       tinc->customProperty( "KABC", "ANNIVERSARY" ) == "YES" ) {
+    qint64 years = KOHelper::yearDiff( tinc->dtStart().date(), mEndDate );
+    if ( years > 0 ) {
+      tinc = incidence->clone();
+      tinc->setReadOnly( false );
+      tinc->setSummary( i18n( "%1 (%2  years)", incidence->summary(), years ) );
+      tinc->setReadOnly( true );
+    }
+  }
+
+  KOListViewItem *item = new KOListViewItem( tinc, mListView );
   ListItemVisitor v( item );
-  if ( incidence->accept( v ) ) {
+  if ( tinc->accept( v ) ) {
     return;
   } else {
     delete item;
@@ -389,9 +405,11 @@ void KOListView::changeIncidenceDisplay( Incidence *incidence, int action )
 
   QDate date;
   if ( incidence->type() == "Todo" ) {
-    date = static_cast<Todo *>( incidence )->dtDue().date();
+    date = static_cast<Todo *>( incidence )->dtDue().
+           toTimeSpec( KOPrefs::instance()->timeSpec() ).date();
   } else {
-    date = incidence->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ).date();
+    date = incidence->dtStart().
+           toTimeSpec( KOPrefs::instance()->timeSpec() ).date();
   }
 
   switch( action ) {
@@ -407,7 +425,7 @@ void KOListView::changeIncidenceDisplay( Incidence *incidence, int action )
     item = getItemForIncidence( incidence );
     if ( item ) {
       delete item;
-      mUidHash.remove( incidence->uid() );
+      mUidList.removeAll( incidence->uid() );
     }
     if ( date >= f && date <= l ) {
       addIncidence( incidence );
@@ -434,7 +452,7 @@ KOListViewItem *KOListView::getItemForIncidence( Incidence *incidence )
     if ( item->data() == incidence ) {
       return item;
     }
-    item = (KOListViewItem *)item->nextSibling();
+    item = static_cast<KOListViewItem *>( item->nextSibling() );
   }
   return 0;
 }
@@ -449,7 +467,7 @@ void KOListView::defaultItemAction( Q3ListViewItem *i )
 
 void KOListView::popupMenu( Q3ListViewItem *item, const QPoint &, int )
 {
-  mActiveItem = (KOListViewItem *)item;
+  mActiveItem = static_cast<KOListViewItem *>( item );
   if ( mActiveItem ) {
     Incidence *incidence = mActiveItem->data();
     // FIXME: For recurring incidences we don't know the date of this
@@ -490,7 +508,7 @@ void KOListView::clear()
 {
   mSelectedDates.clear();
   mListView->clear();
-  mUidHash.clear();
+  mUidList.clear();
 }
 
 #include "kolistview.moc"

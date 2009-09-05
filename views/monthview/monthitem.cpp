@@ -270,14 +270,26 @@ void MonthItem::updatePosition()
 IncidenceMonthItem::IncidenceMonthItem( MonthScene *monthScene,
                                         Incidence *incidence,
                                         const QDate &recurStartDate )
-  : MonthItem( monthScene ), mIncidence( incidence )
+  : MonthItem( monthScene ), mIncidence( incidence ), mCloned( false )
 {
   mIsEvent = mIncidence->type() == "Event";
   mIsJournal = mIncidence->type() == "Journal";
   mIsTodo = mIncidence->type() == "Todo";
 
-  connect( monthScene, SIGNAL(incidenceSelected(Incidence* )),
-           this, SLOT(updateSelection(Incidence* )) );
+  if ( mIncidence->customProperty( "KABC", "BIRTHDAY" ) == "YES" ||
+       mIncidence->customProperty( "KABC", "ANNIVERSARY" ) == "YES" ) {
+    qint64 years = KOHelper::yearDiff( mIncidence->dtStart().date(), recurStartDate );
+    if ( years > 0 ) {
+      mIncidence = incidence->clone();
+      mIncidence->setReadOnly( false );
+      mIncidence->setSummary( i18n( "%1 (%2 years)", incidence->summary(), years ) );
+      mIncidence->setReadOnly( true );
+      mCloned = true;
+    }
+  }
+
+  connect( monthScene, SIGNAL(incidenceSelected(Incidence *)),
+           this, SLOT(updateSelection(Incidence *)) );
 
   // first set to 0, because it's used in startDate()
   mRecurDayOffset = 0;
@@ -288,6 +300,9 @@ IncidenceMonthItem::IncidenceMonthItem( MonthScene *monthScene,
 
 IncidenceMonthItem::~IncidenceMonthItem()
 {
+  if ( mCloned ) {
+    delete mIncidence;
+  }
 }
 
 bool IncidenceMonthItem::greaterThanFallback( const MonthItem *other ) const

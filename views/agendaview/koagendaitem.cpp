@@ -75,12 +75,26 @@ QPixmap *KOAgendaItem::completedPxmp = 0;
 
 KOAgendaItem::KOAgendaItem( Calendar *calendar, Incidence *incidence,
                             const QDate &qd, QWidget *parent )
-  : QWidget( parent ), mCalendar( calendar ), mIncidence( incidence ), mDate( qd ), mValid( true )
+  : QWidget( parent ), mCalendar( calendar ), mIncidence( incidence ),
+    mDate( qd ), mValid( true ), mCloned( false )
 {
   if ( !mIncidence ) {
     mValid = false;
     return;
   }
+
+  if ( mIncidence->customProperty( "KABC", "BIRTHDAY" ) == "YES" ||
+       mIncidence->customProperty( "KABC", "ANNIVERSARY" ) == "YES" ) {
+    qint64 years = KOHelper::yearDiff( mIncidence->dtStart().date(), qd );
+    if ( years > 0 ) {
+      mIncidence = incidence->clone();
+      mIncidence->setReadOnly( false );
+      mIncidence->setSummary( i18n( "%1 (%2 years)", incidence->summary(), years ) );
+      mIncidence->setReadOnly( true );
+      mCloned = true;
+    }
+  }
+
   mLabelText = mIncidence->summary();
   mIconAlarm = false;
   mIconRecur = false;
@@ -107,6 +121,13 @@ KOAgendaItem::KOAgendaItem( Calendar *calendar, Incidence *incidence,
   select( false );
 
   setAcceptDrops( true );
+}
+
+KOAgendaItem::~KOAgendaItem()
+{
+  if ( mCloned ) {
+    delete mIncidence;
+  }
 }
 
 void KOAgendaItem::updateIcons()
