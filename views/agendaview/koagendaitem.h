@@ -27,23 +27,23 @@
 
 #include "cellitem.h"
 
-#include <QDateTime>
-#include <QWidget>
+#include <QDate>
 #include <QList>
+#include <QWidget>
 
 class KOAgendaItem;
-
-class QDragEnterEvent;
-class QDropEvent;
-class QPaintEvent;
-class QPainter;
-class QPixmap;
 
 namespace KCal {
   class Calendar;
   class Incidence;
 }
 using namespace KCal;
+
+class QDragEnterEvent;
+class QDropEvent;
+class QPainter;
+class QPaintEvent;
+class QPixmap;
 
 struct MultiItemInfo
 {

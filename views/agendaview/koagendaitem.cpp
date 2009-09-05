@@ -24,39 +24,30 @@
 */
 
 #include "koagendaitem.h"
-#include "koprefs.h"
+#include "koeventview.h"
 #include "koglobals.h"
 #include "kohelper.h"
-#include "koeventview.h"
+#include "koprefs.h"
 
 #include <libkdepim/kvcarddrag.h>
 
-#include <kabc/addressee.h>
-#include <kabc/vcardconverter.h>
-#include <kcal/icaldrag.h>
-#include <kcal/incidence.h>
-#include <kcal/event.h>
-#include <kcal/todo.h>
-#include <kcal/incidenceformatter.h>
-#include <kcal/vcaldrag.h>
-#include <kpimutils/email.h>
+#include <KCal/Event>
+#include <KCal/ICalDrag>
+#include <KCal/Incidence>
+#include <KCal/IncidenceFormatter>
+#include <KCal/Todo>
+#include <KCal/VCalDrag>
 
-#include <kiconloader.h>
-#include <kdebug.h>
-#include <klocale.h>
-#include <kwordwrap.h>
-#include <kmessagebox.h>
+#include <KPIMUtils/Email>
 
-#include <QPainter>
-#include <QPixmap>
-#include <QPaintEvent>
-#include <QList>
-#include <QDropEvent>
+#include <KLocale>
+#include <KMessageBox>
+#include <KWordWrap>
+
 #include <QDragEnterEvent>
+#include <QPainter>
 #include <QPixmapCache>
 #include <QToolTip>
-
-#include "koagendaitem.moc"
 
 //-----------------------------------------------------------------------------
 
@@ -1350,3 +1341,5 @@ bool KOAgendaItem::event( QEvent *event )
   }
   return QWidget::event( event );
 }
+
+#include "koagendaitem.moc"
