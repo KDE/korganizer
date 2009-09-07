@@ -328,21 +328,40 @@ void AlarmDialog::dismissAll()
 
 void AlarmDialog::edit()
 {
-  if ( !QDBusConnection::sessionBus().interface()->isServiceRegistered( "org.kde.korganizer" ) ) {
-    if ( KToolInvocation::startServiceByDesktopName( "korganizer", QString() ) ) {
-      KMessageBox::error( 0, i18nc( "@info", "Could not start KOrganizer." ) );
-    }
-  }
-  org::kde::korganizer::Korganizer korganizer(
-    "org.kde.korganizer", "/Korganizer", QDBusConnection::sessionBus() );
-
   ReminderList selection = selectedItems();
   if ( selection.count() != 1 ) {
     return;
   }
   Incidence *incidence = selection.first()->mIncidence;
+  if ( incidence->isReadOnly() ) {
+    KMessageBox::sorry(
+      this,
+      i18nc( "@info",
+             "\"%1\" is a read-only item so modifications are not possible.",
+             incidence->summary() ) );
+    return;
+  }
+
+  if ( !QDBusConnection::sessionBus().interface()->isServiceRegistered( "org.kde.korganizer" ) ) {
+    if ( KToolInvocation::startServiceByDesktopName( "korganizer", QString() ) ) {
+      KMessageBox::error(
+        this,
+        i18nc( "@info",
+               "Could not start KOrganizer so editing is not possible." ) );
+      return;
+    }
+  }
+  org::kde::korganizer::Korganizer korganizer(
+    "org.kde.korganizer", "/Korganizer", QDBusConnection::sessionBus() );
+
   kDebug() << "editing incidence " << incidence->summary();
-  korganizer.editIncidence( incidence->uid() );
+  if ( !korganizer.editIncidence( incidence->uid() ) ) {
+    KMessageBox::error(
+      this,
+      i18nc( "@info",
+             "An internal KOrganizer error occurred attempting to modify \"%1\"",
+             incidence->summary() ) );
+  }
 
 #ifdef Q_WS_X11
   // get desktop # where korganizer (or kontact) runs
