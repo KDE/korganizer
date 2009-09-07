@@ -116,8 +116,8 @@ class KCal::AkonadiCalendar::Private : public QObject
                this, SLOT(itemMoved( const Akonadi::Item&, const Akonadi::Collection&, const Akonadi::Collection& ) ) );
       connect( m_monitor, SIGNAL(itemAdded( const Akonadi::Item&, const Akonadi::Collection& )),
                this, SLOT(itemAdded( const Akonadi::Item&, const Akonadi::Collection& )) );
-      connect( m_monitor, SIGNAL(itemRemoved( const Akonadi::Item&, const Akonadi::Collection& )),
-               this, SLOT(itemRemoved( const Akonadi::Item&, const Akonadi::Collection& )) );
+      connect( m_monitor, SIGNAL(itemRemoved( const Akonadi::Item& )),
+               this, SLOT(itemRemoved( const Akonadi::Item& )) );
       /*
       connect( m_monitor, SIGNAL(itemLinked(const Akonadi::Item&, const Akonadi::Collection&)),
                this, SLOT(itemAdded(const Akonadi::Item&, const Akonadi::Collection&)) );
@@ -291,7 +291,7 @@ class KCal::AkonadiCalendar::Private : public QObject
             return;
         }
         Akonadi::ItemDeleteJob *deletejob = static_cast<Akonadi::ItemDeleteJob*>( job );
-        itemsRemoved( deletejob->items(), deletejob->collection() );
+        itemsRemoved( deletejob->deletedItems() );
     }
 
     void modifyDone( KJob *job )
@@ -343,7 +343,7 @@ class KCal::AkonadiCalendar::Private : public QObject
     {
         kDebug();
         if( m_collectionMap.contains(colSrc.id()) && ! m_collectionMap.contains(colDst.id()) )
-            itemRemoved( item, colSrc );
+            itemRemoved( item );
         else if( m_collectionMap.contains(colDst.id()) && ! m_collectionMap.contains(colSrc.id()) )
             itemAdded( item, colDst );
     }
@@ -397,9 +397,8 @@ class KCal::AkonadiCalendar::Private : public QObject
         }
     }
 
-    void itemsRemoved( const Akonadi::Item::List &items, const Akonadi::Collection &collection )
+    void itemsRemoved( const Akonadi::Item::List &items )
     {
-        Q_UNUSED(collection);
         assertInvariants();
         //kDebug()<<items.count();
         foreach(const Akonadi::Item& item, items) {
@@ -431,10 +430,10 @@ class KCal::AkonadiCalendar::Private : public QObject
         assertInvariants();
     }
 
-    void itemRemoved( const Akonadi::Item &item, const Akonadi::Collection &collection )
+    void itemRemoved( const Akonadi::Item &item )
     {
         kDebug();
-        itemsRemoved( Akonadi::Item::List() << item, collection );
+        itemsRemoved( Akonadi::Item::List() << item );
     }
   
 };
