@@ -159,7 +159,6 @@ if(KMAIL_SUPPORTED)
     views/todoview/kotodoview.cpp
     views/todoview/kotodoviewquicksearch.cpp
     views/todoview/kotodoviewquickaddline.cpp
-    views/todoview/kcheckcombobox.cpp
     views/timelineview/kotimelineview.cpp
     views/timelineview/timelineitem.cpp
     views/timespentview/kotimespentview.cpp

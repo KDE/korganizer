@@ -27,23 +27,23 @@
 
 #include "cellitem.h"
 
-#include <QDateTime>
-#include <QWidget>
+#include <QDate>
 #include <QList>
+#include <QWidget>
 
 class KOAgendaItem;
-
-class QDragEnterEvent;
-class QDropEvent;
-class QPaintEvent;
-class QPainter;
-class QPixmap;
 
 namespace KCal {
   class Calendar;
   class Incidence;
 }
 using namespace KCal;
+
+class QDragEnterEvent;
+class QDropEvent;
+class QPainter;
+class QPaintEvent;
+class QPixmap;
 
 struct MultiItemInfo
 {
@@ -87,6 +87,7 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
   Q_OBJECT
   public:
     KOAgendaItem( Calendar *calendar, Incidence *incidence, const QDate &qd, QWidget *parent );
+    ~KOAgendaItem();
 
     int cellXLeft() const { return mCellXLeft; }
     int cellXRight() const { return mCellXRight; }
@@ -202,6 +203,11 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     void resetMovePrivate();
     void endMovePrivate();
 
+    // Variables to remember start position
+    MultiItemInfo *mStartMoveInfo;
+    //Color of the resource
+    QColor mResourceColor;
+
   private:
     void paintEventIcon( QPainter *p, int &x, int y, int ft );
     void paintTodoIcon( QPainter *p, int &x, int y, int ft );
@@ -215,13 +221,16 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
 
     int mCellXLeft, mCellXRight;
     int mCellYTop, mCellYBottom;
-    int mSubCell;  // subcell number of this item
+    int mSubCell;   // subcell number of this item
     int mSubCells;  // Total number of subcells in cell of this item
 
     Calendar *mCalendar;
-    Incidence *mIncidence; // corresponding event or todo
-    QDate mDate; //date this events occurs (for recurrence)
+    Incidence *mIncidence;
+    QDate mDate;
+    bool mValid;
+    bool mCloned;
     QString mLabelText;
+    bool mSelected;
     bool mIconAlarm, mIconRecur, mIconReadonly;
     bool mIconReply, mIconGroup, mIconGroupTent;
     bool mIconOrganizer;
@@ -229,15 +238,6 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     // Multi item pointers
     MultiItemInfo *mMultiItemInfo;
 
-  protected:
-    // Variables to remember start position
-    MultiItemInfo *mStartMoveInfo;
-    //Color of the resource
-    QColor mResourceColor;
-
-  private:
-    bool mValid;
-    bool mSelected;
     QList<KOAgendaItem*> mConflictItems;
 
     static QPixmap *alarmPxmp;

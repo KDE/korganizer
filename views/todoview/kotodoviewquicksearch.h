@@ -29,10 +29,16 @@
 
 #include <QWidget>
 
-namespace KCal { class Calendar; }
+namespace KCal {
+  class Calendar;
+}
 using namespace KCal;
 
-class KCheckComboBox;
+namespace KPIM {
+  class KCheckComboBox;
+}
+using namespace KPIM;
+
 class KLineEdit;
 
 class QString;

@@ -33,6 +33,8 @@ namespace KCal {
   class Incidence;
 }
 
+class QDate;
+
 // Provides static methods that are useful to all views.
 
 namespace KOHelper
@@ -52,6 +54,10 @@ namespace KOHelper
   */
   KORGANIZER_CORE_EXPORT QColor resourceColor( KCal::Calendar *calendar,
                                                KCal::Incidence *incidence );
+  /**
+    Returns the number of years between the @p start QDate and the @p end QDate
+  */
+  KORGANIZER_CORE_EXPORT qint64 yearDiff( const QDate &start, const QDate &end );
 }
 
 #endif

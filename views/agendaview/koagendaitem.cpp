@@ -24,39 +24,30 @@
 */
 
 #include "koagendaitem.h"
-#include "koprefs.h"
+#include "koeventview.h"
 #include "koglobals.h"
 #include "kohelper.h"
-#include "koeventview.h"
+#include "koprefs.h"
 
 #include <libkdepim/kvcarddrag.h>
 
-#include <kabc/addressee.h>
-#include <kabc/vcardconverter.h>
-#include <kcal/icaldrag.h>
-#include <kcal/incidence.h>
-#include <kcal/event.h>
-#include <kcal/todo.h>
-#include <kcal/incidenceformatter.h>
-#include <kcal/vcaldrag.h>
-#include <kpimutils/email.h>
+#include <KCal/Event>
+#include <KCal/ICalDrag>
+#include <KCal/Incidence>
+#include <KCal/IncidenceFormatter>
+#include <KCal/Todo>
+#include <KCal/VCalDrag>
 
-#include <kiconloader.h>
-#include <kdebug.h>
-#include <klocale.h>
-#include <kwordwrap.h>
-#include <kmessagebox.h>
+#include <KPIMUtils/Email>
 
-#include <QPainter>
-#include <QPixmap>
-#include <QPaintEvent>
-#include <QList>
-#include <QDropEvent>
+#include <KLocale>
+#include <KMessageBox>
+#include <KWordWrap>
+
 #include <QDragEnterEvent>
+#include <QPainter>
 #include <QPixmapCache>
 #include <QToolTip>
-
-#include "koagendaitem.moc"
 
 //-----------------------------------------------------------------------------
 
@@ -75,12 +66,26 @@ QPixmap *KOAgendaItem::completedPxmp = 0;
 
 KOAgendaItem::KOAgendaItem( Calendar *calendar, Incidence *incidence,
                             const QDate &qd, QWidget *parent )
-  : QWidget( parent ), mCalendar( calendar ), mIncidence( incidence ), mDate( qd ), mValid( true )
+  : QWidget( parent ), mCalendar( calendar ), mIncidence( incidence ),
+    mDate( qd ), mValid( true ), mCloned( false )
 {
   if ( !mIncidence ) {
     mValid = false;
     return;
   }
+
+  if ( mIncidence->customProperty( "KABC", "BIRTHDAY" ) == "YES" ||
+       mIncidence->customProperty( "KABC", "ANNIVERSARY" ) == "YES" ) {
+    qint64 years = KOHelper::yearDiff( mIncidence->dtStart().date(), qd );
+    if ( years > 0 ) {
+      mIncidence = incidence->clone();
+      mIncidence->setReadOnly( false );
+      mIncidence->setSummary( i18n( "%1 (%2 years)", incidence->summary(), years ) );
+      mIncidence->setReadOnly( true );
+      mCloned = true;
+    }
+  }
+
   mLabelText = mIncidence->summary();
   mIconAlarm = false;
   mIconRecur = false;
@@ -107,6 +112,13 @@ KOAgendaItem::KOAgendaItem( Calendar *calendar, Incidence *incidence,
   select( false );
 
   setAcceptDrops( true );
+}
+
+KOAgendaItem::~KOAgendaItem()
+{
+  if ( mCloned ) {
+    delete mIncidence;
+  }
 }
 
 void KOAgendaItem::updateIcons()
@@ -1329,3 +1341,5 @@ bool KOAgendaItem::event( QEvent *event )
   }
   return QWidget::event( event );
 }
+
+#include "koagendaitem.moc"

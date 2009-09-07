@@ -29,11 +29,13 @@
 #include "koprefs.h"
 
 #include <libkdepim/categoryhierarchyreader.h>
+#include <libkdepim/kcheckcombobox.h>
+using namespace KPIM;
 
-#include <kcal/calendar.h>
-#include <kcal/calfilter.h>
+#include <KCal/Calendar>
+#include <KCal/CalFilter>
+using namespace KCal;
 
-#include "kcheckcombobox.h"
 #include <KLineEdit>
 
 #include <QString>
@@ -43,9 +45,6 @@
 #include <QStandardItem>
 #include <QAbstractItemView>
 #include <QHBoxLayout>
-
-using namespace KCal;
-using namespace KPIM;
 
 KOTodoViewQuickSearch::KOTodoViewQuickSearch( Calendar *calendar, QWidget *parent )
   : QWidget( parent ), mCalendar( calendar )
@@ -62,7 +61,7 @@ KOTodoViewQuickSearch::KOTodoViewQuickSearch( Calendar *calendar, QWidget *paren
 
   layout->addWidget( mSearchLine, 3 );
 
-  mCategoryCombo = new KCheckComboBox( this );
+  mCategoryCombo = new KPIM::KCheckComboBox( this );
   mCategoryCombo->setDefaultText( i18nc( "@item:inlistbox", "Select Categories" ) );
   mCategoryCombo->setSeparator( i18nc( "@item:intext delimiter for joining category names", "," ) );
 

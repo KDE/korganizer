@@ -317,6 +317,7 @@ class IncidenceMonthItem : public MonthItem
     QColor catColor() const;
 
     Incidence *mIncidence;
+    bool mCloned;
     int mRecurDayOffset;
     bool mIsEvent, mIsTodo, mIsJournal;
 };
