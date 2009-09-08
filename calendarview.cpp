@@ -1924,10 +1924,18 @@ bool CalendarView::editIncidence( Incidence *incidence, bool isCounter )
 {
   kdDebug(5850) << "CalendarView::editEvent()" << endl;
 
-  if ( !incidence || !mChanger ) {
+  if ( !incidence ) {
+    kdDebug(5850) << "Empty Incidence" << endl;
     KNotifyClient::beep();
     return false;
   }
+
+  if ( !mChanger ) {
+    kdDebug(5850) << "Empty Changer" << endl;
+    KNotifyClient::beep();
+    return false;
+  }
+
   KOIncidenceEditor *tmp = editorDialog( incidence );
   if ( tmp ) {
     kdDebug(5850) << "CalendarView::editIncidence() in List" << endl;
@@ -2181,15 +2189,19 @@ void CalendarView::purgeCompleted()
   }
 }
 
-void CalendarView::warningChangeFailed( Incidence * )
+void CalendarView::warningChangeFailed( Incidence *incidence )
 {
-  KMessageBox::sorry( this, i18n("Unable to edit item: "
-                                 "it is locked by another process.") );
+  if ( incidence ) {
+    KMessageBox::sorry(
+      this,
+      i18n( "Unable to edit \"%1\" because it is locked by another process." ).
+      arg( incidence->summary() ) );
+  }
 }
 
-void CalendarView::editCanceled( Incidence *i )
+void CalendarView::editCanceled( Incidence *incidence )
 {
-  mCalendar->endChange( i );
+  mCalendar->endChange( incidence );
 }
 
 void CalendarView::showErrorMessage( const QString &msg )
