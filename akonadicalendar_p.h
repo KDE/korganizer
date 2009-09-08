@@ -272,13 +272,13 @@ class KCal::AkonadiCalendar::Private : public QObject
             return;
         }
         Akonadi::ItemCreateJob *createjob = static_cast<Akonadi::ItemCreateJob*>( job );
-        if ( m_collectionMap.contains( createjob->collection().id() ) ) {
+        if ( m_collectionMap.contains( createjob->item().parentCollection().id() ) ) {
           // yes, adding to an un-viewed collection happens
-          itemAdded( createjob->item(), createjob->collection() );
+          itemAdded( createjob->item(), createjob->item().parentCollection() );
         } else {
           // FIXME show dialog indicating that the creation worked, but the incidence will
           // not show, since the collection isn't
-          kWarning() << "Collection with id=" << createjob->collection().id() << " not in m_collectionMap";
+          kWarning() << "Collection with id=" << createjob->item().parentCollection() << " not in m_collectionMap";
         }
     }
 
