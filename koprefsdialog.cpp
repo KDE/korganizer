@@ -758,8 +758,6 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
   connect( mResourceButton, SIGNAL(changed(const QColor &)), SLOT(setResourceColor()) );
   resourceLayout->addWidget( mResourceButton );
 
-  connect(collectionmodel, SIGNAL(listDone()), SLOT(updateResources()));
-
   colorLayout->setRowStretch( 10, 1 );
 
   QWidget *fontFrame = new QWidget( this );
