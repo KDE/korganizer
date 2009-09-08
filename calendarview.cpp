@@ -2111,10 +2111,18 @@ void CalendarView::showIncidenceContext( Incidence *incidence )
 
 bool CalendarView::editIncidence( Incidence *incidence, bool isCounter )
 {
-  if ( !incidence || !mChanger ) {
+  if ( !incidence ) {
+    kDebug() << "Empty Incidence";
     KNotification::beep();
     return false;
   }
+
+  if ( !mChanger ) {
+    kDebug() << "Empty Changer";
+    KNotification::beep();
+    return false;
+  }
+
   KOIncidenceEditor *tmp = editorDialog( incidence );
   if ( tmp ) {
     tmp->reload();
@@ -2401,18 +2409,25 @@ void CalendarView::purgeCompleted()
     }
     endMultiModify();
     if ( !allDeleted ) {
-      KMessageBox::information( this,
-                                i18n( "Unable to purge to-dos with uncompleted children." ),
-                                i18n( "Delete To-do" ),
-                                "UncompletedChildrenPurgeTodos" );
+      KMessageBox::information(
+        this,
+        i18nc( "@info",
+               "Unable to purge to-dos with uncompleted children." ),
+        i18n( "Delete To-do" ),
+        "UncompletedChildrenPurgeTodos" );
     }
   }
 }
 
 void CalendarView::warningChangeFailed( Incidence *incidence )
 {
-  Q_UNUSED( incidence );
-  KMessageBox::sorry( this, i18n( "Unable to edit item: it is locked by another process." ) );
+  if ( incidence ) {
+    KMessageBox::sorry(
+      this,
+      i18nc( "@info",
+             "Unable to edit \"%1\" because it is locked by another process.",
+             incidence->summary() ) );
+  }
 }
 
 void CalendarView::editCanceled( Incidence *incidence )
