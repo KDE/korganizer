@@ -108,6 +108,7 @@ class KCal::AkonadiCalendar::Private : public QObject
       , m_incidenceBeingChanged()
     {
       m_monitor->itemFetchScope().fetchFullPayload();
+      m_monitor->itemFetchScope().setAncestorRetrieval( Akonadi::ItemFetchScope::Parent );
       m_monitor->ignoreSession( m_session );
 
       connect( m_monitor, SIGNAL(itemChanged( const Akonadi::Item&, const QSet<QByteArray>& )),
@@ -115,7 +116,7 @@ class KCal::AkonadiCalendar::Private : public QObject
       connect( m_monitor, SIGNAL(itemMoved( const Akonadi::Item&, const Akonadi::Collection&, const Akonadi::Collection& )),
                this, SLOT(itemMoved( const Akonadi::Item&, const Akonadi::Collection&, const Akonadi::Collection& ) ) );
       connect( m_monitor, SIGNAL(itemAdded( const Akonadi::Item&, const Akonadi::Collection& )),
-               this, SLOT(itemAdded( const Akonadi::Item&, const Akonadi::Collection& )) );
+               this, SLOT(itemAdded( const Akonadi::Item& )) );
       connect( m_monitor, SIGNAL(itemRemoved( const Akonadi::Item& )),
                this, SLOT(itemRemoved( const Akonadi::Item& )) );
       /*
@@ -237,7 +238,7 @@ class KCal::AkonadiCalendar::Private : public QObject
             emit q->signalErrorMessage( job->errorString() );
             return;
         }
-        itemsAdded( fetchjob->items(), fetchjob->collection() );
+        itemsAdded( fetchjob->items() );
     }
 
     void agentCreated( KJob *job )
@@ -274,7 +275,7 @@ class KCal::AkonadiCalendar::Private : public QObject
         Akonadi::ItemCreateJob *createjob = static_cast<Akonadi::ItemCreateJob*>( job );
         if ( m_collectionMap.contains( createjob->item().parentCollection().id() ) ) {
           // yes, adding to an un-viewed collection happens
-          itemAdded( createjob->item(), createjob->item().parentCollection() );
+          itemAdded( createjob->item() );
         } else {
           // FIXME show dialog indicating that the creation worked, but the incidence will
           // not show, since the collection isn't
@@ -345,17 +346,16 @@ class KCal::AkonadiCalendar::Private : public QObject
         if( m_collectionMap.contains(colSrc.id()) && ! m_collectionMap.contains(colDst.id()) )
             itemRemoved( item );
         else if( m_collectionMap.contains(colDst.id()) && ! m_collectionMap.contains(colSrc.id()) )
-            itemAdded( item, colDst );
+            itemAdded( item );
     }
 
-    void itemsAdded( const Akonadi::Item::List &items, const Akonadi::Collection &collection )
+    void itemsAdded( const Akonadi::Item::List &items )
     {
         kDebug();
         assertInvariants();
-        Q_ASSERT( collection.isValid() );
-        if ( !m_collectionMap.contains( collection.id() ) ) // collection got deselected again in the meantime
-          return;
         foreach( const Akonadi::Item &item, items ) {
+            if ( !m_collectionMap.contains( item.parentCollection().id() ) )  // collection got deselected again in the meantime
+              continue;
             Q_ASSERT( item.isValid() );
             if ( !item.hasPayload<KCal::Incidence::Ptr>() )
               continue;
@@ -388,12 +388,12 @@ class KCal::AkonadiCalendar::Private : public QObject
         assertInvariants();
     }
 
-    void itemAdded( const Akonadi::Item &item, const Akonadi::Collection &collection )
+    void itemAdded( const Akonadi::Item &item )
     {
         kDebug();
         Q_ASSERT( item.isValid() );
         if( ! m_itemMap.contains( item.id() ) ) {
-          itemsAdded( Akonadi::Item::List() << item, collection );
+          itemsAdded( Akonadi::Item::List() << item );
         }
     }
 
