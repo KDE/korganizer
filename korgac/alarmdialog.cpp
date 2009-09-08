@@ -221,18 +221,36 @@ void AlarmDialog::dismissAll()
 void AlarmDialog::edit()
 {
   ItemList selection = selectedItems();
-  if ( selection.count() != 1 )
+  if ( selection.count() != 1 ) {
     return;
+  }
   Incidence *incidence = selection.first()->mIncidence;
-
-  if ( !kapp->dcopClient()->isApplicationRegistered( "korganizer" ) ) {
-    if ( kapp->startServiceByDesktopName( "korganizer", QString::null ) )
-      KMessageBox::error( 0, i18n("Could not start KOrganizer.") );
+  if ( incidence->isReadOnly() ) {
+    KMessageBox::sorry(
+      this,
+      i18n( "\"%1\" is a read-only item so modifications are not possible." ).
+      arg( incidence->summary() ) );
+    return;
   }
 
-  kapp->dcopClient()->send( "korganizer", "KOrganizerIface",
-                            "editIncidence(QString)",
-                             incidence->uid() );
+  if ( !kapp->dcopClient()->isApplicationRegistered( "korganizer" ) ) {
+    if ( kapp->startServiceByDesktopName( "korganizer", QString::null ) ) {
+      KMessageBox::error(
+        this,
+        i18n( "Could not start KOrganizer so editing is not possible.") );
+      return;
+    }
+  }
+
+  kdDebug(5890) << "editing incidence " << incidence->summary() << endl;
+  if ( !kapp->dcopClient()->send( "korganizer", "KOrganizerIface",
+                                  "editIncidence(QString)",
+                                  incidence->uid() ) ) {
+    KMessageBox::error(
+      this,
+      i18n( "An internal KOrganizer error occurred attempting to modify \"%1\"" ).
+      arg( incidence->summary() ) );
+  }
 
   // get desktop # where korganizer (or kontact) runs
   QByteArray replyData;
