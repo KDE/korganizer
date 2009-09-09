@@ -158,6 +158,8 @@ void DateNavigator::selectToday()
 
   if ( dateCount == 7 ) {
     selectWeek( d );
+  } else if ( dateCount == 5 ) {
+    selectWorkWeek( d );
   } else {
     selectDates( d, dateCount );
   }
