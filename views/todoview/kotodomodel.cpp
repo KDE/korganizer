@@ -620,11 +620,11 @@ QModelIndex KOTodoModel::parent( const QModelIndex &child ) const
   }
 
   TodoTreeNode *node = static_cast<TodoTreeNode *>( child.internalPointer() );
-  // every model index given out by us has a valid internal pointer, so
-  // that's save:
-  TodoTreeNode *parent = node->mParent;
-
-  return getModelIndex( parent );
+  if ( node->isValid() ) {
+    return getModelIndex( node->mParent );
+  } else {
+    return QModelIndex();
+  }
 }
 
 int KOTodoModel::columnCount( const QModelIndex &/*parent*/ ) const
