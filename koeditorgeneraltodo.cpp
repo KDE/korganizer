@@ -288,8 +288,6 @@ void KOEditorGeneralTodo::readTodo( Todo *todo, bool tmpl )
 
   KOEditorGeneral::readIncidence( todo );
 
-  QDateTime dueDT;
-
   if ( todo->hasDueDate() ) {
     enableAlarm( true );
     KDateTime dueDT = todo->dtDue();
@@ -457,7 +455,7 @@ void KOEditorGeneralTodo::enableStartEdit( bool enable )
     mTimeButton->setChecked( false );
   }
 
-  if (enable) {
+  if ( enable ) {
     mStartTimeEdit->setEnabled( mTimeButton->isChecked() );
     mTimeZoneComboStart->setEnabled( mTimeButton->isChecked() );
   } else {
