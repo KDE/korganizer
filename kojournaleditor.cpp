@@ -34,7 +34,7 @@
 
 #include <kcal/journal.h>
 #include <kcal/calendarlocal.h>
-#include <KCal/IncidenceFormatter>
+#include <kcal/incidenceformatter.h>
 
 #include <kmessagebox.h>
 #include <klocale.h>

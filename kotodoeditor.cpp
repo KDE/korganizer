@@ -38,7 +38,7 @@
 #include <kcal/calendarlocal.h>
 #include <kcal/calendarresources.h>
 #include <kcal/resourcecalendar.h>
-#include <KCal/IncidenceFormatter>
+#include <kcal/incidenceformatter.h>
 
 #include <kiconloader.h>
 #include <klocale.h>
