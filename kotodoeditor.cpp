@@ -234,7 +234,7 @@ void KOTodoEditor::setTexts( const QString &summary, const QString &description,
 void KOTodoEditor::loadDefaults()
 {
   setDates( QDateTime::currentDateTime().addDays(7), true, 0 );
-  mGeneral->toggleAlarm( true );
+  mGeneral->toggleAlarm( KOPrefs::instance()->defaultTodoReminders() );
 }
 
 bool KOTodoEditor::processInput()
