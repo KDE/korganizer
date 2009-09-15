@@ -237,7 +237,11 @@ void AlarmDialog::addIncidence( Incidence *incidence,
   item->mDisplayText = displayText;
   QString triggerStr = KGlobal::locale()->formatDateTime(
     KDateTime::currentDateTime( KDateTime::Spec::LocalZone() ) );
+
+  //TODO: this function needs to consider all Display type alarms in each incidence.
+
   Todo *todo;
+  Alarm *alarm = incidence->alarms().first();
   if ( dynamic_cast<Event *>( incidence ) ) {
     item->setIcon( 0, SmallIcon( "view-calendar-day" ) );
     if ( incidence->recurs() ) {
@@ -248,13 +252,34 @@ void AlarmDialog::addIncidence( Incidence *incidence,
       }
     }
     if ( item->text( 1 ).isEmpty() ) {
+      KDateTime kdt;
+      if ( alarm->hasStartOffset() ) {
+        kdt = incidence->dtStart();
+      } else {
+        kdt = incidence->dtEnd();
+      }
       item->setText( 1, IncidenceFormatter::dateTimeToString(
-                       incidence->dtStart(), false, true, KDateTime::Spec::LocalZone() ) );
+                       kdt, false, true, KDateTime::Spec::LocalZone() ) );
     }
   } else if ( ( todo = dynamic_cast<Todo *>( incidence ) ) ) {
     item->setIcon( 0, SmallIcon( "view-calendar-tasks" ) );
-    item->setText( 1, IncidenceFormatter::dateTimeToString(
-                     todo->dtDue(), false, true, KDateTime::Spec::LocalZone() ) );
+    if ( todo->recurs() ) {
+      KDateTime nextStart = todo->recurrence()->getNextDateTime(
+        KDateTime( reminderAt, KDateTime::Spec::LocalZone() ) );
+      if ( nextStart.isValid() ) {
+        item->setText( 1, KGlobal::locale()->formatDateTime( nextStart.toLocalZone() ) );
+      }
+    }
+    if ( item->text( 1 ).isEmpty() ) {
+      KDateTime kdt;
+      if ( alarm->hasStartOffset() ) {
+        kdt = todo->dtStart();
+      } else {
+        kdt = todo->dtDue();
+      }
+      item->setText( 1, IncidenceFormatter::dateTimeToString(
+                       kdt, false, true, KDateTime::Spec::LocalZone() ) );
+    }
   }
   item->setText( 2, triggerStr );
 
