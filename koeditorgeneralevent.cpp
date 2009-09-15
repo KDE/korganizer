@@ -416,6 +416,7 @@ void KOEditorGeneralEvent::endSpecChanged()
 void KOEditorGeneralEvent::setDefaults( const QDateTime &from,
                                         const QDateTime &to, bool allDay )
 {
+  KOEditorGeneral::setDefaults( allDay );
   mHasTimeCheckbox->setChecked( !allDay );
   setTimeEditorsEnabled( !allDay );
   setDateTimes( from, to );
