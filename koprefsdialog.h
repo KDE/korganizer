@@ -93,8 +93,6 @@ class KCM_KORGANIZER_EXPORT KOPrefsDialogColorsAndFonts : public KPrefsModule
     KComboBox     *mResourceCombo;
     KColorButton  *mResourceButton;
     QHash<QString, QColor> mResourceDict;
-    //For translation Identifier <->idx in Combo
-    QStringList mResourceIdentifier;
 };
 
 class KCM_KORGANIZER_EXPORT KOPrefsDialogGroupScheduling : public KPrefsModule

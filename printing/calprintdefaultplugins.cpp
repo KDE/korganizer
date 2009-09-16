@@ -25,8 +25,6 @@
   without including the source code for Qt in the source distribution.
 */
 
-#ifndef KORG_NOPRINTER
-
 #include "calprintdefaultplugins.h"
 #include "koprefs.h"
 
@@ -1493,5 +1491,3 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
   }
   p.setFont( oldFont );
 }
-
-#endif

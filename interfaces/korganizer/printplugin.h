@@ -21,8 +21,6 @@
 #ifndef PRINTPLUGINBASE_H
 #define PRINTPLUGINBASE_H
 
-#ifndef KORG_NOPRINTER
-
 #include "calendar/plugin.h"
 
 #include <kcal/incidence.h>
@@ -189,7 +187,5 @@ class PrintPluginFactory : public PluginFactory
 };
 
 }
-
-#endif
 
 #endif

@@ -13,7 +13,7 @@ kde4_add_plugin(korg_yearprint ${korg_yearprint_PART_SRCS})
 
 
 
-target_link_libraries(korg_yearprint  ${KDE4_KDEUI_LIBS} korg_stdprinting ${QT_QT3SUPPORT_LIBRARY})
+target_link_libraries(korg_yearprint  ${KDE4_KDEUI_LIBS} korganizerprivate ${QT_QT3SUPPORT_LIBRARY})
 
 install(TARGETS korg_yearprint  DESTINATION ${PLUGIN_INSTALL_DIR})
 

@@ -30,9 +30,7 @@
 */
 
 #include "calendarview.h"
-#ifndef KORG_NOPRINTER
 #include "calprinter.h"
-#endif
 #include "datechecker.h"
 #include "datenavigator.h"
 #include "datenavigatorcontainer.h"
@@ -348,12 +346,10 @@ QDate CalendarView::endDate()
 
 void CalendarView::createPrinter()
 {
-#ifndef KORG_NOPRINTER
   if ( !mCalPrinter ) {
     mCalPrinter = new CalPrinter( this, mCalendar, new KOCoreHelper() );
     connect( this, SIGNAL(configChanged()), mCalPrinter, SLOT(updateConfig()) );
   }
-#endif
 }
 
 bool CalendarView::openCalendar( const QString &filename, bool merge )
@@ -1569,7 +1565,7 @@ void CalendarView::schedule( iTIPMethod method, Incidence *incidence )
 
 void CalendarView::openAddressbook()
 {
-  KRun::runCommand( "kaddressbook", topLevelWidget() );
+  KRun::runCommand( "kcontactmanager", topLevelWidget() );
 }
 
 void CalendarView::setModified( bool modified )
@@ -1600,7 +1596,6 @@ bool CalendarView::isModified()
 
 void CalendarView::print()
 {
-#ifndef KORG_NOPRINTER
   createPrinter();
 
   KOrg::BaseView *currentView = mViewManager->currentView();
@@ -1613,12 +1608,10 @@ void CalendarView::print()
 
   DateList tmpDateList = mDateNavigator->selectedDates();
   mCalPrinter->print( printType, tmpDateList.first(), tmpDateList.last() );
-#endif
 }
 
 void CalendarView::printPreview()
 {
-#ifndef KORG_NOPRINTER
   createPrinter();
 
   KOrg::BaseView *currentView = mViewManager->currentView();
@@ -1632,7 +1625,6 @@ void CalendarView::printPreview()
   DateList tmpDateList = mDateNavigator->selectedDates();
   mCalPrinter->print( printType, tmpDateList.first(), tmpDateList.last(),
                       Incidence::List(), true );
-#endif
 }
 
 void CalendarView::exportWeb()

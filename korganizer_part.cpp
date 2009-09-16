@@ -55,7 +55,7 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, QObject *parent, const QV
   KGlobal::locale()->insertCatalog( "libkcal" );
   KGlobal::locale()->insertCatalog( "libkdepim" );
   KGlobal::locale()->insertCatalog( "kdgantt1" );
-  KGlobal::locale()->insertCatalog( "libkresources" );
+  KGlobal::locale()->insertCatalog( "libakonadi" );
 
   KOCore::self()->addXMLGUIClient( mTopLevelWidget, this );
 
@@ -69,7 +69,7 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, QObject *parent, const QV
   (void)new KOrganizerIfaceImpl( mActionManager, this, "IfaceImpl" );
 
   if ( KGlobal::mainComponent().componentName() == QLatin1String( "kontact" ) ) {
-    mActionManager->createCalendarResources();
+    mActionManager->createCalendarAkonadi();
     setHasDocument( false );
     KOrg::StdCalendar::self()->load();
     mView->updateCategories();

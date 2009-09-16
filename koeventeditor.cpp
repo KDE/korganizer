@@ -313,6 +313,7 @@ bool KOEventEditor::processInput()
           i18nc( "@title:window", "No Changes" ) );
       }
     } else {
+      mEvent->startUpdates(); //merge multiple mEvent->updated() calls into one
       fillEvent( mEvent );
       if ( mIsCounter ) {
         KOGroupware::instance()->sendCounterProposal( mCalendar, oldEvent, mEvent );
@@ -326,6 +327,7 @@ bool KOEventEditor::processInput()
       } else {
         rc = mChanger->changeIncidence( oldEvent, mEvent );
       }
+      mEvent->endUpdates();
     }
     delete event;
     delete oldEvent;

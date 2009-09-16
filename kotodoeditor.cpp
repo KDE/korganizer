@@ -36,8 +36,6 @@
 #include "incidencechanger.h"
 
 #include <kcal/calendarlocal.h>
-#include <kcal/calendarresources.h>
-#include <kcal/resourcecalendar.h>
 #include <KCal/IncidenceFormatter>
 
 #include <kiconloader.h>
@@ -253,10 +251,12 @@ bool KOTodoEditor::processInput()
     fillTodo( todo );
 
     if( *mTodo == *todo ) {
-      // Don't do anything
+      // Don't do anything cause no changes where done
     } else {
+      mTodo->startUpdates(); //merge multiple mTodo->updated() calls into one
       fillTodo( mTodo );
       rc = mChanger->changeIncidence( oldTodo, mTodo );
+      mTodo->endUpdates();
     }
     delete todo;
     delete oldTodo;

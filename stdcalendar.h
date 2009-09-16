@@ -22,15 +22,17 @@
 #define KORG_STDCALENDAR_H
 
 #include "korganizer_export.h"
-#include <KCal/CalendarResources>
+#include "akonadicalendar.h"
 
 namespace KOrg {
 
-class KORGANIZER_CALENDAR_EXPORT StdCalendar : public KCal::CalendarResources
+class KORGANIZER_CALENDAR_EXPORT StdCalendar : public KCal::AkonadiCalendar
 {
   public:
     static StdCalendar *self();
     ~StdCalendar();
+
+    void load();
 
   private:
     StdCalendar();

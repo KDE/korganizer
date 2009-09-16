@@ -24,8 +24,11 @@
 
 #include "kohelper.h"
 #include "koprefs.h"
+#include "akonadicalendar.h"
 
-#include <KCal/CalendarResources>
+#include <kcal/incidence.h>
+#include <kcal/calendar.h>
+#include <akonadi/item.h>
 
 #include <QDate>
 
@@ -39,29 +42,13 @@ QColor KOHelper::resourceColor( KCal::Calendar *calendar,
                                 KCal::Incidence *incidence )
 {
   QColor resourceColor = QColor(); //Default invalid color
-  //FIXME: dynamic_cast are dirty, Better We implements interface to get
-  // the color from the calendar
-  KCal::CalendarResources *calendarResource =
-    dynamic_cast<KCal::CalendarResources*>( calendar );
-
+  KCal::AkonadiCalendar *calendarResource = dynamic_cast<KCal::AkonadiCalendar*>( calendar );
   if ( calendarResource ) {
-    KCal::ResourceCalendar *resourceCalendar =
-      calendarResource->resource( incidence );
-
-    if ( resourceCalendar ) {
-      QString identifier = resourceCalendar->identifier();
-      resourceColor = KOPrefs::instance()->resourceColor( identifier );
-
-      if ( !resourceCalendar->subresources().isEmpty() ) {
-        identifier = resourceCalendar->subresourceIdentifier( incidence );
-        if ( identifier.isEmpty() ) {
-          identifier = resourceCalendar->identifier();
-        }
-        QColor subrescolor( KOPrefs::instance()->resourceColor( identifier ) );
-        if ( subrescolor.isValid() ) {
-          resourceColor = subrescolor;
-        }
-      }
+    Akonadi::Item item = calendarResource->itemForIncidence( incidence );
+    if( item.isValid() ) {
+      QString id = QString::number( item.storageCollectionId() );
+      Q_ASSERT( ! id.isEmpty() );
+      resourceColor = KOPrefs::instance()->resourceColor( id );
     }
   }
   return resourceColor;

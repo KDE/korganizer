@@ -35,11 +35,12 @@
 #include "koglobals.h"
 #include "koprefs.h"
 #include "timelabelszone.h"
+#include "akonadicalendar.h"
+
 using namespace KOrg;
 
 #include <KCal/CalFilter>
 #include <KCal/DndFactory>
-#include <KCal/CalendarResources>
 
 #include <KCalendarSystem>
 #include <KGlobalSettings>
@@ -1416,7 +1417,6 @@ void KOAgendaView::clearView()
   mAgenda->clear();
 }
 
-#ifndef KORG_NOPRINTER
 CalPrinter::PrintType KOAgendaView::printType()
 {
   if ( currentDateCount() == 1 ) {
@@ -1425,7 +1425,6 @@ CalPrinter::PrintType KOAgendaView::printType()
     return CalPrinter::Week;
   }
 }
-#endif
 
 void KOAgendaView::updateEventIndicatorTop( int newY )
 {
@@ -1627,11 +1626,12 @@ bool KOAgendaView::filterByResource( Incidence *incidence )
     return true;
   }
 
-  CalendarResources *calRes = dynamic_cast<CalendarResources*>( calendar() );
+  AkonadiCalendar *calRes = dynamic_cast<AkonadiCalendar*>( calendar() );
   if ( !calRes ) {
     return true;
   }
 
+#if 0 //sebsauer
   if ( calRes->resource( incidence ) != mResource ) {
     return false;
   }
@@ -1641,6 +1641,9 @@ bool KOAgendaView::filterByResource( Incidence *incidence )
       return false;
     }
   }
+#else
+  kWarning()<<"TODO";
+#endif
   return true;
 }
 

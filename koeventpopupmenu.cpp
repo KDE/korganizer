@@ -25,9 +25,7 @@
 
 #include "koeventpopupmenu.h"
 #include "actionmanager.h"
-#ifndef KORG_NOPRINTER
 #include "calprinter.h"
-#endif
 #include "kocorehelper.h"
 #include "koglobals.h"
 
@@ -48,13 +46,11 @@ KOEventPopupMenu::KOEventPopupMenu()
   mEditOnlyItems.append(
     addAction( KOGlobals::self()->smallIcon( "document-edit" ), i18n( "&Edit..." ),
                this, SLOT( popupEdit() ) ) );
-#ifndef KORG_NOPRINTER
   mEditOnlyItems.append( addSeparator() );
   addAction( KOGlobals::self()->smallIcon( "document-print" ), i18n( "&Print..." ),
              this, SLOT( print() ) );
   addAction( KOGlobals::self()->smallIcon( "document-print-preview" ), i18n( "Print Previe&w..." ),
              this, SLOT( printPreview() ) );
-#endif
   //------------------------------------------------------------------------
   mEditOnlyItems.append( addSeparator() );
   mEditOnlyItems.append( addAction( KOGlobals::self()->smallIcon( "edit-cut" ),
@@ -142,7 +138,6 @@ void KOEventPopupMenu::popupEdit()
 
 void KOEventPopupMenu::print()
 {
-#ifndef KORG_NOPRINTER
   KOCoreHelper helper;
   CalPrinter printer( this, mCalendar, &helper );
   connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
@@ -152,12 +147,10 @@ void KOEventPopupMenu::print()
 
   printer.print( KOrg::CalPrinterBase::Incidence,
                  mCurrentDate, mCurrentDate, selectedIncidences, false );
-#endif
 }
 
 void KOEventPopupMenu::printPreview()
 {
-#ifndef KORG_NOPRINTER
   KOCoreHelper helper;
   CalPrinter printer( this, mCalendar, &helper );
   connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
@@ -167,7 +160,6 @@ void KOEventPopupMenu::printPreview()
 
   printer.print( KOrg::CalPrinterBase::Incidence,
                  mCurrentDate, mCurrentDate, selectedIncidences, true );
-#endif
 }
 
 void KOEventPopupMenu::popupDelete()

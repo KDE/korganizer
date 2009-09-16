@@ -37,18 +37,18 @@
 #include <QDateTime>
 #include <QObject>
 
+namespace KCal {
+  class Calendar;
+  class HTMLExportSettings;
+  class Incidence;
+  class AkonadiCalendar;
+}
+
+class AkonadiCollectionView;
 class CalendarView;
 class ImportDialog;
 class KOWindowList;
-class ResourceView;
 
-namespace KCal {
-  class Calendar;
-  class CalendarResources;
-  class HTMLExportSettings;
-  class Incidence;
-  class ResourceCalendar;
-}
 using namespace KCal;
 
 class KRecentFilesAction;
@@ -82,9 +82,9 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     void createCalendarLocal();
 
     /**
-      Create Calendar object based on the resource framework and set it on the view.
+      Create Calendar object based on the akonadi framework and set it on the view.
     */
-    void createCalendarResources();
+    void createCalendarAkonadi();
 
     /**
       Save calendar to disk.
@@ -256,8 +256,10 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     */
     void closingDown();
 
+#if 0 //sebsauer
     /** Indicates that a new resource was added */
     void resourceAdded( ResourceCalendar * );
+#endif
 
   public slots:
     /**
@@ -376,6 +378,7 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
   private slots:
     void dumpText( const QString & );  // only for debugging purposes
 
+    void slotResourcesChanged(bool);
     void slotChangeComboActionItem(int);
 
   private:
@@ -407,6 +410,11 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
 
     KToggleAction *mHideMenuBarAction;
 
+    KAction *mNewEventAction;
+    KAction *mNewTodoAction;
+    KAction *mNewSubtodoAction;
+    KAction *mNewJournalAction;
+
     KAction *mShowIncidenceAction;
     KAction *mEditIncidenceAction;
     KAction *mDeleteIncidenceAction;
@@ -432,11 +440,9 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
 
     bool mHtmlExportSync;
 
-    // Either mCalendar *or* mCalendarResources is set.
     Calendar *mCalendar;
-    CalendarResources *mCalendarResources;
-
-    ResourceView *mResourceView;
+    AkonadiCalendar *mCalendarAkonadi;
+    AkonadiCollectionView *mResourceView;
 
     bool mIsClosing;
 };

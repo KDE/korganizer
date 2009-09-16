@@ -36,7 +36,6 @@
 
 #include <KLocale>
 
-#ifndef KORG_NOPRINTER
 using namespace KCal;
 using namespace KOrg;
 
@@ -336,7 +335,5 @@ class CalPrintTodoConfig : public QWidget, public Ui::CalPrintTodoConfig_Base
       setupUi( this );
     }
 };
-
-#endif
 
 #endif

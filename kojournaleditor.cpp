@@ -151,8 +151,10 @@ bool KOJournalEditor::processInput()
     if ( *mJournal == *journal ) {
       // Don't do anything
     } else {
+      mJournal->startUpdates(); //merge multiple mJournal->updated() calls into one
       fillJournal( mJournal );
       rc = mChanger->changeIncidence( oldJournal, mJournal );
+      mJournal->endUpdates();
     }
     delete journal;
     delete oldJournal;

@@ -13,7 +13,7 @@ kde4_add_plugin(korg_whatsnextprint ${korg_whatsnextprint_PART_SRCS})
 
 
 
-target_link_libraries(korg_whatsnextprint  ${KDE4_KDEUI_LIBS}  korg_stdprinting )
+target_link_libraries(korg_whatsnextprint  ${KDE4_KDEUI_LIBS}  korganizerprivate )
 
 install(TARGETS korg_whatsnextprint  DESTINATION ${PLUGIN_INSTALL_DIR})
 

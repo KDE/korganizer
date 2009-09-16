@@ -20,7 +20,9 @@
 */
 
 #include "stdcalendar.h"
+#include "akonadicalendar.h"
 
+#include <KDebug>
 #include <K3StaticDeleter>
 #include <KConfigGroup>
 #include <KStandardDirs>
@@ -42,10 +44,10 @@ StdCalendar *StdCalendar::self()
 }
 
 StdCalendar::StdCalendar()
-  : CalendarResources( KSystemTimeZones::local() )
+  : KCal::AkonadiCalendar( KSystemTimeZones::local() )
 {
+#if 0 //sebsauer
   readConfig();
-
   KCal::CalendarResourceManager *manager = resourceManager();
   if ( manager->isEmpty() ) {
     KConfig _config( "korganizerrc" );
@@ -101,9 +103,16 @@ StdCalendar::StdCalendar()
       kDebug() << "Unable to add a Birthdays calendar";
     }
   }
+#endif
 }
 
 StdCalendar::~StdCalendar()
 {
   mSelf = 0;
+}
+
+void StdCalendar::load()
+{
+  //sebsauer
+  kWarning()<<"TODO";
 }

@@ -13,7 +13,7 @@ kde4_add_plugin(korg_listprint ${korg_listprint_PART_SRCS})
 
 
 
-target_link_libraries(korg_listprint  ${KDE4_KDEUI_LIBS} korg_stdprinting )
+target_link_libraries(korg_listprint  ${KDE4_KDEUI_LIBS} korganizerprivate )
 
 install(TARGETS korg_listprint  DESTINATION ${PLUGIN_INSTALL_DIR})
 

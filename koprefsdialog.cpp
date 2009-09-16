@@ -63,6 +63,9 @@ using namespace KHolidays;
 #include <QTreeWidget>
 #include <QVBoxLayout>
 
+#include <akonadi/collectionfilterproxymodel.h>
+#include <akonadi/collectionmodel.h>
+
 KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *parent )
   : KPrefsModule( KOPrefs::instance(), inst, parent )
 {
@@ -741,6 +744,12 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
   connect( mResourceCombo, SIGNAL(activated(int)), SLOT(updateResourceColor()) );
   resourceLayout->addWidget( mResourceCombo );
 
+  Akonadi::CollectionModel *collectionmodel = new Akonadi::CollectionModel( this );
+  Akonadi::CollectionFilterProxyModel *collectionproxymodel = new Akonadi::CollectionFilterProxyModel( this );
+  collectionproxymodel->setSourceModel( collectionmodel );
+  collectionproxymodel->addMimeTypeFilter( QString::fromLatin1( "text/calendar" ) );
+  mResourceCombo->setModel( collectionproxymodel );
+
   mResourceButton = new KColorButton( resourceGroup );
   mResourceButton->setWhatsThis(
     i18nc( "@info:whatsthis",
@@ -748,8 +757,6 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts( const KComponentData &
            "using the combo box above." ) );
   connect( mResourceButton, SIGNAL(changed(const QColor &)), SLOT(setResourceColor()) );
   resourceLayout->addWidget( mResourceButton );
-
-  updateResources();
 
   colorLayout->setRowStretch( 10, 1 );
 
@@ -844,49 +851,31 @@ void KOPrefsDialogColorsAndFonts::updateCategoryColor()
 
 void KOPrefsDialogColorsAndFonts::updateResources()
 {
-  mResourceCombo->clear();
-  mResourceIdentifier.clear();
-
-  KCal::CalendarResourceManager *manager = KOrg::StdCalendar::self()->resourceManager();
-
-  KCal::CalendarResourceManager::Iterator it;
-  for ( it = manager->begin(); it != manager->end(); ++it ) {
-    if ( !(*it)->subresources().isEmpty() ) {
-      QStringList subresources = (*it)->subresources();
-      for ( int i = 0; i < subresources.count(); ++i ) {
-        QString resource = subresources.at( i );
-        if ( (*it)->subresourceActive( resource ) ) {
-          mResourceCombo->addItem( (*it)->labelForSubresource( resource ) );
-          mResourceIdentifier.append( resource );
-        }
-      }
-    }
-
-    mResourceCombo->addItem( (*it)->resourceName() );
-    mResourceIdentifier.append( (*it)->identifier() );
-  }
-
   updateResourceColor();
 }
 
 void KOPrefsDialogColorsAndFonts::setResourceColor()
 {
-  mResourceDict.insert( mResourceIdentifier[mResourceCombo->currentIndex()],
-                        mResourceButton->color() );
+  bool ok;
+  QString id = QString::number( mResourceCombo->itemData(mResourceCombo->currentIndex(), Akonadi::CollectionModel::CollectionIdRole).toLongLong(&ok) );
+  if( ! ok ) return;
+  mResourceDict.insert( id, mResourceButton->color() );
   slotWidChanged();
 }
 
 void KOPrefsDialogColorsAndFonts::updateResourceColor()
 {
-  QString res = mResourceIdentifier[mResourceCombo->currentIndex()];
-  QColor color = mCategoryDict.value( res );
-  if ( !color.isValid() )  {
-    color = KOPrefs::instance()->resourceColor( res );
-  }
-  if ( color.isValid() ) {
+  bool ok;
+  QString id = QString::number( mResourceCombo->itemData(mResourceCombo->currentIndex(), Akonadi::CollectionModel::CollectionIdRole).toLongLong(&ok) );
+  if( ! ok ) return;
+  kDebug()<<id<<mResourceCombo->itemText(mResourceCombo->currentIndex());
+  QColor color = mResourceDict.value( id );
+  if( ! color.isValid() )
+    color = KOPrefs::instance()->resourceColor( id );
+  if( color.isValid() )
     mResourceButton->setColor( color );
-  }
 }
+
 extern "C"
 {
   KDE_EXPORT KCModule *create_korganizerconfigcolorsandfonts( QWidget *parent, const char * )
@@ -1298,11 +1287,9 @@ void KOPrefsDialogPlugins::usrReadConfig()
   QTreeWidgetItem *decorations =
     new QTreeWidgetItem( mTreeWidget, QStringList(
                            i18nc( "@title:group", "Calendar Decorations" ) ) );
-#ifndef KORG_NOPRINTER
   QTreeWidgetItem *printPlugins =
     new QTreeWidgetItem( mTreeWidget, QStringList(
                            i18nc( "@title:group", "Print Plugins" ) ) );
-#endif
   QTreeWidgetItem *others =
     new QTreeWidgetItem( mTreeWidget, QStringList(
                            i18nc( "@title:group", "Other Plugins" ) ) );
@@ -1312,10 +1299,8 @@ void KOPrefsDialogPlugins::usrReadConfig()
     QTreeWidgetItem *item;
     if ( (*it)->hasServiceType( KOrg::CalendarDecoration::Decoration::serviceType() ) ) {
       item = new PluginItem( decorations, *it );
-#ifndef KORG_NOPRINTER
     } else if ( (*it)->hasServiceType( KOrg::PrintPlugin::serviceType() ) ){
       item = new PluginItem( printPlugins, *it );
-#endif
     } else {
       item = new PluginItem( others, *it );
     }
@@ -1327,9 +1312,7 @@ void KOPrefsDialogPlugins::usrReadConfig()
   }
 
   decorations->setExpanded( true );
-#ifndef KORG_NOPRINTER
   printPlugins->setExpanded( true );
-#endif
   others->setExpanded( true );
 
   mDecorationsAtMonthViewTop = KOPrefs::instance()->decorationsAtMonthViewTop().toSet();

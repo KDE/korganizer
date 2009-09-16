@@ -80,7 +80,7 @@ KOAttendeeListView::KOAttendeeListView ( QWidget *parent )
 }
 
 /** KOAttendeeListView is a child class of K3ListView  which supports
- *  dropping of attendees (e.g. from kaddressbook) onto it. If an attendee
+ *  dropping of attendees (e.g. from kcontactmanager) onto it. If an attendee
  *  was dropped, the signal dropped(Attendee*)  is emitted.
  */
 KOAttendeeListView::~KOAttendeeListView()
