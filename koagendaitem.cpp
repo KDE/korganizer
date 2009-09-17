@@ -70,7 +70,7 @@ KOAgendaItem::KOAgendaItem( Calendar *calendar, Incidence *incidence,
   mLabelText( mIncidence->summary() ), mIconAlarm( false ),
   mIconRecur( false ), mIconReadonly( false ), mIconReply( false ),
   mIconGroup( false ), mIconGroupTentative( false ), mIconOrganizer( false ),
-  mMultiItemInfo( 0 ), mStartMoveInfo( 0 )
+  mMultiItemInfo( 0 ), mStartMoveInfo( 0 ), mSpecialEvent( false )
 {
   setBackgroundMode( Qt::NoBackground );
 
@@ -666,11 +666,22 @@ static void conditionalPaint( QPainter *p, bool cond, int &x, int ft,
 void KOAgendaItem::paintEventIcon( QPainter *p, int &x, int ft )
 {
   if ( !mIncidence ) return;
-  static const QPixmap eventPxmp =
-    KOGlobals::self()->smallIcon( "appointment" );
-  if ( mIncidence->type() != "Event" )
-    return;
-  conditionalPaint( p, true, x, ft, eventPxmp );
+
+  if ( mIncidence->type() == "Event" ) {
+    QPixmap eventPxmp;
+    if ( mIncidence->customProperty( "KABC", "BIRTHDAY" ) == "YES" ) {
+      mSpecialEvent = true;
+      if ( mIncidence->customProperty( "KABC", "ANNIVERSARY" ) == "YES" ) {
+        eventPxmp = KOGlobals::self()->smallIcon( "calendaranniversary" );
+      } else {
+        eventPxmp = KOGlobals::self()->smallIcon( "calendarbirthday" );
+      }
+    } else {
+      eventPxmp = KOGlobals::self()->smallIcon( "appointment" );
+    }
+    conditionalPaint( p, true, x, ft, eventPxmp );
+  }
+
 }
 
 void KOAgendaItem::paintTodoIcon( QPainter *p, int &x, int ft )
@@ -703,9 +714,11 @@ void KOAgendaItem::paintIcons( QPainter *p, int &x, int ft )
 {
   paintEventIcon( p, x, ft );
   paintTodoIcon( p, x, ft );
-  paintAlarmIcon( p, x, ft );
-  conditionalPaint( p, mIconRecur,          x, ft, *recurPxmp );
-  conditionalPaint( p, mIconReadonly,       x, ft, *readonlyPxmp );
+  if ( !mSpecialEvent ) {
+    paintAlarmIcon( p, x, ft );
+  }
+  conditionalPaint( p, mIconRecur && !mSpecialEvent, x, ft, *recurPxmp );
+  conditionalPaint( p, mIconReadonly && !mSpecialEvent, x, ft, *readonlyPxmp );
   conditionalPaint( p, mIconReply,          x, ft, *replyPxmp );
   conditionalPaint( p, mIconGroup,          x, ft, *groupPxmp );
   conditionalPaint( p, mIconGroupTentative, x, ft, *groupPxmpTentative );

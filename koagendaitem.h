@@ -183,7 +183,7 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     QString mLabelText;
     bool mIconAlarm, mIconRecur, mIconReadonly;
     bool mIconReply, mIconGroup, mIconGroupTentative;
-    bool mIconOrganizer;
+    bool mIconOrganizer, mSpecialEvent;
 
     // Multi item pointers
     MultiItemInfo* mMultiItemInfo;

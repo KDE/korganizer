@@ -200,6 +200,8 @@ MonthViewItem::MonthViewItem( Incidence *incidence, const QDateTime &qd,
   mDateTime = qd;
 
   mEventPixmap     = KOGlobals::self()->smallIcon( "appointment" );
+  mBirthdayPixmap  = KOGlobals::self()->smallIcon( "calendarbirthday" );
+  mAnniversaryPixmap= KOGlobals::self()->smallIcon( "calendaranniversary" );
   mTodoPixmap      = KOGlobals::self()->smallIcon( "todo" );
   mTodoDonePixmap  = KOGlobals::self()->smallIcon( "checkedbox" );
   mAlarmPixmap     = KOGlobals::self()->smallIcon( "bell" );
@@ -302,11 +304,26 @@ void MonthViewItem::paint( QPainter *p )
   p->eraseRect( offset, offset, listBox()->maxItemWidth()-2*offset, height( listBox() )-2*offset );
 
   int x = 3;
-// Do NOT put on the event pixmap because it takes up too much space
-//  if ( mEvent ) {
-//    p->drawPixmap( x, 0, mEventPixmap );
-//    x += mEventPixmap.width() + 2;
-//  }
+
+  bool specialEvent = false;
+  if ( mEvent ) {
+    if ( mIncidence->customProperty( "KABC", "BIRTHDAY" ) == "YES" ) {
+      specialEvent = true;
+      if ( mIncidence->customProperty( "KABC", "ANNIVERSARY" ) == "YES" ) {
+        p->drawPixmap( x, 0, mAnniversaryPixmap );
+        x += mAnniversaryPixmap.width() + 2;
+      } else {
+        p->drawPixmap( x, 0, mBirthdayPixmap );
+        x += mBirthdayPixmap.width() + 2;
+      }
+    // Do NOT put on the event pixmap because it takes up too much space
+    //} else {
+    //  p->drawPixmap( x, 0, mEventPixmap );
+    //  x += mEventPixmap.width() + 2;
+    //
+    }
+  }
+
   if ( mTodo ) {
     p->drawPixmap( x, 0, mTodoPixmap );
     x += mTodoPixmap.width() + 2;
@@ -315,11 +332,11 @@ void MonthViewItem::paint( QPainter *p )
     p->drawPixmap( x, 0, mTodoDonePixmap );
     x += mTodoPixmap.width() + 2;
   }
-  if ( mRecur ) {
+  if ( mRecur && !specialEvent ) {
     p->drawPixmap( x, 0, mRecurPixmap );
     x += mRecurPixmap.width() + 2;
   }
-  if ( mAlarm ) {
+  if ( mAlarm && !specialEvent ) {
     p->drawPixmap( x, 0, mAlarmPixmap );
     x += mAlarmPixmap.width() + 2;
   }

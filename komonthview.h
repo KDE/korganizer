@@ -108,6 +108,8 @@ class MonthViewItem: public QListBoxItem
     bool mReply;
 
     QPixmap mEventPixmap;
+    QPixmap mBirthdayPixmap;
+    QPixmap mAnniversaryPixmap;
     QPixmap mTodoPixmap;
     QPixmap mTodoDonePixmap;
     QPixmap mAlarmPixmap;
