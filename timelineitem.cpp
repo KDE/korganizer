@@ -32,7 +32,7 @@ using namespace KOrg;
 using namespace KCal;
 
 TimelineItem::TimelineItem( const QString &label, KCal::Calendar *calendar, KDGanttView * parent) :
-    KDGanttViewTaskItem( parent )
+    KDGanttViewTaskItem( parent ), mCalendar( calendar )
 {
   setListViewText( 0, label );
   setDisplaySubitemsAsGroup( true );
