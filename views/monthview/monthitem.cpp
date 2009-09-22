@@ -537,16 +537,25 @@ QList<QPixmap *> IncidenceMonthItem::icons() const
 {
   QList<QPixmap *> ret;
 
+  bool specialEvent = false;
   if ( mIsEvent ) {
+    if ( mIncidence->customProperty( "KABC", "BIRTHDAY" ) == "YES" ) {
+      specialEvent = true;
+      if ( mIncidence->customProperty( "KABC", "ANNIVERSARY" ) == "YES" ) {
+        ret << monthScene()->anniversaryPixmap();
+      } else {
+        ret << monthScene()->birthdayPixmap();
+      }
+    }
+    // smartins: Disabling the event Pixmap because:
+    // 1. Save precious space so we can read the event's title better.
+    // 2. We don't need a pixmap to tell us an item is an event we
+    //    only need one to tell us it's not, as month view was designed for events.
+    // 3. If only to-dos and journals have a pixmap they will be distinguished
+    //    from event's much easier.
 
-   // smartins: Disabling the event Pixmap because:
-   // 1. Save precious space so we can read the event's title better.
-   // 2. We don't need a pixmap to tell us an item is an event we
-   //    only need one to tell us it's not, as month view was designed for events.
-   // 3. If only to-dos and journals have a pixmap they will be distinguished
-   //    from event's much easier.
+    // ret << monthScene()->eventPixmap();
 
-   // ret << monthScene()->eventPixmap();
   } else if ( mIsTodo ) {
 
     Todo *todo = static_cast<Todo *>( mIncidence );
@@ -561,16 +570,16 @@ QList<QPixmap *> IncidenceMonthItem::icons() const
   } else if ( mIsJournal ) {
     ret << monthScene()->journalPixmap();
   }
-  if ( mIncidence->isReadOnly() ) {
+  if ( mIncidence->isReadOnly() && !specialEvent ) {
     ret << monthScene()->readonlyPixmap();
   }
 #if 0
   /* sorry, this looks too cluttered. disable until we can
      make something prettier; no idea at this time -- allen */
-  if ( mIncidence->isAlarmEnabled() ) {
+  if ( mIncidence->isAlarmEnabled() && !specialEvent ) {
     ret << monthScene()->alarmPixmap();
   }
-  if ( mIncidence->recurs() ) {
+  if ( mIncidence->recurs() && !specialEvent ) {
     ret << monthScene()->recurPixmap();
   }
   //TODO: check what to do with Reply

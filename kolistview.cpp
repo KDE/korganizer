@@ -113,7 +113,17 @@ bool KOListView::ListItemVisitor::visit( Event *e )
   else
     mItem->setSortKey(2,"0");
 
-  static const QPixmap eventPxmp = KOGlobals::self()->smallIcon( "view-calendar-day" );
+  QPixmap eventPxmp;
+  if ( e->customProperty( "KABC", "BIRTHDAY" ) == "YES" ) {
+    if ( e->customProperty( "KABC", "ANNIVERSARY" ) == "YES" ) {
+      eventPxmp = KOGlobals::self()->smallIcon( "view-calendar-wedding-anniversary" );
+    } else {
+      eventPxmp = KOGlobals::self()->smallIcon( "view-calendar-birthday" );
+    }
+  } else {
+    eventPxmp = KOGlobals::self()->smallIcon( "view-calendar-day" );
+  }
+
   mItem->setPixmap(0, eventPxmp);
 
   mItem->setText( 3,e->dtStartDateStr( true, KOPrefs::instance()->timeSpec() ) );
