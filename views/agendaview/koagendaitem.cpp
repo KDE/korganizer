@@ -67,7 +67,7 @@ QPixmap *KOAgendaItem::completedPxmp = 0;
 KOAgendaItem::KOAgendaItem( Calendar *calendar, Incidence *incidence,
                             const QDate &qd, QWidget *parent )
   : QWidget( parent ), mCalendar( calendar ), mIncidence( incidence ),
-    mDate( qd ), mValid( true ), mCloned( false )
+    mDate( qd ), mSpecialEvent( false ), mValid( true ), mCloned( false )
 {
   if ( !mIncidence ) {
     mValid = false;
@@ -730,7 +730,21 @@ void KOAgendaItem::paintEventIcon( QPainter *p, int &x, int y, int ft )
   if ( !mValid ) {
     return;
   }
-  conditionalPaint( p, mIncidence->type() == "Event", x, y, ft, *eventPxmp );
+
+  if ( mIncidence && mIncidence->type() == "Event" ) {
+    QPixmap tPxmp;
+    if ( mIncidence->customProperty( "KABC", "BIRTHDAY" ) == "YES" ) {
+      mSpecialEvent = true;
+      if ( mIncidence->customProperty( "KABC", "ANNIVERSARY" ) == "YES" ) {
+        tPxmp = KOGlobals::self()->smallIcon( "view-calendar-wedding-anniversary" );
+      } else {
+        tPxmp = KOGlobals::self()->smallIcon( "view-calendar-birthday" );
+      }
+    } else {
+      tPxmp = *eventPxmp;
+    }
+    conditionalPaint( p, true, x, y, ft, tPxmp );
+  }
 }
 
 void KOAgendaItem::paintTodoIcon( QPainter *p, int &x, int y, int ft )
@@ -752,6 +766,7 @@ void KOAgendaItem::paintIcons( QPainter *p, int &x, int y, int ft )
   if ( !KOPrefs::instance()->enableAgendaItemIcons() ) {
     return;
   }
+
   // smartins: Disabling the event Pixmap because:
   // 1. We don't need a pixmap to tell us an item is an event we
   //    only need one to tell us it's not, as agenda view was designed for events.
@@ -763,10 +778,10 @@ void KOAgendaItem::paintIcons( QPainter *p, int &x, int y, int ft )
 #if 0
   /* sorry, this looks too cluttered. disable until we can
      make something prettier; no idea at this time -- allen */
-  conditionalPaint( p, mIconAlarm, x, y, ft, *alarmPxmp );
-  conditionalPaint( p, mIconRecur, x, y, ft, *recurPxmp );
+  conditionalPaint( p, mIconAlarm && !mSpecialEvent, x, y, ft, *alarmPxmp );
+  conditionalPaint( p, mIconRecur && !mSpecialEvent, x, y, ft, *recurPxmp );
 #endif
-  conditionalPaint( p, mIconReadonly, x, y, ft, *readonlyPxmp );
+  conditionalPaint( p, mIconReadonly && !mSpecialEvent, x, y, ft, *readonlyPxmp );
   conditionalPaint( p, mIconReply, x, y, ft, *replyPxmp );
   conditionalPaint( p, mIconGroup, x, y, ft, *groupPxmp );
   conditionalPaint( p, mIconGroupTent, x, y, ft, *groupPxmpTent );

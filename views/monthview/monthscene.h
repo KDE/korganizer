@@ -156,6 +156,8 @@ class MonthScene : public QGraphicsScene
     MonthItem *selectedItem() { return mSelectedItem; }
 
     QPixmap *eventPixmap() { return &mEventPixmap; }
+    QPixmap *birthdayPixmap() { return &mBirthdayPixmap; }
+    QPixmap *anniversaryPixmap() { return &mAnniversaryPixmap; }
     QPixmap *todoPixmap() { return &mTodoPixmap; }
     QPixmap *todoDonePixmap() { return &mTodoDonePixmap; }
     QPixmap *journalPixmap() { return &mJournalPixmap; }
@@ -264,6 +266,8 @@ class MonthScene : public QGraphicsScene
 
     // icons to draw in front of the events
     QPixmap mEventPixmap;
+    QPixmap mBirthdayPixmap;
+    QPixmap mAnniversaryPixmap;
     QPixmap mTodoPixmap;
     QPixmap mTodoDonePixmap;
     QPixmap mJournalPixmap;
