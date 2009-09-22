@@ -67,7 +67,7 @@ QPixmap *KOAgendaItem::completedPxmp = 0;
 KOAgendaItem::KOAgendaItem( Calendar *calendar, Incidence *incidence,
                             const QDate &qd, QWidget *parent )
   : QWidget( parent ), mCalendar( calendar ), mIncidence( incidence ),
-    mDate( qd ), mSpecialEvent( false ), mValid( true ), mCloned( false )
+    mDate( qd ), mValid( true ), mCloned( false ), mSpecialEvent( false )
 {
   if ( !mIncidence ) {
     mValid = false;
@@ -740,10 +740,17 @@ void KOAgendaItem::paintEventIcon( QPainter *p, int &x, int y, int ft )
       } else {
         tPxmp = KOGlobals::self()->smallIcon( "view-calendar-birthday" );
       }
+      conditionalPaint( p, true, x, y, ft, tPxmp );
     } else {
-      tPxmp = *eventPxmp;
+      // Disabling the event Pixmap because:
+      // 1. We don't need a pixmap to tell us an item is an event we
+      //    only need one to tell us it's not, as agenda view was
+      //    designed for events.
+      // 2. If only to-dos have a pixmap they will be distinguished
+      //    from event's much easier.
+      // 3. Be consistent with month view
+      //conditionalPaint( p, true, x, y, ft, *eventPxmp );
     }
-    conditionalPaint( p, true, x, y, ft, tPxmp );
   }
 }
 
@@ -767,13 +774,7 @@ void KOAgendaItem::paintIcons( QPainter *p, int &x, int y, int ft )
     return;
   }
 
-  // smartins: Disabling the event Pixmap because:
-  // 1. We don't need a pixmap to tell us an item is an event we
-  //    only need one to tell us it's not, as agenda view was designed for events.
-  // 2. If only to-dos have a pixmap they will be distinguished
-  //    from event's much easier.
-  // 3. Be consistent with month view
-  //paintEventIcon( p, x, y, ft );
+  paintEventIcon( p, x, y, ft );
   paintTodoIcon( p, x, y, ft );
 #if 0
   /* sorry, this looks too cluttered. disable until we can
