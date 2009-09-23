@@ -53,6 +53,8 @@ MonthScene::MonthScene( MonthView *parent, Calendar *calendar )
     mStartHeight( 0 )
 {
   mEventPixmap     = KOGlobals::self()->smallIcon( "view-calendar-day" );
+  mBirthdayPixmap  = KOGlobals::self()->smallIcon( "view-calendar-birthday" );
+  mAnniversaryPixmap = KOGlobals::self()->smallIcon( "view-calendar-wedding-anniversary" );
   mTodoPixmap      = KOGlobals::self()->smallIcon( "view-calendar-tasks" );
   mTodoDonePixmap  = KOGlobals::self()->smallIcon( "task-complete" );
   mJournalPixmap   = KOGlobals::self()->smallIcon( "view-pim-journal" );
