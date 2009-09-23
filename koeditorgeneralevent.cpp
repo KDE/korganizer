@@ -424,15 +424,8 @@ void KOEditorGeneralEvent::endSpecChanged()
 void KOEditorGeneralEvent::setDefaults( const QDateTime &from,
                                         const QDateTime &to, bool allDay )
 {
-  KOEditorGeneral::setDefaults( allDay );
   mHasTimeCheckbox->setChecked( !allDay );
   setTimeEditorsEnabled( !allDay );
-
-  mTimeZoneComboStart->selectLocalTimeSpec();
-  mTimeZoneComboEnd->selectLocalTimeSpec();
-  mStartSpec = mTimeZoneComboStart->selectedTimeSpec();
-  mEndSpec = mTimeZoneComboEnd->selectedTimeSpec();
-
   setDateTimes( from, to );
 }
 
