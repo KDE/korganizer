@@ -30,11 +30,12 @@
 #include "koglobals.h"
 
 #include <kcal/incidence.h>
-#include <kcalendarsystem.h>
 
-#include <QPaintEvent>
-#include <QGraphicsSceneWheelEvent>
+#include <KCalendarSystem>
+
 #include <QGraphicsSceneMouseEvent>
+#include <QGraphicsSceneWheelEvent>
+#include <QPaintEvent>
 
 using namespace KOrg;
 
@@ -554,7 +555,7 @@ void MonthScene::mousePressEvent ( QGraphicsSceneMouseEvent *mouseEvent )
 
     selectItem( mClickedItem );
     if ( mouseEvent->button() == Qt::RightButton ) {
-      IncidenceMonthItem *tmp = dynamic_cast<IncidenceMonthItem *>( mClickedItem );
+      IncidenceMonthItem *tmp = qobject_cast<IncidenceMonthItem *>( mClickedItem );
       if ( tmp ) {
         emit showIncidencePopupSignal( mCalendar,
                                        tmp->incidence(), tmp->realStartDate() );

@@ -219,7 +219,7 @@ int MonthItem::daySpan() const
   QDateTime start( startDate() );
   QDateTime end( endDate() );
 
-  if ( end.isValid() ) {
+  if ( start.isValid() && end.isValid() ) {
     return start.daysTo( end );
   }
 
@@ -228,6 +228,10 @@ int MonthItem::daySpan() const
 
 bool MonthItem::greaterThan( const MonthItem *e1, const MonthItem *e2 )
 {
+  if ( !e1->startDate().isValid() || !e2->startDate().isValid() ) {
+    return false;
+  }
+
   if ( e1->startDate() == e2->startDate() ) {
     if ( e1->daySpan() == e2->daySpan() ) {
       if ( e1->allDay() ) {
@@ -253,6 +257,10 @@ bool MonthItem::greaterThanFallback( const MonthItem *other ) const
 
 void MonthItem::updatePosition()
 {
+  if ( !startDate().isValid() || !endDate().isValid() ) {
+    return;
+  }
+
   int firstFreeSpace = 0;
   for ( QDate d = startDate(); d <= endDate(); d = d.addDays( 1 ) ) {
     MonthCell *cell = mMonthScene->mMonthCellMap.value( d );
@@ -292,7 +300,7 @@ IncidenceMonthItem::IncidenceMonthItem( MonthScene *monthScene,
 
   // first set to 0, because it's used in startDate()
   mRecurDayOffset = 0;
-  if ( recurStartDate.isValid() ) {
+  if ( startDate().isValid() && recurStartDate.isValid() ) {
     mRecurDayOffset = startDate().daysTo( recurStartDate );
   }
 }
@@ -303,7 +311,7 @@ IncidenceMonthItem::~IncidenceMonthItem()
 
 bool IncidenceMonthItem::greaterThanFallback( const MonthItem *other ) const
 {
-  const IncidenceMonthItem *o = dynamic_cast<const IncidenceMonthItem *>( other );
+  const IncidenceMonthItem *o = qobject_cast<const IncidenceMonthItem *>( other );
   if ( !o ) {
     return MonthItem::greaterThanFallback( other );
   }
@@ -321,6 +329,10 @@ bool IncidenceMonthItem::greaterThanFallback( const MonthItem *other ) const
 
 QDate IncidenceMonthItem::realStartDate() const
 {
+  if ( !mIncidence ) {
+    return QDate();
+  }
+
   KDateTime dt;
   if ( mIsEvent || mIsJournal ) {
     dt = mIncidence->dtStart();
@@ -339,6 +351,10 @@ QDate IncidenceMonthItem::realStartDate() const
 }
 QDate IncidenceMonthItem::realEndDate() const
 {
+  if ( !mIncidence ) {
+    return QDate();
+  }
+
   KDateTime dt;
   if ( mIsEvent ) {
     dt = mIncidence->dtEnd();
@@ -375,16 +391,21 @@ void IncidenceMonthItem::finalizeMove( const QDate &newStartDate )
 {
   Q_ASSERT( isMoveable() );
 
-  updateDates( startDate().daysTo( newStartDate ),
-               startDate().daysTo( newStartDate ) );
+  if ( startDate().isValid() && newStartDate.isValid() ) {
+    updateDates( startDate().daysTo( newStartDate ),
+                 startDate().daysTo( newStartDate ) );
+  }
 }
 void IncidenceMonthItem::finalizeResize( const QDate &newStartDate,
                                          const QDate &newEndDate )
 {
   Q_ASSERT( isResizable() );
 
-  updateDates( startDate().daysTo( newStartDate ),
-               endDate().daysTo( newEndDate ) );
+  if ( startDate().isValid() && endDate().isValid() &&
+       newStartDate.isValid() && newEndDate.isValid() ) {
+    updateDates( startDate().daysTo( newStartDate ),
+                 endDate().daysTo( newEndDate ) );
+  }
 }
 
 void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
@@ -536,6 +557,10 @@ QString IncidenceMonthItem::toolTipText() const
 QList<QPixmap *> IncidenceMonthItem::icons() const
 {
   QList<QPixmap *> ret;
+
+  if ( !mIncidence ) {
+    return ret;
+  }
 
   bool specialEvent = false;
   if ( mIsEvent ) {

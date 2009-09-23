@@ -29,7 +29,6 @@
 #include "koglobals.h"
 #include "koprefs.h"
 #include "koeventpopupmenu.h"
-#include "kohelper.h"
 
 #include <kcal/incidence.h>
 #include <kcal/calendar.h>
@@ -131,9 +130,12 @@ DateList MonthView::selectedDates()
   DateList list;
 
   if ( mScene->selectedItem() ) {
-    IncidenceMonthItem *tmp = dynamic_cast<IncidenceMonthItem *>( mScene->selectedItem() );
+    IncidenceMonthItem *tmp = qobject_cast<IncidenceMonthItem *>( mScene->selectedItem() );
     if ( tmp ) {
-      list << tmp->realStartDate();
+      QDate selectedItemDate = tmp->realStartDate();
+      if ( selectedItemDate.isValid() ) {
+        list << selectedItemDate;
+      }
     }
   }
 
@@ -286,7 +288,7 @@ Incidence::List MonthView::selectedIncidences()
   Incidence::List selected;
 
   if ( mScene->selectedItem() ) {
-    IncidenceMonthItem *tmp = dynamic_cast<IncidenceMonthItem *>( mScene->selectedItem() );
+    IncidenceMonthItem *tmp = qobject_cast<IncidenceMonthItem *>( mScene->selectedItem() );
     if ( tmp ) {
       incidenceSelected = tmp->incidence();
 
@@ -308,10 +310,13 @@ void MonthView::reloadIncidences()
   QDate selectedItemDate;
 
   if ( mScene->selectedItem() ) {
-    IncidenceMonthItem *tmp = dynamic_cast<IncidenceMonthItem *>( mScene->selectedItem() );
+    IncidenceMonthItem *tmp = qobject_cast<IncidenceMonthItem *>( mScene->selectedItem() );
     if ( tmp ) {
       incidenceSelected = tmp->incidence();
       selectedItemDate = tmp->realStartDate();
+      if ( !selectedItemDate.isValid() ) {
+        return;
+      }
     }
   }
 
@@ -341,7 +346,7 @@ void MonthView::reloadIncidences()
     // cause the event to span into the displayed date range.
     int offset = 0;
     Event *event;
-    if ( ( event = dynamic_cast<Event *>( incidence ) ) ) {
+    if ( ( event = static_cast<Event *>( incidence ) ) ) {
       offset = incDtStart.daysTo( incDtEnd );
     }
     
