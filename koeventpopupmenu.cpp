@@ -99,7 +99,7 @@ void KOEventPopupMenu::showIncidencePopup( Calendar *cal, Incidence *incidence, 
   mCurrentIncidence = incidence;
   mCurrentDate = qd;
 
-  if ( mCurrentIncidence ) {
+  if ( mCurrentIncidence && qd.isValid() ) {
     // Enable/Disabled menu items only valid for editable events.
     QList<QAction *>::Iterator it;
     for ( it = mEditOnlyItems.begin(); it != mEditOnlyItems.end(); ++it ) {
