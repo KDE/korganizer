@@ -206,8 +206,8 @@ void MultiAgendaView::setupViews()
     connect( agenda, SIGNAL(endMultiModify()),
              SIGNAL(endMultiModify()) );
 
-    connect( agenda, SIGNAL(incidenceSelected(Incidence *)),
-             SIGNAL(incidenceSelected(Incidence *)) );
+    connect( agenda, SIGNAL(incidenceSelected(Incidence *,const QDate &)),
+             SIGNAL(incidenceSelected(Incidence *,const QDate &)) );
 
     connect( agenda, SIGNAL(cutIncidenceSignal(Incidence*)),
              SIGNAL(cutIncidenceSignal(Incidence*)) );
@@ -228,7 +228,7 @@ void MultiAgendaView::setupViews()
     connect( agenda, SIGNAL(newTodoSignal(const QDate&)),
              SIGNAL(newTodoSignal(const QDate&)) );
 
-    connect( agenda, SIGNAL(incidenceSelected(Incidence*)),
+    connect( agenda, SIGNAL(incidenceSelected(Incidence *,const QDate &)),
              SLOT(slotSelectionChanged()) );
 
     connect( agenda, SIGNAL(timeSpanSelectionChanged()),
@@ -303,10 +303,10 @@ void MultiAgendaView::showDates( const QDate &start, const QDate &end )
   }
 }
 
-void MultiAgendaView::showIncidences( const Incidence::List &incidenceList )
+void MultiAgendaView::showIncidences( const Incidence::List &incidenceList, const QDate &date )
 {
   foreach ( KOAgendaView *agendaView, mAgendaViews ) {
-    agendaView->showIncidences( incidenceList );
+    agendaView->showIncidences( incidenceList, date );
   }
 }
 

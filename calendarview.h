@@ -202,7 +202,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
       Emitted when an incidence gets selected. If the selection is cleared the
       signal is emitted with 0 as argument.
     */
-    void incidenceSelected( Incidence * );
+    void incidenceSelected( Incidence  *incidence, const QDate &date );
     /** Emitted, when a todoitem is selected or deselected.
         the connected slots enables/disables the corresponding menu items */
     void todoSelected( bool );
@@ -446,7 +446,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
 
     void editCanceled( Incidence * );
 
-    void updateView( const QDate &start, const QDate &end, const bool updateTodos );
+    void updateView( const QDate &start, const QDate &end, const bool updateTodos=true );
     void updateView();
 
     void updateUnmanagedViews();
@@ -574,10 +574,10 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
 
     void dialogClosing( Incidence * );
 
-    void processMainViewSelection( Incidence * );
-    void processTodoListSelection( Incidence * );
+    void processMainViewSelection( Incidence *incidence, const QDate &date );
+    void processTodoListSelection( Incidence *incidence, const QDate &date );
 
-    void processIncidenceSelection( Incidence * );
+    void processIncidenceSelection( Incidence *incidence, const QDate &date );
 
     void purgeCompleted();
 

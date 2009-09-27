@@ -172,7 +172,7 @@ AlarmDialog::AlarmDialog( KCal::Calendar *calendar, QWidget *parent )
              "<emphasis>Select an event or to-do from the list above "
              "to view its details here.</emphasis>" );
   mDetailView->setDefaultText( s );
-  mDetailView->setIncidence( 0 );
+  mDetailView->setIncidence( 0, QDate() );
   mTopLayout->addWidget( mDetailView );
   mDetailView->hide();
   mLastItem = 0;
@@ -283,7 +283,8 @@ void AlarmDialog::addIncidence( Incidence *incidence,
   }
   item->setText( 2, triggerStr );
 
-  QString tip = IncidenceFormatter::toolTipStr( mCalendar, incidence, true,
+  QString tip = IncidenceFormatter::toolTipStr( mCalendar, incidence,
+                                                item->mRemindAt.date(), true,
                                                 KDateTime::Spec::LocalZone() );
   if ( !item->mDisplayText.isEmpty() ) {
     tip += "<br>" + item->mDisplayText;
@@ -704,13 +705,13 @@ void AlarmDialog::showDetails()
   mDetailView->clear();
   ReminderListItem *item = dynamic_cast<ReminderListItem *>( mIncidenceTree->currentItem() );
   if ( !item ) {
-    mDetailView->setIncidence( 0 );
+    mDetailView->setIncidence( 0, QDate() );
   } else {
     if ( !item->mDisplayText.isEmpty() ) {
       QString txt = "<qt><p><b>" + item->mDisplayText + "</b></p></qt>";
       mDetailView->addText( txt );
     }
-    mDetailView->appendIncidence( item->mIncidence );
+    mDetailView->appendIncidence( item->mIncidence, item->mRemindAt.date() );
   }
 }
 

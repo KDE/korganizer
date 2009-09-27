@@ -352,28 +352,29 @@ void KOListView::showDates( const QDate &start, const QDate &end )
 
   QDate date = start;
   while ( date <= end ) {
-    addIncidences( calendar()->incidences( date ) );
+    addIncidences( calendar()->incidences( date ), date );
     mSelectedDates.append( date );
     date = date.addDays( 1 );
   }
 
-  emit incidenceSelected( 0 );
+  emit incidenceSelected( 0, QDate() );
 }
 
-void KOListView::addIncidences( const Incidence::List &incidenceList )
+void KOListView::addIncidences( const Incidence::List &incidenceList, const QDate &date )
 {
   Incidence::List::ConstIterator it;
   for ( it = incidenceList.begin(); it != incidenceList.end(); ++it ) {
-    addIncidence( *it );
+    addIncidence( *it, date );
   }
 }
 
-void KOListView::addIncidence( Incidence *incidence )
+void KOListView::addIncidence( Incidence *incidence, const QDate &date )
 {
   if ( mUidList.contains( incidence->uid() ) ) {
     return;
   }
 
+  mDateList[incidence->uid()] = date;
   mUidList.append( incidence->uid() );
 
   Incidence *tinc = incidence;
@@ -397,14 +398,14 @@ void KOListView::addIncidence( Incidence *incidence )
   }
 }
 
-void KOListView::showIncidences( const Incidence::List &incidenceList )
+void KOListView::showIncidences( const Incidence::List &incidenceList, const QDate &date )
 {
   clear();
 
-  addIncidences( incidenceList );
+  addIncidences( incidenceList, date );
 
   // After new creation of list view no events are selected.
-  emit incidenceSelected( 0 );
+  emit incidenceSelected( 0, date );
 }
 
 void KOListView::changeIncidenceDisplay( Incidence *incidence, int action )
@@ -426,7 +427,7 @@ void KOListView::changeIncidenceDisplay( Incidence *incidence, int action )
   case KOGlobals::INCIDENCEADDED:
   {
     if ( date >= f && date <= l ) {
-      addIncidence( incidence );
+      addIncidence( incidence, date );
     }
     break;
   }
@@ -436,9 +437,10 @@ void KOListView::changeIncidenceDisplay( Incidence *incidence, int action )
     if ( item ) {
       delete item;
       mUidList.removeAll( incidence->uid() );
+      mDateList.remove( incidence->uid() );
     }
     if ( date >= f && date <= l ) {
-      addIncidence( incidence );
+      addIncidence( incidence, date );
     }
     break;
   }
@@ -503,9 +505,10 @@ void KOListView::processSelectionChange()
   KOListViewItem *item = static_cast<KOListViewItem *>( mListView->selectedItem() );
 
   if ( !item ) {
-    emit incidenceSelected( 0 );
+    emit incidenceSelected( 0, QDate() );
   } else {
-    emit incidenceSelected( item->data() );
+    Incidence *incidence = static_cast<Incidence *>( item->data() );
+    emit incidenceSelected( incidence, mDateList[incidence->uid()] );
   }
 }
 
@@ -518,6 +521,7 @@ void KOListView::clear()
 {
   mSelectedDates.clear();
   mListView->clear();
+  mDateList.clear();
   mUidList.clear();
 }
 

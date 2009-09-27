@@ -31,6 +31,7 @@
 
 #include <KCal/Incidence>
 
+#include <QHash>
 #include <QList>
 
 using namespace KCal;
@@ -85,7 +86,7 @@ class KOListView : public KOEventView
   public slots:
     virtual void updateView();
     virtual void showDates( const QDate &start, const QDate &end );
-    virtual void showIncidences( const Incidence::List &incidenceList );
+    virtual void showIncidences( const Incidence::List &incidenceList, const QDate &date );
 
     void clearSelection();
 
@@ -101,8 +102,8 @@ class KOListView : public KOEventView
     void processSelectionChange();
 
   protected:
-    void addIncidences( const Incidence::List & );
-    void addIncidence( Incidence * );
+    void addIncidences( const Incidence::List &incidenceList, const QDate & );
+    void addIncidence( Incidence *incidence, const QDate &date );
     KOListViewItem *getItemForIncidence( Incidence *incidence );
 
   private:
@@ -111,6 +112,7 @@ class KOListView : public KOEventView
     KOEventPopupMenu *mPopupMenu;
     KOListViewItem *mActiveItem;
     QList<QString> mUidList;
+    QHash<QString, QDate> mDateList;
     QDate mStartDate;
     QDate mEndDate;
     DateList mSelectedDates;

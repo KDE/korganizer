@@ -62,7 +62,7 @@ class KOJournalView : public KOrg::BaseView
     void flushView();
 
     void showDates( const QDate &start, const QDate &end );
-    void showIncidences( const Incidence::List &incidenceList );
+    void showIncidences( const Incidence::List &incidenceList, const QDate &date );
 
     void changeIncidenceDisplay( Incidence *, int );
     void setIncidenceChanger( IncidenceChangerBase *changer );

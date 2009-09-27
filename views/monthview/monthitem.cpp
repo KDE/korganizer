@@ -296,8 +296,8 @@ IncidenceMonthItem::IncidenceMonthItem( MonthScene *monthScene,
     }
   }
 
-  connect( monthScene, SIGNAL(incidenceSelected(Incidence *)),
-           this, SLOT(updateSelection(Incidence *)) );
+  connect( monthScene, SIGNAL(incidenceSelected(Incidence *,const QDate &)),
+           this, SLOT(updateSelection(Incidence *,const QDate &)) );
 
   // first set to 0, because it's used in startDate()
   mRecurDayOffset = 0;
@@ -513,8 +513,9 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
   }
 }
 
-void IncidenceMonthItem::updateSelection( Incidence *incidence )
+void IncidenceMonthItem::updateSelection( Incidence *incidence, const QDate &date )
 {
+  Q_UNUSED( date );
   setSelected( incidence == mIncidence );
 }
 
@@ -551,8 +552,12 @@ QString IncidenceMonthItem::text( bool end ) const
 
 QString IncidenceMonthItem::toolTipText() const
 {
+  QDate date;
+  if ( monthScene()->mMonthView && !monthScene()->mMonthView->selectedDates().isEmpty() ) {
+    date = monthScene()->mMonthView->selectedDates().first();
+  }
   return IncidenceFormatter::toolTipStr(
-    monthScene()->calendar(), mIncidence, true, KOPrefs::instance()->timeSpec() );
+    monthScene()->calendar(), mIncidence, date, true, KOPrefs::instance()->timeSpec() );
 }
 
 QList<QPixmap *> IncidenceMonthItem::icons() const

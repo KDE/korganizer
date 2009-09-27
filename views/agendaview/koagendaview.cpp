@@ -284,10 +284,10 @@ void KOAgendaView::connectAgenda( KOAgenda *agenda, QMenu *popup,
            SLOT(startDrag(Incidence *)) );
 
   // synchronize selections
-  connect( agenda, SIGNAL(incidenceSelected(Incidence *)),
+  connect( agenda, SIGNAL(incidenceSelected(Incidence *,const QDate &)),
            otherAgenda, SLOT(deselectItem()) );
-  connect( agenda, SIGNAL(incidenceSelected(Incidence *)),
-           SIGNAL(incidenceSelected(Incidence *)) );
+  connect( agenda, SIGNAL(incidenceSelected(Incidence *,const QDate &)),
+           SIGNAL(incidenceSelected(Incidence *,const QDate &)) );
 
   // rescheduling of todos by d'n'd
   connect( agenda, SIGNAL(droppedToDo(Todo *,const QPoint &,bool)),
@@ -1057,8 +1057,10 @@ void KOAgendaView::showDates( const QDate &start, const QDate &end )
   fillAgenda();
 }
 
-void KOAgendaView::showIncidences( const Incidence::List &incidences )
+void KOAgendaView::showIncidences( const Incidence::List &incidences, const QDate &date )
 {
+  Q_UNUSED( date );
+
   // we must check if they are not filtered; if they are, remove the filter
   CalFilter *filter = calendar()->filter();
   bool wehaveall = true;
@@ -1318,7 +1320,7 @@ void KOAgendaView::fillAgenda()
   deleteSelectedDateTime();
 
   if( !somethingReselected ) {
-    emit incidenceSelected( 0 );
+    emit incidenceSelected( 0, QDate() );
   }
 }
 

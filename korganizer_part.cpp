@@ -84,10 +84,10 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, QObject *parent, const QV
 
   QVBoxLayout *topLayout = new QVBoxLayout( canvas );
   topLayout->addWidget( mView );
-  topLayout->setMargin(0);
+  topLayout->setMargin( 0 );
 
-  connect( mView, SIGNAL( incidenceSelected( Incidence * ) ),
-           SLOT( slotChangeInfo( Incidence * ) ) );
+  connect( mView, SIGNAL(incidenceSelected(Incidence *,const QDate &)),
+           SLOT(slotChangeInfo(Incidence *,const QDate &)) );
 
   mActionManager->init();
   mActionManager->readSettings();
@@ -110,8 +110,9 @@ KOrganizerPart::~KOrganizerPart()
   KOCore::self()->removeXMLGUIClient( mTopLevelWidget );
 }
 
-void KOrganizerPart::slotChangeInfo( Incidence *incidence )
+void KOrganizerPart::slotChangeInfo( Incidence *incidence, const QDate &date )
 {
+  Q_UNUSED( date );
   if ( incidence ) {
     emit textChanged( incidence->summary() + " / " +
                       IncidenceFormatter::timeToString( incidence->dtStart() ) );

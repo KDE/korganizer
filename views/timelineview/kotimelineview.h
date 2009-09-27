@@ -50,11 +50,11 @@ class KOTimelineView : public KOEventView
     explicit KOTimelineView( Calendar *calendar, QWidget *parent = 0 );
     ~KOTimelineView();
 
-    virtual KCal::ListBase<KCal::Incidence> selectedIncidences();
+    virtual KCal::Incidence::List selectedIncidences();
     virtual KCal::DateList selectedDates();
     virtual int currentDateCount();
     virtual void showDates( const QDate &, const QDate & );
-    virtual void showIncidences( const KCal::ListBase<KCal::Incidence>& );
+    virtual void showIncidences( const KCal::Incidence::List &incidenceList, const QDate &date );
     virtual void updateView();
     virtual void changeIncidenceDisplay( KCal::Incidence *incidence, int mode );
     virtual int maxDatesHint() { return 0; }

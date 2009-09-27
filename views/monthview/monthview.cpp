@@ -104,8 +104,8 @@ MonthView::MonthView( Calendar *calendar, QWidget *parent )
   connect( mScene, SIGNAL(showNewEventPopupSignal()),
            SLOT(showNewEventPopup()) );
 
-  connect( mScene, SIGNAL(incidenceSelected(Incidence *)),
-           this, SIGNAL(incidenceSelected(Incidence *)) );
+  connect( mScene, SIGNAL(incidenceSelected(Incidence *,const QDate &)),
+           this, SIGNAL(incidenceSelected(Incidence *,const QDate &)) );
 
   connect( mScene, SIGNAL(newEventSignal()),
            this, SIGNAL(newEventSignal()) );
@@ -169,8 +169,10 @@ bool MonthView::eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &a
   return false;
 }
 
-void MonthView::showIncidences( const Incidence::List & )
+void MonthView::showIncidences( const Incidence::List &incidenceList, const QDate &date )
 {
+  Q_UNUSED( incidenceList );
+  Q_UNUSED( date );
 }
 
 void MonthView::changeIncidenceDisplay( Incidence *incidence, int action )
@@ -182,7 +184,7 @@ void MonthView::changeIncidenceDisplay( Incidence *incidence, int action )
 
   // don't call reloadIncidences() directly. It would delete all
   // MonthItems, but this changeIncidenceDisplay()-method was probably
-  // called by one of the MonthItem objects. So only shedule a reload
+  // called by one of the MonthItem objects. So only schedule a reload
   // as event
   QTimer::singleShot( 0, this, SLOT(reloadIncidences()) );
 }

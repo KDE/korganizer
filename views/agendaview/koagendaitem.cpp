@@ -1351,7 +1351,7 @@ bool KOAgendaItem::event( QEvent *event )
       QToolTip::showText(
         helpEvent->globalPos(),
         IncidenceFormatter::toolTipStr(
-          mCalendar, mIncidence, true, KOPrefs::instance()->timeSpec() ),
+          mCalendar, mIncidence, mDate, true, KOPrefs::instance()->timeSpec() ),
         this );
     }
   }

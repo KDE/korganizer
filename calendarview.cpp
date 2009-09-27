@@ -207,8 +207,8 @@ CalendarView::CalendarView( QWidget *parent )
   connect( this, SIGNAL(configChanged()),
            mDateNavigatorContainer, SLOT(updateConfig()) );
 
-  connect( this, SIGNAL(incidenceSelected(Incidence *)),
-           mEventViewer, SLOT(setIncidence(Incidence *)) );
+  connect( this, SIGNAL(incidenceSelected(Incidence *,const QDate &date)),
+           mEventViewer, SLOT(setIncidence(Incidence *,const QDate &date)) );
 
   //TODO: do a pretty Summary,
   QString s;
@@ -220,7 +220,7 @@ CalendarView::CalendarView( QWidget *parent )
   mEventViewer->setWhatsThis(
                    i18n( "View the details of events, journal entries or to-dos "
                          "selected in KOrganizer's main view here." ) );
-  mEventViewer->setIncidence( 0 );
+  mEventViewer->setIncidence( 0, QDate() );
 
   mViewManager->connectTodoView( mTodoList );
   mViewManager->connectView( mTodoList );
@@ -231,10 +231,10 @@ CalendarView::CalendarView( QWidget *parent )
   connect( QApplication::clipboard(), SIGNAL(dataChanged()),
            SLOT(checkClipboard()) );
 
-  connect( mTodoList, SIGNAL(incidenceSelected(Incidence *)),
-           SLOT(processTodoListSelection(Incidence *)) );
-  disconnect( mTodoList, SIGNAL(incidenceSelected(Incidence *)),
-              this, SLOT(processMainViewSelection(Incidence *)) );
+  connect( mTodoList, SIGNAL(incidenceSelected(Incidence *,const QDate &)),
+           SLOT(processTodoListSelection(Incidence *,const QDate &)) );
+  disconnect( mTodoList, SIGNAL(incidenceSelected(Incidence *,const QDate &)),
+              this, SLOT(processMainViewSelection(Incidence *,const QDate &)) );
 }
 
 CalendarView::~CalendarView()
@@ -786,7 +786,7 @@ void CalendarView::changeIncidenceDisplay( Incidence *incidence, int action )
     if ( mTodoList ) {
       mTodoList->changeIncidenceDisplay( incidence, action );
     }
-    mEventViewer->changeIncidenceDisplay( incidence, action );
+    mEventViewer->changeIncidenceDisplay( incidence, activeDate( true ), action );
   } else {
     mViewManager->currentView()->updateView();
     if ( mTodoList ) {
@@ -795,13 +795,16 @@ void CalendarView::changeIncidenceDisplay( Incidence *incidence, int action )
   }
 }
 
-void CalendarView::updateView( const QDate &start, const QDate &end, const bool updateTodos = true )
+void CalendarView::updateView( const QDate &start, const QDate &end, const bool updateTodos )
 {
   if ( updateTodos ) {
     mTodoList->updateView();
   }
 
-  mViewManager->updateView( start, end );
+  if ( start.isValid() && end.isValid() ) {
+    mViewManager->updateView( start, end );
+  }
+
   mDateNavigatorContainer->updateView();
 }
 
@@ -1755,31 +1758,31 @@ void CalendarView::adaptNavigationUnits()
   }
 }
 
-void CalendarView::processMainViewSelection( Incidence *incidence )
+void CalendarView::processMainViewSelection( Incidence *incidence, const QDate &date )
 {
   if ( incidence ) {
     mTodoList->clearSelection();
   }
-  processIncidenceSelection( incidence );
+  processIncidenceSelection( incidence, date );
 }
 
-void CalendarView::processTodoListSelection( Incidence *incidence )
+void CalendarView::processTodoListSelection( Incidence *incidence, const QDate &date )
 {
   if ( incidence && mViewManager->currentView() ) {
     mViewManager->currentView()->clearSelection();
   }
-  processIncidenceSelection( incidence );
+  processIncidenceSelection( incidence, date );
 }
 
-void CalendarView::processIncidenceSelection( Incidence *incidence )
+void CalendarView::processIncidenceSelection( Incidence *incidence, const QDate &date )
 {
-  if ( incidence == mSelectedIncidence ) {
+  if ( !incidence || incidence == mSelectedIncidence ) {
     return;
   }
 
   mSelectedIncidence = incidence;
+  mEventViewer->setIncidence( mSelectedIncidence, date );
 
-  emit incidenceSelected( mSelectedIncidence );
   bool organizerEvents = false;
   bool groupEvents = false;
   bool todo = false;
@@ -2083,7 +2086,7 @@ void CalendarView::pasteIncidence()
 void CalendarView::showIncidence( Incidence *incidence )
 {
   KOEventViewerDialog *eventViewer = new KOEventViewerDialog( calendar(), this );
-  eventViewer->setIncidence( incidence );
+  eventViewer->setIncidence( incidence, QDate() );
 
   // Disable the Edit button for read-only Incidences.
   if ( incidence->isReadOnly() ) {
@@ -2114,7 +2117,7 @@ void CalendarView::showIncidenceContext( Incidence *incidence )
   }
   Incidence::List list;
   list.append( incidence );
-  viewManager()->currentView()->showIncidences( list );
+  viewManager()->currentView()->showIncidences( list, QDate() );
 }
 
 bool CalendarView::editIncidence( Incidence *incidence, bool isCounter )
@@ -2345,7 +2348,7 @@ void CalendarView::deleteIncidence( Incidence *incidence, bool force )
     }
     if ( doDelete ) {
       mChanger->deleteIncidence( incidence );
-      processIncidenceSelection( 0 );
+      processIncidenceSelection( 0, QDate() );
     }
   }
 }

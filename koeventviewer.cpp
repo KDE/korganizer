@@ -95,10 +95,10 @@ void KOEventViewer::setSource( const QUrl &name )
   UriHandler::process( uri );
 }
 
-bool KOEventViewer::appendIncidence( Incidence *incidence )
+bool KOEventViewer::appendIncidence( Incidence *incidence, const QDate &date )
 {
   addText( IncidenceFormatter::extensiveDisplayStr(
-             mCalendar, incidence, KSystemTimeZones::local() ) );
+             mCalendar, incidence, date, KSystemTimeZones::local() ) );
   return true;
 }
 
@@ -107,11 +107,11 @@ void KOEventViewer::setCalendar( Calendar *calendar )
   mCalendar = calendar;
 }
 
-void KOEventViewer::setIncidence( Incidence *incidence )
+void KOEventViewer::setIncidence( Incidence *incidence, const QDate &date )
 {
   clearEvents();
   if ( incidence ) {
-    appendIncidence( incidence );
+    appendIncidence( incidence, date );
     mIncidence = incidence;
   } else {
     clearEvents( true );
@@ -138,20 +138,16 @@ void KOEventViewer::setDefaultText( const QString &text )
   mDefaultText = text;
 }
 
-void KOEventViewer::changeIncidenceDisplay( Incidence *incidence, int action )
+void KOEventViewer::changeIncidenceDisplay( Incidence *incidence, const QDate &date, int action )
 {
   if ( mIncidence && ( incidence->uid() == mIncidence->uid() ) ) {
     switch ( action ) {
     case KOGlobals::INCIDENCEEDITED:
-    {
-      setIncidence( incidence );
+      setIncidence( incidence, date );
       break;
-    }
     case KOGlobals::INCIDENCEDELETED:
-    {
-      setIncidence( 0 );
+      setIncidence( 0, date );
       break;
-    }
     }
   }
 }

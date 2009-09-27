@@ -50,7 +50,7 @@ class KORGANIZER_EVENTVIEWER_EXPORT KOEventViewer : public KTextBrowser
     /** Reimplemented from QTextBrowser to handle links. */
     void setSource( const QUrl &name );
 
-    virtual bool appendIncidence( Incidence * );
+    virtual bool appendIncidence( Incidence *incidence, const QDate &date );
 
     /**
       Set the Calendar associated with this viewer.
@@ -81,9 +81,9 @@ class KORGANIZER_EVENTVIEWER_EXPORT KOEventViewer : public KTextBrowser
     /**
       Show given incidence in viewer. Clear all previously shown incidences.
     */
-    virtual void setIncidence( Incidence * );
-    void changeIncidenceDisplay( Incidence *incidence, int action );
-    virtual void editIncidence();
+    void setIncidence( Incidence *incidence, const QDate &date );
+    void changeIncidenceDisplay( Incidence *incidence, const QDate &date, int action );
+    void editIncidence();
 
     /**
       Show the incidence in context. That means showing the todo, agenda or
