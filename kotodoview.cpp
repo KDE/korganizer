@@ -89,7 +89,7 @@ void KOTodoListViewToolTip::maybeTip( const QPoint & pos)
     r.setRight(headerPos + todolist->header()->sectionSize(col));
 
     /* Show the tip */
-    QString tipText( IncidenceFormatter::toolTipStr( mCalendar, i->todo() ) );;
+    QString tipText( IncidenceFormatter::toolTipStr( mCalendar, i->todo(), QDate(), true ) );;
     if ( !tipText.isEmpty() ) {
       tip(r, tipText);
     }
@@ -743,7 +743,7 @@ void KOTodoView::showDates(const QDate &, const QDate &)
 {
 }
 
-void KOTodoView::showIncidences( const Incidence::List & )
+void KOTodoView::showIncidences( const Incidence::List &, const QDate & )
 {
   kdDebug(5850) << "KOTodoView::showIncidences( const Incidence::List & ): not yet implemented" << endl;
 }
@@ -1083,9 +1083,13 @@ void KOTodoView::processSelectionChange()
     static_cast<KOTodoViewItem *>( mTodoListView->selectedItem() );
 
   if ( !item ) {
-    emit incidenceSelected( 0 );
+    emit incidenceSelected( 0, QDate() );
   } else {
-    emit incidenceSelected( item->todo() );
+    if ( selectedDates().isEmpty() ) {
+      emit incidenceSelected( item->todo(), QDate() );
+    } else {
+      emit incidenceSelected( item->todo(), selectedDates().first() );
+    }
   }
 }
 

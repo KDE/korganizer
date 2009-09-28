@@ -472,5 +472,5 @@ void AlarmDialog::showDetails()
   AlarmListItem *item = static_cast<AlarmListItem*>( mIncidenceListView->currentItem() );
   if ( !item || !item->isVisible() )
     return;
-  mDetailView->appendIncidence( item->mIncidence );
+  mDetailView->appendIncidence( item->mIncidence, item->mRemindAt.date() );
 }

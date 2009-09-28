@@ -1908,14 +1908,14 @@ void KOAgenda::selectItem(KOAgendaItem *item)
   if ((KOAgendaItem *)mSelectedItem == item) return;
   deselectItem();
   if (item == 0) {
-    emit incidenceSelected( 0 );
+    emit incidenceSelected( 0, QDate() );
     return;
   }
   mSelectedItem = item;
   mSelectedItem->select();
   assert( mSelectedItem->incidence() );
   mSelectedUid = mSelectedItem->incidence()->uid();
-  emit incidenceSelected( mSelectedItem->incidence() );
+  emit incidenceSelected( mSelectedItem->incidence(), mSelectedItem->itemDate() );
 }
 
 void KOAgenda::selectItemByUID( const QString& uid )

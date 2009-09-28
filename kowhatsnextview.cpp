@@ -244,7 +244,7 @@ void KOWhatsNextView::showDates( const QDate &start, const QDate &end )
   updateView();
 }
 
-void KOWhatsNextView::showIncidences( const Incidence::List & )
+void KOWhatsNextView::showIncidences( const Incidence::List &, const QDate & )
 {
 }
 

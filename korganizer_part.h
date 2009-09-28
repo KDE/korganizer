@@ -51,6 +51,8 @@ namespace KOrg {
 class CalendarViewBase;
 }
 
+class QDate;
+
 class KOrganizerPart: public KParts::ReadOnlyPart,
                       public KOrg::MainWindow
 {
@@ -84,7 +86,7 @@ class KOrganizerPart: public KParts::ReadOnlyPart,
     void setTitle();
 
   public slots:
-    void slotChangeInfo( Incidence * );
+    void slotChangeInfo( Incidence *incidence, const QDate & );
 
   protected:
     virtual bool openFile();

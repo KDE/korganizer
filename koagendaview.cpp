@@ -421,10 +421,10 @@ void KOAgendaView::connectAgenda( KOAgenda *agenda, QPopupMenu *popup,
            SLOT( startDrag( Incidence * ) ) );
 
   // synchronize selections
-  connect( agenda, SIGNAL( incidenceSelected( Incidence * ) ),
+  connect( agenda, SIGNAL( incidenceSelected( Incidence *,const QDate & ) ),
            otherAgenda, SLOT( deselectItem() ) );
-  connect( agenda, SIGNAL( incidenceSelected( Incidence * ) ),
-           SIGNAL( incidenceSelected( Incidence * ) ) );
+  connect( agenda, SIGNAL( incidenceSelected( Incidence *,const QDate & ) ),
+           SIGNAL( incidenceSelected( Incidence *, const QDate & ) ) );
 
   // rescheduling of todos by d'n'd
   connect( agenda, SIGNAL( droppedToDo( Todo *, const QPoint &, bool ) ),
@@ -1007,7 +1007,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
   item->setItemDate( startDt.date() );
 
   KOIncidenceToolTip::remove( item );
-  KOIncidenceToolTip::add( item, calendar(), incidence, KOAgendaItem::toolTipGroup() );
+  KOIncidenceToolTip::add( item, calendar(), incidence, thisDate, KOAgendaItem::toolTipGroup() );
 
   const bool result = mChanger->changeIncidence( oldIncidence, incidence );
   mChanger->endChange(incidence);
@@ -1067,7 +1067,7 @@ void KOAgendaView::showDates( const QDate &start, const QDate &end )
 }
 
 
-void KOAgendaView::showIncidences( const Incidence::List & )
+void KOAgendaView::showIncidences( const Incidence::List &, const QDate & )
 {
   kdDebug(5850) << "KOAgendaView::showIncidences( const Incidence::List & ) is not yet implemented" << endl;
 }
@@ -1351,7 +1351,7 @@ void KOAgendaView::fillAgenda()
   deleteSelectedDateTime();
 
   if( !somethingReselected ) {
-    emit incidenceSelected( 0 );
+    emit incidenceSelected( 0, QDate() );
   }
 
 //  kdDebug(5850) << "Fill Agenda done" << endl;

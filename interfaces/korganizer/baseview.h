@@ -124,8 +124,9 @@ class KDE_EXPORT BaseView : public QWidget
       show all given events.
 
       @param incidenceList a list of incidences to show.
+      @param date is the QDate on which the incidences are being shown.
     */
-    virtual void showIncidences( const Incidence::List &incidenceList ) = 0;
+    virtual void showIncidences( const Incidence::List &incidenceList, const QDate &date ) = 0;
 
     /**
       Updates the current display to reflect changes that may have happened
@@ -166,7 +167,7 @@ class KDE_EXPORT BaseView : public QWidget
     virtual bool eventDurationHint(QDateTime &/*startDt*/, QDateTime &/*endDt*/, bool &/*allDay*/) { return false; }
 
   signals:
-    void incidenceSelected( Incidence * );
+    void incidenceSelected( Incidence *, const QDate );
 
     /**
      * instructs the receiver to show the incidence in read-only mode.

@@ -70,7 +70,7 @@ KOAgendaItem::KOAgendaItem( Calendar *calendar, Incidence *incidence,
   mLabelText( mIncidence->summary() ), mIconAlarm( false ),
   mIconRecur( false ), mIconReadonly( false ), mIconReply( false ),
   mIconGroup( false ), mIconGroupTentative( false ), mIconOrganizer( false ),
-  mMultiItemInfo( 0 ), mStartMoveInfo( 0 ), mSpecialEvent( false )
+  mSpecialEvent( false ), mMultiItemInfo( 0 ), mStartMoveInfo( 0 )
 {
   setBackgroundMode( Qt::NoBackground );
 
@@ -84,7 +84,7 @@ KOAgendaItem::KOAgendaItem( Calendar *calendar, Incidence *incidence,
   mSelected = true;
   select( false );
 
-  KOIncidenceToolTip::add( this, mCalendar, incidence, toolTipGroup() );
+  KOIncidenceToolTip::add( this, mCalendar, incidence, mDate, toolTipGroup() );
   setAcceptDrops( true );
 }
 

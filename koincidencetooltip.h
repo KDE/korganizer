@@ -40,22 +40,24 @@ class KOAgendaItem;
 class KOIncidenceToolTip : public QToolTip
 {
   public:
-    KOIncidenceToolTip( QWidget *widget, Calendar *calendar, QToolTipGroup *group = 0 )
-      : QToolTip (widget, group), mCalendar( calendar ), mText(0) {}
+    KOIncidenceToolTip( QWidget *widget, Calendar *calendar, const QDate &date, QToolTipGroup *group = 0 )
+      : QToolTip (widget, group), mCalendar( calendar ), mDate( date ), mText(0) {}
 /*    ~KOIncidenceToolTip();*/
 
   public:
     static void add ( QWidget *widget, Calendar *calendar,
-                      Incidence *incidence, QToolTipGroup *group = 0,
-                      const QString &longText = "" );
+                      Incidence *incidence, const QDate &date=QDate(),
+                      QToolTipGroup *group = 0, const QString &longText = "" );
     static void add( KOAgendaItem *item, Calendar *calendar,
-                     Incidence *incidence = 0, QToolTipGroup *group = 0 );
+                     Incidence *incidence = 0, const QDate &date=QDate(),
+                     QToolTipGroup *group = 0 );
 
     /* reimplmented from QToolTip */
     void maybeTip( const QPoint &pos );
 
   private:
     Calendar *mCalendar;
+    QDate mDate;
     QString mText;
 };
 

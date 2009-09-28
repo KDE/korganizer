@@ -34,22 +34,23 @@ some improvements by Mikolaj Machowski
 */
 
 void KOIncidenceToolTip::add ( QWidget *widget, Calendar *calendar,
-                               Incidence *incidence, QToolTipGroup *group,
-                               const QString &longText )
+                               Incidence *incidence, const QDate &date,
+                               QToolTipGroup *group, const QString &longText )
 {
   if ( !widget || !incidence ) {
     return;
   }
-  QToolTip::add( widget, IncidenceFormatter::toolTipStr( calendar, incidence ), group, longText );
+  QToolTip::add( widget, IncidenceFormatter::toolTipStr( calendar, incidence, date ), group, longText );
 }
 
 void KOIncidenceToolTip::add( KOAgendaItem *item, Calendar *calendar,
-                              Incidence *incidence, QToolTipGroup *group )
+                              Incidence *incidence, const QDate &date,
+                              QToolTipGroup *group )
 {
   Q_UNUSED( incidence );
   Q_UNUSED( group );
   QToolTip::remove( item );
-  new KOIncidenceToolTip( item, calendar );
+  new KOIncidenceToolTip( item, calendar, date );
 }
 
 void KOIncidenceToolTip::maybeTip(const QPoint & pos)
@@ -59,6 +60,6 @@ void KOIncidenceToolTip::maybeTip(const QPoint & pos)
   if ( !item )
     return;
   if ( !mText )
-    mText = IncidenceFormatter::toolTipStr( mCalendar, item->incidence() );
+    mText = IncidenceFormatter::toolTipStr( mCalendar, item->incidence(), mDate );
   tip( QRect( QPoint( 0, 0 ), item->size() ), mText );
 }

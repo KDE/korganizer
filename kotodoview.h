@@ -144,7 +144,7 @@ class KOTodoView : public KOrg::BaseView
     void changeIncidenceDisplay( Incidence *, int );
 
     void showDates( const QDate &start, const QDate &end );
-    void showIncidences( const Incidence::List &incidenceList );
+    void showIncidences( const Incidence::List &incidenceList, const QDate &date );
 
     void clearSelection();
 

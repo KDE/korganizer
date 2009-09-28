@@ -254,8 +254,8 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
   connect( this, SIGNAL( configChanged() ),
            mDateNavigator, SLOT( updateConfig() ) );
 
-  connect( this, SIGNAL( incidenceSelected(Incidence *) ),
-           mEventViewer, SLOT ( setIncidence (Incidence *) ) );
+  connect( this, SIGNAL( incidenceSelected(Incidence *, const QDate &) ),
+           mEventViewer, SLOT ( setIncidence (Incidence *, const QDate &) ) );
 
   //TODO: do a pretty Summary,
   QString s;
@@ -267,7 +267,7 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
   QWhatsThis::add( mEventViewer,
                    i18n( "View the details of events, journal entries or to-dos "
                          "selected in KOrganizer's main view here." ) );
-  mEventViewer->setIncidence( 0 );
+  mEventViewer->setIncidence( 0, QDate() );
 
   mViewManager->connectTodoView( mTodoList );
   mViewManager->connectView( mTodoList );
@@ -278,10 +278,10 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
   connect( QApplication::clipboard(), SIGNAL( dataChanged() ),
            SLOT( checkClipboard() ) );
 
-  connect( mTodoList, SIGNAL( incidenceSelected( Incidence * ) ),
-           SLOT( processTodoListSelection( Incidence * ) ) );
-  disconnect( mTodoList, SIGNAL( incidenceSelected( Incidence * ) ),
-           this, SLOT( processMainViewSelection( Incidence * ) ) );
+  connect( mTodoList, SIGNAL( incidenceSelected( Incidence *,const QDate & ) ),
+           SLOT( processTodoListSelection( Incidence *,const QDate & ) ) );
+  disconnect( mTodoList, SIGNAL( incidenceSelected( Incidence *,const QDate & ) ),
+           this, SLOT( processMainViewSelection( Incidence *,const QDate & ) ) );
 
   kdDebug(5850) << "CalendarView::CalendarView() done" << endl;
 }
@@ -354,6 +354,27 @@ KOIncidenceEditor *CalendarView::editorDialog( Incidence *incidence ) const
   if (mDialogList.find(incidence) != mDialogList.end ())
     return mDialogList[incidence];
   else return 0;
+}
+
+QDate CalendarView::activeDate( bool fallbackToToday )
+{
+  KOrg::BaseView *curView = mViewManager->currentView();
+  if ( curView ) {
+    // Try the view's selectedDates()
+    if ( !curView->selectedDates().isEmpty() ) {
+      if ( curView->selectedDates().first().isValid() ) {
+        return curView->selectedDates().first();
+      }
+    }
+  }
+
+  // When all else fails, use the navigator start date, or today.
+  if ( fallbackToToday ) {
+    return QDate::currentDate();
+  } else {
+    return QDate();
+    //mDateNavigator->selectedDates().first();
+  }
 }
 
 QDate CalendarView::startDate()
@@ -808,7 +829,7 @@ void CalendarView::changeIncidenceDisplay( Incidence *incidence, int action )
     // If there is an event view visible update the display
     mViewManager->currentView()->changeIncidenceDisplay( incidence, action );
     if ( mTodoList ) mTodoList->changeIncidenceDisplay( incidence, action );
-    mEventViewer->changeIncidenceDisplay( incidence, action );
+    mEventViewer->changeIncidenceDisplay( incidence, activeDate( true ), action );
   } else {
     mViewManager->currentView()->updateView();
     if ( mTodoList ) mTodoList->updateView();
@@ -1614,27 +1635,27 @@ void CalendarView::adaptNavigationUnits()
   }
 }
 
-void CalendarView::processMainViewSelection( Incidence *incidence )
+void CalendarView::processMainViewSelection( Incidence *incidence, const QDate &date )
 {
   if ( incidence ) mTodoList->clearSelection();
-  processIncidenceSelection( incidence );
+  processIncidenceSelection( incidence, date );
 }
 
-void CalendarView::processTodoListSelection( Incidence *incidence )
+void CalendarView::processTodoListSelection( Incidence *incidence, const QDate &date )
 {
   if ( incidence && mViewManager->currentView() ) {
     mViewManager->currentView()->clearSelection();
   }
-  processIncidenceSelection( incidence );
+  processIncidenceSelection( incidence, date );
 }
 
-void CalendarView::processIncidenceSelection( Incidence *incidence )
+void CalendarView::processIncidenceSelection( Incidence *incidence, const QDate &date )
 {
-  if ( incidence == mSelectedIncidence ) return;
+  if ( !incidence || incidence == mSelectedIncidence ) return;
 
   mSelectedIncidence = incidence;
 
-  emit incidenceSelected( mSelectedIncidence );
+  emit incidenceSelected( mSelectedIncidence, date );
   bool organizerEvents = false;
   bool groupEvents = false;
   bool todo = false;
@@ -1916,7 +1937,7 @@ void CalendarView::pasteIncidence()
 void CalendarView::showIncidence( Incidence *incidence )
 {
   KOEventViewerDialog *eventViewer = new KOEventViewerDialog( calendar(), this );
-  eventViewer->setIncidence( incidence );
+  eventViewer->setIncidence( incidence, QDate() );
   eventViewer->show();
 }
 
@@ -2117,7 +2138,7 @@ void CalendarView::deleteIncidence(Incidence *incidence, bool force)
     }
     if ( doDelete ) {
       mChanger->deleteIncidence( incidence );
-      processIncidenceSelection( 0 );
+      processIncidenceSelection( 0, QDate() );
     }
   }
 }

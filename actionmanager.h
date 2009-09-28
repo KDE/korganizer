@@ -247,7 +247,7 @@ class KDE_EXPORT ActionManager : public QObject, public KCalendarIface
 
     void setDestinationPolicy();
 
-    void processIncidenceSelection( Incidence * );
+    void processIncidenceSelection( Incidence *incidence, const QDate &date );
     void keyBindings();
 
     /**

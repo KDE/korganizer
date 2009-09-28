@@ -46,8 +46,14 @@ class KDE_EXPORT KOEventViewerDialog : public KDialogBase
                                   const char *name = 0, bool compact = false );
     virtual ~KOEventViewerDialog();
 
-    void setIncidence( Incidence *incidence ) { mEventViewer->setIncidence( incidence ); }
-    void appendIncidence( Incidence *incidence ) { mEventViewer->appendIncidence( incidence ); }
+    void setIncidence( Incidence *incidence, const QDate &date  )
+    {
+      mEventViewer->setIncidence( incidence, date );
+    }
+    void appendIncidence( Incidence *incidence, const QDate &date )
+    {
+      mEventViewer->appendIncidence( incidence, date );
+    }
 
     void setCalendar( Calendar *calendar );
     void addText( const QString &text );

@@ -27,6 +27,7 @@
 #define _KOLISTVIEW_H
 
 #include <qdict.h>
+#include <qmap.h>
 #include <qtooltip.h>
 
 #include <libkcal/incidence.h>
@@ -87,7 +88,7 @@ class KOListView : public KOEventView
   public slots:
     virtual void updateView();
     virtual void showDates( const QDate &start, const QDate &end );
-    virtual void showIncidences( const Incidence::List &incidenceList );
+    virtual void showIncidences( const Incidence::List &incidenceList, const QDate &date );
 
     void clearSelection();
 
@@ -103,8 +104,8 @@ class KOListView : public KOEventView
     void processSelectionChange();
 
   protected:
-    void addIncidences( const Incidence::List & );
-    void addIncidence(Incidence *);
+    void addIncidences(const Incidence::List &, const QDate &date);
+    void addIncidence(Incidence *,  const QDate &date);
     KOListViewItem *getItemForIncidence(Incidence *incidence);
 
   private:
@@ -113,6 +114,7 @@ class KOListView : public KOEventView
     KOEventPopupMenu *mPopupMenu;
     KOListViewItem *mActiveItem;
     QDict<Incidence> mUidDict;
+    QMap<QString, QDate>mDateList;
     DateList mSelectedDates;
 };
 

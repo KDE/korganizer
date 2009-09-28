@@ -49,7 +49,7 @@ class KDE_EXPORT KOEventViewer : public QTextBrowser
     */
     void setSource( const QString & );
 
-    virtual bool appendIncidence( Incidence * );
+    virtual bool appendIncidence( Incidence *incidence, const QDate &date );
 
     /**
       Set the Calendar associated with this viewer.
@@ -81,8 +81,8 @@ class KDE_EXPORT KOEventViewer : public QTextBrowser
     /**
       Show given incidence in viewer. Clear all previously shown incidences.
     */
-    virtual void setIncidence( Incidence * );
-    void changeIncidenceDisplay( Incidence *incidence, int action );
+    void setIncidence( Incidence *incidence, const QDate &date );
+    void changeIncidenceDisplay( Incidence *incidence, const QDate &date, int action );
 
   private:
     Calendar *mCalendar;

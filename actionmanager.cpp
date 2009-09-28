@@ -153,12 +153,12 @@ void ActionManager::init()
   connect( mCalendarView, SIGNAL( modifiedChanged( bool ) ), SLOT( setTitle() ) );
   connect( mCalendarView, SIGNAL( configChanged() ), SLOT( updateConfig() ) );
 
-  connect( mCalendarView, SIGNAL( incidenceSelected( Incidence * ) ),
-           this, SLOT( processIncidenceSelection( Incidence * ) ) );
+  connect( mCalendarView, SIGNAL( incidenceSelected( Incidence *,const QDate & ) ),
+           this, SLOT( processIncidenceSelection( Incidence *,const QDate & ) ) );
   connect( mCalendarView, SIGNAL( exportHTML( HTMLExportSettings * ) ),
            this, SLOT( exportHTML( HTMLExportSettings * ) ) );
 
-  processIncidenceSelection( 0 );
+  processIncidenceSelection( 0, QDate() );
 
   // Update state of paste action
   mCalendarView->checkClipboard();
@@ -1459,7 +1459,7 @@ class ActionManager::ActionStringsVisitor : public IncidenceBase::Visitor
     KAction *mDelete;
 };
 
-void ActionManager::processIncidenceSelection( Incidence *incidence )
+void ActionManager::processIncidenceSelection( Incidence *incidence, const QDate & )
 {
 //  kdDebug(5850) << "ActionManager::processIncidenceSelection()" << endl;
 

@@ -155,7 +155,7 @@ void KOJournalView::showDates(const QDate &start, const QDate &end)
   }
 }
 
-void KOJournalView::showIncidences( const Incidence::List &incidences )
+void KOJournalView::showIncidences( const Incidence::List &incidences, const QDate & )
 {
 //  kdDebug(5850) << "KOJournalView::showIncidences(): "<< endl;
   clearEntries();

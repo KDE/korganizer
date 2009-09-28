@@ -867,7 +867,7 @@ KOMonthView::KOMonthView( Calendar *calendar, QWidget *parent, const char *name 
 
   updateConfig();
 
-  emit incidenceSelected( 0 );
+  emit incidenceSelected( 0, QDate() );
 }
 
 KOMonthView::~KOMonthView()
@@ -1003,7 +1003,7 @@ void KOMonthView::showDates( const QDate &start, const QDate & )
   updateView();
 }
 
-void KOMonthView::showIncidences( const Incidence::List & )
+void KOMonthView::showIncidences( const Incidence::List &, const QDate & )
 {
   kdDebug(5850) << "KOMonthView::showIncidences( const Incidence::List & ) is not implemented yet." << endl;
 }
@@ -1153,18 +1153,26 @@ void KOMonthView::setSelectedCell( MonthViewCell *cell )
   mSelectedCell = cell;
 
   if ( !mSelectedCell )
-    emit incidenceSelected( 0 );
+    emit incidenceSelected( 0, QDate() );
   else
-    emit incidenceSelected( mSelectedCell->selectedIncidence() );
+    if ( selectedDates().isEmpty() ) {
+      emit incidenceSelected( mSelectedCell->selectedIncidence(), QDate() );
+    } else {
+      emit incidenceSelected( mSelectedCell->selectedIncidence(), selectedDates().first() );
+    }
 }
 
 void KOMonthView::processSelectionChange()
 {
   Incidence::List incidences = selectedIncidences();
   if (incidences.count() > 0) {
-    emit incidenceSelected( incidences.first() );
+    if ( selectedDates().isEmpty() ) {
+      emit incidenceSelected( incidences.first(), QDate() );
+    } else {
+      emit incidenceSelected( incidences.first(), selectedDates().first() );
+    }
   } else {
-    emit incidenceSelected( 0 );
+    emit incidenceSelected( 0, QDate() );
   }
 }
 

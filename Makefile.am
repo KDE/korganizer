@@ -90,7 +90,7 @@ libkorganizer_la_SOURCES = komessagebox.cpp \
 	koeventview.cpp \
 	korganizeriface.skel kcalendariface.skel \
 	filtereditdialog.cpp filteredit_base.ui \
-	kowhatsnextview.cpp kocounterdialog.cpp \
+	kowhatsnextview.cpp \
 	kojournalview.cpp journalentry.cpp \
 	kocore.cpp mailscheduler.cpp \
 	kodaymatrix.cpp docprefs.cpp statusdialog.cpp\

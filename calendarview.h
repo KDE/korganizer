@@ -129,6 +129,7 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
     KOIncidenceEditor *editorDialog( Incidence* ) const;
     IncidenceChangerBase *incidenceChanger() const { return mChanger; }
 
+    QDate activeDate(bool);
     QDate startDate();
     QDate endDate();
 
@@ -182,7 +183,7 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
       Emitted when an incidence gets selected. If the selection is cleared the
       signal is emitted with 0 as argument.
     */
-    void incidenceSelected( Incidence * );
+    void incidenceSelected( Incidence *incidence, const QDate &date );
     /** Emitted, when a todoitem is selected or deselected.
         the connected slots enables/disables the corresponding menu items */
     void todoSelected( bool );
@@ -507,10 +508,10 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
 
     void dialogClosing( Incidence * );
 
-    void processMainViewSelection( Incidence * );
-    void processTodoListSelection( Incidence * );
+    void processMainViewSelection( Incidence *incidence, const QDate &date );
+    void processTodoListSelection( Incidence *incidence, const QDate &date );
 
-    void processIncidenceSelection( Incidence * );
+    void processIncidenceSelection( Incidence *incidence, const QDate &date );
 
     void purgeCompleted();
 

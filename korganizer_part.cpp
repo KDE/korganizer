@@ -109,8 +109,8 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, const char *widgetName,
 
   KParts::InfoExtension *ie = new KParts::InfoExtension( this,
                                                          "KOrganizerInfo" );
-  connect( mView, SIGNAL( incidenceSelected( Incidence * ) ),
-           SLOT( slotChangeInfo( Incidence * ) ) );
+  connect( mView, SIGNAL( incidenceSelected( Incidence *,const QDate & ) ),
+           SLOT( slotChangeInfo( Incidence *,const QDate & ) ) );
   connect( this, SIGNAL( textChanged( const QString & ) ),
            ie, SIGNAL( textChanged( const QString & ) ) );
 
@@ -145,7 +145,7 @@ void KOrganizerPart::startCompleted( KProcess *process )
   delete process;
 }
 
-void KOrganizerPart::slotChangeInfo( Incidence *incidence )
+void KOrganizerPart::slotChangeInfo( Incidence *incidence, const QDate & )
 {
   if ( incidence ) {
     emit textChanged( incidence->summary() + " / " +
