@@ -167,7 +167,7 @@ class KDE_EXPORT BaseView : public QWidget
     virtual bool eventDurationHint(QDateTime &/*startDt*/, QDateTime &/*endDt*/, bool &/*allDay*/) { return false; }
 
   signals:
-    void incidenceSelected( Incidence *, const QDate );
+    void incidenceSelected( Incidence *, const QDate & );
 
     /**
      * instructs the receiver to show the incidence in read-only mode.
