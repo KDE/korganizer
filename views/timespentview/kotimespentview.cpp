@@ -208,12 +208,16 @@ void KOTimeSpentView::showDates( const QDate &start, const QDate &end )
   updateView();
 }
 
-void KOTimeSpentView::showIncidences( const Incidence::List & )
+void KOTimeSpentView::showIncidences( const Incidence::List &incidenceList, const QDate &date )
 {
+  Q_UNUSED( incidenceList );
+  Q_UNUSED( date );
 }
 
-void KOTimeSpentView::changeIncidenceDisplay( Incidence *, int action )
+void KOTimeSpentView::changeIncidenceDisplay( Incidence *incidence, int action )
 {
+  Q_UNUSED( incidence );
+
   switch( action ) {
     case KOGlobals::INCIDENCEADDED:
     case KOGlobals::INCIDENCEEDITED:

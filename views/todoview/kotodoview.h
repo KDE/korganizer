@@ -80,7 +80,7 @@ class KOTodoView : public BaseView
   public Q_SLOTS:
     virtual void setIncidenceChanger( IncidenceChangerBase *changer );
     virtual void showDates( const QDate &start, const QDate &end );
-    virtual void showIncidences( const Incidence::List &incidenceList );
+    virtual void showIncidences( const Incidence::List &incidenceList, const QDate &date );
     virtual void updateView();
     void updateCategories();
     virtual void changeIncidenceDisplay( Incidence *incidence, int action );

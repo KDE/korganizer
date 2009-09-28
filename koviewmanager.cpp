@@ -158,7 +158,7 @@ void KOViewManager::showView( KOrg::BaseView *view )
   }
 
   raiseCurrentView();
-  mMainView->processIncidenceSelection( 0 );
+  mMainView->processIncidenceSelection( 0, QDate() );
   mMainView->updateView();
   mMainView->adaptNavigationUnits();
 }
@@ -227,8 +227,8 @@ void KOViewManager::connectView( KOrg::BaseView *view )
   }
 
   // selecting an incidence
-  connect( view, SIGNAL(incidenceSelected(Incidence *)),
-           mMainView, SLOT(processMainViewSelection(Incidence *)) );
+  connect( view, SIGNAL(incidenceSelected(Incidence *,const QDate &)),
+           mMainView, SLOT(processMainViewSelection(Incidence *,const QDate &)) );
 
   // showing/editing/deleting an incidence. The calendar view takes care of the action.
   connect( view, SIGNAL(showIncidenceSignal(Incidence *)),

@@ -274,8 +274,7 @@ Incidence::List KOTodoView::selectedIncidences()
   QModelIndexList selection = mView->selectionModel()->selectedRows();
 
   Q_FOREACH( const QModelIndex &mi, selection ) {
-    Todo *todo = static_cast<Todo *>( mi.data( KOTodoModel::TodoRole ).
-                                            value<void *>() );
+    Todo *todo = static_cast<Todo *>( mi.data( KOTodoModel::TodoRole ).value<void *>() );
     ret << todo;
   }
 
@@ -381,11 +380,10 @@ void KOTodoView::showDates( const QDate &start, const QDate &end )
   Q_UNUSED( end );
 }
 
-void KOTodoView::showIncidences( const Incidence::List &incidenceList )
+void KOTodoView::showIncidences( const Incidence::List &incidenceList, const QDate &date )
 {
   Q_UNUSED( incidenceList );
-  // TODO: hmm, not sure how to do this...
-  kDebug() << "this is a stub";
+  Q_UNUSED( date );
 }
 
 void KOTodoView::updateView()
@@ -487,13 +485,17 @@ void KOTodoView::selectionChanged( const QItemSelection &selected,
   Q_UNUSED( deselected );
   QModelIndexList selection = selected.indexes();
   if ( selection.isEmpty() || !selection[0].isValid() ) {
-    emit incidenceSelected( 0 );
+    emit incidenceSelected( 0, QDate() );
     return;
   }
 
   Todo *todo = static_cast<Todo *>( selection[0].data( KOTodoModel::TodoRole ).value<void *>() );
 
-  emit incidenceSelected( todo );
+  if ( selectedDates().isEmpty() ) {
+    emit incidenceSelected( todo, QDate() );
+  } else {
+    emit incidenceSelected( todo, selectedDates().first() );
+  }
 }
 
 void KOTodoView::showTodo()

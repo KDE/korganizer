@@ -157,8 +157,9 @@ void KOJournalView::showDates( const QDate &start, const QDate &end )
   }
 }
 
-void KOJournalView::showIncidences( const Incidence::List &incidences )
+void KOJournalView::showIncidences( const Incidence::List &incidences, const QDate &date )
 {
+  Q_UNUSED( date );
   clearEntries();
   Incidence::List::const_iterator it = incidences.constEnd();
   while ( it != incidences.constBegin() ) {

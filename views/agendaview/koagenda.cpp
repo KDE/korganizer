@@ -992,7 +992,7 @@ void KOAgenda::performItemAction( const QPoint &viewportPos )
 
 void KOAgenda::endItemAction()
 {
-//  kDebug();
+// kDebug();
   mActionType = NOP;
   mScrollUpTimer.stop();
   mScrollDownTimer.stop();
@@ -1887,8 +1887,7 @@ void KOAgenda::deselectItem()
 
   foreach ( KOAgendaItem *item, mItems ) {
     Incidence *itemInc = item->incidence();
-    if( itemInc && selectedInc &&
-        itemInc->uid() == selectedInc->uid() ) {
+    if( itemInc && selectedInc && itemInc->uid() == selectedInc->uid() ) {
       item->select( false );
     }
   }
@@ -1903,7 +1902,7 @@ void KOAgenda::selectItem( KOAgendaItem *item )
   }
   deselectItem();
   if ( item == 0 ) {
-    emit incidenceSelected( 0 );
+    emit incidenceSelected( 0, QDate() );
     return;
   }
   mSelectedItem = item;
@@ -1916,8 +1915,7 @@ void KOAgenda::selectItem( KOAgendaItem *item )
       item->select();
     }
   }
-
-  emit incidenceSelected( mSelectedItem->incidence() );
+  emit incidenceSelected( mSelectedItem->incidence(), mSelectedItem->itemDate() );
 }
 
 void KOAgenda::selectItemByUID( const QString &uid )
@@ -1979,12 +1977,10 @@ void KOAgenda::setDateList( const DateList &selectedDates )
 void KOAgenda::setHolidayMask( QVector<bool> *mask )
 {
   mHolidayMask = mask;
-
 }
 
 void KOAgenda::contentsMousePressEvent ( QMouseEvent *event )
 {
-  kDebug() << "type:" << event->type();
   Q3ScrollView::contentsMousePressEvent( event );
 }
 

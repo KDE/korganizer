@@ -49,6 +49,7 @@ MonthScene::MonthScene( MonthView *parent, Calendar *calendar )
     mActionInitiated( false ),
     mSelectedItem( 0 ),
     mStartCell( 0 ),
+    mPreviousCell( 0 ),
     mActionType( None ),
     mStartHeight( 0 )
 {
@@ -62,7 +63,7 @@ MonthScene::MonthScene( MonthView *parent, Calendar *calendar )
   mRecurPixmap     = KOGlobals::self()->smallIcon( "appointment-recurring" );
   mReadonlyPixmap  = KOGlobals::self()->smallIcon( "object-locked" );
   mReplyPixmap     = KOGlobals::self()->smallIcon( "mail-reply-sender" );
-  mHolidayPixmap   = KOGlobals::self()->smallIcon( "favorites" );
+  mHolidayPixmap   = KOGlobals::self()->smallIcon( "view-calendar-holiday" );
 }
 
 MonthScene::~MonthScene()
@@ -74,6 +75,11 @@ MonthScene::~MonthScene()
 MonthCell *MonthScene::selectedCell() const
 {
   return mMonthCellMap.value( mSelectedCellDate );
+}
+
+MonthCell *MonthScene::previousCell() const
+{
+  return mPreviousCell;
 }
 
 int MonthScene::getRightSpan( const QDate &date ) const
@@ -657,19 +663,22 @@ void MonthScene::selectItem( MonthItem *item )
   if ( mSelectedItem == item ) {
     return;
   }
-
   IncidenceMonthItem *tmp = dynamic_cast<IncidenceMonthItem *>( item );
 
   if ( !tmp ) {
     mSelectedItem = 0;
-    emit incidenceSelected( 0 );
+    emit incidenceSelected( 0, QDate() );
     return;
   }
 
   mSelectedItem = item;
   Q_ASSERT( tmp->incidence() );
 
-  emit incidenceSelected( tmp->incidence() );
+  if ( mMonthView && mMonthView->selectedDates().isEmpty() ) {
+    emit incidenceSelected( tmp->incidence(), QDate() );
+  } else {
+    emit incidenceSelected( tmp->incidence(), mMonthView->selectedDates().first() );
+  }
 }
 
 //----------------------------------------------------------
