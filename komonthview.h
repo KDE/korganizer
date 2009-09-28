@@ -36,13 +36,14 @@ class KNoScrollListBox;
 class KOMonthCellToolTip : public QToolTip
 {
   public:
-    KOMonthCellToolTip (QWidget* parent, Calendar *calendar, KNoScrollListBox* lv );
+    KOMonthCellToolTip (QWidget* parent, Calendar *calendar, const QDate &date, KNoScrollListBox* lv );
 
   protected:
     void maybeTip( const QPoint & pos);
 
   private:
     Calendar *mCalendar;
+    QDate mDate;
     KNoScrollListBox* eventlist;
 };
 
