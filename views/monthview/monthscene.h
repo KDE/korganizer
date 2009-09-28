@@ -111,6 +111,7 @@ class MonthScene : public QGraphicsScene
     int maxRowCount();
 
     MonthCell *selectedCell() const;
+    MonthCell *previousCell() const;
 
     /**
       Get the space on the right of the cell associated to the date @p date.
@@ -169,7 +170,7 @@ class MonthScene : public QGraphicsScene
     QPixmap *holidayPixmap() { return &mHolidayPixmap; }
 
   signals:
-    void incidenceSelected( Incidence *incidence );
+    void incidenceSelected( Incidence *incidence, const QDate & );
     void showIncidencePopupSignal( Calendar *, Incidence *, const QDate &);
     void showNewEventPopupSignal();
     void newEventSignal();

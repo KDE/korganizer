@@ -286,7 +286,7 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
 
     void setDestinationPolicy();
 
-    void processIncidenceSelection( Incidence * );
+    void processIncidenceSelection( Incidence *incidence, const QDate &date );
     void keyBindings();
 
     /**

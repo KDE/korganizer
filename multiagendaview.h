@@ -55,7 +55,7 @@ class MultiAgendaView : public AgendaView
 
   public slots:
     void showDates( const QDate &start, const QDate &end );
-    void showIncidences( const Incidence::List &incidenceList );
+    void showIncidences( const Incidence::List &incidenceList, const QDate &date );
     void updateView();
     void changeIncidenceDisplay( Incidence *incidence, int mode );
     void updateConfig();

@@ -162,7 +162,7 @@ class MonthItem : public QObject
     void moveBy( int offsetFromPreviousDate );
 
     /**
-      Called during resize to rezie the item a bit, relative to the previous
+      Called during resize to resize the item a bit, relative to the previous
       resize step.
     */
     bool resizeBy( int offsetFromPreviousDate );
@@ -308,7 +308,7 @@ class IncidenceMonthItem : public MonthItem
       If will be selected if incidence is the incidence managed by this item.
       Else it will be deselected.
     */
-    void updateSelection( Incidence *incidence );
+    void updateSelection( Incidence *incidence, const QDate &date );
 
   private:
     void updateDates( int startOffset, int endOffset );

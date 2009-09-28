@@ -137,8 +137,9 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
       be possible to show all given events.
 
       @param incidenceList a list of incidences to show.
+      @param date is the QDate on which the incidences are being shown.
     */
-    virtual void showIncidences( const Incidence::List &incidenceList ) = 0;
+    virtual void showIncidences( const Incidence::List &incidenceList, const QDate &date ) = 0;
 
     /**
       Updates the current display to reflect changes that may have happened
@@ -180,36 +181,36 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
     virtual bool eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &allDay );
 
   Q_SIGNALS:
-    void incidenceSelected( Incidence * );
+    void incidenceSelected( Incidence *, const QDate );
 
     /**
      * instructs the receiver to show the incidence in read-only mode.
      */
-    void showIncidenceSignal(Incidence *);
+    void showIncidenceSignal( Incidence * );
 
     /**
      * instructs the receiver to begin editing the incidence specified in
      * some manner.  Doesn't make sense to connect to more than one
      * receiver.
      */
-    void editIncidenceSignal(Incidence *);
+    void editIncidenceSignal( Incidence * );
 
     /**
      * instructs the receiver to delete the Incidence in some manner; some
      * possibilities include automatically, with a confirmation dialog
      * box, etc.  Doesn't make sense to connect to more than one receiver.
      */
-    void deleteIncidenceSignal(Incidence *);
+    void deleteIncidenceSignal( Incidence * );
 
     /**
     * instructs the receiver to cut the Incidence
     */
-    void cutIncidenceSignal(Incidence *);
+    void cutIncidenceSignal( Incidence * );
 
     /**
     * instructs the receiver to copy the incidence
     */
-    void copyIncidenceSignal(Incidence *);
+    void copyIncidenceSignal( Incidence * );
 
     /**
     * instructs the receiver to paste the incidence
@@ -219,7 +220,7 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
     /**
      * instructs the receiver to toggle the alarms of the Incidence.
      */
-    void toggleAlarmSignal(Incidence *);
+    void toggleAlarmSignal( Incidence * );
     /** Dissociate from a recurring incidence the occurrence on the given
         date to a new incidence */
     void dissociateOccurrenceSignal( Incidence *, const QDate & );

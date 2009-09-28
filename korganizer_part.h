@@ -85,7 +85,7 @@ class KOrganizerPart: public KParts::ReadOnlyPart,
     void setTitle();
 
   public slots:
-    void slotChangeInfo( Incidence * );
+    void slotChangeInfo( Incidence *incidence, const QDate &date );
 
   protected:
     virtual bool openFile();

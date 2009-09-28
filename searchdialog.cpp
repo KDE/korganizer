@@ -107,7 +107,7 @@ void SearchDialog::doSearch()
 
   search( re );
 
-  listView->showIncidences( mMatchedEvents );
+  listView->showIncidences( mMatchedEvents, QDate() );
 
   if ( mMatchedEvents.count() == 0 ) {
     KMessageBox::information(
@@ -129,7 +129,7 @@ void SearchDialog::updateView()
     mMatchedEvents.clear();
   }
 
-  listView->showIncidences( mMatchedEvents );
+  listView->showIncidences( mMatchedEvents, QDate() );
 }
 
 void SearchDialog::search( const QRegExp &re )

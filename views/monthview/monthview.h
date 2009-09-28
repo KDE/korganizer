@@ -72,7 +72,7 @@ class MonthView : public KOEventView
   public slots:
     virtual void updateView();
     virtual void showDates( const QDate &start, const QDate &end );
-    virtual void showIncidences( const Incidence::List &incidenceList );
+    virtual void showIncidences( const Incidence::List &incidenceList, const QDate &date );
 
     void changeIncidenceDisplay( Incidence *, int );
 

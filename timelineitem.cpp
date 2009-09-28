@@ -99,7 +99,9 @@ TimelineSubItem::TimelineSubItem( KCal::Calendar *calendar,
     mMarkerWidth( 0 )
 {
   setTooltipText( IncidenceFormatter::toolTipStr(
-                    calendar, incidence, true, KOPrefs::instance()->timeSpec() ) );
+                    calendar, incidence, originalStart().date(),
+                    true, KOPrefs::instance()->timeSpec() ) );
+
   if ( !incidence->isReadOnly() ) {
     setMoveable( true );
     setResizeable( true );

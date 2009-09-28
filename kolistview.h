@@ -87,7 +87,7 @@ class KOListView : public KOEventView
   public slots:
     virtual void updateView();
     virtual void showDates( const QDate &start, const QDate &end );
-    virtual void showIncidences( const Incidence::List &incidenceList );
+    virtual void showIncidences( const Incidence::List &incidenceList, const QDate &date );
 
     void clearSelection();
 
@@ -103,9 +103,9 @@ class KOListView : public KOEventView
     void processSelectionChange();
 
   protected:
-    void addIncidences( const Incidence::List & );
-    void addIncidence(Incidence *);
-    KOListViewItem *getItemForIncidence(Incidence *incidence);
+    void addIncidences( const Incidence::List &incidenceList, const QDate & );
+    void addIncidence( Incidence *incidence, const QDate &date );
+    KOListViewItem *getItemForIncidence( Incidence *incidence );
 
   private:
     class ListItemVisitor;
@@ -113,6 +113,7 @@ class KOListView : public KOEventView
     KOEventPopupMenu *mPopupMenu;
     KOListViewItem *mActiveItem;
     Q3Dict<Incidence> mUidDict;
+    QHash<QString, QDate> mDateList;
     DateList mSelectedDates;
 };
 

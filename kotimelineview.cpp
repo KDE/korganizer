@@ -80,9 +80,9 @@ KOTimelineView::~KOTimelineView()
 }
 
 /*virtual*/
-KCal::ListBase<KCal::Incidence> KOTimelineView::selectedIncidences()
+KCal::Incidence::List KOTimelineView::selectedIncidences()
 {
-    return KCal::ListBase<KCal::Incidence>();
+  return KCal::ListBase<KCal::Incidence>();
 }
 
 /*virtual*/
@@ -162,8 +162,10 @@ void KOTimelineView::showDates(const QDate& start, const QDate& end)
 }
 
 /*virtual*/
-void KOTimelineView::showIncidences(const KCal::ListBase<KCal::Incidence>&)
+void KOTimelineView::showIncidences( const KCal::Incidence::List &incidenceList, const QDate &date )
 {
+  Q_UNUSED( incidenceList );
+  Q_UNUSED( date );
 }
 
 /*virtual*/
@@ -196,7 +198,7 @@ void KOTimelineView::itemSelected( KDGanttViewItem *item )
 {
   TimelineSubItem *tlitem = dynamic_cast<TimelineSubItem*>( item );
   if ( tlitem )
-    emit incidenceSelected( tlitem->incidence() );
+    emit incidenceSelected( tlitem->incidence(), tlitem->originalStart().date() );
 }
 
 void KOTimelineView::itemDoubleClicked( KDGanttViewItem *item )
