@@ -218,8 +218,8 @@ CalendarView::CalendarView( QWidget *parent )
   connect( this, SIGNAL(configChanged()),
            mDateNavigatorContainer, SLOT(updateConfig()) );
 
-  connect( this, SIGNAL(incidenceSelected(Incidence *,const QDate &date)),
-           mEventViewer, SLOT(setIncidence(Incidence *,const QDate &date)) );
+  connect( this, SIGNAL(incidenceSelected(Incidence *,const QDate &)),
+           mEventViewer, SLOT(setIncidence(Incidence *,const QDate &)) );
 
   //TODO: do a pretty Summary,
   QString s;
@@ -1669,7 +1669,7 @@ void CalendarView::processIncidenceSelection( Incidence *incidence, const QDate 
   }
 
   mSelectedIncidence = incidence;
-  mEventViewer->setIncidence( mSelectedIncidence, date );
+  emit incidenceSelected( mSelectedIncidence, date );
 
   bool organizerEvents = false;
   bool groupEvents = false;
