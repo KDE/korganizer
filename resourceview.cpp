@@ -374,7 +374,7 @@ void ResourceView::addResource()
       return;
     }
 
-    const QString parentId = i->isSubresource() ? i->resourceIdentifier() : QString:: null;
+    const QString parentId = i->isSubresource() ? i->resourceIdentifier() : QString();
     if ( !i->resource()->addSubresource( folderName, parentId ) ) {
       KMessageBox::error(
         this,
