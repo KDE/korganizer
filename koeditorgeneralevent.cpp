@@ -288,9 +288,9 @@ void KOEditorGeneralEvent::setTimeEditorsEnabled( bool enabled )
   } else {
     mTimeZoneComboStart->selectLocalTimeSpec();
     mTimeZoneComboEnd->selectLocalTimeSpec();
-    mStartSpec = mTimeZoneComboStart->selectedTimeSpec();
-    mEndSpec = mTimeZoneComboEnd->selectedTimeSpec();
   }
+  mStartSpec = mTimeZoneComboStart->selectedTimeSpec();
+  mEndSpec = mTimeZoneComboEnd->selectedTimeSpec();
   mTimeZoneComboStart->setEnabled( enabled );
   mTimeZoneComboEnd->setEnabled( enabled );
 
