@@ -1591,7 +1591,7 @@ void KOAgendaView::writeSettings( KConfig *config )
 
 void KOAgendaView::setHolidayMasks()
 {
-  if ( mSelectedDates.isEmpty() ) {
+  if ( mSelectedDates.isEmpty() || !mSelectedDates[0].isValid() ) {
     return;
   }
 
