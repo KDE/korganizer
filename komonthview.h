@@ -143,6 +143,9 @@ class MonthViewCell : public QWidget
     /** @return Date of cell */
     QDate date() const;
 
+    /** @return MonthView parent */
+    KOMonthView *monthView() { return mMonthView; }
+
     /**
       Set this cell as primary if @p primary is true. A primary cell belongs
       to the current month. A non-primary cell belongs to the month before or
@@ -189,8 +192,6 @@ class MonthViewCell : public QWidget
 
     void deselect();
 
-    void setCalendar( Calendar *cal ) { mCalendar = cal; }
-
   signals:
     void defaultAction( Incidence * );
     /**
@@ -213,8 +214,6 @@ class MonthViewCell : public QWidget
 
   private:
     KOMonthView *mMonthView;
-   // We need the calendar for paint the ResourceColor
-    Calendar *mCalendar;
 
     QDate mDate;
     bool mPrimary;
