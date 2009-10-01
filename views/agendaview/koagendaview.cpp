@@ -1524,6 +1524,10 @@ void KOAgendaView::writeSettings( KConfig *config )
 
 void KOAgendaView::setHolidayMasks()
 {
+  if ( mSelectedDates.isEmpty() ) {
+    return;
+  }
+
   mHolidayMask.resize( mSelectedDates.count() + 1 );
 
   for ( int i = 0; i < mSelectedDates.count(); ++i ) {
