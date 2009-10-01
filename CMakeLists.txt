@@ -80,7 +80,7 @@ endif(NOT KORG_NOPRINTER)
 
   kde4_add_executable(korganizer ${korganizer_SRCS})
 
-  target_link_libraries(korganizer ${KDE4_KDEUI_LIBS} ${KDE4_KDE3SUPPORT_LIBRARY} ${KDE4_KPARTS_LIBRARY} ${KDEPIMLIBS_KCAL_LIBS} ${KDEPIMLIBS_KHOLIDAYS_LIBS} ${KDEPIMLIBS_KONTACTINTERFACE_LIBS} korganizerprivate korganizer_core korganizer_calendar korganizer_interfaces)
+  target_link_libraries(korganizer ${KDE4_KDEUI_LIBS} ${KDE4_KDE3SUPPORT_LIBRARY} ${KDE4_KPARTS_LIBRARY} ${KDEPIMLIBS_KCAL_LIBS} ${KDEPIMLIBS_KHOLIDAYS_LIBS} ${KDEPIMLIBS_KONTACTINTERFACE_LIBS} kdepim korganizerprivate korganizer_core korganizer_calendar korganizer_interfaces)
 
   install(TARGETS korganizer ${INSTALL_TARGETS_DEFAULT_ARGS})
 
