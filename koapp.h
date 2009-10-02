@@ -25,10 +25,10 @@
 #ifndef KOAPP_H
 #define KOAPP_H
 
-#include <libkdepim/pimapplication.h>
+#include <kontactinterface/pimuniqueapplication.h>
 #include <kurl.h>
 
-class KOrganizerApp : public KPIM::PimApplication
+class KOrganizerApp : public KontactInterface::PimUniqueApplication
 {
   Q_OBJECT
   public:
