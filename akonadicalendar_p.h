@@ -182,12 +182,12 @@ class KCal::AkonadiCalendar::Private : public QObject
       return true;
     }
 
-    AkonadiCalendarItem* itemForUid( const QString& uid )
+    AkonadiCalendarItem* itemForUid( const QString& uid ) const
     {
       if ( m_uidToItemId.contains( uid ) ) {
-        const Akonadi::Item::Id id = m_uidToItemId[uid];
+        const Akonadi::Item::Id id = m_uidToItemId.value( uid );
         Q_ASSERT( m_itemMap.contains( id ) );
-        return m_itemMap[id];
+        return m_itemMap.value( id );
       }
       return 0;
     }
