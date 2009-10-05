@@ -54,7 +54,7 @@ namespace KCal {
     class Person;
 }
 
-namespace KOrganizer {
+namespace KOrg {
 
 /**
   Calendar KCal::Incidence sort directions.
@@ -117,8 +117,8 @@ enum JournalSortField {
   visible in the Calendar.  Do <em>Not</em> attempt to 'delete' any KCal::Incidence
   object you get from Calendar -- use the delete...() methods.
 */
-class CalendarBase : public QObject, public KCal::CustomProperties,
-                     public KCal::IncidenceBase::IncidenceObserver
+class KORGANIZER_INTERFACES_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
+                                                  public KCal::IncidenceBase::IncidenceObserver
 {
   Q_OBJECT
 

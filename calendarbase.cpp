@@ -48,7 +48,7 @@ extern "C" {
 }
 
 using namespace KCal;
-using namespace KOrganizer;
+using namespace KOrg;
 
 /**
   Private class that helps to provide binary compatibility between releases.
