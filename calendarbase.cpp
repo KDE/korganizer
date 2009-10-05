@@ -55,7 +55,7 @@ using namespace KOrg;
   @internal
 */
 //@cond PRIVATE
-class KOrganizer::CalendarBase::Private
+class CalendarBase::Private
 {
   public:
     Private()

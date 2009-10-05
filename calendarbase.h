@@ -46,6 +46,7 @@
 #include <kcal/event.h>
 #include <kcal/todo.h>
 #include <kcal/journal.h>
+#include <kcal/incidencebase.h>
 
 namespace KCal {
     class ICalTimeZone;
@@ -117,7 +118,7 @@ enum JournalSortField {
   visible in the Calendar.  Do <em>Not</em> attempt to 'delete' any KCal::Incidence
   object you get from Calendar -- use the delete...() methods.
 */
-class KORGANIZER_INTERFACES_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
+class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
                                                   public KCal::IncidenceBase::IncidenceObserver
 {
   Q_OBJECT
