@@ -102,10 +102,8 @@ class KOTodoEditor : public KOIncidenceEditor
   protected slots:
     void loadDefaults();
     void deleteTodo();
-    void slotSaveTemplate( const QString & );
 
   protected:
-    void loadTemplate( CalendarLocal & );
     QStringList &templates() const;
     QString type() { return "Todo"; }
     void setupGeneral();

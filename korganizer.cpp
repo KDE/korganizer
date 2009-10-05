@@ -115,11 +115,15 @@ void KOrganizer::init( bool document )
 
   // Create calendar object, which manages all calendar information associated
   // with this calendar view window.
+#if 0 //sebsauer
   if ( hasDocument() ) {
     mActionManager->createCalendarLocal();
   } else {
     mActionManager->createCalendarAkonadi();
   }
+#else
+  mActionManager->createCalendarAkonadi();
+#endif
 
   setComponentData( KGlobal::mainComponent() );
 

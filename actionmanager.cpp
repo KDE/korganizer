@@ -45,7 +45,6 @@
 #include "akonadicalendar.h"
 #include "akonadicollectionview.h"
 
-#include <KCal/CalendarLocal>
 #include <KCal/FileStorage>
 #include <KCal/HtmlExport>
 #include <KCal/HTMLExportSettings>
@@ -71,6 +70,7 @@
 
 #include <QApplication>
 #include <QTimer>
+#include <QDebug>
 
 // FIXME: Several places in the file don't use KConfigXT yet!
 KOWindowList *ActionManager::mWindowList = 0;
@@ -186,15 +186,6 @@ void ActionManager::init()
   mCalendarView->checkClipboard();
 }
 
-void ActionManager::createCalendarLocal()
-{
-  mCalendar = new CalendarLocal( KOPrefs::instance()->timeSpec() );
-  mCalendarView->setCalendar( mCalendar );
-  mCalendarView->readSettings();
-
-  initCalendar( mCalendar );
-}
-
 void ActionManager::createCalendarAkonadi()
 {
   mCalendarAkonadi = KOrg::StdCalendar::self();
@@ -291,9 +282,11 @@ void ActionManager::initActions()
   mACollection->addAction( "import_ical", importAction );
   connect( importAction, SIGNAL(triggered(bool)), SLOT(file_icalimport()) );
 
+#if 0 //sebsauer
   action = new KAction( i18n( "Get &Hot New Stuff..." ), this );
   mACollection->addAction( "downloadnewstuff", action );
   connect( action, SIGNAL(triggered(bool)), SLOT(downloadNewStuff()) );
+#endif
 
   action = new KAction( i18n( "Export &Web Page..." ), this );
   mACollection->addAction( "export_web", action );
@@ -1530,6 +1523,7 @@ bool ActionManager::addIncidence( const QString &ical )
   return mCalendarView->addIncidence( ical );
 }
 
+#if 0 //sebsauer
 void ActionManager::downloadNewStuff()
 {
   kDebug();
@@ -1599,6 +1593,7 @@ void ActionManager::uploadNewStuff()
     // FIXME (KNS2): display error here
   }
 }
+#endif
 
 QString ActionManager::localFileName()
 {

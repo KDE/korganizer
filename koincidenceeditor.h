@@ -43,7 +43,6 @@ class KOAttendeeEditor;
 
 namespace KCal {
   class Calendar;
-  class CalendarLocal;
   class Incidence;
 }
 using namespace KCal;
@@ -115,21 +114,14 @@ class KOIncidenceEditor : public KPageDialog
     virtual void slotButtonClicked( int button );
     virtual void slotManageTemplates();
 
-    virtual void slotSaveTemplate( const QString & ) = 0;
-    virtual void slotLoadTemplate( const QString & );
-    virtual void slotTemplatesChanged( const QStringList & );
-
   protected:
     virtual void closeEvent( QCloseEvent * );
 
     virtual QString type() { return QString(); }
     virtual QStringList &templates() const = 0;
-    virtual void loadTemplate( CalendarLocal & ) = 0;
 
     void setupAttendeesTab();
     void setupDesignerTabs( const QString &type );
-
-    void saveAsTemplate( Incidence *, const QString &name );
 
     void readDesignerFields( Incidence *i );
     void writeDesignerFields( Incidence *i );

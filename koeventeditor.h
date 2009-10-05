@@ -106,7 +106,6 @@ class KOEventEditor : public KOIncidenceEditor
     void loadDefaults();
     void deleteEvent();
 
-    void slotSaveTemplate( const QString & );
     void updateRecurrenceSummary();
 
   protected:
@@ -121,7 +120,6 @@ class KOEventEditor : public KOIncidenceEditor
      * is not valid */
     bool processInput();
     void processCancel();
-    void loadTemplate( CalendarLocal & );
     QStringList &templates() const;
     bool incidenceModified();
 

@@ -59,7 +59,6 @@
 #include "views/multiagendaview/multiagendaview.h"
 #include "views/todoview/kotodoview.h"
 
-#include <KCal/CalendarLocal>
 #include <KCal/CalendarNull>
 #include <KCal/CalendarResources>
 #include <KCal/CalFilter>
@@ -366,21 +365,16 @@ bool CalendarView::openCalendar( const QString &filename, bool merge )
   bool loadedSuccesfully = true;
   if ( !merge ) {
     mCalendar->close();
-    CalendarLocal *cl = dynamic_cast<CalendarLocal*>( mCalendar );
-    if ( cl ) {
-      loadedSuccesfully = cl->load( filename );
-    } else {
-      // otherwise something is majorly wrong
-      Q_ASSERT( dynamic_cast<CalendarResources*>( mCalendar ) );
-      // openCalendar called without merge and a filename, what should we do?
-      return false;
-    }
-  } else {
-    // merge in a file
-    FileStorage storage( mCalendar );
-    storage.setFileName( filename );
-    loadedSuccesfully = storage.load();
+    // otherwise something is majorly wrong
+    Q_ASSERT( dynamic_cast<CalendarResources*>( mCalendar ) );
+    // openCalendar called without merge and a filename, what should we do?
+    return false;
   }
+
+  // merge in a file
+  FileStorage storage( mCalendar );
+  storage.setFileName( filename );
+  loadedSuccesfully = storage.load();
 
   if ( loadedSuccesfully ) {
     if ( merge ) {

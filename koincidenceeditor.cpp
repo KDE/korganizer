@@ -177,16 +177,19 @@ void KOIncidenceEditor::cancelRemovedAttendees( Incidence *incidence )
 void KOIncidenceEditor::slotManageTemplates()
 {
   TemplateManagementDialog *const d = new TemplateManagementDialog( this, templates(), type() );
+#if 0 //sebsauer
   connect( d, SIGNAL( loadTemplate( const QString& ) ),
            this, SLOT( slotLoadTemplate( const QString& ) ) );
   connect( d, SIGNAL( templatesChanged( const QStringList& ) ),
            this, SLOT( slotTemplatesChanged( const QStringList& ) ) );
   connect( d, SIGNAL( saveTemplate( const QString& ) ),
            this, SLOT( slotSaveTemplate( const QString& ) ) );
+#endif
   d->exec();
   delete d;
 }
 
+#if 0 //sebsauer
 void KOIncidenceEditor::saveAsTemplate( Incidence *incidence, const QString &templateName )
 {
   if ( !incidence || templateName.isEmpty() ) {
@@ -229,6 +232,7 @@ void KOIncidenceEditor::slotTemplatesChanged( const QStringList &newTemplates )
 {
   templates() = newTemplates;
 }
+#endif
 
 void KOIncidenceEditor::setupDesignerTabs( const QString &type )
 {

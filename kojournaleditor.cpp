@@ -31,7 +31,6 @@
 #include "koprefs.h"
 #include "korganizer/baseview.h"
 
-#include <KCal/CalendarLocal>
 #include <KCal/IncidenceFormatter>
 
 #include <KLocale>
@@ -253,6 +252,7 @@ void KOJournalEditor::modified( int modification )
   reload();
 }
 
+#if 0 //sebsauer
 void KOJournalEditor::loadTemplate( CalendarLocal &cal )
 {
   Journal::List journals = cal.journals();
@@ -269,6 +269,7 @@ void KOJournalEditor::slotSaveTemplate( const QString &templateName )
   fillJournal( journal );
   saveAsTemplate( journal, templateName );
 }
+#endif
 
 QStringList &KOJournalEditor::templates() const
 {

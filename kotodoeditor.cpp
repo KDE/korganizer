@@ -35,7 +35,6 @@
 #include "kodialogmanager.h"
 #include "incidencechanger.h"
 
-#include <kcal/calendarlocal.h>
 #include <KCal/IncidenceFormatter>
 
 #include <kiconloader.h>
@@ -374,6 +373,7 @@ void KOTodoEditor::modified( int modification )
   reload();
 }
 
+#if 0 //sebsauer
 void KOTodoEditor::loadTemplate( CalendarLocal &cal )
 {
   Todo::List todos = cal.todos();
@@ -390,6 +390,7 @@ void KOTodoEditor::slotSaveTemplate( const QString &templateName )
   fillTodo( todo );
   saveAsTemplate( todo, templateName );
 }
+#endif
 
 QStringList &KOTodoEditor::templates() const
 {

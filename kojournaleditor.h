@@ -114,12 +114,10 @@ class KOJournalEditor : public KOIncidenceEditor
   protected slots:
     void loadDefaults();
     void deleteJournal();
-    void slotSaveTemplate( const QString & );
 
   protected:
     QString type() { return "Journal"; }
     void setupGeneral();
-    void loadTemplate( CalendarLocal & );
     QStringList &templates() const;
     bool incidenceModified();
 

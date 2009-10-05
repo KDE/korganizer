@@ -74,8 +74,11 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, QObject *parent, const QV
     KOrg::StdCalendar::self()->load();
     mView->updateCategories();
   } else {
+    Q_ASSERT(false);
+#if 0 //sebsauer
     mActionManager->createCalendarLocal();
     setHasDocument( true );
+#endif
   }
 
   mStatusBarExtension = new KParts::StatusBarExtension( this );

@@ -44,11 +44,11 @@
 #include <kabc/stdaddressbook.h>
 #include <kabc/addressee.h>
 
+#include <kcal/calendar.h>
 #include <kcal/incidencebase.h>
 #include <kcal/attendee.h>
 #include <kcal/freebusy.h>
 #include <kcal/journal.h>
-#include <kcal/calendarlocal.h>
 #include <kcal/icalformat.h>
 
 #include <kio/job.h>

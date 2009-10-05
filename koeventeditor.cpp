@@ -33,7 +33,6 @@
 #include "kogroupware.h"
 #include "koprefs.h"
 
-#include <KCal/CalendarLocal>
 #include <KCal/IncidenceFormatter>
 
 #include <KMessageBox>
@@ -421,6 +420,7 @@ bool KOEventEditor::validateInput()
   return true;
 }
 
+#if 0 //sebsauer
 void KOEventEditor::loadTemplate( CalendarLocal &cal )
 {
   Event::List events = cal.events();
@@ -430,18 +430,21 @@ void KOEventEditor::loadTemplate( CalendarLocal &cal )
     readEvent( events.first(), true );
   }
 }
+#endif
 
 QStringList &KOEventEditor::templates() const
 {
   return KOPrefs::instance()->mEventTemplates;
 }
 
+#if 0 //sebsauer
 void KOEventEditor::slotSaveTemplate( const QString &templateName )
 {
   Event *event = new Event;
   fillEvent( event );
   saveAsTemplate( event, templateName );
 }
+#endif
 
 QObject *KOEventEditor::typeAheadReceiver() const
 {

@@ -80,11 +80,6 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     CalendarView *view() const { return mCalendarView; }
 
     /**
-      Create Calendar object based on local file and set it on the view.
-    */
-    void createCalendarLocal();
-
-    /**
       Create Calendar object based on the akonadi framework and set it on the view.
     */
     void createCalendarAkonadi();
@@ -340,8 +335,8 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     /** Show tip of the day */
     void showTipOnStart();
 
-    void downloadNewStuff();
-    void uploadNewStuff();
+    //void downloadNewStuff();
+    //void uploadNewStuff();
 
     void toggleDateNavigator();
     void toggleTodoView();
