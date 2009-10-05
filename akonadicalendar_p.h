@@ -363,7 +363,7 @@ class KCal::AkonadiCalendar::Private : public QObject
             kDebug() << "Add uid=" << incidence->uid() << "summary=" << incidence->summary() << "type=" << incidence->type();
             const Akonadi::Item::Id uid = item.id();
             Q_ASSERT( ! m_itemMap.contains( uid ) ); //uh, 2 incidences with the same uid?
-            
+            Q_ASSERT( ! m_uidToItemId.contains( incidence->uid() ) ); // If this triggers, we have the same items in different collections (violates equal map size assertion in assertInvariants())
             if( Event *e = dynamic_cast<Event*>(incidence.get()) ) {
               if ( !e->recurs() && !e->isMultiDay() )
                 m_incidenceForDate.insert( e->dtStart().date().toString(), incidence );
@@ -380,6 +380,7 @@ class KCal::AkonadiCalendar::Private : public QObject
             m_itemMap[ uid ] = new AkonadiCalendarItem(q, item);
             m_incidenceForDate.insert( incidence->dtStart().date().toString(), incidence );
             m_uidToItemId.insert( incidence->uid(), uid );
+            assertInvariants();
             incidence->registerObserver( q );
             q->notifyIncidenceAdded( incidence.get() );
         }
