@@ -50,6 +50,7 @@
 
 #include <KCal/Incidence>
 
+using namespace boost;
 using namespace KCal;
 
 class AkonadiCalendarCollection : public QObject
@@ -364,13 +365,13 @@ class KCal::AkonadiCalendar::Private : public QObject
             const Akonadi::Item::Id uid = item.id();
             Q_ASSERT( ! m_itemMap.contains( uid ) ); //uh, 2 incidences with the same uid?
             Q_ASSERT( ! m_uidToItemId.contains( incidence->uid() ) ); // If this triggers, we have the same items in different collections (violates equal map size assertion in assertInvariants())
-            if( Event *e = dynamic_cast<Event*>(incidence.get()) ) {
+            if( const Event::Ptr e = dynamic_pointer_cast<Event>( incidence ) ) {
               if ( !e->recurs() && !e->isMultiDay() )
                 m_incidenceForDate.insert( e->dtStart().date().toString(), incidence );
-            } else if( Todo *t = dynamic_cast<Todo*>(incidence.get()) ) {
+            } else if( const Todo::Ptr t = dynamic_pointer_cast<Todo>( incidence ) ) {
               if ( t->hasDueDate() )
                 m_incidenceForDate.insert( t->dtDue().date().toString(), incidence );
-            } else if( Journal *j = dynamic_cast<Journal*>(incidence.get()) ) {
+            } else if( const Journal::Ptr j = dynamic_pointer_cast<Journal>( incidence ) ) {
                 m_incidenceForDate.insert( j->dtStart().date().toString(), incidence );
             } else {
               Q_ASSERT(false);
@@ -409,13 +410,13 @@ class KCal::AkonadiCalendar::Private : public QObject
             const KCal::Incidence::Ptr incidence = ci->m_item.payload<KCal::Incidence::Ptr>();
             kDebug() << "Remove uid=" << incidence->uid() << "summary=" << incidence->summary() << "type=" << incidence->type();
 
-            if( Event *e = dynamic_cast<Event*>(incidence.get()) ) {
+            if( const Event::Ptr e = dynamic_pointer_cast<Event>(incidence) ) {
               if ( !e->recurs() )
                 removeIncidenceFromMultiHashByUID( incidence, e->dtStart().date().toString() );
-            } else if( Todo *t = dynamic_cast<Todo*>(incidence.get()) ) {
+            } else if( const Todo::Ptr t = dynamic_pointer_cast<Todo>( incidence ) ) {
               if ( t->hasDueDate() )
                 removeIncidenceFromMultiHashByUID( incidence, t->dtDue().date().toString() );
-            } else if( Journal *j = dynamic_cast<Journal*>(incidence.get()) ) {
+            } else if( const Journal::Ptr j = dynamic_pointer_cast<Journal>( incidence ) ) {
               removeIncidenceFromMultiHashByUID( incidence, j->dtStart().date().toString() );
             } else {
               Q_ASSERT(false);
