@@ -52,7 +52,7 @@
 #include <akonadi/agentfilterproxymodel.h>
 #include <akonadi/control.h>
 
-AkonadiCollectionViewFactory::AkonadiCollectionViewFactory( KCal::AkonadiCalendar *calendar, CalendarView *view )
+AkonadiCollectionViewFactory::AkonadiCollectionViewFactory( KOrg::AkonadiCalendar *calendar, CalendarView *view )
   : mCalendar( calendar ) , mView( view ), mAkonadiCollectionView( 0 )
 {
 }
@@ -71,7 +71,7 @@ CalendarViewExtension *AkonadiCollectionViewFactory::create( QWidget *parent )
   return mAkonadiCollectionView;
 }
 
-KCal::AkonadiCalendar* AkonadiCollectionViewFactory::calendar() const
+KOrg::AkonadiCalendar* AkonadiCollectionViewFactory::calendar() const
 {
   return mCalendar;
 }
@@ -252,7 +252,7 @@ class CollectionProxyModel : public QSortFilterProxyModel
     AkonadiCollectionView *mView;
 };
 
-AkonadiCollectionView::AkonadiCollectionView( AkonadiCollectionViewFactory *factory, KCal::AkonadiCalendar *calendar, QWidget *parent )
+AkonadiCollectionView::AkonadiCollectionView( AkonadiCollectionViewFactory *factory, KOrg::AkonadiCalendar *calendar, QWidget *parent )
   : CalendarViewExtension( parent ), mFactory(factory), mCalendar( calendar ), mActionManager(0), mCollectionview(0)
 {
   QVBoxLayout *topLayout = new QVBoxLayout( this );

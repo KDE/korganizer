@@ -44,7 +44,7 @@ StdCalendar *StdCalendar::self()
 }
 
 StdCalendar::StdCalendar()
-  : KCal::AkonadiCalendar( KSystemTimeZones::local() )
+  : AkonadiCalendar( KSystemTimeZones::local() )
 {
 #if 0 //sebsauer
   readConfig();

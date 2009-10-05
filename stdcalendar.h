@@ -26,7 +26,7 @@
 
 namespace KOrg {
 
-class KORGANIZER_CALENDAR_EXPORT StdCalendar : public KCal::AkonadiCalendar
+class KORGANIZER_CALENDAR_EXPORT StdCalendar : public AkonadiCalendar
 {
   public:
     static StdCalendar *self();

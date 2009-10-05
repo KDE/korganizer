@@ -53,6 +53,7 @@
 #include <akonadi/session.h>
 
 using namespace KCal;
+using namespace KOrg;
 
 AkonadiCalendar::AkonadiCalendar( const KDateTime::Spec &timeSpec )
   : KCal::Calendar( timeSpec )

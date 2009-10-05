@@ -23,6 +23,7 @@
 #ifndef AKONADICALENDAR_H
 #define AKONADICALENDAR_H
 
+#include "korganizer/korganizer_export.h"
 #include <kcal/calendar.h>
 
 namespace Akonadi {
@@ -31,13 +32,15 @@ namespace Akonadi {
 }
 
 namespace KCal {
+    class CalFormat;
+}
 
-class CalFormat;
+namespace KOrg {
 
 /**
  * Implements a KCal::Calendar that uses Akonadi as backend.
  */
-class KCAL_EXPORT AkonadiCalendar : public Calendar
+class KORGANIZER_INTERFACES_EXPORT AkonadiCalendar : public KCal::Calendar
 {
     Q_OBJECT
   public:
@@ -48,56 +51,56 @@ class KCAL_EXPORT AkonadiCalendar : public Calendar
     void addCollection( const Akonadi::Collection &collection );
     void removeCollection( const Akonadi::Collection &collection );
 
-    Akonadi::Item itemForIncidence(Incidence *incidence) const;
+    Akonadi::Item itemForIncidence(KCal::Incidence *incidence) const;
 
-    bool beginChange( Incidence *incidence );
-    bool endChange( Incidence *incidence );
+    bool beginChange( KCal::Incidence *incidence );
+    bool endChange( KCal::Incidence *incidence );
 
     bool reload(); //TODO remove, atm abstract in Calendar
     bool save(); //TODO remove, atm abstract in Calendar
     void close(); //TODO remove, atm abstract in Calendar
 
     bool addAgent( const KUrl &mUrl );
-    bool addIncidence( Incidence *incidence );
-    bool deleteIncidence( Incidence *incidence );
-    void incidenceUpdated( IncidenceBase *incidenceBase );
+    bool addIncidence( KCal::Incidence *incidence );
+    bool deleteIncidence( KCal::Incidence *incidence );
+    void incidenceUpdated( KCal::IncidenceBase *incidenceBase );
 
-    bool addEvent( Event *event );
-    bool deleteEvent( Event *event );
+    bool addEvent( KCal::Event *event );
+    bool deleteEvent( KCal::Event *event );
     void deleteAllEvents() { Q_ASSERT(false); } //TODO remove, atm abstract in Calendar
 
-    Event::List rawEvents( EventSortField sortField = EventSortUnsorted, SortDirection sortDirection = SortDirectionAscending );
-    Event::List rawEvents( const QDate &start, const QDate &end, const KDateTime::Spec &timeSpec = KDateTime::Spec(), bool inclusive = false );
-    Event::List rawEventsForDate( const QDate &date, const KDateTime::Spec &timeSpec = KDateTime::Spec(), EventSortField sortField = EventSortUnsorted, SortDirection sortDirection = SortDirectionAscending );
-    Event::List rawEventsForDate( const KDateTime &dt );
+    KCal::Event::List rawEvents( KCal::EventSortField sortField = KCal::EventSortUnsorted, KCal::SortDirection sortDirection = KCal::SortDirectionAscending );
+    KCal::Event::List rawEvents( const QDate &start, const QDate &end, const KDateTime::Spec &timeSpec = KDateTime::Spec(), bool inclusive = false );
+    KCal::Event::List rawEventsForDate( const QDate &date, const KDateTime::Spec &timeSpec = KDateTime::Spec(), KCal::EventSortField sortField = KCal::EventSortUnsorted, KCal::SortDirection sortDirection = KCal::SortDirectionAscending );
+    KCal::Event::List rawEventsForDate( const KDateTime &dt );
 
-    Event *event( const QString &uid );
+    KCal::Event *event( const QString &uid );
 
-    bool addTodo( Todo *todo );
-    bool deleteTodo( Todo *todo );
+    bool addTodo( KCal::Todo *todo );
+    bool deleteTodo( KCal::Todo *todo );
     void deleteAllTodos() { Q_ASSERT(false); } //TODO remove, atm abstract in Calendar
 
-    Todo::List rawTodos( TodoSortField sortField = TodoSortUnsorted, SortDirection sortDirection = SortDirectionAscending );
-    Todo::List rawTodosForDate( const QDate &date );
+    KCal::Todo::List rawTodos( KCal::TodoSortField sortField = KCal::TodoSortUnsorted, KCal::SortDirection sortDirection = KCal::SortDirectionAscending );
+    KCal::Todo::List rawTodosForDate( const QDate &date );
 
-    Todo *todo( const QString &uid );
+    KCal::Todo *todo( const QString &uid );
 
-    bool addJournal( Journal *journal );
-    bool deleteJournal( Journal *journal );
+    bool addJournal( KCal::Journal *journal );
+    bool deleteJournal( KCal::Journal *journal );
     void deleteAllJournals() { Q_ASSERT(false); } //TODO remove, atm abstract in Calendar
 
-    Journal::List rawJournals( JournalSortField sortField = JournalSortUnsorted, SortDirection sortDirection = SortDirectionAscending );
-    Journal::List rawJournalsForDate( const QDate &date );
+    KCal::Journal::List rawJournals( KCal::JournalSortField sortField = KCal::JournalSortUnsorted, KCal::SortDirection sortDirection = KCal::SortDirectionAscending );
+    KCal::Journal::List rawJournalsForDate( const QDate &date );
 
-    Journal *journal( const QString &uid );
+    KCal::Journal *journal( const QString &uid );
 
-    Alarm::List alarms( const KDateTime &from, const KDateTime &to );
-    Alarm::List alarmsTo( const KDateTime &to );
+    KCal::Alarm::List alarms( const KDateTime &from, const KDateTime &to );
+    KCal::Alarm::List alarmsTo( const KDateTime &to );
 
     using QObject::event;   // prevent warning about hidden virtual method
 
   public Q_SLOTS:
-    void deleteIncidenceProxyMethod( Incidence *incidence ) { deleteIncidence(incidence); }
+    void deleteIncidenceProxyMethod( KCal::Incidence *incidence ) { deleteIncidence(incidence); }
 
   Q_SIGNALS:
     void signalErrorMessage( const QString& );

@@ -41,6 +41,9 @@ namespace KCal {
   class Calendar;
   class HTMLExportSettings;
   class Incidence;
+}
+
+namespace KOrg {
   class AkonadiCalendar;
 }
 
@@ -441,7 +444,7 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     bool mHtmlExportSync;
 
     Calendar *mCalendar;
-    AkonadiCalendar *mCalendarAkonadi;
+    KOrg::AkonadiCalendar *mCalendarAkonadi;
     AkonadiCollectionView *mResourceView;
 
     bool mIsClosing;

@@ -69,9 +69,13 @@
 #include <QCursor>
 #endif
 
+
 // ============================================================================
 //  K O D A Y M A T R I X
 // ============================================================================
+
+using namespace KCal;
+using namespace KOrg;
 
 const int KODayMatrix::NOSELECTION = -1000;
 const int KODayMatrix::NUMDAYS = 42;

@@ -32,9 +32,11 @@
 #include <QList>
 
 namespace KCal {
-  class AkonadiCalendar;
-  //class AkonadiCalendar;
   //class ResourceCalendar;
+}
+
+namespace KOrg {
+    class AkonadiCalendar;
 }
 
 namespace Akonadi {
@@ -53,17 +55,17 @@ class AkonadiCollectionView;
 class AkonadiCollectionViewFactory : public CalendarViewExtension::Factory
 {
   public:
-    AkonadiCollectionViewFactory( KCal::AkonadiCalendar *calendar, CalendarView *view );
+    AkonadiCollectionViewFactory( KOrg::AkonadiCalendar *calendar, CalendarView *view );
     virtual ~AkonadiCollectionViewFactory(){}
 
-    KCal::AkonadiCalendar* calendar() const;
+    KOrg::AkonadiCalendar* calendar() const;
     CalendarView* view() const;
     AkonadiCollectionView* collectionView() const;
 
     CalendarViewExtension *create( QWidget * );
 
   private:
-    KCal::AkonadiCalendar *mCalendar;
+    KOrg::AkonadiCalendar *mCalendar;
     CalendarView *mView;
     AkonadiCollectionView *mAkonadiCollectionView;
 };
@@ -75,7 +77,7 @@ class AkonadiCollectionView : public CalendarViewExtension
 {
   Q_OBJECT
   public:
-    AkonadiCollectionView( AkonadiCollectionViewFactory *factory, KCal::AkonadiCalendar *calendar, QWidget *parent = 0 );
+    AkonadiCollectionView( AkonadiCollectionViewFactory *factory, KOrg::AkonadiCalendar *calendar, QWidget *parent = 0 );
     ~AkonadiCollectionView();
     AkonadiCalendar *calendar() const { return mCalendar; }
 
@@ -95,7 +97,7 @@ class AkonadiCollectionView : public CalendarViewExtension
 
   private:
     AkonadiCollectionViewFactory *mFactory;
-    KCal::AkonadiCalendar *mCalendar;
+    KOrg::AkonadiCalendar *mCalendar;
     Akonadi::StandardActionManager* mActionManager;
     Akonadi::CollectionView *mCollectionview;
     class CollectionProxyModel *mProxyModel;

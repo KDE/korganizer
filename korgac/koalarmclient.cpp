@@ -33,7 +33,6 @@
 #include "akonadicalendar.h"
 
 #include <KCal/CalendarResources>
-using namespace KCal;
 
 #include <KApplication>
 #include <KConfig>
@@ -41,6 +40,8 @@ using namespace KCal;
 #include <KDebug>
 #include <KStandardDirs>
 #include <KSystemTimeZones>
+
+using namespace KCal;
 
 KOAlarmClient::KOAlarmClient( QObject *parent )
   : QObject( parent ), mDocker( 0 ), mDialog( 0 )
@@ -61,7 +62,7 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
   }
 
   const KTimeZone zone = KSystemTimeZones::local();
-  mCalendar = new AkonadiCalendar( zone.isValid() ? KDateTime::Spec( zone ) : KDateTime::ClockTime );
+  mCalendar = new KOrg::AkonadiCalendar( zone.isValid() ? KDateTime::Spec( zone ) : KDateTime::ClockTime );
   //mCalendar->readConfig();
   //mCalendar->load();
 

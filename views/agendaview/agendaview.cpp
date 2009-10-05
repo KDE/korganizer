@@ -24,7 +24,7 @@ using namespace KOrg;
 AgendaView::AgendaView( Calendar *cal, QWidget *parent )
   : KOEventView( cal, parent )
 {
-  KCal::AkonadiCalendar *calres = dynamic_cast<KCal::AkonadiCalendar *>( cal );
+  AkonadiCalendar *calres = dynamic_cast<AkonadiCalendar *>( cal );
   if ( calres ) {
 #if 0 //sebsauer: not needed any longer
     connect( calres, SIGNAL(signalResourceAdded(ResourceCalendar *)),

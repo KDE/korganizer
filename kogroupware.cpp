@@ -58,7 +58,7 @@ FreeBusyManager *KOGroupware::mFreeBusyManager = 0;
 KOGroupware *KOGroupware::mInstance = 0;
 
 KOGroupware *KOGroupware::create( CalendarView *view,
-                                  KCal::AkonadiCalendar *calendar )
+                                  KOrg::AkonadiCalendar *calendar )
 {
   if ( !mInstance ) {
     mInstance = new KOGroupware( view, calendar );
@@ -73,7 +73,7 @@ KOGroupware *KOGroupware::instance()
   return mInstance;
 }
 
-KOGroupware::KOGroupware( CalendarView *view, KCal::AkonadiCalendar *cal )
+KOGroupware::KOGroupware( CalendarView *view, KOrg::AkonadiCalendar *cal )
   : QObject( 0 ), mView( view ), mCalendar( cal ), mDoNotNotify( false )
 {
   setObjectName( "kmgroupware_instance" );

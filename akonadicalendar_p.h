@@ -52,6 +52,7 @@
 
 using namespace boost;
 using namespace KCal;
+using namespace KOrg;
 
 class AkonadiCalendarCollection : public QObject
 {
@@ -98,7 +99,7 @@ class AkonadiCalendarItem : public QObject
 
 };
 
-class KCal::AkonadiCalendar::Private : public QObject
+class KOrg::AkonadiCalendar::Private : public QObject
 {
     Q_OBJECT
   public:

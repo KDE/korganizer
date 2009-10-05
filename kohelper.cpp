@@ -42,7 +42,7 @@ QColor KOHelper::resourceColor( KCal::Calendar *calendar,
                                 KCal::Incidence *incidence )
 {
   QColor resourceColor = QColor(); //Default invalid color
-  KCal::AkonadiCalendar *calendarResource = dynamic_cast<KCal::AkonadiCalendar*>( calendar );
+  KOrg::AkonadiCalendar *calendarResource = dynamic_cast<KOrg::AkonadiCalendar*>( calendar );
   if ( calendarResource ) {
     Akonadi::Item item = calendarResource->itemForIncidence( incidence );
     if( item.isValid() ) {
