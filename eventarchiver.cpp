@@ -29,7 +29,6 @@
 #include <kio/netaccess.h>
 #include <kcal/icalformat.h>
 #include <kcal/filestorage.h>
-#include <kcal/calendarlocal.h>
 #include <kcal/calendar.h>
 
 #include <kdebug.h>
@@ -153,6 +152,8 @@ void EventArchiver::deleteIncidences( Calendar *calendar, const QDate &limitDate
 void EventArchiver::archiveIncidences( Calendar *calendar, const QDate &limitDate, QWidget *widget,
                                        const Incidence::List &incidences, bool withGUI )
 {
+#if 0 //sebsauer
+
   Q_UNUSED( limitDate );
   Q_UNUSED( withGUI );
   FileStorage storage( calendar );
@@ -242,6 +243,10 @@ void EventArchiver::archiveIncidences( Calendar *calendar, const QDate &limitDat
     calendar->deleteIncidence( *it );
   }
   emit eventsDeleted();
+
+#else
+  kDebug()<<"EventArchiver::archiveIncidences TODO";
+#endif
 }
 
 #include "eventarchiver.moc"

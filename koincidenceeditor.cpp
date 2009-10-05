@@ -32,7 +32,6 @@
 #include <libkdepim/embeddedurlpage.h>
 
 #include <KABC/Addressee>
-#include <KCal/CalendarLocal>
 #include <KCal/Incidence>
 #include <KCal/ICalFormat>
 

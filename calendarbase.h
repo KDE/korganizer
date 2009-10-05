@@ -104,7 +104,7 @@ enum JournalSortField {
   alarms, time zones, and other useful information.
 
   This is an abstract base class defining the interface to a calendar.
-  It is implemented by subclasses like CalendarLocal, which use different
+  It is implemented by subclasses like AkonadiCalendar, which use different
   methods to store and access the data.
 
   <b>Ownership of KCal::Incidences</b>:

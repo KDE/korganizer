@@ -46,8 +46,6 @@
 #include <libkdepim/statusbarprogresswidget.h>
 #include <libkdepim/progressdialog.h>
 
-#include <kcal/calendarlocal.h>
-
 #include <kio/netaccess.h>
 
 #include <kglobal.h>
