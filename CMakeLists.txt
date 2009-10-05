@@ -209,6 +209,7 @@ if(KMAIL_SUPPORTED)
     stdcalendar.cpp
     koprefs.cpp kocore.cpp kohelper.cpp koidentitymanager.cpp cellitem.cpp
     akonadicalendar.cpp
+    calendarbase.cpp
     akonadicollectionview.cpp
     printing/calprinter.cpp
     printing/calprintpluginbase.cpp
