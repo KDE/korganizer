@@ -45,6 +45,7 @@
 
 KOEventPopupMenu::KOEventPopupMenu()
 {
+  mCalendar = 0;
   mCurrentIncidence = 0;
   mCurrentDate = QDate();
   mHasAdditionalItems = false;
@@ -89,8 +90,9 @@ KOEventPopupMenu::KOEventPopupMenu()
               this, SLOT(forward()) );
 }
 
-void KOEventPopupMenu::showIncidencePopup( Incidence *incidence, const QDate &qd )
+void KOEventPopupMenu::showIncidencePopup( Calendar *cal, Incidence *incidence, const QDate &qd )
 {
+  mCalendar = cal;
   mCurrentIncidence = incidence;
   mCurrentDate = qd;
 
@@ -135,7 +137,7 @@ void KOEventPopupMenu::print()
 {
 #ifndef KORG_NOPRINTER
   KOCoreHelper helper;
-  CalPrinter printer( this, 0, &helper );
+  CalPrinter printer( this, mCalendar, &helper );
   connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
 
   Incidence::List selectedIncidences;

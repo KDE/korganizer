@@ -178,7 +178,7 @@ class KOAgenda : public QScrollView
     void showIncidenceSignal( Incidence * );
     void editIncidenceSignal( Incidence * );
     void deleteIncidenceSignal( Incidence * );
-    void showIncidencePopupSignal( Incidence *, const QDate &);
+    void showIncidencePopupSignal( Calendar *, Incidence *, const QDate &);
     void showNewEventPopupSignal();
 
     void itemModified( KOAgendaItem *item );

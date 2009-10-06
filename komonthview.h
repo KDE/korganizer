@@ -269,7 +269,7 @@ class KOMonthView: public KOEventView
 
     void clearSelection();
 
-    void showEventContextMenu( Incidence *, const QDate & );
+    void showEventContextMenu( Calendar *, Incidence *, const QDate & );
     void showGeneralContextMenu();
 
     void setSelectedCell( MonthViewCell * );
