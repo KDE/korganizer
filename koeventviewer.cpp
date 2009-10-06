@@ -97,12 +97,9 @@ void KOEventViewer::setSource( const QUrl &name )
 
 bool KOEventViewer::appendIncidence( Incidence *incidence, const QDate &date )
 {
-#ifdef AKONADI_PORT_DISABLED
+  //PENDING(AKONADI_PORT): replace QString() by incidence location (was: mCalendar)
   addText( IncidenceFormatter::extensiveDisplayStr(
-             mCalendar, incidence, date, KSystemTimeZones::local() ) );
-#else
-  addText( QLatin1String("AKONADI_PORT_DISABLED") );
-#endif // AKONADI_PORT_DISABLED
+             QString(), incidence, date, KSystemTimeZones::local() ) );
   return true;
 }
 
