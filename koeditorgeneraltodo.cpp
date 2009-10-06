@@ -21,6 +21,8 @@
   with any edition of Qt, and distribute the resulting executable,
   without including the source code for Qt in the source distribution.
 */
+
+#include "calendarbase.h"
 #include "koeditorgeneraltodo.h"
 #include "koglobals.h"
 #include "koprefs.h"
@@ -95,10 +97,8 @@ void KOEditorGeneralTodo::initTime( QWidget *parent, QBoxLayout *topLayout )
 
   // Timezone
   QString whatsThis = i18n( "Select the timezone for this event. It will also affect recurrences" );
-#ifdef AKONADI_PORT_DISABLED
-  mTimeZoneComboStart = new KPIM::KTimeZoneComboBox( mCalendar, timeGroupBox );
-  mTimeZoneComboDue = new KPIM::KTimeZoneComboBox( mCalendar, timeGroupBox );
-#endif // AKONADI_PORT_DISABLED
+  mTimeZoneComboStart = new KPIM::KTimeZoneComboBox( mCalendar->timeZones(), timeGroupBox );
+  mTimeZoneComboDue = new KPIM::KTimeZoneComboBox( mCalendar->timeZones(), timeGroupBox );
 
   if ( !KOPrefs::instance()->showTimeZoneSelectorInIncidenceEditor() ) {
     mTimeZoneComboStart->hide();
