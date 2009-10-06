@@ -134,18 +134,14 @@ void FreeBusyManager::setCalendar( KOrg::CalendarBase *c )
 
 KCal::FreeBusy *FreeBusyManager::ownerFreeBusy()
 {
-#ifdef AKONADI_PORT_DISABLED
   KDateTime start = KDateTime::currentUtcDateTime();
   KDateTime end = start.addDays( KOPrefs::instance()->mFreeBusyPublishDays );
 
-  FreeBusy *freebusy = new FreeBusy( mCalendar, start, end );
+  FreeBusy *freebusy = new FreeBusy( mCalendar ? mCalendar->rawEvents( start.date(), end.date() ) : Event::List(), start, end );
   freebusy->setOrganizer( Person( KOPrefs::instance()->fullName(),
                                   KOPrefs::instance()->email() ) );
 
   return freebusy;
-#else // AKONADI_PORT_DISABLED
-  return 0;
-#endif // AKONADI_PORT_DISABLED
 }
 
 QString FreeBusyManager::ownerFreeBusyAsString()

@@ -126,13 +126,7 @@ CalendarView::CalendarView( QWidget *parent )
 
   mEventViewerBox = new KVBox( mLeftSplitter );
   mEventViewerBox->setMargin( KDialog::marginHint() );
-  mEventViewer = new KOEventViewer(
-#ifdef AKONADI_PORT_DISABLED
-          CalendarNull::self()
-#else
-          0
-#endif
-          , mEventViewerBox );
+  mEventViewer = new KOEventViewer( CalendarNull::self(), mEventViewerBox );
   mEventViewer->setObjectName( "EventViewer" );
 
   KVBox *rightBox = new KVBox( mPanner );
@@ -300,11 +294,7 @@ KOrg::CalendarBase *CalendarView::calendar()
   if ( mCalendar ) {
     return mCalendar;
   } else {
-#ifdef AKONADI_PORT_DISABLED
     return CalendarNull::self();
-#else
-    return 0;
-#endif
   }
 }
 
