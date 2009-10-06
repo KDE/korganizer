@@ -23,6 +23,7 @@
 */
 
 #include "monthitem.h"
+#include "akonadicalendar.h"
 #include "kodialogmanager.h"
 #include "koglobals.h"
 #include "kohelper.h"
@@ -32,7 +33,6 @@
 #include "monthscene.h"
 #include "monthview.h"
 
-#include <KCal/Calendar>
 #include <KCal/Incidence>
 #include <KCal/IncidenceFormatter>
 #include <KCal/Todo>
@@ -556,8 +556,12 @@ QString IncidenceMonthItem::toolTipText() const
   if ( monthScene()->mMonthView && !monthScene()->mMonthView->selectedDates().isEmpty() ) {
     date = monthScene()->mMonthView->selectedDates().first();
   }
+#ifdef AKONADI_PORT_DISABLED
   return IncidenceFormatter::toolTipStr(
     monthScene()->calendar(), mIncidence, date, true, KOPrefs::instance()->timeSpec() );
+#else
+  return QString();
+#endif
 }
 
 QList<QPixmap *> IncidenceMonthItem::icons() const

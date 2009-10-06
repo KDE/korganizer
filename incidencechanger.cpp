@@ -26,6 +26,7 @@
 #include "kogroupware.h"
 #include "koprefs.h"
 #include "mailscheduler.h"
+#include "calendarbase.h"
 
 #include <KCal/AssignmentVisitor>
 #include <KCal/CalendarResources>
@@ -77,8 +78,10 @@ void IncidenceChanger::cancelAttendees( Incidence *incidence )
       // manually.
       // FIXME: Groupware schedulling should be factored out to it's own class
       //        anyway
+#ifdef AKONADI_PORT_DISABLED
       MailScheduler scheduler( mCalendar );
       scheduler.performTransaction( incidence, iTIPCancel );
+#endif // AKONADI_PORT_DISABLED
     }
   }
 }
@@ -131,8 +134,10 @@ bool IncidenceChanger::deleteIncidence( Incidence *incidence )
       }
 
       if ( !KOGroupware::instance()->doNotNotify() && notifyOrganizer ) {
+#ifdef AKONADI_PORT_DISABLED
         MailScheduler scheduler( mCalendar );
         scheduler.performTransaction( tmp, KCal::iTIPReply );
+#endif
       }
       //reset the doNotNotify flag
       KOGroupware::instance()->setDoNotNotify( false );
@@ -151,11 +156,13 @@ bool IncidenceChanger::cutIncidence( Incidence *incidence )
   kDebug() << "\"" << incidence->summary() << "\"";
   bool doDelete = sendGroupwareMessage( incidence, KCal::iTIPCancel );
   if( doDelete ) {
+#ifdef AKONADI_PORT_DISABLED
     // @TODO: the factory needs to do the locking!
     DndFactory factory( mCalendar );
     emit incidenceToBeDeleted( incidence );
     factory.cutIncidence( incidence );
     emit incidenceDeleted( incidence );
+#endif
   }
   return doDelete;
 }

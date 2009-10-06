@@ -29,8 +29,11 @@
 #include <QColor>
 
 namespace KCal {
-  class Calendar;
   class Incidence;
+}
+
+namespace KOrg {
+  class CalendarBase;
 }
 
 class QDate;
@@ -52,7 +55,7 @@ namespace KOHelper
     @param incidence the incidence for which the color is needed (to
                      determine which  subresource needs to be used)
   */
-  KORGANIZER_CORE_EXPORT QColor resourceColor( KCal::Calendar *calendar,
+  KORGANIZER_CORE_EXPORT QColor resourceColor( KOrg::CalendarBase *calendar,
                                                KCal::Incidence *incidence );
   /**
     Returns the number of years between the @p start QDate and the @p end QDate

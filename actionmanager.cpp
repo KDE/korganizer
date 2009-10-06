@@ -210,7 +210,7 @@ void ActionManager::createCalendarAkonadi()
   initCalendar( mCalendarAkonadi );
 }
 
-void ActionManager::initCalendar( Calendar *cal )
+void ActionManager::initCalendar( KOrg::CalendarBase *cal )
 {
   cal->setOwner( Person( KOPrefs::instance()->fullName(),
                          KOPrefs::instance()->email() ) );
@@ -1125,6 +1125,7 @@ void ActionManager::exportHTML()
 
 void ActionManager::exportHTML( HTMLExportSettings *settings )
 {
+#ifdef AKONADI_PORT_DISABLED
   if ( !settings || settings->outputFile().isEmpty() ) {
     return;
   }
@@ -1188,6 +1189,8 @@ void ActionManager::exportHTML( HTMLExportSettings *settings )
   }
   KMessageBox::information( dialogParent(), saveMessage,
                i18nc( "@title:window", "Export Status" ) );
+#endif // AKONADI_PORT_DISABLED
+
 }
 
 bool ActionManager::saveAsURL( const KUrl &url )

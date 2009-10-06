@@ -36,9 +36,9 @@
 
 using namespace KCal;
 
-namespace KCal { class Calendar; }
-
 namespace KOrg {
+
+class CalendarBase;
 
 /**
   This class provides an interface for all views being displayed within the
@@ -62,18 +62,18 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
                     will be retrieved for display.
       @param parent parent widget.
     */
-    explicit BaseView( Calendar *cal, QWidget *parent = 0 );
+    explicit BaseView( CalendarBase *cal, QWidget *parent = 0 );
 
     /**
       Destructor.  Views will do view-specific cleanups here.
     */
     virtual ~BaseView();
 
-    virtual void setCalendar( Calendar *cal );
+    virtual void setCalendar( CalendarBase *cal );
     /**
       Return calendar object of this view.
     */
-    virtual Calendar *calendar();
+    virtual CalendarBase *calendar();
 
     /**
       @return a list of selected events.  Most views can probably only
@@ -280,7 +280,7 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
     void newJournalSignal( const QDate & );
 
   private:
-    Calendar *mCalendar;
+    CalendarBase *mCalendar;
   protected:
     IncidenceChangerBase *mChanger;
 };

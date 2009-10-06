@@ -24,14 +24,14 @@
 
 namespace KOrg {
 
-BaseView::BaseView( Calendar *cal, QWidget *parent )
+BaseView::BaseView( CalendarBase *cal, QWidget *parent )
   : QWidget( parent ), mCalendar( cal ), mChanger( 0 )
 {}
 
 BaseView::~BaseView()
 {}
 
-void BaseView::setCalendar( Calendar *cal )
+void BaseView::setCalendar( CalendarBase *cal )
 {
   mCalendar = cal;
 }
@@ -41,7 +41,7 @@ CalPrinterBase::PrintType BaseView::printType()
   return CalPrinterBase::Month;
 }
 
-Calendar *BaseView::calendar()
+CalendarBase *BaseView::calendar()
 {
   return mCalendar;
 }

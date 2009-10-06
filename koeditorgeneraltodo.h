@@ -29,6 +29,9 @@
 namespace KCal {
   class Todo;
 }
+namespace KOrg {
+  class CalendarBase;
+}
 using namespace KCal;
 
 namespace KPIM {
@@ -41,7 +44,7 @@ class KOEditorGeneralTodo : public KOEditorGeneral
 {
   Q_OBJECT
   public:
-    explicit KOEditorGeneralTodo( Calendar *calendar, QObject *parent = 0 );
+    explicit KOEditorGeneralTodo( KOrg::CalendarBase *calendar, QObject *parent = 0 );
     virtual ~KOEditorGeneralTodo();
 
     void initTime( QWidget *, QBoxLayout * );

@@ -77,7 +77,7 @@ class ReminderListItem : public QTreeWidgetItem
 
 typedef QList<ReminderListItem *> ReminderList;
 
-AlarmDialog::AlarmDialog( KCal::Calendar *calendar, QWidget *parent )
+AlarmDialog::AlarmDialog( KOrg::CalendarBase *calendar, QWidget *parent )
   : KDialog( parent, Qt::WindowStaysOnTopHint ),
     mCalendar( calendar ), mSuspendTimer( this )
 {
@@ -282,10 +282,13 @@ void AlarmDialog::addIncidence( Incidence *incidence,
     }
   }
   item->setText( 2, triggerStr );
-
+#ifdef AKONADI_PORT_DISABLED
   QString tip = IncidenceFormatter::toolTipStr( mCalendar, incidence,
                                                 item->mRemindAt.date(), true,
                                                 KDateTime::Spec::LocalZone() );
+#else
+  QString tip;
+#endif // AKONADI_PORT_DISABLED
   if ( !item->mDisplayText.isEmpty() ) {
     tip += "<br>" + item->mDisplayText;
   }

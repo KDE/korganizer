@@ -30,7 +30,6 @@
 #include <QHash>
 
 namespace KCal {
-  class Calendar;
   class Incidence;
   class Todo;
 #ifndef KORG_NODND
@@ -40,6 +39,7 @@ namespace KCal {
 using namespace KCal;
 
 namespace KOrg {
+  class CalendarBase;
   class IncidenceChangerBase;
 }
 using namespace KOrg;
@@ -70,11 +70,11 @@ class KOTodoModel : public QAbstractItemModel
     };
 
   public:
-    explicit KOTodoModel( Calendar *cal, QObject *parent = 0 );
+    explicit KOTodoModel( KOrg::CalendarBase *cal, QObject *parent = 0 );
     virtual ~KOTodoModel();
 
     /** Set the calendar */
-    void setCalendar( Calendar *cal );
+    void setCalendar( KOrg::CalendarBase *cal );
     /** Resets the model and deletes the whole todo tree */
     void clearTodos();
     /** Reloads all todos from the Calendar provided during construction */
@@ -189,7 +189,7 @@ class KOTodoModel : public QAbstractItemModel
     const int mColumnCount;
 
     /** Calendar to get data from */
-    Calendar *mCalendar;
+    KOrg::CalendarBase *mCalendar;
     /** Root elements of the todo tree. */
     TodoTreeNode *mRootNode;
     /** Hash to speed up searching todo by their uid */

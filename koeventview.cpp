@@ -39,7 +39,7 @@
 
 //---------------------------------------------------------------------------
 
-KOEventView::KOEventView( Calendar *cal, QWidget *parent )
+KOEventView::KOEventView( KOrg::CalendarBase *cal, QWidget *parent )
   : KOrg::BaseView( cal, parent )
 {
   mReturnPressed = false;

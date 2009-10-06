@@ -28,6 +28,7 @@
 #include "cellitem.h"
 #include "koprefs.h"
 #include "kohelper.h"
+#include "calendarbase.h"
 
 #include <kdebug.h>
 #include <kconfig.h>
@@ -1015,8 +1016,8 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
   p.drawText( headerTextBox, Qt::AlignRight | Qt::AlignVCenter, dayNumStr );
 
   Event::List eventList = mCalendar->events( qd, KSystemTimeZones::local(),
-                                             EventSortStartDate,
-                                             SortDirectionAscending );
+                                             KOrg::EventSortStartDate,
+                                             KOrg::SortDirectionAscending );
 
   QString timeText;
   p.setFont( QFont( "sans-serif", 8 ) );
@@ -1323,8 +1324,8 @@ void CalPrintPluginBase::drawTimeTable( QPainter &p,
     dayBox.setTop( tlBox.top() );
     dayBox.setBottom( box.bottom() );
     Event::List eventList = mCalendar->events( curDate, timeSpec,
-                                               EventSortStartDate,
-                                               SortDirectionAscending );
+                                               KOrg::EventSortStartDate,
+                                               KOrg::SortDirectionAscending );
     alldayHeight = drawAllDayBox( p, eventList, curDate, false, allDayBox,
                                   excludeConfidential, excludePrivate );
     drawAgendaDayBox( p, eventList, curDate, false, fromTime, toTime,
@@ -1683,7 +1684,7 @@ void CalPrintPluginBase::drawTodoLines( QPainter &p,
 }
 
 void CalPrintPluginBase::drawTodo( int &count, Todo *todo, QPainter &p,
-                                   TodoSortField sortField, SortDirection sortDir,
+                                   KOrg::TodoSortField sortField, KOrg::SortDirection sortDir,
                                    bool connectSubTodos, bool strikeoutCompleted,
                                    bool desc, int posPriority, int posSummary,
                                    int posDueDt, int posPercentComplete,

@@ -111,7 +111,7 @@ KDateNavigator::~KDateNavigator()
 {
 }
 
-void KDateNavigator::setCalendar( Calendar *cal )
+void KDateNavigator::setCalendar( KOrg::CalendarBase *cal )
 {
   mDayMatrix->setCalendar( cal );
 }

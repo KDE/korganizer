@@ -33,8 +33,11 @@
 class KODayMatrix;
 class NavigatorBar;
 
+namespace KOrg {
+  class CalendarBase;
+}
+
 namespace KCal {
-  class Calendar;
   class Incidence;
 }
 using namespace KCal;
@@ -53,7 +56,7 @@ class KDateNavigator: public QFrame
     /**
       Associate date navigator with a calendar. It is used by KODayMatrix.
     */
-    void setCalendar( Calendar * );
+    void setCalendar( KOrg::CalendarBase * );
 
     void setBaseDate( const QDate & );
 

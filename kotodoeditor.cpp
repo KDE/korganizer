@@ -49,7 +49,9 @@
 #include <QHBoxLayout>
 #include <QBoxLayout>
 
-KOTodoEditor::KOTodoEditor( Calendar *calendar, QWidget *parent )
+using namespace KOrg;
+
+KOTodoEditor::KOTodoEditor( CalendarBase *calendar, QWidget *parent )
   : KOIncidenceEditor( QString(), calendar, parent ),
     mTodo( 0 ), mCalendar( 0 ), mRelatedTodo( 0 )
 {
@@ -192,7 +194,7 @@ void KOTodoEditor::setupRecurrence()
            mRecurrence, SLOT(setEnabled(bool)) );
 }
 
-void KOTodoEditor::editIncidence( Incidence *incidence, Calendar *calendar )
+void KOTodoEditor::editIncidence( Incidence *incidence, KOrg::CalendarBase *calendar )
 {
   Todo *todo = dynamic_cast<Todo*>( incidence );
   if ( todo ) {
@@ -202,10 +204,16 @@ void KOTodoEditor::editIncidence( Incidence *incidence, Calendar *calendar )
     mCalendar = calendar;
     readTodo( mTodo, false );
   }
-
+#ifdef AKONADI_PORT_DISABLED
   setCaption( i18nc( "@title:window",
                      "Edit To-do: %1",
                      IncidenceFormatter::resourceString( calendar, incidence ) ) );
+#else // AKONADI_PORT_DISABLED
+  setCaption( i18nc( "@title:window",
+                     "Edit To-do: %1",
+                     QLatin1String("AKONADI_PORT_DISABLED") ) );
+
+#endif // AKONADI_PORT_DISABLED
 }
 
 void KOTodoEditor::newTodo()

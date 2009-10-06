@@ -27,12 +27,12 @@
 
 #include "kotodoviewquicksearch.h"
 #include "koprefs.h"
+#include "akonadicalendar.h"
 
 #include <libkdepim/categoryhierarchyreader.h>
 #include <libkdepim/kcheckcombobox.h>
 using namespace KPIM;
 
-#include <KCal/Calendar>
 #include <KCal/CalFilter>
 using namespace KCal;
 
@@ -46,7 +46,7 @@ using namespace KCal;
 #include <QAbstractItemView>
 #include <QHBoxLayout>
 
-KOTodoViewQuickSearch::KOTodoViewQuickSearch( Calendar *calendar, QWidget *parent )
+KOTodoViewQuickSearch::KOTodoViewQuickSearch( KOrg::CalendarBase *calendar, QWidget *parent )
   : QWidget( parent ), mCalendar( calendar )
 {
   QHBoxLayout *layout = new QHBoxLayout( this );
@@ -74,7 +74,7 @@ KOTodoViewQuickSearch::KOTodoViewQuickSearch( Calendar *calendar, QWidget *paren
   setLayout( layout );
 }
 
-void KOTodoViewQuickSearch::setCalendar( Calendar *calendar )
+void KOTodoViewQuickSearch::setCalendar( KOrg::CalendarBase *calendar )
 {
   mCalendar = calendar;
   fillCategories();

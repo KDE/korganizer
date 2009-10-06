@@ -27,7 +27,6 @@
 #include "akonadicalendar.h"
 
 #include <kcal/incidence.h>
-#include <kcal/calendar.h>
 #include <akonadi/item.h>
 
 #include <QDate>
@@ -38,7 +37,7 @@ QColor KOHelper::getTextColor( const QColor &c )
   return ( luminance > 128.0 ) ? QColor( 0, 0, 0 ) : QColor( 255, 255, 255 );
 }
 
-QColor KOHelper::resourceColor( KCal::Calendar *calendar,
+QColor KOHelper::resourceColor( KOrg::CalendarBase *calendar,
                                 KCal::Incidence *incidence )
 {
   QColor resourceColor = QColor(); //Default invalid color

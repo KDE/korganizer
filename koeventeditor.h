@@ -45,7 +45,7 @@ class KOEventEditor : public KOIncidenceEditor
     /**
       Construct new event editor.
     */
-    KOEventEditor( Calendar *calendar, QWidget *parent );
+    KOEventEditor( KOrg::CalendarBase *calendar, QWidget *parent );
     virtual ~KOEventEditor();
 
     void init();
@@ -70,7 +70,7 @@ class KOEventEditor : public KOIncidenceEditor
     /**
       Edit an existing event.
     */
-    void editIncidence( Incidence *incidence, Calendar *calendar );
+    void editIncidence( Incidence *incidence, KOrg::CalendarBase *calendar );
 
     /**
       Set widgets to the given date/time values
@@ -131,7 +131,7 @@ class KOEventEditor : public KOIncidenceEditor
     // this event then the user will be asked if he really wants to cancel
     Event mInitialEvent;
 
-    Calendar *mCalendar;
+    KOrg::CalendarBase *mCalendar;
 
     KOEditorGeneralEvent *mGeneral;
     KOEditorRecurrenceDialog *mRecurrenceDialog;

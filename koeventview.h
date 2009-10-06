@@ -61,7 +61,7 @@ class KOEventView : public KOrg::BaseView
      *        will be retrieved for display.
      * @param parent is the parent QWidget.
      */
-    explicit KOEventView( Calendar *cal, QWidget *parent=0 );
+    explicit KOEventView( KOrg::CalendarBase *cal, QWidget *parent=0 );
 
     /**
      * Destructor.  Views will do view-specific cleanups here.

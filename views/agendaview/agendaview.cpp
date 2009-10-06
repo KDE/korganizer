@@ -21,7 +21,7 @@
 
 using namespace KOrg;
 
-AgendaView::AgendaView( Calendar *cal, QWidget *parent )
+AgendaView::AgendaView( CalendarBase *cal, QWidget *parent )
   : KOEventView( cal, parent )
 {
   AkonadiCalendar *calres = dynamic_cast<AkonadiCalendar *>( cal );

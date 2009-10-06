@@ -27,7 +27,7 @@
 #include "koeventviewer.h"
 #include <KLocale>
 
-KOEventViewerDialog::KOEventViewerDialog( Calendar *calendar, QWidget *parent, bool compact )
+KOEventViewerDialog::KOEventViewerDialog( KOrg::CalendarBase *calendar, QWidget *parent, bool compact )
   : KDialog( parent )
 {
   setCaption( i18n( "Event Viewer" ) );
@@ -57,7 +57,7 @@ KOEventViewerDialog::~KOEventViewerDialog()
   delete mEventViewer;
 }
 
-void KOEventViewerDialog::setCalendar( Calendar *calendar )
+void KOEventViewerDialog::setCalendar( KOrg::CalendarBase *calendar )
 {
   mEventViewer->setCalendar( calendar );
 }

@@ -43,13 +43,12 @@ class FreeBusyManager;
 
 namespace KOrg {
   class IncidenceChangerBase;
-  class AkonadiCalendar;
+  class CalendarBase;
 }
 
 using namespace KOrg;
 
 namespace KCal {
-  class Calendar;
   class Event;
   class Incidence;
 }
@@ -61,7 +60,7 @@ class KOGroupware : public QObject
 {
   Q_OBJECT
   public:
-    static KOGroupware *create( CalendarView *, KOrg::AkonadiCalendar * );
+    static KOGroupware *create( CalendarView *, KOrg::CalendarBase * );
     static KOGroupware *instance();
 
     FreeBusyManager *freeBusyManager();
@@ -79,7 +78,7 @@ class KOGroupware : public QObject
       @param oldEvent The original event provided in the invitations.
       @param newEvent The new event as edited by the user.
     */
-    void sendCounterProposal( KCal::Calendar *calendar, KCal::Event *oldEvent,
+    void sendCounterProposal( KOrg::CalendarBase *calendar, KCal::Event *oldEvent,
                               KCal::Event *newEvent ) const;
 
     // THIS IS THE ACTUAL KM/KO API
@@ -105,13 +104,13 @@ class KOGroupware : public QObject
     void initialCheckForChanges();
 
   protected:
-    KOGroupware( CalendarView *, KOrg::AkonadiCalendar * );
+    KOGroupware( CalendarView *, KOrg::CalendarBase * );
 
   private:
     static KOGroupware *mInstance;
     KCal::ICalFormat mFormat;
     CalendarView *mView;
-    KOrg::AkonadiCalendar *mCalendar;
+    KOrg::CalendarBase *mCalendar;
     static FreeBusyManager *mFreeBusyManager;
     bool mDoNotNotify;
 };

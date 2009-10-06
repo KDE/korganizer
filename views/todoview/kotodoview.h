@@ -31,8 +31,12 @@
 
 namespace KCal {
   class Incidence;
-  class Calendar;
 }
+
+namespace KOrg {
+  class CalendarBase;
+}
+
 using namespace KCal;
 using namespace KOrg;
 
@@ -55,10 +59,10 @@ class KOTodoView : public BaseView
   Q_OBJECT
 
   public:
-    KOTodoView( Calendar *cal, QWidget *parent );
+    KOTodoView( KOrg::CalendarBase *cal, QWidget *parent );
     ~KOTodoView();
 
-    virtual void setCalendar( Calendar *cal );
+    virtual void setCalendar( KOrg::CalendarBase *cal );
 
     virtual Incidence::List selectedIncidences();
     virtual DateList selectedDates();

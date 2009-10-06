@@ -49,7 +49,7 @@ using namespace KPIM;
 #include <QMenu>
 #include <QTimer>
 
-KOTodoView::KOTodoView( Calendar *cal, QWidget *parent )
+KOTodoView::KOTodoView( KOrg::CalendarBase *cal, QWidget *parent )
   : BaseView( cal, parent )
 {
   mModel = new KOTodoModel( calendar(), this );
@@ -259,7 +259,7 @@ void KOTodoView::expandIndex( const QModelIndex &index )
   }
 }
 
-void KOTodoView::setCalendar( Calendar *cal )
+void KOTodoView::setCalendar( KOrg::CalendarBase *cal )
 {
   BaseView::setCalendar( cal );
   mQuickSearch->setCalendar( cal );

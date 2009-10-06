@@ -24,7 +24,7 @@
 #define AKONADICALENDAR_H
 
 #include "korganizer/korganizer_export.h"
-#include <kcal/calendar.h>
+#include "calendarbase.h"
 
 namespace Akonadi {
   class Collection;
@@ -40,7 +40,7 @@ namespace KOrg {
 /**
  * Implements a KCal::Calendar that uses Akonadi as backend.
  */
-class KORGANIZER_INTERFACES_EXPORT AkonadiCalendar : public KCal::Calendar
+class KORGANIZER_INTERFACES_EXPORT AkonadiCalendar : public CalendarBase
 {
     Q_OBJECT
   public:
@@ -69,9 +69,9 @@ class KORGANIZER_INTERFACES_EXPORT AkonadiCalendar : public KCal::Calendar
     bool deleteEvent( KCal::Event *event );
     void deleteAllEvents() { Q_ASSERT(false); } //TODO remove, atm abstract in Calendar
 
-    KCal::Event::List rawEvents( KCal::EventSortField sortField = KCal::EventSortUnsorted, KCal::SortDirection sortDirection = KCal::SortDirectionAscending );
+    KCal::Event::List rawEvents( EventSortField sortField = EventSortUnsorted, SortDirection sortDirection = SortDirectionAscending );
     KCal::Event::List rawEvents( const QDate &start, const QDate &end, const KDateTime::Spec &timeSpec = KDateTime::Spec(), bool inclusive = false );
-    KCal::Event::List rawEventsForDate( const QDate &date, const KDateTime::Spec &timeSpec = KDateTime::Spec(), KCal::EventSortField sortField = KCal::EventSortUnsorted, KCal::SortDirection sortDirection = KCal::SortDirectionAscending );
+    KCal::Event::List rawEventsForDate( const QDate &date, const KDateTime::Spec &timeSpec = KDateTime::Spec(), EventSortField sortField = EventSortUnsorted, SortDirection sortDirection = SortDirectionAscending );
     KCal::Event::List rawEventsForDate( const KDateTime &dt );
 
     KCal::Event *event( const QString &uid );
@@ -80,7 +80,7 @@ class KORGANIZER_INTERFACES_EXPORT AkonadiCalendar : public KCal::Calendar
     bool deleteTodo( KCal::Todo *todo );
     void deleteAllTodos() { Q_ASSERT(false); } //TODO remove, atm abstract in Calendar
 
-    KCal::Todo::List rawTodos( KCal::TodoSortField sortField = KCal::TodoSortUnsorted, KCal::SortDirection sortDirection = KCal::SortDirectionAscending );
+    KCal::Todo::List rawTodos( TodoSortField sortField = TodoSortUnsorted, SortDirection sortDirection = SortDirectionAscending );
     KCal::Todo::List rawTodosForDate( const QDate &date );
 
     KCal::Todo *todo( const QString &uid );
@@ -89,7 +89,7 @@ class KORGANIZER_INTERFACES_EXPORT AkonadiCalendar : public KCal::Calendar
     bool deleteJournal( KCal::Journal *journal );
     void deleteAllJournals() { Q_ASSERT(false); } //TODO remove, atm abstract in Calendar
 
-    KCal::Journal::List rawJournals( KCal::JournalSortField sortField = KCal::JournalSortUnsorted, KCal::SortDirection sortDirection = KCal::SortDirectionAscending );
+    KCal::Journal::List rawJournals( JournalSortField sortField = JournalSortUnsorted, SortDirection sortDirection = SortDirectionAscending );
     KCal::Journal::List rawJournalsForDate( const QDate &date );
 
     KCal::Journal *journal( const QString &uid );

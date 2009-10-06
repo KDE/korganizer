@@ -27,6 +27,7 @@
 #define CALENDARVIEW_H
 
 #include "korganizer_export.h"
+#include "akonadicalendar.h"
 #include "interfaces/korganizer/calendarviewbase.h"
 
 #include <QObject>
@@ -50,6 +51,7 @@ namespace KCal {
 using namespace KCal;
 
 namespace KOrg {
+  class CalendarBase;
   class History;
 }
 using namespace KOrg;
@@ -82,7 +84,7 @@ class CalendarViewExtension : public QWidget
   @author Cornelius Schumacher
 */
 class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
-                                              public Calendar::CalendarObserver
+                                              public KOrg::CalendarBase::CalendarObserver
 {
   Q_OBJECT
   public:
@@ -115,8 +117,8 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
         bool visit( FreeBusy * ) { return false; }
     };
 
-    void setCalendar( Calendar * );
-    Calendar *calendar();
+    void setCalendar( KOrg::CalendarBase * );
+    KOrg::CalendarBase *calendar();
 
     History *history() const { return mHistory; }
 
@@ -641,7 +643,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     void dissociateOccurrence( Incidence *, const QDate & );
     void dissociateFutureOccurrence( Incidence *, const QDate & );
 
-    void calendarModified( bool, Calendar * );
+    void calendarModified( bool, KOrg::CalendarBase * );
 
     // Helper function for purgeCompleted that recursively purges a todo and
     // its subitems. If it cannot delete a completed todo (because it has
@@ -663,7 +665,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
 
     QList<CalendarViewExtension*> mExtensions;
 
-    Calendar *mCalendar;
+    KOrg::CalendarBase *mCalendar;
 
     DateNavigator *mDateNavigator;
     DateChecker *mDateChecker;

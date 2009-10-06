@@ -58,7 +58,7 @@ FreeBusyManager *KOGroupware::mFreeBusyManager = 0;
 KOGroupware *KOGroupware::mInstance = 0;
 
 KOGroupware *KOGroupware::create( CalendarView *view,
-                                  KOrg::AkonadiCalendar *calendar )
+                                  KOrg::CalendarBase *calendar )
 {
   if ( !mInstance ) {
     mInstance = new KOGroupware( view, calendar );
@@ -73,7 +73,7 @@ KOGroupware *KOGroupware::instance()
   return mInstance;
 }
 
-KOGroupware::KOGroupware( CalendarView *view, KOrg::AkonadiCalendar *cal )
+KOGroupware::KOGroupware( CalendarView *view, KOrg::CalendarBase *cal )
   : QObject( 0 ), mView( view ), mCalendar( cal ), mDoNotNotify( false )
 {
   setObjectName( "kmgroupware_instance" );
@@ -132,6 +132,7 @@ FreeBusyManager *KOGroupware::freeBusyManager()
 
 void KOGroupware::incomingDirChanged( const QString &path )
 {
+#ifdef AKONADI_PORT_DISABLED
   const QString incomingDirName = KStandardDirs::locateLocal( "data","korganizer/" ) + "income.";
   if ( !path.startsWith( incomingDirName ) ) {
     kDebug() << "Wrong dir" << path;
@@ -234,6 +235,7 @@ void KOGroupware::incomingDirChanged( const QString &path )
   }
   mView->updateView();
   delete message;
+#endif // AKONADI_PORT_DISABLED
 }
 
 class KOInvitationFormatterHelper : public InvitationFormatterHelper
@@ -253,6 +255,7 @@ bool KOGroupware::sendICalMessage( QWidget *parent,
                                    Incidence *incidence, bool isDeleting,
                                    bool statusChanged )
 {
+#ifdef AKONADI_PORT_DISABLED
   // If there are no attendees, don't bother
   if ( incidence->attendees().isEmpty() ) {
     return true;
@@ -373,12 +376,16 @@ bool KOGroupware::sendICalMessage( QWidget *parent,
   } else {
     return false;
   }
+#else // AKONADI_PORT_DISABLED
+  return false;
+#endif // AKONADI_PORT_DISABLED
 }
 
-void KOGroupware::sendCounterProposal( KCal::Calendar *calendar,
+void KOGroupware::sendCounterProposal( KOrg::CalendarBase *calendar,
                                        KCal::Event *oldEvent,
                                        KCal::Event *newEvent ) const
 {
+#ifdef AKONADI_PORT_DISABLED
   if ( !oldEvent || !newEvent || *oldEvent == *newEvent ||
        !KOPrefs::instance()->mUseGroupwareCommunication ) {
     return;
@@ -397,6 +404,7 @@ void KOGroupware::sendCounterProposal( KCal::Calendar *calendar,
     MailScheduler scheduler( calendar );
     scheduler.performTransaction( newEvent, iTIPCounter );
   }
+#endif // AKONADI_PORT_DISABLED
 }
 
 #include "kogroupware.moc"

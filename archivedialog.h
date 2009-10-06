@@ -36,16 +36,15 @@ class QCheckBox;
 namespace KPIM {
 class KDateEdit;
 }
-namespace KCal {
-class Calendar;
+namespace KOrg {
+class CalendarBase;
 }
-using namespace KCal;
 
 class ArchiveDialog : public KDialog
 {
   Q_OBJECT
   public:
-    explicit ArchiveDialog( Calendar *calendar, QWidget *parent=0 );
+    explicit ArchiveDialog( KOrg::CalendarBase *calendar, QWidget *parent=0 );
     virtual ~ArchiveDialog();
 
   signals:
@@ -70,7 +69,7 @@ class ArchiveDialog : public KDialog
     QCheckBox *mEvents;
     QCheckBox *mTodos;
 
-    Calendar *mCalendar;
+    KOrg::CalendarBase *mCalendar;
 };
 
 #endif

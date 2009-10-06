@@ -32,9 +32,13 @@
 #include <KDialog>
 
 namespace KCal {
-  class Calendar;
   class Incidence;
 }
+
+namespace KOrg {
+  class CalendarBase;
+}
+
 using namespace KCal;
 
 class QButtonGroup;
@@ -61,10 +65,10 @@ class KORG_STDPRINTING_EXPORT CalPrinter : public QObject, public KOrg::CalPrint
       \param cal calendar to be printed
       \param helper is a pointer to the KOrg::CoreHelper object
     */
-    CalPrinter( QWidget *par, Calendar *cal, KOrg::CoreHelper *helper );
+    CalPrinter( QWidget *par, KOrg::CalendarBase *cal, KOrg::CoreHelper *helper );
     virtual ~CalPrinter();
 
-    void init( Calendar *calendar );
+    void init( KOrg::CalendarBase *calendar );
 
     /**
       Set date range to be printed.
@@ -92,7 +96,7 @@ class KORG_STDPRINTING_EXPORT CalPrinter : public QObject, public KOrg::CalPrint
     KOrg::PrintPlugin::List mPrintPlugins;
 
   private:
-    Calendar *mCalendar;
+    KOrg::CalendarBase *mCalendar;
     QWidget *mParent;
     KConfig *mConfig;
     KOrg::CoreHelper *mCoreHelper;

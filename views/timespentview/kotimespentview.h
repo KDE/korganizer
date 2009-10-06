@@ -39,7 +39,7 @@ class KOTimeSpentView : public KOrg::BaseView
 {
   Q_OBJECT
   public:
-    explicit KOTimeSpentView( Calendar *calendar, QWidget *parent = 0 );
+    explicit KOTimeSpentView( KOrg::CalendarBase *calendar, QWidget *parent = 0 );
     ~KOTimeSpentView();
 
     virtual int currentDateCount();

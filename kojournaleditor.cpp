@@ -38,7 +38,7 @@
 
 #include <QVBoxLayout>
 
-KOJournalEditor::KOJournalEditor( Calendar *calendar, QWidget *parent )
+KOJournalEditor::KOJournalEditor( KOrg::CalendarBase *calendar, QWidget *parent )
   : KOIncidenceEditor( QString(), calendar, parent ),
     mJournal( 0 ), mCalendar( 0 )
 {
@@ -89,7 +89,7 @@ void KOJournalEditor::setupGeneral()
   mGeneral->finishSetup();
 }
 
-void KOJournalEditor::editIncidence( Incidence *incidence, Calendar *calendar )
+void KOJournalEditor::editIncidence( Incidence *incidence, KOrg::CalendarBase *calendar )
 {
   Journal *journal = dynamic_cast<Journal*>( incidence );
   if ( journal ) {
@@ -99,10 +99,15 @@ void KOJournalEditor::editIncidence( Incidence *incidence, Calendar *calendar )
     mCalendar = calendar;
     readJournal( mJournal, false );
   }
-
+#ifdef AKONADI_PORT_DISABLED
   setCaption( i18nc( "@title:window",
                      "Edit Journal: %1",
                      IncidenceFormatter::resourceString( calendar, incidence ) ) );
+#else // AKONADI_PORT_DISABLED
+  setCaption( i18nc( "@title:window",
+                     "Edit Journal: %1",
+                     QLatin1String("AKONADI_PORT_DISABLED") ) );
+#endif // AKONADI_PORT_DISABLED
 
 }
 

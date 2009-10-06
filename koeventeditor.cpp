@@ -41,7 +41,7 @@
 #include <QFrame>
 #include <QVBoxLayout>
 
-KOEventEditor::KOEventEditor( Calendar *calendar, QWidget *parent )
+KOEventEditor::KOEventEditor( KOrg::CalendarBase *calendar, QWidget *parent )
   : KOIncidenceEditor( QString(), calendar, parent ),
     mEvent( 0 ), mCalendar( 0 ), mGeneral( 0 ), mRecurrence( 0 ), mFreeBusy( 0 )
 {
@@ -226,7 +226,7 @@ void KOEventEditor::setupFreeBusy()
   topLayout->addWidget( mFreeBusy );
 }
 
-void KOEventEditor::editIncidence( Incidence *incidence, Calendar *calendar )
+void KOEventEditor::editIncidence( Incidence *incidence, KOrg::CalendarBase *calendar )
 {
   Event*event = dynamic_cast<Event*>( incidence );
   if ( event ) {
@@ -237,9 +237,11 @@ void KOEventEditor::editIncidence( Incidence *incidence, Calendar *calendar )
     readEvent( mEvent, false );
   }
 
+#ifdef AKONADI_PORT_DISABLED
   setCaption( i18nc( "@title:window",
                      "Edit Event : %1",
                      IncidenceFormatter::resourceString( calendar, incidence ) ) );
+#endif
 }
 
 void KOEventEditor::newEvent()

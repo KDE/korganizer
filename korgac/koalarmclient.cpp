@@ -125,7 +125,7 @@ void KOAlarmClient::checkAlarms()
   }
 }
 
-void KOAlarmClient::createReminder( KCal::Calendar *calendar,
+void KOAlarmClient::createReminder( KOrg::CalendarBase *calendar,
                                     KCal::Incidence *incidence,
                                     const QDateTime &dt,
                                     const QString &displayText )

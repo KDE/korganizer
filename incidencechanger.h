@@ -31,7 +31,7 @@ class KORGANIZERPRIVATE_EXPORT IncidenceChanger : public KOrg::IncidenceChangerB
 {
   Q_OBJECT
   public:
-    IncidenceChanger( Calendar *cal, QObject *parent ) : IncidenceChangerBase( cal, parent ) {}
+    IncidenceChanger( KOrg::CalendarBase *cal, QObject *parent ) : IncidenceChangerBase( cal, parent ) {}
     ~IncidenceChanger() {}
 
     bool beginChange( Incidence * incidence );

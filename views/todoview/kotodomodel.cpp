@@ -23,12 +23,12 @@
 */
 
 #include "kotodomodel.h"
+#include "akonadicalendar.h"
 #include "kodialogmanager.h"
 #include "koglobals.h"
 #include "koprefs.h"
 #include "korganizer/incidencechangerbase.h"
 
-#include <KCal/Calendar>
 #include <KCal/CalFormat>
 #include <KCal/Incidence>
 #include <KCal/IncidenceFormatter>
@@ -172,7 +172,7 @@ struct KOTodoModel::TodoTreeNode : QObject
     QString mUid;
 };
 
-KOTodoModel::KOTodoModel( Calendar *cal, QObject *parent )
+KOTodoModel::KOTodoModel( CalendarBase *cal, QObject *parent )
   : QAbstractItemModel( parent ), mColumnCount( DescriptionColumn + 1 )
 {
   mRootNode = new TodoTreeNode( 0, 0, this );
@@ -180,7 +180,11 @@ KOTodoModel::KOTodoModel( Calendar *cal, QObject *parent )
   setCalendar( cal );
 
 #ifndef KORG_NODND
+#ifdef AKONADI_PORT_DISABLED
   mDndFactory = new DndFactory( cal );
+#else
+  mDndFactory = 0;
+#endif // AKONADI_PORT_DISABLED
 #endif
 }
 
@@ -198,7 +202,7 @@ KOTodoModel::~KOTodoModel()
 #endif
 }
 
-void KOTodoModel::setCalendar( Calendar *cal )
+void KOTodoModel::setCalendar( CalendarBase *cal )
 {
   mCalendar = cal;
   // old todos might no longer be valid, so clear them
@@ -727,10 +731,13 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
   // set the tooltip for every item
   if ( role == Qt::ToolTipRole ) {
     if ( KOPrefs::instance()->enableToolTips() ) {
-
+#ifdef AKONADI_PORT_DISABLED
       return QVariant( IncidenceFormatter::toolTipStr(
                          mCalendar, todo, QDate(), true, KOPrefs::instance()->timeSpec() ) );
-    } else {
+#else
+      return QVariant(QLatin1String("TODO!"));
+#endif // AKONADI_PORT_DISABLED
+  } else {
       return QVariant();
     }
   }

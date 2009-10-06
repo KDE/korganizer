@@ -31,6 +31,10 @@
 class QScrollArea;
 class KVBox;
 
+namespace KOrg {
+    class CalendarBase;
+}
+
 /**
  * This class provides a journal view.
 
@@ -42,7 +46,7 @@ class KOJournalView : public KOrg::BaseView
 {
   Q_OBJECT
   public:
-    explicit KOJournalView( Calendar *calendar, QWidget *parent = 0 );
+    explicit KOJournalView( KOrg::CalendarBase *calendar, QWidget *parent = 0 );
     ~KOJournalView();
 
     virtual int currentDateCount();

@@ -67,7 +67,7 @@ void FocusLineEdit::focusInEvent ( QFocusEvent *e )
   KLineEdit::focusInEvent( e );
 }
 
-KOEditorGeneral::KOEditorGeneral( Calendar *calendar, QObject *parent )
+KOEditorGeneral::KOEditorGeneral( KOrg::CalendarBase *calendar, QObject *parent )
   : QObject( parent ), mAttachments( 0 )
 {
   mType = "Event";

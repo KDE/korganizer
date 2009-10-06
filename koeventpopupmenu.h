@@ -30,9 +30,13 @@
 #include <QMenu>
 
 namespace KCal {
-  class Calendar;
   class Incidence;
 }
+
+namespace KOrg {
+  class CalendarBase;
+}
+
 using namespace KCal;
 
 /**
@@ -45,7 +49,7 @@ class KOEventPopupMenu : public QMenu
     KOEventPopupMenu();
 
   public slots:
-    void showIncidencePopup( Calendar *, Incidence *, const QDate & );
+    void showIncidencePopup( KOrg::CalendarBase *, Incidence *, const QDate & );
 
   protected slots:
     void popupShow();
@@ -74,7 +78,7 @@ class KOEventPopupMenu : public QMenu
     void dissociateOccurrencesSignal( Incidence *, const QDate & );
 
   private:
-    Calendar *mCalendar;
+    KOrg::CalendarBase *mCalendar;
     Incidence *mCurrentIncidence;
     QDate mCurrentDate;
 

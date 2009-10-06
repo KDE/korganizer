@@ -44,6 +44,7 @@ namespace KCal {
 }
 
 namespace KOrg {
+  class CalendarBase;
   class AkonadiCalendar;
 }
 
@@ -366,7 +367,7 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
 
     void showStatusMessageOpen( const KUrl &url, bool merge );
 
-    void initCalendar( Calendar *cal );
+    void initCalendar( KOrg::CalendarBase *cal );
 
     /**
       Return widget used as parent for dialogs and message boxes.
@@ -438,7 +439,7 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
 
     bool mHtmlExportSync;
 
-    Calendar *mCalendar;
+    KOrg::CalendarBase *mCalendar;
     KOrg::AkonadiCalendar *mCalendarAkonadi;
     AkonadiCollectionView *mResourceView;
 

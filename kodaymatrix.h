@@ -26,7 +26,7 @@
 #ifndef KODAYMATRIX_H
 #define KODAYMATRIX_H
 
-#include <KCal/Calendar>
+#include "akonadicalendar.h"
 
 #include <QColor>
 #include <QFrame>
@@ -35,6 +35,7 @@
 namespace KCal {
   class Incidence;
 }
+
 using namespace KCal;
 
 class QEvent;
@@ -82,7 +83,7 @@ class QDropEvent;
  *
  *  @author Eitzenberger Thomas
  */
-class KODayMatrix: public QFrame, public KCal::Calendar::CalendarObserver
+class KODayMatrix: public QFrame, public KOrg::CalendarBase::CalendarObserver
 {
   Q_OBJECT
   public:
@@ -101,7 +102,7 @@ class KODayMatrix: public QFrame, public KCal::Calendar::CalendarObserver
       Associate a calendar with this day matrix. If there is a calendar, the
       day matrix will accept drops and days with events will be highlighted.
     */
-    void setCalendar( Calendar * );
+    void setCalendar( KOrg::CalendarBase * );
 
     /** updates the day matrix to start with the given date. Does all the
      *  necessary checks for holidays or events on a day and stores them
@@ -285,7 +286,7 @@ class KODayMatrix: public QFrame, public KCal::Calendar::CalendarObserver
     static const int NUMDAYS;
 
     /** calendar instance to be queried for holidays, events, ... */
-    Calendar *mCalendar;
+    KOrg::CalendarBase *mCalendar;
 
     /** starting date of the matrix */
     QDate mStartDate;

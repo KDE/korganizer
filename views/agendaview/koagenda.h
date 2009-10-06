@@ -47,6 +47,7 @@ class QTime;
 class QWheelEvent;
 
 namespace KOrg {
+  class CalendarBase;
   class IncidenceChangerBase;
 }
 using namespace KOrg;
@@ -54,7 +55,6 @@ using namespace KOrg;
 namespace KCal {
   class Event;
   class Todo;
-  class Calendar;
 }
 using namespace KCal;
 
@@ -150,7 +150,7 @@ class KOAgenda : public Q3ScrollView
     void setDateList( const DateList &selectedDates );
     DateList dateList() const;
 
-    void setCalendar( Calendar *cal )
+    void setCalendar( KOrg::CalendarBase *cal )
     { mCalendar = cal; }
     void setIncidenceChanger( IncidenceChangerBase *changer )
     { mChanger = changer; }
@@ -191,7 +191,7 @@ class KOAgenda : public Q3ScrollView
     void showIncidenceSignal( Incidence * );
     void editIncidenceSignal( Incidence * );
     void deleteIncidenceSignal( Incidence * );
-    void showIncidencePopupSignal( Calendar *, Incidence *, const QDate &);
+    void showIncidencePopupSignal( KOrg::CalendarBase *, Incidence *, const QDate &);
     void showNewEventPopupSignal();
 
     void itemModified( KOAgendaItem *item );
@@ -328,7 +328,7 @@ class KOAgenda : public Q3ScrollView
     bool mAllDayMode;
 
     // We need the calendar for drag'n'drop and for paint the ResourceColor
-    Calendar *mCalendar;
+    KOrg::CalendarBase *mCalendar;
 
     // Width and height of agenda cells. mDesiredGridSpacingY is the height
     // set in the config. The actual height might be larger since otherwise

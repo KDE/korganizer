@@ -85,7 +85,7 @@ KOEventPopupMenu::KOEventPopupMenu()
              this, SLOT(forward()) );
 }
 
-void KOEventPopupMenu::showIncidencePopup( Calendar *cal, Incidence *incidence, const QDate &qd )
+void KOEventPopupMenu::showIncidencePopup( KOrg::CalendarBase *cal, Incidence *incidence, const QDate &qd )
 {
   mCalendar = cal;
   mCurrentIncidence = incidence;

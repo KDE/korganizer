@@ -45,7 +45,7 @@
 #include <QPushButton>
 #include <QSpinBox>
 
-KOEditorGeneralEvent::KOEditorGeneralEvent( Calendar *calendar, QObject *parent )
+KOEditorGeneralEvent::KOEditorGeneralEvent( KOrg::CalendarBase *calendar, QObject *parent )
   : KOEditorGeneral( calendar, parent )
 {
   setType( "Event" );
@@ -118,8 +118,11 @@ void KOEditorGeneralEvent::initTime( QWidget *parent, QBoxLayout *topLayout )
   QString whatsThis = i18nc( "@info:whatsthis",
                              "Select the timezone for this event. "
                              "It will also affect recurrences" );
+#ifdef AKONADI_PORT_DISABLED
   mTimeZoneComboStart = new KPIM::KTimeZoneComboBox( mCalendar, timeGroupBox );
   mTimeZoneComboEnd = new KPIM::KTimeZoneComboBox( mCalendar, timeGroupBox );
+#endif AKONADI_PORT_DISABLED
+
   if ( !KOPrefs::instance()->showTimeZoneSelectorInIncidenceEditor() ) {
     mTimeZoneComboStart->hide();
     mTimeZoneComboEnd->hide();

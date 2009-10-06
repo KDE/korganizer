@@ -28,12 +28,12 @@
 #include "koglobals.h"
 #include "koprefs.h"
 #include "views/listview/kolistview.h"
-
+#include "akonadicalendar.h"
 #include <libkdepim/kdateedit.h>
 
-#include <kcal/calendar.h>
+#include <KCal/Calendar>
 
-SearchDialog::SearchDialog( Calendar *calendar, QWidget *parent )
+SearchDialog::SearchDialog( KOrg::CalendarBase *calendar, QWidget *parent )
   : KDialog( parent )
 {
   setCaption( i18n( "Search Calendar" ) );

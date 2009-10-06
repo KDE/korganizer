@@ -27,11 +27,11 @@
 #include "urihandler.h"
 #include "korganizerinterface.h"
 #include "koglobals.h"
+#include "akonadicalendar.h"
 
 #include <libkdepim/kdepimprotocols.h>
 #include <libkdepim/kpimprefs.h>
 
-#include <kcal/calendar.h>
 #include <kcal/incidence.h>
 #include <kcal/incidenceformatter.h>
 
@@ -43,7 +43,7 @@
 
 #include <QRegExp>
 
-KOEventViewer::KOEventViewer( Calendar *calendar, QWidget *parent )
+KOEventViewer::KOEventViewer( KOrg::CalendarBase *calendar, QWidget *parent )
   : KTextBrowser( parent ), mCalendar( calendar ), mDefaultText( "" )
 {
   mIncidence = 0;
@@ -97,12 +97,16 @@ void KOEventViewer::setSource( const QUrl &name )
 
 bool KOEventViewer::appendIncidence( Incidence *incidence, const QDate &date )
 {
+#ifdef AKONADI_PORT_DISABLED
   addText( IncidenceFormatter::extensiveDisplayStr(
              mCalendar, incidence, date, KSystemTimeZones::local() ) );
+#else
+  addText( QLatin1String("AKONADI_PORT_DISABLED") );
+#endif // AKONADI_PORT_DISABLED
   return true;
 }
 
-void KOEventViewer::setCalendar( Calendar *calendar )
+void KOEventViewer::setCalendar( KOrg::CalendarBase *calendar )
 {
   mCalendar = calendar;
 }

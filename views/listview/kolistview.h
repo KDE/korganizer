@@ -36,6 +36,10 @@
 
 using namespace KCal;
 
+namespace KOrg {
+    class CalendarBase;
+}
+
 typedef CustomListViewItem<Incidence *> KOListViewItem;
 
 class KOListView;
@@ -68,7 +72,7 @@ class KOListView : public KOEventView
 {
   Q_OBJECT
   public:
-    explicit KOListView( Calendar *calendar, QWidget *parent = 0 );
+    explicit KOListView( KOrg::CalendarBase *calendar, QWidget *parent = 0 );
     ~KOListView();
 
     virtual int maxDatesHint();

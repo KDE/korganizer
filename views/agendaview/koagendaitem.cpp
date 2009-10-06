@@ -49,6 +49,8 @@
 #include <QPixmapCache>
 #include <QToolTip>
 
+using namespace KOrg;
+
 //-----------------------------------------------------------------------------
 
 QPixmap *KOAgendaItem::alarmPxmp = 0;
@@ -64,7 +66,7 @@ QPixmap *KOAgendaItem::completedPxmp = 0;
 
 //-----------------------------------------------------------------------------
 
-KOAgendaItem::KOAgendaItem( Calendar *calendar, Incidence *incidence,
+KOAgendaItem::KOAgendaItem( CalendarBase *calendar, Incidence *incidence,
                             const QDate &qd, QWidget *parent )
   : QWidget( parent ), mCalendar( calendar ), mIncidence( incidence ),
     mDate( qd ), mValid( true ), mCloned( false ), mSpecialEvent( false )
@@ -1348,11 +1350,13 @@ bool KOAgendaItem::event( QEvent *event )
     } else if ( mValid ) {
       QHelpEvent *helpEvent = static_cast<QHelpEvent*>( event );
 
+#ifdef AKONADI_PORT_DISABLED
       QToolTip::showText(
         helpEvent->globalPos(),
         IncidenceFormatter::toolTipStr(
           mCalendar, mIncidence, mDate, true, KOPrefs::instance()->timeSpec() ),
         this );
+#endif
     }
   }
   return QWidget::event( event );

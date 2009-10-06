@@ -108,7 +108,7 @@ void EventIndicator::enableColumn( int column, bool enable )
 ////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////
 
-KOAgendaView::KOAgendaView( Calendar *cal, QWidget *parent, bool isSideBySide ) :
+KOAgendaView::KOAgendaView( CalendarBase *cal, QWidget *parent, bool isSideBySide ) :
   KOrg::AgendaView( cal, parent ),
   mTimeLabelsZone( 0 ),
   mAllowAgendaUpdate( true ),
@@ -247,8 +247,8 @@ KOAgendaView::~KOAgendaView()
 void KOAgendaView::connectAgenda( KOAgenda *agenda, QMenu *popup,
                                   KOAgenda *otherAgenda )
 {
-  connect( agenda, SIGNAL(showIncidencePopupSignal(Calendar *,Incidence *,const QDate &)),
-           popup, SLOT(showIncidencePopup(Calendar *,Incidence *,const QDate &)) );
+  connect( agenda, SIGNAL(showIncidencePopupSignal(KOrg::CalendarBase *,Incidence *,const QDate &)),
+           popup, SLOT(showIncidencePopup(KOrg::CalendarBase *,Incidence *,const QDate &)) );
 
   connect( agenda, SIGNAL(showNewEventPopupSignal()),
            SLOT(showNewEventPopup()) );
@@ -1486,11 +1486,13 @@ void KOAgendaView::slotTodoDropped( Todo *todo, const QPoint &gpos, bool allDay 
 void KOAgendaView::startDrag( Incidence *incidence )
 {
 #ifndef KORG_NODND
+#ifdef AKONADI_PORT_DISABLED
   DndFactory factory( calendar() );
   QDrag *drag = factory.createDrag( incidence, this );
   if ( drag->start() ) {
     kDebug() << "Delete drag source";
   }
+#endif
 #endif
 }
 

@@ -32,14 +32,12 @@
 #include <kdgantt1/KDGanttViewTaskItem.h>
 #include <kdgantt1/KDGanttViewSubwidgets.h>
 
-#include <kcal/calendar.h>
-
 #include <QLayout>
 
 using namespace KOrg;
 using namespace KCal;
 
-KOTimelineView::KOTimelineView( Calendar *calendar, QWidget *parent )
+KOTimelineView::KOTimelineView( KOrg::CalendarBase *calendar, QWidget *parent )
   : KOEventView( calendar, parent ), mEventPopup( 0 )
 {
     QVBoxLayout *vbox = new QVBoxLayout( this );
@@ -119,7 +117,7 @@ void KOTimelineView::showDates( const QDate &start, const QDate &end )
     item = new TimelineItem( i18n( "Calendar" ), calendar(), mGantt );
     mCalendarItemMap[0][QString()] = item;
   } else {
-#if 0 
+#if 0  //sebsauer
     CalendarResourceManager *manager = calres->resourceManager();
     for ( CalendarResourceManager::ActiveIterator it = manager->activeBegin(); it != manager->activeEnd(); ++it ) {
       QColor resourceColor = KOPrefs::instance()->resourceColor( (*it)->identifier() );

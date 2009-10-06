@@ -23,10 +23,10 @@
 */
 
 #include "kotimespentview.h"
+#include "akonadicalendar.h"
 #include "koglobals.h"
 #include "koprefs.h"
 
-#include <kcal/calendar.h>
 #include <kcal/event.h>
 
 #include <QDate>
@@ -183,7 +183,7 @@ class TimeSpentWidget : public QWidget
     KOTimeSpentView *mTimeSpentView;
 };
 
-KOTimeSpentView::KOTimeSpentView( Calendar *calendar, QWidget *parent )
+KOTimeSpentView::KOTimeSpentView( KOrg::CalendarBase *calendar, QWidget *parent )
   : KOrg::BaseView( calendar, parent )
 {
   mView = new TimeSpentWidget( this );

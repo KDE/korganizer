@@ -34,9 +34,13 @@
 class KOAgendaItem;
 
 namespace KCal {
-  class Calendar;
   class Incidence;
 }
+
+namespace KOrg {
+  class CalendarBase;
+}
+
 using namespace KCal;
 
 class QDragEnterEvent;
@@ -86,7 +90,7 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
 {
   Q_OBJECT
   public:
-    KOAgendaItem( Calendar *calendar, Incidence *incidence, const QDate &qd, QWidget *parent );
+    KOAgendaItem( KOrg::CalendarBase *calendar, Incidence *incidence, const QDate &qd, QWidget *parent );
     ~KOAgendaItem();
 
     int cellXLeft() const { return mCellXLeft; }
@@ -224,7 +228,7 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     int mSubCell;   // subcell number of this item
     int mSubCells;  // Total number of subcells in cell of this item
 
-    Calendar *mCalendar;
+    KOrg::CalendarBase *mCalendar;
     Incidence *mIncidence;
     QDate mDate;
     bool mValid;

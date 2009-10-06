@@ -23,6 +23,7 @@
 */
 
 #include "monthview.h"
+#include "akonadicalendar.h"
 #include "monthscene.h"
 #include "monthitem.h"
 #include "monthgraphicsitems.h"
@@ -31,7 +32,6 @@
 #include "koeventpopupmenu.h"
 
 #include <KCal/Incidence>
-#include <KCal/Calendar>
 
 #include <QVBoxLayout>
 #include <QHBoxLayout>
@@ -43,7 +43,7 @@
 
 using namespace KOrg;
 
-MonthView::MonthView( Calendar *calendar, QWidget *parent )
+MonthView::MonthView( CalendarBase *calendar, QWidget *parent )
   : KOEventView( calendar, parent )
 {
   QHBoxLayout *topLayout = new QHBoxLayout( this );

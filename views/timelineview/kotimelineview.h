@@ -37,6 +37,7 @@ namespace KCal {
 }
 
 namespace KOrg {
+  class CalendarBase;
   class TimelineItem;
 }
 
@@ -47,7 +48,7 @@ class KOTimelineView : public KOEventView
 {
     Q_OBJECT
   public:
-    explicit KOTimelineView( Calendar *calendar, QWidget *parent = 0 );
+    explicit KOTimelineView( KOrg::CalendarBase *calendar, QWidget *parent = 0 );
     ~KOTimelineView();
 
     virtual KCal::Incidence::List selectedIncidences();

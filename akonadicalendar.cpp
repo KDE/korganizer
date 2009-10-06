@@ -56,7 +56,7 @@ using namespace KCal;
 using namespace KOrg;
 
 AkonadiCalendar::AkonadiCalendar( const KDateTime::Spec &timeSpec )
-  : KCal::Calendar( timeSpec )
+  : KOrg::CalendarBase( timeSpec )
   , d( new AkonadiCalendar::Private(this) )
 {
 }
@@ -132,7 +132,7 @@ Akonadi::Item AkonadiCalendar::itemForIncidence(Incidence *incidence) const
 
 bool AkonadiCalendar::beginChange( Incidence *incidence )
 {
-  if( ! Calendar::beginChange( incidence ) ) {
+  if( ! CalendarBase::beginChange( incidence ) ) {
     return false;
   }
   Q_ASSERT( ! d->m_changes.contains( incidence->uid() ) ); //no nested changes, right?
@@ -148,7 +148,7 @@ bool AkonadiCalendar::endChange( Incidence *incidence )
   const bool isModification = d->m_changes.removeAll( incidence->uid() ) >= 1;
   const QString uid = incidence->uid();
 
-  if( ! Calendar::endChange( incidence ) ) {
+  if( ! CalendarBase::endChange( incidence ) ) {
     // should not happen, but well...
     kDebug() << "Abort modify uid=" << uid << "summary=" << incidence->summary() << "type=" << incidence->type();
     return false;
@@ -241,14 +241,14 @@ bool AkonadiCalendar::addIncidence( Incidence *incidence )
 {
   kDebug();
   // dispatch to addEvent/addTodo/addJournal
-  return Calendar::addIncidence( incidence );
+  return CalendarBase::addIncidence( incidence );
 }
 
 bool AkonadiCalendar::deleteIncidence( Incidence *incidence )
 {
   kDebug();
   // dispatch to deleteEvent/deleteTodo/deleteJournal
-  return Calendar::deleteIncidence( incidence );
+  return CalendarBase::deleteIncidence( incidence );
 }
 
 // This method will be called probably multiple times if a series of changes where done. One finished the endChange() method got called.

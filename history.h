@@ -28,8 +28,10 @@
 #include <QStack>
 #include <QList>
 
+namespace KOrg {
+  class CalendarBase;
+}
 namespace KCal {
-  class Calendar;
   class Incidence;
 }
 
@@ -39,7 +41,7 @@ class History : public QObject
 {
   Q_OBJECT
   public:
-    explicit History( KCal::Calendar * );
+    explicit History( KOrg::CalendarBase * );
 
     void recordDelete( KCal::Incidence * );
     void recordAdd( KCal::Incidence * );
@@ -71,7 +73,7 @@ class History : public QObject
     class Entry
     {
       public:
-        explicit Entry( KCal::Calendar * );
+        explicit Entry( KOrg::CalendarBase * );
         virtual ~Entry();
 
         virtual void undo() = 0;
@@ -80,13 +82,13 @@ class History : public QObject
         virtual QString text() = 0;
 
       protected:
-        KCal::Calendar *mCalendar;
+        KOrg::CalendarBase *mCalendar;
     };
 
     class EntryDelete : public Entry
     {
       public:
-        EntryDelete( KCal::Calendar *, KCal::Incidence * );
+        EntryDelete( KOrg::CalendarBase *, KCal::Incidence * );
         ~EntryDelete();
 
         void undo();
@@ -101,7 +103,7 @@ class History : public QObject
     class EntryAdd : public Entry
     {
       public:
-        EntryAdd( KCal::Calendar *, KCal::Incidence * );
+        EntryAdd( KOrg::CalendarBase *, KCal::Incidence * );
         ~EntryAdd();
 
         void undo();
@@ -116,7 +118,7 @@ class History : public QObject
     class EntryEdit : public Entry
     {
       public:
-        EntryEdit( KCal::Calendar *calendar, KCal::Incidence *oldIncidence,
+        EntryEdit( KOrg::CalendarBase *calendar, KCal::Incidence *oldIncidence,
                    KCal::Incidence *newIncidence );
         ~EntryEdit();
 
@@ -133,7 +135,7 @@ class History : public QObject
     class MultiEntry : public Entry
     {
       public:
-        MultiEntry( KCal::Calendar *calendar, const QString &text );
+        MultiEntry( KOrg::CalendarBase *calendar, const QString &text );
         ~MultiEntry();
 
         void appendEntry( Entry *entry );
@@ -147,7 +149,7 @@ class History : public QObject
         QString mText;
     };
 
-    KCal::Calendar *mCalendar;
+    KOrg::CalendarBase *mCalendar;
     MultiEntry *mCurrentMultiEntry;
 
     QStack<Entry*> mUndoEntries;

@@ -24,6 +24,7 @@
 */
 
 #include "eventarchiver.h"
+#include "calendarbase.h"
 #include "koprefs.h"
 
 #include <kio/netaccess.h>
@@ -46,12 +47,12 @@ EventArchiver::~EventArchiver()
 {
 }
 
-void EventArchiver::runOnce( Calendar *calendar, const QDate &limitDate, QWidget *widget )
+void EventArchiver::runOnce( KOrg::CalendarBase *calendar, const QDate &limitDate, QWidget *widget )
 {
   run( calendar, limitDate, widget, true, true );
 }
 
-void EventArchiver::runAuto( Calendar *calendar, QWidget *widget, bool withGUI )
+void EventArchiver::runAuto( KOrg::CalendarBase *calendar, QWidget *widget, bool withGUI )
 {
   QDate limitDate( QDate::currentDate() );
   int expiryTime = KOPrefs::instance()->mExpiryTime;
@@ -71,7 +72,7 @@ void EventArchiver::runAuto( Calendar *calendar, QWidget *widget, bool withGUI )
   run( calendar, limitDate, widget, withGUI, false );
 }
 
-void EventArchiver::run( Calendar *calendar, const QDate &limitDate, QWidget *widget,
+void EventArchiver::run( KOrg::CalendarBase *calendar, const QDate &limitDate, QWidget *widget,
                          bool withGUI, bool errorIfNone )
 {
   // We need to use rawEvents, otherwise events hidden by filters will not be archived.
@@ -122,7 +123,7 @@ void EventArchiver::run( Calendar *calendar, const QDate &limitDate, QWidget *wi
   }
 }
 
-void EventArchiver::deleteIncidences( Calendar *calendar, const QDate &limitDate, QWidget *widget,
+void EventArchiver::deleteIncidences( KOrg::CalendarBase *calendar, const QDate &limitDate, QWidget *widget,
                                       const Incidence::List &incidences, bool withGUI )
 {
   QStringList incidenceStrs;
@@ -149,13 +150,12 @@ void EventArchiver::deleteIncidences( Calendar *calendar, const QDate &limitDate
   emit eventsDeleted();
 }
 
-void EventArchiver::archiveIncidences( Calendar *calendar, const QDate &limitDate, QWidget *widget,
+void EventArchiver::archiveIncidences( KOrg::CalendarBase *calendar, const QDate &limitDate, QWidget *widget,
                                        const Incidence::List &incidences, bool withGUI )
 {
-#if 0 //sebsauer
-
   Q_UNUSED( limitDate );
   Q_UNUSED( withGUI );
+#ifdef AKONADI_PORT_DISABLED
   FileStorage storage( calendar );
 
   // Save current calendar to disk
@@ -243,9 +243,8 @@ void EventArchiver::archiveIncidences( Calendar *calendar, const QDate &limitDat
     calendar->deleteIncidence( *it );
   }
   emit eventsDeleted();
-
 #else
-  kDebug()<<"EventArchiver::archiveIncidences TODO";
+  kDebug() << "AKONADI_PORT_DISABLED";
 #endif
 }
 

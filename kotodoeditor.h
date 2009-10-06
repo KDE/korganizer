@@ -43,7 +43,7 @@ class KOTodoEditor : public KOIncidenceEditor
     /**
       Constructs a new todo editor.
     */
-    KOTodoEditor( Calendar *calendar, QWidget *parent );
+    KOTodoEditor( KOrg::CalendarBase *calendar, QWidget *parent );
     virtual ~KOTodoEditor();
 
     void init();
@@ -66,7 +66,7 @@ class KOTodoEditor : public KOIncidenceEditor
                    bool richDescription = false );
 
     /** Edit an existing todo. */
-    void editIncidence( Incidence *incidence, Calendar *calendar );
+    void editIncidence( Incidence *incidence, KOrg::CalendarBase *calendar );
 
     /** Set widgets to default values */
     void setDates( const QDateTime &due, bool allDay = true, Todo *relatedTodo = 0 );
@@ -112,7 +112,7 @@ class KOTodoEditor : public KOIncidenceEditor
 
   private:
     Todo *mTodo;
-    Calendar *mCalendar;
+    KOrg::CalendarBase *mCalendar;
 
     // Todo which represents the initial dialog setup when creating a new todo.
     // If cancel is pressed and the dialog has different information than

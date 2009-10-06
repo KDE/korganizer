@@ -27,8 +27,7 @@
 
 #include "agendaview.h"
 #include "calprinter.h"
-
-#include <KCal/Calendar>
+#include "akonadicalendar.h"
 
 #include <QFrame>
 #include <QPixmap>
@@ -94,11 +93,11 @@ class EventIndicator : public QFrame
   KOAgendaView is the agenda-like view that displays events in a single
   or multi-day view.
 */
-class KOAgendaView : public KOrg::AgendaView, public KCal::Calendar::CalendarObserver
+class KOAgendaView : public KOrg::AgendaView, public KOrg::CalendarBase::CalendarObserver
 {
   Q_OBJECT
   public:
-    explicit KOAgendaView( Calendar *cal, QWidget *parent = 0, bool isSideBySide = false );
+    explicit KOAgendaView( KOrg::CalendarBase *cal, QWidget *parent = 0, bool isSideBySide = false );
     virtual ~KOAgendaView();
 
     /** Returns maximum number of days supported by the koagendaview */

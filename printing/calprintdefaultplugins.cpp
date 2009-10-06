@@ -27,8 +27,8 @@
 
 #include "calprintdefaultplugins.h"
 #include "koprefs.h"
+#include "calendarbase.h"
 
-#include <KCal/Calendar>
 #include <KCal/Todo>
 #include <KCal/IncidenceFormatter>
 
@@ -798,8 +798,8 @@ void CalPrintDay::print( QPainter &p, int width, int height )
 
     drawHeader( p, local->formatDate( curDay ), curDay, QDate(), headerBox );
     Event::List eventList = mCalendar->events( curDay, timeSpec,
-                                               EventSortStartDate,
-                                               SortDirectionAscending );
+                                               KOrg::EventSortStartDate,
+                                               KOrg::SortDirectionAscending );
 
     p.setFont( QFont( "sans-serif", 12 ) );
 
@@ -1430,13 +1430,13 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
     break;
   }
 
-  SortDirection sortDirection = SortDirectionAscending;
-  switch( mTodoSortDirection ) {
+  KOrg::SortDirection sortDirection = KOrg::SortDirectionAscending;
+  switch( mSortDirection ) {
   case TodoDirectionAscending:
-    sortDirection = SortDirectionAscending;
+    sortDirection = KOrg::SortDirectionAscending;
     break;
   case TodoDirectionDescending:
-    sortDirection = SortDirectionDescending;
+    sortDirection = KOrg::SortDirectionDescending;
     break;
   case TodoDirectionUnset:
     break;

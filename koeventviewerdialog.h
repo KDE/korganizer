@@ -31,6 +31,9 @@
 namespace KCal {
   class Incidence;
 }
+namespace KOrg {
+  class CalendarBase;
+}
 using namespace KCal;
 
 class KOEventViewer;
@@ -42,7 +45,7 @@ class KORGANIZER_EVENTVIEWER_EXPORT KOEventViewerDialog : public KDialog
 {
   Q_OBJECT
   public:
-    explicit KOEventViewerDialog( Calendar *calendar, QWidget *parent = 0, bool compact = false );
+    explicit KOEventViewerDialog( KOrg::CalendarBase *calendar, QWidget *parent = 0, bool compact = false );
     virtual ~KOEventViewerDialog();
 
     void setIncidence( Incidence *incidence, const QDate &date )
@@ -54,7 +57,7 @@ class KORGANIZER_EVENTVIEWER_EXPORT KOEventViewerDialog : public KDialog
       mEventViewer->appendIncidence( incidence, date );
     }
 
-    void setCalendar( Calendar *calendar );
+    void setCalendar( KOrg::CalendarBase *calendar );
     void addText( const QString &text );
 
   private:

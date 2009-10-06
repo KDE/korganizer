@@ -25,17 +25,19 @@
 */
 
 #include "kolistview.h"
+#include "akonadicalendar.h"
 #include "koeventpopupmenu.h"
 #include "koglobals.h"
 #include "kohelper.h"
 #include "koprefs.h"
 
 #include <KCal/IncidenceFormatter>
-#include <KCal/Calendar>
 #include <KCal/Todo>
 #include <KCal/Journal>
 
 #include <QBoxLayout>
+
+using namespace KOrg;
 
 #ifdef __GNUC__
 #warning Port me!
@@ -224,7 +226,7 @@ bool KOListView::ListItemVisitor::visit( Journal *t )
   return true;
 }
 
-KOListView::KOListView( Calendar *calendar, QWidget *parent )
+KOListView::KOListView( CalendarBase *calendar, QWidget *parent )
   : KOEventView( calendar, parent )
 {
   mActiveItem = 0;

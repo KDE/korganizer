@@ -44,8 +44,11 @@ class QSpinBox;
 class QStackedWidget;
 class QWidget;
 
+namespace KOrg {
+  class CalendarBase;
+}
+
 namespace KCal {
-  class Calendar;
   class Incidence;
 }
 using namespace KCal;
@@ -70,7 +73,7 @@ class KOEditorGeneral : public QObject
 {
   Q_OBJECT
   public:
-    explicit KOEditorGeneral( Calendar *calendar, QObject *parent=0 );
+    explicit KOEditorGeneral( KOrg::CalendarBase *calendar, QObject *parent=0 );
     virtual ~KOEditorGeneral();
 
     void initHeader( QWidget *parent, QBoxLayout *topLayout );
@@ -145,7 +148,7 @@ class KOEditorGeneral : public QObject
     KToolBar                *mFormatToolBar;
     QCheckBox               *mRichDescription;
     KOEditorAttachments     *mAttachments;
-    Calendar                *mCalendar;
+    KOrg::CalendarBase      *mCalendar;
     QStringList              mCategories;
 
     enum AlarmStackPages {

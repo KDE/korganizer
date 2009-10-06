@@ -30,8 +30,8 @@
 #include <kcal/incidence.h>
 #include <KDialog>
 
-namespace KCal {
-  class Calendar;
+namespace KOrg {
+  class CalendarBase;
 }
 using namespace KCal;
 
@@ -42,7 +42,7 @@ class SearchDialog : public KDialog, private Ui::SearchDialog
 {
   Q_OBJECT
   public:
-    explicit SearchDialog( Calendar *calendar, QWidget *parent=0 );
+    explicit SearchDialog( KOrg::CalendarBase *calendar, QWidget *parent=0 );
     virtual ~SearchDialog();
 
     void updateView();
@@ -62,7 +62,7 @@ class SearchDialog : public KDialog, private Ui::SearchDialog
   private:
     void search( const QRegExp & );
 
-    Calendar *mCalendar;
+    KOrg::CalendarBase *mCalendar;
 
     Incidence::List mMatchedEvents;
 

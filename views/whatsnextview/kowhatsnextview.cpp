@@ -23,10 +23,10 @@
 */
 
 #include "kowhatsnextview.h"
+#include "akonadicalendar.h"
 #include "koglobals.h"
 #include "koprefs.h"
 
-#include <KCal/Calendar>
 #include <KCal/IncidenceFormatter>
 #include <KCal/Todo>
 
@@ -44,7 +44,7 @@ void WhatsNextTextBrowser::setSource( const QUrl &name )
   }
 }
 
-KOWhatsNextView::KOWhatsNextView( Calendar *calendar, QWidget *parent )
+KOWhatsNextView::KOWhatsNextView( CalendarBase *calendar, QWidget *parent )
   : KOrg::BaseView( calendar, parent )
 {
   mView = new WhatsNextTextBrowser( this );

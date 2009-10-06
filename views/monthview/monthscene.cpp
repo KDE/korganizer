@@ -39,7 +39,7 @@
 
 using namespace KOrg;
 
-MonthScene::MonthScene( MonthView *parent, Calendar *calendar )
+MonthScene::MonthScene( MonthView *parent, CalendarBase *calendar )
   : QGraphicsScene( parent ),
     mMonthView( parent ),
     mInitialized( false ),

@@ -35,6 +35,8 @@
 #ifndef KORGANIZER_CALENDAR_H
 #define KORGANIZER_CALENDAR_H
 
+#include "korganizer/korganizer_export.h"
+
 #include <QtCore/QObject>
 #include <QtCore/QString>
 #include <QtCore/QList>

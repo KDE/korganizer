@@ -27,10 +27,10 @@
 #define CALPRINTPLUGINBASE_H
 
 #include "korganizer/korganizer_export.h"
+#include "korganizer/calendarbase.h"
 #include "korganizer/printplugin.h"
 #include "korganizer/corehelper.h"
 
-#include <kcal/calendar.h>
 #include <kcal/event.h>
 #include <kcal/todo.h>
 
@@ -541,7 +541,7 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
       about its parent)
     */
     void drawTodo( int &count, Todo *todo, QPainter &p,
-                   TodoSortField sortField, SortDirection sortDir,
+                   KOrg::TodoSortField sortField, KOrg::SortDirection sortDir,
                    bool connectSubTodos, bool strikeoutCompleted, bool desc,
                    int posPriority, int posSummary, int posDueDt,
                    int posPercentComplete, int level, int x, int &y,

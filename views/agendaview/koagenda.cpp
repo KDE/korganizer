@@ -25,6 +25,7 @@
   without including the source code for Qt in the source distribution.
 */
 #include "koagenda.h"
+#include "akonadicalendar.h"
 #include "koagendaitem.h"
 #include "koprefs.h"
 #include "koglobals.h"
@@ -33,7 +34,6 @@
 #include "kohelper.h"
 #include "korganizer/baseview.h"
 
-#include <KCal/Calendar>
 #include <KCal/DndFactory>
 #include <KCal/ICalDrag>
 #include <KCal/Todo>
@@ -398,6 +398,7 @@ bool KOAgenda::eventFilter ( QObject *object, QEvent *event )
 bool KOAgenda::eventFilter_drag( QObject *object, QDropEvent *de )
 {
 #ifndef KORG_NODND
+#ifdef AKONADI_PORT_DISABLED
   // FIXME: Implement dropping of events!
   QPoint viewportPos;
   if ( object != viewport() && object != this ) {
@@ -459,6 +460,7 @@ bool KOAgenda::eventFilter_drag( QObject *object, QDropEvent *de )
   default:
     break;
   }
+#endif // AKONADI_PORT_DISABLED
 #endif
 
   return false;

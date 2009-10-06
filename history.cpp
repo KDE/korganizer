@@ -24,8 +24,8 @@
 */
 
 #include "history.h"
+#include "calendarbase.h"
 
-#include <kcal/calendar.h>
 #include <kcal/incidence.h>
 
 #include <klocale.h>
@@ -33,7 +33,7 @@
 using namespace KCal;
 using namespace KOrg;
 
-History::History( Calendar *calendar )
+History::History( KOrg::CalendarBase *calendar )
   : mCalendar( calendar ), mCurrentMultiEntry( 0 )
 {
 }
@@ -143,7 +143,7 @@ void History::endMultiModify()
   mCurrentMultiEntry = 0;
 }
 
-History::Entry::Entry( Calendar *calendar )
+History::Entry::Entry( KOrg::CalendarBase *calendar )
   : mCalendar( calendar )
 {
 }
@@ -152,7 +152,7 @@ History::Entry::~Entry()
 {
 }
 
-History::EntryDelete::EntryDelete( Calendar *calendar, Incidence *incidence )
+History::EntryDelete::EntryDelete( KOrg::CalendarBase *calendar, Incidence *incidence )
   : Entry( calendar ), mIncidence( incidence->clone() )
 {
 }
@@ -179,7 +179,7 @@ QString History::EntryDelete::text()
   return i18n( "Delete %1", QString::fromLatin1( mIncidence->type() ) );
 }
 
-History::EntryAdd::EntryAdd( Calendar *calendar, Incidence *incidence )
+History::EntryAdd::EntryAdd( KOrg::CalendarBase *calendar, Incidence *incidence )
   : Entry( calendar ), mIncidence( incidence->clone() )
 {
 }
@@ -208,7 +208,7 @@ QString History::EntryAdd::text()
   return i18n( "Add %1", QString::fromLatin1( mIncidence->type() ) );
 }
 
-History::EntryEdit::EntryEdit( Calendar *calendar, Incidence *oldIncidence,
+History::EntryEdit::EntryEdit( KOrg::CalendarBase *calendar, Incidence *oldIncidence,
                                Incidence *newIncidence )
   : Entry( calendar ), mOldIncidence( oldIncidence->clone() ),
     mNewIncidence( newIncidence->clone() )
@@ -246,7 +246,7 @@ QString History::EntryEdit::text()
   return i18n( "Edit %1", QString::fromLatin1( mNewIncidence->type() ) );
 }
 
-History::MultiEntry::MultiEntry( Calendar *calendar, const QString &text )
+History::MultiEntry::MultiEntry( KOrg::CalendarBase *calendar, const QString &text )
   : Entry( calendar ), mText( text )
 {
 }

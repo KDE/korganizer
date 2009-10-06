@@ -43,7 +43,7 @@
 #include <KStandardDirs>
 
 KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
-                                      Calendar *calendar, QWidget *parent )
+                                      KOrg::CalendarBase *calendar, QWidget *parent )
   : KPageDialog( parent ),
     mAttendeeEditor( 0 ), mIsCounter( false ), mIsCreateTask( false )
 {

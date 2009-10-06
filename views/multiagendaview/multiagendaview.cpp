@@ -35,7 +35,7 @@
 
 using namespace KOrg;
 
-MultiAgendaView::MultiAgendaView( Calendar *cal, QWidget *parent )
+MultiAgendaView::MultiAgendaView( CalendarBase *cal, QWidget *parent )
   : AgendaView( cal, parent ),
     mUpdateOnShow( true ),
     mPendingChanges( true )

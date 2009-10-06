@@ -27,9 +27,13 @@
 #include "koeditorgeneral.h"
 
 namespace KCal {
-  class Calendar;
   class Event;
 }
+
+namespace KOrg {
+  class CalendarBase;
+}
+
 using namespace KCal;
 
 namespace KPIM {
@@ -43,7 +47,7 @@ class KOEditorGeneralEvent : public KOEditorGeneral
 {
   Q_OBJECT
   public:
-    explicit KOEditorGeneralEvent( Calendar *calendar, QObject *parent = 0 );
+    explicit KOEditorGeneralEvent( KOrg::CalendarBase *calendar, QObject *parent = 0 );
     virtual ~KOEditorGeneralEvent();
 
     void initTime( QWidget *, QBoxLayout * );

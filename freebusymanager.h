@@ -48,9 +48,12 @@ namespace KIO {
   class Job;
 }
 namespace KCal {
-  class Calendar;
   class FreeBusy;
 }
+namespace KOrg {
+  class CalendarBase;
+}
+
 class FreeBusyManager;
 class KJob;
 class QTimerEvent;
@@ -87,7 +90,7 @@ class FreeBusyManager : public QObject, public KCal::FreeBusyCache
   public:
     FreeBusyManager( QObject *parent );
 
-    void setCalendar( KCal::Calendar * );
+    void setCalendar( KOrg::CalendarBase * );
 
     /// KOrganizer publishes the free/busy list
     void publishFreeBusy();
@@ -168,7 +171,7 @@ class FreeBusyManager : public QObject, public KCal::FreeBusyCache
     void slotUploadFreeBusyResult( KJob * );
 
   private:
-    KCal::Calendar *mCalendar;
+    KOrg::CalendarBase *mCalendar;
     KCal::ICalFormat mFormat;
 
     QStringList mRetrieveQueue;

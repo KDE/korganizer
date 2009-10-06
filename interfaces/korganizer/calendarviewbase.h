@@ -24,12 +24,11 @@
 
 #include <QtGui/QWidget>
 
-#include <kcal/calendar.h>
-
 #include <korganizer/baseview.h>
 
 namespace KOrg {
 
+class CalendarBase;
 /**
   @short interface for main calendar view widget
   @author Cornelius Schumacher
@@ -40,7 +39,7 @@ class CalendarViewBase : public QWidget
     explicit CalendarViewBase( QWidget *parent ) : QWidget( parent ) {}
     virtual ~CalendarViewBase() {}
 
-    virtual KCal::Calendar *calendar() = 0;
+    virtual CalendarBase *calendar() = 0;
 
     virtual QDate startDate() = 0;
     virtual QDate endDate() = 0;

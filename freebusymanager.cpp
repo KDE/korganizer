@@ -40,6 +40,7 @@
 #include "mailscheduler.h"
 #include "actionmanager.h"
 #include "korganizer.h"
+#include "calendarbase.h"
 
 #include <kabc/stdaddressbook.h>
 #include <kabc/addressee.h>
@@ -123,7 +124,7 @@ FreeBusyManager::FreeBusyManager( QObject *parent ) :
 {
 }
 
-void FreeBusyManager::setCalendar( KCal::Calendar *c )
+void FreeBusyManager::setCalendar( KOrg::CalendarBase *c )
 {
   mCalendar = c;
   if ( mCalendar ) {
@@ -133,6 +134,7 @@ void FreeBusyManager::setCalendar( KCal::Calendar *c )
 
 KCal::FreeBusy *FreeBusyManager::ownerFreeBusy()
 {
+#ifdef AKONADI_PORT_DISABLED
   KDateTime start = KDateTime::currentUtcDateTime();
   KDateTime end = start.addDays( KOPrefs::instance()->mFreeBusyPublishDays );
 
@@ -141,6 +143,9 @@ KCal::FreeBusy *FreeBusyManager::ownerFreeBusy()
                                   KOPrefs::instance()->email() ) );
 
   return freebusy;
+#else // AKONADI_PORT_DISABLED
+  return 0;
+#endif // AKONADI_PORT_DISABLED
 }
 
 QString FreeBusyManager::ownerFreeBusyAsString()

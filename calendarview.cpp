@@ -30,6 +30,7 @@
 */
 
 #include "calendarview.h"
+#include "calendarnull.h"
 #include "calprinter.h"
 #include "datechecker.h"
 #include "datenavigator.h"
@@ -59,7 +60,6 @@
 #include "views/multiagendaview/multiagendaview.h"
 #include "views/todoview/kotodoview.h"
 
-#include <KCal/CalendarNull>
 #include <KCal/CalendarResources>
 #include <KCal/CalFilter>
 #include <KCal/DndFactory>
@@ -91,7 +91,7 @@ using namespace KHolidays;
 CalendarView::CalendarView( QWidget *parent )
   : CalendarViewBase( parent ),
     mHistory( 0 ),
-    mCalendar( CalendarNull::self() ),
+    mCalendar( KOrg::CalendarNull::self() ),
     mChanger( 0 ),
     mSplitterSizesValid( false )
 {
@@ -121,12 +121,18 @@ CalendarView::CalendarView( QWidget *parent )
   mDateNavigatorContainer = new DateNavigatorContainer( mLeftSplitter );
   mDateNavigatorContainer->setObjectName( "CalendarView::DateNavigator" );
 
-  mTodoList = new KOTodoView( CalendarNull::self(), mLeftSplitter );
+  mTodoList = new KOTodoView( KOrg::CalendarNull::self(), mLeftSplitter );
   mTodoList->setObjectName( "todolist" );
 
   mEventViewerBox = new KVBox( mLeftSplitter );
   mEventViewerBox->setMargin( KDialog::marginHint() );
-  mEventViewer = new KOEventViewer( CalendarNull::self(), mEventViewerBox );
+  mEventViewer = new KOEventViewer(
+#ifdef AKONADI_PORT_DISABLED
+          CalendarNull::self()
+#else
+          0
+#endif
+          , mEventViewerBox );
   mEventViewer->setObjectName( "EventViewer" );
 
   KVBox *rightBox = new KVBox( mPanner );
@@ -246,7 +252,7 @@ CalendarView::~CalendarView()
   delete mHistory;
 }
 
-void CalendarView::setCalendar( Calendar *cal )
+void CalendarView::setCalendar( KOrg::CalendarBase *cal )
 {
   mCalendar = cal;
 
@@ -289,12 +295,16 @@ void CalendarView::setIncidenceChanger( IncidenceChangerBase *changer )
            mChanger, SLOT(cancelAttendees(Incidence *)) );
 }
 
-Calendar *CalendarView::calendar()
+KOrg::CalendarBase *CalendarView::calendar()
 {
   if ( mCalendar ) {
     return mCalendar;
   } else {
+#ifdef AKONADI_PORT_DISABLED
     return CalendarNull::self();
+#else
+    return 0;
+#endif
   }
 }
 
@@ -353,6 +363,7 @@ void CalendarView::createPrinter()
 
 bool CalendarView::openCalendar( const QString &filename, bool merge )
 {
+#ifdef AKONADI_PORT_DISABLED
   if ( filename.isEmpty() ) {
     kDebug() << "Error! Empty filename.";
     return false;
@@ -396,10 +407,14 @@ bool CalendarView::openCalendar( const QString &filename, bool merge )
     KMessageBox::error( this, i18n( "Could not load calendar '%1'.", filename ) );
     return false;
   }
+#else
+  return false;
+#endif //AKONADI_PORT_DISABLED
 }
 
 bool CalendarView::saveCalendar( const QString &filename )
 {
+#ifdef AKONADI_PORT_DISABLED
   // Store back all unsaved data into calendar object
   mViewManager->currentView()->flushView();
 
@@ -408,6 +423,9 @@ bool CalendarView::saveCalendar( const QString &filename )
   storage.setSaveFormat( new ICalFormat );
 
   return storage.save();
+#else // AKONADI_PORT_DISABLED
+  return false;
+#endif // AKONADI_PORT_DISABLED
 }
 
 void CalendarView::closeCalendar()
@@ -844,10 +862,12 @@ void CalendarView::edit_copy()
     KNotification::beep();
     return;
   }
+#ifdef AKONADI_PORT_DISABLED
   DndFactory factory( mCalendar );
   if ( !factory.copyIncidence( incidence ) ) {
     KNotification::beep();
   }
+#endif // AKONADI_PORT_DISABLED
   checkClipboard();
 }
 
@@ -890,7 +910,7 @@ void CalendarView::edit_paste()
                         i18n( "Paste failed: unable to determine a valid target date." ) );
     return;
   }
-
+#ifdef AKONADI_PORT_DISABLED
   DndFactory factory( mCalendar );
   Incidence *pastedIncidence;
   if ( time.isValid() ) {
@@ -926,6 +946,7 @@ void CalendarView::edit_paste()
   } else if ( pastedIncidence->type() == "Journal" ) {
     mChanger->addIncidence( pastedIncidence, this );
   }
+#endif // AKONADI_PORT_DISABLED
 }
 
 void CalendarView::edit_options()
@@ -1399,6 +1420,7 @@ void CalendarView::schedule_publish( Incidence *incidence )
     inc->registerObserver( 0 );
     inc->clearAttendees();
 
+#ifdef AKONADI_PORT_DISABLED
     // Send the mail
     MailScheduler scheduler( mCalendar );
     if ( scheduler.publish( incidence, publishdlg->addresses() ) ) {
@@ -1407,6 +1429,7 @@ void CalendarView::schedule_publish( Incidence *incidence )
     } else {
       KMessageBox::error( this, i18n( "Unable to publish the item '%1'", incidence->summary() ) );
     }
+#endif // AKONADI_PORT_DISABLED
   }
   delete publishdlg;
 }
@@ -1490,6 +1513,7 @@ void CalendarView::schedule_forward( Incidence *incidence )
 
 void CalendarView::mailFreeBusy( int daysToPublish )
 {
+#ifdef AKONADI_PORT_DISABLED
   KDateTime start = KDateTime::currentUtcDateTime().toTimeSpec( mCalendar->timeSpec() );
   KDateTime end = start.addDays( daysToPublish );
 
@@ -1513,6 +1537,7 @@ void CalendarView::mailFreeBusy( int daysToPublish )
   }
   delete freebusy;
   delete publishdlg;
+#endif // AKONADI_PORT_DISABLED
 }
 
 void CalendarView::uploadFreeBusy()
@@ -1539,7 +1564,7 @@ void CalendarView::schedule( iTIPMethod method, Incidence *incidence )
   Incidence *inc = incidence->clone();
   inc->registerObserver( 0 );
   inc->clearAttendees();
-
+#ifdef AKONADI_PORT_DISABLED
   // Send the mail
   MailScheduler scheduler( mCalendar );
   if ( scheduler.performTransaction( incidence, method ) ) {
@@ -1558,6 +1583,7 @@ void CalendarView::schedule( iTIPMethod method, Incidence *incidence )
                                incidence->summary(),
                                Scheduler::methodName( method ) ) );
   }
+#endif // AKONADI_PORT_DISABLED
 }
 
 void CalendarView::openAddressbook()
@@ -1641,6 +1667,7 @@ void CalendarView::exportWeb()
 
 void CalendarView::exportICalendar()
 {
+#ifdef AKONADI_PORT_DISABLED
   QString filename = KFileDialog::getSaveFileName( KUrl( "icalout.ics" ),
                                                    i18n( "*.ics|iCalendars" ), this );
 
@@ -1673,10 +1700,12 @@ void CalendarView::exportICalendar()
 
     }
   }
+#endif
 }
 
 void CalendarView::exportVCalendar()
 {
+#ifdef AKONADI_PORT_DISABLED
   if ( !mCalendar->journals().isEmpty() ) {
     int result = KMessageBox::warningContinueCancel(
       this,
@@ -1720,6 +1749,7 @@ void CalendarView::exportVCalendar()
                                  filename, errmess ) );
     }
   }
+#endif
 }
 
 void CalendarView::eventUpdated(Incidence *)
@@ -1963,7 +1993,7 @@ void CalendarView::showLeftFrame( bool show )
   }
 }
 
-void CalendarView::calendarModified( bool modified, Calendar *calendar )
+void CalendarView::calendarModified( bool modified, KOrg::CalendarBase *calendar )
 {
   Q_UNUSED( calendar );
   setModified( modified );

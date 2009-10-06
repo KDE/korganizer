@@ -97,7 +97,7 @@ KODayMatrix::KODayMatrix( QWidget *parent )
   mHighlightJournals = false;
 }
 
-void KODayMatrix::setCalendar( Calendar *cal )
+void KODayMatrix::setCalendar( KOrg::CalendarBase *cal )
 {
   if ( mCalendar ) {
     mCalendar->unregisterObserver( this );
@@ -666,7 +666,7 @@ void KODayMatrix::dropEvent( QDropEvent *e )
     e->ignore();
     return;
   }
-
+#ifdef AKONADI_PORT_DISABLED
   DndFactory factory( mCalendar );
   Event *event = factory.createDropEvent( e );
   Todo *todo = factory.createDropTodo( e );
@@ -737,6 +737,7 @@ void KODayMatrix::dropEvent( QDropEvent *e )
   }
   delete event;
   delete todo;
+#endif // AKONADI_PORT_DISABLED
 }
 #endif
 

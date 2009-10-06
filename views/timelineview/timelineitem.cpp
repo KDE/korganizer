@@ -25,7 +25,7 @@ using namespace KOrg;
 
 #include <kdgantt1/KDGanttViewSubwidgets.h>
 
-TimelineItem::TimelineItem( const QString &label, KCal::Calendar *calendar, KDGanttView *parent )
+TimelineItem::TimelineItem( const QString &label, CalendarBase *calendar, KDGanttView *parent )
   : KDGanttViewTaskItem( parent ), mCalendar( calendar )
 {
   setListViewText( 0, label );
@@ -95,15 +95,18 @@ void TimelineItem::moveItems( KCal::Incidence *incidence, int delta, int duratio
   }
 }
 
-TimelineSubItem::TimelineSubItem( KCal::Calendar *calendar,
+TimelineSubItem::TimelineSubItem( CalendarBase *calendar,
                                   KCal::Incidence *incidence, TimelineItem *parent )
   : KDGanttViewTaskItem( parent ), mIncidence( incidence ),
     mLeft( 0 ), mRight( 0 ), mMarkerWidth( 0 )
 {
+#ifdef AKONADI_PORT_DISABLED
   setTooltipText( IncidenceFormatter::toolTipStr(
                     calendar, incidence, originalStart().date(),
                     true, KOPrefs::instance()->timeSpec() ) );
-
+#else
+  setTooltipText( QLatin1String("AKONADI_PORT_DISABLED") );
+#endif
   if ( !incidence->isReadOnly() ) {
     setMoveable( true );
     setResizeable( true );

@@ -25,6 +25,7 @@
 #include "kotododelegates.h"
 
 #include "koprefs.h"
+#include "akonadicalendar.h"
 
 #include "kcheckcombobox.h"
 #include "kotodomodel.h"
@@ -33,7 +34,6 @@
 #include <libkdepim/kdateedit.h>
 #include <libkdepim/categoryhierarchyreader.h>
 
-#include <kcal/calendar.h>
 #include <kcal/calfilter.h>
 
 #include <kcolorscheme.h>
@@ -310,7 +310,7 @@ void KOTodoDueDateDelegate::updateEditorGeometry( QWidget *editor,
 // ---------------- CATEGORIES DELEGATE --------------------------
 // ---------------------------------------------------------------
 
-KOTodoCategoriesDelegate::KOTodoCategoriesDelegate( Calendar *cal, QObject *parent )
+KOTodoCategoriesDelegate::KOTodoCategoriesDelegate( KOrg::CalendarBase *cal, QObject *parent )
   : QStyledItemDelegate( parent )
 {
   setCalendar( cal );
@@ -389,7 +389,7 @@ void KOTodoCategoriesDelegate::updateEditorGeometry( QWidget *editor,
   editor->setGeometry( option.rect );
 }
 
-void KOTodoCategoriesDelegate::setCalendar( Calendar *cal )
+void KOTodoCategoriesDelegate::setCalendar( KOrg::CalendarBase *cal )
 {
   mCalendar = cal;
 }

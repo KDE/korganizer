@@ -26,11 +26,10 @@
 // View of Journal entries
 
 #include "kojournalview.h"
+#include "akonadicalendar.h"
 #include "journalview.h"
 #include "koglobals.h"
 #include "koprefs.h"
-
-#include <kcal/calendar.h>
 
 #include <KDebug>
 #include <KLocale>
@@ -43,7 +42,7 @@
 
 using namespace KOrg;
 
-KOJournalView::KOJournalView( Calendar *calendar, QWidget *parent )
+KOJournalView::KOJournalView( KOrg::CalendarBase *calendar, QWidget *parent )
   : KOrg::BaseView( calendar, parent )
 {
   QVBoxLayout *topLayout = new QVBoxLayout( this );

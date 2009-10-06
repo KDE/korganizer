@@ -37,12 +37,12 @@ class QGraphicsSceneWheelEvent;
 
 namespace KCal {
   class Incidence;
-  class Calendar;
 }
 using namespace KCal;
 
 namespace KOrg {
 
+class CalendarBase;
 class IncidenceChangerBase;
 
 class MonthItem;
@@ -67,7 +67,7 @@ class MonthScene : public QGraphicsScene
       ResizeRight
     };
 
-    MonthScene( MonthView *parent, Calendar *calendar );
+    MonthScene( MonthView *parent, KOrg::CalendarBase *calendar );
     ~MonthScene();
 
     int columnWidth() const;
@@ -85,7 +85,7 @@ class MonthScene : public QGraphicsScene
     bool initialized() { return mInitialized; }
     void setInitialized( bool i ) { mInitialized = i; }
     void resetAll();
-    Calendar *calendar() { return mCalendar; }
+    KOrg::CalendarBase *calendar() { return mCalendar; }
     IncidenceChangerBase *incidenceChanger() const;
 
     int totalHeight();
@@ -170,7 +170,7 @@ class MonthScene : public QGraphicsScene
 
   signals:
     void incidenceSelected( Incidence *incidence, const QDate & );
-    void showIncidencePopupSignal( Calendar *, Incidence *, const QDate &);
+    void showIncidencePopupSignal( KOrg::CalendarBase *, Incidence *, const QDate &);
     void showNewEventPopupSignal();
     void newEventSignal();
 
@@ -246,7 +246,7 @@ class MonthScene : public QGraphicsScene
     bool mInitialized;
 
     // Calendar associated to the view
-    Calendar *mCalendar;
+    KOrg::CalendarBase *mCalendar;
 
     // User interaction.
     MonthItem *mClickedItem; // todo ini in ctor
