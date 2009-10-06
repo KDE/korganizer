@@ -97,8 +97,8 @@ void KOEditorGeneralTodo::initTime( QWidget *parent, QBoxLayout *topLayout )
 
   // Timezone
   QString whatsThis = i18n( "Select the timezone for this event. It will also affect recurrences" );
-  mTimeZoneComboStart = new KPIM::KTimeZoneComboBox( mCalendar->timeZones(), timeGroupBox );
-  mTimeZoneComboDue = new KPIM::KTimeZoneComboBox( mCalendar->timeZones(), timeGroupBox );
+  mTimeZoneComboStart = new KPIM::KTimeZoneComboBox( mCalendar ? mCalendar->timeZones() : 0, timeGroupBox );
+  mTimeZoneComboDue = new KPIM::KTimeZoneComboBox( mCalendar ? mCalendar->timeZones() : 0, timeGroupBox );
 
   if ( !KOPrefs::instance()->showTimeZoneSelectorInIncidenceEditor() ) {
     mTimeZoneComboStart->hide();
