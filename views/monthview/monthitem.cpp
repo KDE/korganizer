@@ -556,12 +556,9 @@ QString IncidenceMonthItem::toolTipText() const
   if ( monthScene()->mMonthView && !monthScene()->mMonthView->selectedDates().isEmpty() ) {
     date = monthScene()->mMonthView->selectedDates().first();
   }
-#ifdef AKONADI_PORT_DISABLED
+  //PENDING(AKONADI_PORT): replace QString() by incidence location (was: monthScene()->calendar())
   return IncidenceFormatter::toolTipStr(
-    monthScene()->calendar(), mIncidence, date, true, KOPrefs::instance()->timeSpec() );
-#else
-  return QString();
-#endif
+    QString(), mIncidence, date, true, KOPrefs::instance()->timeSpec() );
 }
 
 QList<QPixmap *> IncidenceMonthItem::icons() const

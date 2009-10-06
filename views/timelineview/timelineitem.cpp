@@ -100,13 +100,10 @@ TimelineSubItem::TimelineSubItem( CalendarBase *calendar,
   : KDGanttViewTaskItem( parent ), mIncidence( incidence ),
     mLeft( 0 ), mRight( 0 ), mMarkerWidth( 0 )
 {
-#ifdef AKONADI_PORT_DISABLED
+  //PENDING(AKONADI_PORT): replace QString() by incidence location (was: calendar)
   setTooltipText( IncidenceFormatter::toolTipStr(
-                    calendar, incidence, originalStart().date(),
+                    QString(), incidence, originalStart().date(),
                     true, KOPrefs::instance()->timeSpec() ) );
-#else
-  setTooltipText( QLatin1String("AKONADI_PORT_DISABLED") );
-#endif
   if ( !incidence->isReadOnly() ) {
     setMoveable( true );
     setResizeable( true );

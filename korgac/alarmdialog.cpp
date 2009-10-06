@@ -282,13 +282,10 @@ void AlarmDialog::addIncidence( Incidence *incidence,
     }
   }
   item->setText( 2, triggerStr );
-#ifdef AKONADI_PORT_DISABLED
-  QString tip = IncidenceFormatter::toolTipStr( mCalendar, incidence,
+  //PENDING(AKONADI_PORT): replace QString() by incidence location
+  QString tip = IncidenceFormatter::toolTipStr( QString(), incidence,
                                                 item->mRemindAt.date(), true,
                                                 KDateTime::Spec::LocalZone() );
-#else
-  QString tip;
-#endif // AKONADI_PORT_DISABLED
   if ( !item->mDisplayText.isEmpty() ) {
     tip += "<br>" + item->mDisplayText;
   }
