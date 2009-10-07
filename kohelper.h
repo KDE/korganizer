@@ -26,14 +26,16 @@
 
 #include "korganizer_export.h"
 
-#include <QColor>
+#include <KCal/Incidence>
 
-namespace KCal {
-  class Incidence;
-}
+#include <QColor>
 
 namespace KOrg {
   class CalendarBase;
+}
+
+namespace Akonadi {
+  class Item;
 }
 
 class QDate;
@@ -42,6 +44,11 @@ class QDate;
 
 namespace KOHelper
 {
+  /**
+   * returns the incidence from an akonadi item, or a null pointer if the item has no such payload
+   */
+  KORGANIZER_CORE_EXPORT KCal::Incidence::Ptr incidence( const Akonadi::Item &item );
+
   /**
     Returns a nice QColor for text, give the input color &c.
   */

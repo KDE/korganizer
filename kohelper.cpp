@@ -26,10 +26,13 @@
 #include "koprefs.h"
 #include "akonadicalendar.h"
 
-#include <kcal/incidence.h>
 #include <akonadi/item.h>
 
 #include <QDate>
+
+KCal::Incidence::Ptr incidence( const Akonadi::Item &item ) {
+  return item.hasPayload<KCal::Incidence::Ptr>() ? item.payload<KCal::Incidence::Ptr>() : KCal::Incidence::Ptr();
+}
 
 QColor KOHelper::getTextColor( const QColor &c )
 {
