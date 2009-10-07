@@ -30,7 +30,7 @@
 
 #include <QDate>
 
-KCal::Incidence::Ptr incidence( const Akonadi::Item &item ) {
+KCal::Incidence::Ptr KOHelper::incidence( const Akonadi::Item &item ) {
   return item.hasPayload<KCal::Incidence::Ptr>() ? item.payload<KCal::Incidence::Ptr>() : KCal::Incidence::Ptr();
 }
 
