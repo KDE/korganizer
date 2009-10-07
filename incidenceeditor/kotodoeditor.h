@@ -26,6 +26,8 @@
 #ifndef KOTODOEDITOR_H
 #define KOTODOEDITOR_H
 
+#include "incidenceeditor_export.h"
+
 #include "koincidenceeditor.h"
 #include <kcal/todo.h>
 
@@ -36,7 +38,7 @@ class KOEditorRecurrence;
 /**
   This class provides a dialog for editing a Todo.
 */
-class KOTodoEditor : public KOIncidenceEditor
+class INCIDENCEEDITOR_EXPORT KOTodoEditor : public KOIncidenceEditor
 {
   Q_OBJECT
   public:

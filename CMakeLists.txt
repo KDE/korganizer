@@ -229,6 +229,7 @@ if(KMAIL_SUPPORTED)
     ${KDEPIMLIBS_AKONADI_LIBS}
     korganizer_eventviewer korganizer_interfaces
     kdepim
+    kdepimdbusinterfaces
     korg_incidenceeditor
   )
 

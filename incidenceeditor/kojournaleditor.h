@@ -26,6 +26,8 @@
 #ifndef KOJOURNALEDITOR_H
 #define KOJOURNALEDITOR_H
 
+#include "incidenceeditor_export.h"
+
 #include "koincidenceeditor.h"
 
 #include <KCal/Journal>
@@ -40,7 +42,7 @@ using namespace KCal;
 /**
   This class provides a dialog for editing a Journal.
 */
-class KOJournalEditor : public KOIncidenceEditor
+class INCIDENCEEDITOR_EXPORT KOJournalEditor : public KOIncidenceEditor
 {
   Q_OBJECT
   public:

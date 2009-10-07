@@ -38,13 +38,15 @@
 #ifndef TEMPLATEMANAGEMENTDIALOG_H
 #define TEMPLATEMANAGEMENTDIALOG_H
 
+#include "incidenceeditor_export.h"
+
 #include "ui_template_management_dialog_base.h"
 
 #include <KDialog>
 
 #include <QString>
 
-class TemplateManagementDialog: public KDialog
+class INCIDENCEEDITOR_EXPORT TemplateManagementDialog: public KDialog
 {
   Q_OBJECT
   public:

@@ -25,6 +25,8 @@
 #ifndef KOEVENTEDITOR_H
 #define KOEVENTEDITOR_H
 
+#include "incidenceeditor_export.h"
+
 #include "koincidenceeditor.h"
 
 #include <KCal/Event>
@@ -38,7 +40,7 @@ class KOEditorRecurrenceDialog;
 /**
   This class provides a dialog for editing an event.
 */
-class KOEventEditor : public KOIncidenceEditor
+class INCIDENCEEDITOR_EXPORT KOEventEditor : public KOIncidenceEditor
 {
   Q_OBJECT
   public:
