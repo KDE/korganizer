@@ -336,8 +336,8 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     /** Show tip of the day */
     void showTipOnStart();
 
-    //void downloadNewStuff();
-    //void uploadNewStuff();
+    void downloadNewStuff();
+    void uploadNewStuff();
 
     void toggleDateNavigator();
     void toggleTodoView();
