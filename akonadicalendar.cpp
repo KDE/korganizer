@@ -151,6 +151,8 @@ bool AkonadiCalendar::beginChangeFORAKONADI( const Item &incidence )
   d->m_changes << incidence->uid();
   d->m_incidenceBeingChanged = KCal::Incidence::Ptr( incidence->clone() );
   return true;
+#else //AKONADI_PORT_DISABLED
+  return false;
 #endif // AKONADI_PORT_DISABLED
 }
 
