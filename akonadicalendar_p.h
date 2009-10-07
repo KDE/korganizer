@@ -253,7 +253,9 @@ class KOrg::AkonadiCalendar::Private : public QObject
     //CalFormat *mFormat;                    // calendar format
     //QHash<QString, Event *>mEvents;        // hash on uids of all Events
     QMultiHash<QString, KCal::Incidence::Ptr> m_incidenceForDate;// on start dates of non-recurring, single-day Incidences
-//QMultiHash<QString, Event *>mEventsForDate;// on start dates of non-recurring, single-day Events
+    QMultiHash<QString, Akonadi::Item> m_itemsForDate;// on start dates of non-recurring, single-day Incidences
+
+    //QMultiHash<QString, Event *>mEventsForDate;// on start dates of non-recurring, single-day Events
     //QHash<QString, Todo *>mTodos;          // hash on uids of all Todos
 //QMultiHash<QString, Todo*>mTodosForDate;// on due dates for all Todos
     //QHash<QString, Journal *>mJournals;    // hash on uids of all Journals
@@ -398,13 +400,18 @@ class KOrg::AkonadiCalendar::Private : public QObject
             Q_ASSERT( ! m_itemMap.contains( uid ) ); //uh, 2 incidences with the same uid?
             Q_ASSERT( ! m_uidToItemId.contains( incidence->uid() ) ); // If this triggers, we have the same items in different collections (violates equal map size assertion in assertInvariants())
             if( const Event::Ptr e = dynamic_pointer_cast<Event>( incidence ) ) {
-              if ( !e->recurs() && !e->isMultiDay() )
+              if ( !e->recurs() && !e->isMultiDay() ) {
                 m_incidenceForDate.insert( e->dtStart().date().toString(), incidence );
+                m_itemsForDate.insert( e->dtStart().date().toString(), item );
+              }
             } else if( const Todo::Ptr t = dynamic_pointer_cast<Todo>( incidence ) ) {
-              if ( t->hasDueDate() )
+              if ( t->hasDueDate() ) {
                 m_incidenceForDate.insert( t->dtDue().date().toString(), incidence );
+                m_itemsForDate.insert( t->dtDue().date().toString(), item );
+              }
             } else if( const Journal::Ptr j = dynamic_pointer_cast<Journal>( incidence ) ) {
                 m_incidenceForDate.insert( j->dtStart().date().toString(), incidence );
+                m_itemsForDate.insert( j->dtStart().date().toString(), item );
             } else {
               Q_ASSERT(false);
               continue;
@@ -412,6 +419,7 @@ class KOrg::AkonadiCalendar::Private : public QObject
     
             m_itemMap.insert( uid, item );
             m_incidenceForDate.insert( incidence->dtStart().date().toString(), incidence );
+            m_itemsForDate.insert( incidence->dtStart().date().toString(), item );
             m_uidToItemId.insert( incidence->uid(), uid );
             assertInvariants();
             incidence->registerObserver( q );
@@ -443,13 +451,18 @@ class KOrg::AkonadiCalendar::Private : public QObject
             kDebug() << "Remove uid=" << incidence->uid() << "summary=" << incidence->summary() << "type=" << incidence->type();
 
             if( const Event::Ptr e = dynamic_pointer_cast<Event>(incidence) ) {
-              if ( !e->recurs() )
+            if ( !e->recurs() ) {
                 removeIncidenceFromMultiHashByUID( incidence, e->dtStart().date().toString() );
+                m_itemsForDate.remove( e->dtStart().date().toString(), item );
+            }
             } else if( const Todo::Ptr t = dynamic_pointer_cast<Todo>( incidence ) ) {
-              if ( t->hasDueDate() )
+              if ( t->hasDueDate() ) {
                 removeIncidenceFromMultiHashByUID( incidence, t->dtDue().date().toString() );
+                m_itemsForDate.remove( t->dtDue().date().toString(), item );
+              }
             } else if( const Journal::Ptr j = dynamic_pointer_cast<Journal>( incidence ) ) {
               removeIncidenceFromMultiHashByUID( incidence, j->dtStart().date().toString() );
+              m_itemsForDate.remove( j->dtStart().date().toString(), item );
             } else {
               Q_ASSERT(false);
               continue;

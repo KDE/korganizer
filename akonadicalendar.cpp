@@ -198,15 +198,16 @@ bool AkonadiCalendar::endChange( Incidence *incidence )
   return true;
 }
 
-bool AkonadiCalendar::endChangeFORAKONADI( const Item &incidence )
+bool AkonadiCalendar::endChangeFORAKONADI( const Item &item )
 {
-#ifdef AKONADI_PORT_DISABLED
+  Q_ASSERT( item.isValid() );
+  const Incidence::Ptr incidence = KOHelper::incidence( item );
   Q_ASSERT( incidence );
 
   const bool isModification = d->m_changes.removeAll( incidence->uid() ) >= 1;
   const QString uid = incidence->uid();
 
-  if( ! CalendarBase::endChange( incidence ) ) {
+  if( ! CalendarBase::endChangeFORAKONADI( item ) ) {
     // should not happen, but well...
     kDebug() << "Abort modify uid=" << uid << "summary=" << incidence->summary() << "type=" << incidence->type();
     return false;
@@ -219,10 +220,6 @@ bool AkonadiCalendar::endChangeFORAKONADI( const Item &incidence )
     return false;
   }
 
-  Q_ASSERT( d->m_uidToItemId.contains( uid ) );
-  Akonadi::Item item = d->itemForUid( uid )->m_item;
-  Q_ASSERT( item.isValid() );
-
   // check if there was an actual change to the incidence since beginChange
   // if not, don't kick off a modify job. The reason this is useful is that
   // begin/endChange is used for locking as well, so it is called quite often
@@ -231,17 +228,14 @@ bool AkonadiCalendar::endChangeFORAKONADI( const Item &incidence )
   ComparisonVisitor v;
   KCal::Incidence::Ptr incidencePtr( d->m_incidenceBeingChanged );
   d->m_incidenceBeingChanged = KCal::Incidence::Ptr();
-  if ( v.compare( incidence, incidencePtr.get() ) )
+  if ( v.compare( incidence.get(), incidencePtr.get() ) )
     return true;
 
   kDebug() << "modify uid=" << uid << "summary=" << incidence->summary() << "type=" << incidence->type() << "storageCollectionId=" << item.storageCollectionId();
   Akonadi::ItemModifyJob *job = new Akonadi::ItemModifyJob( item, d->m_session );
 
-  connect( job, SIGNAL( result( KJob* ) ), d, SLOT( modifyDone( KJob* ) ) );
+  connect( job, SIGNAL(result( KJob*)), d, SLOT(modifyDone(KJob*)) );
   return true;
-#else // AKONADI_PORT_DISABLED
-  return false;
-#endif // AKONADI_PORT_DISABLED
 }
 
 bool AkonadiCalendar::reload()
@@ -287,12 +281,12 @@ void AkonadiCalendar::close()
   setObserversEnabled( true );
 }
 
-bool AkonadiCalendar::addAgent( const KUrl &mUrl )
+bool AkonadiCalendar::addAgent( const KUrl &url )
 {
-  kDebug()<<mUrl;
+  kDebug()<< url;
   Akonadi::AgentType type = Akonadi::AgentManager::self()->type( "akonadi_ical_resource" );
   Akonadi::AgentInstanceCreateJob *job = new Akonadi::AgentInstanceCreateJob( type, d->m_session );
-  job->setProperty("path", mUrl.path());
+  job->setProperty("path", url.path());
   connect( job, SIGNAL( result( KJob * ) ), d, SLOT( agentCreated( KJob * ) ) );
   job->start();
   return true;
@@ -522,20 +516,16 @@ Todo::List AkonadiCalendar::rawTodosForDate( const QDate &date )
 
 Item::List AkonadiCalendar::rawTodosForDateFORAKONADI( const QDate &date )
 {
-#ifdef AKONADI_PORT_DISABLED
   kDebug()<<date.toString();
-  Todo::List todoList;
+  Item::List todoList;
   QString dateStr = date.toString();
-  QMultiHash<QString, KCal::Incidence::Ptr>::const_iterator it = d->m_incidenceForDate.constFind( dateStr );
-  while ( it != d->m_incidenceForDate.constEnd() && it.key() == dateStr ) {
-    if( Todo *t = dynamic_cast<Todo*>(it.value().get()) )
-      todoList.append( t );
+  QMultiHash<QString, Akonadi::Item>::const_iterator it = d->m_itemsForDate.constFind( dateStr );
+  while ( it != d->m_itemsForDate.constEnd() && it.key() == dateStr ) {
+    if( KOHelper::todo( it.value() ) )
+      todoList.append( it.value() );
     ++it;
   }
   return todoList;
-#else // AKONADI_PORT_DISABLED
-  return Item::List();
-#endif // AKONADI_PORT_DISABLED
 }
 
 Alarm::List AkonadiCalendar::alarmsTo( const KDateTime &to )
@@ -621,55 +611,51 @@ Event::List AkonadiCalendar::rawEventsForDate( const QDate &date, const KDateTim
 
 Item::List AkonadiCalendar::rawEventsForDateFORAKONADI( const QDate &date, const KDateTime::Spec &timespec, EventSortField sortField, SortDirection sortDirection )
 {
-#ifdef AKONADI_PORT_DISABLED
   kDebug()<<date.toString();
-  Event::List eventList;
+  Item::List eventList;
   // Find the hash for the specified date
   QString dateStr = date.toString();
   // Iterate over all non-recurring, single-day events that start on this date
-  QMultiHash<QString, KCal::Incidence::Ptr>::const_iterator it = d->m_incidenceForDate.constFind( dateStr );
+  QMultiHash<QString, Akonadi::Item>::const_iterator it = d->m_itemsForDate.constFind( dateStr );
   KDateTime::Spec ts = timespec.isValid() ? timespec : timeSpec();
   KDateTime kdt( date, ts );
-  while ( it != d->m_incidenceForDate.constEnd() && it.key() == dateStr ) {
-    if( Event *ev = dynamic_cast<Event*>(it.value().get()) ) {
+  while ( it != d->m_itemsForDate.constEnd() && it.key() == dateStr ) {
+    if( Event::Ptr ev = KOHelper::event( it.value() ) ) {
       KDateTime end( ev->dtEnd().toTimeSpec( ev->dtStart() ) );
       if ( ev->allDay() )
         end.setDateOnly( true ); else end = end.addSecs( -1 );
       if ( end >= kdt )
-        eventList.append( ev );
+        eventList.append( it.value() );
     }
     ++it;
   }
   // Iterate over all events. Look for recurring events that occur on this date
-  QHashIterator<Akonadi::Item::Id, AkonadiCalendarItem*>i( d->m_itemMap );
+  QHashIterator<Akonadi::Item::Id, Akonadi::Item> i( d->m_itemMap );
   while ( i.hasNext() ) {
     i.next();
-    if( Event *ev = dynamic_cast<Event*>(i.value()->incidence().get()) ) {
+    if( Event::Ptr ev = KOHelper::event( i.value() ) ) {
       if ( ev->recurs() ) {
         if ( ev->isMultiDay() ) {
           int extraDays = ev->dtStart().date().daysTo( ev->dtEnd().date() );
-          for ( int i = 0; i <= extraDays; ++i ) {
-            if ( ev->recursOn( date.addDays( -i ), ts ) ) {
-              eventList.append( ev );
+          for ( int j = 0; j <= extraDays; ++j ) {
+            if ( ev->recursOn( date.addDays( -j ), ts ) ) {
+              eventList.append( i.value() );
               break;
             }
           }
         } else {
           if ( ev->recursOn( date, ts ) )
-            eventList.append( ev );
+            eventList.append( i.value() );
         }
       } else {
         if ( ev->isMultiDay() ) {
           if ( ev->dtStart().date() <= date && ev->dtEnd().date() >= date )
-            eventList.append( ev );
+            eventList.append( i.value() );
         }
       }
     }
   }
-  return sortEvents( &eventList, sortField, sortDirection );
-#else
-  return Item::List();
-#endif
+  return sortEventsFORAKONADI( eventList, sortField, sortDirection );
 }
 
 Event::List AkonadiCalendar::rawEvents( const QDate &start, const QDate &end, const KDateTime::Spec &timespec, bool inclusive )
@@ -877,19 +863,14 @@ Journal::List AkonadiCalendar::rawJournalsForDate( const QDate &date )
 
 Item::List AkonadiCalendar::rawJournalsForDateFORAKONADI( const QDate &date )
 {
-#ifdef AKONADI_PORT_DISABLED
   kDebug()<<date.toString();
-  Journal::List journalList;
+  Item::List journalList;
   QString dateStr = date.toString();
-
-  QMultiHash<QString, KCal::Incidence::Ptr>::const_iterator it = d->m_incidenceForDate.constFind( dateStr );
-  while ( it != d->m_incidenceForDate.constEnd() && it.key() == dateStr ) {
-    if( Journal *j = dynamic_cast<Journal*>(it.value().get()) )
-      journalList.append( j );
+  QMultiHash<QString, Akonadi::Item>::const_iterator it = d->m_itemsForDate.constFind( dateStr );
+  while ( it != d->m_itemsForDate.constEnd() && it.key() == dateStr ) {
+    if( KOHelper::journal( it.value() ) )
+      journalList.append( it.value() );
     ++it;
   }
   return journalList;
-#else // AKONADI_PORT_DISABLED
-  return Item::List();
-#endif // AKONADI_PORT_DISABLED
 }
