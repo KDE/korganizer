@@ -376,16 +376,11 @@ Event *AkonadiCalendar::event( const QString &uid )
 
 Item AkonadiCalendar::eventFORAKONADI( const Item::Id &id )
 {
-#ifdef AKONADI_PORT_DISABLED
-  kDebug();
-  if( !d->m_uidToItemId.contains( uid ) )
-    return 0;
-  AkonadiCalendarItem *aci = d->itemForUid( uid );
-  Event *event = dynamic_cast<Event*>( aci->incidence().get() );
-  return event;
-#else // AKONADI_PORT_DISABLED
-  return Item();
-#endif // AKONADI_PORT_DISABLED
+  const Akonadi::Item item = d->m_itemMap.value( id );
+  if ( KOHelper::event( item ) )
+    return item;
+  else
+    return Akonadi::Item();
 }
 
 bool AkonadiCalendar::addTodo( Todo *todo )
@@ -475,16 +470,11 @@ Todo *AkonadiCalendar::todo( const QString &uid )
 
 Item AkonadiCalendar::todoFORAKONADI( const Item::Id &id )
 {
-#ifdef AKONADI_PORT_DISABLED
-  kDebug();
-  if( ! d->m_uidToItemId.contains( uid ) )
-    return 0;
-  AkonadiCalendarItem *aci = d->itemForUid( uid );
-  Todo *todo = dynamic_cast<Todo*>( aci->incidence().get() );
-  return todo;
-#else // AKONADI_PORT_DISABLED
-  return Item();
-#endif // AKONADI_PORT_DISABLED
+  const Akonadi::Item item = d->m_itemMap.value( id );
+  if ( KOHelper::todo( item ) )
+    return item;
+  else
+    return Akonadi::Item();
 }
 
 Todo::List AkonadiCalendar::rawTodos( TodoSortField sortField, SortDirection sortDirection )
@@ -502,19 +492,15 @@ Todo::List AkonadiCalendar::rawTodos( TodoSortField sortField, SortDirection sor
 
 Item::List AkonadiCalendar::rawTodosFORAKONADI( TodoSortField sortField, SortDirection sortDirection )
 {
-#ifdef AKONADI_PORT_DISABLED
   kDebug()<<sortField<<sortDirection;
   Item::List todoList;
-  QHashIterator<Akonadi::Item::Id, AkonadiCalendarItem*>i( d->m_itemMap );
+  QHashIterator<Akonadi::Item::Id, Akonadi::Item> i( d->m_itemMap );
   while ( i.hasNext() ) {
     i.next();
-    if( Todo *todo = dynamic_cast<Todo*>(i.value()->incidence().get()) )
-      todoList.append( todo );
+    if( KOHelper::todo( i.value() ) )
+      todoList.append( i.value() );
   }
-  return sortTodos( &todoList, sortField, sortDirection );
-#else // AKONADI_PORT_DISABLED
-  return Item::List();
-#endif // AKONADI_PORT_DISABLED
+  return sortTodosFORAKONADI( todoList, sortField, sortDirection );
 }
 
 
@@ -726,18 +712,17 @@ Event::List AkonadiCalendar::rawEvents( const QDate &start, const QDate &end, co
 
 Item::List AkonadiCalendar::rawEventsFORAKONADI( const QDate &start, const QDate &end, const KDateTime::Spec &timespec, bool inclusive )
 {
-#ifdef AKONADI_PORT_DISABLED
   kDebug()<<start.toString()<<end.toString()<<inclusive;
-  Event::List eventList;
+  Item::List eventList;
   KDateTime::Spec ts = timespec.isValid() ? timespec : timeSpec();
   KDateTime st( start, ts );
   KDateTime nd( end, ts );
   KDateTime yesterStart = st.addDays( -1 );
   // Get non-recurring events
-  QHashIterator<Akonadi::Item::Id, AkonadiCalendarItem*>i( d->m_itemMap );
+  QHashIterator<Akonadi::Item::Id, Akonadi::Item> i( d->m_itemMap );
   while ( i.hasNext() ) {
     i.next();
-    if( Event *event = dynamic_cast<Event*>(i.value()->incidence().get()) ) {
+    if( Event::Ptr event = KOHelper::event( i.value() ) ) {
       KDateTime rStart = event->dtStart();
       if ( nd < rStart ) continue;
       if ( inclusive && rStart < st ) continue;
@@ -759,13 +744,10 @@ Item::List AkonadiCalendar::rawEventsFORAKONADI( const QDate &start, const QDate
           break;
         } // switch(duration)
       } //if(recurs)
-      eventList.append( event );
+      eventList.append( i.value() );
     }
   }
   return eventList;
-#else // AKONADI_PORT_DISABLED
-  return Item::List();
-#endif // AKONADI_PORT_DISABLED
 }
 
 Event::List AkonadiCalendar::rawEventsForDate( const KDateTime &kdt )
@@ -795,19 +777,15 @@ Event::List AkonadiCalendar::rawEvents( EventSortField sortField, SortDirection 
 
 Item::List AkonadiCalendar::rawEventsFORAKONADI( EventSortField sortField, SortDirection sortDirection )
 {
-#ifdef AKONADI_PORT_DISABLED
   kDebug()<<sortField<<sortDirection;
-  Event::List eventList;
-  QHashIterator<Akonadi::Item::Id, AkonadiCalendarItem*>i( d->m_itemMap );
+  Item::List eventList;
+  QHashIterator<Akonadi::Item::Id, Akonadi::Item> i( d->m_itemMap );
   while ( i.hasNext() ) {
     i.next();
-    if( Event *event = dynamic_cast<Event*>(i.value()->incidence().get()) )
-      eventList.append( event );
+    if( KOHelper::event( i.value() ) )
+      eventList.append( i.value() );
   }
-  return sortEvents( &eventList, sortField, sortDirection );
-#else // AKONADI_PORT_DISABLED
-  return Item::List();
-#endif // AKONADI_PORT_DISABLED
+  return sortEventsFORAKONADI( eventList, sortField, sortDirection );
 }
 
 bool AkonadiCalendar::addJournal( Journal *journal )
@@ -845,18 +823,13 @@ Journal *AkonadiCalendar::journal( const QString &uid )
 }
 
 
-Item AkonadiCalendar::journalFORAKONADI( const Item::Id &uid )
+Item AkonadiCalendar::journalFORAKONADI( const Item::Id &id )
 {
-#ifdef AKONADI_PORT_DISABLED
-  kDebug();
-  if( ! d->m_uidToItemId.contains( uid ) )
-    return 0;
-  AkonadiCalendarItem *aci = d->itemForUid( uid );
-  Journal *journal = dynamic_cast<Journal*>( aci->incidence().get() );
-  return journal;
-#else // AKONADI_PORT_DISABLED
-  return Item();
-#endif // AKONADI_PORT_DISABLED
+  const Akonadi::Item item = d->m_itemMap.value( id );
+  if ( KOHelper::journal( item ) )
+    return item;
+  else
+    return Akonadi::Item();
 }
 
 Journal::List AkonadiCalendar::rawJournals( JournalSortField sortField, SortDirection sortDirection )
@@ -874,19 +847,15 @@ Journal::List AkonadiCalendar::rawJournals( JournalSortField sortField, SortDire
 
 Item::List AkonadiCalendar::rawJournalsFORAKONADI( JournalSortField sortField, SortDirection sortDirection )
 {
-#ifdef AKONADI_PORT_DISABLED
   kDebug()<<sortField<<sortDirection;
-  Journal::List journalList;
-  QHashIterator<Akonadi::Item::Id, AkonadiCalendarItem*>i( d->m_itemMap );
+  Item::List journalList;
+  QHashIterator<Akonadi::Item::Id, Akonadi::Item> i( d->m_itemMap );
   while ( i.hasNext() ) {
     i.next();
-    if( Journal *journal = dynamic_cast<Journal*>(i.value()->incidence().get()) )
-      journalList.append( journal );
+    if( KOHelper::journal( i.value() ) )
+      journalList.append( i.value() );
   }
-  return sortJournals( &journalList, sortField, sortDirection );
-#else // AKONADI_PORT_DISABLED
-  return Item::List();
-#endif // AKONADI_PORT_DISABLED
+  return sortJournalsFORAKONADI( journalList, sortField, sortDirection );
 }
 
 Journal::List AkonadiCalendar::rawJournalsForDate( const QDate &date )

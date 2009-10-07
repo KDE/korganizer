@@ -393,7 +393,7 @@ class KOrg::AkonadiCalendar::Private : public QObject
             if ( !item.hasPayload<KCal::Incidence::Ptr>() )
               continue;
             const KCal::Incidence::Ptr incidence = item.payload<KCal::Incidence::Ptr>();
-            kDebug() << "Add uid=" << incidence->uid() << "summary=" << incidence->summary() << "type=" << incidence->type();
+            kDebug() << "Add akonadi id=" << item.id() << "uid=" << incidence->uid() << "summary=" << incidence->summary() << "type=" << incidence->type();
             const Akonadi::Item::Id uid = item.id();
             Q_ASSERT( ! m_itemMap.contains( uid ) ); //uh, 2 incidences with the same uid?
             Q_ASSERT( ! m_uidToItemId.contains( incidence->uid() ) ); // If this triggers, we have the same items in different collections (violates equal map size assertion in assertInvariants())
