@@ -26,6 +26,7 @@
 
 #include "korganizer_export.h"
 
+#include <KCal/Event>
 #include <KCal/Incidence>
 
 #include <QColor>
@@ -48,6 +49,11 @@ namespace KOHelper
    * returns the incidence from an akonadi item, or a null pointer if the item has no such payload
    */
   KORGANIZER_CORE_EXPORT KCal::Incidence::Ptr incidence( const Akonadi::Item &item );
+
+  /**
+   * returns the event from an akonadi item, or a null pointer if the item has no such payload
+   */
+  KORGANIZER_CORE_EXPORT KCal::Event::Ptr event( const Akonadi::Item &item );
 
   /**
     Returns a nice QColor for text, give the input color &c.

@@ -25,6 +25,7 @@
 #define AKONADICALENDAR_P_H
 
 #include "akonadicalendar.h"
+#include "kohelper.h"
 
 #include <QObject>
 #include <QCoreApplication>
@@ -172,11 +173,12 @@ class KOrg::AkonadiCalendar::Private : public QObject
       return true;
     }
 
-    bool addIncidenceFORAKONADI( const Akonadi::Item &incidence )
+    bool addIncidenceFORAKONADI( const Akonadi::Item & item_ )
     {
-#ifdef AKONADI_PORT_DISABLED
       kDebug();
-      Akonadi::CollectionDialog dlg( 0 );
+      Akonadi::Item item = item_;
+      const Incidence::Ptr incidence = KOHelper::incidence( item );
+      Akonadi::CollectionDialog dlg( 0 ); //PENDING(AKONADI_PORT) we really need a parent here
       dlg.setMimeTypeFilter( QStringList() << QString::fromLatin1( "text/calendar" ) );
       if ( ! dlg.exec() ) {
         return false;
@@ -184,19 +186,13 @@ class KOrg::AkonadiCalendar::Private : public QObject
       const Akonadi::Collection collection = dlg.selectedCollection();
       Q_ASSERT( collection.isValid() );
       //Q_ASSERT( m_collectionMap.contains( collection.id() ) ); //we can add items to collections we don't show yet
-      Q_ASSERT( ! m_uidToItemId.contains( incidence->uid() ) ); //but we can not have the same incidence in 2 collections
+      Q_ASSERT( ! m_uidToItemId.contains( incidence->uid() ) ); //but we can not have the same incidence in 2 collections //PENDING(AKONADI_PORT) remove this assert (and the map)
 
-      Akonadi::Item item;
       //the sub-mimetype of text/calendar as defined at kdepim/akonadi/kcal/kcalmimetypevisitor.cpp
-      item.setMimeType( QString("application/x-vnd.akonadi.calendar.%1").arg(QString(incidence->type().toLower())) );
-      KCal::Incidence::Ptr incidencePtr( incidence ); //no clone() needed
-      item.setPayload<KCal::Incidence::Ptr>( incidencePtr );
+      item.setMimeType( QString::fromLatin1("application/x-vnd.akonadi.calendar.%1").arg(QLatin1String(incidence->type().toLower())) ); //PENDING(AKONADI_PORT) shouldn't be hardcoded?
       Akonadi::ItemCreateJob *job = new Akonadi::ItemCreateJob( item, collection, m_session );
       connect( job, SIGNAL( result( KJob* ) ), this, SLOT( createDone( KJob* ) ) );
       return true;
-#else // AKONADI_PORT_DISABLED
-      return false;
-#endif // AKONADI_PORT_DISABLED
     }
 
     bool deleteIncidence( Incidence *incidence )
@@ -211,20 +207,16 @@ class KOrg::AkonadiCalendar::Private : public QObject
       return true;
     }
 
-    bool deleteIncidenceFORAKONADI( const AkonadiItem &incidence )
+    bool deleteIncidenceFORAKONADI( const Akonadi::Item &item )
     {
-#ifdef AKONADI_PORT_DISABLED
       kDebug();
+      Incidence::Ptr incidence = KOHelper::incidence( item );
+      if ( !incidence )
+        return false;
       m_changes.removeAll( incidence->uid() ); //abort changes to this incidence cause we will just delete it
-      Q_ASSERT( m_uidToItemId.contains( incidence->uid() ) );
-      Akonadi::Item item = itemForUid( incidence->uid() )->m_item;
-      Q_ASSERT( item.isValid() );
       Akonadi::ItemDeleteJob *job = new Akonadi::ItemDeleteJob( item, m_session );
       connect( job, SIGNAL( result( KJob* ) ), this, SLOT( deleteDone( KJob* ) ) );
       return true;
-#else // AKONADI_PORT_DISABLED
-      return false;
-#endif // AKONADI_PORT_DISABLED
     }
 
     AkonadiCalendarItem* itemForUid( const QString& uid ) const

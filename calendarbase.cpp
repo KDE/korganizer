@@ -36,6 +36,7 @@
 */
 
 #include "calendarbase.h"
+#include "kohelper.h"
 
 #include <kcal/exceptions.h>
 #include <kcal/calfilter.h>
@@ -409,41 +410,43 @@ Event::List CalendarBase::sortEvents( Event::List *eventList,
   return eventListSorted;
 }
 
-Item::List CalendarBase::sortEventsFORAKONADI( const Item::List &eventList,
+Item::List CalendarBase::sortEventsFORAKONADI( const Item::List &eventList_,
                                   EventSortField sortField,
                                   SortDirection sortDirection )
 {
-#ifdef AKONADI_PORT_DISABLED
-  Event::List eventListSorted;
-  Event::List tempList, t;
-  Event::List alphaList;
-  Event::List::Iterator sortIt;
-  Event::List::Iterator eit;
+  Item::List eventList = eventList_;
+  Item::List eventListSorted;
+  Item::List tempList, t;
+  Item::List alphaList;
+  Item::List::Iterator sortIt;
+  Item::List::Iterator eit;
 
   // Notice we alphabetically presort Summaries first.
   // We do this so comparison "ties" stay in a nice order.
 
   switch( sortField ) {
   case EventSortUnsorted:
-    eventListSorted = *eventList;
+    eventListSorted = eventList;
     break;
 
   case EventSortStartDate:
-    alphaList = sortEvents( eventList, EventSortSummary, sortDirection );
-    for ( eit = alphaList.begin(); eit != alphaList.end(); ++eit ) {
-      if ( (*eit)->dtStart().isDateOnly() ) {
+    alphaList = sortEventsFORAKONADI( eventList, EventSortSummary, sortDirection );
+    for ( eit = alphaList.begin(); eit != alphaList.end(); ++eit) {
+      Event::Ptr e = KOHelper::event( *eit );
+      Q_ASSERT( e );
+      if ( e->dtStart().isDateOnly() ) {
         tempList.append( *eit );
         continue;
       }
       sortIt = eventListSorted.begin();
       if ( sortDirection == SortDirectionAscending ) {
         while ( sortIt != eventListSorted.end() &&
-                (*eit)->dtStart() >= (*sortIt)->dtStart() ) {
+                e->dtStart() >= KOHelper::event(*sortIt)->dtStart() ) {
           ++sortIt;
         }
       } else {
         while ( sortIt != eventListSorted.end() &&
-                (*eit)->dtStart() < (*sortIt)->dtStart() ) {
+                e->dtStart() < KOHelper::event(*sortIt)->dtStart() ) {
           ++sortIt;
         }
       }
@@ -460,18 +463,20 @@ Item::List CalendarBase::sortEventsFORAKONADI( const Item::List &eventList,
     break;
 
   case EventSortEndDate:
-    alphaList = sortEvents( eventList, EventSortSummary, sortDirection );
+    alphaList = sortEventsFORAKONADI( eventList, EventSortSummary, sortDirection );
     for ( eit = alphaList.begin(); eit != alphaList.end(); ++eit ) {
-      if ( (*eit)->hasEndDate() ) {
+      Event::Ptr e = KOHelper::event( *eit );
+      Q_ASSERT( e );
+      if ( e->hasEndDate() ) {
         sortIt = eventListSorted.begin();
         if ( sortDirection == SortDirectionAscending ) {
           while ( sortIt != eventListSorted.end() &&
-                  (*eit)->dtEnd() >= (*sortIt)->dtEnd() ) {
+                  e->dtEnd() >= KOHelper::event(*sortIt)->dtEnd() ) {
             ++sortIt;
           }
         } else {
           while ( sortIt != eventListSorted.end() &&
-                  (*eit)->dtEnd() < (*sortIt)->dtEnd() ) {
+                  e->dtEnd() < KOHelper::event(*sortIt)->dtEnd() ) {
             ++sortIt;
           }
         }
@@ -492,16 +497,18 @@ Item::List CalendarBase::sortEventsFORAKONADI( const Item::List &eventList,
     break;
 
   case EventSortSummary:
-    for ( eit = eventList->begin(); eit != eventList->end(); ++eit ) {
+    for ( eit = eventList.begin(); eit != eventList.end(); ++eit ) {
+      Event::Ptr e = KOHelper::event( *eit );
+      Q_ASSERT( e );
       sortIt = eventListSorted.begin();
       if ( sortDirection == SortDirectionAscending ) {
         while ( sortIt != eventListSorted.end() &&
-                (*eit)->summary() >= (*sortIt)->summary() ) {
+                e->summary() >= KOHelper::event(*sortIt)->summary() ) {
           ++sortIt;
         }
       } else {
         while ( sortIt != eventListSorted.end() &&
-                (*eit)->summary() < (*sortIt)->summary() ) {
+                e->summary() < KOHelper::event(*sortIt)->summary() ) {
           ++sortIt;
         }
       }
@@ -511,9 +518,6 @@ Item::List CalendarBase::sortEventsFORAKONADI( const Item::List &eventList,
   }
 
   return eventListSorted;
-#else
-  return Item::List();
-#endif
 }
 
 Event::List CalendarBase::events( const QDate &date,
@@ -841,19 +845,15 @@ Incidence::List CalendarBase::incidencesFromSchedulingID( const QString &sid )
 
 Item::List CalendarBase::incidencesFromSchedulingIDFORAKONADI( const QString &sid )
 {
-#ifdef AKONADI_PORT_DISABLED
-  Incidence::List result;
-  const Incidence::List incidences = rawIncidences();
-  Incidence::List::const_iterator it = incidences.begin();
+  Item::List result;
+  const Item::List incidences = rawIncidencesFORAKONADI();
+  Item::List::const_iterator it = incidences.begin();
   for ( ; it != incidences.end(); ++it ) {
-    if ( (*it)->schedulingID() == sid ) {
+    if ( KOHelper::incidence(*it)->schedulingID() == sid ) {
       result.append( *it );
     }
   }
   return result;
-#else // AKONADI_PORT_DISABLED
-  return Item::List();
-#endif // AKONADI_PORT_DISABLED
 }
 
 Incidence *CalendarBase::incidenceFromSchedulingID( const QString &UID )
@@ -872,20 +872,16 @@ Incidence *CalendarBase::incidenceFromSchedulingID( const QString &UID )
 
 Item CalendarBase::incidenceFromSchedulingIDFORAKONADI( const QString &UID )
 {
-#ifdef AKONADI_PORT_DISABLED
-  const Incidence::List incidences = rawIncidences();
-  Incidence::List::const_iterator it = incidences.begin();
+  const Item::List incidences = rawIncidencesFORAKONADI();
+  Item::List::const_iterator it = incidences.begin();
   for ( ; it != incidences.end(); ++it ) {
-    if ( (*it)->schedulingID() == UID ) {
+    if ( KOHelper::incidence(*it)->schedulingID() == UID ) {
       // Touchdown, and the crowd goes wild
       return *it;
     }
   }
   // Not found
-  return 0;
-#else // AKONADI_PORT_DISABLED
   return Item();
-#endif // AKONADI_PORT_DISABLED
 }
 
 Todo::List CalendarBase::sortTodos( Todo::List *todoList,

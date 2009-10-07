@@ -34,6 +34,10 @@ KCal::Incidence::Ptr KOHelper::incidence( const Akonadi::Item &item ) {
   return item.hasPayload<KCal::Incidence::Ptr>() ? item.payload<KCal::Incidence::Ptr>() : KCal::Incidence::Ptr();
 }
 
+KCal::Event::Ptr KOHelper::event( const Akonadi::Item &item ) {
+  return item.hasPayload<KCal::Event::Ptr>() ? item.payload<KCal::Event::Ptr>() : KCal::Event::Ptr();
+}
+
 QColor KOHelper::getTextColor( const QColor &c )
 {
   float luminance = ( c.red() * 0.299 ) + ( c.green() * 0.587 ) + ( c.blue() * 0.114 );
