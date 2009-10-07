@@ -46,6 +46,7 @@ if(KMAIL_SUPPORTED)
                       ${CMAKE_SOURCE_DIR}/korganizer/printing
                       ${CMAKE_SOURCE_DIR}/kdgantt1
                       ${CMAKE_BINARY_DIR}/libkdepim
+                      ${CMAKE_BINARY_DIR}/libkdepimdbusinterfaces
                       ${AKONADI_INCLUDE_DIR}
                       ${Boost_INCLUDE_DIRS}
                       ${QT_INCLUDES} ${ZLIB_INCLUDE_DIR} )
@@ -76,7 +77,7 @@ if(KMAIL_SUPPORTED)
 
   kde4_add_executable(korganizer ${korganizer_SRCS})
 
-  target_link_libraries(korganizer ${KDE4_KDEUI_LIBS} ${KDE4_KDE3SUPPORT_LIBRARY} ${KDE4_KPARTS_LIBRARY} ${KDEPIMLIBS_KCAL_LIBS} ${KDEPIMLIBS_KHOLIDAYS_LIBS} ${KDEPIMLIBS_KONTACTINTERFACE_LIBS} kdepim korganizerprivate korganizer_interfaces)
+  target_link_libraries(korganizer ${KDE4_KDEUI_LIBS} ${KDE4_KDE3SUPPORT_LIBRARY} ${KDE4_KPARTS_LIBRARY} ${KDEPIMLIBS_KCAL_LIBS} ${KDEPIMLIBS_KHOLIDAYS_LIBS} ${KDEPIMLIBS_KONTACTINTERFACE_LIBS} kdepim kdepimdbusinterfaces korganizerprivate korganizer_interfaces)
 
   install(TARGETS korganizer ${INSTALL_TARGETS_DEFAULT_ARGS})
 
