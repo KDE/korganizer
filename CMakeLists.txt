@@ -46,6 +46,7 @@ if(KMAIL_SUPPORTED)
                       ${CMAKE_SOURCE_DIR}/korganizer/printing
                       ${CMAKE_SOURCE_DIR}/kdgantt1
                       ${CMAKE_BINARY_DIR}/libkdepim
+                      ${CMAKE_SOURCE_DIR}/libkdepimdbusinterfaces
                       ${CMAKE_BINARY_DIR}/libkdepimdbusinterfaces
                       ${AKONADI_INCLUDE_DIR}
                       ${Boost_INCLUDE_DIRS}
@@ -117,7 +118,7 @@ if(KMAIL_SUPPORTED)
   kde4_add_library(korganizer_eventviewer SHARED ${korganizer_eventviewer_LIB_SRCS})
   add_dependencies(korganizer_eventviewer kmail_xml)
 
-  target_link_libraries(korganizer_eventviewer ${KDE4_KPARTS_LIBS} ${KDEPIMLIBS_KCAL_LIBS} kdepim)
+  target_link_libraries(korganizer_eventviewer ${KDE4_KPARTS_LIBS} ${KDEPIMLIBS_KCAL_LIBS} kdepim kdepimdbusinterfaces)
 
   set_target_properties(korganizer_eventviewer PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
   install(TARGETS korganizer_eventviewer ${INSTALL_TARGETS_DEFAULT_ARGS})

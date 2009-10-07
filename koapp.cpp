@@ -35,7 +35,7 @@
 #include "calendarview.h"
 #include "stdcalendar.h"
 
-#include <libkdepim/reminderclient.h>
+#include "reminderclient.h"
 
 #include <kcal/calformat.h>
 #include <kcal/calendarresources.h>

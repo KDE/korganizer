@@ -26,7 +26,7 @@
 #include "koprefs.h"
 #include "korganizer_part.h"
 
-#include <libkdepim/reminderclient.h>
+#include "reminderclient.h"
 
 #include <kholidays/holidays.h>
 using namespace KHolidays;
