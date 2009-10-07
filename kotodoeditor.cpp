@@ -381,7 +381,7 @@ void KOTodoEditor::modified( int modification )
   reload();
 }
 
-#if 0 //sebsauer
+#if 0 //AKONADI_PORT_DISABLED
 void KOTodoEditor::loadTemplate( CalendarLocal &cal )
 {
   Todo::List todos = cal.todos();

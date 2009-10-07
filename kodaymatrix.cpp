@@ -108,7 +108,7 @@ void KODayMatrix::setCalendar( KOrg::CalendarBase *cal )
   mCalendar->registerObserver( this );
   AkonadiCalendar *calres = dynamic_cast<AkonadiCalendar*>( cal );
   if ( calres ) {
-#if 0 //sebsauer: not needed any longer
+#if 0 //AKONADI_PORT_DISABLED: not needed any longer
     connect( calres, SIGNAL(signalResourceAdded(ResourceCalendar *)),
              SLOT(resourcesChanged()) );
     connect( calres, SIGNAL(signalResourceModified(ResourceCalendar *)),

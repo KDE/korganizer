@@ -1639,7 +1639,7 @@ bool KOAgendaView::filterByResource( Incidence *incidence )
     return true;
   }
 
-#if 0 //sebsauer
+#if 0 //AKONADI_PORT_DISABLED
   if ( calRes->resource( incidence ) != mResource ) {
     return false;
   }

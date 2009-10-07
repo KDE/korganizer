@@ -117,7 +117,7 @@ void KOTimelineView::showDates( const QDate &start, const QDate &end )
     item = new TimelineItem( i18n( "Calendar" ), calendar(), mGantt );
     mCalendarItemMap[0][QString()] = item;
   } else {
-#if 0  //sebsauer
+#if 0  //AKONADI_PORT_DISABLED
     CalendarResourceManager *manager = calres->resourceManager();
     for ( CalendarResourceManager::ActiveIterator it = manager->activeBegin(); it != manager->activeEnd(); ++it ) {
       QColor resourceColor = KOPrefs::instance()->resourceColor( (*it)->identifier() );
@@ -255,7 +255,7 @@ TimelineItem *KOTimelineView::calendarItemForIncidence( KCal::Incidence *inciden
   if ( !calres ) {
     item = mCalendarItemMap[0][QString()];
   } else {
-#if 0 //sebsauer
+#if 0 //AKONADI_PORT_DISABLED
     ResourceCalendar *res = calres->resource( incidence );
     if ( !res ) {
       return 0;

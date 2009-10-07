@@ -282,7 +282,7 @@ void ActionManager::initActions()
   mACollection->addAction( "import_ical", importAction );
   connect( importAction, SIGNAL(triggered(bool)), SLOT(file_icalimport()) );
 
-#if 0 //sebsauer
+#if 0 //AKONADI_PORT_DISABLED
   action = new KAction( i18n( "Get &Hot New Stuff..." ), this );
   mACollection->addAction( "downloadnewstuff", action );
   connect( action, SIGNAL(triggered(bool)), SLOT(downloadNewStuff()) );
@@ -752,7 +752,7 @@ void ActionManager::writeSettings()
   config.sync();
 
   if ( mCalendarAkonadi ) {
-#if 0 //sebsauer
+#if 0 //AKONADI_PORT_DISABLED
     mCalendarAkonadi->resourceManager()->writeConfig();
 #endif
   }
@@ -982,7 +982,7 @@ bool ActionManager::openURL( const KUrl &url, bool merge )
 
 bool ActionManager::addResource( const KUrl &mUrl )
 {
-#if 0 //sebsauer
+#if 0 //AKONADI_PORT_DISABLED
   CalendarResources *cr = KOrg::StdCalendar::self();
   CalendarResourceManager *manager = cr->resourceManager();
   ResourceCalendar *resource = 0;
@@ -1391,7 +1391,7 @@ void ActionManager::updateConfig()
 
 void ActionManager::setDestinationPolicy()
 {
-#if 0 //sebsauer
+#if 0 //AKONADI_PORT_DISABLED
   if ( mCalendarAkonadi ) {
     if ( KOPrefs::instance()->mDestination == KOPrefs::askDestination ) {
       mCalendarAkonadi->setAskDestinationPolicy();
@@ -1526,7 +1526,7 @@ bool ActionManager::addIncidence( const QString &ical )
   return mCalendarView->addIncidence( ical );
 }
 
-#if 0 //sebsauer
+#if 0 //AKONADI_PORT_DISABLED
 void ActionManager::downloadNewStuff()
 {
   kDebug();
@@ -2069,7 +2069,7 @@ bool ActionManager::saveResourceCalendar()
   if ( !mCalendarAkonadi ) {
     return false;
   }
-#if 0 //sebsauer
+#if 0 //AKONADI_PORT_DISABLED
   CalendarResourceManager *m = mCalendarAkonadi->resourceManager();
   CalendarResourceManager::ActiveIterator it;
   for ( it = m->activeBegin(); it != m->activeEnd(); ++it ) {

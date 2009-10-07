@@ -257,7 +257,7 @@ void KOJournalEditor::modified( int modification )
   reload();
 }
 
-#if 0 //sebsauer
+#if 0 //AKONADI_PORT_DISABLED
 void KOJournalEditor::loadTemplate( CalendarLocal &cal )
 {
   Journal::List journals = cal.journals();

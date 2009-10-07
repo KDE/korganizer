@@ -134,7 +134,7 @@ void MultiAgendaView::recreateViews()
     mAgendaWidgets.append( av );
     av->show();
   } else {
-#if 0 //sebsauer
+#if 0 //AKONADI_PORT_DISABLED
     CalendarResourceManager *manager = calres->resourceManager();
     for ( CalendarResourceManager::ActiveIterator it = manager->activeBegin(); it != manager->activeEnd(); ++it ) {
       if ( (*it)->canHaveSubresources() ) {

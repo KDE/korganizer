@@ -26,7 +26,7 @@ AgendaView::AgendaView( CalendarBase *cal, QWidget *parent )
 {
   AkonadiCalendar *calres = dynamic_cast<AkonadiCalendar *>( cal );
   if ( calres ) {
-#if 0 //sebsauer: not needed any longer
+#if 0 //AKONADI_PORT_DISABLED: not needed any longer
     connect( calres, SIGNAL(signalResourceAdded(ResourceCalendar *)),
              SLOT(setUpdateNeeded()) );
     connect( calres, SIGNAL(signalResourceModified(ResourceCalendar *)),

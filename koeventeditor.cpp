@@ -422,7 +422,7 @@ bool KOEventEditor::validateInput()
   return true;
 }
 
-#if 0 //sebsauer
+#if 0 //AKONADI_PORT_DISABLED
 void KOEventEditor::loadTemplate( CalendarLocal &cal )
 {
   Event::List events = cal.events();
@@ -439,7 +439,7 @@ QStringList &KOEventEditor::templates() const
   return KOPrefs::instance()->mEventTemplates;
 }
 
-#if 0 //sebsauer
+#if 0 //AKONADI_PORT_DISABLED
 void KOEventEditor::slotSaveTemplate( const QString &templateName )
 {
   Event *event = new Event;

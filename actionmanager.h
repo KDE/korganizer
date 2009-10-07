@@ -255,7 +255,7 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     */
     void closingDown();
 
-#if 0 //sebsauer
+#if 0 //AKONADI_PORT_DISABLED
     /** Indicates that a new resource was added */
     void resourceAdded( ResourceCalendar * );
 #endif

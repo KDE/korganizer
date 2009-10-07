@@ -46,7 +46,7 @@ StdCalendar *StdCalendar::self()
 StdCalendar::StdCalendar()
   : AkonadiCalendar( KSystemTimeZones::local() )
 {
-#if 0 //sebsauer
+#if 0 //AKONADI_PORT_DISABLED
   readConfig();
   KCal::CalendarResourceManager *manager = resourceManager();
   if ( manager->isEmpty() ) {
@@ -113,6 +113,6 @@ StdCalendar::~StdCalendar()
 
 void StdCalendar::load()
 {
-  //sebsauer
+  //AKONADI_PORT_DISABLED
   kWarning()<<"TODO";
 }

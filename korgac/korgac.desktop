@@ -100,7 +100,7 @@ GenericName[zh_CN]=KOrganizer 提醒守护进程的客户端
 GenericName[zh_TW]=KOrganizr 提醒守護程式客戶端
 Terminal=false
 
-#sebsauer; disabled atm
+#AKONADI_PORT_DISABLED(sebsauer) disabled atm
 Hidden=true
 
 X-KDE-autostart-after=panel

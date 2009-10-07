@@ -68,7 +68,7 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, QObject *parent, const QV
   mActionManager = new ActionManager( this, mView, this, this, true );
   (void)new KOrganizerIfaceImpl( mActionManager, this, "IfaceImpl" );
 
-#if 0 //sebsauer
+#if 0 //AKONADI_PORT_DISABLED
   if ( KGlobal::mainComponent().componentName() == QLatin1String( "kontact" ) ) {
     mActionManager->createCalendarAkonadi();
     setHasDocument( false );
