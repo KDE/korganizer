@@ -46,8 +46,8 @@ target_link_libraries(korg_incidenceeditor
    ${KDE4_KPARTS_LIBS}
    ${KDE4_KDE3SUPPORT_LIBRARY}
    ${KDEPIMLIBS_KCAL_LIBS}
-   kdepimdbusinterfaces
    kdepim
+   kdepimdbusinterfaces
 )
 
 set_target_properties(korg_incidenceeditor PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION})
