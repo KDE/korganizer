@@ -4,6 +4,7 @@ include_directories(
     ${CMAKE_SOURCE_DIR}/korganizer/incidenceeditor
     ${CMAKE_BINARY_DIR}/korganizer/incidenceeditor
     ${CMAKE_SOURCE_DIR}/kdgantt1
+    ${CMAKE_SOURCE_DIR}/libkdepimdbusinterfaces
 )
 
 
@@ -41,8 +42,11 @@ target_link_libraries(korg_incidenceeditor
    ${QT_QT3SUPPORT_LIBRARY}
    ${QT_QTCORE_LIBRARY}
    ${QT_QTGUI_LIBRARY}
+   ${KDE4_KDEUI_LIBS}
    ${KDE4_KPARTS_LIBS}
+   ${KDE4_KDE3SUPPORT_LIBRARY}
    ${KDEPIMLIBS_KCAL_LIBS}
+   kdepimdbusinterfaces
    kdepim
 )
 
