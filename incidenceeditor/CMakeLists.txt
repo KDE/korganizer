@@ -44,6 +44,7 @@ target_link_libraries(korg_incidenceeditor
    ${QT_QTGUI_LIBRARY}
    ${KDE4_KDEUI_LIBS}
    ${KDE4_KPARTS_LIBS}
+   ${KDE4_KMIME_LIBRARY}
    ${KDE4_KDE3SUPPORT_LIBRARY}
    ${KDEPIMLIBS_KCAL_LIBS}
    kdepim
