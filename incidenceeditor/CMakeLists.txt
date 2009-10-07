@@ -1,8 +1,8 @@
 
 include_directories( 
     ${CMAKE_SOURCE_DIR}/korganizer/interfaces 
-    ${CMAKE_SOURCE_DIR}/korganizer
-    ${CMAKE_BINARY_DIR}/korganizer
+    ${CMAKE_SOURCE_DIR}/korganizer/incidenceeditor
+    ${CMAKE_BINARY_DIR}/korganizer/incidenceeditor
     ${CMAKE_SOURCE_DIR}/kdgantt1
 )
 
@@ -25,16 +25,19 @@ set( korg_incidenceeditor_LIB_SRCS
     koeditorattachments.cpp
     koeditorfreebusy.cpp
     koattendeeeditor.cpp
+    templatemanagementdialog.cpp
 )
 
 
 kde4_add_ui_files( korg_incidenceeditor_LIB_SRCS 
    koeditoralarms_base.ui
+   template_management_dialog_base.ui
 )
 
 kde4_add_library(korg_incidenceeditor SHARED ${korg_incidenceeditor_LIB_SRCS})
 
 target_link_libraries(korg_incidenceeditor
+   ${ZLIB_LIBRARY}
    ${QT_QT3SUPPORT_LIBRARY}
    ${QT_QTCORE_LIBRARY}
    ${QT_QTGUI_LIBRARY}

@@ -22,10 +22,7 @@
   without including the source code for Qt in the source distribution.
 */
 
-#include "calendarbase.h"
 #include "koeditorgeneraltodo.h"
-#include "koglobals.h"
-#include "koprefs.h"
 
 #include <libkdepim/kdateedit.h>
 #include <libkdepim/ktimeedit.h>
@@ -38,6 +35,7 @@
 #include <KLocale>
 #include <KMessageBox>
 #include <KRichTextWidget>
+#include <KSystemTimeZone>
 
 #include <QBoxLayout>
 #include <QCheckBox>
@@ -97,6 +95,7 @@ void KOEditorGeneralTodo::initTime( QWidget *parent, QBoxLayout *topLayout )
 
   // Timezone
   QString whatsThis = i18n( "Select the timezone for this event. It will also affect recurrences" );
+#if KDAB_TEMPORARILY_REMOVED
   mTimeZoneComboStart = new KPIM::KTimeZoneComboBox( mCalendar ? mCalendar->timeZones() : 0, timeGroupBox );
   mTimeZoneComboDue = new KPIM::KTimeZoneComboBox( mCalendar ? mCalendar->timeZones() : 0, timeGroupBox );
 
@@ -104,6 +103,7 @@ void KOEditorGeneralTodo::initTime( QWidget *parent, QBoxLayout *topLayout )
     mTimeZoneComboStart->hide();
     mTimeZoneComboDue->hide();
   }
+#endif
   layoutTimeBox->addWidget( mTimeZoneComboStart, 0, 3 );
   layoutTimeBox->addWidget( mTimeZoneComboDue, 1, 3 );
   mTimeZoneComboStart->setWhatsThis( whatsThis );
@@ -325,7 +325,7 @@ void KOEditorGeneralTodo::readTodo( Todo *todo, bool tmpl )
   mAlreadyComplete = false;
   mCompletedCombo->setCurrentIndex( todo->percentComplete() / 10 );
   if ( todo->isCompleted() && todo->hasCompletedDate() ) {
-    mCompleted = todo->completed().toTimeSpec( KOPrefs::instance()->timeSpec() ).dateTime();
+    mCompleted = todo->completed().toTimeSpec( KSystemTimeZones::local() ).dateTime();
     mAlreadyComplete = true;
   }
   setCompletedDate();
@@ -411,7 +411,7 @@ void KOEditorGeneralTodo::fillTodo( Todo *todo )
       completed = mCompleted;
     }
     // TODO: should we add the ability to choose this timezone ?
-    todo->setCompleted( KDateTime( completed, KOPrefs::instance()->timeSpec() ) );
+    todo->setCompleted( KDateTime( completed, KSystemTimeZones::local() ) );
   }
 }
 
@@ -608,6 +608,8 @@ bool KOEditorGeneralTodo::setAlarmOffset( Alarm *alarm, int value ) const
 
 void KOEditorGeneralTodo::modified( Todo *todo, int modification )
 {
+#if KDAB_TEMPORARILY_REMOVED
+    // FIXME is this getting called at all?
   switch ( modification ) {
   case KOGlobals::PRIORITY_MODIFIED:
     mPriorityCombo->setCurrentIndex( todo->priority() );
@@ -615,7 +617,7 @@ void KOEditorGeneralTodo::modified( Todo *todo, int modification )
   case KOGlobals::COMPLETION_MODIFIED:
     mCompletedCombo->setCurrentIndex( todo->percentComplete() / 10 );
     if ( todo->isCompleted() && todo->hasCompletedDate() ) {
-      mCompleted = todo->completed().toTimeSpec( KOPrefs::instance()->timeSpec() ).dateTime();
+      mCompleted = todo->completed().toTimeSpec( KSystemTimeZones::local() ).dateTime();
     }
     setCompletedDate();
     break;
@@ -627,6 +629,7 @@ void KOEditorGeneralTodo::modified( Todo *todo, int modification )
     readTodo( todo );
     break;
   }
+#endif
 }
 
 #include "koeditorgeneraltodo.moc"

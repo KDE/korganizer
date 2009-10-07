@@ -26,7 +26,6 @@
 */
 
 #include "koeditorgeneraljournal.h"
-#include "koprefs.h"
 
 #include <libkdepim/kdateedit.h>
 #include <libkdepim/ktimeedit.h>
@@ -37,6 +36,7 @@
 #include <KMessageBox>
 #include <KRichTextWidget>
 #include <KSqueezedTextLabel>
+#include <KSystemTimeZone>
 
 #include <QCheckBox>
 #include <QLabel>
@@ -168,7 +168,7 @@ void KOEditorGeneralJournal::fillJournal( Journal *journal )
     journal->setDescription( mDescriptionEdit->toPlainText(),
                              false );
   }
-  KDateTime tmpDT( mDateEdit->date(), QTime( 0, 0, 0 ), KOPrefs::instance()->timeSpec() );
+  KDateTime tmpDT( mDateEdit->date(), QTime( 0, 0, 0 ), KSystemTimeZones::local() );
   bool hasTime = mTimeCheckBox->isChecked();
   journal->setAllDay( !hasTime );
   if ( hasTime ) {

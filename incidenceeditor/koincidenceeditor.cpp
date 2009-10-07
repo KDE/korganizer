@@ -23,13 +23,18 @@
 */
 
 #include "koincidenceeditor.h"
+#if KDAB_TEMPORARILY_REMOVED
 #include "koprefs.h"
+#endif
 #include "koeditordetails.h"
 #include "urihandler.h"
 #include "templatemanagementdialog.h"
 
 #include <libkdepim/designerfields.h>
 #include <libkdepim/embeddedurlpage.h>
+
+#include <ksystemtimezone.h>
+#include <klocale.h>
 
 #include <KABC/Addressee>
 #include <KCal/Incidence>
@@ -60,7 +65,12 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
 
   mCalendar = calendar;
 
-  if ( KOPrefs::instance()->mCompactDialogs ) {
+#if KDAB_TEMPORARILY_REMOVED
+  const bool compactDialogs = KOPrefs::instance()->mCompactDialogs;
+#else
+  const bool compactDialogs = false;
+#endif
+  if ( compactDialogs ) {
     showButton( Apply, false );
     showButton( Default, false );
   } else {
@@ -161,7 +171,12 @@ void KOIncidenceEditor::cancelRemovedAttendees( Incidence *incidence )
 
   // cancelAttendeeIncidence removes all attendees from the incidence,
   // and then only adds those that need to be canceled (i.e. a mail needs to be sent to them).
-  if ( KOPrefs::instance()->thatIsMe( incidence->organizer().email() ) ) {
+#if KDAB_TEMPORARILY_REMOVED
+  const bool thatIsMe = KOPrefs::instance()->thatIsMe( incidence->organizer().email() );
+#else
+  const bool thatIsMe = false;
+#endif
+  if ( thatIsMe ) {
     Incidence *inc = incidence->clone();
     inc->registerObserver( 0 );
     mAttendeeEditor->cancelAttendeeIncidence( inc );
@@ -199,7 +214,7 @@ void KOIncidenceEditor::saveAsTemplate( Incidence *incidence, const QString &tem
   fileName.append( '/' + templateName );
   fileName = KStandardDirs::locateLocal( "data", "korganizer/" + fileName );
 
-  CalendarLocal cal( KOPrefs::instance()->timeSpec() );
+  CalendarLocal cal( KSystemTimeZones::local() );
   cal.addIncidence( incidence );
   ICalFormat format;
   format.save( &cal, fileName );
@@ -207,7 +222,7 @@ void KOIncidenceEditor::saveAsTemplate( Incidence *incidence, const QString &tem
 
 void KOIncidenceEditor::slotLoadTemplate( const QString &templateName )
 {
-  CalendarLocal cal( KOPrefs::instance()->timeSpec() );
+  CalendarLocal cal( KSystemTimeZones::local() );
   QString fileName = KStandardDirs::locateLocal( "data", "korganizer/templates/" + type() + '/' +
       templateName );
 
@@ -235,6 +250,7 @@ void KOIncidenceEditor::slotTemplatesChanged( const QStringList &newTemplates )
 
 void KOIncidenceEditor::setupDesignerTabs( const QString &type )
 {
+#if KDAB_TEMPORARILY_REMOVED
   QStringList activePages = KOPrefs::instance()->activeDesignerFields();
 
   QStringList list = KGlobal::dirs()->findAllResources(
@@ -248,6 +264,7 @@ void KOIncidenceEditor::setupDesignerTabs( const QString &type )
       addDesignerTab( *it );
     }
   }
+#endif
 }
 
 QWidget *KOIncidenceEditor::addDesignerTab( const QString &uifile )

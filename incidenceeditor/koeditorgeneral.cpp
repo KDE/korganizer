@@ -25,8 +25,10 @@
 #include "koeditorgeneral.h"
 #include "koeditoralarms.h"
 #include "koeditorattachments.h"
+#if KDAB_TEMPORARILY_REMOVED
 #include "koprefs.h"
 #include "koglobals.h"
+#endif
 
 #include <libkdepim/kdateedit.h>
 #include <libkdepim/categoryselectdialog.h>
@@ -250,7 +252,9 @@ void KOEditorGeneral::initAlarm( QWidget *parent, QBoxLayout *topLayout )
   topLayout->addItem( alarmLayout );
 
   mAlarmBell = new QLabel( parent );
+#if KDAB_TEMPORARILY_REMOVED
   mAlarmBell->setPixmap( KOGlobals::self()->smallIcon( "task-reminder" ) );
+#endif
   alarmLayout->addWidget( mAlarmBell );
 
   mAlarmStack = new QStackedWidget( parent );
@@ -341,6 +345,7 @@ void KOEditorGeneral::addAttachments( const QStringList &attachments,
 
 void KOEditorGeneral::selectCategories()
 {
+#if KDAB_TEMPORARILY_REMOVED
   KPIM::CategorySelectDialog *categoryDialog =
     new KPIM::CategorySelectDialog( KOPrefs::instance(), mCategoriesButton );
   categoryDialog->setHelp( "categories-view", "korganizer" );
@@ -355,6 +360,7 @@ void KOEditorGeneral::selectCategories()
     setCategories( categoryDialog->selectedCategories() );
   }
   delete categoryDialog;
+#endif
 }
 
 void KOEditorGeneral::editAlarms()
@@ -405,6 +411,7 @@ void KOEditorGeneral::setDefaults( bool allDay )
 
 void KOEditorGeneral::updateDefaultAlarmTime()
 {
+#if KDAB_TEMPORARILY_REMOVED
   int reminderTime = KOPrefs::instance()->mReminderTime;
   int index = KOPrefs::instance()->mReminderTimeUnits;
   if ( index < 0 || index > 2 ) {
@@ -412,20 +419,21 @@ void KOEditorGeneral::updateDefaultAlarmTime()
   }
   mAlarmTimeEdit->setValue( reminderTime );
   mAlarmIncrCombo->setCurrentIndex( index );
+#endif
 }
 
 void KOEditorGeneral::updateAlarmWidgets()
 {
   if ( mAlarmList.isEmpty() ) {
     mAlarmStack->setCurrentIndex( SimpleAlarmPage );
-    bool on;
+    bool on = false;
+#if KDAB_TEMPORARILY_REMOVED
     if ( mType == "Event" ) {
       on = KOPrefs::instance()->defaultEventReminders();
     } else if ( mType == "Todo" ) {
       on = KOPrefs::instance()->defaultTodoReminders();
-    } else {
-      on = false;
     }
+#endif
     mAlarmButton->setChecked( on );
   } else if ( mAlarmList.count() > 1 ) {
     mAlarmEditButton->setEnabled( true );

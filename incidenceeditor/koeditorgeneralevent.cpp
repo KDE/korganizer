@@ -23,8 +23,9 @@
 */
 
 #include "koeditorgeneralevent.h"
+#if KDAB_TEMPORARILY_REMOVED
 #include "koprefs.h"
-#include "calendarbase.h"
+#endif
 
 #include <libkdepim/kdateedit.h>
 #include <libkdepim/ktimeedit.h>
@@ -36,6 +37,8 @@
 #include <KDialog>
 #include <KMessageBox>
 #include <KRichTextWidget>
+#include <KSystemTimeZone>
+#include <klocale.h>
 
 #include <QBoxLayout>
 #include <QCheckBox>
@@ -119,14 +122,14 @@ void KOEditorGeneralEvent::initTime( QWidget *parent, QBoxLayout *topLayout )
   QString whatsThis = i18nc( "@info:whatsthis",
                              "Select the timezone for this event. "
                              "It will also affect recurrences" );
-
+#if KDAB_TEMPORARILY_REMOVED
   mTimeZoneComboStart = new KPIM::KTimeZoneComboBox( mCalendar ? mCalendar->timeZones() : 0, timeGroupBox );
   mTimeZoneComboEnd = new KPIM::KTimeZoneComboBox( mCalendar ? mCalendar->timeZones() : 0, timeGroupBox );
-
   if ( !KOPrefs::instance()->showTimeZoneSelectorInIncidenceEditor() ) {
     mTimeZoneComboStart->hide();
     mTimeZoneComboEnd->hide();
   }
+#endif
   layoutTimeBox->addWidget( mTimeZoneComboStart, 0, 3 );
   layoutTimeBox->addWidget( mTimeZoneComboEnd, 1, 3 );
 
@@ -302,8 +305,8 @@ void KOEditorGeneralEvent::slotHasTimeCheckboxToggled( bool checked )
 
 void KOEditorGeneralEvent::setDateTimes( const QDateTime &start, const QDateTime &end )
 {
-  setDateTimes( KDateTime( start, KOPrefs::instance()->timeSpec() ),
-                KDateTime( end, KOPrefs::instance()->timeSpec() ) );
+  setDateTimes( KDateTime( start, KSystemTimeZones::local() ),
+                KDateTime( end, KSystemTimeZones::local() ) );
 }
 
 void KOEditorGeneralEvent::setDateTimes( const KDateTime &start, const KDateTime &end )
@@ -328,8 +331,8 @@ void KOEditorGeneralEvent::setDateTimes( const KDateTime &start, const KDateTime
 
 void KOEditorGeneralEvent::setTimes( const QDateTime &start, const QDateTime &end )
 {
-  setDateTimes( KDateTime( start, KOPrefs::instance()->timeSpec() ),
-                KDateTime( end, KOPrefs::instance()->timeSpec() ) );
+  setDateTimes( KDateTime( start, KSystemTimeZones::local() ),
+                KDateTime( end, KSystemTimeZones::local() ) );
 }
 
 void KOEditorGeneralEvent::setTimes( const KDateTime &start, const KDateTime &end )
@@ -458,7 +461,12 @@ void KOEditorGeneralEvent::readEvent( Event *event, bool isTemplate )
   }
 
   mRecurrenceSummary->setText( IncidenceFormatter::recurrenceString( event ) );
-  Attendee *me = event->attendeeByMails( KOPrefs::instance()->allEmails() );
+#if KDAB_TEMPORARILY_REMOVED
+  const QStringList allEmails = KOPrefs::instance()->allEmails();
+#else
+  const QStringList allEmails;
+#endif
+  Attendee *me = event->attendeeByMails( allEmails );
   if ( event->attendeeCount() > 1 &&
        me && ( me->status() == Attendee::NeedsAction ||
                me->status() == Attendee::Tentative ||

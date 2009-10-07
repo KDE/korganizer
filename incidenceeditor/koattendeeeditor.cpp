@@ -19,8 +19,6 @@
 */
 
 #include "koattendeeeditor.h"
-#include "koglobals.h"
-#include "koprefs.h"
 
 #include <libkdepim/addressesdialog.h>
 #include <libkdepim/addresseelineedit.h>
@@ -134,6 +132,7 @@ void KOAttendeeEditor::initEditWidgets( QWidget *parent, QBoxLayout *layout )
   mStatusCombo->setToolTip(
     i18nc( "@info:tooltip", "Select the attendee participation status" ) );
   mStatusCombo->setWhatsThis( whatsThis );
+#if KDAB_TEMPORARILY_REMOVED
   //TODO: the icons below aren't exactly correct
   mStatusCombo->addItem( KOGlobals::self()->smallIcon( "help-about" ),
                          Attendee::statusName( Attendee::NeedsAction ) );
@@ -149,6 +148,7 @@ void KOAttendeeEditor::initEditWidgets( QWidget *parent, QBoxLayout *layout )
                          Attendee::statusName( Attendee::Completed ) ),
   mStatusCombo->addItem( KOGlobals::self()->smallIcon( "help-about" ),
                          Attendee::statusName( Attendee::InProcess ) );
+#endif
 
   statusLabel->setBuddy( mStatusCombo );
   connect( mStatusCombo, SIGNAL(activated(int)), SLOT(updateAttendee()) );
@@ -226,7 +226,11 @@ void KOAttendeeEditor::openAddressBook()
 
 void KOAttendeeEditor::insertAttendeeFromAddressee( const KABC::Addressee &a, const Attendee *at )
 {
+#if KDAB_TEMPORARILY_REMOVED
   bool myself = KOPrefs::instance()->thatIsMe( a.preferredEmail() );
+#else
+  bool myself = false;
+#endif
   bool sameAsOrganizer = mOrganizerCombo &&
                          KPIMUtils::compareEmail( a.preferredEmail(),
                                                   mOrganizerCombo->currentText(), false );
@@ -248,7 +252,11 @@ void KOAttendeeEditor::fillOrganizerCombo()
   Q_ASSERT( mOrganizerCombo );
   // Get all emails from KOPrefs (coming from various places),
   // and insert them - removing duplicates
+#if KDAB_TEMPORARILY_REMOVED
   const QStringList lst = KOPrefs::instance()->fullEmails();
+#else
+  const QStringList lst;
+#endif
   QStringList uniqueList;
   for ( QStringList::ConstIterator it = lst.begin(); it != lst.end(); ++it ) {
     if ( !uniqueList.contains( *it ) ) {
@@ -298,8 +306,12 @@ void KOAttendeeEditor::readIncidence( KCal::Incidence *incidence )
   qDeleteAll( mDelAttendees );
   mDelAttendees.clear();
 
-  if ( KOPrefs::instance()->thatIsMe( incidence->organizer().email() ) ||
-       incidence->organizer().isEmpty() ) {
+#if KDAB_TEMPORARILY_REMOVED
+  const bool itsMe =  KOPrefs::instance()->thatIsMe( incidence->organizer().email() ) ||
+#else
+  const bool itsMe = false;
+#endif
+  if ( itsMe || incidence->organizer().isEmpty() ) {
     //TODO: make a new private method for creating the mOrganizerCombo
     //and use it here and initOrganizerWidgets() above.
     if ( !mOrganizerCombo ) {
@@ -401,7 +413,11 @@ void KOAttendeeEditor::updateAttendee()
   KPIMUtils::extractEmailAddressAndName( mNameEdit->text(), email, name );
 
   bool iAmTheOrganizer = mOrganizerCombo &&
+#if KDAB_TEMPORARILY_REMOVED
                          KOPrefs::instance()->thatIsMe( mOrganizerCombo->currentText() );
+#else
+  false;
+#endif
   if ( iAmTheOrganizer ) {
     bool myself = KPIMUtils::compareEmail( email, mOrganizerCombo->currentText(), false );
     bool wasMyself =
@@ -442,7 +458,11 @@ void KOAttendeeEditor::fillAttendeeInput( KCal::Attendee *a )
     tname += " <" + a->email() + '>';
   }
 
+#if KDAB_TEMPORARILY_REMOVED
   bool myself = KOPrefs::instance()->thatIsMe( a->email() );
+#else
+  bool myself = false;
+#endif
   bool sameAsOrganizer = mOrganizerCombo &&
                          KPIMUtils::compareEmail( a->email(),
                                                   mOrganizerCombo->currentText(), false );

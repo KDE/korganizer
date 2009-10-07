@@ -23,8 +23,10 @@
 */
 
 #include "koeditorrecurrence.h"
+#if KDAB_TEMPORARILY_REMOVED
 #include "koglobals.h"
 #include "koprefs.h"
+#endif
 
 #include <libkdepim/kdateedit.h>
 
@@ -35,6 +37,7 @@
 #include <KHBox>
 #include <KLocale>
 #include <KMessageBox>
+#include <KSystemTimeZone>
 
 #include <QBoxLayout>
 #include <QButtonGroup>
@@ -47,6 +50,26 @@
 #include <QRadioButton>
 #include <QSpinBox>
 #include <QStackedWidget>
+
+static bool compactDialogs()
+{
+#if KDAB_TEMPORARILY_REMOVED
+  const bool compactDialogs = compactDialogs();
+#else
+  const bool compactDialogs = false;
+#endif
+  return compactDialogs;
+}
+
+static KCalendarSystem* calendarSystem()
+{
+#if KDAB_TEMPORARILY_REMOVED
+  KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
+#else
+  KCalendarSystem *calSys = 0;
+#endif
+  return calSys;
+}
 
 /////////////////////////// RecurBase ///////////////////////////////
 
@@ -110,9 +133,8 @@ KComboBox *RecurBase::createWeekdayCombo( QWidget *parent )
   combo->setWhatsThis( i18nc( "@info:whatsthis",
                               "The weekday on which this event or to-do "
                               "should recur." ) );
-  const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
   for ( int i=1; i <= 7; ++i ) {
-    combo->addItem( calSys->weekDayName( i ) );
+    combo->addItem( calendarSystem()->weekDayName( i ) );
   }
   return combo;
 }
@@ -123,11 +145,10 @@ KComboBox *RecurBase::createMonthNameCombo( QWidget *parent )
   combo->setWhatsThis( i18nc( "@info:whatsthis",
                               "The month during which this event or to-do "
                               "should recur." ) );
-  const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
   for ( int i=1; i <= 12; ++i ) {
     // use an arbitrary year, we just need the month name...
     QDate dt( 2005, i, 1 );
-    combo->addItem( calSys->monthName( dt ) );
+    combo->addItem( calendarSystem()->monthName( dt ) );
   }
   return combo;
 }
@@ -189,12 +210,12 @@ RecurWeekly::RecurWeekly( QWidget *parent ) : RecurBase( parent )
     // i is the nr of the combobox, not the day of week!
     // label=(i+weekStart+6)%7 + 1;
     // index in CheckBox array(=day): label-1
-    const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
+    const KCalendarSystem *calSys = calendarSystem();
     QString weekDayName = calSys->weekDayName( ( i + weekStart + 6 ) % 7 + 1,
                                                KCalendarSystem::ShortDayName );
     QString longDayName = calSys->weekDayName( ( i + weekStart + 6 ) % 7 + 1,
                                                KCalendarSystem::LongDayName );
-    if ( KOPrefs::instance()->mCompactDialogs ) {
+    if ( compactDialogs() ) {
       weekDayName = weekDayName.left( 1 );
     }
     mDayBoxes[ ( i + weekStart + 6 ) % 7 ] = new QCheckBox( weekDayName, dayBox );
@@ -244,7 +265,7 @@ RecurMonthly::RecurMonthly( QWidget *parent ) : RecurBase( parent )
   buttonLayout->setSpacing( KDialog::spacingHint() );
 
   QString recurOnText;
-  if ( !KOPrefs::instance()->mCompactDialogs ) {
+  if ( !compactDialogs() ) {
     recurOnText = i18nc( "@option:radio", "&Recur on the" );
   }
 
@@ -424,7 +445,7 @@ RecurYearly::RecurYearly( QWidget *parent ) : RecurBase( parent )
   buttonLayout->addItem( monthLayout );
   QString recurInMonthText(
     i18nc( "@option:radio part before XXX of 'Recur on day XXX of month YYY'", "&Recur on day " ) );
-  if ( KOPrefs::instance()->mCompactDialogs ) {
+  if ( compactDialogs() ) {
     recurInMonthText = i18nc( "@option:radio", "&Day " );
   }
   mByMonthRadio = new QRadioButton( recurInMonthText, buttonGroup );
@@ -459,7 +480,7 @@ RecurYearly::RecurYearly( QWidget *parent ) : RecurBase( parent )
   QString recurOnPosText(
     i18nc( "@option:radio Part before XXX in 'Recur on NNN. WEEKDAY of MONTH', short version",
            "&On" ) );
-  if ( !KOPrefs::instance()->mCompactDialogs ) {
+  if ( !compactDialogs() ) {
     recurOnPosText =
       i18nc( "@option:radio Part before XXX in 'Recur on NNN. WEEKDAY of MONTH'",
              "&On the" );
@@ -494,7 +515,7 @@ RecurYearly::RecurYearly( QWidget *parent ) : RecurBase( parent )
   QBoxLayout *dayLayout = new QHBoxLayout();
   buttonLayout->addItem( dayLayout );
   QString recurOnDayText;
-  if ( KOPrefs::instance()->mCompactDialogs ) {
+  if ( compactDialogs() ) {
     recurOnDayText = i18nc( "@option:radio", "Day #" );
   } else {
     recurOnDayText = i18nc( "@option:radio", "Recur on &day #" );
@@ -515,7 +536,7 @@ RecurYearly::RecurYearly( QWidget *parent ) : RecurBase( parent )
   QString ofTheYear(
     i18nc( "@label part after NNN of 'Recur on day #NNN of the year'",
            " of the &year" ) );
-  if ( KOPrefs::instance()->mCompactDialogs ) {
+  if ( compactDialogs() ) {
     ofTheYear =
       i18nc( "@label part after NNN of 'Recur on day #NNN of the year', short version",
              " of the year" );
@@ -916,7 +937,7 @@ RecurrenceChooser::RecurrenceChooser( QWidget *parent ) : QWidget( parent )
 {
   QBoxLayout *topLayout = new QVBoxLayout( this );
 
-  if ( KOPrefs::instance()->mCompactDialogs ) {
+  if ( compactDialogs() ) {
     mTypeCombo = new KComboBox( this );
     mTypeCombo->setWhatsThis( i18nc( "@info:whatsthis",
                                      "Sets the type of recurrence this event "
@@ -1044,7 +1065,7 @@ KOEditorRecurrence::KOEditorRecurrence( QWidget *parent ) : QWidget( parent )
            "Displays appointment time information." ) );
   topLayout->addWidget( mTimeGroupBox, 1, 0, 1, 2 );
 
-  if ( KOPrefs::instance()->mCompactDialogs ) {
+  if ( compactDialogs() ) {
     mTimeGroupBox->hide();
   }
 
@@ -1061,7 +1082,7 @@ KOEditorRecurrence::KOEditorRecurrence( QWidget *parent ) : QWidget( parent )
            "or to-do should have." ) );
   QBoxLayout *boxlayout = new QHBoxLayout( mRuleBox );
 
-  if ( KOPrefs::instance()->mCompactDialogs ) {
+  if ( compactDialogs() ) {
     topLayout->addWidget( mRuleBox, 2, 0 );
   } else {
     topLayout->addWidget( mRuleBox, 2, 0, 1, 2 );
@@ -1071,7 +1092,7 @@ KOEditorRecurrence::KOEditorRecurrence( QWidget *parent ) : QWidget( parent )
   connect( mRecurrenceChooser, SIGNAL(chosen(int)), SLOT(showCurrentRule(int)) );
   boxlayout->addWidget( mRecurrenceChooser );
 
-  if ( !KOPrefs::instance()->mCompactDialogs ) {
+  if ( !compactDialogs() ) {
     QFrame *ruleSepFrame = new QFrame( mRuleBox );
     ruleSepFrame->setFrameStyle( QFrame::VLine | QFrame::Sunken );
     boxlayout->addWidget( ruleSepFrame );
@@ -1094,7 +1115,7 @@ KOEditorRecurrence::KOEditorRecurrence( QWidget *parent ) : QWidget( parent )
 
   showCurrentRule( mRecurrenceChooser->type() );
 
-  if ( KOPrefs::instance()->mCompactDialogs ) {
+  if ( compactDialogs() ) {
     mRecurrenceRangeWidget = 0;
     mRecurrenceRangeDialog = new RecurrenceRangeDialog( this );
     mRecurrenceRange = mRecurrenceRangeDialog;
@@ -1249,7 +1270,7 @@ void KOEditorRecurrence::readIncidence( Incidence *incidence )
   int count = 0;
   int month = 0;
 
-  KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
+  KDateTime::Spec timeSpec = KSystemTimeZones::local();
   if ( incidence->type() == "Todo" ) {
     Todo *todo = static_cast<Todo *>( incidence );
     setDefaults( todo->dtStart( true ).toTimeSpec( timeSpec ).dateTime(),

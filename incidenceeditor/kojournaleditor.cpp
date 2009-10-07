@@ -27,8 +27,9 @@
 #include "kojournaleditor.h"
 #include "koeditordetails.h"
 #include "koeditorgeneraljournal.h"
-#include "kohelper.h"
+#if KDAB_TEMPORARILY_REMOVED
 #include "koprefs.h"
+#endif
 #include "korganizer/baseview.h"
 
 #include <KCal/IncidenceFormatter>
@@ -76,9 +77,12 @@ void KOJournalEditor::setupGeneral()
   addPage( topFrame, i18nc( "@title general journal settings", "General" ) );
 
   QVBoxLayout *topLayout = new QVBoxLayout( topFrame );
+
+#if KDAB_TEMPORARILY_REMOVED
   if ( KOPrefs::instance()->mCompactDialogs ) {
     topLayout->setMargin( marginHint() );
   }
+#endif
   topLayout->setSpacing( spacingHint() );
 
   mGeneral->initTitle( topFrame, topLayout );
@@ -165,9 +169,10 @@ bool KOJournalEditor::processInput()
     return rc;
   } else {
     mJournal = new Journal;
+#if KDAB_TEMPORARILY_REMOVED
     mJournal->setOrganizer( Person( KOPrefs::instance()->fullName(),
                                     KOPrefs::instance()->email() ) );
-
+#endif
     fillJournal( mJournal );
 
     if ( !mChanger->addIncidence( mJournal, this ) ) {
@@ -278,7 +283,9 @@ void KOJournalEditor::slotSaveTemplate( const QString &templateName )
 
 QStringList &KOJournalEditor::templates() const
 {
+#if KDAB_TEMPORARILY_REMOVED
   return KOPrefs::instance()->mJournalTemplates;
+#endif
 }
 
 void KOJournalEditor::show()

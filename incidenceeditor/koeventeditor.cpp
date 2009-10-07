@@ -24,18 +24,19 @@
 */
 
 #include "koeventeditor.h"
-#include "incidencechanger.h"
 #include "koeditordetails.h"
 #include "koeditorfreebusy.h"
 #include "koeditorgeneralevent.h"
 #include "koeditorrecurrence.h"
-#include "kohelper.h"
+#if KDAB_TEMPORARILY_REMOVED
 #include "kogroupware.h"
 #include "koprefs.h"
+#endif
 
 #include <KCal/IncidenceFormatter>
 
 #include <KMessageBox>
+#include <klocale.h>
 
 #include <QBoxLayout>
 #include <QFrame>
@@ -132,7 +133,12 @@ void KOEventEditor::setupGeneral()
 {
   mGeneral = new KOEditorGeneralEvent( mCalendar, this );
 
-  if( KOPrefs::instance()->mCompactDialogs ) {
+#if KDAB_TEMPORARILY_REMOVED
+  const bool compactDialogs = KOPrefs::instance()->mCompactDialogs;
+#else
+  const bool compactDialogs = false;
+#endif
+  if( compactDialogs ) {
     QFrame *topFrame = new QFrame();
     addPage( topFrame, i18nc( "@title:tab general event settings", "General" ) );
     topFrame->setWhatsThis( i18nc( "@info:whatsthis",
@@ -280,12 +286,14 @@ void KOEventEditor::setTexts( const QString &summary, const QString &description
 
 void KOEventEditor::loadDefaults()
 {
+#if KDAB_TEMPORARILY_REMOVED
   QDateTime from( QDate::currentDate(), KOPrefs::instance()->mStartTime.time() );
   int addSecs = ( KOPrefs::instance()->mDefaultDuration.time().hour() * 3600 ) +
                 ( KOPrefs::instance()->mDefaultDuration.time().minute() * 60 );
   QDateTime to( from.addSecs( addSecs ) );
 
   setDates( from, to, false );
+#endif
 }
 
 bool KOEventEditor::processInput()
@@ -316,7 +324,9 @@ bool KOEventEditor::processInput()
     } else {
       mEvent->startUpdates(); //merge multiple mEvent->updated() calls into one
       fillEvent( mEvent );
+#if KDAB_TEMPORARILY_REMOVED
       if ( mIsCounter ) {
+          // FIXME port to akonadi
         KOGroupware::instance()->sendCounterProposal( mCalendar, oldEvent, mEvent );
         // add dummy event at the position of the counter proposal
         Event *event = mEvent->clone();
@@ -328,6 +338,7 @@ bool KOEventEditor::processInput()
       } else {
         rc = mChanger->changeIncidence( oldEvent, mEvent );
       }
+#endif
       mEvent->endUpdates();
     }
     delete event;
@@ -335,6 +346,8 @@ bool KOEventEditor::processInput()
     return rc;
   } else {
     mEvent = new Event;
+#if KDAB_TEMPORARILY_REMOVED
+    // FIXME port
     mEvent->setOrganizer( Person( KOPrefs::instance()->fullName(),
                           KOPrefs::instance()->email() ) );
 
@@ -345,6 +358,7 @@ bool KOEventEditor::processInput()
       mEvent = 0;
       return false;
     }
+#endif
   }
 
   // if "this" was deleted, freeBusy is 0 (being a guardedptr)
@@ -436,7 +450,9 @@ void KOEventEditor::loadTemplate( CalendarLocal &cal )
 
 QStringList &KOEventEditor::templates() const
 {
+#if KDAB_TEMPORARILY_REMOVED
   return KOPrefs::instance()->mEventTemplates;
+#endif
 }
 
 #if 0 //AKONADI_PORT_DISABLED

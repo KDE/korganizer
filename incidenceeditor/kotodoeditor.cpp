@@ -24,22 +24,20 @@
   without including the source code for Qt in the source distribution.
 */
 #include "kotodoeditor.h"
-#include "kocore.h"
 #include "koeditorgeneraltodo.h"
 #include "koeditordetails.h"
 #include "koeditorrecurrence.h"
+#if KDAB_TEMPORARILY_REMOVED
 #include "koprefs.h"
+#endif
 #include "koeditorattachments.h"
-#include "kogroupware.h"
-#include "kohelper.h"
-#include "kodialogmanager.h"
-#include "incidencechanger.h"
 
 #include <KCal/IncidenceFormatter>
 
 #include <kiconloader.h>
 #include <klocale.h>
 #include <kmessagebox.h>
+#include <ksystemtimezone.h>
 
 #include <QFrame>
 #include <QPixmap>
@@ -119,7 +117,12 @@ void KOTodoEditor::setupGeneral()
 {
   mGeneral = new KOEditorGeneralTodo( mCalendar, this );
 
-  if ( KOPrefs::instance()->mCompactDialogs ) {
+#if KDAB_TEMPORARILY_REMOVED
+  const bool compactDialogs = KOPrefs::instance()->mCompactDialogs;
+#else
+  const bool compactDialogs = false;
+#endif
+  if ( compactDialogs ) {
     QFrame *topFrame = new QFrame();
     addPage( topFrame, i18nc( "@title:tab general to-do settings","General" ) );
 
@@ -262,7 +265,9 @@ bool KOTodoEditor::processInput()
     } else {
       mTodo->startUpdates(); //merge multiple mTodo->updated() calls into one
       fillTodo( mTodo );
+#if KDAB_TEMPORARILY_REMOVED
       rc = mChanger->changeIncidence( oldTodo, mTodo );
+#endif
       mTodo->endUpdates();
     }
     delete todo;
@@ -270,6 +275,7 @@ bool KOTodoEditor::processInput()
     return rc;
   } else {
     mTodo = new Todo;
+#if KDAB_TEMPORARILY_REMOVED
     mTodo->setOrganizer( Person( KOPrefs::instance()->fullName(),
                                  KOPrefs::instance()->email() ) );
 
@@ -280,6 +286,7 @@ bool KOTodoEditor::processInput()
       mTodo = 0;
       return false;
     }
+#endif
   }
 
   return true;
@@ -298,7 +305,7 @@ void KOTodoEditor::deleteTodo()
 void KOTodoEditor::setDates( const QDateTime &due, bool allDay, Todo *relatedEvent )
 {
   mRelatedTodo = relatedEvent;
-  KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
+  KDateTime::Spec timeSpec = KSystemTimeZones::local();
 
   // inherit some properties from parent todo
   if ( mRelatedTodo ) {
@@ -402,7 +409,9 @@ void KOTodoEditor::slotSaveTemplate( const QString &templateName )
 
 QStringList &KOTodoEditor::templates() const
 {
+#if KDAB_TEMPORARILY_REMOVED
   return KOPrefs::instance()->mTodoTemplates;
+#endif
 }
 
 void KOTodoEditor::show()

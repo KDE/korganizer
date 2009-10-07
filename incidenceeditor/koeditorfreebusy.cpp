@@ -23,11 +23,13 @@
 */
 
 #include "koeditorfreebusy.h"
+#if KDAB_TEMPORARILY_REMOVED
 #include "freebusymanager.h"
 #include "freebusyurldialog.h"
 #include "koglobals.h"
 #include "kogroupware.h"
 #include "koprefs.h"
+#endif
 
 #include <kdgantt1/KDGanttView.h>
 #include <kdgantt1/KDGanttViewSubwidgets.h>
@@ -36,12 +38,14 @@
 #include <libkdepim/distributionlist.h>
 
 #include <KABC/StdAddressBook>
+#include <KCal/Incidence>
 #include <KCal/FreeBusy>
 #include <KPIMUtils/Email>
 
 #include <KComboBox>
 #include <KLocale>
 #include <KMessageBox>
+#include <KSystemTimeZone>
 
 #include <QBoxLayout>
 #include <QDateTime>
@@ -106,10 +110,12 @@ class FreeBusyItem : public KDGanttViewTaskItem
 
     void startDownload( bool forceDownload ) {
       mIsDownloading = true;
+#if KDAB_TEMPORARILY_REMOVED
       FreeBusyManager *m = KOGroupware::instance()->freeBusyManager();
       if ( !m->retrieveFreeBusy( attendee()->email(), forceDownload ) ) {
         mIsDownloading = false;
       }
+#endif
     }
     void setIsDownloading( bool d ) { mIsDownloading = d; }
     bool isDownloading() const { return mIsDownloading; }
@@ -130,6 +136,7 @@ class FreeBusyItem : public KDGanttViewTaskItem
 void FreeBusyItem::updateItem()
 {
   setListViewText( 0, mAttendee->fullName() );
+#ifdef KDAB_TEMPORARILY_REMOVED
   switch ( mAttendee->status() ) {
     case Attendee::Accepted:
       setPixmap( 0, KOGlobals::self()->smallIcon( "dialog-ok-apply" ) );
@@ -150,13 +157,14 @@ void FreeBusyItem::updateItem()
     default:
       setPixmap( 0, QPixmap() );
   }
+#endif
 }
 
 // Set the free/busy periods for this attendee
 void FreeBusyItem::setFreeBusyPeriods( FreeBusy *fb )
 {
   if ( fb ) {
-    KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
+    KDateTime::Spec timeSpec = KSystemTimeZones::local();
     setStartTime( fb->dtStart().toTimeSpec( timeSpec ).dateTime() );
     setEndTime( fb->dtEnd().toTimeSpec( timeSpec ).dateTime() );
     // Clean out the old entries
@@ -312,9 +320,11 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent )
   // Remove the predefined "Task Name" column
   mGanttView->removeColumn( 0 );
   mGanttView->addColumn( i18nc( "@title:column attendee name", "Attendee" ) );
+#if KDAB_TEMPORARILY_REMOVED
   if ( KOPrefs::instance()->mCompactDialogs ) {
     mGanttView->setFixedHeight( 78 );
   }
+#endif
   mGanttView->setHeaderVisible( true );
   mGanttView->setScale( KDGanttView::Hour );
   mGanttView->setShowHeaderPopupMenu( false, false, false, false, false, false );
@@ -354,9 +364,11 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent )
   connect( mGanttView, SIGNAL(lvMouseButtonClicked(int, KDGanttViewItem*, const QPoint&, int)),
            this, SLOT(listViewClicked(int, KDGanttViewItem*)) );
 
+#if KDAB_TEMPORARILY_REMOVED
   FreeBusyManager *m = KOGroupware::instance()->freeBusyManager();
   connect( m, SIGNAL(freeBusyRetrieved(KCal::FreeBusy *,const QString &)),
            SLOT(slotInsertFreeBusy(KCal::FreeBusy *,const QString &)) );
+#endif
 
   connect( &mReloadTimer, SIGNAL(timeout()), SLOT(autoReload()) );
   mReloadTimer.setSingleShot( true );
@@ -428,7 +440,7 @@ void KOEditorFreeBusy::readIncidence( Incidence *incidence )
   setUpdateEnabled( false );
   clearAttendees();
 
-  KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
+  KDateTime::Spec timeSpec = KSystemTimeZones::local();
   QDateTime endDateTime = incidence->dtEnd().toTimeSpec( timeSpec ).dateTime();
 
   // in kcal, all day events have an inclusive dtEnd()
@@ -438,7 +450,9 @@ void KOEditorFreeBusy::readIncidence( Incidence *incidence )
 
   setDateTimes( incidence->dtStart().toTimeSpec( timeSpec ).dateTime(),
                 endDateTime );
+#if KDAB_TEMPORARILY_REMOVED
   mIsOrganizer = KOPrefs::instance()->thatIsMe( incidence->organizer().email() );
+#endif
   updateStatusSummary();
   clearSelection();
   KOAttendeeEditor::readIncidence( incidence );
@@ -552,7 +566,7 @@ void KOEditorFreeBusy::slotUpdateGanttView( const QDateTime &dtFrom, const QDate
 */
 void KOEditorFreeBusy::slotPickDate()
 {
-  KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
+  KDateTime::Spec timeSpec = KSystemTimeZones::local();
   KDateTime dtStart( mDtStart, timeSpec );
   KDateTime dtEnd( mDtEnd, timeSpec );
   KDateTime start = dtStart;
@@ -766,12 +780,13 @@ void KOEditorFreeBusy::editFreeBusyUrl( KDGanttViewItem *i )
   if ( !item ) {
     return;
   }
-
+#if KDAB_TEMPORARILY_REMOVED
   Attendee *attendee = item->attendee();
 
   QPointer<FreeBusyUrlDialog> dialog = new FreeBusyUrlDialog( attendee, this );
   dialog->exec();
   delete dialog;
+#endif
 }
 
 void KOEditorFreeBusy::fillIncidence( Incidence *incidence )
@@ -886,7 +901,11 @@ void KOEditorFreeBusy::clearSelection() const
 
 void KOEditorFreeBusy::changeStatusForMe( KCal::Attendee::PartStat status )
 {
+#if KDAB_TEMPORARILY_REMOVED
   const QStringList myEmails = KOPrefs::instance()->allEmails();
+#else
+  const QStringList myEmails;
+#endif
   for ( FreeBusyItem *item = static_cast<FreeBusyItem *>( mGanttView->firstChild() );
         item; item = static_cast<FreeBusyItem*>( item->nextSibling() ) ) {
     for ( QStringList::ConstIterator it2( myEmails.begin() ), end( myEmails.end() );
@@ -906,6 +925,7 @@ void KOEditorFreeBusy::showAttendeeStatusMenu()
   }
 
   KMenu *menu = new KMenu( 0 );
+#if KDAB_TEMPORARILY_REMOVED
   QAction *needsaction =
     menu->addAction( KOGlobals::self()->smallIcon( "help-about" ),
                      Attendee::statusName( Attendee::NeedsAction ) );
@@ -946,6 +966,7 @@ void KOEditorFreeBusy::showAttendeeStatusMenu()
   } else {
     return;
   }
+#endif
   updateCurrentItem();
   updateAttendeeInput();
 }

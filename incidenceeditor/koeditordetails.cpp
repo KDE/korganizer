@@ -24,8 +24,6 @@
 */
 
 #include "koeditordetails.h"
-#include "koglobals.h"
-#include "koprefs.h"
 
 #include <libkdepim/distributionlist.h>
 #include <libkdepim/kvcarddrag.h>
@@ -62,11 +60,13 @@ void CustomListViewItem<KCal::Attendee *>::updateItem()
   setText( 1, mData->email() );
   setText( 2, mData->roleStr() );
   setText( 3, mData->statusStr() );
+#if KDAB_TEMPORARILY_REMOVED
   if ( mData->RSVP() && !mData->email().isEmpty() ) {
     setPixmap( 4, KOGlobals::self()->smallIcon( "mail-flag" ) );
   } else {
     setPixmap( 4, KOGlobals::self()->smallIcon( "mail-queue" ) );
   }
+#endif
   setText( 5, mData->delegate() );
   setText( 6, mData->delegator() );
 }
@@ -192,7 +192,12 @@ KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent )
   mListView->addColumn( i18nc( "@title:column attendee delegated to", "Delegated To" ), 120 );
   mListView->addColumn( i18nc( "@title:column attendee delegated from", "Delegated From" ), 120 );
   mListView->setResizeMode( Q3ListView::LastColumn );
-  if ( KOPrefs::instance()->mCompactDialogs ) {
+#if KDAB_TEMPORARILY_REMOVED
+  const bool compactDialogs = KOPrefs::instance()->mCompactDialogs;
+#else
+  const bool compactDialogs = false;
+#endif
+  if ( compactDialogs ) {
     mListView->setFixedHeight( 78 );
   }
 
@@ -357,7 +362,11 @@ void KOEditorDetails::slotInsertAttendee( Attendee *a )
 
 void KOEditorDetails::changeStatusForMe( Attendee::PartStat status )
 {
+#if KDAB_TEMPORARILY_REMOVED
   const QStringList myEmails = KOPrefs::instance()->allEmails();
+#else
+  const QStringList myEmails;
+#endif
   for ( Q3ListViewItemIterator it( mListView ); it.current(); ++it ) {
     AttendeeListItem *item = static_cast<AttendeeListItem*>( it.current() );
     for ( QStringList::ConstIterator it2( myEmails.begin() ), end( myEmails.end() );
