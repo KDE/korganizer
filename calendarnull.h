@@ -105,18 +105,21 @@ class KORGANIZER_INTERFACES_EXPORT CalendarNull : public CalendarBase
       Calendar::addEvent()
     */
     bool addEvent( KCal::Event *event );
+    bool addEventFORAKONADI( const Akonadi::Item &event );
 
     /**
       @copydoc
       Calendar::deleteEvent()
     */
     bool deleteEvent( KCal::Event *event );
+    bool deleteEventFORAKONADI( const Akonadi::Item &event );
 
     /**
       @copydoc
       Calendar::deleteAllEvents()
     */
     void deleteAllEvents();
+    void deleteAllEventsFORAKONADI();
 
     /**
       @copydoc
@@ -124,12 +127,17 @@ class KORGANIZER_INTERFACES_EXPORT CalendarNull : public CalendarBase
     */
     KCal::Event::List rawEvents( EventSortField sortField,
                            SortDirection sortDirection );
+    Akonadi::Item::List rawEventsFORAKONADI( EventSortField sortField,
+                           SortDirection sortDirection );
 
     /**
       @copydoc
       Calendar::rawEvents(const QDate &, const QDate &, const KDateTime::Spec &, bool)
     */
     KCal::Event::List rawEvents( const QDate &start, const QDate &end,
+                                 const KDateTime::Spec &timeSpec = KDateTime::Spec(),
+                                 bool inclusive = false );
+    Akonadi::Item::List rawEventsFORAKONADI( const QDate &start, const QDate &end,
                                  const KDateTime::Spec &timeSpec = KDateTime::Spec(),
                                  bool inclusive = false );
 
@@ -148,18 +156,24 @@ class KORGANIZER_INTERFACES_EXPORT CalendarNull : public CalendarBase
                                         const KDateTime::Spec &timeSpec = KDateTime::Spec(),
                                         KOrg::EventSortField sortField = KOrg::EventSortUnsorted,
                                         KOrg::SortDirection sortDirection = KOrg::SortDirectionAscending );
+    Akonadi::Item::List rawEventsForDateFORAKONADI( const QDate &date,
+                                        const KDateTime::Spec &timeSpec = KDateTime::Spec(),
+                                        KOrg::EventSortField sortField = KOrg::EventSortUnsorted,
+                                        KOrg::SortDirection sortDirection = KOrg::SortDirectionAscending );
 
     /**
       @copydoc
       Calendar::rawEventsForDate(const KDateTime &)
     */
     KCal::Event::List rawEventsForDate( const KDateTime &dt );
+    Akonadi::Item::List rawEventsForDateFORAKONADI( const KDateTime &dt );
 
     /**
       @copydoc
       Calendar::event()
     */
     KCal::Event *event( const QString &uid );
+    Akonadi::Item eventFORAKONADI( const Akonadi::Item::Id &id );
 
   // To-do Specific Methods //
 
@@ -168,18 +182,21 @@ class KORGANIZER_INTERFACES_EXPORT CalendarNull : public CalendarBase
       Calendar::addTodo()
     */
     bool addTodo( KCal::Todo *todo );
+    bool addTodoFORAKONADI( const Akonadi::Item &todo );
 
     /**
       @copydoc
       Calendar::deleteTodo()
     */
     bool deleteTodo( KCal::Todo *todo );
+    bool deleteTodoFORAKONADI( const Akonadi::Item &todo );
 
     /**
       @copydoc
       Calendar::deleteAllTodos()
     */
     void deleteAllTodos();
+    void deleteAllTodosFORAKONADI();
 
     /**
       @copydoc
@@ -187,18 +204,22 @@ class KORGANIZER_INTERFACES_EXPORT CalendarNull : public CalendarBase
     */
     KCal::Todo::List rawTodos( KOrg::TodoSortField sortField,
                                KOrg::SortDirection sortDirection );
+    Akonadi::Item::List rawTodosFORAKONADI( KOrg::TodoSortField sortField,
+                               KOrg::SortDirection sortDirection );
 
     /**
       @copydoc
       Calendar::rawTodosForDate()
     */
     KCal::Todo::List rawTodosForDate( const QDate &date );
+    Akonadi::Item::List rawTodosForDateFORAKONADI( const QDate &date );
 
     /**
       @copydoc
       Calendar::todo()
     */
     KCal::Todo *todo( const QString &uid );
+    Akonadi::Item todoFORAKONADI( const Akonadi::Item::Id &id );
 
   // Journal Specific Methods //
 
@@ -207,18 +228,21 @@ class KORGANIZER_INTERFACES_EXPORT CalendarNull : public CalendarBase
       Calendar::addJournal()
     */
     bool addJournal( KCal::Journal *journal );
+    bool addJournalFORAKONADI( const Akonadi::Item &journal );
 
     /**
       @copydoc
       Calendar::deleteJournal()
     */
     bool deleteJournal( KCal::Journal *journal );
+    bool deleteJournalFORAKONADI( const Akonadi::Item &journal );
 
     /**
       @copydoc
       Calendar::deleteAllJournals()
     */
     void deleteAllJournals();
+    void deleteAllJournalsFORAKONADI();
 
     /**
       @copydoc
@@ -226,18 +250,22 @@ class KORGANIZER_INTERFACES_EXPORT CalendarNull : public CalendarBase
     */
     KCal::Journal::List rawJournals( KOrg::JournalSortField sortField,
                                      KOrg::SortDirection sortDirection );
+    Akonadi::Item::List rawJournalsFORAKONADI( KOrg::JournalSortField sortField,
+                                     KOrg::SortDirection sortDirection );
 
     /**
       @copydoc
       Calendar::rawJournalsForDate()
     */
     KCal::Journal::List rawJournalsForDate( const QDate &date );
+    Akonadi::Item::List rawJournalsForDateFORAKONADI( const QDate &date );
 
     /**
       @copydoc
       Calendar::journal()
     */
     KCal::Journal *journal( const QString &uid );
+    Akonadi::Item journalFORAKONADI( const Akonadi::Item::Id &id );
 
   // Alarm Specific Methods //
 

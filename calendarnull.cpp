@@ -32,6 +32,7 @@
 #include "calendarbase.h"
 #include "calendarnull.h"
 
+using namespace Akonadi;
 using namespace KCal;
 using namespace KOrg;
 
@@ -90,13 +91,29 @@ bool CalendarNull::addEvent( Event *event )
   return false;
 }
 
+bool CalendarNull::addEventFORAKONADI( const Item &event )
+{
+  Q_UNUSED ( event );
+  return false;
+}
+
 bool CalendarNull::deleteEvent( Event *event )
 {
   Q_UNUSED( event );
   return false;
 }
 
+bool CalendarNull::deleteEventFORAKONADI( const Item &event )
+{
+  Q_UNUSED( event );
+  return false;
+}
+
 void CalendarNull::deleteAllEvents()
+{
+}
+
+void CalendarNull::deleteAllEventsFORAKONADI()
 {
 }
 
@@ -108,6 +125,14 @@ Event::List CalendarNull::rawEvents( KOrg::EventSortField sortField,
   return Event::List();
 }
 
+Item::List CalendarNull::rawEventsFORAKONADI( KOrg::EventSortField sortField,
+                                     KOrg::SortDirection sortDirection )
+{
+  Q_UNUSED( sortField );
+  Q_UNUSED( sortDirection );
+  return Item::List();
+}
+
 Event::List CalendarNull::rawEvents( const QDate &start, const QDate &end,
                                      const KDateTime::Spec &timeSpec,
                                      bool inclusive )
@@ -117,6 +142,17 @@ Event::List CalendarNull::rawEvents( const QDate &start, const QDate &end,
   Q_UNUSED( timeSpec );
   Q_UNUSED( inclusive );
   return Event::List();
+}
+
+Item::List CalendarNull::rawEventsFORAKONADI( const QDate &start, const QDate &end,
+                                     const KDateTime::Spec &timeSpec,
+                                     bool inclusive )
+{
+  Q_UNUSED( start );
+  Q_UNUSED( end );
+  Q_UNUSED( timeSpec );
+  Q_UNUSED( inclusive );
+  return Item::List();
 }
 
 Event::List CalendarNull::rawEventsForDate( const QDate &date,
@@ -131,10 +167,28 @@ Event::List CalendarNull::rawEventsForDate( const QDate &date,
   return Event::List();
 }
 
+Item::List CalendarNull::rawEventsForDateFORAKONADI( const QDate &date,
+                                            const KDateTime::Spec &timeSpec,
+                                            KOrg::EventSortField sortField,
+                                            KOrg::SortDirection sortDirection )
+{
+  Q_UNUSED( date );
+  Q_UNUSED( timeSpec );
+  Q_UNUSED( sortField );
+  Q_UNUSED( sortDirection );
+  return Item::List();
+}
+
 Event::List CalendarNull::rawEventsForDate( const KDateTime &dt )
 {
   Q_UNUSED( dt );
   return Event::List();
+}
+
+Item::List CalendarNull::rawEventsForDateFORAKONADI( const KDateTime &dt )
+{
+  Q_UNUSED( dt );
+  return Item::List();
 }
 
 Event *CalendarNull::event( const QString &uid )
@@ -143,7 +197,20 @@ Event *CalendarNull::event( const QString &uid )
   return 0;
 }
 
+
+Item CalendarNull::eventFORAKONADI( const Item::Id &uid )
+{
+  Q_UNUSED( uid );
+  return Item();
+}
+
 bool CalendarNull::addTodo( Todo *todo )
+{
+  Q_UNUSED( todo );
+  return false;
+}
+
+bool CalendarNull::addTodoFORAKONADI( const Item &todo )
 {
   Q_UNUSED( todo );
   return false;
@@ -155,7 +222,17 @@ bool CalendarNull::deleteTodo( Todo *todo )
   return false;
 }
 
+bool CalendarNull::deleteTodoFORAKONADI( const Item &todo )
+{
+  Q_UNUSED( todo );
+  return false;
+}
+
 void CalendarNull::deleteAllTodos()
+{
+}
+
+void CalendarNull::deleteAllTodosFORAKONADI()
 {
 }
 
@@ -167,10 +244,24 @@ Todo::List CalendarNull::rawTodos( KOrg::TodoSortField sortField,
   return Todo::List();
 }
 
+Item::List CalendarNull::rawTodosFORAKONADI( KOrg::TodoSortField sortField,
+                                   KOrg::SortDirection sortDirection )
+{
+  Q_UNUSED( sortField );
+  Q_UNUSED( sortDirection );
+  return Item::List();
+}
+
 Todo::List CalendarNull::rawTodosForDate( const QDate &date )
 {
   Q_UNUSED( date );
   return Todo::List();
+}
+
+Item::List CalendarNull::rawTodosForDateFORAKONADI( const QDate &date )
+{
+  Q_UNUSED( date );
+  return Item::List();
 }
 
 Todo *CalendarNull::todo( const QString &uid )
@@ -179,7 +270,19 @@ Todo *CalendarNull::todo( const QString &uid )
   return 0;
 }
 
+Item CalendarNull::todoFORAKONADI( const Item::Id &uid )
+{
+  Q_UNUSED( uid );
+  return Item();
+}
+
 bool CalendarNull::addJournal( Journal *journal )
+{
+  Q_UNUSED( journal );
+  return false;
+}
+
+bool CalendarNull::addJournalFORAKONADI( const Item &journal )
 {
   Q_UNUSED( journal );
   return false;
@@ -191,7 +294,17 @@ bool CalendarNull::deleteJournal( Journal *journal )
   return false;
 }
 
+bool CalendarNull::deleteJournalFORAKONADI( const Item &journal )
+{
+  Q_UNUSED( journal );
+  return false;
+}
+
 void CalendarNull::deleteAllJournals()
+{
+}
+
+void CalendarNull::deleteAllJournalsFORAKONADI()
 {
 }
 
@@ -203,16 +316,36 @@ Journal::List CalendarNull::rawJournals( KOrg::JournalSortField sortField,
   return Journal::List();
 }
 
+Item::List CalendarNull::rawJournalsFORAKONADI( KOrg::JournalSortField sortField,
+                                         KOrg::SortDirection sortDirection )
+{
+  Q_UNUSED( sortField );
+  Q_UNUSED( sortDirection );
+  return Item::List();
+}
+
 Journal::List CalendarNull::rawJournalsForDate( const QDate &date )
 {
   Q_UNUSED( date );
   return Journal::List();
 }
 
+Item::List CalendarNull::rawJournalsForDateFORAKONADI( const QDate &date )
+{
+  Q_UNUSED( date );
+  return Item::List();
+}
+
 Journal *CalendarNull::journal( const QString &uid )
 {
   Q_UNUSED( uid );
   return 0;
+}
+
+Item CalendarNull::journalFORAKONADI( const Item::Id &uid )
+{
+  Q_UNUSED( uid );
+  return Item();
 }
 
 Alarm::List CalendarNull::alarms( const KDateTime &from, const KDateTime &to )

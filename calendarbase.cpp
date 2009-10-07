@@ -47,6 +47,7 @@ extern "C" {
   #include <libical/icaltimezone.h>
 }
 
+using namespace Akonadi;
 using namespace KCal;
 using namespace KOrg;
 
@@ -280,14 +281,29 @@ Incidence::List CalendarBase::incidences( const QDate &date )
   return mergeIncidenceList( events( date ), todos( date ), journals( date ) );
 }
 
+Item::List CalendarBase::incidencesFORAKONADI( const QDate &date )
+{
+  return mergeIncidenceListFORAKONADI( eventsFORAKONADI( date ), todosFORAKONADI( date ), journalsFORAKONADI( date ) );
+}
+
 Incidence::List CalendarBase::incidences()
 {
   return mergeIncidenceList( events(), todos(), journals() );
 }
 
+Item::List CalendarBase::incidencesFORAKONADI()
+{
+  return mergeIncidenceListFORAKONADI( eventsFORAKONADI(), todosFORAKONADI(), journalsFORAKONADI() );
+}
+
 Incidence::List CalendarBase::rawIncidences()
 {
   return mergeIncidenceList( rawEvents(), rawTodos(), rawJournals() );
+}
+
+Item::List CalendarBase::rawIncidencesFORAKONADI()
+{
+  return mergeIncidenceListFORAKONADI( rawEventsFORAKONADI(), rawTodosFORAKONADI(), rawJournalsFORAKONADI() );
 }
 
 Event::List CalendarBase::sortEvents( Event::List *eventList,
@@ -391,7 +407,113 @@ Event::List CalendarBase::sortEvents( Event::List *eventList,
   }
 
   return eventListSorted;
+}
 
+Item::List CalendarBase::sortEventsFORAKONADI( const Item::List &eventList,
+                                  EventSortField sortField,
+                                  SortDirection sortDirection )
+{
+#ifdef AKONADI_PORT_DISABLED
+  Event::List eventListSorted;
+  Event::List tempList, t;
+  Event::List alphaList;
+  Event::List::Iterator sortIt;
+  Event::List::Iterator eit;
+
+  // Notice we alphabetically presort Summaries first.
+  // We do this so comparison "ties" stay in a nice order.
+
+  switch( sortField ) {
+  case EventSortUnsorted:
+    eventListSorted = *eventList;
+    break;
+
+  case EventSortStartDate:
+    alphaList = sortEvents( eventList, EventSortSummary, sortDirection );
+    for ( eit = alphaList.begin(); eit != alphaList.end(); ++eit ) {
+      if ( (*eit)->dtStart().isDateOnly() ) {
+        tempList.append( *eit );
+        continue;
+      }
+      sortIt = eventListSorted.begin();
+      if ( sortDirection == SortDirectionAscending ) {
+        while ( sortIt != eventListSorted.end() &&
+                (*eit)->dtStart() >= (*sortIt)->dtStart() ) {
+          ++sortIt;
+        }
+      } else {
+        while ( sortIt != eventListSorted.end() &&
+                (*eit)->dtStart() < (*sortIt)->dtStart() ) {
+          ++sortIt;
+        }
+      }
+      eventListSorted.insert( sortIt, *eit );
+    }
+    if ( sortDirection == SortDirectionAscending ) {
+      // Prepend the list of Events without End DateTimes
+      tempList += eventListSorted;
+      eventListSorted = tempList;
+    } else {
+      // Append the list of Events without End DateTimes
+      eventListSorted += tempList;
+    }
+    break;
+
+  case EventSortEndDate:
+    alphaList = sortEvents( eventList, EventSortSummary, sortDirection );
+    for ( eit = alphaList.begin(); eit != alphaList.end(); ++eit ) {
+      if ( (*eit)->hasEndDate() ) {
+        sortIt = eventListSorted.begin();
+        if ( sortDirection == SortDirectionAscending ) {
+          while ( sortIt != eventListSorted.end() &&
+                  (*eit)->dtEnd() >= (*sortIt)->dtEnd() ) {
+            ++sortIt;
+          }
+        } else {
+          while ( sortIt != eventListSorted.end() &&
+                  (*eit)->dtEnd() < (*sortIt)->dtEnd() ) {
+            ++sortIt;
+          }
+        }
+      } else {
+        // Keep a list of the Events without End DateTimes
+        tempList.append( *eit );
+      }
+      eventListSorted.insert( sortIt, *eit );
+    }
+    if ( sortDirection == SortDirectionAscending ) {
+      // Append the list of Events without End DateTimes
+      eventListSorted += tempList;
+    } else {
+      // Prepend the list of Events without End DateTimes
+      tempList += eventListSorted;
+      eventListSorted = tempList;
+    }
+    break;
+
+  case EventSortSummary:
+    for ( eit = eventList->begin(); eit != eventList->end(); ++eit ) {
+      sortIt = eventListSorted.begin();
+      if ( sortDirection == SortDirectionAscending ) {
+        while ( sortIt != eventListSorted.end() &&
+                (*eit)->summary() >= (*sortIt)->summary() ) {
+          ++sortIt;
+        }
+      } else {
+        while ( sortIt != eventListSorted.end() &&
+                (*eit)->summary() < (*sortIt)->summary() ) {
+          ++sortIt;
+        }
+      }
+      eventListSorted.insert( sortIt, *eit );
+    }
+    break;
+  }
+
+  return eventListSorted;
+#else
+  return Item::List();
+#endif
 }
 
 Event::List CalendarBase::events( const QDate &date,
@@ -404,10 +526,31 @@ Event::List CalendarBase::events( const QDate &date,
   return el;
 }
 
+Item::List CalendarBase::eventsFORAKONADI( const QDate &date,
+                              const KDateTime::Spec &timeSpec,
+                              EventSortField sortField,
+                              SortDirection sortDirection )
+{
+  Item::List el = rawEventsForDateFORAKONADI( date, timeSpec, sortField, sortDirection );
+#ifdef AKONADI_PORT_DISABLED
+  d->mFilter->apply( &el );
+#endif
+  return el;
+}
+
 Event::List CalendarBase::events( const KDateTime &dt )
 {
   Event::List el = rawEventsForDate( dt );
   d->mFilter->apply( &el );
+  return el;
+}
+
+Item::List CalendarBase::eventsFORAKONADI( const KDateTime &dt )
+{
+  Item::List el = rawEventsForDateFORAKONADI( dt );
+#ifdef AKONADI_PORT_DISABLED
+  d->mFilter->apply( &el );
+#endif
   return el;
 }
 
@@ -420,6 +563,18 @@ Event::List CalendarBase::events( const QDate &start, const QDate &end,
   return el;
 }
 
+
+Item::List CalendarBase::eventsFORAKONADI( const QDate &start, const QDate &end,
+                              const KDateTime::Spec &timeSpec,
+                              bool inclusive )
+{
+  Item::List el = rawEventsFORAKONADI( start, end, timeSpec, inclusive );
+#ifdef AKONADI_PORT_DISABLED
+  d->mFilter->apply( &el );
+#endif
+  return el;
+}
+
 Event::List CalendarBase::events( EventSortField sortField,
                               SortDirection sortDirection )
 {
@@ -428,11 +583,32 @@ Event::List CalendarBase::events( EventSortField sortField,
   return el;
 }
 
+Item::List CalendarBase::eventsFORAKONADI( EventSortField sortField,
+                              SortDirection sortDirection )
+{
+  Item::List el = rawEventsFORAKONADI( sortField, sortDirection );
+#ifdef AKONADI_PORT_DISABLED
+  d->mFilter->apply( &el );
+#endif
+  return el;
+}
+
 bool CalendarBase::addIncidence( Incidence *incidence )
 {
   Incidence::AddVisitor<CalendarBase> v( this );
 
   return incidence->accept( v );
+}
+
+bool CalendarBase::addIncidenceFORAKONADI( const Item &incidence )
+{
+#ifdef AKONADI_PORT_DISABLED
+  Incidence::AddVisitor<CalendarBase> v( this );
+
+  return incidence->accept( v );
+#else
+  return false;
+#endif
 }
 
 bool CalendarBase::deleteIncidence( Incidence *incidence )
@@ -445,6 +621,22 @@ bool CalendarBase::deleteIncidence( Incidence *incidence )
   } else {
     return false;
   }
+}
+
+bool CalendarBase::deleteIncidenceFORAKONADI( const Item &incidence )
+{
+#ifdef AKONADI_PORT_DISABLED
+  if ( beginChange( incidence ) ) {
+    Incidence::DeleteVisitor<CalendarBase> v( this );
+    bool result = incidence->accept( v );
+    endChange( incidence );
+    return result;
+  } else {
+    return false;
+  }
+#else
+  return false;
+#endif
 }
 
 // Dissociate a single occurrence or all future occurrences from a recurring
@@ -524,6 +716,84 @@ Incidence *CalendarBase::dissociateOccurrence( Incidence *incidence,
   return newInc;
 }
 
+Item CalendarBase::dissociateOccurrenceFORAKONADI( const Item &incidence,
+                                           const QDate &date,
+                                           const KDateTime::Spec &spec,
+                                           bool single )
+{
+#ifdef AKONADI_PORT_DISABLED
+  if ( !incidence || !incidence->recurs() ) {
+    return 0;
+  }
+
+  Incidence *newInc = incidence->clone();
+  newInc->recreate();
+  // Do not call setRelatedTo() when dissociating recurring to-dos, otherwise the new to-do
+  // will appear as a child.  Originally, we planned to set a relation with reltype SIBLING
+  // when dissociating to-dos, but currently kcal only supports reltype PARENT.
+  // We can uncomment the following line when we support the PARENT reltype.
+  //newInc->setRelatedTo( incidence );
+  Recurrence *recur = newInc->recurrence();
+  if ( single ) {
+    recur->clear();
+  } else {
+    // Adjust the recurrence for the future incidences. In particular adjust
+    // the "end after n occurrences" rules! "No end date" and "end by ..."
+    // don't need to be modified.
+    int duration = recur->duration();
+    if ( duration > 0 ) {
+      int doneduration = recur->durationTo( date.addDays( -1 ) );
+      if ( doneduration >= duration ) {
+        kDebug() << "The dissociated event already occurred more often"
+                 << "than it was supposed to ever occur. ERROR!";
+        recur->clear();
+      } else {
+        recur->setDuration( duration - doneduration );
+      }
+    }
+  }
+  // Adjust the date of the incidence
+  if ( incidence->type() == "Event" ) {
+    Event *ev = static_cast<Event *>( newInc );
+    KDateTime start( ev->dtStart() );
+    int daysTo = start.toTimeSpec( spec ).date().daysTo( date );
+    ev->setDtStart( start.addDays( daysTo ) );
+    ev->setDtEnd( ev->dtEnd().addDays( daysTo ) );
+  } else if ( incidence->type() == "Todo" ) {
+    Todo *td = static_cast<Todo *>( newInc );
+    bool haveOffset = false;
+    int daysTo = 0;
+    if ( td->hasDueDate() ) {
+      KDateTime due( td->dtDue() );
+      daysTo = due.toTimeSpec( spec ).date().daysTo( date );
+      td->setDtDue( due.addDays( daysTo ), true );
+      haveOffset = true;
+    }
+    if ( td->hasStartDate() ) {
+      KDateTime start( td->dtStart() );
+      if ( !haveOffset ) {
+        daysTo = start.toTimeSpec( spec ).date().daysTo( date );
+      }
+      td->setDtStart( start.addDays( daysTo ) );
+      haveOffset = true;
+    }
+  }
+  recur = incidence->recurrence();
+  if ( recur ) {
+    if ( single ) {
+      recur->addExDate( date );
+    } else {
+      // Make sure the recurrence of the past events ends
+      // at the corresponding day
+      recur->setEndDate( date.addDays(-1) );
+    }
+  }
+  return newInc;
+#else //AKONADI_PORT_DISABLED
+  return Item();
+#endif // AKONADI_PORT_DISABLED
+}
+
 Incidence *CalendarBase::incidence( const QString &uid )
 {
   Incidence *i = event( uid );
@@ -540,6 +810,22 @@ Incidence *CalendarBase::incidence( const QString &uid )
   return i;
 }
 
+Item CalendarBase::incidenceFORAKONADI( const Item::Id &uid )
+{
+  Item i = eventFORAKONADI( uid );
+  if ( i.isValid() ) {
+    return i;
+  }
+
+  i = todoFORAKONADI( uid );
+  if ( i.isValid() ) {
+    return i;
+  }
+
+  i = journalFORAKONADI( uid );
+  return i;
+}
+
 Incidence::List CalendarBase::incidencesFromSchedulingID( const QString &sid )
 {
   Incidence::List result;
@@ -551,6 +837,23 @@ Incidence::List CalendarBase::incidencesFromSchedulingID( const QString &sid )
     }
   }
   return result;
+}
+
+Item::List CalendarBase::incidencesFromSchedulingIDFORAKONADI( const QString &sid )
+{
+#ifdef AKONADI_PORT_DISABLED
+  Incidence::List result;
+  const Incidence::List incidences = rawIncidences();
+  Incidence::List::const_iterator it = incidences.begin();
+  for ( ; it != incidences.end(); ++it ) {
+    if ( (*it)->schedulingID() == sid ) {
+      result.append( *it );
+    }
+  }
+  return result;
+#else // AKONADI_PORT_DISABLED
+  return Item::List();
+#endif // AKONADI_PORT_DISABLED
 }
 
 Incidence *CalendarBase::incidenceFromSchedulingID( const QString &UID )
@@ -565,6 +868,24 @@ Incidence *CalendarBase::incidenceFromSchedulingID( const QString &UID )
   }
   // Not found
   return 0;
+}
+
+Item CalendarBase::incidenceFromSchedulingIDFORAKONADI( const QString &UID )
+{
+#ifdef AKONADI_PORT_DISABLED
+  const Incidence::List incidences = rawIncidences();
+  Incidence::List::const_iterator it = incidences.begin();
+  for ( ; it != incidences.end(); ++it ) {
+    if ( (*it)->schedulingID() == UID ) {
+      // Touchdown, and the crowd goes wild
+      return *it;
+    }
+  }
+  // Not found
+  return 0;
+#else // AKONADI_PORT_DISABLED
+  return Item();
+#endif // AKONADI_PORT_DISABLED
 }
 
 Todo::List CalendarBase::sortTodos( Todo::List *todoList,
@@ -711,6 +1032,154 @@ Todo::List CalendarBase::sortTodos( Todo::List *todoList,
   return todoListSorted;
 }
 
+Item::List CalendarBase::sortTodosFORAKONADI( const Item::List &todoList,
+                                TodoSortField sortField,
+                                SortDirection sortDirection )
+{
+#ifdef AKONADI_PORT_DISABLED
+  Todo::List todoListSorted;
+  Todo::List tempList, t;
+  Todo::List alphaList;
+  Todo::List::Iterator sortIt;
+  Todo::List::Iterator eit;
+
+  // Notice we alphabetically presort Summaries first.
+  // We do this so comparison "ties" stay in a nice order.
+
+  // Note that To-dos may not have Start DateTimes nor due DateTimes.
+
+  switch( sortField ) {
+  case TodoSortUnsorted:
+    todoListSorted = *todoList;
+    break;
+
+  case TodoSortStartDate:
+    alphaList = sortTodos( todoList, TodoSortSummary, sortDirection );
+    for ( eit = alphaList.begin(); eit != alphaList.end(); ++eit ) {
+      if ( (*eit)->hasStartDate() ) {
+        sortIt = todoListSorted.begin();
+        if ( sortDirection == SortDirectionAscending ) {
+          while ( sortIt != todoListSorted.end() &&
+                  (*eit)->dtStart() >= (*sortIt)->dtStart() ) {
+            ++sortIt;
+          }
+        } else {
+          while ( sortIt != todoListSorted.end() &&
+                  (*eit)->dtStart() < (*sortIt)->dtStart() ) {
+            ++sortIt;
+          }
+        }
+        todoListSorted.insert( sortIt, *eit );
+      } else {
+        // Keep a list of the To-dos without Start DateTimes
+        tempList.append( *eit );
+      }
+    }
+    if ( sortDirection == SortDirectionAscending ) {
+      // Append the list of To-dos without Start DateTimes
+      todoListSorted += tempList;
+    } else {
+      // Prepend the list of To-dos without Start DateTimes
+      tempList += todoListSorted;
+      todoListSorted = tempList;
+    }
+    break;
+
+  case TodoSortDueDate:
+    alphaList = sortTodos( todoList, TodoSortSummary, sortDirection );
+    for ( eit = alphaList.begin(); eit != alphaList.end(); ++eit ) {
+      if ( (*eit)->hasDueDate() ) {
+        sortIt = todoListSorted.begin();
+        if ( sortDirection == SortDirectionAscending ) {
+          while ( sortIt != todoListSorted.end() &&
+                  (*eit)->dtDue() >= (*sortIt)->dtDue() ) {
+            ++sortIt;
+          }
+        } else {
+          while ( sortIt != todoListSorted.end() &&
+                  (*eit)->dtDue() < (*sortIt)->dtDue() ) {
+            ++sortIt;
+          }
+        }
+        todoListSorted.insert( sortIt, *eit );
+      } else {
+        // Keep a list of the To-dos without Due DateTimes
+        tempList.append( *eit );
+      }
+    }
+    if ( sortDirection == SortDirectionAscending ) {
+      // Append the list of To-dos without Due DateTimes
+      todoListSorted += tempList;
+    } else {
+      // Prepend the list of To-dos without Due DateTimes
+      tempList += todoListSorted;
+      todoListSorted = tempList;
+    }
+    break;
+
+  case TodoSortPriority:
+    alphaList = sortTodos( todoList, TodoSortSummary, sortDirection );
+    for ( eit = alphaList.begin(); eit != alphaList.end(); ++eit ) {
+      sortIt = todoListSorted.begin();
+      if ( sortDirection == SortDirectionAscending ) {
+        while ( sortIt != todoListSorted.end() &&
+                (*eit)->priority() >= (*sortIt)->priority() ) {
+          ++sortIt;
+        }
+      } else {
+        while ( sortIt != todoListSorted.end() &&
+                (*eit)->priority() < (*sortIt)->priority() ) {
+          ++sortIt;
+        }
+      }
+      todoListSorted.insert( sortIt, *eit );
+    }
+    break;
+
+  case TodoSortPercentComplete:
+    alphaList = sortTodos( todoList, TodoSortSummary, sortDirection );
+    for ( eit = alphaList.begin(); eit != alphaList.end(); ++eit ) {
+      sortIt = todoListSorted.begin();
+      if ( sortDirection == SortDirectionAscending ) {
+        while ( sortIt != todoListSorted.end() &&
+                (*eit)->percentComplete() >= (*sortIt)->percentComplete() ) {
+          ++sortIt;
+        }
+      } else {
+        while ( sortIt != todoListSorted.end() &&
+                (*eit)->percentComplete() < (*sortIt)->percentComplete() ) {
+          ++sortIt;
+        }
+      }
+      todoListSorted.insert( sortIt, *eit );
+    }
+    break;
+
+  case TodoSortSummary:
+    for ( eit = todoList->begin(); eit != todoList->end(); ++eit ) {
+      sortIt = todoListSorted.begin();
+      if ( sortDirection == SortDirectionAscending ) {
+        while ( sortIt != todoListSorted.end() &&
+                (*eit)->summary() >= (*sortIt)->summary() ) {
+          ++sortIt;
+        }
+      } else {
+        while ( sortIt != todoListSorted.end() &&
+                (*eit)->summary() < (*sortIt)->summary() ) {
+          ++sortIt;
+        }
+      }
+      todoListSorted.insert( sortIt, *eit );
+    }
+    break;
+  }
+
+  return todoListSorted;
+#else // AKONADI_PORT_DISABLED
+  return Item::List();
+#endif // AKONADI_PORT_DISABLED
+}
+
 Todo::List CalendarBase::todos( TodoSortField sortField,
                             SortDirection sortDirection )
 {
@@ -719,10 +1188,29 @@ Todo::List CalendarBase::todos( TodoSortField sortField,
   return tl;
 }
 
+Item::List CalendarBase::todosFORAKONADI( TodoSortField sortField,
+                            SortDirection sortDirection )
+{
+  Item::List tl = rawTodosFORAKONADI( sortField, sortDirection );
+#ifdef AKONADI_PORT_DISABLED
+  d->mFilter->apply( &tl );
+#endif // AKONADI_PORT_DISABLED
+  return tl;
+}
+
 Todo::List CalendarBase::todos( const QDate &date )
 {
   Todo::List el = rawTodosForDate( date );
   d->mFilter->apply( &el );
+  return el;
+}
+
+Item::List CalendarBase::todosFORAKONADI( const QDate &date )
+{
+  Item::List el = rawTodosForDateFORAKONADI( date );
+#ifdef AKONADI_PORT_DISABLED
+  d->mFilter->apply( &el );
+#endif // AKONADI_PORT_DISABLED
   return el;
 }
 
@@ -779,6 +1267,63 @@ Journal::List CalendarBase::sortJournals( Journal::List *journalList,
   return journalListSorted;
 }
 
+Item::List CalendarBase::sortJournalsFORAKONADI( const Item::List &journalList,
+                                      JournalSortField sortField,
+                                      SortDirection sortDirection )
+{
+#ifdef AKONADI_PORT_DISABLED
+  Journal::List journalListSorted;
+  Journal::List::Iterator sortIt;
+  Journal::List::Iterator eit;
+
+  switch( sortField ) {
+  case JournalSortUnsorted:
+    journalListSorted = *journalList;
+    break;
+
+  case JournalSortDate:
+    for ( eit = journalList->begin(); eit != journalList->end(); ++eit ) {
+      sortIt = journalListSorted.begin();
+      if ( sortDirection == SortDirectionAscending ) {
+        while ( sortIt != journalListSorted.end() &&
+                (*eit)->dtStart() >= (*sortIt)->dtStart() ) {
+          ++sortIt;
+        }
+      } else {
+        while ( sortIt != journalListSorted.end() &&
+                (*eit)->dtStart() < (*sortIt)->dtStart() ) {
+          ++sortIt;
+        }
+      }
+      journalListSorted.insert( sortIt, *eit );
+    }
+    break;
+
+  case JournalSortSummary:
+    for ( eit = journalList->begin(); eit != journalList->end(); ++eit ) {
+      sortIt = journalListSorted.begin();
+      if ( sortDirection == SortDirectionAscending ) {
+        while ( sortIt != journalListSorted.end() &&
+                (*eit)->summary() >= (*sortIt)->summary() ) {
+          ++sortIt;
+        }
+      } else {
+        while ( sortIt != journalListSorted.end() &&
+                (*eit)->summary() < (*sortIt)->summary() ) {
+          ++sortIt;
+        }
+      }
+      journalListSorted.insert( sortIt, *eit );
+    }
+    break;
+  }
+
+  return journalListSorted;
+#else // AKONADI_PORT_DISABLED
+  return Item::List();
+#endif // AKONADI_PORT_DISABLED
+}
+
 Journal::List CalendarBase::journals( JournalSortField sortField,
                                   SortDirection sortDirection )
 {
@@ -787,10 +1332,29 @@ Journal::List CalendarBase::journals( JournalSortField sortField,
   return jl;
 }
 
+Item::List CalendarBase::journalsFORAKONADI( JournalSortField sortField,
+                                  SortDirection sortDirection )
+{
+  Item::List jl = rawJournalsFORAKONADI( sortField, sortDirection );
+#ifdef AKONADI_PORT_DISABLED
+  d->mFilter->apply( &jl );
+#endif // AKONADI_PORT_DISABLED
+  return jl;
+}
+
 Journal::List CalendarBase::journals( const QDate &date )
 {
   Journal::List el = rawJournalsForDate( date );
   d->mFilter->apply( &el );
+  return el;
+}
+
+Item::List CalendarBase::journalsFORAKONADI( const QDate &date )
+{
+  Item::List el = rawJournalsForDateFORAKONADI( date );
+#ifdef AKONADI_PORT_DISABLED
+  d->mFilter->apply( &el );
+#endif // AKONADI_PORT_DISABLED
   return el;
 }
 
@@ -841,6 +1405,45 @@ void CalendarBase::setupRelations( Incidence *forincidence )
       d->mOrphanUids.insert( forincidence->uid(), forincidence );
     }
   }
+}
+
+void CalendarBase::setupRelationsFORAKONADI( const Item &forincidence )
+{
+#ifdef AKONADI_PORT_DISABLED
+  if ( !forincidence ) {
+    return;
+  }
+
+  QString uid = forincidence->uid();
+
+  // First, go over the list of orphans and see if this is their parent
+  QList<Incidence*> l = d->mOrphans.values( uid );
+  d->mOrphans.remove( uid );
+  for ( int i = 0, end = l.count();  i < end;  ++i ) {
+    l[i]->setRelatedTo( forincidence );
+    forincidence->addRelation( l[i] );
+    d->mOrphanUids.remove( l[i]->uid() );
+  }
+
+  // Now see about this incidences parent
+  if ( !forincidence->relatedTo() && !forincidence->relatedToUid().isEmpty() ) {
+    // Incidence has a uid it is related to but is not registered to it yet.
+    // Try to find it
+    Incidence *parent = incidence( forincidence->relatedToUid() );
+    if ( parent ) {
+      // Found it
+      forincidence->setRelatedTo( parent );
+      parent->addRelation( forincidence );
+    } else {
+      // Not found, put this in the mOrphans list
+      // Note that the mOrphans dict might contain multiple entries with the
+      // same key! which are multiple children that wait for the parent
+      // incidence to be inserted.
+      d->mOrphans.insert( forincidence->relatedToUid(), forincidence );
+      d->mOrphanUids.insert( forincidence->uid(), forincidence );
+    }
+  }
+#endif // AKONADI_PORT_DISABLED
 }
 
 // If a to-do with sub-to-dos is deleted, move it's sub-to-dos to the orphan list
@@ -922,6 +1525,87 @@ void CalendarBase::removeRelations( Incidence *incidence )
   incidence->setRelatedTo( 0 );
 }
 
+// If a to-do with sub-to-dos is deleted, move it's sub-to-dos to the orphan list
+void CalendarBase::removeRelationsFORAKONADI( const Item &incidence )
+{
+#ifdef AKONADI_PORT_DISABLED
+  if ( !incidence ) {
+    kDebug() << "Warning: incidence is 0";
+    return;
+  }
+
+  QString uid = incidence->uid();
+  foreach ( Incidence *i, incidence->relations() ) {
+    if ( !d->mOrphanUids.contains( i->uid() ) ) {
+      d->mOrphans.insert( uid, i );
+      d->mOrphanUids.insert( i->uid(), i );
+      i->setRelatedTo( 0 );
+      i->setRelatedToUid( uid );
+    }
+  }
+
+  // If this incidence is related to something else, tell that about it
+  if ( incidence->relatedTo() ) {
+    incidence->relatedTo()->removeRelation( incidence );
+  }
+
+  // Remove this one from the orphans list
+  if ( d->mOrphanUids.remove( uid ) ) {
+    // This incidence is located in the orphans list - it should be removed
+    // Since the mOrphans dict might contain the same key (with different
+    // child incidence pointers!) multiple times, take care that we remove
+    // the correct one. So we need to remove all items with the given
+    // parent UID, and readd those that are not for this item. Also, there
+    // might be other entries with differnet UID that point to this
+    // incidence (this might happen when the relatedTo of the item is
+    // changed before its parent is inserted. This might happen with
+    // groupware servers....). Remove them, too
+    QStringList relatedToUids;
+
+    // First, create a list of all keys in the mOrphans list which point
+    // to the removed item
+    relatedToUids << incidence->relatedToUid();
+    for ( QMultiHash<QString, Incidence*>::Iterator it = d->mOrphans.begin();
+          it != d->mOrphans.end(); ++it ) {
+      if ( it.value()->uid() == uid ) {
+        relatedToUids << it.key();
+      }
+    }
+
+    // now go through all uids that have one entry that point to the incidence
+    for ( QStringList::const_iterator uidit = relatedToUids.constBegin();
+          uidit != relatedToUids.constEnd(); ++uidit ) {
+      Incidence::List tempList;
+      // Remove all to get access to the remaining entries
+      QList<Incidence*> l = d->mOrphans.values( *uidit );
+      d->mOrphans.remove( *uidit );
+      foreach ( Incidence *i, l ) {
+        if ( i != incidence ) {
+          tempList.append( i );
+        }
+      }
+      // Readd those that point to a different orphan incidence
+      for ( Incidence::List::Iterator incit = tempList.begin();
+            incit != tempList.end(); ++incit ) {
+        d->mOrphans.insert( *uidit, *incit );
+      }
+    }
+  }
+
+  // Make sure the deleted incidence doesn't relate to a non-deleted incidence,
+  // since that would cause trouble in CalendarLocal::close(), as the deleted
+  // incidences are destroyed after the non-deleted incidences. The destructor
+  // of the deleted incidences would then try to access the already destroyed
+  // non-deleted incidence, which would segfault.
+  //
+  // So in short: Make sure dead incidences don't point to alive incidences
+  // via the relation.
+  //
+  // This crash is tested in CalendarLocalTest::testRelationsCrash().
+  incidence->setRelatedTo( 0 );
+#endif // AKONADI_PORT_DISABLED
+}
+
 void CalendarBase::CalendarObserver::calendarModified( bool modified, CalendarBase *calendar )
 {
   Q_UNUSED( modified );
@@ -933,12 +1617,27 @@ void CalendarBase::CalendarObserver::calendarIncidenceAdded( Incidence *incidenc
   Q_UNUSED( incidence );
 }
 
+void CalendarBase::CalendarObserver::calendarIncidenceAddedFORAKONADI( const Item &incidence )
+{
+  Q_UNUSED( incidence );
+}
+
 void CalendarBase::CalendarObserver::calendarIncidenceChanged( Incidence *incidence )
 {
   Q_UNUSED( incidence );
 }
 
+void CalendarBase::CalendarObserver::calendarIncidenceChangedFORAKONADI( const Item &incidence )
+{
+  Q_UNUSED( incidence );
+}
+
 void CalendarBase::CalendarObserver::calendarIncidenceDeleted( Incidence *incidence )
+{
+  Q_UNUSED( incidence );
+}
+
+void CalendarBase::CalendarObserver::calendarIncidenceDeletedFORAKONADI( const Item &incidence )
 {
   Q_UNUSED( incidence );
 }
@@ -1006,6 +1705,17 @@ void CalendarBase::notifyIncidenceAdded( Incidence *i )
   }
 }
 
+void CalendarBase::notifyIncidenceAddedFORAKONADI( const Item &i )
+{
+  if ( !d->mObserversEnabled ) {
+    return;
+  }
+
+  foreach ( CalendarObserver *observer, d->mObservers ) {
+    observer->calendarIncidenceAddedFORAKONADI( i );
+  }
+}
+
 void CalendarBase::notifyIncidenceChanged( Incidence *i )
 {
   if ( !d->mObserversEnabled ) {
@@ -1017,6 +1727,17 @@ void CalendarBase::notifyIncidenceChanged( Incidence *i )
   }
 }
 
+void CalendarBase::notifyIncidenceChangedFORAKONADI( const Item &i )
+{
+  if ( !d->mObserversEnabled ) {
+    return;
+  }
+
+  foreach ( CalendarObserver *observer, d->mObservers ) {
+    observer->calendarIncidenceChangedFORAKONADI( i );
+  }
+}
+
 void CalendarBase::notifyIncidenceDeleted( Incidence *i )
 {
   if ( !d->mObserversEnabled ) {
@@ -1025,6 +1746,17 @@ void CalendarBase::notifyIncidenceDeleted( Incidence *i )
 
   foreach ( CalendarObserver *observer, d->mObservers ) {
     observer->calendarIncidenceDeleted( i );
+  }
+}
+
+void CalendarBase::notifyIncidenceDeletedFORAKONADI( const Item &i )
+{
+  if ( !d->mObserversEnabled ) {
+    return;
+  }
+
+  foreach ( CalendarObserver *observer, d->mObservers ) {
+    observer->calendarIncidenceDeletedFORAKONADI( i );
   }
 }
 
@@ -1065,13 +1797,48 @@ Incidence::List CalendarBase::mergeIncidenceList( const Event::List &events,
   return incidences;
 }
 
+Item::List CalendarBase::mergeIncidenceListFORAKONADI( const Item::List &events,
+                                              const Item::List &todos,
+                                              const Item::List &journals )
+{
+  Item::List incidences;
+
+  int i, end;
+  for ( i = 0, end = events.count();  i < end;  ++i ) {
+    incidences.append( events[i] );
+  }
+
+  for ( i = 0, end = todos.count();  i < end;  ++i ) {
+    incidences.append( todos[i] );
+  }
+
+  for ( i = 0, end = journals.count();  i < end;  ++i ) {
+    incidences.append( journals[i] );
+  }
+
+  return incidences;
+}
+
 bool CalendarBase::beginChange( Incidence *incidence )
 {
   Q_UNUSED( incidence );
   return true;
 }
 
+bool CalendarBase::beginChangeFORAKONADI( const Item &incidence )
+{
+  Q_UNUSED( incidence );
+  return true;
+}
+
 bool CalendarBase::endChange( Incidence *incidence )
+{
+  Q_UNUSED( incidence );
+  return true;
+}
+
+
+bool CalendarBase::endChangeFORAKONADI( const Item &incidence )
 {
   Q_UNUSED( incidence );
   return true;
@@ -1097,6 +1864,25 @@ void CalendarBase::appendAlarms( Alarm::List &alarms, Incidence *incidence,
       }
     }
   }
+}
+
+void CalendarBase::appendAlarmsFORAKONADI( Alarm::List &alarms, const Item &incidence,
+                             const KDateTime &from, const KDateTime &to )
+{
+#ifdef AKONADI_PORT_DISABLED
+  KDateTime preTime = from.addSecs(-1);
+
+  Alarm::List alarmlist = incidence->alarms();
+  for ( int i = 0, iend = alarmlist.count();  i < iend;  ++i ) {
+    if ( alarmlist[i]->enabled() ) {
+      KDateTime dt = alarmlist[i]->nextRepetition( preTime );
+      if ( dt.isValid() && dt <= to ) {
+        kDebug() << incidence->summary() << "':" << dt.toString();
+        alarms.append( alarmlist[i] );
+      }
+    }
+  }
+#endif // AKONADI_PORT_DISABLED
 }
 
 void CalendarBase::appendRecurringAlarms( Alarm::List &alarms,
@@ -1209,6 +1995,120 @@ void CalendarBase::appendRecurringAlarms( Alarm::List &alarms,
       alarms.append( a );
     }
   }
+}
+
+void CalendarBase::appendRecurringAlarmsFORAKONADI( Alarm::List &alarms,
+                                      const Item &incidence,
+                                      const KDateTime &from,
+                                      const KDateTime &to )
+{
+#ifdef AKONADI_PORT_DISABLED
+  KDateTime dt;
+  bool endOffsetValid = false;
+  Duration endOffset( 0 );
+  Duration period( from, to );
+
+  Alarm::List alarmlist = incidence->alarms();
+  for ( int i = 0, iend = alarmlist.count();  i < iend;  ++i ) {
+    Alarm *a = alarmlist[i];
+    if ( a->enabled() ) {
+      if ( a->hasTime() ) {
+        // The alarm time is defined as an absolute date/time
+        dt = a->nextRepetition( from.addSecs(-1) );
+        if ( !dt.isValid() || dt > to ) {
+          continue;
+        }
+      } else {
+        // Alarm time is defined by an offset from the event start or end time.
+        // Find the offset from the event start time, which is also used as the
+        // offset from the recurrence time.
+        Duration offset( 0 );
+        if ( a->hasStartOffset() ) {
+          offset = a->startOffset();
+        } else if ( a->hasEndOffset() ) {
+          offset = a->endOffset();
+          if ( !endOffsetValid ) {
+            endOffset = Duration( incidence->dtStart(), incidence->dtEnd() );
+            endOffsetValid = true;
+          }
+        }
+
+        // Find the incidence's earliest alarm
+        KDateTime alarmStart =
+          offset.end( a->hasEndOffset() ? incidence->dtEnd() : incidence->dtStart() );
+//        KDateTime alarmStart = incidence->dtStart().addSecs( offset );
+        if ( alarmStart > to ) {
+          continue;
+        }
+        KDateTime baseStart = incidence->dtStart();
+        if ( from > alarmStart ) {
+          alarmStart = from;   // don't look earlier than the earliest alarm
+          baseStart = (-offset).end( (-endOffset).end( alarmStart ) );
+        }
+
+        // Adjust the 'alarmStart' date/time and find the next recurrence at or after it.
+        // Treate the two offsets separately in case one is daily and the other not.
+        dt = incidence->recurrence()->getNextDateTime( baseStart.addSecs(-1) );
+        if ( !dt.isValid() ||
+             ( dt = endOffset.end( offset.end( dt ) ) ) > to ) // adjust 'dt' to get the alarm time
+        {
+          // The next recurrence is too late.
+          if ( !a->repeatCount() ) {
+            continue;
+          }
+
+          // The alarm has repetitions, so check whether repetitions of previous
+          // recurrences fall within the time period.
+          bool found = false;
+          Duration alarmDuration = a->duration();
+          for ( KDateTime base = baseStart;
+                ( dt = incidence->recurrence()->getPreviousDateTime( base ) ).isValid();
+                base = dt ) {
+            if ( a->duration().end( dt ) < base ) {
+              break;  // this recurrence's last repetition is too early, so give up
+            }
+
+            // The last repetition of this recurrence is at or after 'alarmStart' time.
+            // Check if a repetition occurs between 'alarmStart' and 'to'.
+            int snooze = a->snoozeTime().value();   // in seconds or days
+            if ( a->snoozeTime().isDaily() ) {
+              Duration toFromDuration( dt, base );
+              int toFrom = toFromDuration.asDays();
+              if ( a->snoozeTime().end( from ) <= to ||
+                   ( toFromDuration.isDaily() && toFrom % snooze == 0 ) ||
+                   ( toFrom / snooze + 1 ) * snooze <= toFrom + period.asDays() ) {
+                found = true;
+#ifndef NDEBUG
+                // for debug output
+                dt = offset.end( dt ).addDays( ( ( toFrom - 1 ) / snooze + 1 ) * snooze );
+#endif
+                break;
+              }
+            } else {
+              int toFrom = dt.secsTo( base );
+              if ( period.asSeconds() >= snooze ||
+                   toFrom % snooze == 0 ||
+                   ( toFrom / snooze + 1 ) * snooze <= toFrom + period.asSeconds() )
+              {
+                found = true;
+#ifndef NDEBUG
+                // for debug output
+                dt = offset.end( dt ).addSecs( ( ( toFrom - 1 ) / snooze + 1 ) * snooze );
+#endif
+                break;
+              }
+            }
+          }
+          if ( !found ) {
+            continue;
+          }
+        }
+      }
+      kDebug() << incidence->summary() << "':" << dt.toString();
+      alarms.append( a );
+    }
+  }
+#endif // AKONADI_PORT_DISABLED
 }
 
 #include "calendarbase.moc"

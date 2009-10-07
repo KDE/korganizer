@@ -54,7 +54,10 @@ class KORGANIZER_INTERFACES_EXPORT AkonadiCalendar : public CalendarBase
     Akonadi::Item itemForIncidence(KCal::Incidence *incidence) const;
 
     bool beginChange( KCal::Incidence *incidence );
+    bool beginChangeFORAKONADI( const Akonadi::Item &incidence );
+
     bool endChange( KCal::Incidence *incidence );
+    bool endChangeFORAKONADI( const Akonadi::Item &incidence );
 
     bool reload(); //TODO remove, atm abstract in Calendar
     bool save(); //TODO remove, atm abstract in Calendar
@@ -62,37 +65,68 @@ class KORGANIZER_INTERFACES_EXPORT AkonadiCalendar : public CalendarBase
 
     bool addAgent( const KUrl &mUrl );
     bool addIncidence( KCal::Incidence *incidence );
+    bool addIncidenceFORAKONADI( const Akonadi::Item &incidence );
     bool deleteIncidence( KCal::Incidence *incidence );
+    bool deleteIncidenceFORAKONADI( const Akonadi::Item &incidence );
+
     void incidenceUpdated( KCal::IncidenceBase *incidenceBase );
 
     bool addEvent( KCal::Event *event );
+    bool addEventFORAKONADI( const Akonadi::Item &event );
+
     bool deleteEvent( KCal::Event *event );
+    bool deleteEventFORAKONADI( const Akonadi::Item &event );
+
     void deleteAllEvents() { Q_ASSERT(false); } //TODO remove, atm abstract in Calendar
+    void deleteAllEventsFORAKONADI() { Q_ASSERT(false); } //TODO remove, atm abstract in Calendar
 
     KCal::Event::List rawEvents( EventSortField sortField = EventSortUnsorted, SortDirection sortDirection = SortDirectionAscending );
+    Akonadi::Item ::List rawEventsFORAKONADI( EventSortField sortField = EventSortUnsorted, SortDirection sortDirection = SortDirectionAscending );
     KCal::Event::List rawEvents( const QDate &start, const QDate &end, const KDateTime::Spec &timeSpec = KDateTime::Spec(), bool inclusive = false );
+    Akonadi::Item ::List rawEventsFORAKONADI( const QDate &start, const QDate &end, const KDateTime::Spec &timeSpec = KDateTime::Spec(), bool inclusive = false );
     KCal::Event::List rawEventsForDate( const QDate &date, const KDateTime::Spec &timeSpec = KDateTime::Spec(), EventSortField sortField = EventSortUnsorted, SortDirection sortDirection = SortDirectionAscending );
+    Akonadi::Item ::List rawEventsForDateFORAKONADI( const QDate &date, const KDateTime::Spec &timeSpec = KDateTime::Spec(), EventSortField sortField = EventSortUnsorted, SortDirection sortDirection = SortDirectionAscending );
     KCal::Event::List rawEventsForDate( const KDateTime &dt );
+    Akonadi::Item::List rawEventsForDateFORAKONADI( const KDateTime &dt );
 
     KCal::Event *event( const QString &uid );
+    Akonadi::Item eventFORAKONADI( const Akonadi::Item::Id &id );
 
     bool addTodo( KCal::Todo *todo );
+    bool addTodoFORAKONADI( const Akonadi::Item &todo );
+
     bool deleteTodo( KCal::Todo *todo );
+    bool deleteTodoFORAKONADI( const Akonadi::Item &todo );
+
     void deleteAllTodos() { Q_ASSERT(false); } //TODO remove, atm abstract in Calendar
+    void deleteAllTodosFORAKONADI() { Q_ASSERT(false); } //TODO remove, atm abstract in Calendar
 
     KCal::Todo::List rawTodos( TodoSortField sortField = TodoSortUnsorted, SortDirection sortDirection = SortDirectionAscending );
+    Akonadi::Item::List rawTodosFORAKONADI( TodoSortField sortField = TodoSortUnsorted, SortDirection sortDirection = SortDirectionAscending );
+
     KCal::Todo::List rawTodosForDate( const QDate &date );
+    Akonadi::Item::List rawTodosForDateFORAKONADI( const QDate &date );
 
     KCal::Todo *todo( const QString &uid );
+    Akonadi::Item todoFORAKONADI( const Akonadi::Item::Id &uid );
 
     bool addJournal( KCal::Journal *journal );
+    bool addJournalFORAKONADI( const Akonadi::Item &journal );
+
     bool deleteJournal( KCal::Journal *journal );
+    bool deleteJournalFORAKONADI( const Akonadi::Item &journal );
+
     void deleteAllJournals() { Q_ASSERT(false); } //TODO remove, atm abstract in Calendar
+    void deleteAllJournalsFORAKONADI() { Q_ASSERT(false); } //TODO remove, atm abstract in Calendar
 
     KCal::Journal::List rawJournals( JournalSortField sortField = JournalSortUnsorted, SortDirection sortDirection = SortDirectionAscending );
+    Akonadi::Item::List rawJournalsFORAKONADI( JournalSortField sortField = JournalSortUnsorted, SortDirection sortDirection = SortDirectionAscending );
+
     KCal::Journal::List rawJournalsForDate( const QDate &date );
+    Akonadi::Item ::List rawJournalsForDateFORAKONADI( const QDate &date );
 
     KCal::Journal *journal( const QString &uid );
+    Akonadi::Item journalFORAKONADI( const Akonadi::Item::Id &id );
 
     KCal::Alarm::List alarms( const KDateTime &from, const KDateTime &to );
     KCal::Alarm::List alarmsTo( const KDateTime &to );
@@ -101,6 +135,7 @@ class KORGANIZER_INTERFACES_EXPORT AkonadiCalendar : public CalendarBase
 
   public Q_SLOTS:
     void deleteIncidenceProxyMethod( KCal::Incidence *incidence ) { deleteIncidence(incidence); }
+    void deleteIncidenceProxyMethodFORAKONADI( const Akonadi::Item &incidence ) { deleteIncidenceFORAKONADI(incidence); }
 
   Q_SIGNALS:
     void signalErrorMessage( const QString& );

@@ -50,6 +50,8 @@
 #include <kcal/journal.h>
 #include <kcal/incidencebase.h>
 
+#include <Akonadi/Item>
+
 namespace KCal {
     class ICalTimeZone;
     class ICalTimeZones;
@@ -388,6 +390,8 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
     */
     virtual bool addIncidence( KCal::Incidence *incidence );
 
+    virtual bool addIncidenceFORAKONADI( const Akonadi::Item &incidence );
+
     /**
       Removes an KCal::Incidence from the calendar.
 
@@ -399,12 +403,16 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
     */
     virtual bool deleteIncidence( KCal::Incidence *incidence );
 
+    virtual bool deleteIncidenceFORAKONADI( const Akonadi::Item &incidence );
+
     /**
       Returns a filtered list of all KCal::Incidences for this Calendar.
 
       @return the list of all filtered KCal::Incidences.
     */
     virtual KCal::Incidence::List incidences();
+
+    virtual Akonadi::Item::List incidencesFORAKONADI();
 
     /**
       Returns a filtered list of all KCal::Incidences which occur on the given date.
@@ -415,12 +423,16 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
     */
     virtual KCal::Incidence::List incidences( const QDate &date );
 
+    virtual Akonadi::Item::List incidencesFORAKONADI( const QDate& date );
+
     /**
       Returns an unfiltered list of all KCal::Incidences for this Calendar.
 
       @return the list of all unfiltered KCal::Incidences.
     */
     virtual KCal::Incidence::List rawIncidences();
+
+    virtual Akonadi::Item::List rawIncidencesFORAKONADI();
 
     /**
       Returns the KCal::Incidence associated with the given unique identifier.
@@ -432,6 +444,8 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
     */
     KCal::Incidence *incidence( const QString &uid );
 
+    Akonadi::Item incidenceFORAKONADI( const Akonadi::Item::Id &id );
+
     /**
       Returns the KCal::Incidence associated with the given scheduling identifier.
 
@@ -442,6 +456,8 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
     */
     KCal::Incidence *incidenceFromSchedulingID( const QString &sid );
 
+    Akonadi::Item incidenceFromSchedulingIDFORAKONADI( const QString &sid );
+
     /**
       Searches all events and todos for an incidence with this
       scheduling identifiere. Returns a list of matching results.
@@ -449,6 +465,8 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
       @param sid is a unique scheduling identifier string.
      */
     KCal::Incidence::List incidencesFromSchedulingID( const QString &sid );
+
+    Akonadi::Item::List incidencesFromSchedulingIDFORAKONADI( const QString &sid );
 
     /**
       Create a merged list of KCal::Events, KCal::Todos, and KCal::Journals.
@@ -463,6 +481,11 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
                                                const KCal::Todo::List &todos,
                                                const KCal::Journal::List &journals );
 
+
+    static Akonadi::Item::List mergeIncidenceListFORAKONADI( const Akonadi::Item::List &events,
+                                               const Akonadi::Item::List &todos,
+                                               const Akonadi::Item::List &journals );
+
     /**
       Flag that a change to a Calendar KCal::Incidence is starting.
 
@@ -470,12 +493,16 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
     */
     virtual bool beginChange( KCal::Incidence *incidence );
 
+    virtual bool beginChangeFORAKONADI( const Akonadi::Item &incidence );
+
     /**
       Flag that a change to a Calendar KCal::Incidence has completed.
 
       @param incidence is a pointer to the KCal::Incidence that was changed.
     */
     virtual bool endChange( KCal::Incidence *incidence );
+
+    virtual bool endChangeFORAKONADI( const Akonadi::Item &incidence );
 
     /**
       Dissociate an KCal::Incidence from a recurring KCal::Incidence.
@@ -498,6 +525,10 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
                                      const KDateTime::Spec &spec,
                                      bool single = true );
 
+    Akonadi::Item dissociateOccurrenceFORAKONADI( const Akonadi::Item &incidence, const QDate &date,
+                                     const KDateTime::Spec &spec,
+                                     bool single = true );
+
   // KCal::Event Specific Methods //
 
     /**
@@ -511,6 +542,8 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
     */
     virtual bool addEvent( KCal::Event *event ) = 0;
 
+    virtual bool addEventFORAKONADI( const Akonadi::Item &event ) = 0;
+
     /**
       Removes an KCal::Event from the calendar.
 
@@ -522,11 +555,15 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
     */
     virtual bool deleteEvent( KCal::Event *event ) = 0;
 
+    virtual bool deleteEventFORAKONADI( const Akonadi::Item &event ) = 0;
+
     /**
       Removes all KCal::Events from the calendar.
       @see deleteEvent()
     */
     virtual void deleteAllEvents() = 0;
+
+    virtual void deleteAllEventsFORAKONADI() = 0;
 
     /**
       Sort a list of KCal::Events.
@@ -540,6 +577,10 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
     static KCal::Event::List sortEvents( KCal::Event::List *eventList,
                                    EventSortField sortField,
                                    SortDirection sortDirection );
+    static Akonadi::Item::List sortEventsFORAKONADI( const Akonadi::Item::List &eventList,
+                                   EventSortField sortField,
+                                   SortDirection sortDirection );
+
     /**
       Returns a sorted, filtered list of all KCal::Events for this Calendar.
 
@@ -551,6 +592,9 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
     virtual KCal::Event::List events(
       EventSortField sortField = EventSortUnsorted,
       SortDirection sortDirection = SortDirectionAscending );
+    virtual Akonadi::Item::List eventsFORAKONADI(
+      EventSortField sortField = EventSortUnsorted,
+      SortDirection sortDirection = SortDirectionAscending );
 
     /**
       Returns a filtered list of all KCal::Events which occur on the given timestamp.
@@ -560,6 +604,7 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
       @return the list of filtered KCal::Events occurring on the specified timestamp.
     */
     KCal::Event::List events( const KDateTime &dt );
+    Akonadi::Item::List eventsFORAKONADI( const KDateTime &dt );
 
     /**
       Returns a filtered list of all KCal::Events occurring within a date range.
@@ -575,6 +620,9 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
       date range.
     */
     KCal::Event::List events( const QDate &start, const QDate &end,
+                        const KDateTime::Spec &timeSpec = KDateTime::Spec(),
+                        bool inclusive = false );
+    Akonadi::Item::List eventsFORAKONADI( const QDate &start, const QDate &end,
                         const KDateTime::Spec &timeSpec = KDateTime::Spec(),
                         bool inclusive = false );
 
@@ -596,6 +644,11 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
       const KDateTime::Spec &timeSpec = KDateTime::Spec(),
       EventSortField sortField = EventSortUnsorted,
       SortDirection sortDirection = SortDirectionAscending );
+    Akonadi::Item::List eventsFORAKONADI(
+      const QDate &date,
+      const KDateTime::Spec &timeSpec = KDateTime::Spec(),
+      EventSortField sortField = EventSortUnsorted,
+      SortDirection sortDirection = SortDirectionAscending );
 
     /**
       Returns a sorted, unfiltered list of all KCal::Events for this Calendar.
@@ -606,6 +659,9 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
       @return the list of all unfiltered KCal::Events sorted as specified.
     */
     virtual KCal::Event::List rawEvents(
+      EventSortField sortField = EventSortUnsorted,
+      SortDirection sortDirection = SortDirectionAscending ) = 0;
+    virtual Akonadi::Item::List rawEventsFORAKONADI(
       EventSortField sortField = EventSortUnsorted,
       SortDirection sortDirection = SortDirectionAscending ) = 0;
 
@@ -619,6 +675,7 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
       timestamp.
     */
     virtual KCal::Event::List rawEventsForDate( const KDateTime &dt ) = 0;
+    virtual Akonadi::Item::List rawEventsForDateFORAKONADI( const KDateTime &dt ) = 0;
 
     /**
       Returns an unfiltered list of all KCal::Events occurring within a date range.
@@ -636,6 +693,9 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
     virtual KCal::Event::List rawEvents( const QDate &start, const QDate &end,
                                    const KDateTime::Spec &timeSpec = KDateTime::Spec(),
                                    bool inclusive = false ) = 0;
+    virtual Akonadi::Item::List rawEventsFORAKONADI( const QDate &start, const QDate &end,
+                                           const KDateTime::Spec &timeSpec = KDateTime::Spec(),
+                                           bool inclusive = false ) = 0;
 
     /**
       Returns a sorted, unfiltered list of all KCal::Events which occur on the given
@@ -654,6 +714,10 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
       const QDate &date, const KDateTime::Spec &timeSpec = KDateTime::Spec(),
       EventSortField sortField = EventSortUnsorted,
       SortDirection sortDirection = SortDirectionAscending ) = 0;
+    virtual Akonadi::Item::List rawEventsForDateFORAKONADI(
+      const QDate &date, const KDateTime::Spec &timeSpec = KDateTime::Spec(),
+      EventSortField sortField = EventSortUnsorted,
+      SortDirection sortDirection = SortDirectionAscending ) = 0;
 
     /**
       Returns the KCal::Event associated with the given unique identifier.
@@ -664,6 +728,7 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
       A null pointer is returned if no such KCal::Event exists.
     */
     virtual KCal::Event *event( const QString &uid ) = 0;
+    virtual Akonadi::Item eventFORAKONADI( const Akonadi::Item::Id &uid ) = 0;
 
   // KCal::Todo Specific Methods //
 
@@ -677,6 +742,7 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
       @see deleteTodo()
     */
     virtual bool addTodo( KCal::Todo *todo ) = 0;
+    virtual bool addTodoFORAKONADI( const Akonadi::Item &todo ) = 0;
 
     /**
       Removes a KCal::Todo from the calendar.
@@ -688,12 +754,14 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
       @see addTodo(), deleteAllTodos()
     */
     virtual bool deleteTodo( KCal::Todo *todo ) = 0;
+    virtual bool deleteTodoFORAKONADI( const Akonadi::Item &todo ) = 0;
 
     /**
       Removes all To-dos from the calendar.
       @see deleteTodo()
     */
     virtual void deleteAllTodos() = 0;
+    virtual void deleteAllTodosFORAKONADI() = 0;
 
     /**
       Sort a list of KCal::Todos.
@@ -705,6 +773,9 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
       @return a list of KCal::Todos sorted as specified.
     */
     static KCal::Todo::List sortTodos( KCal::Todo::List *todoList,
+                                 TodoSortField sortField,
+                                 SortDirection sortDirection );
+    static Akonadi::Item::List sortTodosFORAKONADI( const Akonadi::Item::List &todoList,
                                  TodoSortField sortField,
                                  SortDirection sortDirection );
 
@@ -719,6 +790,9 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
     virtual KCal::Todo::List todos(
       TodoSortField sortField = TodoSortUnsorted,
       SortDirection sortDirection = SortDirectionAscending );
+    virtual Akonadi::Item::List todosFORAKONADI(
+      TodoSortField sortField = TodoSortUnsorted,
+      SortDirection sortDirection = SortDirectionAscending );
 
     /**
       Returns a filtered list of all KCal::Todos which are due on the specified date.
@@ -728,6 +802,7 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
       @return the list of filtered KCal::Todos due on the specified date.
     */
     virtual KCal::Todo::List todos( const QDate &date );
+    virtual Akonadi::Item::List todosFORAKONADI( const QDate &date );
 
     /**
       Returns a sorted, unfiltered list of all KCal::Todos for this Calendar.
@@ -740,6 +815,10 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
     virtual KCal::Todo::List rawTodos(
       TodoSortField sortField = TodoSortUnsorted,
       SortDirection sortDirection = SortDirectionAscending ) = 0;
+    virtual Akonadi::Item::List rawTodosFORAKONADI(
+      TodoSortField sortField = TodoSortUnsorted,
+      SortDirection sortDirection = SortDirectionAscending ) = 0;
+
 
     /**
       Returns an unfiltered list of all KCal::Todos which due on the specified date.
@@ -749,6 +828,7 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
       @return the list of unfiltered KCal::Todos due on the specified date.
     */
     virtual KCal::Todo::List rawTodosForDate( const QDate &date ) = 0;
+    virtual Akonadi::Item::List rawTodosForDateFORAKONADI( const QDate &date ) = 0;
 
     /**
       Returns the KCal::Todo associated with the given unique identifier.
@@ -759,6 +839,7 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
       A null pointer is returned if no such KCal::Todo exists.
     */
     virtual KCal::Todo *todo( const QString &uid ) = 0;
+    virtual Akonadi::Item todoFORAKONADI( const Akonadi::Item::Id &id ) = 0;
 
   // KCal::Journal Specific Methods //
 
@@ -772,6 +853,7 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
       @see deleteJournal()
     */
     virtual bool addJournal( KCal::Journal *journal ) = 0;
+    virtual bool addJournalFORAKONADI( const Akonadi::Item &journal ) = 0;
 
     /**
       Removes a KCal::Journal from the calendar.
@@ -783,12 +865,14 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
       @see addJournal(), deleteAllJournals()
     */
     virtual bool deleteJournal( KCal::Journal *journal ) = 0;
+    virtual bool deleteJournalFORAKONADI( const Akonadi::Item &journal ) = 0;
 
     /**
       Removes all KCal::Journals from the calendar.
       @see deleteJournal()
     */
     virtual void deleteAllJournals() = 0;
+    virtual void deleteAllJournalsFORAKONADI() = 0;
 
     /**
       Sort a list of KCal::Journals.
@@ -802,6 +886,10 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
     static KCal::Journal::List sortJournals( KCal::Journal::List *journalList,
                                        JournalSortField sortField,
                                        SortDirection sortDirection );
+    static Akonadi::Item::List sortJournalsFORAKONADI( const Akonadi::Item::List &journalList,
+                                       JournalSortField sortField,
+                                       SortDirection sortDirection );
+
     /**
       Returns a sorted, filtered list of all KCal::Journals for this Calendar.
 
@@ -813,6 +901,9 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
     virtual KCal::Journal::List journals(
       JournalSortField sortField = JournalSortUnsorted,
       SortDirection sortDirection = SortDirectionAscending );
+    virtual Akonadi::Item::List journalsFORAKONADI(
+      JournalSortField sortField = JournalSortUnsorted,
+      SortDirection sortDirection = SortDirectionAscending );
 
     /**
       Returns a filtered list of all KCal::Journals for on the specified date.
@@ -822,6 +913,7 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
       @return the list of filtered KCal::Journals for the specified date.
     */
     virtual KCal::Journal::List journals( const QDate &date );
+    virtual Akonadi::Item::List journalsFORAKONADI( const QDate &date );
 
     /**
       Returns a sorted, unfiltered list of all KCal::Journals for this Calendar.
@@ -835,6 +927,10 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
       JournalSortField sortField = JournalSortUnsorted,
       SortDirection sortDirection = SortDirectionAscending ) = 0;
 
+    virtual Akonadi::Item::List rawJournalsFORAKONADI(
+      JournalSortField sortField = JournalSortUnsorted,
+      SortDirection sortDirection = SortDirectionAscending ) = 0;
+
     /**
       Returns an unfiltered list of all KCal::Journals for on the specified date.
 
@@ -843,6 +939,7 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
       @return the list of unfiltered KCal::Journals for the specified date.
     */
     virtual KCal::Journal::List rawJournalsForDate( const QDate &date ) = 0;
+    virtual Akonadi::Item::List rawJournalsForDateFORAKONADI( const QDate &date ) = 0;
 
     /**
       Returns the KCal::Journal associated with the given unique identifier.
@@ -853,6 +950,7 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
       A null pointer is returned if no such KCal::Journal exists.
     */
     virtual KCal::Journal *journal( const QString &uid ) = 0;
+    virtual Akonadi::Item journalFORAKONADI( const Akonadi::Item::Id &id ) = 0;
 
     /**
       Emits the beginBatchAdding() signal.
@@ -887,6 +985,7 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
       Relation setup.
     */
     virtual void setupRelations( KCal::Incidence *incidence );
+    virtual void setupRelationsFORAKONADI( const Akonadi::Item& incidence );
 
     /**
       Removes all Relations from an KCal::Incidence.
@@ -895,6 +994,7 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
       Relation removed.
     */
     virtual void removeRelations( KCal::Incidence *incidence );
+    virtual void removeRelationsFORAKONADI( const Akonadi::Item &incidence );
 
   // Filter Specific Methods //
 
@@ -961,6 +1061,7 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
           @param incidence is a pointer to the KCal::Incidence that was inserted.
         */
         virtual void calendarIncidenceAdded( KCal::Incidence *incidence );
+        virtual void calendarIncidenceAddedFORAKONADI( const Akonadi::Item &incidence );
 
         /**
           Notify the Observer that an KCal::Incidence has been modified.
@@ -968,6 +1069,7 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
           @param incidence is a pointer to the KCal::Incidence that was modified.
         */
         virtual void calendarIncidenceChanged( KCal::Incidence *incidence );
+        virtual void calendarIncidenceChangedFORAKONADI( const Akonadi::Item  &incidence );
 
         /**
           Notify the Observer that an KCal::Incidence has been removed.
@@ -975,6 +1077,8 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
           @param incidence is a pointer to the KCal::Incidence that was removed.
         */
         virtual void calendarIncidenceDeleted( KCal::Incidence *incidence );
+        virtual void calendarIncidenceDeletedFORAKONADI( const Akonadi::Item &incidence );
+
     };
 
     /**
@@ -1049,6 +1153,7 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
       @param incidence is a pointer to the KCal::Incidence object that was inserted.
     */
     void notifyIncidenceAdded( KCal::Incidence *incidence );
+    void notifyIncidenceAddedFORAKONADI( const Akonadi::Item &incidence );
 
     /**
       Let Calendar subclasses notify that they modified an KCal::Incidence.
@@ -1056,6 +1161,7 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
       @param incidence is a pointer to the KCal::Incidence object that was modified.
     */
     void notifyIncidenceChanged( KCal::Incidence *incidence );
+    void notifyIncidenceChangedFORAKONADI( const Akonadi::Item &incidence );
 
     /**
       Let Calendar subclasses notify that they removed an KCal::Incidence.
@@ -1063,6 +1169,7 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
       @param incidence is a pointer to the KCal::Incidence object that was removed.
     */
     void notifyIncidenceDeleted( KCal::Incidence *incidence );
+    void notifyIncidenceDeletedFORAKONADI( const Akonadi::Item &incidence );
 
     /**
       @copydoc
@@ -1089,6 +1196,8 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
     */
     void appendAlarms( KCal::Alarm::List &alarms, KCal::Incidence *incidence,
                        const KDateTime &from, const KDateTime &to );
+    void appendAlarmsFORAKONADI( KCal::Alarm::List &alarms, const Akonadi::Item &incidence,
+                       const KDateTime &from, const KDateTime &to );
 
     /**
       Appends alarms of recurring events in interval to list of alarms.
@@ -1100,6 +1209,8 @@ class KCAL_EXPORT CalendarBase : public QObject, public KCal::CustomProperties,
       @param to is the upper range of the next KCal::Alarm repitition.
     */
     void appendRecurringAlarms( KCal::Alarm::List &alarms, KCal::Incidence *incidence,
+                                const KDateTime &from, const KDateTime &to );
+    void appendRecurringAlarmsFORAKONADI( KCal::Alarm::List &alarms, const Akonadi::Item &incidence,
                                 const KDateTime &from, const KDateTime &to );
 
   private:
