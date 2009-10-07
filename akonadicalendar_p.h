@@ -75,17 +75,13 @@ class AkonadiCalendarCollection : public QObject
     }
 };
 
-class AkonadiCalendarItem : public QObject
+class AkonadiCalendarItem
 {
-    Q_OBJECT
   public:
-    AkonadiCalendar *m_calendar;
     Akonadi::Item m_item; //needed to keep an instance to increment shared_ptr ref-counter
 
-    AkonadiCalendarItem(AkonadiCalendar *calendar, const Akonadi::Item &item)
-      : QObject()
-      , m_calendar(calendar)
-      , m_item(item)
+    AkonadiCalendarItem(const Akonadi::Item &item)
+      : m_item(item)
     {
     }
 
@@ -98,7 +94,6 @@ class AkonadiCalendarItem : public QObject
       Q_ASSERT( m_item.hasPayload<KCal::Incidence::Ptr>() );
       return m_item.payload<KCal::Incidence::Ptr>();
     }
-
 };
 
 class KOrg::AkonadiCalendar::Private : public QObject
@@ -415,7 +410,7 @@ class KOrg::AkonadiCalendar::Private : public QObject
               continue;
             }
     
-            m_itemMap[ uid ] = new AkonadiCalendarItem(q, item);
+            m_itemMap[ uid ] = new AkonadiCalendarItem(item);
             m_incidenceForDate.insert( incidence->dtStart().date().toString(), incidence );
             m_uidToItemId.insert( incidence->uid(), uid );
             assertInvariants();
