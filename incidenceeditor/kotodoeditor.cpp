@@ -244,7 +244,9 @@ void KOTodoEditor::setTexts( const QString &summary, const QString &description,
 void KOTodoEditor::loadDefaults()
 {
   setDates( QDateTime::currentDateTime().addDays(7), true, 0 );
+#if KDAB_TEMPORARILY_REMOVED
   mGeneral->toggleAlarm( KOPrefs::instance()->defaultTodoReminders() );
+#endif
 }
 
 bool KOTodoEditor::processInput()
