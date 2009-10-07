@@ -38,7 +38,7 @@
 #include "calendarview.h"
 #include "freebusymanager.h"
 #include "koprefs.h"
-#include "koincidenceeditor.h"
+#include "incidenceeditor/koincidenceeditor.h"
 #include "mailscheduler.h"
 #include "akonadicalendar.h"
 

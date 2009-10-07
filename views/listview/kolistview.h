@@ -27,7 +27,7 @@
 #define KOLISTVIEW_H
 
 #include "koeventview.h"
-#include "customlistviewitem.h"
+#include "incidenceeditor/customlistviewitem.h"
 
 #include <KCal/Incidence>
 

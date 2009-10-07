@@ -202,7 +202,7 @@ if(KMAIL_SUPPORTED)
 
   kde4_add_kcfg_files(korganizerprivate_LIB_SRCS koprefs_base.kcfgc )
   kde4_add_ui_files(korganizerprivate_LIB_SRCS
-    filteredit_base.ui publishdialog_base.ui template_management_dialog_base.ui kogroupwareprefspage.ui searchdialog_base.ui timescaleedit_base.ui
+    filteredit_base.ui publishdialog_base.ui kogroupwareprefspage.ui searchdialog_base.ui timescaleedit_base.ui
     printing/calprintincidenceconfig_base.ui printing/calprintdayconfig_base.ui printing/calprintmonthconfig_base.ui printing/calprinttodoconfig_base.ui printing/calprintweekconfig_base.ui
   )
 
@@ -224,6 +224,7 @@ if(KMAIL_SUPPORTED)
     ${KDEPIMLIBS_AKONADI_LIBS}
     korganizer_eventviewer korganizer_interfaces
     kdepim
+    korg_incidenceeditor
   )
 
   set_target_properties(korganizerprivate PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
