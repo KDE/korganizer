@@ -58,6 +58,7 @@ if(KMAIL_SUPPORTED)
   add_subdirectory( plugins )
   add_subdirectory( interfaces )
   add_subdirectory( kcmconfigs )
+  add_subdirectory( incidenceeditor )
 
   set( PERL ${PERL_EXECUTABLE} )
   configure_file(${CMAKE_CURRENT_SOURCE_DIR}/ical2vcal.cmake ${CMAKE_CURRENT_BINARY_DIR}/ical2vcal @ONLY)
@@ -168,21 +169,8 @@ if(KMAIL_SUPPORTED)
     koviewmanager.cpp
     kodialogmanager.cpp
     archivedialog.cpp
-    koincidenceeditor.cpp
-    koeventeditor.cpp
-    kotodoeditor.cpp
-    kojournaleditor.cpp
     kowindowlist.cpp
-    koeditorgeneral.cpp
-    koeditorgeneralevent.cpp
-    koeditorgeneraltodo.cpp
-    koeditorgeneraljournal.cpp
-    koeditordetails.cpp
-    koeditoralarms.cpp
-    koeditorrecurrence.cpp
-    koeditorattachments.cpp
     koeventpopupmenu.cpp
-    koeditorfreebusy.cpp
     publishdialog.cpp
     koeventview.cpp
     filtereditdialog.cpp
@@ -204,7 +192,6 @@ if(KMAIL_SUPPORTED)
     exportwebdialog.cpp
     kocorehelper.cpp
     incidencechanger.cpp
-    koattendeeeditor.cpp
     templatemanagementdialog.cpp
     stdcalendar.cpp
     koprefs.cpp kocore.cpp kohelper.cpp koidentitymanager.cpp cellitem.cpp
@@ -219,7 +206,7 @@ if(KMAIL_SUPPORTED)
 
   kde4_add_kcfg_files(korganizerprivate_LIB_SRCS koprefs_base.kcfgc )
   kde4_add_ui_files(korganizerprivate_LIB_SRCS
-    filteredit_base.ui koeditoralarms_base.ui publishdialog_base.ui template_management_dialog_base.ui kogroupwareprefspage.ui searchdialog_base.ui timescaleedit_base.ui
+    filteredit_base.ui publishdialog_base.ui template_management_dialog_base.ui kogroupwareprefspage.ui searchdialog_base.ui timescaleedit_base.ui
     printing/calprintincidenceconfig_base.ui printing/calprintdayconfig_base.ui printing/calprintmonthconfig_base.ui printing/calprinttodoconfig_base.ui printing/calprintweekconfig_base.ui
   )
 
