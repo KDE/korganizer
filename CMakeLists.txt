@@ -114,6 +114,9 @@ if(KMAIL_SUPPORTED)
   set(korganizer_eventviewer_LIB_SRCS koeventviewer.cpp koeventviewerdialog.cpp komailclient.cpp)
 
 
+  qt4_add_dbus_interfaces( korganizer_eventviewer_LIB_SRCS ${CMAKE_SOURCE_DIR}/korganizer/korgac/org.kde.korganizer.KOrgac.xml)
+  qt4_add_dbus_interfaces( korganizer_eventviewer_LIB_SRCS ${CMAKE_SOURCE_DIR}/korganizer/org.kde.korganizer.Korganizer.xml)
+  qt4_add_dbus_interfaces( korganizer_eventviewer_LIB_SRCS ${CMAKE_BINARY_DIR}/kmail/org.kde.kmail.kmail.xml)
 
   kde4_add_library(korganizer_eventviewer SHARED ${korganizer_eventviewer_LIB_SRCS})
   add_dependencies(korganizer_eventviewer kmail_xml)
