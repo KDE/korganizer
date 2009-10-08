@@ -29,14 +29,20 @@
 #include "koprefs.h"
 #include "koglobals.h"
 
+#include <akonadi/kcal/utils.h>
+
+#include <Akonadi/Item>
+
 #include <KCal/Incidence>
 
 #include <KCalendarSystem>
+
 
 #include <QGraphicsSceneMouseEvent>
 #include <QGraphicsSceneWheelEvent>
 #include <QPaintEvent>
 
+using namespace Akonadi;
 using namespace KOrg;
 
 MonthScene::MonthScene( MonthView *parent, CalendarBase *calendar )
@@ -667,12 +673,12 @@ void MonthScene::selectItem( MonthItem *item )
 
   if ( !tmp ) {
     mSelectedItem = 0;
-    emit incidenceSelected( 0, QDate() );
+    emit incidenceSelected( Item(), QDate() );
     return;
   }
 
   mSelectedItem = item;
-  Q_ASSERT( tmp->incidence() );
+  Q_ASSERT( Akonadi::hasIncidence( tmp->incidence() ) );
 
   if ( mMonthView && mMonthView->selectedDates().isEmpty() ) {
     emit incidenceSelected( tmp->incidence(), QDate() );

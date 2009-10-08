@@ -59,6 +59,9 @@ namespace KOHelper
   */
   KORGANIZER_CORE_EXPORT QColor resourceColor( KOrg::CalendarBase *calendar,
                                                KCal::Incidence *incidence );
+  KORGANIZER_CORE_EXPORT QColor resourceColor( KOrg::CalendarBase *calendar,
+                                               const Akonadi::Item & incidence );
+
   /**
     Returns the number of years between the @p start QDate and the @p end QDate
   */

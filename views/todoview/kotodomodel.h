@@ -29,6 +29,8 @@
 #include <QString>
 #include <QHash>
 
+#include <Akonadi/Item>
+
 namespace KCal {
   class Incidence;
   class Todo;
@@ -80,7 +82,7 @@ class KOTodoModel : public QAbstractItemModel
     /** Reloads all todos from the Calendar provided during construction */
     void reloadTodos();
     /** Reloads only the specified todo (if the incidence is a todo) */
-    void processChange( Incidence *incidence, int action );
+    void processChange( const Akonadi::Item &incidence, int action );
 
     /** Creates a new todo with the given text as summary under the given parent */
     QModelIndex addTodo( const QString &summary,
@@ -147,7 +149,7 @@ class KOTodoModel : public QAbstractItemModel
     /** Move the TodoTreeNode if the relationship of the todo's parent has
      *  changed and return a model index to the current node.
      */
-    QModelIndex moveIfParentChanged( TodoTreeNode *curNode, Todo *todo,
+    QModelIndex moveIfParentChanged( TodoTreeNode *curNode, const Akonadi::Item &todo,
                                      bool addParentIfMissing );
 
    /** Recursively find a todo.
@@ -156,7 +158,7 @@ class KOTodoModel : public QAbstractItemModel
     * @return Pointer to the TodoTreeNode node which represents the todo
     *         searched for or 0 if not found.
     */
-    TodoTreeNode *findTodo( const Todo *todo ) const;
+    TodoTreeNode *findTodo( const KCal::Todo* todo ) const;
 
     /**
      * If the todo is overdue or due today, the expandIndex signal
@@ -165,7 +167,7 @@ class KOTodoModel : public QAbstractItemModel
      *
      * @param todo the todo whose parents will be expanded if needed
      */
-    void expandTodoIfNeeded( const Todo *todo );
+    void expandTodoIfNeeded( const KCal::Todo* todo );
 
     /**
      * Returns true if there's a loop, e.g.: t1 is parent of
@@ -173,7 +175,7 @@ class KOTodoModel : public QAbstractItemModel
      *
      * @param todo the todo that will be checked
      */
-    bool isInHierarchyLoop( const Todo *todo ) const;
+    bool isInHierarchyLoop( const KCal::Todo* todo ) const;
 
     /** Insert a todo at the right place in the todo tree.
      *
@@ -183,7 +185,7 @@ class KOTodoModel : public QAbstractItemModel
      *                     recursively linked todos.
      * @return Pointer to the newly inserted TodoTreeNode node.
      */
-    TodoTreeNode *insertTodo( Todo *todo, bool checkRelated = true );
+    TodoTreeNode *insertTodo( const Akonadi::Item &todo, bool checkRelated = true );
 
     /** Count of columns each item has */
     const int mColumnCount;

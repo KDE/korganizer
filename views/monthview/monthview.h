@@ -27,6 +27,8 @@
 
 #include "koeventview.h"
 
+#include <Akonadi/Item>
+
 class KOEventPopupMenu;
 
 class QWheelEvent;
@@ -80,9 +82,9 @@ class MonthView : public KOEventView
      */
     virtual void showDates( const QDate &start, const QDate &end );
 
-    virtual void showIncidences( const Incidence::List &incidenceList, const QDate &date );
+    virtual void showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date );
 
-    void changeIncidenceDisplay( Incidence *, int );
+    void changeIncidenceDisplay( const Akonadi::Item &, int );
 
   protected slots:
     void moveBackMonth();
@@ -102,7 +104,7 @@ class MonthView : public KOEventView
     void reloadIncidences();
 
   private:
-    void addIncidence( Incidence *incidence );
+    void addIncidence( const Akonadi::Item &incidence );
     void moveStartDate( int weeks, int months );
     void setStartDate( const QDate &start );
 

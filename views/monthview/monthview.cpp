@@ -31,6 +31,8 @@
 #include "koprefs.h"
 #include "koeventpopupmenu.h"
 
+#include <akonadi/kcal/utils.h>
+
 #include <KCal/Incidence>
 
 #include <QVBoxLayout>
@@ -41,6 +43,7 @@
 #include <QDate>
 #include <QTimer>
 
+using namespace Akonadi;
 using namespace KOrg;
 
 MonthView::MonthView( CalendarBase *calendar, QWidget *parent )
@@ -169,13 +172,13 @@ bool MonthView::eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &a
   return false;
 }
 
-void MonthView::showIncidences( const Incidence::List &incidenceList, const QDate &date )
+void MonthView::showIncidences( const Item::List &incidenceList, const QDate &date )
 {
   Q_UNUSED( incidenceList );
   Q_UNUSED( date );
 }
 
-void MonthView::changeIncidenceDisplay( Incidence *incidence, int action )
+void MonthView::changeIncidenceDisplay( const Item &incidence, int action )
 {
   Q_UNUSED( incidence );
   Q_UNUSED( action );
@@ -189,7 +192,7 @@ void MonthView::changeIncidenceDisplay( Incidence *incidence, int action )
   QTimer::singleShot( 0, this, SLOT(reloadIncidences()) );
 }
 
-void MonthView::addIncidence( Incidence *incidence )
+void MonthView::addIncidence( const Item &incidence )
 {
   Q_UNUSED( incidence );
 
@@ -318,7 +321,7 @@ Akonadi::Item::List MonthView::selectedIncidences()
 void MonthView::reloadIncidences()
 {
   // keep selection if it exists
-  Incidence *incidenceSelected = 0;
+  Akonadi::Item incidenceSelected;
 
   MonthItem *itemToReselect = 0;
   QDate selectedItemDate;
@@ -345,16 +348,17 @@ void MonthView::reloadIncidences()
 
   // build global event list
   KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
-  Incidence::List incidences = calendar()->incidences();
+  const Item::List incidences = calendar()->incidencesFORAKONADI();
 
-  foreach ( Incidence *incidence, incidences ) {
-    if ( incidence->type() == "Todo" && !KOPrefs::instance()->showTodosMonthView() ) {
+  foreach ( const Item &aitem, incidences ) {
+    if ( Akonadi::hasTodo( aitem ) && !KOPrefs::instance()->showTodosMonthView() ) {
       continue;
     }
-    if ( incidence->type() == "Journal" && !KOPrefs::instance()->showJournalsMonthView() ) {
+    if ( Akonadi::hasJournal( aitem ) && !KOPrefs::instance()->showJournalsMonthView() ) {
       continue;
     }
 
+    const Incidence::Ptr incidence = Akonadi::incidence( aitem );
     KDateTime incDtStart = incidence->dtStart().toTimeSpec( timeSpec );
     KDateTime incDtEnd   = incidence->dtEnd().toTimeSpec( timeSpec );
 
@@ -362,8 +366,7 @@ void MonthView::reloadIncidences()
     // have to check at least those dates before the start date, which would
     // cause the event to span into the displayed date range.
     int offset = 0;
-    Event *event;
-    if ( ( event = static_cast<Event *>( incidence ) ) ) {
+    if ( Akonadi::hasEvent( aitem ) ) {
       offset = incDtStart.daysTo( incDtEnd );
     }
 
@@ -378,8 +381,7 @@ void MonthView::reloadIncidences()
     } else {
       KDateTime dateToAdd;
 
-      if ( incidence->type() == "Todo" ) {
-        Todo *todo = static_cast<Todo *>( incidence );
+      if ( Todo::Ptr todo = Akonadi::todo( aitem ) ) {
         if ( todo->hasDueDate() ) {
           dateToAdd = todo->dtDue();
         }
@@ -394,10 +396,10 @@ void MonthView::reloadIncidences()
     DateTimeList::iterator t;
     for ( t = dateTimeList.begin(); t != dateTimeList.end(); ++t ) {
       MonthItem *manager = new IncidenceMonthItem( mScene,
-                                                   incidence,
+                                                   aitem,
                                                    t->toTimeSpec( timeSpec ).date() );
       mScene->mManagerList << manager;
-      if ( incidenceSelected == incidence &&
+      if ( incidenceSelected == aitem &&
            manager->realStartDate() == selectedItemDate ) {
         // only select it outside the loop because we are still creating items
         itemToReselect = manager;

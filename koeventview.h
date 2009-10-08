@@ -32,6 +32,9 @@
 namespace KCal {
   class Incidence;
 }
+namespace Akonadi {
+  class Item;
+}
 using namespace KCal;
 
 class KOEventPopupMenu;
@@ -87,7 +90,7 @@ class KOEventView : public KOrg::BaseView
     /** This view is a view for displaying events. */
     bool isEventView() { return true; }
 
-    int showMoveRecurDialog( Incidence *inc, const QDate &date );
+    int showMoveRecurDialog( const Akonadi::Item &inc, const QDate &date );
 
     /**
      * Handles key events, opens the new event dialog when enter is pressed, activates
@@ -111,7 +114,7 @@ class KOEventView : public KOrg::BaseView
      * a particular occurrence.
      *
      */
-    static bool usesCompletedTodoPixmap( Todo *todo, const QDate &date );
+    static bool usesCompletedTodoPixmap( const Akonadi::Item &todo, const QDate &date );
 
   public slots:
 
@@ -125,7 +128,7 @@ class KOEventView : public KOrg::BaseView
      Perform the default action for an incidence, e.g. open the event editor,
      when double-clicking an event in the agenda view.
     */
-    void defaultAction( Incidence * );
+    void defaultAction( const Akonadi::Item &incidence );
 
   signals:
     /**
@@ -153,7 +156,7 @@ class KOEventView : public KOrg::BaseView
     virtual void showNewEventPopup();
 
   protected:
-    Incidence *mCurrentIncidence;  // Incidence selected e.g. for a context menu
+    Akonadi::Item mCurrentIncidence;  // Incidence selected e.g. for a context menu
 
   private:
 

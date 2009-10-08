@@ -40,7 +40,7 @@ namespace KOrg {
     class CalendarBase;
 }
 
-typedef CustomListViewItem<Incidence *> KOListViewItem;
+typedef CustomListViewItem<Akonadi::Item> KOListViewItem;
 
 class KOListView;
 
@@ -90,14 +90,14 @@ class KOListView : public KOEventView
   public slots:
     virtual void updateView();
     virtual void showDates( const QDate &start, const QDate &end );
-    virtual void showIncidences( const Incidence::List &incidenceList, const QDate &date );
+    virtual void showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date );
 
     void clearSelection();
 
     void showDates();
     void hideDates();
 
-    void changeIncidenceDisplay( Incidence *, int );
+    void changeIncidenceDisplay( const Akonadi::Item &, int );
 
     void defaultItemAction( Q3ListViewItem *item );
     void popupMenu( Q3ListViewItem *item, const QPoint &, int );
@@ -106,9 +106,9 @@ class KOListView : public KOEventView
     void processSelectionChange();
 
   protected:
-    void addIncidences( const Incidence::List &incidenceList, const QDate & );
-    void addIncidence( Incidence *incidence, const QDate &date );
-    KOListViewItem *getItemForIncidence( Incidence *incidence );
+    void addIncidences( const Akonadi::Item::List &incidenceList, const QDate & );
+    void addIncidence( const Akonadi::Item &, const QDate &date );
+    KOListViewItem *getItemForIncidence( const Akonadi::Item & );
 
   private:
     class ListItemVisitor;

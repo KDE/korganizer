@@ -27,6 +27,8 @@
 
 #include "cellitem.h"
 
+#include <Akonadi/Item>
+
 #include <QDate>
 #include <QList>
 #include <QWidget>
@@ -90,7 +92,7 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
 {
   Q_OBJECT
   public:
-    KOAgendaItem( KOrg::CalendarBase *calendar, Incidence *incidence, const QDate &qd, QWidget *parent );
+    KOAgendaItem( KOrg::CalendarBase *calendar, const Akonadi::Item &incidence, const QDate &qd, QWidget *parent );
     ~KOAgendaItem();
 
     int cellXLeft() const { return mCellXLeft; }
@@ -162,8 +164,8 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
 
     bool dissociateFromMultiItem();
 
-    void setIncidence( Incidence *incidence );
-    Incidence *incidence() const { return mIncidence; }
+    void setIncidence( const Akonadi::Item &incidence );
+    const Akonadi::Item & incidence() const { return mIncidence; }
     QDate itemDate() { return mDate; }
 
     /** Update the date of this item's occurrence (not in the event) */
@@ -229,7 +231,7 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     int mSubCells;  // Total number of subcells in cell of this item
 
     KOrg::CalendarBase *mCalendar;
-    Incidence *mIncidence;
+    Akonadi::Item mIncidence;
     QDate mDate;
     bool mValid;
     bool mCloned;

@@ -39,6 +39,8 @@
 #include <KCal/VCalDrag>
 #endif
 
+#include <akonadi/kcal/utils.h>
+
 #include <KPIMUtils/Email>
 
 #include <KDebug>
@@ -51,23 +53,27 @@
 #include <QMimeData>
 #endif
 
+using namespace Akonadi;
+
 /** This class represents a node in the todo-tree. */
 struct KOTodoModel::TodoTreeNode : QObject
 {
-  TodoTreeNode( Todo *todo, TodoTreeNode *parent, KOTodoModel *model )
-    : mTodo( todo ), mParent( parent ), mParentListPos( 0 ),
+  TodoTreeNode( const Item &todo_, TodoTreeNode *parent, KOTodoModel *model )
+    : mTodo( todo_ ), mParent( parent ), mParentListPos( 0 ),
       mToDelete( false ), mModel( model )
   {
-    if ( mTodo ) {
-      mUid = mTodo->uid();
-      mModel->mTodoHash[ mUid ] = this;
+    Todo::Ptr todo = Akonadi::todo( mTodo );
+    if ( todo ) {
+      mUid = todo->uid();
+      mModel->mTodoHash.insert( mUid, this );
     }
   }
 
   /** Recursively delete all TodoTreeNodes which are children of this one. */
   ~TodoTreeNode()
   {
-    if ( mTodo ) {
+    Todo::Ptr todo = Akonadi::todo( mTodo );
+    if ( todo ) {
       mModel->mTodoHash.remove( mUid );
     } else {
       // root node gets deleted, clear the whole hash
@@ -79,7 +85,7 @@ struct KOTodoModel::TodoTreeNode : QObject
   /** Checks if it's save to access the todo-pointer of this node. */
   bool isValid()
   {
-    return mTodo && !mToDelete;
+    return Akonadi::hasTodo( mTodo ) && !mToDelete;
   }
 
   /** Recursively set mToDelete to true for all todos.
@@ -105,7 +111,7 @@ struct KOTodoModel::TodoTreeNode : QObject
       toCheck << mChildren;
       while ( !toCheck.isEmpty() ) {
         TodoTreeNode *node = toCheck.takeFirst();
-        Q_ASSERT ( node->mToDelete || !node->mTodo->relatedTo() );
+        Q_ASSERT ( node->mToDelete || ! Akonadi::todo( node->mTodo )->relatedTo() );
         toCheck << node->mChildren;
       }
 #endif
@@ -128,7 +134,7 @@ struct KOTodoModel::TodoTreeNode : QObject
    *  Note: public field for performance reason, and because this
    *  class is only used internally from KOTodoModel
    */
-  Todo *mTodo;
+  Item mTodo;
   /** Pointer to the parent TodoTreeNode. Only the root element has no parent. */
   TodoTreeNode *mParent;
   /** Position of this TodoTreeNode in it's parents children list */
@@ -175,7 +181,7 @@ struct KOTodoModel::TodoTreeNode : QObject
 KOTodoModel::KOTodoModel( CalendarBase *cal, QObject *parent )
   : QAbstractItemModel( parent ), mColumnCount( DescriptionColumn + 1 )
 {
-  mRootNode = new TodoTreeNode( 0, 0, this );
+  mRootNode = new TodoTreeNode( Item(), 0, this );
   mFlatView = false;
   setCalendar( cal );
 
@@ -188,7 +194,7 @@ KOTodoModel::KOTodoModel( CalendarBase *cal, QObject *parent )
 #endif
 }
 
-static bool isDueToday( const Todo *todo )
+static bool isDueToday( const Todo* todo )
 {
   return !todo->isCompleted() && todo->dtDue().date() == QDate::currentDate();
 }
@@ -213,7 +219,7 @@ void KOTodoModel::setCalendar( CalendarBase *cal )
 void KOTodoModel::clearTodos()
 {
   delete mRootNode;
-  mRootNode = new TodoTreeNode( 0, 0, this );
+  mRootNode = new TodoTreeNode( Item(), 0, this );
   // inform all views that we cleared our internal list
   reset();
 }
@@ -229,11 +235,11 @@ void KOTodoModel::reloadTodos()
   // never delete the root node
   mRootNode->mToDelete = false;
 
-  Todo::List todoList = mCalendar->todos();
-  Todo::List::ConstIterator it;
+  Item::List todoList = mCalendar->todosFORAKONADI();
+  Item::List::ConstIterator it;
   QList<TodoTreeNode*> changedNodes;
   for ( it = todoList.constBegin(); it != todoList.constEnd(); ++it ) {
-    TodoTreeNode *tmp = findTodo( *it );
+    TodoTreeNode *tmp = findTodo( Akonadi::todo( *it ).get() );
     if ( !tmp ) {
       insertTodo( *it );
     } else {
@@ -260,21 +266,19 @@ void KOTodoModel::reloadTodos()
   }
 }
 
-void KOTodoModel::processChange( Incidence *incidence, int action )
+void KOTodoModel::processChange( const Item & aitem, int action )
 {
-  if ( incidence->type() != "Todo" ) {
+  if ( !Akonadi::hasTodo( aitem ) ) {
     return;
   }
 
-  Todo *todo = static_cast<Todo *>( incidence );
-
   if ( action == KOGlobals::INCIDENCEEDITED ) {
-    TodoTreeNode *ttTodo = findTodo( todo );
+    TodoTreeNode *ttTodo = findTodo( Akonadi::todo( aitem ).get() );
     if ( !ttTodo || !ttTodo->isValid() ) {
       return;
     }
 
-    QModelIndex miChanged = moveIfParentChanged( ttTodo, todo, false );
+    QModelIndex miChanged = moveIfParentChanged( ttTodo, aitem, false );
 
     // force the view to redraw the element even if the parent relationship
     // changed, because we can't be sure that only the relationship changed
@@ -282,11 +286,11 @@ void KOTodoModel::processChange( Incidence *incidence, int action )
                       miChanged.sibling( miChanged.row(), mColumnCount - 1 ) );
   } else if ( action == KOGlobals::INCIDENCEADDED ) {
     // the todo should not be in our tree...
-    Q_ASSERT( !findTodo( todo ) );
+    Q_ASSERT( !findTodo( Akonadi::todo( aitem ).get() ) );
 
-    insertTodo( todo );
+    insertTodo( aitem );
   } else if ( action == KOGlobals::INCIDENCEDELETED ) {
-    TodoTreeNode *ttTodo = findTodo( todo );
+    TodoTreeNode *ttTodo = findTodo( Akonadi::todo( aitem ).get() );
     if ( !ttTodo || !ttTodo->isValid() ) {
       return;
     }
@@ -316,24 +320,28 @@ QModelIndex KOTodoModel::addTodo( const QString &summary,
   }
 
   if ( !summary.trimmed().isEmpty() ) {
-    Todo *todo = new Todo();
+    Todo::Ptr todo( new Todo );
     todo->setSummary( summary.trimmed() );
     todo->setOrganizer( Person( KOPrefs::instance()->fullName(),
                                 KOPrefs::instance()->email() ) );
     if ( parent.isValid() ) {
       TodoTreeNode *node = static_cast<TodoTreeNode *>( parent.internalPointer() );
       if ( node->isValid() ) {
-        todo->setRelatedTo( node->mTodo );
+        todo->setRelatedTo( Akonadi::todo( node->mTodo ).get() );
       }
     }
 
-    if ( !mChanger->addIncidence( todo ) ) {
-      KODialogManager::errorSaveIncidence( 0, todo );
-      delete todo;
+    //PENDING(AKONADI_PORT) create akonadi item
+    if ( !mChanger->addIncidence( todo.get() ) ) {
+      KODialogManager::errorSaveIncidence( 0, todo.get() );
       return QModelIndex();
     }
-
+    //PENDING(AKONADI_PORT) here we will have a problem with adding working async now, so the todo won't be there as of now
+#ifdef AKONADI_PORT_DISABLED
     return getModelIndex( findTodo( todo ) );
+#else
+    return QModelIndex();
+#endif
   }
 
   return QModelIndex();
@@ -350,7 +358,7 @@ void KOTodoModel::copyTodo( const QModelIndex &index, const QDate &date )
     return;
   }
 
-  Todo *todo = node->mTodo->clone();
+  Todo::Ptr todo( Akonadi::todo( node->mTodo )->clone() );
 
   todo->setUid( CalFormat::createUniqueId() );
 
@@ -358,9 +366,8 @@ void KOTodoModel::copyTodo( const QModelIndex &index, const QDate &date )
   due.setDate( date );
   todo->setDtDue( due );
 
-  if ( !mChanger->addIncidence( todo ) ) {
-    KODialogManager::errorSaveIncidence( 0, todo );
-    delete todo;
+  if ( !mChanger->addIncidence( todo.get() ) ) {
+    KODialogManager::errorSaveIncidence( 0, todo.get() );
   }
 }
 
@@ -374,9 +381,11 @@ QModelIndex KOTodoModel::getModelIndex( TodoTreeNode *node ) const
   return createIndex( node->mParentListPos, 0, node );
 }
 
-QModelIndex KOTodoModel::moveIfParentChanged( TodoTreeNode *curNode, Todo *todo,
+QModelIndex KOTodoModel::moveIfParentChanged( TodoTreeNode *curNode, const Item &aitem,
                                               bool addParentIfMissing )
 {
+#ifdef AKONADI_PORT_DISABLED //review the newParent stuff down there
+  const Todo::Ptr todo = Akonadi::todo( aitem );
   // find the model index of the changed incidence
   QModelIndex miChanged = getModelIndex( curNode );
 
@@ -384,12 +393,12 @@ QModelIndex KOTodoModel::moveIfParentChanged( TodoTreeNode *curNode, Todo *todo,
   TodoTreeNode *ttOldParent = curNode->mParent;
 
   // get the new parent
-  Todo *newParent = 0;
+  Todo::Ptr newParent;
 
   if ( !mFlatView ) {
     // in flat view, no todo has a parent
 
-    if ( !isInHierarchyLoop( todo ) ) {
+    if ( !isInHierarchyLoop( todo.get() ) ) {
       Incidence *inc = todo->relatedTo();
       if ( inc && inc->type() == "Todo" ) {
         newParent = static_cast<Todo *>( inc );
@@ -398,10 +407,10 @@ QModelIndex KOTodoModel::moveIfParentChanged( TodoTreeNode *curNode, Todo *todo,
   }
 
   // check if the relation to the parent has changed
-  if ( ( newParent == 0 && ttOldParent->mTodo != 0 ) ||
-       ( newParent != 0 && ttOldParent->mTodo == 0 ) ||
-       ( newParent != 0 && ttOldParent->mTodo != 0 &&
-         newParent->uid() != ttOldParent->mTodo->uid() ) ) {
+  if ( ( newParent == 0 && Akonadi::hasTodo( ttOldParent->mTodo ) ) ||
+       ( newParent != 0 && !Akonadi::hasTodo( ttOldParent->mTodo ) ) ||
+       ( newParent != 0 && !Akonadi::hasTodo( ttOldParent->mTodo ) &&
+         newParent->uid() != Akonadi::todo( ttOldParent->mTodo )->uid() ) ) {
     // find the node and model index of the new parent
     TodoTreeNode *ttNewParent = 0;
     if ( newParent ) {
@@ -450,6 +459,9 @@ QModelIndex KOTodoModel::moveIfParentChanged( TodoTreeNode *curNode, Todo *todo,
   }
 
   return miChanged;
+#else
+  return QModelIndex();
+#endif // AKONADI_PORT_DISABLED
 }
 
 KOTodoModel::TodoTreeNode *KOTodoModel::findTodo( const Todo *todo ) const
@@ -501,9 +513,11 @@ bool KOTodoModel::isInHierarchyLoop( const Todo *todo ) const
   return false;
 }
 
-KOTodoModel::TodoTreeNode *KOTodoModel::insertTodo( Todo *todo,
+KOTodoModel::TodoTreeNode *KOTodoModel::insertTodo( const Item &todoItem,
                                                     bool checkRelated )
 {
+#ifdef AKONADI_PORT_DISABLED // how to handle the related incidences where we don't know the item?
+  const Todo::Ptr todo = Akonadi::todo( todoItem );
   Incidence *incidence = todo->relatedTo();
   if ( !mFlatView && checkRelated &&
        incidence && incidence->type() == "Todo" ) {
@@ -512,9 +526,9 @@ KOTodoModel::TodoTreeNode *KOTodoModel::insertTodo( Todo *todo,
 
     // check if there are recursively linked todos
 
-    if ( isInHierarchyLoop( todo ) ) {
+    if ( isInHierarchyLoop( todo.get() ) ) {
       // recursion detected, break recursion
-      return insertTodo( todo, false );
+      return insertTodo( todoItem, false );
     }
 
     // if the parent is not already in the tree, we have to insert it first.
@@ -528,11 +542,11 @@ KOTodoModel::TodoTreeNode *KOTodoModel::insertTodo( Todo *todo,
                                               parent->childrenCount() );
 
     // add the todo under it's parent
-    TodoTreeNode *ret = new TodoTreeNode( todo, parent, this );
+    TodoTreeNode *ret = new TodoTreeNode( todoItem, parent, this );
     parent->addChild( ret );
 
     endInsertRows();
-    expandTodoIfNeeded( todo );
+    expandTodoIfNeeded( todo.get() );
     return ret;
   } else {
     beginInsertRows( getModelIndex( mRootNode ), mRootNode->childrenCount(),
@@ -546,6 +560,9 @@ KOTodoModel::TodoTreeNode *KOTodoModel::insertTodo( Todo *todo,
     expandTodoIfNeeded( todo );
     return ret;
   }
+#else
+  return 0;
+#endif
 }
 
 void KOTodoModel::setFlatView( bool flatView )
@@ -573,7 +590,7 @@ Qt::ItemFlags KOTodoModel::flags( const QModelIndex &index ) const
 
   ret |= Qt::ItemIsDragEnabled;
 
-  Todo *todo = node->mTodo;
+  const Todo::Ptr todo = Akonadi::todo( node->mTodo );
 
   if ( !todo->isReadOnly() ) {
     // the following columns are editable:
@@ -673,7 +690,7 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
     return QVariant();
   }
 
-  Todo *todo = node->mTodo;
+  const Todo::Ptr todo = Akonadi::todo( node->mTodo );
 
   if ( role == Qt::DisplayRole ) {
     switch ( index.column() ) {
@@ -733,7 +750,7 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
     if ( KOPrefs::instance()->enableToolTips() ) {
       //PENDING(AKONADI_PORT): replace QString() by incidence location
       return QVariant( IncidenceFormatter::toolTipStr(
-                         QString(), todo, QDate(), true, KOPrefs::instance()->timeSpec() ) );
+                         QString(), todo.get(), QDate(), true, KOPrefs::instance()->timeSpec() ) );
   } else {
       return QVariant();
     }
@@ -744,7 +761,7 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
     if ( todo->isOverdue() ) {
       return QVariant(
         QBrush( KOPrefs::instance()->agendaCalendarItemsToDosOverdueBackgroundColor() ) );
-    } else if ( isDueToday( todo ) ) {
+    } else if ( isDueToday( todo.get() ) ) {
       return QVariant(
         QBrush( KOPrefs::instance()->agendaCalendarItemsToDosDueTodayBackgroundColor() ) );
     }
@@ -776,7 +793,7 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
 
   if ( role == TodoRole ) {
     QVariant ret( QMetaType::VoidStar );
-    ret.setValue( static_cast<void *>( todo ) );
+    ret.setValue( static_cast<void *>( todo.get() ) );
     return ret;
   }
 
@@ -844,15 +861,14 @@ bool KOTodoModel::setData( const QModelIndex &index, const QVariant &value, int 
   if ( !node->isValid() ) {
     return false;
   }
-  Todo *todo = node->mTodo;
+  const Todo::Ptr todo = Akonadi::todo( node->mTodo );
 
-  if ( !todo->isReadOnly() && mChanger->beginChange( todo ) ) {
-    Todo *oldTodo = todo->clone();
+  if ( !todo->isReadOnly() && mChanger->beginChange( todo.get() ) ) {
+    Todo::Ptr oldTodo( todo->clone() );
     int modified = KOGlobals::UNKNOWN_MODIFIED;
 
     if ( role == Qt::CheckStateRole && index.column() == 0 ) {
-      todo->setCompleted( static_cast<Qt::CheckState>( value.toInt() ) == Qt::Checked ?
-                          true : false );
+      todo->setCompleted( static_cast<Qt::CheckState>( value.toInt() ) == Qt::Checked );
       if ( todo->recurs() ) {
         modified = KOGlobals::COMPLETION_MODIFIED_WITH_RECURRENCE;
       } else {
@@ -897,19 +913,18 @@ bool KOTodoModel::setData( const QModelIndex &index, const QVariant &value, int 
     }
 
     if ( modified != KOGlobals::UNKNOWN_MODIFIED ) {
-      mChanger->changeIncidence( oldTodo, todo, modified );
+      mChanger->changeIncidence( oldTodo.get(), todo.get(), modified );
       // changeIncidence will eventually call the view's
       // changeIncidenceDisplay method, which in turn
       // will call processChange. processChange will then emit
       // dataChanged to the view, so we don't have to
       // do it here
     }
-    mChanger->endChange( todo );
-    delete oldTodo;
+    mChanger->endChange( todo.get() );
 
     return true;
   } else {
-    KODialogManager::errorSaveIncidence( 0, todo );
+    KODialogManager::errorSaveIncidence( 0, todo.get() );
     return false;
   }
 }
@@ -935,8 +950,8 @@ QMimeData *KOTodoModel::mimeData( const QModelIndexList &indexes ) const
   Q_FOREACH ( const QModelIndex &index, indexes ) {
     TodoTreeNode *node = static_cast<TodoTreeNode *>( index.internalPointer() );
     if ( node->isValid() ) {
-      Todo *todo = node->mTodo;
-      return mDndFactory->createMimeData( todo );
+      Todo::Ptr todo = Akonadi::todo( node->mTodo );
+      return mDndFactory->createMimeData( todo.get() );
     }
    //TODO implement dragging of more than one element
   }
@@ -948,6 +963,7 @@ bool KOTodoModel::dropMimeData( const QMimeData *data, Qt::DropAction action,
                                 int row, int column,
                                 const QModelIndex &parent )
 {
+#ifdef AKONADI_PORT_DISABLED
   Q_UNUSED( row );
   Q_UNUSED( column );
 
@@ -1048,7 +1064,7 @@ bool KOTodoModel::dropMimeData( const QMimeData *data, Qt::DropAction action,
     kDebug() << "Drop was not decodable";
     return false;
   }
-
+#endif
   return false;
 }
 #endif /*KORG_NODND*/

@@ -29,6 +29,10 @@
 #include "koeventpopupmenu.h"
 #include "komessagebox.h"
 
+#include <Akonadi/Item>
+
+#include <akonadi/kcal/utils.h>
+
 #include <QApplication>
 #include <QKeyEvent>
 #include <KCal/Incidence>
@@ -36,6 +40,8 @@
 #include <KXMLGUIFactory>
 
 #include <QMenu>
+
+using namespace Akonadi;
 
 //---------------------------------------------------------------------------
 
@@ -146,10 +152,10 @@ void KOEventView::showNewEventPopup()
 
 //---------------------------------------------------------------------------
 
-void KOEventView::defaultAction( Incidence *incidence )
+void KOEventView::defaultAction( const Item &aitem )
 {
   kDebug();
-
+  const Incidence::Ptr incidence = Akonadi::incidence( aitem );
   if ( !incidence ) {
     return;
   }
@@ -157,16 +163,16 @@ void KOEventView::defaultAction( Incidence *incidence )
   kDebug() << "  type:" << incidence->type();
 
   if ( incidence->isReadOnly() ) {
-    emit showIncidenceSignal(incidence);
+    emit showIncidenceSignal(aitem);
   } else {
-    emit editIncidenceSignal(incidence);
+    emit editIncidenceSignal(aitem);
   }
 }
 
 //---------------------------------------------------------------------------
-int KOEventView::showMoveRecurDialog( Incidence *inc, const QDate &date )
+int KOEventView::showMoveRecurDialog( const Item &aitem, const QDate &date )
 {
-
+  const Incidence::Ptr inc = Akonadi::incidence( aitem );
   int answer = KMessageBox::Ok;
   KGuiItem itemFuture( i18n( "Also &Future Items" ) );
 
@@ -274,8 +280,12 @@ void KOEventView::finishTypeAhead()
   mTypeAhead = false;
 }
 
-bool KOEventView::usesCompletedTodoPixmap( Todo *todo, const QDate &date )
+bool KOEventView::usesCompletedTodoPixmap( const Item& aitem, const QDate &date )
 {
+  const Todo::Ptr todo = Akonadi::todo( aitem );
+  if ( !todo )
+    return false;
+
   if ( todo->isCompleted() ) {
     return true;
   } else if ( todo->recurs() ) {

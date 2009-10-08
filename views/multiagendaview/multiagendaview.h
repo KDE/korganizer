@@ -21,6 +21,8 @@
 
 #include "views/agendaview/agendaview.h"
 
+#include <Akonadi/Item>
+
 class KOAgendaView;
 class TimeLabelsZone;
 
@@ -56,9 +58,9 @@ class MultiAgendaView : public AgendaView
 
   public slots:
     void showDates( const QDate &start, const QDate &end );
-    void showIncidences( const Incidence::List &incidenceList, const QDate &date );
+    void showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date );
     void updateView();
-    void changeIncidenceDisplay( Incidence *incidence, int mode );
+    void changeIncidenceDisplay( const Akonadi::Item &, int mode );
     void updateConfig();
 
     void setIncidenceChanger( IncidenceChangerBase *changer );

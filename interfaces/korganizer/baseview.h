@@ -156,7 +156,7 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
       @param incidenceList a list of incidences to show.
       @param date is the QDate on which the incidences are being shown.
     */
-    virtual void showIncidences( const Incidence::List &incidenceList, const QDate &date ) = 0;
+    virtual void showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date ) = 0;
 
     /**
       Updates the current display to reflect changes that may have happened
@@ -178,7 +178,7 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
     /**
       Updates the current display to reflect the changes to one particular incidence.
     */
-    virtual void changeIncidenceDisplay( Incidence *, int ) = 0;
+    virtual void changeIncidenceDisplay( const Akonadi::Item &, int ) = 0;
 
     /**
       Re-reads the KOrganizer configuration and picks up relevant

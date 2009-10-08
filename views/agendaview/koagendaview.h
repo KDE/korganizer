@@ -29,6 +29,8 @@
 #include "calprinter.h"
 #include "akonadicalendar.h"
 
+#include <Akonadi/Item>
+
 #include <QFrame>
 #include <QPixmap>
 #include <QVector>
@@ -140,23 +142,23 @@ class KOAgendaView : public KOrg::AgendaView, public KOrg::CalendarBase::Calenda
     QSplitter *splitter() const { return mSplitterAgenda; }
 
     /* reimplemented from KCal::Calendar::CalendarObserver */
-    void calendarIncidenceAdded( Incidence *incidence );
-    void calendarIncidenceChanged( Incidence *incidence );
-    void calendarIncidenceRemoved( Incidence *incidence );
+    void calendarIncidenceAddedFORAKONADI( const Akonadi::Item &incidence );
+    void calendarIncidenceChangedFORAKONADI( const Akonadi::Item &incidence );
+    void calendarIncidenceRemovedFORAKONADI( const Akonadi::Item &incidence );
 
   public slots:
     virtual void updateView();
     virtual void updateConfig();
     virtual void showDates( const QDate &start, const QDate &end );
-    virtual void showIncidences( const Incidence::List &incidenceList, const QDate &date );
+    virtual void showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date );
 
-    void insertIncidence( Incidence *incidence, const QDate &curDate );
-    void changeIncidenceDisplayAdded( Incidence *incidence );
-    void changeIncidenceDisplay( Incidence *incidence, int mode );
+    void insertIncidence( const Akonadi::Item &incidence, const QDate &curDate );
+    void changeIncidenceDisplayAdded( const Akonadi::Item &incidence );
+    void changeIncidenceDisplay( const Akonadi::Item &incidence, int mode );
 
     void clearSelection();
 
-    void startDrag( Incidence * );
+    void startDrag( const Akonadi::Item & );
 
     void readSettings();
     void readSettings( KConfig * );
@@ -166,7 +168,7 @@ class KOAgendaView : public KOrg::AgendaView, public KOrg::CalendarBase::Calenda
 
     /** reschedule the todo  to the given x- and y- coordinates.
         Third parameter determines all-day (no time specified) */
-    void slotTodoDropped( Todo *, const QPoint &, bool );
+    void slotTodoDropped( const Akonadi::Item & todo, const QPoint &, bool );
 
     void enableAgendaUpdate( bool enable );
     void setIncidenceChanger( IncidenceChangerBase *changer );
@@ -211,7 +213,7 @@ class KOAgendaView : public KOrg::AgendaView, public KOrg::CalendarBase::Calenda
     */
     void setHolidayMasks();
 
-    void removeIncidence( Incidence * );
+    void removeIncidence( const Akonadi::Item & );
     /**
       Updates the event indicators after a certain incidence was modified or
       removed.
@@ -234,10 +236,10 @@ class KOAgendaView : public KOrg::AgendaView, public KOrg::CalendarBase::Calenda
 
   private:
 
-    bool filterByResource( Incidence *incidence );
+    bool filterByResource( const Akonadi::Item &incidence );
     void setupTimeLabel( TimeLabels *timeLabel );
     int timeLabelsWidth();
-    void displayIncidence( Incidence *incidence );
+    void displayIncidence( const Akonadi::Item &incidence );
 #ifndef KORG_NODECOS
     typedef QList<KOrg::CalendarDecoration::Decoration *> DecorationList;
     bool loadDecorations( const QStringList &decorations, DecorationList &decoList );
@@ -285,7 +287,7 @@ class KOAgendaView : public KOrg::AgendaView, public KOrg::CalendarBase::Calenda
     bool mTimeSpanInAllDay;
     bool mAllowAgendaUpdate;
 
-    Incidence *mUpdateItem;
+    Akonadi::Item mUpdateItem;
 
     KCal::ResourceCalendar *mResource;
     QString mSubResource;

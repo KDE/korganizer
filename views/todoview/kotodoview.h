@@ -29,6 +29,8 @@
 
 #include "korganizer/baseview.h"
 
+#include <Akonadi/Item>
+
 namespace KCal {
   class Incidence;
 }
@@ -84,10 +86,10 @@ class KOTodoView : public BaseView
   public Q_SLOTS:
     virtual void setIncidenceChanger( IncidenceChangerBase *changer );
     virtual void showDates( const QDate &start, const QDate &end );
-    virtual void showIncidences( const Incidence::List &incidenceList, const QDate &date );
+    virtual void showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date );
     virtual void updateView();
     void updateCategories();
-    virtual void changeIncidenceDisplay( Incidence *incidence, int action );
+    virtual void changeIncidenceDisplay( const Akonadi::Item &incidence, int action );
     virtual void updateConfig();
     virtual void clearSelection();
     void expandIndex( const QModelIndex &index );

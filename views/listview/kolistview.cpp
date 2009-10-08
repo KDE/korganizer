@@ -31,12 +31,15 @@
 #include "kohelper.h"
 #include "koprefs.h"
 
+#include <akonadi/kcal/utils.h>
+
 #include <KCal/IncidenceFormatter>
 #include <KCal/Todo>
 #include <KCal/Journal>
 
 #include <QBoxLayout>
 
+using namespace Akonadi;
 using namespace KOrg;
 
 #ifdef __GNUC__
@@ -354,7 +357,7 @@ void KOListView::showDates( const QDate &start, const QDate &end )
 
   QDate date = start;
   while ( date <= end ) {
-    addIncidences( calendar()->incidences( date ), date );
+    addIncidences( calendar()->incidencesFORAKONADI( date ), date );
     mSelectedDates.append( date );
     date = date.addDays( 1 );
   }
@@ -362,16 +365,16 @@ void KOListView::showDates( const QDate &start, const QDate &end )
   emit incidenceSelected( 0, QDate() );
 }
 
-void KOListView::addIncidences( const Incidence::List &incidenceList, const QDate &date )
+void KOListView::addIncidences( const Item::List &incidenceList, const QDate &date )
 {
-  Incidence::List::ConstIterator it;
-  for ( it = incidenceList.begin(); it != incidenceList.end(); ++it ) {
-    addIncidence( *it, date );
-  }
+  Q_FOREACH( const Item & i, incidenceList )
+    addIncidence( i, date );
 }
 
-void KOListView::addIncidence( Incidence *incidence, const QDate &date )
+void KOListView::addIncidence( const Item &aitem_, const QDate &date )
 {
+  Item aitem( aitem_ );
+  Incidence::Ptr incidence = Akonadi::incidence( aitem );
   if ( mUidList.contains( incidence->uid() ) ) {
     return;
   }
@@ -379,19 +382,20 @@ void KOListView::addIncidence( Incidence *incidence, const QDate &date )
   mDateList[incidence->uid()] = date;
   mUidList.append( incidence->uid() );
 
-  Incidence *tinc = incidence;
+  Incidence::Ptr tinc = incidence;
   if ( tinc->customProperty( "KABC", "BIRTHDAY" ) == "YES" ||
        tinc->customProperty( "KABC", "ANNIVERSARY" ) == "YES" ) {
     qint64 years = KOHelper::yearDiff( tinc->dtStart().date(), mEndDate );
     if ( years > 0 ) {
-      tinc = incidence->clone();
+      tinc = Incidence::Ptr( incidence->clone() );
       tinc->setReadOnly( false );
       tinc->setSummary( i18n( "%1 (%2  years)", incidence->summary(), years ) );
       tinc->setReadOnly( true );
+      aitem.setPayload( tinc );
     }
   }
 
-  KOListViewItem *item = new KOListViewItem( tinc, mListView );
+  KOListViewItem *item = new KOListViewItem( aitem, mListView );
   ListItemVisitor v( item );
   if ( tinc->accept( v ) ) {
     return;
@@ -400,25 +404,26 @@ void KOListView::addIncidence( Incidence *incidence, const QDate &date )
   }
 }
 
-void KOListView::showIncidences( const Incidence::List &incidenceList, const QDate &date )
+void KOListView::showIncidences( const Item::List &incidenceList, const QDate &date )
 {
   clear();
 
   addIncidences( incidenceList, date );
 
   // After new creation of list view no events are selected.
-  emit incidenceSelected( 0, date );
+  emit incidenceSelected( Item(), date );
 }
 
-void KOListView::changeIncidenceDisplay( Incidence *incidence, int action )
+void KOListView::changeIncidenceDisplay( const Item & aitem, int action )
 {
+  const Incidence::Ptr incidence = Akonadi::incidence( aitem );
   KOListViewItem *item;
   QDate f = mSelectedDates.first();
   QDate l = mSelectedDates.last();
 
   QDate date;
-  if ( incidence->type() == "Todo" ) {
-    date = static_cast<Todo *>( incidence )->dtDue().
+  if ( Akonadi::hasTodo( aitem ) ) {
+    date = Akonadi::todo( aitem )->dtDue().
            toTimeSpec( KOPrefs::instance()->timeSpec() ).date();
   } else {
     date = incidence->dtStart().
@@ -429,26 +434,26 @@ void KOListView::changeIncidenceDisplay( Incidence *incidence, int action )
   case KOGlobals::INCIDENCEADDED:
   {
     if ( date >= f && date <= l ) {
-      addIncidence( incidence, date );
+      addIncidence( aitem, date );
     }
     break;
   }
   case KOGlobals::INCIDENCEEDITED:
   {
-    item = getItemForIncidence( incidence );
+    item = getItemForIncidence( aitem );
     if ( item ) {
       delete item;
       mUidList.removeAll( incidence->uid() );
       mDateList.remove( incidence->uid() );
     }
     if ( date >= f && date <= l ) {
-      addIncidence( incidence, date );
+      addIncidence( aitem, date );
     }
     break;
   }
   case KOGlobals::INCIDENCEDELETED:
   {
-    item = getItemForIncidence( incidence );
+    item = getItemForIncidence( aitem );
     if ( item ) {
       delete item;
     }
@@ -459,11 +464,11 @@ void KOListView::changeIncidenceDisplay( Incidence *incidence, int action )
   }
 }
 
-KOListViewItem *KOListView::getItemForIncidence( Incidence *incidence )
+KOListViewItem *KOListView::getItemForIncidence( const Item &aitem )
 {
   KOListViewItem *item = (KOListViewItem *)mListView->firstChild();
   while ( item ) {
-    if ( item->data() == incidence ) {
+    if ( item->data() == aitem ) {
       return item;
     }
     item = static_cast<KOListViewItem *>( item->nextSibling() );
@@ -483,12 +488,10 @@ void KOListView::popupMenu( Q3ListViewItem *item, const QPoint &, int )
 {
   mActiveItem = static_cast<KOListViewItem *>( item );
   if ( mActiveItem ) {
-    Incidence *incidence = mActiveItem->data();
+    const Item aitem = mActiveItem->data();
     // FIXME: For recurring incidences we don't know the date of this
     // occurrence, there's no reference to it at all!
-#ifdef AKONADI_PORT_DISABLED // incidence -> item
-    mPopupMenu->showIncidencePopup( calendar(), incidence, incidence->dtStart().date() );
-#endif //AKONADI_PORT_DISABLED // incidence -> item
+    mPopupMenu->showIncidencePopup( calendar(), aitem, Akonadi::incidence( aitem )->dtStart().date() );
   } else {
     showNewEventPopup();
   }
@@ -509,10 +512,9 @@ void KOListView::processSelectionChange()
   KOListViewItem *item = static_cast<KOListViewItem *>( mListView->selectedItem() );
 
   if ( !item ) {
-    emit incidenceSelected( 0, QDate() );
+    emit incidenceSelected( Item(), QDate() );
   } else {
-    Incidence *incidence = static_cast<Incidence *>( item->data() );
-    emit incidenceSelected( incidence, mDateList[incidence->uid()] );
+    emit incidenceSelected( item->data(), mDateList.value( Akonadi::incidence( item->data() )->uid() ) );
   }
 }
 

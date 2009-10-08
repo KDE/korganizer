@@ -786,9 +786,9 @@ void CalendarView::changeIncidenceDisplay( const Item &item, int action )
 
   if ( Akonadi::hasIncidence( item ) ) {
     // If there is an event view visible update the display
-    mViewManager->currentView()->changeIncidenceDisplay( incidence, action );
+    mViewManager->currentView()->changeIncidenceDisplay( item, action );
     if ( mTodoList ) {
-      mTodoList->changeIncidenceDisplay( incidence, action );
+      mTodoList->changeIncidenceDisplay( item, action );
     }
     mEventViewer->changeIncidenceDisplay( incidence, activeDate( true ), action );
   } else {

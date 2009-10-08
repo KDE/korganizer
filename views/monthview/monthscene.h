@@ -35,6 +35,10 @@ class QResizeEvent;
 class QGraphicsSceneMouseEvent;
 class QGraphicsSceneWheelEvent;
 
+namespace Akonadi {
+  class Item;
+}
+
 namespace KCal {
   class Incidence;
 }
@@ -169,8 +173,8 @@ class MonthScene : public QGraphicsScene
     QPixmap *holidayPixmap() { return &mHolidayPixmap; }
 
   signals:
-    void incidenceSelected( Incidence *incidence, const QDate & );
-    void showIncidencePopupSignal( KOrg::CalendarBase *, Incidence *, const QDate &);
+    void incidenceSelected( const Akonadi::Item &incidence, const QDate & );
+    void showIncidencePopupSignal( KOrg::CalendarBase *, const Akonadi::Item &, const QDate &);
     void showNewEventPopupSignal();
     void newEventSignal();
 

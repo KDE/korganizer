@@ -49,6 +49,8 @@ using namespace KPIM;
 #include <QMenu>
 #include <QTimer>
 
+using namespace Akonadi;
+
 KOTodoView::KOTodoView( KOrg::CalendarBase *cal, QWidget *parent )
   : BaseView( cal, parent )
 {
@@ -380,7 +382,7 @@ void KOTodoView::showDates( const QDate &start, const QDate &end )
   Q_UNUSED( end );
 }
 
-void KOTodoView::showIncidences( const Incidence::List &incidenceList, const QDate &date )
+void KOTodoView::showIncidences( const Item::List &incidenceList, const QDate &date )
 {
   Q_UNUSED( incidenceList );
   Q_UNUSED( date );
@@ -397,7 +399,7 @@ void KOTodoView::updateCategories()
   // TODO check if we have to do something with the category delegate
 }
 
-void KOTodoView::changeIncidenceDisplay( Incidence *incidence, int action )
+void KOTodoView::changeIncidenceDisplay( const Item &incidence, int action )
 {
   mModel->processChange( incidence, action );
 }

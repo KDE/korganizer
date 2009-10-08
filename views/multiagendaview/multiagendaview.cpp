@@ -33,6 +33,7 @@
 #include <QResizeEvent>
 #include <QSplitter>
 
+using namespace Akonadi;
 using namespace KOrg;
 
 MultiAgendaView::MultiAgendaView( CalendarBase *cal, QWidget *parent )
@@ -196,30 +197,30 @@ void MultiAgendaView::setupViews()
   foreach ( KOAgendaView *agenda, mAgendaViews ) {
     connect( agenda, SIGNAL(newEventSignal()),
              SIGNAL(newEventSignal()) );
-    connect( agenda, SIGNAL(editIncidenceSignal(Incidence *)),
-             SIGNAL(editIncidenceSignal(Incidence *)) );
-    connect( agenda, SIGNAL(showIncidenceSignal(Incidence *)),
-             SIGNAL(showIncidenceSignal(Incidence *)) );
-    connect( agenda, SIGNAL(deleteIncidenceSignal(Incidence *)),
-             SIGNAL(deleteIncidenceSignal(Incidence *)) );
+    connect( agenda, SIGNAL(editIncidenceSignal(Akonadi::Item)),
+             SIGNAL(editIncidenceSignal(Akonadi::Item)) );
+    connect( agenda, SIGNAL(showIncidenceSignal(Akonadi::Item)),
+             SIGNAL(showIncidenceSignal(Akonadi::Item)) );
+    connect( agenda, SIGNAL(deleteIncidenceSignal(Akonadi::Item)),
+             SIGNAL(deleteIncidenceSignal(Akonadi::Item)) );
     connect( agenda, SIGNAL(startMultiModify(const QString &)),
              SIGNAL(startMultiModify(const QString &)) );
     connect( agenda, SIGNAL(endMultiModify()),
              SIGNAL(endMultiModify()) );
 
-    connect( agenda, SIGNAL(incidenceSelected(Incidence *,const QDate &)),
-             SIGNAL(incidenceSelected(Incidence *,const QDate &)) );
+    connect( agenda, SIGNAL(incidenceSelected(Akonadi::Item,const QDate &)),
+             SIGNAL(incidenceSelected(Akonadi::Item,const QDate &)) );
 
-    connect( agenda, SIGNAL(cutIncidenceSignal(Incidence*)),
-             SIGNAL(cutIncidenceSignal(Incidence*)) );
-    connect( agenda, SIGNAL(copyIncidenceSignal(Incidence*)),
-             SIGNAL(copyIncidenceSignal(Incidence*)) );
+    connect( agenda, SIGNAL(cutIncidenceSignal(Akonadi::Item)),
+             SIGNAL(cutIncidenceSignal(Akonadi::Item)) );
+    connect( agenda, SIGNAL(copyIncidenceSignal(Akonadi::Item)),
+             SIGNAL(copyIncidenceSignal(Akonadi::Item)) );
     connect( agenda, SIGNAL(pasteIncidenceSignal()),
              SIGNAL(pasteIncidenceSignal()) );
-    connect( agenda, SIGNAL(toggleAlarmSignal(Incidence*)),
-             SIGNAL(toggleAlarmSignal(Incidence*)) );
-    connect( agenda, SIGNAL(dissociateOccurrencesSignal(Incidence*, const QDate&)),
-             SIGNAL(dissociateOccurrencesSignal(Incidence*, const QDate&)) );
+    connect( agenda, SIGNAL(toggleAlarmSignal(Akonadi::Item)),
+             SIGNAL(toggleAlarmSignal(Akonadi::Item)) );
+    connect( agenda, SIGNAL(dissociateOccurrencesSignal(Akonadi::Item, const QDate&)),
+             SIGNAL(dissociateOccurrencesSignal(Akonadi::Item, const QDate&)) );
     connect( agenda, SIGNAL(newEventSignal(const QDate&)),
              SIGNAL(newEventSignal(const QDate&)) );
     connect( agenda, SIGNAL(newEventSignal(const QDateTime&)),
@@ -229,7 +230,7 @@ void MultiAgendaView::setupViews()
     connect( agenda, SIGNAL(newTodoSignal(const QDate&)),
              SIGNAL(newTodoSignal(const QDate&)) );
 
-    connect( agenda, SIGNAL(incidenceSelected(Incidence *,const QDate &)),
+    connect( agenda, SIGNAL(incidenceSelected(Akonadi::Item,const QDate &)),
              SLOT(slotSelectionChanged()) );
 
     connect( agenda, SIGNAL(timeSpanSelectionChanged()),
@@ -304,7 +305,7 @@ void MultiAgendaView::showDates( const QDate &start, const QDate &end )
   }
 }
 
-void MultiAgendaView::showIncidences( const Incidence::List &incidenceList, const QDate &date )
+void MultiAgendaView::showIncidences( const Item::List &incidenceList, const QDate &date )
 {
   foreach ( KOAgendaView *agendaView, mAgendaViews ) {
     agendaView->showIncidences( incidenceList, date );
@@ -319,7 +320,7 @@ void MultiAgendaView::updateView()
   }
 }
 
-void MultiAgendaView::changeIncidenceDisplay( Incidence *incidence, int mode )
+void MultiAgendaView::changeIncidenceDisplay( const Item& incidence, int mode )
 {
   foreach ( KOAgendaView *agendaView, mAgendaViews ) {
     agendaView->changeIncidenceDisplay( incidence, mode );

@@ -29,6 +29,8 @@
 #include <QList>
 #include <QDate>
 
+#include <Akonadi/Item>
+
 class QPixmap;
 class QColor;
 class QString;
@@ -272,11 +274,11 @@ class IncidenceMonthItem : public MonthItem
   Q_OBJECT
 
   public:
-    IncidenceMonthItem( MonthScene *monthScene, Incidence *incidence,
+    IncidenceMonthItem( MonthScene *monthScene, const Akonadi::Item &incidence,
                         const QDate &recurStartDate = QDate() );
     virtual ~IncidenceMonthItem();
 
-    Incidence *incidence() const { return mIncidence; }
+    Akonadi::Item incidence() const { return mIncidence; }
 
     virtual bool greaterThanFallback( const MonthItem *other ) const;
 
@@ -306,7 +308,7 @@ class IncidenceMonthItem : public MonthItem
       If will be selected if incidence is the incidence managed by this item.
       Else it will be deselected.
     */
-    void updateSelection( Incidence *incidence, const QDate &date );
+    void updateSelection( const Akonadi::Item &incidence, const QDate &date );
 
   private:
     void updateDates( int startOffset, int endOffset );
@@ -316,7 +318,7 @@ class IncidenceMonthItem : public MonthItem
     */
     QColor catColor() const;
 
-    Incidence *mIncidence;
+    Akonadi::Item mIncidence;
     bool mCloned;
     int mRecurDayOffset;
     bool mIsEvent, mIsTodo, mIsJournal;

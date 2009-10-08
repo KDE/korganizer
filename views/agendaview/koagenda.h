@@ -27,6 +27,8 @@
 #include "koeventview.h"
 #include <kcal/incidence.h>
 
+#include <Akonadi/Item>
+
 #include <q3scrollview.h>
 #include <QFrame>
 #include <QList>
@@ -87,7 +89,7 @@ class KOAgenda : public Q3ScrollView
                         QWidget *parent = 0, Qt::WFlags f = 0 );
     virtual ~KOAgenda();
 
-    Incidence *selectedIncidence() const;
+    Akonadi::Item selectedIncidence() const;
     QDate selectedIncidenceDate() const;
 
     /**
@@ -113,11 +115,11 @@ class KOAgenda : public Q3ScrollView
 
     void setStartTime( const QTime &startHour );
 
-    KOAgendaItem *insertItem ( Incidence *incidence, const QDate &qd, int X, int YTop,
+    KOAgendaItem *insertItem ( const Akonadi::Item &incidence, const QDate &qd, int X, int YTop,
                                int YBottom );
-    KOAgendaItem *insertAllDayItem ( Incidence *event, const QDate &qd, int XBegin,
+    KOAgendaItem *insertAllDayItem ( const Akonadi::Item &event, const QDate &qd, int XBegin,
                                      int XEnd );
-    void insertMultiItem ( Event *event, const QDate &qd, int XBegin, int XEnd,
+    void insertMultiItem ( const Akonadi::Item &event, const QDate &qd, int XBegin, int XEnd,
                            int YTop, int YBottom );
 
     /**
@@ -127,7 +129,7 @@ class KOAgenda : public Q3ScrollView
       slot deleteItemsToDelete() (called by QTimer::singleShot ).
       @param incidence The pointer to the incidence that should be removed.
     */
-    void removeIncidence( Incidence *incidence );
+    void removeIncidence( const Akonadi::Item &incidence );
 
     void changeColumns( int columns );
 
@@ -188,21 +190,21 @@ class KOAgenda : public Q3ScrollView
     void newTimeSpanSignal( const QPoint &, const QPoint & );
     void newStartSelectSignal();
 
-    void showIncidenceSignal( Incidence * );
-    void editIncidenceSignal( Incidence * );
-    void deleteIncidenceSignal( Incidence * );
-    void showIncidencePopupSignal( KOrg::CalendarBase *, Incidence *, const QDate &);
+    void showIncidenceSignal( const Akonadi::Item & );
+    void editIncidenceSignal( const Akonadi::Item & );
+    void deleteIncidenceSignal( const Akonadi::Item & );
+    void showIncidencePopupSignal( KOrg::CalendarBase *, const Akonadi::Item &, const QDate &);
     void showNewEventPopupSignal();
 
     void itemModified( KOAgendaItem *item );
-    void incidenceSelected( Incidence *, const QDate & );
+    void incidenceSelected( const Akonadi::Item &, const QDate & );
     void startMultiModify( const QString & );
     void endMultiModify();
 
     void lowerYChanged( int );
     void upperYChanged( int );
 
-    void startDragSignal( Incidence * );
+    void startDragSignal( const Akonadi::Item & );
     void droppedToDo( Todo *todo, const QPoint &gpos, bool allDay );
 
     void enableAgendaUpdate( bool enable );

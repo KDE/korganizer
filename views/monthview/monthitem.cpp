@@ -33,10 +33,13 @@
 #include "monthscene.h"
 #include "monthview.h"
 
+#include <akonadi/kcal/utils.h>
+
 #include <KCal/Incidence>
 #include <KCal/IncidenceFormatter>
 #include <KCal/Todo>
 
+using namespace Akonadi;
 using namespace KOrg;
 
 //-------------------------------------------------------------
@@ -276,22 +279,25 @@ void MonthItem::updatePosition()
 //-----------------------------------------------------------------
 // INCIDENCEMONTHITEM
 IncidenceMonthItem::IncidenceMonthItem( MonthScene *monthScene,
-                                        Incidence *incidence,
+                                        const Item &aitem,
                                         const QDate &recurStartDate )
-  : MonthItem( monthScene ), mIncidence( incidence ), mCloned( false )
+  : MonthItem( monthScene ), mIncidence( aitem ), mCloned( false )
 {
-  mIsEvent = mIncidence->type() == "Event";
-  mIsJournal = mIncidence->type() == "Journal";
-  mIsTodo = mIncidence->type() == "Todo";
+  mIsEvent = Akonadi::hasEvent( mIncidence );
+  mIsJournal = Akonadi::hasJournal( mIncidence );
+  mIsTodo = Akonadi::hasTodo( mIncidence );
 
-  if ( mIncidence->customProperty( "KABC", "BIRTHDAY" ) == "YES" ||
-       mIncidence->customProperty( "KABC", "ANNIVERSARY" ) == "YES" ) {
-    qint64 years = KOHelper::yearDiff( mIncidence->dtStart().date(), recurStartDate );
+  Incidence::Ptr inc = Akonadi::incidence( mIncidence );
+  if ( inc->customProperty( "KABC", "BIRTHDAY" ) == "YES" ||
+       inc->customProperty( "KABC", "ANNIVERSARY" ) == "YES" ) {
+    qint64 years = KOHelper::yearDiff( inc->dtStart().date(), recurStartDate );
     if ( years > 0 ) {
-      mIncidence = incidence->clone();
-      mIncidence->setReadOnly( false );
-      mIncidence->setSummary( i18n( "%1 (%2 years)", incidence->summary(), years ) );
-      mIncidence->setReadOnly( true );
+      inc.reset( inc->clone() );
+      inc->setReadOnly( false );
+      inc->setSummary( i18n( "%1 (%2 years)", inc->summary(), years ) );
+      inc->setReadOnly( true );
+      mIncidence == Item();
+      mIncidence.setPayload( inc );
       mCloned = true;
     }
   }
@@ -308,13 +314,11 @@ IncidenceMonthItem::IncidenceMonthItem( MonthScene *monthScene,
 
 IncidenceMonthItem::~IncidenceMonthItem()
 {
-  if ( mCloned ) {
-    delete mIncidence;
-  }
 }
 
 bool IncidenceMonthItem::greaterThanFallback( const MonthItem *other ) const
 {
+
   const IncidenceMonthItem *o = qobject_cast<const IncidenceMonthItem *>( other );
   if ( !o ) {
     return MonthItem::greaterThanFallback( other );
@@ -323,25 +327,29 @@ bool IncidenceMonthItem::greaterThanFallback( const MonthItem *other ) const
   if ( allDay() != o->allDay() ) {
     return allDay();
   }
-  if ( mIncidence->dtStart().time() != o->mIncidence->dtStart().time() ) {
-    return mIncidence->dtStart().time() < o->mIncidence->dtStart().time();
+  const Incidence::Ptr incidence = Akonadi::incidence( mIncidence );
+  const Incidence::Ptr otherIncidence = Akonadi::incidence( o->mIncidence );
+
+  if ( incidence->dtStart().time() != otherIncidence->dtStart().time() ) {
+    return incidence->dtStart().time() < otherIncidence->dtStart().time();
   }
 
   // as a last resort, compare the uid's
-  return mIncidence->uid() < o->mIncidence->uid();
+  return incidence->uid() < otherIncidence->uid();
 }
 
 QDate IncidenceMonthItem::realStartDate() const
 {
-  if ( !mIncidence ) {
+  const Incidence::Ptr incidence = Akonadi::incidence( mIncidence );
+  if ( !incidence ) {
     return QDate();
   }
 
   KDateTime dt;
   if ( mIsEvent || mIsJournal ) {
-    dt = mIncidence->dtStart();
+    dt = incidence->dtStart();
   } else if ( mIsTodo ) {
-    dt = static_cast<Todo *>( mIncidence )->dtDue();
+    dt = Akonadi::todo( mIncidence )->dtDue();
   }
 
   QDate start;
@@ -355,17 +363,18 @@ QDate IncidenceMonthItem::realStartDate() const
 }
 QDate IncidenceMonthItem::realEndDate() const
 {
-  if ( !mIncidence ) {
+  const Incidence::Ptr incidence = Akonadi::incidence( mIncidence );
+  if ( !incidence ) {
     return QDate();
   }
 
   KDateTime dt;
   if ( mIsEvent ) {
-    dt = mIncidence->dtEnd();
+    dt = incidence->dtEnd();
   } else if ( mIsTodo ) {
-    dt = static_cast<Todo *>( mIncidence )->dtDue();
+    dt = Akonadi::todo( mIncidence )->dtDue();
   } else if ( mIsJournal ) {
-    dt = mIncidence->dtStart();
+    dt = incidence->dtStart();
   }
 
   QDate end;
@@ -379,16 +388,19 @@ QDate IncidenceMonthItem::realEndDate() const
 }
 bool IncidenceMonthItem::allDay() const
 {
-  return mIncidence->allDay();
+  const Incidence::Ptr incidence = Akonadi::incidence( mIncidence );
+  return incidence->allDay();
 }
 
 bool IncidenceMonthItem::isMoveable() const
 {
-  return !mIncidence->isReadOnly();
+  const Incidence::Ptr incidence = Akonadi::incidence( mIncidence );
+  return incidence->isReadOnly();
 }
 bool IncidenceMonthItem::isResizable() const
 {
-  return mIsEvent && !mIncidence->isReadOnly();
+  const Incidence::Ptr incidence = Akonadi::incidence( mIncidence );
+  return mIsEvent && !incidence->isReadOnly();
 }
 
 void IncidenceMonthItem::finalizeMove( const QDate &newStartDate )
@@ -417,16 +429,17 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
   if ( startOffset == 0 && endOffset == 0 ) {
     return;
   }
+  Incidence::Ptr incidence = Akonadi::incidence( mIncidence );
 
   IncidenceChangerBase *changer = monthScene()->incidenceChanger();
-  if ( !changer || !changer->beginChange( mIncidence ) ) {
-    KODialogManager::errorSaveIncidence( 0, mIncidence );
+  if ( !changer || !changer->beginChange( incidence.get() ) ) {
+    KODialogManager::errorSaveIncidence( 0, incidence.get() );
     return;
   }
 
   bool modify = true;
 
-  if ( mIncidence->recurs() ) {
+  if ( incidence->recurs() ) {
     int res = monthScene()->mMonthView->showMoveRecurDialog( mIncidence, startDate() );
     switch ( res ) {
       case KMessageBox::Ok: // All occurrences
@@ -435,18 +448,20 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
       case KMessageBox::Yes: // Just this occurrence
       {
         modify = true;
-        Incidence *oldIncSaved = mIncidence->clone();
-        Incidence *newInc = monthScene()->calendar()->dissociateOccurrence(
-            mIncidence, startDate(), KOPrefs::instance()->timeSpec() );
+        Incidence::Ptr oldIncSaved( incidence->clone() );
+        Incidence::Ptr newInc( monthScene()->calendar()->dissociateOccurrence(
+            incidence.get(), startDate(), KOPrefs::instance()->timeSpec() ) );
         if ( newInc ) {
-          changer->changeIncidence( oldIncSaved, mIncidence );
-          changer->endChange( mIncidence );
+          changer->changeIncidence( oldIncSaved.get(), incidence.get() );
+          changer->endChange( incidence.get() );
 
-          changer->addIncidence( newInc );
+          changer->addIncidence( newInc.get() );
           // let the standard code change the dates for the new incidence
-          mIncidence = newInc;
-          if ( !changer->beginChange( mIncidence ) ) {
-            KODialogManager::errorSaveIncidence( 0, mIncidence );
+          mIncidence = Item();
+          mIncidence.setPayload( newInc );
+          incidence = Akonadi::incidence( mIncidence );
+          if ( !changer->beginChange( incidence.get() ) ) {
+            KODialogManager::errorSaveIncidence( 0, incidence.get() );
             return;
           }
         } else {
@@ -456,24 +471,27 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
                               i18n( "Error Occurred" ) );
           modify = false;
         }
-        delete oldIncSaved;
         break;
       }
       case KMessageBox::No: // All future occurrences
       {
         modify = true;
-        Incidence *oldIncSaved = mIncidence->clone();
-        Incidence *newInc = monthScene()->calendar()->dissociateOccurrence(
-            mIncidence, startDate(), KOPrefs::instance()->timeSpec(), false );
+        Incidence::Ptr oldIncSaved( incidence->clone() );
+        Incidence::Ptr newInc( monthScene()->calendar()->dissociateOccurrence(
+            incidence.get(), startDate(), KOPrefs::instance()->timeSpec(), false ) );
         if ( newInc ) {
-          changer->changeIncidence( oldIncSaved, mIncidence );
-          changer->endChange( mIncidence );
+          changer->changeIncidence( oldIncSaved.get(), incidence.get() );
+          changer->endChange( incidence.get() );
 
-          changer->addIncidence( newInc );
+          changer->addIncidence( newInc.get() );
+
           // let the standard code change the dates for the new incidence
-          mIncidence = newInc;
-          if ( !changer->beginChange( mIncidence ) ) {
-            KODialogManager::errorSaveIncidence( 0, mIncidence );
+          mIncidence = Item();
+          mIncidence.setPayload( newInc );
+          incidence = Akonadi::incidence( mIncidence );
+
+          if ( !changer->beginChange( incidence.get() ) ) {
+            KODialogManager::errorSaveIncidence( 0, incidence.get() );
             return;
           }
         } else {
@@ -483,7 +501,6 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
                               i18n( "Error Occurred" ) );
           modify = false;
         }
-        delete oldIncSaved;
         break;
       }
       default:
@@ -492,28 +509,26 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
   }
 
   if ( modify ) {
-    Incidence *oldInc = mIncidence->clone();
+    Incidence::Ptr oldInc( incidence->clone() );
 
     if ( !mIsTodo ) {
-      mIncidence->setDtStart( mIncidence->dtStart().addDays( startOffset ) );
+      incidence->setDtStart( incidence->dtStart().addDays( startOffset ) );
 
       if ( mIsEvent ) {
-        Event *event = static_cast<Event *>( mIncidence );
+        Event::Ptr event = Akonadi::event( mIncidence );
         event->setDtEnd( event->dtEnd().addDays( endOffset ) );
       }
     } else {
-      Todo *todo = static_cast<Todo *>( mIncidence );
+      Todo::Ptr todo = Akonadi::todo( mIncidence );
       todo->setDtDue( todo->dtDue().addDays( startOffset ) );
     }
 
-    changer->changeIncidence( oldInc, mIncidence, KOGlobals::DATE_MODIFIED );
-    changer->endChange( mIncidence );
-
-    delete oldInc;
+    changer->changeIncidence( oldInc.get(), incidence.get(), KOGlobals::DATE_MODIFIED );
+    changer->endChange( incidence.get() );
   }
 }
 
-void IncidenceMonthItem::updateSelection( Incidence *incidence, const QDate &date )
+void IncidenceMonthItem::updateSelection( const Akonadi::Item &incidence, const QDate &date )
 {
   Q_UNUSED( date );
   setSelected( incidence == mIncidence );
@@ -521,19 +536,20 @@ void IncidenceMonthItem::updateSelection( Incidence *incidence, const QDate &dat
 
 QString IncidenceMonthItem::text( bool end ) const
 {
-  QString ret = mIncidence->summary();
+  const Incidence::Ptr incidence = Akonadi::incidence( mIncidence );
+  QString ret = incidence->summary();
   if ( !allDay() ) { // Prepend the time str to the text
     QString timeStr;
     if ( mIsTodo ) {
-      Todo *todo = static_cast<Todo*>( mIncidence );
+      Todo::Ptr todo = Akonadi::todo( mIncidence );
       timeStr = IncidenceFormatter::timeToString(
         todo->dtDue(), true, KOPrefs::instance()->timeSpec() );
     } else {
       if ( !end ) {
         timeStr = IncidenceFormatter::timeToString(
-          mIncidence->dtStart(), true, KOPrefs::instance()->timeSpec() );
+          incidence->dtStart(), true, KOPrefs::instance()->timeSpec() );
       } else {
-        Event *event = static_cast<Event*>( mIncidence );
+        Event::Ptr event = Akonadi::event( mIncidence );
         timeStr = IncidenceFormatter::timeToString(
           event->dtEnd(), true, KOPrefs::instance()->timeSpec() );
       }
@@ -558,22 +574,23 @@ QString IncidenceMonthItem::toolTipText() const
   }
   //PENDING(AKONADI_PORT): replace QString() by incidence location (was: monthScene()->calendar())
   return IncidenceFormatter::toolTipStr(
-    QString(), mIncidence, date, true, KOPrefs::instance()->timeSpec() );
+      QString(), Akonadi::incidence( mIncidence ).get(), date, true, KOPrefs::instance()->timeSpec() );
 }
 
 QList<QPixmap *> IncidenceMonthItem::icons() const
 {
   QList<QPixmap *> ret;
 
-  if ( !mIncidence ) {
+  if ( !Akonadi::hasIncidence( mIncidence ) ) {
     return ret;
   }
+  const Incidence::Ptr incidence = Akonadi::incidence( mIncidence );
 
   bool specialEvent = false;
   if ( mIsEvent ) {
-    if ( mIncidence->customProperty( "KABC", "BIRTHDAY" ) == "YES" ) {
+    if ( incidence->customProperty( "KABC", "BIRTHDAY" ) == "YES" ) {
       specialEvent = true;
-      if ( mIncidence->customProperty( "KABC", "ANNIVERSARY" ) == "YES" ) {
+      if ( incidence->customProperty( "KABC", "ANNIVERSARY" ) == "YES" ) {
         ret << monthScene()->anniversaryPixmap();
       } else {
         ret << monthScene()->birthdayPixmap();
@@ -590,9 +607,7 @@ QList<QPixmap *> IncidenceMonthItem::icons() const
 
   } else if ( mIsTodo ) {
 
-    Todo *todo = static_cast<Todo *>( mIncidence );
-
-    bool isCompleted = KOEventView::usesCompletedTodoPixmap( todo, realStartDate() );
+    bool isCompleted = KOEventView::usesCompletedTodoPixmap( mIncidence, realStartDate() );
 
     if ( isCompleted ) {
       ret << monthScene()->todoDonePixmap();
@@ -602,7 +617,7 @@ QList<QPixmap *> IncidenceMonthItem::icons() const
   } else if ( mIsJournal ) {
     ret << monthScene()->journalPixmap();
   }
-  if ( mIncidence->isReadOnly() && !specialEvent ) {
+  if ( incidence->isReadOnly() && !specialEvent ) {
     ret << monthScene()->readonlyPixmap();
   }
 #if 0
@@ -622,7 +637,9 @@ QList<QPixmap *> IncidenceMonthItem::icons() const
 QColor IncidenceMonthItem::catColor() const
 {
   QColor retColor;
-  QStringList categories = mIncidence->categories();
+  const Incidence::Ptr incidence = Akonadi::incidence( mIncidence );
+  Q_ASSERT( incidence );
+  QStringList categories = incidence->categories();
   QString cat;
   if ( !categories.isEmpty() ) {
     cat = categories.first();
@@ -640,9 +657,9 @@ QColor IncidenceMonthItem::bgColor() const
   QColor bgColor = QColor(); // Default invalid color;
 
   if ( mIsTodo && !KOPrefs::instance()->todosUseCategoryColors() ) {
-    if ( static_cast<Todo*>( mIncidence )->isOverdue() ) {
+    if ( Akonadi::todo( mIncidence )->isOverdue() ) {
       bgColor = KOPrefs::instance()->agendaCalendarItemsToDosOverdueBackgroundColor();
-    } else if ( static_cast<Todo*>( mIncidence )->dtDue().date() == QDate::currentDate() ) {
+    } else if ( Akonadi::todo( mIncidence )->dtDue().date() == QDate::currentDate() ) {
       bgColor = KOPrefs::instance()->agendaCalendarItemsToDosDueTodayBackgroundColor();
     }
   }

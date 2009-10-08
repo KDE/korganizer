@@ -63,14 +63,14 @@ class KOWhatsNextView : public KOrg::BaseView
   public slots:
     virtual void updateView();
     virtual void showDates( const QDate &start, const QDate &end );
-    virtual void showIncidences( const Incidence::List &incidenceList, const QDate &date );
+    virtual void showIncidences( const Akonadi::Item::List &incidenceList, const QDate &date );
 
-    void changeIncidenceDisplay( Incidence *, int );
+    void changeIncidenceDisplay( const Akonadi::Item &, int );
 
   protected:
-    void appendEvent( Incidence *, const QDateTime &start = QDateTime(),
+    void appendEvent( const Akonadi::Item &, const QDateTime &start = QDateTime(),
                       const QDateTime &end = QDateTime() );
-    void appendTodo( Incidence * );
+    void appendTodo( const Akonadi::Item & );
 
   private slots:
     void showIncidence( const QString & );
@@ -81,7 +81,7 @@ class KOWhatsNextView : public KOrg::BaseView
     QDate mStartDate;
     QDate mEndDate;
 
-    Incidence::List mTodos;
+    Akonadi::Item::List mTodos;
 };
 
 #endif

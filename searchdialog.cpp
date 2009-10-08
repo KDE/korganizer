@@ -106,9 +106,9 @@ void SearchDialog::doSearch()
   }
 
   search( re );
-
+#ifdef AKONADI_PORT_DISABLED
   listView->showIncidences( mMatchedEvents, QDate() );
-
+#endif
   if ( mMatchedEvents.count() == 0 ) {
     KMessageBox::information(
       this,
@@ -128,8 +128,9 @@ void SearchDialog::updateView()
   } else {
     mMatchedEvents.clear();
   }
-
+#ifdef AKONADI_PORT_DISABLED
   listView->showIncidences( mMatchedEvents, QDate() );
+#endif
 }
 
 void SearchDialog::search( const QRegExp &re )
