@@ -26,10 +26,7 @@
 
 #include "korganizer_export.h"
 
-#include <KCal/Event>
 #include <KCal/Incidence>
-#include <KCal/Journal>
-#include <KCal/Todo>
 
 #include <QColor>
 
@@ -47,26 +44,6 @@ class QDate;
 
 namespace KOHelper
 {
-  /**
-   * returns the incidence from an akonadi item, or a null pointer if the item has no such payload
-   */
-  KORGANIZER_CORE_EXPORT KCal::Incidence::Ptr incidence( const Akonadi::Item &item );
-
-  /**
-   * returns the event from an akonadi item, or a null pointer if the item has no such payload
-   */
-  KORGANIZER_CORE_EXPORT KCal::Event::Ptr event( const Akonadi::Item &item );
-
- /**
-  * returns the todo from an akonadi item, or a null pointer if the item has no such payload
-  */
- KORGANIZER_CORE_EXPORT KCal::Todo::Ptr todo( const Akonadi::Item &item );
-
- /**
-  * returns the journal from an akonadi item, or a null pointer if the item has no such payload
-  */
- KORGANIZER_CORE_EXPORT KCal::Journal::Ptr journal( const Akonadi::Item &item );
-
   /**
     Returns a nice QColor for text, give the input color &c.
   */
