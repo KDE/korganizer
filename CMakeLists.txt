@@ -43,6 +43,7 @@ if(KMAIL_SUPPORTED)
   add_definitions(-DKDE_DEFAULT_DEBUG_AREA=5850)
   include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/interfaces
                       ${CMAKE_SOURCE_DIR}/mimelib
+                      ${CMAKE_SOURCE_DIR}/akonadi/kcal
                       ${CMAKE_SOURCE_DIR}/korganizer/printing
                       ${CMAKE_SOURCE_DIR}/kdgantt1
                       ${CMAKE_BINARY_DIR}/libkdepim
@@ -196,9 +197,6 @@ if(KMAIL_SUPPORTED)
     incidencechanger.cpp
     stdcalendar.cpp
     koprefs.cpp kocore.cpp kohelper.cpp koidentitymanager.cpp cellitem.cpp
-    akonadicalendar.cpp
-    calendarbase.cpp
-    calendarnull.cpp 
     akonadicollectionview.cpp
     printing/calprinter.cpp
     printing/calprintpluginbase.cpp
@@ -230,6 +228,7 @@ if(KMAIL_SUPPORTED)
     korganizer_eventviewer korganizer_interfaces
     kdepim
     kdepimdbusinterfaces
+    akonadi-kcal
     korg_incidenceeditor
   )
 

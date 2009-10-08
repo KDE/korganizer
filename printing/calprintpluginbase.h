@@ -27,7 +27,7 @@
 #define CALPRINTPLUGINBASE_H
 
 #include "korganizer/korganizer_export.h"
-#include "korganizer/calendarbase.h"
+#include "calendarbase.h"
 #include "korganizer/printplugin.h"
 #include "korganizer/corehelper.h"
 
