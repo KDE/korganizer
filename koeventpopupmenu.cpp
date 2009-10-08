@@ -29,16 +29,19 @@
 #include "kocorehelper.h"
 #include "koglobals.h"
 
+#include <akonadi/kcal/utils.h>
+
 #include <KCal/Incidence>
 
 #include <KActionCollection>
 #include <KLocale>
 
+using namespace Akonadi;
+using namespace KCal;
+
 KOEventPopupMenu::KOEventPopupMenu()
 {
   mCalendar = 0;
-  mCurrentIncidence = 0;
-  mCurrentDate = QDate();
   mHasAdditionalItems = false;
 
   addAction( KOGlobals::self()->smallIcon( "document-preview" ), i18n( "&Show" ),
@@ -85,53 +88,54 @@ KOEventPopupMenu::KOEventPopupMenu()
              this, SLOT(forward()) );
 }
 
-void KOEventPopupMenu::showIncidencePopup( KOrg::CalendarBase *cal, Incidence *incidence, const QDate &qd )
+void KOEventPopupMenu::showIncidencePopup( KOrg::CalendarBase *cal, const Akonadi::Item &item, const QDate &qd )
 {
   mCalendar = cal;
-  mCurrentIncidence = incidence;
+  mCurrentIncidence = item;
   mCurrentDate = qd;
 
-  if ( mCurrentIncidence && qd.isValid() ) {
-
-    if ( mCurrentIncidence->recurs() ) {
-      KDateTime thisDateTime( qd, KOPrefs::instance()->timeSpec() );
-      bool isLastOccurrence =
-        !mCurrentIncidence->recurrence()->getNextDateTime( thisDateTime ).isValid();
-      bool isFirstOccurrence =
-        !mCurrentIncidence->recurrence()->getPreviousDateTime( thisDateTime ).isValid();
-      mDissociateOccurrences->setEnabled(
-        !( isFirstOccurrence && isLastOccurrence ) &&
-        !mCurrentIncidence->isReadOnly() );
-    }
-
-    // Enable/Disabled menu items only valid for editable events.
-    QList<QAction *>::Iterator it;
-    for ( it = mEditOnlyItems.begin(); it != mEditOnlyItems.end(); ++it ) {
-      (*it)->setEnabled( !mCurrentIncidence->isReadOnly() );
-    }
-    for ( it = mRecurrenceItems.begin(); it != mRecurrenceItems.end(); ++it ) {
-      (*it)->setVisible( mCurrentIncidence->recurs() );
-    }
-    for ( it = mTodoOnlyItems.begin(); it != mTodoOnlyItems.end(); ++it ) {
-      (*it)->setVisible( mCurrentIncidence->type() == "Todo" );
-      (*it)->setEnabled( !mCurrentIncidence->isReadOnly() );
-    }
-    popup( QCursor::pos() );
-  } else {
+  if ( !Akonadi::hasIncidence( mCurrentIncidence ) && qd.isValid() ) {
     kDebug() << "No event selected";
+    return;
   }
+  Incidence::Ptr incidence = Akonadi::incidence( mCurrentIncidence );
+  Q_ASSERT( incidence );
+  if ( incidence->recurs() ) {
+    KDateTime thisDateTime( qd, KOPrefs::instance()->timeSpec() );
+    bool isLastOccurrence =
+      !incidence->recurrence()->getNextDateTime( thisDateTime ).isValid();
+    bool isFirstOccurrence =
+      !incidence->recurrence()->getPreviousDateTime( thisDateTime ).isValid();
+    mDissociateOccurrences->setEnabled(
+      !( isFirstOccurrence && isLastOccurrence ) &&
+      !incidence->isReadOnly() );
+  }
+
+  // Enable/Disabled menu items only valid for editable events.
+  QList<QAction *>::Iterator it;
+  for ( it = mEditOnlyItems.begin(); it != mEditOnlyItems.end(); ++it ) {
+    (*it)->setEnabled( !incidence->isReadOnly() );
+  }
+  for ( it = mRecurrenceItems.begin(); it != mRecurrenceItems.end(); ++it ) {
+    (*it)->setVisible( incidence->recurs() );
+  }
+  for ( it = mTodoOnlyItems.begin(); it != mTodoOnlyItems.end(); ++it ) {
+    (*it)->setVisible( incidence->type() == "Todo" );
+    (*it)->setEnabled( !incidence->isReadOnly() );
+  }
+  popup( QCursor::pos() );
 }
 
 void KOEventPopupMenu::popupShow()
 {
-  if ( mCurrentIncidence ) {
+  if ( Akonadi::hasIncidence( mCurrentIncidence ) ) {
     emit showIncidenceSignal( mCurrentIncidence );
   }
 }
 
 void KOEventPopupMenu::popupEdit()
 {
-  if ( mCurrentIncidence ) {
+  if ( Akonadi::hasIncidence( mCurrentIncidence ) ) {
     emit editIncidenceSignal( mCurrentIncidence );
   }
 }
@@ -142,11 +146,13 @@ void KOEventPopupMenu::print()
   CalPrinter printer( this, mCalendar, &helper );
   connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
 
-  Incidence::List selectedIncidences;
+  Item::List selectedIncidences;
   selectedIncidences.append( mCurrentIncidence );
 
+#ifdef AKONADI_PORT_DISABLED
   printer.print( KOrg::CalPrinterBase::Incidence,
                  mCurrentDate, mCurrentDate, selectedIncidences, false );
+#endif
 }
 
 void KOEventPopupMenu::printPreview()
@@ -155,30 +161,31 @@ void KOEventPopupMenu::printPreview()
   CalPrinter printer( this, mCalendar, &helper );
   connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
 
-  Incidence::List selectedIncidences;
+  Item::List selectedIncidences;
   selectedIncidences.append( mCurrentIncidence );
-
+#ifdef AKONADI_PORT_DISABLED
   printer.print( KOrg::CalPrinterBase::Incidence,
                  mCurrentDate, mCurrentDate, selectedIncidences, true );
+#endif
 }
 
 void KOEventPopupMenu::popupDelete()
 {
-  if ( mCurrentIncidence ) {
+  if ( Akonadi::hasIncidence( mCurrentIncidence ) ) {
     emit deleteIncidenceSignal( mCurrentIncidence );
   }
 }
 
 void KOEventPopupMenu::popupCut()
 {
-  if ( mCurrentIncidence ) {
+  if ( Akonadi::hasIncidence( mCurrentIncidence ) ) {
     emit cutIncidenceSignal( mCurrentIncidence );
   }
 }
 
 void KOEventPopupMenu::popupCopy()
 {
-  if ( mCurrentIncidence ) {
+  if ( Akonadi::hasIncidence( mCurrentIncidence ) ) {
     emit copyIncidenceSignal( mCurrentIncidence );
   }
 }
@@ -190,14 +197,14 @@ void KOEventPopupMenu::popupPaste()
 
 void KOEventPopupMenu::toggleAlarm()
 {
-  if ( mCurrentIncidence ) {
+  if ( Akonadi::hasIncidence( mCurrentIncidence ) ) {
     emit toggleAlarmSignal( mCurrentIncidence );
   }
 }
 
 void KOEventPopupMenu::dissociateOccurrences()
 {
-  if ( mCurrentIncidence ) {
+  if ( Akonadi::hasIncidence( mCurrentIncidence ) ) {
     emit dissociateOccurrencesSignal( mCurrentIncidence, mCurrentDate );
   }
 }
@@ -205,7 +212,7 @@ void KOEventPopupMenu::dissociateOccurrences()
 void KOEventPopupMenu::forward()
 {
   KOrg::MainWindow *w = ActionManager::findInstance( KUrl() );
-  if ( !w || !mCurrentIncidence ) {
+  if ( !w || !Akonadi::hasIncidence( mCurrentIncidence ) ) {
     return;
   }
 
@@ -220,7 +227,7 @@ void KOEventPopupMenu::forward()
 
 void KOEventPopupMenu::toggleTodoCompleted()
 {
-  if ( mCurrentIncidence && mCurrentIncidence->type() == "Todo" ) {
+  if ( Akonadi::hasTodo( mCurrentIncidence ) ) {
     emit toggleTodoCompletedSignal( mCurrentIncidence );
   }
 }

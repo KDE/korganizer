@@ -199,11 +199,13 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
 
   Q_SIGNALS:
     void incidenceSelected( Incidence *, const QDate );
+    void incidenceSelected( const Akonadi::Item &, const QDate );
 
     /**
      * instructs the receiver to show the incidence in read-only mode.
      */
     void showIncidenceSignal( Incidence * );
+    void showIncidenceSignal( const Akonadi::Item & );
 
     /**
      * instructs the receiver to begin editing the incidence specified in
@@ -211,6 +213,7 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
      * receiver.
      */
     void editIncidenceSignal( Incidence * );
+    void editIncidenceSignal( const Akonadi::Item & );
 
     /**
      * instructs the receiver to delete the Incidence in some manner; some
@@ -218,16 +221,19 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
      * box, etc.  Doesn't make sense to connect to more than one receiver.
      */
     void deleteIncidenceSignal( Incidence * );
+    void deleteIncidenceSignal( const Akonadi::Item & );
 
     /**
     * instructs the receiver to cut the Incidence
     */
     void cutIncidenceSignal( Incidence * );
+    void cutIncidenceSignal( const Akonadi::Item & );
 
     /**
     * instructs the receiver to copy the incidence
     */
     void copyIncidenceSignal( Incidence * );
+    void copyIncidenceSignal( const Akonadi::Item & );
 
     /**
     * instructs the receiver to paste the incidence
@@ -238,12 +244,14 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
      * instructs the receiver to toggle the alarms of the Incidence.
      */
     void toggleAlarmSignal( Incidence * );
+    void toggleAlarmSignal( const Akonadi::Item & );
 
     /**
      * instructs the receiver to toggle the completion state of the Incidence
      * (which must be a  Todo type).
      */
     void toggleTodoCompletedSignal( Incidence * );
+    void toggleTodoCompletedSignal( const Akonadi::Item & );
 
     /** Dissociate from a recurring incidence the occurrence on the given
      *  date to a new incidence or dissociate all occurrences from the
@@ -278,6 +286,7 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
 
     void newTodoSignal( const QDate & );
     void newSubTodoSignal( Todo * );
+    void newSubTodoSignal( const Akonadi::Item & );
 
     void newJournalSignal( const QDate & );
 

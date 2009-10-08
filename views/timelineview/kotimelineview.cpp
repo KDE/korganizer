@@ -229,8 +229,10 @@ void KOTimelineView::itemRightClicked( KDGanttViewItem *item )
   if ( !mEventPopup ) {
     mEventPopup = eventPopup();
   }
+#ifdef AKONADI_PORT_DISABLED // incidence -> item
   mEventPopup->showIncidencePopup(
     calendar(), tlitem->incidence(), tlitem->incidence()->dtStart().date() );
+#endif // AKONADI_PORT_DISABLED // incidence -> item
 }
 
 bool KOTimelineView::eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &allDay )

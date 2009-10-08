@@ -29,6 +29,8 @@
 #include <QDate>
 #include <QMenu>
 
+#include <Akonadi/Item>
+
 namespace KCal {
   class Incidence;
 }
@@ -36,8 +38,6 @@ namespace KCal {
 namespace KOrg {
   class CalendarBase;
 }
-
-using namespace KCal;
 
 /**
  * Context menu for event views with standard event actions.
@@ -49,7 +49,7 @@ class KOEventPopupMenu : public QMenu
     KOEventPopupMenu();
 
   public slots:
-    void showIncidencePopup( KOrg::CalendarBase *, Incidence *, const QDate & );
+    void showIncidencePopup( KOrg::CalendarBase *, const Akonadi::Item &, const QDate & );
 
   protected slots:
     void popupShow();
@@ -67,19 +67,19 @@ class KOEventPopupMenu : public QMenu
 
   signals:
     void configChanged();
-    void editIncidenceSignal( Incidence * );
-    void showIncidenceSignal( Incidence * );
-    void deleteIncidenceSignal( Incidence * );
-    void cutIncidenceSignal( Incidence * );
-    void copyIncidenceSignal( Incidence * );
+    void editIncidenceSignal( const Akonadi::Item & );
+    void showIncidenceSignal( const Akonadi::Item & );
+    void deleteIncidenceSignal( const Akonadi::Item & );
+    void cutIncidenceSignal( const Akonadi::Item & );
+    void copyIncidenceSignal( const Akonadi::Item & );
     void pasteIncidenceSignal();
-    void toggleAlarmSignal( Incidence * );
-    void toggleTodoCompletedSignal( Incidence * );
-    void dissociateOccurrencesSignal( Incidence *, const QDate & );
+    void toggleAlarmSignal( const Akonadi::Item & );
+    void toggleTodoCompletedSignal( const Akonadi::Item & );
+    void dissociateOccurrencesSignal( const Akonadi::Item &, const QDate & );
 
   private:
     KOrg::CalendarBase *mCalendar;
-    Incidence *mCurrentIncidence;
+    Akonadi::Item mCurrentIncidence;
     QDate mCurrentDate;
 
     bool mHasAdditionalItems;
