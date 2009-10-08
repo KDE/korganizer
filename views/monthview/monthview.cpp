@@ -295,10 +295,11 @@ void MonthView::setStartDate( const QDate &start )
   reloadIncidences();
 }
 
-Incidence::List MonthView::selectedIncidences()
+Akonadi::Item::List MonthView::selectedIncidences()
 {
+  Akonadi::Item::List selected;
+#ifdef AKONADI_PORT_DISABLED
   Incidence *incidenceSelected = 0;
-  Incidence::List selected;
 
   if ( mScene->selectedItem() ) {
     IncidenceMonthItem *tmp = qobject_cast<IncidenceMonthItem *>( mScene->selectedItem() );
@@ -310,7 +311,7 @@ Incidence::List MonthView::selectedIncidences()
       }
     }
   }
-
+#endif // AKONADI_PORT_DISABLED
   return selected;
 }
 

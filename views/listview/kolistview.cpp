@@ -293,16 +293,16 @@ int KOListView::currentDateCount()
   return mSelectedDates.count();
 }
 
-Incidence::List KOListView::selectedIncidences()
+Akonadi::Item::List KOListView::selectedIncidences()
 {
-  Incidence::List eventList;
-
+  Akonadi::Item::List eventList;
+#ifdef AKONADI_PORT_DISABLED
   Q3ListViewItem *item = mListView->selectedItem();
   if ( item ) {
     KOListViewItem *i = static_cast<KOListViewItem *>( item );
     eventList.append( i->data() );
   }
-
+#endif // AKONADI_PORT_DISABLED
   return eventList;
 }
 

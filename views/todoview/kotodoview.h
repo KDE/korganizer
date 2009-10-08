@@ -64,7 +64,7 @@ class KOTodoView : public BaseView
 
     virtual void setCalendar( KOrg::CalendarBase *cal );
 
-    virtual Incidence::List selectedIncidences();
+    virtual Akonadi::Item::List selectedIncidences();
     virtual DateList selectedDates();
     virtual int currentDateCount() { return 0; }
 

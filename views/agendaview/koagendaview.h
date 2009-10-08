@@ -107,7 +107,7 @@ class KOAgendaView : public KOrg::AgendaView, public KOrg::CalendarBase::Calenda
     virtual int currentDateCount();
 
     /** returns the currently selected events */
-    virtual Incidence::List selectedIncidences();
+    virtual Akonadi::Item::List selectedIncidences();
 
     /** returns the currently selected incidence's dates */
     virtual DateList selectedDates();

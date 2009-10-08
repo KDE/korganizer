@@ -26,6 +26,10 @@
 
 #include <korganizer/baseview.h>
 
+namespace Akonadi {
+  class Item;
+}
+
 namespace KOrg {
 
 class CalendarBase;
@@ -44,7 +48,7 @@ class CalendarViewBase : public QWidget
     virtual QDate startDate() = 0;
     virtual QDate endDate() = 0;
 
-    virtual Incidence *currentSelection() = 0;
+    virtual Akonadi::Item currentSelection() = 0;
 
     virtual void addView( KOrg::BaseView * ) = 0;
 

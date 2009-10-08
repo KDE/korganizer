@@ -30,7 +30,6 @@
 */
 
 #include "calendarview.h"
-#include "calendarnull.h"
 #include "calprinter.h"
 #include "datechecker.h"
 #include "datenavigator.h"
@@ -60,6 +59,9 @@
 #include "views/multiagendaview/multiagendaview.h"
 #include "views/todoview/kotodoview.h"
 
+#include "calendarnull.h"
+#include <akonadi/kcal/utils.h>
+
 #include <KCal/CalendarResources>
 #include <KCal/CalFilter>
 #include <KCal/DndFactory>
@@ -88,6 +90,8 @@ using namespace KHolidays;
 #include <QStackedWidget>
 #include <QVBoxLayout>
 
+using namespace Akonadi;
+
 CalendarView::CalendarView( QWidget *parent )
   : CalendarViewBase( parent ),
     mHistory( 0 ),
@@ -100,7 +104,6 @@ CalendarView::CalendarView( QWidget *parent )
 
   mModified = false;
   mReadOnly = false;
-  mSelectedIncidence = 0;
 
   mCalPrinter = 0;
 
@@ -271,22 +274,22 @@ void CalendarView::setIncidenceChanger( IncidenceChangerBase *changer )
   delete mChanger;
   mChanger = changer;
   emit newIncidenceChanger( mChanger );
-  connect( mChanger, SIGNAL(incidenceAdded(Incidence *)),
-           this, SLOT(incidenceAdded(Incidence *)) );
-  connect( mChanger, SIGNAL(incidenceChanged(Incidence *,Incidence *,int)),
-           this, SLOT(incidenceChanged(Incidence *,Incidence *,int)) );
-  connect( mChanger, SIGNAL(incidenceChanged(Incidence *,Incidence *)),
-           this, SLOT(incidenceChanged(Incidence *,Incidence *)) );
-  connect( mChanger, SIGNAL(incidenceToBeDeleted(Incidence *)),
-           this, SLOT(incidenceToBeDeleted(Incidence *)) );
-  connect( mChanger, SIGNAL(incidenceDeleted(Incidence *)),
-           this, SLOT(incidenceDeleted(Incidence *)) );
+  connect( mChanger, SIGNAL(incidenceAdded(Akonadi::Item)),
+           this, SLOT(incidenceAdded(Akonadi::Item)) );
+  connect( mChanger, SIGNAL(incidenceChanged(Akonadi::Item,Akonadi::Item,int)),
+           this, SLOT(incidenceChanged(Akonadi::Item,Akonadi::Item,int)) );
+  connect( mChanger, SIGNAL(incidenceChanged(Akonadi::Item,Akonadi::Item)),
+           this, SLOT(incidenceChanged(Akonadi::Item,Akonadi::Item)) );
+  connect( mChanger, SIGNAL(incidenceToBeDeleted(Akonadi::Item)),
+           this, SLOT(incidenceToBeDeleted(Akonadi::Item)) );
+  connect( mChanger, SIGNAL(incidenceDeleted(Akonadi::Item)),
+           this, SLOT(incidenceDeleted(Akonadi::Item)) );
 
-  connect( mChanger, SIGNAL(schedule(iTIPMethod,Incidence *)),
-           this, SLOT(schedule(iTIPMethod,Incidence *)) );
+  connect( mChanger, SIGNAL(schedule(iTIPMethod,Akonadi::Item)),
+           this, SLOT(schedule(iTIPMethod,Akonadi::Item)) );
 
-  connect( this, SIGNAL(cancelAttendees(Incidence *)),
-           mChanger, SLOT(cancelAttendees(Incidence *)) );
+  connect( this, SIGNAL(cancelAttendees(Akonadi::Item)),
+           mChanger, SLOT(cancelAttendees(Akonadi::Item)) );
 }
 
 KOrg::CalendarBase *CalendarView::calendar()
@@ -298,13 +301,9 @@ KOrg::CalendarBase *CalendarView::calendar()
   }
 }
 
-KOIncidenceEditor *CalendarView::editorDialog( Incidence *incidence ) const
+KOIncidenceEditor *CalendarView::editorDialog( const Item &item ) const
 {
-  if ( mDialogList.contains( incidence ) ) {
-    return mDialogList[incidence];
-  } else {
-    return 0;
-  }
+  return mDialogList.value( item.id() );
 }
 
 QDate CalendarView::activeDate( bool fallbackToToday )
@@ -653,26 +652,29 @@ void CalendarView::updateConfig( const QByteArray &receiver )
   mViewManager->raiseCurrentView();
 }
 
-void CalendarView::incidenceAdded( Incidence *incidence )
+void CalendarView::incidenceAdded( const Item &incidence )
 {
   setModified( true );
-  history()->recordAdd( incidence );
+  history()->recordAdd( Akonadi::incidence( incidence ).get() );
   changeIncidenceDisplay( incidence, KOGlobals::INCIDENCEADDED );
   updateUnmanagedViews();
   checkForFilteredChange( incidence );
 }
 
-void CalendarView::incidenceChanged( Incidence *oldIncidence,
-                                     Incidence *newIncidence )
+void CalendarView::incidenceChanged( const Item &oldIncidence,
+                                     const Item &newIncidence )
 {
   incidenceChanged( oldIncidence, newIncidence, KOGlobals::UNKNOWN_MODIFIED );
 }
 
-void CalendarView::incidenceChanged( Incidence *oldIncidence,
-                                     Incidence *newIncidence, int what )
+void CalendarView::incidenceChanged( const Item &oldIncidence_,
+                                     const Item &newIncidence_, int what )
 {
+  Incidence* const oldIncidence = Akonadi::incidence( oldIncidence_ ).get();
+  Incidence* const newIncidence = Akonadi::incidence( newIncidence_ ).get();
+
   // FIXME: Make use of the what flag, which indicates which parts of the incidence have changed!
-  KOIncidenceEditor *tmp = editorDialog( newIncidence );
+  KOIncidenceEditor *tmp = editorDialog( newIncidence_ );
   if ( tmp ) {
     kDebug() << "Incidence modified and open";
     tmp->modified( what );
@@ -723,15 +725,17 @@ void CalendarView::incidenceChanged( Incidence *oldIncidence,
       }
     }
   }
-
+#ifdef AKONADI_PORT_DISABLED
   changeIncidenceDisplay( newIncidence, KOGlobals::INCIDENCEEDITED );
   updateUnmanagedViews();
   checkForFilteredChange( newIncidence );
+#endif
 }
 
-void CalendarView::incidenceToBeDeleted( Incidence *incidence )
+void CalendarView::incidenceToBeDeleted( const Item &item )
 {
-  KOIncidenceEditor *tmp = editorDialog( incidence );
+  Incidence* const incidence = Akonadi::incidence( item ).get();
+  KOIncidenceEditor *tmp = editorDialog( item );
   if (tmp) {
     kDebug() << "Incidence to be deleted and open in editor";
     tmp->delayedDestruct();
@@ -742,14 +746,15 @@ void CalendarView::incidenceToBeDeleted( Incidence *incidence )
   updateUnmanagedViews();
 }
 
-void CalendarView::incidenceDeleted( Incidence *incidence )
+void CalendarView::incidenceDeleted( const Item &item )
 {
-  changeIncidenceDisplay( incidence, KOGlobals::INCIDENCEDELETED );
+  changeIncidenceDisplay( item, KOGlobals::INCIDENCEDELETED );
   updateUnmanagedViews();
 }
 
-void CalendarView::checkForFilteredChange( Incidence *incidence )
+void CalendarView::checkForFilteredChange( const Item &item )
 {
+  Incidence* const incidence = Akonadi::incidence( item ).get();
   CalFilter *filter = calendar()->filter();
   if ( filter && !filter->filterIncidence( incidence ) ) {
     // Incidence is filtered and thus not shown in the view, tell the
@@ -773,12 +778,13 @@ void CalendarView::endMultiModify()
   history()->endMultiModify();
 }
 
-void CalendarView::changeIncidenceDisplay( Incidence *incidence, int action )
+void CalendarView::changeIncidenceDisplay( const Item &item, int action )
 {
+  Incidence* const incidence = Akonadi::incidence( item ).get();
   mDateNavigatorContainer->updateView();
   mDialogManager->updateSearchDialog();
 
-  if ( incidence ) {
+  if ( Akonadi::hasIncidence( item ) ) {
     // If there is an event view visible update the display
     mViewManager->currentView()->changeIncidenceDisplay( incidence, action );
     if ( mTodoList ) {
@@ -819,12 +825,12 @@ void CalendarView::updateUnmanagedViews()
   mDateNavigatorContainer->updateDayMatrix();
 }
 
-int CalendarView::msgItemDelete( Incidence *incidence )
+int CalendarView::msgItemDelete( const Akonadi::Item &item )
 {
   return KMessageBox::questionYesNo(
     this,
     i18nc( "@info",
-           "Do you really want to permanently remove the item \"%1\"?", incidence->summary() ),
+           "Do you really want to permanently remove the item \"%1\"?", Akonadi::incidence( item )->summary() ),
     i18nc( "@title:window", "Delete Item?" ),
     KStandardGuiItem::yes(),
     KStandardGuiItem::no(),
@@ -834,21 +840,22 @@ int CalendarView::msgItemDelete( Incidence *incidence )
 
 void CalendarView::edit_cut()
 {
-  Incidence *incidence = selectedIncidence();
-
+  const Akonadi::Item item = selectedIncidence();
+  Incidence::Ptr incidence = Akonadi::incidence( item );
   if ( !incidence || !mChanger ) {
     KNotification::beep();
     return;
   }
-  mChanger->cutIncidence( incidence );
+  mChanger->cutIncidence( incidence.get() );
+
   checkClipboard();
 }
 
 void CalendarView::edit_copy()
 {
-  Incidence *incidence = selectedIncidence();
+  const Item item = selectedIncidence();
 
-  if ( !incidence ) {
+  if ( !item.isValid() ) {
     KNotification::beep();
     return;
   }
@@ -1122,9 +1129,9 @@ bool CalendarView::addIncidence( const QString &ical )
 
 void CalendarView::appointment_show()
 {
-  Incidence *incidence = selectedIncidence();
-  if ( incidence ) {
-    showIncidence( incidence );
+  const Item item  = selectedIncidence();
+  if ( Akonadi::hasIncidence( item ) ) {
+    showIncidence( item );
   } else {
     KNotification::beep();
   }
@@ -1132,9 +1139,9 @@ void CalendarView::appointment_show()
 
 void CalendarView::appointment_edit()
 {
-  Incidence *incidence = selectedIncidence();
-  if ( incidence ) {
-    editIncidence( incidence );
+  const Item item = selectedIncidence();
+  if ( Akonadi::hasIncidence( item ) ) {
+    editIncidence( item );
   } else {
     KNotification::beep();
   }
@@ -1142,9 +1149,9 @@ void CalendarView::appointment_edit()
 
 void CalendarView::appointment_delete()
 {
-  Incidence *incidence = selectedIncidence();
-  if ( incidence ) {
-    deleteIncidence( incidence );
+  const Item item = selectedIncidence();
+  if ( Akonadi::hasIncidence( item ) ) {
+    deleteIncidence( item );
   } else {
     KNotification::beep();
   }
@@ -1219,6 +1226,7 @@ bool CalendarView::makeSubTodosIndependents ( Todo *todo )
 
 bool CalendarView::deleteIncidence( const QString &uid, bool force )
 {
+#ifdef AKONADI_PORT_DISABLED
   Incidence *inc = mCalendar->incidence( uid );
   if ( inc ) {
     deleteIncidence( inc, force );
@@ -1226,10 +1234,14 @@ bool CalendarView::deleteIncidence( const QString &uid, bool force )
   } else {
     return false;
   }
+#else
+  return false;
+#endif
 }
 
-void CalendarView::toggleAlarm( Incidence *incidence )
+void CalendarView::toggleAlarm( const Akonadi::Item &item )
 {
+  Incidence* const incidence = Akonadi::incidence( item ).get();
   if ( !incidence || !mChanger ) {
     kDebug() << "called without having a clicked item";
     return;
@@ -1257,8 +1269,10 @@ void CalendarView::toggleAlarm( Incidence *incidence )
   delete oldincidence;
 }
 
-void CalendarView::toggleTodoCompleted( Incidence *incidence )
+void CalendarView::toggleTodoCompleted( const Item &item )
 {
+  Incidence* const incidence = Akonadi::incidence( item ).get();
+
   if ( !incidence || !mChanger ) {
     kDebug() << "called without having a clicked item";
     return;
@@ -1287,8 +1301,9 @@ void CalendarView::toggleTodoCompleted( Incidence *incidence )
   delete oldtodo;
 }
 
-void CalendarView::dissociateOccurrences( Incidence *incidence, const QDate &date )
+void CalendarView::dissociateOccurrences( const Item &item, const QDate &date )
 {
+  Incidence* const incidence = Akonadi::incidence( item ).get();
 
   if ( !incidence || !mChanger ) {
     kError() << "Called without having a clicked item";
@@ -1329,13 +1344,15 @@ void CalendarView::dissociateOccurrences( Incidence *incidence, const QDate &dat
   }
 
   if ( doOnlyThis ) {
-    dissociateOccurrence( incidence, date );
+    dissociateOccurrence( item, date );
   } else if ( doFuture ) {
-    dissociateFutureOccurrence( incidence, date );
+    dissociateFutureOccurrence( item, date );
   }
 }
-void CalendarView::dissociateOccurrence( Incidence *incidence, const QDate &date )
+void CalendarView::dissociateOccurrence( const Item &item, const QDate &date )
 {
+  Incidence* const incidence = Akonadi::incidence( item ).get();
+
   if ( !mChanger->beginChange( incidence ) ) {
     kDebug() << "Unable to lock incidence";
     return;
@@ -1359,8 +1376,10 @@ void CalendarView::dissociateOccurrence( Incidence *incidence, const QDate &date
   delete oldincidence;
 }
 
-void CalendarView::dissociateFutureOccurrence( Incidence *incidence, const QDate &date )
+void CalendarView::dissociateFutureOccurrence( const Item &item, const QDate &date )
 {
+  Incidence* const incidence = Akonadi::incidence( item ).get();
+
   if ( !mChanger->beginChange( incidence ) ) {
     kDebug() << "Unable to lock incidence";
     return;
@@ -1386,10 +1405,13 @@ void CalendarView::dissociateFutureOccurrence( Incidence *incidence, const QDate
   delete oldincidence;
 }
 
-void CalendarView::schedule_publish( Incidence *incidence )
+void CalendarView::schedule_publish( const Item &item )
 {
-  if ( incidence == 0 ) {
-    incidence = selectedIncidence();
+  Incidence* incidence = Akonadi::incidence( item ).get();
+
+  if ( !incidence ) {
+    const Item item = selectedIncidence();
+    incidence = Akonadi::incidence( item ).get();
   }
 
   if ( !incidence ) {
@@ -1424,45 +1446,47 @@ void CalendarView::schedule_publish( Incidence *incidence )
   delete publishdlg;
 }
 
-void CalendarView::schedule_request( Incidence *incidence )
+void CalendarView::schedule_request( const Item &incidence )
 {
   schedule( iTIPRequest, incidence );
 }
 
-void CalendarView::schedule_refresh( Incidence *incidence )
+void CalendarView::schedule_refresh( const Item &incidence )
 {
   schedule( iTIPRefresh, incidence );
 }
 
-void CalendarView::schedule_cancel( Incidence *incidence )
+void CalendarView::schedule_cancel( const Item &incidence )
 {
   schedule( iTIPCancel, incidence );
 }
 
-void CalendarView::schedule_add( Incidence *incidence )
+void CalendarView::schedule_add( const Item &incidence )
 {
   schedule( iTIPAdd, incidence );
 }
 
-void CalendarView::schedule_reply( Incidence *incidence )
+void CalendarView::schedule_reply( const Item &incidence )
 {
   schedule( iTIPReply, incidence );
 }
 
-void CalendarView::schedule_counter( Incidence *incidence )
+void CalendarView::schedule_counter( const Item &incidence )
 {
   schedule( iTIPCounter, incidence );
 }
 
-void CalendarView::schedule_declinecounter( Incidence *incidence )
+void CalendarView::schedule_declinecounter( const Item &incidence )
 {
   schedule( iTIPDeclineCounter, incidence );
 }
 
-void CalendarView::schedule_forward( Incidence *incidence )
+void CalendarView::schedule_forward( const Item &item )
 {
-  if ( incidence == 0 ) {
-    incidence = selectedIncidence();
+  Incidence* incidence = Akonadi::incidence( item ).get();
+  if ( !incidence ) {
+    const Item item = selectedIncidence();
+    incidence = Akonadi::incidence( item ).get();
   }
 
   if ( !incidence ) {
@@ -1535,10 +1559,12 @@ void CalendarView::uploadFreeBusy()
   KOGroupware::instance()->freeBusyManager()->publishFreeBusy();
 }
 
-void CalendarView::schedule( iTIPMethod method, Incidence *incidence )
+void CalendarView::schedule( iTIPMethod method, const Item &item )
 {
+  Incidence* incidence = Akonadi::incidence( item ).get();
   if ( !incidence ) {
-    incidence = selectedIncidence();
+    const Item item = selectedIncidence();
+    Incidence::Ptr incidence = Akonadi::incidence( item );
   }
 
   if ( !incidence ) {
@@ -1742,7 +1768,7 @@ void CalendarView::exportVCalendar()
 #endif
 }
 
-void CalendarView::eventUpdated(Incidence *)
+void CalendarView::eventUpdated( const Item & )
 {
   setModified();
   // Don't call updateView here. The code, which has caused the update of the
@@ -1764,29 +1790,30 @@ void CalendarView::adaptNavigationUnits()
   }
 }
 
-void CalendarView::processMainViewSelection( Incidence *incidence, const QDate &date )
+void CalendarView::processMainViewSelection( const Item &item, const QDate &date )
 {
-  if ( incidence ) {
+  if ( Akonadi::hasIncidence( item ) ) {
     mTodoList->clearSelection();
   }
-  processIncidenceSelection( incidence, date );
+  processIncidenceSelection( item, date );
 }
 
-void CalendarView::processTodoListSelection( Incidence *incidence, const QDate &date )
+void CalendarView::processTodoListSelection( const Item &item, const QDate &date )
 {
-  if ( incidence && mViewManager->currentView() ) {
+  if (  Akonadi::hasIncidence( item ) && mViewManager->currentView() ) {
     mViewManager->currentView()->clearSelection();
   }
-  processIncidenceSelection( incidence, date );
+  processIncidenceSelection( item, date );
 }
 
-void CalendarView::processIncidenceSelection( Incidence *incidence, const QDate &date )
+void CalendarView::processIncidenceSelection( const Item &item, const QDate &date )
 {
-  if ( !incidence || incidence == mSelectedIncidence ) {
+  Incidence* const incidence = Akonadi::incidence( item ).get();
+  if ( !incidence || item == mSelectedIncidence ) {
     return;
   }
 
-  mSelectedIncidence = incidence;
+  mSelectedIncidence = item;
   emit incidenceSelected( mSelectedIncidence, date );
 
   bool organizerEvents = false;
@@ -1889,9 +1916,9 @@ QString CalendarView::currentFilterName() const
 
 void CalendarView::takeOverEvent()
 {
-  Incidence *incidence = currentSelection();
+  Incidence::Ptr incidence = Akonadi::incidence( currentSelection() );
 
-  if ( !incidence ) {
+  if ( incidence ) {
     return;
   }
 
@@ -1991,6 +2018,7 @@ void CalendarView::calendarModified( bool modified, KOrg::CalendarBase *calendar
 
 Todo *CalendarView::selectedTodo()
 {
+#ifdef AKONADI_PORT_DISABLED // selectedIncidences
   Incidence *incidence = currentSelection();
   if ( incidence && incidence->type() == "Todo" ) {
     return static_cast<Todo *>( incidence );
@@ -2004,32 +2032,32 @@ Todo *CalendarView::selectedTodo()
   if ( incidence && incidence->type() == "Todo" ) {
     return static_cast<Todo *>( incidence );
   }
-
+#endif // AKONADI_PORT_DISABLED
   return 0;
 }
 
-void CalendarView::dialogClosing( Incidence *in )
+void CalendarView::dialogClosing( const Item &item )
 {
   // FIXME: this doesn't work, because if it's a new incidence, it's not locked!
-  mChanger->endChange( in );
-  mDialogList.remove( in );
+  mChanger->endChange( Akonadi::incidence( item ).get() );
+  mDialogList.remove( item.id() );
 }
 
-Incidence *CalendarView::currentSelection()
+Item CalendarView::currentSelection()
 {
   return mViewManager->currentSelection();
 }
 
-Incidence *CalendarView::selectedIncidence()
+Item CalendarView::selectedIncidence()
 {
-  Incidence *incidence = currentSelection();
-  if ( !incidence ) {
-    Incidence::List selectedIncidences = mTodoList->selectedIncidences();
+  Item item = currentSelection();
+  if ( !item.isValid() ) {
+    Item::List selectedIncidences = mTodoList->selectedIncidences();
     if ( !selectedIncidences.isEmpty() ) {
-      incidence = selectedIncidences.first();
+      item = selectedIncidences.first();
     }
   }
-  return incidence;
+  return item;
 }
 
 void CalendarView::showIncidence()
@@ -2044,27 +2072,39 @@ void CalendarView::editIncidence()
 
 bool CalendarView::editIncidence( const QString &uid )
 {
+#ifdef AKONADI_PORT_DISABLED // selectedIncidences
   return editIncidence( mCalendar->incidence( uid ) );
+#else
+  return false;
+#endif
 }
 
 bool CalendarView::showIncidence( const QString &uid )
 {
+#ifdef AKONADI_PORT_DISABLED // selectedIncidences
   Incidence *incidence = mCalendar->incidence( uid );
   if ( !incidence ) {
     return false;
   }
   showIncidence( incidence );
   return true;
+#else
+  return false;
+#endif
 }
 
 bool CalendarView::showIncidenceContext( const QString &uid )
 {
+#ifdef AKONADI_PORT_DISABLED // selectedIncidences
   Incidence *incidence = mCalendar->incidence( uid );
   if ( !incidence ) {
     return false;
   }
   showIncidenceContext( incidence );
   return true;
+#else
+  return false;
+#endif
 }
 
 void CalendarView::deleteIncidence()
@@ -2072,13 +2112,13 @@ void CalendarView::deleteIncidence()
   deleteIncidence( selectedIncidence() );
 }
 
-void CalendarView::cutIncidence( Incidence *incidence )
+void CalendarView::cutIncidence( const Item &incidence )
 {
   Q_UNUSED( incidence );
   edit_cut();
 }
 
-void CalendarView::copyIncidence( Incidence *incidence )
+void CalendarView::copyIncidence( const Item &incidence )
 {
   Q_UNUSED( incidence );
   edit_copy();
@@ -2089,10 +2129,11 @@ void CalendarView::pasteIncidence()
   edit_paste();
 }
 
-void CalendarView::showIncidence( Incidence *incidence )
+void CalendarView::showIncidence( const Item &item )
 {
+  const Incidence::Ptr incidence = Akonadi::incidence( item );
   KOEventViewerDialog *eventViewer = new KOEventViewerDialog( calendar(), this );
-  eventViewer->setIncidence( incidence, QDate() );
+  eventViewer->setIncidence( incidence.get(), QDate() );
 
   // Disable the Edit button for read-only Incidences.
   if ( incidence->isReadOnly() ) {
@@ -2102,9 +2143,10 @@ void CalendarView::showIncidence( Incidence *incidence )
   eventViewer->show();
 }
 
-void CalendarView::showIncidenceContext( Incidence *incidence )
+void CalendarView::showIncidenceContext( const Item &item )
 {
-  if ( dynamic_cast<KCal::Event *>( incidence ) ) {
+  Incidence* const incidence = Akonadi::incidence( item ).get();
+  if ( Akonadi::hasEvent( item ) ) {
     if ( !viewManager()->currentView()->inherits( "KOEventView" ) ) {
       viewManager()->showAgendaView();
     }
@@ -2112,22 +2154,25 @@ void CalendarView::showIncidenceContext( Incidence *incidence )
     mDateNavigator->selectWeek(
       incidence->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ).date() );
     return;
-  } else if ( dynamic_cast<KCal::Journal *>( incidence ) ) {
+  } else if ( Akonadi::hasJournal( item ) ) {
     if ( !viewManager()->currentView()->inherits( "KOJournalView" ) ) {
       viewManager()->showJournalView();
     }
-  } else if ( dynamic_cast<KCal::Todo *>( incidence ) ) {
+  } else if ( Akonadi::hasTodo( item ) ) {
     if ( !viewManager()->currentView()->inherits( "KOTodoView" ) ) {
       viewManager()->showTodoView();
     }
   }
-  Incidence::List list;
-  list.append( incidence );
+  Item::List list;
+  list.append( item );
+#ifdef AKONADI_PORT_DISABLED
   viewManager()->currentView()->showIncidences( list, QDate() );
+#endif
 }
 
-bool CalendarView::editIncidence( Incidence *incidence, bool isCounter )
+bool CalendarView::editIncidence( const Item &item, bool isCounter )
 {
+  Incidence::Ptr incidence = Akonadi::incidence( item );
   if ( !incidence ) {
     kDebug() << "Empty Incidence";
     KNotification::beep();
@@ -2140,7 +2185,7 @@ bool CalendarView::editIncidence( Incidence *incidence, bool isCounter )
     return false;
   }
 
-  KOIncidenceEditor *tmp = editorDialog( incidence );
+  KOIncidenceEditor *tmp = editorDialog( item );
   if ( tmp ) {
     tmp->reload();
     tmp->raise();
@@ -2149,21 +2194,21 @@ bool CalendarView::editIncidence( Incidence *incidence, bool isCounter )
   }
 
   if ( incidence->isReadOnly() ) {
-    showIncidence( incidence );
+    showIncidence( item );
     return true;
   }
 
-  if ( !isCounter && !mChanger->beginChange( incidence ) ) {
-    warningChangeFailed( incidence );
-    showIncidence( incidence );
+  if ( !isCounter && !mChanger->beginChange( incidence.get() ) ) {
+    warningChangeFailed( item );
+    showIncidence( item );
     return false;
   }
 
-  KOIncidenceEditor *incidenceEditor = mDialogManager->getEditor( incidence );
+  KOIncidenceEditor *incidenceEditor = mDialogManager->getEditor( incidence.get() );
   connectIncidenceEditor( incidenceEditor );
 
-  mDialogList.insert( incidence, incidenceEditor );
-  incidenceEditor->editIncidence( incidence, mCalendar );
+  mDialogList.insert( item.id(), incidenceEditor );
+  incidenceEditor->editIncidence( incidence.get(), mCalendar );
   incidenceEditor->show();
   return true;
 }
@@ -2191,6 +2236,7 @@ void CalendarView::deleteSubTodosIncidence ( Todo *todo )
 
 void CalendarView::deleteTodoIncidence ( Todo *todo, bool force )
 {
+#ifdef AKONADI_PORT_DISABLED
   if ( !todo ) {
     return ;
   }
@@ -2232,10 +2278,12 @@ void CalendarView::deleteTodoIncidence ( Todo *todo, bool force )
     deleteSubTodosIncidence ( todo );
   }
   endMultiModify();
+#endif // AKONADI_PORT_DISABLED
 }
 
-void CalendarView::deleteIncidence( Incidence *incidence, bool force )
+void CalendarView::deleteIncidence( const Item &item, bool force )
 {
+  Incidence::Ptr incidence = Akonadi::incidence( item );
   if ( !incidence || !mChanger ) {
     if ( !force ) {
       KNotification::beep();
@@ -2259,13 +2307,13 @@ void CalendarView::deleteIncidence( Incidence *incidence, bool force )
 
   // Let the visitor do special things for special incidence types.
   // e.g. todos with children cannot be deleted, so act(..) returns false
-  if ( !v.act( incidence, this ) ) {
+  if ( !v.act( incidence.get(), this ) ) {
     return;
   }
   //If it is a todo, there are specific delete function
 
   if ( incidence && incidence->type() == "Todo" ) {
-    deleteTodoIncidence( static_cast<Todo*>(incidence), force );
+    deleteTodoIncidence( static_cast<Todo*>(incidence.get()), force );
     return;
   }
 
@@ -2316,7 +2364,7 @@ void CalendarView::deleteIncidence( Incidence *incidence, bool force )
             itemFuture,
             KGuiItem( i18n( "Delete &All" ) ) );
         } else {
-          km = ( msgItemDelete( incidence ) == KMessageBox::Yes ?
+          km = ( msgItemDelete( item ) == KMessageBox::Yes ?
                  KMessageBox::Continue : KMessageBox::Cancel );
         }
       }
@@ -2324,25 +2372,25 @@ void CalendarView::deleteIncidence( Incidence *incidence, bool force )
     switch( km ) {
     case KMessageBox::Ok: // Continue // all
     case KMessageBox::Continue:
-      mChanger->deleteIncidence( incidence );
+      mChanger->deleteIncidence( incidence.get() );
       break;
 
     case KMessageBox::Yes: // just this one
-      if ( mChanger->beginChange( incidence ) ) {
+      if ( mChanger->beginChange( incidence.get() ) ) {
         Incidence *oldIncidence = incidence->clone();
         incidence->recurrence()->addExDate( itemDate );
-        mChanger->changeIncidence( oldIncidence, incidence );
-        mChanger->endChange( incidence );
+        mChanger->changeIncidence( oldIncidence, incidence.get() );
+        mChanger->endChange( incidence.get() );
         delete oldIncidence;
       }
       break;
     case KMessageBox::No: // all future items
-      if ( mChanger->beginChange( incidence ) ) {
+      if ( mChanger->beginChange( incidence.get() ) ) {
         Incidence *oldIncidence = incidence->clone();
         Recurrence *recur = incidence->recurrence();
         recur->setEndDate( itemDate.addDays(-1) );
-        mChanger->changeIncidence( oldIncidence, incidence );
-        mChanger->endChange( incidence );
+        mChanger->changeIncidence( oldIncidence, incidence.get() );
+        mChanger->endChange( incidence.get() );
         delete oldIncidence;
       }
       break;
@@ -2350,11 +2398,11 @@ void CalendarView::deleteIncidence( Incidence *incidence, bool force )
   } else {
     bool doDelete = true;
     if ( !force && KOPrefs::instance()->mConfirm ) {
-      doDelete = ( msgItemDelete( incidence ) == KMessageBox::Yes );
+      doDelete = ( msgItemDelete( item ) == KMessageBox::Yes );
     }
     if ( doDelete ) {
-      mChanger->deleteIncidence( incidence );
-      processIncidenceSelection( 0, QDate() );
+      mChanger->deleteIncidence( incidence.get() );
+      processIncidenceSelection( Item(), QDate() );
     }
   }
 }
@@ -2436,8 +2484,9 @@ void CalendarView::purgeCompleted()
   }
 }
 
-void CalendarView::warningChangeFailed( Incidence *incidence )
+void CalendarView::warningChangeFailed( const Item &item )
 {
+  Incidence* const incidence = Akonadi::incidence( item ).get();
   if ( incidence ) {
     KMessageBox::sorry(
       this,
@@ -2447,9 +2496,9 @@ void CalendarView::warningChangeFailed( Incidence *incidence )
   }
 }
 
-void CalendarView::editCanceled( Incidence *incidence )
+void CalendarView::editCanceled( const Item &item )
 {
-  mCalendar->endChange( incidence );
+  mCalendar->endChangeFORAKONADI( item );
 }
 
 void CalendarView::showErrorMessage( const QString &msg )
@@ -2473,20 +2522,20 @@ void CalendarView::updateCategories()
   emit categoriesChanged();
 }
 
-void CalendarView::addIncidenceOn( Incidence *incadd, const QDate &dt )
+void CalendarView::addIncidenceOn( const Item &itemadd, const QDate &dt )
 {
-  if ( !incadd || !mChanger ) {
+  if ( !Akonadi::hasIncidence( itemadd ) || !mChanger ) {
     KMessageBox::sorry( this,
                         i18n( "Unable to copy the item to %1.", dt.toString() ),
                         i18n( "Copying Failed" ) );
     return;
   }
-  Incidence *incidence = mCalendar->incidence( incadd->uid() );
-  if ( !incidence ) {
-    incidence = incadd;
+  Item item = mCalendar->incidenceFORAKONADI( itemadd.id() );
+  if ( !item.isValid() ) {
+    item = itemadd;
   }
   // Create a copy of the incidence, since the incadd doesn't belong to us.
-  incidence = incidence->clone();
+  Incidence* incidence = Akonadi::incidence( item )->clone();
   incidence->recreate();
 
   if ( incidence->type() == "Event" ) {
@@ -2518,19 +2567,21 @@ void CalendarView::addIncidenceOn( Incidence *incadd, const QDate &dt )
   }
 }
 
-void CalendarView::moveIncidenceTo( Incidence *incmove, const QDate &dt )
+void CalendarView::moveIncidenceTo( const Item &itemmove, const QDate &dt )
 {
-  if ( !incmove || !mChanger ) {
+  if ( !Akonadi::hasIncidence( itemmove ) || !mChanger ) {
     KMessageBox::sorry( this,
                         i18n( "Unable to move the item to  %1.", dt.toString() ),
                         i18n( "Moving Failed" ) );
     return;
   }
-  Incidence *incidence = mCalendar->incidence( incmove->uid() );
-  if ( !incidence ) {
-    addIncidenceOn( incidence, dt );
+  Item item = mCalendar->incidenceFORAKONADI( itemmove.id() );
+  if ( !item.isValid() ) {
+    addIncidenceOn( itemmove, dt );
     return;
   }
+  Incidence* incidence = Akonadi::incidence( itemmove ).get();
+
   Incidence *oldIncidence = incidence->clone();
   if ( !mChanger->beginChange( incidence ) ) {
     delete oldIncidence;

@@ -43,9 +43,9 @@ class KOTimeSpentView : public KOrg::BaseView
     ~KOTimeSpentView();
 
     virtual int currentDateCount();
-    virtual Incidence::List selectedIncidences()
+    virtual Akonadi::Item::List selectedIncidences()
     {
-      return Incidence::List();
+      return Akonadi::Item::List();
     }
     DateList selectedDates()
     {

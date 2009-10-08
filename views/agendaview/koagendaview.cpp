@@ -594,9 +594,10 @@ int KOAgendaView::currentDateCount()
   return mSelectedDates.count();
 }
 
-Incidence::List KOAgendaView::selectedIncidences()
+Akonadi::Item::List KOAgendaView::selectedIncidences()
 {
-  Incidence::List selected;
+  Akonadi::Item::List selected;
+#ifdef AKONADI_PORT_DISABLED
   Incidence *incidence;
 
   incidence = mAgenda->selectedIncidence();
@@ -608,7 +609,7 @@ Incidence::List KOAgendaView::selectedIncidences()
   if ( incidence ) {
     selected.append( incidence );
   }
-
+#endif // AKONADI_PORT_DISABLED
   return selected;
 }
 

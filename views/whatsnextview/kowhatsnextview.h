@@ -57,7 +57,7 @@ class KOWhatsNextView : public KOrg::BaseView
     ~KOWhatsNextView();
 
     virtual int currentDateCount();
-    virtual Incidence::List selectedIncidences() { return Incidence::List(); }
+    virtual Akonadi::Item::List selectedIncidences() { return Akonadi::Item::List(); }
     DateList selectedDates() { return DateList(); }
 
   public slots:

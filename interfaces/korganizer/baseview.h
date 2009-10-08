@@ -32,6 +32,8 @@
 #include <kdebug.h>
 #include <kmessagebox.h>
 
+#include <Akonadi/Item>
+
 #include <QtGui/QWidget>
 
 using namespace KCal;
@@ -80,7 +82,7 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
       select a single event at a time, but some may be able to select
       more than one.
     */
-    virtual Incidence::List selectedIncidences() = 0;
+    virtual Akonadi::Item::List selectedIncidences() = 0;
 
     /**
       Returns a list of the dates of selected events. Most views can

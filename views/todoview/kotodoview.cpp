@@ -267,17 +267,17 @@ void KOTodoView::setCalendar( KOrg::CalendarBase *cal )
   mModel->setCalendar( cal );
 }
 
-Incidence::List KOTodoView::selectedIncidences()
+Akonadi::Item::List KOTodoView::selectedIncidences()
 {
-  Incidence::List ret;
-
+  Akonadi::Item::List ret;
+#ifdef AKONADI_PORT_DISABLED
   QModelIndexList selection = mView->selectionModel()->selectedRows();
 
   Q_FOREACH( const QModelIndex &mi, selection ) {
     Todo *todo = static_cast<Todo *>( mi.data( KOTodoModel::TodoRole ).value<void *>() );
     ret << todo;
   }
-
+#endif // AKONADI_PORT_DISABLED
   return ret;
 }
 
@@ -442,6 +442,7 @@ void KOTodoView::addQuickTodo( Qt::KeyboardModifiers modifiers )
 
 void KOTodoView::contextMenu( const QPoint &pos )
 {
+#ifdef AKONADI_PORT_DISABLED // selectedIncidences()
   bool enable = mView->indexAt( pos ).isValid();
 
   Q_FOREACH( QAction *entry, mItemPopupMenuItemOnlyEntries ) {
@@ -477,6 +478,7 @@ void KOTodoView::contextMenu( const QPoint &pos )
   } else {
     mItemPopupMenu->popup( mView->viewport()->mapToGlobal( pos ) );
   }
+#endif // AKONADI_PORT_DISABLED
 }
 
 void KOTodoView::selectionChanged( const QItemSelection &selected,

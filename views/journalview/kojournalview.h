@@ -50,7 +50,7 @@ class KOJournalView : public KOrg::BaseView
     ~KOJournalView();
 
     virtual int currentDateCount();
-    virtual Incidence::List selectedIncidences();
+    virtual Akonadi::Item::List selectedIncidences();
     DateList selectedDates() { return DateList(); }
     void appendJournal( Journal *journal, const QDate &dt );
 

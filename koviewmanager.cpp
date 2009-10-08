@@ -51,6 +51,8 @@
 
 #include "koviewmanager.moc"
 
+using namespace Akonadi;
+
 KOViewManager::KOViewManager( CalendarView *mainView )
   : QObject(), mMainView( mainView )
 {
@@ -158,7 +160,7 @@ void KOViewManager::showView( KOrg::BaseView *view )
   }
 
   raiseCurrentView();
-  mMainView->processIncidenceSelection( 0, QDate() );
+  mMainView->processIncidenceSelection( Item(), QDate() );
   mMainView->updateView();
   mMainView->adaptNavigationUnits();
 }
@@ -529,15 +531,15 @@ void KOViewManager::showEventView()
   }
 }
 
-Incidence *KOViewManager::currentSelection()
+Item KOViewManager::currentSelection()
 {
   if ( !mCurrentView ) {
-    return 0;
+    return Item();
   }
 
-  Incidence::List incidenceList = mCurrentView->selectedIncidences();
+  Item::List incidenceList = mCurrentView->selectedIncidences();
   if ( incidenceList.isEmpty() ) {
-    return 0;
+    return Item();
   }
   return incidenceList.first();
 }

@@ -48,7 +48,7 @@ class MonthView : public KOEventView
     ~MonthView();
 
     virtual int currentDateCount();
-    Incidence::List selectedIncidences();
+    Akonadi::Item::List selectedIncidences();
 
     /** Returns dates of the currently selected events */
     virtual DateList selectedDates();

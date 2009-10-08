@@ -268,9 +268,9 @@ MultiAgendaView::~ MultiAgendaView()
 {
 }
 
-Incidence::List MultiAgendaView::selectedIncidences()
+Akonadi::Item::List MultiAgendaView::selectedIncidences()
 {
-  Incidence::List list;
+  Akonadi::Item::List list;
   foreach ( KOAgendaView *agendaView, mAgendaViews ) {
     list += agendaView->selectedIncidences();
   }

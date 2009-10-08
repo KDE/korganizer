@@ -30,6 +30,8 @@
 #include "akonadicalendar.h"
 #include "interfaces/korganizer/calendarviewbase.h"
 
+#include <Akonadi/Item>
+
 #include <QObject>
 #include <QWidget>
 
@@ -130,7 +132,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     NavigatorBar *navigatorBar() const { return mNavigatorBar; }
     DateNavigator *dateNavigator() const { return mDateNavigator; }
 
-    KOIncidenceEditor *editorDialog( Incidence *incidence ) const;
+    KOIncidenceEditor *editorDialog( const Akonadi::Item &item ) const;
     KOrg::IncidenceChangerBase *incidenceChanger() const { return mChanger; }
 
     /*
@@ -152,12 +154,12 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     */
     void addExtension( CalendarViewExtension::Factory * );
 
-    /** currentSelection() returns a pointer to the incidence selected in the current view */
-    Incidence *currentSelection();
+    /** currentSelection() returns the item selected in the current view (or an invalid one if none selected) */
+    /* reimp */ Akonadi::Item currentSelection();
 
     /** Return a pointer to the incidence selected in the current view. If there
         is no selection, return the selected todo from the todo list on the left */
-    Incidence *selectedIncidence();
+    Akonadi::Item selectedIncidence();
 
     /** Returns true if there's a filter applied */
     bool isFiltered() const;
@@ -204,7 +206,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
       Emitted when an incidence gets selected. If the selection is cleared the
       signal is emitted with 0 as argument.
     */
-    void incidenceSelected( Incidence  *incidence, const QDate &date );
+    void incidenceSelected( const Akonadi::Item &incidence, const QDate &date );
     /** Emitted, when a todoitem is selected or deselected.
         the connected slots enables/disables the corresponding menu items */
     void todoSelected( bool );
@@ -218,7 +220,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
       are present in the incidence, so we just need to send a cancel messages
       to all attendees groupware messages are enabled at all.
     */
-    void cancelAttendees( Incidence * );
+    void cancelAttendees( const Akonadi::Item &incidence );
 
     /**
       Emitted, when clipboard content changes. Parameter indicates if paste
@@ -324,34 +326,34 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
 
     /** Create a read-only viewer dialog for the supplied incidence.
         It calls the correct showXXX method */
-    void showIncidence( Incidence * );
+    void showIncidence( const Akonadi::Item& item );
 
     /**
       Show an incidence in context. This means showing the todo, agenda or
       journal view (as appropriate) and scrolling it to show the incidence.
       @param incidence The incidence to show.
     */
-    void showIncidenceContext( Incidence *incidence );
+    void showIncidenceContext( const Akonadi::Item &incidence );
 
     /** Create an editor for the supplied incidence. It calls the correct editXXX method*/
-    bool editIncidence( Incidence *incidence, bool isCounter = false );
+    bool editIncidence( const Akonadi::Item &item, bool isCounter = false );
 
     /**
       Delete the supplied incidence. It calls the correct deleteXXX method
       @param force If true, all recurrences and sub-todos (if applicable) will be
                    deleted without prompting for confirmation.
     */
-    void deleteIncidence( Incidence *, bool force=false );
+    void deleteIncidence( const Akonadi::Item &item, bool force=false );
 
     /**
       Cuts the selected incidence using the edit_cut() method
     */
-    void cutIncidence( Incidence * );
+    void cutIncidence( const Akonadi::Item & );
 
     /**
       Copies the selected incidence using the edit_copy() method
     */
-    void copyIncidence( Incidence *);
+    void copyIncidence( const Akonadi::Item & );
 
     /**
       Pastes the current incidence using the edit_paste() method
@@ -407,9 +409,9 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     void newJournal( const QDate &date );
     void newJournal( const QString &text, const QDate &date=QDate() );
 
-    void toggleAlarm( Incidence *incidence );
-    void toggleTodoCompleted( Incidence *incidence );
-    void dissociateOccurrences( Incidence *incidence, const QDate &date );
+    void toggleAlarm( const Akonadi::Item &incidence );
+    void toggleTodoCompleted( const Akonadi::Item &incidence );
+    void dissociateOccurrences( const Akonadi::Item &incidence, const QDate &date );
 
     /**
       Check if clipboard contains vCalendar event. The signal pasteEnabled() is
@@ -436,17 +438,17 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
 
     /** passes on the message that an event has changed to the currently
      * activated view so that it can make appropriate display changes. */
-    void changeIncidenceDisplay( Incidence *, int );
+    void changeIncidenceDisplay( const Akonadi::Item &incidence, int );
 
-    void incidenceAdded( Incidence * );
-    void incidenceChanged( Incidence *oldEvent, Incidence *newEvent );
-    void incidenceChanged( Incidence *oldEvent, Incidence *newEvent, int what );
-    void incidenceToBeDeleted( Incidence *incidence );
-    void incidenceDeleted( Incidence * );
+    void incidenceAdded( const Akonadi::Item &incidence );
+    void incidenceChanged( const Akonadi::Item &oldEvent, const Akonadi::Item &newEvent );
+    void incidenceChanged( const Akonadi::Item &oldEvent, const Akonadi::Item &newEvent, int what );
+    void incidenceToBeDeleted( const Akonadi::Item &incidence );
+    void incidenceDeleted( const Akonadi::Item &incidence );
     void startMultiModify( const QString &text );
     void endMultiModify();
 
-    void editCanceled( Incidence * );
+    void editCanceled( const Akonadi::Item &incidence );
 
     void updateView( const QDate &start, const QDate &end, const bool updateTodos=true );
     void updateView();
@@ -530,18 +532,18 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     */
     void setReadOnly( bool readOnly=true );
 
-    void eventUpdated( Incidence * );
+    void eventUpdated( const Akonadi::Item &incidence );
 
     /* iTIP scheduling actions */
-    void schedule_publish( Incidence *incidence=0 );
-    void schedule_request( Incidence *incidence=0 );
-    void schedule_refresh( Incidence *incidence=0 );
-    void schedule_cancel( Incidence *incidence=0 );
-    void schedule_add( Incidence *incidence=0 );
-    void schedule_reply( Incidence *incidence=0 );
-    void schedule_counter( Incidence *incidence=0 );
-    void schedule_declinecounter( Incidence *incidence=0 );
-    void schedule_forward( Incidence *incidence=0 );
+    void schedule_publish( const Akonadi::Item &incidence=Akonadi::Item() );
+    void schedule_request( const Akonadi::Item &incidence=Akonadi::Item() );
+    void schedule_refresh( const Akonadi::Item &incidence=Akonadi::Item() );
+    void schedule_cancel( const Akonadi::Item &incidence=Akonadi::Item() );
+    void schedule_add( const Akonadi::Item &incidence=Akonadi::Item() );
+    void schedule_reply( const Akonadi::Item &incidence=Akonadi::Item() );
+    void schedule_counter( const Akonadi::Item &incidence=Akonadi::Item() );
+    void schedule_declinecounter( const Akonadi::Item &incidence=Akonadi::Item() );
+    void schedule_forward( const Akonadi::Item &incidence=Akonadi::Item() );
     void mailFreeBusy( int daysToPublish=30 );
     void uploadFreeBusy();
 
@@ -574,21 +576,21 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
 
     void showLeftFrame( bool show=true );
 
-    void dialogClosing( Incidence * );
+    void dialogClosing( const Akonadi::Item &incidence );
 
-    void processMainViewSelection( Incidence *incidence, const QDate &date );
-    void processTodoListSelection( Incidence *incidence, const QDate &date );
+    void processMainViewSelection( const Akonadi::Item &incidence, const QDate &date );
+    void processTodoListSelection( const Akonadi::Item &incidence, const QDate &date );
 
-    void processIncidenceSelection( Incidence *incidence, const QDate &date );
+    void processIncidenceSelection( const Akonadi::Item &incidence, const QDate &date );
 
     void purgeCompleted();
 
     void slotAutoArchivingSettingsModified() { emit autoArchivingSettingsModified(); }
 
     void showErrorMessage( const QString & );
-    void schedule( iTIPMethod, Incidence *incidence );
-    void addIncidenceOn( Incidence *, const QDate & );
-    void moveIncidenceTo( Incidence *, const QDate & );
+    void schedule( iTIPMethod, const Akonadi::Item &incidence );
+    void addIncidenceOn( const Akonadi::Item &incidence, const QDate & );
+    void moveIncidenceTo( const Akonadi::Item &incidence, const QDate & );
     void filterActivated( int filterNum );
 
     void resourcesChanged();
@@ -617,12 +619,12 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
   protected:
     void setIncidenceChanger( IncidenceChangerBase *changer );
 
-    int msgItemDelete( Incidence *incidence );
+    int msgItemDelete( const Akonadi::Item &incidence );
 
     Todo *selectedTodo();
 
-    void warningChangeFailed( Incidence * );
-    void checkForFilteredChange( Incidence *incidence );
+    void warningChangeFailed( const Akonadi::Item & );
+    void checkForFilteredChange( const Akonadi::Item &incidence );
 
     /**
       Adjust the given date/times by valid defaults (selection or configured
@@ -640,8 +642,8 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
 
     void createPrinter();
 
-    void dissociateOccurrence( Incidence *, const QDate & );
-    void dissociateFutureOccurrence( Incidence *, const QDate & );
+    void dissociateOccurrence( const Akonadi::Item &incidence, const QDate & );
+    void dissociateFutureOccurrence( const Akonadi::Item &incidence, const QDate & );
 
     void calendarModified( bool, KOrg::CalendarBase * );
 
@@ -684,9 +686,9 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     bool  mReadOnly; // flag indicating if calendar is read-only
     QDate mSaveSingleDate;
 
-    Incidence *mSelectedIncidence;
+    Akonadi::Item mSelectedIncidence;
     KOTodoView *mTodoList;
-    QMap<Incidence*,KOIncidenceEditor*> mDialogList;
+    QMap<Akonadi::Item::Id,KOIncidenceEditor*> mDialogList;
 
     KOrg::IncidenceChangerBase *mChanger;
     QList<int> mMainSplitterSizes; // temp store for main splitter sizes while left frame is hidden

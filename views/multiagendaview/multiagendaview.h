@@ -47,7 +47,7 @@ class MultiAgendaView : public AgendaView
     explicit MultiAgendaView( CalendarBase *cal, QWidget *parent = 0 );
     ~MultiAgendaView();
 
-    Incidence::List selectedIncidences();
+    Akonadi::Item::List selectedIncidences();
     DateList selectedDates();
     int currentDateCount();
     int maxDatesHint();

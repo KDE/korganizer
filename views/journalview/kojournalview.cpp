@@ -95,11 +95,11 @@ int KOJournalView::currentDateCount()
   return mEntries.size();
 }
 
-Incidence::List KOJournalView::selectedIncidences()
+Akonadi::Item::List KOJournalView::selectedIncidences()
 {
   // We don't have a selection in the journal view.
   // FIXME: The currently edited journal is the selected incidence...
-  Incidence::List eventList;
+  Akonadi::Item::List eventList;
   return eventList;
 }
 

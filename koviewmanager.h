@@ -40,6 +40,10 @@ class KOJournalView;
 class KOTimelineView;
 class KOTimeSpentView;
 
+namespace Akonadi {
+  class Item;
+}
+
 namespace KOrg {
   class BaseView;
   class MultiAgendaView;
@@ -87,7 +91,7 @@ class KOViewManager : public QObject
     void connectView( KOrg::BaseView * );
     void addView( KOrg::BaseView *, bool isTab = false );
 
-    KCal::Incidence *currentSelection();
+    Akonadi::Item currentSelection();
 
     /**
      * If there's a selected incidence, it's date is returned, otherwise

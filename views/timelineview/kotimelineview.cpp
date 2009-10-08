@@ -76,9 +76,9 @@ KOTimelineView::~KOTimelineView()
 }
 
 /*virtual*/
-KCal::Incidence::List KOTimelineView::selectedIncidences()
+Akonadi::Item::List KOTimelineView::selectedIncidences()
 {
-  return KCal::Incidence::List();
+  return Akonadi::Item::List();
 }
 
 /*virtual*/

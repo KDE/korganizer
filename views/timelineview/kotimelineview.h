@@ -51,7 +51,7 @@ class KOTimelineView : public KOEventView
     explicit KOTimelineView( KOrg::CalendarBase *calendar, QWidget *parent = 0 );
     ~KOTimelineView();
 
-    virtual KCal::Incidence::List selectedIncidences();
+    virtual Akonadi::Item::List selectedIncidences();
     virtual KCal::DateList selectedDates();
     virtual int currentDateCount();
     virtual void showDates( const QDate &, const QDate & );
