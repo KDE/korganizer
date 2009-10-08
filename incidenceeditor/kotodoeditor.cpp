@@ -413,6 +413,9 @@ QStringList &KOTodoEditor::templates() const
 {
 #ifdef AKONADI_PORT_DISABLED
   return KOPrefs::instance()->mTodoTemplates;
+#else
+  static QStringList l;
+  return l;
 #endif
 }
 

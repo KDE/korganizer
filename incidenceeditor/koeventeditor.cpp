@@ -452,6 +452,9 @@ QStringList &KOEventEditor::templates() const
 {
 #ifdef AKONADI_PORT_DISABLED
   return KOPrefs::instance()->mEventTemplates;
+#else
+  static QStringList l;
+  return l;
 #endif
 }
 

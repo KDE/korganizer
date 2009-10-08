@@ -285,6 +285,9 @@ QStringList &KOJournalEditor::templates() const
 {
 #ifdef AKONADI_PORT_DISABLED
   return KOPrefs::instance()->mJournalTemplates;
+#else
+  static QStringList l;
+  return l;
 #endif
 }
 
