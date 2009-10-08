@@ -27,7 +27,7 @@
 #include "koeditorgeneraltodo.h"
 #include "koeditordetails.h"
 #include "koeditorrecurrence.h"
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
 #include "koprefs.h"
 #endif
 #include "koeditorattachments.h"
@@ -117,7 +117,7 @@ void KOTodoEditor::setupGeneral()
 {
   mGeneral = new KOEditorGeneralTodo( mCalendar, this );
 
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
   const bool compactDialogs = KOPrefs::instance()->mCompactDialogs;
 #else
   const bool compactDialogs = false;
@@ -244,7 +244,7 @@ void KOTodoEditor::setTexts( const QString &summary, const QString &description,
 void KOTodoEditor::loadDefaults()
 {
   setDates( QDateTime::currentDateTime().addDays(7), true, 0 );
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
   mGeneral->toggleAlarm( KOPrefs::instance()->defaultTodoReminders() );
 #endif
 }
@@ -267,7 +267,7 @@ bool KOTodoEditor::processInput()
     } else {
       mTodo->startUpdates(); //merge multiple mTodo->updated() calls into one
       fillTodo( mTodo );
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
       rc = mChanger->changeIncidence( oldTodo, mTodo );
 #endif
       mTodo->endUpdates();
@@ -277,7 +277,7 @@ bool KOTodoEditor::processInput()
     return rc;
   } else {
     mTodo = new Todo;
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
     mTodo->setOrganizer( Person( KOPrefs::instance()->fullName(),
                                  KOPrefs::instance()->email() ) );
 
@@ -411,7 +411,7 @@ void KOTodoEditor::slotSaveTemplate( const QString &templateName )
 
 QStringList &KOTodoEditor::templates() const
 {
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
   return KOPrefs::instance()->mTodoTemplates;
 #endif
 }

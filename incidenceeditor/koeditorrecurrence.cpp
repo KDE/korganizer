@@ -23,7 +23,7 @@
 */
 
 #include "koeditorrecurrence.h"
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
 #include "koglobals.h"
 #include "koprefs.h"
 #endif
@@ -53,7 +53,7 @@
 
 static bool compactDialogs()
 {
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
   const bool compactDialogs = compactDialogs();
 #else
   const bool compactDialogs = false;
@@ -63,7 +63,7 @@ static bool compactDialogs()
 
 static KCalendarSystem* calendarSystem()
 {
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
   KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
 #else
   KCalendarSystem *calSys = 0;

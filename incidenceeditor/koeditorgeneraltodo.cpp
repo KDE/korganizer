@@ -95,7 +95,7 @@ void KOEditorGeneralTodo::initTime( QWidget *parent, QBoxLayout *topLayout )
 
   // Timezone
   QString whatsThis = i18n( "Select the timezone for this event. It will also affect recurrences" );
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
   mTimeZoneComboStart = new KPIM::KTimeZoneComboBox( mCalendar ? mCalendar->timeZones() : 0, timeGroupBox );
   mTimeZoneComboDue = new KPIM::KTimeZoneComboBox( mCalendar ? mCalendar->timeZones() : 0, timeGroupBox );
 
@@ -608,7 +608,7 @@ bool KOEditorGeneralTodo::setAlarmOffset( Alarm *alarm, int value ) const
 
 void KOEditorGeneralTodo::modified( Todo *todo, int modification )
 {
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
     // FIXME is this getting called at all?
   switch ( modification ) {
   case KOGlobals::PRIORITY_MODIFIED:

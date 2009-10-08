@@ -27,7 +27,7 @@
 #include "kojournaleditor.h"
 #include "koeditordetails.h"
 #include "koeditorgeneraljournal.h"
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
 #include "koprefs.h"
 #endif
 #include "korganizer/baseview.h"
@@ -78,7 +78,7 @@ void KOJournalEditor::setupGeneral()
 
   QVBoxLayout *topLayout = new QVBoxLayout( topFrame );
 
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
   if ( KOPrefs::instance()->mCompactDialogs ) {
     topLayout->setMargin( marginHint() );
   }
@@ -169,7 +169,7 @@ bool KOJournalEditor::processInput()
     return rc;
   } else {
     mJournal = new Journal;
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
     mJournal->setOrganizer( Person( KOPrefs::instance()->fullName(),
                                     KOPrefs::instance()->email() ) );
 #endif
@@ -283,7 +283,7 @@ void KOJournalEditor::slotSaveTemplate( const QString &templateName )
 
 QStringList &KOJournalEditor::templates() const
 {
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
   return KOPrefs::instance()->mJournalTemplates;
 #endif
 }

@@ -60,7 +60,7 @@ void CustomListViewItem<KCal::Attendee *>::updateItem()
   setText( 1, mData->email() );
   setText( 2, mData->roleStr() );
   setText( 3, mData->statusStr() );
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
   if ( mData->RSVP() && !mData->email().isEmpty() ) {
     setPixmap( 4, KOGlobals::self()->smallIcon( "mail-flag" ) );
   } else {
@@ -192,7 +192,7 @@ KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent )
   mListView->addColumn( i18nc( "@title:column attendee delegated to", "Delegated To" ), 120 );
   mListView->addColumn( i18nc( "@title:column attendee delegated from", "Delegated From" ), 120 );
   mListView->setResizeMode( Q3ListView::LastColumn );
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
   const bool compactDialogs = KOPrefs::instance()->mCompactDialogs;
 #else
   const bool compactDialogs = false;
@@ -362,7 +362,7 @@ void KOEditorDetails::slotInsertAttendee( Attendee *a )
 
 void KOEditorDetails::changeStatusForMe( Attendee::PartStat status )
 {
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
   const QStringList myEmails = KOPrefs::instance()->allEmails();
 #else
   const QStringList myEmails;

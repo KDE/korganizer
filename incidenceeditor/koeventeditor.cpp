@@ -28,7 +28,7 @@
 #include "koeditorfreebusy.h"
 #include "koeditorgeneralevent.h"
 #include "koeditorrecurrence.h"
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
 #include "kogroupware.h"
 #include "koprefs.h"
 #endif
@@ -133,7 +133,7 @@ void KOEventEditor::setupGeneral()
 {
   mGeneral = new KOEditorGeneralEvent( mCalendar, this );
 
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
   const bool compactDialogs = KOPrefs::instance()->mCompactDialogs;
 #else
   const bool compactDialogs = false;
@@ -286,7 +286,7 @@ void KOEventEditor::setTexts( const QString &summary, const QString &description
 
 void KOEventEditor::loadDefaults()
 {
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
   QDateTime from( QDate::currentDate(), KOPrefs::instance()->mStartTime.time() );
   int addSecs = ( KOPrefs::instance()->mDefaultDuration.time().hour() * 3600 ) +
                 ( KOPrefs::instance()->mDefaultDuration.time().minute() * 60 );
@@ -324,7 +324,7 @@ bool KOEventEditor::processInput()
     } else {
       mEvent->startUpdates(); //merge multiple mEvent->updated() calls into one
       fillEvent( mEvent );
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
       if ( mIsCounter ) {
           // FIXME port to akonadi
         KOGroupware::instance()->sendCounterProposal( mCalendar, oldEvent, mEvent );
@@ -346,7 +346,7 @@ bool KOEventEditor::processInput()
     return rc;
   } else {
     mEvent = new Event;
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
     // FIXME port
     mEvent->setOrganizer( Person( KOPrefs::instance()->fullName(),
                           KOPrefs::instance()->email() ) );
@@ -450,7 +450,7 @@ void KOEventEditor::loadTemplate( CalendarLocal &cal )
 
 QStringList &KOEventEditor::templates() const
 {
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
   return KOPrefs::instance()->mEventTemplates;
 #endif
 }

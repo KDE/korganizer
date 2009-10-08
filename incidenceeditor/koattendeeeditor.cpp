@@ -132,7 +132,7 @@ void KOAttendeeEditor::initEditWidgets( QWidget *parent, QBoxLayout *layout )
   mStatusCombo->setToolTip(
     i18nc( "@info:tooltip", "Select the attendee participation status" ) );
   mStatusCombo->setWhatsThis( whatsThis );
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
   //TODO: the icons below aren't exactly correct
   mStatusCombo->addItem( KOGlobals::self()->smallIcon( "help-about" ),
                          Attendee::statusName( Attendee::NeedsAction ) );
@@ -226,7 +226,7 @@ void KOAttendeeEditor::openAddressBook()
 
 void KOAttendeeEditor::insertAttendeeFromAddressee( const KABC::Addressee &a, const Attendee *at )
 {
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
   bool myself = KOPrefs::instance()->thatIsMe( a.preferredEmail() );
 #else
   bool myself = false;
@@ -252,7 +252,7 @@ void KOAttendeeEditor::fillOrganizerCombo()
   Q_ASSERT( mOrganizerCombo );
   // Get all emails from KOPrefs (coming from various places),
   // and insert them - removing duplicates
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
   const QStringList lst = KOPrefs::instance()->fullEmails();
 #else
   const QStringList lst;
@@ -306,7 +306,7 @@ void KOAttendeeEditor::readIncidence( KCal::Incidence *incidence )
   qDeleteAll( mDelAttendees );
   mDelAttendees.clear();
 
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
   const bool itsMe =  KOPrefs::instance()->thatIsMe( incidence->organizer().email() ) ||
 #else
   const bool itsMe = false;
@@ -413,7 +413,7 @@ void KOAttendeeEditor::updateAttendee()
   KPIMUtils::extractEmailAddressAndName( mNameEdit->text(), email, name );
 
   bool iAmTheOrganizer = mOrganizerCombo &&
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
                          KOPrefs::instance()->thatIsMe( mOrganizerCombo->currentText() );
 #else
   false;
@@ -458,7 +458,7 @@ void KOAttendeeEditor::fillAttendeeInput( KCal::Attendee *a )
     tname += " <" + a->email() + '>';
   }
 
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
   bool myself = KOPrefs::instance()->thatIsMe( a->email() );
 #else
   bool myself = false;

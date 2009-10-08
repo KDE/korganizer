@@ -25,7 +25,7 @@
 #include "koeditorgeneral.h"
 #include "koeditoralarms.h"
 #include "koeditorattachments.h"
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
 #include "koprefs.h"
 #include "koglobals.h"
 #endif
@@ -252,7 +252,7 @@ void KOEditorGeneral::initAlarm( QWidget *parent, QBoxLayout *topLayout )
   topLayout->addItem( alarmLayout );
 
   mAlarmBell = new QLabel( parent );
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
   mAlarmBell->setPixmap( KOGlobals::self()->smallIcon( "task-reminder" ) );
 #endif
   alarmLayout->addWidget( mAlarmBell );
@@ -345,7 +345,7 @@ void KOEditorGeneral::addAttachments( const QStringList &attachments,
 
 void KOEditorGeneral::selectCategories()
 {
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
   KPIM::CategorySelectDialog *categoryDialog =
     new KPIM::CategorySelectDialog( KOPrefs::instance(), mCategoriesButton );
   categoryDialog->setHelp( "categories-view", "korganizer" );
@@ -411,7 +411,7 @@ void KOEditorGeneral::setDefaults( bool allDay )
 
 void KOEditorGeneral::updateDefaultAlarmTime()
 {
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
   int reminderTime = KOPrefs::instance()->mReminderTime;
   int index = KOPrefs::instance()->mReminderTimeUnits;
   if ( index < 0 || index > 2 ) {
@@ -427,7 +427,7 @@ void KOEditorGeneral::updateAlarmWidgets()
   if ( mAlarmList.isEmpty() ) {
     mAlarmStack->setCurrentIndex( SimpleAlarmPage );
     bool on = false;
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
     if ( mType == "Event" ) {
       on = KOPrefs::instance()->defaultEventReminders();
     } else if ( mType == "Todo" ) {

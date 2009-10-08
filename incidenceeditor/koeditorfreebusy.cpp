@@ -23,7 +23,7 @@
 */
 
 #include "koeditorfreebusy.h"
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
 #include "freebusymanager.h"
 #include "freebusyurldialog.h"
 #include "koglobals.h"
@@ -110,7 +110,7 @@ class FreeBusyItem : public KDGanttViewTaskItem
 
     void startDownload( bool forceDownload ) {
       mIsDownloading = true;
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
       FreeBusyManager *m = KOGroupware::instance()->freeBusyManager();
       if ( !m->retrieveFreeBusy( attendee()->email(), forceDownload ) ) {
         mIsDownloading = false;
@@ -136,7 +136,7 @@ class FreeBusyItem : public KDGanttViewTaskItem
 void FreeBusyItem::updateItem()
 {
   setListViewText( 0, mAttendee->fullName() );
-#ifdef KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
   switch ( mAttendee->status() ) {
     case Attendee::Accepted:
       setPixmap( 0, KOGlobals::self()->smallIcon( "dialog-ok-apply" ) );
@@ -320,7 +320,7 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent )
   // Remove the predefined "Task Name" column
   mGanttView->removeColumn( 0 );
   mGanttView->addColumn( i18nc( "@title:column attendee name", "Attendee" ) );
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
   if ( KOPrefs::instance()->mCompactDialogs ) {
     mGanttView->setFixedHeight( 78 );
   }
@@ -364,7 +364,7 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent )
   connect( mGanttView, SIGNAL(lvMouseButtonClicked(int, KDGanttViewItem*, const QPoint&, int)),
            this, SLOT(listViewClicked(int, KDGanttViewItem*)) );
 
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
   FreeBusyManager *m = KOGroupware::instance()->freeBusyManager();
   connect( m, SIGNAL(freeBusyRetrieved(KCal::FreeBusy *,const QString &)),
            SLOT(slotInsertFreeBusy(KCal::FreeBusy *,const QString &)) );
@@ -450,7 +450,7 @@ void KOEditorFreeBusy::readIncidence( Incidence *incidence )
 
   setDateTimes( incidence->dtStart().toTimeSpec( timeSpec ).dateTime(),
                 endDateTime );
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
   mIsOrganizer = KOPrefs::instance()->thatIsMe( incidence->organizer().email() );
 #endif
   updateStatusSummary();
@@ -780,7 +780,7 @@ void KOEditorFreeBusy::editFreeBusyUrl( KDGanttViewItem *i )
   if ( !item ) {
     return;
   }
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
   Attendee *attendee = item->attendee();
 
   QPointer<FreeBusyUrlDialog> dialog = new FreeBusyUrlDialog( attendee, this );
@@ -901,7 +901,7 @@ void KOEditorFreeBusy::clearSelection() const
 
 void KOEditorFreeBusy::changeStatusForMe( KCal::Attendee::PartStat status )
 {
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
   const QStringList myEmails = KOPrefs::instance()->allEmails();
 #else
   const QStringList myEmails;
@@ -925,7 +925,7 @@ void KOEditorFreeBusy::showAttendeeStatusMenu()
   }
 
   KMenu *menu = new KMenu( 0 );
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
   QAction *needsaction =
     menu->addAction( KOGlobals::self()->smallIcon( "help-about" ),
                      Attendee::statusName( Attendee::NeedsAction ) );

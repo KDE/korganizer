@@ -23,7 +23,7 @@
 */
 
 #include "koincidenceeditor.h"
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
 #include "koprefs.h"
 #endif
 #include "koeditordetails.h"
@@ -65,7 +65,7 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
 
   mCalendar = calendar;
 
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
   const bool compactDialogs = KOPrefs::instance()->mCompactDialogs;
 #else
   const bool compactDialogs = false;
@@ -171,7 +171,7 @@ void KOIncidenceEditor::cancelRemovedAttendees( Incidence *incidence )
 
   // cancelAttendeeIncidence removes all attendees from the incidence,
   // and then only adds those that need to be canceled (i.e. a mail needs to be sent to them).
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
   const bool thatIsMe = KOPrefs::instance()->thatIsMe( incidence->organizer().email() );
 #else
   const bool thatIsMe = false;
@@ -250,7 +250,7 @@ void KOIncidenceEditor::slotTemplatesChanged( const QStringList &newTemplates )
 
 void KOIncidenceEditor::setupDesignerTabs( const QString &type )
 {
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
   QStringList activePages = KOPrefs::instance()->activeDesignerFields();
 
   QStringList list = KGlobal::dirs()->findAllResources(

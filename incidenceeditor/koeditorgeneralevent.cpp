@@ -23,7 +23,7 @@
 */
 
 #include "koeditorgeneralevent.h"
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
 #include "koprefs.h"
 #endif
 
@@ -122,7 +122,7 @@ void KOEditorGeneralEvent::initTime( QWidget *parent, QBoxLayout *topLayout )
   QString whatsThis = i18nc( "@info:whatsthis",
                              "Select the timezone for this event. "
                              "It will also affect recurrences" );
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
   mTimeZoneComboStart = new KPIM::KTimeZoneComboBox( mCalendar ? mCalendar->timeZones() : 0, timeGroupBox );
   mTimeZoneComboEnd = new KPIM::KTimeZoneComboBox( mCalendar ? mCalendar->timeZones() : 0, timeGroupBox );
   if ( !KOPrefs::instance()->showTimeZoneSelectorInIncidenceEditor() ) {
@@ -461,7 +461,7 @@ void KOEditorGeneralEvent::readEvent( Event *event, bool isTemplate )
   }
 
   mRecurrenceSummary->setText( IncidenceFormatter::recurrenceString( event ) );
-#if KDAB_TEMPORARILY_REMOVED
+#ifdef AKONADI_PORT_DISABLED
   const QStringList allEmails = KOPrefs::instance()->allEmails();
 #else
   const QStringList allEmails;
