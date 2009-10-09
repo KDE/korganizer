@@ -1099,7 +1099,7 @@ void CalendarView::newSubTodo( const Item &parentEvent )
   KOTodoEditor *todoEditor = mDialogManager->getTodoEditor();
   connectIncidenceEditor( todoEditor );
   todoEditor->newTodo();
-  todoEditor->setDates( QDateTime(), false, Akonadi::todo( parentEvent ).get() );
+  todoEditor->setDates( QDateTime(), false, parentEvent );
   todoEditor->show();
 }
 
@@ -2203,7 +2203,7 @@ bool CalendarView::editIncidence( const Item &item, bool isCounter )
   connectIncidenceEditor( incidenceEditor );
 
   mDialogList.insert( item.id(), incidenceEditor );
-  incidenceEditor->editIncidence( incidence.get(), mCalendar );
+  incidenceEditor->editIncidence( item, mCalendar );
   incidenceEditor->show();
   return true;
 }

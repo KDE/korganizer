@@ -31,6 +31,8 @@
 #include <kurl.h>
 #include <QList>
 
+#include <KCal/Incidence>
+
 namespace KPIM {
   class DesignerFields;
   class EmbeddedURLPage;
@@ -44,9 +46,11 @@ namespace KOrg {
 class KOEditorDetails;
 class KOAttendeeEditor;
 
+namespace Akonadi {
+  class Item;
+}
 namespace KCal {
   class Calendar;
-  class Incidence;
 }
 using namespace KCal;
 using namespace KOrg;
@@ -75,7 +79,7 @@ class INCIDENCEEDITOR_EXPORT KOIncidenceEditor : public KPageDialog
 
   public slots:
     /** Edit an existing todo. */
-    virtual void editIncidence( Incidence *, KOrg::CalendarBase * ) = 0;
+    virtual void editIncidence( const Akonadi::Item &, KOrg::CalendarBase * ) = 0;
     virtual void setIncidenceChanger( IncidenceChangerBase *changer )
     { mChanger = changer; }
 
@@ -96,14 +100,14 @@ class INCIDENCEEDITOR_EXPORT KOIncidenceEditor : public KPageDialog
 
   signals:
     void buttonClicked( int );
-    void deleteAttendee( Incidence * );
+    void deleteAttendee( const Akonadi::Item & );
 
     void editCategories();
     void updateCategoryConfig();
-    void dialogClose( Incidence * );
-    void editCanceled( Incidence * );
+    void dialogClose( const Akonadi::Item & );
+    void editCanceled( const Akonadi::Item & );
 
-    void deleteIncidenceSignal( Incidence * );
+    void deleteIncidenceSignal( const Akonadi::Item & );
     void signalAddAttachments( const QStringList &attachments,
                                const QStringList &mimeTypes = QStringList(),
                                bool inlineAttachment = false );
@@ -126,8 +130,8 @@ class INCIDENCEEDITOR_EXPORT KOIncidenceEditor : public KPageDialog
     void setupAttendeesTab();
     void setupDesignerTabs( const QString &type );
 
-    void readDesignerFields( Incidence *i );
-    void writeDesignerFields( Incidence *i );
+    void readDesignerFields( const Akonadi::Item & );
+    void writeDesignerFields( KCal::Incidence* );
 
     /**
       Returns true if the user made any alteration
@@ -139,7 +143,7 @@ class INCIDENCEEDITOR_EXPORT KOIncidenceEditor : public KPageDialog
 
     void setupEmbeddedURLPage( const QString &label, const QString &url,
                                const QString &mimetype );
-    void createEmbeddedURLPages( Incidence *i );
+    void createEmbeddedURLPages( const Incidence* inc );
 
     /**
       Process user input and create or update event.
@@ -149,7 +153,7 @@ class INCIDENCEEDITOR_EXPORT KOIncidenceEditor : public KPageDialog
 
     virtual void processCancel() {}
 
-    void cancelRemovedAttendees( Incidence *incidence );
+    void cancelRemovedAttendees( KCal::Incidence* incidence );
 
     KOrg::CalendarBase *mCalendar;
 

@@ -30,6 +30,9 @@
 #include "koincidenceeditor.h"
 
 #include <KCal/Event>
+
+#include <Akonadi/Item>
+
 using namespace KCal;
 
 class KOEditorFreeBusy;
@@ -72,7 +75,7 @@ class INCIDENCEEDITOR_EXPORT KOEventEditor : public KOIncidenceEditor
     /**
       Edit an existing event.
     */
-    void editIncidence( Incidence *incidence, KOrg::CalendarBase *calendar );
+    void editIncidence( const Akonadi::Item &incidence, KOrg::CalendarBase *calendar );
 
     /**
       Set widgets to the given date/time values
@@ -87,12 +90,12 @@ class INCIDENCEEDITOR_EXPORT KOEventEditor : public KOIncidenceEditor
       @param tmpl If true, the event is treated as a template, so the currently
       set time is preserved in the editor dialog.
     */
-    void readEvent( Event *event, bool tmpl = false );
+    void readEvent( const Akonadi::Item &event, bool tmpl = false );
 
     /**
       Write event settings to event object
     */
-    void fillEvent( Event * );
+    void fillEvent( KCal::Event* event );
 
     QObject *typeAheadReceiver() const;
 
@@ -126,7 +129,7 @@ class INCIDENCEEDITOR_EXPORT KOEventEditor : public KOIncidenceEditor
     bool incidenceModified();
 
   private:
-    Event *mEvent;
+    Akonadi::Item mEvent;
 
     // Event which represents the initial dialog setup when creating a new event.
     // If cancel is pressed and the dialog has different information than

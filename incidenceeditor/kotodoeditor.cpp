@@ -47,11 +47,14 @@
 #include <QHBoxLayout>
 #include <QBoxLayout>
 
+#include <akonadi/kcal/utils.h>
+
+using namespace Akonadi;
 using namespace KOrg;
 
 KOTodoEditor::KOTodoEditor( CalendarBase *calendar, QWidget *parent )
   : KOIncidenceEditor( QString(), calendar, parent ),
-    mTodo( 0 ), mCalendar( 0 ), mRelatedTodo( 0 )
+    mTodo(), mCalendar( 0 ), mRelatedTodo()
 {
 }
 
@@ -62,26 +65,23 @@ KOTodoEditor::~KOTodoEditor()
 
 bool KOTodoEditor::incidenceModified()
 {
-  Todo *newTodo = 0;
-  Todo *oldTodo = 0;
+  const Todo::Ptr todo = Akonadi::todo( mTodo );
+  Todo::Ptr oldTodo;
   bool modified;
 
-  if ( mTodo ) { // modification
-    oldTodo = mTodo->clone();
+  if ( todo ) { // modification
+    oldTodo.reset( todo->clone() );
   } else { // new one
     // don't remove .clone(), it's on purpose, clone() strips relation attributes
     // if you compare a non-cloned parent to-do with a cloned to-do you will always
     // get false, so we use clone() in both cases.
-    oldTodo = mInitialTodo.clone();
+    oldTodo.reset( mInitialTodo.clone() );
   }
 
-  newTodo = oldTodo->clone();
-  fillTodo( newTodo );
+  Todo::Ptr newTodo( oldTodo->clone() );
+  fillTodo( newTodo.get() );
 
   modified = !( *newTodo == *oldTodo );
-
-  delete newTodo;
-  delete oldTodo;
 
   return modified;
 }
@@ -108,9 +108,7 @@ void KOTodoEditor::init()
 
 void KOTodoEditor::reload()
 {
-  if ( mTodo ) {
-    readTodo( mTodo, true );
-  }
+  readTodo( mTodo, true );
 }
 
 void KOTodoEditor::setupGeneral()
@@ -197,15 +195,15 @@ void KOTodoEditor::setupRecurrence()
            mRecurrence, SLOT(setEnabled(bool)) );
 }
 
-void KOTodoEditor::editIncidence( Incidence *incidence, KOrg::CalendarBase *calendar )
+void KOTodoEditor::editIncidence( const Item &item, KOrg::CalendarBase *calendar )
 {
-  Todo *todo = dynamic_cast<Todo*>( incidence );
+  const Todo::Ptr todo = Akonadi::todo( item );
   if ( todo ) {
     init();
 
-    mTodo = todo;
+    mTodo = item;
     mCalendar = calendar;
-    readTodo( mTodo, false );
+    readTodo( item, false );
   }
 #ifdef AKONADI_PORT_DISABLED
   setCaption( i18nc( "@title:window",
@@ -222,7 +220,7 @@ void KOTodoEditor::editIncidence( Incidence *incidence, KOrg::CalendarBase *cale
 void KOTodoEditor::newTodo()
 {
   init();
-  mTodo = 0;
+  mTodo = Item();
   mCalendar = 0;
   setCaption( i18nc( "@title:window", "New To-do" ) );
   loadDefaults();
@@ -243,7 +241,7 @@ void KOTodoEditor::setTexts( const QString &summary, const QString &description,
 
 void KOTodoEditor::loadDefaults()
 {
-  setDates( QDateTime::currentDateTime().addDays(7), true, 0 );
+  setDates( QDateTime::currentDateTime().addDays(7), true );
 #ifdef AKONADI_PORT_DISABLED
   mGeneral->toggleAlarm( KOPrefs::instance()->defaultTodoReminders() );
 #endif
@@ -254,59 +252,58 @@ bool KOTodoEditor::processInput()
   if ( !validateInput() ) {
     return false;
   }
+#ifdef AKONADI_PORT_DISABLED //incidenceChanger
 
-  if ( mTodo ) {
+  if ( Akonadi::hasTodo( mTodo ) ) {
+
     bool rc = true;
-    Todo *oldTodo = mTodo->clone();
-    Todo *todo = mTodo->clone();
+    Todo::Ptr oldTodo( Akonadi::todo( mTodo )->clone() );
+    Todo::Ptr todo( Akonadi::todo( mTodo )->clone() );
 
     fillTodo( todo );
 
-    if( *mTodo == *todo ) {
+    if( *oldTodo == *todo ) {
       // Don't do anything cause no changes where done
     } else {
-      mTodo->startUpdates(); //merge multiple mTodo->updated() calls into one
-      fillTodo( mTodo );
-#ifdef AKONADI_PORT_DISABLED
+      Akonadi::todo( mTodo )->startUpdates(); //merge multiple mTodo->updated() calls into one
+      fillTodo( Akonadi::todo( mTodo ) );
       rc = mChanger->changeIncidence( oldTodo, mTodo );
-#endif
-      mTodo->endUpdates();
+      Akonadi::todo( mTodo )->endUpdates();
     }
-    delete todo;
-    delete oldTodo;
     return rc;
   } else {
-    mTodo = new Todo;
-#ifdef AKONADI_PORT_DISABLED
+//PENDING(AKONADI_PORT) review the newly created item will differ from mTodo
+    Todo::Ptr td( new Todo );
+    mTodo.setPayload( td );
     mTodo->setOrganizer( Person( KOPrefs::instance()->fullName(),
                                  KOPrefs::instance()->email() ) );
 
-    fillTodo( mTodo );
+    fillTodo( td );
 
-    if ( !mChanger->addIncidence( mTodo, this ) ) {
-      delete mTodo;
-      mTodo = 0;
+    if ( !mChanger->addIncidence( td, this ) ) {
+      mTodo = Item();
       return false;
     }
-#endif
   }
 
   return true;
-
+#else
+  return false;
+#endif
 }
 
 void KOTodoEditor::deleteTodo()
 {
-  if ( mTodo ) {
+  if ( Akonadi::hasJournal( mTodo ) ) {
     emit deleteIncidenceSignal( mTodo );
   }
   emit dialogClose( mTodo );
   reject();
 }
 
-void KOTodoEditor::setDates( const QDateTime &due, bool allDay, Todo *relatedEvent )
+void KOTodoEditor::setDates( const QDateTime &due, bool allDay, const Akonadi::Item &relatedEvent )
 {
-  mRelatedTodo = relatedEvent;
+  mRelatedTodo = Akonadi::todo( relatedEvent );
   KDateTime::Spec timeSpec = KSystemTimeZones::local();
 
   // inherit some properties from parent todo
@@ -320,32 +317,33 @@ void KOTodoEditor::setDates( const QDateTime &due, bool allDay, Todo *relatedEve
   }
 
   mDetails->setDefaults();
-  if ( mTodo ) {
+  if ( Todo::Ptr todo = Akonadi::todo( mTodo ) ) {
     mRecurrence->setDefaults(
-      mTodo->dtStart().toTimeSpec( timeSpec ).dateTime(), due, false );
+      todo->dtStart().toTimeSpec( timeSpec ).dateTime(), due, false );
   } else {
     mRecurrence->setDefaults(
       KDateTime::currentUtcDateTime().toTimeSpec( timeSpec ).dateTime(), due, false );
   }
 }
 
-void KOTodoEditor::readTodo( Todo *todo, bool tmpl )
+void KOTodoEditor::readTodo( const Item &todoItem, bool tmpl )
 {
+  const Todo::Ptr todo = Akonadi::todo( todoItem );
   if ( !todo ) {
     return;
   }
 
-  mGeneral->readTodo( todo, tmpl );
-  mDetails->readIncidence( todo );
-  mRecurrence->readIncidence( todo );
+  mGeneral->readTodo( todo.get(), tmpl );
+  mDetails->readIncidence( todo.get() );
+  mRecurrence->readIncidence( todo.get() );
 
-  createEmbeddedURLPages( todo );
-  readDesignerFields( todo );
+  createEmbeddedURLPages( todo.get() );
+  readDesignerFields( todoItem );
 }
 
-void KOTodoEditor::fillTodo( Todo *todo )
+void KOTodoEditor::fillTodo( Todo* todo )
 {
-  Incidence *oldIncidence = todo->clone();
+  Incidence::Ptr oldIncidence( todo->clone() );
 
   mGeneral->fillTodo( todo );
   mDetails->fillIncidence( todo );
@@ -361,7 +359,7 @@ void KOTodoEditor::fillTodo( Todo *todo )
 
   // set related incidence, i.e. parent to-do in this case.
   if ( mRelatedTodo ) {
-    todo->setRelatedTo( mRelatedTodo );
+    todo->setRelatedTo( mRelatedTodo.get() );
   }
 
   cancelRemovedAttendees( todo );

@@ -31,6 +31,8 @@
 #include "koincidenceeditor.h"
 #include <kcal/todo.h>
 
+#include <Akonadi/Item>
+
 class QDateTime;
 class KOEditorGeneralTodo;
 class KOEditorRecurrence;
@@ -68,10 +70,10 @@ class INCIDENCEEDITOR_EXPORT KOTodoEditor : public KOIncidenceEditor
                    bool richDescription = false );
 
     /** Edit an existing todo. */
-    void editIncidence( Incidence *incidence, KOrg::CalendarBase *calendar );
+    void editIncidence( const Akonadi::Item &, KOrg::CalendarBase *calendar );
 
     /** Set widgets to default values */
-    void setDates( const QDateTime &due, bool allDay = true, Todo *relatedTodo = 0 );
+    void setDates( const QDateTime &due, bool allDay = true, const Akonadi::Item &relatedTodo = Akonadi::Item() );
 
    /**
       Read todo object and setup widgets accordingly. If tmpl is true, the
@@ -81,10 +83,10 @@ class INCIDENCEEDITOR_EXPORT KOTodoEditor : public KOIncidenceEditor
       @param tmpl If true, the todo is treated as a template, so the currently
       set time is preserved in the editor dialog.
     */
-    void readTodo( Todo *todo, bool tmpl = false );
+    void readTodo( const Akonadi::Item &, bool tmpl = false );
 
     /** Write To-do settings to todo object */
-    void fillTodo( Todo *todo );
+    void fillTodo( Todo* todo );
 
     /** Check if the input is valid. */
     bool validateInput();
@@ -113,7 +115,7 @@ class INCIDENCEEDITOR_EXPORT KOTodoEditor : public KOIncidenceEditor
     bool incidenceModified();
 
   private:
-    Todo *mTodo;
+    Akonadi::Item mTodo;
     KOrg::CalendarBase *mCalendar;
 
     // Todo which represents the initial dialog setup when creating a new todo.
@@ -121,7 +123,7 @@ class INCIDENCEEDITOR_EXPORT KOTodoEditor : public KOIncidenceEditor
     // this todo then the user will be asked if he really wants to cancel
     Todo mInitialTodo;
 
-    Todo *mRelatedTodo;
+    Todo::Ptr mRelatedTodo;
 
     KOEditorGeneralTodo *mGeneral;
     KOEditorRecurrence *mRecurrence;

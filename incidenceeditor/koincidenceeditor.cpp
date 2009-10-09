@@ -36,6 +36,10 @@
 #include <ksystemtimezone.h>
 #include <klocale.h>
 
+#include <akonadi/kcal/utils.h>
+
+#include <Akonadi/Item>
+
 #include <KABC/Addressee>
 #include <KCal/Incidence>
 #include <KCal/ICalFormat>
@@ -46,6 +50,9 @@
 #include <KMessageBox>
 #include <QPointer>
 #include <KStandardDirs>
+
+using namespace Akonadi;
+using namespace KCal;
 
 KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
                                       KOrg::CalendarBase *calendar, QWidget *parent )
@@ -163,7 +170,7 @@ void KOIncidenceEditor::closeEvent( QCloseEvent *event )
   slotButtonClicked( KDialog::Cancel );
 }
 
-void KOIncidenceEditor::cancelRemovedAttendees( Incidence *incidence )
+void KOIncidenceEditor::cancelRemovedAttendees( Incidence* incidence )
 {
   if ( !incidence ) {
     return;
@@ -173,19 +180,15 @@ void KOIncidenceEditor::cancelRemovedAttendees( Incidence *incidence )
   // and then only adds those that need to be canceled (i.e. a mail needs to be sent to them).
 #ifdef AKONADI_PORT_DISABLED
   const bool thatIsMe = KOPrefs::instance()->thatIsMe( incidence->organizer().email() );
-#else
-  const bool thatIsMe = false;
-#endif
   if ( thatIsMe ) {
-    Incidence *inc = incidence->clone();
+    Incidence::Ptr inc( incidence->clone() );
     inc->registerObserver( 0 );
     mAttendeeEditor->cancelAttendeeIncidence( inc );
     if ( inc->attendeeCount() > 0 ) {
       emit deleteAttendee( inc );
     }
-    delete inc;
   }
-
+#endif
 }
 
 void KOIncidenceEditor::slotManageTemplates()
@@ -327,9 +330,9 @@ class KCalStorage : public KPIM::DesignerFields::Storage
     Incidence *mIncidence;
 };
 
-void KOIncidenceEditor::readDesignerFields( Incidence *i )
+void KOIncidenceEditor::readDesignerFields( const Item &i )
 {
-  KCalStorage storage( i );
+  KCalStorage storage( Akonadi::incidence( i ).get() );
   foreach ( KPIM::DesignerFields *fields, mDesignerFields ) {
     if ( fields ) {
       fields->load( &storage );
@@ -337,7 +340,7 @@ void KOIncidenceEditor::readDesignerFields( Incidence *i )
   }
 }
 
-void KOIncidenceEditor::writeDesignerFields( Incidence *i )
+void KOIncidenceEditor::writeDesignerFields( Incidence* i )
 {
   KCalStorage storage( i );
   foreach ( KPIM::DesignerFields *fields, mDesignerFields ) {
@@ -364,7 +367,7 @@ void KOIncidenceEditor::setupEmbeddedURLPage( const QString &label,
   wid->loadContents();
 }
 
-void KOIncidenceEditor::createEmbeddedURLPages( Incidence *i )
+void KOIncidenceEditor::createEmbeddedURLPages( const Incidence *i )
 {
   if ( !i ) return;
   if ( !mEmbeddedURLPages.isEmpty() ) {

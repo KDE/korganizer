@@ -33,6 +33,8 @@
 #include "koprefs.h"
 #endif
 
+#include <akonadi/kcal/utils.h>
+
 #include <KCal/IncidenceFormatter>
 
 #include <KMessageBox>
@@ -41,6 +43,8 @@
 #include <QBoxLayout>
 #include <QFrame>
 #include <QVBoxLayout>
+
+using namespace Akonadi;
 
 KOEventEditor::KOEventEditor( KOrg::CalendarBase *calendar, QWidget *parent )
   : KOIncidenceEditor( QString(), calendar, parent ),
@@ -57,23 +61,19 @@ KOEventEditor::~KOEventEditor()
 
 bool KOEventEditor::incidenceModified()
 {
-  Event *newEvent = 0;
   Event *oldEvent = 0;
   bool modified;
 
-  if ( mEvent ) { // modification
-    oldEvent = mEvent;
+  if ( Akonadi::hasEvent( mEvent ) ) { // modification
+    oldEvent = Akonadi::event( mEvent ).get();
   } else { // new one
     oldEvent = &mInitialEvent;
   }
 
-  newEvent = oldEvent->clone();
-  fillEvent( newEvent );
+  Event::Ptr newEvent( oldEvent->clone() );
+  fillEvent( newEvent.get() );
 
   modified = !( *newEvent == *oldEvent );
-
-  delete newEvent;
-
   return modified;
 }
 
@@ -124,9 +124,7 @@ void KOEventEditor::init()
 
 void KOEventEditor::reload()
 {
-  if ( mEvent ) {
-    readEvent( mEvent, true );
-  }
+  readEvent( mEvent, true );
 }
 
 void KOEventEditor::setupGeneral()
@@ -232,13 +230,13 @@ void KOEventEditor::setupFreeBusy()
   topLayout->addWidget( mFreeBusy );
 }
 
-void KOEventEditor::editIncidence( Incidence *incidence, KOrg::CalendarBase *calendar )
+void KOEventEditor::editIncidence( const Item &item, KOrg::CalendarBase *calendar )
 {
-  Event*event = dynamic_cast<Event*>( incidence );
+  const Event::Ptr event = Akonadi::event( item );
   if ( event ) {
     init();
 
-    mEvent = event;
+    mEvent = item;
     mCalendar = calendar;
     readEvent( mEvent, false );
   }
@@ -253,7 +251,7 @@ void KOEventEditor::editIncidence( Incidence *incidence, KOrg::CalendarBase *cal
 void KOEventEditor::newEvent()
 {
   init();
-  mEvent = 0;
+  mEvent = Item();
   loadDefaults();
   setCaption( i18nc( "@title:window", "New Event" ) );
 }
@@ -304,14 +302,15 @@ bool KOEventEditor::processInput()
 
   QPointer<KOEditorFreeBusy> freeBusy( mFreeBusy );
 
-  if ( mEvent ) {
+  if ( Akonadi::hasEvent( mEvent ) ) {
+    Event::Ptr ev = Akonadi::event( mEvent );
     bool rc = true;
-    Event *oldEvent = mEvent->clone();
-    Event *event = mEvent->clone();
+    Event::Ptr oldEvent( ev->clone() );
+    Event::Ptr event( ev->clone() );
 
-    fillEvent( event );
+    fillEvent( event.get() );
 
-    if ( *event == *mEvent ) {
+    if ( *event == *oldEvent ) {
       // Don't do anything
       if ( mIsCounter ) {
         KMessageBox::information(
@@ -322,40 +321,44 @@ bool KOEventEditor::processInput()
           i18nc( "@title:window", "No Changes" ) );
       }
     } else {
-      mEvent->startUpdates(); //merge multiple mEvent->updated() calls into one
-      fillEvent( mEvent );
-#ifdef AKONADI_PORT_DISABLED
+      ev->startUpdates(); //merge multiple mEvent->updated() calls into one
+      fillEvent( ev.get() );
       if ( mIsCounter ) {
           // FIXME port to akonadi
+#ifdef AKONADI_PORT_DISABLED
         KOGroupware::instance()->sendCounterProposal( mCalendar, oldEvent, mEvent );
-        // add dummy event at the position of the counter proposal
-        Event *event = mEvent->clone();
-        event->clearAttendees();
-        event->setSummary(
-          i18nc( "@item",
-                 "My counter proposal for: %1", mEvent->summary() ) );
-        rc = mChanger->addIncidence( event );
-      } else {
-        rc = mChanger->changeIncidence( oldEvent, mEvent );
-      }
 #endif
-      mEvent->endUpdates();
+        // add dummy event at the position of the counter proposal
+        Event::Ptr event2( ev->clone() );
+        event2->clearAttendees();
+        event2->setSummary(
+          i18nc( "@item",
+                 "My counter proposal for: %1", ev->summary() ) );
+#ifdef AKONADI_PORT_DISABLED
+        rc = mChanger->addIncidence( event2 );
+#endif
+      } else {
+#ifdef AKONADI_PORT_DISABLED
+        rc = mChanger->changeIncidence( oldEvent, mEvent );
+#endif
+      }
+
+      ev->endUpdates();
     }
-    delete event;
-    delete oldEvent;
     return rc;
   } else {
-    mEvent = new Event;
+    //PENDING(AKONADI_PORT) review mEvent will differ from newly created item
+    Event::Ptr newEvent( new Event );
+    mEvent.setPayload( newEvent );
 #ifdef AKONADI_PORT_DISABLED
     // FIXME port
     mEvent->setOrganizer( Person( KOPrefs::instance()->fullName(),
                           KOPrefs::instance()->email() ) );
-
-    fillEvent( mEvent );
-
-    if ( !mChanger->addIncidence( mEvent, this ) ) {
-      delete mEvent;
-      mEvent = 0;
+#endif
+    fillEvent( newEvent.get() );
+#ifdef AKONADI_PORT_DISABLED
+    if ( !mChanger->addIncidence( newEvent, this ) ) {
+      mEvent = Item();
       return false;
     }
 #endif
@@ -378,7 +381,7 @@ void KOEventEditor::processCancel()
 
 void KOEventEditor::deleteEvent()
 {
-  if ( mEvent ) {
+  if ( Akonadi::hasEvent( mEvent ) ) {
     emit deleteIncidenceSignal( mEvent );
   }
 
@@ -386,28 +389,29 @@ void KOEventEditor::deleteEvent()
   reject();
 }
 
-void KOEventEditor::readEvent( Event *event, bool tmpl )
+void KOEventEditor::readEvent( const Item& eventItem, bool tmpl )
 {
-  if ( !event ) {
+  if ( !Akonadi::hasEvent( eventItem ) ) {
     return;
   }
 
-  mGeneral->readEvent( event, tmpl );
-  mRecurrence->readIncidence( event );
+  const Event::Ptr event = Akonadi::event( eventItem );
+  mGeneral->readEvent( event.get(), tmpl );
+  mRecurrence->readIncidence( event.get() );
   if ( mFreeBusy ) {
-    mFreeBusy->readIncidence( event );
+    mFreeBusy->readIncidence( event.get() );
     mFreeBusy->triggerReload();
   }
 
-  createEmbeddedURLPages( event );
-  readDesignerFields( event );
+  createEmbeddedURLPages( event.get() );
+  readDesignerFields( eventItem );
 
   if ( mIsCounter ) {
     mGeneral->invitationBar()->hide();
   }
 }
 
-void KOEventEditor::fillEvent( Event *event )
+void KOEventEditor::fillEvent( Event* event )
 {
   mGeneral->fillEvent( event );
   if ( mFreeBusy ) {
@@ -474,10 +478,9 @@ QObject *KOEventEditor::typeAheadReceiver() const
 
 void KOEventEditor::updateRecurrenceSummary()
 {
-  Event *ev =  new Event();
-  fillEvent( ev );
-  mGeneral->updateRecurrenceSummary( IncidenceFormatter::recurrenceString( ev ) );
-  delete ev;
+  Event::Ptr ev( new Event );
+  fillEvent( ev.get() );
+  mGeneral->updateRecurrenceSummary( IncidenceFormatter::recurrenceString( ev.get() ) );
 }
 
 void KOEventEditor::selectInvitationCounterProposal( bool enable )

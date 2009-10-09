@@ -49,6 +49,7 @@ target_link_libraries(korg_incidenceeditor
    ${KDEPIMLIBS_KCAL_LIBS}
    kdepim
    kdepimdbusinterfaces
+   akonadi-kcal
 )
 
 set_target_properties(korg_incidenceeditor PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION})
