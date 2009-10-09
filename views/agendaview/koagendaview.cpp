@@ -755,7 +755,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
   if ( !incidence ) {
     return;
   }
-  if ( !mChanger || !mChanger->beginChange( incidence.get() ) ) {
+  if ( !mChanger || !mChanger->beginChange( aitem ) ) {
     return;
   }
   Incidence::Ptr oldIncidence( incidence->clone() );
@@ -1000,8 +1000,8 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
   }
   item->setItemDate( startDt.toTimeSpec( KOPrefs::instance()->timeSpec() ).date() );
 
-  const bool result = mChanger->changeIncidence( oldIncidence.get(), incidence.get() );
-  mChanger->endChange(incidence.get());
+  const bool result = mChanger->changeIncidence( oldIncidence, aitem );
+  mChanger->endChange( aitem );
 
   // Update the view correctly if an agenda item move was aborted by
   // cancelling one of the subsequent dialogs.
@@ -1459,12 +1459,12 @@ void KOAgendaView::slotTodoDropped( const Item &todoItem, const QPoint &gpos, bo
     if ( Todo::Ptr existingTodo = Akonadi::todo( existingTodoItem ) ) {
       kDebug() << "Drop existing Todo";
       Todo::Ptr oldTodo( existingTodo->clone() );
-      if ( mChanger && mChanger->beginChange( existingTodo.get() ) ) {
+      if ( mChanger && mChanger->beginChange( existingTodoItem ) ) {
         existingTodo->setDtDue( newTime );
         existingTodo->setAllDay( allDay );
         existingTodo->setHasDueDate( true );
-        mChanger->changeIncidence( oldTodo.get(), existingTodo.get() );
-        mChanger->endChange( existingTodo.get() );
+        mChanger->changeIncidence( oldTodo, existingTodoItem );
+        mChanger->endChange( existingTodoItem );
       } else {
         KMessageBox::sorry( this, i18n( "Unable to modify this to-do, "
                                         "because it cannot be locked." ) );
@@ -1474,7 +1474,7 @@ void KOAgendaView::slotTodoDropped( const Item &todoItem, const QPoint &gpos, bo
       todo->setDtDue( newTime );
       todo->setAllDay( allDay );
       todo->setHasDueDate( true );
-      if ( !mChanger->addIncidence( todo.get(), this ) ) {
+      if ( !mChanger->addIncidence( todo, this ) ) {
         KODialogManager::errorSaveIncidence( this, todo.get() );
       }
     }

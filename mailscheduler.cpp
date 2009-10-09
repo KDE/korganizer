@@ -196,7 +196,9 @@ bool MailScheduler::acceptCounterProposal( Incidence *incidence )
     incidence->setUid( exInc->uid() );
 
     mCalendar->beginChange( exInc );
+#ifdef AKONADI_PORT_DISABLED
     IncidenceChanger::assignIncidence( exInc, incidence );
+#endif
     exInc->updated();
     mCalendar->endChange( exInc );
   } else {

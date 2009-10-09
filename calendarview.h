@@ -112,11 +112,15 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
 
     class CanDeleteIncidenceVisitor : public CalendarViewVisitor
     {
+        const Akonadi::Item item;
+      public:
+        explicit CanDeleteIncidenceVisitor( const Akonadi::Item& i ) : item( i ) {}
       protected:
-        bool visit( Event *event ) { return mView->deleteEvent( event ); }
-        bool visit( Todo *todo ) { return mView->deleteTodo( todo ); }
-        bool visit( Journal *journal ) { return mView->deleteJournal( journal ); }
+        bool visit( Event * ) { return mView->deleteEvent( item ); }
+        bool visit( Todo * ) { return mView->deleteTodo( item ); }
+        bool visit( Journal * ) { return mView->deleteJournal( item ); }
         bool visit( FreeBusy * ) { return false; }
+
     };
 
     void setCalendar( KOrg::CalendarBase * );
@@ -361,23 +365,23 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     void pasteIncidence();
 
     /** Delete the supplied todo and all sub-todos */
-    void deleteSubTodosIncidence ( Todo *todo );
+    void deleteSubTodosIncidence ( const Akonadi::Item &todo );
 
     /**
       Delete the todo incidence, and its sub-to-dos.
       @param todo The todo to delete.
       @param force If true, all sub-todos will be deleted without prompting for confirmation.
     */
-    void deleteTodoIncidence ( Todo *todo, bool force=false );
+    void deleteTodoIncidence ( const Akonadi::Item &todo, bool force=false );
 
     /** Check if deleting the supplied event is allowed. */
-    bool deleteEvent( Event * ) { return true; }
+    bool deleteEvent( const Akonadi::Item & ) { return true; }
 
     /** Check if deleting the todo is allowed */
-    bool deleteTodo( Todo * ) {return true; }
+    bool deleteTodo( const Akonadi::Item & ) {return true; }
 
     /** Check if deleting the supplied journal is allowed. */
-    bool deleteJournal( Journal * ) { return true; }
+    bool deleteJournal( const Akonadi::Item & ) { return true; }
 
     /**
       Delete the incidence with the given unique ID. Returns false, if event wasn't found.
@@ -397,7 +401,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     void newSubTodo();
 
     /** create new todo with a parent todo */
-    void newSubTodo( Todo * );
+    void newSubTodo( const Akonadi::Item &todo );
 
     void newTodo( const QString &summary, const QString &description=QString(),
                   const QStringList &attachments=QStringList(),
@@ -502,13 +506,13 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     void todo_unsub();
 
     /** Free a subtodo from it's relation, without update the view */
-    bool todo_unsub( Todo *todo );
+    bool todo_unsub( const Akonadi::Item &todo );
 
     /** Make all sub-to-dos of todo independents, update the view*/
     bool makeSubTodosIndependents ( );
 
     /** Make all sub-to-dos of todo independents, not update the view*/
-    bool makeSubTodosIndependents ( Todo *todo );
+    bool makeSubTodosIndependents ( const Akonadi::Item &todo );
 
     /** Take ownership of selected event. */
     void takeOverEvent();
@@ -621,7 +625,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
 
     int msgItemDelete( const Akonadi::Item &incidence );
 
-    Todo *selectedTodo();
+    Akonadi::Item selectedTodo();
 
     void warningChangeFailed( const Akonadi::Item & );
     void checkForFilteredChange( const Akonadi::Item &incidence );
@@ -650,7 +654,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     // Helper function for purgeCompleted that recursively purges a todo and
     // its subitems. If it cannot delete a completed todo (because it has
     // uncompleted subitems), notAllPurged is set to true.
-    bool purgeCompletedSubTodos( Todo *todo, bool &notAllPurged );
+    bool purgeCompletedSubTodos( const Akonadi::Item &todo, bool &notAllPurged );
 
     KOrg::History *mHistory;
 

@@ -831,7 +831,7 @@ void KOAgenda::performItemAction( const QPoint &viewportPos )
       mActionType = NOP;
       mItemMoved = false;
       if ( mItemMoved && mChanger ) {
-        mChanger->endChange( Akonadi::incidence( mActionItem->incidence() ).get() );
+        mChanger->endChange( mActionItem->incidence() );
       }
       return;
     }
@@ -852,7 +852,7 @@ void KOAgenda::performItemAction( const QPoint &viewportPos )
   // Move or resize item if necessary
   if ( mEndCell != gpos ) {
     if ( !mItemMoved ) {
-      if ( !mChanger || !mChanger->beginChange( Akonadi::incidence( mActionItem->incidence() ).get() ) ) {
+      if ( !mChanger || !mChanger->beginChange( mActionItem->incidence() ) ) {
         KMessageBox::information( this,
                                   i18n( "Unable to lock item for modification. "
                                         "You cannot make any changes." ),
@@ -1001,14 +1001,15 @@ void KOAgenda::performItemAction( const QPoint &viewportPos )
 
 void KOAgenda::endItemAction()
 {
-// kDebug();
+  //PENDING(AKONADI_PORT) review all this cloning and changer calls
+  // kDebug();
   mActionType = NOP;
   mScrollUpTimer.stop();
   mScrollDownTimer.stop();
   setCursor( Qt::ArrowCursor );
   bool multiModify = false;
   // FIXME: do the cloning here...
-  const Akonadi::Item inc = mActionItem->incidence();
+  Akonadi::Item inc = mActionItem->incidence();
   Incidence::Ptr incidence = Akonadi::incidence( inc );
   mItemMoved = mItemMoved && !( mStartCell.x() == mEndCell.x() &&
                                 mStartCell.y() == mEndCell.y() );
@@ -1034,20 +1035,21 @@ void KOAgenda::endItemAction()
         modify = true;
         multiModify = true;
         emit startMultiModify( i18n( "Dissociate event from recurrence" ) );
-        Incidence *oldInc = incidence.get();
-        Incidence *oldIncSaved = incidence->clone();
+        Incidence::Ptr oldInc( incidence );
+        Incidence::Ptr oldIncSaved( incidence->clone() );
         Incidence::Ptr newInc( mCalendar->dissociateOccurrence(
-          oldInc, mActionItem->itemDate(), KOPrefs::instance()->timeSpec() ) );
+          oldInc.get(), mActionItem->itemDate(), KOPrefs::instance()->timeSpec() ) );
         if ( newInc ) {
           // don't recreate items, they already have the correct position
           emit enableAgendaUpdate( false );
-          mChanger->changeIncidence( oldIncSaved, oldInc );
+          inc.setPayload( incidence );
+          mChanger->changeIncidence( oldIncSaved, inc );
           Akonadi::Item item;
           item.setPayload( newInc );
           mActionItem->setIncidence( item );
 
           mActionItem->dissociateFromMultiItem();
-          mChanger->addIncidence( newInc.get(), this );
+          mChanger->addIncidence( newInc, this );
           emit enableAgendaUpdate( true );
         } else {
           KMessageBox::sorry(
@@ -1056,7 +1058,6 @@ void KOAgenda::endItemAction()
                   "No change will be done." ),
             i18n( "Error Occurred" ) );
         }
-        delete oldIncSaved;
         break;
       }
       case KMessageBox::No/*Future*/:
@@ -1070,19 +1071,19 @@ void KOAgenda::endItemAction()
         modify = true;
         multiModify = true;
         emit startMultiModify( i18n( "Split future recurrences" ) );
-        Incidence *oldInc = incidence.get();
-        Incidence *oldIncSaved = incidence->clone();
+        Incidence::Ptr oldInc = incidence;
+        Incidence::Ptr oldIncSaved( incidence->clone() );
         Incidence::Ptr newInc( mCalendar->dissociateOccurrence(
-          oldInc, mActionItem->itemDate(), KOPrefs::instance()->timeSpec(), false ) );
+          oldInc.get(), mActionItem->itemDate(), KOPrefs::instance()->timeSpec(), false ) );
         if ( newInc ) {
           emit enableAgendaUpdate( false );
           mActionItem->dissociateFromMultiItem();
           Item item;
           item.setPayload( newInc );
           mActionItem->setIncidence( item );
-          mChanger->addIncidence( newInc.get(), this );
+          mChanger->addIncidence( newInc, this );
           emit enableAgendaUpdate( true );
-          mChanger->changeIncidence( oldIncSaved, oldInc );
+          mChanger->changeIncidence( oldIncSaved, inc );
         } else {
           KMessageBox::sorry(
             this,
@@ -1090,7 +1091,6 @@ void KOAgenda::endItemAction()
                   "No change will be done." ),
             i18n( "Error Occurred" ) );
         }
-        delete oldIncSaved;
         break;
       }
       default:
@@ -1119,7 +1119,7 @@ void KOAgenda::endItemAction()
         placeItem = placeItem->nextMultiItem();
       }
 
-      mChanger->endChange( incidence.get() );
+      mChanger->endChange( inc );
 
       // Notify about change
       // the agenda view will apply the changes to the actual Incidence*!
@@ -1127,7 +1127,7 @@ void KOAgenda::endItemAction()
     } else {
       // the item was moved, but not further modified, since it's not recurring
       // make sure the view updates anyhow, with the right item
-      mChanger->endChange( incidence.get() );
+      mChanger->endChange( inc );
       emit itemModified( mActionItem );
     }
   }

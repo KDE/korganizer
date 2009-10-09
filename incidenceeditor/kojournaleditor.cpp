@@ -161,7 +161,9 @@ bool KOJournalEditor::processInput()
     } else {
       mJournal->startUpdates(); //merge multiple mJournal->updated() calls into one
       fillJournal( mJournal );
+#ifdef AKONADI_PORT_DISABLED // incidence -> item port
       rc = mChanger->changeIncidence( oldJournal, mJournal );
+#endif
       mJournal->endUpdates();
     }
     delete journal;
@@ -174,12 +176,13 @@ bool KOJournalEditor::processInput()
                                     KOPrefs::instance()->email() ) );
 #endif
     fillJournal( mJournal );
-
+#ifdef AKONADI_PORT_DISABLED // incidence -> item port
     if ( !mChanger->addIncidence( mJournal, this ) ) {
       delete mJournal;
       mJournal = 0;
       return false;
     }
+#endif
   }
 
   return true;

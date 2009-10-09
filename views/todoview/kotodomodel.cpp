@@ -332,7 +332,7 @@ QModelIndex KOTodoModel::addTodo( const QString &summary,
     }
 
     //PENDING(AKONADI_PORT) create akonadi item
-    if ( !mChanger->addIncidence( todo.get() ) ) {
+    if ( !mChanger->addIncidence( todo ) ) {
       KODialogManager::errorSaveIncidence( 0, todo.get() );
       return QModelIndex();
     }
@@ -366,7 +366,7 @@ void KOTodoModel::copyTodo( const QModelIndex &index, const QDate &date )
   due.setDate( date );
   todo->setDtDue( due );
 
-  if ( !mChanger->addIncidence( todo.get() ) ) {
+  if ( !mChanger->addIncidence( todo ) ) {
     KODialogManager::errorSaveIncidence( 0, todo.get() );
   }
 }
@@ -793,7 +793,7 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
 
   if ( role == TodoRole ) {
     QVariant ret( QMetaType::VoidStar );
-    ret.setValue( static_cast<void *>( todo.get() ) );
+    ret.setValue( node->mTodo );
     return ret;
   }
 
@@ -863,7 +863,7 @@ bool KOTodoModel::setData( const QModelIndex &index, const QVariant &value, int 
   }
   const Todo::Ptr todo = Akonadi::todo( node->mTodo );
 
-  if ( !todo->isReadOnly() && mChanger->beginChange( todo.get() ) ) {
+  if ( !todo->isReadOnly() && mChanger->beginChange( node->mTodo ) ) {
     Todo::Ptr oldTodo( todo->clone() );
     int modified = KOGlobals::UNKNOWN_MODIFIED;
 
@@ -913,14 +913,14 @@ bool KOTodoModel::setData( const QModelIndex &index, const QVariant &value, int 
     }
 
     if ( modified != KOGlobals::UNKNOWN_MODIFIED ) {
-      mChanger->changeIncidence( oldTodo.get(), todo.get(), modified );
+      mChanger->changeIncidence( oldTodo, node->mTodo, modified );
       // changeIncidence will eventually call the view's
       // changeIncidenceDisplay method, which in turn
       // will call processChange. processChange will then emit
       // dataChanged to the view, so we don't have to
       // do it here
     }
-    mChanger->endChange( todo.get() );
+    mChanger->endChange( node->mTodo );
 
     return true;
   } else {

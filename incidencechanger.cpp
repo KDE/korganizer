@@ -28,6 +28,8 @@
 #include "mailscheduler.h"
 #include "calendarbase.h"
 
+#include <akonadi/kcal/utils.h>
+
 #include <KCal/AssignmentVisitor>
 #include <KCal/CalendarResources>
 #include <KCal/DndFactory>
@@ -38,32 +40,40 @@
 #include <KLocale>
 #include <KMessageBox>
 
-bool IncidenceChanger::beginChange( Incidence *incidence )
+using namespace KCal;
+using namespace Akonadi;
+
+bool IncidenceChanger::beginChange( const Item &incidence )
 {
-  if ( !incidence ) {
+  if ( !Akonadi::hasIncidence( incidence ) ) {
     return false;
   }
-  kDebug() << "for incidence \"" << incidence->summary() << "\"";
-  return mCalendar->beginChange( incidence );
+  kDebug() << "for incidence \"" << Akonadi::incidence( incidence )->summary() << "\"";
+  return mCalendar->beginChangeFORAKONADI( incidence );
 }
 
-bool IncidenceChanger::sendGroupwareMessage( KCal::Incidence *incidence,
+bool IncidenceChanger::sendGroupwareMessage( const Item &aitem,
                                              KCal::iTIPMethod method, bool deleting )
 {
+  const Incidence::Ptr incidence = Akonadi::incidence( aitem );
+  if ( !incidence )
+    return false;
   if ( KOPrefs::instance()->thatIsMe( incidence->organizer().email() ) &&
        incidence->attendeeCount() > 0 &&
        !KOPrefs::instance()->mUseGroupwareCommunication ) {
-    emit schedule( method, incidence );
+    emit schedule( method, aitem );
     return true;
   } else if ( KOPrefs::instance()->mUseGroupwareCommunication ) {
     // FIXME: Find a widget to use as parent, instead of 0
-    return KOGroupware::instance()->sendICalMessage( 0, method, incidence, deleting );
+    return KOGroupware::instance()->sendICalMessage( 0, method, incidence.get(), deleting );
   }
   return true;
 }
 
-void IncidenceChanger::cancelAttendees( Incidence *incidence )
+void IncidenceChanger::cancelAttendees( const Item &aitem )
 {
+  const Incidence::Ptr incidence = Akonadi::incidence( aitem );
+  Q_ASSERT( incidence );
   if ( KOPrefs::instance()->mUseGroupwareCommunication ) {
     if ( KMessageBox::questionYesNo(
            0,
@@ -86,34 +96,35 @@ void IncidenceChanger::cancelAttendees( Incidence *incidence )
   }
 }
 
-bool IncidenceChanger::endChange( Incidence *incidence )
+bool IncidenceChanger::endChange( const Item &incidence )
 {
+  if ( !Akonadi::hasIncidence( incidence ) )
+    return false;
+
   // FIXME: if that's a groupware incidence, and I'm not the organizer,
   // send out a mail to the organizer with a counterproposal instead
   // of actually changing the incidence. Then no locking is needed.
   // FIXME: if that's a groupware incidence, and the incidence was
   // never locked, we can't unlock it with endChange().
-  if ( !incidence ) {
-    return false;
-  }
 
-  kDebug() << "\"" << incidence->summary() << "\"";
-  return mCalendar->endChange( incidence );
+  kDebug() << "\"" << Akonadi::incidence( incidence )->summary() << "\"";
+  return mCalendar->endChangeFORAKONADI( incidence );
 }
 
-bool IncidenceChanger::deleteIncidence( Incidence *incidence )
+bool IncidenceChanger::deleteIncidence( const Item &aitem )
 {
+  const Incidence::Ptr incidence = Akonadi::incidence( aitem );
   if ( !incidence ) {
     return true;
   }
 
   kDebug() << "\"" << incidence->summary() << "\"";
-  bool doDelete = sendGroupwareMessage( incidence, KCal::iTIPCancel, true );
+  bool doDelete = sendGroupwareMessage( aitem, KCal::iTIPCancel, true );
   if( doDelete ) {
     // @TODO: let Calendar::deleteIncidence do the locking...
-    Incidence *tmp = incidence->clone();
-    emit incidenceToBeDeleted( incidence );
-    doDelete = mCalendar->deleteIncidence( incidence );
+    Incidence::Ptr tmp( incidence->clone() );
+    emit incidenceToBeDeleted( aitem );
+    doDelete = mCalendar->deleteIncidenceFORAKONADI( aitem );
     if ( !KOPrefs::instance()->thatIsMe( tmp->organizer().email() ) ) {
       const QStringList myEmails = KOPrefs::instance()->allEmails();
       bool notifyOrganizer = false;
@@ -142,19 +153,21 @@ bool IncidenceChanger::deleteIncidence( Incidence *incidence )
       //reset the doNotNotify flag
       KOGroupware::instance()->setDoNotNotify( false );
     }
-    emit incidenceDeleted( incidence );
+    emit incidenceDeleted( aitem );
   }
   return doDelete;
 }
 
-bool IncidenceChanger::cutIncidence( Incidence *incidence )
+bool IncidenceChanger::cutIncidence( const Item& aitem )
 {
+  const Incidence::Ptr incidence = Akonadi::incidence( aitem );
+
   if ( !incidence ) {
     return true;
   }
 
   kDebug() << "\"" << incidence->summary() << "\"";
-  bool doDelete = sendGroupwareMessage( incidence, KCal::iTIPCancel );
+  bool doDelete = sendGroupwareMessage( aitem, KCal::iTIPCancel );
   if( doDelete ) {
 #ifdef AKONADI_PORT_DISABLED
     // @TODO: the factory needs to do the locking!
@@ -238,12 +251,12 @@ bool IncidenceChanger::assignIncidence( Incidence *inc1, Incidence *inc2 )
   if ( !inc1 || !inc2 ) {
     return false;
   }
-
+  // PENDING(AKONADI_PORT) review
   AssignmentVisitor v;
   return v.assign( inc1, inc2 );
 }
 
-bool IncidenceChanger::myAttendeeStatusChanged( Incidence *oldInc, Incidence *newInc )
+bool IncidenceChanger::myAttendeeStatusChanged( const Incidence* newInc, const Incidence* oldInc )
 {
   Attendee *oldMe = oldInc->attendeeByMails( KOPrefs::instance()->allEmails() );
   Attendee *newMe = newInc->attendeeByMails( KOPrefs::instance()->allEmails() );
@@ -254,18 +267,20 @@ bool IncidenceChanger::myAttendeeStatusChanged( Incidence *oldInc, Incidence *ne
   return false;
 }
 
-bool IncidenceChanger::changeIncidence( Incidence *oldinc, Incidence *newinc,
+bool IncidenceChanger::changeIncidence( const Incidence::Ptr &oldinc, const Item &newItem,
                                         int action )
 {
+  const Incidence::Ptr newinc = Akonadi::incidence( newItem );
+
   kDebug() << "for incidence \"" << newinc->summary() << "\""
            << "( old one was \"" << oldinc->summary() << "\")";
 
-  if ( incidencesEqual( newinc, oldinc ) ) {
+  if ( incidencesEqual( newinc.get(), oldinc.get() ) ) {
     // Don't do anything
     kDebug() << "Incidence not changed";
   } else {
     kDebug() << "Changing incidence";
-    bool statusChanged = myAttendeeStatusChanged( oldinc, newinc );
+    bool statusChanged = myAttendeeStatusChanged( oldinc.get(), newinc.get() );
     int revision = newinc->revision();
     newinc->setRevision( revision + 1 );
     // FIXME: Use a generic method for this! Ideally, have an interface class
@@ -276,26 +291,26 @@ bool IncidenceChanger::changeIncidence( Incidence *oldinc, Incidence *newinc,
     if ( KOPrefs::instance()->mUseGroupwareCommunication ) {
       success = KOGroupware::instance()->sendICalMessage( 0,
                                                           KCal::iTIPRequest,
-                                                          newinc, false, statusChanged );
+                                                          newinc.get(), false, statusChanged );
     }
 
     if ( success ) {
       // Accept the event changes
       if ( action < 0 ) {
-        emit incidenceChanged( oldinc, newinc );
+        emit incidenceChanged( oldinc, newItem );
       } else {
-        emit incidenceChanged( oldinc, newinc, action );
+        emit incidenceChanged( oldinc, newItem, action );
       }
     } else {
       // revert changes
-      assignIncidence( newinc, oldinc );
+      assignIncidence( newinc.get(), oldinc.get() );
       return false;
     }
   }
   return true;
 }
 
-bool IncidenceChanger::addIncidence( Incidence *incidence, QWidget *parent )
+bool IncidenceChanger::addIncidence( const Incidence::Ptr &incidence, QWidget *parent )
 {
   kDebug() << "\"" << incidence->summary() << "\"";
   CalendarResources *stdcal = dynamic_cast<CalendarResources*>( mCalendar );
@@ -313,7 +328,9 @@ bool IncidenceChanger::addIncidence( Incidence *incidence, QWidget *parent )
     tmpparent = stdcal->dialogParentWidget();
     stdcal->setDialogParentWidget( parent );
   }
-  bool success = mCalendar->addIncidence( incidence );
+  Akonadi::Item item;
+  item.setPayload( incidence );
+  bool success = mCalendar->addIncidenceFORAKONADI( item );
   if ( stdcal ) {
     // Reset the parent widget, otherwise we'll end up with pointers to deleted
     // widgets sooner or later
@@ -335,12 +352,12 @@ bool IncidenceChanger::addIncidence( Incidence *incidence, QWidget *parent )
   if ( KOPrefs::instance()->mUseGroupwareCommunication ) {
     if ( !KOGroupware::instance()->sendICalMessage( parent,
                                                     KCal::iTIPRequest,
-                                                    incidence ) ) {
+                                                    incidence.get() ) ) {
       kError() << "sendIcalMessage failed.";
     }
   }
 
-  emit incidenceAdded( incidence );
+  emit incidenceAdded( item );
   return true;
 }
 

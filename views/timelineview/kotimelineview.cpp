@@ -355,7 +355,7 @@ void KOTimelineView::itemMoved( KDGanttViewItem *item )
 
   const Item i = tlit->incidence();
   const Incidence::Ptr inc = Akonadi::incidence( i );
-  mChanger->beginChange( inc.get() );
+  mChanger->beginChange( i );
 
   KDateTime newStart( tlit->startTime() );
   if ( inc->allDay() ) {
@@ -379,7 +379,7 @@ void KOTimelineView::itemMoved( KDGanttViewItem *item )
   inc->setDuration( duration );
   TimelineItem *parent = static_cast<TimelineItem *>( tlit->parent() );
   parent->moveItems( i, tlit->originalStart().secsTo( newStart ), duration + allDayOffset );
-  mChanger->endChange( inc.get() );
+  mChanger->endChange( i );
 }
 
 void KOTimelineView::overscale( KDGanttView::Scale scale )

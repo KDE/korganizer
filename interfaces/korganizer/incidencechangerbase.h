@@ -22,12 +22,15 @@
 #define KORG_INCIDENCECHANGERBASE_H
 
 #include "korganizer/korganizer_export.h"
-#include <kcal/scheduler.h>
+#include <KCal/Incidence>
+#include <KCal/Scheduler>
+
 #include <QtCore/QObject>
 
 class QWidget;
-namespace KCal {
-  class Incidence;
+
+namespace Akonadi {
+  class Item;
 }
 using namespace KCal;
 
@@ -43,31 +46,31 @@ class KORGANIZER_INTERFACES_EXPORT IncidenceChangerBase : public QObject
 
     virtual ~IncidenceChangerBase();
 
-    virtual bool sendGroupwareMessage( Incidence *incidence,
-                                       iTIPMethod method, bool deleting = false ) = 0;
+    virtual bool sendGroupwareMessage( const Akonadi::Item &incidence,
+                                       KCal::iTIPMethod method, bool deleting = false ) = 0;
 
-    virtual bool beginChange( Incidence * incidence ) = 0;
-    virtual bool endChange( Incidence *incidence ) = 0;
+    virtual bool beginChange( const Akonadi::Item & incidence ) = 0;
+    virtual bool endChange( const Akonadi::Item &incidence ) = 0;
 
-    virtual bool addIncidence( Incidence *incidence, QWidget *parent = 0 ) = 0;
-    virtual bool changeIncidence( Incidence *oldinc, Incidence *newinc,
+    virtual bool addIncidence( const KCal::Incidence::Ptr &inc, QWidget *parent = 0 ) = 0;
+    virtual bool changeIncidence( const KCal::Incidence::Ptr &oldinc, const Akonadi::Item &newinc,
                                   int action = -1 ) = 0;
-    virtual bool deleteIncidence( Incidence *incidence ) = 0;
-    virtual bool cutIncidence( Incidence *incidence ) = 0;
+    virtual bool deleteIncidence( const Akonadi::Item &incidence ) = 0;
+    virtual bool cutIncidence( const Akonadi::Item &incidence ) = 0;
 
 /*
-    static bool incidencesEqual( Incidence *inc1, Incidence *inc2 );
-    static bool assignIncidence( Incidence *inc1, Incidence *inc2 );
+    static bool incidencesEqual( const Akonadi::Item &inc1, const Akonadi::Item &inc2 );
+    static bool assignIncidence( const Akonadi::Item &inc1, const Akonadi::Item &inc2 );
 */
 
   Q_SIGNALS:
-    void incidenceAdded( Incidence * );
-    void incidenceChanged( Incidence *oldInc, Incidence *newInc, int );
-    void incidenceChanged( Incidence *oldInc, Incidence *newInc );
-    void incidenceToBeDeleted( Incidence * );
-    void incidenceDeleted( Incidence * );
+    void incidenceAdded( const Akonadi::Item & );
+    void incidenceChanged( const KCal::Incidence::Ptr &oldinc, const Akonadi::Item &newInc, int );
+    void incidenceChanged( const KCal::Incidence::Ptr &oldinc, const Akonadi::Item &newInc );
+    void incidenceToBeDeleted( const Akonadi::Item & );
+    void incidenceDeleted( const Akonadi::Item & );
 
-    void schedule( iTIPMethod method, Incidence *incidence );
+    void schedule( KCal::iTIPMethod method, const Akonadi::Item &incidence );
 
   protected:
     CalendarBase *mCalendar;

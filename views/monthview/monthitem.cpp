@@ -432,7 +432,7 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
   Incidence::Ptr incidence = Akonadi::incidence( mIncidence );
 
   IncidenceChangerBase *changer = monthScene()->incidenceChanger();
-  if ( !changer || !changer->beginChange( incidence.get() ) ) {
+  if ( !changer || !changer->beginChange( mIncidence ) ) {
     KODialogManager::errorSaveIncidence( 0, incidence.get() );
     return;
   }
@@ -452,15 +452,14 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
         Incidence::Ptr newInc( monthScene()->calendar()->dissociateOccurrence(
             incidence.get(), startDate(), KOPrefs::instance()->timeSpec() ) );
         if ( newInc ) {
-          changer->changeIncidence( oldIncSaved.get(), incidence.get() );
-          changer->endChange( incidence.get() );
-
-          changer->addIncidence( newInc.get() );
+          changer->changeIncidence( oldIncSaved, mIncidence );
+          changer->endChange( mIncidence );
+          changer->addIncidence( newInc );
           // let the standard code change the dates for the new incidence
           mIncidence = Item();
           mIncidence.setPayload( newInc );
           incidence = Akonadi::incidence( mIncidence );
-          if ( !changer->beginChange( incidence.get() ) ) {
+          if ( !changer->beginChange( mIncidence ) ) {
             KODialogManager::errorSaveIncidence( 0, incidence.get() );
             return;
           }
@@ -480,17 +479,17 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
         Incidence::Ptr newInc( monthScene()->calendar()->dissociateOccurrence(
             incidence.get(), startDate(), KOPrefs::instance()->timeSpec(), false ) );
         if ( newInc ) {
-          changer->changeIncidence( oldIncSaved.get(), incidence.get() );
-          changer->endChange( incidence.get() );
+          changer->changeIncidence( oldIncSaved, mIncidence );
+          changer->endChange( mIncidence );
 
-          changer->addIncidence( newInc.get() );
+          changer->addIncidence( newInc );
 
           // let the standard code change the dates for the new incidence
           mIncidence = Item();
           mIncidence.setPayload( newInc );
           incidence = Akonadi::incidence( mIncidence );
 
-          if ( !changer->beginChange( incidence.get() ) ) {
+          if ( !changer->beginChange( mIncidence ) ) {
             KODialogManager::errorSaveIncidence( 0, incidence.get() );
             return;
           }
@@ -523,8 +522,8 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
       todo->setDtDue( todo->dtDue().addDays( startOffset ) );
     }
 
-    changer->changeIncidence( oldInc.get(), incidence.get(), KOGlobals::DATE_MODIFIED );
-    changer->endChange( incidence.get() );
+    changer->changeIncidence( oldInc, mIncidence, KOGlobals::DATE_MODIFIED );
+    changer->endChange( mIncidence );
   }
 }
 

@@ -38,6 +38,9 @@
 #include "kotodoviewview.h"
 
 #include <libkdepim/kdatepickerpopup.h>
+
+#include <akonadi/kcal/utils.h>
+
 using namespace KPIM;
 
 #include <KCal/Incidence>
@@ -272,14 +275,9 @@ void KOTodoView::setCalendar( KOrg::CalendarBase *cal )
 Akonadi::Item::List KOTodoView::selectedIncidences()
 {
   Akonadi::Item::List ret;
-#ifdef AKONADI_PORT_DISABLED
-  QModelIndexList selection = mView->selectionModel()->selectedRows();
-
-  Q_FOREACH( const QModelIndex &mi, selection ) {
-    Todo *todo = static_cast<Todo *>( mi.data( KOTodoModel::TodoRole ).value<void *>() );
-    ret << todo;
-  }
-#endif // AKONADI_PORT_DISABLED
+  const QModelIndexList selection = mView->selectionModel()->selectedRows();
+  Q_FOREACH( const QModelIndex &mi, selection )
+    ret << selection[0].data ( KOTodoModel::TodoRole ).value<Item>();;
   return ret;
 }
 
@@ -493,12 +491,12 @@ void KOTodoView::selectionChanged( const QItemSelection &selected,
     return;
   }
 
-  Todo *todo = static_cast<Todo *>( selection[0].data( KOTodoModel::TodoRole ).value<void *>() );
+  const Item todoItem = selection[0].data ( KOTodoModel::TodoRole ).value<Item>();
 
   if ( selectedDates().isEmpty() ) {
-    emit incidenceSelected( todo, QDate() );
+    emit incidenceSelected( todoItem, QDate() );
   } else {
-    emit incidenceSelected( todo, selectedDates().first() );
+    emit incidenceSelected( todoItem, selectedDates().first() );
   }
 }
 
@@ -509,9 +507,9 @@ void KOTodoView::showTodo()
     return;
   }
 
-  Todo *todo = static_cast<Todo *>( selection[0].data( KOTodoModel::TodoRole ).value<void *>() );
+  const Item todoItem = selection[0].data ( KOTodoModel::TodoRole ).value<Item>();
 
-  emit showIncidenceSignal( todo );
+  emit showIncidenceSignal( todoItem );
 }
 
 void KOTodoView::editTodo()
@@ -521,9 +519,8 @@ void KOTodoView::editTodo()
     return;
   }
 
-  Todo *todo = static_cast<Todo *>( selection[0].data( KOTodoModel::TodoRole ).value<void *>() );
-
-  emit editIncidenceSignal( todo );
+  const Item todoItem = selection[0].data ( KOTodoModel::TodoRole ).value<Item>();
+  emit editIncidenceSignal( todoItem );
 }
 
 void KOTodoView::printTodo()
@@ -533,14 +530,16 @@ void KOTodoView::printTodo()
     return;
   }
 
-  Todo *todo = static_cast<Todo *>( selection[0].data( KOTodoModel::TodoRole ).value<void *>() );
+  const Item todoItem = selection[0].data ( KOTodoModel::TodoRole ).value<Item>();
+  Todo::Ptr todo = Akonadi::todo( todoItem );
+  Q_ASSERT( todo );
 
   KOCoreHelper helper;
   CalPrinter printer( this, BaseView::calendar(), &helper );
   connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
 
   Incidence::List selectedIncidences;
-  selectedIncidences.append( todo );
+  selectedIncidences.append( todo.get() );
 
   KDateTime todoDate;
   if ( todo->hasStartDate() ) {
@@ -560,14 +559,16 @@ void KOTodoView::printPreviewTodo()
     return;
   }
 
-  Todo *todo = static_cast<Todo *>( selection[0].data( KOTodoModel::TodoRole ).value<void *>() );
+  const Item todoItem = selection[0].data ( KOTodoModel::TodoRole ).value<Item>();
+  Todo::Ptr todo = Akonadi::todo( todoItem );
+  Q_ASSERT( todo );
 
   KOCoreHelper helper;
   CalPrinter printer( this, BaseView::calendar(), &helper );
   connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
 
   Incidence::List selectedIncidences;
-  selectedIncidences.append( todo );
+  selectedIncidences.append( todo.get() );
 
   KDateTime todoDate;
   if ( todo->hasStartDate() ) {
@@ -587,9 +588,9 @@ void KOTodoView::deleteTodo()
     return;
   }
 
-  Todo *todo = static_cast<Todo *>( selection[0].data( KOTodoModel::TodoRole ).value<void *>() );
+  const Item todoItem = selection[0].data ( KOTodoModel::TodoRole ).value<Item>();
 
-  emit deleteIncidenceSignal( todo );
+  emit deleteIncidenceSignal( todoItem );
 }
 
 void KOTodoView::newTodo()
@@ -604,9 +605,9 @@ void KOTodoView::newSubTodo()
     return;
   }
 
-  Todo *todo = static_cast<Todo *>( selection[0].data( KOTodoModel::TodoRole ).value<void *>() );
+  const Item todoItem = selection[0].data ( KOTodoModel::TodoRole ).value<Item>();
 
-  emit newSubTodoSignal( todo );
+  emit newSubTodoSignal( todoItem );
 }
 
 void KOTodoView::copyTodoToDate( const QDate &date )
@@ -640,7 +641,10 @@ QMenu *KOTodoView::createCategoryPopupMenu()
     return tempMenu;
   }
 
-  Todo *todo = static_cast<Todo *>( selection[0].data( KOTodoModel::TodoRole ).value<void *>() );
+  const Item todoItem = selection[0].data ( KOTodoModel::TodoRole ).value<Item>();
+  Todo::Ptr todo = Akonadi::todo( todoItem );
+  Q_ASSERT( todo );
+
   QStringList checkedCategories = todo->categories();
 
   QStringList::Iterator it;
@@ -669,9 +673,12 @@ void KOTodoView::setNewDate( const QDate &date )
     return;
   }
 
-  Todo *todo = static_cast<Todo *>( selection[0].data( KOTodoModel::TodoRole ).value<void *>() );
-  if ( !todo->isReadOnly() && mChanger->beginChange( todo ) ) {
-    Todo *oldTodo = todo->clone();
+  const Item todoItem = selection[0].data ( KOTodoModel::TodoRole ).value<Item>();
+  Todo::Ptr todo = Akonadi::todo( todoItem );
+  Q_ASSERT( todo );
+
+  if ( !todo->isReadOnly() && mChanger->beginChange( todoItem ) ) {
+    Todo::Ptr oldTodo( todo->clone() );
 
     KDateTime dt( date );
 
@@ -686,9 +693,8 @@ void KOTodoView::setNewDate( const QDate &date )
     }
     todo->setDtDue( dt );
 
-    mChanger->changeIncidence( oldTodo, todo, KOGlobals::COMPLETION_MODIFIED );
-    mChanger->endChange( todo );
-    delete oldTodo;
+    mChanger->changeIncidence( oldTodo, todoItem, KOGlobals::COMPLETION_MODIFIED );
+    mChanger->endChange( todoItem );
   } else {
     kDebug() << "No active item, active item is read-only, or locking failed";
   }
@@ -701,11 +707,14 @@ void KOTodoView::setNewPercentage( QAction *action )
     return;
   }
 
-  Todo *todo = static_cast<Todo *>( selection[0].data( KOTodoModel::TodoRole ).value<void *>() );
-  if ( !todo->isReadOnly() && mChanger->beginChange( todo ) ) {
-    Todo *oldTodo = todo->clone();
+  const Item todoItem = selection[0].data ( KOTodoModel::TodoRole ).value<Item>();
+  Todo::Ptr todo = Akonadi::todo( todoItem );
+  Q_ASSERT( todo );
 
-    int percentage = mPercentage[action];
+  if ( !todo->isReadOnly() && mChanger->beginChange( todoItem ) ) {
+    Todo::Ptr oldTodo( todo->clone() );
+
+    int percentage = mPercentage.value( action );
     if ( percentage == 100 ) {
       todo->setCompleted( KDateTime::currentLocalDateTime() );
       todo->setPercentComplete( percentage );
@@ -714,12 +723,11 @@ void KOTodoView::setNewPercentage( QAction *action )
       todo->setPercentComplete( percentage );
     }
     if ( todo->recurs() && percentage == 100 ) {
-      mChanger->changeIncidence( oldTodo, todo, KOGlobals::COMPLETION_MODIFIED_WITH_RECURRENCE );
+      mChanger->changeIncidence( oldTodo, todoItem, KOGlobals::COMPLETION_MODIFIED_WITH_RECURRENCE );
     } else {
-      mChanger->changeIncidence( oldTodo, todo, KOGlobals::COMPLETION_MODIFIED );
+      mChanger->changeIncidence( oldTodo, todoItem, KOGlobals::COMPLETION_MODIFIED );
     }
-    mChanger->endChange( todo );
-    delete oldTodo;
+    mChanger->endChange( todoItem );
   } else {
     kDebug() << "No active item, active item is read-only, or locking failed";
   }
@@ -731,16 +739,15 @@ void KOTodoView::setNewPriority( QAction *action )
   if ( selection.size() != 1 ) {
     return;
   }
-
-  Todo *todo = static_cast<Todo *>( selection[0].data( KOTodoModel::TodoRole ).value<void *>() );
+  const Item todoItem = selection[0].data ( KOTodoModel::TodoRole ).value<Item>();
+  Todo::Ptr todo = Akonadi::todo( todoItem );
   if ( !todo->isReadOnly() &&
-       mChanger->beginChange( todo ) ) {
-    Todo *oldTodo = todo->clone();
+       mChanger->beginChange( todoItem ) ) {
+    Todo::Ptr oldTodo( todo->clone() );
     todo->setPriority( mPriority[action] );
 
-    mChanger->changeIncidence( oldTodo, todo, KOGlobals::PRIORITY_MODIFIED );
-    mChanger->endChange( todo );
-    delete oldTodo;
+    mChanger->changeIncidence( oldTodo, todoItem, KOGlobals::PRIORITY_MODIFIED );
+    mChanger->endChange( todoItem );
   }
 }
 
@@ -751,9 +758,12 @@ void KOTodoView::changedCategories( QAction *action )
     return;
   }
 
-  Todo *todo = static_cast<Todo *>( selection[0].data( KOTodoModel::TodoRole ).value<void *>() );
-  if ( !todo->isReadOnly() && mChanger->beginChange( todo ) ) {
-    Todo *oldTodo = todo->clone();
+  const Item todoItem = selection[0].data ( KOTodoModel::TodoRole ).value<Item>();
+  Todo::Ptr todo = Akonadi::todo( todoItem );
+  Q_ASSERT( todo );
+
+  if ( !todo->isReadOnly() && mChanger->beginChange( todoItem ) ) {
+    Todo::Ptr oldTodo( todo->clone() );
 
     QStringList categories = todo->categories();
     if ( categories.contains( mCategory[action] ) ) {
@@ -763,9 +773,8 @@ void KOTodoView::changedCategories( QAction *action )
     }
     categories.sort();
     todo->setCategories( categories );
-    mChanger->changeIncidence( oldTodo, todo, KOGlobals::CATEGORY_MODIFIED );
-    mChanger->endChange( todo );
-    delete oldTodo;
+    mChanger->changeIncidence( oldTodo, todoItem, KOGlobals::CATEGORY_MODIFIED );
+    mChanger->endChange( todoItem );
   } else {
     kDebug() << "No active item, active item is read-only, or locking failed";
   }
