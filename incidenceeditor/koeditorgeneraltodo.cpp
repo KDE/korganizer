@@ -23,6 +23,7 @@
 */
 
 #include "koeditorgeneraltodo.h"
+#include "calendarbase.h"
 
 #include <libkdepim/kdateedit.h>
 #include <libkdepim/ktimeedit.h>
@@ -95,14 +96,15 @@ void KOEditorGeneralTodo::initTime( QWidget *parent, QBoxLayout *topLayout )
 
   // Timezone
   QString whatsThis = i18n( "Select the timezone for this event. It will also affect recurrences" );
-#ifdef AKONADI_PORT_DISABLED
   mTimeZoneComboStart = new KPIM::KTimeZoneComboBox( mCalendar ? mCalendar->timeZones() : 0, timeGroupBox );
   mTimeZoneComboDue = new KPIM::KTimeZoneComboBox( mCalendar ? mCalendar->timeZones() : 0, timeGroupBox );
 
+#ifdef AKONADI_PORT_DISABLED
   if ( !KOPrefs::instance()->showTimeZoneSelectorInIncidenceEditor() ) {
     mTimeZoneComboStart->hide();
     mTimeZoneComboDue->hide();
   }
+#endif
 
   layoutTimeBox->addWidget( mTimeZoneComboStart, 0, 3 );
   layoutTimeBox->addWidget( mTimeZoneComboDue, 1, 3 );
@@ -110,7 +112,6 @@ void KOEditorGeneralTodo::initTime( QWidget *parent, QBoxLayout *topLayout )
   mTimeZoneComboDue->setWhatsThis( whatsThis );
   mTimeZoneComboStart->selectLocalTimeSpec();
   mTimeZoneComboDue->selectLocalTimeSpec();
-#endif
 
   whatsThis = i18n( "Sets the start date for this to-do" );
   mStartCheck = new QCheckBox( i18nc( "@option:check to-do start datetime",
@@ -157,12 +158,10 @@ void KOEditorGeneralTodo::initTime( QWidget *parent, QBoxLayout *topLayout )
   connect( mTimeButton, SIGNAL(toggled(bool)), SLOT(enableTimeEdits(bool)));
   connect( mTimeButton, SIGNAL(toggled(bool)), SLOT(dateChanged()) );
 
-#ifdef AKONADI_PORT_DISABLED
   connect( mTimeZoneComboStart, SIGNAL(currentIndexChanged(int)),
            this, SLOT(startDateModified()) );
   connect( mTimeZoneComboDue, SIGNAL(currentIndexChanged(int)),
            this, SLOT(dateChanged()) );
-#endif
 
   // some more layouting
   layoutTimeBox->setColumnStretch( 3, 1 );
@@ -612,7 +611,7 @@ bool KOEditorGeneralTodo::setAlarmOffset( Alarm *alarm, int value ) const
 void KOEditorGeneralTodo::modified( Todo *todo, int modification )
 {
 #ifdef AKONADI_PORT_DISABLED
-    // FIXME is this getting called at all?
+  // FIXME is this getting called at all?
   switch ( modification ) {
   case KOGlobals::PRIORITY_MODIFIED:
     mPriorityCombo->setCurrentIndex( todo->priority() );
