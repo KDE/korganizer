@@ -98,23 +98,13 @@ void KOJournalEditor::setupGeneral()
 void KOJournalEditor::editIncidence( const Item &item, KOrg::CalendarBase *calendar )
 {
   const Journal::Ptr journal = Akonadi::journal( item );
-  if ( journal ) {
-    init();
+  Q_ASSERT( journal );
+  init();
 
-    mJournal = item;
-    mCalendar = calendar;
-    readJournal( mJournal, false );
-  }
-#ifdef AKONADI_PORT_DISABLED
-  setCaption( i18nc( "@title:window",
-                     "Edit Journal: %1",
-                     IncidenceFormatter::resourceString( calendar, incidence ) ) );
-#else // AKONADI_PORT_DISABLED
-  setCaption( i18nc( "@title:window",
-                     "Edit Journal: %1",
-                     QLatin1String("AKONADI_PORT_DISABLED") ) );
-#endif // AKONADI_PORT_DISABLED
-
+  mJournal = item;
+  mCalendar = calendar;
+  readJournal( mJournal, false );
+  setCaption( i18nc( "@title:window", "Edit Journal: %1", journal->summary() ) );
 }
 
 void KOJournalEditor::newJournal()

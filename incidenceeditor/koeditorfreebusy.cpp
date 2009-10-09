@@ -136,28 +136,26 @@ class FreeBusyItem : public KDGanttViewTaskItem
 void FreeBusyItem::updateItem()
 {
   setListViewText( 0, mAttendee->fullName() );
-#ifdef AKONADI_PORT_DISABLED
   switch ( mAttendee->status() ) {
     case Attendee::Accepted:
-      setPixmap( 0, KOGlobals::self()->smallIcon( "dialog-ok-apply" ) );
+      setPixmap( 0, SmallIcon( "dialog-ok-apply" ) );
       break;
     case Attendee::Declined:
-      setPixmap( 0, KOGlobals::self()->smallIcon( "dialog-cancel" ) );
+      setPixmap( 0, SmallIcon( "dialog-cancel" ) );
       break;
     case Attendee::NeedsAction:
     case Attendee::InProcess:
-      setPixmap( 0, KOGlobals::self()->smallIcon( "help-about" ) );
+      setPixmap( 0, SmallIcon( "help-about" ) );
       break;
     case Attendee::Tentative:
-      setPixmap( 0, KOGlobals::self()->smallIcon( "dialog-ok" ) );
+      setPixmap( 0, SmallIcon( "dialog-ok" ) );
       break;
     case Attendee::Delegated:
-      setPixmap( 0, KOGlobals::self()->smallIcon( "mail-forward" ) );
+      setPixmap( 0, SmallIcon( "mail-forward" ) );
       break;
     default:
       setPixmap( 0, QPixmap() );
   }
-#endif
 }
 
 // Set the free/busy periods for this attendee

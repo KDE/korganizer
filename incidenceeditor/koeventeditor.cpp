@@ -233,19 +233,13 @@ void KOEventEditor::setupFreeBusy()
 void KOEventEditor::editIncidence( const Item &item, KOrg::CalendarBase *calendar )
 {
   const Event::Ptr event = Akonadi::event( item );
-  if ( event ) {
-    init();
+  Q_ASSERT( event );
+  init();
 
-    mEvent = item;
-    mCalendar = calendar;
-    readEvent( mEvent, false );
-  }
-
-#ifdef AKONADI_PORT_DISABLED
-  setCaption( i18nc( "@title:window",
-                     "Edit Event : %1",
-                     IncidenceFormatter::resourceString( calendar, incidence ) ) );
-#endif
+  mEvent = item;
+  mCalendar = calendar;
+  readEvent( mEvent, false );
+  setCaption( i18nc( "@title:window", "Edit Event : %1", event->summary() ) );
 }
 
 void KOEventEditor::newEvent()
@@ -457,7 +451,7 @@ QStringList &KOEventEditor::templates() const
 #ifdef AKONADI_PORT_DISABLED
   return KOPrefs::instance()->mEventTemplates;
 #else
-  static QStringList l;
+  QStringList l;
   return l;
 #endif
 }

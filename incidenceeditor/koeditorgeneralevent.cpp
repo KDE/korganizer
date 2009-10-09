@@ -23,6 +23,7 @@
 */
 
 #include "koeditorgeneralevent.h"
+#include "calendarbase.h"
 #ifdef AKONADI_PORT_DISABLED
 #include "koprefs.h"
 #endif
@@ -122,9 +123,9 @@ void KOEditorGeneralEvent::initTime( QWidget *parent, QBoxLayout *topLayout )
   QString whatsThis = i18nc( "@info:whatsthis",
                              "Select the timezone for this event. "
                              "It will also affect recurrences" );
-#ifdef AKONADI_PORT_DISABLED
   mTimeZoneComboStart = new KPIM::KTimeZoneComboBox( mCalendar ? mCalendar->timeZones() : 0, timeGroupBox );
   mTimeZoneComboEnd = new KPIM::KTimeZoneComboBox( mCalendar ? mCalendar->timeZones() : 0, timeGroupBox );
+#ifdef AKONADI_PORT_DISABLED
   if ( !KOPrefs::instance()->showTimeZoneSelectorInIncidenceEditor() ) {
     mTimeZoneComboStart->hide();
     mTimeZoneComboEnd->hide();

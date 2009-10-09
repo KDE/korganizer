@@ -252,9 +252,7 @@ void KOEditorGeneral::initAlarm( QWidget *parent, QBoxLayout *topLayout )
   topLayout->addItem( alarmLayout );
 
   mAlarmBell = new QLabel( parent );
-#ifdef AKONADI_PORT_DISABLED
-  mAlarmBell->setPixmap( KOGlobals::self()->smallIcon( "task-reminder" ) );
-#endif
+  mAlarmBell->setPixmap( SmallIcon( "task-reminder" ) );
   alarmLayout->addWidget( mAlarmBell );
 
   mAlarmStack = new QStackedWidget( parent );

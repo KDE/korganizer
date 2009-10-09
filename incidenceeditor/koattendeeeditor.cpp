@@ -132,23 +132,22 @@ void KOAttendeeEditor::initEditWidgets( QWidget *parent, QBoxLayout *layout )
   mStatusCombo->setToolTip(
     i18nc( "@info:tooltip", "Select the attendee participation status" ) );
   mStatusCombo->setWhatsThis( whatsThis );
-#ifdef AKONADI_PORT_DISABLED
+
   //TODO: the icons below aren't exactly correct
-  mStatusCombo->addItem( KOGlobals::self()->smallIcon( "help-about" ),
+  mStatusCombo->addItem( SmallIcon( "help-about" ),
                          Attendee::statusName( Attendee::NeedsAction ) );
-  mStatusCombo->addItem( KOGlobals::self()->smallIcon( "dialog-ok-apply" ),
+  mStatusCombo->addItem( SmallIcon( "dialog-ok-apply" ),
                          Attendee::statusName( Attendee::Accepted ) );
-  mStatusCombo->addItem( KOGlobals::self()->smallIcon( "dialog-cancel" ),
+  mStatusCombo->addItem( SmallIcon( "dialog-cancel" ),
                          Attendee::statusName( Attendee::Declined ) );
-  mStatusCombo->addItem( KOGlobals::self()->smallIcon( "dialog-ok" ),
+  mStatusCombo->addItem( SmallIcon( "dialog-ok" ),
                          Attendee::statusName( Attendee::Tentative ) );
-  mStatusCombo->addItem( KOGlobals::self()->smallIcon( "mail-forward" ),
+  mStatusCombo->addItem( SmallIcon( "mail-forward" ),
                          Attendee::statusName( Attendee::Delegated ) );
-  mStatusCombo->addItem( KOGlobals::self()->smallIcon( "mail-mark-read" ),
+  mStatusCombo->addItem( SmallIcon( "mail-mark-read" ),
                          Attendee::statusName( Attendee::Completed ) ),
-  mStatusCombo->addItem( KOGlobals::self()->smallIcon( "help-about" ),
+  mStatusCombo->addItem( SmallIcon( "help-about" ),
                          Attendee::statusName( Attendee::InProcess ) );
-#endif
 
   statusLabel->setBuddy( mStatusCombo );
   connect( mStatusCombo, SIGNAL(activated(int)), SLOT(updateAttendee()) );

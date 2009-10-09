@@ -60,13 +60,12 @@ void CustomListViewItem<KCal::Attendee *>::updateItem()
   setText( 1, mData->email() );
   setText( 2, mData->roleStr() );
   setText( 3, mData->statusStr() );
-#ifdef AKONADI_PORT_DISABLED
   if ( mData->RSVP() && !mData->email().isEmpty() ) {
-    setPixmap( 4, KOGlobals::self()->smallIcon( "mail-flag" ) );
+    setPixmap( 4, SmallIcon( "mail-flag" ) );
   } else {
-    setPixmap( 4, KOGlobals::self()->smallIcon( "mail-queue" ) );
+    setPixmap( 4, SmallIcon( "mail-queue" ) );
   }
-#endif
+
   setText( 5, mData->delegate() );
   setText( 6, mData->delegator() );
 }

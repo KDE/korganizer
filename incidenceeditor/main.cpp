@@ -31,6 +31,8 @@
 #include "calendarbase.h"
 
 #include "kotodoeditor.h"
+#include "koeventeditor.h"
+#include "kojournaleditor.h"
 
 class MainWidget : public QWidget
 {
@@ -60,7 +62,9 @@ class MainWidget : public QWidget
       m_collectionview->setRootIsDecorated(true);
 
       m_itemview = new Akonadi::ItemView(splitter);
+      splitter->setStretchFactor(1, 1);
       m_itemview->setModel(m_itemmodel);
+
       
 /*
       //mCollectionview->setSelectionMode( QAbstractItemView::NoSelection );
@@ -124,7 +128,11 @@ class MainWidget : public QWidget
       KOrg::CalendarBase *calendar = new KOrg::AkonadiCalendar(KSystemTimeZones::local());
       
       if(incidence->type() == "Event") {
-        //KOEventEditor
+        KOEventEditor *editor = new KOEventEditor(calendar, this);
+        editor->init();
+        editor->readEvent(item);
+        editor->editIncidence(item, calendar);
+        editor->show();
       } else if(incidence->type() == "Todo") {
         KOTodoEditor *editor = new KOTodoEditor(calendar, this);
         editor->init();
@@ -137,13 +145,17 @@ class MainWidget : public QWidget
         connect( editor, SIGNAL(editCanceled(Incidence *)), mMainView, SLOT(editCanceled(Incidence *)) );
         connect( mMainView, SIGNAL(closingDown()), editor, SLOT(reject()) );
         connect( editor, SIGNAL(deleteAttendee(Incidence *)), mMainView, SIGNAL(cancelAttendees(Incidence *)) );
-           */
-        //Todo *todo = dynamic_cast<Todo*>(incidence);
-//editor->editIncidence(incidence.get(), calendar);
+        */
+        editor->readTodo(item);
+        editor->editIncidence(item, calendar);
         editor->show();
         
       } else if(incidence->type() == "Journal") {
-        //KOJournalEditor
+        KOJournalEditor *editor = new KOJournalEditor(calendar, this);
+        editor->init();
+        editor->readJournal(item);
+        editor->editIncidence(item, calendar);
+        editor->show();
       } else {
         Q_ASSERT(false);
       }
@@ -183,7 +195,7 @@ int main(int argc, char **argv)
     KApplication app;
     KMainWindow *mainwindow = new KMainWindow();
     mainwindow->setCentralWidget( new MainWidget(mainwindow) );
-    mainwindow->resize(QSize(1200, 400).expandedTo(mainwindow->minimumSizeHint()));
+    mainwindow->resize(QSize(800, 600).expandedTo(mainwindow->minimumSizeHint()));
     mainwindow->show();
     return app.exec();
 }
