@@ -98,11 +98,11 @@ class Element : public QObject
     virtual KUrl url();
 
   Q_SIGNALS:
-    virtual void gotNewPixmap( const QPixmap & ) const;
-    virtual void gotNewShortText( const QString & ) const;
-    virtual void gotNewLongText( const QString & ) const;
-    virtual void gotNewExtensiveText( const QString & ) const;
-    virtual void gotNewUrl( const KUrl & ) const;
+    void gotNewPixmap( const QPixmap & ) const;
+    void gotNewShortText( const QString & ) const;
+    void gotNewLongText( const QString & ) const;
+    void gotNewExtensiveText( const QString & ) const;
+    void gotNewUrl( const KUrl & ) const;
 
   protected:
     QString mId;
