@@ -198,23 +198,13 @@ void KOTodoEditor::setupRecurrence()
 void KOTodoEditor::editIncidence( const Item &item, KOrg::CalendarBase *calendar )
 {
   const Todo::Ptr todo = Akonadi::todo( item );
-  if ( todo ) {
-    init();
+  Q_ASSERT( todo );
+  init();
 
-    mTodo = item;
-    mCalendar = calendar;
-    readTodo( item, false );
-  }
-#ifdef AKONADI_PORT_DISABLED
-  setCaption( i18nc( "@title:window",
-                     "Edit To-do: %1",
-                     IncidenceFormatter::resourceString( calendar, incidence ) ) );
-#else // AKONADI_PORT_DISABLED
-  setCaption( i18nc( "@title:window",
-                     "Edit To-do: %1",
-                     QLatin1String("AKONADI_PORT_DISABLED") ) );
-
-#endif // AKONADI_PORT_DISABLED
+  mTodo = item;
+  mCalendar = calendar;
+  readTodo( item, false );
+  setCaption( i18nc( "@title:window", "Edit To-do: %1", todo->summary() ) );
 }
 
 void KOTodoEditor::newTodo()

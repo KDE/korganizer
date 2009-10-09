@@ -61,16 +61,6 @@ static bool compactDialogs()
   return compactDialogs;
 }
 
-static KCalendarSystem* calendarSystem()
-{
-#ifdef AKONADI_PORT_DISABLED
-  KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
-#else
-  KCalendarSystem *calSys = 0;
-#endif
-  return calSys;
-}
-
 /////////////////////////// RecurBase ///////////////////////////////
 
 RecurBase::RecurBase( QWidget *parent ) : QWidget( parent )
@@ -134,7 +124,7 @@ KComboBox *RecurBase::createWeekdayCombo( QWidget *parent )
                               "The weekday on which this event or to-do "
                               "should recur." ) );
   for ( int i=1; i <= 7; ++i ) {
-    combo->addItem( calendarSystem()->weekDayName( i ) );
+    combo->addItem( KGlobal::locale()->calendar()->weekDayName( i ) );
   }
   return combo;
 }
@@ -148,7 +138,7 @@ KComboBox *RecurBase::createMonthNameCombo( QWidget *parent )
   for ( int i=1; i <= 12; ++i ) {
     // use an arbitrary year, we just need the month name...
     QDate dt( 2005, i, 1 );
-    combo->addItem( calendarSystem()->monthName( dt ) );
+    combo->addItem( KGlobal::locale()->calendar()->monthName( dt ) );
   }
   return combo;
 }
@@ -210,7 +200,7 @@ RecurWeekly::RecurWeekly( QWidget *parent ) : RecurBase( parent )
     // i is the nr of the combobox, not the day of week!
     // label=(i+weekStart+6)%7 + 1;
     // index in CheckBox array(=day): label-1
-    const KCalendarSystem *calSys = calendarSystem();
+    const KCalendarSystem *calSys = KGlobal::locale()->calendar();
     QString weekDayName = calSys->weekDayName( ( i + weekStart + 6 ) % 7 + 1,
                                                KCalendarSystem::ShortDayName );
     QString longDayName = calSys->weekDayName( ( i + weekStart + 6 ) % 7 + 1,

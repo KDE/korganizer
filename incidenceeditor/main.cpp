@@ -183,7 +183,7 @@ int main(int argc, char **argv)
     KApplication app;
     KMainWindow *mainwindow = new KMainWindow();
     mainwindow->setCentralWidget( new MainWidget(mainwindow) );
-    mainwindow->resize(QSize(1200, 400).expandedTo(minimumSizeHint()));
+    mainwindow->resize(QSize(1200, 400).expandedTo(mainwindow->minimumSizeHint()));
     mainwindow->show();
     return app.exec();
 }
