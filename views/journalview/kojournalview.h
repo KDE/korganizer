@@ -28,6 +28,8 @@
 #include <korganizer/baseview.h>
 #include "journalview.h"
 
+#include <Akonadi/Item>
+
 class QScrollArea;
 class KVBox;
 
@@ -52,7 +54,7 @@ class KOJournalView : public KOrg::BaseView
     virtual int currentDateCount();
     virtual Akonadi::Item::List selectedIncidences();
     DateList selectedDates() { return DateList(); }
-    void appendJournal( Journal *journal, const QDate &dt );
+    void appendJournal( const Akonadi::Item &journal, const QDate &dt );
 
     /** documentation in baseview.h */
     void getHighlightMode( bool &highlightEvents,
@@ -66,16 +68,16 @@ class KOJournalView : public KOrg::BaseView
     void flushView();
 
     void showDates( const QDate &start, const QDate &end );
-    void showIncidences( const Incidence::List &incidenceList, const QDate &date );
+    void showIncidences( const Akonadi::Item::List &incidences, const QDate &date );
 
-    void changeIncidenceDisplay( Incidence *, int );
+    void changeIncidenceDisplay( const Akonadi::Item &incidence, int );
     void setIncidenceChanger( IncidenceChangerBase *changer );
     void newJournal();
   signals:
     void flushEntries();
     void setIncidenceChangerSignal( IncidenceChangerBase * );
-    void journalEdited( Journal * );
-    void journalDeleted( Journal * );
+    void journalEdited( const Akonadi::Item &journal );
+    void journalDeleted( const Akonadi::Item &journal );
 
   protected:
     void clearEntries();

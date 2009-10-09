@@ -501,7 +501,6 @@ void KOViewManager::showTodoView()
 
 void KOViewManager::showJournalView()
 {
-#ifdef AKONADI_PORT_DISABLED // port view to akonadi item
   if ( !mJournalView ) {
     mJournalView = new KOJournalView( mMainView->calendar(), mMainView->viewStack() );
     mJournalView->setObjectName( "KOViewManager::JournalView" );
@@ -509,7 +508,6 @@ void KOViewManager::showJournalView()
   }
   goMenu( true );
   showView( mJournalView );
-#endif AKONADI_PORT_DISABLED
 }
 
 void KOViewManager::showTimeLineView()
@@ -523,7 +521,7 @@ void KOViewManager::showTimeLineView()
   }
   goMenu( true );
   showView( mTimelineView );
-#endif AKONADI_PORT_DISABLED
+#endif // AKONADI_PORT_DISABLED
 }
 
 void KOViewManager::showEventView()

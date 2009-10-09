@@ -31,6 +31,8 @@
 #include "koglobals.h"
 #include "koprefs.h"
 
+#include <akonadi/kcal/utils.h>
+
 #include <KDebug>
 #include <KLocale>
 #include <KVBox>
@@ -40,6 +42,7 @@
 #include <QLabel>
 #include <QVBoxLayout>
 
+using namespace Akonadi;
 using namespace KOrg;
 
 KOJournalView::KOJournalView( KOrg::CalendarBase *calendar, QWidget *parent )
@@ -58,7 +61,7 @@ KOJournalView::~KOJournalView()
 {
 }
 
-void KOJournalView::appendJournal( Journal *journal, const QDate &dt )
+void KOJournalView::appendJournal( const Item &journal, const QDate &dt )
 {
   JournalDateView *entry = 0;
   if ( mEntries.contains( dt ) ) {
@@ -71,21 +74,21 @@ void KOJournalView::appendJournal( Journal *journal, const QDate &dt )
     connect( this, SIGNAL(flushEntries()), entry, SIGNAL(flushEntries()) );
     connect( this, SIGNAL(setIncidenceChangerSignal(IncidenceChangerBase *)),
              entry, SLOT(setIncidenceChanger(IncidenceChangerBase *)) );
-    connect( this, SIGNAL(journalEdited(Journal *)),
-             entry, SLOT(journalEdited(Journal *)) );
-    connect( this, SIGNAL(journalDeleted(Journal *)),
-             entry, SLOT(journalDeleted(Journal *)) );
+    connect( this, SIGNAL(journalEdited(Akonadi::Item)),
+             entry, SLOT(journalEdited(Akonadi::Item)) );
+    connect( this, SIGNAL(journalDeleted(Akonadi::Item)),
+             entry, SLOT(journalDeleted(Akonadi::Item)) );
 
-    connect( entry, SIGNAL(editIncidence(Incidence *)),
-             this, SIGNAL(editIncidenceSignal(Incidence *)) );
-    connect( entry, SIGNAL(deleteIncidence(Incidence *)),
-             this, SIGNAL(deleteIncidenceSignal(Incidence *)) );
+    connect( entry, SIGNAL(editIncidence(Akonadi::Item)),
+             this, SIGNAL(editIncidenceSignal(Akonadi::Item)) );
+    connect( entry, SIGNAL(deleteIncidence(Akonadi::Item)),
+             this, SIGNAL(deleteIncidenceSignal(Akonadi::Item)) );
     connect( entry, SIGNAL(newJournal(const QDate &)),
              this, SIGNAL(newJournalSignal(const QDate &)) );
     mEntries.insert( dt, entry );
   }
 
-  if ( entry && journal ) {
+  if ( entry && Akonadi::hasJournal( journal ) ) {
     entry->addJournal( journal );
   }
 }
@@ -118,11 +121,9 @@ void KOJournalView::updateView()
   while ( it != mEntries.begin() ) {
     --it;
     it.value()->clear();
-    Journal::List journals = calendar()->journals( it.key() );
-    Journal::List::Iterator it1;
-    for ( it1 = journals.begin(); it1 != journals.end(); ++it1 ) {
-      it.value()->addJournal( *it1 );
-    }
+    const Item::List journals = calendar()->journalsFORAKONADI( it.key() );
+    Q_FOREACH( const Item& i, journals )
+      it.value()->addJournal( i );
   }
 }
 
@@ -138,11 +139,11 @@ void KOJournalView::showDates( const QDate &start, const QDate &end )
     return;
   }
 
-  Journal::List::ConstIterator it;
-  Journal::List jnls;
+  Item::List::ConstIterator it;
+  Item::List jnls;
   QDate d = start;
   for ( QDate d=end; d>=start; d=d.addDays(-1) ) {
-    jnls = calendar()->journals( d );
+    jnls = calendar()->journalsFORAKONADI( d );
     it = jnls.constEnd();
     while ( it != jnls.constBegin() ) {
       --it;
@@ -151,40 +152,32 @@ void KOJournalView::showDates( const QDate &start, const QDate &end )
     if ( jnls.count() < 1 ) {
       // create an empty dateentry widget
       //updateView();
-      appendJournal( 0, d );
+      appendJournal( Item(), d );
     }
   }
 }
 
-void KOJournalView::showIncidences( const Incidence::List &incidences, const QDate &date )
+void KOJournalView::showIncidences( const Item::List &incidences, const QDate &date )
 {
   Q_UNUSED( date );
   clearEntries();
-  Incidence::List::const_iterator it = incidences.constEnd();
-  while ( it != incidences.constBegin() ) {
-    --it;
-    if ((*it) && ( (*it)->type() == "Journal" ) ) {
-      Journal *j = static_cast<Journal *>(*it);
-      if ( j ) {
-        appendJournal( j, j->dtStart().date() );
-      }
-    }
-  }
+  Q_FOREACH (const Item &i, incidences )
+    if ( const Journal::Ptr j = Akonadi::journal( i ) )
+      appendJournal( i, j->dtStart().date() );
 }
 
-void KOJournalView::changeIncidenceDisplay( Incidence *incidence, int action )
+void KOJournalView::changeIncidenceDisplay( const Item &incidence, int action )
 {
-  Journal *journal = dynamic_cast<Journal *>(incidence);
-  if ( journal ) {
+  if ( Journal::Ptr journal = Akonadi::journal( incidence ) ) {
     switch(action) {
     case KOGlobals::INCIDENCEADDED:
-      appendJournal( journal, journal->dtStart().date() );
+      appendJournal( incidence, journal->dtStart().date() );
       break;
     case KOGlobals::INCIDENCEEDITED:
-      emit journalEdited( journal );
+      emit journalEdited( incidence );
       break;
     case KOGlobals::INCIDENCEDELETED:
-      emit journalDeleted( journal );
+      emit journalDeleted( incidence );
       break;
     default:
       kWarning() << "Illegal action" << action;
