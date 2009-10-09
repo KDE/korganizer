@@ -103,13 +103,14 @@ void KOEditorGeneralTodo::initTime( QWidget *parent, QBoxLayout *topLayout )
     mTimeZoneComboStart->hide();
     mTimeZoneComboDue->hide();
   }
-#endif
+
   layoutTimeBox->addWidget( mTimeZoneComboStart, 0, 3 );
   layoutTimeBox->addWidget( mTimeZoneComboDue, 1, 3 );
   mTimeZoneComboStart->setWhatsThis( whatsThis );
   mTimeZoneComboDue->setWhatsThis( whatsThis );
   mTimeZoneComboStart->selectLocalTimeSpec();
   mTimeZoneComboDue->selectLocalTimeSpec();
+#endif
 
   whatsThis = i18n( "Sets the start date for this to-do" );
   mStartCheck = new QCheckBox( i18nc( "@option:check to-do start datetime",
@@ -156,10 +157,12 @@ void KOEditorGeneralTodo::initTime( QWidget *parent, QBoxLayout *topLayout )
   connect( mTimeButton, SIGNAL(toggled(bool)), SLOT(enableTimeEdits(bool)));
   connect( mTimeButton, SIGNAL(toggled(bool)), SLOT(dateChanged()) );
 
+#ifdef AKONADI_PORT_DISABLED
   connect( mTimeZoneComboStart, SIGNAL(currentIndexChanged(int)),
            this, SLOT(startDateModified()) );
   connect( mTimeZoneComboDue, SIGNAL(currentIndexChanged(int)),
            this, SLOT(dateChanged()) );
+#endif
 
   // some more layouting
   layoutTimeBox->setColumnStretch( 3, 1 );
