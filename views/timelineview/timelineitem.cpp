@@ -25,6 +25,10 @@ using namespace KOrg;
 
 #include <kdgantt1/KDGanttViewSubwidgets.h>
 
+#include <akonadi/kcal/utils.h>
+
+using namespace Akonadi;
+
 TimelineItem::TimelineItem( const QString &label, CalendarBase *calendar, KDGanttView *parent )
   : KDGanttViewTaskItem( parent ), mCalendar( calendar )
 {
@@ -35,9 +39,10 @@ TimelineItem::TimelineItem( const QString &label, CalendarBase *calendar, KDGant
   }
 }
 
-void TimelineItem::insertIncidence( KCal::Incidence *incidence,
+void TimelineItem::insertIncidence( const Item &aitem,
                                     const KDateTime & _start, const KDateTime & _end )
 {
+  const Incidence::Ptr incidence = Akonadi::incidence( aitem );
   KDateTime start = incidence->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() );
   KDateTime end = incidence->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() );
 
@@ -52,7 +57,7 @@ void TimelineItem::insertIncidence( KCal::Incidence *incidence,
   }
 
   typedef QList<TimelineSubItem*> ItemList;
-  ItemList list = mItemMap[incidence];
+  ItemList list = mItemMap.value( aitem.id() );
   for ( ItemList::ConstIterator it = list.constBegin(); it != list.constEnd(); ++it ) {
     if ( KDateTime( (*it)->startTime() ) == start &&
          KDateTime( (*it)->endTime() ) == end ) {
@@ -60,7 +65,7 @@ void TimelineItem::insertIncidence( KCal::Incidence *incidence,
     }
   }
 
-  TimelineSubItem * item = new TimelineSubItem( mCalendar, incidence, this );
+  TimelineSubItem * item = new TimelineSubItem( mCalendar, aitem, this );
   QColor c1, c2, c3;
   colors( c1, c2, c3 );
   item->setColors( c1, c2, c3 );
@@ -69,23 +74,19 @@ void TimelineItem::insertIncidence( KCal::Incidence *incidence,
   item->setOriginalStart( start );
   item->setEndTime( end.dateTime() );
 
-  mItemMap[incidence].append( item );
+  mItemMap[aitem.id()].append( item );
 }
 
-void TimelineItem::removeIncidence( KCal::Incidence *incidence )
+void TimelineItem::removeIncidence( const Item &incidence )
 {
-  typedef QList<TimelineSubItem*> ItemList;
-  ItemList list = mItemMap[incidence];
-  for ( ItemList::ConstIterator it = list.constBegin(); it != list.constEnd(); ++it ) {
-    delete *it;
-  }
-  mItemMap.remove( incidence );
+  qDeleteAll( mItemMap.value( incidence.id() ) );
+  mItemMap.remove( incidence.id() );
 }
 
-void TimelineItem::moveItems( KCal::Incidence *incidence, int delta, int duration )
+void TimelineItem::moveItems( const Item &incidence, int delta, int duration )
 {
   typedef QList<TimelineSubItem*> ItemList;
-  ItemList list = mItemMap[incidence];
+  ItemList list = mItemMap.value( incidence.id() );
   for ( ItemList::ConstIterator it = list.constBegin(); it != list.constEnd(); ++it ) {
     QDateTime start = (*it)->originalStart().dateTime();
     start = start.addSecs( delta );
@@ -96,15 +97,15 @@ void TimelineItem::moveItems( KCal::Incidence *incidence, int delta, int duratio
 }
 
 TimelineSubItem::TimelineSubItem( CalendarBase *calendar,
-                                  KCal::Incidence *incidence, TimelineItem *parent )
+                                  const Item &incidence, TimelineItem *parent )
   : KDGanttViewTaskItem( parent ), mIncidence( incidence ),
     mLeft( 0 ), mRight( 0 ), mMarkerWidth( 0 )
 {
   //PENDING(AKONADI_PORT): replace QString() by incidence location (was: calendar)
   setTooltipText( IncidenceFormatter::toolTipStr(
-                    QString(), incidence, originalStart().date(),
-                    true, KOPrefs::instance()->timeSpec() ) );
-  if ( !incidence->isReadOnly() ) {
+                  QString(), Akonadi::incidence( incidence ).get(), originalStart().date(),
+                   true, KOPrefs::instance()->timeSpec() ) );
+  if ( !Akonadi::incidence( incidence )->isReadOnly() ) {
     setMoveable( true );
     setResizeable( true );
   }
