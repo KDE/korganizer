@@ -79,12 +79,7 @@ void KOJournalEditor::setupGeneral()
   addPage( topFrame, i18nc( "@title general journal settings", "General" ) );
 
   QVBoxLayout *topLayout = new QVBoxLayout( topFrame );
-
-#ifdef AKONADI_PORT_DISABLED
-  if ( KOPrefs::instance()->mCompactDialogs ) {
-    topLayout->setMargin( marginHint() );
-  }
-#endif
+  topLayout->setMargin( marginHint() );
   topLayout->setSpacing( spacingHint() );
 
   mGeneral->initTitle( topFrame, topLayout );
