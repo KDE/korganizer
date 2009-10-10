@@ -44,6 +44,7 @@
 #include "stdcalendar.h"
 #include "akonadicalendar.h"
 #include "akonadicollectionview.h"
+#include "incidenceeditor/koeditorconfig.h"
 
 #include <KCal/FileStorage>
 #include <KCal/HtmlExport>
@@ -72,6 +73,25 @@
 #include <QTimer>
 #include <QDebug>
 
+class KOrganizerEditorConfig : public KOEditorConfig
+{
+  public:
+    explicit KOrganizerEditorConfig() : KOEditorConfig() {
+      setFullName( KOPrefs::instance()->fullName() );
+      setEmail( KOPrefs::instance()->email() );
+    }
+    virtual ~KOrganizerEditorConfig() {}
+    virtual bool thatIsMe( const QString &email ) const {
+      return KOPrefs::instance()->thatIsMe(email);
+    }
+    virtual QStringList allEmails() const {
+      return KOPrefs::instance()->allEmails();
+    }
+    virtual QStringList fullEmails() const {
+      return KOPrefs::instance()->fullEmails();
+    }
+};
+
 // FIXME: Several places in the file don't use KConfigXT yet!
 KOWindowList *ActionManager::mWindowList = 0;
 
@@ -84,6 +104,8 @@ ActionManager::ActionManager( KXMLGUIClient *client, CalendarView *widget,
 {
   new CalendarAdaptor( this );
   QDBusConnection::sessionBus().registerObject( "/Calendar", this );
+
+  KOEditorConfig::setKOEditorConfig( new KOrganizerEditorConfig );
 
   mGUIClient = client;
   mACollection = mGUIClient->actionCollection();

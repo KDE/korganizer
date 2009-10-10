@@ -28,14 +28,19 @@
 
 #include <QtCore/QObject>
 
+/**
+ * Configuration details. An application can inherit from this class
+ * to provide application specific configurations to the editor.
+ *
+ * KOrganizer's ActionManager inherits from this class.
+ */
 class INCIDENCEEDITOR_EXPORT KOEditorConfig : public QObject
 {
     Q_OBJECT
-  private:
+  public:
     explicit KOEditorConfig();
     virtual ~KOEditorConfig();
 
-  public:
     static KOEditorConfig* instance();
     static void setKOEditorConfig(KOEditorConfig*);
 
