@@ -208,8 +208,8 @@ void MultiAgendaView::setupViews()
     connect( agenda, SIGNAL(endMultiModify()),
              SIGNAL(endMultiModify()) );
 
-    connect( agenda, SIGNAL(incidenceSelected(Akonadi::Item,const QDate &)),
-             SIGNAL(incidenceSelected(Akonadi::Item,const QDate &)) );
+    connect( agenda, SIGNAL(incidenceSelected(Akonadi::Item, const QDate &)),
+             SIGNAL(incidenceSelected(Akonadi::Item, const QDate &)) );
 
     connect( agenda, SIGNAL(cutIncidenceSignal(Akonadi::Item)),
              SIGNAL(cutIncidenceSignal(Akonadi::Item)) );
@@ -230,7 +230,7 @@ void MultiAgendaView::setupViews()
     connect( agenda, SIGNAL(newTodoSignal(const QDate&)),
              SIGNAL(newTodoSignal(const QDate&)) );
 
-    connect( agenda, SIGNAL(incidenceSelected(Akonadi::Item,const QDate &)),
+    connect( agenda, SIGNAL(incidenceSelected(Akonadi::Item, const QDate &)),
              SLOT(slotSelectionChanged()) );
 
     connect( agenda, SIGNAL(timeSpanSelectionChanged()),

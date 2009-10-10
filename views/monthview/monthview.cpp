@@ -107,8 +107,8 @@ MonthView::MonthView( CalendarBase *calendar, QWidget *parent )
   connect( mScene, SIGNAL(showNewEventPopupSignal()),
            SLOT(showNewEventPopup()) );
 
-  connect( mScene, SIGNAL(incidenceSelected(Incidence *,const QDate &)),
-           this, SIGNAL(incidenceSelected(Incidence *,const QDate &)) );
+  connect( mScene, SIGNAL(incidenceSelected(const Akonadi::Item &,const QDate &)),
+           this, SIGNAL(incidenceSelected(const Akonadi::Item &,const QDate &)) );
 
   connect( mScene, SIGNAL(newEventSignal()),
            this, SIGNAL(newEventSignal()) );
