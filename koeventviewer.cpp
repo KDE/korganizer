@@ -43,6 +43,8 @@
 
 #include <QRegExp>
 
+#include <akonadi/item.h>
+
 KOEventViewer::KOEventViewer( KOrg::CalendarBase *calendar, QWidget *parent )
   : KTextBrowser( parent ), mCalendar( calendar ), mDefaultText( "" )
 {
@@ -118,6 +120,12 @@ void KOEventViewer::setIncidence( Incidence *incidence, const QDate &date )
     clearEvents( true );
     mIncidence = 0;
   }
+}
+
+void KOEventViewer::setIncidence( const Akonadi::Item &item, const QDate &date )
+{
+  const KCal::Incidence::Ptr incidence = item.hasPayload<KCal::Incidence::Ptr>() ? item.payload<KCal::Incidence::Ptr>() : KCal::Incidence::Ptr();
+  setIncidence(incidence.get(), date);
 }
 
 void KOEventViewer::clearEvents( bool now )

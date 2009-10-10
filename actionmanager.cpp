@@ -73,6 +73,8 @@
 #include <QTimer>
 #include <QDebug>
 
+#include <akonadi/item.h>
+
 class KOrganizerEditorConfig : public KOEditorConfig
 {
   public:
@@ -201,12 +203,12 @@ void ActionManager::init()
   connect( mCalendarView, SIGNAL(modifiedChanged(bool)), SLOT(setTitle()) );
   connect( mCalendarView, SIGNAL(configChanged()), SLOT(updateConfig()) );
 
-  connect( mCalendarView, SIGNAL(incidenceSelected(Incidence *,const QDate &)),
-           this, SLOT(processIncidenceSelection(Incidence *,const QDate &)) );
+  connect( mCalendarView, SIGNAL(incidenceSelected(const Akonadi::Item &, const QDate &)),
+           this, SLOT(processIncidenceSelection(const Akonadi::Item &, const QDate &)) );
   connect( mCalendarView, SIGNAL(exportHTML(HTMLExportSettings *)),
            this, SLOT(exportHTML(HTMLExportSettings *)) );
 
-  processIncidenceSelection( 0, QDate() );
+  processIncidenceSelection( Akonadi::Item(), QDate() );
 
   // Update state of paste action
   mCalendarView->checkClipboard();
@@ -1696,11 +1698,12 @@ class ActionManager::ActionStringsVisitor : public IncidenceBase::Visitor
     QAction *mDelete;
 };
 
-void ActionManager::processIncidenceSelection( Incidence *incidence, const QDate &date )
+void ActionManager::processIncidenceSelection( const Akonadi::Item &item, const QDate &date )
 {
-//  kDebug(5850) << "ActionManager::processIncidenceSelection()";
-
+  //kDebug(5850) << "ActionManager::processIncidenceSelection()";
   Q_UNUSED( date );
+
+  const KCal::Incidence::Ptr incidence = item.hasPayload<KCal::Incidence::Ptr>() ? item.payload<KCal::Incidence::Ptr>() : KCal::Incidence::Ptr();
   if ( !incidence ) {
     enableIncidenceActions( false );
     return;
@@ -1714,7 +1717,7 @@ void ActionManager::processIncidenceSelection( Incidence *incidence, const QDate
   }
 
   ActionStringsVisitor v;
-  if ( !v.act( incidence, mShowIncidenceAction, mEditIncidenceAction, mDeleteIncidenceAction ) ) {
+  if ( !v.act( incidence.get(), mShowIncidenceAction, mEditIncidenceAction, mDeleteIncidenceAction ) ) {
     mShowIncidenceAction->setText( i18n( "&Show" ) );
     mEditIncidenceAction->setText( i18n( "&Edit..." ) );
     mDeleteIncidenceAction->setText( i18n( "&Delete" ) );

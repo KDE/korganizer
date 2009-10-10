@@ -208,8 +208,8 @@ CalendarView::CalendarView( QWidget *parent )
   connect( this, SIGNAL(configChanged()),
            mDateNavigatorContainer, SLOT(updateConfig()) );
 
-  connect( this, SIGNAL(incidenceSelected(Incidence *,const QDate &)),
-           mEventViewer, SLOT(setIncidence(Incidence *,const QDate &)) );
+  connect( this, SIGNAL(incidenceSelected(const Akonadi::Item &, const QDate &)),
+           mEventViewer, SLOT(setIncidence(const Akonadi::Item &, const QDate &)) );
 
   //TODO: do a pretty Summary,
   QString s;
@@ -232,10 +232,10 @@ CalendarView::CalendarView( QWidget *parent )
   connect( QApplication::clipboard(), SIGNAL(dataChanged()),
            SLOT(checkClipboard()) );
 
-  connect( mTodoList, SIGNAL(incidenceSelected(Incidence *,const QDate &)),
-           SLOT(processTodoListSelection(Incidence *,const QDate &)) );
-  disconnect( mTodoList, SIGNAL(incidenceSelected(Incidence *,const QDate &)),
-              this, SLOT(processMainViewSelection(Incidence *,const QDate &)) );
+  connect( mTodoList, SIGNAL(incidenceSelected(const Akonadi::Item &,const QDate &)),
+           this, SLOT(processTodoListSelection(const Akonadi::Item &,const QDate &)) );
+  disconnect( mTodoList, SIGNAL(incidenceSelected(const Akonadi::Item &,const QDate &)),
+              this, SLOT(processMainViewSelection(const Akonadi::Item &,const QDate &)) );
 }
 
 CalendarView::~CalendarView()

@@ -48,6 +48,10 @@ namespace KOrg {
   class AkonadiCalendar;
 }
 
+namespace Akonadi {
+  class Item;
+}
+
 class AkonadiCollectionView;
 class CalendarView;
 class ImportDialog;
@@ -269,7 +273,7 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
 
     void setDestinationPolicy();
 
-    void processIncidenceSelection( Incidence *incidence, const QDate &date );
+    void processIncidenceSelection( const Akonadi::Item &item, const QDate &date );
     void keyBindings();
 
     /**

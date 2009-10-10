@@ -31,6 +31,9 @@
 class KConfig;
 class QUrl;
 
+namespace Akonadi {
+  class Item;
+}
 namespace KOrg {
   class CalendarBase;
 }
@@ -84,6 +87,7 @@ class KORGANIZER_EVENTVIEWER_EXPORT KOEventViewer : public KTextBrowser
       Show given incidence in viewer. Clear all previously shown incidences.
     */
     void setIncidence( Incidence *incidence, const QDate &date );
+    void setIncidence( const Akonadi::Item &, const QDate &date );
     void changeIncidenceDisplay( Incidence *incidence, const QDate &date, int action );
     void editIncidence();
 
