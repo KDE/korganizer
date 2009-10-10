@@ -29,7 +29,7 @@
 #include "koeditorgeneralevent.h"
 #include "koeditorrecurrence.h"
 #include "koeditorconfig.h"
-#include "incidencechangerbase.h"
+#include "korganizer/incidencechangerbase.h"
 
 #ifdef AKONADI_PORT_DISABLED
 #include "kogroupware.h"
@@ -335,11 +335,8 @@ bool KOEventEditor::processInput()
         rc = mChanger->addIncidence( event2 );
 
       } else {
-#ifdef AKONADI_PORT_DISABLED
         rc = mChanger->changeIncidence( oldEvent, mEvent );
-#endif
       }
-
       ev->endUpdates();
     }
     return rc;
@@ -350,12 +347,10 @@ bool KOEventEditor::processInput()
                             KOEditorConfig::instance()->email() ) );
     mEvent.setPayload( newEvent );
     fillEvent( newEvent.get() );
-#ifdef AKONADI_PORT_DISABLED
     if ( !mChanger->addIncidence( newEvent, this ) ) {
       mEvent = Item();
       return false;
     }
-#endif
   }
 
   // if "this" was deleted, freeBusy is 0 (being a guardedptr)
@@ -446,7 +441,7 @@ void KOEventEditor::loadTemplate( CalendarLocal &cal )
 }
 #endif
 
-QStringList &KOEventEditor::templates() const
+QStringList KOEventEditor::templates() const
 {
 #ifdef AKONADI_PORT_DISABLED
   return KOPrefs::instance()->mEventTemplates;

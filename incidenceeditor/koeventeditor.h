@@ -125,7 +125,7 @@ class INCIDENCEEDITOR_EXPORT KOEventEditor : public KOIncidenceEditor
      * is not valid */
     bool processInput();
     void processCancel();
-    QStringList &templates() const;
+    QStringList templates() const;
     bool incidenceModified();
 
   private:

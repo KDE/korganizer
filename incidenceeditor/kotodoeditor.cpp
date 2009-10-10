@@ -397,7 +397,7 @@ void KOTodoEditor::slotSaveTemplate( const QString &templateName )
 }
 #endif
 
-QStringList &KOTodoEditor::templates() const
+QStringList KOTodoEditor::templates() const
 {
 #ifdef AKONADI_PORT_DISABLED
   return KOPrefs::instance()->mTodoTemplates;
