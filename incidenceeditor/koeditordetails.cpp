@@ -24,6 +24,7 @@
 */
 
 #include "koeditordetails.h"
+#include "koeditorconfig.h"
 
 #include <libkdepim/distributionlist.h>
 #include <libkdepim/kvcarddrag.h>
@@ -361,11 +362,7 @@ void KOEditorDetails::slotInsertAttendee( Attendee *a )
 
 void KOEditorDetails::changeStatusForMe( Attendee::PartStat status )
 {
-#ifdef AKONADI_PORT_DISABLED
-  const QStringList myEmails = KOPrefs::instance()->allEmails();
-#else
-  const QStringList myEmails;
-#endif
+  const QStringList myEmails = KOEditorConfig::instance()->allEmails();
   for ( Q3ListViewItemIterator it( mListView ); it.current(); ++it ) {
     AttendeeListItem *item = static_cast<AttendeeListItem*>( it.current() );
     for ( QStringList::ConstIterator it2( myEmails.begin() ), end( myEmails.end() );

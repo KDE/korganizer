@@ -19,6 +19,7 @@
 */
 
 #include "koattendeeeditor.h"
+#include "koeditorconfig.h"
 
 #include <libkdepim/addressesdialog.h>
 #include <libkdepim/addresseelineedit.h>
@@ -225,12 +226,8 @@ void KOAttendeeEditor::openAddressBook()
 
 void KOAttendeeEditor::insertAttendeeFromAddressee( const KABC::Addressee &a, const Attendee *at )
 {
-#ifdef AKONADI_PORT_DISABLED
-  bool myself = KOPrefs::instance()->thatIsMe( a.preferredEmail() );
-#else
-  bool myself = false;
-#endif
-  bool sameAsOrganizer = mOrganizerCombo &&
+  const bool myself = KOEditorConfig::instance()->thatIsMe( a.preferredEmail() );
+  const bool sameAsOrganizer = mOrganizerCombo &&
                          KPIMUtils::compareEmail( a.preferredEmail(),
                                                   mOrganizerCombo->currentText(), false );
   KCal::Attendee::PartStat partStat = at ? at->status() : KCal::Attendee::NeedsAction;
@@ -251,11 +248,7 @@ void KOAttendeeEditor::fillOrganizerCombo()
   Q_ASSERT( mOrganizerCombo );
   // Get all emails from KOPrefs (coming from various places),
   // and insert them - removing duplicates
-#ifdef AKONADI_PORT_DISABLED
-  const QStringList lst = KOPrefs::instance()->fullEmails();
-#else
-  const QStringList lst;
-#endif
+  const QStringList lst = KOEditorConfig::instance()->fullEmails();
   QStringList uniqueList;
   for ( QStringList::ConstIterator it = lst.begin(); it != lst.end(); ++it ) {
     if ( !uniqueList.contains( *it ) ) {
@@ -305,11 +298,7 @@ void KOAttendeeEditor::readIncidence( KCal::Incidence *incidence )
   qDeleteAll( mDelAttendees );
   mDelAttendees.clear();
 
-#ifdef AKONADI_PORT_DISABLED
-  const bool itsMe =  KOPrefs::instance()->thatIsMe( incidence->organizer().email() ) ||
-#else
-  const bool itsMe = false;
-#endif
+  const bool itsMe = KOEditorConfig::instance()->thatIsMe( incidence->organizer().email() );
   if ( itsMe || incidence->organizer().isEmpty() ) {
     //TODO: make a new private method for creating the mOrganizerCombo
     //and use it here and initOrganizerWidgets() above.
@@ -411,12 +400,8 @@ void KOAttendeeEditor::updateAttendee()
   QString email;
   KPIMUtils::extractEmailAddressAndName( mNameEdit->text(), email, name );
 
-  bool iAmTheOrganizer = mOrganizerCombo &&
-#ifdef AKONADI_PORT_DISABLED
-                         KOPrefs::instance()->thatIsMe( mOrganizerCombo->currentText() );
-#else
-  false;
-#endif
+  const bool iAmTheOrganizer = mOrganizerCombo &&
+                         KOEditorConfig::instance()->thatIsMe( mOrganizerCombo->currentText() );
   if ( iAmTheOrganizer ) {
     bool myself = KPIMUtils::compareEmail( email, mOrganizerCombo->currentText(), false );
     bool wasMyself =
@@ -457,12 +442,8 @@ void KOAttendeeEditor::fillAttendeeInput( KCal::Attendee *a )
     tname += " <" + a->email() + '>';
   }
 
-#ifdef AKONADI_PORT_DISABLED
-  bool myself = KOPrefs::instance()->thatIsMe( a->email() );
-#else
-  bool myself = false;
-#endif
-  bool sameAsOrganizer = mOrganizerCombo &&
+  const bool myself = KOEditorConfig::instance()->thatIsMe( a->email() );
+  const bool sameAsOrganizer = mOrganizerCombo &&
                          KPIMUtils::compareEmail( a->email(),
                                                   mOrganizerCombo->currentText(), false );
   KCal::Attendee::PartStat partStat = a->status();

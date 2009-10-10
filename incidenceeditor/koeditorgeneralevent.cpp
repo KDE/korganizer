@@ -24,6 +24,8 @@
 
 #include "koeditorgeneralevent.h"
 #include "calendarbase.h"
+#include "koeditorconfig.h"
+
 #ifdef AKONADI_PORT_DISABLED
 #include "koprefs.h"
 #endif
@@ -462,11 +464,7 @@ void KOEditorGeneralEvent::readEvent( Event *event, bool isTemplate )
   }
 
   mRecurrenceSummary->setText( IncidenceFormatter::recurrenceString( event ) );
-#ifdef AKONADI_PORT_DISABLED
-  const QStringList allEmails = KOPrefs::instance()->allEmails();
-#else
-  const QStringList allEmails;
-#endif
+  const QStringList allEmails = KOEditorConfig::instance()->allEmails();
   Attendee *me = event->attendeeByMails( allEmails );
   if ( event->attendeeCount() > 1 &&
        me && ( me->status() == Attendee::NeedsAction ||

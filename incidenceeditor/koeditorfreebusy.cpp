@@ -23,6 +23,8 @@
 */
 
 #include "koeditorfreebusy.h"
+#include "koeditorconfig.h"
+
 #ifdef AKONADI_PORT_DISABLED
 #include "freebusymanager.h"
 #include "freebusyurldialog.h"
@@ -448,9 +450,7 @@ void KOEditorFreeBusy::readIncidence( Incidence *incidence )
 
   setDateTimes( incidence->dtStart().toTimeSpec( timeSpec ).dateTime(),
                 endDateTime );
-#ifdef AKONADI_PORT_DISABLED
-  mIsOrganizer = KOPrefs::instance()->thatIsMe( incidence->organizer().email() );
-#endif
+  mIsOrganizer = KOEditorConfig::instance()->thatIsMe( incidence->organizer().email() );
   updateStatusSummary();
   clearSelection();
   KOAttendeeEditor::readIncidence( incidence );
@@ -899,11 +899,7 @@ void KOEditorFreeBusy::clearSelection() const
 
 void KOEditorFreeBusy::changeStatusForMe( KCal::Attendee::PartStat status )
 {
-#ifdef AKONADI_PORT_DISABLED
-  const QStringList myEmails = KOPrefs::instance()->allEmails();
-#else
-  const QStringList myEmails;
-#endif
+  const QStringList myEmails = KOEditorConfig::instance()->allEmails();
   for ( FreeBusyItem *item = static_cast<FreeBusyItem *>( mGanttView->firstChild() );
         item; item = static_cast<FreeBusyItem*>( item->nextSibling() ) ) {
     for ( QStringList::ConstIterator it2( myEmails.begin() ), end( myEmails.end() );

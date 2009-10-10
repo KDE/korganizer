@@ -10,6 +10,7 @@ include_directories(
 
 set( korg_incidenceeditor_LIB_SRCS 
     ${libkdgantt1_SRCS}
+    koeditorconfig.cpp
     koincidenceeditor.cpp
     koeventeditor.cpp
     kotodoeditor.cpp
