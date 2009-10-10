@@ -24,9 +24,11 @@
 #ifndef KOEDITORCONFIG_H
 #define KOEDITORCONFIG_H
 
+#include "incidenceeditor_export.h"
+
 #include <QtCore/QObject>
 
-class KOEditorConfig : public QObject
+class INCIDENCEEDITOR_EXPORT KOEditorConfig : public QObject
 {
     Q_OBJECT
   private:
