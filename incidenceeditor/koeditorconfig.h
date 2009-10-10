@@ -45,15 +45,9 @@ class INCIDENCEEDITOR_EXPORT KOEditorConfig : public QObject
     static void setKOEditorConfig(KOEditorConfig*);
 
     /// Return the own full name.
-    QString fullName() const;
-    /// Set the own full name.
-    void setFullName( const QString & );
-
+    virtual QString fullName() const;
     /// Return the own mail address.
-    QString email() const;
-    /// Sets the own mail address to \p mail .
-    void setEmail( const QString &mail );
-    
+    virtual QString email() const;
     /// Return true if the given email belongs to the user.
     virtual bool thatIsMe( const QString &email ) const;
     /// Returns all email addresses for the user.

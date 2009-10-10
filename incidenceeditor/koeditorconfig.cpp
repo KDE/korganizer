@@ -32,9 +32,6 @@ class KOEditorConfig::Private
   public:
     static KOEditorConfig *config;
     static void cleanup_config() { delete config; config = 0; }
-
-    QString fullName;
-    QString email;
 };
 
 KOEditorConfig *KOEditorConfig::Private::config = 0;
@@ -68,37 +65,21 @@ QString KOEditorConfig::fullName() const
 {
   if(Private::config != this)
     return Private::config->fullName();
-  return d->fullName;
+  return QString();
 }
 
-void KOEditorConfig::setFullName( const QString &name )
-{
-  if(Private::config != this)
-    Private::config->setFullName(name);
-  else
-    d->fullName = name;
-}
-    
 QString KOEditorConfig::email() const
 {
   if(Private::config != this)
     return Private::config->email();
-  return d->email;
+  return QString();
 }
 
-void KOEditorConfig::setEmail( const QString &mail )
+bool KOEditorConfig::thatIsMe( const QString &mail ) const
 {
   if(Private::config != this)
-    Private::config->setEmail(mail);
-  else
-    d->email = mail;
-}
-
-bool KOEditorConfig::thatIsMe( const QString &email ) const
-{
-  if(Private::config != this)
-    return Private::config->thatIsMe(email);
-  return d->email.toLower() == email.toLower();
+    return Private::config->thatIsMe(mail);
+  return false;
 }
 
 QStringList KOEditorConfig::allEmails() const

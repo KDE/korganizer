@@ -76,11 +76,15 @@
 class KOrganizerEditorConfig : public KOEditorConfig
 {
   public:
-    explicit KOrganizerEditorConfig() : KOEditorConfig() {
-      setFullName( KOPrefs::instance()->fullName() );
-      setEmail( KOPrefs::instance()->email() );
-    }
+    explicit KOrganizerEditorConfig() : KOEditorConfig() {}
     virtual ~KOrganizerEditorConfig() {}
+
+    virtual QString fullName() const {
+      return KOPrefs::instance()->fullName();
+    }
+    virtual QString email() const {
+      return KOPrefs::instance()->email();
+    }
     virtual bool thatIsMe( const QString &email ) const {
       return KOPrefs::instance()->thatIsMe(email);
     }
