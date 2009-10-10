@@ -29,6 +29,7 @@
 #include "koeditorgeneralevent.h"
 #include "koeditorrecurrence.h"
 #include "koeditorconfig.h"
+#include "incidencechangerbase.h"
 
 #ifdef AKONADI_PORT_DISABLED
 #include "kogroupware.h"
@@ -330,9 +331,9 @@ bool KOEventEditor::processInput()
         event2->setSummary(
           i18nc( "@item",
                  "My counter proposal for: %1", ev->summary() ) );
-#ifdef AKONADI_PORT_DISABLED
+
         rc = mChanger->addIncidence( event2 );
-#endif
+
       } else {
 #ifdef AKONADI_PORT_DISABLED
         rc = mChanger->changeIncidence( oldEvent, mEvent );
