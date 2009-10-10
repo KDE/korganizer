@@ -301,20 +301,15 @@ void MonthView::setStartDate( const QDate &start )
 Akonadi::Item::List MonthView::selectedIncidences()
 {
   Akonadi::Item::List selected;
-#ifdef AKONADI_PORT_DISABLED
-  Incidence *incidenceSelected = 0;
-
   if ( mScene->selectedItem() ) {
     IncidenceMonthItem *tmp = qobject_cast<IncidenceMonthItem *>( mScene->selectedItem() );
     if ( tmp ) {
-      incidenceSelected = tmp->incidence();
-
-      if ( incidenceSelected ) {
+      Akonadi::Item incidenceSelected = tmp->incidence();
+      if ( incidenceSelected.isValid() ) {
         selected.append( incidenceSelected );
       }
     }
   }
-#endif // AKONADI_PORT_DISABLED
   return selected;
 }
 
