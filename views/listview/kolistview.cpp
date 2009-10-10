@@ -384,7 +384,7 @@ void KOListView::addIncidence( Incidence *incidence, const QDate &date )
     if ( years > 0 ) {
       tinc = incidence->clone();
       tinc->setReadOnly( false );
-      tinc->setSummary( i18n( "%1 (%2  years)", incidence->summary(), years ) );
+      tinc->setSummary( i18np( "%2 (1 year)", "%2 (%1 years)", years, incidence->summary() ) );
       tinc->setReadOnly( true );
     }
   }

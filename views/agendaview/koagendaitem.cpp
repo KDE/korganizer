@@ -80,7 +80,7 @@ KOAgendaItem::KOAgendaItem( Calendar *calendar, Incidence *incidence,
     if ( years > 0 ) {
       mIncidence = incidence->clone();
       mIncidence->setReadOnly( false );
-      mIncidence->setSummary( i18n( "%1 (%2 years)", incidence->summary(), years ) );
+      mIncidence->setSummary( i18np( "%2 (1 year)", "%2 (%1 years)", years, incidence->summary() ) );
       mIncidence->setReadOnly( true );
       mCloned = true;
     }

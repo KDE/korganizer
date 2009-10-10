@@ -536,7 +536,7 @@
              <string>Specify text of an email message to send when the reminder triggers</string>
             </property>
             <property name="whatsThis">
-             <string>Enter any text you desire for the email message that will be sent when the alarm triggers.</string>
+             <string>Enter the text you would like to be in the email message sent when the reminder triggers.</string>
             </property>
            </widget>
           </item>
@@ -546,7 +546,7 @@
              <string>Specify a list of addresses to send email when the reminder triggers</string>
             </property>
             <property name="whatsThis">
-             <string>Enter a list comma-sepatered addresses where an email will be sent when the reminder triggers</string>
+             <string>Enter a list of comma-separated addresses to which an email should be sent when the reminder triggers.</string>
             </property>
            </widget>
           </item>
