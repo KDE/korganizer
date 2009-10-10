@@ -24,13 +24,16 @@
   without including the source code for Qt in the source distribution.
 */
 #include "kotodoeditor.h"
+#include "koeditorconfig.h"
+#include "koeditorattachments.h"
 #include "koeditorgeneraltodo.h"
 #include "koeditordetails.h"
 #include "koeditorrecurrence.h"
+#include "korganizer/incidencechangerbase.h"
+
 #ifdef AKONADI_PORT_DISABLED
 #include "koprefs.h"
 #endif
-#include "koeditorattachments.h"
 
 #include <KCal/IncidenceFormatter>
 
@@ -242,7 +245,7 @@ bool KOTodoEditor::processInput()
   if ( !validateInput() ) {
     return false;
   }
-#ifdef AKONADI_PORT_DISABLED //incidenceChanger
+//#ifdef AKONADI_PORT_DISABLED //incidenceChanger
 
   if ( Akonadi::hasTodo( mTodo ) ) {
 
@@ -250,13 +253,14 @@ bool KOTodoEditor::processInput()
     Todo::Ptr oldTodo( Akonadi::todo( mTodo )->clone() );
     Todo::Ptr todo( Akonadi::todo( mTodo )->clone() );
 
-    fillTodo( todo );
+    fillTodo( todo.get() );
 
     if( *oldTodo == *todo ) {
       // Don't do anything cause no changes where done
     } else {
       Akonadi::todo( mTodo )->startUpdates(); //merge multiple mTodo->updated() calls into one
-      fillTodo( Akonadi::todo( mTodo ) );
+      
+      fillTodo( Akonadi::todo( mTodo ).get() );
       rc = mChanger->changeIncidence( oldTodo, mTodo );
       Akonadi::todo( mTodo )->endUpdates();
     }
@@ -264,12 +268,11 @@ bool KOTodoEditor::processInput()
   } else {
 //PENDING(AKONADI_PORT) review the newly created item will differ from mTodo
     Todo::Ptr td( new Todo );
+    td->setOrganizer( Person( KOEditorConfig::instance()->fullName(),
+                              KOEditorConfig::instance()->email() ) );
     mTodo.setPayload( td );
-    mTodo->setOrganizer( Person( KOPrefs::instance()->fullName(),
-                                 KOPrefs::instance()->email() ) );
 
-    fillTodo( td );
-
+    fillTodo( td.get() );
     if ( !mChanger->addIncidence( td, this ) ) {
       mTodo = Item();
       return false;
@@ -277,9 +280,9 @@ bool KOTodoEditor::processInput()
   }
 
   return true;
-#else
-  return false;
-#endif
+//#else
+//  return false;
+//#endif
 }
 
 void KOTodoEditor::deleteTodo()
