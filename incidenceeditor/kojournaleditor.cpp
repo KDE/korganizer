@@ -27,9 +27,7 @@
 #include "kojournaleditor.h"
 #include "koeditordetails.h"
 #include "koeditorgeneraljournal.h"
-#ifdef AKONADI_PORT_DISABLED
-#include "koprefs.h"
-#endif
+#include "koeditorconfig.h"
 #include "korganizer/baseview.h"
 
 #include <akonadi/kcal/utils.h>
@@ -154,10 +152,8 @@ bool KOJournalEditor::processInput()
     return rc;
   } else {
     Journal::Ptr j( new Journal );
-#ifdef AKONADI_PORT_DISABLED
-    j->setOrganizer( Person( KOPrefs::instance()->fullName(),
-                             KOPrefs::instance()->email() ) );
-#endif
+    j->setOrganizer( Person( KOEditorConfig::instance()->fullName(),
+                             KOEditorConfig::instance()->email() ) );
     fillJournal( j.get() );
     //PENDING(AKONADI_PORT) review: mJournal will be != the newly created item
     mJournal.setPayload( j );

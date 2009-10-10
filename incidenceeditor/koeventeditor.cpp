@@ -28,6 +28,8 @@
 #include "koeditorfreebusy.h"
 #include "koeditorgeneralevent.h"
 #include "koeditorrecurrence.h"
+#include "koeditorconfig.h"
+
 #ifdef AKONADI_PORT_DISABLED
 #include "kogroupware.h"
 #include "koprefs.h"
@@ -343,12 +345,9 @@ bool KOEventEditor::processInput()
   } else {
     //PENDING(AKONADI_PORT) review mEvent will differ from newly created item
     Event::Ptr newEvent( new Event );
+    newEvent->setOrganizer( Person( KOEditorConfig::instance()->fullName(),
+                            KOEditorConfig::instance()->email() ) );
     mEvent.setPayload( newEvent );
-#ifdef AKONADI_PORT_DISABLED
-    // FIXME port
-    mEvent->setOrganizer( Person( KOPrefs::instance()->fullName(),
-                          KOPrefs::instance()->email() ) );
-#endif
     fillEvent( newEvent.get() );
 #ifdef AKONADI_PORT_DISABLED
     if ( !mChanger->addIncidence( newEvent, this ) ) {
