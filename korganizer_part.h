@@ -33,16 +33,18 @@
 class CalendarView;
 class ActionManager;
 
+namespace Akonadi{
+  class Item;
+}
+
 namespace KOrg {
   class CalendarViewBase;
 }
-using namespace KOrg;
 
 namespace KCal {
   class Calendar;
   class Incidence;
 }
-using namespace KCal;
 
 namespace KParts {
   class StatusBarExtension;
@@ -88,7 +90,7 @@ class KOrganizerPart: public KParts::ReadOnlyPart,
     void setTitle();
 
   public slots:
-    void slotChangeInfo( Incidence *incidence, const QDate &date );
+    void slotChangeInfo( const Akonadi::Item &, const QDate &date );
 
   protected:
     virtual bool openFile();

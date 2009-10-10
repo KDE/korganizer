@@ -32,6 +32,7 @@
 #include "stdcalendar.h"
 
 #include <KCal/IncidenceFormatter>
+#include <akonadi/item.h>
 
 #include <KAboutData>
 #include <KStatusBar>
@@ -94,8 +95,8 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, QObject *parent, const QV
   topLayout->addWidget( mView );
   topLayout->setMargin( 0 );
 
-  connect( mView, SIGNAL(incidenceSelected(Incidence *,const QDate &)),
-           SLOT(slotChangeInfo(Incidence *,const QDate &)) );
+  connect( mView, SIGNAL(incidenceSelected(const Akonadi::Item &, const QDate &)),
+           SLOT(slotChangeInfo(const Akonadi::Item &, const QDate &)) );
 
   mActionManager->init();
   mActionManager->readSettings();
@@ -118,9 +119,10 @@ KOrganizerPart::~KOrganizerPart()
   KOCore::self()->removeXMLGUIClient( mTopLevelWidget );
 }
 
-void KOrganizerPart::slotChangeInfo( Incidence *incidence, const QDate &date )
+void KOrganizerPart::slotChangeInfo( const Akonadi::Item &item, const QDate &date )
 {
   Q_UNUSED( date );
+  const KCal::Incidence::Ptr incidence = item.hasPayload<KCal::Incidence::Ptr>() ? item.payload<KCal::Incidence::Ptr>() : KCal::Incidence::Ptr();
   if ( incidence ) {
     emit textChanged( incidence->summary() + " / " +
                       IncidenceFormatter::timeToString( incidence->dtStart() ) );

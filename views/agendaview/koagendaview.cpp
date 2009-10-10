@@ -288,10 +288,10 @@ void KOAgendaView::connectAgenda( KOAgenda *agenda, QMenu *popup,
            SLOT(startDrag(Incidence *)) );
 
   // synchronize selections
-  connect( agenda, SIGNAL(incidenceSelected(Incidence *,const QDate &)),
+  connect( agenda, SIGNAL(incidenceSelected(const Akonadi::Item &, const QDate &)),
            otherAgenda, SLOT(deselectItem()) );
-  connect( agenda, SIGNAL(incidenceSelected(Incidence *,const QDate &)),
-           SIGNAL(incidenceSelected(Incidence *,const QDate &)) );
+  connect( agenda, SIGNAL(incidenceSelected(const Akonadi::Item &, const QDate &)),
+           SIGNAL(incidenceSelected(const Akonadi::Item &, const QDate &)) );
 
   // rescheduling of todos by d'n'd
   connect( agenda, SIGNAL(droppedToDo(Todo *,const QPoint &,bool)),
