@@ -32,8 +32,6 @@ class KORGANIZER_CALENDAR_EXPORT StdCalendar : public AkonadiCalendar
     static StdCalendar *self();
     ~StdCalendar();
 
-    void load();
-
   private:
     StdCalendar();
 

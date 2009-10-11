@@ -23,9 +23,7 @@
 */
 
 #include "koincidenceeditor.h"
-#ifdef AKONADI_PORT_DISABLED
-#include "koprefs.h"
-#endif
+#include "koeditorconfig.h"
 #include "koeditordetails.h"
 #include "urihandler.h"
 #include "templatemanagementdialog.h"
@@ -179,13 +177,13 @@ void KOIncidenceEditor::cancelRemovedAttendees( Incidence* incidence )
   // cancelAttendeeIncidence removes all attendees from the incidence,
   // and then only adds those that need to be canceled (i.e. a mail needs to be sent to them).
 #ifdef AKONADI_PORT_DISABLED
-  const bool thatIsMe = KOPrefs::instance()->thatIsMe( incidence->organizer().email() );
+  const bool thatIsMe = KOEditorConfig::instance()->thatIsMe( incidence->organizer().email() );
   if ( thatIsMe ) {
     Incidence::Ptr inc( incidence->clone() );
     inc->registerObserver( 0 );
-    mAttendeeEditor->cancelAttendeeIncidence( inc );
+    mAttendeeEditor->cancelAttendeeIncidence( inc.get() );
     if ( inc->attendeeCount() > 0 ) {
-      emit deleteAttendee( inc );
+      emit deleteAttendee( inc.get() );
     }
   }
 #endif

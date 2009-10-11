@@ -83,7 +83,6 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, QObject *parent, const QV
 #else
   mActionManager->createCalendarAkonadi();
   setHasDocument( false );
-  KOrg::StdCalendar::self()->load();
   mView->updateCategories();
 #endif
 

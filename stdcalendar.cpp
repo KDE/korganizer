@@ -110,9 +110,3 @@ StdCalendar::~StdCalendar()
 {
   mSelf = 0;
 }
-
-void StdCalendar::load()
-{
-  //AKONADI_PORT_DISABLED
-  kWarning()<<"TODO";
-}
