@@ -96,6 +96,9 @@ class KOrganizerEditorConfig : public KOEditorConfig
     virtual QStringList fullEmails() const {
       return KOPrefs::instance()->fullEmails();
     }
+    virtual bool showTimeZoneSelectorInIncidenceEditor() const {
+      return KOPrefs::instance()->showTimeZoneSelectorInIncidenceEditor();
+    }
 };
 
 // FIXME: Several places in the file don't use KConfigXT yet!

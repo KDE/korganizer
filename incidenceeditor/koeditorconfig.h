@@ -54,13 +54,9 @@ class INCIDENCEEDITOR_EXPORT KOEditorConfig : public QObject
     virtual QStringList allEmails() const;
     /// Returns all email addresses together with the full username for the user.
     virtual QStringList fullEmails() const;
-
-    //mCompactDialogs
-    //int reminderTime = KOPrefs::instance()->mReminderTime;
-    //int index = KOPrefs::instance()->mReminderTimeUnits;
-    //KOPrefs::instance()->defaultEventReminders();
-    //KOPrefs::instance()->defaultTodoReminders();
-
+    /// Show timezone selectors in the event and todo editor dialog.
+    virtual bool showTimeZoneSelectorInIncidenceEditor() const;
+    
   private:
     class Private;
     Private* const d;

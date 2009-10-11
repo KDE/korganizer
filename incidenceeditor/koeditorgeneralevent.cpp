@@ -26,10 +26,6 @@
 #include "calendarbase.h"
 #include "koeditorconfig.h"
 
-#ifdef AKONADI_PORT_DISABLED
-#include "koprefs.h"
-#endif
-
 #include <libkdepim/kdateedit.h>
 #include <libkdepim/ktimeedit.h>
 #include <libkdepim/ktimezonecombobox.h>
@@ -127,12 +123,12 @@ void KOEditorGeneralEvent::initTime( QWidget *parent, QBoxLayout *topLayout )
                              "It will also affect recurrences" );
   mTimeZoneComboStart = new KPIM::KTimeZoneComboBox( mCalendar ? mCalendar->timeZones() : 0, timeGroupBox );
   mTimeZoneComboEnd = new KPIM::KTimeZoneComboBox( mCalendar ? mCalendar->timeZones() : 0, timeGroupBox );
-#ifdef AKONADI_PORT_DISABLED
-  if ( !KOPrefs::instance()->showTimeZoneSelectorInIncidenceEditor() ) {
+
+  if ( !KOEditorConfig::instance()->showTimeZoneSelectorInIncidenceEditor() ) {
     mTimeZoneComboStart->hide();
     mTimeZoneComboEnd->hide();
   }
-#endif
+
   layoutTimeBox->addWidget( mTimeZoneComboStart, 0, 3 );
   layoutTimeBox->addWidget( mTimeZoneComboEnd, 1, 3 );
 

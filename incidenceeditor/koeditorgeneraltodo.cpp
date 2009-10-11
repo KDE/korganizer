@@ -24,6 +24,7 @@
 
 #include "koeditorgeneraltodo.h"
 #include "calendarbase.h"
+#include "koeditorconfig.h"
 
 #include <libkdepim/kdateedit.h>
 #include <libkdepim/ktimeedit.h>
@@ -99,12 +100,10 @@ void KOEditorGeneralTodo::initTime( QWidget *parent, QBoxLayout *topLayout )
   mTimeZoneComboStart = new KPIM::KTimeZoneComboBox( mCalendar ? mCalendar->timeZones() : 0, timeGroupBox );
   mTimeZoneComboDue = new KPIM::KTimeZoneComboBox( mCalendar ? mCalendar->timeZones() : 0, timeGroupBox );
 
-#ifdef AKONADI_PORT_DISABLED
-  if ( !KOPrefs::instance()->showTimeZoneSelectorInIncidenceEditor() ) {
+  if ( !KOEditorConfig::instance()->showTimeZoneSelectorInIncidenceEditor() ) {
     mTimeZoneComboStart->hide();
     mTimeZoneComboDue->hide();
   }
-#endif
 
   layoutTimeBox->addWidget( mTimeZoneComboStart, 0, 3 );
   layoutTimeBox->addWidget( mTimeZoneComboDue, 1, 3 );

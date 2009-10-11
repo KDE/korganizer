@@ -126,9 +126,7 @@ void SearchDialog::updateView()
   } else {
     mMatchedEvents.clear();
   }
-#ifdef AKONADI_PORT_DISABLED
   listView->showIncidences( mMatchedEvents, QDate() );
-#endif
 }
 
 Akonadi::Item incidenceToItem(Incidence *incidence)

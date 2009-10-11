@@ -100,3 +100,10 @@ QStringList KOEditorConfig::fullEmails() const
     return Private::config->fullEmails();
   return QStringList();
 }
+
+bool KOEditorConfig::showTimeZoneSelectorInIncidenceEditor() const
+{
+  if(Private::config != this)
+    return Private::config->showTimeZoneSelectorInIncidenceEditor();
+  return true;
+}
