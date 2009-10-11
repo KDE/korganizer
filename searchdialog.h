@@ -30,6 +30,9 @@
 #include <kcal/incidence.h>
 #include <KDialog>
 
+namespace Akonadi {
+  class Item;
+}
 namespace KOrg {
   class CalendarBase;
 }
@@ -64,7 +67,7 @@ class SearchDialog : public KDialog, private Ui::SearchDialog
 
     KOrg::CalendarBase *mCalendar;
 
-    Incidence::List mMatchedEvents;
+    QList<Akonadi::Item> mMatchedEvents;
 
     KOListView *listView;
 };

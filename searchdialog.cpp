@@ -106,9 +106,7 @@ void SearchDialog::doSearch()
   }
 
   search( re );
-#ifdef AKONADI_PORT_DISABLED
   listView->showIncidences( mMatchedEvents, QDate() );
-#endif
   if ( mMatchedEvents.count() == 0 ) {
     KMessageBox::information(
       this,
@@ -133,6 +131,14 @@ void SearchDialog::updateView()
 #endif
 }
 
+Akonadi::Item incidenceToItem(Incidence *incidence)
+{
+  Akonadi::Item item;
+  Incidence::Ptr incidenceptr( incidenceptr->clone() );
+  item.setPayload(incidenceptr);
+  return item;
+}
+  
 void SearchDialog::search( const QRegExp &re )
 {
   QDate startDt = mStartDate->date();
@@ -183,33 +189,29 @@ void SearchDialog::search( const QRegExp &re )
     }
   }
 
-  Incidence::List allIncidences = Calendar::mergeIncidenceList( events, todos, journals );
-
   mMatchedEvents.clear();
-  Incidence::List::ConstIterator it;
-  for ( it = allIncidences.constBegin(); it != allIncidences.constEnd(); ++it ) {
-    Incidence *ev = *it;
+  Q_FOREACH( Incidence *ev, Calendar::mergeIncidenceList(events, todos, journals) ) {
     if ( mSummaryCheck->isChecked() ) {
       if ( re.indexIn( ev->summary() ) != -1 ) {
-        mMatchedEvents.append( ev );
+        mMatchedEvents.append( incidenceToItem(ev) );
         continue;
       }
     }
     if ( mDescriptionCheck->isChecked() ) {
       if ( re.indexIn( ev->description() ) != -1 ) {
-        mMatchedEvents.append( ev );
+        mMatchedEvents.append( incidenceToItem(ev) );
         continue;
       }
     }
     if ( mCategoryCheck->isChecked() ) {
       if ( re.indexIn( ev->categoriesStr() ) != -1 ) {
-        mMatchedEvents.append( ev );
+        mMatchedEvents.append( incidenceToItem(ev) );
         continue;
       }
     }
     if ( mLocationCheck->isChecked() ) {
       if ( re.indexIn( ev->location() ) != -1 ) {
-        mMatchedEvents.append( ev );
+        mMatchedEvents.append( incidenceToItem(ev) );
         continue;
       }
     }
