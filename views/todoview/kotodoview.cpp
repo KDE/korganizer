@@ -442,7 +442,6 @@ void KOTodoView::addQuickTodo( Qt::KeyboardModifiers modifiers )
 
 void KOTodoView::contextMenu( const QPoint &pos )
 {
-#ifdef AKONADI_PORT_DISABLED // selectedIncidences()
   bool enable = mView->indexAt( pos ).isValid();
 
   Q_FOREACH( QAction *entry, mItemPopupMenuItemOnlyEntries ) {
@@ -452,10 +451,12 @@ void KOTodoView::contextMenu( const QPoint &pos )
   mMovePopupMenu->setEnabled( enable );
 
   if ( enable ) {
-    Incidence::List incidences = selectedIncidences();
+    Akonadi::Item::List incidences = selectedIncidences();
     if ( !incidences.isEmpty() ) {
+#ifdef AKONADI_PORT_DISABLED // selectedIncidences()
       mMakeSubtodosIndependent->setEnabled( !incidences[0]->relations().isEmpty() );
       mMakeTodoIndependent->setEnabled( incidences[0]->relatedTo() );
+#endif // AKONADI_PORT_DISABLED
     }
 
     switch ( mView->indexAt( pos ).column() ) {
@@ -478,7 +479,6 @@ void KOTodoView::contextMenu( const QPoint &pos )
   } else {
     mItemPopupMenu->popup( mView->viewport()->mapToGlobal( pos ) );
   }
-#endif // AKONADI_PORT_DISABLED
 }
 
 void KOTodoView::selectionChanged( const QItemSelection &selected,

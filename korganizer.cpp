@@ -113,15 +113,7 @@ void KOrganizer::init( bool document )
 
   // Create calendar object, which manages all calendar information associated
   // with this calendar view window.
-#if 0 //AKONADI_PORT_DISABLED
-  if ( hasDocument() ) {
-    mActionManager->createCalendarLocal();
-  } else {
-    mActionManager->createCalendarAkonadi();
-  }
-#else
   mActionManager->createCalendarAkonadi();
-#endif
 
   setComponentData( KGlobal::mainComponent() );
 
