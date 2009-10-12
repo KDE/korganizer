@@ -30,6 +30,8 @@
 #include "kocorehelper.h"
 #include "koglobals.h"
 #include "koprefs.h"
+#include "kodialogmanager.h"
+
 #include "kotododelegates.h"
 #include "kotodomodel.h"
 #include "kotodoviewquickaddline.h"
@@ -41,8 +43,7 @@
 
 #include <akonadi/kcal/utils.h>
 
-using namespace KPIM;
-
+#include <KCal/CalFormat>
 #include <KCal/Incidence>
 #include <KCal/Todo>
 
@@ -52,6 +53,7 @@ using namespace KPIM;
 #include <QMenu>
 #include <QTimer>
 
+using namespace KPIM;
 using namespace Akonadi;
 
 KOTodoView::KOTodoView( KOrg::CalendarBase *cal, QWidget *parent )
@@ -415,10 +417,33 @@ void KOTodoView::clearSelection()
   mView->selectionModel()->clearSelection();
 }
 
+void KOTodoView::addTodo( const QString &summary,
+                                 const Todo::Ptr &parent )
+{
+  if ( !mChanger )
+    return;
+
+  if ( summary.trimmed().isEmpty() )
+    return;
+
+  Todo::Ptr todo( new Todo );
+  todo->setSummary( summary.trimmed() );
+  todo->setOrganizer( Person( KOPrefs::instance()->fullName(),
+                              KOPrefs::instance()->email() ) );
+
+  if ( parent )
+    todo->setRelatedTo( parent.get() );
+
+  if ( !mChanger->addIncidence( todo ) )
+    KODialogManager::errorSaveIncidence( this, todo );
+}
+
 void KOTodoView::addQuickTodo( Qt::KeyboardModifiers modifiers )
 {
   if ( modifiers == Qt::NoModifier ) {
-    QModelIndex index = mModel->addTodo( mQuickAdd->text() );
+    /*const QModelIndex index = */ addTodo( mQuickAdd->text() );
+
+#ifdef AKONADI_PORT_DISABLED // the todo is added asynchronously now, so we have to wait until the new item is actually added before selecting the item
 
     QModelIndexList selection = mView->selectionModel()->selectedRows();
     if ( selection.size() <= 1 ) {
@@ -428,12 +453,15 @@ void KOTodoView::addQuickTodo( Qt::KeyboardModifiers modifiers )
                                        QItemSelectionModel::ClearAndSelect |
                                        QItemSelectionModel::Rows );
     }
+#endif
   } else if ( modifiers == Qt::ControlModifier ) {
     QModelIndexList selection = mView->selectionModel()->selectedRows();
     if ( selection.size() != 1 ) {
       return;
     }
-    mModel->addTodo( mQuickAdd->text(), mProxyModel->mapToSource( selection[0] ) );
+    const QModelIndex idx = mProxyModel->mapToSource( selection[0] );
+    const Item parent = mModel->todoForIndex( idx );
+    addTodo( mQuickAdd->text(), Akonadi::todo( parent ) );
   } else {
     return;
   }
@@ -612,12 +640,33 @@ void KOTodoView::newSubTodo()
 
 void KOTodoView::copyTodoToDate( const QDate &date )
 {
+  if ( !mChanger )
+    return;
+
   QModelIndexList selection = mView->selectionModel()->selectedRows();
   if ( selection.size() != 1 ) {
     return;
   }
 
-  mModel->copyTodo( mProxyModel->mapToSource( selection[0] ), date );
+  const QModelIndex origIndex = mProxyModel->mapToSource( selection[0] );
+  Q_ASSERT( origIndex.isValid() );
+
+  const Item origItem = mModel->todoForIndex( origIndex );
+  const Todo::Ptr orig = Akonadi::todo( origItem );
+  if ( !orig )
+    return;
+
+  Todo::Ptr todo( orig->clone() );
+
+  todo->setUid( CalFormat::createUniqueId() );
+
+  KDateTime due = todo->dtDue();
+  due.setDate( date );
+  todo->setDtDue( due );
+
+  if ( !mChanger->addIncidence( todo ) ) {
+    KODialogManager::errorSaveIncidence( this, todo );
+  }
 }
 
 void KOTodoView::itemDoubleClicked( const QModelIndex &index )

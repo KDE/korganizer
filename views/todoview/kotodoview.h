@@ -31,6 +31,8 @@
 
 #include <Akonadi/Item>
 
+#include <KCal/Todo>
+
 namespace KCal {
   class Incidence;
 }
@@ -128,6 +130,7 @@ class KOTodoView : public BaseView
 
   private:
     QMenu *createCategoryPopupMenu();
+    void addTodo( const QString &summary, const KCal::Todo::Ptr &parent=KCal::Todo::Ptr() );
 
     KOTodoViewView *mView;
     KOTodoModel *mModel;

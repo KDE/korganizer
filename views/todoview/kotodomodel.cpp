@@ -24,9 +24,9 @@
 
 #include "kotodomodel.h"
 #include "akonadicalendar.h"
-#include "kodialogmanager.h"
 #include "koglobals.h"
 #include "koprefs.h"
+#include "kodialogmanager.h"
 #include "korganizer/incidencechangerbase.h"
 
 #include <KCal/CalFormat>
@@ -312,63 +312,13 @@ void KOTodoModel::processChange( const Item & aitem, int action )
   }
 }
 
-QModelIndex KOTodoModel::addTodo( const QString &summary,
-                                  const QModelIndex &parent )
+Akonadi::Item KOTodoModel::todoForIndex( const QModelIndex &idx ) const
 {
-  if ( !mChanger ) {
-    return QModelIndex();
-  }
-
-  if ( !summary.trimmed().isEmpty() ) {
-    Todo::Ptr todo( new Todo );
-    todo->setSummary( summary.trimmed() );
-    todo->setOrganizer( Person( KOPrefs::instance()->fullName(),
-                                KOPrefs::instance()->email() ) );
-    if ( parent.isValid() ) {
-      TodoTreeNode *node = static_cast<TodoTreeNode *>( parent.internalPointer() );
-      if ( node->isValid() ) {
-        todo->setRelatedTo( Akonadi::todo( node->mTodo ).get() );
-      }
-    }
-
-    //PENDING(AKONADI_PORT) create akonadi item
-    if ( !mChanger->addIncidence( todo ) ) {
-      KODialogManager::errorSaveIncidence( 0, todo ); //TODO: pass parent
-      return QModelIndex();
-    }
-    //PENDING(AKONADI_PORT) here we will have a problem with adding working async now, so the todo won't be there as of now
-#ifdef AKONADI_PORT_DISABLED
-    return getModelIndex( findTodo( todo ) );
-#else
-    return QModelIndex();
-#endif
-  }
-
-  return QModelIndex();
-}
-
-void KOTodoModel::copyTodo( const QModelIndex &index, const QDate &date )
-{
-  if ( !mChanger || !index.isValid() ) {
-    return;
-  }
-
-  TodoTreeNode *node = static_cast<TodoTreeNode *>( index.internalPointer() );
-  if ( !node->isValid() ) {
-    return;
-  }
-
-  Todo::Ptr todo( Akonadi::todo( node->mTodo )->clone() );
-
-  todo->setUid( CalFormat::createUniqueId() );
-
-  KDateTime due = todo->dtDue();
-  due.setDate( date );
-  todo->setDtDue( due );
-
-  if ( !mChanger->addIncidence( todo ) ) {
-    KODialogManager::errorSaveIncidence( 0, todo ); //TODO: pass parent
-  }
+  if ( !idx.isValid() )
+    return Item();
+  TodoTreeNode *node = static_cast<TodoTreeNode *>( idx.internalPointer() );
+  Q_ASSERT( node );
+  return node->isValid() ? node->mTodo : Akonadi::Item();
 }
 
 QModelIndex KOTodoModel::getModelIndex( TodoTreeNode *node ) const

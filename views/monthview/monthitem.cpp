@@ -452,19 +452,12 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
         Incidence::Ptr newInc( monthScene()->calendar()->dissociateOccurrence(
             incidence.get(), startDate(), KOPrefs::instance()->timeSpec() ) );
         if ( newInc ) {
+           //TODO check return values
           changer->changeIncidence( oldIncSaved, mIncidence );
           changer->endChange( mIncidence );
           changer->addIncidence( newInc );
-          // let the standard code change the dates for the new incidence
-          mIncidence = Item();
-          mIncidence.setPayload( newInc );
-          incidence = Akonadi::incidence( mIncidence );
-          if ( !changer->beginChange( mIncidence ) ) {
-            KODialogManager::errorSaveIncidence( 0, incidence ); //TODO pass parent
-            return;
-          }
         } else {
-          KMessageBox::sorry( 0,
+          KMessageBox::sorry( 0, //TODO: pass parent
                               i18n( "Unable to add the exception item to the calendar. "
                                     "No change will be done." ),
                               i18n( "Error Occurred" ) );
@@ -479,22 +472,12 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
         Incidence::Ptr newInc( monthScene()->calendar()->dissociateOccurrence(
             incidence.get(), startDate(), KOPrefs::instance()->timeSpec(), false ) );
         if ( newInc ) {
+           //TODO check return values
           changer->changeIncidence( oldIncSaved, mIncidence );
           changer->endChange( mIncidence );
-
           changer->addIncidence( newInc );
-
-          // let the standard code change the dates for the new incidence
-          mIncidence = Item();
-          mIncidence.setPayload( newInc );
-          incidence = Akonadi::incidence( mIncidence );
-
-          if ( !changer->beginChange( mIncidence ) ) {
-            KODialogManager::errorSaveIncidence( 0, incidence ); //TODO: pass parent
-            return;
-          }
         } else {
-          KMessageBox::sorry( 0,
+          KMessageBox::sorry( 0, //TODO pass parent
                               i18n( "Unable to add the future items to the calendar. "
                                     "No change will be done." ),
                               i18n( "Error Occurred" ) );
