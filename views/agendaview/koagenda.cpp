@@ -1037,7 +1037,7 @@ void KOAgenda::endItemAction()
         emit startMultiModify( i18n( "Dissociate event from recurrence" ) );
         Incidence::Ptr oldIncSaved( incidence->clone() );
         Incidence::Ptr newInc( mCalendar->dissociateOccurrenceFORAKONADI(
-          inc, mActionItem->itemDate(), KOPrefs::instance()->timeSpec() ) );
+          inc.get(), mActionItem->itemDate(), KOPrefs::instance()->timeSpec() ) );
         if ( newInc ) {
           // don't recreate items, they already have the correct position
           emit enableAgendaUpdate( false );
