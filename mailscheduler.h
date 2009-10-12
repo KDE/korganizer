@@ -50,7 +50,7 @@ namespace KOrg {
       bool performTransaction( KCal::IncidenceBase *incidence, KCal::iTIPMethod method );
       bool performTransaction( KCal::IncidenceBase *incidence, KCal::iTIPMethod method, const QString &recipients );
 
-#if AKONADI_PORT_DISABLED
+#ifdef AKONADI_PORT_DISABLED
       QList<ScheduleMessage*> retrieveTransactions();
       bool deleteTransaction( IncidenceBase *incidence );
       /** Returns the directory where the free-busy information is stored */
