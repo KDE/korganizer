@@ -90,10 +90,8 @@ void IncidenceChanger::cancelAttendees( const Item &aitem )
       // manually.
       // FIXME: Groupware schedulling should be factored out to it's own class
       //        anyway
-#ifdef AKONADI_PORT_DISABLED
       MailScheduler scheduler( mCalendar );
-      scheduler.performTransaction( incidence, iTIPCancel );
-#endif // AKONADI_PORT_DISABLED
+      scheduler.performTransaction( incidence.get(), iTIPCancel );
     }
   }
 }
@@ -147,10 +145,8 @@ bool IncidenceChanger::deleteIncidence( const Item &aitem )
       }
 
       if ( !KOGroupware::instance()->doNotNotify() && notifyOrganizer ) {
-#ifdef AKONADI_PORT_DISABLED
         MailScheduler scheduler( mCalendar );
-        scheduler.performTransaction( tmp, KCal::iTIPReply );
-#endif
+        scheduler.performTransaction( tmp.get(), KCal::iTIPReply );
       }
       //reset the doNotNotify flag
       KOGroupware::instance()->setDoNotNotify( false );

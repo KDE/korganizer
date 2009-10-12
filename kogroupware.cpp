@@ -367,10 +367,8 @@ bool KOGroupware::sendICalMessage( QWidget *parent,
       incidence->setSummary( i18n( "<placeholder>No summary given</placeholder>" ) );
     }
     // Send the mail
-#ifdef AKONADI_PORT_DISABLED
     MailScheduler scheduler( mCalendar );
     scheduler.performTransaction( incidence, method );
-#endif
     return true;
   } else if ( rc == KMessageBox::No ) {
     return true;
@@ -394,16 +392,12 @@ void KOGroupware::sendCounterProposal( KOrg::CalendarBase *calendar,
     tmp->addComment( i18n( "Proposed new meeting time: %1 - %2",
                            IncidenceFormatter::dateToString( newEvent->dtStart() ),
                            IncidenceFormatter::dateToString( newEvent->dtEnd() ) ) );
-#ifdef AKONADI_PORT_DISABLED
     MailScheduler scheduler( calendar );
     scheduler.performTransaction( tmp, KCal::iTIPReply );
-#endif
     delete tmp;
   } else {
-#ifdef AKONADI_PORT_DISABLED
     MailScheduler scheduler( calendar );
     scheduler.performTransaction( newEvent, iTIPCounter );
-#endif
   }
 }
 

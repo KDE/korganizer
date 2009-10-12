@@ -24,40 +24,48 @@
 #ifndef MAILSCHEDULER_H
 #define MAILSCHEDULER_H
 
-#include <KCal/Scheduler>
 #include <QMap>
+#include <KCal/Scheduler>
 
 namespace KCal {
+  class IncidenceBase;
   class Incidence;
+  class ICalFormat;
 }
-using namespace KCal;
 
-/*
-  This class implements the iTIP interface using the email interface specified
-  as Mail.
-*/
-class MailScheduler : public Scheduler
-{
-  public:
-    explicit MailScheduler( Calendar * );
-    virtual ~MailScheduler();
+namespace KOrg {
+  class CalendarBase;
 
-    bool publish ( IncidenceBase *incidence, const QString &recipients );
-    bool performTransaction( IncidenceBase *incidence, iTIPMethod method );
-    bool performTransaction( IncidenceBase *incidence, iTIPMethod method,
-                             const QString &recipients );
-    QList<ScheduleMessage*> retrieveTransactions();
+  /*
+    This class implements the iTIP interface using the email interface specified
+    as Mail.
+  */
+  class MailScheduler //: public Scheduler
+  {
+    public:
+      explicit MailScheduler( KOrg::CalendarBase *calendar );
+      virtual ~MailScheduler();
 
-    bool deleteTransaction( IncidenceBase *incidence );
+      bool publish ( KCal::IncidenceBase *incidence, const QString &recipients );
+      bool performTransaction( KCal::IncidenceBase *incidence, KCal::iTIPMethod method );
+      bool performTransaction( KCal::IncidenceBase *incidence, KCal::iTIPMethod method, const QString &recipients );
 
-    /** Returns the directory where the free-busy information is stored */
-    virtual QString freeBusyDir();
+#if AKONADI_PORT_DISABLED
+      QList<ScheduleMessage*> retrieveTransactions();
+      bool deleteTransaction( IncidenceBase *incidence );
+      /** Returns the directory where the free-busy information is stored */
+      virtual QString freeBusyDir();
+#endif
 
-    /** Accepts a counter proposal */
-    bool acceptCounterProposal( Incidence *incidence );
+      /** Accepts a counter proposal */
+      bool acceptCounterProposal( KCal::Incidence *incidence );
 
-  private:
-    QMap<IncidenceBase *, QString> mEventMap;
-};
+    private:
+      KOrg::CalendarBase *mCalendar;
+      KCal::ICalFormat *mFormat;
+      QMap<KCal::IncidenceBase *, QString> mEventMap;
+  };
+
+}
 
 #endif

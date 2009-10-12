@@ -27,9 +27,12 @@
 #include "kocore.h"
 #include "komailclient.h"
 #include "koprefs.h"
+#include "calendarbase.h"
 
 #include <KCal/Calendar>
 #include <KCal/ICalFormat>
+//#include <KCal/Scheduler>
+#include <KCal/IncidenceBase>
 
 #include <KPIMIdentities/IdentityManager>
 
@@ -37,22 +40,26 @@
 
 #include <QDir>
 
-MailScheduler::MailScheduler( Calendar *calendar )
-  : Scheduler( calendar )
+using namespace KOrg;
+
+MailScheduler::MailScheduler( KOrg::CalendarBase *calendar )
+  //: Scheduler( calendar )
 {
+  mCalendar = calendar;
+  mFormat = new ICalFormat();
+  mFormat->setTimeSpec( calendar->timeSpec() );
 }
 
 MailScheduler::~MailScheduler()
 {
 }
 
-bool MailScheduler::publish( IncidenceBase *incidence,
-                             const QString &recipients )
+bool MailScheduler::publish( KCal::IncidenceBase *incidence, const QString &recipients )
 {
   QString from = KOPrefs::instance()->email();
   bool bccMe = KOPrefs::instance()->mBcc;
   bool useSendmail = ( KOPrefs::instance()->mMailClient == KOPrefs::MailClientSendmail );
-  QString messageText = mFormat->createScheduleMessage( incidence, iTIPPublish );
+  QString messageText = mFormat->createScheduleMessage( incidence, KCal::iTIPPublish );
 
   KOMailClient mailer;
   return mailer.mailTo(
@@ -61,9 +68,7 @@ bool MailScheduler::publish( IncidenceBase *incidence,
     from, bccMe, recipients, messageText, useSendmail );
 }
 
-bool MailScheduler::performTransaction( IncidenceBase *incidence,
-                                        iTIPMethod method,
-                                        const QString &recipients )
+bool MailScheduler::performTransaction( KCal::IncidenceBase *incidence, KCal::iTIPMethod method, const QString &recipients )
 {
   QString from = KOPrefs::instance()->email();
   bool bccMe = KOPrefs::instance()->mBcc;
@@ -77,8 +82,7 @@ bool MailScheduler::performTransaction( IncidenceBase *incidence,
     from, bccMe, recipients, messageText, useSendmail );
 }
 
-bool MailScheduler::performTransaction( IncidenceBase *incidence,
-                                        iTIPMethod method )
+bool MailScheduler::performTransaction( KCal::IncidenceBase *incidence, KCal::iTIPMethod method )
 {
   QString from = KOPrefs::instance()->email();
   bool bccMe = KOPrefs::instance()->mBcc;
@@ -109,6 +113,7 @@ bool MailScheduler::performTransaction( IncidenceBase *incidence,
   return status;
 }
 
+#if 0 //AKONADI_PORT_DISABLED
 QList<ScheduleMessage*> MailScheduler::retrieveTransactions()
 {
   QString incomingDirName = KStandardDirs::locateLocal( "data", "korganizer/income" );
@@ -176,8 +181,9 @@ QString MailScheduler::freeBusyDir()
 {
   return KStandardDirs::locateLocal( "data", "korganizer/freebusy" );
 }
+#endif
 
-bool MailScheduler::acceptCounterProposal( Incidence *incidence )
+bool MailScheduler::acceptCounterProposal( KCal::Incidence *incidence )
 {
   if ( !incidence ) {
     return false;

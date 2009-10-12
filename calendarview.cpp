@@ -1429,16 +1429,14 @@ void CalendarView::schedule_publish( const Item &item )
     inc->registerObserver( 0 );
     inc->clearAttendees();
 
-#ifdef AKONADI_PORT_DISABLED
     // Send the mail
     MailScheduler scheduler( mCalendar );
-    if ( scheduler.publish( incidence, publishdlg->addresses() ) ) {
+    if ( scheduler.publish( incidence.get(), publishdlg->addresses() ) ) {
       KMessageBox::information( this, i18n( "The item information was successfully sent." ),
                                 i18n( "Publishing" ), "IncidencePublishSuccess" );
     } else {
       KMessageBox::error( this, i18n( "Unable to publish the item '%1'", incidence->summary() ) );
     }
-#endif // AKONADI_PORT_DISABLED
   }
   delete publishdlg;
 }
@@ -1577,10 +1575,10 @@ void CalendarView::schedule( iTIPMethod method, const Item &item )
   Incidence *inc = incidence->clone();
   inc->registerObserver( 0 );
   inc->clearAttendees();
-#ifdef AKONADI_PORT_DISABLED
+
   // Send the mail
   MailScheduler scheduler( mCalendar );
-  if ( scheduler.performTransaction( incidence, method ) ) {
+  if ( scheduler.performTransaction( incidence.get(), method ) ) {
     KMessageBox::information( this,
                               i18n( "The groupware message for item '%1' "
                                     "was successfully sent.\nMethod: %2",
@@ -1596,7 +1594,6 @@ void CalendarView::schedule( iTIPMethod method, const Item &item )
                                incidence->summary(),
                                Scheduler::methodName( method ) ) );
   }
-#endif // AKONADI_PORT_DISABLED
 }
 
 void CalendarView::openAddressbook()
