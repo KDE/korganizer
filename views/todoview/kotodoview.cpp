@@ -515,7 +515,7 @@ void KOTodoView::selectionChanged( const QItemSelection &selected,
   Q_UNUSED( deselected );
   QModelIndexList selection = selected.indexes();
   if ( selection.isEmpty() || !selection[0].isValid() ) {
-    emit incidenceSelected( 0, QDate() );
+    emit incidenceSelected( Item(), QDate() );
     return;
   }
 

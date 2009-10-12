@@ -198,13 +198,11 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
     virtual bool eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &allDay );
 
   Q_SIGNALS:
-    void incidenceSelected( Incidence *, const QDate );
     void incidenceSelected( const Akonadi::Item &, const QDate );
 
     /**
      * instructs the receiver to show the incidence in read-only mode.
      */
-    void showIncidenceSignal( Incidence * );
     void showIncidenceSignal( const Akonadi::Item & );
 
     /**
@@ -212,7 +210,6 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
      * some manner.  Doesn't make sense to connect to more than one
      * receiver.
      */
-    void editIncidenceSignal( Incidence * );
     void editIncidenceSignal( const Akonadi::Item & );
 
     /**
@@ -220,19 +217,16 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
      * possibilities include automatically, with a confirmation dialog
      * box, etc.  Doesn't make sense to connect to more than one receiver.
      */
-    void deleteIncidenceSignal( Incidence * );
     void deleteIncidenceSignal( const Akonadi::Item & );
 
     /**
     * instructs the receiver to cut the Incidence
     */
-    void cutIncidenceSignal( Incidence * );
     void cutIncidenceSignal( const Akonadi::Item & );
 
     /**
     * instructs the receiver to copy the incidence
     */
-    void copyIncidenceSignal( Incidence * );
     void copyIncidenceSignal( const Akonadi::Item & );
 
     /**
@@ -243,21 +237,19 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
     /**
      * instructs the receiver to toggle the alarms of the Incidence.
      */
-    void toggleAlarmSignal( Incidence * );
     void toggleAlarmSignal( const Akonadi::Item & );
 
     /**
      * instructs the receiver to toggle the completion state of the Incidence
      * (which must be a  Todo type).
      */
-    void toggleTodoCompletedSignal( Incidence * );
     void toggleTodoCompletedSignal( const Akonadi::Item & );
 
     /** Dissociate from a recurring incidence the occurrence on the given
      *  date to a new incidence or dissociate all occurrences from the
      *  given date onwards.
      */
-    void dissociateOccurrencesSignal( Incidence *, const QDate & );
+    void dissociateOccurrencesSignal( const Akonadi::Item &, const QDate & );
 
     void startMultiModify( const QString & );
     void endMultiModify();

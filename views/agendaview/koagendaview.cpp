@@ -40,7 +40,6 @@
 #include <akonadi/kcal/utils.h>
 
 #include <KCal/CalFilter>
-#include <KCal/DndFactory>
 
 #include <KCalendarSystem>
 #include <KGlobalSettings>

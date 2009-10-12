@@ -360,7 +360,7 @@ void KOListView::showDates( const QDate &start, const QDate &end )
     date = date.addDays( 1 );
   }
 
-  emit incidenceSelected( 0, QDate() );
+  emit incidenceSelected( Item(), QDate() );
 }
 
 void KOListView::addIncidences( const Item::List &incidenceList, const QDate &date )
