@@ -39,11 +39,20 @@
 
 #include <libkdepim/categoryeditdialog.h>
 
+#include <Akonadi/Item>
+
 #include <KCal/IncidenceBase>
+
+#include <akonadi/kcal/utils.h>
 
 #include <KCMultiDialog>
 #include <KLocale>
 #include <KMessageBox>
+
+using namespace Akonadi;
+using namespace KOrg;
+using namespace KPIM;
+using namespace KCal;
 
 // FIXME: Handle KOEventViewerDialogs in dialog manager.
 // Pass KOPrefs::mCompactDialog.
@@ -113,7 +122,7 @@ KODialogManager::~KODialogManager()
   delete mCategoryEditDialog;
 }
 
-void KODialogManager::errorSaveIncidence( QWidget *parent, Incidence *incidence )
+void KODialogManager::errorSaveIncidence( QWidget *parent, const Incidence::Ptr &incidence )
 {
   KMessageBox::sorry(
     parent,
@@ -206,14 +215,15 @@ void KODialogManager::showFilterEditDialog( QList<CalFilter*> *filters )
   mFilterEditDialog->raise();
 }
 
-KOIncidenceEditor *KODialogManager::getEditor( Incidence *incidence )
+KOIncidenceEditor *KODialogManager::getEditor( const Item &item )
 {
+  const Incidence::Ptr incidence = Akonadi::incidence( item );
   if ( !incidence ) {
     return 0;
   }
 
   EditorDialogVisitor v;
-  if ( v.act( incidence, this ) ) {
+  if ( v.act( incidence.get(), this ) ) {
     return v.editor();
   } else {
     return 0;

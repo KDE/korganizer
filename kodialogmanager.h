@@ -43,18 +43,18 @@ class SearchDialog;
 namespace KOrg {
   class AgendaView;
 }
-using namespace KOrg;
 
 namespace KPIM {
   class CategoryEditDialog;
 }
-using namespace KPIM;
+
+namespace Akonadi {
+  class Item;
+}
 
 namespace KCal {
   class CalFilter;
-  class Incidence;
 }
-using namespace KCal;
 
 /**
   This class manages the dialogs used by the calendar view. It owns the objects
@@ -68,7 +68,7 @@ class KODialogManager : public QObject
     virtual ~KODialogManager();
 
     /** Get the appropriate editor for the given incidence */
-    KOIncidenceEditor *getEditor( KCal::Incidence * );
+    KOIncidenceEditor *getEditor( const Akonadi::Item& item );
 
     /** Get an editor dialog for an Event. */
     KOEventEditor *getEventEditor();
@@ -85,7 +85,7 @@ class KODialogManager : public QObject
 
     void connectTypeAhead( KOEventEditor *editor, KOEventView *view );
 
-    static void errorSaveIncidence( QWidget *parent, KCal::Incidence *incidence );
+    static void errorSaveIncidence( QWidget *parent, const KCal::Incidence::Ptr &incidence );
 
   public slots:
     void showOptionsDialog();

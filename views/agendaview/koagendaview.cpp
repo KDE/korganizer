@@ -1473,7 +1473,7 @@ void KOAgendaView::slotTodoDropped( const Item &todoItem, const QPoint &gpos, bo
       todo->setAllDay( allDay );
       todo->setHasDueDate( true );
       if ( !mChanger->addIncidence( todo, this ) ) {
-        KODialogManager::errorSaveIncidence( this, todo.get() );
+        KODialogManager::errorSaveIncidence( this, todo );
       }
     }
   }

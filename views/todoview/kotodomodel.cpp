@@ -333,7 +333,7 @@ QModelIndex KOTodoModel::addTodo( const QString &summary,
 
     //PENDING(AKONADI_PORT) create akonadi item
     if ( !mChanger->addIncidence( todo ) ) {
-      KODialogManager::errorSaveIncidence( 0, todo.get() );
+      KODialogManager::errorSaveIncidence( 0, todo ); //TODO: pass parent
       return QModelIndex();
     }
     //PENDING(AKONADI_PORT) here we will have a problem with adding working async now, so the todo won't be there as of now
@@ -367,7 +367,7 @@ void KOTodoModel::copyTodo( const QModelIndex &index, const QDate &date )
   todo->setDtDue( due );
 
   if ( !mChanger->addIncidence( todo ) ) {
-    KODialogManager::errorSaveIncidence( 0, todo.get() );
+    KODialogManager::errorSaveIncidence( 0, todo ); //TODO: pass parent
   }
 }
 
@@ -924,7 +924,7 @@ bool KOTodoModel::setData( const QModelIndex &index, const QVariant &value, int 
 
     return true;
   } else {
-    KODialogManager::errorSaveIncidence( 0, todo.get() );
+    KODialogManager::errorSaveIncidence( 0, todo ); //TODO pass parent
     return false;
   }
 }

@@ -707,7 +707,7 @@ void CalendarView::incidenceChanged( const Item &oldIncidence_,
         journal->setDescription( description );
 
         if ( !mChanger->addIncidence( journal, this ) ) {
-          KODialogManager::errorSaveIncidence( this, journal.get() );
+          KODialogManager::errorSaveIncidence( this, journal );
           return;
         }
 
@@ -718,7 +718,7 @@ void CalendarView::incidenceChanged( const Item &oldIncidence_,
         journal->setDescription( journal->description().append( '\n' + description ) );
 
         if ( !mChanger->changeIncidence( oldJournal, journalItem ) ) {
-          KODialogManager::errorSaveIncidence( this, journal.get() );
+          KODialogManager::errorSaveIncidence( this, journal );
           return;
         }
       }
@@ -2199,7 +2199,7 @@ bool CalendarView::editIncidence( const Item &item, bool isCounter )
     return false;
   }
 
-  KOIncidenceEditor *incidenceEditor = mDialogManager->getEditor( incidence.get() );
+  KOIncidenceEditor *incidenceEditor = mDialogManager->getEditor( item );
   connectIncidenceEditor( incidenceEditor );
 
   mDialogList.insert( item.id(), incidenceEditor );
@@ -2561,7 +2561,7 @@ void CalendarView::addIncidenceOn( const Item &itemadd, const QDate &dt )
   }
 
   if ( !mChanger->addIncidence( incidence, this ) ) {
-    KODialogManager::errorSaveIncidence( this, incidence.get() );
+    KODialogManager::errorSaveIncidence( this, incidence );
   }
 }
 

@@ -433,7 +433,7 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
 
   IncidenceChangerBase *changer = monthScene()->incidenceChanger();
   if ( !changer || !changer->beginChange( mIncidence ) ) {
-    KODialogManager::errorSaveIncidence( 0, incidence.get() );
+    KODialogManager::errorSaveIncidence( 0, incidence ); //TODO: pass a parent
     return;
   }
 
@@ -460,7 +460,7 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
           mIncidence.setPayload( newInc );
           incidence = Akonadi::incidence( mIncidence );
           if ( !changer->beginChange( mIncidence ) ) {
-            KODialogManager::errorSaveIncidence( 0, incidence.get() );
+            KODialogManager::errorSaveIncidence( 0, incidence ); //TODO pass parent
             return;
           }
         } else {
@@ -490,7 +490,7 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
           incidence = Akonadi::incidence( mIncidence );
 
           if ( !changer->beginChange( mIncidence ) ) {
-            KODialogManager::errorSaveIncidence( 0, incidence.get() );
+            KODialogManager::errorSaveIncidence( 0, incidence ); //TODO: pass parent
             return;
           }
         } else {
