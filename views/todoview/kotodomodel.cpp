@@ -83,7 +83,7 @@ struct KOTodoModel::TodoTreeNode : QObject
   }
 
   /** Checks if it's save to access the todo-pointer of this node. */
-  bool isValid()
+  bool isValid() const
   {
     return Akonadi::hasTodo( mTodo ) && !mToDelete;
   }
