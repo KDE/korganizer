@@ -106,17 +106,7 @@ void KODayMatrix::setCalendar( KOrg::CalendarBase *cal )
 
   mCalendar = cal;
   mCalendar->registerObserver( this );
-  AkonadiCalendar *calres = dynamic_cast<AkonadiCalendar*>( cal );
-  if ( calres ) {
-#if 0 //AKONADI_PORT_DISABLED: not needed any longer
-    connect( calres, SIGNAL(signalResourceAdded(ResourceCalendar *)),
-             SLOT(resourcesChanged()) );
-    connect( calres, SIGNAL(signalResourceModified(ResourceCalendar *)),
-             SLOT(resourcesChanged()) );
-    connect( calres, SIGNAL(signalResourceDeleted(ResourceCalendar *)),
-             SLOT(resourcesChanged()) );
-#endif
-  }
+  //AkonadiCalendar *calres = dynamic_cast<AkonadiCalendar*>( cal );
 
   setAcceptDrops( mCalendar != 0 );
   updateIncidences();

@@ -46,64 +46,6 @@ StdCalendar *StdCalendar::self()
 StdCalendar::StdCalendar()
   : AkonadiCalendar( KSystemTimeZones::local() )
 {
-#if 0 //AKONADI_PORT_DISABLED
-  readConfig();
-  KCal::CalendarResourceManager *manager = resourceManager();
-  if ( manager->isEmpty() ) {
-    KConfig _config( "korganizerrc" );
-    KConfigGroup config(&_config, "General" );
-    QString fileName = config.readPathEntry( "Active Calendar", QString() );
-
-    QString resourceName;
-    QString resoruceType;
-    KCal::ResourceCalendar *defaultResource = 0;
-    if ( !fileName.isEmpty() ) {
-      KUrl url( fileName );
-      if ( url.isLocalFile() ) {
-        kDebug() << "Local resource at" << url;
-        defaultResource = manager->createResource( "file" );
-        if ( defaultResource ) {
-          defaultResource->setValue( "File", url.toLocalFile() );
-        }
-      } else {
-        kDebug() << "Remote Resource at" << url;
-        defaultResource = manager->createResource( "remote" );
-        if ( defaultResource ) {
-          defaultResource->setValue( "URL", url.url() );
-        }
-      }
-      resourceName = i18n( "Active Calendar" );
-    }
-    // No resource created, i.e. no path found in config => use default path
-    if ( !defaultResource ) {
-      fileName = KStandardDirs::locateLocal( "data", "korganizer/std.ics" );
-      kDebug() << "Creating new default local resource at" << fileName;
-      defaultResource = manager->createResource( "file" );
-      if ( defaultResource ) {
-        defaultResource->setValue( "File", fileName );
-      }
-      resourceName = i18n( "Default Calendar" );
-    }
-
-    if ( defaultResource ) {
-      defaultResource->setTimeSpec( KSystemTimeZones::local() );
-      defaultResource->setResourceName( resourceName );
-      manager->add( defaultResource );
-      manager->setStandardResource( defaultResource );
-    }
-
-    // By default, also create a birthday resource
-    KCal::ResourceCalendar *bdayResource = manager->createResource( "birthdays" );
-    if ( bdayResource ) {
-      kDebug() << "Adding Birthdays resource";
-      bdayResource->setTimeSpec( KSystemTimeZones::local() );
-      bdayResource->setResourceName( i18n( "Birthdays" ) );
-      manager->add( bdayResource );
-    } else {
-      kDebug() << "Unable to add a Birthdays calendar";
-    }
-  }
-#endif
 }
 
 StdCalendar::~StdCalendar()
