@@ -27,7 +27,6 @@
 #include "kocore.h"
 #include "koglobals.h"
 #include "koprefs.h"
-#include "stdcalendar.h"
 #include "ui_kogroupwareprefspage.h"
 
 #include <libkdepim/ktimeedit.h>

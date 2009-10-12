@@ -41,7 +41,6 @@
 #include "koviewmanager.h"
 #include "kowindowlist.h"
 #include "reminderclient.h"
-#include "stdcalendar.h"
 #include "akonadicalendar.h"
 #include "akonadicollectionview.h"
 #include "incidenceeditor/koeditorconfig.h"

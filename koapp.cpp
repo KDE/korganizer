@@ -33,7 +33,6 @@
 #include "importdialog.h"
 #include "kocore.h"
 #include "calendarview.h"
-#include "stdcalendar.h"
 
 #include "reminderclient.h"
 

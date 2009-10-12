@@ -29,7 +29,6 @@
 #include "calendarview.h"
 #include "kocore.h"
 #include "korganizerifaceimpl.h"
-#include "stdcalendar.h"
 
 #include <KCal/IncidenceFormatter>
 #include <akonadi/item.h>
