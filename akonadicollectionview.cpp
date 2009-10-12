@@ -86,120 +86,6 @@ AkonadiCollectionView* AkonadiCollectionViewFactory::collectionView() const
   return mAkonadiCollectionView;
 }
 
-#if 0
-ResourceItem::ResourceItem( ResourceCalendar *resource, AkonadiCollectionView *view, QTreeWidget *parent )
-  : QTreeWidgetItem( parent ),
-    mResource( resource ), mView( view ), mBlockStateChange( false ),
-    mIsSubresource( false ), mResourceIdentifier( QString() ),
-    mSubItemsCreated( false ), mIsStandardResource( false ),
-    mIsReloading( false )
-{
-  setFlags( flags() | Qt::ItemIsUserCheckable );
-
-  setText( 0, resource->resourceName() );
-  mResourceColor = KOPrefs::instance()->resourceColor( resource->identifier() );
-  setGuiState();
-
-  if ( mResource->isActive() ) {
-    createSubresourceItems();
-  }
-}
-
-void ResourceItem::createSubresourceItems()
-{
-  const QStringList subresources = mResource->subresources();
-  if ( !subresources.isEmpty() ) {
-    setExpanded( true );
-    // This resource has subresources
-    QStringList::ConstIterator it;
-    for ( it = subresources.constBegin(); it != subresources.constEnd(); ++it ) {
-      if ( !mView->findItemByIdentifier( *it ) ) {
-        new ResourceItem( mResource, *it, mResource->labelForSubresource( *it ),
-                          mView, this );
-      }
-    }
-  }
-  mSubItemsCreated = true;
-}
-
-bool ResourceItem::useColors() const
-{
-  // assign a color, but only if this is a resource that actually
-  // hold items at top level
-  return ( KOPrefs::instance()->agendaViewColors() != KOPrefs::CategoryOnly ||
-           KOPrefs::instance()->monthViewColors()  != KOPrefs::MonthItemCategoryOnly )  &&
-         ( mIsSubresource || ( !mIsReloading && mResource->subresources().isEmpty() ) ||
-           !mResource->canHaveSubresources() );
-}
-
-QVariant ResourceItem::data( int column, int role ) const
-{
-  if ( column == 0 &&
-       role == Qt::DecorationRole &&
-       mResourceColor.isValid() &&
-       useColors() ) {
-    return QVariant( mResourceColor );
-  } else {
-    return QTreeWidgetItem::data( column, role );
-  }
-}
-
-ResourceItem::ResourceItem( KCal::ResourceCalendar *resource, const QString &sub, const QString &label, AkonadiCollectionView *view, ResourceItem *parent )
-
-  : QTreeWidgetItem( parent ), mResource( resource ),
-    mView( view ), mBlockStateChange( false ), mIsSubresource( true ),
-    mSubItemsCreated( false ), mIsStandardResource( false ), mActive( false ),
-    mIsReloading( false )
-{
-  setFlags( flags() | Qt::ItemIsUserCheckable );
-  setText( 0, label );
-  mResourceColor = KOPrefs::instance()->resourceColor( sub );
-  mResourceIdentifier = sub;
-  setGuiState();
-  treeWidget()->setRootIsDecorated( true );
-}
-
-void ResourceItem::stateChange( bool active )
-{
-  if ( mActive == active ) return;
-  if ( mBlockStateChange ) return;
-  if ( mIsSubresource ) {
-    mResource->setSubresourceActive( mResourceIdentifier, active );
-  } else {
-    if ( active ) {
-      if ( mResource->load() ) {
-        mResource->setActive( true );
-        if ( !mSubItemsCreated ) {
-          createSubresourceItems();
-        }
-      }
-    } else {
-      // mView->requestClose must be called before mResource->save() because
-      // save causes closeResource do be called.
-      mView->requestClose( mResource );
-      if ( mResource->save() ) {
-        mResource->setActive( false );
-      }
-    }
-    setExpanded( mResource->isActive() && childCount() > 0 );
-  }
-  setGuiState();
-  mView->emitResourcesChanged();
-}
-
-void ResourceItem::setResourceColor( QColor &color )
-{
-  mResourceColor = color ;
-}
-
-void ResourceItem::setStandardResource( bool std )
-{
-  QFont font = qvariant_cast<QFont>( data( 0, Qt::FontRole ) );
-  font.setBold( std );
-  setData( 0, Qt::FontRole, font );
-}
-#endif
-
 class CollectionProxyModel : public QSortFilterProxyModel
 {
   public:
@@ -257,86 +143,7 @@ AkonadiCollectionView::AkonadiCollectionView( AkonadiCollectionViewFactory *fact
 {
   QVBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->setSpacing( KDialog::spacingHint() );
-#if 0
-  QHBoxLayout *buttonBox = new QHBoxLayout();
-  buttonBox->setSpacing( KDialog::spacingHint() );
-  topLayout->addLayout( buttonBox );
 
-  mListView = new QTreeWidget( this );
-  mListView->setWhatsThis(
-    i18n( "<qt><p>Select on this list the active KOrganizer "
-          "resources. Check the resource box to make it "
-          "active. Use the context menu to add, remove or edit "
-          "resources in the list.</p>"
-          "<p>Events, journal entries and to-dos are retrieved "
-          "and stored on resources. Available "
-          "resources include groupware servers, local files, "
-          "journal entries as blogs on a server, etc...</p>"
-          "<p>If you have more than one active resource, "
-          "when creating incidents you will either automatically "
-          "use the default resource or be prompted "
-          "to select the resource to use.</p></qt>" ) );
-  mListView->setRootIsDecorated( false );
-  mListView->setHeaderLabel( i18n( "Calendars" ) );
-  mListView->header()->hide();
-  topLayout->addWidget( mListView );
-
-  mSelectedParent = 0;
-
-  connect( mListView, SIGNAL(itemDoubleClicked(QTreeWidgetItem *,int)),
-           SLOT(editResource()) );
-  connect( mListView, SIGNAL(itemClicked(QTreeWidgetItem *,int)),
-           SLOT(slotItemClicked(QTreeWidgetItem *,int)) );
-  connect( mListView, SIGNAL(currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)),
-           SLOT(currentChanged()) );
-
-  mListView->setContextMenuPolicy( Qt::CustomContextMenu );
-  connect( mListView, SIGNAL(customContextMenuRequested(const QPoint &)),
-           SLOT(showContextMenu(const QPoint &)) );
-
-  QLabel *calLabel = new QLabel( i18n( "Calendar" ), this );
-  buttonBox->addWidget( calLabel );
-  buttonBox->addStretch( 1 );
-
-  mAddButton = new QToolButton( this );
-  mAddButton->setIcon( KIcon( "list-add" ) );
-  buttonBox->addWidget( mAddButton );
-  mAddButton->setToolTip( i18n( "Add calendar" ) );
-  mAddButton->setWhatsThis(
-                   i18n( "<qt><p>Press this button to add a resource to "
-                         "KOrganizer.</p>"
-                         "<p>Events, journal entries and to-dos are retrieved "
-                         "and stored on resources. Available "
-                         "resources include groupware servers, local files, "
-                         "journal entries as blogs on a server, etc... </p>"
-                         "<p>If you have more than one active resource, "
-                         "when creating incidents you will either automatically "
-                         "use the default resource or be prompted "
-                         "to select the resource to use.</p></qt>" ) );
-  mEditButton = new QToolButton( this );
-  mEditButton->setIcon( KIcon( "document-properties" ) );
-  buttonBox->addWidget( mEditButton );
-  mEditButton->setToolTip( i18n( "Edit calendar settings" ) );
-  mEditButton->setWhatsThis(
-                   i18n( "Press this button to edit the resource currently "
-                         "selected on the KOrganizer resources list above." ) );
-  mDeleteButton = new QToolButton( this );
-  mDeleteButton->setIcon( KIcon( "edit-delete" ) );
-  buttonBox->addWidget( mDeleteButton );
-  mDeleteButton->setToolTip( i18n( "Remove calendar" ) );
-  mDeleteButton->setWhatsThis(
-                   i18n( "Press this button to delete the resource currently "
-                         "selected on the KOrganizer resources list above." ) );
-  mDeleteButton->setDisabled( true );
-  mEditButton->setDisabled( true );
-
-  connect( mAddButton, SIGNAL( clicked() ), SLOT( slotAddButtonClicked() ) );
-  connect( mDeleteButton, SIGNAL( clicked() ), SLOT( removeResource() ) );
-  connect( mEditButton, SIGNAL( clicked() ), SLOT( editResource() ) );
-
-  setMinimumHeight( 50 );
-  mListView->setSortingEnabled( true );
-#else
   Akonadi::CollectionModel *collectionmodel = new Akonadi::CollectionModel( this );
   Akonadi::CollectionFilterProxyModel *collectionproxymodel = new Akonadi::CollectionFilterProxyModel( this );
   collectionproxymodel->setSourceModel( collectionmodel );
@@ -348,6 +155,7 @@ AkonadiCollectionView::AkonadiCollectionView( AkonadiCollectionViewFactory *fact
   mProxyModel->setSourceModel( collectionproxymodel );
 
   mCollectionview = new Akonadi::CollectionView();
+  topLayout->addWidget( mCollectionview );
   mCollectionview->header()->hide();
   mCollectionview->setModel( mProxyModel );
   mCollectionview->setRootIsDecorated( true );
@@ -382,8 +190,6 @@ AkonadiCollectionView::AkonadiCollectionView( AkonadiCollectionViewFactory *fact
   }
   connect( mCollectionview->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)), this, SLOT(selectionChanged()) );
   
-  topLayout->addWidget( mCollectionview );
-#endif
   updateView();
 }
 
