@@ -2139,9 +2139,7 @@ void CalendarView::showIncidenceContext( const Item &item )
   }
   Item::List list;
   list.append( item );
-#ifdef AKONADI_PORT_DISABLED
   viewManager()->currentView()->showIncidences( list, QDate() );
-#endif
 }
 
 bool CalendarView::editIncidence( const Item &item, bool isCounter )

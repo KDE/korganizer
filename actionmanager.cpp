@@ -798,12 +798,6 @@ void ActionManager::writeSettings()
   }
 
   config.sync();
-
-  if ( mCalendarAkonadi ) {
-#if 0 //AKONADI_PORT_DISABLED
-    mCalendarAkonadi->resourceManager()->writeConfig();
-#endif
-  }
 }
 
 void ActionManager::file_new()
@@ -1030,45 +1024,8 @@ bool ActionManager::openURL( const KUrl &url, bool merge )
 
 bool ActionManager::addResource( const KUrl &mUrl )
 {
-#if 0 //AKONADI_PORT_DISABLED
-  CalendarResources *cr = KOrg::StdCalendar::self();
-  CalendarResourceManager *manager = cr->resourceManager();
-  ResourceCalendar *resource = 0;
-  QString name;
-  kDebug() << "URL:" << mUrl;
-  if ( mUrl.isLocalFile() ) {
-    kDebug() << "Local Resource";
-    resource = manager->createResource( "file" );
-    if ( resource )
-      resource->setValue( "File", mUrl.toLocalFile() );
-    name = mUrl.toLocalFile();
-  } else {
-    kDebug() << "Remote Resource";
-    resource = manager->createResource( "remote" );
-    if ( resource ) {
-      resource->setValue( "DownloadURL", mUrl.url() );
-      resource->setReadOnly( true );
-    }
-    name = mUrl.prettyUrl();
-  }
-  if ( resource ) {
-    resource->setTimeSpec( KOPrefs::instance()->timeSpec() );
-    resource->setResourceName( name );
-    manager->add( resource );
-    mMainWindow->showStatusMessage( i18n( "Added calendar for URL '%1'.", name ) );
-    // we have to call resourceAdded manually, because for in-process changes
-    // the dcop signals are not connected, so the resource's signals would not
-    // be connected otherwise
-    if ( mCalendarAkonadi )
-      mCalendarAkonadi->resourceAdded( resource );
-  } else {
-    KMessageBox::error( dialogParent(), i18n( "Unable to create calendar '%1'.", name ) );
-  }
-  return true;
-#else
   AkonadiCalendar *cr = KOrg::StdCalendar::self();
   return cr->addAgent(mUrl);
-#endif
 }
 
 void ActionManager::showStatusMessageOpen( const KUrl &url, bool merge )
@@ -2071,9 +2028,6 @@ bool ActionManager::queryClose()
   } else if ( mCalendarAkonadi ) {
     if ( !mIsClosing ) {
       kDebug() << "!mIsClosing";
-      if ( !saveResourceCalendar() ) {
-        return false;
-      }
 
       // FIXME: Put main window into a state indicating final saving.
       mIsClosing = true;
@@ -2112,38 +2066,6 @@ void ActionManager::saveCalendar()
     mCalendarAkonadi->save();
     // FIXME: Make sure that asynchronous saves don't fail.
   }
-}
-
-bool ActionManager::saveResourceCalendar()
-{
-  if ( !mCalendarAkonadi ) {
-    return false;
-  }
-#if 0 //AKONADI_PORT_DISABLED
-  CalendarResourceManager *m = mCalendarAkonadi->resourceManager();
-  CalendarResourceManager::ActiveIterator it;
-  for ( it = m->activeBegin(); it != m->activeEnd(); ++it ) {
-    if ( (*it)->readOnly() ) {
-      continue;
-    }
-    if ( !(*it)->save() ) {
-      int result = KMessageBox::warningContinueCancel(
-        view(),
-        i18n( "Saving of '%1' failed. Check that the calendar is "
-              "properly configured.\nIgnore problem and save remaining "
-              "resources or cancel save?", (*it)->resourceName() ),
-        i18n( "Save Error" ),
-        KGuiItem( i18n( "Continue Save" ) ),
-        KGuiItem( i18n( "Cancel Save" ) ) );
-      if ( result == KMessageBox::Cancel ) {
-        return false;
-      }
-    }
-  }
-#else
-  kWarning()<<"TODO";
-#endif
-  return true;
 }
 
 void ActionManager::importCalendar( const KUrl &url )

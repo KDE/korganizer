@@ -55,7 +55,6 @@ bool IncidenceChanger::beginChange( const Item &incidence )
 bool IncidenceChanger::sendGroupwareMessage( const Item &aitem,
                                              KCal::iTIPMethod method, bool deleting )
 {
-#ifdef AKONADI_PORT_DISABLED // reenable once this works again (sendIcalMessage, in particular)
   const Incidence::Ptr incidence = Akonadi::incidence( aitem );
   if ( !incidence )
     return false;
@@ -68,7 +67,6 @@ bool IncidenceChanger::sendGroupwareMessage( const Item &aitem,
     // FIXME: Find a widget to use as parent, instead of 0
     return KOGroupware::instance()->sendICalMessage( 0, method, incidence.get(), deleting );
   }
-#endif // AKONADI_PORT_DISABLED
   return true;
 }
 

@@ -92,12 +92,6 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     */
     void saveCalendar();
 
-    /**
-      Save the resource based calendar. Return false if an error occurred and the
-      user decides to not ignore the error. Otherwise it returns true.
-    */
-    bool saveResourceCalendar();
-
   public slots:
     /** Add a new resource
         @param mUrl The url for the new resource. Either a local or a remote

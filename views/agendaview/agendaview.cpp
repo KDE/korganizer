@@ -24,17 +24,7 @@ using namespace KOrg;
 AgendaView::AgendaView( CalendarBase *cal, QWidget *parent )
   : KOEventView( cal, parent )
 {
-  AkonadiCalendar *calres = dynamic_cast<AkonadiCalendar *>( cal );
-  if ( calres ) {
-#if 0 //AKONADI_PORT_DISABLED: not needed any longer
-    connect( calres, SIGNAL(signalResourceAdded(ResourceCalendar *)),
-             SLOT(setUpdateNeeded()) );
-    connect( calres, SIGNAL(signalResourceModified(ResourceCalendar *)),
-             SLOT(setUpdateNeeded()) );
-    connect( calres, SIGNAL(signalResourceDeleted(ResourceCalendar *)),
-             SLOT(setUpdateNeeded()) );
-#endif
-  }
+  //AkonadiCalendar *calres = dynamic_cast<AkonadiCalendar *>( cal );
 }
 
 #include "agendaview.moc"
