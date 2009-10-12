@@ -195,7 +195,6 @@ if(KMAIL_SUPPORTED)
     exportwebdialog.cpp
     kocorehelper.cpp
     incidencechanger.cpp
-    stdcalendar.cpp
     koprefs.cpp kocore.cpp kohelper.cpp koidentitymanager.cpp cellitem.cpp
     akonadicollectionview.cpp
     printing/calprinter.cpp

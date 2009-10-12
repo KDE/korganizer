@@ -62,6 +62,7 @@
 #include <KShortcutsDialog>
 #include <KStandardAction>
 #include <KStandardDirs>
+#include <KSystemTimeZone>
 #include <KTemporaryFile>
 #include <KTipDialog>
 #include <KToggleAction>
@@ -238,7 +239,7 @@ void ActionManager::init()
 
 void ActionManager::createCalendarAkonadi()
 {
-  mCalendarAkonadi = KOrg::StdCalendar::self();
+  mCalendarAkonadi = new AkonadiCalendar( KSystemTimeZones::local() );
   setDestinationPolicy();
 
   mCalendarView->setCalendar( mCalendarAkonadi );
@@ -1024,8 +1025,10 @@ bool ActionManager::openURL( const KUrl &url, bool merge )
 
 bool ActionManager::addResource( const KUrl &mUrl )
 {
-  AkonadiCalendar *cr = KOrg::StdCalendar::self();
-  return cr->addAgent(mUrl);
+  if ( mCalendarAkonadi )
+    return mCalendarAkonadi->addAgent(mUrl);
+  else
+    return false;
 }
 
 void ActionManager::showStatusMessageOpen( const KUrl &url, bool merge )
