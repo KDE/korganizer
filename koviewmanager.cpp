@@ -229,44 +229,44 @@ void KOViewManager::connectView( KOrg::BaseView *view )
   }
 
   // selecting an incidence
-  connect( view, SIGNAL(incidenceSelected(const Akonadi::Item &, const QDate &)),
-           mMainView, SLOT(processMainViewSelection(const Akonadi::Item &, const QDate &)) );
+  connect( view, SIGNAL(incidenceSelected(Akonadi::Item,QDate)),
+           mMainView, SLOT(processMainViewSelection(Akonadi::Item,QDate)) );
 
   // showing/editing/deleting an incidence. The calendar view takes care of the action.
-  connect( view, SIGNAL(showIncidenceSignal(Incidence *)),
-           mMainView, SLOT(showIncidence(Incidence *)) );
-  connect( view, SIGNAL(editIncidenceSignal(Incidence *)),
-           mMainView, SLOT(editIncidence(Incidence *)) );
-  connect( view, SIGNAL(deleteIncidenceSignal(Incidence *)),
-           mMainView, SLOT(deleteIncidence(Incidence *)) );
-  connect( view, SIGNAL(copyIncidenceSignal(Incidence *)),
-           mMainView, SLOT(copyIncidence(Incidence *)) );
-  connect( view, SIGNAL(cutIncidenceSignal(Incidence *)),
-           mMainView, SLOT(cutIncidence(Incidence *)) );
+  connect( view, SIGNAL(showIncidenceSignal(Akonadi::Item)),
+           mMainView, SLOT(showIncidence(Akonadi::Item)) );
+  connect( view, SIGNAL(editIncidenceSignal(Akonadi::Item)),
+           mMainView, SLOT(editIncidence(Akonadi::Item)) );
+  connect( view, SIGNAL(deleteIncidenceSignal(Akonadi::Item)),
+           mMainView, SLOT(deleteIncidence(Akonadi::Item)) );
+  connect( view, SIGNAL(copyIncidenceSignal(Akonadi::Item)),
+           mMainView, SLOT(copyIncidence(Akonadi::Item)) );
+  connect( view, SIGNAL(cutIncidenceSignal(Akonadi::Item)),
+           mMainView, SLOT(cutIncidence(Akonadi::Item)) );
   connect( view, SIGNAL(pasteIncidenceSignal()),
            mMainView, SLOT(pasteIncidence()) );
-  connect( view, SIGNAL(toggleAlarmSignal(Incidence *)),
-           mMainView, SLOT(toggleAlarm(Incidence *)) );
-  connect( view, SIGNAL(toggleTodoCompletedSignal(Incidence *)),
-           mMainView, SLOT(toggleTodoCompleted(Incidence *)) );
-  connect( view, SIGNAL(dissociateOccurrencesSignal(Incidence *,const QDate &)),
-           mMainView, SLOT(dissociateOccurrences(Incidence *,const QDate &)) );
+  connect( view, SIGNAL(toggleAlarmSignal(Akonadi::Item)),
+           mMainView, SLOT(toggleAlarm(Akonadi::Item)) );
+  connect( view, SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)),
+           mMainView, SLOT(toggleTodoCompleted(Akonadi::Item)) );
+  connect( view, SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)),
+           mMainView, SLOT(dissociateOccurrences(Akonadi::Item,QDate)) );
 
   // signals to create new incidences
   connect( view, SIGNAL(newEventSignal()),
            mMainView, SLOT(newEvent()) );
-  connect( view, SIGNAL(newEventSignal(const QDateTime &)),
-           mMainView, SLOT(newEvent(const QDateTime &)) );
-  connect( view, SIGNAL(newEventSignal(const QDateTime &, const QDateTime &)),
-           mMainView, SLOT(newEvent(const QDateTime &,const QDateTime &)) );
-  connect( view, SIGNAL(newEventSignal(const QDate &)),
-           mMainView, SLOT(newEvent(const QDate &)) );
-  connect( view, SIGNAL(newTodoSignal(const QDate &)),
-           mMainView, SLOT(newTodo(const QDate &)) );
+  connect( view, SIGNAL(newEventSignal(QDateTime)),
+           mMainView, SLOT(newEvent(QDateTime)) );
+  connect( view, SIGNAL(newEventSignal(QDateTime, QDateTime)),
+           mMainView, SLOT(newEvent(QDateTime,QDateTime)) );
+  connect( view, SIGNAL(newEventSignal(QDate)),
+           mMainView, SLOT(newEvent(QDate)) );
+  connect( view, SIGNAL(newTodoSignal(QDate)),
+           mMainView, SLOT(newTodo(QDate)) );
   connect( view, SIGNAL(newSubTodoSignal(Todo *)),
            mMainView, SLOT(newSubTodo(Todo *)) );
-  connect( view, SIGNAL(newJournalSignal(const QDate &)),
-           mMainView, SLOT(newJournal(const QDate &)) );
+  connect( view, SIGNAL(newJournalSignal(QDate)),
+           mMainView, SLOT(newJournal(QDate)) );
 
   // reload settings
   connect( mMainView, SIGNAL(configChanged()), view, SLOT(updateConfig()) );
