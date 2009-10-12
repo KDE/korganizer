@@ -40,6 +40,10 @@ class KOEditorGeneralEvent;
 class KOEditorRecurrence;
 class KOEditorRecurrenceDialog;
 
+namespace Akonadi {
+  class Item;
+}
+
 /**
   This class provides a dialog for editing an event.
 */
@@ -95,7 +99,7 @@ class INCIDENCEEDITOR_EXPORT KOEventEditor : public KOIncidenceEditor
     /**
       Write event settings to event object
     */
-    void fillEvent( KCal::Event* event );
+    void fillEvent( const Akonadi::Item &item );
 
     QObject *typeAheadReceiver() const;
 
@@ -133,7 +137,8 @@ class INCIDENCEEDITOR_EXPORT KOEventEditor : public KOIncidenceEditor
     // Event which represents the initial dialog setup when creating a new event.
     // If cancel is pressed and the dialog has different information than
     // this event then the user will be asked if he really wants to cancel
-    Event mInitialEvent;
+    Event::Ptr mInitialEvent;
+    Akonadi::Item mInitialEventItem;
 
     KOrg::CalendarBase *mCalendar;
 

@@ -37,6 +37,10 @@ class QDateTime;
 class KOEditorGeneralTodo;
 class KOEditorRecurrence;
 
+namespace Akonadi {
+  class Item;
+}
+
 /**
   This class provides a dialog for editing a Todo.
 */
@@ -86,7 +90,7 @@ class INCIDENCEEDITOR_EXPORT KOTodoEditor : public KOIncidenceEditor
     void readTodo( const Akonadi::Item &, bool tmpl = false );
 
     /** Write To-do settings to todo object */
-    void fillTodo( Todo* todo );
+    void fillTodo( const Akonadi::Item &item );
 
     /** Check if the input is valid. */
     bool validateInput();
@@ -120,7 +124,8 @@ class INCIDENCEEDITOR_EXPORT KOTodoEditor : public KOIncidenceEditor
     // Todo which represents the initial dialog setup when creating a new todo.
     // If cancel is pressed and the dialog has different information than
     // this todo then the user will be asked if he really wants to cancel
-    Todo mInitialTodo;
+    Todo::Ptr mInitialTodo;
+    Akonadi::Item mInitialTodoItem;
 
     Todo::Ptr mRelatedTodo;
 

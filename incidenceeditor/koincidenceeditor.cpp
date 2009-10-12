@@ -159,25 +159,24 @@ void KOIncidenceEditor::closeEvent( QCloseEvent *event )
   slotButtonClicked( KDialog::Cancel );
 }
 
-void KOIncidenceEditor::cancelRemovedAttendees( Incidence* incidence )
+void KOIncidenceEditor::cancelRemovedAttendees( const Akonadi::Item &item )
 {
+  const KCal::Incidence::Ptr incidence = item.hasPayload<KCal::Incidence::Ptr>() ? item.payload<KCal::Incidence::Ptr>() : KCal::Incidence::Ptr();
   if ( !incidence ) {
     return;
   }
 
   // cancelAttendeeIncidence removes all attendees from the incidence,
   // and then only adds those that need to be canceled (i.e. a mail needs to be sent to them).
-#ifdef AKONADI_PORT_DISABLED
   const bool thatIsMe = KOEditorConfig::instance()->thatIsMe( incidence->organizer().email() );
   if ( thatIsMe ) {
     Incidence::Ptr inc( incidence->clone() );
     inc->registerObserver( 0 );
     mAttendeeEditor->cancelAttendeeIncidence( inc.get() );
     if ( inc->attendeeCount() > 0 ) {
-      emit deleteAttendee( inc.get() );
+      emit deleteAttendee( item );
     }
   }
-#endif
 }
 
 void KOIncidenceEditor::slotManageTemplates()

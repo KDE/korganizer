@@ -55,6 +55,8 @@ KOTodoEditor::KOTodoEditor( CalendarBase *calendar, QWidget *parent )
   : KOIncidenceEditor( QString(), calendar, parent ),
     mTodo(), mCalendar( 0 ), mRelatedTodo()
 {
+  mInitialTodo = Todo::Ptr( new Todo );
+  mInitialTodoItem.setPayload(mInitialTodo);
 }
 
 KOTodoEditor::~KOTodoEditor()
@@ -64,24 +66,23 @@ KOTodoEditor::~KOTodoEditor()
 
 bool KOTodoEditor::incidenceModified()
 {
-  const Todo::Ptr todo = Akonadi::todo( mTodo );
   Todo::Ptr oldTodo;
-  bool modified;
-
   if ( todo ) { // modification
-    oldTodo.reset( todo->clone() );
+    oldTodo = Akonadi::todo( mTodo );
   } else { // new one
     // don't remove .clone(), it's on purpose, clone() strips relation attributes
     // if you compare a non-cloned parent to-do with a cloned to-do you will always
     // get false, so we use clone() in both cases.
-    oldTodo.reset( mInitialTodo.clone() );
+    oldTodo = mInitialTodo;
   }
 
   Todo::Ptr newTodo( oldTodo->clone() );
-  fillTodo( newTodo.get() );
+  
+  Akonadi::Item newTodoItem;
+  newTodoItem.setPayload(newTodo);
+  fillTodo( newTodoItem );
 
-  modified = !( *newTodo == *oldTodo );
-
+  const bool modified = !( *newTodo == *oldTodo );
   return modified;
 }
 
@@ -211,14 +212,15 @@ bool KOTodoEditor::processInput()
     Todo::Ptr oldTodo( Akonadi::todo( mTodo )->clone() );
     Todo::Ptr todo( Akonadi::todo( mTodo )->clone() );
 
-    fillTodo( todo.get() );
+    Akonadi::Item todoItem;
+    todoItem.setPayload(todo);
+    fillTodo( todoItem );
 
     if( *oldTodo == *todo ) {
       // Don't do anything cause no changes where done
     } else {
       Akonadi::todo( mTodo )->startUpdates(); //merge multiple mTodo->updated() calls into one
-      
-      fillTodo( Akonadi::todo( mTodo ).get() );
+      fillTodo(mTodo);
       rc = mChanger->changeIncidence( oldTodo, mTodo );
       Akonadi::todo( mTodo )->endUpdates();
     }
@@ -230,7 +232,10 @@ bool KOTodoEditor::processInput()
                               KOEditorConfig::instance()->email() ) );
     mTodo.setPayload( td );
 
-    fillTodo( td.get() );
+    Akonadi::Item tdItem;
+    tdItem.setPayload(td);
+    fillTodo( tdItem );
+    
     if ( !mChanger->addIncidence( td, this ) ) {
       mTodo = Item();
       return false;
@@ -292,13 +297,14 @@ void KOTodoEditor::readTodo( const Item &todoItem, bool tmpl )
   readDesignerFields( todoItem );
 }
 
-void KOTodoEditor::fillTodo( Todo* todo )
+void KOTodoEditor::fillTodo( const Akonadi::Item &item )
 {
+  Todo::Ptr todo = Akonadi::todo(item);
   Incidence::Ptr oldIncidence( todo->clone() );
 
-  mGeneral->fillTodo( todo );
-  mDetails->fillIncidence( todo );
-  mRecurrence->fillIncidence( todo );
+  mGeneral->fillTodo( todo.get() );
+  mDetails->fillIncidence( todo.get() );
+  mRecurrence->fillIncidence( todo.get() );
 
   if ( *( oldIncidence->recurrence() ) != *( todo->recurrence() ) ) {
     todo->setDtDue( todo->dtDue(), true );
@@ -306,14 +312,14 @@ void KOTodoEditor::fillTodo( Todo* todo )
       todo->setDtStart( todo->dtStart() );
     }
   }
-  writeDesignerFields( todo );
+  writeDesignerFields( todo.get() );
 
   // set related incidence, i.e. parent to-do in this case.
   if ( mRelatedTodo ) {
     todo->setRelatedTo( mRelatedTodo.get() );
   }
 
-  cancelRemovedAttendees( todo );
+  cancelRemovedAttendees( item );
 }
 
 bool KOTodoEditor::validateInput()
@@ -365,7 +371,7 @@ QStringList KOTodoEditor::templates() const
 
 void KOTodoEditor::show()
 {
-  fillTodo( &mInitialTodo );
+  fillTodo( mInitialTodoItem );
   KOIncidenceEditor::show();
 }
 

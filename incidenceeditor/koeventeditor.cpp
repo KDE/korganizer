@@ -53,6 +53,8 @@ KOEventEditor::KOEventEditor( KOrg::CalendarBase *calendar, QWidget *parent )
   : KOIncidenceEditor( QString(), calendar, parent ),
     mEvent( 0 ), mCalendar( 0 ), mGeneral( 0 ), mRecurrence( 0 ), mFreeBusy( 0 )
 {
+  mInitialEvent = Event::Ptr( new Event );
+  mInitialEventItem.setPayload(mInitialEvent);
 }
 
 KOEventEditor::~KOEventEditor()
@@ -64,19 +66,19 @@ KOEventEditor::~KOEventEditor()
 
 bool KOEventEditor::incidenceModified()
 {
-  Event *oldEvent = 0;
-  bool modified;
-
+  Event::Ptr oldEvent;
   if ( Akonadi::hasEvent( mEvent ) ) { // modification
-    oldEvent = Akonadi::event( mEvent ).get();
+    oldEvent = Akonadi::event(mEvent);
   } else { // new one
-    oldEvent = &mInitialEvent;
+    oldEvent = mInitialEvent;
   }
 
   Event::Ptr newEvent( oldEvent->clone() );
-  fillEvent( newEvent.get() );
+  Akonadi::Item newEventItem;
+  newEventItem.setPayload(newEvent);
+  fillEvent( newEventItem );
 
-  modified = !( *newEvent == *oldEvent );
+  const bool modified = !( *newEvent == *oldEvent );
   return modified;
 }
 
@@ -270,7 +272,9 @@ bool KOEventEditor::processInput()
     Event::Ptr oldEvent( ev->clone() );
     Event::Ptr event( ev->clone() );
 
-    fillEvent( event.get() );
+    Akonadi::Item eventItem;
+    eventItem.setPayload(event);
+    fillEvent( eventItem );
 
     if ( *event == *oldEvent ) {
       // Don't do anything
@@ -284,7 +288,11 @@ bool KOEventEditor::processInput()
       }
     } else {
       ev->startUpdates(); //merge multiple mEvent->updated() calls into one
-      fillEvent( ev.get() );
+
+      Akonadi::Item evItem;
+      evItem.setPayload(ev);
+      fillEvent( evItem );
+      
       if ( mIsCounter ) {
           // FIXME port to akonadi
 #ifdef AKONADI_PORT_DISABLED
@@ -311,7 +319,9 @@ bool KOEventEditor::processInput()
     newEvent->setOrganizer( Person( KOEditorConfig::instance()->fullName(),
                             KOEditorConfig::instance()->email() ) );
     mEvent.setPayload( newEvent );
-    fillEvent( newEvent.get() );
+
+    fillEvent( mEvent );
+
     if ( !mChanger->addIncidence( newEvent, this ) ) {
       mEvent = Item();
       return false;
@@ -365,18 +375,16 @@ void KOEventEditor::readEvent( const Item& eventItem, bool tmpl )
   }
 }
 
-void KOEventEditor::fillEvent( Event* event )
+void KOEventEditor::fillEvent( const Akonadi::Item &item )
 {
-  mGeneral->fillEvent( event );
+  KCal::Event::Ptr event = Akonadi::event(item);
+  mGeneral->fillEvent( event.get() );
   if ( mFreeBusy ) {
-    mFreeBusy->fillIncidence( event );
+    mFreeBusy->fillIncidence( event.get() );
   }
-
-  cancelRemovedAttendees( event );
-
-  mRecurrence->fillIncidence( event );
-
-  writeDesignerFields( event );
+  cancelRemovedAttendees( item );
+  mRecurrence->fillIncidence( event.get() );
+  writeDesignerFields( event.get() );
 }
 
 bool KOEventEditor::validateInput()
@@ -390,7 +398,6 @@ bool KOEventEditor::validateInput()
   if ( !mRecurrence->validateInput() ) {
     return false;
   }
-
   return true;
 }
 
@@ -426,7 +433,11 @@ QObject *KOEventEditor::typeAheadReceiver() const
 void KOEventEditor::updateRecurrenceSummary()
 {
   Event::Ptr ev( new Event );
-  fillEvent( ev.get() );
+
+  Akonadi::Item evItem;
+  evItem.setPayload(ev);
+  fillEvent( evItem );
+  
   mGeneral->updateRecurrenceSummary( IncidenceFormatter::recurrenceString( ev.get() ) );
 }
 
@@ -440,7 +451,8 @@ void KOEventEditor::selectInvitationCounterProposal( bool enable )
 
 void KOEventEditor::show()
 {
-  fillEvent( &mInitialEvent );
+  
+  fillEvent( mInitialEventItem );
   KOIncidenceEditor::show();
 }
 

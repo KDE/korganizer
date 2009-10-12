@@ -152,7 +152,7 @@ class INCIDENCEEDITOR_EXPORT KOIncidenceEditor : public KPageDialog
 
     virtual void processCancel() {}
 
-    void cancelRemovedAttendees( KCal::Incidence* incidence );
+    void cancelRemovedAttendees( const Akonadi::Item &item );
 
     KOrg::CalendarBase *mCalendar;
 
