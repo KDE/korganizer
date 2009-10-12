@@ -255,7 +255,6 @@ bool KOGroupware::sendICalMessage( QWidget *parent,
                                    Incidence *incidence, bool isDeleting,
                                    bool statusChanged )
 {
-#ifdef AKONADI_PORT_DISABLED
   // If there are no attendees, don't bother
   if ( incidence->attendees().isEmpty() ) {
     return true;
@@ -368,24 +367,22 @@ bool KOGroupware::sendICalMessage( QWidget *parent,
       incidence->setSummary( i18n( "<placeholder>No summary given</placeholder>" ) );
     }
     // Send the mail
+#ifdef AKONADI_PORT_DISABLED
     MailScheduler scheduler( mCalendar );
     scheduler.performTransaction( incidence, method );
+#endif
     return true;
   } else if ( rc == KMessageBox::No ) {
     return true;
   } else {
     return false;
   }
-#else // AKONADI_PORT_DISABLED
-  return false;
-#endif // AKONADI_PORT_DISABLED
 }
 
 void KOGroupware::sendCounterProposal( KOrg::CalendarBase *calendar,
                                        KCal::Event *oldEvent,
                                        KCal::Event *newEvent ) const
 {
-#ifdef AKONADI_PORT_DISABLED
   if ( !oldEvent || !newEvent || *oldEvent == *newEvent ||
        !KOPrefs::instance()->mUseGroupwareCommunication ) {
     return;
@@ -397,14 +394,17 @@ void KOGroupware::sendCounterProposal( KOrg::CalendarBase *calendar,
     tmp->addComment( i18n( "Proposed new meeting time: %1 - %2",
                            IncidenceFormatter::dateToString( newEvent->dtStart() ),
                            IncidenceFormatter::dateToString( newEvent->dtEnd() ) ) );
+#ifdef AKONADI_PORT_DISABLED
     MailScheduler scheduler( calendar );
     scheduler.performTransaction( tmp, KCal::iTIPReply );
+#endif
     delete tmp;
   } else {
+#ifdef AKONADI_PORT_DISABLED
     MailScheduler scheduler( calendar );
     scheduler.performTransaction( newEvent, iTIPCounter );
+#endif
   }
-#endif // AKONADI_PORT_DISABLED
 }
 
 #include "kogroupware.moc"
