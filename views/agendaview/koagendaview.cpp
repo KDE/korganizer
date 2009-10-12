@@ -1483,15 +1483,8 @@ void KOAgendaView::slotTodoDropped( const Item &todoItem, const QPoint &gpos, bo
 
 void KOAgendaView::startDrag( const Item &incidence )
 {
-#ifndef KORG_NODND
-#ifdef AKONADI_PORT_DISABLED
-  DndFactory factory( calendar() );
-  QDrag *drag = factory.createDrag( incidence, this );
-  if ( drag->start() ) {
-    kDebug() << "Delete drag source";
-  }
-#endif
-#endif
+  if ( QDrag *drag = Akonadi::createDrag( incidence, calendar()->timeSpec(), this ) )
+    drag->exec();
 }
 
 void KOAgendaView::readSettings()
