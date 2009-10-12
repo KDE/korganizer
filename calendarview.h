@@ -331,7 +331,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
       @param force If true, all recurrences and sub-todos (if applicable) will be
                    deleted without prompting for confirmation.
     */
-    void deleteIncidence( const Akonadi::Item &item, bool force=false );
+    bool deleteIncidence( const Akonadi::Item &item, bool force=false );
     bool deleteIncidence( const Akonadi::Item::Id &uid, bool force=false );
     void deleteIncidence();
 

@@ -1231,8 +1231,7 @@ bool CalendarView::deleteIncidence( const Item::Id &uid, bool force )
   if ( !item.isValid() || !item.hasPayload<Incidence::Ptr>() ) {
     return false;
   }
-  deleteIncidence( item, force );
-  return true;
+  return deleteIncidence( item, force );
 }
 
 void CalendarView::toggleAlarm( const Item &item )
@@ -2258,14 +2257,14 @@ void CalendarView::deleteTodoIncidence ( const Item& todoItem, bool force )
   endMultiModify();
 }
 
-void CalendarView::deleteIncidence( const Item &item, bool force )
+bool CalendarView::deleteIncidence( const Item &item, bool force )
 {
   Incidence::Ptr incidence = Akonadi::incidence( item );
   if ( !incidence || !mChanger ) {
     if ( !force ) {
       KNotification::beep();
     }
-    return;
+    return false;
   }
   if ( incidence->isReadOnly() ) {
     if ( !force ) {
@@ -2277,7 +2276,7 @@ void CalendarView::deleteIncidence( const Item &item, bool force )
                                 i18n( "Removing not possible" ),
                                 "deleteReadOnlyIncidence" );
     }
-    return;
+    return false;
   }
 
   CanDeleteIncidenceVisitor v( item );
@@ -2285,13 +2284,13 @@ void CalendarView::deleteIncidence( const Item &item, bool force )
   // Let the visitor do special things for special incidence types.
   // e.g. todos with children cannot be deleted, so act(..) returns false
   if ( !v.act( incidence.get(), this ) ) {
-    return;
+    return false;
   }
   //If it is a todo, there are specific delete function
 
   if ( incidence && incidence->type() == "Todo" ) {
     deleteTodoIncidence( item, force );
-    return;
+    return true;
   }
 
   if ( incidence->recurs() ) {
@@ -2380,6 +2379,7 @@ void CalendarView::deleteIncidence( const Item &item, bool force )
       processIncidenceSelection( Item(), QDate() );
     }
   }
+  return true;
 }
 
 void CalendarView::connectIncidenceEditor( KOIncidenceEditor *editor )
