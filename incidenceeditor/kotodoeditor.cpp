@@ -67,7 +67,7 @@ KOTodoEditor::~KOTodoEditor()
 bool KOTodoEditor::incidenceModified()
 {
   Todo::Ptr oldTodo;
-  if ( todo ) { // modification
+  if ( Akonadi::hasTodo( mTodo ) ) { // modification
     oldTodo = Akonadi::todo( mTodo );
   } else { // new one
     // don't remove .clone(), it's on purpose, clone() strips relation attributes
