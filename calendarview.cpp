@@ -1115,13 +1115,12 @@ bool CalendarView::addIncidence( const QString &ical )
   ICalFormat format;
   format.setTimeSpec( mCalendar->timeSpec() );
   Incidence::Ptr incidence( format.fromString( ical ) );
-  if ( !incidence ) {
-    return false;
-  }
-  if ( !mChanger->addIncidence( incidence, this ) ) {
-    return false;
-  }
-  return true;
+  return addIncidence(incidence);
+}
+
+bool CalendarView::addIncidence( const Incidence::Ptr &incidence )
+{
+  return incidence ? mChanger->addIncidence( incidence, this ) : false;
 }
 
 void CalendarView::appointment_show()
@@ -1226,19 +1225,14 @@ bool CalendarView::makeSubTodosIndependents ( const Item &todoItem )
 #endif
 }
 
-bool CalendarView::deleteIncidence( const QString &uid, bool force )
+bool CalendarView::deleteIncidence( const Item::Id &uid, bool force )
 {
-#ifdef AKONADI_PORT_DISABLED
-  Incidence *inc = mCalendar->incidence( uid );
-  if ( inc ) {
-    deleteIncidence( inc, force );
-    return true;
-  } else {
+  Akonadi::Item item = mCalendar->incidenceFORAKONADI( uid );
+  if ( !item.isValid() || !item.hasPayload<Incidence::Ptr>() ) {
     return false;
   }
-#else
-  return false;
-#endif
+  deleteIncidence( item, force );
+  return true;
 }
 
 void CalendarView::toggleAlarm( const Item &item )
@@ -2062,41 +2056,30 @@ void CalendarView::editIncidence()
   editIncidence( selectedIncidence() );
 }
 
-bool CalendarView::editIncidence( const QString &uid )
+bool CalendarView::editIncidence( const Item::Id &uid )
 {
-#ifdef AKONADI_PORT_DISABLED // selectedIncidences
-  return editIncidence( mCalendar->incidence( uid ) );
-#else
-  return false;
-#endif
+  Akonadi::Item item = mCalendar->incidenceFORAKONADI( uid );
+  return editIncidence( item );
 }
 
-bool CalendarView::showIncidence( const QString &uid )
+bool CalendarView::showIncidence( const Item::Id &uid )
 {
-#ifdef AKONADI_PORT_DISABLED // selectedIncidences
-  Incidence *incidence = mCalendar->incidence( uid );
-  if ( !incidence ) {
+  Akonadi::Item item = mCalendar->incidenceFORAKONADI( uid );
+  if ( !item.isValid() || !item.hasPayload<Incidence::Ptr>() ) {
     return false;
   }
-  showIncidence( incidence );
+  showIncidence( item );
   return true;
-#else
-  return false;
-#endif
 }
 
-bool CalendarView::showIncidenceContext( const QString &uid )
+bool CalendarView::showIncidenceContext( const Item::Id &uid )
 {
-#ifdef AKONADI_PORT_DISABLED // selectedIncidences
-  Incidence *incidence = mCalendar->incidence( uid );
-  if ( !incidence ) {
+  Akonadi::Item item = mCalendar->incidenceFORAKONADI( uid );
+  if ( !item.isValid() || !item.hasPayload<Incidence::Ptr>() ) {
     return false;
   }
-  showIncidenceContext( incidence );
+  showIncidenceContext( item );
   return true;
-#else
-  return false;
-#endif
 }
 
 void CalendarView::deleteIncidence()

@@ -282,29 +282,6 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     /** Archive old events of calendar */
     void archiveCalendar();
 
-    void showIncidence();
-    void editIncidence();
-    bool editIncidence( const QString &uid );
-    bool showIncidence( const QString &uid );
-
-    /**
-      Show an incidence in context. This means showing the todo, agenda or
-      journal view (as appropriate) and scrolling it to show the incidence.
-      @param uid Unique ID of the incidence to show.
-    */
-    bool showIncidenceContext( const QString &uid );
-    void deleteIncidence();
-
-    /**
-      Add an incidence to the active calendar.
-      @param ical A calendar in iCalendar format containing the incidence. The
-                  calendar must consist of a VCALENDAR component which contains
-                  the incidence (VEVENT, VTODO, VJOURNAL or VFREEBUSY) and
-                  optionally a VTIMEZONE component. If there is more than one
-                  incidence, only the first is added to KOrganizer's calendar.
-    */
-    bool addIncidence( const QString &ical );
-
     void connectIncidenceEditor( KOIncidenceEditor * );
 
     /** create new event without having a date hint. Takes current date as
@@ -331,6 +308,8 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     /** Create a read-only viewer dialog for the supplied incidence.
         It calls the correct showXXX method */
     void showIncidence( const Akonadi::Item& item );
+    bool showIncidence( const Akonadi::Item::Id &uid );
+    void showIncidence();
 
     /**
       Show an incidence in context. This means showing the todo, agenda or
@@ -338,16 +317,34 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
       @param incidence The incidence to show.
     */
     void showIncidenceContext( const Akonadi::Item &incidence );
+    bool showIncidenceContext( const Akonadi::Item::Id &uid );
 
     /** Create an editor for the supplied incidence. It calls the correct editXXX method*/
     bool editIncidence( const Akonadi::Item &item, bool isCounter = false );
+    bool editIncidence( const Akonadi::Item::Id &uid );
+    void editIncidence();
 
     /**
       Delete the supplied incidence. It calls the correct deleteXXX method
       @param force If true, all recurrences and sub-todos (if applicable) will be
                    deleted without prompting for confirmation.
+      @param force If true, all recurrences and sub-todos (if applicable) will be
+                   deleted without prompting for confirmation.
     */
     void deleteIncidence( const Akonadi::Item &item, bool force=false );
+    bool deleteIncidence( const Akonadi::Item::Id &uid, bool force=false );
+    void deleteIncidence();
+
+     /**
+      Add an incidence to the active calendar.
+      @param ical A calendar in iCalendar format containing the incidence. The
+                  calendar must consist of a VCALENDAR component which contains
+                  the incidence (VEVENT, VTODO, VJOURNAL or VFREEBUSY) and
+                  optionally a VTIMEZONE component. If there is more than one
+                  incidence, only the first is added to KOrganizer's calendar.
+    */
+    bool addIncidence( const QString &ical );
+    bool addIncidence( const Incidence::Ptr &incidence );
 
     /**
       Cuts the selected incidence using the edit_cut() method
@@ -382,14 +379,6 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
 
     /** Check if deleting the supplied journal is allowed. */
     bool deleteJournal( const Akonadi::Item & ) { return true; }
-
-    /**
-      Delete the incidence with the given unique ID. Returns false, if event wasn't found.
-      @param uid The UID of the incidence to delete.
-      @param force If true, all recurrences and sub-todos (if applicable) will be
-                   deleted without prompting for confirmation.
-    */
-    bool deleteIncidence( const QString &uid, bool force=false );
 
     /** create new todo */
     void newTodo();

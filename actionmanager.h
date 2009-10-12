@@ -37,6 +37,8 @@
 #include <QDateTime>
 #include <QObject>
 
+#include <akonadi/item.h>
+
 namespace KCal {
   class Calendar;
   class HTMLExportSettings;
@@ -46,10 +48,6 @@ namespace KCal {
 namespace KOrg {
   class CalendarBase;
   class AkonadiCalendar;
-}
-
-namespace Akonadi {
-  class Item;
 }
 
 class AkonadiCollectionView;
@@ -157,25 +155,25 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
       @param force If true, all recurrences and sub-todos (if applicable) will be
                          deleted without prompting for confirmation.
     */
-    virtual bool deleteIncidence( const QString &uid, bool force = false );
+    virtual bool deleteIncidence( const Akonadi::Item::Id &uid, bool force = false );
 
-    bool editIncidence( const QString &uid );
+    bool editIncidence( const Akonadi::Item::Id &uid );
 
     /**
       Add an incidence to the active calendar.
       @param ical A calendar in iCalendar format containing the incidence.
     */
-
     bool addIncidence( const QString &ical );
+    //bool addIncidence( const Akonadi::Item::Id &ical );
 
-    bool showIncidence( const QString &uid );
+    bool showIncidence( const Akonadi::Item::Id &uid );
 
     /**
       Show an incidence in context. This means showing the todo, agenda or
       journal view (as appropriate) and scrolling it to show the incidence.
       @param uid Unique ID of the incidence to show.
     */
-    bool showIncidenceContext( const QString &uid );
+    bool showIncidenceContext( const Akonadi::Item::Id &uid );
 
     //// Implementation of the DCOP interface
     struct ResourceRequestReply {

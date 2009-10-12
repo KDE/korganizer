@@ -83,27 +83,57 @@ QString KOrganizerIfaceImpl::getCurrentURLasString() const
 
 bool KOrganizerIfaceImpl::deleteIncidence( const QString &uid, bool force )
 {
-  return mActionManager->deleteIncidence( uid, force );
+  bool ok;
+  qint64 id = QVariant(uid).toLongLong(&ok);
+  if(! ok) {
+    kWarning() << "Invalid uid"<<uid;
+    return false;
+  }
+  return mActionManager->deleteIncidence( id, force );
 }
 
 bool KOrganizerIfaceImpl::editIncidence( const QString &uid )
 {
-  return mActionManager->editIncidence( uid );
+  bool ok;
+  qint64 id = QVariant(uid).toLongLong(&ok);
+  if(! ok) {
+    kWarning() << "Invalid uid"<<uid;
+    return false;
+  }
+  return mActionManager->editIncidence( id );
 }
 
-bool KOrganizerIfaceImpl::addIncidence( const QString &ical )
+bool KOrganizerIfaceImpl::addIncidence( const QString &uid )
 {
-  return mActionManager->addIncidence( ical );
+  //bool ok;
+  //qint64 id = QVariant(uid).toLongLong(&ok);
+  //if(! ok) {
+  //  kWarning() << "Invalid uid"<<uid;
+  //  return false;
+  //}
+  return mActionManager->addIncidence( uid );
 }
 
 bool KOrganizerIfaceImpl::showIncidence( const QString &uid )
 {
-  return mActionManager->showIncidence( uid );
+  bool ok;
+  qint64 id = QVariant(uid).toLongLong(&ok);
+  if(! ok) {
+    kWarning() << "Invalid uid"<<uid;
+    return false;
+  }
+  return mActionManager->showIncidence( id );
 }
 
 bool KOrganizerIfaceImpl::showIncidenceContext( const QString &uid )
 {
-  return mActionManager->showIncidenceContext( uid );
+  bool ok;
+  qint64 id = QVariant(uid).toLongLong(&ok);
+  if(! ok) {
+    kWarning() << "Invalid uid"<<uid;
+    return false;
+  }
+  return mActionManager->showIncidenceContext( id );
 }
 
 #include "korganizerifaceimpl.moc"

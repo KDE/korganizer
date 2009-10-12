@@ -73,8 +73,6 @@
 #include <QTimer>
 #include <QDebug>
 
-#include <akonadi/item.h>
-
 class KOrganizerEditorConfig : public KOEditorConfig
 {
   public:
@@ -1551,22 +1549,22 @@ QString ActionManager::getCurrentURLasString() const
   return mURL.url();
 }
 
-bool ActionManager::editIncidence( const QString &uid )
+bool ActionManager::editIncidence( const Akonadi::Item::Id &uid )
 {
   return mCalendarView->editIncidence( uid );
 }
 
-bool ActionManager::showIncidence( const QString &uid )
+bool ActionManager::showIncidence( const Akonadi::Item::Id &uid )
 {
   return mCalendarView->showIncidence( uid );
 }
 
-bool ActionManager::showIncidenceContext( const QString &uid )
+bool ActionManager::showIncidenceContext( const Akonadi::Item::Id &uid )
 {
   return mCalendarView->showIncidenceContext( uid );
 }
 
-bool ActionManager::deleteIncidence( const QString &uid, bool force )
+bool ActionManager::deleteIncidence( const Akonadi::Item::Id &uid, bool force )
 {
   return mCalendarView->deleteIncidence( uid, force );
 }
