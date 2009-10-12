@@ -304,7 +304,7 @@ bool IncidenceChanger::changeIncidence( const Incidence::Ptr &oldinc, const Item
         emit incidenceChanged( oldinc, newItem, action );
       }
     } else {
-      // revert changes
+      kDebug() << "Changing incidence failed. Reverting changes.";
       assignIncidence( newinc.get(), oldinc.get() );
       return false;
     }
