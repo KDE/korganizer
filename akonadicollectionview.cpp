@@ -158,7 +158,7 @@ AkonadiCollectionView::AkonadiCollectionView( AkonadiCollectionViewFactory *fact
   topLayout->addWidget( mCollectionview );
   mCollectionview->header()->hide();
   mCollectionview->setModel( mProxyModel );
-  mCollectionview->setRootIsDecorated( true );
+  mCollectionview->setRootIsDecorated( false );
   //mCollectionview->setSelectionMode( QAbstractItemView::NoSelection );
   KXMLGUIClient *xmlclient = KOCore::self()->xmlguiClient( mFactory->view() );
   if( xmlclient ) {
