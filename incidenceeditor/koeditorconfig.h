@@ -27,6 +27,7 @@
 #include "incidenceeditor_export.h"
 
 #include <QtCore/QObject>
+#include <QtCore/QDateTime>
 
 /**
  * Configuration details. An application can inherit from this class
@@ -56,7 +57,14 @@ class INCIDENCEEDITOR_EXPORT KOEditorConfig : public QObject
     virtual QStringList fullEmails() const;
     /// Show timezone selectors in the event and todo editor dialog.
     virtual bool showTimeZoneSelectorInIncidenceEditor() const;
-    
+
+    virtual QDateTime defaultDuration() const { return QDateTime(QDate(1752,1,1), QTime(2,0)); }
+    virtual QDateTime startTime() const { return QDateTime(QDate(1752,1,1), QTime(10,0)); }
+    virtual int reminderTime() const { return 15; }
+    virtual int reminderTimeUnits() const { return 0; }
+    virtual bool defaultTodoReminders() const { return false; }
+    virtual bool defaultEventReminders() const { return false; }
+
   private:
     class Private;
     Private* const d;

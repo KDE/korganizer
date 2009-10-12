@@ -31,10 +31,6 @@
 #include "koeditorrecurrence.h"
 #include "korganizer/incidencechangerbase.h"
 
-#ifdef AKONADI_PORT_DISABLED
-#include "koprefs.h"
-#endif
-
 #include <KCal/IncidenceFormatter>
 
 #include <kiconloader.h>
@@ -199,9 +195,7 @@ void KOTodoEditor::setTexts( const QString &summary, const QString &description,
 void KOTodoEditor::loadDefaults()
 {
   setDates( QDateTime::currentDateTime().addDays(7), true );
-#ifdef AKONADI_PORT_DISABLED
-  mGeneral->toggleAlarm( KOPrefs::instance()->defaultTodoReminders() );
-#endif
+  mGeneral->toggleAlarm( KOEditorConfig::instance()->defaultTodoReminders() );
 }
 
 bool KOTodoEditor::processInput()

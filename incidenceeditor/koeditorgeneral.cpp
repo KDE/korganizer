@@ -24,11 +24,8 @@
 */
 #include "koeditorgeneral.h"
 #include "koeditoralarms.h"
+#include "koeditorconfig.h"
 #include "koeditorattachments.h"
-#ifdef AKONADI_PORT_DISABLED
-#include "koprefs.h"
-#include "koglobals.h"
-#endif
 
 #include <libkdepim/kdateedit.h>
 #include <libkdepim/categoryselectdialog.h>
@@ -345,7 +342,7 @@ void KOEditorGeneral::selectCategories()
 {
 #ifdef AKONADI_PORT_DISABLED
   KPIM::CategorySelectDialog *categoryDialog =
-    new KPIM::CategorySelectDialog( KOPrefs::instance(), mCategoriesButton );
+    new KPIM::CategorySelectDialog( KOEditorConfig::instance(), mCategoriesButton );
   categoryDialog->setHelp( "categories-view", "korganizer" );
   categoryDialog->setButtons( KDialog::Ok | KDialog::Cancel | KDialog::Help );
   categoryDialog->setSelected( mCategories );
@@ -408,15 +405,13 @@ void KOEditorGeneral::setDefaults( bool allDay )
 
 void KOEditorGeneral::updateDefaultAlarmTime()
 {
-#ifdef AKONADI_PORT_DISABLED
-  int reminderTime = KOPrefs::instance()->mReminderTime;
-  int index = KOPrefs::instance()->mReminderTimeUnits;
+  const int reminderTime = KOEditorConfig::instance()->reminderTime();
+  int index = KOEditorConfig::instance()->reminderTimeUnits();
   if ( index < 0 || index > 2 ) {
     index = 0;
   }
   mAlarmTimeEdit->setValue( reminderTime );
   mAlarmIncrCombo->setCurrentIndex( index );
-#endif
 }
 
 void KOEditorGeneral::updateAlarmWidgets()
@@ -424,13 +419,11 @@ void KOEditorGeneral::updateAlarmWidgets()
   if ( mAlarmList.isEmpty() ) {
     mAlarmStack->setCurrentIndex( SimpleAlarmPage );
     bool on = false;
-#ifdef AKONADI_PORT_DISABLED
     if ( mType == "Event" ) {
-      on = KOPrefs::instance()->defaultEventReminders();
+      on = KOEditorConfig::instance()->defaultEventReminders();
     } else if ( mType == "Todo" ) {
-      on = KOPrefs::instance()->defaultTodoReminders();
+      on = KOEditorConfig::instance()->defaultTodoReminders();
     }
-#endif
     mAlarmButton->setChecked( on );
   } else if ( mAlarmList.count() > 1 ) {
     mAlarmEditButton->setEnabled( true );

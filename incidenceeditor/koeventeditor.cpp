@@ -248,14 +248,12 @@ void KOEventEditor::setTexts( const QString &summary, const QString &description
 
 void KOEventEditor::loadDefaults()
 {
-#ifdef AKONADI_PORT_DISABLED
-  QDateTime from( QDate::currentDate(), KOPrefs::instance()->mStartTime.time() );
-  int addSecs = ( KOPrefs::instance()->mDefaultDuration.time().hour() * 3600 ) +
-                ( KOPrefs::instance()->mDefaultDuration.time().minute() * 60 );
+  QDateTime from( QDate::currentDate(), KOEditorConfig::instance()->startTime().time() );
+  int addSecs = ( KOEditorConfig::instance()->defaultDuration().time().hour() * 3600 ) +
+                ( KOEditorConfig::instance()->defaultDuration().time().minute() * 60 );
   QDateTime to( from.addSecs( addSecs ) );
 
   setDates( from, to, false );
-#endif
 }
 
 bool KOEventEditor::processInput()

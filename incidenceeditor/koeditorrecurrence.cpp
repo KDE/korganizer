@@ -23,10 +23,6 @@
 */
 
 #include "koeditorrecurrence.h"
-#ifdef AKONADI_PORT_DISABLED
-#include "koglobals.h"
-#include "koprefs.h"
-#endif
 
 #include <libkdepim/kdateedit.h>
 
