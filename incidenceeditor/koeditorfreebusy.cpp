@@ -914,27 +914,27 @@ void KOEditorFreeBusy::showAttendeeStatusMenu()
   }
 
   KMenu *menu = new KMenu( 0 );
-#ifdef AKONADI_PORT_DISABLED
+
   QAction *needsaction =
-    menu->addAction( KOGlobals::self()->smallIcon( "help-about" ),
+    menu->addAction( SmallIcon( "help-about" ),
                      Attendee::statusName( Attendee::NeedsAction ) );
   QAction *accepted =
-    menu->addAction( KOGlobals::self()->smallIcon( "dialog-ok-apply" ),
+    menu->addAction( SmallIcon( "dialog-ok-apply" ),
                      Attendee::statusName( Attendee::Accepted ) );
   QAction *declined =
-    menu->addAction( KOGlobals::self()->smallIcon( "dialog-cancel" ),
+    menu->addAction( SmallIcon( "dialog-cancel" ),
                      Attendee::statusName( Attendee::Declined ) );
   QAction *tentative =
-    menu->addAction( KOGlobals::self()->smallIcon( "dialog-ok" ),
+    menu->addAction( SmallIcon( "dialog-ok" ),
                      Attendee::statusName( Attendee::Tentative ) );
   QAction *delegated =
-    menu->addAction( KOGlobals::self()->smallIcon( "mail-forward" ),
+    menu->addAction( SmallIcon( "mail-forward" ),
                      Attendee::statusName( Attendee::Delegated ) );
   QAction *completed =
-    menu->addAction( KOGlobals::self()->smallIcon( "mail-mark-read" ),
+    menu->addAction( SmallIcon( "mail-mark-read" ),
                      Attendee::statusName( Attendee::Completed ) );
   QAction *inprocess =
-    menu->addAction( KOGlobals::self()->smallIcon( "help-about" ),
+    menu->addAction( SmallIcon( "help-about" ),
                      Attendee::statusName( Attendee::InProcess ) );
   QAction *ret = menu->exec( QCursor::pos() );
   delete menu;
@@ -955,7 +955,7 @@ void KOEditorFreeBusy::showAttendeeStatusMenu()
   } else {
     return;
   }
-#endif
+
   updateCurrentItem();
   updateAttendeeInput();
 }
