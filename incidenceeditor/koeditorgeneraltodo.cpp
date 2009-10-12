@@ -607,30 +607,4 @@ bool KOEditorGeneralTodo::setAlarmOffset( Alarm *alarm, int value ) const
   }
 }
 
-void KOEditorGeneralTodo::modified( Todo *todo, int modification )
-{
-#ifdef AKONADI_PORT_DISABLED
-  // FIXME is this getting called at all?
-  switch ( modification ) {
-  case KOGlobals::PRIORITY_MODIFIED:
-    mPriorityCombo->setCurrentIndex( todo->priority() );
-    break;
-  case KOGlobals::COMPLETION_MODIFIED:
-    mCompletedCombo->setCurrentIndex( todo->percentComplete() / 10 );
-    if ( todo->isCompleted() && todo->hasCompletedDate() ) {
-      mCompleted = todo->completed().toTimeSpec( KSystemTimeZones::local() ).dateTime();
-    }
-    setCompletedDate();
-    break;
-  case KOGlobals::CATEGORY_MODIFIED:
-    setCategories( todo->categories() );
-    break;
-  case KOGlobals::UNKNOWN_MODIFIED: // fall through
-  default:
-    readTodo( todo );
-    break;
-  }
-#endif
-}
-
 #include "koeditorgeneraltodo.moc"
