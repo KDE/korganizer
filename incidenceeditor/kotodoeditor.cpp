@@ -73,7 +73,7 @@ bool KOTodoEditor::incidenceModified()
     // don't remove .clone(), it's on purpose, clone() strips relation attributes
     // if you compare a non-cloned parent to-do with a cloned to-do you will always
     // get false, so we use clone() in both cases.
-    oldTodo = mInitialTodo;
+    oldTodo = Todo::Ptr( mInitialTodo->clone() );
   }
 
   Todo::Ptr newTodo( oldTodo->clone() );
