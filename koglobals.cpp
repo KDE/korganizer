@@ -89,33 +89,6 @@ KPIM::ReminderClient *KOGlobals::reminderClient() const
   return mReminderClient;
 }
 
-void KOGlobals::fitDialogToScreen( QWidget *wid, bool force )
-{
-  bool resized = false;
-
-  int w = wid->frameSize().width();
-  int h = wid->frameSize().height();
-
-  QRect desk = KGlobalSettings::desktopGeometry( wid );
-  if ( w > desk.width() ) {
-    w = desk.width();
-    resized = true;
-  }
-  // FIXME: ugly hack.  Is the -30 really to circumvent the size of kicker?!
-  if ( h > desk.height() - 30 ) {
-    h = desk.height() - 30;
-    resized = true;
-  }
-
-  if ( resized || force ) {
-    wid->resize( w, h );
-    wid->move( desk.x(), desk.y()+15 );
-    if ( force ) {
-      wid->setFixedSize( w, h );
-    }
-  }
-}
-
 bool KOGlobals::reverseLayout()
 {
   return QApplication::isRightToLeft();

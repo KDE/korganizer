@@ -300,7 +300,6 @@ void KODialogManager::createCategoryEditor()
              mCategoryEditDialog, SLOT(reload()) );
     connect( mCategoryEditDialog, SIGNAL(categoryConfigChanged()),
              mMainView, SIGNAL(categoryConfigChanged()) );
-    KOGlobals::fitDialogToScreen( mCategoryEditDialog );
   }
 }
 

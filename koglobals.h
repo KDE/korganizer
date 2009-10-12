@@ -68,7 +68,6 @@ class KORGANIZERPRIVATE_EXPORT KOGlobals
       BRIGHTNESS_FACTOR = 125
     };
 
-    static void fitDialogToScreen( QWidget *widget, bool force=false );
     KConfig *config() const;
 
     static bool reverseLayout();

@@ -65,10 +65,6 @@ SearchDialog::SearchDialog( KOrg::CalendarBase *calendar, QWidget *parent )
   layout->addWidget( listView );
   mListViewFrame->setLayout( layout );
 
-  if ( KOPrefs::instance()->mCompactDialogs ) {
-    KOGlobals::fitDialogToScreen( this, true );
-  }
-
   connect( this, SIGNAL(user1Clicked()), SLOT(doSearch()) );
 
   // Propagate edit and delete event signals from event list view

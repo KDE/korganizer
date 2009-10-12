@@ -348,7 +348,6 @@ void KOEditorGeneral::selectCategories()
     new KPIM::CategorySelectDialog( KOPrefs::instance(), mCategoriesButton );
   categoryDialog->setHelp( "categories-view", "korganizer" );
   categoryDialog->setButtons( KDialog::Ok | KDialog::Cancel | KDialog::Help );
-  KOGlobals::fitDialogToScreen( categoryDialog );
   categoryDialog->setSelected( mCategories );
 
   connect( categoryDialog, SIGNAL(editCategories()), this, SIGNAL(openCategoryDialog()) );
