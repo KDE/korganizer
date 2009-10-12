@@ -65,24 +65,24 @@ KOEventPopupMenu *KOEventView::eventPopup()
 {
   KOEventPopupMenu *eventPopup = new KOEventPopupMenu;
 
-  connect( eventPopup, SIGNAL(editIncidenceSignal(Incidence *)),
-           SIGNAL(editIncidenceSignal(Incidence *)));
-  connect( eventPopup, SIGNAL(showIncidenceSignal(Incidence *)),
-           SIGNAL(showIncidenceSignal(Incidence *)));
-  connect( eventPopup, SIGNAL(deleteIncidenceSignal(Incidence *)),
-           SIGNAL(deleteIncidenceSignal(Incidence *)));
-  connect( eventPopup, SIGNAL(cutIncidenceSignal(Incidence *)),
-           SIGNAL(cutIncidenceSignal(Incidence *)));
-  connect( eventPopup, SIGNAL(copyIncidenceSignal(Incidence *)),
-           SIGNAL(copyIncidenceSignal(Incidence *)));
+  connect( eventPopup, SIGNAL(editIncidenceSignal(Akonadi::Item)),
+           SIGNAL(editIncidenceSignal(Akonadi::Item)));
+  connect( eventPopup, SIGNAL(showIncidenceSignal(Akonadi::Item)),
+           SIGNAL(showIncidenceSignal(Akonadi::Item)));
+  connect( eventPopup, SIGNAL(deleteIncidenceSignal(Akonadi::Item)),
+           SIGNAL(deleteIncidenceSignal(Akonadi::Item)));
+  connect( eventPopup, SIGNAL(cutIncidenceSignal(Akonadi::Item)),
+           SIGNAL(cutIncidenceSignal(Akonadi::Item)));
+  connect( eventPopup, SIGNAL(copyIncidenceSignal(Akonadi::Item)),
+           SIGNAL(copyIncidenceSignal(Akonadi::Item)));
   connect( eventPopup, SIGNAL(pasteIncidenceSignal()),
            SIGNAL(pasteIncidenceSignal()));
-  connect( eventPopup, SIGNAL(toggleAlarmSignal(Incidence *)),
+  connect( eventPopup, SIGNAL(toggleAlarmSignal(Akonadi::Item)),
            SIGNAL(toggleAlarmSignal(Incidence*)));
-  connect( eventPopup, SIGNAL(toggleTodoCompletedSignal(Incidence *)),
-           SIGNAL(toggleTodoCompletedSignal(Incidence *)));
-  connect( eventPopup, SIGNAL(dissociateOccurrencesSignal(Incidence *,const QDate &)),
-           SIGNAL(dissociateOccurrencesSignal(Incidence *,const QDate &)) );
+  connect( eventPopup, SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)),
+           SIGNAL(toggleTodoCompletedSignal(Akonadi::Item)));
+  connect( eventPopup, SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)),
+           SIGNAL(dissociateOccurrencesSignal(Akonadi::Item,QDate)) );
 
   return eventPopup;
 }

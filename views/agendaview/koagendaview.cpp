@@ -189,8 +189,8 @@ KOAgendaView::KOAgendaView( CalendarBase *cal, QWidget *parent, bool isSideBySid
   mAgendaPopup = eventPopup();
 
   // Scrolling
-  connect( mAgenda, SIGNAL(zoomView(const int,const QPoint &,const Qt::Orientation)),
-           SLOT(zoomView(const int,const QPoint &,const Qt::Orientation)) );
+  connect( mAgenda, SIGNAL(zoomView(const int,QPoint,const Qt::Orientation)),
+           SLOT(zoomView(const int,QPoint,const Qt::Orientation)) );
 
   // Event indicator updates
   connect( mAgenda, SIGNAL(lowerYChanged(int)),
@@ -250,8 +250,8 @@ KOAgendaView::~KOAgendaView()
 void KOAgendaView::connectAgenda( KOAgenda *agenda, QMenu *popup,
                                   KOAgenda *otherAgenda )
 {
-  connect( agenda, SIGNAL(showIncidencePopupSignal(KOrg::CalendarBase *,Incidence *,const QDate &)),
-           popup, SLOT(showIncidencePopup(KOrg::CalendarBase *,Incidence *,const QDate &)) );
+  connect( agenda, SIGNAL(showIncidencePopupSignal(KOrg::CalendarBase *,Akonadi::Item,QDate)),
+           popup, SLOT(showIncidencePopup(KOrg::CalendarBase *,Akonadi::Item,QDate)) );
 
   connect( agenda, SIGNAL(showNewEventPopupSignal()),
            SLOT(showNewEventPopup()) );
@@ -266,12 +266,12 @@ void KOAgendaView::connectAgenda( KOAgenda *agenda, QMenu *popup,
   connect( agenda, SIGNAL(newStartSelectSignal()),
            SIGNAL(timeSpanSelectionChanged()) );
 
-  connect( agenda, SIGNAL(editIncidenceSignal(Incidence *)),
-                   SIGNAL(editIncidenceSignal(Incidence *)) );
-  connect( agenda, SIGNAL(showIncidenceSignal(Incidence *)),
-                   SIGNAL(showIncidenceSignal(Incidence *)) );
-  connect( agenda, SIGNAL(deleteIncidenceSignal(Incidence *)),
-                   SIGNAL(deleteIncidenceSignal(Incidence *)) );
+  connect( agenda, SIGNAL(editIncidenceSignal(Akonadi::Item)),
+                   SIGNAL(editIncidenceSignal(Akonadi::Item)) );
+  connect( agenda, SIGNAL(showIncidenceSignal(Akonadi::Item)),
+                   SIGNAL(showIncidenceSignal(Akonadi::Item)) );
+  connect( agenda, SIGNAL(deleteIncidenceSignal(Akonadi::Item)),
+                   SIGNAL(deleteIncidenceSignal(Akonadi::Item)) );
 
   connect( agenda, SIGNAL(startMultiModify(const QString &)),
                    SIGNAL(startMultiModify(const QString &)) );
@@ -284,8 +284,8 @@ void KOAgendaView::connectAgenda( KOAgenda *agenda, QMenu *popup,
                    SLOT(enableAgendaUpdate(bool)) );
 
   // drag signals
-  connect( agenda, SIGNAL(startDragSignal(Incidence *)),
-           SLOT(startDrag(Incidence *)) );
+  connect( agenda, SIGNAL(startDragSignal(Akonadi::Item)),
+           SLOT(startDrag(Akonadi::Item)) );
 
   // synchronize selections
   connect( agenda, SIGNAL(incidenceSelected(const Akonadi::Item &, const QDate &)),

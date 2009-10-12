@@ -159,12 +159,12 @@ void KODialogManager::showSearchDialog()
 {
   if ( !mSearchDialog ) {
     mSearchDialog = new SearchDialog( mMainView->calendar(), mMainView );
-    connect( mSearchDialog, SIGNAL(showIncidenceSignal(Incidence *)),
-             mMainView, SLOT(showIncidence(Incidence *)) );
-    connect( mSearchDialog, SIGNAL(editIncidenceSignal(Incidence *)),
-             mMainView, SLOT(editIncidence(Incidence *)) );
-    connect( mSearchDialog, SIGNAL(deleteIncidenceSignal(Incidence *)),
-             mMainView, SLOT(deleteIncidence(Incidence *)) );
+    connect( mSearchDialog, SIGNAL(showIncidenceSignal(Akonadi::Item)),
+             mMainView, SLOT(showIncidence(Akonadi::Item)) );
+    connect( mSearchDialog, SIGNAL(editIncidenceSignal(Akonadi::Item)),
+             mMainView, SLOT(editIncidence(Akonadi::Item)) );
+    connect( mSearchDialog, SIGNAL(deleteIncidenceSignal(Akonadi::Item)),
+             mMainView, SLOT(deleteIncidence(Akonadi::Item)) );
     connect( mMainView, SIGNAL(closingDown()),mSearchDialog,SLOT(reject()) );
   }
   // make sure the widget is on top again
@@ -239,22 +239,22 @@ void KODialogManager::connectTypeAhead( KOEventEditor *editor, KOEventView *view
 void KODialogManager::connectEditor( KOIncidenceEditor *editor )
 {
   createCategoryEditor();
-  connect( editor, SIGNAL(deleteIncidenceSignal(Incidence *)),
-           mMainView, SLOT(deleteIncidence(Incidence *)) );
+  connect( editor, SIGNAL(deleteIncidenceSignal(Akonadi::Item)),
+           mMainView, SLOT(deleteIncidence(Akonadi::Item)) );
 
   connect( mCategoryEditDialog, SIGNAL(categoryConfigChanged()),
            editor, SIGNAL(updateCategoryConfig()) );
   connect( editor, SIGNAL(editCategories()),
            mCategoryEditDialog, SLOT(show()) );
 
-  connect( editor, SIGNAL(dialogClose(Incidence *)),
-           mMainView, SLOT(dialogClosing(Incidence *)) );
-  connect( editor, SIGNAL(editCanceled(Incidence *)),
-           mMainView, SLOT(editCanceled(Incidence *)) );
+  connect( editor, SIGNAL(dialogClose(Akonadi::Item)),
+           mMainView, SLOT(dialogClosing(Akonadi::Item)) );
+  connect( editor, SIGNAL(editCanceled(Akonadi::Item)),
+           mMainView, SLOT(editCanceled(Akonadi::Item)) );
   connect( mMainView, SIGNAL(closingDown()), editor, SLOT(reject()) );
 
-  connect( editor, SIGNAL(deleteAttendee(Incidence *)),
-           mMainView, SIGNAL(cancelAttendees(Incidence *)) );
+  connect( editor, SIGNAL(deleteAttendee(Akonadi::Item)),
+           mMainView, SIGNAL(cancelAttendees(Akonadi::Item)) );
 }
 
 KOTodoEditor *KODialogManager::getTodoEditor()

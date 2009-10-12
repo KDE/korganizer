@@ -194,9 +194,9 @@ CalendarView::CalendarView( QWidget *parent )
            mDateNavigator, SLOT(selectDates(const KCal::DateList &)) );
 
   connect( mDateNavigatorContainer, SIGNAL(incidenceDropped(Incidence*, const QDate&)),
-           SLOT(addIncidenceOn(Incidence *,const QDate &)) );
-  connect( mDateNavigatorContainer, SIGNAL(incidenceDroppedMove(Incidence *,const QDate &)),
-           SLOT(moveIncidenceTo(Incidence *,const QDate &)) );
+           SLOT(addIncidenceOn(Akonadi::Item,QDate)) );
+  connect( mDateNavigatorContainer, SIGNAL(incidenceDroppedMove(Akonadi::Item,QDate)),
+           SLOT(moveIncidenceTo(Akonadi::Item,QDate)) );
 
   connect( mDateChecker, SIGNAL(dayPassed(const QDate &)),
            mTodoList, SLOT(dayPassed(const QDate &)) );
