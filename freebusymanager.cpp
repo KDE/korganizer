@@ -37,7 +37,6 @@
 
 #include "freebusymanager.h"
 #include "koprefs.h"
-#include "mailscheduler.h"
 #include "actionmanager.h"
 #include "korganizer.h"
 #include "calendarbase.h"
