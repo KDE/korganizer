@@ -328,9 +328,7 @@ bool IncidenceChanger::addIncidence( const Incidence::Ptr &incidence, QWidget *p
     tmpparent = stdcal->dialogParentWidget();
     stdcal->setDialogParentWidget( parent );
   }
-  Akonadi::Item item;
-  item.setPayload( incidence );
-  bool success = mCalendar->addIncidenceFORAKONADI( item );
+  bool success = mCalendar->addIncidenceFORAKONADI( incidence );
   if ( stdcal ) {
     // Reset the parent widget, otherwise we'll end up with pointers to deleted
     // widgets sooner or later
@@ -356,8 +354,9 @@ bool IncidenceChanger::addIncidence( const Incidence::Ptr &incidence, QWidget *p
       kError() << "sendIcalMessage failed.";
     }
   }
-
+#ifdef AKONADI_PORT_DISABLED // don't notify here, wait for akonadi notification
   emit incidenceAdded( item );
+#endif // AKONADI_PORT_DISABLED
   return true;
 }
 
