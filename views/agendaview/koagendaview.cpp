@@ -1442,6 +1442,7 @@ void KOAgendaView::updateEventIndicatorBottom( int newY )
 
 void KOAgendaView::slotTodoDropped( const Item &todoItem, const QPoint &gpos, bool allDay )
 {
+#ifdef AKONADI_PORT_DISABLED //this should probably operate on the dropped akonadi item id
   if ( gpos.x() < 0 || gpos.y() < 0 ) {
     return;
   }
@@ -1477,6 +1478,7 @@ void KOAgendaView::slotTodoDropped( const Item &todoItem, const QPoint &gpos, bo
       }
     }
   }
+#endif
 }
 
 void KOAgendaView::startDrag( const Item &incidence )

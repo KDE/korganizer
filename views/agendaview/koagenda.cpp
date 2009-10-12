@@ -1010,7 +1010,7 @@ void KOAgenda::endItemAction()
   bool multiModify = false;
   // FIXME: do the cloning here...
   Akonadi::Item inc = mActionItem->incidence();
-  Incidence::Ptr incidence = Akonadi::incidence( inc );
+  const Incidence::Ptr incidence = Akonadi::incidence( inc );
   mItemMoved = mItemMoved && !( mStartCell.x() == mEndCell.x() &&
                                 mStartCell.y() == mEndCell.y() );
 
@@ -1035,20 +1035,20 @@ void KOAgenda::endItemAction()
         modify = true;
         multiModify = true;
         emit startMultiModify( i18n( "Dissociate event from recurrence" ) );
-        Incidence::Ptr oldInc( incidence );
         Incidence::Ptr oldIncSaved( incidence->clone() );
-        Incidence::Ptr newInc( mCalendar->dissociateOccurrence(
-          oldInc.get(), mActionItem->itemDate(), KOPrefs::instance()->timeSpec() ) );
+        Incidence::Ptr newInc( mCalendar->dissociateOccurrenceFORAKONADI(
+          inc, mActionItem->itemDate(), KOPrefs::instance()->timeSpec() ) );
         if ( newInc ) {
           // don't recreate items, they already have the correct position
           emit enableAgendaUpdate( false );
-          inc.setPayload( incidence );
           mChanger->changeIncidence( oldIncSaved, inc );
+
+#ifdef AKONADI_PORT_DISABLED // this needs to be done when the async item adding is done and we have the real akonadi item
           Akonadi::Item item;
           item.setPayload( newInc );
           mActionItem->setIncidence( item );
-
           mActionItem->dissociateFromMultiItem();
+#endif
           mChanger->addIncidence( newInc, this );
           emit enableAgendaUpdate( true );
         } else {
@@ -1071,16 +1071,17 @@ void KOAgenda::endItemAction()
         modify = true;
         multiModify = true;
         emit startMultiModify( i18n( "Split future recurrences" ) );
-        Incidence::Ptr oldInc = incidence;
         Incidence::Ptr oldIncSaved( incidence->clone() );
-        Incidence::Ptr newInc( mCalendar->dissociateOccurrence(
-          oldInc.get(), mActionItem->itemDate(), KOPrefs::instance()->timeSpec(), false ) );
+        Incidence::Ptr newInc( mCalendar->dissociateOccurrenceFORAKONADI(
+          inc, mActionItem->itemDate(), KOPrefs::instance()->timeSpec(), false ) );
         if ( newInc ) {
           emit enableAgendaUpdate( false );
+#ifdef AKONADI_PORT_DISABLED // this needs to be done when the async item adding is done and we have the real akonadi item
           mActionItem->dissociateFromMultiItem();
           Item item;
           item.setPayload( newInc );
           mActionItem->setIncidence( item );
+#endif
           mChanger->addIncidence( newInc, this );
           emit enableAgendaUpdate( true );
           mChanger->changeIncidence( oldIncSaved, inc );
@@ -1096,9 +1097,10 @@ void KOAgenda::endItemAction()
       default:
         modify = false;
         mActionItem->resetMove();
-        placeSubCells( mActionItem );
+        placeSubCells( mActionItem ); //PENDING(AKONADI_PORT) should this be done after the new item was asynchronously added?
       }
     }
+#ifdef AKONADI_PORT_DISABLED // this needs to be done when the async item adding is done and we have the real akonadi item
 
     if ( modify ) {
       mActionItem->endMove();
@@ -1130,6 +1132,7 @@ void KOAgenda::endItemAction()
       mChanger->endChange( inc );
       emit itemModified( mActionItem );
     }
+#endif
   }
 
   mActionItem = 0;
