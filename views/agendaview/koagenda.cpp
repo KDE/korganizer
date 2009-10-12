@@ -401,8 +401,6 @@ bool KOAgenda::eventFilter ( QObject *object, QEvent *event )
 
 bool KOAgenda::eventFilter_drag( QObject *object, QDropEvent *de )
 {
-#ifndef KORG_NODND
-#ifdef AKONADI_PORT_DISABLED
   // FIXME: Implement dropping of events!
   QPoint viewportPos;
   if ( object != viewport() && object != this ) {
@@ -415,48 +413,44 @@ bool KOAgenda::eventFilter_drag( QObject *object, QDropEvent *de )
   switch ( de->type() ) {
   case QEvent::DragEnter:
   case QEvent::DragMove:
-    if ( ICalDrag::canDecode( md ) || VCalDrag::canDecode( md ) ) {
-
-      DndFactory factory( mCalendar );
-      Todo *todo = factory.createDropTodo( de );
-      if ( todo ) {
-        de->accept();
-        delete todo;
-      } else {
-        de->ignore();
-      }
-      return true;
-    } else {
+    if ( !Akonadi::canDecode( md ) )
       return false;
-    }
+
+    if ( Akonadi::mimeDataHasTodo( md ) )
+      de->accept();
+    else
+      de->ignore();
+    return true;
     break;
   case QEvent::DragLeave:
     return false;
     break;
   case QEvent::Drop:
   {
-    if ( !ICalDrag::canDecode( md ) && !VCalDrag::canDecode( md ) ) {
+    if ( !Akonadi::canDecode( md ) )
       return false;
-    }
 
-    DndFactory factory( mCalendar );
-    Todo *todo = factory.createDropTodo( de );
+    const QList<KUrl> todoUrls = Akonadi::todoItemUrls( md );
+    const QList<Todo::Ptr> todos = Akonadi::todos( md, mCalendar->timeSpec() );
 
-    if ( todo ) {
-      de->setDropAction( Qt::MoveAction );
-      QPoint pos;
-      // FIXME: This is a bad hack, as the viewportToContents seems to be off by
-      // 2000 (which is the left upper corner of the viewport). It works correctly
-      // for agendaItems.
-      if ( object == this ) {
-        pos = viewportPos + QPoint( contentsX(), contentsY() );
-      } else {
-        pos = viewportToContents( viewportPos );
-      }
-      QPoint gpos = contentsToGrid( pos );
-      emit droppedToDo( todo, gpos, mAllDayMode );
-      return true;
+    Q_ASSERT( !todoUrls.isEmpty() || !todos.isEmpty() );
+
+    de->setDropAction( Qt::MoveAction );
+    QPoint pos;
+    // FIXME: This is a bad hack, as the viewportToContents seems to be off by
+    // 2000 (which is the left upper corner of the viewport). It works correctly
+    // for agendaItems.
+    if ( object == this ) {
+      pos = viewportPos + QPoint( contentsX(), contentsY() );
+    } else {
+      pos = viewportToContents( viewportPos );
     }
+    QPoint gpos = contentsToGrid( pos );
+    if ( !todoUrls.isEmpty() )
+      emit droppedToDos( todoUrls, gpos, mAllDayMode );
+    else
+      emit droppedToDos( todos, gpos, mAllDayMode );
+    return true;
   }
   break;
 
@@ -464,9 +458,6 @@ bool KOAgenda::eventFilter_drag( QObject *object, QDropEvent *de )
   default:
     break;
   }
-#endif // AKONADI_PORT_DISABLED
-#endif
-
   return false;
 }
 

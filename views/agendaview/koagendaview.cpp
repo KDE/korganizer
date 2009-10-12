@@ -293,8 +293,10 @@ void KOAgendaView::connectAgenda( KOAgenda *agenda, QMenu *popup,
            SIGNAL(incidenceSelected(const Akonadi::Item &, const QDate &)) );
 
   // rescheduling of todos by d'n'd
-  connect( agenda, SIGNAL(droppedToDo(Todo *,const QPoint &,bool)),
-           SLOT(slotTodoDropped(Todo *,const QPoint &,bool)) );
+  connect( agenda, SIGNAL(droppedToDos(QList<KCal::Todo::Ptr>,const QPoint &,bool)),
+           SLOT(slotTodosDropped(QList<KCal::Todo::Ptr>,const QPoint &,bool)) );
+  connect( agenda, SIGNAL(droppedToDos(QList<KUrl>,const QPoint &,bool)),
+           SLOT(slotTodosDropped(QList<KUrl>,const QPoint &,bool)) );
 
 }
 
@@ -1439,9 +1441,8 @@ void KOAgendaView::updateEventIndicatorBottom( int newY )
   mEventIndicatorBottom->update();
 }
 
-void KOAgendaView::slotTodoDropped( const Item &todoItem, const QPoint &gpos, bool allDay )
-{
-#ifdef AKONADI_PORT_DISABLED //this should probably operate on the dropped akonadi item id
+void KOAgendaView::slotTodosDropped( const QList<KUrl> &items, const QPoint &gpos, bool allDay ) {
+#ifdef AKONADI_PORT_DISABLED // one item -> multiple items, Incidence* -> akonadi item url (we might have to fetch the items here first!)
   if ( gpos.x() < 0 || gpos.y() < 0 ) {
     return;
   }
@@ -1478,6 +1479,27 @@ void KOAgendaView::slotTodoDropped( const Item &todoItem, const QPoint &gpos, bo
     }
   }
 #endif
+}
+
+void KOAgendaView::slotTodosDropped( const QList<Todo::Ptr> &items, const QPoint &gpos, bool allDay )
+{
+  if ( gpos.x() < 0 || gpos.y() < 0 ) {
+    return;
+  }
+
+  QDate day = mSelectedDates[gpos.x()];
+  QTime time = mAgenda->gyToTime( gpos.y() );
+  KDateTime newTime( day, time, KOPrefs::instance()->timeSpec() );
+  newTime.setDateOnly( allDay );
+
+  Q_FOREACH( const Todo::Ptr &todo, items ) {
+    todo->setDtDue( newTime );
+    todo->setAllDay( allDay );
+    todo->setHasDueDate( true );
+    if ( !mChanger->addIncidence( todo, this ) ) {
+      KODialogManager::errorSaveIncidence( this, todo );
+    }
+  }
 }
 
 void KOAgendaView::startDrag( const Item &incidence )

@@ -168,7 +168,8 @@ class KOAgendaView : public KOrg::AgendaView, public KOrg::CalendarBase::Calenda
 
     /** reschedule the todo  to the given x- and y- coordinates.
         Third parameter determines all-day (no time specified) */
-    void slotTodoDropped( const Akonadi::Item & todo, const QPoint &, bool );
+    void slotTodosDropped( const QList<KCal::Todo::Ptr> & todos, const QPoint &, bool );
+    void slotTodosDropped( const QList<KUrl>& todos, const QPoint &, bool );
 
     void enableAgendaUpdate( bool enable );
     void setIncidenceChanger( IncidenceChangerBase *changer );
