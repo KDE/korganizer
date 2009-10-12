@@ -99,6 +99,27 @@ class KOrganizerEditorConfig : public KOEditorConfig
     virtual bool showTimeZoneSelectorInIncidenceEditor() const {
       return KOPrefs::instance()->showTimeZoneSelectorInIncidenceEditor();
     }
+    virtual QDateTime defaultDuration() const {
+      return KOPrefs::instance()->defaultDuration();      
+    }
+    virtual QDateTime startTime() const {
+      return KOPrefs::instance()->startTime();
+    }
+    virtual int reminderTime() const {
+      return KOPrefs::instance()->reminderTime();
+    }
+    virtual int reminderTimeUnits() const {
+      return KOPrefs::instance()->reminderTimeUnits();
+    }
+    virtual bool defaultTodoReminders() const {
+      return KOPrefs::instance()->defaultTodoReminders();
+    }
+    virtual bool defaultEventReminders() const {
+      return KOPrefs::instance()->defaultEventReminders();
+    }
+    virtual QStringList activeDesignerFields() const {
+      return KOPrefs::instance()->activeDesignerFields();
+    }
 };
 
 // FIXME: Several places in the file don't use KConfigXT yet!
