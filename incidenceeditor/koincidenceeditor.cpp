@@ -70,27 +70,18 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
 
   mCalendar = calendar;
 
-#ifdef AKONADI_PORT_DISABLED
-  const bool compactDialogs = KOPrefs::instance()->mCompactDialogs;
-#else
-  const bool compactDialogs = false;
-#endif
-  if ( compactDialogs ) {
-    showButton( Apply, false );
-    showButton( Default, false );
-  } else {
-    setButtonText( Default, i18nc( "@action:button", "Manage &Templates..." ) );
-    setButtonToolTip( Default,
-                      i18nc( "@info:tooltip",
-                             "Apply or create templates for this item" ) );
-    setButtonWhatsThis( Default,
-                        i18nc( "@info:whatsthis",
-                               "Push this button to run a tool that helps "
-                               "you manage a set of templates. Templates "
-                               "can make creating new items easier and faster "
-                               "by putting your favorite default values into "
-                               "the editor automatically." ) );
-  }
+  setButtonText( Default, i18nc( "@action:button", "Manage &Templates..." ) );
+  setButtonToolTip( Default,
+                    i18nc( "@info:tooltip",
+                           "Apply or create templates for this item" ) );
+  setButtonWhatsThis( Default,
+                      i18nc( "@info:whatsthis",
+                             "Push this button to run a tool that helps "
+                             "you manage a set of templates. Templates "
+                             "can make creating new items easier and faster "
+                             "by putting your favorite default values into "
+                             "the editor automatically." ) );
+
   connect( this, SIGNAL(defaultClicked()), SLOT(slotManageTemplates()) );
   connect( this, SIGNAL(finished()), SLOT(delayedDestruct()) );
 }

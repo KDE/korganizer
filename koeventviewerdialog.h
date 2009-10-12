@@ -45,7 +45,7 @@ class KORGANIZER_EVENTVIEWER_EXPORT KOEventViewerDialog : public KDialog
 {
   Q_OBJECT
   public:
-    explicit KOEventViewerDialog( KOrg::CalendarBase *calendar, QWidget *parent = 0, bool compact = false );
+    explicit KOEventViewerDialog( KOrg::CalendarBase *calendar, QWidget *parent = 0);
     virtual ~KOEventViewerDialog();
 
     void setIncidence( Incidence *incidence, const QDate &date )

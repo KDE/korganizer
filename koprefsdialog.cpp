@@ -294,9 +294,6 @@ class KOPrefsDialogTime : public KPrefsModule
         const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
         QString weekDayName = calSys->weekDayName( ( i + weekStart + 6 ) % 7 + 1,
                                                    KCalendarSystem::ShortDayName );
-        if ( KOPrefs::instance()->mCompactDialogs ) {
-          weekDayName = weekDayName.left( 1 );
-        }
         int index = ( i + weekStart + 6 ) % 7;
         mWorkDays[ index ] = new QCheckBox( weekDayName );
         mWorkDays[ index ]->setWhatsThis(

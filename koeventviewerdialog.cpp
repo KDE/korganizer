@@ -27,7 +27,7 @@
 #include "koeventviewer.h"
 #include <KLocale>
 
-KOEventViewerDialog::KOEventViewerDialog( KOrg::CalendarBase *calendar, QWidget *parent, bool compact )
+KOEventViewerDialog::KOEventViewerDialog( KOrg::CalendarBase *calendar, QWidget *parent )
   : KDialog( parent )
 {
   setCaption( i18n( "Event Viewer" ) );
@@ -39,12 +39,8 @@ KOEventViewerDialog::KOEventViewerDialog( KOrg::CalendarBase *calendar, QWidget 
   setMainWidget( mEventViewer );
 
   // FIXME: Set a sensible size (based on the content?).
-  if ( compact ) {
-    setFixedSize( 240, 284 );
-    move( 0, 15 );
-  } else {
-    setMinimumSize( 300, 200 );
-  }
+  setMinimumSize( 300, 200 );
+
   connect( this, SIGNAL(finished()), this, SLOT(delayedDestruct()) );
   connect( this, SIGNAL(user1Clicked()), mEventViewer,
            SLOT(editIncidence()) );

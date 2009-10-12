@@ -118,66 +118,30 @@ void KOTodoEditor::setupGeneral()
 {
   mGeneral = new KOEditorGeneralTodo( mCalendar, this );
 
-#ifdef AKONADI_PORT_DISABLED
-  const bool compactDialogs = KOPrefs::instance()->mCompactDialogs;
-#else
-  const bool compactDialogs = false;
-#endif
-  if ( compactDialogs ) {
-    QFrame *topFrame = new QFrame();
-    addPage( topFrame, i18nc( "@title:tab general to-do settings","General" ) );
+  QFrame *topFrame = new QFrame();
+  addPage( topFrame, i18nc( "@title:tab general to-do settings", "&General" ) );
 
-    QBoxLayout *topLayout = new QVBoxLayout( topFrame );
-    topLayout->setMargin( marginHint() );
-    topLayout->setSpacing( spacingHint() );
+  QBoxLayout *topLayout = new QVBoxLayout( topFrame );
+  topLayout->setSpacing( spacingHint() );
 
-    mGeneral->initHeader( topFrame, topLayout );
-    mGeneral->initTime( topFrame, topLayout );
-    QHBoxLayout *priorityLayout = new QHBoxLayout();
-    topLayout->addItem( priorityLayout );
-    mGeneral->initPriority( topFrame, priorityLayout );
-    topLayout->addStretch( 1 );
+  mGeneral->initHeader( topFrame, topLayout );
+  mGeneral->initTime( topFrame, topLayout );
+  mGeneral->initStatus( topFrame, topLayout );
 
-    QFrame *topFrame2 = new QFrame();
-    addPage( topFrame2, i18nc( "@title:tab", "Details" ) );
+  QBoxLayout *alarmLineLayout = new QHBoxLayout();
+  alarmLineLayout->setSpacing( spacingHint() );
+  topLayout->addItem( alarmLineLayout );
+  mGeneral->initAlarm( topFrame, alarmLineLayout );
+  alarmLineLayout->addStretch( 1 );
 
-    QBoxLayout *topLayout2 = new QVBoxLayout( topFrame2 );
-    topLayout2->setMargin( marginHint() );
-    topLayout2->setSpacing( spacingHint() );
+  mGeneral->initDescription( topFrame, topLayout );
 
-    QHBoxLayout *completionLayout = new QHBoxLayout();
-    topLayout2->addItem( completionLayout );
-    mGeneral->initCompletion( topFrame2, completionLayout );
+  mGeneral->initAttachments( topFrame, topLayout );
+  connect( mGeneral, SIGNAL(openURL(const KUrl&)),
+           this, SLOT(openURL(const KUrl&)) );
+  connect( this, SIGNAL(signalAddAttachments(const QStringList&,const QStringList&,bool)),
+           mGeneral, SLOT(addAttachments(const QStringList&,const QStringList&,bool)) );
 
-    mGeneral->initAlarm( topFrame, topLayout );
-
-    mGeneral->initSecrecy( topFrame2, topLayout2 );
-    mGeneral->initDescription( topFrame2, topLayout2 );
-  } else {
-    QFrame *topFrame = new QFrame();
-    addPage( topFrame, i18nc( "@title:tab general to-do settings", "&General" ) );
-
-    QBoxLayout *topLayout = new QVBoxLayout( topFrame );
-    topLayout->setSpacing( spacingHint() );
-
-    mGeneral->initHeader( topFrame, topLayout );
-    mGeneral->initTime( topFrame, topLayout );
-    mGeneral->initStatus( topFrame, topLayout );
-
-    QBoxLayout *alarmLineLayout = new QHBoxLayout();
-    alarmLineLayout->setSpacing( spacingHint() );
-    topLayout->addItem( alarmLineLayout );
-    mGeneral->initAlarm( topFrame, alarmLineLayout );
-    alarmLineLayout->addStretch( 1 );
-
-    mGeneral->initDescription( topFrame, topLayout );
-
-    mGeneral->initAttachments( topFrame, topLayout );
-    connect( mGeneral, SIGNAL(openURL(const KUrl&)),
-             this, SLOT(openURL(const KUrl&)) );
-    connect( this, SIGNAL(signalAddAttachments(const QStringList&,const QStringList&,bool)),
-             mGeneral, SLOT(addAttachments(const QStringList&,const QStringList&,bool)) );
-  }
   mGeneral->enableAlarm( true );
 
   mGeneral->finishSetup();

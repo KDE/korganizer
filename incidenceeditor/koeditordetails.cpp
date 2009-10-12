@@ -192,14 +192,6 @@ KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent )
   mListView->addColumn( i18nc( "@title:column attendee delegated to", "Delegated To" ), 120 );
   mListView->addColumn( i18nc( "@title:column attendee delegated from", "Delegated From" ), 120 );
   mListView->setResizeMode( Q3ListView::LastColumn );
-#ifdef AKONADI_PORT_DISABLED
-  const bool compactDialogs = KOPrefs::instance()->mCompactDialogs;
-#else
-  const bool compactDialogs = false;
-#endif
-  if ( compactDialogs ) {
-    mListView->setFixedHeight( 78 );
-  }
 
   connect( mListView, SIGNAL(selectionChanged(Q3ListViewItem*)),
            SLOT(updateAttendeeInput()) );

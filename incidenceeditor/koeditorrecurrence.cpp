@@ -51,16 +51,6 @@
 #include <QSpinBox>
 #include <QStackedWidget>
 
-static bool compactDialogs()
-{
-#ifdef AKONADI_PORT_DISABLED
-  const bool compactDialogs = compactDialogs();
-#else
-  const bool compactDialogs = false;
-#endif
-  return compactDialogs;
-}
-
 /////////////////////////// RecurBase ///////////////////////////////
 
 RecurBase::RecurBase( QWidget *parent ) : QWidget( parent )
@@ -205,9 +195,6 @@ RecurWeekly::RecurWeekly( QWidget *parent ) : RecurBase( parent )
                                                KCalendarSystem::ShortDayName );
     QString longDayName = calSys->weekDayName( ( i + weekStart + 6 ) % 7 + 1,
                                                KCalendarSystem::LongDayName );
-    if ( compactDialogs() ) {
-      weekDayName = weekDayName.left( 1 );
-    }
     mDayBoxes[ ( i + weekStart + 6 ) % 7 ] = new QCheckBox( weekDayName, dayBox );
     mDayBoxes[ ( i + weekStart + 6 ) % 7 ]->setWhatsThis(
       i18nc( "@info:whatsthis",
@@ -255,9 +242,7 @@ RecurMonthly::RecurMonthly( QWidget *parent ) : RecurBase( parent )
   buttonLayout->setSpacing( KDialog::spacingHint() );
 
   QString recurOnText;
-  if ( !compactDialogs() ) {
-    recurOnText = i18nc( "@option:radio", "&Recur on the" );
-  }
+  recurOnText = i18nc( "@option:radio", "&Recur on the" );
 
   mByDayRadio = new QRadioButton( recurOnText, buttonGroup );
   mByDayRadio->setWhatsThis( i18nc( "@info:whatsthis",
@@ -435,9 +420,7 @@ RecurYearly::RecurYearly( QWidget *parent ) : RecurBase( parent )
   buttonLayout->addItem( monthLayout );
   QString recurInMonthText(
     i18nc( "@option:radio part before XXX of 'Recur on day XXX of month YYY'", "&Recur on day " ) );
-  if ( compactDialogs() ) {
-    recurInMonthText = i18nc( "@option:radio", "&Day " );
-  }
+
   mByMonthRadio = new QRadioButton( recurInMonthText, buttonGroup );
   mByMonthRadio->setWhatsThis(
     i18nc( "@info:whatsthis",
@@ -468,13 +451,9 @@ RecurYearly::RecurYearly( QWidget *parent ) : RecurBase( parent )
   QBoxLayout *posLayout = new QHBoxLayout();
   buttonLayout->addItem( posLayout );
   QString recurOnPosText(
-    i18nc( "@option:radio Part before XXX in 'Recur on NNN. WEEKDAY of MONTH', short version",
-           "&On" ) );
-  if ( !compactDialogs() ) {
-    recurOnPosText =
       i18nc( "@option:radio Part before XXX in 'Recur on NNN. WEEKDAY of MONTH'",
-             "&On the" );
-  }
+             "&On the" ) );
+
   mByPosRadio = new QRadioButton( recurOnPosText, buttonGroup );
   mByPosRadio->setWhatsThis(
     i18nc( "@info:whatsthis",
@@ -505,11 +484,8 @@ RecurYearly::RecurYearly( QWidget *parent ) : RecurBase( parent )
   QBoxLayout *dayLayout = new QHBoxLayout();
   buttonLayout->addItem( dayLayout );
   QString recurOnDayText;
-  if ( compactDialogs() ) {
-    recurOnDayText = i18nc( "@option:radio", "Day #" );
-  } else {
-    recurOnDayText = i18nc( "@option:radio", "Recur on &day #" );
-  }
+  recurOnDayText = i18nc( "@option:radio", "Recur on &day #" );
+
   QString whatsThis = i18nc( "@info:whatsthis",
                              "Sets a specific day within the year on which "
                              "this event or to-do should recur." );
@@ -526,11 +502,6 @@ RecurYearly::RecurYearly( QWidget *parent ) : RecurBase( parent )
   QString ofTheYear(
     i18nc( "@label part after NNN of 'Recur on day #NNN of the year'",
            " of the &year" ) );
-  if ( compactDialogs() ) {
-    ofTheYear =
-      i18nc( "@label part after NNN of 'Recur on day #NNN of the year', short version",
-             " of the year" );
-  }
   ofLabel = new QLabel( ofTheYear, buttonGroup );
   ofLabel->setWhatsThis( whatsThis );
   dayLayout->addWidget( ofLabel );
@@ -927,62 +898,47 @@ RecurrenceChooser::RecurrenceChooser( QWidget *parent ) : QWidget( parent )
 {
   QBoxLayout *topLayout = new QVBoxLayout( this );
 
-  if ( compactDialogs() ) {
-    mTypeCombo = new KComboBox( this );
-    mTypeCombo->setWhatsThis( i18nc( "@info:whatsthis",
-                                     "Sets the type of recurrence this event "
-                                     "or to-do should have." ) );
-    mTypeCombo->addItem( i18nc( "@item:inlistbox recur daily", "Daily" ) );
-    mTypeCombo->addItem( i18nc( "@item:inlistbox recur weekly", "Weekly" ) );
-    mTypeCombo->addItem( i18nc( "@item:inlistbox recur monthly", "Monthly" ) );
-    mTypeCombo->addItem( i18nc( "@item:inlistbox recur yearly", "Yearly" ) );
+  mTypeCombo = 0;
 
-    topLayout->addWidget( mTypeCombo );
+  QGroupBox *ruleButtonGroup = new QGroupBox( i18nc( "@title:group", "Recurrence Types" ), this );
+  QBoxLayout *buttonLayout = new QVBoxLayout( ruleButtonGroup );
 
-    connect( mTypeCombo, SIGNAL(activated(int)), SLOT(emitChoice()) );
-  } else {
-    mTypeCombo = 0;
+  ruleButtonGroup->setFlat( true );
+  topLayout->addWidget( ruleButtonGroup );
 
-    QGroupBox *ruleButtonGroup = new QGroupBox( i18nc( "@title:group", "Recurrence Types" ), this );
-    QBoxLayout *buttonLayout = new QVBoxLayout( ruleButtonGroup );
+  mDailyButton = new QRadioButton(
+    i18nc( "@option:radio recur daily", "&Daily" ), ruleButtonGroup );
+  mDailyButton->setWhatsThis(
+    i18nc( "@info:whatsthis",
+           "Sets the event or to-do to recur daily "
+           "according to the specified rules." ) );
+  buttonLayout->addWidget( mDailyButton );
+  mWeeklyButton = new QRadioButton(
+    i18nc( "@option:radio recur weekly", "&Weekly" ), ruleButtonGroup );
+  mWeeklyButton->setWhatsThis(
+    i18nc( "@info:whatsthis",
+           "Sets the event or to-do to recur weekly "
+           "according to the specified rules." ) );
+  buttonLayout->addWidget( mWeeklyButton );
+  mMonthlyButton = new QRadioButton(
+    i18nc( "@option:radio recur monthly", "&Monthly" ), ruleButtonGroup );
+  mMonthlyButton->setWhatsThis(
+    i18nc( "@info:whatsthis",
+           "Sets the event or to-do to recur monthly "
+           "according to the specified rules." ) );
+  buttonLayout->addWidget( mMonthlyButton );
+  mYearlyButton = new QRadioButton(
+    i18nc( "@option:radio recur yearly", "&Yearly" ), ruleButtonGroup );
+  mYearlyButton->setWhatsThis(
+    i18nc( "@info:whatsthis",
+           "Sets the event or to-do to recur yearly "
+           "according to the specified rules." ) );
+  buttonLayout->addWidget( mYearlyButton );
 
-    ruleButtonGroup->setFlat( true );
-    topLayout->addWidget( ruleButtonGroup );
-
-    mDailyButton = new QRadioButton(
-      i18nc( "@option:radio recur daily", "&Daily" ), ruleButtonGroup );
-    mDailyButton->setWhatsThis(
-      i18nc( "@info:whatsthis",
-             "Sets the event or to-do to recur daily "
-             "according to the specified rules." ) );
-    buttonLayout->addWidget( mDailyButton );
-    mWeeklyButton = new QRadioButton(
-      i18nc( "@option:radio recur weekly", "&Weekly" ), ruleButtonGroup );
-    mWeeklyButton->setWhatsThis(
-      i18nc( "@info:whatsthis",
-             "Sets the event or to-do to recur weekly "
-             "according to the specified rules." ) );
-    buttonLayout->addWidget( mWeeklyButton );
-    mMonthlyButton = new QRadioButton(
-      i18nc( "@option:radio recur monthly", "&Monthly" ), ruleButtonGroup );
-    mMonthlyButton->setWhatsThis(
-      i18nc( "@info:whatsthis",
-             "Sets the event or to-do to recur monthly "
-             "according to the specified rules." ) );
-    buttonLayout->addWidget( mMonthlyButton );
-    mYearlyButton = new QRadioButton(
-      i18nc( "@option:radio recur yearly", "&Yearly" ), ruleButtonGroup );
-    mYearlyButton->setWhatsThis(
-      i18nc( "@info:whatsthis",
-             "Sets the event or to-do to recur yearly "
-             "according to the specified rules." ) );
-    buttonLayout->addWidget( mYearlyButton );
-
-    connect( mDailyButton, SIGNAL(toggled(bool)), SLOT(emitChoice()) );
-    connect( mWeeklyButton, SIGNAL(toggled(bool)), SLOT(emitChoice()) );
-    connect( mMonthlyButton, SIGNAL(toggled(bool)), SLOT(emitChoice()) );
-    connect( mYearlyButton, SIGNAL(toggled(bool)), SLOT(emitChoice()) );
-  }
+  connect( mDailyButton, SIGNAL(toggled(bool)), SLOT(emitChoice()) );
+  connect( mWeeklyButton, SIGNAL(toggled(bool)), SLOT(emitChoice()) );
+  connect( mMonthlyButton, SIGNAL(toggled(bool)), SLOT(emitChoice()) );
+  connect( mYearlyButton, SIGNAL(toggled(bool)), SLOT(emitChoice()) );
 }
 
 int RecurrenceChooser::type()
@@ -1055,10 +1011,6 @@ KOEditorRecurrence::KOEditorRecurrence( QWidget *parent ) : QWidget( parent )
            "Displays appointment time information." ) );
   topLayout->addWidget( mTimeGroupBox, 1, 0, 1, 2 );
 
-  if ( compactDialogs() ) {
-    mTimeGroupBox->hide();
-  }
-
   QBoxLayout *layoutTimeBox = new QHBoxLayout( mTimeGroupBox );
   layoutTimeBox->setSpacing( KDialog::spacingHint() );
 
@@ -1071,22 +1023,15 @@ KOEditorRecurrence::KOEditorRecurrence( QWidget *parent ) : QWidget( parent )
            "Options concerning the type of recurrence this event "
            "or to-do should have." ) );
   QBoxLayout *boxlayout = new QHBoxLayout( mRuleBox );
-
-  if ( compactDialogs() ) {
-    topLayout->addWidget( mRuleBox, 2, 0 );
-  } else {
-    topLayout->addWidget( mRuleBox, 2, 0, 1, 2 );
-  }
+  topLayout->addWidget( mRuleBox, 2, 0, 1, 2 );
 
   mRecurrenceChooser = new RecurrenceChooser( mRuleBox );
   connect( mRecurrenceChooser, SIGNAL(chosen(int)), SLOT(showCurrentRule(int)) );
   boxlayout->addWidget( mRecurrenceChooser );
 
-  if ( !compactDialogs() ) {
-    QFrame *ruleSepFrame = new QFrame( mRuleBox );
-    ruleSepFrame->setFrameStyle( QFrame::VLine | QFrame::Sunken );
-    boxlayout->addWidget( ruleSepFrame );
-  }
+  QFrame *ruleSepFrame = new QFrame( mRuleBox );
+  ruleSepFrame->setFrameStyle( QFrame::VLine | QFrame::Sunken );
+  boxlayout->addWidget( ruleSepFrame );
 
   mRuleStack = new QStackedWidget( mRuleBox );
   boxlayout->addWidget( mRuleStack );
@@ -1105,44 +1050,21 @@ KOEditorRecurrence::KOEditorRecurrence( QWidget *parent ) : QWidget( parent )
 
   showCurrentRule( mRecurrenceChooser->type() );
 
-  if ( compactDialogs() ) {
-    mRecurrenceRangeWidget = 0;
-    mRecurrenceRangeDialog = new RecurrenceRangeDialog( this );
-    mRecurrenceRange = mRecurrenceRangeDialog;
-    mRecurrenceRangeButton =
-      new QPushButton( i18nc( "@action:button", "Recurrence Range..." ), this );
-    mRecurrenceRangeButton->setWhatsThis(
-      i18nc( "@info:whatsthis",
-             "Options concerning the time range during which "
-             "this event or to-do should recur." ) );
-    topLayout->addWidget( mRecurrenceRangeButton, 3, 0 );
-    connect( mRecurrenceRangeButton, SIGNAL(clicked()), SLOT(showRecurrenceRangeDialog()) );
+  mRecurrenceRangeWidget = new RecurrenceRangeWidget( this );
+  mRecurrenceRangeWidget->setWhatsThis(
+    i18nc( "@info:whatsthis",
+           "Options concerning the time range during which "
+           "this event or to-do should recur." ) );
+  mRecurrenceRangeDialog = 0;
+  mRecurrenceRange = mRecurrenceRangeWidget;
+  mRecurrenceRangeButton = 0;
+  topLayout->addWidget( mRecurrenceRangeWidget, 3, 0 );
 
-    mExceptionsWidget = 0;
-    mExceptionsDialog = new ExceptionsDialog( this );
-    mExceptions = mExceptionsDialog;
-    mExceptionsButton =
-      new QPushButton( i18nc( "@action:button", "Exceptions..." ), this );
-    topLayout->addWidget( mExceptionsButton, 4, 0 );
-    connect( mExceptionsButton, SIGNAL(clicked()), SLOT(showExceptionsDialog()) );
-
-  } else {
-    mRecurrenceRangeWidget = new RecurrenceRangeWidget( this );
-    mRecurrenceRangeWidget->setWhatsThis(
-      i18nc( "@info:whatsthis",
-             "Options concerning the time range during which "
-             "this event or to-do should recur." ) );
-    mRecurrenceRangeDialog = 0;
-    mRecurrenceRange = mRecurrenceRangeWidget;
-    mRecurrenceRangeButton = 0;
-    topLayout->addWidget( mRecurrenceRangeWidget, 3, 0 );
-
-    mExceptionsWidget = new ExceptionsWidget( this );
-    mExceptionsDialog = 0;
-    mExceptions = mExceptionsWidget;
-    mExceptionsButton = 0;
-    topLayout->addWidget( mExceptionsWidget, 3, 1 );
-  }
+  mExceptionsWidget = new ExceptionsWidget( this );
+  mExceptionsDialog = 0;
+  mExceptions = mExceptionsWidget;
+  mExceptionsButton = 0;
+  topLayout->addWidget( mExceptionsWidget, 3, 1 );
 }
 
 KOEditorRecurrence::~KOEditorRecurrence()

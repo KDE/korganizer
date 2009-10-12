@@ -320,11 +320,6 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent )
   // Remove the predefined "Task Name" column
   mGanttView->removeColumn( 0 );
   mGanttView->addColumn( i18nc( "@title:column attendee name", "Attendee" ) );
-#ifdef AKONADI_PORT_DISABLED
-  if ( KOPrefs::instance()->mCompactDialogs ) {
-    mGanttView->setFixedHeight( 78 );
-  }
-#endif
   mGanttView->setHeaderVisible( true );
   mGanttView->setScale( KDGanttView::Hour );
   mGanttView->setShowHeaderPopupMenu( false, false, false, false, false, false );

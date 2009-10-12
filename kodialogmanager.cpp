@@ -55,7 +55,6 @@ using namespace KPIM;
 using namespace KCal;
 
 // FIXME: Handle KOEventViewerDialogs in dialog manager.
-// Pass KOPrefs::mCompactDialog.
 
 class KODialogManager::DialogManagerVisitor : public IncidenceBase::Visitor
 {
