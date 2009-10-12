@@ -204,10 +204,8 @@ bool KOTodoEditor::processInput()
   if ( !validateInput() ) {
     return false;
   }
-//#ifdef AKONADI_PORT_DISABLED //incidenceChanger
 
   if ( Akonadi::hasTodo( mTodo ) ) {
-
     bool rc = true;
     Todo::Ptr oldTodo( Akonadi::todo( mTodo )->clone() );
     Todo::Ptr todo( Akonadi::todo( mTodo )->clone() );
@@ -243,9 +241,6 @@ bool KOTodoEditor::processInput()
   }
 
   return true;
-//#else
-//  return false;
-//#endif
 }
 
 void KOTodoEditor::deleteTodo()

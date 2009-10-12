@@ -241,8 +241,7 @@ void KOIncidenceEditor::slotTemplatesChanged( const QStringList &newTemplates )
 
 void KOIncidenceEditor::setupDesignerTabs( const QString &type )
 {
-#ifdef AKONADI_PORT_DISABLED
-  QStringList activePages = KOPrefs::instance()->activeDesignerFields();
+  QStringList activePages =  KOEditorConfig::instance()->activeDesignerFields();
 
   QStringList list = KGlobal::dirs()->findAllResources(
     "data",
@@ -255,7 +254,6 @@ void KOIncidenceEditor::setupDesignerTabs( const QString &type )
       addDesignerTab( *it );
     }
   }
-#endif
 }
 
 QWidget *KOIncidenceEditor::addDesignerTab( const QString &uifile )

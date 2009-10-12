@@ -27,6 +27,7 @@
 #include "incidenceeditor_export.h"
 
 #include <QtCore/QObject>
+#include <QtCore/QStringList>
 #include <QtCore/QDateTime>
 
 /**
@@ -64,6 +65,7 @@ class INCIDENCEEDITOR_EXPORT KOEditorConfig : public QObject
     virtual int reminderTimeUnits() const { return 0; }
     virtual bool defaultTodoReminders() const { return false; }
     virtual bool defaultEventReminders() const { return false; }
+    virtual QStringList activeDesignerFields() const { return QStringList(); }
 
   private:
     class Private;
