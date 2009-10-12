@@ -257,17 +257,12 @@ void KOJournalEditor::slotSaveTemplate( const QString &templateName )
   fillJournal( journal );
   saveAsTemplate( journal, templateName );
 }
-#endif
 
 QStringList KOJournalEditor::templates() const
 {
-#ifdef AKONADI_PORT_DISABLED
   return KOPrefs::instance()->mJournalTemplates;
-#else
-  static QStringList l;
-  return l;
-#endif
 }
+#endif
 
 void KOJournalEditor::show()
 {

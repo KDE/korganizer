@@ -125,7 +125,6 @@ class INCIDENCEEDITOR_EXPORT KOIncidenceEditor : public KPageDialog
     virtual void closeEvent( QCloseEvent * );
 
     virtual QString type() { return QString(); }
-    virtual QStringList templates() const = 0;
 
     void setupAttendeesTab();
     void setupDesignerTabs( const QString &type );

@@ -122,7 +122,6 @@ class INCIDENCEEDITOR_EXPORT KOJournalEditor : public KOIncidenceEditor
   protected:
     QString type() { return "Journal"; }
     void setupGeneral();
-    QStringList templates() const;
     bool incidenceModified();
 
   private:

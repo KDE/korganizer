@@ -406,19 +406,12 @@ void KOEventEditor::loadTemplate( CalendarLocal &cal )
     readEvent( events.first(), true );
   }
 }
-#endif
 
 QStringList KOEventEditor::templates() const
 {
-#ifdef AKONADI_PORT_DISABLED
   return KOPrefs::instance()->mEventTemplates;
-#else
-  QStringList l;
-  return l;
-#endif
 }
 
-#if 0 //AKONADI_PORT_DISABLED
 void KOEventEditor::slotSaveTemplate( const QString &templateName )
 {
   Event *event = new Event;

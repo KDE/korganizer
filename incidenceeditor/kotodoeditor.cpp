@@ -362,17 +362,12 @@ void KOTodoEditor::slotSaveTemplate( const QString &templateName )
   fillTodo( todo );
   saveAsTemplate( todo, templateName );
 }
-#endif
 
 QStringList KOTodoEditor::templates() const
 {
-#ifdef AKONADI_PORT_DISABLED
   return KOPrefs::instance()->mTodoTemplates;
-#else
-  static QStringList l;
-  return l;
-#endif
 }
+#endif
 
 void KOTodoEditor::show()
 {

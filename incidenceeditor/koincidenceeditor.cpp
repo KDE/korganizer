@@ -182,17 +182,17 @@ void KOIncidenceEditor::cancelRemovedAttendees( Incidence* incidence )
 
 void KOIncidenceEditor::slotManageTemplates()
 {
-  TemplateManagementDialog *const d = new TemplateManagementDialog( this, templates(), type() );
 #if 0 //AKONADI_PORT_DISABLED
+  TemplateManagementDialog *const d = new TemplateManagementDialog( this, templates(), type() );
   connect( d, SIGNAL( loadTemplate( const QString& ) ),
            this, SLOT( slotLoadTemplate( const QString& ) ) );
   connect( d, SIGNAL( templatesChanged( const QStringList& ) ),
            this, SLOT( slotTemplatesChanged( const QStringList& ) ) );
   connect( d, SIGNAL( saveTemplate( const QString& ) ),
            this, SLOT( slotSaveTemplate( const QString& ) ) );
-#endif
   d->exec();
   delete d;
+#endif
 }
 
 #if 0 //AKONADI_PORT_DISABLED

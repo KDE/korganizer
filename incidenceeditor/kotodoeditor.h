@@ -108,7 +108,6 @@ class INCIDENCEEDITOR_EXPORT KOTodoEditor : public KOIncidenceEditor
     void deleteTodo();
 
   protected:
-    QStringList templates() const;
     QString type() { return "Todo"; }
     void setupGeneral();
     void setupRecurrence();
