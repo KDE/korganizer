@@ -87,7 +87,7 @@ KOAgendaItem::KOAgendaItem( CalendarBase *calendar, const Item &item,
     if ( years > 0 ) {
       incidence = Incidence::Ptr( incidence->clone() );
       incidence->setReadOnly( false );
-      incidence->setSummary( i18n( "%1 (%2 years)", incidence->summary(), years ) );
+      incidence->setSummary( i18np( "%2 (1 year)", "%2 (%1 years)", years, incidence->summary() ) );
       incidence->setReadOnly( true );
       mCloned = true;
       mIncidence.setPayload<Incidence::Ptr>( incidence );

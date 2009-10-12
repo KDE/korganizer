@@ -1183,7 +1183,7 @@ void ActionManager::exportHTML( HTMLExportSettings *settings )
   if ( QFileInfo( settings->outputFile() ).exists() ) {
     if( KMessageBox::questionYesNo(
           dialogParent(),
-          i18n( "Do you want to overwrite file \"%1\"",
+          i18n( "Do you want to overwrite file \"%1\"?",
                 settings->outputFile() ) ) == KMessageBox::No ) {
       return;
     }

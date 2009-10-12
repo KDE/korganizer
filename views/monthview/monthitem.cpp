@@ -294,7 +294,7 @@ IncidenceMonthItem::IncidenceMonthItem( MonthScene *monthScene,
     if ( years > 0 ) {
       inc.reset( inc->clone() );
       inc->setReadOnly( false );
-      inc->setSummary( i18n( "%1 (%2 years)", inc->summary(), years ) );
+      inc->setSummary( i18np( "%2 (1 year)", "%2 (%1 years)", years, inc->summary() ) );
       inc->setReadOnly( true );
       mIncidence == Item();
       mIncidence.setPayload( inc );

@@ -313,7 +313,7 @@ bool IncidenceChanger::addIncidence( const Incidence::Ptr &incidence, QWidget *p
   kDebug() << "\"" << incidence->summary() << "\"";
   CalendarResources *stdcal = dynamic_cast<CalendarResources*>( mCalendar );
   if( stdcal && !stdcal->hasCalendarResources() ) {
-    KMessageBox::sorry( parent, i18n( "No calendars found. We can not add event." ) );
+    KMessageBox::sorry( parent, i18n( "No calendars found, event cannot be added." ) );
     return false;
   }
 

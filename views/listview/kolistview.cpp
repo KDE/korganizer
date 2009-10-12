@@ -387,7 +387,7 @@ void KOListView::addIncidence( const Item &aitem_, const QDate &date )
     if ( years > 0 ) {
       tinc = Incidence::Ptr( incidence->clone() );
       tinc->setReadOnly( false );
-      tinc->setSummary( i18n( "%1 (%2  years)", incidence->summary(), years ) );
+      tinc->setSummary( i18np( "%2 (1 year)", "%2 (%1 years)", years, incidence->summary() ) );
       tinc->setReadOnly( true );
       aitem.setPayload( tinc );
     }

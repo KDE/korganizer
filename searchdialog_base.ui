@@ -252,7 +252,7 @@
          <string>Include Events only if their date range falls into the range specified above</string>
         </property>
         <property name="whatsThis">
-         <string>Check this box if you want to include Events that occur within the date range specified.  Events that don't fall completely within the date range will be excluded from the search results.</string>
+         <string>Check this box if you want to include Events that occur within the date range specified.  Events that do not fall completely within the date range will be excluded from the search results.</string>
         </property>
         <property name="text">
          <string>Include E&amp;vents within the specified date range</string>
