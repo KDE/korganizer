@@ -897,16 +897,13 @@ QStringList KOTodoModel::mimeTypes() const
 
 QMimeData *KOTodoModel::mimeData( const QModelIndexList &indexes ) const
 {
+  Item::List items;
   Q_FOREACH ( const QModelIndex &index, indexes ) {
-    TodoTreeNode *node = static_cast<TodoTreeNode *>( index.internalPointer() );
-    if ( node->isValid() ) {
-      Todo::Ptr todo = Akonadi::todo( node->mTodo );
-      return mDndFactory->createMimeData( todo.get() );
-    }
-   //TODO implement dragging of more than one element
+    const TodoTreeNode * const node = static_cast<TodoTreeNode *>( index.internalPointer() );
+    if ( node->isValid() )
+      items.push_back( node->mTodo );
   }
-
-  return new QMimeData();
+  return Akonadi::createMimeData( items, mCalendar->timeSpec() );
 }
 
 bool KOTodoModel::dropMimeData( const QMimeData *data, Qt::DropAction action,
