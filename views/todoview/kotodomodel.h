@@ -34,9 +34,6 @@
 namespace KCal {
   class Incidence;
   class Todo;
-#ifndef KORG_NODND
-  class DndFactory;
-#endif
 }
 using namespace KCal;
 
@@ -203,10 +200,6 @@ public:
 
     /** Display the todos without hierarchy? */
     bool mFlatView;
-
-#ifndef KORG_NODND
-    DndFactory *mDndFactory;
-#endif
 };
 
 #endif

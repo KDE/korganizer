@@ -184,14 +184,6 @@ KOTodoModel::KOTodoModel( CalendarBase *cal, QObject *parent )
   mRootNode = new TodoTreeNode( Item(), 0, this );
   mFlatView = false;
   setCalendar( cal );
-
-#ifndef KORG_NODND
-#ifdef AKONADI_PORT_DISABLED
-  mDndFactory = new DndFactory( cal );
-#else
-  mDndFactory = 0;
-#endif // AKONADI_PORT_DISABLED
-#endif
 }
 
 static bool isDueToday( const Todo* todo )
@@ -202,10 +194,6 @@ static bool isDueToday( const Todo* todo )
 KOTodoModel::~KOTodoModel()
 {
   delete mRootNode;
-
-#ifndef KORG_NODND
-  delete mDndFactory;
-#endif
 }
 
 void KOTodoModel::setCalendar( CalendarBase *cal )
