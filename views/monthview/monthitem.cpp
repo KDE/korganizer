@@ -444,6 +444,7 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
 
   bool modify = true;
 
+#ifdef AKONADI_PORT_DISABLED
   if ( incidence->recurs() ) {
     int res = monthScene()->mMonthView->showMoveRecurDialog( mIncidence, startDate() );
     switch ( res ) {
@@ -454,8 +455,7 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
       {
         modify = true;
         Incidence::Ptr oldIncSaved( incidence->clone() );
-        Incidence::Ptr newInc( monthScene()->calendar()->dissociateOccurrenceFORAKONADI(
-            mIncidence, startDate(), KOPrefs::instance()->timeSpec() ) );
+        Incidence::Ptr newInc( monthScene()->calendar()->dissociateOccurrenceFORAKONADI( mIncidence, startDate(), KOPrefs::instance()->timeSpec() ) );
         if ( newInc ) {
            //TODO check return values
           changer->changeIncidence( oldIncSaved, mIncidence );
@@ -513,6 +513,7 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
     changer->changeIncidence( oldInc, mIncidence, KOGlobals::DATE_MODIFIED );
     changer->endChange( mIncidence );
   }
+#endif
 }
 
 void IncidenceMonthItem::updateSelection( const Akonadi::Item &incidence, const QDate &date )
@@ -555,6 +556,7 @@ QString IncidenceMonthItem::text( bool end ) const
 
 QString IncidenceMonthItem::toolTipText() const
 {
+#ifdef AKONADI_PORT_DISABLED
   QDate date;
   if ( monthScene()->mMonthView && !monthScene()->mMonthView->selectedDates().isEmpty() ) {
     date = monthScene()->mMonthView->selectedDates().first();
@@ -562,6 +564,9 @@ QString IncidenceMonthItem::toolTipText() const
   //PENDING(AKONADI_PORT): replace QString() by incidence location (was: monthScene()->calendar())
   return IncidenceFormatter::toolTipStr(
       QString(), Akonadi::incidence( mIncidence ).get(), date, true, KOPrefs::instance()->timeSpec() );
+#else
+  return QString();
+#endif
 }
 
 QList<QPixmap *> IncidenceMonthItem::icons() const
@@ -651,6 +656,7 @@ QColor IncidenceMonthItem::bgColor() const
     }
   }
 
+#ifdef AKONADI_PORT_DISABLED
   if ( !bgColor.isValid() ) {
     if ( KOPrefs::instance()->monthViewColors() ==
          KOPrefs::MonthItemResourceOnly ||
@@ -661,7 +667,7 @@ QColor IncidenceMonthItem::bgColor() const
       bgColor = catColor();
     }
   }
-
+#endif
   if ( !bgColor.isValid() ) {
     bgColor = Qt::white;
   }
@@ -672,12 +678,14 @@ QColor IncidenceMonthItem::bgColor() const
 QColor IncidenceMonthItem::frameColor() const
 {
   QColor frameColor;
+#ifdef AKONADI_PORT_DISABLED
   if ( KOPrefs::instance()->monthViewColors() == KOPrefs::MonthItemResourceOnly ||
        KOPrefs::instance()->monthViewColors() == KOPrefs::MonthItemCategoryInsideResourceOutside ) {
     frameColor = KOHelper::resourceColor( monthScene()->calendar(), mIncidence );
   } else {
     frameColor = catColor();
   }
+#endif
 
   if ( !frameColor.isValid() ) {
     frameColor = Qt::black;

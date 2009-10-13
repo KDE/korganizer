@@ -53,7 +53,7 @@ class KOWhatsNextView : public KOrg::BaseView
 {
   Q_OBJECT
   public:
-    explicit KOWhatsNextView( KOrg::CalendarBase *calendar, QWidget *parent = 0 );
+    explicit KOWhatsNextView( QWidget *parent = 0 );
     ~KOWhatsNextView();
 
     virtual int currentDateCount();

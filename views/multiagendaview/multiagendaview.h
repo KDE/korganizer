@@ -46,7 +46,7 @@ class MultiAgendaView : public AgendaView
 {
   Q_OBJECT
   public:
-    explicit MultiAgendaView( CalendarBase *cal, QWidget *parent = 0 );
+    explicit MultiAgendaView( QWidget *parent = 0 );
     ~MultiAgendaView();
 
     Akonadi::Item::List selectedIncidences();

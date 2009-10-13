@@ -71,7 +71,7 @@ class MonthScene : public QGraphicsScene
       ResizeRight
     };
 
-    MonthScene( MonthView *parent, KOrg::CalendarBase *calendar );
+    MonthScene( MonthView *parent );
     ~MonthScene();
 
     int columnWidth() const;
@@ -90,7 +90,6 @@ class MonthScene : public QGraphicsScene
     bool initialized() { return mInitialized; }
     void setInitialized( bool i ) { mInitialized = i; }
     void resetAll();
-    KOrg::CalendarBase *calendar() { return mCalendar; }
     IncidenceChangerBase *incidenceChanger() const;
 
     int totalHeight();
@@ -249,9 +248,6 @@ class MonthScene : public QGraphicsScene
     bool isInMonthGrid( int x, int y );
 
     bool mInitialized;
-
-    // Calendar associated to the view
-    KOrg::CalendarBase *mCalendar;
 
     // User interaction.
     MonthItem *mClickedItem; // todo ini in ctor

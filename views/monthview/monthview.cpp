@@ -46,14 +46,14 @@
 using namespace Akonadi;
 using namespace KOrg;
 
-MonthView::MonthView( CalendarBase *calendar, QWidget *parent )
-  : KOEventView( calendar, parent )
+MonthView::MonthView( QWidget *parent )
+  : KOEventView( parent )
 {
   QHBoxLayout *topLayout = new QHBoxLayout( this );
 
   mView = new MonthGraphicsView( this );
 
-  mScene = new MonthScene( this, calendar );
+  mScene = new MonthScene( this );
   mView->setScene( mScene );
   topLayout->addWidget( mView );
 

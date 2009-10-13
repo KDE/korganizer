@@ -36,8 +36,8 @@
 using namespace Akonadi;
 using namespace KOrg;
 
-MultiAgendaView::MultiAgendaView( CalendarBase *cal, QWidget *parent )
-  : AgendaView( cal, parent ),
+MultiAgendaView::MultiAgendaView( QWidget *parent )
+  : AgendaView( parent ),
     mUpdateOnShow( true ),
     mPendingChanges( true )
 {
@@ -130,7 +130,8 @@ void MultiAgendaView::recreateViews()
   AkonadiCalendar *calres = dynamic_cast<AkonadiCalendar*>( calendar() );
   if ( !calres ) {
     // fallback to single-agenda
-    KOAgendaView *av = new KOAgendaView( calendar(), mTopBox );
+    KOAgendaView *av = new KOAgendaView( mTopBox );
+    av->setCalendar( calendar() );
     mAgendaViews.append( av );
     mAgendaWidgets.append( av );
     av->show();
@@ -370,7 +371,8 @@ void MultiAgendaView::addView( const QString &label, KCal::ResourceCalendar *res
   KVBox *box = new KVBox( mTopBox );
   QLabel *l = new QLabel( label, box );
   l->setAlignment( Qt::AlignVCenter | Qt::AlignHCenter );
-  KOAgendaView *av = new KOAgendaView( calendar(), box, true );
+  KOAgendaView *av = new KOAgendaView( box, true );
+  av->setCalendar( calendar() );
   av->setResource( res, subResource );
   av->setIncidenceChanger( mChanger );
   av->agenda()->setVScrollBarMode( Q3ScrollView::AlwaysOff );

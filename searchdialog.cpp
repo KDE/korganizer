@@ -36,7 +36,7 @@
 using namespace KOrg;
 using namespace Akonadi;
 
-SearchDialog::SearchDialog( KOrg::CalendarBase *calendar, QWidget *parent )
+SearchDialog::SearchDialog( QWidget *parent )
   : KDialog( parent )
 {
   setCaption( i18n( "Search Calendar" ) );
@@ -47,7 +47,6 @@ SearchDialog::SearchDialog( KOrg::CalendarBase *calendar, QWidget *parent )
   setButtonGuiItem( User1,
                     KGuiItem( i18nc( "search in calendar", "&Search" ), "edit-find" ) );
   setButtonToolTip( User1, i18n( "Start searching" ) );
-  mCalendar = calendar;
 
   QWidget *mainwidget = new QWidget( this );
   setupUi( mainwidget );
@@ -63,7 +62,7 @@ SearchDialog::SearchDialog( KOrg::CalendarBase *calendar, QWidget *parent )
   // Results list view
   QVBoxLayout *layout = new QVBoxLayout;
   layout->setMargin( 0 );
-  listView = new KOListView( mCalendar );
+  listView = new KOListView( this );
   listView->showDates();
   layout->addWidget( listView );
   mListViewFrame->setLayout( layout );
@@ -130,6 +129,7 @@ void SearchDialog::updateView()
   
 void SearchDialog::search( const QRegExp &re )
 {
+#ifdef AKONADI_PORT_DISABLED
   QDate startDt = mStartDate->date();
   QDate endDt = mEndDate->date();
 
@@ -206,6 +206,7 @@ void SearchDialog::search( const QRegExp &re )
       }
     }
   }
+#endif
 }
 
 #include "searchdialog.moc"

@@ -147,7 +147,7 @@ class KOTodoCategoriesDelegate : public QStyledItemDelegate
 {
   Q_OBJECT
   public:
-    explicit KOTodoCategoriesDelegate( KOrg::CalendarBase *cal, QObject *parent = 0 );
+    explicit KOTodoCategoriesDelegate( QObject *parent = 0 );
 
     ~KOTodoCategoriesDelegate();
 

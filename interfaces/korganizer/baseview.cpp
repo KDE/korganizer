@@ -24,8 +24,8 @@
 
 namespace KOrg {
 
-BaseView::BaseView( CalendarBase *cal, QWidget *parent )
-  : QWidget( parent ), mCalendar( cal ), mChanger( 0 )
+BaseView::BaseView( QWidget *parent )
+  : QWidget( parent ), mCalendar( 0 ), mChanger( 0 )
 {}
 
 BaseView::~BaseView()

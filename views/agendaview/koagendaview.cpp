@@ -110,8 +110,8 @@ void EventIndicator::enableColumn( int column, bool enable )
 ////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////
 
-KOAgendaView::KOAgendaView( CalendarBase *cal, QWidget *parent, bool isSideBySide ) :
-  KOrg::AgendaView( cal, parent ),
+KOAgendaView::KOAgendaView( QWidget *parent, bool isSideBySide ) :
+  KOrg::AgendaView( parent ),
   mTimeLabelsZone( 0 ),
   mAllowAgendaUpdate( true ),
   mUpdateItem( 0 ),
@@ -231,9 +231,11 @@ KOAgendaView::KOAgendaView( CalendarBase *cal, QWidget *parent, bool isSideBySid
            SIGNAL(newTimeSpanSignal(const QPoint &,const QPoint &)),
            SLOT(newTimeSpanSelectedAllDay(const QPoint &,const QPoint &)) );
 
+#ifdef AKONADI_PORT_DISABLED
   if ( cal ) {
     cal->registerObserver( this );
   }
+#endif
 }
 
 KOAgendaView::~KOAgendaView()

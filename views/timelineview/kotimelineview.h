@@ -50,7 +50,7 @@ class KOTimelineView : public KOEventView
 {
     Q_OBJECT
   public:
-    explicit KOTimelineView( KOrg::CalendarBase *calendar, QWidget *parent = 0 );
+    explicit KOTimelineView( QWidget *parent = 0 );
     ~KOTimelineView();
 
     virtual Akonadi::Item::List selectedIncidences();

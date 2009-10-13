@@ -229,8 +229,8 @@ bool KOListView::ListItemVisitor::visit( Journal *t )
   return true;
 }
 
-KOListView::KOListView( CalendarBase *calendar, QWidget *parent )
-  : KOEventView( calendar, parent )
+KOListView::KOListView( QWidget *parent )
+  : KOEventView( parent )
 {
   mActiveItem = 0;
 

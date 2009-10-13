@@ -340,7 +340,8 @@ void KOViewManager::addView( KOrg::BaseView *view, bool isTab )
 void KOViewManager::showTimeSpentView()
 {
   if ( !mTimeSpentView ) {
-    mTimeSpentView = new KOTimeSpentView( mMainView->calendar(), mMainView->viewStack() );
+    mTimeSpentView = new KOTimeSpentView( mMainView->viewStack() );
+    mTimeSpentView->setCalendar( mMainView->calendar() );
     mTimeSpentView->setObjectName( "KOViewManager::TimeSpentView" );
     addView( mTimeSpentView );
   }
@@ -351,7 +352,8 @@ void KOViewManager::showTimeSpentView()
 void KOViewManager::showMonthView()
 {
   if ( !mMonthView ) {
-    mMonthView = new KOrg::MonthView( mMainView->calendar(), mMainView->viewStack() );
+    mMonthView = new KOrg::MonthView( mMainView->viewStack() );
+    mMonthView->setCalendar( mMainView->calendar() );
     mMonthView->setObjectName( "KOViewManager::MonthView" );
     addView( mMonthView );
   }
@@ -362,7 +364,8 @@ void KOViewManager::showMonthView()
 void KOViewManager::showWhatsNextView()
 {
   if ( !mWhatsNextView ) {
-    mWhatsNextView = new KOWhatsNextView( mMainView->calendar(), mMainView->viewStack() );
+    mWhatsNextView = new KOWhatsNextView( mMainView->viewStack() );
+    mWhatsNextView->setCalendar( mMainView->calendar() );
     mWhatsNextView->setObjectName( "KOViewManager::WhatsNextView" );
     addView( mWhatsNextView );
   }
@@ -373,7 +376,8 @@ void KOViewManager::showWhatsNextView()
 void KOViewManager::showListView()
 {
   if ( !mListView ) {
-    mListView = new KOListView( mMainView->calendar(), mMainView->viewStack() );
+    mListView = new KOListView( mMainView->viewStack() );
+    mListView->setCalendar( mMainView->calendar() );
     mListView->setObjectName( "KOViewManager::ListView" );
     addView( mListView );
   }
@@ -403,7 +407,8 @@ void KOViewManager::showAgendaView()
 
   if ( showMerged ) {
     if ( !mAgendaView ) {
-      mAgendaView = new KOAgendaView( mMainView->calendar(), parent );
+      mAgendaView = new KOAgendaView( parent );
+      mAgendaView->setCalendar( mMainView->calendar() );
       mAgendaView->setObjectName( "KOViewManager::AgendaView" );
 
       addView( mAgendaView, showBoth );
@@ -422,7 +427,8 @@ void KOViewManager::showAgendaView()
 
   if ( showSideBySide ) {
     if ( !mAgendaSideBySideView ) {
-      mAgendaSideBySideView = new MultiAgendaView( mMainView->calendar(), parent );
+      mAgendaSideBySideView = new MultiAgendaView( parent );
+      mAgendaSideBySideView->setCalendar( mMainView->calendar() );
       mAgendaSideBySideView->setObjectName( "KOViewManager::AgendaSideBySideView" );
       addView( mAgendaSideBySideView, showBoth );
 
@@ -486,7 +492,8 @@ void KOViewManager::showNextXView()
 void KOViewManager::showTodoView()
 {
   if ( !mTodoView ) {
-    mTodoView = new KOTodoView( mMainView->calendar(), mMainView->viewStack() );
+    mTodoView = new KOTodoView( mMainView->viewStack() );
+    mTodoView->setCalendar( mMainView->calendar() );
     mTodoView->setObjectName( "KOViewManager::TodoView" );
     mTodoView->setCalendar( mMainView->calendar() );
     addView( mTodoView );
@@ -502,7 +509,8 @@ void KOViewManager::showTodoView()
 void KOViewManager::showJournalView()
 {
   if ( !mJournalView ) {
-    mJournalView = new KOJournalView( mMainView->calendar(), mMainView->viewStack() );
+    mJournalView = new KOJournalView( mMainView->viewStack() );
+    mJournalView->setCalendar( mMainView->calendar() );
     mJournalView->setObjectName( "KOViewManager::JournalView" );
     addView( mJournalView );
   }
@@ -513,8 +521,8 @@ void KOViewManager::showJournalView()
 void KOViewManager::showTimeLineView()
 {
   if ( !mTimelineView ) {
-    mTimelineView = new KOTimelineView( mMainView->calendar(), mMainView->viewStack() );
-
+    mTimelineView = new KOTimelineView( mMainView->viewStack() );
+    mTimelineView->setCalendar( mMainView->calendar() );
     mTimelineView->setObjectName( "KOViewManager::TimelineView" );
     addView( mTimelineView );
   }

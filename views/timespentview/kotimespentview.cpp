@@ -188,8 +188,8 @@ class TimeSpentWidget : public QWidget
     KOTimeSpentView *mTimeSpentView;
 };
 
-KOTimeSpentView::KOTimeSpentView( KOrg::CalendarBase *calendar, QWidget *parent )
-  : KOrg::BaseView( calendar, parent )
+KOTimeSpentView::KOTimeSpentView( QWidget *parent )
+  : KOrg::BaseView( parent )
 {
   mView = new TimeSpentWidget( this );
 

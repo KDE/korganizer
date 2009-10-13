@@ -45,8 +45,8 @@
 using namespace Akonadi;
 using namespace KOrg;
 
-KOJournalView::KOJournalView( KOrg::CalendarBase *calendar, QWidget *parent )
-  : KOrg::BaseView( calendar, parent )
+KOJournalView::KOJournalView( QWidget *parent )
+  : KOrg::BaseView( parent )
 {
   QVBoxLayout *topLayout = new QVBoxLayout( this );
   mSA = new QScrollArea( this );

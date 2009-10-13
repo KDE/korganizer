@@ -45,7 +45,7 @@ class SearchDialog : public KDialog, private Ui::SearchDialog
 {
   Q_OBJECT
   public:
-    explicit SearchDialog( KOrg::CalendarBase *calendar, QWidget *parent=0 );
+    explicit SearchDialog( QWidget *parent=0 );
     virtual ~SearchDialog();
 
     void updateView();
@@ -65,10 +65,7 @@ class SearchDialog : public KDialog, private Ui::SearchDialog
   private:
     void search( const QRegExp & );
 
-    KOrg::CalendarBase *mCalendar;
-
     QList<Akonadi::Item> mMatchedEvents;
-
     KOListView *listView;
 };
 

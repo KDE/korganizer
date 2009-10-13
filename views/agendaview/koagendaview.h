@@ -99,7 +99,7 @@ class KOAgendaView : public KOrg::AgendaView, public KOrg::CalendarBase::Calenda
 {
   Q_OBJECT
   public:
-    explicit KOAgendaView( KOrg::CalendarBase *cal, QWidget *parent = 0, bool isSideBySide = false );
+    explicit KOAgendaView( QWidget *parent = 0, bool isSideBySide = false );
     virtual ~KOAgendaView();
 
     /** Returns maximum number of days supported by the koagendaview */

@@ -69,7 +69,7 @@ class KOTodoModel : public QAbstractItemModel
     };
 
   public:
-    explicit KOTodoModel( KOrg::CalendarBase *cal, QObject *parent = 0 );
+    explicit KOTodoModel( QObject *parent = 0 );
     virtual ~KOTodoModel();
 
     /** Set the calendar */

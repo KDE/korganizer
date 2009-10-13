@@ -166,7 +166,8 @@ void KODialogManager::showCategoryEditDialog()
 void KODialogManager::showSearchDialog()
 {
   if ( !mSearchDialog ) {
-    mSearchDialog = new SearchDialog( mMainView->calendar(), mMainView );
+    mSearchDialog = new SearchDialog( mMainView );
+    //mSearchDialog->setCalendar( mMainView->calendar() );
     connect( mSearchDialog, SIGNAL(showIncidenceSignal(Akonadi::Item)),
              mMainView, SLOT(showIncidence(Akonadi::Item)) );
     connect( mSearchDialog, SIGNAL(editIncidenceSignal(Akonadi::Item)),

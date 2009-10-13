@@ -48,8 +48,8 @@ void WhatsNextTextBrowser::setSource( const QUrl &name )
   }
 }
 
-KOWhatsNextView::KOWhatsNextView( CalendarBase *calendar, QWidget *parent )
-  : KOrg::BaseView( calendar, parent )
+KOWhatsNextView::KOWhatsNextView( QWidget *parent )
+  : KOrg::BaseView( parent )
 {
   mView = new WhatsNextTextBrowser( this );
   connect( mView, SIGNAL(showIncidence(const QString &)),

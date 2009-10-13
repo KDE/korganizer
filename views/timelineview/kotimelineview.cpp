@@ -40,8 +40,9 @@ using namespace Akonadi;
 using namespace KOrg;
 using namespace KCal;
 
-KOTimelineView::KOTimelineView( KOrg::CalendarBase *calendar, QWidget *parent )
-  : KOEventView( calendar, parent ), mEventPopup( 0 )
+KOTimelineView::KOTimelineView( QWidget *parent )
+  : KOEventView( parent )
+  , mEventPopup( 0 )
 {
     QVBoxLayout *vbox = new QVBoxLayout( this );
     mGantt = new KDGanttView( this );

@@ -63,7 +63,7 @@ class KOTodoView : public BaseView
   Q_OBJECT
 
   public:
-    KOTodoView( KOrg::CalendarBase *cal, QWidget *parent );
+    KOTodoView( QWidget *parent );
     ~KOTodoView();
 
     virtual void setCalendar( KOrg::CalendarBase *cal );

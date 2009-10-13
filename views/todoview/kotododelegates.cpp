@@ -310,10 +310,9 @@ void KOTodoDueDateDelegate::updateEditorGeometry( QWidget *editor,
 // ---------------- CATEGORIES DELEGATE --------------------------
 // ---------------------------------------------------------------
 
-KOTodoCategoriesDelegate::KOTodoCategoriesDelegate( KOrg::CalendarBase *cal, QObject *parent )
-  : QStyledItemDelegate( parent )
+KOTodoCategoriesDelegate::KOTodoCategoriesDelegate( QObject *parent )
+  : QStyledItemDelegate( parent ), mCalendar(0)
 {
-  setCalendar( cal );
 }
 
 KOTodoCategoriesDelegate::~KOTodoCategoriesDelegate()

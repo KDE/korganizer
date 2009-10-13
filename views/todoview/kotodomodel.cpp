@@ -178,12 +178,11 @@ struct KOTodoModel::TodoTreeNode : QObject
     QString mUid;
 };
 
-KOTodoModel::KOTodoModel( CalendarBase *cal, QObject *parent )
-  : QAbstractItemModel( parent ), mColumnCount( DescriptionColumn + 1 )
+KOTodoModel::KOTodoModel( QObject *parent )
+  : QAbstractItemModel( parent ), mCalendar(0), mColumnCount( DescriptionColumn + 1 )
 {
   mRootNode = new TodoTreeNode( Item(), 0, this );
   mFlatView = false;
-  setCalendar( cal );
 }
 
 static bool isDueToday( const Todo* todo )

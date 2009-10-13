@@ -46,7 +46,7 @@ class MonthView : public KOEventView
 {
   Q_OBJECT
   public:
-    explicit MonthView( KOrg::CalendarBase *calendar, QWidget *parent = 0 );
+    explicit MonthView( QWidget *parent = 0 );
     ~MonthView();
 
     virtual int currentDateCount();

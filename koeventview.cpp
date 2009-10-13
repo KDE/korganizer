@@ -45,8 +45,8 @@ using namespace Akonadi;
 
 //---------------------------------------------------------------------------
 
-KOEventView::KOEventView( KOrg::CalendarBase *cal, QWidget *parent )
-  : KOrg::BaseView( cal, parent )
+KOEventView::KOEventView( QWidget *parent )
+  : KOrg::BaseView( parent )
 {
   mReturnPressed = false;
   mTypeAhead = false;

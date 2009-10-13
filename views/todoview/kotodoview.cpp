@@ -56,10 +56,10 @@
 using namespace KPIM;
 using namespace Akonadi;
 
-KOTodoView::KOTodoView( KOrg::CalendarBase *cal, QWidget *parent )
-  : BaseView( cal, parent )
+KOTodoView::KOTodoView( QWidget *parent )
+  : BaseView( parent )
 {
-  mModel = new KOTodoModel( calendar(), this );
+  mModel = new KOTodoModel( this );
   connect( mModel, SIGNAL( expandIndex( const QModelIndex& ) ),
            this, SLOT( expandIndex( const QModelIndex& ) ) );
   mProxyModel = new KOTodoViewSortFilterProxyModel( this );
@@ -103,7 +103,7 @@ KOTodoView::KOTodoView( KOrg::CalendarBase *cal, QWidget *parent )
   KOTodoCompleteDelegate *completeDelegate = new KOTodoCompleteDelegate( mView );
   mView->setItemDelegateForColumn( KOTodoModel::PercentColumn, completeDelegate );
 
-  mCategoriesDelegate = new KOTodoCategoriesDelegate( cal, mView );
+  mCategoriesDelegate = new KOTodoCategoriesDelegate( mView );
   mView->setItemDelegateForColumn( KOTodoModel::CategoriesColumn, mCategoriesDelegate );
 
   connect( mView, SIGNAL(customContextMenuRequested(const QPoint &)),

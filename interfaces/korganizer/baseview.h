@@ -64,7 +64,7 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
                     will be retrieved for display.
       @param parent parent widget.
     */
-    explicit BaseView( CalendarBase *cal, QWidget *parent = 0 );
+    explicit BaseView( QWidget *parent = 0 );
 
     /**
       Destructor.  Views will do view-specific cleanups here.

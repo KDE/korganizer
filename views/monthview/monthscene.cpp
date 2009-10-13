@@ -45,11 +45,10 @@
 using namespace Akonadi;
 using namespace KOrg;
 
-MonthScene::MonthScene( MonthView *parent, CalendarBase *calendar )
+MonthScene::MonthScene( MonthView *parent )
   : QGraphicsScene( parent ),
     mMonthView( parent ),
     mInitialized( false ),
-    mCalendar( calendar ),
     mClickedItem( 0 ),
     mActionItem( 0 ),
     mActionInitiated( false ),
@@ -570,8 +569,9 @@ void MonthScene::mousePressEvent ( QGraphicsSceneMouseEvent *mouseEvent )
     if ( mouseEvent->button() == Qt::RightButton ) {
       IncidenceMonthItem *tmp = qobject_cast<IncidenceMonthItem *>( mClickedItem );
       if ( tmp ) {
-        emit showIncidencePopupSignal( mCalendar,
-                                       tmp->incidence(), tmp->realStartDate() );
+#ifdef AKONADI_PORT_DISABLED
+        emit showIncidencePopupSignal( mCalendar, tmp->incidence(), tmp->realStartDate() );
+#endif
       }
     }
 
