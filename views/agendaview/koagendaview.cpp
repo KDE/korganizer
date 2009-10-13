@@ -1501,7 +1501,6 @@ void KOAgendaView::slotTodosDropped( const QList<Todo::Ptr> &items, const QPoint
     }
   }
 }
-
 void KOAgendaView::startDrag( const Item &incidence )
 {
   if ( QDrag *drag = Akonadi::createDrag( incidence, calendar()->timeSpec(), this ) )

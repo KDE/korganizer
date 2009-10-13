@@ -1091,7 +1091,6 @@ void KOAgenda::endItemAction()
         placeSubCells( mActionItem ); //PENDING(AKONADI_PORT) should this be done after the new item was asynchronously added?
       }
     }
-#ifdef AKONADI_PORT_DISABLED // this needs to be done when the async item adding is done and we have the real akonadi item
 
     if ( modify ) {
       mActionItem->endMove();
@@ -1123,7 +1122,6 @@ void KOAgenda::endItemAction()
       mChanger->endChange( inc );
       emit itemModified( mActionItem );
     }
-#endif
   }
 
   mActionItem = 0;
