@@ -30,12 +30,18 @@
 #include <kcal/journal.h>
 #include <kcal/calendar.h>
 
+#include <akonadi/kcal/utils.h>
+
+#include <Akonadi/Item>
+
 #include <kconfig.h>
 #include <kdebug.h>
 #include <kpluginfactory.h>
 #include <kpluginloader.h>
 
 #include <QButtonGroup>
+
+using namespace Akonadi;
 
 class JournalPrintFactory : public KOrg::PrintPluginFactory
 {
@@ -115,13 +121,14 @@ void CalPrintJournal::setDateRange( const QDate &from, const QDate &to )
 void CalPrintJournal::print( QPainter &p, int width, int height )
 {
   int x=0, y=0;
-  Journal::List journals( mCalendar->journals() );
+  Item::List journals( mCalendar->journalsFORAKONADI() );
   if ( mUseDateRange ) {
-    Journal::List allJournals = journals;
+    Item::List allJournals = journals;
     journals.clear();
-    Journal::List::Iterator it = allJournals.begin();
+    Item::List::Iterator it = allJournals.begin();
     for ( ; it != allJournals.end(); ++it ) {
-      QDate dt = (*it)->dtStart().date();
+      Journal::Ptr j = Akonadi::journal( *it );
+      const QDate dt = j->dtStart().date();
       if ( mFromDate <= dt && dt <= mToDate ) {
         journals.append( *it );
       }
@@ -132,8 +139,8 @@ void CalPrintJournal::print( QPainter &p, int width, int height )
               QRect( 0, 0, width, headerHeight() ) );
   y = headerHeight() + 15;
 
-  Journal::List::Iterator it = journals.begin();
+  Item::List::Iterator it = journals.begin();
   for ( ; it != journals.end(); ++it ) {
-    drawJournal( *it, p, x, y, width, height );
+    drawJournal( Akonadi::journal( *it ), p, x, y, width, height );
   }
 }

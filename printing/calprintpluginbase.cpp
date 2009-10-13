@@ -1057,10 +1057,10 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
   }
 
   if ( textY < box.height() ) {
-    Todo::List todos = mCalendar->todos( qd );
-    Todo::List::ConstIterator it2;
+    Item::List todos = mCalendar->todosFORAKONADI( qd );
+    Item::List::ConstIterator it2;
     for ( it2=todos.constBegin(); it2 != todos.constEnd() && textY < box.height(); ++it2 ) {
-      Todo *todo = *it2;
+      Todo::Ptr todo = Akonadi::todo( *it2 );
       if ( ( !printRecurDaily  && todo->recurrenceType() == Recurrence::rDaily ) ||
            ( !printRecurWeekly && todo->recurrenceType() == Recurrence::rWeekly ) ) {
         continue;
@@ -1075,7 +1075,7 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
         timeText.clear();
       }
       p.save();
-      setCategoryColors( p, todo );
+      setCategoryColors( p, todo.get() );
       QString str;
       if ( !todo->location().isEmpty() ) {
         str = i18nc( "summary, location", "%1, %2",
@@ -1902,7 +1902,7 @@ void CalPrintPluginBase::drawTextLines( QPainter &p, const QString &entry,
   }
 }
 
-void CalPrintPluginBase::drawJournal( Journal * journal, QPainter &p, int x, int &y,
+void CalPrintPluginBase::drawJournal( const Journal::Ptr &journal, QPainter &p, int x, int &y,
                                       int width, int pageHeight )
 {
   QFont oldFont( p.font() );

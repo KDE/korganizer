@@ -32,11 +32,16 @@
 #include <kcal/filestorage.h>
 #include <kcal/calendar.h>
 
+#include <akonadi/kcal/utils.h>
+
 #include <kdebug.h>
 #include <kglobal.h>
 #include <klocale.h>
 #include <ktemporaryfile.h>
 #include <kmessagebox.h>
+
+using namespace Akonadi;
+using namespace KOrg;
 
 EventArchiver::EventArchiver( QObject *parent )
  : QObject( parent )
@@ -76,13 +81,12 @@ void EventArchiver::run( KOrg::CalendarBase *calendar, const QDate &limitDate, Q
                          bool withGUI, bool errorIfNone )
 {
   // We need to use rawEvents, otherwise events hidden by filters will not be archived.
-  Incidence::List incidences;
-  Event::List events;
-  Todo::List todos;
-  Journal::List journals;
+  Item::List events;
+  Item::List todos;
+  Item::List journals;
 
   if ( KOPrefs::instance()->mArchiveEvents ) {
-    events = calendar->rawEvents(
+    events = calendar->rawEventsFORAKONADI(
       QDate( 1769, 12, 1 ),
       // #29555, also advertised by the "limitDate not included" in the class docu
       limitDate.addDays( -1 ),
@@ -90,16 +94,18 @@ void EventArchiver::run( KOrg::CalendarBase *calendar, const QDate &limitDate, Q
       true );
   }
   if ( KOPrefs::instance()->mArchiveTodos ) {
-    Todo::List t = calendar->rawTodos();
-    Todo::List::ConstIterator it;
+    Item::List t = calendar->rawTodosFORAKONADI();
+    Item::List::ConstIterator it;
     for ( it = t.constBegin(); it != t.constEnd(); ++it ) {
-      if ( (*it) && ( (*it)->isCompleted() ) &&  ( (*it)->completed().date() < limitDate ) ) {
+      const Todo::Ptr todo = Akonadi::todo( *it );
+      Q_ASSERT( todo );
+      if ( todo->isCompleted() &&  todo->completed().date() < limitDate ) {
         todos.append( *it );
       }
     }
   }
 
-  incidences = Calendar::mergeIncidenceList( events, todos, journals );
+  const Item::List incidences = CalendarBase::mergeIncidenceListFORAKONADI( events, todos, journals );
 
   kDebug() << "archiving incidences before" << limitDate
            << " ->" << incidences.count() <<" incidences found.";
@@ -124,12 +130,12 @@ void EventArchiver::run( KOrg::CalendarBase *calendar, const QDate &limitDate, Q
 }
 
 void EventArchiver::deleteIncidences( KOrg::CalendarBase *calendar, const QDate &limitDate, QWidget *widget,
-                                      const Incidence::List &incidences, bool withGUI )
+                                      const Item::List &incidences, bool withGUI )
 {
   QStringList incidenceStrs;
-  Incidence::List::ConstIterator it;
+  Item::List::ConstIterator it;
   for ( it = incidences.constBegin(); it != incidences.constEnd(); ++it ) {
-    incidenceStrs.append( (*it)->summary() );
+    incidenceStrs.append( Akonadi::incidence( *it )->summary() );
   }
 
   if ( withGUI ) {
@@ -145,13 +151,13 @@ void EventArchiver::deleteIncidences( KOrg::CalendarBase *calendar, const QDate 
     }
   }
   for ( it = incidences.constBegin(); it != incidences.constEnd(); ++it ) {
-    calendar->deleteIncidence( *it );
+    calendar->deleteIncidenceFORAKONADI( *it );
   }
   emit eventsDeleted();
 }
 
 void EventArchiver::archiveIncidences( KOrg::CalendarBase *calendar, const QDate &limitDate, QWidget *widget,
-                                       const Incidence::List &incidences, bool withGUI )
+                                       const Item::List &incidences, bool withGUI )
 {
   Q_UNUSED( limitDate );
   Q_UNUSED( withGUI );

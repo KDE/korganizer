@@ -2441,21 +2441,20 @@ void CalendarView::purgeCompleted()
   if ( result == KMessageBox::Continue ) {
     bool allDeleted = true;
     startMultiModify( i18n( "Purging completed to-dos" ) );
-    Todo::List todos = calendar()->rawTodos();
-    Todo::List rootTodos;
-    Todo::List::ConstIterator it;
+    Item::List todos = calendar()->rawTodosFORAKONADI();
+    Item::List rootTodos;
+    Item::List::ConstIterator it;
     for ( it = todos.constBegin(); it != todos.constEnd(); ++it ) {
-      Todo *aTodo = *it;
+      Todo::Ptr aTodo = Akonadi::todo( *it );
       if ( aTodo && !aTodo->relatedTo() ) {
-        rootTodos.append( aTodo );
+        rootTodos.append( *it );
       }
     }
-#ifdef AKONADI_PORT_DISABLED
     // now that we have a list of all root todos, check them and their children
     for ( it = rootTodos.constBegin(); it != rootTodos.constEnd(); ++it ) {
       purgeCompletedSubTodos( *it, allDeleted );
     }
-#endif
+
     endMultiModify();
     if ( !allDeleted ) {
       KMessageBox::information(

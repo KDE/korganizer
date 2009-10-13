@@ -28,6 +28,8 @@
 
 #include <kcal/event.h>
 
+#include <Akonadi/Item>
+
 #include <QObject>
 
 class QDate;
@@ -84,9 +86,9 @@ class EventArchiver : public QObject
               bool withGUI, bool errorIfNone );
 
     void deleteIncidences( KOrg::CalendarBase *calendar, const QDate &limitDate, QWidget *widget,
-                           const Incidence::List &incidences, bool withGUI );
+                           const Akonadi::Item::List &incidences, bool withGUI );
     void archiveIncidences( KOrg::CalendarBase *calendar, const QDate &limitDate, QWidget *widget,
-                            const Incidence::List &incidences, bool withGUI );
+                            const Akonadi::Item::List &incidences, bool withGUI );
 };
 
 #endif /* EVENTARCHIVER_H */

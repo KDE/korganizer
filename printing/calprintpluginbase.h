@@ -559,7 +559,7 @@ class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
       @param pageHeight Total height allowed for the list on a page. If an item
                    would be below that line, a new page is started.
     */
-    void drawJournal( Journal * journal, QPainter &p, int x, int &y,
+    void drawJournal( const Journal::Ptr &journal, QPainter &p, int x, int &y,
                       int width, int pageHeight );
     /**
       Draws text lines splitting on page boundaries.
