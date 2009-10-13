@@ -35,6 +35,9 @@
 #include <KCal/ICalDrag>
 #include <KCal/VCalDrag>
 
+#include <akonadi/kcal/utils.h>
+
+
 #include <KCalendarSystem>
 #include <KIcon>
 #include <KLocale>
@@ -74,6 +77,7 @@
 //  K O D A Y M A T R I X
 // ============================================================================
 
+using namespace Akonadi;
 using namespace KCal;
 using namespace KOrg;
 
@@ -106,7 +110,17 @@ void KODayMatrix::setCalendar( KOrg::CalendarBase *cal )
 
   mCalendar = cal;
   mCalendar->registerObserver( this );
-  //AkonadiCalendar *calres = dynamic_cast<AkonadiCalendar*>( cal );
+  AkonadiCalendar *calres = dynamic_cast<AkonadiCalendar*>( cal );
+  if ( calres ) {
+#if 0 //AKONADI_PORT_DISABLED: not needed any longer
+    connect( calres, SIGNAL(signalResourceAdded(ResourceCalendar *)),
+             SLOT(resourcesChanged()) );
+    connect( calres, SIGNAL(signalResourceModified(ResourceCalendar *)),
+             SLOT(resourcesChanged()) );
+    connect( calres, SIGNAL(signalResourceDeleted(ResourceCalendar *)),
+             SLOT(resourcesChanged()) );
+#endif
+  }
 
   setAcceptDrops( mCalendar != 0 );
   updateIncidences();
@@ -297,9 +311,11 @@ void KODayMatrix::updateIncidences()
 
 void KODayMatrix::updateJournals()
 {
-  Incidence::List incidences = mCalendar->incidences();
+  const Item::List items = mCalendar->incidencesFORAKONADI();
 
-  foreach ( Incidence *inc, incidences ) {
+  foreach ( const Item & item, items ) {
+    Incidence::Ptr inc = Akonadi::incidence( item );
+    Q_ASSERT( inc );
     QDate d = inc->dtStart().toTimeSpec( mCalendar->timeSpec() ).date();
     if ( inc->type() == "Journal" &&
          d >= mDays[0] &&
@@ -321,35 +337,34 @@ void KODayMatrix::updateJournals()
   */
 void KODayMatrix::updateTodos()
 {
-  Incidence::List incidences = mCalendar->incidences();
+  const Item::List items = mCalendar->todosFORAKONADI();
   QDate d;
-  foreach ( Incidence *inc, incidences ) {
-    if ( inc->type() == "Todo" ) {
-      Todo *t = static_cast<Todo *>( inc );
-      if ( t->hasDueDate() ) {
-        ushort recurType = t->recurrenceType();
+  foreach ( const Item &item, items ) {
+    const Todo::Ptr t = Akonadi::todo( item );
+    Q_ASSERT( t );
+    if ( t->hasDueDate() ) {
+      ushort recurType = t->recurrenceType();
 
-        if ( t->recurs() &&
-             !( recurType == Recurrence::rDaily && !KOPrefs::instance()->mDailyRecur ) &&
-             !( recurType == Recurrence::rWeekly && !KOPrefs::instance()->mWeeklyRecur ) )  {
+      if ( t->recurs() &&
+           !( recurType == Recurrence::rDaily && !KOPrefs::instance()->mDailyRecur ) &&
+           !( recurType == Recurrence::rWeekly && !KOPrefs::instance()->mWeeklyRecur ) )  {
 
-          // It's a recurring todo, find out in which days it occurs
-          DateTimeList timeDateList = t->recurrence()->timesInInterval(
-                                            KDateTime( mDays[0], mCalendar->timeSpec() ),
-                                            KDateTime( mDays[NUMDAYS-1], mCalendar->timeSpec() ) );
+        // It's a recurring todo, find out in which days it occurs
+        DateTimeList timeDateList = t->recurrence()->timesInInterval(
+                                          KDateTime( mDays[0], mCalendar->timeSpec() ),
+                                          KDateTime( mDays[NUMDAYS-1], mCalendar->timeSpec() ) );
 
-          foreach ( const KDateTime &dt, timeDateList ) {
-            d = dt.toTimeSpec( mCalendar->timeSpec() ).date();
-            if ( !mEvents.contains( d ) ) {
-              mEvents.append( d );
-            }
-          }
-
-        } else {
-          d = t->dtDue().toTimeSpec( mCalendar->timeSpec() ).date();
-          if ( d >= mDays[0] && d <= mDays[NUMDAYS-1] && !mEvents.contains( d ) ) {
+        foreach ( const KDateTime &dt, timeDateList ) {
+          d = dt.toTimeSpec( mCalendar->timeSpec() ).date();
+          if ( !mEvents.contains( d ) ) {
             mEvents.append( d );
           }
+        }
+
+      } else {
+        d = t->dtDue().toTimeSpec( mCalendar->timeSpec() ).date();
+        if ( d >= mDays[0] && d <= mDays[NUMDAYS-1] && !mEvents.contains( d ) ) {
+          mEvents.append( d );
         }
       }
     }

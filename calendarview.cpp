@@ -1228,9 +1228,8 @@ bool CalendarView::makeSubTodosIndependents ( const Item &todoItem )
 bool CalendarView::deleteIncidence( const Item::Id &uid, bool force )
 {
   Akonadi::Item item = mCalendar->incidenceFORAKONADI( uid );
-  if ( !item.isValid() || !item.hasPayload<Incidence::Ptr>() ) {
+  if ( !Akonadi::hasIncidence( item ) )
     return false;
-  }
   return deleteIncidence( item, force );
 }
 
@@ -1903,7 +1902,8 @@ QString CalendarView::currentFilterName() const
 
 void CalendarView::takeOverEvent()
 {
-  Incidence::Ptr incidence = Akonadi::incidence( currentSelection() );
+  const Item item = currentSelection();
+  Incidence::Ptr incidence = Akonadi::incidence( item );
 
   if ( incidence ) {
     return;
@@ -1914,20 +1914,25 @@ void CalendarView::takeOverEvent()
   incidence->recreate();
   incidence->setReadOnly( false );
 
+  //PENDING(AKONADI_PORT) call mChanger?
+
   updateView();
 }
 
 void CalendarView::takeOverCalendar()
 {
-  Incidence::List incidences = mCalendar->rawIncidences();
-  Incidence::List::Iterator it;
+  const Item::List items = mCalendar->rawIncidencesFORAKONADI();
 
-  for ( it = incidences.begin(); it != incidences.end(); ++it ) {
-    (*it)->setOrganizer( Person( KOPrefs::instance()->fullName(),
+  Q_FOREACH( const Item& item, items ) {
+    Incidence::Ptr i = Akonadi::incidence( item );
+    i->setOrganizer( Person( KOPrefs::instance()->fullName(),
                                  KOPrefs::instance()->email() ) );
-    (*it)->recreate();
-    (*it)->setReadOnly( false );
+    i->recreate();
+    i->setReadOnly( false );
   }
+
+  //PENDING(AKONADI_PORT) call mChanger?
+
   updateView();
 }
 

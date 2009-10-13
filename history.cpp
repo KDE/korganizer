@@ -164,14 +164,18 @@ History::EntryDelete::~EntryDelete()
 
 void History::EntryDelete::undo()
 {
+#ifdef AKONADI_PORT_DISABLED //here we need the akonadi item after creation
   // TODO: Use the proper resource instead of asking!
   mCalendar->addIncidence( mIncidence->clone() );
+#endif
 }
 
 void History::EntryDelete::redo()
 {
+#ifdef AKONADI_PORT_DISABLED
   Incidence *incidence = mCalendar->incidence( mIncidence->uid() );
   mCalendar->deleteIncidence( incidence );
+#endif
 }
 
 QString History::EntryDelete::text()
@@ -191,16 +195,20 @@ History::EntryAdd::~EntryAdd()
 
 void History::EntryAdd::undo()
 {
+#ifdef AKONADI_PORT_DISABLED //here we need the akonadi item after creation
   Incidence *incidence = mCalendar->incidence( mIncidence->uid() );
   if ( incidence ) {
     mCalendar->deleteIncidence( incidence );
   }
+#endif
 }
 
 void History::EntryAdd::redo()
 {
+#ifdef AKONADI_PORT_DISABLED
   // TODO: User the proper resource instead of asking again
   mCalendar->addIncidence( mIncidence->clone() );
+#endif
 }
 
 QString History::EntryAdd::text()
@@ -223,22 +231,26 @@ History::EntryEdit::~EntryEdit()
 
 void History::EntryEdit::undo()
 {
+#ifdef AKONADI_PORT_DISABLED //here we need the akonadi item after creation
   Incidence *incidence = mCalendar->incidence( mNewIncidence->uid() );
   if ( incidence ) {
     mCalendar->deleteIncidence( incidence );
   }
   // TODO: Use the proper resource instead of asking again
   mCalendar->addIncidence( mOldIncidence->clone() );
+#endif
 }
 
 void History::EntryEdit::redo()
 {
+#ifdef AKONADI_PORT_DISABLED //here we need the akonadi item after creation
   Incidence *incidence = mCalendar->incidence( mOldIncidence->uid() );
   if ( incidence ) {
     mCalendar->deleteIncidence( incidence );
   }
   // TODO: Use the proper resource instead of asking again
   mCalendar->addIncidence( mNewIncidence->clone() );
+#endif
 }
 
 QString History::EntryEdit::text()
