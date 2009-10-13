@@ -389,12 +389,14 @@ QString TimeLabels::headerToolTip() const
   QString toolTip;
   toolTip += "<qt>";
   toolTip += i18n( "Timezone: %1", tz.name() );
-  toolTip += "<br/>";
-  toolTip += i18n( "Country Code: %1", tz.countryCode() );
+  if ( !tz.countryCode().isEmpty() ) {
+    toolTip += "<br/>";
+    toolTip += i18n( "Country Code: %1", tz.countryCode() );
+  }
   if ( !tz.abbreviations().isEmpty() ) {
     toolTip += "<br/>";
     toolTip += i18n( "Abbreviations:" );
-    foreach ( QByteArray a, tz.abbreviations() ) {
+    foreach ( const QByteArray &a, tz.abbreviations() ) {
       toolTip += "<br/>";
       toolTip += "&nbsp;" + QString::fromLocal8Bit( a );
     }
