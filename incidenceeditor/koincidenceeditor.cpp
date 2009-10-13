@@ -52,8 +52,7 @@
 using namespace Akonadi;
 using namespace KCal;
 
-KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
-                                      KOrg::CalendarBase *calendar, QWidget *parent )
+KOIncidenceEditor::KOIncidenceEditor( const QString &caption, QWidget *parent )
   : KPageDialog( parent ),
     mAttendeeEditor( 0 ), mIsCounter( false ), mIsCreateTask( false )
 {
@@ -67,8 +66,6 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
   // Set this to be the group leader for all subdialogs - this means
   // modal subdialogs will only affect this dialog, not the other windows
   setAttribute( Qt::WA_GroupLeader );
-
-  mCalendar = calendar;
 
   setButtonText( Default, i18nc( "@action:button", "Manage &Templates..." ) );
   setButtonToolTip( Default,

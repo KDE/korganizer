@@ -7,6 +7,7 @@
 #include <kaboutdata.h>
 #include <kurl.h>
 #include <ksystemtimezone.h>
+#include <QLineEdit>
 
 #include <akonadi/collection.h>
 #include <akonadi/collectionview.h>
@@ -34,6 +35,53 @@
 #include "koeventeditor.h"
 #include "kojournaleditor.h"
 
+class AKONADI_KCAL_EXPORT CalItemModel : public Akonadi::ItemModel
+{
+  public:
+    explicit CalItemModel(QObject *parent = 0) : Akonadi::ItemModel(parent) { fetchScope().fetchFullPayload(); }
+    virtual ~CalItemModel() {}
+    virtual int rowCount( const QModelIndex & parent = QModelIndex() ) const {
+      return ItemModel::rowCount(parent);
+    }
+    virtual int columnCount( const QModelIndex & parent = QModelIndex() ) const {
+      return 4;
+    }
+    virtual QVariant data( const QModelIndex & index, int role = Qt::DisplayRole ) const {
+      if(role == Qt::DisplayRole) {
+        const Akonadi::Item item = itemForIndex(index);
+        const Incidence::Ptr incidence = item.hasPayload<Incidence::Ptr>() ? item.payload<Incidence::Ptr>() : Incidence::Ptr();
+        if( ! incidence )
+          return QVariant();
+        switch( index.column() ) {
+          case 0: return incidence->type(); break;
+          case 1: return incidence->dtStart().toString(); break;
+          case 2: return incidence->dtEnd().toString(); break;
+          case 3: return incidence->summary(); break;
+        }
+      }
+      return Akonadi::ItemModel::data(index, role);
+    }
+    virtual QVariant headerData( int section, Qt::Orientation orientation, int role = Qt::DisplayRole ) const {
+      if(role == Qt::DisplayRole) {
+        switch(section) {
+          case 0: return QLatin1String("Type"); break;
+          case 1: return QLatin1String("Start"); break;
+          case 2: return QLatin1String("End"); break;
+          case 3: return QLatin1String("Summary"); break;
+        }
+      }
+      return Akonadi::ItemModel::headerData(section, orientation, role);
+    }
+    virtual QStringList mimeTypes() const {
+      return QStringList()
+        << QLatin1String("text/uri-list")
+        << QLatin1String("application/x-vnd.akonadi.calendar.event")
+        << QLatin1String("application/x-vnd.akonadi.calendar.todo")
+        << QLatin1String("application/x-vnd.akonadi.calendar.journal")
+        << QLatin1String("application/x-vnd.akonadi.calendar.freebusy");
+    }
+};
+
 class MainWidget : public QWidget
 {
     Q_OBJECT
@@ -42,7 +90,7 @@ class MainWidget : public QWidget
       : QWidget(parent)
       , m_collectionmodel(new Akonadi::CollectionModel(this))
       , m_collectionproxymodel(new Akonadi::CollectionFilterProxyModel(this))
-      , m_itemmodel(new Akonadi::ItemModel(this))
+      , m_itemmodel(new CalItemModel(this))
     {
       m_collectionproxymodel->setSourceModel(m_collectionmodel);
       m_collectionproxymodel->addMimeTypeFilter( QString::fromLatin1( "text/calendar" ) );
@@ -51,7 +99,9 @@ class MainWidget : public QWidget
       fetchscope.fetchFullPayload(true);
       m_itemmodel->setFetchScope(fetchscope);
 
-      QLayout *layout = new QHBoxLayout(this);
+      QLayout *layout = new QVBoxLayout(this);
+      layout->setMargin(0);
+      layout->setSpacing(0);
       this->setLayout(layout);
 
       QSplitter *splitter = new QSplitter(this);
@@ -61,42 +111,24 @@ class MainWidget : public QWidget
       m_collectionview->setModel(m_collectionproxymodel);
       m_collectionview->setRootIsDecorated(true);
 
-      m_itemview = new Akonadi::ItemView(splitter);
+      QWidget *mainwidget = new QWidget(splitter);
+      QLayout *mainlayout = new QVBoxLayout(mainwidget);
+      mainlayout->setMargin(0);
+      mainlayout->setSpacing(0);
+      mainwidget->setLayout(mainlayout);
+
+      QLineEdit *edit = new QLineEdit(this);
+      connect(edit, SIGNAL(textChanged(QString)), this, SLOT(filterChanged(QString)));
+      mainlayout->addWidget(edit);
+
+      m_itemview = new Akonadi::ItemView(mainwidget);
+      mainlayout->addWidget(m_itemview);
+      m_itemproxymodel = new QSortFilterProxyModel(m_itemview);
+      m_itemproxymodel->setFilterKeyColumn(3);
+      m_itemproxymodel->setSourceModel(m_itemmodel);
+      m_itemview->setModel(m_itemproxymodel);
+
       splitter->setStretchFactor(1, 1);
-      m_itemview->setModel(m_itemmodel);
-
-      
-/*
-      //mCollectionview->setSelectionMode( QAbstractItemView::NoSelection );
-      KXMLGUIClient *xmlclient = KOCore::self()->xmlguiClient( mFactory->view() );
-      if( xmlclient ) {
-        mCollectionview->setXmlGuiClient( xmlclient );
-
-        mActionManager = new Akonadi::StandardActionManager( xmlclient->actionCollection(), mCollectionview );
-        mActionManager->createAllActions();
-        mActionManager->action( Akonadi::StandardActionManager::CreateCollection )->setText( i18n( "Add Calendar..." ) );
-        mActionManager->setActionText( Akonadi::StandardActionManager::CopyCollections, ki18np( "Copy Calendar", "Copy %1 Calendars" ) );
-        mActionManager->action( Akonadi::StandardActionManager::DeleteCollections )->setText( i18n( "Delete Calendar" ) );
-        mActionManager->action( Akonadi::StandardActionManager::SynchronizeCollections )->setText( i18n( "Reload" ) );
-        mActionManager->action( Akonadi::StandardActionManager::CollectionProperties )->setText( i18n( "Properties..." ) );
-        mActionManager->setCollectionSelectionModel( mCollectionview->selectionModel() );
-
-        mCreateAction = new KAction( mCollectionview );
-        mCreateAction->setIcon( KIcon( "appointment-new" ) );
-        mCreateAction->setText( i18n( "New Calendar..." ) );
-        //mCreateAction->setWhatsThis( i18n( "Create a new contact<p>You will be presented with a dialog where you can add all data about a person, including addresses and phone numbers.</p>" ) );
-        xmlclient->actionCollection()->addAction( QString::fromLatin1( "akonadi_calendar_create" ), mCreateAction );
-        connect( mCreateAction, SIGNAL( triggered( bool ) ), this, SLOT( newCalendar() ) );
-
-        mDeleteAction = new KAction( mCollectionview );
-        mDeleteAction->setIcon( KIcon( "edit-delete" ) );
-        mDeleteAction->setText( i18n( "Delete Calendar" ) );
-        mDeleteAction->setEnabled( false );
-        //mDeleteAction->setWhatsThis( i18n( "Create a new contact<p>You will be presented with a dialog where you can add all data about a person, including addresses and phone numbers.</p>" ) );
-        xmlclient->actionCollection()->addAction( QString::fromLatin1( "akonadi_calendar_delete" ), mDeleteAction );
-        connect( mDeleteAction, SIGNAL( triggered( bool ) ), this, SLOT( deleteCalendar() ) );
-      }
-*/
       selectionChanged();
       connect( m_collectionview->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)), this, SLOT(selectionChanged()) );
       connect( m_itemview, SIGNAL(activated(QModelIndex)), this, SLOT(itemActivated()) );
@@ -104,6 +136,11 @@ class MainWidget : public QWidget
     virtual ~MainWidget() {}
 
   private Q_SLOTS:
+
+    void filterChanged(const QString &text) {
+      m_itemproxymodel->setFilterWildcard(text);
+    }
+    
     void selectionChanged() {
       if(m_collectionview->selectionModel()->hasSelection()) {
         QModelIndex index = m_collectionview->selectionModel()->currentIndex();
@@ -115,6 +152,7 @@ class MainWidget : public QWidget
         m_itemmodel->setCollection( Akonadi::Collection::root() );
       }
     }
+
     void itemActivated() {
       QModelIndex index = m_itemview->selectionModel()->currentIndex();
       Q_ASSERT( index.isValid() );
@@ -128,13 +166,13 @@ class MainWidget : public QWidget
       KOrg::CalendarBase *calendar = new KOrg::AkonadiCalendar(KSystemTimeZones::local());
       
       if(incidence->type() == "Event") {
-        KOEventEditor *editor = new KOEventEditor(calendar, this);
+        KOEventEditor *editor = new KOEventEditor(this);
         editor->init();
         editor->readEvent(item);
-        editor->editIncidence(item, calendar);
+        editor->editIncidence(item);
         editor->show();
       } else if(incidence->type() == "Todo") {
-        KOTodoEditor *editor = new KOTodoEditor(calendar, this);
+        KOTodoEditor *editor = new KOTodoEditor(this);
         editor->init();
         /*
         createCategoryEditor();
@@ -147,29 +185,27 @@ class MainWidget : public QWidget
         connect( editor, SIGNAL(deleteAttendee(Incidence *)), mMainView, SIGNAL(cancelAttendees(Incidence *)) );
         */
         editor->readTodo(item);
-        editor->editIncidence(item, calendar);
+        editor->editIncidence(item);
         editor->show();
         
       } else if(incidence->type() == "Journal") {
-        KOJournalEditor *editor = new KOJournalEditor(calendar, this);
+        KOJournalEditor *editor = new KOJournalEditor(this);
         editor->init();
         editor->readJournal(item);
-        editor->editIncidence(item, calendar);
+        editor->editIncidence(item);
         editor->show();
       } else {
         Q_ASSERT(false);
       }
-        
-      
     }
     
   private:
     Akonadi::CollectionModel *m_collectionmodel;
     Akonadi::CollectionFilterProxyModel *m_collectionproxymodel;
     Akonadi::CollectionView *m_collectionview;
-    Akonadi::ItemModel *m_itemmodel;
+    CalItemModel *m_itemmodel;
+    QSortFilterProxyModel *m_itemproxymodel;
     Akonadi::ItemView *m_itemview;
-    //AkonadiCalendar m_calendar;
 };
 
 int main(int argc, char **argv)
@@ -185,13 +221,7 @@ int main(int argc, char **argv)
                      "http://kdepim.kde.org",
                      "kdepim@kde.org");
     about.addAuthor(ki18n("Sebastian Sauer"), ki18n("Author"), "sebsauer@kdab.net");
-
     KCmdLineArgs::init(argc, argv, &about);
-    KCmdLineOptions options;
-    //options.add("+file", ki18n("Some file"));
-    KCmdLineArgs::addCmdLineOptions(options);
-    KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
-
     KApplication app;
     KMainWindow *mainwindow = new KMainWindow();
     mainwindow->setCentralWidget( new MainWidget(mainwindow) );

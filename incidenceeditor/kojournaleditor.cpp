@@ -41,9 +41,9 @@
 
 using namespace Akonadi;
 
-KOJournalEditor::KOJournalEditor( KOrg::CalendarBase *calendar, QWidget *parent )
-  : KOIncidenceEditor( QString(), calendar, parent ),
-    mJournal( 0 ), mCalendar( 0 )
+KOJournalEditor::KOJournalEditor( QWidget *parent )
+  : KOIncidenceEditor( QString(), parent ),
+    mJournal( 0 )
 {
 }
 
@@ -71,7 +71,7 @@ void KOJournalEditor::reload()
 
 void KOJournalEditor::setupGeneral()
 {
-  mGeneral = new KOEditorGeneralJournal( mCalendar, this );
+  mGeneral = new KOEditorGeneralJournal( this );
 
   QFrame *topFrame = new QFrame();
   addPage( topFrame, i18nc( "@title general journal settings", "General" ) );
@@ -88,14 +88,13 @@ void KOJournalEditor::setupGeneral()
   mGeneral->finishSetup();
 }
 
-void KOJournalEditor::editIncidence( const Item &item, KOrg::CalendarBase *calendar )
+void KOJournalEditor::editIncidence( const Item &item )
 {
   const Journal::Ptr journal = Akonadi::journal( item );
   Q_ASSERT( journal );
   init();
 
   mJournal = item;
-  mCalendar = calendar;
   readJournal( mJournal, false );
   setCaption( i18nc( "@title:window", "Edit Journal: %1", journal->summary() ) );
 }
@@ -104,7 +103,6 @@ void KOJournalEditor::newJournal()
 {
   init();
   mJournal = Item();
-  mCalendar = 0;
   loadDefaults();
   setCaption( i18nc( "@title:window", "New Journal" ) );
 }

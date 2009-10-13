@@ -120,7 +120,6 @@ class KOrganizerEditorConfig : public KOEditorConfig
     }
 };
 
-// FIXME: Several places in the file don't use KConfigXT yet!
 KOWindowList *ActionManager::mWindowList = 0;
 
 ActionManager::ActionManager( KXMLGUIClient *client, CalendarView *widget,

@@ -51,9 +51,9 @@
 using namespace Akonadi;
 using namespace KOrg;
 
-KOTodoEditor::KOTodoEditor( CalendarBase *calendar, QWidget *parent )
-  : KOIncidenceEditor( QString(), calendar, parent ),
-    mTodo(), mCalendar( 0 ), mRelatedTodo()
+KOTodoEditor::KOTodoEditor( QWidget *parent )
+  : KOIncidenceEditor( QString(), parent ),
+    mTodo(), mRelatedTodo()
 {
   mInitialTodo = Todo::Ptr( new Todo );
   mInitialTodoItem.setPayload(mInitialTodo);
@@ -113,7 +113,7 @@ void KOTodoEditor::reload()
 
 void KOTodoEditor::setupGeneral()
 {
-  mGeneral = new KOEditorGeneralTodo( mCalendar, this );
+  mGeneral = new KOEditorGeneralTodo( this );
 
   QFrame *topFrame = new QFrame();
   addPage( topFrame, i18nc( "@title:tab general to-do settings", "&General" ) );
@@ -159,14 +159,13 @@ void KOTodoEditor::setupRecurrence()
            mRecurrence, SLOT(setEnabled(bool)) );
 }
 
-void KOTodoEditor::editIncidence( const Item &item, KOrg::CalendarBase *calendar )
+void KOTodoEditor::editIncidence( const Item &item )
 {
   const Todo::Ptr todo = Akonadi::todo( item );
   Q_ASSERT( todo );
   init();
 
   mTodo = item;
-  mCalendar = calendar;
   readTodo( item, false );
   setCaption( i18nc( "@title:window", "Edit To-do: %1", todo->summary() ) );
 }
@@ -175,7 +174,6 @@ void KOTodoEditor::newTodo()
 {
   init();
   mTodo = Item();
-  mCalendar = 0;
   setCaption( i18nc( "@title:window", "New To-do" ) );
   loadDefaults();
 }

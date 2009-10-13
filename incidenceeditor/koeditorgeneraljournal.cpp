@@ -45,8 +45,8 @@
 #include <QPushButton>
 #include <QTimer>
 
-KOEditorGeneralJournal::KOEditorGeneralJournal( KOrg::CalendarBase *calendar, QObject *parent )
-  : KOEditorGeneral( calendar, parent )
+KOEditorGeneralJournal::KOEditorGeneralJournal( QObject *parent )
+  : KOEditorGeneral( parent )
 {
   setType( "Journal" );
 }

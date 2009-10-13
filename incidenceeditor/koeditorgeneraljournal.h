@@ -28,10 +28,6 @@
 
 #include "koeditorgeneral.h"
 
-namespace KOrg {
-  class CalendarBase;
-}
-
 namespace KCal {
   class Journal;
 }
@@ -46,7 +42,7 @@ class KOEditorGeneralJournal : public KOEditorGeneral
 {
   Q_OBJECT
   public:
-  explicit KOEditorGeneralJournal ( KOrg::CalendarBase *calendar, QObject *parent=0 );
+  explicit KOEditorGeneralJournal ( QObject *parent=0 );
     virtual ~KOEditorGeneralJournal();
 
     void initDate( QWidget *, QBoxLayout * );

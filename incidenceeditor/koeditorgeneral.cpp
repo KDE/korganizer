@@ -66,12 +66,11 @@ void FocusLineEdit::focusInEvent ( QFocusEvent *e )
   KLineEdit::focusInEvent( e );
 }
 
-KOEditorGeneral::KOEditorGeneral( KOrg::CalendarBase *calendar, QObject *parent )
+KOEditorGeneral::KOEditorGeneral( QObject *parent )
   : QObject( parent ), mAttachments( 0 )
 {
   mType = "Event";
   mAlarmList.setAutoDelete( true );
-  mCalendar = calendar;
 }
 
 KOEditorGeneral::~KOEditorGeneral()

@@ -231,7 +231,7 @@ KOIncidenceEditor *KODialogManager::getEditor( const Item &item )
 
 KOEventEditor *KODialogManager::getEventEditor()
 {
-  KOEventEditor *eventEditor = new KOEventEditor( mMainView->calendar(), mMainView );
+  KOEventEditor *eventEditor = new KOEventEditor( mMainView );
   connectEditor( eventEditor );
   return eventEditor;
 }
@@ -269,14 +269,14 @@ void KODialogManager::connectEditor( KOIncidenceEditor *editor )
 KOTodoEditor *KODialogManager::getTodoEditor()
 {
   kDebug();
-  KOTodoEditor *todoEditor = new KOTodoEditor( mMainView->calendar(), mMainView );
+  KOTodoEditor *todoEditor = new KOTodoEditor( mMainView );
   connectEditor( todoEditor );
   return todoEditor;
 }
 
 KOJournalEditor *KODialogManager::getJournalEditor()
 {
-  KOJournalEditor *journalEditor = new KOJournalEditor( mMainView->calendar(), mMainView );
+  KOJournalEditor *journalEditor = new KOJournalEditor( mMainView );
   connectEditor( journalEditor );
   return journalEditor;
 }

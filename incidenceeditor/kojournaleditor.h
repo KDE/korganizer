@@ -36,9 +36,6 @@
 
 class KOEditorGeneralJournal;
 
-namespace KCal {
-  class Calendar;
-}
 using namespace KCal;
 
 /**
@@ -51,7 +48,7 @@ class INCIDENCEEDITOR_EXPORT KOJournalEditor : public KOIncidenceEditor
     /**
       Constructs a new Journal editor.
     */
-    KOJournalEditor( KOrg::CalendarBase *calendar, QWidget *parent );
+    KOJournalEditor( QWidget *parent );
     virtual ~KOJournalEditor();
 
     void init();
@@ -79,7 +76,7 @@ class INCIDENCEEDITOR_EXPORT KOJournalEditor : public KOIncidenceEditor
                    bool richDescription = false );
 
     /** Edit an existing Journal. */
-    void editIncidence( const Akonadi::Item &, KOrg::CalendarBase * );
+    void editIncidence( const Akonadi::Item & );
 
     /** Set date widget to default values */
     void setDate( const QDate &date );
@@ -126,7 +123,6 @@ class INCIDENCEEDITOR_EXPORT KOJournalEditor : public KOIncidenceEditor
 
   private:
     Akonadi::Item mJournal;
-    KOrg::CalendarBase *mCalendar;
 
     // Journal which represents the initial dialog setup when creating a new journal.
     // If cancel is pressed and the dialog has different information than

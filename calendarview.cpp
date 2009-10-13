@@ -2185,7 +2185,7 @@ bool CalendarView::editIncidence( const Item &item, bool isCounter )
   connectIncidenceEditor( incidenceEditor );
 
   mDialogList.insert( item.id(), incidenceEditor );
-  incidenceEditor->editIncidence( item, mCalendar );
+  incidenceEditor->editIncidence( item );
   incidenceEditor->show();
   return true;
 }

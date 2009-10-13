@@ -49,9 +49,9 @@
 
 using namespace Akonadi;
 
-KOEventEditor::KOEventEditor( KOrg::CalendarBase *calendar, QWidget *parent )
-  : KOIncidenceEditor( QString(), calendar, parent ),
-    mEvent( 0 ), mCalendar( 0 ), mGeneral( 0 ), mRecurrence( 0 ), mFreeBusy( 0 )
+KOEventEditor::KOEventEditor( QWidget *parent )
+  : KOIncidenceEditor( QString(), parent ),
+    mEvent( 0 ), mGeneral( 0 ), mRecurrence( 0 ), mFreeBusy( 0 )
 {
   mInitialEvent = Event::Ptr( new Event );
   mInitialEventItem.setPayload(mInitialEvent);
@@ -134,7 +134,7 @@ void KOEventEditor::reload()
 
 void KOEventEditor::setupGeneral()
 {
-  mGeneral = new KOEditorGeneralEvent( mCalendar, this );
+  mGeneral = new KOEditorGeneralEvent( this );
 
   QFrame *topFrame = new QFrame();
   addPage( topFrame, i18nc( "@title:tab general event settings", "&General" ) );
@@ -202,14 +202,13 @@ void KOEventEditor::setupFreeBusy()
   topLayout->addWidget( mFreeBusy );
 }
 
-void KOEventEditor::editIncidence( const Item &item, KOrg::CalendarBase *calendar )
+void KOEventEditor::editIncidence( const Item &item )
 {
   const Event::Ptr event = Akonadi::event( item );
   Q_ASSERT( event );
   init();
 
   mEvent = item;
-  mCalendar = calendar;
   readEvent( mEvent, false );
   setCaption( i18nc( "@title:window", "Edit Event : %1", event->summary() ) );
 }

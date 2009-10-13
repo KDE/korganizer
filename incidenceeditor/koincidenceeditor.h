@@ -39,7 +39,6 @@ namespace KPIM {
 }
 
 namespace KOrg {
-  class CalendarBase;
   class IncidenceChangerBase;
 }
 
@@ -48,9 +47,6 @@ class KOAttendeeEditor;
 
 namespace Akonadi {
   class Item;
-}
-namespace KCal {
-  class Calendar;
 }
 using namespace KCal;
 using namespace KOrg;
@@ -65,8 +61,7 @@ class INCIDENCEEDITOR_EXPORT KOIncidenceEditor : public KPageDialog
     /**
       Construct new IncidenceEditor.
     */
-    KOIncidenceEditor( const QString &caption, KOrg::CalendarBase *calendar,
-                       QWidget *parent );
+    KOIncidenceEditor( const QString &caption, QWidget *parent );
     virtual ~KOIncidenceEditor();
 
     /** This incidence has been modified externally */
@@ -79,7 +74,7 @@ class INCIDENCEEDITOR_EXPORT KOIncidenceEditor : public KPageDialog
 
   public slots:
     /** Edit an existing todo. */
-    virtual void editIncidence( const Akonadi::Item &, KOrg::CalendarBase * ) = 0;
+    virtual void editIncidence( const Akonadi::Item & ) = 0;
     virtual void setIncidenceChanger( IncidenceChangerBase *changer )
     { mChanger = changer; }
 
@@ -153,8 +148,6 @@ class INCIDENCEEDITOR_EXPORT KOIncidenceEditor : public KPageDialog
     virtual void processCancel() {}
 
     void cancelRemovedAttendees( const Akonadi::Item &item );
-
-    KOrg::CalendarBase *mCalendar;
 
     KOEditorDetails *mDetails;
     KOAttendeeEditor *mAttendeeEditor;
