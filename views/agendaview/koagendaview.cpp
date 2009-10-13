@@ -1242,6 +1242,7 @@ void KOAgendaView::changeIncidenceDisplay( const Item &aitem, int mode )
     case KOGlobals::INCIDENCEEDITED:
     {
       if ( mAllowAgendaUpdate ) {
+        //PENDING(AKONADI_PORT) try harder not to recreate the items here, this causes flicker with the delayed notification from Akonadi, after a dnd operation
         removeIncidence( aitem );
         changeIncidenceDisplayAdded( aitem );
       }

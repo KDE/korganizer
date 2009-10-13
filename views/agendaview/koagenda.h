@@ -157,6 +157,8 @@ class KOAgenda : public Q3ScrollView
     void setIncidenceChanger( IncidenceChangerBase *changer )
     { mChanger = changer; }
 
+    QList<KOAgendaItem*> agendaItems( const Akonadi::Item &item ) const;
+
   public slots:
     void scrollUp();
     void scrollDown();

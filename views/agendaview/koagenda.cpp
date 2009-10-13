@@ -1678,21 +1678,22 @@ void KOAgenda::insertMultiItem( const Item &event, const QDate &qd, int XBegin,
   marcus_bains();
 }
 
+QList<KOAgendaItem*> KOAgenda::agendaItems( const Akonadi::Item &aitem ) const {
+  QList<KOAgendaItem*> items;
+  Q_FOREACH ( KOAgendaItem* const item, mItems )
+    if ( item && item->incidence() == aitem )
+      items.push_back( item );
+  return items;
+}
+
 void KOAgenda::removeIncidence( const Item &incidence )
 {
   // First find all items to be deleted and store them
   // in its own list. Otherwise removeAgendaItem will reset
   // the current position in the iterator-loop and mess the logic up.
-  QList<KOAgendaItem*> itemsToRemove;
-  KOAgendaItem *item;
+  const QList<KOAgendaItem*> itemsToRemove = agendaItems( incidence );
 
-  foreach ( item, mItems ) {
-    if ( item && item->incidence() == incidence ) {
-      itemsToRemove.append( item );
-    }
-  }
-
-  foreach ( item, itemsToRemove ) {
+  foreach ( KOAgendaItem * const item, itemsToRemove ) {
     removeAgendaItem( item );
   }
 }
