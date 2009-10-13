@@ -27,6 +27,8 @@
 #include "koglobals.h"
 #include "koprefs.h"
 
+#include <akonadi/kcal/utils.h>
+
 #include <kcal/event.h>
 
 #include <QDate>
@@ -82,8 +84,9 @@ class TimeSpentWidget : public QWidget
 
       int total = 0;
 
-      foreach ( Event *e, mEventList ) {
-
+      foreach ( const Item &item, mEventList ) {
+        const Event::ConstPtr e = Akonadi::event( item );
+        Q_ASSERT( e );
         KDateTime selectedStart( mTimeSpentView->mStartDate,
                                  QTime( 0, 0 ),
                                  e->dtStart().timeSpec() );
@@ -181,7 +184,7 @@ class TimeSpentWidget : public QWidget
       }
     }
 
-    Event::List mEventList;
+    Item::List mEventList;
     KOTimeSpentView *mTimeSpentView;
 };
 
@@ -257,7 +260,7 @@ void KOTimeSpentView::updateView()
   */
 
   KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
-  mView->mEventList = calendar()->events( mStartDate, mEndDate, timeSpec );
+  mView->mEventList = calendar()->eventsFORAKONADI( mStartDate, mEndDate, timeSpec );
   mView->repaint();
 }
 

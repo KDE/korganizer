@@ -327,6 +327,7 @@ void KOWhatsNextView::appendTodo( const Item &aitem )
 
 void KOWhatsNextView::showIncidence( const QString &uid )
 {
+#ifdef AKONADI_PORT_DISABLED
   Item incidence;
 
   AkonadiCalendar* cal = dynamic_cast<AkonadiCalendar*>( calendar() );
@@ -341,6 +342,7 @@ void KOWhatsNextView::showIncidence( const QString &uid )
   if ( incidence.isValid() ) {
     emit showIncidenceSignal( incidence );
   }
+#endif // AKONADI_PORT_DISABLED
 }
 
 #include "kowhatsnextview.moc"

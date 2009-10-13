@@ -454,8 +454,8 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
       {
         modify = true;
         Incidence::Ptr oldIncSaved( incidence->clone() );
-        Incidence::Ptr newInc( monthScene()->calendar()->dissociateOccurrence(
-            incidence.get(), startDate(), KOPrefs::instance()->timeSpec() ) );
+        Incidence::Ptr newInc( monthScene()->calendar()->dissociateOccurrenceFORAKONADI(
+            mIncidence, startDate(), KOPrefs::instance()->timeSpec() ) );
         if ( newInc ) {
            //TODO check return values
           changer->changeIncidence( oldIncSaved, mIncidence );
@@ -474,8 +474,8 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
       {
         modify = true;
         Incidence::Ptr oldIncSaved( incidence->clone() );
-        Incidence::Ptr newInc( monthScene()->calendar()->dissociateOccurrence(
-            incidence.get(), startDate(), KOPrefs::instance()->timeSpec(), false ) );
+        Incidence::Ptr newInc( monthScene()->calendar()->dissociateOccurrenceFORAKONADI(
+            mIncidence, startDate(), KOPrefs::instance()->timeSpec(), false ) );
         if ( newInc ) {
            //TODO check return values
           changer->changeIncidence( oldIncSaved, mIncidence );

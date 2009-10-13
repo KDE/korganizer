@@ -37,7 +37,6 @@
 
 #include <akonadi/kcal/utils.h>
 
-
 #include <KCalendarSystem>
 #include <KIcon>
 #include <KLocale>
@@ -373,13 +372,12 @@ void KODayMatrix::updateTodos()
 
 void KODayMatrix::updateEvents()
 {
-  Event::List eventlist = mCalendar->events( mDays[0], mDays[NUMDAYS-1],
-                                             mCalendar->timeSpec() );
+  Item::List eventlist = mCalendar->eventsFORAKONADI( mDays[0], mDays[NUMDAYS-1],
+                                                      mCalendar->timeSpec() );
 
-  Event::List::ConstIterator it;
-
-  for ( it=eventlist.constBegin(); it != eventlist.constEnd(); ++it ) {
-    Event *event = *it;
+  Q_FOREACH ( const Item & item, eventlist ) {
+    const Event::ConstPtr event = Akonadi::event( item );
+    Q_ASSERT( event );
     ushort recurType = event->recurrenceType();
 
     KDateTime dtStart = event->dtStart().toTimeSpec( mCalendar->timeSpec() );

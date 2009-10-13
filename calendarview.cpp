@@ -1352,7 +1352,7 @@ void CalendarView::dissociateOccurrence( const Item &item, const QDate &date )
   Incidence::Ptr oldincidence( incidence->clone() );
 
   Incidence::Ptr newInc(
-    mCalendar->dissociateOccurrence( incidence.get(), date, KOPrefs::instance()->timeSpec(), true ) );
+    mCalendar->dissociateOccurrenceFORAKONADI( item, date, KOPrefs::instance()->timeSpec(), true ) );
 
   if ( newInc ) {
     // TODO: Use the same resource instead of asking again!
@@ -1378,7 +1378,7 @@ void CalendarView::dissociateFutureOccurrence( const Item &item, const QDate &da
   Incidence::Ptr oldincidence( incidence->clone() );
 
   Incidence::Ptr newInc(
-    mCalendar->dissociateOccurrence( incidence.get(), date,
+    mCalendar->dissociateOccurrenceFORAKONADI( item, date,
                                      KOPrefs::instance()->timeSpec(), false ) );
   if ( newInc ) {
     // TODO: Use the same resource instead of asking again!

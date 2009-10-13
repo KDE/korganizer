@@ -29,6 +29,8 @@
 #include "koprefs.h"
 #include "calendarbase.h"
 
+#include <akonadi/kcal/utils.h>
+
 #include <KCal/Todo>
 #include <KCal/IncidenceFormatter>
 
@@ -40,6 +42,8 @@
 #include <QDateTime>
 #include <QPainter>
 #include <QPrinter>
+
+using namespace Akonadi;
 
 /**************************************************************
  *           Print Incidence
@@ -797,7 +801,7 @@ void CalPrintDay::print( QPainter &p, int width, int height )
     QRect headerBox( 0, 0, width, headerHeight() );
 
     drawHeader( p, local->formatDate( curDay ), curDay, QDate(), headerBox );
-    Event::List eventList = mCalendar->events( curDay, timeSpec,
+    Item::List eventList = mCalendar->eventsFORAKONADI( curDay, timeSpec,
                                                KOrg::EventSortStartDate,
                                                KOrg::SortDirectionAscending );
 
@@ -1404,9 +1408,9 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
   p.setFont( QFont( "sans-serif", 10 ) );
   fontHeight = p.fontMetrics().height();
 
-  Todo::List todoList;
-  Todo::List tempList;
-  Todo::List::ConstIterator it;
+  Item::List todoList;
+  Item::List tempList;
+  Item::List::ConstIterator it;
 
   // Convert sort options to the corresponding enums
   TodoSortField sortField = TodoSortSummary;
@@ -1443,13 +1447,15 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
   }
 
   // Create list of to-dos which will be printed
-  todoList = mCalendar->todos( sortField, sortDirection );
+  todoList = mCalendar->todosFORAKONADI( sortField, sortDirection );
   switch( mTodoPrintType ) {
   case TodosAll:
     break;
   case TodosUnfinished:
     for ( it = todoList.constBegin(); it != todoList.constEnd(); ++it ) {
-      if ( !(*it)->isCompleted() ) {
+      const Todo::ConstPtr todo = Akonadi::todo( *it );
+      Q_ASSERT( todo );
+      if ( !todo->isCompleted() ) {
         tempList.append( *it );
       }
     }
@@ -1457,8 +1463,10 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
     break;
   case TodosDueRange:
     for ( it = todoList.constBegin(); it != todoList.constEnd(); ++it ) {
-      if ( (*it)->hasDueDate() ) {
-        if ( (*it)->dtDue().date() >= mFromDate && (*it)->dtDue().date() <= mToDate ) {
+      const Todo::ConstPtr todo = Akonadi::todo( *it );
+      Q_ASSERT( todo );
+      if ( todo->hasDueDate() ) {
+        if ( todo->dtDue().date() >= mFromDate && todo->dtDue().date() <= mToDate ) {
           tempList.append( *it );
         }
       } else {
@@ -1472,15 +1480,15 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
   // Print to-dos
   int count = 0;
   for ( it = todoList.constBegin(); it != todoList.constEnd(); ++it ) {
-    Todo *currEvent = *it;
-    if ( ( mExcludeConfidential && currEvent->secrecy() == Incidence::SecrecyConfidential ) ||
-         ( mExcludePrivate      && currEvent->secrecy() == Incidence::SecrecyPrivate ) ) {
+    const Todo::Ptr todo = Akonadi::todo( *it );
+    if ( ( mExcludeConfidential && todo->secrecy() == Incidence::SecrecyConfidential ) ||
+         ( mExcludePrivate      && todo->secrecy() == Incidence::SecrecyPrivate ) ) {
       continue;
     }
     // Skip sub-to-dos. They will be printed recursively in drawTodo()
-    if ( !currEvent->relatedTo() ) {
+    if ( !todo->relatedTo() ) {
       count++;
-      drawTodo( count, currEvent, p,
+      drawTodo( count, *it, p,
                 sortField, sortDirection,
                 mConnectSubTodos,
                 mStrikeOutCompleted, mIncludeDescription,

@@ -82,7 +82,9 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
     const QString uid = incGroup.readEntry( "UID" );
     const QDateTime dt = incGroup.readEntry( "RemindAt", QDateTime() );
     if ( !uid.isEmpty() ) {
+#ifdef AKONADI_PORT_DISABLED
       createReminder( mCalendar, mCalendar->incidence( uid ), dt, QString() );
+#endif // AKONADI_PORT_DISABLED
     }
   }
   if ( numReminders ) {
@@ -117,12 +119,14 @@ void KOAlarmClient::checkAlarms()
   QList<Alarm *>alarms = mCalendar->alarms( KDateTime( from, KDateTime::LocalZone ),
                                             KDateTime( mLastChecked, KDateTime::LocalZone ) );
 
+#ifdef AKONADI_PORT_DISABLED // port from uid
   QList<Alarm *>::ConstIterator it;
   for ( it = alarms.constBegin(); it != alarms.constEnd(); ++it ) {
     kDebug(5891) << "REMINDER:" << (*it)->parent()->summary();
     Incidence *incidence = mCalendar->incidence( (*it)->parent()->uid() );
     createReminder( mCalendar, incidence, from, (*it)->text() );
   }
+#endif
 }
 
 void KOAlarmClient::createReminder( KOrg::CalendarBase *calendar,

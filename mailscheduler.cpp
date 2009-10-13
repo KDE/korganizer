@@ -185,6 +185,7 @@ QString MailScheduler::freeBusyDir()
 
 bool MailScheduler::acceptCounterProposal( KCal::Incidence *incidence )
 {
+#ifdef AKONADI_PORT_DISABLED
   if ( !incidence ) {
     return false;
   }
@@ -209,4 +210,7 @@ bool MailScheduler::acceptCounterProposal( KCal::Incidence *incidence )
     mCalendar->addIncidence( incidence );
   }
   return true;
+#else
+  return false;
+#endif // AKONADI_PORT_DISABLED
 }
