@@ -62,6 +62,11 @@ void MonthItem::deleteAll()
   mMonthGraphicsItemList.clear();
 }
 
+QWidget* MonthItem::parentWidget() const
+{
+  return mMonthScene ? mMonthScene->monthView() : 0;
+}
+
 void MonthItem::updateMonthGraphicsItems()
 {
   // Remove all items
@@ -433,7 +438,7 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
 
   IncidenceChangerBase *changer = monthScene()->incidenceChanger();
   if ( !changer || !changer->beginChange( mIncidence ) ) {
-    KODialogManager::errorSaveIncidence( 0, incidence ); //TODO: pass a parent
+    KODialogManager::errorSaveIncidence( parentWidget(), incidence );
     return;
   }
 
@@ -457,7 +462,7 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
           changer->endChange( mIncidence );
           changer->addIncidence( newInc );
         } else {
-          KMessageBox::sorry( 0, //TODO: pass parent
+          KMessageBox::sorry( parentWidget(),
                               i18n( "Unable to add the exception item to the calendar. "
                                     "No change will be done." ),
                               i18n( "Error Occurred" ) );
@@ -477,7 +482,7 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
           changer->endChange( mIncidence );
           changer->addIncidence( newInc );
         } else {
-          KMessageBox::sorry( 0, //TODO pass parent
+          KMessageBox::sorry( parentWidget(),
                               i18n( "Unable to add the future items to the calendar. "
                                     "No change will be done." ),
                               i18n( "Error Occurred" ) );

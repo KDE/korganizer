@@ -84,6 +84,7 @@ class MonthScene : public QGraphicsScene
     QList<MonthItem *> mManagerList;
     MonthView *mMonthView;
 
+    MonthView* monthView() const { return mMonthView; }
     QMap<QDate, MonthCell*> mMonthCellMap;
 
     bool initialized() { return mInitialized; }

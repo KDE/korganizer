@@ -56,6 +56,8 @@ class MonthItem : public QObject
     MonthItem( MonthScene *monthWidget );
     virtual ~MonthItem();
 
+    QWidget* parentWidget() const;
+
     /**
       Compares two events
 
