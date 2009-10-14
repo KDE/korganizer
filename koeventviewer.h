@@ -28,17 +28,10 @@
 #include "korganizer_export.h"
 #include <KTextBrowser>
 
+#include <Akonadi/Item>
+
 class KConfig;
 class QUrl;
-
-namespace Akonadi {
-  class Item;
-}
-
-namespace KCal {
-  class Incidence;
-}
-using namespace KCal;
 
 /**
   Viewer widget for events.
@@ -53,7 +46,7 @@ class KORGANIZER_EVENTVIEWER_EXPORT KOEventViewer : public KTextBrowser
     /** Reimplemented from QTextBrowser to handle links. */
     void setSource( const QUrl &name );
 
-    virtual bool appendIncidence( Incidence *incidence, const QDate &date );
+    virtual bool appendIncidence( const Akonadi::Item &, const QDate &date );
 
     /**
       Clear viewer.
@@ -79,9 +72,10 @@ class KORGANIZER_EVENTVIEWER_EXPORT KOEventViewer : public KTextBrowser
     /**
       Show given incidence in viewer. Clear all previously shown incidences.
     */
-    void setIncidence( Incidence *incidence, const QDate &date );
     void setIncidence( const Akonadi::Item &, const QDate &date );
-    void changeIncidenceDisplay( Incidence *incidence, const QDate &date, int action );
+    void changeIncidenceDisplay( const Akonadi::Item &incidence, const QDate &date, int action );
+    void clearEventsNow() { clearEvents( true ); }
+
     void editIncidence();
 
     /**
@@ -91,7 +85,7 @@ class KORGANIZER_EVENTVIEWER_EXPORT KOEventViewer : public KTextBrowser
     virtual void showIncidenceContext();
 
   private:
-    Incidence *mIncidence;
+    Akonadi::Item mIncidence;
     QString mDefaultText;
     QString mText;
 };

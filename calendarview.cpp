@@ -222,7 +222,7 @@ CalendarView::CalendarView( QWidget *parent )
   mEventViewer->setWhatsThis(
                    i18n( "View the details of events, journal entries or to-dos "
                          "selected in KOrganizer's main view here." ) );
-  mEventViewer->setIncidence( 0, QDate() );
+  mEventViewer->setIncidence( Item(), QDate() );
 
   mViewManager->connectTodoView( mTodoList );
   mViewManager->connectView( mTodoList );
@@ -777,7 +777,6 @@ void CalendarView::endMultiModify()
 
 void CalendarView::changeIncidenceDisplay( const Item &item, int action )
 {
-  Incidence* const incidence = Akonadi::incidence( item ).get();
   mDateNavigatorContainer->updateView();
   mDialogManager->updateSearchDialog();
 
@@ -787,7 +786,7 @@ void CalendarView::changeIncidenceDisplay( const Item &item, int action )
     if ( mTodoList ) {
       mTodoList->changeIncidenceDisplay( item, action );
     }
-    mEventViewer->changeIncidenceDisplay( incidence, activeDate( true ), action );
+    mEventViewer->changeIncidenceDisplay( item, activeDate( true ), action );
   } else {
     mViewManager->currentView()->updateView();
     if ( mTodoList ) {
@@ -2110,8 +2109,8 @@ void CalendarView::pasteIncidence()
 void CalendarView::showIncidence( const Item &item )
 {
   const Incidence::Ptr incidence = Akonadi::incidence( item );
-  KOEventViewerDialog *eventViewer = new KOEventViewerDialog( calendar(), this );
-  eventViewer->setIncidence( incidence.get(), QDate() );
+  KOEventViewerDialog *eventViewer = new KOEventViewerDialog( this );
+  eventViewer->setIncidence( item, QDate() );
 
   // Disable the Edit button for read-only Incidences.
   if ( incidence->isReadOnly() ) {

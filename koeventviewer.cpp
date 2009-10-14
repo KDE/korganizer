@@ -31,6 +31,8 @@
 #include <libkdepim/kdepimprotocols.h>
 #include <libkdepim/kpimprefs.h>
 
+#include <akonadi/kcal/utils.h>
+
 #include <kcal/incidence.h>
 #include <kcal/incidenceformatter.h>
 
@@ -42,12 +44,12 @@
 
 #include <QRegExp>
 
-#include <akonadi/item.h>
+using namespace KCal;
+using namespace Akonadi;
 
 KOEventViewer::KOEventViewer( QWidget *parent )
   : KTextBrowser( parent ), mDefaultText( "" )
 {
-  mIncidence = 0;
   setNotifyClick( true );
   setMinimumHeight( 1 );
 }
@@ -96,35 +98,32 @@ void KOEventViewer::setSource( const QUrl &name )
   UriHandler::process( uri );
 }
 
-bool KOEventViewer::appendIncidence( Incidence *incidence, const QDate &date )
+bool KOEventViewer::appendIncidence( const Item &item, const QDate &date )
 {
+  if ( !Akonadi::hasIncidence( item ) )
+    return false;
   //PENDING(AKONADI_PORT): replace QString() by incidence location (was: mCalendar)
   addText( IncidenceFormatter::extensiveDisplayStr(
-             QString(), incidence, date, KSystemTimeZones::local() ) );
+      QString(), Akonadi::incidence( item ).get(), date, KSystemTimeZones::local() ) );
   return true;
 }
 
-void KOEventViewer::setIncidence( Incidence *incidence, const QDate &date )
+void KOEventViewer::setIncidence( const Item &item, const QDate &date )
 {
   clearEvents();
-  if ( incidence ) {
-    appendIncidence( incidence, date );
-    mIncidence = incidence;
+  if ( Akonadi::hasIncidence( item ) ) {
+    appendIncidence( item, date );
+    mIncidence = item;
   } else {
     clearEvents( true );
-    mIncidence = 0;
+    mIncidence = Item();
   }
-}
 
-void KOEventViewer::setIncidence( const Akonadi::Item &item, const QDate &date )
-{
-  const KCal::Incidence::Ptr incidence = item.hasPayload<KCal::Incidence::Ptr>() ? item.payload<KCal::Incidence::Ptr>() : KCal::Incidence::Ptr();
-  setIncidence(incidence.get(), date);
 }
 
 void KOEventViewer::clearEvents( bool now )
 {
-  mText = "";
+  mText.clear();
   if ( now ) {
     setText( mDefaultText );
   }
@@ -141,15 +140,15 @@ void KOEventViewer::setDefaultText( const QString &text )
   mDefaultText = text;
 }
 
-void KOEventViewer::changeIncidenceDisplay( Incidence *incidence, const QDate &date, int action )
+void KOEventViewer::changeIncidenceDisplay( const Item &item, const QDate &date, int action )
 {
-  if ( mIncidence && ( incidence->uid() == mIncidence->uid() ) ) {
+  if ( item.id() == mIncidence.id() ) {
     switch ( action ) {
     case KOGlobals::INCIDENCEEDITED:
-      setIncidence( incidence, date );
+      setIncidence( item, date );
       break;
     case KOGlobals::INCIDENCEDELETED:
-      setIncidence( 0, date );
+      setIncidence( Item(), date );
       break;
     }
   }
@@ -157,25 +156,25 @@ void KOEventViewer::changeIncidenceDisplay( Incidence *incidence, const QDate &d
 
 void KOEventViewer::editIncidence()
 {
-  if ( mIncidence ) {
+  if ( Akonadi::hasIncidence( mIncidence ) ) {
     // make sure korganizer is running or the part is shown
     KToolInvocation::startServiceByDesktopPath( "korganizer" );
 
     OrgKdeKorganizerKorganizerInterface korganizerIface(
       "org.kde.korganizer", "/Korganizer", QDBusConnection::sessionBus() );
-    korganizerIface.editIncidence( mIncidence->uid() );
+    korganizerIface.editIncidence( Akonadi::incidence( mIncidence )->uid() );
   }
 }
 
 void KOEventViewer::showIncidenceContext()
 {
-  if ( mIncidence ) {
+  if ( Akonadi::hasIncidence( mIncidence ) ) {
     // make sure korganizer is running or the part is shown
     KToolInvocation::startServiceByDesktopPath( "korganizer" );
 
     OrgKdeKorganizerKorganizerInterface korganizerIface(
       "org.kde.korganizer", "/Korganizer", QDBusConnection::sessionBus() );
-    korganizerIface.showIncidenceContext( mIncidence->uid() );
+    korganizerIface.showIncidenceContext( Akonadi::incidence( mIncidence )->uid() );
   }
 }
 

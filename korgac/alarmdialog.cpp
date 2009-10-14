@@ -172,7 +172,7 @@ AlarmDialog::AlarmDialog( KOrg::CalendarBase *calendar, QWidget *parent )
              "<emphasis>Select an event or to-do from the list above "
              "to view its details here.</emphasis>" );
   mDetailView->setDefaultText( s );
-  mDetailView->setIncidence( 0, QDate() );
+  mDetailView->clearEventsNow();
   mTopLayout->addWidget( mDetailView );
   mDetailView->hide();
   mLastItem = 0;
@@ -705,13 +705,15 @@ void AlarmDialog::showDetails()
   mDetailView->clear();
   ReminderListItem *item = dynamic_cast<ReminderListItem *>( mIncidenceTree->currentItem() );
   if ( !item ) {
-    mDetailView->setIncidence( 0, QDate() );
+    mDetailView->clearEventsNow();
   } else {
     if ( !item->mDisplayText.isEmpty() ) {
       QString txt = "<qt><p><b>" + item->mDisplayText + "</b></p></qt>";
       mDetailView->addText( txt );
     }
+#ifdef AKONADI_PORT_DISABLED // port to Akonadi::Item
     mDetailView->appendIncidence( item->mIncidence, item->mRemindAt.date() );
+#endif
   }
 }
 
