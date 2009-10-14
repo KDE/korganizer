@@ -53,22 +53,22 @@ class KORGANIZERPRIVATE_EXPORT KOrganizerIfaceImpl : public QObject
     bool saveAsURL( const QString &url );
     QString getCurrentURLasString() const;
 
-    bool editIncidence( const QString &uid );
+    bool editIncidence( const QString &akonadiUrl );
     /** @reimp from KOrganizerIface::deleteIncidence()
-        @param uid the UID of the item to delete. if no such item exists,
+        @param akonadiUrl the akonadi Item URL of the item to delete. if no such item exists,
         nothing happens
         @return true if the item could be deleted, false otherwise
     */
-    bool deleteIncidence( const QString &uid )
-    { return deleteIncidence( uid, false ); }
+    bool deleteIncidence( const QString &akonadiUrl )
+    { return deleteIncidence( akonadiUrl, false ); }
 
     /**
-      Delete the incidence with the given unique ID from the active calendar.
-      @param uid The incidence's unique ID.
+      Delete the incidence with the given akonadi item URL from the active calendar.
+      @param akonadiUrl The Akonadi Item URL.
       @param force If true, all recurrences and sub-todos (if applicable) will
       be deleted without prompting for confirmation.
     */
-    bool deleteIncidence( const QString &uid, bool force );
+    bool deleteIncidence( const QString &akonadiUrl, bool force );
 
     /**
       Add an incidence to the active calendar.
@@ -82,17 +82,17 @@ class KORGANIZERPRIVATE_EXPORT KOrganizerIfaceImpl : public QObject
 
     /**
       Show a HTML representation of the incidence (the "View.." dialog).
-      If no incidence with the given uid exists, nothing happens.
-      @param uid The UID of the incidence to be shown.
+      If no incidence with the given Akonadi Item URL exists, nothing happens.
+      @param akonadiUrl The Akonadi Item URL of the incidence to be shown.
     */
-    bool showIncidence( const QString &uid );
+    bool showIncidence( const QString &akonadiUrl );
 
     /**
       Show an incidence in context. This means showing the todo, agenda or
       journal view (as appropriate) and scrolling it to show the incidence.
-      @param uid Unique ID of the incidence to show.
+      @param akonadiUrl the Akonadi Item URL of the incidence to show.
     */
-    bool showIncidenceContext( const QString &uid );
+    bool showIncidenceContext( const QString &akonadiUrl );
 
   private:
     ActionManager *mActionManager;
