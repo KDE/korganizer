@@ -39,11 +39,11 @@
       <arg type="b" direction="out"/>
     </method>
     <method name="showIncidence">
-      <arg name="uid" type="s" direction="in"/>
+      <arg name="url" type="s" direction="in"/>
       <arg type="b" direction="out"/>
     </method>
     <method name="showIncidenceContext">
-      <arg name="uid" type="s" direction="in"/>
+      <arg name="url" type="s" direction="in"/>
       <arg type="b" direction="out"/>
     </method>
   </interface>
