@@ -339,8 +339,8 @@ bool IncidenceMonthItem::greaterThanFallback( const MonthItem *other ) const
     return incidence->dtStart().time() < otherIncidence->dtStart().time();
   }
 
-  // as a last resort, compare the uid's
-  return incidence->uid() < otherIncidence->uid();
+  // as a last resort, compare the item id's
+  return mIncidence.id() < o->mIncidence.id();
 }
 
 QDate IncidenceMonthItem::realStartDate() const

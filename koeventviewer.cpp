@@ -162,7 +162,7 @@ void KOEventViewer::editIncidence()
 
     OrgKdeKorganizerKorganizerInterface korganizerIface(
       "org.kde.korganizer", "/Korganizer", QDBusConnection::sessionBus() );
-    korganizerIface.editIncidence( Akonadi::incidence( mIncidence )->uid() );
+    korganizerIface.editIncidence( mIncidence.url().url() );
   }
 }
 
@@ -174,7 +174,7 @@ void KOEventViewer::showIncidenceContext()
 
     OrgKdeKorganizerKorganizerInterface korganizerIface(
       "org.kde.korganizer", "/Korganizer", QDBusConnection::sessionBus() );
-    korganizerIface.showIncidenceContext( Akonadi::incidence( mIncidence )->uid() );
+    korganizerIface.showIncidenceContext( mIncidence.url().url() );
   }
 }
 

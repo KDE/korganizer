@@ -156,7 +156,7 @@ public:
     * @return Pointer to the TodoTreeNode node which represents the todo
     *         searched for or 0 if not found.
     */
-    TodoTreeNode *findTodo( const KCal::Todo* todo ) const;
+    TodoTreeNode *findTodo( const Akonadi::Item &todo ) const;
 
     /**
      * If the todo is overdue or due today, the expandIndex signal
@@ -165,7 +165,7 @@ public:
      *
      * @param todo the todo whose parents will be expanded if needed
      */
-    void expandTodoIfNeeded( const KCal::Todo* todo );
+    void expandTodoIfNeeded( const Akonadi::Item &todo );
 
     /**
      * Returns true if there's a loop, e.g.: t1 is parent of
@@ -193,7 +193,7 @@ public:
     /** Root elements of the todo tree. */
     TodoTreeNode *mRootNode;
     /** Hash to speed up searching todo by their uid */
-    QHash<QString, TodoTreeNode*> mTodoHash;
+    QHash<Akonadi::Item::Id, TodoTreeNode*> mTodoHash;
 
     /** This IncidenceChanger is used to change todos */
     IncidenceChangerBase *mChanger;
