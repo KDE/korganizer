@@ -163,8 +163,6 @@ class MainWidget : public QWidget
       const KCal::Incidence::Ptr incidence = item.payload<KCal::Incidence::Ptr>();
       kDebug() << "Add akonadi id=" << item.id() << "uid=" << incidence->uid() << "summary=" << incidence->summary() << "type=" << incidence->type();
 
-      KOrg::CalendarBase *calendar = new KOrg::AkonadiCalendar(KSystemTimeZones::local());
-      
       if(incidence->type() == "Event") {
         KOEventEditor *editor = new KOEventEditor(this);
         editor->init();
