@@ -302,7 +302,7 @@ Akonadi::Item::List KOListView::selectedIncidences()
   Q3ListViewItem *item = mListView->selectedItem();
   if ( item ) {
     KOListViewItem *i = static_cast<KOListViewItem *>( item );
-    eventList.append( i->data() );
+    eventList.append( mItems.value( i->data() ) );
   }
   return eventList;
 }
@@ -369,37 +369,30 @@ void KOListView::addIncidences( const Item::List &incidenceList, const QDate &da
     addIncidence( i, date );
 }
 
-void KOListView::addIncidence( const Item &aitem_, const QDate &date )
+void KOListView::addIncidence( const Item &aitem, const QDate &date )
 {
-  Item aitem( aitem_ );
-  Incidence::Ptr incidence = Akonadi::incidence( aitem );
-  if ( mUidList.contains( incidence->uid() ) ) {
+  if ( !Akonadi::hasIncidence( aitem ) && mItems.contains( aitem.id() ) )
     return;
-  }
 
-  mDateList[incidence->uid()] = date;
-  mUidList.append( incidence->uid() );
+  mDateList.insert( aitem.id(), date );
+  mItems.insert( aitem.id(), aitem );
 
-  Incidence::Ptr tinc = incidence;
+  Incidence::Ptr tinc = Akonadi::incidence( aitem );
+
   if ( tinc->customProperty( "KABC", "BIRTHDAY" ) == "YES" ||
        tinc->customProperty( "KABC", "ANNIVERSARY" ) == "YES" ) {
     qint64 years = KOHelper::yearDiff( tinc->dtStart().date(), mEndDate );
     if ( years > 0 ) {
-      tinc = Incidence::Ptr( incidence->clone() );
+      tinc.reset( tinc->clone() );
       tinc->setReadOnly( false );
-      tinc->setSummary( i18np( "%2 (1 year)", "%2 (%1 years)", years, incidence->summary() ) );
+      tinc->setSummary( i18np( "%2 (1 year)", "%2 (%1 years)", years, tinc->summary() ) );
       tinc->setReadOnly( true );
-      aitem.setPayload( tinc );
     }
   }
-
-  KOListViewItem *item = new KOListViewItem( aitem, mListView );
+  KOListViewItem *item = new KOListViewItem( aitem.id(), mListView );
   ListItemVisitor v( item );
-  if ( tinc->accept( v ) ) {
-    return;
-  } else {
+  if ( !tinc->accept( v ) )
     delete item;
-  }
 }
 
 void KOListView::showIncidences( const Item::List &incidenceList, const QDate &date )
@@ -441,8 +434,8 @@ void KOListView::changeIncidenceDisplay( const Item & aitem, int action )
     item = getItemForIncidence( aitem );
     if ( item ) {
       delete item;
-      mUidList.removeAll( incidence->uid() );
-      mDateList.remove( incidence->uid() );
+      mItems.remove( aitem.id() );
+      mDateList.remove( aitem.id() );
     }
     if ( date >= f && date <= l ) {
       addIncidence( aitem, date );
@@ -466,7 +459,7 @@ KOListViewItem *KOListView::getItemForIncidence( const Item &aitem )
 {
   KOListViewItem *item = (KOListViewItem *)mListView->firstChild();
   while ( item ) {
-    if ( item->data() == aitem ) {
+    if ( item->data() == aitem.id() ) {
       return item;
     }
     item = static_cast<KOListViewItem *>( item->nextSibling() );
@@ -474,11 +467,15 @@ KOListViewItem *KOListView::getItemForIncidence( const Item &aitem )
   return 0;
 }
 
+Incidence::Ptr KOListView::incidenceForId( const Item::Id &id ) const {
+  return Akonadi::incidence( mItems.value( id ) );
+}
+
 void KOListView::defaultItemAction( Q3ListViewItem *i )
 {
   KOListViewItem *item = static_cast<KOListViewItem *>( i );
   if ( item ) {
-    defaultAction( item->data() );
+    defaultAction( mItems.value( item->data() ) );
   }
 }
 
@@ -486,7 +483,7 @@ void KOListView::popupMenu( Q3ListViewItem *item, const QPoint &, int )
 {
   mActiveItem = static_cast<KOListViewItem *>( item );
   if ( mActiveItem ) {
-    const Item aitem = mActiveItem->data();
+    const Item aitem = mItems.value( mActiveItem->data() );
     // FIXME: For recurring incidences we don't know the date of this
     // occurrence, there's no reference to it at all!
     mPopupMenu->showIncidencePopup( aitem, Akonadi::incidence( aitem )->dtStart().date() );
@@ -512,7 +509,7 @@ void KOListView::processSelectionChange()
   if ( !item ) {
     emit incidenceSelected( Item(), QDate() );
   } else {
-    emit incidenceSelected( item->data(), mDateList.value( Akonadi::incidence( item->data() )->uid() ) );
+    emit incidenceSelected( mItems.value( item->data() ), mDateList.value( item->data() ) );
   }
 }
 
@@ -526,7 +523,7 @@ void KOListView::clear()
   mSelectedDates.clear();
   mListView->clear();
   mDateList.clear();
-  mUidList.clear();
+  mItems.clear();
 }
 
 #include "kolistview.moc"
