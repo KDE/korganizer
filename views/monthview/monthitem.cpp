@@ -556,7 +556,6 @@ QString IncidenceMonthItem::text( bool end ) const
 
 QString IncidenceMonthItem::toolTipText() const
 {
-#ifdef AKONADI_PORT_DISABLED
   QDate date;
   if ( monthScene()->mMonthView && !monthScene()->mMonthView->selectedDates().isEmpty() ) {
     date = monthScene()->mMonthView->selectedDates().first();
@@ -564,9 +563,6 @@ QString IncidenceMonthItem::toolTipText() const
   //PENDING(AKONADI_PORT): replace QString() by incidence location (was: monthScene()->calendar())
   return IncidenceFormatter::toolTipStr(
       QString(), Akonadi::incidence( mIncidence ).get(), date, true, KOPrefs::instance()->timeSpec() );
-#else
-  return QString();
-#endif
 }
 
 QList<QPixmap *> IncidenceMonthItem::icons() const
@@ -656,18 +652,20 @@ QColor IncidenceMonthItem::bgColor() const
     }
   }
 
-#ifdef AKONADI_PORT_DISABLED
   if ( !bgColor.isValid() ) {
     if ( KOPrefs::instance()->monthViewColors() ==
          KOPrefs::MonthItemResourceOnly ||
          KOPrefs::instance()->monthViewColors() ==
          KOPrefs::MonthItemResourceInsideCategoryOutside ) {
-      bgColor = KOHelper::resourceColor( monthScene()->calendar(), mIncidence );
+      Q_ASSERT( mIncidence.isValid() );
+      const QString id = QString::number( mIncidence.storageCollectionId() );
+      Q_ASSERT( ! id.isEmpty() );
+      bgColor = KOPrefs::instance()->resourceColor( id );
     } else {
       bgColor = catColor();
     }
   }
-#endif
+
   if ( !bgColor.isValid() ) {
     bgColor = Qt::white;
   }
@@ -678,14 +676,16 @@ QColor IncidenceMonthItem::bgColor() const
 QColor IncidenceMonthItem::frameColor() const
 {
   QColor frameColor;
-#ifdef AKONADI_PORT_DISABLED
+
   if ( KOPrefs::instance()->monthViewColors() == KOPrefs::MonthItemResourceOnly ||
        KOPrefs::instance()->monthViewColors() == KOPrefs::MonthItemCategoryInsideResourceOutside ) {
-    frameColor = KOHelper::resourceColor( monthScene()->calendar(), mIncidence );
+    Q_ASSERT( mIncidence.isValid() );
+    const QString id = QString::number( mIncidence.storageCollectionId() );
+    Q_ASSERT( ! id.isEmpty() );
+    frameColor = KOPrefs::instance()->resourceColor( id );
   } else {
     frameColor = catColor();
   }
-#endif
 
   if ( !frameColor.isValid() ) {
     frameColor = Qt::black;
