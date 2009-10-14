@@ -94,7 +94,7 @@ if(KMAIL_SUPPORTED)
     ${QT_QT3SUPPORT_LIBRARY}
     ${KDE4_KDEUI_LIBS}
     ${KDEPIMLIBS_KCAL_LIBS} ${KDEPIMLIBS_KHOLIDAYS_LIBS} ${KDEPIMLIBS_AKONADI_LIBS}
-    korganizerprivate kdepim )
+    korganizerprivate kdepim)
 
   install(TARGETS kcm_korganizer  DESTINATION ${PLUGIN_INSTALL_DIR})
 
@@ -105,7 +105,7 @@ if(KMAIL_SUPPORTED)
 
   kde4_add_plugin(korganizerpart ${korganizerpart_PART_SRCS})
 
-  target_link_libraries(korganizerpart ${KDE4_KDECORE_LIBS} ${KDE4_KPARTS_LIBS} ${KDEPIMLIBS_KCAL_LIBS} ${KDEPIMLIBS_AKONADI_LIBS} korganizerprivate korganizer_interfaces)
+  target_link_libraries(korganizerpart ${KDE4_KDECORE_LIBS} ${KDE4_KPARTS_LIBS} ${KDEPIMLIBS_KCAL_LIBS} ${KDEPIMLIBS_AKONADI_LIBS} korganizerprivate korganizer_interfaces akonadi-kcal)
 
   install(TARGETS korganizerpart  DESTINATION ${PLUGIN_INSTALL_DIR})
 

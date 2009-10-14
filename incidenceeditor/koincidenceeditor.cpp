@@ -158,7 +158,7 @@ void KOIncidenceEditor::closeEvent( QCloseEvent *event )
 
 void KOIncidenceEditor::cancelRemovedAttendees( const Akonadi::Item &item )
 {
-  const KCal::Incidence::Ptr incidence = item.hasPayload<KCal::Incidence::Ptr>() ? item.payload<KCal::Incidence::Ptr>() : KCal::Incidence::Ptr();
+  const KCal::Incidence::Ptr incidence = Akonadi::incidence( item );
   if ( !incidence ) {
     return;
   }

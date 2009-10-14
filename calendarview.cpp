@@ -2067,7 +2067,7 @@ bool CalendarView::editIncidence( const Item::Id &uid )
 bool CalendarView::showIncidence( const Item::Id &uid )
 {
   Akonadi::Item item = mCalendar->incidenceFORAKONADI( uid );
-  if ( !item.isValid() || !item.hasPayload<Incidence::Ptr>() ) {
+  if ( !Akonadi::hasIncidence( item ) ) {
     return false;
   }
   showIncidence( item );
@@ -2077,7 +2077,7 @@ bool CalendarView::showIncidence( const Item::Id &uid )
 bool CalendarView::showIncidenceContext( const Item::Id &uid )
 {
   Akonadi::Item item = mCalendar->incidenceFORAKONADI( uid );
-  if ( !item.isValid() || !item.hasPayload<Incidence::Ptr>() ) {
+  if ( !Akonadi::hasIncidence( item ) ) {
     return false;
   }
   showIncidenceContext( item );

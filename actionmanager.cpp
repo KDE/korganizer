@@ -50,6 +50,8 @@
 #include <KCal/HTMLExportSettings>
 #include <KMime/KMimeMessage>
 
+#include <akonadi/kcal/utils.h>
+
 #include <KAction>
 #include <KActionCollection>
 #include <KFileDialog>
@@ -1683,7 +1685,7 @@ void ActionManager::processIncidenceSelection( const Akonadi::Item &item, const 
   //kDebug(5850) << "ActionManager::processIncidenceSelection()";
   Q_UNUSED( date );
 
-  const KCal::Incidence::Ptr incidence = item.hasPayload<KCal::Incidence::Ptr>() ? item.payload<KCal::Incidence::Ptr>() : KCal::Incidence::Ptr();
+  const KCal::Incidence::Ptr incidence = Akonadi::incidence( item );
   if ( !incidence ) {
     enableIncidenceActions( false );
     return;

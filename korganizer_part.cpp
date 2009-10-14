@@ -31,6 +31,9 @@
 #include "korganizerifaceimpl.h"
 
 #include <KCal/IncidenceFormatter>
+
+#include <akonadi/kcal/utils.h>
+
 #include <akonadi/item.h>
 
 #include <KAboutData>
@@ -107,7 +110,7 @@ KOrganizerPart::~KOrganizerPart()
 void KOrganizerPart::slotChangeInfo( const Akonadi::Item &item, const QDate &date )
 {
   Q_UNUSED( date );
-  const KCal::Incidence::Ptr incidence = item.hasPayload<KCal::Incidence::Ptr>() ? item.payload<KCal::Incidence::Ptr>() : KCal::Incidence::Ptr();
+  const KCal::Incidence::Ptr incidence = Akonadi::incidence( item );
   if ( incidence ) {
     emit textChanged( incidence->summary() + " / " +
                       IncidenceFormatter::timeToString( incidence->dtStart() ) );
