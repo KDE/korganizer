@@ -35,7 +35,6 @@
 #include "koprefs.h"
 #include "filtereditdialog.h"
 #include "searchdialog.h"
-#include "views/agendaview/koagendaview.h"
 
 #include <libkdepim/categoryeditdialog.h>
 

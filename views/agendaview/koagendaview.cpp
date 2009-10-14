@@ -230,12 +230,6 @@ KOAgendaView::KOAgendaView( QWidget *parent, bool isSideBySide ) :
   connect( mAllDayAgenda,
            SIGNAL(newTimeSpanSignal(const QPoint &,const QPoint &)),
            SLOT(newTimeSpanSelectedAllDay(const QPoint &,const QPoint &)) );
-
-#ifdef AKONADI_PORT_DISABLED
-  if ( cal ) {
-    cal->registerObserver( this );
-  }
-#endif
 }
 
 KOAgendaView::~KOAgendaView()
@@ -246,6 +240,16 @@ KOAgendaView::~KOAgendaView()
 
   delete mAgendaPopup;
   delete mAllDayAgendaPopup;
+}
+
+void KOAgendaView::setCalendar( CalendarBase *cal )
+{
+  if( calendar() ) {
+    calendar()->unregisterObserver( this );
+  }
+  Q_ASSERT( cal );
+  KOrg::AgendaView::setCalendar(cal);
+  calendar()->registerObserver( this );
 }
 
 void KOAgendaView::connectAgenda( KOAgenda *agenda, QMenu *popup,

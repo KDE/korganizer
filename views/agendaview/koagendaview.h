@@ -135,6 +135,9 @@ class KOAgendaView : public KOrg::AgendaView, public KOrg::CalendarBase::Calenda
     /** returns if only a single cell is selected, or a range of cells */
     bool selectedIsSingleCell();
 
+    /* reimp from BaseView */
+    virtual void setCalendar( CalendarBase *cal );
+     
     /** Show only incidences from the given resource. */
     void setResource( KCal::ResourceCalendar *res, const QString &subResource = QString() );
 
