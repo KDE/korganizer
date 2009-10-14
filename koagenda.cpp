@@ -67,8 +67,8 @@ MarcusBains::MarcusBains(KOAgenda *_agenda,const char *name)
   setLineWidth(0);
   setMargin(0);
   setBackgroundColor(Qt::red);
-  minutes = new QTimer(this);
-  connect(minutes, SIGNAL(timeout()), this, SLOT(updateLocation()));
+  minutes = new QTimer(0);
+  connect(minutes, SIGNAL(timeout()), this, SLOT(updateLocation(bool)));
   minutes->start(0, true);
 
   mTimeBox = new QLabel(this);
