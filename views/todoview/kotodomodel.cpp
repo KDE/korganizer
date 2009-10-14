@@ -454,16 +454,13 @@ bool KOTodoModel::isInHierarchyLoop( const Todo *todo ) const
 KOTodoModel::TodoTreeNode *KOTodoModel::insertTodo( const Item &todoItem,
                                                     bool checkRelated )
 {
-#ifdef AKONADI_PORT_DISABLED // how to handle the related incidences where we don't know the item?
   const Todo::Ptr todo = Akonadi::todo( todoItem );
-  Incidence *incidence = todo->relatedTo();
-  if ( !mFlatView && checkRelated &&
-       incidence && incidence->type() == "Todo" ) {
-    // Use static_cast, checked for type already
-    Todo *relatedTodo = static_cast<Todo *>( incidence );
+  if ( !mFlatView && checkRelated && todo && todo->relatedTo() ) {
+    Incidence *incidence = todo->relatedTo();
+    Todo *relatedTodo = dynamic_cast<Todo *>( incidence );
+    Q_ASSERT( relatedTodo );
 
     // check if there are recursively linked todos
-
     if ( isInHierarchyLoop( todo.get() ) ) {
       // recursion detected, break recursion
       return insertTodo( todoItem, false );
@@ -471,9 +468,11 @@ KOTodoModel::TodoTreeNode *KOTodoModel::insertTodo( const Item &todoItem,
 
     // if the parent is not already in the tree, we have to insert it first.
     // necessary because we can't rely on todos coming in a defined order.
-    TodoTreeNode *parent = findTodo( relatedTodo );
+    Akonadi::Item relatedTodoItem;
+    relatedTodoItem.setPayload( Todo::Ptr(relatedTodo->clone()) );
+    TodoTreeNode *parent = findTodo( relatedTodoItem );
     if ( !parent ) {
-      parent = insertTodo( relatedTodo, checkRelated );
+      parent = insertTodo( relatedTodoItem, checkRelated );
     }
 
     beginInsertRows( getModelIndex( parent ), parent->childrenCount(),
@@ -484,24 +483,20 @@ KOTodoModel::TodoTreeNode *KOTodoModel::insertTodo( const Item &todoItem,
     parent->addChild( ret );
 
     endInsertRows();
-    expandTodoIfNeeded( todo.get() );
+    expandTodoIfNeeded( todoItem );
     return ret;
   } else {
     beginInsertRows( getModelIndex( mRootNode ), mRootNode->childrenCount(),
                                                  mRootNode->childrenCount() );
 
     // add the todo as root item
-    TodoTreeNode *ret = new TodoTreeNode( todo, mRootNode, this );
+    TodoTreeNode *ret = new TodoTreeNode( todoItem, mRootNode, this );
     mRootNode->addChild( ret );
 
     endInsertRows();
-    expandTodoIfNeeded( todo );
+    expandTodoIfNeeded( todoItem );
     return ret;
   }
-#else
-  kWarning()<<"TODO";
-  return 0;
-#endif
 }
 
 void KOTodoModel::setFlatView( bool flatView )
