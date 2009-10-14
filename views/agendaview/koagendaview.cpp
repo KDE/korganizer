@@ -1485,6 +1485,8 @@ void KOAgendaView::slotTodosDropped( const QList<KUrl> &items, const QPoint &gpo
       }
     }
   }
+#else
+  kWarning()<<"TODO";
 #endif
 }
 

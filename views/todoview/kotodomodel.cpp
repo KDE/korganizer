@@ -397,6 +397,7 @@ QModelIndex KOTodoModel::moveIfParentChanged( TodoTreeNode *curNode, const Item 
 
   return miChanged;
 #else
+  kWarning()<<"TODO";
   return QModelIndex();
 #endif // AKONADI_PORT_DISABLED
 }
@@ -498,6 +499,7 @@ KOTodoModel::TodoTreeNode *KOTodoModel::insertTodo( const Item &todoItem,
     return ret;
   }
 #else
+  kWarning()<<"TODO";
   return 0;
 #endif
 }
@@ -999,6 +1001,7 @@ bool KOTodoModel::dropMimeData( const QMimeData *data, Qt::DropAction action,
     return false;
   }
 #endif
+  kWarning()<<"TODO";
   return false;
 }
 #endif /*KORG_NODND*/

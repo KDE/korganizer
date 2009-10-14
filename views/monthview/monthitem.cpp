@@ -513,6 +513,8 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
     changer->changeIncidence( oldInc, mIncidence, KOGlobals::DATE_MODIFIED );
     changer->endChange( mIncidence );
   }
+#else
+  kWarning()<<"TODO";
 #endif
 }
 
