@@ -195,7 +195,7 @@ class KOAgenda : public Q3ScrollView
     void showIncidenceSignal( const Akonadi::Item & );
     void editIncidenceSignal( const Akonadi::Item & );
     void deleteIncidenceSignal( const Akonadi::Item & );
-    void showIncidencePopupSignal( KOrg::CalendarBase *, const Akonadi::Item &, const QDate &);
+    void showIncidencePopupSignal( const Akonadi::Item &, const QDate &);
     void showNewEventPopupSignal();
 
     void itemModified( KOAgendaItem *item );

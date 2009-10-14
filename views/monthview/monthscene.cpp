@@ -569,9 +569,7 @@ void MonthScene::mousePressEvent ( QGraphicsSceneMouseEvent *mouseEvent )
     if ( mouseEvent->button() == Qt::RightButton ) {
       IncidenceMonthItem *tmp = qobject_cast<IncidenceMonthItem *>( mClickedItem );
       if ( tmp ) {
-#ifdef AKONADI_PORT_DISABLED
-        emit showIncidencePopupSignal( mCalendar, tmp->incidence(), tmp->realStartDate() );
-#endif
+        emit showIncidencePopupSignal( tmp->incidence(), tmp->realStartDate() );
       }
     }
 

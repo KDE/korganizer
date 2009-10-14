@@ -489,7 +489,7 @@ void KOListView::popupMenu( Q3ListViewItem *item, const QPoint &, int )
     const Item aitem = mActiveItem->data();
     // FIXME: For recurring incidences we don't know the date of this
     // occurrence, there's no reference to it at all!
-    mPopupMenu->showIncidencePopup( calendar(), aitem, Akonadi::incidence( aitem )->dtStart().date() );
+    mPopupMenu->showIncidencePopup( aitem, Akonadi::incidence( aitem )->dtStart().date() );
   } else {
     showNewEventPopup();
   }

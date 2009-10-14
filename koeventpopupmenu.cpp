@@ -41,7 +41,6 @@ using namespace KCal;
 
 KOEventPopupMenu::KOEventPopupMenu()
 {
-  mCalendar = 0;
   mHasAdditionalItems = false;
 
   addAction( KOGlobals::self()->smallIcon( "document-preview" ), i18n( "&Show" ),
@@ -88,9 +87,8 @@ KOEventPopupMenu::KOEventPopupMenu()
              this, SLOT(forward()) );
 }
 
-void KOEventPopupMenu::showIncidencePopup( KOrg::CalendarBase *cal, const Akonadi::Item &item, const QDate &qd )
+void KOEventPopupMenu::showIncidencePopup( const Akonadi::Item &item, const QDate &qd )
 {
-  mCalendar = cal;
   mCurrentIncidence = item;
   mCurrentDate = qd;
 
@@ -142,6 +140,7 @@ void KOEventPopupMenu::popupEdit()
 
 void KOEventPopupMenu::print()
 {
+#ifdef AKONADI_PORT_DISABLED
   KOCoreHelper helper;
   CalPrinter printer( this, mCalendar, &helper );
   connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
@@ -149,7 +148,6 @@ void KOEventPopupMenu::print()
   Item::List selectedIncidences;
   selectedIncidences.append( mCurrentIncidence );
 
-#ifdef AKONADI_PORT_DISABLED
   printer.print( KOrg::CalPrinterBase::Incidence,
                  mCurrentDate, mCurrentDate, selectedIncidences, false );
 #endif
@@ -157,13 +155,13 @@ void KOEventPopupMenu::print()
 
 void KOEventPopupMenu::printPreview()
 {
+#ifdef AKONADI_PORT_DISABLED
   KOCoreHelper helper;
   CalPrinter printer( this, mCalendar, &helper );
   connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
 
   Item::List selectedIncidences;
   selectedIncidences.append( mCurrentIncidence );
-#ifdef AKONADI_PORT_DISABLED
   printer.print( KOrg::CalPrinterBase::Incidence,
                  mCurrentDate, mCurrentDate, selectedIncidences, true );
 #endif

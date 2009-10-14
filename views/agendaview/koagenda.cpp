@@ -516,8 +516,7 @@ bool KOAgenda::eventFilter_mouse( QObject *object, QMouseEvent *me )
         mClickedItem = dynamic_cast<KOAgendaItem *>( object );
         if ( mClickedItem ) {
           selectItem( mClickedItem );
-          emit showIncidencePopupSignal( mCalendar,
-                                         mClickedItem->incidence(),
+          emit showIncidencePopupSignal( mClickedItem->incidence(),
                                          mClickedItem->itemDate() );
         }
       } else {

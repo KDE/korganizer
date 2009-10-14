@@ -49,7 +49,7 @@ class KOEventPopupMenu : public QMenu
     KOEventPopupMenu();
 
   public slots:
-    void showIncidencePopup( KOrg::CalendarBase *, const Akonadi::Item &, const QDate & );
+    void showIncidencePopup( const Akonadi::Item &, const QDate & );
 
   protected slots:
     void popupShow();
@@ -78,7 +78,6 @@ class KOEventPopupMenu : public QMenu
     void dissociateOccurrencesSignal( const Akonadi::Item &, const QDate & );
 
   private:
-    KOrg::CalendarBase *mCalendar;
     Akonadi::Item mCurrentIncidence;
     QDate mCurrentDate;
 
