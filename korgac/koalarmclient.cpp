@@ -32,6 +32,10 @@
 
 #include "akonadicalendar.h"
 
+#include <akonadi/kcal/utils.h>
+
+#include <Akonadi/Item>
+
 #include <KCal/CalendarResources>
 
 #include <KApplication>
@@ -41,6 +45,7 @@
 #include <KStandardDirs>
 #include <KSystemTimeZones>
 
+using namespace Akonadi;
 using namespace KCal;
 
 KOAlarmClient::KOAlarmClient( QObject *parent )
@@ -79,12 +84,13 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
   for ( int i=1; i<=numReminders; ++i ) {
     const QString group( QString( "Incidence-%1" ).arg( i ) );
     const KConfigGroup incGroup( KGlobal::config(), group );
+#ifdef AKONADI_PORT_DISABLED // this must be migrated, to not lose configured alarms
     const QString uid = incGroup.readEntry( "UID" );
-    const QDateTime dt = incGroup.readEntry( "RemindAt", QDateTime() );
-    if ( !uid.isEmpty() ) {
-#ifdef AKONADI_PORT_DISABLED
-      createReminder( mCalendar, mCalendar->incidence( uid ), dt, QString() );
 #endif // AKONADI_PORT_DISABLED
+    const KUrl url = incGroup.readEntry( "AkonadiUrl" );
+    const QDateTime dt = incGroup.readEntry( "RemindAt", QDateTime() );
+    if ( url.isValid() ) {
+      createReminder( mCalendar, mCalendar->incidenceFORAKONADI( Item::fromUrl( url ).id() ), dt, QString() );
     }
   }
   if ( numReminders ) {
@@ -130,11 +136,11 @@ void KOAlarmClient::checkAlarms()
 }
 
 void KOAlarmClient::createReminder( KOrg::CalendarBase *calendar,
-                                    KCal::Incidence *incidence,
+                                    const Item &aitem,
                                     const QDateTime &dt,
                                     const QString &displayText )
 {
-  if ( !incidence ) {
+  if ( !Akonadi::hasIncidence( aitem ) ) {
     return;
   }
 
@@ -151,7 +157,7 @@ void KOAlarmClient::createReminder( KOrg::CalendarBase *calendar,
     }
   }
 
-  mDialog->addIncidence( incidence, dt, displayText );
+  mDialog->addIncidence( Akonadi::incidence( aitem ).get(), dt, displayText );
   mDialog->wakeUp();
   saveLastCheckTime();
 }

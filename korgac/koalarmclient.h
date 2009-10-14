@@ -34,6 +34,10 @@
 class AlarmDialog;
 class AlarmDockWindow;
 
+namespace Akonadi {
+  class Item;
+}
+
 namespace KOrg {
   class CalendarBase;
 }
@@ -72,7 +76,7 @@ class KOAlarmClient : public QObject, public KSessionManager
     void saveAllSignal();
 
   private:
-    void createReminder( KOrg::CalendarBase *calendar, KCal::Incidence *incidence,
+    void createReminder( KOrg::CalendarBase *calendar, const Akonadi::Item &incidence,
                          const QDateTime &dt, const QString &displayText );
     void saveLastCheckTime();
 
