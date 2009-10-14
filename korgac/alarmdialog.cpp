@@ -166,7 +166,7 @@ AlarmDialog::AlarmDialog( KOrg::CalendarBase *calendar, QWidget *parent )
   connect( mIncidenceTree, SIGNAL(itemSelectionChanged()),
            SLOT(update()) );
 
-  mDetailView = new KOEventViewer( mCalendar, topBox );
+  mDetailView = new KOEventViewer( topBox );
   QString s;
   s = i18nc( "@info default incidence details string",
              "<emphasis>Select an event or to-do from the list above "

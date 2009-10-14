@@ -34,9 +34,7 @@ class QUrl;
 namespace Akonadi {
   class Item;
 }
-namespace KOrg {
-  class CalendarBase;
-}
+
 namespace KCal {
   class Incidence;
 }
@@ -49,18 +47,13 @@ class KORGANIZER_EVENTVIEWER_EXPORT KOEventViewer : public KTextBrowser
 {
   Q_OBJECT
   public:
-    explicit KOEventViewer( KOrg::CalendarBase *calendar, QWidget *parent = 0 );
+    explicit KOEventViewer( QWidget *parent = 0 );
     virtual ~KOEventViewer();
 
     /** Reimplemented from QTextBrowser to handle links. */
     void setSource( const QUrl &name );
 
     virtual bool appendIncidence( Incidence *incidence, const QDate &date );
-
-    /**
-      Set the Calendar associated with this viewer.
-    */
-    void setCalendar ( KOrg::CalendarBase *calendar );
 
     /**
       Clear viewer.
@@ -98,7 +91,6 @@ class KORGANIZER_EVENTVIEWER_EXPORT KOEventViewer : public KTextBrowser
     virtual void showIncidenceContext();
 
   private:
-    KOrg::CalendarBase *mCalendar;
     Incidence *mIncidence;
     QString mDefaultText;
     QString mText;

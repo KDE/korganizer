@@ -33,9 +33,7 @@
 namespace Akonadi {
   class Item;
 }
-namespace KOrg {
-  class CalendarBase;
-}
+
 using namespace KCal;
 
 class KOListView;

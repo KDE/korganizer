@@ -27,7 +27,6 @@
 #include "urihandler.h"
 #include "korganizerinterface.h"
 #include "koglobals.h"
-#include "akonadicalendar.h"
 
 #include <libkdepim/kdepimprotocols.h>
 #include <libkdepim/kpimprefs.h>
@@ -45,8 +44,8 @@
 
 #include <akonadi/item.h>
 
-KOEventViewer::KOEventViewer( KOrg::CalendarBase *calendar, QWidget *parent )
-  : KTextBrowser( parent ), mCalendar( calendar ), mDefaultText( "" )
+KOEventViewer::KOEventViewer( QWidget *parent )
+  : KTextBrowser( parent ), mDefaultText( "" )
 {
   mIncidence = 0;
   setNotifyClick( true );
@@ -103,11 +102,6 @@ bool KOEventViewer::appendIncidence( Incidence *incidence, const QDate &date )
   addText( IncidenceFormatter::extensiveDisplayStr(
              QString(), incidence, date, KSystemTimeZones::local() ) );
   return true;
-}
-
-void KOEventViewer::setCalendar( KOrg::CalendarBase *calendar )
-{
-  mCalendar = calendar;
 }
 
 void KOEventViewer::setIncidence( Incidence *incidence, const QDate &date )

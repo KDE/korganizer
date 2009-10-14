@@ -35,7 +35,7 @@ KOEventViewerDialog::KOEventViewerDialog( KOrg::CalendarBase *calendar, QWidget 
   setModal( false );
   setButtonGuiItem( User1, KGuiItem( i18n( "Edit..." ) ) );
   setButtonGuiItem( User2, KGuiItem( i18n( "Show in Context" ) ) );
-  mEventViewer = new KOEventViewer( calendar, this );
+  mEventViewer = new KOEventViewer( this );
   setMainWidget( mEventViewer );
 
   resize( QSize(300, 200).expandedTo(minimumSizeHint()) );
@@ -52,9 +52,8 @@ KOEventViewerDialog::~KOEventViewerDialog()
   delete mEventViewer;
 }
 
-void KOEventViewerDialog::setCalendar( KOrg::CalendarBase *calendar )
+void KOEventViewerDialog::setCalendar( KOrg::CalendarBase* )
 {
-  mEventViewer->setCalendar( calendar );
 }
 
 void KOEventViewerDialog::addText( const QString &text )
