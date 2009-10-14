@@ -263,8 +263,6 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     */
     void updateConfig();
 
-    void setDestinationPolicy();
-
     void processIncidenceSelection( const Akonadi::Item &item, const QDate &date );
     void keyBindings();
 

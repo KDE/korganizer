@@ -240,7 +240,6 @@ void ActionManager::init()
 void ActionManager::createCalendarAkonadi()
 {
   mCalendarAkonadi = new AkonadiCalendar( KSystemTimeZones::local() );
-  setDestinationPolicy();
 
   mCalendarView->setCalendar( mCalendarAkonadi );
   mCalendarView->readSettings();
@@ -1388,26 +1387,11 @@ void ActionManager::updateConfig()
 // Commented out because it crashes KOrganizer.
 //  mParts = KOCore::self()->reloadParts( mMainWindow, mParts );
 
-  setDestinationPolicy();
-
   if ( mResourceView ) {
     mResourceView->updateView();
   }
 
   KOGroupware::instance()->freeBusyManager()->setBrokenUrl( false );
-}
-
-void ActionManager::setDestinationPolicy()
-{
-#if 0 //AKONADI_PORT_DISABLED
-  if ( mCalendarAkonadi ) {
-    if ( KOPrefs::instance()->mDestination == KOPrefs::askDestination ) {
-      mCalendarAkonadi->setAskDestinationPolicy();
-    } else {
-      mCalendarAkonadi->setStandardDestinationPolicy();
-    }
-  }
-#endif
 }
 
 void ActionManager::configureDateTime()

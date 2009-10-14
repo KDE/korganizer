@@ -114,7 +114,6 @@ if(KMAIL_SUPPORTED)
 
   set(korganizer_eventviewer_LIB_SRCS koeventviewer.cpp koeventviewerdialog.cpp komailclient.cpp)
 
-
   qt4_add_dbus_interfaces( korganizer_eventviewer_LIB_SRCS ${CMAKE_SOURCE_DIR}/korganizer/korgac/org.kde.korganizer.KOrgac.xml)
   qt4_add_dbus_interfaces( korganizer_eventviewer_LIB_SRCS ${CMAKE_SOURCE_DIR}/korganizer/org.kde.korganizer.Korganizer.xml)
   qt4_add_dbus_interfaces( korganizer_eventviewer_LIB_SRCS ${CMAKE_BINARY_DIR}/kmail/org.kde.kmail.kmail.xml)
@@ -132,8 +131,6 @@ if(KMAIL_SUPPORTED)
 
   set(korganizerprivate_LIB_SRCS
     ${libkdgantt1_SRCS}
-    themeimporter.cpp
-    theme.cpp
     komessagebox.cpp
     koalternatelabel.cpp
     kodecorationlabel.cpp
@@ -209,7 +206,6 @@ if(KMAIL_SUPPORTED)
   )
 
   qt4_add_resources(korganizerprivate_LIB_SRCS agendaitem_pixmaps/agendaitemtheme.qrc )
-
   qt4_add_dbus_adaptor(korganizerprivate_LIB_SRCS org.kde.korganizer.Korganizer.xml korganizerifaceimpl.h KOrganizerIfaceImpl )
   qt4_add_dbus_adaptor(korganizerprivate_LIB_SRCS org.kde.Korganizer.Calendar.xml actionmanager.h ActionManager )
   qt4_add_dbus_interfaces(korganizerprivate_LIB_SRCS org.kde.korganizer.Korganizer.xml )

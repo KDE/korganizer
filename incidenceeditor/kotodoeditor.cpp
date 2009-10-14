@@ -338,30 +338,6 @@ void KOTodoEditor::modified( int modification )
   reload();
 }
 
-#if 0 //AKONADI_PORT_DISABLED
-void KOTodoEditor::loadTemplate( CalendarLocal &cal )
-{
-  Todo::List todos = cal.todos();
-  if ( todos.count() == 0 ) {
-    KMessageBox::error( this, i18nc( "@info", "Template does not contain a valid to-do." ) );
-  } else {
-    readTodo( todos.first(), true );
-  }
-}
-
-void KOTodoEditor::slotSaveTemplate( const QString &templateName )
-{
-  Todo *todo = new Todo;
-  fillTodo( todo );
-  saveAsTemplate( todo, templateName );
-}
-
-QStringList KOTodoEditor::templates() const
-{
-  return KOPrefs::instance()->mTodoTemplates;
-}
-#endif
-
 void KOTodoEditor::show()
 {
   fillTodo( mInitialTodoItem );

@@ -238,30 +238,6 @@ void KOJournalEditor::modified( int modification )
   reload();
 }
 
-#if 0 //AKONADI_PORT_DISABLED
-void KOJournalEditor::loadTemplate( CalendarLocal &cal )
-{
-  Journal::List journals = cal.journals();
-  if ( journals.count() == 0 ) {
-    KMessageBox::error( this, i18nc( "@info", "Template does not contain a valid journal." ) );
-  } else {
-    readJournal( journals.first(), true );
-  }
-}
-
-void KOJournalEditor::slotSaveTemplate( const QString &templateName )
-{
-  Journal *journal = new Journal;
-  fillJournal( journal );
-  saveAsTemplate( journal, templateName );
-}
-
-QStringList KOJournalEditor::templates() const
-{
-  return KOPrefs::instance()->mJournalTemplates;
-}
-#endif
-
 void KOJournalEditor::show()
 {
   fillJournal( &mInitialJournal );

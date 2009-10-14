@@ -31,11 +31,6 @@
 #include "koeditorconfig.h"
 #include "korganizer/incidencechangerbase.h"
 
-#ifdef AKONADI_PORT_DISABLED
-#include "kogroupware.h"
-#include "koprefs.h"
-#endif
-
 #include <akonadi/kcal/utils.h>
 
 #include <KCal/IncidenceFormatter>
@@ -399,30 +394,6 @@ bool KOEventEditor::validateInput()
   }
   return true;
 }
-
-#if 0 //AKONADI_PORT_DISABLED
-void KOEventEditor::loadTemplate( CalendarLocal &cal )
-{
-  Event::List events = cal.events();
-  if ( events.count() == 0 ) {
-    KMessageBox::error( this, i18nc( "@info", "Template does not contain a valid event." ) );
-  } else {
-    readEvent( events.first(), true );
-  }
-}
-
-QStringList KOEventEditor::templates() const
-{
-  return KOPrefs::instance()->mEventTemplates;
-}
-
-void KOEventEditor::slotSaveTemplate( const QString &templateName )
-{
-  Event *event = new Event;
-  fillEvent( event );
-  saveAsTemplate( event, templateName );
-}
-#endif
 
 QObject *KOEventEditor::typeAheadReceiver() const
 {
