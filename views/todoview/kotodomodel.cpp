@@ -466,10 +466,12 @@ KOTodoModel::TodoTreeNode *KOTodoModel::insertTodo( const Item &todoItem,
       return insertTodo( todoItem, false );
     }
 
-    // if the parent is not already in the tree, we have to insert it first.
-    // necessary because we can't rely on todos coming in a defined order.
+    // FIXME how to handle the related incidences where we don't know the item?
     Akonadi::Item relatedTodoItem;
     relatedTodoItem.setPayload( Todo::Ptr(relatedTodo->clone()) );
+
+    // if the parent is not already in the tree, we have to insert it first.
+    // necessary because we can't rely on todos coming in a defined order.
     TodoTreeNode *parent = findTodo( relatedTodoItem );
     if ( !parent ) {
       parent = insertTodo( relatedTodoItem, checkRelated );
