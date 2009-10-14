@@ -57,10 +57,7 @@ namespace KOHelper
     @param incidence the incidence for which the color is needed (to
                      determine which  subresource needs to be used)
   */
-  KORGANIZER_CORE_EXPORT QColor resourceColor( KOrg::CalendarBase *calendar,
-                                               KCal::Incidence *incidence );
-  KORGANIZER_CORE_EXPORT QColor resourceColor( KOrg::CalendarBase *calendar,
-                                               const Akonadi::Item & incidence );
+  KORGANIZER_CORE_EXPORT QColor resourceColor( const Akonadi::Item & incidence );
 
   /**
     Returns the number of years between the @p start QDate and the @p end QDate

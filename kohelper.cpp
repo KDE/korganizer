@@ -24,14 +24,12 @@
 
 #include "kohelper.h"
 #include "koprefs.h"
-#include "akonadicalendar.h"
-
-#include <akonadi/kcal/utils.h>
 
 #include <akonadi/item.h>
 
-
 #include <QDate>
+
+using namespace Akonadi;
 
 QColor KOHelper::getTextColor( const QColor &c )
 {
@@ -39,27 +37,14 @@ QColor KOHelper::getTextColor( const QColor &c )
   return ( luminance > 128.0 ) ? QColor( 0, 0, 0 ) : QColor( 255, 255, 255 );
 }
 
-QColor KOHelper::resourceColor( KOrg::CalendarBase *calendar,
-                                const Akonadi::Item &item ) {
-  return resourceColor( calendar, Akonadi::incidence( item ).get() );
+QColor KOHelper::resourceColor( const Item &item ) {
+  if ( !item.isValid() )
+    return QColor();
+  const QString id = QString::number( item.storageCollectionId() );
+  return KOPrefs::instance()->resourceColor( id );
 }
 
 
-QColor KOHelper::resourceColor( KOrg::CalendarBase *calendar,
-                                KCal::Incidence *incidence )
-{
-  QColor resourceColor = QColor(); //Default invalid color
-  KOrg::AkonadiCalendar *calendarResource = dynamic_cast<KOrg::AkonadiCalendar*>( calendar );
-  if ( calendarResource ) {
-    Akonadi::Item item = calendarResource->itemForIncidence( incidence );
-    if( item.isValid() ) {
-      QString id = QString::number( item.storageCollectionId() );
-      Q_ASSERT( ! id.isEmpty() );
-      resourceColor = KOPrefs::instance()->resourceColor( id );
-    }
-  }
-  return resourceColor;
-}
 
 qint64 KOHelper::yearDiff( const QDate &start, const QDate &end )
 {

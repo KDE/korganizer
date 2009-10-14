@@ -1558,7 +1558,7 @@ KOAgendaItem *KOAgenda::insertItem( const Item &incidence, const QDate &qd,
                       int( ( YBottom + 1 ) * mGridSpacingY ) );
   agendaItem->setCellXY( X, YTop, YBottom );
   agendaItem->setCellXRight( X );
-  agendaItem->setResourceColor( KOHelper::resourceColor( mCalendar, incidence ) );
+  agendaItem->setResourceColor( KOHelper::resourceColor( incidence ) );
   agendaItem->installEventFilter( this );
 
   addChild( agendaItem, int( X * mGridSpacingX ), int( YTop * mGridSpacingY ) );
@@ -1602,7 +1602,7 @@ KOAgendaItem *KOAgenda::insertAllDayItem( const Item &incidence, const QDate &qd
   agendaItem->resize( int( endIt ) - int( startIt ), int( mGridSpacingY ) );
 
   agendaItem->installEventFilter( this );
-  agendaItem->setResourceColor( KOHelper::resourceColor( mCalendar, incidence ) );
+  agendaItem->setResourceColor( KOHelper::resourceColor( incidence ) );
   addChild( agendaItem, int( XBegin * mGridSpacingX ), 0 );
   mItems.append( agendaItem );
 
