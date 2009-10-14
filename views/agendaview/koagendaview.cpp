@@ -1098,7 +1098,7 @@ void KOAgendaView::showIncidences( const Item::List &incidences, const QDate &da
     showDates( start.date(), start.date().addDays( currentDateCount() - 1 ) );
   }
 
-  mAgenda->selectItemByUID( Akonadi::incidence( first )->uid() );
+  mAgenda->selectItem( first );
 }
 
 void KOAgendaView::insertIncidence( const Item &aitem, const QDate &curDate )
@@ -1276,10 +1276,10 @@ void KOAgendaView::fillAgenda()
 {
   mPendingChanges = false;
 
-  /* Remember the uids of the selected items. In case one of the
+  /* Remember the item Ids of the selected items. In case one of the
    * items was deleted and re-added, we want to reselect it. */
-  const QString &selectedAgendaUid = mAgenda->lastSelectedUid();
-  const QString &selectedAllDayAgendaUid = mAllDayAgenda->lastSelectedUid();
+  const Item::Id selectedAgendaId = mAgenda->lastSelectedItemId();
+  const Item::Id selectedAllDayAgendaId = mAllDayAgenda->lastSelectedItemId();
 
   enableAgendaUpdate( true );
   clearView();
@@ -1302,14 +1302,13 @@ void KOAgendaView::fillAgenda()
 
   foreach ( const Item& aitem, incidences ) {
     displayIncidence( aitem );
-    const Incidence::Ptr incidence = Akonadi::incidence( aitem );
-    if( incidence->uid() == selectedAgendaUid && !selectedAgendaUid.isNull() ) {
-      mAgenda->selectItemByUID( incidence->uid() );
+    if( aitem.id() == selectedAgendaId ) {
+      mAgenda->selectItem( aitem );
       somethingReselected = true;
     }
 
-    if( incidence->uid() == selectedAllDayAgendaUid && !selectedAllDayAgendaUid.isNull() ) {
-      mAllDayAgenda->selectItemByUID( incidence->uid() );
+    if( aitem.id() == selectedAllDayAgendaId ) {
+      mAllDayAgenda->selectItem( aitem );
       somethingReselected = true;
     }
   }

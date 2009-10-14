@@ -228,9 +228,9 @@ QDate KOAgenda::selectedIncidenceDate() const
   return ( mSelectedItem ? mSelectedItem->itemDate() : QDate() );
 }
 
-const QString KOAgenda::lastSelectedUid() const
+Item::Id KOAgenda::lastSelectedItemId() const
 {
-  return mSelectedUid;
+  return mSelectedId;
 }
 
 void KOAgenda::init()
@@ -269,7 +269,7 @@ void KOAgenda::init()
   mItemMoved = false;
 
   mSelectedItem = 0;
-  mSelectedUid.clear();
+  mSelectedId = -1;
 
   setAcceptDrops( true );
   installEventFilter( this );
@@ -1917,24 +1917,29 @@ void KOAgenda::selectItem( KOAgendaItem *item )
   mSelectedItem = item;
   mSelectedItem->select();
   Q_ASSERT( Akonadi::hasIncidence( mSelectedItem->incidence() ) );
-  mSelectedUid = Akonadi::incidence( mSelectedItem->incidence() )->uid();
+  mSelectedId = mSelectedItem->incidence().id();
 
   foreach ( KOAgendaItem *item, mItems ) {
-    if( Akonadi::hasIncidence( item->incidence() ) && Akonadi::incidence( item->incidence() )->uid() == mSelectedUid ) {
+    if( item->incidence().id() == mSelectedId ) {
       item->select();
     }
   }
   emit incidenceSelected( mSelectedItem->incidence(), mSelectedItem->itemDate() );
 }
 
-void KOAgenda::selectItemByUID( const QString &uid )
+void KOAgenda::selectItemByItemId( const Item::Id &id )
 {
   foreach ( KOAgendaItem *item, mItems ) {
-    if( Akonadi::hasIncidence( item->incidence() ) && Akonadi::incidence( item->incidence() )->uid() == uid ) {
+    if( item->incidence().id() == id ) {
       selectItem( item );
       break;
     }
   }
+}
+
+void KOAgenda::selectItem( const Item &item )
+{
+  selectItemByItemId( item.id() );
 }
 
 // This function seems never be called.
