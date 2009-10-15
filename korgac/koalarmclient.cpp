@@ -66,8 +66,6 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
 
   const KTimeZone zone = KSystemTimeZones::local();
   mCalendar = new KOrg::AkonadiCalendar( zone.isValid() ? KDateTime::Spec( zone ) : KDateTime::ClockTime );
-  //mCalendar->readConfig();
-  //mCalendar->load();
 
   connect( &mCheckTimer, SIGNAL(timeout()), SLOT(checkAlarms()) );
 
@@ -82,12 +80,21 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
   for ( int i=1; i<=numReminders; ++i ) {
     const QString group( QString( "Incidence-%1" ).arg( i ) );
     const KConfigGroup incGroup( KGlobal::config(), group );
-#ifdef AKONADI_PORT_DISABLED // this must be migrated, to not lose configured alarms
-    const QString uid = incGroup.readEntry( "UID" );
-#endif // AKONADI_PORT_DISABLED
+
     const KUrl url = incGroup.readEntry( "AkonadiUrl" );
-    const QDateTime dt = incGroup.readEntry( "RemindAt", QDateTime() );
-    if ( url.isValid() ) {
+    Akonadi::Item::Id akonadiItemId = -1;
+    if( ! url.isValid() ) {
+      // logic to migrate old KOrganizer incidence uid's to a Akonadi item.
+      const QString uid = incGroup.readEntry( "UID" );
+      if( ! uid.isEmpty() ) {
+        akonadiItemId = mCalendar->itemIdForIncidenceUid(uid);
+      }
+    } else {
+      akonadiItemId = Item::fromUrl( url ).id();
+    }
+
+    if ( akonadiItemId >= 0 ) {
+      const QDateTime dt = incGroup.readEntry( "RemindAt", QDateTime() );
       createReminder( mCalendar, mCalendar->incidence( Item::fromUrl( url ).id() ), dt, QString() );
     }
   }
@@ -132,7 +139,7 @@ void KOAlarmClient::checkAlarms()
 #endif
 }
 
-void KOAlarmClient::createReminder( KOrg::CalendarBase *calendar,
+void KOAlarmClient::createReminder( KOrg::AkonadiCalendar *calendar,
                                     const Item &aitem,
                                     const QDateTime &dt,
                                     const QString &displayText )
