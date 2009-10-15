@@ -638,7 +638,7 @@ void AlarmDialog::slotSave()
                                   QString( "Incidence-%1" ).arg( numReminders + 1 ) );
 
     Incidence::Ptr incidence = Akonadi::incidence( item->mIncidence );
-    //incidenceConfig.writeEntry( "UID", incidence->uid() );
+    incidenceConfig.writeEntry( "AkonadiUrl", item->mIncidence.url() );
     incidenceConfig.writeEntry( "RemindAt", item->mRemindAt );
     ++numReminders;
     ++it;
