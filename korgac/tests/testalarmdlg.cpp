@@ -38,6 +38,7 @@ using namespace KCal;
 
 int main( int argc, char **argv )
 {
+#ifdef AKONADI_PORT_DISABLED
   KAboutData aboutData( "testkabc", 0, ki18n( "TestKabc" ), "0.1" );
   KCmdLineArgs::init( argc, argv, &aboutData );
 
@@ -92,5 +93,8 @@ int main( int argc, char **argv )
   dlg.show();
   dlg.eventNotification();
 
-  app.exec();
+  return app.exec();
+#else
+  return 0;
+#endif
 }

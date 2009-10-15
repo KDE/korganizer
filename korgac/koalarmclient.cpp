@@ -29,12 +29,10 @@
 #include "alarmdialog.h"
 #include "alarmdockwindow.h"
 #include "korgacadaptor.h"
-
 #include "akonadicalendar.h"
 
-#include <akonadi/kcal/utils.h>
-
 #include <Akonadi/Item>
+#include <akonadi/kcal/utils.h>
 
 #include <KCal/CalendarResources>
 
@@ -157,7 +155,7 @@ void KOAlarmClient::createReminder( KOrg::CalendarBase *calendar,
     }
   }
 
-  mDialog->addIncidence( Akonadi::incidence( aitem ).get(), dt, displayText );
+  mDialog->addIncidence( aitem, dt, displayText );
   mDialog->wakeUp();
   saveLastCheckTime();
 }
