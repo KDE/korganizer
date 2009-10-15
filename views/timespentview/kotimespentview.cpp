@@ -260,7 +260,7 @@ void KOTimeSpentView::updateView()
   */
 
   KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
-  mView->mEventList = calendar()->eventsFORAKONADI( mStartDate, mEndDate, timeSpec );
+  mView->mEventList = calendar()->events( mStartDate, mEndDate, timeSpec );
   mView->repaint();
 }
 

@@ -86,7 +86,7 @@ void EventArchiver::run( KOrg::CalendarBase *calendar, const QDate &limitDate, Q
   Item::List journals;
 
   if ( KOPrefs::instance()->mArchiveEvents ) {
-    events = calendar->rawEventsFORAKONADI(
+    events = calendar->rawEvents(
       QDate( 1769, 12, 1 ),
       // #29555, also advertised by the "limitDate not included" in the class docu
       limitDate.addDays( -1 ),
@@ -94,7 +94,7 @@ void EventArchiver::run( KOrg::CalendarBase *calendar, const QDate &limitDate, Q
       true );
   }
   if ( KOPrefs::instance()->mArchiveTodos ) {
-    Item::List t = calendar->rawTodosFORAKONADI();
+    Item::List t = calendar->rawTodos();
     Item::List::ConstIterator it;
     for ( it = t.constBegin(); it != t.constEnd(); ++it ) {
       const Todo::Ptr todo = Akonadi::todo( *it );
@@ -105,7 +105,7 @@ void EventArchiver::run( KOrg::CalendarBase *calendar, const QDate &limitDate, Q
     }
   }
 
-  const Item::List incidences = CalendarBase::mergeIncidenceListFORAKONADI( events, todos, journals );
+  const Item::List incidences = CalendarBase::mergeIncidenceList( events, todos, journals );
 
   kDebug() << "archiving incidences before" << limitDate
            << " ->" << incidences.count() <<" incidences found.";
@@ -151,7 +151,7 @@ void EventArchiver::deleteIncidences( KOrg::CalendarBase *calendar, const QDate 
     }
   }
   for ( it = incidences.constBegin(); it != incidences.constEnd(); ++it ) {
-    calendar->deleteIncidenceFORAKONADI( *it );
+    calendar->deleteIncidence( *it );
   }
   emit eventsDeleted();
 }

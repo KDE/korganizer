@@ -136,13 +136,13 @@ void SearchDialog::search( const QRegExp &re )
   Item::List events;
   KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
   if ( mEventsCheck->isChecked() ) {
-    events = mCalendar->eventsFORAKONADI( startDt, endDt, timeSpec, mInclusiveCheck->isChecked() );
+    events = mCalendar->events( startDt, endDt, timeSpec, mInclusiveCheck->isChecked() );
   }
   Item::List todos;
   if ( mTodosCheck->isChecked() ) {
     if ( mIncludeUndatedTodos->isChecked() ) {
       KDateTime::Spec spec = KOPrefs::instance()->timeSpec();
-      Item::List alltodos = mCalendar->todosFORAKONADI();
+      Item::List alltodos = mCalendar->todos();
       Q_FOREACH ( const Item &item, alltodos ) {
         const Todo::ConstPtr todo = Akonadi::todo( item );
         Q_ASSERT( todo );
@@ -162,7 +162,7 @@ void SearchDialog::search( const QRegExp &re )
     } else {
       QDate dt = startDt;
       while ( dt <= endDt ) {
-        todos += mCalendar->todosFORAKONADI( dt );
+        todos += mCalendar->todos( dt );
         dt = dt.addDays( 1 );
       }
     }
@@ -172,13 +172,13 @@ void SearchDialog::search( const QRegExp &re )
   if ( mJournalsCheck->isChecked() ) {
     QDate dt = startDt;
     while ( dt <= endDt ) {
-      journals += mCalendar->journalsFORAKONADI( dt );
+      journals += mCalendar->journals( dt );
       dt = dt.addDays( 1 );
     }
   }
 
   mMatchedEvents.clear();
-  Q_FOREACH( const Item &item, CalendarBase::mergeIncidenceListFORAKONADI(events, todos, journals) ) {
+  Q_FOREACH( const Item &item, CalendarBase::mergeIncidenceList(events, todos, journals) ) {
     const Incidence::Ptr ev = Akonadi::incidence( item );
     Q_ASSERT( ev );
     if ( mSummaryCheck->isChecked() ) {

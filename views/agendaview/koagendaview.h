@@ -145,9 +145,9 @@ class KOAgendaView : public KOrg::AgendaView, public KOrg::CalendarBase::Calenda
     QSplitter *splitter() const { return mSplitterAgenda; }
 
     /* reimplemented from KCal::Calendar::CalendarObserver */
-    void calendarIncidenceAddedFORAKONADI( const Akonadi::Item &incidence );
-    void calendarIncidenceChangedFORAKONADI( const Akonadi::Item &incidence );
-    void calendarIncidenceRemovedFORAKONADI( const Akonadi::Item &incidence );
+    void calendarIncidenceAdded( const Akonadi::Item &incidence );
+    void calendarIncidenceChanged( const Akonadi::Item &incidence );
+    void calendarIncidenceRemoved( const Akonadi::Item &incidence );
 
   public slots:
     virtual void updateView();

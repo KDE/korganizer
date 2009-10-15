@@ -98,8 +98,8 @@ void KOWhatsNextView::updateView()
   Item::List events;
   KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
 
-  events = calendar()->eventsFORAKONADI( mStartDate, mEndDate, timeSpec, false );
-  events = calendar()->sortEventsFORAKONADI( events, EventSortStartDate, SortDirectionAscending );
+  events = calendar()->events( mStartDate, mEndDate, timeSpec, false );
+  events = calendar()->sortEvents( events, EventSortStartDate, SortDirectionAscending );
 
   if ( events.count() > 0 ) {
     mText += "<p></p>";
@@ -144,7 +144,7 @@ void KOWhatsNextView::updateView()
   }
 
   mTodos.clear();
-  Item::List todos = calendar()->todosFORAKONADI( TodoSortDueDate, SortDirectionAscending );
+  Item::List todos = calendar()->todos( TodoSortDueDate, SortDirectionAscending );
   if ( todos.count() > 0 ) {
     kil.loadIcon( "view-calendar-tasks", KIconLoader::NoGroup, 22,
                   KIconLoader::DefaultState, QStringList(), &ipath );
@@ -177,7 +177,7 @@ void KOWhatsNextView::updateView()
 
   QStringList myEmails( KOPrefs::instance()->allEmails() );
   int replies = 0;
-  events = calendar()->eventsFORAKONADI( QDate::currentDate(), QDate( 2975, 12, 6 ), timeSpec );
+  events = calendar()->events( QDate::currentDate(), QDate( 2975, 12, 6 ), timeSpec );
   Q_FOREACH( const Item& evItem, events ) {
     Event::Ptr ev = Akonadi::event( evItem );
     Attendee *me = ev->attendeeByMails( myEmails );
@@ -198,7 +198,7 @@ void KOWhatsNextView::updateView()
       }
     }
   }
-  todos = calendar()->todosFORAKONADI();
+  todos = calendar()->todos();
   Todo::List::ConstIterator it3;
   Q_FOREACH( const Item & todoItem, todos ) {
     Todo::Ptr to = Akonadi::todo( todoItem );

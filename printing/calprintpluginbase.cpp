@@ -1016,7 +1016,7 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
   p.setFont( QFont( "sans-serif", 10, QFont::Bold ) );
   p.drawText( headerTextBox, Qt::AlignRight | Qt::AlignVCenter, dayNumStr );
 
-  const Item::List eventList = mCalendar->eventsFORAKONADI( qd, KSystemTimeZones::local(),
+  const Item::List eventList = mCalendar->events( qd, KSystemTimeZones::local(),
                                                   KOrg::EventSortStartDate,
                                                   KOrg::SortDirectionAscending );
 
@@ -1057,7 +1057,7 @@ void CalPrintPluginBase::drawDayBox( QPainter &p, const QDate &qd,
   }
 
   if ( textY < box.height() ) {
-    Item::List todos = mCalendar->todosFORAKONADI( qd );
+    Item::List todos = mCalendar->todos( qd );
     Item::List::ConstIterator it2;
     for ( it2=todos.constBegin(); it2 != todos.constEnd() && textY < box.height(); ++it2 ) {
       Todo::Ptr todo = Akonadi::todo( *it2 );
@@ -1323,7 +1323,7 @@ void CalPrintPluginBase::drawTimeTable( QPainter &p,
     QRect dayBox( allDayBox );
     dayBox.setTop( tlBox.top() );
     dayBox.setBottom( box.bottom() );
-    Item::List eventList = mCalendar->eventsFORAKONADI( curDate, timeSpec,
+    Item::List eventList = mCalendar->events( curDate, timeSpec,
                                                KOrg::EventSortStartDate,
                                                KOrg::SortDirectionAscending );
 #ifdef AKONADI_PORT_DISABLED
@@ -1420,7 +1420,7 @@ void CalPrintPluginBase::drawMonth( QPainter &p, const QDate &dt,
   end = calsys->addMonths( start, 1 );
   end = calsys->addDays( end, -1 );
 
-  const Item::List events = mCalendar->eventsFORAKONADI( start, end );
+  const Item::List events = mCalendar->events( start, end );
   QMap<int, QStringList> textEvents;
   QList<KOrg::CellItem *> timeboxItems;
 
@@ -1850,7 +1850,7 @@ void CalPrintPluginBase::drawTodo( int &count, const Item &todoItem, QPainter &p
   }
 
   // Sort the sub-to-dos and print them
-  Item::List sl = mCalendar->sortTodosFORAKONADI( &t, sortField, sortDir );
+  Item::List sl = mCalendar->sortTodos( &t, sortField, sortDir );
   Item::List::ConstIterator isl;
   int subcount = 0;
   for ( isl = sl.constBegin(); isl != sl.constEnd(); ++isl ) {

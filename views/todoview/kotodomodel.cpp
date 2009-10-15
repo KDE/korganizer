@@ -220,7 +220,7 @@ void KOTodoModel::reloadTodos()
   // never delete the root node
   mRootNode->mToDelete = false;
 
-  Item::List todoList = mCalendar->todosFORAKONADI();
+  Item::List todoList = mCalendar->todos();
   Item::List::ConstIterator it;
   QList<TodoTreeNode*> changedNodes;
   for ( it = todoList.constBegin(); it != todoList.constEnd(); ++it ) {

@@ -121,7 +121,7 @@ void KOJournalView::updateView()
   while ( it != mEntries.begin() ) {
     --it;
     it.value()->clear();
-    const Item::List journals = calendar()->journalsFORAKONADI( it.key() );
+    const Item::List journals = calendar()->journals( it.key() );
     Q_FOREACH( const Item& i, journals )
       it.value()->addJournal( i );
   }
@@ -143,7 +143,7 @@ void KOJournalView::showDates( const QDate &start, const QDate &end )
   Item::List jnls;
   QDate d = start;
   for ( QDate d=end; d>=start; d=d.addDays(-1) ) {
-    jnls = calendar()->journalsFORAKONADI( d );
+    jnls = calendar()->journals( d );
     it = jnls.constEnd();
     while ( it != jnls.constBegin() ) {
       --it;

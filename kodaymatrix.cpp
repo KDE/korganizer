@@ -299,7 +299,7 @@ void KODayMatrix::updateIncidences()
 
 void KODayMatrix::updateJournals()
 {
-  const Item::List items = mCalendar->incidencesFORAKONADI();
+  const Item::List items = mCalendar->incidences();
 
   foreach ( const Item & item, items ) {
     Incidence::Ptr inc = Akonadi::incidence( item );
@@ -325,7 +325,7 @@ void KODayMatrix::updateJournals()
   */
 void KODayMatrix::updateTodos()
 {
-  const Item::List items = mCalendar->todosFORAKONADI();
+  const Item::List items = mCalendar->todos();
   QDate d;
   foreach ( const Item &item, items ) {
     const Todo::Ptr t = Akonadi::todo( item );
@@ -361,7 +361,7 @@ void KODayMatrix::updateTodos()
 
 void KODayMatrix::updateEvents()
 {
-  Item::List eventlist = mCalendar->eventsFORAKONADI( mDays[0], mDays[NUMDAYS-1],
+  Item::List eventlist = mCalendar->events( mDays[0], mDays[NUMDAYS-1],
                                                       mCalendar->timeSpec() );
 
   Q_FOREACH ( const Item & item, eventlist ) {

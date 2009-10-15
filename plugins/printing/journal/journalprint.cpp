@@ -121,7 +121,7 @@ void CalPrintJournal::setDateRange( const QDate &from, const QDate &to )
 void CalPrintJournal::print( QPainter &p, int width, int height )
 {
   int x=0, y=0;
-  Item::List journals( mCalendar->journalsFORAKONADI() );
+  Item::List journals( mCalendar->journals() );
   if ( mUseDateRange ) {
     Item::List allJournals = journals;
     journals.clear();

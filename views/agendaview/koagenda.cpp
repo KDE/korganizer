@@ -1026,7 +1026,7 @@ void KOAgenda::endItemAction()
         multiModify = true;
         emit startMultiModify( i18n( "Dissociate event from recurrence" ) );
         Incidence::Ptr oldIncSaved( incidence->clone() );
-        Incidence::Ptr newInc( mCalendar->dissociateOccurrenceFORAKONADI(
+        Incidence::Ptr newInc( mCalendar->dissociateOccurrence(
           inc, mActionItem->itemDate(), KOPrefs::instance()->timeSpec() ) );
         if ( newInc ) {
           // don't recreate items, they already have the correct position
@@ -1062,7 +1062,7 @@ void KOAgenda::endItemAction()
         multiModify = true;
         emit startMultiModify( i18n( "Split future recurrences" ) );
         Incidence::Ptr oldIncSaved( incidence->clone() );
-        Incidence::Ptr newInc( mCalendar->dissociateOccurrenceFORAKONADI(
+        Incidence::Ptr newInc( mCalendar->dissociateOccurrence(
           inc, mActionItem->itemDate(), KOPrefs::instance()->timeSpec(), false ) );
         if ( newInc ) {
           emit enableAgendaUpdate( false );

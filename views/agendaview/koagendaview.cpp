@@ -1298,7 +1298,7 @@ void KOAgendaView::fillAgenda()
   mAgenda->setDateList( mSelectedDates );
 
   bool somethingReselected = false;
-  const Item::List incidences = calendar()->incidencesFORAKONADI();
+  const Item::List incidences = calendar()->incidences();
 
   foreach ( const Item& aitem, incidences ) {
     displayIncidence( aitem );
@@ -1679,19 +1679,19 @@ void KOAgendaView::setUpdateNeeded()
   mPendingChanges = true;
 }
 
-void KOAgendaView::calendarIncidenceAddedFORAKONADI( const Item &incidence )
+void KOAgendaView::calendarIncidenceAdded( const Item &incidence )
 {
   Q_UNUSED( incidence );
   mPendingChanges = true;
 }
 
-void KOAgendaView::calendarIncidenceChangedFORAKONADI( const Item &incidence )
+void KOAgendaView::calendarIncidenceChanged( const Item &incidence )
 {
   Q_UNUSED( incidence );
   mPendingChanges = true;
 }
 
-void KOAgendaView::calendarIncidenceRemovedFORAKONADI( const Item &incidence )
+void KOAgendaView::calendarIncidenceRemoved( const Item &incidence )
 {
   Q_UNUSED( incidence );
   mPendingChanges = true;

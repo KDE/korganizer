@@ -695,7 +695,7 @@ void CalendarView::incidenceChanged( const Item &oldIncidence_,
       QString timeStr = KGlobal::locale()->formatTime( QTime::currentTime() );
       QString description = i18n( "Todo completed: %1 (%2)", newIncidence->summary(), timeStr );
 
-      Item::List journals = calendar()->journalsFORAKONADI( QDate::currentDate() );
+      Item::List journals = calendar()->journals( QDate::currentDate() );
 
       if ( journals.isEmpty() ) {
         Journal::Ptr journal( new Journal );
@@ -1225,7 +1225,7 @@ bool CalendarView::makeSubTodosIndependents ( const Item &todoItem )
 
 bool CalendarView::deleteIncidence( const Item::Id &uid, bool force )
 {
-  Akonadi::Item item = mCalendar->incidenceFORAKONADI( uid );
+  Akonadi::Item item = mCalendar->incidence( uid );
   if ( !Akonadi::hasIncidence( item ) )
     return false;
   return deleteIncidence( item, force );
@@ -1350,7 +1350,7 @@ void CalendarView::dissociateOccurrence( const Item &item, const QDate &date )
   Incidence::Ptr oldincidence( incidence->clone() );
 
   Incidence::Ptr newInc(
-    mCalendar->dissociateOccurrenceFORAKONADI( item, date, KOPrefs::instance()->timeSpec(), true ) );
+    mCalendar->dissociateOccurrence( item, date, KOPrefs::instance()->timeSpec(), true ) );
 
   if ( newInc ) {
     // TODO: Use the same resource instead of asking again!
@@ -1376,7 +1376,7 @@ void CalendarView::dissociateFutureOccurrence( const Item &item, const QDate &da
   Incidence::Ptr oldincidence( incidence->clone() );
 
   Incidence::Ptr newInc(
-    mCalendar->dissociateOccurrenceFORAKONADI( item, date,
+    mCalendar->dissociateOccurrence( item, date,
                                      KOPrefs::instance()->timeSpec(), false ) );
   if ( newInc ) {
     // TODO: Use the same resource instead of asking again!
@@ -1919,7 +1919,7 @@ void CalendarView::takeOverEvent()
 
 void CalendarView::takeOverCalendar()
 {
-  const Item::List items = mCalendar->rawIncidencesFORAKONADI();
+  const Item::List items = mCalendar->rawIncidences();
 
   Q_FOREACH( const Item& item, items ) {
     Incidence::Ptr i = Akonadi::incidence( item );
@@ -2060,13 +2060,13 @@ void CalendarView::editIncidence()
 
 bool CalendarView::editIncidence( const Item::Id &uid )
 {
-  Akonadi::Item item = mCalendar->incidenceFORAKONADI( uid );
+  Akonadi::Item item = mCalendar->incidence( uid );
   return editIncidence( item );
 }
 
 bool CalendarView::showIncidence( const Item::Id &uid )
 {
-  Akonadi::Item item = mCalendar->incidenceFORAKONADI( uid );
+  Akonadi::Item item = mCalendar->incidence( uid );
   if ( !Akonadi::hasIncidence( item ) ) {
     return false;
   }
@@ -2076,7 +2076,7 @@ bool CalendarView::showIncidence( const Item::Id &uid )
 
 bool CalendarView::showIncidenceContext( const Item::Id &uid )
 {
-  Akonadi::Item item = mCalendar->incidenceFORAKONADI( uid );
+  Akonadi::Item item = mCalendar->incidence( uid );
   if ( !Akonadi::hasIncidence( item ) ) {
     return false;
   }
@@ -2439,7 +2439,7 @@ void CalendarView::purgeCompleted()
   if ( result == KMessageBox::Continue ) {
     bool allDeleted = true;
     startMultiModify( i18n( "Purging completed to-dos" ) );
-    Item::List todos = calendar()->rawTodosFORAKONADI();
+    Item::List todos = calendar()->rawTodos();
     Item::List rootTodos;
     Item::List::ConstIterator it;
     for ( it = todos.constBegin(); it != todos.constEnd(); ++it ) {
@@ -2479,7 +2479,7 @@ void CalendarView::warningChangeFailed( const Item &item )
 
 void CalendarView::editCanceled( const Item &item )
 {
-  mCalendar->endChangeFORAKONADI( item );
+  mCalendar->endChange( item );
 }
 
 void CalendarView::showErrorMessage( const QString &msg )
@@ -2511,7 +2511,7 @@ void CalendarView::addIncidenceOn( const Item &itemadd, const QDate &dt )
                         i18n( "Copying Failed" ) );
     return;
   }
-  Item item = mCalendar->incidenceFORAKONADI( itemadd.id() );
+  Item item = mCalendar->incidence( itemadd.id() );
   if ( !item.isValid() ) {
     item = itemadd;
   }
@@ -2553,7 +2553,7 @@ void CalendarView::moveIncidenceTo( const Item &itemmove, const QDate &dt )
                         i18n( "Moving Failed" ) );
     return;
   }
-  Item item = mCalendar->incidenceFORAKONADI( itemmove.id() );
+  Item item = mCalendar->incidence( itemmove.id() );
   if ( !item.isValid() ) {
     addIncidenceOn( itemmove, dt );
     return;

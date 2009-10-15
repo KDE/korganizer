@@ -163,7 +163,7 @@ void KOTimelineView::showDates( const QDate &start, const QDate &end )
   Item::List events;
   KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
   for ( QDate day = start; day <= end; day = day.addDays( 1 ) ) {
-    events = calendar()->eventsFORAKONADI( day, timeSpec, EventSortStartDate, SortDirectionAscending );
+    events = calendar()->events( day, timeSpec, EventSortStartDate, SortDirectionAscending );
     Q_FOREACH( const Item& i, events )
       insertIncidence( i, day );
   }
@@ -316,7 +316,7 @@ void KOTimelineView::insertIncidence( const Item &incidence )
 
   KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
   for ( QDate day = mStartDate; day <= mEndDate; day = day.addDays( 1 ) ) {
-    Item::List events = calendar()->eventsFORAKONADI(
+    Item::List events = calendar()->events(
       day, timeSpec, EventSortStartDate, SortDirectionAscending );
     if ( events.contains( incidence ) ) //PENDING(AKONADI_PORT) check if correct. also check the original if, was inside the for loop (unnecessarily)
       for ( Item::List::ConstIterator it = events.constBegin(); it != events.constEnd(); ++it ) {

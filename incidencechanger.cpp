@@ -49,7 +49,7 @@ bool IncidenceChanger::beginChange( const Item &incidence )
     return false;
   }
   kDebug() << "for incidence \"" << Akonadi::incidence( incidence )->summary() << "\"";
-  return mCalendar->beginChangeFORAKONADI( incidence );
+  return mCalendar->beginChange( incidence );
 }
 
 bool IncidenceChanger::sendGroupwareMessage( const Item &aitem,
@@ -106,7 +106,7 @@ bool IncidenceChanger::endChange( const Item &incidence )
   // never locked, we can't unlock it with endChange().
 
   kDebug() << "\"" << Akonadi::incidence( incidence )->summary() << "\"";
-  return mCalendar->endChangeFORAKONADI( incidence );
+  return mCalendar->endChange( incidence );
 }
 
 bool IncidenceChanger::deleteIncidence( const Item &aitem )
@@ -122,7 +122,7 @@ bool IncidenceChanger::deleteIncidence( const Item &aitem )
     // @TODO: let Calendar::deleteIncidence do the locking...
     Incidence::Ptr tmp( incidence->clone() );
     emit incidenceToBeDeleted( aitem );
-    doDelete = mCalendar->deleteIncidenceFORAKONADI( aitem );
+    doDelete = mCalendar->deleteIncidence( aitem );
     if ( !KOPrefs::instance()->thatIsMe( tmp->organizer().email() ) ) {
       const QStringList myEmails = KOPrefs::instance()->allEmails();
       bool notifyOrganizer = false;
@@ -324,7 +324,7 @@ bool IncidenceChanger::addIncidence( const Incidence::Ptr &incidence, QWidget *p
     tmpparent = stdcal->dialogParentWidget();
     stdcal->setDialogParentWidget( parent );
   }
-  bool success = mCalendar->addIncidenceFORAKONADI( incidence );
+  bool success = mCalendar->addIncidence( incidence );
   if ( stdcal ) {
     // Reset the parent widget, otherwise we'll end up with pointers to deleted
     // widgets sooner or later

@@ -801,7 +801,7 @@ void CalPrintDay::print( QPainter &p, int width, int height )
     QRect headerBox( 0, 0, width, headerHeight() );
 
     drawHeader( p, local->formatDate( curDay ), curDay, QDate(), headerBox );
-    Item::List eventList = mCalendar->eventsFORAKONADI( curDay, timeSpec,
+    Item::List eventList = mCalendar->events( curDay, timeSpec,
                                                KOrg::EventSortStartDate,
                                                KOrg::SortDirectionAscending );
 
@@ -1447,7 +1447,7 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
   }
 
   // Create list of to-dos which will be printed
-  todoList = mCalendar->todosFORAKONADI( sortField, sortDirection );
+  todoList = mCalendar->todos( sortField, sortDirection );
   switch( mTodoPrintType ) {
   case TodosAll:
     break;

@@ -343,7 +343,7 @@ void MonthView::reloadIncidences()
 
   // build global event list
   KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
-  const Item::List incidences = calendar()->incidencesFORAKONADI();
+  const Item::List incidences = calendar()->incidences();
 
   foreach ( const Item &aitem, incidences ) {
     if ( Akonadi::hasTodo( aitem ) && !KOPrefs::instance()->showTodosMonthView() ) {

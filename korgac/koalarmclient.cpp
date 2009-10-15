@@ -90,7 +90,7 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
     const KUrl url = incGroup.readEntry( "AkonadiUrl" );
     const QDateTime dt = incGroup.readEntry( "RemindAt", QDateTime() );
     if ( url.isValid() ) {
-      createReminder( mCalendar, mCalendar->incidenceFORAKONADI( Item::fromUrl( url ).id() ), dt, QString() );
+      createReminder( mCalendar, mCalendar->incidence( Item::fromUrl( url ).id() ), dt, QString() );
     }
   }
   if ( numReminders ) {

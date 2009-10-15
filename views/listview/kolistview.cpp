@@ -355,7 +355,7 @@ void KOListView::showDates( const QDate &start, const QDate &end )
 
   QDate date = start;
   while ( date <= end ) {
-    addIncidences( calendar()->incidencesFORAKONADI( date ), date );
+    addIncidences( calendar()->incidences( date ), date );
     mSelectedDates.append( date );
     date = date.addDays( 1 );
   }
