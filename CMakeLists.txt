@@ -49,6 +49,7 @@ if(KMAIL_SUPPORTED)
                       ${CMAKE_BINARY_DIR}/libkdepim
                       ${CMAKE_SOURCE_DIR}/libkdepimdbusinterfaces
                       ${CMAKE_BINARY_DIR}/libkdepimdbusinterfaces
+                      ${CMAKE_CURRENT_BINARY_DIR}
                       ${AKONADI_INCLUDE_DIR}
                       ${Boost_INCLUDE_DIRS}
                       ${QT_INCLUDES} ${ZLIB_INCLUDE_DIR} )
@@ -194,12 +195,15 @@ if(KMAIL_SUPPORTED)
     incidencechanger.cpp
     koprefs.cpp kocore.cpp kohelper.cpp koidentitymanager.cpp cellitem.cpp
     akonadicollectionview.cpp
+    htmlexport.cpp
     printing/calprinter.cpp
     printing/calprintpluginbase.cpp
     printing/calprintdefaultplugins.cpp
   )
 
   kde4_add_kcfg_files(korganizerprivate_LIB_SRCS koprefs_base.kcfgc )
+  kde4_add_kcfg_files(korganizerprivate_LIB_SRCS htmlexportsettings.kcfgc )
+
   kde4_add_ui_files(korganizerprivate_LIB_SRCS
     filteredit_base.ui publishdialog_base.ui kogroupwareprefspage.ui searchdialog_base.ui timescaleedit_base.ui
     printing/calprintincidenceconfig_base.ui printing/calprintdayconfig_base.ui printing/calprintmonthconfig_base.ui printing/calprinttodoconfig_base.ui printing/calprintweekconfig_base.ui

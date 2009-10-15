@@ -54,6 +54,7 @@
 #include "mailscheduler.h"
 #include "navigatorbar.h"
 #include "publishdialog.h"
+#include "htmlexportsettings.h"
 #include "views/agendaview/koagendaview.h"
 #include "views/monthview/monthview.h"
 #include "views/multiagendaview/multiagendaview.h"
@@ -67,7 +68,6 @@
 #include <KCal/DndFactory>
 #include <KCal/FileStorage>
 #include <KCal/FreeBusy>
-#include <KCal/HTMLExportSettings>
 #include <KCal/ICalDrag>
 #include <KCal/ICalFormat>
 #include <KCal/VCalFormat>
@@ -1653,15 +1653,15 @@ void CalendarView::printPreview()
 void CalendarView::exportWeb()
 {
   // FIXME: Get rid of the settings object. When can I delete it???
-  HTMLExportSettings *settings = new HTMLExportSettings( "KOrganizer" );
+  KOrg::HTMLExportSettings *settings = new KOrg::HTMLExportSettings( "KOrganizer" );
   // Manually read in the config, because parameterized kconfigxt objects don't
   // seem to load the config theirselves
   if ( settings ) {
     settings->readConfig();
   }
   ExportWebDialog *dlg = new ExportWebDialog( settings, this );
-  connect( dlg, SIGNAL(exportHTML( HTMLExportSettings*)),
-           this, SIGNAL(exportHTML( HTMLExportSettings*)) );
+  connect( dlg, SIGNAL(exportHTML(KOrg::HTMLExportSettings*)),
+           this, SIGNAL(exportHTML(KOrg::HTMLExportSettings*)) );
   dlg->show();
 }
 

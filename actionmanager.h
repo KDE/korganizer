@@ -41,13 +41,13 @@
 
 namespace KCal {
   class Calendar;
-  class HTMLExportSettings;
   class Incidence;
 }
 
 namespace KOrg {
   class CalendarBase;
   class AkonadiCalendar;
+  class HTMLExportSettings;
 }
 
 class AkonadiCollectionView;
@@ -118,7 +118,7 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     bool saveModifiedURL();
 
     void exportHTML();
-    void exportHTML( HTMLExportSettings * );
+    void exportHTML( KOrg::HTMLExportSettings * );
     void toggleMenubar( bool dontShowWarning = false );
 
   public:

@@ -26,11 +26,11 @@
 #include "exportwebdialog.h"
 #include "koprefs.h"
 #include "kocore.h"
+#include "htmlexportsettings.h"
 
 #include <libkdepim/kdateedit.h>
 
 #include <kcal/calendar.h>
-#include <kcal/htmlexportsettings.h>
 
 #include <klocale.h>
 #include <kdebug.h>
@@ -64,7 +64,7 @@
 //        because we want custom buttons, a Tabbed dialog, and a different
 //        headline... Maybe we should try to achieve the same without code
 //        duplication.
-ExportWebDialog::ExportWebDialog( HTMLExportSettings *settings, QWidget *parent )
+ExportWebDialog::ExportWebDialog( KOrg::HTMLExportSettings *settings, QWidget *parent )
   : KPageDialog( parent ),
     KPrefsWidManager( settings ), mSettings( settings )
 {

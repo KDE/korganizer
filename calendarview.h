@@ -47,7 +47,7 @@ class KOTodoView;
 class KOViewManager;
 class NavigatorBar;
 
-namespace KCal {
+namespace KOrg {
   class HTMLExportSettings;
 }
 using namespace KCal;
@@ -240,7 +240,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     void autoArchivingSettingsModified();
 
     void newIncidenceChanger( IncidenceChangerBase * );
-    void exportHTML( HTMLExportSettings * );
+    void exportHTML( KOrg::HTMLExportSettings * );
 
     void newFilterListSignal( const QStringList & );
     void selectFilterSignal( int );

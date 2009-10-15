@@ -31,10 +31,11 @@
 class QCheckBox;
 class QGroupBox;
 class QFrame;
-namespace KCal {
+
+namespace KOrg {
   class HTMLExportSettings;
 }
-using namespace KCal;
+
 using namespace KPIM;
 
 /**
@@ -45,7 +46,7 @@ class ExportWebDialog : public KPageDialog, public KPrefsWidManager
 {
   Q_OBJECT
   public:
-    explicit ExportWebDialog( HTMLExportSettings *settings, QWidget *parent = 0 );
+    explicit ExportWebDialog( KOrg::HTMLExportSettings *settings, QWidget *parent = 0 );
     virtual ~ExportWebDialog();
 
   public slots:
@@ -66,7 +67,7 @@ class ExportWebDialog : public KPageDialog, public KPrefsWidManager
 
   signals:
     void configChanged();
-    void exportHTML( HTMLExportSettings * );
+    void exportHTML( KOrg::HTMLExportSettings * );
 
   protected slots:
     void slotOk();
@@ -81,7 +82,7 @@ class ExportWebDialog : public KPageDialog, public KPrefsWidManager
     void updateState();
 
   private:
-    HTMLExportSettings *mSettings;
+    KOrg::HTMLExportSettings *mSettings;
     QFrame *mGeneralPage;
     QFrame *mEventPage;
     QFrame *mTodoPage;

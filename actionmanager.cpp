@@ -43,11 +43,12 @@
 #include "reminderclient.h"
 #include "akonadicalendar.h"
 #include "akonadicollectionview.h"
+#include "htmlexport.h"
+#include "htmlexportsettings.h"
 #include "incidenceeditor/koeditorconfig.h"
 
 #include <KCal/FileStorage>
-#include <KCal/HtmlExport>
-#include <KCal/HTMLExportSettings>
+
 #include <KMime/KMimeMessage>
 
 #include <akonadi/kcal/utils.h>
@@ -228,8 +229,8 @@ void ActionManager::init()
 
   connect( mCalendarView, SIGNAL(incidenceSelected(const Akonadi::Item &, const QDate &)),
            this, SLOT(processIncidenceSelection(const Akonadi::Item &, const QDate &)) );
-  connect( mCalendarView, SIGNAL(exportHTML(HTMLExportSettings *)),
-           this, SLOT(exportHTML(HTMLExportSettings *)) );
+  connect( mCalendarView, SIGNAL(exportHTML(KOrg::HTMLExportSettings *)),
+           this, SLOT(exportHTML(KOrg::HTMLExportSettings *)) );
 
   processIncidenceSelection( Akonadi::Item(), QDate() );
 
@@ -1130,9 +1131,8 @@ void ActionManager::exportHTML()
   exportHTML( &settings );
 }
 
-void ActionManager::exportHTML( HTMLExportSettings *settings )
+void ActionManager::exportHTML( KOrg::HTMLExportSettings *settings )
 {
-#ifdef AKONADI_PORT_DISABLED
   if ( !settings || settings->outputFile().isEmpty() ) {
     return;
   }
@@ -1153,7 +1153,7 @@ void ActionManager::exportHTML( HTMLExportSettings *settings )
   settings->setCreditName( "KOrganizer" );
   settings->setCreditURL( "http://korganizer.kde.org" );
 
-  KCal::HtmlExport mExport( mCalendarView->calendar(), settings );
+  KOrg::HtmlExport mExport( mCalendarView->calendar(), settings );
 
   QDate cdate = settings->dateStart().date();
   QDate qd2 = settings->dateEnd().date();
@@ -1196,8 +1196,6 @@ void ActionManager::exportHTML( HTMLExportSettings *settings )
   }
   KMessageBox::information( dialogParent(), saveMessage,
                i18nc( "@title:window", "Export Status" ) );
-#endif // AKONADI_PORT_DISABLED
-
 }
 
 bool ActionManager::saveAsURL( const KUrl &url )
