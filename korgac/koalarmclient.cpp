@@ -129,14 +129,15 @@ void KOAlarmClient::checkAlarms()
 
   Akonadi::Item::List alarms = mCalendar->alarms( KDateTime( from, KDateTime::LocalZone ),
                                             KDateTime( mLastChecked, KDateTime::LocalZone ) );
-#ifdef AKONADI_PORT_DISABLED
+
   foreach(Akonadi::Item alarm, alarms) {
-    Alarm *a = Akonadi::alarm( alarm );
+    Alarm::Ptr a = alarm.payload<Alarm::Ptr>();
     kDebug(5891) << "REMINDER:" << a->parent()->summary();
-    Incidence *incidence = mCalendar->incidence( a->parent()->uid() );
+    const QString uid = a->parent()->uid();
+    const Akonadi::Item::Id itemId = mCalendar->itemIdForIncidenceUid( uid );
+    const Akonadi::Item incidence = mCalendar->incidence( itemId );
     createReminder( mCalendar, incidence, from, a->text() );
   }
-#endif
 }
 
 void KOAlarmClient::createReminder( KOrg::AkonadiCalendar *calendar,
