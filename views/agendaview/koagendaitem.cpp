@@ -736,42 +736,37 @@ static void conditionalPaint( QPainter *p, bool condition, int &x, int y,
 
 void KOAgendaItem::paintEventIcon( QPainter *p, int &x, int y, int ft )
 {
-  if ( !mValid ) {
+  const Event::Ptr event = Akonadi::event( mIncidence );
+  if ( !event )
     return;
-  }
 
-  if ( Event::Ptr event = Akonadi::event( mIncidence ) ) {
-    QPixmap tPxmp;
-    if ( event->customProperty( "KABC", "BIRTHDAY" ) == "YES" ) {
-      mSpecialEvent = true;
-      if ( event->customProperty( "KABC", "ANNIVERSARY" ) == "YES" ) {
-        tPxmp = KOGlobals::self()->smallIcon( "view-calendar-wedding-anniversary" );
-      } else {
-        tPxmp = KOGlobals::self()->smallIcon( "view-calendar-birthday" );
-      }
-      conditionalPaint( p, true, x, y, ft, tPxmp );
+  QPixmap tPxmp;
+  if ( event->customProperty( "KABC", "BIRTHDAY" ) == "YES" ) {
+    mSpecialEvent = true;
+    if ( event->customProperty( "KABC", "ANNIVERSARY" ) == "YES" ) {
+      tPxmp = KOGlobals::self()->smallIcon( "view-calendar-wedding-anniversary" );
     } else {
-      // Disabling the event Pixmap because:
-      // 1. We don't need a pixmap to tell us an item is an event we
-      //    only need one to tell us it's not, as agenda view was
-      //    designed for events.
-      // 2. If only to-dos have a pixmap they will be distinguished
-      //    from event's much easier.
-      // 3. Be consistent with month view
-      //conditionalPaint( p, true, x, y, ft, *eventPxmp );
+      tPxmp = KOGlobals::self()->smallIcon( "view-calendar-birthday" );
     }
+    conditionalPaint( p, true, x, y, ft, tPxmp );
+  } else {
+    // Disabling the event Pixmap because:
+    // 1. We don't need a pixmap to tell us an item is an event we
+    //    only need one to tell us it's not, as agenda view was
+    //    designed for events.
+    // 2. If only to-dos have a pixmap they will be distinguished
+    //    from event's much easier.
+    // 3. Be consistent with month view
+    //conditionalPaint( p, true, x, y, ft, *eventPxmp );
   }
 }
 
 void KOAgendaItem::paintTodoIcon( QPainter *p, int &x, int y, int ft )
 {
-  const Todo::Ptr todo = Akonadi::todo( mIncidence );
-
-  if ( !mValid || todo ) {
+  if ( !Akonadi::hasTodo( mIncidence ) )
     return;
-  }
 
-  bool isCompleted = KOEventView::usesCompletedTodoPixmap( mIncidence, mDate );
+  const bool isCompleted = KOEventView::usesCompletedTodoPixmap( mIncidence, mDate );
 
   conditionalPaint( p, !isCompleted, x, y, ft, *todoPxmp );
   conditionalPaint( p, isCompleted, x, y, ft, *completedPxmp );
