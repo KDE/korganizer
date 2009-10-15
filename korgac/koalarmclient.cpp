@@ -120,15 +120,14 @@ void KOAlarmClient::checkAlarms()
 
   kDebug(5891) << "Check:" << from.toString() << " -" << mLastChecked.toString();
 
-  QList<Alarm *>alarms = mCalendar->alarms( KDateTime( from, KDateTime::LocalZone ),
+  Akonadi::Item::List alarms = mCalendar->alarms( KDateTime( from, KDateTime::LocalZone ),
                                             KDateTime( mLastChecked, KDateTime::LocalZone ) );
-
-#ifdef AKONADI_PORT_DISABLED // port from uid
-  QList<Alarm *>::ConstIterator it;
-  for ( it = alarms.constBegin(); it != alarms.constEnd(); ++it ) {
-    kDebug(5891) << "REMINDER:" << (*it)->parent()->summary();
-    Incidence *incidence = mCalendar->incidence( (*it)->parent()->uid() );
-    createReminder( mCalendar, incidence, from, (*it)->text() );
+#ifdef AKONADI_PORT_DISABLED
+  foreach(Akonadi::Item alarm, alarms) {
+    Alarm *a = Akonadi::alarm( alarm );
+    kDebug(5891) << "REMINDER:" << a->parent()->summary();
+    Incidence *incidence = mCalendar->incidence( a->parent()->uid() );
+    createReminder( mCalendar, incidence, from, a->text() );
   }
 #endif
 }
@@ -213,10 +212,10 @@ QStringList KOAlarmClient::dumpAlarms()
   lst << QString( "AlarmDeamon::dumpAlarms() from " ) + start.toString() + " to " +
          end.toString();
 
-  QList<Alarm *> alarms = mCalendar->alarms( start, end );
-  QList<Alarm *>::ConstIterator it;
-  for ( it = alarms.constBegin(); it != alarms.constEnd(); ++it ) {
-    Alarm *a = *it;
+  Akonadi::Item::List alarms = mCalendar->alarms( start, end );
+  foreach(const Akonadi::Item &alarm, alarms) {
+    Q_ASSERT(alarm.hasPayload<Alarm::Ptr>());
+    Alarm::Ptr a = alarm.payload<Alarm::Ptr>();
     lst << QString( "  " ) + a->parent()->summary() + " (" + a->time().toString() + ')';
   }
 
