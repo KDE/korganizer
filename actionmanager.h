@@ -251,11 +251,6 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     */
     void closingDown();
 
-#if 0 //AKONADI_PORT_DISABLED
-    /** Indicates that a new resource was added */
-    void resourceAdded( ResourceCalendar * );
-#endif
-
   public slots:
     /**
       Options dialog made a changed to the configuration. we catch this
