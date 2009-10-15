@@ -466,7 +466,7 @@ KOTodoModel::TodoTreeNode *KOTodoModel::insertTodo( const Item &todoItem,
       return insertTodo( todoItem, false );
     }
 
-    // FIXME how to handle the related incidences where we don't know the item?
+    // FIXME(AKONADI_PORT) how to handle the related incidences where we don't know the item?
     Akonadi::Item relatedTodoItem;
     relatedTodoItem.setPayload( Todo::Ptr(relatedTodo->clone()) );
 
