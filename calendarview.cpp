@@ -1507,11 +1507,16 @@ void CalendarView::schedule_forward( const Item &item )
 
 void CalendarView::mailFreeBusy( int daysToPublish )
 {
-#ifdef AKONADI_PORT_DISABLED
   KDateTime start = KDateTime::currentUtcDateTime().toTimeSpec( mCalendar->timeSpec() );
   KDateTime end = start.addDays( daysToPublish );
 
-  FreeBusy *freebusy = new FreeBusy( mCalendar, start, end );
+  Event::List events;
+  Akonadi::Item::List items = mCalendar ? mCalendar->rawEvents( start.date(), end.date() ) : Akonadi::Item::List();
+  foreach(const Akonadi::Item &item, items) { //AKONADI_PORT FIXME
+    events << item.payload<Event::Ptr>().get();
+  }
+
+  FreeBusy *freebusy = new FreeBusy( events, start, end );
   freebusy->setOrganizer( Person( KOPrefs::instance()->fullName(),
                                   KOPrefs::instance()->email() ) );
 
@@ -1531,7 +1536,6 @@ void CalendarView::mailFreeBusy( int daysToPublish )
   }
   delete freebusy;
   delete publishdlg;
-#endif // AKONADI_PORT_DISABLED
 }
 
 void CalendarView::uploadFreeBusy()
