@@ -61,6 +61,7 @@
 #include "views/todoview/kotodoview.h"
 
 #include <akonadi/kcal/utils.h>
+#include <akonadi/kcal/akonadicalendaradaptor.h>
 
 #include <KCal/CalendarResources>
 #include <KCal/CalFilter>
@@ -1661,10 +1662,7 @@ void CalendarView::exportWeb()
 
 void CalendarView::exportICalendar()
 {
-#ifdef AKONADI_PORT_DISABLED
-  QString filename = KFileDialog::getSaveFileName( KUrl( "icalout.ics" ),
-                                                   i18n( "*.ics|iCalendars" ), this );
-
+  QString filename = KFileDialog::getSaveFileName( KUrl( "icalout.ics" ), i18n( "*.ics|iCalendars" ), this );
   if ( !filename.isEmpty() ) {
     // Force correct extension
     if ( filename.right( 4 ) != ".ics" ) {
@@ -1679,7 +1677,8 @@ void CalendarView::exportICalendar()
       }
     }
     ICalFormat *format = new ICalFormat;
-    FileStorage storage( mCalendar, filename, format );
+    AkonadiCalendarAdaptor calendar(mCalendar);
+    FileStorage storage( &calendar, filename, format );
     if ( !storage.save() ) {
       QString errmess;
       if ( format->exception() ) {
@@ -1694,12 +1693,10 @@ void CalendarView::exportICalendar()
 
     }
   }
-#endif
 }
 
 void CalendarView::exportVCalendar()
 {
-#ifdef AKONADI_PORT_DISABLED
   if ( !mCalendar->journals().isEmpty() ) {
     int result = KMessageBox::warningContinueCancel(
       this,
@@ -1729,7 +1726,8 @@ void CalendarView::exportVCalendar()
       }
     }
     VCalFormat *format = new VCalFormat;
-    FileStorage storage( mCalendar, filename, format );
+    AkonadiCalendarAdaptor calendar(mCalendar);
+    FileStorage storage( &calendar, filename, format );
     if ( !storage.save() ) {
       QString errmess;
       if ( format->exception() ) {
@@ -1743,7 +1741,6 @@ void CalendarView::exportVCalendar()
                                  filename, errmess ) );
     }
   }
-#endif
 }
 
 void CalendarView::eventUpdated( const Item & )
