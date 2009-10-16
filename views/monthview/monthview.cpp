@@ -101,8 +101,8 @@ MonthView::MonthView( QWidget *parent )
 
   mViewPopup = eventPopup();
 
-  connect( mScene, SIGNAL(showIncidencePopupSignal(KOrg::CalendarBase*,Akonadi::Item,QDate)),
-           mViewPopup, SLOT(showIncidencePopup(KOrg::CalendarBase*,Akonadi::Item,QDate)) );
+  connect( mScene, SIGNAL(showIncidencePopupSignal(Akonadi::Item, QDate)),
+           mViewPopup, SLOT(showIncidencePopup(Akonadi::Item, QDate)) );
 
   connect( mScene, SIGNAL(showNewEventPopupSignal()),
            SLOT(showNewEventPopup()) );
