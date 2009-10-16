@@ -80,7 +80,7 @@ AlarmDialog::AlarmDialog( KCal::Calendar *calendar, QWidget *parent, const char 
   : KDialogBase( Plain, WType_TopLevel | WStyle_Customize | WStyle_StaysOnTop |
                  WStyle_DialogBorder,
                  parent, name, false, i18n("Reminder"),
-                 Ok | User1 | User2 | User3, User3,
+                 Ok | User1 | User2 | User3, NoDefault,
                  false, i18n("Edit..."), i18n("Dismiss All"), i18n("Dismiss Reminder") ),
                  mCalendar( calendar ), mSuspendTimer(this)
 {
@@ -112,6 +112,8 @@ AlarmDialog::AlarmDialog( KCal::Calendar *calendar, QWidget *parent, const char 
   connect( mIncidenceListView, SIGNAL(selectionChanged()), SLOT(showDetails()) );
 
   mDetailView = new KOEventViewer( mCalendar, topBox );
+  mDetailView->setFocus(); // set focus here to start with to make it harder
+                           // to hit return by mistake and dismiss a reminder.
   topLayout->addWidget( mDetailView );
 
   QHBox *suspendBox = new QHBox( topBox );
