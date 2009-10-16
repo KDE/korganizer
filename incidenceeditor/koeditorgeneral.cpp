@@ -339,7 +339,6 @@ void KOEditorGeneral::addAttachments( const QStringList &attachments,
 
 void KOEditorGeneral::selectCategories()
 {
-#ifdef AKONADI_PORT_DISABLED
   KPIM::CategorySelectDialog *categoryDialog =
     new KPIM::CategorySelectDialog( KOEditorConfig::instance(), mCategoriesButton );
   categoryDialog->setHelp( "categories-view", "korganizer" );
@@ -353,7 +352,6 @@ void KOEditorGeneral::selectCategories()
     setCategories( categoryDialog->selectedCategories() );
   }
   delete categoryDialog;
-#endif
 }
 
 void KOEditorGeneral::editAlarms()

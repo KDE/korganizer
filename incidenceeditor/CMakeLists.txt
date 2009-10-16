@@ -3,6 +3,7 @@ include_directories(
     ${CMAKE_SOURCE_DIR}/korganizer/incidenceeditor
     ${CMAKE_BINARY_DIR}/korganizer/incidenceeditor
     ${CMAKE_SOURCE_DIR}/kdgantt1
+    ${CMAKE_SOURCE_DIR}/libkdepim
     ${CMAKE_SOURCE_DIR}/libkdepimdbusinterfaces
 )
 

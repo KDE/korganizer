@@ -37,7 +37,7 @@ class KOEditorConfig::Private
 KOEditorConfig *KOEditorConfig::Private::config = 0;
 
 KOEditorConfig::KOEditorConfig()
-  : QObject()
+  : KPIM::KPimPrefs()
   , d(new Private)
 {
 }

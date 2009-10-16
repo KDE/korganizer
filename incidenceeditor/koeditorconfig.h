@@ -26,6 +26,8 @@
 
 #include "incidenceeditor_export.h"
 
+#include <kpimprefs.h>
+
 #include <QtCore/QObject>
 #include <QtCore/QStringList>
 #include <QtCore/QDateTime>
@@ -36,7 +38,7 @@
  *
  * KOrganizer's ActionManager inherits from this class.
  */
-class INCIDENCEEDITOR_EXPORT KOEditorConfig : public QObject
+class INCIDENCEEDITOR_EXPORT KOEditorConfig : public KPIM::KPimPrefs
 {
     Q_OBJECT
   public:
