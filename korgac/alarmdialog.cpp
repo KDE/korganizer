@@ -96,7 +96,7 @@ AlarmDialog::AlarmDialog( KCal::Calendar *calendar, QWidget *parent )
   setCaption( i18nc( "@title:window", "Reminders" ) );
   setWindowIcon( KIcon( "korgac" ) );
   setButtons( Ok | User1 | User2 | User3 );
-  setDefaultButton( User3 );
+  setDefaultButton( NoDefault );
   setButtonText( User3, i18nc( "@action:button", "Dismiss Reminder" ) );
   setButtonToolTip( User3, i18nc( "@info:tooltip",
                                   "Dismiss the reminders for the selected incidences" ) );
@@ -405,6 +405,10 @@ void AlarmDialog::setTimer()
 void AlarmDialog::show()
 {
   mIncidenceTree->setCurrentItem( mIncidenceTree->topLevelItem( 0 ) );
+
+  // make sure no items are selected so pressing <enter> cannot do anything.
+  mIncidenceTree->setItemSelected( mIncidenceTree->topLevelItem( 0 ), false );
+
   KDialog::show();
   KWindowSystem::setState( winId(), NET::KeepAbove );
   KWindowSystem::setOnAllDesktops( winId(), true );
