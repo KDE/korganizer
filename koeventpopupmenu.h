@@ -39,6 +39,8 @@ namespace KOrg {
   class CalendarBase;
 }
 
+class KOEventView;
+
 /**
  * Context menu for event views with standard event actions.
 */
@@ -46,7 +48,7 @@ class KOEventPopupMenu : public QMenu
 {
   Q_OBJECT
   public:
-    KOEventPopupMenu();
+    explicit KOEventPopupMenu(KOEventView *);
 
   public slots:
     void showIncidencePopup( const Akonadi::Item &, const QDate & );
@@ -78,6 +80,7 @@ class KOEventPopupMenu : public QMenu
     void dissociateOccurrencesSignal( const Akonadi::Item &, const QDate & );
 
   private:
+    KOEventView *mEventview;
     Akonadi::Item mCurrentIncidence;
     QDate mCurrentDate;
 

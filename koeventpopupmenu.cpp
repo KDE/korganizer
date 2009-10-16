@@ -28,6 +28,7 @@
 #include "calprinter.h"
 #include "kocorehelper.h"
 #include "koglobals.h"
+#include "koeventview.h"
 
 #include <akonadi/kcal/utils.h>
 
@@ -39,7 +40,8 @@
 using namespace Akonadi;
 using namespace KCal;
 
-KOEventPopupMenu::KOEventPopupMenu()
+KOEventPopupMenu::KOEventPopupMenu(KOEventView *eventview)
+  : mEventview(eventview)
 {
   mHasAdditionalItems = false;
 
@@ -142,12 +144,11 @@ void KOEventPopupMenu::print()
 {
 #ifdef AKONADI_PORT_DISABLED
   KOCoreHelper helper;
-  CalPrinter printer( this, mCalendar, &helper );
+  CalPrinter printer( this, mEventview->calendar(), &helper );
   connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
 
   Item::List selectedIncidences;
   selectedIncidences.append( mCurrentIncidence );
-
   printer.print( KOrg::CalPrinterBase::Incidence,
                  mCurrentDate, mCurrentDate, selectedIncidences, false );
 #endif
@@ -157,7 +158,7 @@ void KOEventPopupMenu::printPreview()
 {
 #ifdef AKONADI_PORT_DISABLED
   KOCoreHelper helper;
-  CalPrinter printer( this, mCalendar, &helper );
+  CalPrinter printer( this, mEventview->calendar(), &helper );
   connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
 
   Item::List selectedIncidences;
