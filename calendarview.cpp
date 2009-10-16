@@ -2444,7 +2444,7 @@ void CalendarView::purgeCompleted()
     Item::List::ConstIterator it;
     for ( it = todos.constBegin(); it != todos.constEnd(); ++it ) {
       Todo::Ptr aTodo = Akonadi::todo( *it );
-      if ( aTodo && !aTodo->relatedTo() ) {
+      if ( aTodo && !aTodo->relatedTo() ) { // top level todo //REVIEW(AKONADI_PORT)
         rootTodos.append( *it );
       }
     }

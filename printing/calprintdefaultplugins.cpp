@@ -1486,7 +1486,7 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
       continue;
     }
     // Skip sub-to-dos. They will be printed recursively in drawTodo()
-    if ( !todo->relatedTo() ) {
+    if ( !todo->relatedTo() ) { //review(AKONADI_PORT)
       count++;
       drawTodo( count, *it, p,
                 sortField, sortDirection,

@@ -32,6 +32,8 @@
  #include <kabc/stdaddressbook.h>
 #endif
 
+#include <akonadi/kcal/utils.h>
+
 #include <kglobal.h>
 #include <klocale.h>
 #include <kdebug.h>
@@ -370,19 +372,13 @@ void HtmlExport::createTodoList ( QTextStream *ts )
 
   int index = 0;
   while ( index < rawTodoList.count() ) {
-    Akonadi::Item &rawTodo = rawTodoList[ index ];
+    const Akonadi::Item rawTodo = rawTodoList.value( index );
     Q_ASSERT( rawTodo.hasPayload<Todo::Ptr>() );
     Todo::Ptr ev = rawTodo.payload<Todo::Ptr>();
-    if ( ev->relatedTo() && ev->relatedTo()->type() == "Todo" ) {
-      Incidence *relatedIncidence = ev->relatedTo();
-      Todo *relatedTodo = dynamic_cast<Todo*>(relatedIncidence);
-      Q_ASSERT(relatedTodo);
-      Akonadi::Item relatedTodoItem;
-      relatedTodoItem.setPayload( Todo::Ptr(relatedTodo->clone()) );
-      if ( !rawTodoList.contains(relatedTodoItem) ) {
-        rawTodoList.append(relatedTodoItem);
-      }
-    }
+    const Akonadi::Item parentItem = d->mCalendar->findParent( rawTodo );
+    if ( Akonadi::hasTodo( parentItem ) )
+        rawTodoList.append( parentItem );
+
     index = rawTodoList.indexOf( rawTodo );
     ++index;
   }
@@ -433,15 +429,16 @@ void HtmlExport::createTodoList ( QTextStream *ts )
 
   // Create top-level list.
   for ( it = todoList.constBegin(); it != todoList.constEnd(); ++it ) {
-    if ( !(*it)->relatedTo() ) {
+    if ( !(*it)->relatedTo() ) { //REVIEW(AKONADI_PORT)
       createTodo( ts, *it );
     }
   }
 
+  //REVIEW(AKONADI_PORT) relations/relatedTo usage: ok right now, as relations should yield the same result as mCalendar->findChildren and items are not needed here
   // Create sub-level lists
   for ( it = todoList.constBegin(); it != todoList.constEnd(); ++it ) {
-    Incidence::List relations = (*it)->relations();
-    if ( relations.count() ) {
+    Incidence::List relations = (*it)->relations(); //REVIEW(AKONADI_PORT)
+    if ( !relations.isEmpty() ) {
       // Generate sub-to-do list
       *ts << "  <tr>" << endl;
       *ts << "    <td class=\"subhead\" colspan=";
