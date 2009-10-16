@@ -60,7 +60,6 @@
 #include "views/multiagendaview/multiagendaview.h"
 #include "views/todoview/kotodoview.h"
 
-#include "calendarnull.h"
 #include <akonadi/kcal/utils.h>
 
 #include <KCal/CalendarResources>
@@ -96,7 +95,7 @@ using namespace Akonadi;
 CalendarView::CalendarView( QWidget *parent )
   : CalendarViewBase( parent ),
     mHistory( 0 ),
-    mCalendar( KOrg::CalendarNull::self() ),
+    mCalendar( 0 ),
     mChanger( 0 ),
     mSplitterSizesValid( false )
 {
@@ -126,7 +125,6 @@ CalendarView::CalendarView( QWidget *parent )
   mDateNavigatorContainer->setObjectName( "CalendarView::DateNavigator" );
 
   mTodoList = new KOTodoView( mLeftSplitter );
-  mTodoList->setCalendar( KOrg::CalendarNull::self() );
   mTodoList->setObjectName( "todolist" );
 
   mEventViewerBox = new KVBox( mLeftSplitter );
@@ -294,11 +292,7 @@ void CalendarView::setIncidenceChanger( IncidenceChangerBase *changer )
 
 KOrg::CalendarBase *CalendarView::calendar()
 {
-  if ( mCalendar ) {
-    return mCalendar;
-  } else {
-    return CalendarNull::self();
-  }
+  return mCalendar;
 }
 
 KOIncidenceEditor *CalendarView::editorDialog( const Item &item ) const
