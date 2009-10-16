@@ -115,13 +115,13 @@ void KOGroupware::initialCheckForChanges()
 void KOGroupware::slotViewNewIncidenceChanger( IncidenceChangerBase *changer )
 {
   // Call slot perhapsUploadFB if an incidence was added, changed or removed
-  connect( changer, SIGNAL(incidenceAdded(Incidence*)),
+  connect( changer, SIGNAL(incidenceAdded(Akonadi::Item)),
            mFreeBusyManager, SLOT(slotPerhapsUploadFB()) );
-  connect( changer, SIGNAL(incidenceChanged(Incidence*,Incidence*,int)),
+  connect( changer, SIGNAL(incidenceChanged(Incidence::Ptr, Incidence::Ptr, int)),
            mFreeBusyManager, SLOT(slotPerhapsUploadFB()) );
-  connect( changer, SIGNAL(incidenceChanged(Incidence*,Incidence*)),
+  connect( changer, SIGNAL(incidenceChanged(Incidence::Ptr, Incidence::Ptr)),
            mFreeBusyManager, SLOT(slotPerhapsUploadFB()) ) ;
-  connect( changer, SIGNAL(incidenceDeleted(Incidence*)),
+  connect( changer, SIGNAL(incidenceDeleted(Akonadi::Item)),
            mFreeBusyManager, SLOT(slotPerhapsUploadFB()) );
 }
 
