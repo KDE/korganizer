@@ -277,7 +277,6 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
     void newEventSignal( const QDateTime &, const QDateTime & );
 
     void newTodoSignal( const QDate & );
-    void newSubTodoSignal( Todo * );
     void newSubTodoSignal( const Akonadi::Item & );
 
     void newJournalSignal( const QDate & );

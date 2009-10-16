@@ -119,7 +119,7 @@ void KOGroupware::slotViewNewIncidenceChanger( IncidenceChangerBase *changer )
            mFreeBusyManager, SLOT(slotPerhapsUploadFB()) );
   connect( changer, SIGNAL(incidenceChanged(Incidence::Ptr, Incidence::Ptr, int)),
            mFreeBusyManager, SLOT(slotPerhapsUploadFB()) );
-  connect( changer, SIGNAL(incidenceChanged(Incidence::Ptr, Incidence::Ptr)),
+  connect( changer, SIGNAL( incidenceChanged(Incidence::Ptr, Akonadi::Item)),
            mFreeBusyManager, SLOT(slotPerhapsUploadFB()) ) ;
   connect( changer, SIGNAL(incidenceDeleted(Akonadi::Item)),
            mFreeBusyManager, SLOT(slotPerhapsUploadFB()) );

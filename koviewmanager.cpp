@@ -263,8 +263,8 @@ void KOViewManager::connectView( KOrg::BaseView *view )
            mMainView, SLOT(newEvent(QDate)) );
   connect( view, SIGNAL(newTodoSignal(QDate)),
            mMainView, SLOT(newTodo(QDate)) );
-  connect( view, SIGNAL(newSubTodoSignal(Todo *)),
-           mMainView, SLOT(newSubTodo(Todo *)) );
+  connect( view, SIGNAL(newSubTodoSignal(Akonadi::Item)),
+           mMainView, SLOT(newSubTodo(Akonadi::Item)) );
   connect( view, SIGNAL(newJournalSignal(QDate)),
            mMainView, SLOT(newJournal(QDate)) );
 
