@@ -135,14 +135,15 @@ KCal::FreeBusy *FreeBusyManager::ownerFreeBusy()
 {
   KDateTime start = KDateTime::currentUtcDateTime();
   KDateTime end = start.addDays( KOPrefs::instance()->mFreeBusyPublishDays );
-#ifdef AKONADI_PORT_DISABLED
-  FreeBusy *freebusy = new FreeBusy( mCalendar ? mCalendar->rawEvents( start.date(), end.date() ) : Event::List(), start, end );
-  freebusy->setOrganizer( Person( KOPrefs::instance()->fullName(),
-                                  KOPrefs::instance()->email() ) );
+
+  Event::List events;
+  Akonadi::Item::List items = mCalendar ? mCalendar->rawEvents( start.date(), end.date() ) : Akonadi::Item::List();
+  foreach(const Akonadi::Item &item, items) { //AKONADI_PORT FIXME
+    events << item.payload<Event::Ptr>().get();
+  }
+  FreeBusy *freebusy = new FreeBusy( events, start, end );
+  freebusy->setOrganizer( Person( KOPrefs::instance()->fullName(), KOPrefs::instance()->email() ) );
   return freebusy;
-#else
-  return 0;
-#endif
 }
 
 QString FreeBusyManager::ownerFreeBusyAsString()
