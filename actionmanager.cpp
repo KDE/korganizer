@@ -1728,17 +1728,6 @@ void ActionManager::setTitle()
   mMainWindow->setTitle();
 }
 
-ActionManager::ResourceRequestReply
-ActionManager::resourceRequest( const QList<QPair<QDateTime, QDateTime> >&,
-                                const QByteArray &resource,
-                                const QString &vCalIn )
-{
-    kDebug() << "resource=" << resource << " vCalIn=" << vCalIn;
-    ActionManager::ResourceRequestReply reply;
-    reply.vCalOut = "VCalOut";
-    return reply;
-}
-
 void ActionManager::openEventEditor( const QString &text )
 {
   mCalendarView->newEvent( text );

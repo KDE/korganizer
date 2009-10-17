@@ -66,7 +66,7 @@ class KToggleAction;
   The ActionManager creates all the actions in KOrganizer. This class
   is shared between the main application and the part so all common
   actions are in one location.
-  It also provides DCOP interface[s].
+  It also provides D-Bus interfaces.
 */
 class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
 {
@@ -146,8 +146,8 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     /**
       Delete the incidence with the given unique id from current calendar.
       @param uid UID of the incidence to delete.
-      @param force If true, all recurrences and sub-todos (if applicable) will be
-                         deleted without prompting for confirmation.
+      @param force If true, all recurrences and sub-todos (if applicable) will
+      be deleted without prompting for confirmation.
     */
     virtual bool deleteIncidence( const Akonadi::Item::Id &uid, bool force = false );
 
@@ -169,21 +169,7 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     */
     bool showIncidenceContext( const Akonadi::Item::Id &uid );
 
-    //// Implementation of the DCOP interface
-    struct ResourceRequestReply {
-      bool vCalInOK;
-      QString vCalOut;
-      bool vCalOutOK;
-      bool isFree;
-      QDateTime start;
-      QDateTime end;
-    };
-
   public slots:
-    virtual ResourceRequestReply resourceRequest( const QList<QPair<QDateTime, QDateTime> > &busy,
-                                                  const QByteArray &resource,
-                                                  const QString &vCalIn );
-
     void openEventEditor( const QString &);
     void openEventEditor( const QString &summary,
                           const QString &description,
@@ -377,12 +363,12 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     void enableIncidenceActions( bool enable );
 
     KOrg::Part::List mParts; // List of parts loaded
-    KUrl mURL;      // URL of calendar file
-    QString mFile;  // Local name of calendar file
-    QString mLastUrl;  // URL of last loaded calendar.
+    KUrl mURL;               // URL of calendar file
+    QString mFile;           // Local name of calendar file
+    QString mLastUrl;        // URL of last loaded calendar.
 
     KTemporaryFile *mTempFile;
-    QTimer *mAutoSaveTimer;   // used if calendar is to be autosaved
+    QTimer *mAutoSaveTimer;    // used if calendar is to be autosaved
     QTimer *mAutoArchiveTimer; // used for the auto-archiving feature
 
     // list of all existing KOrganizer instances
