@@ -69,11 +69,33 @@ class ReminderListItem : public QTreeWidgetItem
       delete mIncidence;
     }
 
+    bool operator < ( const QTreeWidgetItem & other ) const;
+
     QString mDisplayText;
     Incidence *mIncidence;
     QDateTime mRemindAt;
+    KDateTime mTrigger;
+    KDateTime mHappening;
     bool mNotified;
 };
+
+bool ReminderListItem::operator < ( const QTreeWidgetItem &other ) const
+{
+  switch( treeWidget()->sortColumn() ) {
+  case 1: // happening datetime
+  {
+    const ReminderListItem *item = static_cast<const ReminderListItem *>( &other );
+    return mHappening < item->mHappening;
+  }
+  case 2: // trigger datetime
+  {
+    const ReminderListItem *item = static_cast<const ReminderListItem *>( &other );
+    return mTrigger < item->mTrigger;
+  }
+  default:
+    return QTreeWidgetItem::operator < ( other );
+  }
+}
 
 typedef QList<ReminderListItem *> ReminderList;
 
@@ -131,10 +153,10 @@ AlarmDialog::AlarmDialog( KCal::Calendar *calendar, QWidget *parent )
 
   mIncidenceTree = new QTreeWidget( topBox );
   mIncidenceTree->setColumnCount( 3 );
-  mIncidenceTree->setSortingEnabled( false );
+  mIncidenceTree->setSortingEnabled( true );
   QStringList headerLabels =
     ( QStringList( i18nc( "@title:column reminder title", "Title" ) )
-      << i18nc( "@title:column reminder date/time", "Reminder Time" )
+      << i18nc( "@title:column happens at date/time", "Date Time" )
       << i18nc( "@title:column trigger date/time", "Trigger Time" ) );
   mIncidenceTree->setHeaderLabels( headerLabels );
   mIncidenceTree->headerItem()->setToolTip(
@@ -142,7 +164,7 @@ AlarmDialog::AlarmDialog( KCal::Calendar *calendar, QWidget *parent )
     i18nc( "@info:tooltip", "The event or to-do title" ) );
   mIncidenceTree->headerItem()->setToolTip(
     1,
-    i18nc( "@info:tooltip", "The date/time of the reminder" ) );
+    i18nc( "@info:tooltip", "The reminder is set for this date/time" ) );
   mIncidenceTree->headerItem()->setToolTip(
     2,
     i18nc( "@info:tooltip", "The date/time the reminder was triggered" ) );
@@ -234,30 +256,32 @@ void AlarmDialog::addIncidence( Incidence *incidence,
   summStr.truncate( 30 );
   item->setText( 0, summStr );
   item->mRemindAt = reminderAt;
+  item->mTrigger = KDateTime::currentLocalDateTime();
   item->mDisplayText = displayText;
-  QString triggerStr = KGlobal::locale()->formatDateTime(
-    KDateTime::currentDateTime( KDateTime::Spec::LocalZone() ) );
 
   //TODO: this function needs to consider all Display type alarms in each incidence.
 
+  Event *event;
   Todo *todo;
   Alarm *alarm = incidence->alarms().first();
-  if ( dynamic_cast<Event *>( incidence ) ) {
+  if ( ( event = dynamic_cast<Event *>( incidence ) ) ) {
     item->setIcon( 0, SmallIcon( "view-calendar-day" ) );
-    if ( incidence->recurs() ) {
-      KDateTime nextStart = incidence->recurrence()->getNextDateTime(
+    if ( event->recurs() ) {
+      KDateTime nextStart = event->recurrence()->getNextDateTime(
         KDateTime( reminderAt, KDateTime::Spec::LocalZone() ) );
       if ( nextStart.isValid() ) {
+        item->mHappening = nextStart.toLocalZone();
         item->setText( 1, KGlobal::locale()->formatDateTime( nextStart.toLocalZone() ) );
       }
     }
     if ( item->text( 1 ).isEmpty() ) {
       KDateTime kdt;
       if ( alarm->hasStartOffset() ) {
-        kdt = incidence->dtStart();
+        kdt = event->dtStart();
       } else {
-        kdt = incidence->dtEnd();
+        kdt = event->dtEnd();
       }
+      item->mHappening = kdt;
       item->setText( 1, IncidenceFormatter::dateTimeToString(
                        kdt, false, true, KDateTime::Spec::LocalZone() ) );
     }
@@ -267,21 +291,24 @@ void AlarmDialog::addIncidence( Incidence *incidence,
       KDateTime nextStart = todo->recurrence()->getNextDateTime(
         KDateTime( reminderAt, KDateTime::Spec::LocalZone() ) );
       if ( nextStart.isValid() ) {
+        item->mHappening = nextStart.toLocalZone();
         item->setText( 1, KGlobal::locale()->formatDateTime( nextStart.toLocalZone() ) );
       }
     }
     if ( item->text( 1 ).isEmpty() ) {
       KDateTime kdt;
-      if ( alarm->hasStartOffset() ) {
+      if ( alarm->hasStartOffset() && todo->dtStart().isValid() ) {
         kdt = todo->dtStart();
       } else {
         kdt = todo->dtDue();
       }
+      item->mHappening = kdt;
       item->setText( 1, IncidenceFormatter::dateTimeToString(
                        kdt, false, true, KDateTime::Spec::LocalZone() ) );
     }
   }
-  item->setText( 2, triggerStr );
+  item->setText( 2, IncidenceFormatter::dateTimeToString(
+                   item->mTrigger, false, true, KDateTime::Spec::LocalZone() ) );
 
   QString tip = IncidenceFormatter::toolTipStr( mCalendar, incidence,
                                                 item->mRemindAt.date(), true,
@@ -290,6 +317,8 @@ void AlarmDialog::addIncidence( Incidence *incidence,
     tip += "<br>" + item->mDisplayText;
   }
   item->setToolTip( 0, tip );
+  item->setToolTip( 1, tip );
+  item->setToolTip( 2, tip );
   item->setData( 0, QTreeWidgetItem::UserType, false );
 
   mIncidenceTree->setCurrentItem( item );
@@ -437,10 +466,9 @@ void AlarmDialog::suspend()
       (*it)->setDisabled( true );
       ReminderListItem *item = static_cast<ReminderListItem *>( *it );
       item->mRemindAt = QDateTime::currentDateTime().addSecs( unit * mSuspendSpin->value() );
+      item->mHappening = KDateTime( item->mRemindAt, KDateTime::Spec::LocalZone() );
       item->mNotified = false;
-      QString remindAtStr = KGlobal::locale()->formatDateTime(
-        KDateTime( item->mRemindAt, KDateTime::Spec::LocalZone() ) );
-      (*it)->setText( 1, remindAtStr );
+      (*it)->setText( 1, KGlobal::locale()->formatDateTime( item->mHappening ) );
     }
     ++it;
   }
@@ -477,10 +505,11 @@ void AlarmDialog::setTimer()
 
 void AlarmDialog::show()
 {
-  mIncidenceTree->setCurrentItem( mIncidenceTree->topLevelItem( 0 ) );
   mIncidenceTree->resizeColumnToContents( 0 );
   mIncidenceTree->resizeColumnToContents( 1 );
   mIncidenceTree->resizeColumnToContents( 2 );
+  mIncidenceTree->sortItems( 1, Qt::AscendingOrder );
+  mIncidenceTree->setCurrentItem( mIncidenceTree->topLevelItem( 0 ) );
 
   KDialog::show();
   if ( !mPos.isNull() ) {

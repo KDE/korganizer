@@ -50,7 +50,7 @@ int main( int argc, char **argv )
   e1->setDtEnd( now.addDays( 1 ) );
   Alarm *a = e1->newAlarm();
 //  a->setProcedureAlarm( "/usr/X11R6/bin/xeyes" );
-  a->setAudioAlarm( "/opt/kde/share/apps/korganizer/sounds/spinout.wav" );
+  a->setAudioAlarm( "/data/kde/share/apps/korganizer/sounds/spinout.wav" );
 
   Todo *t1 = new Todo;
   t1->setSummary( "To-do A" );
@@ -60,14 +60,14 @@ int main( int argc, char **argv )
   Event *e2 = new Event;
   e2->setSummary( "This is another summary. "
                   "But it is a very long summary of total sillyness for no good reason" );
-  e2->setDtStart( now );
-  e2->setDtEnd( now.addDays( 1 ) );
+  e2->setDtStart( now.addDays( 1 ) );
+  e2->setDtEnd( now.addDays( 2 ) );
   e2->newAlarm();
 
   Event *e3 = new Event;
   e3->setSummary( "Meet with Fred" );
-  e3->setDtStart( now );
-  e3->setDtEnd( now.addDays( 2 ) );
+  e3->setDtStart( now.addDays( 2 ) );
+  e3->setDtEnd( now.addDays( 3 ) );
   e3->newAlarm();
 
   Todo *t2 = new Todo;
@@ -80,15 +80,27 @@ int main( int argc, char **argv )
   t3->setDtDue( now );
   t3->newAlarm();
 
+  Event *e4 = new Event;
+  e4->setSummary( "Watch TV" );
+  e4->setDtStart( now.addSecs( 120 ) );
+  e4->setDtEnd( now.addSecs( 180 ) );
+  e4->newAlarm();
+
   AlarmDialog dlg( 0 );
-  dlg.addIncidence( e1, QDateTime::currentDateTime(), QString() );
-  dlg.addIncidence( t1, QDateTime::currentDateTime(),
+  dlg.addIncidence( e2, QDateTime::currentDateTime().addSecs( 60 ),
+                    QString() );
+  dlg.addIncidence( t1, QDateTime::currentDateTime().addSecs( 300 ),
                     QString( "THIS IS DISPLAY TEXT" ) );
-  dlg.addIncidence( e2, QDateTime::currentDateTime(), QString() );
-  dlg.addIncidence( e3, QDateTime::currentDateTime(), QString() );
-  dlg.addIncidence( t2, QDateTime::currentDateTime(),
+  dlg.addIncidence( e4, QDateTime::currentDateTime().addSecs( 120 ),
+                    QString( "Fred and Barney get cloned" ) );
+  dlg.addIncidence( e3, QDateTime::currentDateTime().addSecs( 240 ),
+                    QString() );
+  dlg.addIncidence( e1, QDateTime::currentDateTime().addSecs( 180 ),
+                    QString() );
+  dlg.addIncidence( t2, QDateTime::currentDateTime().addSecs( 600 ),
                     QString( "THIS IS DISPLAY TEXT" ) );
-  dlg.addIncidence( t3, QDateTime::currentDateTime(), QString() );
+  dlg.addIncidence( t3, QDateTime::currentDateTime().addSecs( 360 ),
+                    QString() );
   dlg.show();
   dlg.eventNotification();
 
