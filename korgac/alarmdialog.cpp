@@ -157,7 +157,7 @@ AlarmDialog::AlarmDialog( KCal::Calendar *calendar, QWidget *parent )
   mIncidenceTree->setSortingEnabled( true );
   QStringList headerLabels =
     ( QStringList( i18nc( "@title:column reminder title", "Title" ) )
-      << i18nc( "@title:column happens at date/time", "Date Time" )
+      << i18nc( "@title:column happens at date/time", "Date, Time" )
       << i18nc( "@title:column trigger date/time", "Trigger Time" ) );
   mIncidenceTree->setHeaderLabels( headerLabels );
   mIncidenceTree->headerItem()->setToolTip(
