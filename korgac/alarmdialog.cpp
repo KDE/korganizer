@@ -2,6 +2,7 @@
     This file is part of the KOrganizer alarm daemon.
 
     Copyright (c) 2000,2003 Cornelius Schumacher <schumacher@kde.org>
+    Copyright (c) 2009 Klarälvdalens Datakonsult AB, a KDAB Group company <info@kdab.net>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -69,10 +70,23 @@ class AlarmListItem : public KListViewItem
       delete mIncidence;
     }
 
+    int compare( KListViewItem *item, int iCol, bool bAscending ) const;
+
     Incidence *mIncidence;
     QDateTime mRemindAt;
+    QDateTime mHappening;
     bool mNotified;
 };
+
+int AlarmListItem::compare( KListViewItem *item, int iCol, bool bAscending ) const
+{
+  if ( iCol == 1 ) {
+    AlarmListItem *pItem = dynamic_cast<AlarmListItem *>( item );
+    return mHappening < pItem->mHappening;
+  } else {
+    return KListViewItem::compare( item, iCol, bAscending );
+  }
+}
 
 typedef QValueList<AlarmListItem*> ItemList;
 
@@ -103,6 +117,10 @@ AlarmDialog::AlarmDialog( KCal::Calendar *calendar, QWidget *parent, const char 
   mIncidenceListView = new KListView( topBox );
   mIncidenceListView->addColumn( i18n( "Summary" ) );
   mIncidenceListView->addColumn( i18n( "Due" ) );
+  mIncidenceListView->setSorting( 0, true );
+  mIncidenceListView->setSorting( 1, true );
+  mIncidenceListView->setSortColumn( 1 );
+  mIncidenceListView->setShowSortIndicator( true );
   mIncidenceListView->setAllColumnsShowFocus( true );
   mIncidenceListView->setSelectionMode( QListView::Extended );
   topLayout->addWidget( mIncidenceListView );
@@ -150,13 +168,17 @@ void AlarmDialog::addIncidence( Incidence *incidence, const QDateTime &reminderA
     item->setPixmap( 0, SmallIcon( "appointment" ) );
     if ( incidence->doesRecur() ) {
       QDateTime nextStart = incidence->recurrence()->getNextDateTime( reminderAt );
-      if ( nextStart.isValid() )
+      if ( nextStart.isValid() ) {
+        item->mHappening = nextStart;
         item->setText( 1, KGlobal::locale()->formatDateTime( nextStart ) );
+      }
     }
     if ( item->text( 1 ).isEmpty() )
+      item->mHappening = incidence->dtStart();
       item->setText( 1, IncidenceFormatter::dateTimeToString( incidence->dtStart(), false, true ) );
   } else if ( (todo = dynamic_cast<Todo*>( incidence )) ) {
     item->setPixmap( 0, SmallIcon( "todo" ) );
+    item->mHappening = todo->dtDue();
     item->setText( 1, IncidenceFormatter::dateTimeToString( todo->dtDue(), false, true ) );
   }
   if ( activeCount() == 1 ) {// previously empty
@@ -336,10 +358,15 @@ void AlarmDialog::setTimer()
 
 void AlarmDialog::show()
 {
+  mIncidenceListView->sort();
+
   mIncidenceListView->clearSelection();
   if ( mIncidenceListView->firstChild() )
     mIncidenceListView->firstChild()->setSelected( true );
+
   updateButtons();
+  showDetails();
+
   KDialogBase::show();
   KWin::setState( winId(), NET::KeepAbove );
   KWin::setOnAllDesktops( winId(), true );

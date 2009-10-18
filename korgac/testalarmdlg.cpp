@@ -55,15 +55,29 @@ int main(int argc,char **argv)
 
   Event *e2 = new Event;
   e2->setSummary( "This is another summary." );
-  e2->setDtStart( now );
-  e2->setDtEnd( now.addDays( 1 ) );
+  e2->setDtStart( now.addDays( 1 ) );
+  e2->setDtEnd( now.addDays( 2 ) );
   e2->newAlarm();
+
+  Event *e3 = new Event;
+  e3->setSummary( "Meet with Fred" );
+  e3->setDtStart( now.addDays( 2 ) );
+  e3->setDtEnd( now.addDays( 3 ) );
+  e3->newAlarm();
+
+  Event *e4 = new Event;
+  e4->setSummary( "Watch TV" );
+  e4->setDtStart( now.addSecs( 120 ) );
+  e4->setDtEnd( now.addSecs( 180 ) );
+  e4->newAlarm();
 
   AlarmDialog dlg( 0 );
   app.setMainWidget( &dlg );
-  dlg.addIncidence( e1, QDateTime::currentDateTime() );
-  dlg.addIncidence( t1, QDateTime::currentDateTime() );
-  dlg.addIncidence( e2, QDateTime::currentDateTime() );
+  dlg.addIncidence( e2, QDateTime::currentDateTime().addSecs( 60 ) );
+  dlg.addIncidence( t1, QDateTime::currentDateTime().addSecs( 300 ) );
+  dlg.addIncidence( e4, QDateTime::currentDateTime().addSecs( 120 ) );
+  dlg.addIncidence( e3, QDateTime::currentDateTime().addSecs( 240 ) );
+  dlg.addIncidence( e1, QDateTime::currentDateTime().addSecs( 180 ) );
   dlg.show();
   dlg.eventNotification();
 
