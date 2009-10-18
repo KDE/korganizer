@@ -3,6 +3,7 @@
 
   Copyright (c) 2000,2003 Cornelius Schumacher <schumacher@kde.org>
   Copyright (c) 2008 Allen Winter <winter@kde.org>
+  Copyright (c) 2009 Klarälvdalens Datakonsult AB, a KDAB Group company <info@kdab.net>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -73,10 +74,32 @@ class ReminderListItem : public QTreeWidgetItem
       delete mIncidence;
     }
 
+    bool operator < ( const QTreeWidgetItem & other ) const;
+
     Incidence *mIncidence;
     QDateTime mRemindAt;
+    KDateTime mTrigger;
+    KDateTime mHappening;
     bool mNotified;
 };
+
+bool ReminderListItem::operator < ( const QTreeWidgetItem &other ) const
+{
+  switch( treeWidget()->sortColumn() ) {
+  case 1: // happening datetime
+  {
+    const ReminderListItem *item = static_cast<const ReminderListItem *>( &other );
+    return mHappening < item->mHappening;
+  }
+  case 2: // trigger datetime
+  {
+    const ReminderListItem *item = static_cast<const ReminderListItem *>( &other );
+    return mTrigger < item->mTrigger;
+  }
+  default:
+    return QTreeWidgetItem::operator < ( other );
+  }
+}
 
 typedef QList<ReminderListItem *> ReminderList;
 
@@ -113,6 +136,10 @@ AlarmDialog::AlarmDialog( KCal::Calendar *calendar, QWidget *parent )
   QBoxLayout *topLayout = new QVBoxLayout( topBox );
   topLayout->setSpacing( spacingHint() );
 
+  // Try to keep the dialog small and non-obtrusive.
+  setMinimumWidth( 575 );
+  setMinimumHeight( 300 );
+
   QLabel *label =
     new QLabel( i18nc( "@label",
                        "The following events or to-dos triggered reminders:" ), topBox );
@@ -120,12 +147,23 @@ AlarmDialog::AlarmDialog( KCal::Calendar *calendar, QWidget *parent )
 
   mIncidenceTree = new QTreeWidget( topBox );
   mIncidenceTree->setColumnCount( 3 );
-  mIncidenceTree->setSortingEnabled( false );
+  mIncidenceTree->setSortingEnabled( true );
   QStringList headerLabels =
-    ( QStringList( i18nc( "@title:column reminder summary", "Summary" ) )
-      << i18nc( "@title:column reminder date/time", "Reminder Date/Time" )
-      << i18nc( "@title:column trigger date/time", "Trigger Date/Time" ) );
+    ( QStringList( i18nc( "@title:column reminder title", "Title" ) )
+      << i18nc( "@title:column happens at date/time", "Date Time" )
+      << i18nc( "@title:column trigger date/time", "Trigger Time" ) );
   mIncidenceTree->setHeaderLabels( headerLabels );
+  mIncidenceTree->headerItem()->setToolTip(
+    0,
+    i18nc( "@info:tooltip", "The event or to-do title" ) );
+  mIncidenceTree->headerItem()->setToolTip(
+    1,
+    i18nc( "@info:tooltip", "The reminder is set for this date/time" ) );
+  mIncidenceTree->headerItem()->setToolTip(
+    2,
+    i18nc( "@info:tooltip", "The date/time the reminder was triggered" ) );
+
+  mIncidenceTree->setWordWrap( true );
   mIncidenceTree->setAllColumnsShowFocus( true );
   mIncidenceTree->setSelectionMode( QAbstractItemView::ExtendedSelection );
   topLayout->addWidget( mIncidenceTree );
@@ -172,8 +210,6 @@ AlarmDialog::AlarmDialog( KCal::Calendar *calendar, QWidget *parent )
   mSuspendUnit->addItem( i18nc( "@item:inlistbox suspend in terms of weeks", "week(s)" ) );
   connect( &mSuspendTimer, SIGNAL(timeout()), SLOT(wakeUp()) );
 
-  setMinimumSize( 300, 200 );
-
   connect( this, SIGNAL(okClicked()), this, SLOT(slotOk()) );
   connect( this, SIGNAL(user1Clicked()), this, SLOT(slotUser1()) );
   connect( this, SIGNAL(user2Clicked()), this, SLOT(slotUser2()) );
@@ -189,34 +225,51 @@ void AlarmDialog::addIncidence( Incidence *incidence, const QDateTime &reminderA
 {
   ReminderListItem *item = new ReminderListItem( incidence, mIncidenceTree );
   kDebug() << "adding incidence " << incidence->summary();
-  item->setText( 0, incidence->summary() );
+  QString summStr = incidence->summary();
+  summStr.truncate( 30 );
+  item->setText( 0, summStr );
   item->mRemindAt = reminderAt;
-  QString triggerStr = KGlobal::locale()->formatDateTime(
-    KDateTime::currentDateTime( KDateTime::Spec::LocalZone() ) );
+  item->mTrigger = KDateTime::currentLocalDateTime();
+  Event *event;
   Todo *todo;
-  if ( dynamic_cast<Event *>( incidence ) ) {
+  Alarm *alarm = incidence->alarms().first();
+  if ( ( event = dynamic_cast<Event *>( incidence ) ) ) {
     item->setIcon( 0, SmallIcon( "view-calendar-day" ) );
-    if ( incidence->recurs() ) {
-      KDateTime nextStart = incidence->recurrence()->getNextDateTime(
+    if ( event->recurs() ) {
+      KDateTime nextStart = event->recurrence()->getNextDateTime(
         KDateTime( reminderAt, KDateTime::Spec::LocalZone() ) );
       if ( nextStart.isValid() ) {
+        item->mHappening = nextStart.toLocalZone();
         item->setText( 1, KGlobal::locale()->formatDateTime( nextStart.toLocalZone() ) );
       }
     }
     if ( item->text( 1 ).isEmpty() ) {
-      item->setText( 1, IncidenceFormatter::dateTimeToString( incidence->dtStart(), false, true, KDateTime::Spec::LocalZone() ) );
+      KDateTime kdt;
+      if ( alarm->hasStartOffset() ) {
+        kdt = event->dtStart();
+      } else {
+        kdt = event->dtEnd();
+      }
+      item->mHappening = kdt;
+      item->setText( 1, IncidenceFormatter::dateTimeToString(
+                       kdt, false, true, KDateTime::Spec::LocalZone() ) );
     }
   } else if ( ( todo = dynamic_cast<Todo *>( incidence ) ) ) {
     item->setIcon( 0, SmallIcon( "view-calendar-tasks" ) );
+    item->mHappening = todo->dtDue();
     item->setText( 1, IncidenceFormatter::dateTimeToString(
                      todo->dtDue(), false, true, KDateTime::Spec::LocalZone() ) );
   }
-  item->setText( 2, triggerStr );
+  item->setText( 2, IncidenceFormatter::dateTimeToString(
+                   item->mTrigger, false, true, KDateTime::Spec::LocalZone() ) );
 
   QString tip = IncidenceFormatter::toolTipStr( mCalendar, incidence,
                                                 item->mRemindAt.date(), true,
                                                 KDateTime::Spec::LocalZone() );
   item->setToolTip( 0, tip );
+  item->setToolTip( 1, tip );
+  item->setToolTip( 2, tip );
+  item->setData( 0, QTreeWidgetItem::UserType, false );
 
   mIncidenceTree->setCurrentItem( item );
   showDetails();
@@ -363,10 +416,9 @@ void AlarmDialog::suspend()
       (*it)->setDisabled( true );
       ReminderListItem *item = static_cast<ReminderListItem *>( *it );
       item->mRemindAt = QDateTime::currentDateTime().addSecs( unit * mSuspendSpin->value() );
+      item->mHappening = KDateTime( item->mRemindAt, KDateTime::Spec::LocalZone() );
       item->mNotified = false;
-      QString remindAtStr = KGlobal::locale()->formatDateTime(
-        KDateTime( item->mRemindAt, KDateTime::Spec::LocalZone() ) );
-      (*it)->setText( 1, remindAtStr );
+      (*it)->setText( 1, KGlobal::locale()->formatDateTime( item->mHappening ) );
     }
     ++it;
   }
@@ -389,8 +441,7 @@ void AlarmDialog::setTimer()
     ReminderListItem *item = static_cast<ReminderListItem *>( *it );
     if ( item->mRemindAt > QDateTime::currentDateTime() ) {
       int secs = QDateTime::currentDateTime().secsTo( item->mRemindAt );
-      nextReminderAt = nextReminderAt <= 0 ? secs : qMin( nextReminderAt, secs )
-;
+      nextReminderAt = nextReminderAt <= 0 ? secs : qMin( nextReminderAt, secs );
     }
     ++it;
   }
@@ -404,6 +455,10 @@ void AlarmDialog::setTimer()
 
 void AlarmDialog::show()
 {
+  mIncidenceTree->resizeColumnToContents( 0 );
+  mIncidenceTree->resizeColumnToContents( 1 );
+  mIncidenceTree->resizeColumnToContents( 2 );
+  mIncidenceTree->sortItems( 1, Qt::AscendingOrder );
   mIncidenceTree->setCurrentItem( mIncidenceTree->topLevelItem( 0 ) );
 
   // make sure no items are selected so pressing <enter> cannot do anything.
