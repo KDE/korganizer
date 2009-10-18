@@ -27,6 +27,7 @@
 #include "koprefs.h"
 #include "mailscheduler.h"
 #include "calendarbase.h"
+#include "akonadicalendar.h"
 
 #include <akonadi/kcal/utils.h>
 
@@ -42,6 +43,15 @@
 
 using namespace KCal;
 using namespace Akonadi;
+
+IncidenceChanger::IncidenceChanger( KOrg::AkonadiCalendar *cal, QObject *parent )
+  : IncidenceChangerBase( cal, parent )
+{
+}
+
+IncidenceChanger::~IncidenceChanger()
+{
+}
 
 bool IncidenceChanger::beginChange( const Item &incidence )
 {
@@ -88,7 +98,7 @@ void IncidenceChanger::cancelAttendees( const Item &aitem )
       // manually.
       // FIXME: Groupware schedulling should be factored out to it's own class
       //        anyway
-      MailScheduler scheduler( mCalendar );
+      MailScheduler scheduler( static_cast<AkonadiCalendar*>(mCalendar) );
       scheduler.performTransaction( incidence.get(), iTIPCancel );
     }
   }
@@ -143,7 +153,7 @@ bool IncidenceChanger::deleteIncidence( const Item &aitem )
       }
 
       if ( !KOGroupware::instance()->doNotNotify() && notifyOrganizer ) {
-        MailScheduler scheduler( mCalendar );
+        MailScheduler scheduler( static_cast<AkonadiCalendar*>(mCalendar) );
         scheduler.performTransaction( tmp.get(), KCal::iTIPReply );
       }
       //reset the doNotNotify flag

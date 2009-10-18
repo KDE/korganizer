@@ -138,7 +138,7 @@ KCal::FreeBusy *FreeBusyManager::ownerFreeBusy()
 
   Event::List events;
   Akonadi::Item::List items = mCalendar ? mCalendar->rawEvents( start.date(), end.date() ) : Akonadi::Item::List();
-  foreach(const Akonadi::Item &item, items) { //AKONADI_PORT FIXME
+  foreach(const Akonadi::Item &item, items) {
     events << item.payload<Event::Ptr>().get();
   }
   FreeBusy *freebusy = new FreeBusy( events, start, end );

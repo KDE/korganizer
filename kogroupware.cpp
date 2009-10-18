@@ -57,8 +57,7 @@ FreeBusyManager *KOGroupware::mFreeBusyManager = 0;
 
 KOGroupware *KOGroupware::mInstance = 0;
 
-KOGroupware *KOGroupware::create( CalendarView *view,
-                                  KOrg::CalendarBase *calendar )
+KOGroupware *KOGroupware::create( CalendarView *view, KOrg::AkonadiCalendar *calendar )
 {
   if ( !mInstance ) {
     mInstance = new KOGroupware( view, calendar );
@@ -73,7 +72,7 @@ KOGroupware *KOGroupware::instance()
   return mInstance;
 }
 
-KOGroupware::KOGroupware( CalendarView *view, KOrg::CalendarBase *cal )
+KOGroupware::KOGroupware( CalendarView *view, KOrg::AkonadiCalendar *cal )
   : QObject( 0 ), mView( view ), mCalendar( cal ), mDoNotNotify( false )
 {
   setObjectName( "kmgroupware_instance" );
@@ -220,7 +219,7 @@ void KOGroupware::incomingDirChanged( const QString &path )
       scheduler.acceptTransaction( incidence, method, status, QString() );
     } else {
       // accept counter proposal
-      scheduler.acceptCounterProposal( incidence );
+      scheduler.acceptCounterProposal( calendar, incidence );
       // send update to all attendees
       sendICalMessage( mView, iTIPRequest, incidence );
     }
@@ -377,9 +376,7 @@ bool KOGroupware::sendICalMessage( QWidget *parent,
   }
 }
 
-void KOGroupware::sendCounterProposal( KOrg::CalendarBase *calendar,
-                                       KCal::Event *oldEvent,
-                                       KCal::Event *newEvent ) const
+void KOGroupware::sendCounterProposal( KCal::Event *oldEvent, KCal::Event *newEvent ) const
 {
   if ( !oldEvent || !newEvent || *oldEvent == *newEvent ||
        !KOPrefs::instance()->mUseGroupwareCommunication ) {
@@ -392,11 +389,11 @@ void KOGroupware::sendCounterProposal( KOrg::CalendarBase *calendar,
     tmp->addComment( i18n( "Proposed new meeting time: %1 - %2",
                            IncidenceFormatter::dateToString( newEvent->dtStart() ),
                            IncidenceFormatter::dateToString( newEvent->dtEnd() ) ) );
-    MailScheduler scheduler( calendar );
+    MailScheduler scheduler( mCalendar );
     scheduler.performTransaction( tmp, KCal::iTIPReply );
     delete tmp;
   } else {
-    MailScheduler scheduler( calendar );
+    MailScheduler scheduler( mCalendar );
     scheduler.performTransaction( newEvent, iTIPCounter );
   }
 }

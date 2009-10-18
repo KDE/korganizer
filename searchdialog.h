@@ -36,6 +36,7 @@ namespace Akonadi {
 
 using namespace KCal;
 
+class CalendarView;
 class KOListView;
 class QRegExp;
 
@@ -43,7 +44,7 @@ class SearchDialog : public KDialog, private Ui::SearchDialog
 {
   Q_OBJECT
   public:
-    explicit SearchDialog( QWidget *parent=0 );
+    explicit SearchDialog( CalendarView *calendarview );
     virtual ~SearchDialog();
 
     void updateView();
@@ -63,6 +64,7 @@ class SearchDialog : public KDialog, private Ui::SearchDialog
   private:
     void search( const QRegExp & );
 
+    CalendarView *m_calendarview;
     QList<Akonadi::Item> mMatchedEvents;
     KOListView *listView;
 };

@@ -26,6 +26,7 @@
 
 #include "searchdialog.h"
 #include "koglobals.h"
+#include "calendarview.h"
 #include "koprefs.h"
 #include "views/listview/kolistview.h"
 #include "akonadicalendar.h"
@@ -36,8 +37,9 @@
 using namespace KOrg;
 using namespace Akonadi;
 
-SearchDialog::SearchDialog( QWidget *parent )
-  : KDialog( parent )
+SearchDialog::SearchDialog( CalendarView *calendarview )
+  : KDialog( calendarview )
+  , m_calendarview( calendarview )
 {
   setCaption( i18n( "Search Calendar" ) );
   setButtons( User1 | Cancel );
@@ -129,20 +131,19 @@ void SearchDialog::updateView()
   
 void SearchDialog::search( const QRegExp &re )
 {
-#ifdef AKONADI_PORT_DISABLED
   QDate startDt = mStartDate->date();
   QDate endDt = mEndDate->date();
 
   Item::List events;
   KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
   if ( mEventsCheck->isChecked() ) {
-    events = mCalendar->events( startDt, endDt, timeSpec, mInclusiveCheck->isChecked() );
+    events = m_calendarview->calendar()->events( startDt, endDt, timeSpec, mInclusiveCheck->isChecked() );
   }
   Item::List todos;
   if ( mTodosCheck->isChecked() ) {
     if ( mIncludeUndatedTodos->isChecked() ) {
       KDateTime::Spec spec = KOPrefs::instance()->timeSpec();
-      Item::List alltodos = mCalendar->todos();
+      Item::List alltodos = m_calendarview->calendar()->todos();
       Q_FOREACH ( const Item &item, alltodos ) {
         const Todo::ConstPtr todo = Akonadi::todo( item );
         Q_ASSERT( todo );
@@ -162,7 +163,7 @@ void SearchDialog::search( const QRegExp &re )
     } else {
       QDate dt = startDt;
       while ( dt <= endDt ) {
-        todos += mCalendar->todos( dt );
+        todos += m_calendarview->calendar()->todos( dt );
         dt = dt.addDays( 1 );
       }
     }
@@ -172,7 +173,7 @@ void SearchDialog::search( const QRegExp &re )
   if ( mJournalsCheck->isChecked() ) {
     QDate dt = startDt;
     while ( dt <= endDt ) {
-      journals += mCalendar->journals( dt );
+      journals += m_calendarview->calendar()->journals( dt );
       dt = dt.addDays( 1 );
     }
   }
@@ -206,7 +207,6 @@ void SearchDialog::search( const QRegExp &re )
       }
     }
   }
-#endif
 }
 
 #include "searchdialog.moc"

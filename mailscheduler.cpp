@@ -28,6 +28,7 @@
 #include "komailclient.h"
 #include "koprefs.h"
 #include "calendarbase.h"
+#include "akonadicalendar.h"
 
 #include <KCal/Calendar>
 #include <KCal/ICalFormat>
@@ -42,11 +43,10 @@
 
 using namespace KOrg;
 
-MailScheduler::MailScheduler( KOrg::CalendarBase *calendar )
+MailScheduler::MailScheduler( KOrg::AkonadiCalendar *calendar )
   //: Scheduler( calendar )
+  : mCalendar( calendar ), mFormat( new ICalFormat() )
 {
-  mCalendar = calendar;
-  mFormat = new ICalFormat();
   mFormat->setTimeSpec( calendar->timeSpec() );
 }
 
@@ -183,34 +183,35 @@ QString MailScheduler::freeBusyDir()
 }
 #endif
 
+//AKONADI_PORT review following code
 bool MailScheduler::acceptCounterProposal( KCal::Incidence *incidence )
 {
-#ifdef AKONADI_PORT_DISABLED
   if ( !incidence ) {
     return false;
   }
 
-  Incidence *exInc = mCalendar->incidence( incidence->uid() );
-  if ( !exInc ) {
+  Akonadi::Item::Id akonadiId = mCalendar->itemIdForIncidenceUid( incidence->uid() );
+  Akonadi::Item exInc = mCalendar->incidence( akonadiId );
+  if ( ! exInc.isValid() ) {
     exInc = mCalendar->incidenceFromSchedulingID( incidence->uid() );
+    //exInc = exIncItem.isValid() && exIncItem.hasPayload<Incidence::Ptr>() ? exIncItem.payload<Incidence::Ptr>() : Incidence::Ptr();
   }
 
   incidence->setRevision( incidence->revision() + 1 );
-  if ( exInc ) {
-    incidence->setRevision( qMax( incidence->revision(), exInc->revision() + 1 ) );
+  if ( exInc.isValid() && exInc.hasPayload<Incidence::Ptr>() ) {
+    Incidence::Ptr exIncPtr = exInc.payload<Incidence::Ptr>();
+    incidence->setRevision( qMax( incidence->revision(), exIncPtr->revision() + 1 ) );
     // some stuff we don't want to change, just to be safe
-    incidence->setSchedulingID( exInc->schedulingID() );
-    incidence->setUid( exInc->uid() );
+    incidence->setSchedulingID( exIncPtr->schedulingID() );
+    incidence->setUid( exIncPtr->uid() );
 
     mCalendar->beginChange( exInc );
-    IncidenceChanger::assignIncidence( exInc, incidence );
-    exInc->updated();
+    IncidenceChanger::assignIncidence( exIncPtr.get(), incidence );
+    exIncPtr->updated();
     mCalendar->endChange( exInc );
   } else {
-    mCalendar->addIncidence( incidence );
+    mCalendar->addIncidence( Incidence::Ptr(incidence->clone()) );
   }
+
   return true;
-#else
-  return false;
-#endif // AKONADI_PORT_DISABLED
 }

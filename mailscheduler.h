@@ -34,6 +34,7 @@ namespace KCal {
 }
 
 namespace KOrg {
+  class AkonadiCalendar;
   class CalendarBase;
 
   /*
@@ -43,7 +44,7 @@ namespace KOrg {
   class MailScheduler //: public Scheduler
   {
     public:
-      explicit MailScheduler( KOrg::CalendarBase *calendar );
+      explicit MailScheduler( KOrg::AkonadiCalendar *calendar );
       virtual ~MailScheduler();
 
       bool publish ( KCal::IncidenceBase *incidence, const QString &recipients );
@@ -61,7 +62,7 @@ namespace KOrg {
       bool acceptCounterProposal( KCal::Incidence *incidence );
 
     private:
-      KOrg::CalendarBase *mCalendar;
+      KOrg::AkonadiCalendar *mCalendar;
       KCal::ICalFormat *mFormat;
       QMap<KCal::IncidenceBase *, QString> mEventMap;
   };

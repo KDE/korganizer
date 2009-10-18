@@ -288,9 +288,8 @@ bool KOEventEditor::processInput()
       fillEvent( evItem );
       
       if ( mIsCounter ) {
-          // FIXME port to akonadi
 #ifdef AKONADI_PORT_DISABLED
-        KOGroupware::instance()->sendCounterProposal( mCalendar, oldEvent, mEvent );
+        KOGroupware::instance()->sendCounterProposal( oldEvent, mEvent );
 #endif
         // add dummy event at the position of the counter proposal
         Event::Ptr event2( ev->clone() );

@@ -27,12 +27,16 @@
 #include "korganizer/incidencechangerbase.h"
 #include "korganizer_export.h"
 
+namespace KOrg {
+  class AkonadiCalendar;
+}
+
 class KORGANIZERPRIVATE_EXPORT IncidenceChanger : public KOrg::IncidenceChangerBase
 {
   Q_OBJECT
   public:
-    IncidenceChanger( KOrg::CalendarBase *cal, QObject *parent ) : IncidenceChangerBase( cal, parent ) {}
-    ~IncidenceChanger() {}
+    IncidenceChanger( KOrg::AkonadiCalendar *cal, QObject *parent );
+    ~IncidenceChanger();
 
     bool beginChange( const Akonadi::Item & incidence );
     bool sendGroupwareMessage( const Akonadi::Item &incidence, KCal::iTIPMethod method,

@@ -444,7 +444,6 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
 
   bool modify = true;
 
-#ifdef AKONADI_PORT_DISABLED
   if ( incidence->recurs() ) {
     int res = monthScene()->mMonthView->showMoveRecurDialog( mIncidence, startDate() );
     switch ( res ) {
@@ -455,7 +454,7 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
       {
         modify = true;
         Incidence::Ptr oldIncSaved( incidence->clone() );
-        Incidence::Ptr newInc( monthScene()->calendar()->dissociateOccurrence( mIncidence, startDate(), KOPrefs::instance()->timeSpec() ) );
+        Incidence::Ptr newInc( monthScene()->mMonthView->calendar()->dissociateOccurrence( mIncidence, startDate(), KOPrefs::instance()->timeSpec() ) );
         if ( newInc ) {
            //TODO check return values
           changer->changeIncidence( oldIncSaved, mIncidence );
@@ -474,7 +473,7 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
       {
         modify = true;
         Incidence::Ptr oldIncSaved( incidence->clone() );
-        Incidence::Ptr newInc( monthScene()->calendar()->dissociateOccurrence(
+        Incidence::Ptr newInc( monthScene()->mMonthView->calendar()->dissociateOccurrence(
             mIncidence, startDate(), KOPrefs::instance()->timeSpec(), false ) );
         if ( newInc ) {
            //TODO check return values
@@ -513,9 +512,6 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
     changer->changeIncidence( oldInc, mIncidence, KOGlobals::DATE_MODIFIED );
     changer->endChange( mIncidence );
   }
-#else
-  kWarning()<<"TODO";
-#endif
 }
 
 void IncidenceMonthItem::updateSelection( const Akonadi::Item &incidence, const QDate &date )

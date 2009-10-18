@@ -49,13 +49,12 @@ class NavigatorBar;
 
 namespace KOrg {
   class HTMLExportSettings;
-}
-using namespace KCal;
-
-namespace KOrg {
   class CalendarBase;
   class History;
+  class AkonadiCalendar;
 }
+
+using namespace KCal;
 using namespace KOrg;
 
 class KVBox;
@@ -123,8 +122,8 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
 
     };
 
-    void setCalendar( KOrg::CalendarBase * );
-    KOrg::CalendarBase *calendar();
+    void setCalendar( KOrg::AkonadiCalendar * );
+    KOrg::AkonadiCalendar *calendar();
 
     History *history() const { return mHistory; }
 
@@ -660,7 +659,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
 
     QList<CalendarViewExtension*> mExtensions;
 
-    KOrg::CalendarBase *mCalendar;
+    KOrg::AkonadiCalendar *mCalendar;
 
     DateNavigator *mDateNavigator;
     DateChecker *mDateChecker;

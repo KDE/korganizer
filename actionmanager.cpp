@@ -940,7 +940,7 @@ void ActionManager::file_save()
       saveURL();
     }
   } else {
-    mCalendarView->calendar()->save();
+    //mCalendarView->calendar()->save();
   }
 
   // export to HTML
@@ -2037,8 +2037,7 @@ void ActionManager::saveCalendar()
       }
     }
   } else if ( mCalendarAkonadi ) {
-    mCalendarAkonadi->save();
-    // FIXME: Make sure that asynchronous saves don't fail.
+    //mCalendarAkonadi->save();
   }
 }
 

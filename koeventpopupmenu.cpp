@@ -41,7 +41,8 @@ using namespace Akonadi;
 using namespace KCal;
 
 KOEventPopupMenu::KOEventPopupMenu(KOEventView *eventview)
-  : mEventview(eventview)
+  : QMenu(eventview)
+  , mEventview(eventview)
 {
   mHasAdditionalItems = false;
 

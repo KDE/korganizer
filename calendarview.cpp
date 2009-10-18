@@ -243,14 +243,14 @@ CalendarView::~CalendarView()
   mCalendar->unregisterObserver( this );
   qDeleteAll( mFilters );
   qDeleteAll( mExtensions );
-
+// 
   delete mDialogManager;
   delete mViewManager;
   delete mEventViewer;
   delete mHistory;
 }
 
-void CalendarView::setCalendar( KOrg::CalendarBase *cal )
+void CalendarView::setCalendar( KOrg::AkonadiCalendar *cal )
 {
   mCalendar = cal;
 
@@ -291,7 +291,7 @@ void CalendarView::setIncidenceChanger( IncidenceChangerBase *changer )
            mChanger, SLOT(cancelAttendees(Akonadi::Item)) );
 }
 
-KOrg::CalendarBase *CalendarView::calendar()
+KOrg::AkonadiCalendar *CalendarView::calendar()
 {
   return mCalendar;
 }
@@ -416,8 +416,7 @@ void CalendarView::closeCalendar()
 {
   // child windows no longer valid
   emit closingDown();
-
-  mCalendar->close();
+  //mCalendar->close();
   setModified( false );
   updateView();
 }
