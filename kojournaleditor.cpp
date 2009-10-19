@@ -72,7 +72,7 @@ void KOJournalEditor::init()
 void KOJournalEditor::reload()
 {
   if ( mJournal ) {
-    readJournal( mJournal );
+    readJournal( mJournal, QDate() );
   }
 }
 
@@ -97,14 +97,14 @@ void KOJournalEditor::setupGeneral()
   mGeneral->finishSetup();
 }
 
-void KOJournalEditor::editIncidence( Incidence *incidence, Calendar *calendar )
+void KOJournalEditor::editIncidence( Incidence *incidence, const QDate &date, Calendar *calendar )
 {
   Journal *journal=dynamic_cast<Journal*>( incidence );
   if ( journal ) {
     init();
 
     mJournal = journal;
-    readJournal( mJournal );
+    readJournal( mJournal, date );
   }
 
   setCaption( i18nc( "@title:window",
@@ -187,7 +187,7 @@ void KOJournalEditor::setTime( const QTime &time )
   mGeneral->setTime( time );
 }
 
-void KOJournalEditor::readJournal( Journal *journal, bool tmpl )
+void KOJournalEditor::readJournal( Journal *journal, const QDate &date, bool tmpl )
 {
   //TODO: just tmpl variable
   Q_UNUSED( tmpl );
@@ -196,7 +196,7 @@ void KOJournalEditor::readJournal( Journal *journal, bool tmpl )
     return;
   }
 
-  mGeneral->readJournal( journal );
+  mGeneral->readJournal( journal, date );
   mDetails->readIncidence( journal );
 }
 
@@ -233,7 +233,7 @@ void KOJournalEditor::loadTemplate( CalendarLocal &cal )
   if ( journals.count() == 0 ) {
     KMessageBox::error( this, i18n( "Template does not contain a valid journal." ) );
   } else {
-    readJournal( journals.first() );
+    readJournal( journals.first(), QDate() );
   }
 }
 

@@ -145,8 +145,7 @@ void KOEditorGeneralJournal::initCategories( QWidget *parent, QBoxLayout *topLay
   categoriesLayout->addWidget( mCategoriesLabel, 1 );
 }
 
-
-void KOEditorGeneralJournal::readJournal( Journal *journal, bool tmpl )
+void KOEditorGeneralJournal::readJournal( Journal *journal, const QDate &, bool tmpl )
 {
   setSummary( journal->summary() );
   if ( !tmpl ) {

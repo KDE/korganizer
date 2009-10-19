@@ -42,6 +42,7 @@
 #include <ktextedit.h>
 #include <KComboBox>
 #include <KRichTextWidget>
+#include <ksystemtimezone.h>
 
 #include <QBoxLayout>
 #include <QCheckBox>
@@ -430,15 +431,35 @@ void KOEditorGeneralEvent::setDefaults( const QDateTime &from,
   setDateTimes( KDateTime( from, mStartSpec ), KDateTime( to, mEndSpec ) );
 }
 
-void KOEditorGeneralEvent::readEvent( Event *event, bool isTemplate )
+void KOEditorGeneralEvent::readEvent( Event *event, const QDate &date, bool isTemplate )
 {
   mHasTimeCheckbox->setChecked( !event->allDay() );
   setTimeEditorsEnabled( !event->allDay() );
 
   if ( !isTemplate ) {
-    // Convert UTC to local timezone, if needed (i.e. for kolab #204059)
     KDateTime startDT = event->dtStart();
     KDateTime endDT = event->dtEnd();
+    if ( event->recurs() && date.isValid() ) {
+      // Consider the active date when editing recurring Events.
+      KDateTime kdt( date, QTime( 0, 0, 0 ), KSystemTimeZones::local() );
+      int diffDays = startDT.daysTo( kdt );
+      kdt = kdt.addSecs( -1 );
+      startDT.setDate( event->recurrence()->getNextDateTime( kdt ).date() );
+      if ( event->hasEndDate() ) {
+        endDT = endDT.addDays( diffDays );
+        if ( startDT > endDT ) {
+          startDT.setDate( event->recurrence()->getPreviousDateTime( kdt ).date() );
+          endDT = startDT.addDays( event->dtStart().daysTo( event->dtEnd() ) );
+        }
+      } else {
+        if ( event->hasDuration() ) {
+          endDT = startDT.addSecs( event->duration().asSeconds() );
+        } else {
+          endDT = startDT;
+        }
+      }
+    }
+    // Convert UTC to local timezone, if needed (i.e. for kolab #204059)
     if ( startDT.isUtc() ) {
       startDT = startDT.toLocalZone();
     }

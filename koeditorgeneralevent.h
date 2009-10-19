@@ -68,7 +68,8 @@ class KOEditorGeneralEvent : public KOEditorGeneral
                      date information isn't set and the currently entered
                      time/date in the editor dialog is preserved.
     */
-    void readEvent( Event *event, bool tmpl = false );
+    void readEvent( Event *event, const QDate &date, bool tmpl = false );
+
     /** Write event settings to event object */
     void writeEvent( Event * );
 

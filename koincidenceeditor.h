@@ -29,6 +29,8 @@
 #include <kurl.h>
 #include <QList>
 
+class QDate;
+
 namespace KPIM {
   class DesignerFields;
   class EmbeddedURLPage;
@@ -73,7 +75,7 @@ class KOIncidenceEditor : public KPageDialog
 
   public slots:
     /** Edit an existing todo. */
-    virtual void editIncidence( Incidence *, Calendar * ) = 0;
+    virtual void editIncidence( Incidence *, const QDate &, Calendar * ) = 0;
     virtual void setIncidenceChanger( IncidenceChangerBase *changer )
     { mChanger = changer; }
 

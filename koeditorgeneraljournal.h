@@ -67,7 +67,7 @@ class KOEditorGeneralJournal : public KOEditorGeneral
     /** Set time widget to default values */
     void setTime( const QTime &time );
     /** Read journal object and setup widgets accordingly */
-    void readJournal( Journal *, bool tmpl = false );
+    void readJournal( Journal *, const QDate &, bool tmpl = false );
     /** Write journal settings to event object */
     void writeJournal( Journal * );
 

@@ -78,7 +78,7 @@ class KOJournalEditor : public KOIncidenceEditor
                    bool richDescription = false );
 
     /** Edit an existing Journal. */
-    void editIncidence( Incidence *, Calendar * );
+    void editIncidence( Incidence *, const QDate &date, Calendar * );
 
     /** Set date widget to default values */
     void setDate( const QDate &date );
@@ -94,7 +94,7 @@ class KOJournalEditor : public KOIncidenceEditor
       @param tmpl If true, the journal is treated as a template, so the
       currently set time is preserved in the editor dialog.
     */
-    void readJournal( Journal *journal, bool tmpl = false );
+    void readJournal( Journal *journal, const QDate &date, bool tmpl = false );
 
     /** Write Journal settings to journal object */
     void writeJournal( Journal * );
