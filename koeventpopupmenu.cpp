@@ -143,13 +143,13 @@ void KOEventPopupMenu::popupEdit()
 
 void KOEventPopupMenu::print()
 {
-#ifdef AKONADI_PORT_DISABLED
   KOCoreHelper helper;
   CalPrinter printer( this, mEventview->calendar(), &helper );
   connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
 
   Item::List selectedIncidences;
   selectedIncidences.append( mCurrentIncidence );
+#ifdef AKONADI_PORT_DISABLED
   printer.print( KOrg::CalPrinterBase::Incidence,
                  mCurrentDate, mCurrentDate, selectedIncidences, false );
 #endif
@@ -157,13 +157,13 @@ void KOEventPopupMenu::print()
 
 void KOEventPopupMenu::printPreview()
 {
-#ifdef AKONADI_PORT_DISABLED
   KOCoreHelper helper;
   CalPrinter printer( this, mEventview->calendar(), &helper );
   connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
 
   Item::List selectedIncidences;
   selectedIncidences.append( mCurrentIncidence );
+#ifdef AKONADI_PORT_DISABLED
   printer.print( KOrg::CalPrinterBase::Incidence,
                  mCurrentDate, mCurrentDate, selectedIncidences, true );
 #endif

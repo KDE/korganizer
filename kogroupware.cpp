@@ -131,7 +131,6 @@ FreeBusyManager *KOGroupware::freeBusyManager()
 
 void KOGroupware::incomingDirChanged( const QString &path )
 {
-#ifdef AKONADI_PORT_DISABLED
   const QString incomingDirName = KStandardDirs::locateLocal( "data","korganizer/" ) + "income.";
   if ( !path.startsWith( incomingDirName ) ) {
     kDebug() << "Wrong dir" << path;
@@ -163,6 +162,7 @@ void KOGroupware::incomingDirChanged( const QString &path )
 
   f.remove();
 
+#ifdef AKONADI_PORT_DISABLED
   ScheduleMessage *message = mFormat.parseScheduleMessage( mCalendar, iCal );
   if ( !message ) {
     QString errorMessage;

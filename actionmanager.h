@@ -312,7 +312,6 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     void showTipOnStart();
 
     void downloadNewStuff();
-    void uploadNewStuff();
 
     void toggleDateNavigator();
     void toggleTodoView();
@@ -354,6 +353,7 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
 
     void slotResourcesChanged(bool);
     void slotChangeComboActionItem(int);
+    void slotNewStuffDownloaded(KJob *job);
 
   private:
     class ActionStringsVisitor;

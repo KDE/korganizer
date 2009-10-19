@@ -362,7 +362,7 @@ bool IncidenceChanger::addIncidence( const Incidence::Ptr &incidence, QWidget *p
   }
 #if 0 // don't notify here, wait for akonadi notification
   emit incidenceAdded( item );
-#endif // AKONADI_PORT_DISABLED
+#endif
   return true;
 }
 

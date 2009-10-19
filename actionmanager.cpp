@@ -54,6 +54,7 @@
 
 #include <akonadi/kcal/utils.h>
 
+#include <kio/job.h>
 #include <KAction>
 #include <KActionCollection>
 #include <KFileDialog>
@@ -76,6 +77,7 @@
 #include <QApplication>
 #include <QTimer>
 #include <QDebug>
+#include <QTemporaryFile>
 
 class KOrganizerEditorConfig : public KOEditorConfig
 {
@@ -1532,61 +1534,62 @@ void ActionManager::downloadNewStuff()
       continue;
     }
 
-    AkonadiCalendarAdaptor cal( mCalendarAkonadi );
-
-    ICalFormat format;
-    FileStorage storage( &cal );
-    storage.setFileName( entry->payload().representation() );
-    storage.setSaveFormat( &format );
-    Q_ASSERT( storage.saveFormat() );
-    // FIXME download before load
-    if ( !storage.load() ) {
-      KMessageBox::error( mCalendarView, i18n( "Could not load calendar %1.", entry->payload().representation() ) );
+    const KUrl filename( entry->payload().representation() );
+    if( ! filename.isValid() ) {
       continue;
     }
 
-    Event::List events = cal.events();
-    QStringList eventList;
-    Event::List::ConstIterator it;
-    for ( it = events.constBegin(); it != events.constEnd(); ++it ) {
-      QString text = (*it)->summary();
-      eventList.append( text );
-    }
-
-    int result = KMessageBox::warningContinueCancelList( mCalendarView,
-      i18n( "The downloaded events will be merged into your current calendar." ),
-      eventList );
-
-    if ( result != KMessageBox::Continue ) {
-      // FIXME (KNS2): hm, no way out here :-)
-    }
-
-    if ( mCalendarView->openCalendar( entry->payload().representation(), true ) ) {
-      // FIXME (KNS2): here neither
-    }
+    //QTemporaryFile tempfile;
+    srand(time(NULL));    
+    KUrl tempfile( QFileInfo( QDir::home(),
+                              QString("%1-%2").arg(rand()).arg(QFileInfo(filename.toLocalFile()).fileName())
+                              ).absoluteFilePath() );
+    
+    KIO::FileCopyJob *job = KIO::file_copy(filename, KUrl::fromPath(tempfile.fileName()),
+                                           -1, KIO::Overwrite | KIO::HideProgressInfo);
+    connect(job, SIGNAL(result(KJob*)), this, SLOT(slotNewStuffDownloaded(KJob*)));
   }
-
+  
   // FIXME (KNS2): monday change
-  qDeleteAll(entries);
+
+  //qDeleteAll(entries);
 }
 
-void ActionManager::uploadNewStuff()
+void ActionManager::slotNewStuffDownloaded(KJob *_job)
 {
-  KTemporaryFile tmpfile;
-  if ( !tmpfile.open() ) {
-    return;
-  }
-  QString tmpfilename = tmpfile.fileName();
-  tmpfile.close();
-
-  // FIXME (KNS2): use mCalendarView as parent widget
-  if( mCalendarView->saveCalendar( tmpfilename ) ) {
-    //Laurent 2008-10-25: comment until KNS::Engine::upload is implemented
-    //                    otherwise it asserts by default...
-    //KNS::Engine::upload( tmpfilename );
+  KIO::FileCopyJob *job = static_cast<KIO::FileCopyJob*>(_job);
+  const QString filename = job->destUrl().toLocalFile();
+  if ( job->error() ) {
+    KMessageBox::error( mCalendarView, i18n( "Could not download calendar %1: %2.",
+                                             job->srcUrl().url(), job->errorString() ) );
   } else {
-    // FIXME (KNS2): display error here
+    AkonadiCalendarAdaptor cal( mCalendarAkonadi );
+    FileStorage storage( &cal );
+    storage.setFileName( filename );
+    storage.setSaveFormat( new ICalFormat );
+    if ( !storage.load() ) {
+      KMessageBox::error( mCalendarView, i18n( "Could not load calendar %1.", filename ) );
+    } else {
+      QStringList eventList;
+      foreach(Event* e, cal.events()) {
+        eventList.append( e->summary() );
+      }
+
+      const int result = KMessageBox::warningContinueCancelList( mCalendarView,
+        i18n( "The downloaded events will be merged into your current calendar." ),
+        eventList );
+
+      if ( result != KMessageBox::Continue ) {
+        // FIXME (KNS2): hm, no way out here :-)
+      }
+
+      if ( mCalendarView->openCalendar( filename, true ) ) {
+        // FIXME (KNS2): here neither
+      }
+    }
   }
+
+  QFile(filename).remove(); // remove tempfile again
 }
 
 QString ActionManager::localFileName()
