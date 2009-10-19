@@ -1539,12 +1539,14 @@ void ActionManager::downloadNewStuff()
       continue;
     }
 
-    //QTemporaryFile tempfile;
+#if 0
     srand(time(NULL));    
     KUrl tempfile( QFileInfo( QDir::home(),
                               QString("%1-%2").arg(rand()).arg(QFileInfo(filename.toLocalFile()).fileName())
                               ).absoluteFilePath() );
-    
+#else
+   QTemporaryFile tempfile;
+#endif
     KIO::FileCopyJob *job = KIO::file_copy(filename, KUrl::fromPath(tempfile.fileName()),
                                            -1, KIO::Overwrite | KIO::HideProgressInfo);
     connect(job, SIGNAL(result(KJob*)), this, SLOT(slotNewStuffDownloaded(KJob*)));
