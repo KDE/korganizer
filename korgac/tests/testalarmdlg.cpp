@@ -26,19 +26,26 @@
 
 #include <kcal/event.h>
 #include <kcal/todo.h>
-using namespace KCal;
-
 #include <kaboutdata.h>
 #include <kapplication.h>
 #include <kdebug.h>
 #include <klocale.h>
 #include <kcmdlineargs.h>
-
+#include <boost/shared_ptr.hpp>
+#include <akonadi/item.h>
 #include <QWidget>
+
+using namespace KCal;
+
+template<class T> Akonadi::Item incidenceToItem(T* incidence)
+{
+  Akonadi::Item item;
+  item.setPayload< boost::shared_ptr<T> >( boost::shared_ptr<T>(incidence) );
+  return item;
+}
 
 int main( int argc, char **argv )
 {
-#ifdef AKONADI_PORT_DISABLED
   KAboutData aboutData( "testkabc", 0, ki18n( "TestKabc" ), "0.1" );
   KCmdLineArgs::init( argc, argv, &aboutData );
 
@@ -82,19 +89,14 @@ int main( int argc, char **argv )
   t3->newAlarm();
 
   AlarmDialog dlg( 0 );
-  dlg.addIncidence( e1, QDateTime::currentDateTime(), QString() );
-  dlg.addIncidence( t1, QDateTime::currentDateTime(),
-                    QString( "THIS IS DISPLAY TEXT" ) );
-  dlg.addIncidence( e2, QDateTime::currentDateTime(), QString() );
-  dlg.addIncidence( e3, QDateTime::currentDateTime(), QString() );
-  dlg.addIncidence( t2, QDateTime::currentDateTime(),
-                    QString( "THIS IS DISPLAY TEXT" ) );
-  dlg.addIncidence( t3, QDateTime::currentDateTime(), QString() );
+  dlg.addIncidence( incidenceToItem(e1), QDateTime::currentDateTime(), QString() );
+  dlg.addIncidence( incidenceToItem(t1), QDateTime::currentDateTime(), QString( "THIS IS DISPLAY TEXT" ) );
+  dlg.addIncidence( incidenceToItem(e2), QDateTime::currentDateTime(), QString() );
+  dlg.addIncidence( incidenceToItem(e3), QDateTime::currentDateTime(), QString() );
+  dlg.addIncidence( incidenceToItem(t2), QDateTime::currentDateTime(), QString( "THIS IS DISPLAY TEXT" ) );
+  dlg.addIncidence( incidenceToItem(t3), QDateTime::currentDateTime(), QString() );
   dlg.show();
   dlg.eventNotification();
 
   return app.exec();
-#else
-  return 0;
-#endif
 }
