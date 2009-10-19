@@ -60,12 +60,12 @@ class KOTodoEditor : public KOIncidenceEditor
     */
     void setTexts( const QString &summary, const QString &description = QString::null );
     /** Edit an existing todo. */
-    void editIncidence(Incidence *incidence, Calendar* calendar);
+    void editIncidence(Incidence *incidence, const QDate &date, Calendar* calendar);
 
     /** Set widgets to default values */
     void setDates( const QDateTime &due, bool allDay = true, Todo *relatedTodo = 0 );
     /** Read event object and setup widgets accordingly */
-    void readTodo(Todo *todo, Calendar *calendar);
+    void readTodo(Todo *todo, Calendar *calendar,  const QDate &date);
     /** Write event settings to event object */
     void writeTodo(Todo *);
 

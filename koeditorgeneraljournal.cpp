@@ -136,7 +136,7 @@ void KOEditorGeneralJournal::setDefaults( const QDate &date )
   setDate( date );
 }
 
-void KOEditorGeneralJournal::readJournal( Journal *journal, bool tmpl )
+void KOEditorGeneralJournal::readJournal( Journal *journal, const QDate &, bool tmpl )
 {
   setSummary( journal->summary() );
   if ( !tmpl ) {

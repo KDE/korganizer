@@ -111,7 +111,9 @@ void KOEventEditor::reload()
 {
   kdDebug(5850) << "KOEventEditor::reload()" << endl;
 
-  if ( mEvent ) readEvent( mEvent, mCalendar );
+  if ( mEvent ) {
+    readEvent( mEvent, mCalendar, QDate() );
+  }
 }
 
 void KOEventEditor::setupGeneral()
@@ -205,7 +207,7 @@ void KOEventEditor::setupFreeBusy()
   topLayout->addWidget( mFreeBusy );
 }
 
-void KOEventEditor::editIncidence( Incidence *incidence, Calendar *calendar )
+void KOEventEditor::editIncidence( Incidence *incidence, const QDate &date, Calendar *calendar )
 {
   Event*event = dynamic_cast<Event*>(incidence);
   if ( event ) {
@@ -213,7 +215,7 @@ void KOEventEditor::editIncidence( Incidence *incidence, Calendar *calendar )
 
     mEvent = event;
     mCalendar = calendar;
-    readEvent( mEvent, mCalendar );
+    readEvent( mEvent, mCalendar, date );
   }
 
   setCaption( i18n("Edit Event") );
@@ -336,9 +338,9 @@ void KOEventEditor::deleteEvent()
   reject();
 }
 
-void KOEventEditor::readEvent( Event *event, Calendar *calendar, bool tmpl )
+void KOEventEditor::readEvent( Event *event, Calendar *calendar, const QDate &date, bool tmpl )
 {
-  mGeneral->readEvent( event, calendar, tmpl );
+  mGeneral->readEvent( event, calendar, date, tmpl );
   mRecurrence->readIncidence( event );
 //  mAlarms->readIncidence( event );
   if ( mFreeBusy ) {
@@ -390,7 +392,7 @@ void KOEventEditor::loadTemplate( /*const*/ CalendarLocal& cal )
         i18n("Template does not contain a valid event.") );
   } else {
     kdDebug(5850) << "KOEventEditor::slotLoadTemplate(): readTemplate" << endl;
-    readEvent( events.first(), 0, true );
+    readEvent( events.first(), 0, QDate(), true );
   }
 }
 

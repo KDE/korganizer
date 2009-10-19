@@ -69,12 +69,12 @@ class KOJournalEditor : public KOIncidenceEditor
     */
     void setTexts( const QString &summary, const QString &description = QString::null );
     /** Edit an existing Journal. */
-    void editIncidence(Incidence *, Calendar *);
+    void editIncidence(Incidence *, const QDate &date, Calendar *);
 
     /** Set widgets to default values */
     void setDate( const QDate &date );
     /** Read event object and setup widgets accordingly */
-    void readJournal( Journal * );
+    void readJournal( Journal *, const QDate &date );
     /** Write event settings to event object */
     void writeJournal( Journal * );
 

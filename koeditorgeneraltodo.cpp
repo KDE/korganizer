@@ -269,7 +269,7 @@ void KOEditorGeneralTodo::setDefaults( const QDateTime &due, bool allDay )
   mCompletedCombo->setCurrentItem(0);
 }
 
-void KOEditorGeneralTodo::readTodo(Todo *todo, Calendar *calendar)
+void KOEditorGeneralTodo::readTodo(Todo *todo, Calendar *calendar, const QDate &date )
 {
   KOEditorGeneral::readIncidence(todo, calendar);
 
@@ -278,8 +278,11 @@ void KOEditorGeneralTodo::readTodo(Todo *todo, Calendar *calendar)
   if (todo->hasDueDate()) {
     enableAlarm( true );
     dueDT = todo->dtDue();
-    mDueDateEdit->setDate(todo->dtDue().date());
-    mDueTimeEdit->setTime(todo->dtDue().time());
+    if ( todo->doesRecur() && date.isValid() ) {
+      dueDT.addDays( todo->dtDue().date().daysTo( date ) );
+    }
+    mDueDateEdit->setDate(dueDT.date());
+    mDueTimeEdit->setTime(dueDT.time());
     mDueCheck->setChecked(true);
   } else {
     enableAlarm( false );
@@ -291,8 +294,12 @@ void KOEditorGeneralTodo::readTodo(Todo *todo, Calendar *calendar)
   }
 
   if (todo->hasStartDate()) {
-    mStartDateEdit->setDate(todo->dtStart().date());
-    mStartTimeEdit->setTime(todo->dtStart().time());
+    QDateTime startDT = todo->dtStart();
+    if ( todo->doesRecur() && date.isValid() ) {
+      startDT.setDate( date );
+    }
+    mStartDateEdit->setDate(startDT.date());
+    mStartTimeEdit->setTime(startDT.time());
     mStartCheck->setChecked(true);
   } else {
     mStartDateEdit->setEnabled(false);
@@ -566,7 +573,7 @@ void KOEditorGeneralTodo::modified (Todo* todo, int modification)
     break;
   case KOGlobals::UNKNOWN_MODIFIED: // fall through
   default:
-    readTodo( todo, 0 );
+    readTodo( todo, 0, QDate() );
     break;
   }
 }

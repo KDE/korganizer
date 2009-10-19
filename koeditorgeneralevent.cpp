@@ -317,7 +317,7 @@ void KOEditorGeneralEvent::setDefaults( const QDateTime &from,
   setDateTimes(from,to);
 }
 
-void KOEditorGeneralEvent::readEvent( Event *event, Calendar *calendar, bool tmpl )
+void KOEditorGeneralEvent::readEvent( Event *event, Calendar *calendar, const QDate &date, bool tmpl )
 {
   QString tmpStr;
 
@@ -325,8 +325,30 @@ void KOEditorGeneralEvent::readEvent( Event *event, Calendar *calendar, bool tmp
   timeStuffDisable(event->doesFloat());
 
   if ( !tmpl ) {
+    QDateTime startDT = event->dtStart();
+    QDateTime endDT = event->dtEnd();
+    if ( event->doesRecur() && date.isValid() ) {
+      // Consider the active date when editing recurring Events.
+      QDateTime kdt( date, QTime( 0, 0, 0 ) );
+      int diffDays = startDT.daysTo( kdt );
+      kdt = kdt.addSecs( -1 );
+      startDT.setDate( event->recurrence()->getNextDateTime( kdt ).date() );
+      if ( event->hasEndDate() ) {
+        endDT = endDT.addDays( diffDays );
+        if ( startDT > endDT ) {
+          startDT.setDate( event->recurrence()->getPreviousDateTime( kdt ).date() );
+          endDT = startDT.addDays( event->dtStart().daysTo( event->dtEnd() ) );
+        }
+      } else {
+        if ( event->hasDuration() ) {
+          endDT = startDT.addSecs( event->duration() );
+        } else {
+          endDT = startDT;
+        }
+      }
+    }
     // the rest is for the events only
-    setDateTimes(event->dtStart(),event->dtEnd());
+    setDateTimes( startDT, endDT );
   }
 
   switch( event->transparency() ) {

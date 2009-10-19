@@ -129,7 +129,6 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
     KOIncidenceEditor *editorDialog( Incidence* ) const;
     IncidenceChangerBase *incidenceChanger() const { return mChanger; }
 
-    QDate activeDate(bool);
     QDate startDate();
     QDate endDate();
 
@@ -539,7 +538,14 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
      */
     void adaptNavigationUnits();
 
-    //Attendee* getYourAttendee( Event *event );
+    /**
+      Returns the best guess at the current active date in the view.
+
+      @param fallbackToToday If guessing doesn't work, some views will prefer
+      today to be returned instead of the first select date in the day matrix,
+      Journal view for example.
+    */
+    QDate activeDate( bool fallbackToToday = false );
 
   protected:
     void setIncidenceChanger( IncidenceChangerBase *changer );
