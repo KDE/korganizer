@@ -331,7 +331,7 @@ void KOWhatsNextView::showIncidence( const QString &uid )
 
   AkonadiCalendar* cal = dynamic_cast<AkonadiCalendar*>( calendar() );
   if ( !cal )
-    return; //PENDING(AKONADI_PORT) remove this dyncast and guard
+    return;
 
   if ( uid.startsWith( QLatin1String( "event:" ) ) ) {
     incidence = cal->incidence( cal->itemIdForIncidenceUid(uid.mid( 6 )) );

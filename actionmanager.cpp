@@ -42,6 +42,7 @@
 #include "kowindowlist.h"
 #include "reminderclient.h"
 #include "akonadicalendar.h"
+#include "akonadicalendaradaptor.h"
 #include "akonadicollectionview.h"
 #include "htmlexport.h"
 #include "htmlexportsettings.h"
@@ -1518,8 +1519,6 @@ bool ActionManager::addIncidence( const QString &ical )
 
 void ActionManager::downloadNewStuff()
 {
-#if 0 //AKONADI_PORT_DISABLED
-
   kDebug();
 
   // FIXME (KNS2): use mCalendarView as parent widget
@@ -1533,7 +1532,7 @@ void ActionManager::downloadNewStuff()
       continue;
     }
 
-    CalendarLocal cal( KOPrefs::instance()->timeSpec() );
+    AkonadiCalendarAdaptor cal( mCalendarAkonadi );
 
     // FIXME (KNS2): According to Reinhold, this should cope with remote URIs
     FileStorage storage( &cal, entry->payload().representation() );
@@ -1543,9 +1542,7 @@ void ActionManager::downloadNewStuff()
     }
 
     Event::List events = cal.events();
-
     QStringList eventList;
-
     Event::List::ConstIterator it;
     for ( it = events.constBegin(); it != events.constEnd(); ++it ) {
       QString text = (*it)->summary();
@@ -1567,7 +1564,6 @@ void ActionManager::downloadNewStuff()
 
   // FIXME (KNS2): monday change
   //KNS::Engine::cleanup();
-#endif
 }
 
 void ActionManager::uploadNewStuff()

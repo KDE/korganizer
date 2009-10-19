@@ -360,7 +360,7 @@ bool IncidenceChanger::addIncidence( const Incidence::Ptr &incidence, QWidget *p
       kError() << "sendIcalMessage failed.";
     }
   }
-#ifdef AKONADI_PORT_DISABLED // don't notify here, wait for akonadi notification
+#if 0 // don't notify here, wait for akonadi notification
   emit incidenceAdded( item );
 #endif // AKONADI_PORT_DISABLED
   return true;
