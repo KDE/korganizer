@@ -25,18 +25,27 @@
 
 #include "koeventpopupmenu.h"
 #include "actionmanager.h"
+#include "calendarview.h"
 #ifndef KORG_NOPRINTER
 #include "calprinter.h"
 #endif
 #include "kocorehelper.h"
 #include "koglobals.h"
+#include "stdcalendar.h"
+#include "incidencechanger.h"
 
+#include <KCal/CalendarResources>
+#include <KCal/CalFormat>
+#include <KCal/Event>
 #include <KCal/Incidence>
+#include <KCal/Journal>
+#include <KCal/Todo>
 
 #include <KActionCollection>
 #include <KLocale>
 
 KOEventPopupMenu::KOEventPopupMenu()
+  : mCopyToCalendarMenu( 0 ), mMoveToCalendarMenu( 0 )
 {
   mCalendar = 0;
   mCurrentIncidence = 0;
@@ -95,6 +104,17 @@ void KOEventPopupMenu::showIncidencePopup( Calendar *cal, Incidence *incidence, 
   mCurrentIncidence = incidence;
   mCurrentDate = qd;
 
+  if ( mCopyToCalendarMenu ) {
+    removeAction( mCopyToCalendarMenu->menuAction() );
+    delete mCopyToCalendarMenu;
+    mCopyToCalendarMenu = 0;
+  }
+  if ( mMoveToCalendarMenu ) {
+    removeAction( mMoveToCalendarMenu->menuAction() );
+    delete mMoveToCalendarMenu;
+    mMoveToCalendarMenu = 0;
+  }
+
   if ( mCurrentIncidence && qd.isValid() ) {
 
     if ( mCurrentIncidence->recurs() ) {
@@ -120,6 +140,20 @@ void KOEventPopupMenu::showIncidencePopup( Calendar *cal, Incidence *incidence, 
       (*it)->setVisible( mCurrentIncidence->type() == "Todo" );
       (*it)->setEnabled( !mCurrentIncidence->isReadOnly() );
     }
+
+    // If we can determine the resource for the selected incidence, also add
+    // menu selections for moving/copying that incidence to another resource.
+    if ( KOrg::StdCalendar::self()->resource( mCurrentIncidence ) ) {
+      if ( hasOtherWriteableCalendars() ) {
+        mCopyToCalendarMenu = buildCalendarCopyMenu();
+        addMenu( mCopyToCalendarMenu );
+      }
+      if ( !mCurrentIncidence->isReadOnly() && hasOtherWriteableCalendars() ) {
+        mMoveToCalendarMenu = buildCalendarMoveMenu();
+        addMenu( mMoveToCalendarMenu );
+      }
+    }
+
     popup( QCursor::pos() );
   } else {
     kDebug() << "No event selected";
@@ -230,6 +264,93 @@ void KOEventPopupMenu::toggleTodoCompleted()
 {
   if ( mCurrentIncidence && mCurrentIncidence->type() == "Todo" ) {
     emit toggleTodoCompletedSignal( mCurrentIncidence );
+  }
+}
+
+bool KOEventPopupMenu::isResourceWritable( const ResourceCalendar *resource ) const
+{
+  const bool isCurrentIncidenceOwner =
+      KOrg::StdCalendar::self()->resource( mCurrentIncidence ) == resource;
+
+  // FIXME: only take into account writable subresources here
+  return
+    resource->isActive() &&
+    !resource->readOnly() &&
+    ( !isCurrentIncidenceOwner || resource->subresources().size() > 2 );
+}
+
+QMenu *KOEventPopupMenu::buildCalendarCopyMenu()
+{
+  QMenu *const resourceMenu = new QMenu( i18n( "C&opy to Calendar" ), this );
+  resourceMenu->setIcon( KIcon( "edit-copy" ) );
+  KCal::CalendarResourceManager *const manager = KOrg::StdCalendar::self()->resourceManager();
+  KCal::CalendarResourceManager::Iterator it;
+  for ( it = manager->begin(); it != manager->end(); ++it ) {
+    const ResourceCalendar *const resource = *it;
+
+    if ( !isResourceWritable( resource ) ) {
+      continue;
+    }
+
+    QAction *const resourceAction = new QAction( resource->resourceName(), resourceMenu );
+    resourceAction->setData( QVariant::fromValue( resource->identifier() ) );
+    resourceMenu->addAction( resourceAction );
+
+  }
+  connect( resourceMenu, SIGNAL(triggered(QAction*)),
+           this, SLOT(copyIncidenceToResource(QAction*)) );
+  return resourceMenu;
+}
+
+QMenu *KOEventPopupMenu::buildCalendarMoveMenu()
+{
+  QMenu *const resourceMenu = new QMenu( i18n( "&Move to Calendar" ), this );
+  resourceMenu->setIcon( KIcon( "go-jump" ) );
+  KCal::CalendarResourceManager *const manager = KOrg::StdCalendar::self()->resourceManager();
+  KCal::CalendarResourceManager::Iterator it;
+  for ( it = manager->begin(); it != manager->end(); ++it ) {
+    const ResourceCalendar *const resource = *it;
+
+    if ( !isResourceWritable( resource ) ) {
+      continue;
+    }
+
+    QAction *const resourceAction = new QAction( resource->resourceName(), resourceMenu );
+    resourceAction->setData( QVariant::fromValue( resource->identifier() ) );
+    resourceMenu->addAction( resourceAction );
+
+  }
+  connect( resourceMenu, SIGNAL(triggered(QAction*)),
+           this, SLOT(moveIncidenceToResource(QAction*)) );
+  return resourceMenu;
+}
+
+bool KOEventPopupMenu::hasOtherWriteableCalendars() const
+{
+  KCal::CalendarResourceManager *const manager = KOrg::StdCalendar::self()->resourceManager();
+  KCal::CalendarResourceManager::Iterator it;
+  for ( it = manager->begin(); it != manager->end(); ++it ) {
+    const ResourceCalendar *const resource = *it;
+    if ( isResourceWritable( resource ) ) {
+      return true;
+    }
+  }
+  return false;
+}
+
+void KOEventPopupMenu::copyIncidenceToResource( QAction *action )
+{
+  const QString resourceId = action->data().toString();
+  if ( mCurrentIncidence && !resourceId.isEmpty() ) {
+    emit copyIncidenceToResourceSignal( mCurrentIncidence, resourceId );
+  }
+}
+
+void KOEventPopupMenu::moveIncidenceToResource( QAction *action )
+{
+  const QString resourceId = action->data().toString();
+  if ( mCurrentIncidence && !resourceId.isEmpty() ) {
+    emit moveIncidenceToResourceSignal( mCurrentIncidence, resourceId );
   }
 }
 

@@ -407,6 +407,8 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
 
     void toggleAlarm( Incidence *incidence );
     void toggleTodoCompleted( Incidence *incidence );
+    void copyIncidenceToResource( Incidence *incidence, const QString &resourceId );
+    void moveIncidenceToResource( Incidence *incidence, const QString &resourceId );
     void dissociateOccurrences( Incidence *incidence, const QDate &date );
 
     /**
@@ -586,7 +588,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     void showErrorMessage( const QString & );
     void schedule( iTIPMethod, Incidence *incidence );
     void addIncidenceOn( Incidence *, const QDate & );
-    void moveIncidenceTo( Incidence *, const QDate & );
+    void moveIncidenceOn( Incidence *, const QDate & );
     void filterActivated( int filterNum );
 
     void resourcesChanged();

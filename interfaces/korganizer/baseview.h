@@ -245,6 +245,16 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
      */
     void toggleTodoCompletedSignal( Incidence * );
 
+    /**
+     * Copy the incidence to the specified resource.
+     */
+    void copyIncidenceToResourceSignal( Incidence *, const QString & );
+
+    /**
+     * Move the incidence to the specified resource.
+     */
+    void moveIncidenceToResourceSignal( Incidence *, const QString & );
+
     /** Dissociate from a recurring incidence the occurrence on the given
      *  date to a new incidence or dissociate all occurrences from the
      *  given date onwards.

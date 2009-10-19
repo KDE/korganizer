@@ -247,6 +247,10 @@ void KOViewManager::connectView( KOrg::BaseView *view )
            mMainView, SLOT(toggleAlarm(Incidence *)) );
   connect( view, SIGNAL(toggleTodoCompletedSignal(Incidence *)),
            mMainView, SLOT(toggleTodoCompleted(Incidence *)) );
+  connect( view, SIGNAL(copyIncidenceToResourceSignal(Incidence *,const QString &)),
+           mMainView, SLOT(copyIncidenceToResource(Incidence *,const QString &)) );
+  connect( view, SIGNAL(moveIncidenceToResourceSignal(Incidence *,const QString &)),
+           mMainView, SLOT(moveIncidenceToResource(Incidence *,const QString &)) );
   connect( view, SIGNAL(dissociateOccurrencesSignal(Incidence *,const QDate &)),
            mMainView, SLOT(dissociateOccurrences(Incidence *,const QDate &)) );
 

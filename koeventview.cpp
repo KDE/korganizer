@@ -75,6 +75,10 @@ KOEventPopupMenu *KOEventView::eventPopup()
            SIGNAL(toggleAlarmSignal(Incidence*)));
   connect( eventPopup, SIGNAL(toggleTodoCompletedSignal(Incidence *)),
            SIGNAL(toggleTodoCompletedSignal(Incidence *)));
+  connect( eventPopup, SIGNAL(copyIncidenceToResourceSignal(Incidence *,const QString &)),
+           SIGNAL(copyIncidenceToResourceSignal(Incidence *,const QString &)));
+  connect( eventPopup, SIGNAL(moveIncidenceToResourceSignal(Incidence *,const QString &)),
+           SIGNAL(moveIncidenceToResourceSignal(Incidence *,const QString &)));
   connect( eventPopup, SIGNAL(dissociateOccurrencesSignal(Incidence *,const QDate &)),
            SIGNAL(dissociateOccurrencesSignal(Incidence *,const QDate &)) );
 

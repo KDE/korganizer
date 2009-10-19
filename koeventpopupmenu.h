@@ -32,6 +32,7 @@
 namespace KCal {
   class Calendar;
   class Incidence;
+  class ResourceCalendar;
 }
 using namespace KCal;
 
@@ -60,6 +61,8 @@ class KOEventPopupMenu : public QMenu
     void toggleTodoCompleted();
     void dissociateOccurrences();
     void forward();
+    void copyIncidenceToResource( QAction *action );
+    void moveIncidenceToResource( QAction *action );
 
   signals:
     void configChanged();
@@ -71,9 +74,16 @@ class KOEventPopupMenu : public QMenu
     void pasteIncidenceSignal();
     void toggleAlarmSignal( Incidence * );
     void toggleTodoCompletedSignal( Incidence * );
+    void copyIncidenceToResourceSignal( Incidence *, const QString & );
+    void moveIncidenceToResourceSignal( Incidence *, const QString & );
     void dissociateOccurrencesSignal( Incidence *, const QDate & );
 
   private:
+    QMenu *buildCalendarCopyMenu();
+    QMenu *buildCalendarMoveMenu();
+    bool hasOtherWriteableCalendars() const;
+    bool isResourceWritable( const ResourceCalendar *resource ) const;
+
     Calendar *mCalendar;
     Incidence *mCurrentIncidence;
     QDate mCurrentDate;
@@ -83,6 +93,8 @@ class KOEventPopupMenu : public QMenu
     QList<QAction *> mTodoOnlyItems;
     QList<QAction *> mRecurrenceItems;
     QAction *mDissociateOccurrences;
+    QMenu *mCopyToCalendarMenu;
+    QMenu *mMoveToCalendarMenu;
 };
 
 #endif
