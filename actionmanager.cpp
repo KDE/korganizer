@@ -1534,8 +1534,12 @@ void ActionManager::downloadNewStuff()
 
     AkonadiCalendarAdaptor cal( mCalendarAkonadi );
 
-    // FIXME (KNS2): According to Reinhold, this should cope with remote URIs
-    FileStorage storage( &cal, entry->payload().representation() );
+    ICalFormat format;
+    FileStorage storage( &cal );
+    storage.setFileName( entry->payload().representation() );
+    storage.setSaveFormat( &format );
+    Q_ASSERT( storage.saveFormat() );
+    // FIXME download before load
     if ( !storage.load() ) {
       KMessageBox::error( mCalendarView, i18n( "Could not load calendar." ) );
       return;
@@ -1563,7 +1567,7 @@ void ActionManager::downloadNewStuff()
   }
 
   // FIXME (KNS2): monday change
-  //KNS::Engine::cleanup();
+  qDeleteAll(entries);
 }
 
 void ActionManager::uploadNewStuff()
