@@ -1541,8 +1541,8 @@ void ActionManager::downloadNewStuff()
     Q_ASSERT( storage.saveFormat() );
     // FIXME download before load
     if ( !storage.load() ) {
-      KMessageBox::error( mCalendarView, i18n( "Could not load calendar." ) );
-      return;
+      KMessageBox::error( mCalendarView, i18n( "Could not load calendar %1.", entry->payload().representation() ) );
+      continue;
     }
 
     Event::List events = cal.events();
