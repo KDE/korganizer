@@ -270,7 +270,7 @@ void KOEditorGeneralTodo::setDefaults( const QDateTime &due, bool allDay )
   mCompletedCombo->setCurrentIndex( 0 );
 }
 
-void KOEditorGeneralTodo::readTodo( Todo *todo, bool tmpl )
+void KOEditorGeneralTodo::readTodo( Todo *todo, const QDate &date, bool tmpl )
 {
   //TODO: do something with tmpl
   Q_UNUSED( tmpl );
@@ -280,6 +280,9 @@ void KOEditorGeneralTodo::readTodo( Todo *todo, bool tmpl )
   if ( todo->hasDueDate() ) {
     enableAlarm( true );
     KDateTime dueDT = todo->dtDue();
+    if ( todo->recurs() && date.isValid() ) {
+      dueDT.addDays( todo->dtDue().date().daysTo( date ) );
+    }
     if ( dueDT.isUtc() ) {
       dueDT = dueDT.toLocalZone();
     }
@@ -300,6 +303,9 @@ void KOEditorGeneralTodo::readTodo( Todo *todo, bool tmpl )
 
   if ( todo->hasStartDate() ) {
     KDateTime startDT = todo->dtStart();
+    if ( todo->recurs() && date.isValid() ) {
+      startDT.setDate( date );
+    }
     if ( startDT.isUtc() ) {
       startDT = startDT.toLocalZone();
     }
@@ -621,7 +627,7 @@ void KOEditorGeneralTodo::modified( Todo *todo, int modification )
     break;
   case KOGlobals::UNKNOWN_MODIFIED: // fall through
   default:
-    readTodo( todo );
+    readTodo( todo, QDate() );
     break;
   }
 }

@@ -112,7 +112,7 @@ void KOTodoEditor::init()
 void KOTodoEditor::reload()
 {
   if ( mTodo ) {
-    readTodo( mTodo, true );
+    readTodo( mTodo, QDate(), true );
   }
 }
 
@@ -195,7 +195,7 @@ void KOTodoEditor::setupRecurrence()
            mRecurrence, SLOT(setEnabled(bool)) );
 }
 
-void KOTodoEditor::editIncidence( Incidence *incidence, Calendar *calendar )
+void KOTodoEditor::editIncidence( Incidence *incidence, const QDate &date, Calendar *calendar )
 {
   Todo *todo = dynamic_cast<Todo*>( incidence );
   if ( todo ) {
@@ -203,7 +203,7 @@ void KOTodoEditor::editIncidence( Incidence *incidence, Calendar *calendar )
 
     mTodo = todo;
     mCalendar = calendar;
-    readTodo( mTodo, false );
+    readTodo( mTodo, date, false );
   }
 
   setCaption( i18nc( "@title:window",
@@ -313,13 +313,13 @@ void KOTodoEditor::setDates( const QDateTime &due, bool allDay, Todo *relatedEve
   }
 }
 
-void KOTodoEditor::readTodo( Todo *todo, bool tmpl )
+void KOTodoEditor::readTodo( Todo *todo, const QDate &date, bool tmpl )
 {
   if ( !todo ) {
     return;
   }
 
-  mGeneral->readTodo( todo, tmpl );
+  mGeneral->readTodo( todo, date, tmpl );
   mDetails->readIncidence( todo );
   mRecurrence->readIncidence( todo );
 
@@ -380,7 +380,7 @@ void KOTodoEditor::loadTemplate( CalendarLocal &cal )
   if ( todos.count() == 0 ) {
     KMessageBox::error( this, i18nc( "@info", "Template does not contain a valid to-do." ) );
   } else {
-    readTodo( todos.first(), true );
+    readTodo( todos.first(), QDate(), true );
   }
 }
 

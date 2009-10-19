@@ -70,7 +70,7 @@ class KOEventEditor : public KOIncidenceEditor
     /**
       Edit an existing event.
     */
-    void editIncidence( Incidence *incidence, Calendar *calendar );
+    void editIncidence( Incidence *incidence, const QDate &date, Calendar *calendar );
 
     /**
       Set widgets to the given date/time values
@@ -81,11 +81,12 @@ class KOEventEditor : public KOIncidenceEditor
       Read event object and setup widgets accordingly. If tmpl is true, the
       event is read as template, i.e. the time and date information isn't set.
 
-      @param event the event from which the data should be used
+      @param event the event from which the data should be used.
+      @param date the active date.
       @param tmpl If true, the event is treated as a template, so the currently
       set time is preserved in the editor dialog.
     */
-    void readEvent( Event *event, bool tmpl = false );
+    void readEvent( Event *event, const QDate &date, bool tmpl = false );
 
     /**
       Write event settings to event object

@@ -2331,7 +2331,7 @@ bool CalendarView::editIncidence( Incidence *incidence, bool isCounter )
   connectIncidenceEditor( incidenceEditor );
 
   mDialogList.insert( incidence, incidenceEditor );
-  incidenceEditor->editIncidence( incidence, mCalendar );
+  incidenceEditor->editIncidence( incidence, activeDate(), mCalendar );
   incidenceEditor->show();
   return true;
 }
