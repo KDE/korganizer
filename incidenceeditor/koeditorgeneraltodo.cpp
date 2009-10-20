@@ -53,7 +53,6 @@ KOEditorGeneralTodo::KOEditorGeneralTodo( QObject *parent )
 
 KOEditorGeneralTodo::~KOEditorGeneralTodo()
 {
-  delete mTimeZones;
 }
 
 void KOEditorGeneralTodo::finishSetup()
