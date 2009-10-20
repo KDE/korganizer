@@ -180,8 +180,8 @@ void KOIncidenceEditor::cancelRemovedAttendees( const Akonadi::Item &item )
 
 void KOIncidenceEditor::slotManageTemplates()
 {
-  //TemplateManagementDialog *const d = new TemplateManagementDialog( this, templates(), type() );
-  TemplateManagementDialog *const d = new TemplateManagementDialog( this, mTemplates, type() );
+  QStringList &templates = KOEditorConfig::instance()->templates( type() );
+  TemplateManagementDialog *const d = new TemplateManagementDialog( this, templates, type() );
   connect( d, SIGNAL( loadTemplate( const QString& ) ),
            this, SLOT( slotLoadTemplate( const QString& ) ) );
   connect( d, SIGNAL( templatesChanged( const QStringList& ) ),
@@ -194,8 +194,6 @@ void KOIncidenceEditor::slotManageTemplates()
 
 void KOIncidenceEditor::slotLoadTemplate( const QString &templateName )
 {
-  kDebug()<<"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! TODO templateName="<<templateName;
-
   CalendarLocal cal( KSystemTimeZones::local() );
   QString fileName = KStandardDirs::locateLocal( "data",
                        "korganizer/templates/" + type() + '/' + templateName );
@@ -228,7 +226,6 @@ void KOIncidenceEditor::slotLoadTemplate( const QString &templateName )
 
 void KOIncidenceEditor::slotSaveTemplate( const QString &templateName )
 {
-  kDebug()<<"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! TODO templateName="<<templateName;
   Q_ASSERT( ! templateName.isEmpty() );
   Q_ASSERT( mIncidence.isValid() );
   Q_ASSERT( mIncidence.hasPayload<Incidence::Ptr>() );
@@ -246,8 +243,8 @@ void KOIncidenceEditor::slotSaveTemplate( const QString &templateName )
 
 void KOIncidenceEditor::slotTemplatesChanged( const QStringList &templateNames )
 {
-  kDebug()<<"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! TODO templateNames="<<templateNames.join(",");
-  mTemplates = templateNames;
+  QStringList &templates = KOEditorConfig::instance()->templates( type() );
+  templates = templateNames;
 }
 
 void KOIncidenceEditor::setupDesignerTabs( const QString &type )
@@ -255,8 +252,7 @@ void KOIncidenceEditor::setupDesignerTabs( const QString &type )
   QStringList activePages =  KOEditorConfig::instance()->activeDesignerFields();
 
   QStringList list = KGlobal::dirs()->findAllResources(
-    "data",
-    "korganizer/designer/" + type + "/*.ui",
+    "data", "korganizer/designer/" + type + "/*.ui",
     KStandardDirs::Recursive |KStandardDirs::NoDuplicates );
 
   for ( QStringList::iterator it = list.begin(); it != list.end(); ++it ) {

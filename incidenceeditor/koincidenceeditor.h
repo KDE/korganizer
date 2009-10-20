@@ -121,7 +121,7 @@ class INCIDENCEEDITOR_EXPORT KOIncidenceEditor : public KPageDialog
   protected:
     virtual void closeEvent( QCloseEvent * );
 
-    virtual QString type() { return QString(); }
+    virtual QString type() = 0;
 
     void setupAttendeesTab();
     void setupDesignerTabs( const QString &type );
@@ -163,7 +163,6 @@ class INCIDENCEEDITOR_EXPORT KOIncidenceEditor : public KPageDialog
     bool mIsCreateTask;
 
     Akonadi::Item mIncidence;
-    QStringList mTemplates;
 };
 
 #endif

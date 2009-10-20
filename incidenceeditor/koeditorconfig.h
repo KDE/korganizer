@@ -68,6 +68,7 @@ class INCIDENCEEDITOR_EXPORT KOEditorConfig : public KPIM::KPimPrefs
     virtual bool defaultTodoReminders() const { return false; }
     virtual bool defaultEventReminders() const { return false; }
     virtual QStringList activeDesignerFields() const { return QStringList(); }
+    virtual QStringList& templates(const QString &type);
 
   private:
     class Private;

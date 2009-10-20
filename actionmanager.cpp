@@ -124,6 +124,15 @@ class KOrganizerEditorConfig : public KOEditorConfig
     virtual QStringList activeDesignerFields() const {
       return KOPrefs::instance()->activeDesignerFields();
     }
+    virtual QStringList& templates(const QString &type) {
+      if(type == "Event") //TODO remove mEventTemplates+etc from KOPrefs::instance()
+        return KOPrefs::instance()->mEventTemplates;
+      if(type == "Todo")
+        return KOPrefs::instance()->mTodoTemplates;
+      if(type == "Journal")
+        return KOPrefs::instance()->mJournalTemplates;
+      return KOEditorConfig::templates(type);
+    }
 };
 
 KOWindowList *ActionManager::mWindowList = 0;

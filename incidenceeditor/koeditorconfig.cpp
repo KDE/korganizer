@@ -32,6 +32,8 @@ class KOEditorConfig::Private
   public:
     static KOEditorConfig *config;
     static void cleanup_config() { delete config; config = 0; }
+
+    QHash<QString, QStringList> mTemplates;
 };
 
 KOEditorConfig *KOEditorConfig::Private::config = 0;
@@ -106,4 +108,9 @@ bool KOEditorConfig::showTimeZoneSelectorInIncidenceEditor() const
   if(Private::config != this)
     return Private::config->showTimeZoneSelectorInIncidenceEditor();
   return true;
+}
+
+QStringList& KOEditorConfig::templates(const QString &type)
+{
+  return d->mTemplates[type];
 }
