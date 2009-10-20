@@ -30,6 +30,7 @@
 #include "akonadicalendar.h"
 
 #include <akonadi/kcal/utils.h>
+#include <akonadi/kcal/akonadicalendaradaptor.h>
 
 #include <KCal/AssignmentVisitor>
 #include <KCal/CalendarResources>
@@ -167,7 +168,6 @@ bool IncidenceChanger::deleteIncidence( const Item &aitem )
 bool IncidenceChanger::cutIncidence( const Item& aitem )
 {
   const Incidence::Ptr incidence = Akonadi::incidence( aitem );
-
   if ( !incidence ) {
     return true;
   }
@@ -175,13 +175,15 @@ bool IncidenceChanger::cutIncidence( const Item& aitem )
   kDebug() << "\"" << incidence->summary() << "\"";
   bool doDelete = sendGroupwareMessage( aitem, KCal::iTIPCancel );
   if( doDelete ) {
-#ifdef AKONADI_PORT_DISABLED
+
     // @TODO: the factory needs to do the locking!
-    DndFactory factory( mCalendar );
-    emit incidenceToBeDeleted( incidence );
-    factory.cutIncidence( incidence );
-    emit incidenceDeleted( incidence );
-#endif
+    AkonadiCalendarAdaptor cal(mCalendar);
+    DndFactory factory( &cal );
+    Akonadi::Item incidenceItem;
+    incidenceItem.setPayload<Incidence::Ptr>( incidence );
+    emit incidenceToBeDeleted( incidenceItem );
+    factory.cutIncidence( incidence.get() );
+    emit incidenceDeleted( incidenceItem );
   }
   return doDelete;
 }
