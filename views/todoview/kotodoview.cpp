@@ -483,12 +483,9 @@ void KOTodoView::contextMenu( const QPoint &pos )
   if ( enable ) {
     Akonadi::Item::List incidences = selectedIncidences();
     if ( !incidences.isEmpty() ) {
-#ifdef AKONADI_PORT_DISABLED // selectedIncidences()
-      mMakeSubtodosIndependent->setEnabled( !incidences[0]->relations().isEmpty() );
-      mMakeTodoIndependent->setEnabled( incidences[0]->relatedTo() );
-#else
-      kWarning()<<"TODO";
-#endif
+      Incidence::Ptr incidencePtr = incidences[0].payload<Incidence::Ptr>();
+      mMakeSubtodosIndependent->setEnabled( !incidencePtr->relations().isEmpty() );
+      mMakeTodoIndependent->setEnabled( incidencePtr->relatedTo() );
     }
 
     switch ( mView->indexAt( pos ).column() ) {
