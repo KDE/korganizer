@@ -1326,13 +1326,12 @@ void CalPrintPluginBase::drawTimeTable( QPainter &p,
     Item::List eventList = mCalendar->events( curDate, timeSpec,
                                                KOrg::EventSortStartDate,
                                                KOrg::SortDirectionAscending );
-#ifdef AKONADI_PORT_DISABLED
+
     alldayHeight = drawAllDayBox( p, eventList, curDate, false, allDayBox,
                                   excludeConfidential, excludePrivate );
     drawAgendaDayBox( p, eventList, curDate, false, fromTime, toTime,
                       dayBox, includeDescription, excludeTime,
                       excludeConfidential, excludePrivate );
-#endif //AKONADI_PORT_DISABLED
 
     i++;
     curDate=curDate.addDays(1);
@@ -1816,14 +1815,26 @@ void CalPrintPluginBase::drawTodo( int &count, const Item &todoItem, QPainter &p
   Todo::List t;
   Incidence::List l = todo->relations();
   Incidence::List::ConstIterator it;
-#ifdef AKONADI_PORT_DISABLED
   for ( it = l.constBegin(); it != l.constEnd(); ++it ) {
     // In the future, to-dos might also be related to events
     // Manually check if the sub-to-do is in the list of to-dos to print
     // The problem is that relations() does not apply filters, so
     // we need to compare manually with the complete filtered list!
     Todo* subtodo = dynamic_cast<Todo *>( *it );
+#ifdef AKONADI_PORT_DISABLED
     if ( subtodo && todoList.contains( subtodo ) ) {
+#else
+    bool subtodoOk = false;
+    if ( subtodo ) {
+      foreach(const Akonadi::Item &item, todoList) {
+        if( item.payload<Todo::Ptr>().get() == subtodo ) {
+          subtodoOk = true;
+          break;
+        }
+      }
+    }
+    if ( subtodoOk ) {
+#endif
       if ( ( excludeConfidential &&
           subtodo->secrecy() == Incidence::SecrecyConfidential ) ||
           ( excludePrivate      &&
@@ -1850,7 +1861,18 @@ void CalPrintPluginBase::drawTodo( int &count, const Item &todoItem, QPainter &p
   }
 
   // Sort the sub-to-dos and print them
+#ifdef AKONADI_PORT_DISABLED
   Item::List sl = mCalendar->sortTodos( &t, sortField, sortDir );
+#else
+  Akonadi::Item::List tl;
+  foreach(Todo* todo, t) {
+    Akonadi::Item todoitem;
+    todoitem.setPayload( Todo::Ptr(todo->clone()) );
+    tl.append( todoitem );
+  }
+  Item::List sl = mCalendar->sortTodos( tl, sortField, sortDir );
+#endif
+
   Item::List::ConstIterator isl;
   int subcount = 0;
   for ( isl = sl.constBegin(); isl != sl.constEnd(); ++isl ) {
@@ -1865,7 +1887,6 @@ void CalPrintPluginBase::drawTodo( int &count, const Item &todoItem, QPainter &p
               excludeConfidential, excludePrivate );
   }
   startPoints.removeAll( &startpt );
-#endif
 }
 
 int CalPrintPluginBase::weekdayColumn( int weekday )
