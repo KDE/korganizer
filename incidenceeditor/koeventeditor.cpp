@@ -30,6 +30,7 @@
 #include "koeditorrecurrence.h"
 #include "koeditorconfig.h"
 #include "korganizer/incidencechangerbase.h"
+#include "../kogroupware.h"
 
 #include <akonadi/kcal/utils.h>
 
@@ -288,9 +289,10 @@ bool KOEventEditor::processInput()
       fillEvent( evItem );
       
       if ( mIsCounter ) {
-#ifdef AKONADI_PORT_DISABLED
-        KOGroupware::instance()->sendCounterProposal( oldEvent, mIncidence );
-#endif
+        Q_ASSERT( mIncidence.hasPayload<KCal::Event::Ptr>() );
+        KCal::Event::Ptr incidenceEvent = mIncidence.payload<KCal::Event::Ptr>();
+        KOGroupware::instance()->sendCounterProposal( oldEvent.get(), incidenceEvent.get() );
+
         // add dummy event at the position of the counter proposal
         Event::Ptr event2( ev->clone() );
         event2->clearAttendees();
