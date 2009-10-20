@@ -146,13 +146,14 @@ void KOEventPopupMenu::print()
   KOCoreHelper helper;
   CalPrinter printer( this, mEventview->calendar(), &helper );
   connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
+  
+  //Item::List selectedIncidences;
+  KCal::ListBase<KCal::Incidence> selectedIncidences;
+  Q_ASSERT( mCurrentIncidence.hasPayload<KCal::Incidence::Ptr>() );
+  selectedIncidences.append( mCurrentIncidence.payload<KCal::Incidence::Ptr>().get() );
 
-  Item::List selectedIncidences;
-  selectedIncidences.append( mCurrentIncidence );
-#ifdef AKONADI_PORT_DISABLED
   printer.print( KOrg::CalPrinterBase::Incidence,
                  mCurrentDate, mCurrentDate, selectedIncidences, false );
-#endif
 }
 
 void KOEventPopupMenu::printPreview()
@@ -161,12 +162,13 @@ void KOEventPopupMenu::printPreview()
   CalPrinter printer( this, mEventview->calendar(), &helper );
   connect( this, SIGNAL(configChanged()), &printer, SLOT(updateConfig()) );
 
-  Item::List selectedIncidences;
-  selectedIncidences.append( mCurrentIncidence );
-#ifdef AKONADI_PORT_DISABLED
+  //Item::List selectedIncidences;
+  KCal::ListBase<KCal::Incidence> selectedIncidences;
+  Q_ASSERT( mCurrentIncidence.hasPayload<KCal::Incidence::Ptr>() );
+  selectedIncidences.append( mCurrentIncidence.payload<KCal::Incidence::Ptr>().get() );
+
   printer.print( KOrg::CalPrinterBase::Incidence,
                  mCurrentDate, mCurrentDate, selectedIncidences, true );
-#endif
 }
 
 void KOEventPopupMenu::popupDelete()
