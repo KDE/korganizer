@@ -901,8 +901,9 @@ void CalendarView::edit_paste()
                         i18n( "Paste failed: unable to determine a valid target date." ) );
     return;
   }
-#ifdef AKONADI_PORT_DISABLED
-  DndFactory factory( mCalendar );
+
+  AkonadiCalendarAdaptor cal(mCalendar);
+  DndFactory factory( &cal );
   Incidence *pastedIncidence;
   if ( time.isValid() ) {
     pastedIncidence = factory.pasteIncidence( date, &time );
@@ -925,21 +926,18 @@ void CalendarView::edit_paste()
         pastedEvent->setDtEnd( kdt.toTimeSpec( pastedIncidence->dtEnd().timeSpec() ) );
       }
     }
-    mChanger->addIncidence( pastedEvent, this );
+    mChanger->addIncidence( Event::Ptr(pastedEvent->clone()), this );
 
   } else if ( pastedIncidence->type() == "Todo" ) {
     Todo *pastedTodo = static_cast<Todo*>(pastedIncidence);
-    Todo *_selectedTodo = selectedTodo();
-    if ( _selectedTodo ) {
-      pastedTodo->setRelatedTo( _selectedTodo );
+    Akonadi::Item _selectedTodoItem = selectedTodo();
+    if ( Todo::Ptr _selectedTodo = Akonadi::todo(_selectedTodoItem) ) {
+      pastedTodo->setRelatedTo( _selectedTodo.get() );
     }
-    mChanger->addIncidence( pastedTodo, this );
+    mChanger->addIncidence( Todo::Ptr(pastedTodo->clone()), this );
   } else if ( pastedIncidence->type() == "Journal" ) {
-    mChanger->addIncidence( pastedIncidence, this );
+    mChanger->addIncidence( Incidence::Ptr(pastedIncidence->clone()), this );
   }
-#else
-  kWarning()<<"TODO";
-#endif // AKONADI_PORT_DISABLED
 }
 
 void CalendarView::edit_options()
