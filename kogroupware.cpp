@@ -41,6 +41,7 @@
 #include "incidenceeditor/koincidenceeditor.h"
 #include "mailscheduler.h"
 #include "akonadicalendar.h"
+#include "akonadicalendaradaptor.h"
 
 #include <KCal/IncidenceFormatter>
 #include <KPIMUtils/Email>
@@ -162,8 +163,8 @@ void KOGroupware::incomingDirChanged( const QString &path )
 
   f.remove();
 
-#ifdef AKONADI_PORT_DISABLED
-  ScheduleMessage *message = mFormat.parseScheduleMessage( mCalendar, iCal );
+  AkonadiCalendarAdaptor adaptor(mCalendar);
+  ScheduleMessage *message = mFormat.parseScheduleMessage( &adaptor, iCal );
   if ( !message ) {
     QString errorMessage;
     if ( mFormat.exception() ) {
@@ -218,8 +219,7 @@ void KOGroupware::incomingDirChanged( const QString &path )
     if ( method != iTIPCounter ) {
       scheduler.acceptTransaction( incidence, method, status, QString() );
     } else {
-      // accept counter proposal
-      scheduler.acceptCounterProposal( calendar, incidence );
+      scheduler.acceptCounterProposal( incidence );
       // send update to all attendees
       sendICalMessage( mView, iTIPRequest, incidence );
     }
@@ -228,15 +228,16 @@ void KOGroupware::incomingDirChanged( const QString &path )
   }
 
   if ( action.startsWith( QLatin1String( "counter" ) ) ) {
-    mView->editIncidence( incidence, true );
-    KOIncidenceEditor *tmp = mView->editorDialog( incidence );
+    Akonadi::Item item;
+    item.setPayload( Incidence::Ptr( incidence->clone() ) );
+#ifdef AKONADI_PORT_DISABLED
+    mView->editIncidence( item, true );
+    KOIncidenceEditor *tmp = mView->editorDialog( item );
     tmp->selectInvitationCounterProposal( true );
+#endif
   }
   mView->updateView();
   delete message;
-#else
-  kWarning()<<"TODO";
-#endif // AKONADI_PORT_DISABLED
 }
 
 class KOInvitationFormatterHelper : public InvitationFormatterHelper

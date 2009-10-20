@@ -33,6 +33,7 @@ namespace KCal {
   class IncidenceBase;
   class Incidence;
   class ICalFormat;
+  class ScheduleMessage;
 }
 
 namespace KOrg {
@@ -50,15 +51,30 @@ namespace KOrg {
       virtual ~MailScheduler();
 
       bool publish ( KCal::IncidenceBase *incidence, const QString &recipients );
+
       bool performTransaction( KCal::IncidenceBase *incidence, KCal::iTIPMethod method );
       bool performTransaction( KCal::IncidenceBase *incidence, KCal::iTIPMethod method, const QString &recipients );
 
-#ifdef AKONADI_PORT_DISABLED
-      QList<ScheduleMessage*> retrieveTransactions();
-      bool deleteTransaction( IncidenceBase *incidence );
+      QList<KCal::ScheduleMessage*> retrieveTransactions();
+      
+      bool deleteTransaction( KCal::IncidenceBase *incidence );
+      
       /** Returns the directory where the free-busy information is stored */
       virtual QString freeBusyDir();
-#endif
+
+      /**
+        Accepts the transaction. The incidence argument specifies the iCal
+        component on which the transaction acts. The status is the result of
+        processing a iTIP message with the current calendar and specifies the
+        action to be taken for this incidence.
+
+        @param incidence the incidence for the transaction.
+        @param method iTIP transaction method to check.
+        @param status scheduling status.
+        @param email the email address of the person for whom this
+        transaction is to be performed.
+      */
+      bool acceptTransaction( KCal::IncidenceBase *incidence, KCal::iTIPMethod method, KCal::ScheduleMessage::Status status, const QString &email );
 
       /** Accepts a counter proposal */
       bool acceptCounterProposal( KCal::Incidence *incidence );

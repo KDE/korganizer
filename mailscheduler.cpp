@@ -29,6 +29,7 @@
 #include "koprefs.h"
 #include "calendarbase.h"
 #include "akonadicalendar.h"
+#include "akonadicalendaradaptor.h"
 
 #include <KCal/Calendar>
 #include <KCal/ICalFormat>
@@ -114,7 +115,6 @@ bool MailScheduler::performTransaction( KCal::IncidenceBase *incidence, KCal::iT
   return status;
 }
 
-#if 0 //AKONADI_PORT_DISABLED
 QList<ScheduleMessage*> MailScheduler::retrieveTransactions()
 {
   QString incomingDirName = KStandardDirs::locateLocal( "data", "korganizer/income" );
@@ -145,8 +145,10 @@ QList<ScheduleMessage*> MailScheduler::retrieveTransactions()
         QString messageString = t.readAll();
         messageString.remove( QRegExp( "\n[ \t]" ) );
         messageString = QString::fromUtf8( messageString.toLatin1() );
-        ScheduleMessage *mess = mFormat->parseScheduleMessage( mCalendar,
-                                                               messageString );
+
+        AkonadiCalendarAdaptor caladaptor(mCalendar);
+        ScheduleMessage *mess = mFormat->parseScheduleMessage( &caladaptor, messageString );
+        
         if ( mess ) {
           kDebug() << "got message '" << (*it) << "'";
           messageList.append( mess );
@@ -182,7 +184,44 @@ QString MailScheduler::freeBusyDir()
 {
   return KStandardDirs::locateLocal( "data", "korganizer/freebusy" );
 }
-#endif
+
+bool MailScheduler::acceptTransaction( KCal::IncidenceBase *incidence, KCal::iTIPMethod method, KCal::ScheduleMessage::Status status, const QString &email )
+{
+  class SchedulerAdaptor : public KCal::Scheduler
+  {
+    public:
+      SchedulerAdaptor(MailScheduler* s, AkonadiCalendarAdaptor *c) : KCal::Scheduler(c), m_scheduler(s), m_calendar(c) {}
+      virtual ~SchedulerAdaptor() {}
+      virtual bool publish ( KCal::IncidenceBase *incidence, const QString &recipients ) {
+        return m_scheduler->publish( incidence, recipients );
+      }
+      virtual bool performTransaction( KCal::IncidenceBase *incidence, KCal::iTIPMethod method ) {
+        return m_scheduler->performTransaction( incidence, method );
+      }
+      virtual bool performTransaction( KCal::IncidenceBase *incidence, KCal::iTIPMethod method, const QString &recipients ) {
+        return m_scheduler->performTransaction( incidence, method, recipients );
+      }
+      virtual bool acceptTransaction( KCal::IncidenceBase *incidence, KCal::iTIPMethod method, KCal::ScheduleMessage::Status status, const QString &email ) {
+        return m_scheduler->acceptTransaction( incidence, method, status, email );
+      }
+      virtual bool acceptCounterProposal( KCal::Incidence *incidence ) {
+        return m_scheduler->acceptCounterProposal( incidence );
+      }
+      virtual QList<ScheduleMessage*> retrieveTransactions() {
+        return m_scheduler->retrieveTransactions();
+      }
+      virtual QString freeBusyDir() {
+        return m_scheduler->freeBusyDir();
+      }
+    private:
+      MailScheduler* m_scheduler;
+      AkonadiCalendarAdaptor *m_calendar;
+  };
+
+  AkonadiCalendarAdaptor caladaptor(mCalendar);
+  SchedulerAdaptor scheduleradaptor(this, &caladaptor);
+  return scheduleradaptor.acceptTransaction(incidence, method, status, email);
+}
 
 //AKONADI_PORT review following code
 bool MailScheduler::acceptCounterProposal( KCal::Incidence *incidence )
