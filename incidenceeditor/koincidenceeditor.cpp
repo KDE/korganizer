@@ -35,11 +35,13 @@
 #include <klocale.h>
 
 #include <akonadi/kcal/utils.h>
+#include <akonadi/item.h>
 
 #include <Akonadi/Item>
 
 #include <KABC/Addressee>
 #include <KCal/Incidence>
+#include <KCal/CalendarLocal>
 #include <KCal/ICalFormat>
 
 #include <QBoxLayout>
@@ -178,8 +180,8 @@ void KOIncidenceEditor::cancelRemovedAttendees( const Akonadi::Item &item )
 
 void KOIncidenceEditor::slotManageTemplates()
 {
-#if 0 //AKONADI_PORT_DISABLED
-  TemplateManagementDialog *const d = new TemplateManagementDialog( this, templates(), type() );
+  //TemplateManagementDialog *const d = new TemplateManagementDialog( this, templates(), type() );
+  TemplateManagementDialog *const d = new TemplateManagementDialog( this, mTemplates, type() );
   connect( d, SIGNAL( loadTemplate( const QString& ) ),
            this, SLOT( slotLoadTemplate( const QString& ) ) );
   connect( d, SIGNAL( templatesChanged( const QStringList& ) ),
@@ -188,53 +190,65 @@ void KOIncidenceEditor::slotManageTemplates()
            this, SLOT( slotSaveTemplate( const QString& ) ) );
   d->exec();
   delete d;
-#endif
 }
 
-#if 0 //AKONADI_PORT_DISABLED
-void KOIncidenceEditor::saveAsTemplate( Incidence *incidence, const QString &templateName )
+void KOIncidenceEditor::slotLoadTemplate( const QString &templateName )
 {
-  if ( !incidence || templateName.isEmpty() ) {
+  kDebug()<<"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! TODO templateName="<<templateName;
+
+  CalendarLocal cal( KSystemTimeZones::local() );
+  QString fileName = KStandardDirs::locateLocal( "data",
+                       "korganizer/templates/" + type() + '/' + templateName );
+
+  if ( fileName.isEmpty() ) {
+    KMessageBox::error( this,
+                        i18nc( "@info", "Unable to find template '%1'.", fileName ) );
     return;
   }
 
+  ICalFormat format;
+  if ( !format.load( &cal, fileName ) ) {
+    KMessageBox::error( this,
+                        i18nc( "@info", "Error loading template file '%1'.", fileName ) );
+    return;
+  }
+
+  Incidence::List incidences = cal.incidences();
+  if ( incidences.isEmpty() ) {
+    KMessageBox::error( this,
+                        i18nc( "@info", "Template does not contain a valid incidence." ) );
+    return;
+  }
+
+  Incidence *incidence = incidences.first();
+  Akonadi::Item incidenceItem;
+  incidenceItem.setPayload( Incidence::Ptr(incidence->clone()) );
+  readIncidence( incidenceItem, true );
+}
+
+void KOIncidenceEditor::slotSaveTemplate( const QString &templateName )
+{
+  kDebug()<<"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! TODO templateName="<<templateName;
+  Q_ASSERT( ! templateName.isEmpty() );
+  Q_ASSERT( mIncidence.isValid() );
+  Q_ASSERT( mIncidence.hasPayload<Incidence::Ptr>() );
+  Incidence::Ptr incidence = mIncidence.payload<Incidence::Ptr>();
+  
   QString fileName = "templates/" + incidence->type();
   fileName.append( '/' + templateName );
   fileName = KStandardDirs::locateLocal( "data", "korganizer/" + fileName );
 
   CalendarLocal cal( KSystemTimeZones::local() );
-  cal.addIncidence( incidence );
+  cal.addIncidence( incidence.get() );
   ICalFormat format;
   format.save( &cal, fileName );
 }
 
-void KOIncidenceEditor::slotLoadTemplate( const QString &templateName )
+void KOIncidenceEditor::slotTemplatesChanged( const QStringList &templateNames )
 {
-  CalendarLocal cal( KSystemTimeZones::local() );
-  QString fileName = KStandardDirs::locateLocal( "data", "korganizer/templates/" + type() + '/' +
-      templateName );
-
-  if ( fileName.isEmpty() ) {
-    KMessageBox::error(
-      this,
-      i18nc( "@info", "Unable to find template '%1'.", fileName ) );
-  } else {
-    ICalFormat format;
-    if ( !format.load( &cal, fileName ) ) {
-      KMessageBox::error(
-        this,
-        i18nc( "@info", "Error loading template file '%1'.", fileName ) );
-      return;
-    }
-  }
-  loadTemplate( cal );
+  kDebug()<<"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! TODO templateNames="<<templateNames.join(",");
+  mTemplates = templateNames;
 }
-
-void KOIncidenceEditor::slotTemplatesChanged( const QStringList &newTemplates )
-{
-  templates() = newTemplates;
-}
-#endif
 
 void KOIncidenceEditor::setupDesignerTabs( const QString &type )
 {

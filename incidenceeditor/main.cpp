@@ -166,7 +166,6 @@ class MainWidget : public QWidget
       if(incidence->type() == "Event") {
         KOEventEditor *editor = new KOEventEditor(this);
         editor->init();
-        editor->readEvent(item);
         editor->editIncidence(item);
         editor->show();
       } else if(incidence->type() == "Todo") {
@@ -182,14 +181,12 @@ class MainWidget : public QWidget
         connect( mMainView, SIGNAL(closingDown()), editor, SLOT(reject()) );
         connect( editor, SIGNAL(deleteAttendee(Incidence *)), mMainView, SIGNAL(cancelAttendees(Incidence *)) );
         */
-        editor->readTodo(item);
         editor->editIncidence(item);
         editor->show();
         
       } else if(incidence->type() == "Journal") {
         KOJournalEditor *editor = new KOJournalEditor(this);
         editor->init();
-        editor->readJournal(item);
         editor->editIncidence(item);
         editor->show();
       } else {

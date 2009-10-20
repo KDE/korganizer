@@ -42,14 +42,13 @@
 using namespace Akonadi;
 
 KOJournalEditor::KOJournalEditor( QWidget *parent )
-  : KOIncidenceEditor( QString(), parent ),
-    mJournal( 0 )
+  : KOIncidenceEditor( QString(), parent )
 {
 }
 
 KOJournalEditor::~KOJournalEditor()
 {
-  emit dialogClose( mJournal );
+  emit dialogClose( mIncidence );
 }
 
 void KOJournalEditor::init()
@@ -66,7 +65,7 @@ void KOJournalEditor::init()
 
 void KOJournalEditor::reload()
 {
-  readJournal( mJournal, true );
+  readIncidence( mIncidence, true );
 }
 
 void KOJournalEditor::setupGeneral()
@@ -94,15 +93,15 @@ void KOJournalEditor::editIncidence( const Item &item )
   Q_ASSERT( journal );
   init();
 
-  mJournal = item;
-  readJournal( mJournal, false );
+  mIncidence = item;
+  readIncidence( mIncidence, false );
   setCaption( i18nc( "@title:window", "Edit Journal: %1", journal->summary() ) );
 }
 
 void KOJournalEditor::newJournal()
 {
   init();
-  mJournal = Item();
+  mIncidence = Item();
   loadDefaults();
   setCaption( i18nc( "@title:window", "New Journal" ) );
 }
@@ -132,19 +131,19 @@ bool KOJournalEditor::processInput()
     return false;
   }
 
-  if ( Akonadi::hasJournal( mJournal ) ) {
+  if ( Akonadi::hasJournal( mIncidence ) ) {
     bool rc = true;
-    Journal::Ptr oldJournal( Akonadi::journal( mJournal )->clone() );
-    Journal::Ptr journal( Akonadi::journal( mJournal )->clone() );
+    Journal::Ptr oldJournal( Akonadi::journal( mIncidence )->clone() );
+    Journal::Ptr journal( Akonadi::journal( mIncidence )->clone() );
 
     fillJournal( journal.get() );
 
     if ( *oldJournal == *journal ) {
       // Don't do anything
     } else {
-      journal->startUpdates(); //merge multiple mJournal->updated() calls into one
+      journal->startUpdates(); //merge multiple mIncidence->updated() calls into one
       fillJournal( journal.get() );
-      rc = mChanger->changeIncidence( oldJournal, mJournal );
+      rc = mChanger->changeIncidence( oldJournal, mIncidence );
       journal->endUpdates();
     }
     return rc;
@@ -153,10 +152,10 @@ bool KOJournalEditor::processInput()
     j->setOrganizer( Person( KOEditorConfig::instance()->fullName(),
                              KOEditorConfig::instance()->email() ) );
     fillJournal( j.get() );
-    //PENDING(AKONADI_PORT) review: mJournal will be != the newly created item
-    mJournal.setPayload( j );
+    //PENDING(AKONADI_PORT) review: mIncidence will be != the newly created item
+    mIncidence.setPayload( j );
     if ( !mChanger->addIncidence( j, this ) ) {
-      mJournal = Item();
+      mIncidence = Item();
       return false;
     }
   }
@@ -165,11 +164,11 @@ bool KOJournalEditor::processInput()
 
 void KOJournalEditor::deleteJournal()
 {
-  if ( Akonadi::hasJournal( mJournal ) ) {
-    emit deleteIncidenceSignal( mJournal );
+  if ( Akonadi::hasJournal( mIncidence ) ) {
+    emit deleteIncidenceSignal( mIncidence );
   }
 
-  emit dialogClose( mJournal );
+  emit dialogClose( mIncidence );
   reject();
 }
 
@@ -189,8 +188,8 @@ bool KOJournalEditor::incidenceModified()
   Journal *oldJournal = 0;
   bool modified;
 
-  if ( Akonadi::hasJournal( mJournal ) ) { // modification
-    oldJournal = Akonadi::journal( mJournal ).get();
+  if ( Akonadi::hasJournal( mIncidence ) ) { // modification
+    oldJournal = Akonadi::journal( mIncidence ).get();
   } else { // new one
     oldJournal = &mInitialJournal;
   }
@@ -201,7 +200,7 @@ bool KOJournalEditor::incidenceModified()
   return modified;
 }
 
-void KOJournalEditor::readJournal( const Item &item, bool tmpl )
+void KOJournalEditor::readIncidence( const Item &item, bool tmpl )
 {
   const Journal::Ptr journal = Akonadi::journal( item );
   if ( !journal ) {

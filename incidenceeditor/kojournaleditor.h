@@ -92,7 +92,7 @@ class INCIDENCEEDITOR_EXPORT KOJournalEditor : public KOIncidenceEditor
       @param tmpl If true, the journal is treated as a template, so the
       currently set time is preserved in the editor dialog.
     */
-    void readJournal( const Akonadi::Item &, bool tmpl = false );
+    void readIncidence( const Akonadi::Item &, bool tmpl = false );
 
     /** Write Journal settings to journal object */
     void fillJournal( Journal* );
@@ -122,8 +122,6 @@ class INCIDENCEEDITOR_EXPORT KOJournalEditor : public KOIncidenceEditor
     bool incidenceModified();
 
   private:
-    Akonadi::Item mJournal;
-
     // Journal which represents the initial dialog setup when creating a new journal.
     // If cancel is pressed and the dialog has different information than
     // this journal then the user will be asked if he really wants to cancel

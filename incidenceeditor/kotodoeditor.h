@@ -87,7 +87,7 @@ class INCIDENCEEDITOR_EXPORT KOTodoEditor : public KOIncidenceEditor
       @param tmpl If true, the todo is treated as a template, so the currently
       set time is preserved in the editor dialog.
     */
-    void readTodo( const Akonadi::Item &, bool tmpl = false );
+    void readIncidence( const Akonadi::Item &, bool tmpl = false );
 
     /** Write To-do settings to todo object */
     void fillTodo( const Akonadi::Item &item );
@@ -118,8 +118,6 @@ class INCIDENCEEDITOR_EXPORT KOTodoEditor : public KOIncidenceEditor
     bool incidenceModified();
 
   private:
-    Akonadi::Item mTodo;
-
     // Todo which represents the initial dialog setup when creating a new todo.
     // If cancel is pressed and the dialog has different information than
     // this todo then the user will be asked if he really wants to cancel

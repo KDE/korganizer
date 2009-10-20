@@ -52,8 +52,7 @@ using namespace Akonadi;
 using namespace KOrg;
 
 KOTodoEditor::KOTodoEditor( QWidget *parent )
-  : KOIncidenceEditor( QString(), parent ),
-    mTodo(), mRelatedTodo()
+  : KOIncidenceEditor( QString(), parent ), mRelatedTodo()
 {
   mInitialTodo = Todo::Ptr( new Todo );
   mInitialTodoItem.setPayload(mInitialTodo);
@@ -61,14 +60,14 @@ KOTodoEditor::KOTodoEditor( QWidget *parent )
 
 KOTodoEditor::~KOTodoEditor()
 {
-  emit dialogClose( mTodo );
+  emit dialogClose( mIncidence );
 }
 
 bool KOTodoEditor::incidenceModified()
 {
   Todo::Ptr oldTodo;
-  if ( Akonadi::hasTodo( mTodo ) ) { // modification
-    oldTodo = Akonadi::todo( mTodo );
+  if ( Akonadi::hasTodo( mIncidence ) ) { // modification
+    oldTodo = Akonadi::todo( mIncidence );
   } else { // new one
     // don't remove .clone(), it's on purpose, clone() strips relation attributes
     // if you compare a non-cloned parent to-do with a cloned to-do you will always
@@ -108,7 +107,7 @@ void KOTodoEditor::init()
 
 void KOTodoEditor::reload()
 {
-  readTodo( mTodo, true );
+  readIncidence( mIncidence, true );
 }
 
 void KOTodoEditor::setupGeneral()
@@ -165,15 +164,15 @@ void KOTodoEditor::editIncidence( const Item &item )
   Q_ASSERT( todo );
   init();
 
-  mTodo = item;
-  readTodo( item, false );
+  mIncidence = item;
+  readIncidence( item, false );
   setCaption( i18nc( "@title:window", "Edit To-do: %1", todo->summary() ) );
 }
 
 void KOTodoEditor::newTodo()
 {
   init();
-  mTodo = Item();
+  mIncidence = Item();
   setCaption( i18nc( "@title:window", "New To-do" ) );
   loadDefaults();
 }
@@ -203,10 +202,10 @@ bool KOTodoEditor::processInput()
     return false;
   }
 
-  if ( Akonadi::hasTodo( mTodo ) ) {
+  if ( Akonadi::hasTodo( mIncidence ) ) {
     bool rc = true;
-    Todo::Ptr oldTodo( Akonadi::todo( mTodo )->clone() );
-    Todo::Ptr todo( Akonadi::todo( mTodo )->clone() );
+    Todo::Ptr oldTodo( Akonadi::todo( mIncidence )->clone() );
+    Todo::Ptr todo( Akonadi::todo( mIncidence )->clone() );
 
     Akonadi::Item todoItem;
     todoItem.setPayload(todo);
@@ -215,25 +214,25 @@ bool KOTodoEditor::processInput()
     if( *oldTodo == *todo ) {
       // Don't do anything cause no changes where done
     } else {
-      Akonadi::todo( mTodo )->startUpdates(); //merge multiple mTodo->updated() calls into one
-      fillTodo(mTodo);
-      rc = mChanger->changeIncidence( oldTodo, mTodo );
-      Akonadi::todo( mTodo )->endUpdates();
+      Akonadi::todo( mIncidence )->startUpdates(); //merge multiple mIncidence->updated() calls into one
+      fillTodo(mIncidence);
+      rc = mChanger->changeIncidence( oldTodo, mIncidence );
+      Akonadi::todo( mIncidence )->endUpdates();
     }
     return rc;
   } else {
-//PENDING(AKONADI_PORT) review the newly created item will differ from mTodo
+//PENDING(AKONADI_PORT) review the newly created item will differ from mIncidence
     Todo::Ptr td( new Todo );
     td->setOrganizer( Person( KOEditorConfig::instance()->fullName(),
                               KOEditorConfig::instance()->email() ) );
-    mTodo.setPayload( td );
+    mIncidence.setPayload( td );
 
     Akonadi::Item tdItem;
     tdItem.setPayload(td);
     fillTodo( tdItem );
     
     if ( !mChanger->addIncidence( td, this ) ) {
-      mTodo = Item();
+      mIncidence = Item();
       return false;
     }
   }
@@ -243,10 +242,10 @@ bool KOTodoEditor::processInput()
 
 void KOTodoEditor::deleteTodo()
 {
-  if ( Akonadi::hasJournal( mTodo ) ) {
-    emit deleteIncidenceSignal( mTodo );
+  if ( Akonadi::hasJournal( mIncidence ) ) {
+    emit deleteIncidenceSignal( mIncidence );
   }
-  emit dialogClose( mTodo );
+  emit dialogClose( mIncidence );
   reject();
 }
 
@@ -266,7 +265,7 @@ void KOTodoEditor::setDates( const QDateTime &due, bool allDay, const Akonadi::I
   }
 
   mDetails->setDefaults();
-  if ( Todo::Ptr todo = Akonadi::todo( mTodo ) ) {
+  if ( Todo::Ptr todo = Akonadi::todo( mIncidence ) ) {
     mRecurrence->setDefaults(
       todo->dtStart().toTimeSpec( timeSpec ).dateTime(), due, false );
   } else {
@@ -275,7 +274,7 @@ void KOTodoEditor::setDates( const QDateTime &due, bool allDay, const Akonadi::I
   }
 }
 
-void KOTodoEditor::readTodo( const Item &todoItem, bool tmpl )
+void KOTodoEditor::readIncidence( const Item &todoItem, bool tmpl )
 {
   const Todo::Ptr todo = Akonadi::todo( todoItem );
   if ( !todo ) {

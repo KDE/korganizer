@@ -46,7 +46,7 @@ using namespace Akonadi;
 
 KOEventEditor::KOEventEditor( QWidget *parent )
   : KOIncidenceEditor( QString(), parent ),
-    mEvent( 0 ), mGeneral( 0 ), mRecurrence( 0 ), mFreeBusy( 0 )
+    mGeneral( 0 ), mRecurrence( 0 ), mFreeBusy( 0 )
 {
   mInitialEvent = Event::Ptr( new Event );
   mInitialEventItem.setPayload(mInitialEvent);
@@ -55,15 +55,15 @@ KOEventEditor::KOEventEditor( QWidget *parent )
 KOEventEditor::~KOEventEditor()
 {
   if ( !mIsCounter ) {
-    emit dialogClose( mEvent );
+    emit dialogClose( mIncidence );
   }
 }
 
 bool KOEventEditor::incidenceModified()
 {
   Event::Ptr oldEvent;
-  if ( Akonadi::hasEvent( mEvent ) ) { // modification
-    oldEvent = Akonadi::event(mEvent);
+  if ( Akonadi::hasEvent( mIncidence ) ) { // modification
+    oldEvent = Akonadi::event(mIncidence);
   } else { // new one
     oldEvent = mInitialEvent;
   }
@@ -124,7 +124,7 @@ void KOEventEditor::init()
 
 void KOEventEditor::reload()
 {
-  readEvent( mEvent, true );
+  readIncidence( mIncidence, true );
 }
 
 void KOEventEditor::setupGeneral()
@@ -203,15 +203,15 @@ void KOEventEditor::editIncidence( const Item &item )
   Q_ASSERT( event );
   init();
 
-  mEvent = item;
-  readEvent( mEvent, false );
+  mIncidence = item;
+  readIncidence( mIncidence, false );
   setCaption( i18nc( "@title:window", "Edit Event : %1", event->summary() ) );
 }
 
 void KOEventEditor::newEvent()
 {
   init();
-  mEvent = Item();
+  mIncidence = Item();
   loadDefaults();
   setCaption( i18nc( "@title:window", "New Event" ) );
 }
@@ -260,8 +260,8 @@ bool KOEventEditor::processInput()
 
   QPointer<KOEditorFreeBusy> freeBusy( mFreeBusy );
 
-  if ( Akonadi::hasEvent( mEvent ) ) {
-    Event::Ptr ev = Akonadi::event( mEvent );
+  if ( Akonadi::hasEvent( mIncidence ) ) {
+    Event::Ptr ev = Akonadi::event( mIncidence );
     bool rc = true;
     Event::Ptr oldEvent( ev->clone() );
     Event::Ptr event( ev->clone() );
@@ -281,7 +281,7 @@ bool KOEventEditor::processInput()
           i18nc( "@title:window", "No Changes" ) );
       }
     } else {
-      ev->startUpdates(); //merge multiple mEvent->updated() calls into one
+      ev->startUpdates(); //merge multiple mIncidence->updated() calls into one
 
       Akonadi::Item evItem;
       evItem.setPayload(ev);
@@ -289,7 +289,7 @@ bool KOEventEditor::processInput()
       
       if ( mIsCounter ) {
 #ifdef AKONADI_PORT_DISABLED
-        KOGroupware::instance()->sendCounterProposal( oldEvent, mEvent );
+        KOGroupware::instance()->sendCounterProposal( oldEvent, mIncidence );
 #endif
         // add dummy event at the position of the counter proposal
         Event::Ptr event2( ev->clone() );
@@ -301,22 +301,22 @@ bool KOEventEditor::processInput()
         rc = mChanger->addIncidence( event2 );
 
       } else {
-        rc = mChanger->changeIncidence( oldEvent, mEvent );
+        rc = mChanger->changeIncidence( oldEvent, mIncidence );
       }
       ev->endUpdates();
     }
     return rc;
   } else {
-    //PENDING(AKONADI_PORT) review mEvent will differ from newly created item
+    //PENDING(AKONADI_PORT) review mIncidence will differ from newly created item
     Event::Ptr newEvent( new Event );
     newEvent->setOrganizer( Person( KOEditorConfig::instance()->fullName(),
                             KOEditorConfig::instance()->email() ) );
-    mEvent.setPayload( newEvent );
+    mIncidence.setPayload( newEvent );
 
-    fillEvent( mEvent );
+    fillEvent( mIncidence );
 
     if ( !mChanger->addIncidence( newEvent, this ) ) {
-      mEvent = Item();
+      mIncidence = Item();
       return false;
     }
   }
@@ -338,15 +338,15 @@ void KOEventEditor::processCancel()
 
 void KOEventEditor::deleteEvent()
 {
-  if ( Akonadi::hasEvent( mEvent ) ) {
-    emit deleteIncidenceSignal( mEvent );
+  if ( Akonadi::hasEvent( mIncidence ) ) {
+    emit deleteIncidenceSignal( mIncidence );
   }
 
-  emit dialogClose( mEvent );
+  emit dialogClose( mIncidence );
   reject();
 }
 
-void KOEventEditor::readEvent( const Item& eventItem, bool tmpl )
+void KOEventEditor::readIncidence( const Item& eventItem, bool tmpl )
 {
   if ( !Akonadi::hasEvent( eventItem ) ) {
     return;

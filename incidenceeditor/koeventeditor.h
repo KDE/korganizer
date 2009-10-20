@@ -94,7 +94,7 @@ class INCIDENCEEDITOR_EXPORT KOEventEditor : public KOIncidenceEditor
       @param tmpl If true, the event is treated as a template, so the currently
       set time is preserved in the editor dialog.
     */
-    void readEvent( const Akonadi::Item &event, bool tmpl = false );
+    void readIncidence( const Akonadi::Item &event, bool tmpl = false );
 
     /**
       Write event settings to event object
@@ -132,8 +132,6 @@ class INCIDENCEEDITOR_EXPORT KOEventEditor : public KOIncidenceEditor
     bool incidenceModified();
 
   private:
-    Akonadi::Item mEvent;
-
     // Event which represents the initial dialog setup when creating a new event.
     // If cancel is pressed and the dialog has different information than
     // this event then the user will be asked if he really wants to cancel

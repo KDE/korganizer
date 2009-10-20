@@ -32,6 +32,7 @@
 #include <QList>
 
 #include <KCal/Incidence>
+#include <Akonadi/Item>
 
 namespace KPIM {
   class DesignerFields;
@@ -45,9 +46,6 @@ namespace KOrg {
 class KOEditorDetails;
 class KOAttendeeEditor;
 
-namespace Akonadi {
-  class Item;
-}
 using namespace KCal;
 using namespace KOrg;
 
@@ -68,6 +66,7 @@ class INCIDENCEEDITOR_EXPORT KOIncidenceEditor : public KPageDialog
     virtual void modified( int /*change*/= 0 ) {}
 
     virtual void reload() = 0;
+    virtual void readIncidence( const Akonadi::Item &, bool tmpl = false ) = 0;
 
     virtual void selectInvitationCounterProposal( bool enable );
     virtual void selectCreateTask( bool enable );
@@ -110,11 +109,14 @@ class INCIDENCEEDITOR_EXPORT KOIncidenceEditor : public KPageDialog
   protected slots:
     void reject();
     void accept();
-
     void openURL( const KUrl &url );
+    void slotButtonClicked( int button );
 
-    virtual void slotButtonClicked( int button );
-    virtual void slotManageTemplates();
+  private slots:
+    void slotManageTemplates();
+    void slotLoadTemplate( const QString &templateName );
+    void slotSaveTemplate( const QString &templateName );
+    void slotTemplatesChanged( const QStringList &templateNames );
 
   protected:
     virtual void closeEvent( QCloseEvent * );
@@ -159,6 +161,9 @@ class INCIDENCEEDITOR_EXPORT KOIncidenceEditor : public KPageDialog
     QList<QWidget*> mAttachedDesignerFields;
     bool mIsCounter;
     bool mIsCreateTask;
+
+    Akonadi::Item mIncidence;
+    QStringList mTemplates;
 };
 
 #endif
