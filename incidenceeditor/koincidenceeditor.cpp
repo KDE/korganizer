@@ -239,7 +239,7 @@ void KOIncidenceEditor::slotSaveTemplate( const QString &templateName )
   fileName = KStandardDirs::locateLocal( "data", "korganizer/" + fileName );
 
   CalendarLocal cal( KSystemTimeZones::local() );
-  cal.addIncidence( incidence.get() );
+  cal.addIncidence( incidence->clone() );
   ICalFormat format;
   format.save( &cal, fileName );
 }
