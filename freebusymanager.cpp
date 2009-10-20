@@ -69,6 +69,7 @@
 #include <QTimerEvent>
 #include <QTextStream>
 #include <QByteArray>
+#include <QApplication>
 
 using namespace KCal;
 
@@ -79,8 +80,8 @@ FreeBusyDownloadJob::FreeBusyDownloadJob( const QString &email, const KUrl &url,
   KIO::Job *job = KIO::get( url, KIO::NoReload, KIO::HideProgressInfo );
 
   //pass the mainwindow to the job so any prompts are active
-  KOrg::MainWindow *korg = ActionManager::findInstance( KUrl() );
-  job->ui()->setWindow( korg->topLevelWidget() );
+  Q_ASSERT( QApplication::activeModalWidget() );
+  job->ui()->setWindow( QApplication::activeModalWidget() );
 
   connect( job, SIGNAL(result(KJob *)), SLOT(slotResult(KJob *)) );
   connect( job, SIGNAL(data(KIO::Job *,const QByteArray &)),
@@ -330,8 +331,8 @@ void FreeBusyManager::publishFreeBusy()
     KIO::Job *job = KIO::file_copy( src, targetURL, -1, KIO::Overwrite | KIO::HideProgressInfo );
 
     //pass the mainwindow to the job so any prompts are active
-    KOrg::MainWindow *korg = ActionManager::findInstance( KUrl() );
-    job->ui()->setWindow( korg->topLevelWidget() );
+    Q_ASSERT( QApplication::activeModalWidget() );
+    job->ui()->setWindow( QApplication::activeModalWidget() );
 
     connect( job, SIGNAL(result(KJob *)), SLOT(slotUploadFreeBusyResult(KJob *)) );
   }

@@ -36,6 +36,8 @@
 #ifndef KOGROUPWARE_H
 #define KOGROUPWARE_H
 
+#include "korganizer_export.h"
+
 #include <KCal/ICalFormat>
 
 class CalendarView;
@@ -57,7 +59,7 @@ using namespace KCal;
 
 class QString;
 
-class KOGroupware : public QObject
+class KORGANIZER_CORE_EXPORT KOGroupware : public QObject
 {
   Q_OBJECT
   public:

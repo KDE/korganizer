@@ -25,13 +25,10 @@
 #include "koeditorfreebusy.h"
 #include "koeditorconfig.h"
 
-#ifdef AKONADI_PORT_DISABLED
-#include "freebusymanager.h"
-#include "freebusyurldialog.h"
-#include "koglobals.h"
-#include "kogroupware.h"
-#include "koprefs.h"
-#endif
+#include "../freebusymanager.h"
+#include "../freebusyurldialog.h"
+#include "../koglobals.h"
+#include "../kogroupware.h"
 
 #include <kdgantt1/KDGanttView.h>
 #include <kdgantt1/KDGanttViewSubwidgets.h>
@@ -112,12 +109,10 @@ class FreeBusyItem : public KDGanttViewTaskItem
 
     void startDownload( bool forceDownload ) {
       mIsDownloading = true;
-#ifdef AKONADI_PORT_DISABLED
       FreeBusyManager *m = KOGroupware::instance()->freeBusyManager();
       if ( !m->retrieveFreeBusy( attendee()->email(), forceDownload ) ) {
         mIsDownloading = false;
       }
-#endif
     }
     void setIsDownloading( bool d ) { mIsDownloading = d; }
     bool isDownloading() const { return mIsDownloading; }
@@ -359,11 +354,9 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent )
   connect( mGanttView, SIGNAL(lvMouseButtonClicked(int, KDGanttViewItem*, const QPoint&, int)),
            this, SLOT(listViewClicked(int, KDGanttViewItem*)) );
 
-#ifdef AKONADI_PORT_DISABLED
   FreeBusyManager *m = KOGroupware::instance()->freeBusyManager();
   connect( m, SIGNAL(freeBusyRetrieved(KCal::FreeBusy *,const QString &)),
            SLOT(slotInsertFreeBusy(KCal::FreeBusy *,const QString &)) );
-#endif
 
   connect( &mReloadTimer, SIGNAL(timeout()), SLOT(autoReload()) );
   mReloadTimer.setSingleShot( true );
@@ -773,13 +766,11 @@ void KOEditorFreeBusy::editFreeBusyUrl( KDGanttViewItem *i )
   if ( !item ) {
     return;
   }
-#ifdef AKONADI_PORT_DISABLED
+  
   Attendee *attendee = item->attendee();
-
   QPointer<FreeBusyUrlDialog> dialog = new FreeBusyUrlDialog( attendee, this );
   dialog->exec();
   delete dialog;
-#endif
 }
 
 void KOEditorFreeBusy::fillIncidence( Incidence *incidence )

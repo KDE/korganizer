@@ -95,7 +95,7 @@ if(KMAIL_SUPPORTED)
     ${QT_QT3SUPPORT_LIBRARY}
     ${KDE4_KDEUI_LIBS}
     ${KDEPIMLIBS_KCAL_LIBS} ${KDEPIMLIBS_KHOLIDAYS_LIBS} ${KDEPIMLIBS_AKONADI_LIBS}
-    korganizerprivate kdepim)
+    korganizerprivate korganizer_core kdepim)
 
   install(TARGETS kcm_korganizer  DESTINATION ${PLUGIN_INSTALL_DIR})
 
@@ -106,7 +106,7 @@ if(KMAIL_SUPPORTED)
 
   kde4_add_plugin(korganizerpart ${korganizerpart_PART_SRCS})
 
-  target_link_libraries(korganizerpart ${KDE4_KDECORE_LIBS} ${KDE4_KPARTS_LIBS} ${KDEPIMLIBS_KCAL_LIBS} ${KDEPIMLIBS_AKONADI_LIBS} korganizerprivate korganizer_interfaces akonadi-kcal)
+  target_link_libraries(korganizerpart ${KDE4_KDECORE_LIBS} ${KDE4_KPARTS_LIBS} ${KDEPIMLIBS_KCAL_LIBS} ${KDEPIMLIBS_AKONADI_LIBS} korganizer_interfaces akonadi-kcal korganizer_core korganizerprivate)
 
   install(TARGETS korganizerpart  DESTINATION ${PLUGIN_INSTALL_DIR})
 
@@ -126,6 +126,31 @@ if(KMAIL_SUPPORTED)
 
   set_target_properties(korganizer_eventviewer PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
   install(TARGETS korganizer_eventviewer ${INSTALL_TARGETS_DEFAULT_ARGS})
+
+
+  ########### next target ###############
+
+  set(korganizer_core_LIB_SRCS
+      kogroupware.cpp
+      freebusymanager.cpp
+      freebusyurldialog.cpp
+      mailscheduler.cpp
+      koprefs.cpp
+      kocore.cpp
+      kohelper.cpp
+      koidentitymanager.cpp
+      cellitem.cpp
+  )
+
+  kde4_add_kcfg_files(korganizer_core_LIB_SRCS koprefs_base.kcfgc )
+
+  kde4_add_library(korganizer_core SHARED ${korganizer_core_LIB_SRCS})
+
+  target_link_libraries(korganizer_core ${KDE4_KDECORE_LIBS} ${KDEPIMLIBS_KPIMIDENTITIES_LIBRARY} ${KDE4_KMIME_LIBRARY} ${KDE4_KIO_LIBS} ${KDEPIMLIBS_KCAL_LIBS} ${KDEPIMLIBS_AKONADI_LIBS} ${KDE4_KDE3SUPPORT_LIBS} kdepim akonadi-kcal korganizer_eventviewer)
+
+  set_target_properties(korganizer_core PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
+
+  install(TARGETS korganizer_core DESTINATION ${PLUGIN_INSTALL_DIR})
 
 
   ########### next target ###############
@@ -175,25 +200,20 @@ if(KMAIL_SUPPORTED)
     publishdialog.cpp
     koeventview.cpp
     filtereditdialog.cpp
-    mailscheduler.cpp
     kodaymatrix.cpp
     docprefs.cpp
     statusdialog.cpp
     koglobals.cpp
     actionmanager.cpp
     navigatorbar.cpp
-    kogroupware.cpp
     history.cpp
     aboutdata.cpp
     importdialog.cpp
     korganizerifaceimpl.cpp
-    freebusymanager.cpp
-    freebusyurldialog.cpp
     eventarchiver.cpp
     exportwebdialog.cpp
     kocorehelper.cpp
     incidencechanger.cpp
-    koprefs.cpp kocore.cpp kohelper.cpp koidentitymanager.cpp cellitem.cpp
     akonadicollectionview.cpp
     htmlexport.cpp
     printing/calprinter.cpp
@@ -201,7 +221,6 @@ if(KMAIL_SUPPORTED)
     printing/calprintdefaultplugins.cpp
   )
 
-  kde4_add_kcfg_files(korganizerprivate_LIB_SRCS koprefs_base.kcfgc )
   kde4_add_kcfg_files(korganizerprivate_LIB_SRCS htmlexportsettings.kcfgc )
 
   kde4_add_ui_files(korganizerprivate_LIB_SRCS
@@ -224,9 +243,11 @@ if(KMAIL_SUPPORTED)
     ${KDEPIMLIBS_KCAL_LIBS} ${KDEPIMLIBS_KABC_LIBS} ${KDEPIMLIBS_KPIMIDENTITIES_LIBRARY} ${KDE4_KMIME_LIBRARY}
     ${KDEPIMLIBS_KHOLIDAYS_LIBS}
     ${KDEPIMLIBS_AKONADI_LIBS}
-    korganizer_eventviewer korganizer_interfaces
+    korganizer_eventviewer
     kdepim
+    korganizer_interfaces
     kdepimdbusinterfaces
+    korganizer_core
     akonadi-kcal
     korg_incidenceeditor
   )

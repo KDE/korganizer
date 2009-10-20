@@ -49,6 +49,7 @@ target_link_libraries(korg_incidenceeditor
    ${KDEPIMLIBS_KCAL_LIBS}
    kdepim
    kdepimdbusinterfaces
+   korganizer_core
    akonadi-kcal
 )
 

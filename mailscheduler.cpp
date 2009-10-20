@@ -34,6 +34,7 @@
 #include <KCal/ICalFormat>
 //#include <KCal/Scheduler>
 #include <KCal/IncidenceBase>
+#include <KCal/AssignmentVisitor>
 
 #include <KPIMIdentities/IdentityManager>
 
@@ -206,7 +207,11 @@ bool MailScheduler::acceptCounterProposal( KCal::Incidence *incidence )
     incidence->setUid( exIncPtr->uid() );
 
     mCalendar->beginChange( exInc );
-    IncidenceChanger::assignIncidence( exIncPtr.get(), incidence );
+
+    Q_ASSERT( exIncPtr.get() && incidence );
+    KCal::AssignmentVisitor v;
+    v.assign( exIncPtr.get(), incidence );
+
     exIncPtr->updated();
     mCalendar->endChange( exInc );
   } else {
