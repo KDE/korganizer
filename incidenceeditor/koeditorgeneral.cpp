@@ -31,6 +31,7 @@
 #include <libkdepim/categoryselectdialog.h>
 
 #include <KCal/Incidence>
+#include <kcal/icaltimezones.h>
 
 #include <KActionCollection>
 #include <KComboBox>
@@ -67,7 +68,7 @@ void FocusLineEdit::focusInEvent ( QFocusEvent *e )
 }
 
 KOEditorGeneral::KOEditorGeneral( QObject *parent )
-  : QObject( parent ), mAttachments( 0 )
+  : QObject( parent ), mAttachments( 0 ), mTimeZones( new KCal::ICalTimeZones )
 {
   mType = "Event";
   mAlarmList.setAutoDelete( true );
@@ -75,6 +76,7 @@ KOEditorGeneral::KOEditorGeneral( QObject *parent )
 
 KOEditorGeneral::~KOEditorGeneral()
 {
+  delete mTimeZones;
 }
 
 void KOEditorGeneral::initHeader( QWidget *parent, QBoxLayout *topLayout )

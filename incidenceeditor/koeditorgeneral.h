@@ -46,6 +46,7 @@ class QWidget;
 
 namespace KCal {
   class Incidence;
+  class ICalTimeZones;
 }
 using namespace KCal;
 
@@ -151,6 +152,8 @@ class KOEditorGeneral : public QObject
       AdvancedAlarmLabel
     };
 
+    KCal::ICalTimeZones *mTimeZones;
+    
   private:
     void toggleDescriptionRichButtons( bool rich );
     QByteArray mType; // as in Incidence::type()

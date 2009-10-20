@@ -120,13 +120,9 @@ void KOEditorGeneralEvent::initTime( QWidget *parent, QBoxLayout *topLayout )
   QString whatsThis = i18nc( "@info:whatsthis",
                              "Select the timezone for this event. "
                              "It will also affect recurrences" );
-#ifdef AKONADI_PORT_DISABLED
-  mTimeZoneComboStart = new KPIM::KTimeZoneComboBox( mCalendar ? mCalendar->timeZones() : 0, timeGroupBox );
-  mTimeZoneComboEnd = new KPIM::KTimeZoneComboBox( mCalendar ? mCalendar->timeZones() : 0, timeGroupBox );
-#else
-  mTimeZoneComboStart = new KPIM::KTimeZoneComboBox( 0, timeGroupBox );
-  mTimeZoneComboEnd = new KPIM::KTimeZoneComboBox( 0, timeGroupBox );
-#endif
+
+  mTimeZoneComboStart = new KPIM::KTimeZoneComboBox( mTimeZones, timeGroupBox );
+  mTimeZoneComboEnd = new KPIM::KTimeZoneComboBox( mTimeZones, timeGroupBox );
 
   if ( !KOEditorConfig::instance()->showTimeZoneSelectorInIncidenceEditor() ) {
     mTimeZoneComboStart->hide();

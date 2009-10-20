@@ -46,13 +46,14 @@
 #include <QSpinBox>
 
 KOEditorGeneralTodo::KOEditorGeneralTodo( QObject *parent )
-  : KOEditorGeneral( parent )
+    : KOEditorGeneral( parent )
 {
   setType( "Todo" );
 }
 
 KOEditorGeneralTodo::~KOEditorGeneralTodo()
 {
+  delete mTimeZones;
 }
 
 void KOEditorGeneralTodo::finishSetup()
@@ -96,13 +97,9 @@ void KOEditorGeneralTodo::initTime( QWidget *parent, QBoxLayout *topLayout )
 
   // Timezone
   QString whatsThis = i18n( "Select the timezone for this event. It will also affect recurrences" );
-#ifdef AKONADI_PORT_DISABLED
-  mTimeZoneComboStart = new KPIM::KTimeZoneComboBox( mCalendar ? mCalendar->timeZones() : 0, timeGroupBox );
-  mTimeZoneComboDue = new KPIM::KTimeZoneComboBox( mCalendar ? mCalendar->timeZones() : 0, timeGroupBox );
-#else
-  mTimeZoneComboStart = new KPIM::KTimeZoneComboBox( 0, timeGroupBox );
-  mTimeZoneComboDue = new KPIM::KTimeZoneComboBox( 0, timeGroupBox );
-#endif
+
+  mTimeZoneComboStart = new KPIM::KTimeZoneComboBox( mTimeZones, timeGroupBox );
+  mTimeZoneComboDue = new KPIM::KTimeZoneComboBox( mTimeZones, timeGroupBox );
 
   if ( !KOEditorConfig::instance()->showTimeZoneSelectorInIncidenceEditor() ) {
     mTimeZoneComboStart->hide();
