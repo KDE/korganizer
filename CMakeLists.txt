@@ -137,9 +137,7 @@ if(KMAIL_SUPPORTED)
       mailscheduler.cpp
       koprefs.cpp
       kocore.cpp
-      kohelper.cpp
       koidentitymanager.cpp
-      cellitem.cpp
   )
 
   kde4_add_kcfg_files(korganizer_core_LIB_SRCS koprefs_base.kcfgc )
@@ -214,6 +212,8 @@ if(KMAIL_SUPPORTED)
     exportwebdialog.cpp
     kocorehelper.cpp
     incidencechanger.cpp
+    kohelper.cpp
+    cellitem.cpp
     akonadicollectionview.cpp
     htmlexport.cpp
     printing/calprinter.cpp
