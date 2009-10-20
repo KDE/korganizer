@@ -558,9 +558,8 @@ QString IncidenceMonthItem::toolTipText() const
   if ( monthScene()->mMonthView && !monthScene()->mMonthView->selectedDates().isEmpty() ) {
     date = monthScene()->mMonthView->selectedDates().first();
   }
-  //PENDING(AKONADI_PORT): replace QString() by incidence location (was: monthScene()->calendar())
   return IncidenceFormatter::toolTipStr(
-      QString(), Akonadi::incidence( mIncidence ).get(), date, true, KOPrefs::instance()->timeSpec() );
+         mIncidence.url().url(), Akonadi::incidence( mIncidence ).get(), date, true, KOPrefs::instance()->timeSpec() );
 }
 
 QList<QPixmap *> IncidenceMonthItem::icons() const

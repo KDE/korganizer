@@ -1356,12 +1356,10 @@ bool KOAgendaItem::event( QEvent *event )
       return true;
     } else if ( mValid ) {
       QHelpEvent *helpEvent = static_cast<QHelpEvent*>( event );
-
-      //PENDING(AKONADI_PORT): replace QString() by incidence location
       QToolTip::showText(
         helpEvent->globalPos(),
         IncidenceFormatter::toolTipStr(
-          QString(), Akonadi::incidence( mIncidence ).get(), mDate, true, KOPrefs::instance()->timeSpec() ),
+          mIncidence.url().url(), Akonadi::incidence( mIncidence ).get(), mDate, true, KOPrefs::instance()->timeSpec() ),
         this );
     }
   }

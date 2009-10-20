@@ -684,9 +684,8 @@ QVariant KOTodoModel::data( const QModelIndex &index, int role ) const
   // set the tooltip for every item
   if ( role == Qt::ToolTipRole ) {
     if ( KOPrefs::instance()->enableToolTips() ) {
-      //PENDING(AKONADI_PORT): replace QString() by incidence location
       return QVariant( IncidenceFormatter::toolTipStr(
-                         QString(), todo.get(), QDate(), true, KOPrefs::instance()->timeSpec() ) );
+                       node->mTodo.url().url(), todo.get(), QDate(), true, KOPrefs::instance()->timeSpec() ) );
   } else {
       return QVariant();
     }

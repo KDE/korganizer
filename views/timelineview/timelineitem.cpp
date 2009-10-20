@@ -101,10 +101,9 @@ TimelineSubItem::TimelineSubItem( CalendarBase *calendar,
   : KDGanttViewTaskItem( parent ), mIncidence( incidence ),
     mLeft( 0 ), mRight( 0 ), mMarkerWidth( 0 )
 {
-  //PENDING(AKONADI_PORT): replace QString() by incidence location (was: calendar)
   setTooltipText( IncidenceFormatter::toolTipStr(
-                  QString(), Akonadi::incidence( incidence ).get(), originalStart().date(),
-                   true, KOPrefs::instance()->timeSpec() ) );
+                  incidence.url().url(), Akonadi::incidence( incidence ).get(), originalStart().date(),
+                  true, KOPrefs::instance()->timeSpec() ) );
   if ( !Akonadi::incidence( incidence )->isReadOnly() ) {
     setMoveable( true );
     setResizeable( true );

@@ -102,9 +102,8 @@ bool KOEventViewer::appendIncidence( const Item &item, const QDate &date )
 {
   if ( !Akonadi::hasIncidence( item ) )
     return false;
-  //PENDING(AKONADI_PORT): replace QString() by incidence location (was: mCalendar)
   addText( IncidenceFormatter::extensiveDisplayStr(
-      QString(), Akonadi::incidence( item ).get(), date, KSystemTimeZones::local() ) );
+           item.url().url(), Akonadi::incidence( item ).get(), date, KSystemTimeZones::local() ) );
   return true;
 }
 

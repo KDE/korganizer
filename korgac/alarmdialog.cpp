@@ -3,7 +3,7 @@
 
   Copyright (c) 2000,2003 Cornelius Schumacher <schumacher@kde.org>
   Copyright (c) 2008-2009 Allen Winter <winter@kde.org>
-  Copyright (c) 2009 Klarälvdalens Datakonsult AB, a KDAB Group company <info@kdab.net>
+  Copyright (c) 2009 Klarï¿½lvdalens Datakonsult AB, a KDAB Group company <info@kdab.net>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -282,8 +282,7 @@ void AlarmDialog::addIncidence( const Akonadi::Item &incidenceitem,
     }
   }
   item->setText( 2, triggerStr );
-  //PENDING(AKONADI_PORT): replace QString() by incidence location
-  QString tip = IncidenceFormatter::toolTipStr( QString(), incidence.get(),
+  QString tip = IncidenceFormatter::toolTipStr( incidenceitem.url().url(), incidence.get(),
                                                 item->mRemindAt.date(), true,
                                                 KDateTime::Spec::LocalZone() );
   if ( !item->mDisplayText.isEmpty() ) {
