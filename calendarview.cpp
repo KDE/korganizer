@@ -392,6 +392,7 @@ bool CalendarView::openCalendar( const QString &filename, bool merge )
     return false;
   }
 #else
+  kWarning()<<"TODO";
   return false;
 #endif //AKONADI_PORT_DISABLED
 }
@@ -408,6 +409,7 @@ bool CalendarView::saveCalendar( const QString &filename )
 
   return storage.save();
 #else // AKONADI_PORT_DISABLED
+  kWarning()<<"TODO";
   return false;
 #endif // AKONADI_PORT_DISABLED
 }
@@ -854,6 +856,8 @@ void CalendarView::edit_copy()
   if ( !factory.copyIncidence( incidence ) ) {
     KNotification::beep();
   }
+#else
+  kWarning()<<"TODO";
 #endif // AKONADI_PORT_DISABLED
   checkClipboard();
 }
@@ -933,6 +937,8 @@ void CalendarView::edit_paste()
   } else if ( pastedIncidence->type() == "Journal" ) {
     mChanger->addIncidence( pastedIncidence, this );
   }
+#else
+  kWarning()<<"TODO";
 #endif // AKONADI_PORT_DISABLED
 }
 
@@ -1213,6 +1219,7 @@ bool CalendarView::makeSubTodosIndependents ( const Item &todoItem )
   endMultiModify();
   return true;
 #else
+  kWarning()<<"TODO";
   return false;
 #endif
 }
@@ -2201,6 +2208,8 @@ void CalendarView::deleteSubTodosIncidence ( const Item &todoItem )
       deleteSubTodosIncidence ( aTodo );
     }
   }
+#else
+  kWarning()<<"TODO";
 #endif // AKONADI_PORT_DISABLED
   mChanger->deleteIncidence ( todoItem );
 }
@@ -2419,6 +2428,7 @@ bool CalendarView::purgeCompletedSubTodos( const Item &todoItem, bool &allPurged
   }
   return deleteThisTodo;
 #else
+  kWarning()<<"TODO";
   return false;
 #endif // AKONADI_PORT_DISABLED
 }

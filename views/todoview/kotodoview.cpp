@@ -453,6 +453,8 @@ void KOTodoView::addQuickTodo( Qt::KeyboardModifiers modifiers )
                                        QItemSelectionModel::ClearAndSelect |
                                        QItemSelectionModel::Rows );
     }
+#else
+    kWarning()<<"TODO";
 #endif
   } else if ( modifiers == Qt::ControlModifier ) {
     QModelIndexList selection = mView->selectionModel()->selectedRows();
@@ -484,7 +486,9 @@ void KOTodoView::contextMenu( const QPoint &pos )
 #ifdef AKONADI_PORT_DISABLED // selectedIncidences()
       mMakeSubtodosIndependent->setEnabled( !incidences[0]->relations().isEmpty() );
       mMakeTodoIndependent->setEnabled( incidences[0]->relatedTo() );
-#endif // AKONADI_PORT_DISABLED
+#else
+      kWarning()<<"TODO";
+#endif
     }
 
     switch ( mView->indexAt( pos ).column() ) {

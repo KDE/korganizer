@@ -234,6 +234,8 @@ void KOGroupware::incomingDirChanged( const QString &path )
   }
   mView->updateView();
   delete message;
+#else
+  kWarning()<<"TODO";
 #endif // AKONADI_PORT_DISABLED
 }
 
