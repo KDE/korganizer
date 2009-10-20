@@ -3,6 +3,7 @@
 
   Copyright (c) 2000,2003 Cornelius Schumacher <schumacher@kde.org>
   Copyright (c) 2008-2009 Allen Winter <winter@kde.org>
+  Copyright (c) 2009 Klarälvdalens Datakonsult AB, a KDAB Group company <info@kdab.net>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -132,7 +133,7 @@ AlarmDialog::AlarmDialog( KOrg::CalendarBase *calendar, QWidget *parent )
   mIncidenceTree->setSortingEnabled( false );
   QStringList headerLabels =
     ( QStringList( i18nc( "@title:column reminder title", "Title" ) )
-      << i18nc( "@title:column reminder date/time", "Reminder Time" )
+      << i18nc( "@title:column happens at date/time", "Date, Time" )
       << i18nc( "@title:column trigger date/time", "Trigger Time" ) );
   mIncidenceTree->setHeaderLabels( headerLabels );
   mIncidenceTree->headerItem()->setToolTip(
