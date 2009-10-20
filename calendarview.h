@@ -136,7 +136,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     DateNavigator *dateNavigator() const { return mDateNavigator; }
 
     KOIncidenceEditor *editorDialog( const Akonadi::Item &item ) const;
-    KOrg::IncidenceChangerBase *incidenceChanger() const { return mChanger; }
+    virtual KOrg::IncidenceChangerBase *incidenceChanger() const { return mChanger; }
 
     /*
      * Informs the date navigator which incidence types should be used
@@ -238,7 +238,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     /** Emitted when auto-archiving options were modified */
     void autoArchivingSettingsModified();
 
-    void newIncidenceChanger( IncidenceChangerBase * );
+    virtual void newIncidenceChanger( IncidenceChangerBase * );
     void exportHTML( KOrg::HTMLExportSettings * );
 
     void newFilterListSignal( const QStringList & );

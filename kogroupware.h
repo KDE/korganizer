@@ -40,10 +40,10 @@
 
 #include <KCal/ICalFormat>
 
-class CalendarView;
 class FreeBusyManager;
 
 namespace KOrg {
+  class CalendarViewBase;
   class IncidenceChangerBase;
   class CalendarBase;
   class AkonadiCalendar;
@@ -63,7 +63,7 @@ class KORGANIZER_CORE_EXPORT KOGroupware : public QObject
 {
   Q_OBJECT
   public:
-    static KOGroupware *create( CalendarView *, KOrg::AkonadiCalendar * );
+    static KOGroupware *create( KOrg::CalendarViewBase *, KOrg::AkonadiCalendar * );
     static KOGroupware *instance();
 
     FreeBusyManager *freeBusyManager();
@@ -106,12 +106,12 @@ class KORGANIZER_CORE_EXPORT KOGroupware : public QObject
     void initialCheckForChanges();
 
   protected:
-    KOGroupware( CalendarView *, KOrg::AkonadiCalendar * );
+    KOGroupware( KOrg::CalendarViewBase *, KOrg::AkonadiCalendar * );
 
   private:
     static KOGroupware *mInstance;
     KCal::ICalFormat mFormat;
-    CalendarView *mView;
+    KOrg::CalendarViewBase *mView;
     KOrg::AkonadiCalendar *mCalendar;
     static FreeBusyManager *mFreeBusyManager;
     bool mDoNotNotify;

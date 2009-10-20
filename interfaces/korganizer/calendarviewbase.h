@@ -25,6 +25,7 @@
 #include <QtGui/QWidget>
 
 #include <korganizer/baseview.h>
+#include <korganizer/incidencechangerbase.h>
 
 namespace Akonadi {
   class Item;
@@ -44,6 +45,7 @@ class CalendarViewBase : public QWidget
     virtual ~CalendarViewBase() {}
 
     virtual CalendarBase *calendar() = 0;
+    virtual IncidenceChangerBase *incidenceChanger() const = 0;
 
     virtual QDate startDate() = 0;
     virtual QDate endDate() = 0;
@@ -58,6 +60,10 @@ class CalendarViewBase : public QWidget
   public Q_SLOTS:
     virtual void updateView() = 0;
     virtual void updateCategories() = 0;
+
+  signals:
+    virtual void newIncidenceChanger( IncidenceChangerBase * ) = 0;
+
 };
 
 }

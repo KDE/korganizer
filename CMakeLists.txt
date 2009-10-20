@@ -146,7 +146,7 @@ if(KMAIL_SUPPORTED)
 
   kde4_add_library(korganizer_core SHARED ${korganizer_core_LIB_SRCS})
 
-  target_link_libraries(korganizer_core ${KDE4_KDECORE_LIBS} ${KDEPIMLIBS_KPIMIDENTITIES_LIBRARY} ${KDE4_KMIME_LIBRARY} ${KDE4_KIO_LIBS} ${KDEPIMLIBS_KCAL_LIBS} ${KDEPIMLIBS_AKONADI_LIBS} ${KDE4_KDE3SUPPORT_LIBS} kdepim akonadi-kcal korganizer_eventviewer)
+  target_link_libraries(korganizer_core ${KDE4_KDECORE_LIBS} ${KDEPIMLIBS_KPIMIDENTITIES_LIBRARY} ${KDE4_KMIME_LIBRARY} ${KDE4_KIO_LIBS} ${KDEPIMLIBS_KCAL_LIBS} ${KDEPIMLIBS_AKONADI_LIBS} ${KDE4_KDE3SUPPORT_LIBS} kdepim akonadi-kcal korganizer_eventviewer korganizer_interfaces)
 
   set_target_properties(korganizer_core PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
 
