@@ -1511,7 +1511,7 @@ void CalendarView::mailFreeBusy( int daysToPublish )
 
   Event::List events;
   Akonadi::Item::List items = mCalendar ? mCalendar->rawEvents( start.date(), end.date() ) : Akonadi::Item::List();
-  foreach(const Akonadi::Item &item, items) { //AKONADI_PORT FIXME
+  foreach(const Akonadi::Item &item, items) { //FIXME
     events << item.payload<Event::Ptr>().get();
   }
 
