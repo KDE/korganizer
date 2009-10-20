@@ -851,14 +851,14 @@ void CalendarView::edit_copy()
     KNotification::beep();
     return;
   }
-#ifdef AKONADI_PORT_DISABLED
-  DndFactory factory( mCalendar );
-  if ( !factory.copyIncidence( incidence ) ) {
+
+  AkonadiCalendarAdaptor cal(mCalendar);
+  DndFactory factory( &cal );
+  Incidence::Ptr incidence = Akonadi::incidence(item);
+  if ( !factory.copyIncidence( incidence.get() ) ) {
     KNotification::beep();
   }
-#else
-  kWarning()<<"TODO";
-#endif // AKONADI_PORT_DISABLED
+
   checkClipboard();
 }
 
