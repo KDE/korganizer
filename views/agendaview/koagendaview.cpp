@@ -1460,7 +1460,7 @@ void KOAgendaView::slotTodosDropped( const QList<KUrl> &items, const QPoint &gpo
 
   Todo::Ptr todo = Akonadi::todo( todoItem );
   if ( todo &&  dynamic_cast<AkonadiCalendar*>( calendar() ) ) {
-    const Item existingTodoItem = dynamic_cast<AkonadiCalendar*>( calendar() )->itemForIncidence( calendar()->todo( todo->uid() ) ); //PENDING(AKONADI_PORT) get rid of dyncast
+    const Item existingTodoItem = dynamic_cast<AkonadiCalendar*>( calendar() )->itemForIncidence( calendar()->todo( todo->uid() ) );
     if ( Todo::Ptr existingTodo = Akonadi::todo( existingTodoItem ) ) {
       kDebug() << "Drop existing Todo";
       Todo::Ptr oldTodo( existingTodo->clone() );
