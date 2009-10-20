@@ -429,7 +429,8 @@ void HtmlExport::createTodoList ( QTextStream *ts )
 
   // Create top-level list.
   for ( it = todoList.constBegin(); it != todoList.constEnd(); ++it ) {
-    if ( !(*it)->relatedTo() ) { //REVIEW(AKONADI_PORT)
+    Incidence *related = (*it)->relatedTo();
+    if ( ! related ) {
       createTodo( ts, *it );
     }
   }
