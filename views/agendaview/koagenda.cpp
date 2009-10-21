@@ -1110,10 +1110,9 @@ void KOAgenda::endItemAction()
         placeItem = placeItem->nextMultiItem();
       }
 
-      mChanger->endChange( inc );
-
       // Notify about change
       // the agenda view will apply the changes to the actual Incidence*!
+      mChanger->endChange( inc );
       emit itemModified( modif );
     } else {
       // the item was moved, but not further modified, since it's not recurring
@@ -1121,6 +1120,8 @@ void KOAgenda::endItemAction()
       mChanger->endChange( inc );
       emit itemModified( mActionItem );
     }
+  } else {
+    mChanger->endChange( inc );
   }
 
   mActionItem = 0;
