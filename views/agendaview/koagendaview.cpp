@@ -982,9 +982,9 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
 
   // FIXME: use a visitor here
   if ( incidence->type() == "Event" ) {
-    /* setDtEnd() must be called before setDtStart(), otherwise, when moving events,
-     * CalendarLocal::incidenceUpdated() will not remove the old hash and that causes
-     * the event to be shown in the old date also (bug #179157).
+    /* setDtEnd() must be called before setDtStart(), otherwise, when moving
+     * events, CalendarLocal::incidenceUpdated() will not remove the old hash
+     * and that causes the event to be shown in the old date also (bug #179157).
      *
      * TODO: We need a better hashing mechanism for CalendarLocal.
      */
@@ -1000,8 +1000,9 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
   }
   item->setItemDate( startDt.toTimeSpec( KOPrefs::instance()->timeSpec() ).date() );
 
-  const bool result = mChanger->changeIncidence( oldIncidence, incidence );
-  mChanger->endChange(incidence);
+  const bool result = mChanger->changeIncidence( oldIncidence, incidence,
+                                                 KOGlobals::DATE_MODIFIED, this );
+  mChanger->endChange( incidence );
   delete oldIncidence;
 
   // Update the view correctly if an agenda item move was aborted by
@@ -1465,7 +1466,7 @@ void KOAgendaView::slotTodoDropped( Todo *todo, const QPoint &gpos, bool allDay 
         existingTodo->setDtDue( newTime );
         existingTodo->setAllDay( allDay );
         existingTodo->setHasDueDate( true );
-        mChanger->changeIncidence( oldTodo, existingTodo );
+        mChanger->changeIncidence( oldTodo, existingTodo, KOGlobals::DATE_MODIFIED, this );
         mChanger->endChange( existingTodo );
       } else {
         KMessageBox::sorry( this, i18n( "Unable to modify this to-do, "

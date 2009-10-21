@@ -36,6 +36,7 @@
 #ifndef KOGROUPWARE_H
 #define KOGROUPWARE_H
 
+#include "koglobals.h"
 #include <KCal/ICalFormat>
 
 class CalendarView;
@@ -70,8 +71,9 @@ class KOGroupware : public QObject
          user presses Yes or No.
     */
     bool sendICalMessage( QWidget *parent, KCal::iTIPMethod method,
-                          KCal::Incidence *incidence, bool isDeleting = false,
-                          bool statusChanged = false );
+                          KCal::Incidence *incidence,
+                          KOGlobals::HowChanged action,
+                          bool attendeeStatusChanged );
 
     /**
       Send counter proposal message.
@@ -81,15 +83,7 @@ class KOGroupware : public QObject
     void sendCounterProposal( KCal::Calendar *calendar, KCal::Event *oldEvent,
                               KCal::Event *newEvent ) const;
 
-    // THIS IS THE ACTUAL KM/KO API
-    enum EventState {
-      Accepted,
-      ConditionallyAccepted,
-      Declined,
-      Request
-    };
-
-    // DoNoNotify is a flag indicating that the user does not want
+    // DoNotNotify is a flag indicating that the user does not want
     // updates sent back to the organizer.
     void setDoNotNotify( bool notify ) { mDoNotNotify = notify; }
     bool doNotNotify() { return mDoNotNotify; }

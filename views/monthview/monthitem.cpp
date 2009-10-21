@@ -440,10 +440,11 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
         Incidence *newInc = monthScene()->calendar()->dissociateOccurrence(
             mIncidence, startDate(), KOPrefs::instance()->timeSpec() );
         if ( newInc ) {
-          changer->changeIncidence( oldIncSaved, mIncidence );
+          changer->changeIncidence( oldIncSaved, mIncidence,
+                                    KOGlobals::RECURRENCE_MODIFIED_ONE_ONLY, 0 );
           changer->endChange( mIncidence );
 
-          changer->addIncidence( newInc );
+          changer->addIncidence( newInc, 0 );
           // let the standard code change the dates for the new incidence
           mIncidence = newInc;
           if ( !changer->beginChange( mIncidence ) ) {
@@ -451,10 +452,11 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
             return;
           }
         } else {
-          KMessageBox::sorry( 0,
-                              i18n( "Unable to add the exception item to the calendar. "
-                                    "No change will be done." ),
-                              i18n( "Error Occurred" ) );
+          KMessageBox::sorry(
+            0,
+            i18n( "Unable to add the exception item to the calendar. "
+                  "No change will be done." ),
+            i18n( "Error Occurred" ) );
           modify = false;
         }
         delete oldIncSaved;
@@ -467,10 +469,11 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
         Incidence *newInc = monthScene()->calendar()->dissociateOccurrence(
             mIncidence, startDate(), KOPrefs::instance()->timeSpec(), false );
         if ( newInc ) {
-          changer->changeIncidence( oldIncSaved, mIncidence );
+          changer->changeIncidence( oldIncSaved, mIncidence,
+                                    KOGlobals::RECURRENCE_MODIFIED_ALL_FUTURE, 0 );
           changer->endChange( mIncidence );
 
-          changer->addIncidence( newInc );
+          changer->addIncidence( newInc, 0 );
           // let the standard code change the dates for the new incidence
           mIncidence = newInc;
           if ( !changer->beginChange( mIncidence ) ) {
@@ -478,10 +481,11 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
             return;
           }
         } else {
-          KMessageBox::sorry( 0,
-                              i18n( "Unable to add the future items to the calendar. "
-                                    "No change will be done." ),
-                              i18n( "Error Occurred" ) );
+          KMessageBox::sorry(
+            0,
+            i18n( "Unable to add the future items to the calendar. "
+                  "No change will be done." ),
+            i18n( "Error Occurred" ) );
           modify = false;
         }
         delete oldIncSaved;
@@ -507,7 +511,7 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
       todo->setDtDue( todo->dtDue().addDays( startOffset ) );
     }
 
-    changer->changeIncidence( oldInc, mIncidence, KOGlobals::DATE_MODIFIED );
+    changer->changeIncidence( oldInc, mIncidence, KOGlobals::DATE_MODIFIED, 0 );
     changer->endChange( mIncidence );
 
     delete oldInc;

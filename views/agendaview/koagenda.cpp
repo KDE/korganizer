@@ -1032,7 +1032,8 @@ void KOAgenda::endItemAction()
         if ( newInc ) {
           // don't recreate items, they already have the correct position
           emit enableAgendaUpdate( false );
-          mChanger->changeIncidence( oldIncSaved, oldInc );
+          mChanger->changeIncidence( oldIncSaved, oldInc,
+                                     KOGlobals::RECURRENCE_MODIFIED_ONE_ONLY, this );
           mActionItem->setIncidence( newInc );
 
           mActionItem->dissociateFromMultiItem();
@@ -1069,7 +1070,8 @@ void KOAgenda::endItemAction()
           mActionItem->setIncidence( newInc );
           mChanger->addIncidence( newInc, this );
           emit enableAgendaUpdate( true );
-          mChanger->changeIncidence( oldIncSaved, oldInc );
+          mChanger->changeIncidence( oldIncSaved, oldInc,
+                                     KOGlobals::RECURRENCE_MODIFIED_ALL_FUTURE, this );
         } else {
           KMessageBox::sorry(
             this,

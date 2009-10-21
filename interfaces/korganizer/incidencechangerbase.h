@@ -22,10 +22,12 @@
 #define KORG_INCIDENCECHANGERBASE_H
 
 #include "korganizer/korganizer_export.h"
-#include <kcal/scheduler.h>
-#include <QtCore/QObject>
+#include "korganizer/koglobals.h"
 
-class QWidget;
+#include <KCal/Scheduler>
+
+#include <QObject>
+
 namespace KCal {
   class Calendar;
   class Incidence;
@@ -43,26 +45,22 @@ class KORGANIZER_INTERFACES_EXPORT IncidenceChangerBase : public QObject
     virtual ~IncidenceChangerBase();
 
     virtual bool sendGroupwareMessage( Incidence *incidence,
-                                       iTIPMethod method, bool deleting = false ) = 0;
+                                       iTIPMethod method,
+                                       KOGlobals::HowChanged action,
+                                       QWidget *parent ) = 0;
 
     virtual bool beginChange( Incidence * incidence ) = 0;
     virtual bool endChange( Incidence *incidence ) = 0;
 
-    virtual bool addIncidence( Incidence *incidence, QWidget *parent = 0 ) = 0;
+    virtual bool addIncidence( Incidence *incidence, QWidget *parent ) = 0;
     virtual bool changeIncidence( Incidence *oldinc, Incidence *newinc,
-                                  int action = -1 ) = 0;
-    virtual bool deleteIncidence( Incidence *incidence ) = 0;
-    virtual bool cutIncidence( Incidence *incidence ) = 0;
-
-/*
-    static bool incidencesEqual( Incidence *inc1, Incidence *inc2 );
-    static bool assignIncidence( Incidence *inc1, Incidence *inc2 );
-*/
+                                  KOGlobals::WhatChanged, QWidget *parent ) = 0;
+    virtual bool deleteIncidence( Incidence *incidence, QWidget *parent ) = 0;
+    virtual bool cutIncidence( Incidence *incidence, QWidget *parent ) = 0;
 
   Q_SIGNALS:
     void incidenceAdded( Incidence * );
-    void incidenceChanged( Incidence *oldInc, Incidence *newInc, int );
-    void incidenceChanged( Incidence *oldInc, Incidence *newInc );
+    void incidenceChanged( Incidence *oldInc, Incidence *newInc, KOGlobals::WhatChanged );
     void incidenceToBeDeleted( Incidence * );
     void incidenceDeleted( Incidence * );
 

@@ -692,7 +692,7 @@ void KOTodoView::setNewDate( const QDate &date )
     }
     todo->setDtDue( dt );
 
-    mChanger->changeIncidence( oldTodo, todo, KOGlobals::COMPLETION_MODIFIED );
+    mChanger->changeIncidence( oldTodo, todo, KOGlobals::COMPLETION_MODIFIED, this );
     mChanger->endChange( todo );
     delete oldTodo;
   } else {
@@ -720,9 +720,11 @@ void KOTodoView::setNewPercentage( QAction *action )
       todo->setPercentComplete( percentage );
     }
     if ( todo->recurs() && percentage == 100 ) {
-      mChanger->changeIncidence( oldTodo, todo, KOGlobals::COMPLETION_MODIFIED_WITH_RECURRENCE );
+      mChanger->changeIncidence( oldTodo, todo,
+                                 KOGlobals::COMPLETION_MODIFIED_WITH_RECURRENCE, this );
     } else {
-      mChanger->changeIncidence( oldTodo, todo, KOGlobals::COMPLETION_MODIFIED );
+      mChanger->changeIncidence( oldTodo, todo,
+                                 KOGlobals::COMPLETION_MODIFIED, this );
     }
     mChanger->endChange( todo );
     delete oldTodo;
@@ -744,7 +746,7 @@ void KOTodoView::setNewPriority( QAction *action )
     Todo *oldTodo = todo->clone();
     todo->setPriority( mPriority[action] );
 
-    mChanger->changeIncidence( oldTodo, todo, KOGlobals::PRIORITY_MODIFIED );
+    mChanger->changeIncidence( oldTodo, todo, KOGlobals::PRIORITY_MODIFIED, this );
     mChanger->endChange( todo );
     delete oldTodo;
   }
@@ -769,7 +771,7 @@ void KOTodoView::changedCategories( QAction *action )
     }
     categories.sort();
     todo->setCategories( categories );
-    mChanger->changeIncidence( oldTodo, todo, KOGlobals::CATEGORY_MODIFIED );
+    mChanger->changeIncidence( oldTodo, todo, KOGlobals::CATEGORY_MODIFIED, this );
     mChanger->endChange( todo );
     delete oldTodo;
   } else {

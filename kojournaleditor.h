@@ -107,7 +107,7 @@ class KOJournalEditor : public KOIncidenceEditor
     bool processInput();
 
     /** This Journal has been modified externally */
-    void modified( int change=0 );
+    void modified();
 
   public slots:
     void show();

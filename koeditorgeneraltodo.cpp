@@ -609,7 +609,7 @@ bool KOEditorGeneralTodo::setAlarmOffset( Alarm *alarm, int value ) const
   }
 }
 
-void KOEditorGeneralTodo::modified( Todo *todo, int modification )
+void KOEditorGeneralTodo::modified( Todo *todo, KOGlobals::HowChanged modification )
 {
   switch ( modification ) {
   case KOGlobals::PRIORITY_MODIFIED:
