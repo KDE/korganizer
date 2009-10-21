@@ -319,7 +319,8 @@ QModelIndex KOTodoModel::getModelIndex( TodoTreeNode *node ) const
 QModelIndex KOTodoModel::moveIfParentChanged( TodoTreeNode *curNode, const Item &aitem,
                                               bool addParentIfMissing )
 {
-#ifdef AKONADI_PORT_DISABLED //review the newParent stuff down there
+  kDebug(); //pending(AKONADI_PORT); review the newParent stuff down there
+
   const Todo::Ptr todo = Akonadi::todo( aitem );
   // find the model index of the changed incidence
   QModelIndex miChanged = getModelIndex( curNode );
@@ -336,7 +337,7 @@ QModelIndex KOTodoModel::moveIfParentChanged( TodoTreeNode *curNode, const Item 
     if ( !isInHierarchyLoop( todo.get() ) ) {
       Incidence *inc = todo->relatedTo();
       if ( inc && inc->type() == "Todo" ) {
-        newParent = static_cast<Todo *>( inc );
+        newParent = Todo::Ptr( static_cast<Todo *>( inc )->clone() );
       }
     }
   }
@@ -349,9 +350,11 @@ QModelIndex KOTodoModel::moveIfParentChanged( TodoTreeNode *curNode, const Item 
     // find the node and model index of the new parent
     TodoTreeNode *ttNewParent = 0;
     if ( newParent ) {
-      ttNewParent = findTodo( newParent );
+      Akonadi::Item newParentItem;
+      newParentItem.setPayload<Todo::Ptr>(newParent);
+      ttNewParent = findTodo( newParentItem );
       if ( !ttNewParent && addParentIfMissing ) {
-        ttNewParent = insertTodo( newParent );
+        ttNewParent = insertTodo( newParentItem );
       }
     } else {
       ttNewParent = mRootNode;
@@ -394,10 +397,6 @@ QModelIndex KOTodoModel::moveIfParentChanged( TodoTreeNode *curNode, const Item 
   }
 
   return miChanged;
-#else
-  kWarning()<<"TODO";
-  return QModelIndex();
-#endif // AKONADI_PORT_DISABLED
 }
 
 KOTodoModel::TodoTreeNode *KOTodoModel::findTodo( const Item &todo ) const
