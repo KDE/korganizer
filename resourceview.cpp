@@ -574,7 +574,7 @@ void ResourceView::editResource()
   ResourceCalendar *resource = item->resource();
 
   if ( item->isSubresource() ) {
-    if ( resource->type() == "imap" || resource->type() == "scalix" ) {
+    if ( resource->type() == "imap" ) {
       QString identifier = item->resourceIdentifier();
       const QString newResourceName =
         KInputDialog::getText( i18n( "Rename Calendar Folder" ),
