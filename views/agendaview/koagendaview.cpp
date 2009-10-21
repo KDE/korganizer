@@ -795,6 +795,8 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
     if ( incidence->dtStart().toTimeSpec( KOPrefs::instance()->timeSpec() ) == startDt &&
          ev->dtEnd().toTimeSpec( KOPrefs::instance()->timeSpec() ) == endDt ) {
       // No change
+      mChanger->endChange( aitem );
+      QTimer::singleShot( 0, this, SLOT(updateView()) );
       return;
     }
   } else if ( const Todo::Ptr td = Akonadi::todo( aitem ) ) {
@@ -815,6 +817,8 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
 
     if( td->dtDue().toTimeSpec( KOPrefs::instance()->timeSpec() )  == endDt ) {
       // No change
+      mChanger->endChange( aitem );
+      QTimer::singleShot( 0, this, SLOT(updateView()) );
       return;
     }
   }
