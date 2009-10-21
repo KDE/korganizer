@@ -148,7 +148,7 @@ if(KMAIL_SUPPORTED)
 
   set_target_properties(korganizer_core PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
 
-  install(TARGETS korganizer_core DESTINATION ${PLUGIN_INSTALL_DIR})
+  install(TARGETS korganizer_core ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 
   ########### next target ###############
