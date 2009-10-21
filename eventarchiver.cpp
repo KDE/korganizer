@@ -31,8 +31,10 @@
 #include <kcal/icalformat.h>
 #include <kcal/filestorage.h>
 #include <kcal/calendar.h>
+#include <kcal/calendarlocal.h>
 
 #include <akonadi/kcal/utils.h>
+#include <akonadi/kcal/akonadicalendaradaptor.h>
 
 #include <kdebug.h>
 #include <kglobal.h>
@@ -161,8 +163,9 @@ void EventArchiver::archiveIncidences( KOrg::CalendarBase *calendar, const QDate
 {
   Q_UNUSED( limitDate );
   Q_UNUSED( withGUI );
-#ifdef AKONADI_PORT_DISABLED
-  FileStorage storage( calendar );
+
+  AkonadiCalendarAdaptor cal(calendar);
+  FileStorage storage( &cal );
 
   // Save current calendar to disk
   KTemporaryFile tmpFile;
@@ -189,13 +192,12 @@ void EventArchiver::archiveIncidences( KOrg::CalendarBase *calendar, const QDate
   // remain. This is not really efficient, but there is no other easy way.
   QStringList uids;
   Incidence::List allIncidences = archiveCalendar.rawIncidences();
-  Incidence::List::ConstIterator it;
-  for ( it = incidences.constBegin(); it != incidences.constEnd(); ++it ) {
-    uids << (*it)->uid();
+  foreach(const Akonadi::Item &item, incidences) {
+    uids.append( Akonadi::incidence(item)->uid() );
   }
-  for ( it = allIncidences.constBegin(); it != allIncidences.constEnd(); ++it ) {
-    if ( !uids.contains( (*it)->uid() ) ) {
-      archiveCalendar.deleteIncidence( *it );
+  foreach(Incidence *inc, allIncidences) {
+    if ( !uids.contains( inc->uid() ) ) {
+      archiveCalendar.deleteIncidence( inc );
     }
   }
 
@@ -245,13 +247,10 @@ void EventArchiver::archiveIncidences( KOrg::CalendarBase *calendar, const QDate
   KIO::NetAccess::removeTempFile( archiveFile );
 
   // Delete archived events from calendar
-  for ( it = incidences.constBegin(); it != incidences.constEnd(); ++it ) {
-    calendar->deleteIncidence( *it );
+  foreach(const Akonadi::Item &item, incidences) {
+    calendar->deleteIncidence( item );
   }
   emit eventsDeleted();
-#else
-  kDebug() << "AKONADI_PORT_DISABLED";
-#endif
 }
 
 #include "eventarchiver.moc"
