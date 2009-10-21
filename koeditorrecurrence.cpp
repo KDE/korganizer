@@ -378,25 +378,27 @@ bool RecurMonthly::byPos()
   return mByPosRadio->isChecked();
 }
 
-int RecurMonthly::day()
+short RecurMonthly::day()
 {
   int day = mByDayCombo->currentIndex();
   if ( day >= 31 ) {
-    day = 31-day-1;
+    day = 31 - day - 1;
   } else {
     ++day;
   }
-  return day;
+  return short( day );
 }
 
-int RecurMonthly::count()
+short RecurMonthly::count()
 {
+  short count;
   int pos = mByPosCountCombo->currentIndex();
   if ( pos <= 4 ) { // positive count
-    return pos + 1;
+    count = short( pos + 1 );
   } else {
-    return 4 - pos;
+    count = short( 4 - pos );
   }
+  return count;
 }
 
 int RecurMonthly::weekday()
@@ -573,19 +575,21 @@ int RecurYearly::monthDay()
   return mByMonthSpin->value();
 }
 
-int RecurYearly::month()
+short RecurYearly::month()
 {
-  return mByMonthCombo->currentIndex() + 1;
+  return short( mByMonthCombo->currentIndex() + 1 );
 }
 
-int RecurYearly::posCount()
+short RecurYearly::posCount()
 {
+  short count;
   int pos = mByPosDayCombo->currentIndex();
   if ( pos <= 4 ) { // positive count
-    return pos + 1;
+    count = short( pos + 1 );
   } else {
-    return 4 - pos;
+    count = short( 4 - pos );
   }
+  return count;
 }
 
 int RecurYearly::posWeekday()
@@ -593,9 +597,9 @@ int RecurYearly::posWeekday()
   return mByPosWeekdayCombo->currentIndex() + 1;
 }
 
-int RecurYearly::posMonth()
+short RecurYearly::posMonth()
 {
-  return mByPosMonthCombo->currentIndex() + 1;
+  return short( mByPosMonthCombo->currentIndex() + 1 );
 }
 
 int RecurYearly::day()
@@ -1425,7 +1429,7 @@ void KOEditorRecurrence::fillIncidence( Incidence *incidence )
     r->setMonthly( mMonthly->frequency() );
 
     if ( mMonthly->byPos() ) {
-      int pos = mMonthly->count();
+      short pos = mMonthly->count();
 
       QBitArray days( 7 );
       days.fill( false );

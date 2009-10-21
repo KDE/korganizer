@@ -108,9 +108,9 @@ class RecurMonthly : public RecurBase
     bool byDay();
     bool byPos();
 
-    int day();
+    short day();
 
-    int count();
+    short count();
     int weekday();
 
   private:
@@ -140,11 +140,11 @@ class RecurYearly : public RecurBase
     YearlyType getType();
 
     int day();
-    int posCount();
+    short posCount();
     int posWeekday();
-    int posMonth();
+    short posMonth();
     int monthDay();
-    int month();
+    short month();
 
   private:
     QRadioButton *mByMonthRadio;
