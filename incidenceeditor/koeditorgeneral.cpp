@@ -617,7 +617,7 @@ void KOEditorGeneral::updateAttendeeSummary( int count )
 bool KOEditorGeneral::validateInput()
 {
   // Do not permit an empty title
-  if ( mSummaryEdit->text().isEmpty() ) {
+  if ( mSummaryEdit->text().trimmed().isEmpty() ) {
     KMessageBox::sorry( mParent,
                         i18nc( "@info", "Please specify a title." ) );
     return false;
