@@ -32,6 +32,7 @@
 #include <interfaces/korganizer/akonadicalendaradaptor.h>
 
 #include <Akonadi/ItemCreateJob>
+#include <Akonadi/ItemDeleteJob>
 #include <Akonadi/CollectionDialog>
 
 #include <KCal/AssignmentVisitor>
@@ -131,41 +132,62 @@ bool IncidenceChanger::deleteIncidence( const Item &aitem )
 
   kDebug() << "\"" << incidence->summary() << "\"";
   bool doDelete = sendGroupwareMessage( aitem, KCal::iTIPCancel, true );
-  if( doDelete ) {
-    // @TODO: let Calendar::deleteIncidence do the locking...
-    Incidence::Ptr tmp( incidence->clone() );
-    emit incidenceToBeDeleted( aitem );
-    doDelete = mCalendar->deleteIncidence( aitem );
-    if ( !KOPrefs::instance()->thatIsMe( tmp->organizer().email() ) ) {
-      const QStringList myEmails = KOPrefs::instance()->allEmails();
-      bool notifyOrganizer = false;
-      for ( QStringList::ConstIterator it = myEmails.begin(); it != myEmails.end(); ++it ) {
-        QString email = *it;
-        Attendee *me = tmp->attendeeByMail( email );
-        if ( me ) {
-          if ( me->status() == KCal::Attendee::Accepted ||
-               me->status() == KCal::Attendee::Delegated ) {
-            notifyOrganizer = true;
-          }
-          Attendee *newMe = new Attendee( *me );
-          newMe->setStatus( KCal::Attendee::Declined );
-          tmp->clearAttendees();
-          tmp->addAttendee( newMe );
-          break;
-        }
-      }
+  if( !doDelete )
+    return false;
+  emit incidenceToBeDeleted( aitem );
+  //AKONADI_PORT the following was done in AkonadiCalendar before and must be ported
+  //  m_changes.removeAll( item.id() ); //abort changes to this incidence cause we will just delete it
 
-      if ( !KOGroupware::instance()->doNotNotify() && notifyOrganizer ) {
-        MailScheduler scheduler( static_cast<AkonadiCalendar*>(mCalendar), this );
-        scheduler.performTransaction( tmp.get(), KCal::iTIPReply );
-      }
-      //reset the doNotNotify flag
-      KOGroupware::instance()->setDoNotNotify( false );
-    }
-    emit incidenceDeleted( aitem );
-  }
-  return doDelete;
+  ItemDeleteJob* job = new ItemDeleteJob( aitem );
+  connect( job, SIGNAL(result(KJob*)), this, SLOT(deleteIncidenceFinished(KJob*)) );
+  return true;
 }
+
+void IncidenceChanger::deleteIncidenceFinished( KJob* j )
+{
+  const ItemDeleteJob* job = qobject_cast<const ItemDeleteJob*>( j );
+  Q_ASSERT( job );
+  const Item::List items = job->deletedItems();
+  Q_ASSERT( items.count() == 1 );
+  Incidence::Ptr tmp = Akonadi::incidence( items.first() );
+  Q_ASSERT( tmp );
+  if ( job->error() ) {
+    KMessageBox::sorry( 0, //PENDING(AKONADI_PORT) set parent
+                        i18n( "Unable to delete incidence %1 \"%2\": %3",
+                              i18n( tmp->type() ),
+                              tmp->summary(),
+                              job->errorString( )) );
+    return;
+  }
+  if ( !KOPrefs::instance()->thatIsMe( tmp->organizer().email() ) ) {
+    const QStringList myEmails = KOPrefs::instance()->allEmails();
+    bool notifyOrganizer = false;
+    for ( QStringList::ConstIterator it = myEmails.begin(); it != myEmails.end(); ++it ) {
+      QString email = *it;
+      Attendee *me = tmp->attendeeByMail( email );
+      if ( me ) {
+        if ( me->status() == KCal::Attendee::Accepted ||
+             me->status() == KCal::Attendee::Delegated ) {
+          notifyOrganizer = true;
+        }
+        Attendee *newMe = new Attendee( *me );
+        newMe->setStatus( KCal::Attendee::Declined );
+        tmp->clearAttendees();
+        tmp->addAttendee( newMe );
+        break;
+      }
+    }
+
+    if ( !KOGroupware::instance()->doNotNotify() && notifyOrganizer ) {
+      MailScheduler scheduler( static_cast<AkonadiCalendar*>(mCalendar), this );
+      scheduler.performTransaction( tmp.get(), KCal::iTIPReply );
+    }
+    //reset the doNotNotify flag
+    KOGroupware::instance()->setDoNotNotify( false );
+  }
+  emit incidenceDeleted( items.first() );
+}
+
 
 bool IncidenceChanger::cutIncidence( const Item& aitem )
 {

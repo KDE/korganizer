@@ -61,6 +61,7 @@ class KORGANIZERPRIVATE_EXPORT IncidenceChanger : public KOrg::IncidenceChangerB
 
   private Q_SLOTS:
     void addIncidenceFinished( KJob* job );
+    void deleteIncidenceFinished( KJob* job );
 
   private:
     class ComparisonVisitor;

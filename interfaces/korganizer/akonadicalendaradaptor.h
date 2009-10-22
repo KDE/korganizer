@@ -80,7 +80,7 @@ class KORGANIZER_INTERFACES_EXPORT AkonadiCalendarAdaptor : public KCal::Calenda
     
     virtual bool deleteEvent( Event *event )
     {
-      return mCalendar->deleteEvent( incidenceToItem(event) );
+      return mChanger->deleteIncidence( incidenceToItem( event ) );
     }
     
     virtual void deleteAllEvents() { Q_ASSERT(false); } //unused
@@ -117,7 +117,7 @@ class KORGANIZER_INTERFACES_EXPORT AkonadiCalendarAdaptor : public KCal::Calenda
     
     virtual bool deleteTodo( Todo *todo )
     {
-      return mCalendar->deleteTodo( incidenceToItem(todo) );
+      return mChanger->deleteIncidence( incidenceToItem( todo ) );
     }
     
     virtual void deleteAllTodos() { Q_ASSERT(false); } //unused
@@ -144,7 +144,7 @@ class KORGANIZER_INTERFACES_EXPORT AkonadiCalendarAdaptor : public KCal::Calenda
     
     virtual bool deleteJournal( Journal *journal )
     {
-      return mCalendar->deleteJournal( incidenceToItem(journal) );
+      return mChanger->deleteIncidence( incidenceToItem( journal ) );
     }
     
     virtual void deleteAllJournals() { Q_ASSERT(false); } //unused

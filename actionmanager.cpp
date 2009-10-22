@@ -2102,8 +2102,9 @@ void ActionManager::slotAutoArchive()
 
   mAutoArchiveTimer->stop();
   EventArchiver archiver;
-  connect( &archiver, SIGNAL(eventsDeleted()), mCalendarView, SLOT(updateView()) );
-  archiver.runAuto( mCalendarView->calendar(), mCalendarView, false /*no gui*/);
+  connect( &archiver, SIGNAL(eventsDeleted()), mCalendarView, SLOT(updateView()) ); //AKONADI_PORT this signal shouldn't be needed anymore?
+  IncidenceChanger changer( mCalendarAkonadi );  //AKONADI_PORT avoid this local incidence changer copy...
+  archiver.runAuto( mCalendarView->calendar(), &changer, mCalendarView, false /*no gui*/);
 
   // restart timer with the correct delay ( especially useful for the first time )
   slotAutoArchivingSettingsModified();

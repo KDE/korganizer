@@ -184,7 +184,7 @@ void KODialogManager::showArchiveDialog()
 {
 #ifndef KORG_NOARCHIVE
   if ( !mArchiveDialog ) {
-    mArchiveDialog = new ArchiveDialog( mMainView->calendar(), mMainView );
+    mArchiveDialog = new ArchiveDialog( mMainView->calendar(), mMainView->incidenceChanger() );
     connect( mArchiveDialog, SIGNAL(eventsDeleted()),
              mMainView, SLOT(updateView()) );
     connect( mArchiveDialog, SIGNAL(autoArchivingSettingsModified()),

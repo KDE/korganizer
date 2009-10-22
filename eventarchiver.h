@@ -36,6 +36,7 @@ class QDate;
 
 namespace KOrg {
   class AkonadiCalendar;
+  class IncidenceChangerBase;
 }
 namespace KCal {
   class Event;
@@ -65,7 +66,7 @@ class EventArchiver : public QObject
      * @param widget parent widget for message boxes
      * Confirmation and "no events to process" dialogs will be shown
      */
-    void runOnce( KOrg::AkonadiCalendar *calendar, const QDate &limitDate, QWidget *widget );
+    void runOnce( KOrg::AkonadiCalendar *calendar, KOrg::IncidenceChangerBase* changer, const QDate &limitDate, QWidget *widget );
 
     /**
      * Delete or archive events. This is called regularly, when auto-archiving
@@ -76,18 +77,18 @@ class EventArchiver : public QObject
      * Note that error dialogs like "cannot save" are shown even if from this method, so widget
      * should be set in all cases.
      */
-    void runAuto( KOrg::AkonadiCalendar *calendar, QWidget *widget, bool withGUI );
+    void runAuto( KOrg::AkonadiCalendar *calendar, KOrg::IncidenceChangerBase* changer, QWidget *widget, bool withGUI );
 
   signals:
     void eventsDeleted();
 
   private:
-    void run( KOrg::AkonadiCalendar *calendar, const QDate &limitDate, QWidget *widget,
+    void run( KOrg::AkonadiCalendar *calendar, KOrg::IncidenceChangerBase* changer, const QDate &limitDate, QWidget *widget,
               bool withGUI, bool errorIfNone );
 
-    void deleteIncidences( KOrg::AkonadiCalendar *calendar, const QDate &limitDate, QWidget *widget,
+    void deleteIncidences( KOrg::AkonadiCalendar *calendar, KOrg::IncidenceChangerBase* changer, const QDate &limitDate, QWidget *widget,
                            const Akonadi::Item::List &incidences, bool withGUI );
-    void archiveIncidences( KOrg::AkonadiCalendar *calendar, const QDate &limitDate, QWidget *widget,
+    void archiveIncidences( KOrg::AkonadiCalendar *calendar, KOrg::IncidenceChangerBase* changer, const QDate &limitDate, QWidget *widget,
                             const Akonadi::Item::List &incidences, bool withGUI );
 };
 
