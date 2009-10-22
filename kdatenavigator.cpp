@@ -89,10 +89,10 @@ KDateNavigator::KDateNavigator( QWidget *parent )
   connect( mDayMatrix, SIGNAL(selected(const KCal::DateList &)),
            SIGNAL(datesSelected(const KCal::DateList &)) );
 
-  connect( mDayMatrix, SIGNAL(incidenceDropped(Incidence *,const QDate &)),
-           SIGNAL(incidenceDropped(Incidence *,const QDate &)) );
-  connect( mDayMatrix, SIGNAL(incidenceDroppedMove(Incidence *,const QDate &)),
-           SIGNAL(incidenceDroppedMove(Incidence *,const QDate &)) );
+  connect( mDayMatrix, SIGNAL(incidenceDropped(Akonadi::Item,QDate)),
+           SIGNAL(incidenceDropped(Akonadi::Item,QDate)) );
+  connect( mDayMatrix, SIGNAL(incidenceDroppedMove(Akonadi::Item,QDate)),
+           SIGNAL(incidenceDroppedMove(Akonadi::Item,QDate)) );
 
   connect( mDayMatrix, SIGNAL(newEventSignal(const QDate &)),
            SIGNAL(newEventSignal(const QDate &)) );

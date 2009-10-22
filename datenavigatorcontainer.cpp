@@ -67,10 +67,10 @@ void DateNavigatorContainer::connectNavigatorView( KDateNavigator *v )
   connect( v, SIGNAL(datesSelected(const KCal::DateList &)),
            SIGNAL(datesSelected(const KCal::DateList &)) );
 
-  connect( v, SIGNAL(incidenceDropped(Incidence *,const QDate &)),
-           SIGNAL(incidenceDropped(Incidence *,const QDate &)) );
-  connect( v, SIGNAL(incidenceDroppedMove(Incidence *,const QDate &)),
-           SIGNAL(incidenceDroppedMove(Incidence *,const QDate &)) );
+  connect( v, SIGNAL(incidenceDropped(Akonadi::Item,QDate)),
+           SIGNAL(incidenceDropped(Akonadi::Item,QDate)) );
+  connect( v, SIGNAL(incidenceDroppedMove(Akonadi::Item,QDate)),
+           SIGNAL(incidenceDroppedMove(Akonadi::Item,QDate)) );
 
   connect( v, SIGNAL(newEventSignal(const QDate &)),
            SIGNAL(newEventSignal(const QDate &)) );

@@ -35,7 +35,9 @@
 namespace KCal {
   class Incidence;
 }
-
+namespace Akonadi {
+  class Item;
+}
 using namespace KCal;
 
 class QEvent;
@@ -218,7 +220,7 @@ class KODayMatrix: public QFrame, public KOrg::CalendarBase::CalendarObserver
      * @param incidence the dropped calendar incidence
      * @param dt QDate that has been selected
      */
-    void incidenceDropped( Incidence *incidence, const QDate &dt );
+    void incidenceDropped( const Akonadi::Item &item, const QDate &dt );
 
     /**
      * Emitted if the user has dropped an event inside the matrix and chose
@@ -227,7 +229,7 @@ class KODayMatrix: public QFrame, public KOrg::CalendarBase::CalendarObserver
      * @param oldincidence the new calendar incidence
      * @param dt QDate that has been selected
      */
-    void incidenceDroppedMove( Incidence *oldincidence, const QDate &dt );
+    void incidenceDroppedMove( const Akonadi::Item &item, const QDate &dt );
 
   protected:
     bool event( QEvent *e );
