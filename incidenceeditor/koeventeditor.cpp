@@ -198,17 +198,6 @@ void KOEventEditor::setupFreeBusy()
   topLayout->addWidget( mFreeBusy );
 }
 
-void KOEventEditor::editIncidence( const Item &item )
-{
-  const Event::Ptr event = Akonadi::event( item );
-  Q_ASSERT( event );
-  init();
-
-  mIncidence = item;
-  readIncidence( mIncidence, false );
-  setCaption( i18nc( "@title:window", "Edit Event : %1", event->summary() ) );
-}
-
 void KOEventEditor::newEvent()
 {
   init();
@@ -255,6 +244,7 @@ void KOEventEditor::loadDefaults()
 
 bool KOEventEditor::processInput()
 {
+  kDebug();
   if ( !validateInput() || !mChanger ) {
     return false;
   }
@@ -282,12 +272,6 @@ bool KOEventEditor::processInput()
           i18nc( "@title:window", "No Changes" ) );
       }
     } else {
-      ev->startUpdates(); //merge multiple mIncidence->updated() calls into one
-
-      Akonadi::Item evItem;
-      evItem.setPayload(ev);
-      fillEvent( evItem );
-      
       if ( mIsCounter ) {
         Q_ASSERT( mIncidence.hasPayload<KCal::Event::Ptr>() );
         KCal::Event::Ptr incidenceEvent = mIncidence.payload<KCal::Event::Ptr>();
@@ -296,16 +280,17 @@ bool KOEventEditor::processInput()
         // add dummy event at the position of the counter proposal
         Event::Ptr event2( ev->clone() );
         event2->clearAttendees();
-        event2->setSummary(
-          i18nc( "@item",
-                 "My counter proposal for: %1", ev->summary() ) );
+        event2->setSummary( i18nc( "@item", "My counter proposal for: %1", ev->summary() ) );
 
-        rc = mChanger->addIncidence( event2 );
-
+       rc = mChanger->addIncidence( event2 );
       } else {
+        mChanger->beginChange( mIncidence );
+        ev->startUpdates(); //merge multiple mIncidence->updated() calls into one
+        fillEvent(mIncidence);
         rc = mChanger->changeIncidence( oldEvent, mIncidence );
+        ev->endUpdates();
+        mChanger->endChange( mIncidence );
       }
-      ev->endUpdates();
     }
     return rc;
   } else {
@@ -314,9 +299,7 @@ bool KOEventEditor::processInput()
     newEvent->setOrganizer( Person( KOEditorConfig::instance()->fullName(),
                             KOEditorConfig::instance()->email() ) );
     mIncidence.setPayload( newEvent );
-
     fillEvent( mIncidence );
-
     if ( !mChanger->addIncidence( newEvent, this ) ) {
       mIncidence = Item();
       return false;

@@ -87,17 +87,6 @@ void KOJournalEditor::setupGeneral()
   mGeneral->finishSetup();
 }
 
-void KOJournalEditor::editIncidence( const Item &item )
-{
-  const Journal::Ptr journal = Akonadi::journal( item );
-  Q_ASSERT( journal );
-  init();
-
-  mIncidence = item;
-  readIncidence( mIncidence, false );
-  setCaption( i18nc( "@title:window", "Edit Journal: %1", journal->summary() ) );
-}
-
 void KOJournalEditor::newJournal()
 {
   init();
@@ -127,6 +116,7 @@ void KOJournalEditor::loadDefaults()
 
 bool KOJournalEditor::processInput()
 {
+  kDebug();
   if ( !validateInput() || !mChanger ) {
     return false;
   }
@@ -141,10 +131,13 @@ bool KOJournalEditor::processInput()
     if ( *oldJournal == *journal ) {
       // Don't do anything
     } else {
+      journal = Akonadi::journal( mIncidence );
+      mChanger->beginChange( mIncidence );
       journal->startUpdates(); //merge multiple mIncidence->updated() calls into one
       fillJournal( journal.get() );
       rc = mChanger->changeIncidence( oldJournal, mIncidence );
       journal->endUpdates();
+      mChanger->endChange( mIncidence );
     }
     return rc;
   } else {

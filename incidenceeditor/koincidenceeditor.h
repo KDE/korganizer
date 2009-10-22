@@ -33,6 +33,7 @@
 
 #include <KCal/Incidence>
 #include <Akonadi/Item>
+#include <Akonadi/Monitor>
 
 namespace KPIM {
   class DesignerFields;
@@ -66,14 +67,15 @@ class INCIDENCEEDITOR_EXPORT KOIncidenceEditor : public KPageDialog
     virtual void modified( int /*change*/= 0 ) {}
 
     virtual void reload() = 0;
-    virtual void readIncidence( const Akonadi::Item &, bool tmpl = false ) = 0;
+
+    /** Edit an existing incidence. */
+    virtual void editIncidence( const Akonadi::Item & );
 
     virtual void selectInvitationCounterProposal( bool enable );
     virtual void selectCreateTask( bool enable );
 
   public slots:
     /** Edit an existing todo. */
-    virtual void editIncidence( const Akonadi::Item & ) = 0;
     virtual void setIncidenceChanger( IncidenceChangerBase *changer )
     { mChanger = changer; }
 
@@ -113,12 +115,16 @@ class INCIDENCEEDITOR_EXPORT KOIncidenceEditor : public KPageDialog
     void slotButtonClicked( int button );
 
   private slots:
+    void slotItemChanged( const Akonadi::Item &item );
+    void slotItemRemoved( const Akonadi::Item &item );
+
     void slotManageTemplates();
     void slotLoadTemplate( const QString &templateName );
     void slotSaveTemplate( const QString &templateName );
     void slotTemplatesChanged( const QStringList &templateNames );
-
+    
   protected:
+    virtual void readIncidence( const Akonadi::Item &, bool tmpl = false ) = 0;
     virtual void closeEvent( QCloseEvent * );
 
     virtual QString type() = 0;
@@ -163,6 +169,7 @@ class INCIDENCEEDITOR_EXPORT KOIncidenceEditor : public KPageDialog
     bool mIsCreateTask;
 
     Akonadi::Item mIncidence;
+    Akonadi::Monitor *mMonitor;
 };
 
 #endif

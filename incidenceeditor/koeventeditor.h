@@ -77,11 +77,6 @@ class INCIDENCEEDITOR_EXPORT KOEventEditor : public KOIncidenceEditor
                    bool richDescription = false );
 
     /**
-      Edit an existing event.
-    */
-    void editIncidence( const Akonadi::Item &incidence );
-
-    /**
       Set widgets to the given date/time values
     */
     void setDates( const QDateTime &from, const QDateTime &to, bool allDay );

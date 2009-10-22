@@ -158,17 +158,6 @@ void KOTodoEditor::setupRecurrence()
            mRecurrence, SLOT(setEnabled(bool)) );
 }
 
-void KOTodoEditor::editIncidence( const Item &item )
-{
-  const Todo::Ptr todo = Akonadi::todo( item );
-  Q_ASSERT( todo );
-  init();
-
-  mIncidence = item;
-  readIncidence( item, false );
-  setCaption( i18nc( "@title:window", "Edit To-do: %1", todo->summary() ) );
-}
-
 void KOTodoEditor::newTodo()
 {
   init();
@@ -198,6 +187,7 @@ void KOTodoEditor::loadDefaults()
 
 bool KOTodoEditor::processInput()
 {
+  kDebug();
   if ( !validateInput() ) {
     return false;
   }
@@ -214,10 +204,12 @@ bool KOTodoEditor::processInput()
     if( *oldTodo == *todo ) {
       // Don't do anything cause no changes where done
     } else {
+      mChanger->beginChange( mIncidence );
       Akonadi::todo( mIncidence )->startUpdates(); //merge multiple mIncidence->updated() calls into one
       fillTodo(mIncidence);
       rc = mChanger->changeIncidence( oldTodo, mIncidence );
       Akonadi::todo( mIncidence )->endUpdates();
+      mChanger->endChange( mIncidence );
     }
     return rc;
   } else {

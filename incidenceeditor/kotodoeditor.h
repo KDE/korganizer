@@ -73,9 +73,6 @@ class INCIDENCEEDITOR_EXPORT KOTodoEditor : public KOIncidenceEditor
                    const QString &description = QString(),
                    bool richDescription = false );
 
-    /** Edit an existing todo. */
-    void editIncidence( const Akonadi::Item & );
-
     /** Set widgets to default values */
     void setDates( const QDateTime &due, bool allDay = true, const Akonadi::Item &relatedTodo = Akonadi::Item() );
 

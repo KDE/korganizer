@@ -36,8 +36,10 @@
 
 #include <akonadi/kcal/utils.h>
 #include <akonadi/item.h>
+#include <akonadi/itemfetchscope.h>
 
 #include <Akonadi/Item>
+#include <Akonadi/Monitor>
 
 #include <KABC/Addressee>
 #include <KCal/Incidence>
@@ -56,7 +58,7 @@ using namespace KCal;
 
 KOIncidenceEditor::KOIncidenceEditor( const QString &caption, QWidget *parent )
   : KPageDialog( parent ),
-    mAttendeeEditor( 0 ), mIsCounter( false ), mIsCreateTask( false )
+    mAttendeeEditor( 0 ), mIsCounter( false ), mIsCreateTask( false ), mMonitor(0)
 {
   setFaceType( KPageDialog::Tabbed );
   setCaption( caption );
@@ -87,6 +89,40 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption, QWidget *parent )
 
 KOIncidenceEditor::~KOIncidenceEditor()
 {
+}
+
+void KOIncidenceEditor::editIncidence( const Akonadi::Item &item )
+{
+  Incidence::Ptr incidence = Akonadi::incidence(item);
+  Q_ASSERT(incidence);
+  Q_ASSERT(incidence->type() == type());
+  
+  init();
+
+  if( mIncidence.isValid() ) {
+    Q_ASSERT(mMonitor);
+    mMonitor->setItemMonitored(mIncidence, false);
+  } else {
+    Q_ASSERT( ! mIncidence.hasPayload<Incidence::Ptr>()); // not possible, right?
+  }
+    
+  readIncidence( item, false );
+  mIncidence = item;
+
+  if( ! mMonitor) {
+    mMonitor = new Akonadi::Monitor(this);
+    mMonitor->itemFetchScope().fetchFullPayload();
+    //mMonitor->itemFetchScope().setAncestorRetrieval( Akonadi::ItemFetchScope::Parent );
+    connect( mMonitor, SIGNAL(itemChanged(Akonadi::Item,QSet<QByteArray>)),
+             this, SLOT(slotItemChanged(Akonadi::Item)) );
+    connect( mMonitor, SIGNAL(itemRemoved(Akonadi::Item)),
+             this, SLOT(slotItemRemoved(Akonadi::Item)) );
+    //connect( mMonitor, SIGNAL(itemMoved(Akonadi::Item,Akonadi::Collection,Akonadi::Collection)),
+    //         this, SLOT(readIncidence(Akonadi::Item)) );
+  }
+  mMonitor->setItemMonitored(item, true);
+  
+  setCaption( i18nc( "@title:window", "Edit %1: %2", QString(incidence->type()), incidence->summary() ) );
 }
 
 bool KOIncidenceEditor::incidenceModified() {
@@ -176,6 +212,22 @@ void KOIncidenceEditor::cancelRemovedAttendees( const Akonadi::Item &item )
       emit deleteAttendee( item );
     }
   }
+}
+
+void KOIncidenceEditor::slotItemChanged( const Akonadi::Item &item )
+{
+  kDebug();
+  Q_ASSERT(item == mIncidence);
+  KMessageBox::information( this, i18nc( "@info", "The incidence got changed. Reloading editor now." ) );
+  readIncidence(item);
+}
+
+void KOIncidenceEditor::slotItemRemoved( const Akonadi::Item &item )
+{
+  kDebug();
+  Q_ASSERT(item == mIncidence);
+  KMessageBox::information( this, i18nc( "@info", "The incidence got removed. Closing editor now." ) );
+  close();
 }
 
 void KOIncidenceEditor::slotManageTemplates()

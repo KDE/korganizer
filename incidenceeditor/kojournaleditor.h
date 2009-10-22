@@ -75,9 +75,6 @@ class INCIDENCEEDITOR_EXPORT KOJournalEditor : public KOIncidenceEditor
                    const QString &description = QString(),
                    bool richDescription = false );
 
-    /** Edit an existing Journal. */
-    void editIncidence( const Akonadi::Item & );
-
     /** Set date widget to default values */
     void setDate( const QDate &date );
 

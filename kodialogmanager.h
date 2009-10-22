@@ -100,7 +100,6 @@ class KODialogManager : public QObject
     class EditorDialogVisitor;
 
     CalendarView *mMainView;
-
     KCMultiDialog *mOptionsDialog;
     QPointer<KPIM::CategoryEditDialog> mCategoryEditDialog;
     SearchDialog *mSearchDialog;

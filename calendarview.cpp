@@ -2025,8 +2025,6 @@ Item CalendarView::selectedTodo()
 
 void CalendarView::dialogClosing( const Item &item )
 {
-  // FIXME: this doesn't work, because if it's a new incidence, it's not locked!
-  mChanger->endChange( item );
   mDialogList.remove( item.id() );
 }
 
@@ -2172,12 +2170,6 @@ bool CalendarView::editIncidence( const Item &item, bool isCounter )
     return true;
   }
 
-  if ( !isCounter && !mChanger->beginChange( item ) ) {
-    warningChangeFailed( item );
-    showIncidence( item );
-    return false;
-  }
-
   KOIncidenceEditor *incidenceEditor = mDialogManager->getEditor( item );
   connectIncidenceEditor( incidenceEditor );
 
@@ -2185,7 +2177,6 @@ bool CalendarView::editIncidence( const Item &item, bool isCounter )
   incidenceEditor->editIncidence( item );
   incidenceEditor->show();
   
-  //mChanger->endChange( item ) will be called on CalendarView::dialogClosing and CalendarView::editCanceled
   return true;
 }
 
