@@ -50,7 +50,7 @@ class DateNavigatorContainer: public QFrame
     /**
       Associate date navigator with a calendar. It is used by KODayMatrix.
     */
-    void setCalendar( KOrg::CalendarBase * );
+    void setCalendar( KOrg::AkonadiCalendar * );
 
     QSize minimumSizeHint() const;
     QSize sizeHint() const;
@@ -102,7 +102,7 @@ class DateNavigatorContainer: public QFrame
 
     KDateNavigator *mNavigatorView;
 
-    KOrg::CalendarBase *mCalendar;
+    KOrg::AkonadiCalendar *mCalendar;
 
     QList<KDateNavigator*> mExtraViews;
 

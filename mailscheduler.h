@@ -38,7 +38,7 @@ namespace KCal {
 
 namespace KOrg {
   class AkonadiCalendar;
-  class CalendarBase;
+  class AkonadiCalendar;
 
   /*
     This class implements the iTIP interface using the email interface specified

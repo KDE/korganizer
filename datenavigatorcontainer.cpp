@@ -93,7 +93,7 @@ void DateNavigatorContainer::connectNavigatorView( KDateNavigator *v )
   connect( v, SIGNAL(goYear(int)), SIGNAL(goYear(int)) );
 }
 
-void DateNavigatorContainer::setCalendar( KOrg::CalendarBase *cal )
+void DateNavigatorContainer::setCalendar( KOrg::AkonadiCalendar *cal )
 {
   mCalendar = cal;
   mNavigatorView->setCalendar( cal );

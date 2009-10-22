@@ -95,7 +95,7 @@ class EventIndicator : public QFrame
   KOAgendaView is the agenda-like view that displays events in a single
   or multi-day view.
 */
-class KOAgendaView : public KOrg::AgendaView, public KOrg::CalendarBase::CalendarObserver
+class KOAgendaView : public KOrg::AgendaView, public KOrg::AkonadiCalendar::CalendarObserver
 {
   Q_OBJECT
   public:
@@ -136,7 +136,7 @@ class KOAgendaView : public KOrg::AgendaView, public KOrg::CalendarBase::Calenda
     bool selectedIsSingleCell();
 
     /* reimp from BaseView */
-    virtual void setCalendar( CalendarBase *cal );
+    virtual void setCalendar( AkonadiCalendar *cal );
      
     /** Show only incidences from the given resource. */
     void setResource( KCal::ResourceCalendar *res, const QString &subResource = QString() );

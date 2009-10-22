@@ -31,7 +31,7 @@
 
 
 namespace KOrg {
-  class  CalendarBase;
+  class  AkonadiCalendar;
 }
 
 class QWidget;
@@ -160,9 +160,9 @@ class KOTodoCategoriesDelegate : public QStyledItemDelegate
                                const QStyleOptionViewItem &option,
                                const QModelIndex &index ) const;
 
-    void setCalendar( KOrg::CalendarBase *cal );
+    void setCalendar( KOrg::AkonadiCalendar *cal );
   private:
-    KOrg::CalendarBase *mCalendar;
+    KOrg::AkonadiCalendar *mCalendar;
 };
 
 /**

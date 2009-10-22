@@ -46,7 +46,7 @@ using namespace KCal;
 #include <QAbstractItemView>
 #include <QHBoxLayout>
 
-KOTodoViewQuickSearch::KOTodoViewQuickSearch( KOrg::CalendarBase *calendar, QWidget *parent )
+KOTodoViewQuickSearch::KOTodoViewQuickSearch( KOrg::AkonadiCalendar *calendar, QWidget *parent )
   : QWidget( parent ), mCalendar( calendar )
 {
   QHBoxLayout *layout = new QHBoxLayout( this );
@@ -74,7 +74,7 @@ KOTodoViewQuickSearch::KOTodoViewQuickSearch( KOrg::CalendarBase *calendar, QWid
   setLayout( layout );
 }
 
-void KOTodoViewQuickSearch::setCalendar( KOrg::CalendarBase *calendar )
+void KOTodoViewQuickSearch::setCalendar( KOrg::AkonadiCalendar *calendar )
 {
   mCalendar = calendar;
   fillCategories();

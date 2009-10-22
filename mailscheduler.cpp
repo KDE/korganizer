@@ -27,7 +27,7 @@
 #include "kocore.h"
 #include "komailclient.h"
 #include "koprefs.h"
-#include "calendarbase.h"
+#include "akonadicalendar.h"
 #include "akonadicalendar.h"
 #include "akonadicalendaradaptor.h"
 

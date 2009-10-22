@@ -69,7 +69,7 @@ QPixmap *KOAgendaItem::completedPxmp = 0;
 
 //-----------------------------------------------------------------------------
 
-KOAgendaItem::KOAgendaItem( CalendarBase *calendar, const Item &item,
+KOAgendaItem::KOAgendaItem( AkonadiCalendar *calendar, const Item &item,
                             const QDate &qd, QWidget *parent )
   : QWidget( parent ), mCalendar( calendar ), mIncidence( item ),
     mDate( qd ), mValid( true ), mCloned( false ), mSpecialEvent( false )

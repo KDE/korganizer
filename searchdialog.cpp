@@ -179,7 +179,7 @@ void SearchDialog::search( const QRegExp &re )
   }
 
   mMatchedEvents.clear();
-  Q_FOREACH( const Item &item, CalendarBase::mergeIncidenceList(events, todos, journals) ) {
+  Q_FOREACH( const Item &item, AkonadiCalendar::mergeIncidenceList(events, todos, journals) ) {
     const Incidence::Ptr ev = Akonadi::incidence( item );
     Q_ASSERT( ev );
     if ( mSummaryCheck->isChecked() ) {

@@ -29,7 +29,7 @@ using namespace KOrg;
 
 using namespace Akonadi;
 
-TimelineItem::TimelineItem( const QString &label, CalendarBase *calendar, KDGanttView *parent )
+TimelineItem::TimelineItem( const QString &label, AkonadiCalendar *calendar, KDGanttView *parent )
   : KDGanttViewTaskItem( parent ), mCalendar( calendar )
 {
   setListViewText( 0, label );
@@ -96,7 +96,7 @@ void TimelineItem::moveItems( const Item &incidence, int delta, int duration )
   }
 }
 
-TimelineSubItem::TimelineSubItem( CalendarBase *calendar,
+TimelineSubItem::TimelineSubItem( AkonadiCalendar *calendar,
                                   const Item &incidence, TimelineItem *parent )
   : KDGanttViewTaskItem( parent ), mIncidence( incidence ),
     mLeft( 0 ), mRight( 0 ), mMarkerWidth( 0 )

@@ -29,7 +29,7 @@
 #include <KCal/Incidence>
 
 #include "akonadicalendar.h"
-#include "calendarbase.h"
+#include "akonadicalendar.h"
 
 #include "kotodoeditor.h"
 #include "koeventeditor.h"

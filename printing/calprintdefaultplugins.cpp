@@ -27,7 +27,7 @@
 
 #include "calprintdefaultplugins.h"
 #include "koprefs.h"
-#include "calendarbase.h"
+#include "akonadicalendar.h"
 
 #include <akonadi/kcal/utils.h>
 

@@ -39,7 +39,7 @@ using namespace KCal;
 
 namespace KOrg {
 
-class CalendarBase;
+class AkonadiCalendar;
 class HTMLExportSettings;
 
 /**
@@ -51,7 +51,7 @@ class HtmlExport
     /**
       Create new HTML exporter for calendar.
     */
-    HtmlExport( CalendarBase *calendar, HTMLExportSettings *settings );
+    HtmlExport( AkonadiCalendar *calendar, HTMLExportSettings *settings );
     virtual ~HtmlExport();
 
     /**

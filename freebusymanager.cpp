@@ -39,7 +39,7 @@
 #include "koprefs.h"
 #include "actionmanager.h"
 #include "korganizer.h"
-#include "calendarbase.h"
+#include "akonadicalendar.h"
 
 #include <kabc/stdaddressbook.h>
 #include <kabc/addressee.h>
@@ -124,7 +124,7 @@ FreeBusyManager::FreeBusyManager( QObject *parent ) :
 {
 }
 
-void FreeBusyManager::setCalendar( KOrg::CalendarBase *c )
+void FreeBusyManager::setCalendar( KOrg::AkonadiCalendar *c )
 {
   mCalendar = c;
   if ( mCalendar ) {

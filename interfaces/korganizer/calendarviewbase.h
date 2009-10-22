@@ -33,7 +33,7 @@ namespace Akonadi {
 
 namespace KOrg {
 
-class CalendarBase;
+class AkonadiCalendar;
 /**
   @short interface for main calendar view widget
   @author Cornelius Schumacher
@@ -44,7 +44,7 @@ class CalendarViewBase : public QWidget
     explicit CalendarViewBase( QWidget *parent ) : QWidget( parent ) {}
     virtual ~CalendarViewBase() {}
 
-    virtual CalendarBase *calendar() = 0;
+    virtual AkonadiCalendar *calendar() = 0;
     virtual IncidenceChangerBase *incidenceChanger() const = 0;
 
     virtual QDate startDate() = 0;

@@ -62,7 +62,7 @@
 
 using namespace Akonadi;
 
-JournalDateView::JournalDateView( KOrg::CalendarBase *calendar, QWidget *parent )
+JournalDateView::JournalDateView( KOrg::AkonadiCalendar *calendar, QWidget *parent )
   : KVBox( parent ), mCalendar( calendar )
 {
   mChanger = 0;
@@ -241,7 +241,7 @@ void JournalView::setReadOnly( bool readonly )
   mDeleteButton->setEnabled( !mReadOnly );
 }
 
-void JournalView::setCalendar( KOrg::CalendarBase *cal )
+void JournalView::setCalendar( KOrg::AkonadiCalendar *cal )
 {
   mCalendar = cal;
 }

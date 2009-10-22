@@ -24,7 +24,7 @@
 */
 
 #include "history.h"
-#include "calendarbase.h"
+#include "akonadicalendar.h"
 
 #include <kcal/incidence.h>
 
@@ -33,7 +33,7 @@
 using namespace KCal;
 using namespace KOrg;
 
-History::History( KOrg::CalendarBase *calendar )
+History::History( KOrg::AkonadiCalendar *calendar )
   : mCalendar( calendar ), mCurrentMultiEntry( 0 )
 {
 }
@@ -143,7 +143,7 @@ void History::endMultiModify()
   mCurrentMultiEntry = 0;
 }
 
-History::Entry::Entry( KOrg::CalendarBase *calendar )
+History::Entry::Entry( KOrg::AkonadiCalendar *calendar )
   : mCalendar( calendar )
 {
 }
@@ -152,7 +152,7 @@ History::Entry::~Entry()
 {
 }
 
-History::EntryDelete::EntryDelete( KOrg::CalendarBase *calendar, Incidence *incidence )
+History::EntryDelete::EntryDelete( KOrg::AkonadiCalendar *calendar, Incidence *incidence )
   : Entry( calendar ), mIncidence( incidence->clone() )
 {
 }
@@ -183,7 +183,7 @@ QString History::EntryDelete::text()
   return i18n( "Delete %1", QString::fromLatin1( mIncidence->type() ) );
 }
 
-History::EntryAdd::EntryAdd( KOrg::CalendarBase *calendar, Incidence *incidence )
+History::EntryAdd::EntryAdd( KOrg::AkonadiCalendar *calendar, Incidence *incidence )
   : Entry( calendar ), mIncidence( incidence->clone() )
 {
 }
@@ -216,7 +216,7 @@ QString History::EntryAdd::text()
   return i18n( "Add %1", QString::fromLatin1( mIncidence->type() ) );
 }
 
-History::EntryEdit::EntryEdit( KOrg::CalendarBase *calendar, Incidence *oldIncidence,
+History::EntryEdit::EntryEdit( KOrg::AkonadiCalendar *calendar, Incidence *oldIncidence,
                                Incidence *newIncidence )
   : Entry( calendar ), mOldIncidence( oldIncidence->clone() ),
     mNewIncidence( newIncidence->clone() )
@@ -258,7 +258,7 @@ QString History::EntryEdit::text()
   return i18n( "Edit %1", QString::fromLatin1( mNewIncidence->type() ) );
 }
 
-History::MultiEntry::MultiEntry( KOrg::CalendarBase *calendar, const QString &text )
+History::MultiEntry::MultiEntry( KOrg::AkonadiCalendar *calendar, const QString &text )
   : Entry( calendar ), mText( text )
 {
 }

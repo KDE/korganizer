@@ -36,7 +36,7 @@ namespace KCal {
 }
 
 namespace KOrg {
-  class CalendarBase;
+  class AkonadiCalendar;
 }
 
 using namespace KCal;
@@ -65,10 +65,10 @@ class KORG_STDPRINTING_EXPORT CalPrinter : public QObject, public KOrg::CalPrint
       \param cal calendar to be printed
       \param helper is a pointer to the KOrg::CoreHelper object
     */
-    CalPrinter( QWidget *par, KOrg::CalendarBase *cal, KOrg::CoreHelper *helper );
+    CalPrinter( QWidget *par, KOrg::AkonadiCalendar *cal, KOrg::CoreHelper *helper );
     virtual ~CalPrinter();
 
-    void init( KOrg::CalendarBase *calendar );
+    void init( KOrg::AkonadiCalendar *calendar );
 
     /**
       Set date range to be printed.
@@ -96,7 +96,7 @@ class KORG_STDPRINTING_EXPORT CalPrinter : public QObject, public KOrg::CalPrint
     KOrg::PrintPlugin::List mPrintPlugins;
 
   private:
-    KOrg::CalendarBase *mCalendar;
+    KOrg::AkonadiCalendar *mCalendar;
     QWidget *mParent;
     KConfig *mConfig;
     KOrg::CoreHelper *mCoreHelper;

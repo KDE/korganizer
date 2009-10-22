@@ -26,7 +26,7 @@
 #include "kogroupware.h"
 #include "koprefs.h"
 #include "mailscheduler.h"
-#include "calendarbase.h"
+#include "akonadicalendar.h"
 #include "akonadicalendar.h"
 
 #include <akonadi/kcal/utils.h>

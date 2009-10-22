@@ -388,7 +388,7 @@ void KOTodoCategoriesDelegate::updateEditorGeometry( QWidget *editor,
   editor->setGeometry( option.rect );
 }
 
-void KOTodoCategoriesDelegate::setCalendar( KOrg::CalendarBase *cal )
+void KOTodoCategoriesDelegate::setCalendar( KOrg::AkonadiCalendar *cal )
 {
   mCalendar = cal;
 }

@@ -273,7 +273,7 @@ void ActionManager::createCalendarAkonadi()
   initCalendar( mCalendarAkonadi );
 }
 
-void ActionManager::initCalendar( KOrg::CalendarBase *cal )
+void ActionManager::initCalendar( KOrg::AkonadiCalendar *cal )
 {
   cal->setOwner( Person( KOPrefs::instance()->fullName(),
                          KOPrefs::instance()->email() ) );

@@ -76,7 +76,7 @@ class ReminderListItem : public QTreeWidgetItem
 
 typedef QList<ReminderListItem *> ReminderList;
 
-AlarmDialog::AlarmDialog( KOrg::CalendarBase *calendar, QWidget *parent )
+AlarmDialog::AlarmDialog( KOrg::AkonadiCalendar *calendar, QWidget *parent )
   : KDialog( parent, Qt::WindowStaysOnTopHint ),
     mCalendar( calendar ), mSuspendTimer( this )
 {

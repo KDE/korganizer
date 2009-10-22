@@ -34,7 +34,7 @@ class QScrollArea;
 class KVBox;
 
 namespace KOrg {
-    class CalendarBase;
+    class AkonadiCalendar;
 }
 
 /**

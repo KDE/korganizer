@@ -37,13 +37,13 @@ namespace KCal {
 using namespace KCal;
 
 namespace KOrg {
-class CalendarBase;
+class AkonadiCalendar;
 class TimelineSubItem;
 
 class TimelineItem : public KDGanttViewTaskItem
 {
   public:
-    TimelineItem( const QString &label, CalendarBase *calendar, KDGanttView *parent );
+    TimelineItem( const QString &label, AkonadiCalendar *calendar, KDGanttView *parent );
 
     void insertIncidence( const Akonadi::Item &incidence,
                           const KDateTime &start = KDateTime(),
@@ -53,14 +53,14 @@ class TimelineItem : public KDGanttViewTaskItem
     void moveItems( const Akonadi::Item &incidence, int delta, int duration );
 
   private:
-    CalendarBase *mCalendar;
+    AkonadiCalendar *mCalendar;
     QMap<Akonadi::Item::Id, QList<TimelineSubItem*> > mItemMap;
 };
 
 class TimelineSubItem : public KDGanttViewTaskItem
 {
   public:
-    TimelineSubItem( CalendarBase *calendar, const Akonadi::Item &incidence, TimelineItem *parent );
+    TimelineSubItem( AkonadiCalendar *calendar, const Akonadi::Item &incidence, TimelineItem *parent );
     ~TimelineSubItem();
 
     Akonadi::Item  incidence() const { return mIncidence; }

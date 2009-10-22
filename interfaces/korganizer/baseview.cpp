@@ -31,7 +31,7 @@ BaseView::BaseView( QWidget *parent )
 BaseView::~BaseView()
 {}
 
-void BaseView::setCalendar( CalendarBase *cal )
+void BaseView::setCalendar( AkonadiCalendar *cal )
 {
   mCalendar = cal;
 }
@@ -41,7 +41,7 @@ CalPrinterBase::PrintType BaseView::printType()
   return CalPrinterBase::Month;
 }
 
-CalendarBase *BaseView::calendar()
+AkonadiCalendar *BaseView::calendar()
 {
   return mCalendar;
 }

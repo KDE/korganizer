@@ -28,7 +28,7 @@
 using namespace KOrg;
 
 namespace KOrg {
-  class CalendarBase;
+  class AkonadiCalendar;
 }
 #include <KTextBrowser>
 

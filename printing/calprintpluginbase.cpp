@@ -28,7 +28,7 @@
 #include "cellitem.h"
 #include "koprefs.h"
 #include "kohelper.h"
-#include "calendarbase.h"
+#include "akonadicalendar.h"
 
 #include <akonadi/kcal/utils.h>
 

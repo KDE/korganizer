@@ -242,7 +242,7 @@ KOAgendaView::~KOAgendaView()
   delete mAllDayAgendaPopup;
 }
 
-void KOAgendaView::setCalendar( CalendarBase *cal )
+void KOAgendaView::setCalendar( AkonadiCalendar *cal )
 {
   if( calendar() ) {
     calendar()->unregisterObserver( this );

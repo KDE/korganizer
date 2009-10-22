@@ -45,7 +45,7 @@ class FreeBusyManager;
 namespace KOrg {
   class CalendarViewBase;
   class IncidenceChangerBase;
-  class CalendarBase;
+  class AkonadiCalendar;
   class AkonadiCalendar;
 }
 

@@ -266,7 +266,7 @@ void KOTodoView::expandIndex( const QModelIndex &index )
   }
 }
 
-void KOTodoView::setCalendar( KOrg::CalendarBase *cal )
+void KOTodoView::setCalendar( KOrg::AkonadiCalendar *cal )
 {
   BaseView::setCalendar( cal );
   mQuickSearch->setCalendar( cal );

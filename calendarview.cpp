@@ -1999,7 +1999,7 @@ void CalendarView::showLeftFrame( bool show )
   }
 }
 
-void CalendarView::calendarModified( bool modified, KOrg::CalendarBase *calendar )
+void CalendarView::calendarModified( bool modified, KOrg::AkonadiCalendar *calendar )
 {
   Q_UNUSED( calendar );
   setModified( modified );

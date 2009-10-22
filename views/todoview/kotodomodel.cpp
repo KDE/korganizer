@@ -193,7 +193,7 @@ KOTodoModel::~KOTodoModel()
   delete mRootNode;
 }
 
-void KOTodoModel::setCalendar( CalendarBase *cal )
+void KOTodoModel::setCalendar( AkonadiCalendar *cal )
 {
   mCalendar = cal;
   // old todos might no longer be valid, so clear them

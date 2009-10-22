@@ -30,7 +30,7 @@
 #include <QWidget>
 
 namespace KOrg {
-  class CalendarBase;
+  class AkonadiCalendar;
 }
 
 namespace KPIM {
@@ -48,10 +48,10 @@ class KOTodoViewQuickSearch : public QWidget
   Q_OBJECT
 
   public:
-    KOTodoViewQuickSearch( KOrg::CalendarBase *calendar, QWidget *parent );
+    KOTodoViewQuickSearch( KOrg::AkonadiCalendar *calendar, QWidget *parent );
     virtual ~KOTodoViewQuickSearch() {}
 
-    void setCalendar( KOrg::CalendarBase *calendar );
+    void setCalendar( KOrg::AkonadiCalendar *calendar );
     void updateCategories();
 
   Q_SIGNALS:
@@ -65,7 +65,7 @@ class KOTodoViewQuickSearch : public QWidget
     /** Helper method for the filling of the category combo. */
     void fillCategories();
 
-    KOrg::CalendarBase *mCalendar;
+    KOrg::AkonadiCalendar *mCalendar;
 
     KLineEdit *mSearchLine;
     KCheckComboBox *mCategoryCombo;

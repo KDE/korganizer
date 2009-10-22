@@ -37,14 +37,14 @@ namespace KPIM {
 class KDateEdit;
 }
 namespace KOrg {
-class CalendarBase;
+class AkonadiCalendar;
 }
 
 class ArchiveDialog : public KDialog
 {
   Q_OBJECT
   public:
-    explicit ArchiveDialog( KOrg::CalendarBase *calendar, QWidget *parent=0 );
+    explicit ArchiveDialog( KOrg::AkonadiCalendar *calendar, QWidget *parent=0 );
     virtual ~ArchiveDialog();
 
   signals:
@@ -69,7 +69,7 @@ class ArchiveDialog : public KDialog
     QCheckBox *mEvents;
     QCheckBox *mTodos;
 
-    KOrg::CalendarBase *mCalendar;
+    KOrg::AkonadiCalendar *mCalendar;
 };
 
 #endif

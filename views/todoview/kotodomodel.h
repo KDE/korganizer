@@ -38,7 +38,7 @@ namespace KCal {
 using namespace KCal;
 
 namespace KOrg {
-  class CalendarBase;
+  class AkonadiCalendar;
   class IncidenceChangerBase;
 }
 using namespace KOrg;
@@ -73,7 +73,7 @@ class KOTodoModel : public QAbstractItemModel
     virtual ~KOTodoModel();
 
     /** Set the calendar */
-    void setCalendar( KOrg::CalendarBase *cal );
+    void setCalendar( KOrg::AkonadiCalendar *cal );
     /** Resets the model and deletes the whole todo tree */
     void clearTodos();
     /** Reloads all todos from the Calendar provided during construction */
@@ -189,7 +189,7 @@ public:
     const int mColumnCount;
 
     /** Calendar to get data from */
-    KOrg::CalendarBase *mCalendar;
+    KOrg::AkonadiCalendar *mCalendar;
     /** Root elements of the todo tree. */
     TodoTreeNode *mRootNode;
     /** Hash to speed up searching todo by their uid */

@@ -100,7 +100,7 @@ KODayMatrix::KODayMatrix( QWidget *parent )
   mHighlightJournals = false;
 }
 
-void KODayMatrix::setCalendar( KOrg::CalendarBase *cal )
+void KODayMatrix::setCalendar( KOrg::AkonadiCalendar *cal )
 {
   if ( mCalendar ) {
     mCalendar->unregisterObserver( this );

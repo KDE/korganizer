@@ -36,13 +36,13 @@ using namespace KCal;
 
 namespace KOrg {
 
-class CalendarBase;
+class AkonadiCalendar;
 
 class KORGANIZER_INTERFACES_EXPORT IncidenceChangerBase : public QObject
 {
   Q_OBJECT
   public:
-    explicit IncidenceChangerBase( CalendarBase *cal, QObject *parent = 0 );
+    explicit IncidenceChangerBase( AkonadiCalendar *cal, QObject *parent = 0 );
 
     virtual ~IncidenceChangerBase();
 
@@ -72,7 +72,7 @@ class KORGANIZER_INTERFACES_EXPORT IncidenceChangerBase : public QObject
     void schedule( iTIPMethod method, const Akonadi::Item &incidence );
 
   protected:
-    CalendarBase *mCalendar;
+    AkonadiCalendar *mCalendar;
 };
 
 }

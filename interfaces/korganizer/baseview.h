@@ -40,7 +40,7 @@ using namespace KCal;
 
 namespace KOrg {
 
-class CalendarBase;
+class AkonadiCalendar;
 
 /**
   This class provides an interface for all views being displayed within the
@@ -71,11 +71,11 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
     */
     virtual ~BaseView();
 
-    virtual void setCalendar( CalendarBase *cal );
+    virtual void setCalendar( AkonadiCalendar *cal );
     /**
       Return calendar object of this view.
     */
-    virtual CalendarBase *calendar();
+    virtual AkonadiCalendar *calendar();
 
     /**
       @return a list of selected events.  Most views can probably only
@@ -282,7 +282,7 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
     void newJournalSignal( const QDate & );
 
   private:
-    CalendarBase *mCalendar;
+    AkonadiCalendar *mCalendar;
   protected:
     IncidenceChangerBase *mChanger;
 };

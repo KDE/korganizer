@@ -22,7 +22,7 @@
 
 #include "htmlexport.h"
 #include "htmlexportsettings.h"
-#include "calendarbase.h"
+#include "akonadicalendar.h"
 
 #include <KCal/Calendar>
 #include <KCal/Event>
@@ -55,18 +55,18 @@ static QString cleanChars( const QString &txt );
 class KOrg::HtmlExport::Private
 {
   public:
-    Private( CalendarBase *calendar, KOrg::HTMLExportSettings *settings )
+    Private( AkonadiCalendar *calendar, KOrg::HTMLExportSettings *settings )
       : mCalendar( calendar ),
         mSettings( settings )
     {}
 
-    CalendarBase *mCalendar;
+    AkonadiCalendar *mCalendar;
     KOrg::HTMLExportSettings *mSettings;
     QMap<QDate,QString> mHolidayMap;
 };
 //@endcond
 
-HtmlExport::HtmlExport( CalendarBase *calendar, KOrg::HTMLExportSettings *settings )
+HtmlExport::HtmlExport( AkonadiCalendar *calendar, KOrg::HTMLExportSettings *settings )
   : d( new Private( calendar, settings ) )
 {
 }

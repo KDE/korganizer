@@ -35,7 +35,7 @@ namespace KCal {
 }
 
 namespace KOrg {
-  class CalendarBase;
+  class AkonadiCalendar;
 }
 
 namespace Akonadi {
@@ -57,7 +57,7 @@ class AlarmDialog : public KDialog
 {
   Q_OBJECT
   public:
-    explicit AlarmDialog( KOrg::CalendarBase *calendar, QWidget *parent = 0 );
+    explicit AlarmDialog( KOrg::AkonadiCalendar *calendar, QWidget *parent = 0 );
     virtual ~AlarmDialog();
 
     void addIncidence( const Akonadi::Item &incidence, const QDateTime &reminderAt,
@@ -96,7 +96,7 @@ class AlarmDialog : public KDialog
     void updateButtons();
     void showDetails();
 
-    KOrg::CalendarBase *mCalendar;
+    KOrg::AkonadiCalendar *mCalendar;
     QVBoxLayout *mTopLayout;
     QTreeWidget *mIncidenceTree;
     KOEventViewer *mDetailView;

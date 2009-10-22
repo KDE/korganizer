@@ -49,7 +49,7 @@ class NavigatorBar;
 
 namespace KOrg {
   class HTMLExportSettings;
-  class CalendarBase;
+  class AkonadiCalendar;
   class History;
   class AkonadiCalendar;
 }
@@ -85,7 +85,7 @@ class CalendarViewExtension : public QWidget
   @author Cornelius Schumacher
 */
 class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
-                                              public KOrg::CalendarBase::CalendarObserver
+                                              public KOrg::AkonadiCalendar::CalendarObserver
 {
   Q_OBJECT
   public:
@@ -637,7 +637,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     void dissociateOccurrence( const Akonadi::Item &incidence, const QDate & );
     void dissociateFutureOccurrence( const Akonadi::Item &incidence, const QDate & );
 
-    void calendarModified( bool, KOrg::CalendarBase * );
+    void calendarModified( bool, KOrg::AkonadiCalendar * );
 
     // Helper function for purgeCompleted that recursively purges a todo and
     // its subitems. If it cannot delete a completed todo (because it has

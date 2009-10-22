@@ -31,7 +31,7 @@
 #include <QColor>
 
 namespace KOrg {
-  class CalendarBase;
+  class AkonadiCalendar;
 }
 
 namespace Akonadi {

@@ -37,7 +37,7 @@ namespace KCal {
 
 namespace KOrg {
 
-class CalendarBase;
+class AkonadiCalendar;
 class CoreHelper;
 
 /**
@@ -79,7 +79,7 @@ class PrintPlugin : public KOrg::Plugin
 
     virtual void setConfig( KConfig *cfg ) { mConfig = cfg; }
 
-    virtual void setCalendar( KOrg::CalendarBase *cal ) { mCalendar = cal; }
+    virtual void setCalendar( KOrg::AkonadiCalendar *cal ) { mCalendar = cal; }
 
     virtual void setSelectedIncidences( KCal::Incidence::List inc )
     { mSelectedIncidences = inc; }
@@ -176,7 +176,7 @@ class PrintPlugin : public KOrg::Plugin
     /** The printer object. This will only be available in the doPrint method
         of the selected plugin */
     QPrinter *mPrinter;
-    KOrg::CalendarBase *mCalendar;
+    KOrg::AkonadiCalendar *mCalendar;
     KCal::Incidence::List mSelectedIncidences;
     KConfig *mConfig;
 };
