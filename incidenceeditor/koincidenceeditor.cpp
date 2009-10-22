@@ -113,7 +113,6 @@ void KOIncidenceEditor::readIncidence( const Akonadi::Item &item, bool tmpl )
   if( ! read( item, tmpl ))
     return;
 
-  //TODO set calselector
   Akonadi::Entity::Id colId( item.storageCollectionId() );
   Akonadi::Collection col( colId );
   mCalSelector->setDefaultCollection( col );
