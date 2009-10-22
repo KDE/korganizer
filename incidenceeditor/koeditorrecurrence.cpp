@@ -991,7 +991,7 @@ KOEditorRecurrence::KOEditorRecurrence( QWidget *parent ) : QWidget( parent )
   mParent = parent;
 
   QGridLayout *topLayout = new QGridLayout( this );
-  topLayout->setSpacing( KDialog::spacingHint() );
+  topLayout->setMargin( 0 );
 
   mEnabledCheck = new QCheckBox( i18nc( "@option:check", "&Enable recurrence" ), this );
   mEnabledCheck->setWhatsThis(
