@@ -244,17 +244,17 @@ bool MailScheduler::acceptCounterProposal( KCal::Incidence *incidence )
     incidence->setSchedulingID( exIncPtr->schedulingID() );
     incidence->setUid( exIncPtr->uid() );
 
-    mCalendar->beginChange( exInc );
+    mChanger->beginChange( exInc );
 
     Q_ASSERT( exIncPtr.get() && incidence );
     KCal::AssignmentVisitor v;
     v.assign( exIncPtr.get(), incidence );
 
     exIncPtr->updated();
-    mCalendar->endChange( exInc );
+    mChanger->endChange( exInc );
   } else {
 #ifdef AKONADI_PORT_DISABLED
-    mCalendar->addIncidence( Incidence::Ptr(incidence->clone()) );
+    mChanger->addIncidence( Incidence::Ptr(incidence->clone()) );
 #endif
   }
 

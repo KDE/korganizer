@@ -1,4 +1,4 @@
-/*
+/*YetAnother
   This file is part of KOrganizer.
 
   Copyright (C) 2004 Reinhold Kainhofer <reinhold@kainhofer.com>
@@ -33,6 +33,7 @@
 
 #include <Akonadi/ItemCreateJob>
 #include <Akonadi/ItemDeleteJob>
+#include <Akonadi/ItemModifyJob>
 #include <Akonadi/CollectionDialog>
 
 #include <KCal/AssignmentVisitor>
@@ -40,6 +41,7 @@
 #include <KCal/DndFactory>
 #include <KCal/FreeBusy>
 #include <KCal/Incidence>
+#include <kcal/comparisonvisitor.h>
 
 #include <KDebug>
 #include <KLocale>
@@ -48,22 +50,34 @@
 using namespace KCal;
 using namespace Akonadi;
 
+class IncidenceChanger::Private {
+public:
+  QList<Akonadi::Item::Id> m_changes; //list of item ids that are modified atm
+  KCal::Incidence::Ptr m_incidenceBeingChanged; // clone of the incidence currently being modified, for rollback and to check if something actually changed
+};
+
 IncidenceChanger::IncidenceChanger( KOrg::AkonadiCalendar *cal, QObject *parent )
-  : IncidenceChangerBase( cal, parent )
+  : IncidenceChangerBase( cal, parent ), d( new Private )
 {
 }
 
 IncidenceChanger::~IncidenceChanger()
 {
+  delete d;
 }
 
-bool IncidenceChanger::beginChange( const Item &incidence )
+bool IncidenceChanger::beginChange( const Item &item )
 {
-  if ( !Akonadi::hasIncidence( incidence ) ) {
+  if ( !Akonadi::hasIncidence( item ) ) {
     return false;
   }
-  kDebug() << "for incidence \"" << Akonadi::incidence( incidence )->summary() << "\"";
-  return mCalendar->beginChange( incidence );
+  const Incidence::Ptr incidence = Akonadi::incidence( item );
+  Q_ASSERT( incidence );
+  Q_ASSERT( ! d->m_changes.contains( item.id() ) ); // no nested changes allowed
+  d->m_changes.push_back( item.id() );
+  d->m_incidenceBeingChanged = Incidence::Ptr( incidence->clone() );
+  return true;
+
 }
 
 bool IncidenceChanger::sendGroupwareMessage( const Item &aitem,
@@ -108,9 +122,9 @@ void IncidenceChanger::cancelAttendees( const Item &aitem )
   }
 }
 
-bool IncidenceChanger::endChange( const Item &incidence )
+bool IncidenceChanger::endChange( const Item &item )
 {
-  if ( !Akonadi::hasIncidence( incidence ) )
+  if ( !Akonadi::hasIncidence( item ) )
     return false;
 
   // FIXME: if that's a groupware incidence, and I'm not the organizer,
@@ -119,8 +133,35 @@ bool IncidenceChanger::endChange( const Item &incidence )
   // FIXME: if that's a groupware incidence, and the incidence was
   // never locked, we can't unlock it with endChange().
 
-  kDebug() << "\"" << Akonadi::incidence( incidence )->summary() << "\"";
-  return mCalendar->endChange( incidence );
+  const Incidence::Ptr incidence = Akonadi::incidence( item );
+  Q_ASSERT( incidence );
+
+  const bool isModification = d->m_changes.removeAll( item.id() ) >= 1;
+
+  if( ! isModification || !d->m_incidenceBeingChanged ) {
+    // only if beginChange() with the incidence was called then this is a modification else it
+    // is e.g. a new event/todo/journal that was not added yet or an existing one got deleted.
+    kDebug() << "Skipping modify uid=" << incidence->uid() << "summary=" << incidence->summary() << "type=" << incidence->type();
+    return false;
+  }
+
+  // check if there was an actual change to the incidence since beginChange
+  // if not, don't kick off a modify job. The reason this is useful is that
+  // begin/endChange is used for locking as well, so it is called quite often
+  // without any actual changes happening. Nested modify jobs confuse the
+  // conflict detection in Akonadi, so let's avoid them.
+  KCal::ComparisonVisitor v;
+  Incidence::Ptr incidencePtr( d->m_incidenceBeingChanged );
+  d->m_incidenceBeingChanged.reset();
+  if ( v.compare( incidence.get(), incidencePtr.get() ) ) {
+    kDebug()<<"Incidence is unmodified";
+    return true;
+  }
+
+  kDebug() << "modify uid=" << incidence->uid() << "summary=" << incidence->summary() << "type=" << incidence->type() << "storageCollectionId=" << item.storageCollectionId();
+  ItemModifyJob *job = new ItemModifyJob( item );
+  connect( job, SIGNAL(result( KJob*)), this, SLOT(changeIncidenceFinished(KJob*)) );
+  return true;
 }
 
 bool IncidenceChanger::deleteIncidence( const Item &aitem )
@@ -135,12 +176,32 @@ bool IncidenceChanger::deleteIncidence( const Item &aitem )
   if( !doDelete )
     return false;
   emit incidenceToBeDeleted( aitem );
-  //AKONADI_PORT the following was done in AkonadiCalendar before and must be ported
-  //  m_changes.removeAll( item.id() ); //abort changes to this incidence cause we will just delete it
-
+  d->m_changes.removeAll( aitem.id() ); //abort changes to this incidence cause we will just delete it
   ItemDeleteJob* job = new ItemDeleteJob( aitem );
   connect( job, SIGNAL(result(KJob*)), this, SLOT(deleteIncidenceFinished(KJob*)) );
   return true;
+}
+
+void IncidenceChanger::changeIncidenceFinished( KJob* j )
+{
+  //AKONADI_PORT this is from the respective method in the old AkonadiCalendar, so I leave it here: --Frank
+  // we should probably update the revision number here,or internally in the Event
+  // itself when certain things change. need to verify with ical documentation.
+
+  const ItemModifyJob* job = qobject_cast<const ItemModifyJob*>( j );
+  Q_ASSERT( job );
+
+  Incidence::Ptr tmp = Akonadi::incidence( job->item() );
+  Q_ASSERT( tmp );
+
+  if ( job->error() ) {
+    kWarning( 5250 ) << "Item modify failed:" << job->errorString();
+    KMessageBox::sorry( 0, //PENDING(AKONADI_PORT) set parent
+                        i18n( "Unable to save changes for incidence %1 \"%2\": %3",
+                              i18n( tmp->type() ),
+                              tmp->summary(),
+                              job->errorString( )) );
+  }
 }
 
 void IncidenceChanger::deleteIncidenceFinished( KJob* j )
@@ -212,10 +273,11 @@ bool IncidenceChanger::cutIncidence( const Item& aitem )
   return doDelete;
 }
 
-class IncidenceChanger::ComparisonVisitor : public IncidenceBase::Visitor
+namespace {
+class YetAnotherComparisonVisitor : public IncidenceBase::Visitor
 {
   public:
-    ComparisonVisitor() {}
+    YetAnotherComparisonVisitor() {}
     bool act( IncidenceBase *incidence, IncidenceBase *inc2 )
     {
       mIncidence2 = inc2;
@@ -271,10 +333,11 @@ class IncidenceChanger::ComparisonVisitor : public IncidenceBase::Visitor
   protected:
     IncidenceBase *mIncidence2;
 };
+}
 
 bool IncidenceChanger::incidencesEqual( Incidence *inc1, Incidence *inc2 )
 {
-  ComparisonVisitor v;
+  YetAnotherComparisonVisitor v;
   return ( v.act( inc1, inc2 ) );
 }
 
