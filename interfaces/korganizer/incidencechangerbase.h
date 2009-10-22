@@ -53,8 +53,7 @@ class KORGANIZER_INTERFACES_EXPORT IncidenceChangerBase : public QObject
     virtual bool endChange( const Akonadi::Item &incidence ) = 0;
 
     virtual bool addIncidence( const KCal::Incidence::Ptr &inc, QWidget *parent = 0 ) = 0;
-    virtual bool changeIncidence( const KCal::Incidence::Ptr &oldinc, const Akonadi::Item &newinc,
-                                  int action = -1 ) = 0;
+    virtual bool changeIncidence( const KCal::Incidence::Ptr &oldinc, const Akonadi::Item &newinc, int action = -1 ) = 0;
     virtual bool deleteIncidence( const Akonadi::Item &incidence ) = 0;
     virtual bool cutIncidence( const Akonadi::Item &incidence ) = 0;
 
@@ -65,8 +64,8 @@ class KORGANIZER_INTERFACES_EXPORT IncidenceChangerBase : public QObject
 
   Q_SIGNALS:
     void incidenceAdded( const Akonadi::Item & );
-    void incidenceChanged( const KCal::Incidence::Ptr &oldinc, const Akonadi::Item &newInc, int );
-    void incidenceChanged( const KCal::Incidence::Ptr &oldinc, const Akonadi::Item &newInc );
+    void incidenceChanged( const Akonadi::Item &oldinc, const Akonadi::Item &newInc, int );
+    void incidenceChanged( const Akonadi::Item &oldinc, const Akonadi::Item &newInc );
     void incidenceToBeDeleted( const Akonadi::Item & );
     void incidenceDeleted( const Akonadi::Item & );
 

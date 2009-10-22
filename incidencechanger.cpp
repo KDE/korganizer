@@ -275,9 +275,11 @@ bool IncidenceChanger::myAttendeeStatusChanged( const Incidence* newInc, const I
   return false;
 }
 
-bool IncidenceChanger::changeIncidence( const Incidence::Ptr &oldinc, const Item &newItem,
-                                        int action )
+bool IncidenceChanger::changeIncidence( const KCal::Incidence::Ptr &oldinc, const Item &newItem, int action )
 {
+  Akonadi::Item oldItem;
+  oldItem.setPayload(oldinc);
+
   const Incidence::Ptr newinc = Akonadi::incidence( newItem );
 
   kDebug() << "for incidence \"" << newinc->summary() << "\""
@@ -305,9 +307,9 @@ bool IncidenceChanger::changeIncidence( const Incidence::Ptr &oldinc, const Item
     if ( success ) {
       // Accept the event changes
       if ( action < 0 ) {
-        emit incidenceChanged( oldinc, newItem );
+        emit incidenceChanged( oldItem, newItem );
       } else {
-        emit incidenceChanged( oldinc, newItem, action );
+        emit incidenceChanged( oldItem, newItem, action );
       }
     } else {
       kDebug() << "Changing incidence failed. Reverting changes.";

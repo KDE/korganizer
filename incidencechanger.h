@@ -44,7 +44,7 @@ class KORGANIZERPRIVATE_EXPORT IncidenceChanger : public KOrg::IncidenceChangerB
     bool endChange( const Akonadi::Item &incidence );
 
     bool addIncidence( const KCal::Incidence::Ptr &incidence, QWidget *parent = 0 );
-    bool changeIncidence( const KCal::Incidence::Ptr &oldinc, const Akonadi::Item &newinc, int action = -1 );
+    bool changeIncidence( const KCal::Incidence::Ptr &oldinc, const Akonadi::Item &newItem, int action = -1 );
     bool deleteIncidence( const Akonadi::Item &incidence );
 
     bool cutIncidence( const Akonadi::Item &incidence );
