@@ -440,8 +440,6 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     void startMultiModify( const QString &text );
     void endMultiModify();
 
-    void editCanceled( const Akonadi::Item &incidence );
-
     void updateView( const QDate &start, const QDate &end, const bool updateTodos=true );
     void updateView();
 

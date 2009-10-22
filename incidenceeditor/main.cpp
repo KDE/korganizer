@@ -177,7 +177,6 @@ class MainWidget : public QWidget
         connect( mCategoryEditDialog, SIGNAL(categoryConfigChanged()), editor, SIGNAL(updateCategoryConfig()) );
         connect( editor, SIGNAL(editCategories()), mCategoryEditDialog, SLOT(show()) );
         connect( editor, SIGNAL(dialogClose(Incidence *)), mMainView, SLOT(dialogClosing(Incidence *)) );
-        connect( editor, SIGNAL(editCanceled(Incidence *)), mMainView, SLOT(editCanceled(Incidence *)) );
         connect( mMainView, SIGNAL(closingDown()), editor, SLOT(reject()) );
         connect( editor, SIGNAL(deleteAttendee(Incidence *)), mMainView, SIGNAL(cancelAttendees(Incidence *)) );
         */

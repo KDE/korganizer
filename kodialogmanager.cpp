@@ -255,13 +255,9 @@ void KODialogManager::connectEditor( KOIncidenceEditor *editor )
            editor, SIGNAL(updateCategoryConfig()) );
   connect( editor, SIGNAL(editCategories()),
            mCategoryEditDialog, SLOT(show()) );
-
   connect( editor, SIGNAL(dialogClose(Akonadi::Item)),
            mMainView, SLOT(dialogClosing(Akonadi::Item)) );
-  connect( editor, SIGNAL(editCanceled(Akonadi::Item)),
-           mMainView, SLOT(editCanceled(Akonadi::Item)) );
   connect( mMainView, SIGNAL(closingDown()), editor, SLOT(reject()) );
-
   connect( editor, SIGNAL(deleteAttendee(Akonadi::Item)),
            mMainView, SIGNAL(cancelAttendees(Akonadi::Item)) );
 }

@@ -101,7 +101,6 @@ class INCIDENCEEDITOR_EXPORT KOIncidenceEditor : public KPageDialog
     void editCategories();
     void updateCategoryConfig();
     void dialogClose( const Akonadi::Item & );
-    void editCanceled( const Akonadi::Item & );
 
     void deleteIncidenceSignal( const Akonadi::Item & );
     void signalAddAttachments( const QStringList &attachments,

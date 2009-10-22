@@ -2472,11 +2472,6 @@ void CalendarView::warningChangeFailed( const Item &item )
   }
 }
 
-void CalendarView::editCanceled( const Item &item )
-{
-  mCalendar->endChange( item );
-}
-
 void CalendarView::showErrorMessage( const QString &msg )
 {
   KMessageBox::error( this, msg );
