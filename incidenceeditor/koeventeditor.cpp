@@ -38,8 +38,7 @@
 
 #include <KMessageBox>
 #include <klocale.h>
-
-#include <QBoxLayout>
+#include <QTabWidget>
 #include <QFrame>
 #include <QVBoxLayout>
 
@@ -133,14 +132,12 @@ void KOEventEditor::setupGeneral()
   mGeneral = new KOEditorGeneralEvent( this );
 
   QFrame *topFrame = new QFrame();
-  addPage( topFrame, i18nc( "@title:tab general event settings", "&General" ) );
+  mTabWidget->addTab( topFrame, i18nc( "@title:tab general event settings", "&General" ) );
   topFrame->setWhatsThis( i18nc( "@info:whatsthis",
                                  "The General tab allows you to set the most "
                                  "common options for the event." ) );
 
-  QBoxLayout *topLayout = new QVBoxLayout( topFrame );
-  topLayout->setSpacing( spacingHint() );
-
+  QVBoxLayout *topLayout = new QVBoxLayout( topFrame );
   mGeneral->initInvitationBar( topFrame, topLayout );
   mGeneral->initHeader( topFrame, topLayout );
   mGeneral->initTime( topFrame, topLayout );
@@ -167,14 +164,12 @@ void KOEventEditor::setupRecurrence()
 {
 #if 0
   QFrame *topFrame = new QFrame();
-  addPage( topFrame, i18nc( "@title:tab", "Rec&urrence" ) );
+  mTabWidget->addTab( topFrame, i18nc( "@title:tab", "Rec&urrence" ) );
 
   topFrame->setWhatsThis( i18nc( "@info:whatsthis",
                                  "The Recurrence tab allows you to set options "
                                  "on how often this event recurs." ) );
-
-  QBoxLayout *topLayout = new QVBoxLayout( topFrame );
-
+  QVBoxLayout *topLayout = new QVBoxLayout( topFrame );
   mRecurrence = new KOEditorRecurrence( topFrame );
   topLayout->addWidget( mRecurrence );
 #endif
@@ -186,14 +181,14 @@ void KOEventEditor::setupRecurrence()
 void KOEventEditor::setupFreeBusy()
 {
   QFrame *freeBusyPage = new QFrame();
-  addPage( freeBusyPage, i18nc( "@title:tab", "&Attendees" ) );
+  mTabWidget->addTab( freeBusyPage, i18nc( "@title:tab", "&Attendees" ) );
   freeBusyPage->setWhatsThis( i18nc( "@info:whatsthis",
                                      "The Free/Busy tab allows you to see "
                                      "whether other attendees are free or busy "
                                      "during your event." ) );
 
-  QBoxLayout *topLayout = new QVBoxLayout( freeBusyPage );
-
+  QVBoxLayout *topLayout = new QVBoxLayout( freeBusyPage );
+  topLayout->setMargin(0);
   mAttendeeEditor = mFreeBusy = new KOEditorFreeBusy( spacingHint(), freeBusyPage );
   topLayout->addWidget( mFreeBusy );
 }

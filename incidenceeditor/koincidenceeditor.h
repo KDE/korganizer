@@ -27,7 +27,7 @@
 
 #include "incidenceeditor_export.h"
 
-#include <kpagedialog.h>
+#include <kdialog.h>
 #include <kurl.h>
 #include <QList>
 
@@ -46,6 +46,7 @@ namespace KOrg {
 
 class KOEditorDetails;
 class KOAttendeeEditor;
+class QTabWidget;
 
 using namespace KCal;
 using namespace KOrg;
@@ -53,7 +54,7 @@ using namespace KOrg;
 /**
   This is the base class for the calendar component editors.
 */
-class INCIDENCEEDITOR_EXPORT KOIncidenceEditor : public KPageDialog
+class INCIDENCEEDITOR_EXPORT KOIncidenceEditor : public KDialog
 {
   Q_OBJECT
   public:
@@ -156,6 +157,7 @@ class INCIDENCEEDITOR_EXPORT KOIncidenceEditor : public KPageDialog
 
     void cancelRemovedAttendees( const Akonadi::Item &item );
 
+    QTabWidget *mTabWidget;
     KOEditorDetails *mDetails;
     KOAttendeeEditor *mAttendeeEditor;
     KOrg::IncidenceChangerBase *mChanger;

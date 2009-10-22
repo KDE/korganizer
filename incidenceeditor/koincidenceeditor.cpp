@@ -35,10 +35,10 @@
 #include <klocale.h>
 
 #include <akonadi/kcal/utils.h>
-#include <akonadi/item.h>
 #include <akonadi/itemfetchscope.h>
-
+#include <akonadi/collectioncombobox.h>
 #include <Akonadi/Item>
+#include <Akonadi/Collection>
 #include <Akonadi/Monitor>
 
 #include <KABC/Addressee>
@@ -52,15 +52,14 @@
 #include <KMessageBox>
 #include <QPointer>
 #include <KStandardDirs>
+#include <QTabWidget>
 
 using namespace Akonadi;
 using namespace KCal;
 
 KOIncidenceEditor::KOIncidenceEditor( const QString &caption, QWidget *parent )
-  : KPageDialog( parent ),
-    mAttendeeEditor( 0 ), mIsCounter( false ), mIsCreateTask( false ), mMonitor(0)
+  : KDialog( parent ), mAttendeeEditor( 0 ), mIsCounter( false ), mIsCreateTask( false ), mMonitor( 0 )
 {
-  setFaceType( KPageDialog::Tabbed );
   setCaption( caption );
   setButtons( Ok | Apply | Cancel | Default );
   setDefaultButton( Ok );
@@ -82,6 +81,24 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption, QWidget *parent )
                              "can make creating new items easier and faster "
                              "by putting your favorite default values into "
                              "the editor automatically." ) );
+
+  QVBoxLayout *layout = new QVBoxLayout( mainWidget() );
+  layout->setMargin( 0 );
+  layout->setSpacing( 0 );
+  mainWidget()->setLayout( layout );
+
+  QHBoxLayout *callayout = new QHBoxLayout( mainWidget() );
+  Akonadi::CollectionComboBox *calselector = new Akonadi::CollectionComboBox( mainWidget() );
+  calselector->setMimeTypeFilter( QStringList() << "text/calendar" );
+  //calselector->setAccessRightsFilter( Akonadi::Collection::ReadOnly );
+  QLabel *callabel = new QLabel( i18n("Calendar:"), mainWidget() );
+  callabel->setBuddy( calselector );
+  callayout->addWidget( callabel );
+  callayout->addWidget( calselector, 1 );
+  layout->addLayout( callayout );
+  
+  mTabWidget = new QTabWidget( mainWidget() );
+  layout->addWidget( mTabWidget );
 
   connect( this, SIGNAL(defaultClicked()), SLOT(slotManageTemplates()) );
   connect( this, SIGNAL(finished()), SLOT(delayedDestruct()) );
@@ -160,7 +177,7 @@ void KOIncidenceEditor::slotButtonClicked( int button )
      }
     break;
   default:
-    KPageDialog::slotButtonClicked( button );
+    KDialog::slotButtonClicked( button );
     break;
   }
 }
@@ -168,13 +185,14 @@ void KOIncidenceEditor::slotButtonClicked( int button )
 void KOIncidenceEditor::setupAttendeesTab()
 {
   QFrame *topFrame = new QFrame( this );
-  addPage( topFrame, i18nc( "@title:tab", "Atte&ndees" ) );
+  mTabWidget->addTab( topFrame, i18nc( "@title:tab", "Atte&ndees" ) );
   topFrame->setWhatsThis(
     i18nc( "@info:whatsthis",
            "The Attendees tab allows you to Add or Remove "
            "Attendees to/from this event or to-do." ) );
 
   QBoxLayout *topLayout = new QVBoxLayout( topFrame );
+  topLayout->setMargin(0);
 
   mAttendeeEditor = mDetails = new KOEditorDetails( spacingHint(), topFrame );
   topLayout->addWidget( mDetails );
@@ -321,9 +339,10 @@ QWidget *KOIncidenceEditor::addDesignerTab( const QString &uifile )
   mDesignerFields.append( wid );
 
   QFrame *topFrame = new QFrame();
-  addPage( topFrame, wid->title() );
+  mTabWidget->addTab( topFrame, wid->title() );
 
   QBoxLayout *topLayout = new QVBoxLayout( topFrame );
+  topLayout->setMargin(0);
 
   wid->setParent( topFrame );
   topLayout->addWidget( wid );
@@ -400,8 +419,10 @@ void KOIncidenceEditor::setupEmbeddedURLPage( const QString &label,
                                               const QString &mimetype )
 {
   QFrame *topFrame = new QFrame();
-  addPage( topFrame, label );
+  mTabWidget->addTab( topFrame, label );
+
   QBoxLayout *topLayout = new QVBoxLayout( topFrame );
+  topLayout->setMargin(0);
 
   KPIM::EmbeddedURLPage *wid = new KPIM::EmbeddedURLPage( url, mimetype, topFrame );
   topLayout->addWidget( wid );

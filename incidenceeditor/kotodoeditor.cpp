@@ -45,6 +45,7 @@
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QBoxLayout>
+#include <QTabWidget>
 
 #include <akonadi/kcal/utils.h>
 
@@ -115,10 +116,9 @@ void KOTodoEditor::setupGeneral()
   mGeneral = new KOEditorGeneralTodo( this );
 
   QFrame *topFrame = new QFrame();
-  addPage( topFrame, i18nc( "@title:tab general to-do settings", "&General" ) );
+  mTabWidget->addTab( topFrame, i18nc( "@title:tab general to-do settings", "&General" ) );
 
   QBoxLayout *topLayout = new QVBoxLayout( topFrame );
-  topLayout->setSpacing( spacingHint() );
 
   mGeneral->initHeader( topFrame, topLayout );
   mGeneral->initTime( topFrame, topLayout );
@@ -146,10 +146,9 @@ void KOTodoEditor::setupGeneral()
 void KOTodoEditor::setupRecurrence()
 {
   QFrame *topFrame = new QFrame();
-  addPage( topFrame, i18nc( "@title:tab", "Rec&urrence" ) );
+  mTabWidget->addTab( topFrame, i18nc( "@title:tab", "Rec&urrence" ) );
 
   QBoxLayout *topLayout = new QVBoxLayout( topFrame );
-
   mRecurrence = new KOEditorRecurrence( topFrame );
   topLayout->addWidget( mRecurrence );
 

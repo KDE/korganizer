@@ -36,7 +36,7 @@
 
 #include <KLocale>
 #include <KMessageBox>
-
+#include <QTabWidget>
 #include <QVBoxLayout>
 
 using namespace Akonadi;
@@ -73,12 +73,9 @@ void KOJournalEditor::setupGeneral()
   mGeneral = new KOEditorGeneralJournal( this );
 
   QFrame *topFrame = new QFrame();
-  addPage( topFrame, i18nc( "@title general journal settings", "General" ) );
+  mTabWidget->addTab( topFrame, i18nc( "@title general journal settings", "General" ) );
 
   QVBoxLayout *topLayout = new QVBoxLayout( topFrame );
-  topLayout->setMargin( marginHint() );
-  topLayout->setSpacing( spacingHint() );
-
   mGeneral->initTitle( topFrame, topLayout );
   mGeneral->initDate( topFrame, topLayout );
   mGeneral->initDescription( topFrame, topLayout );
