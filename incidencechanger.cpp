@@ -28,9 +28,11 @@
 #include "mailscheduler.h"
 #include "akonadicalendar.h"
 #include "akonadicalendar.h"
-
 #include <akonadi/kcal/utils.h>
-#include <akonadi/kcal/akonadicalendaradaptor.h>
+#include <interfaces/korganizer/akonadicalendaradaptor.h>
+
+#include <Akonadi/ItemCreateJob>
+#include <Akonadi/CollectionDialog>
 
 #include <KCal/AssignmentVisitor>
 #include <KCal/CalendarResources>
@@ -99,7 +101,7 @@ void IncidenceChanger::cancelAttendees( const Item &aitem )
       // manually.
       // FIXME: Groupware schedulling should be factored out to it's own class
       //        anyway
-      MailScheduler scheduler( static_cast<AkonadiCalendar*>(mCalendar) );
+      MailScheduler scheduler( static_cast<AkonadiCalendar*>(mCalendar), this );
       scheduler.performTransaction( incidence.get(), iTIPCancel );
     }
   }
@@ -154,7 +156,7 @@ bool IncidenceChanger::deleteIncidence( const Item &aitem )
       }
 
       if ( !KOGroupware::instance()->doNotNotify() && notifyOrganizer ) {
-        MailScheduler scheduler( static_cast<AkonadiCalendar*>(mCalendar) );
+        MailScheduler scheduler( static_cast<AkonadiCalendar*>(mCalendar), this );
         scheduler.performTransaction( tmp.get(), KCal::iTIPReply );
       }
       //reset the doNotNotify flag
@@ -177,7 +179,7 @@ bool IncidenceChanger::cutIncidence( const Item& aitem )
   if( doDelete ) {
 
     // @TODO: the factory needs to do the locking!
-    AkonadiCalendarAdaptor cal(mCalendar);
+    AkonadiCalendarAdaptor cal( mCalendar, this );
     DndFactory factory( &cal );
     Akonadi::Item incidenceItem;
     incidenceItem.setPayload<Incidence::Ptr>( incidence );
@@ -328,46 +330,47 @@ bool IncidenceChanger::addIncidence( const Incidence::Ptr &incidence, QWidget *p
     KMessageBox::sorry( parent, i18n( "No calendars found, event cannot be added." ) );
     return false;
   }
-
-  // FIXME: This is a nasty hack, since we need to set a parent for the
-  //        resource selection dialog. However, we don't have any UI methods
-  //        in the calendar, only in the CalendarResources::DestinationPolicy
-  //        So we need to type-cast it and extract it from the CalendarResources
-  QWidget *tmpparent = 0;
-  if ( stdcal ) {
-    tmpparent = stdcal->dialogParentWidget();
-    stdcal->setDialogParentWidget( parent );
-  }
-  bool success = mCalendar->addIncidence( incidence );
-  if ( stdcal ) {
-    // Reset the parent widget, otherwise we'll end up with pointers to deleted
-    // widgets sooner or later
-    stdcal->setDialogParentWidget( tmpparent );
-  }
-  if ( !success ) {
-    // We can have a failure if the user pressed [cancel] in the resource
-    // selectdialog, so check the exception.
-    ErrorFormat *e = stdcal ? stdcal->exception() : 0;
-    if ( !e || ( e && ( e->errorCode() != KCal::ErrorFormat::UserCancel ) ) ) {
-      KMessageBox::sorry( parent,
-                          i18n( "Unable to save %1 \"%2\".",
-                                i18n( incidence->type() ),
-                                incidence->summary() ) );
-    }
+  kDebug();
+  CollectionDialog dlg( parent );
+  dlg.setMimeTypeFilter( QStringList() << QLatin1String( "text/calendar" ) );
+  if ( ! dlg.exec() ) {
     return false;
   }
+  const Collection collection = dlg.selectedCollection();
+  Q_ASSERT( collection.isValid() );
 
+  Item item;
+  item.setPayload( incidence );
+  //the sub-mimetype of text/calendar as defined at kdepim/akonadi/kcal/kcalmimetypevisitor.cpp
+  item.setMimeType( QString::fromLatin1("application/x-vnd.akonadi.calendar.%1").arg(QLatin1String(incidence->type().toLower())) ); //PENDING(AKONADI_PORT) shouldn't be hardcoded?
+  ItemCreateJob *job = new ItemCreateJob( item, collection );
+  connect( job, SIGNAL( result(KJob*)), this, SLOT( addIncidenceFinished(KJob*) ) );
+  return true;
+}
+
+void IncidenceChanger::addIncidenceFinished( KJob* j ) {
+  const Akonadi::ItemCreateJob* job = qobject_cast<const Akonadi::ItemCreateJob*>( j );
+  Q_ASSERT( job );
+  Incidence::Ptr incidence = Akonadi::incidence( job->item() );
+
+  if  ( job->error() ) {
+    KMessageBox::sorry( 0, //PENDING(AKONADI_PORT) set parent, ideally the one passed in addIncidence...
+                        i18n( "Unable to save %1 \"%2\": %3",
+                              i18n( incidence->type() ),
+                              incidence->summary(),
+                              job->errorString( )) );
+    return;
+  }
+
+  Q_ASSERT( incidence );
   if ( KOPrefs::instance()->mUseGroupwareCommunication ) {
-    if ( !KOGroupware::instance()->sendICalMessage( parent,
+    if ( !KOGroupware::instance()->sendICalMessage( 0, //PENDING(AKONADI_PORT) set parent, ideally the one passed in addIncidence...
                                                     KCal::iTIPRequest,
                                                     incidence.get() ) ) {
       kError() << "sendIcalMessage failed.";
     }
   }
-#if 0 // don't notify here, wait for akonadi notification
-  emit incidenceAdded( item );
-#endif
-  return true;
+
 }
 
 #include "incidencechanger.moc"

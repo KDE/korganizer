@@ -26,6 +26,7 @@
 #include "eventarchiver.h"
 #include "akonadicalendar.h"
 #include "koprefs.h"
+#include "incidencechanger.h"
 
 #include <kio/netaccess.h>
 #include <kcal/icalformat.h>
@@ -34,7 +35,7 @@
 #include <kcal/calendarlocal.h>
 
 #include <akonadi/kcal/utils.h>
-#include <akonadi/kcal/akonadicalendaradaptor.h>
+#include <interfaces/korganizer/akonadicalendaradaptor.h>
 
 #include <kdebug.h>
 #include <kglobal.h>
@@ -164,7 +165,8 @@ void EventArchiver::archiveIncidences( KOrg::AkonadiCalendar *calendar, const QD
   Q_UNUSED( limitDate );
   Q_UNUSED( withGUI );
 
-  AkonadiCalendarAdaptor cal(calendar);
+  IncidenceChanger changer( calendar ); //AKONADI_PORT get rid of this changer copy
+  AkonadiCalendarAdaptor cal( calendar, &changer );
   FileStorage storage( &cal );
 
   // Save current calendar to disk

@@ -41,7 +41,7 @@
 #include "incidenceeditor/koincidenceeditor.h"
 #include "mailscheduler.h"
 #include "akonadicalendar.h"
-#include "akonadicalendaradaptor.h"
+#include <korganizer/akonadicalendaradaptor.h>
 
 #include <KCal/IncidenceFormatter>
 #include <KPIMUtils/Email>
@@ -163,7 +163,7 @@ void KOGroupware::incomingDirChanged( const QString &path )
 
   f.remove();
 
-  AkonadiCalendarAdaptor adaptor(mCalendar);
+  AkonadiCalendarAdaptor adaptor(mCalendar, mView->incidenceChanger());
   ScheduleMessage *message = mFormat.parseScheduleMessage( &adaptor, iCal );
   if ( !message ) {
     QString errorMessage;
@@ -184,7 +184,7 @@ void KOGroupware::incomingDirChanged( const QString &path )
     delete message;
     return;
   }
-  MailScheduler scheduler( mCalendar );
+  MailScheduler scheduler( mCalendar, mView->incidenceChanger() );
   if ( action.startsWith( QLatin1String( "accepted" ) ) ||
        action.startsWith( QLatin1String( "tentative" ) ) ||
        action.startsWith( QLatin1String( "delegated" ) ) ||
@@ -369,7 +369,7 @@ bool KOGroupware::sendICalMessage( QWidget *parent,
       incidence->setSummary( i18n( "<placeholder>No summary given</placeholder>" ) );
     }
     // Send the mail
-    MailScheduler scheduler( mCalendar );
+    MailScheduler scheduler( mCalendar, mView->incidenceChanger() );
     scheduler.performTransaction( incidence, method );
     return true;
   } else if ( rc == KMessageBox::No ) {
@@ -392,11 +392,11 @@ void KOGroupware::sendCounterProposal( KCal::Event *oldEvent, KCal::Event *newEv
     tmp->addComment( i18n( "Proposed new meeting time: %1 - %2",
                            IncidenceFormatter::dateToString( newEvent->dtStart() ),
                            IncidenceFormatter::dateToString( newEvent->dtEnd() ) ) );
-    MailScheduler scheduler( mCalendar );
+    MailScheduler scheduler( mCalendar, mView->incidenceChanger() );
     scheduler.performTransaction( tmp, KCal::iTIPReply );
     delete tmp;
   } else {
-    MailScheduler scheduler( mCalendar );
+    MailScheduler scheduler( mCalendar, mView->incidenceChanger() );
     scheduler.performTransaction( newEvent, iTIPCounter );
   }
 }

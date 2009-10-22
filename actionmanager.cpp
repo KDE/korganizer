@@ -42,11 +42,12 @@
 #include "kowindowlist.h"
 #include "reminderclient.h"
 #include "akonadicalendar.h"
-#include "akonadicalendaradaptor.h"
+#include "interfaces/korganizer/akonadicalendaradaptor.h"
 #include "akonadicollectionview.h"
 #include "htmlexport.h"
 #include "htmlexportsettings.h"
 #include "incidenceeditor/koeditorconfig.h"
+#include "incidencechanger.h"
 
 #include <KCal/FileStorage>
 
@@ -1574,8 +1575,9 @@ void ActionManager::slotNewStuffDownloaded(KJob *_job)
     KMessageBox::error( mCalendarView, i18n( "Could not download calendar %1: %2.",
                                              job->srcUrl().url(), job->errorString() ) );
   } else {
-    AkonadiCalendarAdaptor cal( mCalendarAkonadi );
-    FileStorage storage( &cal );
+    IncidenceChanger changer( mCalendarAkonadi );  //AKONADI_PORT avoid this local incidence changer copy...
+
+    AkonadiCalendarAdaptor cal( mCalendarAkonadi, &changer );  FileStorage storage( &cal );
     storage.setFileName( filename );
     storage.setSaveFormat( new ICalFormat );
     if ( !storage.load() ) {

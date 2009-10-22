@@ -28,8 +28,7 @@
 #include "komailclient.h"
 #include "koprefs.h"
 #include "akonadicalendar.h"
-#include "akonadicalendar.h"
-#include "akonadicalendaradaptor.h"
+#include <interfaces/korganizer/akonadicalendaradaptor.h>
 
 #include <KCal/Calendar>
 #include <KCal/ICalFormat>
@@ -45,9 +44,9 @@
 
 using namespace KOrg;
 
-MailScheduler::MailScheduler( KOrg::AkonadiCalendar *calendar )
+MailScheduler::MailScheduler( KOrg::AkonadiCalendar *calendar, KOrg::IncidenceChangerBase *changer )
   //: Scheduler( calendar )
-  : mCalendar( calendar ), mFormat( new ICalFormat() )
+  : mCalendar( calendar ), mChanger( changer ), mFormat( new ICalFormat() )
 {
   mFormat->setTimeSpec( calendar->timeSpec() );
 }
@@ -146,7 +145,7 @@ QList<ScheduleMessage*> MailScheduler::retrieveTransactions()
         messageString.remove( QRegExp( "\n[ \t]" ) );
         messageString = QString::fromUtf8( messageString.toLatin1() );
 
-        AkonadiCalendarAdaptor caladaptor(mCalendar);
+        AkonadiCalendarAdaptor caladaptor(mCalendar, mChanger);
         ScheduleMessage *mess = mFormat->parseScheduleMessage( &caladaptor, messageString );
         
         if ( mess ) {
@@ -218,7 +217,7 @@ bool MailScheduler::acceptTransaction( KCal::IncidenceBase *incidence, KCal::iTI
       AkonadiCalendarAdaptor *m_calendar;
   };
 
-  AkonadiCalendarAdaptor caladaptor(mCalendar);
+  AkonadiCalendarAdaptor caladaptor(mCalendar, mChanger);
   SchedulerAdaptor scheduleradaptor(this, &caladaptor);
   return scheduleradaptor.acceptTransaction(incidence, method, status, email);
 }
@@ -254,7 +253,9 @@ bool MailScheduler::acceptCounterProposal( KCal::Incidence *incidence )
     exIncPtr->updated();
     mCalendar->endChange( exInc );
   } else {
+#ifdef AKONADI_PORT_DISABLED
     mCalendar->addIncidence( Incidence::Ptr(incidence->clone()) );
+#endif
   }
 
   return true;

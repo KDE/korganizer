@@ -59,9 +59,9 @@
 #include "views/monthview/monthview.h"
 #include "views/multiagendaview/multiagendaview.h"
 #include "views/todoview/kotodoview.h"
+#include <interfaces/korganizer/akonadicalendaradaptor.h>
 
 #include <akonadi/kcal/utils.h>
-#include <akonadi/kcal/akonadicalendaradaptor.h>
 
 #include <KCal/CalendarResources>
 #include <KCal/CalFilter>
@@ -852,7 +852,7 @@ void CalendarView::edit_copy()
     return;
   }
 
-  AkonadiCalendarAdaptor cal(mCalendar);
+  AkonadiCalendarAdaptor cal( mCalendar, mChanger );
   DndFactory factory( &cal );
   Incidence::Ptr incidence = Akonadi::incidence(item);
   if ( !factory.copyIncidence( incidence.get() ) ) {
@@ -902,7 +902,7 @@ void CalendarView::edit_paste()
     return;
   }
 
-  AkonadiCalendarAdaptor cal(mCalendar);
+  AkonadiCalendarAdaptor cal( mCalendar, mChanger );
   DndFactory factory( &cal );
   Incidence *pastedIncidence;
   if ( time.isValid() ) {
@@ -1419,7 +1419,7 @@ void CalendarView::schedule_publish( const Item &item )
     inc->clearAttendees();
 
     // Send the mail
-    MailScheduler scheduler( mCalendar );
+    MailScheduler scheduler( mCalendar, mChanger );
     if ( scheduler.publish( incidence.get(), publishdlg->addresses() ) ) {
       KMessageBox::information( this, i18n( "The item information was successfully sent." ),
                                 i18n( "Publishing" ), "IncidencePublishSuccess" );
@@ -1527,7 +1527,7 @@ void CalendarView::mailFreeBusy( int daysToPublish )
   QPointer<PublishDialog> publishdlg = new PublishDialog();
   if ( publishdlg->exec() == QDialog::Accepted ) {
     // Send the mail
-    MailScheduler scheduler( mCalendar );
+    MailScheduler scheduler( mCalendar, mChanger );
     if ( scheduler.publish( freebusy, publishdlg->addresses() ) ) {
       KMessageBox::information(
         this,
@@ -1570,7 +1570,7 @@ void CalendarView::schedule( iTIPMethod method, const Item &item )
   inc->clearAttendees();
 
   // Send the mail
-  MailScheduler scheduler( mCalendar );
+  MailScheduler scheduler( mCalendar, mChanger );
   if ( scheduler.performTransaction( incidence.get(), method ) ) {
     KMessageBox::information( this,
                               i18n( "The groupware message for item '%1' "
@@ -1685,7 +1685,7 @@ void CalendarView::exportICalendar()
       }
     }
     ICalFormat *format = new ICalFormat;
-    AkonadiCalendarAdaptor calendar(mCalendar);
+    AkonadiCalendarAdaptor calendar( mCalendar, mChanger );
     FileStorage storage( &calendar, filename, format );
     if ( !storage.save() ) {
       QString errmess;
@@ -1734,7 +1734,7 @@ void CalendarView::exportVCalendar()
       }
     }
     VCalFormat *format = new VCalFormat;
-    AkonadiCalendarAdaptor calendar(mCalendar);
+    AkonadiCalendarAdaptor calendar( mCalendar, mChanger );
     FileStorage storage( &calendar, filename, format );
     if ( !storage.save() ) {
       QString errmess;

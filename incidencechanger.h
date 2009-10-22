@@ -27,6 +27,8 @@
 #include "korganizer/incidencechangerbase.h"
 #include "korganizer_export.h"
 
+class KJob;
+
 namespace KOrg {
   class AkonadiCalendar;
 }
@@ -35,7 +37,7 @@ class KORGANIZERPRIVATE_EXPORT IncidenceChanger : public KOrg::IncidenceChangerB
 {
   Q_OBJECT
   public:
-    IncidenceChanger( KOrg::AkonadiCalendar *cal, QObject *parent );
+    explicit IncidenceChanger( KOrg::AkonadiCalendar *cal, QObject *parent=0 );
     ~IncidenceChanger();
 
     bool beginChange( const Akonadi::Item & incidence );
@@ -56,6 +58,9 @@ class KORGANIZERPRIVATE_EXPORT IncidenceChanger : public KOrg::IncidenceChangerB
 
   protected:
     bool myAttendeeStatusChanged( const KCal::Incidence *newInc, const KCal::Incidence *oldInc );
+
+  private Q_SLOTS:
+    void addIncidenceFinished( KJob* job );
 
   private:
     class ComparisonVisitor;

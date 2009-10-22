@@ -38,7 +38,7 @@ namespace KCal {
 
 namespace KOrg {
   class AkonadiCalendar;
-  class AkonadiCalendar;
+  class IncidenceChangerBase;
 
   /*
     This class implements the iTIP interface using the email interface specified
@@ -47,7 +47,7 @@ namespace KOrg {
   class KORGANIZER_CORE_EXPORT MailScheduler //: public Scheduler
   {
     public:
-      explicit MailScheduler( KOrg::AkonadiCalendar *calendar );
+      explicit MailScheduler( KOrg::AkonadiCalendar *calendar, KOrg::IncidenceChangerBase* changer );
       virtual ~MailScheduler();
 
       bool publish ( KCal::IncidenceBase *incidence, const QString &recipients );
@@ -81,6 +81,7 @@ namespace KOrg {
 
     private:
       KOrg::AkonadiCalendar *mCalendar;
+      KOrg::IncidenceChangerBase *mChanger;
       KCal::ICalFormat *mFormat;
       QMap<KCal::IncidenceBase *, QString> mEventMap;
   };
