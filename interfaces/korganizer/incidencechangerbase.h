@@ -69,7 +69,7 @@ class KORGANIZER_INTERFACES_EXPORT IncidenceChangerBase : public QObject
     void incidenceToBeDeleted( const Akonadi::Item & );
     void incidenceDeleted( const Akonadi::Item & );
 
-    void schedule( KCal::iTIPMethod method, const Akonadi::Item &incidence );
+    void schedule( iTIPMethod method, const Akonadi::Item &incidence );
 
   protected:
     CalendarBase *mCalendar;
