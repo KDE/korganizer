@@ -58,9 +58,9 @@ class INCIDENCEEDITOR_EXPORT KOEventEditor : public KOIncidenceEditor
     virtual ~KOEventEditor();
 
     void init();
+
     /** This event has been modified externally */
     void modified( int change=0 );
-    void reload();
 
     /**
       Clear event win for new event
@@ -80,16 +80,6 @@ class INCIDENCEEDITOR_EXPORT KOEventEditor : public KOIncidenceEditor
       Set widgets to the given date/time values
     */
     void setDates( const QDateTime &from, const QDateTime &to, bool allDay );
-
-    /**
-      Read event object and setup widgets accordingly. If tmpl is true, the
-      event is read as template, i.e. the time and date information isn't set.
-
-      @param event the event from which the data should be used
-      @param tmpl If true, the event is treated as a template, so the currently
-      set time is preserved in the editor dialog.
-    */
-    void readIncidence( const Akonadi::Item &event, bool tmpl = false );
 
     /**
       Write event settings to event object
@@ -114,6 +104,17 @@ class INCIDENCEEDITOR_EXPORT KOEventEditor : public KOIncidenceEditor
 
   protected:
     QString type() { return "Event"; }
+
+    /**
+      Read event object and setup widgets accordingly. If tmpl is true, the
+      event is read as template, i.e. the time and date information isn't set.
+
+      @param event the event from which the data should be used
+      @param tmpl If true, the event is treated as a template, so the currently
+      set time is preserved in the editor dialog.
+    */
+    bool read( const Akonadi::Item &event, bool tmpl = false );
+
     void setupGeneral();
     void setupRecurrence();
     void setupFreeBusy();

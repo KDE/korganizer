@@ -88,13 +88,13 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption, QWidget *parent )
   mainWidget()->setLayout( layout );
 
   QHBoxLayout *callayout = new QHBoxLayout( mainWidget() );
-  Akonadi::CollectionComboBox *calselector = new Akonadi::CollectionComboBox( mainWidget() );
-  calselector->setMimeTypeFilter( QStringList() << "text/calendar" );
-  //calselector->setAccessRightsFilter( Akonadi::Collection::ReadOnly );
+  mCalSelector = new Akonadi::CollectionComboBox( mainWidget() );
+  mCalSelector->setMimeTypeFilter( QStringList() << "text/calendar" );
+  //mCalSelector->setAccessRightsFilter( Akonadi::Collection::ReadOnly );
   QLabel *callabel = new QLabel( i18n("Calendar:"), mainWidget() );
-  callabel->setBuddy( calselector );
+  callabel->setBuddy( mCalSelector );
   callayout->addWidget( callabel );
-  callayout->addWidget( calselector, 1 );
+  callayout->addWidget( mCalSelector, 1 );
   layout->addLayout( callayout );
   
   mTabWidget = new QTabWidget( mainWidget() );
@@ -106,6 +106,17 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption, QWidget *parent )
 
 KOIncidenceEditor::~KOIncidenceEditor()
 {
+}
+
+void KOIncidenceEditor::readIncidence( const Akonadi::Item &item, bool tmpl )
+{
+  if( ! read( item, tmpl ))
+    return;
+
+  //TODO set calselector
+  Akonadi::Entity::Id colId( item.storageCollectionId() );
+  Akonadi::Collection col( colId );
+  mCalSelector->setDefaultCollection( col );
 }
 
 void KOIncidenceEditor::editIncidence( const Akonadi::Item &item )
@@ -144,6 +155,10 @@ void KOIncidenceEditor::editIncidence( const Akonadi::Item &item )
 
 bool KOIncidenceEditor::incidenceModified() {
   return true;
+}
+
+void KOIncidenceEditor::reload() {
+  readIncidence( mIncidence, true );
 }
 
 void KOIncidenceEditor::slotButtonClicked( int button )

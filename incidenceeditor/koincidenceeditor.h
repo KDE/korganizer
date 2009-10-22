@@ -39,9 +39,11 @@ namespace KPIM {
   class DesignerFields;
   class EmbeddedURLPage;
 }
-
 namespace KOrg {
   class IncidenceChangerBase;
+}
+namespace Akonadi {
+  class CollectionComboBox;
 }
 
 class KOEditorDetails;
@@ -67,11 +69,14 @@ class INCIDENCEEDITOR_EXPORT KOIncidenceEditor : public KDialog
     /** This incidence has been modified externally */
     virtual void modified( int /*change*/= 0 ) {}
 
-    virtual void reload() = 0;
-
+    /** Read incidence. */
+    virtual void readIncidence( const Akonadi::Item &, bool tmpl = false );
     /** Edit an existing incidence. */
     virtual void editIncidence( const Akonadi::Item & );
 
+    /** Calls readIncidence(mIncidence) */
+    void reload();
+    
     virtual void selectInvitationCounterProposal( bool enable );
     virtual void selectCreateTask( bool enable );
 
@@ -124,7 +129,7 @@ class INCIDENCEEDITOR_EXPORT KOIncidenceEditor : public KDialog
     void slotTemplatesChanged( const QStringList &templateNames );
     
   protected:
-    virtual void readIncidence( const Akonadi::Item &, bool tmpl = false ) = 0;
+    virtual bool read( const Akonadi::Item &, bool tmpl = false ) = 0;
     virtual void closeEvent( QCloseEvent * );
 
     virtual QString type() = 0;
@@ -158,6 +163,7 @@ class INCIDENCEEDITOR_EXPORT KOIncidenceEditor : public KDialog
     void cancelRemovedAttendees( const Akonadi::Item &item );
 
     QTabWidget *mTabWidget;
+    Akonadi::CollectionComboBox *mCalSelector;
     KOEditorDetails *mDetails;
     KOAttendeeEditor *mAttendeeEditor;
     KOrg::IncidenceChangerBase *mChanger;

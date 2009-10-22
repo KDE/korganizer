@@ -53,8 +53,6 @@ class INCIDENCEEDITOR_EXPORT KOJournalEditor : public KOIncidenceEditor
 
     void init();
 
-    void reload();
-
     /**
       Clear editor for new Journal
     */
@@ -81,16 +79,6 @@ class INCIDENCEEDITOR_EXPORT KOJournalEditor : public KOIncidenceEditor
     /** Set time widget to default values */
     void setTime( const QTime &time );
 
-    /**
-      Read journal object and setup widgets accordingly. If tmpl is true, the
-      journal is read as template, i.e. the time and date information isn't set.
-
-      @param journal the journal from which the data should be used
-      @param tmpl If true, the journal is treated as a template, so the
-      currently set time is preserved in the editor dialog.
-    */
-    void readIncidence( const Akonadi::Item &, bool tmpl = false );
-
     /** Write Journal settings to journal object */
     void fillJournal( Journal* );
 
@@ -115,6 +103,17 @@ class INCIDENCEEDITOR_EXPORT KOJournalEditor : public KOIncidenceEditor
 
   protected:
     QString type() { return "Journal"; }
+
+    /**
+      Read journal object and setup widgets accordingly. If tmpl is true, the
+      journal is read as template, i.e. the time and date information isn't set.
+
+      @param journal the journal from which the data should be used
+      @param tmpl If true, the journal is treated as a template, so the
+      currently set time is preserved in the editor dialog.
+    */
+    bool read( const Akonadi::Item &, bool tmpl = false );
+
     void setupGeneral();
     bool incidenceModified();
 

@@ -56,8 +56,6 @@ class INCIDENCEEDITOR_EXPORT KOTodoEditor : public KOIncidenceEditor
 
     void init();
 
-    void reload();
-
     /**
       Edit new todo.
       Use setter methods to set appropriate default values, as needed.
@@ -75,16 +73,6 @@ class INCIDENCEEDITOR_EXPORT KOTodoEditor : public KOIncidenceEditor
 
     /** Set widgets to default values */
     void setDates( const QDateTime &due, bool allDay = true, const Akonadi::Item &relatedTodo = Akonadi::Item() );
-
-   /**
-      Read todo object and setup widgets accordingly. If tmpl is true, the
-      todo is read as template, i.e. the time and date information isn't set.
-
-      @param todo the todo from which the data should be used
-      @param tmpl If true, the todo is treated as a template, so the currently
-      set time is preserved in the editor dialog.
-    */
-    void readIncidence( const Akonadi::Item &, bool tmpl = false );
 
     /** Write To-do settings to todo object */
     void fillTodo( const Akonadi::Item &item );
@@ -110,6 +98,17 @@ class INCIDENCEEDITOR_EXPORT KOTodoEditor : public KOIncidenceEditor
 
   protected:
     QString type() { return "Todo"; }
+
+    /**
+      Read todo object and setup widgets accordingly. If tmpl is true, the
+      todo is read as template, i.e. the time and date information isn't set.
+
+      @param todo the todo from which the data should be used
+      @param tmpl If true, the todo is treated as a template, so the currently
+      set time is preserved in the editor dialog.
+    */
+    bool read( const Akonadi::Item &, bool tmpl = false );
+    
     void setupGeneral();
     void setupRecurrence();
     bool incidenceModified();

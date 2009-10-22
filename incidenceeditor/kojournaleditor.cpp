@@ -63,11 +63,6 @@ void KOJournalEditor::init()
 
 }
 
-void KOJournalEditor::reload()
-{
-  readIncidence( mIncidence, true );
-}
-
 void KOJournalEditor::setupGeneral()
 {
   mGeneral = new KOEditorGeneralJournal( this );
@@ -190,15 +185,17 @@ bool KOJournalEditor::incidenceModified()
   return modified;
 }
 
-void KOJournalEditor::readIncidence( const Item &item, bool tmpl )
+bool KOJournalEditor::read( const Item &item, bool tmpl )
 {
   const Journal::Ptr journal = Akonadi::journal( item );
   if ( !journal ) {
-    return;
+    return false;
   }
 
   mGeneral->readJournal( journal.get(), tmpl );
   mDetails->readIncidence( journal.get() );
+
+  return true;
 }
 
 void KOJournalEditor::fillJournal( Journal* journal )
@@ -224,7 +221,7 @@ void KOJournalEditor::modified( int modification )
 
   // Play dumb, just reload the Journal. This dialog has become so complicated
   // that there is no point in trying to be smart here...
-  reload();
+  readIncidence( mIncidence, true );
 }
 
 void KOJournalEditor::show()

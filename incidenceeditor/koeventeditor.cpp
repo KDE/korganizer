@@ -122,11 +122,6 @@ void KOEventEditor::init()
   updateRecurrenceSummary();
 }
 
-void KOEventEditor::reload()
-{
-  readIncidence( mIncidence, true );
-}
-
 void KOEventEditor::setupGeneral()
 {
   mGeneral = new KOEditorGeneralEvent( this );
@@ -157,7 +152,7 @@ void KOEventEditor::modified( int modification )
 
   // Play dumb, just reload the event. This dialog has become so complicated
   // that there is no point in trying to be smart here...
-  reload();
+  readIncidence( mIncidence, true );
 }
 
 void KOEventEditor::setupRecurrence()
@@ -326,10 +321,10 @@ void KOEventEditor::deleteEvent()
   reject();
 }
 
-void KOEventEditor::readIncidence( const Item& eventItem, bool tmpl )
+bool KOEventEditor::read( const Item& eventItem, bool tmpl )
 {
   if ( !Akonadi::hasEvent( eventItem ) ) {
-    return;
+    return false;
   }
 
   const Event::Ptr event = Akonadi::event( eventItem );
@@ -346,6 +341,7 @@ void KOEventEditor::readIncidence( const Item& eventItem, bool tmpl )
   if ( mIsCounter ) {
     mGeneral->invitationBar()->hide();
   }
+  return true;
 }
 
 void KOEventEditor::fillEvent( const Akonadi::Item &item )

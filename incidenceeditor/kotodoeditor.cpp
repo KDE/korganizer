@@ -106,11 +106,6 @@ void KOTodoEditor::init()
            mGeneral, SLOT(updateAttendeeSummary(int)) );
 }
 
-void KOTodoEditor::reload()
-{
-  readIncidence( mIncidence, true );
-}
-
 void KOTodoEditor::setupGeneral()
 {
   mGeneral = new KOEditorGeneralTodo( this );
@@ -265,11 +260,11 @@ void KOTodoEditor::setDates( const QDateTime &due, bool allDay, const Akonadi::I
   }
 }
 
-void KOTodoEditor::readIncidence( const Item &todoItem, bool tmpl )
+bool KOTodoEditor::read( const Item &todoItem, bool tmpl )
 {
   const Todo::Ptr todo = Akonadi::todo( todoItem );
   if ( !todo ) {
-    return;
+    return false;
   }
 
   mGeneral->readTodo( todo.get(), tmpl );
@@ -278,6 +273,7 @@ void KOTodoEditor::readIncidence( const Item &todoItem, bool tmpl )
 
   createEmbeddedURLPages( todo.get() );
   readDesignerFields( todoItem );
+  return true;
 }
 
 void KOTodoEditor::fillTodo( const Akonadi::Item &item )
@@ -325,7 +321,7 @@ void KOTodoEditor::modified( int modification )
 
   // Play dumb, just reload the todo. This dialog has become so complicated
   // that there is no point in trying to be smart here...
-  reload();
+  readIncidence( mIncidence, true );
 }
 
 void KOTodoEditor::show()
