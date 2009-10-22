@@ -84,6 +84,7 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption, QWidget *parent )
   mainWidget()->setLayout( layout );
 
   QHBoxLayout *callayout = new QHBoxLayout( mainWidget() );
+  callayout->setSpacing( KDialog::spacingHint() );
   mCalSelector = new Akonadi::CollectionComboBox( mainWidget() );
   mCalSelector->setMimeTypeFilter( QStringList() << "text/calendar" );
   //mCalSelector->setAccessRightsFilter( Akonadi::Collection::ReadOnly );

@@ -100,6 +100,8 @@ int KOTimelineView::currentDateCount()
 /*virtual*/
 void KOTimelineView::showDates( const QDate &start, const QDate &end )
 {
+  kDebug() << "start=" << start << "end=" << end;
+  
   mStartDate = start;
   mEndDate = end;
   mHintDate = QDateTime();
@@ -115,13 +117,13 @@ void KOTimelineView::showDates( const QDate &start, const QDate &end )
   mGantt->clear();
 
   // item for every calendar
+#if 0  //AKONADI_PORT_DISABLED
   TimelineItem *item = 0;
   AkonadiCalendar *calres = dynamic_cast<AkonadiCalendar *>( calendar() );
   if ( !calres ) {
     item = new TimelineItem( i18n( "Calendar" ), calendar(), mGantt );
     mCalendarItemMap[0][QString()] = item;
   } else {
-#if 0  //AKONADI_PORT_DISABLED
     CalendarResourceManager *manager = calres->resourceManager();
     for ( CalendarResourceManager::ActiveIterator it = manager->activeBegin(); it != manager->activeEnd(); ++it ) {
       QColor resourceColor = KOPrefs::instance()->resourceColor( (*it)->identifier() );
@@ -153,11 +155,11 @@ void KOTimelineView::showDates( const QDate &start, const QDate &end )
         mCalendarItemMap[*it][QString()] = item;
       }
     }
-#else
-    //TODO
-    kWarning();
-#endif
   }
+#else
+  TimelineItem *item = new TimelineItem( i18n( "Calendar" ), calendar(), mGantt );
+  mCalendarItemMap[0][QString()] = item;
+#endif
 
   // add incidences
   Item::List events;
