@@ -227,7 +227,7 @@ void KOIncidenceEditor::slotItemRemoved( const Akonadi::Item &item )
   kDebug();
   Q_ASSERT(item == mIncidence);
   KMessageBox::information( this, i18nc( "@info", "The incidence got removed. Closing editor now." ) );
-  close();
+  KDialog::reject();
 }
 
 void KOIncidenceEditor::slotManageTemplates()
