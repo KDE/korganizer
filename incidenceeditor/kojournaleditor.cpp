@@ -139,7 +139,8 @@ bool KOJournalEditor::processInput()
     fillJournal( j.get() );
     //PENDING(AKONADI_PORT) review: mIncidence will be != the newly created item
     mIncidence.setPayload( j );
-    if ( !mChanger->addIncidence( j, this ) ) {
+    Akonadi::Collection col = mCalSelector->currentCollection();
+    if ( !mChanger->addIncidence( j, col ) ) {
       mIncidence = Item();
       return false;
     }

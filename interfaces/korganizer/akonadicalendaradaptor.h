@@ -26,6 +26,9 @@
 #include "incidencechangerbase.h"
 
 #include <akonadi/kcal/akonadicalendar.h>
+#include <Akonadi/Item>
+#include <Akonadi/Collection>
+#include <akonadi/kcal/utils.h>
 
 #include <KCal/CalendarResources>
 #include <KCal/CalFilter>
@@ -75,7 +78,8 @@ class KORGANIZER_INTERFACES_EXPORT AkonadiCalendarAdaptor : public KCal::Calenda
     
     virtual bool addEvent( Event *event )
     {
-      return mChanger->addIncidence( Incidence::Ptr( event->clone() ) );
+      Akonadi::Collection c = Akonadi::selectCollection();
+      return c.isValid() && mChanger->addIncidence( Incidence::Ptr( event->clone() ), c );
     }
     
     virtual bool deleteEvent( Event *event )
@@ -112,7 +116,8 @@ class KORGANIZER_INTERFACES_EXPORT AkonadiCalendarAdaptor : public KCal::Calenda
     
     virtual bool addTodo( Todo *todo )
     {
-      return mChanger->addIncidence( Incidence::Ptr( todo->clone() ) );
+      Akonadi::Collection c = Akonadi::selectCollection();
+      return c.isValid() && mChanger->addIncidence( Incidence::Ptr( todo->clone() ), c );
     }
     
     virtual bool deleteTodo( Todo *todo )
@@ -139,7 +144,8 @@ class KORGANIZER_INTERFACES_EXPORT AkonadiCalendarAdaptor : public KCal::Calenda
     
     virtual bool addJournal( Journal *journal )
     {
-      return mChanger->addIncidence( Incidence::Ptr( journal->clone() ) );
+      Akonadi::Collection c = Akonadi::selectCollection();
+      return c.isValid() && mChanger->addIncidence( Incidence::Ptr( journal->clone() ), c );
     }
     
     virtual bool deleteJournal( Journal *journal )
@@ -172,6 +178,7 @@ class KORGANIZER_INTERFACES_EXPORT AkonadiCalendarAdaptor : public KCal::Calenda
   private:
     AkonadiCalendar *mCalendar;
     IncidenceChangerBase *mChanger;
+ 
 };
 
 }

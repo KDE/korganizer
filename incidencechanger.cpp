@@ -34,10 +34,10 @@
 #include <Akonadi/ItemCreateJob>
 #include <Akonadi/ItemDeleteJob>
 #include <Akonadi/ItemModifyJob>
-#include <Akonadi/CollectionDialog>
+#include <Akonadi/Collection>
+#include <akonadi/kcal/utils.h>
 
 #include <KCal/AssignmentVisitor>
-#include <KCal/CalendarResources>
 #include <KCal/DndFactory>
 #include <KCal/FreeBusy>
 #include <KCal/Incidence>
@@ -407,22 +407,17 @@ bool IncidenceChanger::changeIncidence( const KCal::Incidence::Ptr &oldinc, cons
   return true;
 }
 
-bool IncidenceChanger::addIncidence( const Incidence::Ptr &incidence, QWidget *parent )
+bool IncidenceChanger::addIncidence( const KCal::Incidence::Ptr &incidence, QWidget *parent )
 {
-  kDebug() << "\"" << incidence->summary() << "\"";
-  CalendarResources *stdcal = dynamic_cast<CalendarResources*>( mCalendar );
-  if( stdcal && !stdcal->hasCalendarResources() ) {
-    KMessageBox::sorry( parent, i18n( "No calendars found, event cannot be added." ) );
-    return false;
-  }
-  kDebug();
-  CollectionDialog dlg( parent );
-  dlg.setMimeTypeFilter( QStringList() << QLatin1String( "text/calendar" ) );
-  if ( ! dlg.exec() ) {
-    return false;
-  }
-  const Collection collection = dlg.selectedCollection();
+  Akonadi::Collection c = Akonadi::selectCollection(parent);
+  return c.isValid() && addIncidence( incidence, c );
+}
+
+bool IncidenceChanger::addIncidence( const Incidence::Ptr &incidence, const Collection &collection )
+{
+  Q_ASSERT( incidence );
   Q_ASSERT( collection.isValid() );
+  kDebug() << "\"" << incidence->summary() << "\"";
 
   Item item;
   item.setPayload( incidence );

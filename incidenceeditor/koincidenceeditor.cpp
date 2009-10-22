@@ -36,10 +36,6 @@
 
 #include <akonadi/kcal/utils.h>
 #include <akonadi/itemfetchscope.h>
-#include <akonadi/collectioncombobox.h>
-#include <Akonadi/Item>
-#include <Akonadi/Collection>
-#include <Akonadi/Monitor>
 
 #include <KABC/Addressee>
 #include <KCal/Incidence>
@@ -115,7 +111,12 @@ void KOIncidenceEditor::readIncidence( const Akonadi::Item &item, bool tmpl )
 
   Akonadi::Entity::Id colId( item.storageCollectionId() );
   Akonadi::Collection col( colId );
-  mCalSelector->setDefaultCollection( col );
+  if( col.isValid() )
+    mCalSelector->setDefaultCollection( col );
+
+  //TODO read-only ATM till we support moving of existing incidences from
+  // one collection to another.
+  mCalSelector->setEnabled(false);
 }
 
 void KOIncidenceEditor::editIncidence( const Akonadi::Item &item )

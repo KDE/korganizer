@@ -272,7 +272,8 @@ bool KOEventEditor::processInput()
         event2->clearAttendees();
         event2->setSummary( i18nc( "@item", "My counter proposal for: %1", ev->summary() ) );
 
-       rc = mChanger->addIncidence( event2 );
+        Akonadi::Collection col = mCalSelector->currentCollection();
+        rc = mChanger->addIncidence( event2, col );
       } else {
         mChanger->beginChange( mIncidence );
         ev->startUpdates(); //merge multiple mIncidence->updated() calls into one
@@ -290,7 +291,8 @@ bool KOEventEditor::processInput()
                             KOEditorConfig::instance()->email() ) );
     mIncidence.setPayload( newEvent );
     fillEvent( mIncidence );
-    if ( !mChanger->addIncidence( newEvent, this ) ) {
+    Akonadi::Collection col = mCalSelector->currentCollection();
+    if ( !mChanger->addIncidence( newEvent, col ) ) {
       mIncidence = Item();
       return false;
     }

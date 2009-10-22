@@ -33,7 +33,9 @@
 
 #include <KCal/Incidence>
 #include <Akonadi/Item>
+#include <Akonadi/Collection>
 #include <Akonadi/Monitor>
+#include <akonadi/collectioncombobox.h>
 
 namespace KPIM {
   class DesignerFields;
@@ -41,9 +43,6 @@ namespace KPIM {
 }
 namespace KOrg {
   class IncidenceChangerBase;
-}
-namespace Akonadi {
-  class CollectionComboBox;
 }
 
 class KOEditorDetails;
