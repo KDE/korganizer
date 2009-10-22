@@ -252,12 +252,13 @@ bool KOEventView::processKeyEvent( QKeyEvent *ke )
     case Qt::Key_Alt:
       break;
     default:
-      mTypeAheadEvents.append( new QKeyEvent( ke->type(),
-                                              ke->key(),
-                                              ke->modifiers(),
-                                              ke->text(),
-                                              ke->isAutoRepeat(),
-                                              ke->count() ) );
+      mTypeAheadEvents.append(
+        new QKeyEvent( ke->type(),
+                       ke->key(),
+                       ke->modifiers(),
+                       ke->text(),
+                       ke->isAutoRepeat(),
+                       static_cast<ushort>( ke->count() ) ) );
       if ( !mTypeAhead ) {
         mTypeAhead = true;
         emit newEventSignal();
