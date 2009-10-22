@@ -43,7 +43,9 @@ int main ( int argc, char **argv )
   KCmdLineArgs::addCmdLineOptions( korganizer_options() );
   KUniqueApplication::addCmdLineOptions();
 
-  if ( !KOrganizerApp::start() ) {
+  KUniqueApplication::StartFlags flags;
+  //flags |= KUniqueApplication::NonUniqueInstance;
+  if ( !KOrganizerApp::start(flags) ) {
     return 0;
   }
 
