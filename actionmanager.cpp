@@ -304,6 +304,7 @@ void ActionManager::createCalendarAkonadi()
   filterProxy2->setSourceModel( selectionProxy );
   filterProxy2->setSortRole( CalendarModel::SortRole );
 
+#if 0 //this is for viewing the calendar model while debugging and can be deleted later
   QDialog* dlg = new QDialog( mCalendarView );
   dlg->setModal( false );
   QVBoxLayout* layout = new QVBoxLayout( dlg );
@@ -312,7 +313,7 @@ void ActionManager::createCalendarAkonadi()
   testview->setModel( filterProxy2 );
 
   dlg->show();
-
+#endif
 
   mCalendarAkonadi = new AkonadiCalendar( filterProxy2, KSystemTimeZones::local() );
 
