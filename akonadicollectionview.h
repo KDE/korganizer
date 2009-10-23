@@ -31,9 +31,7 @@
 #include <QTreeWidget>
 #include <QList>
 
-namespace KCal {
-  //class ResourceCalendar;
-}
+class QItemSelectionModel;
 
 namespace KOrg {
     class AkonadiCalendar;
@@ -84,6 +82,7 @@ class AkonadiCollectionView : public CalendarViewExtension
     AkonadiCalendar *calendar() const { return mCalendar; }
 
     void updateView();
+    QItemSelectionModel* checkedCollectionsModel() const;
 
   signals:
     void resourcesChanged(bool enabled);
@@ -106,6 +105,7 @@ class AkonadiCollectionView : public CalendarViewExtension
     //QAbstractButton *mAddButton, *mEditButton, *mDeleteButton;
     KAction *mCreateAction;
     KAction *mDeleteAction;
+    QItemSelectionModel *mCheckedCollectionsModel;
 };
 
 #endif

@@ -38,6 +38,7 @@
 #include <kjob.h>
 #include <QVBoxLayout>
 #include <QHeaderView>
+#include <QItemSelectionModel>
 
 #include <akonadi/kcal/calendarmodel.h>
 
@@ -179,6 +180,8 @@ AkonadiCollectionView::AkonadiCollectionView( AkonadiCollectionViewFactory *fact
   mProxyModel->setSortCaseSensitivity( Qt::CaseInsensitive );
   mProxyModel->setSourceModel( collectionproxymodel );
 
+  mCheckedCollectionsModel = new QItemSelectionModel( mProxyModel );
+
   mCollectionview = new Akonadi::EntityTreeView;
   topLayout->addWidget( mCollectionview );
   mCollectionview->header()->hide();
@@ -222,6 +225,11 @@ AkonadiCollectionView::~AkonadiCollectionView()
 {
 }
 
+QItemSelectionModel* AkonadiCollectionView::checkedCollectionsModel() const
+{
+  return mCheckedCollectionsModel;
+}
+
 void AkonadiCollectionView::updateView()
 {
   kDebug();
@@ -229,6 +237,7 @@ void AkonadiCollectionView::updateView()
   for(int row = 0; (! enabled) && row < mProxyModel->rowCount(); ++row) {
     QModelIndex index = mProxyModel->index(row, 0);
     enabled = mProxyModel->data(index, Qt::CheckStateRole).toBool();
+    mCheckedCollectionsModel->select( index, enabled ? QItemSelectionModel::Select : QItemSelectionModel::Deselect );
   }
   emit resourcesChanged(enabled);
 }
@@ -274,11 +283,11 @@ void AkonadiCollectionView::deleteCalendar()
 
   QModelIndex index = mCollectionview->selectionModel()->currentIndex(); //selectedRows()
   Q_ASSERT( index.isValid() );
-  const Akonadi::Collection collection = index.model()->data( index, Akonadi::EntityTreeModel::CollectionRole ).value<Akonadi::Collection>();
+  const Akonadi::Collection collection = collectionFromIndex( index );
   Q_ASSERT( collection.isValid() );
   //Q_ASSERT( mCollectionview->selectionModel()->isSelected(index) );
   
-  QString displayname = index.model()->data( index, Qt::DisplayRole ).value<QString>();
+  const QString displayname = index.model()->data( index, Qt::DisplayRole ).toString();
   Q_ASSERT( ! displayname.isEmpty() );
 
   if( KMessageBox::questionYesNo( this,
