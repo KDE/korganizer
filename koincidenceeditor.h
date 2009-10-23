@@ -65,7 +65,7 @@ class KOIncidenceEditor : public KDialogBase
     virtual ~KOIncidenceEditor();
 
     /** This incidence has been modified externally */
-    virtual void modified (int /*change*/=0) {}
+    virtual void modified() {}
 
     virtual void reload() = 0;
 

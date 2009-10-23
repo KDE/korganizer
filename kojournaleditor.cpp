@@ -142,7 +142,7 @@ bool KOJournalEditor::processInput()
   if ( mJournal ) {
     Journal *oldJournal = mJournal->clone();
     writeJournal( mJournal );
-    mChanger->changeIncidence( oldJournal, mJournal );
+    mChanger->changeIncidence( oldJournal, mJournal, KOGlobals::NOTHING_MODIFIED, this );
     delete oldJournal;
   } else {
     mJournal = new Journal;
@@ -203,10 +203,10 @@ int KOJournalEditor::msgItemDelete()
       i18n("KOrganizer Confirmation"), KGuiItem( i18n("Delete"), "editdelete" ));
 }
 
-void KOJournalEditor::modified( int /*modification*/)
+void KOJournalEditor::modified()
 {
-  // Play dump, just reload the Journal. This dialog has become so complicated that
-  // there is no point in trying to be smart here...
+  // Play dump, just reload the Journal. This dialog has become so complicated
+  // that there is no point in trying to be smart here...
   reload();
 }
 

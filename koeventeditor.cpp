@@ -168,7 +168,7 @@ void KOEventEditor::setupGeneral()
   mGeneral->finishSetup();
 }
 
-void KOEventEditor::modified (int /*modification*/)
+void KOEventEditor::modified()
 {
   // Play dump, just reload the event. This dialog has become so complicated
   // that there is no point in trying to be smart here...
@@ -295,9 +295,9 @@ bool KOEventEditor::processInput()
         Event *event = mEvent->clone();
         event->clearAttendees();
         event->setSummary( i18n("My counter proposal for: %1").arg( mEvent->summary() ) );
-        mChanger->addIncidence( event );
+        mChanger->addIncidence( event, this );
       } else {
-        mChanger->changeIncidence( oldEvent, mEvent );
+        mChanger->changeIncidence( oldEvent, mEvent, KOGlobals::NOTHING_MODIFIED, this );
       }
     }
     delete event;

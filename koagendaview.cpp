@@ -1009,8 +1009,9 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
   KOIncidenceToolTip::remove( item );
   KOIncidenceToolTip::add( item, calendar(), incidence, thisDate, KOAgendaItem::toolTipGroup() );
 
-  const bool result = mChanger->changeIncidence( oldIncidence, incidence );
-  mChanger->endChange(incidence);
+  const bool result = mChanger->changeIncidence( oldIncidence, incidence,
+                                                 KOGlobals::DATE_MODIFIED, this );
+  mChanger->endChange( incidence );
   delete oldIncidence;
 
   if ( !result ) {
@@ -1404,7 +1405,8 @@ void KOAgendaView::slotTodoDropped( Todo *todo, const QPoint &gpos, bool allDay 
         existingTodo->setDtDue( newTime );
         existingTodo->setFloats( allDay );
         existingTodo->setHasDueDate( true );
-        mChanger->changeIncidence( oldTodo, existingTodo );
+        mChanger->changeIncidence( oldTodo, existingTodo,
+                                   KOGlobals::DATE_MODIFIED, this );
         mChanger->endChange( existingTodo );
       } else {
         KMessageBox::sorry( this, i18n("Unable to modify this to-do, "

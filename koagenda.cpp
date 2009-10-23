@@ -1083,7 +1083,8 @@ void KOAgenda::endItemAction()
               mActionItem->setIncidence( newInc );
               mChanger->addIncidence( newInc, this );
               emit enableAgendaUpdate( true );
-              mChanger->changeIncidence( oldIncSaved, oldInc );
+              mChanger->changeIncidence( oldIncSaved, oldInc,
+                                         KOGlobals::RECURRENCE_MODIFIED_ONE_ONLY, this );
             } else {
               KMessageBox::sorry( this, i18n("Unable to add the exception item to the "
                   "calendar. No change will be done."), i18n("Error Occurred") );
@@ -1110,7 +1111,8 @@ void KOAgenda::endItemAction()
               mActionItem->setIncidence( newInc );
               mChanger->addIncidence( newInc, this );
               emit enableAgendaUpdate( true );
-              mChanger->changeIncidence( oldIncSaved, oldInc );
+              mChanger->changeIncidence( oldIncSaved, oldInc,
+                                         KOGlobals::RECURRENCE_MODIFIED_ALL_FUTURE, this );
             } else {
               KMessageBox::sorry( this, i18n("Unable to add the future items to the "
                   "calendar. No change will be done."), i18n("Error Occurred") );

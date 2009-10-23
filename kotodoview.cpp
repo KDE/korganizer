@@ -226,7 +226,7 @@ void KOTodoListView::contentsDropEvent( QDropEvent *e )
       Todo*oldTodo = existingTodo->clone();
       if ( mChanger->beginChange( existingTodo ) ) {
         existingTodo->setRelatedTo( destinationEvent );
-        mChanger->changeIncidence( oldTodo, existingTodo, KOGlobals::RELATION_MODIFIED );
+        mChanger->changeIncidence( oldTodo, existingTodo, KOGlobals::RELATION_MODIFIED, this );
         mChanger->endChange( existingTodo );
       } else {
         KMessageBox::sorry( this, i18n("Unable to change to-do's parent, "
@@ -274,7 +274,8 @@ void KOTodoListView::contentsDropEvent( QDropEvent *e )
             }
           }
         }
-        mChanger->changeIncidence( oldtodo, todo );
+        //FIXME: attendees or attachment added, so there is something modified
+        mChanger->changeIncidence( oldtodo, todo, KOGlobals::NOTHING_MODIFIED, this );
         mChanger->endChange( todo );
       } else {
         KMessageBox::sorry( this, i18n("Unable to add attendees to the to-do, "
@@ -883,7 +884,7 @@ void KOTodoView::setNewPriority(int index)
     todo->setPriority(mPriority[index]);
     mActiveItem->construct();
 
-    mChanger->changeIncidence( oldTodo, todo, KOGlobals::PRIORITY_MODIFIED );
+    mChanger->changeIncidence( oldTodo, todo, KOGlobals::PRIORITY_MODIFIED, this );
     mChanger->endChange( todo );
     delete oldTodo;
   }
@@ -919,9 +920,11 @@ void KOTodoView::setNewPercentage( KOTodoViewItem *item, int percentage )
     }
     item->construct();
     if ( todo->doesRecur() && percentage == 100 )
-      mChanger->changeIncidence( oldTodo, todo, KOGlobals::COMPLETION_MODIFIED_WITH_RECURRENCE );
+      mChanger->changeIncidence( oldTodo, todo,
+                                 KOGlobals::COMPLETION_MODIFIED_WITH_RECURRENCE, this );
     else
-      mChanger->changeIncidence( oldTodo, todo, KOGlobals::COMPLETION_MODIFIED );
+      mChanger->changeIncidence( oldTodo, todo,
+                                 KOGlobals::COMPLETION_MODIFIED, this );
     mChanger->endChange( todo );
     delete oldTodo;
   } else {
@@ -957,7 +960,7 @@ void KOTodoView::setNewDate( QDate date )
     todo->setDtDue( dt );
 
     mActiveItem->construct();
-    mChanger->changeIncidence( oldTodo, todo, KOGlobals::COMPLETION_MODIFIED );
+    mChanger->changeIncidence( oldTodo, todo, KOGlobals::COMPLETION_MODIFIED, this );
     mChanger->endChange( todo );
     delete oldTodo;
   } else {
@@ -1023,7 +1026,7 @@ void KOTodoView::changedCategories(int index)
     categories.sort();
     todo->setCategories( categories );
     mActiveItem->construct();
-    mChanger->changeIncidence( oldTodo, todo, KOGlobals::CATEGORY_MODIFIED );
+    mChanger->changeIncidence( oldTodo, todo, KOGlobals::CATEGORY_MODIFIED, this );
     mChanger->endChange( todo );
     delete oldTodo;
   } else {

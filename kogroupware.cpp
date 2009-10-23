@@ -105,10 +105,8 @@ void KOGroupware::slotViewNewIncidenceChanger( IncidenceChangerBase* changer )
     // Call slot perhapsUploadFB if an incidence was added, changed or removed
     connect( changer, SIGNAL( incidenceAdded( Incidence* ) ),
              mFreeBusyManager, SLOT( slotPerhapsUploadFB() ) );
-    connect( changer, SIGNAL( incidenceChanged( Incidence*, Incidence*, int ) ),
+    connect( changer, SIGNAL( incidenceChanged( Incidence*, Incidence*, KOGlobals::WhatChanged ) ),
              mFreeBusyManager, SLOT( slotPerhapsUploadFB() ) );
-    connect( changer, SIGNAL( incidenceChanged( Incidence*, Incidence* ) ),
-             mFreeBusyManager, SLOT( slotPerhapsUploadFB() ) ) ;
     connect( changer, SIGNAL( incidenceDeleted( Incidence * ) ),
              mFreeBusyManager, SLOT( slotPerhapsUploadFB() ) );
 }
@@ -215,7 +213,7 @@ void KOGroupware::incomingDirChanged( const QString& path )
       // accept counter proposal
       scheduler.acceptCounterProposal( incidence );
       // send update to all attendees
-      sendICalMessage( mView, Scheduler::Request, incidence );
+      sendICalMessage( mView, Scheduler::Request, incidence, KOGlobals::INCIDENCEEDITED, false );
     }
   } else
     kdError(5850) << "Unknown incoming action " << action << endl;
@@ -242,8 +240,9 @@ class KOInvitationFormatterHelper : public InvitationFormatterHelper
  */
 bool KOGroupware::sendICalMessage( QWidget* parent,
                                    KCal::Scheduler::Method method,
-                                   Incidence* incidence, bool isDeleting,
-                                   bool statusChanged )
+                                   Incidence* incidence,
+                                   KOGlobals::HowChanged action,
+                                   bool attendeeStatusChanged )
 {
   // If there are no attendees, don't bother
   if( incidence->attendees().isEmpty() )
@@ -295,13 +294,13 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
     rc = KMessageBox::questionYesNo( parent, txt, QString::null, i18n("Send Update"), i18n("Do Not Send") );
   } else if( incidence->type() == "Event" ) {
     QString txt;
-    if ( statusChanged && method == Scheduler::Request ) {
+    if ( attendeeStatusChanged && method == Scheduler::Request ) {
       txt = i18n( "Your status as an attendee of this event changed. "
                   "Do you want to send a status update to the event organizer?" );
       method = Scheduler::Reply;
       rc = KMessageBox::questionYesNo( parent, txt, QString::null, i18n("Send Update"), i18n("Do Not Send") );
     } else {
-      if( isDeleting ) {
+      if( action == KOGlobals::INCIDENCEDELETED ) {
         const QStringList myEmails = KOPrefs::instance()->allEmails();
         bool askConfirmation = false;
         for ( QStringList::ConstIterator it = myEmails.begin(); it != myEmails.end(); ++it ) {

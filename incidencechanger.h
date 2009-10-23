@@ -33,15 +33,19 @@ public:
   IncidenceChanger( Calendar*cal, QObject *parent ) : IncidenceChangerBase( cal, parent ) {}
   ~IncidenceChanger() {}
 
-  bool beginChange( Incidence * incidence );
-  bool sendGroupwareMessage( Incidence *incidence, KCal::Scheduler::Method method, bool deleting = false );
+  bool beginChange( Incidence *incidence );
+  bool sendGroupwareMessage( Incidence *incidence,
+                             KCal::Scheduler::Method method,
+                             KOGlobals::HowChanged action,
+                             QWidget *parent );
   bool endChange( Incidence *incidence );
 
-  bool addIncidence( Incidence *incidence, QWidget *parent = 0 );
-  bool changeIncidence( Incidence *oldinc, Incidence *newinc, int action = -1 );
-  bool deleteIncidence( Incidence *incidence );
+  bool addIncidence( Incidence *incidence, QWidget *parent );
+  bool changeIncidence( Incidence *oldinc, Incidence *newinc,
+                        KOGlobals::WhatChanged, QWidget *parent );
+  bool deleteIncidence( Incidence *incidence, QWidget *parent );
 
-  bool cutIncidence( Incidence *incidence );
+  bool cutIncidence( Incidence *incidence, QWidget *parent );
   static bool incidencesEqual( Incidence *inc1, Incidence *inc2 );
   static bool assignIncidence( Incidence *inc1, Incidence *inc2 );
 public slots:

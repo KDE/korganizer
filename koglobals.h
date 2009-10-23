@@ -24,7 +24,9 @@
 #define KORG_GLOBALS_H
 
 #include <kdepimmacros.h>
+#include <qwidget.h>
 
+class QDate;
 class QPixmap;
 class QIconSet;
 class KCalendarSystem;
@@ -39,11 +41,27 @@ class KDE_EXPORT KOGlobals
   public:
     static KOGlobals *self();
 
-    enum { INCIDENCEADDED, INCIDENCEEDITED, INCIDENCEDELETED };
-    enum { PRIORITY_MODIFIED, COMPLETION_MODIFIED, CATEGORY_MODIFIED,
-           DATE_MODIFIED, RELATION_MODIFIED, ALARM_MODIFIED,
-           DESCRIPTION_MODIFIED, SUMMARY_MODIFIED,
-           COMPLETION_MODIFIED_WITH_RECURRENCE, UNKNOWN_MODIFIED };
+    enum HowChanged {
+      INCIDENCEADDED,
+      INCIDENCEEDITED,
+      INCIDENCEDELETED,
+      NOCHANGE
+    };
+    enum WhatChanged {
+      PRIORITY_MODIFIED,
+      COMPLETION_MODIFIED,
+      CATEGORY_MODIFIED,
+      DATE_MODIFIED,
+      RELATION_MODIFIED,
+      ALARM_MODIFIED,
+      DESCRIPTION_MODIFIED,
+      SUMMARY_MODIFIED,
+      COMPLETION_MODIFIED_WITH_RECURRENCE,
+      RECURRENCE_MODIFIED_ONE_ONLY,
+      RECURRENCE_MODIFIED_ALL_FUTURE,
+      UNKNOWN_MODIFIED,
+      NOTHING_MODIFIED
+    };
 
     static void fitDialogToScreen( QWidget *widget, bool force=false );
     KConfig *config() const;

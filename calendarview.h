@@ -33,7 +33,8 @@
 #include <libkcal/scheduler.h>
 #include <kdepimmacros.h>
 
-#include <korganizer/calendarviewbase.h>
+#include "koglobals.h"
+#include "interfaces/korganizer/calendarviewbase.h"
 
 class QWidgetStack;
 class QSplitter;
@@ -380,8 +381,8 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
     void changeIncidenceDisplay( Incidence *, int );
 
     void incidenceAdded( Incidence * );
-    void incidenceChanged( Incidence *oldEvent, Incidence *newEvent );
-    void incidenceChanged( Incidence *oldEvent, Incidence *newEvent, int what );
+    void incidenceChanged( Incidence *oldEvent, Incidence *newEvent,
+                           KOGlobals::WhatChanged modification );
     void incidenceToBeDeleted( Incidence *incidence );
     void incidenceDeleted( Incidence * );
     void startMultiModify( const QString &text );

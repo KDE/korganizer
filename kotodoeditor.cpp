@@ -226,7 +226,7 @@ bool KOTodoEditor::processInput()
       kdDebug(5850) << "Todo changed\n";
       //IncidenceChanger::assignIncidence( mTodo, todo );
       writeTodo( mTodo );
-      mChanger->changeIncidence( oldTodo, mTodo );
+      mChanger->changeIncidence( oldTodo, mTodo, KOGlobals::NOTHING_MODIFIED, this );
     }
     delete todo;
     delete oldTodo;
@@ -330,10 +330,10 @@ int KOTodoEditor::msgItemDelete()
       i18n("KOrganizer Confirmation"), KStdGuiItem::del() );
 }
 
-void KOTodoEditor::modified (int /*modification*/)
+void KOTodoEditor::modified()
 {
-  // Play dump, just reload the todo. This dialog has become so complicated that
-  // there is no point in trying to be smart here...
+  // Play dump, just reload the todo. This dialog has become so complicated
+  // that there is no point in trying to be smart here...
   reload();
 }
 

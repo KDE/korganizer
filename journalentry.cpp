@@ -390,7 +390,7 @@ void JournalEntry::writeJournal()
     oldJournal = mJournal->clone();
     if ( mChanger->beginChange( mJournal ) ) {
       writeJournalPrivate( mJournal );
-      mChanger->changeIncidence( oldJournal, mJournal, KOGlobals::DESCRIPTION_MODIFIED );
+      mChanger->changeIncidence( oldJournal, mJournal, KOGlobals::DESCRIPTION_MODIFIED, this );
       mChanger->endChange( mJournal );
     }
     delete oldJournal;
