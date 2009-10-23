@@ -53,7 +53,13 @@
 
 #include <KMime/KMimeMessage>
 
+#include <akonadi/kcal/calendarmodel.h>
+#include <akonadi/kcal/kcalmimetypevisitor.h>
 #include <akonadi/kcal/utils.h>
+
+#include <akonadi/entitytreemodel.h>
+#include <Akonadi/ChangeRecorder>
+#include <Akonadi/Session>
 
 #include <kio/job.h>
 #include <KAction>
@@ -79,6 +85,8 @@
 #include <QTimer>
 #include <QDebug>
 #include <QTemporaryFile>
+
+using namespace Akonadi;
 
 class KOrganizerEditorConfig : public KOEditorConfig
 {
@@ -142,7 +150,7 @@ ActionManager::ActionManager( KXMLGUIClient *client, CalendarView *widget,
                               QObject *parent, KOrg::MainWindow *mainWindow,
                               bool isPart, KMenuBar *menuBar )
   : QObject( parent ), mRecent( 0 ),
-    mResourceViewShowAction( 0 ), mCalendar( 0 ),
+    mResourceViewShowAction( 0 ), mCalendarModel( 0 ), mCalendar( 0 ),
     mCalendarAkonadi( 0 ), mResourceView( 0 ), mIsClosing( false )
 {
   new CalendarAdaptor( this );
@@ -251,13 +259,25 @@ void ActionManager::init()
   mCalendarView->checkClipboard();
 }
 
+
 void ActionManager::createCalendarAkonadi()
 {
+  Session *session = new Session( "KOrganizerETM", this );
+  ChangeRecorder *monitor = new ChangeRecorder( this );
+  monitor->setCollectionMonitored( Collection::root() );
+  monitor->fetchCollection( true );
+  monitor->setMimeTypeMonitored( "text/calendar", true ); // FIXME: this one should not be needed, in fact it might cause the inclusion of free/busy, notes or other unwanted stuff
+  monitor->setMimeTypeMonitored( KCalMimeTypeVisitor::eventMimeType(), true );
+  monitor->setMimeTypeMonitored( KCalMimeTypeVisitor::todoMimeType(), true );
+  monitor->setMimeTypeMonitored( KCalMimeTypeVisitor::journalMimeType(), true );
+  mCalendarModel = new CalendarModel( session, monitor, this );
+  mCalendarModel->setItemPopulationStrategy( EntityTreeModel::LazyPopulation );
+
   mCalendarAkonadi = new AkonadiCalendar( KSystemTimeZones::local() );
 
   mCalendarView->setCalendar( mCalendarAkonadi );
   mCalendarView->readSettings();
-  AkonadiCollectionViewFactory factory( mCalendarAkonadi, mCalendarView );
+  AkonadiCollectionViewFactory factory( mCalendarAkonadi, mCalendarModel, mCalendarView );
   mCalendarView->addExtension( &factory );
 
   mResourceView = factory.collectionView();

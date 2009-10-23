@@ -50,6 +50,10 @@ namespace KOrg {
   class HTMLExportSettings;
 }
 
+namespace Akonadi {
+  class CalendarModel;
+}
+
 class AkonadiCollectionView;
 class CalendarView;
 class ImportDialog;
@@ -414,6 +418,7 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
 
     bool mHtmlExportSync;
 
+    Akonadi::CalendarModel *mCalendarModel;
     KOrg::AkonadiCalendar *mCalendar;
     KOrg::AkonadiCalendar *mCalendarAkonadi;
     AkonadiCollectionView *mResourceView;

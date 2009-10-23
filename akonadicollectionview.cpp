@@ -38,12 +38,14 @@
 #include <QVBoxLayout>
 #include <QHeaderView>
 
+#include <akonadi/kcal/calendarmodel.h>
+
 #include <akonadi/collection.h>
 #include <akonadi/collectionview.h>
 #include <akonadi/collectionfilterproxymodel.h>
-#include <akonadi/collectionview.h>
 #include <akonadi/collectiondeletejob.h>
 #include <akonadi/entitytreemodel.h>
+#include <akonadi/entitytreeview.h>
 #include <akonadi/standardactionmanager.h>
 #include <akonadi/agenttypedialog.h>
 #include <akonadi/agentinstancewidget.h>
@@ -53,16 +55,18 @@
 #include <akonadi/control.h>
 #include <akonadi/session.h>
 #include <akonadi/changerecorder.h>
-#include <akonadi/kcal/kcalmimetypevisitor.h>
 
-AkonadiCollectionViewFactory::AkonadiCollectionViewFactory( KOrg::AkonadiCalendar *calendar, CalendarView *view )
-  : mCalendar( calendar ) , mView( view ), mAkonadiCollectionView( 0 )
+using namespace Akonadi;
+
+AkonadiCollectionViewFactory::AkonadiCollectionViewFactory( AkonadiCalendar *calendar, CalendarModel *model, CalendarView *view )
+  : mCalendar( calendar ), mModel( model ), mView( view ), mAkonadiCollectionView( 0 )
 {
+  Q_ASSERT( model );
 }
 
 CalendarViewExtension *AkonadiCollectionViewFactory::create( QWidget *parent )
 {
-  mAkonadiCollectionView = new AkonadiCollectionView( this, mCalendar, parent );
+  mAkonadiCollectionView = new AkonadiCollectionView( this, mCalendar, mModel, parent );
   QObject::connect( mAkonadiCollectionView, SIGNAL(resourcesChanged(bool)), mView, SLOT(resourcesChanged()) );
   QObject::connect( mAkonadiCollectionView, SIGNAL(resourcesChanged(bool)), mView, SLOT(updateCategories()) );
 #if 0
@@ -105,6 +109,8 @@ class CollectionProxyModel : public QSortFilterProxyModel
       switch(role) {
         case Qt::CheckStateRole: {
           Q_ASSERT( index.isValid() );
+          if ( index.column() != CalendarModel::CollectionTitle )
+            return QVariant();
           const Akonadi::Collection collection = index.model()->data( index, Akonadi::EntityTreeModel::CollectionRole ).value<Akonadi::Collection>();
           Q_ASSERT( collection.isValid() );
           return mView->calendar()->hasCollection( collection ) ? Qt::Checked : Qt::Unchecked;
@@ -119,6 +125,8 @@ class CollectionProxyModel : public QSortFilterProxyModel
       switch(role) {
         case Qt::CheckStateRole: {
           Q_ASSERT( index.isValid() );
+          if ( index.column() != CalendarModel::CollectionTitle )
+            return false;
           const Akonadi::Collection collection = index.model()->data( index, Akonadi::EntityTreeModel::CollectionRole ).value<Akonadi::Collection>();
           Q_ASSERT( collection.isValid() );
           //const bool checked = value.toBool();
@@ -137,30 +145,22 @@ class CollectionProxyModel : public QSortFilterProxyModel
       }
     }
 
+    bool filterAcceptsColumn( int source_column, const QModelIndex& source_parent ) const
+    {
+      return source_column == CalendarModel::CollectionTitle;
+    }
   private:
     AkonadiCollectionView *mView;
 };
 
-AkonadiCollectionView::AkonadiCollectionView( AkonadiCollectionViewFactory *factory, KOrg::AkonadiCalendar *calendar, QWidget *parent )
-  : CalendarViewExtension( parent ), mFactory(factory), mCalendar( calendar ), mActionManager(0), mCollectionview(0)
+AkonadiCollectionView::AkonadiCollectionView( AkonadiCollectionViewFactory *factory, KOrg::AkonadiCalendar *calendar, CalendarModel* calendarModel, QWidget *parent )
+  : CalendarViewExtension( parent ), mCalendar( calendar ), mActionManager(0), mCollectionview(0)
 {
   QVBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->setSpacing( KDialog::spacingHint() );
 
-  Akonadi::Session *session = new Akonadi::Session( "KOrganizerETM", this );
-  Akonadi::ChangeRecorder *monitor = new Akonadi::ChangeRecorder( this );
-  monitor->setCollectionMonitored( Akonadi::Collection::root() );
-  monitor->fetchCollection( true );
-  monitor->setMimeTypeMonitored( "text/calendar", true ); // FIXME: this one should not be needed, in fact it might cause the inclusion of free/busy, notes or other unwanted stuff
-  monitor->setMimeTypeMonitored( Akonadi::KCalMimeTypeVisitor::eventMimeType(), true );
-  monitor->setMimeTypeMonitored( Akonadi::KCalMimeTypeVisitor::todoMimeType(), true );
-  monitor->setMimeTypeMonitored( Akonadi::KCalMimeTypeVisitor::journalMimeType(), true );
-
-  Akonadi::EntityTreeModel *entityModel = new Akonadi::EntityTreeModel( session, monitor, this );
-  entityModel->setItemPopulationStrategy( Akonadi::EntityTreeModel::NoItemPopulation );
-
   Akonadi::CollectionFilterProxyModel *collectionproxymodel = new Akonadi::CollectionFilterProxyModel( this );
-  collectionproxymodel->setSourceModel( entityModel );
+  collectionproxymodel->setSourceModel( calendarModel );
   collectionproxymodel->addMimeTypeFilter( QString::fromLatin1( "text/calendar" ) );
 
   mProxyModel = new CollectionProxyModel( this );
@@ -168,13 +168,13 @@ AkonadiCollectionView::AkonadiCollectionView( AkonadiCollectionViewFactory *fact
   mProxyModel->setSortCaseSensitivity( Qt::CaseInsensitive );
   mProxyModel->setSourceModel( collectionproxymodel );
 
-  mCollectionview = new Akonadi::CollectionView();
+  mCollectionview = new Akonadi::EntityTreeView;
   topLayout->addWidget( mCollectionview );
   mCollectionview->header()->hide();
   mCollectionview->setModel( mProxyModel );
   mCollectionview->setRootIsDecorated( true );
   //mCollectionview->setSelectionMode( QAbstractItemView::NoSelection );
-  KXMLGUIClient *xmlclient = KOCore::self()->xmlguiClient( mFactory->view() );
+  KXMLGUIClient *xmlclient = KOCore::self()->xmlguiClient( factory->view() );
   if( xmlclient ) {
     mCollectionview->setXmlGuiClient( xmlclient );
 

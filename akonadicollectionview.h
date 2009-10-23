@@ -40,9 +40,10 @@ namespace KOrg {
 }
 
 namespace Akonadi {
+  class CalendarModel;
   class Collection;
+  class EntityTreeView;
   class StandardActionManager;
-  class CollectionView;
 }
 
 class KAction;
@@ -55,7 +56,7 @@ class AkonadiCollectionView;
 class AkonadiCollectionViewFactory : public CalendarViewExtension::Factory
 {
   public:
-    AkonadiCollectionViewFactory( KOrg::AkonadiCalendar *calendar, CalendarView *view );
+  AkonadiCollectionViewFactory( KOrg::AkonadiCalendar *calendar, Akonadi::CalendarModel *model, CalendarView *view );
     virtual ~AkonadiCollectionViewFactory(){}
 
     KOrg::AkonadiCalendar* calendar() const;
@@ -65,7 +66,8 @@ class AkonadiCollectionViewFactory : public CalendarViewExtension::Factory
     CalendarViewExtension *create( QWidget * );
 
   private:
-    KOrg::AkonadiCalendar *mCalendar;
+    AkonadiCalendar *mCalendar;
+    Akonadi::CalendarModel *mModel;
     CalendarView *mView;
     AkonadiCollectionView *mAkonadiCollectionView;
 };
@@ -77,7 +79,7 @@ class AkonadiCollectionView : public CalendarViewExtension
 {
   Q_OBJECT
   public:
-    AkonadiCollectionView( AkonadiCollectionViewFactory *factory, KOrg::AkonadiCalendar *calendar, QWidget *parent = 0 );
+    AkonadiCollectionView( AkonadiCollectionViewFactory *factory, KOrg::AkonadiCalendar *calendar, Akonadi::CalendarModel* model, QWidget *parent = 0 );
     ~AkonadiCollectionView();
     AkonadiCalendar *calendar() const { return mCalendar; }
 
@@ -96,10 +98,9 @@ class AkonadiCollectionView : public CalendarViewExtension
     void deleteCalendarDone( KJob* );
 
   private:
-    AkonadiCollectionViewFactory *mFactory;
     KOrg::AkonadiCalendar *mCalendar;
     Akonadi::StandardActionManager* mActionManager;
-    Akonadi::CollectionView *mCollectionview;
+    Akonadi::EntityTreeView *mCollectionview;
     class CollectionProxyModel *mProxyModel;
     //QList<ResourceCalendar*> mResourcesToClose;
     //QAbstractButton *mAddButton, *mEditButton, *mDeleteButton;
