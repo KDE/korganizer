@@ -273,7 +273,7 @@ bool KOEventEditor::processInput()
         event2->setSummary( i18nc( "@item", "My counter proposal for: %1", ev->summary() ) );
 
         Akonadi::Collection col = mCalSelector->currentCollection();
-        rc = mChanger->addIncidence( event2, col );
+        rc = mChanger->addIncidence( event2, col, this );
       } else {
         mChanger->beginChange( mIncidence );
         ev->startUpdates(); //merge multiple mIncidence->updated() calls into one
@@ -292,7 +292,7 @@ bool KOEventEditor::processInput()
     mIncidence.setPayload( newEvent );
     fillEvent( mIncidence );
     Akonadi::Collection col = mCalSelector->currentCollection();
-    if ( !mChanger->addIncidence( newEvent, col ) ) {
+    if ( !mChanger->addIncidence( newEvent, col, this ) ) {
       mIncidence = Item();
       return false;
     }

@@ -410,10 +410,12 @@ bool IncidenceChanger::changeIncidence( const KCal::Incidence::Ptr &oldinc, cons
 bool IncidenceChanger::addIncidence( const KCal::Incidence::Ptr &incidence, QWidget *parent )
 {
   Akonadi::Collection c = Akonadi::selectCollection(parent);
-  return c.isValid() && addIncidence( incidence, c );
+  if ( !c.isValid() )
+    return false;
+  return addIncidence( incidence, c, parent );
 }
 
-bool IncidenceChanger::addIncidence( const Incidence::Ptr &incidence, const Collection &collection )
+bool IncidenceChanger::addIncidence( const Incidence::Ptr &incidence, const Collection &collection, QWidget* parent )
 {
   Q_ASSERT( incidence );
   Q_ASSERT( collection.isValid() );

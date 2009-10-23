@@ -78,8 +78,7 @@ class KORGANIZER_INTERFACES_EXPORT AkonadiCalendarAdaptor : public KCal::Calenda
     
     virtual bool addEvent( Event *event )
     {
-      Akonadi::Collection c = Akonadi::selectCollection();
-      return c.isValid() && mChanger->addIncidence( Incidence::Ptr( event->clone() ), c );
+      return mChanger->addIncidence( Incidence::Ptr( event->clone() ), 0 );
     }
     
     virtual bool deleteEvent( Event *event )
@@ -116,8 +115,7 @@ class KORGANIZER_INTERFACES_EXPORT AkonadiCalendarAdaptor : public KCal::Calenda
     
     virtual bool addTodo( Todo *todo )
     {
-      Akonadi::Collection c = Akonadi::selectCollection();
-      return c.isValid() && mChanger->addIncidence( Incidence::Ptr( todo->clone() ), c );
+      return mChanger->addIncidence( Incidence::Ptr( todo->clone() ), 0 );
     }
     
     virtual bool deleteTodo( Todo *todo )
@@ -144,8 +142,7 @@ class KORGANIZER_INTERFACES_EXPORT AkonadiCalendarAdaptor : public KCal::Calenda
     
     virtual bool addJournal( Journal *journal )
     {
-      Akonadi::Collection c = Akonadi::selectCollection();
-      return c.isValid() && mChanger->addIncidence( Incidence::Ptr( journal->clone() ), c );
+      return mChanger->addIncidence( Incidence::Ptr( journal->clone() ), 0 );
     }
     
     virtual bool deleteJournal( Journal *journal )

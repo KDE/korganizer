@@ -218,7 +218,7 @@ bool KOTodoEditor::processInput()
     fillTodo( tdItem );
 
     Akonadi::Collection col = mCalSelector->currentCollection();
-    if ( !mChanger->addIncidence( td, col ) ) {
+    if ( !mChanger->addIncidence( td, col, this ) ) {
       mIncidence = Item();
       return false;
     }

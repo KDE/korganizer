@@ -459,7 +459,7 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
            //TODO check return values
           changer->changeIncidence( oldIncSaved, mIncidence );
           changer->endChange( mIncidence );
-          changer->addIncidence( newInc );
+          changer->addIncidence( newInc, parentWidget() );
         } else {
           KMessageBox::sorry( parentWidget(),
                               i18n( "Unable to add the exception item to the calendar. "
@@ -479,7 +479,7 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
            //TODO check return values
           changer->changeIncidence( oldIncSaved, mIncidence );
           changer->endChange( mIncidence );
-          changer->addIncidence( newInc );
+          changer->addIncidence( newInc, parentWidget() );
         } else {
           KMessageBox::sorry( parentWidget(),
                               i18n( "Unable to add the future items to the calendar. "

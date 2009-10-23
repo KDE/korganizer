@@ -53,8 +53,8 @@ class KORGANIZER_INTERFACES_EXPORT IncidenceChangerBase : public QObject
     virtual bool beginChange( const Akonadi::Item & incidence ) = 0;
     virtual bool endChange( const Akonadi::Item &incidence ) = 0;
 
-    virtual bool addIncidence( const KCal::Incidence::Ptr &incidence, QWidget *parent = 0 ) = 0;
-    virtual bool addIncidence( const KCal::Incidence::Ptr &incidence, const Akonadi::Collection &collection ) = 0;
+    virtual bool addIncidence( const KCal::Incidence::Ptr &incidence, QWidget *parent ) = 0;
+    virtual bool addIncidence( const KCal::Incidence::Ptr &incidence, const Akonadi::Collection &collection, QWidget* parent ) = 0;
     virtual bool changeIncidence( const KCal::Incidence::Ptr &oldinc, const Akonadi::Item &newinc, int action = -1 ) = 0;
     virtual bool deleteIncidence( const Akonadi::Item &incidence ) = 0;
     virtual bool cutIncidence( const Akonadi::Item &incidence ) = 0;

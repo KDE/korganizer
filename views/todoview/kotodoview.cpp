@@ -434,7 +434,7 @@ void KOTodoView::addTodo( const QString &summary,
   if ( parent )
     todo->setRelatedTo( parent.get() );
 
-  if ( !mChanger->addIncidence( todo ) )
+  if ( !mChanger->addIncidence( todo, this ) )
     KODialogManager::errorSaveIncidence( this, todo );
 }
 
@@ -665,7 +665,7 @@ void KOTodoView::copyTodoToDate( const QDate &date )
   due.setDate( date );
   todo->setDtDue( due );
 
-  if ( !mChanger->addIncidence( todo ) ) {
+  if ( !mChanger->addIncidence( todo, this ) ) {
     KODialogManager::errorSaveIncidence( this, todo );
   }
 }
