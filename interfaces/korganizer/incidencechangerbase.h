@@ -24,7 +24,7 @@
 #include "korganizer/korganizer_export.h"
 #include "korganizer/koglobals.h"
 
-#include <KCal/Scheduler>
+#include <kcal/scheduler.h>
 
 #include <QObject>
 
