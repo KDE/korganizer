@@ -60,6 +60,9 @@
 #include <akonadi/entitytreemodel.h>
 #include <Akonadi/ChangeRecorder>
 #include <Akonadi/Session>
+#include <akonadi/entitymimetypefiltermodel.h>
+#include <akonadi/entitydisplayattribute.h>
+#include <Akonadi/ItemFetchScope>
 
 #include <kio/job.h>
 #include <KAction>
@@ -81,10 +84,15 @@
 #include <KIO/NetAccess>
 #include <KNS/Engine>
 
+#include <kselectionproxymodel.h>
+
 #include <QApplication>
 #include <QTimer>
 #include <QDebug>
 #include <QTemporaryFile>
+
+#include <akonadi/entitytreeview.h>
+#include <QVBoxLayout>
 
 using namespace Akonadi;
 
@@ -264,8 +272,14 @@ void ActionManager::createCalendarAkonadi()
 {
   Session *session = new Session( "KOrganizerETM", this );
   ChangeRecorder *monitor = new ChangeRecorder( this );
+
+  ItemFetchScope scope;
+  scope.fetchFullPayload( true );
+  scope.fetchAttribute<EntityDisplayAttribute>();
+
   monitor->setCollectionMonitored( Collection::root() );
   monitor->fetchCollection( true );
+  monitor->setItemFetchScope( scope );
   monitor->setMimeTypeMonitored( "text/calendar", true ); // FIXME: this one should not be needed, in fact it might cause the inclusion of free/busy, notes or other unwanted stuff
   monitor->setMimeTypeMonitored( KCalMimeTypeVisitor::eventMimeType(), true );
   monitor->setMimeTypeMonitored( KCalMimeTypeVisitor::todoMimeType(), true );
@@ -273,15 +287,37 @@ void ActionManager::createCalendarAkonadi()
   mCalendarModel = new CalendarModel( session, monitor, this );
   //mCalendarModel->setItemPopulationStrategy( EntityTreeModel::LazyPopulation );
 
-  mCalendarAkonadi = new AkonadiCalendar( mCalendarModel, KSystemTimeZones::local() );
 
-  mCalendarView->setCalendar( mCalendarAkonadi );
-  mCalendarView->readSettings();
-  AkonadiCollectionViewFactory factory( mCalendarAkonadi, mCalendarModel, mCalendarView );
+  AkonadiCollectionViewFactory factory( mCalendarModel, mCalendarView );
   mCalendarView->addExtension( &factory );
 
   mResourceView = factory.collectionView();
   connect( mResourceView, SIGNAL(resourcesChanged(bool)), SLOT(slotResourcesChanged(bool)) );
+
+  KSelectionProxyModel* selectionProxy = new KSelectionProxyModel( mResourceView->checkedCollectionsModel() );
+  selectionProxy->setFilterBehavior( KSelectionProxyModel::ChildrenOfExactSelection );
+  selectionProxy->setSourceModel( mCalendarModel );
+
+  EntityMimeTypeFilterModel* filterProxy2 = new EntityMimeTypeFilterModel( this );
+
+  filterProxy2->setHeaderGroup( EntityTreeModel::ItemListHeaders );
+  filterProxy2->setSourceModel( selectionProxy );
+  filterProxy2->setSortRole( CalendarModel::SortRole );
+
+  QDialog* dlg = new QDialog( mCalendarView );
+  dlg->setModal( false );
+  QVBoxLayout* layout = new QVBoxLayout( dlg );
+  EntityTreeView* testview = new EntityTreeView( dlg );
+  layout->addWidget( testview );
+  testview->setModel( filterProxy2 );
+
+  dlg->show();
+
+
+  mCalendarAkonadi = new AkonadiCalendar( filterProxy2, KSystemTimeZones::local() );
+
+  mCalendarView->setCalendar( mCalendarAkonadi );
+  mCalendarView->readSettings();
 
   connect( mCalendarAkonadi, SIGNAL(calendarChanged()),
            mCalendarView, SLOT(resourcesChanged()) );

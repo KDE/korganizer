@@ -60,15 +60,15 @@
 
 using namespace Akonadi;
 
-AkonadiCollectionViewFactory::AkonadiCollectionViewFactory( AkonadiCalendar *calendar, CalendarModel *model, CalendarView *view )
-  : mCalendar( calendar ), mModel( model ), mView( view ), mAkonadiCollectionView( 0 )
+AkonadiCollectionViewFactory::AkonadiCollectionViewFactory( CalendarModel *model, CalendarView *view )
+  : mModel( model ), mView( view ), mAkonadiCollectionView( 0 )
 {
   Q_ASSERT( model );
 }
 
 CalendarViewExtension *AkonadiCollectionViewFactory::create( QWidget *parent )
 {
-  mAkonadiCollectionView = new AkonadiCollectionView( this, mCalendar, mModel, parent );
+  mAkonadiCollectionView = new AkonadiCollectionView( this, mModel, parent );
   QObject::connect( mAkonadiCollectionView, SIGNAL(resourcesChanged(bool)), mView, SLOT(resourcesChanged()) );
   QObject::connect( mAkonadiCollectionView, SIGNAL(resourcesChanged(bool)), mView, SLOT(updateCategories()) );
 #if 0
@@ -78,11 +78,6 @@ CalendarViewExtension *AkonadiCollectionViewFactory::create( QWidget *parent )
   QObject::connect( mCalendar, SIGNAL(signalResourceModified(ResourceCalendar *)), mView, SLOT(updateCategories()) );
 #endif
   return mAkonadiCollectionView;
-}
-
-KOrg::AkonadiCalendar* AkonadiCollectionViewFactory::calendar() const
-{
-  return mCalendar;
 }
 
 CalendarView* AkonadiCollectionViewFactory::view() const
@@ -122,10 +117,7 @@ class CollectionProxyModel : public QSortFilterProxyModel
         case Qt::CheckStateRole: {
           if ( index.column() != CalendarModel::CollectionTitle )
             return QVariant();
-          const Akonadi::Collection collection = collectionFromIndex( index );
-          if ( !collection.isValid() )
-            return QVariant();
-          return mView->calendar()->hasCollection( collection ) ? Qt::Checked : Qt::Unchecked;
+          return mView->checkedCollectionsModel()->isSelected( index ) ? Qt::Checked : Qt::Unchecked;
         } break;
         default:
           return QSortFilterProxyModel::data(index, role);
@@ -143,14 +135,7 @@ class CollectionProxyModel : public QSortFilterProxyModel
           Q_ASSERT( collection.isValid() );
           //const bool checked = value.toBool();
           const bool checked = value.toInt() == Qt::Checked;
-          if( checked ) {
-            Q_ASSERT( ! mView->calendar()->hasCollection( collection ) );
-            mView->calendar()->addCollection( collection );
-          } else {
-            Q_ASSERT( mView->calendar()->hasCollection( collection ) );
-            mView->calendar()->removeCollection( collection );
-          }
-          mView->updateView();
+          mView->checkedCollectionsModel()->select( index, checked ? QItemSelectionModel::Select : QItemSelectionModel::Deselect );
         } return true;
         default:
           return QSortFilterProxyModel::setData(index, value, role);
@@ -165,8 +150,8 @@ class CollectionProxyModel : public QSortFilterProxyModel
     AkonadiCollectionView *mView;
 };
 
-AkonadiCollectionView::AkonadiCollectionView( AkonadiCollectionViewFactory *factory, KOrg::AkonadiCalendar *calendar, CalendarModel* calendarModel, QWidget *parent )
-  : CalendarViewExtension( parent ), mCalendar( calendar ), mActionManager(0), mCollectionview(0)
+AkonadiCollectionView::AkonadiCollectionView( AkonadiCollectionViewFactory *factory, CalendarModel* calendarModel, QWidget *parent )
+  : CalendarViewExtension( parent ), mActionManager(0), mCollectionview(0)
 {
   QVBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->setSpacing( KDialog::spacingHint() );
@@ -232,14 +217,7 @@ QItemSelectionModel* AkonadiCollectionView::checkedCollectionsModel() const
 
 void AkonadiCollectionView::updateView()
 {
-  kDebug();
-  bool enabled = false;
-  for(int row = 0; (! enabled) && row < mProxyModel->rowCount(); ++row) {
-    QModelIndex index = mProxyModel->index(row, 0);
-    enabled = mProxyModel->data(index, Qt::CheckStateRole).toBool();
-    mCheckedCollectionsModel->select( index, enabled ? QItemSelectionModel::Select : QItemSelectionModel::Deselect );
-  }
-  emit resourcesChanged(enabled);
+  emit resourcesChanged( true );
 }
 
 void AkonadiCollectionView::selectionChanged()

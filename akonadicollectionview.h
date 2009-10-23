@@ -54,17 +54,15 @@ class AkonadiCollectionView;
 class AkonadiCollectionViewFactory : public CalendarViewExtension::Factory
 {
   public:
-  AkonadiCollectionViewFactory( KOrg::AkonadiCalendar *calendar, Akonadi::CalendarModel *model, CalendarView *view );
+  AkonadiCollectionViewFactory( Akonadi::CalendarModel *model, CalendarView *view );
     virtual ~AkonadiCollectionViewFactory(){}
 
-    KOrg::AkonadiCalendar* calendar() const;
     CalendarView* view() const;
     AkonadiCollectionView* collectionView() const;
 
     CalendarViewExtension *create( QWidget * );
 
   private:
-    AkonadiCalendar *mCalendar;
     Akonadi::CalendarModel *mModel;
     CalendarView *mView;
     AkonadiCollectionView *mAkonadiCollectionView;
@@ -77,9 +75,8 @@ class AkonadiCollectionView : public CalendarViewExtension
 {
   Q_OBJECT
   public:
-    AkonadiCollectionView( AkonadiCollectionViewFactory *factory, KOrg::AkonadiCalendar *calendar, Akonadi::CalendarModel* model, QWidget *parent = 0 );
+    AkonadiCollectionView( AkonadiCollectionViewFactory *factory, Akonadi::CalendarModel* model, QWidget *parent = 0 );
     ~AkonadiCollectionView();
-    AkonadiCalendar *calendar() const { return mCalendar; }
 
     void updateView();
     QItemSelectionModel* checkedCollectionsModel() const;
@@ -97,7 +94,6 @@ class AkonadiCollectionView : public CalendarViewExtension
     void deleteCalendarDone( KJob* );
 
   private:
-    KOrg::AkonadiCalendar *mCalendar;
     Akonadi::StandardActionManager* mActionManager;
     Akonadi::EntityTreeView *mCollectionview;
     class CollectionProxyModel *mProxyModel;
