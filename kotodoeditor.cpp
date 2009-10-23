@@ -231,7 +231,7 @@ bool KOTodoEditor::processInput()
     } else {
       //IncidenceChanger::assignIncidence( mTodo, todo );
       writeTodo( mTodo );
-      mChanger->changeIncidence( oldTodo, mTodo );
+      mChanger->changeIncidence( oldTodo, mTodo, KOGlobals::NOTHING_MODIFIED, this );
     }
     delete todo;
     delete oldTodo;
@@ -349,10 +349,8 @@ int KOTodoEditor::msgItemDelete()
     KStandardGuiItem::del() );
 }
 
-void KOTodoEditor::modified( int modification )
+void KOTodoEditor::modified()
 {
-  Q_UNUSED( modification );
-
   // Play dumb, just reload the todo. This dialog has become so complicated
   // that there is no point in trying to be smart here...
   reload();

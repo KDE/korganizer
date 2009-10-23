@@ -55,7 +55,7 @@ class KOEventEditor : public KOIncidenceEditor
 
     void init();
     /** This event has been modified externally */
-    void modified( int change=0 );
+    void modified();
     void reload();
 
     /**

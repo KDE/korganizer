@@ -27,6 +27,7 @@
 #define CALENDARVIEW_H
 
 #include "korganizer_export.h"
+#include "koglobals.h"
 #include <korganizer/koeventviewer.h>
 #include <korganizer/calendarviewbase.h>
 
@@ -437,8 +438,8 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     void changeIncidenceDisplay( Incidence *, int );
 
     void incidenceAdded( Incidence * );
-    void incidenceChanged( Incidence *oldEvent, Incidence *newEvent );
-    void incidenceChanged( Incidence *oldEvent, Incidence *newEvent, int what );
+    void incidenceChanged( Incidence *oldEvent, Incidence *newEvent,
+                           KOGlobals::WhatChanged modification );
     void incidenceToBeDeleted( Incidence *incidence );
     void incidenceDeleted( Incidence * );
     void startMultiModify( const QString &text );

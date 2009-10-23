@@ -25,6 +25,7 @@
 #define KOEDITORGENERALTODO_H
 
 #include "koeditorgeneral.h"
+#include "koglobals.h"
 
 #include <QDateTime>
 
@@ -71,7 +72,7 @@ class KOEditorGeneralTodo : public KOEditorGeneral
     bool validateInput();
 
     /** The todo has been modified externally */
-    void modified ( Todo *, int );
+    void modified ( Todo *todo, KOGlobals::HowChanged modification );
 
   signals:
     void dueDateEditToggle( bool );

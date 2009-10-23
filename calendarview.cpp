@@ -292,10 +292,8 @@ void CalendarView::setIncidenceChanger( IncidenceChangerBase *changer )
   emit newIncidenceChanger( mChanger );
   connect( mChanger, SIGNAL(incidenceAdded(Incidence *)),
            this, SLOT(incidenceAdded(Incidence *)) );
-  connect( mChanger, SIGNAL(incidenceChanged(Incidence *,Incidence *,int)),
-           this, SLOT(incidenceChanged(Incidence *,Incidence *,int)) );
-  connect( mChanger, SIGNAL(incidenceChanged(Incidence *,Incidence *)),
-           this, SLOT(incidenceChanged(Incidence *,Incidence *)) );
+  connect( mChanger, SIGNAL(incidenceChanged(Incidence *,Incidence *,KOGlobals::WhatChanged)),
+           this, SLOT(incidenceChanged(Incidence *,Incidence *,KOGlobals::WhatChanged)) );
   connect( mChanger, SIGNAL(incidenceToBeDeleted(Incidence *)),
            this, SLOT(incidenceToBeDeleted(Incidence *)) );
   connect( mChanger, SIGNAL(incidenceDeleted(Incidence *)),
@@ -666,19 +664,13 @@ void CalendarView::incidenceAdded( Incidence *incidence )
 }
 
 void CalendarView::incidenceChanged( Incidence *oldIncidence,
-                                     Incidence *newIncidence )
+                                     Incidence *newIncidence,
+                                     KOGlobals::WhatChanged modification )
 {
-  incidenceChanged( oldIncidence, newIncidence, KOGlobals::UNKNOWN_MODIFIED );
-}
-
-void CalendarView::incidenceChanged( Incidence *oldIncidence,
-                                     Incidence *newIncidence, int what )
-{
-  // FIXME: Make use of the what flag, which indicates which parts of the incidence have changed!
   KOIncidenceEditor *tmp = editorDialog( newIncidence );
   if ( tmp ) {
     kDebug() << "Incidence modified and open";
-    tmp->modified( what );
+    tmp->modified();
   }
   setModified( true );
   history()->recordEdit( oldIncidence, newIncidence );
@@ -688,11 +680,11 @@ void CalendarView::incidenceChanged( Incidence *oldIncidence,
   // as well.
   if ( newIncidence->type() == "Todo" &&
        KOPrefs::instance()->recordTodosInJournals() &&
-       ( what == KOGlobals::COMPLETION_MODIFIED ||
-         what == KOGlobals::COMPLETION_MODIFIED_WITH_RECURRENCE ) ) {
+       ( modification == KOGlobals::COMPLETION_MODIFIED ||
+         modification == KOGlobals::COMPLETION_MODIFIED_WITH_RECURRENCE ) ) {
     Todo *todo = static_cast<Todo *>(newIncidence);
     if ( todo->isCompleted() ||
-         what == KOGlobals::COMPLETION_MODIFIED_WITH_RECURRENCE ) {
+         modification == KOGlobals::COMPLETION_MODIFIED_WITH_RECURRENCE ) {
       QString timeStr = KGlobal::locale()->formatTime( QTime::currentTime() );
       QString description = i18n( "Todo completed: %1 (%2)", newIncidence->summary(), timeStr );
 
@@ -718,7 +710,8 @@ void CalendarView::incidenceChanged( Incidence *oldIncidence,
         Journal *oldJournal = journal->clone();
         journal->setDescription( journal->description().append( '\n' + description ) );
 
-        if ( !mChanger->changeIncidence( oldJournal, journal ) ) {
+        if ( !mChanger->changeIncidence( oldJournal, journal,
+                                         KOGlobals::DESCRIPTION_MODIFIED, this ) ) {
           KODialogManager::errorSaveIncidence( this, journal );
           delete journal;
           return;
@@ -842,7 +835,7 @@ void CalendarView::edit_cut()
     KNotification::beep();
     return;
   }
-  mChanger->cutIncidence( incidence );
+  mChanger->cutIncidence( incidence, this );
   checkClipboard();
 }
 
@@ -1173,7 +1166,7 @@ bool CalendarView::todo_unsub( Todo *todo )
   if ( mChanger->beginChange( todo ) ) {
       Todo *oldTodo = todo->clone();
       todo->setRelatedTo(0);
-      mChanger->changeIncidence( oldTodo, todo, KOGlobals::RELATION_MODIFIED );
+      mChanger->changeIncidence( oldTodo, todo, KOGlobals::RELATION_MODIFIED, this );
       mChanger->endChange( todo );
       delete oldTodo;
       setModified(true);
@@ -1257,7 +1250,7 @@ void CalendarView::toggleAlarm( Incidence *incidence )
     alm->setType( Alarm::Display );
     alm->setEnabled( true );
   }
-  mChanger->changeIncidence( oldincidence, incidence, KOGlobals::ALARM_MODIFIED );
+  mChanger->changeIncidence( oldincidence, incidence, KOGlobals::ALARM_MODIFIED, this );
   mChanger->endChange( incidence );
   delete oldincidence;
 }
@@ -1280,7 +1273,7 @@ void CalendarView::dissociateOccurrence( Incidence *incidence, const QDate &date
 
   if ( newInc ) {
     // TODO: Use the same resource instead of asking again!
-    mChanger->changeIncidence( oldincidence, incidence );
+    mChanger->changeIncidence( oldincidence, incidence, KOGlobals::NOTHING_MODIFIED, this );
     mChanger->addIncidence( newInc, this );
   } else {
     KMessageBox::sorry( this, i18n( "Dissociating the occurrence failed." ),
@@ -1308,7 +1301,7 @@ void CalendarView::dissociateFutureOccurrence( Incidence *incidence, const QDate
                                      KOPrefs::instance()->timeSpec(), false );
   if ( newInc ) {
     // TODO: Use the same resource instead of asking again!
-    mChanger->changeIncidence( oldincidence, incidence );
+    mChanger->changeIncidence( oldincidence, incidence, KOGlobals::NOTHING_MODIFIED, this );
     mChanger->addIncidence( newInc, this );
   } else {
     KMessageBox::sorry(
@@ -2083,7 +2076,7 @@ void CalendarView::deleteSubTodosIncidence ( Todo *todo )
       deleteSubTodosIncidence ( aTodo );
     }
   }
-  mChanger->deleteIncidence ( todo );
+  mChanger->deleteIncidence ( todo, this );
 }
 
 void CalendarView::deleteTodoIncidence ( Todo *todo, bool force )
@@ -2099,7 +2092,7 @@ void CalendarView::deleteTodoIncidence ( Todo *todo, bool force )
       doDelete = ( msgItemDelete( todo ) == KMessageBox::Yes );
     }
     if ( doDelete ) {
-      mChanger->deleteIncidence( todo );
+      mChanger->deleteIncidence( todo, this );
     }
     return;
   }
@@ -2107,7 +2100,7 @@ void CalendarView::deleteTodoIncidence ( Todo *todo, bool force )
   /* Ok, this to-do has sub-to-dos, ask what to do */
   int km = KMessageBox::No;
   if ( !force ) {
-    km=KMessageBox::questionYesNoCancel(
+    km = KMessageBox::questionYesNoCancel(
       this,
       i18n( "The item \"%1\" has sub-to-dos. "
             "Do you want to delete just this item and "
@@ -2122,7 +2115,7 @@ void CalendarView::deleteTodoIncidence ( Todo *todo, bool force )
   // Delete only the father
   if ( km == KMessageBox::Yes ) {
     makeSubTodosIndependents ( todo );
-    mChanger->deleteIncidence( todo );
+    mChanger->deleteIncidence( todo, this );
   } else if ( km == KMessageBox::No ) {
     // Delete all
     // we have to hide the delete confirmation for each itemDate
@@ -2209,14 +2202,15 @@ void CalendarView::deleteIncidence( Incidence *incidence, bool force )
     switch( km ) {
     case KMessageBox::Ok: // Continue // all
     case KMessageBox::Continue:
-      mChanger->deleteIncidence( incidence );
+      mChanger->deleteIncidence( incidence, this );
       break;
 
     case KMessageBox::Yes: // just this one
       if ( mChanger->beginChange( incidence ) ) {
         Incidence *oldIncidence = incidence->clone();
         incidence->recurrence()->addExDate( itemDate );
-        mChanger->changeIncidence( oldIncidence, incidence );
+        mChanger->changeIncidence( oldIncidence, incidence,
+                                   KOGlobals::RECURRENCE_MODIFIED_ONE_ONLY, this );
         mChanger->endChange( incidence );
         delete oldIncidence;
       }
@@ -2226,7 +2220,8 @@ void CalendarView::deleteIncidence( Incidence *incidence, bool force )
         Incidence *oldIncidence = incidence->clone();
         Recurrence *recur = incidence->recurrence();
         recur->setEndDate( itemDate.addDays(-1) );
-        mChanger->changeIncidence( oldIncidence, incidence );
+        mChanger->changeIncidence( oldIncidence, incidence,
+                                   KOGlobals::RECURRENCE_MODIFIED_ALL_FUTURE, this );
         mChanger->endChange( incidence );
         delete oldIncidence;
       }
@@ -2238,7 +2233,7 @@ void CalendarView::deleteIncidence( Incidence *incidence, bool force )
       doDelete = ( msgItemDelete( incidence ) == KMessageBox::Yes );
     }
     if ( doDelete ) {
-      mChanger->deleteIncidence( incidence );
+      mChanger->deleteIncidence( incidence, this );
       processIncidenceSelection( 0, QDate() );
     }
   }
@@ -2272,7 +2267,7 @@ bool CalendarView::purgeCompletedSubTodos( Todo *todo, bool &allPurged )
 
   if ( deleteThisTodo ) {
     if ( todo->isCompleted() ) {
-      if ( !mChanger->deleteIncidence( todo ) ) {
+      if ( !mChanger->deleteIncidence( todo, this ) ) {
         allPurged = false;
       }
     } else {
@@ -2446,7 +2441,7 @@ void CalendarView::moveIncidenceTo( Incidence *incmove, const QDate &dt )
     todo->setDtDue( due );
     todo->setHasDueDate( true );
   }
-  mChanger->changeIncidence( oldIncidence, incidence );
+  mChanger->changeIncidence( oldIncidence, incidence, KOGlobals::DATE_MODIFIED, this );
   mChanger->endChange( incidence );
   delete oldIncidence;
 }
