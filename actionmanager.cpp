@@ -271,9 +271,9 @@ void ActionManager::createCalendarAkonadi()
   monitor->setMimeTypeMonitored( KCalMimeTypeVisitor::todoMimeType(), true );
   monitor->setMimeTypeMonitored( KCalMimeTypeVisitor::journalMimeType(), true );
   mCalendarModel = new CalendarModel( session, monitor, this );
-  mCalendarModel->setItemPopulationStrategy( EntityTreeModel::LazyPopulation );
+  //mCalendarModel->setItemPopulationStrategy( EntityTreeModel::LazyPopulation );
 
-  mCalendarAkonadi = new AkonadiCalendar( KSystemTimeZones::local() );
+  mCalendarAkonadi = new AkonadiCalendar( mCalendarModel, KSystemTimeZones::local() );
 
   mCalendarView->setCalendar( mCalendarAkonadi );
   mCalendarView->readSettings();

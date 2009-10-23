@@ -32,6 +32,11 @@
 #include "akonadicalendar.h"
 
 #include <Akonadi/Item>
+#include <Akonadi/ChangeRecorder>
+#include <Akonadi/Session>
+
+#include <akonadi/kcal/calendarmodel.h>
+#include <akonadi/kcal/kcalmimetypevisitor.h>
 #include <akonadi/kcal/utils.h>
 
 #include <KCal/CalendarResources>
@@ -65,7 +70,18 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
   }
 
   const KTimeZone zone = KSystemTimeZones::local();
-  mCalendar = new KOrg::AkonadiCalendar( zone.isValid() ? KDateTime::Spec( zone ) : KDateTime::ClockTime );
+  Session *session = new Session( "KOAlarmClient", this );
+  ChangeRecorder *monitor = new ChangeRecorder( this );
+  monitor->setCollectionMonitored( Collection::root() );
+  monitor->fetchCollection( true );
+  monitor->setMimeTypeMonitored( "text/calendar", true ); // FIXME: this one should not be needed, in fact it might cause the inclusion of free/busy, notes or other unwanted stuff
+  monitor->setMimeTypeMonitored( KCalMimeTypeVisitor::eventMimeType(), true );
+  monitor->setMimeTypeMonitored( KCalMimeTypeVisitor::todoMimeType(), true );
+  monitor->setMimeTypeMonitored( KCalMimeTypeVisitor::journalMimeType(), true );
+  CalendarModel *calendarModel = new CalendarModel( session, monitor, this );
+  //mCalendarModel->setItemPopulationStrategy( EntityTreeModel::LazyPopulation );
+
+  mCalendar = new KOrg::AkonadiCalendar( calendarModel, zone.isValid() ? KDateTime::Spec( zone ) : KDateTime::ClockTime );
 
   connect( &mCheckTimer, SIGNAL(timeout()), SLOT(checkAlarms()) );
 
