@@ -28,6 +28,7 @@
 #include "akonadicollectionview.moc"
 #include "akonadicalendar.h"
 #include "kocore.h"
+#include "kohelper.h"
 #include "koprefs.h"
 
 #include <KDebug>
@@ -93,6 +94,10 @@ AkonadiCollectionView* AkonadiCollectionViewFactory::collectionView() const
   return mAkonadiCollectionView;
 }
 
+static Collection collectionFromIndex( const QModelIndex &index ) {
+  return index.model()->data( index, Akonadi::EntityTreeModel::CollectionRole ).value<Akonadi::Collection>();
+}
+
 class CollectionProxyModel : public QSortFilterProxyModel
 {
   public:
@@ -106,13 +111,19 @@ class CollectionProxyModel : public QSortFilterProxyModel
 
     virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const
     {
+      if ( !index.isValid() )
+        return QVariant();
       switch(role) {
+        case Qt::DecorationRole: {
+            const Akonadi::Collection collection = collectionFromIndex( index );
+            return KOHelper::resourceColor( collection );
+        }
         case Qt::CheckStateRole: {
-          Q_ASSERT( index.isValid() );
           if ( index.column() != CalendarModel::CollectionTitle )
             return QVariant();
-          const Akonadi::Collection collection = index.model()->data( index, Akonadi::EntityTreeModel::CollectionRole ).value<Akonadi::Collection>();
-          Q_ASSERT( collection.isValid() );
+          const Akonadi::Collection collection = collectionFromIndex( index );
+          if ( !collection.isValid() )
+            return QVariant();
           return mView->calendar()->hasCollection( collection ) ? Qt::Checked : Qt::Unchecked;
         } break;
         default:

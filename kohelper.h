@@ -35,6 +35,7 @@ namespace KOrg {
 }
 
 namespace Akonadi {
+  class Collection;
   class Item;
 }
 
@@ -58,6 +59,8 @@ namespace KOHelper
                      determine which  subresource needs to be used)
   */
   KORGANIZER_CORE_EXPORT QColor resourceColor( const Akonadi::Item & incidence );
+
+  KORGANIZER_CORE_EXPORT QColor resourceColor( const Akonadi::Collection &collection );
 
   /**
     Returns the number of years between the @p start QDate and the @p end QDate
