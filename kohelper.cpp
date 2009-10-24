@@ -31,7 +31,7 @@
 
 QColor KOHelper::getTextColor( const QColor &c )
 {
-  float luminance = ( c.red() * 0.299 ) + ( c.green() * 0.587 ) + ( c.blue() * 0.114 );
+  double luminance = ( c.red() * 0.299 ) + ( c.green() * 0.587 ) + ( c.blue() * 0.114 );
   return ( luminance > 128.0 ) ? QColor( 0, 0, 0 ) : QColor( 255, 255, 255 );
 }
 
@@ -69,6 +69,6 @@ QColor KOHelper::resourceColor( KCal::Calendar *calendar,
 
 qint64 KOHelper::yearDiff( const QDate &start, const QDate &end )
 {
-  return start.daysTo( end ) / 365.25;
+  return static_cast<qint64>( start.daysTo( end ) / 365.25 );
 }
 
