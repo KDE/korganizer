@@ -275,11 +275,32 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
       else if( incidence->type() == "Todo" ) type = i18n("task");
       else if( incidence->type() == "Journal" ) type = i18n("journal entry");
       else type = incidence->type();
-      QString txt = i18n( "This %1 includes other people. "
-          "Should email be sent out to the attendees?" )
-        .arg( type );
-      rc = KMessageBox::questionYesNoCancel( parent, txt,
-          i18n("Group Scheduling Email"), i18n("Send Email"), i18n("Do Not Send") );
+
+      QString txt;
+      switch( action ) {
+      case KOGlobals::INCIDENCEEDITED:
+        txt = i18n( "You changed the invitation \"%1\".\n"
+                    "Do you want to email the attendees an update message?" ).
+              arg( incidence->summary() );
+        break;
+      case KOGlobals::INCIDENCEDELETED:
+        txt = i18n( "You removed the invitation \"%2\".\n"
+                    "Do you want to email the attendees that the %1 is canceled?" ).
+              arg( type, incidence->summary() );
+        break;
+      case KOGlobals::INCIDENCEADDED:
+        txt = i18n( "The %1 \"%2\" includes other people.\n"
+                    "Do you want to email the invitation to the attendees?" ).
+              arg( type, incidence->summary() );
+        break;
+      default:
+        kdError() << "Unsupported HowChanged action" << int( action ) << endl;
+        break;
+      }
+
+      rc = KMessageBox::questionYesNoCancel(
+             parent, txt, i18n( "Group Scheduling Email" ),
+             KGuiItem( i18n( "Send Email" ) ), KGuiItem( i18n( "Do Not Send" ) ) );
     } else {
       return true;
     }
