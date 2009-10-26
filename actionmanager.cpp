@@ -290,7 +290,7 @@ void ActionManager::createCalendarAkonadi()
   mResourceView = factory.collectionView();
   connect( mResourceView, SIGNAL(resourcesChanged(bool)), SLOT(slotResourcesChanged(bool)) );
 
-  KSelectionProxyModel* selectionProxy = new KSelectionProxyModel( mResourceView->checkedCollectionsModel() );
+  KSelectionProxyModel* selectionProxy = new KSelectionProxyModel( mResourceView->collectionSelection()->model() );
   selectionProxy->setFilterBehavior( KSelectionProxyModel::ChildrenOfExactSelection );
   selectionProxy->setSourceModel( mCalendarModel );
 

@@ -117,7 +117,7 @@ class CollectionProxyModel : public QSortFilterProxyModel
         case Qt::CheckStateRole: {
           if ( index.column() != CalendarModel::CollectionTitle )
             return QVariant();
-          return mView->checkedCollectionsModel()->isSelected( index ) ? Qt::Checked : Qt::Unchecked;
+          return mView->collectionSelection()->model()->isSelected( index ) ? Qt::Checked : Qt::Unchecked;
         } break;
         default:
           return QSortFilterProxyModel::data(index, role);
@@ -135,7 +135,7 @@ class CollectionProxyModel : public QSortFilterProxyModel
           Q_ASSERT( collection.isValid() );
           //const bool checked = value.toBool();
           const bool checked = value.toInt() == Qt::Checked;
-          mView->checkedCollectionsModel()->select( index, checked ? QItemSelectionModel::Select : QItemSelectionModel::Deselect );
+          mView->collectionSelection()->model()->select( index, checked ? QItemSelectionModel::Select : QItemSelectionModel::Deselect );
         } return true;
         default:
           return QSortFilterProxyModel::setData(index, value, role);
@@ -149,6 +149,51 @@ class CollectionProxyModel : public QSortFilterProxyModel
   private:
     AkonadiCollectionView *mView;
 };
+
+class CollectionSelection::Private
+{
+public:
+  explicit Private( QItemSelectionModel* model_ ) : model( model_ ) {
+
+  }
+
+  QItemSelectionModel* model;
+};
+
+CollectionSelection::CollectionSelection( QItemSelectionModel *selectionModel ) : QObject( selectionModel ), d( new Private ( selectionModel ) )
+{
+  connect( selectionModel, SIGNAL(selectionChanged(QItemSelection,QItemSelection)), this, SLOT(selectionChanged(QItemSelection,QItemSelection)) );
+}
+
+CollectionSelection::~CollectionSelection()
+{
+  delete d;
+}
+
+QItemSelectionModel* CollectionSelection::model() const
+{
+  return d->model;
+}
+
+Akonadi::Collection::List CollectionSelection::selectedCollections() const
+{
+  Collection::List selected;
+  Q_FOREACH ( const QModelIndex &idx, d->model->selectedIndexes() )
+    selected.append( collectionFromIndex( idx ) );
+  return selected;
+}
+
+void CollectionSelection::selectionChanged( const QItemSelection &selected, const QItemSelection &deselected )
+{
+  Q_FOREACH ( const QModelIndex &idx, deselected.indexes() ) {
+    const Collection c = collectionFromIndex( idx );
+    emit collectionDeselected( c );
+  }
+  Q_FOREACH ( const QModelIndex &idx, selected.indexes() ) {
+    const Collection c = collectionFromIndex( idx );
+    emit collectionSelected( c );
+  }
+}
 
 AkonadiCollectionView::AkonadiCollectionView( AkonadiCollectionViewFactory *factory, CalendarModel* calendarModel, QWidget *parent )
   : CalendarViewExtension( parent ), mActionManager(0), mCollectionview(0)
@@ -165,7 +210,7 @@ AkonadiCollectionView::AkonadiCollectionView( AkonadiCollectionViewFactory *fact
   mProxyModel->setSortCaseSensitivity( Qt::CaseInsensitive );
   mProxyModel->setSourceModel( collectionproxymodel );
 
-  mCheckedCollectionsModel = new QItemSelectionModel( mProxyModel );
+  mCollectionSelection = new CollectionSelection( new QItemSelectionModel( mProxyModel ) );
 
   mCollectionview = new Akonadi::EntityTreeView;
   topLayout->addWidget( mCollectionview );
@@ -210,9 +255,9 @@ AkonadiCollectionView::~AkonadiCollectionView()
 {
 }
 
-QItemSelectionModel* AkonadiCollectionView::checkedCollectionsModel() const
+CollectionSelection* AkonadiCollectionView::collectionSelection() const
 {
-  return mCheckedCollectionsModel;
+  return mCollectionSelection;
 }
 
 void AkonadiCollectionView::updateView()

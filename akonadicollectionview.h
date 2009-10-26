@@ -28,6 +28,8 @@
 
 #include "calendarview.h"
 
+#include <Akonadi/Collection>
+
 #include <QTreeWidget>
 #include <QList>
 
@@ -68,6 +70,28 @@ class AkonadiCollectionViewFactory : public CalendarViewExtension::Factory
     AkonadiCollectionView *mAkonadiCollectionView;
 };
 
+class CollectionSelection : public QObject
+{
+  Q_OBJECT
+public:
+  explicit CollectionSelection( QItemSelectionModel *selectionModel );
+  ~CollectionSelection();
+
+  QItemSelectionModel* model() const;
+  Akonadi::Collection::List selectedCollections() const;
+
+Q_SIGNALS:
+  void collectionDeselected( const Akonadi::Collection& );
+  void collectionSelected( const Akonadi::Collection& );
+
+private Q_SLOTS:
+  void selectionChanged( const QItemSelection &, const QItemSelection & );
+
+private:
+  class Private;
+  Private *const d;
+};
+
 /**
  * This class provides a view of calendar resources.
  */
@@ -79,9 +103,9 @@ class AkonadiCollectionView : public CalendarViewExtension
     ~AkonadiCollectionView();
 
     void updateView();
-    QItemSelectionModel* checkedCollectionsModel() const;
+    CollectionSelection* collectionSelection() const;
 
-  signals:
+signals:
     void resourcesChanged(bool enabled);
     
   private Q_SLOTS:
@@ -101,7 +125,7 @@ class AkonadiCollectionView : public CalendarViewExtension
     //QAbstractButton *mAddButton, *mEditButton, *mDeleteButton;
     KAction *mCreateAction;
     KAction *mDeleteAction;
-    QItemSelectionModel *mCheckedCollectionsModel;
+    CollectionSelection *mCollectionSelection;
 };
 
 #endif
