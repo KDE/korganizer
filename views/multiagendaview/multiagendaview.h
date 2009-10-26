@@ -55,6 +55,7 @@ class MultiAgendaView : public AgendaView
     int maxDatesHint();
 
     bool eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &allDay );
+    /* reimp */ void setCalendar( AkonadiCalendar *cal );
 
   public slots:
     void showDates( const QDate &start, const QDate &end );

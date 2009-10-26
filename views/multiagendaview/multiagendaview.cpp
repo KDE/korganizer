@@ -114,7 +114,11 @@ MultiAgendaView::MultiAgendaView( QWidget *parent )
 
   mRightBottomSpacer = new QWidget( topSideBox );
   topLevelLayout->addWidget( topSideBox );
+}
 
+void MultiAgendaView::setCalendar( AkonadiCalendar *cal )
+{
+  AgendaView::setCalendar( cal );
   recreateViews();
 }
 
