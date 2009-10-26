@@ -308,6 +308,7 @@ void AkonadiCollectionView::newCalendarDone( KJob *job )
   kDebug();
   Akonadi::AgentInstanceCreateJob *createjob = static_cast<Akonadi::AgentInstanceCreateJob*>( job );
   if ( createjob->error() ) {
+    //TODO(AKONADI_PORT) this should show an error dialog and should be merged with the identical code in ActionManager
       kWarning( 5250 ) << "Create calendar failed:" << createjob->errorString();
       return;
   }
