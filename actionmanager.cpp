@@ -1431,11 +1431,11 @@ void ActionManager::updateConfig()
 
 // Commented out because it crashes KOrganizer.
 //  mParts = KOCore::self()->reloadParts( mMainWindow, mParts );
-
+#ifdef AKONADI_PORT_DISABLED // shouldn't be required anymore
   if ( mResourceView ) {
     mResourceView->updateView();
   }
-
+#endif
   KOGroupware::instance()->freeBusyManager()->setBrokenUrl( false );
 }
 

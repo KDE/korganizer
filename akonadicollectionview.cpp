@@ -94,6 +94,14 @@ static Collection collectionFromIndex( const QModelIndex &index ) {
   return index.model()->data( index, Akonadi::EntityTreeModel::CollectionRole ).value<Akonadi::Collection>();
 }
 
+static Collection::List collectionsFromIndexes( const QModelIndexList &indexes ) {
+  Collection::List l;
+  Q_FOREACH( const QModelIndex &idx, indexes )
+      l.push_back( collectionFromIndex( idx ) );
+  return l;
+}
+
+
 class CollectionProxyModel : public QSortFilterProxyModel
 {
   public:
@@ -162,7 +170,7 @@ public:
 
 CollectionSelection::CollectionSelection( QItemSelectionModel *selectionModel ) : QObject( selectionModel ), d( new Private ( selectionModel ) )
 {
-  connect( selectionModel, SIGNAL(selectionChanged(QItemSelection,QItemSelection)), this, SLOT(selectionChanged(QItemSelection,QItemSelection)) );
+  connect( selectionModel, SIGNAL(selectionChanged(QItemSelection,QItemSelection)), this, SLOT(slotSelectionChanged(QItemSelection,QItemSelection)) );
 }
 
 CollectionSelection::~CollectionSelection()
@@ -175,6 +183,11 @@ QItemSelectionModel* CollectionSelection::model() const
   return d->model;
 }
 
+bool CollectionSelection::hasSelection() const
+{
+  return d->model->hasSelection();
+}
+
 Akonadi::Collection::List CollectionSelection::selectedCollections() const
 {
   Collection::List selected;
@@ -183,16 +196,16 @@ Akonadi::Collection::List CollectionSelection::selectedCollections() const
   return selected;
 }
 
-void CollectionSelection::selectionChanged( const QItemSelection &selected, const QItemSelection &deselected )
+void CollectionSelection::slotSelectionChanged( const QItemSelection &selectedIndexes, const QItemSelection &deselectedIndexes )
 {
-  Q_FOREACH ( const QModelIndex &idx, deselected.indexes() ) {
-    const Collection c = collectionFromIndex( idx );
+  const Collection::List selected = collectionsFromIndexes( selectedIndexes.indexes() );
+  const Collection::List deselected = collectionsFromIndexes( deselectedIndexes.indexes() );
+
+  emit selectionChanged( selected, deselected );
+  Q_FOREACH ( const Collection &c, deselected )
     emit collectionDeselected( c );
-  }
-  Q_FOREACH ( const QModelIndex &idx, selected.indexes() ) {
-    const Collection c = collectionFromIndex( idx );
+  Q_FOREACH ( const Collection &c, selected )
     emit collectionSelected( c );
-  }
 }
 
 AkonadiCollectionView::AkonadiCollectionView( AkonadiCollectionViewFactory *factory, CalendarModel* calendarModel, QWidget *parent )
@@ -246,7 +259,7 @@ AkonadiCollectionView::AkonadiCollectionView( AkonadiCollectionViewFactory *fact
     xmlclient->actionCollection()->addAction( QString::fromLatin1( "akonadi_calendar_delete" ), mDeleteAction );
     connect( mDeleteAction, SIGNAL( triggered( bool ) ), this, SLOT( deleteCalendar() ) );
   }
-  connect( mCollectionview->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)), this, SLOT(selectionChanged()) );
+  connect( mCollectionSelection, SIGNAL(selectionChanged(Akonadi::Collection::List,Akonadi::Collection::List)), this, SLOT(selectionChanged()) );
   
   updateView();
 }
@@ -262,13 +275,14 @@ CollectionSelection* AkonadiCollectionView::collectionSelection() const
 
 void AkonadiCollectionView::updateView()
 {
-  emit resourcesChanged( true );
+  emit resourcesChanged( mCollectionSelection->hasSelection() );
 }
 
 void AkonadiCollectionView::selectionChanged()
 {
   kDebug();
   mDeleteAction->setEnabled( mCollectionview->selectionModel()->hasSelection() );
+  updateView();
 }
 
 void AkonadiCollectionView::newCalendar()

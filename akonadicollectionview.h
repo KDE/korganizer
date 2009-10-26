@@ -79,13 +79,15 @@ public:
 
   QItemSelectionModel* model() const;
   Akonadi::Collection::List selectedCollections() const;
+  bool hasSelection() const;
 
 Q_SIGNALS:
+  void selectionChanged( const Akonadi::Collection::List &selected, const Akonadi::Collection::List &deselected );
   void collectionDeselected( const Akonadi::Collection& );
   void collectionSelected( const Akonadi::Collection& );
 
 private Q_SLOTS:
-  void selectionChanged( const QItemSelection &, const QItemSelection & );
+  void slotSelectionChanged( const QItemSelection &, const QItemSelection & );
 
 private:
   class Private;
@@ -102,12 +104,13 @@ class AkonadiCollectionView : public CalendarViewExtension
     AkonadiCollectionView( AkonadiCollectionViewFactory *factory, Akonadi::CalendarModel* model, QWidget *parent = 0 );
     ~AkonadiCollectionView();
 
-    void updateView();
     CollectionSelection* collectionSelection() const;
 
-signals:
+  signals:
     void resourcesChanged(bool enabled);
-    
+  private:
+    void updateView();
+
   private Q_SLOTS:
     void selectionChanged();
 
