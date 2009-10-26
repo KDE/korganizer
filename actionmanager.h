@@ -336,8 +336,6 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
 
     void showStatusMessageOpen( const KUrl &url, bool merge );
 
-    void initCalendar( KOrg::AkonadiCalendar *cal );
-
     /**
       Return widget used as parent for dialogs and message boxes.
     */
@@ -363,7 +361,6 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     QString mLastUrl;        // URL of last loaded calendar.
 
     KTemporaryFile *mTempFile;
-    QTimer *mAutoSaveTimer;    // used if calendar is to be autosaved
     QTimer *mAutoArchiveTimer; // used for the auto-archiving feature
 
     // list of all existing KOrganizer instances
@@ -411,7 +408,6 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
 
     Akonadi::CalendarModel *mCalendarModel;
     KOrg::AkonadiCalendar *mCalendar;
-    KOrg::AkonadiCalendar *mCalendarAkonadi;
     AkonadiCollectionView *mResourceView;
 
     bool mIsClosing;

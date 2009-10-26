@@ -159,7 +159,7 @@ ActionManager::ActionManager( KXMLGUIClient *client, CalendarView *widget,
                               bool isPart, KMenuBar *menuBar )
   : QObject( parent ), mRecent( 0 ),
     mResourceViewShowAction( 0 ), mCalendarModel( 0 ), mCalendar( 0 ),
-    mCalendarAkonadi( 0 ), mResourceView( 0 ), mIsClosing( false )
+    mResourceView( 0 ), mIsClosing( false )
 {
   new CalendarAdaptor( this );
   QDBusConnection::sessionBus().registerObject( "/Calendar", this );
@@ -212,7 +212,7 @@ void ActionManager::toggleMenubar( bool dontShowWarning )
 void ActionManager::init()
 {
   // Construct the groupware object
-  KOGroupware::create( mCalendarView, mCalendarAkonadi );
+  KOGroupware::create( mCalendarView, mCalendar );
 
   // add this instance of the window to the static list.
   if ( !mWindowList ) {
@@ -235,12 +235,6 @@ void ActionManager::init()
   slotResourcesChanged( false );
 
   // set up autoSaving stuff
-  mAutoSaveTimer = new QTimer( this );
-  connect( mAutoSaveTimer, SIGNAL(timeout()), SLOT(checkAutoSave()) );
-  if ( KOPrefs::instance()->mAutoSave &&
-       KOPrefs::instance()->mAutoSaveInterval > 0 ) {
-    mAutoSaveTimer->start( 1000 * 60 * KOPrefs::instance()->mAutoSaveInterval );
-  }
 
   mAutoArchiveTimer = new QTimer( this );
   mAutoArchiveTimer->setSingleShot( true );
@@ -315,27 +309,24 @@ void ActionManager::createCalendarAkonadi()
   dlg->show();
 #endif
 
-  mCalendarAkonadi = new AkonadiCalendar( filterProxy2, KSystemTimeZones::local() );
+  mCalendar = new AkonadiCalendar( filterProxy2, KSystemTimeZones::local() );
 
-  mCalendarView->setCalendar( mCalendarAkonadi );
+  mCalendarView->setCalendar( mCalendar );
   mCalendarView->readSettings();
 
-  connect( mCalendarAkonadi, SIGNAL(calendarChanged()),
+  connect( mCalendar, SIGNAL(calendarChanged()),
            mCalendarView, SLOT(resourcesChanged()) );
-  connect( mCalendarAkonadi, SIGNAL(calendarLoaded()),
+  connect( mCalendar, SIGNAL(calendarLoaded()),
            mCalendarView, SLOT(resourcesChanged()) );
-  connect( mCalendarAkonadi, SIGNAL(signalErrorMessage(const QString &)),
+  connect( mCalendar, SIGNAL(signalErrorMessage(const QString &)),
            mCalendarView, SLOT(showErrorMessage(const QString &)) );
   connect( mCalendarView, SIGNAL(configChanged()), SLOT(updateConfig()) );
 
-  initCalendar( mCalendarAkonadi );
+  mCalendar->setOwner( Person( KOPrefs::instance()->fullName(),
+                               KOPrefs::instance()->email() ) );
+
 }
 
-void ActionManager::initCalendar( KOrg::AkonadiCalendar *cal )
-{
-  cal->setOwner( Person( KOPrefs::instance()->fullName(),
-                         KOPrefs::instance()->email() ) );
-}
 
 void ActionManager::initActions()
 {
@@ -1087,8 +1078,8 @@ bool ActionManager::openURL( const KUrl &url, bool merge )
 
 bool ActionManager::addResource( const KUrl &mUrl )
 {
-  if ( mCalendarAkonadi )
-    return mCalendarAkonadi->addAgent(mUrl);
+  if ( mCalendar )
+    return mCalendar->addAgent(mUrl);
   else
     return false;
 }
@@ -1157,12 +1148,6 @@ bool ActionManager::saveURL()
       KMessageBox::error( dialogParent(), msg );
       return false;
     }
-  }
-
-  // keep saves on a regular interval
-  if ( KOPrefs::instance()->mAutoSave ) {
-    mAutoSaveTimer->stop();
-    mAutoSaveTimer->start( 1000 * 60 * KOPrefs::instance()->mAutoSaveInterval );
   }
 
   mMainWindow->showStatusMessage( i18n( "Saved calendar '%1'.", mURL.prettyUrl() ) );
@@ -1405,18 +1390,6 @@ void ActionManager::readProperties( const KConfigGroup &config )
 void ActionManager::updateConfig()
 {
   kDebug();
-
-  if ( KOPrefs::instance()->mAutoSave && !mAutoSaveTimer->isActive() ) {
-#ifdef AKONADI_PORT_DISABLED
-    checkAutoSave();
-#endif
-    if ( KOPrefs::instance()->mAutoSaveInterval > 0 ) {
-      mAutoSaveTimer->start( 1000 * 60 * KOPrefs::instance()->mAutoSaveInterval );
-    }
-  }
-  if ( !KOPrefs::instance()->mAutoSave ) {
-    mAutoSaveTimer->stop();
-  }
   mNextXDays->setText( i18np( "&Next Day", "&Next %1 Days",
                               KOPrefs::instance()->mNextXDays ) );
 
@@ -1609,9 +1582,9 @@ void ActionManager::slotNewStuffDownloaded(KJob *_job)
     KMessageBox::error( mCalendarView, i18n( "Could not download calendar %1: %2.",
                                              job->srcUrl().url(), job->errorString() ) );
   } else {
-    IncidenceChanger changer( mCalendarAkonadi );  //AKONADI_PORT avoid this local incidence changer copy...
+    IncidenceChanger changer( mCalendar );  //AKONADI_PORT avoid this local incidence changer copy...
 
-    AkonadiCalendarAdaptor cal( mCalendarAkonadi, &changer );  FileStorage storage( &cal );
+    AkonadiCalendarAdaptor cal( mCalendar, &changer );  FileStorage storage( &cal );
     storage.setFileName( filename );
     storage.setSaveFormat( new ICalFormat );
     if ( !storage.load() ) {
@@ -2076,7 +2049,7 @@ void ActionManager::slotAutoArchive()
   mAutoArchiveTimer->stop();
   EventArchiver archiver;
   connect( &archiver, SIGNAL(eventsDeleted()), mCalendarView, SLOT(updateView()) ); //AKONADI_PORT this signal shouldn't be needed anymore?
-  IncidenceChanger changer( mCalendarAkonadi );  //AKONADI_PORT avoid this local incidence changer copy...
+  IncidenceChanger changer( mCalendar );  //AKONADI_PORT avoid this local incidence changer copy...
   archiver.runAuto( mCalendarView->calendar(), &changer, mCalendarView, false /*no gui*/);
 
   // restart timer with the correct delay ( especially useful for the first time )
