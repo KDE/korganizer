@@ -2450,7 +2450,7 @@ void CalendarView::showErrorMessage( const QString &msg )
 
 void CalendarView::updateCategories()
 {
-  QStringList allCats( calendar()->categories() );
+  QStringList allCats( AkonadiCalendar::categories( calendar() ) );
   allCats.sort();
   QStringList categories( KOPrefs::instance()->mCustomCategories );
   for ( QStringList::ConstIterator si = allCats.constBegin(); si != allCats.constEnd(); ++si ) {
