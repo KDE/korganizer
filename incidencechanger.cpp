@@ -69,15 +69,16 @@ IncidenceChanger::~IncidenceChanger()
 bool IncidenceChanger::beginChange( const Item &item )
 {
   if ( !Akonadi::hasIncidence( item ) ) {
+    kDebug() << "Skipping invalid item id=" << item.id();
     return false;
   }
   const Incidence::Ptr incidence = Akonadi::incidence( item );
   Q_ASSERT( incidence );
+  kDebug() << "uid=" << incidence->uid() << "summary=" << incidence->summary() << "type=" << incidence->type() << "storageCollectionId=" << item.storageCollectionId();
   Q_ASSERT( ! d->m_changes.contains( item.id() ) ); // no nested changes allowed
   d->m_changes.push_back( item.id() );
   d->m_incidenceBeingChanged = Incidence::Ptr( incidence->clone() );
   return true;
-
 }
 
 bool IncidenceChanger::sendGroupwareMessage( const Item &aitem,
@@ -185,9 +186,10 @@ bool IncidenceChanger::deleteIncidence( const Item &aitem )
 void IncidenceChanger::changeIncidenceFinished( KJob* j )
 {
   //AKONADI_PORT this is from the respective method in the old AkonadiCalendar, so I leave it here: --Frank
+  kDebug();
+
   // we should probably update the revision number here,or internally in the Event
   // itself when certain things change. need to verify with ical documentation.
-
   const ItemModifyJob* job = qobject_cast<const ItemModifyJob*>( j );
   Q_ASSERT( job );
 
@@ -206,6 +208,7 @@ void IncidenceChanger::changeIncidenceFinished( KJob* j )
 
 void IncidenceChanger::deleteIncidenceFinished( KJob* j )
 {
+  kDebug();
   const ItemDeleteJob* job = qobject_cast<const ItemDeleteJob*>( j );
   Q_ASSERT( job );
   const Item::List items = job->deletedItems();
@@ -431,6 +434,7 @@ bool IncidenceChanger::addIncidence( const Incidence::Ptr &incidence, const Coll
 }
 
 void IncidenceChanger::addIncidenceFinished( KJob* j ) {
+  kDebug();
   const Akonadi::ItemCreateJob* job = qobject_cast<const Akonadi::ItemCreateJob*>( j );
   Q_ASSERT( job );
   Incidence::Ptr incidence = Akonadi::incidence( job->item() );
