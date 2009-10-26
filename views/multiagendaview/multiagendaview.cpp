@@ -22,7 +22,8 @@
 #include "views/agendaview/koagenda.h"
 #include "views/agendaview/koagendaview.h"
 #include "akonadicalendar.h"
-#include "akonadicollectionview.h"
+
+#include <akonadi/kcal/collectionselection.h>
 
 #include <KGlobalSettings>
 #include <KHBox>

@@ -54,6 +54,7 @@
 #include <KMime/KMimeMessage>
 
 #include <akonadi/kcal/calendarmodel.h>
+#include <akonadi/kcal/collectionselection.h>
 #include <akonadi/kcal/kcalmimetypevisitor.h>
 #include <akonadi/kcal/utils.h>
 

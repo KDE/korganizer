@@ -35,7 +35,9 @@
 #include <QObject>
 #include <QWidget>
 
-class CollectionSelection;
+namespace Akonadi {
+  class CollectionSelection;
+}
 class CalPrinter;
 class DateChecker;
 class DateNavigator;
@@ -126,8 +128,8 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     void setCalendar( KOrg::AkonadiCalendar * );
     KOrg::AkonadiCalendar *calendar();
 
-    void setCollectionSelection( CollectionSelection* selection );
-    CollectionSelection* collectionSelection() const;
+    void setCollectionSelection( Akonadi::CollectionSelection* selection );
+    Akonadi::CollectionSelection* collectionSelection() const;
 
     History *history() const { return mHistory; }
 
@@ -652,7 +654,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     QList<CalendarViewExtension*> mExtensions;
 
     KOrg::AkonadiCalendar *mCalendar;
-    CollectionSelection *mCollectionSelection;
+    Akonadi::CollectionSelection *mCollectionSelection;
 
     DateNavigator *mDateNavigator;
     DateChecker *mDateChecker;

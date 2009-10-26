@@ -33,7 +33,9 @@ class QResizeEvent;
 class QScrollBar;
 class QSplitter;
 
-class CollectionSelection;
+namespace Akonadi {
+  class CollectionSelection;
+}
 
 namespace KOrg {
 
@@ -54,7 +56,7 @@ class MultiAgendaView : public AgendaView
 
     bool eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &allDay );
     /* reimp */ void setCalendar( AkonadiCalendar *cal );
-    void setCollectionSelection( CollectionSelection* sel );
+    void setCollectionSelection( Akonadi::CollectionSelection* sel );
 
   public slots:
     void showDates( const QDate &start, const QDate &end );
@@ -98,7 +100,7 @@ class MultiAgendaView : public AgendaView
     QDate mStartDate, mEndDate;
     bool mUpdateOnShow;
     bool mPendingChanges;
-    CollectionSelection *mCollectionSelection;
+    Akonadi::CollectionSelection *mCollectionSelection;
 };
 
 }

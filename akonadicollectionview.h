@@ -70,31 +70,6 @@ class AkonadiCollectionViewFactory : public CalendarViewExtension::Factory
     AkonadiCollectionView *mAkonadiCollectionView;
 };
 
-class CollectionSelection : public QObject
-{
-  Q_OBJECT
-public:
-  explicit CollectionSelection( QItemSelectionModel *selectionModel );
-  ~CollectionSelection();
-
-  QItemSelectionModel* model() const;
-  Akonadi::Collection::List selectedCollections() const;
-  QList<Akonadi::Collection::Id> selectedCollectionIds() const;
-  bool hasSelection() const;
-
-Q_SIGNALS:
-  void selectionChanged( const Akonadi::Collection::List &selected, const Akonadi::Collection::List &deselected );
-  void collectionDeselected( const Akonadi::Collection& );
-  void collectionSelected( const Akonadi::Collection& );
-
-private Q_SLOTS:
-  void slotSelectionChanged( const QItemSelection &, const QItemSelection & );
-
-private:
-  class Private;
-  Private *const d;
-};
-
 /**
  * This class provides a view of calendar resources.
  */
@@ -105,7 +80,7 @@ class AkonadiCollectionView : public CalendarViewExtension
     AkonadiCollectionView( AkonadiCollectionViewFactory *factory, Akonadi::CalendarModel* model, QWidget *parent = 0 );
     ~AkonadiCollectionView();
 
-    CollectionSelection* collectionSelection() const;
+    Akonadi::CollectionSelection* collectionSelection() const;
 
   signals:
     void resourcesChanged(bool enabled);
@@ -129,7 +104,7 @@ class AkonadiCollectionView : public CalendarViewExtension
     //QAbstractButton *mAddButton, *mEditButton, *mDeleteButton;
     KAction *mCreateAction;
     KAction *mDeleteAction;
-    CollectionSelection *mCollectionSelection;
+    Akonadi::CollectionSelection *mCollectionSelection;
 };
 
 #endif

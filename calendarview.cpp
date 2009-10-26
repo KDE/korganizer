@@ -62,6 +62,7 @@
 #include <interfaces/korganizer/akonadicalendaradaptor.h>
 
 #include <akonadi/kcal/utils.h>
+#include <akonadi/kcal/collectionselection.h>
 
 #include <KCal/CalendarResources>
 #include <KCal/CalFilter>

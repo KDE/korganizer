@@ -41,6 +41,8 @@
 #include <QItemSelectionModel>
 
 #include <akonadi/kcal/calendarmodel.h>
+#include <akonadi/kcal/collectionselection.h>
+#include <akonadi/kcal/utils.h>
 
 #include <akonadi/collection.h>
 #include <akonadi/collectionview.h>
@@ -88,21 +90,6 @@ CalendarView* AkonadiCollectionViewFactory::view() const
 AkonadiCollectionView* AkonadiCollectionViewFactory::collectionView() const
 {
   return mAkonadiCollectionView;
-}
-
-static Collection collectionFromIndex( const QModelIndex &index ) {
-  return index.model()->data( index, Akonadi::EntityTreeModel::CollectionRole ).value<Akonadi::Collection>();
-}
-
-static Collection::Id collectionIdFromIndex( const QModelIndex &index ) {
-  return index.model()->data( index, Akonadi::EntityTreeModel::CollectionIdRole ).value<Akonadi::Collection::Id>();
-}
-
-static Collection::List collectionsFromIndexes( const QModelIndexList &indexes ) {
-  Collection::List l;
-  Q_FOREACH( const QModelIndex &idx, indexes )
-      l.push_back( collectionFromIndex( idx ) );
-  return l;
 }
 
 
@@ -162,62 +149,6 @@ class CollectionProxyModel : public QSortFilterProxyModel
     AkonadiCollectionView *mView;
 };
 
-class CollectionSelection::Private
-{
-public:
-  explicit Private( QItemSelectionModel* model_ ) : model( model_ ) {
-
-  }
-
-  QItemSelectionModel* model;
-};
-
-CollectionSelection::CollectionSelection( QItemSelectionModel *selectionModel ) : QObject( selectionModel ), d( new Private ( selectionModel ) )
-{
-  connect( selectionModel, SIGNAL(selectionChanged(QItemSelection,QItemSelection)), this, SLOT(slotSelectionChanged(QItemSelection,QItemSelection)) );
-}
-
-CollectionSelection::~CollectionSelection()
-{
-  delete d;
-}
-
-QItemSelectionModel* CollectionSelection::model() const
-{
-  return d->model;
-}
-
-bool CollectionSelection::hasSelection() const
-{
-  return d->model->hasSelection();
-}
-
-Collection::List CollectionSelection::selectedCollections() const
-{
-  Collection::List selected;
-  Q_FOREACH ( const QModelIndex &idx, d->model->selectedIndexes() )
-    selected.append( collectionFromIndex( idx ) );
-  return selected;
-}
-
-QList<Collection::Id> CollectionSelection::selectedCollectionIds() const {
-  QList<Collection::Id> selected;
-  Q_FOREACH ( const QModelIndex &idx, d->model->selectedIndexes() )
-    selected.append( collectionIdFromIndex( idx ) );
-  return selected;
-}
-
-void CollectionSelection::slotSelectionChanged( const QItemSelection &selectedIndexes, const QItemSelection &deselectedIndexes )
-{
-  const Collection::List selected = collectionsFromIndexes( selectedIndexes.indexes() );
-  const Collection::List deselected = collectionsFromIndexes( deselectedIndexes.indexes() );
-
-  emit selectionChanged( selected, deselected );
-  Q_FOREACH ( const Collection &c, deselected )
-    emit collectionDeselected( c );
-  Q_FOREACH ( const Collection &c, selected )
-    emit collectionSelected( c );
-}
 
 AkonadiCollectionView::AkonadiCollectionView( AkonadiCollectionViewFactory *factory, CalendarModel* calendarModel, QWidget *parent )
   : CalendarViewExtension( parent ), mActionManager(0), mCollectionview(0)

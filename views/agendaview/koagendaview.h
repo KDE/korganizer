@@ -57,8 +57,9 @@ namespace KCal {
 }
 using namespace KCal;
 
-
-class CollectionSelection;
+namespace Akonadi {
+  class CollectionSelection;
+}
 
 namespace KOrg {
 #ifndef KORG_NODECOS
