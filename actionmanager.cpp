@@ -63,6 +63,8 @@
 #include <akonadi/entitymimetypefiltermodel.h>
 #include <akonadi/entitydisplayattribute.h>
 #include <Akonadi/ItemFetchScope>
+#include <Akonadi/AgentManager>
+#include <Akonadi/AgentInstanceCreateJob>
 
 #include <kio/job.h>
 #include <KAction>
@@ -1076,12 +1078,37 @@ bool ActionManager::openURL( const KUrl &url, bool merge )
   return true;
 }
 
-bool ActionManager::addResource( const KUrl &mUrl )
+bool ActionManager::addResource( const KUrl &url )
 {
-  if ( mCalendar )
-    return mCalendar->addAgent(mUrl);
-  else
-    return false;
+  kDebug()<< url;
+  AgentType type = AgentManager::self()->type( QLatin1String("akonadi_ical_resource") );
+  AgentInstanceCreateJob *job = new AgentInstanceCreateJob( type, this );
+  job->setProperty("path", url.path());
+  connect( job, SIGNAL( result( KJob * ) ), this, SLOT( agentCreated( KJob * ) ) );
+  job->start();
+  return true;
+}
+
+void ActionManager::agentCreated( KJob *job )
+{
+    kDebug();
+    AgentInstanceCreateJob *createjob = qobject_cast<AgentInstanceCreateJob*>( job );
+    Q_ASSERT( createjob );
+    if ( createjob->error() ) {
+        mCalendarView->showErrorMessage( createjob->errorString() );
+        return;
+    }
+    AgentInstance instance = createjob->instance();
+    //instance.setName( CalendarName );
+    QDBusInterface iface( QString::fromLatin1("org.freedesktop.Akonadi.Resource.%1").arg( instance.identifier() ), QLatin1String("/Settings") );
+    if( ! iface.isValid() ) {
+        mCalendarView->showErrorMessage( i18n("Failed to obtain D-Bus interface for remote configuration.") );
+        return;
+    }
+    QString path = createjob->property( "path" ).toString();
+    Q_ASSERT( ! path.isEmpty() );
+    iface.call(QLatin1String("setPath"), path);
+    instance.reconfigure();
 }
 
 void ActionManager::showStatusMessageOpen( const KUrl &url, bool merge )

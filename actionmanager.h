@@ -330,6 +330,8 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
 
     void slotImportDialogFinished( ImportDialog * );
 
+    void agentCreated( KJob* );
+
   protected:
     /** Get URL for saving. Opens FileDialog. */
     KUrl getSaveURL();
