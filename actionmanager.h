@@ -91,10 +91,6 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     */
     void createCalendarAkonadi();
 
-    /**
-      Save calendar to disk.
-    */
-    void saveCalendar();
 
   public slots:
     /** Add a new resource
@@ -117,9 +113,6 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
 
     /** Save calendar file to URL */
     bool saveAsURL( const KUrl &kurl );
-
-    /** Save calendar if it is modified by the user. Ask user what to do. */
-    bool saveModifiedURL();
 
     void exportHTML();
     void exportHTML( KOrg::HTMLExportSettings * );
@@ -322,8 +315,6 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     void toggleEventViewer();
     void toggleResourceView();
 
-    /** called by the autoSaveTimer to automatically save the calendar */
-    void checkAutoSave();
 
     /** connected to CalendarView's signal which comes from the ArchiveDialog */
     void slotAutoArchivingSettingsModified();

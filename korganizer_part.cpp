@@ -96,7 +96,6 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, QObject *parent, const QV
 
 KOrganizerPart::~KOrganizerPart()
 {
-  mActionManager->saveCalendar();
   mActionManager->writeSettings();
 
   delete mActionManager;

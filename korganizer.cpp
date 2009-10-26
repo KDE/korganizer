@@ -302,6 +302,5 @@ void KOrganizer::setTitle()
     title += " - <" + mCalendarView->currentFilterName() + "> ";
   }
 
-  setCaption( title, !mCalendarView->isReadOnly() &&
-                      mCalendarView->isModified() );
+  setCaption( title, false );
 }

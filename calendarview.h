@@ -506,14 +506,6 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     /** Take ownership of all events in calendar. */
     void takeOverCalendar();
 
-    /** query whether or not the calendar is "dirty". */
-    bool isModified();
-
-    /** set the state of calendar. Modified means "dirty", i.e. needing a save.
-        @param modified Whether the calendar has been modified
-    */
-    void setModified( bool modified=true );
-
     /** query if the calendar is read-only. */
     bool isReadOnly();
 
@@ -635,8 +627,6 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     void dissociateOccurrence( const Akonadi::Item &incidence, const QDate & );
     void dissociateFutureOccurrence( const Akonadi::Item &incidence, const QDate & );
 
-    void calendarModified( bool, KOrg::AkonadiCalendar * );
-
     // Helper function for purgeCompleted that recursively purges a todo and
     // its subitems. If it cannot delete a completed todo (because it has
     // uncompleted subitems), notAllPurged is set to true.
@@ -672,7 +662,6 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     CalFilter *mCurrentFilter;
 
     // various housekeeping variables.
-    bool  mModified; // flag indicating if calendar is modified
     bool  mReadOnly; // flag indicating if calendar is read-only
     QDate mSaveSingleDate;
 

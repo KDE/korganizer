@@ -103,7 +103,6 @@ CalendarView::CalendarView( QWidget *parent )
   mViewManager = new KOViewManager( this );
   mDialogManager = new KODialogManager( this );
 
-  mModified = false;
   mReadOnly = false;
 
   mCalPrinter = 0;
@@ -372,10 +371,7 @@ bool CalendarView::openCalendar( const QString &filename, bool merge )
   loadedSuccesfully = storage.load();
 
   if ( loadedSuccesfully ) {
-    if ( merge ) {
-      setModified( true );
-    } else {
-      setModified( false );
+    if ( !merge ) {
       mViewManager->setDocumentId( filename );
       mTodoList->setDocumentId( filename );
     }
@@ -419,7 +415,6 @@ void CalendarView::closeCalendar()
   // child windows no longer valid
   emit closingDown();
   //mCalendar->close();
-  setModified( false );
   updateView();
 }
 
@@ -650,7 +645,6 @@ void CalendarView::updateConfig( const QByteArray &receiver )
 
 void CalendarView::incidenceAdded( const Item &incidence )
 {
-  setModified( true );
   history()->recordAdd( Akonadi::incidence( incidence ).get() );
   changeIncidenceDisplay( incidence, KOGlobals::INCIDENCEADDED );
   updateUnmanagedViews();
@@ -675,7 +669,6 @@ void CalendarView::incidenceChanged( const Item &oldIncidence_,
     kDebug() << "Incidence modified and open";
     tmp->modified( what );
   }
-  setModified( true );
   history()->recordEdit( oldIncidence, newIncidence );
 
   // Record completed todos in journals, if enabled. we should to this here in
@@ -733,7 +726,6 @@ void CalendarView::incidenceToBeDeleted( const Item &item )
     kDebug() << "Incidence to be deleted and open in editor";
     tmp->delayedDestruct();
   }
-  setModified( true );
   history()->recordDelete( incidence );
 //  changeIncidenceDisplay( incidence, KOGlobals::INCIDENCEDELETED );
   updateUnmanagedViews();
@@ -1170,7 +1162,6 @@ bool CalendarView::todo_unsub( const Item &todoItem )
       todo->setRelatedTo(0);
       mChanger->changeIncidence( oldTodo, todoItem, KOGlobals::RELATION_MODIFIED );
       mChanger->endChange( todoItem );
-      setModified(true);
       status = true;
   }
   if ( !status ) {
@@ -1594,14 +1585,6 @@ void CalendarView::openAddressbook()
   KRun::runCommand( "kcontactmanager", topLevelWidget() );
 }
 
-void CalendarView::setModified( bool modified )
-{
-  if ( mModified != modified ) {
-    mModified = modified;
-    emit modifiedChanged( mModified );
-  }
-}
-
 bool CalendarView::isReadOnly()
 {
   return mReadOnly;
@@ -1613,11 +1596,6 @@ void CalendarView::setReadOnly( bool readOnly )
     mReadOnly = readOnly;
     emit readOnlyChanged( mReadOnly );
   }
-}
-
-bool CalendarView::isModified()
-{
-  return mModified;
 }
 
 void CalendarView::print()
@@ -1753,7 +1731,6 @@ void CalendarView::exportVCalendar()
 
 void CalendarView::eventUpdated( const Item & )
 {
-  setModified();
   // Don't call updateView here. The code, which has caused the update of the
   // event is responsible for updating the view.
 //  updateView();
@@ -1997,12 +1974,6 @@ void CalendarView::showLeftFrame( bool show )
     mLeftFrame->hide();
     emit calendarViewExpanded( true );
   }
-}
-
-void CalendarView::calendarModified( bool modified, KOrg::AkonadiCalendar *calendar )
-{
-  Q_UNUSED( calendar );
-  setModified( modified );
 }
 
 Item CalendarView::selectedTodo()

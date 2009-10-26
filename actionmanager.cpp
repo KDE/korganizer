@@ -335,8 +335,6 @@ void ActionManager::initCalendar( KOrg::AkonadiCalendar *cal )
 {
   cal->setOwner( Person( KOPrefs::instance()->fullName(),
                          KOPrefs::instance()->email() ) );
-  // setting fullName and email do not really count as modifying the calendar
-  mCalendarView->setModified( false );
 }
 
 void ActionManager::initActions()
@@ -903,13 +901,7 @@ void ActionManager::file_open( const KUrl &url )
 
   kDebug() << url.prettyUrl();
 
-  // Open the calendar file in the same window only if we have an empty calendar
-  // window, and not the resource calendar.
-  if ( !mCalendarView->isModified() && mFile.isEmpty() && !mCalendarAkonadi ) {
-    openURL( url );
-  } else {
-    emit actionNew( url );
-  }
+  emit actionNew( url );
 }
 
 void ActionManager::file_icalimport()
@@ -1021,10 +1013,11 @@ void ActionManager::file_save()
 
 void ActionManager::file_close()
 {
+#ifdef AKONADI_PORT_DISABLED
   if ( !saveModifiedURL() ) {
     return;
   }
-
+#endif
   mCalendarView->closeCalendar();
   KIO::NetAccess::removeTempFile( mFile );
   mURL = "";
@@ -1051,7 +1044,6 @@ bool ActionManager::openURL( const KUrl &url, bool merge )
     mFile = url.toLocalFile();
     if ( !KStandardDirs::exists( mFile ) ) {
       mMainWindow->showStatusMessage( i18n( "New calendar '%1'.", url.prettyUrl() ) );
-      mCalendarView->setModified();
     } else {
       bool success = mCalendarView->openCalendar( mFile, merge );
       if ( success ) {
@@ -1156,8 +1148,6 @@ bool ActionManager::saveURL()
   if ( !mCalendarView->saveCalendar( mFile ) ) {
     kDebug() << "calendar view save failed.";
     return false;
-  } else {
-    mCalendarView->setModified( false );
   }
 
   if ( !mURL.isLocalFile() ) {
@@ -1317,6 +1307,7 @@ bool ActionManager::saveAsURL( const KUrl &url )
   return success;
 }
 
+#ifdef AKONADI_PORT_DISABLED // can go away, kept for reference
 bool ActionManager::saveModifiedURL()
 {
   kDebug();
@@ -1355,6 +1346,7 @@ bool ActionManager::saveModifiedURL()
     }
   }
 }
+#endif
 
 KUrl ActionManager::getSaveURL()
 {
@@ -1409,30 +1401,15 @@ void ActionManager::readProperties( const KConfigGroup &config )
   }
 }
 
-void ActionManager::checkAutoSave()
-{
-  kDebug();
-
-  // Don't save if auto save interval is zero
-  if ( KOPrefs::instance()->mAutoSaveInterval == 0 ) {
-    return;
-  }
-
-  // has this calendar been saved before? If yes automatically save it.
-  if ( KOPrefs::instance()->mAutoSave ) {
-    if ( mCalendarAkonadi || ( mCalendar && !url().isEmpty() ) ) {
-      saveCalendar();
-    }
-  }
-}
-
 // Configuration changed as a result of the options dialog.
 void ActionManager::updateConfig()
 {
   kDebug();
 
   if ( KOPrefs::instance()->mAutoSave && !mAutoSaveTimer->isActive() ) {
+#ifdef AKONADI_PORT_DISABLED
     checkAutoSave();
+#endif
     if ( KOPrefs::instance()->mAutoSaveInterval > 0 ) {
       mAutoSaveTimer->start( 1000 * 60 * KOPrefs::instance()->mAutoSaveInterval );
     }
@@ -2050,68 +2027,7 @@ void ActionManager::updateRedoAction( const QString &text )
 
 bool ActionManager::queryClose()
 {
-  kDebug();
-
-  bool close = true;
-
-  if ( mCalendar && mCalendar->isModified() ) {
-    int res = KMessageBox::questionYesNoCancel(
-      dialogParent(),
-      i18n( "The calendar contains unsaved changes. Do you want to save them before exiting?" ),
-      QString(), KStandardGuiItem::save(), KStandardGuiItem::discard() );
-    // Exit on yes and no, don't exit on cancel. If saving fails, ask for exiting.
-    if ( res == KMessageBox::Yes ) {
-      close = saveModifiedURL();
-      if ( !close ) {
-        int res1 = KMessageBox::questionYesNo(
-          dialogParent(),
-          i18n( "Unable to save the calendar. Do you still want to close this window?" ),
-          QString(), KStandardGuiItem::close(), KStandardGuiItem::cancel() );
-        close = ( res1 == KMessageBox::Yes );
-      }
-    } else {
-      close = ( res == KMessageBox::No );
-    }
-  } else if ( mCalendarAkonadi ) {
-    if ( !mIsClosing ) {
-      kDebug() << "!mIsClosing";
-
-      // FIXME: Put main window into a state indicating final saving.
-      mIsClosing = true;
-// FIXME: Close main window when save is finished
-//      connect( mCalendarAkonadi, SIGNAL(calendarSaved()),
-//               mMainWindow, SLOT(close()) );
-    }
-    if ( mCalendarAkonadi->isSaving() ) {
-      kDebug() << "isSaving";
-      close = false;
-      KMessageBox::information( dialogParent(),
-                                i18n( "Unable to exit. Saving still in progress." ) );
-    } else {
-      kDebug() << "close = true";
-      close = true;
-    }
-  } else {
-    close = true;
-  }
-
-  return close;
-}
-
-void ActionManager::saveCalendar()
-{
-  if ( mCalendar ) {
-    if ( view()->isModified() ) {
-      if ( !url().isEmpty() ) {
-        saveURL();
-      } else {
-        QString location = KStandardDirs::locateLocal( "data", "korganizer/kontact.ics" );
-        saveAsURL( location );
-      }
-    }
-  } else if ( mCalendarAkonadi ) {
-    //mCalendarAkonadi->save();
-  }
+  return true;
 }
 
 void ActionManager::importCalendar( const KUrl &url )
