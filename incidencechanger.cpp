@@ -417,8 +417,8 @@ bool IncidenceChanger::addIncidence( const KCal::Incidence::Ptr &incidence, QWid
 
 bool IncidenceChanger::addIncidence( const Incidence::Ptr &incidence, const Collection &collection, QWidget* parent )
 {
-  Q_ASSERT( incidence );
-  Q_ASSERT( collection.isValid() );
+  if( !incidence || !collection.isValid() )
+    return false;
   kDebug() << "\"" << incidence->summary() << "\"";
 
   Item item;
