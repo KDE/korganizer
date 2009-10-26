@@ -33,9 +33,7 @@ class QResizeEvent;
 class QScrollBar;
 class QSplitter;
 
-namespace KCal {
-  class ResourceCalendar;
-}
+class CollectionSelection;
 
 namespace KOrg {
 
@@ -56,6 +54,7 @@ class MultiAgendaView : public AgendaView
 
     bool eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &allDay );
     /* reimp */ void setCalendar( AkonadiCalendar *cal );
+    void setCollectionSelection( CollectionSelection* sel );
 
   public slots:
     void showDates( const QDate &start, const QDate &end );
@@ -73,9 +72,8 @@ class MultiAgendaView : public AgendaView
     void showEvent( QShowEvent *event );
 
   private:
-    void addView( const QString &label, KCal::ResourceCalendar *res, const QString &subRes = QString() );
+    void addView( const Akonadi::Collection &collection );
     void deleteViews();
-    void recreateViews();
     void setupViews();
     void resizeScrollView( const QSize &size );
 
@@ -86,6 +84,7 @@ class MultiAgendaView : public AgendaView
     void setupScrollBar();
     void zoomView( const int delta, const QPoint &pos, const Qt::Orientation ori );
     void slotResizeScrollView();
+    void recreateViews();
 
   private:
     QList<KOAgendaView*> mAgendaViews;
@@ -99,6 +98,7 @@ class MultiAgendaView : public AgendaView
     QDate mStartDate, mEndDate;
     bool mUpdateOnShow;
     bool mPendingChanges;
+    CollectionSelection *mCollectionSelection;
 };
 
 }

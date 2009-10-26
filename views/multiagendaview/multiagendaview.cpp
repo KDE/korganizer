@@ -22,6 +22,7 @@
 #include "views/agendaview/koagenda.h"
 #include "views/agendaview/koagendaview.h"
 #include "akonadicalendar.h"
+#include "akonadicollectionview.h"
 
 #include <KGlobalSettings>
 #include <KHBox>
@@ -39,7 +40,8 @@ using namespace KOrg;
 MultiAgendaView::MultiAgendaView( QWidget *parent )
   : AgendaView( parent ),
     mUpdateOnShow( true ),
-    mPendingChanges( true )
+    mPendingChanges( true ),
+    mCollectionSelection( 0 )
 {
   QHBoxLayout *topLevelLayout = new QHBoxLayout( this );
   topLevelLayout->setSpacing( 0 );
@@ -122,6 +124,16 @@ void MultiAgendaView::setCalendar( AkonadiCalendar *cal )
   recreateViews();
 }
 
+void MultiAgendaView::setCollectionSelection( CollectionSelection* sel )
+{
+  if ( sel == mCollectionSelection )
+    return;
+  if ( mCollectionSelection )
+    mCollectionSelection->disconnect( this );
+  mCollectionSelection = sel;
+  connect( sel, SIGNAL(selectionChanged(Akonadi::Collection::List,Akonadi::Collection::Ist)), this, SLOT(recreateViews()) );
+}
+
 void MultiAgendaView::recreateViews()
 {
   if ( !mPendingChanges ) {
@@ -131,8 +143,7 @@ void MultiAgendaView::recreateViews()
 
   deleteViews();
 
-  AkonadiCalendar *calres = dynamic_cast<AkonadiCalendar*>( calendar() );
-  if ( !calres ) {
+  if ( !mCollectionSelection ) {
     // fallback to single-agenda
     KOAgendaView *av = new KOAgendaView( mTopBox );
     av->setCalendar( calendar() );
@@ -140,26 +151,8 @@ void MultiAgendaView::recreateViews()
     mAgendaWidgets.append( av );
     av->show();
   } else {
-#if 0 //AKONADI_PORT_DISABLED
-    CalendarResourceManager *manager = calres->resourceManager();
-    for ( CalendarResourceManager::ActiveIterator it = manager->activeBegin(); it != manager->activeEnd(); ++it ) {
-      if ( (*it)->canHaveSubresources() ) {
-        QStringList subResources = (*it)->subresources();
-        for ( QStringList::ConstIterator subit = subResources.constBegin();
-              subit != subResources.constEnd(); ++subit ) {
-          QString type = (*it)->subresourceType( *subit );
-          if ( !(*it)->subresourceActive( *subit ) || ( !type.isEmpty() && type != "event" ) ) {
-            continue;
-          }
-          addView( (*it)->labelForSubresource( *subit ), *it, *subit );
-        }
-      } else {
-        addView( (*it)->resourceName(), *it );
-      }
-    }
-#else
-    kWarning()<<"TODO";
-#endif
+    Q_FOREACH( const Collection &i, mCollectionSelection->selectedCollections() )
+      addView( i );
   }
 
   // no resources activated, so stop here to avoid crashing somewhere down the line
@@ -369,15 +362,14 @@ void MultiAgendaView::slotClearTimeSpanSelection()
   }
 }
 
-void MultiAgendaView::addView( const QString &label, KCal::ResourceCalendar *res,
-                               const QString &subResource )
+void MultiAgendaView::addView( const Collection &collection )
 {
   KVBox *box = new KVBox( mTopBox );
-  QLabel *l = new QLabel( label, box );
+  QLabel *l = new QLabel( collection.name(), box );
   l->setAlignment( Qt::AlignVCenter | Qt::AlignHCenter );
   KOAgendaView *av = new KOAgendaView( box, true );
   av->setCalendar( calendar() );
-  av->setResource( res, subResource );
+  av->setCollection( collection.id() );
   av->setIncidenceChanger( mChanger );
   av->agenda()->setVScrollBarMode( Q3ScrollView::AlwaysOff );
   mAgendaViews.append( av );
@@ -431,6 +423,8 @@ void MultiAgendaView::updateConfig()
 
 void MultiAgendaView::resizeSplitters()
 {
+  if ( mAgendaViews.isEmpty() )
+    return;
   QSplitter *lastMovedSplitter = qobject_cast<QSplitter*>( sender() );
   if ( !lastMovedSplitter ) {
     lastMovedSplitter = mAgendaViews.first()->splitter();
@@ -493,6 +487,8 @@ void MultiAgendaView::setUpdateNeeded()
 
 void MultiAgendaView::setupScrollBar()
 {
+  if ( mAgendaViews.isEmpty() )
+    return;
   QScrollBar *scrollBar = mAgendaViews.first()->agenda()->verticalScrollBar();
   mScrollBar->setMinimum( scrollBar->minimum() );
   mScrollBar->setMaximum( scrollBar->maximum() );

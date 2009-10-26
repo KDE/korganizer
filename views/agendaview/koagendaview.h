@@ -29,6 +29,7 @@
 #include "calprinter.h"
 #include "akonadicalendar.h"
 
+#include <Akonadi/Collection>
 #include <Akonadi/Item>
 
 #include <QFrame>
@@ -55,6 +56,9 @@ namespace KCal {
   class ResourceCalendar;
 }
 using namespace KCal;
+
+
+class CollectionSelection;
 
 namespace KOrg {
 #ifndef KORG_NODECOS
@@ -138,8 +142,9 @@ class KOAgendaView : public KOrg::AgendaView, public KOrg::AkonadiCalendar::Cale
     /* reimp from BaseView */
     virtual void setCalendar( AkonadiCalendar *cal );
      
-    /** Show only incidences from the given resource. */
-    void setResource( KCal::ResourceCalendar *res, const QString &subResource = QString() );
+    /** Show only incidences from the given collection selection. */
+//    void setCollectionSelection( CollectionSelection* selection );
+    void setCollection( Akonadi::Collection::Id id );
 
     KOAgenda *agenda() const { return mAgenda; }
     QSplitter *splitter() const { return mSplitterAgenda; }
@@ -240,7 +245,7 @@ class KOAgendaView : public KOrg::AgendaView, public KOrg::AkonadiCalendar::Cale
 
   private:
 
-    bool filterByResource( const Akonadi::Item &incidence );
+    bool filterByCollectionSelection( const Akonadi::Item &incidence );
     void setupTimeLabel( TimeLabels *timeLabel );
     int timeLabelsWidth();
     void displayIncidence( const Akonadi::Item &incidence );
@@ -293,8 +298,8 @@ class KOAgendaView : public KOrg::AgendaView, public KOrg::AkonadiCalendar::Cale
 
     Akonadi::Item mUpdateItem;
 
-    KCal::ResourceCalendar *mResource;
-    QString mSubResource;
+    //CollectionSelection *mCollectionSelection;
+    Akonadi::Collection::Id mCollectionId;
 
     bool mIsSideBySide;
     bool mPendingChanges;

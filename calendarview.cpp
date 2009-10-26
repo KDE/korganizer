@@ -97,6 +97,7 @@ CalendarView::CalendarView( QWidget *parent )
   : CalendarViewBase( parent ),
     mHistory( 0 ),
     mCalendar( 0 ),
+    mCollectionSelection( 0 ),
     mChanger( 0 ),
     mSplitterSizesValid( false )
 {
@@ -265,6 +266,16 @@ void CalendarView::setCalendar( KOrg::AkonadiCalendar *cal )
   mDateNavigatorContainer->setCalendar( mCalendar );
 
   mTodoList->setCalendar( mCalendar );
+}
+
+void CalendarView::setCollectionSelection( CollectionSelection* sel )
+{
+  mCollectionSelection = sel;
+}
+
+CollectionSelection* CalendarView::collectionSelection() const
+{
+  return mCollectionSelection;
 }
 
 void CalendarView::setIncidenceChanger( IncidenceChangerBase *changer )

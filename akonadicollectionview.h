@@ -79,6 +79,7 @@ public:
 
   QItemSelectionModel* model() const;
   Akonadi::Collection::List selectedCollections() const;
+  QList<Akonadi::Collection::Id> selectedCollectionIds() const;
   bool hasSelection() const;
 
 Q_SIGNALS:

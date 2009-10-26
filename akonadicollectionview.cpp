@@ -94,6 +94,10 @@ static Collection collectionFromIndex( const QModelIndex &index ) {
   return index.model()->data( index, Akonadi::EntityTreeModel::CollectionRole ).value<Akonadi::Collection>();
 }
 
+static Collection::Id collectionIdFromIndex( const QModelIndex &index ) {
+  return index.model()->data( index, Akonadi::EntityTreeModel::CollectionIdRole ).value<Akonadi::Collection::Id>();
+}
+
 static Collection::List collectionsFromIndexes( const QModelIndexList &indexes ) {
   Collection::List l;
   Q_FOREACH( const QModelIndex &idx, indexes )
@@ -188,11 +192,18 @@ bool CollectionSelection::hasSelection() const
   return d->model->hasSelection();
 }
 
-Akonadi::Collection::List CollectionSelection::selectedCollections() const
+Collection::List CollectionSelection::selectedCollections() const
 {
   Collection::List selected;
   Q_FOREACH ( const QModelIndex &idx, d->model->selectedIndexes() )
     selected.append( collectionFromIndex( idx ) );
+  return selected;
+}
+
+QList<Collection::Id> CollectionSelection::selectedCollectionIds() const {
+  QList<Collection::Id> selected;
+  Q_FOREACH ( const QModelIndex &idx, d->model->selectedIndexes() )
+    selected.append( collectionIdFromIndex( idx ) );
   return selected;
 }
 

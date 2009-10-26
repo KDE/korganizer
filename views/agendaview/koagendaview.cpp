@@ -36,6 +36,7 @@
 #include "koprefs.h"
 #include "timelabelszone.h"
 #include "akonadicalendar.h"
+#include "akonadicollectionview.h"
 
 #include <akonadi/kcal/utils.h>
 
@@ -115,7 +116,7 @@ KOAgendaView::KOAgendaView( QWidget *parent, bool isSideBySide ) :
   mTimeLabelsZone( 0 ),
   mAllowAgendaUpdate( true ),
   mUpdateItem( 0 ),
-  mResource( 0 ),
+  mCollectionId( -1 ),
   mIsSideBySide( isSideBySide ),
   mPendingChanges( true )
 {
@@ -1107,7 +1108,7 @@ void KOAgendaView::showIncidences( const Item::List &incidences, const QDate &da
 
 void KOAgendaView::insertIncidence( const Item &aitem, const QDate &curDate )
 {
-  if ( !filterByResource( aitem ) ) {
+  if ( !filterByCollectionSelection( aitem ) ) {
     return;
   }
 
@@ -1645,37 +1646,28 @@ void KOAgendaView::clearTimeSpanSelection()
   deleteSelectedDateTime();
 }
 
-void KOAgendaView::setResource( KCal::ResourceCalendar *res, const QString &subResource )
+#if 0
+void KOAgendaView::setCollectionSelection( CollectionSelection* sel )
 {
-  mResource = res;
-  mSubResource = subResource;
+  if ( mCollectionSelection == sel )
+    return;
+  mCollectionSelection = sel;
+}
+#endif
+
+void KOAgendaView::setCollection( Collection::Id coll )
+{
+  if ( mCollectionId == coll )
+    return;
+  mCollectionId = coll;
 }
 
-bool KOAgendaView::filterByResource( const Item &incidence )
+bool KOAgendaView::filterByCollectionSelection( const Item &incidence )
 {
-  if ( !mResource ) {
+  if ( mCollectionId < 0 )
     return true;
-  }
-
-  AkonadiCalendar *calRes = dynamic_cast<AkonadiCalendar*>( calendar() );
-  if ( !calRes ) {
-    return true;
-  }
-
-#if 0 //AKONADI_PORT_DISABLED
-  if ( calRes->resource( incidence ) != mResource ) {
-    return false;
-  }
-
-  if ( !mSubResource.isEmpty() ) {
-    if ( mResource->subresourceIdentifier( incidence ) != mSubResource ) {
-      return false;
-    }
-  }
-#else
-  kWarning()<<"TODO";
-#endif
-  return true;
+  else
+    return mCollectionId == incidence.storageCollectionId();
 }
 
 void KOAgendaView::setUpdateNeeded()

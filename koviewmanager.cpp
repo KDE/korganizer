@@ -429,6 +429,7 @@ void KOViewManager::showAgendaView()
     if ( !mAgendaSideBySideView ) {
       mAgendaSideBySideView = new MultiAgendaView( parent );
       mAgendaSideBySideView->setCalendar( mMainView->calendar() );
+      mAgendaSideBySideView->setCollectionSelection( mMainView->collectionSelection() );
       mAgendaSideBySideView->setObjectName( "KOViewManager::AgendaSideBySideView" );
       addView( mAgendaSideBySideView, showBoth );
 

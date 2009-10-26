@@ -314,6 +314,7 @@ void ActionManager::createCalendarAkonadi()
   mCalendar = new AkonadiCalendar( filterProxy2, KSystemTimeZones::local() );
 
   mCalendarView->setCalendar( mCalendar );
+  mCalendarView->setCollectionSelection( mResourceView->collectionSelection() );
   mCalendarView->readSettings();
 
   connect( mCalendar, SIGNAL(calendarChanged()),
