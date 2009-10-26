@@ -31,6 +31,7 @@
 #include "korganizer/baseview.h"
 
 #include <akonadi/kcal/utils.h>
+#include <akonadi/kcal/kcalmimetypevisitor.h>
 
 #include <KCal/IncidenceFormatter>
 
@@ -42,7 +43,7 @@
 using namespace Akonadi;
 
 KOJournalEditor::KOJournalEditor( QWidget *parent )
-  : KOIncidenceEditor( QString(), parent )
+  : KOIncidenceEditor( QString(), QStringList() << KCalMimeTypeVisitor::journalMimeType(), parent )
 {
 }
 

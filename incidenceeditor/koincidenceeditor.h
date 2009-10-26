@@ -62,7 +62,7 @@ class INCIDENCEEDITOR_EXPORT KOIncidenceEditor : public KDialog
     /**
       Construct new IncidenceEditor.
     */
-    KOIncidenceEditor( const QString &caption, QWidget *parent );
+    KOIncidenceEditor( const QString &caption, QStringList mimetypes, QWidget *parent );
     virtual ~KOIncidenceEditor();
 
     /** This incidence has been modified externally */
@@ -75,7 +75,7 @@ class INCIDENCEEDITOR_EXPORT KOIncidenceEditor : public KDialog
 
     /** Calls readIncidence(mIncidence) */
     void reload();
-    
+
     virtual void selectInvitationCounterProposal( bool enable );
     virtual void selectCreateTask( bool enable );
 
@@ -126,7 +126,7 @@ class INCIDENCEEDITOR_EXPORT KOIncidenceEditor : public KDialog
     void slotLoadTemplate( const QString &templateName );
     void slotSaveTemplate( const QString &templateName );
     void slotTemplatesChanged( const QStringList &templateNames );
-    
+
   protected:
     virtual bool read( const Akonadi::Item &, bool tmpl = false ) = 0;
     virtual void closeEvent( QCloseEvent * );

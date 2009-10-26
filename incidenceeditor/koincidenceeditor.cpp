@@ -53,7 +53,7 @@
 using namespace Akonadi;
 using namespace KCal;
 
-KOIncidenceEditor::KOIncidenceEditor( const QString &caption, QWidget *parent )
+KOIncidenceEditor::KOIncidenceEditor( const QString &caption, QStringList mimetypes, QWidget *parent )
   : KDialog( parent ), mAttendeeEditor( 0 ), mIsCounter( false ), mIsCreateTask( false ), mMonitor( 0 )
 {
   setCaption( caption );
@@ -86,14 +86,14 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption, QWidget *parent )
   QHBoxLayout *callayout = new QHBoxLayout( mainWidget() );
   callayout->setSpacing( KDialog::spacingHint() );
   mCalSelector = new Akonadi::CollectionComboBox( mainWidget() );
-  mCalSelector->setMimeTypeFilter( QStringList() << "text/calendar" );
+  mCalSelector->setMimeTypeFilter( mimetypes );
   //mCalSelector->setAccessRightsFilter( Akonadi::Collection::ReadOnly );
   QLabel *callabel = new QLabel( i18n("Calendar:"), mainWidget() );
   callabel->setBuddy( mCalSelector );
   callayout->addWidget( callabel );
   callayout->addWidget( mCalSelector, 1 );
   layout->addLayout( callayout );
-  
+
   mTabWidget = new QTabWidget( mainWidget() );
   layout->addWidget( mTabWidget );
 
@@ -125,7 +125,7 @@ void KOIncidenceEditor::editIncidence( const Akonadi::Item &item )
   Incidence::Ptr incidence = Akonadi::incidence(item);
   Q_ASSERT(incidence);
   Q_ASSERT(incidence->type() == type());
-  
+
   init();
 
   if( mIncidence.isValid() ) {
@@ -134,7 +134,7 @@ void KOIncidenceEditor::editIncidence( const Akonadi::Item &item )
   } else {
     Q_ASSERT( ! mIncidence.hasPayload<Incidence::Ptr>()); // not possible, right?
   }
-    
+
   readIncidence( item, false );
   mIncidence = item;
 
@@ -150,7 +150,7 @@ void KOIncidenceEditor::editIncidence( const Akonadi::Item &item )
     //         this, SLOT(readIncidence(Akonadi::Item)) );
   }
   mMonitor->setItemMonitored(item, true);
-  
+
   setCaption( i18nc( "@title:window", "Edit %1: %2", QString(incidence->type()), incidence->summary() ) );
 }
 
@@ -316,7 +316,7 @@ void KOIncidenceEditor::slotSaveTemplate( const QString &templateName )
   Q_ASSERT( mIncidence.isValid() );
   Q_ASSERT( mIncidence.hasPayload<Incidence::Ptr>() );
   Incidence::Ptr incidence = mIncidence.payload<Incidence::Ptr>();
-  
+
   QString fileName = "templates/" + incidence->type();
   fileName.append( '/' + templateName );
   fileName = KStandardDirs::locateLocal( "data", "korganizer/" + fileName );

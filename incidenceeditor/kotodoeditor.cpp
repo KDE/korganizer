@@ -48,12 +48,13 @@
 #include <QTabWidget>
 
 #include <akonadi/kcal/utils.h>
+#include <akonadi/kcal/kcalmimetypevisitor.h>
 
 using namespace Akonadi;
 using namespace KOrg;
 
 KOTodoEditor::KOTodoEditor( QWidget *parent )
-  : KOIncidenceEditor( QString(), parent ), mRelatedTodo()
+  : KOIncidenceEditor( QString(), QStringList() << KCalMimeTypeVisitor::todoMimeType(), parent ), mRelatedTodo()
 {
   mInitialTodo = Todo::Ptr( new Todo );
   mInitialTodoItem.setPayload(mInitialTodo);
@@ -77,7 +78,7 @@ bool KOTodoEditor::incidenceModified()
   }
 
   Todo::Ptr newTodo( oldTodo->clone() );
-  
+
   Akonadi::Item newTodoItem;
   newTodoItem.setPayload(newTodo);
   fillTodo( newTodoItem );

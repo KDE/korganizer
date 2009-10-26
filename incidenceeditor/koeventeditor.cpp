@@ -34,6 +34,8 @@
 
 #include <akonadi/kcal/utils.h>
 
+#include <akonadi/kcal/kcalmimetypevisitor.h>
+
 #include <KCal/IncidenceFormatter>
 
 #include <KMessageBox>
@@ -45,7 +47,7 @@
 using namespace Akonadi;
 
 KOEventEditor::KOEventEditor( QWidget *parent )
-  : KOIncidenceEditor( QString(), parent ),
+  : KOIncidenceEditor( QString(), QStringList() << KCalMimeTypeVisitor::eventMimeType(), parent ),
     mGeneral( 0 ), mRecurrence( 0 ), mFreeBusy( 0 )
 {
   mInitialEvent = Event::Ptr( new Event );
@@ -384,7 +386,7 @@ void KOEventEditor::updateRecurrenceSummary()
   Akonadi::Item evItem;
   evItem.setPayload(ev);
   fillEvent( evItem );
-  
+
   mGeneral->updateRecurrenceSummary( IncidenceFormatter::recurrenceString( ev.get() ) );
 }
 
@@ -398,7 +400,7 @@ void KOEventEditor::selectInvitationCounterProposal( bool enable )
 
 void KOEventEditor::show()
 {
-  
+
   fillEvent( mInitialEventItem );
   KOIncidenceEditor::show();
 }
