@@ -2362,6 +2362,9 @@ bool CalendarView::deleteIncidence( const Item &item, bool force )
 
 void CalendarView::connectIncidenceEditor( KOIncidenceEditor *editor )
 {
+  if ( ! mCollectionSelection->selectedCollections().isEmpty() )
+    editor->selectCollection( mCollectionSelection->selectedCollections().first() );
+
   connect( this, SIGNAL(newIncidenceChanger(IncidenceChangerBase *)),
            editor, SLOT(setIncidenceChanger(IncidenceChangerBase *)) );
   editor->setIncidenceChanger( mChanger );

@@ -76,6 +76,7 @@ class INCIDENCEEDITOR_EXPORT KOIncidenceEditor : public KDialog
     /** Calls readIncidence(mIncidence) */
     void reload();
 
+    void selectCollection( const Akonadi::Collection &collection );
     virtual void selectInvitationCounterProposal( bool enable );
     virtual void selectCreateTask( bool enable );
 

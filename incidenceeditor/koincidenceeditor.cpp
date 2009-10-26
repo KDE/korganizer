@@ -544,4 +544,9 @@ void KOIncidenceEditor::selectInvitationCounterProposal( bool enable )
   }
 }
 
+void KOIncidenceEditor::selectCollection( const Akonadi::Collection &collection )
+{
+  mCalSelector->setDefaultCollection( collection );
+}
+
 #include "koincidenceeditor.moc"
