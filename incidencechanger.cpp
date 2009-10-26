@@ -74,7 +74,7 @@ bool IncidenceChanger::beginChange( const Item &item )
   }
   const Incidence::Ptr incidence = Akonadi::incidence( item );
   Q_ASSERT( incidence );
-  kDebug() << "uid=" << incidence->uid() << "summary=" << incidence->summary() << "type=" << incidence->type() << "storageCollectionId=" << item.storageCollectionId();
+  kDebug() << "id=" << item.id() << "uid=" << incidence->uid() << "version=" << item.revision() << "summary=" << incidence->summary() << "type=" << incidence->type() << "storageCollectionId=" << item.storageCollectionId();
   Q_ASSERT( ! d->m_changes.contains( item.id() ) ); // no nested changes allowed
   d->m_changes.push_back( item.id() );
   d->m_incidenceBeingChanged = Incidence::Ptr( incidence->clone() );
@@ -159,7 +159,7 @@ bool IncidenceChanger::endChange( const Item &item )
     return true;
   }
 
-  kDebug() << "modify uid=" << incidence->uid() << "summary=" << incidence->summary() << "type=" << incidence->type() << "storageCollectionId=" << item.storageCollectionId();
+  kDebug() << "modify id=" << item.id() << "uid=" << incidence->uid() << "version=" << item.revision() << "summary=" << incidence->summary() << "type=" << incidence->type() << "storageCollectionId=" << item.storageCollectionId();
   ItemModifyJob *job = new ItemModifyJob( item );
   connect( job, SIGNAL(result( KJob*)), this, SLOT(changeIncidenceFinished(KJob*)) );
   return true;
