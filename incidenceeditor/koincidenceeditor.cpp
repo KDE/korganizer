@@ -59,6 +59,7 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption, QStringList mimety
   setCaption( caption );
   setButtons( Ok | Apply | Cancel | Default );
   setDefaultButton( Ok );
+  enableButton( Ok, false );
   setModal( false );
   showButtonSeparator( false );
 
@@ -86,7 +87,12 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption, QStringList mimety
   QHBoxLayout *callayout = new QHBoxLayout( mainWidget() );
   callayout->setSpacing( KDialog::spacingHint() );
   mCalSelector = new Akonadi::CollectionComboBox( mainWidget() );
-  mCalSelector->setMimeTypeFilter( mimetypes );
+  mCalSelector->setMimeTypeFilter( QStringList() << mimetypes );
+  connect(mCalSelector, SIGNAL(currentChanged(Akonadi::Collection)), SLOT(slotSelectedCollectionChanged()));
+  connect(mCalSelector->model(), SIGNAL(rowsInserted(QModelIndex,int,int)), SLOT(slotSelectedCollectionChanged()));
+  connect(mCalSelector->model(), SIGNAL(rowsRemoved(QModelIndex,int,int)), SLOT(slotSelectedCollectionChanged()));
+  connect(mCalSelector->model(), SIGNAL(dataChanged(QModelIndex,QModelIndex)()), SLOT(slotSelectedCollectionChanged()));
+  connect(mCalSelector->model(), SIGNAL(modelReset()), SLOT(slotSelectedCollectionChanged()));
   //mCalSelector->setAccessRightsFilter( Akonadi::Collection::ReadOnly );
   QLabel *callabel = new QLabel( i18n("Calendar:"), mainWidget() );
   callabel->setBuddy( mCalSelector );
@@ -246,6 +252,11 @@ void KOIncidenceEditor::cancelRemovedAttendees( const Akonadi::Item &item )
       emit deleteAttendee( item );
     }
   }
+}
+
+void KOIncidenceEditor::slotSelectedCollectionChanged()
+{
+  enableButton( Ok, mCalSelector->currentCollection().isValid() );
 }
 
 void KOIncidenceEditor::slotItemChanged( const Akonadi::Item &item )

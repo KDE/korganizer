@@ -119,6 +119,7 @@ class INCIDENCEEDITOR_EXPORT KOIncidenceEditor : public KDialog
     void slotButtonClicked( int button );
 
   private slots:
+    void slotSelectedCollectionChanged();
     void slotItemChanged( const Akonadi::Item &item );
     void slotItemRemoved( const Akonadi::Item &item );
 
