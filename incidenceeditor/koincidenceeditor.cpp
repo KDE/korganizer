@@ -60,6 +60,7 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption, QStringList mimety
   setButtons( Ok | Apply | Cancel | Default );
   setDefaultButton( Ok );
   enableButton( Ok, false );
+  enableButton( Apply, false );
   setModal( false );
   showButtonSeparator( false );
 
@@ -256,7 +257,9 @@ void KOIncidenceEditor::cancelRemovedAttendees( const Akonadi::Item &item )
 
 void KOIncidenceEditor::slotSelectedCollectionChanged()
 {
-  enableButton( Ok, mCalSelector->currentCollection().isValid() );
+  const bool enabled = mCalSelector->currentCollection().isValid();
+  enableButton( Ok, enabled );
+  enableButton( Apply, enabled );
 }
 
 void KOIncidenceEditor::slotItemChanged( const Akonadi::Item &item )
