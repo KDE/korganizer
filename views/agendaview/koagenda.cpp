@@ -70,9 +70,9 @@ MarcusBains::MarcusBains( KOAgenda *agenda )
   mTimeBox->setAlignment( Qt::AlignRight | Qt::AlignBottom );
   mAgenda->addChild( mTimeBox );
 
-  mTimer = new QTimer( this );
+  mTimer = new QTimer( 0 );
   mTimer->setSingleShot( true );
-  connect( mTimer, SIGNAL(timeout()), this, SLOT(updateLocation()) );
+  connect( mTimer, SIGNAL(timeout()), this, SLOT(updateLocation(bool)) );
   mTimer->start( 0 );
 
   mOldTodayCol = -1;
