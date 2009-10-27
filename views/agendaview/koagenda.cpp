@@ -70,7 +70,7 @@ MarcusBains::MarcusBains( KOAgenda *agenda )
   mTimeBox->setAlignment( Qt::AlignRight | Qt::AlignBottom );
   mAgenda->addChild( mTimeBox );
 
-  mTimer = new QTimer( 0 );
+  mTimer = new QTimer( this );
   mTimer->setSingleShot( true );
   connect( mTimer, SIGNAL(timeout()), this, SLOT(updateLocation(bool)) );
   mTimer->start( 0 );
