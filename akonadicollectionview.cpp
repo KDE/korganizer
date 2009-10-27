@@ -101,6 +101,11 @@ class CollectionProxyModel : public QSortFilterProxyModel
 
     /* reimp */ Qt::ItemFlags flags(const QModelIndex &index) const
     {
+      if ( !index.isValid() )
+        return QSortFilterProxyModel::flags( index );
+      const Akonadi::Collection collection = Akonadi::collectionFromIndex( index );
+      if ( collection.contentMimeTypes().isEmpty() )
+        return QSortFilterProxyModel::flags( index ) | Qt::ItemIsSelectable | Qt::ItemIsEnabled;
       return QSortFilterProxyModel::flags(index) | Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsUserCheckable;
     }
 
@@ -113,10 +118,15 @@ class CollectionProxyModel : public QSortFilterProxyModel
       switch(role) {
         case Qt::DecorationRole: {
             const Akonadi::Collection collection = Akonadi::collectionFromIndex( index );
+            if ( collection.contentMimeTypes().isEmpty() )
+              return QSortFilterProxyModel::data( index, role ); 
             return KOHelper::resourceColor( collection );
         }
         case Qt::CheckStateRole: {
           if ( index.column() != CalendarModel::CollectionTitle )
+            return QVariant();
+          const Akonadi::Collection collection = Akonadi::collectionFromIndex( index );
+          if ( collection.contentMimeTypes().isEmpty() )
             return QVariant();
           return mCollectionSelection->model()->isSelected( index ) ? Qt::Checked : Qt::Unchecked;
         } break;
