@@ -291,7 +291,6 @@ void ActionManager::createCalendarAkonadi()
 
   mCollectionView = factory.collectionView();
   mCollectionViewStateSaver = new EntityTreeViewStateSaver( mCollectionView->view() );
-  mCollectionViewStateSaver->addAdditionalRole( Qt::CheckStateRole, "CheckState", Qt::Unchecked );
   connect( mCollectionView, SIGNAL(resourcesChanged(bool)), SLOT(slotResourcesChanged(bool)) );
 
   KSelectionProxyModel* selectionProxy = new KSelectionProxyModel( mCollectionView->collectionSelection()->model() );
@@ -835,7 +834,8 @@ void ActionManager::readSettings()
     mRecent->loadEntries( config->group( "RecentFiles" ) );
   }
   mCalendarView->readSettings();
-  mCollectionViewStateSaver->restoreState( config->group( "GlobalCollectionSelection" ) );
+  mCollectionViewStateSaver->restoreState( config->group( "GlobalCollectionView" ) );
+  mCollectionView->restoreConfig( config->group( "GlobalCollectionSelection") );
 }
 
 void ActionManager::writeSettings()
@@ -865,10 +865,12 @@ void ActionManager::writeSettings()
     mRecent->saveEntries( KOGlobals::self()->config()->group( "RecentFiles" ) );
   }
 
+  KConfigGroup selectionViewGroup = KOGlobals::self()->config()->group( "GlobalCollectionView" );
+  mCollectionViewStateSaver->saveState( selectionViewGroup );
+  selectionViewGroup.sync();
   KConfigGroup selectionGroup = KOGlobals::self()->config()->group( "GlobalCollectionSelection" );
-  mCollectionViewStateSaver->saveState( selectionGroup );
+  mCollectionView->saveConfig( selectionGroup );
   selectionGroup.sync();
-
   config.sync();
 }
 

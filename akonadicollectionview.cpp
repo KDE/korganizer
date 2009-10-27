@@ -25,7 +25,6 @@
 */
 
 #include "akonadicollectionview.h"
-#include "akonadicollectionview.moc"
 #include "akonadicalendar.h"
 #include "kocore.h"
 #include "kohelper.h"
@@ -60,7 +59,167 @@
 #include <akonadi/session.h>
 #include <akonadi/changerecorder.h>
 
+#include <QHash>
+
 using namespace Akonadi;
+
+namespace {
+  struct Role {
+    QByteArray identifier;
+    int role;
+    QVariant defaultValue;
+  };
+}
+
+class ModelStateSaver::Private
+{
+  ModelStateSaver* const q;
+public:
+  explicit Private( QAbstractItemModel* m, ModelStateSaver* qq ) : q( qq ), model( m ) {}
+  void rowsInserted( const QModelIndex&, int, int );
+
+  QAbstractItemModel* const model;
+  QHash<QString, QVector<QPair<int,QVariant> > > pendingProperties;
+  QHash<QByteArray,Role> roles;
+
+  void saveState( const QModelIndex &index, QHash<QByteArray,QVector<QPair<QString, QVariant> > > &values )
+  {
+    const QString cfgKey = q->key( index );
+
+    Q_FOREACH( const Role &r, roles )
+    {
+      const QVariant v = index.data( r.role );
+      if ( v != r.defaultValue )
+        values[r.identifier].push_back( qMakePair( cfgKey, v ) );
+    }
+    const int rowCount = model->rowCount( index );
+    for ( int i = 0; i < rowCount; ++i ) {
+      const QModelIndex child = model->index( i, 0, index );
+      saveState( child, values );
+    }
+  }
+
+  void restoreState( const QModelIndex &index )
+  {
+    const QString key = q->key( index );
+    if ( pendingProperties.contains( key ) ) {
+      typedef QPair<int,QVariant> IntVariantPair;
+      Q_FOREACH ( const IntVariantPair &i, pendingProperties.value( key ) )
+        if ( index.data( i.first ) != i.second )
+          model->setData( index, i.second, i.first );
+      pendingProperties.remove( key );
+    }
+
+    const int rowCount = model->rowCount( index );
+    for ( int i = 0; i < rowCount && !pendingProperties.isEmpty(); ++i ) {
+      const QModelIndex child = model->index( i, 0, index );
+      restoreState( child );
+    }
+  }
+};
+
+void ModelStateSaver::Private::rowsInserted( const QModelIndex &index, int start, int end )
+{
+  for ( int i = start; i <= end && !pendingProperties.isEmpty(); ++i ) {
+    const QModelIndex child = model->index( i, 0, index );
+    restoreState( child );
+  }
+
+  if ( pendingProperties.isEmpty() )
+    model->disconnect( q );
+}
+
+ModelStateSaver::ModelStateSaver( QAbstractItemModel* model, QObject* parent ) : QObject( parent ), d( new Private( model, this ) )
+{
+}
+
+ModelStateSaver::~ModelStateSaver()
+{
+  delete d;
+}
+
+void ModelStateSaver::restoreConfig( const KConfigGroup &configGroup )
+{
+  Q_FOREACH ( const Role &r, d->roles ) {
+    const QByteArray ck = QByteArray("Role_") + r.identifier;
+    const QStringList l = configGroup.readEntry( ck.constData(), QStringList() );
+    if ( l.isEmpty() )
+      continue;
+    if ( l.size() % 2 != 0 ) {
+      kWarning() << "Ignoring invalid configuration value because of odd number of list entries:" << ck;
+      continue;
+    }
+    QStringList::ConstIterator it = l.constBegin();
+    while ( it != l.constEnd() ) {
+      const QString key = *it;
+      ++it;
+      const QVariant value = *it;
+      ++it;
+      d->pendingProperties[key].append( qMakePair( r.role, value ) );
+    }
+  }
+
+  // initial restore run, for everything already loaded
+  for ( int i = 0; i < d->model->rowCount() && !d->pendingProperties.isEmpty(); ++i ) {
+    const QModelIndex index = d->model->index( i, 0 );
+    d->restoreState( index );
+  }
+
+  // watch the model for stuff coming in delayed
+  if ( !d->pendingProperties.isEmpty() )
+    connect( d->model, SIGNAL(rowsInserted(QModelIndex,int,int)), SLOT(rowsInserted(QModelIndex,int,int)), Qt::QueuedConnection );
+}
+
+void ModelStateSaver::saveConfig( KConfigGroup &configGroup )
+{
+  configGroup.deleteGroup();
+  typedef QPair<QString, QVariant> StringVariantPair;
+  typedef QHash<QByteArray, QVector<StringVariantPair> > ValueHash;
+  ValueHash values;
+
+  const int rowCount = d->model->rowCount();
+  for ( int i = 0; i < rowCount; ++i ) {
+    const QModelIndex index = d->model->index( i, 0 );
+    d->saveState( index, values );
+  }
+
+  ValueHash::ConstIterator it = values.constBegin();
+  while ( it != values.constEnd() ) {
+    QStringList l;
+    Q_FOREACH( const StringVariantPair &pair, it.value() ) {
+      l.push_back( pair.first );
+      l.push_back( pair.second.toString() );
+    }
+    configGroup.writeEntry( ( QByteArray("Role_") + it.key() ).constData(), l );
+    ++it;
+  }
+}
+
+void ModelStateSaver::addRole( int role, const QByteArray &identifier, const QVariant &defaultValue )
+{
+  Role r;
+  r.role = role;
+  r.identifier = identifier;
+  r.defaultValue = defaultValue;
+  d->roles.insert( identifier, r );
+}
+
+EntityModelStateSaver::EntityModelStateSaver( QAbstractItemModel* model, QObject* parent ) : ModelStateSaver( model, parent ), d( 0 ) {
+}
+
+EntityModelStateSaver::~EntityModelStateSaver() {
+}
+
+
+QString EntityModelStateSaver::key( const QModelIndex &index ) const
+{
+  if ( !index.isValid() )
+    return QLatin1String( "x-1" );
+  const Collection c = index.data( EntityTreeModel::CollectionRole ).value<Collection>();
+  if ( c.isValid() )
+    return QString::fromLatin1( "c%1" ).arg( c.id() );
+  return QString::fromLatin1( "i%1" ).arg( index.data( EntityTreeModel::ItemIdRole ).value<Entity::Id>() );
+}
 
 AkonadiCollectionViewFactory::AkonadiCollectionViewFactory( CalendarModel *model, CalendarView *view )
   : mModel( model ), mView( view ), mAkonadiCollectionView( 0 )
@@ -176,7 +335,8 @@ AkonadiCollectionView::AkonadiCollectionView( AkonadiCollectionViewFactory *fact
   mProxyModel->setDynamicSortFilter( true );
   mProxyModel->setSortCaseSensitivity( Qt::CaseInsensitive );
   mProxyModel->setSourceModel( collectionproxymodel );
-
+  mStateSaver = new EntityModelStateSaver( mProxyModel, this );
+  mStateSaver->addRole( Qt::CheckStateRole, "CheckState", Qt::Unchecked );
   mCollectionSelection = new CollectionSelection( new QItemSelectionModel( mProxyModel ) );
   mProxyModel->mCollectionSelection = mCollectionSelection;
 
@@ -192,7 +352,7 @@ AkonadiCollectionView::AkonadiCollectionView( AkonadiCollectionViewFactory *fact
 
     mActionManager = new Akonadi::StandardActionManager( xmlclient->actionCollection(), mCollectionview );
     mActionManager->createAllActions();
-    mActionManager->action( Akonadi::StandardActionManager::CreateCollection )->setText( i18n( "Add Calendar..." ) );
+    mActionManager->action( Akonadi::StandardActionManager::CreateCollection )->setText( i18n( "Add Calendr..." ) );
     mActionManager->setActionText( Akonadi::StandardActionManager::CopyCollections, ki18np( "Copy Calendar", "Copy %1 Calendars" ) );
     mActionManager->action( Akonadi::StandardActionManager::DeleteCollections )->setText( i18n( "Delete Calendar" ) );
     mActionManager->action( Akonadi::StandardActionManager::SynchronizeCollections )->setText( i18n( "Reload" ) );
@@ -201,7 +361,7 @@ AkonadiCollectionView::AkonadiCollectionView( AkonadiCollectionViewFactory *fact
 
     mCreateAction = new KAction( mCollectionview );
     mCreateAction->setIcon( KIcon( "appointment-new" ) );
-    mCreateAction->setText( i18n( "New Calendar..." ) );
+    mCreateAction->setText( i18n( "New Calendr..." ) );
     //mCreateAction->setWhatsThis( i18n( "Create a new contact<p>You will be presented with a dialog where you can add all data about a person, including addresses and phone numbers.</p>" ) );
     xmlclient->actionCollection()->addAction( QString::fromLatin1( "akonadi_calendar_create" ), mCreateAction );
     connect( mCreateAction, SIGNAL( triggered( bool ) ), this, SLOT( newCalendar() ) );
@@ -217,6 +377,16 @@ AkonadiCollectionView::AkonadiCollectionView( AkonadiCollectionViewFactory *fact
   connect( mCollectionSelection, SIGNAL(selectionChanged(Akonadi::Collection::List,Akonadi::Collection::List)), this, SLOT(selectionChanged()) );
   
   updateView();
+}
+
+void AkonadiCollectionView::restoreConfig( const KConfigGroup &configGroup )
+{
+  mStateSaver->restoreConfig( configGroup );
+}
+
+void AkonadiCollectionView::saveConfig( KConfigGroup &configGroup )
+{
+  mStateSaver->saveConfig( configGroup );
 }
 
 AkonadiCollectionView::~AkonadiCollectionView()
@@ -313,3 +483,4 @@ void AkonadiCollectionView::deleteCalendarDone( KJob *job )
   //TODO
 }
 
+#include "akonadicollectionview.moc" // for EntityModelStateSaver Q_PRIVATE_SLOT

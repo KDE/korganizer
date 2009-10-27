@@ -412,7 +412,6 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     KOrg::AkonadiCalendar *mCalendar;
     AkonadiCollectionView *mCollectionView;
     Akonadi::EntityTreeViewStateSaver *mCollectionViewStateSaver;
-
     bool mIsClosing;
 };
 
