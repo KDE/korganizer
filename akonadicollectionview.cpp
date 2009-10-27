@@ -153,7 +153,7 @@ class CollectionProxyModel : public QSortFilterProxyModel
 
 
 AkonadiCollectionView::AkonadiCollectionView( AkonadiCollectionViewFactory *factory, CalendarModel* calendarModel, QWidget *parent )
-  : CalendarViewExtension( parent ), mActionManager(0), mCollectionview(0)
+  : CalendarViewExtension( parent ), mActionManager(0), mCollectionview(0), mCollectionSelection(0)
 {
   QVBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->setSpacing( KDialog::spacingHint() );
