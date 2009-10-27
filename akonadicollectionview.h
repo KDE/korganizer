@@ -81,6 +81,7 @@ class AkonadiCollectionView : public CalendarViewExtension
     ~AkonadiCollectionView();
 
     Akonadi::CollectionSelection* collectionSelection() const;
+    Akonadi::EntityTreeView* view() const;
 
   signals:
     void resourcesChanged(bool enabled);

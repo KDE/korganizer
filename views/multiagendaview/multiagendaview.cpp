@@ -132,7 +132,7 @@ void MultiAgendaView::setCollectionSelection( CollectionSelection* sel )
   if ( mCollectionSelection )
     mCollectionSelection->disconnect( this );
   mCollectionSelection = sel;
-  connect( sel, SIGNAL(selectionChanged(Akonadi::Collection::List,Akonadi::Collection::Ist)), this, SLOT(recreateViews()) );
+  connect( sel, SIGNAL(selectionChanged(Akonadi::Collection::List,Akonadi::Collection::List)), this, SLOT(recreateViews()) );
 }
 
 void MultiAgendaView::recreateViews()

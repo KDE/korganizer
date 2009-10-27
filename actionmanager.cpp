@@ -63,6 +63,7 @@
 #include <Akonadi/Session>
 #include <akonadi/entitymimetypefiltermodel.h>
 #include <akonadi/entitydisplayattribute.h>
+#include <akonadi/entitytreeviewstatesaver.h>
 #include <Akonadi/ItemFetchScope>
 #include <Akonadi/AgentManager>
 #include <Akonadi/AgentInstanceCreateJob>
@@ -161,8 +162,8 @@ ActionManager::ActionManager( KXMLGUIClient *client, CalendarView *widget,
                               QObject *parent, KOrg::MainWindow *mainWindow,
                               bool isPart, KMenuBar *menuBar )
   : QObject( parent ), mRecent( 0 ),
-    mResourceViewShowAction( 0 ), mCalendarModel( 0 ), mCalendar( 0 ),
-    mResourceView( 0 ), mIsClosing( false )
+    mCollectionViewShowAction( 0 ), mCalendarModel( 0 ), mCalendar( 0 ),
+    mCollectionView( 0 ), mCollectionViewStateSaver( 0 ), mIsClosing( false )
 {
   new CalendarAdaptor( this );
   QDBusConnection::sessionBus().registerObject( "/Calendar", this );
@@ -288,10 +289,11 @@ void ActionManager::createCalendarAkonadi()
   AkonadiCollectionViewFactory factory( mCalendarModel, mCalendarView );
   mCalendarView->addExtension( &factory );
 
-  mResourceView = factory.collectionView();
-  connect( mResourceView, SIGNAL(resourcesChanged(bool)), SLOT(slotResourcesChanged(bool)) );
+  mCollectionView = factory.collectionView();
+  mCollectionViewStateSaver = new EntityTreeViewStateSaver( mCollectionView->view() );
+  connect( mCollectionView, SIGNAL(resourcesChanged(bool)), SLOT(slotResourcesChanged(bool)) );
 
-  KSelectionProxyModel* selectionProxy = new KSelectionProxyModel( mResourceView->collectionSelection()->model() );
+  KSelectionProxyModel* selectionProxy = new KSelectionProxyModel( mCollectionView->collectionSelection()->model() );
   selectionProxy->setFilterBehavior( KSelectionProxyModel::ChildrenOfExactSelection );
   selectionProxy->setSourceModel( mCalendarModel );
 
@@ -315,7 +317,7 @@ void ActionManager::createCalendarAkonadi()
   mCalendar = new AkonadiCalendar( filterProxy2, KSystemTimeZones::local() );
 
   mCalendarView->setCalendar( mCalendar );
-  mCalendarView->setCollectionSelection( mResourceView->collectionSelection() );
+  mCalendarView->setCollectionSelection( mCollectionView->collectionSelection() );
   mCalendarView->readSettings();
 
   connect( mCalendar, SIGNAL(calendarChanged()),
@@ -754,10 +756,10 @@ void ActionManager::initActions()
   toggleEventViewer();
 
   if ( !mMainWindow->hasDocument() ) {
-    mResourceViewShowAction = new KToggleAction( i18n( "Show Calendar Manager" ), this );
-    mACollection->addAction( "show_resourceview", mResourceViewShowAction );
-    connect( mResourceViewShowAction, SIGNAL(triggered(bool)), SLOT(toggleResourceView()) );
-    mResourceViewShowAction->setChecked( config.readEntry( "ResourceViewVisible", true ) );
+    mCollectionViewShowAction = new KToggleAction( i18n( "Show Calendar Manager" ), this );
+    mACollection->addAction( "show_resourceview", mCollectionViewShowAction );
+    connect( mCollectionViewShowAction, SIGNAL(triggered(bool)), SLOT(toggleResourceView()) );
+    mCollectionViewShowAction->setChecked( config.readEntry( "ResourceViewVisible", true ) );
 
     toggleResourceView();
   }
@@ -832,6 +834,7 @@ void ActionManager::readSettings()
     mRecent->loadEntries( config->group( "RecentFiles" ) );
   }
   mCalendarView->readSettings();
+  mCollectionViewStateSaver->restoreState( config->group( "GlobalCollectionSelection" ) );
 }
 
 void ActionManager::writeSettings()
@@ -849,8 +852,8 @@ void ActionManager::writeSettings()
     config.writeEntry( "TodoViewVisible", mTodoViewShowAction->isChecked() );
   }
 
-  if ( mResourceViewShowAction ) {
-    config.writeEntry( "ResourceViewVisible", mResourceViewShowAction->isChecked() );
+  if ( mCollectionViewShowAction ) {
+    config.writeEntry( "ResourceViewVisible", mCollectionViewShowAction->isChecked() );
   }
 
   if ( mEventViewerShowAction ) {
@@ -860,6 +863,10 @@ void ActionManager::writeSettings()
   if ( mRecent ) {
     mRecent->saveEntries( KOGlobals::self()->config()->group( "RecentFiles" ) );
   }
+
+  KConfigGroup selectionGroup = KOGlobals::self()->config()->group( "GlobalCollectionSelection" );
+  mCollectionViewStateSaver->saveState( selectionGroup );
+  selectionGroup.sync();
 
   config.sync();
 }
@@ -1434,8 +1441,8 @@ void ActionManager::updateConfig()
 // Commented out because it crashes KOrganizer.
 //  mParts = KOCore::self()->reloadParts( mMainWindow, mParts );
 #ifdef AKONADI_PORT_DISABLED // shouldn't be required anymore
-  if ( mResourceView ) {
-    mResourceView->updateView();
+  if ( mCollectionView ) {
+    mCollectionView->updateView();
   }
 #endif
   KOGroupware::instance()->freeBusyManager()->setBrokenUrl( false );
@@ -1510,12 +1517,12 @@ void ActionManager::toggleResourceView()
 {
   kDebug();
 
-  bool visible = mResourceViewShowAction->isChecked();
-  if ( mResourceView ) {
+  bool visible = mCollectionViewShowAction->isChecked();
+  if ( mCollectionView ) {
     if ( visible ) {
-      mResourceView->show();
+      mCollectionView->show();
     } else {
-      mResourceView->hide();
+      mCollectionView->hide();
     }
   }
 }

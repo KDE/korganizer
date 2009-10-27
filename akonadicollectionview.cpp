@@ -218,6 +218,11 @@ CollectionSelection* AkonadiCollectionView::collectionSelection() const
   return mCollectionSelection;
 }
 
+Akonadi::EntityTreeView* AkonadiCollectionView::view() const
+{
+  return mCollectionview;
+}
+
 void AkonadiCollectionView::updateView()
 {
   emit resourcesChanged( mCollectionSelection->hasSelection() );

@@ -46,12 +46,12 @@ namespace KCal {
 
 namespace KOrg {
   class AkonadiCalendar;
-  class AkonadiCalendar;
   class HTMLExportSettings;
 }
 
 namespace Akonadi {
   class CalendarModel;
+  class EntityTreeViewStateSaver;
 }
 
 class AkonadiCollectionView;
@@ -373,7 +373,7 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
 
     KToggleAction *mDateNavigatorShowAction;
     KToggleAction *mTodoViewShowAction;
-    KToggleAction *mResourceViewShowAction;
+    KToggleAction *mCollectionViewShowAction;
     KToggleAction *mEventViewerShowAction;
 
     KToggleAction *mHideMenuBarAction;
@@ -410,7 +410,8 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
 
     Akonadi::CalendarModel *mCalendarModel;
     KOrg::AkonadiCalendar *mCalendar;
-    AkonadiCollectionView *mResourceView;
+    AkonadiCollectionView *mCollectionView;
+    Akonadi::EntityTreeViewStateSaver *mCollectionViewStateSaver;
 
     bool mIsClosing;
 };
