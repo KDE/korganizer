@@ -291,6 +291,7 @@ void ActionManager::createCalendarAkonadi()
 
   mCollectionView = factory.collectionView();
   mCollectionViewStateSaver = new EntityTreeViewStateSaver( mCollectionView->view() );
+  mCollectionViewStateSaver->addAdditionalRole( Qt::CheckStateRole, "CheckState", Qt::Unchecked );
   connect( mCollectionView, SIGNAL(resourcesChanged(bool)), SLOT(slotResourcesChanged(bool)) );
 
   KSelectionProxyModel* selectionProxy = new KSelectionProxyModel( mCollectionView->collectionSelection()->model() );
