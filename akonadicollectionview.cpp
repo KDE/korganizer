@@ -40,6 +40,7 @@
 #include <QItemSelectionModel>
 
 #include <akonadi/kcal/calendarmodel.h>
+#include <akonadi/kcal/collectionselectionproxymodel.h>
 #include <akonadi/kcal/entitymodelstatesaver.h>
 #include <akonadi/kcal/collectionselection.h>
 #include <akonadi/kcal/utils.h>
@@ -70,6 +71,26 @@ AkonadiCollectionViewFactory::AkonadiCollectionViewFactory( CalendarModel *model
   Q_ASSERT( model );
 }
 
+namespace {
+  class ColorProxyModel : public QSortFilterProxyModel
+  {
+  public:
+    explicit ColorProxyModel( QObject* parent=0 ) : QSortFilterProxyModel( parent ) {}
+
+    /* reimp */ QVariant data( const QModelIndex &index, int role ) const
+    {
+        if ( !index.isValid() )
+            return QVariant();
+        if ( role == Qt::DecorationRole ) {
+          const Akonadi::Collection collection = Akonadi::collectionFromIndex( index );
+          if ( !collection.contentMimeTypes().isEmpty() )
+            return KOHelper::resourceColor( collection );
+        }
+       return QSortFilterProxyModel::data( index, role );
+     }
+  };
+}
+
 CalendarViewExtension *AkonadiCollectionViewFactory::create( QWidget *parent )
 {
   mAkonadiCollectionView = new AkonadiCollectionView( this, mModel, parent );
@@ -94,76 +115,6 @@ AkonadiCollectionView* AkonadiCollectionViewFactory::collectionView() const
   return mAkonadiCollectionView;
 }
 
-
-class CollectionProxyModel : public QSortFilterProxyModel
-{
-  public:
-    explicit CollectionProxyModel( QObject *parent=0 ) : QSortFilterProxyModel(parent), mCollectionSelection(0) {}
-    ~CollectionProxyModel() {}
-
-    /* reimp */ Qt::ItemFlags flags(const QModelIndex &index) const
-    {
-      if ( !index.isValid() )
-        return QSortFilterProxyModel::flags( index );
-      const Akonadi::Collection collection = Akonadi::collectionFromIndex( index );
-      if ( collection.contentMimeTypes().isEmpty() )
-        return QSortFilterProxyModel::flags( index ) | Qt::ItemIsSelectable | Qt::ItemIsEnabled;
-      return QSortFilterProxyModel::flags(index) | Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsUserCheckable;
-    }
-
-    /* reimp */ QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const
-    {
-      if ( !index.isValid() )
-        return QVariant();
-      if ( !mCollectionSelection )
-        return QVariant();
-      switch(role) {
-        case Qt::DecorationRole: {
-            const Akonadi::Collection collection = Akonadi::collectionFromIndex( index );
-            if ( collection.contentMimeTypes().isEmpty() )
-              return QSortFilterProxyModel::data( index, role ); 
-            return KOHelper::resourceColor( collection );
-        }
-        case Qt::CheckStateRole: {
-          if ( index.column() != CalendarModel::CollectionTitle )
-            return QVariant();
-          const Akonadi::Collection collection = Akonadi::collectionFromIndex( index );
-          if ( collection.contentMimeTypes().isEmpty() )
-            return QVariant();
-          return mCollectionSelection->model()->isSelected( index ) ? Qt::Checked : Qt::Unchecked;
-        } break;
-        default:
-          return QSortFilterProxyModel::data(index, role);
-      }
-    }
-
-    /* reimp */ bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole)
-    {
-        switch(role) {
-        case Qt::CheckStateRole: {
-          Q_ASSERT( index.isValid() );
-          if ( index.column() != CalendarModel::CollectionTitle )
-            return false;
-          const Akonadi::Collection collection = Akonadi::collectionFromIndex( index );
-          Q_ASSERT( collection.isValid() );
-          //const bool checked = value.toBool();
-          const bool checked = value.toInt() == Qt::Checked;
-          mCollectionSelection->model()->select( index, checked ? QItemSelectionModel::Select : QItemSelectionModel::Deselect );
-        } return true;
-        default:
-          return QSortFilterProxyModel::setData(index, value, role);
-      }
-    }
-
-    /* reimp */ bool filterAcceptsColumn( int source_column, const QModelIndex& source_parent ) const
-    {
-      return source_column == CalendarModel::CollectionTitle;
-    }
-
-    CollectionSelection* mCollectionSelection;
-};
-
-
 AkonadiCollectionView::AkonadiCollectionView( AkonadiCollectionViewFactory *factory, CalendarModel* calendarModel, QWidget *parent )
   : CalendarViewExtension( parent ), mActionManager(0), mCollectionview(0), mCollectionSelection(0)
 {
@@ -174,14 +125,19 @@ AkonadiCollectionView::AkonadiCollectionView( AkonadiCollectionViewFactory *fact
   collectionproxymodel->setSourceModel( calendarModel );
   collectionproxymodel->addMimeTypeFilter( QString::fromLatin1( "text/calendar" ) );
 
-  mProxyModel = new CollectionProxyModel( this );
+  ColorProxyModel* colorProxy = new ColorProxyModel( this );
+  colorProxy->setDynamicSortFilter( true );
+  colorProxy->setSourceModel( collectionproxymodel );
+
+  mProxyModel = new CollectionSelectionProxyModel( this );
   mProxyModel->setDynamicSortFilter( true );
   mProxyModel->setSortCaseSensitivity( Qt::CaseInsensitive );
-  mProxyModel->setSourceModel( collectionproxymodel );
+  mProxyModel->setSourceModel( colorProxy );
   mStateSaver = new EntityModelStateSaver( mProxyModel, this );
   mStateSaver->addRole( Qt::CheckStateRole, "CheckState", Qt::Unchecked );
-  mCollectionSelection = new CollectionSelection( new QItemSelectionModel( mProxyModel ) );
-  mProxyModel->mCollectionSelection = mCollectionSelection;
+  QItemSelectionModel* selectionModel = new QItemSelectionModel( mProxyModel );
+  mCollectionSelection = new CollectionSelection( selectionModel );
+  mProxyModel->setSelectionModel( selectionModel );
 
   mCollectionview = new Akonadi::EntityTreeView;
   topLayout->addWidget( mCollectionview );

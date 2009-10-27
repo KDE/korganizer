@@ -42,6 +42,7 @@ namespace KOrg {
 namespace Akonadi {
   class CalendarModel;
   class Collection;
+  class CollectionSelectionProxyModel;
   class EntityTreeView;
   class EntityModelStateSaver;
   class StandardActionManager;
@@ -104,7 +105,7 @@ class AkonadiCollectionView : public CalendarViewExtension
   private:
     Akonadi::StandardActionManager* mActionManager;
     Akonadi::EntityTreeView *mCollectionview;
-    class CollectionProxyModel *mProxyModel;
+    Akonadi::CollectionSelectionProxyModel *mProxyModel;
     //QList<ResourceCalendar*> mResourcesToClose;
     //QAbstractButton *mAddButton, *mEditButton, *mDeleteButton;
     KAction *mCreateAction;
