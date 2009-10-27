@@ -3,7 +3,7 @@
 
   Copyright (c) 2000,2003 Cornelius Schumacher <schumacher@kde.org>
   Copyright (c) 2008 Allen Winter <winter@kde.org>
-  Copyright (c) 2009 Klar‰lvdalens Datakonsult AB, a KDAB Group company <info@kdab.net>
+  Copyright (c) 2009 Klar√§lvdalens Datakonsult AB, a KDAB Group company <info@kdab.net>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -150,7 +150,7 @@ AlarmDialog::AlarmDialog( KCal::Calendar *calendar, QWidget *parent )
   mIncidenceTree->setSortingEnabled( true );
   QStringList headerLabels =
     ( QStringList( i18nc( "@title:column reminder title", "Title" ) )
-      << i18nc( "@title:column happens at date/time", "Date Time" )
+      << i18nc( "@title:column happens at date/time", "Date/Time" )
       << i18nc( "@title:column trigger date/time", "Trigger Time" ) );
   mIncidenceTree->setHeaderLabels( headerLabels );
   mIncidenceTree->headerItem()->setToolTip(
