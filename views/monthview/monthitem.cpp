@@ -223,10 +223,10 @@ bool MonthItem::greaterThan( const MonthItem *e1, const MonthItem *e2 )
 
   if ( e1->startDate() == e2->startDate() ) {
     if ( e1->daySpan() == e2->daySpan() ) {
-      if ( e1->allDay() ) {
+      if ( e1->allDay() && !e2->allDay() ) {
         return true;
       }
-      if ( e2->allDay() ) {
+      if ( !e1->allDay() && e2->allDay() ) {
         return false;
       }
       return e1->greaterThanFallback( e2 );
