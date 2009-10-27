@@ -43,6 +43,7 @@ namespace Akonadi {
   class CalendarModel;
   class Collection;
   class EntityTreeView;
+  class EntityModelStateSaver;
   class StandardActionManager;
 }
 
@@ -50,52 +51,6 @@ class KAction;
 class KJob;
 class AkonadiCollectionView;
 
-namespace Akonadi {
-  class ModelStateSaver : public QObject {
-    Q_OBJECT
-  public:
-    explicit ModelStateSaver( QAbstractItemModel* model, QObject* parent=0 );
-    ~ModelStateSaver();
-
-    void saveConfig( KConfigGroup &config );
-
-    void restoreConfig( const KConfigGroup &config );
-
-    /**
-     * adds a role to be saved and restored.
-     *
-     * @param role the role to save/restore
-     * @param identifier Identifier used internally to write/read the role values. Must only contain letters (a-z) or digits (0-9)!
-     * @param defaultValue The value that should be set if nothing is stored in the settings. When saving,
-     *        values equal to the default value are not explicitely stored
-     */
-    void addRole( int role, const QByteArray &identifier, const QVariant &defaultValue=QVariant() );
-
-  protected:
-    virtual QString key( const QModelIndex &index ) const = 0;
-
-  private:
-    class Private;
-    Private *const d;
-    Q_PRIVATE_SLOT( d, void rowsInserted( const QModelIndex&, int, int ) )
-
-  };
-
-  class EntityModelStateSaver : public ModelStateSaver
-  {
-    Q_OBJECT
-  public:
-    explicit EntityModelStateSaver( QAbstractItemModel* model, QObject* parent=0 );
-    ~EntityModelStateSaver();
-
-  protected:
-    /* reimp */ QString key( const QModelIndex &index ) const;
-
-  private:
-    class Private;
-    Private *const d;
-  };
-}
 /**
  * The factory for AkonadiCollectionView instances.
  */
