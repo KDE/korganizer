@@ -128,9 +128,6 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     void setCalendar( KOrg::AkonadiCalendar * );
     KOrg::AkonadiCalendar *calendar();
 
-    void setCollectionSelection( Akonadi::CollectionSelection* selection );
-    Akonadi::CollectionSelection* collectionSelection() const;
-
     History *history() const { return mHistory; }
 
     KOViewManager *viewManager() const { return mViewManager; }
@@ -154,6 +151,7 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     QDate startDate();
     QDate endDate();
 
+    KOrg::BaseView *currentView() const;
     void addView( KOrg::BaseView * );
     void showView( KOrg::BaseView * );
 
@@ -407,6 +405,8 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     void newJournal( const QDate &date );
     void newJournal( const QString &text, const QDate &date=QDate() );
 
+    void configureCurrentView();
+
     void toggleAlarm( const Akonadi::Item &incidence );
     void toggleTodoCompleted( const Akonadi::Item &incidence );
     void dissociateOccurrences( const Akonadi::Item &incidence, const QDate &date );
@@ -654,7 +654,6 @@ class KORGANIZERPRIVATE_EXPORT CalendarView : public KOrg::CalendarViewBase,
     QList<CalendarViewExtension*> mExtensions;
 
     KOrg::AkonadiCalendar *mCalendar;
-    Akonadi::CollectionSelection *mCollectionSelection;
 
     DateNavigator *mDateNavigator;
     DateChecker *mDateChecker;

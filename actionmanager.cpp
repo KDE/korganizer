@@ -55,6 +55,8 @@
 
 #include <akonadi/kcal/calendarmodel.h>
 #include <akonadi/kcal/collectionselection.h>
+#include <akonadi/kcal/collectionselectionproxymodel.h>
+#include <akonadi/kcal/entitymodelstatesaver.h>
 #include <akonadi/kcal/kcalmimetypevisitor.h>
 #include <akonadi/kcal/utils.h>
 
@@ -286,14 +288,24 @@ void ActionManager::createCalendarAkonadi()
   //mCalendarModel->setItemPopulationStrategy( EntityTreeModel::LazyPopulation );
 
 
+
+  CollectionSelectionProxyModel* selectionProxyModel = new CollectionSelectionProxyModel( this );
+  selectionProxyModel->setDynamicSortFilter( true );
+  selectionProxyModel->setSortCaseSensitivity( Qt::CaseInsensitive );
+  mCollectionSelectionModelStateSaver = new EntityModelStateSaver( selectionProxyModel, this );
+  mCollectionSelectionModelStateSaver->addRole( Qt::CheckStateRole, "CheckState", Qt::Unchecked );
+  QItemSelectionModel* selectionModel = new QItemSelectionModel( selectionProxyModel );
+  selectionProxyModel->setSelectionModel( selectionModel );
+
   AkonadiCollectionViewFactory factory( mCalendarModel, mCalendarView );
   mCalendarView->addExtension( &factory );
-
   mCollectionView = factory.collectionView();
-  mCollectionViewStateSaver = new EntityTreeViewStateSaver( mCollectionView->view() );
   connect( mCollectionView, SIGNAL(resourcesChanged(bool)), SLOT(slotResourcesChanged(bool)) );
+  mCollectionViewStateSaver = new EntityTreeViewStateSaver( mCollectionView->view() );
+  mCollectionView->setCollectionSelectionProxyModel( selectionProxyModel );
 
-  KSelectionProxyModel* selectionProxy = new KSelectionProxyModel( mCollectionView->collectionSelection()->model() );
+  BaseView::setGlobalCollectionSelection( new CollectionSelection( selectionModel ) );
+  KSelectionProxyModel* selectionProxy = new KSelectionProxyModel( selectionModel );
   selectionProxy->setFilterBehavior( KSelectionProxyModel::ChildrenOfExactSelection );
   selectionProxy->setSourceModel( mCalendarModel );
 
@@ -317,7 +329,6 @@ void ActionManager::createCalendarAkonadi()
   mCalendar = new AkonadiCalendar( filterProxy2, KSystemTimeZones::local() );
 
   mCalendarView->setCalendar( mCalendar );
-  mCalendarView->setCollectionSelection( mCollectionView->collectionSelection() );
   mCalendarView->readSettings();
 
   connect( mCalendar, SIGNAL(calendarChanged()),
@@ -636,6 +647,13 @@ void ActionManager::initActions()
   connect( mNewJournalAction, SIGNAL(triggered(bool)), mCalendarView,
            SLOT(newJournal()) );
 
+  mConfigureViewAction = new KAction( KIcon( "configure" ), i18n( "Configure View..." ), this );
+  mConfigureViewAction->setIconText( i18n( "Configure" ) );
+  mConfigureViewAction->setHelpText( i18n( "Configure the view" ) );
+  mACollection->addAction( "configure_view", mConfigureViewAction );
+  connect( mConfigureViewAction, SIGNAL(triggered(bool)), mCalendarView,
+           SLOT(configureCurrentView()) );
+
   mShowIncidenceAction = new KAction( i18n( "&Show" ), this );
   mACollection->addAction( "show_incidence", mShowIncidenceAction );
   connect( mShowIncidenceAction, SIGNAL(triggered(bool)), mCalendarView,
@@ -835,7 +853,7 @@ void ActionManager::readSettings()
   }
   mCalendarView->readSettings();
   mCollectionViewStateSaver->restoreState( config->group( "GlobalCollectionView" ) );
-  mCollectionView->restoreConfig( config->group( "GlobalCollectionSelection") );
+  mCollectionSelectionModelStateSaver->restoreConfig( config->group( "GlobalCollectionSelection") );
 }
 
 void ActionManager::writeSettings()
@@ -869,7 +887,7 @@ void ActionManager::writeSettings()
   mCollectionViewStateSaver->saveState( selectionViewGroup );
   selectionViewGroup.sync();
   KConfigGroup selectionGroup = KOGlobals::self()->config()->group( "GlobalCollectionSelection" );
-  mCollectionView->saveConfig( selectionGroup );
+  mCollectionSelectionModelStateSaver->saveConfig( selectionGroup );
   selectionGroup.sync();
   config.sync();
 }

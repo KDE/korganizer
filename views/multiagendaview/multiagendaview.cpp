@@ -41,8 +41,7 @@ using namespace KOrg;
 MultiAgendaView::MultiAgendaView( QWidget *parent )
   : AgendaView( parent ),
     mUpdateOnShow( true ),
-    mPendingChanges( true ),
-    mCollectionSelection( 0 )
+    mPendingChanges( true )
 {
   QHBoxLayout *topLevelLayout = new QHBoxLayout( this );
   topLevelLayout->setSpacing( 0 );
@@ -125,16 +124,6 @@ void MultiAgendaView::setCalendar( AkonadiCalendar *cal )
   recreateViews();
 }
 
-void MultiAgendaView::setCollectionSelection( CollectionSelection* sel )
-{
-  if ( sel == mCollectionSelection )
-    return;
-  if ( mCollectionSelection )
-    mCollectionSelection->disconnect( this );
-  mCollectionSelection = sel;
-  connect( sel, SIGNAL(selectionChanged(Akonadi::Collection::List,Akonadi::Collection::List)), this, SLOT(recreateViews()) );
-}
-
 void MultiAgendaView::recreateViews()
 {
   if ( !mPendingChanges ) {
@@ -144,17 +133,8 @@ void MultiAgendaView::recreateViews()
 
   deleteViews();
 
-  if ( !mCollectionSelection ) {
-    // fallback to single-agenda
-    KOAgendaView *av = new KOAgendaView( mTopBox );
-    av->setCalendar( calendar() );
-    mAgendaViews.append( av );
-    mAgendaWidgets.append( av );
-    av->show();
-  } else {
-    Q_FOREACH( const Collection &i, mCollectionSelection->selectedCollections() )
-      addView( i );
-  }
+  Q_FOREACH( const Collection &i, collectionSelection()->selectedCollections() )
+    addView( i );
 
   // no resources activated, so stop here to avoid crashing somewhere down the line
   // TODO: show a nice message instead
@@ -496,6 +476,11 @@ void MultiAgendaView::setupScrollBar()
   mScrollBar->setSingleStep( scrollBar->singleStep() );
   mScrollBar->setPageStep( scrollBar->pageStep() );
   mScrollBar->setValue( scrollBar->value() );
+}
+
+void MultiAgendaView::collectionSelectionChanged()
+{
+  recreateViews();
 }
 
 #include "multiagendaview.moc"

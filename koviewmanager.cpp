@@ -109,7 +109,6 @@ void KOViewManager::readSettings( KConfig *config )
 void KOViewManager::writeSettings( KConfig *config )
 {
   KConfigGroup generalConfig( config, "General" );
-
   QString view;
   if ( mCurrentView == mWhatsNextView ) {
     view = "WhatsNext";
@@ -139,6 +138,15 @@ void KOViewManager::writeSettings( KConfig *config )
   }
   if ( mTodoView ) {
     mTodoView->saveLayout( config, "Todo View" );
+  }
+
+  // write out custom view configuration
+  //TODO make this nicer once we have proper view management
+  for ( int i = 0; i < mMainView->viewStack()->count(); ++i ) {
+    if ( KOrg::BaseView* view = qobject_cast<KOrg::BaseView*>( mMainView->viewStack()->widget( i ) ) ) {
+      KConfigGroup group = KGlobal::config()->group( view->objectName() );
+      view->saveConfig( group );
+    }
   }
 }
 
@@ -332,6 +340,8 @@ void KOViewManager::zoomOutVertically()
 void KOViewManager::addView( KOrg::BaseView *view, bool isTab )
 {
   connectView( view );
+  const KConfigGroup group = KGlobal::config()->group( view->objectName() );
+  view->restoreConfig( group );
   if ( !isTab ) {
     mMainView->viewStack()->addWidget( view );
   }
@@ -342,7 +352,7 @@ void KOViewManager::showTimeSpentView()
   if ( !mTimeSpentView ) {
     mTimeSpentView = new KOTimeSpentView( mMainView->viewStack() );
     mTimeSpentView->setCalendar( mMainView->calendar() );
-    mTimeSpentView->setObjectName( "KOViewManager::TimeSpentView" );
+    mTimeSpentView->setObjectName( "DefaultTimeSpentView" );
     addView( mTimeSpentView );
   }
   goMenu( true );
@@ -354,7 +364,7 @@ void KOViewManager::showMonthView()
   if ( !mMonthView ) {
     mMonthView = new KOrg::MonthView( mMainView->viewStack() );
     mMonthView->setCalendar( mMainView->calendar() );
-    mMonthView->setObjectName( "KOViewManager::MonthView" );
+    mMonthView->setObjectName( "DefaultMonthView" );
     addView( mMonthView );
   }
   goMenu( true );
@@ -366,7 +376,7 @@ void KOViewManager::showWhatsNextView()
   if ( !mWhatsNextView ) {
     mWhatsNextView = new KOWhatsNextView( mMainView->viewStack() );
     mWhatsNextView->setCalendar( mMainView->calendar() );
-    mWhatsNextView->setObjectName( "KOViewManager::WhatsNextView" );
+    mWhatsNextView->setObjectName( "DefaultWhatsNextView" );
     addView( mWhatsNextView );
   }
   goMenu( true );
@@ -378,7 +388,7 @@ void KOViewManager::showListView()
   if ( !mListView ) {
     mListView = new KOListView( mMainView->viewStack() );
     mListView->setCalendar( mMainView->calendar() );
-    mListView->setObjectName( "KOViewManager::ListView" );
+    mListView->setObjectName( "DefaultListView" );
     addView( mListView );
   }
   goMenu( true );
@@ -409,7 +419,7 @@ void KOViewManager::showAgendaView()
     if ( !mAgendaView ) {
       mAgendaView = new KOAgendaView( parent );
       mAgendaView->setCalendar( mMainView->calendar() );
-      mAgendaView->setObjectName( "KOViewManager::AgendaView" );
+      mAgendaView->setObjectName( "DefaultAgendaView" );
 
       addView( mAgendaView, showBoth );
 
@@ -429,8 +439,7 @@ void KOViewManager::showAgendaView()
     if ( !mAgendaSideBySideView ) {
       mAgendaSideBySideView = new MultiAgendaView( parent );
       mAgendaSideBySideView->setCalendar( mMainView->calendar() );
-      mAgendaSideBySideView->setCollectionSelection( mMainView->collectionSelection() );
-      mAgendaSideBySideView->setObjectName( "KOViewManager::AgendaSideBySideView" );
+      mAgendaSideBySideView->setObjectName( "DefaultAgendaSideBySideView" );
       addView( mAgendaSideBySideView, showBoth );
 
 /*
@@ -495,7 +504,7 @@ void KOViewManager::showTodoView()
   if ( !mTodoView ) {
     mTodoView = new KOTodoView( mMainView->viewStack() );
     mTodoView->setCalendar( mMainView->calendar() );
-    mTodoView->setObjectName( "KOViewManager::TodoView" );
+    mTodoView->setObjectName( "DefaultTodoView" );
     mTodoView->setCalendar( mMainView->calendar() );
     addView( mTodoView );
     connectTodoView( mTodoView );
@@ -512,7 +521,7 @@ void KOViewManager::showJournalView()
   if ( !mJournalView ) {
     mJournalView = new KOJournalView( mMainView->viewStack() );
     mJournalView->setCalendar( mMainView->calendar() );
-    mJournalView->setObjectName( "KOViewManager::JournalView" );
+    mJournalView->setObjectName( "DefaultJournalView" );
     addView( mJournalView );
   }
   goMenu( true );
@@ -524,7 +533,7 @@ void KOViewManager::showTimeLineView()
   if ( !mTimelineView ) {
     mTimelineView = new KOTimelineView( mMainView->viewStack() );
     mTimelineView->setCalendar( mMainView->calendar() );
-    mTimelineView->setObjectName( "KOViewManager::TimelineView" );
+    mTimelineView->setObjectName( "DefaultTimelineView" );
     addView( mTimelineView );
   }
   goMenu( true );

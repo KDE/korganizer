@@ -56,7 +56,6 @@ class MultiAgendaView : public AgendaView
 
     bool eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &allDay );
     /* reimp */ void setCalendar( AkonadiCalendar *cal );
-    void setCollectionSelection( Akonadi::CollectionSelection* sel );
 
   public slots:
     void showDates( const QDate &start, const QDate &end );
@@ -72,6 +71,12 @@ class MultiAgendaView : public AgendaView
   protected:
     void resizeEvent( QResizeEvent *ev );
     void showEvent( QShowEvent *event );
+
+  protected Q_SLOTS:
+    /**
+     * Reimplemented from KOrg::BaseView
+     */
+    void collectionSelectionChanged();
 
   private:
     void addView( const Akonadi::Collection &collection );

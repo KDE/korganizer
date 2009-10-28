@@ -98,7 +98,6 @@ CalendarView::CalendarView( QWidget *parent )
   : CalendarViewBase( parent ),
     mHistory( 0 ),
     mCalendar( 0 ),
-    mCollectionSelection( 0 ),
     mChanger( 0 ),
     mSplitterSizesValid( false )
 {
@@ -267,16 +266,6 @@ void CalendarView::setCalendar( KOrg::AkonadiCalendar *cal )
   mDateNavigatorContainer->setCalendar( mCalendar );
 
   mTodoList->setCalendar( mCalendar );
-}
-
-void CalendarView::setCollectionSelection( CollectionSelection* sel )
-{
-  mCollectionSelection = sel;
-}
-
-CollectionSelection* CalendarView::collectionSelection() const
-{
-  return mCollectionSelection;
 }
 
 void CalendarView::setIncidenceChanger( IncidenceChangerBase *changer )
@@ -1084,6 +1073,19 @@ void CalendarView::newJournal( const QString &text, const QDate &date )
   journalEditor->setDate( journalDate );
   journalEditor->setTexts( text );
   journalEditor->show();
+}
+
+KOrg::BaseView *CalendarView::currentView() const
+{
+  return qobject_cast<KOrg::BaseView*>( viewStack()->currentWidget() );
+}
+
+void CalendarView::configureCurrentView()
+{
+  KOrg::BaseView *view = currentView();
+  if ( !view )
+    return;
+
 }
 
 void CalendarView::newSubTodo()
@@ -2362,8 +2364,8 @@ bool CalendarView::deleteIncidence( const Item &item, bool force )
 
 void CalendarView::connectIncidenceEditor( KOIncidenceEditor *editor )
 {
-  if ( ! mCollectionSelection->selectedCollections().isEmpty() )
-    editor->selectCollection( mCollectionSelection->selectedCollections().first() );
+  if ( currentView()->collectionSelection()->hasSelection() )
+    editor->selectCollection( currentView()->collectionSelection()->selectedCollections().first() );
 
   connect( this, SIGNAL(newIncidenceChanger(IncidenceChangerBase *)),
            editor, SLOT(setIncidenceChanger(IncidenceChangerBase *)) );

@@ -82,11 +82,13 @@ class AkonadiCollectionView : public CalendarViewExtension
     AkonadiCollectionView( AkonadiCollectionViewFactory *factory, Akonadi::CalendarModel* model, QWidget *parent = 0 );
     ~AkonadiCollectionView();
 
+private:
     Akonadi::CollectionSelection* collectionSelection() const;
+public:
     Akonadi::EntityTreeView* view() const;
 
-    void restoreConfig( const KConfigGroup &configGroup );
-    void saveConfig( KConfigGroup &configGroup );
+    Akonadi::CollectionSelectionProxyModel* collectionSelectionProxyModel() const;
+    void setCollectionSelectionProxyModel( Akonadi::CollectionSelectionProxyModel* );
 
   signals:
     void resourcesChanged(bool enabled);
@@ -105,13 +107,13 @@ class AkonadiCollectionView : public CalendarViewExtension
   private:
     Akonadi::StandardActionManager* mActionManager;
     Akonadi::EntityTreeView *mCollectionview;
-    Akonadi::CollectionSelectionProxyModel *mProxyModel;
+    QAbstractItemModel* mBaseModel;
+    Akonadi::CollectionSelectionProxyModel *mSelectionProxyModel;
     //QList<ResourceCalendar*> mResourcesToClose;
     //QAbstractButton *mAddButton, *mEditButton, *mDeleteButton;
     KAction *mCreateAction;
     KAction *mDeleteAction;
     Akonadi::CollectionSelection *mCollectionSelection;
-    Akonadi::EntityModelStateSaver *mStateSaver;
   };
 
 #endif

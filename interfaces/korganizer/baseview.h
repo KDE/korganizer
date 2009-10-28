@@ -38,6 +38,14 @@
 
 using namespace KCal;
 
+class QPoint;
+
+class KConfigGroup;
+
+namespace Akonadi {
+  class CollectionSelection;
+  class CollectionSelectionProxyModel;
+}
 namespace KOrg {
 
 class AkonadiCalendar;
@@ -137,6 +145,41 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
      * Base implementation returns false.
      */
     virtual bool usesFullWindow();
+
+    /**
+     * reads the view configuration. View-specific configuration can be
+     * restored via doRestoreConfig()
+     *
+     * @param configGroup the group to read settings from
+     * @see doRestoreConfig()
+     */
+    void restoreConfig( const KConfigGroup &configGroup );
+
+    /**
+     * writes out the view configuration. View-specific configuration can be
+     * saved via doSaveConfig()
+     *
+     * @param configGroup the group to store settings in
+     * @see doSaveConfig()
+     */
+    void saveConfig( KConfigGroup &configGroup );
+
+    Akonadi::CollectionSelectionProxyModel *customCollectionSelectionProxyModel() const;
+
+    Akonadi::CollectionSelection *customCollectionSelection() const;
+
+    bool usesCustomCollectionSelection() const;
+
+    void setUsesCustomCollectionSelection( bool custom );
+
+    static Akonadi::CollectionSelection* globalCollectionSelection();
+    static void setGlobalCollectionSelection( Akonadi::CollectionSelection* selection );
+
+    /**
+     * returns the view at the given widget coordinate. This is usually the view itself,
+     * except for composite views, where a subview will be returned. The default implementation returns @p this .
+     */
+    virtual BaseView* viewAt( const QPoint &p );
 
   public Q_SLOTS:
     /**
@@ -281,10 +324,34 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
 
     void newJournalSignal( const QDate & );
 
-  private:
-    AkonadiCalendar *mCalendar;
+  public:
+    /**
+     * returns the selection of collection to be used by this view (custom if set, or global otherwise)
+     */
+    Akonadi::CollectionSelection* collectionSelection() const;
+
+  protected:
+    /**
+     * reimplement to read view-specific settings
+     */
+    virtual void doRestoreConfig( const KConfigGroup &configGroup );
+
+    /**
+     * reimplement to write vie- specific settings
+     */
+    virtual void doSaveConfig( KConfigGroup &configGroup );
+
+  protected Q_SLOTS:
+    virtual void collectionSelectionChanged();
+
   protected:
     IncidenceChangerBase *mChanger;
+
+  private:
+    class Private;
+    Private *const d;
+    friend class KOrg::BaseView::Private;
+    static Akonadi::CollectionSelection* sGlobalCollectionSelection;
 };
 
 }

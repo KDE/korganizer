@@ -51,6 +51,7 @@ namespace KOrg {
 
 namespace Akonadi {
   class CalendarModel;
+  class EntityModelStateSaver;
   class EntityTreeViewStateSaver;
 }
 
@@ -382,6 +383,7 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     KAction *mNewTodoAction;
     KAction *mNewSubtodoAction;
     KAction *mNewJournalAction;
+    KAction *mConfigureViewAction;
 
     KAction *mShowIncidenceAction;
     KAction *mEditIncidenceAction;
@@ -412,6 +414,7 @@ class KORGANIZERPRIVATE_EXPORT ActionManager : public QObject
     KOrg::AkonadiCalendar *mCalendar;
     AkonadiCollectionView *mCollectionView;
     Akonadi::EntityTreeViewStateSaver *mCollectionViewStateSaver;
+    Akonadi::EntityModelStateSaver *mCollectionSelectionModelStateSaver;
     bool mIsClosing;
 };
 

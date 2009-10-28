@@ -96,12 +96,6 @@ CalendarViewExtension *AkonadiCollectionViewFactory::create( QWidget *parent )
   mAkonadiCollectionView = new AkonadiCollectionView( this, mModel, parent );
   QObject::connect( mAkonadiCollectionView, SIGNAL(resourcesChanged(bool)), mView, SLOT(resourcesChanged()) );
   QObject::connect( mAkonadiCollectionView, SIGNAL(resourcesChanged(bool)), mView, SLOT(updateCategories()) );
-#if 0
-  QObject::connect( mCalendar, SIGNAL(signalResourceAdded(ResourceCalendar *)), mAkonadiCollectionView, SLOT(addResourceItem(ResourceCalendar *)) );
-  QObject::connect( mCalendar, SIGNAL(signalResourceModified(ResourceCalendar *)), mAkonadiCollectionView, SLOT(updateResourceItem(ResourceCalendar *)) );
-  QObject::connect( mCalendar, SIGNAL(signalResourceAdded(ResourceCalendar *)), mView, SLOT(updateCategories()) );
-  QObject::connect( mCalendar, SIGNAL(signalResourceModified(ResourceCalendar *)), mView, SLOT(updateCategories()) );
-#endif
   return mAkonadiCollectionView;
 }
 
@@ -116,33 +110,23 @@ AkonadiCollectionView* AkonadiCollectionViewFactory::collectionView() const
 }
 
 AkonadiCollectionView::AkonadiCollectionView( AkonadiCollectionViewFactory *factory, CalendarModel* calendarModel, QWidget *parent )
-  : CalendarViewExtension( parent ), mActionManager(0), mCollectionview(0), mCollectionSelection(0)
+  : CalendarViewExtension( parent ), mActionManager(0), mCollectionview(0), mBaseModel( 0 ), mSelectionProxyModel( 0 ), mCollectionSelection(0)
 {
   QVBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->setSpacing( KDialog::spacingHint() );
 
-  Akonadi::CollectionFilterProxyModel *collectionproxymodel = new Akonadi::CollectionFilterProxyModel( mCollectionSelection );
+  Akonadi::CollectionFilterProxyModel *collectionproxymodel = new Akonadi::CollectionFilterProxyModel( this );
   collectionproxymodel->setSourceModel( calendarModel );
   collectionproxymodel->addMimeTypeFilter( QString::fromLatin1( "text/calendar" ) );
 
   ColorProxyModel* colorProxy = new ColorProxyModel( this );
   colorProxy->setDynamicSortFilter( true );
   colorProxy->setSourceModel( collectionproxymodel );
-
-  mProxyModel = new CollectionSelectionProxyModel( this );
-  mProxyModel->setDynamicSortFilter( true );
-  mProxyModel->setSortCaseSensitivity( Qt::CaseInsensitive );
-  mProxyModel->setSourceModel( colorProxy );
-  mStateSaver = new EntityModelStateSaver( mProxyModel, this );
-  mStateSaver->addRole( Qt::CheckStateRole, "CheckState", Qt::Unchecked );
-  QItemSelectionModel* selectionModel = new QItemSelectionModel( mProxyModel );
-  mCollectionSelection = new CollectionSelection( selectionModel );
-  mProxyModel->setSelectionModel( selectionModel );
+  mBaseModel = colorProxy;
 
   mCollectionview = new Akonadi::EntityTreeView;
   topLayout->addWidget( mCollectionview );
   mCollectionview->header()->hide();
-  mCollectionview->setModel( mProxyModel );
   mCollectionview->setRootIsDecorated( true );
   //mCollectionview->setSelectionMode( QAbstractItemView::NoSelection );
   KXMLGUIClient *xmlclient = KOCore::self()->xmlguiClient( factory->view() );
@@ -151,7 +135,7 @@ AkonadiCollectionView::AkonadiCollectionView( AkonadiCollectionViewFactory *fact
 
     mActionManager = new Akonadi::StandardActionManager( xmlclient->actionCollection(), mCollectionview );
     mActionManager->createAllActions();
-    mActionManager->action( Akonadi::StandardActionManager::CreateCollection )->setText( i18n( "Add Calendr..." ) );
+    mActionManager->action( Akonadi::StandardActionManager::CreateCollection )->setText( i18n( "Add Calendar..." ) );
     mActionManager->setActionText( Akonadi::StandardActionManager::CopyCollections, ki18np( "Copy Calendar", "Copy %1 Calendars" ) );
     mActionManager->action( Akonadi::StandardActionManager::DeleteCollections )->setText( i18n( "Delete Calendar" ) );
     mActionManager->action( Akonadi::StandardActionManager::SynchronizeCollections )->setText( i18n( "Reload" ) );
@@ -160,7 +144,7 @@ AkonadiCollectionView::AkonadiCollectionView( AkonadiCollectionViewFactory *fact
 
     mCreateAction = new KAction( mCollectionview );
     mCreateAction->setIcon( KIcon( "appointment-new" ) );
-    mCreateAction->setText( i18n( "New Calendr..." ) );
+    mCreateAction->setText( i18n( "New Calendar..." ) );
     //mCreateAction->setWhatsThis( i18n( "Create a new contact<p>You will be presented with a dialog where you can add all data about a person, including addresses and phone numbers.</p>" ) );
     xmlclient->actionCollection()->addAction( QString::fromLatin1( "akonadi_calendar_create" ), mCreateAction );
     connect( mCreateAction, SIGNAL( triggered( bool ) ), this, SLOT( newCalendar() ) );
@@ -173,23 +157,24 @@ AkonadiCollectionView::AkonadiCollectionView( AkonadiCollectionViewFactory *fact
     xmlclient->actionCollection()->addAction( QString::fromLatin1( "akonadi_calendar_delete" ), mDeleteAction );
     connect( mDeleteAction, SIGNAL( triggered( bool ) ), this, SLOT( deleteCalendar() ) );
   }
-  connect( mCollectionSelection, SIGNAL(selectionChanged(Akonadi::Collection::List,Akonadi::Collection::List)), this, SLOT(selectionChanged()) );
-  
-  updateView();
-}
-
-void AkonadiCollectionView::restoreConfig( const KConfigGroup &configGroup )
-{
-  mStateSaver->restoreConfig( configGroup );
-}
-
-void AkonadiCollectionView::saveConfig( KConfigGroup &configGroup )
-{
-  mStateSaver->saveConfig( configGroup );
 }
 
 AkonadiCollectionView::~AkonadiCollectionView()
 {
+}
+
+void AkonadiCollectionView::setCollectionSelectionProxyModel( CollectionSelectionProxyModel* m )
+{
+  if ( mSelectionProxyModel == m )
+    return;
+  mSelectionProxyModel = m;
+  delete mCollectionSelection;
+  if ( !mSelectionProxyModel )
+    return;
+  mSelectionProxyModel->setSourceModel( mBaseModel );
+  mCollectionSelection = new CollectionSelection( mSelectionProxyModel->selectionModel() );
+  connect( mCollectionSelection, SIGNAL(selectionChanged(Akonadi::Collection::List,Akonadi::Collection::List)), this, SLOT(selectionChanged()) );
+  mCollectionview->setModel( mSelectionProxyModel );
 }
 
 CollectionSelection* AkonadiCollectionView::collectionSelection() const
