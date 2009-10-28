@@ -23,6 +23,8 @@
 
 #include <Akonadi/Item>
 
+#include <KDialog>
+
 class KOAgendaView;
 class TimeLabelsZone;
 
@@ -34,10 +36,46 @@ class QScrollBar;
 class QSplitter;
 
 namespace Akonadi {
-  class CollectionSelection;
+  class CollectionSelectionProxyModel;
 }
 
 namespace KOrg {
+
+class MultiAgendaViewConfigDialog : public KDialog
+{
+  Q_OBJECT
+public:
+  explicit MultiAgendaViewConfigDialog( QWidget* parent=0 );
+  ~MultiAgendaViewConfigDialog();
+
+  bool useCustomColumns() const;
+  void setUseCustomColumns( bool );
+
+  int numberOfColumns() const;
+  void setNumberOfColumns( int n );
+
+  Akonadi::CollectionSelectionProxyModel* takeSelectionModel( int column ) const;
+  void setSelectionModel( int column, Akonadi::CollectionSelectionProxyModel* model );
+
+public Q_SLOTS:
+  /**
+   * reimplemented from QDialog
+   */
+  void accept();
+
+  /**
+   * reimplemented from QDialog
+   */
+  void reject();
+
+private Q_SLOTS:
+  void useCustomToggled( bool );
+  void numberOfColumnsChanged( int );
+
+private:
+  class Private;
+  Private* const d;
+};
 
 /**
   Shows one agenda for every resource side-by-side.
@@ -56,6 +94,16 @@ class MultiAgendaView : public AgendaView
 
     bool eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool &allDay );
     /* reimp */ void setCalendar( AkonadiCalendar *cal );
+
+    /**
+     * reimplemented from KOrg::BaseView
+     */
+    bool hasConfigurationDialog() const;
+
+    /**
+     * reimplemented from KOrg::BaseView
+     */
+    void showConfigurationDialog( QWidget* parent );
 
   public slots:
     void showDates( const QDate &start, const QDate &end );
@@ -105,7 +153,6 @@ class MultiAgendaView : public AgendaView
     QDate mStartDate, mEndDate;
     bool mUpdateOnShow;
     bool mPendingChanges;
-    Akonadi::CollectionSelection *mCollectionSelection;
 };
 
 }

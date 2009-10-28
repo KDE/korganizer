@@ -23,6 +23,10 @@
 #include "views/agendaview/koagendaview.h"
 #include "akonadicalendar.h"
 
+#include "ui_multiagendaviewconfigwidget.h"
+
+#include <Akonadi/EntityTreeView>
+
 #include <akonadi/kcal/collectionselection.h>
 
 #include <KGlobalSettings>
@@ -481,6 +485,112 @@ void MultiAgendaView::setupScrollBar()
 void MultiAgendaView::collectionSelectionChanged()
 {
   recreateViews();
+}
+
+bool MultiAgendaView::hasConfigurationDialog() const
+{
+  return true;
+}
+
+void MultiAgendaView::showConfigurationDialog( QWidget* parent )
+{
+  QPointer<MultiAgendaViewConfigDialog> dlg( new MultiAgendaViewConfigDialog( parent ) );
+  if ( dlg->exec() == QDialog::Accepted )
+  {
+
+  }
+  delete dlg;
+}
+
+class MultiAgendaViewConfigDialog::Private {
+public:
+  explicit Private() {
+
+  }
+
+  ~Private() {
+    qDeleteAll( newlyCreated );
+  }
+
+  QVector<CollectionSelectionProxyModel*> newlyCreated;
+  QVector<CollectionSelectionProxyModel*> selections;
+  Ui::MultiAgendaViewConfigWidget ui;
+};
+
+MultiAgendaViewConfigDialog::MultiAgendaViewConfigDialog( QWidget* parent ) : KDialog( parent ), d( new Private )
+{
+  QWidget* widget = new QWidget;
+  d->ui.setupUi( widget );
+  QVBoxLayout* layout = new QVBoxLayout( d->ui.collectionSelectionParent );
+  layout->setMargin( 0 );
+  EntityTreeView* view = new EntityTreeView;
+  layout->addWidget( view );
+  setMainWidget( widget );
+  connect( d->ui.useCustomRB, SIGNAL(toggled(bool)), this, SLOT(useCustomToggled(bool)) );
+  connect( d->ui.columnNumberSB, SIGNAL(valueChanged(int)), this, SLOT(numberOfColumnsChanged(int)) );
+  useCustomToggled( false );
+}
+
+void MultiAgendaViewConfigDialog::useCustomToggled( bool on ) {
+  d->ui.columnList->setEnabled( on );
+  d->ui.columnNumberLabel->setEnabled( on );
+  d->ui.columnNumberSB->setEnabled( on );
+  d->ui.collectionSelectionParent->setEnabled( on );
+}
+
+
+bool MultiAgendaViewConfigDialog::useCustomColumns() const
+{
+  return d->ui.useCustomRB->isChecked();
+}
+
+void MultiAgendaViewConfigDialog::setUseCustomColumns( bool custom )
+{
+  if ( custom )
+    d->ui.useCustomRB->setChecked( true );
+  else
+    d->ui.useDefaultRB->setChecked( true );
+}
+
+int MultiAgendaViewConfigDialog::numberOfColumns() const
+{
+  return d->ui.columnNumberSB->value();
+}
+
+void MultiAgendaViewConfigDialog::setNumberOfColumns( int n )
+{
+  d->ui.columnNumberSB->setValue( n );
+}
+
+CollectionSelectionProxyModel* MultiAgendaViewConfigDialog::takeSelectionModel( int column ) const
+{
+
+}
+
+void MultiAgendaViewConfigDialog::setSelectionModel( int column, CollectionSelectionProxyModel* model )
+{
+
+}
+
+void MultiAgendaViewConfigDialog::numberOfColumnsChanged( int number )
+{
+
+}
+
+void MultiAgendaViewConfigDialog::accept()
+{
+  d->newlyCreated.clear();
+  KDialog::accept();
+}
+
+void MultiAgendaViewConfigDialog::reject()
+{
+  KDialog::reject();
+}
+
+MultiAgendaViewConfigDialog::~MultiAgendaViewConfigDialog()
+{
+  delete d;
 }
 
 #include "multiagendaview.moc"

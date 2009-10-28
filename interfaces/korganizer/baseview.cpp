@@ -148,6 +148,15 @@ BaseView* BaseView::viewAt( const QPoint & )
 void BaseView::updateConfig()
 {}
 
+bool BaseView::hasConfigurationDialog() const
+{
+  return false;
+}
+
+void BaseView::showConfigurationDialog( QWidget* )
+{
+}
+
 void BaseView::restoreConfig( const KConfigGroup &configGroup )
 {
   const bool useCustom = configGroup.readEntry( "UseCustomCollectionSelection", false );

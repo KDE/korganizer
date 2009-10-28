@@ -1082,10 +1082,10 @@ KOrg::BaseView *CalendarView::currentView() const
 
 void CalendarView::configureCurrentView()
 {
-  KOrg::BaseView *view = currentView();
-  if ( !view )
+  KOrg::BaseView *const view = currentView();
+  if ( !view || !view->hasConfigurationDialog() )
     return;
-
+  view->showConfigurationDialog( this );
 }
 
 void CalendarView::newSubTodo()

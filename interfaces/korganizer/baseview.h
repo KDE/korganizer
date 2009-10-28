@@ -146,6 +146,10 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
      */
     virtual bool usesFullWindow();
 
+    virtual bool hasConfigurationDialog() const;
+
+    virtual void showConfigurationDialog( QWidget* parent );
+
     /**
      * reads the view configuration. View-specific configuration can be
      * restored via doRestoreConfig()

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Form</class>
- <widget class="QWidget" name="Form">
+ <class>ViewConfigurationWidget</class>
+ <widget class="QWidget" name="ViewConfigurationWidget">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -22,7 +22,6 @@
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
-     <zorder>useCustomCalendarSelection</zorder>
     </widget>
    </item>
    <item row="0" column="0">
