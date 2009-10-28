@@ -49,14 +49,16 @@ class Todo;
 class Calendar;
 }
 
-class MarcusBains : public QFrame {
-    Q_OBJECT
+class MarcusBains : public QFrame
+{
+  Q_OBJECT
   public:
     MarcusBains( KOAgenda *agenda = 0, const char *name = 0 );
+    void updateLocationRecalc( bool recalculate = false );
     virtual ~MarcusBains();
 
   public slots:
-    void updateLocation( bool recalculate = false );
+    void updateLocation();
 
   private:
     int todayColumn();
@@ -67,10 +69,9 @@ class MarcusBains : public QFrame {
     int oldToday;
 };
 
-
 class KOAgenda : public QScrollView
 {
-    Q_OBJECT
+  Q_OBJECT
   public:
     KOAgenda ( int columns, int rows, int columnSize, QWidget *parent=0,
                const char *name = 0, WFlags f = 0 );
