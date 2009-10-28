@@ -72,7 +72,7 @@ MarcusBains::MarcusBains( KOAgenda *agenda )
 
   mTimer = new QTimer( this );
   mTimer->setSingleShot( true );
-  connect( mTimer, SIGNAL(timeout()), this, SLOT(updateLocation(bool)) );
+  connect( mTimer, SIGNAL(timeout()), this, SLOT(updateLocation()) );
   mTimer->start( 0 );
 
   mOldTodayCol = -1;
@@ -99,7 +99,12 @@ int MarcusBains::todayColumn()
   return -1;
 }
 
-void MarcusBains::updateLocation( bool recalculate )
+void MarcusBains::updateLocation()
+{
+  updateLocationRecalc();
+}
+
+void MarcusBains::updateLocationRecalc( bool recalculate )
 {
   bool showSeconds = KOPrefs::instance()->marcusBainsShowSeconds();
   QColor color = KOPrefs::instance()->agendaMarcusBainsLineLineColor();
@@ -326,7 +331,7 @@ void KOAgenda::clearSelection()
 void KOAgenda::marcus_bains()
 {
     if ( mMarcusBains ) {
-      mMarcusBains->updateLocation( true );
+      mMarcusBains->updateLocationRecalc( true );
     }
 }
 
