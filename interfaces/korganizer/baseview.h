@@ -169,12 +169,9 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
     void saveConfig( KConfigGroup &configGroup );
 
     Akonadi::CollectionSelectionProxyModel *customCollectionSelectionProxyModel() const;
+    void setCustomCollectionSelectionProxyModel( Akonadi::CollectionSelectionProxyModel* model );
 
     Akonadi::CollectionSelection *customCollectionSelection() const;
-
-    bool usesCustomCollectionSelection() const;
-
-    void setUsesCustomCollectionSelection( bool custom );
 
     static Akonadi::CollectionSelection* globalCollectionSelection();
     static void setGlobalCollectionSelection( Akonadi::CollectionSelection* selection );

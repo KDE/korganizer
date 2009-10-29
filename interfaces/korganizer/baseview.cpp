@@ -52,13 +52,16 @@ public:
   explicit Private( BaseView* qq )
     : q( qq )
     , calendar( 0 )
-    , useCustomCollectionSelection( false )
     , customCollectionSelection( 0 )
     , collectionSelectionModel( 0 )
     , stateSaver( 0 ) {}
 
+  ~Private() {
+    //TODO(AKONADI_PORT) make sure models are not leaked
+    //delete collectionSelectionModel;
+  }
+
   AkonadiCalendar *calendar;
-  bool useCustomCollectionSelection;
   CollectionSelection *customCollectionSelection;
   CollectionSelectionProxyModel* collectionSelectionModel;
   EntityModelStateSaver* stateSaver;
@@ -68,19 +71,17 @@ public:
 
 void BaseView::Private::setUpModels()
 {
-  delete collectionSelectionModel;
   delete stateSaver;
+  stateSaver = 0;
   delete customCollectionSelection;
-  collectionSelectionModel = new CollectionSelectionProxyModel( q );
-  collectionSelectionModel->setDynamicSortFilter( true );
-  collectionSelectionModel->setSortCaseSensitivity( Qt::CaseInsensitive );
-  if ( calendar )
-    collectionSelectionModel->setSourceModel( calendar->model() );
-  stateSaver = new EntityModelStateSaver( collectionSelectionModel, q );
-  stateSaver->addRole( Qt::CheckStateRole, "CheckState", Qt::Unchecked );
-  QItemSelectionModel* selectionModel = new QItemSelectionModel( collectionSelectionModel, collectionSelectionModel );
-  customCollectionSelection = new CollectionSelection( selectionModel );
-  collectionSelectionModel->setSelectionModel( selectionModel );
+  customCollectionSelection = 0;
+  if ( collectionSelectionModel ) {
+    stateSaver = new EntityModelStateSaver( collectionSelectionModel, q );
+    stateSaver->addRole( Qt::CheckStateRole, "CheckState", Qt::Unchecked );
+    QItemSelectionModel* selectionModel = new QItemSelectionModel( collectionSelectionModel, collectionSelectionModel );
+    collectionSelectionModel->setSelectionModel( selectionModel );
+    customCollectionSelection = new CollectionSelection( selectionModel );
+  }
   reconnectCollectionSelection();
 }
 
@@ -160,12 +161,22 @@ void BaseView::showConfigurationDialog( QWidget* )
 void BaseView::restoreConfig( const KConfigGroup &configGroup )
 {
   const bool useCustom = configGroup.readEntry( "UseCustomCollectionSelection", false );
-  if ( !d->useCustomCollectionSelection && useCustom )
+  if ( !d->collectionSelectionModel && !useCustom ) {
+    delete d->collectionSelectionModel;
+    d->collectionSelectionModel = 0;
     d->setUpModels();
-  d->useCustomCollectionSelection = useCustom;
-  if ( d->useCustomCollectionSelection )
-  {
-    Q_ASSERT( d->stateSaver );
+  } else if ( useCustom ) {
+
+    if ( !d->collectionSelectionModel )
+    {
+      d->collectionSelectionModel = new CollectionSelectionProxyModel( this );
+      d->collectionSelectionModel->setDynamicSortFilter( true );
+      d->collectionSelectionModel->setSortCaseSensitivity( Qt::CaseInsensitive );
+      if ( d->calendar )
+        d->collectionSelectionModel->setSourceModel( d->calendar->treeModel() );
+      d->setUpModels();
+    }
+
     const KConfigGroup selectionGroup = configGroup.config()->group( configGroup.name() + QLatin1String("_selectionSetup") );
     d->stateSaver->restoreConfig( selectionGroup );
   }
@@ -174,8 +185,8 @@ void BaseView::restoreConfig( const KConfigGroup &configGroup )
 
 void BaseView::saveConfig( KConfigGroup &configGroup )
 {
-  configGroup.writeEntry( "UseCustomCollectionSelection", d->useCustomCollectionSelection );
-  if ( d->useCustomCollectionSelection && d->stateSaver )
+  configGroup.writeEntry( "UseCustomCollectionSelection", d->collectionSelectionModel != 0 );
+  if ( d->stateSaver )
   {
     KConfigGroup selectionGroup = configGroup.config()->group( configGroup.name() + QLatin1String("_selectionSetup") );
     d->stateSaver->saveConfig( selectionGroup );
@@ -189,29 +200,17 @@ void BaseView::doRestoreConfig( const KConfigGroup & )
 void BaseView::doSaveConfig( KConfigGroup & )
 {}
 
-bool BaseView::usesCustomCollectionSelection() const
-{
-  return d->useCustomCollectionSelection;
-}
-
 CollectionSelection* BaseView::collectionSelection() const
 {
   return d->customCollectionSelection ? d->customCollectionSelection : globalCollectionSelection();
 }
 
-void BaseView::setUsesCustomCollectionSelection( bool custom )
+void BaseView::setCustomCollectionSelectionProxyModel( Akonadi::CollectionSelectionProxyModel* model )
 {
-  if ( d->useCustomCollectionSelection == custom )
+  if ( d->collectionSelectionModel == model )
     return;
-  d->useCustomCollectionSelection = custom;
-  if ( custom ) {
-    d->setUpModels();
-  } else {
-    delete d->collectionSelectionModel;
-    delete d->stateSaver;
-    delete d->customCollectionSelection;
-    d->reconnectCollectionSelection();
-  }
+  d->collectionSelectionModel = model;
+  d->setUpModels();
 }
 
 void BaseView::collectionSelectionChanged()

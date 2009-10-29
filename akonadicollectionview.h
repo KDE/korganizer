@@ -36,7 +36,7 @@
 class QItemSelectionModel;
 
 namespace KOrg {
-    class AkonadiCalendar;
+  class AkonadiCalendar;
 }
 
 namespace Akonadi {
@@ -79,7 +79,7 @@ class AkonadiCollectionView : public CalendarViewExtension
 {
   Q_OBJECT
   public:
-    AkonadiCollectionView( AkonadiCollectionViewFactory *factory, Akonadi::CalendarModel* model, QWidget *parent = 0 );
+    AkonadiCollectionView( CalendarView* view, QAbstractItemModel* calendarTreeModel, QWidget *parent = 0 );
     ~AkonadiCollectionView();
 
 private:

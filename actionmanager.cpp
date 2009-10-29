@@ -326,7 +326,7 @@ void ActionManager::createCalendarAkonadi()
   dlg->show();
 #endif
 
-  mCalendar = new AkonadiCalendar( filterProxy2, KSystemTimeZones::local() );
+  mCalendar = new AkonadiCalendar( mCalendarModel, filterProxy2, KSystemTimeZones::local() );
 
   mCalendarView->setCalendar( mCalendar );
   mCalendarView->readSettings();

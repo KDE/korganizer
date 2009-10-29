@@ -31,6 +31,8 @@ class TimeLabelsZone;
 class KHBox;
 
 class Q3ScrollView;
+class QAbstractItemModel;
+class QModelIndex;
 class QResizeEvent;
 class QScrollBar;
 class QSplitter;
@@ -54,8 +56,10 @@ public:
   int numberOfColumns() const;
   void setNumberOfColumns( int n );
 
-  Akonadi::CollectionSelectionProxyModel* takeSelectionModel( int column ) const;
+  Akonadi::CollectionSelectionProxyModel* takeSelectionModel( int column );
   void setSelectionModel( int column, Akonadi::CollectionSelectionProxyModel* model );
+
+  void setBaseModel( QAbstractItemModel* model );
 
 public Q_SLOTS:
   /**
@@ -71,7 +75,7 @@ public Q_SLOTS:
 private Q_SLOTS:
   void useCustomToggled( bool );
   void numberOfColumnsChanged( int );
-
+  void currentChanged( const QModelIndex &index );
 private:
   class Private;
   Private* const d;
@@ -120,6 +124,9 @@ class MultiAgendaView : public AgendaView
     void resizeEvent( QResizeEvent *ev );
     void showEvent( QShowEvent *event );
 
+    /* reimp */ void doRestoreConfig( const KConfigGroup &configGroup );
+    /* reimp */ void doSaveConfig( KConfigGroup &configGroup );
+
   protected Q_SLOTS:
     /**
      * Reimplemented from KOrg::BaseView
@@ -128,6 +135,9 @@ class MultiAgendaView : public AgendaView
 
   private:
     void addView( const Akonadi::Collection &collection );
+    void addView( Akonadi::CollectionSelectionProxyModel* selectionProxy );
+    KOAgendaView* createView( const QString &title );
+
     void deleteViews();
     void setupViews();
     void resizeScrollView( const QSize &size );
@@ -153,6 +163,9 @@ class MultiAgendaView : public AgendaView
     QDate mStartDate, mEndDate;
     bool mUpdateOnShow;
     bool mPendingChanges;
+    bool mCustomColumnSetupUsed;
+    QVector<Akonadi::CollectionSelectionProxyModel*> mCollectionSelectionModels;
+    int mCustomNumberOfColumns;
 };
 
 }

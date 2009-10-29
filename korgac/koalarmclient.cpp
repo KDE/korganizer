@@ -81,7 +81,8 @@ KOAlarmClient::KOAlarmClient( QObject *parent )
   CalendarModel *calendarModel = new CalendarModel( session, monitor, this );
   //mCalendarModel->setItemPopulationStrategy( EntityTreeModel::LazyPopulation );
 
-  mCalendar = new KOrg::AkonadiCalendar( calendarModel, zone.isValid() ? KDateTime::Spec( zone ) : KDateTime::ClockTime );
+  //TODO(AKONADI_PORT) the second arg must be a flat item list
+  mCalendar = new KOrg::AkonadiCalendar( calendarModel, calendarModel, zone.isValid() ? KDateTime::Spec( zone ) : KDateTime::ClockTime );
 
   connect( &mCheckTimer, SIGNAL(timeout()), SLOT(checkAlarms()) );
 

@@ -93,7 +93,7 @@ namespace {
 
 CalendarViewExtension *AkonadiCollectionViewFactory::create( QWidget *parent )
 {
-  mAkonadiCollectionView = new AkonadiCollectionView( this, mModel, parent );
+  mAkonadiCollectionView = new AkonadiCollectionView( view(), mModel, parent );
   QObject::connect( mAkonadiCollectionView, SIGNAL(resourcesChanged(bool)), mView, SLOT(resourcesChanged()) );
   QObject::connect( mAkonadiCollectionView, SIGNAL(resourcesChanged(bool)), mView, SLOT(updateCategories()) );
   return mAkonadiCollectionView;
@@ -109,8 +109,8 @@ AkonadiCollectionView* AkonadiCollectionViewFactory::collectionView() const
   return mAkonadiCollectionView;
 }
 
-AkonadiCollectionView::AkonadiCollectionView( AkonadiCollectionViewFactory *factory, CalendarModel* calendarModel, QWidget *parent )
-  : CalendarViewExtension( parent ), mActionManager(0), mCollectionview(0), mBaseModel( 0 ), mSelectionProxyModel( 0 ), mCollectionSelection(0)
+AkonadiCollectionView::AkonadiCollectionView( CalendarView* view, QAbstractItemModel *calendarModel, QWidget *parent )
+  : CalendarViewExtension( parent ), mActionManager(0), mCollectionview(0), mBaseModel( 0 ), mSelectionProxyModel( 0 ), mDeleteAction( 0 ), mCollectionSelection(0)
 {
   QVBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->setSpacing( KDialog::spacingHint() );
@@ -129,7 +129,7 @@ AkonadiCollectionView::AkonadiCollectionView( AkonadiCollectionViewFactory *fact
   mCollectionview->header()->hide();
   mCollectionview->setRootIsDecorated( true );
   //mCollectionview->setSelectionMode( QAbstractItemView::NoSelection );
-  KXMLGUIClient *xmlclient = KOCore::self()->xmlguiClient( factory->view() );
+  KXMLGUIClient *xmlclient = KOCore::self()->xmlguiClient( view );
   if( xmlclient ) {
     mCollectionview->setXmlGuiClient( xmlclient );
 
@@ -195,7 +195,8 @@ void AkonadiCollectionView::updateView()
 void AkonadiCollectionView::selectionChanged()
 {
   kDebug();
-  mDeleteAction->setEnabled( mCollectionview->selectionModel()->hasSelection() );
+  if ( mDeleteAction )
+    mDeleteAction->setEnabled( mCollectionview->selectionModel()->hasSelection() );
   updateView();
 }
 
