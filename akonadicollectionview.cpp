@@ -110,13 +110,14 @@ AkonadiCollectionView* AkonadiCollectionViewFactory::collectionView() const
 }
 
 AkonadiCollectionView::AkonadiCollectionView( CalendarView* view, QAbstractItemModel *calendarModel, QWidget *parent )
-  : CalendarViewExtension( parent ), mActionManager(0), mCollectionview(0), mBaseModel( 0 ), mSelectionProxyModel( 0 ), mDeleteAction( 0 ), mCollectionSelection(0)
+  : CalendarViewExtension( parent ), mActionManager(0), mCollectionview(0), mBaseModel( 0 ), mSelectionProxyModel( 0 ), mDeleteAction( 0 )
 {
   QVBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->setSpacing( KDialog::spacingHint() );
 
   Akonadi::CollectionFilterProxyModel *collectionproxymodel = new Akonadi::CollectionFilterProxyModel( this );
   collectionproxymodel->setSourceModel( calendarModel );
+  collectionproxymodel->setDynamicSortFilter( true );
   collectionproxymodel->addMimeTypeFilter( QString::fromLatin1( "text/calendar" ) );
 
   ColorProxyModel* colorProxy = new ColorProxyModel( this );
@@ -168,18 +169,11 @@ void AkonadiCollectionView::setCollectionSelectionProxyModel( CollectionSelectio
   if ( mSelectionProxyModel == m )
     return;
   mSelectionProxyModel = m;
-  delete mCollectionSelection;
   if ( !mSelectionProxyModel )
     return;
   mSelectionProxyModel->setSourceModel( mBaseModel );
-  mCollectionSelection = new CollectionSelection( mSelectionProxyModel->selectionModel() );
-  connect( mCollectionSelection, SIGNAL(selectionChanged(Akonadi::Collection::List,Akonadi::Collection::List)), this, SLOT(selectionChanged()) );
+  connect( mSelectionProxyModel->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)), this, SLOT(selectionChanged()) );
   mCollectionview->setModel( mSelectionProxyModel );
-}
-
-CollectionSelection* AkonadiCollectionView::collectionSelection() const
-{
-  return mCollectionSelection;
 }
 
 Akonadi::EntityTreeView* AkonadiCollectionView::view() const
@@ -189,7 +183,7 @@ Akonadi::EntityTreeView* AkonadiCollectionView::view() const
 
 void AkonadiCollectionView::updateView()
 {
-  emit resourcesChanged( mCollectionSelection->hasSelection() );
+  emit resourcesChanged( mSelectionProxyModel ? mSelectionProxyModel->selectionModel()->hasSelection() : false );
 }
 
 void AkonadiCollectionView::selectionChanged()

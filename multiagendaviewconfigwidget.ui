@@ -81,7 +81,13 @@
      <widget class="QWidget" name="layoutWidget">
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <widget class="QLabel" name="label">
+        <widget class="QLabel" name="selectedCalendarsLabel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="text">
           <string>Selected Calendars</string>
          </property>
@@ -89,6 +95,12 @@
        </item>
        <item>
         <widget class="QStackedWidget" name="selectionStack">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+           <horstretch>1</horstretch>
+           <verstretch>1</verstretch>
+          </sizepolicy>
+         </property>
          <property name="currentIndex">
           <number>-1</number>
          </property>

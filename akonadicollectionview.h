@@ -82,9 +82,6 @@ class AkonadiCollectionView : public CalendarViewExtension
     AkonadiCollectionView( CalendarView* view, QAbstractItemModel* calendarTreeModel, QWidget *parent = 0 );
     ~AkonadiCollectionView();
 
-private:
-    Akonadi::CollectionSelection* collectionSelection() const;
-public:
     Akonadi::EntityTreeView* view() const;
 
     Akonadi::CollectionSelectionProxyModel* collectionSelectionProxyModel() const;

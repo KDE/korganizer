@@ -27,9 +27,10 @@
 #include "ui_multiagendaviewconfigwidget.h"
 
 #include <Akonadi/EntityTreeView>
-
 #include <akonadi/kcal/collectionselection.h>
 #include <akonadi/kcal/collectionselectionproxymodel.h>
+#include <akonadi/kcal/entitymodelstatesaver.h>
+
 #include <KGlobalSettings>
 #include <KHBox>
 #include <KVBox>
@@ -384,7 +385,7 @@ void MultiAgendaView::addView( const Collection &collection )
 
 void MultiAgendaView::addView( CollectionSelectionProxyModel* sm )
 {
-  KOAgendaView* av = createView( QString() ); //TODO: set some titel
+  KOAgendaView* av = createView( QString() ); //TODO: set some title
   av->setCustomCollectionSelectionProxyModel( sm );
 }
 
@@ -546,25 +547,37 @@ void MultiAgendaView::doRestoreConfig( const KConfigGroup &configGroup )
 {
   mCustomColumnSetupUsed = configGroup.readEntry( "UseCustomColumnSetup", false );
   mCustomNumberOfColumns = configGroup.readEntry( "CustomNumberOfColumns", 2 );
-  if ( mCustomColumnSetupUsed )
-    for ( int i = 0; i < mCustomNumberOfColumns; ++i ) {
-      KConfigGroup g = configGroup.config()->group( configGroup.name() + "_subView_" + QByteArray::number( i ) );
-      //TODO create views...
-    }
+  QVector<CollectionSelectionProxyModel*> oldModels = mCollectionSelectionModels;
+  mCollectionSelectionModels.clear();
+  mCollectionSelectionModels.resize( mCustomNumberOfColumns );
+  for ( int i = 0; i < mCustomNumberOfColumns; ++i ) {
+    const KConfigGroup g = configGroup.config()->group( configGroup.name() + "_subView_" + QByteArray::number( i ) );
+    CollectionSelectionProxyModel* selection = new CollectionSelectionProxyModel;
+    selection->setDynamicSortFilter( true );
+    if ( calendar() )
+      selection->setSourceModel( calendar()->treeModel() );
+    QItemSelectionModel* qsm = new QItemSelectionModel( selection, selection );
+    selection->setSelectionModel( qsm );
+    EntityModelStateSaver* saver = new EntityModelStateSaver( selection, selection );
+    saver->restoreConfig( g );
+    mCollectionSelectionModels[i] = selection;
+  }
+  mPendingChanges = true;
+  recreateViews();
+  qDeleteAll( oldModels );
 }
 
 void MultiAgendaView::doSaveConfig( KConfigGroup &configGroup )
 {
   configGroup.writeEntry( "UseCustomColumnSetup", mCustomColumnSetupUsed );
   configGroup.writeEntry( "CustomNumberOfColumns", mCustomNumberOfColumns );
-  if ( mCustomColumnSetupUsed ) {
     int idx = 0;
-    Q_FOREACH( KOAgendaView* const i, mAgendaViews ) {
+    Q_FOREACH( CollectionSelectionProxyModel* i, mCollectionSelectionModels ) {
       KConfigGroup g = configGroup.config()->group( configGroup.name() + "_subView_" + QByteArray::number( idx ) );
-      i->saveConfig( g );
       ++idx;
+      EntityModelStateSaver saver( i );
+      saver.saveConfig( g );
     }
-  }
 }
 
 class MultiAgendaViewConfigDialog::Private {
@@ -579,6 +592,7 @@ public:
   }
 
   void setUpColumns( int n );
+  AkonadiCollectionView* createView( CollectionSelectionProxyModel* model );
 
   QVector<CollectionSelectionProxyModel*> newlyCreated;
   QVector<CollectionSelectionProxyModel*> selections;
@@ -589,6 +603,7 @@ public:
 
 MultiAgendaViewConfigDialog::MultiAgendaViewConfigDialog( QWidget* parent ) : KDialog( parent ), d( new Private( this ) )
 {
+  setWindowTitle( i18n("Configure Side-By-Side View") );
   QWidget* widget = new QWidget;
   d->ui.setupUi( widget );
   setMainWidget( widget );
@@ -613,6 +628,7 @@ void MultiAgendaViewConfigDialog::useCustomToggled( bool on ) {
   d->ui.columnNumberLabel->setEnabled( on );
   d->ui.columnNumberSB->setEnabled( on );
   d->ui.selectionStack->setEnabled( on );
+  d->ui.selectedCalendarsLabel->setEnabled( on );
   for ( int i = 0; i < d->ui.selectionStack->count(); ++i )
     d->ui.selectionStack->widget( i )->setEnabled( on );
 }
@@ -624,6 +640,13 @@ void MultiAgendaViewConfigDialog::setBaseModel( QAbstractItemModel* m )
   d->baseModel = m;
   Q_FOREACH ( CollectionSelectionProxyModel* i, d->selections )
     i->setSourceModel( d->baseModel );
+}
+AkonadiCollectionView* MultiAgendaViewConfigDialog::Private::createView( CollectionSelectionProxyModel* model )
+{
+  AkonadiCollectionView* cview = new AkonadiCollectionView( 0, baseModel, q );
+  cview->setSizePolicy( QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding );
+  cview->setCollectionSelectionProxyModel( model );
+  return cview;
 }
 
 void MultiAgendaViewConfigDialog::Private::setUpColumns( int n )
@@ -656,13 +679,11 @@ void MultiAgendaViewConfigDialog::Private::setUpColumns( int n )
       CollectionSelectionProxyModel* selection = new CollectionSelectionProxyModel;
       selection->setDynamicSortFilter( true );
       selection->setSourceModel( baseModel );
-      QItemSelectionModel* qsm = new QItemSelectionModel( selection );
+      QItemSelectionModel* qsm = new QItemSelectionModel( selection, selection );
       selection->setSelectionModel( qsm );
-
-      AkonadiCollectionView* cview = new AkonadiCollectionView( 0, baseModel, q );
-      cview->setCollectionSelectionProxyModel( selection );
+      AkonadiCollectionView* cview = createView( selection );
       const int idx = ui.selectionStack->addWidget( cview );
-      qDebug() << idx;
+      Q_ASSERT( i == idx );
       selections[i] = selection;
       newlyCreated.push_back( selection );
     }
@@ -709,10 +730,16 @@ void MultiAgendaViewConfigDialog::setSelectionModel( int column, CollectionSelec
   CollectionSelectionProxyModel* const m = d->selections[column];
   if ( m == model )
     return;
-  d->newlyCreated.erase( std::remove( d->newlyCreated.begin(), d->newlyCreated.end(), m ), d->newlyCreated.end() );
-  delete m;
+  AkonadiCollectionView* cview = qobject_cast<AkonadiCollectionView*>( d->ui.selectionStack->widget( column ) );
+  Q_ASSERT( cview );
+  cview->setCollectionSelectionProxyModel( model );
+
+  if ( d->newlyCreated.contains( m ) ) {
+    d->newlyCreated.erase( std::remove( d->newlyCreated.begin(), d->newlyCreated.end(), m ), d->newlyCreated.end() );
+    delete m;
+  }
+
   d->selections[column] = model;
-  //TODO if currently selected, update view
 }
 
 void MultiAgendaViewConfigDialog::numberOfColumnsChanged( int number )

@@ -1665,9 +1665,9 @@ void KOAgendaView::setCollection( Collection::Id coll )
 
 bool KOAgendaView::filterByCollectionSelection( const Item &incidence )
 {
-  if ( customCollectionSelectionProxyModel() )
-    return customCollectionSelection()->contains( incidence.storageCollectionId() );
-
+  if ( customCollectionSelection() ) {
+    return customCollectionSelection()->contains( incidence.parentCollection().id() );
+  }
   if ( mCollectionId < 0 )
     return true;
   else

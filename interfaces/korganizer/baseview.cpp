@@ -76,11 +76,9 @@ void BaseView::Private::setUpModels()
   delete customCollectionSelection;
   customCollectionSelection = 0;
   if ( collectionSelectionModel ) {
+    customCollectionSelection = new CollectionSelection( collectionSelectionModel->selectionModel() );
     stateSaver = new EntityModelStateSaver( collectionSelectionModel, q );
     stateSaver->addRole( Qt::CheckStateRole, "CheckState", Qt::Unchecked );
-    QItemSelectionModel* selectionModel = new QItemSelectionModel( collectionSelectionModel, collectionSelectionModel );
-    collectionSelectionModel->setSelectionModel( selectionModel );
-    customCollectionSelection = new CollectionSelection( selectionModel );
   }
   reconnectCollectionSelection();
 }
@@ -209,6 +207,7 @@ void BaseView::setCustomCollectionSelectionProxyModel( Akonadi::CollectionSelect
 {
   if ( d->collectionSelectionModel == model )
     return;
+  //TODO(AKONADI_PORT) delete existing model?
   d->collectionSelectionModel = model;
   d->setUpModels();
 }
