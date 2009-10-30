@@ -38,7 +38,7 @@
 #include <KToolInvocation>
 
 AlarmDockWindow::AlarmDockWindow()
-  : KNotificationItem( 0 )
+  : KStatusNotifierItem( 0 )
 {
   // Read the autostart status from the config file
   KConfigGroup config( KGlobal::config(), "General" );
