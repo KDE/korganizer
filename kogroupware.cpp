@@ -284,33 +284,37 @@ bool KOGroupware::sendICalMessage( QWidget *parent,
      * mail. */
     if ( incidence->attendees().count() > 1 ||
          incidence->attendees().first()->email() != incidence->organizer().email() ) {
-      QString type;
-      if ( incidence->type() == "Event" ) {
-        type = i18nc( "incidence type is event", "event" );
-      } else if ( incidence->type() == "Todo" ) {
-        type = i18nc( "incidence type is to-do/task", "task" );
-      } else if ( incidence->type() == "Journal" ) {
-        type = i18nc( "incidence type is journal", "journal entry" );
-      } else {
-        type = incidence->type();
-      }
 
       QString txt;
       switch( action ) {
       case KOGlobals::INCIDENCEEDITED:
-        txt = i18n( "You changed the invitation \"%1\".<nl/>"
+        txt = i18n( "You changed the invitation \"%1\".\n"
                     "Do you want to email the attendees an update message?",
                     incidence->summary() );
         break;
       case KOGlobals::INCIDENCEDELETED:
-        txt = i18n( "You removed the invitation \"%2\".<nl/>"
-                    "Do you want to email the attendees that the %1 is canceled?",
-                    type, incidence->summary() );
+        Q_ASSERT( incidence->type() == "Event" || incidence->type() == "Todo" );
+        if ( incidence->type() == "Event" ) {
+          txt = i18n( "You removed the invitation \"%1\".\n"
+                      "Do you want to email the attendees that the event is canceled?",
+                      incidence->summary() );
+        } else if ( incidence->type() == "Todo" ) {
+          txt = i18n( "You removed the invitation \"%1\".\n"
+                      "Do you want to email the attendees that the todo is canceled?",
+                      incidence->summary() );
+        }
         break;
       case KOGlobals::INCIDENCEADDED:
-        txt = i18n( "The %1 \"%2\" includes other people.<nl/>"
-                    "Do you want to email the invitation to the attendees?",
-                    type, incidence->summary() );
+        Q_ASSERT( incidence->type() == "Event" || incidence->type() == "Todo" );
+        if ( incidence->type() == "Event" ) {
+          txt = i18n( "The event \"%1\" includes other people.\n"
+                      "Do you want to email the invitation to the attendees?",
+                      incidence->summary() );
+        } else if ( incidence->type() == "Todo" ) {
+          txt = i18n( "The todo \"%1\" includes other people.\n"
+                      "Do you want to email the invitation to the attendees?",
+                      incidence->summary() );
+        }
         break;
       default:
         kError() << "Unsupported HowChanged action" << int( action );

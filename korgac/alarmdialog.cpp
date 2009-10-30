@@ -3,7 +3,7 @@
 
   Copyright (c) 2000,2003 Cornelius Schumacher <schumacher@kde.org>
   Copyright (c) 2008-2009 Allen Winter <winter@kde.org>
-  Copyright (c) 2009 Klar�lvdalens Datakonsult AB, a KDAB Group company <info@kdab.net>
+  Copyright (c) 2009 Klarälvdalens Datakonsult AB, a KDAB Group company <info@kdab.net>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -100,7 +100,7 @@ AlarmDialog::AlarmDialog( KOrg::AkonadiCalendar *calendar, QWidget *parent )
   setCaption( i18nc( "@title:window", "Reminders" ) );
   setWindowIcon( KIcon( "korgac" ) );
   setButtons( Ok | User1 | User2 | User3 );
-  setDefaultButton( User3 );
+  setDefaultButton( NoDefault );
   setButtonText( User3, i18nc( "@action:button", "Dismiss Reminder" ) );
   setButtonToolTip( User3, i18nc( "@info:tooltip",
                                   "Dismiss the reminders for the selected incidences" ) );
@@ -480,6 +480,9 @@ void AlarmDialog::show()
   mIncidenceTree->resizeColumnToContents( 0 );
   mIncidenceTree->resizeColumnToContents( 1 );
   mIncidenceTree->resizeColumnToContents( 2 );
+
+  // make sure no items are selected so pressing <enter> cannot do anything.
+  mIncidenceTree->setItemSelected( mIncidenceTree->topLevelItem( 0 ), false );
 
   KDialog::show();
   if ( !mPos.isNull() ) {

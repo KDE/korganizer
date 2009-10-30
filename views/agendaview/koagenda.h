@@ -65,10 +65,11 @@ class MarcusBains : public QFrame
   Q_OBJECT
   public:
     MarcusBains( KOAgenda *agenda = 0 );
+    void updateLocationRecalc( bool recalculate = false );
     virtual ~MarcusBains();
 
   public slots:
-    void updateLocation( bool recalculate = false );
+    void updateLocation();
 
   private:
     int todayColumn();
