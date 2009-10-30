@@ -36,6 +36,7 @@
 #ifndef KOGROUPWARE_H
 #define KOGROUPWARE_H
 
+#include "korganizer_export.h"
 #include "koglobals.h"
 #include <KCal/ICalFormat>
 
@@ -47,7 +48,6 @@ namespace KOrg {
   class AkonadiCalendar;
   class AkonadiCalendar;
 }
-
 using namespace KOrg;
 
 namespace KCal {
@@ -58,7 +58,7 @@ using namespace KCal;
 
 class QString;
 
-class KOGroupware : public QObject
+class KORGANIZER_CORE_EXPORT KOGroupware : public QObject
 {
   Q_OBJECT
   public:
