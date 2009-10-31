@@ -61,9 +61,15 @@ using namespace KHolidays;
 #include <QTimeEdit>
 #include <QTreeWidget>
 #include <QVBoxLayout>
+#include <QListWidget>
+#include <QListWidgetItem>
 
 #include <akonadi/collectionfilterproxymodel.h>
 #include <akonadi/collectionmodel.h>
+
+#include <mailtransport/transport.h>
+#include <mailtransport/transporttype.h>
+#include <mailtransport/transportmanager.h>
 
 KOPrefsDialogMain::KOPrefsDialogMain( const KComponentData &inst, QWidget *parent )
   : KPrefsModule( KOPrefs::instance(), inst, parent )
@@ -898,17 +904,33 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( const KComponentData
   KPrefsWidBool *useGroupwareBool =
     addWidBool( KOPrefs::instance()->useGroupwareCommunicationItem(), topFrame );
   topLayout->addWidget( useGroupwareBool->checkBox(), 0, 0, 1, 2 );
-  // FIXME: This radio button should only be available when KMail is chosen
-//   connect( thekmailradiobuttonupthere, SIGNAL(toggled(bool)),
-//            useGroupwareBool->checkBox(), SLOT(enabled(bool)) );
 
   KPrefsWidBool *bcc =
     addWidBool( KOPrefs::instance()->bccItem(), topFrame );
   topLayout->addWidget( bcc->checkBox(), 1, 0, 1, 2 );
 
-  KPrefsWidRadios *mailClientGroup =
-    addWidRadios( KOPrefs::instance()->mailClientItem(), topFrame );
-  topLayout->addWidget( mailClientGroup->groupBox(), 2, 0, 1, 2 );
+  QLabel *aTransportLabel = new QLabel(
+    i18nc( "@label", "Mail transport:" ), topFrame );
+  topLayout->addWidget( aTransportLabel, 2, 0, 1, 2 );
+
+  QListWidgetItem *defaultItem = 0;
+  QListWidgetItem *selectedItem = 0;
+  const QString defaultTransportName( MailTransport::TransportManager::self()->defaultTransportName() );
+  mTransportList = new QListWidget( topFrame );
+  topLayout->addWidget( mTransportList, 3, 0, 1, 2 );
+  foreach( MailTransport::Transport *transport, MailTransport::TransportManager::self()->transports() ) {
+    const QString n( transport->name() );
+    QListWidgetItem *item = new QListWidgetItem( transport->name(), mTransportList );
+    mTransportList->addItem( item );
+    if( n == KOPrefs::instance()->mMailTransport ) 
+      selectedItem = item;
+    else if( n == defaultTransportName )
+      defaultItem = item;
+  }
+  if( selectedItem )
+    mTransportList->setCurrentItem( selectedItem );
+  else if( defaultItem )
+    mTransportList->setCurrentItem( defaultItem );
 
   QLabel *aMailsLabel = new QLabel(
     i18nc( "@label", "Additional email addresses:" ), topFrame );
@@ -921,12 +943,12 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( const KComponentData
                              "list this address here so KOrganizer can "
                              "recognize it as yours." );
   aMailsLabel->setWhatsThis( whatsThis );
-  topLayout->addWidget( aMailsLabel, 3, 0, 1, 2 );
+  topLayout->addWidget( aMailsLabel, 4, 0, 1, 2 );
   mAMails = new Q3ListView( topFrame );
   mAMails->setWhatsThis( whatsThis );
 
   mAMails->addColumn( i18nc( "@title:column email addresses", "Email" ), 300 );
-  topLayout->addWidget( mAMails, 4, 0, 1, 2 );
+  topLayout->addWidget( mAMails, 5, 0, 1, 2 );
 
   QLabel *aEmailsEditLabel = new QLabel( i18nc( "@label", "Additional email address:" ), topFrame );
   whatsThis = i18nc( "@info:whatsthis",
@@ -936,11 +958,11 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( const KComponentData
                      "addresses are the ones you have in addition to the "
                      "one set in personal preferences." );
   aEmailsEditLabel->setWhatsThis( whatsThis );
-  topLayout->addWidget( aEmailsEditLabel, 5, 0 );
+  topLayout->addWidget( aEmailsEditLabel, 6, 0 );
   aEmailsEdit = new KLineEdit( topFrame );
   aEmailsEdit->setWhatsThis( whatsThis );
   aEmailsEdit->setEnabled( false );
-  topLayout->addWidget( aEmailsEdit, 5, 1 );
+  topLayout->addWidget( aEmailsEdit, 6, 1 );
 
   QPushButton *add = new QPushButton(
     i18nc( "@action:button add a new email address", "New" ), topFrame );
@@ -950,11 +972,11 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( const KComponentData
                      "additional e-mail addresses list. Use the edit "
                      "box above to edit the new entry." );
   add->setWhatsThis( whatsThis );
-  topLayout->addWidget( add, 6, 0 );
+  topLayout->addWidget( add, 7, 0 );
   QPushButton *del = new QPushButton( i18nc( "@action:button", "Remove" ), topFrame );
   del->setObjectName( "remove" );
   del->setWhatsThis( whatsThis );
-  topLayout->addWidget( del, 6, 1 );
+  topLayout->addWidget( del, 7, 1 );
 
   //topLayout->setRowStretch( 2, 1 );
   connect( add, SIGNAL(clicked()), this, SLOT(addItem()) );
@@ -975,6 +997,12 @@ void KOPrefsDialogGroupScheduling::usrReadConfig()
     item->setText( 0, *it );
     mAMails->insertItem( item );
   }
+
+  for( int i = 0; i < mTransportList->count(); ++i ) {
+    QListWidgetItem *item = mTransportList->item( i );
+    if( item->text() == KOPrefs::instance()->mMailTransport ) 
+      mTransportList->setCurrentItem( item );
+  }
 }
 
 void KOPrefsDialogGroupScheduling::usrWriteConfig()
@@ -986,6 +1014,8 @@ void KOPrefsDialogGroupScheduling::usrWriteConfig()
     KOPrefs::instance()->mAdditionalMails.append( item->text( 0 ) );
     item = item->nextSibling();
   }
+  if( QListWidgetItem *item = mTransportList->currentItem() )
+    KOPrefs::instance()->mMailTransport = item->text();
 }
 
 void KOPrefsDialogGroupScheduling::addItem()

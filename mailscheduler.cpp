@@ -59,35 +59,32 @@ bool MailScheduler::publish( KCal::IncidenceBase *incidence, const QString &reci
 {
   QString from = KOPrefs::instance()->email();
   bool bccMe = KOPrefs::instance()->mBcc;
-  bool useSendmail = ( KOPrefs::instance()->mMailClient == KOPrefs::MailClientSendmail );
   QString messageText = mFormat->createScheduleMessage( incidence, KCal::iTIPPublish );
 
   KOMailClient mailer;
   return mailer.mailTo(
     incidence,
     KOCore::self()->identityManager()->identityForAddress( from ),
-    from, bccMe, recipients, messageText, useSendmail );
+    from, bccMe, recipients, messageText, KOPrefs::instance()->mMailTransport );
 }
 
 bool MailScheduler::performTransaction( KCal::IncidenceBase *incidence, KCal::iTIPMethod method, const QString &recipients )
 {
   QString from = KOPrefs::instance()->email();
   bool bccMe = KOPrefs::instance()->mBcc;
-  bool useSendmail = ( KOPrefs::instance()->mMailClient == KOPrefs::MailClientSendmail );
   QString messageText = mFormat->createScheduleMessage( incidence, method );
 
   KOMailClient mailer;
   return mailer.mailTo(
     incidence,
     KOCore::self()->identityManager()->identityForAddress( from ),
-    from, bccMe, recipients, messageText, useSendmail );
+    from, bccMe, recipients, messageText, KOPrefs::instance()->mMailTransport );
 }
 
 bool MailScheduler::performTransaction( KCal::IncidenceBase *incidence, KCal::iTIPMethod method )
 {
   QString from = KOPrefs::instance()->email();
   bool bccMe = KOPrefs::instance()->mBcc;
-  bool useSendmail = ( KOPrefs::instance()->mMailClient == KOPrefs::MailClientSendmail );
   QString messageText = mFormat->createScheduleMessage( incidence, method );
 
   KOMailClient mailer;
@@ -99,7 +96,7 @@ bool MailScheduler::performTransaction( KCal::IncidenceBase *incidence, KCal::iT
     status = mailer.mailAttendees(
       incidence,
       KOCore::self()->identityManager()->identityForAddress( from ),
-      bccMe, messageText, useSendmail );
+      bccMe, messageText, KOPrefs::instance()->mMailTransport );
   } else {
     QString subject;
     Incidence *inc = dynamic_cast<Incidence*>( incidence );
@@ -109,7 +106,7 @@ bool MailScheduler::performTransaction( KCal::IncidenceBase *incidence, KCal::iT
     status = mailer.mailOrganizer(
       incidence,
       KOCore::self()->identityManager()->identityForAddress( from ),
-      from, bccMe, messageText, subject, useSendmail );
+      from, bccMe, messageText, subject, KOPrefs::instance()->mMailTransport );
   }
   return status;
 }

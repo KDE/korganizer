@@ -25,7 +25,6 @@
 */
 
 #include "komailclient.h"
-#include "kmailinterface.h" //generated
 #include "version.h"
 
 #include <KCal/Attendee>
@@ -37,6 +36,29 @@
 
 #include <KPIMIdentities/Identity>
 
+#include <kmime/kmime_content.h>
+#include <kmime/kmime_message.h>
+
+#include <mailtransport/transport.h>
+#include <mailtransport/transporttype.h>
+#include <mailtransport/transportmanager.h>
+#include <mailtransport/smtpjob.h>
+#include <mailtransport/sendmailjob.h>
+#include <mailtransport/messagequeuejob.h>
+
+#include <Akonadi/Item>
+#include <Akonadi/ItemFetchJob>
+#include <Akonadi/ItemFetchScope>
+#include <Akonadi/ItemCreateJob>
+#include <Akonadi/ItemModifyJob>
+#include <Akonadi/CollectionFetchJob>
+#include <Akonadi/CollectionFetchScope>
+#include <Akonadi/CollectionCreateJob>
+#include <Akonadi/AgentManager>
+#include <Akonadi/AgentInstance>
+#include <akonadi/kmime/specialcollections.h>
+#include <akonadi/kmime/specialcollectionsrequestjob.h>
+
 #include <KApplication>
 #include <KDebug>
 #include <KLocale>
@@ -46,7 +68,7 @@
 #include <KSystemTimeZone>
 #include <KToolInvocation>
 
-KOMailClient::KOMailClient()
+KOMailClient::KOMailClient() : QObject()
 {
 }
 
@@ -57,7 +79,7 @@ KOMailClient::~KOMailClient()
 bool KOMailClient::mailAttendees( IncidenceBase *incidence,
                                   const Identity &identity,
                                   bool bccMe, const QString &attachment,
-                                  bool useSendmail )
+                                  const QString &mailTransport )
 {
   Attendee::List attendees = incidence->attendees();
   if ( attendees.count() == 0 ) {
@@ -124,14 +146,14 @@ bool KOMailClient::mailAttendees( IncidenceBase *incidence,
   QString body = IncidenceFormatter::mailBodyStr( incidence, KSystemTimeZones::local() );
 
   return send( identity, from, to, cc, subject, body, false,
-               bccMe, attachment, useSendmail );
+               bccMe, attachment, mailTransport );
 }
 
 bool KOMailClient::mailOrganizer( IncidenceBase *incidence,
                                   const Identity &identity,
                                   const QString &from, bool bccMe,
                                   const QString &attachment,
-                                  const QString &sub, bool useSendmail )
+                                  const QString &sub, const QString &mailTransport )
 {
   QString to = incidence->organizer().fullName();
 
@@ -148,13 +170,13 @@ bool KOMailClient::mailOrganizer( IncidenceBase *incidence,
   QString body = IncidenceFormatter::mailBodyStr( incidence, KSystemTimeZones::local() );
 
   return send( identity, from, to, QString(), subject, body, false,
-               bccMe, attachment, useSendmail );
+               bccMe, attachment, mailTransport );
 }
 
 bool KOMailClient::mailTo( IncidenceBase *incidence, const Identity &identity,
                            const QString &from, bool bccMe,
                            const QString &recipients, const QString &attachment,
-                           bool useSendmail )
+                           const QString &mailTransport )
 {
   QString subject;
 
@@ -167,14 +189,14 @@ bool KOMailClient::mailTo( IncidenceBase *incidence, const Identity &identity,
   QString body = IncidenceFormatter::mailBodyStr( incidence, KSystemTimeZones::local() );
 
   return send( identity, from, recipients, QString(), subject, body, false,
-               bccMe, attachment, useSendmail );
+               bccMe, attachment, mailTransport );
 }
 
 bool KOMailClient::send( const Identity &identity,
                          const QString &from, const QString &_to,
                          const QString &cc, const QString &subject,
                          const QString &body, bool hidden, bool bccMe,
-                         const QString &attachment, bool useSendmail )
+                         const QString &attachment, const QString &mailTransport )
 {
   // We must have a recipients list for most MUAs. Thus, if the 'to' list
   // is empty simply use the 'from' address as the recipient.
@@ -188,95 +210,136 @@ bool KOMailClient::send( const Identity &identity,
            << "\nSubject:" << subject << "\nBody: \n" << body
            << "\nAttachment:\n" << attachment;
 
-  if ( useSendmail ) {
-    bool needHeaders = true;
+  QTime timer;
+  timer.start();
+           
+  MailTransport::Transport *transport = MailTransport::TransportManager::self()->transportByName( mailTransport );
+  if( ! transport ) {
+    transport = MailTransport::TransportManager::self()->transportByName(
+                  MailTransport::TransportManager::self()->defaultTransportName() );
+  }
+  if( ! transport ) {
+    kWarning() << "Error fetching transport";
+    return false;
+  }
+  const int transportId = transport->id();
 
-    QString command = KStandardDirs::findExe(
-      QString::fromLatin1( "sendmail" ), QString::fromLatin1( "/sbin:/usr/sbin:/usr/lib" ) );
-
-    if ( !command.isEmpty() ) {
-      command += QString::fromLatin1( " -oi -t" );
-    } else {
-      command = KStandardDirs::findExe( QString::fromLatin1( "mail" ) );
-      if ( command.isEmpty() ) {
-        return false; // give up
-      }
-
-      command.append( QString::fromLatin1( " -s " ) );
-      command.append( KShell::quoteArg( subject ) );
-
-      if ( bccMe ) {
-        command.append( QString::fromLatin1( " -b " ) );
-        command.append( KShell::quoteArg( from ) );
-      }
-
-      if ( !cc.isEmpty() ) {
-        command.append( " -c " );
-        command.append( KShell::quoteArg( cc ) );
-      }
-
-      command.append( " " );
-      command.append( KShell::quoteArg( to ) );
-
-      needHeaders = false;
-    }
-
-    FILE *fd = popen( command.toLocal8Bit(), "w" );
-    if ( !fd ) {
-      kError() << "Unable to open a pipe to" << command;
+  if( ! Akonadi::SpecialCollections::self()->hasDefaultCollection( Akonadi::SpecialCollections::Outbox ) ) {
+    //monitor->setCollectionMonitored( outbox, false );
+    Akonadi::SpecialCollectionsRequestJob *rjob = new Akonadi::SpecialCollectionsRequestJob( this );
+    rjob->requestDefaultCollection( Akonadi::SpecialCollections::Outbox );
+    if( ! rjob->exec()) {
+      kWarning() << "Error requesting outbox folder:" << rjob->errorText();
       return false;
     }
-
-    QString textComplete;
-    if ( needHeaders ) {
-      textComplete += QString::fromLatin1( "From: " ) + from + '\n';
-      textComplete += QString::fromLatin1( "To: " ) + to + '\n';
-      if ( !cc.isEmpty() ) {
-        textComplete += QString::fromLatin1( "Cc: " ) + cc + '\n';
-      }
-      if ( bccMe ) {
-        textComplete += QString::fromLatin1( "Bcc: " ) + from + '\n';
-      }
-      textComplete += QString::fromLatin1( "Subject: " ) + subject + '\n';
-      textComplete += QString::fromLatin1( "X-Mailer: KOrganizer" ) + korgVersion + '\n';
-    }
-    textComplete += '\n'; // end of headers
-    textComplete += body;
-    textComplete += '\n';
-    textComplete += attachment;
-
-    fwrite( textComplete.toLocal8Bit(), textComplete.length(), 1, fd );
-
-    pclose( fd );
-  } else {
-    if ( !QDBusConnection::sessionBus().interface()->isServiceRegistered( "org.kde.kmail" ) ) {
-      if ( KToolInvocation::startServiceByDesktopName( "kmail" ) ) {
-        KMessageBox::error( 0, i18n( "No running instance of KMail found." ) );
-        return false;
-      }
-    }
-    org::kde::kmail::kmail kmail( "org.kde.kmail", "/KMail", QDBusConnection::sessionBus() );
-    kapp->updateRemoteUserTimestamp( "org.kde.kmail" );
-    if ( attachment.isEmpty() ) {
-      return kmail.openComposer(
-        to, cc, bccMe ? from : QString(), subject, body, hidden ).isValid();
-    } else {
-      QString meth;
-      int idx = attachment.indexOf( "METHOD" );
-      if ( idx >= 0 ) {
-        idx = attachment.indexOf( ':', idx ) + 1;
-        const int newline = attachment.indexOf( '\n', idx );
-        meth = attachment.mid( idx, newline - idx - 1 );
-        meth = meth.toLower().trimmed();
-      } else {
-        meth = "publish";
-      }
-      return kmail.openComposer(
-        to, cc, bccMe ? from : QString(), subject, body, hidden, "cal.ics",
-        "7bit", attachment.toUtf8(), "text", "calendar", "method", meth,
-        "attachment", "utf-8", identity.uoid() ).isValid();
-    }
   }
+
+  Q_ASSERT( Akonadi::SpecialCollections::self()->hasDefaultCollection( Akonadi::SpecialCollections::Outbox ) );
+  Akonadi::Collection outbox = Akonadi::SpecialCollections::self()->defaultCollection( Akonadi::SpecialCollections::Outbox );
+  Q_ASSERT( outbox.isValid() );
+  Akonadi::ItemFetchJob *fjob = new Akonadi::ItemFetchJob( outbox );
+  fjob->fetchScope().fetchAllAttributes();
+  fjob->fetchScope().fetchFullPayload( false );
+  if( ! fjob->exec() ) {
+      kWarning() << "Error fetching content of the outbox:" << fjob->errorText();
+      return false;
+  }
+
+  KMime::Message::Ptr message = KMime::Message::Ptr( new KMime::Message );
+
+  KMime::Headers::From *f = new KMime::Headers::From( message.get() );
+  KMime::Types::Mailbox address;
+  address.fromUnicodeString( from );
+  f->addAddress( address );
+  message->setHeader( f );
+
+  KMime::Headers::To *t = new KMime::Headers::To( message.get() );
+  foreach( const QString &a, KPIMUtils::splitAddressList(to) ) {
+    KMime::Types::Mailbox address;
+    address.fromUnicodeString( a );
+    t->addAddress( address );
+  }
+  message->setHeader( t );
+
+  KMime::Headers::Cc *c = new KMime::Headers::Cc( message.get() );
+  foreach( const QString &a, KPIMUtils::splitAddressList(cc) ) {
+    KMime::Types::Mailbox address;
+    address.fromUnicodeString( a );
+    c->addAddress( address );
+  }
+  message->setHeader( c );
+
+  if( bccMe ) {
+    KMime::Headers::Bcc *b = new KMime::Headers::Bcc( message.get() );
+    KMime::Types::Mailbox address;
+    address.fromUnicodeString( from ); // from==me, right?
+    b->addAddress( address );
+    message->setHeader( b );
+  }
+
+  KMime::Headers::Subject *s = new KMime::Headers::Subject( message.get() );
+  s->fromUnicodeString( subject, "utf-8" );
+  message->setHeader( s );
+
+  message->setBody( body.toUtf8() );
+
+  KMime::Headers::ContentDisposition *attachDisposition = new KMime::Headers::ContentDisposition( message.get() );
+  attachDisposition->setFilename( "cal.ics" );
+  attachDisposition->setDisposition( KMime::Headers::CDattachment ); //KMime::Headers::CDattachment or KMime::Headers::CDinline
+  message->setHeader( attachDisposition );
+  
+  KMime::Content *attachContent = new KMime::Content();
+  attachContent->contentType()->setMimeType( "text/plain" );
+  attachContent->setBody( attachment.toUtf8() );
+  message->attachments().append( attachContent );
+
+  message->assemble();
+  kDebug() << message->encodedContent();
+
+  MailTransport::TransportJob *tjob = MailTransport::TransportManager::self()->createTransportJob( transportId );
+  Q_ASSERT( tjob );
+  Q_ASSERT( tjob->transport() );
+  tjob->setSender( from );
+  tjob->setTo( KPIMUtils::splitAddressList( to ) );
+  tjob->setCc( KPIMUtils::splitAddressList( cc ) );
+  if( bccMe )
+    tjob->setBcc( KPIMUtils::splitAddressList(from) ); //from==me?
+  //connect(tjob, SIGNAL(result(KJob*)), this, SLOT(slotMailingDone(KJob*)));
+  //tjob->setData( message->encodedContent() );
+  if( ! tjob->exec() ) {
+    kWarning() << "Error executing the transport job:" << tjob->errorText();
+    return false;
+  }
+  
+  Akonadi::Item item( transport->id() );
+  //item.setRemoteId( QString::number(transport->id()) );
+  item.setMimeType( KMime::Message::mimeType() );
+  item.setPayload( message );
+  Akonadi::ItemCreateJob *cjob = new Akonadi::ItemCreateJob( item, outbox, this );
+  if( ! cjob->exec() ) {
+    kWarning() << "Error creating message in outbox:" << cjob->errorText();
+    return false;
+  }
+
+  item = cjob->item();
+  Q_ASSERT( item.isValid() );
+  Q_ASSERT( item.hasPayload<KMime::Message::Ptr>() );
+  Q_ASSERT( MailTransport::TransportManager::self()->transportById(transportId, false) );
+  
+  MailTransport::MessageQueueJob *qjob = new MailTransport::MessageQueueJob( this );
+  qjob->setTransportId( transportId );
+  qjob->setFrom( from );
+  qjob->setTo( KPIMUtils::splitAddressList( to ) );
+  qjob->setCc( KPIMUtils::splitAddressList( cc ) );
+  if( bccMe )
+    qjob->setBcc( KPIMUtils::splitAddressList( from ) );
+  qjob->setMessage( message );
+  if( ! qjob->exec() ) {
+    kWarning() << "Error queuing message in outbox:" << qjob->errorText();
+    return false;
+  }
+
+  kDebug() << "Send mail finished. Time needed:" << timer.elapsed();
   return true;
 }
 

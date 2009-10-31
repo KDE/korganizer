@@ -28,6 +28,7 @@
 
 #include "korganizer_export.h"
 #include <QString>
+#include <QObject>
 
 namespace KCal {
   class IncidenceBase;
@@ -39,7 +40,7 @@ namespace KPIMIdentities {
 }
 using namespace KPIMIdentities;
 
-class KORGANIZER_EVENTVIEWER_EXPORT KOMailClient
+class KORGANIZER_EVENTVIEWER_EXPORT KOMailClient : public QObject
 {
   public:
     KOMailClient();
@@ -47,15 +48,15 @@ class KORGANIZER_EVENTVIEWER_EXPORT KOMailClient
 
     bool mailAttendees( IncidenceBase *, const Identity &identity, bool bccMe,
                         const QString &attachment=QString(),
-                        bool useSendmail=false );
+                        const QString &mailTransport = QString() );
     bool mailOrganizer( IncidenceBase *, const Identity &identity,
                         const QString &from, bool bccMe,
                         const QString &attachment=QString(),
                         const QString &sub=QString(),
-                        bool useSendmail=false );
+                        const QString &mailTransport = QString() );
     bool mailTo( IncidenceBase *, const Identity &identity,
                  const QString &from, bool bccMe, const QString &recipients,
-                 const QString &attachment=QString(), bool useSendmail=false );
+                 const QString &attachment=QString(), const QString &mailTransport = QString() );
 
     /**
       Sends mail with specified from, to and subject field and body as text.
@@ -71,13 +72,13 @@ class KORGANIZER_EVENTVIEWER_EXPORT KOMailClient
       without opening a composer window.
       @param bcc if true, send a blind carbon copy to the message sender
       @param attachment optional attachment (raw data)
-      @param useSendmail if true, use the system's sendmail program to send
-      mail; otherwise, use KMail to send mail.
+      @param mailTransport defines the mail transport method. See here the
+      kdepimlibs/mailtransport library.
     */
     bool send( const Identity &identity, const QString &from, const QString &to,
                const QString &cc, const QString &subject, const QString &body,
                bool hidden=false, bool bccMe=false, const QString &attachment=QString(),
-               bool useSendmail=false );
+               const QString &mailTransport = QString() );
 };
 
 #endif

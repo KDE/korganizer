@@ -1497,13 +1497,12 @@ void CalendarView::schedule_forward( const Item &item )
     ICalFormat format;
     QString from = KOPrefs::instance()->email();
     bool bccMe = KOPrefs::instance()->mBcc;
-    bool useSendmail = ( KOPrefs::instance()->mMailClient == KOPrefs::MailClientSendmail );
     QString messageText = format.createScheduleMessage( incidence.get(), iTIPRequest );
     KOMailClient mailer;
     if ( mailer.mailTo(
            incidence.get(),
            KOCore::self()->identityManager()->identityForAddress( from ),
-           from, bccMe, recipients, messageText, useSendmail ) ) {
+           from, bccMe, recipients, messageText, KOPrefs::instance()->mMailTransport ) ) {
       KMessageBox::information(
         this,
         i18n( "The item information was successfully sent." ),

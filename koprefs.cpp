@@ -197,6 +197,7 @@ void KOPrefs::setCategoryDefaults()
 void KOPrefs::usrReadConfig()
 {
   KConfigGroup generalConfig( config(), "General" );
+  mMailTransport = generalConfig.readEntry( "MailTransport", QString() );
   mCustomCategories = generalConfig.readEntry( "Custom Categories", QStringList() );
   if ( mCustomCategories.isEmpty() ) {
     setCategoryDefaults();
@@ -247,7 +248,10 @@ void KOPrefs::usrReadConfig()
 void KOPrefs::usrWriteConfig()
 {
   KConfigGroup generalConfig( config(), "General" );
-  generalConfig.writeEntry( "Custom Categories", mCustomCategories );
+  if( ! mMailTransport.isNull() )
+    generalConfig.writeEntry( "MailTransport", mMailTransport );
+  if( ! mCustomCategories.isEmpty() )
+    generalConfig.writeEntry( "Custom Categories", mCustomCategories );
 
   KConfigGroup colorsConfig( config(), "Category Colors2" );
   QHash<QString, QColor>::const_iterator i = mCategoryColors.constBegin();
