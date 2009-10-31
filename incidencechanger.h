@@ -37,20 +37,24 @@ class KORGANIZERPRIVATE_EXPORT IncidenceChanger : public KOrg::IncidenceChangerB
 {
   Q_OBJECT
   public:
-    explicit IncidenceChanger( KOrg::AkonadiCalendar *cal, QObject *parent=0 );
+    IncidenceChanger( KOrg::AkonadiCalendar *cal, QObject *parent );
     ~IncidenceChanger();
 
     bool beginChange( const Akonadi::Item & incidence );
-    bool sendGroupwareMessage( const Akonadi::Item &incidence, KCal::iTIPMethod method,
-                               bool deleting = false );
+    bool sendGroupwareMessage( const Akonadi::Item &incidence,
+                               KCal::iTIPMethod method,
+                               KOGlobals::HowChanged action,
+                               QWidget *parent );
     bool endChange( const Akonadi::Item &incidence );
 
-    bool addIncidence( const KCal::Incidence::Ptr &incidence, QWidget *parent = 0 );
-    bool addIncidence( const KCal::Incidence::Ptr &incidence, const Akonadi::Collection &collection, QWidget* parent );
-    bool changeIncidence( const KCal::Incidence::Ptr &oldinc, const Akonadi::Item &newItem, int action = -1 );
-    bool deleteIncidence( const Akonadi::Item &incidence );
+    bool addIncidence( const KCal::Incidence::Ptr &incidence, QWidget *parent );
+    bool addIncidence( const KCal::Incidence::Ptr &incidence,
+                       const Akonadi::Collection &collection, QWidget *parent );
+  bool changeIncidence( const KCal::Incidence::Ptr &oldinc, const Akonadi::Item &newItem,
+                        KOGlobals::WhatChanged, QWidget *parent );
+    bool deleteIncidence( const Akonadi::Item &incidence, QWidget *parent );
 
-    bool cutIncidence( const Akonadi::Item &incidence );
+    bool cutIncidence( const Akonadi::Item &incidence, QWidget *parent );
     static bool incidencesEqual( KCal::Incidence *inc1, KCal::Incidence *inc2 );
     static bool assignIncidence( KCal::Incidence *inc1, KCal::Incidence *inc2 );
 

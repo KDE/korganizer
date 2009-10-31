@@ -1011,7 +1011,8 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
   }
   item->setItemDate( startDt.toTimeSpec( KOPrefs::instance()->timeSpec() ).date() );
 
-  const bool result = mChanger->changeIncidence( oldIncidence, aitem );
+  const bool result = mChanger->changeIncidence( oldIncidence, aitem,
+                                                 KOGlobals::DATE_MODIFIED, this );
   mChanger->endChange( aitem );
 
   // Update the view correctly if an agenda item move was aborted by

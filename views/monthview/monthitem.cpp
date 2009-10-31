@@ -457,7 +457,8 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
         Incidence::Ptr newInc( monthScene()->mMonthView->calendar()->dissociateOccurrence( mIncidence, startDate(), KOPrefs::instance()->timeSpec() ) );
         if ( newInc ) {
            //TODO check return values
-          changer->changeIncidence( oldIncSaved, mIncidence );
+          changer->changeIncidence( oldIncSaved, mIncidence,
+                                    KOGlobals::RECURRENCE_MODIFIED_ONE_ONLY, 0 );
           changer->endChange( mIncidence );
           changer->addIncidence( newInc, parentWidget() );
         } else {
@@ -477,7 +478,8 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
             mIncidence, startDate(), KOPrefs::instance()->timeSpec(), false ) );
         if ( newInc ) {
            //TODO check return values
-          changer->changeIncidence( oldIncSaved, mIncidence );
+          changer->changeIncidence( oldIncSaved, mIncidence,
+                                    KOGlobals::RECURRENCE_MODIFIED_ALL_FUTURE, 0 );
           changer->endChange( mIncidence );
           changer->addIncidence( newInc, parentWidget() );
         } else {
@@ -509,7 +511,7 @@ void IncidenceMonthItem::updateDates( int startOffset, int endOffset )
       todo->setDtDue( todo->dtDue().addDays( startOffset ) );
     }
 
-    changer->changeIncidence( oldInc, mIncidence, KOGlobals::DATE_MODIFIED );
+    changer->changeIncidence( oldInc, mIncidence, KOGlobals::DATE_MODIFIED, 0 );
   }
 
   changer->endChange( mIncidence );

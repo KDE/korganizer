@@ -154,7 +154,7 @@ void EventArchiver::deleteIncidences( KOrg::AkonadiCalendar *calendar, KOrg::Inc
     }
   }
   for ( it = incidences.constBegin(); it != incidences.constEnd(); ++it ) {
-    changer->deleteIncidence( *it );
+    changer->deleteIncidence( *it, widget );
   }
   emit eventsDeleted();
 }
@@ -249,7 +249,7 @@ void EventArchiver::archiveIncidences( KOrg::AkonadiCalendar *calendar, KOrg::In
 
   // Delete archived events from calendar
   foreach(const Akonadi::Item &item, incidences) {
-    changer->deleteIncidence( item );
+    changer->deleteIncidence( item, widget );
   }
   emit eventsDeleted();
 }

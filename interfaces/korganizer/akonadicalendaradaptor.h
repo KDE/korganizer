@@ -71,102 +71,102 @@ class KORGANIZER_INTERFACES_EXPORT AkonadiCalendarAdaptor : public KCal::Calenda
     }
 
     virtual ~AkonadiCalendarAdaptor() {}
-    
+
     virtual bool save() { kDebug(); return true; } //unused
     virtual bool reload() { kDebug(); return true; } //unused
     virtual void close() { kDebug(); } //unused
-    
+
     virtual bool addEvent( Event *event )
     {
       return mChanger->addIncidence( Incidence::Ptr( event->clone() ), 0 );
     }
-    
+
     virtual bool deleteEvent( Event *event )
     {
-      return mChanger->deleteIncidence( incidenceToItem( event ) );
+      return mChanger->deleteIncidence( incidenceToItem( event ), 0 );
     }
-    
+
     virtual void deleteAllEvents() { Q_ASSERT(false); } //unused
-    
+
     virtual Event::List rawEvents(KCal::EventSortField sortField = KCal::EventSortUnsorted, KCal::SortDirection sortDirection = KCal::SortDirectionAscending )
     {
       return itemsToIncidences<Event>( mCalendar->rawEvents( (KOrg::EventSortField)sortField, (KOrg::SortDirection)sortDirection ) );
     }
-    
+
     virtual Event::List rawEventsForDate( const KDateTime &dt )
     {
       return itemsToIncidences<Event>( mCalendar->rawEventsForDate( dt ) );
     }
-    
+
     virtual Event::List rawEvents( const QDate &start, const QDate &end, const KDateTime::Spec &timeSpec = KDateTime::Spec(), bool inclusive = false )
     {
       return itemsToIncidences<Event>( mCalendar->rawEvents( start, end, timeSpec, inclusive ) );
     }
-    
+
     virtual Event::List rawEventsForDate( const QDate &date, const KDateTime::Spec &timeSpec = KDateTime::Spec(), KCal::EventSortField sortField = KCal::EventSortUnsorted, KCal::SortDirection sortDirection = KCal::SortDirectionAscending )
     {
       return itemsToIncidences<Event>( mCalendar->rawEventsForDate( date, timeSpec, (KOrg::EventSortField)sortField, (KOrg::SortDirection)sortDirection ) );
     }
-    
+
     virtual Event *event( const QString &uid )
     {
       return itemToIncidence<Event>( mCalendar->event( mCalendar->itemIdForIncidenceUid(uid) ) );
     }
-    
+
     virtual bool addTodo( Todo *todo )
     {
       return mChanger->addIncidence( Incidence::Ptr( todo->clone() ), 0 );
     }
-    
+
     virtual bool deleteTodo( Todo *todo )
     {
-      return mChanger->deleteIncidence( incidenceToItem( todo ) );
+      return mChanger->deleteIncidence( incidenceToItem( todo ), 0 );
     }
-    
+
     virtual void deleteAllTodos() { Q_ASSERT(false); } //unused
-    
+
     virtual Todo::List rawTodos( KCal::TodoSortField sortField = KCal::TodoSortUnsorted, KCal::SortDirection sortDirection = KCal::SortDirectionAscending )
     {
       return itemsToIncidences<Todo>( mCalendar->rawTodos( (KOrg::TodoSortField)sortField, (KOrg::SortDirection)sortDirection ) );
     }
-    
+
     virtual Todo::List rawTodosForDate( const QDate &date )
     {
       return itemsToIncidences<Todo>( mCalendar->rawTodosForDate( date ) );
     }
-    
+
     virtual Todo *todo( const QString &uid )
     {
       return itemToIncidence<Todo>( mCalendar->todo( mCalendar->itemIdForIncidenceUid(uid) ) );
     }
-    
+
     virtual bool addJournal( Journal *journal )
     {
       return mChanger->addIncidence( Incidence::Ptr( journal->clone() ), 0 );
     }
-    
+
     virtual bool deleteJournal( Journal *journal )
     {
-      return mChanger->deleteIncidence( incidenceToItem( journal ) );
+      return mChanger->deleteIncidence( incidenceToItem( journal ), 0 );
     }
-    
+
     virtual void deleteAllJournals() { Q_ASSERT(false); } //unused
 
     virtual Journal::List rawJournals( KCal::JournalSortField sortField = KCal::JournalSortUnsorted, KCal::SortDirection sortDirection = KCal::SortDirectionAscending )
     {
       return itemsToIncidences<Journal>( mCalendar->rawJournals( (KOrg::JournalSortField)sortField, (KOrg::SortDirection)sortDirection ) );
     }
-    
+
     virtual Journal::List rawJournalsForDate( const QDate &dt )
     {
       return itemsToIncidences<Journal>( mCalendar->rawJournalsForDate( dt ) );
     }
-    
+
     virtual Journal *journal( const QString &uid )
     {
       return itemToIncidence<Journal>( mCalendar->journal( mCalendar->itemIdForIncidenceUid(uid) ) );
     }
-    
+
     virtual Alarm::List alarms( const KDateTime &from, const KDateTime &to )
     {
       return itemsToIncidences<Alarm>( mCalendar->alarms( from, to ) );
@@ -175,7 +175,7 @@ class KORGANIZER_INTERFACES_EXPORT AkonadiCalendarAdaptor : public KCal::Calenda
   private:
     AkonadiCalendar *mCalendar;
     IncidenceChangerBase *mChanger;
- 
+
 };
 
 }

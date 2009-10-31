@@ -22,6 +22,8 @@
 #define KORG_INCIDENCECHANGERBASE_H
 
 #include "korganizer/korganizer_export.h"
+#include "korganizer/koglobals.h"
+
 #include <KCal/Incidence>
 #include <KCal/Scheduler>
 
@@ -48,16 +50,18 @@ class KORGANIZER_INTERFACES_EXPORT IncidenceChangerBase : public QObject
     virtual ~IncidenceChangerBase();
 
     virtual bool sendGroupwareMessage( const Akonadi::Item &incidence,
-                                       KCal::iTIPMethod method, bool deleting = false ) = 0;
+                                       KCal::iTIPMethod method,
+                                       KOGlobals::HowChanged action,
+                                       QWidget *parent ) = 0;
 
-    virtual bool beginChange( const Akonadi::Item & incidence ) = 0;
+    virtual bool beginChange( const Akonadi::Item &incidence ) = 0;
     virtual bool endChange( const Akonadi::Item &incidence ) = 0;
 
     virtual bool addIncidence( const KCal::Incidence::Ptr &incidence, QWidget *parent ) = 0;
     virtual bool addIncidence( const KCal::Incidence::Ptr &incidence, const Akonadi::Collection &collection, QWidget* parent ) = 0;
-    virtual bool changeIncidence( const KCal::Incidence::Ptr &oldinc, const Akonadi::Item &newinc, int action = -1 ) = 0;
-    virtual bool deleteIncidence( const Akonadi::Item &incidence ) = 0;
-    virtual bool cutIncidence( const Akonadi::Item &incidence ) = 0;
+  virtual bool changeIncidence( const KCal::Incidence::Ptr &oldinc, const Akonadi::Item &newinc, KOGlobals::WhatChanged, QWidget *parent ) = 0;
+    virtual bool deleteIncidence( const Akonadi::Item &incidence, QWidget *parent ) = 0;
+    virtual bool cutIncidence( const Akonadi::Item &incidence, QWidget *parent ) = 0;
 
 /*
     static bool incidencesEqual( const Akonadi::Item &inc1, const Akonadi::Item &inc2 );

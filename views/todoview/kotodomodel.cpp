@@ -799,7 +799,7 @@ bool KOTodoModel::setData( const QModelIndex &index, const QVariant &value, int 
 
   if ( !todo->isReadOnly() && mChanger->beginChange( node->mTodo ) ) {
     Todo::Ptr oldTodo( todo->clone() );
-    int modified = KOGlobals::UNKNOWN_MODIFIED;
+    KOGlobals::WhatChanged modified = KOGlobals::UNKNOWN_MODIFIED;
 
     if ( role == Qt::CheckStateRole && index.column() == 0 ) {
       todo->setCompleted( static_cast<Qt::CheckState>( value.toInt() ) == Qt::Checked );
@@ -847,7 +847,7 @@ bool KOTodoModel::setData( const QModelIndex &index, const QVariant &value, int 
     }
 
     if ( modified != KOGlobals::UNKNOWN_MODIFIED ) {
-      mChanger->changeIncidence( oldTodo, node->mTodo, modified );
+      mChanger->changeIncidence( oldTodo, node->mTodo, modified, 0 );
       // changeIncidence will eventually call the view's
       // changeIncidenceDisplay method, which in turn
       // will call processChange. processChange will then emit
@@ -939,7 +939,7 @@ bool KOTodoModel::dropMimeData( const QMimeData *data, Qt::DropAction action,
       if ( mChanger->beginChange( todo ) ) {
         Todo *oldTodo = todo->clone();
         todo->setRelatedTo( destTodo );
-        mChanger->changeIncidence( oldTodo, todo, KOGlobals::RELATION_MODIFIED );
+        mChanger->changeIncidence( oldTodo, todo, KOGlobals::RELATION_MODIFIED, 0 );
         mChanger->endChange( todo );
         // again, no need to emit dataChanged, that's done by processChange
 
@@ -980,7 +980,7 @@ bool KOTodoModel::dropMimeData( const QMimeData *data, Qt::DropAction action,
               }
             }
           }
-          mChanger->changeIncidence( oldTodo, destTodo );
+          mChanger->changeIncidence( oldTodo, destTodo, KOGlobals::RELATION_MODIFIED, 0 );
           mChanger->endChange( destTodo );
 
           delete oldTodo;

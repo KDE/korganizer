@@ -82,7 +82,9 @@ bool IncidenceChanger::beginChange( const Item &item )
 }
 
 bool IncidenceChanger::sendGroupwareMessage( const Item &aitem,
-                                             KCal::iTIPMethod method, bool deleting )
+                                             KCal::iTIPMethod method,
+                                             KOGlobals::HowChanged action,
+                                             QWidget *parent )
 {
   const Incidence::Ptr incidence = Akonadi::incidence( aitem );
   if ( !incidence )
@@ -93,8 +95,8 @@ bool IncidenceChanger::sendGroupwareMessage( const Item &aitem,
     emit schedule( method, aitem );
     return true;
   } else if ( KOPrefs::instance()->mUseGroupwareCommunication ) {
-    // FIXME: Find a widget to use as parent, instead of 0
-    return KOGroupware::instance()->sendICalMessage( 0, method, incidence.get(), deleting );
+    return
+      KOGroupware::instance()->sendICalMessage( parent, method, incidence.get(), action,  false );
   }
   return true;
 }
@@ -115,7 +117,7 @@ void IncidenceChanger::cancelAttendees( const Item &aitem )
       // them?", which isn't helpful at all in this situation. Afterwards, it
       // would only call the MailScheduler::performTransaction, so do this
       // manually.
-      // FIXME: Groupware schedulling should be factored out to it's own class
+      // FIXME: Groupware scheduling should be factored out to it's own class
       //        anyway
       MailScheduler scheduler( static_cast<AkonadiCalendar*>(mCalendar), this );
       scheduler.performTransaction( incidence.get(), iTIPCancel );
@@ -165,7 +167,7 @@ bool IncidenceChanger::endChange( const Item &item )
   return true;
 }
 
-bool IncidenceChanger::deleteIncidence( const Item &aitem )
+bool IncidenceChanger::deleteIncidence( const Item &aitem, QWidget *parent )
 {
   const Incidence::Ptr incidence = Akonadi::incidence( aitem );
   if ( !incidence ) {
@@ -173,7 +175,8 @@ bool IncidenceChanger::deleteIncidence( const Item &aitem )
   }
 
   kDebug() << "\"" << incidence->summary() << "\"";
-  bool doDelete = sendGroupwareMessage( aitem, KCal::iTIPCancel, true );
+  bool doDelete = sendGroupwareMessage( aitem, KCal::iTIPCancel,
+                                        KOGlobals::INCIDENCEDELETED, parent );
   if( !doDelete )
     return false;
   emit incidenceToBeDeleted( aitem );
@@ -253,7 +256,7 @@ void IncidenceChanger::deleteIncidenceFinished( KJob* j )
 }
 
 
-bool IncidenceChanger::cutIncidence( const Item& aitem )
+bool IncidenceChanger::cutIncidence( const Item& aitem, QWidget *parent )
 {
   const Incidence::Ptr incidence = Akonadi::incidence( aitem );
   if ( !incidence ) {
@@ -261,7 +264,8 @@ bool IncidenceChanger::cutIncidence( const Item& aitem )
   }
 
   kDebug() << "\"" << incidence->summary() << "\"";
-  bool doDelete = sendGroupwareMessage( aitem, KCal::iTIPCancel );
+  bool doDelete = sendGroupwareMessage( aitem, KCal::iTIPCancel,
+                                        KOGlobals::INCIDENCEDELETED, parent );
   if( doDelete ) {
 
     // @TODO: the factory needs to do the locking!
@@ -365,7 +369,9 @@ bool IncidenceChanger::myAttendeeStatusChanged( const Incidence* newInc, const I
   return false;
 }
 
-bool IncidenceChanger::changeIncidence( const KCal::Incidence::Ptr &oldinc, const Item &newItem, int action )
+bool IncidenceChanger::changeIncidence( const KCal::Incidence::Ptr &oldinc, const Item &newItem,
+                                        KOGlobals::WhatChanged action,
+                                        QWidget *parent )
 {
   Akonadi::Item oldItem;
   oldItem.setPayload(oldinc);
@@ -380,7 +386,7 @@ bool IncidenceChanger::changeIncidence( const KCal::Incidence::Ptr &oldinc, cons
     kDebug() << "Incidence not changed";
   } else {
     kDebug() << "Changing incidence";
-    bool statusChanged = myAttendeeStatusChanged( oldinc.get(), newinc.get() );
+    bool attendeeStatusChanged = myAttendeeStatusChanged( oldinc.get(), newinc.get() );
     int revision = newinc->revision();
     newinc->setRevision( revision + 1 );
     // FIXME: Use a generic method for this! Ideally, have an interface class
@@ -389,18 +395,14 @@ bool IncidenceChanger::changeIncidence( const KCal::Incidence::Ptr &oldinc, cons
     //        pattern...
     bool success = true;
     if ( KOPrefs::instance()->mUseGroupwareCommunication ) {
-      success = KOGroupware::instance()->sendICalMessage( 0,
-                                                          KCal::iTIPRequest,
-                                                          newinc.get(), false, statusChanged );
+      success = KOGroupware::instance()->sendICalMessage(
+        parent,
+        KCal::iTIPRequest,
+        newinc.get(), KOGlobals::INCIDENCEEDITED, attendeeStatusChanged );
     }
 
     if ( success ) {
-      // Accept the event changes
-      if ( action < 0 ) {
-        emit incidenceChanged( oldItem, newItem );
-      } else {
-        emit incidenceChanged( oldItem, newItem, action );
-      }
+      emit incidenceChanged( oldItem, newItem, action );
     } else {
       kDebug() << "Changing incidence failed. Reverting changes.";
       assignIncidence( newinc.get(), oldinc.get() );
@@ -440,23 +442,24 @@ void IncidenceChanger::addIncidenceFinished( KJob* j ) {
   Incidence::Ptr incidence = Akonadi::incidence( job->item() );
 
   if  ( job->error() ) {
-    KMessageBox::sorry( 0, //PENDING(AKONADI_PORT) set parent, ideally the one passed in addIncidence...
-                        i18n( "Unable to save %1 \"%2\": %3",
-                              i18n( incidence->type() ),
-                              incidence->summary(),
-                              job->errorString( )) );
+    KMessageBox::sorry(
+      0, //PENDING(AKONADI_PORT) set parent, ideally the one passed in addIncidence...
+      i18n( "Unable to save %1 \"%2\": %3",
+            i18n( incidence->type() ),
+            incidence->summary(),
+            job->errorString() ) );
     return;
   }
 
   Q_ASSERT( incidence );
   if ( KOPrefs::instance()->mUseGroupwareCommunication ) {
-    if ( !KOGroupware::instance()->sendICalMessage( 0, //PENDING(AKONADI_PORT) set parent, ideally the one passed in addIncidence...
-                                                    KCal::iTIPRequest,
-                                                    incidence.get() ) ) {
+    if ( !KOGroupware::instance()->sendICalMessage(
+           0, //PENDING(AKONADI_PORT) set parent, ideally the one passed in addIncidence...
+           KCal::iTIPRequest,
+           incidence.get(), KOGlobals::INCIDENCEADDED, false ) ) {
       kError() << "sendIcalMessage failed.";
     }
   }
-
 }
 
 #include "incidencechanger.moc"

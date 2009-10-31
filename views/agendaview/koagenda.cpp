@@ -1036,8 +1036,8 @@ void KOAgenda::endItemAction()
         if ( newInc ) {
           // don't recreate items, they already have the correct position
           emit enableAgendaUpdate( false );
-          mChanger->changeIncidence( oldIncSaved, inc );
-
+          mChanger->changeIncidence( oldIncSaved, inc,
+                                     KOGlobals::RECURRENCE_MODIFIED_ONE_ONLY, this );
 #ifdef AKONADI_PORT_DISABLED // this needs to be done when the async item adding is done and we have the real akonadi item
           Akonadi::Item item;
           item.setPayload( newInc );
@@ -1079,7 +1079,8 @@ void KOAgenda::endItemAction()
 #endif
           mChanger->addIncidence( newInc, this );
           emit enableAgendaUpdate( true );
-          mChanger->changeIncidence( oldIncSaved, inc );
+          mChanger->changeIncidence( oldIncSaved, inc,
+                                     KOGlobals::RECURRENCE_MODIFIED_ALL_FUTURE, this );
         } else {
           KMessageBox::sorry(
             this,

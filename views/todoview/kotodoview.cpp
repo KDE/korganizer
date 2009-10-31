@@ -743,7 +743,7 @@ void KOTodoView::setNewDate( const QDate &date )
     }
     todo->setDtDue( dt );
 
-    mChanger->changeIncidence( oldTodo, todoItem, KOGlobals::COMPLETION_MODIFIED );
+    mChanger->changeIncidence( oldTodo, todoItem, KOGlobals::COMPLETION_MODIFIED, this );
     mChanger->endChange( todoItem );
   } else {
     kDebug() << "No active item, active item is read-only, or locking failed";
@@ -773,9 +773,11 @@ void KOTodoView::setNewPercentage( QAction *action )
       todo->setPercentComplete( percentage );
     }
     if ( todo->recurs() && percentage == 100 ) {
-      mChanger->changeIncidence( oldTodo, todoItem, KOGlobals::COMPLETION_MODIFIED_WITH_RECURRENCE );
+      mChanger->changeIncidence( oldTodo, todoItem,
+                                 KOGlobals::COMPLETION_MODIFIED_WITH_RECURRENCE, this );
     } else {
-      mChanger->changeIncidence( oldTodo, todoItem, KOGlobals::COMPLETION_MODIFIED );
+      mChanger->changeIncidence( oldTodo, todoItem,
+                                 KOGlobals::COMPLETION_MODIFIED, this );
     }
     mChanger->endChange( todoItem );
   } else {
@@ -796,7 +798,7 @@ void KOTodoView::setNewPriority( QAction *action )
     Todo::Ptr oldTodo( todo->clone() );
     todo->setPriority( mPriority[action] );
 
-    mChanger->changeIncidence( oldTodo, todoItem, KOGlobals::PRIORITY_MODIFIED );
+    mChanger->changeIncidence( oldTodo, todoItem, KOGlobals::PRIORITY_MODIFIED, this );
     mChanger->endChange( todoItem );
   }
 }
@@ -823,7 +825,7 @@ void KOTodoView::changedCategories( QAction *action )
     }
     categories.sort();
     todo->setCategories( categories );
-    mChanger->changeIncidence( oldTodo, todoItem, KOGlobals::CATEGORY_MODIFIED );
+    mChanger->changeIncidence( oldTodo, todoItem, KOGlobals::CATEGORY_MODIFIED, this );
     mChanger->endChange( todoItem );
   } else {
     kDebug() << "No active item, active item is read-only, or locking failed";

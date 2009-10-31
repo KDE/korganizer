@@ -127,7 +127,7 @@ class KOrganizerEditorConfig : public KOEditorConfig
       return KOPrefs::instance()->showTimeZoneSelectorInIncidenceEditor();
     }
     virtual QDateTime defaultDuration() const {
-      return KOPrefs::instance()->defaultDuration();      
+      return KOPrefs::instance()->defaultDuration();
     }
     virtual QDateTime startTime() const {
       return KOPrefs::instance()->startTime();
@@ -620,7 +620,7 @@ void ActionManager::initActions()
   mNewEventAction = new KAction( KIcon( "appointment-new" ), i18n( "New E&vent..." ), this );
   mNewEventAction->setIconText( i18nc( "@action:intoolbar create a new event", "Event" ) );
   mNewEventAction->setHelpText( i18n( "Create a new Event" ) );
-  
+
   mACollection->addAction( "new_event", mNewEventAction );
   connect( mNewEventAction, SIGNAL(triggered(bool)), mCalendarView,
            SLOT(newEvent()) );
@@ -1614,7 +1614,7 @@ void ActionManager::downloadNewStuff()
     }
 
 #if 0
-    srand(time(NULL));    
+    srand(time(NULL));
     KUrl tempfile( QFileInfo( QDir::home(),
                               QString("%1-%2").arg(rand()).arg(QFileInfo(filename.toLocalFile()).fileName())
                               ).absoluteFilePath() );
@@ -1625,7 +1625,7 @@ void ActionManager::downloadNewStuff()
                                            -1, KIO::Overwrite | KIO::HideProgressInfo);
     connect(job, SIGNAL(result(KJob*)), this, SLOT(slotNewStuffDownloaded(KJob*)));
   }
-  
+
   // FIXME (KNS2): monday change
 
   //qDeleteAll(entries);
@@ -1639,7 +1639,7 @@ void ActionManager::slotNewStuffDownloaded(KJob *_job)
     KMessageBox::error( mCalendarView, i18n( "Could not download calendar %1: %2.",
                                              job->srcUrl().url(), job->errorString() ) );
   } else {
-    IncidenceChanger changer( mCalendar );  //AKONADI_PORT avoid this local incidence changer copy...
+    IncidenceChanger changer( mCalendar, 0 );  //AKONADI_PORT avoid this local incidence changer copy...
 
     AkonadiCalendarAdaptor cal( mCalendar, &changer );  FileStorage storage( &cal );
     storage.setFileName( filename );
@@ -2106,7 +2106,7 @@ void ActionManager::slotAutoArchive()
   mAutoArchiveTimer->stop();
   EventArchiver archiver;
   connect( &archiver, SIGNAL(eventsDeleted()), mCalendarView, SLOT(updateView()) ); //AKONADI_PORT this signal shouldn't be needed anymore?
-  IncidenceChanger changer( mCalendar );  //AKONADI_PORT avoid this local incidence changer copy...
+  IncidenceChanger changer( mCalendar, 0 );  //AKONADI_PORT avoid this local incidence changer copy...
   archiver.runAuto( mCalendarView->calendar(), &changer, mCalendarView, false /*no gui*/);
 
   // restart timer with the correct delay ( especially useful for the first time )
