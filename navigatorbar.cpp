@@ -86,14 +86,14 @@ NavigatorBar::NavigatorBar( QWidget *parent ) : QWidget( parent )
 
   // set up control frame layout
   QHBoxLayout *ctrlLayout = new QHBoxLayout( this );
-  ctrlLayout->addSpacerItem( frontSpacer );
   ctrlLayout->addWidget( mPrevYear );
   ctrlLayout->addWidget( mPrevMonth );
+  ctrlLayout->addSpacerItem( frontSpacer );
   ctrlLayout->addWidget( mMonth );
   ctrlLayout->addWidget( mYear );
+  ctrlLayout->addSpacerItem( endSpacer );
   ctrlLayout->addWidget( mNextMonth );
   ctrlLayout->addWidget( mNextYear );
-  ctrlLayout->addSpacerItem( endSpacer );
 
   connect( mPrevYear, SIGNAL(clicked()), SIGNAL(goPrevYear()) );
   connect( mPrevMonth, SIGNAL(clicked()), SIGNAL(goPrevMonth()) );
