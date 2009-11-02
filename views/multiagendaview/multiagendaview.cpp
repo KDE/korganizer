@@ -182,10 +182,15 @@ void MultiAgendaView::recreateViews()
 
 void MultiAgendaView::deleteViews()
 {
-  for ( QList<QWidget*>::ConstIterator it = mAgendaWidgets.constBegin();
-        it != mAgendaWidgets.constEnd(); ++it ) {
-    delete *it;
+  Q_FOREACH( KOAgendaView *const i, mAgendaViews ) {
+    CollectionSelectionProxyModel* proxy = i->takeCustomCollectionSelectionProxyModel();
+    if ( proxy && !mCollectionSelectionModels.contains( proxy ) ) {
+      qDebug() << "deleting" << proxy;
+      delete proxy;
+    }
+    delete i;
   }
+
   mAgendaViews.clear();
   mAgendaWidgets.clear();
 }
@@ -533,12 +538,7 @@ void MultiAgendaView::showConfigurationDialog( QWidget* parent )
     newModels.resize( mCustomNumberOfColumns );
     for ( int i = 0; i < mCustomNumberOfColumns; ++i )
       newModels[i] = dlg->takeSelectionModel( i );
-    Q_FOREACH ( CollectionSelectionProxyModel* i, mCollectionSelectionModels )
-        if ( !newModels.contains( i ) )
-          delete i;
     mCollectionSelectionModels = newModels;
-    Q_FOREACH( CollectionSelectionProxyModel* const i, mCollectionSelectionModels )
-        kDebug() << i->selectionModel()->selectedIndexes().count();
     mPendingChanges = true;
     recreateViews();
   }

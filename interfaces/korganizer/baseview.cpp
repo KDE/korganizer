@@ -57,8 +57,7 @@ public:
     , stateSaver( 0 ) {}
 
   ~Private() {
-    //TODO(AKONADI_PORT) make sure models are not leaked
-    //delete collectionSelectionModel;
+    delete collectionSelectionModel;
   }
 
   AkonadiCalendar *calendar;
@@ -78,7 +77,7 @@ void BaseView::Private::setUpModels()
   if ( collectionSelectionModel ) {
     customCollectionSelection = new CollectionSelection( collectionSelectionModel->selectionModel() );
     stateSaver = new EntityModelStateSaver( collectionSelectionModel, q );
-    stateSaver->addRole( Qt::CheckStateRole, "CheckState", Qt::Unchecked );
+    stateSaver->addRole( Qt::CheckStateRole, "CheckState" );
   }
   reconnectCollectionSelection();
 }
@@ -207,7 +206,7 @@ void BaseView::setCustomCollectionSelectionProxyModel( Akonadi::CollectionSelect
 {
   if ( d->collectionSelectionModel == model )
     return;
-  //TODO(AKONADI_PORT) delete existing model?
+  delete d->collectionSelectionModel;
   d->collectionSelectionModel = model;
   d->setUpModels();
 }
@@ -220,6 +219,14 @@ void BaseView::collectionSelectionChanged()
 CollectionSelectionProxyModel *BaseView::customCollectionSelectionProxyModel() const
 {
   return d->collectionSelectionModel;
+}
+
+CollectionSelectionProxyModel *BaseView::takeCustomCollectionSelectionProxyModel()
+{
+  CollectionSelectionProxyModel* m = d->collectionSelectionModel;
+  d->collectionSelectionModel = 0;
+  d->setUpModels();
+  return m;
 }
 
 CollectionSelection *BaseView::customCollectionSelection() const
