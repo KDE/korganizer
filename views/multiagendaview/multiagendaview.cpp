@@ -48,6 +48,11 @@
 using namespace Akonadi;
 using namespace KOrg;
 
+static QString generateColumnLabel( int c )
+{
+  return i18n( "Agenda %1", c + 1 );
+}
+
 MultiAgendaView::MultiAgendaView( QWidget *parent )
   : AgendaView( parent ),
     mUpdateOnShow( true ),
@@ -562,7 +567,7 @@ void MultiAgendaView::doRestoreConfig( const KConfigGroup &configGroup )
     const int orig = mCustomColumnTitles.size();
     mCustomColumnTitles.resize( mCustomNumberOfColumns );
     for ( int i = orig; i < mCustomNumberOfColumns; ++i )
-      mCustomColumnTitles[i] = i18n( "Column %1", i + 1 );
+      mCustomColumnTitles[i] = generateColumnLabel( i );
   }
   QVector<CollectionSelectionProxyModel*> oldModels = mCollectionSelectionModels;
   mCollectionSelectionModels.clear();
@@ -699,7 +704,7 @@ void MultiAgendaViewConfigDialog::Private::setUpColumns( int n )
       item->setEditable( false );
       if ( titles.count() <= i ) {
         titles.resize( i + 1 );
-        titles[i] = i18n("Agenda %1", i + 1 );
+        titles[i] = generateColumnLabel( i );
       }
       item->setText( titles[i] );
       item->setData( i, Qt::UserRole );
