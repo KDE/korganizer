@@ -293,7 +293,7 @@ void ActionManager::createCalendarAkonadi()
   selectionProxyModel->setDynamicSortFilter( true );
   selectionProxyModel->setSortCaseSensitivity( Qt::CaseInsensitive );
   mCollectionSelectionModelStateSaver = new EntityModelStateSaver( selectionProxyModel, this );
-  mCollectionSelectionModelStateSaver->addRole( Qt::CheckStateRole, "CheckState", Qt::Unchecked );
+  mCollectionSelectionModelStateSaver->addRole( Qt::CheckStateRole, "CheckState" );
   QItemSelectionModel* selectionModel = new QItemSelectionModel( selectionProxyModel );
   selectionProxyModel->setSelectionModel( selectionModel );
   selectionProxyModel->setSourceModel( mCalendarModel );
