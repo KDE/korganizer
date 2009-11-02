@@ -76,7 +76,19 @@ kde4_add_app_icon(korganizer_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/pixmaps/hi*-apps-
 
 kde4_add_executable(korganizer ${korganizer_SRCS})
 
-target_link_libraries(korganizer ${KDE4_KDEUI_LIBS} ${KDE4_KDE3SUPPORT_LIBRARY} ${KDE4_KPARTS_LIBRARY} ${KDEPIMLIBS_KCAL_LIBS} ${KDEPIMLIBS_KHOLIDAYS_LIBS} ${KDEPIMLIBS_KONTACTINTERFACE_LIBS} kdepim kdepimdbusinterfaces korganizerprivate korganizer_interfaces)
+target_link_libraries(korganizer 
+	${KDE4_KDEUI_LIBS}
+	${KDE4_KDE3SUPPORT_LIBRARY}
+	${KDE4_KPARTS_LIBRARY} 
+	${KDEPIMLIBS_KCAL_LIBS} 
+	${KDEPIMLIBS_KHOLIDAYS_LIBS} 
+	${KDEPIMLIBS_KONTACTINTERFACE_LIBS} 
+	kdepim 
+	kdepimdbusinterfaces 
+	korganizerprivate 
+	korganizer_interfaces
+	korganizer_core
+	)
 
 install(TARGETS korganizer ${INSTALL_TARGETS_DEFAULT_ARGS})
 
