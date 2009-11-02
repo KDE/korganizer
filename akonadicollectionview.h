@@ -33,6 +33,7 @@
 #include <QTreeWidget>
 #include <QList>
 
+class QAbstractProxyModel;
 class QItemSelectionModel;
 
 namespace KOrg {
@@ -58,8 +59,7 @@ class AkonadiCollectionView;
 class AkonadiCollectionViewFactory : public CalendarViewExtension::Factory
 {
   public:
-  AkonadiCollectionViewFactory( Akonadi::CalendarModel *model, CalendarView *view );
-    virtual ~AkonadiCollectionViewFactory(){}
+    explicit AkonadiCollectionViewFactory( CalendarView *view );
 
     CalendarView* view() const;
     AkonadiCollectionView* collectionView() const;
@@ -79,7 +79,7 @@ class AkonadiCollectionView : public CalendarViewExtension
 {
   Q_OBJECT
   public:
-    AkonadiCollectionView( CalendarView* view, QAbstractItemModel* calendarTreeModel, QWidget *parent = 0 );
+    explicit AkonadiCollectionView( CalendarView* view, QWidget *parent = 0 );
     ~AkonadiCollectionView();
 
     Akonadi::EntityTreeView* view() const;
@@ -104,7 +104,7 @@ class AkonadiCollectionView : public CalendarViewExtension
   private:
     Akonadi::StandardActionManager* mActionManager;
     Akonadi::EntityTreeView *mCollectionview;
-    QAbstractItemModel* mBaseModel;
+    QAbstractProxyModel* mBaseModel;
     Akonadi::CollectionSelectionProxyModel *mSelectionProxyModel;
     //QList<ResourceCalendar*> mResourcesToClose;
     //QAbstractButton *mAddButton, *mEditButton, *mDeleteButton;

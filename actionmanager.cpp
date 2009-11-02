@@ -296,8 +296,9 @@ void ActionManager::createCalendarAkonadi()
   mCollectionSelectionModelStateSaver->addRole( Qt::CheckStateRole, "CheckState", Qt::Unchecked );
   QItemSelectionModel* selectionModel = new QItemSelectionModel( selectionProxyModel );
   selectionProxyModel->setSelectionModel( selectionModel );
+  selectionProxyModel->setSourceModel( mCalendarModel );
 
-  AkonadiCollectionViewFactory factory( mCalendarModel, mCalendarView );
+  AkonadiCollectionViewFactory factory( mCalendarView );
   mCalendarView->addExtension( &factory );
   mCollectionView = factory.collectionView();
   connect( mCollectionView, SIGNAL(resourcesChanged(bool)), SLOT(slotResourcesChanged(bool)) );

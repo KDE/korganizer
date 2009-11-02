@@ -537,6 +537,8 @@ void MultiAgendaView::showConfigurationDialog( QWidget* parent )
         if ( !newModels.contains( i ) )
           delete i;
     mCollectionSelectionModels = newModels;
+    Q_FOREACH( CollectionSelectionProxyModel* const i, mCollectionSelectionModels )
+        kDebug() << i->selectionModel()->selectedIndexes().count();
     mPendingChanges = true;
     recreateViews();
   }
@@ -593,7 +595,7 @@ public:
 
   void setUpColumns( int n );
   AkonadiCollectionView* createView( CollectionSelectionProxyModel* model );
-
+  AkonadiCollectionView* view( int index ) const;
   QVector<CollectionSelectionProxyModel*> newlyCreated;
   QVector<CollectionSelectionProxyModel*> selections;
   Ui::MultiAgendaViewConfigWidget ui;
@@ -635,7 +637,7 @@ void MultiAgendaViewConfigDialog::useCustomToggled( bool on ) {
 
 AkonadiCollectionView* MultiAgendaViewConfigDialog::Private::createView( CollectionSelectionProxyModel* model )
 {
-  AkonadiCollectionView* cview = new AkonadiCollectionView( 0, baseModel, q );
+  AkonadiCollectionView* cview = new AkonadiCollectionView( 0, q );
   cview->setSizePolicy( QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding );
   cview->setCollectionSelectionProxyModel( model );
   return cview;
@@ -716,6 +718,11 @@ CollectionSelectionProxyModel* MultiAgendaViewConfigDialog::takeSelectionModel( 
   return m;
 }
 
+AkonadiCollectionView* MultiAgendaViewConfigDialog::Private::view( int index ) const
+{
+  return qobject_cast<AkonadiCollectionView*>( ui.selectionStack->widget( index ) );
+}
+
 void MultiAgendaViewConfigDialog::setSelectionModel( int column, CollectionSelectionProxyModel* model )
 {
   Q_ASSERT( column >= 0 && column < d->selections.size() );
@@ -723,7 +730,7 @@ void MultiAgendaViewConfigDialog::setSelectionModel( int column, CollectionSelec
   CollectionSelectionProxyModel* const m = d->selections[column];
   if ( m == model )
     return;
-  AkonadiCollectionView* cview = qobject_cast<AkonadiCollectionView*>( d->ui.selectionStack->widget( column ) );
+  AkonadiCollectionView* cview = d->view( column );
   Q_ASSERT( cview );
   cview->setCollectionSelectionProxyModel( model );
 

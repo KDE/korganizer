@@ -65,10 +65,9 @@
 
 using namespace Akonadi;
 
-AkonadiCollectionViewFactory::AkonadiCollectionViewFactory( CalendarModel *model, CalendarView *view )
-  : mModel( model ), mView( view ), mAkonadiCollectionView( 0 )
+AkonadiCollectionViewFactory::AkonadiCollectionViewFactory( CalendarView *view )
+  : mView( view ), mAkonadiCollectionView( 0 )
 {
-  Q_ASSERT( model );
 }
 
 namespace {
@@ -93,7 +92,7 @@ namespace {
 
 CalendarViewExtension *AkonadiCollectionViewFactory::create( QWidget *parent )
 {
-  mAkonadiCollectionView = new AkonadiCollectionView( view(), mModel, parent );
+  mAkonadiCollectionView = new AkonadiCollectionView( view(), parent );
   QObject::connect( mAkonadiCollectionView, SIGNAL(resourcesChanged(bool)), mView, SLOT(resourcesChanged()) );
   QObject::connect( mAkonadiCollectionView, SIGNAL(resourcesChanged(bool)), mView, SLOT(updateCategories()) );
   return mAkonadiCollectionView;
@@ -109,26 +108,27 @@ AkonadiCollectionView* AkonadiCollectionViewFactory::collectionView() const
   return mAkonadiCollectionView;
 }
 
-AkonadiCollectionView::AkonadiCollectionView( CalendarView* view, QAbstractItemModel *calendarModel, QWidget *parent )
+AkonadiCollectionView::AkonadiCollectionView( CalendarView* view, QWidget *parent )
   : CalendarViewExtension( parent ), mActionManager(0), mCollectionview(0), mBaseModel( 0 ), mSelectionProxyModel( 0 ), mDeleteAction( 0 )
 {
   QVBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->setSpacing( KDialog::spacingHint() );
 
   Akonadi::CollectionFilterProxyModel *collectionproxymodel = new Akonadi::CollectionFilterProxyModel( this );
-  collectionproxymodel->setSourceModel( calendarModel );
   collectionproxymodel->setDynamicSortFilter( true );
   collectionproxymodel->addMimeTypeFilter( QString::fromLatin1( "text/calendar" ) );
 
   ColorProxyModel* colorProxy = new ColorProxyModel( this );
   colorProxy->setDynamicSortFilter( true );
   colorProxy->setSourceModel( collectionproxymodel );
-  mBaseModel = colorProxy;
+  mBaseModel = collectionproxymodel;
 
   mCollectionview = new Akonadi::EntityTreeView;
   topLayout->addWidget( mCollectionview );
   mCollectionview->header()->hide();
   mCollectionview->setRootIsDecorated( true );
+  mCollectionview->setModel( colorProxy );
+
   //mCollectionview->setSelectionMode( QAbstractItemView::NoSelection );
   KXMLGUIClient *xmlclient = KOCore::self()->xmlguiClient( view );
   if( xmlclient ) {
@@ -171,9 +171,8 @@ void AkonadiCollectionView::setCollectionSelectionProxyModel( CollectionSelectio
   mSelectionProxyModel = m;
   if ( !mSelectionProxyModel )
     return;
-  mSelectionProxyModel->setSourceModel( mBaseModel );
+  mBaseModel->setSourceModel( mSelectionProxyModel );
   connect( mSelectionProxyModel->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)), this, SLOT(selectionChanged()) );
-  mCollectionview->setModel( mSelectionProxyModel );
 }
 
 Akonadi::EntityTreeView* AkonadiCollectionView::view() const
