@@ -67,6 +67,7 @@
 #include <KStandardDirs>
 #include <KSystemTimeZone>
 #include <KToolInvocation>
+#include <KProtocolManager>
 
 KOMailClient::KOMailClient() : QObject()
 {
@@ -222,10 +223,12 @@ bool KOMailClient::send( const Identity &identity,
     kWarning() << "Error fetching transport";
     return false;
   }
+
   const int transportId = transport->id();
 
+  // First we need to check if the default outbox is known already. If not then we need to fetch it
+  // using a SpecialCollectionsRequestJob to have the outbox ready.
   if( ! Akonadi::SpecialCollections::self()->hasDefaultCollection( Akonadi::SpecialCollections::Outbox ) ) {
-    //monitor->setCollectionMonitored( outbox, false );
     Akonadi::SpecialCollectionsRequestJob *rjob = new Akonadi::SpecialCollectionsRequestJob( this );
     rjob->requestDefaultCollection( Akonadi::SpecialCollections::Outbox );
     if( ! rjob->exec()) {
@@ -234,68 +237,57 @@ bool KOMailClient::send( const Identity &identity,
     }
   }
 
+  // Outbox should be ready now.
   Q_ASSERT( Akonadi::SpecialCollections::self()->hasDefaultCollection( Akonadi::SpecialCollections::Outbox ) );
   Akonadi::Collection outbox = Akonadi::SpecialCollections::self()->defaultCollection( Akonadi::SpecialCollections::Outbox );
   Q_ASSERT( outbox.isValid() );
-  Akonadi::ItemFetchJob *fjob = new Akonadi::ItemFetchJob( outbox );
-  fjob->fetchScope().fetchAllAttributes();
-  fjob->fetchScope().fetchFullPayload( false );
-  if( ! fjob->exec() ) {
-      kWarning() << "Error fetching content of the outbox:" << fjob->errorText();
-      return false;
-  }
 
+  // Now build the message we like to send. The message KMime::Message::Ptr instance
+  // will be the root message that has 2 additional message. The body itself and
+  // the attached cal.ics calendar file.
   KMime::Message::Ptr message = KMime::Message::Ptr( new KMime::Message );
+  // We need to set following 4 lines by hand else KMime::Content::addContent
+  // will create a new Content instance for us to attach the main message
+  // what we don't need cause we already have the main message instance where
+  // 2 additional messages are attached.
+  KMime::Headers::ContentType *ct = message->contentType();
+  ct->setMimeType( "multipart/mixed" );
+  ct->setBoundary( KMime::multiPartBoundary() );
+  ct->setCategory( KMime::Headers::CCcontainer );
+  message->contentTransferEncoding()->clear();  // 7Bit, decoded.
 
-  KMime::Headers::From *f = new KMime::Headers::From( message.get() );
-  KMime::Types::Mailbox address;
-  address.fromUnicodeString( from );
-  f->addAddress( address );
-  message->setHeader( f );
+  // Set the headers
+  message->userAgent()->fromUnicodeString( KProtocolManager::userAgentForApplication( "KOrganizer", KDEPIM_VERSION ), "utf-8" );
+  message->from()->fromUnicodeString( from, "utf-8" );
+  message->to()->fromUnicodeString( to, "utf-8" );
+  message->cc()->fromUnicodeString( cc, "utf-8" );
+  if( bccMe )
+    message->bcc()->fromUnicodeString( from, "utf-8" ); //from==me, right?
+  message->date()->setDateTime( KDateTime::currentLocalDateTime() );
+  message->subject()->fromUnicodeString( subject, "utf-8" );
 
-  KMime::Headers::To *t = new KMime::Headers::To( message.get() );
-  foreach( const QString &a, KPIMUtils::splitAddressList(to) ) {
-    KMime::Types::Mailbox address;
-    address.fromUnicodeString( a );
-    t->addAddress( address );
-  }
-  message->setHeader( t );
+  // Set the first multipart, the body message.
+  KMime::Content *bodyMessage = new KMime::Content;
+  KMime::Headers::ContentDisposition *bodyDisposition = new KMime::Headers::ContentDisposition( bodyMessage );
+  bodyMessage->contentType()->setMimeType( "text/plain" );
+  bodyMessage->setBody( body.toUtf8() );
 
-  KMime::Headers::Cc *c = new KMime::Headers::Cc( message.get() );
-  foreach( const QString &a, KPIMUtils::splitAddressList(cc) ) {
-    KMime::Types::Mailbox address;
-    address.fromUnicodeString( a );
-    c->addAddress( address );
-  }
-  message->setHeader( c );
-
-  if( bccMe ) {
-    KMime::Headers::Bcc *b = new KMime::Headers::Bcc( message.get() );
-    KMime::Types::Mailbox address;
-    address.fromUnicodeString( from ); // from==me, right?
-    b->addAddress( address );
-    message->setHeader( b );
-  }
-
-  KMime::Headers::Subject *s = new KMime::Headers::Subject( message.get() );
-  s->fromUnicodeString( subject, "utf-8" );
-  message->setHeader( s );
-
-  message->setBody( body.toUtf8() );
-
-  KMime::Headers::ContentDisposition *attachDisposition = new KMime::Headers::ContentDisposition( message.get() );
+  // Set the sedcond multipart, the attachment.
+  KMime::Content *attachMessage = new KMime::Content;
+  KMime::Headers::ContentDisposition *attachDisposition = new KMime::Headers::ContentDisposition( attachMessage );
   attachDisposition->setFilename( "cal.ics" );
-  attachDisposition->setDisposition( KMime::Headers::CDattachment ); //KMime::Headers::CDattachment or KMime::Headers::CDinline
-  message->setHeader( attachDisposition );
-  
-  KMime::Content *attachContent = new KMime::Content();
-  attachContent->contentType()->setMimeType( "text/plain" );
-  attachContent->setBody( attachment.toUtf8() );
-  message->attachments().append( attachContent );
+  attachDisposition->setDisposition( KMime::Headers::CDattachment );
+  attachMessage->contentType()->setMimeType( "text/plain" );
+  attachMessage->setHeader( attachDisposition );
+  attachMessage->setBody( attachment.toUtf8() );
 
+  // Job done, attach the both multiparts and assemble the message.
+  message->addContent( bodyMessage );
+  message->addContent( attachMessage );
   message->assemble();
-  kDebug() << message->encodedContent();
 
+  // Send the mail. Normally the mailtransport should do this. But it does not work for
+  // whatever reason. So, just send it by hand to be sure the job was really done.
   MailTransport::TransportJob *tjob = MailTransport::TransportManager::self()->createTransportJob( transportId );
   Q_ASSERT( tjob );
   Q_ASSERT( tjob->transport() );
@@ -303,14 +295,15 @@ bool KOMailClient::send( const Identity &identity,
   tjob->setTo( KPIMUtils::splitAddressList( to ) );
   tjob->setCc( KPIMUtils::splitAddressList( cc ) );
   if( bccMe )
-    tjob->setBcc( KPIMUtils::splitAddressList(from) ); //from==me?
-  //connect(tjob, SIGNAL(result(KJob*)), this, SLOT(slotMailingDone(KJob*)));
-  //tjob->setData( message->encodedContent() );
+    tjob->setBcc( KPIMUtils::splitAddressList(from) ); //from==me, right?
   if( ! tjob->exec() ) {
     kWarning() << "Error executing the transport job:" << tjob->errorText();
     return false;
   }
-  
+
+  // To queue the message in a MailTransport::MessageQueueJob the item does need to exist
+  // on the server side already. This is probably a bug in MessageQueueJob but that's
+  // the way it is atm. So, first create the item...
   Akonadi::Item item( transport->id() );
   //item.setRemoteId( QString::number(transport->id()) );
   item.setMimeType( KMime::Message::mimeType() );
@@ -325,7 +318,8 @@ bool KOMailClient::send( const Identity &identity,
   Q_ASSERT( item.isValid() );
   Q_ASSERT( item.hasPayload<KMime::Message::Ptr>() );
   Q_ASSERT( MailTransport::TransportManager::self()->transportById(transportId, false) );
-  
+
+  // Put the newly created item inh the MessageQueueJob.
   MailTransport::MessageQueueJob *qjob = new MailTransport::MessageQueueJob( this );
   qjob->setTransportId( transportId );
   qjob->setFrom( from );
@@ -339,7 +333,8 @@ bool KOMailClient::send( const Identity &identity,
     return false;
   }
 
-  kDebug() << "Send mail finished. Time needed:" << timer.elapsed();
+  // Everything done now.
+  kDebug() << "Send mail finished. Time elapsed in ms:" << timer.elapsed();
   return true;
 }
 
