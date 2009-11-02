@@ -48,7 +48,7 @@ namespace KOHelper
   /**
     Returns a nice QColor for text, give the input color &c.
   */
-  KORGANIZER_CORE_EXPORT QColor getTextColor( const QColor &c );
+  KORGANIZERPRIVATE_EXPORT QColor getTextColor( const QColor &c );
 
   /**
     This method returns the proper resource / subresource color for the view.
@@ -58,14 +58,14 @@ namespace KOHelper
     @param incidence the incidence for which the color is needed (to
                      determine which  subresource needs to be used)
   */
-  KORGANIZER_CORE_EXPORT QColor resourceColor( const Akonadi::Item & incidence );
+  KORGANIZERPRIVATE_EXPORT QColor resourceColor( const Akonadi::Item & incidence );
 
-  KORGANIZER_CORE_EXPORT QColor resourceColor( const Akonadi::Collection &collection );
+  KORGANIZERPRIVATE_EXPORT QColor resourceColor( const Akonadi::Collection &collection );
 
   /**
     Returns the number of years between the @p start QDate and the @p end QDate
   */
-  KORGANIZER_CORE_EXPORT qint64 yearDiff( const QDate &start, const QDate &end );
+  KORGANIZERPRIVATE_EXPORT qint64 yearDiff( const QDate &start, const QDate &end );
 }
 
 #endif
