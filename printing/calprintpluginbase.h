@@ -59,7 +59,7 @@ using namespace KCal;
   Base class for KOrganizer printing classes. Each sub class represents one
   calendar print format.
 */
-class KORG_STDPRINTING_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
+class KORGANIZERPRIVATE_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
 {
   public:
     enum DisplayFlags {
