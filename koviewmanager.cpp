@@ -141,12 +141,9 @@ void KOViewManager::writeSettings( KConfig *config )
   }
 
   // write out custom view configuration
-  //TODO make this nicer once we have proper view management
-  for ( int i = 0; i < mMainView->viewStack()->count(); ++i ) {
-    if ( KOrg::BaseView* view = qobject_cast<KOrg::BaseView*>( mMainView->viewStack()->widget( i ) ) ) {
-      KConfigGroup group = KGlobal::config()->group( view->objectName() );
-      view->saveConfig( group );
-    }
+  Q_FOREACH( KOrg::BaseView* const view, mViews ) {
+    KConfigGroup group = KGlobal::config()->group( view->objectName() );
+    view->saveConfig( group );
   }
 }
 
@@ -340,6 +337,7 @@ void KOViewManager::zoomOutVertically()
 void KOViewManager::addView( KOrg::BaseView *view, bool isTab )
 {
   connectView( view );
+  mViews.append( view );
   const KConfigGroup group = KGlobal::config()->group( view->objectName() );
   view->restoreConfig( group );
   if ( !isTab ) {

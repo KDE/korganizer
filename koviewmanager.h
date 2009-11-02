@@ -137,6 +137,7 @@ class KOViewManager : public QObject
 
   private:
     QWidget *widgetForView( KOrg::BaseView * ) const;
+    QList<KOrg::BaseView*> mViews;
     CalendarView *mMainView;
 
     KOAgendaView *mAgendaView;
