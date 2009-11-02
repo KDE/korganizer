@@ -462,37 +462,33 @@ void KOViewManager::showAgendaView()
   }
 }
 
-void KOViewManager::showDayView()
+void KOViewManager::selectDay()
 {
-  QDate date = mMainView->activeDate();
-  showAgendaView();
+  const QDate date = mMainView->activeDate();
   mMainView->dateNavigator()->selectDate( date );
 }
 
-void KOViewManager::showWorkWeekView()
+void KOViewManager::selectWorkWeek()
 {
   if ( KOGlobals::self()->getWorkWeekMask() != 0 ) {
     QDate date = mMainView->activeDate();
-    showAgendaView();
     mMainView->dateNavigator()->selectWorkWeek( date );
   } else {
     KMessageBox::sorry(
       mMainView,
-      i18n( "Unable to display the work week view since there are no work days configured. "
+      i18n( "Unable to display the work week since there are no work days configured. "
             "Please properly configure at least 1 work day in the Time and Date preferences." ) );
   }
 }
 
-void KOViewManager::showWeekView()
+void KOViewManager::selectWeek()
 {
   QDate date = mMainView->activeDate();
-  showAgendaView();
   mMainView->dateNavigator()->selectWeek( date );
 }
 
-void KOViewManager::showNextXView()
+void KOViewManager::selectNextX()
 {
-  showAgendaView();
   mMainView->dateNavigator()->selectDates( QDate::currentDate(),
                                            KOPrefs::instance()->mNextXDays );
 }
@@ -544,7 +540,8 @@ void KOViewManager::showEventView()
     goMenu( true );
     showView( mLastEventView );
   } else {
-    showWeekView();
+    showAgendaView();
+    selectWeek();
   }
 }
 

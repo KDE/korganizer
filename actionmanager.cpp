@@ -489,30 +489,15 @@ void ActionManager::initActions()
   connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
            SLOT(showWhatsNextView()) );
 
-  action = new KAction( KIcon( "view-calendar-day" ), i18n( "&Day" ), this );
-  mACollection->addAction( "view_day", action );
-  connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
-           SLOT(showDayView()) );
-
-  mNextXDays = new KAction( KIcon( "view-calendar-upcoming-days" ), QString(), this );
-  mACollection->addAction( "view_nextx", mNextXDays );
-  connect( mNextXDays, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
-           SLOT(showNextXView()) );
-  mNextXDays->setText( i18np( "&Next Day", "&Next %1 Days", KOPrefs::instance()->mNextXDays ) );
   action = new KAction( KIcon( "view-calendar-month" ), i18n( "&Month" ), this );
   mACollection->addAction( "view_month", action );
   connect( action, SIGNAL(triggered(bool)),
            mCalendarView->viewManager(), SLOT(showMonthView()) );
 
-  action = new KAction( KIcon( "view-calendar-workweek" ), i18n( "W&ork Week" ), this );
-  mACollection->addAction( "view_workweek", action );
-  connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
-           SLOT(showWorkWeekView()) );
-
-  action = new KAction( KIcon( "view-calendar-week" ), i18n( "&Week" ), this );
-  mACollection->addAction( "view_week", action );
-  connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
-           SLOT(showWeekView()) );
+  action = new KAction( KIcon( "view-calendar-week" ), i18n( "&Agenda" ), this );
+  mACollection->addAction( "view_agenda", action );
+  connect( action, SIGNAL(triggered(bool)),
+           mCalendarView->viewManager(), SLOT(showAgendaView()) );
 
   action = new KAction( KIcon( "view-calendar-list" ), i18n( "&Event List" ), this );
   mACollection->addAction( "view_list", action );
@@ -581,6 +566,7 @@ void ActionManager::initActions()
   connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
            SLOT(zoomOutVertically()) );
 
+
   /************************** Actions MENU *********************************/
   bool isRTL = QApplication::isRightToLeft();
 
@@ -616,6 +602,27 @@ void ActionManager::initActions()
   connect( mCalendarView,SIGNAL(changeNavStringNext(const QString &)),
            action,SLOT(setText(const QString &)) );
   */
+
+  action = new KAction( KIcon( "view-calendar-day" ), i18n( "Select &Day" ), this );
+  mACollection->addAction( "select_day", action );
+  connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
+           SLOT(selectDay()) );
+
+  mNextXDays = new KAction( KIcon( "view-calendar-upcoming-days" ), QString(), this );
+  mACollection->addAction( "select_nextx", mNextXDays );
+  connect( mNextXDays, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
+           SLOT(selectNextX()) );
+  mNextXDays->setText( i18np( "Select &Next Day", "Select &Next %1 Days", KOPrefs::instance()->mNextXDays ) );
+
+  action = new KAction( KIcon( "view-calendar-workweek" ), i18n( "Select W&ork Week" ), this );
+  mACollection->addAction( "select_workweek", action );
+  connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
+           SLOT(selectWorkWeek()) );
+
+  action = new KAction( KIcon( "view-calendar-week" ), i18n( "Select &Week" ), this );
+  mACollection->addAction( "select_week", action );
+  connect( action, SIGNAL(triggered(bool)), mCalendarView->viewManager(),
+           SLOT(selectWeek()) );
 
   /************************** Actions MENU *********************************/
   mNewEventAction = new KAction( KIcon( "appointment-new" ), i18n( "New E&vent..." ), this );

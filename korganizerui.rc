@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui>
-<kpartgui name="korganizer" version="415">
+<kpartgui name="korganizer" version="416">
 
   <MenuBar>
     <Menu name="file"><text>&amp;File</text>
@@ -29,19 +29,13 @@
       <Action name="edit_delete" append="edit_paste_merge"/>
     </Menu>
     <Menu name="view"><text>&amp;View</text>
+      <Action name="view_agenda"/>
+      <Action name="view_month"/>
+      <Action name="view_timeline"/>
+      <Action name="view_todo"/>      
+      <Action name="view_list"/>
       <Action name="view_whatsnext"/>
       <Action name="view_timespent"/>
-      <Action name="view_timeline"/>
-      <Separator/>
-      <Action name="view_day"/>
-      <Action name="view_nextx"/>
-      <Action name="view_workweek"/>
-      <Action name="view_week"/>
-      <Action name="view_month"/>
-      <Action name="view_newmonth"/>
-      <Separator/>
-      <Action name="view_list"/>
-      <Action name="view_todo"/>
       <Action name="view_journal"/>
       <Merge/>
       <Separator/>
@@ -59,11 +53,18 @@
         <Action name="zoom_out_vertically"/>
       </Menu>
     </Menu>
-    <Menu name="go"><text>&amp;Go</text>
+    <Menu name="dates"><text>&amp;Dates</text>
       <Action name="go_previous"/>
       <Action name="go_next"/>
       <Separator/>
       <Action name="go_today"/>
+      <Separator/>
+      <Action name="select_day"/>
+      <Action name="select_nextx"/>
+      <Action name="select_workweek"/>
+      <Action name="select_week"/>
+      <Action name="select_newmonth"/>
+      <Merge/>
     </Menu>
     <Menu name="actions"><text>&amp;Actions</text>
       <Action name="new_event"/>
@@ -128,10 +129,11 @@
     <Action name="go_today"/>
   </ToolBar>
 
+  
   <ToolBar noMerge="1" name="korganizer_toolbar"><text>Views</text>
-    <Action name="view_day"/>
-    <Action name="view_week"/>
+    <Action name="view_agenda"/>
     <Action name="view_month"/>
+    <Action name="view_timeline"/>
     <Action name="view_todo"/>
     <Action name="view_journal"/>
     <Merge/>

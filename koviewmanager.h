@@ -111,17 +111,17 @@ class KOViewManager : public QObject
     void showWhatsNextView();
     void showListView();
     void showAgendaView();
-    void showDayView();
-    void showWorkWeekView();
-    void showWeekView();
-    void showNextXView();
     void showTodoView();
     void showTimeLineView();
     void showTimeSpentView();
     void showMonthView();
     void showJournalView();
-
     void showEventView();
+
+    void selectDay();
+    void selectWorkWeek();
+    void selectWeek();
+    void selectNextX();
 
     void connectTodoView( KOTodoView *todoView );
 
