@@ -1078,7 +1078,7 @@ void CalendarView::newJournal( const QString &text, const QDate &date )
 
 KOrg::BaseView *CalendarView::currentView() const
 {
-  return qobject_cast<KOrg::BaseView*>( viewStack()->currentWidget() );
+  return mViewManager->currentView();
 }
 
 void CalendarView::configureCurrentView()
