@@ -56,6 +56,8 @@ public:
   int numberOfColumns() const;
   void setNumberOfColumns( int n );
 
+  QString columnTitle( int column ) const;
+  void setColumnTitle( int column, const QString &title );
   Akonadi::CollectionSelectionProxyModel* takeSelectionModel( int column );
   void setSelectionModel( int column, Akonadi::CollectionSelectionProxyModel* model );
 
@@ -65,15 +67,12 @@ public Q_SLOTS:
    */
   void accept();
 
-  /**
-   * reimplemented from QDialog
-   */
-  void reject();
-
 private Q_SLOTS:
   void useCustomToggled( bool );
   void numberOfColumnsChanged( int );
   void currentChanged( const QModelIndex &index );
+  void titleEdited( const QString &text );
+
 private:
   class Private;
   Private* const d;
@@ -133,7 +132,7 @@ class MultiAgendaView : public AgendaView
 
   private:
     void addView( const Akonadi::Collection &collection );
-    void addView( Akonadi::CollectionSelectionProxyModel* selectionProxy );
+    void addView( Akonadi::CollectionSelectionProxyModel* selectionProxy, const QString &title );
     KOAgendaView* createView( const QString &title );
 
     void deleteViews();
@@ -163,6 +162,7 @@ class MultiAgendaView : public AgendaView
     bool mPendingChanges;
     bool mCustomColumnSetupUsed;
     QVector<Akonadi::CollectionSelectionProxyModel*> mCollectionSelectionModels;
+    QVector<QString> mCustomColumnTitles;
     int mCustomNumberOfColumns;
 };
 

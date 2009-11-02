@@ -150,7 +150,7 @@ void MultiAgendaView::recreateViews()
   if ( mCustomColumnSetupUsed ) {
     Q_ASSERT( mCollectionSelectionModels.size() == mCustomNumberOfColumns );
     for ( int i = 0; i < mCustomNumberOfColumns; ++i )
-      addView( mCollectionSelectionModels[i] );
+      addView( mCollectionSelectionModels[i], mCustomColumnTitles[i] );
   } else {
     Q_FOREACH( const Collection &i, collectionSelection()->selectedCollections() )
       addView( i );
@@ -393,9 +393,9 @@ void MultiAgendaView::addView( const Collection &collection )
   av->setCollection( collection.id() );
 }
 
-void MultiAgendaView::addView( CollectionSelectionProxyModel* sm )
+void MultiAgendaView::addView( CollectionSelectionProxyModel* sm, const QString &title )
 {
-  KOAgendaView* av = createView( QString() ); //TODO: set some title
+  KOAgendaView* av = createView( title );
   av->setCustomCollectionSelectionProxyModel( sm );
 }
 
@@ -533,14 +533,19 @@ void MultiAgendaView::showConfigurationDialog( QWidget* parent )
   dlg->setNumberOfColumns( mCustomNumberOfColumns );
   for ( int i = 0; i < mCollectionSelectionModels.size(); ++i )
       dlg->setSelectionModel( i, mCollectionSelectionModels[i] );
+  for ( int i = 0; i < mCustomColumnTitles.size(); ++i )
+    dlg->setColumnTitle( i, mCustomColumnTitles[i] );
   if ( dlg->exec() == QDialog::Accepted )
   {
     mCustomColumnSetupUsed = dlg->useCustomColumns();
     mCustomNumberOfColumns = dlg->numberOfColumns();
     QVector<CollectionSelectionProxyModel*> newModels;
     newModels.resize( mCustomNumberOfColumns );
-    for ( int i = 0; i < mCustomNumberOfColumns; ++i )
+    mCustomColumnTitles.resize( mCustomNumberOfColumns );
+    for ( int i = 0; i < mCustomNumberOfColumns; ++i ) {
       newModels[i] = dlg->takeSelectionModel( i );
+      mCustomColumnTitles[i] = dlg->columnTitle( i );
+    }
     mCollectionSelectionModels = newModels;
     mPendingChanges = true;
     recreateViews();
@@ -552,6 +557,13 @@ void MultiAgendaView::doRestoreConfig( const KConfigGroup &configGroup )
 {
   mCustomColumnSetupUsed = configGroup.readEntry( "UseCustomColumnSetup", false );
   mCustomNumberOfColumns = configGroup.readEntry( "CustomNumberOfColumns", 2 );
+  mCustomColumnTitles =  configGroup.readEntry( "ColumnTitles", QStringList() ).toVector();
+  if ( mCustomColumnTitles.size() != mCustomNumberOfColumns ) {
+    const int orig = mCustomColumnTitles.size();
+    mCustomColumnTitles.resize( mCustomNumberOfColumns );
+    for ( int i = orig; i < mCustomNumberOfColumns; ++i )
+      mCustomColumnTitles[i] = i18n( "Column %1", i + 1 );
+  }
   QVector<CollectionSelectionProxyModel*> oldModels = mCollectionSelectionModels;
   mCollectionSelectionModels.clear();
   mCollectionSelectionModels.resize( mCustomNumberOfColumns );
@@ -577,6 +589,8 @@ void MultiAgendaView::doSaveConfig( KConfigGroup &configGroup )
 {
   configGroup.writeEntry( "UseCustomColumnSetup", mCustomColumnSetupUsed );
   configGroup.writeEntry( "CustomNumberOfColumns", mCustomNumberOfColumns );
+  const QStringList titleList = mCustomColumnTitles.toList();
+  configGroup.writeEntry( "ColumnTitles", titleList );
   int idx = 0;
   Q_FOREACH( CollectionSelectionProxyModel* i, mCollectionSelectionModels ) {
     KConfigGroup g = configGroup.config()->group( configGroup.name() + "_subView_" + QByteArray::number( idx ) );
@@ -590,7 +604,7 @@ void MultiAgendaView::doSaveConfig( KConfigGroup &configGroup )
 class MultiAgendaViewConfigDialog::Private {
 public:
   MultiAgendaViewConfigDialog *const q;
-  explicit Private( QAbstractItemModel* base, MultiAgendaViewConfigDialog* qq ) : q( qq ), baseModel( base ) {
+  explicit Private( QAbstractItemModel* base, MultiAgendaViewConfigDialog* qq ) : q( qq ), baseModel( base ), currentColumn( 0 ) {
 
   }
 
@@ -603,9 +617,11 @@ public:
   AkonadiCollectionView* view( int index ) const;
   QVector<CollectionSelectionProxyModel*> newlyCreated;
   QVector<CollectionSelectionProxyModel*> selections;
+  QVector<QString> titles;
   Ui::MultiAgendaViewConfigWidget ui;
   QStandardItemModel listModel;
   QAbstractItemModel* baseModel;
+  int currentColumn;
 };
 
 MultiAgendaViewConfigDialog::MultiAgendaViewConfigDialog( QAbstractItemModel* baseModel, QWidget* parent ) : KDialog( parent ), d( new Private( baseModel, this ) )
@@ -618,6 +634,7 @@ MultiAgendaViewConfigDialog::MultiAgendaViewConfigDialog( QAbstractItemModel* ba
   connect( d->ui.columnList->selectionModel(), SIGNAL(currentChanged(QModelIndex,QModelIndex)), this, SLOT(currentChanged(QModelIndex)) );
   connect( d->ui.useCustomRB, SIGNAL(toggled(bool)), this, SLOT(useCustomToggled(bool)) );
   connect( d->ui.columnNumberSB, SIGNAL(valueChanged(int)), this, SLOT(numberOfColumnsChanged(int)) );
+  connect( d->ui.titleLE, SIGNAL(textEdited(QString)), this, SLOT(titleEdited(QString)) );
   d->setUpColumns( numberOfColumns() );
   useCustomToggled( false );
 }
@@ -627,7 +644,9 @@ void MultiAgendaViewConfigDialog::currentChanged( const QModelIndex &index )
   if ( !index.isValid() )
     return;
   const int idx = index.data( Qt::UserRole ).toInt();
+  d->ui.titleLE->setText( index.data( Qt::DisplayRole ).toString() );
   d->ui.selectionStack->setCurrentIndex( idx );
+  d->currentColumn = idx;
 }
 
 void MultiAgendaViewConfigDialog::useCustomToggled( bool on ) {
@@ -636,6 +655,8 @@ void MultiAgendaViewConfigDialog::useCustomToggled( bool on ) {
   d->ui.columnNumberSB->setEnabled( on );
   d->ui.selectedCalendarsLabel->setEnabled( on );
   d->ui.selectionStack->setEnabled( on );
+  d->ui.titleLabel->setEnabled( on );
+  d->ui.titleLE->setEnabled( on );
   // this explicit enabling/disabling of the ETV is necessary, as the stack widget state is not propagated to the collection views
   // probably because the Akonadi error overlays enable/disable the ETV explicitely and thus override the parent-child relationship?
   for ( int i = 0; i < d->ui.selectionStack->count(); ++i )
@@ -676,7 +697,11 @@ void MultiAgendaViewConfigDialog::Private::setUpColumns( int n )
     for ( int i = oldN; i < n; ++i ) {
       QStandardItem* item = new QStandardItem;
       item->setEditable( false );
-      item->setText( i18n("Column %1", i + 1 ) );
+      if ( titles.count() <= i ) {
+        titles.resize( i + 1 );
+        titles[i] = i18n("Agenda %1", i + 1 );
+      }
+      item->setText( titles[i] );
       item->setData( i, Qt::UserRole );
       listModel.appendRow( item );
       CollectionSelectionProxyModel* selection = new CollectionSelectionProxyModel;
@@ -750,20 +775,37 @@ void MultiAgendaViewConfigDialog::setSelectionModel( int column, CollectionSelec
   d->selections[column] = model;
 }
 
+void MultiAgendaViewConfigDialog::titleEdited( const QString &text )
+{
+  d->titles[d->currentColumn] = text;
+  d->listModel.item( d->currentColumn )->setText( text );
+}
+
 void MultiAgendaViewConfigDialog::numberOfColumnsChanged( int number )
 {
   d->setUpColumns( number );
+}
+
+QString MultiAgendaViewConfigDialog::columnTitle( int column ) const
+{
+  Q_ASSERT( column >= 0 );
+  return column >= d->titles.count() ? QString() : d->titles[column];
+}
+
+void MultiAgendaViewConfigDialog::setColumnTitle( int column, const QString &title )
+{
+  Q_ASSERT( column >= 0 );
+  d->titles.resize( qMax( d->titles.size(), column + 1 ) );
+  d->titles[column] = title;
+  if ( QStandardItem *const item = d->listModel.item( column ) )
+    item->setText( title );
+  //TODO update LE if item is selected
 }
 
 void MultiAgendaViewConfigDialog::accept()
 {
   d->newlyCreated.clear();
   KDialog::accept();
-}
-
-void MultiAgendaViewConfigDialog::reject()
-{
-  KDialog::reject();
 }
 
 MultiAgendaViewConfigDialog::~MultiAgendaViewConfigDialog()
