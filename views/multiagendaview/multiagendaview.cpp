@@ -615,8 +615,8 @@ MultiAgendaViewConfigDialog::MultiAgendaViewConfigDialog( QAbstractItemModel* ba
   connect( d->ui.columnList->selectionModel(), SIGNAL(currentChanged(QModelIndex,QModelIndex)), this, SLOT(currentChanged(QModelIndex)) );
   connect( d->ui.useCustomRB, SIGNAL(toggled(bool)), this, SLOT(useCustomToggled(bool)) );
   connect( d->ui.columnNumberSB, SIGNAL(valueChanged(int)), this, SLOT(numberOfColumnsChanged(int)) );
-  useCustomToggled( false );
   d->setUpColumns( numberOfColumns() );
+  useCustomToggled( false );
 }
 
 void MultiAgendaViewConfigDialog::currentChanged( const QModelIndex &index )
@@ -631,10 +631,13 @@ void MultiAgendaViewConfigDialog::useCustomToggled( bool on ) {
   d->ui.columnList->setEnabled( on );
   d->ui.columnNumberLabel->setEnabled( on );
   d->ui.columnNumberSB->setEnabled( on );
-  d->ui.selectionStack->setEnabled( on );
   d->ui.selectedCalendarsLabel->setEnabled( on );
+  d->ui.selectionStack->setEnabled( on );
+  // this explicit enabling/disabling of the ETV is necessary, as the stack widget state is not propagated to the collection views
+  // probably because the Akonadi error overlays enable/disable the ETV explicitely and thus override the parent-child relationship?
   for ( int i = 0; i < d->ui.selectionStack->count(); ++i )
-    d->ui.selectionStack->widget( i )->setEnabled( on );
+    d->view( i )->view()->setEnabled( on );
+
 }
 
 AkonadiCollectionView* MultiAgendaViewConfigDialog::Private::createView( CollectionSelectionProxyModel* model )
