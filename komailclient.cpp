@@ -45,6 +45,7 @@
 #include <mailtransport/smtpjob.h>
 #include <mailtransport/sendmailjob.h>
 #include <mailtransport/messagequeuejob.h>
+#include <mailtransport/sentbehaviourattribute.h>
 
 #include <Akonadi/Item>
 #include <Akonadi/ItemFetchJob>
@@ -268,7 +269,6 @@ bool KOMailClient::send( const Identity &identity,
 
   // Set the first multipart, the body message.
   KMime::Content *bodyMessage = new KMime::Content;
-  KMime::Headers::ContentDisposition *bodyDisposition = new KMime::Headers::ContentDisposition( bodyMessage );
   bodyMessage->contentType()->setMimeType( "text/plain" );
   bodyMessage->setBody( body.toUtf8() );
 
@@ -286,8 +286,7 @@ bool KOMailClient::send( const Identity &identity,
   message->addContent( attachMessage );
   message->assemble();
 
-  // Send the mail. Normally the mailtransport should do this. But it does not work for
-  // whatever reason. So, just send it by hand to be sure the job was really done.
+  /*
   MailTransport::TransportJob *tjob = MailTransport::TransportManager::self()->createTransportJob( transportId );
   Q_ASSERT( tjob );
   Q_ASSERT( tjob->transport() );
@@ -300,10 +299,6 @@ bool KOMailClient::send( const Identity &identity,
     kWarning() << "Error executing the transport job:" << tjob->errorText();
     return false;
   }
-
-  // To queue the message in a MailTransport::MessageQueueJob the item does need to exist
-  // on the server side already. This is probably a bug in MessageQueueJob but that's
-  // the way it is atm. So, first create the item...
   Akonadi::Item item( transport->id() );
   item.setMimeType( KMime::Message::mimeType() );
   item.setPayload( message );
@@ -312,15 +307,17 @@ bool KOMailClient::send( const Identity &identity,
     kWarning() << "Error creating message in outbox:" << cjob->errorText();
     return false;
   }
-
   item = cjob->item();
   Q_ASSERT( item.isValid() );
   Q_ASSERT( item.hasPayload<KMime::Message::Ptr>() );
   Q_ASSERT( MailTransport::TransportManager::self()->transportById(transportId, false) );
+  */
 
   // Put the newly created item inh the MessageQueueJob.
   MailTransport::MessageQueueJob *qjob = new MailTransport::MessageQueueJob( this );
   qjob->setTransportId( transportId );
+  qjob->setSentBehaviour( MailTransport::SentBehaviourAttribute::MoveToDefaultSentCollection );
+  qjob->setMoveToCollection( -1 );
   qjob->setFrom( from );
   qjob->setTo( KPIMUtils::splitAddressList( to ) );
   qjob->setCc( KPIMUtils::splitAddressList( cc ) );
