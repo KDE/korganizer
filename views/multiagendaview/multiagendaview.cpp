@@ -133,6 +133,8 @@ MultiAgendaView::MultiAgendaView( QWidget *parent )
 void MultiAgendaView::setCalendar( AkonadiCalendar *cal )
 {
   AgendaView::setCalendar( cal );
+  Q_FOREACH( CollectionSelectionProxyModel* const i, mCollectionSelectionModels )
+      i->setSourceModel( cal->treeModel() );
   recreateViews();
 }
 
@@ -518,9 +520,7 @@ bool MultiAgendaView::hasConfigurationDialog() const
 
 void MultiAgendaView::showConfigurationDialog( QWidget* parent )
 {
-  QPointer<MultiAgendaViewConfigDialog> dlg( new MultiAgendaViewConfigDialog( parent ) );
-  if ( calendar() )
-    dlg->setBaseModel( calendar()->treeModel() );
+  QPointer<MultiAgendaViewConfigDialog> dlg( new MultiAgendaViewConfigDialog( calendar()->treeModel(), parent ) );
   dlg->setUseCustomColumns( mCustomColumnSetupUsed );
   dlg->setNumberOfColumns( mCustomNumberOfColumns );
   for ( int i = 0; i < mCollectionSelectionModels.size(); ++i )
@@ -583,7 +583,7 @@ void MultiAgendaView::doSaveConfig( KConfigGroup &configGroup )
 class MultiAgendaViewConfigDialog::Private {
 public:
   MultiAgendaViewConfigDialog *const q;
-  explicit Private( MultiAgendaViewConfigDialog* qq ) : q( qq ), baseModel( 0 ) {
+  explicit Private( QAbstractItemModel* base, MultiAgendaViewConfigDialog* qq ) : q( qq ), baseModel( base ) {
 
   }
 
@@ -601,7 +601,7 @@ public:
   QAbstractItemModel* baseModel;
 };
 
-MultiAgendaViewConfigDialog::MultiAgendaViewConfigDialog( QWidget* parent ) : KDialog( parent ), d( new Private( this ) )
+MultiAgendaViewConfigDialog::MultiAgendaViewConfigDialog( QAbstractItemModel* baseModel, QWidget* parent ) : KDialog( parent ), d( new Private( baseModel, this ) )
 {
   setWindowTitle( i18n("Configure Side-By-Side View") );
   QWidget* widget = new QWidget;
@@ -619,8 +619,8 @@ void MultiAgendaViewConfigDialog::currentChanged( const QModelIndex &index )
 {
   if ( !index.isValid() )
     return;
-  const int row = index.row();
-  d->ui.selectionStack->setCurrentIndex( row );
+  const int idx = index.data( Qt::UserRole ).toInt();
+  d->ui.selectionStack->setCurrentIndex( idx );
 }
 
 void MultiAgendaViewConfigDialog::useCustomToggled( bool on ) {
@@ -633,14 +633,6 @@ void MultiAgendaViewConfigDialog::useCustomToggled( bool on ) {
     d->ui.selectionStack->widget( i )->setEnabled( on );
 }
 
-void MultiAgendaViewConfigDialog::setBaseModel( QAbstractItemModel* m )
-{
-  if ( d->baseModel == m )
-    return;
-  d->baseModel = m;
-  Q_FOREACH ( CollectionSelectionProxyModel* i, d->selections )
-    i->setSourceModel( d->baseModel );
-}
 AkonadiCollectionView* MultiAgendaViewConfigDialog::Private::createView( CollectionSelectionProxyModel* model )
 {
   AkonadiCollectionView* cview = new AkonadiCollectionView( 0, baseModel, q );
@@ -675,6 +667,7 @@ void MultiAgendaViewConfigDialog::Private::setUpColumns( int n )
       QStandardItem* item = new QStandardItem;
       item->setEditable( false );
       item->setText( i18n("Column %1", i + 1 ) );
+      item->setData( i, Qt::UserRole );
       listModel.appendRow( item );
       CollectionSelectionProxyModel* selection = new CollectionSelectionProxyModel;
       selection->setDynamicSortFilter( true );

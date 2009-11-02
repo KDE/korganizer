@@ -47,7 +47,7 @@ class MultiAgendaViewConfigDialog : public KDialog
 {
   Q_OBJECT
 public:
-  explicit MultiAgendaViewConfigDialog( QWidget* parent=0 );
+  explicit MultiAgendaViewConfigDialog( QAbstractItemModel* baseModel, QWidget* parent=0 );
   ~MultiAgendaViewConfigDialog();
 
   bool useCustomColumns() const;
@@ -58,8 +58,6 @@ public:
 
   Akonadi::CollectionSelectionProxyModel* takeSelectionModel( int column );
   void setSelectionModel( int column, Akonadi::CollectionSelectionProxyModel* model );
-
-  void setBaseModel( QAbstractItemModel* model );
 
 public Q_SLOTS:
   /**
