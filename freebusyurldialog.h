@@ -35,7 +35,7 @@ namespace KCal {
   class Attendee;
 }
 
-class KCM_KORGANIZER_EXPORT FreeBusyUrlDialog : public KDialog
+class KORGANIZER_CORE_EXPORT FreeBusyUrlDialog : public KDialog
 {
   Q_OBJECT
   public:
@@ -48,7 +48,7 @@ class KCM_KORGANIZER_EXPORT FreeBusyUrlDialog : public KDialog
     FreeBusyUrlWidget *mWidget;
 };
 
-class KCM_KORGANIZER_EXPORT FreeBusyUrlWidget : public QWidget
+class KORGANIZER_CORE_EXPORT FreeBusyUrlWidget : public QWidget
 {
   Q_OBJECT
   public:
