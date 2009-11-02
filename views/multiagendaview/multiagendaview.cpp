@@ -184,14 +184,13 @@ void MultiAgendaView::deleteViews()
 {
   Q_FOREACH( KOAgendaView *const i, mAgendaViews ) {
     CollectionSelectionProxyModel* proxy = i->takeCustomCollectionSelectionProxyModel();
-    if ( proxy && !mCollectionSelectionModels.contains( proxy ) ) {
-      qDebug() << "deleting" << proxy;
+    if ( proxy && !mCollectionSelectionModels.contains( proxy ) )
       delete proxy;
-    }
     delete i;
   }
 
   mAgendaViews.clear();
+  qDeleteAll( mAgendaWidgets );
   mAgendaWidgets.clear();
 }
 
@@ -369,10 +368,14 @@ void MultiAgendaView::slotClearTimeSpanSelection()
 
 KOAgendaView* MultiAgendaView::createView( const QString &title )
 {
-  KVBox *box = new KVBox( mTopBox );
-  QLabel *l = new QLabel( title, box );
+  QWidget *box = new QWidget( mTopBox );
+  QVBoxLayout* layout = new QVBoxLayout( box );
+  layout->setMargin( 0 );
+  QLabel *l = new QLabel( title );
+  layout->addWidget( l );
   l->setAlignment( Qt::AlignVCenter | Qt::AlignHCenter );
-  KOAgendaView *av = new KOAgendaView( box, true );
+  KOAgendaView *av = new KOAgendaView( 0, true );
+  layout->addWidget( av );
   av->setCalendar( calendar() );
   av->setIncidenceChanger( mChanger );
   av->agenda()->setVScrollBarMode( Q3ScrollView::AlwaysOff );
