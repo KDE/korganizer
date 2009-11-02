@@ -561,6 +561,7 @@ void MultiAgendaView::doRestoreConfig( const KConfigGroup &configGroup )
     QItemSelectionModel* qsm = new QItemSelectionModel( selection, selection );
     selection->setSelectionModel( qsm );
     EntityModelStateSaver* saver = new EntityModelStateSaver( selection, selection );
+    saver->addRole( Qt::CheckStateRole, "CheckState" );
     saver->restoreConfig( g );
     mCollectionSelectionModels[i] = selection;
   }
@@ -573,13 +574,14 @@ void MultiAgendaView::doSaveConfig( KConfigGroup &configGroup )
 {
   configGroup.writeEntry( "UseCustomColumnSetup", mCustomColumnSetupUsed );
   configGroup.writeEntry( "CustomNumberOfColumns", mCustomNumberOfColumns );
-    int idx = 0;
-    Q_FOREACH( CollectionSelectionProxyModel* i, mCollectionSelectionModels ) {
-      KConfigGroup g = configGroup.config()->group( configGroup.name() + "_subView_" + QByteArray::number( idx ) );
-      ++idx;
-      EntityModelStateSaver saver( i );
-      saver.saveConfig( g );
-    }
+  int idx = 0;
+  Q_FOREACH( CollectionSelectionProxyModel* i, mCollectionSelectionModels ) {
+    KConfigGroup g = configGroup.config()->group( configGroup.name() + "_subView_" + QByteArray::number( idx ) );
+    ++idx;
+    EntityModelStateSaver saver( i );
+    saver.addRole( Qt::CheckStateRole, "CheckState" );
+    saver.saveConfig( g );
+  }
 }
 
 class MultiAgendaViewConfigDialog::Private {
