@@ -44,7 +44,7 @@ namespace Akonadi {
 /**
   This class provides a dialog for editing a Todo.
 */
-class INCIDENCEEDITOR_EXPORT KOTodoEditor : public KOIncidenceEditor
+class KORG_INCIDENCEEDITOR_EXPORT KOTodoEditor : public KOIncidenceEditor
 {
   Q_OBJECT
   public:

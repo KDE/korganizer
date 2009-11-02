@@ -47,7 +47,7 @@ namespace Akonadi {
 /**
   This class provides a dialog for editing an event.
 */
-class INCIDENCEEDITOR_EXPORT KOEventEditor : public KOIncidenceEditor
+class KORG_INCIDENCEEDITOR_EXPORT KOEventEditor : public KOIncidenceEditor
 {
   Q_OBJECT
   public:

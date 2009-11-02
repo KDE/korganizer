@@ -38,7 +38,7 @@
  *
  * KOrganizer's ActionManager inherits from this class.
  */
-class INCIDENCEEDITOR_EXPORT KOEditorConfig : public KPIM::KPimPrefs
+class KORG_INCIDENCEEDITOR_EXPORT KOEditorConfig : public KPIM::KPimPrefs
 {
     Q_OBJECT
   public:

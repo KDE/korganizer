@@ -46,7 +46,7 @@
 
 #include <QString>
 
-class INCIDENCEEDITOR_EXPORT TemplateManagementDialog: public KDialog
+class KORG_INCIDENCEEDITOR_EXPORT TemplateManagementDialog: public KDialog
 {
   Q_OBJECT
   public:

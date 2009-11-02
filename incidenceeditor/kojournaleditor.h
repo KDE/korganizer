@@ -41,7 +41,7 @@ using namespace KCal;
 /**
   This class provides a dialog for editing a Journal.
 */
-class INCIDENCEEDITOR_EXPORT KOJournalEditor : public KOIncidenceEditor
+class KORG_INCIDENCEEDITOR_EXPORT KOJournalEditor : public KOIncidenceEditor
 {
   Q_OBJECT
   public:

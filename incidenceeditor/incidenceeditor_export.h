@@ -23,13 +23,13 @@
 /* needed for KDE_EXPORT and KDE_IMPORT macros */
 #include <kdemacros.h>
 
-#ifndef INCIDENCEEDITOR_EXPORT
-# if defined(MAKE_INCIDENCEEDITOR_LIB)
+#ifndef KORG_INCIDENCEEDITOR_EXPORT
+# if defined(MAKE_KORG_INCIDENCEEDITOR_LIB)
    /* We are building this library */
-#  define INCIDENCEEDITOR_EXPORT KDE_EXPORT
+#  define KORG_INCIDENCEEDITOR_EXPORT KDE_EXPORT
 # else
    /* We are using this library */
-#  define INCIDENCEEDITOR_EXPORT KDE_IMPORT
+#  define KORG_INCIDENCEEDITOR_EXPORT KDE_IMPORT
 # endif
 #endif
 

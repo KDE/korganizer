@@ -55,7 +55,7 @@ using namespace KOrg;
 /**
   This is the base class for the calendar component editors.
 */
-class INCIDENCEEDITOR_EXPORT KOIncidenceEditor : public KDialog
+class KORG_INCIDENCEEDITOR_EXPORT KOIncidenceEditor : public KDialog
 {
   Q_OBJECT
   public:
