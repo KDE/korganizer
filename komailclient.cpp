@@ -305,7 +305,6 @@ bool KOMailClient::send( const Identity &identity,
   // on the server side already. This is probably a bug in MessageQueueJob but that's
   // the way it is atm. So, first create the item...
   Akonadi::Item item( transport->id() );
-  //item.setRemoteId( QString::number(transport->id()) );
   item.setMimeType( KMime::Message::mimeType() );
   item.setPayload( message );
   Akonadi::ItemCreateJob *cjob = new Akonadi::ItemCreateJob( item, outbox, this );
