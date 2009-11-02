@@ -25,12 +25,12 @@
 #ifndef ALARMDOCKWINDOW_H
 #define ALARMDOCKWINDOW_H
 
-#include <KNotificationItem>
+#include <KStatusNotifierItem>
 
 #include <QAction>
 #include <QIcon>
 
-class AlarmDockWindow : public KNotificationItem
+class AlarmDockWindow : public KStatusNotifierItem
 {
   Q_OBJECT
   public:
