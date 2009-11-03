@@ -150,6 +150,9 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
 
     virtual void showConfigurationDialog( QWidget* parent );
 
+    QByteArray identifier() const;
+    void setIdentifier( const QByteArray& identifier );
+
     /**
      * reads the view configuration. View-specific configuration can be
      * restored via doRestoreConfig()

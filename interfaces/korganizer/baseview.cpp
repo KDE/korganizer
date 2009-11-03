@@ -30,6 +30,7 @@
 #include <QItemSelectionModel>
 
 #include <KConfigGroup>
+#include <KRandom>
 
 using namespace Akonadi;
 using namespace KOrg;
@@ -54,7 +55,11 @@ public:
     , calendar( 0 )
     , customCollectionSelection( 0 )
     , collectionSelectionModel( 0 )
-    , stateSaver( 0 ) {}
+    , stateSaver( 0 ) {
+    QByteArray cname = q->metaObject()->className();
+    cname.replace( ":", "_" );
+    identifier = cname + "_" + KRandom::randomString( 8 ).toLatin1();
+  }
 
   ~Private() {
     delete collectionSelectionModel;
@@ -64,6 +69,7 @@ public:
   CollectionSelection *customCollectionSelection;
   CollectionSelectionProxyModel* collectionSelectionModel;
   EntityModelStateSaver* stateSaver;
+  QByteArray identifier;
   void setUpModels();
   void reconnectCollectionSelection();
 };
@@ -153,6 +159,16 @@ bool BaseView::hasConfigurationDialog() const
 
 void BaseView::showConfigurationDialog( QWidget* )
 {
+}
+
+QByteArray BaseView::identifier() const
+{
+  return d->identifier;
+}
+
+void BaseView::setIdentifier( const QByteArray& identifier )
+{
+  d->identifier = identifier;
 }
 
 void BaseView::restoreConfig( const KConfigGroup &configGroup )
