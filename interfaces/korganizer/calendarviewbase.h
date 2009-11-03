@@ -31,9 +31,12 @@ namespace Akonadi {
   class Item;
 }
 
+class KOIncidenceEditor;
+
 namespace KOrg {
 
 class AkonadiCalendar;
+
 /**
   @short interface for main calendar view widget
   @author Cornelius Schumacher
@@ -56,6 +59,10 @@ class CalendarViewBase : public QWidget
 
     /** changes the view to be the currently selected view */
     virtual void showView( KOrg::BaseView * ) = 0;
+
+    virtual bool editIncidence( const Akonadi::Item &item, bool isCounter = false ) = 0;
+
+    virtual KOIncidenceEditor *editorDialog( const Akonadi::Item &item ) const = 0;
 
   public Q_SLOTS:
     virtual void updateView() = 0;

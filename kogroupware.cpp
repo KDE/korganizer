@@ -231,11 +231,9 @@ void KOGroupware::incomingDirChanged( const QString &path )
   if ( action.startsWith( QLatin1String( "counter" ) ) ) {
     Akonadi::Item item;
     item.setPayload( Incidence::Ptr( incidence->clone() ) );
-#ifdef AKONADI_PORT_DISABLED
     mView->editIncidence( item, true );
     KOIncidenceEditor *tmp = mView->editorDialog( item );
     tmp->selectInvitationCounterProposal( true );
-#endif
   }
   mView->updateView();
   delete message;
