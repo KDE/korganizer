@@ -168,6 +168,16 @@ void KOViewManager::showView( KOrg::BaseView *view )
   mMainView->processIncidenceSelection( Item(), QDate() );
   mMainView->updateView();
   mMainView->adaptNavigationUnits();
+  KOrg::MainWindow *w = ActionManager::findInstance( KUrl() );
+  if ( !w )
+    return;
+  KActionCollection *ac = w->getActionCollection();\
+  if ( !ac )
+    return;
+  if ( QAction* action = ac->action( "configure_view" ) )
+    action->setEnabled( view->hasConfigurationDialog() );
+
+
 }
 
 void KOViewManager::goMenu( bool enable )
