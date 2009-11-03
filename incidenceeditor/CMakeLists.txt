@@ -47,6 +47,7 @@ target_link_libraries(korg_incidenceeditor
    ${KDE4_KMIME_LIBRARY}
    ${KDE4_KDE3SUPPORT_LIBRARY}
    ${KDEPIMLIBS_KCAL_LIBS}
+   ${KDEPIMLIBS_AKONADI_LIBS}
    kdepim
    kdepimdbusinterfaces
    korganizer_core

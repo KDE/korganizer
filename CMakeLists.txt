@@ -83,12 +83,13 @@ target_link_libraries(korganizer
 	${KDEPIMLIBS_KCAL_LIBS} 
 	${KDEPIMLIBS_KHOLIDAYS_LIBS} 
 	${KDEPIMLIBS_KONTACTINTERFACE_LIBS} 
+	${KDEPIMLIBS_AKONADI_LIBS} 
 	kdepim 
 	kdepimdbusinterfaces 
 	korganizerprivate 
 	korganizer_interfaces
 	korganizer_core
-	)
+)
 
 install(TARGETS korganizer ${INSTALL_TARGETS_DEFAULT_ARGS})
 
