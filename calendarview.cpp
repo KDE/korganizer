@@ -347,7 +347,6 @@ void CalendarView::createPrinter()
 
 bool CalendarView::openCalendar( const QString &filename, bool merge )
 {
-#ifdef AKONADI_PORT_DISABLED
   if ( filename.isEmpty() ) {
     kDebug() << "Error! Empty filename.";
     return false;
@@ -359,15 +358,17 @@ bool CalendarView::openCalendar( const QString &filename, bool merge )
 
   bool loadedSuccesfully = true;
   if ( !merge ) {
+#ifdef AKONADI_PORT_DISABLED
     mCalendar->close();
+#endif
     // otherwise something is majorly wrong
-    Q_ASSERT( dynamic_cast<CalendarResources*>( mCalendar ) );
     // openCalendar called without merge and a filename, what should we do?
     return false;
   }
 
+  AkonadiCalendarAdaptor adaptor( mCalendar, mChanger );
   // merge in a file
-  FileStorage storage( mCalendar );
+  FileStorage storage( &adaptor );
   storage.setFileName( filename );
   loadedSuccesfully = storage.load();
 
@@ -380,35 +381,29 @@ bool CalendarView::openCalendar( const QString &filename, bool merge )
     updateView();
     return true;
   } else {
+#ifdef AKONADI_PORT_DISABLED
     // while failing to load, the calendar object could
     // have become partially populated.  Clear it out.
     if ( !merge ) {
       mCalendar->close();
     }
+#endif
     KMessageBox::error( this, i18n( "Could not load calendar '%1'.", filename ) );
     return false;
   }
-#else
-  kWarning()<<"TODO";
-  return false;
-#endif //AKONADI_PORT_DISABLED
 }
 
 bool CalendarView::saveCalendar( const QString &filename )
 {
-#ifdef AKONADI_PORT_DISABLED
   // Store back all unsaved data into calendar object
   mViewManager->currentView()->flushView();
 
-  FileStorage storage( mCalendar );
+  AkonadiCalendarAdaptor adaptor( mCalendar, mChanger );  
+  FileStorage storage( &adaptor );
   storage.setFileName( filename );
   storage.setSaveFormat( new ICalFormat );
 
   return storage.save();
-#else // AKONADI_PORT_DISABLED
-  kWarning()<<"TODO";
-  return false;
-#endif // AKONADI_PORT_DISABLED
 }
 
 void CalendarView::closeCalendar()
