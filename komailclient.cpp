@@ -277,7 +277,7 @@ bool KOMailClient::send( const Identity &identity,
   KMime::Headers::ContentDisposition *attachDisposition = new KMime::Headers::ContentDisposition( attachMessage );
   attachDisposition->setFilename( "cal.ics" );
   attachDisposition->setDisposition( KMime::Headers::CDattachment );
-  attachMessage->contentType()->setMimeType( "text/plain" );
+  attachMessage->contentType()->setMimeType( "text/calendar" );
   attachMessage->setHeader( attachDisposition );
   attachMessage->setBody( attachment.toUtf8() );
 
@@ -313,7 +313,7 @@ bool KOMailClient::send( const Identity &identity,
   Q_ASSERT( MailTransport::TransportManager::self()->transportById(transportId, false) );
   */
 
-  // Put the newly created item inh the MessageQueueJob.
+  // Put the newly created item in the MessageQueueJob.
   MailTransport::MessageQueueJob *qjob = new MailTransport::MessageQueueJob( this );
   qjob->setTransportId( transportId );
   qjob->setSentBehaviour( MailTransport::SentBehaviourAttribute::MoveToDefaultSentCollection );
@@ -329,7 +329,7 @@ bool KOMailClient::send( const Identity &identity,
     return false;
   }
 
-  // Everything done now.
+  // Everything done successful now.
   kDebug() << "Send mail finished. Time elapsed in ms:" << timer.elapsed();
   return true;
 }
