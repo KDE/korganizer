@@ -1,6 +1,5 @@
 <!DOCTYPE kpartgui>
-<kpartgui name="korganizer" version="416">
-
+<kpartgui name="korganizer" version="417">
   <MenuBar>
     <Menu name="file"><text>&amp;File</text>
       <Menu name="import"><text>&amp;Import</text>
@@ -127,6 +126,8 @@
     <Action name="go_previous"/>
     <Action name="go_next"/>
     <Action name="go_today"/>
+    <Action name="select_day"/>
+    <Action name="select_week"/>
   </ToolBar>
 
   
