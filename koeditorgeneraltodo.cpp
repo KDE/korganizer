@@ -395,8 +395,12 @@ void KOEditorGeneralTodo::fillTodo( Todo *todo )
   if ( todo->recurs() && !mStartDateModified ) {
     todo->setDtDue( tmpDueDT );
   } else {
-    todo->setDtDue( tmpDueDT, true );
-    todo->setDtStart( tmpStartDT );
+    if ( mDueCheck->isChecked() ) {
+      todo->setDtDue( tmpDueDT, true );
+    }
+    if ( mStartCheck->isChecked() ) {
+      todo->setDtStart( tmpStartDT );
+    }
     todo->setDtRecurrence( tmpDueDT );
   }
   todo->setPriority( mPriorityCombo->currentIndex() );
