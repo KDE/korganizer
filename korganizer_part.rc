@@ -43,12 +43,13 @@
       <Action name="korganizer_find"/>
     </Menu>
     <Menu name="view"><text>&amp;View</text>
+      <Action name="view_agenda"/>
+      <Action name="view_month"/>
+      <Action name="view_timeline"/>
+      <Action name="view_todo"/>
+      <Action name="view_list"/>
       <Action name="view_whatsnext"/>
       <Action name="view_timespent"/>
-      <Action name="view_timeline"/>
-      <Separator/>
-      <Action name="view_list"/>
-      <Action name="view_todo"/>
       <Action name="view_journal"/>
       <Merge/>
       <Separator/>
@@ -76,7 +77,8 @@
       <Action name="select_nextx"/>
       <Action name="select_workweek"/>
       <Action name="select_week"/>
-    </Menu>
+      <Action name="select_newmonth"/>
+</Menu>
     <Menu name="actions"><text>&amp;Actions</text>
       <Action name="new_event"/>
       <Action name="new_todo"/>
@@ -139,20 +141,17 @@
     <Separator/>
     <Action name="go_previous"/>
     <Action name="go_next"/>
-
     <Action name="go_today"/>
     <Action name="select_day"/>
     <Action name="select_week"/>
   </ToolBar>
 
   <ToolBar noMerge="1" name="korganizer_toolbar"><text>Views</text>
-    <Action name="view_day"/>
-    <Action name="view_week"/>
-    <Action name="view_workweek"/>
+    <Action name="view_agenda"/>
     <Action name="view_month"/>
-    <Action name="view_list"/>
     <Action name="view_timeline"/>
-    <Action name="view_timespent"/>
+    <Action name="view_todo"/>
+    <Action name="view_journal"/>
     <Merge/>
   </ToolBar>
 
@@ -173,6 +172,8 @@
     <Action name="new_journal"/>
     <Separator/>
     <Action name="korganizer_paste"/>
+    <Separator/>
+    <Action name="configure_view"/>
     <Merge/>
   </Menu>
 
