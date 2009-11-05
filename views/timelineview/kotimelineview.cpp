@@ -28,10 +28,12 @@
 #include "koprefs.h"
 #include "timelineitem.h"
 #include "akonadicalendar.h"
+#include "kohelper.h"
 
 #include <kdgantt1/KDGanttViewTaskItem.h>
 #include <kdgantt1/KDGanttViewSubwidgets.h>
 
+#include <akonadi/kcal/collectionselection.h>
 #include <akonadi/kcal/utils.h>
 
 #include <QLayout>
@@ -117,49 +119,23 @@ void KOTimelineView::showDates( const QDate &start, const QDate &end )
   mGantt->clear();
 
   // item for every calendar
-#if 0  //AKONADI_PORT_DISABLED
   TimelineItem *item = 0;
-  AkonadiCalendar *calres = dynamic_cast<AkonadiCalendar *>( calendar() );
+  AkonadiCalendar *calres = calendar();
   if ( !calres ) {
     item = new TimelineItem( i18n( "Calendar" ), calendar(), mGantt );
-    mCalendarItemMap[0][QString()] = item;
+    mCalendarItemMap.insert( -1, item );
   } else {
-    CalendarResourceManager *manager = calres->resourceManager();
-    for ( CalendarResourceManager::ActiveIterator it = manager->activeBegin(); it != manager->activeEnd(); ++it ) {
-      QColor resourceColor = KOPrefs::instance()->resourceColor( (*it)->identifier() );
-      if ( (*it)->canHaveSubresources() ) {
-        QStringList subResources = (*it)->subresources();
-        for ( QStringList::ConstIterator subit = subResources.constBegin();
-              subit != subResources.constEnd(); ++subit ) {
-          QString type = (*it)->subresourceType( *subit );
-          if ( !(*it)->subresourceActive( *subit ) ||
-               ( !type.isEmpty() && type != "event" ) ) {
-            continue;
-          }
-          item = new TimelineItem( (*it)->labelForSubresource( *subit ), calendar(), mGantt );
-          resourceColor = KOPrefs::instance()->resourceColor( (*it)->identifier() );
-          QColor subrescol = KOPrefs::instance()->resourceColor( *subit );
-          if ( subrescol.isValid() ) {
-            resourceColor = subrescol;
-          }
-          if ( resourceColor.isValid() ) {
-            item->setColors( resourceColor, resourceColor, resourceColor );
-          }
-          mCalendarItemMap[*it][*subit] = item;
-        }
-      } else {
-        item = new TimelineItem( (*it)->resourceName(), calendar(), mGantt );
-        if ( resourceColor.isValid() ) {
-          item->setColors( resourceColor, resourceColor, resourceColor );
-        }
-        mCalendarItemMap[*it][QString()] = item;
-      }
+    const CollectionSelection* colSel = collectionSelection();
+    const Collection::List collections = colSel->selectedCollections();
+
+    Q_FOREACH( const Collection &collection, collections ) {
+      item = new TimelineItem( collection.name(), calendar(), mGantt );
+      const QColor resourceColor = KOHelper::resourceColor( collection );
+      if ( resourceColor.isValid() )
+        item->setColors( resourceColor, resourceColor, resourceColor );
+      mCalendarItemMap.insert( collection.id(), item );
     }
   }
-#else
-  TimelineItem *item = new TimelineItem( i18n( "Calendar" ), calendar(), mGantt );
-  mCalendarItemMap[0][QString()] = item;
-#endif
 
   // add incidences
   Item::List events;
@@ -254,26 +230,12 @@ void KOTimelineView::newEventWithHint( const QDateTime &dt )
 
 TimelineItem *KOTimelineView::calendarItemForIncidence( const Item &incidence )
 {
-  AkonadiCalendar *calres = dynamic_cast<AkonadiCalendar *>( calendar() );
+  AkonadiCalendar *calres = calendar();
   TimelineItem *item = 0;
   if ( !calres ) {
-    item = mCalendarItemMap[0][QString()];
+    item = mCalendarItemMap.value( -1 );
   } else {
-#if 0 //AKONADI_PORT_DISABLED
-    ResourceCalendar *res = calres->resource( incidence );
-    if ( !res ) {
-      return 0;
-    }
-    if ( res->canHaveSubresources() ) {
-      QString subRes = res->subresourceIdentifier( incidence );
-      item = mCalendarItemMap[res][subRes];
-    } else {
-      item = mCalendarItemMap[res][QString()];
-    }
-#else
-    Q_UNUSED( incidence );
-    kWarning()<<"TODO";
-#endif
+    item = mCalendarItemMap.value( incidence.parentCollection().id() );
   }
   return item;
 }
@@ -333,6 +295,7 @@ void KOTimelineView::removeIncidence( const Item &incidence )
   if ( item ) {
     item->removeIncidence( incidence );
   } else {
+#if 0 //AKONADI_PORT_DISABLED
     // try harder, the incidence might already be removed from the resource
     typedef QMap<QString, KOrg::TimelineItem *> M2_t;
     typedef QMap<KCal::ResourceCalendar *, M2_t> M1_t;
@@ -345,6 +308,7 @@ void KOTimelineView::removeIncidence( const Item &incidence )
         }
       }
     }
+#endif
   }
 }
 

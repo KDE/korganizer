@@ -28,6 +28,7 @@
 
 #include <kdgantt1/KDGanttView.h>
 
+#include <Akonadi/Collection>
 #include <Akonadi/Item>
 
 #include <QMap>
@@ -80,7 +81,7 @@ class KOTimelineView : public KOEventView
 
   private:
     KDGanttView *mGantt;
-    QMap<KCal::ResourceCalendar*, QMap<QString, KOrg::TimelineItem*> > mCalendarItemMap;
+    QMap<Akonadi::Collection::Id, KOrg::TimelineItem*> mCalendarItemMap;
     KOEventPopupMenu *mEventPopup;
     QDate mStartDate, mEndDate;
     QDateTime mHintDate;

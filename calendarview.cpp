@@ -74,7 +74,6 @@
 #include <KCal/VCalFormat>
 
 #include <KHolidays/Holidays>
-using namespace KHolidays;
 
 #include <KPIMIdentities/IdentityManager>
 
@@ -93,6 +92,7 @@ using namespace KHolidays;
 
 using namespace boost;
 using namespace Akonadi;
+using namespace KHolidays;
 
 CalendarView::CalendarView( QWidget *parent )
   : CalendarViewBase( parent ),
