@@ -132,7 +132,7 @@ void KOTimelineView::showDates( const QDate &start, const QDate &end )
 
     Q_FOREACH( const Collection &collection, collections ) {
       const EntityDisplayAttribute* attr = collection.attribute<EntityDisplayAttribute>();
-      item = new TimelineItem( attr ? attr->displayName() : collection.name(), calendar(), mGantt );
+      item = new TimelineItem( ( attr && !attr->displayName().isEmpty() ) ? attr->displayName() : collection.name(), calendar(), mGantt );
       const QColor resourceColor = KOHelper::resourceColor( collection );
       if ( resourceColor.isValid() )
         item->setColors( resourceColor, resourceColor, resourceColor );

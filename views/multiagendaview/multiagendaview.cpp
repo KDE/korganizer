@@ -32,6 +32,7 @@
 #include <akonadi/kcal/collectionselectionproxymodel.h>
 #include <akonadi/kcal/entitymodelstatesaver.h>
 
+
 #include <KGlobalSettings>
 #include <KHBox>
 #include <KVBox>
@@ -396,7 +397,7 @@ KOAgendaView* MultiAgendaView::createView( const QString &title )
 void MultiAgendaView::addView( const Collection &collection )
 {
   const EntityDisplayAttribute* attr = collection.attribute<EntityDisplayAttribute>();
-  KOAgendaView* av = createView( attr ? attr->displayName() : collection.name() );
+  KOAgendaView* av = createView( ( attr && !attr->displayName().isEmpty() ) ? attr->displayName() : collection.name() );
   av->setCollection( collection.id() );
 }
 
