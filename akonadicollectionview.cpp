@@ -123,7 +123,7 @@ AkonadiCollectionView::AkonadiCollectionView( CalendarView* view, QWidget *paren
   colorProxy->setSourceModel( collectionproxymodel );
   mBaseModel = collectionproxymodel;
 
-  mCollectionview = new Akonadi::EntityTreeView;
+  mCollectionview = new Akonadi::EntityTreeView( this );
   topLayout->addWidget( mCollectionview );
   mCollectionview->header()->hide();
   mCollectionview->setRootIsDecorated( true );

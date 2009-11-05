@@ -38,7 +38,6 @@
 #include "kocore.h"
 #include "actionmanager.h"
 #include "koglobals.h"
-#include "akonadicollectionview.h"
 #include "korganizerifaceimpl.h"
 
 #include <korganizer/part.h>
