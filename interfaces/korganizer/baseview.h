@@ -38,11 +38,13 @@
 
 using namespace KCal;
 
+class QModelIndex;
 class QPoint;
 
 class KConfigGroup;
 
 namespace Akonadi {
+  class CalendarSearch;
   class CollectionSelection;
   class CollectionSelectionProxyModel;
 }
@@ -84,6 +86,8 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
       Return calendar object of this view.
     */
     virtual AkonadiCalendar *calendar();
+
+    Akonadi::CalendarSearch* calendarSearch() const;
 
     /**
       @return a list of selected events.  Most views can probably only
@@ -186,7 +190,6 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
      */
     virtual BaseView* viewAt( const QPoint &p );
 
-  public Q_SLOTS:
     /**
       Show incidences for the given date range. The date range actually shown
       may be different from the requested range, depending on the particular
@@ -195,8 +198,9 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
       @param start Start of date range.
       @param end   End of date range.
     */
-    virtual void showDates( const QDate &start, const QDate &end ) = 0;
+    void setDateRange( const QDate &start, const QDate &end );
 
+  public Q_SLOTS:
     /**
       Shows given incidences. Depending on the actual view it might not
       be possible to show all given events.
@@ -346,8 +350,26 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
      */
     virtual void doSaveConfig( KConfigGroup &configGroup );
 
+    /**
+      @deprecated
+     */
+    virtual void showDates( const QDate& start, const QDate& end ) = 0;
+
+    virtual void incidencesAdded( const Akonadi::Item::List& incidences );
+    virtual void incidencesAboutToBeRemoved( const Akonadi::Item::List& incidences );
+    virtual void incidencesChanged( const Akonadi::Item::List& incidences );
+
+    virtual void handleBackendError( const QString &error );
+
   protected Q_SLOTS:
     virtual void collectionSelectionChanged();
+    virtual void calendarReset();
+
+  private Q_SLOTS:
+    void backendErrorOccurred();
+    void dataChanged( const QModelIndex& topLeft, const QModelIndex& bottomRight );
+    void rowsInserted( const QModelIndex& parent, int start, int end );
+    void rowsAboutToBeRemoved( const QModelIndex& parent, int start, int end );
 
   protected:
     IncidenceChangerBase *mChanger;

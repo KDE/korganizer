@@ -23,9 +23,11 @@
 #include "baseview.h"
 
 #include <akonadi/kcal/akonadicalendar.h>
+#include <akonadi/kcal/calendarsearch.h>
 #include <akonadi/kcal/collectionselection.h>
 #include <akonadi/kcal/collectionselectionproxymodel.h>
 #include <akonadi/kcal/entitymodelstatesaver.h>
+#include <akonadi/kcal/utils.h>
 
 #include <QItemSelectionModel>
 
@@ -59,6 +61,11 @@ public:
     QByteArray cname = q->metaObject()->className();
     cname.replace( ":", "_" );
     identifier = cname + "_" + KRandom::randomString( 8 ).toLatin1();
+    calendarSearch = new CalendarSearch( q );
+    connect( calendarSearch->model(), SIGNAL(rowsInserted(QModelIndex,int,int)), q, SLOT(rowsInserted(QModelIndex,int,int)) );
+    connect( calendarSearch->model(), SIGNAL(rowsAboutToBeRemoved(QModelIndex,int,int)), q, SLOT(rowsAboutToBeRemoved(QModelIndex,int,int)) );
+    connect( calendarSearch->model(), SIGNAL(dataChanged(QModelIndex,QModelIndex)), q, SLOT(dataChanged(QModelIndex,QModelIndex)) );
+    connect( calendarSearch->model(), SIGNAL(modelReset()), q, SLOT(calendarReset()) );
   }
 
   ~Private() {
@@ -66,6 +73,7 @@ public:
   }
 
   AkonadiCalendar *calendar;
+  CalendarSearch *calendarSearch;
   CollectionSelection *customCollectionSelection;
   CollectionSelectionProxyModel* collectionSelectionModel;
   EntityModelStateSaver* stateSaver;
@@ -84,6 +92,9 @@ void BaseView::Private::setUpModels()
     customCollectionSelection = new CollectionSelection( collectionSelectionModel->selectionModel() );
     stateSaver = new EntityModelStateSaver( collectionSelectionModel, q );
     stateSaver->addRole( Qt::CheckStateRole, "CheckState" );
+    calendarSearch->setSelectionModel( collectionSelectionModel->selectionModel() );
+  } else {
+    calendarSearch->setSelectionModel( 0 );
   }
   reconnectCollectionSelection();
 }
@@ -126,6 +137,11 @@ AkonadiCalendar *BaseView::calendar()
   return d->calendar;
 }
 
+Akonadi::CalendarSearch* BaseView::calendarSearch() const
+{
+  return d->calendarSearch;
+}
+
 bool BaseView::isEventView()
 {
   return false;
@@ -155,6 +171,13 @@ void BaseView::updateConfig()
 bool BaseView::hasConfigurationDialog() const
 {
   return false;
+}
+
+void BaseView::setDateRange( const QDate& start, const QDate& end )
+{
+  showDates( start, end );
+  d->calendarSearch->setStartDate( KDateTime( start ) );
+  d->calendarSearch->setEndDate( KDateTime( end ) );
 }
 
 void BaseView::showConfigurationDialog( QWidget* )
@@ -269,9 +292,50 @@ void BaseView::getHighlightMode( bool &highlightEvents,
   highlightJournals = false;
 }
 
+void BaseView::handleBackendError( const QString &errorString )
+{
+}
+
+void BaseView::backendErrorOccurred()
+{
+  handleBackendError( d->calendarSearch->errorString() );
+}
+
 bool BaseView::usesFullWindow()
 {
   return false;
+}
+void BaseView::incidencesAdded( const Akonadi::Item::List & )
+{
+}
+
+void BaseView::incidencesAboutToBeRemoved( const Akonadi::Item::List & )
+{
+}
+
+void BaseView::incidencesChanged( const Akonadi::Item::List& )
+{
+}
+
+void BaseView::calendarReset()
+{
+}
+
+void BaseView::dataChanged( const QModelIndex& topLeft, const QModelIndex& bottomRight )
+{
+  incidencesChanged( Akonadi::itemsFromModel( d->calendarSearch->model(), topLeft.row(), bottomRight.row() ) );
+}
+
+void BaseView::rowsInserted( const QModelIndex& parent, int start, int end )
+{
+  Q_UNUSED( parent );
+  incidencesAdded( Akonadi::itemsFromModel( d->calendarSearch->model(), start, end ) );
+}
+
+void BaseView::rowsAboutToBeRemoved( const QModelIndex& parent, int start, int end )
+{
+  Q_UNUSED( parent );
+  incidencesAboutToBeRemoved( Akonadi::itemsFromModel( d->calendarSearch->model(), start, end ) );
 }
 
 #include "baseview.moc"

@@ -229,7 +229,7 @@ void KOViewManager::updateView()
 void KOViewManager::updateView( const QDate &start, const QDate &end )
 {
   if ( mCurrentView ) {
-    mCurrentView->showDates( start, end );
+    mCurrentView->setDateRange( start, end );
   }
 
   if ( mTodoView ) {
