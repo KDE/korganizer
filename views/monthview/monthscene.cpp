@@ -479,7 +479,7 @@ void MonthScene::mouseDoubleClickEvent ( QGraphicsSceneMouseEvent *mouseEvent )
   MonthGraphicsItem *iItem;
   if ( ( iItem = dynamic_cast<MonthGraphicsItem*>( itemAt( pos ) ) ) ) {
     if ( iItem->monthItem() ) {
-      IncidenceMonthItem *tmp = dynamic_cast<IncidenceMonthItem *>( iItem->monthItem() );
+      IncidenceMonthItem *tmp = qobject_cast<IncidenceMonthItem *>( iItem->monthItem() );
       if ( tmp ) {
         selectItem( iItem->monthItem() );
         mMonthView->defaultAction( tmp->incidence() );
@@ -667,7 +667,7 @@ void MonthScene::selectItem( MonthItem *item )
   if ( mSelectedItem == item ) {
     return;
   }
-  IncidenceMonthItem *tmp = dynamic_cast<IncidenceMonthItem *>( item );
+  IncidenceMonthItem *tmp = qobject_cast<IncidenceMonthItem *>( item );
 
   if ( !tmp ) {
     mSelectedItem = 0;

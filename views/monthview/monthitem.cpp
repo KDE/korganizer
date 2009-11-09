@@ -708,7 +708,7 @@ HolidayMonthItem::~HolidayMonthItem()
 
 bool HolidayMonthItem::greaterThanFallback( const MonthItem *other ) const
 {
-  const HolidayMonthItem *o = dynamic_cast<const HolidayMonthItem *>( other );
+  const HolidayMonthItem *o = qobject_cast<const HolidayMonthItem *>( other );
   if ( o ) {
     return MonthItem::greaterThanFallback( other );
   }
