@@ -285,6 +285,15 @@ void MonthView::showDates( const QDate &start, const QDate &end )
   setStartDate( dayOne );
 }
 
+QPair<QDate,QDate> MonthView::actualDateRange( const QDate& start, const QDate& ) const {
+  QDate dayOne( start );
+  dayOne.setDate( start.year(), start.month(), 1 );
+  const int weekdayCol = ( dayOne.dayOfWeek() + 7 - KGlobal::locale()->weekStartDay() ) % 7;
+  const QDate actualStart = dayOne.addDays( -weekdayCol );
+  const QDate actualEnd = actualStart.addDays( 6 * 7 - 1 );
+  return qMakePair( actualStart, actualEnd );
+}
+
 void MonthView::setStartDate( const QDate &start )
 {
   int weekdayCol = ( start.dayOfWeek() + 7 - KGlobal::locale()->weekStartDay() ) % 7;
@@ -319,16 +328,12 @@ void MonthView::reloadIncidences()
   Akonadi::Item incidenceSelected;
 
   MonthItem *itemToReselect = 0;
-  QDate selectedItemDate;
 
-  if ( mScene->selectedItem() ) {
-    IncidenceMonthItem *tmp = qobject_cast<IncidenceMonthItem *>( mScene->selectedItem() );
-    if ( tmp ) {
-      incidenceSelected = tmp->incidence();
-      selectedItemDate = tmp->realStartDate();
-      if ( !selectedItemDate.isValid() ) {
-        return;
-      }
+  if ( IncidenceMonthItem *tmp = qobject_cast<IncidenceMonthItem *>( mScene->selectedItem() ) ) {
+    mSelectedItemId = tmp->incidence().id();
+    mSelectedItemDate = tmp->realStartDate();
+    if ( !mSelectedItemDate.isValid() ) {
+      return;
     }
   }
 
@@ -341,6 +346,7 @@ void MonthView::reloadIncidences()
     i ++;
   }
 
+//#ifdef AKONADI_PORT_DISABLED
   // build global event list
   KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
   const Item::List incidences = calendar()->incidences();
@@ -394,8 +400,8 @@ void MonthView::reloadIncidences()
                                                    aitem,
                                                    t->toTimeSpec( timeSpec ).date() );
       mScene->mManagerList << manager;
-      if ( incidenceSelected == aitem &&
-           manager->realStartDate() == selectedItemDate ) {
+      if ( mSelectedItemId == aitem.id() &&
+           manager->realStartDate() == mSelectedItemDate ) {
         // only select it outside the loop because we are still creating items
         itemToReselect = manager;
       }
@@ -433,6 +439,8 @@ void MonthView::reloadIncidences()
     }
   }
 
+//#endif // AKONADI_PORT_DISABLED
+
   foreach ( MonthItem *manager, mScene->mManagerList ) {
     manager->updateMonthGraphicsItems();
     manager->updatePosition();
@@ -446,6 +454,30 @@ void MonthView::reloadIncidences()
   mView->update();
   mScene->update();
 }
+
+void MonthView::calendarReset()
+{
+  kDebug();
+}
+
+void MonthView::incidencesAdded( const Item::List& incidences )
+{
+  Q_FOREACH( const Item& i, incidences )
+      kDebug() << "item added: " << Akonadi::incidence( i )->summary();
+}
+
+void MonthView::incidencesAboutToBeRemoved( const Item::List& incidences )
+{
+  Q_FOREACH( const Item& i, incidences )
+      kDebug() << "item removed: " << Akonadi::incidence( i )->summary();
+}
+
+void MonthView::incidencesChanged( const Item::List& incidences )
+{
+  Q_FOREACH( const Item& i, incidences )
+      kDebug() << "item changed: " << Akonadi::incidence( i )->summary();
+}
+
 
 QDate MonthView::averageDate() const
 {

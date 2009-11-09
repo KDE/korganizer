@@ -34,6 +34,9 @@
 #include <KConfigGroup>
 #include <KRandom>
 
+#include <QVBoxLayout>
+#include <Akonadi/EntityTreeView>
+
 using namespace Akonadi;
 using namespace KOrg;
 
@@ -93,9 +96,19 @@ void BaseView::Private::setUpModels()
     stateSaver = new EntityModelStateSaver( collectionSelectionModel, q );
     stateSaver->addRole( Qt::CheckStateRole, "CheckState" );
     calendarSearch->setSelectionModel( collectionSelectionModel->selectionModel() );
+
   } else {
-    calendarSearch->setSelectionModel( 0 );
+    calendarSearch->setSelectionModel( globalCollectionSelection()->model() );
   }
+#if 0
+  QDialog* dlg = new QDialog( q );
+  dlg->setModal( false );
+  QVBoxLayout* layout = new QVBoxLayout( dlg );
+  EntityTreeView* testview = new EntityTreeView( dlg );
+  layout->addWidget( testview );
+  testview->setModel( calendarSearch->model() );
+  dlg->show();
+#endif
   reconnectCollectionSelection();
 }
 
@@ -111,7 +124,8 @@ void BaseView::Private::reconnectCollectionSelection()
 
 BaseView::BaseView( QWidget *parent )
   : QWidget( parent ), mChanger( 0 ), d( new Private( this ) )
-{}
+{
+}
 
 BaseView::~BaseView()
 {
@@ -176,8 +190,9 @@ bool BaseView::hasConfigurationDialog() const
 void BaseView::setDateRange( const QDate& start, const QDate& end )
 {
   showDates( start, end );
-  d->calendarSearch->setStartDate( KDateTime( start ) );
-  d->calendarSearch->setEndDate( KDateTime( end ) );
+  const QPair<QDate,QDate> adjusted = actualDateRange( start, end );
+  d->calendarSearch->setStartDate( KDateTime( adjusted.first ) );
+  d->calendarSearch->setEndDate( KDateTime( adjusted.second ) );
 }
 
 void BaseView::showConfigurationDialog( QWidget* )
@@ -319,6 +334,11 @@ void BaseView::incidencesChanged( const Akonadi::Item::List& )
 
 void BaseView::calendarReset()
 {
+}
+
+QPair<QDate,QDate> BaseView::actualDateRange( const QDate& start, const QDate& end ) const
+{
+  return qMakePair( start, end );
 }
 
 void BaseView::dataChanged( const QModelIndex& topLeft, const QModelIndex& bottomRight )

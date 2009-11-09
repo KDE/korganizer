@@ -91,6 +91,7 @@ class MonthView : public KOEventView
     void moveBackWeek();
     void moveFwdWeek();
     void moveFwdMonth();
+    /* reimp */ void calendarReset();
 
   protected:
     int maxDatesHint();
@@ -98,6 +99,11 @@ class MonthView : public KOEventView
     virtual void wheelEvent( QWheelEvent *event );
     virtual void keyPressEvent( QKeyEvent *event );
     virtual void keyReleaseEvent( QKeyEvent *event );
+
+    /* reimp */ void incidencesAdded( const Akonadi::Item::List& incidences );
+    /* reimp */ void incidencesAboutToBeRemoved( const Akonadi::Item::List& incidences );
+    /* reimp */ void incidencesChanged( const Akonadi::Item::List& incidences );
+    /* reimp */ QPair<QDate,QDate> actualDateRange( const QDate& start, const QDate& end ) const;
 
   private slots:
     // Compute and update the whole view
@@ -110,6 +116,8 @@ class MonthView : public KOEventView
 
     MonthGraphicsView *mView;
     MonthScene *mScene;
+    Akonadi::Item::Id mSelectedItemId;
+    QDate mSelectedItemDate;
 
     QDate mStartDate;
     QDate mEndDate;

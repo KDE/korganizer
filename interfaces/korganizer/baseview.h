@@ -34,6 +34,7 @@
 
 #include <Akonadi/Item>
 
+#include <QtCore/QPair>
 #include <QtGui/QWidget>
 
 using namespace KCal;
@@ -354,6 +355,13 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
       @deprecated
      */
     virtual void showDates( const QDate& start, const QDate& end ) = 0;
+
+    /**
+     * from the requested date range (passed via setDateRange()), calculates the adjusted date range actually displayed by the view, depending
+     * on the view's supported range (e.g., a month view always displays one month)
+     * The default implementation returns the range unmodified
+     */
+    virtual QPair<QDate,QDate> actualDateRange( const QDate& start, const QDate& end ) const;
 
     virtual void incidencesAdded( const Akonadi::Item::List& incidences );
     virtual void incidencesAboutToBeRemoved( const Akonadi::Item::List& incidences );
