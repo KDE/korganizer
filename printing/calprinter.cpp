@@ -32,6 +32,7 @@
 #include <KPrintPreview>
 #include <KStandardGuiItem>
 #include <KVBox>
+#include <kdeprintdialog.h> //krazy:exclude=camelcase not available
 
 #include <QButtonGroup>
 #include <QGridLayout>
@@ -151,7 +152,7 @@ void CalPrinter::doPrint( KOrg::PrintPlugin *selectedStyle,
     printPreview->exec();
     delete printPreview;
   } else {
-    QPointer<QPrintDialog> printDialog = new QPrintDialog( &printer, mParent );
+    QPointer<QPrintDialog> printDialog = KdePrint::createPrintDialog( &printer, mParent );
     if ( printDialog->exec() == QDialog::Accepted ) {
       selectedStyle->doPrint( &printer );
     }
