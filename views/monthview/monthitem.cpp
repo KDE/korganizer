@@ -75,8 +75,8 @@ void MonthItem::updateMonthGraphicsItems()
 
   // For each row of the month view, create an item to build the whole
   // MonthItem's MonthGraphicsItems.
-  for ( QDate d = mMonthScene->mMonthView->startDate();
-        d < mMonthScene->mMonthView->endDate(); d = d.addDays( 7 ) ) {
+  for ( QDate d = mMonthScene->mMonthView->actualStartDateTime().date();
+        d < mMonthScene->mMonthView->actualEndDateTime().date(); d = d.addDays( 7 ) ) {
     QDate end = d.addDays( 6 );
 
     int span;

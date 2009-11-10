@@ -199,10 +199,13 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
       @param start Start of date range.
       @param end   End of date range.
     */
-    void setDateRange( const QDate &start, const QDate &end );
+    void setDateRange( const KDateTime &start, const KDateTime &end );
 
-    QDate startDate() const;
-    QDate endDate() const;
+    KDateTime startDateTime() const;
+    KDateTime endDateTime() const;
+
+    KDateTime actualStartDateTime() const;
+    KDateTime actualEndDateTime() const;
 
   public Q_SLOTS:
     /**
@@ -364,7 +367,7 @@ class KORGANIZER_INTERFACES_EXPORT BaseView : public QWidget
      * on the view's supported range (e.g., a month view always displays one month)
      * The default implementation returns the range unmodified
      */
-    virtual QPair<QDate,QDate> actualDateRange( const QDate& start, const QDate& end ) const;
+    virtual QPair<KDateTime,KDateTime> actualDateRange( const KDateTime& start, const KDateTime& end ) const;
 
     virtual void incidencesAdded( const Akonadi::Item::List& incidences );
     virtual void incidencesAboutToBeRemoved( const Akonadi::Item::List& incidences );

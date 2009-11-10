@@ -81,8 +81,10 @@ public:
   CollectionSelectionProxyModel* collectionSelectionModel;
   EntityModelStateSaver* stateSaver;
   QByteArray identifier;
-  QDate startDate;
-  QDate endDate;
+  KDateTime startDateTime;
+  KDateTime endDateTime;
+  KDateTime actualStartDateTime;
+  KDateTime actualEndDateTime;
   void setUpModels();
   void reconnectCollectionSelection();
 };
@@ -189,26 +191,38 @@ bool BaseView::hasConfigurationDialog() const
   return false;
 }
 
-void BaseView::setDateRange( const QDate& start, const QDate& end )
+void BaseView::setDateRange( const KDateTime& start, const KDateTime& end )
 {
-  if ( d->startDate == start && d->endDate == end )
+  if ( d->startDateTime == start && d->endDateTime == end )
     return;
-  d->startDate = start;
-  d->endDate = end;
-  showDates( start, end );
-  const QPair<QDate,QDate> adjusted = actualDateRange( start, end );
-  d->calendarSearch->setStartDate( KDateTime( adjusted.first ) );
-  d->calendarSearch->setEndDate( KDateTime( adjusted.second ) );
+  d->startDateTime = start;
+  d->endDateTime = end;
+  showDates( start.date(), end.date() );
+  const QPair<KDateTime,KDateTime> adjusted = actualDateRange( start, end );
+  d->actualStartDateTime = adjusted.first;
+  d->actualEndDateTime = adjusted.second;
+  d->calendarSearch->setStartDate( d->actualStartDateTime );
+  d->calendarSearch->setEndDate( d->actualEndDateTime );
 }
 
-QDate BaseView::startDate() const
+KDateTime BaseView::startDateTime() const
 {
-  return d->startDate;
+  return d->startDateTime;
 }\
 
-QDate BaseView::endDate() const
+KDateTime BaseView::endDateTime() const
 {
-  return d->endDate;
+  return d->endDateTime;
+}
+
+KDateTime BaseView::actualStartDateTime() const
+{
+  return d->actualStartDateTime;
+}\
+
+KDateTime BaseView::actualEndDateTime() const
+{
+  return d->actualEndDateTime;
 }
 
 void BaseView::showConfigurationDialog( QWidget* )
@@ -352,7 +366,7 @@ void BaseView::calendarReset()
 {
 }
 
-QPair<QDate,QDate> BaseView::actualDateRange( const QDate& start, const QDate& end ) const
+QPair<KDateTime,KDateTime> BaseView::actualDateRange( const KDateTime& start, const KDateTime& end ) const
 {
   return qMakePair( start, end );
 }

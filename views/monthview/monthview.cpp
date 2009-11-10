@@ -113,6 +113,8 @@ MonthView::MonthView( QWidget *parent )
 
   connect( mScene, SIGNAL(newEventSignal()),
            this, SIGNAL(newEventSignal()) );
+  mReloadTimer.setSingleShot( true );
+  connect( &mReloadTimer, SIGNAL(timeout()), this, SLOT(reloadIncidences()) );
   updateConfig();
 }
 
@@ -132,7 +134,7 @@ MonthView::~MonthView()
 
 int MonthView::currentDateCount()
 {
-  return mStartDate.daysTo( mEndDate );
+  return actualStartDateTime().date().daysTo( actualEndDateTime().date() );
 }
 
 int MonthView::maxDatesHint()
@@ -276,8 +278,8 @@ void MonthView::moveFwdMonth()
 
 void MonthView::moveStartDate( int weeks, int months )
 {
-  QDate start = startDate();
-  QDate end = endDate();
+  KDateTime start = startDateTime();
+  KDateTime end = endDateTime();
   start = start.addDays( weeks * 7 );
   end = end.addDays( weeks * 7 );
   start = start.addMonths( months );
@@ -287,34 +289,19 @@ void MonthView::moveStartDate( int weeks, int months )
 
 void MonthView::showDates( const QDate &start, const QDate &end )
 {
+  Q_UNUSED( start );
   Q_UNUSED( end );
-
-  QDate dayOne( start );
-  dayOne.setDate( start.year(), start.month(), 1 );
-
-  setStartDate( dayOne );
 }
 
-QPair<QDate,QDate> MonthView::actualDateRange( const QDate& start, const QDate& ) const {
-  QDate dayOne( start );
-  dayOne.setDate( start.year(), start.month(), 1 );
-  const int weekdayCol = ( dayOne.dayOfWeek() + 7 - KGlobal::locale()->weekStartDay() ) % 7;
-  const QDate actualStart = dayOne.addDays( -weekdayCol );
-  const QDate actualEnd = actualStart.addDays( 6 * 7 - 1 );
+QPair<KDateTime,KDateTime> MonthView::actualDateRange( const KDateTime& start, const KDateTime& ) const {
+  KDateTime dayOne( start );
+  dayOne.setDate( QDate( start.date().year(), start.date().month(), 1 ) );
+  const int weekdayCol = ( dayOne.date().dayOfWeek() + 7 - KGlobal::locale()->weekStartDay() ) % 7;
+  KDateTime actualStart = dayOne.addDays( -weekdayCol );
+  actualStart.setTime( QTime( 0, 0, 0, 0 ) );
+  KDateTime actualEnd = actualStart.addDays( 6 * 7 - 1 );
+  actualEnd.setTime( QTime( 23, 59, 59, 99 ) );
   return qMakePair( actualStart, actualEnd );
-}
-
-void MonthView::setStartDate( const QDate &start )
-{
-  int weekdayCol = ( start.dayOfWeek() + 7 - KGlobal::locale()->weekStartDay() ) % 7;
-  mStartDate = start.addDays( -weekdayCol );
-
-  mEndDate = mStartDate.addDays( 6 * 7 - 1 );
-
-  // take "middle" day's month as current month
-  mCurrentMonth = mStartDate.addDays( ( 6 * 7 ) / 2 ).month();
-
-  reloadIncidences();
 }
 
 Akonadi::Item::List MonthView::selectedIncidences()
@@ -351,44 +338,23 @@ void MonthView::reloadIncidences()
 
   // build monthcells hash
   int i = 0;
-  for ( QDate d = mStartDate; d <= mEndDate; d = d.addDays( 1 ) ) {
+  for ( QDate d = actualStartDateTime().date(); d <= actualEndDateTime().date(); d = d.addDays( 1 ) ) {
     mScene->mMonthCellMap[ d ] = new MonthCell( i, d, mScene );
     i ++;
   }
 
-//#ifdef AKONADI_PORT_DISABLED
   // build global event list
   KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
-  const Item::List incidences = calendar()->incidences();
+  const Item::List incidences = Akonadi::itemsFromModel( calendarSearch()->model() );
 
   foreach ( const Item &aitem, incidences ) {
-    if ( Akonadi::hasTodo( aitem ) && !KOPrefs::instance()->showTodosMonthView() ) {
-      continue;
-    }
-    if ( Akonadi::hasJournal( aitem ) && !KOPrefs::instance()->showJournalsMonthView() ) {
-      continue;
-    }
-
     const Incidence::Ptr incidence = Akonadi::incidence( aitem );
-    KDateTime incDtStart = incidence->dtStart().toTimeSpec( timeSpec );
-    KDateTime incDtEnd   = incidence->dtEnd().toTimeSpec( timeSpec );
-
-    // An event could start before the currently displayed date, so we
-    // have to check at least those dates before the start date, which would
-    // cause the event to span into the displayed date range.
-    int offset = 0;
-    if ( Akonadi::hasEvent( aitem ) ) {
-      offset = incDtStart.daysTo( incDtEnd );
-    }
-
-    KDateTime startDateTime( mStartDate.addDays( - offset ), QTime( 0, 0 ), timeSpec );
-    KDateTime endDateTime( mEndDate, QTime( 23, 59 ), timeSpec );
 
     DateTimeList dateTimeList;
 
     if ( incidence->recurs() ) {
       // Get a list of all dates that the recurring event will happen
-      dateTimeList = incidence->recurrence()->timesInInterval( startDateTime, endDateTime );
+      dateTimeList = incidence->recurrence()->timesInInterval( actualStartDateTime(), actualEndDateTime() );
     } else {
       KDateTime dateToAdd;
 
@@ -397,15 +363,15 @@ void MonthView::reloadIncidences()
           dateToAdd = todo->dtDue();
         }
       } else {
-        dateToAdd = incDtStart;
+        dateToAdd = incidence->dtStart();
       }
 
-      if ( dateToAdd >= startDateTime && dateToAdd <= endDateTime ) {
+      if ( dateToAdd >= actualStartDateTime() && dateToAdd <= actualEndDateTime() );
         dateTimeList += dateToAdd;
-      }
+
     }
-    DateTimeList::iterator t;
-    for ( t = dateTimeList.begin(); t != dateTimeList.end(); ++t ) {
+    DateTimeList::const_iterator t;
+    for ( t = dateTimeList.constBegin(); t != dateTimeList.constEnd(); ++t ) {
       MonthItem *manager = new IncidenceMonthItem( mScene,
                                                    aitem,
                                                    t->toTimeSpec( timeSpec ).date() );
@@ -423,7 +389,7 @@ void MonthView::reloadIncidences()
   }
 
   // add holidays
-  for ( QDate d = mStartDate; d <= mEndDate; d = d.addDays( 1 ) ) {
+  for ( QDate d = actualStartDateTime().date(); d <= actualEndDateTime().date(); d = d.addDays( 1 ) ) {
     QStringList holidays( KOGlobals::self()->holiday( d ) );
     if ( !holidays.isEmpty() ) {
       MonthItem *holidayItem =
@@ -449,8 +415,6 @@ void MonthView::reloadIncidences()
     }
   }
 
-//#endif // AKONADI_PORT_DISABLED
-
   foreach ( MonthItem *manager, mScene->mManagerList ) {
     manager->updateMonthGraphicsItems();
     manager->updatePosition();
@@ -468,30 +432,40 @@ void MonthView::reloadIncidences()
 void MonthView::calendarReset()
 {
   kDebug();
+  triggerDelayedReload();
 }
 
 void MonthView::incidencesAdded( const Item::List& incidences )
 {
-  Q_FOREACH( const Item& i, incidences )
-      kDebug() << "item added: " << Akonadi::incidence( i )->summary();
+  KDateTime::Spec timeSpec = KOPrefs::instance()->timeSpec();
+  Q_FOREACH( const Item& i, incidences ) {
+    kDebug() << "item added: " << Akonadi::incidence( i )->summary();
+  }
+  triggerDelayedReload();
 }
 
 void MonthView::incidencesAboutToBeRemoved( const Item::List& incidences )
 {
   Q_FOREACH( const Item& i, incidences )
       kDebug() << "item removed: " << Akonadi::incidence( i )->summary();
+  triggerDelayedReload();
 }
 
 void MonthView::incidencesChanged( const Item::List& incidences )
 {
   Q_FOREACH( const Item& i, incidences )
       kDebug() << "item changed: " << Akonadi::incidence( i )->summary();
+  triggerDelayedReload();
 }
 
 
 QDate MonthView::averageDate() const
 {
-  return startDate().addDays( startDate().daysTo( endDate() ) / 2 );
+  return actualStartDateTime().date().addDays( actualStartDateTime().date().daysTo( actualEndDateTime().date() ) / 2 );
+}
+
+int MonthView::currentMonth() const {
+  return averageDate().month();
 }
 
 bool MonthView::usesFullWindow()
